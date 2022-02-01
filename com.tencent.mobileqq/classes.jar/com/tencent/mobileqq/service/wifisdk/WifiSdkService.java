@@ -17,6 +17,7 @@ import com.qq.jce.wup.UniPacket;
 import com.qq.jce.wup.WupHexUtil;
 import com.tencent.common.app.BaseProtocolCoder;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.mobileqq.wifi.WifiSdkSharedPreUtils;
 import com.tencent.mobileqq.wifi.WifiSdkUtil;
 import com.tencent.mobileqq.wifi.WifiSecurityCheckInfo;
@@ -77,7 +78,7 @@ public class WifiSdkService
         }
         return null;
       }
-      Object localObject2 = paramContext.getConnectionInfo();
+      Object localObject2 = NetworkMonitor.getConnectionInfo(paramContext);
       if (localObject2 == null)
       {
         if (QLog.isColorLevel()) {
@@ -190,7 +191,7 @@ public class WifiSdkService
           }
           return null;
         }
-        Object localObject2 = ((WifiManager)((Context)localObject1).getSystemService("wifi")).getConnectionInfo();
+        Object localObject2 = NetworkMonitor.getConnectionInfo((WifiManager)((Context)localObject1).getSystemService("wifi"));
         localObject1 = ((android.net.wifi.WifiInfo)localObject2).getSSID();
         localObject2 = ((android.net.wifi.WifiInfo)localObject2).getBSSID();
         String str = (String)paramToServiceMsg.getAttribute("ssid", "");
@@ -320,8 +321,8 @@ public class WifiSdkService
         ((UniPacket)localObject1).decode(paramFromServiceMsg);
         paramFromServiceMsg = (SCGet3rdCloudCheck)((UniPacket)localObject1).get("SCGet3rdCloudCheck", null);
         Object localObject2 = new WifiSecurityCheckInfo();
-        ((WifiSecurityCheckInfo)localObject2).jdField_a_of_type_MConchSCPullConchs = ((SCPullConchs)((UniPacket)localObject1).get("SCPullConchs", null));
-        ((WifiSecurityCheckInfo)localObject2).jdField_a_of_type_MWIFISCGet3rdCloudCheck = a(paramToServiceMsg, paramFromServiceMsg);
+        ((WifiSecurityCheckInfo)localObject2).b = ((SCPullConchs)((UniPacket)localObject1).get("SCPullConchs", null));
+        ((WifiSecurityCheckInfo)localObject2).a = a(paramToServiceMsg, paramFromServiceMsg);
         return localObject2;
       }
     }
@@ -410,7 +411,7 @@ public class WifiSdkService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.wifisdk.WifiSdkService
  * JD-Core Version:    0.7.0.1
  */

@@ -42,13 +42,13 @@ public class LHLoginMng
       if (bool)
       {
         paramIntent = new LHLoginMng.LHLoginCallbackForW(paramIntent, paramString, paramOnLockLHUinResult);
-        ((WtloginManager)this.a.getManager(1)).regGetSMSVerifyLoginAccountWithLH(str1.getBytes(), str2.getBytes(), paramString, "8.7.0", paramIntent);
+        ((WtloginManager)this.a.getManager(1)).regGetSMSVerifyLoginAccountWithLH(str1.getBytes(), str2.getBytes(), paramString, "8.8.17", paramIntent);
       }
       else
       {
         paramIntent = new LHLoginMng.LHLoginCallbackForA(paramIntent, paramString, paramOnLockLHUinResult);
         PhoneNumLoginImpl.a().a(this.a, false);
-        RegisterManager.a().b(this.a, str3, str2, str1, paramString, false, null, paramIntent);
+        RegisterManager.b().b(this.a, str3, str2, str1, paramString, false, null, paramIntent);
       }
       if (QLog.isColorLevel()) {
         QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "lockLH, lhUin: %s, isBindPhoneNum: %s", new Object[] { paramString, Boolean.valueOf(bool) }));
@@ -62,7 +62,7 @@ public class LHLoginMng
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.LHLoginMng
  * JD-Core Version:    0.7.0.1
  */

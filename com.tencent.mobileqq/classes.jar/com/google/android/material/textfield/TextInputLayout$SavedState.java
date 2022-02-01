@@ -13,28 +13,28 @@ class TextInputLayout$SavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new TextInputLayout.SavedState.1();
   @Nullable
-  CharSequence jdField_a_of_type_JavaLangCharSequence;
-  boolean jdField_a_of_type_Boolean;
-  @Nullable
-  CharSequence b;
+  CharSequence a;
+  boolean b;
   @Nullable
   CharSequence c;
   @Nullable
   CharSequence d;
+  @Nullable
+  CharSequence e;
   
   TextInputLayout$SavedState(@NonNull Parcel paramParcel, ClassLoader paramClassLoader)
   {
     super(paramParcel, paramClassLoader);
-    this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.a = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
     int i = paramParcel.readInt();
     boolean bool = true;
     if (i != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.b = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.b = bool;
     this.c = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
     this.d = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.e = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
   }
   
   TextInputLayout$SavedState(Parcelable paramParcelable)
@@ -49,13 +49,13 @@ class TextInputLayout$SavedState
     localStringBuilder.append("TextInputLayout.SavedState{");
     localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
     localStringBuilder.append(" error=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" hint=");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" helperText=");
     localStringBuilder.append(this.c);
-    localStringBuilder.append(" placeholderText=");
+    localStringBuilder.append(" helperText=");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(" placeholderText=");
+    localStringBuilder.append(this.e);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
@@ -67,7 +67,7 @@ class TextInputLayout$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.TextInputLayout.SavedState
  * JD-Core Version:    0.7.0.1
  */

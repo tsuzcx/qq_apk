@@ -12,7 +12,7 @@
         <TextView android:textSize="12.0sp" android:textColor="#ffbbbbbb" android:ellipsize="end" android:id="@id/k5d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:maxLines="1" android:maxEms="10" android:layout_toRightOf="@id/k5e" android:layout_below="@id/k51" />
         <TextView android:textSize="12.0sp" android:textColor="#ffbbbbbb" android:id="@id/k5f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/q18" android:layout_toRightOf="@id/k5e" android:layout_below="@id/k51" />
         <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/eda" android:paddingLeft="1.0dip" android:paddingRight="1.0dip" android:layout_width="46.0dip" android:layout_height="23.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-            <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/k85" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pv8" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/k85" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ka2" />
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

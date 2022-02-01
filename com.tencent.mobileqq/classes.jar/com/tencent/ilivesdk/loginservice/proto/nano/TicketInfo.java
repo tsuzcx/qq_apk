@@ -8,8 +8,8 @@ import com.google.protobuf.nano.WireFormatNano;
 public final class TicketInfo
   extends MessageNano
 {
-  public int a;
   public String a;
+  public int b;
   
   public TicketInfo()
   {
@@ -18,8 +18,8 @@ public final class TicketInfo
   
   public TicketInfo a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
+    this.a = "";
+    this.b = 0;
     this.cachedSize = -1;
     return this;
   }
@@ -41,11 +41,11 @@ public final class TicketInfo
           }
         }
         else {
-          this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+          this.b = paramCodedInputByteBufferNano.readUInt32();
         }
       }
       else {
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        this.a = paramCodedInputByteBufferNano.readString();
       }
     }
     return this;
@@ -55,10 +55,10 @@ public final class TicketInfo
   {
     int j = super.computeSerializedSize();
     int i = j;
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(1, this.jdField_a_of_type_JavaLangString);
+    if (!this.a.equals("")) {
+      i = j + CodedOutputByteBufferNano.computeStringSize(1, this.a);
     }
-    int k = this.jdField_a_of_type_Int;
+    int k = this.b;
     j = i;
     if (k != 0) {
       j = i + CodedOutputByteBufferNano.computeUInt32Size(2, k);
@@ -68,10 +68,10 @@ public final class TicketInfo
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(1, this.jdField_a_of_type_JavaLangString);
+    if (!this.a.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(1, this.a);
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i != 0) {
       paramCodedOutputByteBufferNano.writeUInt32(2, i);
     }
@@ -80,7 +80,7 @@ public final class TicketInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.proto.nano.TicketInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -20,44 +20,44 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
   public void onGlobalLayout()
   {
     Object localObject = new Rect();
-    this.a.getUIStyleHandler().d.getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.a.getUIStyleHandler().d.getRootView().getHeight();
+    this.a.getUIStyleHandler().x.getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.getUIStyleHandler().x.getRootView().getHeight();
     int j = i - ((Rect)localObject).bottom;
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
+    if ((this.a.d != null) && (this.a.C != j))
     {
-      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      localObject = (RelativeLayout.LayoutParams)this.a.d.getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.a.e = j;
+      this.a.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.a.C = j;
     }
     if (j > i / 3)
     {
-      if (this.a.c) {
+      if (this.a.o) {
         this.a.b(false);
       } else {
         this.a.b(true);
       }
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      if (this.a.a == 2) {
+        this.a.n.setVisibility(0);
       }
-      UITools.b(BaseApplicationImpl.getApplication(), this.a.b + j);
+      UITools.b(BaseApplicationImpl.getApplication(), this.a.i + j);
       return;
     }
     this.a.b(false);
-    if (this.a.jdField_a_of_type_Int == 2) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    if (this.a.a == 2) {
+      this.a.n.setVisibility(8);
     }
-    if (this.a.jdField_a_of_type_Int == 2) {
-      UITools.b(BaseApplicationImpl.getApplication(), this.a.b);
+    if (this.a.a == 2) {
+      UITools.b(BaseApplicationImpl.getApplication(), this.a.i);
     } else {
-      i = this.a.jdField_a_of_type_Int;
+      i = this.a.a;
     }
-    this.a.d = false;
+    this.a.r = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.13
  * JD-Core Version:    0.7.0.1
  */

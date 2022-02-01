@@ -55,20 +55,20 @@ public class AVGameAppInterface
   extends BaseAVGameAppInterface
   implements MSFNetInfoMonitor.IApnChangeListener, IAVGameAppInterface, AccountReceiver.AccountListener, SDKInitListener
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private int jdField_a_of_type_Int = -2147483648;
-  private MSFNetInfoMonitor jdField_a_of_type_ComTencentAvAppMSFNetInfoMonitor = null;
-  private AVGameService jdField_a_of_type_ComTencentAvgameAppAVGameService = null;
-  private HandlerFactory jdField_a_of_type_ComTencentAvgameBusinessHandlerHandlerFactory = null;
-  private AVGameClientQIPCModule jdField_a_of_type_ComTencentAvgameIpcAVGameClientQIPCModule = null;
-  private BroadcastCenter jdField_a_of_type_ComTencentAvgameIpcBroadcastCenter = null;
-  private QQEntityManagerFactory jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory = null;
-  private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = null;
+  private static boolean g = false;
+  private QQEntityManagerFactory a = null;
+  private NetEngineFactory b = null;
+  private AVGameService c = null;
+  private HandlerFactory d = null;
+  private AVGameClientQIPCModule e = null;
+  private BroadcastCenter f = null;
+  private MSFNetInfoMonitor h = null;
+  private int i = -2147483648;
   
   public AVGameAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
-    ProcessMonitor.a().a();
+    ProcessMonitor.a().b();
     AVGamePerfReporter.a().a("param_AVGameInit");
     CostTraceUtil.a().a("AVGameCostTrace");
     if (QLog.isColorLevel())
@@ -81,9 +81,9 @@ public class AVGameAppInterface
     }
   }
   
-  private void b()
+  private void d()
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!g)
     {
       BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
       if ("mounted".equals(Environment.getExternalStorageState())) {
@@ -93,52 +93,37 @@ public class AVGameAppInterface
       }
       URLDrawable.init(URLDrawableDepWrapInit.a(), new AVGameAppInterface.3(this, localBaseApplication));
       File localFile = new File(localFile, "diskcache");
-      com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new DiskCache(localFile);
+      com.tencent.mobileqq.startup.step.InitUrlDrawable.b = new DiskCache(localFile);
       com.tencent.mobileqq.transfile.URLDrawableHelper.diskCachePath = localFile;
-      jdField_a_of_type_Boolean = true;
+      g = true;
     }
   }
   
   public AVGameClientQIPCModule a()
   {
-    return this.jdField_a_of_type_ComTencentAvgameIpcAVGameClientQIPCModule;
-  }
-  
-  public IAVGameBusinessCtrl a()
-  {
-    return AVGameBusinessCtrl.a();
-  }
-  
-  public void a()
-  {
-    if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache == null)
-    {
-      int i = (int)(MemoryManager.a() / 10L);
-      GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(i);
-      GlobalImageCache.jdField_a_of_type_Int = i;
-    }
+    return this.e;
   }
   
   public void a(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = MSFNetInfoMonitor.b();
+    int j = this.i;
+    int k = MSFNetInfoMonitor.b();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onApnChanged, [");
-      localStringBuilder.append(i);
-      localStringBuilder.append("] --> [");
       localStringBuilder.append(j);
+      localStringBuilder.append("] --> [");
+      localStringBuilder.append(k);
       localStringBuilder.append("], from[");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("]");
       QLog.i("AVGameAppInterface", 2, localStringBuilder.toString());
     }
-    if (i != j)
+    if (j != k)
     {
-      this.jdField_a_of_type_Int = j;
-      ObserverCenter.a().a(NetObserver.class, 1, true, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+      this.i = k;
+      ObserverCenter.a().a(NetObserver.class, 1, true, new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt) });
     }
   }
   
@@ -152,6 +137,16 @@ public class AVGameAppInterface
     ObserverCenter.a().a(paramBusinessObserver, paramBoolean);
   }
   
+  public void b()
+  {
+    if (GlobalImageCache.a == null)
+    {
+      int j = (int)(MemoryManager.d() / 10L);
+      GlobalImageCache.a = new MQLruCache(j);
+      GlobalImageCache.c = j;
+    }
+  }
+  
   public void b(int paramInt)
   {
     long l = SystemClock.elapsedRealtime();
@@ -160,17 +155,17 @@ public class AVGameAppInterface
     ((StringBuilder)localObject).append(paramInt);
     ((StringBuilder)localObject).append("]");
     QLog.i("AVGameAppInterface", 1, ((StringBuilder)localObject).toString());
-    GameEngine.a().a(2, null, GameEngine.a().a());
+    GameEngine.a().a(2, null, GameEngine.a().s());
     localObject = new Intent("tencent.avgame.g2q.exit");
     ((Intent)localObject).putExtra("key_exit_code", paramInt);
     getApp().sendBroadcast((Intent)localObject);
     QLog.flushLog(true);
     getApplication().otherProcessExit(false);
-    localObject = this.jdField_a_of_type_ComTencentAvgameIpcAVGameClientQIPCModule;
+    localObject = this.e;
     if (localObject != null) {
       ((AVGameClientQIPCModule)localObject).a();
     }
-    ProcessMonitor.a().b();
+    ProcessMonitor.a().c();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("exitVideoProcess, cost[");
     ((StringBuilder)localObject).append(SystemClock.elapsedRealtime() - l);
@@ -191,6 +186,11 @@ public class AVGameAppInterface
     }
   }
   
+  public IAVGameBusinessCtrl c()
+  {
+    return AVGameBusinessCtrl.a();
+  }
+  
   public BaseApplication getApp()
   {
     return this.app;
@@ -198,7 +198,7 @@ public class AVGameAppInterface
   
   public int getAppid()
   {
-    return AppSetting.a();
+    return AppSetting.d();
   }
   
   public List<BusinessObserver> getBusinessObserver(int paramInt)
@@ -213,10 +213,10 @@ public class AVGameAppInterface
   
   public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory == null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory = QQEntityManagerFactoryProxy.a(getAccount(), super.getEntityManagerFactory());
+    if (this.a == null) {
+      this.a = QQEntityManagerFactoryProxy.a(getAccount(), super.getEntityManagerFactory());
     }
-    return this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory;
+    return this.a;
   }
   
   protected String[] getMessagePushSSOCommands()
@@ -231,7 +231,7 @@ public class AVGameAppInterface
   
   public MobileQQServiceBase getMobileQQService()
   {
-    return this.jdField_a_of_type_ComTencentAvgameAppAVGameService;
+    return this.c;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -244,21 +244,21 @@ public class AVGameAppInterface
     }
     QQAudioHelper.a((BaseApplicationImpl)this.app, getLongAccountUin());
     getEntityManagerFactory(null);
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameService = new AVGameService(this);
-    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerHandlerFactory = new HandlerFactory();
-    a();
-    this.jdField_a_of_type_ComTencentAvgameIpcAVGameClientQIPCModule = new AVGameClientQIPCModule(this);
-    this.jdField_a_of_type_ComTencentAvgameIpcBroadcastCenter = new BroadcastCenter(this);
+    this.c = new AVGameService(this);
+    this.d = new HandlerFactory();
+    b();
+    this.e = new AVGameClientQIPCModule(this);
+    this.f = new BroadcastCenter(this);
     ThreadManager.excute(new AVGameAppInterface.1(this), 16, null, true);
     GameEngine.a().a(this);
-    b();
-    FloatWindowController.a().a(this);
-    GlobalExitRoomDialog.a().a();
+    d();
+    FloatWindowController.c().a(this);
+    GlobalExitRoomDialog.a().b();
     ThreadManager.excute(new AVGameAppInterface.2(this), 16, null, false);
-    this.jdField_a_of_type_ComTencentAvAppMSFNetInfoMonitor = new MSFNetInfoMonitor(this);
-    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_ComTencentAvAppMSFNetInfoMonitor);
-    if (!QQVideoPlaySDKManager.a()) {
-      QQVideoPlaySDKManager.a(BaseApplicationImpl.getContext(), this);
+    this.h = new MSFNetInfoMonitor(this);
+    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.h);
+    if (!QQVideoPlaySDKManager.isSDKReady()) {
+      QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getContext(), this);
     }
     CostTraceUtil.a().c("AppInterfaceCreate");
   }
@@ -266,21 +266,21 @@ public class AVGameAppInterface
   public void onDestroy()
   {
     super.onDestroy();
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameIpcAVGameClientQIPCModule;
+    Object localObject = this.e;
     if (localObject != null) {
       ((AVGameClientQIPCModule)localObject).a();
     }
-    localObject = this.jdField_a_of_type_ComTencentAvgameIpcBroadcastCenter;
+    localObject = this.f;
     if (localObject != null)
     {
       ((BroadcastCenter)localObject).b();
-      this.jdField_a_of_type_ComTencentAvgameIpcBroadcastCenter = null;
+      this.f = null;
     }
-    ObserverCenter.a().a();
-    GameEngine.a().b();
-    AVGameBusinessCtrl.a();
-    FloatWindowController.a().f();
-    GlobalExitRoomDialog.a().b();
+    ObserverCenter.a().b();
+    GameEngine.a().c();
+    AVGameBusinessCtrl.c();
+    FloatWindowController.c().g();
+    GlobalExitRoomDialog.a().c();
     if (QLog.isColorLevel()) {
       QLog.i("AVGameAppInterface", 2, "onDestroy");
     }

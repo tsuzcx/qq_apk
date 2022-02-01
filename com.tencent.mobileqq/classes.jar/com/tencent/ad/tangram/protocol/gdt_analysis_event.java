@@ -136,6 +136,8 @@ public final class gdt_analysis_event
   public static final int STATISTICS_FEEDBACK = 7;
   public static final int STATISTICS_IMPESSION = 1;
   public static final int STATISTICS_SDK_MSG = 6;
+  public static final int STATISTICS_SETTINGS = 8;
+  public static final int STATISTICS_SETTINGS_NEW = 9;
   public static final int STATISTICS_VIDEO_PLAY = 5;
   public static final int THIRD_PARTY_MONITOR_STATISTICS_CLICK = 102;
   public static final int THIRD_PARTY_MONITOR_STATISTICS_IMPESSION = 101;

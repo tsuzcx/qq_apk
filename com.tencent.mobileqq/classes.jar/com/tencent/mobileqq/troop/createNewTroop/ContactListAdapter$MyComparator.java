@@ -10,10 +10,10 @@ class ContactListAdapter$MyComparator
 {
   public int a(ContactListAdapter.FriendHolder paramFriendHolder)
   {
-    if (paramFriendHolder.jdField_a_of_type_Int != -1) {
-      return paramFriendHolder.jdField_a_of_type_Int;
+    if (paramFriendHolder.b != -1) {
+      return paramFriendHolder.b;
     }
-    Friends localFriends = paramFriendHolder.jdField_a_of_type_ComTencentMobileqqDataFriends;
+    Friends localFriends = paramFriendHolder.a;
     int k = OnlineStatusUtils.a(localFriends.detalStatusFlag, localFriends.iTermType);
     int j;
     if ((k != 6) && (k != 0)) {
@@ -53,7 +53,7 @@ class ContactListAdapter$MyComparator
       continue;
       i |= 0x2;
     }
-    paramFriendHolder.jdField_a_of_type_Int = i;
+    paramFriendHolder.b = i;
     return i;
   }
   
@@ -64,7 +64,7 @@ class ContactListAdapter$MyComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.MyComparator
  * JD-Core Version:    0.7.0.1
  */

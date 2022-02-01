@@ -20,29 +20,24 @@ public final class ServerSSOPlugin
   implements IEventPlugin
 {
   @Deprecated
-  public static final ServerSSOPlugin.Companion a;
+  public static final ServerSSOPlugin.Companion a = new ServerSSOPlugin.Companion(null);
   @NotNull
-  private static final List<String> jdField_a_of_type_JavaUtilList = CollectionsKt.emptyList();
+  private static final List<String> e = CollectionsKt.emptyList();
   @NotNull
-  private final PluginCmdConstant.PlugPriority jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority = PluginCmdConstant.PlugPriority.SSO;
-  private final boolean jdField_a_of_type_Boolean = true;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginServerSSOPlugin$Companion = new ServerSSOPlugin.Companion(null);
-  }
+  private final PluginCmdConstant.PlugPriority c = PluginCmdConstant.PlugPriority.SSO;
+  private final boolean d = true;
   
   @NotNull
   public PluginCmdConstant.PlugPriority a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
+    return this.c;
   }
   
   @Nullable
   public String a(@NotNull Argument paramArgument)
   {
     Intrinsics.checkParameterIsNotNull(paramArgument, "argument");
-    String str = paramArgument.c();
+    String str = paramArgument.f();
     if (a(str))
     {
       if (QLog.isColorLevel())
@@ -58,24 +53,13 @@ public final class ServerSSOPlugin
         localObject = ((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
         if (localObject != null)
         {
-          ((ApolloExtensionHandler)localObject).b(str, paramArgument.b(), 4);
+          ((ApolloExtensionHandler)localObject).b(str, paramArgument.e(), 4);
           return null;
         }
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.apollo.handler.ApolloExtensionHandler");
       }
     }
     return null;
-  }
-  
-  @NotNull
-  public List<String> a()
-  {
-    return jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   public boolean a(@NotNull String paramString)
@@ -92,10 +76,21 @@ public final class ServerSSOPlugin
     }
     return bool1;
   }
+  
+  @NotNull
+  public List<String> c()
+  {
+    return e;
+  }
+  
+  public boolean d()
+  {
+    return this.d;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.plugin.ServerSSOPlugin
  * JD-Core Version:    0.7.0.1
  */

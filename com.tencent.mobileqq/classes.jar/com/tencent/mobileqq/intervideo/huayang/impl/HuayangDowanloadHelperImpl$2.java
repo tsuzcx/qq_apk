@@ -17,7 +17,7 @@ class HuayangDowanloadHelperImpl$2
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     QLog.i("IHuayangPluginNewDownloader", 2, "onServiceConnected ");
-    HuayangDowanloadHelperImpl.access$400(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangImplHuayangDowanloadHelperImpl).unbindService(this);
+    HuayangDowanloadHelperImpl.access$400(this.b).unbindService(this);
     paramComponentName = PluginProcessService.wrapBinder(paramIBinder);
     try
     {
@@ -27,14 +27,14 @@ class HuayangDowanloadHelperImpl$2
     {
       QLog.d("IHuayangPluginNewDownloader", 2, "exit over", paramComponentName);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.a.countDown();
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.impl.HuayangDowanloadHelperImpl.2
  * JD-Core Version:    0.7.0.1
  */

@@ -26,20 +26,13 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/fastweb/util/RIJCoinAnimationUtils;", "", "()V", "COIN_SUCCESS_SCENE", "", "SUCCESS_ANIMATION_URL", "", "TAG", "THREE_CLICK_LOADING_ANIMATION_URL", "THREE_CLICK_LOADING_SCENE", "THREE_CLICK_SUCCESS_ANIMATION_URL", "THREE_CLICK_SUCCESS_SCENE", "animationLoop", "getAnimationLoop", "()I", "setAnimationLoop", "(I)V", "animationScene", "getAnimationScene", "setAnimationScene", "currentView", "Landroid/view/View;", "getCurrentView", "()Landroid/view/View;", "setCurrentView", "(Landroid/view/View;)V", "downloadListener", "Lcom/tencent/image/URLDrawable$URLDrawableListener;", "getDownloadListener", "()Lcom/tencent/image/URLDrawable$URLDrawableListener;", "setDownloadListener", "(Lcom/tencent/image/URLDrawable$URLDrawableListener;)V", "addApngListener", "", "drawable", "Lcom/tencent/image/URLDrawable;", "cleanLastFrame", "destroy", "doAnimation", "doAnimationFinishActions", "doApngAnimation", "coinView", "url", "sceneType", "doFailActions", "downloadApngAnimation", "width", "height", "finishAnimation", "getLoopCounts", "refresh3Click", "refreshCoinUI", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJCoinAnimationUtils
 {
-  private static int jdField_a_of_type_Int;
+  public static final RIJCoinAnimationUtils a = new RIJCoinAnimationUtils();
   @Nullable
-  private static View jdField_a_of_type_AndroidViewView;
+  private static View b;
+  private static int c = -1;
+  private static int d = 1;
   @NotNull
-  private static URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = (URLDrawable.URLDrawableListener)new RIJCoinAnimationUtils.downloadListener.1();
-  public static final RIJCoinAnimationUtils a;
-  private static int b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilRIJCoinAnimationUtils = new RIJCoinAnimationUtils();
-    jdField_a_of_type_Int = -1;
-    b = 1;
-  }
+  private static URLDrawable.URLDrawableListener e = (URLDrawable.URLDrawableListener)new RIJCoinAnimationUtils.downloadListener.1();
   
   private final void a(URLDrawable paramURLDrawable)
   {
@@ -75,28 +68,11 @@ public final class RIJCoinAnimationUtils
     }
   }
   
-  private final int c()
-  {
-    int i;
-    if (jdField_a_of_type_Int == 2) {
-      i = 3;
-    } else {
-      i = 1;
-    }
-    b = i;
-    return b;
-  }
-  
-  private final void c()
-  {
-    ThreadManager.getUIHandler().post((Runnable)RIJCoinAnimationUtils.refreshCoinUI.1.a);
-  }
-  
   private final void c(URLDrawable paramURLDrawable)
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      Object localObject = jdField_a_of_type_AndroidViewView;
+      Object localObject = b;
       if (((localObject instanceof ImageView)) && (paramURLDrawable != null))
       {
         if (localObject != null)
@@ -113,9 +89,26 @@ public final class RIJCoinAnimationUtils
     QLog.d("RIJCoinAnimationUtils", 1, "doAnimation error!");
   }
   
-  private final void d()
+  private final int f()
   {
-    int i = jdField_a_of_type_Int;
+    int i;
+    if (c == 2) {
+      i = 3;
+    } else {
+      i = 1;
+    }
+    d = i;
+    return d;
+  }
+  
+  private final void g()
+  {
+    ThreadManager.getUIHandler().post((Runnable)RIJCoinAnimationUtils.refreshCoinUI.1.a);
+  }
+  
+  private final void h()
+  {
+    int i = c;
     if (i != 1)
     {
       if (i != 2)
@@ -123,41 +116,28 @@ public final class RIJCoinAnimationUtils
         if (i != 3) {
           return;
         }
-        b();
+        e();
         RIJ3ClickUtils.a.a(true);
         return;
       }
       RIJ3ClickUtils.a.b();
       return;
     }
-    c();
+    g();
   }
   
-  private final void e()
+  private final void i()
   {
-    if (jdField_a_of_type_Int != 3) {
+    if (c != 3) {
       return;
     }
-    b();
-  }
-  
-  public final int a()
-  {
-    return jdField_a_of_type_Int;
+    e();
   }
   
   @Nullable
   public final View a()
   {
-    return jdField_a_of_type_AndroidViewView;
-  }
-  
-  public final void a()
-  {
-    View localView = jdField_a_of_type_AndroidViewView;
-    if (localView != null) {
-      localView.setVisibility(4);
-    }
+    return b;
   }
   
   public final void a(@Nullable View paramView, @NotNull String paramString, int paramInt)
@@ -166,8 +146,8 @@ public final class RIJCoinAnimationUtils
     if (paramView != null) {
       try
       {
-        jdField_a_of_type_Int = paramInt;
-        jdField_a_of_type_AndroidViewView = paramView;
+        c = paramInt;
+        b = paramView;
         a(paramString, paramView.getWidth(), paramView.getHeight());
         return;
       }
@@ -188,24 +168,37 @@ public final class RIJCoinAnimationUtils
     localApngOptions.a((Drawable)new ColorDrawable(7));
     localApngOptions.b(paramInt1);
     localApngOptions.c(paramInt2);
-    localApngOptions.a(c());
-    localApngOptions.a(jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener);
+    localApngOptions.a(f());
+    localApngOptions.a(e);
     c(((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(paramString, localApngOptions));
   }
   
   public final int b()
   {
-    return b;
+    return c;
   }
   
-  public final void b()
+  public final int c()
+  {
+    return d;
+  }
+  
+  public final void d()
+  {
+    View localView = b;
+    if (localView != null) {
+      localView.setVisibility(4);
+    }
+  }
+  
+  public final void e()
   {
     ThreadManager.getUIHandler().post((Runnable)RIJCoinAnimationUtils.refresh3Click.1.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.RIJCoinAnimationUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MsgBackupTransportExecutor
 {
-  private static MsgBackupTransportExecutor jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportExecutor;
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static MsgBackupTransportExecutor b;
+  private Executor a;
+  private AtomicBoolean c = new AtomicBoolean(false);
   
   private MsgBackupTransportExecutor()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null)
+    if (this.a == null)
     {
       int i = Runtime.getRuntime().availableProcessors();
       ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
@@ -22,7 +22,7 @@ public class MsgBackupTransportExecutor
       localThreadPoolParams.maxPooolSize = i;
       localThreadPoolParams.priority = 5;
       localThreadPoolParams.poolThreadName = "msgbackup_Tranport_Executor";
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
+      this.a = ThreadManager.newFreeThreadPool(localThreadPoolParams);
     }
   }
   
@@ -30,30 +30,18 @@ public class MsgBackupTransportExecutor
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportExecutor == null) {
-        jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportExecutor = new MsgBackupTransportExecutor();
+      if (b == null) {
+        b = new MsgBackupTransportExecutor();
       }
-      MsgBackupTransportExecutor localMsgBackupTransportExecutor = jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportExecutor;
+      MsgBackupTransportExecutor localMsgBackupTransportExecutor = b;
       return localMsgBackupTransportExecutor;
     }
     finally {}
   }
   
-  public void a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("msgbackup destroy-------------> destroyed = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-    MsgBackupUtil.a("MsgBackupMsgBackupTransportExecutor", localStringBuilder.toString(), new Object[0]);
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
   public void a(Runnable paramRunnable)
   {
-    Executor localExecutor = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+    Executor localExecutor = this.a;
     if (localExecutor == null)
     {
       MsgBackupUtil.a("MsgBackupMsgBackupTransportExecutor", "thread pool is destroyed!", new Object[0]);
@@ -61,10 +49,22 @@ public class MsgBackupTransportExecutor
     }
     localExecutor.execute(paramRunnable);
   }
+  
+  public void b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("msgbackup destroy-------------> destroyed = ");
+    localStringBuilder.append(this.c.get());
+    MsgBackupUtil.a("MsgBackupMsgBackupTransportExecutor", localStringBuilder.toString(), new Object[0]);
+    if (this.c.get()) {
+      return;
+    }
+    this.c.set(true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupTransportExecutor
  * JD-Core Version:    0.7.0.1
  */

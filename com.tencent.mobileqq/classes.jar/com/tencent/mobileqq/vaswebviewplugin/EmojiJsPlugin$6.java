@@ -19,7 +19,7 @@ class EmojiJsPlugin$6
     try
     {
       paramDialogInterface.put("result", 2);
-      paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131691923));
+      paramDialogInterface.put("message", this.this$0.mRuntime.d().getString(2131888890));
       if (QLog.isColorLevel())
       {
         String str = EmojiJsPlugin.TAG;
@@ -39,7 +39,7 @@ class EmojiJsPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

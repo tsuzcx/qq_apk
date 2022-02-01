@@ -2,15 +2,15 @@ package com.tencent.mobileqq.easysync2;
 
 public class StringIterator
 {
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private int b = 0;
   
   public StringIterator(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
-  private void b(int paramInt)
+  private void d(int paramInt)
   {
     boolean bool;
     if (paramInt <= a()) {
@@ -23,36 +23,36 @@ public class StringIterator
   
   int a()
   {
-    return this.jdField_a_of_type_JavaLangString.length() - this.jdField_a_of_type_Int;
+    return this.a.length() - this.b;
   }
   
   String a(int paramInt)
   {
-    b(paramInt);
-    String str = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
+    d(paramInt);
+    String str = this.a;
+    int i = this.b;
     str = str.substring(i, i + paramInt);
-    this.jdField_a_of_type_Int += paramInt;
+    this.b += paramInt;
     return str;
-  }
-  
-  void a(int paramInt)
-  {
-    b(paramInt);
-    this.jdField_a_of_type_Int += paramInt;
   }
   
   String b(int paramInt)
   {
-    b(paramInt);
-    String str = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
+    d(paramInt);
+    String str = this.a;
+    int i = this.b;
     return str.substring(i, paramInt + i);
+  }
+  
+  void c(int paramInt)
+  {
+    d(paramInt);
+    this.b += paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.StringIterator
  * JD-Core Version:    0.7.0.1
  */

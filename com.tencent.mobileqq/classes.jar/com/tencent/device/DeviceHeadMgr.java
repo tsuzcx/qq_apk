@@ -93,7 +93,7 @@ public class DeviceHeadMgr
   
   private String getLastModified(String paramString)
   {
-    return CommonDataAdapter.a().a().getSharedPreferences("sd_http_lastmodify", 0).getString(paramString, "");
+    return CommonDataAdapter.a().b().getSharedPreferences("sd_http_lastmodify", 0).getString(paramString, "");
   }
   
   public static String getLogoIconUrl(String paramString)
@@ -154,7 +154,7 @@ public class DeviceHeadMgr
   
   private void saveLastModified(String paramString1, String paramString2)
   {
-    SharedPreferences.Editor localEditor = CommonDataAdapter.a().a().getSharedPreferences("sd_http_lastmodify", 0).edit();
+    SharedPreferences.Editor localEditor = CommonDataAdapter.a().b().getSharedPreferences("sd_http_lastmodify", 0).edit();
     localEditor.putString(paramString1, paramString2);
     localEditor.commit();
   }
@@ -168,8 +168,8 @@ public class DeviceHeadMgr
     //   3: iload 4
     //   5: ifeq +47 -> 52
     //   8: iload_3
-    //   9: invokestatic 236	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   12: invokestatic 238	com/tencent/device/DeviceHeadMgr:getLogoIconUrl	(Ljava/lang/String;)Ljava/lang/String;
+    //   9: invokestatic 237	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   12: invokestatic 239	com/tencent/device/DeviceHeadMgr:getLogoIconUrl	(Ljava/lang/String;)Ljava/lang/String;
     //   15: astore 11
     //   17: new 40	java/lang/StringBuilder
     //   20: dup
@@ -182,67 +182,67 @@ public class DeviceHeadMgr
     //   33: pop
     //   34: aload_1
     //   35: iload_3
-    //   36: invokevirtual 241	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 242	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   39: pop
     //   40: aload_1
-    //   41: ldc 243
+    //   41: ldc 244
     //   43: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   46: pop
     //   47: aload_1
     //   48: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   51: astore_2
-    //   52: invokestatic 249	java/lang/System:currentTimeMillis	()J
+    //   52: invokestatic 250	java/lang/System:currentTimeMillis	()J
     //   55: lstore 7
     //   57: iconst_0
     //   58: istore 5
     //   60: new 49	java/io/File
     //   63: dup
     //   64: aload_2
-    //   65: invokespecial 250	java/io/File:<init>	(Ljava/lang/String;)V
+    //   65: invokespecial 251	java/io/File:<init>	(Ljava/lang/String;)V
     //   68: astore 14
     //   70: aload 14
-    //   72: invokevirtual 253	java/io/File:exists	()Z
+    //   72: invokevirtual 254	java/io/File:exists	()Z
     //   75: ifeq +6 -> 81
     //   78: iconst_1
     //   79: istore 5
     //   81: aload 14
-    //   83: invokevirtual 256	java/io/File:getParentFile	()Ljava/io/File;
+    //   83: invokevirtual 257	java/io/File:getParentFile	()Ljava/io/File;
     //   86: astore_1
     //   87: aload_1
     //   88: ifnull +15 -> 103
     //   91: aload_1
-    //   92: invokevirtual 253	java/io/File:exists	()Z
+    //   92: invokevirtual 254	java/io/File:exists	()Z
     //   95: ifne +8 -> 103
     //   98: aload_1
-    //   99: invokevirtual 259	java/io/File:mkdirs	()Z
+    //   99: invokevirtual 260	java/io/File:mkdirs	()Z
     //   102: pop
-    //   103: new 261	org/apache/http/client/methods/HttpGet
+    //   103: new 262	org/apache/http/client/methods/HttpGet
     //   106: dup
     //   107: aload 11
-    //   109: invokespecial 262	org/apache/http/client/methods/HttpGet:<init>	(Ljava/lang/String;)V
+    //   109: invokespecial 263	org/apache/http/client/methods/HttpGet:<init>	(Ljava/lang/String;)V
     //   112: astore 13
     //   114: iload 5
     //   116: ifeq +25 -> 141
     //   119: aload_0
     //   120: aload 11
-    //   122: invokestatic 267	com/tencent/image/Utils:Crc64String	(Ljava/lang/String;)Ljava/lang/String;
-    //   125: invokespecial 269	com/tencent/device/DeviceHeadMgr:getLastModified	(Ljava/lang/String;)Ljava/lang/String;
+    //   122: invokestatic 268	com/tencent/image/Utils:Crc64String	(Ljava/lang/String;)Ljava/lang/String;
+    //   125: invokespecial 270	com/tencent/device/DeviceHeadMgr:getLastModified	(Ljava/lang/String;)Ljava/lang/String;
     //   128: astore_1
     //   129: aload 13
-    //   131: ldc_w 271
+    //   131: ldc_w 272
     //   134: aload_1
-    //   135: invokevirtual 274	org/apache/http/client/methods/HttpGet:addHeader	(Ljava/lang/String;Ljava/lang/String;)V
+    //   135: invokevirtual 275	org/apache/http/client/methods/HttpGet:addHeader	(Ljava/lang/String;Ljava/lang/String;)V
     //   138: goto +6 -> 144
     //   141: ldc 74
     //   143: astore_1
-    //   144: invokestatic 279	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   144: invokestatic 280	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   147: ifeq +35 -> 182
     //   150: new 40	java/lang/StringBuilder
     //   153: dup
     //   154: invokespecial 41	java/lang/StringBuilder:<init>	()V
     //   157: astore_2
     //   158: aload_2
-    //   159: ldc_w 281
+    //   159: ldc_w 282
     //   162: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   165: pop
     //   166: aload_2
@@ -253,37 +253,37 @@ public class DeviceHeadMgr
     //   174: iconst_2
     //   175: aload_2
     //   176: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   179: invokestatic 285	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   179: invokestatic 286	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   182: aload_0
-    //   183: getfield 190	com/tencent/device/DeviceHeadMgr:sHttpClient	Lorg/apache/http/impl/client/DefaultHttpClient;
+    //   183: getfield 191	com/tencent/device/DeviceHeadMgr:sHttpClient	Lorg/apache/http/impl/client/DefaultHttpClient;
     //   186: aload 13
-    //   188: invokevirtual 289	org/apache/http/impl/client/DefaultHttpClient:execute	(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;
+    //   188: invokevirtual 290	org/apache/http/impl/client/DefaultHttpClient:execute	(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;
     //   191: astore 15
     //   193: aload 15
-    //   195: invokeinterface 295 1 0
-    //   200: invokeinterface 300 1 0
+    //   195: invokeinterface 296 1 0
+    //   200: invokeinterface 301 1 0
     //   205: istore 6
-    //   207: invokestatic 279	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   207: invokestatic 280	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   210: ifeq +36 -> 246
     //   213: new 40	java/lang/StringBuilder
     //   216: dup
     //   217: invokespecial 41	java/lang/StringBuilder:<init>	()V
     //   220: astore_1
     //   221: aload_1
-    //   222: ldc_w 302
+    //   222: ldc_w 303
     //   225: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   228: pop
     //   229: aload_1
     //   230: iload 6
-    //   232: invokevirtual 241	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   232: invokevirtual 242	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   235: pop
     //   236: ldc 14
     //   238: iconst_2
     //   239: aload_1
     //   240: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   243: invokestatic 285	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   243: invokestatic 286	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   246: aload 15
-    //   248: invokeinterface 306 1 0
+    //   248: invokeinterface 307 1 0
     //   253: astore 16
     //   255: iload 6
     //   257: sipush 200
@@ -291,68 +291,68 @@ public class DeviceHeadMgr
     //   263: iload 5
     //   265: ifeq +9 -> 274
     //   268: aload 14
-    //   270: invokevirtual 309	java/io/File:delete	()Z
+    //   270: invokevirtual 310	java/io/File:delete	()Z
     //   273: pop
     //   274: aconst_null
     //   275: astore 12
     //   277: aconst_null
     //   278: astore_1
-    //   279: new 311	java/io/BufferedOutputStream
+    //   279: new 312	java/io/BufferedOutputStream
     //   282: dup
-    //   283: new 313	java/io/FileOutputStream
+    //   283: new 314	java/io/FileOutputStream
     //   286: dup
     //   287: aload 14
-    //   289: invokespecial 316	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   292: invokespecial 319	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   289: invokespecial 317	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   292: invokespecial 320	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   295: astore_2
     //   296: aload 16
     //   298: aload_2
-    //   299: invokeinterface 324 2 0
+    //   299: invokeinterface 325 2 0
     //   304: aload_2
-    //   305: invokevirtual 329	java/io/OutputStream:flush	()V
+    //   305: invokevirtual 330	java/io/OutputStream:flush	()V
     //   308: aload 14
-    //   310: invokevirtual 331	java/io/File:length	()J
+    //   310: invokevirtual 332	java/io/File:length	()J
     //   313: lstore 9
     //   315: aload 15
-    //   317: ldc_w 333
-    //   320: invokeinterface 336 2 0
+    //   317: ldc_w 334
+    //   320: invokeinterface 337 2 0
     //   325: ifeq +29 -> 354
     //   328: aload 15
-    //   330: ldc_w 333
-    //   333: invokeinterface 340 2 0
-    //   338: invokeinterface 345 1 0
+    //   330: ldc_w 334
+    //   333: invokeinterface 341 2 0
+    //   338: invokeinterface 346 1 0
     //   343: astore_1
     //   344: aload_0
     //   345: aload 11
-    //   347: invokestatic 267	com/tencent/image/Utils:Crc64String	(Ljava/lang/String;)Ljava/lang/String;
+    //   347: invokestatic 268	com/tencent/image/Utils:Crc64String	(Ljava/lang/String;)Ljava/lang/String;
     //   350: aload_1
-    //   351: invokespecial 347	com/tencent/device/DeviceHeadMgr:saveLastModified	(Ljava/lang/String;Ljava/lang/String;)V
-    //   354: invokestatic 279	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   351: invokespecial 348	com/tencent/device/DeviceHeadMgr:saveLastModified	(Ljava/lang/String;Ljava/lang/String;)V
+    //   354: invokestatic 280	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   357: ifeq +70 -> 427
     //   360: new 40	java/lang/StringBuilder
     //   363: dup
     //   364: invokespecial 41	java/lang/StringBuilder:<init>	()V
     //   367: astore_1
     //   368: aload_1
-    //   369: ldc_w 349
+    //   369: ldc_w 350
     //   372: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   375: pop
     //   376: aload_1
-    //   377: invokestatic 249	java/lang/System:currentTimeMillis	()J
+    //   377: invokestatic 250	java/lang/System:currentTimeMillis	()J
     //   380: lload 7
     //   382: lsub
-    //   383: invokevirtual 352	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   383: invokevirtual 353	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   386: pop
     //   387: aload_1
-    //   388: ldc_w 354
+    //   388: ldc_w 355
     //   391: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   394: pop
     //   395: aload_1
     //   396: lload 9
-    //   398: invokevirtual 352	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   398: invokevirtual 353	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   401: pop
     //   402: aload_1
-    //   403: ldc_w 356
+    //   403: ldc_w 357
     //   406: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   409: pop
     //   410: aload_1
@@ -363,19 +363,19 @@ public class DeviceHeadMgr
     //   419: iconst_2
     //   420: aload_1
     //   421: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   424: invokestatic 359	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   424: invokestatic 360	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   427: iload 4
     //   429: ifeq +34 -> 463
     //   432: aload_0
-    //   433: getfield 216	com/tencent/device/DeviceHeadMgr:mDeviceOriginalHeadMap	Ljava/util/HashMap;
+    //   433: getfield 217	com/tencent/device/DeviceHeadMgr:mDeviceOriginalHeadMap	Ljava/util/HashMap;
     //   436: astore_1
     //   437: aload_1
     //   438: monitorenter
     //   439: aload_0
-    //   440: getfield 216	com/tencent/device/DeviceHeadMgr:mDeviceOriginalHeadMap	Ljava/util/HashMap;
+    //   440: getfield 217	com/tencent/device/DeviceHeadMgr:mDeviceOriginalHeadMap	Ljava/util/HashMap;
     //   443: iload_3
-    //   444: invokestatic 364	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   447: invokevirtual 368	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   444: invokestatic 365	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   447: invokevirtual 369	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   450: pop
     //   451: aload_1
     //   452: monitorexit
@@ -386,33 +386,33 @@ public class DeviceHeadMgr
     //   460: aload 11
     //   462: athrow
     //   463: aload_0
-    //   464: getfield 209	com/tencent/device/DeviceHeadMgr:mDeviceHeadMap	Ljava/util/HashMap;
+    //   464: getfield 210	com/tencent/device/DeviceHeadMgr:mDeviceHeadMap	Ljava/util/HashMap;
     //   467: astore_1
     //   468: aload_1
     //   469: monitorenter
     //   470: aload_0
-    //   471: getfield 209	com/tencent/device/DeviceHeadMgr:mDeviceHeadMap	Ljava/util/HashMap;
+    //   471: getfield 210	com/tencent/device/DeviceHeadMgr:mDeviceHeadMap	Ljava/util/HashMap;
     //   474: iload_3
-    //   475: invokestatic 364	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   478: invokevirtual 368	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   475: invokestatic 365	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   478: invokevirtual 369	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   481: pop
     //   482: aload_1
     //   483: monitorexit
-    //   484: new 370	android/content/Intent
+    //   484: new 371	android/content/Intent
     //   487: dup
-    //   488: ldc_w 372
-    //   491: invokespecial 373	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   488: ldc_w 373
+    //   491: invokespecial 374	android/content/Intent:<init>	(Ljava/lang/String;)V
     //   494: astore_1
     //   495: aload_1
-    //   496: ldc_w 375
+    //   496: ldc_w 376
     //   499: iload_3
-    //   500: invokevirtual 379	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   500: invokevirtual 380	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   503: pop
-    //   504: invokestatic 385	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   504: invokestatic 386	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   507: aload_1
-    //   508: invokevirtual 389	com/tencent/common/app/BaseApplicationImpl:sendBroadcast	(Landroid/content/Intent;)V
+    //   508: invokevirtual 390	com/tencent/common/app/BaseApplicationImpl:sendBroadcast	(Landroid/content/Intent;)V
     //   511: aload_2
-    //   512: invokevirtual 392	java/io/OutputStream:close	()V
+    //   512: invokevirtual 393	java/io/OutputStream:close	()V
     //   515: goto +71 -> 586
     //   518: astore 11
     //   520: aload_1
@@ -435,28 +435,28 @@ public class DeviceHeadMgr
     //   549: aload_2
     //   550: astore_1
     //   551: aload 11
-    //   553: invokevirtual 395	java/lang/Exception:printStackTrace	()V
+    //   553: invokevirtual 396	java/lang/Exception:printStackTrace	()V
     //   556: aload_2
     //   557: ifnull +29 -> 586
     //   560: aload_2
-    //   561: invokevirtual 392	java/io/OutputStream:close	()V
+    //   561: invokevirtual 393	java/io/OutputStream:close	()V
     //   564: goto +22 -> 586
     //   567: aload_2
     //   568: ifnull +7 -> 575
     //   571: aload_2
-    //   572: invokevirtual 392	java/io/OutputStream:close	()V
+    //   572: invokevirtual 393	java/io/OutputStream:close	()V
     //   575: aload_1
     //   576: athrow
     //   577: astore_1
     //   578: goto +14 -> 592
     //   581: astore_1
     //   582: aload_1
-    //   583: invokevirtual 395	java/lang/Exception:printStackTrace	()V
+    //   583: invokevirtual 396	java/lang/Exception:printStackTrace	()V
     //   586: aload 13
-    //   588: invokevirtual 398	org/apache/http/client/methods/HttpGet:abort	()V
+    //   588: invokevirtual 399	org/apache/http/client/methods/HttpGet:abort	()V
     //   591: return
     //   592: aload 13
-    //   594: invokevirtual 398	org/apache/http/client/methods/HttpGet:abort	()V
+    //   594: invokevirtual 399	org/apache/http/client/methods/HttpGet:abort	()V
     //   597: aload_1
     //   598: athrow
     //   599: astore_1
@@ -527,7 +527,7 @@ public class DeviceHeadMgr
   
   public Bitmap getDeviceHeadByDin(String paramString)
   {
-    paramString = ((SmartDeviceProxyMgr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(paramString));
+    paramString = ((SmartDeviceProxyMgr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).g(Long.parseLong(paramString));
     if (paramString == null) {
       return getDeviceHeadByPID(0);
     }
@@ -554,7 +554,7 @@ public class DeviceHeadMgr
         }
         try
         {
-          ??? = BitmapFactory.decodeResource(BaseApplication.getContext().getResources(), 2130839564);
+          ??? = BitmapFactory.decodeResource(BaseApplication.getContext().getResources(), 2130839777);
           return ???;
         }
         catch (OutOfMemoryError localOutOfMemoryError)
@@ -595,7 +595,7 @@ public class DeviceHeadMgr
       }
       ??? = localObject3;
       if (localObject3 == null) {
-        ??? = BitmapManager.a(BaseApplication.getContext().getResources(), 2130839564);
+        ??? = BitmapManager.a(BaseApplication.getContext().getResources(), 2130839777);
       }
       return ???;
     }
@@ -605,11 +605,11 @@ public class DeviceHeadMgr
   {
     if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(paramString))
     {
-      paramString = BitmapManager.a(BaseApplication.getContext().getResources(), 2130839566);
+      paramString = BitmapManager.a(BaseApplication.getContext().getResources(), 2130839779);
       return new BitmapDrawable(BaseApplication.getContext().getResources(), paramString);
     }
     long l = Long.parseLong(paramString);
-    Object localObject2 = ((SmartDeviceProxyMgr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.valueOf(l).longValue());
+    Object localObject2 = ((SmartDeviceProxyMgr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).g(Long.valueOf(l).longValue());
     Object localObject1 = null;
     if (localObject2 != null)
     {
@@ -617,7 +617,7 @@ public class DeviceHeadMgr
       localObject1 = localObject2;
       if (isLostQfindDevice(paramString))
       {
-        paramString = BaseApplication.getContext().getResources().getDrawable(2130839563);
+        paramString = BaseApplication.getContext().getResources().getDrawable(2130839776);
         if ((paramString instanceof SkinnableBitmapDrawable)) {
           ((SkinnableBitmapDrawable)paramString).setGravity(119);
         }
@@ -645,7 +645,7 @@ public class DeviceHeadMgr
   public Bitmap getDeviceWithLogoByPid(int paramInt)
   {
     if (paramInt == 9971) {
-      return BitmapManager.a(BaseApplication.getContext().getResources(), 2130839567);
+      return BitmapManager.a(BaseApplication.getContext().getResources(), 2130839780);
     }
     synchronized (this.mDeviceOriginalHeadMap)
     {
@@ -665,7 +665,7 @@ public class DeviceHeadMgr
         if (??? != null) {
           return ???;
         }
-        ??? = BitmapManager.a(BaseApplication.getContext().getResources(), 2130839564);
+        ??? = BitmapManager.a(BaseApplication.getContext().getResources(), 2130839777);
       }
       return ???;
     }
@@ -678,7 +678,7 @@ public class DeviceHeadMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.DeviceHeadMgr
  * JD-Core Version:    0.7.0.1
  */

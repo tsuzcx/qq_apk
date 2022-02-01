@@ -13,18 +13,18 @@ class BaseAuthorityAccountView$5
   
   public void run()
   {
-    Bitmap localBitmap = OpenSdkVirtualUtil.a(this.jdField_a_of_type_JavaLangString, 58, true);
-    if (this.this$0.a == null)
+    Bitmap localBitmap = OpenSdkVirtualUtil.a(this.a, 58, true);
+    if (this.this$0.c == null)
     {
       SSOLog.b("BaseAuthorityAccountView", new Object[] { "-->updateAccountFace mContext == null" });
       return;
     }
-    ((Activity)this.this$0.a).runOnUiThread(new BaseAuthorityAccountView.5.1(this, localBitmap));
+    ((Activity)this.this$0.c).runOnUiThread(new BaseAuthorityAccountView.5.1(this, localBitmap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BaseAuthorityAccountView.5
  * JD-Core Version:    0.7.0.1
  */

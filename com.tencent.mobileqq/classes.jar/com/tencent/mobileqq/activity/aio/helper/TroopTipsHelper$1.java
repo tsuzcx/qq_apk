@@ -16,28 +16,28 @@ class TroopTipsHelper$1
   
   protected void a()
   {
-    if (((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar, new Object[0]);
+    if (((GamePartyManager)this.a.d.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.g.a, this.a.g.b)) {
+      this.a.c.c().a(this.a.b, new Object[0]);
     }
   }
   
   protected void b()
   {
-    if (((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar.a();
+    if (((GamePartyManager)this.a.d.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.g.a, this.a.g.b)) {
+      this.a.b.d();
     }
   }
   
   protected void c()
   {
-    if ((((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a() == 14)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a();
+    if ((((GamePartyManager)this.a.d.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.g.a, this.a.g.b)) && (this.a.c.c().b() == 14)) {
+      this.a.c.c().c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopTipsHelper.1
  * JD-Core Version:    0.7.0.1
  */

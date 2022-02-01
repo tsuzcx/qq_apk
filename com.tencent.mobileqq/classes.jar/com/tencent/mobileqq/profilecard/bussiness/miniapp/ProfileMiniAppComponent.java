@@ -257,7 +257,7 @@ public class ProfileMiniAppComponent
   
   public void onClick(View paramView)
   {
-    boolean bool = ((Boolean)((DataTag)paramView.getTag()).a).booleanValue();
+    boolean bool = ((Boolean)((DataTag)paramView.getTag()).b).booleanValue();
     Object localObject = (ProfileMiniAppInfo)((ProfileCardInfo)this.mData).getBusinessInfo(ProfileMiniAppInfo.class);
     IMiniAppService localIMiniAppService = (IMiniAppService)QRoute.api(IMiniAppService.class);
     Context localContext = paramView.getContext();
@@ -283,7 +283,7 @@ public class ProfileMiniAppComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.miniapp.ProfileMiniAppComponent
  * JD-Core Version:    0.7.0.1
  */

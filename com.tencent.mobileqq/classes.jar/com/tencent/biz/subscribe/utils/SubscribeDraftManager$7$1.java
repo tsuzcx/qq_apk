@@ -7,8 +7,8 @@ class SubscribeDraftManager$7$1
   
   public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeFollowUserUtil$ResultListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeFollowUserUtil$ResultListener.a(paramBoolean, this.a.jdField_a_of_type_JavaLangString, false);
+    if (this.a.c != null) {
+      this.a.c.a(paramBoolean, this.a.a, false);
     }
   }
 }

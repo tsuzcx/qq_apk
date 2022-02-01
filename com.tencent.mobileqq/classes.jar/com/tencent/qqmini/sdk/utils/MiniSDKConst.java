@@ -18,7 +18,7 @@ public class MiniSDKConst
   public static final int AUDIT = 2;
   public static final int AUDIT_PASS = 6;
   public static final int AUDIT_REJECT = 7;
-  public static final String CONFIG_DEFAULT_BASE_LIB_VERSION = "1.22.0.00008";
+  public static final String CONFIG_DEFAULT_BASE_LIB_VERSION = "1.29.0.00002";
   public static final int DELETED = 5;
   public static final int DEVELOP = 0;
   public static final String ENG_LOG_TAG = "[MiniEng]";
@@ -31,7 +31,7 @@ public class MiniSDKConst
   public static final String KEY_BASELIB_MIN_UPDATE_TIME = "baselib_min_update_time";
   public static final String MINI_FILE_LOG_PATH = "/Tencent/mini/files/";
   public static final String MINI_SDK_PATCH_VERSION = "0";
-  public static final String MINI_SDK_VERSION = "1.15.0";
+  public static final String MINI_SDK_VERSION = "1.19.0";
   public static final String MINI_TAG = "[mini] ";
   public static final int MULTI_ENTER_ROOM_RESULT_DEVICE_TAKE_UP = -2;
   public static final int MULTI_ENTER_ROOM_RESULT_DUPLICATE_CALL = -3;
@@ -123,7 +123,7 @@ public class MiniSDKConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniSDKConst
  * JD-Core Version:    0.7.0.1
  */

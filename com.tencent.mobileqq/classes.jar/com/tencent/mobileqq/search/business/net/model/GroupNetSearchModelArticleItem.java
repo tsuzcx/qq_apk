@@ -17,70 +17,50 @@ import com.tencent.mobileqq.search.util.SearchUtils;
 public class GroupNetSearchModelArticleItem
   extends ISearchResultPositionModel
 {
-  private AccountSearchPb.hotwordrecord jdField_a_of_type_AddcontactsAccountSearchPb$hotwordrecord = null;
-  private AccountSearchPb.record jdField_a_of_type_AddcontactsAccountSearchPb$record;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  private CharSequence jdField_b_of_type_JavaLangCharSequence;
-  private String jdField_b_of_type_JavaLangString;
+  private AccountSearchPb.record a;
+  private AccountSearchPb.hotwordrecord b = null;
+  private String c;
+  private CharSequence d;
+  private String e;
+  private CharSequence f;
   
   public GroupNetSearchModelArticleItem(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
   {
-    this.jdField_a_of_type_AddcontactsAccountSearchPb$hotwordrecord = paramhotwordrecord;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence2;
+    this.b = paramhotwordrecord;
+    this.c = paramString1;
+    this.d = paramCharSequence1;
+    this.e = paramString2;
+    this.f = paramCharSequence2;
   }
   
   public GroupNetSearchModelArticleItem(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_AddcontactsAccountSearchPb$record = paramrecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public AccountSearchPb.hotwordrecord a()
-  {
-    return this.jdField_a_of_type_AddcontactsAccountSearchPb$hotwordrecord;
-  }
-  
-  public AccountSearchPb.record a()
-  {
-    return this.jdField_a_of_type_AddcontactsAccountSearchPb$record;
+    this.a = paramrecord;
+    this.c = paramString;
+    this.d = paramCharSequence;
   }
   
   public CharSequence a()
   {
-    AccountSearchPb.hotwordrecord localhotwordrecord = this.jdField_a_of_type_AddcontactsAccountSearchPb$hotwordrecord;
+    AccountSearchPb.hotwordrecord localhotwordrecord = this.b;
     if ((localhotwordrecord != null) && (localhotwordrecord.hotword_description.has())) {
-      return this.jdField_a_of_type_AddcontactsAccountSearchPb$hotwordrecord.hotword_description.get();
+      return this.b.hotword_description.get();
     }
-    return null;
-  }
-  
-  public String a()
-  {
     return null;
   }
   
   public void a(View paramView)
   {
-    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 110, 0, paramView);
+    SearchUtils.a(this.c, 110, 0, paramView);
     Bundle localBundle = new Bundle();
-    if (this.jdField_a_of_type_AddcontactsAccountSearchPb$hotwordrecord != null)
+    if (this.b != null)
     {
-      localBundle.putString("url", this.jdField_b_of_type_JavaLangString);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F28", "0X8006F28", 0, 0, b(), this.jdField_a_of_type_AddcontactsAccountSearchPb$hotwordrecord.hotword.get(), String.valueOf(this.jdField_a_of_type_AddcontactsAccountSearchPb$hotwordrecord.hotword_type.get()), "1");
+      localBundle.putString("url", this.e);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F28", "0X8006F28", 0, 0, g(), this.b.hotword.get(), String.valueOf(this.b.hotword_type.get()), "1");
     }
     else
     {
-      AccountSearchPb.record localrecord = this.jdField_a_of_type_AddcontactsAccountSearchPb$record;
+      AccountSearchPb.record localrecord = this.a;
       if (localrecord != null) {
         localBundle.putString("url", localrecord.article_short_url.get());
       }
@@ -88,51 +68,71 @@ public class GroupNetSearchModelArticleItem
     paramView = new ActivityURIRequest(paramView.getContext(), "/pubaccount/browser");
     paramView.extra().putAll(localBundle);
     QRoute.startUri(paramView, null);
-    if (this.jdField_a_of_type_AddcontactsAccountSearchPb$record != null) {
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8006536", "0X8006536", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_AddcontactsAccountSearchPb$record.account_id.get()));
+    if (this.a != null) {
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8006536", "0X8006536", 0, 0, "", "", this.c, String.valueOf(this.a.account_id.get()));
     }
   }
   
-  public boolean a()
+  public int b()
   {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public CharSequence c()
-  {
-    if (this.jdField_a_of_type_AddcontactsAccountSearchPb$hotwordrecord != null) {
-      return this.jdField_b_of_type_JavaLangCharSequence;
-    }
-    return HardCodeUtil.a(2131705449);
+    return 0;
   }
   
   public String c()
   {
-    AccountSearchPb.hotwordrecord localhotwordrecord = this.jdField_a_of_type_AddcontactsAccountSearchPb$hotwordrecord;
-    if (localhotwordrecord != null) {
-      return localhotwordrecord.hotword_cover_url.get();
-    }
-    return this.jdField_a_of_type_AddcontactsAccountSearchPb$record.title_image.get();
+    return null;
   }
   
   public CharSequence d()
   {
+    return this.d;
+  }
+  
+  public CharSequence e()
+  {
+    if (this.b != null) {
+      return this.f;
+    }
+    return HardCodeUtil.a(2131903337);
+  }
+  
+  public CharSequence f()
+  {
     return null;
+  }
+  
+  public String g()
+  {
+    return this.c;
+  }
+  
+  public boolean h()
+  {
+    return false;
+  }
+  
+  public AccountSearchPb.record i()
+  {
+    return this.a;
+  }
+  
+  public AccountSearchPb.hotwordrecord j()
+  {
+    return this.b;
+  }
+  
+  public String m()
+  {
+    AccountSearchPb.hotwordrecord localhotwordrecord = this.b;
+    if (localhotwordrecord != null) {
+      return localhotwordrecord.hotword_cover_url.get();
+    }
+    return this.a.title_image.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.GroupNetSearchModelArticleItem
  * JD-Core Version:    0.7.0.1
  */

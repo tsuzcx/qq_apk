@@ -58,19 +58,6 @@ public class NetworkState
     registerReceiver();
   }
   
-  public static String IntAddr2Ip(int paramInt)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(paramInt & 0xFF);
-    localStringBuffer.append(".");
-    localStringBuffer.append(paramInt >> 8 & 0xFF);
-    localStringBuffer.append(".");
-    localStringBuffer.append(paramInt >> 16 & 0xFF);
-    localStringBuffer.append(".");
-    localStringBuffer.append(paramInt >> 24 & 0xFF);
-    return localStringBuffer.toString();
-  }
-  
   public static void addListener(NetworkState.NetworkStateListener paramNetworkStateListener)
   {
     if (paramNetworkStateListener == null) {
@@ -273,6 +260,19 @@ public class NetworkState
     return providerName;
   }
   
+  public static String intAddr2Ip(int paramInt)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramInt & 0xFF);
+    localStringBuffer.append(".");
+    localStringBuffer.append(paramInt >> 8 & 0xFF);
+    localStringBuffer.append(".");
+    localStringBuffer.append(paramInt >> 16 & 0xFF);
+    localStringBuffer.append(".");
+    localStringBuffer.append(paramInt >> 24 & 0xFF);
+    return localStringBuffer.toString();
+  }
+  
   public static boolean isMobile()
   {
     if (((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion()) {
@@ -367,7 +367,7 @@ public class NetworkState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.utils.NetworkState
  * JD-Core Version:    0.7.0.1
  */

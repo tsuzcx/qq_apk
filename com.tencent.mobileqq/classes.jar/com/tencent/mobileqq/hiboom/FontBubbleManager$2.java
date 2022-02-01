@@ -15,13 +15,13 @@ class FontBubbleManager$2
   
   public void run()
   {
-    SetFontBubble localSetFontBubble = FontBubbleManager.a(this.this$0);
+    SetFontBubble localSetFontBubble = FontBubbleManager.c(this.this$0);
     if (localSetFontBubble != null)
     {
       ISVIPHandler localISVIPHandler = (ISVIPHandler)FontBubbleManager.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
-      localISVIPHandler.a(localSetFontBubble.a.bubbleId);
-      localISVIPHandler.a(localSetFontBubble.a.fontId, localSetFontBubble.a.engine);
-      FontBubbleManager.a(this.this$0).obtainMessage(1001, this.a).sendToTarget();
+      localISVIPHandler.a(localSetFontBubble.b.bubbleId);
+      localISVIPHandler.a(localSetFontBubble.b.fontId, localSetFontBubble.b.engine);
+      FontBubbleManager.b(this.this$0).obtainMessage(1001, this.a).sendToTarget();
       return;
     }
     QLog.e("FontBubbleManager", 1, "auth ok but mClick is null");
@@ -29,7 +29,7 @@ class FontBubbleManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubbleManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -4,27 +4,23 @@ import android.text.TextUtils;
 
 public class QQComicConfBean$WebBundleConfig
 {
-  public String a;
-  public boolean a;
+  public boolean a = false;
+  public String b = "";
   
-  public QQComicConfBean$WebBundleConfig(QQComicConfBean paramQQComicConfBean)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public QQComicConfBean$WebBundleConfig(QQComicConfBean paramQQComicConfBean) {}
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+    return (this.a) && (!TextUtils.isEmpty(this.b));
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WebBundleConfig{enable=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", preloadUrl='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -32,7 +28,7 @@ public class QQComicConfBean$WebBundleConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.config.QQComicConfBean.WebBundleConfig
  * JD-Core Version:    0.7.0.1
  */

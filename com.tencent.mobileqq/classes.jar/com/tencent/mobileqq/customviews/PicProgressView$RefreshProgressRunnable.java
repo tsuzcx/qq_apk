@@ -20,8 +20,8 @@ class PicProgressView$RefreshProgressRunnable
   public void run()
   {
     PicProgressView localPicProgressView = this.this$0;
-    localPicProgressView.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable = null;
-    if (!localPicProgressView.jdField_a_of_type_Boolean)
+    localPicProgressView.b = null;
+    if (!localPicProgressView.a)
     {
       int i = this.a;
       int j = this.b;
@@ -32,7 +32,7 @@ class PicProgressView$RefreshProgressRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.PicProgressView.RefreshProgressRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ public final class ProfileBasePrivacySettingAdapter$ProfileOtherHolder
   public ProfileBasePrivacySettingAdapter$ProfileOtherHolder(@NotNull View paramView)
   {
     super(paramView);
-    paramView = paramView.findViewById(2131373112);
+    paramView = paramView.findViewById(2131440715);
     if (paramView != null)
     {
       this.a = ((FormSwitchItem)paramView);
@@ -34,7 +34,7 @@ public final class ProfileBasePrivacySettingAdapter$ProfileOtherHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileBasePrivacySettingAdapter.ProfileOtherHolder
  * JD-Core Version:    0.7.0.1
  */

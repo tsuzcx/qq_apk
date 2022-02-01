@@ -32,10 +32,10 @@ public final class XATextView
     super(paramContext);
   }
   
-  private final void a(Style paramStyle)
+  private final void setFontStyle(Style paramStyle)
   {
-    c(paramStyle);
-    b(paramStyle);
+    setTypeface(paramStyle);
+    setLineHeight(paramStyle);
     if (!TextUtils.isEmpty((CharSequence)paramStyle.getFc())) {
       try
       {
@@ -45,7 +45,7 @@ public final class XATextView
       catch (IllegalArgumentException localIllegalArgumentException)
       {
         localIllegalArgumentException.printStackTrace();
-        Object localObject = a().a();
+        Object localObject = getDecor().d();
         if (localObject != null)
         {
           localObject = (XAEngine)localObject;
@@ -61,7 +61,7 @@ public final class XATextView
     }
   }
   
-  private final void b(Style paramStyle)
+  private final void setLineHeight(Style paramStyle)
   {
     if (paramStyle.getFh() > 0)
     {
@@ -80,7 +80,7 @@ public final class XATextView
     }
   }
   
-  private final void c(Style paramStyle)
+  private final void setTypeface(Style paramStyle)
   {
     String str = paramStyle.getFw();
     int j = str.hashCode();
@@ -117,7 +117,7 @@ public final class XATextView
   }
   
   @NotNull
-  public DecorView a()
+  public DecorView getDecor()
   {
     return this.a;
   }
@@ -130,7 +130,7 @@ public final class XATextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.view.XATextView
  * JD-Core Version:    0.7.0.1
  */

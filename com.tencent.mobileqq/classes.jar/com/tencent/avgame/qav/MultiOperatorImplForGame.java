@@ -31,8 +31,8 @@ public class MultiOperatorImplForGame
   extends MultiOperatorImpl
   implements ISetAudioFrameCallback
 {
-  private AsyncExitTask jdField_a_of_type_ComTencentAvgameQavAsyncExitTask = null;
-  private SdkAudioFrameCallback[] jdField_a_of_type_ArrayOfComTencentAvUiFunchatRecordSdkAudioFrameCallback = null;
+  private SdkAudioFrameCallback[] j = null;
+  private AsyncExitTask k = null;
   
   public MultiOperatorImplForGame(Context paramContext, long paramLong, VideoChannelInterface paramVideoChannelInterface, boolean paramBoolean)
   {
@@ -56,20 +56,20 @@ public class MultiOperatorImplForGame
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("startAudioRecv mHasCallExitRoom：=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.i);
     AVLog.c("MultiOperatorImplForGame", localStringBuilder.toString());
-    if (this.b) {
+    if (this.i) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.startAudioRecv();
+    if (this.c != null) {
+      this.c.startAudioRecv();
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setAECMode(paramInt);
+    if (this.c != null) {
+      this.c.setAECMode(paramInt);
     }
   }
   
@@ -78,12 +78,12 @@ public class MultiOperatorImplForGame
     if (paramInt >= 2) {
       return;
     }
-    if (this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatRecordSdkAudioFrameCallback == null) {
-      this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatRecordSdkAudioFrameCallback = new SdkAudioFrameCallback[2];
+    if (this.j == null) {
+      this.j = new SdkAudioFrameCallback[2];
     }
     try
     {
-      this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatRecordSdkAudioFrameCallback[paramInt] = paramSdkAudioFrameCallback;
+      this.j[paramInt] = paramSdkAudioFrameCallback;
       return;
     }
     finally {}
@@ -91,14 +91,14 @@ public class MultiOperatorImplForGame
   
   protected void a(int paramInt, boolean paramBoolean)
   {
-    AVLog.c("MultiOperatorImplForGame", String.format("checkInterruptCurrentCall callType[%s], enterRoom[%s], isCalling[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(paramBoolean) }));
+    AVLog.c("MultiOperatorImplForGame", String.format("checkInterruptCurrentCall callType[%s], enterRoom[%s], isCalling[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.h), Boolean.valueOf(paramBoolean) }));
     if (paramInt == 2)
     {
-      ObserverDispatcher.a().a(QavMultiObserver.class, 16, new Object[] { Boolean.valueOf(paramBoolean) });
+      ObserverDispatcher.b().a(QavMultiObserver.class, 16, new Object[] { Boolean.valueOf(paramBoolean) });
       return;
     }
     if (paramInt == 1) {
-      ObserverDispatcher.a().a(QavMultiObserver.class, 17, new Object[] { Boolean.valueOf(paramBoolean) });
+      ObserverDispatcher.b().a(QavMultiObserver.class, 17, new Object[] { Boolean.valueOf(paramBoolean) });
     }
   }
   
@@ -107,8 +107,8 @@ public class MultiOperatorImplForGame
     if (paramInt4 == 100) {
       try
       {
-        if ((this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatRecordSdkAudioFrameCallback != null) && (this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatRecordSdkAudioFrameCallback[0] != null)) {
-          this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatRecordSdkAudioFrameCallback[0].onReceiveAudioFrame(paramArrayOfByte, paramInt4, paramArrayOfByte.length);
+        if ((this.j != null) && (this.j[0] != null)) {
+          this.j[0].onReceiveAudioFrame(paramArrayOfByte, paramInt4, paramArrayOfByte.length);
         }
         return;
       }
@@ -117,8 +117,8 @@ public class MultiOperatorImplForGame
     if ((paramInt4 == 3) || (paramInt4 == 0) || (paramInt4 == 1) || (paramInt4 == 2) || (paramInt4 == 8)) {
       try
       {
-        if ((this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatRecordSdkAudioFrameCallback != null) && (this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatRecordSdkAudioFrameCallback[1] != null)) {
-          this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatRecordSdkAudioFrameCallback[1].onReceiveAudioFrame(paramArrayOfByte, paramInt4, paramArrayOfByte.length);
+        if ((this.j != null) && (this.j[1] != null)) {
+          this.j[1].onReceiveAudioFrame(paramArrayOfByte, paramInt4, paramArrayOfByte.length);
         }
         return;
       }
@@ -126,20 +126,34 @@ public class MultiOperatorImplForGame
     }
   }
   
-  public boolean a()
+  public void b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stopAudioRecv mHasCallExitRoom：=");
+    localStringBuilder.append(this.i);
+    AVLog.c("MultiOperatorImplForGame", localStringBuilder.toString());
+    if (this.i) {
+      return;
+    }
+    if (this.c != null) {
+      this.c.stopAudioRecv();
+    }
+  }
+  
+  public boolean c()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("goOnStage mHasCallExitRoom：=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.i);
     AVLog.c("MultiOperatorImplForGame", localStringBuilder.toString());
-    boolean bool2 = this.b;
+    boolean bool2 = this.i;
     boolean bool1 = false;
     if (bool2) {
       return false;
     }
     int i;
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      i = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.startVideoSend();
+    if (this.c != null) {
+      i = this.c.startVideoSend();
     } else {
       i = 0;
     }
@@ -154,34 +168,20 @@ public class MultiOperatorImplForGame
     return bool1;
   }
   
-  public void b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("stopAudioRecv mHasCallExitRoom：=");
-    localStringBuilder.append(this.b);
-    AVLog.c("MultiOperatorImplForGame", localStringBuilder.toString());
-    if (this.b) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.stopAudioRecv();
-    }
-  }
-  
-  public boolean b()
+  public boolean d()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("goOffStage mHasCallExitRoom：=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.i);
     AVLog.c("MultiOperatorImplForGame", localStringBuilder.toString());
-    boolean bool2 = this.b;
+    boolean bool2 = this.i;
     boolean bool1 = false;
     if (bool2) {
       return false;
     }
     int i;
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      i = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.nativeStopVideoSend();
+    if (this.c != null) {
+      i = this.c.nativeStopVideoSend();
     } else {
       i = -1;
     }
@@ -196,26 +196,26 @@ public class MultiOperatorImplForGame
     return bool1;
   }
   
-  public void c()
+  public void e()
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("startAVGameVideoRecv mHasCallExitRoom：=");
-    ((StringBuilder)localObject1).append(this.b);
+    ((StringBuilder)localObject1).append(this.i);
     AVLog.c("MultiOperatorImplForGame", ((StringBuilder)localObject1).toString());
-    if (this.b) {
+    if (this.i) {
       return;
     }
-    localObject1 = IAVGameBusinessCtrl.a();
+    localObject1 = IAVGameBusinessCtrl.p();
     if (localObject1 == null) {
       return;
     }
-    localObject1 = ((IAVGameBusinessCtrl)localObject1).a();
+    localObject1 = ((IAVGameBusinessCtrl)localObject1).j();
     if (localObject1 == null) {
       return;
     }
-    boolean bool = SecurityPolicyChecker.a().b();
+    boolean bool = SecurityPolicyChecker.a().c();
     long l = MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin();
-    ((AVGameSession)localObject1).a.clear();
+    ((AVGameSession)localObject1).p.clear();
     Object localObject2 = new ArrayList(8);
     ((AVGameSession)localObject1).c((List)localObject2);
     localObject2 = ((List)localObject2).iterator();
@@ -230,10 +230,10 @@ public class MultiOperatorImplForGame
           if ((localAVGameUserInfo.mVideoOn) && (localAVGameUserInfo.mBigVideo))
           {
             localVideoViewInfo = new VideoViewInfo();
-            localVideoViewInfo.jdField_a_of_type_Long = localAVGameUserInfo.mUin;
-            localVideoViewInfo.jdField_a_of_type_Int = localAVGameUserInfo.mVideoSrc;
-            localVideoViewInfo.jdField_a_of_type_Boolean = localAVGameUserInfo.mBigVideo;
-            ((AVGameSession)localObject1).a.add(localVideoViewInfo);
+            localVideoViewInfo.a = localAVGameUserInfo.mUin;
+            localVideoViewInfo.b = localAVGameUserInfo.mVideoSrc;
+            localVideoViewInfo.c = localAVGameUserInfo.mBigVideo;
+            ((AVGameSession)localObject1).p.add(localVideoViewInfo);
           }
         }
         else
@@ -241,73 +241,73 @@ public class MultiOperatorImplForGame
           if (localAVGameUserInfo.mVideoOn)
           {
             localVideoViewInfo = new VideoViewInfo();
-            localVideoViewInfo.jdField_a_of_type_Long = localAVGameUserInfo.mUin;
-            localVideoViewInfo.jdField_a_of_type_Int = localAVGameUserInfo.mVideoSrc;
-            localVideoViewInfo.jdField_a_of_type_Boolean = localAVGameUserInfo.mBigVideo;
-            ((AVGameSession)localObject1).a.add(localVideoViewInfo);
+            localVideoViewInfo.a = localAVGameUserInfo.mUin;
+            localVideoViewInfo.b = localAVGameUserInfo.mVideoSrc;
+            localVideoViewInfo.c = localAVGameUserInfo.mBigVideo;
+            ((AVGameSession)localObject1).p.add(localVideoViewInfo);
           }
           if (localAVGameUserInfo.mSubVideoOn)
           {
             localVideoViewInfo = new VideoViewInfo();
-            localVideoViewInfo.jdField_a_of_type_Long = localAVGameUserInfo.mUin;
-            localVideoViewInfo.jdField_a_of_type_Int = localAVGameUserInfo.mSubVideoSrc;
-            localVideoViewInfo.jdField_a_of_type_Boolean = false;
-            ((AVGameSession)localObject1).a.add(localVideoViewInfo);
+            localVideoViewInfo.a = localAVGameUserInfo.mUin;
+            localVideoViewInfo.b = localAVGameUserInfo.mSubVideoSrc;
+            localVideoViewInfo.c = false;
+            ((AVGameSession)localObject1).p.add(localVideoViewInfo);
           }
         }
       }
     }
-    if (((AVGameSession)localObject1).a.isEmpty())
+    if (((AVGameSession)localObject1).p.isEmpty())
     {
       AVLog.a("MultiOperatorImplForGame", "startAVGameVideoRecv fail with empty uinList");
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.startAVGameVideoRecv(((AVGameSession)localObject1).a);
+    if (this.c != null) {
+      this.c.startAVGameVideoRecv(((AVGameSession)localObject1).p);
     }
   }
   
-  public void d()
+  public void f()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("stopAVGameVideoRecv mHasCallExitRoom：=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.i);
     AVLog.c("MultiOperatorImplForGame", localStringBuilder.toString());
-    if ((this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) && (!this.b)) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.stopVideoRecv();
+    if ((this.c != null) && (!this.i)) {
+      this.c.stopVideoRecv();
     }
   }
   
-  public void e()
+  public void g()
   {
     try
     {
       AVLog.c("MultiOperatorImplForGame", "exitRoom");
-      this.jdField_a_of_type_ComTencentQavQavDef$MultiParams = null;
-      if (this.jdField_a_of_type_JavaUtilMap != null) {
-        this.jdField_a_of_type_JavaUtilMap.clear();
+      this.f = null;
+      if (this.g != null) {
+        this.g.clear();
       }
       int i = -1;
-      AvGameMusicPlayer.b();
+      AvGameMusicPlayer.c();
       if (Build.VERSION.SDK_INT >= 16) {
-        AudioProcess.a();
+        AudioProcess.c();
       }
-      if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null)
+      if (this.c != null)
       {
-        if (AsyncExitTask.a())
+        if (AsyncExitTask.b())
         {
-          if (this.jdField_a_of_type_ComTencentAvgameQavAsyncExitTask == null) {
-            this.jdField_a_of_type_ComTencentAvgameQavAsyncExitTask = new AsyncExitTask();
+          if (this.k == null) {
+            this.k = new AsyncExitTask();
           }
-          i = this.jdField_a_of_type_ComTencentAvgameQavAsyncExitTask.a(a());
+          i = this.k.a(k());
         }
         else
         {
-          this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.quitRoom(0);
+          this.c.quitRoom(0);
         }
-        i();
-        this.jdField_a_of_type_Boolean = false;
-        this.b = true;
+        o();
+        this.h = false;
+        this.i = true;
         if (i == 261)
         {
           AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
@@ -342,7 +342,7 @@ public class MultiOperatorImplForGame
     } else {
       bool = false;
     }
-    ObserverDispatcher.a().a(QavMultiObserver.class, 12, new Object[] { Boolean.valueOf(bool), Long.valueOf(paramLong2), Integer.valueOf(paramInt2) });
+    ObserverDispatcher.b().a(QavMultiObserver.class, 12, new Object[] { Boolean.valueOf(bool), Long.valueOf(paramLong2), Integer.valueOf(paramInt2) });
   }
   
   public void onGaGoOnStageResult(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
@@ -353,31 +353,31 @@ public class MultiOperatorImplForGame
     } else {
       bool = false;
     }
-    ObserverDispatcher.a().a(QavMultiObserver.class, 11, new Object[] { Boolean.valueOf(bool), Long.valueOf(paramLong2), Integer.valueOf(paramInt2) });
+    ObserverDispatcher.b().a(QavMultiObserver.class, 11, new Object[] { Boolean.valueOf(bool), Long.valueOf(paramLong2), Integer.valueOf(paramInt2) });
   }
   
   public void onGaSwitchVideoResult(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
   {
-    ObserverDispatcher.a().a(QavMultiObserver.class, 15, new Object[] { Integer.valueOf(paramInt1) });
+    ObserverDispatcher.b().a(QavMultiObserver.class, 15, new Object[] { Integer.valueOf(paramInt1) });
   }
   
   public void onMAVMemberInOrOut(AVUserInfo paramAVUserInfo, long paramLong1, int paramInt1, int paramInt2, long paramLong2, int... paramVarArgs)
   {
-    if (this.jdField_a_of_type_ComTencentQavQavDef$MultiParams == null) {
+    if (this.f == null) {
       return;
     }
     if (paramInt1 == 70)
     {
       AVLog.c("MultiOperatorImplForGame", String.format("onMemberIn uin=%s groupId=%s", new Object[] { Long.valueOf(paramAVUserInfo.account), Long.valueOf(paramLong1) }));
-      if (paramAVUserInfo.account == this.jdField_a_of_type_Long) {
+      if (paramAVUserInfo.account == this.b) {
         paramInt1 = 1;
       } else {
         paramInt1 = 0;
       }
       if (paramInt1 != 0)
       {
-        i();
-        ObserverDispatcher.a().a(QavMultiObserver.class, 1, new Object[0]);
+        o();
+        ObserverDispatcher.b().a(QavMultiObserver.class, 1, new Object[0]);
       }
       paramVarArgs = a(paramAVUserInfo.account);
       if ((paramVarArgs == null) && (paramInt1 == 0))
@@ -394,8 +394,8 @@ public class MultiOperatorImplForGame
         if (paramInt1 != 0)
         {
           paramAVUserInfo = new QavDef.MultiUserInfo();
-          paramAVUserInfo.mUin = this.jdField_a_of_type_ComTencentQavQavDef$MultiParams.jdField_a_of_type_Long;
-          paramAVUserInfo.mOpenId = this.jdField_a_of_type_ComTencentQavQavDef$MultiParams.jdField_a_of_type_JavaLangString;
+          paramAVUserInfo.mUin = this.f.e;
+          paramAVUserInfo.mOpenId = this.f.f;
           paramAVUserInfo.mMicOn = true;
           a(paramAVUserInfo);
         }
@@ -438,9 +438,9 @@ public class MultiOperatorImplForGame
         for (;;)
         {
           return;
-          ObserverDispatcher.a().a(QavMultiObserver.class, 10, new Object[] { Long.valueOf(l), Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Long.valueOf(paramLong2), Integer.valueOf(paramInt3) });
+          ObserverDispatcher.b().a(QavMultiObserver.class, 10, new Object[] { Long.valueOf(l), Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Long.valueOf(paramLong2), Integer.valueOf(paramInt3) });
           continue;
-          ObserverDispatcher.a().a(QavMultiObserver.class, 9, new Object[] { Long.valueOf(l), Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Long.valueOf(paramLong2), Integer.valueOf(paramInt3) });
+          ObserverDispatcher.b().a(QavMultiObserver.class, 9, new Object[] { Long.valueOf(l), Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Long.valueOf(paramLong2), Integer.valueOf(paramInt3) });
         }
       }
       boolean bool;
@@ -451,7 +451,7 @@ public class MultiOperatorImplForGame
       }
       paramArrayOfLong = a(l);
       if (paramArrayOfLong != null) {
-        ObserverDispatcher.a().a(QavMultiObserver.class, 6, new Object[] { paramArrayOfLong, Boolean.valueOf(bool), Integer.valueOf(paramInt4) });
+        ObserverDispatcher.b().a(QavMultiObserver.class, 6, new Object[] { paramArrayOfLong, Boolean.valueOf(bool), Integer.valueOf(paramInt4) });
       }
       return;
     }
@@ -459,17 +459,17 @@ public class MultiOperatorImplForGame
   
   public void onRemoteVideoDataComeIn(int paramInt1, long paramLong, int paramInt2)
   {
-    ObserverDispatcher.a().a(QavMultiObserver.class, 13, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
+    ObserverDispatcher.b().a(QavMultiObserver.class, 13, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
   }
   
   public void onSelfAudioVolumeChange(long paramLong)
   {
-    ObserverDispatcher.a().a(QavMultiObserver.class, 8, new Object[] { Integer.valueOf((int)paramLong) });
+    ObserverDispatcher.b().a(QavMultiObserver.class, 8, new Object[] { Integer.valueOf((int)paramLong) });
   }
   
   public void onVideoSrcChange(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    ObserverDispatcher.a().a(QavMultiObserver.class, 13, new Object[] { Long.valueOf(paramLong1), Integer.valueOf(paramInt1), Long.valueOf(paramLong2), Integer.valueOf(paramInt2) });
+    ObserverDispatcher.b().a(QavMultiObserver.class, 13, new Object[] { Long.valueOf(paramLong1), Integer.valueOf(paramInt1), Long.valueOf(paramLong2), Integer.valueOf(paramInt2) });
   }
 }
 

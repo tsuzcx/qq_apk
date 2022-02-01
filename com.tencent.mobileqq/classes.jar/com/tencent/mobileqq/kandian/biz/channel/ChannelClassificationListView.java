@@ -11,10 +11,10 @@ import java.util.ArrayList;
 public class ChannelClassificationListView<T extends ChannelClassificationListView.IClassData>
   extends DisableSlideHorizontalListView
 {
-  private int jdField_a_of_type_Int;
-  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
-  private ChannelClassificationListView<T>.ClassificationAdapter jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView$ClassificationAdapter;
-  private ArrayList<T> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<T> a = new ArrayList();
+  private AdapterView.OnItemClickListener b;
+  private ChannelClassificationListView<T>.ClassificationAdapter c;
+  private int d;
   
   public ChannelClassificationListView(Context paramContext)
   {
@@ -30,27 +30,27 @@ public class ChannelClassificationListView<T extends ChannelClassificationListVi
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView$ClassificationAdapter = new ChannelClassificationListView.ClassificationAdapter(this, null);
-    setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView$ClassificationAdapter);
+    this.c = new ChannelClassificationListView.ClassificationAdapter(this, null);
+    setAdapter(this.c);
     setDividerWidth(DisplayUtil.a(getContext(), 10.0F));
     setOnScrollStateChangedListener(new ChannelClassificationListView.1(this));
   }
   
   public void setData(int paramInt, ArrayList<T> paramArrayList)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView$ClassificationAdapter.notifyDataSetChanged();
+    this.d = paramInt;
+    this.a = paramArrayList;
+    this.c.notifyDataSetChanged();
   }
   
   public void setOnItemClickListener(@Nullable AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = paramOnItemClickListener;
+    this.b = paramOnItemClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.channel.ChannelClassificationListView
  * JD-Core Version:    0.7.0.1
  */

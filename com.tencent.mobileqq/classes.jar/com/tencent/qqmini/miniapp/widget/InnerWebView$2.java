@@ -4,12 +4,14 @@ import android.net.Uri;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.qqmini.miniapp.R.string;
 import com.tencent.qqmini.miniapp.util.FileChooserHelper;
+import com.tencent.qqmini.sdk.action.CheckLocationAction;
 import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
 import com.tencent.qqmini.sdk.core.utils.DialogUtil;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.widget.MiniCustomDialog;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
@@ -25,6 +27,11 @@ class InnerWebView$2
   {
     QMLog.e("InnerWebView_js", paramConsoleMessage.message());
     return super.onConsoleMessage(paramConsoleMessage);
+  }
+  
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  {
+    InnerWebView.access$600(this.this$0).performAction(CheckLocationAction.a(new InnerWebView.2.5(this, paramGeolocationPermissionsCallback, paramString)));
   }
   
   public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
@@ -75,7 +82,7 @@ class InnerWebView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.InnerWebView.2
  * JD-Core Version:    0.7.0.1
  */

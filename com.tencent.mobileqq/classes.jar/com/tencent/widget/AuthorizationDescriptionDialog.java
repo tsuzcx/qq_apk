@@ -21,10 +21,10 @@ class AuthorizationDescriptionDialog
   
   private void a()
   {
-    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131559053, null);
-    localLinearLayout.findViewById(2131369289).setOnClickListener(new AuthorizationDescriptionDialog.1(this));
-    String str = getContext().getString(2131690228);
-    TextView localTextView = (TextView)localLinearLayout.findViewById(2131379595);
+    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131624705, null);
+    localLinearLayout.findViewById(2131436275).setOnClickListener(new AuthorizationDescriptionDialog.1(this));
+    String str = getContext().getString(2131887128);
+    TextView localTextView = (TextView)localLinearLayout.findViewById(2131448353);
     SpannableString localSpannableString = new SpannableString(str);
     localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#1B90EE")), str.length() - 3, str.length() - 1, 33);
     localSpannableString.setSpan(new AuthorizationDescriptionDialog.TextClick(getContext(), null), str.length() - 3, str.length() - 1, 33);
@@ -35,7 +35,7 @@ class AuthorizationDescriptionDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AuthorizationDescriptionDialog
  * JD-Core Version:    0.7.0.1
  */

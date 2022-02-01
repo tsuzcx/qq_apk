@@ -11,11 +11,11 @@ class d$16
     if (localk == null) {
       return;
     }
-    localk.f(d.e(this.b).h);
-    localk.e(d.e(this.b).l);
-    localk.a(d.e(this.b).k);
+    localk.f(d.e(this.b).i);
+    localk.e(d.e(this.b).m);
+    localk.a(d.e(this.b).l);
     localk.b(d.e(this.b).a, d.e(this.b).b);
-    localk.e(d.e(this.b).U);
+    localk.e(d.e(this.b).V);
     if ((this.a) && (localk.d())) {
       localk.b(false);
     }
@@ -23,7 +23,7 @@ class d$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.d.16
  * JD-Core Version:    0.7.0.1
  */

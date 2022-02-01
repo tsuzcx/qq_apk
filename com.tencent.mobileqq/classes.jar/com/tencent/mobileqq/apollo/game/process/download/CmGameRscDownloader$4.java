@@ -14,7 +14,7 @@ class CmGameRscDownloader$4
     super.onDone(paramDownloadTask);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onDone], status:");
-    localStringBuilder.append(paramDownloadTask.a());
+    localStringBuilder.append(paramDownloadTask.e());
     QLog.i("cmgame_process.CmGameRscDownloader", 2, localStringBuilder.toString());
   }
   
@@ -25,33 +25,33 @@ class CmGameRscDownloader$4
       if (CmGameRscDownloader.a(this.a) == null) {
         return;
       }
-      if (paramDownloadTask.a() != 3)
+      if (paramDownloadTask.e() != 3)
       {
         CmGameRscDownloader.a(this.a, 2);
-        if (CmGameRscDownloader.a(this.a) != null) {
-          CmGameRscDownloader.a(this.a).c(-1005, CmGameRscDownloader.a(this.a).jdField_b_of_type_JavaLangString);
+        if (CmGameRscDownloader.c(this.a) != null) {
+          CmGameRscDownloader.c(this.a).d(-1005, CmGameRscDownloader.a(this.a).i);
         }
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("downLoad game res fail retCode: ");
-        localStringBuilder.append(paramDownloadTask.a());
+        localStringBuilder.append(paramDownloadTask.e());
         QLog.e("cmgame_process.CmGameRscDownloader", 1, localStringBuilder.toString());
         return;
       }
-      CmGameRscDownloader.a(this.a);
+      CmGameRscDownloader.b(this.a);
     }
   }
   
   public void onProgress(DownloadTask paramDownloadTask)
   {
-    int i = (int)paramDownloadTask.a;
-    if (CmGameRscDownloader.a(this.a) != null) {
-      CmGameRscDownloader.a(this.a).a(i, CmGameRscDownloader.a(this.a).jdField_b_of_type_Int, CmGameRscDownloader.a(this.a).jdField_b_of_type_JavaLangString);
+    int i = (int)paramDownloadTask.l;
+    if (CmGameRscDownloader.c(this.a) != null) {
+      CmGameRscDownloader.c(this.a).a(i, CmGameRscDownloader.a(this.a).g, CmGameRscDownloader.a(this.a).i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.download.CmGameRscDownloader.4
  * JD-Core Version:    0.7.0.1
  */

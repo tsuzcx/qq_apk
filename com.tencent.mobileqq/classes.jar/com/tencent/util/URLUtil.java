@@ -21,19 +21,6 @@ public abstract class URLUtil
     return paramInt;
   }
   
-  public static String a(String paramString)
-  {
-    try
-    {
-      paramString = URLEncoder.encode(paramString, "UTF-8");
-      return paramString;
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      throw new IllegalArgumentException(paramString);
-    }
-  }
-  
   public static String a(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder(paramString1);
@@ -96,9 +83,9 @@ public abstract class URLUtil
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(c);
-    localStringBuilder.append(a(paramString2));
+    localStringBuilder.append(c(paramString2));
     localStringBuilder.append('=');
-    localStringBuilder.append(a(paramString3));
+    localStringBuilder.append(c(paramString3));
     paramString3 = localStringBuilder.toString();
     if (j == -1)
     {
@@ -141,42 +128,6 @@ public abstract class URLUtil
       localObject = new HashMap();
     }
     return localObject;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (paramString != null)
-    {
-      if (paramString.equals("")) {
-        return false;
-      }
-      try
-      {
-        paramString = new URI(paramString);
-        if (paramString.getHost() == null) {
-          return false;
-        }
-        return (paramString.getScheme().equalsIgnoreCase("http")) || (paramString.getScheme().equalsIgnoreCase("https"));
-      }
-      catch (URISyntaxException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return false;
-  }
-  
-  public static String b(String paramString)
-  {
-    try
-    {
-      paramString = URLDecoder.decode(paramString, "UTF-8");
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      throw new IllegalArgumentException(paramString);
-    }
   }
   
   public static String b(String paramString1, String paramString2, String paramString3)
@@ -232,10 +183,59 @@ public abstract class URLUtil
     catch (Exception paramString) {}
     return localHashMap;
   }
+  
+  public static String c(String paramString)
+  {
+    try
+    {
+      paramString = URLEncoder.encode(paramString, "UTF-8");
+      return paramString;
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      throw new IllegalArgumentException(paramString);
+    }
+  }
+  
+  public static String d(String paramString)
+  {
+    try
+    {
+      paramString = URLDecoder.decode(paramString, "UTF-8");
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      throw new IllegalArgumentException(paramString);
+    }
+  }
+  
+  public static boolean e(String paramString)
+  {
+    if (paramString != null)
+    {
+      if (paramString.equals("")) {
+        return false;
+      }
+      try
+      {
+        paramString = new URI(paramString);
+        if (paramString.getHost() == null) {
+          return false;
+        }
+        return (paramString.getScheme().equalsIgnoreCase("http")) || (paramString.getScheme().equalsIgnoreCase("https"));
+      }
+      catch (URISyntaxException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.URLUtil
  * JD-Core Version:    0.7.0.1
  */

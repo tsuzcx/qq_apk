@@ -11,25 +11,24 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public class NearbyProtocolCoder
   extends BaseProtocolCoder
 {
-  static String[] jdField_a_of_type_ArrayOfJavaLangString = { "EncounterSvc", "NeighborSvc", "VisitorSvc" };
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  public UserData[] a;
+  static String[] a = { "EncounterSvc", "NeighborSvc", "VisitorSvc" };
+  public UserData[] b = new UserData[2];
+  AppInterface c;
   
   public NearbyProtocolCoder(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ArrayOfEncounterSvcUserData = new UserData[2];
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.c = paramAppInterface;
   }
   
   public String[] cmdHeaderPrefix()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return a;
   }
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     if ("EncounterSvc.ReqGetEncounter".equals(paramFromServiceMsg.getServiceCmd())) {
-      return NearbyCmdHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramFromServiceMsg, paramToServiceMsg, this);
+      return NearbyCmdHelper.a(this.c, paramFromServiceMsg, paramToServiceMsg, this);
     }
     if ("NeighborSvc.ReqGetPoint".equals(paramFromServiceMsg.getServiceCmd())) {
       return NearbyCmdHelper.a(this, paramFromServiceMsg, paramToServiceMsg);
@@ -44,7 +43,7 @@ public class NearbyProtocolCoder
   {
     String str = paramToServiceMsg.getServiceCmd();
     if ("EncounterSvc.ReqGetEncounter".equals(str)) {
-      return NearbyCmdHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramToServiceMsg, paramUniPacket, this);
+      return NearbyCmdHelper.a(this.c, paramToServiceMsg, paramUniPacket, this);
     }
     if ("NeighborSvc.ReqGetPoint".equals(str)) {
       return NearbyCmdHelper.a(this, paramToServiceMsg, paramUniPacket);
@@ -57,7 +56,7 @@ public class NearbyProtocolCoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.lbs.NearbyProtocolCoder
  * JD-Core Version:    0.7.0.1
  */

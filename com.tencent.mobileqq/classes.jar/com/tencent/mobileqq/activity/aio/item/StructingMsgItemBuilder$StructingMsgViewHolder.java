@@ -10,16 +10,16 @@ public class StructingMsgItemBuilder$StructingMsgViewHolder
   extends BaseBubbleBuilder.ViewHolder
 {
   public RelativeLayout a;
-  public SessionInfo a;
-  public MessageProgressTextView a;
-  public boolean a = false;
   public RelativeLayout b;
-  public View c;
   public RelativeLayout c;
+  public SessionInfo d;
+  public MessageProgressTextView e;
+  public View f;
+  public boolean g = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder
  * JD-Core Version:    0.7.0.1
  */

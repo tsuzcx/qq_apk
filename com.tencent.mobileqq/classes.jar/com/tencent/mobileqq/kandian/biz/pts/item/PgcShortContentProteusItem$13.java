@@ -11,13 +11,13 @@ class PgcShortContentProteusItem$13
   
   public void onClick(ViewBase paramViewBase)
   {
-    PgcShortContentProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemPgcShortContentProteusItem, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel, paramViewBase);
-    PgcShortContentProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemPgcShortContentProteusItem, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a());
+    PgcShortContentProteusItem.a(this.b, this.a, paramViewBase);
+    PgcShortContentProteusItem.a(this.b, this.a.k());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem.13
  * JD-Core Version:    0.7.0.1
  */

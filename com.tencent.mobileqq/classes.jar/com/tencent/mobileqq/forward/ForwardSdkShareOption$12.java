@@ -12,14 +12,14 @@ class ForwardSdkShareOption$12
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.a.a instanceof DirectForwardActivity)) {
-      this.a.a.finish();
+    if ((this.a.s instanceof DirectForwardActivity)) {
+      this.a.s.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkShareOption.12
  * JD-Core Version:    0.7.0.1
  */

@@ -16,49 +16,49 @@ public class LocationRoom$Venue
   implements Parcelable
 {
   public static final Parcelable.Creator<Venue> CREATOR = new LocationRoom.Venue.1();
-  public LatLng a;
-  public String a;
   public SoftReference<Marker> a;
   public String b;
   public String c;
+  public String d;
+  public LatLng e;
   
   public LocationRoom$Venue() {}
   
   protected LocationRoom$Venue(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = ((LatLng)paramParcel.readParcelable(LatLng.class.getClassLoader()));
+    this.d = paramParcel.readString();
+    this.e = ((LatLng)paramParcel.readParcelable(LatLng.class.getClassLoader()));
   }
   
   public static Venue a(String paramString, Poi paramPoi)
   {
     Venue localVenue = new Venue();
-    localVenue.jdField_a_of_type_JavaLangString = paramString;
-    localVenue.b = paramPoi.title;
-    localVenue.c = paramPoi.address;
-    localVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramPoi.latLng;
+    localVenue.b = paramString;
+    localVenue.c = paramPoi.title;
+    localVenue.d = paramPoi.address;
+    localVenue.e = paramPoi.latLng;
     return localVenue;
   }
   
   public static Venue a(String paramString, SearchResultObject.SearchResultData paramSearchResultData)
   {
     Venue localVenue = new Venue();
-    localVenue.jdField_a_of_type_JavaLangString = paramString;
-    localVenue.b = paramSearchResultData.title;
-    localVenue.c = paramSearchResultData.address;
-    localVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramSearchResultData.latLng;
+    localVenue.b = paramString;
+    localVenue.c = paramSearchResultData.title;
+    localVenue.d = paramSearchResultData.address;
+    localVenue.e = paramSearchResultData.latLng;
     return localVenue;
   }
   
   public static Venue a(String paramString, SuggestionResultObject.SuggestionData paramSuggestionData)
   {
     Venue localVenue = new Venue();
-    localVenue.jdField_a_of_type_JavaLangString = paramString;
-    localVenue.b = paramSuggestionData.title;
-    localVenue.c = paramSuggestionData.address;
-    localVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramSuggestionData.latLng;
+    localVenue.b = paramString;
+    localVenue.c = paramSuggestionData.title;
+    localVenue.d = paramSuggestionData.address;
+    localVenue.e = paramSuggestionData.latLng;
     return localVenue;
   }
   
@@ -72,7 +72,7 @@ public class LocationRoom$Venue
     if ((paramObject instanceof Venue))
     {
       paramObject = (Venue)paramObject;
-      return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.equals(paramObject.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+      return this.e.equals(paramObject.e);
     }
     return super.equals(paramObject);
   }
@@ -82,30 +82,30 @@ public class LocationRoom$Venue
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Venue{ name = ");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" address: ");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(" address: ");
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" authorUin: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" point: ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" marker: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangRefSoftReference);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" }");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, paramInt);
+    paramParcel.writeString(this.d);
+    paramParcel.writeParcelable(this.e, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.data.LocationRoom.Venue
  * JD-Core Version:    0.7.0.1
  */

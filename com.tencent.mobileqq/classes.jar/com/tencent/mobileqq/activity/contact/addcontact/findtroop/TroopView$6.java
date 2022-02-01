@@ -16,12 +16,12 @@ class TroopView$6
     } else {
       this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    TroopView.a(this.a);
+    TroopView.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView.6
  * JD-Core Version:    0.7.0.1
  */

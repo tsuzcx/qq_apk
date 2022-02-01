@@ -12,14 +12,14 @@ class PhotoPreviewCustomizationAECapture$2
   
   public void onUpdateFaceDetect(boolean paramBoolean, int paramInt)
   {
-    PhotoPreviewCustomizationAECapture.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiGalleryPhotoPreviewCustomizationAECapture).removeObserver(this);
-    PhotoPreviewCustomizationAECapture.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiGalleryPhotoPreviewCustomizationAECapture, null);
+    PhotoPreviewCustomizationAECapture.i(this.b).removeObserver(this);
+    PhotoPreviewCustomizationAECapture.a(this.b, null);
     ThreadManager.getUIHandler().post(new PhotoPreviewCustomizationAECapture.2.1(this, paramBoolean, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.gallery.PhotoPreviewCustomizationAECapture.2
  * JD-Core Version:    0.7.0.1
  */

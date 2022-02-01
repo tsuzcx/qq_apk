@@ -11,27 +11,27 @@ class MultiForwardHelper$1
 {
   MultiForwardHelper$1(MultiForwardHelper paramMultiForwardHelper, List paramList, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperMultiForwardHelper.a(this.jdField_a_of_type_JavaUtilList, 0);
-        ECommerceDataReportUtil.a(MultiForwardHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperMultiForwardHelper), this.jdField_a_of_type_JavaUtilList, 3);
+        this.c.a(this.a, 0);
+        ECommerceDataReportUtil.a(MultiForwardHelper.a(this.c), this.a, 3);
       }
     }
     else
     {
-      MultiForwardHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperMultiForwardHelper, this.jdField_a_of_type_JavaUtilList);
-      ECommerceDataReportUtil.a(MultiForwardHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperMultiForwardHelper), this.jdField_a_of_type_JavaUtilList, 3);
+      MultiForwardHelper.a(this.c, this.a);
+      ECommerceDataReportUtil.a(MultiForwardHelper.a(this.c), this.a, 3);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.MultiForwardHelper.1
  * JD-Core Version:    0.7.0.1
  */

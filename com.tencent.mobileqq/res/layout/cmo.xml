@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.widget.RoundRelativeLayout android:background="@drawable/drh" android:layout_width="146.0dip" android:layout_height="75.0dip" app:round_rect_radius="8.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/head" android:layout_width="75.0dip" android:layout_height="75.0dip" />
-    <TextView android:textSize="11.0dip" android:textColor="#ff03081a" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/o0e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="@string/xu7" android:singleLine="true" android:layout_toRightOf="@id/head" android:contentDescription="@string/xu7" />
-    <TextView android:textSize="20.0dip" android:textColor="#ff8173ff" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/o0d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/head" android:layout_below="@id/o0e" />
-    <LinearLayout android:layout_gravity="center|left" android:orientation="horizontal" android:id="@id/n7x" android:background="@drawable/dsa" android:layout_width="fill_parent" android:layout_height="17.0dip" android:layout_alignParentBottom="true">
-        <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/o27" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:singleLine="true" android:shadowColor="#33000000" android:shadowDx="1.0" android:shadowDy="2.0" android:shadowRadius="2.0" />
-        <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:shadowColor="#33000000" android:shadowDx="1.0" android:shadowDy="2.0" android:shadowRadius="2.0" />
-    </LinearLayout>
-</com.tencent.widget.RoundRelativeLayout>
+<RelativeLayout android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/ol8" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip">
+        <ImageView android:id="@id/omp" android:layout_width="12.0dip" android:layout_height="24.0dip" android:src="@drawable/if4" android:layout_centerVertical="true" />
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/omo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="添加其他号码" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/oku" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="17.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/ol8">
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/ol1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="手机号码" android:layout_centerVertical="true" />
+        <EditText android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/okx" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:hint="输入有效手机号" android:maxLines="1" android:layout_toRightOf="@id/ol1" android:layout_centerVertical="true" android:inputType="number" />
+        <Button android:textSize="14.0sp" android:textColor="#ffb0b3bf" android:id="@id/okv" android:background="@drawable/ier" android:layout_width="86.0dip" android:layout_height="30.0dip" android:text="获取验证码" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:id="@id/oky" android:background="#ffd8d8d8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/oku" />
+    <RelativeLayout android:id="@id/ol5" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/oky">
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/ol7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="验证码" android:layout_centerVertical="true" />
+        <EditText android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/ol6" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="41.0dip" android:hint="输入6位验证码" android:maxLines="1" android:layout_toRightOf="@id/ol7" android:layout_centerVertical="true" android:inputType="number" />
+    </RelativeLayout>
+    <View android:id="@id/okz" android:background="#ffd8d8d8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/ol5" />
+    <RelativeLayout android:id="@id/ol2" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/okz">
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/ol4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="保存此号码供以后授权使用" android:layout_centerVertical="true" />
+        <com.tencent.widget.Switch android:id="@id/ol3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:id="@id/ol0" android:background="#ffd8d8d8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/ol2" />
+    <Button android:enabled="false" android:textSize="17.0sp" android:textColor="#3303081a" android:id="@id/okw" android:background="@drawable/ieo" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="31.0dip" android:layout_marginRight="16.0dip" android:text="完成" android:layout_below="@id/ol0" />
+</RelativeLayout>

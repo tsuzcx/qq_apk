@@ -4,7 +4,7 @@
     <View android:id="@id/bif" android:background="@drawable/iy" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_marginBottom="@dimen/mc" android:layout_alignParentTop="true" />
     <ImageView android:id="@id/icon" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginLeft="@dimen/ma" android:src="@drawable/dii" android:layout_below="@id/bif" />
     <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginRight="@dimen/mb" android:layout_toRightOf="@id/icon" android:layout_below="@id/bif" android:layout_alignTop="@id/icon" android:layout_alignBottom="@id/icon">
-        <TextView android:textSize="@dimen/ri" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/l5t" android:maxLines="2" android:includeFontPadding="false" />
+        <TextView android:textSize="@dimen/ri" android:textColor="@color/black" android:ellipsize="end" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/l5t" android:maxLines="2" android:includeFontPadding="false" />
         <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
         <TextView android:textSize="@dimen/rj" android:textColor="#ff808080" android:ellipsize="end" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/l6f" android:maxLines="2" android:includeFontPadding="false" />
     </LinearLayout>

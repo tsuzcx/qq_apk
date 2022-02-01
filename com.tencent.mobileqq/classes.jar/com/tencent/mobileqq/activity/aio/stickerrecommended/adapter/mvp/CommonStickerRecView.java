@@ -26,108 +26,108 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class CommonStickerRecView
   implements View.OnClickListener, IStickerView
 {
-  public int a;
-  Animator jdField_a_of_type_AndroidAnimationAnimator;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public URLImageView a;
-  CommonStickerRecPresenter jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecPresenter;
   public int b;
   public int c;
+  public int d;
+  public URLImageView e;
+  CommonStickerRecPresenter f;
+  RelativeLayout g;
+  TextView h;
+  Animator i;
+  ImageView j;
+  Drawable k;
+  EditText l;
   
   public CommonStickerRecView(IStickerPresenter paramIStickerPresenter, Activity paramActivity, BaseAIOContext paramBaseAIOContext, ViewGroup paramViewGroup, EditText paramEditText)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecPresenter = ((CommonStickerRecPresenter)paramIStickerPresenter);
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramActivity.getResources().getDrawable(2130838246);
-    float f = paramActivity.getResources().getDisplayMetrics().density;
-    int i = (int)(64.0F * f);
-    this.jdField_a_of_type_Int = i;
-    this.b = i;
-    this.c = ((int)(6.0F * f));
-    i = (int)(7.0F * f);
-    int j = (int)(9.0F * f);
-    int k = (int)(f * 8.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new EmotionKeywordLayout(paramActivity, paramBaseAIOContext, paramViewGroup);
+    this.f = ((CommonStickerRecPresenter)paramIStickerPresenter);
+    this.l = paramEditText;
+    this.k = paramActivity.getResources().getDrawable(2130838305);
+    float f1 = paramActivity.getResources().getDisplayMetrics().density;
+    int m = (int)(64.0F * f1);
+    this.b = m;
+    this.c = m;
+    this.d = ((int)(6.0F * f1));
+    m = (int)(7.0F * f1);
+    int n = (int)(9.0F * f1);
+    int i1 = (int)(f1 * 8.0F);
+    this.g = new EmotionKeywordLayout(paramActivity, paramBaseAIOContext, paramViewGroup);
     paramIStickerPresenter = new ViewGroup.LayoutParams(-2, -2);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramIStickerPresenter);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, j, i, k);
-    this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(paramActivity);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setId(2131368591);
-    paramIStickerPresenter = new RelativeLayout.LayoutParams(this.b, this.jdField_a_of_type_Int);
+    this.g.setLayoutParams(paramIStickerPresenter);
+    this.g.setPadding(m, n, m, i1);
+    this.e = new URLImageView(paramActivity);
+    this.e.setScaleType(ImageView.ScaleType.FIT_XY);
+    this.e.setId(2131435503);
+    paramIStickerPresenter = new RelativeLayout.LayoutParams(this.c, this.b);
     paramIStickerPresenter.addRule(13, -1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentImageURLImageView, paramIStickerPresenter);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramActivity);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramActivity.getResources().getDrawable(2130837958));
+    this.g.addView(this.e, paramIStickerPresenter);
+    this.h = new TextView(paramActivity);
+    this.h.setBackgroundDrawable(paramActivity.getResources().getDrawable(2130837982));
     paramIStickerPresenter = new RelativeLayout.LayoutParams(-2, -2);
-    paramIStickerPresenter.addRule(7, 2131368591);
-    paramIStickerPresenter.addRule(8, 2131368591);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131691884);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramActivity.getResources().getColor(2131167222));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 12.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramIStickerPresenter);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramActivity);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramActivity.getResources().getDrawable(2130838234));
+    paramIStickerPresenter.addRule(7, 2131435503);
+    paramIStickerPresenter.addRule(8, 2131435503);
+    this.h.setText(2131888851);
+    this.h.setTextColor(paramActivity.getResources().getColor(2131168212));
+    this.h.setTextSize(1, 12.0F);
+    this.g.addView(this.h, paramIStickerPresenter);
+    this.j = new ImageView(paramActivity);
+    this.j.setImageDrawable(paramActivity.getResources().getDrawable(2130838299));
     paramIStickerPresenter = new RelativeLayout.LayoutParams(-2, -2);
-    paramIStickerPresenter.addRule(7, 2131368591);
-    paramIStickerPresenter.addRule(8, 2131368591);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramIStickerPresenter);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    paramIStickerPresenter = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentImageURLImageView, "alpha", new float[] { 0.0F, 1.0F });
+    paramIStickerPresenter.addRule(7, 2131435503);
+    paramIStickerPresenter.addRule(8, 2131435503);
+    this.g.addView(this.j, paramIStickerPresenter);
+    this.j.setVisibility(8);
+    paramIStickerPresenter = ObjectAnimator.ofFloat(this.e, "alpha", new float[] { 0.0F, 1.0F });
     paramIStickerPresenter.setDuration(300L);
-    this.jdField_a_of_type_AndroidAnimationAnimator = paramIStickerPresenter;
-  }
-  
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public IStickerPresenter a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecPresenter;
+    this.i = paramIStickerPresenter;
   }
   
   public void a(boolean paramBoolean)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecPresenter.a();
-    this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().width = i;
-    Object localObject = this.jdField_a_of_type_ComTencentImageURLImageView;
-    int j = 0;
+    int m = this.f.g();
+    this.e.getLayoutParams().width = m;
+    Object localObject = this.e;
+    int n = 0;
     ((URLImageView)localObject).setVisibility(0);
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidAnimationAnimator.start();
+      this.g.setOnClickListener(this);
+      this.i.start();
     }
     else
     {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.e.setImageDrawable(this.k);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecPresenter.b()) {
-      i = 0;
+    localObject = this.h;
+    if (this.f.h()) {
+      m = 0;
     } else {
-      i = 8;
+      m = 8;
     }
-    ((TextView)localObject).setVisibility(i);
-    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecPresenter.c()) {
-      i = j;
+    ((TextView)localObject).setVisibility(m);
+    localObject = this.j;
+    if (this.f.i()) {
+      m = n;
     } else {
-      i = 8;
+      m = 8;
     }
-    ((ImageView)localObject).setVisibility(i);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecPresenter.a());
+    ((ImageView)localObject).setVisibility(m);
+    this.e.setContentDescription(this.f.j());
+  }
+  
+  public View c()
+  {
+    return this.g;
+  }
+  
+  public IStickerPresenter d()
+  {
+    return this.f;
+  }
+  
+  public Drawable e()
+  {
+    return this.k;
   }
   
   public void onClick(View paramView)
@@ -135,28 +135,28 @@ public class CommonStickerRecView
     CommonStickerRecPresenter localCommonStickerRecPresenter;
     if (QLog.isColorLevel())
     {
-      localCommonStickerRecPresenter = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecPresenter;
+      localCommonStickerRecPresenter = this.f;
       QLog.d("CommonStickerRec", 2, "onClick");
     }
-    if (this.jdField_a_of_type_AndroidWidgetEditText == null)
+    if (this.l == null)
     {
       if (QLog.isColorLevel())
       {
-        localCommonStickerRecPresenter = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecPresenter;
+        localCommonStickerRecPresenter = this.f;
         QLog.e("CommonStickerRec", 2, "onClick input == null");
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecPresenter.a())
+    else if (this.f.c())
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().clear();
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+      this.l.getEditableText().clear();
+      this.l.setText("");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.adapter.mvp.CommonStickerRecView
  * JD-Core Version:    0.7.0.1
  */

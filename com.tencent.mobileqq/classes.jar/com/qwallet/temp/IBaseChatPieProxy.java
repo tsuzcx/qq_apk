@@ -10,25 +10,25 @@ import com.tencent.widget.XBaseAdapter;
 
 public abstract interface IBaseChatPieProxy
 {
-  public abstract int a();
-  
-  public abstract View a();
-  
-  public abstract ViewGroup a();
-  
-  public abstract IQWalletAIOLifeCycleHelper a();
-  
   public abstract BaseQQAppInterface a();
   
-  public abstract BaseSessionInfo a();
+  public abstract QBaseActivity b();
   
-  public abstract PanelManager a();
+  public abstract PanelManager c();
   
-  public abstract QBaseActivity a();
+  public abstract ViewGroup d();
   
-  public abstract XBaseAdapter a();
+  public abstract BaseSessionInfo e();
   
-  public abstract int b();
+  public abstract IQWalletAIOLifeCycleHelper f();
+  
+  public abstract int g();
+  
+  public abstract XBaseAdapter h();
+  
+  public abstract int i();
+  
+  public abstract View j();
 }
 
 

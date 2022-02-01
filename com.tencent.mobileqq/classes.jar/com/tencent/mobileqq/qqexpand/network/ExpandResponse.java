@@ -5,22 +5,13 @@ import androidx.annotation.Nullable;
 public class ExpandResponse
 {
   protected int a;
-  protected String a;
+  protected String b;
+  public byte[] c;
   
   public ExpandResponse(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public void a(byte[] paramArrayOfByte) {}
@@ -31,19 +22,29 @@ public class ExpandResponse
     return null;
   }
   
-  public String b()
+  public int b()
+  {
+    return this.a;
+  }
+  
+  public String c()
+  {
+    return this.b;
+  }
+  
+  public String d()
   {
     StringBuffer localStringBuffer = new StringBuffer("ErrorInfo");
     localStringBuffer.append(" errorCode:");
-    localStringBuffer.append(a());
+    localStringBuffer.append(b());
     localStringBuffer.append(" errorMsg:");
-    localStringBuffer.append(a());
+    localStringBuffer.append(c());
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.network.ExpandResponse
  * JD-Core Version:    0.7.0.1
  */

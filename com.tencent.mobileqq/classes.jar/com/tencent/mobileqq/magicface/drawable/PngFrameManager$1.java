@@ -12,14 +12,14 @@ class PngFrameManager$1
   
   public void run()
   {
-    if ((this.a.a.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() != 0) && (this.a.a.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)) {
-      this.a.a.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new PngFrameManager.1.1(this));
+    if ((this.a.c.v.getVisibility() != 0) && (this.a.c.c.getVisibility() == 0)) {
+      this.a.c.u.setOnClickListener(new PngFrameManager.1.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameManager.1
  * JD-Core Version:    0.7.0.1
  */

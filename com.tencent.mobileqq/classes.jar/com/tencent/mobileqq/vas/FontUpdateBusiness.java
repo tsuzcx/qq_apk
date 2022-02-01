@@ -27,18 +27,18 @@ public class FontUpdateBusiness
   private boolean deleteFont(String paramString)
   {
     if (paramString.startsWith("font.diycard.android.")) {
-      return deleteHiboomFont(paramString, "font.diycard.android.", VipDiyCardConstants.jdField_a_of_type_JavaLangString, "deleteFiles: font diy card path = ");
+      return deleteHiboomFont(paramString, "font.diycard.android.", VipDiyCardConstants.a, "deleteFiles: font diy card path = ");
     }
     if (paramString.startsWith("font.hifont.android.")) {
-      return deleteHiboomFont(paramString, "font.hifont.android.", HiBoomFont.b, "deleteFiles: font hiboom path = ");
+      return deleteHiboomFont(paramString, "font.hifont.android.", HiBoomFont.f, "deleteFiles: font hiboom path = ");
     }
     if (paramString.startsWith("font.hiFontQQ.json.")) {
-      return deleteHiboomFont(paramString, "font.hiFontQQ.json.", HiBoomFont.c, "deleteFiles: font hiboom config path = ");
+      return deleteHiboomFont(paramString, "font.hiFontQQ.json.", HiBoomFont.g, "deleteFiles: font hiboom config path = ");
     }
     boolean bool;
     if (paramString.startsWith("font.hiFontQQ.tags"))
     {
-      bool = VasUpdateUtil.a(new File(HiBoomFont.d));
+      bool = VasUpdateUtil.a(new File(HiBoomFont.h));
       paramString = new StringBuilder();
       paramString.append("deleteFiles: font hiboom tag result = ");
       paramString.append(bool);
@@ -176,7 +176,7 @@ public class FontUpdateBusiness
       if (TextUtils.isDigitsOnly(paramString))
       {
         paramInt = Integer.parseInt(paramString);
-        HiBoomFont.a().a(paramInt, 1, HiBoomConstants.a).a(false);
+        HiBoomFont.a().a(paramInt, 1, HiBoomConstants.d).a(false);
       }
     }
   }
@@ -195,67 +195,67 @@ public class FontUpdateBusiness
     StringBuilder localStringBuilder;
     if (paramString.startsWith("font.diycard.android."))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = true;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(VipDiyCardConstants.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(VipDiyCardConstants.a);
       localStringBuilder.append(paramString.substring(21, paramString.length()));
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      paramTagItemInfo.c = localStringBuilder.toString();
       return paramTagItemInfo;
     }
     if (paramString.startsWith("font.hifont.android."))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = true;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HiBoomFont.b);
+      localStringBuilder.append(HiBoomFont.f);
       localStringBuilder.append(paramString.substring(20, paramString.length()));
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      paramTagItemInfo.c = localStringBuilder.toString();
       return paramTagItemInfo;
     }
     if (paramString.startsWith("font.hiFontQQ.json."))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = true;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HiBoomFont.c);
+      localStringBuilder.append(HiBoomFont.g);
       localStringBuilder.append(paramString.substring(19, paramString.length()));
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      paramTagItemInfo.c = localStringBuilder.toString();
       return paramTagItemInfo;
     }
     if (paramString.startsWith("font.hiFontQQ.tags"))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = true;
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = HiBoomFont.d;
+      paramTagItemInfo.c = HiBoomFont.h;
       return paramTagItemInfo;
     }
     if (paramString.startsWith("font.main.android."))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = true;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(FontManagerConstants.FONT_DOWN_LOAD_PATH);
       localStringBuilder.append(File.separator);
       localStringBuilder.append(paramString.substring(18, paramString.length()));
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      paramTagItemInfo.c = localStringBuilder.toString();
       return paramTagItemInfo;
     }
     if (paramString.startsWith("font.fzfont.android."))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = true;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(FontManagerConstants.FONT_FZ_COMPATIBLE_DIR);
       localStringBuilder.append(paramString.substring(20, paramString.length()));
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      paramTagItemInfo.c = localStringBuilder.toString();
       return paramTagItemInfo;
     }
     if (paramString.equals("magicFontConfig.json"))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = false;
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = FontManagerConstants.FONT_EFFECT_CFG;
+      paramTagItemInfo.c = FontManagerConstants.FONT_EFFECT_CFG;
     }
     return paramTagItemInfo;
   }
@@ -267,9 +267,9 @@ public class FontUpdateBusiness
     {
       int i = Integer.parseInt(paramString);
       if (paramInt == 0) {
-        HiBoomFont.a().a(i, 0, HiBoomConstants.b).a(false);
+        HiBoomFont.a().a(i, 0, HiBoomConstants.e).a(false);
       } else {
-        HiBoomFont.a().a(i, 0, HiBoomConstants.b).a();
+        HiBoomFont.a().a(i, 0, HiBoomConstants.e).b();
       }
       paramString = ((IVasService)paramAppRuntime.getRuntimeService(IVasService.class, "")).getHiBoomManager();
       if (paramString != null) {
@@ -312,19 +312,19 @@ public class FontUpdateBusiness
   private boolean isFontExists(String paramString)
   {
     if (paramString.startsWith("font.diycard.android.")) {
-      return diyCardFontExist(paramString, "font.diycard.android.", VipDiyCardConstants.jdField_a_of_type_JavaLangString, "isFileExists hiboomfont path = ");
+      return diyCardFontExist(paramString, "font.diycard.android.", VipDiyCardConstants.a, "isFileExists hiboomfont path = ");
     }
     if (paramString.startsWith("font.hifont.android.")) {
-      return diyCardFontExist(paramString, "font.hifont.android.", HiBoomFont.b, "isFileExists hiboomfont path = ");
+      return diyCardFontExist(paramString, "font.hifont.android.", HiBoomFont.f, "isFileExists hiboomfont path = ");
     }
     if (paramString.startsWith("font.hiFontQQ.json.")) {
-      return diyCardFontExist(paramString, "font.hiFontQQ.json.", HiBoomFont.c, "isFileExists hiboomconfig path = ");
+      return diyCardFontExist(paramString, "font.hiFontQQ.json.", HiBoomFont.g, "isFileExists hiboomconfig path = ");
     }
     boolean bool1 = paramString.startsWith("font.hiFontQQ.tags");
     boolean bool2 = false;
     if (bool1)
     {
-      paramString = new File(HiBoomFont.d);
+      paramString = new File(HiBoomFont.h);
       if (paramString.exists()) {
         paramString = paramString.list();
       } else {
@@ -552,7 +552,7 @@ public class FontUpdateBusiness
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.FontUpdateBusiness
  * JD-Core Version:    0.7.0.1
  */

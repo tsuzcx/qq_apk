@@ -13,19 +13,19 @@ class DetailInteractSegment$2
   {
     super.b(paramInt);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(StoryReportor.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem));
+    ((StringBuilder)localObject).append(StoryReportor.b(this.a));
     ((StringBuilder)localObject).append("");
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem));
+    localStringBuilder.append(StoryReportor.a(this.a));
     localStringBuilder.append("");
-    StoryReportor.a("home_page", "suc_share", 2, paramInt, new String[] { localObject, localStringBuilder.toString(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
+    StoryReportor.a("home_page", "suc_share", 2, paramInt, new String[] { localObject, localStringBuilder.toString(), this.a.feedId });
   }
   
   public void d()
   {
     super.d();
-    DetailInteractSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailInteractSegment, null);
+    DetailInteractSegment.a(this.b, null);
   }
 }
 

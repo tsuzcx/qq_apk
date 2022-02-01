@@ -15,13 +15,13 @@ class GiftPkgSelectDialog$1
   {
     GiftPkgSelectDialog.a(this.a, paramInt);
     GiftPkgSelectDialog.a(this.a).notifyDataSetChanged();
-    GiftPkgSelectDialog.a(this.a).postDelayed(new GiftPkgSelectDialog.1.1(this, paramInt), 100L);
+    GiftPkgSelectDialog.d(this.a).postDelayed(new GiftPkgSelectDialog.1.1(this, paramInt), 100L);
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPkgSelectDialog.1
  * JD-Core Version:    0.7.0.1
  */

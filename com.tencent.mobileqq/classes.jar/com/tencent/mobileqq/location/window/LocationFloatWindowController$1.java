@@ -32,7 +32,7 @@ class LocationFloatWindowController$1
       localStringBuilder.append(LocationFloatWindowController.a(this.a));
       QLog.d("LocationShareController", 2, localStringBuilder.toString());
     }
-    QQToast.a(BaseApplication.getContext(), "已在其他设备进行共享", 0).a();
+    QQToast.makeText(BaseApplication.getContext(), "已在其他设备进行共享", 0).show();
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey, int paramInt1, int paramInt2)
@@ -68,14 +68,14 @@ class LocationFloatWindowController$1
     while (paramVenue.hasNext())
     {
       paramList = (LocationItem)paramVenue.next();
-      Bitmap localBitmap = LocationAvatarHelper.a().a(paramList.a());
+      Bitmap localBitmap = LocationAvatarHelper.a().a(paramList.c());
       if (localBitmap != null)
       {
         localBitmap = BaseImageUtil.c(localBitmap, 16, 16);
-        LocationFloatWindowController.a(this.a).a(paramList.a(), localBitmap);
+        LocationFloatWindowController.b(this.a).a(paramList.c(), localBitmap);
       }
     }
-    LocationFloatWindowController.a(this.a).a(paramRoomKey);
+    LocationFloatWindowController.b(this.a).a(paramRoomKey);
   }
   
   public void b(LocationRoom.RoomKey paramRoomKey, int paramInt)
@@ -90,7 +90,7 @@ class LocationFloatWindowController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.LocationFloatWindowController.1
  * JD-Core Version:    0.7.0.1
  */

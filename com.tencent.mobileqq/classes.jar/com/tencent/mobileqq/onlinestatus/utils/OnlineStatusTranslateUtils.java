@@ -32,12 +32,12 @@ public class OnlineStatusTranslateUtils
   public static String a(byte paramByte)
   {
     if (paramByte == 1) {
-      return HardCodeUtil.a(2131693128);
+      return HardCodeUtil.a(2131890667);
     }
     if (paramByte == 2) {
-      return HardCodeUtil.a(2131719044);
+      return HardCodeUtil.a(2131916580);
     }
-    return HardCodeUtil.a(2131693128);
+    return HardCodeUtil.a(2131890667);
   }
   
   public static AppRuntime.Status a(int paramInt)
@@ -64,7 +64,7 @@ public class OnlineStatusTranslateUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.utils.OnlineStatusTranslateUtils
  * JD-Core Version:    0.7.0.1
  */

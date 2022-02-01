@@ -46,7 +46,7 @@ class VasThemeHippyHelper$ThemeSwitchListener
   
   public void beginSwitch()
   {
-    VasUtil.a().getThemeSwitchManager().openSwitchDialog(this.this$0.jdField_a_of_type_AndroidAppActivity);
+    VasUtil.a().getThemeSwitchManager().openSwitchDialog(this.this$0.e);
   }
   
   public boolean postSwitch(int paramInt)
@@ -87,15 +87,15 @@ class VasThemeHippyHelper$ThemeSwitchListener
         ((StringBuilder)localObject4).append(bool);
         QLog.i("VasThemeHippyHelper", 1, ((StringBuilder)localObject4).toString());
         if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (localObject3 != null) && (((JSONArray)localObject3).length() > 0)) {
-          ThemeUtil.setWeekLoopTheme(this.this$0.jdField_a_of_type_MqqAppAppRuntime, (String)localObject2, ((JSONArray)localObject3).toString(), l);
+          ThemeUtil.setWeekLoopTheme(this.this$0.d, (String)localObject2, ((JSONArray)localObject3).toString(), l);
         }
-        localObject2 = (ChatBackgroundManager)this.this$0.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
-        localObject3 = ThemeBackground.a(this.this$0.jdField_a_of_type_MqqAppAppRuntime.getApp(), this.this$0.jdField_a_of_type_MqqAppAppRuntime.getAccount(), 0).getString("theme_bg_aio_path", "null");
-        localObject4 = ((ChatBackgroundManager)localObject2).b(null);
+        localObject2 = (ChatBackgroundManager)this.this$0.d.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
+        localObject3 = ThemeBackground.a(this.this$0.d.getApp(), this.this$0.d.getAccount(), 0).getString("theme_bg_aio_path", "null");
+        localObject4 = ((ChatBackgroundManager)localObject2).c(null);
         if ((localObject3 != null) && (!"null".equals(localObject3)) && (((String)localObject3).equals(localObject4))) {
-          ((ChatBackgroundManager)localObject2).a(this.this$0.jdField_a_of_type_MqqAppAppRuntime.getAccount(), null, "null", -1);
+          ((ChatBackgroundManager)localObject2).a(this.this$0.d.getAccount(), null, "null", -1);
         }
-        ThemeReporter.a(this.this$0.jdField_a_of_type_MqqAppAppRuntime, "theme_detail", "200", 155, NetworkUtil.getSystemNetwork(null), 31, this.themeId, "20000000", ThemeReporter.a, "");
+        ThemeReporter.a(this.this$0.d, "theme_detail", "200", 155, NetworkUtil.getSystemNetwork(null), 31, this.themeId, "20000000", ThemeReporter.a, "");
       }
       i = 0;
     }
@@ -124,7 +124,7 @@ class VasThemeHippyHelper$ThemeSwitchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.hippy.VasThemeHippyHelper.ThemeSwitchListener
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class ShieldFriendsListFragment$1
   
   public void run()
   {
-    ArrayList localArrayList = ((FriendsManager)this.this$0.getBaseActivity().app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a();
+    ArrayList localArrayList = ((FriendsManager)this.this$0.getBaseActivity().app.getManager(QQManagerFactory.FRIENDS_MANAGER)).g();
     if (this.this$0.getBaseActivity() == null) {
       return;
     }
@@ -22,7 +22,7 @@ class ShieldFriendsListFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.ShieldFriendsListFragment.1
  * JD-Core Version:    0.7.0.1
  */

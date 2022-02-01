@@ -26,7 +26,7 @@ class EditARCakeButton$4
     paramShareActionSheet.append("handle share action, action = ");
     paramShareActionSheet.append(paramActionSheetItem.action);
     AEQLog.b("EditARCakeButton", paramShareActionSheet.toString());
-    Activity localActivity = this.a.a.getActivity();
+    Activity localActivity = this.a.u.getActivity();
     AIOShareObject localAIOShareObject = EditARCakeButton.a(this.a);
     if (localActivity != null)
     {
@@ -61,7 +61,7 @@ class EditARCakeButton$4
                 paramShareActionSheet = (IAIOShareHelper)QRoute.api(IAIOShareHelper.class);
                 i = paramActionSheetItem.action;
                 paramActionSheetItem = this.a;
-                paramShareActionSheet.shareToWX(localActivity, i, EditARCakeButton.a(paramActionSheetItem, EditARCakeButton.b(paramActionSheetItem)), localAIOShareObject, EditARCakeButton.a(this.a));
+                paramShareActionSheet.shareToWX(localActivity, i, EditARCakeButton.a(paramActionSheetItem, EditARCakeButton.g(paramActionSheetItem)), localAIOShareObject, EditARCakeButton.h(this.a));
               }
             }
             else
@@ -74,7 +74,7 @@ class EditARCakeButton$4
           else
           {
             AEQLog.b("EditARCakeButton", "handle action open short video by other app");
-            EditARCakeButton.a(this.a, localActivity, localAIOShareObject.a());
+            EditARCakeButton.a(this.a, localActivity, localAIOShareObject.b());
           }
         }
         else
@@ -95,7 +95,7 @@ class EditARCakeButton$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditARCakeButton.4
  * JD-Core Version:    0.7.0.1
  */

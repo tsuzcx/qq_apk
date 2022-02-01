@@ -17,11 +17,11 @@ public final class UiUtils$Companion
   private final TextView createContent(Context paramContext)
   {
     paramContext = new TextView(paramContext);
-    int i = ViewUtils.b(5.0F);
+    int i = ViewUtils.dpToPx(5.0F);
     paramContext.setPadding(i, 0, i, 0);
     paramContext.setTextColor(-1);
     paramContext.setGravity(17);
-    paramContext.setText(2131708476);
+    paramContext.setText(2131906262);
     return paramContext;
   }
   
@@ -42,7 +42,7 @@ public final class UiUtils$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.personalitysign.utils.UiUtils.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -22,8 +22,8 @@ class QavDoubleVideoSharpnessMangaer$3
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    QavDoubleVideoSharpnessMangaer.a(this.a).setAlpha(0.0F);
-    QavDoubleVideoSharpnessMangaer.a(this.a).setVisibility(0);
+    QavDoubleVideoSharpnessMangaer.g(this.a).setAlpha(0.0F);
+    QavDoubleVideoSharpnessMangaer.g(this.a).setVisibility(0);
   }
   
   public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)

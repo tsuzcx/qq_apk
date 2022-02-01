@@ -22,24 +22,24 @@ class MiniAppInfoManager$1
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if (localObject == null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoCallback;
-      if ((localObject != null) && (((MiniAppInfoCallback)localObject).a != null))
+      localObject = this.a;
+      if ((localObject != null) && (((MiniAppInfoCallback)localObject).b != null))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoCallback;
-        ((MiniAppInfoCallback)localObject).a(((MiniAppInfoCallback)localObject).a.get(), false, this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo);
+        localObject = this.a;
+        ((MiniAppInfoCallback)localObject).a(((MiniAppInfoCallback)localObject).b.get(), false, this.b);
       }
       return;
     }
     try
     {
-      int i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.jdField_a_of_type_JavaLangString);
+      int i = Integer.parseInt(this.b.a);
       oidb_0xb61.ReqBody localReqBody = new oidb_0xb61.ReqBody();
-      int j = this.jdField_a_of_type_Int;
+      int j = this.c;
       if (j == 1)
       {
         localReqBody.get_appinfo_req.setHasFlag(true);
         localReqBody.get_appinfo_req.appid.set(i);
-        localReqBody.get_appinfo_req.app_type.set(this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.jdField_a_of_type_Int);
+        localReqBody.get_appinfo_req.app_type.set(this.b.b);
       }
       else
       {
@@ -48,31 +48,31 @@ class MiniAppInfoManager$1
         }
         localReqBody.get_mqqapp_url_req.setHasFlag(true);
         localReqBody.get_mqqapp_url_req.appid.set(i);
-        localReqBody.get_mqqapp_url_req.app_type.set(this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.jdField_a_of_type_Int);
-        localReqBody.get_mqqapp_url_req.app_version.set(this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.d);
+        localReqBody.get_mqqapp_url_req.app_type.set(this.b.b);
+        localReqBody.get_mqqapp_url_req.app_version.set(this.b.i);
         localReqBody.get_mqqapp_url_req.platform.set(4);
         localReqBody.get_mqqapp_url_req.sys_version.set(String.valueOf(Build.VERSION.SDK_INT));
-        localReqBody.get_mqqapp_url_req.qq_version.set("8.7.0");
+        localReqBody.get_mqqapp_url_req.qq_version.set("8.8.17");
       }
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("serviceType=");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.c);
         localStringBuilder.append(", apptype=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.jdField_a_of_type_Int);
+        localStringBuilder.append(this.b.b);
         localStringBuilder.append(", appid=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b.a);
         QLog.i("MiniAppInfoManager", 2, localStringBuilder.toString());
       }
-      ProtoUtils.a((AppRuntime)localObject, new MiniAppInfoManager.1.1(this), localReqBody.toByteArray(), "OidbSvc.0xb61", 2913, this.jdField_a_of_type_Int, null, 0L);
+      ProtoUtils.a((AppRuntime)localObject, new MiniAppInfoManager.1.1(this), localReqBody.toByteArray(), "OidbSvc.0xb61", 2913, this.c, null, 0L);
       return;
       label340:
-      localObject = this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoCallback;
-      if ((localObject != null) && (((MiniAppInfoCallback)localObject).a != null))
+      localObject = this.a;
+      if ((localObject != null) && (((MiniAppInfoCallback)localObject).b != null))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoCallback;
-        ((MiniAppInfoCallback)localObject).a(((MiniAppInfoCallback)localObject).a.get(), false, this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo);
+        localObject = this.a;
+        ((MiniAppInfoCallback)localObject).a(((MiniAppInfoCallback)localObject).b.get(), false, this.b);
       }
       return;
     }
@@ -81,17 +81,17 @@ class MiniAppInfoManager$1
       label378:
       break label378;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoCallback;
-    if ((localObject != null) && (((MiniAppInfoCallback)localObject).a != null))
+    localObject = this.a;
+    if ((localObject != null) && (((MiniAppInfoCallback)localObject).b != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoCallback;
-      ((MiniAppInfoCallback)localObject).a(((MiniAppInfoCallback)localObject).a.get(), false, this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo);
+      localObject = this.a;
+      ((MiniAppInfoCallback)localObject).a(((MiniAppInfoCallback)localObject).b.get(), false, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppInfoManager.1
  * JD-Core Version:    0.7.0.1
  */

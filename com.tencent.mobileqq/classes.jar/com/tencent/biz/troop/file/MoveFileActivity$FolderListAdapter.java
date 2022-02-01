@@ -19,19 +19,19 @@ class MoveFileActivity$FolderListAdapter
   extends BaseAdapter
   implements AbsListView.OnScrollListener
 {
-  private int jdField_a_of_type_Int = 0;
   private int b = 0;
+  private int c = 0;
   
   private MoveFileActivity$FolderListAdapter(MoveFileActivity paramMoveFileActivity) {}
   
   public int getCount()
   {
-    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).size();
+    return MoveFileActivity.b(this.a).size();
   }
   
   public Object getItem(int paramInt)
   {
-    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
+    return MoveFileActivity.b(this.a).get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -44,31 +44,31 @@ class MoveFileActivity$FolderListAdapter
     View localView = paramView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getLayoutInflater().inflate(2131560653, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity), false);
+      localView = this.a.getLayoutInflater().inflate(2131626698, MoveFileActivity.c(this.a), false);
       paramView = new MoveFileActivity.ViewHolder(null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367056));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367055));
-      paramView.b = ((TextView)localView.findViewById(2131364599));
+      paramView.a = ((TextView)localView.findViewById(2131433505));
+      paramView.b = ((ImageView)localView.findViewById(2131433504));
+      paramView.c = ((TextView)localView.findViewById(2131430669));
       localView.setTag(paramView);
     }
     paramView = (MoveFileActivity.ViewHolder)localView.getTag();
-    TroopFileInfo localTroopFileInfo = (TroopFileInfo)MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
+    TroopFileInfo localTroopFileInfo = (TroopFileInfo)MoveFileActivity.b(this.a).get(paramInt);
     if (localTroopFileInfo != null)
     {
-      if (MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, paramInt))
+      if (MoveFileActivity.a(this.a, paramInt))
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopFileInfo.c);
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843883);
+        paramView.a.setText(localTroopFileInfo.d);
+        paramView.b.setImageResource(2130844838);
       }
       else
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131706932));
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843885);
+        paramView.a.setText(HardCodeUtil.a(2131904775));
+        paramView.b.setImageResource(2130844840);
       }
-      if (paramInt == MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
-        paramView.b.setVisibility(0);
+      if (paramInt == MoveFileActivity.d(this.a)) {
+        paramView.c.setVisibility(0);
       } else {
-        paramView.b.setVisibility(4);
+        paramView.c.setVisibility(4);
       }
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
@@ -77,8 +77,8 @@ class MoveFileActivity$FolderListAdapter
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.b = paramInt3;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    this.c = paramInt3;
+    this.b = (paramInt1 + paramInt2 - 1 - 1);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
@@ -86,18 +86,18 @@ class MoveFileActivity$FolderListAdapter
     if (paramInt == 0)
     {
       QLog.e("IphoneTitleBarActivity", 4, "onScrollStateChanged=SCROLL_STATE_IDLE");
-      if (this.jdField_a_of_type_Int == this.b - 2)
+      if (this.b == this.c - 2)
       {
-        if (MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity))
+        if (MoveFileActivity.e(this.a))
         {
-          this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(true);
+          this.a.a(true);
           return;
         }
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(false);
-        paramAbsListView = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app;
-        MoveFileActivity localMoveFileActivity = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity;
+        this.a.a(false);
+        paramAbsListView = this.a.app;
+        MoveFileActivity localMoveFileActivity = this.a;
         if (TroopFileUtils.a(paramAbsListView, localMoveFileActivity, localMoveFileActivity.a) != 0) {
-          this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a();
+          this.a.a();
         }
       }
     }
@@ -105,7 +105,7 @@ class MoveFileActivity$FolderListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.file.MoveFileActivity.FolderListAdapter
  * JD-Core Version:    0.7.0.1
  */

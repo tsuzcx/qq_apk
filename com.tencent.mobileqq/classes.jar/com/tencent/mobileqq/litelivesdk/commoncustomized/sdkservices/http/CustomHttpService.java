@@ -25,12 +25,12 @@ import org.json.JSONObject;
 public class CustomHttpService
   implements HttpInterface
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private HttpInterface.HttpComponentAdapter jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface$HttpComponentAdapter;
+  private HttpInterface.HttpComponentAdapter a;
+  private Handler b = new Handler(Looper.getMainLooper());
   
   private void a(String paramString, Map<String, String> paramMap1, Map<String, String> paramMap2, Callback paramCallback)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface$HttpComponentAdapter.getLog();
+    Object localObject1 = this.a.getLog();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("post url = ");
     ((StringBuilder)localObject2).append(paramString);
@@ -70,7 +70,7 @@ public class CustomHttpService
   
   private void a(String paramString, Map<String, String> paramMap, Callback paramCallback)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface$HttpComponentAdapter.getLog();
+    Object localObject1 = this.a.getLog();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("get url = ");
     ((StringBuilder)localObject2).append(paramString);
@@ -106,12 +106,12 @@ public class CustomHttpService
   
   public void get(String paramString, Map<String, String> paramMap, HttpResponse paramHttpResponse)
   {
-    a(paramString, paramMap, new CommonCallback(paramHttpResponse, this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface$HttpComponentAdapter.getLog()));
+    a(paramString, paramMap, new CommonCallback(paramHttpResponse, this.a.getLog()));
   }
   
   public void init(HttpInterface.HttpComponentAdapter paramHttpComponentAdapter)
   {
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface$HttpComponentAdapter = paramHttpComponentAdapter;
+    this.a = paramHttpComponentAdapter;
   }
   
   public void onCreate(Context paramContext) {}
@@ -125,7 +125,7 @@ public class CustomHttpService
   
   public void post(String paramString, Map<String, String> paramMap1, Map<String, String> paramMap2, HttpResponse paramHttpResponse)
   {
-    a(paramString, paramMap1, paramMap2, new CommonCallback(paramHttpResponse, this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface$HttpComponentAdapter.getLog()));
+    a(paramString, paramMap1, paramMap2, new CommonCallback(paramHttpResponse, this.a.getLog()));
   }
   
   public void post(String paramString, JSONObject paramJSONObject, HttpResponse paramHttpResponse)
@@ -136,12 +136,12 @@ public class CustomHttpService
   
   public void upload(String paramString, Map<String, String> paramMap1, Map<String, String> paramMap2, UploadCallback paramUploadCallback)
   {
-    a(paramString, paramMap1, paramMap2, new CommonCallback(paramUploadCallback, this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface$HttpComponentAdapter.getLog()));
+    a(paramString, paramMap1, paramMap2, new CommonCallback(paramUploadCallback, this.a.getLog()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http.CustomHttpService
  * JD-Core Version:    0.7.0.1
  */

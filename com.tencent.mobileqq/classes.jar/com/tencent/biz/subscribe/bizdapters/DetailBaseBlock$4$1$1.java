@@ -11,14 +11,14 @@ class DetailBaseBlock$4$1$1
   
   public void a()
   {
-    QLog.d(DetailBaseBlock.jdField_a_of_type_JavaLangString, 2, "showPraiseTipView");
+    QLog.d(DetailBaseBlock.a, 2, "showPraiseTipView");
   }
   
   public void b()
   {
-    QLog.d(DetailBaseBlock.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow priseTipView");
-    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    QLog.d(DetailBaseBlock.a, 2, "dismiss popupWindow priseTipView");
+    if (this.a.b.a.f != null) {
+      this.a.b.a.f.dismiss();
     }
   }
 }

@@ -34,7 +34,7 @@ import mqq.os.MqqHandler;
 public class DrawerCoverUtil
 {
   public static String a;
-  private static boolean a = false;
+  private static boolean b = false;
   
   public static CallBacker a(QBaseActivity paramQBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, String paramString, FrameHelperActivity.QQSettingMeListener paramQQSettingMeListener, boolean paramBoolean)
   {
@@ -55,7 +55,7 @@ public class DrawerCoverUtil
     {
       if ((paramCard.lCurrentBgId != 160L) && (paramCard.lCurrentBgId != 1600L) && (!ProfileTemplateApi.isDiyTemplateStyleID(paramCard.lCurrentStyleId)))
       {
-        paramString = ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
+        paramString = ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).e;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("card.");
         localStringBuilder.append(paramCard.lCurrentBgId);
@@ -77,7 +77,7 @@ public class DrawerCoverUtil
   
   public static void a()
   {
-    jdField_a_of_type_JavaLangString = null;
+    a = null;
   }
   
   public static void a(QBaseActivity paramQBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, FrameHelperActivity.QQSettingMeListener paramQQSettingMeListener, boolean paramBoolean)
@@ -104,7 +104,7 @@ public class DrawerCoverUtil
     if ((l != 160L) && (l != 1600L) && (!ProfileTemplateApi.isDiyTemplateStyleID(paramCard.lCurrentStyleId))) {
       paramQQAppInterface = ProfileCardManager.b(paramQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId);
     } else {
-      paramQQAppInterface = ProfileCardUtil.a(paramCard.strDrawerCardUrl);
+      paramQQAppInterface = ProfileCardUtil.c(paramCard.strDrawerCardUrl);
     }
     localObject = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
@@ -124,34 +124,15 @@ public class DrawerCoverUtil
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Card paramCard)
-  {
-    CardHandler localCardHandler = (CardHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
-    if (localCardHandler == null) {
-      return;
-    }
-    byte b = (byte)SharedPreUtils.U(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin());
-    long l = paramCard.feedPreviewTime;
-    localCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getCurrentUin(), 0, l, (byte)1, 0L, 0L, new byte[] { 0 }, "", 11837L, 10004, new byte[] { 0 }, b);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.", 2, "fetch profilecard info failure from cache,restart to fetch from net");
-    }
-  }
-  
   public static void a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_JavaLangString != null;
+    a = paramString;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, Card paramCard)
   {
     paramQQAppInterface = ProfileCardTemplateUtil.a(paramCard.lCurrentStyleId, true);
-    boolean bool = SimpleUIUtil.a();
+    boolean bool = SimpleUIUtil.e();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -177,14 +158,9 @@ public class DrawerCoverUtil
     return false;
   }
   
-  public static void b()
-  {
-    jdField_a_of_type_Boolean = true;
-  }
-  
   public static boolean b()
   {
-    return jdField_a_of_type_Boolean;
+    return a != null;
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface, Card paramCard)
@@ -192,20 +168,20 @@ public class DrawerCoverUtil
     if ((paramCard.lCurrentBgId != 160L) && (paramCard.lCurrentBgId != 1600L) && (!ProfileTemplateApi.isDiyTemplateStyleID(paramCard.lCurrentStyleId))) {
       return new File(ProfileCardManager.b(paramQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId)).exists();
     }
-    return ProfileCardUtil.a(paramCard.strDrawerCardUrl);
+    return ProfileCardUtil.b(paramCard.strDrawerCardUrl);
   }
   
-  public static void c()
+  public static boolean c()
   {
-    jdField_a_of_type_Boolean = false;
+    return b;
   }
   
   public static boolean c(QQAppInterface paramQQAppInterface, Card paramCard)
   {
-    Object localObject = new File(ProfileCardUtil.a(paramCard.strDrawerCardUrl));
+    Object localObject = new File(ProfileCardUtil.c(paramCard.strDrawerCardUrl));
     localObject = new DownloadTask(paramCard.strDrawerCardUrl, (File)localObject);
-    ((DownloadTask)localObject).f = "profileCardDownload";
-    ((DownloadTask)localObject).e = "VIP_profilecard";
+    ((DownloadTask)localObject).L = "profileCardDownload";
+    ((DownloadTask)localObject).K = "VIP_profilecard";
     int i = DownloaderFactory.a((DownloadTask)localObject, paramQQAppInterface);
     if (i == 0) {
       return true;
@@ -228,10 +204,34 @@ public class DrawerCoverUtil
     }
     return false;
   }
+  
+  public static void d()
+  {
+    b = true;
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface, Card paramCard)
+  {
+    CardHandler localCardHandler = (CardHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+    if (localCardHandler == null) {
+      return;
+    }
+    byte b1 = (byte)SharedPreUtils.am(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin());
+    long l = paramCard.feedPreviewTime;
+    localCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getCurrentUin(), 0, l, (byte)1, 0L, 0L, new byte[] { 0 }, "", 11837L, 10004, new byte[] { 0 }, b1);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.", 2, "fetch profilecard info failure from cache,restart to fetch from net");
+    }
+  }
+  
+  public static void e()
+  {
+    b = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.DrawerCoverUtil
  * JD-Core Version:    0.7.0.1
  */

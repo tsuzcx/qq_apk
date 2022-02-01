@@ -86,7 +86,7 @@ public class TenpayJumpActivity
     paramString5.append("|0|1|0|android.");
     paramString5.append(6);
     paramString5.append("|");
-    paramString5.append(CommonUtil.a());
+    paramString5.append(CommonUtil.b());
     paramString5.append("|");
     if ((!TextUtils.isEmpty(paramString3)) || (!TextUtils.isEmpty(paramString4)))
     {
@@ -285,7 +285,7 @@ public class TenpayJumpActivity
         str1 = paramIntent.optString("trans_uin");
         if (!this.mCodeUin.equals(str1))
         {
-          showToast(HardCodeUtil.a(R.string.cU));
+          showToast(HardCodeUtil.a(R.string.cX));
           finish();
           return;
         }
@@ -391,13 +391,13 @@ public class TenpayJumpActivity
       {
         if (this.mUin.equals(str2))
         {
-          showToast(HardCodeUtil.a(R.string.cS));
+          showToast(HardCodeUtil.a(R.string.cV));
           finish();
           return;
         }
         if (!this.mUin.equals(str1))
         {
-          showToast(HardCodeUtil.a(R.string.cT));
+          showToast(HardCodeUtil.a(R.string.cW));
           finish();
           return;
         }
@@ -423,13 +423,13 @@ public class TenpayJumpActivity
   public void showToast(CharSequence paramCharSequence)
   {
     if (!isFinishing()) {
-      QQToast.a(this, paramCharSequence, 0).b(getTitleBarHeight(this.mContext));
+      QQToast.makeText(this, paramCharSequence, 0).show(getTitleBarHeight(this.mContext));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.impl.TenpayJumpActivity
  * JD-Core Version:    0.7.0.1
  */

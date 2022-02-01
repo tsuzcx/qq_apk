@@ -6,24 +6,24 @@ import java.lang.ref.WeakReference;
 
 class ApolloPanelTips$PopupWindowData
 {
-  private final int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final String jdField_a_of_type_JavaLangString;
-  WeakReference<View.OnClickListener> jdField_a_of_type_JavaLangRefWeakReference;
-  private final int b;
+  WeakReference<View.OnClickListener> a;
+  private final View b;
+  private final int c;
+  private final String d;
+  private final int e;
   
   ApolloPanelTips$PopupWindowData(View paramView, int paramInt1, String paramString, int paramInt2, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnClickListener);
+    this.b = paramView;
+    this.c = paramInt1;
+    this.d = paramString;
+    this.e = paramInt2;
+    this.a = new WeakReference(paramOnClickListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanelTips.PopupWindowData
  * JD-Core Version:    0.7.0.1
  */

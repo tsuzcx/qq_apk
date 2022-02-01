@@ -19,21 +19,21 @@ import mqq.manager.Manager;
 public class LoginDevicesManager
   implements Manager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<LoginDevicesManager.IDevListRefreshListener> jdField_a_of_type_JavaUtilArrayList = null;
-  private List<LoginDevItem> jdField_a_of_type_JavaUtilList;
+  private QQAppInterface a;
+  private List<LoginDevItem> b;
+  private ArrayList<LoginDevicesManager.IDevListRefreshListener> c = null;
   
   public LoginDevicesManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
-  private void a()
+  private void c()
   {
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 1)) {
-        Collections.sort(this.jdField_a_of_type_JavaUtilList, new LoginDevicesManager.1(this));
+      if ((this.b != null) && (this.b.size() > 1)) {
+        Collections.sort(this.b, new LoginDevicesManager.1(this));
       }
       return;
     }
@@ -44,37 +44,19 @@ public class LoginDevicesManager
     }
   }
   
-  public int a()
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 1))
-      {
-        int i = this.jdField_a_of_type_JavaUtilList.size();
-        if (i > 1) {
-          return 4;
-        }
-        i = ((LoginDevItem)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_b_of_type_Int;
-        return i;
-      }
-      return 0;
-    }
-    finally {}
-  }
-  
   public String a()
   {
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1)) {
+      if ((this.b == null) || (this.b.size() < 1)) {
         break label299;
       }
       localObject1 = new StringBuilder();
-      localObject3 = (DeviceManageConfBean)QConfigManager.a().a(528);
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (localObject3 == null) || (((DeviceManageConfBean)localObject3).a != 1)) {
+      localObject3 = (DeviceManageConfBean)QConfigManager.b().b(528);
+      if ((this.a == null) || (localObject3 == null) || (((DeviceManageConfBean)localObject3).a != 1)) {
         break label315;
       }
-      bool = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), null, "qqsetting_qrlogin_set_mute", false);
+      bool = SettingCloneUtil.readValue(this.a.getApplication(), this.a.getCurrentUin(), null, "qqsetting_qrlogin_set_mute", false);
     }
     finally
     {
@@ -91,33 +73,33 @@ public class LoginDevicesManager
         boolean bool = false;
       }
     }
-    if (this.jdField_a_of_type_JavaUtilList.size() == 1)
+    if (this.b.size() == 1)
     {
-      localObject3 = (LoginDevItem)this.jdField_a_of_type_JavaUtilList.get(0);
-      ((StringBuilder)localObject1).append(((LoginDevItem)localObject3).jdField_a_of_type_JavaLangString);
+      localObject3 = (LoginDevItem)this.b.get(0);
+      ((StringBuilder)localObject1).append(((LoginDevItem)localObject3).e);
       ((StringBuilder)localObject1).append(" ");
-      ((StringBuilder)localObject1).append(((LoginDevItem)localObject3).jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(((LoginDevItem)localObject3).f);
       ((StringBuilder)localObject1).append(" ");
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131693841));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131891417));
       if (bool)
       {
         ((StringBuilder)localObject1).append("，");
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131694816));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131892519));
       }
     }
     else
     {
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131698985));
-      localObject3 = this.jdField_a_of_type_JavaUtilList.iterator();
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131896981));
+      localObject3 = this.b.iterator();
       while (((Iterator)localObject3).hasNext())
       {
-        ((StringBuilder)localObject1).append(((LoginDevItem)((Iterator)localObject3).next()).jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(((LoginDevItem)((Iterator)localObject3).next()).e);
         ((StringBuilder)localObject1).append("、");
       }
       if (bool)
       {
         ((StringBuilder)localObject1).replace(((StringBuilder)localObject1).length() - 1, ((StringBuilder)localObject1).length(), "，");
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131694816));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131892519));
       }
       else
       {
@@ -134,17 +116,17 @@ public class LoginDevicesManager
     try
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      if (this.jdField_a_of_type_JavaUtilList != null)
+      if (this.b != null)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator = this.b.iterator();
         while (localIterator.hasNext())
         {
-          localStringBuilder.append(((LoginDevItem)localIterator.next()).jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(((LoginDevItem)localIterator.next()).e);
           localStringBuilder.append("、");
         }
         localStringBuilder.deleteCharAt(localStringBuilder.lastIndexOf("、"));
       }
-      paramContext = paramContext.getString(2131716661, new Object[] { localStringBuilder.toString() });
+      paramContext = paramContext.getString(2131914124, new Object[] { localStringBuilder.toString() });
       return paramContext;
     }
     finally {}
@@ -158,14 +140,14 @@ public class LoginDevicesManager
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      if (this.c == null) {
+        this.c = new ArrayList();
       }
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramIDevListRefreshListener)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramIDevListRefreshListener);
+      if (!this.c.contains(paramIDevListRefreshListener)) {
+        this.c.add(paramIDevListRefreshListener);
       }
       if (paramIDevListRefreshListener != null) {
-        paramIDevListRefreshListener.a(this.jdField_a_of_type_JavaUtilList);
+        paramIDevListRefreshListener.a(this.b);
       }
       return;
     }
@@ -184,10 +166,10 @@ public class LoginDevicesManager
       {
         if (paramSvcRespParam.onlineinfos != null)
         {
-          if (this.jdField_a_of_type_JavaUtilList == null) {
-            this.jdField_a_of_type_JavaUtilList = new ArrayList();
+          if (this.b == null) {
+            this.b = new ArrayList();
           }
-          this.jdField_a_of_type_JavaUtilList.clear();
+          this.b.clear();
           Iterator localIterator = paramSvcRespParam.onlineinfos.iterator();
           i = 0;
           if (localIterator.hasNext())
@@ -201,8 +183,8 @@ public class LoginDevicesManager
               break label341;
             }
             LoginDevItem localLoginDevItem = new LoginDevItem(j);
-            localLoginDevItem.jdField_a_of_type_Long = localOnlineInfos.instanceId;
-            this.jdField_a_of_type_JavaUtilList.add(localLoginDevItem);
+            localLoginDevItem.a = localOnlineInfos.instanceId;
+            this.b.add(localLoginDevItem);
             if (!QLog.isDevelopLevel()) {
               break label341;
             }
@@ -212,25 +194,25 @@ public class LoginDevicesManager
           if ((i == 0) && (paramSvcRespParam.PCstat != 0) && ((paramSvcRespParam.iPCClientType == 65793) || (paramSvcRespParam.iPCClientType == 77313)))
           {
             paramSvcRespParam = new LoginDevItem(paramSvcRespParam.iPCClientType);
-            this.jdField_a_of_type_JavaUtilList.add(0, paramSvcRespParam);
+            this.b.add(0, paramSvcRespParam);
             if (QLog.isDevelopLevel()) {
               QLog.d("LoginDevicesManager", 4, paramSvcRespParam.toString());
             }
           }
-          a();
+          c();
           if (QLog.isColorLevel()) {
-            QLog.d("LoginDevicesManager", 2, new Object[] { "updateDevListByRegPrxy size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+            QLog.d("LoginDevicesManager", 2, new Object[] { "updateDevListByRegPrxy size:", Integer.valueOf(this.b.size()) });
           }
-          if (this.jdField_a_of_type_JavaUtilArrayList != null)
+          if (this.c != null)
           {
-            paramSvcRespParam = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+            paramSvcRespParam = this.c.iterator();
             if (paramSvcRespParam.hasNext())
             {
-              ((LoginDevicesManager.IDevListRefreshListener)paramSvcRespParam.next()).a(this.jdField_a_of_type_JavaUtilList);
+              ((LoginDevicesManager.IDevListRefreshListener)paramSvcRespParam.next()).a(this.b);
               continue;
             }
           }
-          i = this.jdField_a_of_type_JavaUtilList.size();
+          i = this.b.size();
           if (i > 0) {
             bool = true;
           }
@@ -254,10 +236,10 @@ public class LoginDevicesManager
     }
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if (this.b == null) {
+        this.b = new ArrayList();
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.b.clear();
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
@@ -266,25 +248,25 @@ public class LoginDevicesManager
         if (LoginDevicesUtils.a(i))
         {
           LoginDevItem localLoginDevItem = new LoginDevItem(i);
-          localLoginDevItem.jdField_a_of_type_Long = localInstanceInfo.iAppId;
-          this.jdField_a_of_type_JavaUtilList.add(localLoginDevItem);
+          localLoginDevItem.a = localInstanceInfo.iAppId;
+          this.b.add(localLoginDevItem);
           if (QLog.isDevelopLevel()) {
             QLog.d("LoginDevicesManager", 4, localLoginDevItem.toString());
           }
         }
       }
-      a();
+      c();
       if (QLog.isColorLevel()) {
-        QLog.d("LoginDevicesManager", 2, new Object[] { "updateDevListByOnlinePush size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+        QLog.d("LoginDevicesManager", 2, new Object[] { "updateDevListByOnlinePush size:", Integer.valueOf(this.b.size()) });
       }
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
+      if (this.c != null)
       {
-        paramArrayList = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        paramArrayList = this.c.iterator();
         while (paramArrayList.hasNext()) {
-          ((LoginDevicesManager.IDevListRefreshListener)paramArrayList.next()).a(this.jdField_a_of_type_JavaUtilList);
+          ((LoginDevicesManager.IDevListRefreshListener)paramArrayList.next()).a(this.b);
         }
       }
-      int i = this.jdField_a_of_type_JavaUtilList.size();
+      int i = this.b.size();
       if (i > 0) {
         bool = true;
       }
@@ -297,12 +279,30 @@ public class LoginDevicesManager
     }
   }
   
+  public int b()
+  {
+    try
+    {
+      if ((this.b != null) && (this.b.size() >= 1))
+      {
+        int i = this.b.size();
+        if (i > 1) {
+          return 4;
+        }
+        i = ((LoginDevItem)this.b.get(0)).c;
+        return i;
+      }
+      return 0;
+    }
+    finally {}
+  }
+  
   public void b(LoginDevicesManager.IDevListRefreshListener paramIDevListRefreshListener)
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(paramIDevListRefreshListener);
+      if (this.c != null) {
+        this.c.remove(paramIDevListRefreshListener);
       }
       return;
     }
@@ -317,15 +317,15 @@ public class LoginDevicesManager
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList != null)
+      if (this.b != null)
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList = null;
+        this.b.clear();
+        this.b = null;
       }
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
+      if (this.c != null)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.jdField_a_of_type_JavaUtilArrayList = null;
+        this.c.clear();
+        this.c = null;
       }
       return;
     }

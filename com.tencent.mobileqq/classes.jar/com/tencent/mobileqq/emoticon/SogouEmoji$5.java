@@ -16,8 +16,8 @@ class SogouEmoji$5
   {
     if (paramEmoticonPackage != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.imageType = paramEmoticonPackage.type;
-      PicEmoticonInfo localPicEmoticonInfo = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo;
+      this.a.imageType = paramEmoticonPackage.type;
+      PicEmoticonInfo localPicEmoticonInfo = this.a;
       boolean bool;
       if (paramEmoticonPackage.isAPNG == 2) {
         bool = true;
@@ -28,21 +28,21 @@ class SogouEmoji$5
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.imageType = 3;
+      this.a.imageType = 3;
     }
-    ((IEmosmService)QRoute.api(IEmosmService.class)).sendInfoFromPanelHelper(SogouEmoji.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji), this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo);
+    ((IEmosmService)QRoute.api(IEmosmService.class)).sendInfoFromPanelHelper(SogouEmoji.a(this.b), this.a);
     if (QLog.isColorLevel())
     {
       paramEmoticonPackage = new StringBuilder();
       paramEmoticonPackage.append("func sendEmoji ends, type:");
-      paramEmoticonPackage.append(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.imageType);
+      paramEmoticonPackage.append(this.a.imageType);
       QLog.d("SogouEmoji", 2, paramEmoticonPackage.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.SogouEmoji.5
  * JD-Core Version:    0.7.0.1
  */

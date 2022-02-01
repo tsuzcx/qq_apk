@@ -13,16 +13,16 @@ class UniteSearchActivity$7
   
   public void onClick(View paramView)
   {
-    UniteSearchActivity.e = 1;
-    this.a.a.setText("");
-    this.a.a();
-    UniteSearchReportController.a(this.a.app, 0, this.a.c, "0X8009D2B", 0, 0, null, null);
+    UniteSearchActivity.o = 1;
+    this.a.q.setText("");
+    this.a.d();
+    UniteSearchReportController.a(this.a.app, 0, this.a.e, "0X8009D2B", 0, 0, null, null);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.UniteSearchActivity.7
  * JD-Core Version:    0.7.0.1
  */

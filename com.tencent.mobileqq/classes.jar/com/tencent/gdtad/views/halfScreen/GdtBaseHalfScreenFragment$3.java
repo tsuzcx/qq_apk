@@ -31,8 +31,8 @@ class GdtBaseHalfScreenFragment$3
     paramWebView.append("GdtBaseHalfScreenFragment onReceivedTitle");
     paramWebView.append(paramString);
     GdtLog.b("AbsWebView", paramWebView.toString());
-    if (GdtBaseHalfScreenFragment.a(this.a) != null) {
-      GdtBaseHalfScreenFragment.a(this.a).setText(paramString);
+    if (GdtBaseHalfScreenFragment.b(this.a) != null) {
+      GdtBaseHalfScreenFragment.b(this.a).setText(paramString);
     }
   }
   
@@ -51,7 +51,7 @@ class GdtBaseHalfScreenFragment$3
       if (localObject2 != null) {
         paramString = ((Uri)localObject2).getScheme();
       }
-      if (AuthorizeConfig.a().a(paramWebView.getUrl(), paramString).booleanValue())
+      if (AuthorizeConfig.a().d(paramWebView.getUrl(), paramString).booleanValue())
       {
         paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject2);
         paramWebView.addFlags(268435456);
@@ -72,7 +72,7 @@ class GdtBaseHalfScreenFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment.3
  * JD-Core Version:    0.7.0.1
  */

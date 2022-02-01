@@ -15,28 +15,28 @@ class ColorRingPlayer$3$1
     boolean bool1 = bool2;
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer$3.this$0.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
+      if (this.c.this$0.c == null) {
         break label64;
       }
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer$3.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
+      bool1 = this.c.this$0.c.isPlaying();
     }
     catch (IllegalStateException localIllegalStateException)
     {
       label34:
       break label34;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer$3.this$0.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-    this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer$3.this$0.jdField_a_of_type_AndroidMediaMediaPlayer = new ReportMediaPlayer();
+    this.c.this$0.c = null;
+    this.c.this$0.c = new ReportMediaPlayer();
     bool1 = bool2;
     label64:
-    if ((this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer$3.this$0.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (bool1)) {
-      this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer$3.this$0.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(this.jdField_a_of_type_Int * 100 / this.b);
+    if ((this.c.this$0.c != null) && (bool1)) {
+      this.c.this$0.n.setProgress(this.a * 100 / this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.ColorRingPlayer.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -145,7 +145,7 @@ public class TroopCollectFormAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130844298;
+    return 2130845615;
   }
   
   public int getAppID()
@@ -166,7 +166,7 @@ public class TroopCollectFormAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690831);
+    return BaseApplicationImpl.getContext().getString(2131887766);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
@@ -174,13 +174,13 @@ public class TroopCollectFormAppInfo
     if (TextUtils.isEmpty(this.url)) {
       return;
     }
-    a(paramBaseChatPie.a(), this.url, paramSessionInfo.b, paramSessionInfo.d);
-    ReportController.b(paramBaseChatPie.a, "dc00898", "", paramSessionInfo.a, "0X8009FCD", "0X8009FCD", 0, 0, "", "", "", "");
+    a(paramBaseChatPie.aX(), this.url, paramSessionInfo.c, paramSessionInfo.e);
+    ReportController.b(paramBaseChatPie.d, "dc00898", "", paramSessionInfo.b, "0X8009FCD", "0X8009FCD", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.TroopCollectFormAppInfo
  * JD-Core Version:    0.7.0.1
  */

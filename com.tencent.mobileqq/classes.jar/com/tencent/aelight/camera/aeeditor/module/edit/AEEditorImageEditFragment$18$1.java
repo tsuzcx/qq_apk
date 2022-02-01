@@ -12,13 +12,13 @@ class AEEditorImageEditFragment$18$1
   
   public void run()
   {
-    this.a.a.a.a();
-    QQToast.a(this.a.a.getActivity(), this.a.a.getActivity().getResources().getString(2064515417), 1).a();
+    this.a.d.j.a();
+    QQToast.makeText(this.a.d.getActivity(), this.a.d.getActivity().getResources().getString(2064187704), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImageEditFragment.18.1
  * JD-Core Version:    0.7.0.1
  */

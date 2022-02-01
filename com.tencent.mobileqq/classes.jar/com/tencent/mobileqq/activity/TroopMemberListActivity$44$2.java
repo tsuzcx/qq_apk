@@ -9,19 +9,19 @@ class TroopMemberListActivity$44$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$44.a.isFinishing()) {
+    if (this.b.a.isFinishing()) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$44.a.mAdapter != null)
+    if (this.b.a.mAdapter != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$44.a.mAdapter.d = this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$44.a.mAdapter.a();
+      this.b.a.mAdapter.g = this.a;
+      this.b.a.mAdapter.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.44.2
  * JD-Core Version:    0.7.0.1
  */

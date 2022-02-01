@@ -10,14 +10,14 @@ class NoClockInView$1$1
   
   public void run()
   {
-    if ((NoClockInView.a(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinNoClockInView$1.this$0) != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
-      NoClockInView.a(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinNoClockInView$1.this$0).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if ((NoClockInView.a(this.b.this$0) != null) && (this.a != null)) {
+      NoClockInView.a(this.b.this$0).setImageDrawable(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.NoClockInView.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -30,13 +30,13 @@ class StatusManager$2
       if (paramInt == 100)
       {
         StatusManager.b(this.a, System.currentTimeMillis());
-        StatusManager.a(this.a).edit().putLong("k_update_time", StatusManager.a(this.a)).commit();
+        StatusManager.a(this.a).edit().putLong("k_update_time", StatusManager.g(this.a)).commit();
       }
       this.a.a(true);
     }
-    if (StatusManager.a(this.a) != null)
+    if (StatusManager.e(this.a) != null)
     {
-      localObject = StatusManager.a(this.a).iterator();
+      localObject = StatusManager.e(this.a).iterator();
       while (((Iterator)localObject).hasNext())
       {
         IActionListener localIActionListener = (IActionListener)((Iterator)localObject).next();
@@ -53,7 +53,7 @@ class StatusManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager.2
  * JD-Core Version:    0.7.0.1
  */

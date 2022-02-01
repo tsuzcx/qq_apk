@@ -29,69 +29,32 @@ public class VasExtensionManager
   implements Manager
 {
   public QQAppInterface a;
-  public IEmoticonFromGroupManager a;
-  public IVasEmojiManager a;
-  public FontBubbleManager a;
-  public ProfileCardManager a;
-  public ColorNickManager a;
-  private VasExtensionManager.NetHandler a;
-  public VasFaceManager a;
-  public TroopKeywordManager a;
+  public IVasEmojiManager b;
+  public VasFaceManager c;
+  public IEmoticonFromGroupManager d;
+  public ProfileCardManager e;
+  public ColorNickManager f;
+  public FontBubbleManager g;
+  public TroopKeywordManager h;
+  private VasExtensionManager.NetHandler i;
   
   public VasExtensionManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonIVasEmojiManager = ((IVasEmojiManagerService)QRoute.api(IVasEmojiManagerService.class)).createVasEmojiManager(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager = new VasFaceManager(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager = ((IEmoticonFromGroupManagerService)QRoute.api(IEmoticonFromGroupManagerService.class)).createEmoticonFromGroupManager(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager = new ProfileCardManager(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqVasColorNickManager = new ColorNickManager(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubbleManager = new FontBubbleManager(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqVasTroopkeywordTroopKeywordManager = new TroopKeywordManager(paramQQAppInterface, paramQQAppInterface.getEntityManagerFactory().createEntityManager());
-    this.jdField_a_of_type_ComTencentMobileqqVasVasExtensionManager$NetHandler = new VasExtensionManager.NetHandler();
+    this.a = paramQQAppInterface;
+    this.b = ((IVasEmojiManagerService)QRoute.api(IVasEmojiManagerService.class)).createVasEmojiManager(paramQQAppInterface);
+    this.c = new VasFaceManager(paramQQAppInterface);
+    this.d = ((IEmoticonFromGroupManagerService)QRoute.api(IEmoticonFromGroupManagerService.class)).createEmoticonFromGroupManager(paramQQAppInterface);
+    this.e = new ProfileCardManager(paramQQAppInterface);
+    this.f = new ColorNickManager(paramQQAppInterface);
+    this.g = new FontBubbleManager(paramQQAppInterface);
+    this.h = new TroopKeywordManager(paramQQAppInterface, paramQQAppInterface.getEntityManagerFactory().createEntityManager());
+    this.i = new VasExtensionManager.NetHandler();
     a(paramQQAppInterface);
-  }
-  
-  public static String a(int paramInt)
-  {
-    int i = paramInt >> 4;
-    paramInt &= 0xF;
-    String str;
-    if (paramInt == 1) {
-      str = QQLevelIconProcessor.c().mNotifyPaymentText;
-    } else if (paramInt == 2) {
-      str = QQLevelIconProcessor.c().mExpiredNotifyPaymentText;
-    } else {
-      str = null;
-    }
-    if (!TextUtils.isEmpty(str))
-    {
-      paramInt = 0;
-      if (i != 1)
-      {
-        if (i != 2)
-        {
-          if (i == 3) {
-            paramInt = 2131690636;
-          }
-        }
-        else {
-          paramInt = 2131719393;
-        }
-      }
-      else {
-        paramInt = 2131695136;
-      }
-      if (paramInt != 0) {
-        return str.replace("[vip]", BaseApplicationImpl.getContext().getResources().getString(paramInt));
-      }
-    }
-    return "";
   }
   
   public static boolean a()
   {
-    if (TMSManager.a().a())
+    if (TMSManager.a().c())
     {
       if (NetworkUtil.getNetworkType(BaseApplicationImpl.getApplication()) == 0)
       {
@@ -106,6 +69,43 @@ public class VasExtensionManager
   }
   
   public static String b(int paramInt)
+  {
+    int j = paramInt >> 4;
+    paramInt &= 0xF;
+    String str;
+    if (paramInt == 1) {
+      str = QQLevelIconProcessor.e().mNotifyPaymentText;
+    } else if (paramInt == 2) {
+      str = QQLevelIconProcessor.e().mExpiredNotifyPaymentText;
+    } else {
+      str = null;
+    }
+    if (!TextUtils.isEmpty(str))
+    {
+      paramInt = 0;
+      if (j != 1)
+      {
+        if (j != 2)
+        {
+          if (j == 3) {
+            paramInt = 2131887547;
+          }
+        }
+        else {
+          paramInt = 2131916948;
+        }
+      }
+      else {
+        paramInt = 2131892864;
+      }
+      if (paramInt != 0) {
+        return str.replace("[vip]", BaseApplicationImpl.getContext().getResources().getString(paramInt));
+      }
+    }
+    return "";
+  }
+  
+  public static String c(int paramInt)
   {
     if (paramInt != 17)
     {
@@ -132,7 +132,7 @@ public class VasExtensionManager
     return "mvip.n.a.qlevel_cuifei";
   }
   
-  public static String c(int paramInt)
+  public static String d(int paramInt)
   {
     if ((paramInt != 17) && (paramInt != 18))
     {
@@ -148,15 +148,9 @@ public class VasExtensionManager
     return "LTMCLUB";
   }
   
-  public int a()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    return BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).getInt("is_show_qq_level_notice", 0);
-  }
-  
   public void a(int paramInt)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str = this.a.getCurrentAccountUin();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setShowQQLevelNoticeValue: ");
     localStringBuilder.append(paramInt);
@@ -170,24 +164,30 @@ public class VasExtensionManager
   {
     try
     {
-      AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqVasVasExtensionManager$NetHandler);
+      AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApp(), this.i);
       return;
     }
     catch (Error paramQQAppInterface) {}
   }
   
+  public int b()
+  {
+    String str = this.a.getCurrentAccountUin();
+    return BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).getInt("is_show_qq_level_notice", 0);
+  }
+  
   public void onDestroy()
   {
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqVasVasExtensionManager$NetHandler);
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqVasTroopkeywordTroopKeywordManager.a();
-    this.jdField_a_of_type_ComTencentMobileqqVasColorNickManager.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqHiboomFontBubbleManager.a();
+    AppNetConnInfo.unregisterNetInfoHandler(this.i);
+    this.c.onDestroy();
+    this.h.b();
+    this.f.onDestroy();
+    this.g.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasExtensionManager
  * JD-Core Version:    0.7.0.1
  */

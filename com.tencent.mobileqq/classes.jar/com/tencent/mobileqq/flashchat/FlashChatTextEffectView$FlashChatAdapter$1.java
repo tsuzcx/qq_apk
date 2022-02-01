@@ -11,12 +11,12 @@ class FlashChatTextEffectView$FlashChatAdapter$1
   
   public boolean a(int paramInt)
   {
-    return (HiBoomConstants.b.get()) && (paramInt == 0);
+    return (HiBoomConstants.c.get()) && (paramInt == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatTextEffectView.FlashChatAdapter.1
  * JD-Core Version:    0.7.0.1
  */

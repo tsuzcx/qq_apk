@@ -21,7 +21,7 @@ class ProfileColorScreenComponent$ColorScreenLoader$ColorScreenListener
   public ProfileColorScreenComponent$ColorScreenLoader$ColorScreenListener(ProfileColorScreenComponent.ColorScreenLoader paramColorScreenLoader, long paramLong)
   {
     this.mDuration = paramLong;
-    int i = ProfileColorScreenComponent.ColorScreenLoader.access$1000(paramColorScreenLoader).jdField_a_of_type_Int;
+    int i = ProfileColorScreenComponent.ColorScreenLoader.access$1000(paramColorScreenLoader).c;
     boolean bool = true;
     this.mTotalTime = (paramLong * (i + 1));
     if (Build.VERSION.SDK_INT != 15) {
@@ -77,14 +77,14 @@ class ProfileColorScreenComponent$ColorScreenLoader$ColorScreenListener
       try
       {
         float f = (paramValueAnimator.getAnimatedFraction() + this.mRepeatTimes) * (float)this.mDuration;
-        if (f <= (float)ProfileColorScreenComponent.ColorScreenLoader.access$1000(this.this$1).jdField_a_of_type_Long)
+        if (f <= (float)ProfileColorScreenComponent.ColorScreenLoader.access$1000(this.this$1).d)
         {
-          ProfileColorScreenComponent.access$400(this.this$1.this$0).setAlpha(f / (float)ProfileColorScreenComponent.ColorScreenLoader.access$1000(this.this$1).jdField_a_of_type_Long);
+          ProfileColorScreenComponent.access$400(this.this$1.this$0).setAlpha(f / (float)ProfileColorScreenComponent.ColorScreenLoader.access$1000(this.this$1).d);
           return;
         }
-        if ((this.mTotalTime > 0L) && ((float)this.mTotalTime - f <= (float)ProfileColorScreenComponent.ColorScreenLoader.access$1000(this.this$1).b))
+        if ((this.mTotalTime > 0L) && ((float)this.mTotalTime - f <= (float)ProfileColorScreenComponent.ColorScreenLoader.access$1000(this.this$1).e))
         {
-          ProfileColorScreenComponent.access$400(this.this$1.this$0).setAlpha(((float)this.mTotalTime - f) / (float)ProfileColorScreenComponent.ColorScreenLoader.access$1000(this.this$1).b);
+          ProfileColorScreenComponent.access$400(this.this$1.this$0).setAlpha(((float)this.mTotalTime - f) / (float)ProfileColorScreenComponent.ColorScreenLoader.access$1000(this.this$1).e);
           return;
         }
       }
@@ -98,7 +98,7 @@ class ProfileColorScreenComponent$ColorScreenLoader$ColorScreenListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader.ColorScreenListener
  * JD-Core Version:    0.7.0.1
  */

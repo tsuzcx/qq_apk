@@ -13,10 +13,10 @@ import mqq.app.MobileQQ;
 public class ApkSoLoader
   implements ISoLoader
 {
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("envSwitch", 4);
-  private SoLoaderLogic jdField_a_of_type_ComTencentMobileqqSoloadApiImplSoLoaderLogic = new SoLoaderLogic();
+  private SoLoaderLogic a = new SoLoaderLogic();
+  private SharedPreferences b = MobileQQ.sMobileQQ.getSharedPreferences("envSwitch", 4);
   
-  private boolean b(String paramString)
+  private boolean c(String paramString)
   {
     try
     {
@@ -47,22 +47,22 @@ public class ApkSoLoader
       localObject1 = localObject2;
       if (paramLoadParam.mLoadItems != null)
       {
-        if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
+        if (this.b == null) {
           return null;
         }
         localObject1 = paramLoadParam.mLoadItems;
         int i = 0;
         localObject1 = (LoadParam.LoadItem)((List)localObject1).get(0);
-        if ((localObject1 != null) && (this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(((LoadParam.LoadItem)localObject1).name, false)))
+        if ((localObject1 != null) && (this.b.getBoolean(((LoadParam.LoadItem)localObject1).name, false)))
         {
           QLog.d("SoLoadWidget.ApkSoLoader", 2, "<<<<<<<load so from local<<<<<<<");
-          if (!b(((LoadParam.LoadItem)localObject1).name)) {
+          if (!c(((LoadParam.LoadItem)localObject1).name)) {
             i = 6;
           }
           return LoadExtResult.create(i, 1, ((LoadParam.LoadItem)localObject1).name, SoLoadInfo.sDefault, ((LoadParam.LoadItem)localObject1).lops);
         }
         QLog.d("SoLoadWidget.ApkSoLoader", 2, "<<<<<<<load so not from local<<<<<<<");
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplSoLoaderLogic;
+        localObject1 = this.a;
         if (localObject1 == null) {
           return null;
         }
@@ -76,34 +76,26 @@ public class ApkSoLoader
   {
     if ((paramLoadParam != null) && (paramLoadParam.mLoadItems != null))
     {
-      if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
+      if (this.b == null) {
         return;
       }
       Object localObject = paramLoadParam.mLoadItems;
       int i = 0;
       localObject = (LoadParam.LoadItem)((List)localObject).get(0);
-      if ((localObject != null) && (this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(((LoadParam.LoadItem)localObject).name, false)))
+      if ((localObject != null) && (this.b.getBoolean(((LoadParam.LoadItem)localObject).name, false)))
       {
         QLog.d("SoLoadWidget.ApkSoLoader", 2, "<<<<<<<load so from local<<<<<<<");
-        if (!b(((LoadParam.LoadItem)localObject).name)) {
+        if (!c(((LoadParam.LoadItem)localObject).name)) {
           i = 6;
         }
         paramOnLoadListener.onLoadResult(i, LoadExtResult.create(i, 1, ((LoadParam.LoadItem)localObject).name, SoLoadInfo.sDefault, ((LoadParam.LoadItem)localObject).lops));
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplSoLoaderLogic != null)
+      if (this.a != null)
       {
         QLog.d("SoLoadWidget.ApkSoLoader", 2, "<<<<<<<load so not from local<<<<<<<");
-        this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplSoLoaderLogic.a(paramLoadParam, paramOnLoadListener);
+        this.a.a(paramLoadParam, paramOnLoadListener);
       }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    SoLoaderLogic localSoLoaderLogic = this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplSoLoaderLogic;
-    if (localSoLoaderLogic != null) {
-      localSoLoaderLogic.a(paramString);
     }
   }
   
@@ -111,10 +103,18 @@ public class ApkSoLoader
   {
     return false;
   }
+  
+  public void b(String paramString)
+  {
+    SoLoaderLogic localSoLoaderLogic = this.a;
+    if (localSoLoaderLogic != null) {
+      localSoLoaderLogic.b(paramString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.ApkSoLoader
  * JD-Core Version:    0.7.0.1
  */

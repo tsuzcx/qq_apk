@@ -24,7 +24,7 @@ class GameRoomInviteActivity$9
       this.a.gotoGameChatPie(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
       return;
     }
-    this.a.handle8e4Error(paramInt, paramRspBody, HardCodeUtil.a(2131705233));
+    this.a.handle8e4Error(paramInt, paramRspBody, HardCodeUtil.a(2131903118));
     if (QLog.isColorLevel())
     {
       paramRspBody = new StringBuilder();
@@ -36,7 +36,7 @@ class GameRoomInviteActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.9
  * JD-Core Version:    0.7.0.1
  */

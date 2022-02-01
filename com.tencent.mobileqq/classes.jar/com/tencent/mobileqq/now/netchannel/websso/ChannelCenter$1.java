@@ -18,25 +18,25 @@ class ChannelCenter$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WebServiceSSO--onFail errCode=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", errMsg=");
     localStringBuilder.append(paramString);
     Log.d("ChannelCenter", localStringBuilder.toString());
-    if (ChannelCenter.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter))
+    if (ChannelCenter.a(this.c))
     {
       Log.d("ChannelCenter", "now live quit.");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoIChannelListener.a(paramInt, paramString);
+    this.b.a(paramInt, paramString);
   }
   
   public void a(byte[] paramArrayOfByte)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("WebServiceSSO--onSuccess cmd=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.a);
     Log.i("ChannelCenter", ((StringBuilder)localObject).toString());
-    if (ChannelCenter.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter))
+    if (ChannelCenter.a(this.c))
     {
       Log.d("ChannelCenter", "now live quit.");
       return;
@@ -66,7 +66,7 @@ class ChannelCenter$1
       if (paramArrayOfByte == null) {
         break label163;
       }
-      ChannelCenter.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter).post(new ChannelCenter.1.1(this, paramArrayOfByte));
+      ChannelCenter.b(this.c).post(new ChannelCenter.1.1(this, paramArrayOfByte));
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -75,12 +75,12 @@ class ChannelCenter$1
       label163:
       break label150;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoIChannelListener.a(1000001, "解析出错");
+    this.b.a(1000001, "解析出错");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.websso.ChannelCenter.1
  * JD-Core Version:    0.7.0.1
  */

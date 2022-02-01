@@ -25,10 +25,10 @@ import com.tencent.qphone.base.util.QLog;
 public class LoadingFragment
   extends IphoneTitleBarFragment
 {
-  static View jdField_a_of_type_AndroidViewView;
-  NowPluginObserver jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver = new LoadingFragment.1(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  IDynamicNowManager jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicIDynamicNowManager;
+  static View c;
+  QQAppInterface a;
+  IDynamicNowManager b;
+  NowPluginObserver d = new LoadingFragment.1(this);
   
   public static void a(Context paramContext, Bundle paramBundle, View paramView)
   {
@@ -37,7 +37,7 @@ public class LoadingFragment
     if (!(paramContext instanceof Activity)) {
       localIntent.addFlags(268435456);
     }
-    jdField_a_of_type_AndroidViewView = paramView;
+    c = paramView;
     PublicFragmentActivity.a(paramContext, localIntent, LoadingFragment.class);
   }
   
@@ -51,7 +51,7 @@ public class LoadingFragment
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.a == null) {
       return;
     }
     BaseActivity localBaseActivity = getBaseActivity();
@@ -62,24 +62,24 @@ public class LoadingFragment
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     getArguments().putBoolean("loadingShow", true);
     hideTitleBar();
-    if (jdField_a_of_type_AndroidViewView != null)
+    if (c != null)
     {
       paramLayoutInflater = (FrameLayout)this.mContentView;
       if (paramLayoutInflater != null)
       {
         paramViewGroup = new FrameLayout.LayoutParams(-1, -1);
-        if (jdField_a_of_type_AndroidViewView.getParent() != null) {
-          ((ViewGroup)jdField_a_of_type_AndroidViewView.getParent()).removeView(jdField_a_of_type_AndroidViewView);
+        if (c.getParent() != null) {
+          ((ViewGroup)c.getParent()).removeView(c);
         }
-        paramLayoutInflater.addView(jdField_a_of_type_AndroidViewView, paramViewGroup);
+        paramLayoutInflater.addView(c, paramViewGroup);
       }
     }
-    ((NowDataReporter)this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicIDynamicNowManager.a()).a();
+    ((NowDataReporter)this.b.j()).a();
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561204;
+    return 2131627556;
   }
   
   protected void init(Bundle paramBundle)
@@ -93,9 +93,9 @@ public class LoadingFragment
     }
     if ((paramBundle instanceof QQAppInterface))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicIDynamicNowManager = ((IDynamicNowManager)paramBundle.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER));
-      Global.addNowPluginObserver(this.jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver);
+      this.a = ((QQAppInterface)paramBundle);
+      this.b = ((IDynamicNowManager)paramBundle.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER));
+      Global.addNowPluginObserver(this.d);
       return;
     }
     QLog.e("IphoneTitleBarFragment", 1, "app is null");
@@ -110,20 +110,20 @@ public class LoadingFragment
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicIDynamicNowManager != null) {
-      Global.removeNowPluginObserver(this.jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver);
+    if (this.b != null) {
+      Global.removeNowPluginObserver(this.d);
     }
-    Object localObject = jdField_a_of_type_AndroidViewView;
+    Object localObject = c;
     if (localObject != null)
     {
       localObject = (ViewGroup)((View)localObject).getParent();
       if (localObject != null)
       {
         QLog.i("LoadingFragment", 4, "removeView ");
-        ((ViewGroup)localObject).removeView(jdField_a_of_type_AndroidViewView);
+        ((ViewGroup)localObject).removeView(c);
       }
     }
-    jdField_a_of_type_AndroidViewView = null;
+    c = null;
     super.onDestroy();
   }
   
@@ -154,7 +154,7 @@ public class LoadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment
  * JD-Core Version:    0.7.0.1
  */

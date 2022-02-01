@@ -59,7 +59,7 @@ public class GLSurfaceView
     try
     {
       if (this.mGLThread != null) {
-        this.mGLThread.f();
+        this.mGLThread.h();
       }
       return;
     }
@@ -115,7 +115,7 @@ public class GLSurfaceView
   
   public int getRenderMode()
   {
-    return this.mGLThread.a();
+    return this.mGLThread.b();
   }
   
   public Renderer getRenderer()
@@ -135,7 +135,7 @@ public class GLSurfaceView
       localObject = this.mGLThread;
       int i;
       if (localObject != null) {
-        i = ((GLThread)localObject).a();
+        i = ((GLThread)localObject).b();
       } else {
         i = 1;
       }
@@ -153,7 +153,7 @@ public class GLSurfaceView
     QLog.d("[ApolloGL][GLSurfaceView]", 1, "onDetachedFromWindow");
     GLThread localGLThread = this.mGLThread;
     if (localGLThread != null) {
-      localGLThread.f();
+      localGLThread.h();
     }
     this.mDetached = true;
     super.onDetachedFromWindow();
@@ -161,12 +161,12 @@ public class GLSurfaceView
   
   public void onPause()
   {
-    this.mGLThread.d();
+    this.mGLThread.f();
   }
   
   public void onResume()
   {
-    this.mGLThread.e();
+    this.mGLThread.g();
   }
   
   public void queueEvent(Runnable paramRunnable)
@@ -176,7 +176,7 @@ public class GLSurfaceView
   
   public void requestRender()
   {
-    this.mGLThread.a();
+    this.mGLThread.c();
   }
   
   public void setDebugFlags(int paramInt)
@@ -257,12 +257,12 @@ public class GLSurfaceView
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.mGLThread.b();
+    this.mGLThread.d();
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    this.mGLThread.c();
+    this.mGLThread.e();
   }
   
   @Deprecated
@@ -278,7 +278,7 @@ public class GLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.opengl.GLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

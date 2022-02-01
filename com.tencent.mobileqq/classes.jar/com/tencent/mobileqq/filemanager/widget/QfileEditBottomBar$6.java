@@ -14,21 +14,21 @@ class QfileEditBottomBar$6
   
   public void a()
   {
-    ((IQQFileEngine)((BaseQQAppInterface)QfileEditBottomBar.a(this.a)).getRuntimeService(IQQFileEngine.class)).downLoadAllSelectFiles(QfileEditBottomBar.a(this.a));
+    ((IQQFileEngine)((BaseQQAppInterface)QfileEditBottomBar.a(this.a)).getRuntimeService(IQQFileEngine.class)).downLoadAllSelectFiles(QfileEditBottomBar.d(this.a));
     if (this.a.a != null) {
       this.a.a.b();
     }
-    FMDataCache.b();
-    QfileEditBottomBar.a(this.a).h();
-    QfileEditBottomBar.a(this.a).f(false);
-    QfileEditBottomBar.a(this.a).b();
+    FMDataCache.d();
+    QfileEditBottomBar.b(this.a).m();
+    QfileEditBottomBar.b(this.a).f(false);
+    QfileEditBottomBar.b(this.a).c();
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar.6
  * JD-Core Version:    0.7.0.1
  */

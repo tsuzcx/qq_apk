@@ -17,14 +17,14 @@ class IntimateInfoView$10
     {
       Bitmap localBitmap = this.a.a.getFaceBitmap(this.a.a.getCurrentAccountUin(), (byte)3, false);
       if (localBitmap != null) {
-        IntimateInfoView.a(this.a).a(localBitmap, paramString);
+        IntimateInfoView.k(this.a).a(localBitmap, paramString);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.10
  * JD-Core Version:    0.7.0.1
  */

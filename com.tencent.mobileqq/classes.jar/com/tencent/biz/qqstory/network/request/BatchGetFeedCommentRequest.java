@@ -13,23 +13,28 @@ import java.util.List;
 public class BatchGetFeedCommentRequest
   extends NetworkRequest
 {
-  private static final String jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.feed_comment_list_batch_775");
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private int c;
+  private static final String e = StoryApi.a("StorySvc.feed_comment_list_batch_775");
+  private List<String> f;
+  private int g;
   
   public BatchGetFeedCommentRequest(List<String> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.f = paramList;
     int i;
     if (paramBoolean) {
       i = 1;
     } else {
       i = 2;
     }
-    this.c = i;
+    this.g = i;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspBatchFeedComment localRspBatchFeedComment = new qqstory_service.RspBatchFeedComment();
     try
@@ -43,23 +48,18 @@ public class BatchGetFeedCommentRequest
     return new BatchGetFeedCommentRequest.BatchGetFeedCommentResp(localRspBatchFeedComment);
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqBatchFeedComment localReqBatchFeedComment = new qqstory_service.ReqBatchFeedComment();
-    List localList = a(this.jdField_a_of_type_JavaUtilList);
+    List localList = b(this.f);
     localReqBatchFeedComment.feed_id_list.set(localList);
-    localReqBatchFeedComment.source.set(this.c);
+    localReqBatchFeedComment.source.set(this.g);
     return localReqBatchFeedComment.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.BatchGetFeedCommentRequest
  * JD-Core Version:    0.7.0.1
  */

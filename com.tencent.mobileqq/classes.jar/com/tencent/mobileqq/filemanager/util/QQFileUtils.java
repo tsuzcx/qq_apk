@@ -11,22 +11,17 @@ public class QQFileUtils
 {
   public static int a()
   {
-    return a().getIPStackType();
+    return d().getIPStackType();
   }
   
   public static int a(int paramInt1, int paramInt2)
   {
-    return a().getAIOFileBubbleShowType(paramInt1, paramInt2);
+    return d().getAIOFileBubbleShowType(paramInt1, paramInt2);
   }
   
   public static int a(String paramString)
   {
-    return a().getIpAddrTypeOfUrl(paramString);
-  }
-  
-  private static IQFileUtils a()
-  {
-    return (IQFileUtils)QRoute.api(IQFileUtils.class);
+    return d().getIpAddrTypeOfUrl(paramString);
   }
   
   public static String a(int paramInt, String paramString)
@@ -72,42 +67,47 @@ public class QQFileUtils
   
   public static String a(Context paramContext, int paramInt1, int paramInt2, TextView paramTextView1, TextView paramTextView2, String paramString1, String paramString2)
   {
-    return a().getAIOFileBubbleShowName(paramContext, paramInt1, paramInt2, paramTextView1, paramTextView2, paramString1, paramString2);
+    return d().getAIOFileBubbleShowName(paramContext, paramInt1, paramInt2, paramTextView1, paramTextView2, paramString1, paramString2);
   }
   
   public static void a(Context paramContext, TextView paramTextView, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, QQFileManagerUtil.TipsClickedInterface paramTipsClickedInterface)
   {
-    a().setFileDescription(paramContext, paramTextView, paramString1, paramString2, paramString3, paramString4, paramString5, paramBoolean, paramTipsClickedInterface);
+    d().setFileDescription(paramContext, paramTextView, paramString1, paramString2, paramString3, paramString4, paramString5, paramBoolean, paramTipsClickedInterface);
   }
   
   public static boolean a(Context paramContext, String paramString, Uri paramUri)
   {
-    return a().copyFileToMediaStore(paramContext, paramString, paramUri);
+    return d().copyFileToMediaStore(paramContext, paramString, paramUri);
   }
   
   public static boolean a(MessageRecord paramMessageRecord)
   {
-    return a().checkComplexMessage(paramMessageRecord);
+    return d().checkComplexMessage(paramMessageRecord);
   }
   
   public static int b()
   {
-    return a().getReportIPStackType();
+    return d().getReportIPStackType();
   }
   
   public static int b(String paramString)
   {
-    return a().getIpAddrType(paramString);
+    return d().getIpAddrType(paramString);
   }
   
   public static int c()
   {
-    return a().getReportLoginIPStackType();
+    return d().getReportLoginIPStackType();
+  }
+  
+  private static IQFileUtils d()
+  {
+    return (IQFileUtils)QRoute.api(IQFileUtils.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileUtils
  * JD-Core Version:    0.7.0.1
  */

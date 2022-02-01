@@ -42,15 +42,15 @@ public class PublicAccountTipsManagerImpl
       if (this.mTipsView == null)
       {
         this.mTipsView = new TextView(this.mContext);
-        ((TextView)this.mTipsView).setTextColor(this.mContext.getResources().getColor(2131167394));
-        this.mTipsView.setBackgroundResource(2130847333);
+        ((TextView)this.mTipsView).setTextColor(this.mContext.getResources().getColor(2131168464));
+        this.mTipsView.setBackgroundResource(2130848984);
         ((TextView)this.mTipsView).setGravity(16);
         this.mTipsView.setTag("tag_on_nearby_tips_click");
-        ((TextView)this.mTipsView).setTextSize(this.mContext.getResources().getInteger(2131427341));
+        ((TextView)this.mTipsView).setTextSize(this.mContext.getResources().getInteger(2131492884));
       }
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.topMargin = DisplayUtil.a(this.mContext, 18.0F);
-      localLayoutParams.addRule(3, 2131374119);
+      localLayoutParams.addRule(3, 2131442214);
       localLayoutParams.addRule(11);
       localLayoutParams.rightMargin = DisplayUtil.b(this.mContext, 20.0F);
       ((TextView)this.mTipsView).setText(paramString);
@@ -84,12 +84,12 @@ public class PublicAccountTipsManagerImpl
       return;
     }
     this.lastClkTime = System.currentTimeMillis();
-    if ((paramView.getId() == 2131362547) && (this.mContext != null))
+    if ((paramView.getId() == 2131428158) && (this.mContext != null))
     {
-      String str1 = (String)paramView.getTag(2131362550);
-      String str2 = (String)paramView.getTag(2131362548);
-      String str3 = (String)paramView.getTag(2131362549);
-      if (((Integer)paramView.getTag(2131362551)).intValue() == 1)
+      String str1 = (String)paramView.getTag(2131428161);
+      String str2 = (String)paramView.getTag(2131428159);
+      String str3 = (String)paramView.getTag(2131428160);
+      if (((Integer)paramView.getTag(2131428162)).intValue() == 1)
       {
         paramView = new Intent(this.mContext, QQBrowserActivity.class);
         paramView.putExtra("url", str1);
@@ -118,7 +118,7 @@ public class PublicAccountTipsManagerImpl
     }
     try
     {
-      localObject2 = (ViewGroup)((BaseActivity)this.mContext).getChatFragment().a().c.findViewById(2131364485);
+      localObject2 = (ViewGroup)((BaseActivity)this.mContext).getChatFragment().k().aZ.findViewById(2131430542);
       localObject1 = localObject2;
     }
     catch (Exception localException)
@@ -134,19 +134,19 @@ public class PublicAccountTipsManagerImpl
     if (this.mPendantView == null)
     {
       this.mPendantView = new URLImageView(this.mContext);
-      this.mPendantView.setId(2131362547);
+      this.mPendantView.setId(2131428158);
       i = DisplayUtil.a(this.mContext, 62.0F);
       localObject2 = new RelativeLayout.LayoutParams(i, i);
       ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.a(this.mContext, 15.0F);
       ((RelativeLayout.LayoutParams)localObject2).rightMargin = DisplayUtil.a(this.mContext, 15.0F);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131374119);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131442214);
       ((RelativeLayout.LayoutParams)localObject2).addRule(11);
       this.mPendantView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     }
-    this.mPendantView.setTag(2131362550, paramString2);
-    this.mPendantView.setTag(2131362548, String.valueOf(paramInt1));
-    this.mPendantView.setTag(2131362549, String.valueOf(paramInt2));
-    this.mPendantView.setTag(2131362551, Integer.valueOf(paramInt3));
+    this.mPendantView.setTag(2131428161, paramString2);
+    this.mPendantView.setTag(2131428159, String.valueOf(paramInt1));
+    this.mPendantView.setTag(2131428160, String.valueOf(paramInt2));
+    this.mPendantView.setTag(2131428162, Integer.valueOf(paramInt3));
     this.mPendantView.setOnClickListener(this);
     paramString2 = URLDrawable.URLDrawableOptions.obtain();
     paramString2.mPlayGifImage = true;
@@ -197,7 +197,7 @@ public class PublicAccountTipsManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountTipsManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,8 @@ class MedalGuideView$7
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(this.a.jdField_a_of_type_Int), Integer.valueOf(0))).intValue();
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
+    int i = ((Integer)this.a.m.evaluate(f, Integer.valueOf(this.a.n), Integer.valueOf(0))).intValue();
+    this.a.b.setBackgroundColor(i);
     if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
       paramValueAnimator.removeAllUpdateListeners();
     }

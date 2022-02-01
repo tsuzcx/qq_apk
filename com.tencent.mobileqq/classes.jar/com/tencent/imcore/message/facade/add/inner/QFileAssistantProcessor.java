@@ -13,13 +13,13 @@ class QFileAssistantProcessor
     if ((!QFileAssistantUtils.a(paramMessageRecord)) && (QFileAssistantUtils.a(paramMessageRecord.frienduin)))
     {
       QFileAssistantUtils.a(paramMessageRecord, 0);
-      QFileAssistantUtils.a(paramBaseQQAppInterface);
+      QFileAssistantUtils.c(paramBaseQQAppInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.add.inner.QFileAssistantProcessor
  * JD-Core Version:    0.7.0.1
  */

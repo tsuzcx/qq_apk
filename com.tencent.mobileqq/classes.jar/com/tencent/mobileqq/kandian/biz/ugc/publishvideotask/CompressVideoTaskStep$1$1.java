@@ -16,13 +16,13 @@ class CompressVideoTaskStep$1$1
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onCompressFinished, retCode =");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(",outPath = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.b);
     QLog.i("RIJUGC.CompressVideoTaskStep", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_JavaLangString;
+    localObject = this.b;
     if ((localObject != null) && (!((String)localObject).isEmpty())) {
-      localObject = MD5Utils.a(new File(this.jdField_a_of_type_JavaLangString));
+      localObject = MD5Utils.a(new File(this.b));
     } else {
       localObject = "";
     }
@@ -35,7 +35,7 @@ class CompressVideoTaskStep$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.publishvideotask.CompressVideoTaskStep.1.1
  * JD-Core Version:    0.7.0.1
  */

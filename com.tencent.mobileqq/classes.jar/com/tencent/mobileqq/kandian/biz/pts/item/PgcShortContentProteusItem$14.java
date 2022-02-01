@@ -19,15 +19,15 @@ class PgcShortContentProteusItem$14
   
   public void onClick(ViewBase paramViewBase)
   {
-    ReadInJoyVideoView localReadInJoyVideoView = (ReadInJoyVideoView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getParent().findViewBaseByName("id_pgc_short_content_video_view");
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
+    ReadInJoyVideoView localReadInJoyVideoView = (ReadInJoyVideoView)this.a.getParent().findViewBaseByName("id_pgc_short_content_video_view");
+    paramViewBase = this.b.k();
     if (paramViewBase.mProteusTemplateBean == null)
     {
       QLog.e("PgcShortContentProteusItem", 1, "articleInfo.mProteusTemplateBean is null");
       return;
     }
     ViewBean localViewBean = paramViewBase.mProteusTemplateBean.getViewBean().findViewFromChild("id_pgc_short_content_video_audio_icon");
-    ViewBase localViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getParent().findViewBaseByName("id_pgc_short_content_video_audio_icon");
+    ViewBase localViewBase = this.a.getParent().findViewBaseByName("id_pgc_short_content_video_audio_icon");
     if ((localViewBase != null) && (localReadInJoyVideoView != null))
     {
       if (localViewBean == null) {
@@ -47,7 +47,7 @@ class PgcShortContentProteusItem$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem.14
  * JD-Core Version:    0.7.0.1
  */

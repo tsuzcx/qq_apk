@@ -22,15 +22,15 @@ class DefaultItemBuilder$1$1
     }
     LottieDrawable localLottieDrawable = new LottieDrawable();
     localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.setImagesAssetsFolder(this.a.b);
+    localLottieDrawable.setImagesAssetsFolder(this.a.c);
     localLottieDrawable.setColorFilter(-16777216, PorterDuff.Mode.MULTIPLY);
-    this.a.a.a = localLottieDrawable;
+    this.a.d.i = localLottieDrawable;
     ThreadManagerV2.getUIHandlerV2().post(new DefaultItemBuilder.1.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1.1
  * JD-Core Version:    0.7.0.1
  */

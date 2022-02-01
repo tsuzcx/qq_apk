@@ -25,32 +25,9 @@ import mqq.os.MqqHandler;
 public class AVGameUtilService
   extends AppService
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static long b;
-  private long jdField_a_of_type_Long = 0L;
-  
-  private void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVGameUtilService", 2, "startServiceForeground ");
-    }
-    long l = GameEngine.a().a().a();
-    if (l == 0L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AVGameUtilService", 2, "startServiceForeground roomId == 0, return");
-      }
-      return;
-    }
-    Object localObject = new Intent();
-    ((Intent)localObject).setComponent(new ComponentName(getApplicationContext(), "com.tencent.avgame.ui.AVGameActivity"));
-    ((Intent)localObject).putExtra("key_room_be_new_enter", false);
-    ((Intent)localObject).putExtra("key_room_id", String.valueOf(l));
-    String str1 = getResources().getString(2131690407);
-    String str2 = getResources().getString(2131690406);
-    localObject = PendingIntent.getActivity(getApplication(), 0, (Intent)localObject, 134217728);
-    startForeground(3000531, NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_OTHER").setSmallIcon(2130840405).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis()).setContentTitle(str1).setContentText(str2).setContentIntent((PendingIntent)localObject).build());
-  }
+  private static long b = 0L;
+  private static boolean c = false;
+  private long a = 0L;
   
   public static void a(Context paramContext)
   {
@@ -83,7 +60,7 @@ public class AVGameUtilService
     {
       l2 = 0L;
     }
-    jdField_a_of_type_Boolean = paramBoolean;
+    c = paramBoolean;
     if (QLog.isColorLevel())
     {
       paramIntent = new StringBuilder();
@@ -149,7 +126,7 @@ public class AVGameUtilService
       }
       return;
     }
-    if (AVGameServerIPCModule.a())
+    if (AVGameServerIPCModule.b())
     {
       if (paramBoolean) {
         a(paramAppRuntime);
@@ -159,7 +136,7 @@ public class AVGameUtilService
       }
       return;
     }
-    if (jdField_a_of_type_Boolean)
+    if (c)
     {
       if (paramBoolean) {
         a(paramAppRuntime);
@@ -186,7 +163,7 @@ public class AVGameUtilService
         }
         return;
       }
-      float f = ProcessMonitor.a();
+      float f = ProcessMonitor.e();
       if (f < 0.2F)
       {
         if (QLog.isColorLevel())
@@ -206,7 +183,7 @@ public class AVGameUtilService
       Intent localIntent = new Intent(paramAppRuntime.getApp(), AVGameUtilService.class);
       localIntent.putExtra("key_start_time", l);
       paramAppRuntime.getApp().startService(localIntent);
-      jdField_a_of_type_Boolean = false;
+      c = false;
       b = SystemClock.elapsedRealtime();
       if (QLog.isColorLevel())
       {
@@ -222,10 +199,33 @@ public class AVGameUtilService
   
   public static boolean a()
   {
-    if (AVGameServerIPCModule.a()) {
+    if (AVGameServerIPCModule.b()) {
       return true;
     }
-    return jdField_a_of_type_Boolean;
+    return c;
+  }
+  
+  private void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVGameUtilService", 2, "startServiceForeground ");
+    }
+    long l = GameEngine.a().s().i();
+    if (l == 0L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AVGameUtilService", 2, "startServiceForeground roomId == 0, return");
+      }
+      return;
+    }
+    Object localObject = new Intent();
+    ((Intent)localObject).setComponent(new ComponentName(getApplicationContext(), "com.tencent.avgame.ui.AVGameActivity"));
+    ((Intent)localObject).putExtra("key_room_be_new_enter", false);
+    ((Intent)localObject).putExtra("key_room_id", String.valueOf(l));
+    String str1 = getResources().getString(2131887318);
+    String str2 = getResources().getString(2131887317);
+    localObject = PendingIntent.getActivity(getApplication(), 0, (Intent)localObject, 134217728);
+    startForeground(3000531, NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_OTHER").setSmallIcon(2130841158).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis()).setContentTitle(str1).setContentText(str2).setContentIntent((PendingIntent)localObject).build());
   }
   
   public static void b(Context paramContext)
@@ -264,7 +264,7 @@ public class AVGameUtilService
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onDestroy, cost[");
-      localStringBuilder.append(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+      localStringBuilder.append(SystemClock.elapsedRealtime() - this.a);
       localStringBuilder.append("]");
       QLog.i("AVGameUtilService", 2, localStringBuilder.toString());
     }
@@ -276,7 +276,7 @@ public class AVGameUtilService
     paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
     if (paramIntent != null)
     {
-      this.jdField_a_of_type_Long = paramIntent.getLongExtra("key_start_time", 0L);
+      this.a = paramIntent.getLongExtra("key_start_time", 0L);
       boolean bool1 = paramIntent.getBooleanExtra("key_start_foreground", false);
       boolean bool2 = paramIntent.getBooleanExtra("key_stop_foreground", false);
       if (QLog.isColorLevel())
@@ -290,7 +290,7 @@ public class AVGameUtilService
       }
       if (bool1)
       {
-        a();
+        b();
         return paramInt1;
       }
       if (bool2)
@@ -303,16 +303,16 @@ public class AVGameUtilService
     {
       paramIntent = new StringBuilder();
       paramIntent.append("onStartCommand, cost[");
-      paramIntent.append(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+      paramIntent.append(SystemClock.elapsedRealtime() - this.a);
       paramIntent.append("], start[");
-      paramIntent.append(this.jdField_a_of_type_Long);
+      paramIntent.append(this.a);
       paramIntent.append("]");
       QLog.i("AVGameUtilService", 2, paramIntent.toString());
     }
     if ((this.app instanceof BaseAVGameAppInterface))
     {
       paramIntent = new Intent("tencent.avgame.g2q.preload");
-      paramIntent.putExtra("key_start_time", this.jdField_a_of_type_Long);
+      paramIntent.putExtra("key_start_time", this.a);
       paramIntent.putExtra("key_end_time", SystemClock.elapsedRealtime());
       ((BaseAVGameAppInterface)this.app).getApp().sendBroadcast(paramIntent);
       if (QLog.isColorLevel())

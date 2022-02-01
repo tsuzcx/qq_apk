@@ -13,8 +13,8 @@ import android.widget.TextView;
 public class ReadInJoyVideoAdHighLightBar
   extends FrameLayout
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private View a;
+  private TextView b;
   
   public ReadInJoyVideoAdHighLightBar(@NonNull Context paramContext)
   {
@@ -34,26 +34,26 @@ public class ReadInJoyVideoAdHighLightBar
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131560061, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368181));
+    this.a = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131626107, this);
+    this.b = ((TextView)this.a.findViewById(2131435043));
   }
   
   public void setText(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    if (this.b != null)
     {
       if (!TextUtils.isEmpty(paramString))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+        this.b.setText(paramString);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("查看详情");
+      this.b.setText("查看详情");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyVideoAdHighLightBar
  * JD-Core Version:    0.7.0.1
  */

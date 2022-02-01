@@ -12,20 +12,20 @@ class NetManager$4
   {
     if (paramInt != 0)
     {
-      this.jdField_a_of_type_ComTencentTreasurecardNetINetCallBack.a(paramInt, "signRequest is failed");
+      this.a.a(paramInt, "signRequest is failed");
       return;
     }
     if (!(paramObject instanceof String))
     {
-      this.jdField_a_of_type_ComTencentTreasurecardNetINetCallBack.a(paramInt, "pcId is error");
+      this.a.a(paramInt, "url is error");
       return;
     }
-    this.jdField_a_of_type_ComTencentTreasurecardManagerNetManager.a.a((String)paramObject, this.b);
+    this.c.a.a((String)paramObject, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.treasurecard.manager.NetManager.4
  * JD-Core Version:    0.7.0.1
  */

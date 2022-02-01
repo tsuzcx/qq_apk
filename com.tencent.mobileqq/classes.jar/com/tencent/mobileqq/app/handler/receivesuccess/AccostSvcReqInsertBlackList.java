@@ -13,7 +13,7 @@ public class AccostSvcReqInsertBlackList
     {
       paramToServiceMsg = paramToServiceMsg.extraData.getString("insertUin");
       if (paramFromServiceMsg.getResultCode() == 1000) {
-        paramMessageHandler.a(paramToServiceMsg);
+        paramMessageHandler.b(paramToServiceMsg);
       }
       boolean bool;
       if (paramFromServiceMsg.getResultCode() == 1000) {
@@ -27,7 +27,7 @@ public class AccostSvcReqInsertBlackList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.AccostSvcReqInsertBlackList
  * JD-Core Version:    0.7.0.1
  */

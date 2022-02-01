@@ -11,14 +11,9 @@ import org.json.JSONObject;
 public class TroopMemRecommendConfBean
 {
   public int a;
-  public List<Long> a;
   public int b;
   public int c = 0;
-  
-  public TroopMemRecommendConfBean()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public List<Long> d = new ArrayList();
   
   public static TroopMemRecommendConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -32,12 +27,12 @@ public class TroopMemRecommendConfBean
         Object localObject = paramArrayOfQConfItem[i];
         if (localObject != null)
         {
-          localObject = ((QConfItem)localObject).a;
+          localObject = ((QConfItem)localObject).b;
           try
           {
             localObject = new JSONObject((String)localObject);
             if (((JSONObject)localObject).has("gtcSwitch")) {
-              localTroopMemRecommendConfBean.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("gtcSwitch");
+              localTroopMemRecommendConfBean.a = ((JSONObject)localObject).optInt("gtcSwitch");
             }
             if (((JSONObject)localObject).has("groupMemberCount")) {
               localTroopMemRecommendConfBean.b = ((JSONObject)localObject).optInt("groupMemberCount");
@@ -48,7 +43,7 @@ public class TroopMemRecommendConfBean
             if (((JSONObject)localObject).has("enabledGroupTypes"))
             {
               localObject = ((JSONObject)localObject).optJSONArray("enabledGroupTypes");
-              localTroopMemRecommendConfBean.jdField_a_of_type_JavaUtilList.addAll(a((JSONArray)localObject));
+              localTroopMemRecommendConfBean.d.addAll(a((JSONArray)localObject));
             }
           }
           catch (JSONException localJSONException)
@@ -96,20 +91,20 @@ public class TroopMemRecommendConfBean
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
     localStringBuilder.append("TroopMemRecommendConfBean [gtcSwitch: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", groupMemberCount: ");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", allGroupTypesEnable: ");
     localStringBuilder.append(this.c);
     localStringBuilder.append(", enabledGroupTypes: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.toString());
+    localStringBuilder.append(this.d.toString());
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TroopMemRecommendConfBean
  * JD-Core Version:    0.7.0.1
  */

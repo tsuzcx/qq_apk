@@ -23,47 +23,46 @@ import mqq.app.AppRuntime;
 public class UFTTroopExtfUploadFileOp
   extends UFTTroopUploadFileOp
 {
-  protected ExcitingTransferUploadResultRp a;
-  protected boolean c = false;
+  protected boolean a = false;
+  protected ExcitingTransferUploadResultRp b = null;
   
   public UFTTroopExtfUploadFileOp(AppRuntime paramAppRuntime, UFTTroopUploadTaskInfo paramUFTTroopUploadTaskInfo, UFTTransferKey paramUFTTransferKey, UFTBaseUploadFileOp.UFTUploadFileOpCallback paramUFTUploadFileOpCallback)
   {
     super(paramAppRuntime, paramUFTTroopUploadTaskInfo, paramUFTTransferKey, paramUFTUploadFileOpCallback);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp = null;
   }
   
   protected int a(UFTTroopUploadTaskInfo paramUFTTroopUploadTaskInfo, UFTUploadSrvBusiProp.TroopUploadSrvBusiProp paramTroopUploadSrvBusiProp)
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("TId[");
-    ((StringBuilder)localObject1).append(a());
+    ((StringBuilder)localObject1).append(i());
     ((StringBuilder)localObject1).append("] start troop extf upload. useIPv6:");
-    ((StringBuilder)localObject1).append(this.c);
+    ((StringBuilder)localObject1).append(this.a);
     UFTLog.b("[UFTTransfer] UFTTroopExtfUploadFileOp", 1, ((StringBuilder)localObject1).toString());
     localObject1 = new UFTFileUploaderProp.ExtfFUperProp();
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a(paramUFTTroopUploadTaskInfo.a());
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a(paramUFTTroopUploadTaskInfo.a());
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).b(Long.valueOf(paramUFTTroopUploadTaskInfo.c()).longValue());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a(paramUFTTroopUploadTaskInfo.n());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a(paramUFTTroopUploadTaskInfo.c());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).b(Long.valueOf(paramUFTTroopUploadTaskInfo.a()).longValue());
     ((UFTFileUploaderProp.ExtfFUperProp)localObject1).d(71);
     ((UFTFileUploaderProp.ExtfFUperProp)localObject1).c(102);
     ((UFTFileUploaderProp.ExtfFUperProp)localObject1).b(1);
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).c(Long.valueOf(paramUFTTroopUploadTaskInfo.c()).longValue());
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().b(paramUFTTroopUploadTaskInfo.a().a());
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().a(paramUFTTroopUploadTaskInfo.a().b());
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().c(paramUFTTroopUploadTaskInfo.a().d());
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().d(paramUFTTroopUploadTaskInfo.a().c());
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().f(paramTroopUploadSrvBusiProp.a());
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().e(paramTroopUploadSrvBusiProp.b());
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().b(paramUFTTroopUploadTaskInfo.a());
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().a(paramUFTTroopUploadTaskInfo.d());
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().a(paramUFTTroopUploadTaskInfo.b());
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().a(false);
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).c(Long.valueOf(paramUFTTroopUploadTaskInfo.a()).longValue());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).g().b(paramUFTTroopUploadTaskInfo.r().b());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).g().a(paramUFTTroopUploadTaskInfo.r().c());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).g().c(paramUFTTroopUploadTaskInfo.r().e());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).g().d(paramUFTTroopUploadTaskInfo.r().d());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).g().f(paramTroopUploadSrvBusiProp.i());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).g().e(paramTroopUploadSrvBusiProp.k());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).g().b(paramUFTTroopUploadTaskInfo.o());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).g().a(paramUFTTroopUploadTaskInfo.b());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).g().a(paramUFTTroopUploadTaskInfo.p());
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).h().a(false);
     paramUFTTroopUploadTaskInfo = new ArrayList();
-    int i = UFTDependFeatureApi.a(this.jdField_a_of_type_MqqAppAppRuntime, this.c, 3, paramUFTTroopUploadTaskInfo);
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().a(paramUFTTroopUploadTaskInfo);
+    int i = UFTDependFeatureApi.a(this.g, this.a, 3, paramUFTTroopUploadTaskInfo);
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).h().a(paramUFTTroopUploadTaskInfo);
     paramUFTTroopUploadTaskInfo = new ArrayList();
-    Object localObject2 = paramTroopUploadSrvBusiProp.b();
-    int j = paramTroopUploadSrvBusiProp.a();
+    Object localObject2 = paramTroopUploadSrvBusiProp.l();
+    int j = paramTroopUploadSrvBusiProp.n();
     if ((localObject2 != null) && (((List)localObject2).size() > 0))
     {
       localObject2 = ((List)localObject2).iterator();
@@ -71,9 +70,9 @@ public class UFTTroopExtfUploadFileOp
         paramUFTTroopUploadTaskInfo.add(new UFTHost((String)((Iterator)localObject2).next(), j));
       }
     }
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().b(paramUFTTroopUploadTaskInfo);
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).h().b(paramUFTTroopUploadTaskInfo);
     paramUFTTroopUploadTaskInfo = new ArrayList();
-    localObject2 = paramTroopUploadSrvBusiProp.c();
+    localObject2 = paramTroopUploadSrvBusiProp.m();
     if ((localObject2 != null) && (((List)localObject2).size() > 0))
     {
       localObject2 = ((List)localObject2).iterator();
@@ -81,7 +80,7 @@ public class UFTTroopExtfUploadFileOp
         paramUFTTroopUploadTaskInfo.add(new UFTHost((String)((Iterator)localObject2).next(), j));
       }
     }
-    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).a().c(paramUFTTroopUploadTaskInfo);
+    ((UFTFileUploaderProp.ExtfFUperProp)localObject1).h().c(paramUFTTroopUploadTaskInfo);
     if ((i != 2) && (i != 3))
     {
       paramTroopUploadSrvBusiProp.b(false);
@@ -95,23 +94,23 @@ public class UFTTroopExtfUploadFileOp
       }
     }
     paramTroopUploadSrvBusiProp.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader = UFTFileTransferFactory.a(this.jdField_a_of_type_MqqAppAppRuntime, (UFTFileUploaderProp.ExtfFUperProp)localObject1);
-    if (this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader == null)
+    this.c = UFTFileTransferFactory.a(this.g, (UFTFileUploaderProp.ExtfFUperProp)localObject1);
+    if (this.c == null)
     {
       paramUFTTroopUploadTaskInfo = new StringBuilder();
       paramUFTTroopUploadTaskInfo.append("TId[");
-      paramUFTTroopUploadTaskInfo.append(a());
+      paramUFTTroopUploadTaskInfo.append(i());
       paramUFTTroopUploadTaskInfo.append("] upload error. cannot create extf uploader");
       UFTLog.d("[UFTTransfer] UFTTroopExtfUploadFileOp", 1, paramUFTTroopUploadTaskInfo.toString());
       c("file uploader cannt create");
       return 3;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader.a(this);
-    if (!this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader.a(0L))
+    this.c.a(this);
+    if (!this.c.a(0L))
     {
       paramUFTTroopUploadTaskInfo = new StringBuilder();
       paramUFTTroopUploadTaskInfo.append("TId[");
-      paramUFTTroopUploadTaskInfo.append(a());
+      paramUFTTroopUploadTaskInfo.append(i());
       paramUFTTroopUploadTaskInfo.append("] upload error. extf uploader start fail");
       UFTLog.d("[UFTTransfer] UFTTroopExtfUploadFileOp", 1, paramUFTTroopUploadTaskInfo.toString());
       c("run upload file fail");
@@ -122,8 +121,8 @@ public class UFTTroopExtfUploadFileOp
   
   protected void a(UFTBaseUploadFileOp.UploadFileOpRetData paramUploadFileOpRetData)
   {
-    if ((paramUploadFileOpRetData.a() != null) && ((paramUploadFileOpRetData.a() instanceof ExcitingTransferUploadResultRp))) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp = ((ExcitingTransferUploadResultRp)paramUploadFileOpRetData.a());
+    if ((paramUploadFileOpRetData.f() != null) && ((paramUploadFileOpRetData.f() instanceof ExcitingTransferUploadResultRp))) {
+      this.b = ((ExcitingTransferUploadResultRp)paramUploadFileOpRetData.f());
     }
     super.a(paramUploadFileOpRetData);
   }
@@ -133,34 +132,34 @@ public class UFTTroopExtfUploadFileOp
     return true;
   }
   
-  protected int b()
+  public long b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp = null;
-    this.c = ((UFTTroopUploadTaskInfo)this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo).a().a().d();
+    ExcitingTransferUploadResultRp localExcitingTransferUploadResultRp = this.b;
+    if (localExcitingTransferUploadResultRp != null) {
+      return localExcitingTransferUploadResultRp.mu64HttpTime;
+    }
     return super.b();
+  }
+  
+  protected int c()
+  {
+    this.b = null;
+    this.a = ((UFTTroopUploadTaskInfo)this.h).s().a().d();
+    return super.c();
   }
   
   public long d()
   {
-    ExcitingTransferUploadResultRp localExcitingTransferUploadResultRp = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp;
-    if (localExcitingTransferUploadResultRp != null) {
-      return localExcitingTransferUploadResultRp.mu64HttpTime;
-    }
-    return super.d();
-  }
-  
-  public long e()
-  {
-    ExcitingTransferUploadResultRp localExcitingTransferUploadResultRp = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp;
+    ExcitingTransferUploadResultRp localExcitingTransferUploadResultRp = this.b;
     if (localExcitingTransferUploadResultRp != null) {
       return localExcitingTransferUploadResultRp.mu64TransferSpeed;
     }
-    return super.e();
+    return super.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTTroopExtfUploadFileOp
  * JD-Core Version:    0.7.0.1
  */

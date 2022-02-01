@@ -11,14 +11,14 @@ class QidianProfileCardActivity$10
   
   public void run()
   {
-    String str = String.valueOf(this.jdField_a_of_type_ComTencentQidianDataGroupItem.a);
-    this.this$0.a.put(str, new QidianProfileCardActivity.PaGroupStruct(this.jdField_a_of_type_ComTencentImageURLImageView, 3, str));
-    this.this$0.a(3, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
+    String str = String.valueOf(this.a.a);
+    this.this$0.h.put(str, new QidianProfileCardActivity.PaGroupStruct(this.b, 3, str));
+    this.this$0.a(3, this.b, str, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.10
  * JD-Core Version:    0.7.0.1
  */

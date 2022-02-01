@@ -10,12 +10,12 @@ public class ShortVideoResourceManager$BASE
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ShortVideoResourceManager.b);
+    localStringBuilder.append(ShortVideoResourceManager.c);
     localStringBuilder.append(File.separator);
     localStringBuilder.append("ae");
     a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ShortVideoResourceManager.a);
+    localStringBuilder.append(ShortVideoResourceManager.b);
     localStringBuilder.append(File.separator);
     localStringBuilder.append("ae");
     b = localStringBuilder.toString();
@@ -23,7 +23,7 @@ public class ShortVideoResourceManager$BASE
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.BASE
  * JD-Core Version:    0.7.0.1
  */

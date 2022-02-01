@@ -44,19 +44,19 @@ import mqq.os.MqqHandler;
 public class DeviceComnFileMsgProcessor
   extends DeviceFileObserver
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<DeviceFileObserver.CallbackPack> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ConcurrentHashMap<Long, DeviceFileObserver.SessionPack> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
+  private final QQAppInterface a;
+  private ConcurrentHashMap<Long, DeviceFileObserver.SessionPack> b = new ConcurrentHashMap(20);
+  private ArrayList<DeviceFileObserver.CallbackPack> c = new ArrayList();
   
   public DeviceComnFileMsgProcessor(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   private void a(List<MessageRecord> paramList)
   {
     long l = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    this.a.getMessageFacade().a(paramList, this.a.getCurrentAccountUin());
     if (QLog.isDevelopLevel())
     {
       paramList = new StringBuilder();
@@ -69,18 +69,18 @@ public class DeviceComnFileMsgProcessor
   private void b(MessageForDeviceFile paramMessageForDeviceFile)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.c.size())
     {
-      Object localObject = (DeviceFileObserver.CallbackPack)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      Object localObject = (DeviceFileObserver.CallbackPack)this.c.get(i);
       View localView = ((DeviceFileObserver.CallbackPack)localObject).a();
-      localObject = ((DeviceFileObserver.CallbackPack)localObject).a();
+      localObject = ((DeviceFileObserver.CallbackPack)localObject).b();
       if ((localView != null) && (localObject != null))
       {
         ((MessageForDeviceFile.DeviceFileItemCallback)localObject).a(localView, paramMessageForDeviceFile);
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        this.c.remove(i);
         i -= 1;
       }
       i += 1;
@@ -89,14 +89,14 @@ public class DeviceComnFileMsgProcessor
   
   public MessageForDeviceFile a(Long paramLong)
   {
-    paramLong = (DeviceFileObserver.SessionPack)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramLong);
+    paramLong = (DeviceFileObserver.SessionPack)this.b.get(paramLong);
     if (paramLong == null) {
       return null;
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface))
     {
-      paramLong = ((QQAppInterface)localAppRuntime).getMessageFacade().a(paramLong.jdField_a_of_type_JavaLangString, paramLong.jdField_a_of_type_Int, paramLong.jdField_a_of_type_Long);
+      paramLong = ((QQAppInterface)localAppRuntime).getMessageFacade().a(paramLong.a, paramLong.b, paramLong.c);
       if (paramLong == null)
       {
         if (QLog.isColorLevel()) {
@@ -113,7 +113,7 @@ public class DeviceComnFileMsgProcessor
   
   public MessageForDeviceFile a(String paramString, MessageForDeviceFile paramMessageForDeviceFile)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramMessageForDeviceFile.frienduin, paramMessageForDeviceFile.istroop, paramMessageForDeviceFile.uniseq);
+    this.a.getMessageFacade().h(paramMessageForDeviceFile.frienduin, paramMessageForDeviceFile.istroop, paramMessageForDeviceFile.uniseq);
     ArrayList localArrayList = new ArrayList();
     MessageForDeviceFile localMessageForDeviceFile = (MessageForDeviceFile)MessageRecordFactory.a(paramMessageForDeviceFile);
     if ("device_groupchat".equals(paramMessageForDeviceFile.extStr))
@@ -121,11 +121,11 @@ public class DeviceComnFileMsgProcessor
       localMessageForDeviceFile.strServiceName = paramString;
       localMessageForDeviceFile.filePath = localMessageForDeviceFile.filePath;
       localMessageForDeviceFile.srcFileName = FileManagerUtil.a(localMessageForDeviceFile.filePath);
-      localMessageForDeviceFile.fileSize = FileManagerUtil.a(localMessageForDeviceFile.filePath);
+      localMessageForDeviceFile.fileSize = FileManagerUtil.h(localMessageForDeviceFile.filePath);
       localMessageForDeviceFile.msgStatus = 2;
       localMessageForDeviceFile.nFileStatus = 1;
       localMessageForDeviceFile.progress = 0.0F;
-      ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForDeviceFile);
+      ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForDeviceFile);
       if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
         localMessageForDeviceFile.nFileStatus = 6;
@@ -134,11 +134,11 @@ public class DeviceComnFileMsgProcessor
       localMessageForDeviceFile.serial();
       paramString = ImageUtil.a(BaseApplication.getContext(), Uri.parse(localMessageForDeviceFile.filePath));
       ImageUtil.a(BaseApplication.getContext(), localMessageForDeviceFile.filePath, paramString, 160, 160);
-      DeviceMsgChatPie.a(((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(localMessageForDeviceFile.frienduin), localMessageForDeviceFile.filePath, paramString), localMessageForDeviceFile);
+      DeviceMsgChatPie.a(((SmartDeviceProxyMgr)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(localMessageForDeviceFile.frienduin), localMessageForDeviceFile.filePath, paramString), localMessageForDeviceFile);
     }
     else
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramMessageForDeviceFile.uSessionID));
+      this.b.remove(Long.valueOf(paramMessageForDeviceFile.uSessionID));
       String str1 = paramMessageForDeviceFile.filePath;
       String str2 = paramMessageForDeviceFile.frienduin;
       localMessageForDeviceFile.strServiceName = paramString;
@@ -148,19 +148,19 @@ public class DeviceComnFileMsgProcessor
       localMessageForDeviceFile.nFileStatus = 1;
       localMessageForDeviceFile.progress = 0.0F;
       localMessageForDeviceFile.nFileMsgType = paramMessageForDeviceFile.nFileMsgType;
-      localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691562);
+      localMessageForDeviceFile.msg = this.a.getApp().getString(2131888524);
       if (paramString.compareTo(DeviceMsgHandle.d) == 0)
       {
-        localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691563);
+        localMessageForDeviceFile.msg = this.a.getApp().getString(2131888525);
       }
       else if (paramString.compareTo(DeviceMsgHandle.c) == 0)
       {
-        localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691561);
+        localMessageForDeviceFile.msg = this.a.getApp().getString(2131888523);
         localMessageForDeviceFile.copies = paramMessageForDeviceFile.copies;
         localMessageForDeviceFile.duplexMode = paramMessageForDeviceFile.duplexMode;
       }
-      ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForDeviceFile);
-      paramMessageForDeviceFile = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+      ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForDeviceFile);
+      paramMessageForDeviceFile = (SmartDeviceProxyMgr)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
       if ((paramMessageForDeviceFile != null) && (paramMessageForDeviceFile.a(str2)))
       {
         if (paramString.compareTo(DeviceMsgHandle.d) == 0)
@@ -173,7 +173,7 @@ public class DeviceComnFileMsgProcessor
         }
         else
         {
-          paramString = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(str1, paramString, null, Long.parseLong(str2));
+          paramString = ((DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(str1, paramString, null, Long.parseLong(str2));
           if (paramString == null) {
             return localMessageForDeviceFile;
           }
@@ -182,13 +182,13 @@ public class DeviceComnFileMsgProcessor
       }
       else
       {
-        paramString = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(str1, paramString, null, Long.parseLong(str2));
+        paramString = ((DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(str1, paramString, null, Long.parseLong(str2));
         if (paramString == null) {
           return localMessageForDeviceFile;
         }
         localMessageForDeviceFile.uSessionID = paramString.uSessionID;
       }
-      localMessageForDeviceFile.fileSize = FileManagerUtil.a(str1);
+      localMessageForDeviceFile.fileSize = FileManagerUtil.h(str1);
       if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
         localMessageForDeviceFile.nFileStatus = 6;
@@ -204,10 +204,10 @@ public class DeviceComnFileMsgProcessor
   
   public void a(long paramLong1, String paramString, int paramInt, long paramLong2)
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong1)))
+    if (!this.b.containsKey(Long.valueOf(paramLong1)))
     {
       paramString = new DeviceFileObserver.SessionPack(this, paramString, paramInt, paramLong2);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), paramString);
+      this.b.put(Long.valueOf(paramLong1), paramString);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -233,7 +233,7 @@ public class DeviceComnFileMsgProcessor
   
   public void a(View paramView, MessageForDeviceFile.DeviceFileItemCallback paramDeviceFileItemCallback)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       DeviceFileObserver.CallbackPack localCallbackPack = (DeviceFileObserver.CallbackPack)localIterator.next();
@@ -243,7 +243,7 @@ public class DeviceComnFileMsgProcessor
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new DeviceFileObserver.CallbackPack(this, paramView, paramDeviceFileItemCallback));
+    this.c.add(new DeviceFileObserver.CallbackPack(this, paramView, paramDeviceFileItemCallback));
   }
   
   public void a(Session paramSession, float paramFloat)
@@ -265,12 +265,12 @@ public class DeviceComnFileMsgProcessor
     if (!paramSession.bSend) {
       DeviceCommonMsgProcessor.a(paramSession, paramBoolean);
     }
-    Object localObject1 = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    Object localObject1 = (SmartDeviceProxyMgr)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
     MessageForDeviceFile localMessageForDeviceFile = a(Long.valueOf(paramSession.uSessionID));
     if (localMessageForDeviceFile == null) {
       return;
     }
-    Object localObject2 = ((SmartDeviceProxyMgr)localObject1).a(Long.parseLong(localMessageForDeviceFile.frienduin));
+    Object localObject2 = ((SmartDeviceProxyMgr)localObject1).g(Long.parseLong(localMessageForDeviceFile.frienduin));
     int i;
     long l;
     if (localObject2 != null)
@@ -284,12 +284,12 @@ public class DeviceComnFileMsgProcessor
       i = 0;
     }
     if (paramSession.actionInfo.strServiceName.compareTo(DeviceMsgHandle.d) == 0) {
-      SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l, "Net_SendMsg_Pic", 0, paramBoolean ^ true, i);
+      SmartDeviceReport.a(this.a, l, "Net_SendMsg_Pic", 0, paramBoolean ^ true, i);
     }
     if ((paramSession.actionInfo.strServiceName.compareTo(DeviceMsgHandle.c) == 0) && (paramSession.bSend) && (paramBoolean))
     {
       String str = new String(paramSession.vFileMD5Src);
-      localObject2 = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(paramSession);
+      localObject2 = ((DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).b(paramSession);
       Bundle localBundle = new Bundle();
       localBundle.putInt("copies", localMessageForDeviceFile.copies);
       localBundle.putInt("duplexMode", localMessageForDeviceFile.duplexMode);
@@ -309,15 +309,15 @@ public class DeviceComnFileMsgProcessor
       ((MessageForDeviceFile)localObject1).fileSize = paramSession.uFileSizeSrc;
       ((MessageForDeviceFile)localObject1).issend = 0;
       ((MessageForDeviceFile)localObject1).isread = true;
-      ((MessageForDeviceFile)localObject1).selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      ((MessageForDeviceFile)localObject1).selfuin = this.a.getCurrentAccountUin();
       ((MessageForDeviceFile)localObject1).senderuin = localMessageForDeviceFile.frienduin;
       ((MessageForDeviceFile)localObject1).frienduin = localMessageForDeviceFile.frienduin;
       ((MessageForDeviceFile)localObject1).msgStatus = 2;
       ((MessageForDeviceFile)localObject1).nFileStatus = 1;
-      ((MessageForDeviceFile)localObject1).time = MessageCache.a();
+      ((MessageForDeviceFile)localObject1).time = MessageCache.c();
       ((MessageForDeviceFile)localObject1).progress = 0.0F;
       ((MessageForDeviceFile)localObject1).uSessionID = ((Session)localObject2).uSessionID;
-      ((MessageForDeviceFile)localObject1).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691561);
+      ((MessageForDeviceFile)localObject1).msg = this.a.getApp().getString(2131888523);
       ((MessageForDeviceFile)localObject1).nFileMsgType = 1;
       ((MessageForDeviceFile)localObject1).copies = localMessageForDeviceFile.copies;
       ((MessageForDeviceFile)localObject1).duplexMode = localMessageForDeviceFile.duplexMode;
@@ -328,8 +328,8 @@ public class DeviceComnFileMsgProcessor
       ((MessageForDeviceFile)localObject1).uint32_src_uin_type = 1;
       ((MessageForDeviceFile)localObject1).serial();
       a(((MessageForDeviceFile)localObject1).uSessionID, ((MessageForDeviceFile)localObject1).frienduin, ((MessageForDeviceFile)localObject1).istroop, ((MessageForDeviceFile)localObject1).uniseq);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.handleReceivedMessage(1, false, true);
+      this.a.getMessageFacade().a((MessageRecord)localObject1, this.a.getCurrentAccountUin());
+      this.a.handleReceivedMessage(1, false, true);
       ThreadManager.getUIHandler().postDelayed(new DeviceComnFileMsgProcessor.1(this, (MessageForDeviceFile)localObject1), 900000L);
     }
     a(paramSession.actionInfo.strServiceName, paramSession.uSessionID, paramBoolean);
@@ -342,10 +342,10 @@ public class DeviceComnFileMsgProcessor
     }
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramMessageForDeviceFile);
-    if (((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(localArrayList)) {
+    if (((DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(localArrayList)) {
       return;
     }
-    FMToastUtil.a(2131693760);
+    FMToastUtil.a(2131891335);
   }
   
   public void a(MessageRecord paramMessageRecord, float paramFloat)
@@ -382,9 +382,9 @@ public class DeviceComnFileMsgProcessor
         paramMessageRecord.msgStatus = 1;
       }
       paramMessageRecord.serial();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMessageRecord.frienduin, 9501, paramMessageRecord.uniseq, paramMessageRecord.msgData);
+      this.a.getMessageFacade().a(paramMessageRecord.frienduin, 9501, paramMessageRecord.uniseq, paramMessageRecord.msgData);
       b(paramMessageRecord);
-      paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+      paramMessageRecord = this.a.getHandler(Conversation.class);
       if (paramMessageRecord != null) {
         paramMessageRecord.sendEmptyMessage(1009);
       }
@@ -397,7 +397,7 @@ public class DeviceComnFileMsgProcessor
     if (localMessageForDeviceFile == null) {
       return;
     }
-    DeviceInfo localDeviceInfo = ((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(localMessageForDeviceFile.frienduin));
+    DeviceInfo localDeviceInfo = ((SmartDeviceProxyMgr)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).g(Long.parseLong(localMessageForDeviceFile.frienduin));
     int i;
     if (localDeviceInfo != null) {
       i = localDeviceInfo.productId;
@@ -416,26 +416,26 @@ public class DeviceComnFileMsgProcessor
       localMessageForDeviceFile.msgStatus = 1;
       localMessageForDeviceFile.progress = 0.0F;
     }
-    localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691282);
+    localMessageForDeviceFile.msg = this.a.getApp().getString(2131888232);
     if (paramString.compareTo(DeviceMsgHandle.d) == 0)
     {
-      localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691286);
+      localMessageForDeviceFile.msg = this.a.getApp().getString(2131888236);
     }
     else if (paramString.compareTo(DeviceMsgHandle.c) == 0)
     {
-      localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691561);
+      localMessageForDeviceFile.msg = this.a.getApp().getString(2131888523);
       if (!paramBoolean)
       {
-        paramString = (DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER);
+        paramString = (DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER);
         if (localMessageForDeviceFile.isSend())
         {
           if (paramString.a(paramLong) == -5103058) {
             localMessageForDeviceFile.nFileStatus = 7;
           }
-          if (FileManagerUtil.a(localMessageForDeviceFile.filePath) == 0) {
-            SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendFile", 1, 2, i);
+          if (FileManagerUtil.c(localMessageForDeviceFile.filePath) == 0) {
+            SmartDeviceReport.a(this.a, "Usr_CloudPrint_SendFile", 1, 2, i);
           } else {
-            SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendFile", 2, 2, i);
+            SmartDeviceReport.a(this.a, "Usr_CloudPrint_SendFile", 2, 2, i);
           }
         }
         else
@@ -507,20 +507,20 @@ public class DeviceComnFileMsgProcessor
           else {
             localMessageForDeviceFile.nFileStatus = 10;
           }
-          SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendPrint", 2, j, i);
+          SmartDeviceReport.a(this.a, "Usr_CloudPrint_SendPrint", 2, j, i);
         }
       }
       else if (localMessageForDeviceFile.isSend())
       {
-        if (FileManagerUtil.a(localMessageForDeviceFile.filePath) == 0) {
-          SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendFile", 1, 1, i);
+        if (FileManagerUtil.c(localMessageForDeviceFile.filePath) == 0) {
+          SmartDeviceReport.a(this.a, "Usr_CloudPrint_SendFile", 1, 1, i);
         } else {
-          SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendFile", 2, 1, i);
+          SmartDeviceReport.a(this.a, "Usr_CloudPrint_SendFile", 2, 1, i);
         }
       }
       else
       {
-        SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendPrint", 1, 0, i);
+        SmartDeviceReport.a(this.a, "Usr_CloudPrint_SendPrint", 1, 0, i);
       }
     }
     if (QLog.isDevelopLevel())
@@ -531,10 +531,10 @@ public class DeviceComnFileMsgProcessor
       QLog.d("DeviceComnFileMsgProcessor", 4, paramString.toString());
     }
     localMessageForDeviceFile.serial();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageForDeviceFile.frienduin, 9501, localMessageForDeviceFile.uniseq, localMessageForDeviceFile.msgData);
+    this.a.getMessageFacade().a(localMessageForDeviceFile.frienduin, 9501, localMessageForDeviceFile.uniseq, localMessageForDeviceFile.msgData);
     b(localMessageForDeviceFile);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+    this.b.remove(Long.valueOf(paramLong));
+    paramString = this.a.getHandler(Conversation.class);
     if (paramString != null) {
       paramString.sendEmptyMessage(1009);
     }
@@ -542,10 +542,10 @@ public class DeviceComnFileMsgProcessor
   
   public void a(String paramString, AbsStructMsg paramAbsStructMsg)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    localObject = MessageRecordFactory.a((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin(), paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 9501, 100L, paramAbsStructMsg);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    ((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(paramString), paramAbsStructMsg);
+    Object localObject = this.a;
+    localObject = MessageRecordFactory.c((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin(), paramString, this.a.getCurrentAccountUin(), 9501, 100L, paramAbsStructMsg);
+    this.a.getMessageFacade().a((MessageRecord)localObject, this.a.getCurrentAccountUin());
+    ((SmartDeviceProxyMgr)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(paramString), paramAbsStructMsg);
   }
   
   public void a(String paramString1, String paramString2, List<String> paramList, Bundle paramBundle)
@@ -567,23 +567,23 @@ public class DeviceComnFileMsgProcessor
       localMessageForDeviceFile.istroop = 9501;
       localMessageForDeviceFile.filePath = str1;
       localMessageForDeviceFile.srcFileName = FileManagerUtil.a(str1);
-      localMessageForDeviceFile.fileSize = FileManagerUtil.a(str1);
+      localMessageForDeviceFile.fileSize = FileManagerUtil.h(str1);
       int i1 = 1;
       localMessageForDeviceFile.issend = 1;
       localMessageForDeviceFile.isread = true;
-      localMessageForDeviceFile.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localMessageForDeviceFile.senderuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      localMessageForDeviceFile.selfuin = this.a.getCurrentAccountUin();
+      localMessageForDeviceFile.senderuin = this.a.getCurrentAccountUin();
       localMessageForDeviceFile.frienduin = paramString2;
       localMessageForDeviceFile.msgStatus = 2;
       localMessageForDeviceFile.nFileStatus = 1;
-      localMessageForDeviceFile.time = MessageCache.a();
+      localMessageForDeviceFile.time = MessageCache.c();
       localMessageForDeviceFile.progress = 0.0F;
-      localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691562);
+      localMessageForDeviceFile.msg = this.a.getApp().getString(2131888524);
       localMessageForDeviceFile.nFileMsgType = 1;
       if (paramString1.compareTo(DeviceMsgHandle.d) == 0)
       {
         localMessageForDeviceFile.nFileMsgType = 2;
-        localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691563);
+        localMessageForDeviceFile.msg = this.a.getApp().getString(2131888525);
       }
       int i;
       if (paramString1.compareTo(DeviceMsgHandle.c) == 0)
@@ -615,7 +615,7 @@ public class DeviceComnFileMsgProcessor
           i2 = 1;
           i3 = 1;
         }
-        localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691561);
+        localMessageForDeviceFile.msg = this.a.getApp().getString(2131888523);
         localMessageForDeviceFile.copies = j;
         localMessageForDeviceFile.duplexMode = k;
         localMessageForDeviceFile.mediaSize = m;
@@ -625,8 +625,8 @@ public class DeviceComnFileMsgProcessor
         localMessageForDeviceFile.color = i;
         localMessageForDeviceFile.quality = i1;
       }
-      ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForDeviceFile);
-      localObject = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+      ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForDeviceFile);
+      localObject = (SmartDeviceProxyMgr)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
       if ((localObject != null) && (((SmartDeviceProxyMgr)localObject).a(paramString2)))
       {
         if (paramString1.compareTo(DeviceMsgHandle.d) == 0)
@@ -643,26 +643,26 @@ public class DeviceComnFileMsgProcessor
         }
         if (paramString1.compareTo(DeviceMsgHandle.c) == 0)
         {
-          localObject = ((SmartDeviceProxyMgr)localObject).a(Long.parseLong(paramString2));
+          localObject = ((SmartDeviceProxyMgr)localObject).g(Long.parseLong(paramString2));
           if (localObject != null) {
             i = ((DeviceInfo)localObject).productId;
           } else {
             i = 0;
           }
-          if (FileManagerUtil.a(str1) == 0) {
-            SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendFile", 1, 0, i);
+          if (FileManagerUtil.c(str1) == 0) {
+            SmartDeviceReport.a(this.a, "Usr_CloudPrint_SendFile", 1, 0, i);
           } else {
-            SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendFile", 2, 0, i);
+            SmartDeviceReport.a(this.a, "Usr_CloudPrint_SendFile", 2, 0, i);
           }
         }
-        localObject = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(str1, paramString1, null, Long.parseLong(paramString2));
+        localObject = ((DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(str1, paramString1, null, Long.parseLong(paramString2));
         if (localObject == null) {
           break;
         }
         localMessageForDeviceFile.uSessionID = ((Session)localObject).uSessionID;
         break label743;
       }
-      localObject = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(str1, paramString1, null, Long.parseLong(paramString2));
+      localObject = ((DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(str1, paramString1, null, Long.parseLong(paramString2));
     } while (localObject == null);
     for (;;)
     {
@@ -693,34 +693,34 @@ public class DeviceComnFileMsgProcessor
       localMessageForDeviceFile.istroop = 9501;
       localMessageForDeviceFile.filePath = ((String)localObject);
       localMessageForDeviceFile.srcFileName = FileManagerUtil.a((String)localObject);
-      localMessageForDeviceFile.fileSize = FileManagerUtil.a((String)localObject);
+      localMessageForDeviceFile.fileSize = FileManagerUtil.h((String)localObject);
       localMessageForDeviceFile.issend = 1;
       localMessageForDeviceFile.isread = true;
-      localMessageForDeviceFile.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localMessageForDeviceFile.senderuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      localMessageForDeviceFile.selfuin = this.a.getCurrentAccountUin();
+      localMessageForDeviceFile.senderuin = this.a.getCurrentAccountUin();
       localMessageForDeviceFile.frienduin = paramString;
       localMessageForDeviceFile.msgStatus = 2;
       localMessageForDeviceFile.nFileStatus = 1;
-      localMessageForDeviceFile.time = MessageCache.a();
+      localMessageForDeviceFile.time = MessageCache.c();
       localMessageForDeviceFile.progress = 0.0F;
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694384));
+      ((StringBuilder)localObject).append(this.a.getApp().getString(2131892063));
       ((StringBuilder)localObject).append(": ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691563));
+      ((StringBuilder)localObject).append(this.a.getApp().getString(2131888525));
       localMessageForDeviceFile.msg = ((StringBuilder)localObject).toString();
       localMessageForDeviceFile.nFileMsgType = 2;
       localMessageForDeviceFile.extStr = "device_groupchat";
-      ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForDeviceFile);
+      ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForDeviceFile);
       if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
         localMessageForDeviceFile.nFileStatus = 6;
         localMessageForDeviceFile.msgStatus = 1;
       }
       localMessageForDeviceFile.serial();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageForDeviceFile, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      this.a.getMessageFacade().a(localMessageForDeviceFile, this.a.getCurrentAccountUin());
       localObject = ImageUtil.a(BaseApplication.getContext(), Uri.parse(localMessageForDeviceFile.filePath));
       ImageUtil.a(BaseApplication.getContext(), localMessageForDeviceFile.filePath, (String)localObject, 160, 160);
-      int i = ((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(localMessageForDeviceFile.frienduin), localMessageForDeviceFile.filePath, (String)localObject);
+      int i = ((SmartDeviceProxyMgr)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(localMessageForDeviceFile.frienduin), localMessageForDeviceFile.filePath, (String)localObject);
       localMessageForDeviceFile.uSessionID = i;
       a(localMessageForDeviceFile.uSessionID, localMessageForDeviceFile.frienduin, localMessageForDeviceFile.istroop, localMessageForDeviceFile.uniseq);
       DeviceMsgChatPie.a(i, localMessageForDeviceFile);
@@ -733,111 +733,6 @@ public class DeviceComnFileMsgProcessor
     return true;
   }
   
-  public boolean a(String paramString, List<FileInfo> paramList)
-  {
-    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-    long l;
-    try
-    {
-      l = Long.parseLong(paramString);
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      l = 0L;
-    }
-    int i;
-    if ((localSmartDeviceProxyMgr != null) && (localSmartDeviceProxyMgr.a(l, 9))) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject = (FileInfo)paramList.next();
-      MessageForDeviceFile localMessageForDeviceFile = (MessageForDeviceFile)MessageRecordFactory.a(-4500);
-      int j = ((FileInfo)localObject).a();
-      if (j == 0) {
-        localMessageForDeviceFile.strServiceName = DeviceMsgHandle.d;
-      } else if (i != 0)
-      {
-        if (j == 2) {
-          localMessageForDeviceFile.strServiceName = "8001-NASDevVideoFile";
-        } else if (j == 1) {
-          localMessageForDeviceFile.strServiceName = "8000-NASDevMusicFile";
-        } else if (j == 3) {
-          localMessageForDeviceFile.strServiceName = "8002-NASDevDocumentFile";
-        } else {
-          localMessageForDeviceFile.strServiceName = "8003-NASDevCommonFile";
-        }
-      }
-      else {
-        localMessageForDeviceFile.strServiceName = DeviceMsgHandle.b;
-      }
-      localMessageForDeviceFile.msgtype = -4500;
-      localMessageForDeviceFile.istroop = 9501;
-      localMessageForDeviceFile.filePath = ((FileInfo)localObject).c();
-      localMessageForDeviceFile.srcFileName = FileManagerUtil.a(((FileInfo)localObject).c());
-      localMessageForDeviceFile.fileSize = FileManagerUtil.a(((FileInfo)localObject).c());
-      localMessageForDeviceFile.issend = 1;
-      localMessageForDeviceFile.isread = true;
-      localMessageForDeviceFile.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localMessageForDeviceFile.senderuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localMessageForDeviceFile.frienduin = paramString;
-      localMessageForDeviceFile.msgStatus = 2;
-      localMessageForDeviceFile.nFileStatus = 1;
-      localMessageForDeviceFile.time = MessageCache.a();
-      localMessageForDeviceFile.progress = 0.0F;
-      localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691562);
-      localMessageForDeviceFile.nFileMsgType = 1;
-      if (localMessageForDeviceFile.strServiceName.compareTo(DeviceMsgHandle.d) == 0)
-      {
-        localMessageForDeviceFile.nFileMsgType = 2;
-        localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691563);
-      }
-      ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForDeviceFile);
-      if ((localSmartDeviceProxyMgr != null) && (localSmartDeviceProxyMgr.a(paramString)))
-      {
-        if (localMessageForDeviceFile.strServiceName.compareTo(DeviceMsgHandle.d) == 0)
-        {
-          localMessageForDeviceFile.uSessionID = localSmartDeviceProxyMgr.a(Long.parseLong(paramString), ((FileInfo)localObject).c(), null);
-        }
-        else if (localMessageForDeviceFile.strServiceName.compareTo(DeviceMsgHandle.f) == 0)
-        {
-          localMessageForDeviceFile.uSessionID = localSmartDeviceProxyMgr.a(Long.parseLong(paramString), ((FileInfo)localObject).c(), 0);
-        }
-        else
-        {
-          localObject = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(((FileInfo)localObject).c(), localMessageForDeviceFile.strServiceName, null, Long.parseLong(paramString));
-          if (localObject == null) {
-            continue;
-          }
-          localMessageForDeviceFile.uSessionID = ((Session)localObject).uSessionID;
-        }
-      }
-      else
-      {
-        localObject = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(((FileInfo)localObject).c(), localMessageForDeviceFile.strServiceName, null, Long.parseLong(paramString));
-        if (localObject == null) {
-          continue;
-        }
-        localMessageForDeviceFile.uSessionID = ((Session)localObject).uSessionID;
-      }
-      if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
-      {
-        localMessageForDeviceFile.nFileStatus = 6;
-        localMessageForDeviceFile.msgStatus = 1;
-      }
-      localMessageForDeviceFile.serial();
-      a(localMessageForDeviceFile.uSessionID, localMessageForDeviceFile.frienduin, localMessageForDeviceFile.istroop, localMessageForDeviceFile.uniseq);
-      localArrayList.add(localMessageForDeviceFile);
-    }
-    a(localArrayList);
-    return true;
-  }
-  
   public void b(Bundle paramBundle)
   {
     if (paramBundle == null) {
@@ -846,13 +741,13 @@ public class DeviceComnFileMsgProcessor
     boolean bool = false;
     int i = paramBundle.getInt("cookie", 0);
     int k = paramBundle.getInt("err_code", 1);
-    Object localObject = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    Object localObject = (SmartDeviceProxyMgr)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
     long l2 = i;
     paramBundle = a(Long.valueOf(l2));
     if (paramBundle == null) {
       return;
     }
-    localObject = ((SmartDeviceProxyMgr)localObject).a(Long.parseLong(paramBundle.frienduin));
+    localObject = ((SmartDeviceProxyMgr)localObject).g(Long.parseLong(paramBundle.frienduin));
     long l1;
     if (localObject != null)
     {
@@ -866,7 +761,7 @@ public class DeviceComnFileMsgProcessor
     }
     if (paramBundle.strServiceName.compareTo(DeviceMsgHandle.d) == 0)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localObject = this.a;
       int j;
       if (k == 0) {
         j = 0;
@@ -891,10 +786,115 @@ public class DeviceComnFileMsgProcessor
     paramSession.nFileStatus = 2;
     b(paramSession);
   }
+  
+  public boolean b(String paramString, List<FileInfo> paramList)
+  {
+    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    long l;
+    try
+    {
+      l = Long.parseLong(paramString);
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      l = 0L;
+    }
+    int i;
+    if ((localSmartDeviceProxyMgr != null) && (localSmartDeviceProxyMgr.a(l, 9))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject = (FileInfo)paramList.next();
+      MessageForDeviceFile localMessageForDeviceFile = (MessageForDeviceFile)MessageRecordFactory.a(-4500);
+      int j = ((FileInfo)localObject).l();
+      if (j == 0) {
+        localMessageForDeviceFile.strServiceName = DeviceMsgHandle.d;
+      } else if (i != 0)
+      {
+        if (j == 2) {
+          localMessageForDeviceFile.strServiceName = "8001-NASDevVideoFile";
+        } else if (j == 1) {
+          localMessageForDeviceFile.strServiceName = "8000-NASDevMusicFile";
+        } else if (j == 3) {
+          localMessageForDeviceFile.strServiceName = "8002-NASDevDocumentFile";
+        } else {
+          localMessageForDeviceFile.strServiceName = "8003-NASDevCommonFile";
+        }
+      }
+      else {
+        localMessageForDeviceFile.strServiceName = DeviceMsgHandle.b;
+      }
+      localMessageForDeviceFile.msgtype = -4500;
+      localMessageForDeviceFile.istroop = 9501;
+      localMessageForDeviceFile.filePath = ((FileInfo)localObject).d();
+      localMessageForDeviceFile.srcFileName = FileManagerUtil.a(((FileInfo)localObject).d());
+      localMessageForDeviceFile.fileSize = FileManagerUtil.h(((FileInfo)localObject).d());
+      localMessageForDeviceFile.issend = 1;
+      localMessageForDeviceFile.isread = true;
+      localMessageForDeviceFile.selfuin = this.a.getCurrentAccountUin();
+      localMessageForDeviceFile.senderuin = this.a.getCurrentAccountUin();
+      localMessageForDeviceFile.frienduin = paramString;
+      localMessageForDeviceFile.msgStatus = 2;
+      localMessageForDeviceFile.nFileStatus = 1;
+      localMessageForDeviceFile.time = MessageCache.c();
+      localMessageForDeviceFile.progress = 0.0F;
+      localMessageForDeviceFile.msg = this.a.getApp().getString(2131888524);
+      localMessageForDeviceFile.nFileMsgType = 1;
+      if (localMessageForDeviceFile.strServiceName.compareTo(DeviceMsgHandle.d) == 0)
+      {
+        localMessageForDeviceFile.nFileMsgType = 2;
+        localMessageForDeviceFile.msg = this.a.getApp().getString(2131888525);
+      }
+      ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForDeviceFile);
+      if ((localSmartDeviceProxyMgr != null) && (localSmartDeviceProxyMgr.a(paramString)))
+      {
+        if (localMessageForDeviceFile.strServiceName.compareTo(DeviceMsgHandle.d) == 0)
+        {
+          localMessageForDeviceFile.uSessionID = localSmartDeviceProxyMgr.a(Long.parseLong(paramString), ((FileInfo)localObject).d(), null);
+        }
+        else if (localMessageForDeviceFile.strServiceName.compareTo(DeviceMsgHandle.f) == 0)
+        {
+          localMessageForDeviceFile.uSessionID = localSmartDeviceProxyMgr.a(Long.parseLong(paramString), ((FileInfo)localObject).d(), 0);
+        }
+        else
+        {
+          localObject = ((DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(((FileInfo)localObject).d(), localMessageForDeviceFile.strServiceName, null, Long.parseLong(paramString));
+          if (localObject == null) {
+            continue;
+          }
+          localMessageForDeviceFile.uSessionID = ((Session)localObject).uSessionID;
+        }
+      }
+      else
+      {
+        localObject = ((DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(((FileInfo)localObject).d(), localMessageForDeviceFile.strServiceName, null, Long.parseLong(paramString));
+        if (localObject == null) {
+          continue;
+        }
+        localMessageForDeviceFile.uSessionID = ((Session)localObject).uSessionID;
+      }
+      if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+      {
+        localMessageForDeviceFile.nFileStatus = 6;
+        localMessageForDeviceFile.msgStatus = 1;
+      }
+      localMessageForDeviceFile.serial();
+      a(localMessageForDeviceFile.uSessionID, localMessageForDeviceFile.frienduin, localMessageForDeviceFile.istroop, localMessageForDeviceFile.uniseq);
+      localArrayList.add(localMessageForDeviceFile);
+    }
+    a(localArrayList);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceComnFileMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

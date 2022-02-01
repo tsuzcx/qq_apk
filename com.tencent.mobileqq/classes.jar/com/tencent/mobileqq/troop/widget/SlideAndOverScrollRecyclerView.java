@@ -16,17 +16,17 @@ import com.tencent.mobileqq.widget.OverScrollRecyclerView;
 public class SlideAndOverScrollRecyclerView
   extends OverScrollRecyclerView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
+  private VelocityTracker b;
+  private int c;
+  private Rect d;
+  private Scroller e;
+  private float f;
+  private float g;
+  private float h;
+  private boolean i;
+  private ViewGroup j;
+  private int k;
+  private int l;
   
   public SlideAndOverScrollRecyclerView(Context paramContext)
   {
@@ -41,96 +41,96 @@ public class SlideAndOverScrollRecyclerView
   public SlideAndOverScrollRecyclerView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
+    this.c = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.e = new Scroller(paramContext);
   }
   
   private void a(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    if (this.b == null) {
+      this.b = VelocityTracker.obtain();
     }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+    this.b.addMovement(paramMotionEvent);
   }
   
   private void d()
   {
-    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    VelocityTracker localVelocityTracker = this.b;
     if (localVelocityTracker != null)
     {
       localVelocityTracker.clear();
-      this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+      this.b.recycle();
+      this.b = null;
     }
   }
   
   public int a(int paramInt1, int paramInt2)
   {
-    int j = ((LinearLayoutManager)getLayoutManager()).findFirstVisibleItemPosition();
-    Object localObject2 = this.jdField_a_of_type_AndroidGraphicsRect;
+    int n = ((LinearLayoutManager)getLayoutManager()).findFirstVisibleItemPosition();
+    Object localObject2 = this.d;
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      localObject1 = this.jdField_a_of_type_AndroidGraphicsRect;
+      this.d = new Rect();
+      localObject1 = this.d;
     }
-    int i = getChildCount() - 1;
-    while (i >= 0)
+    int m = getChildCount() - 1;
+    while (m >= 0)
     {
-      localObject2 = getChildAt(i);
+      localObject2 = getChildAt(m);
       if (((View)localObject2).getVisibility() == 0)
       {
         ((View)localObject2).getHitRect((Rect)localObject1);
         if (((Rect)localObject1).contains(paramInt1, paramInt2)) {
-          return j + i;
+          return n + m;
         }
       }
-      i -= 1;
+      m -= 1;
     }
     return -1;
   }
   
   public void a()
   {
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    ViewGroup localViewGroup = this.j;
     if ((localViewGroup != null) && (localViewGroup.getScrollX() != 0)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.scrollTo(0, 0);
+      this.j.scrollTo(0, 0);
     }
   }
   
   public void computeScroll()
   {
-    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+    if (this.e.computeScrollOffset())
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
+      this.j.scrollTo(this.e.getCurrX(), this.e.getCurrY());
       invalidate();
     }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = (int)paramMotionEvent.getX();
-    int j = (int)paramMotionEvent.getY();
+    int m = (int)paramMotionEvent.getX();
+    int n = (int)paramMotionEvent.getY();
     a(paramMotionEvent);
-    int k = paramMotionEvent.getAction();
+    int i1 = paramMotionEvent.getAction();
     float f1;
-    if (k != 0)
+    if (i1 != 0)
     {
-      if (k != 1)
+      if (i1 != 1)
       {
-        if (k == 2)
+        if (i1 == 2)
         {
-          this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-          f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity();
-          float f2 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity();
+          this.b.computeCurrentVelocity(1000);
+          f1 = this.b.getXVelocity();
+          float f2 = this.b.getYVelocity();
           if ((Math.abs(f1) <= 600.0F) || (Math.abs(f1) <= Math.abs(f2)))
           {
-            f1 = i;
-            if ((Math.abs(f1 - this.jdField_b_of_type_Float) < this.jdField_a_of_type_Int) || (Math.abs(f1 - this.jdField_b_of_type_Float) <= Math.abs(j - this.jdField_c_of_type_Float))) {}
+            f1 = m;
+            if ((Math.abs(f1 - this.g) < this.c) || (Math.abs(f1 - this.g) <= Math.abs(n - this.h))) {}
           }
           else
           {
-            this.jdField_a_of_type_Boolean = true;
+            this.i = true;
             return true;
           }
         }
@@ -141,26 +141,26 @@ public class SlideAndOverScrollRecyclerView
     }
     else
     {
-      if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
-        this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
+      if (!this.e.isFinished()) {
+        this.e.abortAnimation();
       }
-      f1 = i;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f1;
-      this.jdField_c_of_type_Float = j;
-      this.jdField_b_of_type_Int = a(i, j);
-      i = this.jdField_b_of_type_Int;
-      if (i != -1)
+      f1 = m;
+      this.f = f1;
+      this.g = f1;
+      this.h = n;
+      this.k = a(m, n);
+      m = this.k;
+      if (m != -1)
       {
-        ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)getChildAt(i - ((LinearLayoutManager)getLayoutManager()).findFirstVisibleItemPosition()));
-        if ((localViewGroup != null) && (this.jdField_a_of_type_AndroidViewViewGroup != localViewGroup) && (localViewGroup.getScrollX() != 0)) {
+        ViewGroup localViewGroup = this.j;
+        this.j = ((ViewGroup)getChildAt(m - ((LinearLayoutManager)getLayoutManager()).findFirstVisibleItemPosition()));
+        if ((localViewGroup != null) && (this.j != localViewGroup) && (localViewGroup.getScrollX() != 0)) {
           localViewGroup.scrollTo(0, 0);
         }
-        if (this.jdField_a_of_type_AndroidViewViewGroup.getChildCount() == 2) {
-          this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(1).getWidth();
+        if (this.j.getChildCount() == 2) {
+          this.l = this.j.getChildAt(1).getWidth();
         } else {
-          this.jdField_c_of_type_Int = -1;
+          this.l = -1;
         }
       }
     }
@@ -169,58 +169,58 @@ public class SlideAndOverScrollRecyclerView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != -1))
+    if ((this.i) && (this.k != -1))
     {
       float f1 = paramMotionEvent.getX();
       a(paramMotionEvent);
-      int i = paramMotionEvent.getAction();
-      if (i != 0) {
-        if (i != 1)
+      int m = paramMotionEvent.getAction();
+      if (m != 0) {
+        if (m != 1)
         {
-          if (i != 2) {
+          if (m != 2) {
             return true;
           }
-          if (this.jdField_c_of_type_Int != -1)
+          if (this.l != -1)
           {
-            float f2 = this.jdField_a_of_type_Float - f1;
-            if ((this.jdField_a_of_type_AndroidViewViewGroup.getScrollX() + f2 <= this.jdField_c_of_type_Int) && (this.jdField_a_of_type_AndroidViewViewGroup.getScrollX() + f2 > 0.0F)) {
-              this.jdField_a_of_type_AndroidViewViewGroup.scrollBy((int)f2, 0);
+            float f2 = this.f - f1;
+            if ((this.j.getScrollX() + f2 <= this.l) && (this.j.getScrollX() + f2 > 0.0F)) {
+              this.j.scrollBy((int)f2, 0);
             }
-            this.jdField_a_of_type_Float = f1;
+            this.f = f1;
             return true;
           }
         }
         else
         {
-          if (this.jdField_c_of_type_Int != -1)
+          if (this.l != -1)
           {
-            i = this.jdField_a_of_type_AndroidViewViewGroup.getScrollX();
-            this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-            int j;
-            if (this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity() < -600.0F)
+            m = this.j.getScrollX();
+            this.b.computeCurrentVelocity(1000);
+            int n;
+            if (this.b.getXVelocity() < -600.0F)
             {
-              paramMotionEvent = this.jdField_a_of_type_AndroidWidgetScroller;
-              j = this.jdField_c_of_type_Int;
-              paramMotionEvent.startScroll(i, 0, j - i, 0, Math.abs(j - i));
+              paramMotionEvent = this.e;
+              n = this.l;
+              paramMotionEvent.startScroll(m, 0, n - m, 0, Math.abs(n - m));
             }
-            else if (this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity() >= 600.0F)
+            else if (this.b.getXVelocity() >= 600.0F)
             {
-              this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, -i, 0, Math.abs(i));
+              this.e.startScroll(m, 0, -m, 0, Math.abs(m));
             }
             else
             {
-              j = this.jdField_c_of_type_Int;
-              if (i >= j / 2) {
-                this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, j - i, 0, Math.abs(j - i));
+              n = this.l;
+              if (m >= n / 2) {
+                this.e.startScroll(m, 0, n - m, 0, Math.abs(n - m));
               } else {
-                this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, -i, 0, Math.abs(i));
+                this.e.startScroll(m, 0, -m, 0, Math.abs(m));
               }
             }
             invalidate();
           }
-          this.jdField_c_of_type_Int = -1;
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_b_of_type_Int = -1;
+          this.l = -1;
+          this.i = false;
+          this.k = -1;
           d();
         }
       }
@@ -233,7 +233,7 @@ public class SlideAndOverScrollRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.SlideAndOverScrollRecyclerView
  * JD-Core Version:    0.7.0.1
  */

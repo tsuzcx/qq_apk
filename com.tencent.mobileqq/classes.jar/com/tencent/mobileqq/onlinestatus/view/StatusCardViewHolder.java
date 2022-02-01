@@ -22,30 +22,13 @@ public class StatusCardViewHolder
     return (BaseStatusCardView)this.a.get(Long.valueOf(paramLong));
   }
   
-  public BaseStatusCardView a(View paramView, QBaseActivity paramQBaseActivity, OnLineStatusBlurBg paramOnLineStatusBlurBg, BaseStatusCardView.OnDismissCallback paramOnDismissCallback, long paramLong)
-  {
-    QLog.d("StatusCardViewHolder", 1, new Object[] { "getStatusCardView: id= ", Long.valueOf(paramLong) });
-    paramLong = StatusCardViewBuilder.a(paramLong);
-    BaseStatusCardView localBaseStatusCardView2 = (BaseStatusCardView)this.a.get(Long.valueOf(paramLong));
-    BaseStatusCardView localBaseStatusCardView1 = localBaseStatusCardView2;
-    if (localBaseStatusCardView2 == null) {
-      localBaseStatusCardView1 = StatusCardViewBuilder.a(paramQBaseActivity, paramOnLineStatusBlurBg, paramOnDismissCallback, paramLong);
-    }
-    if (localBaseStatusCardView1 != null)
-    {
-      localBaseStatusCardView1.a(a(paramView));
-      this.a.put(Long.valueOf(paramLong), localBaseStatusCardView1);
-    }
-    return localBaseStatusCardView1;
-  }
-  
   public void a()
   {
     try
     {
       Iterator localIterator = this.a.values().iterator();
       while (localIterator.hasNext()) {
-        ((BaseStatusCardView)localIterator.next()).k();
+        ((BaseStatusCardView)localIterator.next()).m();
       }
       return;
     }
@@ -79,7 +62,7 @@ public class StatusCardViewHolder
     if (localBaseStatusCardView1 != null)
     {
       localBaseStatusCardView1.a(a(paramView));
-      localBaseStatusCardView1.aL_();
+      localBaseStatusCardView1.dg_();
       this.a.put(Long.valueOf(paramLong), localBaseStatusCardView1);
       return true;
     }
@@ -106,6 +89,23 @@ public class StatusCardViewHolder
     return arrayOfFloat;
   }
   
+  public BaseStatusCardView b(View paramView, QBaseActivity paramQBaseActivity, OnLineStatusBlurBg paramOnLineStatusBlurBg, BaseStatusCardView.OnDismissCallback paramOnDismissCallback, long paramLong)
+  {
+    QLog.d("StatusCardViewHolder", 1, new Object[] { "getStatusCardView: id= ", Long.valueOf(paramLong) });
+    paramLong = StatusCardViewBuilder.a(paramLong);
+    BaseStatusCardView localBaseStatusCardView2 = (BaseStatusCardView)this.a.get(Long.valueOf(paramLong));
+    BaseStatusCardView localBaseStatusCardView1 = localBaseStatusCardView2;
+    if (localBaseStatusCardView2 == null) {
+      localBaseStatusCardView1 = StatusCardViewBuilder.a(paramQBaseActivity, paramOnLineStatusBlurBg, paramOnDismissCallback, paramLong);
+    }
+    if (localBaseStatusCardView1 != null)
+    {
+      localBaseStatusCardView1.a(a(paramView));
+      this.a.put(Long.valueOf(paramLong), localBaseStatusCardView1);
+    }
+    return localBaseStatusCardView1;
+  }
+  
   public void b()
   {
     this.a.clear();
@@ -113,7 +113,7 @@ public class StatusCardViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.StatusCardViewHolder
  * JD-Core Version:    0.7.0.1
  */

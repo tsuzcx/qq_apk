@@ -17,15 +17,15 @@ class EditInfoActivity$4
   {
     EditInfoActivity.access$000(this.a).setCursorVisible(true);
     this.a.mEmojLayout.setVisibility(8);
-    this.a.mSwitchButton.setImageResource(2130848134);
-    this.a.mSwitchButton.setContentDescription(HardCodeUtil.a(2131703789));
+    this.a.mSwitchButton.setImageResource(2130849798);
+    this.a.mSwitchButton.setContentDescription(HardCodeUtil.a(2131901735));
     this.a.mIsShowEmojiboard = false;
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.editinfo.EditInfoActivity.4
  * JD-Core Version:    0.7.0.1
  */

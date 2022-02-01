@@ -7,19 +7,19 @@ import android.bluetooth.BluetoothGattService;
 public class GattInfo
 {
   public int a;
-  public BluetoothGatt a;
-  public BluetoothGattCharacteristic a;
-  public BluetoothGattService a;
-  public String a;
-  public byte[] a;
-  public int b = 0;
-  public BluetoothGattCharacteristic b;
-  public int c;
-  public BluetoothGattCharacteristic c;
+  public String b;
+  public BluetoothGatt c;
+  public BluetoothGattService d;
+  public BluetoothGattCharacteristic e;
+  public BluetoothGattCharacteristic f;
+  public BluetoothGattCharacteristic g;
+  public int h = 0;
+  public byte[] i;
+  public int j;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.qfind.GattInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,11 @@ class GuessSongGameRecordCtrl$3
   public void run()
   {
     AVLog.a(this.this$0.a, "onEncodeError man call check ");
-    if (GuessSongGameRecordCtrl.a(this.this$0))
+    if (GuessSongGameRecordCtrl.e(this.this$0))
     {
       AVLog.a(this.this$0.a, "onEncodeError man call onEncodeFinish");
       GuessSongGameRecordCtrl localGuessSongGameRecordCtrl = this.this$0;
-      localGuessSongGameRecordCtrl.a(GuessSongGameRecordCtrl.b(localGuessSongGameRecordCtrl));
+      localGuessSongGameRecordCtrl.a(GuessSongGameRecordCtrl.c(localGuessSongGameRecordCtrl));
     }
   }
 }

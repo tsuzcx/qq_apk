@@ -10,8 +10,6 @@ import com.tencent.qphone.base.util.QLog;
 public class TKDTuWenCommentUtil
 {
   private static final String TAG = "TKDTuWenCommentUtil";
-  private static Boolean subUseHippy;
-  private static Boolean useHippy;
   
   private static boolean findView(View paramView, Class<?> paramClass, boolean paramBoolean)
   {
@@ -51,64 +49,66 @@ public class TKDTuWenCommentUtil
   
   public static boolean isCommentSwitchOn()
   {
-    Object localObject = useHippy;
-    boolean bool2 = false;
-    if (localObject == null)
-    {
-      if (Aladdin.getConfig(412).getIntegerFromString("tuwen_comment_hippy_switch", 0) == 1) {
-        bool1 = true;
-      } else {
-        bool1 = false;
-      }
-      useHippy = Boolean.valueOf(bool1);
+    Object localObject = Aladdin.getConfig(412);
+    boolean bool = false;
+    if (((AladdinConfig)localObject).getIntegerFromString("tuwen_comment_hippy_switch", 0) == 1) {
+      bool = true;
     }
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("useHippy=");
-    ((StringBuilder)localObject).append(useHippy);
+    ((StringBuilder)localObject).append("#isCommentSwitchOn: useHippy=");
+    ((StringBuilder)localObject).append(bool);
     QLog.d("TKDTuWenCommentUtil", 1, ((StringBuilder)localObject).toString());
-    localObject = useHippy;
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((Boolean)localObject).booleanValue()) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return bool;
   }
   
   public static boolean isSubCommentSwitchOn()
   {
-    Object localObject = subUseHippy;
-    boolean bool2 = false;
-    if (localObject == null)
-    {
-      if (Aladdin.getConfig(412).getIntegerFromString("tuwen_sub_comment_hippy_switch", 0) == 1) {
-        bool1 = true;
-      } else {
-        bool1 = false;
-      }
-      subUseHippy = Boolean.valueOf(bool1);
+    Object localObject = Aladdin.getConfig(412);
+    boolean bool3 = false;
+    boolean bool1;
+    if (((AladdinConfig)localObject).getIntegerFromString("tuwen_sub_comment_hippy_switch", 0) == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("subUseHippy=");
-    ((StringBuilder)localObject).append(subUseHippy);
+    ((StringBuilder)localObject).append("#isSubCommentSwitchOn: subUseHippy=");
+    ((StringBuilder)localObject).append(bool1);
     QLog.d("TKDTuWenCommentUtil", 1, ((StringBuilder)localObject).toString());
-    localObject = subUseHippy;
-    boolean bool1 = bool2;
-    if (localObject != null)
+    boolean bool2 = bool3;
+    if (bool1)
     {
-      bool1 = bool2;
-      if (((Boolean)localObject).booleanValue())
-      {
-        bool1 = bool2;
-        if (isCommentSwitchOn()) {
-          bool1 = true;
-        }
+      bool2 = bool3;
+      if (isCommentSwitchOn()) {
+        bool2 = true;
       }
     }
-    return bool1;
+    return bool2;
+  }
+  
+  public static boolean isTuWenHippyEngineReuseSwitchOn()
+  {
+    Object localObject = Aladdin.getConfig(412);
+    boolean bool3 = false;
+    boolean bool1;
+    if (((AladdinConfig)localObject).getIntegerFromString("tuwen_comment_hippy_preload_switch", 0) == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("#isTuWenHippyEngineReuseSwitchOn: usePreloadHippy=");
+    ((StringBuilder)localObject).append(bool1);
+    QLog.d("TKDTuWenCommentUtil", 1, ((StringBuilder)localObject).toString());
+    boolean bool2 = bool3;
+    if (bool1)
+    {
+      bool2 = bool3;
+      if (isCommentSwitchOn()) {
+        bool2 = true;
+      }
+    }
+    return bool2;
   }
   
   public static <T extends View> T rFindView(View paramView, Class<T> paramClass)
@@ -140,7 +140,7 @@ public class TKDTuWenCommentUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.tuwen.util.TKDTuWenCommentUtil
  * JD-Core Version:    0.7.0.1
  */

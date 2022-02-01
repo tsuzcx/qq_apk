@@ -25,37 +25,24 @@ import java.util.Map;
 public class TeamWorkAuthorizeUinListAdapter
   extends XBaseAdapter
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  List<TeamWorkAuthorizeUinListAdapter.ItemData> jdField_a_of_type_JavaUtilList;
-  Map<String, TeamWorkAuthorizeUinListAdapter.ItemData> jdField_a_of_type_JavaUtilMap = new HashMap();
+  List<TeamWorkAuthorizeUinListAdapter.ItemData> a;
+  Map<String, TeamWorkAuthorizeUinListAdapter.ItemData> b = new HashMap();
+  Context c;
+  QQAppInterface d;
+  View.OnClickListener e;
+  int f;
   
   public TeamWorkAuthorizeUinListAdapter(QQAppInterface paramQQAppInterface, Context paramContext, View.OnClickListener paramOnClickListener, List<TeamWorkAuthorizeUinListAdapter.ItemData> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public String a(String paramString)
-  {
-    Object localObject = (TeamWorkAuthorizeUinListAdapter.ItemData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localObject == null) {
-      return paramString;
-    }
-    localObject = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).jdField_a_of_type_JavaLangString, ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).b, ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).jdField_a_of_type_Int);
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      ((TeamWorkAuthorizeUinListAdapter.ItemData)this.jdField_a_of_type_JavaUtilMap.get(paramString)).c = ((String)localObject);
-    }
-    return ((TeamWorkAuthorizeUinListAdapter.ItemData)this.jdField_a_of_type_JavaUtilMap.get(paramString)).c;
+    this.d = paramQQAppInterface;
+    this.a = paramList;
+    this.c = paramContext;
+    this.e = paramOnClickListener;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void a(TeamWorkAuthorizeUinListAdapter.ItemData paramItemData)
@@ -63,34 +50,47 @@ public class TeamWorkAuthorizeUinListAdapter
     if (paramItemData == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(0, paramItemData);
-    this.jdField_a_of_type_JavaUtilMap.put(paramItemData.jdField_a_of_type_JavaLangString, paramItemData);
+    this.a.add(0, paramItemData);
+    this.b.put(paramItemData.b, paramItemData);
   }
   
   public void a(String paramString)
   {
-    TeamWorkAuthorizeUinListAdapter.ItemData localItemData = (TeamWorkAuthorizeUinListAdapter.ItemData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    TeamWorkAuthorizeUinListAdapter.ItemData localItemData = (TeamWorkAuthorizeUinListAdapter.ItemData)this.b.get(paramString);
     if (localItemData == null) {
       return;
     }
-    localItemData.c = a(paramString);
+    localItemData.e = b(paramString);
     notifyDataSetChanged();
   }
   
-  public void b(String paramString)
+  public String b(String paramString)
   {
-    paramString = (TeamWorkAuthorizeUinListAdapter.ItemData)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    this.jdField_a_of_type_JavaUtilList.remove(paramString);
+    Object localObject = (TeamWorkAuthorizeUinListAdapter.ItemData)this.b.get(paramString);
+    if (localObject == null) {
+      return paramString;
+    }
+    localObject = ContactUtils.a(this.d, ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).b, ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).d, ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).c);
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      ((TeamWorkAuthorizeUinListAdapter.ItemData)this.b.get(paramString)).e = ((String)localObject);
+    }
+    return ((TeamWorkAuthorizeUinListAdapter.ItemData)this.b.get(paramString)).e;
+  }
+  
+  public void c(String paramString)
+  {
+    paramString = (TeamWorkAuthorizeUinListAdapter.ItemData)this.b.remove(paramString);
+    this.a.remove(paramString);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -103,12 +103,12 @@ public class TeamWorkAuthorizeUinListAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562912, null);
+      localView = LayoutInflater.from(this.c).inflate(2131629372, null);
       paramView = new TeamWorkAuthorizeUinListAdapter.Holder(this);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368137));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371854));
-      paramView.b = ((TextView)localView.findViewById(2131377850));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362989));
+      paramView.a = ((URLImageView)localView.findViewById(2131434994));
+      paramView.b = ((TextView)localView.findViewById(2131439295));
+      paramView.c = ((TextView)localView.findViewById(2131446326));
+      paramView.d = ((ImageView)localView.findViewById(2131428790));
       localView.setTag(paramView);
     }
     else
@@ -117,39 +117,39 @@ public class TeamWorkAuthorizeUinListAdapter
       localView = paramView;
       paramView = (View)localObject;
     }
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.f == 2)
     {
-      paramView.b.setVisibility(8);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramView.c.setVisibility(8);
+      paramView.d.setVisibility(8);
     }
     else
     {
-      paramView.b.setVisibility(0);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramView.c.setVisibility(0);
+      paramView.d.setVisibility(0);
     }
     Object localObject = (TeamWorkAuthorizeUinListAdapter.ItemData)getItem(paramInt);
-    String str = String.valueOf(((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint64_uin.get());
-    FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, str);
-    paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localFaceDrawable);
-    str = a(str);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-    int i = ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint32_right.get();
+    String str = String.valueOf(((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).a.uint64_uin.get());
+    FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(this.d, 1, str);
+    paramView.a.setImageDrawable(localFaceDrawable);
+    str = b(str);
+    paramView.b.setText(str);
+    int i = ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).a.uint32_right.get();
     if (i == 1) {
-      paramView.b.setText(2131719502);
+      paramView.c.setText(2131917065);
     } else if (i == 2) {
-      paramView.b.setText(2131719503);
+      paramView.c.setText(2131917066);
     } else {
-      paramView.b.setText(HardCodeUtil.a(2131714586));
+      paramView.c.setText(HardCodeUtil.a(2131912095));
     }
-    paramView.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo;
-    localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramView.e = ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).a;
+    localView.setOnClickListener(this.e);
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkAuthorizeUinListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ class QRDisplayActivity$10
   public void run()
   {
     QRDisplayActivity localQRDisplayActivity = this.this$0;
-    localQRDisplayActivity.b = true;
+    localQRDisplayActivity.h = true;
     localQRDisplayActivity.i();
   }
 }

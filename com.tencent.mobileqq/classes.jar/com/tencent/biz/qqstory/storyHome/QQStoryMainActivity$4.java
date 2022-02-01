@@ -28,11 +28,11 @@ class QQStoryMainActivity$4
       if (QLog.isColorLevel()) {
         QLog.i("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog back");
       }
-      Util.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity, 0, "", "");
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.finish();
+      Util.a(this.b, 0, "", "");
+      this.b.finish();
       try
       {
-        paramDialogInterface = (PendingIntent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("activity_finish_run_pendingIntent");
+        paramDialogInterface = (PendingIntent)this.a.getParcelableExtra("activity_finish_run_pendingIntent");
         if ((paramDialogInterface != null) && ((paramDialogInterface instanceof PendingIntent)))
         {
           if (QLog.isColorLevel()) {
@@ -40,7 +40,7 @@ class QQStoryMainActivity$4
           }
           paramDialogInterface.send();
         }
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.moveTaskToBack(true);
+        this.b.moveTaskToBack(true);
         return;
       }
       catch (Throwable paramDialogInterface)

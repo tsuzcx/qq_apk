@@ -9,12 +9,12 @@ import com.tencent.qphone.base.util.QLog;
 class LBSDetetor$LBSLocationListener
   extends SosoInterfaceOnLocationListener
 {
-  private int jdField_a_of_type_Int = -1;
+  private int b = -1;
   
   public LBSDetetor$LBSLocationListener(LBSDetetor paramLBSDetetor, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2)
   {
     super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt2;
   }
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
@@ -32,20 +32,20 @@ class LBSDetetor$LBSLocationListener
         paramSosoLbsInfo.append(d2);
         QLog.d("LBSDetetor", 2, paramSosoLbsInfo.toString());
       }
-      LBSDetetor.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor, d1, d2, this.jdField_a_of_type_Int);
+      LBSDetetor.a(this.a, d1, d2, this.b);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
     }
-    if ((LBSDetetor.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor) != null) && (LBSDetetor.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor).hasMessages(this.jdField_a_of_type_Int))) {
-      LBSDetetor.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor, false, null, this.jdField_a_of_type_Int);
+    if ((LBSDetetor.a(this.a) != null) && (LBSDetetor.a(this.a).hasMessages(this.b))) {
+      LBSDetetor.a(this.a, false, null, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.LBSDetetor.LBSLocationListener
  * JD-Core Version:    0.7.0.1
  */

@@ -15,13 +15,18 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public class GetTroopStoryListRequest
   extends NetworkRequest
 {
-  public long b;
-  public int c;
-  public int d;
-  public int e;
+  public long e;
   public int f;
+  public int g;
+  public int h;
+  public int i;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return StoryApi.a("StoryGroupSvc.get_video_list");
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_group.RspGetGroupVideoList localRspGetGroupVideoList = new qqstory_group.RspGetGroupVideoList();
     try
@@ -36,20 +41,15 @@ public class GetTroopStoryListRequest
     return null;
   }
   
-  public String a()
-  {
-    return StoryApi.a("StoryGroupSvc.get_video_list");
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_group.ReqGetGroupVideoList localReqGetGroupVideoList = new qqstory_group.ReqGetGroupVideoList();
-    localReqGetGroupVideoList.group_id.set(this.b);
-    localReqGetGroupVideoList.start.set(this.c);
-    localReqGetGroupVideoList.size.set(this.d);
-    localReqGetGroupVideoList.seq.set(this.f);
-    if (this.e != -1) {
-      localReqGetGroupVideoList.time_zone.set(this.e);
+    localReqGetGroupVideoList.group_id.set(this.e);
+    localReqGetGroupVideoList.start.set(this.f);
+    localReqGetGroupVideoList.size.set(this.g);
+    localReqGetGroupVideoList.seq.set(this.i);
+    if (this.h != -1) {
+      localReqGetGroupVideoList.time_zone.set(this.h);
     }
     return localReqGetGroupVideoList.toByteArray();
   }
@@ -58,15 +58,15 @@ public class GetTroopStoryListRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetTroopStoryListRequest{groupId='");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append("startCookie='");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(" pageSize='");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" seq='");
-    localStringBuilder.append(this.f);
-    localStringBuilder.append(" timeZone=");
     localStringBuilder.append(this.e);
+    localStringBuilder.append("startCookie='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(" pageSize='");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(" seq='");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(" timeZone=");
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -74,7 +74,7 @@ public class GetTroopStoryListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetTroopStoryListRequest
  * JD-Core Version:    0.7.0.1
  */

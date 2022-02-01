@@ -11,9 +11,9 @@ abstract class FloatingActionButtonImpl$ShadowAnimatorImpl
   extends AnimatorListenerAdapter
   implements ValueAnimator.AnimatorUpdateListener
 {
-  private float jdField_a_of_type_Float;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
+  private boolean a;
+  private float c;
+  private float d;
   
   private FloatingActionButtonImpl$ShadowAnimatorImpl(FloatingActionButtonImpl paramFloatingActionButtonImpl) {}
   
@@ -21,31 +21,31 @@ abstract class FloatingActionButtonImpl$ShadowAnimatorImpl
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_b_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButtonImpl.e((int)this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_Boolean = false;
+    this.b.e((int)this.d);
+    this.a = false;
   }
   
   public void onAnimationUpdate(@NonNull ValueAnimator paramValueAnimator)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      if (this.jdField_b_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButtonImpl.a == null) {
+      if (this.b.c == null) {
         f = 0.0F;
       } else {
-        f = this.jdField_b_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButtonImpl.a.k();
+        f = this.b.c.U();
       }
-      this.jdField_a_of_type_Float = f;
-      this.jdField_b_of_type_Float = a();
-      this.jdField_a_of_type_Boolean = true;
+      this.c = f;
+      this.d = a();
+      this.a = true;
     }
-    FloatingActionButtonImpl localFloatingActionButtonImpl = this.jdField_b_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButtonImpl;
-    float f = this.jdField_a_of_type_Float;
-    localFloatingActionButtonImpl.e((int)(f + (this.jdField_b_of_type_Float - f) * paramValueAnimator.getAnimatedFraction()));
+    FloatingActionButtonImpl localFloatingActionButtonImpl = this.b;
+    float f = this.c;
+    localFloatingActionButtonImpl.e((int)(f + (this.d - f) * paramValueAnimator.getAnimatedFraction()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.FloatingActionButtonImpl.ShadowAnimatorImpl
  * JD-Core Version:    0.7.0.1
  */

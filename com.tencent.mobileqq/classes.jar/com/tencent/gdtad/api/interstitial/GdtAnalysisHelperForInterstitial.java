@@ -18,17 +18,17 @@ public final class GdtAnalysisHelperForInterstitial
     int k = 0;
     if (paramGdtInterstitialParams != null)
     {
-      if (paramGdtInterstitialParams.jdField_a_of_type_Int == 1)
+      if (paramGdtInterstitialParams.e == 1)
       {
         i = 0;
         break label57;
       }
-      if (paramGdtInterstitialParams.jdField_a_of_type_Int == 0)
+      if (paramGdtInterstitialParams.e == 0)
       {
         i = 1;
         break label57;
       }
-      if (paramGdtInterstitialParams.jdField_a_of_type_Int == 8)
+      if (paramGdtInterstitialParams.e == 8)
       {
         i = 2;
         break label57;
@@ -36,14 +36,14 @@ public final class GdtAnalysisHelperForInterstitial
     }
     int i = -2147483648;
     label57:
-    if ((paramGdtInterstitialParams != null) && (paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null)) {
-      paramGdtInterstitialParams = paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a;
+    if ((paramGdtInterstitialParams != null) && (paramGdtInterstitialParams.d != null)) {
+      paramGdtInterstitialParams = paramGdtInterstitialParams.d.a;
     } else {
       paramGdtInterstitialParams = null;
     }
     paramContext = AdAnalysisHelper.createEventForAd(paramContext, paramInt, paramGdtInterstitialParams);
     if (paramGdtInterstitialStatus != null) {
-      paramInt = paramGdtInterstitialStatus.jdField_a_of_type_Int;
+      paramInt = paramGdtInterstitialStatus.a;
     } else {
       paramInt = -2147483648;
     }
@@ -57,30 +57,30 @@ public final class GdtAnalysisHelperForInterstitial
     paramContext.duration = l;
     paramContext.orientation = i;
     if (paramGdtInterstitialStatus != null) {
-      paramInt = paramGdtInterstitialStatus.jdField_b_of_type_Int;
+      paramInt = paramGdtInterstitialStatus.h;
     } else {
       paramInt = -2147483648;
     }
     paramContext.reason = paramInt;
-    if ((paramGdtInterstitialStatus != null) && (paramGdtInterstitialStatus.jdField_a_of_type_Boolean)) {
+    if ((paramGdtInterstitialStatus != null) && (paramGdtInterstitialStatus.b)) {
       paramInt = 1;
     } else {
       paramInt = 0;
     }
     paramContext.status1 = paramInt;
-    if ((paramGdtInterstitialStatus != null) && (paramGdtInterstitialStatus.jdField_b_of_type_Boolean)) {
+    if ((paramGdtInterstitialStatus != null) && (paramGdtInterstitialStatus.c)) {
       paramInt = 1;
     } else {
       paramInt = 0;
     }
     paramContext.status2 = paramInt;
-    if ((paramGdtInterstitialStatus != null) && (paramGdtInterstitialStatus.jdField_c_of_type_Boolean)) {
+    if ((paramGdtInterstitialStatus != null) && (paramGdtInterstitialStatus.d)) {
       paramInt = 1;
     } else {
       paramInt = 0;
     }
     paramContext.status3 = paramInt;
-    if ((paramGdtInterstitialStatus != null) && (paramGdtInterstitialStatus.jdField_e_of_type_Boolean)) {
+    if ((paramGdtInterstitialStatus != null) && (paramGdtInterstitialStatus.f)) {
       paramInt = 1;
     } else {
       paramInt = 0;
@@ -90,14 +90,14 @@ public final class GdtAnalysisHelperForInterstitial
     if (paramGdtInterstitialStatus != null)
     {
       paramInt = k;
-      if (paramGdtInterstitialStatus.jdField_f_of_type_Boolean) {
+      if (paramGdtInterstitialStatus.g) {
         paramInt = 1;
       }
     }
     paramContext.status5 = paramInt;
     paramInt = j;
     if (paramGdtInterstitialStatus != null) {
-      paramInt = paramGdtInterstitialStatus.jdField_f_of_type_Int;
+      paramInt = paramGdtInterstitialStatus.l;
     }
     paramContext.videoStatus = paramInt;
     return paramContext;
@@ -184,15 +184,15 @@ public final class GdtAnalysisHelperForInterstitial
   public static void d(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus)
   {
     paramGdtInterstitialParams = a(paramContext, 1092, paramGdtInterstitialParams, paramGdtInterstitialStatus);
-    paramGdtInterstitialParams.internalErrorCode = paramGdtInterstitialStatus.jdField_c_of_type_Int;
-    paramGdtInterstitialParams.errorCode1 = paramGdtInterstitialStatus.d;
-    paramGdtInterstitialParams.errorCode2 = paramGdtInterstitialStatus.jdField_e_of_type_Int;
+    paramGdtInterstitialParams.internalErrorCode = paramGdtInterstitialStatus.i;
+    paramGdtInterstitialParams.errorCode1 = paramGdtInterstitialStatus.j;
+    paramGdtInterstitialParams.errorCode2 = paramGdtInterstitialStatus.k;
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtAnalysisHelperForInterstitial
  * JD-Core Version:    0.7.0.1
  */

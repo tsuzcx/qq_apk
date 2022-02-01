@@ -1,24 +1,19 @@
 package com.tencent.mobileqq.kandian.repo.feeds;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyBaseAdapterUtil;
+import com.tencent.mobileqq.kandian.glue.utils.ReadInJoyBaseAdapterUtil;
+import com.tencent.mobileqq.kandian.repo.aladdin.RIJFeedsFluencyOptimizeUtil;
 import com.tencent.mobileqq.kandian.repo.common.RIJItemViewTypeUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.FeedsInfoUser;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.SocializeFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.pts.PTSStyleManager;
-import com.tencent.mobileqq.qroute.QRoute;
 
 public class RIJBaseItemViewType
 {
-  public static int a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return a(paramAbsBaseArticleInfo, 0);
-  }
-  
   public static int a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    return ((IReadInJoyBaseAdapterUtil)QRoute.api(IReadInJoyBaseAdapterUtil.class)).getBaseItemViewType(paramAbsBaseArticleInfo, paramInt);
+    return ReadInJoyBaseAdapterUtil.a.a(paramAbsBaseArticleInfo, paramInt, RIJFeedsFluencyOptimizeUtil.a.a());
   }
   
   public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -26,7 +21,7 @@ public class RIJBaseItemViewType
     if (paramAbsBaseArticleInfo == null) {
       return false;
     }
-    switch (a(paramAbsBaseArticleInfo))
+    switch (c(paramAbsBaseArticleInfo))
     {
     default: 
       return false;
@@ -39,7 +34,7 @@ public class RIJBaseItemViewType
     if (paramAbsBaseArticleInfo == null) {
       return false;
     }
-    int i = a(paramAbsBaseArticleInfo);
+    int i = c(paramAbsBaseArticleInfo);
     if ((paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
       return false;
     }
@@ -53,24 +48,29 @@ public class RIJBaseItemViewType
     return true;
   }
   
-  public static boolean c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static int c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo != null) && ("ReadInjoy_hot_news_account_cell".equals(PTSStyleManager.a(paramAbsBaseArticleInfo)));
+    return a(paramAbsBaseArticleInfo, 0);
   }
   
   public static boolean d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo.mChannelID == 0L) && ((RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.d(paramAbsBaseArticleInfo)) || (a(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.h(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.i(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.j(paramAbsBaseArticleInfo)));
+    return (paramAbsBaseArticleInfo != null) && ("ReadInjoy_hot_news_account_cell".equals(PTSStyleManager.a(paramAbsBaseArticleInfo)));
   }
   
   public static boolean e(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.a != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.a.c == 0) && (a(paramAbsBaseArticleInfo));
+    return (paramAbsBaseArticleInfo.mChannelID == 0L) && ((RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.d(paramAbsBaseArticleInfo)) || (a(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.h(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.i(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.j(paramAbsBaseArticleInfo)));
+  }
+  
+  public static boolean f(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.c.e == 0) && (a(paramAbsBaseArticleInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RIJBaseItemViewType
  * JD-Core Version:    0.7.0.1
  */

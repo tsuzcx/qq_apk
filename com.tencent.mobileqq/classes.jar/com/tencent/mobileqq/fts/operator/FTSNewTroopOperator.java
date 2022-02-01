@@ -19,7 +19,7 @@ public class FTSNewTroopOperator
   public FTSNewTroopOperator(AppRuntime paramAppRuntime, FTSSyncHandler paramFTSSyncHandler)
   {
     super(paramAppRuntime, paramFTSSyncHandler);
-    this.e = true;
+    this.n = true;
   }
   
   protected FTSOptSync a(int paramInt, long paramLong1, long paramLong2)
@@ -36,10 +36,10 @@ public class FTSNewTroopOperator
     {
       try
       {
-        if (this.a > 0)
+        if (this.f > 0)
         {
           localObject1 = localObject2;
-          i = paramSQLiteDatabase.delete(FTSNewTroopSync.class.getSimpleName(), "_id<=?", new String[] { String.valueOf(this.a) });
+          i = paramSQLiteDatabase.delete(FTSNewTroopSync.class.getSimpleName(), "_id<=?", new String[] { String.valueOf(this.f) });
           localObject1 = localObject2;
           if ((QLog.isColorLevel()) && (i > 0))
           {
@@ -58,7 +58,7 @@ public class FTSNewTroopOperator
           }
         }
         localObject1 = localObject2;
-        paramEntityManager = paramEntityManager.query(FTSNewTroopSync.class, FTSNewTroopSync.class.getSimpleName(), false, "_id>?", new String[] { String.valueOf(this.a) }, null, null, null, "300");
+        paramEntityManager = paramEntityManager.query(FTSNewTroopSync.class, FTSNewTroopSync.class.getSimpleName(), false, "_id>?", new String[] { String.valueOf(this.f) }, null, null, null, "300");
         paramSQLiteDatabase = localObject3;
         if (paramEntityManager != null)
         {
@@ -113,21 +113,21 @@ public class FTSNewTroopOperator
     }
   }
   
-  protected String c()
-  {
-    return "NewTroopCursor";
-  }
-  
-  public void g() {}
-  
-  public boolean g()
+  public boolean o()
   {
     return false;
+  }
+  
+  public void p() {}
+  
+  protected String q()
+  {
+    return "NewTroopCursor";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.operator.FTSNewTroopOperator
  * JD-Core Version:    0.7.0.1
  */

@@ -60,27 +60,14 @@ public class NowQQLiveFragment
   extends PublicBaseFragment
   implements SimpleEventReceiver, LoginMgr.Listener, RecommendAnchorDataManager.RecommendAnchorDataCallback
 {
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private QQLiveAdapter jdField_a_of_type_ComTencentMobileqqNowQQLiveAdapter;
-  private RecommendAnchorDataManager jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager;
-  private NavBarAIO jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  
-  private IPublicAccountDetail a()
-  {
-    Object localObject = UserInfoMgr.a();
-    if (localObject != null)
-    {
-      localObject = (IPublicAccountDataManager)((AppInterface)localObject).getRuntimeService(IPublicAccountDataManager.class, "all");
-      if (localObject != null) {
-        return ((IPublicAccountDataManager)localObject).findAccountDetailInfo(NowQQLiveConstant.jdField_a_of_type_JavaLangString);
-      }
-    }
-    return null;
-  }
+  private String a;
+  private View b;
+  private RecyclerView c;
+  private QQLiveAdapter d;
+  private RecommendAnchorDataManager e;
+  private NavBarAIO f;
+  private boolean g;
+  private Dialog h;
   
   public static final void a(Context paramContext, String paramString, int paramInt)
   {
@@ -94,105 +81,118 @@ public class NowQQLiveFragment
   private void a(View paramView)
   {
     Object localObject = new StaggeredGridLayoutManager(2, 1);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376308));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject);
+    this.c = ((RecyclerView)paramView.findViewById(2131444519));
+    this.c.setLayoutManager((RecyclerView.LayoutManager)localObject);
     if ((getBaseActivity() != null) && (!getBaseActivity().isFinishing()))
     {
-      localObject = new RecommendSpacesItemDecoration(getBaseActivity().getResources().getDimensionPixelSize(2131298908));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration((RecyclerView.ItemDecoration)localObject);
+      localObject = new RecommendSpacesItemDecoration(getBaseActivity().getResources().getDimensionPixelSize(2131299630));
+      this.c.addItemDecoration((RecyclerView.ItemDecoration)localObject);
     }
-    this.jdField_a_of_type_ComTencentMobileqqNowQQLiveAdapter = new QQLiveAdapter(getBaseActivity(), this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager.a());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqNowQQLiveAdapter);
+    this.d = new QQLiveAdapter(getBaseActivity(), this.c, this.e.a());
+    this.c.setAdapter(this.d);
     a();
     b(paramView);
   }
   
   private void b(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO = ((NavBarAIO)paramView.findViewById(2131372019));
-    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO;
+    this.f = ((NavBarAIO)paramView.findViewById(2131439478));
+    paramView = this.f;
     if (paramView == null) {
       return;
     }
     paramView = (LinearLayout.LayoutParams)paramView.getLayoutParams();
     paramView.setMargins(0, StatusBarUtil.a(getBaseActivity()), 0, 0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setLayoutParams(paramView);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.findViewById(2131369202);
+    this.f.setLayoutParams(paramView);
+    paramView = this.f.findViewById(2131436180);
     if (paramView != null) {
       if (ThemeImageWrapper.isNightMode())
       {
-        paramView.setBackgroundResource(2130849325);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight1Icon(2130850471);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130841489);
+        paramView.setBackgroundResource(2130851009);
+        this.f.setRight1Icon(2130852267);
+        this.f.setRight2Icon(2130842331);
       }
       else
       {
-        paramView.setBackgroundResource(2130849425);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight1Icon(2130840504);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130841488);
+        paramView.setBackgroundResource(2130851109);
+        this.f.setRight1Icon(2130841270);
+        this.f.setRight2Icon(2130842330);
       }
     }
     int i = NowQQLiveHelper.a();
     if (i > 0)
     {
-      paramView = (TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.findViewById(2131369240);
+      paramView = (TextView)this.f.findViewById(2131436218);
       paramView.setText(String.valueOf(i));
       paramView.setVisibility(0);
-      NowQQLiveHelper.a();
+      NowQQLiveHelper.b();
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.findViewById(2131369563);
+    paramView = this.f.findViewById(2131436666);
     if (paramView != null) {
       paramView.setVisibility(8);
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.findViewById(2131378040);
+    paramView = this.f.findViewById(2131446540);
     if (paramView != null) {
       paramView.setVisibility(8);
     }
-    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.findViewById(2131378784);
+    TextView localTextView = (TextView)this.f.findViewById(2131447463);
     if (localTextView != null)
     {
-      paramView = a();
+      paramView = c();
       if ((paramView != null) && (!TextUtils.isEmpty(paramView.getName()))) {
         paramView = paramView.getName();
       } else {
-        paramView = HardCodeUtil.a(2131694544);
+        paramView = HardCodeUtil.a(2131892228);
       }
       localTextView.setText(paramView);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setOnSelectListener(new NowQQLiveFragment.1(this));
+    this.f.setOnSelectListener(new NowQQLiveFragment.1(this));
   }
   
-  private void c()
+  private IPublicAccountDetail c()
+  {
+    Object localObject = UserInfoMgr.c();
+    if (localObject != null)
+    {
+      localObject = (IPublicAccountDataManager)((AppInterface)localObject).getRuntimeService(IPublicAccountDataManager.class, "all");
+      if (localObject != null) {
+        return ((IPublicAccountDataManager)localObject).findAccountDetailInfo(NowQQLiveConstant.a);
+      }
+    }
+    return null;
+  }
+  
+  private void d()
   {
     CookieManager.getInstance().setCookie("fastest.now.qq.com", "__client_type=16130");
     CookieManager.getInstance().setCookie("now.qq.com", "__client_type=16130");
     LoginMgr.a().a(this);
   }
   
-  private void d()
+  private void e()
   {
-    LoginMgr.a().b();
+    LoginMgr.a().d();
     if (getBaseActivity() != null) {
       getBaseActivity().finish();
     }
   }
   
-  private void e()
+  private void f()
   {
-    if (this.jdField_a_of_type_Boolean == StatusBarUtil.a()) {
+    if (this.g == StatusBarUtil.a()) {
       return;
     }
-    this.jdField_a_of_type_Boolean = StatusBarUtil.a();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.d();
+    this.g = StatusBarUtil.a();
+    this.f.d();
     Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.g)
     {
       StatusBarUtil.a(getBaseActivity(), true);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.findViewById(2131369202);
+      localObject = this.f.findViewById(2131436180);
       if (localObject != null) {
-        ((View)localObject).setBackgroundResource(2130849325);
+        ((View)localObject).setBackgroundResource(2130851009);
       }
-      localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.findViewById(2131378784);
+      localObject = (TextView)this.f.findViewById(2131447463);
       if (localObject != null) {
         ((TextView)localObject).setTextColor(-1);
       }
@@ -200,65 +200,65 @@ public class NowQQLiveFragment
     else
     {
       StatusBarUtil.a(getBaseActivity(), false);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.findViewById(2131369202);
+      localObject = this.f.findViewById(2131436180);
       if (localObject != null) {
-        ((View)localObject).setBackgroundResource(2130849425);
+        ((View)localObject).setBackgroundResource(2130851109);
       }
-      localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.findViewById(2131378784);
+      localObject = (TextView)this.f.findViewById(2131447463);
       if (localObject != null) {
         ((TextView)localObject).setTextColor(-16777216);
       }
-      if (!QQTheme.a(MobileQQ.sMobileQQ.waitAppRuntime(null).getCurrentUin(), false)) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundColor(-1);
+      if (!QQTheme.isCustomTheme(MobileQQ.sMobileQQ.waitAppRuntime(null).getCurrentUin(), false)) {
+        this.f.setBackgroundColor(-1);
       }
     }
   }
   
-  private void f()
+  private void g()
   {
     if (NetworkUtil.isNetworkAvailable())
     {
-      Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
+      Dialog localDialog = this.h;
       if ((localDialog != null) && (localDialog.isShowing())) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+        this.h.dismiss();
       }
       return;
     }
-    if (this.jdField_a_of_type_AndroidAppDialog == null) {
-      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(getBaseActivity(), null, getBaseActivity().getString(2131694545), 0, 2131694546, null, null, null);
+    if (this.h == null) {
+      this.h = DialogUtil.a(getBaseActivity(), null, getBaseActivity().getString(2131892229), 0, 2131892230, null, null, null);
     }
-    if (!this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-      this.jdField_a_of_type_AndroidAppDialog.show();
+    if (!this.h.isShowing()) {
+      this.h.show();
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator().setAddDuration(0L);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator().setChangeDuration(0L);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator().setMoveDuration(0L);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator().setRemoveDuration(0L);
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator() instanceof SimpleItemAnimator)) {
-      ((SimpleItemAnimator)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
+    this.c.getItemAnimator().setAddDuration(0L);
+    this.c.getItemAnimator().setChangeDuration(0L);
+    this.c.getItemAnimator().setMoveDuration(0L);
+    this.c.getItemAnimator().setRemoveDuration(0L);
+    if ((this.c.getItemAnimator() instanceof SimpleItemAnimator)) {
+      ((SimpleItemAnimator)this.c.getItemAnimator()).setSupportsChangeAnimations(false);
     }
   }
   
   public void a(int paramInt, String paramString)
   {
-    FocusLiveStreamDataManager.a().a();
-    this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager.a(0, this, false);
+    FocusLiveStreamDataManager.a().b();
+    this.e.a(0, this, false);
   }
   
   public void a(List<RecommendAnchorInfo> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNowQQLiveAdapter.a(1);
-    this.jdField_a_of_type_ComTencentMobileqqNowQQLiveAdapter.notifyDataSetChanged();
+    this.d.b(1);
+    this.d.notifyDataSetChanged();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNowQQLiveAdapter.a(2);
-    this.jdField_a_of_type_ComTencentMobileqqNowQQLiveAdapter.notifyDataSetChanged();
+    this.d.b(2);
+    this.d.notifyDataSetChanged();
   }
   
   public ArrayList<Class> getEventClass()
@@ -272,39 +272,39 @@ public class NowQQLiveFragment
   {
     super.initWindowStyleAndAnimation(paramActivity);
     paramActivity.getWindow().setSoftInputMode(17);
-    paramActivity.overridePendingTransition(2130771996, 2130771998);
+    paramActivity.overridePendingTransition(2130771999, 2130772001);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     paramBundle = getBaseActivity().getIntent();
-    this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("public_account_uin");
-    this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager = new RecommendAnchorDataManager();
-    this.jdField_a_of_type_Boolean = (StatusBarUtil.a() ^ true);
-    f();
+    this.a = paramBundle.getStringExtra("public_account_uin");
+    this.e = new RecommendAnchorDataManager();
+    this.g = (StatusBarUtil.a() ^ true);
+    g();
     NowQQLiveDataReport.a(String.valueOf(paramBundle.getIntExtra("public_account_source", 1)));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    c();
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559515, paramViewGroup, false);
-    a(this.jdField_a_of_type_AndroidViewView);
+    d();
+    this.b = paramLayoutInflater.inflate(2131625537, paramViewGroup, false);
+    a(this.b);
     if (getBaseActivity() == null)
     {
       QLog.e("NowQQLiveFragment", 1, "activity is null");
-      paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+      paramLayoutInflater = this.b;
     }
     else if (getArguments() == null)
     {
       QLog.e("NowQQLiveFragment", 1, "argsBundle is null");
-      paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+      paramLayoutInflater = this.b;
     }
     else
     {
       SimpleEventBus.getInstance().registerReceiver(this);
-      paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+      paramLayoutInflater = this.b;
     }
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -313,7 +313,7 @@ public class NowQQLiveFragment
   public void onDestroy()
   {
     super.onDestroy();
-    FocusLiveStreamDataManager.a().b();
+    FocusLiveStreamDataManager.a().d();
     URLDrawable.clearMemoryCache();
   }
   
@@ -327,15 +327,15 @@ public class NowQQLiveFragment
   {
     if ((getBaseActivity() != null) && (!NetworkUtil.isNetworkAvailable(getBaseActivity().getApplication())))
     {
-      QfavUtil.a(getBaseActivity(), 2131694435, 1);
+      QfavUtil.a(getBaseActivity(), 2131892115, 1);
       b();
       return;
     }
-    if (LoginMgr.a().a())
+    if (LoginMgr.a().c())
     {
       if ((paramSimpleBaseEvent instanceof NoRecommendDataEvent))
       {
-        paramSimpleBaseEvent = this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager;
+        paramSimpleBaseEvent = this.e;
         if (paramSimpleBaseEvent != null) {
           paramSimpleBaseEvent.a(0, this, false);
         }
@@ -349,15 +349,15 @@ public class NowQQLiveFragment
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_ComTencentMobileqqNowQQLiveAdapter.a();
-    this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager.a(this);
-    FocusLiveStreamDataManager.a().a();
-    e();
+    this.d.a();
+    this.e.a(this);
+    FocusLiveStreamDataManager.a().b();
+    f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.NowQQLiveFragment
  * JD-Core Version:    0.7.0.1
  */

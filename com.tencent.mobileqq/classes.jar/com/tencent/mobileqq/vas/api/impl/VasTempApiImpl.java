@@ -27,7 +27,7 @@ public final class VasTempApiImpl
   {
     if (!((IAEResUtil)QRoute.api(IAEResUtil.class)).isAEResExist(AEResInfo.LIGHT_RES_BASE_PACKAGE))
     {
-      QLog.i(PagViewProxy.a.a(), 1, "Pag_so库,未下载完成");
+      QLog.i(PagViewProxy.d.a(), 1, "Pag_so库,未下载完成");
       return false;
     }
     int i = VasSoUtils.a(((IAEResUtil)QRoute.api(IAEResUtil.class)).getFinalUnzipFilePath(), "liblibpag.so");
@@ -38,13 +38,13 @@ public final class VasTempApiImpl
         if (i != 2) {
           return false;
         }
-        QLog.e(PagViewProxy.a.a(), 1, "初始化Pag_so库,加载异常");
+        QLog.e(PagViewProxy.d.a(), 1, "初始化Pag_so库,加载异常");
         return false;
       }
-      QLog.e(PagViewProxy.a.a(), 1, "初始化Pag_so库,不存在");
+      QLog.e(PagViewProxy.d.a(), 1, "初始化Pag_so库,不存在");
       return false;
     }
-    QLog.i(PagViewProxy.a.a(), 1, "初始化Pag_so库,完成");
+    QLog.i(PagViewProxy.d.a(), 1, "初始化Pag_so库,完成");
     return true;
   }
   
@@ -55,7 +55,7 @@ public final class VasTempApiImpl
     {
       if (((IAEResUtil)QRoute.api(IAEResUtil.class)).isAEResExist(AEResInfo.LIGHT_RES_BASE_PACKAGE))
       {
-        QLog.i(PagViewProxy.a.a(), 1, "already download");
+        QLog.i(PagViewProxy.d.a(), 1, "already download");
         paramFunction0.invoke();
         return;
       }
@@ -64,13 +64,13 @@ public final class VasTempApiImpl
     }
     catch (Throwable paramFunction0)
     {
-      QLog.e(PagViewProxy.a.a(), 1, paramFunction0, new Object[0]);
+      QLog.e(PagViewProxy.d.a(), 1, paramFunction0, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.impl.VasTempApiImpl
  * JD-Core Version:    0.7.0.1
  */

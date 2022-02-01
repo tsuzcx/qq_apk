@@ -22,12 +22,12 @@ final class ViewExtensionsKt$setDebounceClickListener$1$1
   public final void invoke(@NotNull View paramView)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "it");
-    this.this$0.a.onClick(paramView);
+    this.this$0.b.onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.ViewExtensionsKt.setDebounceClickListener.1.1
  * JD-Core Version:    0.7.0.1
  */

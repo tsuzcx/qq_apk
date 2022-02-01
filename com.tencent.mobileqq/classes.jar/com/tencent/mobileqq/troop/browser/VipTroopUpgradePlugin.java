@@ -17,13 +17,11 @@ public class VipTroopUpgradePlugin
   extends VasWebviewJsPlugin
 {
   public static String a = "TroopUpgradePlugin";
-  protected Context a;
-  protected AppInterface a;
+  protected Context b = null;
+  protected AppInterface c = null;
   
   public VipTroopUpgradePlugin()
   {
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
     this.mPluginNameSpace = "Troop";
   }
   
@@ -36,7 +34,7 @@ public class VipTroopUpgradePlugin
   {
     if (QLog.isColorLevel())
     {
-      paramJsBridgeListener = jdField_a_of_type_JavaLangString;
+      paramJsBridgeListener = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleJsRequest, url=");
       localStringBuilder.append(paramString1);
@@ -90,13 +88,13 @@ public class VipTroopUpgradePlugin
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
+    this.b = this.mRuntime.d();
+    this.c = this.mRuntime.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.browser.VipTroopUpgradePlugin
  * JD-Core Version:    0.7.0.1
  */

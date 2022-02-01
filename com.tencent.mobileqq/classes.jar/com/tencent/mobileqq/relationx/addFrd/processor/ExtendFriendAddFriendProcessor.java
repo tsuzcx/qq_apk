@@ -32,7 +32,7 @@ public class ExtendFriendAddFriendProcessor
     {
       if (paramInt2 == 1)
       {
-        ReportController.a(this.a, "dc00898", "", paramString, "0X80092E3", "0X80092E3", 0, 0, "", ExtendFriendReport.a(), ExtendFriendReport.a((QQAppInterface)this.a), ExtendFriendReport.c());
+        ReportController.a(this.a, "dc00898", "", paramString, "0X80092E3", "0X80092E3", 0, 0, "", ExtendFriendReport.d(), ExtendFriendReport.a((QQAppInterface)this.a), ExtendFriendReport.f());
         return;
       }
       if (paramInt2 == 2)
@@ -53,7 +53,7 @@ public class ExtendFriendAddFriendProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.addFrd.processor.ExtendFriendAddFriendProcessor
  * JD-Core Version:    0.7.0.1
  */

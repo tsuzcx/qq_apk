@@ -12,7 +12,7 @@ class TianshuBannerManager$TianShuGetSplashCallback
   
   public TianshuBannerManager$TianShuGetSplashCallback(TianshuBannerManager paramTianshuBannerManager, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
@@ -24,7 +24,7 @@ class TianshuBannerManager$TianShuGetSplashCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuBannerManager.TianShuGetSplashCallback
  * JD-Core Version:    0.7.0.1
  */

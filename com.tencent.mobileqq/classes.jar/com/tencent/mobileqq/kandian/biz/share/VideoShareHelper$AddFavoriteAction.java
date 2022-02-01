@@ -25,18 +25,18 @@ class VideoShareHelper$AddFavoriteAction
   
   public void a(int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if (!NetworkUtil.isNetworkAvailable(VideoShareHelper.a(this.a)))
+    if (!NetworkUtil.isNetworkAvailable(VideoShareHelper.g(this.a)))
     {
-      QQToast.a(VideoShareHelper.a(this.a), 0, HardCodeUtil.a(2131716112), 0).a();
+      QQToast.makeText(VideoShareHelper.g(this.a), 0, HardCodeUtil.a(2131913561), 0).show();
       return;
     }
-    VideoFeedsHelper.a(VideoShareHelper.a(this.a), VideoShareHelper.a(this.a));
+    VideoFeedsHelper.a(VideoShareHelper.i(this.a), VideoShareHelper.f(this.a));
     paramActionSheetItem = new StringBuilder();
     paramActionSheetItem.append(paramString);
     paramActionSheetItem.append("&sourcefrom=6");
     String str1 = paramActionSheetItem.toString();
     paramString = VideoFeedsHelper.a(paramAbsBaseArticleInfo);
-    paramActionSheetItem = VideoFeedsHelper.a(paramAbsBaseArticleInfo);
+    paramActionSheetItem = VideoFeedsHelper.b(paramAbsBaseArticleInfo);
     Bundle localBundle = new Bundle();
     localBundle.putInt("videoDuration", paramAbsBaseArticleInfo.getVideoDuration());
     localBundle.putLong("publishAccountUin", paramActionSheetItem.longValue());
@@ -49,14 +49,14 @@ class VideoShareHelper$AddFavoriteAction
       paramInt = 2;
     }
     localBundle.putInt("videoType", paramInt);
-    paramString = VideoShareHelper.a(this.a);
+    paramString = VideoShareHelper.i(this.a);
     if (paramString != null) {
       paramString = paramString.getCurrentUin();
     } else {
       paramString = "";
     }
     ReadInJoyAtlasManager localReadInJoyAtlasManager = ReadInJoyAtlasManager.getInstance();
-    Activity localActivity = VideoShareHelper.a(this.a);
+    Activity localActivity = VideoShareHelper.f(this.a);
     String str2 = paramAbsBaseArticleInfo.getInnerUniqueID();
     String str3 = paramAbsBaseArticleInfo.mTitle;
     String str4 = paramAbsBaseArticleInfo.mSummary;
@@ -66,7 +66,7 @@ class VideoShareHelper$AddFavoriteAction
       paramActionSheetItem = paramAbsBaseArticleInfo.getVideoCoverURL().getPath();
     }
     localReadInJoyAtlasManager.doFavorite(localActivity, paramString, 2, str2, str3, str4, paramActionSheetItem, str1, localBundle);
-    VideoShareHelper.a(this.a).add(paramAbsBaseArticleInfo.getInnerUniqueID());
+    VideoShareHelper.e(this.a).add(paramAbsBaseArticleInfo.getInnerUniqueID());
   }
   
   public int b()
@@ -76,7 +76,7 @@ class VideoShareHelper$AddFavoriteAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.VideoShareHelper.AddFavoriteAction
  * JD-Core Version:    0.7.0.1
  */

@@ -10,17 +10,17 @@ class EditTroopMemberNickService$5
   
   public void a()
   {
-    EditTroopMemberNickService.b(this.a);
+    EditTroopMemberNickService.e(this.a);
   }
   
   public void b()
   {
-    TroopNickAuthRequest.a(EditTroopMemberNickService.a(this.a));
+    TroopNickAuthRequest.a(EditTroopMemberNickService.f(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.5
  * JD-Core Version:    0.7.0.1
  */

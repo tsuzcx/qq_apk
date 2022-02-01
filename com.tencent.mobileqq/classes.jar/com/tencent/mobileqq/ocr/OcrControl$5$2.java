@@ -15,7 +15,7 @@ class OcrControl$5$2
   
   public void run()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.a;
+    String str = this.a.b.a;
     Object localObject = new File(str).getParent();
     if (((IOCR)QRoute.api(IOCR.class)).getImageUtilOCRPATH().equals(localObject))
     {
@@ -32,7 +32,7 @@ class OcrControl$5$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrControl.5.2
  * JD-Core Version:    0.7.0.1
  */

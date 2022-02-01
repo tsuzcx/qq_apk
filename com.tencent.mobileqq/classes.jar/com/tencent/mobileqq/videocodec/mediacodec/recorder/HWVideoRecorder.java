@@ -16,34 +16,34 @@ import com.tencent.qphone.base.util.QLog;
 @TargetApi(18)
 public class HWVideoRecorder
 {
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("recode_thread");
-  private EncodeConfig jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig;
-  private EncodeInputSurface jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface;
-  private HWVideoEncoder jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderHWVideoEncoder;
-  private HWEncodeListener jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener;
-  private HWEncodeNextListener jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeNextListener;
   protected HWVideoRecorder.RecodeHandler a;
-  private HWVideoRecorderBuffer jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorderBuffer;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private boolean b;
-  private boolean c;
-  private boolean d = false;
+  private HWVideoEncoder b;
+  private EncodeInputSurface c;
+  private HandlerThread d = new HandlerThread("recode_thread");
+  private HWEncodeListener e;
+  private HWEncodeNextListener f;
+  private String g;
+  private volatile boolean h = false;
+  private EncodeConfig i;
+  private boolean j;
+  private boolean k;
+  private boolean l = false;
+  private HWVideoRecorderBuffer m;
   
   public HWVideoRecorder()
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder$RecodeHandler = a(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderHWVideoEncoder = new HWVideoEncoder();
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface = new EncodeInputSurface();
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorderBuffer = new HWVideoRecorderBuffer();
+    this.d.start();
+    this.a = a(this.d.getLooper());
+    this.b = new HWVideoEncoder();
+    this.c = new EncodeInputSurface();
+    this.m = new HWVideoRecorderBuffer();
   }
   
   private void a(HWVideoRecorder.RecordingObj paramRecordingObj)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener = paramRecordingObj.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener;
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeNextListener = paramRecordingObj.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeNextListener;
-    paramRecordingObj = paramRecordingObj.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig;
+    this.e = paramRecordingObj.a;
+    this.f = paramRecordingObj.b;
+    paramRecordingObj = paramRecordingObj.c;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder1 = new StringBuilder();
@@ -51,22 +51,22 @@ public class HWVideoRecorder
       localStringBuilder1.append(paramRecordingObj.a());
       QLog.w("HWVideoRecorder", 2, localStringBuilder1.toString());
     }
-    if (this.jdField_a_of_type_Boolean) {
-      d();
+    if (this.h) {
+      f();
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig = paramRecordingObj;
-    this.jdField_a_of_type_JavaLangString = paramRecordingObj.jdField_a_of_type_JavaLangString;
+    this.h = true;
+    this.i = paramRecordingObj;
+    this.g = paramRecordingObj.b;
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderHWVideoEncoder.a(paramRecordingObj);
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface.a(paramRecordingObj, this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderHWVideoEncoder.a());
-      paramRecordingObj = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener;
+      this.b.a(paramRecordingObj);
+      this.c.a(paramRecordingObj, this.b.d());
+      paramRecordingObj = this.e;
       if (paramRecordingObj != null) {
         paramRecordingObj.onEncodeStart();
       }
-      this.b = true;
-      this.c = false;
+      this.j = true;
+      this.k = false;
       return;
     }
     catch (Throwable localThrowable)
@@ -79,39 +79,39 @@ public class HWVideoRecorder
         localStringBuilder2.append(paramRecordingObj);
         QLog.w("HWVideoRecorder", 2, localStringBuilder2.toString(), localThrowable);
       }
-      paramRecordingObj = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener;
+      paramRecordingObj = this.e;
       if (paramRecordingObj != null) {
         paramRecordingObj.onEncodeError(1, localThrowable);
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.h = false;
     }
   }
   
-  private void d()
+  private void f()
   {
     if (QLog.isColorLevel()) {
       QLog.w("HWVideoRecorder", 2, "handleStopRecording");
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.h = false;
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderHWVideoEncoder.b();
+        this.b.b();
         if (QLog.isColorLevel()) {
           QLog.w("HWVideoRecorder", 2, "handleStopRecording complete");
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener != null)
+        if (this.e != null)
         {
-          EncodeConfig localEncodeConfig = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig;
-          if ((localEncodeConfig != null) && (localEncodeConfig.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderMediaMuxerWrapper == null))
+          EncodeConfig localEncodeConfig = this.i;
+          if ((localEncodeConfig != null) && (localEncodeConfig.s == null))
           {
-            this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener.onEncodeFinish(this.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener = null;
+            this.e.onEncodeFinish(this.g);
+            this.e = null;
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface.a();
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeNextListener = null;
+        this.c.a();
+        this.f = null;
         return;
       }
       catch (Exception localException)
@@ -120,30 +120,21 @@ public class HWVideoRecorder
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("handleStopRecording: exception. config = ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig);
+          ((StringBuilder)localObject).append(this.i);
           QLog.e("HWVideoRecorder", 2, ((StringBuilder)localObject).toString());
         }
-        Object localObject = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener;
+        Object localObject = this.e;
         if (localObject != null) {
           ((HWEncodeListener)localObject).onEncodeError(2, localException);
         }
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderHWVideoEncoder.c();
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface.a();
+        this.b.c();
+        this.c.a();
         return;
       }
     }
     if (QLog.isColorLevel()) {
       QLog.w("HWVideoRecorder", 2, "handleStopRecording: is not recording.");
     }
-  }
-  
-  public MediaFormat a()
-  {
-    HWVideoEncoder localHWVideoEncoder = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderHWVideoEncoder;
-    if (localHWVideoEncoder != null) {
-      return localHWVideoEncoder.a;
-    }
-    return null;
   }
   
   @NonNull
@@ -154,7 +145,7 @@ public class HWVideoRecorder
   
   public void a()
   {
-    this.d = true;
+    this.l = true;
   }
   
   public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
@@ -172,21 +163,21 @@ public class HWVideoRecorder
       QLog.d("HWVideoRecorder", 2, ((StringBuilder)localObject).toString());
     }
     boolean bool;
-    if (this.d)
+    if (this.l)
     {
-      bool = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorderBuffer.a(paramInt2);
+      bool = this.m.a(paramInt2);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder$RecodeHandler.removeMessages(2);
+      this.a.removeMessages(2);
       bool = false;
     }
-    if ((!this.d) || (bool))
+    if ((!this.l) || (bool))
     {
       localObject = Message.obtain();
       ((Message)localObject).what = 2;
       ((Message)localObject).obj = new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayOfFloat1, paramArrayOfFloat2, Long.valueOf(paramLong) };
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder$RecodeHandler.sendMessage((Message)localObject);
+      this.a.sendMessage((Message)localObject);
     }
   }
   
@@ -204,73 +195,68 @@ public class HWVideoRecorder
       ((StringBuilder)localObject).append(paramEncodeConfig.a());
       QLog.w("HWVideoRecorder", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.d) {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorderBuffer.a(paramEncodeConfig.jdField_a_of_type_Int, paramEncodeConfig.b);
+    if (this.l) {
+      this.m.a(paramEncodeConfig.c, paramEncodeConfig.d);
     }
     Object localObject = Message.obtain();
     HWVideoRecorder.RecordingObj localRecordingObj = new HWVideoRecorder.RecordingObj(this, null);
-    localRecordingObj.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener = paramHWEncodeListener;
-    localRecordingObj.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeNextListener = paramHWEncodeNextListener;
-    localRecordingObj.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig = paramEncodeConfig;
+    localRecordingObj.a = paramHWEncodeListener;
+    localRecordingObj.b = paramHWEncodeNextListener;
+    localRecordingObj.c = paramEncodeConfig;
     ((Message)localObject).obj = localRecordingObj;
     ((Message)localObject).what = 0;
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder$RecodeHandler.sendMessage((Message)localObject);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean ^ true;
+    this.a.sendMessage((Message)localObject);
   }
   
   public void b()
   {
-    if (this.d) {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorderBuffer.a();
+    if (this.l) {
+      this.m.a();
     }
     Message localMessage = Message.obtain();
     localMessage.what = 1;
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder$RecodeHandler.sendMessage(localMessage);
+    this.a.sendMessage(localMessage);
   }
   
   public void b(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig == null)
+    if (this.i == null)
     {
       QLog.d("HWVideoRecorder", 1, "handleFrameAvailable fail, encodeConfig null");
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("HWVideoRecorder", 2, new Object[] { "handleFrameAvailable timestampNanos = ", Long.valueOf(paramLong), "; textureId = ", Integer.valueOf(paramInt2), "; EGLContext = ", this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig.a() });
+      QLog.d("HWVideoRecorder", 2, new Object[] { "handleFrameAvailable timestampNanos = ", Long.valueOf(paramLong), "; textureId = ", Integer.valueOf(paramInt2), "; EGLContext = ", this.i.a() });
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.h)
     {
       if (QLog.isColorLevel())
       {
         paramArrayOfFloat1 = new StringBuilder();
         paramArrayOfFloat1.append("handleFrameAvailable mIsRecording = ");
-        paramArrayOfFloat1.append(this.jdField_a_of_type_Boolean);
+        paramArrayOfFloat1.append(this.h);
         QLog.d("HWVideoRecorder", 2, paramArrayOfFloat1.toString());
       }
       return;
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderHWVideoEncoder.a();
-      if ((this.b) && (this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig.jdField_a_of_type_Boolean))
+      this.b.a();
+      if ((this.j) && (this.i.i))
       {
-        this.b = false;
-        ThumbnailUtil.a(paramInt2, this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig.b, this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig, new HWVideoRecorder.1(this));
+        this.j = false;
+        ThumbnailUtil.a(paramInt2, this.i.c, this.i.d, this.i, new HWVideoRecorder.1(this));
       }
-      if (this.d) {
-        paramInt2 = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorderBuffer.a();
+      if (this.l) {
+        paramInt2 = this.m.b();
       }
       if (paramInt2 != -1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
-        if (this.d) {
-          this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorderBuffer.a(false, 1);
+        this.c.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
+        if (this.l) {
+          this.m.a(false, 1);
         }
-        paramArrayOfFloat1 = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener;
+        paramArrayOfFloat1 = this.e;
         if (paramArrayOfFloat1 != null) {
           paramArrayOfFloat1.onEncodeFrame();
         }
@@ -287,35 +273,49 @@ public class HWVideoRecorder
       {
         paramArrayOfFloat2 = new StringBuilder();
         paramArrayOfFloat2.append("frameAvailable: exception. config = ");
-        paramArrayOfFloat2.append(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig);
+        paramArrayOfFloat2.append(this.i);
         QLog.e("HWVideoRecorder", 2, paramArrayOfFloat2.toString(), paramArrayOfFloat1);
       }
-      paramArrayOfFloat2 = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener;
+      paramArrayOfFloat2 = this.e;
       if (paramArrayOfFloat2 != null) {
         paramArrayOfFloat2.onEncodeError(2, paramArrayOfFloat1);
       }
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderHWVideoEncoder.c();
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface.a();
-      this.jdField_a_of_type_Boolean = false;
+      this.b.c();
+      this.c.a();
+      this.h = false;
     }
   }
   
-  public void c()
+  public boolean c()
   {
-    HandlerThread localHandlerThread = this.jdField_a_of_type_AndroidOsHandlerThread;
+    return this.h ^ true;
+  }
+  
+  public MediaFormat d()
+  {
+    HWVideoEncoder localHWVideoEncoder = this.b;
+    if (localHWVideoEncoder != null) {
+      return localHWVideoEncoder.a;
+    }
+    return null;
+  }
+  
+  public void e()
+  {
+    HandlerThread localHandlerThread = this.d;
     if (localHandlerThread != null)
     {
       localHandlerThread.quitSafely();
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.d = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener = null;
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeNextListener = null;
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig = null;
+    this.e = null;
+    this.f = null;
+    this.i = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.recorder.HWVideoRecorder
  * JD-Core Version:    0.7.0.1
  */

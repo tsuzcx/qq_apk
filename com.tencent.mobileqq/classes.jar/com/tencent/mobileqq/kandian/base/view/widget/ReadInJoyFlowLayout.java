@@ -16,11 +16,11 @@ import com.tencent.widget.AdapterView.AdapterDataSetObserver;
 public class ReadInJoyFlowLayout
   extends AdapterView
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private final int jdField_a_of_type_Int = AIOUtils.b(8.0F, getResources());
-  private Adapter jdField_a_of_type_AndroidWidgetAdapter;
-  private AdapterView.AdapterDataSetObserver jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver = new ReadInJoyFlowLayout.1(this);
-  private float b = 0.0F;
+  private Adapter a;
+  private final int b = AIOUtils.b(8.0F, getResources());
+  private float c = 0.0F;
+  private float d = 0.0F;
+  private AdapterView.AdapterDataSetObserver e = new ReadInJoyFlowLayout.1(this);
   
   public ReadInJoyFlowLayout(Context paramContext)
   {
@@ -45,14 +45,14 @@ public class ReadInJoyFlowLayout
   private void a()
   {
     removeAllViewsInLayout();
-    Object localObject = this.jdField_a_of_type_AndroidWidgetAdapter;
+    Object localObject = this.a;
     if (localObject != null)
     {
       int j = ((Adapter)localObject).getCount();
       int i = 0;
       while (i < j)
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetAdapter.getView(i, null, this);
+        localObject = this.a.getView(i, null, this);
         addViewInLayout((View)localObject, i, ((View)localObject).getLayoutParams());
         i += 1;
       }
@@ -77,7 +77,7 @@ public class ReadInJoyFlowLayout
   
   public Adapter getAdapter()
   {
-    return this.jdField_a_of_type_AndroidWidgetAdapter;
+    return this.a;
   }
   
   public View getSelectedView()
@@ -287,9 +287,9 @@ public class ReadInJoyFlowLayout
       }
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      float f3 = f2 - this.jdField_a_of_type_Float;
-      float f4 = f1 - this.b;
-      i = this.jdField_a_of_type_Int;
+      float f3 = f2 - this.c;
+      float f4 = f1 - this.d;
+      i = this.b;
       if (f4 * f4 + f3 * f3 <= i * i)
       {
         int i2 = getChildCount();
@@ -338,28 +338,28 @@ public class ReadInJoyFlowLayout
     }
     else
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      this.b = paramMotionEvent.getX();
+      this.c = paramMotionEvent.getY();
+      this.d = paramMotionEvent.getX();
     }
     return true;
   }
   
   public void setAdapter(Adapter paramAdapter)
   {
-    Adapter localAdapter = this.jdField_a_of_type_AndroidWidgetAdapter;
+    Adapter localAdapter = this.a;
     if (localAdapter != null)
     {
-      AdapterView.AdapterDataSetObserver localAdapterDataSetObserver = this.jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver;
+      AdapterView.AdapterDataSetObserver localAdapterDataSetObserver = this.e;
       if (localAdapterDataSetObserver != null) {
         localAdapter.unregisterDataSetObserver(localAdapterDataSetObserver);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetAdapter = paramAdapter;
-    paramAdapter = this.jdField_a_of_type_AndroidWidgetAdapter;
+    this.a = paramAdapter;
+    paramAdapter = this.a;
     if (paramAdapter != null)
     {
       this.mItemCount = paramAdapter.getCount();
-      this.jdField_a_of_type_AndroidWidgetAdapter.registerDataSetObserver(this.jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver);
+      this.a.registerDataSetObserver(this.e);
       a();
     }
   }
@@ -393,7 +393,7 @@ public class ReadInJoyFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyFlowLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import com.tencent.tav.decoder.IDecoderTrack;
 import com.tencent.tav.decoder.logger.Logger;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -16,7 +17,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class AudioExportTask
   implements IAudioExportTask
 {
-  private static final String TAG = "AudioEncoderTask";
+  private static final String TAG = "AudioExportTask";
   private IAudioSource<? extends IDecoderTrack> mAsset;
   private ExportCallback mCallback;
   private CopyOnWriteArrayList<AudioExportRunner> mEncoderList;
@@ -57,7 +58,7 @@ public class AudioExportTask
     ((StringBuilder)localObject).append(paramInt2);
     ((StringBuilder)localObject).append(" mProgress = ");
     ((StringBuilder)localObject).append(paramFloat);
-    Logger.d("AudioEncoderTask", ((StringBuilder)localObject).toString());
+    Logger.d("AudioExportTask", ((StringBuilder)localObject).toString());
     if (this.mProgressMap.containsKey(Integer.valueOf(paramInt1)))
     {
       localObject = (AudioExportTask.SegmentStatus)this.mProgressMap.get(Integer.valueOf(paramInt1));
@@ -85,7 +86,7 @@ public class AudioExportTask
     localStringBuilder.append(paramCMTimeRange);
     localStringBuilder.append(" index = ");
     localStringBuilder.append(paramInt);
-    Logger.d("AudioEncoderTask", localStringBuilder.toString());
+    Logger.d("AudioExportTask", localStringBuilder.toString());
     paramCMTimeRange = new AudioExportRunner(this.mAsset, paramCMTimeRange);
     paramCMTimeRange.setSavePath(EncoderUtils.getAudioOutSaveFilePath(this.mOutSavePath, paramInt, this.mSessionId));
     paramCMTimeRange.setCallback(new AudioExportTask.1(this, paramInt));
@@ -98,12 +99,12 @@ public class AudioExportTask
     }
     catch (Exception paramCMTimeRange)
     {
-      Logger.e("AudioEncoderTask", "exportAudio: 未知异常，请留意", paramCMTimeRange);
+      Logger.e("AudioExportTask", "exportAudio: 未知异常，请留意", paramCMTimeRange);
       return;
     }
     catch (IOException paramCMTimeRange)
     {
-      Logger.e("AudioEncoderTask", "exportAudio: ", paramCMTimeRange);
+      Logger.e("AudioExportTask", "exportAudio: ", paramCMTimeRange);
     }
   }
   
@@ -114,21 +115,37 @@ public class AudioExportTask
     }
     float f1 = 0.0F;
     float f2 = this.mSegmentCount;
-    Object localObject = this.mProgressMap.entrySet().iterator();
+    StringBuilder localStringBuilder = new StringBuilder("[");
+    Object localObject = this.mProgressMap.values().iterator();
     int i = 0;
+    int j = 0;
     while (((Iterator)localObject).hasNext())
     {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      f1 += AudioExportTask.SegmentStatus.access$300((AudioExportTask.SegmentStatus)localEntry.getValue());
-      i |= AudioExportTask.SegmentStatus.access$400((AudioExportTask.SegmentStatus)localEntry.getValue());
+      AudioExportTask.SegmentStatus localSegmentStatus = (AudioExportTask.SegmentStatus)((Iterator)localObject).next();
+      f1 += AudioExportTask.SegmentStatus.access$300(localSegmentStatus);
+      i |= AudioExportTask.SegmentStatus.access$400(localSegmentStatus);
+      if (AudioExportTask.SegmentStatus.access$400(localSegmentStatus) == 1)
+      {
+        localStringBuilder.append("seg_");
+        localStringBuilder.append(j);
+        localStringBuilder.append(",");
+      }
+      j += 1;
     }
+    j = localStringBuilder.lastIndexOf(",");
+    if (j >= 0) {
+      localStringBuilder.deleteCharAt(j);
+    }
+    localStringBuilder.append("]");
     f1 /= f2;
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(" mStatus = ");
+    ((StringBuilder)localObject).append("notifyProgressAndStatusUpdate: mStatus = ");
     ((StringBuilder)localObject).append(i);
-    ((StringBuilder)localObject).append(" mProgress = ");
+    ((StringBuilder)localObject).append(", mProgress = ");
     ((StringBuilder)localObject).append(f1);
-    Logger.i("AudioEncoderTask", ((StringBuilder)localObject).toString());
+    ((StringBuilder)localObject).append(", runningTaskNames = ");
+    ((StringBuilder)localObject).append(localStringBuilder);
+    Logger.i("AudioExportTask", ((StringBuilder)localObject).toString());
     if (i == 255)
     {
       onProgress(255, f1);
@@ -235,7 +252,7 @@ public class AudioExportTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.audio.AudioExportTask
  * JD-Core Version:    0.7.0.1
  */

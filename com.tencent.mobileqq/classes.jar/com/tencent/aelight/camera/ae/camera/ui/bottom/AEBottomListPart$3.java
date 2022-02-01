@@ -14,16 +14,16 @@ class AEBottomListPart$3
     if (paramBoolean == null) {
       return;
     }
-    if (AEBottomListPart.a(this.a).a())
+    if (AEBottomListPart.d(this.a).a())
     {
-      this.a.a.setVisibility(8);
+      this.a.b.setVisibility(8);
       return;
     }
-    if (AEBottomListPart.a(this.a).b())
+    if (AEBottomListPart.d(this.a).b())
     {
-      if (!AEBottomListPart.a(this.a))
+      if (!AEBottomListPart.e(this.a))
       {
-        AEBottomListScrollView localAEBottomListScrollView = this.a.a;
+        AEBottomListScrollView localAEBottomListScrollView = this.a.b;
         int i;
         if (paramBoolean.booleanValue()) {
           i = 0;
@@ -33,17 +33,17 @@ class AEBottomListPart$3
         localAEBottomListScrollView.setVisibility(i);
         return;
       }
-      this.a.a.setVisibility(8);
+      this.a.b.setVisibility(8);
       return;
     }
-    if (AEBottomListPart.a(this.a).c()) {
-      this.a.a.setVisibility(8);
+    if (AEBottomListPart.d(this.a).c()) {
+      this.a.b.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart.3
  * JD-Core Version:    0.7.0.1
  */

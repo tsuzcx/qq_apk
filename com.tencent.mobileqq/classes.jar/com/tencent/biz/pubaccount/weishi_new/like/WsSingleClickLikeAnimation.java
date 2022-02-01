@@ -13,101 +13,138 @@ import com.tencent.qphone.base.util.BaseApplication;
 
 public class WsSingleClickLikeAnimation
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private View jdField_a_of_type_AndroidViewView;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private View jdField_b_of_type_AndroidViewView;
-  private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  private AnimationSet jdField_b_of_type_AndroidViewAnimationAnimationSet;
+  private Animation a;
+  private Animation b;
   private Animation c;
   private Animation d;
   private Animation e;
+  private AnimationSet f;
+  private AnimationSet g;
+  private View h;
+  private TextView i;
+  private View j;
+  private stSimpleMetaFeed k;
   
   private void a(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.h;
     if (localView != null)
     {
-      if (this.jdField_b_of_type_AndroidViewView == null) {
+      if (this.j == null) {
         return;
       }
       if (paramBoolean)
       {
         localView.setSelected(true);
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null) {
-          this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(BaseApplication.getContext(), 2130772227);
+        this.j.setVisibility(0);
+        if (this.a == null) {
+          this.a = AnimationUtils.loadAnimation(BaseApplication.getContext(), 2130772293);
         }
         if (this.c == null)
         {
-          this.c = AnimationUtils.loadAnimation(BaseApplication.getContext(), 2130772229);
+          this.c = AnimationUtils.loadAnimation(BaseApplication.getContext(), 2130772295);
           this.c.setStartOffset(40L);
         }
-        if (this.jdField_b_of_type_AndroidViewAnimationAnimation == null)
+        if (this.b == null)
         {
-          this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(BaseApplication.getContext(), 2130772228);
-          this.jdField_b_of_type_AndroidViewAnimationAnimation.setStartOffset(250L);
+          this.b = AnimationUtils.loadAnimation(BaseApplication.getContext(), 2130772294);
+          this.b.setStartOffset(250L);
         }
         if (this.d == null)
         {
-          this.d = AnimationUtils.loadAnimation(BaseApplication.getContext(), 2130772230);
+          this.d = AnimationUtils.loadAnimation(BaseApplication.getContext(), 2130772296);
           this.d.setStartOffset(290L);
         }
-        if (this.jdField_a_of_type_AndroidViewAnimationAnimationSet == null)
+        if (this.f == null)
         {
-          this.jdField_a_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(true);
-          this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-          this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.c);
+          this.f = new AnimationSet(true);
+          this.f.addAnimation(this.a);
+          this.f.addAnimation(this.c);
         }
-        if (this.jdField_b_of_type_AndroidViewAnimationAnimationSet == null)
+        if (this.g == null)
         {
-          this.jdField_b_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(true);
-          this.jdField_b_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-          this.jdField_b_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.d);
+          this.g = new AnimationSet(true);
+          this.g.addAnimation(this.b);
+          this.g.addAnimation(this.d);
         }
-        this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
-        this.jdField_b_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimationSet);
+        this.h.startAnimation(this.f);
+        this.j.startAnimation(this.g);
         return;
       }
       localView.setSelected(false);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.j.setVisibility(8);
       if (this.e == null) {
-        this.e = AnimationUtils.loadAnimation(BaseApplication.getContext(), 2130772231);
+        this.e = AnimationUtils.loadAnimation(BaseApplication.getContext(), 2130772297);
       }
-      this.jdField_a_of_type_AndroidViewView.startAnimation(this.e);
+      this.h.startAnimation(this.e);
     }
   }
   
   public stSimpleMetaFeed a()
   {
-    return this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+    return this.k;
   }
   
-  public View a()
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed, View paramView1, View paramView2, TextView paramTextView, int paramInt, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    this.k = paramstSimpleMetaFeed;
+    this.h = paramView1;
+    this.i = paramTextView;
+    this.j = paramView2;
+    a(paramBoolean, paramInt);
+    a(paramBoolean);
   }
   
-  public TextView a()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidViewAnimationAnimationSet;
-    if (localObject != null)
-    {
-      ((AnimationSet)localObject).cancel();
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet = null;
+    Object localObject = this.h;
+    if (localObject != null) {
+      ((View)localObject).setSelected(paramBoolean);
     }
-    localObject = this.jdField_b_of_type_AndroidViewAnimationAnimationSet;
+    localObject = this.j;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(8);
+    }
+    localObject = this.i;
+    if (localObject != null)
+    {
+      if (paramInt > 0)
+      {
+        ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).commonSetCountToTextView(this.i, paramInt, "0");
+        return;
+      }
+      ((TextView)localObject).setText(HardCodeUtil.a(2131888190));
+    }
+  }
+  
+  public View b()
+  {
+    return this.h;
+  }
+  
+  public TextView c()
+  {
+    return this.i;
+  }
+  
+  public View d()
+  {
+    return this.j;
+  }
+  
+  public void e()
+  {
+    Object localObject = this.f;
     if (localObject != null)
     {
       ((AnimationSet)localObject).cancel();
-      this.jdField_b_of_type_AndroidViewAnimationAnimationSet = null;
+      this.f = null;
+    }
+    localObject = this.g;
+    if (localObject != null)
+    {
+      ((AnimationSet)localObject).cancel();
+      this.g = null;
     }
     localObject = this.e;
     if (localObject != null)
@@ -116,47 +153,10 @@ public class WsSingleClickLikeAnimation
       this.e = null;
     }
   }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed, View paramView1, View paramView2, TextView paramTextView, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
-    this.jdField_a_of_type_AndroidViewView = paramView1;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_b_of_type_AndroidViewView = paramView2;
-    a(paramBoolean, paramInt);
-    a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
-    if (localObject != null) {
-      ((View)localObject).setSelected(paramBoolean);
-    }
-    localObject = this.jdField_b_of_type_AndroidViewView;
-    if (localObject != null) {
-      ((View)localObject).setVisibility(8);
-    }
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localObject != null)
-    {
-      if (paramInt > 0)
-      {
-        ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).commonSetCountToTextView(this.jdField_a_of_type_AndroidWidgetTextView, paramInt, "0");
-        return;
-      }
-      ((TextView)localObject).setText(HardCodeUtil.a(2131691244));
-    }
-  }
-  
-  public View b()
-  {
-    return this.jdField_b_of_type_AndroidViewView;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.like.WsSingleClickLikeAnimation
  * JD-Core Version:    0.7.0.1
  */

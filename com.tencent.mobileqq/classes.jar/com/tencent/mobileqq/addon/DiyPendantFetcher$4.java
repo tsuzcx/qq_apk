@@ -18,24 +18,24 @@ class DiyPendantFetcher$4
   public void run()
   {
     StringBuilder localStringBuilder;
-    if (AvatarPendantUtil.a(String.valueOf(this.jdField_a_of_type_Int)))
+    if (AvatarPendantUtil.b(String.valueOf(this.a)))
     {
-      if (this.jdField_a_of_type_Int != 1)
+      if (this.a != 1)
       {
         try
         {
-          ((FontInfo)this.this$0.b.get(Integer.valueOf(this.jdField_a_of_type_Int))).a = Typeface.createFromFile(this.jdField_a_of_type_JavaLangString);
+          ((FontInfo)this.this$0.e.get(Integer.valueOf(this.a))).d = Typeface.createFromFile(this.b);
         }
         catch (RuntimeException localRuntimeException)
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("Typeface createFromFile Exception path:");
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.b);
           localStringBuilder.append("  Message:");
           localStringBuilder.append(localRuntimeException.getMessage());
           QLog.e("DiyPendantFetcher", 1, localStringBuilder.toString());
         }
-        this.this$0.d();
+        this.this$0.e();
       }
     }
     else
@@ -46,7 +46,7 @@ class DiyPendantFetcher$4
         localObject = (IVasQuickUpdateService)((AppRuntime)localObject).getRuntimeService(IVasQuickUpdateService.class, "");
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("faceAddon.stickerFont.android.");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.a);
         ((IVasQuickUpdateService)localObject).downloadItem(4L, localStringBuilder.toString(), "DiyPendantFetcher");
       }
     }
@@ -54,7 +54,7 @@ class DiyPendantFetcher$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantFetcher.4
  * JD-Core Version:    0.7.0.1
  */

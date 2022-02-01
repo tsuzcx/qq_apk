@@ -7,17 +7,17 @@ class FileAssistantActivity$5$1
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      FileAssistantActivity.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantFileAssistantActivity$5.a);
+      FileAssistantActivity.e(this.b.a);
       return;
     }
-    FileAssistantActivity.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantFileAssistantActivity$5.a);
+    FileAssistantActivity.f(this.b.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -35,6 +35,8 @@ public abstract interface IAECMSShow
   public abstract void jumpToMe(Activity paramActivity, Intent paramIntent);
   
   public abstract void jumpToMeForResult(Activity paramActivity, Intent paramIntent, int paramInt);
+  
+  public abstract boolean supportAceEngine();
 }
 
 

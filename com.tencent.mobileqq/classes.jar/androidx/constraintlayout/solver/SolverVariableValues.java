@@ -360,33 +360,36 @@ public class SolverVariableValues
   
   public int indexOf(SolverVariable paramSolverVariable)
   {
-    if (this.mCount == 0) {
-      return -1;
-    }
-    int k = paramSolverVariable.id;
-    int i = this.HASH_SIZE;
-    int j = this.keys[(k % i)];
-    if (j == -1) {
-      return -1;
-    }
-    i = j;
-    if (this.variables[j] == k) {
-      return j;
-    }
-    for (;;)
+    if (this.mCount != 0)
     {
-      paramSolverVariable = this.nextKeys;
-      if ((paramSolverVariable[i] == -1) || (this.variables[paramSolverVariable[i]] == k)) {
-        break;
+      if (paramSolverVariable == null) {
+        return -1;
       }
-      i = paramSolverVariable[i];
-    }
-    paramSolverVariable = this.nextKeys;
-    if (paramSolverVariable[i] == -1) {
-      return -1;
-    }
-    if (this.variables[paramSolverVariable[i]] == k) {
-      return paramSolverVariable[i];
+      int k = paramSolverVariable.id;
+      int i = this.HASH_SIZE;
+      int j = this.keys[(k % i)];
+      if (j == -1) {
+        return -1;
+      }
+      i = j;
+      if (this.variables[j] == k) {
+        return j;
+      }
+      for (;;)
+      {
+        paramSolverVariable = this.nextKeys;
+        if ((paramSolverVariable[i] == -1) || (this.variables[paramSolverVariable[i]] == k)) {
+          break;
+        }
+        i = paramSolverVariable[i];
+      }
+      paramSolverVariable = this.nextKeys;
+      if (paramSolverVariable[i] == -1) {
+        return -1;
+      }
+      if (this.variables[paramSolverVariable[i]] == k) {
+        return paramSolverVariable[i];
+      }
     }
     return -1;
   }
@@ -597,7 +600,7 @@ public class SolverVariableValues
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.SolverVariableValues
  * JD-Core Version:    0.7.0.1
  */

@@ -23,11 +23,11 @@ class MsgTabStoryNodeDelegate$3
   
   public void run()
   {
-    int j = this.this$0.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.a.getChildCount();
+    int j = this.this$0.b.o.c.getChildCount();
     int i = 0;
     while (i < j)
     {
-      Object localObject = this.this$0.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.a.getChildAt(i);
+      Object localObject = this.this$0.b.o.c.getChildAt(i);
       if ((TextUtils.equals(this.a, String.valueOf(((View)localObject).getTag()))) && ((localObject instanceof StoryMsgNodeFrameLayout)))
       {
         localObject = (StoryMsgNodeFrameLayout)localObject;
@@ -35,17 +35,17 @@ class MsgTabStoryNodeDelegate$3
         {
           Rect localRect = new Rect();
           ((StoryMsgNodeFrameLayout)localObject).getGlobalVisibleRect(localRect);
-          MsgTabStoryManager localMsgTabStoryManager = (MsgTabStoryManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER);
-          localMsgTabStoryManager.a = (localRect.left + ((StoryMsgNodeFrameLayout)localObject).getWidth() / 2);
-          localMsgTabStoryManager.b = (localRect.top + ((StoryMsgNodeFrameLayout)localObject).getHeight() / 2);
-          SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "handlePlayModeSwitchNode findView. x=%d, y=%d, rect=%s", Integer.valueOf(localMsgTabStoryManager.a), Integer.valueOf(localMsgTabStoryManager.b), String.valueOf(localRect));
+          MsgTabStoryManager localMsgTabStoryManager = (MsgTabStoryManager)this.this$0.g.getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER);
+          localMsgTabStoryManager.c = (localRect.left + ((StoryMsgNodeFrameLayout)localObject).getWidth() / 2);
+          localMsgTabStoryManager.d = (localRect.top + ((StoryMsgNodeFrameLayout)localObject).getHeight() / 2);
+          SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "handlePlayModeSwitchNode findView. x=%d, y=%d, rect=%s", Integer.valueOf(localMsgTabStoryManager.c), Integer.valueOf(localMsgTabStoryManager.d), String.valueOf(localRect));
           RoundBorderImageView localRoundBorderImageView = ((StoryMsgNodeFrameLayout)localObject).a;
           localRoundBorderImageView.getGlobalVisibleRect(localRect);
-          localMsgTabStoryManager.c = (localRect.top + localRoundBorderImageView.getPaddingTop());
-          localMsgTabStoryManager.d = (localRect.left + localRoundBorderImageView.getPaddingLeft());
-          localMsgTabStoryManager.e = (localRect.width() - localRoundBorderImageView.getPaddingLeft() - localRoundBorderImageView.getPaddingRight());
-          localMsgTabStoryManager.f = (localRect.height() - localRoundBorderImageView.getPaddingTop() - localRoundBorderImageView.getPaddingBottom());
-          localMsgTabStoryManager.g = AIOUtils.b(8.0F, this.this$0.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.getResources());
+          localMsgTabStoryManager.e = (localRect.top + localRoundBorderImageView.getPaddingTop());
+          localMsgTabStoryManager.f = (localRect.left + localRoundBorderImageView.getPaddingLeft());
+          localMsgTabStoryManager.g = (localRect.width() - localRoundBorderImageView.getPaddingLeft() - localRoundBorderImageView.getPaddingRight());
+          localMsgTabStoryManager.h = (localRect.height() - localRoundBorderImageView.getPaddingTop() - localRoundBorderImageView.getPaddingBottom());
+          localMsgTabStoryManager.i = AIOUtils.b(8.0F, this.this$0.b.o.getResources());
           StoryDispatcher.a().dispatch(new StoryPlayerActivity.ClosePlayerAnimationInfoEvent(new AnimationParam(((StoryMsgNodeFrameLayout)localObject).a, false), null));
           return;
         }
@@ -56,7 +56,7 @@ class MsgTabStoryNodeDelegate$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate.3
  * JD-Core Version:    0.7.0.1
  */

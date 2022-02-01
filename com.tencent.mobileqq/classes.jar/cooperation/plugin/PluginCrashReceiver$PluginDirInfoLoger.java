@@ -6,105 +6,105 @@ import android.os.AsyncTask;
 class PluginCrashReceiver$PluginDirInfoLoger
   extends AsyncTask<String, String, String>
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private Context jdField_a_of_type_AndroidContentContext;
+  private static boolean a = false;
+  private Context b;
   
   public PluginCrashReceiver$PluginDirInfoLoger(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
   
   /* Error */
   protected String a(String... paramVarArgs)
   {
     // Byte code:
-    //   0: getstatic 25	cooperation/plugin/PluginCrashReceiver$PluginDirInfoLoger:jdField_a_of_type_Boolean	Z
+    //   0: getstatic 26	cooperation/plugin/PluginCrashReceiver$PluginDirInfoLoger:a	Z
     //   3: ifeq +6 -> 9
-    //   6: ldc 27
+    //   6: ldc 28
     //   8: areturn
     //   9: iconst_1
-    //   10: putstatic 25	cooperation/plugin/PluginCrashReceiver$PluginDirInfoLoger:jdField_a_of_type_Boolean	Z
+    //   10: putstatic 26	cooperation/plugin/PluginCrashReceiver$PluginDirInfoLoger:a	Z
     //   13: aconst_null
     //   14: astore_2
-    //   15: new 29	java/lang/StringBuilder
+    //   15: new 30	java/lang/StringBuilder
     //   18: dup
-    //   19: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   19: invokespecial 31	java/lang/StringBuilder:<init>	()V
     //   22: astore_3
-    //   23: new 32	java/lang/ProcessBuilder
+    //   23: new 33	java/lang/ProcessBuilder
     //   26: dup
     //   27: iconst_3
-    //   28: anewarray 34	java/lang/String
+    //   28: anewarray 35	java/lang/String
     //   31: dup
     //   32: iconst_0
-    //   33: ldc 36
+    //   33: ldc 37
     //   35: aastore
     //   36: dup
     //   37: iconst_1
-    //   38: ldc 38
+    //   38: ldc 39
     //   40: aastore
     //   41: dup
     //   42: iconst_2
     //   43: aload_0
-    //   44: getfield 18	cooperation/plugin/PluginCrashReceiver$PluginDirInfoLoger:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   47: ldc 40
+    //   44: getfield 19	cooperation/plugin/PluginCrashReceiver$PluginDirInfoLoger:b	Landroid/content/Context;
+    //   47: ldc 41
     //   49: iconst_0
-    //   50: invokevirtual 46	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   53: invokevirtual 52	java/io/File:getPath	()Ljava/lang/String;
+    //   50: invokevirtual 47	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
+    //   53: invokevirtual 53	java/io/File:getPath	()Ljava/lang/String;
     //   56: aastore
-    //   57: invokespecial 55	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
+    //   57: invokespecial 56	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
     //   60: astore_1
     //   61: aload_1
     //   62: iconst_1
-    //   63: invokevirtual 59	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
+    //   63: invokevirtual 60	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
     //   66: pop
-    //   67: new 61	java/io/BufferedReader
+    //   67: new 62	java/io/BufferedReader
     //   70: dup
-    //   71: new 63	java/io/InputStreamReader
+    //   71: new 64	java/io/InputStreamReader
     //   74: dup
     //   75: aload_1
-    //   76: invokevirtual 67	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
-    //   79: invokevirtual 73	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   82: invokespecial 76	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   85: invokespecial 79	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   76: invokevirtual 68	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
+    //   79: invokevirtual 74	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   82: invokespecial 77	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   85: invokespecial 80	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   88: astore_1
     //   89: aload_1
-    //   90: invokevirtual 82	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   90: invokevirtual 83	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   93: astore_2
     //   94: aload_2
     //   95: ifnull +28 -> 123
     //   98: aload_2
-    //   99: ldc 40
-    //   101: invokevirtual 86	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   99: ldc 41
+    //   101: invokevirtual 87	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   104: ifeq -15 -> 89
     //   107: aload_3
     //   108: aload_2
-    //   109: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: pop
     //   113: aload_3
-    //   114: ldc 92
-    //   116: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: ldc 93
+    //   116: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   119: pop
     //   120: goto -31 -> 89
-    //   123: new 29	java/lang/StringBuilder
+    //   123: new 30	java/lang/StringBuilder
     //   126: dup
-    //   127: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   127: invokespecial 31	java/lang/StringBuilder:<init>	()V
     //   130: astore_2
     //   131: aload_2
-    //   132: ldc 94
-    //   134: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: ldc 95
+    //   134: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   137: pop
     //   138: aload_2
     //   139: aload_3
-    //   140: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   143: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   143: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   146: pop
-    //   147: ldc 99
+    //   147: ldc 100
     //   149: iconst_1
     //   150: aload_2
-    //   151: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   154: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   151: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   154: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   157: aload_1
-    //   158: invokevirtual 108	java/io/BufferedReader:close	()V
+    //   158: invokevirtual 109	java/io/BufferedReader:close	()V
     //   161: aconst_null
     //   162: areturn
     //   163: astore_3
@@ -118,7 +118,7 @@ class PluginCrashReceiver$PluginDirInfoLoger
     //   175: aload_2
     //   176: ifnull +7 -> 183
     //   179: aload_2
-    //   180: invokevirtual 108	java/io/BufferedReader:close	()V
+    //   180: invokevirtual 109	java/io/BufferedReader:close	()V
     //   183: aload_1
     //   184: athrow
     //   185: aconst_null
@@ -162,7 +162,7 @@ class PluginCrashReceiver$PluginDirInfoLoger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginCrashReceiver.PluginDirInfoLoger
  * JD-Core Version:    0.7.0.1
  */

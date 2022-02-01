@@ -7,9 +7,9 @@ import com.tencent.mobileqq.config.QConfigManager;
 public class QVipQidProcessor
   extends BaseQVipConfigProcessor<QVipQidConfig>
 {
-  public static QVipQidConfig c()
+  public static QVipQidConfig e()
   {
-    QVipQidConfig localQVipQidConfig2 = (QVipQidConfig)QConfigManager.a().a(694);
+    QVipQidConfig localQVipQidConfig2 = (QVipQidConfig)QConfigManager.b().b(694);
     QVipQidConfig localQVipQidConfig1 = localQVipQidConfig2;
     if (localQVipQidConfig2 == null) {
       localQVipQidConfig1 = new QVipQidConfig();
@@ -26,7 +26,7 @@ public class QVipQidProcessor
   @NonNull
   public QVipQidConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
-    return QVipQidConfig.a(paramArrayOfQConfItem[0].a);
+    return QVipQidConfig.a(paramArrayOfQConfItem[0].b);
   }
   
   @NonNull
@@ -47,7 +47,7 @@ public class QVipQidProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipQidProcessor
  * JD-Core Version:    0.7.0.1
  */

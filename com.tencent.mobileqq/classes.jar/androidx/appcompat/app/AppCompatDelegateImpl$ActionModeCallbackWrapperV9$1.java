@@ -23,6 +23,7 @@ class AppCompatDelegateImpl$ActionModeCallbackWrapperV9$1
     this.this$1.this$0.mActionModeView.removeAllViews();
     this.this$1.this$0.mFadeAnim.setListener(null);
     this.this$1.this$0.mFadeAnim = null;
+    ViewCompat.requestApplyInsets(this.this$1.this$0.mSubDecor);
   }
 }
 

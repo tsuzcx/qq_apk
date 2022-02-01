@@ -20,7 +20,7 @@ class ConfessChatPie$1
   
   private void a(boolean paramBoolean, String paramString)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()))
+    if ((this.a.f != null) && (!this.a.f.isFinishing()))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       if (paramBoolean) {
@@ -40,15 +40,15 @@ class ConfessChatPie$1
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (!ConfessConfig.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+    if (!ConfessConfig.a(this.a.d)) {
       return;
     }
-    if ((paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramInt1 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e) && (paramInt2 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    if ((paramString.equals(this.a.ah.b)) && (paramInt1 == this.a.ah.v) && (paramInt2 == this.a.ah.a))
     {
       ConfessChatPie.a(this.a);
       if (QLog.isColorLevel())
       {
-        String str = this.a.b;
+        String str = this.a.c;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onCheckHolmesTipsView  frdUin:");
         localStringBuilder.append(paramString);
@@ -63,21 +63,21 @@ class ConfessChatPie$1
   
   public void a(boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2)
   {
-    if (!ConfessConfig.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+    if (!ConfessConfig.a(this.a.d)) {
       return;
     }
     if (paramBoolean2) {
       paramLong1 = paramLong2;
     }
     String str = Long.toString(paramLong1);
-    if ((str.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramInt1 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e) && (paramInt2 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    if ((str.equals(this.a.ah.b)) && (paramInt1 == this.a.ah.v) && (paramInt2 == this.a.ah.a))
     {
       Object localObject1;
       Object localObject2;
       if (paramBoolean1)
       {
-        localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
-        localObject2 = ((ConfessProxy)localObject1).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e);
+        localObject1 = this.a.d.getProxyManager().j();
+        localObject2 = ((ConfessProxy)localObject1).b(this.a.ah.b, this.a.ah.a, this.a.ah.v);
         if (localObject2 != null)
         {
           if (((ConfessConvInfo)localObject2).holmesCurCount == paramInt3) {
@@ -92,7 +92,7 @@ class ConfessChatPie$1
       }
       if (QLog.isColorLevel())
       {
-        localObject1 = this.a.b;
+        localObject1 = this.a.c;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("onGetHolmesProgress ");
         ((StringBuilder)localObject2).append(paramBoolean1);
@@ -111,12 +111,12 @@ class ConfessChatPie$1
   
   public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, ConfessInfo paramConfessInfo)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (Utils.a(paramString1, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramInt1 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) && (paramInt2 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e))
+    if ((this.a.ah != null) && (Utils.a(paramString1, this.a.ah.b)) && (paramInt1 == this.a.ah.a) && (paramInt2 == this.a.ah.v))
     {
       if (QLog.isColorLevel())
       {
-        String str = this.a.b;
-        paramInt2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e;
+        String str = this.a.c;
+        paramInt2 = this.a.ah.v;
         if (paramString2 == null) {
           paramConfessInfo = "";
         } else {
@@ -131,7 +131,7 @@ class ConfessChatPie$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.1
  * JD-Core Version:    0.7.0.1
  */

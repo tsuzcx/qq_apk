@@ -30,12 +30,12 @@ public class VasUpdateConfProcessor
             localObject = paramArrayOfQConfItem[i];
             if (localObject != null)
             {
-              VasUpdateCfgBean localVasUpdateCfgBean = VasUpdateCfgBean.a(((QConfItem)localObject).a);
+              VasUpdateCfgBean localVasUpdateCfgBean = VasUpdateCfgBean.a(((QConfItem)localObject).b);
               if (QLog.isColorLevel())
               {
                 StringBuilder localStringBuilder = new StringBuilder();
                 localStringBuilder.append("onParsed ");
-                localStringBuilder.append(((QConfItem)localObject).a);
+                localStringBuilder.append(((QConfItem)localObject).b);
                 QLog.d("VasUpdateConfProcessor", 2, localStringBuilder.toString());
               }
               if (localVasUpdateCfgBean != null) {
@@ -76,7 +76,7 @@ public class VasUpdateConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.VasUpdateConfProcessor
  * JD-Core Version:    0.7.0.1
  */

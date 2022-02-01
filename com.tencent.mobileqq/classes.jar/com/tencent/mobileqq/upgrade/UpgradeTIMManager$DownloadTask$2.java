@@ -9,12 +9,12 @@ class UpgradeTIMManager$DownloadTask$2
   
   public void run()
   {
-    UpgradeTIMManager.a(this.a.this$0).a(this.a.a);
+    UpgradeTIMManager.c(this.a.this$0).a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeTIMManager.DownloadTask.2
  * JD-Core Version:    0.7.0.1
  */

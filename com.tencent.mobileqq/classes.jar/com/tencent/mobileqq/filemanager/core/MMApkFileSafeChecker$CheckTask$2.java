@@ -16,7 +16,7 @@ class MMApkFileSafeChecker$CheckTask$2
   {
     if (paramMap != null)
     {
-      paramMap = (IteApkInfoResp)paramMap.get(Integer.valueOf(this.a.a));
+      paramMap = (IteApkInfoResp)paramMap.get(Integer.valueOf(this.a.k));
       if (paramMap != null)
       {
         i = (int)paramMap.getErrorCode();
@@ -33,7 +33,7 @@ class MMApkFileSafeChecker$CheckTask$2
     label76:
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[MMApkCheck] <");
-    localStringBuilder.append(this.a.a);
+    localStringBuilder.append(this.a.k);
     localStringBuilder.append("> on checkresult. errCode:");
     localStringBuilder.append(i);
     localStringBuilder.append(" safeLevel:");
@@ -48,7 +48,7 @@ class MMApkFileSafeChecker$CheckTask$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.CheckTask.2
  * JD-Core Version:    0.7.0.1
  */

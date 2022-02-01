@@ -100,8 +100,8 @@ public class NewFriendServiceImpl
   private static final int MSG_MARKRECOMMEND_READED = 8;
   private static final int MSG_MARKSYSMSG_READED = 5;
   private static final int MSG_REFRESHDATA = 2;
-  public static final int NEW_FRIEND_ICON_ID = 2130840417;
-  public static final String NEW_FRIEND_TAG = HardCodeUtil.a(2131707518);
+  public static final int NEW_FRIEND_ICON_ID = 2130841172;
+  public static final String NEW_FRIEND_TAG = HardCodeUtil.a(2131905333);
   public static final String TAG = "NEW_FRD.NewFriendServiceImpl";
   private EntityManager em;
   private NewFriendListObserver flo = new NewFriendServiceImpl.4(this);
@@ -309,7 +309,7 @@ public class NewFriendServiceImpl
           continue;
         }
         FriendSystemMessage localFriendSystemMessage = (FriendSystemMessage)((Iterator)localObject3).next();
-        if ((localFriendSystemMessage.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg == null) || (!localFriendSystemMessage.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.senderuin.equals(localMessageRecord.senderuin))) {
+        if ((localFriendSystemMessage.a == null) || (!localFriendSystemMessage.a.senderuin.equals(localMessageRecord.senderuin))) {
           continue;
         }
         i = 1;
@@ -350,7 +350,7 @@ public class NewFriendServiceImpl
       ((StringBuilder)localObject).append(paramInt);
       QLog.i("NEW_FRD.NewFriendServiceImpl", 2, ((StringBuilder)localObject).toString());
     }
-    long l2 = MessageCache.a() - 60L;
+    long l2 = MessageCache.c() - 60L;
     Object localObject = ((IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "")).getAIOList(paramString2, 0);
     long l1 = l2;
     if (localObject != null)
@@ -406,7 +406,7 @@ public class NewFriendServiceImpl
       if (localObject == null) {
         return false;
       }
-      return (!paramNewFriendMessage.a()) || (((RecentUserProxy)localObject).a(AppConstants.RECOMMEND_CONTACT_UIN, 4000));
+      return (!paramNewFriendMessage.b()) || (((RecentUserProxy)localObject).a(AppConstants.RECOMMEND_CONTACT_UIN, 4000));
     }
     return false;
   }
@@ -500,7 +500,7 @@ public class NewFriendServiceImpl
     {
       Collections.sort(paramArrayList2, this.mComparator);
       Object localObject = new NewFriendSubTitle();
-      ((NewFriendSubTitle)localObject).jdField_a_of_type_JavaLangString = this.mApp.getApp().getApplicationContext().getResources().getString(2131694444);
+      ((NewFriendSubTitle)localObject).a = this.mApp.getApp().getApplicationContext().getResources().getString(2131892124);
       int j = 0;
       int i = 0;
       boolean bool;
@@ -509,8 +509,8 @@ public class NewFriendServiceImpl
       } else {
         bool = false;
       }
-      ((NewFriendSubTitle)localObject).jdField_a_of_type_Boolean = bool;
-      ((NewFriendSubTitle)localObject).b = ((INewFriendVerificationService)this.mApp.getRuntimeService(INewFriendVerificationService.class, "")).isShowRedPointAtNewFriendBanner();
+      ((NewFriendSubTitle)localObject).b = bool;
+      ((NewFriendSubTitle)localObject).c = ((INewFriendVerificationService)this.mApp.getRuntimeService(INewFriendVerificationService.class, "")).isShowRedPointAtNewFriendBanner();
       paramArrayList1.add(new NewFriendSubTitleMessage((NewFriendSubTitle)localObject));
       if (QLog.isColorLevel())
       {
@@ -534,8 +534,8 @@ public class NewFriendServiceImpl
             paramInt1 += 1;
           }
           paramArrayList2 = new NewFriendMoreInfo();
-          paramArrayList2.jdField_a_of_type_JavaLangString = this.mApp.getApp().getApplicationContext().getResources().getString(2131694438);
-          paramArrayList2.jdField_a_of_type_Int = 1000;
+          paramArrayList2.a = this.mApp.getApp().getApplicationContext().getResources().getString(2131892118);
+          paramArrayList2.b = 1000;
           paramArrayList1.add(new NewFriendMoreInfoMessage(paramArrayList2));
           return;
         }
@@ -543,8 +543,8 @@ public class NewFriendServiceImpl
         if (((paramInt1 % 20 == 0) && (!((INewFriendApi)QRoute.api(INewFriendApi.class)).isHasNoMoreMsg(this.mApp))) || ((paramInt1 > 20) && (!((INewFriendApi)QRoute.api(INewFriendApi.class)).getSysMsgOverValue(this.mApp))))
         {
           paramArrayList2 = new NewFriendMoreInfo();
-          paramArrayList2.jdField_a_of_type_JavaLangString = this.mApp.getApp().getApplicationContext().getResources().getString(2131694438);
-          paramArrayList2.jdField_a_of_type_Int = 1000;
+          paramArrayList2.a = this.mApp.getApp().getApplicationContext().getResources().getString(2131892118);
+          paramArrayList2.b = 1000;
           paramArrayList1.add(new NewFriendMoreInfoMessage(paramArrayList2));
         }
       }
@@ -565,8 +565,8 @@ public class NewFriendServiceImpl
           if (this.mSysMsgShouldAddMoreInfo)
           {
             paramArrayList = new NewFriendMoreInfo();
-            paramArrayList.jdField_a_of_type_JavaLangString = this.mApp.getApp().getApplicationContext().getResources().getString(2131694438);
-            paramArrayList.jdField_a_of_type_Int = 1000;
+            paramArrayList.a = this.mApp.getApp().getApplicationContext().getResources().getString(2131892118);
+            paramArrayList.b = 1000;
             paramArrayList1.add(new NewFriendMoreInfoMessage(paramArrayList));
           }
         }
@@ -611,7 +611,7 @@ public class NewFriendServiceImpl
     else if (paramArrayList2.size() > 0)
     {
       paramArrayList2 = new NewFriendSubTitle();
-      paramArrayList2.jdField_a_of_type_JavaLangString = this.mApp.getApp().getApplicationContext().getResources().getString(2131689694);
+      paramArrayList2.a = this.mApp.getApp().getApplicationContext().getResources().getString(2131886306);
       paramArrayList1.add(new NewFriendSubTitleMessage(paramArrayList2));
     }
   }
@@ -745,7 +745,7 @@ public class NewFriendServiceImpl
       i = paramArrayList2.size();
       boolean bool2 = true;
       i -= 1;
-      while ((i >= 0) && (((NewFriendMessage)paramArrayList2.get(i)).a())) {
+      while ((i >= 0) && (((NewFriendMessage)paramArrayList2.get(i)).b())) {
         i -= 1;
       }
       if (QLog.isColorLevel())
@@ -790,8 +790,8 @@ public class NewFriendServiceImpl
       if (bool1)
       {
         paramArrayList2 = new NewFriendMoreInfo();
-        paramArrayList2.jdField_a_of_type_JavaLangString = this.mApp.getApp().getApplicationContext().getResources().getString(2131694438);
-        paramArrayList2.jdField_a_of_type_Int = 1000;
+        paramArrayList2.a = this.mApp.getApp().getApplicationContext().getResources().getString(2131892118);
+        paramArrayList2.b = 1000;
         paramArrayList1.add(new NewFriendMoreInfoMessage(paramArrayList2));
       }
     }
@@ -812,7 +812,7 @@ public class NewFriendServiceImpl
       while (((Iterator)localObject).hasNext())
       {
         NewFriendMessage localNewFriendMessage = (NewFriendMessage)((Iterator)localObject).next();
-        if ((localNewFriendMessage != null) && (!localNewFriendMessage.a()) && ((localNewFriendMessage instanceof FriendSystemMessage))) {
+        if ((localNewFriendMessage != null) && (!localNewFriendMessage.b()) && ((localNewFriendMessage instanceof FriendSystemMessage))) {
           i += 1;
         }
       }
@@ -869,7 +869,7 @@ public class NewFriendServiceImpl
       QLog.d("NEW_FRD.NewFriendServiceImpl", 2, "refreshRecentData | isShouldCreateOrGetRecentUser = true");
     }
     RecentUserProxy localRecentUserProxy = ((IRecentUserProxyService)this.mApp.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-    RecentUser localRecentUser = localRecentUserProxy.a(AppConstants.RECOMMEND_CONTACT_UIN, 4000);
+    RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.RECOMMEND_CONTACT_UIN, 4000);
     if ((localRecentUser.msg != null) && (!(localRecentUser.msg instanceof String)))
     {
       if (QLog.isColorLevel())
@@ -885,8 +885,8 @@ public class NewFriendServiceImpl
     localRecentUser.displayName = NEW_FRIEND_TAG;
     if ((paramNewFriendMessage != null) && ((paramNewFriendMessage instanceof MayKnowMessage)))
     {
-      localRecentUser.lastmsgdrafttime = paramNewFriendMessage.jdField_a_of_type_Long;
-      localRecentUser.msg = paramNewFriendMessage.jdField_a_of_type_JavaLangString;
+      localRecentUser.lastmsgdrafttime = paramNewFriendMessage.d;
+      localRecentUser.msg = paramNewFriendMessage.c;
       if (QLog.isColorLevel())
       {
         paramNewFriendMessage = new StringBuilder();
@@ -895,12 +895,12 @@ public class NewFriendServiceImpl
         QLog.d("NEW_FRD.NewFriendServiceImpl", 2, paramNewFriendMessage.toString());
       }
     }
-    else if ((paramNewFriendMessage != null) && ((paramNewFriendMessage instanceof FriendSystemMessage)) && (!TextUtils.isEmpty(paramNewFriendMessage.jdField_a_of_type_JavaLangString)))
+    else if ((paramNewFriendMessage != null) && ((paramNewFriendMessage instanceof FriendSystemMessage)) && (!TextUtils.isEmpty(paramNewFriendMessage.c)))
     {
-      if (paramNewFriendMessage.jdField_a_of_type_Long > 0L) {
-        localRecentUser.lastmsgtime = paramNewFriendMessage.jdField_a_of_type_Long;
+      if (paramNewFriendMessage.d > 0L) {
+        localRecentUser.lastmsgtime = paramNewFriendMessage.d;
       }
-      localRecentUser.msg = paramNewFriendMessage.jdField_a_of_type_JavaLangString;
+      localRecentUser.msg = paramNewFriendMessage.c;
       if (QLog.isColorLevel())
       {
         paramNewFriendMessage = new StringBuilder();
@@ -1094,7 +1094,7 @@ public class NewFriendServiceImpl
     while (((Iterator)localObject).hasNext())
     {
       NewFriendMessage localNewFriendMessage = (NewFriendMessage)((Iterator)localObject).next();
-      if ((localNewFriendMessage != null) && (!localNewFriendMessage.a())) {
+      if ((localNewFriendMessage != null) && (!localNewFriendMessage.b())) {
         if ((localNewFriendMessage instanceof FriendSystemMessage)) {
           j += 1;
         } else if ((localNewFriendMessage instanceof ContactBindedMessage)) {
@@ -1128,7 +1128,7 @@ public class NewFriendServiceImpl
     while (localIterator.hasNext())
     {
       localObject2 = (NewFriendMessage)localIterator.next();
-      if ((localObject2 != null) && (!((NewFriendMessage)localObject2).a())) {
+      if ((localObject2 != null) && (!((NewFriendMessage)localObject2).b())) {
         if ((localObject2 instanceof FriendSystemMessage))
         {
           i += 1;
@@ -1190,14 +1190,14 @@ public class NewFriendServiceImpl
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("getAllUnreadMsg FriendSystemMessage time  = ");
-            localStringBuilder.append(((FriendSystemMessage)localObject2).jdField_a_of_type_Long * 1000L);
+            localStringBuilder.append(((FriendSystemMessage)localObject2).d * 1000L);
             QLog.d("NEW_FRD.NewFriendServiceImpl", 2, localStringBuilder.toString());
           }
           else if ((localObject2 instanceof ContactMatchMessage))
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("getAllUnreadMsg ContactMatchMessage time  = ");
-            localStringBuilder.append(((ContactMatchMessage)localObject2).jdField_a_of_type_Long * 1000L);
+            localStringBuilder.append(((ContactMatchMessage)localObject2).d * 1000L);
             QLog.d("NEW_FRD.NewFriendServiceImpl", 2, localStringBuilder.toString());
           }
         }
@@ -1222,7 +1222,7 @@ public class NewFriendServiceImpl
     while (i < ((ArrayList)localObject).size())
     {
       localNewFriendMessage1 = (NewFriendMessage)((ArrayList)localObject).get(i);
-      if ((localNewFriendMessage1 != null) && (!localNewFriendMessage1.a())) {
+      if ((localNewFriendMessage1 != null) && (!localNewFriendMessage1.b())) {
         break label52;
       }
       i += 1;
@@ -1238,7 +1238,7 @@ public class NewFriendServiceImpl
       while (i < ((ArrayList)localObject).size())
       {
         localNewFriendMessage2 = (NewFriendMessage)((ArrayList)localObject).get(i);
-        if ((localNewFriendMessage2 != null) && (!localNewFriendMessage2.a()) && (!(localNewFriendMessage2 instanceof FriendSystemMessage))) {
+        if ((localNewFriendMessage2 != null) && (!localNewFriendMessage2.b()) && (!(localNewFriendMessage2 instanceof FriendSystemMessage))) {
           break label135;
         }
         i += 1;
@@ -1247,7 +1247,7 @@ public class NewFriendServiceImpl
       if (localNewFriendMessage2 != null)
       {
         localObject = localNewFriendMessage2;
-        if (localNewFriendMessage1.jdField_a_of_type_Long >= localNewFriendMessage2.jdField_a_of_type_Long) {
+        if (localNewFriendMessage1.d >= localNewFriendMessage2.d) {
           localObject = localNewFriendMessage1;
         }
         return localObject;
@@ -1519,7 +1519,7 @@ public class NewFriendServiceImpl
             localStringBuilder.append("loadNewFriendMsg");
           }
           Object localObject2 = (IPhoneContactService)this.mApp.getRuntimeService(IPhoneContactService.class, "");
-          this.mHasReadContactPermission = PermissionChecker.a().c();
+          this.mHasReadContactPermission = PermissionChecker.a().e();
           loadGuideMessage(localArrayList1, (IPhoneContactService)localObject2);
           int i = loadSystemMsg(paramBoolean, localStringBuilder, localArrayList2, 0);
           loadQIMMsg(localArrayList5, localArrayList2);
@@ -1624,8 +1624,8 @@ public class NewFriendServiceImpl
     label110:
     if (localObject != null)
     {
-      ((FriendSystemMessage)localObject).jdField_a_of_type_Long = paramFriendSystemMessage.jdField_a_of_type_Long;
-      ((FriendSystemMessage)localObject).jdField_a_of_type_JavaLangString = paramFriendSystemMessage.jdField_a_of_type_JavaLangString;
+      ((FriendSystemMessage)localObject).d = paramFriendSystemMessage.d;
+      ((FriendSystemMessage)localObject).c = paramFriendSystemMessage.c;
       refreshRecentData((NewFriendMessage)localObject);
       setChanged();
       notifyObservers(localObject);
@@ -1659,7 +1659,7 @@ public class NewFriendServiceImpl
       return;
     }
     localObject = ((IRecentUserProxyService)((AppInterface)localObject).getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-    RecentUser localRecentUser = ((RecentUserProxy)localObject).b(AppConstants.RECOMMEND_CONTACT_UIN, 4000);
+    RecentUser localRecentUser = ((RecentUserProxy)localObject).c(AppConstants.RECOMMEND_CONTACT_UIN, 4000);
     if (localRecentUser != null) {
       ((RecentUserProxy)localObject).a(localRecentUser);
     }
@@ -1728,9 +1728,9 @@ public class NewFriendServiceImpl
     int i = localSharedPreferences.getInt("new_friend_show_count_after_user_close", 0);
     NewFriendContactGuideConfBean localNewFriendContactGuideConfBean = getConfBean();
     if (QLog.isColorLevel()) {
-      QLog.i("NEW_FRD.NewFriendServiceImpl", 2, String.format("updateBindContactGuideState [%s, %s, %s, %s]", new Object[] { Boolean.valueOf(localNewFriendContactGuideConfBean.jdField_a_of_type_Boolean), Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(localNewFriendContactGuideConfBean.jdField_a_of_type_Int) }));
+      QLog.i("NEW_FRD.NewFriendServiceImpl", 2, String.format("updateBindContactGuideState [%s, %s, %s, %s]", new Object[] { Boolean.valueOf(localNewFriendContactGuideConfBean.a), Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(localNewFriendContactGuideConfBean.b) }));
     }
-    if ((localNewFriendContactGuideConfBean.jdField_a_of_type_Boolean) && ((!bool) || (i >= localNewFriendContactGuideConfBean.jdField_a_of_type_Int)))
+    if ((localNewFriendContactGuideConfBean.a) && ((!bool) || (i >= localNewFriendContactGuideConfBean.b)))
     {
       this.showContactGuideV2 = true;
       localSharedPreferences.edit().putBoolean("contact_guide_user_close", false).putInt("new_friend_show_count_after_user_close", 0).apply();
@@ -1850,7 +1850,7 @@ public class NewFriendServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.api.impl.NewFriendServiceImpl
  * JD-Core Version:    0.7.0.1
  */

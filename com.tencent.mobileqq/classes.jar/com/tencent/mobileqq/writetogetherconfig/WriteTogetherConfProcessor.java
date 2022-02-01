@@ -20,7 +20,7 @@ public class WriteTogetherConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      Object localObject2 = WriteTogetherConfBean.a(paramArrayOfQConfItem[0].a);
+      Object localObject2 = WriteTogetherConfBean.a(paramArrayOfQConfItem[0].b);
       Object localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = new WriteTogetherConfBean();
@@ -29,7 +29,7 @@ public class WriteTogetherConfProcessor
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("onParsed ");
-        ((StringBuilder)localObject2).append(paramArrayOfQConfItem[0].a);
+        ((StringBuilder)localObject2).append(paramArrayOfQConfItem[0].b);
         QLog.d("WriteTogetherConfProcessor", 2, ((StringBuilder)localObject2).toString());
       }
       return localObject1;
@@ -68,7 +68,7 @@ public class WriteTogetherConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherconfig.WriteTogetherConfProcessor
  * JD-Core Version:    0.7.0.1
  */

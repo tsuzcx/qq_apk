@@ -11,7 +11,7 @@ class CardHandler$1
   {
     Object localObject = CardHandler.a(this.this$0).getCurrentAccountUin();
     FriendsManager localFriendsManager = (FriendsManager)CardHandler.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
-    localObject = localFriendsManager.a((String)localObject);
+    localObject = localFriendsManager.f((String)localObject);
     if (localObject != null)
     {
       ((Card)localObject).iVoteIncrement = this.a;
@@ -21,7 +21,7 @@ class CardHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.CardHandler.1
  * JD-Core Version:    0.7.0.1
  */

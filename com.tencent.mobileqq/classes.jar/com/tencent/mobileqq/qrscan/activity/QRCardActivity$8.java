@@ -12,8 +12,8 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 class QRCardActivity$8
   implements View.OnLongClickListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new QRCardActivity.8.2(this);
-  View jdField_a_of_type_AndroidViewView;
+  View a;
+  private View.OnClickListener c = new QRCardActivity.8.2(this);
   
   QRCardActivity$8(QRCardActivity paramQRCardActivity) {}
   
@@ -24,10 +24,10 @@ class QRCardActivity$8
     {
       if (Build.VERSION.SDK_INT < 11)
       {
-        ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqQrscanActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+        ((android.text.ClipboardManager)this.b.getSystemService("clipboard")).setText(paramString);
         return;
       }
-      android.content.ClipboardManager localClipboardManager = (android.content.ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqQrscanActivityQRCardActivity.getSystemService("clipboard");
+      android.content.ClipboardManager localClipboardManager = (android.content.ClipboardManager)this.b.getSystemService("clipboard");
       ClipboardMonitor.setText(localClipboardManager, paramString);
       localClipboardManager.setText(paramString);
     }
@@ -38,17 +38,17 @@ class QRCardActivity$8
     if (paramView == null) {
       return false;
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramView;
     paramView.setSelected(true);
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131365311, this.jdField_a_of_type_ComTencentMobileqqQrscanActivityQRCardActivity.getString(2131691294), 2130838903);
-    QRCardActivity.a(paramView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, new QRCardActivity.8.1(this, paramView));
+    localQQCustomMenu.a(2131431492, this.b.getString(2131888244), 2130839057);
+    QRCardActivity.a(paramView, localQQCustomMenu, this.c, new QRCardActivity.8.1(this, paramView));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.QRCardActivity.8
  * JD-Core Version:    0.7.0.1
  */

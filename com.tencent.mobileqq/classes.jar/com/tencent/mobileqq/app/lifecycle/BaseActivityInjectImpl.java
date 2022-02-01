@@ -22,11 +22,6 @@ import mqq.app.AppRuntime;
 public class BaseActivityInjectImpl
   implements IBaseActivityInjectInterface
 {
-  public BroadcastReceiver a()
-  {
-    return new BaseActivityInjectImpl.MyScreenReceiver(null);
-  }
-  
   public Intent a(QBaseActivity paramQBaseActivity)
   {
     GesturePWDUnlockActivity.sGesturePWDUnlockShowing = true;
@@ -92,10 +87,15 @@ public class BaseActivityInjectImpl
     ReportController.a(paramMotionEvent);
     return false;
   }
+  
+  public BroadcastReceiver b()
+  {
+    return new BaseActivityInjectImpl.MyScreenReceiver(null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.lifecycle.BaseActivityInjectImpl
  * JD-Core Version:    0.7.0.1
  */

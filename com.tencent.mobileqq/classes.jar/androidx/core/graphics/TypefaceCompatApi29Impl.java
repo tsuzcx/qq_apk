@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.graphics.Typeface.CustomFallbackBuilder;
+import android.graphics.fonts.Font;
 import android.graphics.fonts.Font.Builder;
 import android.graphics.fonts.FontFamily.Builder;
 import android.graphics.fonts.FontStyle;
@@ -285,24 +286,14 @@ public class TypefaceCompatApi29Impl
   {
     try
     {
-      paramContext = new FontFamily.Builder(new Font.Builder(paramResources, paramInt1).build()).build();
-      if ((paramInt2 & 0x1) != 0) {
-        paramInt1 = 700;
-      } else {
-        paramInt1 = 400;
-      }
-      if ((paramInt2 & 0x2) != 0) {
-        paramInt2 = 1;
-      } else {
-        paramInt2 = 0;
-      }
-      paramResources = new FontStyle(paramInt1, paramInt2);
-      return new Typeface.CustomFallbackBuilder(paramContext).setStyle(paramResources).build();
+      paramContext = new Font.Builder(paramResources, paramInt1).build();
+      paramResources = new FontFamily.Builder(paramContext).build();
+      return new Typeface.CustomFallbackBuilder(paramResources).setStyle(paramContext.getStyle()).build();
     }
     catch (IOException paramContext)
     {
-      label84:
-      break label84;
+      label44:
+      break label44;
     }
     return null;
   }

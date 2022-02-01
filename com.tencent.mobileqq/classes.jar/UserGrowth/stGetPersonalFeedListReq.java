@@ -14,6 +14,7 @@ public final class stGetPersonalFeedListReq
   public ArrayList<String> context_feedids = null;
   public boolean isFirst = true;
   public String personId = "";
+  public int reqType = 0;
   public int scene = 0;
   
   static
@@ -23,13 +24,14 @@ public final class stGetPersonalFeedListReq
   
   public stGetPersonalFeedListReq() {}
   
-  public stGetPersonalFeedListReq(String paramString1, ArrayList<String> paramArrayList, String paramString2, boolean paramBoolean, int paramInt)
+  public stGetPersonalFeedListReq(String paramString1, ArrayList<String> paramArrayList, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     this.personId = paramString1;
     this.context_feedids = paramArrayList;
     this.attach_info = paramString2;
     this.isFirst = paramBoolean;
-    this.scene = paramInt;
+    this.scene = paramInt1;
+    this.reqType = paramInt2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -39,6 +41,7 @@ public final class stGetPersonalFeedListReq
     this.attach_info = paramJceInputStream.readString(2, false);
     this.isFirst = paramJceInputStream.read(this.isFirst, 3, false);
     this.scene = paramJceInputStream.read(this.scene, 4, false);
+    this.reqType = paramJceInputStream.read(this.reqType, 5, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -57,6 +60,7 @@ public final class stGetPersonalFeedListReq
     }
     paramJceOutputStream.write(this.isFirst, 3);
     paramJceOutputStream.write(this.scene, 4);
+    paramJceOutputStream.write(this.reqType, 5);
   }
 }
 

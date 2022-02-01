@@ -22,16 +22,16 @@ import com.tencent.mobileqq.uftransfer.api.UFTTransferConfig.UploadConfig;
 abstract class QFileC2CTransferWrapper$C2CBaseUploadWrapper
   implements IUFTUploadCallback
 {
-  final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  final QFileC2CTransferWrapper.ITransferWrapperCallback jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$ITransferWrapperCallback;
-  IUFTTransferKey jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTTransferKey;
-  boolean jdField_a_of_type_Boolean = true;
-  boolean b = false;
+  final QQAppInterface a;
+  boolean b = true;
+  final QFileC2CTransferWrapper.ITransferWrapperCallback c;
+  IUFTTransferKey d;
+  boolean e = false;
   
   public QFileC2CTransferWrapper$C2CBaseUploadWrapper(QQAppInterface paramQQAppInterface, QFileC2CTransferWrapper.ITransferWrapperCallback paramITransferWrapperCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$ITransferWrapperCallback = paramITransferWrapperCallback;
+    this.a = paramQQAppInterface;
+    this.c = paramITransferWrapperCallback;
   }
   
   public int a(IUFTTransferKey paramIUFTTransferKey, Bundle paramBundle, IUFTUploadSendMsgCallback paramIUFTUploadSendMsgCallback)
@@ -39,23 +39,21 @@ abstract class QFileC2CTransferWrapper$C2CBaseUploadWrapper
     return -1;
   }
   
-  abstract long a();
-  
   protected UFTTransferConfig a()
   {
     UFTTransferConfig localUFTTransferConfig = new UFTTransferConfig(true);
-    Object localObject = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    Object localObject = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     localUFTTransferConfig.a().c(true);
-    localUFTTransferConfig.a().d(FileIPv6StrateyController.a().isConfigEnableIPV6(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1));
+    localUFTTransferConfig.a().d(FileIPv6StrateyController.b().isConfigEnableIPV6(this.a, 1));
     localUFTTransferConfig.a().f(true);
-    if (a() > ((IExcitingTransferAdapter)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IExcitingTransferAdapter.class, "")).getC2CUploadLimitedSize())
+    if (b() > ((IExcitingTransferAdapter)this.a.getRuntimeService(IExcitingTransferAdapter.class, "")).getC2CUploadLimitedSize())
     {
       localUFTTransferConfig.a().a(true);
       localUFTTransferConfig.a().b(true);
     }
     localUFTTransferConfig.a().e(false);
     if (((IQFileConfigManager)localObject).getExcitingC2CUploadConfig() != null) {
-      localObject = ((IQFileConfigManager)localObject).getExcitingC2CUploadConfig().a();
+      localObject = ((IQFileConfigManager)localObject).getExcitingC2CUploadConfig().c();
     } else {
       localObject = new ExcitingTransferUploadChnConfigInfo();
     }
@@ -70,15 +68,13 @@ abstract class QFileC2CTransferWrapper$C2CBaseUploadWrapper
     localExtfUploadCfg.b(((ExcitingTransferUploadChnConfigInfo)localObject).uPieceSize);
     localExtfUploadCfg.d(((ExcitingTransferUploadChnConfigInfo)localObject).nTotoalDataTimeout);
     localUFTTransferConfig.a().a(localExtfUploadCfg);
-    if (this.b)
+    if (this.e)
     {
       localUFTTransferConfig.a().a(true);
       localUFTTransferConfig.a().b(false);
     }
     return localUFTTransferConfig;
   }
-  
-  abstract void a();
   
   public void a(IUFTTransferKey paramIUFTTransferKey) {}
   
@@ -96,19 +92,23 @@ abstract class QFileC2CTransferWrapper$C2CBaseUploadWrapper
   
   boolean a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTTransferKey != null)
+    this.b = true;
+    if (this.d != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("REASON", paramInt);
-      ((IUFTTransferService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IUFTTransferService.class, "")).stop(this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTTransferKey, localBundle);
+      ((IUFTTransferService)this.a.getRuntimeService(IUFTTransferService.class, "")).stop(this.d, localBundle);
     }
     return true;
   }
+  
+  abstract long b();
+  
+  abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileC2CTransferWrapper.C2CBaseUploadWrapper
  * JD-Core Version:    0.7.0.1
  */

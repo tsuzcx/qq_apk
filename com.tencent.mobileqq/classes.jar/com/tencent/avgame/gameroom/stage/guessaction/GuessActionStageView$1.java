@@ -12,8 +12,8 @@ class GuessActionStageView$1
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.onClick(paramView);
+    if (this.a.b != null) {
+      this.a.b.onClick(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

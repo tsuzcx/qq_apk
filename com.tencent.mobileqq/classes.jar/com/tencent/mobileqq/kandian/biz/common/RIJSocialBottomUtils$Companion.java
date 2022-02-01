@@ -51,7 +51,30 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/common/RIJSocialBottomUtils$Companion;", "", "()V", "TAG", "", "articleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "bottomSocialView", "Lcom/tencent/mobileqq/kandian/biz/fastweb/ReadInJoyFastWebBottomSocialViewNew;", "bottomViewHeight", "", "callBack", "Lcom/tencent/mobileqq/kandian/biz/common/RIJSocialBottomUtils$CommentAndLikeCallBack;", "fastWebInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/FastWebArticleInfo;", "hasRepeatRequest", "", "observer", "Lcom/tencent/mobileqq/kandian/repo/feeds/ReadInJoyObserver;", "getObserver", "()Lcom/tencent/mobileqq/kandian/repo/feeds/ReadInJoyObserver;", "setObserver", "(Lcom/tencent/mobileqq/kandian/repo/feeds/ReadInJoyObserver;)V", "webViewLayout", "Landroid/view/ViewGroup;", "addSocialBottomView", "", "activity", "Landroid/app/Activity;", "contentView", "Landroid/view/View;", "doShareClick", "Lcom/tencent/mobileqq/kandian/biz/fastweb/ReadInJoyFastWebBottomSocialViewNew$DoShareClick;", "webInfo", "viewGroup", "adjustWebViewMargin", "isVisibile", "canShowSocialBottomView", "isWxArticle", "destroy", "generateArticleInfoForBiu", "originArticleinfo", "initBottomData", "bundle", "Landroid/os/Bundle;", "initParams", "openBiuActivity", "from", "biuState", "fastBiu", "context", "Landroid/content/Context;", "requestCode", "openCommentListFragment", "openCommentEdit", "refreshBottomView", "repeatRequest", "needRequest", "requestCommentNum", "callback", "requestLikeStatus", "webModule", "Lcom/tencent/mobileqq/kandian/repo/fastweb/FastWebModule;", "Lcom/tencent/mobileqq/kandian/repo/fastweb/FastWebModule$FastWebArticleRichReqCallback;", "setSocialBottomViewStatus", "isFirstInit", "originUrl", "currentUrl", "showSocialBottomView", "syncCommentAndLike", "syncWebInfoCache", "updateWebInfoCache", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJSocialBottomUtils$Companion
 {
-  private final AbsBaseArticleInfo a(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
+  private final void a(Activity paramActivity, View paramView, ReadInJoyFastWebBottomSocialViewNew.DoShareClick paramDoShareClick, FastWebArticleInfo paramFastWebArticleInfo, AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if ((paramView instanceof ViewGroup))
+    {
+      Companion localCompanion = (Companion)this;
+      RIJSocialBottomUtils.a(localCompanion.a((ViewGroup)paramView, paramActivity, paramFastWebArticleInfo, paramAbsBaseArticleInfo, paramDoShareClick));
+      if (RIJSocialBottomUtils.c() == null) {
+        return;
+      }
+      RIJSocialBottomUtils.a(new RIJSocialBottomUtils.CommentAndLikeCallBack(paramAbsBaseArticleInfo.innerUniqueID, RIJSocialBottomUtils.c(), paramAbsBaseArticleInfo, paramFastWebArticleInfo));
+      localCompanion.a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, RIJSocialBottomUtils.g());
+    }
+  }
+  
+  private final void a(boolean paramBoolean, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
+  {
+    if ((paramBoolean) && (!RIJSocialBottomUtils.f()))
+    {
+      ThreadManager.getSubThreadHandler().postDelayed((Runnable)new RIJSocialBottomUtils.Companion.repeatRequest.1(paramAbsBaseArticleInfo, paramFastWebArticleInfo), 1000L);
+      RIJSocialBottomUtils.a(true);
+    }
+  }
+  
+  private final AbsBaseArticleInfo b(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
   {
     List localList = null;
     if (paramAbsBaseArticleInfo == null) {
@@ -59,10 +82,10 @@ public final class RIJSocialBottomUtils$Companion
     }
     BaseArticleInfo localBaseArticleInfo = new BaseArticleInfo();
     if (paramFastWebArticleInfo != null) {
-      localList = paramFastWebArticleInfo.jdField_a_of_type_JavaUtilList;
+      localList = paramFastWebArticleInfo.A;
     }
-    if ((localList != null) && (paramFastWebArticleInfo.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      localBaseArticleInfo.businessId = ((ArticleTopicInfo)paramFastWebArticleInfo.jdField_a_of_type_JavaUtilList.get(0)).a;
+    if ((localList != null) && (paramFastWebArticleInfo.A.size() > 0)) {
+      localBaseArticleInfo.businessId = ((ArticleTopicInfo)paramFastWebArticleInfo.A.get(0)).c;
     }
     localBaseArticleInfo.innerUniqueID = paramAbsBaseArticleInfo.innerUniqueID;
     localBaseArticleInfo.mRecommendSeq = paramAbsBaseArticleInfo.mRecommendSeq;
@@ -74,51 +97,28 @@ public final class RIJSocialBottomUtils$Companion
     localBaseArticleInfo.mFirstPagePicUrl = paramAbsBaseArticleInfo.mFirstPagePicUrl;
     localBaseArticleInfo.mArticleID = paramAbsBaseArticleInfo.mArticleID;
     localBaseArticleInfo.mSocialFeedInfo = new SocializeFeedsInfo();
-    localBaseArticleInfo.mSocialFeedInfo.a = new BiuInfo();
-    localBaseArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-    localBaseArticleInfo.mSocialFeedInfo.a.b = Long.valueOf(1L);
-    localBaseArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
+    localBaseArticleInfo.mSocialFeedInfo.n = new BiuInfo();
+    localBaseArticleInfo.mSocialFeedInfo.n.b = Long.valueOf(0L);
+    localBaseArticleInfo.mSocialFeedInfo.n.c = Long.valueOf(1L);
+    localBaseArticleInfo.mSocialFeedInfo.n.a = ((List)new ArrayList());
     return (AbsBaseArticleInfo)localBaseArticleInfo;
   }
   
-  private final void a(Activity paramActivity, View paramView, ReadInJoyFastWebBottomSocialViewNew.DoShareClick paramDoShareClick, FastWebArticleInfo paramFastWebArticleInfo, AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if ((paramView instanceof ViewGroup))
-    {
-      Companion localCompanion = (Companion)this;
-      RIJSocialBottomUtils.a(localCompanion.a((ViewGroup)paramView, paramActivity, paramFastWebArticleInfo, paramAbsBaseArticleInfo, paramDoShareClick));
-      if (RIJSocialBottomUtils.a() == null) {
-        return;
-      }
-      RIJSocialBottomUtils.a(new RIJSocialBottomUtils.CommentAndLikeCallBack(paramAbsBaseArticleInfo.innerUniqueID, RIJSocialBottomUtils.a(), paramAbsBaseArticleInfo, paramFastWebArticleInfo));
-      localCompanion.a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, RIJSocialBottomUtils.a());
-    }
-  }
-  
-  private final void a(boolean paramBoolean, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
-  {
-    if ((paramBoolean) && (!RIJSocialBottomUtils.a()))
-    {
-      ThreadManager.getSubThreadHandler().postDelayed((Runnable)new RIJSocialBottomUtils.Companion.repeatRequest.1(paramAbsBaseArticleInfo, paramFastWebArticleInfo), 1000L);
-      RIJSocialBottomUtils.a(true);
-    }
-  }
-  
-  private final void b()
+  private final void c()
   {
     Object localObject1 = ReadInJoyLogicEngine.a();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "ReadInJoyLogicEngine.getInstance()");
-    FastWebModule localFastWebModule = ((ReadInJoyLogicEngine)localObject1).a();
+    FastWebModule localFastWebModule = ((ReadInJoyLogicEngine)localObject1).d();
     Object localObject2 = null;
     if (localFastWebModule != null)
     {
-      localObject1 = RIJSocialBottomUtils.a();
+      localObject1 = RIJSocialBottomUtils.d();
       if (localObject1 != null) {
         localObject1 = ((AbsBaseArticleInfo)localObject1).innerUniqueID;
       } else {
         localObject1 = null;
       }
-      localObject1 = localFastWebModule.a((String)localObject1);
+      localObject1 = localFastWebModule.b((String)localObject1);
     }
     else
     {
@@ -126,28 +126,28 @@ public final class RIJSocialBottomUtils$Companion
     }
     if (localObject1 != null)
     {
-      Object localObject3 = RIJSocialBottomUtils.a();
+      Object localObject3 = RIJSocialBottomUtils.e();
       if (localObject3 != null) {
-        ((FastWebArticleInfo)localObject3).jdField_a_of_type_Boolean = ((FastWebArticleInfo)localObject1).jdField_a_of_type_Boolean;
+        ((FastWebArticleInfo)localObject3).h = ((FastWebArticleInfo)localObject1).h;
       }
-      localObject3 = RIJSocialBottomUtils.a();
+      localObject3 = RIJSocialBottomUtils.e();
       if (localObject3 != null) {
-        ((FastWebArticleInfo)localObject3).jdField_a_of_type_Int = ((FastWebArticleInfo)localObject1).jdField_a_of_type_Int;
+        ((FastWebArticleInfo)localObject3).f = ((FastWebArticleInfo)localObject1).f;
       }
-      localObject3 = RIJSocialBottomUtils.a();
+      localObject3 = RIJSocialBottomUtils.e();
       if (localObject3 != null) {
-        ((FastWebArticleInfo)localObject3).c = ((FastWebArticleInfo)localObject1).c;
+        ((FastWebArticleInfo)localObject3).z = ((FastWebArticleInfo)localObject1).z;
       }
-      localObject3 = RIJSocialBottomUtils.a();
+      localObject3 = RIJSocialBottomUtils.d();
       localObject1 = localObject2;
       if (localObject3 != null) {
         localObject1 = ((AbsBaseArticleInfo)localObject3).innerUniqueID;
       }
-      localFastWebModule.a((String)localObject1, RIJSocialBottomUtils.a());
+      localFastWebModule.a((String)localObject1, RIJSocialBottomUtils.e());
     }
   }
   
-  private final void c()
+  private final void d()
   {
     RIJSocialBottomUtils.a((AbsBaseArticleInfo)null);
     RIJSocialBottomUtils.a((FastWebArticleInfo)null);
@@ -156,20 +156,20 @@ public final class RIJSocialBottomUtils$Companion
     RIJSocialBottomUtils.a((ViewGroup)null);
   }
   
-  private final void d()
+  private final void e()
   {
     Object localObject = ReadInJoyLogicEngine.a();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "ReadInJoyLogicEngine.getInstance()");
-    FastWebModule localFastWebModule = ((ReadInJoyLogicEngine)localObject).a();
-    if ((RIJSocialBottomUtils.a() != null) && (RIJSocialBottomUtils.a() != null) && (localFastWebModule != null))
+    FastWebModule localFastWebModule = ((ReadInJoyLogicEngine)localObject).d();
+    if ((RIJSocialBottomUtils.d() != null) && (RIJSocialBottomUtils.e() != null) && (localFastWebModule != null))
     {
-      localObject = RIJSocialBottomUtils.a();
+      localObject = RIJSocialBottomUtils.d();
       if (localObject != null) {
         localObject = ((AbsBaseArticleInfo)localObject).innerUniqueID;
       } else {
         localObject = null;
       }
-      localFastWebModule.a((String)localObject, RIJSocialBottomUtils.a());
+      localFastWebModule.a((String)localObject, RIJSocialBottomUtils.e());
     }
   }
   
@@ -184,11 +184,11 @@ public final class RIJSocialBottomUtils$Companion
     {
       if ((paramViewGroup instanceof RelativeLayout))
       {
-        paramAbsBaseArticleInfo.mArticleContentUrl = paramFastWebArticleInfo.t;
+        paramAbsBaseArticleInfo.mArticleContentUrl = paramFastWebArticleInfo.L;
         Object localObject = paramActivity.getResources();
         if (localObject != null)
         {
-          int i = (int)((Resources)localObject).getDimension(2131298855);
+          int i = (int)((Resources)localObject).getDimension(2131299572);
           localObject = new RelativeLayout.LayoutParams(-1, i);
           ((RelativeLayout.LayoutParams)localObject).addRule(12, -1);
           RIJSocialBottomUtils.a(paramViewGroup);
@@ -198,11 +198,11 @@ public final class RIJSocialBottomUtils$Companion
           localReadInJoyFastWebBottomSocialViewNew.setIsWebBottomView(true);
           localReadInJoyFastWebBottomSocialViewNew.setLayoutParams((ViewGroup.LayoutParams)localObject);
           paramViewGroup.addView((View)localReadInJoyFastWebBottomSocialViewNew);
-          ((Companion)this).b();
+          ((Companion)this).c();
           localReadInJoyFastWebBottomSocialViewNew.setData((Context)paramActivity, paramFastWebArticleInfo, paramAbsBaseArticleInfo);
           localReadInJoyFastWebBottomSocialViewNew.a(paramDoShareClick);
           QLog.d("RIJSocialBottomUtils", 1, "addSocialBottomView!");
-          ReadInJoyLogicEngineEventDispatcher.a().a(((Companion)this).a());
+          ReadInJoyLogicEngineEventDispatcher.a().a(((Companion)this).b());
           return localReadInJoyFastWebBottomSocialViewNew;
         }
       }
@@ -217,36 +217,30 @@ public final class RIJSocialBottomUtils$Companion
     return null;
   }
   
-  @NotNull
-  public final ReadInJoyObserver a()
-  {
-    return RIJSocialBottomUtils.a();
-  }
-  
   public final void a()
   {
-    Object localObject1 = RIJSocialBottomUtils.a();
+    Object localObject1 = RIJSocialBottomUtils.c();
     if (localObject1 != null) {
       ((ReadInJoyFastWebBottomSocialViewNew)localObject1).a();
     }
     localObject1 = ReadInJoyLogicEngine.a();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "ReadInJoyLogicEngine.getInstance()");
-    localObject1 = ((ReadInJoyLogicEngine)localObject1).a();
+    localObject1 = ((ReadInJoyLogicEngine)localObject1).d();
     if (localObject1 != null) {
-      ((FastWebModule)localObject1).a(RIJSocialBottomUtils.a());
+      ((FastWebModule)localObject1).a(RIJSocialBottomUtils.g());
     }
     Object localObject2 = ReadInJoyLogicEngineEventDispatcher.a();
     localObject1 = (Companion)this;
-    ((ReadInJoyLogicEngineEventDispatcher)localObject2).b(((Companion)localObject1).a());
-    localObject2 = ReadInJoyCommentDataManager.a(RIJSocialBottomUtils.a(), 10);
+    ((ReadInJoyLogicEngineEventDispatcher)localObject2).b(((Companion)localObject1).b());
+    localObject2 = ReadInJoyCommentDataManager.a(RIJSocialBottomUtils.d(), 10);
     if (localObject2 != null) {
-      ((ReadInJoyCommentDataManager)localObject2).ap_();
+      ((ReadInJoyCommentDataManager)localObject2).m();
     }
-    localObject2 = RIJSocialBottomUtils.a();
+    localObject2 = RIJSocialBottomUtils.g();
     if (localObject2 != null) {
       ((RIJSocialBottomUtils.CommentAndLikeCallBack)localObject2).a((ReadInJoyFastWebBottomSocialViewNew)null);
     }
-    ((Companion)localObject1).c();
+    ((Companion)localObject1).d();
   }
   
   public final void a(int paramInt1, int paramInt2, boolean paramBoolean, @NotNull Context paramContext, int paramInt3, @Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo, @Nullable FastWebArticleInfo paramFastWebArticleInfo)
@@ -255,7 +249,7 @@ public final class RIJSocialBottomUtils$Companion
     if (!(paramContext instanceof Activity)) {
       return;
     }
-    paramFastWebArticleInfo = ((Companion)this).a(paramAbsBaseArticleInfo, paramFastWebArticleInfo);
+    paramFastWebArticleInfo = ((Companion)this).b(paramAbsBaseArticleInfo, paramFastWebArticleInfo);
     paramAbsBaseArticleInfo = new Intent(paramContext, ReadInJoyDeliverBiuActivity.class);
     paramAbsBaseArticleInfo.putExtra("arg_article_info", (Parcelable)paramFastWebArticleInfo);
     paramAbsBaseArticleInfo.putExtra("biu_src", 100);
@@ -280,7 +274,7 @@ public final class RIJSocialBottomUtils$Companion
       Bundle localBundle = new Bundle();
       localBundle.putInt("source", 10);
       localBundle.putParcelable("articleInfo", (Parcelable)paramAbsBaseArticleInfo);
-      int i = UIUtils.c(paramContext);
+      int i = UIUtils.d(paramContext);
       if (i > 0) {
         localBundle.putInt("comment_layout_height", i * 2 / 3);
       }
@@ -325,20 +319,20 @@ public final class RIJSocialBottomUtils$Companion
       bool = true;
     }
     Companion localCompanion = (Companion)this;
-    if (!localCompanion.a(bool)) {
+    if (!localCompanion.b(bool)) {
       return;
     }
     localCompanion.a(paramBundle);
-    if ((paramActivity != null) && (paramView != null) && (RIJSocialBottomUtils.a() != null))
+    if ((paramActivity != null) && (paramView != null) && (RIJSocialBottomUtils.e() != null))
     {
-      if (RIJSocialBottomUtils.a() == null) {
+      if (RIJSocialBottomUtils.d() == null) {
         return;
       }
-      paramBundle = RIJSocialBottomUtils.a();
+      paramBundle = RIJSocialBottomUtils.e();
       if (paramBundle == null) {
         Intrinsics.throwNpe();
       }
-      AbsBaseArticleInfo localAbsBaseArticleInfo = RIJSocialBottomUtils.a();
+      AbsBaseArticleInfo localAbsBaseArticleInfo = RIJSocialBottomUtils.d();
       if (localAbsBaseArticleInfo == null) {
         Intrinsics.throwNpe();
       }
@@ -376,7 +370,7 @@ public final class RIJSocialBottomUtils$Companion
       }
       if (Intrinsics.areEqual(Looper.myLooper(), Looper.getMainLooper()))
       {
-        ReadInJoyFastWebBottomSocialViewNew localReadInJoyFastWebBottomSocialViewNew = RIJSocialBottomUtils.a();
+        ReadInJoyFastWebBottomSocialViewNew localReadInJoyFastWebBottomSocialViewNew = RIJSocialBottomUtils.c();
         if (localReadInJoyFastWebBottomSocialViewNew != null) {
           localReadInJoyFastWebBottomSocialViewNew.setData(paramFastWebArticleInfo, paramAbsBaseArticleInfo);
         }
@@ -385,7 +379,7 @@ public final class RIJSocialBottomUtils$Companion
       {
         ThreadManager.getUIHandler().post((Runnable)new RIJSocialBottomUtils.Companion.refreshBottomView.1(paramFastWebArticleInfo, paramAbsBaseArticleInfo));
       }
-      ((Companion)this).d();
+      ((Companion)this).e();
     }
   }
   
@@ -395,7 +389,7 @@ public final class RIJSocialBottomUtils$Companion
     Intrinsics.checkParameterIsNotNull(paramFastWebArticleInfo, "webInfo");
     Object localObject = ReadInJoyLogicEngine.a();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "ReadInJoyLogicEngine.getInstance()");
-    localObject = ((ReadInJoyLogicEngine)localObject).a();
+    localObject = ((ReadInJoyLogicEngine)localObject).d();
     boolean bool = true;
     if (localObject != null)
     {
@@ -422,7 +416,7 @@ public final class RIJSocialBottomUtils$Companion
         if (localViewGroup == null) {
           break label138;
         }
-        localViewGroup = (ViewGroup)localViewGroup.findViewById(2131381085);
+        localViewGroup = (ViewGroup)localViewGroup.findViewById(2131450099);
         if (localViewGroup != null) {
           localObject2 = localViewGroup.getLayoutParams();
         }
@@ -435,7 +429,7 @@ public final class RIJSocialBottomUtils$Companion
             if (!paramBoolean) {
               break label143;
             }
-            i = RIJSocialBottomUtils.a();
+            i = RIJSocialBottomUtils.b();
             ((FrameLayout.LayoutParams)localObject2).bottomMargin = i;
             localViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject2);
             return;
@@ -470,7 +464,7 @@ public final class RIJSocialBottomUtils$Companion
     }
     boolean bool = false;
     ((Companion)this).a(bool);
-    Object localObject = RIJSocialBottomUtils.a();
+    Object localObject = RIJSocialBottomUtils.c();
     if (localObject != null)
     {
       if (!bool) {
@@ -490,7 +484,13 @@ public final class RIJSocialBottomUtils$Companion
     QLog.d("RIJSocialBottomUtils", 1, ((StringBuilder)localObject).toString());
   }
   
-  public final boolean a(boolean paramBoolean)
+  @NotNull
+  public final ReadInJoyObserver b()
+  {
+    return RIJSocialBottomUtils.h();
+  }
+  
+  public final boolean b(boolean paramBoolean)
   {
     boolean bool3 = false;
     boolean bool1;
@@ -529,7 +529,7 @@ public final class RIJSocialBottomUtils$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.RIJSocialBottomUtils.Companion
  * JD-Core Version:    0.7.0.1
  */

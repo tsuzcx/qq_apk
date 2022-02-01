@@ -8,10 +8,10 @@ public class ArWebInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ArWebInfo> CREATOR = new ArWebInfo.1();
-  public String a;
   public boolean a;
-  public String b;
   public boolean b;
+  public String c;
+  public String d;
   
   public ArWebInfo() {}
   
@@ -25,20 +25,20 @@ public class ArWebInfo
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
+    this.a = bool1;
     if (paramParcel.readByte() != 0) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    this.jdField_b_of_type_Boolean = bool1;
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.b = bool1;
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
   }
   
   public boolean a()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.b;
   }
   
   public int describeContents()
@@ -50,16 +50,16 @@ public class ArWebInfo
   {
     StringBuffer localStringBuffer = new StringBuffer("ArWebInfo{");
     localStringBuffer.append("isUrlAutoJump='");
-    localStringBuffer.append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(this.a);
     localStringBuffer.append('\'');
     localStringBuffer.append(", isUrlTransparent=");
-    localStringBuffer.append(this.jdField_b_of_type_Boolean);
+    localStringBuffer.append(this.b);
     localStringBuffer.append('\'');
     localStringBuffer.append(", webJumpUrl=");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(this.c);
     localStringBuffer.append('\'');
     localStringBuffer.append(", htmlOfflineBid=");
-    localStringBuffer.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuffer.append(this.d);
     localStringBuffer.append('\'');
     localStringBuffer.append('}');
     return localStringBuffer.toString();
@@ -72,7 +72,7 @@ public class ArWebInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArWebInfo
  * JD-Core Version:    0.7.0.1
  */

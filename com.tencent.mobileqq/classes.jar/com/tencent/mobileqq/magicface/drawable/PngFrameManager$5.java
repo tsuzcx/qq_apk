@@ -9,12 +9,12 @@ class PngFrameManager$5
   
   public void run()
   {
-    this.this$0.a.put(Long.valueOf(this.a), Boolean.valueOf(true));
+    this.this$0.c.put(Long.valueOf(this.a), Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameManager.5
  * JD-Core Version:    0.7.0.1
  */

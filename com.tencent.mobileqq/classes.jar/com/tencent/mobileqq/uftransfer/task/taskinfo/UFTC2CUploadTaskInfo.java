@@ -10,14 +10,14 @@ import java.io.File;
 public class UFTC2CUploadTaskInfo
   extends UFTBaseTaskInfo
 {
-  private final UFTC2CUploadInfo jdField_a_of_type_ComTencentMobileqqUftransferApiUFTC2CUploadInfo;
-  private UFTUploadSrvBusiProp.C2CUploadSrvBusiProp jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$C2CUploadSrvBusiProp;
+  private final UFTC2CUploadInfo a;
+  private UFTUploadSrvBusiProp.C2CUploadSrvBusiProp b;
   
   private UFTC2CUploadTaskInfo(long paramLong, int paramInt, UFTC2CUploadInfo paramUFTC2CUploadInfo, UFTTransferConfig paramUFTTransferConfig)
   {
     super(paramLong, paramInt, paramUFTTransferConfig, true);
-    this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTC2CUploadInfo = paramUFTC2CUploadInfo;
-    a(UFTDependFeatureApi.a(paramUFTC2CUploadInfo.a()));
+    this.a = paramUFTC2CUploadInfo;
+    a(UFTDependFeatureApi.e(paramUFTC2CUploadInfo.a()));
     paramUFTC2CUploadInfo = new File(paramUFTC2CUploadInfo.a());
     if (paramUFTC2CUploadInfo.exists()) {
       a(paramUFTC2CUploadInfo.length());
@@ -41,90 +41,90 @@ public class UFTC2CUploadTaskInfo
     return new UFTC2CUploadTaskInfo(paramLong, paramInt, paramUFTC2CUploadInfo, paramUFTTransferConfig);
   }
   
-  public int a()
+  public String a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTC2CUploadInfo.a();
-  }
-  
-  public UFTUploadSrvBusiProp.C2CUploadSrvBusiProp a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$C2CUploadSrvBusiProp;
+    return this.a.a();
   }
   
   public void a(UFTUploadSrvBusiProp.C2CUploadSrvBusiProp paramC2CUploadSrvBusiProp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$C2CUploadSrvBusiProp = paramC2CUploadSrvBusiProp;
+    this.b = paramC2CUploadSrvBusiProp;
   }
   
-  public boolean a()
+  public int b()
   {
-    UFTUploadSrvBusiProp.C2CUploadSrvBusiProp localC2CUploadSrvBusiProp = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$C2CUploadSrvBusiProp;
-    if (localC2CUploadSrvBusiProp != null) {
-      return localC2CUploadSrvBusiProp.e();
-    }
-    return false;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTC2CUploadInfo.a();
-  }
-  
-  public boolean b()
-  {
-    UFTUploadSrvBusiProp.C2CUploadSrvBusiProp localC2CUploadSrvBusiProp = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$C2CUploadSrvBusiProp;
-    if (localC2CUploadSrvBusiProp != null) {
-      return localC2CUploadSrvBusiProp.d();
-    }
-    return false;
-  }
-  
-  public long c()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTC2CUploadInfo.a();
+    return this.a.c();
   }
   
   public String c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTC2CUploadInfo.a();
+    return this.a.b();
   }
   
-  public boolean c()
+  public long d()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTC2CUploadInfo.a();
+    return this.a.g();
   }
   
-  public String d()
+  public byte[] e()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTC2CUploadInfo.b();
-  }
-  
-  public String e()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTC2CUploadInfo.c();
+    return this.a.h();
   }
   
   public String f()
   {
-    UFTUploadSrvBusiProp.C2CUploadSrvBusiProp localC2CUploadSrvBusiProp = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$C2CUploadSrvBusiProp;
-    if (localC2CUploadSrvBusiProp != null) {
-      return localC2CUploadSrvBusiProp.e();
-    }
-    return "";
+    return this.a.i();
   }
   
   public String g()
   {
-    UFTUploadSrvBusiProp.C2CUploadSrvBusiProp localC2CUploadSrvBusiProp = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$C2CUploadSrvBusiProp;
+    UFTUploadSrvBusiProp.C2CUploadSrvBusiProp localC2CUploadSrvBusiProp = this.b;
     if (localC2CUploadSrvBusiProp != null) {
-      return localC2CUploadSrvBusiProp.f();
+      return localC2CUploadSrvBusiProp.o();
     }
     return "";
+  }
+  
+  public boolean h()
+  {
+    UFTUploadSrvBusiProp.C2CUploadSrvBusiProp localC2CUploadSrvBusiProp = this.b;
+    if (localC2CUploadSrvBusiProp != null) {
+      return localC2CUploadSrvBusiProp.n();
+    }
+    return false;
+  }
+  
+  public boolean i()
+  {
+    UFTUploadSrvBusiProp.C2CUploadSrvBusiProp localC2CUploadSrvBusiProp = this.b;
+    if (localC2CUploadSrvBusiProp != null) {
+      return localC2CUploadSrvBusiProp.g();
+    }
+    return false;
+  }
+  
+  public String j()
+  {
+    UFTUploadSrvBusiProp.C2CUploadSrvBusiProp localC2CUploadSrvBusiProp = this.b;
+    if (localC2CUploadSrvBusiProp != null) {
+      return localC2CUploadSrvBusiProp.r();
+    }
+    return "";
+  }
+  
+  public boolean k()
+  {
+    return this.a.d();
+  }
+  
+  public UFTUploadSrvBusiProp.C2CUploadSrvBusiProp l()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.taskinfo.UFTC2CUploadTaskInfo
  * JD-Core Version:    0.7.0.1
  */

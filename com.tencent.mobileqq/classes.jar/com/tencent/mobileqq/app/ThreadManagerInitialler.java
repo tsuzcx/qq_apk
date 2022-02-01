@@ -46,12 +46,12 @@ public class ThreadManagerInitialler
   
   public long getMainProccessThreadMonitorTime()
   {
-    return SharedPreUtils.d();
+    return SharedPreUtils.o();
   }
   
   public long getMainProccessThreadPeakCounts()
   {
-    return SharedPreUtils.c();
+    return SharedPreUtils.n();
   }
   
   public boolean isColorLevel()
@@ -83,7 +83,7 @@ public class ThreadManagerInitialler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadManagerInitialler
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class JumpForwardSecurityCheck$1
     localStringBuilder.append("system share.prepareFileInfoAndReq : onFaild= ");
     localStringBuilder.append(paramUri);
     QLog.e("CheckForward.Security", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqHaoliyouJumpForwardSecurityCheck.a.finish();
+    this.c.a.finish();
   }
   
   public void a(String paramString1, String paramString2, long paramLong)
@@ -27,23 +27,23 @@ class JumpForwardSecurityCheck$1
     QLog.d("CheckForward.Security", 1, paramString2.toString());
     try
     {
-      if (this.jdField_a_of_type_Int == 2)
+      if (this.a == 2)
       {
         paramString2 = new ArrayList();
         paramString2.add(paramString1);
-        this.jdField_a_of_type_ComTencentMobileqqHaoliyouJumpForwardSecurityCheck.a(paramString2, this.jdField_a_of_type_JavaLangString);
+        this.c.a(paramString2, this.b);
         return;
       }
-      if (this.jdField_a_of_type_Int == 4)
+      if (this.a == 4)
       {
         paramString2 = new ArrayList();
         paramString2.add(paramString1);
-        this.jdField_a_of_type_ComTencentMobileqqHaoliyouJumpForwardSecurityCheck.b(paramString2, this.jdField_a_of_type_JavaLangString);
+        this.c.b(paramString2, this.b);
         return;
       }
-      if (this.jdField_a_of_type_Int == 3)
+      if (this.a == 3)
       {
-        this.jdField_a_of_type_ComTencentMobileqqHaoliyouJumpForwardSecurityCheck.a(paramString1, this.jdField_a_of_type_JavaLangString);
+        this.c.a(paramString1, this.b);
         return;
       }
     }
@@ -55,7 +55,7 @@ class JumpForwardSecurityCheck$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JumpForwardSecurityCheck.1
  * JD-Core Version:    0.7.0.1
  */

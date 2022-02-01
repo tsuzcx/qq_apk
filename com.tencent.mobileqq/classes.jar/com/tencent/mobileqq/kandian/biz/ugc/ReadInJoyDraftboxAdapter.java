@@ -14,13 +14,12 @@ import com.tencent.mobileqq.hotpic.HotPicData;
 import com.tencent.mobileqq.hotpic.HotPicDownLoader;
 import com.tencent.mobileqq.hotpic.HotVideoData;
 import com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader;
-import com.tencent.mobileqq.kandian.base.utils.api.IReadInJoyTimeUtils;
+import com.tencent.mobileqq.kandian.base.utils.ReadInJoyTimeUtils;
 import com.tencent.mobileqq.kandian.base.view.widget.MiddleBracketsTitleTextView;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.repo.ugc.ReadInJoyDraftboxItem;
 import com.tencent.mobileqq.kandian.repo.ugc.ReadInJoyDraftboxItem.PicData;
 import com.tencent.mobileqq.kandian.repo.ugc.ReadInJoyDraftboxModule;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.text.QQTextBuilder;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -30,14 +29,14 @@ import java.util.List;
 public class ReadInJoyDraftboxAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ReadInJoyDraftboxModule jdField_a_of_type_ComTencentMobileqqKandianRepoUgcReadInJoyDraftboxModule = ReadInJoyLogicEngine.a().a();
-  private List<ReadInJoyDraftboxItem> jdField_a_of_type_JavaUtilList;
+  private List<ReadInJoyDraftboxItem> a;
+  private Context b;
+  private ReadInJoyDraftboxModule c = ReadInJoyLogicEngine.a().Z();
   
   public ReadInJoyDraftboxAdapter(Context paramContext, List<ReadInJoyDraftboxItem> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramList;
+    this.b = paramContext;
   }
   
   private int a(ReadInJoyDraftboxItem paramReadInJoyDraftboxItem)
@@ -61,8 +60,8 @@ public class ReadInJoyDraftboxAdapter
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mUseAutoScaleParams = false;
-    localURLDrawableOptions.mRequestWidth = ViewUtils.b(100.0F);
-    localURLDrawableOptions.mRequestHeight = ViewUtils.b(100.0F);
+    localURLDrawableOptions.mRequestWidth = ViewUtils.dpToPx(100.0F);
+    localURLDrawableOptions.mRequestHeight = ViewUtils.dpToPx(100.0F);
     return localURLDrawableOptions;
   }
   
@@ -77,12 +76,12 @@ public class ReadInJoyDraftboxAdapter
     }
     localURLDrawableOptions.mPlayGifImage = bool;
     localURLDrawableOptions.mExtraInfo = paramHotPicData;
-    localURLDrawableOptions.mRequestWidth = ViewUtils.a(50.0F);
-    localURLDrawableOptions.mRequestHeight = ViewUtils.a(50.0F);
+    localURLDrawableOptions.mRequestWidth = ViewUtils.dip2px(50.0F);
+    localURLDrawableOptions.mRequestHeight = ViewUtils.dip2px(50.0F);
     if (paramHotPicData.getDataType() == 2) {
-      paramHotPicData = HotVideoPreviewDownloader.a((HotVideoData)paramHotPicData);
+      paramHotPicData = HotVideoPreviewDownloader.b((HotVideoData)paramHotPicData);
     } else {
-      paramHotPicData = HotPicDownLoader.a(paramHotPicData.url);
+      paramHotPicData = HotPicDownLoader.b(paramHotPicData.url);
     }
     if (paramHotPicData == null) {
       return null;
@@ -92,7 +91,7 @@ public class ReadInJoyDraftboxAdapter
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       return localList.size();
     }
@@ -112,25 +111,25 @@ public class ReadInJoyDraftboxAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null) {
-      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560180, null);
+      paramViewGroup = View.inflate(this.b, 2131626227, null);
     } else {
       paramViewGroup = paramView;
     }
-    Object localObject2 = (TextView)paramViewGroup.findViewById(2131379635);
-    MiddleBracketsTitleTextView localMiddleBracketsTitleTextView = (MiddleBracketsTitleTextView)paramViewGroup.findViewById(2131379633);
-    paramView = (TextView)paramViewGroup.findViewById(2131379634);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131369345);
-    TextView localTextView = (TextView)paramViewGroup.findViewById(2131379610);
+    Object localObject2 = (TextView)paramViewGroup.findViewById(2131448406);
+    MiddleBracketsTitleTextView localMiddleBracketsTitleTextView = (MiddleBracketsTitleTextView)paramViewGroup.findViewById(2131448403);
+    paramView = (TextView)paramViewGroup.findViewById(2131448404);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131436356);
+    TextView localTextView = (TextView)paramViewGroup.findViewById(2131448372);
     ((TextView)localObject2).setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
     localMiddleBracketsTitleTextView.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.a;
     if ((localObject1 != null) && (paramInt >= 0) && (paramInt < ((List)localObject1).size()))
     {
-      ReadInJoyDraftboxItem localReadInJoyDraftboxItem = (ReadInJoyDraftboxItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView.setText(((IReadInJoyTimeUtils)QRoute.api(IReadInJoyTimeUtils.class)).getRelativeDisplayForTime(localReadInJoyDraftboxItem.time, false));
+      ReadInJoyDraftboxItem localReadInJoyDraftboxItem = (ReadInJoyDraftboxItem)this.a.get(paramInt);
+      paramView.setText(ReadInJoyTimeUtils.INSTANCE.getRelativeDisplayForTime(localReadInJoyDraftboxItem.time, false));
       paramView = localReadInJoyDraftboxItem.title;
       if (localReadInJoyDraftboxItem.type == 3) {
-        paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718000);
+        paramView = this.b.getResources().getString(2131915480);
       }
       if (!TextUtils.isEmpty(paramView))
       {
@@ -138,7 +137,7 @@ public class ReadInJoyDraftboxAdapter
         if (localReadInJoyDraftboxItem.type == 2)
         {
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131717999));
+          ((StringBuilder)localObject1).append(this.b.getResources().getString(2131915479));
           ((StringBuilder)localObject1).append(": ");
           ((StringBuilder)localObject1).append(paramView);
           localObject1 = ((StringBuilder)localObject1).toString();
@@ -179,23 +178,23 @@ public class ReadInJoyDraftboxAdapter
       {
         localMiddleBracketsTitleTextView.setVisibility(8);
       }
-      if ((localReadInJoyDraftboxItem.firstPicData != null) && ((localReadInJoyDraftboxItem.firstPicData.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData != null) || (!TextUtils.isEmpty(localReadInJoyDraftboxItem.firstPicData.jdField_a_of_type_JavaLangString))))
+      if ((localReadInJoyDraftboxItem.firstPicData != null) && ((localReadInJoyDraftboxItem.firstPicData.a != null) || (!TextUtils.isEmpty(localReadInJoyDraftboxItem.firstPicData.b))))
       {
         localImageView.setVisibility(0);
-        if (localReadInJoyDraftboxItem.firstPicData.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData != null)
+        if (localReadInJoyDraftboxItem.firstPicData.a != null)
         {
-          localImageView.setImageDrawable(a(localReadInJoyDraftboxItem.firstPicData.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData));
+          localImageView.setImageDrawable(a(localReadInJoyDraftboxItem.firstPicData.a));
         }
-        else if (localReadInJoyDraftboxItem.firstPicData.jdField_a_of_type_Int == 1)
+        else if (localReadInJoyDraftboxItem.firstPicData.c == 1)
         {
-          paramView = new File(localReadInJoyDraftboxItem.firstPicData.jdField_a_of_type_JavaLangString);
+          paramView = new File(localReadInJoyDraftboxItem.firstPicData.b);
           if (paramView.exists()) {
             localImageView.setImageDrawable(URLDrawable.getDrawable(paramView, a()));
           }
         }
-        else if (localReadInJoyDraftboxItem.firstPicData.jdField_a_of_type_Int == 2)
+        else if (localReadInJoyDraftboxItem.firstPicData.c == 2)
         {
-          localImageView.setImageDrawable(URLDrawable.getDrawable(localReadInJoyDraftboxItem.firstPicData.jdField_a_of_type_JavaLangString, a()));
+          localImageView.setImageDrawable(URLDrawable.getDrawable(localReadInJoyDraftboxItem.firstPicData.b, a()));
         }
       }
       else
@@ -205,13 +204,13 @@ public class ReadInJoyDraftboxAdapter
       paramViewGroup.setOnClickListener(new ReadInJoyDraftboxAdapter.1(this, localReadInJoyDraftboxItem));
       localTextView.setOnClickListener(new ReadInJoyDraftboxAdapter.2(this, localReadInJoyDraftboxItem, paramInt));
     }
-    paramViewGroup.setTag(-3, Integer.valueOf(ViewUtils.a(66.0F)));
+    paramViewGroup.setTag(-3, Integer.valueOf(ViewUtils.dip2px(66.0F)));
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDraftboxAdapter
  * JD-Core Version:    0.7.0.1
  */

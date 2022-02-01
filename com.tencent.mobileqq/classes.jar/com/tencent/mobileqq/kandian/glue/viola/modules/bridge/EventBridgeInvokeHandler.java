@@ -16,22 +16,22 @@ public final class EventBridgeInvokeHandler
     super(paramBridgeModule);
   }
   
-  @NotNull
-  public String a()
-  {
-    return "event";
-  }
-  
   public void a()
   {
     a("addEventListener", (Function2)new EventBridgeInvokeHandler.register.1(this));
     a("removeEventListener", (Function2)new EventBridgeInvokeHandler.register.2(this));
     a("dispatchEvent", (Function2)new EventBridgeInvokeHandler.register.3(this));
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "event";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.EventBridgeInvokeHandler
  * JD-Core Version:    0.7.0.1
  */

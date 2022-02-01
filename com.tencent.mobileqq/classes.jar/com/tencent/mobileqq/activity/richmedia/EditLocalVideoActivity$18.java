@@ -43,18 +43,18 @@ class EditLocalVideoActivity$18
       j = i;
       n = 0;
     }
-    if (TextUtils.isEmpty(EditLocalVideoActivity.b(this.this$0)))
+    if (TextUtils.isEmpty(EditLocalVideoActivity.C(this.this$0)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("EditLocalVideoActivity", 2, "initFramesBar, mTrimVideoPath is null");
       }
-      EditLocalVideoActivity.a(this.this$0).sendEmptyMessage(1001);
+      EditLocalVideoActivity.y(this.this$0).sendEmptyMessage(1001);
       return;
     }
     Object localObject1;
-    if (!EditLocalVideoActivity.a())
+    if (!EditLocalVideoActivity.d())
     {
-      i = ThumbnailUtils.a(EditLocalVideoActivity.b(this.this$0), k, j, m, n, i, i);
+      i = ThumbnailUtils.a(EditLocalVideoActivity.C(this.this$0), k, j, m, n, i, i);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -68,39 +68,39 @@ class EditLocalVideoActivity$18
       }
       if (i != 0)
       {
-        QzoneVideoBeaconReport.reportVideoEvent(String.valueOf(EditLocalVideoActivity.b(this.this$0)), "qzone_video_trim", "2", null);
-        EditLocalVideoActivity.a(this.this$0).sendEmptyMessage(1001);
+        QzoneVideoBeaconReport.reportVideoEvent(String.valueOf(EditLocalVideoActivity.D(this.this$0)), "qzone_video_trim", "2", null);
+        EditLocalVideoActivity.y(this.this$0).sendEmptyMessage(1001);
         return;
       }
     }
-    EditLocalVideoActivity.a(this.this$0).a(EditLocalVideoActivity.b(this.this$0), EditLocalVideoActivity.b(this.this$0));
-    if (EditLocalVideoActivity.c(this.this$0) == 0)
+    EditLocalVideoActivity.c(this.this$0).a(EditLocalVideoActivity.p(this.this$0), EditLocalVideoActivity.C(this.this$0));
+    if (EditLocalVideoActivity.u(this.this$0) == 0)
     {
       localObject1 = this.this$0;
-      EditLocalVideoActivity.b((EditLocalVideoActivity)localObject1, (int)EditLocalVideoActivity.a((EditLocalVideoActivity)localObject1).a());
+      EditLocalVideoActivity.c((EditLocalVideoActivity)localObject1, (int)EditLocalVideoActivity.c((EditLocalVideoActivity)localObject1).getSelectBeginTime());
     }
-    if (EditLocalVideoActivity.d(this.this$0) == 0)
+    if (EditLocalVideoActivity.v(this.this$0) == 0)
     {
       localObject1 = this.this$0;
-      EditLocalVideoActivity.c((EditLocalVideoActivity)localObject1, (int)EditLocalVideoActivity.a((EditLocalVideoActivity)localObject1).b());
+      EditLocalVideoActivity.d((EditLocalVideoActivity)localObject1, (int)EditLocalVideoActivity.c((EditLocalVideoActivity)localObject1).getSelectEndTime());
     }
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("mStartTime=");
-      ((StringBuilder)localObject1).append(EditLocalVideoActivity.c(this.this$0));
+      ((StringBuilder)localObject1).append(EditLocalVideoActivity.u(this.this$0));
       ((StringBuilder)localObject1).append(", mEndTime=");
-      ((StringBuilder)localObject1).append(EditLocalVideoActivity.d(this.this$0));
+      ((StringBuilder)localObject1).append(EditLocalVideoActivity.v(this.this$0));
       QLog.d("EditLocalVideoActivity", 2, ((StringBuilder)localObject1).toString());
     }
-    EditLocalVideoActivity.a(this.this$0).setPlayDuration(EditLocalVideoActivity.c(this.this$0), EditLocalVideoActivity.d(this.this$0) - EditLocalVideoActivity.c(this.this$0));
-    EditLocalVideoActivity.a(this.this$0).sendEmptyMessage(1100);
-    if (!EditLocalVideoActivity.a())
+    EditLocalVideoActivity.q(this.this$0).setPlayDuration(EditLocalVideoActivity.u(this.this$0), EditLocalVideoActivity.v(this.this$0) - EditLocalVideoActivity.u(this.this$0));
+    EditLocalVideoActivity.y(this.this$0).sendEmptyMessage(1100);
+    if (!EditLocalVideoActivity.d())
     {
-      if (TextUtils.isEmpty(EditLocalVideoActivity.b(this.this$0))) {
+      if (TextUtils.isEmpty(EditLocalVideoActivity.C(this.this$0))) {
         i = -999;
       } else {
-        i = ThumbnailUtils.a(EditLocalVideoActivity.b(this.this$0), this.a, this.b);
+        i = ThumbnailUtils.a(EditLocalVideoActivity.C(this.this$0), this.a, this.b);
       }
       if (QLog.isColorLevel())
       {
@@ -111,19 +111,19 @@ class EditLocalVideoActivity$18
       }
       if (i != 0)
       {
-        QzoneVideoBeaconReport.reportVideoEvent(String.valueOf(EditLocalVideoActivity.b(this.this$0)), "qzone_video_trim", "3", null);
-        EditLocalVideoActivity.a(this.this$0).sendEmptyMessage(1000);
+        QzoneVideoBeaconReport.reportVideoEvent(String.valueOf(EditLocalVideoActivity.D(this.this$0)), "qzone_video_trim", "3", null);
+        EditLocalVideoActivity.y(this.this$0).sendEmptyMessage(1000);
         return;
       }
     }
     try
     {
       Object localObject2;
-      if (EditLocalVideoActivity.a())
+      if (EditLocalVideoActivity.d())
       {
         localObject2 = new MediaMetadataRetriever();
-        ((MediaMetadataRetriever)localObject2).setDataSource(EditLocalVideoActivity.b(this.this$0));
-        localObject1 = ((MediaMetadataRetriever)localObject2).getFrameAtTime(EditLocalVideoActivity.c(this.this$0) * 1000, 3);
+        ((MediaMetadataRetriever)localObject2).setDataSource(EditLocalVideoActivity.C(this.this$0));
+        localObject1 = ((MediaMetadataRetriever)localObject2).getFrameAtTime(EditLocalVideoActivity.u(this.this$0) * 1000, 3);
         ((MediaMetadataRetriever)localObject2).release();
       }
       else
@@ -133,13 +133,13 @@ class EditLocalVideoActivity$18
       if (localObject1 != null)
       {
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(GloableValue.a);
+        ((StringBuilder)localObject2).append(GloableValue.b);
         ((StringBuilder)localObject2).append(File.separator);
         ((StringBuilder)localObject2).append(System.currentTimeMillis());
         ((StringBuilder)localObject2).append(".jpg");
         localObject2 = ((StringBuilder)localObject2).toString();
         if (PhotoUtils.saveBitmapToFile((Bitmap)localObject1, (String)localObject2, Bitmap.CompressFormat.JPEG, 90, true)) {
-          EditLocalVideoActivity.a(this.this$0).obtainMessage(1102, localObject2).sendToTarget();
+          EditLocalVideoActivity.y(this.this$0).obtainMessage(1102, localObject2).sendToTarget();
         }
       }
       return;
@@ -149,7 +149,7 @@ class EditLocalVideoActivity$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.18
  * JD-Core Version:    0.7.0.1
  */

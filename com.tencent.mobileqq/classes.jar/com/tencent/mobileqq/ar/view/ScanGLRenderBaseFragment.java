@@ -28,95 +28,84 @@ public abstract class ScanGLRenderBaseFragment
   extends BaseFragment
   implements ARGLSurfaceView.OnEglContextDestoryListener, CameraProxy.CameraOperationStatusCallBack, CameraProxy.OnCameraPreviewCallback, GLRenderStatusCallBack
 {
-  protected int a;
-  private SurfaceTexture a;
   protected ARGLSurfaceView a;
-  protected CameraProxy a;
-  protected UniformGLRenderManager a;
-  protected boolean a;
-  protected int b;
-  protected int c;
-  int d = 0;
-  
-  public ScanGLRenderBaseFragment()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager = new UniformGLRenderManagerImpl();
-    this.jdField_a_of_type_Boolean = false;
-  }
+  protected UniformGLRenderManager b = new UniformGLRenderManagerImpl();
+  protected CameraProxy c;
+  protected int d;
+  protected boolean e = false;
+  protected int f;
+  protected int g;
+  int h = 0;
+  private SurfaceTexture i;
   
   private void a(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("OpenCamera mCameraOpend:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArModelCameraProxy.a());
+    localStringBuilder.append(this.c.f());
     QLog.i("AREngine_ScanGLRenderFragment", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqArModelCameraProxy.a(paramInt);
-  }
-  
-  private void c()
-  {
-    a(this.d);
-    d();
+    this.c.a(paramInt);
   }
   
   private void d()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("startCameraPreview mSurfaceReady:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(";sCameraProxy.isCameraOpened()=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArModelCameraProxy.a());
-    QLog.i("AREngine_ScanGLRenderFragment", 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqArModelCameraProxy.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-    }
+    a(this.h);
+    e();
   }
   
   private void e()
   {
-    QLog.i("AREngine_ScanGLRenderFragment", 1, "closeCamera");
-    this.jdField_a_of_type_ComTencentMobileqqArModelCameraProxy.e();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startCameraPreview mSurfaceReady:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(";sCameraProxy.isCameraOpened()=");
+    localStringBuilder.append(this.c.f());
+    QLog.i("AREngine_ScanGLRenderFragment", 1, localStringBuilder.toString());
+    if (this.e) {
+      this.c.a(this.i);
+    }
   }
   
-  public UniformGLRenderManager a()
+  private void f()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+    QLog.i("AREngine_ScanGLRenderFragment", 1, "closeCamera");
+    this.c.k();
   }
   
   public void a()
   {
     QLog.i("AREngine_ScanGLRenderFragment", 1, "onEglContextDestory");
-    this.jdField_a_of_type_Boolean = false;
-    UniformGLRenderManager localUniformGLRenderManager = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+    this.e = false;
+    UniformGLRenderManager localUniformGLRenderManager = this.b;
     if (localUniformGLRenderManager != null) {
-      localUniformGLRenderManager.b();
+      localUniformGLRenderManager.f();
     }
   }
   
   public void a(GL10 paramGL10)
   {
     QLog.i("AREngine_ScanGLRenderFragment", 1, "onSurfaceCreate");
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = GlUtil.createTexture(36197);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Int);
+    this.e = false;
+    this.d = GlUtil.createTexture(36197);
+    this.i = new SurfaceTexture(this.d);
   }
   
   public void a(GL10 paramGL10, int paramInt1, int paramInt2)
   {
     QLog.i("AREngine_ScanGLRenderFragment", 1, "onSurfaceChange");
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Boolean = true;
-    c();
+    this.f = paramInt1;
+    this.g = paramInt2;
+    this.e = true;
+    d();
   }
   
   public boolean a(byte[] paramArrayOfByte)
   {
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-    paramArrayOfByte.a(paramArrayOfByte.a() + 1L);
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-    paramArrayOfByte.b(paramArrayOfByte.a());
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView;
+    paramArrayOfByte = this.b;
+    paramArrayOfByte.a(paramArrayOfByte.k() + 1L);
+    paramArrayOfByte = this.b;
+    paramArrayOfByte.b(paramArrayOfByte.k());
+    paramArrayOfByte = this.a;
     if (paramArrayOfByte != null) {
       paramArrayOfByte.requestRender();
     }
@@ -125,16 +114,16 @@ public abstract class ScanGLRenderBaseFragment
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager != null)
+    if (this.b != null)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqArModelCameraProxy.a();
-      int j = this.jdField_a_of_type_ComTencentMobileqqArModelCameraProxy.b();
-      this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, i, j, this.b, this.c);
+      int j = this.c.h();
+      int k = this.c.i();
+      this.b.a(this.d, this.i, j, k, this.f, this.g);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onStartPreviewSuccess imageWidth:");
-      localStringBuilder.append(i);
-      localStringBuilder.append(",imageHeight:");
       localStringBuilder.append(j);
+      localStringBuilder.append(",imageHeight:");
+      localStringBuilder.append(k);
       localStringBuilder.append(",");
       QLog.i("AREngine_ScanGLRenderFragment", 1, localStringBuilder.toString());
     }
@@ -150,26 +139,31 @@ public abstract class ScanGLRenderBaseFragment
     paramInt2 = 0;
     paramInt1 = paramInt2;
     if (bool) {
-      if ((this.d != 1) && (Camera.getNumberOfCameras() > 1))
+      if ((this.h != 1) && (Camera.getNumberOfCameras() > 1))
       {
-        int i = ARCamera.b(1);
+        int j = ARCamera.b(1);
         paramInt1 = paramInt2;
-        if (i == 1)
+        if (j == 1)
         {
-          this.d = i;
-          c();
+          this.h = j;
+          d();
           paramInt1 = 1;
         }
       }
       else
       {
-        this.d = 0;
+        this.h = 0;
         paramInt1 = paramInt2;
       }
     }
     if (paramInt1 == 0) {
       ThreadManager.getUIHandler().post(new ScanGLRenderBaseFragment.1(this));
     }
+  }
+  
+  public UniformGLRenderManager c()
+  {
+    return this.b;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -183,9 +177,9 @@ public abstract class ScanGLRenderBaseFragment
       QLog.d("AREngine_ScanGLRenderFragment", 2, localStringBuilder.toString());
     }
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqArModelCameraProxy = CameraProxy.a();
-    this.jdField_a_of_type_ComTencentMobileqqArModelCameraProxy.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqArModelCameraProxy.a(this);
+    this.c = CameraProxy.a();
+    this.c.a(this);
+    this.c.a(this);
     if (QLog.isColorLevel()) {
       QLog.i("AREngine_ScanGLRenderFragment", 2, String.format("onCreate time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
     }
@@ -203,11 +197,11 @@ public abstract class ScanGLRenderBaseFragment
         ((ViewGroup)paramViewGroup).removeView(paramLayoutInflater);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView = paramLayoutInflater;
-    this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager.a(this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView, getQBaseActivity());
-    this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView.setRenderer(this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager);
-    this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView.setRenderMode(0);
+    this.a = paramLayoutInflater;
+    this.b.a(this.a, getQBaseActivity());
+    this.b.a(this);
+    this.a.setRenderer(this.b);
+    this.a.setRenderMode(0);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -219,23 +213,23 @@ public abstract class ScanGLRenderBaseFragment
     ((StringBuilder)localObject).append("onDestroy start.  this=");
     ((StringBuilder)localObject).append(this);
     QLog.i("AREngine_ScanGLRenderFragment", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+    localObject = this.b;
     if (localObject != null) {
-      ((UniformGLRenderManager)localObject).c();
+      ((UniformGLRenderManager)localObject).g();
     }
-    this.jdField_a_of_type_ComTencentMobileqqArModelCameraProxy.b(this);
-    this.jdField_a_of_type_ComTencentMobileqqArModelCameraProxy.f();
+    this.c.b(this);
+    this.c.l();
     super.onDestroy();
   }
   
   public void onPause()
   {
     QLog.i("AREngine_ScanGLRenderFragment", 1, "onPause");
-    ARGLSurfaceView localARGLSurfaceView = this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView;
+    ARGLSurfaceView localARGLSurfaceView = this.a;
     if (localARGLSurfaceView != null) {
       localARGLSurfaceView.onPause();
     }
-    e();
+    f();
     super.onPause();
   }
   
@@ -243,20 +237,20 @@ public abstract class ScanGLRenderBaseFragment
   {
     QLog.i("AREngine_ScanGLRenderFragment", 1, "onResume");
     super.onResume();
-    ARGLSurfaceView localARGLSurfaceView = this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView;
+    ARGLSurfaceView localARGLSurfaceView = this.a;
     if (localARGLSurfaceView != null) {
       localARGLSurfaceView.onResume();
     }
-    c();
+    d();
   }
   
   public void onStart()
   {
     QLog.i("AREngine_ScanGLRenderFragment", 1, "onStart");
     super.onStart();
-    UniformGLRenderManager localUniformGLRenderManager = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+    UniformGLRenderManager localUniformGLRenderManager = this.b;
     if (localUniformGLRenderManager != null) {
-      localUniformGLRenderManager.a();
+      localUniformGLRenderManager.e();
     }
   }
   
@@ -268,7 +262,7 @@ public abstract class ScanGLRenderBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanGLRenderBaseFragment
  * JD-Core Version:    0.7.0.1
  */

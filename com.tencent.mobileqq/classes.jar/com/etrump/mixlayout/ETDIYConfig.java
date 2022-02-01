@@ -18,124 +18,44 @@ public class ETDIYConfig
     if (paramJSONObject == null) {
       return 0;
     }
-    int i1;
-    label301:
-    label304:
+    int j;
     do
     {
       do
       {
-        int n;
-        do
+        try
         {
-          try
+          paramJSONObject.getInt("version");
+          paramJSONObject.getInt("font_id");
+          int i = paramJSONObject.getInt("theme_style");
+          j = paramJSONObject.getInt("color_style");
+          if (i >= 0)
           {
-            paramJSONObject.getInt("version");
-            paramJSONObject.getInt("font_id");
-            int i = paramJSONObject.getInt("theme_style");
-            int j = paramJSONObject.getInt("color_style");
-            int k;
-            if (i >= 0)
+            if (i >= 65535)
             {
-              if (i >= 65535) {
-                return 0;
+              return 0;
+              paramJSONObject = paramJSONObject.getJSONArray("chars");
+              int k = paramJSONObject.length();
+              j = k * 8 + 32;
+              i = j;
+              if (k > 0) {
+                i = j + (k + 1) * 4;
               }
-              if (j >= 0)
-              {
-                if (j >= 65535) {
-                  return 0;
-                }
-                try
-                {
-                  paramJSONObject = paramJSONObject.getJSONArray("chars");
-                  int m = paramJSONObject.length();
-                  j = m * 8 + 32;
-                  i = j;
-                  if (m > 0) {
-                    i = j + (m + 1) * 4;
-                  }
-                  j = 0;
-                  for (;;)
-                  {
-                    k = i;
-                    if (j >= m) {
-                      break label301;
-                    }
-                    try
-                    {
-                      Object localObject1 = paramJSONObject.getJSONObject(j);
-                      k = ((JSONObject)localObject1).getInt("unicode");
-                      n = ((JSONObject)localObject1).getInt("theme_style");
-                      i1 = ((JSONObject)localObject1).getInt("color_style");
-                      if (k >= 19968)
-                      {
-                        if (k <= 40869) {
-                          break label304;
-                        }
-                        return 0;
-                        localObject1 = ((JSONObject)localObject1).getJSONArray("components");
-                        n = ((JSONArray)localObject1).length();
-                        k = 0;
-                        for (;;)
-                        {
-                          if (k < n) {
-                            try
-                            {
-                              Object localObject2 = ((JSONArray)localObject1).getJSONObject(k);
-                              i1 = ((JSONObject)localObject2).getInt("component");
-                              if (i1 >= 0)
-                              {
-                                if (i1 >= 65535) {
-                                  return 0;
-                                }
-                                localObject2 = ((JSONObject)localObject2).getString("matrix").split(",");
-                                if (localObject2 != null)
-                                {
-                                  i1 = localObject2.length;
-                                  if (i1 != 6) {
-                                    return 0;
-                                  }
-                                  i += 26;
-                                  k += 1;
-                                  continue;
-                                }
-                              }
-                              return 0;
-                            }
-                            catch (JSONException paramJSONObject) {}
-                          }
-                        }
-                        j += 1;
-                      }
-                      else
-                      {
-                        return 0;
-                      }
-                    }
-                    catch (JSONException paramJSONObject) {}
-                  }
-                  return 0;
-                }
-                catch (JSONException paramJSONObject)
-                {
-                  i = 32;
-                }
-              }
+              i = a(i, paramJSONObject, k);
+              return i;
             }
-            return k;
           }
-          catch (JSONException paramJSONObject)
-          {
-            i = 0;
-            paramJSONObject.printStackTrace();
-            k = i;
+          else {
+            return 0;
           }
-        } while (n < 0);
-        if (n >= 65535) {
+        }
+        catch (JSONException paramJSONObject)
+        {
+          paramJSONObject.printStackTrace();
           return 0;
         }
-      } while (i1 < 0);
-    } while (i1 < 65535);
+      } while (j < 0);
+    } while (j < 65535);
     return 0;
   }
   
@@ -310,29 +230,29 @@ public class ETDIYConfig
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 191	java/io/File:exists	()Z
+    //   1: invokevirtual 193	java/io/File:exists	()Z
     //   4: ifne +6 -> 10
-    //   7: ldc 193
+    //   7: ldc 195
     //   9: areturn
     //   10: aconst_null
     //   11: astore 4
     //   13: aconst_null
     //   14: astore_2
-    //   15: new 195	java/io/InputStreamReader
+    //   15: new 197	java/io/InputStreamReader
     //   18: dup
-    //   19: new 197	java/io/FileInputStream
+    //   19: new 199	java/io/FileInputStream
     //   22: dup
     //   23: aload_0
-    //   24: invokespecial 200	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   27: ldc 202
-    //   29: invokespecial 205	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   24: invokespecial 202	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   27: ldc 204
+    //   29: invokespecial 207	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   32: astore_0
-    //   33: new 207	java/lang/StringBuffer
+    //   33: new 209	java/lang/StringBuffer
     //   36: dup
-    //   37: invokespecial 208	java/lang/StringBuffer:<init>	()V
+    //   37: invokespecial 210	java/lang/StringBuffer:<init>	()V
     //   40: astore_2
     //   41: aload_0
-    //   42: invokevirtual 211	java/io/InputStreamReader:read	()I
+    //   42: invokevirtual 213	java/io/InputStreamReader:read	()I
     //   45: istore_1
     //   46: iload_1
     //   47: iconst_m1
@@ -340,21 +260,21 @@ public class ETDIYConfig
     //   51: aload_2
     //   52: iload_1
     //   53: i2c
-    //   54: invokevirtual 214	java/lang/StringBuffer:append	(C)Ljava/lang/StringBuffer;
+    //   54: invokevirtual 216	java/lang/StringBuffer:append	(C)Ljava/lang/StringBuffer;
     //   57: pop
     //   58: goto -17 -> 41
     //   61: aload_2
-    //   62: invokevirtual 215	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   62: invokevirtual 217	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   65: astore_2
     //   66: aload_0
-    //   67: invokevirtual 218	java/io/InputStreamReader:close	()V
+    //   67: invokevirtual 220	java/io/InputStreamReader:close	()V
     //   70: aload_2
     //   71: areturn
     //   72: astore_0
-    //   73: ldc 220
+    //   73: ldc 222
     //   75: aload_0
-    //   76: invokevirtual 221	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   79: invokestatic 226	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   76: invokevirtual 223	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   79: invokestatic 228	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   82: pop
     //   83: aload_2
     //   84: areturn
@@ -373,35 +293,35 @@ public class ETDIYConfig
     //   104: astore_0
     //   105: aload_0
     //   106: astore_2
-    //   107: ldc 220
+    //   107: ldc 222
     //   109: aload_3
-    //   110: invokevirtual 221	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   113: invokestatic 226	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   110: invokevirtual 223	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   113: invokestatic 228	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   116: pop
     //   117: aload_0
     //   118: ifnull +21 -> 139
     //   121: aload_0
-    //   122: invokevirtual 218	java/io/InputStreamReader:close	()V
-    //   125: ldc 193
+    //   122: invokevirtual 220	java/io/InputStreamReader:close	()V
+    //   125: ldc 195
     //   127: areturn
     //   128: astore_0
-    //   129: ldc 220
+    //   129: ldc 222
     //   131: aload_0
-    //   132: invokevirtual 221	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   135: invokestatic 226	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   132: invokevirtual 223	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   135: invokestatic 228	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   138: pop
-    //   139: ldc 193
+    //   139: ldc 195
     //   141: areturn
     //   142: aload_2
     //   143: ifnull +21 -> 164
     //   146: aload_2
-    //   147: invokevirtual 218	java/io/InputStreamReader:close	()V
+    //   147: invokevirtual 220	java/io/InputStreamReader:close	()V
     //   150: goto +14 -> 164
     //   153: astore_2
-    //   154: ldc 220
+    //   154: ldc 222
     //   156: aload_2
-    //   157: invokevirtual 221	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   160: invokestatic 226	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   157: invokevirtual 223	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   160: invokestatic 228	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   163: pop
     //   164: goto +5 -> 169
     //   167: aload_0
@@ -456,17 +376,40 @@ public class ETDIYConfig
     paramArrayOfByte[(paramInt + 1)] = ((byte)(paramShort & 0xFF));
   }
   
+  private boolean b(JSONObject paramJSONObject)
+  {
+    int i = paramJSONObject.getInt("unicode");
+    int j = paramJSONObject.getInt("theme_style");
+    int k = paramJSONObject.getInt("color_style");
+    if (i >= 19968)
+    {
+      if (i > 40869) {
+        return true;
+      }
+      if (j >= 0)
+      {
+        if (j >= 65535) {
+          return true;
+        }
+        if (k >= 0) {
+          return k >= 65535;
+        }
+      }
+    }
+    return true;
+  }
+  
   /* Error */
-  public static byte[] a(java.io.File paramFile)
+  public static byte[] b(java.io.File paramFile)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 234	java/io/File:isFile	()Z
+    //   1: invokevirtual 238	java/io/File:isFile	()Z
     //   4: ifeq +195 -> 199
-    //   7: new 197	java/io/FileInputStream
+    //   7: new 199	java/io/FileInputStream
     //   10: dup
     //   11: aload_0
-    //   12: invokespecial 200	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 202	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   15: astore_3
     //   16: aload_3
     //   17: astore_2
@@ -475,15 +418,15 @@ public class ETDIYConfig
     //   23: astore 4
     //   25: aload_3
     //   26: astore_2
-    //   27: new 236	java/io/ByteArrayOutputStream
+    //   27: new 240	java/io/ByteArrayOutputStream
     //   30: dup
-    //   31: invokespecial 237	java/io/ByteArrayOutputStream:<init>	()V
+    //   31: invokespecial 241	java/io/ByteArrayOutputStream:<init>	()V
     //   34: astore 5
     //   36: aload_3
     //   37: astore_2
     //   38: aload_3
     //   39: aload 4
-    //   41: invokevirtual 240	java/io/FileInputStream:read	([B)I
+    //   41: invokevirtual 244	java/io/FileInputStream:read	([B)I
     //   44: istore_1
     //   45: iload_1
     //   46: iconst_m1
@@ -494,23 +437,23 @@ public class ETDIYConfig
     //   54: aload 4
     //   56: iconst_0
     //   57: iload_1
-    //   58: invokevirtual 243	java/io/ByteArrayOutputStream:write	([BII)V
+    //   58: invokevirtual 247	java/io/ByteArrayOutputStream:write	([BII)V
     //   61: goto -25 -> 36
     //   64: aload_3
     //   65: astore_2
     //   66: aload 5
-    //   68: invokevirtual 247	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   68: invokevirtual 251	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   71: astore 4
     //   73: aload_3
-    //   74: invokevirtual 248	java/io/FileInputStream:close	()V
+    //   74: invokevirtual 252	java/io/FileInputStream:close	()V
     //   77: aload 4
     //   79: areturn
     //   80: astore_0
-    //   81: ldc 127
+    //   81: ldc 129
     //   83: iconst_1
     //   84: aload_0
-    //   85: invokevirtual 221	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   88: invokestatic 136	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   85: invokevirtual 223	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   88: invokestatic 138	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   91: aload 4
     //   93: areturn
     //   94: astore_0
@@ -523,90 +466,90 @@ public class ETDIYConfig
     //   105: astore_3
     //   106: aload_3
     //   107: astore_2
-    //   108: new 115	java/lang/StringBuilder
+    //   108: new 117	java/lang/StringBuilder
     //   111: dup
-    //   112: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   112: invokespecial 118	java/lang/StringBuilder:<init>	()V
     //   115: astore 4
     //   117: aload_3
     //   118: astore_2
     //   119: aload 4
-    //   121: ldc 250
-    //   123: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: ldc 254
+    //   123: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: pop
     //   127: aload_3
     //   128: astore_2
     //   129: aload 4
     //   131: aload_0
-    //   132: invokevirtual 253	java/io/File:getPath	()Ljava/lang/String;
-    //   135: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: invokevirtual 257	java/io/File:getPath	()Ljava/lang/String;
+    //   135: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   138: pop
     //   139: aload_3
     //   140: astore_2
-    //   141: ldc 127
+    //   141: ldc 129
     //   143: iconst_1
     //   144: aload 4
-    //   146: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   149: invokestatic 136	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   146: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   149: invokestatic 138	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   152: aload_3
     //   153: ifnull +20 -> 173
     //   156: aload_3
-    //   157: invokevirtual 248	java/io/FileInputStream:close	()V
+    //   157: invokevirtual 252	java/io/FileInputStream:close	()V
     //   160: aconst_null
     //   161: areturn
     //   162: astore_0
-    //   163: ldc 127
+    //   163: ldc 129
     //   165: iconst_1
     //   166: aload_0
-    //   167: invokevirtual 221	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   170: invokestatic 136	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   167: invokevirtual 223	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   170: invokestatic 138	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   173: aconst_null
     //   174: areturn
     //   175: aload_2
     //   176: ifnull +21 -> 197
     //   179: aload_2
-    //   180: invokevirtual 248	java/io/FileInputStream:close	()V
+    //   180: invokevirtual 252	java/io/FileInputStream:close	()V
     //   183: goto +14 -> 197
     //   186: astore_2
-    //   187: ldc 127
+    //   187: ldc 129
     //   189: iconst_1
     //   190: aload_2
-    //   191: invokevirtual 221	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   194: invokestatic 136	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   191: invokevirtual 223	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   194: invokestatic 138	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   197: aload_0
     //   198: athrow
-    //   199: new 115	java/lang/StringBuilder
+    //   199: new 117	java/lang/StringBuilder
     //   202: dup
-    //   203: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   203: invokespecial 118	java/lang/StringBuilder:<init>	()V
     //   206: astore_2
     //   207: aload_2
-    //   208: ldc 255
-    //   210: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   213: pop
-    //   214: aload_2
-    //   215: aload_0
-    //   216: invokevirtual 253	java/io/File:getPath	()Ljava/lang/String;
-    //   219: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: pop
-    //   223: ldc 127
-    //   225: iconst_1
-    //   226: aload_2
-    //   227: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   230: invokestatic 136	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   233: aconst_null
-    //   234: areturn
-    //   235: astore_2
-    //   236: goto -132 -> 104
-    //   239: astore_2
-    //   240: goto -134 -> 106
+    //   208: ldc_w 259
+    //   211: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: pop
+    //   215: aload_2
+    //   216: aload_0
+    //   217: invokevirtual 257	java/io/File:getPath	()Ljava/lang/String;
+    //   220: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: pop
+    //   224: ldc 129
+    //   226: iconst_1
+    //   227: aload_2
+    //   228: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   231: invokestatic 138	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   234: aconst_null
+    //   235: areturn
+    //   236: astore_2
+    //   237: goto -133 -> 104
+    //   240: astore_2
+    //   241: goto -135 -> 106
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	243	0	paramFile	java.io.File
+    //   0	244	0	paramFile	java.io.File
     //   44	14	1	i	int
     //   17	163	2	localFileInputStream1	java.io.FileInputStream
     //   186	5	2	localIOException1	java.io.IOException
-    //   206	21	2	localStringBuilder	StringBuilder
-    //   235	1	2	localIOException2	java.io.IOException
-    //   239	1	2	localIOException3	java.io.IOException
+    //   206	22	2	localStringBuilder	StringBuilder
+    //   236	1	2	localIOException2	java.io.IOException
+    //   240	1	2	localIOException3	java.io.IOException
     //   15	142	3	localFileInputStream2	java.io.FileInputStream
     //   23	122	4	localObject	Object
     //   34	33	5	localByteArrayOutputStream	java.io.ByteArrayOutputStream
@@ -625,12 +568,51 @@ public class ETDIYConfig
     //   7	16	98	finally
     //   156	160	162	java/io/IOException
     //   179	183	186	java/io/IOException
-    //   7	16	235	java/io/IOException
-    //   18	25	239	java/io/IOException
-    //   27	36	239	java/io/IOException
-    //   38	45	239	java/io/IOException
-    //   52	61	239	java/io/IOException
-    //   66	73	239	java/io/IOException
+    //   7	16	236	java/io/IOException
+    //   18	25	240	java/io/IOException
+    //   27	36	240	java/io/IOException
+    //   38	45	240	java/io/IOException
+    //   52	61	240	java/io/IOException
+    //   66	73	240	java/io/IOException
+  }
+  
+  public int a(int paramInt1, JSONArray paramJSONArray, int paramInt2)
+  {
+    int i = 0;
+    while (i < paramInt2)
+    {
+      Object localObject1 = paramJSONArray.getJSONObject(i);
+      if (b((JSONObject)localObject1)) {
+        return 0;
+      }
+      localObject1 = ((JSONObject)localObject1).getJSONArray("components");
+      int k = ((JSONArray)localObject1).length();
+      int j = 0;
+      while (j < k)
+      {
+        Object localObject2 = ((JSONArray)localObject1).getJSONObject(j);
+        int m = ((JSONObject)localObject2).getInt("component");
+        if (m >= 0)
+        {
+          if (m >= 65535) {
+            return 0;
+          }
+          localObject2 = ((JSONObject)localObject2).getString("matrix").split(",");
+          if (localObject2 != null)
+          {
+            if (localObject2.length != 6) {
+              return 0;
+            }
+            paramInt1 += 26;
+            j += 1;
+            continue;
+          }
+        }
+        return 0;
+      }
+      i += 1;
+    }
+    return paramInt1;
   }
 }
 

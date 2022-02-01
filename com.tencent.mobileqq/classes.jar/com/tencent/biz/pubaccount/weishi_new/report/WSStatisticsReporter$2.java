@@ -32,14 +32,14 @@ class WSStatisticsReporter$2
     localStringBuilder.append("BeaconSendRequest onTaskResponse failed code:");
     localStringBuilder.append(paramWSServiceErrorInfo.a());
     localStringBuilder.append(", msg:");
-    localStringBuilder.append(paramWSServiceErrorInfo.a());
+    localStringBuilder.append(paramWSServiceErrorInfo.b());
     WSLog.d("beaconData2Server", localStringBuilder.toString());
-    WSStatisticsReporter.access$1500(this.a, String.valueOf(1), String.valueOf(paramWSServiceErrorInfo.a()), paramWSServiceErrorInfo.a());
+    WSStatisticsReporter.access$1500(this.a, String.valueOf(1), String.valueOf(paramWSServiceErrorInfo.a()), paramWSServiceErrorInfo.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.2
  * JD-Core Version:    0.7.0.1
  */

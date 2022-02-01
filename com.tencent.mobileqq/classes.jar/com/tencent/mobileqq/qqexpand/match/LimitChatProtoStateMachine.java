@@ -13,58 +13,56 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LimitChatProtoStateMachine
   implements Handler.Callback
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private BaseStateHandler jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler = null;
-  private IdleStateHandler jdField_a_of_type_ComTencentMobileqqQqexpandMatchIdleStateHandler;
-  LimitChatProtoStateMachine.LimitChatMachineListener jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine$LimitChatMachineListener;
-  private MatchingStateHandler jdField_a_of_type_ComTencentMobileqqQqexpandMatchMatchingStateHandler;
-  public final String a;
-  private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-  protected boolean a;
+  public final String a = "ExtendFriendLimitChatStateMachine";
+  protected boolean b = false;
+  QQAppInterface c;
+  LimitChatProtoStateMachine.LimitChatMachineListener d;
+  private BaseStateHandler e = null;
+  private IdleStateHandler f;
+  private MatchingStateHandler g;
+  private final Lock h = new ReentrantLock();
+  private final Handler i = new Handler(Looper.getMainLooper(), this);
   
   public LimitChatProtoStateMachine(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = "ExtendFriendLimitChatStateMachine";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchIdleStateHandler = new IdleStateHandler(this, 100);
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchMatchingStateHandler = new MatchingStateHandler(this, 101);
+    this.c = paramQQAppInterface;
+    this.f = new IdleStateHandler(this, 100);
+    this.g = new MatchingStateHandler(this, 101);
     a(100, null);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    this.i.sendEmptyMessage(2);
   }
   
   public void a(int paramInt)
   {
-    int i = paramInt;
+    int j = paramInt;
     if (paramInt < 0)
     {
       QLog.e("ExtendFriendLimitChatStateMachine", 2, "requestmatch with wrong id");
-      i = 1;
+      j = 1;
     }
-    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, i, i).sendToTarget();
+    Message.obtain(this.i, 1, j, j).sendToTarget();
   }
   
   public void a(int paramInt, MatchInfo paramMatchInfo)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    this.h.lock();
     if ((paramInt == 100) || (paramInt == 101)) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler = this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchMatchingStateHandler;
+      this.e = this.g;
       break label43;
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler = this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchIdleStateHandler;
+      this.e = this.f;
       label43:
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      this.h.unlock();
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setStatus  ");
       ((StringBuilder)localObject).append(paramInt);
       QLog.i("ExtendFriendLimitChatStateMachine", 2, ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler;
+      localObject = this.e;
       if (localObject != null) {
         ((BaseStateHandler)localObject).b(paramMatchInfo);
       }
@@ -72,13 +70,13 @@ public class LimitChatProtoStateMachine
     }
     finally
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      this.h.unlock();
     }
   }
   
   public void a(LimitChatProtoStateMachine.LimitChatMachineListener paramLimitChatMachineListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine$LimitChatMachineListener = paramLimitChatMachineListener;
+    this.d = paramLimitChatMachineListener;
   }
   
   public void a(boolean paramBoolean)
@@ -98,50 +96,50 @@ public class LimitChatProtoStateMachine
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchIdleStateHandler;
+    Object localObject = this.f;
     if (localObject != null)
     {
       ((IdleStateHandler)localObject).b();
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchIdleStateHandler = null;
+      this.f = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchMatchingStateHandler;
+    localObject = this.g;
     if (localObject != null)
     {
       ((MatchingStateHandler)localObject).b();
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchMatchingStateHandler = null;
+      this.g = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler = null;
-    this.jdField_a_of_type_Boolean = false;
+    this.e = null;
+    this.b = false;
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendLimitChatStateMachine", 2, "machine Clear ");
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.i.removeCallbacksAndMessages(null);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler == null) {
+    if (this.e == null) {
       return true;
     }
-    int i = paramMessage.what;
-    if (i != 1)
+    int j = paramMessage.what;
+    if (j != 1)
     {
-      if (i != 2)
+      if (j != 2)
       {
         MatchInfo localMatchInfo = null;
         boolean bool2 = false;
         boolean bool1 = false;
-        if (i != 4)
+        if (j != 4)
         {
-          if (i != 6)
+          if (j != 6)
           {
-            if (i != 7) {
+            if (j != 7) {
               return true;
             }
             if (paramMessage.arg1 == 1) {
               bool1 = true;
             }
-            this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler.a(bool1);
+            this.e.a(bool1);
             return true;
           }
           bool1 = bool2;
@@ -151,7 +149,7 @@ public class LimitChatProtoStateMachine
           if (paramMessage.obj != null) {
             localMatchInfo = (MatchInfo)paramMessage.obj;
           }
-          this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler.a(bool1, localMatchInfo);
+          this.e.a(bool1, localMatchInfo);
           return true;
         }
         if (paramMessage.arg1 == 1) {
@@ -166,35 +164,35 @@ public class LimitChatProtoStateMachine
           {
             localMatchInfo = (MatchInfo)localObject[0];
             localObject = (String)localObject[1];
-            this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler.a(bool1, paramMessage.arg2, localMatchInfo, (String)localObject);
+            this.e.a(bool1, paramMessage.arg2, localMatchInfo, (String)localObject);
           }
           else
           {
-            this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler.a(bool1, paramMessage.arg2, null, null);
+            this.e.a(bool1, paramMessage.arg2, null, null);
           }
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler.a(bool1, paramMessage.arg2, null, null);
+          this.e.a(bool1, paramMessage.arg2, null, null);
           QLog.e("ExtendFriendLimitChatStateMachine", 2, "CS_RESPONSE_MSG obj err");
         }
         if (QLog.isColorLevel()) {
           QLog.d("ExtendFriendLimitChatStateMachine", 2, "CS_RESPONSE_MSG mIsGetMatchInfoWaitingHandle");
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.b = false;
         return true;
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler.a();
+      this.e.a();
       return true;
     }
-    i = paramMessage.arg1;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchBaseStateHandler.a(i);
+    j = paramMessage.arg1;
+    this.e.a(j);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.match.LimitChatProtoStateMachine
  * JD-Core Version:    0.7.0.1
  */

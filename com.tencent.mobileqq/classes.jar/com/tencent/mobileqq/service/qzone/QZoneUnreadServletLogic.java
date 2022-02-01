@@ -83,14 +83,6 @@ public class QZoneUnreadServletLogic
     return i;
   }
   
-  public static String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ACTPAGE_ATTACH");
-    localStringBuilder.append(paramString);
-    return LocalMultiProcConfig.getString(localStringBuilder.toString(), "");
-  }
-  
   public static List<Integer> a(Map<Integer, QZoneCountInfo> paramMap)
   {
     ArrayList localArrayList = new ArrayList();
@@ -113,27 +105,6 @@ public class QZoneUnreadServletLogic
       }
     }
     return localArrayList;
-  }
-  
-  public static Map<Integer, String> a(long paramLong)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getExtendInfo uin:");
-    ((StringBuilder)localObject).append(paramLong);
-    ((StringBuilder)localObject).append(" extend_info:");
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("EXTEND_INFO");
-    localStringBuilder.append(paramLong);
-    ((StringBuilder)localObject).append(LocalMultiProcConfig.getString(localStringBuilder.toString(), ""));
-    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, ((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("EXTEND_INFO");
-    ((StringBuilder)localObject).append(paramLong);
-    localObject = QzoneMapUtil.a(LocalMultiProcConfig.getString(((StringBuilder)localObject).toString(), ""));
-    if (a(paramLong)) {
-      ((Map)localObject).put(Integer.valueOf(1003), "0");
-    }
-    return localObject;
   }
   
   public static Map<Long, Long> a(Long paramLong)
@@ -164,39 +135,6 @@ public class QZoneUnreadServletLogic
         QLog.e("UndealCount.QZoneUnreadServletLogic", 1, "getMapLastGetTime JSONException", paramLong);
       }
     }
-  }
-  
-  public static Map<String, byte[]> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("MAPAUTOTRANS_DATA");
-    ((StringBuilder)localObject1).append(paramString);
-    localObject1 = LocalMultiProcConfig.getString(((StringBuilder)localObject1).toString(), "");
-    if (!"".equals(localObject1)) {}
-    try
-    {
-      localObject2 = new JSONObject((String)localObject1);
-      Iterator localIterator = ((JSONObject)localObject2).keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localHashMap.put(str, Base64.decode(((JSONObject)localObject2).getString(str), 2));
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      Object localObject2;
-      label107:
-      break label107;
-    }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("getMapAutoTransData failed: ");
-    ((StringBuilder)localObject2).append(paramString);
-    ((StringBuilder)localObject2).append(" jsonString = ");
-    ((StringBuilder)localObject2).append((String)localObject1);
-    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, ((StringBuilder)localObject2).toString());
-    return localHashMap;
   }
   
   public static void a(int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface)
@@ -595,7 +533,7 @@ public class QZoneUnreadServletLogic
   {
     if (paramArrayList != null)
     {
-      paramArrayList = StringUtil.a(paramArrayList, ",");
+      paramArrayList = StringUtil.listToString(paramArrayList, ",");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setKuolieHotTags uin:");
       localStringBuilder.append(paramString);
@@ -738,7 +676,7 @@ public class QZoneUnreadServletLogic
       {
         JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
         if (!localJSONObject.optString("priority", "0").equalsIgnoreCase(paramJSONObject.optString("priority", "0"))) {
-          break label179;
+          break label181;
         }
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("find one,oldData:");
@@ -748,7 +686,7 @@ public class QZoneUnreadServletLogic
         QLog.d("UndealCount.QZoneUnreadServletLogic", 1, localStringBuilder.toString());
         paramJSONArray.put(i, paramJSONObject);
         if (i != j) {
-          break label178;
+          break label180;
         }
         paramJSONArray.put(paramJSONObject);
         paramJSONArray = new StringBuilder();
@@ -759,13 +697,13 @@ public class QZoneUnreadServletLogic
       }
       catch (Throwable paramJSONArray)
       {
-        label168:
-        break label168;
+        label170:
+        break label170;
       }
       QLog.e("UndealCount.QZoneUnreadServletLogic", 1, "updateSurpriseData error:", paramJSONArray);
-      label178:
+      label180:
       return;
-      label179:
+      label181:
       i += 1;
     }
   }
@@ -813,51 +751,21 @@ public class QZoneUnreadServletLogic
     if (i >= 21)
     {
       QZoneUnreadServletLogic.WMDConfig localWMDConfig = new QZoneUnreadServletLogic.WMDConfig();
-      if (localWMDConfig.a())
+      if (localWMDConfig.b())
       {
         if (paramInt == 2)
         {
-          if (localWMDConfig.jdField_a_of_type_Int > 0) {
+          if (localWMDConfig.b > 0) {
             bool = true;
           }
           return bool;
         }
-        if (localWMDConfig.b > 0) {
+        if (localWMDConfig.c > 0) {
           return !localWMDConfig.a(paramString);
         }
       }
     }
     return false;
-  }
-  
-  private static boolean a(long paramLong)
-  {
-    Object localObject = LocalMultiProcConfig.getString4Uin("qzone_dual_warm_comment_info", "", paramLong);
-    boolean bool1 = TextUtils.isEmpty((CharSequence)localObject);
-    boolean bool2 = true;
-    if (bool1) {
-      return true;
-    }
-    try
-    {
-      localObject = (stNuanNuanComment)b(stNuanNuanComment.class, Base64Util.decode((String)localObject, 0));
-      bool1 = bool2;
-      if (localObject != null)
-      {
-        bool1 = bool2;
-        if (((stNuanNuanComment)localObject).vcOtherComments != null)
-        {
-          int i = ((stNuanNuanComment)localObject).vcOtherComments.size();
-          if (i <= 0) {
-            return true;
-          }
-          bool1 = false;
-        }
-      }
-      return bool1;
-    }
-    catch (Throwable localThrowable) {}
-    return true;
   }
   
   public static boolean a(entrance_cfg paramentrance_cfg1, entrance_cfg paramentrance_cfg2)
@@ -1034,39 +942,13 @@ public class QZoneUnreadServletLogic
     paramString1 = new mobile_count_req();
     paramString1.iRelationType = 1;
     paramString1.iVisitQZoneType = paramInt3;
-    paramString1.mapTimeStamp = b(paramLong);
+    paramString1.mapTimeStamp = d(paramLong);
     paramString1.mapLastGetTime = a(Long.valueOf(paramLong));
     paramString1.stMapCountInfo = paramMap;
-    paramString1.extendinfo = a(paramLong);
+    paramString1.extendinfo = b(paramLong);
     paramString1.lastUndealCountTime = paramString2;
     paramString1.mapDyncShowTime = paramMap1;
     return QZoneFeedCountPackeger.a(paramString1, "getUndealCount", paramLong, paramInt1, paramInt2, paramInt4);
-  }
-  
-  public static byte[] a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("BANNER_INFO");
-    localStringBuilder.append(paramString);
-    return Base64.decode(LocalMultiProcConfig.getString(localStringBuilder.toString(), ""), 2);
-  }
-  
-  public static String[] a(long paramLong)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("KUOLIE_HOTTAGS");
-    ((StringBuilder)localObject).append(paramLong);
-    localObject = LocalMultiProcConfig.getString(((StringBuilder)localObject).toString(), "");
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getKuolieHotTags uin:");
-    localStringBuilder.append(paramLong);
-    localStringBuilder.append(" getKuolieHotTags:");
-    localStringBuilder.append((String)localObject);
-    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, localStringBuilder.toString());
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      return ((String)localObject).split(",");
-    }
-    return null;
   }
   
   private static <T extends JceStruct> T b(Class<T> paramClass, byte[] paramArrayOfByte)
@@ -1089,52 +971,25 @@ public class QZoneUnreadServletLogic
     return null;
   }
   
-  public static Map<Integer, Long> b(long paramLong)
+  public static Map<Integer, String> b(long paramLong)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("CTIME_MAP");
+    ((StringBuilder)localObject).append("getExtendInfo uin:");
     ((StringBuilder)localObject).append(paramLong);
-    localObject = b(LocalMultiProcConfig.getString(((StringBuilder)localObject).toString(), ""));
-    Integer localInteger = Integer.valueOf(0);
-    if (!((Map)localObject).containsKey(localInteger)) {
-      ((Map)localObject).put(localInteger, Long.valueOf(0L));
+    ((StringBuilder)localObject).append(" extend_info:");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EXTEND_INFO");
+    localStringBuilder.append(paramLong);
+    ((StringBuilder)localObject).append(LocalMultiProcConfig.getString(localStringBuilder.toString(), ""));
+    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("EXTEND_INFO");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = QzoneMapUtil.a(LocalMultiProcConfig.getString(((StringBuilder)localObject).toString(), ""));
+    if (e(paramLong)) {
+      ((Map)localObject).put(Integer.valueOf(1003), "0");
     }
     return localObject;
-  }
-  
-  public static Map<Integer, Long> b(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.isEmpty(paramString)) {
-      return localHashMap;
-    }
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length == 2) {
-        try
-        {
-          localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), Long.valueOf(URLDecoder.decode(arrayOfString[1], "UTF-8")));
-        }
-        catch (Throwable localThrowable)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("UndealCount.QZoneUnreadServletLogic", 2, localThrowable.toString());
-          }
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("UndealCount.QZoneUnreadServletLogic", 2, localUnsupportedEncodingException.toString());
-          }
-        }
-      }
-      i += 1;
-    }
-    return localHashMap;
   }
   
   public static void b(int paramInt, QQAppInterface paramQQAppInterface)
@@ -1259,12 +1114,12 @@ public class QZoneUnreadServletLogic
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramQQAppInterface = new QZoneUnreadServletLogic.WMDConfig();
-      paramQQAppInterface.jdField_a_of_type_JavaLangString = parammobile_count_rsp_new.strABTestId;
-      paramQQAppInterface.jdField_a_of_type_Int = parammobile_count_rsp_new.operate_nbp_type;
-      paramQQAppInterface.b = parammobile_count_rsp_new.report_sq_switch;
-      paramQQAppInterface.c = parammobile_count_rsp_new.report_counts;
-      paramQQAppInterface.d = parammobile_count_rsp_new.report_nexttime;
-      paramQQAppInterface.jdField_a_of_type_JavaUtilArrayList = parammobile_count_rsp_new.vec_blackReportPid;
+      paramQQAppInterface.a = parammobile_count_rsp_new.strABTestId;
+      paramQQAppInterface.b = parammobile_count_rsp_new.operate_nbp_type;
+      paramQQAppInterface.c = parammobile_count_rsp_new.report_sq_switch;
+      paramQQAppInterface.d = parammobile_count_rsp_new.report_counts;
+      paramQQAppInterface.e = parammobile_count_rsp_new.report_nexttime;
+      paramQQAppInterface.f = parammobile_count_rsp_new.vec_blackReportPid;
       paramQQAppInterface.a();
     }
   }
@@ -1294,8 +1149,8 @@ public class QZoneUnreadServletLogic
     }
     catch (Exception paramString)
     {
-      label130:
-      break label130;
+      label131:
+      break label131;
     }
     QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, "setMapAutoTransData failed, null keys exist in the map");
     return;
@@ -1374,7 +1229,7 @@ public class QZoneUnreadServletLogic
   public static byte[] b(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("BIRTHRECOM_INFO");
+    localStringBuilder.append("BANNER_INFO");
     localStringBuilder.append(paramString);
     return Base64.decode(LocalMultiProcConfig.getString(localStringBuilder.toString(), ""), 2);
   }
@@ -1478,6 +1333,53 @@ public class QZoneUnreadServletLogic
     b(parammobile_count_rsp_new, localQbossGateWayRsp, paramQQAppInterface);
   }
   
+  public static byte[] c(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BIRTHRECOM_INFO");
+    localStringBuilder.append(paramString);
+    return Base64.decode(LocalMultiProcConfig.getString(localStringBuilder.toString(), ""), 2);
+  }
+  
+  public static String[] c(long paramLong)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("KUOLIE_HOTTAGS");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = LocalMultiProcConfig.getString(((StringBuilder)localObject).toString(), "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getKuolieHotTags uin:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(" getKuolieHotTags:");
+    localStringBuilder.append((String)localObject);
+    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, localStringBuilder.toString());
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      return ((String)localObject).split(",");
+    }
+    return null;
+  }
+  
+  public static String d(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ACTPAGE_ATTACH");
+    localStringBuilder.append(paramString);
+    return LocalMultiProcConfig.getString(localStringBuilder.toString(), "");
+  }
+  
+  public static Map<Integer, Long> d(long paramLong)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("CTIME_MAP");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = f(LocalMultiProcConfig.getString(((StringBuilder)localObject).toString(), ""));
+    Integer localInteger = Integer.valueOf(0);
+    if (!((Map)localObject).containsKey(localInteger)) {
+      ((Map)localObject).put(localInteger, Long.valueOf(0L));
+    }
+    return localObject;
+  }
+  
   private static void d(int paramInt, QQAppInterface paramQQAppInterface)
   {
     if (QLog.isColorLevel())
@@ -1518,9 +1420,107 @@ public class QZoneUnreadServletLogic
     }
   }
   
+  public static Map<String, byte[]> e(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("MAPAUTOTRANS_DATA");
+    ((StringBuilder)localObject1).append(paramString);
+    localObject1 = LocalMultiProcConfig.getString(((StringBuilder)localObject1).toString(), "");
+    if (!"".equals(localObject1)) {}
+    try
+    {
+      localObject2 = new JSONObject((String)localObject1);
+      Iterator localIterator = ((JSONObject)localObject2).keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localHashMap.put(str, Base64.decode(((JSONObject)localObject2).getString(str), 2));
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      Object localObject2;
+      label108:
+      break label108;
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getMapAutoTransData failed: ");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(" jsonString = ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, ((StringBuilder)localObject2).toString());
+    return localHashMap;
+  }
+  
   private static void e(mobile_count_rsp_new parammobile_count_rsp_new, QQAppInterface paramQQAppInterface)
   {
     QZoneTitleTabManager.a(parammobile_count_rsp_new, paramQQAppInterface);
+  }
+  
+  private static boolean e(long paramLong)
+  {
+    Object localObject = LocalMultiProcConfig.getString4Uin("qzone_dual_warm_comment_info", "", paramLong);
+    boolean bool1 = TextUtils.isEmpty((CharSequence)localObject);
+    boolean bool2 = true;
+    if (bool1) {
+      return true;
+    }
+    try
+    {
+      localObject = (stNuanNuanComment)b(stNuanNuanComment.class, Base64Util.decode((String)localObject, 0));
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (((stNuanNuanComment)localObject).vcOtherComments != null)
+        {
+          int i = ((stNuanNuanComment)localObject).vcOtherComments.size();
+          if (i <= 0) {
+            return true;
+          }
+          bool1 = false;
+        }
+      }
+      return bool1;
+    }
+    catch (Throwable localThrowable) {}
+    return true;
+  }
+  
+  public static Map<Integer, Long> f(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    if (TextUtils.isEmpty(paramString)) {
+      return localHashMap;
+    }
+    paramString = paramString.split("&");
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String[] arrayOfString = paramString[i].split("=");
+      if (arrayOfString.length == 2) {
+        try
+        {
+          localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), Long.valueOf(URLDecoder.decode(arrayOfString[1], "UTF-8")));
+        }
+        catch (Throwable localThrowable)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("UndealCount.QZoneUnreadServletLogic", 2, localThrowable.toString());
+          }
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("UndealCount.QZoneUnreadServletLogic", 2, localUnsupportedEncodingException.toString());
+          }
+        }
+      }
+      i += 1;
+    }
+    return localHashMap;
   }
   
   private static void f(mobile_count_rsp_new parammobile_count_rsp_new, QQAppInterface paramQQAppInterface)
@@ -1633,7 +1633,7 @@ public class QZoneUnreadServletLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic
  * JD-Core Version:    0.7.0.1
  */

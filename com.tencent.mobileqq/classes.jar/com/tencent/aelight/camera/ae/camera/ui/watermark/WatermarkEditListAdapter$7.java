@@ -11,14 +11,14 @@ class WatermarkEditListAdapter$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$EditTextViewHolder;
-    paramDialogInterface.jdField_a_of_type_Boolean = true;
-    paramDialogInterface.jdField_a_of_type_AndroidWidgetEditText.setText("1");
+    paramDialogInterface = this.a;
+    paramDialogInterface.d = true;
+    paramDialogInterface.a.setText("1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkEditListAdapter.7
  * JD-Core Version:    0.7.0.1
  */

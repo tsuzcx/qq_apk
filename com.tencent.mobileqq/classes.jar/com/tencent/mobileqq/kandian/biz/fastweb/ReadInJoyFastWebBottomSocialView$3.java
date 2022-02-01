@@ -9,7 +9,7 @@ class ReadInJoyFastWebBottomSocialView$3
   
   public void run()
   {
-    ReadInJoyFastWebBottomSocialView.a(this.this$0, false);
+    ReadInJoyFastWebBottomSocialView.b(this.this$0, false);
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyFastWebBottomSocialView", 2, "reset mIsWaitingForFavoriteResult = false, not to block request too long.");
     }
@@ -17,7 +17,7 @@ class ReadInJoyFastWebBottomSocialView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.ReadInJoyFastWebBottomSocialView.3
  * JD-Core Version:    0.7.0.1
  */

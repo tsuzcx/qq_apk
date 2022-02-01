@@ -14,19 +14,19 @@ class RangeDateSelector$1
   
   void a()
   {
-    RangeDateSelector.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerRangeDateSelector, null);
-    RangeDateSelector.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerRangeDateSelector, this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout, this.b, this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerOnSelectionChangedListener);
+    RangeDateSelector.a(this.d, null);
+    RangeDateSelector.a(this.d, this.a, this.b, this.c);
   }
   
   void a(@Nullable Long paramLong)
   {
-    RangeDateSelector.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerRangeDateSelector, paramLong);
-    RangeDateSelector.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerRangeDateSelector, this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout, this.b, this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerOnSelectionChangedListener);
+    RangeDateSelector.a(this.d, paramLong);
+    RangeDateSelector.a(this.d, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.RangeDateSelector.1
  * JD-Core Version:    0.7.0.1
  */

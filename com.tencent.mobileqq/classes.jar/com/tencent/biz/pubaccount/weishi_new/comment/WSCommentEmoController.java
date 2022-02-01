@@ -21,24 +21,19 @@ import com.tencent.qphone.base.util.QLog;
 
 public class WSCommentEmoController
 {
-  public static Editable.Factory a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private PublicFragmentActivity jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity;
-  private IEmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel;
-  private boolean jdField_a_of_type_Boolean = false;
-  
-  static
-  {
-    jdField_a_of_type_AndroidTextEditable$Factory = new WSCommentEmoController.1();
-  }
+  public static Editable.Factory a = new WSCommentEmoController.1();
+  private ViewGroup b;
+  private IEmoticonMainPanel c;
+  private ImageButton d;
+  private EditText e;
+  private PublicFragmentActivity f;
+  private boolean g = false;
   
   private ImageButton a(RelativeLayout paramRelativeLayout, boolean paramBoolean)
   {
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     ImageButton localImageButton = new ImageButton(paramRelativeLayout.getContext());
-    localImageButton.setBackgroundResource(2130850877);
+    localImageButton.setBackgroundResource(2130852729);
     int i;
     if (paramBoolean) {
       i = 8;
@@ -46,8 +41,8 @@ public class WSCommentEmoController
       i = 0;
     }
     localImageButton.setVisibility(i);
-    localLayoutParams.rightMargin = ViewUtils.a(5.0F);
-    localLayoutParams.bottomMargin = ViewUtils.a(7.0F);
+    localLayoutParams.rightMargin = ViewUtils.dip2px(5.0F);
+    localLayoutParams.bottomMargin = ViewUtils.dip2px(7.0F);
     localLayoutParams.addRule(11);
     localLayoutParams.addRule(12);
     paramRelativeLayout.addView(localImageButton, localLayoutParams);
@@ -56,9 +51,9 @@ public class WSCommentEmoController
   
   private IEmoticonMainPanel a(PublicFragmentActivity paramPublicFragmentActivity, ViewGroup paramViewGroup, EditText paramEditText, int paramInt, EmoticonCallback paramEmoticonCallback)
   {
-    paramEditText.setEditableFactory(jdField_a_of_type_AndroidTextEditable$Factory);
+    paramEditText.setEditableFactory(a);
     DeviceLib.a(paramPublicFragmentActivity, paramEditText);
-    paramEditText = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel;
+    paramEditText = this.c;
     if (paramEditText != null) {
       return paramEditText;
     }
@@ -74,12 +69,12 @@ public class WSCommentEmoController
   {
     if ((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo))
     {
-      EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
+      EditText localEditText = this.e;
       if (localEditText != null)
       {
         SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
         int i = localEditText.getSelectionStart();
-        int j = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
+        int j = this.e.getSelectionEnd();
         int k = localSystemAndEmojiEmoticonInfo.emotionType;
         int m = localSystemAndEmojiEmoticonInfo.code;
         if ((i >= 0) && (j >= 0) && (j >= i))
@@ -94,13 +89,13 @@ public class WSCommentEmoController
             break label93;
             paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m);
             label93:
-            this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, paramEmoticonInfo);
+            this.e.getEditableText().replace(i, j, paramEmoticonInfo);
           }
           catch (IllegalArgumentException paramEmoticonInfo)
           {
             QLog.e("WSCommentEmoController", 2, "sendEmoticon: ", paramEmoticonInfo);
           }
-          localSystemAndEmojiEmoticonInfo.addToCommonUsed(this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.app, null);
+          localSystemAndEmojiEmoticonInfo.addToCommonUsed(this.f.app, null);
         }
       }
     }
@@ -108,11 +103,11 @@ public class WSCommentEmoController
   
   public void a()
   {
-    ImageButton localImageButton = this.jdField_a_of_type_AndroidWidgetImageButton;
+    ImageButton localImageButton = this.d;
     if (localImageButton != null)
     {
       int i;
-      if (android.text.TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText())) {
+      if (android.text.TextUtils.isEmpty(this.e.getText())) {
         i = 8;
       } else {
         i = 0;
@@ -123,11 +118,11 @@ public class WSCommentEmoController
   
   public void a(int paramInt)
   {
-    IEmoticonMainPanel localIEmoticonMainPanel = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel;
+    IEmoticonMainPanel localIEmoticonMainPanel = this.c;
     if ((localIEmoticonMainPanel != null) && (localIEmoticonMainPanel.getView().getHeight() != paramInt))
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView().getLayoutParams().height = paramInt;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView().invalidate();
+      this.c.getView().getLayoutParams().height = paramInt;
+      this.c.getView().invalidate();
     }
   }
   
@@ -138,24 +133,19 @@ public class WSCommentEmoController
       if (paramPublicFragmentActivity == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity = paramPublicFragmentActivity;
-      this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-      this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel = a(paramPublicFragmentActivity, paramViewGroup, paramEditText, paramInt, new WSCommentEmoController.2(this));
-      this.jdField_a_of_type_AndroidWidgetImageButton = a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView(), android.text.TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText()));
-      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new WSCommentEmoController.3(this));
+      this.f = paramPublicFragmentActivity;
+      this.b = paramViewGroup;
+      this.e = paramEditText;
+      this.c = a(paramPublicFragmentActivity, paramViewGroup, paramEditText, paramInt, new WSCommentEmoController.2(this));
+      this.d = a(this.c.getView(), android.text.TextUtils.isEmpty(this.e.getText()));
+      this.d.setOnClickListener(new WSCommentEmoController.3(this));
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    this.g = true;
+    ViewGroup localViewGroup = this.b;
     if (localViewGroup != null) {
       localViewGroup.setVisibility(0);
     }
@@ -163,16 +153,21 @@ public class WSCommentEmoController
   
   public void c()
   {
-    this.jdField_a_of_type_Boolean = false;
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    this.g = false;
+    ViewGroup localViewGroup = this.b;
     if (localViewGroup != null) {
       localViewGroup.setVisibility(8);
     }
   }
+  
+  public boolean d()
+  {
+    return this.g;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WSCommentEmoController
  * JD-Core Version:    0.7.0.1
  */

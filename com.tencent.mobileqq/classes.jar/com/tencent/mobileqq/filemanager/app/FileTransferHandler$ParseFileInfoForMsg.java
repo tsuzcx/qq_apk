@@ -15,19 +15,19 @@ import tencent.im.s2c.msgtype0x211.submsgtype0x4.SubMsgType0x4.MsgBody;
 
 class FileTransferHandler$ParseFileInfoForMsg
 {
-  private int jdField_a_of_type_Int;
-  private msg_comm.Msg jdField_a_of_type_MsfMsgcommMsg_comm$Msg;
-  private msg_comm.MsgHead jdField_a_of_type_MsfMsgcommMsg_comm$MsgHead;
-  private im_msg_body.NotOnlineFile jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private boolean b;
+  private msg_comm.Msg c;
+  private msg_comm.MsgHead d;
+  private int e;
+  private int f;
+  private im_msg_body.NotOnlineFile g;
   
   public FileTransferHandler$ParseFileInfoForMsg(FileTransferHandler paramFileTransferHandler, msg_comm.Msg paramMsg, msg_comm.MsgHead paramMsgHead, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
-    this.jdField_a_of_type_MsfMsgcommMsg_comm$MsgHead = paramMsgHead;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.c = paramMsg;
+    this.d = paramMsgHead;
+    this.e = paramInt1;
+    this.f = paramInt2;
   }
   
   private boolean a(msg_comm.Msg paramMsg)
@@ -71,44 +71,54 @@ class FileTransferHandler$ParseFileInfoForMsg
     return false;
   }
   
-  public ParseFileInfoForMsg a()
+  boolean a()
+  {
+    return this.b;
+  }
+  
+  public im_msg_body.NotOnlineFile b()
+  {
+    return this.g;
+  }
+  
+  public ParseFileInfoForMsg c()
   {
     Object localObject;
-    if ((MessageUtils.c(this.jdField_a_of_type_Int)) && (this.jdField_a_of_type_MsfMsgcommMsg_comm$MsgHead.c2c_cmd.has()) && (this.b == 169))
+    if ((MessageUtils.d(this.e)) && (this.d.c2c_cmd.has()) && (this.f == 169))
     {
-      if (a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg))
+      if (a(this.c))
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.b = true;
         return this;
       }
-      localObject = (im_msg_body.RichText)((im_msg_body.MsgBody)this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).rich_text.get();
+      localObject = (im_msg_body.RichText)((im_msg_body.MsgBody)this.c.msg_body.get()).rich_text.get();
       if (a((im_msg_body.RichText)localObject))
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.b = true;
         return this;
       }
-      this.jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile = ((im_msg_body.NotOnlineFile)((im_msg_body.RichText)localObject).not_online_file.get());
+      this.g = ((im_msg_body.NotOnlineFile)((im_msg_body.RichText)localObject).not_online_file.get());
     }
     else
     {
-      if ((this.jdField_a_of_type_Int != 529) || (this.b != 4)) {
+      if ((this.e != 529) || (this.f != 4)) {
         break label246;
       }
     }
     try
     {
-      localObject = ((im_msg_body.MsgBody)this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).msg_content.get().toByteArray();
+      localObject = ((im_msg_body.MsgBody)this.c.msg_body.get()).msg_content.get().toByteArray();
       SubMsgType0x4.MsgBody localMsgBody = new SubMsgType0x4.MsgBody();
       try
       {
         localObject = (SubMsgType0x4.MsgBody)localMsgBody.mergeFrom((byte[])localObject);
         if (a((SubMsgType0x4.MsgBody)localObject))
         {
-          this.jdField_a_of_type_Boolean = true;
+          this.b = true;
           return this;
         }
-        this.jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile = ((im_msg_body.NotOnlineFile)((SubMsgType0x4.MsgBody)localObject).msg_not_online_file.get());
-        this.jdField_a_of_type_Boolean = false;
+        this.g = ((im_msg_body.NotOnlineFile)((SubMsgType0x4.MsgBody)localObject).msg_not_online_file.get());
+        this.b = false;
         return this;
       }
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
@@ -116,36 +126,26 @@ class FileTransferHandler$ParseFileInfoForMsg
         if (QLog.isColorLevel()) {
           QLog.e("FileTransferHandler<FileAssistant>", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x4] failed", localInvalidProtocolBufferMicroException);
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.b = true;
         return this;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
     }
     catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
         QLog.e("FileTransferHandler<FileAssistant>", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : failed.", localException);
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       return this;
     }
     label246:
     return this;
   }
-  
-  public im_msg_body.NotOnlineFile a()
-  {
-    return this.jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile;
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.ParseFileInfoForMsg
  * JD-Core Version:    0.7.0.1
  */

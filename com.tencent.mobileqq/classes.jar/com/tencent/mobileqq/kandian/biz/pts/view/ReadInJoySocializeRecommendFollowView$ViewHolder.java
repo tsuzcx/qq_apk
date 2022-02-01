@@ -6,23 +6,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.repo.follow.RecommendFollowInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 
 class ReadInJoySocializeRecommendFollowView$ViewHolder
   implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RecommendFollowInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFollowRecommendFollowInfo;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  RelativeLayout a;
+  ImageView b;
+  ImageView c;
+  ImageView d;
+  TextView e;
+  TextView f;
+  TextView g;
+  LinearLayout h;
+  RecommendFollowInfo i;
   
   private ReadInJoySocializeRecommendFollowView$ViewHolder(ReadInJoySocializeRecommendFollowView paramReadInJoySocializeRecommendFollowView) {}
   
@@ -32,38 +31,36 @@ class ReadInJoySocializeRecommendFollowView$ViewHolder
     {
     default: 
       return;
-    case 2131368067: 
-    case 2131369090: 
-    case 2131371884: 
-      ReadInJoySocializeRecommendFollowView.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowRecommendFollowInfo);
-      paramView = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+    case 2131434917: 
+    case 2131436054: 
+    case 2131439327: 
+      ReadInJoySocializeRecommendFollowView.b(this.j, this.i);
+      paramView = new StringBuilder();
+      paramView.append(RIJQQAppInterfaceUtil.c());
+      paramView.append("");
+      paramView = paramView.toString();
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
+      ((StringBuilder)localObject).append(this.i.uin);
       ((StringBuilder)localObject).append("");
-      localObject = ((StringBuilder)localObject).toString();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowRecommendFollowInfo.uin);
-      localStringBuilder.append("");
-      paramView.publicAccountReportClickEvent(null, (String)localObject, "0X8009849", "0X8009849", 0, 0, "1", localStringBuilder.toString(), "", "", false);
+      PublicAccountReportUtils.a(null, paramView, "0X8009849", "0X8009849", 0, 0, "1", ((StringBuilder)localObject).toString(), "", "", false);
       return;
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowRecommendFollowInfo;
+    paramView = this.j;
+    Object localObject = this.i;
     paramView.a((RecommendFollowInfo)localObject, ((RecommendFollowInfo)localObject).isFollowed ^ true);
-    paramView = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+    paramView = new StringBuilder();
+    paramView.append(RIJQQAppInterfaceUtil.c());
+    paramView.append("");
+    paramView = paramView.toString();
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
+    ((StringBuilder)localObject).append(this.i.uin);
     ((StringBuilder)localObject).append("");
-    localObject = ((StringBuilder)localObject).toString();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowRecommendFollowInfo.uin);
-    localStringBuilder.append("");
-    paramView.publicAccountReportClickEvent(null, (String)localObject, "0X800984A", "0X800984A", 0, 0, "1", localStringBuilder.toString(), "", "", false);
+    PublicAccountReportUtils.a(null, paramView, "0X800984A", "0X800984A", 0, 0, "1", ((StringBuilder)localObject).toString(), "", "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoySocializeRecommendFollowView.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

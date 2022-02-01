@@ -18,25 +18,25 @@ class ForwardMixedMsgOption$1
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg != null)
+    if (this.a.a != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+      if (this.a.A != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.hideSoftInputFromWindow();
+        this.a.A.hideSoftInputFromWindow();
         Object localObject;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.hasReplyText())
+        if (this.a.a.hasReplyText())
         {
-          ((ForwardMsgManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+          ((ForwardMsgManager)this.a.q.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(this.a.a);
           localObject = this.a;
-          ForwardReplyMsgOption.a((ForwardBaseOption)localObject, ((ForwardMixedMsgOption)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+          ForwardReplyMsgOption.a((ForwardBaseOption)localObject, ((ForwardMixedMsgOption)localObject).a.uniseq);
         }
         else
         {
-          localObject = new ForwardPreviewMixedMsgController(this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          ((ForwardPreviewMixedMsgController)localObject).a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692648), this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
-          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.addPreviewView(((ForwardPreviewMixedMsgController)localObject).b());
+          localObject = new ForwardPreviewMixedMsgController(this.a.A, this.a.q);
+          ((ForwardPreviewMixedMsgController)localObject).a(this.a.s.getString(2131889672), this.a.a);
+          this.a.A.addPreviewView(((ForwardPreviewMixedMsgController)localObject).f());
         }
-        this.a.G();
+        this.a.aq();
       }
     }
     else if (QLog.isColorLevel()) {
@@ -47,7 +47,7 @@ class ForwardMixedMsgOption$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardMixedMsgOption.1
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ public final class QAPMNameVerifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.verifier.QAPMNameVerifier
  * JD-Core Version:    0.7.0.1
  */

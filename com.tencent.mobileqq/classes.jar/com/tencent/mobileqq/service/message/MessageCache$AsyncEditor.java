@@ -12,31 +12,31 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MessageCache$AsyncEditor
   implements SharedPreferences.Editor
 {
-  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
-  private boolean jdField_a_of_type_Boolean = false;
+  private SharedPreferences.Editor b;
+  private boolean c = false;
   
   public MessageCache$AsyncEditor(MessageCache paramMessageCache) {}
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).edit();
-    if ((MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache) != null) && (MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).size() > 0))
+    this.b = MessageCache.b(this.a).edit();
+    if ((MessageCache.a(this.a) != null) && (MessageCache.a(this.a).size() > 0))
     {
-      Iterator localIterator = MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).keySet().iterator();
+      Iterator localIterator = MessageCache.a(this.a).keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        Object localObject = MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).get(str);
+        Object localObject = MessageCache.a(this.a).get(str);
         if ((localObject instanceof Long)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, ((Long)localObject).longValue());
+          this.b.putLong(str, ((Long)localObject).longValue());
         } else if ((localObject instanceof String)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString(str, (String)localObject);
+          this.b.putString(str, (String)localObject);
         } else if ((localObject instanceof Boolean)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(str, ((Boolean)localObject).booleanValue());
+          this.b.putBoolean(str, ((Boolean)localObject).booleanValue());
         } else if ((localObject instanceof Integer)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(str, ((Integer)localObject).intValue());
+          this.b.putInt(str, ((Integer)localObject).intValue());
         } else if ((localObject instanceof Float)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putFloat(str, ((Float)localObject).floatValue());
+          this.b.putFloat(str, ((Float)localObject).floatValue());
         }
       }
     }
@@ -45,86 +45,86 @@ public class MessageCache$AsyncEditor
   @TargetApi(9)
   public void apply()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
       if (Build.VERSION.SDK_INT < 9) {
         try
         {
           a();
-          if (this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit())
+          if (this.b.commit())
           {
-            MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).clear();
+            MessageCache.a(this.a).clear();
             return;
           }
           if (!QLog.isColorLevel()) {
             return;
           }
-          QLog.d(MessageCache.a(), 2, "AsyncEditor commit fail!");
+          QLog.d(MessageCache.I(), 2, "AsyncEditor commit fail!");
           return;
         }
         catch (Exception localException)
         {
           if (QLog.isColorLevel()) {
-            QLog.w(MessageCache.a(), 2, "commit Exception ! ", localException);
+            QLog.w(MessageCache.I(), 2, "commit Exception ! ", localException);
           }
-          this.jdField_a_of_type_Boolean = true;
+          this.c = true;
           return;
         }
         catch (OutOfMemoryError localOutOfMemoryError)
         {
           if (QLog.isColorLevel()) {
-            QLog.w(MessageCache.a(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
+            QLog.w(MessageCache.I(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
           }
-          this.jdField_a_of_type_Boolean = true;
+          this.c = true;
           return;
         }
       } else {
-        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
+        this.b.apply();
       }
     }
   }
   
   public SharedPreferences.Editor clear()
   {
-    this.jdField_a_of_type_Boolean = true;
-    MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).clear();
+    this.c = true;
+    MessageCache.a(this.a).clear();
     return this;
   }
   
   public boolean commit()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
       try
       {
         a();
-        boolean bool = this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+        boolean bool = this.b.commit();
         if (bool)
         {
-          MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).clear();
+          MessageCache.a(this.a).clear();
           return bool;
         }
         if (QLog.isColorLevel()) {
-          QLog.d(MessageCache.a(), 2, "AsyncEditor commit fail!");
+          QLog.d(MessageCache.I(), 2, "AsyncEditor commit fail!");
         }
         return bool;
       }
       catch (Exception localException)
       {
         if (QLog.isColorLevel()) {
-          QLog.w(MessageCache.a(), 2, "commit Exception ! ", localException);
+          QLog.w(MessageCache.I(), 2, "commit Exception ! ", localException);
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.c = true;
         return false;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         if (QLog.isColorLevel()) {
-          QLog.w(MessageCache.a(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
+          QLog.w(MessageCache.I(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.c = true;
       }
     }
     return false;
@@ -132,36 +132,36 @@ public class MessageCache$AsyncEditor
   
   public SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = true;
-    MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).put(paramString, Boolean.valueOf(paramBoolean));
+    this.c = true;
+    MessageCache.a(this.a).put(paramString, Boolean.valueOf(paramBoolean));
     return this;
   }
   
   public SharedPreferences.Editor putFloat(String paramString, float paramFloat)
   {
-    this.jdField_a_of_type_Boolean = true;
-    MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).put(paramString, Float.valueOf(paramFloat));
+    this.c = true;
+    MessageCache.a(this.a).put(paramString, Float.valueOf(paramFloat));
     return this;
   }
   
   public SharedPreferences.Editor putInt(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).put(paramString, Integer.valueOf(paramInt));
+    this.c = true;
+    MessageCache.a(this.a).put(paramString, Integer.valueOf(paramInt));
     return this;
   }
   
   public SharedPreferences.Editor putLong(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = true;
-    MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).put(paramString, Long.valueOf(paramLong));
+    this.c = true;
+    MessageCache.a(this.a).put(paramString, Long.valueOf(paramLong));
     return this;
   }
   
   public SharedPreferences.Editor putString(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).put(paramString1, paramString2);
+    this.c = true;
+    MessageCache.a(this.a).put(paramString1, paramString2);
     return this;
   }
   
@@ -173,14 +173,14 @@ public class MessageCache$AsyncEditor
   
   public SharedPreferences.Editor remove(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    MessageCache.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache).remove(paramString);
+    this.c = true;
+    MessageCache.a(this.a).remove(paramString);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageCache.AsyncEditor
  * JD-Core Version:    0.7.0.1
  */

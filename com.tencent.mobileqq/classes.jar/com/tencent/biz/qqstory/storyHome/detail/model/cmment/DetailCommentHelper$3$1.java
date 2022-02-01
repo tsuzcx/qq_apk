@@ -10,10 +10,10 @@ class DetailCommentHelper$3$1
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(DetailCommentHelper.a(this.a.a), DetailCommentHelper.a(this.a.a), this.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, DetailCommentHelper.a(this.a.a).a);
+    this.a.a.b = StoryInputBarView.a(DetailCommentHelper.b(this.a.a), DetailCommentHelper.c(this.a.a), this.a.a.a, DetailCommentHelper.d(this.a.a).e);
     DetailCommentHelper localDetailCommentHelper = this.a.a;
     boolean bool;
-    if (this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {
+    if (this.a.a.b != null) {
       bool = true;
     } else {
       bool = false;

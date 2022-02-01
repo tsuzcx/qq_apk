@@ -7,37 +7,37 @@ import androidx.viewpager2.widget.ViewPager2;
 
 public final class TabLayoutMediator
 {
+  @NonNull
+  private final TabLayout a;
+  @NonNull
+  private final ViewPager2 b;
+  private final TabLayoutMediator.TabConfigurationStrategy c;
   @Nullable
-  private RecyclerView.Adapter<?> jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView$Adapter;
-  @NonNull
-  private final ViewPager2 jdField_a_of_type_AndroidxViewpager2WidgetViewPager2;
-  @NonNull
-  private final TabLayout jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout;
-  private final TabLayoutMediator.TabConfigurationStrategy jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayoutMediator$TabConfigurationStrategy;
+  private RecyclerView.Adapter<?> d;
   
   void a()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a();
-    Object localObject = this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView$Adapter;
+    this.a.c();
+    Object localObject = this.d;
     if (localObject != null)
     {
       int j = ((RecyclerView.Adapter)localObject).getItemCount();
       int i = 0;
       while (i < j)
       {
-        localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a();
-        this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayoutMediator$TabConfigurationStrategy.a((TabLayout.Tab)localObject, i);
-        this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a((TabLayout.Tab)localObject, false);
+        localObject = this.a.a();
+        this.c.a((TabLayout.Tab)localObject, i);
+        this.a.a((TabLayout.Tab)localObject, false);
         i += 1;
       }
       if (j > 0)
       {
-        i = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a();
-        i = Math.min(this.jdField_a_of_type_AndroidxViewpager2WidgetViewPager2.getCurrentItem(), i - 1);
-        if (i != this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.b())
+        i = this.a.getTabCount();
+        i = Math.min(this.b.getCurrentItem(), i - 1);
+        if (i != this.a.getSelectedTabPosition())
         {
-          localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout;
-          ((TabLayout)localObject).b(((TabLayout)localObject).a(i));
+          localObject = this.a;
+          ((TabLayout)localObject).c(((TabLayout)localObject).a(i));
         }
       }
     }
@@ -45,7 +45,7 @@ public final class TabLayoutMediator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.tabs.TabLayoutMediator
  * JD-Core Version:    0.7.0.1
  */

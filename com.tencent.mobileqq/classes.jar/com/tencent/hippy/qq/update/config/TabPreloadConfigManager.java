@@ -4,10 +4,13 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.hippy.qq.api.TabPreloadItem;
-import com.tencent.hippy.qq.update.HippyUpdateManager;
+import com.tencent.hippy.qq.api.TabPreloadItem.PreloadType;
+import com.tencent.hippy.qq.preload.TabPreloadManager;
+import com.tencent.hippy.qq.update.HippyPredownloadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,6 +32,46 @@ public class TabPreloadConfigManager
   public TabPreloadConfigManager(String paramString)
   {
     this.mCurrentUin = paramString;
+  }
+  
+  public List<TabPreloadItem> getItemsOfTab(String paramString1, String paramString2, TabPreloadItem.PreloadType paramPreloadType)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramPreloadType);
+    return getItemsOfTab(paramString1, paramString2, localArrayList);
+  }
+  
+  public List<TabPreloadItem> getItemsOfTab(String paramString1, String paramString2, List<TabPreloadItem.PreloadType> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      Object localObject = this.mTabPreloadDatas;
+      if (localObject != null)
+      {
+        if (paramList == null) {
+          return localArrayList;
+        }
+        paramString1 = (ArrayList)((HashMap)localObject).get(paramString1);
+        if (paramString1 == null) {
+          return localArrayList;
+        }
+        int i = 0;
+        while (i < paramString1.size())
+        {
+          localObject = (TabPreloadItem)paramString1.get(i);
+          if ((paramList.contains(((TabPreloadItem)localObject).preloadType)) && ((TextUtils.isEmpty(paramString2)) || (paramString2.equals(((TabPreloadItem)localObject).preloadProcess))) && ((((TabPreloadItem)localObject).isPreUpdate()) || (TabPreloadManager.getInstance().isCanPreload(((TabPreloadItem)localObject).bundleName)))) {
+            if (TabPreloadManager.getInstance().hasNewMessage(((TabPreloadItem)localObject).bundleName)) {
+              localArrayList.add(0, paramString1.get(i));
+            } else {
+              localArrayList.add(paramString1.get(i));
+            }
+          }
+          i += 1;
+        }
+      }
+    }
+    return localArrayList;
   }
   
   public int getPreloadMaxCount()
@@ -57,7 +100,7 @@ public class TabPreloadConfigManager
         if (this.mPreloadMaxCount < 1) {
           this.mPreloadMaxCount = 1;
         }
-        localObject = HippyUpdateManager.getSharedPreferences().edit();
+        localObject = HippyPredownloadManager.getSharedPreferences().edit();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramString2);
         localStringBuilder.append("key_tab_preload_req_gap");
@@ -88,7 +131,7 @@ public class TabPreloadConfigManager
       return;
     }
     this.mIsInitData = true;
-    Object localObject = HippyUpdateManager.getSharedPreferences();
+    Object localObject = HippyPredownloadManager.getSharedPreferences();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(this.mCurrentUin);
     localStringBuilder.append("key_tab_preload_config");
@@ -168,7 +211,7 @@ public class TabPreloadConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.update.config.TabPreloadConfigManager
  * JD-Core Version:    0.7.0.1
  */

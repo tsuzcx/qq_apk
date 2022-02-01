@@ -7,7 +7,7 @@ class StoryMessageListActivity$8
   
   public void run()
   {
-    this.this$0.a.notifyDataSetChanged();
+    this.this$0.c.notifyDataSetChanged();
   }
 }
 

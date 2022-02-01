@@ -455,10 +455,10 @@ public class ZhituTextManager
     //   120: aload_2
     //   121: invokevirtual 404	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:a	(Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager$DrawTextParam;)V
     //   124: aload 10
-    //   126: invokevirtual 406	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:c	()I
+    //   126: invokevirtual 407	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:c	()I
     //   129: istore 6
     //   131: aload 10
-    //   133: invokevirtual 408	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:b	()I
+    //   133: invokevirtual 409	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:b	()I
     //   136: istore 7
     //   138: iload 6
     //   140: iflt +50 -> 190
@@ -472,9 +472,9 @@ public class ZhituTextManager
     //   158: aload 10
     //   160: invokevirtual 400	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:getHeight	()I
     //   163: aload 5
-    //   165: invokevirtual 411	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   165: invokevirtual 412	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   168: iconst_0
-    //   169: invokevirtual 414	com/tencent/mobileqq/activity/aio/zhitu/GifEncoder:a	(IILjava/lang/String;I)V
+    //   169: invokevirtual 415	com/tencent/mobileqq/activity/aio/zhitu/GifEncoder:a	(IILjava/lang/String;I)V
     //   172: aload 10
     //   174: invokevirtual 401	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:getWidth	()I
     //   177: aload 10
@@ -484,57 +484,57 @@ public class ZhituTextManager
     //   186: aload_2
     //   187: ifnonnull +9 -> 196
     //   190: aload_1
-    //   191: invokevirtual 416	com/tencent/mobileqq/activity/aio/zhitu/GifEncoder:a	()V
+    //   191: invokevirtual 417	com/tencent/mobileqq/activity/aio/zhitu/GifEncoder:a	()V
     //   194: aconst_null
     //   195: areturn
     //   196: new 101	android/graphics/Canvas
     //   199: dup
     //   200: aload_2
-    //   201: invokespecial 418	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   201: invokespecial 419	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
     //   204: astore 11
     //   206: new 28	android/graphics/Paint
     //   209: dup
-    //   210: invokespecial 419	android/graphics/Paint:<init>	()V
+    //   210: invokespecial 420	android/graphics/Paint:<init>	()V
     //   213: astore 12
     //   215: iload 6
     //   217: iload 7
     //   219: if_icmpge +76 -> 295
     //   222: aload 11
     //   224: aload 10
-    //   226: invokevirtual 422	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:a	()Landroid/graphics/Bitmap;
+    //   226: invokevirtual 423	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:d	()Landroid/graphics/Bitmap;
     //   229: fconst_0
     //   230: fconst_0
     //   231: aload 12
     //   233: invokevirtual 272	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
     //   236: aload 10
     //   238: aload 11
-    //   240: invokevirtual 425	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:a	(Landroid/graphics/Canvas;)V
+    //   240: invokevirtual 426	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:a	(Landroid/graphics/Canvas;)V
     //   243: aload_1
     //   244: aload_2
     //   245: aload 10
-    //   247: invokevirtual 427	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:a	()I
-    //   250: invokevirtual 430	com/tencent/mobileqq/activity/aio/zhitu/GifEncoder:a	(Landroid/graphics/Bitmap;I)Z
+    //   247: invokevirtual 428	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:a	()I
+    //   250: invokevirtual 431	com/tencent/mobileqq/activity/aio/zhitu/GifEncoder:a	(Landroid/graphics/Bitmap;I)Z
     //   253: pop
     //   254: aload 11
     //   256: iconst_0
     //   257: iconst_0
     //   258: aload 11
-    //   260: invokevirtual 431	android/graphics/Canvas:getWidth	()I
+    //   260: invokevirtual 432	android/graphics/Canvas:getWidth	()I
     //   263: aload 11
     //   265: invokevirtual 112	android/graphics/Canvas:getHeight	()I
-    //   268: invokevirtual 435	android/graphics/Canvas:clipRect	(IIII)Z
+    //   268: invokevirtual 436	android/graphics/Canvas:clipRect	(IIII)Z
     //   271: pop
     //   272: aload 10
-    //   274: invokevirtual 436	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:a	()V
+    //   274: invokevirtual 438	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:e	()V
     //   277: aload 10
-    //   279: invokevirtual 406	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:c	()I
+    //   279: invokevirtual 407	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:c	()I
     //   282: istore 6
     //   284: iload 6
     //   286: ifne +6 -> 292
     //   289: goto +6 -> 295
     //   292: goto -77 -> 215
     //   295: aload_1
-    //   296: invokevirtual 416	com/tencent/mobileqq/activity/aio/zhitu/GifEncoder:a	()V
+    //   296: invokevirtual 417	com/tencent/mobileqq/activity/aio/zhitu/GifEncoder:a	()V
     //   299: invokestatic 197	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   302: ifeq +52 -> 354
     //   305: new 65	java/lang/StringBuilder
@@ -555,26 +555,26 @@ public class ZhituTextManager
     //   335: ldc 205
     //   337: iconst_2
     //   338: aload_3
-    //   339: ldc_w 438
+    //   339: ldc_w 440
     //   342: iload 4
     //   344: aload_1
     //   345: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   348: invokestatic 318	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
     //   351: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   354: aload 5
-    //   356: invokevirtual 411	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   356: invokevirtual 412	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   359: areturn
     //   360: ldc 205
     //   362: iconst_1
-    //   363: ldc_w 440
+    //   363: ldc_w 442
     //   366: invokestatic 321	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   369: goto -179 -> 190
     //   372: astore_2
     //   373: goto +63 -> 436
     //   376: astore_2
     //   377: aload_2
-    //   378: ldc_w 442
-    //   381: invokestatic 447	com/tencent/qqperf/monitor/crash/catchedexception/CaughtExceptionReport:a	(Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   378: ldc_w 444
+    //   381: invokestatic 449	com/tencent/qqperf/monitor/crash/catchedexception/CaughtExceptionReport:a	(Ljava/lang/Throwable;Ljava/lang/String;)V
     //   384: goto -194 -> 190
     //   387: astore_2
     //   388: new 65	java/lang/StringBuilder
@@ -582,17 +582,17 @@ public class ZhituTextManager
     //   392: invokespecial 198	java/lang/StringBuilder:<init>	()V
     //   395: astore 5
     //   397: aload 5
-    //   399: ldc_w 449
+    //   399: ldc_w 451
     //   402: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   405: pop
     //   406: aload 5
     //   408: aload_2
-    //   409: invokevirtual 452	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   409: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   412: pop
     //   413: ldc 205
     //   415: iconst_1
     //   416: aload_3
-    //   417: ldc_w 438
+    //   417: ldc_w 440
     //   420: iload 4
     //   422: aload 5
     //   424: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -600,7 +600,7 @@ public class ZhituTextManager
     //   430: invokestatic 321	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   433: goto -243 -> 190
     //   436: aload_1
-    //   437: invokevirtual 416	com/tencent/mobileqq/activity/aio/zhitu/GifEncoder:a	()V
+    //   437: invokevirtual 417	com/tencent/mobileqq/activity/aio/zhitu/GifEncoder:a	()V
     //   440: goto +5 -> 445
     //   443: aload_2
     //   444: athrow
@@ -645,7 +645,7 @@ public class ZhituTextManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituTextManager
  * JD-Core Version:    0.7.0.1
  */

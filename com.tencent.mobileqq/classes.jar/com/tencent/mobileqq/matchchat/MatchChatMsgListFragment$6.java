@@ -12,10 +12,10 @@ class MatchChatMsgListFragment$6
   
   protected void onUpdateApolloHead(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase(this.a.a.getCurrentAccountUin())) && (this.a.isAdded()) && (this.a.b != null))
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase(this.a.a.getCurrentAccountUin())) && (this.a.isAdded()) && (this.a.q != null))
     {
-      this.a.b.removeMessages(1);
-      this.a.b.sendEmptyMessage(1);
+      this.a.q.removeMessages(1);
+      this.a.q.sendEmptyMessage(1);
     }
   }
   

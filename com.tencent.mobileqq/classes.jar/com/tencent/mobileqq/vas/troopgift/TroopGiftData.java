@@ -2,15 +2,17 @@ package com.tencent.mobileqq.vas.troopgift;
 
 import android.text.TextUtils;
 import androidx.annotation.Keep;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.IAnimationMessage;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager.IAnimationMessage;
 
 @Keep
 public class TroopGiftData
   implements AIOAnimationControlManager.IAnimationMessage
 {
+  private static final String GIFT_TYPE_COMMON = "0";
+  private static final String GIFT_TYPE_GESTURE = "2";
+  private static final String GIFT_TYPE_GUILD = "7";
+  private static final String GIFT_TYPE_STAFF = "1";
   public TroopGiftData.GiftDataBean giftData = new TroopGiftData.GiftDataBean();
-  private final String giftTypeCommon = "0";
-  private final String giftTypeStaff = "1";
   private boolean isReaded = true;
   private long shmsgseq = 0L;
   
@@ -39,9 +41,14 @@ public class TroopGiftData
     return this.giftData.dataForClient.giftType.equals("0");
   }
   
-  public boolean isGiftValid()
+  public boolean isGestureGift()
   {
-    return (isCommonGift()) || (isStaffGift());
+    return this.giftData.dataForClient.giftType.equals("2");
+  }
+  
+  public boolean isGuildGift()
+  {
+    return this.giftData.dataForClient.giftType.equals("7");
   }
   
   public boolean isReaded()
@@ -51,7 +58,7 @@ public class TroopGiftData
   
   public boolean isResInvalid()
   {
-    return (TextUtils.isEmpty(this.giftData.dataForClient.continueAnimationAnd)) || (TextUtils.isEmpty(this.giftData.dataForClient.giftResourceAnd));
+    return TextUtils.isEmpty(this.giftData.dataForClient.giftResourceAnd);
   }
   
   public boolean isStaffGift()
@@ -71,7 +78,7 @@ public class TroopGiftData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopgift.TroopGiftData
  * JD-Core Version:    0.7.0.1
  */

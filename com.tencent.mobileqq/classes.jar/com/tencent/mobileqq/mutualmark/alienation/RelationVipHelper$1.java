@@ -23,21 +23,21 @@ final class RelationVipHelper$1
   {
     if (paramURLDrawable != null)
     {
-      int i = AIOUtils.b(21.0F, this.jdField_a_of_type_AndroidContentResResources);
+      int i = AIOUtils.b(21.0F, this.a);
       int j = paramURLDrawable.getIntrinsicWidth() * i / paramURLDrawable.getIntrinsicHeight();
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.b.getLayoutParams();
       localLayoutParams.height = i;
       localLayoutParams.width = j;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+      this.b.setImageDrawable(null);
+      this.b.setImageDrawable(paramURLDrawable);
+      this.b.setLayoutParams(localLayoutParams);
+      this.b.setScaleType(ImageView.ScaleType.FIT_XY);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.alienation.RelationVipHelper.1
  * JD-Core Version:    0.7.0.1
  */

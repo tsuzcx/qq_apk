@@ -14,13 +14,13 @@ public abstract interface IWSHomeView
   
   public abstract void a(stRedDotRsp paramstRedDotRsp);
   
-  public abstract void b();
+  public abstract void o();
   
-  public abstract void c();
+  public abstract void p();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.view.IWSHomeView
  * JD-Core Version:    0.7.0.1
  */

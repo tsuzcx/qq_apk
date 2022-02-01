@@ -18,21 +18,21 @@ class WeiShiCacheManager$1
     ((StringBuilder)localObject).append(", thread = ");
     ((StringBuilder)localObject).append(Thread.currentThread());
     WSLog.b("CacheResponseLog", ((StringBuilder)localObject).toString());
-    if (!this.this$0.a()) {
+    if (!this.this$0.c()) {
       return;
     }
-    if (WeishiUtils.a(8)) {
+    if (WeishiUtils.b(8)) {
       localObject = WeiShiCacheManager.a(this.this$0);
     } else {
-      localObject = WeiShiCacheManager.a(this.this$0, this.jdField_a_of_type_Boolean);
+      localObject = WeiShiCacheManager.a(this.this$0, this.a);
     }
-    this.this$0.a(8);
+    this.this$0.c(8);
     WeishiBusinessLooper.a().a(new WeiShiCacheManager.1.1(this, (stSimpleGetFeedListRsp)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.1
  * JD-Core Version:    0.7.0.1
  */

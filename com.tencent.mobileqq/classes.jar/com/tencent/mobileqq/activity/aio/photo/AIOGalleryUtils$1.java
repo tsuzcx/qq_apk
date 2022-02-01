@@ -26,23 +26,23 @@ final class AIOGalleryUtils$1
   
   protected Integer a(Void... paramVarArgs)
   {
-    int i = this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus();
+    int i = this.c.getStatus();
     Integer localInteger = Integer.valueOf(1);
     if (i != 1) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly(false);
+      this.c.downloadImediatly(false);
     }
-    URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getTag() == null) {
+    URLDrawable.removeMemoryCacheByUrl(this.c.getURL().toString());
+    if (this.c.getTag() == null) {
       return localInteger;
     }
-    paramVarArgs = ((MessageForPic)this.jdField_a_of_type_ComTencentImageURLDrawable.getTag()).path;
-    paramVarArgs = AIOGalleryUtils.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs);
+    paramVarArgs = ((MessageForPic)this.c.getTag()).path;
+    paramVarArgs = AIOGalleryUtils.a(this.a, paramVarArgs);
     if (paramVarArgs != null)
     {
-      AIOGalleryUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, paramVarArgs);
+      AIOGalleryUtils.a(this.d, this.e, paramVarArgs);
       return Integer.valueOf(2);
     }
-    paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
+    paramVarArgs = this.c.getURL().toString();
     if (!AbsDownloader.hasFile(paramVarArgs))
     {
       if (QLog.isColorLevel()) {
@@ -64,8 +64,8 @@ final class AIOGalleryUtils$1
         ((StringBuilder)localObject1).append(AppConstants.SDCARD_IMG_FAVORITE);
         ((StringBuilder)localObject1).append(".nomedia");
         FileUtils.createFileIfNotExits(((StringBuilder)localObject1).toString());
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData;
+        localObject1 = this.d.getCurrentAccountUin();
+        Object localObject2 = this.f;
         if ((localObject2 != null) && (((PicMessageExtraData)localObject2).isDiyDouTu())) {
           i = 1;
         } else {
@@ -75,10 +75,10 @@ final class AIOGalleryUtils$1
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("_diydoutu@");
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId)) {
+          if (TextUtils.isEmpty(this.f.emojiId)) {
             str = "0";
           } else {
-            str = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId;
+            str = this.f.emojiId;
           }
           ((StringBuilder)localObject2).append(str);
           str = ((StringBuilder)localObject2).toString();
@@ -93,7 +93,7 @@ final class AIOGalleryUtils$1
         try
         {
           FileUtils.copyFile(localFile, new File(paramVarArgs));
-          return Integer.valueOf(AIOGalleryUtils.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData));
+          return Integer.valueOf(AIOGalleryUtils.a(this.a, paramVarArgs, this.e, this.f));
         }
         catch (Exception paramVarArgs)
         {
@@ -112,20 +112,20 @@ final class AIOGalleryUtils$1
   {
     if (paramInteger.intValue() == 1)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2131694906, 0).b(this.jdField_a_of_type_Int);
+      QQToast.makeText(this.a.getApplicationContext(), 2131892632, 0).show(this.b);
       EmoticonOperateReport.reportEmoticonOperateMonitorAddStatus("2004", 1);
       return;
     }
     if (paramInteger.intValue() == 2)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, 2131689646, 0).b(this.jdField_a_of_type_Int);
+      QQToast.makeText(this.a.getApplicationContext(), 1, 2131886257, 0).show(this.b);
       EmoticonOperateReport.reportEmoticonOperateMonitorAddStatus("2003", 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils.1
  * JD-Core Version:    0.7.0.1
  */

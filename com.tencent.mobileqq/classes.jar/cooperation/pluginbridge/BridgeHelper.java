@@ -42,23 +42,23 @@ import org.xmlpull.v1.XmlPullParserException;
 public class BridgeHelper
   implements Runnable
 {
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private static BridgeHelper jdField_a_of_type_CooperationPluginbridgeBridgeHelper;
-  private static PluginLoadDialog jdField_a_of_type_CooperationPluginbridgePluginLoadDialog;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
-  private final HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean = false;
+  private static BroadcastReceiver a;
+  private static PluginLoadDialog b;
+  private static BridgeHelper c;
+  private static final byte[] g = new byte[0];
+  private Context d;
+  private String e;
+  private final HashMap<String, String> f;
+  private AtomicBoolean h = new AtomicBoolean(false);
+  private boolean i = false;
+  private int j = 0;
   
   private BridgeHelper(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.d = paramContext.getApplicationContext();
+    this.e = paramString;
+    this.f = new HashMap();
+    this.h.set(false);
   }
   
   public static BridgeHelper a(Context paramContext, String paramString)
@@ -69,29 +69,29 @@ public class BridgeHelper
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("get GeneralEntryConfigManager instancegInstance:");
-        localStringBuilder.append(jdField_a_of_type_CooperationPluginbridgeBridgeHelper);
+        localStringBuilder.append(c);
         localStringBuilder.append("uin:");
         localStringBuilder.append(paramString);
         QLog.i("BridgeHelper", 2, localStringBuilder.toString());
       }
-      if (jdField_a_of_type_CooperationPluginbridgeBridgeHelper == null)
+      if (c == null)
       {
         try
         {
-          if (jdField_a_of_type_CooperationPluginbridgeBridgeHelper == null) {
-            jdField_a_of_type_CooperationPluginbridgeBridgeHelper = new BridgeHelper(paramContext, paramString);
+          if (c == null) {
+            c = new BridgeHelper(paramContext, paramString);
           }
         }
         finally {}
       }
-      else if ((TextUtils.isEmpty(paramString)) || ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(jdField_a_of_type_CooperationPluginbridgeBridgeHelper.jdField_a_of_type_JavaLangString))))
+      else if ((TextUtils.isEmpty(paramString)) || ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(c.e))))
       {
-        jdField_a_of_type_CooperationPluginbridgeBridgeHelper.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        jdField_a_of_type_CooperationPluginbridgeBridgeHelper.jdField_a_of_type_Boolean = false;
-        jdField_a_of_type_CooperationPluginbridgeBridgeHelper.jdField_a_of_type_JavaLangString = paramString;
-        jdField_a_of_type_CooperationPluginbridgeBridgeHelper.jdField_a_of_type_JavaUtilHashMap.clear();
+        c.h.set(false);
+        c.i = false;
+        c.e = paramString;
+        c.f.clear();
       }
-      paramContext = jdField_a_of_type_CooperationPluginbridgeBridgeHelper;
+      paramContext = c;
       return paramContext;
     }
     finally {}
@@ -162,23 +162,23 @@ public class BridgeHelper
     paramIntent.putExtra("userQqResources", -1);
     paramIntent.putExtra("useSkinEngine", true);
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
-    localPluginParams.jdField_b_of_type_JavaLangString = "BridgePlugin.apk";
-    localPluginParams.e = "BridgePlugin";
-    if (jdField_a_of_type_CooperationPluginbridgePluginLoadDialog == null) {
-      jdField_a_of_type_CooperationPluginbridgePluginLoadDialog = new PluginLoadDialog(paramActivity, paramString3);
+    localPluginParams.d = "BridgePlugin.apk";
+    localPluginParams.g = "BridgePlugin";
+    if (b == null) {
+      b = new PluginLoadDialog(paramActivity, paramString3);
     }
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = jdField_a_of_type_CooperationPluginbridgePluginLoadDialog;
-    localPluginParams.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+    localPluginParams.l = b;
+    localPluginParams.c = paramQQAppInterface.getCurrentAccountUin();
     paramIntent.putExtra("distParamsString", paramString1);
     paramIntent.putExtra("distPluginId", paramString2);
     paramIntent.putExtra("distPluginName", paramString3);
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.f = "com.tencent.bridge.activity.BridgeMainActivity";
-    localPluginParams.jdField_a_of_type_JavaLangClass = MainBridgeProxyActivity.class;
-    localPluginParams.c = 19;
-    localPluginParams.d = 15000;
-    localPluginParams.jdField_b_of_type_Boolean = false;
-    localPluginParams.g = null;
+    localPluginParams.j = paramIntent;
+    localPluginParams.h = "com.tencent.bridge.activity.BridgeMainActivity";
+    localPluginParams.i = MainBridgeProxyActivity.class;
+    localPluginParams.k = 19;
+    localPluginParams.r = 15000;
+    localPluginParams.p = false;
+    localPluginParams.q = null;
     a(paramActivity);
     IPluginManager.a(paramActivity, localPluginParams);
     ReportController.b(paramQQAppInterface, "P_CliOper", "BridgePlatform", "", "start_bridge_plugin", "BridgePlugin.apk", 0, 1, "", "", "", "");
@@ -186,33 +186,27 @@ public class BridgeHelper
   
   static void a(Context paramContext)
   {
-    if (jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      jdField_a_of_type_AndroidContentBroadcastReceiver = new BridgeHelper.MyReceiver(null);
+    if (a == null) {
+      a = new BridgeHelper.MyReceiver(null);
     }
     IntentFilter localIntentFilter = new IntentFilter("bridge.onresume.broadcast");
     localIntentFilter.addAction("bridge.plugin.onresume.broadcast");
-    paramContext.registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    paramContext.registerReceiver(a, localIntentFilter);
   }
   
   public String a(String paramString)
   {
     a();
-    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public HashMap<String, String> a()
-  {
-    a();
-    return this.jdField_a_of_type_JavaUtilHashMap;
+    return (String)this.f.get(paramString);
   }
   
   public void a()
   {
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!this.jdField_a_of_type_Boolean))
+    if ((!this.h.get()) && (!this.i))
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = 2;
-      ThreadManager.getFileThreadHandler().post(jdField_a_of_type_CooperationPluginbridgeBridgeHelper);
+      this.i = true;
+      this.j = 2;
+      ThreadManager.getFileThreadHandler().post(c);
     }
   }
   
@@ -227,16 +221,16 @@ public class BridgeHelper
         ((StringBuilder)???).append(paramConfig.version.get());
         QLog.d("SPLASH_ConfigServlet", 2, ((StringBuilder)???).toString());
       }
-      SharedPreUtils.a(this.jdField_a_of_type_AndroidContentContext, paramConfig.version.get(), this.jdField_a_of_type_JavaLangString);
+      SharedPreUtils.a(this.d, paramConfig.version.get(), this.e);
     }
     if (paramConfig.content_list != null) {}
     for (;;)
     {
-      int i;
-      synchronized (jdField_a_of_type_ArrayOfByte)
+      int k;
+      synchronized (g)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        this.f.clear();
+        this.h.set(true);
         paramConfig = paramConfig.content_list.get();
         if ((paramConfig != null) && (paramConfig.size() != 0))
         {
@@ -258,9 +252,9 @@ public class BridgeHelper
             try
             {
               localXmlPullParser.setInput(new ByteArrayInputStream(paramConfig.getBytes()), "UTF-8");
-              i = localXmlPullParser.getEventType();
+              k = localXmlPullParser.getEventType();
               paramConfig = "";
-              break label558;
+              break label559;
               if (localXmlPullParser.getDepth() == 2)
               {
                 ??? = localXmlPullParser.getName();
@@ -278,9 +272,9 @@ public class BridgeHelper
                   ((StringBuilder)localObject2).append((String)???);
                   localObject2 = ((StringBuilder)localObject2).toString();
                   String str = localXmlPullParser.getText();
-                  synchronized (jdField_a_of_type_ArrayOfByte)
+                  synchronized (g)
                   {
-                    this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, str);
+                    this.f.put(localObject2, str);
                     ??? = paramConfig;
                     if (QLog.isColorLevel())
                     {
@@ -295,7 +289,7 @@ public class BridgeHelper
                   }
                 }
               }
-              i = localXmlPullParser.next();
+              k = localXmlPullParser.next();
               paramConfig = (ConfigurationService.Config)???;
             }
             catch (IOException paramConfig)
@@ -315,48 +309,54 @@ public class BridgeHelper
           if (QLog.isColorLevel()) {
             QLog.d("SPLASH_ConfigServlet", 2, "receiveAllConfigs|type: 13,content_list is empty ");
           }
-          paramConfig = this.jdField_a_of_type_AndroidContentContext.getFilesDir();
+          paramConfig = this.d.getFilesDir();
           ??? = new StringBuilder();
           ((StringBuilder)???).append("entry_config_file_");
-          ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)???).append(this.e);
           paramConfig = new File(paramConfig, ((StringBuilder)???).toString());
           if (paramConfig.exists()) {
             paramConfig.delete();
           }
         }
-        ThreadManager.getFileThreadHandler().removeCallbacks(jdField_a_of_type_CooperationPluginbridgeBridgeHelper);
-        this.jdField_a_of_type_Int = 1;
-        ThreadManager.getFileThreadHandler().post(jdField_a_of_type_CooperationPluginbridgeBridgeHelper);
+        ThreadManager.getFileThreadHandler().removeCallbacks(c);
+        this.j = 1;
+        ThreadManager.getFileThreadHandler().post(c);
         return;
       }
       return;
-      label558:
-      if (i != 1) {
-        if (i != 2) {
+      label559:
+      if (k != 1) {
+        if (k != 2) {
           ??? = paramConfig;
         }
       }
     }
   }
   
+  public HashMap<String, String> b()
+  {
+    a();
+    return this.f;
+  }
+  
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
+    int k = this.j;
     Object localObject2;
-    if (i == 1)
+    if (k == 1)
     {
       if (QLog.isColorLevel())
       {
         ??? = new StringBuilder();
         ((StringBuilder)???).append("Write configContent to file: ");
-        ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilHashMap);
+        ((StringBuilder)???).append(this.f);
         QLog.w("BridgeHelper", 2, ((StringBuilder)???).toString());
       }
       ??? = new ByteArrayOutputStream();
       try
       {
         ObjectOutputStream localObjectOutputStream = new ObjectOutputStream((OutputStream)???);
-        localObjectOutputStream.writeObject(this.jdField_a_of_type_JavaUtilHashMap);
+        localObjectOutputStream.writeObject(this.f);
         localObjectOutputStream.close();
         ((ByteArrayOutputStream)???).close();
       }
@@ -366,22 +366,22 @@ public class BridgeHelper
           QLog.e("BridgeHelper", 2, "Exception happened while construct ObjectOutputStream. ", localIOException);
         }
       }
-      localObject2 = this.jdField_a_of_type_AndroidContentContext.getFilesDir();
+      localObject2 = this.d.getFilesDir();
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("entry_config_file_");
-      localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder2.append(this.e);
       FileUtils.pushData2File(new File((File)localObject2, localStringBuilder2.toString()).getAbsolutePath(), ((ByteArrayOutputStream)???).toByteArray(), false);
       return;
     }
-    if (i == 2)
+    if (k == 2)
     {
       if (QLog.isColorLevel()) {
         QLog.w("BridgeHelper", 2, "Read configContent from file.");
       }
-      ??? = this.jdField_a_of_type_AndroidContentContext.getFilesDir();
+      ??? = this.d.getFilesDir();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("entry_config_file_");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.e);
       ??? = new File((File)???, ((StringBuilder)localObject2).toString());
       if (((File)???).exists())
       {
@@ -392,11 +392,11 @@ public class BridgeHelper
           try
           {
             localObject2 = new ObjectInputStream((InputStream)???).readObject();
-            if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && ((localObject2 instanceof HashMap))) {
-              synchronized (jdField_a_of_type_ArrayOfByte)
+            if ((!this.h.get()) && ((localObject2 instanceof HashMap))) {
+              synchronized (g)
               {
-                this.jdField_a_of_type_JavaUtilHashMap.clear();
-                this.jdField_a_of_type_JavaUtilHashMap.putAll((HashMap)localObject2);
+                this.f.clear();
+                this.f.putAll((HashMap)localObject2);
               }
             }
             if (!QLog.isColorLevel()) {
@@ -413,14 +413,14 @@ public class BridgeHelper
       }
       StringBuilder localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("configContent: ");
-      localStringBuilder1.append(this.jdField_a_of_type_JavaUtilHashMap.toString());
+      localStringBuilder1.append(this.f.toString());
       QLog.i("BridgeHelper", 2, localStringBuilder1.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.pluginbridge.BridgeHelper
  * JD-Core Version:    0.7.0.1
  */

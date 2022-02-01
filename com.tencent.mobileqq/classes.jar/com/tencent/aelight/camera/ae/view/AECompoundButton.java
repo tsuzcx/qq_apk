@@ -16,10 +16,10 @@ import com.tencent.aelight.camera.impl.R.styleable;
 public class AECompoundButton
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private int b;
+  private ImageView a;
+  private Drawable b;
+  private int c;
+  private int d;
   
   public AECompoundButton(@NonNull Context paramContext)
   {
@@ -40,11 +40,11 @@ public class AECompoundButton
   private void a(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     b(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(2064318488, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2064122309));
-    paramContext = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    LayoutInflater.from(paramContext).inflate(2064056348, this, true);
+    this.a = ((ImageView)findViewById(2063991189));
+    paramContext = this.b;
     if (paramContext != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramContext);
+      this.a.setImageDrawable(paramContext);
     }
   }
   
@@ -57,27 +57,27 @@ public class AECompoundButton
     if (paramContext == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(1);
-    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(2, 0);
-    this.b = paramContext.getDimensionPixelSize(0, 0);
+    this.b = paramContext.getDrawable(1);
+    this.c = paramContext.getDimensionPixelSize(2, 0);
+    this.d = paramContext.getDimensionPixelSize(0, 0);
     paramContext.recycle();
   }
   
-  public ImageView a()
+  public ImageView getForegroundView()
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
+    return this.a;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-    if ((localObject != null) && (this.jdField_a_of_type_Int != 0) && (this.b != 0))
+    Object localObject = this.a;
+    if ((localObject != null) && (this.c != 0) && (this.d != 0))
     {
       localObject = ((ImageView)localObject).getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
-      ((ViewGroup.LayoutParams)localObject).height = this.b;
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      ((ViewGroup.LayoutParams)localObject).width = this.c;
+      ((ViewGroup.LayoutParams)localObject).height = this.d;
+      this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
@@ -89,7 +89,7 @@ public class AECompoundButton
   
   public void setForegroundResource(@DrawableRes int paramInt)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.a;
     if (localImageView != null) {
       localImageView.setImageResource(paramInt);
     }
@@ -97,13 +97,13 @@ public class AECompoundButton
   
   public void setForegroundSize(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.c = paramInt1;
+    this.d = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.view.AECompoundButton
  * JD-Core Version:    0.7.0.1
  */

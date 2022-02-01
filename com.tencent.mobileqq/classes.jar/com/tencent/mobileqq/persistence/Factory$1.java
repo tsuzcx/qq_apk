@@ -18,7 +18,7 @@ class Factory$1
   {
     byte[] arrayOfByte2 = super.getBlob(paramInt);
     byte[] arrayOfByte1 = arrayOfByte2;
-    if (Factory.a(this.a).isNeedEncrypt()) {
+    if (Factory.access$000(this.this$0).isNeedEncrypt()) {
       arrayOfByte1 = SecurityUtile.encode(arrayOfByte2);
     }
     return arrayOfByte1;
@@ -28,7 +28,7 @@ class Factory$1
   {
     String str2 = super.getString(paramInt);
     String str1 = str2;
-    if (Factory.a(this.a).isNeedEncrypt()) {}
+    if (Factory.access$000(this.this$0).isNeedEncrypt()) {}
     try
     {
       str1 = SecurityUtile.decode(str2);
@@ -40,7 +40,7 @@ class Factory$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.Factory.1
  * JD-Core Version:    0.7.0.1
  */

@@ -28,6 +28,7 @@ public class MessageForShortVideo
   extends MessageForRichText
   implements Parcelable, MsgBackupRichTextParse, LoggerInterface
 {
+  public static final int BUSI_TYPE_GUILD_VIDEO = 4601;
   public static final int BUSI_TYPE_MULTI_FORWARD_VIDEO = 1010;
   public static final int BUSI_TYPE_PUBACCOUNT_PERM_VIDEO = 1009;
   public static final int BUSI_TYPE_PUBACCOUNT_TEMP_VIDEO = 1007;
@@ -44,6 +45,8 @@ public class MessageForShortVideo
   public static final int FORWARD_CHAT_TYPE_TROOP = 1;
   public static final int PREDOWNLOADED = 0;
   public static final int REPEAT_PLAY = 1;
+  public static final int SUB_BUSI_TYPE_GUILD_LONG_VIDEO = 4601;
+  public static final int SUB_BUSI_TYPE_GUILD_SHORT_VIDEO = 4602;
   public static final int VIDEO_FORMAT_AFS = 7;
   public static final int VIDEO_FORMAT_AVI = 1;
   public static final int VIDEO_FORMAT_MKV = 4;
@@ -299,19 +302,19 @@ public class MessageForShortVideo
   public ShortVideoDownloadInfo getDownloadInfo(int paramInt)
   {
     ShortVideoDownloadInfo localShortVideoDownloadInfo = new ShortVideoDownloadInfo();
-    localShortVideoDownloadInfo.jdField_a_of_type_Int = paramInt;
-    localShortVideoDownloadInfo.jdField_a_of_type_Long = this.uniseq;
-    localShortVideoDownloadInfo.jdField_b_of_type_Int = this.istroop;
-    localShortVideoDownloadInfo.jdField_b_of_type_JavaLangString = this.selfuin;
-    localShortVideoDownloadInfo.jdField_c_of_type_JavaLangString = this.frienduin;
-    localShortVideoDownloadInfo.jdField_d_of_type_JavaLangString = this.senderuin;
-    localShortVideoDownloadInfo.jdField_a_of_type_JavaLangString = this.uuid;
-    localShortVideoDownloadInfo.e = this.md5;
+    localShortVideoDownloadInfo.b = paramInt;
+    localShortVideoDownloadInfo.g = this.uniseq;
+    localShortVideoDownloadInfo.c = this.istroop;
+    localShortVideoDownloadInfo.d = this.selfuin;
+    localShortVideoDownloadInfo.e = this.frienduin;
+    localShortVideoDownloadInfo.f = this.senderuin;
+    localShortVideoDownloadInfo.a = this.uuid;
+    localShortVideoDownloadInfo.i = this.md5;
     paramInt = this.videoFileTime;
-    localShortVideoDownloadInfo.jdField_c_of_type_Int = paramInt;
-    localShortVideoDownloadInfo.jdField_d_of_type_Int = this.videoFileFormat;
-    localShortVideoDownloadInfo.jdField_c_of_type_Int = paramInt;
-    localShortVideoDownloadInfo.g = this.thumbMD5;
+    localShortVideoDownloadInfo.l = paramInt;
+    localShortVideoDownloadInfo.m = this.videoFileFormat;
+    localShortVideoDownloadInfo.l = paramInt;
+    localShortVideoDownloadInfo.k = this.thumbMD5;
     return localShortVideoDownloadInfo;
   }
   
@@ -437,7 +440,7 @@ public class MessageForShortVideo
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return HardCodeUtil.a(2131706649);
+      return HardCodeUtil.a(2131904500);
     }
     return this.msg;
   }
@@ -735,7 +738,7 @@ public class MessageForShortVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForShortVideo
  * JD-Core Version:    0.7.0.1
  */

@@ -16,13 +16,13 @@ public abstract interface IPhoneContactProcessor
   
   public abstract void a(List<PhoneContact> paramList);
   
-  public abstract void a(boolean paramBoolean);
-  
   public abstract boolean a(boolean paramBoolean);
   
   public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, RespondQueryQQBindingStat paramRespondQueryQQBindingStat, boolean paramBoolean4, long paramLong);
   
   public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
   
   public abstract void c();
   
@@ -34,7 +34,7 @@ public abstract interface IPhoneContactProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.processor.IPhoneContactProcessor
  * JD-Core Version:    0.7.0.1
  */

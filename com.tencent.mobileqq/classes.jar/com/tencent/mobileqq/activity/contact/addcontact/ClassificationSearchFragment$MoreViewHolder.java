@@ -6,11 +6,11 @@ import android.widget.TextView;
 class ClassificationSearchFragment$MoreViewHolder
 {
   public ProgressBar a;
-  public TextView a;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment.MoreViewHolder
  * JD-Core Version:    0.7.0.1
  */

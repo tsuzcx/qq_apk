@@ -8,10 +8,12 @@ import com.tencent.superplayer.api.SuperPlayerMsg;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.api.TVideoNetInfo;
 import com.tencent.superplayer.utils.LogUtil;
+import com.tencent.superplayer.utils.TVideoUtil;
 import com.tencent.thumbplayer.api.ITPPlayer;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
 import com.tencent.thumbplayer.api.TPSubtitleData;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class SuperPlayerWrapper$TPPlayerListenerAdapter
   implements ListenerCombine.ITPPlayerCombine
@@ -49,7 +51,7 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
   {
     ReportThumbPlayer.getInstance().onCompletion(paramITPPlayer);
     LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onCompletion");
-    SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(7);
+    SuperPlayerWrapper.access$800(this.this$0).changeStateAndNotify(7);
     this.mWrapperCallback.onCompletion(this.this$0);
   }
   
@@ -67,7 +69,7 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
     ((StringBuilder)localObject).append(", arg2:");
     ((StringBuilder)localObject).append(paramLong2);
     LogUtil.e(paramITPPlayer, ((StringBuilder)localObject).toString());
-    SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(9);
+    SuperPlayerWrapper.access$800(this.this$0).changeStateAndNotify(9);
     paramITPPlayer = this.mWrapperCallback;
     localObject = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
@@ -86,11 +88,16 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
     localStringBuilder.append("+");
     localStringBuilder.append(paramString);
     LogUtil.e(paramSuperPlayerVideoInfo, localStringBuilder.toString());
+    if (SuperPlayerWrapper.access$400(this.this$0))
+    {
+      SuperPlayerWrapper.access$402(this.this$0, false);
+      return;
+    }
     paramSuperPlayerVideoInfo = this.mWrapperCallback;
     if (paramSuperPlayerVideoInfo != null) {
       paramSuperPlayerVideoInfo.onError(this.this$0, 2, paramInt1, paramInt2, paramString);
     }
-    SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(9);
+    SuperPlayerWrapper.access$800(this.this$0).changeStateAndNotify(9);
   }
   
   public void onGetVInfoSuccess(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
@@ -106,6 +113,22 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
       if (paramSuperPlayerVideoInfo == null) {
         return;
       }
+      if (SuperPlayerWrapper.access$400(this.this$0))
+      {
+        if (paramSuperPlayerVideoInfo.getFormat() == 303)
+        {
+          paramSuperPlayerVideoInfo = TVideoUtil.a(paramSuperPlayerVideoInfo);
+          if (paramSuperPlayerVideoInfo != null) {
+            SuperPlayerWrapper.access$700(this.this$0).switchDefinition(paramSuperPlayerVideoInfo, SuperPlayerWrapper.access$500(this.this$0).getAndIncrement(), null, SuperPlayerWrapper.access$600(this.this$0));
+          }
+        }
+        else
+        {
+          SuperPlayerWrapper.access$700(this.this$0).switchDefinition(paramSuperPlayerVideoInfo.getPlayUrl(), SuperPlayerWrapper.access$500(this.this$0).getAndIncrement(), null, SuperPlayerWrapper.access$600(this.this$0));
+        }
+        SuperPlayerWrapper.access$402(this.this$0, false);
+        return;
+      }
       if ((TextUtils.equals(paramSuperPlayerVideoInfo.getVid(), ((SuperPlayerVideoInfo)localObject).getVid())) && (TextUtils.equals(paramSuperPlayerVideoInfo.getRequestDefinition(), ((SuperPlayerVideoInfo)localObject).getRequestDefinition()))) {
         if ((TextUtils.isEmpty(paramSuperPlayerVideoInfo.getPlayUrl())) && (paramSuperPlayerVideoInfo.getTVideoSectionList() == null))
         {
@@ -113,13 +136,13 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
           if (localObject != null) {
             ((SuperPlayerListenerCallBack)localObject).onError(this.this$0, 2, 5000, 32000001, null);
           }
-          SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(9);
+          SuperPlayerWrapper.access$800(this.this$0).changeStateAndNotify(9);
         }
         else
         {
-          SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(2);
+          SuperPlayerWrapper.access$800(this.this$0).changeStateAndNotify(2);
           localObject = this.this$0;
-          SuperPlayerWrapper.access$600((SuperPlayerWrapper)localObject, paramSuperPlayerVideoInfo, SuperPlayerWrapper.access$500((SuperPlayerWrapper)localObject));
+          SuperPlayerWrapper.access$1000((SuperPlayerWrapper)localObject, paramSuperPlayerVideoInfo, SuperPlayerWrapper.access$900((SuperPlayerWrapper)localObject));
         }
       }
       if ((this.mWrapperCallback != null) && (paramSuperPlayerVideoInfo.getTVideoNetInfo() != null))
@@ -133,7 +156,7 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
   public void onInfo(ITPPlayer paramITPPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
     ReportThumbPlayer.getInstance().onInfo(paramITPPlayer, paramInt, paramLong1, paramLong2);
-    if (SuperPlayerWrapper.access$700(this.this$0, paramInt, paramLong1, paramLong2, paramObject)) {
+    if (SuperPlayerWrapper.access$1100(this.this$0, paramInt, paramLong1, paramLong2, paramObject)) {
       return;
     }
     paramInt = SuperPlayerMsg.convert(paramInt);
@@ -155,7 +178,7 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
   {
     ReportThumbPlayer.getInstance().onPrepared(paramITPPlayer);
     LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onPrepared");
-    SuperPlayerWrapper.access$400(this.this$0).changeStateAndNotify(4);
+    SuperPlayerWrapper.access$800(this.this$0).changeStateAndNotify(4);
     this.mWrapperCallback.onVideoPrepared(this.this$0);
   }
   
@@ -194,7 +217,7 @@ class SuperPlayerWrapper$TPPlayerListenerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerWrapper.TPPlayerListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

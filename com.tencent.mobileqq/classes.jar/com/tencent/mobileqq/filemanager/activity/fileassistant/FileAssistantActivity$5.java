@@ -11,7 +11,7 @@ class FileAssistantActivity$5
   
   protected void a(boolean paramBoolean)
   {
-    if (FileAssistantActivity.a(this.a)) {
+    if (FileAssistantActivity.d(this.a)) {
       return;
     }
     this.a.runOnUiThread(new FileAssistantActivity.5.1(this, paramBoolean));
@@ -19,17 +19,17 @@ class FileAssistantActivity$5
   
   protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    this.a.a.a();
+    this.a.F.c();
   }
   
   protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.a.a.a();
+    this.a.F.c();
   }
   
   protected void b(int paramInt, String paramString)
   {
-    if (!FileAssistantActivity.a(this.a)) {
+    if (!FileAssistantActivity.d(this.a)) {
       FMToastUtil.a(paramString);
     }
   }
@@ -37,12 +37,12 @@ class FileAssistantActivity$5
   protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     super.b(paramLong1, paramLong2, paramString, paramInt);
-    this.a.a.a();
+    this.a.F.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.5
  * JD-Core Version:    0.7.0.1
  */

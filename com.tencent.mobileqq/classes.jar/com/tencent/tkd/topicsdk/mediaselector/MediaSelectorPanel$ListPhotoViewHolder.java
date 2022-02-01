@@ -30,130 +30,70 @@ import org.jetbrains.annotations.Nullable;
 public final class MediaSelectorPanel$ListPhotoViewHolder
   extends CommonListAdapter.BaseListViewHolder
 {
-  private int jdField_a_of_type_Int;
   @NotNull
-  private View jdField_a_of_type_AndroidViewView;
+  private View b;
+  private View c;
   @NotNull
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView d;
   @NotNull
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView e;
+  @NotNull
+  private ImageView f;
+  @NotNull
+  private ImageLoader g;
+  private int h;
   @Nullable
-  private Media jdField_a_of_type_ComTencentTkdTopicsdkBeanMedia;
-  @NotNull
-  private ImageLoader jdField_a_of_type_ComTencentTkdTopicsdkFrameworkImageLoader;
-  private View jdField_b_of_type_AndroidViewView;
-  @NotNull
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private Media i;
   
   public MediaSelectorPanel$ListPhotoViewHolder(View paramView)
   {
-    Object localObject2 = ((View)localObject1).findViewById(R.id.aj);
+    Object localObject2 = ((View)localObject1).findViewById(R.id.N);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "itemView.findViewById(R.id.markView)");
-    this.jdField_a_of_type_AndroidViewView = ((View)localObject2);
-    localObject2 = ((View)localObject1).findViewById(R.id.aG);
+    this.b = ((View)localObject2);
+    localObject2 = ((View)localObject1).findViewById(R.id.ai);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "itemView.findViewById(R.id.selectedLayout)");
-    this.jdField_b_of_type_AndroidViewView = ((View)localObject2);
-    localObject2 = ((View)localObject1).findViewById(R.id.aH);
+    this.c = ((View)localObject2);
+    localObject2 = ((View)localObject1).findViewById(R.id.aj);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "itemView.findViewById(R.id.selectedView)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
-    localObject2 = ((View)localObject1).findViewById(R.id.aL);
+    this.d = ((TextView)localObject2);
+    localObject2 = ((View)localObject1).findViewById(R.id.an);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "itemView.findViewById(R.id.tag_view)");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localObject2);
-    Object localObject1 = ((View)localObject1).findViewById(R.id.R);
+    this.e = ((TextView)localObject2);
+    Object localObject1 = ((View)localObject1).findViewById(R.id.y);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "itemView.findViewById(R.id.imageLayout)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject1);
+    this.f = ((ImageView)localObject1);
     localObject1 = paramView.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "context");
-    localObject1 = new ImageLoader((Context)localObject1, TopicSDK.a.a().a().a());
+    localObject1 = new ImageLoader((Context)localObject1, TopicSDK.a.a().b().n());
     localObject2 = DisplayUtils.a;
     Context localContext = paramView.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-    int i = ((DisplayUtils)localObject2).a(200.0F, localContext);
+    int j = ((DisplayUtils)localObject2).a(200.0F, localContext);
     localObject2 = DisplayUtils.a;
     localContext = paramView.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-    localObject1 = ((ImageLoader)localObject1).a(i, ((DisplayUtils)localObject2).a(200.0F, localContext));
+    localObject1 = ((ImageLoader)localObject1).a(j, ((DisplayUtils)localObject2).a(200.0F, localContext));
     localObject2 = paramView.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "context");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkImageLoader = ((ImageLoader)localObject1).a((Drawable)new ColorDrawable(((Context)localObject2).getResources().getColor(R.color.i))).a(this.jdField_a_of_type_AndroidWidgetImageView);
-    if (paramView.a() > 1)
+    this.g = ((ImageLoader)localObject1).a((Drawable)new ColorDrawable(((Context)localObject2).getResources().getColor(R.color.i))).a(this.f);
+    if (paramView.getMaxSelectCount() > 1)
     {
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)new MediaSelectorPanel.ListPhotoViewHolder.1(this));
+      this.c.setOnClickListener((View.OnClickListener)new MediaSelectorPanel.ListPhotoViewHolder.1(this));
       return;
     }
-    if (paramView.a() == 1) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener((View.OnClickListener)new MediaSelectorPanel.ListPhotoViewHolder.2(this));
-    }
-  }
-  
-  private final void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanMedia;
-    if (localObject != null)
-    {
-      if (!this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().contains(localObject))
-      {
-        if (this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().size() < this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a())
-        {
-          b((Media)localObject);
-        }
-        else
-        {
-          localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a();
-          if (localObject != null) {
-            localObject = (Unit)((Function0)localObject).invoke();
-          }
-        }
-      }
-      else {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().remove(localObject);
-      }
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a();
-      if (localObject != null) {
-        localObject = (Unit)((Function1)localObject).invoke(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c());
-      }
-      MediaSelectorPanel.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel).notifyDataSetChanged();
-    }
-  }
-  
-  private final void b()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanMedia;
-    if (localObject != null)
-    {
-      if (!this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().contains(localObject))
-      {
-        if (this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().size() < this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a())
-        {
-          c((Media)localObject);
-        }
-        else
-        {
-          localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a();
-          if (localObject != null) {
-            localObject = (Unit)((Function0)localObject).invoke();
-          }
-        }
-      }
-      else {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().remove(localObject);
-      }
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a();
-      if (localObject != null) {
-        localObject = (Unit)((Function1)localObject).invoke(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c());
-      }
-      MediaSelectorPanel.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel).notifyDataSetChanged();
+    if (paramView.getMaxSelectCount() == 1) {
+      this.f.setOnClickListener((View.OnClickListener)new MediaSelectorPanel.ListPhotoViewHolder.2(this));
     }
   }
   
   private final void b(Media paramMedia)
   {
-    if (paramMedia.getSize() < this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a())
+    if (paramMedia.getSize() < this.a.getMaxMediaSize())
     {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().add(paramMedia);
+      this.a.getSelectedMedias().add(paramMedia);
       return;
     }
-    Function1 localFunction1 = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c();
+    Function1 localFunction1 = this.a.getOnSelectedOverSizeListener();
     if (localFunction1 != null) {
       paramMedia = (Unit)localFunction1.invoke(paramMedia);
     }
@@ -161,64 +101,124 @@ public final class MediaSelectorPanel$ListPhotoViewHolder
   
   private final void c(Media paramMedia)
   {
-    if (paramMedia.getSize() < this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a())
+    if (paramMedia.getSize() < this.a.getMaxMediaSize())
     {
-      paramMedia = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.b();
+      paramMedia = this.a.getOnItemClickListener();
       if (paramMedia != null) {
-        paramMedia = (Unit)paramMedia.invoke(Integer.valueOf(this.jdField_a_of_type_Int));
+        paramMedia = (Unit)paramMedia.invoke(Integer.valueOf(this.h));
       }
     }
     else
     {
-      Function1 localFunction1 = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c();
+      Function1 localFunction1 = this.a.getOnSelectedOverSizeListener();
       if (localFunction1 != null) {
         paramMedia = (Unit)localFunction1.invoke(paramMedia);
       }
     }
   }
   
-  public final int a()
+  private final void f()
   {
-    return this.jdField_a_of_type_Int;
+    Object localObject = this.i;
+    if (localObject != null)
+    {
+      if (!this.a.getSelectedMedias().contains(localObject))
+      {
+        if (this.a.getSelectedMedias().size() < this.a.getMaxSelectCount())
+        {
+          b((Media)localObject);
+        }
+        else
+        {
+          localObject = this.a.getOnOverSelectListener();
+          if (localObject != null) {
+            localObject = (Unit)((Function0)localObject).invoke();
+          }
+        }
+      }
+      else {
+        this.a.getSelectedMedias().remove(localObject);
+      }
+      localObject = this.a.getOnSelectChangeListener();
+      if (localObject != null) {
+        localObject = (Unit)((Function1)localObject).invoke(this.a.getSelectedMedias());
+      }
+      MediaSelectorPanel.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  private final void g()
+  {
+    Object localObject = this.i;
+    if (localObject != null)
+    {
+      if (!this.a.getSelectedMedias().contains(localObject))
+      {
+        if (this.a.getSelectedMedias().size() < this.a.getMaxSelectCount())
+        {
+          c((Media)localObject);
+        }
+        else
+        {
+          localObject = this.a.getOnOverSelectListener();
+          if (localObject != null) {
+            localObject = (Unit)((Function0)localObject).invoke();
+          }
+        }
+      }
+      else {
+        this.a.getSelectedMedias().remove(localObject);
+      }
+      localObject = this.a.getOnSelectChangeListener();
+      if (localObject != null) {
+        localObject = (Unit)((Function1)localObject).invoke(this.a.getSelectedMedias());
+      }
+      MediaSelectorPanel.a(this.a).notifyDataSetChanged();
+    }
   }
   
   @NotNull
   public final View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  @NotNull
-  public final TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  @NotNull
-  public final ImageLoader a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkImageLoader;
+    return this.b;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public final void a(@Nullable Media paramMedia)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkBeanMedia = paramMedia;
+    this.i = paramMedia;
   }
   
   @NotNull
   public final TextView b()
   {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
+    return this.d;
+  }
+  
+  @NotNull
+  public final TextView c()
+  {
+    return this.e;
+  }
+  
+  @NotNull
+  public final ImageLoader d()
+  {
+    return this.g;
+  }
+  
+  public final int e()
+  {
+    return this.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel.ListPhotoViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -19,8 +19,8 @@ import com.tencent.mobileqq.activity.aio.core.msglist.MsgListBuilder;
 import com.tencent.mobileqq.activity.aio.core.tips.TipsController;
 import com.tencent.mobileqq.activity.aio.coreui.input.InputRightIconUI;
 import com.tencent.mobileqq.activity.aio.coreui.input.InputUIContainer;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.BaseTroopScroller;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.ListUI;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.Scroller;
 import com.tencent.mobileqq.activity.aio.coreui.tips.TipsUI;
 import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 import com.tencent.mobileqq.activity.aio.rebuild.msglist.AppletsMsgListRefresher;
@@ -38,30 +38,41 @@ import mqq.os.MqqHandler;
 public class AppletsChatPie
   extends BaseChatPie
 {
-  private View g;
+  private View bi;
   
   public AppletsChatPie(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, BaseActivity paramBaseActivity, Context paramContext)
   {
     super(paramQQAppInterface, paramViewGroup, paramBaseActivity, paramContext);
   }
   
-  private void ap()
+  private void bA()
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a().setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsTipsController.a().b();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setVisibility(8);
+    this.Y.setVisibility(8);
+    this.X.setVisibility(8);
+    this.i.p().d().c().a().setVisibility(8);
+    this.k.d().b();
+    this.W.setVisibility(8);
   }
   
-  protected AIOContext a()
+  protected void C()
   {
-    return new AppletsContext();
+    if ((this.ah != null) && (this.ah.s == 22))
+    {
+      this.m.post(new AppletsChatPie.1(this));
+      return;
+    }
+    super.C();
   }
   
-  protected MsgList a()
+  protected void D()
   {
-    return new MsgListBuilder(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).a(new Scroller()).a(new ListUI(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext)).a(new UnreadTask(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext)).a(new AppletsMsgListRefresher(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext)).a();
+    super.D();
+    this.p.setRight1Icon(2130841324, 2130841324);
+  }
+  
+  public void K()
+  {
+    super.K();
   }
   
   void a()
@@ -74,13 +85,13 @@ public class AppletsChatPie
     }
     if (i != 0)
     {
-      if (this.g == null)
+      if (this.bi == null)
       {
-        this.g = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558522, null);
-        localObject = this.g;
+        this.bi = LayoutInflater.from(this.e).inflate(2131624075, null);
+        localObject = this.bi;
         if (localObject != null)
         {
-          AnyScaleTypeImageView localAnyScaleTypeImageView = (AnyScaleTypeImageView)((View)localObject).findViewById(2131366218);
+          AnyScaleTypeImageView localAnyScaleTypeImageView = (AnyScaleTypeImageView)((View)localObject).findViewById(2131432506);
           if (localAnyScaleTypeImageView != null)
           {
             localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappaioemptybackgroundurl", "https://qzonestyle.gtimg.cn/aoi/sola/20190329164016_N0Y2CuctLc.png");
@@ -96,16 +107,16 @@ public class AppletsChatPie
               QLog.e("AppletsChatPie", 1, localStringBuilder.toString(), localThrowable);
             }
           }
-          localObject = (TextView)this.g.findViewById(2131366234);
+          localObject = (TextView)this.bi.findViewById(2131432526);
           if (localObject != null) {
             ((TextView)localObject).setText(QzoneConfig.getInstance().getConfig("qqminiapp", "miniappaioemptytips", "还没收到过小程序通知哦"));
           }
-          if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-            this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.g, new ViewGroup.LayoutParams(-1, -1));
+          if (this.o != null) {
+            this.o.addView(this.bi, new ViewGroup.LayoutParams(-1, -1));
           }
         }
       }
-      Object localObject = this.g;
+      Object localObject = this.bi;
       if (localObject != null) {
         ((View)localObject).setVisibility(0);
       }
@@ -117,54 +128,43 @@ public class AppletsChatPie
     return super.a(paramBoolean);
   }
   
-  void ao()
+  void bz()
   {
-    View localView = this.g;
+    View localView = this.bi;
     if (localView != null) {
       localView.setVisibility(8);
     }
   }
   
-  protected void e()
+  protected AIOContext d()
   {
-    super.e();
-    ap();
+    return new AppletsContext();
+  }
+  
+  protected MsgList e()
+  {
+    return new MsgListBuilder(this.i).a(new BaseTroopScroller()).a(new ListUI(this.i)).a(new UnreadTask(this.i)).a(new AppletsMsgListRefresher(this.i)).a();
   }
   
   protected void l()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.c == 22))
-    {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new AppletsChatPie.1(this));
-      return;
-    }
     super.l();
-  }
-  
-  protected void m()
-  {
-    super.m();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight1Icon(2130840558, 2130840558);
+    bA();
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131369216) {
+    if (paramView.getId() != 2131436194) {
       super.onClick(paramView);
     } else {
-      PublicFragmentActivity.a(a(), AppletsSettingFragment.class);
+      PublicFragmentActivity.a(aX(), AppletsSettingFragment.class);
     }
     EventCollector.getInstance().onViewClicked(paramView);
-  }
-  
-  public void p()
-  {
-    super.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.AppletsChatPie
  * JD-Core Version:    0.7.0.1
  */

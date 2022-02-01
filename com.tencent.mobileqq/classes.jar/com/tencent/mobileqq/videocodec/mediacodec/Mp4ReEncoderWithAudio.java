@@ -12,16 +12,16 @@ import com.tencent.qphone.base.util.QLog;
 public class Mp4ReEncoderWithAudio
   extends Mp4ReEncoder
 {
-  private HWAudioRecoder jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWAudioRecoder;
-  private MediaMuxerWrapper jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderMediaMuxerWrapper;
+  private MediaMuxerWrapper g;
+  private HWAudioRecoder h;
   
   public void a(DecodeConfig paramDecodeConfig, EncodeConfig paramEncodeConfig, HWEncodeListener paramHWEncodeListener, Mp4ReEncoder.EncodeFilterRender paramEncodeFilterRender)
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderMediaMuxerWrapper = new MediaMuxerWrapper(this, paramEncodeConfig.jdField_a_of_type_JavaLangString, paramHWEncodeListener);
-      paramEncodeConfig.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderMediaMuxerWrapper = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderMediaMuxerWrapper;
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWAudioRecoder = new HWAudioRecoder(paramDecodeConfig, this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderMediaMuxerWrapper);
+      this.g = new MediaMuxerWrapper(this, paramEncodeConfig.b, paramHWEncodeListener);
+      paramEncodeConfig.s = this.g;
+      this.h = new HWAudioRecoder(paramDecodeConfig, this.g);
     }
     catch (Exception localException)
     {
@@ -30,10 +30,10 @@ public class Mp4ReEncoderWithAudio
     super.a(paramDecodeConfig, paramEncodeConfig, paramHWEncodeListener, paramEncodeFilterRender);
   }
   
-  public boolean a()
+  public boolean b()
   {
-    boolean bool4 = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder.a();
-    HWAudioRecoder localHWAudioRecoder = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWAudioRecoder;
+    boolean bool4 = this.a.c();
+    HWAudioRecoder localHWAudioRecoder = this.h;
     boolean bool3 = false;
     boolean bool1;
     if ((localHWAudioRecoder != null) && (!localHWAudioRecoder.a())) {
@@ -60,9 +60,9 @@ public class Mp4ReEncoderWithAudio
     super.onDecodeFinish();
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWAudioRecoder != null)
+      if (this.h != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWAudioRecoder.a();
+        this.h.c();
         return;
       }
     }
@@ -75,7 +75,7 @@ public class Mp4ReEncoderWithAudio
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
     super.onFrameAvailable(paramSurfaceTexture);
-    paramSurfaceTexture = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWAudioRecoder;
+    paramSurfaceTexture = this.h;
     if (paramSurfaceTexture != null) {
       paramSurfaceTexture.b();
     }
@@ -83,7 +83,7 @@ public class Mp4ReEncoderWithAudio
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.Mp4ReEncoderWithAudio
  * JD-Core Version:    0.7.0.1
  */

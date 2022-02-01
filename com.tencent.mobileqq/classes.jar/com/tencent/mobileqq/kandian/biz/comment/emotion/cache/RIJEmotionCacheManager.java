@@ -18,17 +18,17 @@ import java.util.List;
 public class RIJEmotionCacheManager
 {
   public static long a;
-  private static final Collection<IRIJEmotionCache> jdField_a_of_type_JavaUtilCollection = new LinkedList();
-  private static volatile boolean jdField_a_of_type_Boolean;
+  private static final Collection<IRIJEmotionCache> b = new LinkedList();
+  private static volatile boolean c;
   
   @Nullable
   public static Point a(String paramString)
   {
     b();
-    Iterator localIterator = jdField_a_of_type_JavaUtilCollection.iterator();
+    Iterator localIterator = b.iterator();
     while (localIterator.hasNext())
     {
-      Point localPoint = ((IRIJEmotionCache)localIterator.next()).a(paramString);
+      Point localPoint = ((IRIJEmotionCache)localIterator.next()).b(paramString);
       if (localPoint != null) {
         return localPoint;
       }
@@ -36,10 +36,42 @@ public class RIJEmotionCacheManager
     return null;
   }
   
-  public static RIJBaseEmotionInfo a(String paramString)
+  public static void a()
+  {
+    c = true;
+    RIJEmotionDownloader.a();
+  }
+  
+  public static void a(@NonNull IEmoticonMainPanelService.PanelBuilder paramPanelBuilder, IEmoticonMainPanelApp paramIEmoticonMainPanelApp, Context paramContext, EmoticonCallback paramEmoticonCallback)
+  {
+    Iterator localIterator = b.iterator();
+    while (localIterator.hasNext())
+    {
+      IRIJEmotionCache localIRIJEmotionCache = (IRIJEmotionCache)localIterator.next();
+      paramPanelBuilder.addEmotionInjectionInfo(localIRIJEmotionCache.b(), localIRIJEmotionCache.a(paramIEmoticonMainPanelApp, paramContext, paramEmoticonCallback));
+    }
+  }
+  
+  public static void a(IRIJEmotionCache paramIRIJEmotionCache)
+  {
+    if ((paramIRIJEmotionCache != null) && (!b.contains(paramIRIJEmotionCache))) {
+      b.add(paramIRIJEmotionCache);
+    }
+  }
+  
+  public static void a(@NonNull Collection<EmotionPanelInfo> paramCollection)
   {
     b();
-    Iterator localIterator = jdField_a_of_type_JavaUtilCollection.iterator();
+    Iterator localIterator = b.iterator();
+    while (localIterator.hasNext()) {
+      paramCollection.add(((IRIJEmotionCache)localIterator.next()).a());
+    }
+  }
+  
+  public static RIJBaseEmotionInfo b(String paramString)
+  {
+    b();
+    Iterator localIterator = b.iterator();
     Object localObject = null;
     while (localIterator.hasNext())
     {
@@ -52,69 +84,37 @@ public class RIJEmotionCacheManager
     return localObject;
   }
   
-  public static List<? extends RIJBaseEmotionInfo> a()
-  {
-    b();
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = jdField_a_of_type_JavaUtilCollection.iterator();
-    while (localIterator.hasNext()) {
-      localLinkedList.addAll(((IRIJEmotionCache)localIterator.next()).a());
-    }
-    return localLinkedList;
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Boolean = true;
-    RIJEmotionDownloader.a();
-  }
-  
-  public static void a(@NonNull IEmoticonMainPanelService.PanelBuilder paramPanelBuilder, IEmoticonMainPanelApp paramIEmoticonMainPanelApp, Context paramContext, EmoticonCallback paramEmoticonCallback)
-  {
-    Iterator localIterator = jdField_a_of_type_JavaUtilCollection.iterator();
-    while (localIterator.hasNext())
-    {
-      IRIJEmotionCache localIRIJEmotionCache = (IRIJEmotionCache)localIterator.next();
-      paramPanelBuilder.addEmotionInjectionInfo(localIRIJEmotionCache.a(), localIRIJEmotionCache.a(paramIEmoticonMainPanelApp, paramContext, paramEmoticonCallback));
-    }
-  }
-  
-  public static void a(IRIJEmotionCache paramIRIJEmotionCache)
-  {
-    if ((paramIRIJEmotionCache != null) && (!jdField_a_of_type_JavaUtilCollection.contains(paramIRIJEmotionCache))) {
-      jdField_a_of_type_JavaUtilCollection.add(paramIRIJEmotionCache);
-    }
-  }
-  
-  public static void a(@NonNull Collection<EmotionPanelInfo> paramCollection)
-  {
-    b();
-    Iterator localIterator = jdField_a_of_type_JavaUtilCollection.iterator();
-    while (localIterator.hasNext()) {
-      paramCollection.add(((IRIJEmotionCache)localIterator.next()).a());
-    }
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_JavaUtilCollection.isEmpty() ^ true;
-  }
-  
   public static void b()
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!c) {
       a();
     }
   }
   
   public static void c()
   {
-    jdField_a_of_type_JavaUtilCollection.clear();
+    b.clear();
+  }
+  
+  public static boolean d()
+  {
+    return b.isEmpty() ^ true;
+  }
+  
+  public static List<? extends RIJBaseEmotionInfo> e()
+  {
+    b();
+    LinkedList localLinkedList = new LinkedList();
+    Iterator localIterator = b.iterator();
+    while (localIterator.hasNext()) {
+      localLinkedList.addAll(((IRIJEmotionCache)localIterator.next()).c());
+    }
+    return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.emotion.cache.RIJEmotionCacheManager
  * JD-Core Version:    0.7.0.1
  */

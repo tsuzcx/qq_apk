@@ -9,13 +9,13 @@ class WSFeedsPreloadStrategy$1
   
   public void run()
   {
-    WSFeedsPreloadStrategy.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int - 1);
+    WSFeedsPreloadStrategy.a(this.this$0, this.a, this.b - 1);
     WSLog.b("WSFeedsPreloadStrategy", "[checkSendRequest] postDelayed finish: 30s");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WSFeedsPreloadStrategy.1
  * JD-Core Version:    0.7.0.1
  */

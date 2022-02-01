@@ -185,7 +185,7 @@ public class AEOldPendantVersionManager
     localStringBuilder.append(paramString);
     VideoEnvironment.LogDownLoad("AEOldPendantVersionManager", localStringBuilder.toString(), null);
     paramString = AEOldShortVideoSoManager.a((String)localObject);
-    int i = paramString.a();
+    int i = paramString.d();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("checkSignatureVersionIsOK errCode=");
     localStringBuilder.append(i);
@@ -309,7 +309,7 @@ public class AEOldPendantVersionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.old.AEOldPendantVersionManager
  * JD-Core Version:    0.7.0.1
  */

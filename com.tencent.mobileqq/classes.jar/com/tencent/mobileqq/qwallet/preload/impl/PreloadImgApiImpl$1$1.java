@@ -12,20 +12,20 @@ class PreloadImgApiImpl$1$1
   
   public void run()
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a.size();
-    Bundle localBundle = this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a();
+    int j = this.a.f.size();
+    Bundle localBundle = this.a.b();
     int i = 0;
     while (i < j)
     {
-      String str = (String)this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a.get(i);
-      PreloadImgApiImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadImgApiImpl$1.a, MobileQQ.getContext(), localBundle.getString(str), str);
+      String str = (String)this.a.f.get(i);
+      PreloadImgApiImpl.access$000(this.b.a, MobileQQ.getContext(), localBundle.getString(str), str);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadImgApiImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

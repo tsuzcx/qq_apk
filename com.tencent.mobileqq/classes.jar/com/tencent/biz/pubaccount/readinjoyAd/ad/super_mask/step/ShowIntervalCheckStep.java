@@ -14,14 +14,14 @@ public final class ShowIntervalCheckStep
     this.a = paramInt;
   }
   
-  public boolean a()
+  public boolean c()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.ShowIntervalCheckStep
  * JD-Core Version:    0.7.0.1
  */

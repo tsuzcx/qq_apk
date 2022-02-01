@@ -29,37 +29,15 @@ public class ShareStructLongMessageManager
   implements IUpLoadMsgPackBusinessType
 {
   public static int a = 800;
-  private static ShareStructLongMessageManager a;
   public static int b = 700;
+  private static ShareStructLongMessageManager c;
   
   public static ShareStructLongMessageManager a()
   {
-    if (a == null) {
-      a = new ShareStructLongMessageManager();
+    if (c == null) {
+      c = new ShareStructLongMessageManager();
     }
-    return a;
-  }
-  
-  public static String a(AbsStructMsg paramAbsStructMsg)
-  {
-    if (((paramAbsStructMsg instanceof StructMsgForGeneralShare)) && (((StructMsgForGeneralShare)paramAbsStructMsg).mIsPAVideoStructMsg))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShareStructLongMessageManager", 2, "is video struct msg");
-      }
-      return null;
-    }
-    if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgUrl)) {
-      return paramAbsStructMsg.mMsgUrl;
-    }
-    if (AIOGallerySceneWithBusiness.b(paramAbsStructMsg.mMsgActionData))
-    {
-      paramAbsStructMsg = AIOGallerySceneWithBusiness.b(paramAbsStructMsg.mMsgActionData);
-      if ((paramAbsStructMsg != null) && (paramAbsStructMsg.length > 2)) {
-        return paramAbsStructMsg[1];
-      }
-    }
-    return null;
+    return c;
   }
   
   public static String a(String paramString)
@@ -126,7 +104,7 @@ public class ShareStructLongMessageManager
     ((TransferRequest)localObject).mUniseq = paramLong;
     ((TransferRequest)localObject).mBusiType = paramInt2;
     ((TransferRequest)localObject).mUpCallBack = paramUpCallBack;
-    ((TransferRequest)localObject).upMsgBusiType = a();
+    ((TransferRequest)localObject).upMsgBusiType = b();
     ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync((TransferRequest)localObject);
     return true;
   }
@@ -254,7 +232,7 @@ public class ShareStructLongMessageManager
   {
     if (AIOGallerySceneWithBusiness.b(paramAbsStructMsg.mMsgActionData))
     {
-      paramAbsStructMsg = AIOGallerySceneWithBusiness.b(paramAbsStructMsg.mMsgActionData);
+      paramAbsStructMsg = AIOGallerySceneWithBusiness.f(paramAbsStructMsg.mMsgActionData);
       if ((paramAbsStructMsg != null) && (paramAbsStructMsg.length > 2))
       {
         paramAbsStructMsg = paramAbsStructMsg[1];
@@ -280,19 +258,36 @@ public class ShareStructLongMessageManager
     return false;
   }
   
-  public int a()
+  public static String c(AbsStructMsg paramAbsStructMsg)
   {
-    return 3;
+    if (((paramAbsStructMsg instanceof StructMsgForGeneralShare)) && (((StructMsgForGeneralShare)paramAbsStructMsg).mIsPAVideoStructMsg))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShareStructLongMessageManager", 2, "is video struct msg");
+      }
+      return null;
+    }
+    if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgUrl)) {
+      return paramAbsStructMsg.mMsgUrl;
+    }
+    if (AIOGallerySceneWithBusiness.b(paramAbsStructMsg.mMsgActionData))
+    {
+      paramAbsStructMsg = AIOGallerySceneWithBusiness.f(paramAbsStructMsg.mMsgActionData);
+      if ((paramAbsStructMsg != null) && (paramAbsStructMsg.length > 2)) {
+        return paramAbsStructMsg[1];
+      }
+    }
+    return null;
   }
   
   public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
     paramMessageRecord.extraflag = 32768;
-    paramQQAppInterface.getMsgCache().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
+    paramQQAppInterface.getMsgCache().b(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
     String str = paramMessageRecord.frienduin;
     int i = paramMessageRecord.istroop;
     long l = paramMessageRecord.uniseq;
-    ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+    ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.b(paramMessageRecord.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
   }
   
   public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, MessageObserver paramMessageObserver, boolean paramBoolean)
@@ -331,11 +326,11 @@ public class ShareStructLongMessageManager
         QLog.d("ShareStructLongMessageManager", 2, "step2: sendShareStructLongMessage pack failed! packData is null.............................");
       }
       paramMessageRecord.extraflag = 32768;
-      paramQQAppInterface.getMsgCache().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
+      paramQQAppInterface.getMsgCache().b(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
       paramMessageObserver = paramMessageRecord.frienduin;
       int i = paramMessageRecord.istroop;
       long l = paramMessageRecord.uniseq;
-      ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { paramMessageObserver, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+      ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.b(paramMessageRecord.istroop), false, new Object[] { paramMessageObserver, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
       return;
     }
     paramBoolean = a(paramQQAppInterface, (byte[])localObject1, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.selfuin, paramMessageRecord.istroop, paramMessageRecord.uniseq + 1L, 1035, new ShareStructLongMessageManager.1(this, paramMessageRecord, paramQQAppInterface, paramMessageObserver, paramBoolean));
@@ -357,10 +352,15 @@ public class ShareStructLongMessageManager
       a(paramQQAppInterface, paramMessageRecord);
     }
   }
+  
+  public int b()
+  {
+    return 3;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ShareStructLongMessageManager
  * JD-Core Version:    0.7.0.1
  */

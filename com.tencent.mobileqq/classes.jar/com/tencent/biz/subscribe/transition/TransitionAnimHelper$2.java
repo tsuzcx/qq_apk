@@ -14,8 +14,8 @@ class TransitionAnimHelper$2
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = (FrameLayout.LayoutParams)TransitionAnimHelper.b(this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransitionAnimHelper).getLayoutParams();
-    paramAnimator.height = this.jdField_a_of_type_Int;
+    paramAnimator = (FrameLayout.LayoutParams)TransitionAnimHelper.b(this.e).getLayoutParams();
+    paramAnimator.height = this.a;
     paramAnimator.width = this.b;
     paramAnimator.setMargins(this.c, this.d, 0, 0);
   }

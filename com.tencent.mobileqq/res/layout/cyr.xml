@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="24.0sp" android:textColor="@color/bp" android:id="@id/mug" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="15.0dip" android:text="12月30日" />
-    <RelativeLayout android:orientation="vertical" android:id="@id/o1t" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="12.0dip" android:layout_below="@id/mug">
-        <cooperation.qzone.contentbox.RoundCornerImageView android:id="@id/ml9" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        <cooperation.qzone.contentbox.RoundCornerImageView android:id="@id/ml8" android:background="#4c000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <RelativeLayout android:id="@id/nfc" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="18.0dip" android:layout_alignParentLeft="true">
-            <cooperation.qzone.contentbox.RoundCornerImageView android:id="@id/nf9" android:background="#ffddddff" android:visibility="gone" android:layout_width="82.0dip" android:layout_height="82.0dip" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip" android:scaleType="centerCrop" android:layout_centerVertical="true" />
-            <FrameLayout android:id="@id/o91" android:background="@color/ajr" android:visibility="gone" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="7.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <RelativeLayout android:id="@id/mv_" android:background="@color/ajr" android:visibility="gone" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="11.0dip" android:layout_marginBottom="7.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
-                <FrameLayout android:id="@id/n0h" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-                <FrameLayout android:id="@id/o6p" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-            </RelativeLayout>
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/o41" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/nfc">
-            <RelativeLayout android:id="@id/n0j" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="25.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="76.0dip" android:layout_alignParentLeft="true">
-                <FrameLayout android:id="@id/n0k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <TextView android:textSize="18.0sp" android:textColor="@color/bp" android:ellipsize="end" android:gravity="left" android:id="@id/n0l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="今天是好日子" android:maxLines="1" android:layout_toRightOf="@id/n0k" android:layout_centerVertical="true" />
-                <FrameLayout android:id="@id/n0i" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <TextView android:textSize="18.0sp" android:textColor="@color/bp" android:ellipsize="end" android:gravity="left" android:id="@id/n0d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="今天是好日子" android:maxLines="1" android:layout_toRightOf="@id/n0i" android:layout_centerVertical="true" />
-            </RelativeLayout>
-            <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:ellipsize="end" android:gravity="left" android:id="@id/o6q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginRight="76.0dip" android:text="发条说说打个卡吧！" android:maxLines="1" android:layout_below="@id/n0j" android:layout_alignParentLeft="true" />
-            <RelativeLayout android:id="@id/nts" android:background="@drawable/ewa" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="29.0dip" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-                <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/ntt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="发表" android:layout_centerInParent="true" />
-            </RelativeLayout>
-            <ImageView android:id="@id/mr2" android:background="@drawable/ico" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        </RelativeLayout>
-    </RelativeLayout>
-</RelativeLayout>
+<LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/baw" android:paddingTop="@dimen/bay" android:paddingBottom="@dimen/bav" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/cyu" />
+    <include layout="@layout/cyv" />
+    <include layout="@layout/cyx" />
+</LinearLayout>

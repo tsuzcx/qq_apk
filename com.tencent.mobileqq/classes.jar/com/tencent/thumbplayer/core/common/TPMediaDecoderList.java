@@ -83,22 +83,36 @@ public final class TPMediaDecoderList
   
   private static final MediaCodecInfo[] getCodecInfos()
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      return null;
+    int j = Build.VERSION.SDK_INT;
+    int i = 0;
+    if (j < 16) {
+      return new MediaCodecInfo[0];
     }
+    Object localObject;
     if (Build.VERSION.SDK_INT < 21)
     {
-      int j = MediaCodecList.getCodecCount();
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
+      j = MediaCodecList.getCodecCount();
+      localObject = new ArrayList();
       while (i < j)
       {
-        localArrayList.add(MediaCodecList.getCodecInfoAt(i));
+        ((ArrayList)localObject).add(MediaCodecList.getCodecInfoAt(i));
         i += 1;
       }
-      return (MediaCodecInfo[])localArrayList.toArray(new MediaCodecInfo[localArrayList.size()]);
+      return (MediaCodecInfo[])((ArrayList)localObject).toArray(new MediaCodecInfo[((ArrayList)localObject).size()]);
     }
-    return new MediaCodecList(1).getCodecInfos();
+    try
+    {
+      localObject = new MediaCodecList(1).getCodecInfos();
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCodecInfos MediaCodecList ");
+      localStringBuilder.append(localException.getMessage());
+      TPNativeLog.printLog(4, localStringBuilder.toString());
+    }
+    return new MediaCodecInfo[0];
   }
   
   private static final TPMediaDecoderInfo[] getLocalCacheMediaCodecList(LocalCache paramLocalCache)
@@ -198,7 +212,7 @@ public final class TPMediaDecoderList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPMediaDecoderList
  * JD-Core Version:    0.7.0.1
  */

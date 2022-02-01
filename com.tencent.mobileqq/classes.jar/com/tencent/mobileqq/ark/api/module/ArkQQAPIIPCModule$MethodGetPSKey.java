@@ -14,7 +14,12 @@ public abstract class ArkQQAPIIPCModule$MethodGetPSKey
     this.a = paramString;
   }
   
-  public Bundle a()
+  public String a()
+  {
+    return "QQ.GetPSKey";
+  }
+  
+  public Bundle b()
   {
     Bundle localBundle = new Bundle();
     if (!TextUtils.isEmpty(this.a)) {
@@ -22,15 +27,10 @@ public abstract class ArkQQAPIIPCModule$MethodGetPSKey
     }
     return localBundle;
   }
-  
-  public String a()
-  {
-    return "QQ.GetPSKey";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.MethodGetPSKey
  * JD-Core Version:    0.7.0.1
  */

@@ -38,6 +38,8 @@ public class ExpandObserver
   
   protected void a(boolean paramBoolean, Object paramObject) {}
   
+  protected void a(boolean paramBoolean, Object paramObject, int paramInt) {}
+  
   protected void a(boolean paramBoolean, String paramString) {}
   
   protected void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2) {}
@@ -64,6 +66,8 @@ public class ExpandObserver
   
   protected void g(boolean paramBoolean) {}
   
+  protected void h(boolean paramBoolean) {}
+  
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     int i = -1;
@@ -75,6 +79,15 @@ public class ExpandObserver
     case 27: 
     case 29: 
     default: 
+    case 34: 
+      c(paramBoolean);
+      return;
+    case 33: 
+      a(paramBoolean, paramObject, 33);
+      return;
+    case 32: 
+      a(paramBoolean, paramObject, 32);
+      return;
     case 31: 
       b(paramBoolean, paramObject);
       return;
@@ -82,7 +95,7 @@ public class ExpandObserver
       a(paramBoolean, paramObject);
       return;
     case 28: 
-      g(paramBoolean);
+      h(paramBoolean);
       return;
     case 26: 
       if ((paramObject instanceof Object[]))
@@ -182,7 +195,7 @@ public class ExpandObserver
       a(false, -1, -1, null, null);
       return;
     case 14: 
-      c(paramBoolean);
+      d(paramBoolean);
       return;
     case 13: 
       if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
@@ -199,7 +212,7 @@ public class ExpandObserver
       a(false, null, true, 0, null, false);
       return;
     case 12: 
-      f(paramBoolean);
+      g(paramBoolean);
       return;
     case 11: 
       if (paramBoolean)
@@ -225,7 +238,7 @@ public class ExpandObserver
       a(paramBoolean, (StrangerInfo)paramObject[0], ((Integer)paramObject[1]).intValue());
       return;
     case 8: 
-      e(((Boolean)paramObject).booleanValue());
+      f(((Boolean)paramObject).booleanValue());
       return;
     case 7: 
       if ((paramObject instanceof Object[]))
@@ -280,13 +293,13 @@ public class ExpandObserver
       }
       break;
     case 1: 
-      d(paramBoolean);
+      e(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.network.ExpandObserver
  * JD-Core Version:    0.7.0.1
  */

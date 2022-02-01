@@ -21,13 +21,13 @@ class QFileConfigManager$2
       QFileConfigManager.d(this.this$0, this.a.getBoolean("enable_file_media_platform", false));
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setFileCommonConfig: set common config. enableTroopVidePreview[");
-      localStringBuilder.append(QFileConfigManager.a(this.this$0));
-      localStringBuilder.append("] enableTroopVidePreviewForSVIP[");
-      localStringBuilder.append(QFileConfigManager.b(this.this$0));
-      localStringBuilder.append("] enableTroopVidePreviewForYearSVIP[");
       localStringBuilder.append(QFileConfigManager.c(this.this$0));
-      localStringBuilder.append("] UseMediaPlatform enabled[");
+      localStringBuilder.append("] enableTroopVidePreviewForSVIP[");
       localStringBuilder.append(QFileConfigManager.d(this.this$0));
+      localStringBuilder.append("] enableTroopVidePreviewForYearSVIP[");
+      localStringBuilder.append(QFileConfigManager.e(this.this$0));
+      localStringBuilder.append("] UseMediaPlatform enabled[");
+      localStringBuilder.append(QFileConfigManager.f(this.this$0));
       localStringBuilder.append("]");
       QLog.i("QFileConfigManager", 1, localStringBuilder.toString());
     }
@@ -35,7 +35,7 @@ class QFileConfigManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

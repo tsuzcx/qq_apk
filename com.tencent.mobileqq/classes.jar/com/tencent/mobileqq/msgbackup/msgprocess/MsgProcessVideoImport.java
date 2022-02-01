@@ -13,39 +13,39 @@ import java.util.Map;
 public class MsgProcessVideoImport
   extends MsgProcessImport
 {
-  private static final String b;
-  private String c = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
-  private String d = (String)this.jdField_a_of_type_JavaUtilMap.get("thumbMd5");
+  private static final String d;
+  private String e = (String)this.b.get("md5");
+  private String f = (String)this.b.get("thumbMd5");
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(MsgBackupConstant.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(MsgBackupConstant.a);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
-    b = RmVFSUtils.getVFSPath(localStringBuilder.toString());
+    d = RmVFSUtils.getVFSPath(localStringBuilder.toString());
   }
   
   public MsgProcessVideoImport(MsgBackupResEntity paramMsgBackupResEntity)
   {
     super(paramMsgBackupResEntity);
-    if ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.d)))
+    if ((TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f)))
     {
       paramMsgBackupResEntity = new StringBuilder();
       paramMsgBackupResEntity.append("md5:");
-      paramMsgBackupResEntity.append(this.c);
+      paramMsgBackupResEntity.append(this.e);
       paramMsgBackupResEntity.append(" mThumbMD5:");
-      paramMsgBackupResEntity.append(this.d);
-      a(paramMsgBackupResEntity.toString());
+      paramMsgBackupResEntity.append(this.f);
+      b(paramMsgBackupResEntity.toString());
     }
   }
   
-  public static String a(String paramString)
+  public static String d(String paramString)
   {
     return SVUtils.a(paramString, "jpg");
   }
   
-  public static String b(String paramString)
+  public static String e(String paramString)
   {
     paramString = SVUtils.a(paramString);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -54,29 +54,29 @@ public class MsgProcessVideoImport
     return localStringBuilder.toString();
   }
   
-  private String c(String paramString)
+  private String f(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder(b);
+    StringBuilder localStringBuilder = new StringBuilder(d);
     localStringBuilder.append(paramString);
     return localStringBuilder.toString();
   }
   
-  private String d(String paramString)
+  private String g(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder(b);
+    StringBuilder localStringBuilder = new StringBuilder(d);
     localStringBuilder.append("thumbs");
     localStringBuilder.append(File.separator);
     localStringBuilder.append(paramString);
     return localStringBuilder.toString();
   }
   
-  public ResDownloadObject a()
+  public ResDownloadObject b()
   {
-    MsgBackupResEntity localMsgBackupResEntity = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
+    MsgBackupResEntity localMsgBackupResEntity = this.c;
     int i = localMsgBackupResEntity.msgSubType;
     ResDownloadObject localResDownloadObject = new ResDownloadObject();
-    String str1 = a();
-    String str2 = b();
+    String str1 = c();
+    String str2 = d();
     boolean bool1 = a(str1);
     boolean bool2 = a(str2);
     if (QLog.isColorLevel())
@@ -92,49 +92,49 @@ public class MsgProcessVideoImport
       localStringBuilder.append(str2);
       localStringBuilder.append(" exist:");
       localStringBuilder.append(bool2);
-      a(localStringBuilder.toString());
+      b(localStringBuilder.toString());
     }
-    localResDownloadObject.jdField_a_of_type_JavaLangString = str1;
+    localResDownloadObject.b = str1;
     if ((!bool1) && (!bool2)) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    localResDownloadObject.jdField_a_of_type_Boolean = bool1;
+    localResDownloadObject.a = bool1;
     return localResDownloadObject;
   }
   
-  public String a()
+  public String c()
   {
-    switch (this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity.msgSubType)
+    switch (this.c.msgSubType)
     {
     default: 
       return null;
     case 7: 
     case 8: 
     case 9: 
-      return d(this.d);
+      return g(this.f);
     }
-    return c(this.c);
+    return f(this.e);
   }
   
-  public String b()
+  public String d()
   {
-    switch (this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity.msgSubType)
+    switch (this.c.msgSubType)
     {
     default: 
       return null;
     case 7: 
     case 8: 
     case 9: 
-      return a(this.d);
+      return d(this.f);
     }
-    return b(this.c);
+    return e(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessVideoImport
  * JD-Core Version:    0.7.0.1
  */

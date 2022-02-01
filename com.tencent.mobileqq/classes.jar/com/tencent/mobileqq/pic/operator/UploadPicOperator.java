@@ -18,6 +18,8 @@ import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForRichText;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PicMessageExtraData;
+import com.tencent.mobileqq.gamecenter.util.RoleIdUtil;
+import com.tencent.mobileqq.guild.message.api.IGuildMessageUtilsApi;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.msg.api.IConfessMsgUtil;
 import com.tencent.mobileqq.msg.api.IForwardOrderManager;
@@ -39,6 +41,7 @@ import com.tencent.mobileqq.pic.api.IPicHelper;
 import com.tencent.mobileqq.pic.api.IPicPreDownload;
 import com.tencent.mobileqq.pic.api.impl.PicPreDownloadImpl;
 import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.qqguildsdk.api.IGPSService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageConstants;
 import com.tencent.mobileqq.transfile.RichMediaUtil;
@@ -51,164 +54,70 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqprotect.singleupdate.MD5FileUtil;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import tencent.im.msg.im_msg_body.RichText;
 
 public class UploadPicOperator
   extends BasePicOperator
   implements UpCallBack, IPicInfoBuilder.UploadInfoBuilder
 {
-  public MessageRecord a(PicUploadInfo paramPicUploadInfo)
-  {
-    long l = System.currentTimeMillis();
-    if (paramPicUploadInfo != null)
-    {
-      MessageForPic localMessageForPic = (MessageForPic)((IMessageRecordFactory)QRoute.api(IMessageRecordFactory.class)).createSendMSg_Pic(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPicUploadInfo.jdField_c_of_type_JavaLangString, paramPicUploadInfo.jdField_d_of_type_JavaLangString, paramPicUploadInfo.jdField_b_of_type_Int);
-      localMessageForPic.busiType = paramPicUploadInfo.jdField_a_of_type_Int;
-      localMessageForPic.path = paramPicUploadInfo.jdField_g_of_type_JavaLangString;
-      localMessageForPic.size = 0L;
-      localMessageForPic.type = 1;
-      localMessageForPic.isRead = true;
-      localMessageForPic.extraflag = 32772;
-      if (paramPicUploadInfo.jdField_g_of_type_Int == 1) {
-        localMessageForPic.fileSizeFlag = 1;
-      }
-      localMessageForPic.localUUID = paramPicUploadInfo.jdField_a_of_type_JavaLangString;
-      Object localObject = this.jdField_b_of_type_JavaLangString;
-      String str = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localMessageForPic.localUUID);
-      localStringBuilder.append("|");
-      localStringBuilder.append(localMessageForPic.uniseq);
-      Logger.a((String)localObject, str, "bindUrlKeyAndUniseq", localStringBuilder.toString());
-      localMessageForPic.md5 = a(localMessageForPic.path);
-      c(paramPicUploadInfo, localMessageForPic);
-      localMessageForPic.thumbWidth = paramPicUploadInfo.jdField_e_of_type_Int;
-      localMessageForPic.thumbHeight = paramPicUploadInfo.jdField_f_of_type_Int;
-      a(paramPicUploadInfo, localMessageForPic);
-      localMessageForPic.extLong = paramPicUploadInfo.jdField_i_of_type_Int;
-      localMessageForPic.extStr = paramPicUploadInfo.jdField_i_of_type_JavaLangString;
-      localMessageForPic.msgVia = paramPicUploadInfo.jdField_n_of_type_Int;
-      localMessageForPic.sync2Story = paramPicUploadInfo.jdField_g_of_type_Boolean;
-      str = MessageConstants.m;
-      if (localMessageForPic.sync2Story) {
-        localObject = "1";
-      } else {
-        localObject = "0";
-      }
-      localMessageForPic.saveExtInfoToExtStr(str, (String)localObject);
-      a(localMessageForPic, paramPicUploadInfo);
-      localObject = paramPicUploadInfo.jdField_a_of_type_JavaUtilArrayList;
-      if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
-      {
-        b(paramPicUploadInfo, localMessageForPic);
-        localMessageForPic.imageType = 1003;
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("peak_pgjpeg", 2, "Slice infos is null");
-      }
-      localMessageForPic.serial();
-      paramPicUploadInfo.jdField_a_of_type_Long = localMessageForPic.uniseq;
-      localObject = this.jdField_b_of_type_JavaLangString;
-      str = this.jdField_a_of_type_JavaLangString;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("cost:");
-      localStringBuilder.append(System.currentTimeMillis() - l);
-      Logger.a((String)localObject, str, "packMsg", localStringBuilder.toString());
-      a(localMessageForPic);
-      localMessageForPic.DSKey = paramPicUploadInfo.jdField_b_of_type_Long;
-      return localMessageForPic;
-    }
-    return null;
-  }
-  
   public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    Logger.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "attachRichText2Msg", "");
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForRichText))) {
-      ((MessageForRichText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).richText = paramRichText;
+    Logger.a(this.b, this.a, "attachRichText2Msg", "");
+    if ((this.i != null) && ((this.i instanceof MessageForRichText))) {
+      ((MessageForRichText)this.i).richText = paramRichText;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  }
-  
-  protected PicUploadInfo.Builder a(Intent paramIntent)
-  {
-    Object localObject = paramIntent.getStringExtra("uin");
-    String str2 = paramIntent.getStringExtra("troop_uin");
-    int i = paramIntent.getIntExtra("uintype", 1003);
-    int j = paramIntent.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
-    int k = paramIntent.getIntExtra("PhotoConst.SEND_BUSINESS_TYPE", -1);
-    String str3 = paramIntent.getStringExtra("PhotoConst.PHOTO_SEND_PATH");
-    int m = paramIntent.getIntExtra("entrance", 0);
-    int n = paramIntent.getIntExtra("key_confess_topicid", 0);
-    boolean bool = paramIntent.getBooleanExtra("key_story_photo_to_recent", false);
-    String str1 = paramIntent.getStringExtra("widgetinfo");
-    paramIntent = paramIntent.getStringExtra("key_camera_material_name");
-    PicUploadInfo.Builder localBuilder = new PicUploadInfo.Builder();
-    localBuilder.d((String)localObject);
-    localBuilder.a(str3);
-    localBuilder.e(i);
-    localBuilder.e(str2);
-    localBuilder.d(k);
-    localBuilder.f(j);
-    localBuilder.l(n);
-    localBuilder.k(m);
-    localBuilder.a(bool);
-    if (!TextUtils.isEmpty(str1))
-    {
-      localObject = new PicUploadExtra();
-      ((PicUploadExtra)localObject).jdField_a_of_type_JavaLangString = str1;
-      ((PicUploadExtra)localObject).jdField_b_of_type_JavaLangString = paramIntent;
-      localBuilder.a((PicUploadExtra)localObject);
-    }
-    return localBuilder;
+    return this.i;
   }
   
   public PicUploadInfo a(Intent paramIntent)
   {
     if (paramIntent != null)
     {
-      Object localObject = a(paramIntent);
+      Object localObject = b(paramIntent);
       if (localObject == null) {
         return null;
       }
-      localObject = ((PicUploadInfo.Builder)localObject).a();
+      localObject = ((PicUploadInfo.Builder)localObject).k();
       int i = paramIntent.getIntExtra("key_is_sync_qzone", 0);
       if (i == 1)
       {
         String str = paramIntent.getStringExtra("key_qzone_album_id");
-        ((PicUploadInfo)localObject).p = i;
-        ((PicUploadInfo)localObject).j = str;
-        ((PicUploadInfo)localObject).jdField_d_of_type_Long = paramIntent.getLongExtra("key_qzone_batch_id", 0L);
-        ((PicUploadInfo)localObject).jdField_e_of_type_Long = paramIntent.getIntExtra("PhotoConst.PHOTO_COUNT", 0);
-        ((PicUploadInfo)localObject).jdField_f_of_type_Long = paramIntent.getIntExtra("PhotoConst.PHOTO_SEND_PATH_INDEX", 0);
+        ((PicUploadInfo)localObject).L = i;
+        ((PicUploadInfo)localObject).O = str;
+        ((PicUploadInfo)localObject).N = paramIntent.getLongExtra("key_qzone_batch_id", 0L);
+        ((PicUploadInfo)localObject).P = paramIntent.getIntExtra("PhotoConst.PHOTO_COUNT", 0);
+        ((PicUploadInfo)localObject).Q = paramIntent.getIntExtra("PhotoConst.PHOTO_SEND_PATH_INDEX", 0);
       }
       boolean bool1 = paramIntent.getBooleanExtra("quick_send_is_emo_search", false);
       boolean bool2 = paramIntent.getBooleanExtra("HOT_PIC_SEND_PIC", false);
       i = paramIntent.getIntExtra("key_pic_send_source", 0);
-      if (((PicUploadInfo)localObject).jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra == null) {
-        ((PicUploadInfo)localObject).jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra = new PicUploadExtra();
+      if (((PicUploadInfo)localObject).ac == null) {
+        ((PicUploadInfo)localObject).ac = new PicUploadExtra();
       }
-      ((PicUploadInfo)localObject).jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.jdField_a_of_type_Int = i;
-      ((PicUploadInfo)localObject).jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.jdField_b_of_type_Boolean = bool1;
-      ((PicUploadInfo)localObject).jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.jdField_c_of_type_Boolean = bool2;
-      Logger.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "createPicUploadInfo", "");
+      ((PicUploadInfo)localObject).ac.h = i;
+      ((PicUploadInfo)localObject).ac.f = bool1;
+      ((PicUploadInfo)localObject).ac.g = bool2;
+      Logger.a(this.b, this.a, "createPicUploadInfo", "");
       return localObject;
     }
-    Logger.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "createPicUploadInfo", "unknow obj");
+    Logger.a(this.b, this.a, "createPicUploadInfo", "unknow obj");
     return null;
   }
   
   protected PicUploadInfo a(PicUploadInfo paramPicUploadInfo)
   {
-    CompressInfo localCompressInfo = new CompressInfo(paramPicUploadInfo.jdField_g_of_type_JavaLangString, 0);
+    CompressInfo localCompressInfo = new CompressInfo(paramPicUploadInfo.n, 0);
     CompressOperator.b(localCompressInfo);
-    if (localCompressInfo.jdField_e_of_type_JavaLangString != null)
+    if (localCompressInfo.l != null)
     {
-      paramPicUploadInfo.h = localCompressInfo.jdField_e_of_type_JavaLangString;
-      paramPicUploadInfo.jdField_e_of_type_Int = localCompressInfo.d;
-      paramPicUploadInfo.jdField_f_of_type_Int = localCompressInfo.jdField_e_of_type_Int;
+      paramPicUploadInfo.o = localCompressInfo.l;
+      paramPicUploadInfo.p = localCompressInfo.m;
+      paramPicUploadInfo.q = localCompressInfo.n;
     }
     return paramPicUploadInfo;
   }
@@ -216,10 +125,10 @@ public class UploadPicOperator
   protected TransferRequest a(PicReq paramPicReq, PicUploadInfo paramPicUploadInfo)
   {
     b();
-    Object localObject1 = a(a(paramPicUploadInfo));
+    Object localObject1 = c(a(paramPicUploadInfo));
     if (localObject1 == null)
     {
-      Logger.a(this.jdField_b_of_type_JavaLangString, "doSendPic", "error, mr==null, return");
+      Logger.a(this.b, "doSendPic", "error, mr==null, return");
       return null;
     }
     if (QLog.isColorLevel())
@@ -235,31 +144,31 @@ public class UploadPicOperator
       a(paramPicReq, (MessageRecord)localObject1, paramPicUploadInfo);
       b((MessageForPic)localObject1);
     }
-    if ((((MessageRecord)localObject1).istroop == 1) && (paramPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo$RetryInfo == null)) {
+    if ((((MessageRecord)localObject1).istroop == 1) && (paramPicUploadInfo.ad == null)) {
       ((IDep)QRoute.api(IDep.class)).bindAnonymousInfo((MessageRecord)localObject1);
     }
-    if (paramPicUploadInfo.jdField_c_of_type_Boolean) {
+    if (paramPicUploadInfo.w) {
       try
       {
-        paramPicUploadInfo.jdField_a_of_type_JavaLangObject = localObject1;
+        paramPicUploadInfo.i = localObject1;
         paramPicUploadInfo.notifyAll();
-        localObject2 = this.jdField_b_of_type_JavaLangString;
+        localObject2 = this.b;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("PresendStatus: destPath:");
-        ((StringBuilder)localObject3).append(paramPicUploadInfo.jdField_g_of_type_JavaLangString);
+        ((StringBuilder)localObject3).append(paramPicUploadInfo.n);
         ((StringBuilder)localObject3).append(",uuid:");
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject3).append(this.a);
         ((StringBuilder)localObject3).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true");
         Logger.a(localObject2, "doSendPic ", ((StringBuilder)localObject3).toString());
-        if (paramPicUploadInfo.jdField_c_of_type_Int == 3)
+        if (paramPicUploadInfo.h == 3)
         {
-          Logger.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "PresendPic doSendPic ", "FLAG_NOT_UPLOAD,do not upload!");
-          paramPicReq = this.jdField_b_of_type_JavaLangString;
+          Logger.a(this.b, this.a, "PresendPic doSendPic ", "FLAG_NOT_UPLOAD,do not upload!");
+          paramPicReq = this.b;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("PresendStatus: destPath:");
-          ((StringBuilder)localObject1).append(paramPicUploadInfo.jdField_g_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(paramPicUploadInfo.n);
           ((StringBuilder)localObject1).append(",uuid:");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.a);
           ((StringBuilder)localObject1).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, FLAG_NOT_UPLOAD,do not upload!");
           Logger.a(paramPicReq, "doSendPic", ((StringBuilder)localObject1).toString());
           return null;
@@ -267,59 +176,59 @@ public class UploadPicOperator
       }
       finally {}
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject1);
+    this.i = ((MessageRecord)localObject1);
     long l = System.currentTimeMillis();
     paramPicReq = a(paramPicReq, paramPicUploadInfo, (MessageRecord)localObject1);
-    if (paramPicUploadInfo.jdField_c_of_type_Boolean) {
+    if (paramPicUploadInfo.w) {
       try
       {
-        if (paramPicUploadInfo.jdField_d_of_type_Boolean)
+        if (paramPicUploadInfo.x)
         {
-          Logger.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "PresendPic doSendPic cancel transferAsync!", "");
-          paramPicReq = this.jdField_b_of_type_JavaLangString;
+          Logger.a(this.b, this.a, "PresendPic doSendPic cancel transferAsync!", "");
+          paramPicReq = this.b;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("PresendStatus: destPath:");
-          ((StringBuilder)localObject1).append(paramPicUploadInfo.jdField_g_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(paramPicUploadInfo.n);
           ((StringBuilder)localObject1).append(",uuid:");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.a);
           ((StringBuilder)localObject1).append(",canceled:true, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:false");
           Logger.a(paramPicReq, "doSendPic ", ((StringBuilder)localObject1).toString());
           return null;
         }
-        Logger.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "PresendPic doSendPic start transferAsync!", "");
-        ((ITransFileController)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITransFileController.class, "")).transferAsync(paramPicReq);
-        localObject2 = this.jdField_b_of_type_JavaLangString;
+        Logger.a(this.b, this.a, "PresendPic doSendPic start transferAsync!", "");
+        ((ITransFileController)this.e.getRuntimeService(ITransFileController.class, "")).transferAsync(paramPicReq);
+        localObject2 = this.b;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("PresendStatus: destPath:");
-        ((StringBuilder)localObject3).append(paramPicUploadInfo.jdField_g_of_type_JavaLangString);
+        ((StringBuilder)localObject3).append(paramPicUploadInfo.n);
         ((StringBuilder)localObject3).append(",uuid:");
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject3).append(this.a);
         ((StringBuilder)localObject3).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true");
         Logger.a(localObject2, "doSendPic ", ((StringBuilder)localObject3).toString());
       }
       finally {}
     } else {
-      ((ITransFileController)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITransFileController.class, "")).transferAsync(paramPicReq);
+      ((ITransFileController)this.e.getRuntimeService(ITransFileController.class, "")).transferAsync(paramPicReq);
     }
-    Object localObject2 = this.jdField_b_of_type_JavaLangString;
-    Object localObject3 = this.jdField_a_of_type_JavaLangString;
+    Object localObject2 = this.b;
+    Object localObject3 = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cost:");
     localStringBuilder.append(System.currentTimeMillis() - l);
     Logger.a((String)localObject2, (String)localObject3, "sendReq", localStringBuilder.toString());
-    if ((paramPicUploadInfo.jdField_b_of_type_Boolean) && (!paramPicUploadInfo.jdField_c_of_type_Boolean))
+    if ((paramPicUploadInfo.v) && (!paramPicUploadInfo.w))
     {
-      Logger.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "sendPic", "@#addMsg");
-      a((MessageRecord)localObject1, paramPicUploadInfo.jdField_g_of_type_Long);
+      Logger.a(this.b, this.a, "sendPic", "@#addMsg");
+      a((MessageRecord)localObject1, paramPicUploadInfo.T);
     }
-    Logger.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "getSendTask.start", "");
+    Logger.a(this.b, this.a, "getSendTask.start", "");
     return paramPicReq;
   }
   
   protected TransferRequest a(PicReq paramPicReq, PicUploadInfo paramPicUploadInfo, MessageRecord paramMessageRecord)
   {
     paramPicReq = new TransferRequest();
-    paramPicReq.mSelfUin = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
+    paramPicReq.mSelfUin = this.e.getAccount();
     paramPicReq.mPeerUin = paramMessageRecord.frienduin;
     paramPicReq.mSecondId = paramMessageRecord.senderuin;
     paramPicReq.mUinType = paramMessageRecord.istroop;
@@ -327,21 +236,21 @@ public class UploadPicOperator
     paramPicReq.mFileType = 1;
     paramPicReq.mUniseq = paramMessageRecord.uniseq;
     paramPicReq.mIsUp = true;
-    paramPicReq.mBusiType = paramPicUploadInfo.jdField_a_of_type_Int;
-    paramPicReq.mLocalPath = paramPicUploadInfo.jdField_g_of_type_JavaLangString;
-    paramPicReq.mMd5 = paramPicUploadInfo.jdField_f_of_type_JavaLangString;
+    paramPicReq.mBusiType = paramPicUploadInfo.b;
+    paramPicReq.mLocalPath = paramPicUploadInfo.n;
+    paramPicReq.mMd5 = paramPicUploadInfo.m;
     paramMessageRecord = new TransferRequest.PicUpExtraInfo();
-    if (paramPicUploadInfo.a() != 1) {
+    if (paramPicUploadInfo.j() != 1) {
       bool = false;
     }
     paramMessageRecord.mIsRaw = bool;
     paramPicReq.mExtraObj = paramMessageRecord;
     paramPicReq.mUpCallBack = this;
-    paramPicReq.mRec = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    paramPicReq.mIsPresend = paramPicUploadInfo.jdField_c_of_type_Boolean;
-    paramPicReq.myPresendInvalid = paramPicUploadInfo.jdField_e_of_type_Boolean;
-    if (paramPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra != null) {
-      paramPicReq.mPicSendSource = paramPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.jdField_a_of_type_Int;
+    paramPicReq.mRec = this.i;
+    paramPicReq.mIsPresend = paramPicUploadInfo.w;
+    paramPicReq.myPresendInvalid = paramPicUploadInfo.y;
+    if (paramPicUploadInfo.ac != null) {
+      paramPicReq.mPicSendSource = paramPicUploadInfo.ac.h;
     }
     return paramPicReq;
   }
@@ -387,8 +296,8 @@ public class UploadPicOperator
         paramString = str;
       }
     }
-    str = this.jdField_b_of_type_JavaLangString;
-    localObject = this.jdField_a_of_type_JavaLangString;
+    str = this.b;
+    localObject = this.a;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("md5:");
     localStringBuilder.append(paramString);
@@ -400,27 +309,30 @@ public class UploadPicOperator
   
   public void a()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqPicPicReq);
+    b(this.c);
   }
   
   protected void a(MessageForPic paramMessageForPic, PicUploadInfo paramPicUploadInfo)
   {
-    ((IConfessMsgUtil)QRoute.api(IConfessMsgUtil.class)).bindConfessInfo((BaseQQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramMessageForPic, paramPicUploadInfo.jdField_c_of_type_JavaLangString, paramPicUploadInfo.jdField_b_of_type_Int, paramPicUploadInfo.o);
-    if (paramPicUploadInfo.jdField_b_of_type_Int == 0) {
-      ((IConfessMsgUtil)QRoute.api(IConfessMsgUtil.class)).bindC2CFirstMsgConfessInfo((BaseQQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramMessageForPic, paramPicUploadInfo.jdField_c_of_type_JavaLangString);
-    } else if (paramPicUploadInfo.jdField_b_of_type_Int == 1) {
-      ((IConfessMsgUtil)QRoute.api(IConfessMsgUtil.class)).bindGroupFirstMsgConfessInfo((BaseQQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramMessageForPic, paramPicUploadInfo.jdField_c_of_type_JavaLangString);
+    ((IConfessMsgUtil)QRoute.api(IConfessMsgUtil.class)).bindConfessInfo((BaseQQAppInterface)this.e, paramMessageForPic, paramPicUploadInfo.e, paramPicUploadInfo.c, paramPicUploadInfo.K);
+    if (paramPicUploadInfo.c == 0) {
+      ((IConfessMsgUtil)QRoute.api(IConfessMsgUtil.class)).bindC2CFirstMsgConfessInfo((BaseQQAppInterface)this.e, paramMessageForPic, paramPicUploadInfo.e);
+    } else if (paramPicUploadInfo.c == 1) {
+      ((IConfessMsgUtil)QRoute.api(IConfessMsgUtil.class)).bindGroupFirstMsgConfessInfo((BaseQQAppInterface)this.e, paramMessageForPic, paramPicUploadInfo.e);
     }
-    if (paramPicUploadInfo.p == 1)
+    if (paramPicUploadInfo.L == 1)
     {
       paramMessageForPic.saveExtInfoToExtStr("msg_extra_key_is_sync_qzone", String.valueOf(1));
-      paramMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_album_id", paramPicUploadInfo.j);
-      paramMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_batch_id", String.valueOf(paramPicUploadInfo.jdField_d_of_type_Long));
-      paramMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_is_raw", String.valueOf(paramPicUploadInfo.jdField_g_of_type_Int));
-      paramMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_batch_count", String.valueOf(paramPicUploadInfo.jdField_e_of_type_Long));
-      paramMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_photo_index", String.valueOf(paramPicUploadInfo.jdField_f_of_type_Long));
+      paramMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_album_id", paramPicUploadInfo.O);
+      paramMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_batch_id", String.valueOf(paramPicUploadInfo.N));
+      paramMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_is_raw", String.valueOf(paramPicUploadInfo.s));
+      paramMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_batch_count", String.valueOf(paramPicUploadInfo.P));
+      paramMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_photo_index", String.valueOf(paramPicUploadInfo.Q));
     }
-    if (paramPicUploadInfo.jdField_i_of_type_Boolean) {
+    if (paramPicUploadInfo.c == 10007) {
+      RoleIdUtil.c(paramMessageForPic);
+    }
+    if (paramPicUploadInfo.V) {
       paramMessageForPic.isStoryPhoto = true;
     }
     PicMessageExtraData localPicMessageExtraData2 = paramMessageForPic.picExtraData;
@@ -428,9 +340,9 @@ public class UploadPicOperator
     if (localPicMessageExtraData2 == null) {
       localPicMessageExtraData1 = new PicMessageExtraData();
     }
-    if (paramPicUploadInfo.d()) {
+    if (paramPicUploadInfo.h()) {
       localPicMessageExtraData1.imageBizType = 13;
-    } else if (paramPicUploadInfo.e()) {
+    } else if (paramPicUploadInfo.i()) {
       localPicMessageExtraData1.imageBizType = 2;
     }
     paramMessageForPic.picExtraData = localPicMessageExtraData1;
@@ -438,28 +350,17 @@ public class UploadPicOperator
   
   protected void a(MessageRecord paramMessageRecord, PicReq paramPicReq)
   {
-    ((IForwardOrderManager)QRoute.api(IForwardOrderManager.class)).mapUniSeqId(paramMessageRecord.uniseq, 0L, paramPicReq.jdField_c_of_type_Int);
-  }
-  
-  public void a(PicReq paramPicReq)
-  {
-    Logger.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "sendPic.start", "");
-    if (a(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo))
-    {
-      b(paramPicReq);
-      return;
-    }
-    a(3, paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo);
+    ((IForwardOrderManager)QRoute.api(IForwardOrderManager.class)).mapUniSeqId(paramMessageRecord.uniseq, 0L, paramPicReq.m);
   }
   
   protected void a(PicReq paramPicReq, MessageRecord paramMessageRecord, PicUploadInfo paramPicUploadInfo)
   {
     Object localObject1;
-    if (paramPicReq.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData != null)
+    if (paramPicReq.i != null)
     {
       localObject1 = (MessageForPic)paramMessageRecord;
-      ((MessageForPic)localObject1).picExtraData = paramPicReq.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData;
-      localObject2 = paramPicReq.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData;
+      ((MessageForPic)localObject1).picExtraData = paramPicReq.i;
+      localObject2 = paramPicReq.i;
       ((IDep)QRoute.api(IDep.class)).fillStickInfo((MessageForPic)localObject1, (PicMessageExtraData)localObject2);
     }
     Object localObject2 = (MessageForPic)paramMessageRecord;
@@ -471,31 +372,31 @@ public class UploadPicOperator
         paramMessageRecord = new PicMessageExtraData();
       }
       if (TextUtils.isEmpty(paramMessageRecord.textSummary)) {
-        paramMessageRecord.textSummary = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getString(2131691279);
+        paramMessageRecord.textSummary = this.e.getApp().getString(2131888229);
       }
-      paramMessageRecord.emojiPkgId = String.valueOf(paramPicUploadInfo.s);
-      paramMessageRecord.from = paramPicUploadInfo.r;
-      paramMessageRecord.source = paramPicUploadInfo.k;
-      paramMessageRecord.webUrl = paramPicUploadInfo.l;
-      paramMessageRecord.iconUrl = paramPicUploadInfo.m;
-      paramMessageRecord.packageName = paramPicUploadInfo.jdField_n_of_type_JavaLangString;
-      if ((paramMessageRecord.imageBizType <= 0) && ((paramPicReq.jdField_b_of_type_Int == 1050) || (paramPicReq.jdField_b_of_type_Int == 1051) || (paramPicReq.jdField_b_of_type_Int == 1052))) {
+      paramMessageRecord.emojiPkgId = String.valueOf(paramPicUploadInfo.ab);
+      paramMessageRecord.from = paramPicUploadInfo.W;
+      paramMessageRecord.source = paramPicUploadInfo.X;
+      paramMessageRecord.webUrl = paramPicUploadInfo.Y;
+      paramMessageRecord.iconUrl = paramPicUploadInfo.Z;
+      paramMessageRecord.packageName = paramPicUploadInfo.aa;
+      if ((paramMessageRecord.imageBizType <= 0) && ((paramPicReq.b == 1050) || (paramPicReq.b == 1051) || (paramPicReq.b == 1052))) {
         paramMessageRecord.imageBizType = 11;
       }
       ((MessageForPic)localObject2).picExtraData = paramMessageRecord;
     }
-    if ((paramPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra != null) && (!TextUtils.isEmpty(paramPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.jdField_a_of_type_JavaLangString)))
+    if ((paramPicUploadInfo.ac != null) && (!TextUtils.isEmpty(paramPicUploadInfo.ac.a)))
     {
       localObject1 = ((MessageForPic)localObject2).picExtraData;
       paramMessageRecord = (MessageRecord)localObject1;
       if (localObject1 == null) {
         paramMessageRecord = new PicMessageExtraData();
       }
-      paramMessageRecord.mTemplateId = paramPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.jdField_a_of_type_JavaLangString;
-      paramMessageRecord.mTemplateName = paramPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.jdField_b_of_type_JavaLangString;
+      paramMessageRecord.mTemplateId = paramPicUploadInfo.ac.a;
+      paramMessageRecord.mTemplateName = paramPicUploadInfo.ac.b;
       ((MessageForPic)localObject2).picExtraData = paramMessageRecord;
     }
-    if (paramPicReq.jdField_b_of_type_Int == 1053)
+    if (paramPicReq.b == 1053)
     {
       paramMessageRecord = ((MessageForPic)localObject2).picExtraData;
       paramPicReq = paramMessageRecord;
@@ -509,28 +410,28 @@ public class UploadPicOperator
   
   void a(PicUploadInfo paramPicUploadInfo, MessageForPic paramMessageForPic)
   {
-    Object localObject = new File(paramPicUploadInfo.jdField_g_of_type_JavaLangString);
+    Object localObject = new File(paramPicUploadInfo.n);
     if (((File)localObject).exists())
     {
       if (GifDrawable.isGifFile((File)localObject)) {
         paramMessageForPic.imageType = 2000;
       } else {
-        paramMessageForPic.imageType = PicBusUtil.a(paramPicUploadInfo.jdField_g_of_type_JavaLangString);
+        paramMessageForPic.imageType = PicBusUtil.c(paramPicUploadInfo.n);
       }
       localObject = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
       ((BitmapFactory.Options)localObject).inSampleSize = 1;
-      SafeBitmapFactory.decodeFile(paramPicUploadInfo.jdField_g_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+      SafeBitmapFactory.decodeFile(paramPicUploadInfo.n, (BitmapFactory.Options)localObject);
       paramMessageForPic.width = ((BitmapFactory.Options)localObject).outWidth;
       paramMessageForPic.height = ((BitmapFactory.Options)localObject).outHeight;
-      if (RichMediaUtil.isPicLandscape(paramPicUploadInfo.jdField_g_of_type_JavaLangString))
+      if (RichMediaUtil.isPicLandscape(paramPicUploadInfo.n))
       {
         paramMessageForPic.width = ((BitmapFactory.Options)localObject).outHeight;
         paramMessageForPic.height = ((BitmapFactory.Options)localObject).outWidth;
         if (QLog.isColorLevel())
         {
-          paramPicUploadInfo = this.jdField_b_of_type_JavaLangString;
-          String str = this.jdField_a_of_type_JavaLangString;
+          paramPicUploadInfo = this.b;
+          String str = this.a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(" pic is Landscape,swap w,h; options.outWidth = ");
           localStringBuilder.append(((BitmapFactory.Options)localObject).outWidth);
@@ -550,46 +451,75 @@ public class UploadPicOperator
   {
     if (paramSendResult != null)
     {
-      Object localObject = this.jdField_b_of_type_JavaLangString;
-      String str = this.jdField_a_of_type_JavaLangString;
+      Object localObject = this.b;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("resut:");
       localStringBuilder.append(paramSendResult);
       Logger.a((String)localObject, str, "updateMsg", localStringBuilder.toString());
-      localObject = (MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      ((MessageForPic)localObject).size = paramSendResult.jdField_a_of_type_Long;
-      ((MessageForPic)localObject).uuid = paramSendResult.jdField_c_of_type_JavaLangString;
-      ((MessageForPic)localObject).groupFileID = paramSendResult.jdField_b_of_type_Long;
-      ((MessageForPic)localObject).md5 = paramSendResult.jdField_d_of_type_JavaLangString;
+      localObject = (MessageForPic)this.i;
+      ((MessageForPic)localObject).size = paramSendResult.e;
+      ((MessageForPic)localObject).uuid = paramSendResult.f;
+      ((MessageForPic)localObject).groupFileID = paramSendResult.h;
+      ((MessageForPic)localObject).md5 = paramSendResult.g;
+      try
+      {
+        if ((((MessageForPic)localObject).picExtraData != null) && (paramSendResult.o != null) && (this.i.istroop == 10014)) {
+          ((MessageForPic)localObject).picExtraData.mDownloadIndex = new String(paramSendResult.o, "utf-8");
+        }
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("updateMsg error:  index");
+          localStringBuilder.append(Arrays.toString(paramSendResult.o));
+          localStringBuilder.append(localUnsupportedEncodingException);
+          QLog.d("UploadPicOperator", 2, localStringBuilder.toString());
+        }
+      }
       ((MessageForPic)localObject).serial();
       c((MessageForPic)localObject);
     }
   }
   
-  protected boolean a(PicUploadInfo paramPicUploadInfo)
+  protected PicUploadInfo.Builder b(Intent paramIntent)
   {
-    if (paramPicUploadInfo != null)
+    Object localObject = paramIntent.getStringExtra("uin");
+    String str2 = paramIntent.getStringExtra("troop_uin");
+    int i = paramIntent.getIntExtra("uintype", 1003);
+    int j = paramIntent.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+    int k = paramIntent.getIntExtra("PhotoConst.SEND_BUSINESS_TYPE", -1);
+    String str3 = paramIntent.getStringExtra("PhotoConst.PHOTO_SEND_PATH");
+    int m = paramIntent.getIntExtra("entrance", 0);
+    int n = paramIntent.getIntExtra("key_confess_topicid", 0);
+    boolean bool = paramIntent.getBooleanExtra("key_story_photo_to_recent", false);
+    String str1 = paramIntent.getStringExtra("widgetinfo");
+    paramIntent = paramIntent.getStringExtra("key_camera_material_name");
+    PicUploadInfo.Builder localBuilder = new PicUploadInfo.Builder();
+    localBuilder.d((String)localObject);
+    localBuilder.a(str3);
+    localBuilder.e(i);
+    localBuilder.e(str2);
+    localBuilder.d(k);
+    localBuilder.f(j);
+    localBuilder.l(n);
+    localBuilder.k(m);
+    localBuilder.a(bool);
+    if (!TextUtils.isEmpty(str1))
     {
-      String str1 = this.jdField_b_of_type_JavaLangString;
-      String str2 = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("info:");
-      localStringBuilder.append(paramPicUploadInfo);
-      Logger.a(str1, str2, "checkPicUploadInfo", localStringBuilder.toString());
-      if ((paramPicUploadInfo.a()) && (b(paramPicUploadInfo))) {
-        return true;
-      }
+      localObject = new PicUploadExtra();
+      ((PicUploadExtra)localObject).a = str1;
+      ((PicUploadExtra)localObject).b = paramIntent;
+      localBuilder.a((PicUploadExtra)localObject);
     }
-    else
-    {
-      Logger.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "checkPicUploadInfo", "info == null");
-    }
-    return false;
+    return localBuilder;
   }
   
   void b()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().preConnect();
+    this.e.getHwEngine().preConnect();
   }
   
   protected void b(MessageForPic paramMessageForPic)
@@ -597,15 +527,15 @@ public class UploadPicOperator
     ((IPicHelper)QRoute.api(IPicHelper.class)).cachePicToDisk(paramMessageForPic);
   }
   
-  protected void b(PicReq paramPicReq)
+  public void b(PicReq paramPicReq)
   {
-    PicUploadInfo localPicUploadInfo = paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo;
-    if (Looper.myLooper() == Looper.getMainLooper())
+    Logger.a(this.b, this.a, "sendPic.start", "");
+    if (b(paramPicReq.g))
     {
-      ThreadManagerV2.excute(new UploadPicOperator.2(this, paramPicReq, localPicUploadInfo), 16, null, false);
+      c(paramPicReq);
       return;
     }
-    a(paramPicReq, localPicUploadInfo);
+    a(3, paramPicReq.g.H);
   }
   
   public void b(UpCallBack.SendResult paramSendResult)
@@ -615,30 +545,148 @@ public class UploadPicOperator
       a(3, null);
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqPicPicReq != null) && ((this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_Int == 4)))
+    if ((this.c != null) && ((this.c.a == 2) || (this.c.a == 4)))
     {
-      if (paramSendResult.jdField_a_of_type_Int == 0)
+      if (paramSendResult.a == 0)
       {
         a(paramSendResult);
         c(paramSendResult);
         localObject = new PicResult();
-        ((PicResult)localObject).jdField_a_of_type_Int = 0;
-        ((PicResult)localObject).jdField_a_of_type_JavaLangObject = paramSendResult;
+        ((PicResult)localObject).a = 0;
+        ((PicResult)localObject).d = paramSendResult;
         a(3, (PicResult)localObject);
         return;
       }
       Object localObject = new PicInfoInterface.ErrInfo();
-      ((PicInfoInterface.ErrInfo)localObject).jdField_b_of_type_JavaLangString = paramSendResult.jdField_a_of_type_JavaLangString;
+      ((PicInfoInterface.ErrInfo)localObject).b = paramSendResult.c;
       a(3, (PicInfoInterface.ErrInfo)localObject);
     }
   }
   
   protected boolean b(PicUploadInfo paramPicUploadInfo)
   {
-    Object localObject = paramPicUploadInfo.jdField_g_of_type_JavaLangString;
-    int i = paramPicUploadInfo.jdField_g_of_type_Int;
-    int j = paramPicUploadInfo.jdField_a_of_type_Int;
-    localObject = PhotoIncompatibleBase.a((String)localObject);
+    if (paramPicUploadInfo != null)
+    {
+      String str1 = this.b;
+      String str2 = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("info:");
+      localStringBuilder.append(paramPicUploadInfo);
+      Logger.a(str1, str2, "checkPicUploadInfo", localStringBuilder.toString());
+      if ((paramPicUploadInfo.b()) && (d(paramPicUploadInfo))) {
+        return true;
+      }
+    }
+    else
+    {
+      Logger.b(this.b, this.a, "checkPicUploadInfo", "info == null");
+    }
+    return false;
+  }
+  
+  public MessageRecord c(PicUploadInfo paramPicUploadInfo)
+  {
+    long l = System.currentTimeMillis();
+    if (paramPicUploadInfo != null)
+    {
+      MessageForPic localMessageForPic = (MessageForPic)((IMessageRecordFactory)QRoute.api(IMessageRecordFactory.class)).createSendMSg_Pic(this.e, paramPicUploadInfo.e, paramPicUploadInfo.f, paramPicUploadInfo.c);
+      localMessageForPic.busiType = paramPicUploadInfo.b;
+      localMessageForPic.path = paramPicUploadInfo.n;
+      localMessageForPic.size = 0L;
+      localMessageForPic.type = 1;
+      localMessageForPic.isRead = true;
+      localMessageForPic.extraflag = 32772;
+      if (paramPicUploadInfo.s == 1) {
+        localMessageForPic.fileSizeFlag = 1;
+      }
+      localMessageForPic.localUUID = paramPicUploadInfo.a;
+      Object localObject = this.b;
+      String str = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localMessageForPic.localUUID);
+      localStringBuilder.append("|");
+      localStringBuilder.append(localMessageForPic.uniseq);
+      Logger.a((String)localObject, str, "bindUrlKeyAndUniseq", localStringBuilder.toString());
+      localMessageForPic.md5 = a(localMessageForPic.path);
+      c(paramPicUploadInfo, localMessageForPic);
+      localMessageForPic.thumbWidth = paramPicUploadInfo.p;
+      localMessageForPic.thumbHeight = paramPicUploadInfo.q;
+      a(paramPicUploadInfo, localMessageForPic);
+      localMessageForPic.extLong = paramPicUploadInfo.A;
+      localMessageForPic.extStr = paramPicUploadInfo.B;
+      localMessageForPic.msgVia = paramPicUploadInfo.I;
+      localMessageForPic.sync2Story = paramPicUploadInfo.M;
+      str = MessageConstants.m;
+      if (localMessageForPic.sync2Story) {
+        localObject = "1";
+      } else {
+        localObject = "0";
+      }
+      localMessageForPic.saveExtInfoToExtStr(str, (String)localObject);
+      a(localMessageForPic, paramPicUploadInfo);
+      localObject = paramPicUploadInfo.r;
+      if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+      {
+        b(paramPicUploadInfo, localMessageForPic);
+        localMessageForPic.imageType = 1003;
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("peak_pgjpeg", 2, "Slice infos is null");
+      }
+      localMessageForPic.serial();
+      if (localMessageForPic.istroop == 10014) {
+        ((IGuildMessageUtilsApi)QRoute.api(IGuildMessageUtilsApi.class)).saveGuildIdToMR(localMessageForPic, ((IGPSService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IGPSService.class, "")).getGuildIdOf(localMessageForPic.frienduin));
+      }
+      paramPicUploadInfo.g = localMessageForPic.uniseq;
+      localObject = this.b;
+      str = this.a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cost:");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      Logger.a((String)localObject, str, "packMsg", localStringBuilder.toString());
+      a(localMessageForPic);
+      localMessageForPic.DSKey = paramPicUploadInfo.u;
+      return localMessageForPic;
+    }
+    return null;
+  }
+  
+  void c(MessageForPic paramMessageForPic)
+  {
+    ((IMessageFacade)this.e.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(this.i.frienduin, this.i.istroop, this.i.uniseq, paramMessageForPic.msgData);
+  }
+  
+  protected void c(PicReq paramPicReq)
+  {
+    PicUploadInfo localPicUploadInfo = paramPicReq.g;
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      ThreadManagerV2.excute(new UploadPicOperator.2(this, paramPicReq, localPicUploadInfo), 16, null, false);
+      return;
+    }
+    a(paramPicReq, localPicUploadInfo);
+  }
+  
+  void c(PicUploadInfo paramPicUploadInfo, MessageForPic paramMessageForPic)
+  {
+    paramMessageForPic.thumbMsgUrl = paramPicUploadInfo.o;
+  }
+  
+  void c(UpCallBack.SendResult paramSendResult)
+  {
+    PicStatisticsManager localPicStatisticsManager = ((PicPreDownloadImpl)this.e.getRuntimeService(IPicPreDownload.class, "")).picStatisticsManager;
+    if (localPicStatisticsManager != null) {
+      localPicStatisticsManager.a(13057, paramSendResult.e);
+    }
+  }
+  
+  protected boolean d(PicUploadInfo paramPicUploadInfo)
+  {
+    Object localObject = paramPicUploadInfo.n;
+    int i = paramPicUploadInfo.s;
+    int j = paramPicUploadInfo.b;
+    localObject = PhotoIncompatibleBase.c((String)localObject);
     boolean bool2 = true;
     boolean bool1 = true;
     if (localObject != null)
@@ -649,7 +697,7 @@ public class UploadPicOperator
         localObject = ((PhotoIncompatibleBaseDecorator)localObject).a();
         if (localObject != null)
         {
-          paramPicUploadInfo.jdField_g_of_type_JavaLangString = ((String)localObject);
+          paramPicUploadInfo.n = ((String)localObject);
           break label165;
         }
         paramPicUploadInfo.a("PicBaseInfo.check", "incompatible photo generate jpg fail");
@@ -659,7 +707,7 @@ public class UploadPicOperator
         localObject = ((PhotoIncompatibleBaseDecorator)localObject).a();
         if (localObject != null)
         {
-          paramPicUploadInfo.jdField_g_of_type_JavaLangString = ((String)localObject);
+          paramPicUploadInfo.n = ((String)localObject);
           break label165;
         }
         paramPicUploadInfo.a("PicBaseInfo.check", "incompatible photo generate jpg fail");
@@ -682,28 +730,10 @@ public class UploadPicOperator
     }
     return bool2;
   }
-  
-  void c(MessageForPic paramMessageForPic)
-  {
-    ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, paramMessageForPic.msgData);
-  }
-  
-  void c(PicUploadInfo paramPicUploadInfo, MessageForPic paramMessageForPic)
-  {
-    paramMessageForPic.thumbMsgUrl = paramPicUploadInfo.h;
-  }
-  
-  void c(UpCallBack.SendResult paramSendResult)
-  {
-    PicStatisticsManager localPicStatisticsManager = ((PicPreDownloadImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPicPreDownload.class, "")).picStatisticsManager;
-    if (localPicStatisticsManager != null) {
-      localPicStatisticsManager.a(13057, paramSendResult.jdField_a_of_type_Long);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.UploadPicOperator
  * JD-Core Version:    0.7.0.1
  */

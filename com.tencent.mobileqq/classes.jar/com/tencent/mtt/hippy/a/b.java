@@ -7,31 +7,29 @@ import java.net.URI;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class b
   implements d.a
 {
   d a;
-  private final AtomicInteger b = new AtomicInteger();
-  private final ConcurrentHashMap<Integer, b.a> c = new ConcurrentHashMap();
-  private b.a d;
-  private f.a e;
+  private final ConcurrentHashMap<Integer, b.a> b = new ConcurrentHashMap();
+  private b.a c;
+  private f.a d;
   
-  private void a(String paramString, Throwable paramThrowable)
+  private void a(Throwable paramThrowable)
   {
     a();
-    paramString = this.d;
-    if (paramString != null)
+    Object localObject = this.c;
+    if (localObject != null)
     {
-      paramString.a(paramThrowable);
-      this.d = null;
+      ((b.a)localObject).a(paramThrowable);
+      this.c = null;
     }
-    paramString = this.c.values().iterator();
-    while (paramString.hasNext()) {
-      ((b.a)paramString.next()).a(paramThrowable);
+    localObject = this.b.values().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((b.a)((Iterator)localObject).next()).a(paramThrowable);
     }
-    this.c.clear();
+    this.b.clear();
   }
   
   public void a()
@@ -49,12 +47,12 @@ public class b
   
   public void a(f.a parama)
   {
-    this.e = parama;
+    this.d = parama;
   }
   
   public void a(Exception paramException)
   {
-    a("Websocket exception", paramException);
+    a(paramException);
   }
   
   public void a(String paramString)
@@ -70,7 +68,7 @@ public class b
   
   public void a(String paramString, b.a parama)
   {
-    this.d = parama;
+    this.c = parama;
     this.a = new d(URI.create(paramString), this, null);
     this.a.a();
   }
@@ -79,21 +77,21 @@ public class b
   
   public void b()
   {
-    b.a locala = this.d;
+    b.a locala = this.c;
     if (locala != null) {
       locala.a(null);
     }
-    this.d = null;
+    this.c = null;
   }
   
   public void b(String paramString)
   {
-    this.e.onReceiveData(paramString);
+    this.d.onReceiveData(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.b
  * JD-Core Version:    0.7.0.1
  */

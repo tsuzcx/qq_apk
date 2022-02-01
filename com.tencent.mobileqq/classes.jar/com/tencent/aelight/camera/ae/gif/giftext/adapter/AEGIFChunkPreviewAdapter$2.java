@@ -14,23 +14,23 @@ class AEGIFChunkPreviewAdapter$2
   {
     if (paramSmartTextColor != null)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setTextColor(paramSmartTextColor.a);
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setOutlineColor(paramSmartTextColor.b);
+      this.a.setTextColor(paramSmartTextColor.a);
+      this.a.setOutlineColor(paramSmartTextColor.b);
       if (paramSmartTextColor.a.equals("#ccffffff"))
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setShadowParam(3.0F, 0.0F, 1.0F, "#73000000");
-        this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setShadow(true);
-        this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setStroke(false);
+        this.a.setShadowParam(3.0F, 0.0F, 1.0F, "#73000000");
+        this.a.setShadow(true);
+        this.a.setStroke(false);
         return;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setShadow(false);
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setStroke(true);
+      this.a.setShadow(false);
+      this.a.setStroke(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.adapter.AEGIFChunkPreviewAdapter.2
  * JD-Core Version:    0.7.0.1
  */

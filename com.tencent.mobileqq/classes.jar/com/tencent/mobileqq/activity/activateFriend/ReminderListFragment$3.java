@@ -15,15 +15,15 @@ class ReminderListFragment$3
   {
     AcsMsg localAcsMsg = (AcsMsg)paramView.getTag();
     ReminderListFragment.a(this.a, localAcsMsg);
-    if (ReminderListFragment.a(this.a) != null) {
-      ReminderListFragment.a(this.a).dismiss();
+    if (ReminderListFragment.b(this.a) != null) {
+      ReminderListFragment.b(this.a).dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.3
  * JD-Core Version:    0.7.0.1
  */

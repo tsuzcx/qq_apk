@@ -2,65 +2,65 @@ package com.tencent.mobileqq.streamtransfile;
 
 public class StreamDataInfo
 {
-  private int jdField_a_of_type_Int = 0;
-  private short jdField_a_of_type_Short = 0;
-  private boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
-  private boolean b = false;
+  private byte[] a = null;
+  private int b = 0;
+  private short c = 0;
+  private boolean d = false;
+  private boolean e = false;
   
   StreamDataInfo(int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public short a()
-  {
-    return this.jdField_a_of_type_Short;
+    this.a = new byte[paramInt];
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(short paramShort)
   {
-    this.jdField_a_of_type_Short = paramShort;
+    this.c = paramShort;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.d = paramBoolean;
   }
   
   public byte[] a()
   {
-    return this.jdField_a_of_type_ArrayOfByte;
+    return this.a;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.e = paramBoolean;
   }
   
-  public boolean b()
+  public short c()
   {
-    return this.b;
+    return this.c;
+  }
+  
+  public boolean d()
+  {
+    return this.d;
+  }
+  
+  public boolean e()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.streamtransfile.StreamDataInfo
  * JD-Core Version:    0.7.0.1
  */

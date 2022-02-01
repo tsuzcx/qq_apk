@@ -12,15 +12,15 @@ class ReceiptMessageDetailFragment$6
   
   public void onReceiptMessageReadReportResult(long paramLong, int paramInt)
   {
-    if (ReceiptMessageDetailFragment.b(this.a) == paramLong) {
+    if (ReceiptMessageDetailFragment.q(this.a) == paramLong) {
       if (paramInt == 0)
       {
         QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c succ");
         ReceiptMessageDetailFragment.a(this.a, 0, 0, false);
-        ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+        ReceiptMessageDetailFragment.j(this.a).removeObserver(this);
         if (this.a.isAdded())
         {
-          ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(4);
+          ReceiptMessageDetailFragment.r(this.a).sendEmptyMessage(4);
           ReceiptMessageDetailFragment.a(this.a, 1, true);
         }
       }
@@ -30,9 +30,9 @@ class ReceiptMessageDetailFragment$6
         localStringBuilder.append("send read report in c2c fail with reply codes: ");
         localStringBuilder.append(paramInt);
         QLog.d("ReceiptMessageDetailFragment", 4, localStringBuilder.toString());
-        ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+        ReceiptMessageDetailFragment.j(this.a).removeObserver(this);
         if (this.a.isAdded()) {
-          ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(5);
+          ReceiptMessageDetailFragment.r(this.a).sendEmptyMessage(5);
         }
       }
     }
@@ -40,7 +40,7 @@ class ReceiptMessageDetailFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.6
  * JD-Core Version:    0.7.0.1
  */

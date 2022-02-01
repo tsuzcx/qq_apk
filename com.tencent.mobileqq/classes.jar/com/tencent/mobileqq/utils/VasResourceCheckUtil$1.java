@@ -22,7 +22,7 @@ final class VasResourceCheckUtil$1
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    paramDownloadTask = new File(VasResourceCheckUtil.jdField_a_of_type_JavaLangString);
+    paramDownloadTask = new File(VasResourceCheckUtil.a);
     if (paramDownloadTask.exists())
     {
       paramDownloadTask = FileUtils.readFileToStringEx(paramDownloadTask, -1);
@@ -45,7 +45,7 @@ final class VasResourceCheckUtil$1
           QLog.d("VasResourceCheckUtil", 2, ((StringBuilder)localObject).toString());
         }
         VasResourceCheckUtil.a(this.a);
-        VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.sendMessage(VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage(257));
+        VasResourceCheckUtil.b.sendMessage(VasResourceCheckUtil.b.obtainMessage(257));
         return;
       }
       catch (Exception paramDownloadTask)
@@ -54,16 +54,16 @@ final class VasResourceCheckUtil$1
         ((StringBuilder)localObject).append("decode json fail: ");
         ((StringBuilder)localObject).append(paramDownloadTask.getMessage());
         QLog.e("VasResourceCheckUtil", 1, ((StringBuilder)localObject).toString());
-        VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.sendMessage(VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage(259));
+        VasResourceCheckUtil.b.sendMessage(VasResourceCheckUtil.b.obtainMessage(259));
         return;
       }
     }
-    VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.sendMessage(VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage(258));
+    VasResourceCheckUtil.b.sendMessage(VasResourceCheckUtil.b.obtainMessage(258));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VasResourceCheckUtil.1
  * JD-Core Version:    0.7.0.1
  */

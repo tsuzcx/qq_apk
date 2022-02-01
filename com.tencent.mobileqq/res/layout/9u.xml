@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/qax" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/niu" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginTop="5.0dip">
+        <com.tencent.mobileqq.widget.SimpleSlidingIndicator android:textSize="14.0dip" android:id="@id/nit" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginLeft="0.0dip" android:layout_centerVertical="true" app:checkTextColor="@color/hd" app:indicatorAlpha="25" app:indicatorColor="@color/hd" app:indicatorMarginLeftRight="0.0dip" app:indicatorMarginTopBottom="0.0dip" app:indicatorRoundRectX="16.0dip" app:indicatorRoundRectY="16.0dip" app:tabContainerPaddingLeftRight="16.0dip" app:tabGap="0.0dip" app:tabPaddingLeftRight="0.0dip" app:uncheckTextColor="@color/skin_gray2_theme_version2" />
+        <RelativeLayout android:layout_width="106.0dip" android:layout_height="46.0dip">
+            <View android:id="@id/nir" android:background="@drawable/ixf" android:visibility="gone" android:layout_width="106.0dip" android:layout_height="46.0dip" />
+            <com.tencent.mobileqq.widget.RedDotTextView android:textSize="14.0dip" android:gravity="center" android:id="@id/nip" android:paddingLeft="14.0dip" android:paddingRight="14.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginLeft="16.0dip" android:text="@string/yel" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <View android:background="@drawable/jh" android:layout_width="fill_parent" android:layout_height="5.0dip" />
+    <ViewStub android:id="@id/qt_" android:layout="@layout/9v" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.widget.SwipListView android:scrollbarStyle="outsideOverlay" android:id="@id/nis" android:paddingBottom="54.0dip" android:fadingEdgeLength="0.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" />
+</LinearLayout>

@@ -12,30 +12,29 @@ import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.callback.IHttpDownloader;
 import com.tencent.vas.update.callback.listener.IDownloadListener;
 import com.tencent.vas.update.entity.DownloadInfoParams;
+import com.tencent.vas.update.factory.api.IHttpDownloader;
 import java.io.File;
 
 public class VasHttpDownloaderImpl
   extends DownloadListener
   implements IHttpDownloader
 {
-  private DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new VasHttpDownloaderImpl.2(this);
-  private IDownloadListener jdField_a_of_type_ComTencentVasUpdateCallbackListenerIDownloadListener;
+  private IDownloadListener a;
+  private DownloadListener b = new VasHttpDownloaderImpl.2(this);
   
   private DownloadTask a(@NonNull DownloadInfoParams paramDownloadInfoParams)
   {
     DownloadTask localDownloadTask = new DownloadTask(paramDownloadInfoParams.mUrl, new File(paramDownloadInfoParams.mSavePath));
-    localDownloadTask.f = "vas_update_system";
-    localDownloadTask.e = true;
-    localDownloadTask.p = true;
-    localDownloadTask.r = true;
+    localDownloadTask.L = "vas_update_system";
     localDownloadTask.q = true;
-    localDownloadTask.j = true;
-    localDownloadTask.n = false;
-    localDownloadTask.s = false;
-    localDownloadTask.a = paramDownloadInfoParams.mItemId;
+    localDownloadTask.N = true;
+    localDownloadTask.Q = true;
+    localDownloadTask.P = true;
+    localDownloadTask.J = false;
+    localDownloadTask.T = false;
+    localDownloadTask.b = paramDownloadInfoParams.mItemId;
     return localDownloadTask;
   }
   
@@ -88,7 +87,25 @@ public class VasHttpDownloaderImpl
     QLog.e("VasUpdate_HttpImpl", 1, "onPreloadDownloadComplete app is not QQAppInterface");
   }
   
-  public void cancelDownload(String paramString)
+  public void a(DownloadInfoParams paramDownloadInfoParams, IDownloadListener paramIDownloadListener, Bundle paramBundle)
+  {
+    if ((a() != null) && (paramDownloadInfoParams != null))
+    {
+      this.a = paramIDownloadListener;
+      if ((paramDownloadInfoParams.mFrom != null) && (paramDownloadInfoParams.mFrom.contains("silent_download")) && (paramBundle == null))
+      {
+        a(paramDownloadInfoParams, paramIDownloadListener);
+        return;
+      }
+      paramIDownloadListener = new Bundle();
+      paramIDownloadListener.putString("from", paramDownloadInfoParams.mFrom);
+      a().startDownload(a(paramDownloadInfoParams), this.b, paramIDownloadListener);
+      return;
+    }
+    QLog.e("VasUpdate_HttpImpl", 1, "startDownload download = null  or params = null");
+  }
+  
+  public void a(String paramString)
   {
     if (a() == null)
     {
@@ -97,28 +114,10 @@ public class VasHttpDownloaderImpl
     }
     a().cancelTask(false, paramString);
   }
-  
-  public void startDownload(DownloadInfoParams paramDownloadInfoParams, IDownloadListener paramIDownloadListener, Bundle paramBundle)
-  {
-    if ((a() != null) && (paramDownloadInfoParams != null))
-    {
-      this.jdField_a_of_type_ComTencentVasUpdateCallbackListenerIDownloadListener = paramIDownloadListener;
-      if ((paramDownloadInfoParams.mFrom != null) && (paramDownloadInfoParams.mFrom.contains("silent_download")) && (paramBundle == null))
-      {
-        a(paramDownloadInfoParams, paramIDownloadListener);
-        return;
-      }
-      paramIDownloadListener = new Bundle();
-      paramIDownloadListener.putString("from", paramDownloadInfoParams.mFrom);
-      a().startDownload(a(paramDownloadInfoParams), this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, paramIDownloadListener);
-      return;
-    }
-    QLog.e("VasUpdate_HttpImpl", 1, "startDownload download = null  or params = null");
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.impl.VasHttpDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

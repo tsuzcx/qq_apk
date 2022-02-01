@@ -18,19 +18,19 @@ class IntimatePlayTogetherMiniGameCardView$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.total.get() <= 1) {
+    if (this.a.total.get() <= 1) {
       QLog.d("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "will not jump because total count less than 2" });
-    } else if (TextUtils.isEmpty(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get())) {
+    } else if (TextUtils.isEmpty(this.a.moreJumpLink.get())) {
       QLog.e("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "Could not launch with empty jump url" });
     } else {
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimatePlayTogetherMiniGameCardView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get(), 2064, new IntimatePlayTogetherMiniGameCardView.1.1(this));
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.b.getContext(), this.a.moreJumpLink.get(), 2064, new IntimatePlayTogetherMiniGameCardView.1.1(this));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView.1
  * JD-Core Version:    0.7.0.1
  */

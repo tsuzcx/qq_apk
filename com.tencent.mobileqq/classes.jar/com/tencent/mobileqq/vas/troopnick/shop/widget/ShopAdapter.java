@@ -33,43 +33,18 @@ import java.util.Map;
 public class ShopAdapter
   extends RecyclerView.Adapter<ShopAdapter.BgHolder>
 {
-  protected int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ShopAdapter.Callback jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter$Callback;
-  private ShopAdapter.DataItem jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter$DataItem;
-  private ShopLayout.ShopSetting jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopLayout$ShopSetting;
-  private ArrayList<ShopAdapter.DataItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private ShopAdapter.DataItem b;
+  protected int a = -1;
+  private ArrayList<ShopAdapter.DataItem> b = new ArrayList();
+  private ShopLayout.ShopSetting c;
+  private Context d;
+  private ShopAdapter.DataItem e;
+  private ShopAdapter.DataItem f;
+  private ShopAdapter.Callback g;
+  private boolean h = true;
   
   public ShopAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private int a(int paramInt)
-  {
-    if ((paramInt != 0) && (paramInt != 1))
-    {
-      if (paramInt != 4)
-      {
-        if (paramInt != 5)
-        {
-          if (paramInt != 21)
-          {
-            if (paramInt != 22) {
-              return 2130847691;
-            }
-            return 2130847692;
-          }
-          return 2130847693;
-        }
-        return 2130847694;
-      }
-      return 2130847695;
-    }
-    return 2130847690;
+    this.d = paramContext;
   }
   
   private Drawable a(String paramString, boolean paramBoolean)
@@ -95,30 +70,30 @@ public class ShopAdapter
     if (!paramBoolean) {
       return paramString;
     }
-    return new LayerDrawable(new Drawable[] { paramString, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847704) });
+    return new LayerDrawable(new Drawable[] { paramString, this.d.getResources().getDrawable(2130849364) });
   }
   
   private void a(TextView paramTextView, int paramInt)
   {
-    paramTextView.setCompoundDrawablePadding(ViewUtils.b(4.0F));
-    paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, a(paramInt), 0);
+    paramTextView.setCompoundDrawablePadding(ViewUtils.dpToPx(4.0F));
+    paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, b(paramInt), 0);
   }
   
   private void a(ShopAdapter.BgHolder paramBgHolder, int paramInt, ShopAdapter.DataItem paramDataItem)
   {
-    paramBgHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramDataItem.jdField_a_of_type_JavaLangString);
-    if (paramBgHolder.b != null) {
-      paramBgHolder.b.setText(paramDataItem.jdField_b_of_type_JavaLangString);
+    paramBgHolder.a.setText(paramDataItem.a);
+    if (paramBgHolder.g != null) {
+      paramBgHolder.g.setText(paramDataItem.c);
     }
-    View localView = paramBgHolder.itemView.findViewById(2131378026);
+    View localView = paramBgHolder.itemView.findViewById(2131446525);
     if (localView != null) {
-      if (TextUtils.isEmpty(paramDataItem.jdField_b_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramDataItem.c)) {
         localView.setVisibility(8);
       } else {
         localView.setVisibility(0);
       }
     }
-    paramDataItem = paramBgHolder.itemView.findViewById(2131365754);
+    paramDataItem = paramBgHolder.itemView.findViewById(2131431997);
     if (paramDataItem != null) {
       if (paramInt > 1) {
         paramDataItem.setVisibility(0);
@@ -127,17 +102,17 @@ public class ShopAdapter
       }
     }
     if (Build.VERSION.SDK_INT >= 21) {
-      paramBgHolder.c.getBackground().setTint(Color.parseColor("#FFDE66"));
+      paramBgHolder.h.getBackground().setTint(Color.parseColor("#FFDE66"));
     }
-    paramBgHolder.c.setOnClickListener(new ShopAdapter.1(this));
+    paramBgHolder.h.setOnClickListener(new ShopAdapter.1(this));
   }
   
   private void a(ShopAdapter.DataItem paramDataItem)
   {
     notifyDataSetChanged();
-    ShopLayout.ShopSetting localShopSetting = this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopLayout$ShopSetting;
+    ShopLayout.ShopSetting localShopSetting = this.c;
     if (localShopSetting != null) {
-      localShopSetting.a(paramDataItem.jdField_c_of_type_Int, paramDataItem.jdField_b_of_type_Int);
+      localShopSetting.a(paramDataItem.f, paramDataItem.e);
     }
   }
   
@@ -146,8 +121,8 @@ public class ShopAdapter
     if (paramModuleData.extModParams != null) {
       paramString = (String)paramModuleData.extModParams.get("subTitle");
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new ShopAdapter.DataItem(this, 2, paramModuleData.cname, paramString));
-    if (this.jdField_a_of_type_Boolean) {
+    this.b.add(new ShopAdapter.DataItem(this, 2, paramModuleData.cname, paramString));
+    if (this.h) {
       ReportHelper.a(2, 0, 0, 111);
     }
     if ((paramModuleData.vitem != null) && (paramModuleData.vitem.size() != 0))
@@ -156,14 +131,38 @@ public class ShopAdapter
       while (localIterator.hasNext())
       {
         ItemDisDetail localItemDisDetail = (ItemDisDetail)localIterator.next();
-        this.jdField_a_of_type_JavaUtilArrayList.add(new ShopAdapter.DataItem(this, 0, paramModuleData.cname, paramString, localItemDisDetail));
-        if (this.jdField_a_of_type_Boolean) {
+        this.b.add(new ShopAdapter.DataItem(this, 0, paramModuleData.cname, paramString, localItemDisDetail));
+        if (this.h) {
           ReportHelper.a(2, localItemDisDetail.itemId, localItemDisDetail.feeType, 101);
         }
       }
       return false;
     }
     return true;
+  }
+  
+  private int b(int paramInt)
+  {
+    if ((paramInt != 0) && (paramInt != 1))
+    {
+      if (paramInt != 4)
+      {
+        if (paramInt != 5)
+        {
+          if (paramInt != 21)
+          {
+            if (paramInt != 22) {
+              return 2130849351;
+            }
+            return 2130849352;
+          }
+          return 2130849353;
+        }
+        return 2130849354;
+      }
+      return 2130849355;
+    }
+    return 2130849350;
   }
   
   public ShopAdapter.BgHolder a(ViewGroup paramViewGroup, int paramInt)
@@ -173,26 +172,26 @@ public class ShopAdapter
       if (paramInt != 2) {
         return null;
       }
-      paramViewGroup = new ShopAdapter.BgHolder(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131562059, null));
-      paramViewGroup.jdField_a_of_type_Boolean = true;
+      paramViewGroup = new ShopAdapter.BgHolder(this, View.inflate(this.d, 2131628485, null));
+      paramViewGroup.f = true;
       return paramViewGroup;
     }
-    return new ShopAdapter.BgHolder(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131562057, null));
+    return new ShopAdapter.BgHolder(this, View.inflate(this.d, 2131628483, null));
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+    this.a = -1;
+    if (this.b == null) {
       return;
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.b.size())
     {
-      if ((((ShopAdapter.DataItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a()) && (((ShopAdapter.DataItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_b_of_type_Int == paramInt))
+      if ((((ShopAdapter.DataItem)this.b.get(i)).a()) && (((ShopAdapter.DataItem)this.b.get(i)).e == paramInt))
       {
-        this.jdField_a_of_type_Int = paramInt;
-        this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter$DataItem = ((ShopAdapter.DataItem)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        this.a = paramInt;
+        this.e = ((ShopAdapter.DataItem)this.b.get(i));
         notifyDataSetChanged();
         return;
       }
@@ -202,42 +201,42 @@ public class ShopAdapter
   
   public void a(ShopAdapter.BgHolder paramBgHolder, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.b;
     if ((localObject != null) && (((ArrayList)localObject).get(paramInt) != null))
     {
-      localObject = (ShopAdapter.DataItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      if (((ShopAdapter.DataItem)localObject).jdField_a_of_type_Int == 2)
+      localObject = (ShopAdapter.DataItem)this.b.get(paramInt);
+      if (((ShopAdapter.DataItem)localObject).b == 2)
       {
         a(paramBgHolder, paramInt, (ShopAdapter.DataItem)localObject);
       }
-      else if (((ShopAdapter.DataItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a())
+      else if (((ShopAdapter.DataItem)this.b.get(paramInt)).a())
       {
-        paramBgHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((ShopAdapter.DataItem)localObject).e);
+        paramBgHolder.a.setText(((ShopAdapter.DataItem)localObject).j);
         boolean bool;
-        if (this.jdField_a_of_type_Int == ((ShopAdapter.DataItem)localObject).jdField_b_of_type_Int) {
+        if (this.a == ((ShopAdapter.DataItem)localObject).e) {
           bool = true;
         } else {
           bool = false;
         }
-        paramBgHolder.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout.setBackgroundDrawable(a(((ShopAdapter.DataItem)localObject).jdField_d_of_type_JavaLangString, bool));
-        if (((ShopAdapter.DataItem)localObject).jdField_a_of_type_Boolean)
+        paramBgHolder.c.setBackgroundDrawable(a(((ShopAdapter.DataItem)localObject).i, bool));
+        if (((ShopAdapter.DataItem)localObject).d)
         {
-          paramBgHolder.jdField_a_of_type_AndroidWidgetButton.setText(2131691849);
-          paramBgHolder.jdField_a_of_type_AndroidWidgetButton.setTextColor(paramBgHolder.jdField_a_of_type_AndroidWidgetButton.getResources().getColor(2131165477));
+          paramBgHolder.e.setText(2131888814);
+          paramBgHolder.e.setTextColor(paramBgHolder.e.getResources().getColor(2131165798));
         }
-        int i = (ScreenUtil.getRealWidth(this.jdField_a_of_type_AndroidContentContext) - ScreenUtil.dip2px(96.0F)) / 3;
-        ViewGroup.LayoutParams localLayoutParams = paramBgHolder.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+        int i = (ScreenUtil.getRealWidth(this.d) - ScreenUtil.dip2px(96.0F)) / 3;
+        ViewGroup.LayoutParams localLayoutParams = paramBgHolder.b.getLayoutParams();
         localLayoutParams.width = i;
         localLayoutParams.height = ((int)(i * 0.57F));
-        paramBgHolder.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-        paramBgHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(((ShopAdapter.DataItem)localObject).jdField_c_of_type_JavaLangString));
-        a(paramBgHolder.jdField_a_of_type_AndroidWidgetTextView, ((ShopAdapter.DataItem)localObject).jdField_d_of_type_Int);
-        if (!((ShopAdapter.DataItem)localObject).jdField_a_of_type_Boolean) {
-          paramBgHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ShopAdapter.ItemOnClickListener(this, (ShopAdapter.DataItem)localObject, true));
+        paramBgHolder.b.setLayoutParams(localLayoutParams);
+        paramBgHolder.b.setImageDrawable(((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(((ShopAdapter.DataItem)localObject).h));
+        a(paramBgHolder.a, ((ShopAdapter.DataItem)localObject).g);
+        if (!((ShopAdapter.DataItem)localObject).d) {
+          paramBgHolder.e.setOnClickListener(new ShopAdapter.ItemOnClickListener(this, (ShopAdapter.DataItem)localObject, true));
         } else {
-          paramBgHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(null);
+          paramBgHolder.e.setOnClickListener(null);
         }
-        paramBgHolder.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout.setOnClickListener(new ShopAdapter.ItemOnClickListener(this, (ShopAdapter.DataItem)localObject, false));
+        paramBgHolder.c.setOnClickListener(new ShopAdapter.ItemOnClickListener(this, (ShopAdapter.DataItem)localObject, false));
       }
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramBgHolder, paramInt, getItemId(paramInt));
@@ -245,18 +244,18 @@ public class ShopAdapter
   
   public void a(ShopAdapter.Callback paramCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter$Callback = paramCallback;
+    this.g = paramCallback;
   }
   
   public void a(ShopLayout.ShopSetting paramShopSetting)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopLayout$ShopSetting = paramShopSetting;
+    this.c = paramShopSetting;
   }
   
   @UiThread
   public void a(Object[] paramArrayOfObject)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.b;
     if (localObject != null)
     {
       if (paramArrayOfObject == null) {
@@ -276,7 +275,7 @@ public class ShopAdapter
             localObject = ((CGetChiefRsp)localObject).modData.iterator();
             while (((Iterator)localObject).hasNext()) {
               if (!a((ModuleData)((Iterator)localObject).next(), "")) {
-                this.jdField_a_of_type_Boolean = false;
+                this.h = false;
               }
             }
           }
@@ -289,7 +288,7 @@ public class ShopAdapter
   
   public int getItemCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     if (localArrayList == null) {
       return 0;
     }
@@ -298,12 +297,12 @@ public class ShopAdapter
   
   public int getItemViewType(int paramInt)
   {
-    return ((ShopAdapter.DataItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int;
+    return ((ShopAdapter.DataItem)this.b.get(paramInt)).b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.shop.widget.ShopAdapter
  * JD-Core Version:    0.7.0.1
  */

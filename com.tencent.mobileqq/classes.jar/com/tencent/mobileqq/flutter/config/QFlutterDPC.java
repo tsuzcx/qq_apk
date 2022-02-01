@@ -11,36 +11,36 @@ import mqq.app.AppRuntime;
 
 public class QFlutterDPC
 {
-  private static QFlutterDPC jdField_a_of_type_ComTencentMobileqqFlutterConfigQFlutterDPC;
-  private static final String jdField_a_of_type_JavaLangString = DPCNames.qflutterCfg.name();
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private static final String a = DPCNames.qflutterCfg.name();
+  private static Random b = new Random();
+  private static QFlutterDPC f;
+  private boolean c;
+  private boolean d;
+  private int e;
   
   private QFlutterDPC()
   {
     ((IDPCApi)QRoute.api(IDPCApi.class)).addObserver(new QFlutterDPC.1(this));
-    a();
+    b();
   }
   
   public static QFlutterDPC a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqFlutterConfigQFlutterDPC == null) {
+    if (f == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqFlutterConfigQFlutterDPC == null) {
-          jdField_a_of_type_ComTencentMobileqqFlutterConfigQFlutterDPC = new QFlutterDPC();
+        if (f == null) {
+          f = new QFlutterDPC();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqFlutterConfigQFlutterDPC;
+    return f;
   }
   
-  public void a()
+  public void b()
   {
-    String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(jdField_a_of_type_JavaLangString);
+    String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(a);
     if (!TextUtils.isEmpty(str))
     {
       String[] arrayOfString = str.split("\\|");
@@ -48,16 +48,16 @@ public class QFlutterDPC
         try
         {
           if (Integer.valueOf(arrayOfString[0]).intValue() == 1) {
-            this.jdField_a_of_type_Boolean = true;
+            this.c = true;
           } else {
-            this.jdField_a_of_type_Boolean = false;
+            this.c = false;
           }
-          if (jdField_a_of_type_JavaUtilRandom.nextFloat() < Float.valueOf(arrayOfString[1]).floatValue()) {
-            this.b = true;
+          if (b.nextFloat() < Float.valueOf(arrayOfString[1]).floatValue()) {
+            this.d = true;
           } else {
-            this.b = false;
+            this.d = false;
           }
-          this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[2]).intValue();
+          this.e = Integer.valueOf(arrayOfString[2]).intValue();
         }
         catch (Exception localException)
         {
@@ -65,29 +65,29 @@ public class QFlutterDPC
           localStringBuilder.append("loadConfig exception :");
           localStringBuilder.append(localException.getMessage());
           QLog.d("QFlutterDPC", 1, localStringBuilder.toString());
-          this.b = true;
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_Int = 0;
+          this.d = true;
+          this.c = true;
+          this.e = 0;
         }
       }
     }
     else
     {
-      this.b = true;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = 0;
+      this.d = true;
+      this.c = true;
+      this.e = 0;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QFlutterDPC", 2, String.format("loadConfig, dpcValue: %s, mIsSupport: %s, mNeedReport: %s, mVoteRankingFlutterThreashold=%s", new Object[] { str, Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      QLog.d("QFlutterDPC", 2, String.format("loadConfig, dpcValue: %s, mIsSupport: %s, mNeedReport: %s, mVoteRankingFlutterThreashold=%s", new Object[] { str, Boolean.valueOf(this.c), Boolean.valueOf(this.d), Integer.valueOf(this.e) }));
     }
   }
   
-  public boolean a()
+  public boolean c()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
   
-  public boolean b()
+  public boolean d()
   {
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     try
@@ -105,10 +105,10 @@ public class QFlutterDPC
     l = 0L;
     i = (int)(l % 10L);
     bool = false;
-    QLog.d("QFlutterDPC", 1, String.format("isVoteRankingFlutterOpen lastNum=%d threashold=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
-    if (this.jdField_a_of_type_Boolean)
+    QLog.d("QFlutterDPC", 1, String.format("isVoteRankingFlutterOpen lastNum=%d threashold=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.e) }));
+    if (this.c)
     {
-      if (i >= this.jdField_a_of_type_Int) {
+      if (i >= this.e) {
         return false;
       }
       bool = true;
@@ -116,14 +116,14 @@ public class QFlutterDPC
     return bool;
   }
   
-  public boolean c()
+  public boolean e()
   {
-    return this.b;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.config.QFlutterDPC
  * JD-Core Version:    0.7.0.1
  */

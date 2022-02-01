@@ -26,7 +26,7 @@ public class LocalPhoneServlet
   {
     try
     {
-      int i = DeviceInfoUtil.a(BaseApplication.getContext());
+      int i = DeviceInfoUtil.g(BaseApplication.getContext());
       return i;
     }
     catch (Exception localException)
@@ -34,11 +34,6 @@ public class LocalPhoneServlet
       QLog.e("LocalPhoneServlet", 1, new Object[] { "getCarrier error : ", localException.getMessage() });
     }
     return 0;
-  }
-  
-  private static long a()
-  {
-    return System.currentTimeMillis() / 1000L;
   }
   
   public static GetLocalPhone.GetPhoneReq a(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, int paramInt3, String paramString7, int paramInt4, String paramString8, String paramString9, long paramLong, String paramString10, String paramString11, String paramString12, List<GetLocalPhone.LocalPhoneCodeData> paramList)
@@ -73,12 +68,12 @@ public class LocalPhoneServlet
   
   public static GetLocalPhone.GetPhoneReq a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, List<GetLocalPhone.LocalPhoneCodeData> paramList)
   {
-    return a(paramInt, "TENCENT", paramString2, "", paramString1, String.valueOf(System.currentTimeMillis()), 0, "", 3, paramString3, 3, DBNetworkUtil.a(false), DBNetworkUtil.a(false), a(), paramString4, paramString5, paramString6, paramList);
+    return a(paramInt, "TENCENT", paramString2, "", paramString1, String.valueOf(System.currentTimeMillis()), 0, "", 3, paramString3, 3, DBNetworkUtil.a(false), DBNetworkUtil.a(false), b(), paramString4, paramString5, paramString6, paramList);
   }
   
   public static GetLocalPhone.GetPhoneReq a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, List<GetLocalPhone.LocalPhoneCodeData> paramList)
   {
-    return a(paramInt, "TENCENT", paramString2, "", paramString1, String.valueOf(System.currentTimeMillis()), 0, "", 3, paramString3, 1, DBNetworkUtil.a(false), DBNetworkUtil.a(false), a(), "", "", paramString4, paramList);
+    return a(paramInt, "TENCENT", paramString2, "", paramString1, String.valueOf(System.currentTimeMillis()), 0, "", 3, paramString3, 1, DBNetworkUtil.a(false), DBNetworkUtil.a(false), b(), "", "", paramString4, paramList);
   }
   
   public static GetLocalPhone.GetUrlReq a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
@@ -98,7 +93,7 @@ public class LocalPhoneServlet
     localGetUrlReqBody.str_device_id.set(paramString2);
     localGetUrlReqBody.str_cell_ip.set(DBNetworkUtil.a(false));
     localGetUrlReqBody.str_user_ip.set(DBNetworkUtil.a(false));
-    localGetUrlReqBody.int64_timestamp.set(a());
+    localGetUrlReqBody.int64_timestamp.set(b());
     localGetUrlReqBody.setHasFlag(true);
     paramString1 = new GetLocalPhone.Head();
     paramString1.uint32_appid.set(paramInt);
@@ -126,10 +121,15 @@ public class LocalPhoneServlet
   {
     a(paramString, "application/json", Proto2JsonUtil.a(paramGetUrlReq), 15000, 15000, paramIHttpsCallback);
   }
+  
+  private static long b()
+  {
+    return System.currentTimeMillis() / 1000L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.LocalPhoneServlet
  * JD-Core Version:    0.7.0.1
  */

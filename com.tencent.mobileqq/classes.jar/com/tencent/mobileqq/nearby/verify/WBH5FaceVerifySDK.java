@@ -25,18 +25,18 @@ import java.io.File;
 
 public class WBH5FaceVerifySDK
 {
-  private static WBH5FaceVerifySDK jdField_a_of_type_ComTencentMobileqqNearbyVerifyWBH5FaceVerifySDK;
-  private ValueCallback<Uri> jdField_a_of_type_AndroidWebkitValueCallback;
+  private static WBH5FaceVerifySDK c;
+  private ValueCallback<Uri> a;
   private ValueCallback<Uri[]> b;
   
   public static WBH5FaceVerifySDK a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqNearbyVerifyWBH5FaceVerifySDK == null) {
-        jdField_a_of_type_ComTencentMobileqqNearbyVerifyWBH5FaceVerifySDK = new WBH5FaceVerifySDK();
+      if (c == null) {
+        c = new WBH5FaceVerifySDK();
       }
-      WBH5FaceVerifySDK localWBH5FaceVerifySDK = jdField_a_of_type_ComTencentMobileqqNearbyVerifyWBH5FaceVerifySDK;
+      WBH5FaceVerifySDK localWBH5FaceVerifySDK = c;
       return localWBH5FaceVerifySDK;
     }
     finally {}
@@ -129,7 +129,7 @@ public class WBH5FaceVerifySDK
   
   private void a(ValueCallback<Uri> paramValueCallback)
   {
-    this.jdField_a_of_type_AndroidWebkitValueCallback = paramValueCallback;
+    this.a = paramValueCallback;
   }
   
   private void b(ValueCallback<Uri[]> paramValueCallback)
@@ -196,7 +196,7 @@ public class WBH5FaceVerifySDK
   {
     if (paramInt1 == 17)
     {
-      if ((this.jdField_a_of_type_AndroidWebkitValueCallback == null) && (this.b == null)) {
+      if ((this.a == null) && (this.b == null)) {
         return true;
       }
       if ((paramIntent != null) && (paramInt2 == -1)) {
@@ -221,7 +221,7 @@ public class WBH5FaceVerifySDK
         b(null);
         return true;
       }
-      this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(paramIntent);
+      this.a.onReceiveValue(paramIntent);
       a(null);
       return true;
     }
@@ -258,7 +258,7 @@ public class WBH5FaceVerifySDK
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.verify.WBH5FaceVerifySDK
  * JD-Core Version:    0.7.0.1
  */

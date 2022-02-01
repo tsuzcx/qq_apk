@@ -4,17 +4,17 @@ import android.graphics.Bitmap;
 
 public class ZimuItemViewPacMan$PacManPara
 {
-  int jdField_a_of_type_Int;
-  Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+  Bitmap[] a;
   int b;
   int c;
+  int d;
   
   public ZimuItemViewPacMan$PacManPara(Bitmap[] paramArrayOfBitmap, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = paramArrayOfBitmap;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.a = paramArrayOfBitmap;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
   }
 }
 

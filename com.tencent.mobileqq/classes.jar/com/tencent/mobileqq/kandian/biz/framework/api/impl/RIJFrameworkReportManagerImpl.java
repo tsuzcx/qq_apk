@@ -33,18 +33,18 @@ public final class RIJFrameworkReportManagerImpl
     {
       str1 = paramAbsBaseArticleInfo.mSubscribeID;
       l1 = paramAbsBaseArticleInfo.mArticleID;
-      if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList != null))
+      if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t.a != null))
       {
-        paramInt = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size();
+        paramInt = paramAbsBaseArticleInfo.mSocialFeedInfo.t.a.size();
         break label196;
       }
     }
-    else if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null))
+    else if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null))
     {
-      str1 = Long.toString(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Long);
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList != null)
+      str1 = Long.toString(paramAbsBaseArticleInfo.mSocialFeedInfo.s.e);
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.s.b != null)
       {
-        paramInt = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size();
+        paramInt = paramAbsBaseArticleInfo.mSocialFeedInfo.s.b.size();
         l1 = 0L;
         break label196;
       }
@@ -57,8 +57,8 @@ public final class RIJFrameworkReportManagerImpl
     }
     paramInt = 0;
     label196:
-    paramString = RIJTransMergeKanDianReport.a(paramInt, i, paramString, RIJFeedsType.a(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo.innerUniqueID, paramAbsBaseArticleInfo);
-    String str2 = RIJTransMergeKanDianReport.a(paramInt, i, null, RIJFeedsType.a(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.c(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo);
+    paramString = RIJTransMergeKanDianReport.a(paramInt, i, paramString, RIJFeedsType.g(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo.innerUniqueID, paramAbsBaseArticleInfo);
+    String str2 = RIJTransMergeKanDianReport.a(paramInt, i, null, RIJFeedsType.g(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.k(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo);
     paramBundle.putString("to_uin", str1);
     paramBundle.putString("feeds_id", Long.toString(l2));
     paramBundle.putString("article_id", Long.toString(l1));
@@ -74,7 +74,7 @@ public final class RIJFrameworkReportManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.api.impl.RIJFrameworkReportManagerImpl
  * JD-Core Version:    0.7.0.1
  */

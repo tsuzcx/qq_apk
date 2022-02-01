@@ -18,11 +18,11 @@ public abstract interface WatchTogetherMediaPlayerStatusCallback
   
   public abstract void b(int paramInt1, int paramInt2);
   
-  public abstract void c();
-  
   public abstract void d();
   
   public abstract void e();
+  
+  public abstract void f();
 }
 
 

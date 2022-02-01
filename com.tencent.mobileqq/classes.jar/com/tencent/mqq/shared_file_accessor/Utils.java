@@ -352,6 +352,24 @@ public class Utils
     sIsSameProcessAsCP = TextUtils.equals(paramContext.getPackageName(), sCurrentProcessName);
   }
   
+  public static void initCurrentProcessName(Context paramContext, String paramString)
+  {
+    String str = sCurrentProcessName;
+    if ((str != null) && (str.length() != 0)) {
+      return;
+    }
+    if (paramContext == null) {
+      return;
+    }
+    sCurrentProcessName = paramString;
+    if (TextUtils.isEmpty(sCurrentProcessName))
+    {
+      Log.e("SpLib", "getProcessName fail");
+      return;
+    }
+    sIsSameProcessAsCP = TextUtils.equals(paramContext.getPackageName(), sCurrentProcessName);
+  }
+  
   /* Error */
   public static java.io.Serializable loadData(String paramString)
   {
@@ -366,28 +384,28 @@ public class Utils
     //   10: astore 8
     //   12: aconst_null
     //   13: astore 4
-    //   15: new 266	java/io/FileInputStream
+    //   15: new 267	java/io/FileInputStream
     //   18: dup
     //   19: aload_0
-    //   20: invokespecial 267	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   20: invokespecial 268	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   23: astore_1
-    //   24: new 269	java/io/ObjectInputStream
+    //   24: new 270	java/io/ObjectInputStream
     //   27: dup
     //   28: aload_1
-    //   29: invokespecial 272	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   29: invokespecial 273	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   32: astore_2
     //   33: aload_2
-    //   34: invokevirtual 275	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   37: checkcast 277	java/io/Serializable
+    //   34: invokevirtual 276	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   37: checkcast 278	java/io/Serializable
     //   40: astore_3
     //   41: aload_2
-    //   42: invokevirtual 278	java/io/ObjectInputStream:close	()V
+    //   42: invokevirtual 279	java/io/ObjectInputStream:close	()V
     //   45: aload_1
-    //   46: invokevirtual 279	java/io/FileInputStream:close	()V
-    //   49: new 281	java/io/File
+    //   46: invokevirtual 280	java/io/FileInputStream:close	()V
+    //   49: new 282	java/io/File
     //   52: dup
     //   53: aload_0
-    //   54: invokespecial 282	java/io/File:<init>	(Ljava/lang/String;)V
+    //   54: invokespecial 283	java/io/File:<init>	(Ljava/lang/String;)V
     //   57: astore_0
     //   58: goto +303 -> 361
     //   61: astore_3
@@ -444,17 +462,17 @@ public class Utils
     //   141: aload_2
     //   142: ifnull +10 -> 152
     //   145: aload_2
-    //   146: invokevirtual 278	java/io/ObjectInputStream:close	()V
+    //   146: invokevirtual 279	java/io/ObjectInputStream:close	()V
     //   149: goto +3 -> 152
     //   152: aload_1
     //   153: ifnull +7 -> 160
     //   156: aload_1
-    //   157: invokevirtual 279	java/io/FileInputStream:close	()V
-    //   160: new 281	java/io/File
+    //   157: invokevirtual 280	java/io/FileInputStream:close	()V
+    //   160: new 282	java/io/File
     //   163: dup
     //   164: aload_0
-    //   165: invokespecial 282	java/io/File:<init>	(Ljava/lang/String;)V
-    //   168: invokevirtual 285	java/io/File:delete	()Z
+    //   165: invokespecial 283	java/io/File:<init>	(Ljava/lang/String;)V
+    //   168: invokevirtual 286	java/io/File:delete	()Z
     //   171: pop
     //   172: aload_3
     //   173: athrow
@@ -467,16 +485,16 @@ public class Utils
     //   181: aload_2
     //   182: ifnull +10 -> 192
     //   185: aload_2
-    //   186: invokevirtual 278	java/io/ObjectInputStream:close	()V
+    //   186: invokevirtual 279	java/io/ObjectInputStream:close	()V
     //   189: goto +3 -> 192
     //   192: aload_1
     //   193: ifnull +7 -> 200
     //   196: aload_1
-    //   197: invokevirtual 279	java/io/FileInputStream:close	()V
-    //   200: new 281	java/io/File
+    //   197: invokevirtual 280	java/io/FileInputStream:close	()V
+    //   200: new 282	java/io/File
     //   203: dup
     //   204: aload_0
-    //   205: invokespecial 282	java/io/File:<init>	(Ljava/lang/String;)V
+    //   205: invokespecial 283	java/io/File:<init>	(Ljava/lang/String;)V
     //   208: astore_0
     //   209: goto +152 -> 361
     //   212: aconst_null
@@ -488,16 +506,16 @@ public class Utils
     //   219: aload_2
     //   220: ifnull +10 -> 230
     //   223: aload_2
-    //   224: invokevirtual 278	java/io/ObjectInputStream:close	()V
+    //   224: invokevirtual 279	java/io/ObjectInputStream:close	()V
     //   227: goto +3 -> 230
     //   230: aload_1
     //   231: ifnull +7 -> 238
     //   234: aload_1
-    //   235: invokevirtual 279	java/io/FileInputStream:close	()V
-    //   238: new 281	java/io/File
+    //   235: invokevirtual 280	java/io/FileInputStream:close	()V
+    //   238: new 282	java/io/File
     //   241: dup
     //   242: aload_0
-    //   243: invokespecial 282	java/io/File:<init>	(Ljava/lang/String;)V
+    //   243: invokespecial 283	java/io/File:<init>	(Ljava/lang/String;)V
     //   246: astore_0
     //   247: goto +114 -> 361
     //   250: aconst_null
@@ -509,16 +527,16 @@ public class Utils
     //   257: aload_2
     //   258: ifnull +10 -> 268
     //   261: aload_2
-    //   262: invokevirtual 278	java/io/ObjectInputStream:close	()V
+    //   262: invokevirtual 279	java/io/ObjectInputStream:close	()V
     //   265: goto +3 -> 268
     //   268: aload_1
     //   269: ifnull +7 -> 276
     //   272: aload_1
-    //   273: invokevirtual 279	java/io/FileInputStream:close	()V
-    //   276: new 281	java/io/File
+    //   273: invokevirtual 280	java/io/FileInputStream:close	()V
+    //   276: new 282	java/io/File
     //   279: dup
     //   280: aload_0
-    //   281: invokespecial 282	java/io/File:<init>	(Ljava/lang/String;)V
+    //   281: invokespecial 283	java/io/File:<init>	(Ljava/lang/String;)V
     //   284: astore_0
     //   285: goto +76 -> 361
     //   288: aconst_null
@@ -530,16 +548,16 @@ public class Utils
     //   295: aload_2
     //   296: ifnull +10 -> 306
     //   299: aload_2
-    //   300: invokevirtual 278	java/io/ObjectInputStream:close	()V
+    //   300: invokevirtual 279	java/io/ObjectInputStream:close	()V
     //   303: goto +3 -> 306
     //   306: aload_1
     //   307: ifnull +7 -> 314
     //   310: aload_1
-    //   311: invokevirtual 279	java/io/FileInputStream:close	()V
-    //   314: new 281	java/io/File
+    //   311: invokevirtual 280	java/io/FileInputStream:close	()V
+    //   314: new 282	java/io/File
     //   317: dup
     //   318: aload_0
-    //   319: invokespecial 282	java/io/File:<init>	(Ljava/lang/String;)V
+    //   319: invokespecial 283	java/io/File:<init>	(Ljava/lang/String;)V
     //   322: astore_0
     //   323: goto +38 -> 361
     //   326: aconst_null
@@ -551,19 +569,19 @@ public class Utils
     //   333: aload_2
     //   334: ifnull +10 -> 344
     //   337: aload_2
-    //   338: invokevirtual 278	java/io/ObjectInputStream:close	()V
+    //   338: invokevirtual 279	java/io/ObjectInputStream:close	()V
     //   341: goto +3 -> 344
     //   344: aload_1
     //   345: ifnull +7 -> 352
     //   348: aload_1
-    //   349: invokevirtual 279	java/io/FileInputStream:close	()V
-    //   352: new 281	java/io/File
+    //   349: invokevirtual 280	java/io/FileInputStream:close	()V
+    //   352: new 282	java/io/File
     //   355: dup
     //   356: aload_0
-    //   357: invokespecial 282	java/io/File:<init>	(Ljava/lang/String;)V
+    //   357: invokespecial 283	java/io/File:<init>	(Ljava/lang/String;)V
     //   360: astore_0
     //   361: aload_0
-    //   362: invokevirtual 285	java/io/File:delete	()Z
+    //   362: invokevirtual 286	java/io/File:delete	()Z
     //   365: pop
     //   366: aload_3
     //   367: areturn
@@ -773,7 +791,7 @@ public class Utils
   public static boolean saveData(java.io.Serializable paramSerializable, String paramString)
   {
     // Byte code:
-    //   0: invokestatic 334	com/tencent/mqq/shared_file_accessor/Utils:ensureBuffer	()Ljava/io/ByteArrayOutputStream;
+    //   0: invokestatic 335	com/tencent/mqq/shared_file_accessor/Utils:ensureBuffer	()Ljava/io/ByteArrayOutputStream;
     //   3: astore 8
     //   5: aload 8
     //   7: ifnonnull +5 -> 12
@@ -790,35 +808,35 @@ public class Utils
     //   24: aconst_null
     //   25: astore_3
     //   26: aload 8
-    //   28: invokevirtual 337	java/io/ByteArrayOutputStream:reset	()V
-    //   31: new 339	java/io/ObjectOutputStream
+    //   28: invokevirtual 338	java/io/ByteArrayOutputStream:reset	()V
+    //   31: new 340	java/io/ObjectOutputStream
     //   34: dup
     //   35: aload 8
-    //   37: invokespecial 342	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   37: invokespecial 343	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   40: astore_2
     //   41: aload_2
     //   42: aload_0
-    //   43: invokevirtual 345	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   43: invokevirtual 346	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   46: aload_2
-    //   47: invokevirtual 348	java/io/ObjectOutputStream:flush	()V
+    //   47: invokevirtual 349	java/io/ObjectOutputStream:flush	()V
     //   50: aload_2
-    //   51: invokevirtual 349	java/io/ObjectOutputStream:close	()V
-    //   54: new 351	java/io/FileOutputStream
+    //   51: invokevirtual 350	java/io/ObjectOutputStream:close	()V
+    //   54: new 352	java/io/FileOutputStream
     //   57: dup
     //   58: aload_1
-    //   59: invokespecial 352	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   59: invokespecial 353	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   62: astore_0
     //   63: aload 8
     //   65: aload_0
-    //   66: invokevirtual 355	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
+    //   66: invokevirtual 356	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
     //   69: aload 8
-    //   71: invokevirtual 356	java/io/ByteArrayOutputStream:flush	()V
+    //   71: invokevirtual 357	java/io/ByteArrayOutputStream:flush	()V
     //   74: aload 8
-    //   76: invokevirtual 357	java/io/ByteArrayOutputStream:close	()V
+    //   76: invokevirtual 358	java/io/ByteArrayOutputStream:close	()V
     //   79: aload_0
-    //   80: invokevirtual 358	java/io/FileOutputStream:flush	()V
+    //   80: invokevirtual 359	java/io/FileOutputStream:flush	()V
     //   83: aload_0
-    //   84: invokevirtual 359	java/io/FileOutputStream:close	()V
+    //   84: invokevirtual 360	java/io/FileOutputStream:close	()V
     //   87: iconst_1
     //   88: ireturn
     //   89: astore_3
@@ -855,12 +873,12 @@ public class Utils
     //   144: aload_2
     //   145: ifnull +10 -> 155
     //   148: aload_2
-    //   149: invokevirtual 349	java/io/ObjectOutputStream:close	()V
+    //   149: invokevirtual 350	java/io/ObjectOutputStream:close	()V
     //   152: goto +3 -> 155
     //   155: aload_1
     //   156: ifnull +7 -> 163
     //   159: aload_1
-    //   160: invokevirtual 359	java/io/FileOutputStream:close	()V
+    //   160: invokevirtual 360	java/io/FileOutputStream:close	()V
     //   163: aload_0
     //   164: athrow
     //   165: aconst_null
@@ -870,12 +888,12 @@ public class Utils
     //   170: aload_2
     //   171: ifnull +10 -> 181
     //   174: aload_2
-    //   175: invokevirtual 349	java/io/ObjectOutputStream:close	()V
+    //   175: invokevirtual 350	java/io/ObjectOutputStream:close	()V
     //   178: goto +3 -> 181
     //   181: aload_0
     //   182: ifnull +78 -> 260
     //   185: aload_0
-    //   186: invokevirtual 359	java/io/FileOutputStream:close	()V
+    //   186: invokevirtual 360	java/io/FileOutputStream:close	()V
     //   189: iconst_0
     //   190: ireturn
     //   191: aconst_null
@@ -885,7 +903,7 @@ public class Utils
     //   196: aload_2
     //   197: ifnull +10 -> 207
     //   200: aload_2
-    //   201: invokevirtual 349	java/io/ObjectOutputStream:close	()V
+    //   201: invokevirtual 350	java/io/ObjectOutputStream:close	()V
     //   204: goto +3 -> 207
     //   207: aload_0
     //   208: ifnull +52 -> 260
@@ -897,7 +915,7 @@ public class Utils
     //   219: aload_2
     //   220: ifnull +10 -> 230
     //   223: aload_2
-    //   224: invokevirtual 349	java/io/ObjectOutputStream:close	()V
+    //   224: invokevirtual 350	java/io/ObjectOutputStream:close	()V
     //   227: goto +3 -> 230
     //   230: aload_0
     //   231: ifnull +29 -> 260
@@ -909,7 +927,7 @@ public class Utils
     //   242: aload_2
     //   243: ifnull +10 -> 253
     //   246: aload_2
-    //   247: invokevirtual 349	java/io/ObjectOutputStream:close	()V
+    //   247: invokevirtual 350	java/io/ObjectOutputStream:close	()V
     //   250: goto +3 -> 253
     //   253: aload_0
     //   254: ifnull +6 -> 260
@@ -996,7 +1014,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqq.shared_file_accessor.Utils
  * JD-Core Version:    0.7.0.1
  */

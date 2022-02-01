@@ -7,42 +7,27 @@ import java.util.List;
 
 public class VideoSourceTagInfoHelper
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static List<VideoSourceTagInfoHelper.VideoSourceTagInfo> jdField_a_of_type_JavaUtilList;
-  
-  @Nullable
-  private static VideoSourceTagInfoHelper.VideoSourceTagInfo a(int paramInt)
-  {
-    b();
-    Iterator localIterator = Collections.unmodifiableList(jdField_a_of_type_JavaUtilList).iterator();
-    while (localIterator.hasNext())
-    {
-      VideoSourceTagInfoHelper.VideoSourceTagInfo localVideoSourceTagInfo = (VideoSourceTagInfoHelper.VideoSourceTagInfo)localIterator.next();
-      if (localVideoSourceTagInfo.jdField_a_of_type_Int == paramInt) {
-        return localVideoSourceTagInfo;
-      }
-    }
-    return null;
-  }
+  private static List<VideoSourceTagInfoHelper.VideoSourceTagInfo> a;
+  private static final Object b = new Object();
   
   public static String a(int paramInt)
   {
     b();
-    VideoSourceTagInfoHelper.VideoSourceTagInfo localVideoSourceTagInfo = a(paramInt);
+    VideoSourceTagInfoHelper.VideoSourceTagInfo localVideoSourceTagInfo = c(paramInt);
     if (localVideoSourceTagInfo != null) {
-      return localVideoSourceTagInfo.jdField_a_of_type_JavaLangString;
+      return localVideoSourceTagInfo.b;
     }
     return "";
   }
   
   public static void a()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      if (jdField_a_of_type_JavaUtilList != null)
+      if (a != null)
       {
-        jdField_a_of_type_JavaUtilList.clear();
-        jdField_a_of_type_JavaUtilList = null;
+        a.clear();
+        a = null;
       }
       return;
     }
@@ -51,9 +36,9 @@ public class VideoSourceTagInfoHelper
   public static String b(int paramInt)
   {
     b();
-    VideoSourceTagInfoHelper.VideoSourceTagInfo localVideoSourceTagInfo = a(paramInt);
+    VideoSourceTagInfoHelper.VideoSourceTagInfo localVideoSourceTagInfo = c(paramInt);
     if (localVideoSourceTagInfo != null) {
-      return localVideoSourceTagInfo.b;
+      return localVideoSourceTagInfo.c;
     }
     return "";
   }
@@ -62,75 +47,75 @@ public class VideoSourceTagInfoHelper
   private static void b()
   {
     // Byte code:
-    //   0: getstatic 23	com/tencent/biz/qqstory/utils/VideoSourceTagInfoHelper:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   0: getstatic 33	com/tencent/biz/qqstory/utils/VideoSourceTagInfoHelper:a	Ljava/util/List;
     //   3: ifnonnull +172 -> 175
-    //   6: getstatic 15	com/tencent/biz/qqstory/utils/VideoSourceTagInfoHelper:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   6: getstatic 16	com/tencent/biz/qqstory/utils/VideoSourceTagInfoHelper:b	Ljava/lang/Object;
     //   9: astore_0
     //   10: aload_0
     //   11: monitorenter
-    //   12: new 70	java/util/ArrayList
+    //   12: new 46	java/util/ArrayList
     //   15: dup
-    //   16: invokespecial 71	java/util/ArrayList:<init>	()V
-    //   19: putstatic 23	com/tencent/biz/qqstory/utils/VideoSourceTagInfoHelper:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   16: invokespecial 47	java/util/ArrayList:<init>	()V
+    //   19: putstatic 33	com/tencent/biz/qqstory/utils/VideoSourceTagInfoHelper:a	Ljava/util/List;
     //   22: bipush 10
-    //   24: invokestatic 76	com/tencent/biz/qqstory/model/SuperManager:a	(I)Lcom/tencent/biz/qqstory/model/IManager;
-    //   27: checkcast 78	com/tencent/biz/qqstory/model/StoryConfigManager
-    //   30: invokevirtual 82	com/tencent/biz/qqstory/model/StoryConfigManager:c	()Ljava/lang/String;
+    //   24: invokestatic 52	com/tencent/biz/qqstory/model/SuperManager:a	(I)Lcom/tencent/biz/qqstory/model/IManager;
+    //   27: checkcast 54	com/tencent/biz/qqstory/model/StoryConfigManager
+    //   30: invokevirtual 58	com/tencent/biz/qqstory/model/StoryConfigManager:l	()Ljava/lang/String;
     //   33: astore_1
-    //   34: new 84	org/json/JSONObject
+    //   34: new 60	org/json/JSONObject
     //   37: dup
     //   38: aload_1
-    //   39: invokespecial 87	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   39: invokespecial 63	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   42: astore_2
     //   43: aload_2
-    //   44: invokevirtual 90	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   44: invokevirtual 67	org/json/JSONObject:keys	()Ljava/util/Iterator;
     //   47: astore_3
     //   48: aload_3
-    //   49: invokeinterface 41 1 0
+    //   49: invokeinterface 73 1 0
     //   54: ifeq +113 -> 167
     //   57: aload_3
-    //   58: invokeinterface 45 1 0
-    //   63: checkcast 92	java/lang/String
+    //   58: invokeinterface 77 1 0
+    //   63: checkcast 79	java/lang/String
     //   66: astore 4
     //   68: aload_2
     //   69: aload 4
-    //   71: invokevirtual 96	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   71: invokevirtual 83	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   74: astore 6
     //   76: aload 6
-    //   78: ldc 98
-    //   80: ldc 59
-    //   82: invokevirtual 102	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   78: ldc 85
+    //   80: ldc 31
+    //   82: invokevirtual 89	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   85: astore 5
     //   87: aload 6
-    //   89: ldc 104
-    //   91: ldc 59
-    //   93: invokevirtual 102	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   89: ldc 91
+    //   91: ldc 31
+    //   93: invokevirtual 89	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   96: astore 6
-    //   98: getstatic 23	com/tencent/biz/qqstory/utils/VideoSourceTagInfoHelper:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   101: new 47	com/tencent/biz/qqstory/utils/VideoSourceTagInfoHelper$VideoSourceTagInfo
+    //   98: getstatic 33	com/tencent/biz/qqstory/utils/VideoSourceTagInfoHelper:a	Ljava/util/List;
+    //   101: new 26	com/tencent/biz/qqstory/utils/VideoSourceTagInfoHelper$VideoSourceTagInfo
     //   104: dup
     //   105: aload 4
-    //   107: invokestatic 110	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   110: invokevirtual 114	java/lang/Integer:intValue	()I
+    //   107: invokestatic 97	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   110: invokevirtual 101	java/lang/Integer:intValue	()I
     //   113: aload 5
     //   115: aload 6
-    //   117: invokespecial 117	com/tencent/biz/qqstory/utils/VideoSourceTagInfoHelper$VideoSourceTagInfo:<init>	(ILjava/lang/String;Ljava/lang/String;)V
-    //   120: invokeinterface 121 2 0
+    //   117: invokespecial 104	com/tencent/biz/qqstory/utils/VideoSourceTagInfoHelper$VideoSourceTagInfo:<init>	(ILjava/lang/String;Ljava/lang/String;)V
+    //   120: invokeinterface 108 2 0
     //   125: pop
     //   126: goto -78 -> 48
-    //   129: ldc 123
-    //   131: ldc 125
+    //   129: ldc 110
+    //   131: ldc 112
     //   133: iconst_1
     //   134: anewarray 4	java/lang/Object
     //   137: dup
     //   138: iconst_0
     //   139: aload_1
     //   140: aastore
-    //   141: invokestatic 131	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   141: invokestatic 118	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   144: goto +23 -> 167
     //   147: astore_2
-    //   148: ldc 123
-    //   150: ldc 133
+    //   148: ldc 110
+    //   150: ldc 120
     //   152: iconst_2
     //   153: anewarray 4	java/lang/Object
     //   156: dup
@@ -141,7 +126,7 @@ public class VideoSourceTagInfoHelper
     //   161: iconst_1
     //   162: aload_1
     //   163: aastore
-    //   164: invokestatic 131	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   164: invokestatic 118	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   167: aload_0
     //   168: monitorexit
     //   169: return
@@ -178,6 +163,21 @@ public class VideoSourceTagInfoHelper
     //   171	173	170	finally
     //   34	48	176	java/lang/NumberFormatException
     //   48	126	176	java/lang/NumberFormatException
+  }
+  
+  @Nullable
+  private static VideoSourceTagInfoHelper.VideoSourceTagInfo c(int paramInt)
+  {
+    b();
+    Iterator localIterator = Collections.unmodifiableList(a).iterator();
+    while (localIterator.hasNext())
+    {
+      VideoSourceTagInfoHelper.VideoSourceTagInfo localVideoSourceTagInfo = (VideoSourceTagInfoHelper.VideoSourceTagInfo)localIterator.next();
+      if (localVideoSourceTagInfo.a == paramInt) {
+        return localVideoSourceTagInfo;
+      }
+    }
+    return null;
   }
 }
 

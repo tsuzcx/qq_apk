@@ -14,11 +14,6 @@ public class SubAccountAssistantNotificationProcessor
     super(paramQQAppInterface, paramNotificationElement);
   }
   
-  public int a(Message paramMessage)
-  {
-    return -113;
-  }
-  
   public NotificationElement a(Message paramMessage)
   {
     Object localObject2 = a().getStringExtra("subAccountLatestNick");
@@ -32,27 +27,32 @@ public class SubAccountAssistantNotificationProcessor
       localObject1 = paramMessage.senderuin;
     }
     localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(a());
+    ((StringBuilder)localObject2).append(b());
     ((StringBuilder)localObject2).append("-");
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append(":");
-    ((StringBuilder)localObject2).append(c());
+    ((StringBuilder)localObject2).append(d());
     localObject2 = ((StringBuilder)localObject2).toString();
-    this.a.b((String)localObject2);
+    this.b.b((String)localObject2);
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append(":");
-    ((StringBuilder)localObject2).append(c());
+    ((StringBuilder)localObject2).append(d());
     Object localObject1 = ((StringBuilder)localObject2).toString();
-    this.a.d((String)localObject1);
-    this.a.a(null);
-    b(paramMessage);
-    return this.a;
+    this.b.d((String)localObject1);
+    this.b.a(null);
+    c(paramMessage);
+    return this.b;
+  }
+  
+  public int b(Message paramMessage)
+  {
+    return -113;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.processor.business.SubAccountAssistantNotificationProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,13 @@ import android.os.Vibrator;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 import com.tencent.mobileqq.qmethodmonitor.monitor.ClipboardMonitor;
 import com.tencent.mobileqq.qqui.R.styleable;
 import com.tencent.qphone.base.util.QLog;
@@ -27,243 +26,336 @@ public class VerifyCodeView
   extends LinearLayout
   implements TextWatcher
 {
-  private static String jdField_a_of_type_JavaLangString = "VerifyCodeView";
-  private int jdField_a_of_type_Int;
-  private Vibrator jdField_a_of_type_AndroidOsVibrator;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new VerifyCodeView.1(this);
-  private ArrayList<TextView> jdField_a_of_type_JavaUtilArrayList;
-  private int jdField_b_of_type_Int;
-  private ArrayList<VerifyCodeView.OnVerifyCodeCompleteListener> jdField_b_of_type_JavaUtilArrayList;
-  private int c;
-  private int d;
+  private static String a = "VerifyCodeView";
+  private static int b = 2130853427;
+  private static int c = 2130853428;
+  private static int d = 2130853425;
+  private static int e = 2130853426;
+  private EditText f;
+  private int g;
+  private int h;
+  private int i;
+  private int j;
+  private ArrayList<VerifyCodeView.SingleDigitView> k;
+  private ArrayList<VerifyCodeView.OnVerifyCodeChangedListener> l;
+  private Vibrator m;
+  private boolean n;
+  private int o;
+  private Runnable p;
+  private boolean q;
+  private Runnable r = new VerifyCodeView.2(this);
   
   public VerifyCodeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     setOrientation(0);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bK);
-    this.jdField_a_of_type_Int = paramAttributeSet.getInteger(R.styleable.cg, 6);
-    this.c = paramAttributeSet.getColor(R.styleable.cc, -16777216);
-    this.d = paramAttributeSet.getColor(R.styleable.cd, -65536);
-    float f = paramAttributeSet.getFloat(R.styleable.cf, 29.0F);
-    int j = (int)paramAttributeSet.getDimension(R.styleable.ce, 20.0F);
-    int k = (int)paramAttributeSet.getDimension(R.styleable.cb, 80.0F);
-    int m = (int)paramAttributeSet.getDimension(R.styleable.ca, 80.0F);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetEditText = new EditText(paramContext);
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.eX);
+    this.g = paramAttributeSet.getInteger(R.styleable.ff, 6);
+    this.i = paramAttributeSet.getColor(R.styleable.fb, -16777216);
+    this.j = paramAttributeSet.getColor(R.styleable.fc, -65536);
+    float f1 = paramAttributeSet.getFloat(R.styleable.fe, 29.0F);
+    int i2 = (int)paramAttributeSet.getDimension(R.styleable.fd, 20.0F);
+    int i3 = (int)paramAttributeSet.getDimension(R.styleable.eZ, 80.0F);
+    int i4 = (int)paramAttributeSet.getDimension(R.styleable.eY, 80.0F);
+    this.n = paramAttributeSet.getBoolean(R.styleable.fa, false);
+    paramAttributeSet.recycle();
+    this.k = new ArrayList();
+    this.f = new EditText(paramContext);
+    int i1 = 0;
+    while (i1 < this.g)
     {
-      paramAttributeSet = new VerifyCodeView.SingleDigitView(paramContext, f, this.c, k, m, this.jdField_a_of_type_AndroidWidgetEditText);
+      paramAttributeSet = new VerifyCodeView.SingleDigitView(paramContext, f1, this.i, i3, i4, this.f);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams.rightMargin = j;
+      if (i1 != this.g - 1) {
+        localLayoutParams.rightMargin = i2;
+      }
       addView(paramAttributeSet, localLayoutParams);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramAttributeSet.a);
-      i += 1;
+      this.k.add(paramAttributeSet);
+      i1 += 1;
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.setInputType(2);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.jdField_a_of_type_Int) });
-    this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(0.0F);
-    this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(0);
-    this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundResource(2131167333);
-    addView(this.jdField_a_of_type_AndroidWidgetEditText);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    c();
-    ((TextView)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int)).setBackgroundResource(2130851171);
+    this.f.setCursorVisible(true);
+    this.f.setInputType(2);
+    this.f.setSingleLine();
+    this.f.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.g) });
+    this.f.setTextSize(0.0F);
+    this.f.setTextColor(0);
+    this.f.setBackgroundResource(2131168376);
+    addView(this.f);
+    this.f.addTextChangedListener(this);
+    this.f.setFocusable(true);
+    this.f.setFocusableInTouchMode(true);
+    this.f.requestFocus();
+    e();
+    this.h = 0;
+    d();
   }
   
-  private void a(int paramInt)
+  private void a(boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((TextView)localIterator.next()).setTextColor(paramInt);
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.length() <= this.jdField_a_of_type_Int))
-    {
-      Object localObject = paramString.toCharArray();
-      int k = localObject.length;
-      int j = 0;
-      int i = 0;
-      while (i < k)
-      {
-        if (!Character.isDigit(localObject[i]))
-        {
-          QLog.e(jdField_a_of_type_JavaLangString, 1, "setCode error: verify code not digit string");
-          return;
-        }
-        i += 1;
-      }
-      this.jdField_b_of_type_Int = paramString.length();
-      for (i = j; i < this.jdField_b_of_type_Int; i = j)
-      {
-        localObject = (TextView)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        j = i + 1;
-        ((TextView)localObject).setText(paramString.substring(i, j));
-      }
-      return;
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "setCode error: invalid verify code length");
-  }
-  
-  private static String b(Context paramContext)
-  {
-    Object localObject1 = (ClipboardManager)paramContext.getSystemService("clipboard");
-    if (localObject1 == null) {
-      return "";
-    }
-    ClipboardMonitor.getPrimaryClip((ClipboardManager)localObject1);
-    localObject1 = ((ClipboardManager)localObject1).getPrimaryClip();
-    if (localObject1 == null) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < ((ClipData)localObject1).getItemCount())
-    {
-      Object localObject2 = ((ClipData)localObject1).getItemAt(i).coerceToText(paramContext).toString();
-      if (localObject2 != null)
-      {
-        localObject2 = ((String)localObject2).toCharArray();
-        int k = localObject2.length;
-        int j = 0;
-        while (j < k)
-        {
-          char c1 = localObject2[j];
-          if (Character.isDigit(c1)) {
-            localStringBuilder.append(c1);
-          }
-          j += 1;
-        }
-      }
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  private void b()
-  {
-    Object localObject = this.jdField_b_of_type_JavaUtilArrayList;
+    Object localObject = this.l;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((VerifyCodeView.OnVerifyCodeCompleteListener)((Iterator)localObject).next()).onVerifyCodeComplete();
+        ((VerifyCodeView.OnVerifyCodeChangedListener)((Iterator)localObject).next()).onVerifyCodeChanged(paramBoolean, getCode());
       }
     }
   }
   
-  private void c()
+  private void a(boolean paramBoolean, VerifyCodeView.SingleDigitView paramSingleDigitView)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList != null)
+    if ((paramBoolean) && (this.h - this.o == 1))
     {
-      if (localArrayList.isEmpty()) {
-        return;
-      }
-      int i = 0;
-      while (i < this.jdField_a_of_type_Int)
-      {
-        ((TextView)this.jdField_a_of_type_JavaUtilArrayList.get(i)).setText("");
-        i += 1;
-      }
-      this.jdField_b_of_type_Int = 0;
+      paramSingleDigitView.a(false);
+      this.p = new VerifyCodeView.1(this, paramSingleDigitView);
+      postDelayed(this.p, 400L);
+      return;
     }
+    paramSingleDigitView.a(true);
+  }
+  
+  private static String b(Context paramContext)
+  {
+    Object localObject = (ClipboardManager)paramContext.getSystemService("clipboard");
+    if (localObject == null) {
+      return "";
+    }
+    ClipboardMonitor.getPrimaryClip((ClipboardManager)localObject);
+    localObject = ((ClipboardManager)localObject).getPrimaryClip();
+    if (localObject == null) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i1 = 0;
+    while (i1 < ((ClipData)localObject).getItemCount())
+    {
+      char[] arrayOfChar = ((ClipData)localObject).getItemAt(i1).coerceToText(paramContext).toString().toCharArray();
+      int i3 = arrayOfChar.length;
+      int i2 = 0;
+      while (i2 < i3)
+      {
+        char c1 = arrayOfChar[i2];
+        if (Character.isDigit(c1)) {
+          localStringBuilder.append(c1);
+        }
+        i2 += 1;
+      }
+      i1 += 1;
+    }
+    return localStringBuilder.toString();
   }
   
   private void d()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((TextView)localIterator.next()).setBackgroundResource(2130851172);
+    int i1 = this.h;
+    if ((i1 >= 0) && (i1 < this.k.size()))
+    {
+      VerifyCodeView.SingleDigitView localSingleDigitView = (VerifyCodeView.SingleDigitView)this.k.get(this.h);
+      if (this.q) {
+        i1 = e;
+      } else {
+        i1 = d;
+      }
+      localSingleDigitView.b(i1);
     }
   }
   
   private void e()
   {
+    Object localObject = this.k;
+    if (localObject != null)
+    {
+      if (((ArrayList)localObject).isEmpty()) {
+        return;
+      }
+      localObject = this.k.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        VerifyCodeView.SingleDigitView localSingleDigitView = (VerifyCodeView.SingleDigitView)((Iterator)localObject).next();
+        localSingleDigitView.a();
+        setDigitViewBgByTheme(localSingleDigitView);
+      }
+    }
+  }
+  
+  private void f()
+  {
     try
     {
-      if (this.jdField_a_of_type_AndroidOsVibrator == null) {
-        this.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)getContext().getSystemService("vibrator"));
+      if (this.m == null) {
+        this.m = ((Vibrator)getContext().getSystemService("vibrator"));
       }
-      if (this.jdField_a_of_type_AndroidOsVibrator != null)
+      if (this.m != null)
       {
-        this.jdField_a_of_type_AndroidOsVibrator.vibrate(50L);
+        this.m.vibrate(50L);
         return;
       }
     }
     catch (Exception localException)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "exception when doVibrate.", localException);
+      QLog.e(a, 1, "exception when doVibrate.", localException);
     }
   }
   
-  public String a()
+  private void setDigitText(String paramString)
   {
-    return this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    e();
+    Object localObject = paramString.toCharArray();
+    int i2 = localObject.length;
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      if (!Character.isDigit(localObject[i1]))
+      {
+        QLog.e(a, 1, "setCode error: verify code not digit string");
+        return;
+      }
+      i1 += 1;
+    }
+    this.h = paramString.length();
+    if (this.o != this.h) {
+      removeCallbacks(this.p);
+    }
+    for (i1 = 0;; i1 = i2)
+    {
+      i2 = this.h;
+      if (i1 >= i2) {
+        break;
+      }
+      localObject = (VerifyCodeView.SingleDigitView)this.k.get(i1);
+      if (this.n)
+      {
+        boolean bool;
+        if (i1 == this.h - 1) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        a(bool, (VerifyCodeView.SingleDigitView)localObject);
+      }
+      i2 = i1 + 1;
+      ((VerifyCodeView.SingleDigitView)localObject).a(paramString.substring(i1, i2));
+    }
+    this.o = i2;
+  }
+  
+  private void setDigitViewBgByTheme(VerifyCodeView.SingleDigitView paramSingleDigitView)
+  {
+    int i1;
+    if (this.q) {
+      i1 = c;
+    } else {
+      i1 = b;
+    }
+    paramSingleDigitView.b(i1);
+  }
+  
+  private void setStyle(boolean paramBoolean)
+  {
+    Iterator localIterator = this.k.iterator();
+    while (localIterator.hasNext())
+    {
+      VerifyCodeView.SingleDigitView localSingleDigitView = (VerifyCodeView.SingleDigitView)localIterator.next();
+      int i1;
+      if (paramBoolean) {
+        i1 = this.j;
+      } else {
+        i1 = this.i;
+      }
+      localSingleDigitView.a(i1);
+      if (paramBoolean) {
+        localSingleDigitView.b(2130853429);
+      } else {
+        setDigitViewBgByTheme(localSingleDigitView);
+      }
+    }
   }
   
   public void a()
   {
-    a(this.d);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((TextView)localIterator.next()).setBackgroundResource(2130851173);
-    }
-    startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772380));
-    e();
-    postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+    setStyle(true);
+    startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772476));
+    f();
+    postDelayed(this.r, 1000L);
   }
   
-  public void a(VerifyCodeView.OnVerifyCodeCompleteListener paramOnVerifyCodeCompleteListener)
+  public void a(InputMethodManager paramInputMethodManager)
   {
-    if (this.jdField_b_of_type_JavaUtilArrayList == null) {
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.f.requestFocus();
+    if (paramInputMethodManager != null) {
+      paramInputMethodManager.showSoftInput(this.f, 0);
     }
-    this.jdField_b_of_type_JavaUtilArrayList.add(paramOnVerifyCodeCompleteListener);
+  }
+  
+  public void a(VerifyCodeView.OnVerifyCodeChangedListener paramOnVerifyCodeChangedListener)
+  {
+    if (this.l == null) {
+      this.l = new ArrayList();
+    }
+    this.l.add(paramOnVerifyCodeChangedListener);
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
-    c();
+    setDigitText(paramEditable.toString());
     d();
-    a(paramEditable.toString());
-    int i = this.jdField_b_of_type_Int;
-    if (i == this.jdField_a_of_type_Int)
-    {
-      b();
-      return;
+    boolean bool;
+    if (this.h == this.g) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    ((TextView)this.jdField_a_of_type_JavaUtilArrayList.get(i)).setBackgroundResource(2130851171);
+    a(bool);
+  }
+  
+  public void b()
+  {
+    this.f.setText("");
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
+  public String getCode()
+  {
+    return this.f.getText().toString();
+  }
+  
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    removeCallbacks(this.r);
+    removeCallbacks(this.p);
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void setCode(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
+    this.f.setText(paramString);
+  }
+  
+  public void setContextMenuEnable(boolean paramBoolean)
+  {
+    this.f.setLongClickable(false);
+    Iterator localIterator = this.k.iterator();
+    while (localIterator.hasNext()) {
+      ((VerifyCodeView.SingleDigitView)localIterator.next()).b(paramBoolean);
+    }
+  }
+  
+  public void setTheme(boolean paramBoolean)
+  {
+    this.q = paramBoolean;
+    Iterator localIterator = this.k.iterator();
+    while (localIterator.hasNext()) {
+      setDigitViewBgByTheme((VerifyCodeView.SingleDigitView)localIterator.next());
+    }
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.VerifyCodeView
  * JD-Core Version:    0.7.0.1
  */

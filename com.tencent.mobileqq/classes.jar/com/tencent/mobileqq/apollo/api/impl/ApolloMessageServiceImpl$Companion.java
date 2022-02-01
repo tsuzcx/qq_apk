@@ -6,7 +6,7 @@ import kotlin.Metadata;
 public final class ApolloMessageServiceImpl$Companion {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.impl.ApolloMessageServiceImpl.Companion
  * JD-Core Version:    0.7.0.1
  */

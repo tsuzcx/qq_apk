@@ -8,20 +8,20 @@ import java.util.concurrent.Executor;
 public abstract class HttpAsyncTask<Param, Progress, Result>
   extends AsyncTask<Param, Progress, Result>
 {
-  protected String a = null;
-  protected String b = null;
+  protected String e = null;
+  protected String f = null;
   
   public HttpAsyncTask(String paramString1, String paramString2)
   {
-    this.a = paramString1;
+    this.e = paramString1;
     if (!paramString1.toLowerCase().startsWith("http"))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("https://openmobile.qq.com/");
       localStringBuilder.append(paramString1);
-      this.a = localStringBuilder.toString();
+      this.e = localStringBuilder.toString();
     }
-    this.b = paramString2;
+    this.f = paramString2;
   }
   
   @SuppressLint({"InlinedApi", "NewApi"})
@@ -35,7 +35,7 @@ public abstract class HttpAsyncTask<Param, Progress, Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.http.HttpAsyncTask
  * JD-Core Version:    0.7.0.1
  */

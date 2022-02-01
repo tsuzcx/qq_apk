@@ -5,24 +5,24 @@ import android.view.View;
 public class ScaleTransformer
   implements VideoStoryScrollItemTransformer
 {
-  private float jdField_a_of_type_Float = 0.8F;
-  private Pivot jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsPivot = Pivot.a(1);
-  private float jdField_b_of_type_Float = 0.2F;
-  private Pivot jdField_b_of_type_ComTencentBizVideostoryCaptureWidgetsPivot = Pivot.b(1);
+  private Pivot a = Pivot.a(1);
+  private Pivot b = Pivot.b(1);
+  private float c = 0.8F;
+  private float d = 0.2F;
   
   public void a(View paramView, float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsPivot.a(paramView);
-    this.jdField_b_of_type_ComTencentBizVideostoryCaptureWidgetsPivot.a(paramView);
+    this.a.a(paramView);
+    this.b.a(paramView);
     paramFloat = Math.abs(paramFloat);
-    paramFloat = this.jdField_a_of_type_Float + this.jdField_b_of_type_Float * (1.0F - paramFloat);
+    paramFloat = this.c + this.d * (1.0F - paramFloat);
     paramView.setScaleX(paramFloat);
     paramView.setScaleY(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.capture.widgets.ScaleTransformer
  * JD-Core Version:    0.7.0.1
  */

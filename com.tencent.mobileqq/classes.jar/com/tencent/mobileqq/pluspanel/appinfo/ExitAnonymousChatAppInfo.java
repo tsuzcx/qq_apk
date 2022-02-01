@@ -15,7 +15,7 @@ public class ExitAnonymousChatAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130843816;
+    return 2130844770;
   }
   
   public int getAppID()
@@ -28,22 +28,22 @@ public class ExitAnonymousChatAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131692082);
+    return BaseApplicationImpl.getContext().getString(2131889054);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     if ((paramBaseChatPie instanceof TroopChatPie))
     {
-      ((TroopChatPie)paramBaseChatPie).o(false);
+      ((TroopChatPie)paramBaseChatPie).s(false);
       AIOMusicSkin.a().d(false);
-      ReportController.a(null, "P_CliOper", "Grp_anon", "", "norm_aio", "Clk_quit", 0, 0, String.valueOf(paramSessionInfo.a), "", "", "");
+      ReportController.a(null, "P_CliOper", "Grp_anon", "", "norm_aio", "Clk_quit", 0, 0, String.valueOf(paramSessionInfo.b), "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.ExitAnonymousChatAppInfo
  * JD-Core Version:    0.7.0.1
  */

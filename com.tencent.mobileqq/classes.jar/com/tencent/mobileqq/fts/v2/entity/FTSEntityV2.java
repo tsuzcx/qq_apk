@@ -46,7 +46,7 @@ public abstract class FTSEntityV2
   {
     try
     {
-      Iterator localIterator = FTSV2FieldUtils.a(getClass()).iterator();
+      Iterator localIterator = FTSV2FieldUtils.b(getClass()).iterator();
       while (localIterator.hasNext())
       {
         Field localField = (Field)localIterator.next();
@@ -55,7 +55,7 @@ public abstract class FTSEntityV2
           String str = (String)localField.get(this);
           if (!TextUtils.isEmpty(str))
           {
-            str = FTSV2FieldUtils.a(str);
+            str = FTSV2FieldUtils.b(str);
             this.indexContentMap.put(localField.getName(), str);
           }
         }
@@ -75,7 +75,7 @@ public abstract class FTSEntityV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.v2.entity.FTSEntityV2
  * JD-Core Version:    0.7.0.1
  */

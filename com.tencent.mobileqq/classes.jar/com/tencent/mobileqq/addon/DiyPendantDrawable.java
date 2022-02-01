@@ -15,50 +15,50 @@ public class DiyPendantDrawable
   extends VipPendantDrawable
   implements DiyPendantFetcher.Invalidatable
 {
-  double jdField_a_of_type_Double;
-  DiyPendantFetcher jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher = DiyPendantFetcher.a();
-  String jdField_a_of_type_JavaLangString;
-  List<DiyPendantDrawable.Sticker> jdField_a_of_type_JavaUtilList;
-  Paint b = new Paint();
-  int c;
-  int d;
+  String h;
+  int i;
+  int j;
+  double k;
+  DiyPendantFetcher l = DiyPendantFetcher.a();
+  List<DiyPendantDrawable.Sticker> m;
+  Paint n = new Paint();
   
   public DiyPendantDrawable(Resources paramResources)
   {
     super(paramResources);
   }
   
-  public List<DiyPendantDrawable.Sticker> a()
+  public List<DiyPendantDrawable.Sticker> b()
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList != null)
+      if (this.m != null)
       {
-        localList = this.jdField_a_of_type_JavaUtilList;
+        localList = this.m;
         return localList;
       }
-      List localList = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a(this);
+      List localList = this.l.a(this);
       if ((localList != null) && (!localList.isEmpty()))
       {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        int i = 0;
-        while (i < localList.size())
+        this.m = new ArrayList();
+        int i1 = 0;
+        while (i1 < localList.size())
         {
-          DiyPendantSticker localDiyPendantSticker = (DiyPendantSticker)localList.get(i);
-          int j;
+          DiyPendantSticker localDiyPendantSticker = (DiyPendantSticker)localList.get(i1);
+          int i2;
           try
           {
-            j = Color.parseColor(localDiyPendantSticker.fontColor);
+            i2 = Color.parseColor(localDiyPendantSticker.fontColor);
           }
           catch (Exception localException)
           {
             QLog.e("DiyPendantDrawable", 1, new Object[] { "parse sticker text color failed.", localException.getMessage() });
-            j = -16777216;
+            i2 = -16777216;
           }
-          this.jdField_a_of_type_JavaUtilList.add(new DiyPendantDrawable.DiyAddonSticker(this, i, localDiyPendantSticker.angle, localDiyPendantSticker.text, localDiyPendantSticker.fontId, localDiyPendantSticker.fontType, j));
-          i += 1;
+          this.m.add(new DiyPendantDrawable.DiyAddonSticker(this, i1, localDiyPendantSticker.angle, localDiyPendantSticker.text, localDiyPendantSticker.fontId, localDiyPendantSticker.fontType, i2));
+          i1 += 1;
         }
-        localList = this.jdField_a_of_type_JavaUtilList;
+        localList = this.m;
         return localList;
       }
       return null;
@@ -72,35 +72,35 @@ public class DiyPendantDrawable
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.h = paramString;
   }
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    Object localObject = a();
+    Object localObject = b();
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((DiyPendantDrawable.Sticker)((Iterator)localObject).next()).a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
+        ((DiyPendantDrawable.Sticker)((Iterator)localObject).next()).a(paramCanvas, this.c);
       }
     }
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    int i = paramRect.width();
-    this.c = Math.abs(paramRect.height() - i);
-    double d1 = i;
-    Double.isNaN(d1);
-    this.jdField_a_of_type_Double = (d1 / 250.0D);
-    this.d = ((int)(this.jdField_a_of_type_Double * 100.0D));
+    int i1 = paramRect.width();
+    this.i = Math.abs(paramRect.height() - i1);
+    double d = i1;
+    Double.isNaN(d);
+    this.k = (d / 250.0D);
+    this.j = ((int)(this.k * 100.0D));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantDrawable
  * JD-Core Version:    0.7.0.1
  */

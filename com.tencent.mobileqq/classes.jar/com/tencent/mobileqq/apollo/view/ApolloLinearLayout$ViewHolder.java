@@ -10,25 +10,25 @@ import com.tencent.mobileqq.tianshu.ui.RedTouch;
 
 public class ApolloLinearLayout$ViewHolder
 {
-  public View a;
-  public ImageView a;
   public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public ApolloInfo a;
-  public RedTouch a;
   public ImageView b;
-  public RelativeLayout b;
-  public TextView b;
-  public ImageView c;
-  public RelativeLayout c;
   public TextView c;
-  public ImageView d;
+  public URLImageView d;
   public ImageView e;
+  public TextView f;
+  public RelativeLayout g;
+  public ImageView h;
+  public ImageView i;
+  public ApolloInfo j;
+  public RedTouch k;
+  public TextView l;
+  public ImageView m;
+  public RelativeLayout n;
+  public View o;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloLinearLayout.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

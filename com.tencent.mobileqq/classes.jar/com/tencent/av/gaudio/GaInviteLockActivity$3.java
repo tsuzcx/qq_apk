@@ -12,23 +12,28 @@ class GaInviteLockActivity$3
   
   protected void a(long paramLong, ArrayList<VideoController.GAudioFriends> paramArrayList, int paramInt1, int paramInt2)
   {
-    GaInviteLockActivity.a(this.a, paramLong, paramArrayList, paramInt1);
+    GaInviteLockActivity.a(this.b, paramLong, paramArrayList, paramInt1);
   }
   
   protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onMembersChange");
+      QLog.d(this.b.l, 2, "onMembersChange");
     }
-    if (paramLong == this.a.a)
+    if (paramLong == this.b.b)
     {
       if (paramBoolean) {
         return;
       }
-      if (((paramInt == 10) || (paramInt == 1)) && (this.a.isResume())) {
-        GaInviteLockActivity.a(this.a, paramInt);
+      if (((paramInt == 10) || (paramInt == 1)) && (this.b.isResume())) {
+        GaInviteLockActivity.a(this.b, paramInt);
       }
     }
+  }
+  
+  protected void g()
+  {
+    this.b.d();
   }
 }
 

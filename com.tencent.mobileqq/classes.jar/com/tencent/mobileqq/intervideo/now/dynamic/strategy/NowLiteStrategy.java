@@ -27,12 +27,12 @@ import java.util.Map;
 public class NowLiteStrategy
   implements IEnterRoomStrategy
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private VersionManager jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizVersionManager;
+  private QQAppInterface a;
+  private VersionManager b;
   
   public NowLiteStrategy(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   private NowBizConfigManager a()
@@ -43,48 +43,43 @@ public class NowLiteStrategy
   public BusinessConfig a(Bundle paramBundle, String paramString)
   {
     BusinessConfig localBusinessConfig = new BusinessConfig();
-    localBusinessConfig.jdField_a_of_type_JavaLangString = paramString;
-    localBusinessConfig.jdField_e_of_type_Int = 0;
-    localBusinessConfig.jdField_b_of_type_JavaLangString = ApkUtils.a(BaseApplicationImpl.getContext());
-    localBusinessConfig.jdField_a_of_type_Int = ApkUtils.a(BaseApplicationImpl.getContext());
-    localBusinessConfig.jdField_d_of_type_Int = 406;
-    localBusinessConfig.jdField_b_of_type_Int = NowBizConfigConst.NowLiteConfig.jdField_a_of_type_Int;
-    localBusinessConfig.c = 0;
-    localBusinessConfig.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localBusinessConfig.jdField_d_of_type_JavaLangString = paramBundle.getString("fromid");
-    localBusinessConfig.jdField_a_of_type_JavaUtilList.clear();
-    localBusinessConfig.jdField_a_of_type_JavaUtilList.add("https://now.qq.com/");
+    localBusinessConfig.a = paramString;
+    localBusinessConfig.h = 0;
+    localBusinessConfig.b = ApkUtils.b(BaseApplicationImpl.getContext());
+    localBusinessConfig.c = ApkUtils.a(BaseApplicationImpl.getContext());
+    localBusinessConfig.f = 406;
+    localBusinessConfig.d = NowBizConfigConst.NowLiteConfig.a;
+    localBusinessConfig.e = 0;
+    localBusinessConfig.j = this.a.getCurrentAccountUin();
+    localBusinessConfig.i = paramBundle.getString("fromid");
+    localBusinessConfig.n.clear();
+    localBusinessConfig.n.add("https://now.qq.com/");
     return localBusinessConfig;
-  }
-  
-  public String a(Bundle paramBundle)
-  {
-    return a().a(paramBundle);
   }
   
   public void a(Bundle paramBundle, IDoneCallback paramIDoneCallback)
   {
     if (NowAppHelper.a(BaseApplicationImpl.getContext(), paramBundle))
     {
-      NowAppHelper.a(BaseApplicationImpl.getContext(), paramBundle);
+      NowAppHelper.b(BaseApplicationImpl.getContext(), paramBundle);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizVersionManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizVersionManager = new VersionManager();
+    if (this.b == null) {
+      this.b = new VersionManager();
     }
     a();
     String str = NowBizConfigManager.a(paramBundle, "fromid");
     if (a().a(str))
     {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizVersionManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 16205, new NowLiteStrategy.1(this, paramIDoneCallback, paramBundle));
+      this.b.a(this.a, 16205, new NowLiteStrategy.1(this, paramIDoneCallback, paramBundle));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizVersionManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new NowLiteStrategy.2(this, paramIDoneCallback, paramBundle));
+    this.b.a(this.a, new NowLiteStrategy.2(this, paramIDoneCallback, paramBundle));
   }
   
   public boolean a(Bundle paramBundle)
   {
-    paramBundle = a(paramBundle);
+    paramBundle = b(paramBundle);
     if ("live".equals(paramBundle))
     {
       LiteLiveSDKFactory.a().a(paramBundle, 7, NowRoomAudienceModules.class);
@@ -117,10 +112,15 @@ public class NowLiteStrategy
   {
     return false;
   }
+  
+  public String b(Bundle paramBundle)
+  {
+    return a().b(paramBundle);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.strategy.NowLiteStrategy
  * JD-Core Version:    0.7.0.1
  */

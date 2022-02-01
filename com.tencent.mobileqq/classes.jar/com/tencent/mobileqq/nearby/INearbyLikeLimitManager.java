@@ -8,8 +8,6 @@ public abstract interface INearbyLikeLimitManager
 {
   public abstract SpannableString a();
   
-  public abstract void a();
-  
   public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract void a(Activity paramActivity, Object paramObject1, String paramString1, Object paramObject2, String paramString2);
@@ -18,15 +16,17 @@ public abstract interface INearbyLikeLimitManager
   
   public abstract void a(String paramString, boolean paramBoolean);
   
-  public abstract boolean a();
-  
   public abstract boolean a(long paramLong);
   
   public abstract boolean a(String paramString);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.INearbyLikeLimitManager
  * JD-Core Version:    0.7.0.1
  */

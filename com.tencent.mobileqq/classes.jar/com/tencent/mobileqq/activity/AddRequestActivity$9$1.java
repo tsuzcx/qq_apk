@@ -12,7 +12,7 @@ class AddRequestActivity$9$1
   
   public void run()
   {
-    Card localCard = ((FriendsManager)this.a.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.a.a.a);
+    Card localCard = ((FriendsManager)this.a.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(this.a.a.a);
     if (localCard != null) {
       this.a.a.runOnUiThread(new AddRequestActivity.9.1.1(this, localCard));
     }
@@ -20,7 +20,7 @@ class AddRequestActivity$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.9.1
  * JD-Core Version:    0.7.0.1
  */

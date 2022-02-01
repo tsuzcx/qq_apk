@@ -10,14 +10,9 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/crossengine/log/Logger;", "", "()V", "<set-?>", "Lcom/tencent/crossengine/log/LogDelegate;", "delegate", "getDelegate", "()Lcom/tencent/crossengine/log/LogDelegate;", "d", "", "tag", "", "message", "throwable", "", "e", "i", "init", "v", "w", "library_release"}, k=1, mv={1, 1, 16})
 public final class Logger
 {
+  public static final Logger a = new Logger();
   @NotNull
-  private static LogDelegate a;
-  public static final Logger a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentCrossengineLogLogger = new Logger();
-  }
+  private static LogDelegate b;
   
   @JvmStatic
   @JvmOverloads
@@ -32,7 +27,7 @@ public final class Logger
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "message");
-    LogDelegate localLogDelegate = jdField_a_of_type_ComTencentCrossengineLogLogDelegate;
+    LogDelegate localLogDelegate = b;
     if (localLogDelegate == null) {
       Intrinsics.throwUninitializedPropertyAccessException("delegate");
     }
@@ -52,7 +47,7 @@ public final class Logger
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "message");
-    LogDelegate localLogDelegate = jdField_a_of_type_ComTencentCrossengineLogLogDelegate;
+    LogDelegate localLogDelegate = b;
     if (localLogDelegate == null) {
       Intrinsics.throwUninitializedPropertyAccessException("delegate");
     }
@@ -72,7 +67,7 @@ public final class Logger
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "message");
-    LogDelegate localLogDelegate = jdField_a_of_type_ComTencentCrossengineLogLogDelegate;
+    LogDelegate localLogDelegate = b;
     if (localLogDelegate == null) {
       Intrinsics.throwUninitializedPropertyAccessException("delegate");
     }
@@ -92,7 +87,7 @@ public final class Logger
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "message");
-    LogDelegate localLogDelegate = jdField_a_of_type_ComTencentCrossengineLogLogDelegate;
+    LogDelegate localLogDelegate = b;
     if (localLogDelegate == null) {
       Intrinsics.throwUninitializedPropertyAccessException("delegate");
     }
@@ -102,12 +97,12 @@ public final class Logger
   public final void a(@NotNull LogDelegate paramLogDelegate)
   {
     Intrinsics.checkParameterIsNotNull(paramLogDelegate, "delegate");
-    jdField_a_of_type_ComTencentCrossengineLogLogDelegate = paramLogDelegate;
+    b = paramLogDelegate;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.log.Logger
  * JD-Core Version:    0.7.0.1
  */

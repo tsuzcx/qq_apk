@@ -57,13 +57,15 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.nearby.INearbyCardManager;
 import com.tencent.mobileqq.nearby.NearbyFakeActivityUtils;
 import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.api.INearbyCardManagerUtils;
 import com.tencent.mobileqq.nearby.api.INearbyProcessMonitor;
 import com.tencent.mobileqq.nearby.api.INearbySPUtil;
 import com.tencent.mobileqq.nearby.now.protocol.INowShortVideoProtoManager;
 import com.tencent.mobileqq.nearby.profilecard.IMiniCardManager;
 import com.tencent.mobileqq.nearpeople.IChatPushCarrier;
 import com.tencent.mobileqq.nearpeople.api.IChatPushCarrierHelper;
+import com.tencent.mobileqq.newnearby.INearbyCGIReporter;
+import com.tencent.mobileqq.newnearby.INearbyMsgbox;
+import com.tencent.mobileqq.newnearby.INearbyReportHelper;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -90,7 +92,6 @@ import java.util.List;
 import java.util.Observable;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
 import org.json.JSONObject;
 import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
 
@@ -129,17 +130,6 @@ public class MsgBoxListActivity
   private View vSeparatorLine;
   View viewCarrier;
   
-  private void doRequestMiniCardInfo(List<Long> paramList, int paramInt, List<RecentBaseData> paramList1)
-  {
-    if (paramList == null) {
-      return;
-    }
-    if (this.miniCardManager == null) {
-      this.miniCardManager = ((IMiniCardManager)this.app.getManager(QQManagerFactory.MINI_CARD_MANAGER));
-    }
-    ThreadManager.getSubThreadHandler().postDelayed(new MsgBoxListActivity.4(this, paramList, paramInt, paramList1), 100L);
-  }
-  
   public static int getNearbyMsgBoxUnReadNum(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
     long l = System.currentTimeMillis();
@@ -149,7 +139,7 @@ public class MsgBoxListActivity
     Object localObject3 = Integer.valueOf(0);
     int i2 = ((Integer)((INearbySPUtil)localObject1).getValue((String)localObject2, "key_nearby_msg_box_say_hello_msg_type", localObject3)).intValue();
     int i3 = ((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(paramQQAppInterface.getCurrentAccountUin(), "key_nearby_msg_box_comment_zan_msg_type", localObject3)).intValue();
-    paramString = paramQQAppInterface.getMessageProxy(1001).a(paramString, 1001);
+    paramString = paramQQAppInterface.getMessageProxy(1001).b(paramString, 1001);
     int i;
     if (QLog.isColorLevel())
     {
@@ -258,7 +248,7 @@ public class MsgBoxListActivity
         else
         {
           if (!(paramString instanceof RecentSayHelloBoxItem)) {
-            break label750;
+            break label748;
           }
           if ((paramBoolean) && (i2 == 1))
           {
@@ -271,11 +261,11 @@ public class MsgBoxListActivity
             k = j;
           }
         }
-        label750:
+        label748:
         do
         {
           i1 = n;
-          break label851;
+          break label849;
           if (!(paramString instanceof RecentInteractAndFollowItem)) {
             break;
           }
@@ -291,26 +281,26 @@ public class MsgBoxListActivity
             i1 = 1;
             m = i;
             k = j;
-            break label851;
+            break label849;
           }
         }
         else
         {
           k = i1;
-          break label837;
+          break label835;
           m = i;
           k = j;
           i1 = n;
           if (paramString.mUnreadFlag != 1) {
-            break label851;
+            break label849;
           }
           k = paramString.mUnreadNum;
         }
-        label837:
+        label835:
         int m = i + k;
         int i1 = n;
         k = j;
-        label851:
+        label849:
         i = m;
         j = k;
         n = i1;
@@ -353,27 +343,6 @@ public class MsgBoxListActivity
     return 0;
   }
   
-  private void handleMiniCardReq(List<RecentBaseData> paramList)
-  {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      long l = Long.valueOf(((RecentBaseData)paramList.get(i)).getRecentUserUin()).longValue();
-      if (l > 10000L) {
-        if (((INearbyCardManagerUtils)QRoute.api(INearbyCardManagerUtils.class)).isTinyId(String.valueOf(l))) {
-          localArrayList1.add(Long.valueOf(l));
-        } else {
-          localArrayList2.add(Long.valueOf(l));
-        }
-      }
-      i += 1;
-    }
-    doRequestMiniCardInfo(localArrayList1, 0, paramList);
-    doRequestMiniCardInfo(localArrayList2, 1, paramList);
-  }
-  
   private void nearbyReport(String paramString1, String paramString2, String paramString3)
   {
     JSONObject localJSONObject = new JSONObject();
@@ -387,7 +356,7 @@ public class MsgBoxListActivity
       localJSONObject.put("ts", String.valueOf(System.currentTimeMillis() / 1000L));
       localJSONObject.put("fromuin", this.app.getCurrentAccountUin());
       localJSONObject.put("appid", "406");
-      new NearbyCGIReporter().a(localJSONObject);
+      ((INearbyCGIReporter)QRoute.api(INearbyCGIReporter.class)).reportByJson(localJSONObject);
       return;
     }
     catch (Exception paramString1) {}
@@ -406,7 +375,7 @@ public class MsgBoxListActivity
     if (this.mBoxMsgType != 1010)
     {
       Object localObject = this.mConfig;
-      if ((localObject != null) && (!StringUtil.a(((CarrierHelper.EntranceConfig)localObject).iconUrl)) && (!StringUtil.a(this.mConfig.wording)) && (!StringUtil.a(this.mConfig.jumpUrl)))
+      if ((localObject != null) && (!StringUtil.isEmpty(((CarrierHelper.EntranceConfig)localObject).iconUrl)) && (!StringUtil.isEmpty(this.mConfig.wording)) && (!StringUtil.isEmpty(this.mConfig.jumpUrl)))
       {
         localObject = URLDrawable.URLDrawableOptions.obtain();
         localObject = URLDrawable.getDrawable(this.mConfig.iconUrl, (URLDrawable.URLDrawableOptions)localObject);
@@ -446,8 +415,6 @@ public class MsgBoxListActivity
     }
   }
   
-  public void OnClick(View paramView, int paramInt) {}
-  
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
@@ -478,9 +445,13 @@ public class MsgBoxListActivity
     if (this.isThemeDefault)
     {
       if (getTitleBarView() != null) {
-        getTitleBarView().setBackgroundDrawable(getResources().getDrawable(2130850434));
+        if (this.isFromQQNearby) {
+          getTitleBarView().setBackgroundColor(-1);
+        } else {
+          getTitleBarView().setBackgroundDrawable(getResources().getDrawable(2130852229));
+        }
       }
-      if (this.centerView != null) {
+      if ((this.centerView != null) && (!this.isFromQQNearby)) {
         this.centerView.setTextColor(-1);
       }
     }
@@ -491,20 +462,20 @@ public class MsgBoxListActivity
     Object localObject;
     if (this.mBoxMsgType == 1010)
     {
-      setTitle(2131698741);
+      setTitle(2131896699);
       this.mMsgBar.setVisibility(8);
     }
     else if ((this.mBoxMsgType != 1001) && (this.mBoxMsgType != 10002))
     {
       if (this.mBoxMsgType == 1009)
       {
-        setTitle(2131718365);
+        setTitle(2131915857);
         this.mMsgBar.setVisibility(8);
       }
     }
     else
     {
-      setTitle(2131693136);
+      setTitle(2131890675);
       this.mMsgBar.setVisibility(8);
       localObject = this.app;
       if (this.mBoxMsgType == 1001) {
@@ -516,8 +487,17 @@ public class MsgBoxListActivity
     }
     if (this.isFromNearby)
     {
-      setTitle(2131694387);
+      if (this.isFromQQNearby)
+      {
+        setTitle("");
+        ((INearbyMsgbox)QRoute.api(INearbyMsgbox.class)).initTitleBar(this);
+      }
+      else
+      {
+        setTitle(2131892066);
+      }
       nearbyReport("overall_page", "view", null);
+      this.miniCardManager = ((IMiniCardManager)this.app.getManager(QQManagerFactory.MINI_CARD_MANAGER));
     }
     this.mMsgBar.setOnClickListener(this);
     this.app.addObserver(this.mlbsObserver, true);
@@ -565,7 +545,7 @@ public class MsgBoxListActivity
     if (localCarrierHelper != null)
     {
       localCarrierHelper.a(1, Boolean.valueOf(false));
-      this.mCarrierHelper.a();
+      this.mCarrierHelper.c();
     }
   }
   
@@ -642,7 +622,7 @@ public class MsgBoxListActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365423)
+    if (paramView.getId() == 2131431627)
     {
       Object localObject = this.mConfig;
       if (localObject == null)
@@ -696,6 +676,8 @@ public class MsgBoxListActivity
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
+  public void onClick(View paramView, int paramInt) {}
+  
   @Override
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
@@ -706,7 +688,7 @@ public class MsgBoxListActivity
   public void onMenuItemClick(String paramString1, RecentBaseData paramRecentBaseData, String paramString2)
   {
     long l1;
-    if (Utils.a(paramString1, getString(com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder.a[6])))
+    if ((Utils.a(paramString1, getString(com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder.c[6]))) || (Utils.a(paramString1, getString(com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder.c[11]))))
     {
       this.mCurItem = paramRecentBaseData;
       this.mCurR = paramString2;
@@ -717,10 +699,10 @@ public class MsgBoxListActivity
       }
       paramString1 = new ReportTask(this.app).a("dc00899").b("grp_lbs").c("msg_box").d("unfollow");
       paramRecentBaseData = (RecentItemNearbyLiveTipData)paramRecentBaseData;
-      paramString1.e(paramRecentBaseData.a()).a();
+      paramString1.e(paramRecentBaseData.bW_()).a();
       if (!NetworkUtil.a(getApplicationContext()))
       {
-        QQToast.a(getApplicationContext(), 1, 2131694422, 0).a();
+        QQToast.makeText(getApplicationContext(), 1, 2131892102, 0).show();
         return;
       }
       if (paramRecentBaseData.nearbyLiveTipMsg == null)
@@ -744,8 +726,8 @@ public class MsgBoxListActivity
     catch (NumberFormatException paramString1)
     {
       long l2;
-      label182:
-      break label182;
+      label199:
+      break label199;
     }
     l2 = l1;
     if (l1 > AppConstants.NOW_LIVE_TIP_UIN_BASE) {
@@ -776,10 +758,10 @@ public class MsgBoxListActivity
         if (paramView != null)
         {
           paramView.a();
-          if (MsgProxyUtils.c(paramString.a()))
+          if (MsgProxyUtils.d(paramString.bW_()))
           {
             this.app.getMessageFacade().a(paramString.mData.senderuin, paramRecentBaseData.getRecentUserType());
-            if (MsgProxyUtils.c(((MessageForNearbyLiveTip)localObject).senderuin))
+            if (MsgProxyUtils.d(((MessageForNearbyLiveTip)localObject).senderuin))
             {
               if (paramString.getUnreadNum() < 1) {
                 paramView = "0";
@@ -790,18 +772,21 @@ public class MsgBoxListActivity
             }
           }
           this.app.getMessageFacade().a(paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getRecentUserType());
-          this.app.getMessageFacade().a(paramString.a(), paramRecentBaseData.getRecentUserType());
+          this.app.getMessageFacade().a(paramString.bW_(), paramRecentBaseData.getRecentUserType());
         }
         ThreadManagerV2.excute(new MsgBoxListActivity.8(this, (MessageForNearbyLiveTip)localObject, (INearbyCardManager)this.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)), 32, null, false);
       }
       ReportController.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "click_live_message", 0, 0, "", "", "", "");
+      if (this.isFromNearby) {
+        ((INearbyReportHelper)QRoute.api(INearbyReportHelper.class)).reportLiveTipListClick(this.app);
+      }
       return;
     }
     if ((paramRecentBaseData instanceof RecentInteractAndFollowItem))
     {
       RecentUtil.b(this.app, paramRecentBaseData.getRecentUserUin(), this.mBoxMsgType);
       this.app.getMessageFacade().a(paramRecentBaseData.getRecentUserUin(), this.mBoxMsgType);
-      if (MsgProxyUtils.a(paramRecentBaseData.getRecentUserUin()))
+      if (MsgProxyUtils.b(paramRecentBaseData.getRecentUserUin()))
       {
         paramView = new Intent(this, QQBrowserActivity.class);
         paramView.putExtra("url", "https://nearby.qq.com/greeting/notification.html?_bid=2623&_wv=1027");
@@ -813,7 +798,7 @@ public class MsgBoxListActivity
         new ReportTask(this.app).a("dc00899").b("grp_lbs").c("msg_box").d("clk_update").a(new String[] { "", "", paramView }).a();
         return;
       }
-      if (MsgProxyUtils.b(paramRecentBaseData.getRecentUserUin()))
+      if (MsgProxyUtils.c(paramRecentBaseData.getRecentUserUin()))
       {
         paramView = new Intent(this, QQBrowserActivity.class);
         paramView.putExtra("url", "https://nearby.qq.com/greeting/topic.html?_bid=2623&_wv=1027 ");
@@ -832,6 +817,9 @@ public class MsgBoxListActivity
           paramView = "0";
         }
         new ReportTask(this.app).a("dc00899").b("grp_lbs").c("msg_box").d("clk_notice").a(new String[] { "", "", paramView }).a();
+        if (this.isFromNearby) {
+          ((INearbyReportHelper)QRoute.api(INearbyReportHelper.class)).reportMomentListClick(this.app);
+        }
       }
       return;
     }
@@ -888,9 +876,9 @@ public class MsgBoxListActivity
       {
         paramString = "0";
       }
-      if (MsgProxyUtils.a(paramRecentBaseData.getRecentUserUin())) {
+      if (MsgProxyUtils.b(paramRecentBaseData.getRecentUserUin())) {
         ReportController.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "swipe_update", 0, 0, "", "", paramString, "");
-      } else if (MsgProxyUtils.b(paramRecentBaseData.getRecentUserUin())) {
+      } else if (MsgProxyUtils.c(paramRecentBaseData.getRecentUserUin())) {
         ReportController.b(this.app, "dc00899", "grp_lbs", "", "msg_box", "swipe_focus", 0, 0, "", "", "", "");
       }
       if (this.isFromNearby)
@@ -1078,7 +1066,7 @@ public class MsgBoxListActivity
       Object localObject = this.app.getMessageFacade();
       if (localObject != null)
       {
-        int i = ((QQMessageFacade)localObject).b();
+        int i = ((QQMessageFacade)localObject).w();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
         ((StringBuilder)localObject).append(i);
@@ -1086,7 +1074,7 @@ public class MsgBoxListActivity
         if (!this.isThemeDefault)
         {
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(getString(2131719442));
+          ((StringBuilder)localObject).append(getString(2131917002));
           ((StringBuilder)localObject).append("(");
           ((StringBuilder)localObject).append(i);
           ((StringBuilder)localObject).append(")");
@@ -1094,13 +1082,13 @@ public class MsgBoxListActivity
           if (i > 99)
           {
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(getString(2131719442));
+            ((StringBuilder)localObject).append(getString(2131917002));
             ((StringBuilder)localObject).append("(99+)");
             localObject = ((StringBuilder)localObject).toString();
           }
         }
         if (i < 0) {
-          localObject = getString(2131719442);
+          localObject = getString(2131917002);
         }
         if ((this.isThemeDefault) && (i <= 0)) {
           localTextView.setVisibility(4);
@@ -1112,7 +1100,7 @@ public class MsgBoxListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.MsgBoxListActivity
  * JD-Core Version:    0.7.0.1
  */

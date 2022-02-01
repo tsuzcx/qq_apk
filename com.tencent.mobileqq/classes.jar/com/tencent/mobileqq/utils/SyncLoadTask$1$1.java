@@ -27,12 +27,12 @@ class SyncLoadTask$1$1
       ((SyncLoadTask)localIterator.next()).setComplete(false);
       bool1 = false;
     }
-    this.this$0.a.a(bool1, this.this$0.b);
+    this.this$0.c.a(bool1, this.this$0.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SyncLoadTask.1.1
  * JD-Core Version:    0.7.0.1
  */

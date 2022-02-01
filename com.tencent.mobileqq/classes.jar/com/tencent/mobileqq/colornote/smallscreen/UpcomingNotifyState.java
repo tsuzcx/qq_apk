@@ -2,37 +2,32 @@ package com.tencent.mobileqq.colornote.smallscreen;
 
 public class UpcomingNotifyState
 {
-  private int jdField_a_of_type_Int = 1;
-  private UpcomingNotifyState.OnStateChangeListener jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState$OnStateChangeListener;
+  private int a = 1;
+  private UpcomingNotifyState.OnStateChangeListener b;
   
   public UpcomingNotifyState() {}
   
   public UpcomingNotifyState(UpcomingNotifyState.OnStateChangeListener paramOnStateChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState$OnStateChangeListener = paramOnStateChangeListener;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.b = paramOnStateChangeListener;
   }
   
   public void a()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     UpcomingNotifyState.OnStateChangeListener localOnStateChangeListener;
     if (i == 1)
     {
-      localOnStateChangeListener = this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState$OnStateChangeListener;
+      localOnStateChangeListener = this.b;
       if (localOnStateChangeListener != null)
       {
         localOnStateChangeListener.a(1);
-        this.jdField_a_of_type_Int = 2;
+        this.a = 2;
       }
     }
     else if (i == 2)
     {
-      localOnStateChangeListener = this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState$OnStateChangeListener;
+      localOnStateChangeListener = this.b;
       if (localOnStateChangeListener != null) {
         localOnStateChangeListener.a(2);
       }
@@ -41,33 +36,38 @@ public class UpcomingNotifyState
   
   public void b()
   {
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.a == 2)
     {
-      UpcomingNotifyState.OnStateChangeListener localOnStateChangeListener = this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState$OnStateChangeListener;
+      UpcomingNotifyState.OnStateChangeListener localOnStateChangeListener = this.b;
       if (localOnStateChangeListener != null)
       {
         localOnStateChangeListener.a();
-        this.jdField_a_of_type_Int = 3;
+        this.a = 3;
       }
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Int == 3)
+    if (this.a == 3)
     {
-      UpcomingNotifyState.OnStateChangeListener localOnStateChangeListener = this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState$OnStateChangeListener;
+      UpcomingNotifyState.OnStateChangeListener localOnStateChangeListener = this.b;
       if (localOnStateChangeListener != null)
       {
         localOnStateChangeListener.b();
-        this.jdField_a_of_type_Int = 1;
+        this.a = 1;
       }
     }
+  }
+  
+  public int d()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.UpcomingNotifyState
  * JD-Core Version:    0.7.0.1
  */

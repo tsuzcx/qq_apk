@@ -36,7 +36,7 @@ import mqq.os.MqqHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/qqexpand/entrance/impl/ExpandEntranceImpl;", "Lcom/tencent/mobileqq/qqexpand/entrance/IExpandEntrance;", "()V", "checkABTestPassTime", "", "app", "Lcom/tencent/common/app/AppInterface;", "enterExpand", "activityContext", "Landroid/content/Context;", "sourceType", "", "enterExpandByJumpAction", "activity", "jumpUrl", "", "enterExpandLimitMatch", "Landroid/app/Activity;", "enterExpandPlugin", "params", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "enterFlutterExpand", "getQuietMode", "getUserCategoryConfig", "jump2FlutterExpandByWidgetName", "entry", "page", "preloadConfigData", "reportData", "eventName", "reportGetAbTestCost", "success", "", "abTestLastPullTime", "", "Companion", "qqexpand_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/qqexpand/entrance/impl/ExpandEntranceImpl;", "Lcom/tencent/mobileqq/qqexpand/entrance/IExpandEntrance;", "()V", "checkABTestPassTime", "", "app", "Lcom/tencent/common/app/AppInterface;", "enterExpand", "activityContext", "Landroid/content/Context;", "sourceType", "", "enterExpandByJumpAction", "activity", "pageName", "", "jumpUrl", "enterExpandLimitMatch", "Landroid/app/Activity;", "enterExpandPlugin", "params", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "enterFlutterExpand", "getQuietMode", "getUserCategoryConfig", "jump2FlutterExpandByWidgetName", "entry", "page", "preloadConfigData", "reportData", "eventName", "reportGetAbTestCost", "success", "", "abTestLastPullTime", "", "Companion", "qqexpand_impl_release"}, k=1, mv={1, 1, 16})
 public final class ExpandEntranceImpl
   implements IExpandEntrance
 {
@@ -53,26 +53,26 @@ public final class ExpandEntranceImpl
     ThreadManager.getSubThreadHandler().post((Runnable)new ExpandEntranceImpl.checkABTestPassTime.1(this, paramAppInterface));
   }
   
-  private final void enterFlutterExpand(Context paramContext, AppInterface paramAppInterface, int paramInt, String paramString)
+  private final void enterFlutterExpand(Context paramContext, AppInterface paramAppInterface, String paramString1, int paramInt, String paramString2)
   {
     Object localObject = paramAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
     if (localObject != null)
     {
       localObject = (IExpandManager)localObject;
       ((IExpandManager)localObject).a(paramInt);
-      if (((IExpandManager)localObject).g())
+      if (((IExpandManager)localObject).F())
       {
         preloadConfigData(paramAppInterface);
         paramAppInterface = new HashMap();
         ((Map)paramAppInterface).put("sourceType", Integer.valueOf(paramInt));
-        if (paramString == null) {
-          paramString = "";
+        if (paramString2 == null) {
+          paramString2 = "";
         }
-        enterExpandPlugin(paramContext, paramAppInterface, paramString);
+        enterExpandPlugin(paramContext, paramAppInterface, paramString2);
         return;
       }
-      ((IExpandManager)localObject).b();
-      jump2FlutterExpandByWidgetName(paramContext, paramAppInterface, "qqExpandWidget", "QQExpandWidget", paramInt, paramString);
+      ((IExpandManager)localObject).h();
+      jump2FlutterExpandByWidgetName(paramContext, paramAppInterface, "qqExpandWidget", paramString1, paramInt, paramString2);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.qqexpand.manager.IExpandManager");
@@ -109,11 +109,11 @@ public final class ExpandEntranceImpl
     localMap.put("from", ExpandPublicFragmentActivity.getReportFromPage(paramInt));
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(String.valueOf(System.currentTimeMillis()));
-    String str1 = "";
+    String str2 = "";
     ((StringBuilder)localObject).append("");
     localMap.put("startTime", ((StringBuilder)localObject).toString());
     boolean bool1 = QLog.isDebugVersion();
-    String str2 = "0";
+    String str1 = "0";
     if (bool1) {
       localObject = "0";
     } else {
@@ -126,80 +126,87 @@ public final class ExpandEntranceImpl
       localObject = "1";
     }
     localMap.put("serverEnv", localObject);
-    localMap.put("statusBarHeight", Integer.valueOf(ViewUtils.c(ImmersiveUtils.getStatusBarHeight(paramContext))));
+    localMap.put("statusBarHeight", Integer.valueOf(ViewUtils.pxToDp(ImmersiveUtils.getStatusBarHeight(paramContext))));
     localObject = BaseApplication.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplication.getContext()");
     localObject = ((BaseApplication)localObject).getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplication.getContext().resources");
-    localMap.put("screenWidth", Integer.valueOf(ViewUtils.c(((Resources)localObject).getDisplayMetrics().widthPixels)));
+    localMap.put("screenWidth", Integer.valueOf(ViewUtils.pxToDp(((Resources)localObject).getDisplayMetrics().widthPixels)));
     localObject = BaseApplication.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplication.getContext()");
     localObject = ((BaseApplication)localObject).getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplication.getContext().resources");
-    localMap.put("screenHeight", Integer.valueOf(ViewUtils.c(((Resources)localObject).getDisplayMetrics().heightPixels)));
+    localMap.put("screenHeight", Integer.valueOf(ViewUtils.pxToDp(((Resources)localObject).getDisplayMetrics().heightPixels)));
     paramAppInterface = paramAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
     if (paramAppInterface != null)
     {
       localObject = (IExpandManager)paramAppInterface;
-      if (((IExpandManager)localObject).a() != null)
+      if (((IExpandManager)localObject).t() != null)
       {
-        localMap.put("centerBannerList", ((IExpandManager)localObject).a().centerBannerList);
+        localMap.put("centerBannerList", ((IExpandManager)localObject).t().centerBannerList);
         paramAppInterface = new StringBuilder();
         paramAppInterface.append("jump2FlutterExpandByWidgetName ");
         paramAppInterface.append(localHashMap.get("centerBannerList"));
         QLog.d("ExpandEntranceImpl", 4, paramAppInterface.toString());
-        if (!TextUtils.isEmpty((CharSequence)((IExpandManager)localObject).a().testStrId))
+        if (!TextUtils.isEmpty((CharSequence)((IExpandManager)localObject).t().testStrId))
         {
-          localMap.put("testId", ((IExpandManager)localObject).a().testStrId);
+          localMap.put("testId", ((IExpandManager)localObject).t().testStrId);
         }
         else
         {
           paramAppInterface = new StringBuilder();
-          paramAppInterface.append(String.valueOf(((IExpandManager)localObject).a().testId));
+          paramAppInterface.append(String.valueOf(((IExpandManager)localObject).t().testId));
           paramAppInterface.append("");
           localMap.put("testId", paramAppInterface.toString());
         }
       }
-      if (((IExpandManager)localObject).m()) {
+      if (((IExpandManager)localObject).Z()) {
         paramAppInterface = "1";
       } else {
         paramAppInterface = "0";
       }
       localMap.put("isHasPersonalLabels", paramAppInterface);
-      bool1 = ((IExpandManager)localObject).l();
-      boolean bool2 = ((IExpandManager)localObject).n();
+      bool1 = ((IExpandManager)localObject).Y();
+      boolean bool2 = ((IExpandManager)localObject).aa();
       if ((bool1 == bool2) && (QLog.isColorLevel())) {
         QLog.w("ExpandEntranceImpl", 2, "usedNewMatch and firstPromptExtendFriendNewUser flag is the same");
       }
       if ((!bool1) && (bool2))
       {
         localMap.put("isUsedNewExpand", "0");
-        ((IExpandManager)localObject).d(false);
+        ((IExpandManager)localObject).e(false);
       }
       else
       {
         localMap.put("isUsedNewExpand", "1");
       }
       paramAppInterface = new StringBuilder();
-      paramAppInterface.append(String.valueOf(((IExpandManager)localObject).h()));
+      paramAppInterface.append(String.valueOf(((IExpandManager)localObject).X()));
       paramAppInterface.append("");
       localMap.put("userCategory", paramAppInterface.toString());
-      paramAppInterface = str2;
-      if (((IExpandManager)localObject).c()) {
+      if (((IExpandManager)localObject).r()) {
         paramAppInterface = "1";
+      } else {
+        paramAppInterface = "0";
       }
       localMap.put("isHasNewUserMoment", paramAppInterface);
       paramAppInterface = new StringBuilder();
-      paramAppInterface.append(String.valueOf(((IExpandManager)localObject).b()));
+      paramAppInterface.append(String.valueOf(((IExpandManager)localObject).s()));
       paramAppInterface.append("");
       localMap.put("isHasUpgradeIntroduce", paramAppInterface.toString());
-      paramAppInterface = str1;
+      paramAppInterface = str2;
       if (paramInt == 2) {
-        paramAppInterface = ((IExpandManager)localObject).k();
+        paramAppInterface = ((IExpandManager)localObject).ab();
       }
       localMap.put("wavesId", paramAppInterface);
       localMap.put("jump", paramString3);
       localMap.put("serverTime", Long.valueOf(NetConnInfoCenter.getServerTime()));
+      if (QLog.isDebugVersion()) {
+        paramAppInterface = str1;
+      } else {
+        paramAppInterface = "1";
+      }
+      localMap.put("isCloseBlindBox", paramAppInterface);
       if (QLog.isColorLevel())
       {
         paramAppInterface = StringCompanionObject.INSTANCE;
@@ -256,9 +263,9 @@ public final class ExpandEntranceImpl
       {
         localObject = (ExpandManager)localObject;
         QLog.i("ExpandEntranceImpl", 4, "jump2AB850Expand go to a page with field <expandVersion>");
-        ((ExpandManager)localObject).b();
-        ((ExpandManager)localObject).h();
-        enterFlutterExpand(paramContext, paramAppInterface, paramInt, "");
+        ((ExpandManager)localObject).j();
+        ((ExpandManager)localObject).ae();
+        enterFlutterExpand(paramContext, paramAppInterface, "QQExpandWidget", paramInt, "");
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.qqexpand.manager.ExpandManager");
@@ -283,23 +290,24 @@ public final class ExpandEntranceImpl
     QLog.e("ExpandEntranceImpl", 2, ((StringBuilder)localObject).toString());
   }
   
-  public void enterExpandByJumpAction(@Nullable Context paramContext, @Nullable AppInterface paramAppInterface, int paramInt, @Nullable String paramString)
+  public void enterExpandByJumpAction(@Nullable Context paramContext, @Nullable AppInterface paramAppInterface, @NotNull String paramString1, int paramInt, @Nullable String paramString2)
   {
+    Intrinsics.checkParameterIsNotNull(paramString1, "pageName");
     if ((paramContext != null) && (paramAppInterface != null))
     {
       Object localObject = paramAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
       if (localObject != null)
       {
-        localObject = (IExpandManager)localObject;
+        localObject = (ExpandManager)localObject;
         QLog.i("ExpandEntranceImpl", 4, "jump2AB850Expand go to a page with field <expandVersion>");
-        ((IExpandManager)localObject).b();
-        enterFlutterExpand(paramContext, paramAppInterface, paramInt, paramString);
+        ((ExpandManager)localObject).j();
+        enterFlutterExpand(paramContext, paramAppInterface, paramString1, paramInt, paramString2);
         return;
       }
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.qqexpand.manager.IExpandManager");
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.qqexpand.manager.ExpandManager");
     }
-    paramString = new StringBuilder();
-    paramString.append("enterExpandByJumpAction context is null ");
+    paramString1 = new StringBuilder();
+    paramString1.append("enterExpandByJumpAction context is null ");
     boolean bool2 = true;
     boolean bool1;
     if (paramContext == null) {
@@ -307,15 +315,15 @@ public final class ExpandEntranceImpl
     } else {
       bool1 = false;
     }
-    paramString.append(bool1);
-    paramString.append(" or app is null ");
+    paramString1.append(bool1);
+    paramString1.append(" or app is null ");
     if (paramAppInterface == null) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    paramString.append(bool1);
-    QLog.e("ExpandEntranceImpl", 2, paramString.toString());
+    paramString1.append(bool1);
+    QLog.e("ExpandEntranceImpl", 2, paramString1.toString());
   }
   
   public void enterExpandLimitMatch(@Nullable Activity paramActivity, @Nullable AppInterface paramAppInterface, int paramInt)
@@ -323,7 +331,7 @@ public final class ExpandEntranceImpl
     boolean bool1 = paramAppInterface instanceof QQAppInterface;
     if ((bool1) && (paramActivity != null))
     {
-      enterFlutterExpand((Context)paramActivity, paramAppInterface, 6, "");
+      enterFlutterExpand((Context)paramActivity, paramAppInterface, "QQExpandWidget", 6, "");
       paramActivity.overridePendingTransition(1912668161, 1912668160);
       ((IExpandReportUtils)QRoute.api(IExpandReportUtils.class)).reportEnterExpandClick("5");
       return;
@@ -356,7 +364,7 @@ public final class ExpandEntranceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.entrance.impl.ExpandEntranceImpl
  * JD-Core Version:    0.7.0.1
  */

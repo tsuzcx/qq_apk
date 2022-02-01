@@ -10,54 +10,54 @@ import javax.microedition.khronos.egl.EGL10;
 public class VideoEffectTest
   implements Runnable
 {
-  private android.opengl.EGLContext jdField_a_of_type_AndroidOpenglEGLContext = null;
-  private android.opengl.EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay = null;
-  private android.opengl.EGLSurface jdField_a_of_type_AndroidOpenglEGLSurface = null;
-  VideoEffectTest.TestResultCallback jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback = null;
-  Thread jdField_a_of_type_JavaLangThread = null;
-  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = null;
-  private javax.microedition.khronos.egl.EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-  private javax.microedition.khronos.egl.EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
-  private javax.microedition.khronos.egl.EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
+  Thread a = null;
+  VideoEffectTest.TestResultCallback b = null;
+  private EGL10 c = null;
+  private javax.microedition.khronos.egl.EGLDisplay d = null;
+  private javax.microedition.khronos.egl.EGLSurface e = null;
+  private javax.microedition.khronos.egl.EGLContext f = null;
+  private android.opengl.EGLDisplay g = null;
+  private android.opengl.EGLSurface h = null;
+  private android.opengl.EGLContext i = null;
   
   public VideoEffectTest(VideoEffectTest.TestResultCallback paramTestResultCallback)
   {
-    this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback = paramTestResultCallback;
+    this.b = paramTestResultCallback;
   }
   
   private void c()
   {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)javax.microedition.khronos.egl.EGLContext.getEGL());
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+    this.c = ((EGL10)javax.microedition.khronos.egl.EGLContext.getEGL());
+    this.d = this.c.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
     Object localObject1 = new int[2];
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject1);
+    this.c.eglInitialize(this.d, (int[])localObject1);
     localObject1 = new javax.microedition.khronos.egl.EGLConfig[1];
     Object localObject2 = new int[1];
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglChooseConfig(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, new int[] { 12351, 12430, 12329, 0, 12339, 1, 12344 }, (javax.microedition.khronos.egl.EGLConfig[])localObject1, 1, (int[])localObject2);
+    this.c.eglChooseConfig(this.d, new int[] { 12351, 12430, 12329, 0, 12339, 1, 12344 }, (javax.microedition.khronos.egl.EGLConfig[])localObject1, 1, (int[])localObject2);
     if ((localObject2[0] == 0) && (QLog.isColorLevel())) {
       QLog.d("VideoEffectTest", 2, "TROUBLE! No config found.");
     }
     localObject1 = localObject1[0];
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreatePbufferSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (javax.microedition.khronos.egl.EGLConfig)localObject1, new int[] { 12375, 64, 12374, 64, 12344 });
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (javax.microedition.khronos.egl.EGLConfig)localObject1, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
-    localObject1 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-    localObject2 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-    javax.microedition.khronos.egl.EGLSurface localEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-    ((EGL10)localObject1).eglMakeCurrent((javax.microedition.khronos.egl.EGLDisplay)localObject2, localEGLSurface, localEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+    this.e = this.c.eglCreatePbufferSurface(this.d, (javax.microedition.khronos.egl.EGLConfig)localObject1, new int[] { 12375, 64, 12374, 64, 12344 });
+    this.f = this.c.eglCreateContext(this.d, (javax.microedition.khronos.egl.EGLConfig)localObject1, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+    localObject1 = this.c;
+    localObject2 = this.d;
+    javax.microedition.khronos.egl.EGLSurface localEGLSurface = this.e;
+    ((EGL10)localObject1).eglMakeCurrent((javax.microedition.khronos.egl.EGLDisplay)localObject2, localEGLSurface, localEGLSurface, this.f);
   }
   
   private void d()
   {
-    EGL10 localEGL10 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+    EGL10 localEGL10 = this.c;
     if (localEGL10 != null)
     {
-      javax.microedition.khronos.egl.EGLDisplay localEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-      if ((localEGLDisplay != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != null))
+      javax.microedition.khronos.egl.EGLDisplay localEGLDisplay = this.d;
+      if ((localEGLDisplay != null) && (this.e != null) && (this.f != null))
       {
         localEGL10.eglMakeCurrent(localEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
+        this.c.eglDestroySurface(this.d, this.e);
+        this.c.eglDestroyContext(this.d, this.f);
+        this.c.eglTerminate(this.d);
       }
     }
   }
@@ -65,79 +65,79 @@ public class VideoEffectTest
   @SuppressLint({"NewApi"})
   private void e()
   {
-    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
+    this.g = EGL14.eglGetDisplay(0);
     Object localObject1 = new int[2];
-    EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (int[])localObject1, 0, (int[])localObject1, 1);
+    EGL14.eglInitialize(this.g, (int[])localObject1, 0, (int[])localObject1, 1);
     localObject1 = new android.opengl.EGLConfig[1];
     Object localObject2 = new int[1];
-    EGL14.eglChooseConfig(this.jdField_a_of_type_AndroidOpenglEGLDisplay, new int[] { 12351, 12430, 12329, 0, 12352, 4, 12339, 1, 12344 }, 0, (android.opengl.EGLConfig[])localObject1, 0, 1, (int[])localObject2, 0);
+    EGL14.eglChooseConfig(this.g, new int[] { 12351, 12430, 12329, 0, 12352, 4, 12339, 1, 12344 }, 0, (android.opengl.EGLConfig[])localObject1, 0, 1, (int[])localObject2, 0);
     if ((localObject2[0] == 0) && (QLog.isColorLevel())) {
       QLog.d("VideoEffectTest", 2, "TROUBLE! No config found.");
     }
     localObject1 = localObject1[0];
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.eglCreatePbufferSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (android.opengl.EGLConfig)localObject1, new int[] { 12375, 64, 12374, 64, 12344 }, 0);
-    this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (android.opengl.EGLConfig)localObject1, EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
-    localObject1 = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
-    localObject2 = this.jdField_a_of_type_AndroidOpenglEGLSurface;
-    EGL14.eglMakeCurrent((android.opengl.EGLDisplay)localObject1, (android.opengl.EGLSurface)localObject2, (android.opengl.EGLSurface)localObject2, this.jdField_a_of_type_AndroidOpenglEGLContext);
+    this.h = EGL14.eglCreatePbufferSurface(this.g, (android.opengl.EGLConfig)localObject1, new int[] { 12375, 64, 12374, 64, 12344 }, 0);
+    this.i = EGL14.eglCreateContext(this.g, (android.opengl.EGLConfig)localObject1, EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
+    localObject1 = this.g;
+    localObject2 = this.h;
+    EGL14.eglMakeCurrent((android.opengl.EGLDisplay)localObject1, (android.opengl.EGLSurface)localObject2, (android.opengl.EGLSurface)localObject2, this.i);
   }
   
   @SuppressLint({"NewApi"})
   private void f()
   {
-    android.opengl.EGLDisplay localEGLDisplay = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
-    if ((localEGLDisplay != null) && (this.jdField_a_of_type_AndroidOpenglEGLSurface != null) && (this.jdField_a_of_type_AndroidOpenglEGLContext != null))
+    android.opengl.EGLDisplay localEGLDisplay = this.g;
+    if ((localEGLDisplay != null) && (this.h != null) && (this.i != null))
     {
       EGL14.eglMakeCurrent(localEGLDisplay, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
-      EGL14.eglDestroySurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface);
-      EGL14.eglDestroyContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext);
-      EGL14.eglTerminate(this.jdField_a_of_type_AndroidOpenglEGLDisplay);
+      EGL14.eglDestroySurface(this.g, this.h);
+      EGL14.eglDestroyContext(this.g, this.i);
+      EGL14.eglTerminate(this.g);
     }
   }
   
   public void a()
   {
-    Thread localThread = this.jdField_a_of_type_JavaLangThread;
+    Thread localThread = this.a;
     if ((localThread == null) || (!localThread.isAlive()))
     {
-      this.jdField_a_of_type_JavaLangThread = new Thread(this, "VideoEffectTest");
-      this.jdField_a_of_type_JavaLangThread.start();
+      this.a = new Thread(this, "VideoEffectTest");
+      this.a.start();
     }
   }
   
   void b()
   {
     Object localObject = new byte[921600];
+    int k = 0;
     int j = 0;
-    int i = 0;
-    while (j < 480)
+    while (k < 480)
     {
-      int k = 0;
-      while (k < 640)
+      int m = 0;
+      while (m < 640)
       {
-        localObject[i] = ((byte)(j % 255));
-        localObject[(i + 1)] = ((byte)((640 - k) % 255));
-        localObject[(i + 2)] = ((byte)((j + k) % 255));
-        i += 3;
-        k += 1;
+        localObject[j] = ((byte)(k % 255));
+        localObject[(j + 1)] = ((byte)((640 - m) % 255));
+        localObject[(j + 2)] = ((byte)((k + m) % 255));
+        j += 3;
+        m += 1;
       }
-      j += 1;
+      k += 1;
     }
     long l1 = 0L;
     try
     {
       localObject = new FilterProcess((byte[])localObject, 480, 640);
-      ((FilterProcess)localObject).a();
-      long l2 = (((FilterProcess)localObject).a() + 0L + ((FilterProcess)localObject).a()) / 2L;
       ((FilterProcess)localObject).b();
+      long l2 = (((FilterProcess)localObject).b() + 0L + ((FilterProcess)localObject).b()) / 2L;
+      ((FilterProcess)localObject).c();
       if (l2 <= 0L)
       {
-        i = (int)l2;
+        j = (int)l2;
       }
       else
       {
         l1 = l2;
-        i = 1;
+        j = 1;
       }
     }
     catch (Throwable localThrowable)
@@ -146,10 +146,10 @@ public class VideoEffectTest
       break label157;
     }
     l1 = 0L;
-    i = 0;
-    localObject = this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback;
+    j = 0;
+    localObject = this.b;
     if (localObject != null) {
-      ((VideoEffectTest.TestResultCallback)localObject).a(i, l1, GLES20.glGetString(7936), GLES20.glGetString(7937));
+      ((VideoEffectTest.TestResultCallback)localObject).a(j, l1, GLES20.glGetString(7936), GLES20.glGetString(7937));
     }
   }
   
@@ -177,7 +177,7 @@ public class VideoEffectTest
       VideoEffectTest.TestResultCallback localTestResultCallback;
       break label41;
     }
-    localTestResultCallback = this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback;
+    localTestResultCallback = this.b;
     if (localTestResultCallback != null) {
       localTestResultCallback.a(0, 0L, null, null);
     }

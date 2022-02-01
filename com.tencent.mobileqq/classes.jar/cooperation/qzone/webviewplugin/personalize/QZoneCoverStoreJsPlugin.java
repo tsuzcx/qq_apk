@@ -89,12 +89,12 @@ public class QZoneCoverStoreJsPlugin
   
   private void forwardInstallAndStartUpVideoActivity(int paramInt)
   {
-    QZoneVideoCommonUtils.forwardInstallAndStartUpVideoActivity(this.mRuntime.a().getLongAccountUin(), this.mRuntime.a(), "cover_mall_record_video", new QZoneCoverStoreJsPlugin.3(this, paramInt));
+    QZoneVideoCommonUtils.forwardInstallAndStartUpVideoActivity(this.mRuntime.b().getLongAccountUin(), this.mRuntime.d(), "cover_mall_record_video", new QZoneCoverStoreJsPlugin.3(this, paramInt));
   }
   
   private int generateRequestCode(int paramInt)
   {
-    WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
+    WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.d());
     int i = paramInt;
     if ((localWebUiBaseInterface instanceof WebViewPluginContainer)) {
       i = ((WebViewPluginContainer)localWebUiBaseInterface).switchRequestCode(this, (byte)paramInt);
@@ -134,15 +134,15 @@ public class QZoneCoverStoreJsPlugin
   
   private void lauchVideoCover(int paramInt)
   {
-    if (this.mRuntime.a() != null)
+    if (this.mRuntime.b() != null)
     {
-      if (this.mRuntime.a() == null) {
+      if (this.mRuntime.d() == null) {
         return;
       }
-      int i = this.mRuntime.a().getResources().getDimensionPixelSize(2131299168);
+      int i = this.mRuntime.d().getResources().getDimensionPixelSize(2131299920);
       if ((QZoneHelper.isBestPerformanceDevice() ^ true))
       {
-        QQToast.a(this.mRuntime.a(), 2131717670, 0).b(i);
+        QQToast.makeText(this.mRuntime.d(), 2131915145, 0).show(i);
         return;
       }
       registerBroadcast();
@@ -152,7 +152,7 @@ public class QZoneCoverStoreJsPlugin
           return;
         }
         QLog.i("CoverStore", 1, "VIDEO_COVER click select record video.");
-        if (QZonePermission.requestStoragePermission(this.mRuntime.a(), new QZoneCoverStoreJsPlugin.2(this, i), 1)) {
+        if (QZonePermission.requestStoragePermission(this.mRuntime.d(), new QZoneCoverStoreJsPlugin.2(this, i), 1)) {
           forwardInstallAndStartUpVideoActivity(i);
         }
       }
@@ -160,14 +160,14 @@ public class QZoneCoverStoreJsPlugin
       {
         QLog.i("CoverStore", 1, "VIDEO_COVER click select qzone video.");
         QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
-        localUserInfo.qzone_uin = this.mRuntime.a().getCurrentAccountUin();
+        localUserInfo.qzone_uin = this.mRuntime.b().getCurrentAccountUin();
         BaseBusinessAlbumInfo localBaseBusinessAlbumInfo = new BaseBusinessAlbumInfo();
         localBaseBusinessAlbumInfo.mAlbumId = localUserInfo.qzone_uin;
-        localBaseBusinessAlbumInfo.mUin = this.mRuntime.a().getLongAccountUin();
+        localBaseBusinessAlbumInfo.mUin = this.mRuntime.b().getLongAccountUin();
         localBaseBusinessAlbumInfo.mAlbumType = 10;
         localBaseBusinessAlbumInfo.mAnonymity = 10;
-        localBaseBusinessAlbumInfo.mTitle = this.mRuntime.a().getString(2131717163);
-        QZoneHelper.forwardToPersonalAlbumVideoList(this.mRuntime.a(), localUserInfo, localBaseBusinessAlbumInfo, -1, "cover_mall_record_video");
+        localBaseBusinessAlbumInfo.mTitle = this.mRuntime.d().getString(2131914636);
+        QZoneHelper.forwardToPersonalAlbumVideoList(this.mRuntime.d(), localUserInfo, localBaseBusinessAlbumInfo, -1, "cover_mall_record_video");
       }
     }
   }
@@ -177,12 +177,12 @@ public class QZoneCoverStoreJsPlugin
     Object localObject;
     if ("MobileAlbum".equals(paramString))
     {
-      if (this.mRuntime.a() != null)
+      if (this.mRuntime.b() != null)
       {
-        if (this.mRuntime.a() == null) {
+        if (this.mRuntime.d() == null) {
           return;
         }
-        paramString = new ActivityURIRequest(this.mRuntime.a(), "/base/album/photolist");
+        paramString = new ActivityURIRequest(this.mRuntime.d(), "/base/album/photolist");
         localObject = new Bundle();
         ((Bundle)localObject).putInt("PhotoConst.MAXUM_SELECTED_NUM", 1);
         ((Bundle)localObject).putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", QQBrowserActivity.class.getName());
@@ -195,23 +195,23 @@ public class QZoneCoverStoreJsPlugin
         ((Bundle)localObject).putInt("uintype", 0);
         QZoneHelper.addSource(paramString);
         paramString.extra().putAll((Bundle)localObject);
-        ((AbsBaseWebViewActivity)this.mRuntime.a()).gotoSelectPicture(this, paramString, (byte)2);
+        ((AbsBaseWebViewActivity)this.mRuntime.d()).gotoSelectPicture(this, paramString, (byte)2);
         return;
       }
       return;
     }
     if ("QzoneAlbum".equals(paramString))
     {
-      if (this.mRuntime.a() == null) {
+      if (this.mRuntime.b() == null) {
         return;
       }
       paramString = new Bundle();
       paramString.putInt("key_personal_album_enter_model", 2);
       localObject = QZoneHelper.UserInfo.getInstance();
-      ((QZoneHelper.UserInfo)localObject).qzone_uin = this.mRuntime.a().getAccount();
+      ((QZoneHelper.UserInfo)localObject).qzone_uin = this.mRuntime.b().getAccount();
       paramString.putString("keyAction", "actionSelectPicture");
       paramString.putBoolean("key_need_change_to_jpg", false);
-      QZoneHelper.forwardToPersonalAlbumSelect(this.mRuntime.a(), (QZoneHelper.UserInfo)localObject, paramString, generateRequestCode(3));
+      QZoneHelper.forwardToPersonalAlbumSelect(this.mRuntime.d(), (QZoneHelper.UserInfo)localObject, paramString, generateRequestCode(3));
     }
   }
   
@@ -598,7 +598,7 @@ public class QZoneCoverStoreJsPlugin
     localIntentFilter.addAction("com.tencent.mobileqq.action.ACTION_VIDEO_COVER_SETTING");
     if (this.mRuntime != null)
     {
-      Object localObject = this.mRuntime.a();
+      Object localObject = this.mRuntime.d();
       if ((localObject != null) && (!this.mReceiverRegistered)) {
         try
         {
@@ -739,15 +739,15 @@ public class QZoneCoverStoreJsPlugin
     }
     if (paramString3.equals("showStoreButton"))
     {
-      if (this.mRuntime.a() == null) {
+      if (this.mRuntime.d() == null) {
         return false;
       }
-      paramJsBridgeListener = (TextView)this.mRuntime.a().findViewById(2131369233);
+      paramJsBridgeListener = (TextView)this.mRuntime.d().findViewById(2131436211);
       if (paramJsBridgeListener != null)
       {
         paramJsBridgeListener.setVisibility(0);
         paramJsBridgeListener.setTextColor(-1);
-        paramJsBridgeListener.setText(HardCodeUtil.a(2131711581));
+        paramJsBridgeListener.setText(HardCodeUtil.a(2131909225));
         paramJsBridgeListener.setOnClickListener(new QZoneCoverStoreJsPlugin.1(this));
         return false;
       }
@@ -775,9 +775,9 @@ public class QZoneCoverStoreJsPlugin
         QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
         paramJsBridgeListener.putExtra("open_what", 3);
         paramJsBridgeListener.putExtra("widgetEnable", bool);
-        if ((this.mRuntime.a() != null) && (this.mRuntime.a() != null))
+        if ((this.mRuntime.d() != null) && (this.mRuntime.b() != null))
         {
-          QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(6));
+          QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.d(), this.mRuntime.b().getAccount(), paramJsBridgeListener, generateRequestCode(6));
           return false;
         }
       }
@@ -788,9 +788,9 @@ public class QZoneCoverStoreJsPlugin
         QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
         paramJsBridgeListener.putExtra("open_what", 2);
         paramJsBridgeListener.putExtra("widgetId", i);
-        if ((this.mRuntime.a() != null) && (this.mRuntime.a() != null))
+        if ((this.mRuntime.d() != null) && (this.mRuntime.b() != null))
         {
-          QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(5));
+          QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.d(), this.mRuntime.b().getAccount(), paramJsBridgeListener, generateRequestCode(5));
           return false;
         }
       }
@@ -801,14 +801,14 @@ public class QZoneCoverStoreJsPlugin
           if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
             parseSourceAndFrom(paramVarArgs[0]);
           }
-          if (this.mRuntime.a() != null)
+          if (this.mRuntime.b() != null)
           {
-            if (this.mRuntime.a() == null) {
+            if (this.mRuntime.d() == null) {
               return false;
             }
-            paramJsBridgeListener = this.mRuntime.a().getAccount();
+            paramJsBridgeListener = this.mRuntime.b().getAccount();
             paramString1 = new Intent();
-            paramString2 = HardCodeUtil.a(2131711579);
+            paramString2 = HardCodeUtil.a(2131909223);
             QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
             if (TextUtils.isEmpty(this.mAid)) {
               this.mAid = getAid();
@@ -818,7 +818,7 @@ public class QZoneCoverStoreJsPlugin
             paramString1.putExtra("direct_go", true);
             paramString1.putExtra("viptype", this.mVipType);
             paramString1.putExtra("month", this.mOpenMouth);
-            QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), paramJsBridgeListener, paramString1, generateRequestCode(4), null, false, null, true);
+            QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.d(), paramJsBridgeListener, paramString1, generateRequestCode(4), null, false, null, true);
             return false;
           }
           return false;
@@ -828,9 +828,9 @@ public class QZoneCoverStoreJsPlugin
           if ((paramVarArgs != null) && (!TextUtils.isEmpty(paramVarArgs[0]))) {
             try
             {
-              if (("PhotoWallCover".equals(new JSONObject(paramVarArgs[0]).getString("coverType"))) && (this.mRuntime.a() != null))
+              if (("PhotoWallCover".equals(new JSONObject(paramVarArgs[0]).getString("coverType"))) && (this.mRuntime.d() != null))
               {
-                paramJsBridgeListener = this.mRuntime.a();
+                paramJsBridgeListener = this.mRuntime.b();
                 if (paramJsBridgeListener != null) {
                   return true;
                 }
@@ -851,8 +851,8 @@ public class QZoneCoverStoreJsPlugin
               QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
               paramJsBridgeListener.putExtra("open_what", 4);
               paramJsBridgeListener.putExtra("cover", paramVarArgs[0]);
-              if ((this.mRuntime.a() != null) && (this.mRuntime.a() != null)) {
-                QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(7));
+              if ((this.mRuntime.d() != null) && (this.mRuntime.b() != null)) {
+                QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.d(), this.mRuntime.b().getAccount(), paramJsBridgeListener, generateRequestCode(7));
               }
             }
           }
@@ -869,34 +869,34 @@ public class QZoneCoverStoreJsPlugin
             QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
             paramJsBridgeListener.putExtra("open_what", 6);
             paramJsBridgeListener.putExtra("cover", paramVarArgs[0]);
-            if ((this.mRuntime.a() != null) && (this.mRuntime.a() != null)) {
-              QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(8));
+            if ((this.mRuntime.d() != null) && (this.mRuntime.b() != null)) {
+              QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.d(), this.mRuntime.b().getAccount(), paramJsBridgeListener, generateRequestCode(8));
             }
           }
           return true;
         }
         if (paramString3.equals("getWidgetEnable"))
         {
-          if (this.mRuntime.a() != null)
+          if (this.mRuntime.b() != null)
           {
-            if (this.mRuntime.a() == null) {
+            if (this.mRuntime.d() == null) {
               return false;
             }
             paramString1 = new StringBuilder();
             paramString1.append("Widget_");
-            paramString1.append(this.mRuntime.a().getCurrentAccountUin());
+            paramString1.append(this.mRuntime.b().getCurrentAccountUin());
             paramString1 = paramString1.toString();
-            paramJsBridgeListener.a(Boolean.valueOf(this.mRuntime.a().getSharedPreferences(paramString1, 4).getBoolean("WidgetShow", true)));
+            paramJsBridgeListener.a(Boolean.valueOf(this.mRuntime.d().getSharedPreferences(paramString1, 4).getBoolean("WidgetShow", true)));
             return true;
           }
           return false;
         }
         if (paramString3.equals("leftButtonClick"))
         {
-          if (this.mRuntime.a() == null) {
+          if (this.mRuntime.d() == null) {
             return false;
           }
-          ((TextView)this.mRuntime.a().findViewById(2131369202)).performClick();
+          ((TextView)this.mRuntime.d().findViewById(2131436180)).performClick();
           return true;
         }
         if ("Init".equals(paramString3))
@@ -919,16 +919,16 @@ public class QZoneCoverStoreJsPlugin
       case 9: 
       default: 
       case 8: 
-        if ((paramIntent != null) && (paramIntent.getBooleanExtra("needJump", false)) && (this.mRuntime.a() != null))
+        if ((paramIntent != null) && (paramIntent.getBooleanExtra("needJump", false)) && (this.mRuntime.d() != null))
         {
-          this.mRuntime.a().finish();
+          this.mRuntime.d().finish();
           return;
         }
         break;
       case 7: 
-        if ((paramIntent != null) && (paramIntent.getBooleanExtra("need_jump", false)) && (this.mRuntime.a() != null))
+        if ((paramIntent != null) && (paramIntent.getBooleanExtra("need_jump", false)) && (this.mRuntime.d() != null))
         {
-          this.mRuntime.a().finish();
+          this.mRuntime.d().finish();
           return;
         }
         break;
@@ -983,7 +983,7 @@ public class QZoneCoverStoreJsPlugin
   
   protected void onDestroy()
   {
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if ((localActivity != null) && (this.mReceiverRegistered)) {
       try
       {
@@ -1000,7 +1000,7 @@ public class QZoneCoverStoreJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -29,21 +29,21 @@ import tencent.im.oidb.cmd0xc13.oidb_0xc13.RspBody;
 public class EncryptUinHandler
   extends BusinessHandler
 {
-  private EncryptUinHandler.EncryptUinObserver jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$EncryptUinObserver;
-  private EncryptUinHandler.GetEncryptUinCallback jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$GetEncryptUinCallback;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  private EncryptUinHandler.EncryptUinObserver a;
+  private String b;
+  private EncryptUinHandler.GetEncryptUinCallback c;
+  private AppInterface d;
   
   public EncryptUinHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.d = paramAppInterface;
   }
   
   public EncryptUinHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQQAppInterface;
+    this.d = paramQQAppInterface;
   }
   
   private void a(List<Long> paramList, int paramInt)
@@ -58,28 +58,28 @@ public class EncryptUinHandler
   
   public String a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      a();
+    if (TextUtils.isEmpty(this.b)) {
+      b();
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$EncryptUinObserver == null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$EncryptUinObserver = new EncryptUinHandler.2(this);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$EncryptUinObserver);
-      ThreadManager.excute(new EncryptUinHandler.3(this), 128, null, true);
-    }
+    return this.b;
   }
   
   public void a(EncryptUinHandler.GetEncryptUinCallback paramGetEncryptUinCallback)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$GetEncryptUinCallback = paramGetEncryptUinCallback;
+    this.c = paramGetEncryptUinCallback;
+  }
+  
+  public void b()
+  {
+    if (!TextUtils.isEmpty(this.b)) {
+      return;
+    }
+    if (this.a == null)
+    {
+      this.a = new EncryptUinHandler.2(this);
+      this.d.addObserver(this.a);
+      ThreadManager.excute(new EncryptUinHandler.3(this), 128, null, true);
+    }
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -90,7 +90,7 @@ public class EncryptUinHandler
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler$EncryptUinObserver);
+    this.d.removeObserver(this.a);
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -138,10 +138,10 @@ public class EncryptUinHandler
               }
               paramFromServiceMsg = (oidb_0xc13.EncryptUinResult)((Iterator)localObject).next();
               EncryptUinInfo localEncryptUinInfo = new EncryptUinInfo();
-              localEncryptUinInfo.jdField_a_of_type_Long = paramFromServiceMsg.uint64_original_uin.get();
-              localEncryptUinInfo.jdField_a_of_type_Int = paramFromServiceMsg.int32_result.get();
+              localEncryptUinInfo.a = paramFromServiceMsg.uint64_original_uin.get();
+              localEncryptUinInfo.b = paramFromServiceMsg.int32_result.get();
               if (paramFromServiceMsg.bytes_encrypt_uin.get() != null) {
-                localEncryptUinInfo.jdField_a_of_type_JavaLangString = paramFromServiceMsg.bytes_encrypt_uin.get().toStringUtf8();
+                localEncryptUinInfo.c = paramFromServiceMsg.bytes_encrypt_uin.get().toStringUtf8();
               }
               paramObject.add(localEncryptUinInfo);
             }
@@ -159,7 +159,7 @@ public class EncryptUinHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.EncryptUinHandler
  * JD-Core Version:    0.7.0.1
  */

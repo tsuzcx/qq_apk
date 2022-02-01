@@ -56,33 +56,33 @@ public class MessageForTofuBaseProfile
                     if (i != 20032) {
                       return "";
                     }
-                    return line(2131695063, paramJSONObject.optString("key_profile_location_desc", ""));
+                    return line(2131892791, paramJSONObject.optString("key_profile_location_desc", ""));
                   }
                   i = paramJSONObject.optInt("key_profile_birthday", 0);
-                  return line(2131695009, String.format(Locale.getDefault(), "%d-%d-%d", new Object[] { Integer.valueOf((0xFFFF0000 & i) >>> 16), Integer.valueOf((0xFF00 & i) >>> 8), Integer.valueOf(i & 0xFF) }));
+                  return line(2131892737, String.format(Locale.getDefault(), "%d-%d-%d", new Object[] { Integer.valueOf((0xFFFF0000 & i) >>> 16), Integer.valueOf((0xFF00 & i) >>> 8), Integer.valueOf(i & 0xFF) }));
                 }
-                return line(2131695011, paramJSONObject.optString("key_profile_education", ""));
+                return line(2131892739, paramJSONObject.optString("key_profile_education", ""));
               }
               i = paramJSONObject.optInt("key_profile_occupation", -1);
               paramJSONObject = str;
-              if (i < NearbyProfileUtil.e.length - 1) {
+              if (i < NearbyProfileUtil.f.length - 1) {
                 if (i <= 0) {
                   paramJSONObject = str;
                 } else {
-                  paramJSONObject = NearbyProfileUtil.e[i];
+                  paramJSONObject = NearbyProfileUtil.f[i];
                 }
               }
-              return line(2131695114, paramJSONObject);
+              return line(2131892842, paramJSONObject);
             }
-            return line(2131695020, paramJSONObject.optString("key_profile_company", ""));
+            return line(2131892748, paramJSONObject.optString("key_profile_company", ""));
           }
-          return line(2131695057, paramJSONObject.optString("key_profile_location_desc", ""));
+          return line(2131892785, paramJSONObject.optString("key_profile_location_desc", ""));
         }
-        return line(2131695081, paramJSONObject.optString("key_profile_introduction", ""));
+        return line(2131892809, paramJSONObject.optString("key_profile_introduction", ""));
       }
-      return line(2131695050, paramJSONObject.optString("key_profile_email", ""));
+      return line(2131892778, paramJSONObject.optString("key_profile_email", ""));
     }
-    return line(2131695067, paramJSONObject.optString("key_profile_nickname", ""));
+    return line(2131892795, paramJSONObject.optString("key_profile_nickname", ""));
   }
   
   protected void doParse()
@@ -131,7 +131,7 @@ public class MessageForTofuBaseProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTofuBaseProfile
  * JD-Core Version:    0.7.0.1
  */

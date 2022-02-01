@@ -33,90 +33,90 @@ import java.util.List;
 public class MessageReceivingHolder
   extends RecyclerHolder
 {
-  private int jdField_a_of_type_Int;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener = new MessageReceivingHolder.1(this);
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageReceivingAdapter jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter;
-  private DecoratorViewPager jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager;
-  private SimpleCircleIndicator jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator;
-  private boolean jdField_a_of_type_Boolean = false;
+  private int a;
+  private boolean b = false;
+  private BaseActivity c;
+  private QQAppInterface d;
+  private BaseChatPie e;
+  private TextView f;
+  private DecoratorViewPager g;
+  private MessageReceivingAdapter h;
+  private SimpleCircleIndicator i;
+  private ViewPager.OnPageChangeListener j = new MessageReceivingHolder.1(this);
   
   public MessageReceivingHolder(BaseActivity paramBaseActivity, RecyclerView paramRecyclerView, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseActivity.app;
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-    DecoratorViewPager localDecoratorViewPager = this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager;
-    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = new PublicAccountChatPie(localQQAppInterface, localDecoratorViewPager, localBaseActivity, localBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.jdField_a_of_type_Int = 1008;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370828));
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager = ((DecoratorViewPager)paramView.findViewById(2131380851));
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.setNestedpParent(paramRecyclerView);
-    this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter = new MessageReceivingAdapter(paramBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.setOnPageChangeListener(this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener);
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator = ((SimpleCircleIndicator)paramView.findViewById(2131364641));
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator.setViewPager(this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager);
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator.setMaxCount(3);
+    this.c = paramBaseActivity;
+    this.d = paramBaseActivity.app;
+    QQAppInterface localQQAppInterface = this.c.app;
+    DecoratorViewPager localDecoratorViewPager = this.g;
+    BaseActivity localBaseActivity = this.c;
+    this.e = new PublicAccountChatPie(localQQAppInterface, localDecoratorViewPager, localBaseActivity, localBaseActivity);
+    this.e.ah.a = 1008;
+    this.f = ((TextView)paramView.findViewById(2131438157));
+    this.g = ((DecoratorViewPager)paramView.findViewById(2131449829));
+    this.g.setNestedpParent(paramRecyclerView);
+    this.h = new MessageReceivingAdapter(paramBaseActivity, this.e);
+    this.g.setAdapter(this.h);
+    this.g.setOnPageChangeListener(this.j);
+    this.i = ((SimpleCircleIndicator)paramView.findViewById(2131430728));
+    this.i.setViewPager(this.g);
+    this.i.setMaxCount(3);
     b();
   }
   
   private void a(ChatMessage paramChatMessage)
   {
     if (paramChatMessage != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(TimeFormatterUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 3, paramChatMessage.time * 1000L, true));
+      this.f.setText(TimeFormatterUtils.a(this.c, 3, paramChatMessage.time * 1000L, true));
     }
   }
   
   private void a(boolean paramBoolean)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)this.itemView.getLayoutParams();
-    int i;
+    int k;
     if (paramBoolean) {
-      i = ScreenUtil.dip2px(255.0F);
+      k = ScreenUtil.dip2px(255.0F);
     } else {
-      i = 0;
+      k = 0;
     }
-    localLayoutParams.height = i;
+    localLayoutParams.height = k;
     this.itemView.setLayoutParams(localLayoutParams);
   }
   
   private void b()
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(NowQQLiveConstant.a, 1008, -1L, true);
+    List localList = this.d.getMessageFacade().c(NowQQLiveConstant.a, 1008, -1L, true);
     ArrayList localArrayList = new ArrayList();
-    int i;
+    int k;
     if (localList != null)
     {
-      i = localList.size() - 1;
-      while (i >= 0)
+      k = localList.size() - 1;
+      while (k >= 0)
       {
-        ChatMessage localChatMessage = (ChatMessage)localList.get(i);
+        ChatMessage localChatMessage = (ChatMessage)localList.get(k);
         if (!TextUtils.isEmpty(ChatMessageHelper.a(localChatMessage))) {
           localArrayList.add(localChatMessage);
         } else if ((localChatMessage instanceof MessageForArkApp)) {
           localArrayList.add(localChatMessage);
         }
-        i -= 1;
+        k -= 1;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter.a(localArrayList);
-    if (this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter.getCount() > 0)
+    this.h.a(localArrayList);
+    if (this.h.getCount() > 0)
     {
       a(true);
-      if (this.jdField_a_of_type_Int < localArrayList.size()) {
-        i = this.jdField_a_of_type_Int;
+      if (this.a < localArrayList.size()) {
+        k = this.a;
       } else {
-        i = localArrayList.size() - 1;
+        k = localArrayList.size() - 1;
       }
-      a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter.a(i));
-      this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.setCurrentItem(i);
-      this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.invalidate();
+      a(this.h.a(k));
+      this.g.setCurrentItem(k);
+      this.g.invalidate();
       return;
     }
     a(false);
@@ -124,7 +124,7 @@ public class MessageReceivingHolder
   
   private void c()
   {
-    Object localObject = UserInfoMgr.a();
+    Object localObject = UserInfoMgr.c();
     if (localObject != null)
     {
       localObject = (IPublicAccountDataManager)((AppInterface)localObject).getRuntimeService(IPublicAccountDataManager.class, "all");
@@ -138,7 +138,7 @@ public class MessageReceivingHolder
     label39:
     Intent localIntent = new Intent();
     Bundle localBundle = new Bundle();
-    localIntent.setComponent(new ComponentName(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ChatActivity.class));
+    localIntent.setComponent(new ComponentName(this.c, ChatActivity.class));
     localBundle.putString("uin", NowQQLiveConstant.a);
     localBundle.putInt("uintype", 1008);
     if (localObject != null) {
@@ -151,22 +151,22 @@ public class MessageReceivingHolder
     localIntent.setFlags(67108864);
     localIntent.putExtra("isforceRequestDetail", false);
     localIntent.putExtra("jump_from", 2);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+    this.c.startActivity(localIntent);
   }
   
   public void a()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
       b();
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.MessageReceivingHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ public class HippyTag
     if ((paramView != null) && (paramString != null))
     {
       paramView = paramView.getTag();
-      if ((paramView != null) && ((paramView instanceof HippyMap)))
+      if ((paramView instanceof HippyMap))
       {
         paramView = (HippyMap)paramView;
         if (paramView.containsKey(paramString)) {
@@ -39,7 +39,7 @@ public class HippyTag
     if ((paramView != null) && (paramString != null))
     {
       paramView = paramView.getTag();
-      if ((paramView != null) && ((paramView instanceof HippyMap)))
+      if ((paramView instanceof HippyMap))
       {
         paramView = (HippyMap)paramView;
         if (paramView.containsKey(paramString)) {
@@ -55,7 +55,7 @@ public class HippyTag
     if ((paramView != null) && (paramString != null))
     {
       paramView = paramView.getTag();
-      if ((paramView != null) && ((paramView instanceof HippyMap))) {
+      if ((paramView instanceof HippyMap)) {
         ((HippyMap)paramView).pushInt(paramString, paramInt);
       }
     }
@@ -66,7 +66,7 @@ public class HippyTag
     if ((paramView != null) && (paramString1 != null))
     {
       paramView = paramView.getTag();
-      if ((paramView != null) && ((paramView instanceof HippyMap)))
+      if ((paramView instanceof HippyMap))
       {
         HippyMap localHippyMap = (HippyMap)paramView;
         paramView = paramString2;
@@ -80,7 +80,7 @@ public class HippyTag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.common.HippyTag
  * JD-Core Version:    0.7.0.1
  */

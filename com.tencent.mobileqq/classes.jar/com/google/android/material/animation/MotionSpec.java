@@ -122,18 +122,10 @@ public class MotionSpec
   @NonNull
   public <T> ObjectAnimator a(@NonNull String paramString, @NonNull T paramT, @NonNull Property<T, ?> paramProperty)
   {
-    paramT = ObjectAnimator.ofPropertyValuesHolder(paramT, a(paramString));
+    paramT = ObjectAnimator.ofPropertyValuesHolder(paramT, d(paramString));
     paramT.setProperty(paramProperty);
-    a(paramString).a(paramT);
+    b(paramString).a(paramT);
     return paramT;
-  }
-  
-  public MotionTiming a(String paramString)
-  {
-    if (a(paramString)) {
-      return (MotionTiming)this.a.get(paramString);
-    }
-    throw new IllegalArgumentException();
   }
   
   public void a(String paramString, @Nullable MotionTiming paramMotionTiming)
@@ -151,18 +143,26 @@ public class MotionSpec
     return this.a.get(paramString) != null;
   }
   
-  @NonNull
-  public PropertyValuesHolder[] a(String paramString)
+  public MotionTiming b(String paramString)
   {
-    if (b(paramString)) {
-      return a((PropertyValuesHolder[])this.b.get(paramString));
+    if (a(paramString)) {
+      return (MotionTiming)this.a.get(paramString);
     }
     throw new IllegalArgumentException();
   }
   
-  public boolean b(String paramString)
+  public boolean c(String paramString)
   {
     return this.b.get(paramString) != null;
+  }
+  
+  @NonNull
+  public PropertyValuesHolder[] d(String paramString)
+  {
+    if (c(paramString)) {
+      return a((PropertyValuesHolder[])this.b.get(paramString));
+    }
+    throw new IllegalArgumentException();
   }
   
   public boolean equals(Object paramObject)
@@ -198,7 +198,7 @@ public class MotionSpec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.animation.MotionSpec
  * JD-Core Version:    0.7.0.1
  */

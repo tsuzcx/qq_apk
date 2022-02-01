@@ -17,7 +17,7 @@ class AIOGallerySceneWithBusiness$1
   {
     String str = "";
     Object localObject2;
-    if (paramView == this.a.a)
+    if (paramView == this.a.aI)
     {
       Object localObject1 = paramView.getTag();
       if ((localObject1 instanceof StructMsgForImageShare))
@@ -30,7 +30,7 @@ class AIOGallerySceneWithBusiness$1
         else if (AIOGallerySceneWithBusiness.b(((StructMsgForImageShare)localObject1).mMsgActionData))
         {
           AIOGallerySceneWithBusiness.a(this.a, (StructMsgForImageShare)localObject1);
-          Object localObject4 = AIOGallerySceneWithBusiness.b(((StructMsgForImageShare)localObject1).mMsgActionData);
+          Object localObject4 = AIOGallerySceneWithBusiness.f(((StructMsgForImageShare)localObject1).mMsgActionData);
           if ((localObject4 != null) && (localObject4.length > 2))
           {
             localObject1 = Uri.parse(localObject4[1]);
@@ -66,14 +66,14 @@ class AIOGallerySceneWithBusiness$1
         }
       }
     }
-    else if (paramView == this.a.b)
+    else if (paramView == this.a.aJ)
     {
       localObject2 = paramView.getTag();
       if ((localObject2 instanceof StructMsgForImageShare)) {
         this.a.c((StructMsgForImageShare)localObject2, "5");
       }
     }
-    else if (paramView == this.a.c)
+    else if (paramView == this.a.aK)
     {
       localObject2 = paramView.getTag();
       if ((localObject2 instanceof StructMsgForImageShare)) {
@@ -86,7 +86,7 @@ class AIOGallerySceneWithBusiness$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGallerySceneWithBusiness.1
  * JD-Core Version:    0.7.0.1
  */

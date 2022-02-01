@@ -29,25 +29,18 @@ import mqq.os.MqqHandler;
 public class TroopAioKeywordTipManager
   implements Manager
 {
-  protected final SparseArray<TroopAioKeywordRuleInfo> a;
   protected QQAppInterface a;
-  protected final List<String> a;
-  protected final Map<String, TroopAioKeywordInfo> a;
-  protected boolean a;
-  protected final SparseArray<TroopAioKeywordTipInfo> b;
-  protected final List<String> b;
-  protected boolean b;
+  protected final List<String> b = new ArrayList();
+  protected final Map<String, TroopAioKeywordInfo> c = new HashMap();
+  protected final SparseArray<TroopAioKeywordRuleInfo> d = new SparseArray();
+  protected final SparseArray<TroopAioKeywordTipInfo> e = new SparseArray();
+  protected final List<String> f = new ArrayList();
+  protected boolean g = false;
+  protected boolean h = false;
   
   public TroopAioKeywordTipManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   private String a(String paramString)
@@ -60,9 +53,9 @@ public class TroopAioKeywordTipManager
     int i = 2147483647;
     Object localObject2;
     int j;
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.b.iterator();
       do
       {
         localObject2 = localObject1;
@@ -78,27 +71,16 @@ public class TroopAioKeywordTipManager
     }
   }
   
-  private String a(String paramString1, String paramString2, Integer paramInteger)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramInteger);
-    return localStringBuilder.toString();
-  }
-  
   private List<Integer> a(MessageRecord arg1)
   {
     Object localObject1 = ???.getExtInfoFromExtStr("key_aio_keyword");
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      synchronized (this.c)
       {
-        localObject1 = (TroopAioKeywordInfo)this.jdField_a_of_type_JavaUtilMap.get(localObject1);
+        localObject1 = (TroopAioKeywordInfo)this.c.get(localObject1);
         if (localObject1 != null)
         {
-          localObject1 = ((TroopAioKeywordInfo)localObject1).jdField_a_of_type_JavaUtilList;
+          localObject1 = ((TroopAioKeywordInfo)localObject1).b;
           return localObject1;
         }
       }
@@ -117,60 +99,26 @@ public class TroopAioKeywordTipManager
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramInteger);
-    ((ITroopAioKeywordService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopAioKeywordService.class, "")).getTroopAioKeywordTipInfo(localArrayList, new TroopAioKeywordTipManager.4(this, paramMessageRecord, paramCallback));
-  }
-  
-  private boolean a(MessageRecord paramMessageRecord)
-  {
-    a();
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-        return false;
-      }
-      if (TextUtils.equals(paramMessageRecord.getExtInfoFromExtStr("key_is_checked_aio_keyword"), "1")) {
-        return TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("key_aio_keyword")) ^ true;
-      }
-      Object localObject2 = b(paramMessageRecord);
-      ??? = null;
-      Iterator localIterator = ((List)localObject2).iterator();
-      while (localIterator.hasNext())
-      {
-        localObject2 = a((String)localIterator.next());
-        ??? = localObject2;
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          paramMessageRecord.saveExtInfoToExtStr("key_aio_keyword", (String)localObject2);
-          ??? = localObject2;
-        }
-      }
-      paramMessageRecord.saveExtInfoToExtStr("key_is_checked_aio_keyword", "1");
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, "extStr", paramMessageRecord.extStr);
-      return TextUtils.isEmpty((CharSequence)???) ^ true;
-    }
-    for (;;)
-    {
-      throw paramMessageRecord;
-    }
+    ((ITroopAioKeywordService)this.a.getRuntimeService(ITroopAioKeywordService.class, "")).getTroopAioKeywordTipInfo(localArrayList, new TroopAioKeywordTipManager.4(this, paramMessageRecord, paramCallback));
   }
   
   private boolean a(Integer paramInteger, int paramInt, MessageRecord paramMessageRecord)
   {
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    synchronized (this.d)
     {
-      Object localObject1 = (TroopAioKeywordRuleInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInteger.intValue());
+      Object localObject1 = (TroopAioKeywordRuleInfo)this.d.get(paramInteger.intValue());
       if (localObject1 == null) {
         return false;
       }
-      synchronized (this.jdField_b_of_type_JavaUtilList)
+      synchronized (this.f)
       {
-        if (!this.jdField_b_of_type_Boolean)
+        if (!this.h)
         {
-          this.jdField_b_of_type_JavaUtilList.addAll(TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-          this.jdField_b_of_type_Boolean = true;
+          this.f.addAll(TroopAioKeywordHelper.a(this.a));
+          this.h = true;
         }
-        paramInteger = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramMessageRecord.getExtInfoFromExtStr("key_aio_keyword"), paramInteger);
-        if ((!paramMessageRecord.isSend()) && (this.jdField_b_of_type_JavaUtilList.contains(paramInteger)))
+        paramInteger = b(this.a.getCurrentAccountUin(), paramMessageRecord.getExtInfoFromExtStr("key_aio_keyword"), paramInteger);
+        if ((!paramMessageRecord.isSend()) && (this.f.contains(paramInteger)))
         {
           if (QLog.isColorLevel())
           {
@@ -196,19 +144,19 @@ public class TroopAioKeywordTipManager
             }
             return false;
           }
-          if ((((TroopAioKeywordRuleInfo)localObject1).jdField_a_of_type_JavaUtilList != null) && (((TroopAioKeywordRuleInfo)localObject1).jdField_a_of_type_JavaUtilList.size() > 0))
+          if ((((TroopAioKeywordRuleInfo)localObject1).e != null) && (((TroopAioKeywordRuleInfo)localObject1).e.size() > 0))
           {
             if (QLog.isColorLevel()) {
               QLog.i("TroopAioKeywordTipManager", 2, "isSupportedRuleId, ruleInfo.troopTypes == null");
             }
-            paramInteger = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramMessageRecord.frienduin);
-            if (!((TroopAioKeywordRuleInfo)localObject1).jdField_a_of_type_JavaUtilList.contains(Integer.valueOf((int)paramInteger.dwGroupClassExt)))
+            paramInteger = ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramMessageRecord.frienduin);
+            if (!((TroopAioKeywordRuleInfo)localObject1).e.contains(Integer.valueOf((int)paramInteger.dwGroupClassExt)))
             {
               if (QLog.isColorLevel())
               {
                 paramMessageRecord = new StringBuilder();
                 paramMessageRecord.append("[");
-                localObject1 = ((TroopAioKeywordRuleInfo)localObject1).jdField_a_of_type_JavaUtilList.iterator();
+                localObject1 = ((TroopAioKeywordRuleInfo)localObject1).e.iterator();
                 while (((Iterator)localObject1).hasNext())
                 {
                   paramMessageRecord.append(((Integer)((Iterator)localObject1).next()).intValue());
@@ -247,7 +195,63 @@ public class TroopAioKeywordTipManager
     }
   }
   
-  private List<String> b(MessageRecord paramMessageRecord)
+  private String b(String paramString1, String paramString2, Integer paramInteger)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInteger);
+    return localStringBuilder.toString();
+  }
+  
+  private void b(List<Integer> paramList)
+  {
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return;
+      }
+      ThreadManager.post(new TroopAioKeywordTipManager.2(this, paramList), 8, null, true);
+    }
+  }
+  
+  private boolean b(MessageRecord paramMessageRecord)
+  {
+    a();
+    synchronized (this.b)
+    {
+      if (this.b.size() == 0) {
+        return false;
+      }
+      if (TextUtils.equals(paramMessageRecord.getExtInfoFromExtStr("key_is_checked_aio_keyword"), "1")) {
+        return TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("key_aio_keyword")) ^ true;
+      }
+      Object localObject2 = c(paramMessageRecord);
+      ??? = null;
+      Iterator localIterator = ((List)localObject2).iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = a((String)localIterator.next());
+        ??? = localObject2;
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          paramMessageRecord.saveExtInfoToExtStr("key_aio_keyword", (String)localObject2);
+          ??? = localObject2;
+        }
+      }
+      paramMessageRecord.saveExtInfoToExtStr("key_is_checked_aio_keyword", "1");
+      this.a.getMessageFacade().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, "extStr", paramMessageRecord.extStr);
+      return TextUtils.isEmpty((CharSequence)???) ^ true;
+    }
+    for (;;)
+    {
+      throw paramMessageRecord;
+    }
+  }
+  
+  private List<String> c(MessageRecord paramMessageRecord)
   {
     ArrayList localArrayList = new ArrayList();
     if ((paramMessageRecord.msgtype != -1000) && (paramMessageRecord.msgtype != -1051))
@@ -288,17 +292,6 @@ public class TroopAioKeywordTipManager
     return localArrayList;
   }
   
-  private void b(List<Integer> paramList)
-  {
-    if (paramList != null)
-    {
-      if (paramList.size() == 0) {
-        return;
-      }
-      ThreadManager.post(new TroopAioKeywordTipManager.2(this, paramList), 8, null, true);
-    }
-  }
-  
   public Pair<MessageRecord, Integer> a(List<MessageRecord> paramList, List<String> paramList1, int paramInt)
   {
     Iterator localIterator = paramList.iterator();
@@ -306,7 +299,7 @@ public class TroopAioKeywordTipManager
     paramList = null;
     Object localObject2;
     Object localObject3;
-    label204:
+    label205:
     do
     {
       MessageRecord localMessageRecord;
@@ -318,7 +311,7 @@ public class TroopAioKeywordTipManager
           break;
         }
         localMessageRecord = (MessageRecord)localIterator.next();
-      } while (!a(localMessageRecord));
+      } while (!b(localMessageRecord));
       Object localObject4 = a(localMessageRecord);
       localObject2 = localObject1;
       localObject3 = paramList;
@@ -336,7 +329,7 @@ public class TroopAioKeywordTipManager
               localObject2 = localObject1;
               localObject3 = paramList;
               if (!((Iterator)localObject4).hasNext()) {
-                break label204;
+                break label205;
               }
               localObject2 = (Integer)((Iterator)localObject4).next();
               if (paramList1 == null) {
@@ -361,7 +354,7 @@ public class TroopAioKeywordTipManager
   {
     try
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.g)
       {
         oidb_0x496.AioKeyword localAioKeyword = TroopAioKeywordHelper.a();
         a(TroopAioKeywordHelper.a(localAioKeyword), TroopAioKeywordHelper.b(localAioKeyword));
@@ -396,39 +389,39 @@ public class TroopAioKeywordTipManager
     if (??? != null) {}
     try
     {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      synchronized (this.b)
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
+        this.b.clear();
         Object localObject2 = ???.iterator();
         while (((Iterator)localObject2).hasNext())
         {
           TroopAioKeywordInfo localTroopAioKeywordInfo = (TroopAioKeywordInfo)((Iterator)localObject2).next();
-          this.jdField_a_of_type_JavaUtilList.add(localTroopAioKeywordInfo.jdField_a_of_type_JavaLangString.toLowerCase());
+          this.b.add(localTroopAioKeywordInfo.a.toLowerCase());
         }
-        synchronized (this.jdField_a_of_type_JavaUtilMap)
+        synchronized (this.c)
         {
-          this.jdField_a_of_type_JavaUtilMap.clear();
+          this.c.clear();
           ??? = ???.iterator();
           if (???.hasNext())
           {
             localObject2 = (TroopAioKeywordInfo)???.next();
-            this.jdField_a_of_type_JavaUtilMap.put(((TroopAioKeywordInfo)localObject2).jdField_a_of_type_JavaLangString.toLowerCase(), localObject2);
+            this.c.put(((TroopAioKeywordInfo)localObject2).a.toLowerCase(), localObject2);
           }
         }
       }
       if (paramList1 != null) {
-        synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+        synchronized (this.d)
         {
-          this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+          this.d.clear();
           paramList1 = paramList1.iterator();
           if (paramList1.hasNext())
           {
             ??? = (TroopAioKeywordRuleInfo)paramList1.next();
-            this.jdField_a_of_type_AndroidUtilSparseArray.put(((TroopAioKeywordRuleInfo)???).jdField_a_of_type_Int, ???);
+            this.d.put(((TroopAioKeywordRuleInfo)???).a, ???);
           }
         }
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.g = true;
       return;
     }
     finally
@@ -451,7 +444,7 @@ public class TroopAioKeywordTipManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager
  * JD-Core Version:    0.7.0.1
  */

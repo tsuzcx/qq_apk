@@ -1,32 +1,38 @@
 package com.tencent.mobileqq.cmshow.crossengine.script.task;
 
 import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.cmshow.brickengine.script.task.BKPlayActionTask;
-import com.tencent.mobileqq.cmshow.engine.util.CMResUtil;
+import com.tencent.mobileqq.cmshow.crossengine.resource.util.CEResUtil;
+import com.tencent.mobileqq.cmshow.engine.EngineContext;
+import com.tencent.mobileqq.cmshow.engine.script.task.PlayActionTask;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/crossengine/script/task/CEPlayActionTask;", "Lcom/tencent/mobileqq/cmshow/brickengine/script/task/BKPlayActionTask;", "()V", "buildParams", "", "skipCheck", "", "", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/crossengine/script/task/CEPlayActionTask;", "Lcom/tencent/mobileqq/cmshow/engine/script/task/PlayActionTask;", "engineContext", "Lcom/tencent/mobileqq/cmshow/engine/EngineContext;", "(Lcom/tencent/mobileqq/cmshow/engine/EngineContext;)V", "buildParams", "", "skipCheck", "", "", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class CEPlayActionTask
-  extends BKPlayActionTask
+  extends PlayActionTask
 {
   @Deprecated
   public static final CEPlayActionTask.Companion a = new CEPlayActionTask.Companion(null);
   
-  private final boolean b(int paramInt)
+  public CEPlayActionTask(@NotNull EngineContext paramEngineContext)
   {
-    return (paramInt < ApolloConstant.a) || (a(d()));
+    super(paramEngineContext);
+  }
+  
+  private final boolean n(int paramInt)
+  {
+    return (paramInt < ApolloConstant.f) || (m(l()));
   }
   
   @NotNull
   public String b()
   {
     boolean bool;
-    if (b(c())) {
+    if (n(c())) {
       bool = true;
     } else {
-      bool = CMResUtil.a(c(), k());
+      bool = CEResUtil.b(c(), x());
     }
     if (!bool)
     {
@@ -40,7 +46,7 @@ public final class CEPlayActionTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.script.task.CEPlayActionTask
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,8 @@ class QQPimGetTipsInfoIPC$NoticeClickTipsRunnable
     try
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(QQPimDefineList.r, 3);
-      QIPCServerHelper.getInstance().callClient(QQPimDefineList.b, QQPimDefineList.c, QQPimDefineList.e, localBundle, new QQPimGetTipsInfoIPC.NoticeClickTipsRunnable.1(this));
+      localBundle.putInt(QQPimDefineList.s, 3);
+      QIPCServerHelper.getInstance().callClient(QQPimDefineList.c, QQPimDefineList.d, QQPimDefineList.f, localBundle, new QQPimGetTipsInfoIPC.NoticeClickTipsRunnable.1(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -25,7 +25,7 @@ class QQPimGetTipsInfoIPC$NoticeClickTipsRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable
  * JD-Core Version:    0.7.0.1
  */

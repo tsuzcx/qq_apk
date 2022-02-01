@@ -12,11 +12,11 @@ final class TroopBlockUtils$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqTroopBlocktroopTroopBlockUtils$ConstantBlockDialogCallback;
+    paramDialogInterface = this.a;
     if (paramDialogInterface != null) {
       paramDialogInterface.a();
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       ReportController.b(null, "dc00898", "", "", "0X800B224", "0X800B224", 0, 0, "", "", "", "");
       return;
@@ -26,7 +26,7 @@ final class TroopBlockUtils$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.blocktroop.TroopBlockUtils.4
  * JD-Core Version:    0.7.0.1
  */

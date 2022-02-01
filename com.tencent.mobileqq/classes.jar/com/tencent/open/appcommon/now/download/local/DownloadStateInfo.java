@@ -4,20 +4,14 @@ import com.tencent.open.downloadnew.DownloadInfo;
 
 public class DownloadStateInfo
 {
-  public int a;
-  public long a;
   public String a;
-  public int b;
-  public long b;
   public String b;
   public int c;
-  public String c;
-  
-  public DownloadStateInfo()
-  {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_JavaLangString = "";
-  }
+  public int d;
+  public long e;
+  public long f;
+  public int g = 0;
+  public String h = "";
   
   public int a(int paramInt)
   {
@@ -66,12 +60,12 @@ public class DownloadStateInfo
   
   public DownloadStateInfo a(DownloadInfo paramDownloadInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramDownloadInfo.jdField_c_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramDownloadInfo.e;
-    this.jdField_a_of_type_Int = a(paramDownloadInfo.a());
-    this.jdField_b_of_type_Int = paramDownloadInfo.f;
-    this.jdField_a_of_type_Long = paramDownloadInfo.jdField_c_of_type_Long;
-    this.jdField_b_of_type_Long = 0L;
+    this.a = paramDownloadInfo.c;
+    this.b = paramDownloadInfo.e;
+    this.c = a(paramDownloadInfo.a());
+    this.d = paramDownloadInfo.t;
+    this.e = paramDownloadInfo.E;
+    this.f = 0L;
     return this;
   }
   
@@ -141,7 +135,7 @@ public class DownloadStateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.local.DownloadStateInfo
  * JD-Core Version:    0.7.0.1
  */

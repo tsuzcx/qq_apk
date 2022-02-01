@@ -9,7 +9,7 @@ class PrinterActivity$2
   
   protected void a(Object paramObject, boolean paramBoolean)
   {
-    if ((paramBoolean) && (PrinterActivity.a(this.a))) {
+    if ((paramBoolean) && (PrinterActivity.b(this.a))) {
       PrinterActivity.a(this.a, paramObject);
     }
   }

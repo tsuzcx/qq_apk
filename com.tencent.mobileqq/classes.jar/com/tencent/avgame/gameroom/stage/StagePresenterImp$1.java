@@ -20,20 +20,20 @@ class StagePresenterImp$1
     if (QLog.isColorLevel()) {
       QLog.i("StagePresenterImp", 2, "realStartRunnale");
     }
-    EngineData localEngineData = GameEngine.a().a();
-    if (!localEngineData.a()) {
+    EngineData localEngineData = GameEngine.a().s();
+    if (!localEngineData.d()) {
       return;
     }
     StagePresenterImp.a(this.this$0, localEngineData);
-    if (localEngineData.d(GameEngine.a().a().getAccount()))
+    if (localEngineData.f(GameEngine.a().f().getAccount()))
     {
-      this.this$0.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a();
-      this.this$0.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b(this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.a());
+      this.this$0.b.g().a();
+      this.this$0.b.g().b(this.this$0.a.getTopicWrapperView());
     }
-    this.this$0.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().f();
-    localEngineData.a().b();
+    this.this$0.b.g().f();
+    localEngineData.s().d();
     if (Build.VERSION.SDK_INT >= 16) {
-      AudioProcess.a().updateRecogTxt(localEngineData.a().b());
+      AudioProcess.b().updateRecogTxt(localEngineData.s().d());
     }
   }
 }

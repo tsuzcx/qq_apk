@@ -13,7 +13,7 @@ class PreloadManager$FeedslistDownlaodImageThread
   
   PreloadManager.ImgStruct a()
   {
-    Object localObject1 = this.this$0.a;
+    Object localObject1 = this.this$0.d;
     int i = 3;
     label150:
     for (;;)
@@ -24,7 +24,7 @@ class PreloadManager$FeedslistDownlaodImageThread
         PreloadManager.ImgStruct localImgStruct;
         do
         {
-          Iterator localIterator = PreloadManager.a(this.this$0).values().iterator();
+          Iterator localIterator = PreloadManager.d(this.this$0).values().iterator();
           Object localObject3;
           while (!((Iterator)localObject3).hasNext())
           {
@@ -41,7 +41,7 @@ class PreloadManager$FeedslistDownlaodImageThread
           if (localImgStruct == null) {
             return null;
           }
-        } while ((PreloadManager.a(localImgStruct.jdField_a_of_type_JavaLangString) != 0) || (localImgStruct.jdField_a_of_type_Int != i));
+        } while ((PreloadManager.c(localImgStruct.a) != 0) || (localImgStruct.b != i));
         return localImgStruct;
         return null;
       }
@@ -59,7 +59,7 @@ class PreloadManager$FeedslistDownlaodImageThread
   
   public void run()
   {
-    this.this$0.b = true;
+    this.this$0.c = true;
     for (;;)
     {
       PreloadManager.ImgStruct localImgStruct = a();
@@ -69,14 +69,14 @@ class PreloadManager$FeedslistDownlaodImageThread
       if (NetworkState.getNetworkType() != 1) {
         return;
       }
-      this.this$0.a(localImgStruct.jdField_a_of_type_JavaLangString);
+      this.this$0.g(localImgStruct.a);
     }
-    this.this$0.b = false;
+    this.this$0.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PreloadManager.FeedslistDownlaodImageThread
  * JD-Core Version:    0.7.0.1
  */

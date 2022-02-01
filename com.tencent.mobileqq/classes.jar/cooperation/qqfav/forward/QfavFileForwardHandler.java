@@ -65,11 +65,11 @@ public class QfavFileForwardHandler
     localForwardDataWireReqBody.cid.set(paramString4);
     localForwardDataWireReqBody.str_file_name.set(paramString5);
     localForwardDataWireReqBody.uint64_file_size.set(paramLong);
-    boolean bool = FileUtil.a(paramString1);
+    boolean bool = FileUtil.b(paramString1);
     if ((TextUtils.isEmpty(paramString5)) && (bool))
     {
-      localForwardDataWireReqBody.str_file_name.set(FileUtil.c(paramString1));
-      localForwardDataWireReqBody.uint64_file_size.set(FileUtil.a(paramString1));
+      localForwardDataWireReqBody.str_file_name.set(FileUtil.g(paramString1));
+      localForwardDataWireReqBody.uint64_file_size.set(FileUtil.f(paramString1));
     }
     return localForwardDataWireReqBody;
   }
@@ -78,7 +78,7 @@ public class QfavFileForwardHandler
   {
     oidb_cmd0xd68.ForwardGroupReqBody localForwardGroupReqBody = new oidb_cmd0xd68.ForwardGroupReqBody();
     localForwardGroupReqBody.uint64_group_code.set(paramLong1);
-    localForwardGroupReqBody.uint32_app_id.set(AppSetting.a());
+    localForwardGroupReqBody.uint32_app_id.set(AppSetting.d());
     localForwardGroupReqBody.uint32_src_bus_id.set(236);
     localForwardGroupReqBody.bytes_dst_folder_id.set(ByteStringMicro.copyFrom("/".getBytes()));
     localForwardGroupReqBody.bytes_md5.set(ByteStringMicro.copyFrom(paramArrayOfByte));
@@ -96,26 +96,6 @@ public class QfavFileForwardHandler
       localForwardGroupReqBody.str_local_path.set(paramString1);
     }
     return localForwardGroupReqBody;
-  }
-  
-  private oidb_cmd0xd68.ForwardOfflineFileReqBody a(long paramLong1, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte, String paramString4, String paramString5, long paramLong2)
-  {
-    oidb_cmd0xd68.ForwardOfflineFileReqBody localForwardOfflineFileReqBody = new oidb_cmd0xd68.ForwardOfflineFileReqBody();
-    localForwardOfflineFileReqBody.uint64_dst_uin.set(paramLong1);
-    localForwardOfflineFileReqBody.uint32_src_svcid.set(236);
-    localForwardOfflineFileReqBody.bytes_file_md5.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    localForwardOfflineFileReqBody.bytes_src_parent_folder.set(ByteStringMicro.copyFrom(paramString2.getBytes()));
-    localForwardOfflineFileReqBody.bytes_src_uuid.set(ByteStringMicro.copyFrom(paramString3.getBytes()));
-    localForwardOfflineFileReqBody.uint32_client_type.set(2);
-    localForwardOfflineFileReqBody.cid.set(paramString4);
-    paramString2 = localForwardOfflineFileReqBody.str_file_name;
-    paramString1 = paramString5;
-    if (TextUtils.isEmpty(paramString5)) {
-      paramString1 = "";
-    }
-    paramString2.set(paramString1);
-    localForwardOfflineFileReqBody.uint64_file_size.set(paramLong2);
-    return localForwardOfflineFileReqBody;
   }
   
   private static oidb_sso.OIDBSSOPkg a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -168,6 +148,26 @@ public class QfavFileForwardHandler
       String str = new String(paramRspBody.forward_group_rsp.bytes_save_file_path.get().toByteArray());
       localTroopFileTransferManager.a(l, UUID.fromString(paramToServiceMsg.strTroopFileUuid), null, paramRspBody.forward_group_rsp.int32_ret_code.get(), str, paramRspBody.forward_group_rsp.str_ret_msg.get());
     }
+  }
+  
+  private oidb_cmd0xd68.ForwardOfflineFileReqBody b(long paramLong1, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte, String paramString4, String paramString5, long paramLong2)
+  {
+    oidb_cmd0xd68.ForwardOfflineFileReqBody localForwardOfflineFileReqBody = new oidb_cmd0xd68.ForwardOfflineFileReqBody();
+    localForwardOfflineFileReqBody.uint64_dst_uin.set(paramLong1);
+    localForwardOfflineFileReqBody.uint32_src_svcid.set(236);
+    localForwardOfflineFileReqBody.bytes_file_md5.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    localForwardOfflineFileReqBody.bytes_src_parent_folder.set(ByteStringMicro.copyFrom(paramString2.getBytes()));
+    localForwardOfflineFileReqBody.bytes_src_uuid.set(ByteStringMicro.copyFrom(paramString3.getBytes()));
+    localForwardOfflineFileReqBody.uint32_client_type.set(2);
+    localForwardOfflineFileReqBody.cid.set(paramString4);
+    paramString2 = localForwardOfflineFileReqBody.str_file_name;
+    paramString1 = paramString5;
+    if (TextUtils.isEmpty(paramString5)) {
+      paramString1 = "";
+    }
+    paramString2.set(paramString1);
+    localForwardOfflineFileReqBody.uint64_file_size.set(paramLong2);
+    return localForwardOfflineFileReqBody;
   }
   
   private void b(ToServiceMsg paramToServiceMsg, oidb_cmd0xd68.RspBody paramRspBody)
@@ -246,7 +246,7 @@ public class QfavFileForwardHandler
     this.a.getFileManagerNotifyCenter().a(paramToServiceMsg, 10, "");
     paramRspBody = new FileManagerReporter.FileAssistantReportData();
     paramRspBody.b = "send_file_suc";
-    paramRspBody.a = 1;
+    paramRspBody.c = 1;
     FileManagerReporter.a(this.a.getCurrentAccountUin(), paramRspBody);
     FileManagerUtil.a(this.a, paramToServiceMsg);
   }
@@ -265,7 +265,7 @@ public class QfavFileForwardHandler
       return;
     }
     int i = DataLineMsgRecord.getDevTypeBySeId(l);
-    paramRspBody = this.a.getMessageFacade().a(i).a(l);
+    paramRspBody = this.a.getMessageFacade().d(i).a(l);
     if (paramRspBody == null) {
       return;
     }
@@ -283,7 +283,7 @@ public class QfavFileForwardHandler
       }
     }
     if (paramToServiceMsg.a(paramRspBody)) {
-      paramToServiceMsg.a(paramRspBody);
+      paramToServiceMsg.b(paramRspBody);
     }
   }
   
@@ -301,7 +301,7 @@ public class QfavFileForwardHandler
       }
       else
       {
-        localReqBody.forward_offline_req.set(a(paramLong1, paramString1, paramString2, paramString3, paramArrayOfByte, paramString4, paramString5, paramLong2));
+        localReqBody.forward_offline_req.set(b(paramLong1, paramString1, paramString2, paramString3, paramArrayOfByte, paramString4, paramString5, paramLong2));
       }
     }
     else {
@@ -413,7 +413,7 @@ public class QfavFileForwardHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.forward.QfavFileForwardHandler
  * JD-Core Version:    0.7.0.1
  */

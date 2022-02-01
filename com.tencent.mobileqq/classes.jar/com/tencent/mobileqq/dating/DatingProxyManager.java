@@ -7,67 +7,67 @@ import mqq.manager.Manager;
 public class DatingProxyManager
   implements Manager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private StrangerHdHeadUrlFetcher jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher;
-  private VoteEventMgr jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Object b = new Object();
+  private QQAppInterface a;
+  private VoteEventMgr b;
+  private StrangerHdHeadUrlFetcher c;
+  private Object d = new Object();
+  private Object e = new Object();
   
   public DatingProxyManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public StrangerHdHeadUrlFetcher a()
-  {
-    ??? = this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher;
-    if (??? != null) {
-      return ???;
-    }
-    synchronized (this.b)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher == null) {
-        this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher = new StrangerHdHeadUrlFetcher(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      StrangerHdHeadUrlFetcher localStrangerHdHeadUrlFetcher = this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher;
-      return localStrangerHdHeadUrlFetcher;
-    }
+    this.a = paramQQAppInterface;
   }
   
   public VoteEventMgr a()
   {
-    ??? = this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr;
+    ??? = this.b;
     if (??? != null) {
       return ???;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr == null) {
-        this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr = new VoteEventMgr(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (this.b == null) {
+        this.b = new VoteEventMgr(this.a);
       }
-      VoteEventMgr localVoteEventMgr = this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr;
+      VoteEventMgr localVoteEventMgr = this.b;
       return localVoteEventMgr;
+    }
+  }
+  
+  public StrangerHdHeadUrlFetcher b()
+  {
+    ??? = this.c;
+    if (??? != null) {
+      return ???;
+    }
+    synchronized (this.e)
+    {
+      if (this.c == null) {
+        this.c = new StrangerHdHeadUrlFetcher(this.a);
+      }
+      StrangerHdHeadUrlFetcher localStrangerHdHeadUrlFetcher = this.c;
+      return localStrangerHdHeadUrlFetcher;
     }
   }
   
   public void onDestroy()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr;
+    Object localObject = this.b;
     if (localObject != null) {
-      ((VoteEventMgr)localObject).b();
+      ((VoteEventMgr)localObject).d();
     }
-    this.jdField_a_of_type_ComTencentMobileqqDatingWidgetVoteEventMgr = null;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher;
+    this.b = null;
+    localObject = this.c;
     if (localObject != null)
     {
       ((StrangerHdHeadUrlFetcher)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher = null;
+      this.c = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingProxyManager
  * JD-Core Version:    0.7.0.1
  */

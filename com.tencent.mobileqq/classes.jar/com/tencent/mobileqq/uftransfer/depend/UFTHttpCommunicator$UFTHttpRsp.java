@@ -2,19 +2,19 @@ package com.tencent.mobileqq.uftransfer.depend;
 
 public class UFTHttpCommunicator$UFTHttpRsp
 {
-  final long jdField_a_of_type_Long;
-  final String jdField_a_of_type_JavaLangString;
-  final byte[] jdField_a_of_type_ArrayOfByte;
+  final long a;
   final long b;
-  final long c;
+  final byte[] c;
+  final String d;
+  final long e;
   
   public UFTHttpCommunicator$UFTHttpRsp(byte[] paramArrayOfByte, String paramString, long paramLong1, long paramLong2, long paramLong3)
   {
-    this.jdField_a_of_type_Long = paramLong2;
+    this.a = paramLong2;
     this.b = paramLong1;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramLong3;
+    this.c = paramArrayOfByte;
+    this.d = paramString;
+    this.e = paramLong3;
   }
   
   public long a()
@@ -22,24 +22,24 @@ public class UFTHttpCommunicator$UFTHttpRsp
     return this.b;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public long b()
+  public byte[] b()
   {
     return this.c;
+  }
+  
+  public String c()
+  {
+    return this.d;
+  }
+  
+  public long d()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.depend.UFTHttpCommunicator.UFTHttpRsp
  * JD-Core Version:    0.7.0.1
  */

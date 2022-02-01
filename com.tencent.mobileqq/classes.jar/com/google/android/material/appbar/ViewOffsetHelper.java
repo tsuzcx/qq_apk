@@ -5,57 +5,28 @@ import androidx.core.view.ViewCompat;
 
 class ViewOffsetHelper
 {
-  private int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = true;
+  private final View a;
+  private int b;
   private int c;
   private int d;
+  private int e;
+  private boolean f = true;
+  private boolean g = true;
   
   public ViewOffsetHelper(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public int a()
-  {
-    return this.c;
+    this.a = paramView;
   }
   
   void a()
   {
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewView.getTop();
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidViewView.getLeft();
+    this.b = this.a.getTop();
+    this.c = this.a.getLeft();
   }
   
   public boolean a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.c != paramInt))
-    {
-      this.c = paramInt;
-      b();
-      return true;
-    }
-    return false;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  void b()
-  {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    ViewCompat.offsetTopAndBottom(localView, this.c - (localView.getTop() - this.jdField_a_of_type_Int));
-    localView = this.jdField_a_of_type_AndroidViewView;
-    ViewCompat.offsetLeftAndRight(localView, this.d - (localView.getLeft() - this.jdField_b_of_type_Int));
-  }
-  
-  public boolean b(int paramInt)
-  {
-    if ((this.jdField_b_of_type_Boolean) && (this.d != paramInt))
+    if ((this.f) && (this.d != paramInt))
     {
       this.d = paramInt;
       b();
@@ -63,10 +34,39 @@ class ViewOffsetHelper
     }
     return false;
   }
+  
+  void b()
+  {
+    View localView = this.a;
+    ViewCompat.offsetTopAndBottom(localView, this.d - (localView.getTop() - this.b));
+    localView = this.a;
+    ViewCompat.offsetLeftAndRight(localView, this.e - (localView.getLeft() - this.c));
+  }
+  
+  public boolean b(int paramInt)
+  {
+    if ((this.g) && (this.e != paramInt))
+    {
+      this.e = paramInt;
+      b();
+      return true;
+    }
+    return false;
+  }
+  
+  public int c()
+  {
+    return this.d;
+  }
+  
+  public int d()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.ViewOffsetHelper
  * JD-Core Version:    0.7.0.1
  */

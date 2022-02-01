@@ -12,12 +12,12 @@ import java.util.Random;
 public class SnowView
   extends View
 {
-  private static final Random jdField_a_of_type_JavaUtilRandom = new Random();
-  int jdField_a_of_type_Int = 40;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private Snow[] jdField_a_of_type_ArrayOfComTencentMobileqqFacetofaceSnow = new Snow[this.jdField_a_of_type_Int];
+  private static final Random d = new Random();
+  int a = 40;
   int b = 10;
+  private final Paint c = new Paint();
+  private Snow[] e = new Snow[this.a];
+  private Point f;
   
   public SnowView(Context paramContext)
   {
@@ -36,7 +36,7 @@ public class SnowView
   
   private void b(Snow paramSnow)
   {
-    paramSnow.e = (jdField_a_of_type_JavaUtilRandom.nextFloat() - 0.45F);
+    paramSnow.e = (d.nextFloat() - 0.45F);
     paramSnow.d += paramSnow.e;
     if ((paramSnow.d > 10.0F) && (paramSnow.e > 0.0F))
     {
@@ -46,19 +46,19 @@ public class SnowView
     if ((paramSnow.d < 2.0F) && (paramSnow.e < 0.0F)) {
       paramSnow.e = 0.0F;
     }
-    paramSnow.b += paramSnow.d + jdField_a_of_type_JavaUtilRandom.nextFloat() * 10.0F;
-    paramSnow.c += (jdField_a_of_type_JavaUtilRandom.nextFloat() - 0.5F) * 0.5F;
+    paramSnow.b += paramSnow.d + d.nextFloat() * 10.0F;
+    paramSnow.c += (d.nextFloat() - 0.5F) * 0.5F;
     if (Math.abs(paramSnow.c) > 3.0F) {
       paramSnow.c *= 0.96F;
     }
-    paramSnow.jdField_a_of_type_Float += paramSnow.c;
-    if (paramSnow.jdField_a_of_type_Float > this.jdField_a_of_type_AndroidGraphicsPoint.x) {
-      paramSnow.jdField_a_of_type_Float = 5.0F;
+    paramSnow.a += paramSnow.c;
+    if (paramSnow.a > this.f.x) {
+      paramSnow.a = 5.0F;
     }
-    if (paramSnow.jdField_a_of_type_Float < 5.0F) {
-      paramSnow.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPoint.x;
+    if (paramSnow.a < 5.0F) {
+      paramSnow.a = this.f.x;
     }
-    if (paramSnow.b > this.jdField_a_of_type_AndroidGraphicsPoint.y) {
+    if (paramSnow.b > this.f.y) {
       a(paramSnow);
     }
   }
@@ -66,51 +66,51 @@ public class SnowView
   public void a()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    while (i < this.a)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqFacetofaceSnow[i] = new Snow(jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_AndroidGraphicsPoint.x), jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_AndroidGraphicsPoint.y), jdField_a_of_type_JavaUtilRandom.nextInt(this.b), jdField_a_of_type_JavaUtilRandom.nextInt(this.b), 0, 0.0F);
+      this.e[i] = new Snow(d.nextInt(this.f.x), d.nextInt(this.f.y), d.nextInt(this.b), d.nextInt(this.b), 0, 0.0F);
       i += 1;
     }
   }
   
   public void a(Snow paramSnow)
   {
-    paramSnow.jdField_a_of_type_Float = (jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_AndroidGraphicsPoint.x) + 5.0F);
+    paramSnow.a = (d.nextInt(this.f.x) + 5.0F);
     paramSnow.b = 0.0F;
-    paramSnow.d = (jdField_a_of_type_JavaUtilRandom.nextFloat() * 5.0F + 2.0F);
-    paramSnow.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilRandom.nextInt(255);
-    paramSnow.f = (jdField_a_of_type_JavaUtilRandom.nextFloat() - 0.5F);
+    paramSnow.d = (d.nextFloat() * 5.0F + 2.0F);
+    paramSnow.f = d.nextInt(255);
+    paramSnow.g = (d.nextFloat() - 0.5F);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    while (i < this.a)
     {
-      b(this.jdField_a_of_type_ArrayOfComTencentMobileqqFacetofaceSnow[i]);
+      b(this.e[i]);
       if (i % 2 == 0) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(127);
+        this.c.setAlpha(127);
       } else {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(51);
+        this.c.setAlpha(51);
       }
-      paramCanvas.drawCircle(this.jdField_a_of_type_ArrayOfComTencentMobileqqFacetofaceSnow[i].jdField_a_of_type_Float, this.jdField_a_of_type_ArrayOfComTencentMobileqqFacetofaceSnow[i].b, AIOUtils.b(1.0F, getResources()), this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(this.e[i].a, this.e[i].b, AIOUtils.b(1.0F, getResources()), this.c);
       i += 1;
     }
   }
   
   public void setSnowView(Point paramPoint)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.f = paramPoint;
     a();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.c.setColor(-1);
+    this.c.setDither(true);
+    this.c.setAntiAlias(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.SnowView
  * JD-Core Version:    0.7.0.1
  */

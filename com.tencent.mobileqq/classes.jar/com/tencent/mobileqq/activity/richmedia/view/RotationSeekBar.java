@@ -16,13 +16,13 @@ import android.widget.SeekBar;
 public class RotationSeekBar
   extends SeekBar
 {
-  private static float jdField_a_of_type_Float = -1.0F;
-  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new AccelerateDecelerateInterpolator();
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float[] jdField_a_of_type_ArrayOfFloat = null;
-  private ValueAnimator b;
+  private static float a = -1.0F;
+  private static final Interpolator d = new AccelerateDecelerateInterpolator();
+  private float[] b = null;
+  private Paint c = null;
+  private boolean e = false;
+  private ValueAnimator f;
+  private ValueAnimator g;
   
   public RotationSeekBar(Context paramContext)
   {
@@ -42,18 +42,18 @@ public class RotationSeekBar
     a();
   }
   
-  private float a()
-  {
-    if (jdField_a_of_type_Float == -1.0F) {
-      jdField_a_of_type_Float = getContext().getResources().getDisplayMetrics().density;
-    }
-    return jdField_a_of_type_Float;
-  }
-  
   private int a(float paramFloat)
   {
-    a();
-    return Math.round(paramFloat * jdField_a_of_type_Float);
+    getDensity();
+    return Math.round(paramFloat * a);
+  }
+  
+  private float getDensity()
+  {
+    if (a == -1.0F) {
+      a = getContext().getResources().getDisplayMetrics().density;
+    }
+    return a;
   }
   
   void a() {}
@@ -61,11 +61,11 @@ public class RotationSeekBar
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.f;
     if (localValueAnimator != null) {
       localValueAnimator.cancel();
     }
-    localValueAnimator = this.b;
+    localValueAnimator = this.g;
     if (localValueAnimator != null) {
       localValueAnimator.cancel();
     }
@@ -74,29 +74,29 @@ public class RotationSeekBar
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_ArrayOfFloat != null)
+    if (this.b != null)
     {
       int j = getMeasuredWidth();
       int i = getMeasuredHeight();
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      if (this.c == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167394));
+        this.c = new Paint();
+        this.c.setStyle(Paint.Style.FILL);
+        this.c.setColor(getResources().getColor(2131168464));
       }
       int k = a(2.0F);
       int m = i / 2;
-      float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+      float[] arrayOfFloat = this.b;
       int n = arrayOfFloat.length;
       i = 0;
       while (i < n)
       {
-        float f = arrayOfFloat[i];
-        if ((f > 0.0F) && (f < 1.0F))
+        float f1 = arrayOfFloat[i];
+        if ((f1 > 0.0F) && (f1 < 1.0F))
         {
           paramCanvas.save();
-          paramCanvas.translate(f * j, m);
-          paramCanvas.drawCircle(0.0F, 0.0F, k, this.jdField_a_of_type_AndroidGraphicsPaint);
+          paramCanvas.translate(f1 * j, m);
+          paramCanvas.drawCircle(0.0F, 0.0F, k, this.c);
           paramCanvas.restore();
         }
         i += 1;
@@ -111,32 +111,32 @@ public class RotationSeekBar
   
   public void setAnimateEnable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void setProgress(int paramInt)
   {
     try
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.e)
       {
         super.setProgress(paramInt);
         return;
       }
-      if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      if (this.f != null) {
+        this.f.cancel();
       }
-      if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+      if (this.f == null)
       {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { getProgress(), paramInt });
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(jdField_a_of_type_AndroidViewAnimationInterpolator);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new RotationSeekBar.1(this));
+        this.f = ValueAnimator.ofInt(new int[] { getProgress(), paramInt });
+        this.f.setInterpolator(d);
+        this.f.addUpdateListener(new RotationSeekBar.1(this));
       }
       else
       {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { getProgress(), paramInt });
+        this.f.setIntValues(new int[] { getProgress(), paramInt });
       }
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      this.f.start();
       return;
     }
     finally {}
@@ -146,25 +146,25 @@ public class RotationSeekBar
   {
     try
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.e)
       {
         super.setSecondaryProgress(paramInt);
         return;
       }
-      if (this.b != null) {
-        this.b.cancel();
+      if (this.g != null) {
+        this.g.cancel();
       }
-      if (this.b == null)
+      if (this.g == null)
       {
-        this.b = ValueAnimator.ofInt(new int[] { getProgress(), paramInt });
-        this.b.setInterpolator(jdField_a_of_type_AndroidViewAnimationInterpolator);
-        this.b.addUpdateListener(new RotationSeekBar.2(this));
+        this.g = ValueAnimator.ofInt(new int[] { getProgress(), paramInt });
+        this.g.setInterpolator(d);
+        this.g.addUpdateListener(new RotationSeekBar.2(this));
       }
       else
       {
-        this.b.setIntValues(new int[] { getProgress(), paramInt });
+        this.g.setIntValues(new int[] { getProgress(), paramInt });
       }
-      this.b.start();
+      this.g.start();
       return;
     }
     finally {}
@@ -172,7 +172,7 @@ public class RotationSeekBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar
  * JD-Core Version:    0.7.0.1
  */

@@ -14,19 +14,18 @@ import mqq.os.MqqHandler;
 public abstract class AbsWsUI<T>
   implements Handler.Callback, IRecyclable
 {
-  protected int a;
   protected Context a;
-  protected View a;
-  protected T a;
-  protected int b = -1;
+  protected View b;
+  protected int c = -1;
+  protected int d = -1;
+  protected T e;
   
   public AbsWsUI(Context paramContext)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
-  private void e()
+  private void i()
   {
     AbsWsUI.1 local1 = new AbsWsUI.1(this);
     if (Looper.myLooper() != Looper.getMainLooper())
@@ -37,40 +36,11 @@ public abstract class AbsWsUI<T>
     local1.run();
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  protected Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  protected Resources a()
-  {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
-    if (localContext != null) {
-      return localContext.getResources();
-    }
-    return null;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
   protected abstract void a();
   
   public void a(int paramInt)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.b;
     if (localView != null) {
       localView.setVisibility(paramInt);
     }
@@ -92,9 +62,9 @@ public abstract class AbsWsUI<T>
   
   public void a(T paramT)
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.e = paramT;
     a();
-    e();
+    i();
   }
   
   @UiThread
@@ -102,15 +72,39 @@ public abstract class AbsWsUI<T>
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
-  protected abstract void c();
-  
-  public void d()
+  public T c()
   {
-    c();
+    return this.e;
+  }
+  
+  protected Context d()
+  {
+    return this.a;
+  }
+  
+  protected Resources e()
+  {
+    Context localContext = this.a;
+    if (localContext != null) {
+      return localContext.getResources();
+    }
+    return null;
+  }
+  
+  protected abstract void f();
+  
+  public void g()
+  {
+    f();
     b(-1);
+  }
+  
+  public int h()
+  {
+    return this.c;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -125,7 +119,7 @@ public abstract class AbsWsUI<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUI
  * JD-Core Version:    0.7.0.1
  */

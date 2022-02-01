@@ -21,7 +21,7 @@ class TroopGiftManager$5
   
   public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback != null)) {
+    if ((paramInt == 0) && (paramArrayOfByte != null) && (this.b != null)) {
       try
       {
         oidb_0x6c2.RspBody localRspBody = new oidb_0x6c2.RspBody();
@@ -41,23 +41,23 @@ class TroopGiftManager$5
             if (paramArrayOfByte != null)
             {
               paramArrayOfByte = new StringBuilder();
-              paramArrayOfByte.append(this.jdField_a_of_type_JavaLangString);
+              paramArrayOfByte.append(this.c);
               paramArrayOfByte.append("_");
-              paramArrayOfByte.append(this.b);
+              paramArrayOfByte.append(this.d);
               paramArrayOfByte = paramArrayOfByte.toString();
-              this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a.put(paramArrayOfByte, paramBundle);
-              this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(paramBundle);
+              this.e.b.put(paramArrayOfByte, paramBundle);
+              this.e.a(paramBundle);
             }
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramBundle);
+            this.b.a(paramBundle);
             return;
           }
           if ((paramInt == 1) && (localRspBody.int32_player.has()))
           {
             paramInt = localRspBody.int32_player.get();
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.c(paramInt);
+            this.b.c(paramInt);
             return;
           }
-          paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback;
+          paramArrayOfByte = this.b;
           paramBundle = new StringBuilder();
           paramBundle.append("Invalid RspData. subCmd:");
           paramBundle.append(paramInt);
@@ -65,7 +65,7 @@ class TroopGiftManager$5
           return;
         }
         paramArrayOfByte = localRspBody.bytes_errmsg.get().toStringUtf8();
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramInt, paramArrayOfByte);
+        this.b.a(paramInt, paramArrayOfByte);
         return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -77,7 +77,7 @@ class TroopGiftManager$5
           paramBundle.append(paramArrayOfByte);
           QLog.i(".troop.send_gift", 2, paramBundle.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(-1, "InvalidProtocolBufferMicroException");
+        this.b.a(-1, "InvalidProtocolBufferMicroException");
         return;
       }
     }
@@ -89,10 +89,10 @@ class TroopGiftManager$5
       paramBundle.append(" data=");
       paramBundle.append(paramArrayOfByte);
       paramBundle.append(" callback=");
-      paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback);
+      paramBundle.append(this.b);
       QLog.i(".troop.send_gift", 2, paramBundle.toString());
     }
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback;
+    paramArrayOfByte = this.b;
     if (paramArrayOfByte != null) {
       paramArrayOfByte.a(paramInt, "sso request error or callback is null.");
     }
@@ -100,7 +100,7 @@ class TroopGiftManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftManager.5
  * JD-Core Version:    0.7.0.1
  */

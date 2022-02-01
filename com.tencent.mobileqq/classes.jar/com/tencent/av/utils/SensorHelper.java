@@ -14,37 +14,37 @@ import mqq.util.WeakReference;
 
 public class SensorHelper
 {
-  static int jdField_b_of_type_Int = -1;
-  int jdField_a_of_type_Int = 0;
-  Sensor jdField_a_of_type_AndroidHardwareSensor = null;
-  SensorManager jdField_a_of_type_AndroidHardwareSensorManager = null;
-  PowerManager.WakeLock jdField_a_of_type_AndroidOsPowerManager$WakeLock = null;
-  VideoController jdField_a_of_type_ComTencentAvVideoController = null;
-  SensorHelper.AccelerationSensorEventListener jdField_a_of_type_ComTencentAvUtilsSensorHelper$AccelerationSensorEventListener = null;
-  SensorHelper.ProximitySensorEventListener jdField_a_of_type_ComTencentAvUtilsSensorHelper$ProximitySensorEventListener = null;
-  SensorHelper.ScreenActionReceiver jdField_a_of_type_ComTencentAvUtilsSensorHelper$ScreenActionReceiver = null;
-  SensorReport jdField_a_of_type_ComTencentAvUtilsSensorReport = new SensorReport();
-  TraeHelper jdField_a_of_type_ComTencentAvUtilsTraeHelper;
-  String jdField_a_of_type_JavaLangString = "SensorHelper";
-  WeakReference<Context> jdField_a_of_type_MqqUtilWeakReference = null;
-  boolean jdField_a_of_type_Boolean = false;
-  Sensor jdField_b_of_type_AndroidHardwareSensor = null;
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
-  boolean d = false;
-  private boolean e = true;
-  private boolean f = false;
-  private boolean g = true;
-  private boolean h = true;
-  private boolean i = false;
-  private boolean j = true;
+  static int p = -1;
+  String a = "SensorHelper";
+  boolean b = false;
+  Sensor c = null;
+  SensorHelper.AccelerationSensorEventListener d = null;
+  Sensor e = null;
+  SensorHelper.ProximitySensorEventListener f = null;
+  SensorManager g = null;
+  boolean h = false;
+  SensorHelper.ScreenActionReceiver i = null;
+  SensorReport j = new SensorReport();
+  int k = 0;
+  VideoController l = null;
+  WeakReference<Context> m = null;
+  TraeHelper n;
+  boolean o = false;
+  PowerManager.WakeLock q = null;
+  boolean r = false;
+  private boolean s = true;
+  private boolean t = false;
+  private boolean u = true;
+  private boolean v = true;
+  private boolean w = false;
+  private boolean x = true;
   
   private SensorHelper(Activity paramActivity, VideoController paramVideoController, TraeHelper paramTraeHelper)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
-    this.jdField_a_of_type_ComTencentAvUtilsTraeHelper = paramTraeHelper;
-    b();
+    this.m = new WeakReference(paramActivity);
+    this.l = paramVideoController;
+    this.n = paramTraeHelper;
+    c();
   }
   
   public static SensorHelper a(SensorHelper paramSensorHelper, Activity paramActivity, VideoController paramVideoController, TraeHelper paramTraeHelper)
@@ -57,69 +57,69 @@ public class SensorHelper
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentAvUtilsSensorReport.a(this.jdField_a_of_type_ComTencentAvVideoController);
+    this.j.a(this.l);
   }
   
   public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("startSensor ");
       localStringBuilder.append(paramBoolean);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$AccelerationSensorEventListener != null) && (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$ProximitySensorEventListener != null))
+    if ((this.d != null) && (this.f != null))
     {
-      localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+      localObject = this.m;
       if ((localObject != null) && (((WeakReference)localObject).get() != null))
       {
         if (paramBoolean)
         {
-          this.jdField_a_of_type_ComTencentAvUtilsSensorReport.a();
-          if (!this.jdField_b_of_type_Boolean)
+          this.j.a();
+          if (!this.h)
           {
-            this.jdField_b_of_type_Boolean = true;
-            this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$AccelerationSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensor, 3);
-            this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$ProximitySensorEventListener, this.jdField_b_of_type_AndroidHardwareSensor, 3);
-            if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$ScreenActionReceiver == null)
+            this.h = true;
+            this.g.registerListener(this.d, this.c, 3);
+            this.g.registerListener(this.f, this.e, 3);
+            if (this.i == null)
             {
               localObject = new IntentFilter();
               ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
               ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
               ((IntentFilter)localObject).addAction("android.intent.action.USER_PRESENT");
               ((IntentFilter)localObject).addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-              this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$ScreenActionReceiver = new SensorHelper.ScreenActionReceiver(this);
-              ((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).registerReceiver(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$ScreenActionReceiver, (IntentFilter)localObject);
+              this.i = new SensorHelper.ScreenActionReceiver(this);
+              ((Context)this.m.get()).registerReceiver(this.i, (IntentFilter)localObject);
               return;
             }
-            QLog.e(this.jdField_a_of_type_JavaLangString, 1, "startSensor error, mSreenActionReceive had exist");
+            QLog.e(this.a, 1, "startSensor error, mSreenActionReceive had exist");
           }
         }
         else
         {
-          if (this.jdField_b_of_type_Boolean)
+          if (this.h)
           {
-            this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$AccelerationSensorEventListener);
-            this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$ProximitySensorEventListener);
-            QLog.d(this.jdField_a_of_type_JavaLangString, 1, "toggleProximityWakeLock[false], when[StopSensor]");
+            this.g.unregisterListener(this.d);
+            this.g.unregisterListener(this.f);
+            QLog.d(this.a, 1, "toggleProximityWakeLock[false], when[StopSensor]");
             a(false, true);
             b(false);
             c(false);
-            if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$ScreenActionReceiver != null)
+            if (this.i != null)
             {
-              ((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).unregisterReceiver(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$ScreenActionReceiver);
-              this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$ScreenActionReceiver = null;
+              ((Context)this.m.get()).unregisterReceiver(this.i);
+              this.i = null;
             }
           }
-          this.jdField_b_of_type_Boolean = false;
-          this.jdField_a_of_type_ComTencentAvUtilsSensorReport.b();
+          this.h = false;
+          this.j.b();
         }
         return;
       }
     }
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("startSensor error, start[");
     localStringBuilder.append(paramBoolean);
@@ -133,125 +133,72 @@ public class SensorHelper
       boolean bool;
       try
       {
-        bool = a();
-        if (this.d != paramBoolean1)
+        bool = b();
+        if (this.r != paramBoolean1)
         {
-          if (this.f) {
-            break label343;
+          if (this.t) {
+            break label345;
           }
           if (!paramBoolean1)
           {
-            break label343;
-            if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock == null)
+            break label345;
+            if (this.q == null)
             {
-              PowerManager localPowerManager = (PowerManager)((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("power");
+              PowerManager localPowerManager = (PowerManager)((Context)this.m.get()).getSystemService("power");
               try
               {
-                this.jdField_a_of_type_AndroidOsPowerManager$WakeLock = localPowerManager.newWakeLock(32, "mobileqq:sensor");
-                if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null) {
-                  this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.setReferenceCounted(false);
+                this.q = localPowerManager.newWakeLock(32, "mobileqq:sensor");
+                if (this.q != null) {
+                  this.q.setReferenceCounted(false);
                 }
               }
               catch (Exception localException1)
               {
                 if (QLog.isColorLevel()) {
-                  QLog.e(this.jdField_a_of_type_JavaLangString, 2, "toggleProximityWakeLock off Exception", localException1);
+                  QLog.e(this.a, 2, "toggleProximityWakeLock off Exception", localException1);
                 }
               }
             }
-            if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock == null)
+            if (this.q == null)
             {
-              QLog.d(this.jdField_a_of_type_JavaLangString, 1, "toggleProximityWakeLock: mWakeLockForScreenOff is null");
+              QLog.d(this.a, 1, "toggleProximityWakeLock: mWakeLockForScreenOff is null");
               return;
             }
             try
             {
-              if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null)
+              if (this.q != null)
               {
-                bool = this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.isHeld();
-                QLog.d(this.jdField_a_of_type_JavaLangString, 1, String.format("toggleProximityWakeLock, start[%s], bHeld[%s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(bool) }));
+                bool = this.q.isHeld();
+                QLog.d(this.a, 1, String.format("toggleProximityWakeLock, start[%s], bHeld[%s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(bool) }));
                 if ((paramBoolean1) && (!bool))
                 {
-                  this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.acquire();
-                  this.d = true;
-                  this.jdField_a_of_type_ComTencentAvUtilsSensorReport.c();
+                  this.q.acquire();
+                  this.r = true;
+                  this.j.c();
                 }
                 else if ((!paramBoolean1) && (bool))
                 {
-                  this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.release();
-                  this.d = false;
-                  this.jdField_a_of_type_ComTencentAvUtilsSensorReport.a(this.j, this.f, this.h, this.jdField_a_of_type_Int, paramBoolean2, this.jdField_a_of_type_ComTencentAvVideoController);
+                  this.q.release();
+                  this.r = false;
+                  this.j.a(this.x, this.t, this.v, this.k, paramBoolean2, this.l);
                 }
-                this.d = paramBoolean1;
+                this.r = paramBoolean1;
               }
             }
             catch (Exception localException2)
             {
               if (QLog.isColorLevel()) {
-                QLog.e(this.jdField_a_of_type_JavaLangString, 2, "toggleProximityWakeLock Exception", localException2);
+                QLog.e(this.a, 2, "toggleProximityWakeLock Exception", localException2);
               }
             }
           }
         }
-        QLog.d(this.jdField_a_of_type_JavaLangString, 1, String.format("toggleProximityWakeLock error, start[%s], mIsStarted[%s], mEnbaleProximiy[%s], bProximityIgnoreDevice[%s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(this.d), Boolean.valueOf(this.f), Boolean.valueOf(bool) }));
+        QLog.d(this.a, 1, String.format("toggleProximityWakeLock error, start[%s], mIsStarted[%s], mEnbaleProximiy[%s], bProximityIgnoreDevice[%s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(this.r), Boolean.valueOf(this.t), Boolean.valueOf(bool) }));
         return;
       }
       finally {}
-      label343:
+      label345:
       if (!bool) {}
-    }
-  }
-  
-  boolean a()
-  {
-    int k = jdField_b_of_type_Int;
-    boolean bool = false;
-    if (k == -1)
-    {
-      String str = Build.MODEL;
-      if (Build.MANUFACTURER.equalsIgnoreCase("samsung"))
-      {
-        if ((!str.equalsIgnoreCase("GT-I9200")) && (!str.equalsIgnoreCase("GT-I8262D")) && (!str.equalsIgnoreCase("SM-N9008"))) {
-          jdField_b_of_type_Int = 0;
-        } else {
-          jdField_b_of_type_Int = 1;
-        }
-      }
-      else {
-        jdField_b_of_type_Int = 0;
-      }
-    }
-    if (jdField_b_of_type_Int == 1) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  void b()
-  {
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
-    if (localObject != null)
-    {
-      localObject = (Context)((WeakReference)localObject).get();
-      if ((localObject != null) && (this.jdField_a_of_type_AndroidHardwareSensorManager == null)) {
-        this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)((Context)localObject).getSystemService("sensor"));
-      }
-    }
-    localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
-    if (localObject != null)
-    {
-      if (this.jdField_a_of_type_AndroidHardwareSensor == null) {
-        this.jdField_a_of_type_AndroidHardwareSensor = ((SensorManager)localObject).getDefaultSensor(1);
-      }
-      if (this.jdField_b_of_type_AndroidHardwareSensor == null) {
-        this.jdField_b_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$AccelerationSensorEventListener == null) {
-      this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$AccelerationSensorEventListener = new SensorHelper.AccelerationSensorEventListener(this);
-    }
-    if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$ProximitySensorEventListener == null) {
-      this.jdField_a_of_type_ComTencentAvUtilsSensorHelper$ProximitySensorEventListener = new SensorHelper.ProximitySensorEventListener(this);
     }
   }
   
@@ -259,7 +206,7 @@ public class SensorHelper
   {
     try
     {
-      this.f = paramBoolean;
+      this.t = paramBoolean;
       return;
     }
     finally
@@ -269,11 +216,64 @@ public class SensorHelper
     }
   }
   
+  boolean b()
+  {
+    int i1 = p;
+    boolean bool = false;
+    if (i1 == -1)
+    {
+      String str = Build.MODEL;
+      if (Build.MANUFACTURER.equalsIgnoreCase("samsung"))
+      {
+        if ((!str.equalsIgnoreCase("GT-I9200")) && (!str.equalsIgnoreCase("GT-I8262D")) && (!str.equalsIgnoreCase("SM-N9008"))) {
+          p = 0;
+        } else {
+          p = 1;
+        }
+      }
+      else {
+        p = 0;
+      }
+    }
+    if (p == 1) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  void c()
+  {
+    Object localObject = this.m;
+    if (localObject != null)
+    {
+      localObject = (Context)((WeakReference)localObject).get();
+      if ((localObject != null) && (this.g == null)) {
+        this.g = ((SensorManager)((Context)localObject).getSystemService("sensor"));
+      }
+    }
+    localObject = this.g;
+    if (localObject != null)
+    {
+      if (this.c == null) {
+        this.c = ((SensorManager)localObject).getDefaultSensor(1);
+      }
+      if (this.e == null) {
+        this.e = this.g.getDefaultSensor(8);
+      }
+    }
+    if (this.d == null) {
+      this.d = new SensorHelper.AccelerationSensorEventListener(this);
+    }
+    if (this.f == null) {
+      this.f = new SensorHelper.ProximitySensorEventListener(this);
+    }
+  }
+  
   public void c(boolean paramBoolean)
   {
     try
     {
-      this.c = paramBoolean;
+      this.o = paramBoolean;
       return;
     }
     finally

@@ -20,13 +20,13 @@ class LoginView$7
     if ("mqq.intent.action.QRCODE_LOGIN_FINISH".equals(paramIntent.getAction()))
     {
       LoginView.a(this.a, 1, "0X800BA19");
-      LoginView.a(this.a).a(this.a.getActivity(), paramIntent.getStringExtra("param_qr_code_url"));
+      this.a.C.a(this.a.getActivity(), paramIntent.getStringExtra("param_qr_code_url"));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.7
  * JD-Core Version:    0.7.0.1
  */

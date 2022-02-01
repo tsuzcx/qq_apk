@@ -4,9 +4,9 @@ import android.os.SystemClock;
 
 public abstract class CountDownTimer$CountDownTimerListener
 {
-  private long jdField_a_of_type_Long;
-  private CountDownTimer jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
-  private long b;
+  private long a;
+  private CountDownTimer b;
+  private long c;
   
   public CountDownTimer$CountDownTimerListener(long paramLong)
   {
@@ -15,7 +15,7 @@ public abstract class CountDownTimer$CountDownTimerListener
   
   public final void a()
   {
-    long l = this.jdField_a_of_type_Long - SystemClock.elapsedRealtime();
+    long l = this.a - SystemClock.elapsedRealtime();
     if (l > 1000L)
     {
       b(l);
@@ -26,12 +26,12 @@ public abstract class CountDownTimer$CountDownTimerListener
   
   public void a(long paramLong)
   {
-    CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
+    CountDownTimer localCountDownTimer = this.b;
     if (localCountDownTimer != null) {
       localCountDownTimer.a(paramLong);
     }
-    this.b = paramLong;
-    this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() + paramLong * 1000L);
+    this.c = paramLong;
+    this.a = (SystemClock.elapsedRealtime() + paramLong * 1000L);
   }
   
   public abstract void b();
@@ -40,7 +40,7 @@ public abstract class CountDownTimer$CountDownTimerListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener
  * JD-Core Version:    0.7.0.1
  */

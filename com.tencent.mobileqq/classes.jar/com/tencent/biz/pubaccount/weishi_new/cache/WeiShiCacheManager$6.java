@@ -15,13 +15,13 @@ class WeiShiCacheManager$6
   public void run()
   {
     Object localObject2 = new ArrayList();
-    if (this.a.size() > WeiShiCacheManager.a(this.this$0))
+    if (this.a.size() > WeiShiCacheManager.c(this.this$0))
     {
       int i = 0;
       for (;;)
       {
         localObject1 = localObject2;
-        if (i >= WeiShiCacheManager.a(this.this$0)) {
+        if (i >= WeiShiCacheManager.c(this.this$0)) {
           break;
         }
         ((ArrayList)localObject2).add(this.a.get(i));
@@ -32,14 +32,14 @@ class WeiShiCacheManager$6
     localObject2 = new stFollowFeedsRsp();
     ((stFollowFeedsRsp)localObject2).feeds = ((ArrayList)localObject1);
     WeiShiCacheManager localWeiShiCacheManager = this.this$0;
-    if (WeiShiCacheManager.a(localWeiShiCacheManager, (JceStruct)localObject2, WeiShiCacheManager.a(localWeiShiCacheManager), ((ArrayList)localObject1).size())) {
-      WSSharePreferencesUtil.a("key_ws_cache_v", WeishiUtils.c());
+    if (WeiShiCacheManager.a(localWeiShiCacheManager, (JceStruct)localObject2, WeiShiCacheManager.b(localWeiShiCacheManager), ((ArrayList)localObject1).size())) {
+      WSSharePreferencesUtil.a("key_ws_cache_v", WeishiUtils.l());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.6
  * JD-Core Version:    0.7.0.1
  */

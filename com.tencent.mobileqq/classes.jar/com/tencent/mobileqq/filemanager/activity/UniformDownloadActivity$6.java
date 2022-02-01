@@ -13,15 +13,15 @@ class UniformDownloadActivity$6
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null)
+    if (this.a.n != null)
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+      this.a.n.dismiss();
+      this.a.n = null;
     }
-    if (UniformDownloadActivity.a(this.a)) {
-      OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3009", false);
+    if (UniformDownloadActivity.c(this.a)) {
+      OpenSdkStatic.a().a(UniformDownloadActivity.d(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3009", false);
     } else {
-      OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3006", false);
+      OpenSdkStatic.a().a(UniformDownloadActivity.d(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3006", false);
     }
     this.a.finish();
     this.a.overridePendingTransition(0, 0);
@@ -30,7 +30,7 @@ class UniformDownloadActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.6
  * JD-Core Version:    0.7.0.1
  */

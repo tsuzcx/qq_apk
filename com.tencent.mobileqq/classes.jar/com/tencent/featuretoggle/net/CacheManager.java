@@ -27,10 +27,10 @@ import org.json.JSONObject;
 
 public class CacheManager
 {
-  private static LruCache<String, FeatureResult> jdField_a_of_type_AndroidUtilLruCache = new LruCache(ToggleSetting.a());
-  private SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private volatile boolean jdField_a_of_type_Boolean = true;
+  private static LruCache<String, FeatureResult> a = new LruCache(ToggleSetting.b());
+  private Set<Integer> b = new HashSet();
+  private SparseArray<String> c = new SparseArray();
+  private volatile boolean d = true;
   
   public static CacheManager a()
   {
@@ -39,9 +39,9 @@ public class CacheManager
   
   private void a(MMKVPersitence paramMMKVPersitence)
   {
-    paramMMKVPersitence.a();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    jdField_a_of_type_AndroidUtilLruCache.evictAll();
+    paramMMKVPersitence.b();
+    this.c.clear();
+    a.evictAll();
   }
   
   private void a(List<FeatureResult> paramList, MMKVPersitence paramMMKVPersitence)
@@ -52,7 +52,7 @@ public class CacheManager
         return;
       }
       List localList = Collections.EMPTY_LIST;
-      Object localObject = paramMMKVPersitence.a();
+      Object localObject = paramMMKVPersitence.c();
       if (localObject != null) {
         localList = Arrays.asList((Object[])localObject);
       }
@@ -62,8 +62,8 @@ public class CacheManager
         localObject = (FeatureResult)paramList.next();
         if ((localObject != null) && (!Utils.a(((FeatureResult)localObject).name)))
         {
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(((FeatureResult)localObject).id, ((FeatureResult)localObject).name);
-          if ((localList != null) && (localList.contains(((FeatureResult)localObject).name)) && ((((FeatureResult)localObject).refreshType == 2) || ((((FeatureResult)localObject).refreshType == 3) && (!this.jdField_a_of_type_Boolean))))
+          this.c.put(((FeatureResult)localObject).id, ((FeatureResult)localObject).name);
+          if ((localList != null) && (localList.contains(((FeatureResult)localObject).name)) && ((((FeatureResult)localObject).refreshType == 2) || ((((FeatureResult)localObject).refreshType == 3) && (!this.d))))
           {
             FeatureResult localFeatureResult = b(((FeatureResult)localObject).name);
             if (localFeatureResult == null) {
@@ -73,19 +73,19 @@ public class CacheManager
             ((FeatureResult)localObject).isAbtFirst = localFeatureResult.isAbtFirst;
             ((FeatureResult)localObject).timeLimitType = localFeatureResult.timeLimitType;
             ((FeatureResult)localObject).timeLimits = localFeatureResult.timeLimits;
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(((FeatureResult)localObject).id));
+            this.b.add(Integer.valueOf(((FeatureResult)localObject).id));
           }
           else
           {
-            this.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(((FeatureResult)localObject).id));
+            this.b.remove(Integer.valueOf(((FeatureResult)localObject).id));
           }
-          if (jdField_a_of_type_AndroidUtilLruCache.get(((FeatureResult)localObject).name) != null) {
-            jdField_a_of_type_AndroidUtilLruCache.put(((FeatureResult)localObject).name, localObject);
+          if (a.get(((FeatureResult)localObject).name) != null) {
+            a.put(((FeatureResult)localObject).name, localObject);
           }
           paramMMKVPersitence.a(((FeatureResult)localObject).name, ((FeatureResult)localObject).toJsonString());
         }
       }
-      a(this.jdField_a_of_type_JavaUtilSet);
+      a(this.b);
     }
   }
   
@@ -96,20 +96,20 @@ public class CacheManager
     if (bool) {
       return null;
     }
-    LruCache localLruCache = jdField_a_of_type_AndroidUtilLruCache;
+    LruCache localLruCache = a;
     Object localObject1 = localObject2;
     if (localLruCache != null)
     {
       localObject1 = localObject2;
       if (localLruCache.size() > 0) {
-        localObject1 = (FeatureResult)jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+        localObject1 = (FeatureResult)a.get(paramString);
       }
     }
     localObject2 = localObject1;
     if (localObject1 == null)
     {
       localObject2 = localObject1;
-      if (SpManager.a().a(paramString)) {
+      if (SpManager.a().f(paramString)) {
         localObject2 = a().a(paramString);
       }
     }
@@ -127,22 +127,12 @@ public class CacheManager
       while (paramList.hasNext())
       {
         Integer localInteger = (Integer)paramList.next();
-        String str = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(localInteger.intValue());
-        jdField_a_of_type_AndroidUtilLruCache.remove(str);
+        String str = (String)this.c.get(localInteger.intValue());
+        a.remove(str);
         paramMMKVPersitence.a(str);
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(localInteger.intValue());
+        this.c.remove(localInteger.intValue());
       }
     }
-  }
-  
-  public LruCache<String, FeatureResult> a()
-  {
-    return jdField_a_of_type_AndroidUtilLruCache;
-  }
-  
-  public SparseArray<String> a()
-  {
-    return this.jdField_a_of_type_AndroidUtilSparseArray;
   }
   
   public FeatureResult a(String paramString)
@@ -176,32 +166,34 @@ public class CacheManager
           {
             localObject3 = ((JSONArray)localObject1).getJSONObject(i);
             if (localObject3 == null) {
-              break label379;
+              break label409;
             }
             ((ArrayList)localObject2).add(new TimeLimit(((JSONObject)localObject3).optString("startTime"), ((JSONObject)localObject3).optString("endTime")));
-            break label379;
+            break label409;
           }
         }
         paramString.timeLimits = ((ArrayList)localObject2);
-        localObject1 = new DatasetEntity(0, 0, new HashMap(), 0);
+        localObject1 = new DatasetEntity(0, 0, new HashMap(), 0, "", "");
         localJSONObject = localJSONObject.optJSONObject("dataset");
         if (localJSONObject != null)
         {
           ((DatasetEntity)localObject1).setDatasetId(localJSONObject.optInt("datasetId"));
           ((DatasetEntity)localObject1).setVersionId(localJSONObject.optInt("versionId"));
           ((DatasetEntity)localObject1).setWeight(localJSONObject.optInt("weight"));
-          localJSONObject = localJSONObject.optJSONObject("data");
-          if (localJSONObject != null)
+          localObject2 = localJSONObject.optJSONObject("data");
+          if (localObject2 != null)
           {
-            localObject2 = localJSONObject.keys();
-            if (((Iterator)localObject2).hasNext())
+            localObject3 = ((JSONObject)localObject2).keys();
+            if (((Iterator)localObject3).hasNext())
             {
-              localObject3 = String.valueOf(((Iterator)localObject2).next());
-              String str = String.valueOf(localJSONObject.get((String)localObject3));
-              ((DatasetEntity)localObject1).getData().put(localObject3, str);
+              String str1 = String.valueOf(((Iterator)localObject3).next());
+              String str2 = String.valueOf(((JSONObject)localObject2).get(str1));
+              ((DatasetEntity)localObject1).getData().put(str1, str2);
               continue;
             }
           }
+          ((DatasetEntity)localObject1).setType(localJSONObject.optString("type"));
+          ((DatasetEntity)localObject1).setValue(localJSONObject.optString("value"));
         }
         paramString.dataset = ((DatasetEntity)localObject1);
         return paramString;
@@ -213,40 +205,8 @@ public class CacheManager
         }
         return null;
       }
-      label379:
+      label409:
       i += 1;
-    }
-  }
-  
-  public Set<Integer> a()
-  {
-    return this.jdField_a_of_type_JavaUtilSet;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilSet.clear();
-      Object localObject = SpManager.a().f();
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = new JSONArray((String)localObject);
-        int j = ((JSONArray)localObject).length();
-        int i = 0;
-        while (i < j)
-        {
-          this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
-          i += 1;
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      if (!LogUtils.a(localThrowable)) {
-        localThrowable.printStackTrace();
-      }
     }
   }
   
@@ -259,12 +219,12 @@ public class CacheManager
   
   public boolean a(List<FeatureResult> paramList, List<Integer> paramList1, boolean paramBoolean)
   {
-    if (ToggleSetting.a() == null) {
+    if (ToggleSetting.j() == null) {
       return false;
     }
     try
     {
-      MMKVPersitence localMMKVPersitence = SpManager.a().a(SpManager.a);
+      MMKVPersitence localMMKVPersitence = SpManager.a().g(SpManager.a);
       if (localMMKVPersitence == null) {
         return false;
       }
@@ -274,7 +234,7 @@ public class CacheManager
         a(localMMKVPersitence);
       }
       a(paramList, localMMKVPersitence);
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       return true;
     }
     catch (Throwable paramList)
@@ -294,7 +254,7 @@ public class CacheManager
     try
     {
       paramSet = new JSONArray(paramSet);
-      SpManager.a().f(paramSet.toString());
+      SpManager.a().e(paramSet.toString());
       return true;
     }
     catch (Throwable paramSet)
@@ -308,15 +268,57 @@ public class CacheManager
   
   public void b()
   {
-    LruCache localLruCache = jdField_a_of_type_AndroidUtilLruCache;
+    try
+    {
+      this.b.clear();
+      Object localObject = SpManager.a().h();
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = new JSONArray((String)localObject);
+        int j = ((JSONArray)localObject).length();
+        int i = 0;
+        while (i < j)
+        {
+          this.b.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
+          i += 1;
+        }
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (!LogUtils.a(localThrowable)) {
+        localThrowable.printStackTrace();
+      }
+    }
+  }
+  
+  public LruCache<String, FeatureResult> c()
+  {
+    return a;
+  }
+  
+  public void d()
+  {
+    LruCache localLruCache = a;
     if (localLruCache != null) {
       localLruCache.evictAll();
     }
   }
+  
+  public Set<Integer> e()
+  {
+    return this.b;
+  }
+  
+  public SparseArray<String> f()
+  {
+    return this.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.net.CacheManager
  * JD-Core Version:    0.7.0.1
  */

@@ -252,7 +252,7 @@ public class GroupPicDownloadProcessor
     if ((this.mNetReq != null) && (((HttpNetReq)this.mNetReq).decoder != null))
     {
       localObject1 = (HttpNetReq)this.mNetReq;
-      this.mProcessorReport.mReportInfo.put("param_picDecryptTime", String.valueOf(((PicCryptor)((HttpNetReq)localObject1).decoder).a));
+      this.mProcessorReport.mReportInfo.put("param_picDecryptTime", String.valueOf(((PicCryptor)((HttpNetReq)localObject1).decoder).b));
     }
     if (this.mUiRequest.mUinType == 1) {
       i = 1;
@@ -692,7 +692,7 @@ public class GroupPicDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.GroupPicDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

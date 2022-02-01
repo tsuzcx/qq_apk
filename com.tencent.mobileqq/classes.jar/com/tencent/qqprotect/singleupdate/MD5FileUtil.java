@@ -5,16 +5,14 @@ import java.security.NoSuchAlgorithmException;
 
 public class MD5FileUtil
 {
-  protected static MessageDigest a;
-  protected static char[] a;
+  protected static char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  protected static MessageDigest b = null;
   
   static
   {
-    jdField_a_of_type_ArrayOfChar = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
-    jdField_a_of_type_JavaSecurityMessageDigest = null;
     try
     {
-      jdField_a_of_type_JavaSecurityMessageDigest = MessageDigest.getInstance("MD5");
+      b = MessageDigest.getInstance("MD5");
       return;
     }
     catch (NoSuchAlgorithmException localNoSuchAlgorithmException) {}
@@ -31,22 +29,22 @@ public class MD5FileUtil
     //   6: aload_0
     //   7: ifnull +237 -> 244
     //   10: aload_0
-    //   11: invokevirtual 54	java/io/File:exists	()Z
+    //   11: invokevirtual 55	java/io/File:exists	()Z
     //   14: ifeq +230 -> 244
     //   17: aload_0
-    //   18: invokevirtual 58	java/io/File:length	()J
+    //   18: invokevirtual 59	java/io/File:length	()J
     //   21: lconst_0
     //   22: lcmp
     //   23: ifle +221 -> 244
-    //   26: new 60	java/io/FileInputStream
+    //   26: new 61	java/io/FileInputStream
     //   29: dup
     //   30: aload_0
-    //   31: invokespecial 63	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   31: invokespecial 64	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   34: astore 8
     //   36: aload 8
     //   38: astore 7
     //   40: aload_0
-    //   41: invokevirtual 58	java/io/File:length	()J
+    //   41: invokevirtual 59	java/io/File:length	()J
     //   44: lstore_1
     //   45: aload 8
     //   47: astore 7
@@ -61,11 +59,11 @@ public class MD5FileUtil
     //   63: astore 7
     //   65: aload 8
     //   67: aload_0
-    //   68: invokevirtual 67	java/io/FileInputStream:read	([B)I
+    //   68: invokevirtual 68	java/io/FileInputStream:read	([B)I
     //   71: i2l
     //   72: lstore 5
     //   74: lload 5
-    //   76: ldc2_w 68
+    //   76: ldc2_w 69
     //   79: lcmp
     //   80: ifeq +39 -> 119
     //   83: lload 5
@@ -82,22 +80,22 @@ public class MD5FileUtil
     //   98: lstore_1
     //   99: aload 8
     //   101: astore 7
-    //   103: getstatic 31	com/tencent/qqprotect/singleupdate/MD5FileUtil:jdField_a_of_type_JavaSecurityMessageDigest	Ljava/security/MessageDigest;
+    //   103: getstatic 32	com/tencent/qqprotect/singleupdate/MD5FileUtil:b	Ljava/security/MessageDigest;
     //   106: aload_0
     //   107: iconst_0
     //   108: lload_3
     //   109: l2i
-    //   110: invokestatic 75	java/nio/ByteBuffer:wrap	([BII)Ljava/nio/ByteBuffer;
-    //   113: invokevirtual 79	java/security/MessageDigest:update	(Ljava/nio/ByteBuffer;)V
+    //   110: invokestatic 76	java/nio/ByteBuffer:wrap	([BII)Ljava/nio/ByteBuffer;
+    //   113: invokevirtual 80	java/security/MessageDigest:update	(Ljava/nio/ByteBuffer;)V
     //   116: goto -61 -> 55
     //   119: aload 8
     //   121: astore 7
     //   123: aload 8
-    //   125: invokevirtual 82	java/io/FileInputStream:close	()V
+    //   125: invokevirtual 83	java/io/FileInputStream:close	()V
     //   128: aload 8
     //   130: astore 7
-    //   132: getstatic 31	com/tencent/qqprotect/singleupdate/MD5FileUtil:jdField_a_of_type_JavaSecurityMessageDigest	Ljava/security/MessageDigest;
-    //   135: invokevirtual 86	java/security/MessageDigest:digest	()[B
+    //   132: getstatic 32	com/tencent/qqprotect/singleupdate/MD5FileUtil:b	Ljava/security/MessageDigest;
+    //   135: invokevirtual 87	java/security/MessageDigest:digest	()[B
     //   138: astore 11
     //   140: aload 10
     //   142: astore_0
@@ -111,7 +109,7 @@ public class MD5FileUtil
     //   158: aload_0
     //   159: astore 7
     //   161: aload 8
-    //   163: invokevirtual 82	java/io/FileInputStream:close	()V
+    //   163: invokevirtual 83	java/io/FileInputStream:close	()V
     //   166: aload_0
     //   167: areturn
     //   168: astore_0
@@ -141,14 +139,14 @@ public class MD5FileUtil
     //   211: aload 9
     //   213: astore 7
     //   215: aload_0
-    //   216: invokevirtual 82	java/io/FileInputStream:close	()V
+    //   216: invokevirtual 83	java/io/FileInputStream:close	()V
     //   219: aconst_null
     //   220: areturn
     //   221: astore_0
     //   222: aload 7
     //   224: ifnull +18 -> 242
     //   227: aload 7
-    //   229: invokevirtual 82	java/io/FileInputStream:close	()V
+    //   229: invokevirtual 83	java/io/FileInputStream:close	()V
     //   232: goto +10 -> 242
     //   235: astore 7
     //   237: aload 7
@@ -200,21 +198,21 @@ public class MD5FileUtil
   public static String a(String paramString)
   {
     // Byte code:
-    //   0: ldc 33
-    //   2: invokestatic 39	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   0: ldc 34
+    //   2: invokestatic 40	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   5: astore 9
-    //   7: new 60	java/io/FileInputStream
+    //   7: new 61	java/io/FileInputStream
     //   10: dup
     //   11: aload_0
     //   12: invokespecial 102	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   15: astore 8
     //   17: aload 8
     //   19: astore 7
-    //   21: new 50	java/io/File
+    //   21: new 51	java/io/File
     //   24: dup
     //   25: aload_0
     //   26: invokespecial 103	java/io/File:<init>	(Ljava/lang/String;)V
-    //   29: invokevirtual 58	java/io/File:length	()J
+    //   29: invokevirtual 59	java/io/File:length	()J
     //   32: lstore 5
     //   34: lload 5
     //   36: lstore_3
@@ -272,7 +270,7 @@ public class MD5FileUtil
     //   123: aload 8
     //   125: astore 7
     //   127: aload 9
-    //   129: invokevirtual 86	java/security/MessageDigest:digest	()[B
+    //   129: invokevirtual 87	java/security/MessageDigest:digest	()[B
     //   132: invokestatic 90	com/tencent/qqprotect/singleupdate/MD5FileUtil:b	([B)Ljava/lang/String;
     //   135: astore_0
     //   136: aload 8
@@ -415,8 +413,8 @@ public class MD5FileUtil
   
   public static String a(byte[] paramArrayOfByte)
   {
-    jdField_a_of_type_JavaSecurityMessageDigest.update(paramArrayOfByte);
-    return b(jdField_a_of_type_JavaSecurityMessageDigest.digest());
+    b.update(paramArrayOfByte);
+    return b(b.digest());
   }
   
   private static String a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -433,7 +431,7 @@ public class MD5FileUtil
   
   private static void a(byte paramByte, StringBuffer paramStringBuffer)
   {
-    char[] arrayOfChar = jdField_a_of_type_ArrayOfChar;
+    char[] arrayOfChar = a;
     char c1 = arrayOfChar[((paramByte & 0xF0) >> 4)];
     char c2 = arrayOfChar[(paramByte & 0xF)];
     paramStringBuffer.append(c1);
@@ -452,7 +450,7 @@ public class MD5FileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.MD5FileUtil
  * JD-Core Version:    0.7.0.1
  */

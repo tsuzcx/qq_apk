@@ -9,10 +9,10 @@ public final class GetKickUserListRsp
   extends MessageNano
 {
   public long a;
-  public RoomUserNumInfo a;
-  public boolean a;
-  public UserInfo[] a;
-  public long b;
+  public UserInfo[] b;
+  public boolean c;
+  public RoomUserNumInfo d;
+  public long e;
   
   public GetKickUserListRsp()
   {
@@ -21,11 +21,11 @@ public final class GetKickUserListRsp
   
   public GetKickUserListRsp a()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo = UserInfo.a();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomUserNumInfo = null;
-    this.b = 0L;
+    this.a = 0L;
+    this.b = UserInfo.a();
+    this.c = false;
+    this.d = null;
+    this.e = 0L;
     this.cachedSize = -1;
     return this;
   }
@@ -53,25 +53,25 @@ public final class GetKickUserListRsp
                 }
               }
               else {
-                this.b = paramCodedInputByteBufferNano.readUInt64();
+                this.e = paramCodedInputByteBufferNano.readUInt64();
               }
             }
             else
             {
-              if (this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomUserNumInfo == null) {
-                this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomUserNumInfo = new RoomUserNumInfo();
+              if (this.d == null) {
+                this.d = new RoomUserNumInfo();
               }
-              paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomUserNumInfo);
+              paramCodedInputByteBufferNano.readMessage(this.d);
             }
           }
           else {
-            this.jdField_a_of_type_Boolean = paramCodedInputByteBufferNano.readBool();
+            this.c = paramCodedInputByteBufferNano.readBool();
           }
         }
         else
         {
           int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
-          UserInfo[] arrayOfUserInfo = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo;
+          UserInfo[] arrayOfUserInfo = this.b;
           if (arrayOfUserInfo == null) {
             i = 0;
           } else {
@@ -81,7 +81,7 @@ public final class GetKickUserListRsp
           j = i;
           if (i != 0)
           {
-            System.arraycopy(this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo, 0, arrayOfUserInfo, 0, i);
+            System.arraycopy(this.b, 0, arrayOfUserInfo, 0, i);
             j = i;
           }
           while (j < arrayOfUserInfo.length - 1)
@@ -93,11 +93,11 @@ public final class GetKickUserListRsp
           }
           arrayOfUserInfo[j] = new UserInfo();
           paramCodedInputByteBufferNano.readMessage(arrayOfUserInfo[j]);
-          this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo = arrayOfUserInfo;
+          this.b = arrayOfUserInfo;
         }
       }
       else {
-        this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readInt64();
+        this.a = paramCodedInputByteBufferNano.readInt64();
       }
     }
     return this;
@@ -106,12 +106,12 @@ public final class GetKickUserListRsp
   protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     int i = j;
     if (l != 0L) {
       i = j + CodedOutputByteBufferNano.computeInt64Size(1, l);
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo;
+    Object localObject = this.b;
     j = i;
     if (localObject != null)
     {
@@ -121,7 +121,7 @@ public final class GetKickUserListRsp
         int k = 0;
         for (;;)
         {
-          localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo;
+          localObject = this.b;
           j = i;
           if (k >= localObject.length) {
             break;
@@ -136,17 +136,17 @@ public final class GetKickUserListRsp
         }
       }
     }
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.c;
     i = j;
     if (bool) {
       i = j + CodedOutputByteBufferNano.computeBoolSize(3, bool);
     }
-    localObject = this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomUserNumInfo;
+    localObject = this.d;
     j = i;
     if (localObject != null) {
       j = i + CodedOutputByteBufferNano.computeMessageSize(4, (MessageNano)localObject);
     }
-    l = this.b;
+    l = this.e;
     i = j;
     if (l != 0L) {
       i = j + CodedOutputByteBufferNano.computeUInt64Size(5, l);
@@ -156,17 +156,17 @@ public final class GetKickUserListRsp
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeInt64(1, l);
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo;
+    Object localObject = this.b;
     if ((localObject != null) && (localObject.length > 0))
     {
       int i = 0;
       for (;;)
       {
-        localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo;
+        localObject = this.b;
         if (i >= localObject.length) {
           break;
         }
@@ -177,15 +177,15 @@ public final class GetKickUserListRsp
         i += 1;
       }
     }
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.c;
     if (bool) {
       paramCodedOutputByteBufferNano.writeBool(3, bool);
     }
-    localObject = this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoRoomUserNumInfo;
+    localObject = this.d;
     if (localObject != null) {
       paramCodedOutputByteBufferNano.writeMessage(4, (MessageNano)localObject);
     }
-    l = this.b;
+    l = this.e;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeUInt64(5, l);
     }
@@ -194,7 +194,7 @@ public final class GetKickUserListRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.GetKickUserListRsp
  * JD-Core Version:    0.7.0.1
  */

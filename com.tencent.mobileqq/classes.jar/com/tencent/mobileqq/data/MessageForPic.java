@@ -293,70 +293,70 @@ public class MessageForPic
     if (isSendFromLocal())
     {
       localObject = getPicUploadInfo();
-      ((PicUploadInfo)localObject).jdField_e_of_type_JavaLangString = paramString;
-      return ((PicUploadInfo)localObject).c();
+      ((PicUploadInfo)localObject).l = paramString;
+      return ((PicUploadInfo)localObject).f();
     }
     Object localObject = getPicDownloadInfo();
-    ((PicDownloadInfo)localObject).jdField_e_of_type_JavaLangString = paramString;
-    return ((PicDownloadInfo)localObject).c();
+    ((PicDownloadInfo)localObject).l = paramString;
+    return ((PicDownloadInfo)localObject).f();
   }
   
   public PicDownloadInfo getPicDownloadInfo()
   {
     PicDownloadInfo localPicDownloadInfo = new PicDownloadInfo();
-    localPicDownloadInfo.jdField_a_of_type_Int = this.busiType;
-    localPicDownloadInfo.jdField_a_of_type_Long = this.uniseq;
+    localPicDownloadInfo.b = this.busiType;
+    localPicDownloadInfo.g = this.uniseq;
     processSessionInfo(localPicDownloadInfo);
-    localPicDownloadInfo.jdField_c_of_type_Long = this.time;
-    localPicDownloadInfo.jdField_g_of_type_JavaLangString = this.uuid;
-    localPicDownloadInfo.f = this.md5;
-    localPicDownloadInfo.jdField_b_of_type_Long = this.groupFileID;
-    localPicDownloadInfo.h = this.thumbMsgUrl;
-    localPicDownloadInfo.k = this.bigThumbMsgUrl;
-    localPicDownloadInfo.i = this.bigMsgUrl;
-    localPicDownloadInfo.j = this.rawMsgUrl;
-    localPicDownloadInfo.jdField_g_of_type_Int = this.subMsgId;
-    localPicDownloadInfo.jdField_b_of_type_Boolean = this.isMixed;
-    if (localPicDownloadInfo.jdField_b_of_type_Boolean)
+    localPicDownloadInfo.u = this.time;
+    localPicDownloadInfo.n = this.uuid;
+    localPicDownloadInfo.m = this.md5;
+    localPicDownloadInfo.o = this.groupFileID;
+    localPicDownloadInfo.p = this.thumbMsgUrl;
+    localPicDownloadInfo.s = this.bigThumbMsgUrl;
+    localPicDownloadInfo.q = this.bigMsgUrl;
+    localPicDownloadInfo.r = this.rawMsgUrl;
+    localPicDownloadInfo.C = this.subMsgId;
+    localPicDownloadInfo.x = this.isMixed;
+    if (localPicDownloadInfo.x)
     {
-      localPicDownloadInfo.l = this.action;
-      localPicDownloadInfo.m = this.actMsgContentValue;
-      localPicDownloadInfo.jdField_e_of_type_Long = this.shareAppID;
+      localPicDownloadInfo.z = this.action;
+      localPicDownloadInfo.B = this.actMsgContentValue;
+      localPicDownloadInfo.A = this.shareAppID;
     }
-    localPicDownloadInfo.jdField_e_of_type_Int = this.fileSizeFlag;
-    localPicDownloadInfo.jdField_c_of_type_Int = this.extraflag;
-    localPicDownloadInfo.jdField_a_of_type_JavaLangObject = this.picExtraObject;
-    localPicDownloadInfo.jdField_d_of_type_Int = this.subVersion;
-    localPicDownloadInfo.jdField_a_of_type_JavaLangString = this.localUUID;
-    localPicDownloadInfo.jdField_d_of_type_Long = this.size;
-    localPicDownloadInfo.jdField_d_of_type_Boolean = this.bEnableEnc;
+    localPicDownloadInfo.t = this.fileSizeFlag;
+    localPicDownloadInfo.h = this.extraflag;
+    localPicDownloadInfo.i = this.picExtraObject;
+    localPicDownloadInfo.j = this.subVersion;
+    localPicDownloadInfo.a = this.localUUID;
+    localPicDownloadInfo.w = this.size;
+    localPicDownloadInfo.G = this.bEnableEnc;
     if (this.reportInfo == null) {
       this.reportInfo = new ReportInfo();
     }
-    localPicDownloadInfo.jdField_a_of_type_ComTencentMobileqqPicReportInfo = this.reportInfo;
+    localPicDownloadInfo.F = this.reportInfo;
     return localPicDownloadInfo;
   }
   
   public PicUploadInfo getPicUploadInfo()
   {
     PicUploadInfo localPicUploadInfo = new PicUploadInfo();
-    localPicUploadInfo.jdField_a_of_type_Int = this.busiType;
-    localPicUploadInfo.jdField_a_of_type_Long = this.uniseq;
-    localPicUploadInfo.jdField_b_of_type_Int = this.istroop;
-    localPicUploadInfo.jdField_c_of_type_JavaLangString = this.frienduin;
-    localPicUploadInfo.jdField_b_of_type_JavaLangString = this.selfuin;
-    localPicUploadInfo.jdField_d_of_type_JavaLangString = this.senderuin;
-    localPicUploadInfo.f = this.md5;
-    localPicUploadInfo.jdField_g_of_type_JavaLangString = this.path;
-    localPicUploadInfo.h = this.thumbMsgUrl;
-    localPicUploadInfo.jdField_c_of_type_Int = this.picExtraFlag;
-    localPicUploadInfo.jdField_a_of_type_JavaLangObject = this.picExtraObject;
-    localPicUploadInfo.jdField_a_of_type_JavaLangString = this.localUUID;
-    localPicUploadInfo.jdField_d_of_type_Int = this.subVersion;
-    localPicUploadInfo.j = ((int)this.width);
-    localPicUploadInfo.k = ((int)this.height);
-    localPicUploadInfo.jdField_c_of_type_Long = ((int)this.size);
-    localPicUploadInfo.m = this.imageType;
+    localPicUploadInfo.b = this.busiType;
+    localPicUploadInfo.g = this.uniseq;
+    localPicUploadInfo.c = this.istroop;
+    localPicUploadInfo.e = this.frienduin;
+    localPicUploadInfo.d = this.selfuin;
+    localPicUploadInfo.f = this.senderuin;
+    localPicUploadInfo.m = this.md5;
+    localPicUploadInfo.n = this.path;
+    localPicUploadInfo.o = this.thumbMsgUrl;
+    localPicUploadInfo.h = this.picExtraFlag;
+    localPicUploadInfo.i = this.picExtraObject;
+    localPicUploadInfo.a = this.localUUID;
+    localPicUploadInfo.j = this.subVersion;
+    localPicUploadInfo.C = ((int)this.width);
+    localPicUploadInfo.D = ((int)this.height);
+    localPicUploadInfo.E = ((int)this.size);
+    localPicUploadInfo.G = this.imageType;
     return localPicUploadInfo;
   }
   
@@ -571,7 +571,7 @@ public class MessageForPic
     if (str != null) {
       return str;
     }
-    return HardCodeUtil.a(2131706642);
+    return HardCodeUtil.a(2131904493);
   }
   
   public boolean isSupportReply()
@@ -591,25 +591,25 @@ public class MessageForPic
   
   public void processSessionInfo(PicDownloadInfo paramPicDownloadInfo)
   {
-    MultiMsgBean localMultiMsgBean = ((IMultiMsg)QRoute.api(IMultiMsg.class)).getMultiMsgValue();
-    Object localObject = localMultiMsgBean.jdField_a_of_type_JavaLangObject;
-    boolean bool = localMultiMsgBean.jdField_a_of_type_Boolean;
+    Object localObject1 = ((IMultiMsg)QRoute.api(IMultiMsg.class)).getMultiMsgValue();
+    Object localObject2 = ((MultiMsgBean)localObject1).d;
+    boolean bool = ((MultiMsgBean)localObject1).a;
     if ((this.isMultiMsg) && (!bool))
     {
-      if (localObject != null) {
-        paramPicDownloadInfo.jdField_b_of_type_Int = localMultiMsgBean.jdField_a_of_type_Int;
+      if (localObject2 != null) {
+        paramPicDownloadInfo.c = ((MultiMsgBean)localObject1).b;
       } else if (QLog.isColorLevel()) {
         QLog.e("MessageForPic", 2, "currentSessionInfo is null while isMultiMsg is true");
       }
     }
     else {
-      paramPicDownloadInfo.jdField_b_of_type_Int = this.istroop;
+      paramPicDownloadInfo.c = this.istroop;
     }
-    paramPicDownloadInfo.jdField_b_of_type_JavaLangString = this.selfuin;
+    paramPicDownloadInfo.d = this.selfuin;
     if (this.isMultiMsg) {}
     try
     {
-      paramPicDownloadInfo.jdField_b_of_type_JavaLangString = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+      paramPicDownloadInfo.d = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
     }
     catch (Exception localException)
     {
@@ -618,18 +618,29 @@ public class MessageForPic
     }
     if ((this.isMultiMsg) && (!bool))
     {
-      if (localObject != null)
-      {
-        paramPicDownloadInfo.jdField_c_of_type_JavaLangString = localMultiMsgBean.jdField_a_of_type_JavaLangString;
-        return;
-      }
-      if (QLog.isColorLevel()) {
+      if (localObject2 != null) {
+        paramPicDownloadInfo.e = ((MultiMsgBean)localObject1).c;
+      } else if (QLog.isColorLevel()) {
         QLog.e("MessageForPic", 2, "currentSessionInfo is null while isMultiMsg is true");
       }
     }
-    else
+    else {
+      paramPicDownloadInfo.e = this.frienduin;
+    }
+    if (this.istroop == 10014)
     {
-      paramPicDownloadInfo.jdField_c_of_type_JavaLangString = this.frienduin;
+      localObject1 = this.picExtraData;
+      if (localObject1 != null) {
+        paramPicDownloadInfo.D = ((PicMessageExtraData)localObject1).mDownloadIndex;
+      }
+      paramPicDownloadInfo.f = getExtInfoFromExtStr("GUILD_ID");
+      if ((TextUtils.isEmpty(paramPicDownloadInfo.f)) && (QLog.isColorLevel()))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getDownloadInfo error");
+        ((StringBuilder)localObject1).append(paramPicDownloadInfo.f);
+        QLog.d("MessageForPic", 2, ((StringBuilder)localObject1).toString());
+      }
     }
   }
   
@@ -706,7 +717,7 @@ public class MessageForPic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPic
  * JD-Core Version:    0.7.0.1
  */

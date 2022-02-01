@@ -9,12 +9,12 @@ class Conversation$UICallBack$3
   
   public void run()
   {
-    QZoneReport.a(this.a.a.a());
+    QZoneReport.a(this.a.a.s());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.UICallBack.3
  * JD-Core Version:    0.7.0.1
  */

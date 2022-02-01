@@ -20,8 +20,8 @@ class SubScribeSwipeRefreshLayout$1
       int j = (int)(paramMotionEvent.getY() + 0.5F);
       if (SubScribeSwipeRefreshLayout.a(this.a) != null)
       {
-        SubScribeSwipeRefreshLayout.a(this.a).getLocalVisibleRect(SubScribeSwipeRefreshLayout.a(this.a));
-        if (SubScribeSwipeRefreshLayout.a(this.a).contains(i, j)) {
+        SubScribeSwipeRefreshLayout.a(this.a).getLocalVisibleRect(SubScribeSwipeRefreshLayout.b(this.a));
+        if (SubScribeSwipeRefreshLayout.b(this.a).contains(i, j)) {
           return false;
         }
       }

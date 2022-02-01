@@ -28,18 +28,18 @@ class PublicAccountHandlerImpl$FolderRefreshRunnable
     if ((localObject != null) && (localPublicAccountDataManagerImpl != null))
     {
       TroopBarAssistantManager.a().a((QQAppInterface)localObject, (List)localPublicAccountDataManagerImpl.getPublicAccountEqqInfoList());
-      ServiceAccountFolderManager.a().c((QQAppInterface)localObject);
-      TroopBarAssistantManager.a().g((QQAppInterface)localObject);
+      ServiceAccountFolderManager.a().d((QQAppInterface)localObject);
+      TroopBarAssistantManager.a().m((QQAppInterface)localObject);
       localObject = ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine();
       if (localObject != null) {
-        ((IReadInJoyLogicEngine)localObject).e();
+        ((IReadInJoyLogicEngine)localObject).y();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountHandlerImpl.FolderRefreshRunnable
  * JD-Core Version:    0.7.0.1
  */

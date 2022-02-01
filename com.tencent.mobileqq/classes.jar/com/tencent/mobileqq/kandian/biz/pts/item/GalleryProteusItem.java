@@ -47,10 +47,10 @@ public class GalleryProteusItem
     if (localObject != null)
     {
       ((AvatarView)localObject).a(paramIReadInJoyModel, false);
-      paramIReadInJoyModel = paramIReadInJoyModel.a();
+      paramIReadInJoyModel = paramIReadInJoyModel.k();
       localObject = (NativeAvatarView)((AvatarView)localObject).getNativeView();
-      if ((RIJFeedsType.T(paramIReadInJoyModel)) && (paramIReadInJoyModel.mGalleryFeedsInfo.uint32_is_account_derelict.has()) && (paramIReadInJoyModel.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1)) {
-        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130846604));
+      if ((RIJFeedsType.ab(paramIReadInJoyModel)) && (paramIReadInJoyModel.mGalleryFeedsInfo.uint32_is_account_derelict.has()) && (paramIReadInJoyModel.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1)) {
+        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130848156));
       }
     }
     paramContainer = (NativeText)localViewBase.findViewBaseByName("id_nickname");
@@ -72,7 +72,7 @@ public class GalleryProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.GalleryProteusItem
  * JD-Core Version:    0.7.0.1
  */

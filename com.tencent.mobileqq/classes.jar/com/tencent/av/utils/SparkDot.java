@@ -21,21 +21,21 @@ import android.widget.RelativeLayout.LayoutParams;
 public class SparkDot
   extends LinearLayout
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = 400;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  Runnable jdField_a_of_type_JavaLangRunnable = new SparkDot.1(this);
-  public boolean a;
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = null;
-  int jdField_b_of_type_Int = 40;
-  Bitmap jdField_b_of_type_AndroidGraphicsBitmap = null;
-  private boolean jdField_b_of_type_Boolean = false;
-  int c = 0;
-  int d = 0;
-  int e = 6;
-  public int f = -849386130;
-  public int g = 1281320302;
+  Bitmap a = null;
+  Bitmap b = null;
+  int c = 400;
+  int d = 40;
+  int e = 0;
+  int f = 0;
+  float g = 0.0F;
+  int h = 6;
+  public int i = -849386130;
+  public int j = 1281320302;
+  public boolean k = true;
+  ImageView[] l = null;
+  Handler m = new Handler();
+  Runnable n = new SparkDot.1(this);
+  private boolean o = false;
   
   public SparkDot(Context paramContext)
   {
@@ -45,105 +45,104 @@ public class SparkDot
   public SparkDot(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = true;
     setOrientation(0);
-  }
-  
-  Bitmap a(int paramInt)
-  {
-    int i = this.jdField_b_of_type_Int;
-    Bitmap localBitmap = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(localBitmap);
-    Paint localPaint = new Paint();
-    localPaint.setAntiAlias(true);
-    localPaint.setDither(true);
-    localPaint.setColor(paramInt);
-    localPaint.setStyle(Paint.Style.FILL);
-    if (this.jdField_a_of_type_Boolean) {
-      localPaint.setMaskFilter(new BlurMaskFilter(this.jdField_a_of_type_Float * 3.0F, BlurMaskFilter.Blur.SOLID));
-    }
-    float f1 = this.jdField_a_of_type_Float;
-    localCanvas.drawOval(new RectF(f1 * 3.0F, 3.0F * f1, f1 * 10.0F, f1 * 10.0F), localPaint);
-    return localBitmap;
   }
   
   @SuppressLint({"NewApi"})
   void a()
   {
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().scaledDensity;
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 13.0F));
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.g);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = a(this.f);
-    int j;
-    for (int i = 0; i < this.e; i = j)
+    this.g = getResources().getDisplayMetrics().scaledDensity;
+    this.d = ((int)(this.g * 13.0F));
+    this.a = b(this.j);
+    this.b = b(this.i);
+    int i2;
+    for (int i1 = 0; i1 < this.h; i1 = i2)
     {
       ImageView localImageView = new ImageView(getContext());
-      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      int k = this.jdField_b_of_type_Int;
-      j = i + 1;
-      localImageView.layout(k * i, 0, k * j, k);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i] = localImageView;
+      localImageView.setImageBitmap(this.a);
+      int i3 = this.d;
+      i2 = i1 + 1;
+      localImageView.layout(i3 * i1, 0, i3 * i2, i3);
+      this.l[i1] = localImageView;
       super.addViewInLayout(localImageView, getChildCount(), generateDefaultLayoutParams());
     }
   }
   
   void a(int paramInt)
   {
-    this.d = paramInt;
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[paramInt].setImageBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
+    this.f = paramInt;
+    this.l[paramInt].setImageBitmap(this.b);
     if (paramInt > 0)
     {
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[(paramInt - 1)].setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.l[(paramInt - 1)].setImageBitmap(this.a);
       return;
     }
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[(this.e - 1)].setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.l[(this.h - 1)].setImageBitmap(this.a);
+  }
+  
+  Bitmap b(int paramInt)
+  {
+    int i1 = this.d;
+    Bitmap localBitmap = Bitmap.createBitmap(i1, i1, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint();
+    localPaint.setAntiAlias(true);
+    localPaint.setDither(true);
+    localPaint.setColor(paramInt);
+    localPaint.setStyle(Paint.Style.FILL);
+    if (this.k) {
+      localPaint.setMaskFilter(new BlurMaskFilter(this.g * 3.0F, BlurMaskFilter.Blur.SOLID));
+    }
+    float f1 = this.g;
+    localCanvas.drawOval(new RectF(f1 * 3.0F, 3.0F * f1, f1 * 10.0F, f1 * 10.0F), localPaint);
+    return localBitmap;
   }
   
   public void b()
   {
-    this.jdField_b_of_type_Boolean = false;
-    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    this.o = false;
+    Runnable localRunnable = this.n;
     if (localRunnable != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localRunnable);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[this.d].setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.d = 0;
-      this.c = 0;
+      this.m.removeCallbacks(localRunnable);
+      this.l[this.f].setImageBitmap(this.a);
+      this.f = 0;
+      this.e = 0;
     }
   }
   
   public void c()
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.o) {
       return;
     }
-    this.jdField_b_of_type_Boolean = true;
-    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    this.o = true;
+    Runnable localRunnable = this.n;
     if (localRunnable != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localRunnable);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
+      this.m.removeCallbacks(localRunnable);
+      this.m.postDelayed(this.n, this.c);
     }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
-    localLayoutParams.width = (this.jdField_b_of_type_Int * this.e);
+    localLayoutParams.width = (this.d * this.h);
     setLayoutParams(localLayoutParams);
   }
   
   public void setDotCount(int paramInt)
   {
-    this.e = paramInt;
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[this.e];
+    this.h = paramInt;
+    this.l = new ImageView[this.h];
     a();
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
+    this.m.postDelayed(this.n, this.c);
   }
   
   public void setDuration(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void setVisibility(int paramInt)

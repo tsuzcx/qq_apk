@@ -5,7 +5,7 @@ import com.tencent.mobileqq.ark.dict.DictConfig;
 public class ArkAIDictConfBean
   extends ArkConfBean
 {
-  private final DictConfig a;
+  private final DictConfig b;
   
   public ArkAIDictConfBean()
   {
@@ -15,7 +15,7 @@ public class ArkAIDictConfBean
   public ArkAIDictConfBean(String paramString, DictConfig paramDictConfig)
   {
     super(paramString);
-    this.a = paramDictConfig;
+    this.b = paramDictConfig;
   }
   
   public int a()
@@ -23,14 +23,14 @@ public class ArkAIDictConfBean
     return 170;
   }
   
-  public DictConfig a()
+  public DictConfig b()
   {
-    return this.a;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.bean.ArkAIDictConfBean
  * JD-Core Version:    0.7.0.1
  */

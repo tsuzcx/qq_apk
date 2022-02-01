@@ -22,11 +22,6 @@ public class MovieTicketTmpRoutingType
     return 10004;
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
@@ -34,7 +29,7 @@ public class MovieTicketTmpRoutingType
     localCommTmp.c2c_type.set(1);
     localCommTmp.svr_type.set(153);
     paramRoutingHead.comm_tmp.set(localCommTmp);
-    paramMessageRecord = ((QQAppInterface)paramAppInterface).getMsgCache().l(paramMessageRecord.frienduin);
+    paramMessageRecord = ((QQAppInterface)paramAppInterface).getMsgCache().q(paramMessageRecord.frienduin);
     if (paramMessageRecord != null)
     {
       if (QLog.isDevelopLevel())
@@ -52,14 +47,19 @@ public class MovieTicketTmpRoutingType
     return true;
   }
   
-  public int b()
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public int c()
   {
     return 8032;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.MovieTicketTmpRoutingType
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class RIJEmotionDownloader$EmotionNetLoader$2
   
   public void run()
   {
-    FileUtils.writeObject("read_in_joy_comment_emotion_data", this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDownloadRIJEmotionDownloader$ServerEmotionHolder);
+    FileUtils.writeObject("read_in_joy_comment_emotion_data", this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.emotion.download.RIJEmotionDownloader.EmotionNetLoader.2
  * JD-Core Version:    0.7.0.1
  */

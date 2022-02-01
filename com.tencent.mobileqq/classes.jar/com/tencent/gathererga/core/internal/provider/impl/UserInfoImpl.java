@@ -22,6 +22,7 @@ import com.tencent.gathererga.core.internal.util.GLog;
 import com.tencent.gathererga.core.internal.util.LocationInfoUtil;
 import com.tencent.gathererga.core.internal.util.PermissionUtil;
 import com.tencent.gathererga.core.internal.util.TelephonyManagerUtil;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.io.File;
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -36,49 +37,55 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.TimeZone;
 
 public class UserInfoImpl
   implements UserInfoProvider
 {
-  private static final Map<String, Integer> jdField_a_of_type_JavaUtilMap = new UserInfoImpl.1();
-  private Context jdField_a_of_type_AndroidContentContext = null;
+  private static final Map<String, Integer> b = new UserInfoImpl.1();
+  private Context a = null;
   
-  private WifiManager a()
+  private String a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
-    if (localObject != null) {
-      if (!PermissionUtil.a((Context)localObject, "android.permission.ACCESS_WIFI_STATE"))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt >> 8 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt >> 16 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt >> 24 & 0xFF);
+    return localStringBuilder.toString();
+  }
+  
+  public static boolean a()
+  {
+    if (!TextUtils.isEmpty("HUAWEI"))
+    {
+      String[] arrayOfString = "HUAWEI".split(",");
+      if (arrayOfString.length > 0)
       {
-        GLog.d("UserInfoProviderImpl getWifiManager checkPermission failed");
-      }
-      else
-      {
-        localObject = this.jdField_a_of_type_AndroidContentContext.getApplicationContext();
-        if (localObject == null) {
-          GLog.d("UserInfoProviderImpl getWifiManager getApplicationContext null");
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str = arrayOfString[i];
+          if ((!TextUtils.isEmpty(str)) && (str.equalsIgnoreCase(Build.MANUFACTURER))) {
+            return true;
+          }
+          i += 1;
         }
       }
     }
-    try
-    {
-      localObject = ((Context)localObject).getSystemService("wifi");
-      if (!(localObject instanceof WifiManager)) {
-        break label78;
-      }
-      localObject = (WifiManager)localObject;
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      label73:
-      label78:
-      break label73;
-    }
-    GLog.d("UserInfoProviderImpl getWifiManager getSystemService failed");
-    return null;
+    return false;
   }
   
-  private static ProviderResult a(int paramInt)
+  private boolean a(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals(paramString, "00:00:00:00:00:00")) && (!TextUtils.equals(paramString, "02:00:00:00:00:00"));
+  }
+  
+  private static ProviderResult b(int paramInt)
   {
     Object localObject1 = new Integer(1);
     Object localObject5 = new Integer(2);
@@ -137,14 +144,14 @@ public class UserInfoImpl
     return new ProviderResultImpl(-300L, Integer.valueOf(0));
   }
   
-  private String a()
+  private String b()
   {
     try
     {
       InetAddress localInetAddress;
       do
       {
-        localObject1 = NetworkInterface.getNetworkInterfaces();
+        localObject1 = NetworkMonitor.getNetworkInterfaces();
         while (!((Enumeration)localObject2).hasMoreElements())
         {
           if ((localObject1 == null) || (!((Enumeration)localObject1).hasMoreElements())) {
@@ -167,42 +174,7 @@ public class UserInfoImpl
     return "0.0.0.0";
   }
   
-  private String a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt & 0xFF);
-    localStringBuilder.append(".");
-    localStringBuilder.append(paramInt >> 8 & 0xFF);
-    localStringBuilder.append(".");
-    localStringBuilder.append(paramInt >> 16 & 0xFF);
-    localStringBuilder.append(".");
-    localStringBuilder.append(paramInt >> 24 & 0xFF);
-    return localStringBuilder.toString();
-  }
-  
-  public static boolean a()
-  {
-    if (!TextUtils.isEmpty("HUAWEI"))
-    {
-      String[] arrayOfString = "HUAWEI".split(",");
-      if (arrayOfString.length > 0)
-      {
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          String str = arrayOfString[i];
-          if ((!TextUtils.isEmpty(str)) && (str.equalsIgnoreCase(Build.MANUFACTURER))) {
-            return true;
-          }
-          i += 1;
-        }
-      }
-    }
-    return false;
-  }
-  
-  public static boolean a(Context paramContext)
+  public static boolean b(Context paramContext)
   {
     int i = Build.VERSION.SDK_INT;
     boolean bool = false;
@@ -236,12 +208,7 @@ public class UserInfoImpl
     return false;
   }
   
-  private boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals(paramString, "00:00:00:00:00:00")) && (!TextUtils.equals(paramString, "02:00:00:00:00:00"));
-  }
-  
-  private static ProviderResult b(int paramInt)
+  private static ProviderResult c(int paramInt)
   {
     long l = TelephonyManagerUtil.a(paramInt);
     if ((0x804B & l) != 0L) {
@@ -259,12 +226,16 @@ public class UserInfoImpl
     return new ProviderResultImpl(-300L, Integer.valueOf(0));
   }
   
-  private String b()
+  private String c()
   {
     try
     {
-      String str = ((TelephonyManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("phone")).getNetworkOperator();
-      return str;
+      Object localObject = (TelephonyManager)this.a.getSystemService("phone");
+      if (((TelephonyManager)localObject).getSimState() == 5)
+      {
+        localObject = ((TelephonyManager)localObject).getSimOperator();
+        return localObject;
+      }
     }
     catch (Throwable localThrowable)
     {
@@ -276,9 +247,44 @@ public class UserInfoImpl
     return null;
   }
   
+  private WifiManager d()
+  {
+    Object localObject = this.a;
+    if (localObject != null) {
+      if (!PermissionUtil.a((Context)localObject, "android.permission.ACCESS_WIFI_STATE"))
+      {
+        GLog.d("UserInfoProviderImpl getWifiManager checkPermission failed");
+      }
+      else
+      {
+        localObject = this.a.getApplicationContext();
+        if (localObject == null) {
+          GLog.d("UserInfoProviderImpl getWifiManager getApplicationContext null");
+        }
+      }
+    }
+    try
+    {
+      localObject = ((Context)localObject).getSystemService("wifi");
+      if (!(localObject instanceof WifiManager)) {
+        break label82;
+      }
+      localObject = (WifiManager)localObject;
+      return localObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      label76:
+      label82:
+      break label76;
+    }
+    GLog.d("UserInfoProviderImpl getWifiManager getSystemService failed");
+    return null;
+  }
+  
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   @InfoID(id=407)
@@ -290,7 +296,7 @@ public class UserInfoImpl
   @InfoID(id=307, permissions={"android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_WIFI_STATE"})
   public ProviderResult getBssid(ProviderMethodPriority paramProviderMethodPriority)
   {
-    Object localObject = a();
+    Object localObject = d();
     String str = null;
     paramProviderMethodPriority = null;
     int j = 0;
@@ -306,13 +312,13 @@ public class UserInfoImpl
       if (Build.VERSION.SDK_INT > 26) {
         if ((Build.VERSION.SDK_INT != 27) && (Build.VERSION.SDK_INT != 28))
         {
-          if (!PermissionUtil.a(this.jdField_a_of_type_AndroidContentContext, "android.permission.ACCESS_FINE_LOCATION"))
+          if (!PermissionUtil.a(this.a, "android.permission.ACCESS_FINE_LOCATION"))
           {
             i = j;
             break label184;
           }
         }
-        else if ((!PermissionUtil.a(this.jdField_a_of_type_AndroidContentContext, "android.permission.ACCESS_COARSE_LOCATION")) && (!PermissionUtil.a(this.jdField_a_of_type_AndroidContentContext, "android.permission.ACCESS_FINE_LOCATION")))
+        else if ((!PermissionUtil.a(this.a, "android.permission.ACCESS_COARSE_LOCATION")) && (!PermissionUtil.a(this.a, "android.permission.ACCESS_FINE_LOCATION")))
         {
           i = j;
           break label184;
@@ -320,7 +326,7 @@ public class UserInfoImpl
       }
       try
       {
-        localObject = ((WifiManager)localObject).getConnectionInfo();
+        localObject = NetworkMonitor.getConnectionInfo((WifiManager)localObject);
         if (localObject == null)
         {
           GLog.d("UserInfoProviderImpl getBssid failed. getConnectionInfo null");
@@ -347,19 +353,19 @@ public class UserInfoImpl
     return new ProviderResultImpl(i, localProviderMethodPriority);
   }
   
-  @InfoID(id=305, permissions={"android.permission.READ_PHONE_STATE"})
+  @InfoID(id=305)
   public ProviderResult getCarrier(ProviderMethodPriority paramProviderMethodPriority, boolean paramBoolean)
   {
     int i;
     try
     {
-      paramProviderMethodPriority = b();
+      paramProviderMethodPriority = c();
       try
       {
         if (TextUtils.isEmpty(paramProviderMethodPriority)) {
           return new ProviderResultImpl(0, Integer.valueOf(0));
         }
-        Object localObject1 = jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        Object localObject1 = b.entrySet().iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (Map.Entry)((Iterator)localObject1).next();
@@ -398,7 +404,7 @@ public class UserInfoImpl
   @InfoID(id=303)
   public ProviderResult getCountry(ProviderMethodPriority paramProviderMethodPriority)
   {
-    return new ProviderResultImpl(0L, this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration().locale.getCountry());
+    return new ProviderResultImpl(0L, this.a.getResources().getConfiguration().locale.getCountry());
   }
   
   @InfoID(id=315, permissions={"android.permission.ACCESS_NETWORK_STATE"})
@@ -411,7 +417,7 @@ public class UserInfoImpl
     ProviderMethodPriority localProviderMethodPriority;
     try
     {
-      Object localObject3 = (ConnectivityManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("connectivity");
+      Object localObject3 = (ConnectivityManager)this.a.getSystemService("connectivity");
       i = j;
       Object localObject1 = localObject2;
       if (localObject3 != null)
@@ -419,7 +425,7 @@ public class UserInfoImpl
         paramProviderMethodPriority = (ProviderMethodPriority)localObject2;
         i = j;
         localObject1 = localObject2;
-        if (PermissionUtil.a(this.jdField_a_of_type_AndroidContentContext, "android.permission.ACCESS_NETWORK_STATE"))
+        if (PermissionUtil.a(this.a, "android.permission.ACCESS_NETWORK_STATE"))
         {
           paramProviderMethodPriority = (ProviderMethodPriority)localObject2;
           localObject1 = ((ConnectivityManager)localObject3).getNetworkInfo(0);
@@ -431,7 +437,7 @@ public class UserInfoImpl
             if (((NetworkInfo)localObject1).isConnected())
             {
               paramProviderMethodPriority = (ProviderMethodPriority)localObject2;
-              localObject1 = a();
+              localObject1 = b();
               paramProviderMethodPriority = (ProviderMethodPriority)localObject1;
               localObject2 = new StringBuilder();
               paramProviderMethodPriority = (ProviderMethodPriority)localObject1;
@@ -441,7 +447,7 @@ public class UserInfoImpl
               paramProviderMethodPriority = (ProviderMethodPriority)localObject1;
               GLog.b(((StringBuilder)localObject2).toString());
               i = j;
-              break label346;
+              break label347;
             }
           }
           i = j;
@@ -454,13 +460,13 @@ public class UserInfoImpl
             if (((NetworkInfo)localObject3).isConnected())
             {
               paramProviderMethodPriority = (ProviderMethodPriority)localObject2;
-              localObject3 = (WifiManager)this.jdField_a_of_type_AndroidContentContext.getApplicationContext().getSystemService("wifi");
+              localObject3 = (WifiManager)this.a.getApplicationContext().getSystemService("wifi");
               i = j;
               localObject1 = localObject2;
               if (localObject3 != null)
               {
                 paramProviderMethodPriority = (ProviderMethodPriority)localObject2;
-                localObject3 = ((WifiManager)localObject3).getConnectionInfo();
+                localObject3 = NetworkMonitor.getConnectionInfo((WifiManager)localObject3);
                 i = j;
                 localObject1 = localObject2;
                 if (localObject3 != null)
@@ -492,31 +498,35 @@ public class UserInfoImpl
       i = -300;
       localProviderMethodPriority = paramProviderMethodPriority;
     }
-    label346:
+    label347:
     return new ProviderResultImpl(i, localProviderMethodPriority);
+  }
+  
+  public ProviderResult getLanguage(ProviderMethodPriority paramProviderMethodPriority)
+  {
+    return new ProviderResultImpl(0L, Locale.getDefault().getLanguage());
   }
   
   @InfoID(id=309, permissions={"android.permission.ACCESS_FINE_LOCATION"})
   public ProviderResult getLatitude(ProviderMethodPriority paramProviderMethodPriority)
   {
-    return new ProviderResultImpl(0L, Double.valueOf(LocationInfoUtil.a(this.jdField_a_of_type_AndroidContentContext).a()));
+    return new ProviderResultImpl(0L, Double.valueOf(LocationInfoUtil.a(this.a).a()));
   }
   
   @InfoID(id=310, permissions={"android.permission.ACCESS_FINE_LOCATION"})
   public ProviderResult getLongitude(ProviderMethodPriority paramProviderMethodPriority)
   {
-    return new ProviderResultImpl(0L, Double.valueOf(LocationInfoUtil.a(this.jdField_a_of_type_AndroidContentContext).b()));
+    return new ProviderResultImpl(0L, Double.valueOf(LocationInfoUtil.a(this.a).b()));
   }
   
-  @InfoID(id=313, permissions={"android.permission.ACCESS_NETWORK_STATE"})
+  @InfoID(id=313)
   public ProviderResult getMobileNetworkType(ProviderMethodPriority paramProviderMethodPriority)
   {
     try
     {
-      paramProviderMethodPriority = ((ConnectivityManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      if ((paramProviderMethodPriority != null) && (paramProviderMethodPriority.getType() == 0))
+      if (((ConnectivityManager)this.a.getSystemService("connectivity")).getActiveNetworkInfo() != null)
       {
-        paramProviderMethodPriority = (TelephonyManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("phone");
+        paramProviderMethodPriority = (TelephonyManager)this.a.getSystemService("phone");
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
         localStringBuilder.append(paramProviderMethodPriority.getNetworkType());
@@ -527,8 +537,8 @@ public class UserInfoImpl
     }
     catch (Exception paramProviderMethodPriority)
     {
-      label93:
-      break label93;
+      label84:
+      break label84;
     }
     return new ProviderResultImpl(-300L, null);
   }
@@ -536,7 +546,7 @@ public class UserInfoImpl
   @InfoID(id=312, permissions={"android.permission.ACCESS_NETWORK_STATE"})
   public ProviderResult getNetworkType(ProviderMethodPriority paramProviderMethodPriority)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject = this.a;
     paramProviderMethodPriority = Integer.valueOf(0);
     if (localObject == null) {
       return new ProviderResultImpl(-302L, paramProviderMethodPriority);
@@ -553,7 +563,7 @@ public class UserInfoImpl
         if (localObject == null) {
           return new ProviderResultImpl(-304L, paramProviderMethodPriority);
         }
-        if (a(this.jdField_a_of_type_AndroidContentContext)) {
+        if (b(this.a)) {
           return new ProviderResultImpl(0L, Integer.valueOf(7));
         }
         switch (((NetworkInfo)localObject).getType())
@@ -568,16 +578,16 @@ public class UserInfoImpl
         case 4: 
         case 5: 
           if (Build.VERSION.SDK_INT <= 29) {
-            return a(((NetworkInfo)localObject).getSubtype());
+            return b(((NetworkInfo)localObject).getSubtype());
           }
-          if (!PermissionUtil.a(this.jdField_a_of_type_AndroidContentContext, "android.permission.READ_PHONE_STATE")) {
+          if (!PermissionUtil.a(this.a, "android.permission.READ_PHONE_STATE")) {
             return new ProviderResultImpl(-300L, paramProviderMethodPriority);
           }
-          localObject = (TelephonyManager)TelephonyManager.class.cast(this.jdField_a_of_type_AndroidContentContext.getSystemService("phone"));
+          localObject = (TelephonyManager)TelephonyManager.class.cast(this.a.getSystemService("phone"));
           if (localObject == null) {
             return new ProviderResultImpl(-300L, paramProviderMethodPriority);
           }
-          return b(((TelephonyManager)localObject).getNetworkType());
+          return c(((TelephonyManager)localObject).getNetworkType());
           localObject = new ProviderResultImpl(0L, paramProviderMethodPriority);
           return localObject;
         }
@@ -593,7 +603,33 @@ public class UserInfoImpl
   @InfoID(id=317)
   public ProviderResult getScreenOrientation(ProviderMethodPriority paramProviderMethodPriority)
   {
-    return new ProviderResultImpl(0L, Integer.valueOf(this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration().orientation));
+    return new ProviderResultImpl(0L, Integer.valueOf(this.a.getResources().getConfiguration().orientation));
+  }
+  
+  public ProviderResult getTimeZone(ProviderMethodPriority paramProviderMethodPriority)
+  {
+    paramProviderMethodPriority = "";
+    int i = 0;
+    try
+    {
+      String str = TimeZone.getDefault().getDisplayName(false, 0);
+      paramProviderMethodPriority = str;
+    }
+    catch (AssertionError localAssertionError)
+    {
+      break label27;
+    }
+    catch (Exception localException)
+    {
+      label20:
+      break label20;
+    }
+    i = -300;
+    break label31;
+    label27:
+    i = -301;
+    label31:
+    return new ProviderResultImpl(i, paramProviderMethodPriority);
   }
   
   @InfoID(id=308)
@@ -630,7 +666,7 @@ public class UserInfoImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.provider.impl.UserInfoImpl
  * JD-Core Version:    0.7.0.1
  */

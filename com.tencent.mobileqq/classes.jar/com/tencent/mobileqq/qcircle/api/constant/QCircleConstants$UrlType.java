@@ -1,14 +1,9 @@
 package com.tencent.mobileqq.qcircle.api.constant;
 
-public class QCircleConstants$UrlType
-{
-  public static final int HTTPS_URL = 0;
-  public static final int SCHEME = 1;
-  public static final int UNKNOWN = -1;
-}
+public class QCircleConstants$UrlType {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.constant.QCircleConstants.UrlType
  * JD-Core Version:    0.7.0.1
  */

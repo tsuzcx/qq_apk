@@ -21,14 +21,14 @@ class HeadsPanelAnimationView$3
   public void onAnimationEnd(Animation paramAnimation)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView.a.size())
+    while (i < this.b.b.size())
     {
-      paramAnimation = (ImageView)this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView.a.get(i);
+      paramAnimation = (ImageView)this.b.b.get(i);
       paramAnimation.clearAnimation();
       Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject != null) && (i < this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView.jdField_b_of_type_JavaUtilList.size()))
+      if ((localObject != null) && (i < this.b.f.size()))
       {
-        localObject = Util.a((AppInterface)localObject, (String)this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView.jdField_b_of_type_JavaUtilList.get(i));
+        localObject = Util.a((AppInterface)localObject, (String)this.b.f.get(i));
         Drawable localDrawable = paramAnimation.getDrawable();
         if ((localDrawable != null) && (localDrawable != localObject) && ((localDrawable instanceof FaceDrawable))) {
           ((FaceDrawable)localDrawable).cancel();
@@ -37,15 +37,15 @@ class HeadsPanelAnimationView$3
       }
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView.c.clearAnimation();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView.jdField_b_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView.jdField_b_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+    this.b.i.clearAnimation();
+    this.a.cancel();
+    this.b.d.setTranslationX(0.0F);
+    this.b.d.setAlpha(1.0F);
     paramAnimation = new AlphaAnimation(1.0F, 0.0F);
     paramAnimation.setFillAfter(true);
     paramAnimation.setDuration(200L);
     paramAnimation.setAnimationListener(new HeadsPanelAnimationView.3.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView.c.startAnimation(paramAnimation);
+    this.b.i.startAnimation(paramAnimation);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -54,7 +54,7 @@ class HeadsPanelAnimationView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.HeadsPanelAnimationView.3
  * JD-Core Version:    0.7.0.1
  */

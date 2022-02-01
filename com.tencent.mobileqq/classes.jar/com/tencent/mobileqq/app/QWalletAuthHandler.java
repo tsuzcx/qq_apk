@@ -19,13 +19,13 @@ import cooperation.qwallet.plugin.impl.QWalletHelperDelegate;
 public class QWalletAuthHandler
   extends BusinessHandler
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private QQAppInterface b;
   
   protected QWalletAuthHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   public void a(ReqCheckChangePwdAuth paramReqCheckChangePwdAuth)
@@ -33,7 +33,7 @@ public class QWalletAuthHandler
     if (paramReqCheckChangePwdAuth == null) {
       return;
     }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "QQWalletPayAuthServer.checkChangePwdAuth");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "QQWalletPayAuthServer.checkChangePwdAuth");
     localToServiceMsg.extraData.putSerializable("ReqCheckChangePwdAuth", paramReqCheckChangePwdAuth);
     super.send(localToServiceMsg);
     if (QLog.isColorLevel()) {
@@ -46,7 +46,7 @@ public class QWalletAuthHandler
     if (paramAuthCodeReq == null) {
       return;
     }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "VacThirdCodeSvc.fetchCodes");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "VacThirdCodeSvc.fetchCodes");
     localToServiceMsg.extraData.putSerializable("AuthCodeReq", paramAuthCodeReq);
     super.send(localToServiceMsg);
     if (QLog.isColorLevel()) {
@@ -59,10 +59,10 @@ public class QWalletAuthHandler
     if (paramGetPasswordReq == null) {
       return;
     }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "WalletGestureSvc.GetPassword");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "WalletGestureSvc.GetPassword");
     localToServiceMsg.extraData.putSerializable("GetPasswordReq", paramGetPasswordReq);
     super.send(localToServiceMsg);
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
     if (QLog.isColorLevel()) {
       QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetPasswordReq: on send--cmd=WalletGestureSvc.GetPassword");
     }
@@ -73,7 +73,7 @@ public class QWalletAuthHandler
     if (paramPfaFriendRqt == null) {
       return;
     }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "QWalletPfa.RecFriend");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "QWalletPfa.RecFriend");
     localToServiceMsg.extraData.putSerializable("PfaFriendRqt", paramPfaFriendRqt);
     super.send(localToServiceMsg);
     if (QLog.isColorLevel()) {
@@ -116,7 +116,7 @@ public class QWalletAuthHandler
         }
         if ((bool) && (paramToServiceMsg != null) && (paramToServiceMsg.ret == 0))
         {
-          PatternLockUtils.setSyncPatternLockState(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+          PatternLockUtils.setSyncPatternLockState(this.b.getApp(), this.b.getCurrentAccountUin(), false);
           if (!TextUtils.isEmpty(paramToServiceMsg.password))
           {
             paramFromServiceMsg = QWalletHelperDelegate.getQWDevId();
@@ -129,18 +129,18 @@ public class QWalletAuthHandler
           {
             paramFromServiceMsg = "";
           }
-          PatternLockUtils.setPWD(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramFromServiceMsg);
-          PatternLockUtils.setPWDType(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramToServiceMsg.passwordType);
-          PatternLockUtils.setCheckIntervalTime(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramToServiceMsg.checkInterval);
-          PatternLockUtils.setForgroundIntervalTime(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramToServiceMsg.passInterval);
+          PatternLockUtils.setPWD(this.b.getApp(), this.b.getCurrentAccountUin(), paramFromServiceMsg);
+          PatternLockUtils.setPWDType(this.b.getApp(), this.b.getCurrentAccountUin(), paramToServiceMsg.passwordType);
+          PatternLockUtils.setCheckIntervalTime(this.b.getApp(), this.b.getCurrentAccountUin(), paramToServiceMsg.checkInterval);
+          PatternLockUtils.setForgroundIntervalTime(this.b.getApp(), this.b.getCurrentAccountUin(), paramToServiceMsg.passInterval);
         }
-        else if ((this.jdField_a_of_type_Boolean) && (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())))
+        else if ((this.a) && (NetworkUtil.isNetSupport(this.b.getApp())))
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.a = false;
           paramToServiceMsg = new GetPasswordReq();
           paramToServiceMsg.MQOS = "Android";
-          paramToServiceMsg.MQVersion = DeviceInfoUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-          paramFromServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "WalletGestureSvc.GetPassword");
+          paramToServiceMsg.MQVersion = DeviceInfoUtil.a(this.b.getApp());
+          paramFromServiceMsg = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "WalletGestureSvc.GetPassword");
           paramFromServiceMsg.extraData.putSerializable("GetPasswordReq", paramToServiceMsg);
           super.send(paramFromServiceMsg);
           if (QLog.isColorLevel()) {
@@ -171,7 +171,7 @@ public class QWalletAuthHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QWalletAuthHandler
  * JD-Core Version:    0.7.0.1
  */

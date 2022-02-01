@@ -26,12 +26,12 @@ import mqq.app.NewIntent;
 public class FriendHotTipsBar
   implements TipsBarTask
 {
-  private static HashMap<String, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static HashMap<String, Boolean> a = new HashMap();
   private static HashMap<String, Integer> b = new HashMap();
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface c;
+  private TipsManager d;
+  private Activity e;
+  private SessionInfo f;
   
   public static String a(String paramString)
   {
@@ -74,13 +74,13 @@ public class FriendHotTipsBar
     {
       localObject3 = ((SharedPreferences)localObject3).edit();
       ((SharedPreferences.Editor)localObject3).putBoolean((String)localObject2, true);
-      long l = MessageCache.a();
+      long l = MessageCache.c();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("voice_hot_friend_tip_show_time");
       ((StringBuilder)localObject2).append(str);
       ((SharedPreferences.Editor)localObject3).putString(((StringBuilder)localObject2).toString(), String.valueOf(l * 1000L));
       ((SharedPreferences.Editor)localObject3).commit();
-      jdField_a_of_type_JavaUtilHashMap.put(localObject1, Boolean.TRUE);
+      a.put(localObject1, Boolean.TRUE);
       b(paramQQAppInterface, paramString);
       if (QLog.isColorLevel())
       {
@@ -137,7 +137,7 @@ public class FriendHotTipsBar
       paramString.append(paramQQAppInterface);
       QLog.d("ReduFriendServlet", 2, paramString.toString());
     }
-    if (jdField_a_of_type_JavaUtilHashMap.get(paramQQAppInterface) != null)
+    if (a.get(paramQQAppInterface) != null)
     {
       paramString = (Integer)b.get(paramQQAppInterface);
       if (paramString == null) {
@@ -178,7 +178,7 @@ public class FriendHotTipsBar
     localStringBuilder.append("_");
     localStringBuilder.append(paramString);
     paramQQAppInterface = localStringBuilder.toString();
-    jdField_a_of_type_JavaUtilHashMap.remove(paramQQAppInterface);
+    a.remove(paramQQAppInterface);
   }
   
   public int a()
@@ -205,7 +205,7 @@ public class FriendHotTipsBar
     localObject1 = localObject2;
     try
     {
-      if (jdField_a_of_type_JavaUtilHashMap.get(localObject4) != null)
+      if (a.get(localObject4) != null)
       {
         localObject1 = localObject2;
         localObject3 = (Integer)b.get(localObject4);
@@ -239,7 +239,7 @@ public class FriendHotTipsBar
           }
         }
         localObject1 = localObject2;
-        localObject3 = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
+        localObject3 = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramString);
         localObject1 = localObject2;
         i = FriendsUtils.a(((Friends)localObject3).eNetwork, ((Friends)localObject3).iTermType, ((Friends)localObject3).netTypeIconId);
         if (localObject3 != null)
@@ -303,7 +303,7 @@ public class FriendHotTipsBar
       localObject1 = localObject2;
       localObject5 = ((SharedPreferences)localObject4).getString(((StringBuilder)localObject5).toString(), "");
       localObject1 = localObject2;
-      long l = MessageCache.a() * 1000L;
+      long l = MessageCache.c() * 1000L;
       localObject1 = localObject2;
       localObject4 = new Time();
       localObject1 = localObject2;
@@ -375,7 +375,7 @@ public class FriendHotTipsBar
         }
       }
       localObject1 = localObject2;
-      localObject4 = a(paramQQAppInterface, (String)localObject3, MessageCache.a());
+      localObject4 = a(paramQQAppInterface, (String)localObject3, MessageCache.c());
       if (localObject4 == null)
       {
         paramString = "there is no hot friend,need to pull";
@@ -422,7 +422,7 @@ public class FriendHotTipsBar
       if (((HashMap)localObject3).get(paramString) != null)
       {
         localObject1 = localObject2;
-        localObject3 = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
+        localObject3 = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramString);
         if (localObject3 == null)
         {
           localObject1 = localObject2;
@@ -534,33 +534,9 @@ public class FriendHotTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560946, null);
-    paramVarArgs.findViewById(2131374120).setOnClickListener(new FriendHotTipsBar.1(this));
+    paramVarArgs = LayoutInflater.from(this.e).inflate(2131627287, null);
+    paramVarArgs.findViewById(2131442215).setOnClickListener(new FriendHotTipsBar.1(this));
     return paramVarArgs;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendHotTipsBar", 2, "curType != Friend");
-      }
-      return;
-    }
-    QQOperateManager localQQOperateManager = QQOperateManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (localQQOperateManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendHotTipsBar", 2, "hasNetTipShow today");
-      }
-      return;
-    }
-    if ((a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true) == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0])))
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      localQQOperateManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1);
-    }
   }
   
   public void a(int paramInt, Object... paramVarArgs)
@@ -571,22 +547,46 @@ public class FriendHotTipsBar
     if (QLog.isColorLevel()) {
       QLog.d("FriendHotTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
     }
-    a();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2000 };
+    d();
   }
   
   public int b()
   {
     return 5;
   }
+  
+  public int[] c()
+  {
+    return new int[] { 2000 };
+  }
+  
+  public void d()
+  {
+    if (this.f.a != 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendHotTipsBar", 2, "curType != Friend");
+      }
+      return;
+    }
+    QQOperateManager localQQOperateManager = QQOperateManager.a(this.c);
+    if (localQQOperateManager.b(this.f.a, 1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendHotTipsBar", 2, "hasNetTipShow today");
+      }
+      return;
+    }
+    if ((a(this.c, this.f.b, true) == 1) && (this.d.a(this, new Object[0])))
+    {
+      a(this.c, this.f.b);
+      localQQOperateManager.a(this.c, this.f.a, 1);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.FriendHotTipsBar
  * JD-Core Version:    0.7.0.1
  */

@@ -23,14 +23,14 @@ class BusinessCardEditActivity$16
     }
     if (BusinessCardEditActivity.a(this.a))
     {
-      this.a.a(2131698680, 2);
+      this.a.a(2131896629, 2);
       BusinessCardEditActivity.a(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.16
  * JD-Core Version:    0.7.0.1
  */

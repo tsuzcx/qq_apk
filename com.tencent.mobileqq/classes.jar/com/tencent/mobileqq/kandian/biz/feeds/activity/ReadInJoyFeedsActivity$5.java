@@ -11,12 +11,12 @@ class ReadInJoyFeedsActivity$5
   
   public void onClickAction(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    ReadInJoyFeedsActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsActivityReadInJoyFeedsActivity, paramMenuItem, this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineKandianMergeManager);
+    ReadInJoyFeedsActivity.a(this.b, paramMenuItem, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyFeedsActivity.5
  * JD-Core Version:    0.7.0.1
  */

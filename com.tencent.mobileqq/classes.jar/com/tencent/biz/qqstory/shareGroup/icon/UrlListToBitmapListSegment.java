@@ -16,24 +16,24 @@ import java.util.List;
 public class UrlListToBitmapListSegment
   extends JobSegment<List<String>, List<Bitmap>>
 {
-  private int jdField_a_of_type_Int;
-  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private UrlBitmapDownloader jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader;
-  private String jdField_a_of_type_JavaLangString = "story.icon.UrlListToBitmapListSegment";
+  private String a = "story.icon.UrlListToBitmapListSegment";
   private String b;
+  private int c;
+  private final Bitmap d;
+  private UrlBitmapDownloader e;
   
   public UrlListToBitmapListSegment(@Nullable Bitmap paramBitmap, String paramString, int paramInt, UrlBitmapDownloader paramUrlBitmapDownloader)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.d = paramBitmap;
     paramBitmap = new StringBuilder();
-    paramBitmap.append(this.jdField_a_of_type_JavaLangString);
+    paramBitmap.append(this.a);
     paramBitmap.append("[");
     paramBitmap.append(paramString);
     paramBitmap.append("]");
-    this.jdField_a_of_type_JavaLangString = paramBitmap.toString();
+    this.a = paramBitmap.toString();
     this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader = paramUrlBitmapDownloader;
+    this.c = paramInt;
+    this.e = paramUrlBitmapDownloader;
   }
   
   protected void a(JobContext paramJobContext, List<String> paramList)
@@ -43,17 +43,17 @@ public class UrlListToBitmapListSegment
       paramJobContext = Collections.unmodifiableList(paramList);
       int i = paramJobContext.size();
       paramList = new Bitmap[i];
-      Arrays.fill(paramList, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      IconLog.b(this.jdField_a_of_type_JavaLangString, "bitmapListSize = %d, stubBitmap = %s", Integer.valueOf(i), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      Arrays.fill(paramList, this.d);
+      IconLog.b(this.a, "bitmapListSize = %d, stubBitmap = %s", Integer.valueOf(i), this.d);
       Handler localHandler = new Handler(ThreadManager.getSubThreadLooper(), new UrlListToBitmapListSegment.InnerCallBack(this, null));
       localHandler.sendMessageDelayed(Message.obtain(localHandler, 0, paramList), 300L);
-      i = this.jdField_a_of_type_Int / 2;
+      i = this.c / 2;
       Iterator localIterator = paramJobContext.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
         if (!"stub_url".equals(str)) {
-          this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(str, i, i, new UrlListToBitmapListSegment.1(this, paramJobContext, paramList, localHandler));
+          this.e.a(str, i, i, new UrlListToBitmapListSegment.1(this, paramJobContext, paramList, localHandler));
         }
       }
       return;

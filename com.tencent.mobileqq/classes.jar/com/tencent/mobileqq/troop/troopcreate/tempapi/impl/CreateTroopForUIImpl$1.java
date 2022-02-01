@@ -19,23 +19,23 @@ class CreateTroopForUIImpl$1
   
   public void onAction(View paramView)
   {
-    IContactSearchModel localIContactSearchModel = (IContactSearchModel)paramView.getTag(2131380884);
+    IContactSearchModel localIContactSearchModel = (IContactSearchModel)paramView.getTag(2131449867);
     if (localIContactSearchModel == null) {
       return;
     }
-    String str1 = localIContactSearchModel.a();
-    String str2 = localIContactSearchModel.b().toString();
+    String str1 = localIContactSearchModel.c();
+    String str2 = localIContactSearchModel.d().toString();
     boolean bool = localIContactSearchModel instanceof ContactSearchModelDiscussionMember;
     if (bool) {
-      paramView = ((ContactSearchModelDiscussionMember)localIContactSearchModel).e();
+      paramView = ((ContactSearchModelDiscussionMember)localIContactSearchModel).s();
     } else if ((localIContactSearchModel instanceof ContactSearchModelNewTroopMember)) {
       paramView = ((ContactSearchModelNewTroopMember)localIContactSearchModel).a;
     } else {
       paramView = "-1";
     }
-    if (((CreateTroopForUIImpl.access$000(this.a).jdField_a_of_type_JavaUtilArrayList == null) || (!CreateTroopForUIImpl.access$000(this.a).jdField_a_of_type_JavaUtilArrayList.contains(str1))) && (!CreateTroopForUIImpl.access$000(this.a).a(str1)))
+    if (((CreateTroopForUIImpl.access$000(this.a).c == null) || (!CreateTroopForUIImpl.access$000(this.a).c.contains(str1))) && (!CreateTroopForUIImpl.access$000(this.a).a(str1)))
     {
-      if (CreateTroopForUIImpl.access$000(this.a).b()) {
+      if (CreateTroopForUIImpl.access$000(this.a).m()) {
         return;
       }
       int i = 0;
@@ -55,19 +55,19 @@ class CreateTroopForUIImpl$1
         }
       }
       if (i != -1) {
-        CreateTroopForUIImpl.access$000(this.a).c.add(NewTroopContactView.a(str1, str2, i, paramView));
+        CreateTroopForUIImpl.access$000(this.a).o.add(NewTroopContactView.a(str1, str2, i, paramView));
       }
-      CreateTroopForUIImpl.access$000(this.a).m();
-      CreateTroopForUIImpl.access$000(this.a).jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView$ExpandableListAdapter.notifyDataSetChanged();
+      CreateTroopForUIImpl.access$000(this.a).n();
+      CreateTroopForUIImpl.access$000(this.a).y.notifyDataSetChanged();
       CreateTroopForUIImpl.access$000(this.a).b(true);
-      CreateTroopForUIImpl.access$000(this.a).jdField_a_of_type_AndroidWidgetEditText.setText("");
-      CreateTroopForUIImpl.access$000(this.a).o();
+      CreateTroopForUIImpl.access$000(this.a).f.setText("");
+      CreateTroopForUIImpl.access$000(this.a).p();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.tempapi.impl.CreateTroopForUIImpl.1
  * JD-Core Version:    0.7.0.1
  */

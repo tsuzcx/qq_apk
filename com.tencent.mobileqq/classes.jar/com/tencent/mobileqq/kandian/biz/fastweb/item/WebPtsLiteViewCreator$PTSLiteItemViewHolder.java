@@ -9,7 +9,7 @@ import com.tencent.pts.core.itemview.PTSItemView;
 class WebPtsLiteViewCreator$PTSLiteItemViewHolder
   extends BaseItemViewHolder
 {
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   private WebPtsLiteViewCreator$PTSLiteItemViewHolder(WebPtsLiteViewCreator paramWebPtsLiteViewCreator, PTSItemView paramPTSItemView, BaseData paramBaseData)
   {
@@ -18,17 +18,17 @@ class WebPtsLiteViewCreator$PTSLiteItemViewHolder
   
   public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
-    paramBaseData1 = WebPtsLiteViewCreator.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemWebPtsLiteViewCreator, paramBaseData2);
-    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidViewView instanceof PTSItemView))) {
-      ((ProteusItemData)paramBaseData2).a.layoutToView((PTSItemView)this.jdField_a_of_type_AndroidViewView, WebPtsLiteViewCreator.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemWebPtsLiteViewCreator), true);
+    paramBaseData1 = WebPtsLiteViewCreator.a(this.a, paramBaseData2);
+    if ((this.b) && ((this.f instanceof PTSItemView))) {
+      ((ProteusItemData)paramBaseData2).bk.layoutToView((PTSItemView)this.f, WebPtsLiteViewCreator.b(this.a), true);
     }
-    this.jdField_a_of_type_Boolean = true;
-    WebPtsLiteViewCreator.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemWebPtsLiteViewCreator, paramBaseData1);
+    this.b = true;
+    WebPtsLiteViewCreator.a(this.a, paramBaseData1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebPtsLiteViewCreator.PTSLiteItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

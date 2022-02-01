@@ -4,83 +4,72 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class MessageItem
 {
-  public static final String a;
-  public static final String[] a;
-  public static final String b;
-  public static final String c;
-  public static final String d;
-  public static final String e;
-  public static final String f;
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public int c;
-  public String g;
+  public static final String a = HardCodeUtil.a(2131904520);
+  public static final String b = HardCodeUtil.a(2131904519);
+  public static final String c = HardCodeUtil.a(2131904518);
+  public static final String d = HardCodeUtil.a(2131904522);
+  public static final String e = HardCodeUtil.a(2131904521);
+  public static final String f = HardCodeUtil.a(2131904523);
+  public static final String[] g = { "uin", "uin_type", "senderUin", "msg_type", "msgid", "msgTime", "is_send", "msgContent", "media_path", "mediaStatus" };
   public String h;
-  public String i;
+  public int i;
   public String j;
-  public String k;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131706669);
-    jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131706668);
-    jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131706667);
-    d = HardCodeUtil.a(2131706671);
-    e = HardCodeUtil.a(2131706670);
-    f = HardCodeUtil.a(2131706672);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "uin", "uin_type", "senderUin", "msg_type", "msgid", "msgTime", "is_send", "msgContent", "media_path", "mediaStatus" };
-  }
+  public int k;
+  public String l;
+  public long m;
+  public boolean n;
+  public String o;
+  public int p;
+  public String q;
   
   private MessageItem() {}
   
   public MessageItem(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, long paramLong, boolean paramBoolean, String paramString4, String paramString5, int paramInt3)
   {
-    this.g = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.h = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.i = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.j = paramString4;
-    this.k = paramString5;
-    this.jdField_c_of_type_Int = paramInt3;
+    this.h = paramString1;
+    this.i = paramInt1;
+    this.j = paramString2;
+    this.k = paramInt2;
+    this.l = paramString3;
+    this.m = paramLong;
+    this.n = paramBoolean;
+    this.o = paramString4;
+    this.q = paramString5;
+    this.p = paramInt3;
   }
   
   public Object[] a()
   {
-    return new Object[] { this.g, Integer.valueOf(this.jdField_a_of_type_Int), this.h, Integer.valueOf(this.jdField_b_of_type_Int), this.i, Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.j, this.k, Integer.valueOf(this.jdField_c_of_type_Int) };
+    return new Object[] { this.h, Integer.valueOf(this.i), this.j, Integer.valueOf(this.k), this.l, Long.valueOf(this.m), Boolean.valueOf(this.n), this.o, this.q, Integer.valueOf(this.p) };
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(200);
-    localStringBuilder.append(this.g);
-    localStringBuilder.append("; ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("; ");
     localStringBuilder.append(this.h);
-    localStringBuilder.append("; ");
-    localStringBuilder.append(this.i);
-    localStringBuilder.append("; ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(";");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("; ");
-    localStringBuilder.append(this.j);
     localStringBuilder.append("; ");
     localStringBuilder.append(this.k);
     localStringBuilder.append("; ");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(";");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(this.p);
     localStringBuilder.append(". ");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.openapi.sdk.MessageItem
  * JD-Core Version:    0.7.0.1
  */

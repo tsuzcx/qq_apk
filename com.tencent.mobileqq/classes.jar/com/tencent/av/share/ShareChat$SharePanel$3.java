@@ -11,23 +11,23 @@ class ShareChat$SharePanel$3
   {
     paramDialogInterface = new StringBuilder();
     paramDialogInterface.append("ActionSheet.onDismiss, mChoosedLinkType[");
-    paramDialogInterface.append(this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b);
+    paramDialogInterface.append(this.b.c);
     paramDialogInterface.append("], mIHandle[");
-    paramDialogInterface.append(this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel$IHandle);
+    paramDialogInterface.append(this.b.f);
     paramDialogInterface.append("], seq[");
-    paramDialogInterface.append(this.jdField_a_of_type_Long);
+    paramDialogInterface.append(this.a);
     paramDialogInterface.append("]");
     QLog.w("ShareChat", 1, paramDialogInterface.toString());
-    if ((this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b == -1) && (this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel$IHandle != null))
+    if ((this.b.c == -1) && (this.b.f != null))
     {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel;
-      paramDialogInterface.a(paramDialogInterface.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b, 1);
+      paramDialogInterface = this.b;
+      paramDialogInterface.a(paramDialogInterface.b, this.b.c, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.3
  * JD-Core Version:    0.7.0.1
  */

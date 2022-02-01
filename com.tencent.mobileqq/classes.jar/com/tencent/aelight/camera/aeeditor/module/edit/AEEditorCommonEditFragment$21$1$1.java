@@ -14,16 +14,16 @@ class AEEditorCommonEditFragment$21$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp != null)
+    if (this.a != null)
     {
       localObject = AEBaseDataReporter.a();
       boolean bool;
-      if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mResult == 0) {
+      if (this.a.mResult == 0) {
         bool = true;
       } else {
         bool = false;
       }
-      ((AEBaseDataReporter)localObject).a(bool, 2, "AEEditorFilterAIAnimation", "", this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mErrCode, this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.reqCost);
+      ((AEBaseDataReporter)localObject).a(bool, 2, "AEEditorFilterAIAnimation", "", this.a.mErrCode, this.a.reqCost);
     }
     Object localObject = AEEditorPath.EDITOR.PAG.c;
     if (new File((String)localObject).exists()) {
@@ -46,7 +46,7 @@ class AEEditorCommonEditFragment$21$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorCommonEditFragment.21.1.1
  * JD-Core Version:    0.7.0.1
  */

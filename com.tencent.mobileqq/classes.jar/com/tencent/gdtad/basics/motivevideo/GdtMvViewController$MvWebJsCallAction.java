@@ -10,7 +10,6 @@ import com.tencent.gdtad.basics.motivevideo.report.GdtADFlyingStreamingReportHel
 import com.tencent.gdtad.basics.motivevideo.report.GdtMvMiniAppReportHelper;
 import com.tencent.gdtad.basics.motivevideo.web.bottomcrad.GdtMVWebBottomCardController;
 import com.tencent.gdtad.basics.motivevideo.web.endcrad.GdtMVEndcardWebController;
-import com.tencent.mobileqq.apollo.game.process.video.api.ICmGameVideoPlayer;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,7 +22,7 @@ class GdtMvViewController$MvWebJsCallAction
   public String a(String paramString)
   {
     int i;
-    if ((GdtMvViewController.a(this.a) != null) && (GdtMvViewController.a(this.a).a() != null) && (GdtMvViewController.a(this.a).a() != null))
+    if ((GdtMvViewController.m(this.a) != null) && (GdtMvViewController.m(this.a).d() != null) && (GdtMvViewController.m(this.a).a() != null))
     {
       i = 0;
     }
@@ -32,35 +31,35 @@ class GdtMvViewController$MvWebJsCallAction
       QLog.i("Web", 1, "onGetAdInfo fail data empty");
       i = 1;
     }
-    if (TextUtils.isEmpty(GdtMvViewController.a(this.a).a().adsContent))
+    if (TextUtils.isEmpty(GdtMvViewController.m(this.a).a().adsContent))
     {
       QLog.i("Web", 1, "onGetAdInfo fail adsContent empty");
       i = 1;
     }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(GdtMvViewController.a(this.a).a().getTraceId())))
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(GdtMvViewController.m(this.a).d().getTraceId())))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onGetAdInfo fail req=");
       localStringBuilder.append(paramString);
       localStringBuilder.append(",local=");
-      localStringBuilder.append(GdtMvViewController.a(this.a).a().getTraceId());
+      localStringBuilder.append(GdtMvViewController.m(this.a).d().getTraceId());
       QLog.i("Web", 1, localStringBuilder.toString());
       i = 1;
     }
     if (i != 0)
     {
-      if (GdtMvViewController.a(this.a) != null) {
-        GdtMvViewController.a(this.a).a();
+      if (GdtMvViewController.o(this.a) != null) {
+        GdtMvViewController.o(this.a).a();
       }
-      if (GdtMvViewController.a(this.a) != null) {
-        GdtMvViewController.a(this.a).b();
+      if (GdtMvViewController.b(this.a) != null) {
+        GdtMvViewController.b(this.a).b();
       }
       return "";
     }
-    if (GdtMvViewController.a(this.a) != null) {
-      GdtMvViewController.a(this.a).c();
+    if (GdtMvViewController.b(this.a) != null) {
+      GdtMvViewController.b(this.a).c();
     }
-    return GdtMvViewController.a(this.a).a().adsContent;
+    return GdtMvViewController.m(this.a).a().adsContent;
   }
   
   public void a()
@@ -69,12 +68,30 @@ class GdtMvViewController$MvWebJsCallAction
       QLog.i("GdtMvViewController", 2, "onVideoClose");
     }
     this.a.b(false);
-    if (GdtADFlyingStreamingReportHelper.a().a() == 1) {
+    if (GdtADFlyingStreamingReportHelper.a().b() == 1) {
       GdtADFlyingStreamingReportHelper.a().a(1020038L);
     }
   }
   
-  public void a(String paramString)
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (GdtMvViewController.p(this.a) != null)
+    {
+      GdtMvViewController.p(this.a).a(1, paramString, paramBoolean);
+      return;
+    }
+    QLog.i("Web", 1, "mvAnimationController null");
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GdtMvViewController", 2, "onVideoMute");
+    }
+    this.a.a(false);
+  }
+  
+  public void b(String paramString)
   {
     try
     {
@@ -92,10 +109,10 @@ class GdtMvViewController$MvWebJsCallAction
     }
     try
     {
-      if (GdtMvViewController.a(this.a) == null) {
+      if (GdtMvViewController.k(this.a) == null) {
         break label80;
       }
-      localJSONObject.put("pd", GdtMvViewController.a(this.a).getCurrentPosition());
+      localJSONObject.put("pd", GdtMvViewController.k(this.a).getCurrentPosition());
       localObject = localJSONObject;
     }
     catch (JSONException localJSONException2)
@@ -108,30 +125,12 @@ class GdtMvViewController$MvWebJsCallAction
     ((StringBuilder)localObject).append(paramString);
     QLog.e("GdtMvViewController", 1, ((StringBuilder)localObject).toString());
     localObject = localJSONObject;
-    this.a.a.a((JSONObject)localObject);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (GdtMvViewController.a(this.a) != null)
-    {
-      GdtMvViewController.a(this.a).a(1, paramString, paramBoolean);
-      return;
-    }
-    QLog.i("Web", 1, "mvAnimationController null");
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("GdtMvViewController", 2, "onVideoMute");
-    }
-    this.a.a(false);
+    this.a.d.a((JSONObject)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.GdtMvViewController.MvWebJsCallAction
  * JD-Core Version:    0.7.0.1
  */

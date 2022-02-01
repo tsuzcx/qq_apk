@@ -5,6 +5,7 @@ import android.os.Environment;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.kandian.base.utils.RIJLogUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
@@ -319,14 +320,14 @@ public class ReadInJoyMMapKvStorage
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("contains key: ");
-        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(RIJLogUtil.a.a(paramString));
         QLog.d("kandianreport.ReadInJoyMMapKvStorage", 2, ((StringBuilder)localObject).toString());
         paramString = (ReadInJoyMMapKvStorage)mMapHelperMap.get(paramString);
         return paramString;
       }
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("create key: ");
-      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(RIJLogUtil.a.a(paramString));
       QLog.d("kandianreport.ReadInJoyMMapKvStorage", 2, ((StringBuilder)localObject).toString());
       localObject = new ReadInJoyMMapKvStorage(paramString);
       mMapHelperMap.put(paramString, localObject);
@@ -347,8 +348,8 @@ public class ReadInJoyMMapKvStorage
       if (this.mMMapFileSize == 0) {
         this.mMMapFileSize = this.mMMapMinSize;
       }
-      if (!FileUtils.e(this.mMMapFilepath)) {
-        FileUtils.a(this.mMMapFilepath);
+      if (!FileUtils.i(this.mMMapFilepath)) {
+        FileUtils.n(this.mMMapFilepath);
       }
       this.mMMapMemoryMappedFile = new RandomAccessFile(this.mMMapFilepath, "rw");
       this.mMMapDataBuffer = this.mMMapMemoryMappedFile.getChannel().map(FileChannel.MapMode.READ_WRITE, 0L, this.mMMapFileSize);
@@ -427,7 +428,7 @@ public class ReadInJoyMMapKvStorage
   public static void resetRootPath()
   {
     String str3 = "default";
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     for (;;)
     {
       try
@@ -505,7 +506,7 @@ public class ReadInJoyMMapKvStorage
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("kandianreport_mmkv_expired_");
     localStringBuilder.append(this.mMMapName);
-    this.expiredTime = ((Integer)RIJSPUtils.a(localStringBuilder.toString(), Integer.valueOf(0))).intValue();
+    this.expiredTime = ((Integer)RIJSPUtils.b(localStringBuilder.toString(), Integer.valueOf(0))).intValue();
     return this.expiredTime;
   }
   
@@ -538,7 +539,7 @@ public class ReadInJoyMMapKvStorage
       releaseMMapFile(this.mMMapMemoryMappedFile);
       this.mNumberOfKeysWithDuplicated = 0;
       this.mMMapCurrentSize = 0;
-      if ((!TextUtils.isEmpty(this.mMMapFilepath)) && (FileUtils.e(this.mMMapFilepath))) {
+      if ((!TextUtils.isEmpty(this.mMMapFilepath)) && (FileUtils.i(this.mMMapFilepath))) {
         new File(this.mMMapFilepath).delete();
       }
       mMapHelperMap.remove(this.mMMapName);
@@ -631,7 +632,7 @@ public class ReadInJoyMMapKvStorage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.report.ReadInJoyMMapKvStorage
  * JD-Core Version:    0.7.0.1
  */

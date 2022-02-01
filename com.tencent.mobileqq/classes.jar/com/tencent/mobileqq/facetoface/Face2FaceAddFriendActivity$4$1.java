@@ -12,16 +12,16 @@ class Face2FaceAddFriendActivity$4$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.removeView(this.a.jdField_a_of_type_AndroidViewView);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getWindow().setBackgroundDrawable(null);
-    Face2FaceAddFriendActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.n = true;
+    this.a.c.h.removeView(this.a.b);
+    this.a.c.getWindow().setBackgroundDrawable(null);
+    Face2FaceAddFriendActivity.b(this.a.c);
+    this.a.c.au = true;
     if (Face2FaceAddFriendConstants.a >= Face2FaceAddFriendConstants.b)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(Face2FaceAddFriendConstants.a, Face2FaceAddFriendConstants.b);
+      this.a.c.a(Face2FaceAddFriendConstants.a, Face2FaceAddFriendConstants.b);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(Face2FaceAddFriendConstants.a, 0L);
+    this.a.c.a(Face2FaceAddFriendConstants.a, 0L);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -30,7 +30,7 @@ class Face2FaceAddFriendActivity$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity.4.1
  * JD-Core Version:    0.7.0.1
  */

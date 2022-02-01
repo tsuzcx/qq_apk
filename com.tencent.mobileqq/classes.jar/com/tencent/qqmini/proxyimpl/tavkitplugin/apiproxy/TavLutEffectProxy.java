@@ -14,7 +14,7 @@ class TavLutEffectProxy
       b(paramTavLutEffect, paramSendMsgTavEvent);
       return;
     }
-    c(ObjConvector.a(paramTavLutEffect.a()));
+    c(ObjConvector.a(paramTavLutEffect.c()));
   }
   
   private void b(TavLutEffect paramTavLutEffect, SendMsgTavEvent paramSendMsgTavEvent)
@@ -24,7 +24,7 @@ class TavLutEffectProxy
       c(paramTavLutEffect, paramSendMsgTavEvent);
       return;
     }
-    paramTavLutEffect.a(ObjConvector.a(paramSendMsgTavEvent.a().getJSONObject("timeRange")));
+    paramTavLutEffect.a(ObjConvector.c(paramSendMsgTavEvent.c().getJSONObject("timeRange")));
     a();
   }
   
@@ -35,7 +35,7 @@ class TavLutEffectProxy
       d(paramTavLutEffect, paramSendMsgTavEvent);
       return;
     }
-    c(paramTavLutEffect.a());
+    c(paramTavLutEffect.b());
   }
   
   private void d(TavLutEffect paramTavLutEffect, SendMsgTavEvent paramSendMsgTavEvent)
@@ -45,7 +45,7 @@ class TavLutEffectProxy
       e(paramTavLutEffect, paramSendMsgTavEvent);
       return;
     }
-    paramTavLutEffect.a(paramSendMsgTavEvent.a().getString("lutPath"));
+    paramTavLutEffect.a(paramSendMsgTavEvent.c().getString("lutPath"));
     a();
   }
   
@@ -56,7 +56,7 @@ class TavLutEffectProxy
       f(paramTavLutEffect, paramSendMsgTavEvent);
       return;
     }
-    c(Float.valueOf(paramTavLutEffect.a()));
+    c(Float.valueOf(paramTavLutEffect.d()));
     a();
   }
   
@@ -67,7 +67,7 @@ class TavLutEffectProxy
       c();
       return;
     }
-    paramTavLutEffect.a((float)paramSendMsgTavEvent.a().getDouble("intensity"));
+    paramTavLutEffect.a((float)paramSendMsgTavEvent.c().getDouble("intensity"));
     a();
   }
   
@@ -80,7 +80,7 @@ class TavLutEffectProxy
   void a(SendMsgTavEvent paramSendMsgTavEvent)
   {
     super.a(paramSendMsgTavEvent);
-    Object localObject = paramSendMsgTavEvent.a();
+    Object localObject = paramSendMsgTavEvent.d();
     if (!(localObject instanceof TavLutEffect))
     {
       b("tavobject");
@@ -91,7 +91,7 @@ class TavLutEffectProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavLutEffectProxy
  * JD-Core Version:    0.7.0.1
  */

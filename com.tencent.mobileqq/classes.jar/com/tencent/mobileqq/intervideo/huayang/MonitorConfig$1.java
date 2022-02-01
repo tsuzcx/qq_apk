@@ -10,10 +10,10 @@ final class MonitorConfig$1
   
   public void run()
   {
-    MonitorConfig.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    if (MonitorConfig.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString) != null)
+    MonitorConfig.a(this.a, this.b);
+    if (MonitorConfig.a.get(this.b) != null)
     {
-      Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString)).jdField_a_of_type_Int));
+      Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(this.b)).b));
       return;
     }
     Monitor.b("3235983");
@@ -21,7 +21,7 @@ final class MonitorConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.MonitorConfig.1
  * JD-Core Version:    0.7.0.1
  */

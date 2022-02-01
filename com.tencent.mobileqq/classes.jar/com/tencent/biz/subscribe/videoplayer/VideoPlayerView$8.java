@@ -23,38 +23,38 @@ class VideoPlayerView$8
   {
     Object localObject = new FloatingScreenParams.FloatingBuilder();
     boolean bool;
-    if ((this.this$0.a() != null) && (this.this$0.a().getRenderViewWidth() <= this.this$0.a().getRenderViewHeight())) {
+    if ((this.this$0.getPlayerVideoView() != null) && (this.this$0.getPlayerVideoView().getRenderViewWidth() <= this.this$0.getPlayerVideoView().getRenderViewHeight())) {
       bool = false;
     } else {
       bool = true;
     }
     localObject = ((FloatingScreenParams.FloatingBuilder)localObject).setIsHorizontal(bool).setCanMove(true).setCanZoom(false).build();
-    if (((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).enterFloatingScreen(BaseApplicationImpl.getContext(), (View)this.this$0.a(), (FloatingScreenParams)localObject, 28) == 1)
+    if (((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).enterFloatingScreen(BaseApplicationImpl.getContext(), (View)this.this$0.getPlayerVideoView(), (FloatingScreenParams)localObject, 28) == 1)
     {
       ((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).enterPermissionRequestDialog(this.this$0.getContext());
       return;
     }
-    this.this$0.m();
+    this.this$0.r();
     VideoPlayerView.b(this.this$0, true);
-    if ((VideoPlayerView.a(this.this$0) != null) && (VideoPlayerView.a(this.this$0).getVisibility() == 0))
+    if ((VideoPlayerView.l(this.this$0) != null) && (VideoPlayerView.l(this.this$0).getVisibility() == 0))
     {
-      VideoPlayerView.a(this.this$0).b();
-      VideoPlayerView.a(this.this$0).a();
+      VideoPlayerView.l(this.this$0).c();
+      VideoPlayerView.l(this.this$0).b();
     }
-    if (this.this$0.a().getCurrentPositionMs() >= this.this$0.a().getDurationMs())
+    if (this.this$0.getSuperPlayer().getCurrentPositionMs() >= this.this$0.getSuperPlayer().getDurationMs())
     {
-      this.this$0.i();
-      if (VideoPlayerView.a(this.this$0) != null) {
-        VideoPlayerView.a(this.this$0).onVideoStart((int)this.this$0.a().getDurationMs());
+      this.this$0.j();
+      if (VideoPlayerView.m(this.this$0) != null) {
+        VideoPlayerView.m(this.this$0).onVideoStart((int)this.this$0.getSuperPlayer().getDurationMs());
       }
     }
-    if (this.this$0.a() != null)
+    if (this.this$0.getPlayerVideoView() != null)
     {
-      VideoPlayerView.a(this.this$0).onVideoSize(this.this$0.a().getRenderViewWidth(), this.this$0.a().getRenderViewHeight());
-      this.this$0.f();
+      VideoPlayerView.m(this.this$0).onVideoSize(this.this$0.getPlayerVideoView().getRenderViewWidth(), this.this$0.getPlayerVideoView().getRenderViewHeight());
+      this.this$0.e();
     }
-    if (VideoPlayerView.a(this.this$0) != null) {
-      VideoPlayerView.a(this.this$0).getBaseActivity().finish();
+    if (VideoPlayerView.n(this.this$0) != null) {
+      VideoPlayerView.n(this.this$0).getBaseActivity().finish();
     }
   }
 }

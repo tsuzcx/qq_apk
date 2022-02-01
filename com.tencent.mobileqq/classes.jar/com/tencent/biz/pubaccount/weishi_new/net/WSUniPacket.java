@@ -11,62 +11,61 @@ import java.util.HashMap;
 public class WSUniPacket
   extends UniAttribute
 {
-  static HashMap<String, byte[]> jdField_a_of_type_JavaUtilHashMap;
-  static HashMap<String, HashMap<String, byte[]>> b;
-  private int jdField_a_of_type_Int = 0;
-  protected RequestPacket a;
+  static HashMap<String, byte[]> b;
+  static HashMap<String, HashMap<String, byte[]>> c;
+  protected RequestPacket a = new RequestPacket();
+  private int d = 0;
   
   public WSUniPacket()
   {
-    this.jdField_a_of_type_ComQqTafRequestPacket = new RequestPacket();
-    this.jdField_a_of_type_ComQqTafRequestPacket.iVersion = 2;
+    this.a.iVersion = 2;
   }
   
   private void a()
   {
-    JceInputStream localJceInputStream = new JceInputStream(this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer);
-    localJceInputStream.setServerEncoding(this.encodeName);
-    if (jdField_a_of_type_JavaUtilHashMap == null)
-    {
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      jdField_a_of_type_JavaUtilHashMap.put("", new byte[0]);
-    }
-    this._newData = localJceInputStream.readMap(jdField_a_of_type_JavaUtilHashMap, 0, false);
-  }
-  
-  private void b()
-  {
-    JceInputStream localJceInputStream = new JceInputStream(this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer);
+    JceInputStream localJceInputStream = new JceInputStream(this.a.sBuffer);
     localJceInputStream.setServerEncoding(this.encodeName);
     if (b == null)
     {
       b = new HashMap();
+      b.put("", new byte[0]);
+    }
+    this._newData = localJceInputStream.readMap(b, 0, false);
+  }
+  
+  private void b()
+  {
+    JceInputStream localJceInputStream = new JceInputStream(this.a.sBuffer);
+    localJceInputStream.setServerEncoding(this.encodeName);
+    if (c == null)
+    {
+      c = new HashMap();
       HashMap localHashMap = new HashMap();
       localHashMap.put("", new byte[0]);
-      b.put("", localHashMap);
+      c.put("", localHashMap);
     }
-    this._data = localJceInputStream.readMap(b, 0, false);
+    this._data = localJceInputStream.readMap(c, 0, false);
     this.cachedClassName = new HashMap();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComQqTafRequestPacket.iTimeout = paramInt;
+    this.a.iTimeout = paramInt;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComQqTafRequestPacket.sServantName = paramString;
+    this.a.sServantName = paramString;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_ComQqTafRequestPacket.iRequestId = paramInt;
+    this.a.iRequestId = paramInt;
   }
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName = paramString;
+    this.a.sFuncName = paramString;
   }
   
   public void decode(byte[] paramArrayOfByte)
@@ -76,8 +75,8 @@ public class WSUniPacket
       {
         paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
         paramArrayOfByte.setServerEncoding(this.encodeName);
-        this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
-        if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 3)
+        this.a.readFrom(paramArrayOfByte);
+        if (this.a.iVersion == 3)
         {
           a();
           return;
@@ -101,7 +100,7 @@ public class WSUniPacket
       {
         paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
         paramArrayOfByte.setServerEncoding(this.encodeName);
-        this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
+        this.a.readFrom(paramArrayOfByte);
         b();
         return;
       }
@@ -120,7 +119,7 @@ public class WSUniPacket
       {
         paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
         paramArrayOfByte.setServerEncoding(this.encodeName);
-        this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
+        this.a.readFrom(paramArrayOfByte);
         a();
         return;
       }
@@ -134,11 +133,11 @@ public class WSUniPacket
   
   public byte[] encode()
   {
-    if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 2)
+    if (this.a.iVersion == 2)
     {
-      if ((this.jdField_a_of_type_ComQqTafRequestPacket.sServantName != null) && (!this.jdField_a_of_type_ComQqTafRequestPacket.sServantName.equals("")))
+      if ((this.a.sServantName != null) && (!this.a.sServantName.equals("")))
       {
-        if ((this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName == null) || (this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName.equals(""))) {
+        if ((this.a.sFuncName == null) || (this.a.sFuncName.equals(""))) {
           throw new IllegalArgumentException("funcName can not is null");
         }
       }
@@ -148,24 +147,24 @@ public class WSUniPacket
     }
     else
     {
-      if (this.jdField_a_of_type_ComQqTafRequestPacket.sServantName == null) {
-        this.jdField_a_of_type_ComQqTafRequestPacket.sServantName = "";
+      if (this.a.sServantName == null) {
+        this.a.sServantName = "";
       }
-      if (this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName == null) {
-        this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName = "";
+      if (this.a.sFuncName == null) {
+        this.a.sFuncName = "";
       }
     }
     Object localObject = new JceOutputStream(0);
     ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
-    if ((this.jdField_a_of_type_ComQqTafRequestPacket.iVersion != 2) && (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion != 1)) {
+    if ((this.a.iVersion != 2) && (this.a.iVersion != 1)) {
       ((JceOutputStream)localObject).write(this._newData, 0);
     } else {
       ((JceOutputStream)localObject).write(this._data, 0);
     }
-    this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+    this.a.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
     localObject = new JceOutputStream(0);
     ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
-    this.jdField_a_of_type_ComQqTafRequestPacket.writeTo((JceOutputStream)localObject);
+    this.a.writeTo((JceOutputStream)localObject);
     localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
     int i = localObject.length + 4;
     ByteBuffer localByteBuffer = ByteBuffer.allocate(i);
@@ -189,12 +188,12 @@ public class WSUniPacket
   public void useVersion3()
   {
     super.useVersion3();
-    this.jdField_a_of_type_ComQqTafRequestPacket.iVersion = 3;
+    this.a.iVersion = 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.WSUniPacket
  * JD-Core Version:    0.7.0.1
  */

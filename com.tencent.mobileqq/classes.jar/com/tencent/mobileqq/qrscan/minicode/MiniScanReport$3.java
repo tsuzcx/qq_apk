@@ -16,8 +16,8 @@ final class MiniScanReport$3
     localHashMap.put("report_key_detect_support_type", String.valueOf(this.a));
     localHashMap.put("report_key_detect_init_stauts", String.valueOf(this.b));
     localHashMap.put("report_key_qq_version", "0");
-    localHashMap.put("report_key_qq_subversion", "5295");
-    int i = MiniScanReport.a();
+    localHashMap.put("report_key_qq_subversion", "5770");
+    int i = MiniScanReport.d();
     localHashMap.put("report_key_detect_init_process", String.valueOf(i));
     MiniScanReport.a(localHashMap);
     StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance("", "report_tag_detect_supporttype", true, 0L, 0L, localHashMap, "");
@@ -28,7 +28,7 @@ final class MiniScanReport$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.minicode.MiniScanReport.3
  * JD-Core Version:    0.7.0.1
  */

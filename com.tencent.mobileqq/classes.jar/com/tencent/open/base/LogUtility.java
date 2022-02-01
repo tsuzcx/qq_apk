@@ -4,36 +4,36 @@ import com.tencent.qphone.base.util.QLog;
 
 public class LogUtility
 {
-  protected static String a = "";
   protected static boolean a = true;
+  protected static String b = "";
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append(".*[S|s][I|i][D|d].*");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("|.*==.*");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("|.*[U|u][I|i][N|n].*");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("|.*%3d%3d.*");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("|.*[V|v][K|k][E|e][Y|y]");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
   }
   
   protected static void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (jdField_a_of_type_Boolean)
+    if (a)
     {
       StringBuilder localStringBuilder;
       if (paramInt == 1) {
@@ -135,7 +135,7 @@ public class LogUtility
   
   public static boolean a()
   {
-    return jdField_a_of_type_Boolean;
+    return a;
   }
   
   public static void b(String paramString1, String paramString2)
@@ -170,7 +170,7 @@ public class LogUtility
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.LogUtility
  * JD-Core Version:    0.7.0.1
  */

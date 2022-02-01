@@ -28,54 +28,6 @@ import tencent.im.msg.im_msg_body.GeneralFlags;
 
 public class StreamDataManager
 {
-  public static int a(String paramString)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.a().size();
-      }
-    }
-    return 0;
-  }
-  
-  public static int a(String paramString, short paramShort)
-  {
-    Object localObject = StreamMemoryPool.a();
-    if ((localObject != null) && (((HashMap)localObject).containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)((HashMap)localObject).get(paramString);
-      if (paramString != null)
-      {
-        if (paramShort <= paramString.a().size()) {
-          return ((StreamDataInfo)paramString.a().get(paramShort - 1)).a();
-        }
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("getRecordedSize error shPackSeq: ");
-        ((StringBuilder)localObject).append(paramShort);
-        ((StringBuilder)localObject).append("sfi.getStreamData().size(): ");
-        ((StringBuilder)localObject).append(paramString.a().size());
-        QLog.w("StreamDataManager", 2, ((StringBuilder)localObject).toString());
-      }
-    }
-    return 0;
-  }
-  
-  public static File a(String paramString)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.a();
-      }
-    }
-    return null;
-  }
-  
   public static String a(int paramInt1, int paramInt2)
   {
     HashMap localHashMap = StreamMemoryPool.a();
@@ -86,25 +38,12 @@ public class StreamDataManager
       {
         String str = (String)localIterator.next();
         StreamFileInfo localStreamFileInfo = (StreamFileInfo)localHashMap.get(str);
-        if ((localStreamFileInfo.b() == paramInt1) && (localStreamFileInfo.a() == paramInt2)) {
+        if ((localStreamFileInfo.e() == paramInt1) && (localStreamFileInfo.a() == paramInt2)) {
           return str;
         }
       }
     }
     return null;
-  }
-  
-  public static short a(String paramString)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.c();
-      }
-    }
-    return -1;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, StreamInfo paramStreamInfo, StreamData paramStreamData, long paramLong1, long paramLong2, long paramLong3, long paramLong4, ptt_reserve.ReserveStruct paramReserveStruct)
@@ -157,10 +96,10 @@ public class StreamDataManager
       paramString = (StreamFileInfo)localHashMap.get(paramString);
       if (paramString != null)
       {
-        int i = paramString.a().size();
+        int i = paramString.b().size();
         paramString.a((short)i);
         if (i >= 1) {
-          ((StreamDataInfo)paramString.a().get(paramString.a().size() - 1)).a(true);
+          ((StreamDataInfo)paramString.b().get(paramString.b().size() - 1)).a(true);
         }
       }
     }
@@ -173,7 +112,7 @@ public class StreamDataManager
     {
       paramString = (StreamFileInfo)localHashMap.get(paramString);
       if (paramString != null) {
-        paramString.jdField_a_of_type_Long = paramLong;
+        paramString.b = paramLong;
       }
     }
   }
@@ -190,12 +129,12 @@ public class StreamDataManager
     if ((localObject != null) && (((HashMap)localObject).containsKey(paramString1)))
     {
       localObject = (StreamFileInfo)((HashMap)localObject).get(paramString1);
-      ((StreamFileInfo)localObject).jdField_a_of_type_Boolean = paramBoolean;
+      ((StreamFileInfo)localObject).a = paramBoolean;
       if (localObject != null)
       {
         if (((StreamFileInfo)localObject).a() == 0)
         {
-          localObject = ((StreamFileInfo)localObject).a();
+          localObject = ((StreamFileInfo)localObject).b();
           if ((localObject != null) && (((List)localObject).size() > 0))
           {
             localObject = ((List)localObject).iterator();
@@ -203,14 +142,14 @@ public class StreamDataManager
             while (((Iterator)localObject).hasNext())
             {
               StreamDataInfo localStreamDataInfo = (StreamDataInfo)((Iterator)localObject).next();
-              if ((localStreamDataInfo.a() == localStreamDataInfo.a().length) && (!localStreamDataInfo.b()))
+              if ((localStreamDataInfo.b() == localStreamDataInfo.a().length) && (!localStreamDataInfo.e()))
               {
-                s = localStreamDataInfo.a();
+                s = localStreamDataInfo.c();
                 localStreamDataInfo.b(true);
               }
-              else if ((!localStreamDataInfo.b()) && (localStreamDataInfo.a()))
+              else if ((!localStreamDataInfo.e()) && (localStreamDataInfo.d()))
               {
-                s = localStreamDataInfo.a();
+                s = localStreamDataInfo.c();
                 localStreamDataInfo.b(true);
               }
             }
@@ -316,25 +255,6 @@ public class StreamDataManager
     return false;
   }
   
-  public static boolean a(String paramString)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.jdField_a_of_type_Boolean;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString, short paramShort)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    return (localHashMap == null) || (!localHashMap.containsKey(paramString)) || (((StreamFileInfo)localHashMap.get(paramString)).b() != paramShort);
-  }
-  
   public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt, short paramShort)
   {
     return a(paramString, paramArrayOfByte, paramInt, paramShort, false);
@@ -362,13 +282,13 @@ public class StreamDataManager
       Object localObject2;
       if (localStreamFileInfo.a() == 0)
       {
-        paramString = localStreamFileInfo.a();
+        paramString = localStreamFileInfo.b();
         if (paramString.size() == 0)
         {
-          localObject1 = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
+          localObject1 = new StreamDataInfo(localStreamFileInfo.d);
           System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), 0, paramInt);
           ((StreamDataInfo)localObject1).a(paramInt);
-          paramShort = localStreamFileInfo.b();
+          paramShort = localStreamFileInfo.f();
           s = (short)(paramShort + 1);
           ((StreamDataInfo)localObject1).a(paramShort);
           paramString.add(localObject1);
@@ -377,38 +297,38 @@ public class StreamDataManager
         }
         localObject1 = (StreamDataInfo)paramString.get(paramString.size() - 1);
         localObject2 = ((StreamDataInfo)localObject1).a();
-        if (((StreamDataInfo)localObject1).a() < localObject2.length)
+        if (((StreamDataInfo)localObject1).b() < localObject2.length)
         {
-          i = localObject2.length - ((StreamDataInfo)localObject1).a();
+          i = localObject2.length - ((StreamDataInfo)localObject1).b();
           if (i >= paramInt)
           {
-            System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), ((StreamDataInfo)localObject1).a(), paramInt);
-            ((StreamDataInfo)localObject1).a(((StreamDataInfo)localObject1).a() + paramInt);
+            System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), ((StreamDataInfo)localObject1).b(), paramInt);
+            ((StreamDataInfo)localObject1).a(((StreamDataInfo)localObject1).b() + paramInt);
             return true;
           }
           if (paramInt <= i)
           {
-            System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), ((StreamDataInfo)localObject1).a(), paramInt);
-            ((StreamDataInfo)localObject1).a(((StreamDataInfo)localObject1).a() + paramInt);
+            System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), ((StreamDataInfo)localObject1).b(), paramInt);
+            ((StreamDataInfo)localObject1).a(((StreamDataInfo)localObject1).b() + paramInt);
             return true;
           }
-          System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), ((StreamDataInfo)localObject1).a(), i);
+          System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), ((StreamDataInfo)localObject1).b(), i);
           ((StreamDataInfo)localObject1).a(((StreamDataInfo)localObject1).a().length);
           paramInt -= i;
-          localObject1 = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
+          localObject1 = new StreamDataInfo(localStreamFileInfo.d);
           System.arraycopy(paramArrayOfByte, i, ((StreamDataInfo)localObject1).a(), 0, paramInt);
           ((StreamDataInfo)localObject1).a(paramInt);
-          paramShort = localStreamFileInfo.b();
+          paramShort = localStreamFileInfo.f();
           s = (short)(paramShort + 1);
           ((StreamDataInfo)localObject1).a(paramShort);
           paramString.add(localObject1);
           localStreamFileInfo.b(s);
           return true;
         }
-        localObject1 = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
+        localObject1 = new StreamDataInfo(localStreamFileInfo.d);
         System.arraycopy(paramArrayOfByte, 0, ((StreamDataInfo)localObject1).a(), 0, paramInt);
         ((StreamDataInfo)localObject1).a(paramInt);
-        paramShort = localStreamFileInfo.b();
+        paramShort = localStreamFileInfo.f();
         short s = (short)(paramShort + 1);
         ((StreamDataInfo)localObject1).a(paramShort);
         paramString.add(localObject1);
@@ -417,34 +337,34 @@ public class StreamDataManager
       }
       if (localStreamFileInfo.a() == 1)
       {
-        localObject2 = localStreamFileInfo.a();
+        localObject2 = localStreamFileInfo.b();
         paramInt = paramArrayOfByte.length;
         while (paramInt > 0)
         {
           if (((List)localObject2).size() == 0)
           {
-            paramString = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
+            paramString = new StreamDataInfo(localStreamFileInfo.d);
             ((List)localObject2).add(paramString);
           }
           else
           {
             localObject1 = (StreamDataInfo)((List)localObject2).get(((List)localObject2).size() - 1);
             paramString = (String)localObject1;
-            if (((StreamDataInfo)localObject1).a().length - ((StreamDataInfo)localObject1).a() <= 0)
+            if (((StreamDataInfo)localObject1).a().length - ((StreamDataInfo)localObject1).b() <= 0)
             {
-              paramString = new StreamDataInfo(localStreamFileInfo.jdField_a_of_type_Int);
+              paramString = new StreamDataInfo(localStreamFileInfo.d);
               ((List)localObject2).add(paramString);
             }
           }
-          int k = paramString.a().length - paramString.a();
+          int k = paramString.a().length - paramString.b();
           int j = k;
           if (k >= paramInt) {
             j = paramInt;
           }
-          System.arraycopy(paramArrayOfByte, i, paramString.a(), paramString.a(), j);
+          System.arraycopy(paramArrayOfByte, i, paramString.a(), paramString.b(), j);
           i += j;
           paramInt -= j;
-          paramString.a(paramString.a() + j);
+          paramString.a(paramString.b() + j);
           paramString.a(paramShort);
         }
         localStreamFileInfo.b((short)(paramShort + 1));
@@ -471,7 +391,32 @@ public class StreamDataManager
     return false;
   }
   
-  public static byte[] a(String paramString, short paramShort)
+  public static File b(String paramString)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.c();
+      }
+    }
+    return null;
+  }
+  
+  public static void b(String paramString, long paramLong)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.c = paramLong;
+      }
+    }
+  }
+  
+  public static byte[] b(String paramString, short paramShort)
   {
     Object localObject = StreamMemoryPool.a();
     if ((localObject != null) && (((HashMap)localObject).containsKey(paramString)))
@@ -479,9 +424,9 @@ public class StreamDataManager
       paramString = (StreamFileInfo)((HashMap)localObject).get(paramString);
       if (paramString != null)
       {
-        localObject = (StreamDataInfo)paramString.a().get(paramShort - 1);
+        localObject = (StreamDataInfo)paramString.b().get(paramShort - 1);
         paramString = ((StreamDataInfo)localObject).a();
-        paramShort = ((StreamDataInfo)localObject).a();
+        paramShort = ((StreamDataInfo)localObject).b();
         if (paramShort != paramString.length)
         {
           localObject = new byte[paramShort];
@@ -494,100 +439,14 @@ public class StreamDataManager
     return null;
   }
   
-  public static int b(String paramString)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.b();
-      }
-    }
-    return -1;
-  }
-  
-  public static short b(String paramString)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.a();
-      }
-    }
-    return 0;
-  }
-  
-  public static void b(String paramString)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a();
-      }
-    }
-  }
-  
-  public static void b(String paramString, long paramLong)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.b = paramLong;
-      }
-    }
-  }
-  
-  public static boolean b(String paramString)
-  {
-    List localList = StreamMemoryPool.a();
-    if ((localList != null) && (!localList.contains(paramString)))
-    {
-      localList.add(paramString);
-      return true;
-    }
-    return false;
-  }
-  
   public static int c(String paramString)
   {
     HashMap localHashMap = StreamMemoryPool.a();
     if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
     {
       paramString = (StreamFileInfo)localHashMap.get(paramString);
-      if (paramString != null)
-      {
-        int j = paramString.a().size();
-        int i = j;
-        if (j >= 1)
-        {
-          paramString = paramString.a();
-          int k = j - 1;
-          i = j;
-          if (!((StreamDataInfo)paramString.get(k)).b()) {
-            i = k;
-          }
-        }
-        return i;
-      }
-    }
-    return 0;
-  }
-  
-  public static short c(String paramString)
-  {
-    HashMap localHashMap = StreamMemoryPool.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (StreamFileInfo)localHashMap.get(paramString);
       if (paramString != null) {
-        return paramString.b();
+        return paramString.b().size();
       }
     }
     return 0;
@@ -605,9 +464,150 @@ public class StreamDataManager
     }
   }
   
-  public static boolean c(String paramString)
+  public static boolean c(String paramString, short paramShort)
   {
-    List localList = StreamMemoryPool.a();
+    HashMap localHashMap = StreamMemoryPool.a();
+    return (localHashMap == null) || (!localHashMap.containsKey(paramString)) || (((StreamFileInfo)localHashMap.get(paramString)).f() != paramShort);
+  }
+  
+  public static int d(String paramString)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.e();
+      }
+    }
+    return -1;
+  }
+  
+  public static int d(String paramString, short paramShort)
+  {
+    Object localObject = StreamMemoryPool.a();
+    if ((localObject != null) && (((HashMap)localObject).containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)((HashMap)localObject).get(paramString);
+      if (paramString != null)
+      {
+        if (paramShort <= paramString.b().size()) {
+          return ((StreamDataInfo)paramString.b().get(paramShort - 1)).b();
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getRecordedSize error shPackSeq: ");
+        ((StringBuilder)localObject).append(paramShort);
+        ((StringBuilder)localObject).append("sfi.getStreamData().size(): ");
+        ((StringBuilder)localObject).append(paramString.b().size());
+        QLog.w("StreamDataManager", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+    return 0;
+  }
+  
+  public static short e(String paramString)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.g();
+      }
+    }
+    return -1;
+  }
+  
+  public static void f(String paramString)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.h();
+      }
+    }
+  }
+  
+  public static short g(String paramString)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.d();
+      }
+    }
+    return 0;
+  }
+  
+  public static int h(String paramString)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null)
+      {
+        int j = paramString.b().size();
+        int i = j;
+        if (j >= 1)
+        {
+          paramString = paramString.b();
+          int k = j - 1;
+          i = j;
+          if (!((StreamDataInfo)paramString.get(k)).e()) {
+            i = k;
+          }
+        }
+        return i;
+      }
+    }
+    return 0;
+  }
+  
+  public static boolean i(String paramString)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.a;
+      }
+    }
+    return false;
+  }
+  
+  public static short j(String paramString)
+  {
+    HashMap localHashMap = StreamMemoryPool.a();
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    {
+      paramString = (StreamFileInfo)localHashMap.get(paramString);
+      if (paramString != null) {
+        return paramString.f();
+      }
+    }
+    return 0;
+  }
+  
+  public static boolean k(String paramString)
+  {
+    List localList = StreamMemoryPool.b();
+    if ((localList != null) && (!localList.contains(paramString)))
+    {
+      localList.add(paramString);
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean l(String paramString)
+  {
+    List localList = StreamMemoryPool.b();
     if ((localList != null) && (localList.contains(paramString)))
     {
       localList.remove(paramString);
@@ -616,15 +616,15 @@ public class StreamDataManager
     return false;
   }
   
-  public static boolean d(String paramString)
+  public static boolean m(String paramString)
   {
-    List localList = StreamMemoryPool.a();
+    List localList = StreamMemoryPool.b();
     return (localList != null) && (localList.contains(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.streamtransfile.StreamDataManager
  * JD-Core Version:    0.7.0.1
  */

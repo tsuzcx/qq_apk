@@ -25,9 +25,9 @@ class LocationShareRepository$1
   public void a(LocationRoom.RoomKey paramRoomKey, LocationRoom.Venue paramVenue, List<LocationItem> paramList)
   {
     UserLocationsUpdateBean localUserLocationsUpdateBean = new UserLocationsUpdateBean();
-    localUserLocationsUpdateBean.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey = paramRoomKey;
-    localUserLocationsUpdateBean.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue = paramVenue;
-    localUserLocationsUpdateBean.jdField_a_of_type_JavaUtilList = paramList;
+    localUserLocationsUpdateBean.a = paramRoomKey;
+    localUserLocationsUpdateBean.b = paramVenue;
+    localUserLocationsUpdateBean.c = paramList;
     LocationShareRepository.a(this.a).a.postValue(localUserLocationsUpdateBean);
   }
   
@@ -38,7 +38,7 @@ class LocationShareRepository$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.LocationShareRepository.1
  * JD-Core Version:    0.7.0.1
  */

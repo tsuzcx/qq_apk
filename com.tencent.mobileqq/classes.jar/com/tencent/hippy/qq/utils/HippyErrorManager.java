@@ -81,7 +81,7 @@ public class HippyErrorManager
   {
     QLog.i("HippyErrorManager", 1, "clearAllFlags");
     this.mSharedPreferences.edit().clear().commit();
-    this.mSharedPreferences.edit().putString("qqVersion", "8.7.0.5295").commit();
+    this.mSharedPreferences.edit().putString("qqVersion", "8.8.17.5770").commit();
     int i = ((IHippyLibrary)QRoute.api(IHippyLibrary.class)).getHippyLibrayId();
     if (i != 0) {
       this.mSharedPreferences.edit().putInt("soVersion", i).commit();
@@ -126,10 +126,10 @@ public class HippyErrorManager
     String str = this.mSharedPreferences.getString("qqVersion", null);
     if (TextUtils.isEmpty(str))
     {
-      this.mSharedPreferences.edit().putString("qqVersion", "8.7.0.5295").commit();
+      this.mSharedPreferences.edit().putString("qqVersion", "8.8.17.5770").commit();
       return false;
     }
-    return "8.7.0.5295".equals(str) ^ true;
+    return "8.8.17.5770".equals(str) ^ true;
   }
   
   public void endAllOperation()
@@ -244,7 +244,7 @@ public class HippyErrorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.utils.HippyErrorManager
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class WerewolvesMsgUtilDelegateImpl
   {
     if (paramMessageRecord.istroop == 1)
     {
-      paramMessageRecord = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getHotChatMng(true).a(paramMessageRecord.frienduin);
+      paramMessageRecord = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getHotChatMng(true).c(paramMessageRecord.frienduin);
       if ((paramMessageRecord != null) && (paramMessageRecord.isGameRoom)) {
         return true;
       }
@@ -24,7 +24,7 @@ public class WerewolvesMsgUtilDelegateImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.impl.WerewolvesMsgUtilDelegateImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -18,19 +18,19 @@ class IntimateContentItemMutualMarkView$1$1
   @RequiresApi(api=16)
   public void run()
   {
-    if ((IntimateContentItemMutualMarkView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView$1.this$0) != null) && (IntimateContentItemMutualMarkView.FriendMaskAdapter.a(IntimateContentItemMutualMarkView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView$1.this$0)) != null))
+    if ((IntimateContentItemMutualMarkView.a(this.c.this$0) != null) && (IntimateContentItemMutualMarkView.FriendMaskAdapter.a(IntimateContentItemMutualMarkView.a(this.c.this$0)) != null))
     {
-      int i = IntimateContentItemMutualMarkView.FriendMaskAdapter.a(IntimateContentItemMutualMarkView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView$1.this$0)).indexOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView$1.a);
-      RelativeLayout localRelativeLayout = (RelativeLayout)IntimateContentItemMutualMarkView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView$1.this$0).getChild(i);
+      int i = IntimateContentItemMutualMarkView.FriendMaskAdapter.a(IntimateContentItemMutualMarkView.a(this.c.this$0)).indexOf(this.c.a);
+      RelativeLayout localRelativeLayout = (RelativeLayout)IntimateContentItemMutualMarkView.b(this.c.this$0).getChild(i);
       if (localRelativeLayout != null)
       {
-        Object localObject = (ImageView)localRelativeLayout.findViewById(2131367338);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView$1.a.type == 17) {
+        Object localObject = (ImageView)localRelativeLayout.findViewById(2131433795);
+        if (this.c.a.type == 17) {
           ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
         } else {
           ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_CENTER);
         }
-        Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        Bitmap localBitmap = this.a;
         if (localBitmap != null) {
           ((ImageView)localObject).setImageBitmap(localBitmap);
         }
@@ -44,7 +44,7 @@ class IntimateContentItemMutualMarkView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemMutualMarkView.1.1
  * JD-Core Version:    0.7.0.1
  */

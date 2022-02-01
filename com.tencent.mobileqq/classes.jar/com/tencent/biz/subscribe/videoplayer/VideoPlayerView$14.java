@@ -12,11 +12,11 @@ class VideoPlayerView$14
   
   public void onClick(View paramView)
   {
-    if (VideoPlayerView.a(this.a) != null)
+    if (VideoPlayerView.l(this.a) != null)
     {
-      VideoPlayerView.a(this.a).b();
-      VideoPlayerView.g(this.a);
-      VideoPlayerView.a(this.a, false);
+      VideoPlayerView.l(this.a).c();
+      VideoPlayerView.r(this.a);
+      VideoPlayerView.d(this.a, false);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.pts.ui;
 
 import android.text.SpannableStringBuilder;
-import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.RichTextParser;
 import com.tencent.mobileqq.kandian.biz.pts.util.PTSRichTextStyleParser;
 import com.tencent.pts.core.PTSAppInstance;
@@ -13,7 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class PTSNodeRichText
-  extends PTSNodeTextBase<PTSRichTextNativeView>
+  extends PTSNodeTextBase
   implements IRichTextMeasureText
 {
   private static final String TAG = "PTSNodeRichText";
@@ -21,7 +20,7 @@ public class PTSNodeRichText
   
   protected PTSNodeRichText(PTSAppInstance paramPTSAppInstance)
   {
-    super(paramPTSAppInstance);
+    super(paramPTSAppInstance, "rich-text", null);
   }
   
   private JSONArray getRichData(Object paramObject)
@@ -46,7 +45,7 @@ public class PTSNodeRichText
     if ((this.richData instanceof JSONArray))
     {
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-      RichTextParser.parse((TextView)getView(), localSpannableStringBuilder, this.richData);
+      RichTextParser.parse((PTSRichTextNativeView)getView(), localSpannableStringBuilder, this.richData);
       ((PTSRichTextNativeView)getView()).setText(localSpannableStringBuilder);
       ((PTSRichTextNativeView)getView()).setTruncateAttr(RichTextParser.getTruncate());
     }
@@ -94,7 +93,7 @@ public class PTSNodeRichText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.ui.PTSNodeRichText
  * JD-Core Version:    0.7.0.1
  */

@@ -42,11 +42,11 @@ import java.util.Random;
 public abstract class AudioTransClientInterfaceHandler
   extends BusinessHandler
 {
-  private int jdField_a_of_type_Int;
-  private AudioTrans jdField_a_of_type_ComTencentAvBusinessHandlerAudioTrans = AudioTrans.a();
-  private AudioTransClientInfoHandlerExtend.InfoInterfaceData jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData = AudioTransClientInfoHandlerExtend.InfoInterfaceData.a();
-  private Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private int b;
+  private AudioTrans a = AudioTrans.a();
+  private AudioTransClientInfoHandlerExtend.InfoInterfaceData b = AudioTransClientInfoHandlerExtend.InfoInterfaceData.a();
+  private Random c = new Random();
+  private int d;
+  private int e;
   
   public AudioTransClientInterfaceHandler(AppInterface paramAppInterface)
   {
@@ -56,7 +56,7 @@ public abstract class AudioTransClientInterfaceHandler
   private AudioTransClientTransInfo.IntHead a(int paramInt1, int paramInt2)
   {
     AudioTransClientTransInfo.IntHead localIntHead = new AudioTransClientTransInfo.IntHead();
-    localIntHead.str_session_id.set(String.valueOf(this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData.jdField_a_of_type_Long));
+    localIntHead.str_session_id.set(String.valueOf(this.b.b));
     localIntHead.str_uin.set(this.appRuntime.getAccount());
     localIntHead.uint32_seq.set(paramInt2);
     localIntHead.enum_body_type.set(paramInt1);
@@ -106,7 +106,7 @@ public abstract class AudioTransClientInterfaceHandler
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTrans;
+    Object localObject1 = this.a;
     localObject1 = AudioTrans.a(paramArrayOfByte);
     paramArrayOfByte = ((AudioTrans.PBBytes)localObject1).a;
     localObject1 = ((AudioTrans.PBBytes)localObject1).b;
@@ -178,14 +178,14 @@ public abstract class AudioTransClientInterfaceHandler
   
   public void a(String paramString1, long paramLong, String paramString2, byte[] paramArrayOfByte)
   {
-    int j = this.jdField_a_of_type_Int;
+    int j = this.d;
     ToServiceMsg localToServiceMsg = createToServiceMsg(paramString2);
     boolean bool2 = "TransInfo.JoinSession".equals(paramString2);
     boolean bool1 = false;
     int i;
     if (bool2)
     {
-      this.jdField_a_of_type_Int = 0;
+      this.d = 0;
       bool1 = a();
       i = 1;
     }
@@ -200,7 +200,7 @@ public abstract class AudioTransClientInterfaceHandler
     }
     else if ("TransInfo.RawData".equals(paramString2))
     {
-      this.jdField_a_of_type_Int += 1;
+      this.d += 1;
       i = 7;
     }
     else
@@ -209,7 +209,7 @@ public abstract class AudioTransClientInterfaceHandler
     }
     AudioTransClientTransInfo.IntHead localIntHead = a(i, (int)paramLong);
     paramArrayOfByte = a(i, bool1, paramArrayOfByte);
-    AudioTrans localAudioTrans = this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTrans;
+    AudioTrans localAudioTrans = this.a;
     localToServiceMsg.putWupBuffer(AudioTrans.a(localIntHead.toByteArray(), paramArrayOfByte.toByteArray()));
     if (NetworkUtil.isNetworkAvailable(this.appRuntime.getApplicationContext())) {
       sendPbReq(localToServiceMsg);
@@ -226,7 +226,7 @@ public abstract class AudioTransClientInterfaceHandler
     paramArrayOfByte.append("], mSendRawDataCount[");
     paramArrayOfByte.append(j);
     paramArrayOfByte.append("->");
-    paramArrayOfByte.append(this.jdField_a_of_type_Int);
+    paramArrayOfByte.append(this.d);
     paramArrayOfByte.append("], from[");
     paramArrayOfByte.append(paramString1);
     paramArrayOfByte.append("]");
@@ -257,7 +257,7 @@ public abstract class AudioTransClientInterfaceHandler
     QLog.w("AudioTransClientInterfaceHandler", 1, paramObject.toString());
     if (bool)
     {
-      paramObject = this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTrans;
+      paramObject = this.a;
       paramObject = AudioTrans.a(paramFromServiceMsg.getWupBuffer());
       paramFromServiceMsg = paramObject.a;
       paramObject = paramObject.b;
@@ -302,13 +302,13 @@ public abstract class AudioTransClientInterfaceHandler
     ((StringBuilder)localObject).append("]");
     QLog.w("AudioTransClientInterfaceHandler", 1, ((StringBuilder)localObject).toString());
     l = 0L;
-    k = this.b;
+    k = this.e;
     if (j == 2)
     {
       paramFromServiceMsg = (AudioTransClientTransInfo.IntC2SJoinSessionRsp)paramObject.msg_join_session_rsp.get();
       m = paramFromServiceMsg.uint32_combine_num.get();
       n = paramFromServiceMsg.uint32_heartbeat_duration.get();
-      this.b = 0;
+      this.e = 0;
       paramFromServiceMsg = new StringBuilder();
       paramFromServiceMsg.append("combineNum = ");
       paramFromServiceMsg.append(m);
@@ -318,23 +318,23 @@ public abstract class AudioTransClientInterfaceHandler
     }
     else if (j == 4)
     {
-      this.b = 0;
+      this.e = 0;
       a(i, false, null, l);
     }
     else if (j == 8)
     {
-      this.b += 1;
+      this.e += 1;
     }
     else if (j == 6)
     {
       paramFromServiceMsg = (AudioTransClientTransInfo.IntC2SChangeSessionRsp)paramObject.msg_change_session_rsp.get();
-      this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData.jdField_a_of_type_Int = paramFromServiceMsg.enum_channel_type.get();
-      if (AudioHelper.b())
+      this.b.a = paramFromServiceMsg.enum_channel_type.get();
+      if (AudioHelper.e())
       {
         m = paramFromServiceMsg.uint32_combine_num.get();
         paramObject = new StringBuilder();
         paramObject.append("enum_channel_type = ");
-        paramObject.append(this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData.jdField_a_of_type_Int);
+        paramObject.append(this.b.a);
         QLog.d("AudioTransClientInterfaceHandler", 2, paramObject.toString());
         paramObject = new StringBuilder();
         paramObject.append("uint32_combine_num = ");
@@ -346,7 +346,7 @@ public abstract class AudioTransClientInterfaceHandler
           paramObject = (AudioTransCommon.NetAddr)paramFromServiceMsg.next();
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("fixed32_IP = ");
-          AudioTrans localAudioTrans = this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTrans;
+          AudioTrans localAudioTrans = this.a;
           ((StringBuilder)localObject).append(AudioTrans.a(paramObject.fixed32_IP.get()));
           QLog.d("AudioTransClientInterfaceHandler", 2, ((StringBuilder)localObject).toString());
           localObject = new StringBuilder();
@@ -359,7 +359,7 @@ public abstract class AudioTransClientInterfaceHandler
           QLog.d("AudioTransClientInterfaceHandler", 2, ((StringBuilder)localObject).toString());
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("fixed32_inner_IP = ");
-          localAudioTrans = this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTrans;
+          localAudioTrans = this.a;
           ((StringBuilder)localObject).append(AudioTrans.a(paramObject.fixed32_inner_IP.get()));
           QLog.d("AudioTransClientInterfaceHandler", 2, ((StringBuilder)localObject).toString());
         }
@@ -377,7 +377,7 @@ public abstract class AudioTransClientInterfaceHandler
     paramFromServiceMsg.append("], mReceiveRawDataCount[");
     paramFromServiceMsg.append(k);
     paramFromServiceMsg.append("->");
-    paramFromServiceMsg.append(this.b);
+    paramFromServiceMsg.append(this.e);
     paramFromServiceMsg.append("]");
     QLog.w("AudioTransClientInterfaceHandler", 1, paramFromServiceMsg.toString());
     return;

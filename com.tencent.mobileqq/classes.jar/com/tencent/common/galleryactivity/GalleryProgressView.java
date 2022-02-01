@@ -14,18 +14,18 @@ import com.tencent.mobileqq.widget.PhotoProgressDrawable;
 public class GalleryProgressView
   implements AbstractProgressView
 {
-  int jdField_a_of_type_Int = 0;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  PhotoProgressDrawable jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  ImageView a;
+  PhotoProgressDrawable b;
+  Rect c;
+  boolean d = false;
+  boolean e = false;
+  int f = 0;
   
   private void a(Activity paramActivity)
   {
     try
     {
-      localBitmap1 = BitmapFactory.decodeResource(paramActivity.getResources(), 2130848857);
+      localBitmap1 = BitmapFactory.decodeResource(paramActivity.getResources(), 2130850524);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -39,71 +39,66 @@ public class GalleryProgressView
     if (localBitmap1 == null) {
       localBitmap2 = Bitmap.createBitmap(4, 4, Bitmap.Config.ARGB_8888);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable = new PhotoProgressDrawable(localBitmap2, (int)(paramActivity.getResources().getDisplayMetrics().density * 12.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable.setLevel(0);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
+    this.b = new PhotoProgressDrawable(localBitmap2, (int)(paramActivity.getResources().getDisplayMetrics().density * 12.0F));
+    this.b.setLevel(0);
+    this.c = new Rect(0, 0, 0, 0);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    if ((this.b) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 4))
+    this.d = true;
+    if ((this.e) && (this.a.getVisibility() == 4))
     {
-      if ((this.jdField_a_of_type_AndroidGraphicsRect.width() == 0) || (this.jdField_a_of_type_AndroidGraphicsRect.height() == 0))
+      if ((this.c.width() == 0) || (this.c.height() == 0))
       {
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable);
+        this.c.set(0, 0, this.a.getWidth(), this.a.getHeight());
+        this.b.setBounds(this.c);
+        this.a.setImageDrawable(this.b);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.setVisibility(0);
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = true;
-    if (this.jdField_a_of_type_Boolean)
+    this.f = paramInt;
+    this.e = true;
+    if (this.d)
     {
-      if ((this.jdField_a_of_type_AndroidGraphicsRect.width() == 0) || (this.jdField_a_of_type_AndroidGraphicsRect.height() == 0))
+      if ((this.c.width() == 0) || (this.c.height() == 0))
       {
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable);
+        this.c.set(0, 0, this.a.getWidth(), this.a.getHeight());
+        this.b.setBounds(this.c);
+        this.a.setImageDrawable(this.b);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.setVisibility(0);
     }
     if ((paramInt >= 0) && (paramInt < 100))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable.setLevel(paramInt * 100);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable.invalidateSelf();
+      this.b.setLevel(paramInt * 100);
+      this.b.invalidateSelf();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable.a();
+    this.b.a();
   }
   
   public void a(Activity paramActivity, ImageView paramImageView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.a = paramImageView;
     a(paramActivity);
   }
   
   public void a(Activity paramActivity, AbstractGalleryScene paramAbstractGalleryScene)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)paramAbstractGalleryScene.a()).findViewById(2131373163));
+    this.a = ((ImageView)((RelativeLayout)paramAbstractGalleryScene.C()).findViewById(2131440773));
     a(paramActivity);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.d = false;
+    if (this.a.getVisibility() == 0) {
+      this.a.setVisibility(4);
     }
   }
   
@@ -111,28 +106,33 @@ public class GalleryProgressView
   {
     if ((paramInt >= 0) && (paramInt <= 100))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable.setLevel(paramInt * 100);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable.invalidateSelf();
+      this.b.setLevel(paramInt * 100);
+      this.b.invalidateSelf();
     }
-  }
-  
-  public boolean b()
-  {
-    return this.b;
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.b = false;
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.f = 0;
+    this.e = false;
+    if (this.a.getVisibility() == 0) {
+      this.a.setVisibility(4);
     }
+  }
+  
+  public boolean d()
+  {
+    return this.d;
+  }
+  
+  public boolean e()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.GalleryProgressView
  * JD-Core Version:    0.7.0.1
  */

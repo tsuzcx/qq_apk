@@ -12,7 +12,7 @@ class BaseStageView$3
   
   public void onClick(View paramView)
   {
-    this.a.a().a();
+    this.a.getPresenter().c();
     ReportController.b(null, "dc00898", "", "", "0X800B04A", "0X800B04A", 2, 0, "", "", "", "");
   }
 }

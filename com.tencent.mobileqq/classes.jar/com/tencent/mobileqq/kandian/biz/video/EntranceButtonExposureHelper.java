@@ -12,37 +12,37 @@ import java.util.Calendar;
 
 public class EntranceButtonExposureHelper
 {
-  private static final EntranceButtonExposureHelper jdField_a_of_type_ComTencentMobileqqKandianBizVideoEntranceButtonExposureHelper = new EntranceButtonExposureHelper();
-  private static final String jdField_a_of_type_JavaLangString;
-  private int jdField_a_of_type_Int = 0;
+  private static final String a;
+  private static final EntranceButtonExposureHelper d = new EntranceButtonExposureHelper();
   private int b = 0;
+  private int c = 0;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Q.readinjoy.video");
     localStringBuilder.append(EntranceButtonExposureHelper.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   private EntranceButtonExposureHelper()
   {
-    if (a())
+    if (d())
     {
-      this.jdField_a_of_type_Int = a("entrance_button_day_display_count");
-      this.b = a("entrance_jump_app_display_count");
+      this.b = a("entrance_button_day_display_count");
+      this.c = a("entrance_jump_app_display_count");
     }
     else
     {
-      this.jdField_a_of_type_Int = 0;
       this.b = 0;
+      this.c = 0;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("EntranceButtonExposureHelper() mDayDisplayCount:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",mEntranceDownloadInfoDisplayCount:");
     localStringBuilder.append(this.b);
-    a(localStringBuilder.toString());
+    localStringBuilder.append(",mEntranceDownloadInfoDisplayCount:");
+    localStringBuilder.append(this.c);
+    b(localStringBuilder.toString());
   }
   
   private int a(String paramString)
@@ -52,27 +52,27 @@ public class EntranceButtonExposureHelper
   
   public static EntranceButtonExposureHelper a()
   {
-    return jdField_a_of_type_ComTencentMobileqqKandianBizVideoEntranceButtonExposureHelper;
-  }
-  
-  private static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, paramString);
-    }
+    return d;
   }
   
   private void a(String paramString, int paramInt)
   {
     if (RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), true, true) == null)
     {
-      a("writeToSP() failed");
+      b("writeToSP() failed");
       return;
     }
     RIJSPUtils.a(paramString, Integer.valueOf(paramInt));
   }
   
-  private static boolean a()
+  private static void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, paramString);
+    }
+  }
+  
+  private static boolean d()
   {
     Object localObject1 = Calendar.getInstance();
     int i = ((Calendar)localObject1).get(1);
@@ -86,14 +86,14 @@ public class EntranceButtonExposureHelper
     Object localObject2 = RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), true, true);
     if (localObject2 == null)
     {
-      a("checkIsToday() failed");
+      b("checkIsToday() failed");
       return false;
     }
     String str = ((SharedPreferences)localObject2).getString("entrance_button_daily", null);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("checkIsToday localDate = ");
     localStringBuilder.append(str);
-    a(localStringBuilder.toString());
+    b(localStringBuilder.toString());
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals(str))) {
       return true;
     }
@@ -103,50 +103,32 @@ public class EntranceButtonExposureHelper
     return false;
   }
   
-  public int a()
-  {
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getDayDisplayCount() mDayDisplayCount:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      a(localStringBuilder.toString());
-      int i = this.jdField_a_of_type_Int;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
   public void a(IEntranceButtonDataSource paramIEntranceButtonDataSource)
   {
     try
     {
-      boolean bool = a();
+      boolean bool = d();
       if (bool) {
-        this.jdField_a_of_type_Int += 1;
+        this.b += 1;
       } else {
-        this.jdField_a_of_type_Int = 0;
+        this.b = 0;
       }
-      a("entrance_button_day_display_count", this.jdField_a_of_type_Int);
+      a("entrance_button_day_display_count", this.b);
       if ((paramIEntranceButtonDataSource instanceof VideoInfo.EntranceDownloadInfo))
       {
         if (bool) {
-          this.b += 1;
+          this.c += 1;
         } else {
-          this.b = 0;
+          this.c = 0;
         }
-        a("entrance_jump_app_display_count", this.b);
+        a("entrance_jump_app_display_count", this.c);
       }
       paramIEntranceButtonDataSource = new StringBuilder();
       paramIEntranceButtonDataSource.append("addToCount() mDayDisplayCount:");
-      paramIEntranceButtonDataSource.append(this.jdField_a_of_type_Int);
-      paramIEntranceButtonDataSource.append("，mEntranceDownloadInfoDisplayCount：");
       paramIEntranceButtonDataSource.append(this.b);
-      a(paramIEntranceButtonDataSource.toString());
+      paramIEntranceButtonDataSource.append("，mEntranceDownloadInfoDisplayCount：");
+      paramIEntranceButtonDataSource.append(this.c);
+      b(paramIEntranceButtonDataSource.toString());
       return;
     }
     finally {}
@@ -156,7 +138,25 @@ public class EntranceButtonExposureHelper
   {
     try
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDayDisplayCount() mDayDisplayCount:");
+      localStringBuilder.append(this.b);
+      b(localStringBuilder.toString());
       int i = this.b;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public int c()
+  {
+    try
+    {
+      int i = this.c;
       return i;
     }
     finally
@@ -168,7 +168,7 @@ public class EntranceButtonExposureHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.EntranceButtonExposureHelper
  * JD-Core Version:    0.7.0.1
  */

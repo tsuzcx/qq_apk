@@ -7,31 +7,31 @@ import mqq.os.MqqHandler;
 
 public class CenterProcessor
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private ConcurrentHashMap<Integer, AbsBaseProcessor> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private String a;
+  private QQAppInterface b;
+  private ConcurrentHashMap<Integer, AbsBaseProcessor> c = new ConcurrentHashMap();
   
   public CenterProcessor(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramQQAppInterface;
+    this.a = paramString;
     d();
   }
   
   private void d()
   {
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = this.c;
     if (localConcurrentHashMap != null)
     {
-      localConcurrentHashMap.put(Integer.valueOf(1), new RobotProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(3), new GameCardProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(5), new TroopMgrAppProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
+      localConcurrentHashMap.put(Integer.valueOf(1), new RobotProcessor(this.b, this.a));
+      this.c.put(Integer.valueOf(3), new GameCardProcessor(this.b, this.a));
+      this.c.put(Integer.valueOf(5), new TroopMgrAppProcessor(this.b, this.a));
     }
   }
   
   public void a()
   {
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = this.c;
     if (localConcurrentHashMap != null)
     {
       if (localConcurrentHashMap.isEmpty()) {
@@ -43,7 +43,7 @@ public class CenterProcessor
   
   public void b()
   {
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = this.c;
     if (localConcurrentHashMap != null)
     {
       if (localConcurrentHashMap.isEmpty()) {
@@ -55,7 +55,7 @@ public class CenterProcessor
   
   public void c()
   {
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = this.c;
     if (localConcurrentHashMap != null)
     {
       if (localConcurrentHashMap.isEmpty()) {
@@ -67,7 +67,7 @@ public class CenterProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.redpoint.troopsettingredpoint.CenterProcessor
  * JD-Core Version:    0.7.0.1
  */

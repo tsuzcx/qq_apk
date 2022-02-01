@@ -55,11 +55,16 @@ public class MiniProgramLpReportDC04239
   public static final String DESKTOP_RESERVES_ACTION_CLICK = "click";
   public static final String DESKTOP_RESERVES_ACTION_CLOSE = "close";
   public static final String DESKTOP_RESERVES_ACTION_EXPO = "expo";
+  public static final String DESKTOP_RESERVES_ACTION_SHOW = "show";
   public static final String DESKTOP_SEARCH_ACTION_TYPE = "desktop";
   public static final String DESKTOP_SEARCH_SUB_ACTION_BUTTON = "search_button";
   public static final String DESKTOP_SEARCH_SUB_ACTION_CLICK = "result_click";
   public static final String DESKTOP_SEARCH_SUB_ACTION_EXPOSE = "result_expo";
   public static final String DESKTOP_SEARCH_SUB_ACTION_TYPE = "search";
+  public static final String DETAIN_DIALOG_ACTION_TYPE = "custom_popup";
+  public static final String DETAIN_DIALOG_SUB_ACTION_CLICK_L = "left_icon";
+  public static final String DETAIN_DIALOG_SUB_ACTION_CLICK_R = "right_icon";
+  public static final String DETAIN_DIALOG_SUB_ACTION_POPUP = "popup";
   public static final String DROP_DOWN_ACTION = "drop_down";
   public static final String DROP_DOWN_RESERVERS_DELETE = "delete";
   public static final String DROP_DOWN_RESERVERS_SETTOP_OFF = "settop_off";
@@ -74,6 +79,11 @@ public class MiniProgramLpReportDC04239
   public static final String DROP_GUIDE_DIALOG_RESERVES_CLICK = "click";
   public static final String DROP_GUIDE_DIALOG_RESERVES_EXPOSE = "expo";
   public static final String DROP_GUIDE_DIALOG_SUB_ACTION_TYPE = "popup";
+  public static final String FILE_MATERIAL_ACTION_CLICK = "click";
+  public static final String FILE_MATERIAL_ACTION_EXPOSE = "expo";
+  public static final String FILE_MATERIAL_ACTION_TYPE = "aio_file";
+  public static final String FILE_MATERIAL_SUB_ACTION_LIST = "miniprogram_list";
+  public static final String FILE_MATERIAL_SUB_ACTION_MENU = "miniprogram_open";
   public static final String GAME_INNER_ACTION = "game_inner";
   public static final String INNER_SUB_ACTION_LOGIN = "login";
   public static final String INNER_SUB_ACTION_REGISTER = "regist";
@@ -141,6 +151,8 @@ public class MiniProgramLpReportDC04239
   public static final String RECENT_COLOR_SIGN_ACTION_REMOVE = "remove_ColorSign";
   public static final String RECENT_COLOR_SIGN_ACTION_TYPE = "addRecentColorSign";
   public static final String RECENT_COLOR_SIGN_SUB_ACTION_TYPE = "recentColorSign_enter";
+  public static final String RESERVES_ACTION_CLICK = "click";
+  public static final String RESERVES_ACTION_EXPO = "expo";
   public static final String RETAIN_DIALOG_ACTION_TYPE = "minigame_popup";
   public static final String RETAIN_DIALOG_RESERVES_CLICK = "click";
   public static final String RETAIN_DIALOG_RESERVES_EXPOSE = "expo";
@@ -240,7 +252,12 @@ public class MiniProgramLpReportDC04239
     return ("click".equals(paramString)) || ("load".equals(paramString)) || ("load_fail".equals(paramString)) || ("show".equals(paramString)) || ("show_fail".equals(paramString)) || ("finishshow".equals(paramString)) || ("hide".equals(paramString)) || ("unload".equals(paramString)) || ("close".equals(paramString));
   }
   
-  private static void report(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4)
+  private static void report(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    report(paramMiniAppConfig, paramString1, paramString2, paramString3, paramString4, paramString5, "", null, null, null, null);
+  }
+  
+  private static void report(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(MiniProgramReportHelper.newUserInfoEntries());
@@ -256,16 +273,11 @@ public class MiniProgramLpReportDC04239
     } else {
       str2 = null;
     }
-    localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, null, str2, paramString1, paramString2, paramString3, paramString4, null, null, null, null, str1, ""));
+    localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, null, str2, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, null, null, str1, ""));
     localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
     paramMiniAppConfig = MiniProgramReportHelper.newSingleReportData(2, localArrayList, null);
     MiniProgramReporter.getInstance().addData(paramMiniAppConfig);
     MiniProgramReporter.getInstance().flush();
-  }
-  
-  private static void report(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    report(paramMiniAppConfig, paramString1, paramString2, paramString3, paramString4, paramString5, "", null, null, null, null);
   }
   
   public static void report(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
@@ -339,7 +351,12 @@ public class MiniProgramLpReportDC04239
   
   public static void reportAsync(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.7(paramMiniAppConfig, paramString1, paramString2, paramString3, paramString4));
+    reportAsync(paramMiniAppConfig, paramString1, paramString2, paramString3, paramString4, null);
+  }
+  
+  public static void reportAsync(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.7(paramMiniAppConfig, paramString1, paramString2, paramString3, paramString4, paramString5));
   }
   
   public static void reportAsync(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -393,20 +410,9 @@ public class MiniProgramLpReportDC04239
     MiniProgramReporter.getInstance().flush();
   }
   
-  public static void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4)
+  public static void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    reportWithGroupId(null, paramString1, paramString2, paramString3, "", paramString4);
-  }
-  
-  public static void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
-  {
-    paramString1 = new ArrayList();
-    paramString1.addAll(MiniProgramReportHelper.newUserInfoEntries());
-    paramString1.addAll(MiniProgramReportHelper.newQQqunInfoBusinessEntries(paramString5, paramString6, paramString7, "", paramString8));
-    paramString1.addAll(MiniProgramReportHelper.newGenericEntries());
-    paramString1 = MiniProgramReportHelper.newSingleReportData(2, paramString1, null);
-    MiniProgramReporter.getInstance().addData(paramString1);
-    MiniProgramReporter.getInstance().flush();
+    reportWithGroupId(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
   }
   
   public static void reportDropDown(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2)
@@ -470,9 +476,9 @@ public class MiniProgramLpReportDC04239
     MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.1(paramString3, paramString4, paramString5, paramString1, paramMiniAppConfig, paramString2));
   }
   
-  public static void reportWithGroupId(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static void reportWithGroupId(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.15(paramString1, paramString2, paramString3, paramString4, paramString5, paramMiniAppConfig));
+    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.15(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramMiniAppConfig));
   }
   
   private static void sendRecordDurationMsg()
@@ -486,7 +492,7 @@ public class MiniProgramLpReportDC04239
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239
  * JD-Core Version:    0.7.0.1
  */

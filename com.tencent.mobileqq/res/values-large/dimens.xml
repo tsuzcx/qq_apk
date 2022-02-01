@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="b_n">440.0dip</dimen>
-    <item type="dimen" name="b_s">60.000004%</item>
-    <item type="dimen" name="b_t">90.0%</item>
-    <item type="dimen" name="b_u">60.000004%</item>
-    <item type="dimen" name="b_v">90.0%</item>
-    <item type="dimen" name="b_y">55.000008%</item>
-    <item type="dimen" name="b_z">79.99999%</item>
+    <dimen name="4q">440.0dip</dimen>
+    <item type="dimen" name="4v">60.000004%</item>
+    <item type="dimen" name="4w">90.0%</item>
+    <item type="dimen" name="4x">60.000004%</item>
+    <item type="dimen" name="4y">90.0%</item>
+    <item type="dimen" name="51">55.000008%</item>
+    <item type="dimen" name="52">79.99999%</item>
 </resources>

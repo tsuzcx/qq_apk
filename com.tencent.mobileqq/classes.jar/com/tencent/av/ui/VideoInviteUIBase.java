@@ -12,50 +12,33 @@ import com.tencent.mobileqq.statistics.ReportController;
 
 public abstract class VideoInviteUIBase
 {
-  protected int a;
-  protected long a;
   protected final VideoInviteActivity a;
-  protected int b;
-  protected long b;
-  protected int c;
-  protected long c;
+  protected int b = 0;
+  protected int c = 0;
+  protected int d = 0;
+  protected long e;
+  protected long f = 0L;
+  protected long g = 0L;
   
   public VideoInviteUIBase(VideoInviteActivity paramVideoInviteActivity)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity = paramVideoInviteActivity;
-    this.jdField_a_of_type_Long = AudioHelper.b();
-    this.jdField_b_of_type_Int = UITools.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
-    this.jdField_b_of_type_Int = UITools.b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
+    this.a = paramVideoInviteActivity;
+    this.e = AudioHelper.c();
+    this.c = UITools.a(this.a);
+    this.c = UITools.b(this.a);
   }
   
   public void BtnOnClick(View paramView) {}
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Resources a()
-  {
-    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getResources();
-  }
-  
-  public <T extends View> T a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.findViewById(paramInt);
+    return this.b;
   }
   
   public String a(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getString(paramInt);
+    return this.a.getString(paramInt);
   }
-  
-  public void a() {}
   
   public void a(Context paramContext, String paramString, Intent paramIntent) {}
   
@@ -63,24 +46,24 @@ public abstract class VideoInviteUIBase
   {
     if (paramVideoInviteUIBase != null)
     {
-      this.jdField_b_of_type_Long = paramVideoInviteUIBase.jdField_b_of_type_Long;
-      this.jdField_c_of_type_Long = paramVideoInviteUIBase.jdField_c_of_type_Long;
+      this.f = paramVideoInviteUIBase.f;
+      this.g = paramVideoInviteUIBase.g;
     }
   }
   
   protected void a(String paramString)
   {
-    ReportController.b(null, "CliOper", "", "", paramString, paramString, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i), "");
+    ReportController.b(null, "CliOper", "", "", paramString, paramString, 0, 0, Integer.toString(this.a.i), Integer.toString(this.a.K), Integer.toString(this.a.M), "");
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+      this.f = SystemClock.elapsedRealtime();
       return;
     }
-    this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
+    this.g = SystemClock.elapsedRealtime();
   }
   
   public boolean a(int paramInt, KeyEvent paramKeyEvent)
@@ -88,7 +71,15 @@ public abstract class VideoInviteUIBase
     return false;
   }
   
-  public void b() {}
+  public Resources b()
+  {
+    return this.a.getResources();
+  }
+  
+  public <T extends View> T b(int paramInt)
+  {
+    return this.a.findViewById(paramInt);
+  }
   
   public void c() {}
   
@@ -105,6 +96,10 @@ public abstract class VideoInviteUIBase
   public void i() {}
   
   public void j() {}
+  
+  public void k() {}
+  
+  public void l() {}
 }
 
 

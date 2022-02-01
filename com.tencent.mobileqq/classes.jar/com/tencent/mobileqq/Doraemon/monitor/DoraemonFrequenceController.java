@@ -13,10 +13,10 @@ import mqq.app.MobileQQ;
 public class DoraemonFrequenceController
   implements DoraemonAPIReporter.OnFrequenceDataUpdateListener
 {
-  private static DoraemonFrequenceController jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonFrequenceController;
-  LruCache<String, Map<String, APIQuotaItem>> jdField_a_of_type_AndroidUtilLruCache = new LruCache(5);
-  DoraemonAPIReporter jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter;
-  Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private static DoraemonFrequenceController d;
+  DoraemonAPIReporter a;
+  LruCache<String, Map<String, APIQuotaItem>> b = new LruCache(5);
+  Map<String, Boolean> c = new ConcurrentHashMap();
   
   private DoraemonFrequenceController()
   {
@@ -25,33 +25,33 @@ public class DoraemonFrequenceController
       if (QLog.isColorLevel()) {
         QLog.d("DoraemonOpenAPI.freqCtrl", 2, "create reporter");
       }
-      this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter = new DoraemonAPIReporterMain();
+      this.a = new DoraemonAPIReporterMain();
     }
     else
     {
       if (QLog.isColorLevel()) {
         QLog.d("DoraemonOpenAPI.freqCtrl", 2, "create reporter proxy");
       }
-      this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter = new DoraemonAPIReporterProxy();
+      this.a = new DoraemonAPIReporterProxy();
     }
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter.a(this);
+    this.a.a(this);
   }
   
   public static DoraemonFrequenceController a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonFrequenceController == null) {
+    if (d == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonFrequenceController == null) {
-          jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonFrequenceController = new DoraemonFrequenceController();
+        if (d == null) {
+          d = new DoraemonFrequenceController();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonFrequenceController;
+    return d;
   }
   
-  private Map<String, APIQuotaItem> a(String paramString1, int paramInt, String paramString2)
+  private Map<String, APIQuotaItem> c(String paramString1, int paramInt, String paramString2)
   {
     if (QLog.isColorLevel())
     {
@@ -62,12 +62,12 @@ public class DoraemonFrequenceController
     }
     int i = 0;
     int j = 0;
-    Map localMap = (Map)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString1);
+    Map localMap = (Map)this.b.get(paramString1);
     Object localObject = localMap;
     if (localMap == null) {
       try
       {
-        localMap = (Map)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString1);
+        localMap = (Map)this.b.get(paramString1);
         i = j;
         localObject = localMap;
         if (localMap == null)
@@ -80,35 +80,21 @@ public class DoraemonFrequenceController
             QLog.d("DoraemonOpenAPI.freqCtrl", 2, ((StringBuilder)localObject).toString());
           }
           localObject = new ConcurrentHashMap();
-          this.jdField_a_of_type_AndroidUtilLruCache.put(paramString1, localObject);
+          this.b.put(paramString1, localObject);
           i = 1;
         }
       }
       finally {}
     }
     if (i != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter.a(paramString1, paramInt, paramString2);
+      this.a.a(paramString1, paramInt, paramString2);
     }
     return localObject;
   }
   
   public void a(String paramString1, int paramInt, String paramString2)
   {
-    a(paramString1, paramInt, paramString2);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("report key=");
-      localStringBuilder.append(paramString1);
-      localStringBuilder.append(", api=");
-      localStringBuilder.append(paramString3);
-      QLog.d("DoraemonOpenAPI.freqCtrl", 2, localStringBuilder.toString());
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter.a(paramString1, paramInt, paramString2, paramString3);
+    c(paramString1, paramInt, paramString2);
   }
   
   public void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2)
@@ -124,7 +110,7 @@ public class DoraemonFrequenceController
       ((StringBuilder)localObject).append(paramLong1);
       QLog.d("DoraemonOpenAPI.freqCtrl", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (Map)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString1);
+    Object localObject = (Map)this.b.get(paramString1);
     if (localObject != null)
     {
       APIQuotaItem localAPIQuotaItem = (APIQuotaItem)((Map)localObject).get(paramString3);
@@ -141,7 +127,7 @@ public class DoraemonFrequenceController
         localAPIQuotaItem.expireTimeMillis = paramLong2;
       }
     }
-    if ((MobileQQ.sProcessId == 1) && (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString1)))
+    if ((MobileQQ.sProcessId == 1) && (this.c.containsKey(paramString1)))
     {
       localObject = new Intent("com.tencent.mobileqq.Doraemon.monitor.update");
       ((Intent)localObject).putExtra("key", paramString1);
@@ -163,11 +149,11 @@ public class DoraemonFrequenceController
       ((StringBuilder)localObject).append(paramString);
       QLog.d("DoraemonOpenAPI.freqCtrl", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (Map)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+    Object localObject = (Map)this.b.get(paramString);
     if (localObject != null) {
       ((Map)localObject).putAll(paramHashMap);
     }
-    if ((MobileQQ.sProcessId == 1) && (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)))
+    if ((MobileQQ.sProcessId == 1) && (this.c.containsKey(paramString)))
     {
       localObject = new Intent("com.tencent.mobileqq.Doraemon.monitor.update_batch");
       ((Intent)localObject).putExtra("key", paramString);
@@ -178,10 +164,10 @@ public class DoraemonFrequenceController
   
   public boolean a(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    Map localMap = (Map)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString1);
+    Map localMap = (Map)this.b.get(paramString1);
     Object localObject = localMap;
     if (localMap == null) {
-      localObject = a(paramString1, paramInt, paramString2);
+      localObject = c(paramString1, paramInt, paramString2);
     }
     paramString2 = (APIQuotaItem)((Map)localObject).get(paramString3);
     long l = NetConnInfoCenter.getServerTimeMillis();
@@ -256,11 +242,25 @@ public class DoraemonFrequenceController
       localStringBuilder.append(paramString1);
       QLog.d("DoraemonOpenAPI.freqCtrl", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, Boolean.TRUE);
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter.a(paramString1, paramInt, paramString2);
+    this.c.put(paramString1, Boolean.TRUE);
+    this.a.a(paramString1, paramInt, paramString2);
   }
   
   public void b(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("report key=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", api=");
+      localStringBuilder.append(paramString3);
+      QLog.d("DoraemonOpenAPI.freqCtrl", 2, localStringBuilder.toString());
+    }
+    this.a.a(paramString1, paramInt, paramString2, paramString3);
+  }
+  
+  public void c(String paramString1, int paramInt, String paramString2, String paramString3)
   {
     if (MobileQQ.sProcessId != 1) {
       return;
@@ -274,13 +274,13 @@ public class DoraemonFrequenceController
       localStringBuilder.append(paramString3);
       QLog.d("DoraemonOpenAPI.freqCtrl", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, Boolean.TRUE);
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter.a(paramString1, paramInt, paramString2, paramString3);
+    this.c.put(paramString1, Boolean.TRUE);
+    this.a.a(paramString1, paramInt, paramString2, paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.monitor.DoraemonFrequenceController
  * JD-Core Version:    0.7.0.1
  */

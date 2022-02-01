@@ -25,17 +25,17 @@ class RIJUgcImageUploader$1$1
     }
     RIJUgcImageUploader.a(this.a.this$0, false);
     ThreadManagerV2.getUIHandlerV2().post(new RIJUgcImageUploader.1.1.1(this, paramInt, paramString1));
-    RIJUgcImageUploader.a(this.a.this$0).b();
+    RIJUgcImageUploader.d(this.a.this$0).b();
   }
   
   public void a(long paramLong1, long paramLong2)
   {
-    RIJUgcImageUploader.a(this.a.this$0).a(paramLong1, paramLong2);
+    RIJUgcImageUploader.c(this.a.this$0).a(paramLong1, paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.upload.RIJUgcImageUploader.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ class DrawRedpacketPannelPreviewFragment$12
   
   public void run()
   {
-    ImageView localImageView = DrawRedpacketPannelPreviewFragment.d(this.this$0);
+    ImageView localImageView = DrawRedpacketPannelPreviewFragment.p(this.this$0);
     int i;
-    if (DrawRedpacketPannelPreviewFragment.a(this.this$0)) {
+    if (DrawRedpacketPannelPreviewFragment.l(this.this$0)) {
       i = 0;
     } else {
       i = 4;
@@ -21,7 +21,7 @@ class DrawRedpacketPannelPreviewFragment$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawRedpacketPannelPreviewFragment.12
  * JD-Core Version:    0.7.0.1
  */

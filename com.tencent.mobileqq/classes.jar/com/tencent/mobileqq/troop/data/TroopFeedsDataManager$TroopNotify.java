@@ -7,38 +7,23 @@ import org.json.JSONObject;
 
 public class TroopFeedsDataManager$TroopNotify
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
+  public int a = 1;
+  public String b = null;
+  public String c = null;
+  public String d = null;
   public String e = null;
   public String f = null;
   public String g = null;
   public String h = null;
   public String i = null;
-  public String j = null;
-  
-  public TroopFeedsDataManager$TroopNotify()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-  }
+  public long j = 0L;
+  public String k = null;
+  public boolean l = false;
+  public int m = 0;
+  public boolean n = true;
+  public boolean o = false;
+  public String p = null;
+  public boolean q = false;
   
   public static TroopNotify a(QQAppInterface paramQQAppInterface, String paramString, JSONObject paramJSONObject)
   {
@@ -48,7 +33,7 @@ public class TroopFeedsDataManager$TroopNotify
         return null;
       }
       TroopNotify localTroopNotify = new TroopNotify();
-      localTroopNotify.jdField_a_of_type_JavaLangString = paramJSONObject.optString("fid");
+      localTroopNotify.b = paramJSONObject.optString("fid");
       boolean bool1 = paramJSONObject.has("is_read");
       boolean bool2 = true;
       if (bool1)
@@ -58,28 +43,28 @@ public class TroopFeedsDataManager$TroopNotify
         } else {
           bool1 = false;
         }
-        localTroopNotify.jdField_d_of_type_Boolean = bool1;
+        localTroopNotify.q = bool1;
       }
       JSONObject localJSONObject = paramJSONObject.optJSONObject("msg");
       if (localJSONObject == null) {
         return null;
       }
-      localTroopNotify.jdField_c_of_type_JavaLangString = localJSONObject.optString("text_face");
-      Object localObject = localTroopNotify.jdField_c_of_type_JavaLangString;
+      localTroopNotify.d = localJSONObject.optString("text_face");
+      Object localObject = localTroopNotify.d;
       if (localObject != null) {
-        localTroopNotify.jdField_c_of_type_JavaLangString = ((String)localObject).replace("&#10;", "<br/>");
+        localTroopNotify.d = ((String)localObject).replace("&#10;", "<br/>");
       }
-      localTroopNotify.jdField_b_of_type_JavaLangString = localJSONObject.optString("title");
-      localObject = localTroopNotify.jdField_b_of_type_JavaLangString;
+      localTroopNotify.c = localJSONObject.optString("title");
+      localObject = localTroopNotify.c;
       if (localObject != null) {
-        localTroopNotify.jdField_b_of_type_JavaLangString = ((String)localObject).replace("&#10;", "<br/>");
+        localTroopNotify.c = ((String)localObject).replace("&#10;", "<br/>");
       }
-      if (localTroopNotify.jdField_b_of_type_JavaLangString != null)
+      if (localTroopNotify.c != null)
       {
-        if (localTroopNotify.jdField_c_of_type_JavaLangString == null) {
+        if (localTroopNotify.d == null) {
           return null;
         }
-        localTroopNotify.j = paramJSONObject.optString("fid");
+        localTroopNotify.p = paramJSONObject.optString("fid");
         localObject = localJSONObject.optJSONArray("pics");
         if ((localObject != null) && (((JSONArray)localObject).length() > 0))
         {
@@ -90,12 +75,12 @@ public class TroopFeedsDataManager$TroopNotify
             localStringBuilder.append("https://gdynamic.qpic.cn/gdynamic/");
             localStringBuilder.append(((JSONObject)localObject).optString("id"));
             localStringBuilder.append("/628");
-            localTroopNotify.jdField_d_of_type_JavaLangString = localStringBuilder.toString();
+            localTroopNotify.e = localStringBuilder.toString();
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("https://gdynamic.qpic.cn/gdynamic/");
             localStringBuilder.append(((JSONObject)localObject).optString("id"));
             localStringBuilder.append("/");
-            localTroopNotify.e = localStringBuilder.toString();
+            localTroopNotify.f = localStringBuilder.toString();
           }
         }
         localObject = paramJSONObject.optJSONObject("settings");
@@ -106,30 +91,30 @@ public class TroopFeedsDataManager$TroopNotify
           } else {
             bool1 = false;
           }
-          localTroopNotify.jdField_a_of_type_Boolean = bool1;
+          localTroopNotify.l = bool1;
           if (((JSONObject)localObject).optInt("tip_window_type", 0) == 0) {
             bool1 = true;
           } else {
             bool1 = false;
           }
-          localTroopNotify.jdField_b_of_type_Boolean = bool1;
+          localTroopNotify.n = bool1;
           if (((JSONObject)localObject).optInt("confirm_required", 0) == 1) {
             bool1 = bool2;
           } else {
             bool1 = false;
           }
-          localTroopNotify.jdField_c_of_type_Boolean = bool1;
+          localTroopNotify.o = bool1;
         }
         if (localJSONObject.has("v"))
         {
           localJSONObject = localJSONObject.optJSONObject("v");
-          localTroopNotify.f = localJSONObject.optString("l");
-          localTroopNotify.jdField_d_of_type_JavaLangString = localJSONObject.optString("bi");
+          localTroopNotify.g = localJSONObject.optString("l");
+          localTroopNotify.e = localJSONObject.optString("bi");
         }
-        localTroopNotify.g = paramJSONObject.optString("u");
-        localTroopNotify.h = ContactUtils.b(paramQQAppInterface, paramString, localTroopNotify.g);
-        localTroopNotify.jdField_a_of_type_Long = paramJSONObject.optLong("pubt");
-        localTroopNotify.jdField_b_of_type_Int = paramJSONObject.optInt("read_num");
+        localTroopNotify.h = paramJSONObject.optString("u");
+        localTroopNotify.i = ContactUtils.b(paramQQAppInterface, paramString, localTroopNotify.h);
+        localTroopNotify.j = paramJSONObject.optLong("pubt");
+        localTroopNotify.m = paramJSONObject.optInt("read_num");
         return localTroopNotify;
       }
     }
@@ -138,7 +123,7 @@ public class TroopFeedsDataManager$TroopNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotify
  * JD-Core Version:    0.7.0.1
  */

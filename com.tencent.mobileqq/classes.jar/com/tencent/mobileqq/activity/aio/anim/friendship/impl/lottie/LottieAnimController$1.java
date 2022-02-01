@@ -16,14 +16,14 @@ class LottieAnimController$1
     if (LottieAnimController.a(this.a) != null) {
       LottieAnimController.a(this.a).setAlpha((float)d);
     }
-    if (LottieAnimController.a(this.a) != null) {
-      LottieAnimController.a(this.a).setAlpha((float)d * 2.0F);
+    if (LottieAnimController.b(this.a) != null) {
+      LottieAnimController.b(this.a).setAlpha((float)d * 2.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.lottie.LottieAnimController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,16 +14,21 @@ import org.jetbrains.annotations.NotNull;
 public final class BKRenderService$apolloViewListener$1
   implements OnApolloViewListener
 {
-  public void onNotifyLongTouch(@NotNull String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "name");
-    ITouchListener localITouchListener = BKRenderService.a(this.a);
-    if (localITouchListener != null) {
-      localITouchListener.a(paramString);
+    BKRenderService.b(this.a).a(EngineState.INITIALIZED);
+    Object localObject = BKRenderService.c(this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSurfaceReady set engine state to:");
+    localStringBuilder.append(BKRenderService.b(this.a).e());
+    QLog.w((String)localObject, 1, localStringBuilder.toString());
+    localObject = BKRenderService.d(this.a);
+    if (localObject != null) {
+      ((ISurfaceStateListener)localObject).a(paramInt1, paramInt2);
     }
   }
   
-  public void onNotifyStatusChanged(int paramInt, @NotNull String paramString)
+  public void a(int paramInt, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "apolloId");
     ITouchListener localITouchListener = BKRenderService.a(this.a);
@@ -32,23 +37,18 @@ public final class BKRenderService$apolloViewListener$1
     }
   }
   
-  public void onSurfaceReady(int paramInt1, int paramInt2)
+  public void a(@NotNull String paramString)
   {
-    BKRenderService.a(this.a).a(EngineState.INITIALIZED);
-    Object localObject = BKRenderService.a(this.a);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onSurfaceReady set engine state to:");
-    localStringBuilder.append(BKRenderService.a(this.a).a());
-    QLog.w((String)localObject, 1, localStringBuilder.toString());
-    localObject = BKRenderService.a(this.a);
-    if (localObject != null) {
-      ((ISurfaceStateListener)localObject).a(paramInt1, paramInt2);
+    Intrinsics.checkParameterIsNotNull(paramString, "name");
+    ITouchListener localITouchListener = BKRenderService.a(this.a);
+    if (localITouchListener != null) {
+      localITouchListener.a(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.BKRenderService.apolloViewListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -72,6 +72,8 @@ public class StatisticCollector
   private static final String DAILY_USE_TAG = "mqq_dailyUse";
   public static final String DANMAKU_REQUEST_MONITOR = "DanmakuRequestMonitor";
   private static final long DAY = 86400000L;
+  public static final String DBFIX_DEVICE_INFO_REPORT = "dbfixDeviceInfoReport";
+  public static final String DBFIX_INTEGRITY_CHECK_INFO_REPORT = "dbfixIntegrityCheckInfoReport";
   public static final String DB_OP_RESULT = "DatabaseOperatorResult_";
   public static final String DEFAULT_OBSERVER_COST = "actDefaultObserverCost";
   private static final String DEFAULT_SAMPLE = "250|5|5|1|50|5|5|25|25|25|5|10|10";
@@ -113,6 +115,7 @@ public class StatisticCollector
   public static final String HONG_BAO_STAR_PHOTO_UPLOAD_STATISTIC_TAG = "actHongbaoStarPhotoUpload";
   public static final String HTTPS_DOWNLOAD_FAILED = "actHttpsDownloadFail";
   public static final String HTTPS_SNI_SUPPORT = "actHttpsSniSupport";
+  public static final String ICON_CLICK_LAUNCH_TO_UNREAD_REFRESH = "launchFromIconClickToUnreadRefresh";
   public static final String ILLEGAL_GRAYTIP_ID = "illegalGraytipId";
   public static final String IMG_PROVIDERSERVICE_GET_TOPACTIVITY = "ImageProviderService_getTopActivity_event";
   public static final long INIT_DELAY_TIME = 3000L;
@@ -368,27 +371,27 @@ public class StatisticCollector
   private static Map<String, String> getDeviceStatistics()
   {
     HashMap localHashMap = new HashMap(16);
-    localHashMap.put("param_MODEL", DeviceInfoUtil.d());
-    localHashMap.put("param_manu", DeviceInfoUtil.k());
-    localHashMap.put("param_OS", DeviceInfoUtil.e());
+    localHashMap.put("param_MODEL", DeviceInfoUtil.f());
+    localHashMap.put("param_manu", DeviceInfoUtil.w());
+    localHashMap.put("param_OS", DeviceInfoUtil.g());
     localHashMap.put("param_Resolution", MsfSdkUtils.getResolutionString(ctx));
-    localHashMap.put("param_IMEI", DeviceInfoUtil.a());
-    localHashMap.put("param_IMSI", DeviceInfoUtil.b());
+    localHashMap.put("param_IMEI", DeviceInfoUtil.b());
+    localHashMap.put("param_IMSI", DeviceInfoUtil.c());
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
     ((StringBuilder)localObject).append(NetworkUtil.getNetworkType(ctx));
     localHashMap.put("param_NetworkType", ((StringBuilder)localObject).toString());
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(AppSetting.a());
+    ((StringBuilder)localObject).append(AppSetting.d());
     localHashMap.put("param_ProductVersion", ((StringBuilder)localObject).toString());
-    localHashMap.put("param_CPU", DeviceInfoUtil.g());
+    localHashMap.put("param_CPU", DeviceInfoUtil.m());
     localHashMap.put("param_totalmemory", MsfSdkUtils.getTotalMemory());
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(String.valueOf(DeviceInfoUtil.e() / 1024L));
+    ((StringBuilder)localObject).append(String.valueOf(DeviceInfoUtil.r() / 1024L));
     ((StringBuilder)localObject).append("kB");
     localHashMap.put("param_availmemory", ((StringBuilder)localObject).toString());
-    localObject = DeviceInfoUtil.a();
+    localObject = DeviceInfoUtil.p();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(String.valueOf(localObject[0]));
     localStringBuilder.append("MB");
@@ -397,7 +400,7 @@ public class StatisticCollector
     localStringBuilder.append(String.valueOf(localObject[1]));
     localStringBuilder.append("MB");
     localHashMap.put("param_availrom", localStringBuilder.toString());
-    localObject = DeviceInfoUtil.b();
+    localObject = DeviceInfoUtil.q();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(String.valueOf(localObject[0]));
     localStringBuilder.append("MB");
@@ -408,7 +411,7 @@ public class StatisticCollector
     localHashMap.put("param_availsd", localStringBuilder.toString());
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(DeviceInfoUtil.d());
+    ((StringBuilder)localObject).append(DeviceInfoUtil.n());
     localHashMap.put("param_Camera", ((StringBuilder)localObject).toString());
     return localHashMap;
   }
@@ -420,7 +423,7 @@ public class StatisticCollector
   
   public static StatisticCollector getInstance(Context paramContext, long paramLong)
   {
-    paramContext = ReportControllerServiceHolder.a();
+    paramContext = ReportControllerServiceHolder.e();
     if (self == null) {
       try
       {
@@ -450,10 +453,10 @@ public class StatisticCollector
   
   public static int getQzonePatchTag()
   {
-    ILocalMultiProcConfigService localILocalMultiProcConfigService = ReportControllerServiceHolder.a();
+    ILocalMultiProcConfigService localILocalMultiProcConfigService = ReportControllerServiceHolder.d();
     int i = 0;
     if (localILocalMultiProcConfigService != null) {
-      i = localILocalMultiProcConfigService.a("version_patchlib_load", 0);
+      i = localILocalMultiProcConfigService.b("version_patchlib_load", 0);
     }
     return i;
   }
@@ -468,7 +471,7 @@ public class StatisticCollector
   
   private boolean isMultimediaEvent(String paramString)
   {
-    IStatisticsCollectorService localIStatisticsCollectorService = ReportControllerServiceHolder.a();
+    IStatisticsCollectorService localIStatisticsCollectorService = ReportControllerServiceHolder.e();
     return (localIStatisticsCollectorService != null) && (localIStatisticsCollectorService.a(paramString));
   }
   
@@ -479,7 +482,7 @@ public class StatisticCollector
   
   public static void setQzonePatchTag(int paramInt)
   {
-    Object localObject = ReportControllerServiceHolder.a();
+    Object localObject = ReportControllerServiceHolder.d();
     if (localObject != null) {
       ((ILocalMultiProcConfigService)localObject).a("version_patchlib_load", paramInt);
     }
@@ -509,7 +512,7 @@ public class StatisticCollector
   
   public void collectPerformance(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString4, boolean paramBoolean2, boolean paramBoolean3)
   {
-    paramString4 = ReportControllerServiceHolder.a();
+    paramString4 = ReportControllerServiceHolder.e();
     if ((paramString4 != null) && (!paramString4.a())) {
       return;
     }
@@ -548,7 +551,7 @@ public class StatisticCollector
     {
       paramHashMap = new StringBuilder();
       paramHashMap.append("");
-      paramHashMap.append(AppSetting.a());
+      paramHashMap.append(AppSetting.d());
       paramString2.put("param_ProductVersion", paramHashMap.toString());
     }
     if (QLog.isColorLevel())
@@ -584,7 +587,7 @@ public class StatisticCollector
     try
     {
       paramString1 = MsfMsgUtil.getRdmReportMsg(MsfServiceSdk.get().getMsfServiceName(), paramHashMap);
-      paramString1.setAppId(AppSetting.a());
+      paramString1.setAppId(AppSetting.d());
       paramString1.setTimeout(30000L);
       ThreadManager.post(new StatisticCollector.1(this, paramString1), 5, null, true);
       return;
@@ -1021,7 +1024,7 @@ public class StatisticCollector
       try
       {
         paramString = MsfMsgUtil.getRdmReportMsg(MsfServiceSdk.get().getMsfServiceName(), paramString);
-        paramString.setAppId(AppSetting.a());
+        paramString.setAppId(AppSetting.d());
         paramString.setTimeout(30000L);
         MsfServiceSdk.get().sendMsg(paramString);
         return;
@@ -1128,6 +1131,9 @@ public class StatisticCollector
   @Deprecated
   public void reportToPCliOper(AppRuntime paramAppRuntime, String paramString)
   {
+    if (paramAppRuntime == null) {
+      return;
+    }
     NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), ReportServlet.class);
     localNewIntent.putExtra("sendType", 2);
     localNewIntent.putExtra("tag", "P_CliOper");
@@ -1157,7 +1163,7 @@ public class StatisticCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.StatisticCollector
  * JD-Core Version:    0.7.0.1
  */

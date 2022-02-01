@@ -17,27 +17,27 @@ class CdnPmUpdater$2
   {
     QLog.d("shadow::CdnPmUpdater", 1, " download cdn success");
     Object localObject;
-    if (!CdnPmUpdater.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater).renameTo(this.jdField_a_of_type_JavaIoFile))
+    if (!CdnPmUpdater.c(this.e).renameTo(this.a))
     {
-      localObject = this.jdField_a_of_type_ArrayOfJavaLangException;
+      localObject = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131701681));
-      localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+      localStringBuilder.append(HardCodeUtil.a(2131899703));
+      localStringBuilder.append(this.a.getAbsolutePath());
       localObject[0] = new RuntimeException(localStringBuilder.toString());
     }
-    if (CdnPmUpdater.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater)) {
+    if (CdnPmUpdater.d(this.e)) {
       localObject = "33669797";
     } else {
       localObject = "33669802";
     }
     Monitor.b((String)localObject);
-    CdnPmUpdater.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater).opType("onDownloadComplete").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    CdnPmUpdater.e(this.e).opType("onDownloadComplete").opResult((int)(System.currentTimeMillis() - this.c)).report();
+    this.d.countDown();
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    Exception[] arrayOfException = this.jdField_a_of_type_ArrayOfJavaLangException;
+    Exception[] arrayOfException = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("下载失败 retcode:");
     localStringBuilder.append(paramInt1);
@@ -53,21 +53,21 @@ class CdnPmUpdater$2
       paramString.append(paramInt1);
       QLog.d("shadow::CdnPmUpdater", 2, paramString.toString());
     }
-    if (CdnPmUpdater.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater)) {
+    if (CdnPmUpdater.d(this.e)) {
       paramString = "33669798";
     } else {
       paramString = "33669803";
     }
     Monitor.b(paramString);
-    CdnPmUpdater.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater).opType("onDownloadFailed").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    CdnPmUpdater.e(this.e).opType("onDownloadFailed").opResult((int)(System.currentTimeMillis() - this.c)).report();
+    this.d.countDown();
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.CdnPmUpdater.2
  * JD-Core Version:    0.7.0.1
  */

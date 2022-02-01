@@ -3,22 +3,22 @@ package com.tencent.aelight.camera.struct.editor;
 public class DoodleInfo
 {
   public String a;
-  public boolean a;
   public String b;
   public String c;
   public String d;
+  public boolean e;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PtvTemplateInfo{id='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", doodleName='");
     localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", doodleUsable='");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();

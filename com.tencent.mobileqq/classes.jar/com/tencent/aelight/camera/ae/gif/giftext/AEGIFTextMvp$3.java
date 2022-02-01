@@ -18,36 +18,36 @@ class AEGIFTextMvp$3
   
   public void a(@Nullable RecognizedEmotionBean paramRecognizedEmotionBean)
   {
-    AEGIFTextMvp.a(this.a).a().removeObservers(AEGIFTextMvp.a(this.a));
+    AEGIFRecommandTextViewModel.a().removeObservers(AEGIFTextMvp.b(this.a));
     RecognizedEmotionBean localRecognizedEmotionBean;
     if (paramRecognizedEmotionBean != null)
     {
       localRecognizedEmotionBean = paramRecognizedEmotionBean;
-      if (paramRecognizedEmotionBean.jdField_a_of_type_JavaLangString != null) {}
+      if (paramRecognizedEmotionBean.b != null) {}
     }
     else
     {
       localRecognizedEmotionBean = new RecognizedEmotionBean();
-      localRecognizedEmotionBean.jdField_a_of_type_JavaLangString = "default";
+      localRecognizedEmotionBean.b = "default";
     }
-    paramRecognizedEmotionBean = (String)AEGIFTextMvp.a(this.a).get(localRecognizedEmotionBean.jdField_a_of_type_JavaLangString);
-    if (!localRecognizedEmotionBean.jdField_a_of_type_JavaLangString.equals("default"))
+    paramRecognizedEmotionBean = (String)AEGIFTextMvp.c(this.a).get(localRecognizedEmotionBean.b);
+    if (!localRecognizedEmotionBean.b.equals("default"))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131700218));
+      localStringBuilder.append(HardCodeUtil.a(2131898262));
       localStringBuilder.append(paramRecognizedEmotionBean);
-      localStringBuilder.append(HardCodeUtil.a(2131700211));
+      localStringBuilder.append(HardCodeUtil.a(2131898255));
       paramRecognizedEmotionBean = localStringBuilder.toString();
     }
     else
     {
-      paramRecognizedEmotionBean = HardCodeUtil.a(2131700207);
-      localRecognizedEmotionBean.jdField_a_of_type_JavaUtilList.addAll(AEGIFTextMvp.jdField_a_of_type_JavaUtilList);
+      paramRecognizedEmotionBean = HardCodeUtil.a(2131898251);
+      localRecognizedEmotionBean.a.addAll(AEGIFTextMvp.a);
     }
-    AEGIFTextMvp.a(this.a).setText(paramRecognizedEmotionBean);
-    if ((AEGIFTextMvp.a(this.a).size() == 0) && (!AEGIFTextMvp.a(this.a)))
+    AEGIFTextMvp.d(this.a).setText(paramRecognizedEmotionBean);
+    if ((AEGIFTextMvp.e(this.a).size() == 0) && (!AEGIFTextMvp.f(this.a)))
     {
-      AEGIFTextMvp.a(this.a).addAll(localRecognizedEmotionBean.jdField_a_of_type_JavaUtilList);
+      AEGIFTextMvp.e(this.a).addAll(localRecognizedEmotionBean.a);
       this.a.b();
       AEGIFTextMvp.a(this.a, true);
     }
@@ -55,7 +55,7 @@ class AEGIFTextMvp$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.AEGIFTextMvp.3
  * JD-Core Version:    0.7.0.1
  */

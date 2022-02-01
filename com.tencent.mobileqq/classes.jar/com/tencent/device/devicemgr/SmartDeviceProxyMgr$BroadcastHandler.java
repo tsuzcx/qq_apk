@@ -26,7 +26,7 @@ class SmartDeviceProxyMgr$BroadcastHandler
     {
       if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_devListChangeUI"))
       {
-        paramContext = this.a.a();
+        paramContext = this.a.e();
         paramIntent = this.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("DeviceList @@ cache receivechange for ui list:");
@@ -47,13 +47,13 @@ class SmartDeviceProxyMgr$BroadcastHandler
           paramIntent.append("SmartDeviceProxyMgr::receive qq login broadcast!!!resultCode = ");
           paramIntent.append(i);
           SmartDeviceProxyMgr.a(paramContext, paramIntent.toString());
-          SettingCloneUtil.writeValue(SmartDeviceProxyMgr.a(this.a).getApp(), SmartDeviceProxyMgr.a(this.a).getCurrentAccountUin(), null, "account_login_success_time", String.valueOf(MessageCache.a()));
+          SettingCloneUtil.writeValue(SmartDeviceProxyMgr.b(this.a).getApp(), SmartDeviceProxyMgr.b(this.a).getCurrentAccountUin(), null, "account_login_success_time", String.valueOf(MessageCache.c()));
           if (i == 0)
           {
-            this.a.jdField_a_of_type_Int = 2;
+            this.a.f = 2;
             return;
           }
-          this.a.jdField_a_of_type_Int = 3;
+          this.a.f = 3;
           return;
         }
         if ((!paramIntent.getAction().equalsIgnoreCase("mqq.intent.action.LOGOUT")) && (!paramIntent.getAction().equalsIgnoreCase("mqq.intent.action.ACCOUNT_CHANGED")))
@@ -62,10 +62,10 @@ class SmartDeviceProxyMgr$BroadcastHandler
           i = 0;
           if (bool)
           {
-            if (this.a.a())
+            if (this.a.c())
             {
               this.a.b(false);
-              this.a.e();
+              this.a.h();
             }
             SmartDeviceReport.a(null, "Usr_Click_MyDevice", 0, 0, 0);
             return;
@@ -75,16 +75,16 @@ class SmartDeviceProxyMgr$BroadcastHandler
           {
             if (paramIntent.getExtras().getInt("qfind_result", 1) == 0)
             {
-              this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+              this.a.c.clear();
               paramContext = paramIntent.getExtras().getLongArray("qfind_dins");
               int j = paramContext.length;
               while (i < j)
               {
                 l = paramContext[i];
-                this.a.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(l));
+                this.a.c.add(Long.valueOf(l));
                 i += 1;
               }
-              paramContext = this.a.a();
+              paramContext = this.a.e();
               if (paramContext != null) {
                 this.a.notifyUI(1, true, new ArrayList(Arrays.asList(paramContext)));
               }
@@ -98,37 +98,37 @@ class SmartDeviceProxyMgr$BroadcastHandler
             if ((paramIntent.getAction().equals("SmartDevice_DeviceBindRst")) && (paramIntent.getExtras().getInt("deviceoprstcode") == 0))
             {
               SmartDeviceProxyMgr.a(this.a, 1);
-              SettingCloneUtil.writeValueForInt(BaseApplication.getContext(), SmartDeviceProxyMgr.a(this.a).getCurrentAccountUin(), null, "qqsetting_deviceplugin_bind_flag", SmartDeviceProxyMgr.a(this.a));
+              SettingCloneUtil.writeValueForInt(BaseApplication.getContext(), SmartDeviceProxyMgr.b(this.a).getCurrentAccountUin(), null, "qqsetting_deviceplugin_bind_flag", SmartDeviceProxyMgr.d(this.a));
               l = paramIntent.getExtras().getLong("deviceopdin", 0L);
-              paramContext = this.a.a(l);
+              paramContext = this.a.g(l);
               if ((paramContext != null) && (paramContext.productId >= 2000000000L) && (paramContext.productId < 3000000000L)) {
-                this.a.a(l);
+                this.a.e(l);
               }
             }
           }
         }
         else
         {
-          if (this.a.a())
+          if (this.a.c())
           {
             SmartDeviceProxyMgr.a(this.a, "SmartDeviceProxyMgr::receive qq logout broadcast!!!");
-            this.a.d();
+            this.a.g();
           }
-          LightAppUtil.c();
+          LightAppUtil.d();
         }
       }
     }
     else
     {
-      SmartDeviceProxyMgr.a(this.a).sendEmptyMessage(1003);
-      new LightAppUtil().a();
-      this.a.b = 2;
+      SmartDeviceProxyMgr.c(this.a).sendEmptyMessage(1003);
+      new LightAppUtil().b();
+      this.a.g = 2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.devicemgr.SmartDeviceProxyMgr.BroadcastHandler
  * JD-Core Version:    0.7.0.1
  */

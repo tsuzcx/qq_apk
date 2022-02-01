@@ -2,7 +2,7 @@ package androidx.cardview;
 
 public final class R$styleable
 {
-  public static final int[] CardView = { 16843071, 16843072, 2063794256, 2063794257, 2063794258, 2063794260, 2063794261, 2063794262, 2063794328, 2063794329, 2063794331, 2063794332, 2063794334 };
+  public static final int[] CardView = { 16843071, 16843072, 2131034422, 2131034423, 2131034424, 2131034426, 2131034427, 2131034431, 2131034613, 2131034614, 2131034616, 2131034617, 2131034619 };
   public static final int CardView_android_minHeight = 1;
   public static final int CardView_android_minWidth = 0;
   public static final int CardView_cardBackgroundColor = 2;
@@ -19,7 +19,7 @@ public final class R$styleable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.cardview.R.styleable
  * JD-Core Version:    0.7.0.1
  */

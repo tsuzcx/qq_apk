@@ -34,13 +34,13 @@ public class MsgNotifyPushDialog$PopOpenMsgNotifationTask
       if (!((QQAppInterface)localObject1).isLogin()) {
         return Boolean.valueOf(false);
       }
-      if ((GuardManager.a != null) && (!GuardManager.a.a("com.tencent.mobileqq"))) {
+      if ((GuardManager.sInstance != null) && (!GuardManager.sInstance.isProcessForeground("com.tencent.mobileqq"))) {
         return Boolean.valueOf(false);
       }
       MsgNotifyPushDialog.a((QQAppInterface)localObject1);
-      if ((MsgNotifyPushDialog.jdField_a_of_type_Boolean) && (!MsgNotifyPushDialog.jdField_c_of_type_Boolean) && (MsgNotifyPushDialog.jdField_a_of_type_AndroidContentIntent != null))
+      if ((MsgNotifyPushDialog.k) && (!MsgNotifyPushDialog.o) && (MsgNotifyPushDialog.n != null))
       {
-        if ((MsgNotifyPushDialog.b != 0) && (Build.VERSION.SDK_INT > MsgNotifyPushDialog.b)) {
+        if ((MsgNotifyPushDialog.m != 0) && (Build.VERSION.SDK_INT > MsgNotifyPushDialog.m)) {
           return Boolean.valueOf(false);
         }
         paramVarArgs = ((QQAppInterface)localObject1).getCurrentUin();
@@ -50,7 +50,7 @@ public class MsgNotifyPushDialog$PopOpenMsgNotifationTask
         int i = 1;
         if (i != 0)
         {
-          if (!MsgNotifyPushDialog.a((QQAppInterface)localObject1)) {
+          if (!MsgNotifyPushDialog.b((QQAppInterface)localObject1)) {
             return Boolean.valueOf(false);
           }
           localObject1 = PreferenceManager.getDefaultSharedPreferences(((QQAppInterface)localObject1).getApp());
@@ -65,20 +65,20 @@ public class MsgNotifyPushDialog$PopOpenMsgNotifationTask
           int m = 2147483647;
           if (j == 1)
           {
-            l1 = MsgNotifyPushDialog.jdField_c_of_type_Int * MsgNotifyPushDialog.jdField_a_of_type_Long;
-            i = MsgNotifyPushDialog.d;
+            l1 = MsgNotifyPushDialog.t * MsgNotifyPushDialog.b;
+            i = MsgNotifyPushDialog.u;
           }
           else if (j == 2)
           {
-            l1 = MsgNotifyPushDialog.e * MsgNotifyPushDialog.jdField_a_of_type_Long;
-            i = MsgNotifyPushDialog.f;
+            l1 = MsgNotifyPushDialog.v * MsgNotifyPushDialog.b;
+            i = MsgNotifyPushDialog.w;
           }
           else
           {
             if (j != 3) {
               break label761;
             }
-            l1 = MsgNotifyPushDialog.g * MsgNotifyPushDialog.jdField_a_of_type_Long;
+            l1 = MsgNotifyPushDialog.x * MsgNotifyPushDialog.b;
             i = 2147483647;
           }
           if (k < i) {
@@ -91,20 +91,20 @@ public class MsgNotifyPushDialog$PopOpenMsgNotifationTask
           ((SharedPreferences.Editor)localObject2).commit();
           if (j == 1)
           {
-            l1 = MsgNotifyPushDialog.jdField_c_of_type_Int * MsgNotifyPushDialog.jdField_a_of_type_Long;
-            i = MsgNotifyPushDialog.d;
+            l1 = MsgNotifyPushDialog.t * MsgNotifyPushDialog.b;
+            i = MsgNotifyPushDialog.u;
             break label769;
           }
           if (j == 2)
           {
-            l1 = MsgNotifyPushDialog.e * MsgNotifyPushDialog.jdField_a_of_type_Long;
-            i = MsgNotifyPushDialog.f;
+            l1 = MsgNotifyPushDialog.v * MsgNotifyPushDialog.b;
+            i = MsgNotifyPushDialog.w;
             break label769;
           }
           if (j != 3) {
             break label769;
           }
-          l1 = MsgNotifyPushDialog.g * MsgNotifyPushDialog.jdField_a_of_type_Long;
+          l1 = MsgNotifyPushDialog.x * MsgNotifyPushDialog.b;
           i = m;
           break label769;
           if (QLog.isColorLevel()) {
@@ -167,7 +167,7 @@ public class MsgNotifyPushDialog$PopOpenMsgNotifationTask
         paramBoolean.addFlags(536870912);
         paramBoolean.addFlags(67108864);
         paramBoolean.addFlags(131072);
-        paramBoolean.putExtra("key_dialog_type", DialogActivity.jdField_c_of_type_Int);
+        paramBoolean.putExtra("key_dialog_type", DialogActivity.c);
         localQQAppInterface.getApp().startActivity(paramBoolean);
         return;
       }
@@ -183,7 +183,7 @@ public class MsgNotifyPushDialog$PopOpenMsgNotifationTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog.PopOpenMsgNotifationTask
  * JD-Core Version:    0.7.0.1
  */

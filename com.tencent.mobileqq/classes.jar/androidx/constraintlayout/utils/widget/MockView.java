@@ -70,12 +70,13 @@ public class MockView
         }
         i += 1;
       }
+      paramAttributeSet.recycle();
     }
     if (this.mText == null) {}
     try
     {
       this.mText = paramContext.getResources().getResourceEntryName(getId());
-      label206:
+      label210:
       this.mPaintDiagonals.setColor(this.mDiagonalsColor);
       this.mPaintDiagonals.setAntiAlias(true);
       this.mPaintText.setColor(this.mTextColor);
@@ -86,7 +87,7 @@ public class MockView
     }
     catch (Exception paramContext)
     {
-      break label206;
+      break label210;
     }
   }
   
@@ -128,7 +129,7 @@ public class MockView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.utils.widget.MockView
  * JD-Core Version:    0.7.0.1
  */

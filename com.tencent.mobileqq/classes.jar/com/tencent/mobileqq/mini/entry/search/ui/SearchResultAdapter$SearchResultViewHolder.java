@@ -89,10 +89,10 @@ class SearchResultAdapter$SearchResultViewHolder
         {
           localObject1 = new ImageView(paramView.getContext());
           ((ImageView)localObject1).setImageDrawable(SearchResultAdapter.getAvatarDrawable(paramView.getContext(), (String)localObject2));
-          int k = ViewUtils.b(12.0F);
+          int k = ViewUtils.dpToPx(12.0F);
           localObject2 = new LinearLayout.LayoutParams(k, k);
           if (i > 0) {
-            ((LinearLayout.LayoutParams)localObject2).leftMargin = (-ViewUtils.b(2.0F));
+            ((LinearLayout.LayoutParams)localObject2).leftMargin = (-ViewUtils.dpToPx(2.0F));
           }
           ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
           this.avatarContainer.addView((View)localObject1);
@@ -113,7 +113,7 @@ class SearchResultAdapter$SearchResultViewHolder
       if ((localObject4 != null) && (((List)localObject4).size() > 0))
       {
         this.pkRankingContainer.setVisibility(0);
-        paramView.setBackgroundResource(2130841061);
+        paramView.setBackgroundResource(2130841852);
         i = j;
         for (;;)
         {
@@ -149,7 +149,7 @@ class SearchResultAdapter$SearchResultViewHolder
         ((StringBuilder)localObject2).append("张抵扣券");
         ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
         this.couponTitle.setVisibility(0);
-        paramView.setBackgroundResource(2130841052);
+        paramView.setBackgroundResource(2130841843);
         paramSearchResultViewHolder.couponContainer.removeAllViews();
         localObject1 = ((List)localObject3).iterator();
         while (((Iterator)localObject1).hasNext())
@@ -169,11 +169,11 @@ class SearchResultAdapter$SearchResultViewHolder
     }
     else
     {
-      this.name.setTextColor(paramView.getContext().getResources().getColor(2131167063));
+      this.name.setTextColor(paramView.getContext().getResources().getColor(2131168001));
       resetPkAndCouponView(paramView);
       paramSearchResultViewHolder = (SearchResultViewHolder)localObject2;
     }
-    paramView.setOnClickListener(new SearchResultAdapter.SearchResultViewHolder.1(this, paramActivity, localMiniAppInfo, paramSearchInfo, paramString, paramSearchResultViewHolder));
+    paramView.setOnClickListener(new SearchResultAdapter.SearchResultViewHolder.1(this, paramSearchInfo, localMiniAppInfo, paramActivity, paramString, paramSearchResultViewHolder));
     paramSearchResultViewHolder = (MiniAppExposureManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);
     paramView = new MiniAppConfig(localMiniAppInfo);
     paramView.launchParam.scene = paramInt;
@@ -188,7 +188,7 @@ class SearchResultAdapter$SearchResultViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchResultAdapter.SearchResultViewHolder
  * JD-Core Version:    0.7.0.1
  */

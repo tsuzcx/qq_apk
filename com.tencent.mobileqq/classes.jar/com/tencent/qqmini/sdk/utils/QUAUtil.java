@@ -67,12 +67,21 @@ public class QUAUtil
     if (!TextUtils.isEmpty(str)) {
       return str;
     }
-    return "1.15.0";
+    return "1.19.0";
   }
   
   public static String getQUA()
   {
-    return "V1_AND_MINISDK_1.15.0_0_RELEASE_B";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("V1_AND_MINISDK_1.19.0_0");
+    String str;
+    if (isAbi64()) {
+      str = "_ARM64";
+    } else {
+      str = "_RELEASE_B";
+    }
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
   
   public static String getRequestUA()
@@ -150,7 +159,7 @@ public class QUAUtil
     {
       String str;
       label31:
-      break label58;
+      break label59;
     }
     try
     {
@@ -165,10 +174,10 @@ public class QUAUtil
     str = System.getProperty("http.agent");
     label46:
     systemUA = URLEncoder.encode(str, "UTF-8");
-    break label64;
-    label58:
+    break label65;
+    label59:
     systemUA = "AndroidQQ";
-    label64:
+    label65:
     return systemUA;
   }
   
@@ -190,6 +199,11 @@ public class QUAUtil
     localStringBuilder.append(Thread.currentThread().getName());
     QMLog.d("QUAUtil", localStringBuilder.toString());
     return mWebViewUA;
+  }
+  
+  public static boolean isAbi64()
+  {
+    return Build.CPU_ABI.equals("arm64-v8a");
   }
   
   public static boolean isAlienApp()
@@ -240,7 +254,7 @@ public class QUAUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.QUAUtil
  * JD-Core Version:    0.7.0.1
  */

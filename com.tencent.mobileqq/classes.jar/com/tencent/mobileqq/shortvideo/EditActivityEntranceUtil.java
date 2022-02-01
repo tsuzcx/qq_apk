@@ -4,7 +4,22 @@ import com.tencent.mobileqq.statistics.ReportController;
 
 public class EditActivityEntranceUtil
 {
-  private static int a(int paramInt)
+  public static void a(String paramString, int paramInt)
+  {
+    ReportController.b(null, "dc00898", "", "", paramString, paramString, c(paramInt), 0, "", "", "", "");
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    return (paramInt == 11) || (paramInt == 9) || (paramInt == 10) || (paramInt == 100);
+  }
+  
+  private static boolean b(int paramInt)
+  {
+    return (paramInt == 125) || (paramInt == 126) || (paramInt == 127) || (paramInt == 128) || (paramInt == 129) || (paramInt == 130);
+  }
+  
+  private static int c(int paramInt)
   {
     if (a(paramInt)) {
       return 1;
@@ -26,25 +41,10 @@ public class EditActivityEntranceUtil
     }
     return 100;
   }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    ReportController.b(null, "dc00898", "", "", paramString, paramString, a(paramInt), 0, "", "", "", "");
-  }
-  
-  private static boolean a(int paramInt)
-  {
-    return (paramInt == 11) || (paramInt == 9) || (paramInt == 10) || (paramInt == 100);
-  }
-  
-  private static boolean b(int paramInt)
-  {
-    return (paramInt == 125) || (paramInt == 126) || (paramInt == 127) || (paramInt == 128) || (paramInt == 129) || (paramInt == 130);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.EditActivityEntranceUtil
  * JD-Core Version:    0.7.0.1
  */

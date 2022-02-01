@@ -18,22 +18,22 @@ public class CommentFloatDialogController$FeedInfoUpdateReceiver
   
   public void a(@NonNull CommentFloatDialogController paramCommentFloatDialogController, @NonNull FeedInfoChangeEvent paramFeedInfoChangeEvent)
   {
-    if ((paramFeedInfoChangeEvent.jdField_a_of_type_Int != 2) && (paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString.equals(CommentFloatDialogController.a(paramCommentFloatDialogController))) && (CommentFloatDialogController.a(paramCommentFloatDialogController) != null) && (CommentFloatDialogController.a(paramCommentFloatDialogController).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null))
+    if ((paramFeedInfoChangeEvent.a != 2) && (paramFeedInfoChangeEvent.b.equals(CommentFloatDialogController.d(paramCommentFloatDialogController))) && (CommentFloatDialogController.a(paramCommentFloatDialogController) != null) && (CommentFloatDialogController.a(paramCommentFloatDialogController).a != null))
     {
       SLog.a(this.TAG, "receive feed info change event. %s.", paramFeedInfoChangeEvent.toString());
-      CommentFloatDialogController.OnDataChangeListener localOnDataChangeListener = paramCommentFloatDialogController.a();
-      if (paramFeedInfoChangeEvent.b != 2) {
+      CommentFloatDialogController.OnDataChangeListener localOnDataChangeListener = paramCommentFloatDialogController.c();
+      if (paramFeedInfoChangeEvent.d != 2) {
         return;
       }
-      if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
+      if (paramFeedInfoChangeEvent.c != null)
       {
-        CommentFloatDialogController.a(paramCommentFloatDialogController).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-        CommentFloatDialogController.a(paramCommentFloatDialogController).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
-        CommentFloatDialogController.a(paramCommentFloatDialogController).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
+        CommentFloatDialogController.a(paramCommentFloatDialogController).a.mCommentCount = paramFeedInfoChangeEvent.c.mCommentCount;
+        CommentFloatDialogController.a(paramCommentFloatDialogController).a.mFriendCommentCount = paramFeedInfoChangeEvent.c.mFriendCommentCount;
+        CommentFloatDialogController.a(paramCommentFloatDialogController).a.mFanCommentCount = paramFeedInfoChangeEvent.c.mFanCommentCount;
       }
-      CommentFloatDialogController.a(paramCommentFloatDialogController).a(paramFeedInfoChangeEvent.c);
+      CommentFloatDialogController.a(paramCommentFloatDialogController).a(paramFeedInfoChangeEvent.e);
       if (localOnDataChangeListener != null) {
-        localOnDataChangeListener.a(CommentFloatDialogController.a(paramCommentFloatDialogController), paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+        localOnDataChangeListener.a(CommentFloatDialogController.a(paramCommentFloatDialogController), paramFeedInfoChangeEvent.g.isSuccess());
       }
       return;
     }
@@ -49,7 +49,7 @@ public class CommentFloatDialogController$FeedInfoUpdateReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogController.FeedInfoUpdateReceiver
  * JD-Core Version:    0.7.0.1
  */

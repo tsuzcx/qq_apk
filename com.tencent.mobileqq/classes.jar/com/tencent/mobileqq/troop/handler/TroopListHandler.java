@@ -43,13 +43,13 @@ public class TroopListHandler
   extends TroopBaseHandler
   implements ITroopListHandler
 {
-  public static int a = 9101;
   public static String a = "GroupCodeZero";
-  private static boolean jdField_a_of_type_Boolean = false;
-  public static int b = 9102;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList<TroopInfo> jdField_b_of_type_JavaUtilArrayList;
-  private boolean jdField_b_of_type_Boolean = false;
+  public static int b = 9101;
+  public static int c = 9102;
+  private static boolean d = false;
+  private boolean e = false;
+  private ArrayList<Long> f = new ArrayList();
+  private ArrayList<TroopInfo> g;
   
   public TroopListHandler(AppInterface paramAppInterface)
   {
@@ -333,7 +333,7 @@ public class TroopListHandler
       }
     }
     if (i != 0) {
-      a(jdField_b_of_type_Int);
+      a(c);
     }
     notifyUI(TroopObserver.TYPE_GET_MULTI_TROOP_INFO, true, localArrayList);
   }
@@ -431,13 +431,13 @@ public class TroopListHandler
         bool = true;
       }
       notifyUI(i, bool, null);
-      jdField_a_of_type_Boolean = true;
+      d = true;
       TroopListHandlerProcessorConfig.a(this.appRuntime);
       return;
     }
     if (paramGetTroopListRespV2.errorCode == 2001)
     {
-      b(this.jdField_b_of_type_JavaUtilArrayList);
+      b(this.g);
       return;
     }
     Object localObject = new ArrayList();
@@ -458,22 +458,22 @@ public class TroopListHandler
       a(paramGetTroopListRespV2.vecCookies);
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.f.size() > 0)
     {
-      ((TroopMemberListHandler)this.appRuntime.getBusinessHandler(TroopMemberListHandler.class.getName())).a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      ((TroopMemberListHandler)this.appRuntime.getBusinessHandler(TroopMemberListHandler.class.getName())).a(this.f);
+      this.f.clear();
     }
     ((ITroopInfoService)this.appRuntime.getRuntimeService(ITroopInfoService.class, "")).refreshCommonlyUsedTroop();
     paramToServiceMsg = this.appRuntime.getApplicationContext();
     paramGetTroopListRespV2 = new StringBuilder();
     paramGetTroopListRespV2.append(this.appRuntime.getAccount());
     paramGetTroopListRespV2.append("load_trooplist");
-    paramToServiceMsg.getSharedPreferences(paramGetTroopListRespV2.toString(), 0).edit().putBoolean("load_all_4", false).commit();
+    paramToServiceMsg.getSharedPreferences(paramGetTroopListRespV2.toString(), 0).edit().putBoolean("load_all_6", false).commit();
     if (QLog.isColorLevel()) {
       QLog.i("TroopListHandler", 2, "notifyUI(TYPE_GET_TROOP_LIST");
     }
     notifyUI(TroopObserver.TYPE_GET_TROOP_LIST, true, null);
-    jdField_a_of_type_Boolean = true;
+    d = true;
     TroopListHandlerProcessorConfig.a(this.appRuntime);
   }
   
@@ -516,13 +516,13 @@ public class TroopListHandler
     a(paramGetTroopListRespV2, localITroopInfoService);
     TroopListHandlerProcessorConfig.a(this.appRuntime, paramGetTroopListRespV2);
     if (paramBoolean) {
-      a(jdField_a_of_type_Int);
+      a(b);
     }
   }
   
   private void a(GetTroopListRespV2 paramGetTroopListRespV2, ITroopInfoService paramITroopInfoService)
   {
-    if ((paramGetTroopListRespV2.vecFavGroup != null) && (this.jdField_b_of_type_Boolean))
+    if ((paramGetTroopListRespV2.vecFavGroup != null) && (this.e))
     {
       HashMap localHashMap = new HashMap();
       paramGetTroopListRespV2 = paramGetTroopListRespV2.vecFavGroup.iterator();
@@ -547,7 +547,7 @@ public class TroopListHandler
     localToServiceMsg.extraData.putByte("bGetMSFMsgFlag", (byte)0);
     localToServiceMsg.extraData.putByte("bGroupFlagExt", (byte)1);
     localToServiceMsg.extraData.putByte("bGetLongGroupName", (byte)1);
-    this.jdField_b_of_type_Boolean = false;
+    this.e = false;
     localToServiceMsg.extraData.putByteArray("vecCookies", paramArrayOfByte);
     if (QLog.isColorLevel()) {
       QLog.d("TroopListHandler", 2, "get troop list, cookie != null");
@@ -738,7 +738,7 @@ public class TroopListHandler
       }
       localObject = paramITroopInfoService.getTroopMemberForTroopHead(localTroopInfo.troopuin);
       if ((!localTroopInfo.hasSetTroopHead()) && ((((ArrayList)localObject).size() == 0) || ((((ArrayList)localObject).size() < 4) && (localTroopInfo.mMemberNumSeq != localTroopInfo.mOldMemberNumSeq)))) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(localstTroopNum.GroupCode));
+        this.f.add(Long.valueOf(localstTroopNum.GroupCode));
       }
       TroopListHandlerProcessorConfig.a(this.appRuntime, localTroopInfo);
       i += 1;
@@ -822,12 +822,26 @@ public class TroopListHandler
     notifyUI(TroopObserver.TYPE_GET_MULTI_TROOP_INFO, false, null);
   }
   
-  protected String a()
+  public void a(int paramInt)
   {
-    return "TroopListHandler";
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", Integer.toString(paramInt));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, a, false, 0L, 0L, localHashMap, "");
   }
   
-  public void a()
+  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    notifyUI(paramInt, paramBoolean, paramObject);
+  }
+  
+  public void a(ArrayList<Long> paramArrayList)
+  {
+    ToServiceMsg localToServiceMsg = createToServiceMsg("friendlist.GetMultiTroopInfoReq");
+    localToServiceMsg.extraData.putSerializable("vecGroupCode", paramArrayList);
+    send(localToServiceMsg);
+  }
+  
+  public void b()
   {
     ArrayList localArrayList1 = ((ITroopInfoService)this.appRuntime.getRuntimeService(ITroopInfoService.class, "")).getUiTroopList();
     ArrayList localArrayList2 = new ArrayList();
@@ -858,33 +872,9 @@ public class TroopListHandler
     b(localArrayList2);
   }
   
-  public void a(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", Integer.toString(paramInt));
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, jdField_a_of_type_JavaLangString, false, 0L, 0L, localHashMap, "");
-  }
-  
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    notifyUI(paramInt, paramBoolean, paramObject);
-  }
-  
-  public void a(ArrayList<Long> paramArrayList)
-  {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("friendlist.GetMultiTroopInfoReq");
-    localToServiceMsg.extraData.putSerializable("vecGroupCode", paramArrayList);
-    send(localToServiceMsg);
-  }
-  
-  public boolean a()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
   public void b(ArrayList<TroopInfo> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.f.clear();
     ToServiceMsg localToServiceMsg = createToServiceMsg("friendlist.GetTroopListReqV2");
     localToServiceMsg.setEnableFastResend(true);
     Object localObject1 = localToServiceMsg.extraData;
@@ -892,17 +882,17 @@ public class TroopListHandler
     ((Bundle)localObject1).putByte("bGetMSFMsgFlag", (byte)0);
     localToServiceMsg.extraData.putByte("bGroupFlagExt", (byte)1);
     localToServiceMsg.extraData.putByte("bGetLongGroupName", (byte)1);
-    this.jdField_b_of_type_Boolean = true;
+    this.e = true;
     localObject1 = new ArrayList();
     Object localObject2;
     if (paramArrayList != null)
     {
-      this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
+      this.g = paramArrayList;
       localObject2 = this.appRuntime.getApplicationContext();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(this.appRuntime.getAccount());
       localStringBuilder.append("load_trooplist");
-      boolean bool = ((Context)localObject2).getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("load_all_4", true);
+      boolean bool = ((Context)localObject2).getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("load_all_6", true);
       while (i < paramArrayList.size())
       {
         localObject2 = a((TroopInfo)paramArrayList.get(i), bool);
@@ -932,6 +922,16 @@ public class TroopListHandler
       QLog.d("TroopListHandler", 2, ((StringBuilder)localObject2).toString());
     }
     send(localToServiceMsg);
+  }
+  
+  public boolean c()
+  {
+    return d;
+  }
+  
+  protected String dv_()
+  {
+    return "TroopListHandler";
   }
   
   public Set<String> getCommandList()
@@ -971,7 +971,7 @@ public class TroopListHandler
       }
       return;
     }
-    if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+    if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
     {
       if (QLog.isColorLevel())
       {
@@ -994,7 +994,7 @@ public class TroopListHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopListHandler
  * JD-Core Version:    0.7.0.1
  */

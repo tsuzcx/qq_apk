@@ -14,17 +14,17 @@ class ADBaseAppDownloadManager$4
     Object localObject = this.a.c;
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = DownloadManagerV2.a().a((String)localObject);
+      localObject = DownloadManagerV2.a().g((String)localObject);
       if (localObject != null)
       {
         int i = (int)((float)((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen / (float)((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen * 100.0F);
         int j = ((TMAssistantDownloadTaskInfo)localObject).mState;
         if (j == 3)
         {
-          this.this$0.b(this.a);
+          this.this$0.d(this.a);
           localObject = new DownloadInfo();
           ((DownloadInfo)localObject).e = this.a.d;
-          ((DownloadInfo)localObject).f = i;
+          ((DownloadInfo)localObject).t = i;
           this.this$0.a((DownloadInfo)localObject, 4);
           return;
         }
@@ -33,7 +33,7 @@ class ADBaseAppDownloadManager$4
           this.this$0.a(this.a);
           localObject = new DownloadInfo();
           ((DownloadInfo)localObject).e = this.a.d;
-          ((DownloadInfo)localObject).f = i;
+          ((DownloadInfo)localObject).t = i;
           this.this$0.a((DownloadInfo)localObject, 3);
           return;
         }
@@ -41,7 +41,7 @@ class ADBaseAppDownloadManager$4
         {
           localObject = new DownloadInfo();
           ((DownloadInfo)localObject).e = this.a.d;
-          ((DownloadInfo)localObject).f = 100;
+          ((DownloadInfo)localObject).t = 100;
           this.this$0.a((DownloadInfo)localObject, 5);
         }
       }
@@ -49,7 +49,7 @@ class ADBaseAppDownloadManager$4
       {
         localObject = new DownloadInfo();
         ((DownloadInfo)localObject).e = this.a.d;
-        ((DownloadInfo)localObject).f = 0;
+        ((DownloadInfo)localObject).t = 0;
         this.this$0.a((DownloadInfo)localObject, 0);
       }
     }
@@ -57,14 +57,14 @@ class ADBaseAppDownloadManager$4
     {
       localObject = new DownloadInfo();
       ((DownloadInfo)localObject).e = this.a.d;
-      ((DownloadInfo)localObject).f = 0;
+      ((DownloadInfo)localObject).t = 0;
       this.this$0.a((DownloadInfo)localObject, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.4
  * JD-Core Version:    0.7.0.1
  */

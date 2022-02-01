@@ -10,9 +10,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.ContactSearchableSearchHistory;
 import com.tencent.mobileqq.search.IContactSearchable;
 import com.tencent.mobileqq.search.SearchAdapterInterface;
@@ -31,21 +35,21 @@ public class ContactsSearchResultAdapter
   extends BaseSearchResultAdapter
   implements SearchAdapterInterface, AbsListView.OnScrollListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
-  private boolean jdField_b_of_type_Boolean;
+  private LayoutInflater c;
+  private boolean d;
+  private View.OnClickListener e;
+  private View.OnClickListener f;
+  private Context g;
+  private Drawable h;
   
   public ContactsSearchResultAdapter(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, List<IContactSearchable> paramList, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, boolean paramBoolean)
   {
     super(paramContext, paramQQAppInterface, paramXListView, paramList);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener2;
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.g = paramContext;
+    this.c = LayoutInflater.from(paramContext);
+    this.e = paramOnClickListener1;
+    this.f = paramOnClickListener2;
+    this.d = paramBoolean;
   }
   
   private void a(TextView paramTextView, boolean paramBoolean)
@@ -55,13 +59,13 @@ public class ContactsSearchResultAdapter
     }
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+      if (this.h == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramTextView.getContext().getResources().getDrawable(2130841838);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.dpToPx(15.0F), ImmersiveUtils.dpToPx(15.0F));
+        this.h = paramTextView.getContext().getResources().getDrawable(2130842755);
+        this.h.setBounds(0, 0, ImmersiveUtils.dpToPx(15.0F), ImmersiveUtils.dpToPx(15.0F));
       }
-      ThemeUtil.setThemeFilter(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ThemeUtil.curThemeId);
-      paramTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
+      ThemeUtil.setThemeFilter(this.h, ThemeUtil.curThemeId);
+      paramTextView.setCompoundDrawables(null, null, this.h, null);
       return;
     }
     paramTextView.setCompoundDrawables(null, null, null, null);
@@ -79,7 +83,7 @@ public class ContactsSearchResultAdapter
     if ((paramViewHolder instanceof ContactsSearchResultAdapter.ViewTag))
     {
       paramViewHolder = (ContactsSearchResultAdapter.ViewTag)paramViewHolder;
-      if ((bool2) && (!paramViewHolder.jdField_a_of_type_Boolean)) {
+      if ((bool2) && (!paramViewHolder.m)) {
         return true;
       }
       bool1 = false;
@@ -110,23 +114,24 @@ public class ContactsSearchResultAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     View localView;
+    Object localObject1;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558929, paramViewGroup, false);
+      localView = this.c.inflate(2131624559, paramViewGroup, false);
       paramView = new ContactsSearchResultAdapter.ViewTag();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369387));
-      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369506));
-      paramView.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369416));
-      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369362));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379778));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379894));
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131376671);
-      paramView.jdField_a_of_type_AndroidViewView.setContentDescription(HardCodeUtil.a(2131702726));
-      SearchUtil.a(paramView.jdField_a_of_type_AndroidWidgetTextView);
-      paramView.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379769));
-      paramView.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379956));
-      paramView.e = ((TextView)localView.findViewById(2131369389));
-      paramView.jdField_b_of_type_AndroidViewView = localView.findViewById(2131379859);
+      paramView.c = ((ImageView)localView.findViewById(2131436420));
+      paramView.d = ((ImageView)localView.findViewById(2131436590));
+      paramView.f = ((ImageView)localView.findViewById(2131436452));
+      paramView.e = ((ImageView)localView.findViewById(2131436381));
+      paramView.g = ((TextView)localView.findViewById(2131448598));
+      paramView.h = ((TextView)localView.findViewById(2131448768));
+      paramView.l = localView.findViewById(2131444937);
+      paramView.l.setContentDescription(HardCodeUtil.a(2131900716));
+      SearchUtil.a(paramView.g);
+      paramView.i = ((TextView)localView.findViewById(2131448579));
+      paramView.j = ((TextView)localView.findViewById(2131448844));
+      paramView.k = ((TextView)localView.findViewById(2131436422));
+      paramView.n = localView.findViewById(2131448716);
       localView.setTag(paramView);
     }
     else
@@ -135,39 +140,39 @@ public class ContactsSearchResultAdapter
       localView = paramView;
       paramView = (View)localObject1;
     }
-    Object localObject1 = (IContactSearchable)getItem(paramInt);
-    if (localObject1 == null)
+    IContactSearchable localIContactSearchable = (IContactSearchable)getItem(paramInt);
+    if (localIContactSearchable == null)
     {
       QLog.w("ContactsSearchResultAdapter", 1, "getView entity is null.");
     }
     else
     {
-      Object localObject2 = ((IContactSearchable)localObject1).c();
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-      boolean bool = String.valueOf(9954L).equals(((IContactSearchable)localObject1).e());
-      a(paramView.jdField_a_of_type_AndroidWidgetTextView, bool);
-      paramView.jdField_c_of_type_AndroidWidgetTextView.setText(((IContactSearchable)localObject1).b());
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setImageResource(((IContactSearchable)localObject1).b());
-      if (((IContactSearchable)localObject1).c() == 4) {
-        TroopBlockUtils.a(paramView, ((IContactSearchable)localObject1).e());
+      localObject1 = localIContactSearchable.c();
+      paramView.g.setText((CharSequence)localObject1);
+      boolean bool = String.valueOf(9954L).equals(localIContactSearchable.j());
+      a(paramView.g, bool);
+      paramView.i.setText(localIContactSearchable.b());
+      paramView.d.setImageResource(localIContactSearchable.g());
+      if (localIContactSearchable.k() == 4) {
+        TroopBlockUtils.a(paramView, localIContactSearchable.j());
       }
-      Object localObject3 = ((IContactSearchable)localObject1).d();
-      if (!TextUtils.isEmpty((CharSequence)localObject3))
+      Object localObject2 = localIContactSearchable.d();
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        paramView.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject3);
-        paramView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramView.h.setText((CharSequence)localObject2);
+        paramView.h.setVisibility(0);
       }
       else
       {
-        paramView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramView.h.setVisibility(8);
       }
-      paramView.jdField_d_of_type_AndroidWidgetTextView.setText(((IContactSearchable)localObject1).a());
-      paramView.jdField_a_of_type_JavaLangString = ((IContactSearchable)localObject1).e();
-      paramView.jdField_a_of_type_Int = ((IContactSearchable)localObject1).c();
-      if ((localObject1 instanceof ContactSearchableSearchHistory))
+      paramView.j.setText(localIContactSearchable.a());
+      paramView.a = localIContactSearchable.j();
+      paramView.b = localIContactSearchable.k();
+      if ((localIContactSearchable instanceof ContactSearchableSearchHistory))
       {
-        localObject3 = ((ContactSearchableSearchHistory)localObject1).a();
-        if ((((SearchHistory)localObject3).type == 56938) || (((SearchHistory)localObject3).type == 56942))
+        localObject2 = ((ContactSearchableSearchHistory)localIContactSearchable).e();
+        if ((((SearchHistory)localObject2).type == 56938) || (((SearchHistory)localObject2).type == 56942))
         {
           bool = true;
           break label449;
@@ -175,49 +180,63 @@ public class ContactsSearchResultAdapter
       }
       bool = false;
       label449:
-      paramView.jdField_a_of_type_Boolean = bool;
-      if (paramView.jdField_a_of_type_Boolean)
+      paramView.m = bool;
+      if (paramView.m)
       {
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842159);
-        paramView.e.setVisibility(0);
-        paramView.e.setText(ContactUtils.a((String)localObject2));
+        paramView.c.setImageResource(2130843087);
+        paramView.k.setVisibility(0);
+        paramView.k.setText(ContactUtils.b((String)localObject1));
+      }
+      else if (paramView.b == 119)
+      {
+        localObject2 = BaseApplicationImpl.sApplication.getRuntime();
+        localObject1 = null;
+        if ((localObject2 instanceof AppInterface)) {
+          localObject1 = ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).getGameMsgAvatarDrawable((AppInterface)localObject2, paramView.a);
+        }
+        if (localObject1 == null) {
+          paramView.c.setImageBitmap(a(paramView.a, paramView.b));
+        } else {
+          paramView.c.setImageDrawable((Drawable)localObject1);
+        }
+        paramView.k.setVisibility(8);
       }
       else
       {
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int));
+        paramView.c.setImageBitmap(a(paramView.a, paramView.b));
+        paramView.k.setVisibility(8);
+      }
+      localObject1 = localIContactSearchable.i();
+      if (localObject1 == null)
+      {
         paramView.e.setVisibility(8);
       }
-      localObject2 = ((IContactSearchable)localObject1).a();
-      if (localObject2 == null)
-      {
-        paramView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
       else
       {
-        paramView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramView.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+        paramView.e.setVisibility(0);
+        paramView.e.setImageDrawable((Drawable)localObject1);
       }
-      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
+      if (this.e != null)
       {
         localView.setTag(-1, Integer.valueOf(paramInt));
-        localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        localView.setOnClickListener(this.e);
       }
-      if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null)
+      if (this.f != null)
       {
-        paramView.jdField_a_of_type_AndroidViewView.setTag(-1, Long.valueOf(((SearchHistory)((IContactSearchable)localObject1).a()).getId()));
-        paramView.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+        paramView.l.setTag(-1, Long.valueOf(((SearchHistory)localIContactSearchable.l()).getId()));
+        paramView.l.setOnClickListener(this.f);
       }
-      localObject1 = localView.findViewById(2131365776);
+      localObject1 = localView.findViewById(2131432033);
       if (paramInt == getCount() - 1) {
         ((View)localObject1).setVisibility(8);
       } else {
         ((View)localObject1).setVisibility(0);
       }
-      if (paramView.jdField_b_of_type_AndroidViewView != null) {
-        if (SearchUtil.a(paramView.jdField_a_of_type_JavaLangString)) {
-          paramView.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      if (paramView.n != null) {
+        if (SearchUtil.a(paramView.a)) {
+          paramView.n.setVisibility(0);
         } else {
-          paramView.jdField_b_of_type_AndroidViewView.setVisibility(8);
+          paramView.n.setVisibility(8);
         }
       }
     }
@@ -227,7 +246,7 @@ public class ContactsSearchResultAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ContactsSearchResultAdapter
  * JD-Core Version:    0.7.0.1
  */

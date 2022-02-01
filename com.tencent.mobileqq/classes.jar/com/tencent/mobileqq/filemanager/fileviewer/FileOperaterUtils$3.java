@@ -25,12 +25,12 @@ final class FileOperaterUtils$3
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
       FileManagerReporter.FileAssistantReportData localFileAssistantReportData = new FileManagerReporter.FileAssistantReportData();
       localFileAssistantReportData.b = "file_forward";
-      localFileAssistantReportData.jdField_a_of_type_Int = 71;
-      localFileAssistantReportData.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-      localFileAssistantReportData.c = FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
-      localFileAssistantReportData.d = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType);
+      localFileAssistantReportData.c = 71;
+      localFileAssistantReportData.e = this.a.fileSize;
+      localFileAssistantReportData.d = FileUtil.a(this.a.fileName);
+      localFileAssistantReportData.f = FileManagerUtil.b(this.a.getCloudType(), this.a.peerType);
       FileManagerReporter.a(localQQAppInterface.getCurrentAccountUin(), localFileAssistantReportData);
-      QFileUtils.b(localQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      QFileUtils.c(localQQAppInterface, this.b, this.a);
       label96:
       EventCollector.getInstance().onViewClicked(paramView);
       return;
@@ -43,7 +43,7 @@ final class FileOperaterUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils.3
  * JD-Core Version:    0.7.0.1
  */

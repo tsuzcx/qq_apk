@@ -19,7 +19,7 @@ public class QwalletToLaunchWXMiniAppAction
   
   private boolean c()
   {
-    ((IWXMiniProgramHelper)QRoute.api(IWXMiniProgramHelper.class)).launchMiniProgram(this.a);
+    ((IWXMiniProgramHelper)QRoute.api(IWXMiniProgramHelper.class)).launchMiniProgram(this.f);
     return true;
   }
   
@@ -27,7 +27,7 @@ public class QwalletToLaunchWXMiniAppAction
   {
     try
     {
-      if ((this.a.containsKey("user_name")) && (!StringUtil.a((String)this.a.get("user_name"))))
+      if ((this.f.containsKey("user_name")) && (!StringUtil.isEmpty((String)this.f.get("user_name"))))
       {
         boolean bool = c();
         return bool;
@@ -40,14 +40,14 @@ public class QwalletToLaunchWXMiniAppAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QwalletToLaunchWXMiniAppAction", 1, localStringBuilder.toString());
-      b_("QwalletToLaunchWXMiniAppAction");
+      h_("QwalletToLaunchWXMiniAppAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.jump.impl.QwalletToLaunchWXMiniAppAction
  * JD-Core Version:    0.7.0.1
  */

@@ -65,6 +65,11 @@ import com.tencent.mobileqq.nearby.ipc.INearbyProcObserver;
 import com.tencent.mobileqq.nearby.redtouch.NearbyRedNum;
 import com.tencent.mobileqq.nearby.report.IODReportTask;
 import com.tencent.mobileqq.nearby.widget.NearbyPublishMenuHelper;
+import com.tencent.mobileqq.newnearby.NearbyActivityController;
+import com.tencent.mobileqq.newnearby.impl.NearbyAlbumHelperImpl;
+import com.tencent.mobileqq.newnearby.impl.NearbyReportHelperImpl;
+import com.tencent.mobileqq.newnearby.model.TabInfo;
+import com.tencent.mobileqq.newnearby.util.NearbyStatusBarHelper;
 import com.tencent.mobileqq.now.utils.StatusBarUtil;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
@@ -125,6 +130,8 @@ public class NearbyActivity
   public static final int REQ_START_OFFICAL_NOTIFY_PAGE = 10002;
   private static final String SPEED_TRACE = "WebSpeedTrace";
   public static final String TAG = "nearby.NearbyActivity";
+  public static long enterNearbyTime = 0L;
+  public static long enterNearbyTimeCost = 0L;
   public static String nearByTabUrl = "https://now.qq.com/qq/nearby/index.html?_wv=3&now_n_http=1&now_n_r=2&_proxy=1";
   protected final int MSG_SEND_GET_RED_DOT = 1001;
   protected final int MSG_SEND_HEART_BEAT = 1000;
@@ -145,6 +152,7 @@ public class NearbyActivity
   int mMsgBoxTabIndex;
   int mMsgTabRedDotRetryTime = 0;
   RedTouch mMsgTabRedTouch;
+  NearbyActivityController mNearbyActivityController;
   NearbyHandler mNearbyHandler;
   protected NearbyObserver mNearbyObserver = new NearbyActivity.10(this);
   NearbyUsingTimeReport mNearbyUsingTimeReport;
@@ -194,22 +202,22 @@ public class NearbyActivity
   private int getNearbyMatchMakerRedNum(RedDotTextView paramRedDotTextView)
   {
     Object localObject = this.app.getNearbyProcManager();
-    boolean bool = ((INearbyProcManager)localObject).a();
+    boolean bool = ((INearbyProcManager)localObject).h();
     int j = 0;
     if (!bool) {
       return 0;
     }
-    localObject = ((INearbyProcManager)localObject).b();
+    localObject = ((INearbyProcManager)localObject).i();
     if (localObject == null) {
       return 0;
     }
-    if (((NearbyRedNum)localObject).jdField_a_of_type_Int > 0)
+    if (((NearbyRedNum)localObject).a > 0)
     {
       int i = j;
-      if (!TextUtils.isEmpty(((NearbyRedNum)localObject).jdField_a_of_type_JavaLangString)) {
+      if (!TextUtils.isEmpty(((NearbyRedNum)localObject).e)) {
         try
         {
-          i = new JSONObject(((NearbyRedNum)localObject).jdField_a_of_type_JavaLangString).optInt("is_follow", 0);
+          i = new JSONObject(((NearbyRedNum)localObject).e).optInt("is_follow", 0);
         }
         catch (JSONException localJSONException)
         {
@@ -223,7 +231,7 @@ public class NearbyActivity
       MatchMakerPlugin.a((NearbyRedNum)localObject);
       paramRedDotTextView.setTag(Integer.valueOf(i));
     }
-    return ((NearbyRedNum)localObject).jdField_a_of_type_Int;
+    return ((NearbyRedNum)localObject).a;
   }
   
   public static RedTouch getTabRedTouch(Context paramContext, TabBarView paramTabBarView, int paramInt1, int paramInt2)
@@ -242,10 +250,10 @@ public class NearbyActivity
   
   private boolean isStatusBarSupportWhiteMode()
   {
-    String str = VasUtil.a();
+    String str = VasUtil.e();
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (!QQTheme.a(str, false))
+    if (!QQTheme.isCustomTheme(str, false))
     {
       bool1 = bool2;
       if (!StatusBarUtil.a())
@@ -275,7 +283,7 @@ public class NearbyActivity
   
   private void setNavBarBgWhiteColor()
   {
-    if ((!StatusBarUtil.a()) && (!QQTheme.a(VasUtil.a(), false)))
+    if ((!StatusBarUtil.a()) && (!QQTheme.isCustomTheme(VasUtil.e(), false)))
     {
       if (ImmersiveUtils.isSupporImmersive() != 1) {
         return;
@@ -311,7 +319,7 @@ public class NearbyActivity
       }
       else
       {
-        RedDotTextView localRedDotTextView = this.mBarView.a(i);
+        RedDotTextView localRedDotTextView = this.mBarView.b(i);
         if (getNearbyMatchMakerRedNum(localRedDotTextView) > 0) {
           bool = true;
         }
@@ -347,16 +355,21 @@ public class NearbyActivity
       ((StringBuilder)localObject).append(paramInt1);
       QLog.d("nearby.NearbyActivity", 2, ((StringBuilder)localObject).toString());
     }
+    if ((paramInt1 == 1000) || (paramInt1 == 1001)) {
+      NearbyPublishMenuHelper.a(this, paramInt1, paramInt2, paramIntent);
+    }
+    if (this.mIsNew)
+    {
+      this.mNearbyActivityController.a(paramInt1, paramInt2, paramIntent);
+      return;
+    }
     if (paramInt1 == 10002)
     {
       paramIntent = new Intent(this, QQBrowserActivity.class);
       paramIntent.putExtra("url", "https://nearby.qq.com/nearby-index/my_msg.html?_wv=1031&_bid=3027");
       startActivity(paramIntent);
-      overridePendingTransition(2130772002, 2130772003);
+      overridePendingTransition(2130772005, 2130772006);
       return;
-    }
-    if ((paramInt1 == 1000) || (paramInt1 == 1001)) {
-      NearbyPublishMenuHelper.a(this, paramInt1, paramInt2, paramIntent);
     }
     if (paramInt1 == 10001)
     {
@@ -403,6 +416,31 @@ public class NearbyActivity
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
+    enterNearbyTime = System.currentTimeMillis();
+    enterNearbyTimeCost = enterNearbyTime - getIntent().getLongExtra("CLICK_ENTER_TIME", System.currentTimeMillis());
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("enter nearby success, time cost: ");
+    ((StringBuilder)localObject1).append(enterNearbyTimeCost);
+    QLog.i("nearby.NearbyActivity-timecost", 1, ((StringBuilder)localObject1).toString());
+    this.mIsNew = getIntent().getBooleanExtra("is_new", false);
+    if (this.mIsNew)
+    {
+      this.mNearbyActivityController = new NearbyActivityController(this);
+      NearbyStatusBarHelper.a(this);
+      bool = super.doOnCreate(paramBundle);
+      this.mNearbyHandler = ((NearbyHandler)this.app.getBusinessHandler(NearbyConstants.a));
+      this.app.addObserver(this.mNearbyObserver);
+      this.app.addNearbyProcObserver(this.mINearbyProcObserver);
+      setContentView(getLayoutResId());
+      this.mNearbyActivityController.a();
+      this.mHeartBeatHandler.sendEmptyMessageDelayed(1001, 1000L);
+      if ((!isFinishing()) && (!this.isStopHeartBeat)) {
+        notifyServerEnterNearby();
+      }
+      NearbyReportHelperImpl.reportEnterNewNearbySuccess(this);
+      return bool;
+    }
+    NearbyReportHelperImpl.reportEnterOldNearbySuccess(this);
     long l = System.currentTimeMillis();
     MatchMakerPlugin.a();
     this.mMsgBoxTabIndex = initTabs(this.mTabInfos);
@@ -417,15 +455,15 @@ public class NearbyActivity
     try
     {
       ReportController.b(null, "dc00899", "grp_lbs", "", "entry", "open_nearby_act_total_tmp", 0, 0, Build.MODEL, Build.VERSION.SDK, "", "");
-      label87:
+      label298:
       if (this.app == null)
       {
         finish();
         QLog.e("nearby.NearbyActivity", 1, "doOnCreate app==null, goto finish");
         return false;
       }
-      this.mNearbyHandler = ((NearbyHandler)this.app.getBusinessHandler(NearbyConstants.jdField_a_of_type_JavaLangString));
-      Object localObject1 = getIntent();
+      this.mNearbyHandler = ((NearbyHandler)this.app.getBusinessHandler(NearbyConstants.a));
+      localObject1 = getIntent();
       paramBundle = (Bundle)localObject1;
       if (localObject1 == null) {
         paramBundle = fillIntent();
@@ -460,9 +498,9 @@ public class NearbyActivity
       }
       localObject2 = paramBundle;
       if (TextUtils.isEmpty(paramBundle)) {
-        localObject2 = SharedPreUtils.e(this, this.app.getCurrentAccountUin());
+        localObject2 = SharedPreUtils.ah(this, this.app.getCurrentAccountUin());
       }
-      if (!Utils.a(localObject2, SharedPreUtils.e(this, this.app.getCurrentAccountUin())))
+      if (!Utils.a(localObject2, SharedPreUtils.ah(this, this.app.getCurrentAccountUin())))
       {
         this.mFrom = 1;
         paramBundle = new Intent(this, QQBrowserActivity.class);
@@ -494,18 +532,24 @@ public class NearbyActivity
         }
       }
       this.mNearbyUsingTimeReport = new NearbyUsingTimeReport(this.app, "grp_lbs", "basic", "visit_time");
-      this.mNearbyUsingTimeReport.a();
+      this.mNearbyUsingTimeReport.b();
       this.app.addObserver(this.mNearbyObserver);
       this.app.addNearbyProcObserver(this.mINearbyProcObserver);
       checkNearbyUserAuth();
-      if ((Build.VERSION.SDK_INT >= 23) && (checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)) {
-        requestPermissions(new NearbyActivity.1(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        if (checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
+        {
+          requestPermissions(new NearbyActivity.1(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+          return bool;
+        }
+        NearbyReportHelperImpl.reportRequestLocation(this, false, false);
       }
       return bool;
     }
     catch (Exception paramBundle)
     {
-      break label87;
+      break label298;
     }
   }
   
@@ -525,18 +569,18 @@ public class NearbyActivity
       return;
     }
     this.mHeartBeatHandler.removeCallbacksAndMessages(null);
-    Object localObject = (NearbyReportManager)this.app.getManager(NearbyConstants.h);
+    Object localObject = (NearbyReportManager)this.app.getManager(NearbyConstants.j);
     if (localObject != null)
     {
       ((NearbyReportManager)localObject).a();
-      ((NearbyReportManager)localObject).jdField_a_of_type_Boolean = true;
+      ((NearbyReportManager)localObject).c = true;
     }
     localObject = ViewExposeUtil.a(getClass(), hashCode());
     if (localObject != null)
     {
       long l1 = SystemClock.elapsedRealtime();
-      long l2 = ((ViewExposeUtil.ViewExposeUnit)localObject).b;
-      this.app.reportClickEventAsync("CliOper", "", "", ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_JavaLangString, ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_JavaLangString, ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_Int, 0, Long.toString(l1 - l2), "", "", "");
+      long l2 = ((ViewExposeUtil.ViewExposeUnit)localObject).c;
+      this.app.reportClickEventAsync("CliOper", "", "", ((ViewExposeUtil.ViewExposeUnit)localObject).d, ((ViewExposeUtil.ViewExposeUnit)localObject).d, ((ViewExposeUtil.ViewExposeUnit)localObject).e, 0, Long.toString(l1 - l2), "", "", "");
     }
     try
     {
@@ -546,13 +590,13 @@ public class NearbyActivity
     {
       localException2.printStackTrace();
     }
-    NearbyImgLoader.a().b();
+    NearbyImgLoader.a().c();
     NearbyUsingTimeReport localNearbyUsingTimeReport = this.mNearbyUsingTimeReport;
     if (localNearbyUsingTimeReport != null)
     {
       int i = this.mTabBarIndex;
       localNearbyUsingTimeReport.a(i, i);
-      this.mNearbyUsingTimeReport.b();
+      this.mNearbyUsingTimeReport.c();
     }
     this.app.removeNearbyProcObserver(this.mINearbyProcObserver);
     this.app.removeObserver(this.mNearbyObserver);
@@ -562,23 +606,34 @@ public class NearbyActivity
   protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    initTitle();
+    if (!this.mIsNew) {
+      initTitle();
+    }
     if (paramIntent.getBooleanExtra("key_from_location", false))
     {
       showClearLocationConfirmDialog();
       return;
     }
-    int i = this.app.getmLastTabIndex();
-    if (i >= 0)
+    if (!this.mIsNew)
     {
-      this.mBarView.setSelectedTab(i, false);
-      if (QLog.isColorLevel())
+      int i = this.app.getmLastTabIndex();
+      if (i >= 0)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("doOnNewIntent setSelectedTab:");
-        localStringBuilder.append(i);
-        QLog.i("nearby.NearbyActivity", 2, localStringBuilder.toString());
+        this.mBarView.setSelectedTab(i, false);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("doOnNewIntent setSelectedTab:");
+          localStringBuilder.append(i);
+          QLog.i("nearby.NearbyActivity", 2, localStringBuilder.toString());
+        }
       }
+    }
+    if ((this.mIsNew) && (NearbyAlbumHelperImpl.getLock()))
+    {
+      NearbyAlbumHelperImpl.onPickPhoto(paramIntent);
+      NearbyAlbumHelperImpl.setLock(false);
+      return;
     }
     NearbyPublishMenuHelper.a(this, 1000, -1, paramIntent);
   }
@@ -586,6 +641,9 @@ public class NearbyActivity
   protected void doOnPause()
   {
     super.doOnPause();
+    if (this.mIsNew) {
+      return;
+    }
     if (this.app.ismNeedStoreAnchorage()) {
       this.app.setmLastTabIndex(this.mResumeTabIndex);
     } else {
@@ -594,13 +652,13 @@ public class NearbyActivity
     if (QLog.isDevelopLevel()) {
       NearbyUtils.a("Q.nearby", "doOnPause", new Object[] { Boolean.valueOf(this.app.ismNeedStoreAnchorage()), Integer.valueOf(this.app.getmLastTabIndex()) });
     }
-    ((DynamicAvatarManager)this.app.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER)).b();
+    ((DynamicAvatarManager)this.app.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER)).d();
     Object localObject = getFragmentByIndex(this.mViewPager.getCurrentItem());
     if ((localObject instanceof NearbyHybridFragment))
     {
       localObject = (NearbyHybridFragment)localObject;
-      ((NearbyHybridFragment)localObject).h();
-      ((NearbyHybridFragment)localObject).r();
+      ((NearbyHybridFragment)localObject).k();
+      ((NearbyHybridFragment)localObject).B();
     }
   }
   
@@ -610,9 +668,15 @@ public class NearbyActivity
     if (!BaseApplicationImpl.getApplication().getRuntime().isLogin()) {
       finish();
     }
+    if (this.mIsNew)
+    {
+      this.mHandler.sendEmptyMessageDelayed(2, 0L);
+      this.mNearbyActivityController.f();
+      return;
+    }
     NearbyBaseFragment localNearbyBaseFragment = getFragmentByIndex(this.mViewPager.getCurrentItem());
     if ((localNearbyBaseFragment instanceof NearbyHybridFragment)) {
-      ((NearbyHybridFragment)localNearbyBaseFragment).g();
+      ((NearbyHybridFragment)localNearbyBaseFragment).j();
     }
   }
   
@@ -627,6 +691,9 @@ public class NearbyActivity
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
+    if (this.mIsNew) {
+      return;
+    }
     if ((paramBoolean) && (!this.mIsInit))
     {
       this.mIsInit = true;
@@ -642,7 +709,7 @@ public class NearbyActivity
     }
     super.finish();
     if (this.mApbFlag) {
-      overridePendingTransition(2130772002, 2130772003);
+      overridePendingTransition(2130772005, 2130772006);
     }
   }
   
@@ -650,7 +717,7 @@ public class NearbyActivity
   {
     NearbyFragmentPagerAdapterImpl localNearbyFragmentPagerAdapterImpl = this.mPagerAdapter;
     if ((localNearbyFragmentPagerAdapterImpl != null) && (localNearbyFragmentPagerAdapterImpl.getHotChatFragment() != null)) {
-      return ((HotChatFragment)this.mPagerAdapter.getHotChatFragment()).a;
+      return ((HotChatFragment)this.mPagerAdapter.getHotChatFragment()).b;
     }
     return null;
   }
@@ -664,7 +731,12 @@ public class NearbyActivity
       }
       return 0;
     }
-    return 2130838739;
+    return 2130838958;
+  }
+  
+  public NearbyActivityController getController()
+  {
+    return this.mNearbyActivityController;
   }
   
   public int getCurrentIndex()
@@ -699,7 +771,7 @@ public class NearbyActivity
     if (localAbsWebView == null) {
       bool = false;
     } else {
-      bool = OfflinePlugin.b(localAbsWebView.mWebview);
+      bool = OfflinePlugin.e(localAbsWebView.mWebview);
     }
     if (QLog.isDevelopLevel()) {
       NearbyUtils.a("WebSpeedTrace", "getIsReloadUrl", new Object[] { Boolean.valueOf(bool) });
@@ -709,7 +781,15 @@ public class NearbyActivity
   
   public int getLayoutResId()
   {
-    return 2131559478;
+    if (this.mIsNew) {
+      return 1946484755;
+    }
+    return 2131625498;
+  }
+  
+  public RedTouch getMsgTabRedTouch()
+  {
+    return this.mMsgTabRedTouch;
   }
   
   public AppInterface getNearbyAppInterface()
@@ -777,7 +857,7 @@ public class NearbyActivity
     if (localAbsWebView == null) {
       l = 0L;
     } else {
-      l = OfflinePlugin.a(localAbsWebView.mWebview);
+      l = OfflinePlugin.c(localAbsWebView.mWebview);
     }
     if (QLog.isDevelopLevel()) {
       NearbyUtils.a("WebSpeedTrace", "getOpenUrlAfterCheckOfflineTime", new Object[] { Long.valueOf(l) });
@@ -792,7 +872,7 @@ public class NearbyActivity
     if (localAbsWebView == null) {
       l = 0L;
     } else {
-      l = OfflinePlugin.b(localAbsWebView.mWebview);
+      l = OfflinePlugin.d(localAbsWebView.mWebview);
     }
     if (QLog.isDevelopLevel()) {
       NearbyUtils.a("WebSpeedTrace", "getReadIndexFromOfflineTime", new Object[] { Long.valueOf(l) });
@@ -811,6 +891,11 @@ public class NearbyActivity
       }
     }
     return 0;
+  }
+  
+  public ImageView getTitleBarLeftBackIcon()
+  {
+    return this.mLeftBackIcon;
   }
   
   public JSONObject getX5Performance()
@@ -945,60 +1030,78 @@ public class NearbyActivity
   public void grant()
   {
     if (getNearbyHybridFragment() != null) {
-      getNearbyHybridFragment().b();
+      getNearbyHybridFragment().c();
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
-    if (i != 1)
+    int j = paramMessage.what;
+    int i = 1;
+    if (j != 1)
     {
-      if (i == 2)
+      if (j != 2) {
+        return false;
+      }
+      this.mMsgTabRedDotRetryTime += 1;
+      if (QLog.isColorLevel())
       {
-        this.mMsgTabRedDotRetryTime += 1;
-        if (QLog.isColorLevel())
+        paramMessage = new StringBuilder();
+        paramMessage.append("MSG_INIT_MSGTAB_REDDOT，retryTime=");
+        paramMessage.append(this.mMsgTabRedDotRetryTime);
+        paramMessage.append(", msgBoxTabIndex=");
+        paramMessage.append(this.mMsgBoxTabIndex);
+        QLog.d("nearby.msgbox.tab", 2, paramMessage.toString());
+      }
+      if (this.mIsNew)
+      {
+        paramMessage = this.mNearbyActivityController;
+        if (NearbyActivityController.a == TabInfo.a) {}
+      }
+      else
+      {
+        while (this.mBarView.getSelectedTabIndex() != this.mMsgBoxTabIndex)
         {
-          paramMessage = new StringBuilder();
-          paramMessage.append("MSG_INIT_MSGTAB_REDDOT，retryTime=");
-          paramMessage.append(this.mMsgTabRedDotRetryTime);
-          paramMessage.append(", msgBoxTabIndex=");
-          paramMessage.append(this.mMsgBoxTabIndex);
-          QLog.d("nearby.msgbox.tab", 2, paramMessage.toString());
+          i = 0;
+          break;
         }
-        i = this.mBarView.a();
-        int j = this.mMsgBoxTabIndex;
-        if ((j >= 0) && (i != j) && (this.mMsgTabRedTouch != null))
+      }
+      if ((this.mMsgBoxTabIndex >= 0) && (i == 0) && (this.mMsgTabRedTouch != null))
+      {
+        paramMessage = this.app.getNearbyProcManager();
+        if (paramMessage.h())
         {
-          paramMessage = this.app.getNearbyProcManager();
-          if (paramMessage.a())
+          i = paramMessage.g();
+          updateTabRedTouch(this.mMsgTabRedTouch, i);
+          if (QLog.isColorLevel())
           {
-            i = paramMessage.b();
-            updateTabRedTouch(this.mMsgTabRedTouch, i);
-            if (QLog.isColorLevel())
-            {
-              paramMessage = new StringBuilder();
-              paramMessage.append("MSG_INIT_MSGTAB_REDDOT，curRedNum=");
-              paramMessage.append(i);
-              paramMessage.append("");
-              QLog.d("nearby.msgbox.tab", 2, paramMessage.toString());
-            }
-            this.mLastUnreadNum = i;
+            paramMessage = new StringBuilder();
+            paramMessage.append("MSG_INIT_MSGTAB_REDDOT，curRedNum=");
+            paramMessage.append(i);
+            paramMessage.append("");
+            QLog.d("nearby.msgbox.tab", 2, paramMessage.toString());
           }
-          else if (this.mMsgTabRedDotRetryTime < 3)
-          {
-            this.mHandler.sendEmptyMessageDelayed(2, 1000L);
-          }
+          this.mLastUnreadNum = i;
+          return false;
+        }
+        if (this.mMsgTabRedDotRetryTime < 3)
+        {
+          this.mHandler.sendEmptyMessageDelayed(2, 1000L);
+          return false;
         }
       }
     }
     else
     {
+      if (this.mIsNew) {
+        return false;
+      }
       ThreadManager.post(new NearbyActivity.2(this), 8, null, true);
       try
       {
         i = getIntent().getIntExtra("NEARBY_IS_HAS_ICON", 2);
         ViewExposeUtil.a((AppInterface)this.app, getClass(), hashCode(), "0X80059D6", i);
+        return false;
       }
       catch (Throwable paramMessage)
       {
@@ -1112,13 +1215,13 @@ public class NearbyActivity
       if (j != 0)
       {
         NearbyTabInfo localNearbyTabInfo1 = new NearbyTabInfo();
-        localNearbyTabInfo1.setTabName(HardCodeUtil.a(2131707135));
+        localNearbyTabInfo1.setTabName(HardCodeUtil.a(2131904970));
         localNearbyTabInfo1.setTabIndex(0);
         localNearbyTabInfo1.setTabUrl("https://nearby.qq.com/nearby-index/index.html?_wv=1031&_proxy=1&_wwv=128");
         localNearbyTabInfo1.setTabType(5);
         paramArrayList.add(localNearbyTabInfo1);
         localNearbyTabInfo1 = new NearbyTabInfo();
-        localNearbyTabInfo1.setTabName(HardCodeUtil.a(2131707136));
+        localNearbyTabInfo1.setTabName(HardCodeUtil.a(2131904971));
         localNearbyTabInfo1.setTabIndex(1);
         localNearbyTabInfo1.setTabUrl("");
         localNearbyTabInfo1.setTabType(2);
@@ -1141,7 +1244,7 @@ public class NearbyActivity
   
   void initTitle()
   {
-    setTitle(2131694387);
+    setTitle(2131892066);
     this.mApbFlag = getIntent().getBooleanExtra("abp_flag", this.mApbFlag);
     this.mFrom = getIntent().getIntExtra("FROM_WHERE", this.mFrom);
     if (!this.mApbFlag)
@@ -1151,33 +1254,36 @@ public class NearbyActivity
       {
         if (i == 1003)
         {
-          setLeftViewName(2131693135);
+          setLeftViewName(2131890674);
           return;
         }
         if (i == 1004)
         {
-          setLeftViewName(2131689589);
+          setLeftViewName(2131886199);
           return;
         }
         if (i == 1002)
         {
-          setLeftViewName(2131689565);
+          setLeftViewName(2131886175);
           return;
         }
         setLeftViewName(getIntent());
         return;
       }
     }
-    setLeftViewName(2131719445);
+    setLeftViewName(2131917005);
   }
   
   public void initViews()
   {
-    this.mViewPager = ((NonSwipeableViewPager)findViewById(2131381005));
+    if (this.mIsNew) {
+      return;
+    }
+    this.mViewPager = ((NonSwipeableViewPager)findViewById(2131450002));
     this.mViewPager.requestParentDisallowInterecptTouchEvent(true);
     this.mViewPager.setOnPageChangeListener(this.mOnPageChangeListener);
     this.mViewPager.setPagingEnabled(false);
-    this.mBarView = ((TabBarView)findViewById(2131378217));
+    this.mBarView = ((TabBarView)findViewById(2131446735));
     this.mBarView.setOnTabChangeListener(this);
     initTabBarView(this, this.mBarView, this.mTabInfos);
     if (this.mTabInfos.size() > 0)
@@ -1189,9 +1295,9 @@ public class NearbyActivity
     }
     if (this.titleRoot != null)
     {
-      this.titleRightImg = ((ImageView)this.titleRoot.findViewById(2131376636).findViewById(2131369216));
-      this.centerView = ((TextView)this.titleRoot.findViewById(2131369249));
-      this.mTitleTopBottom = ((RelativeLayout)this.titleRoot.findViewById(2131378837));
+      this.titleRightImg = ((ImageView)this.titleRoot.findViewById(2131444897).findViewById(2131436194));
+      this.centerView = ((TextView)this.titleRoot.findViewById(2131436227));
+      this.mTitleTopBottom = ((RelativeLayout)this.titleRoot.findViewById(2131447534));
     }
     initTitle();
     int m = ((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.app.getCurrentAccountUin(), "key_auto_enter_without_redot", Integer.valueOf(0))).intValue();
@@ -1240,7 +1346,7 @@ public class NearbyActivity
     {
       j = 0;
     }
-    NearbyBaseFragment.jdField_a_of_type_Int = j;
+    NearbyBaseFragment.j = j;
     this.app.setmNeedStoreAnchorage(true);
     this.app.setmLastTabIndex(j);
     i = ((NearbyTabInfo)this.mTabInfos.get(j)).getTabIndex();
@@ -1289,7 +1395,7 @@ public class NearbyActivity
     this.mHandler.sendEmptyMessageDelayed(2, 1000L);
     this.mResumeTabIndex = i;
     if (QLog.isColorLevel()) {
-      NearbyUtils.a("MSG_INIT", new Object[] { Integer.valueOf(j), Integer.valueOf(this.app.getmLastTabIndex()), Integer.valueOf(NearbyBaseFragment.jdField_a_of_type_Int) });
+      NearbyUtils.a("MSG_INIT", new Object[] { Integer.valueOf(j), Integer.valueOf(this.app.getmLastTabIndex()), Integer.valueOf(NearbyBaseFragment.j) });
     }
     this.mHeartBeatHandler.sendEmptyMessageDelayed(1001, 1000L);
   }
@@ -1356,12 +1462,15 @@ public class NearbyActivity
   
   protected boolean onBackEvent()
   {
+    if (this.mIsNew) {
+      return super.onBackEvent();
+    }
     int i = this.mTabBarIndex;
     Object localObject;
     if (i >= 0)
     {
       localObject = getFragmentByIndex(i);
-      if ((localObject != null) && (((TitlebarBaseFragment)localObject).c())) {
+      if ((localObject != null) && (((TitlebarBaseFragment)localObject).D())) {
         return false;
       }
     }
@@ -1375,15 +1484,24 @@ public class NearbyActivity
     return super.onBackEvent();
   }
   
+  public void onPostThemeChanged()
+  {
+    super.onPostThemeChanged();
+    NearbyActivityHelper.a(this, this.mBarView);
+  }
+  
   public void onTabSelected(int paramInt1, int paramInt2)
   {
+    if (this.mIsNew) {
+      return;
+    }
     int i = this.mTabBarIndex;
     NearbyBaseFragment localNearbyBaseFragment;
     if (paramInt2 == i)
     {
       localNearbyBaseFragment = getFragmentByIndex(i);
       if (localNearbyBaseFragment != null) {
-        localNearbyBaseFragment.d();
+        localNearbyBaseFragment.e();
       }
       if (QLog.isColorLevel()) {
         NearbyUtils.a("onTabClicked", new Object[0]);
@@ -1448,6 +1566,9 @@ public class NearbyActivity
   
   public void setImmersiveStatus()
   {
+    if (this.mIsNew) {
+      return;
+    }
     if (isStatusBarSupportWhiteMode())
     {
       setImmersiveStatus(-1);
@@ -1476,9 +1597,25 @@ public class NearbyActivity
   protected String setLastActivityName()
   {
     if (this.mResumeTabIndex == 2) {
-      return getString(2131693876);
+      return getString(2131891481);
     }
     return super.setLastActivityName();
+  }
+  
+  public void setLastUnreadNum(int paramInt)
+  {
+    this.mLastUnreadNum = paramInt;
+  }
+  
+  public void setMsgTabIndex(int paramInt)
+  {
+    this.mMsgBoxTabIndex = paramInt;
+  }
+  
+  public void setMsgTabRedTouch(RedTouch paramRedTouch)
+  {
+    this.mMsgTabRedTouch = paramRedTouch;
+    this.mHandler.sendEmptyMessageDelayed(2, 1000L);
   }
   
   public void setX5Performance(JSONObject paramJSONObject)
@@ -1504,14 +1641,14 @@ public class NearbyActivity
       localEditText1.setHint("tinyId");
       this.testDialog.addView(localEditText1);
       this.testDialog.addView(localButton1);
-      localButton1.setText(HardCodeUtil.a(2131707128));
+      localButton1.setText(HardCodeUtil.a(2131904963));
       localButton1.setOnClickListener(local6);
       localEditText2.setHint("uin");
       this.testDialog.addView(localEditText2);
-      localButton2.setText(HardCodeUtil.a(2131707132));
+      localButton2.setText(HardCodeUtil.a(2131904967));
       localButton2.setOnClickListener(local6);
       this.testDialog.addView(localButton2);
-      localButton3.setText(HardCodeUtil.a(2131707137));
+      localButton3.setText(HardCodeUtil.a(2131904972));
       localButton3.setOnClickListener(local6);
       this.testDialog.addView(localButton3);
       localButton4.setText("打开游戏邀请页面12人局");
@@ -1551,10 +1688,10 @@ public class NearbyActivity
     localIntent.putExtra("tabs", this.mTabInfos);
     localIntent.putExtra("msgTabIndex", this.mMsgBoxTabIndex);
     localIntent.putExtra("mUnReadMsgNum", this.mLastUnreadNum);
-    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131707130));
+    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131904965));
     startActivityForResult(localIntent, 10001);
     if (paramBoolean) {
-      overridePendingTransition(2130772275, 2130772275);
+      overridePendingTransition(2130772361, 2130772361);
     }
     if (QLog.isColorLevel()) {
       QLog.d("nearby.msgbox.tab", 2, "startMsgBoxListActivity");
@@ -1590,18 +1727,21 @@ public class NearbyActivity
   
   public void updateTitlebar(Object paramObject)
   {
+    if (this.mIsNew) {
+      return;
+    }
     paramObject = (TitlebarStatus)paramObject;
     if (paramObject == null) {
       return;
     }
-    Object localObject = getFragmentByIndex(NearbyBaseFragment.jdField_a_of_type_Int);
+    Object localObject = getFragmentByIndex(NearbyBaseFragment.j);
     if (QLog.isColorLevel()) {
-      NearbyUtils.a("nearby.NearbyActivity", new Object[] { "updateTitlebar", localObject, paramObject.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarBaseFragment });
+      NearbyUtils.a("nearby.NearbyActivity", new Object[] { "updateTitlebar", localObject, paramObject.k });
     }
-    if (localObject != paramObject.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarBaseFragment) {
+    if (localObject != paramObject.k) {
       return;
     }
-    if (paramObject.jdField_b_of_type_Boolean)
+    if (paramObject.b)
     {
       if (this.centerView.getVisibility() != 0) {
         this.centerView.setVisibility(0);
@@ -1609,8 +1749,8 @@ public class NearbyActivity
       if (this.mTitleTopBottom.getVisibility() != 8) {
         this.mTitleTopBottom.setVisibility(8);
       }
-      if (!Utils.a(paramObject.jdField_a_of_type_JavaLangString, getTextTitle())) {
-        setTitle(paramObject.jdField_a_of_type_JavaLangString);
+      if (!Utils.a(paramObject.c, getTextTitle())) {
+        setTitle(paramObject.c);
       }
     }
     else
@@ -1618,28 +1758,28 @@ public class NearbyActivity
       if (this.centerView.getVisibility() != 4) {
         this.centerView.setVisibility(4);
       }
-      if (!Utils.a(paramObject.jdField_a_of_type_JavaLangString, getTextTitle())) {
-        setTitle(paramObject.jdField_a_of_type_JavaLangString);
+      if (!Utils.a(paramObject.c, getTextTitle())) {
+        setTitle(paramObject.c);
       }
       if (this.mTitleTopBottom.getVisibility() != 0) {
         this.mTitleTopBottom.setVisibility(0);
       }
-      if (paramObject.jdField_b_of_type_JavaLangString != null)
+      if (paramObject.d != null)
       {
-        localObject = (TextView)this.mTitleTopBottom.findViewById(2131378880);
-        if (!Utils.a(paramObject.jdField_b_of_type_JavaLangString, ((TextView)localObject).getText())) {
-          ((TextView)localObject).setText(paramObject.jdField_b_of_type_JavaLangString);
+        localObject = (TextView)this.mTitleTopBottom.findViewById(2131447581);
+        if (!Utils.a(paramObject.d, ((TextView)localObject).getText())) {
+          ((TextView)localObject).setText(paramObject.d);
         }
       }
-      if (paramObject.jdField_c_of_type_JavaLangString != null)
+      if (paramObject.e != null)
       {
-        localObject = (TextView)this.mTitleTopBottom.findViewById(2131378814);
-        if (!Utils.a(paramObject.jdField_c_of_type_JavaLangString, ((TextView)localObject).getText())) {
-          ((TextView)localObject).setText(paramObject.jdField_c_of_type_JavaLangString);
+        localObject = (TextView)this.mTitleTopBottom.findViewById(2131447497);
+        if (!Utils.a(paramObject.e, ((TextView)localObject).getText())) {
+          ((TextView)localObject).setText(paramObject.e);
         }
       }
     }
-    if (paramObject.jdField_a_of_type_Boolean)
+    if (paramObject.a)
     {
       if (!isTitleProgressShowing()) {
         startTitleProgress();
@@ -1648,17 +1788,17 @@ public class NearbyActivity
     else if (isTitleProgressShowing()) {
       stopTitleProgress();
     }
-    if (paramObject.jdField_c_of_type_Boolean)
+    if (paramObject.f)
     {
       if (this.titleRightImg.getVisibility() != 0) {
         this.titleRightImg.setVisibility(0);
       }
-      this.titleRightImg.setOnClickListener(paramObject.jdField_a_of_type_AndroidViewView$OnClickListener);
-      if ((AppSetting.d) && (paramObject.e != null)) {
-        this.titleRightImg.setContentDescription(paramObject.e);
+      this.titleRightImg.setOnClickListener(paramObject.j);
+      if ((AppSetting.e) && (paramObject.i != null)) {
+        this.titleRightImg.setContentDescription(paramObject.i);
       }
-      if (paramObject.jdField_a_of_type_Int > 0) {
-        this.titleRightImg.setImageResource(paramObject.jdField_a_of_type_Int);
+      if (paramObject.h > 0) {
+        this.titleRightImg.setImageResource(paramObject.h);
       }
       if (this.rightViewText.getVisibility() != 8) {
         this.rightViewText.setVisibility(8);
@@ -1669,7 +1809,7 @@ public class NearbyActivity
       if (this.titleRightImg.getVisibility() != 8) {
         this.titleRightImg.setVisibility(8);
       }
-      if (TextUtils.isEmpty(paramObject.d))
+      if (TextUtils.isEmpty(paramObject.g))
       {
         if (this.rightViewText.getVisibility() != 8) {
           this.rightViewText.setVisibility(8);
@@ -1678,10 +1818,10 @@ public class NearbyActivity
       else if (this.rightViewText.getVisibility() != 0) {
         this.rightViewText.setVisibility(0);
       }
-      if (!Utils.a(paramObject.d, this.rightViewText.getText())) {
-        this.rightViewText.setText(paramObject.d);
+      if (!Utils.a(paramObject.g, this.rightViewText.getText())) {
+        this.rightViewText.setText(paramObject.g);
       }
-      this.rightViewText.setOnClickListener(paramObject.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.rightViewText.setOnClickListener(paramObject.j);
     }
     this.centerView.setClickable(true);
     this.centerView.setOnClickListener(new NearbyActivity.4(this));
@@ -1689,7 +1829,7 @@ public class NearbyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NearbyActivity
  * JD-Core Version:    0.7.0.1
  */

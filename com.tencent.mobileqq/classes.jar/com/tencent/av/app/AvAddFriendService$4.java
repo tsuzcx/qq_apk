@@ -27,11 +27,11 @@ class AvAddFriendService$4
   protected void onGetSystemMsgFin(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin.bengin");
+      QLog.i(AvAddFriendService.b, 2, "onGetSystemMsgFin.bengin");
     }
     if (paramBoolean1) {
       if (QLog.isColorLevel()) {
-        QLog.i(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin.success");
+        QLog.i(AvAddFriendService.b, 2, "onGetSystemMsgFin.success");
       }
     }
     for (;;)
@@ -40,11 +40,11 @@ class AvAddFriendService$4
       try
       {
         new ArrayList();
-        Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0);
+        Object localObject1 = this.a.c.getMessageFacade().h(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0);
         Object localObject3;
         if (QLog.isColorLevel())
         {
-          localObject2 = AvAddFriendService.jdField_a_of_type_JavaLangString;
+          localObject2 = AvAddFriendService.b;
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("onGetSystemMsgFin mDataList size=");
           ((StringBuilder)localObject3).append(((List)localObject1).size());
@@ -61,7 +61,7 @@ class AvAddFriendService$4
         Object localObject4;
         if (QLog.isColorLevel())
         {
-          localObject3 = AvAddFriendService.jdField_a_of_type_JavaLangString;
+          localObject3 = AvAddFriendService.b;
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("msg_type=");
           ((StringBuilder)localObject4).append(((MessageForSystemMsg)localObject2).structMsg.msg_type.get());
@@ -70,7 +70,7 @@ class AvAddFriendService$4
           ((StringBuilder)localObject4).append("senderuin");
           ((StringBuilder)localObject4).append(((MessageForSystemMsg)localObject2).senderuin);
           QLog.d((String)localObject3, 2, ((StringBuilder)localObject4).toString());
-          localObject3 = AvAddFriendService.jdField_a_of_type_JavaLangString;
+          localObject3 = AvAddFriendService.b;
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("onGetSystemMsgFin ");
           ((StringBuilder)localObject4).append(((MessageForSystemMsg)localObject2).senderuin);
@@ -82,7 +82,7 @@ class AvAddFriendService$4
           if (!QLog.isColorLevel()) {
             break label767;
           }
-          QLog.d(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "no av talk src id");
+          QLog.d(AvAddFriendService.b, 2, "no av talk src id");
           return;
         }
         if (((MessageForSystemMsg)localObject2).structMsg.msg_type.get() == 1)
@@ -92,7 +92,7 @@ class AvAddFriendService$4
           if (!QLog.isColorLevel()) {
             break label768;
           }
-          localObject4 = AvAddFriendService.jdField_a_of_type_JavaLangString;
+          localObject4 = AvAddFriendService.b;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("systemMsg subType : ");
           localStringBuilder.append(j);
@@ -102,13 +102,13 @@ class AvAddFriendService$4
             break;
           }
           AvAddFriendService.a(this.a, (String)localObject3, 0);
-          this.a.a(((MessageForSystemMsg)localObject2).senderuin);
+          this.a.b(((MessageForSystemMsg)localObject2).senderuin);
           return;
           if (this.a.a((String)localObject3) == 4)
           {
             if (QLog.isColorLevel())
             {
-              localObject1 = AvAddFriendService.jdField_a_of_type_JavaLangString;
+              localObject1 = AvAddFriendService.b;
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("already fiend :");
               ((StringBuilder)localObject2).append((String)localObject3);
@@ -121,22 +121,22 @@ class AvAddFriendService$4
             {
               if (QLog.isColorLevel())
               {
-                localObject1 = AvAddFriendService.jdField_a_of_type_JavaLangString;
+                localObject1 = AvAddFriendService.b;
                 localObject2 = new StringBuilder();
                 ((StringBuilder)localObject2).append("recv add friend request when had send request, accept it automatically :");
                 ((StringBuilder)localObject2).append((String)localObject3);
                 QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
               }
-              this.a.c((String)localObject3);
+              this.a.d((String)localObject3);
               return;
             }
-            if (!this.a.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject3))
+            if (!this.a.e.containsKey(localObject3))
             {
               localObject1 = new AvAddFriendService.AddFriendStatus(this.a);
-              this.a.jdField_a_of_type_JavaUtilHashMap.put(localObject3, localObject1);
+              this.a.e.put(localObject3, localObject1);
             }
             AvAddFriendService.a(this.a, (String)localObject3, 2);
-            this.a.a(((MessageForSystemMsg)localObject2).senderuin);
+            this.a.b(((MessageForSystemMsg)localObject2).senderuin);
           }
           return;
         }
@@ -151,7 +151,7 @@ class AvAddFriendService$4
         localException.printStackTrace();
       }
       if (QLog.isColorLevel()) {
-        QLog.e(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin bTimeout");
+        QLog.e(AvAddFriendService.b, 2, "onGetSystemMsgFin bTimeout");
       }
       label759:
       super.onGetSystemMsgFin(paramBoolean1, paramBoolean2, paramList);
@@ -171,7 +171,7 @@ class AvAddFriendService$4
   {
     if (QLog.isColorLevel())
     {
-      String str = AvAddFriendService.jdField_a_of_type_JavaLangString;
+      String str = AvAddFriendService.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onSendSystemMsgActionError.bengin, isSuccess=");
       localStringBuilder.append(paramBoolean);
@@ -186,7 +186,7 @@ class AvAddFriendService$4
   {
     if (QLog.isColorLevel())
     {
-      String str = AvAddFriendService.jdField_a_of_type_JavaLangString;
+      String str = AvAddFriendService.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onSendSystemMsgActionError.bengin 同意添加好友失败 :");
       localStringBuilder.append(paramString);
@@ -206,7 +206,7 @@ class AvAddFriendService$4
       }
     }
     if ((((INewFriendApi)QRoute.api(INewFriendApi.class)).getStructMsgFromMap(Long.valueOf(l1)) == null) && (QLog.isColorLevel())) {
-      QLog.i(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError structMsg = null");
+      QLog.i(AvAddFriendService.b, 2, "onSendSystemMsgActionError structMsg = null");
     }
     super.onSendSystemMsgActionError(paramString);
   }
@@ -216,7 +216,7 @@ class AvAddFriendService$4
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      String str = AvAddFriendService.jdField_a_of_type_JavaLangString;
+      String str = AvAddFriendService.b;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onSendSystemMsgActionFin 同意加对方好友回调 issuc");
       localStringBuilder.append(paramBoolean);
@@ -257,7 +257,7 @@ class AvAddFriendService$4
       l1 = ((structmsg.StructMsg)localObject).req_uin.get();
       if (QLog.isColorLevel())
       {
-        localObject = AvAddFriendService.jdField_a_of_type_JavaLangString;
+        localObject = AvAddFriendService.b;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onSendSystemMsgActionFin 同意加对方好友回调  uin=");
         localStringBuilder.append(String.valueOf(l1));
@@ -266,7 +266,7 @@ class AvAddFriendService$4
     }
     else if (QLog.isColorLevel())
     {
-      QLog.i(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin structMsg = null");
+      QLog.i(AvAddFriendService.b, 2, "onSendSystemMsgActionFin structMsg = null");
     }
     super.onSendSystemMsgActionFin(paramBoolean, paramString1, paramInt1, paramString2, paramInt2, paramInt3, paramString3, paramString4, paramInt4);
   }

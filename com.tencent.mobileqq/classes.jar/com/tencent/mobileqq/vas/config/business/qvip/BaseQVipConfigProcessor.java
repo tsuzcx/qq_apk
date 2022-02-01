@@ -11,13 +11,13 @@ public abstract class BaseQVipConfigProcessor<T>
   extends IQConfigProcessor<T>
 {
   @NonNull
-  public abstract T a();
+  public abstract T b(@NonNull QConfItem[] paramArrayOfQConfItem);
   
   @NonNull
-  public abstract T a(@NonNull QConfItem[] paramArrayOfQConfItem);
+  public abstract T c();
   
   @NonNull
-  public abstract T b();
+  public abstract T d();
   
   public boolean isAccountRelated()
   {
@@ -40,11 +40,11 @@ public abstract class BaseQVipConfigProcessor<T>
     Object localObject1;
     if (paramInt == 1)
     {
-      localObject1 = b();
+      localObject1 = d();
     }
     else if (paramInt == 0)
     {
-      localObject1 = a();
+      localObject1 = c();
     }
     else
     {
@@ -63,7 +63,7 @@ public abstract class BaseQVipConfigProcessor<T>
       ((StringBuilder)localObject1).append(".migrateOldOrDefaultContent return null!! type=");
       ((StringBuilder)localObject1).append(paramInt);
       AssertUtils.a(((StringBuilder)localObject1).toString(), new Object[0]);
-      localObject2 = a();
+      localObject2 = c();
     }
     return localObject2;
   }
@@ -83,13 +83,13 @@ public abstract class BaseQVipConfigProcessor<T>
       localStringBuilder.append(".parsed content count=");
       localStringBuilder.append(paramArrayOfQConfItem.length);
       SLog.d("QVipConfigProcessor", localStringBuilder.toString());
-      return a(paramArrayOfQConfItem);
+      return b(paramArrayOfQConfItem);
     }
     paramArrayOfQConfItem = new StringBuilder();
     paramArrayOfQConfItem.append(getClass().getName());
     paramArrayOfQConfItem.append(".onParsed error: confFiles is empty");
     SLog.e("QVipConfigProcessor", paramArrayOfQConfItem.toString());
-    paramArrayOfQConfItem = a();
+    paramArrayOfQConfItem = c();
     boolean bool;
     if (paramArrayOfQConfItem != null) {
       bool = true;
@@ -123,7 +123,7 @@ public abstract class BaseQVipConfigProcessor<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.BaseQVipConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -36,7 +36,7 @@ class BindVerifyActivity$1
         }
         else if (i == 106)
         {
-          this.a.a();
+          this.a.b();
           if (this.a.getIntent().getBooleanExtra("k_is_block", false)) {
             ReportController.b(this.a.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 2, 0, "", "", "", "");
           }
@@ -47,13 +47,13 @@ class BindVerifyActivity$1
         }
       }
       else {
-        this.a.b();
+        this.a.c();
       }
     }
     else
     {
       paramBundle = this.a;
-      paramBundle.showToast(1, paramBundle.getString(2131718218));
+      paramBundle.showToast(1, paramBundle.getString(2131915700));
     }
     this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
     BindVerifyActivity.a(this.a, null);
@@ -74,12 +74,12 @@ class BindVerifyActivity$1
     this.a.dismissProgressDialog();
     if (paramBoolean)
     {
-      this.a.b();
+      this.a.c();
     }
     else
     {
       paramBundle = this.a;
-      paramBundle.showToast(1, paramBundle.getString(2131718218));
+      paramBundle.showToast(1, paramBundle.getString(2131915700));
     }
     this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
     BindVerifyActivity.a(this.a, null);
@@ -87,7 +87,7 @@ class BindVerifyActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BindVerifyActivity.1
  * JD-Core Version:    0.7.0.1
  */

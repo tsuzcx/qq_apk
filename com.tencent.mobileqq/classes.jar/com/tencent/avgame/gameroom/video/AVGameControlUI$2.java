@@ -13,14 +13,14 @@ class AVGameControlUI$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a()) {
+    if (this.b.d()) {
       return;
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a();
-    String str = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a;
+    paramDialogInterface = this.b.a();
+    String str = this.b.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showPermissionNormalDialog.gotoSetting, seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], activity[");
     localStringBuilder.append(paramDialogInterface);
     localStringBuilder.append("]");

@@ -13,6 +13,7 @@ import com.tencent.biz.pubaccount.weishi_new.report.WSReportEventConstants;
 import com.tencent.biz.pubaccount.weishi_new.util.WSArkJumpUtils;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiScehmeUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
+import com.tencent.biz.pubaccount.weishi_new.wsqqscheme.WSQQSchemeUtils;
 import com.tencent.biz.pubaccount.weishi_new.wsqqscheme.action.AbsWSJumpAction;
 import com.tencent.biz.pubaccount.weishi_new.wsqqscheme.action.WSJumpActionFactory;
 import com.tencent.mobileqq.qipc.QIPCModule;
@@ -25,7 +26,7 @@ public class WSManagerImpl
 {
   public void doAfterSyncMsg()
   {
-    WSExpPolicyManager.a().a();
+    WSExpPolicyManager.a().b();
   }
   
   public boolean doJumpAction(String paramString, Context paramContext, Map<String, String> paramMap, Object paramObject)
@@ -69,12 +70,17 @@ public class WSManagerImpl
   
   public boolean isBeaconRealtimeSwitchOpen()
   {
-    return WSReportEventConstants.b;
+    return WSReportEventConstants.f;
   }
   
   public boolean isFastClick()
   {
-    return WeishiUtils.c();
+    return WeishiUtils.o();
+  }
+  
+  public void openQQSchema(Context paramContext, String paramString, Object paramObject)
+  {
+    WSQQSchemeUtils.a(paramContext, paramString, paramObject);
   }
   
   public void openWeishi(Context paramContext, String paramString1, String paramString2)
@@ -84,22 +90,22 @@ public class WSManagerImpl
   
   public void preloadData()
   {
-    WSRedDotPreloadManager.a().c();
+    WSRedDotPreloadManager.a().d();
   }
   
   public void setBeaconRealtimeSwitchOpen(boolean paramBoolean)
   {
-    WSReportEventConstants.b = paramBoolean;
+    WSReportEventConstants.f = paramBoolean;
   }
   
   public void setWeishiLastFeedId(String paramString)
   {
-    WeishiUtils.a = paramString;
+    WeishiUtils.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.api.impl.WSManagerImpl
  * JD-Core Version:    0.7.0.1
  */

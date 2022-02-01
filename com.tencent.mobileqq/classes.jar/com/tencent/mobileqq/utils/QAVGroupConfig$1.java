@@ -12,12 +12,12 @@ final class QAVGroupConfig$1
   
   protected void onGetTroopInfoForSetJoinTypeRet(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo, Object[] paramArrayOfObject)
   {
-    if (this.jdField_a_of_type_Long != paramLong) {
+    if (this.a != paramLong) {
       return;
     }
     paramTroopInfo = new StringBuilder();
     paramTroopInfo.append("onGetTroopInfoForSetJoinTypeRet[");
-    paramTroopInfo.append(this.jdField_a_of_type_JavaLangString);
+    paramTroopInfo.append(this.b);
     paramTroopInfo.append("], troopuin[");
     paramTroopInfo.append(paramLong);
     paramTroopInfo.append("], nFlag[");
@@ -39,17 +39,17 @@ final class QAVGroupConfig$1
       if (paramBoolean)
       {
         paramTroopInfo = new StringBuilder();
-        paramTroopInfo.append(this.jdField_a_of_type_JavaLangString);
+        paramTroopInfo.append(this.b);
         paramTroopInfo.append(".onGetTroopInfoForSetJoinTypeRet");
-        QAVGroupConfig.GroupInviteFlag.a(paramTroopInfo.toString(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
+        QAVGroupConfig.GroupInviteFlag.a(paramTroopInfo.toString(), this.c, this.d);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+      this.c.removeObserver(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QAVGroupConfig.1
  * JD-Core Version:    0.7.0.1
  */

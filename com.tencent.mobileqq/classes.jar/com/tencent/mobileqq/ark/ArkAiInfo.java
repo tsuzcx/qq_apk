@@ -4,8 +4,7 @@ import java.util.LinkedHashMap;
 
 public class ArkAiInfo
 {
-  public String a;
-  public LinkedHashMap<String, String> a;
+  public String a = "";
   public String b = "";
   public String c = "1.0.0.1";
   public String d = "";
@@ -13,12 +12,7 @@ public class ArkAiInfo
   public String f = "";
   public String g = "";
   public String h = "";
-  
-  public ArkAiInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  }
+  public LinkedHashMap<String, String> i = new LinkedHashMap();
   
   public boolean equals(Object paramObject)
   {
@@ -29,7 +23,7 @@ public class ArkAiInfo
     }
     paramObject = (ArkAiInfo)paramObject;
     bool1 = bool2;
-    if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString))
+    if (this.a.equals(paramObject.a))
     {
       bool1 = bool2;
       if (this.b.equals(paramObject.b))
@@ -38,7 +32,7 @@ public class ArkAiInfo
         if (this.g.equals(paramObject.g))
         {
           bool1 = bool2;
-          if (this.jdField_a_of_type_JavaUtilLinkedHashMap.equals(paramObject.jdField_a_of_type_JavaUtilLinkedHashMap)) {
+          if (this.i.equals(paramObject.i)) {
             bool1 = true;
           }
         }
@@ -49,7 +43,7 @@ public class ArkAiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAiInfo
  * JD-Core Version:    0.7.0.1
  */

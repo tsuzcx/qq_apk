@@ -15,18 +15,18 @@ class MsgBoxListActivity$2
   {
     if (paramBoolean)
     {
-      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
+      paramBundle = this.a.iterator();
       while (paramBundle.hasNext())
       {
         RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
-        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.updateLivingState(localRecentItemNearbyLiveTipData, paramList);
+        this.b.updateLivingState(localRecentItemNearbyLiveTipData, paramList);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.MsgBoxListActivity.2
  * JD-Core Version:    0.7.0.1
  */

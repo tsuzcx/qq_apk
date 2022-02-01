@@ -32,6 +32,8 @@ public final class TCodecManager
   public static final String TAG = "TCodecManager";
   private static TCodecManager mInstance = new TCodecManager();
   private static boolean mIsDebugVersion = false;
+  private static boolean mIsLeakFiexed = true;
+  private boolean mAllowKeepPool = true;
   private final CodecWrapperManager mAudioCodecManager = new CodecWrapperManager();
   private final HashMap<TMediaCodec, CodecWrapper> mCodecMap = new HashMap();
   private boolean mConfigMethodCalled;
@@ -176,6 +178,11 @@ public final class TCodecManager
     return mIsDebugVersion;
   }
   
+  public static final boolean isLeakFixed()
+  {
+    return mIsLeakFiexed;
+  }
+  
   private CodecWrapper obtainCodecWrapper(boolean paramBoolean, FormatWrapper paramFormatWrapper)
   {
     CodecWrapperManager localCodecWrapperManager;
@@ -207,6 +214,18 @@ public final class TCodecManager
     mIsDebugVersion = paramBoolean;
   }
   
+  public static final void setLeakFixed(boolean paramBoolean)
+  {
+    mIsLeakFiexed = paramBoolean;
+  }
+  
+  public final void clearAndReleaseKeepPool()
+  {
+    this.mAllowKeepPool = false;
+    this.mVideoCodecManager.clearAndReleaseKeepPool();
+    this.mAudioCodecManager.clearAndReleaseKeepPool();
+  }
+  
   @TargetApi(26)
   @NonNull
   public final CodecWrapper configure(@NonNull MediaFormat paramMediaFormat, @Nullable Surface paramSurface, int paramInt, @Nullable MediaDescrambler paramMediaDescrambler, @NonNull TMediaCodec paramTMediaCodec)
@@ -221,6 +240,7 @@ public final class TCodecManager
       LogUtils.d("TCodecManager", ((StringBuilder)localObject).toString());
     }
     this.mConfigMethodCalled = true;
+    this.mAllowKeepPool = true;
     Object localObject = getCodec(paramMediaFormat, paramTMediaCodec, paramSurface);
     ((CodecWrapper)localObject).setCodecCallback(paramTMediaCodec.getCodecCallback());
     onCodecRunning((CodecWrapper)localObject);
@@ -250,6 +270,7 @@ public final class TCodecManager
       LogUtils.d("TCodecManager", ((StringBuilder)localObject).toString());
     }
     this.mConfigMethodCalled = true;
+    this.mAllowKeepPool = true;
     Object localObject = getCodec(paramMediaFormat, paramTMediaCodec, paramSurface);
     onCodecRunning((CodecWrapper)localObject);
     ((CodecWrapper)localObject).setCodecCallback(paramTMediaCodec.getCodecCallback());
@@ -272,9 +293,19 @@ public final class TCodecManager
     return this.mReusePolicy;
   }
   
+  public final boolean isAllowKeepPool()
+  {
+    return this.mAllowKeepPool;
+  }
+  
   public final boolean isGlobalReuseEnable()
   {
     return this.mGlobalReuseEnable;
+  }
+  
+  public final boolean isVideoKeepPoolFull()
+  {
+    return this.mVideoCodecManager.isKeepPoolFull();
   }
   
   public final void preloadCodec(@NonNull String paramString1, @NonNull String paramString2)
@@ -397,7 +428,7 @@ public final class TCodecManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmediacodec.TCodecManager
  * JD-Core Version:    0.7.0.1
  */

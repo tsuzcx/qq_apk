@@ -16,14 +16,14 @@ public class ArkAioMsgHandler
     paramAppRuntime = paramMessageRecord;
     if ((paramMessageRecord instanceof MessageForArkApp))
     {
-      paramString = ArkTipsManager.a().a();
+      paramString = ArkTipsManager.b().a();
       paramAppRuntime = paramMessageRecord;
       if (paramString != null)
       {
         paramAppRuntime = paramMessageRecord;
         if (paramMessageRecord.uniseq == paramString.uniseq)
         {
-          paramAppRuntime = ArkTipsManager.a().a();
+          paramAppRuntime = ArkTipsManager.b().f();
           if (paramAppRuntime != null)
           {
             paramString.arkContainer = paramAppRuntime;
@@ -48,7 +48,7 @@ public class ArkAioMsgHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.aiolist.ArkAioMsgHandler
  * JD-Core Version:    0.7.0.1
  */

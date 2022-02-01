@@ -11,36 +11,30 @@ import com.qflutter.superchannel.SuperChannelTask;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding;
 import io.flutter.view.TextureRegistry;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class VistaImagePlugin
   implements IModule, FlutterPlugin
 {
   public static final String CHANNEL_NAME = "com.tencent.vista_image";
   public static final String TAG = "VistaImagePlugin";
-  private static IVistaImage vistaImageImpl;
+  static AtomicInteger pluginCount = new AtomicInteger(0);
   private TextureRegistry textureRegistry;
   private VistaImageProcessor vistaImageProcessor;
-  
-  public static void init(IVistaImage paramIVistaImage)
-  {
-    if (VistaImageLog.isColorLevel()) {
-      VistaImageLog.d("VistaImagePlugin", "[init]");
-    }
-    vistaImageImpl = paramIVistaImage;
-  }
   
   public SuperChannelResult handleTask(SuperChannelTask paramSuperChannelTask)
   {
     paramSuperChannelTask = VistaImageTask.transformTask(paramSuperChannelTask);
-    if (paramSuperChannelTask == null)
+    VistaImageProcessor localVistaImageProcessor = this.vistaImageProcessor;
+    if ((localVistaImageProcessor != null) && (paramSuperChannelTask != null))
     {
-      VistaImageLog.w("VistaImagePlugin", "[handleTask] invalid vistaImageTask");
-      paramSuperChannelTask = new SuperChannelResult();
-      paramSuperChannelTask.fail("-9999", "cannot transform SuperChannelTask");
-      return paramSuperChannelTask;
+      localVistaImageProcessor.processTask(paramSuperChannelTask);
+      return null;
     }
-    this.vistaImageProcessor.processTask(paramSuperChannelTask);
-    return null;
+    VistaImageLog.w("VistaImagePlugin", "[handleTask] invalid vistaImageTask");
+    paramSuperChannelTask = new SuperChannelResult();
+    paramSuperChannelTask.fail("-9999", "cannot transform SuperChannelTask");
+    return paramSuperChannelTask;
   }
   
   public void onAttachedToEngine(FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
@@ -53,12 +47,19 @@ public class VistaImagePlugin
       VistaImageLog.d("VistaImagePlugin", localStringBuilder.toString());
     }
     this.vistaImageProcessor = new VistaImageProcessor();
-    this.vistaImageProcessor.setVistaImageImpl(vistaImageImpl);
     this.textureRegistry = paramFlutterPluginBinding.getTextureRegistry();
     this.vistaImageProcessor.setTextureRegistry(this.textureRegistry);
     float f = paramFlutterPluginBinding.getApplicationContext().getResources().getDisplayMetrics().density;
     this.vistaImageProcessor.setDensity(f);
     SuperChannelRegister.registerModule("com.tencent.vista_image", this);
+    int i = pluginCount.incrementAndGet();
+    if (VistaImageLog.isColorLevel())
+    {
+      paramFlutterPluginBinding = new StringBuilder();
+      paramFlutterPluginBinding.append("[onAttachedToEngine] pluginCount=");
+      paramFlutterPluginBinding.append(i);
+      VistaImageLog.d("VistaImagePlugin", paramFlutterPluginBinding.toString());
+    }
   }
   
   public void onDetachedFromEngine(@NonNull FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
@@ -74,11 +75,22 @@ public class VistaImagePlugin
     this.textureRegistry = null;
     this.vistaImageProcessor.clear();
     this.vistaImageProcessor = null;
+    int i = pluginCount.decrementAndGet();
+    if (VistaImageLog.isColorLevel())
+    {
+      paramFlutterPluginBinding = new StringBuilder();
+      paramFlutterPluginBinding.append("[onDetachedFromEngine] pluginCount=");
+      paramFlutterPluginBinding.append(i);
+      VistaImageLog.d("VistaImagePlugin", paramFlutterPluginBinding.toString());
+    }
+    if (i == 0) {
+      SchemeService.getInstance().clear();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.vistaimage.VistaImagePlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -24,13 +24,13 @@ public class VideoMsgBroadcastReceiver
     if (QLog.isColorLevel()) {
       QLog.d("VideoMsgBroadcastReceiver", 2, "processMultiVideoOfflineMsg");
     }
-    MqqHandler localMqqHandler = paramVideoController.a();
+    MqqHandler localMqqHandler = paramVideoController.aH();
     if (localMqqHandler != null)
     {
       localMqqHandler.post(new VideoMsgBroadcastReceiver.1(this, paramVideoController, paramBundle));
       return;
     }
-    paramVideoController.a.receiveMultiVideoOfflineMsg(paramBundle);
+    paramVideoController.n.receiveMultiVideoOfflineMsg(paramBundle);
     if (QLog.isColorLevel()) {
       QLog.d("VideoMsgBroadcastReceiver", 2, "processMultiVideoOfflineMsg, sync");
     }
@@ -52,14 +52,14 @@ public class VideoMsgBroadcastReceiver
       ((StringBuilder)localObject).append(bool);
       ((StringBuilder)localObject).append("]");
       QLog.d("VideoMsgBroadcastReceiver", 1, ((StringBuilder)localObject).toString());
-      localObject = paramVideoController.a();
+      localObject = paramVideoController.aH();
       if (localObject != null)
       {
         ((MqqHandler)localObject).post(new VideoMsgBroadcastReceiver.2(this, paramBundle));
       }
       else
       {
-        paramVideoController.a.receiveSharpVideoOfflineMsg(paramBundle);
+        paramVideoController.n.receiveSharpVideoOfflineMsg(paramBundle);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("processSharpVideoOfflineMsg, data[");
         ((StringBuilder)localObject).append(paramBundle);
@@ -69,7 +69,7 @@ public class VideoMsgBroadcastReceiver
       if (bool)
       {
         paramVideoController.a(201, paramString);
-        if (paramVideoController.a() == 0)
+        if (paramVideoController.o() == 0)
         {
           paramVideoController.a(207, paramString);
           return;
@@ -132,7 +132,7 @@ public class VideoMsgBroadcastReceiver
         QLog.d("VideoMsgBroadcastReceiver", 1, "onReceive app is null!");
         return;
       }
-      localObject1 = localVideoAppInterface.a();
+      localObject1 = localVideoAppInterface.b();
       if (str2 != null) {
         ((VideoController)localObject1).d(str2, 0);
       }
@@ -149,7 +149,7 @@ public class VideoMsgBroadcastReceiver
         a = false;
         if (j == 1)
         {
-          paramContext = localVideoAppInterface.a();
+          paramContext = localVideoAppInterface.d();
           if ((!b) && (paramContext != null))
           {
             paramContext.a(i, l1);
@@ -183,7 +183,7 @@ public class VideoMsgBroadcastReceiver
             paramIntent = new Bundle();
             paramIntent.putByteArray("buffer", paramContext);
             paramIntent.putLong("tiny_id", l1);
-            ((VideoController)localObject1).a.receiveDeviceMsg(paramIntent);
+            ((VideoController)localObject1).n.receiveDeviceMsg(paramIntent);
           }
         }
         else if ("tencent.video.q2v.sendQueryRoomInfoRequest".equals(str3))
@@ -223,8 +223,8 @@ public class VideoMsgBroadcastReceiver
     }
     catch (AccountNotMatchException paramIntent)
     {
-      label677:
-      break label677;
+      label678:
+      break label678;
     }
   }
 }

@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class VelocityUtil
 {
   public static int a = 12;
-  public static boolean a = false;
+  public static boolean b = false;
   
   public static int a(Context paramContext)
   {
@@ -52,7 +52,7 @@ public class VelocityUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.utils.VelocityUtil
  * JD-Core Version:    0.7.0.1
  */

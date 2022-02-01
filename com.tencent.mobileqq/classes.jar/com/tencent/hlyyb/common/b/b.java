@@ -10,6 +10,8 @@ import android.net.wifi.WifiManager;
 import android.os.Process;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -309,7 +311,7 @@ public final class b
       localObject = (TelephonyManager)com.tencent.hlyyb.common.a.a().getSystemService("phone");
       if (localObject != null)
       {
-        str = ((TelephonyManager)localObject).getDeviceId();
+        str = PhoneInfoMonitor.getDeviceId((TelephonyManager)localObject);
         localObject = str;
         if (str == null) {
           localObject = "NOIMEI";
@@ -362,7 +364,7 @@ public final class b
       localObject = (WifiManager)com.tencent.hlyyb.common.a.a().getSystemService("wifi");
       if (localObject != null)
       {
-        localObject = ((WifiManager)localObject).getConnectionInfo();
+        localObject = NetworkMonitor.getConnectionInfo((WifiManager)localObject);
         if (localObject != null)
         {
           str = ((WifiInfo)localObject).getMacAddress();
@@ -473,7 +475,7 @@ public final class b
       localObject = (TelephonyManager)com.tencent.hlyyb.common.a.a().getSystemService("phone");
       if (localObject != null)
       {
-        str = ((TelephonyManager)localObject).getSubscriberId();
+        str = PhoneInfoMonitor.getSubscriberId((TelephonyManager)localObject);
         localObject = str;
         if (str == null) {
           localObject = "NOIMSI";
@@ -486,7 +488,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.common.b.b
  * JD-Core Version:    0.7.0.1
  */

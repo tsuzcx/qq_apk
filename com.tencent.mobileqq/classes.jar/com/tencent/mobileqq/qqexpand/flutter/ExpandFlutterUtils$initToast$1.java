@@ -15,24 +15,24 @@ public final class ExpandFlutterUtils$initToast$1
   public void error(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "msg");
-    QQToast.a((Context)BaseApplicationImpl.context, 1, (CharSequence)paramString, 0).a();
+    QQToast.makeText((Context)BaseApplicationImpl.context, 1, (CharSequence)paramString, 0).show();
   }
   
   public void show(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "msg");
-    QQToast.a((Context)BaseApplicationImpl.context, 0, (CharSequence)paramString, 0).a();
+    QQToast.makeText((Context)BaseApplicationImpl.context, 0, (CharSequence)paramString, 0).show();
   }
   
   public void success(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "msg");
-    QQToast.a((Context)BaseApplicationImpl.context, 2, (CharSequence)paramString, 0).a();
+    QQToast.makeText((Context)BaseApplicationImpl.context, 2, (CharSequence)paramString, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.ExpandFlutterUtils.initToast.1
  * JD-Core Version:    0.7.0.1
  */

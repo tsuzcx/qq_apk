@@ -20,50 +20,50 @@ import java.util.List;
 class ChatHistoryBaseTenDocAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private ChatHistoryBaseTenDocAdapter.SelectCheckCallback jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocAdapter$SelectCheckCallback;
-  private List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private Context a;
+  private LayoutInflater b;
+  private View.OnClickListener c;
+  private ChatHistoryBaseTenDocAdapter.SelectCheckCallback d;
+  private List<Object> e = new ArrayList();
+  private boolean f = false;
   
   public ChatHistoryBaseTenDocAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.a = paramContext;
+    this.b = LayoutInflater.from(paramContext);
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.c = paramOnClickListener;
   }
   
   public void a(ChatHistoryBaseTenDocAdapter.SelectCheckCallback paramSelectCheckCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocAdapter$SelectCheckCallback = paramSelectCheckCallback;
+    this.d = paramSelectCheckCallback;
   }
   
   public void a(List<Object> paramList)
   {
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList = paramList;
+      this.e = paramList;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.e.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.e.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -85,8 +85,8 @@ class ChatHistoryBaseTenDocAdapter
       }
       else
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560802, paramViewGroup, false);
-        localObject1 = (TextView)paramView.findViewById(2131378475);
+        paramView = this.b.inflate(2131627060, paramViewGroup, false);
+        localObject1 = (TextView)paramView.findViewById(2131447089);
         paramView.setTag(localObject1);
       }
       ((TextView)localObject1).setText((String)localObject2);
@@ -114,57 +114,57 @@ class ChatHistoryBaseTenDocAdapter
           localObject1 = paramView;
           localObject2 = new ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder();
           localObject1 = paramView;
-          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560778, paramViewGroup, false);
+          paramView = this.b.inflate(2131627036, paramViewGroup, false);
           localObject1 = paramView;
-          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131366794));
+          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).a = ((CheckBox)paramView.findViewById(2131433116));
           localObject1 = paramView;
-          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366781));
+          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).b = ((AsyncImageView)paramView.findViewById(2131433103));
           localObject1 = paramView;
-          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366792));
+          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).c = ((TextView)paramView.findViewById(2131433114));
           localObject1 = paramView;
-          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).b = ((TextView)paramView.findViewById(2131366779));
+          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).d = ((TextView)paramView.findViewById(2131433101));
           localObject1 = paramView;
-          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
+          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).c.setMaxLines(2);
           localObject1 = paramView;
-          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(AIOUtils.b(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).b.setAsyncClipSize(AIOUtils.b(70.0F, this.a.getResources()), AIOUtils.b(70.0F, this.a.getResources()));
           localObject1 = paramView;
-          paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+          paramView.setOnClickListener(this.c);
           localObject1 = paramView;
           paramView.setTag(localObject2);
           label308:
           localObject1 = paramView;
           paramView.setVisibility(0);
           localObject1 = paramView;
-          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqActivityHistoryTendocTencentDocItem = localTencentDocItem;
+          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).e = localTencentDocItem;
           localObject1 = paramView;
-          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(localTencentDocItem.mTitle);
+          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).c.setText(localTencentDocItem.mTitle);
           localObject1 = paramView;
-          LinkAdapter.a(((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localTencentDocItem.mIcon);
+          LinkAdapter.a(((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).b, localTencentDocItem.mIcon);
           localObject1 = paramView;
-          if (this.jdField_a_of_type_Boolean)
+          if (this.f)
           {
             localObject1 = paramView;
-            ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+            ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).a.setVisibility(0);
             bool1 = bool2;
             localObject1 = paramView;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocAdapter$SelectCheckCallback != null)
+            if (this.d != null)
             {
               bool1 = bool2;
               localObject1 = paramView;
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocAdapter$SelectCheckCallback.a(localTencentDocItem)) {
+              if (this.d.a(localTencentDocItem)) {
                 bool1 = true;
               }
             }
             localObject1 = paramView;
-            ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool1);
+            ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).a.setChecked(bool1);
           }
           else
           {
             localObject1 = paramView;
-            ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
+            ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).a.setVisibility(8);
           }
           localObject1 = paramView;
-          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).b.setText(localTencentDocItem.mDescription);
+          ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)localObject2).d.setText(localTencentDocItem.mDescription);
           localObject1 = paramView;
         }
         catch (Exception paramView)
@@ -179,7 +179,7 @@ class ChatHistoryBaseTenDocAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocAdapter
  * JD-Core Version:    0.7.0.1
  */

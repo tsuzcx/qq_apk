@@ -13,14 +13,14 @@ class IliveGroupTipsManager$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onGroupPushHandle isLive = ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" exit page");
       QLog.d("IliveGroupTipsManager", 1, localStringBuilder.toString());
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.this$0.a(this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Long), IliveGroupTipsManager.b);
+      this.this$0.a(this.b, String.valueOf(this.c), IliveGroupTipsManager.b);
       return;
     }
     IliveGroupTipsManager.a(this.this$0).a();
@@ -28,7 +28,7 @@ class IliveGroupTipsManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.group.IliveGroupTipsManager.1
  * JD-Core Version:    0.7.0.1
  */

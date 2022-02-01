@@ -25,8 +25,8 @@ class DownloadCallbackNativeImpl$1
       while (localIterator.hasNext())
       {
         DownloadTaskInfo localDownloadTaskInfo = (DownloadTaskInfo)localIterator.next();
-        DownloadInfo localDownloadInfo = DownloadCenterImpl.a().a(localDownloadTaskInfo.a);
-        if ((localDownloadInfo != null) && (localDownloadInfo.a() == 3) && (!localDownloadTaskInfo.c))
+        DownloadInfo localDownloadInfo = DownloadCenterImpl.a().c(localDownloadTaskInfo.a);
+        if ((localDownloadInfo != null) && (localDownloadInfo.a() == 3) && (!localDownloadTaskInfo.h))
         {
           DownloadNativeApi.a().a(null, localDownloadTaskInfo);
           continue;
@@ -34,15 +34,15 @@ class DownloadCallbackNativeImpl$1
           while (localIterator.hasNext())
           {
             localDownloadTaskInfo = (DownloadTaskInfo)localIterator.next();
-            localDownloadInfo = DownloadCenterImpl.a().a(localDownloadTaskInfo.a);
+            localDownloadInfo = DownloadCenterImpl.a().c(localDownloadTaskInfo.a);
             if (localDownloadInfo != null) {
               if (localDownloadInfo.a() == 2)
               {
-                if (localDownloadTaskInfo.b) {
+                if (localDownloadTaskInfo.g) {
                   DownloadNativeApi.a().a(localDownloadTaskInfo.a);
                 }
               }
-              else if ((localDownloadInfo.a() == 3) && (!localDownloadTaskInfo.b) && (!localDownloadTaskInfo.c)) {
+              else if ((localDownloadInfo.a() == 3) && (!localDownloadTaskInfo.g) && (!localDownloadTaskInfo.h)) {
                 DownloadNativeApi.a().a(null, localDownloadTaskInfo);
               }
             }
@@ -54,7 +54,7 @@ class DownloadCallbackNativeImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.local.DownloadCallbackNativeImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public final class MiniGamePAConfProcessor$Companion
   @NotNull
   public final MiniGamePAConfBean loadConfig()
   {
-    MiniGamePAConfBean localMiniGamePAConfBean = (MiniGamePAConfBean)QConfigManager.a().a(741);
+    MiniGamePAConfBean localMiniGamePAConfBean = (MiniGamePAConfBean)QConfigManager.b().b(741);
     if (localMiniGamePAConfBean != null) {
       return localMiniGamePAConfBean;
     }
@@ -21,7 +21,7 @@ public final class MiniGamePAConfProcessor$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.config.MiniGamePAConfProcessor.Companion
  * JD-Core Version:    0.7.0.1
  */

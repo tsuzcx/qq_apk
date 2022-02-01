@@ -30,6 +30,7 @@ import org.light.bean.TTFaceOriginDataModel;
 public class PTFaceAttr
 {
   public static final PTFaceAttr EmptyFaceAttr = new PTFaceAttr(new PTFaceAttr.Builder().facePoints(new ArrayList(90)).irisPoints(new ArrayList(90)).faceAngles(new ArrayList(3)).pointsVis(new ArrayList(90)).triggeredExpression(new HashSet()).faceDetectScale(1.0D).rotation(0).faceDetector(null).faceActionCounter(new HashMap()).timeStamp(System.currentTimeMillis()));
+  private List<Integer> ageList;
   private int[] autoBrightnessCurve;
   private int[] autoContrastCurve;
   private List<List<PointF>> bodyPoints;
@@ -46,6 +47,8 @@ public class PTFaceAttr
   private List<float[]> faceKitVerticesArray;
   private PointF facePiont2DCenter;
   private List<int[]> featureIndicesArray;
+  private int gender;
+  private List<Integer> genderList;
   private Pair<Integer, int[]> histogram;
   private boolean isPhoneFlatHorizontal;
   private int lastFaceDetectedPhoneRotation;
@@ -84,39 +87,41 @@ public class PTFaceAttr
     this.mRecordFaceInfo = PTFaceAttr.Builder.access$400(paramBuilder);
     this.mFaceAngles = PTFaceAttr.Builder.access$500(paramBuilder);
     this.mData = PTFaceAttr.Builder.access$600(paramBuilder);
-    this.mFaceExpression = PTFaceAttr.Builder.access$700(paramBuilder);
-    this.mFaceStatusList = PTFaceAttr.Builder.access$800(paramBuilder);
-    this.mFaceInfoList = PTFaceAttr.Builder.access$900(paramBuilder);
-    this.mOrigFrame = PTFaceAttr.Builder.access$1000(paramBuilder);
-    this.mTimeStamp = PTFaceAttr.Builder.access$1100(paramBuilder);
-    this.mRotation = PTFaceAttr.Builder.access$1200(paramBuilder);
-    this.mSrcRotation = PTFaceAttr.Builder.access$1300(paramBuilder);
-    this.mTriggeredExpression = PTFaceAttr.Builder.access$1400(paramBuilder);
-    this.mFaceDetectScale = PTFaceAttr.Builder.access$1500(paramBuilder);
-    this.mFaceActionCounter = PTFaceAttr.Builder.access$1600(paramBuilder);
-    this.histogram = PTFaceAttr.Builder.access$1700(paramBuilder);
-    this.bodyPoints = PTFaceAttr.Builder.access$1800(paramBuilder);
-    this.starPoints = PTFaceAttr.Builder.access$1900(paramBuilder);
-    this.starMaskFrame = PTFaceAttr.Builder.access$2000(paramBuilder);
-    this.faceDetector = PTFaceAttr.Builder.access$2100(paramBuilder);
-    this.rgbGain = PTFaceAttr.Builder.access$2200(paramBuilder);
-    this.curve = PTFaceAttr.Builder.access$2300(paramBuilder);
-    this.autoContrastCurve = PTFaceAttr.Builder.access$2400(paramBuilder);
-    this.autoBrightnessCurve = PTFaceAttr.Builder.access$2500(paramBuilder);
-    this.faceAverageL = PTFaceAttr.Builder.access$2600(paramBuilder);
-    this.faceKitVerticesArray = PTFaceAttr.Builder.access$2700(paramBuilder);
-    this.face3DVerticesArray = PTFaceAttr.Builder.access$2800(paramBuilder);
-    this.face3DRotationArray = PTFaceAttr.Builder.access$2900(paramBuilder);
-    this.featureIndicesArray = PTFaceAttr.Builder.access$3000(paramBuilder);
-    this.facePiont2DCenter = PTFaceAttr.Builder.access$3100(paramBuilder);
-    this.lastFaceDetectedPhoneRotation = PTFaceAttr.Builder.access$3200(paramBuilder);
-    this.isPhoneFlatHorizontal = PTFaceAttr.Builder.access$3300(paramBuilder);
-    this.shookFaceInfos = PTFaceAttr.Builder.access$3400(paramBuilder);
-    this.detectTimes = PTFaceAttr.Builder.access$3500(paramBuilder);
-    this.faceDetWidth = PTFaceAttr.Builder.access$3600(paramBuilder);
-    this.faceDetHeight = PTFaceAttr.Builder.access$3700(paramBuilder);
-    this.faceDetRotation = PTFaceAttr.Builder.access$3800(paramBuilder);
-    this.expressions = PTFaceAttr.Builder.access$3900(paramBuilder);
+    this.genderList = PTFaceAttr.Builder.access$700(paramBuilder);
+    this.ageList = PTFaceAttr.Builder.access$800(paramBuilder);
+    this.mFaceExpression = PTFaceAttr.Builder.access$900(paramBuilder);
+    this.mFaceStatusList = PTFaceAttr.Builder.access$1000(paramBuilder);
+    this.mFaceInfoList = PTFaceAttr.Builder.access$1100(paramBuilder);
+    this.mOrigFrame = PTFaceAttr.Builder.access$1200(paramBuilder);
+    this.mTimeStamp = PTFaceAttr.Builder.access$1300(paramBuilder);
+    this.mRotation = PTFaceAttr.Builder.access$1400(paramBuilder);
+    this.mSrcRotation = PTFaceAttr.Builder.access$1500(paramBuilder);
+    this.mTriggeredExpression = PTFaceAttr.Builder.access$1600(paramBuilder);
+    this.mFaceDetectScale = PTFaceAttr.Builder.access$1700(paramBuilder);
+    this.mFaceActionCounter = PTFaceAttr.Builder.access$1800(paramBuilder);
+    this.histogram = PTFaceAttr.Builder.access$1900(paramBuilder);
+    this.bodyPoints = PTFaceAttr.Builder.access$2000(paramBuilder);
+    this.starPoints = PTFaceAttr.Builder.access$2100(paramBuilder);
+    this.starMaskFrame = PTFaceAttr.Builder.access$2200(paramBuilder);
+    this.faceDetector = PTFaceAttr.Builder.access$2300(paramBuilder);
+    this.rgbGain = PTFaceAttr.Builder.access$2400(paramBuilder);
+    this.curve = PTFaceAttr.Builder.access$2500(paramBuilder);
+    this.autoContrastCurve = PTFaceAttr.Builder.access$2600(paramBuilder);
+    this.autoBrightnessCurve = PTFaceAttr.Builder.access$2700(paramBuilder);
+    this.faceAverageL = PTFaceAttr.Builder.access$2800(paramBuilder);
+    this.faceKitVerticesArray = PTFaceAttr.Builder.access$2900(paramBuilder);
+    this.face3DVerticesArray = PTFaceAttr.Builder.access$3000(paramBuilder);
+    this.face3DRotationArray = PTFaceAttr.Builder.access$3100(paramBuilder);
+    this.featureIndicesArray = PTFaceAttr.Builder.access$3200(paramBuilder);
+    this.facePiont2DCenter = PTFaceAttr.Builder.access$3300(paramBuilder);
+    this.lastFaceDetectedPhoneRotation = PTFaceAttr.Builder.access$3400(paramBuilder);
+    this.isPhoneFlatHorizontal = PTFaceAttr.Builder.access$3500(paramBuilder);
+    this.shookFaceInfos = PTFaceAttr.Builder.access$3600(paramBuilder);
+    this.detectTimes = PTFaceAttr.Builder.access$3700(paramBuilder);
+    this.faceDetWidth = PTFaceAttr.Builder.access$3800(paramBuilder);
+    this.faceDetHeight = PTFaceAttr.Builder.access$3900(paramBuilder);
+    this.faceDetRotation = PTFaceAttr.Builder.access$4000(paramBuilder);
+    this.expressions = PTFaceAttr.Builder.access$4100(paramBuilder);
   }
   
   private static boolean checkFaceFeatureOutScreen(List<PointF> paramList, int paramInt1, int paramInt2, double paramDouble)
@@ -178,11 +183,11 @@ public class PTFaceAttr
   
   private void initValues(PTFaceAttr.Builder paramBuilder)
   {
-    PTFaceAttr.Builder.access$702(paramBuilder, new HashMap());
-    if (PTFaceAttr.Builder.access$1400(paramBuilder) == null)
+    PTFaceAttr.Builder.access$902(paramBuilder, new HashMap());
+    if (PTFaceAttr.Builder.access$1600(paramBuilder) == null)
     {
-      PTFaceAttr.Builder.access$1402(paramBuilder, new HashSet());
-      PTFaceAttr.Builder.access$1400(paramBuilder).add(Integer.valueOf(1));
+      PTFaceAttr.Builder.access$1602(paramBuilder, new HashSet());
+      PTFaceAttr.Builder.access$1600(paramBuilder).add(Integer.valueOf(1));
     }
     PTFaceAttr.PTExpression[] arrayOfPTExpression = PTFaceAttr.PTExpression.values();
     int j = arrayOfPTExpression.length;
@@ -190,14 +195,14 @@ public class PTFaceAttr
     while (i < j)
     {
       PTFaceAttr.PTExpression localPTExpression = arrayOfPTExpression[i];
-      if (PTFaceAttr.Builder.access$1400(paramBuilder).contains(Integer.valueOf(localPTExpression.value))) {
-        PTFaceAttr.Builder.access$700(paramBuilder).put(localPTExpression, Boolean.valueOf(true));
+      if (PTFaceAttr.Builder.access$1600(paramBuilder).contains(Integer.valueOf(localPTExpression.value))) {
+        PTFaceAttr.Builder.access$900(paramBuilder).put(localPTExpression, Boolean.valueOf(true));
       } else {
-        PTFaceAttr.Builder.access$700(paramBuilder).put(localPTExpression, Boolean.valueOf(false));
+        PTFaceAttr.Builder.access$900(paramBuilder).put(localPTExpression, Boolean.valueOf(false));
       }
       i += 1;
     }
-    PTFaceAttr.Builder.access$1802(paramBuilder, new ArrayList());
+    PTFaceAttr.Builder.access$2002(paramBuilder, new ArrayList());
   }
   
   public static boolean isPositiveFace(float[] paramArrayOfFloat, List<PointF> paramList, int paramInt1, int paramInt2, double paramDouble)
@@ -246,6 +251,11 @@ public class PTFaceAttr
       j += 1;
     }
     return GsonUtils.objList2Json((List)localObject);
+  }
+  
+  public List<Integer> getAgeList()
+  {
+    return this.ageList;
   }
   
   public List<float[]> getAllFaceAngles()
@@ -418,6 +428,11 @@ public class PTFaceAttr
   public List<int[]> getFeatureIndicesArray()
   {
     return this.featureIndicesArray;
+  }
+  
+  public List<Integer> getGenderList()
+  {
+    return this.genderList;
   }
   
   public Pair<Integer, int[]> getHistogram()
@@ -778,7 +793,7 @@ public class PTFaceAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTFaceAttr
  * JD-Core Version:    0.7.0.1
  */

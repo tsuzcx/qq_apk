@@ -22,7 +22,7 @@ public class AECameraGetInfoClient
     return AECameraGetInfoClient.Holder.a;
   }
   
-  public static void a()
+  public static void b()
   {
     if (!a)
     {
@@ -31,7 +31,7 @@ public class AECameraGetInfoClient
     }
   }
   
-  public static void b()
+  public static void c()
   {
     if (a)
     {
@@ -45,14 +45,14 @@ public class AECameraGetInfoClient
     if ("action_get_send_to_info".equals(paramString)) {
       AEBaseDataReporter.a().a(Long.valueOf(paramBundle.getLong("key_receiver_type")));
     } else if ("action_get_cancle_send_info".equals(paramString)) {
-      AEBaseDataReporter.a().ad();
+      AEBaseDataReporter.a().ai();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.qipc.AECameraGetInfoClient
  * JD-Core Version:    0.7.0.1
  */

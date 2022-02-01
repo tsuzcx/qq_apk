@@ -29,12 +29,12 @@ public class GameMsgAppFragment
   extends BaseHippyFragment
   implements Handler.Callback
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private HippyErrorViewWrapper jdField_a_of_type_ComTencentHippyQqFragmentHippyErrorViewWrapper = new HippyErrorViewWrapper();
-  private HippyProgressBarWrapper jdField_a_of_type_ComTencentHippyQqFragmentHippyProgressBarWrapper = new HippyProgressBarWrapper();
+  private ViewGroup a;
   private ViewGroup b;
+  private HippyProgressBarWrapper c = new HippyProgressBarWrapper();
+  private HippyErrorViewWrapper d = new HippyErrorViewWrapper();
+  private View.OnClickListener e;
+  private Handler f;
   
   private void b()
   {
@@ -56,7 +56,7 @@ public class GameMsgAppFragment
   
   public void a()
   {
-    View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    View.OnClickListener localOnClickListener = this.e;
     if (localOnClickListener != null) {
       localOnClickListener.onClick(null);
     }
@@ -71,7 +71,7 @@ public class GameMsgAppFragment
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.e = paramOnClickListener;
   }
   
   public void a(ViewGroup paramViewGroup)
@@ -79,17 +79,17 @@ public class GameMsgAppFragment
     if ((this.mHippyQQEngine != null) && (this.mHippyQQEngine.isReady())) {
       return;
     }
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyProgressBarWrapper.initProgressBar(paramViewGroup);
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyProgressBarWrapper.startProgressBar();
+    this.c.initProgressBar(paramViewGroup);
+    this.c.startProgressBar();
   }
   
   protected void a(ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
   {
-    paramViewGroup = (FrameLayout)paramViewGroup.findViewById(2131366297);
+    paramViewGroup = (FrameLayout)paramViewGroup.findViewById(2131432596);
     if (paramViewGroup.getVisibility() != 0) {
       paramViewGroup.setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyErrorViewWrapper.initNetworkErrorView(paramViewGroup, paramOnClickListener);
+    this.d.initNetworkErrorView(paramViewGroup, paramOnClickListener);
   }
   
   protected JSONObject doBussinessInitData(JSONObject paramJSONObject)
@@ -156,20 +156,20 @@ public class GameMsgAppFragment
       paramBundle.append(paramViewGroup);
       QLog.e("BaseHippyFragment", 1, paramBundle.toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2131558481, null, false));
-    this.b = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368190));
+    this.f = new Handler(this);
+    this.a = ((ViewGroup)paramLayoutInflater.inflate(2131624025, null, false));
+    this.b = ((ViewGroup)this.a.findViewById(2131435055));
     loadHippy(this.b);
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewViewGroup;
+    a(this.a);
+    this.f.sendEmptyMessageDelayed(1, 10000L);
+    paramLayoutInflater = this.a;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.f;
     if (localHandler != null) {
       localHandler.removeCallbacksAndMessages(null);
     }
@@ -178,21 +178,21 @@ public class GameMsgAppFragment
   
   protected void onLoadHippyError(int paramInt, String paramString)
   {
-    paramString = this.jdField_a_of_type_AndroidOsHandler;
+    paramString = this.f;
     if (paramString != null) {
       paramString.removeMessages(1);
     }
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyProgressBarWrapper.hideProgressBar();
-    a(this.jdField_a_of_type_AndroidViewViewGroup, null);
+    this.c.hideProgressBar();
+    a(this.a, null);
   }
   
   protected void onLoadHippySuccess()
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.f;
     if (localHandler != null) {
       localHandler.removeMessages(1);
     }
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyProgressBarWrapper.hideProgressBar();
+    this.c.hideProgressBar();
   }
   
   public void onPause()
@@ -207,7 +207,7 @@ public class GameMsgAppFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.message.GameMsgAppFragment
  * JD-Core Version:    0.7.0.1
  */

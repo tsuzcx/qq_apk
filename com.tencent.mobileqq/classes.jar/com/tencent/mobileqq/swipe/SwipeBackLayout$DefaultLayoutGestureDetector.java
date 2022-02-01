@@ -38,7 +38,7 @@ public class SwipeBackLayout$DefaultLayoutGestureDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.swipe.SwipeBackLayout.DefaultLayoutGestureDetector
  * JD-Core Version:    0.7.0.1
  */

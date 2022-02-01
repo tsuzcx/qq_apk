@@ -14,7 +14,7 @@ class CommentsPresenter$1
   {
     if (CommentsPresenter.a(this.a) != null)
     {
-      CommentsPresenter.a(this.a).showToast(BaseApplicationImpl.getApplication().getString(2131696380));
+      CommentsPresenter.a(this.a).showToast(BaseApplicationImpl.getApplication().getString(2131894152));
       CommentsPresenter.a(this.a).hideLoading();
       CommentsPresenter.a(this.a).showBadNetworkConnection();
     }
@@ -24,7 +24,7 @@ class CommentsPresenter$1
   {
     if (CommentsPresenter.a(this.a) != null)
     {
-      CommentsPresenter.a(this.a);
+      CommentsPresenter.b(this.a);
       CommentsPresenter.a(this.a).showDataInView(paramComments);
       CommentsPresenter.a(this.a).hideLoading();
     }
@@ -32,7 +32,7 @@ class CommentsPresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.presenter.impl.CommentsPresenter.1
  * JD-Core Version:    0.7.0.1
  */

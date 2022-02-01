@@ -8,22 +8,22 @@ class ReceiptMessageReadMemberListFragment$MemberInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<MemberInfo> CREATOR = new ReceiptMessageReadMemberListFragment.MemberInfo.1();
-  public long a;
   public String a;
   public String b;
+  public long c;
   
   protected ReceiptMessageReadMemberListFragment$MemberInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
+    this.c = paramParcel.readLong();
   }
   
   ReceiptMessageReadMemberListFragment$MemberInfo(String paramString1, String paramString2, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   public int describeContents()
@@ -33,14 +33,14 @@ class ReceiptMessageReadMemberListFragment$MemberInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
+    paramParcel.writeLong(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo
  * JD-Core Version:    0.7.0.1
  */

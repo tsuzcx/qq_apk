@@ -31,105 +31,30 @@ import java.util.List;
 public class MemoryManager
   implements IManager
 {
-  protected OneObjectCacheList<String, VideoCollectionItem> a;
-  protected VideoCollectionItem.DataSortedComparator a;
+  protected OneObjectCacheList<String, VideoCollectionItem> a = new OneObjectCacheList(300);
   protected OneObjectCacheList<String, MemoryInfoEntry> b = new OneObjectCacheList(300);
-  
-  public MemoryManager()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList = new OneObjectCacheList(300);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem$DataSortedComparator = new VideoCollectionItem.DataSortedComparator();
-  }
+  protected VideoCollectionItem.DataSortedComparator c = new VideoCollectionItem.DataSortedComparator();
   
   protected static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
     return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
   }
   
-  protected QQStoryContext a()
-  {
-    return QQStoryContext.a();
-  }
-  
   public MemoryInfoEntry a(MemoryInfoEntry paramMemoryInfoEntry)
   {
-    a(paramMemoryInfoEntry.unionId);
+    c(paramMemoryInfoEntry.unionId);
     paramMemoryInfoEntry = (MemoryInfoEntry)this.b.a(paramMemoryInfoEntry.unionId, paramMemoryInfoEntry);
     MemoryInfoEntry localMemoryInfoEntry = new MemoryInfoEntry();
     localMemoryInfoEntry.copy(paramMemoryInfoEntry);
-    a().a().createEntityManager().persistOrReplace(localMemoryInfoEntry);
+    d().d().createEntityManager().persistOrReplace(localMemoryInfoEntry);
     return localMemoryInfoEntry;
-  }
-  
-  public MemoryInfoEntry a(String paramString)
-  {
-    MemoryInfoEntry localMemoryInfoEntry = (MemoryInfoEntry)this.b.a(paramString);
-    if (localMemoryInfoEntry != null) {
-      return localMemoryInfoEntry;
-    }
-    paramString = a(a().a().createEntityManager(), MemoryInfoEntry.class, MemoryInfoEntry.class.getSimpleName(), MemoryInfoEntry.getUnionIdSelectionNoArg(), new String[] { String.valueOf(paramString) });
-    if ((paramString != null) && (paramString.size() != 0))
-    {
-      paramString = (MemoryInfoEntry)paramString.get(0);
-      this.b.a(paramString.unionId, paramString);
-      return paramString;
-    }
-    return null;
-  }
-  
-  public ShareGroupCollectionItem a(String paramString)
-  {
-    AssertUtils.checkNotNull(paramString);
-    if (paramString == null) {
-      return null;
-    }
-    Object localObject = (ShareGroupCollectionItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString);
-    if (localObject != null) {
-      return localObject;
-    }
-    localObject = a().a().createEntityManager();
-    paramString = a((EntityManager)localObject, VideoCollectionEntry.class, VideoCollectionEntry.class.getSimpleName(), VideoCollectionEntry.getKeySelectionNoArgs(), new String[] { paramString });
-    if (paramString != null)
-    {
-      if (paramString.size() == 0) {
-        return null;
-      }
-      ShareGroupCollectionItem localShareGroupCollectionItem = new ShareGroupCollectionItem((VideoCollectionEntry)paramString.get(0));
-      paramString = ((ShareGroupManager)SuperManager.a(7)).a(localShareGroupCollectionItem.groupId);
-      if (paramString == null) {
-        return null;
-      }
-      localShareGroupCollectionItem.shareGroupItem = paramString;
-      paramString = a((EntityManager)localObject, StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), StoryVideoListEntry.getCollectionSelectionNoArg(), new String[] { String.valueOf(5), localShareGroupCollectionItem.key });
-      if (paramString != null)
-      {
-        StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
-        Iterator localIterator = paramString.iterator();
-        while (localIterator.hasNext())
-        {
-          StoryVideoListEntry localStoryVideoListEntry = (StoryVideoListEntry)localIterator.next();
-          localObject = localStoryManager.a(localStoryVideoListEntry.vid);
-          paramString = (String)localObject;
-          if (localObject == null)
-          {
-            paramString = new StoryVideoItem();
-            paramString.mVid = localStoryVideoListEntry.vid;
-          }
-          localShareGroupCollectionItem.videoVidList.add(localStoryVideoListEntry.vid);
-          localShareGroupCollectionItem.videoItemList.add(paramString);
-        }
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(localShareGroupCollectionItem.key, localShareGroupCollectionItem);
-      return localShareGroupCollectionItem;
-    }
-    return null;
   }
   
   public VideoCollectionItem a(@NonNull VideoCollectionItem paramVideoCollectionItem)
   {
     a(paramVideoCollectionItem.key);
-    paramVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramVideoCollectionItem.key, paramVideoCollectionItem);
-    EntityManager localEntityManager = a().a().createEntityManager();
+    paramVideoCollectionItem = (VideoCollectionItem)this.a.a(paramVideoCollectionItem.key, paramVideoCollectionItem);
+    EntityManager localEntityManager = d().d().createEntityManager();
     if (localEntityManager.update(paramVideoCollectionItem.convertTo())) {
       a(localEntityManager, paramVideoCollectionItem.key, paramVideoCollectionItem.videoVidList, true);
     }
@@ -144,11 +69,11 @@ public class MemoryManager
     if (paramString == null) {
       return null;
     }
-    Object localObject1 = (VideoCollectionItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString);
+    Object localObject1 = (VideoCollectionItem)this.a.a(paramString);
     if (localObject1 != null) {
       return localObject1;
     }
-    localObject1 = a().a().createEntityManager();
+    localObject1 = d().d().createEntityManager();
     Object localObject2 = a((EntityManager)localObject1, VideoCollectionEntry.class, VideoCollectionEntry.class.getSimpleName(), VideoCollectionEntry.getKeySelectionNoArgs(), new String[] { paramString });
     paramString = localStoryManager;
     if (localObject2 != null)
@@ -170,7 +95,7 @@ public class MemoryManager
           paramString.collectionVideoUIItemList.add(new VideoCollectionItem.FakeVideoUIItem((String)localObject2, localStoryVideoItem));
         }
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString.key, paramString);
+      this.a.a(paramString.key, paramString);
     }
     return paramString;
   }
@@ -178,7 +103,7 @@ public class MemoryManager
   public ArrayList<String> a(String paramString, ArrayList<String> paramArrayList)
   {
     ArrayList localArrayList = new ArrayList();
-    paramString = a().a().createEntityManager().query(VideoCollectionEntry.class, VideoCollectionEntry.class.getSimpleName(), true, VideoCollectionEntry.getUinSelectionNoArgs(), new String[] { paramString }, null, null, "dbIndex asc", null);
+    paramString = d().d().createEntityManager().query(VideoCollectionEntry.class, VideoCollectionEntry.class.getSimpleName(), true, VideoCollectionEntry.getUinSelectionNoArgs(), new String[] { paramString }, null, null, "dbIndex asc", null);
     if (paramString != null)
     {
       if (paramString.size() == 0) {
@@ -198,37 +123,10 @@ public class MemoryManager
     return localArrayList;
   }
   
-  public List<MomeriesYearNode> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = StoryManager.a(QQStoryContext.a().a().createEntityManager(), MemoriesYearNodeEntry.class, MemoriesYearNodeEntry.class.getSimpleName(), null, null);
-    if (localObject == null) {
-      return localArrayList;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      MemoriesYearNodeEntry localMemoriesYearNodeEntry = (MemoriesYearNodeEntry)((Iterator)localObject).next();
-      MomeriesYearNode localMomeriesYearNode = new MomeriesYearNode();
-      localMomeriesYearNode.convertFrom(localMemoriesYearNodeEntry);
-      localArrayList.add(localMomeriesYearNode);
-    }
-    return localArrayList;
-  }
-  
-  public List<String> a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString != null) {
-      return paramString.videoVidList;
-    }
-    return new ArrayList();
-  }
-  
   public List<VideoCollectionItem> a(String paramString, VideoCollectionItem paramVideoCollectionItem, long paramLong)
   {
     ArrayList localArrayList = new ArrayList();
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = d().d().createEntityManager();
     String str1 = VideoCollectionEntry.getQueryListSql();
     long l;
     if (paramVideoCollectionItem == null) {
@@ -260,22 +158,6 @@ public class MemoryManager
   
   public void a() {}
   
-  public void a(VideoCollectionItem paramVideoCollectionItem)
-  {
-    EntityManager localEntityManager = a().a().createEntityManager();
-    paramVideoCollectionItem = a(localEntityManager, VideoCollectionEntry.class, VideoCollectionEntry.class.getSimpleName(), VideoCollectionEntry.getKeySelectionNoArgs(), new String[] { paramVideoCollectionItem.key });
-    if (paramVideoCollectionItem != null)
-    {
-      paramVideoCollectionItem = paramVideoCollectionItem.iterator();
-      while (paramVideoCollectionItem.hasNext())
-      {
-        VideoCollectionEntry localVideoCollectionEntry = (VideoCollectionEntry)paramVideoCollectionItem.next();
-        localVideoCollectionEntry.setStatus(1001);
-        localEntityManager.remove(localVideoCollectionEntry);
-      }
-    }
-  }
-  
   protected void a(EntityManager paramEntityManager, String paramString, List<String> paramList, boolean paramBoolean)
   {
     Object localObject;
@@ -304,7 +186,7 @@ public class MemoryManager
       SLog.b("MemoryManager", "data already exist, id=%s, time=%d", paramVideoCollectionItem.collectionId, Long.valueOf(paramVideoCollectionItem.collectionTime));
       return;
     }
-    int i = Collections.binarySearch(paramList, paramVideoCollectionItem, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem$DataSortedComparator);
+    int i = Collections.binarySearch(paramList, paramVideoCollectionItem, this.c);
     if (i < 0) {
       paramList.add(-i - 1, paramVideoCollectionItem);
     }
@@ -313,7 +195,7 @@ public class MemoryManager
   public void a(List<VideoCollectionItem> paramList, String paramString, boolean paramBoolean)
   {
     StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = d().d().createEntityManager();
     EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
     try
     {
@@ -332,7 +214,7 @@ public class MemoryManager
           }
         }
       }
-      Object localObject2 = a(DateCollectionListPageLoader.a(paramString));
+      Object localObject2 = c(DateCollectionListPageLoader.b(paramString));
       Object localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = new MemoryInfoEntry(paramString);
@@ -344,11 +226,11 @@ public class MemoryManager
         long l = ((MemoryInfoEntry)localObject1).maxCollectionIndex + 1L;
         ((MemoryInfoEntry)localObject1).maxCollectionIndex = l;
         paramString.dbIndex = l;
-        paramString = (VideoCollectionItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString.key, paramString);
+        paramString = (VideoCollectionItem)this.a.a(paramString.key, paramString);
         paramString.videoItemList = localStoryManager.a(paramString.videoItemList);
         a(localEntityManager, paramString.key, paramString.videoVidList, true);
         a(paramString.key);
-        localEntityManager.persistOrReplace(((VideoCollectionItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString.key, paramString)).convertTo());
+        localEntityManager.persistOrReplace(((VideoCollectionItem)this.a.a(paramString.key, paramString)).convertTo());
       }
       localEntityTransaction.commit();
       a((MemoryInfoEntry)localObject1);
@@ -367,7 +249,7 @@ public class MemoryManager
   
   public void a(List<MomeriesYearNode> paramList, boolean paramBoolean)
   {
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    EntityManager localEntityManager = QQStoryContext.a().d().createEntityManager();
     localEntityManager.getTransaction().begin();
     if (paramBoolean) {}
     try
@@ -391,34 +273,41 @@ public class MemoryManager
     }
   }
   
-  public List<ShareGroupCollectionItem> b(String paramString)
+  public List<String> b(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramString = a(a().a().createEntityManager(), VideoCollectionEntry.class, VideoCollectionEntry.class.getSimpleName(), "unionId=? and collectionType=?", new String[] { paramString, String.valueOf(4) });
-    if (paramString == null) {
-      return localArrayList;
+    paramString = a(paramString);
+    if (paramString != null) {
+      return paramString.videoVidList;
     }
-    paramString = paramString.iterator();
-    while (paramString.hasNext())
-    {
-      ShareGroupCollectionItem localShareGroupCollectionItem = a(((VideoCollectionEntry)paramString.next()).key);
-      if (localShareGroupCollectionItem != null) {
-        localArrayList.add(localShareGroupCollectionItem);
-      }
-    }
-    return localArrayList;
+    return new ArrayList();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(20);
+    this.a.a(20);
+  }
+  
+  public void b(VideoCollectionItem paramVideoCollectionItem)
+  {
+    EntityManager localEntityManager = d().d().createEntityManager();
+    paramVideoCollectionItem = a(localEntityManager, VideoCollectionEntry.class, VideoCollectionEntry.class.getSimpleName(), VideoCollectionEntry.getKeySelectionNoArgs(), new String[] { paramVideoCollectionItem.key });
+    if (paramVideoCollectionItem != null)
+    {
+      paramVideoCollectionItem = paramVideoCollectionItem.iterator();
+      while (paramVideoCollectionItem.hasNext())
+      {
+        VideoCollectionEntry localVideoCollectionEntry = (VideoCollectionEntry)paramVideoCollectionItem.next();
+        localVideoCollectionEntry.setStatus(1001);
+        localEntityManager.remove(localVideoCollectionEntry);
+      }
+    }
   }
   
   public void b(List<ShareGroupCollectionItem> paramList, String paramString, boolean paramBoolean)
   {
     StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
     ShareGroupManager localShareGroupManager = (ShareGroupManager)SuperManager.a(7);
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = d().d().createEntityManager();
     EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
     try
     {
@@ -441,7 +330,7 @@ public class MemoryManager
       while (paramList.hasNext())
       {
         paramString = (ShareGroupCollectionItem)paramList.next();
-        paramString = (ShareGroupCollectionItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString.key, paramString);
+        paramString = (ShareGroupCollectionItem)this.a.a(paramString.key, paramString);
         paramString.shareGroupItem = localShareGroupManager.a(paramString.shareGroupItem);
         paramString.videoItemList = localStoryManager.a(paramString.videoItemList);
         a(localEntityManager, paramString.key, paramString.videoVidList, true);
@@ -460,10 +349,115 @@ public class MemoryManager
       throw paramList;
     }
   }
+  
+  public MemoryInfoEntry c(String paramString)
+  {
+    MemoryInfoEntry localMemoryInfoEntry = (MemoryInfoEntry)this.b.a(paramString);
+    if (localMemoryInfoEntry != null) {
+      return localMemoryInfoEntry;
+    }
+    paramString = a(d().d().createEntityManager(), MemoryInfoEntry.class, MemoryInfoEntry.class.getSimpleName(), MemoryInfoEntry.getUnionIdSelectionNoArg(), new String[] { String.valueOf(paramString) });
+    if ((paramString != null) && (paramString.size() != 0))
+    {
+      paramString = (MemoryInfoEntry)paramString.get(0);
+      this.b.a(paramString.unionId, paramString);
+      return paramString;
+    }
+    return null;
+  }
+  
+  public List<MomeriesYearNode> c()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = StoryManager.a(QQStoryContext.a().d().createEntityManager(), MemoriesYearNodeEntry.class, MemoriesYearNodeEntry.class.getSimpleName(), null, null);
+    if (localObject == null) {
+      return localArrayList;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      MemoriesYearNodeEntry localMemoriesYearNodeEntry = (MemoriesYearNodeEntry)((Iterator)localObject).next();
+      MomeriesYearNode localMomeriesYearNode = new MomeriesYearNode();
+      localMomeriesYearNode.convertFrom(localMemoriesYearNodeEntry);
+      localArrayList.add(localMomeriesYearNode);
+    }
+    return localArrayList;
+  }
+  
+  protected QQStoryContext d()
+  {
+    return QQStoryContext.a();
+  }
+  
+  public List<ShareGroupCollectionItem> d(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramString = a(d().d().createEntityManager(), VideoCollectionEntry.class, VideoCollectionEntry.class.getSimpleName(), "unionId=? and collectionType=?", new String[] { paramString, String.valueOf(4) });
+    if (paramString == null) {
+      return localArrayList;
+    }
+    paramString = paramString.iterator();
+    while (paramString.hasNext())
+    {
+      ShareGroupCollectionItem localShareGroupCollectionItem = e(((VideoCollectionEntry)paramString.next()).key);
+      if (localShareGroupCollectionItem != null) {
+        localArrayList.add(localShareGroupCollectionItem);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public ShareGroupCollectionItem e(String paramString)
+  {
+    AssertUtils.checkNotNull(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    Object localObject = (ShareGroupCollectionItem)this.a.a(paramString);
+    if (localObject != null) {
+      return localObject;
+    }
+    localObject = d().d().createEntityManager();
+    paramString = a((EntityManager)localObject, VideoCollectionEntry.class, VideoCollectionEntry.class.getSimpleName(), VideoCollectionEntry.getKeySelectionNoArgs(), new String[] { paramString });
+    if (paramString != null)
+    {
+      if (paramString.size() == 0) {
+        return null;
+      }
+      ShareGroupCollectionItem localShareGroupCollectionItem = new ShareGroupCollectionItem((VideoCollectionEntry)paramString.get(0));
+      paramString = ((ShareGroupManager)SuperManager.a(7)).a(localShareGroupCollectionItem.groupId);
+      if (paramString == null) {
+        return null;
+      }
+      localShareGroupCollectionItem.shareGroupItem = paramString;
+      paramString = a((EntityManager)localObject, StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), StoryVideoListEntry.getCollectionSelectionNoArg(), new String[] { String.valueOf(5), localShareGroupCollectionItem.key });
+      if (paramString != null)
+      {
+        StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
+        Iterator localIterator = paramString.iterator();
+        while (localIterator.hasNext())
+        {
+          StoryVideoListEntry localStoryVideoListEntry = (StoryVideoListEntry)localIterator.next();
+          localObject = localStoryManager.a(localStoryVideoListEntry.vid);
+          paramString = (String)localObject;
+          if (localObject == null)
+          {
+            paramString = new StoryVideoItem();
+            paramString.mVid = localStoryVideoListEntry.vid;
+          }
+          localShareGroupCollectionItem.videoVidList.add(localStoryVideoListEntry.vid);
+          localShareGroupCollectionItem.videoItemList.add(paramString);
+        }
+      }
+      this.a.a(localShareGroupCollectionItem.key, localShareGroupCollectionItem);
+      return localShareGroupCollectionItem;
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.MemoryManager
  * JD-Core Version:    0.7.0.1
  */

@@ -12,46 +12,56 @@ import com.tencent.qphone.base.util.QLog;
 public class CaptureComboMusic
   extends CaptureComboBase
 {
-  MusicDownloadListener a;
-  public MusicItemInfo a;
-  int c;
+  public MusicItemInfo f;
+  int g;
+  MusicDownloadListener h = new CaptureComboMusic.1(this);
   
   public CaptureComboMusic(int paramInt)
   {
     super(null);
-    this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener = new CaptureComboMusic.1(this);
-    this.c = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = ((QIMMusicConfigManager)QIMManager.a(2)).b(paramInt);
+    this.g = paramInt;
+    this.f = ((QIMMusicConfigManager)QIMManager.a(2)).b(paramInt);
   }
   
-  public float a()
+  public int a(Activity paramActivity, int paramInt)
   {
-    try
+    if (QLog.isColorLevel())
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress;
-      float f = i * 1.0F / 100.0F;
-      return f;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("applyMusic");
+      localStringBuilder.append(this.f);
+      QLog.i("QCombo.Music", 2, localStringBuilder.toString());
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    if (this.f == null) {
+      return 0;
+    }
+    ((MusicProviderView)paramActivity.findViewById(2131430313)).a(this.f);
+    return 0;
+  }
+  
+  public void b(Activity paramActivity, int paramInt)
+  {
+    if (this.f == null) {
+      return;
+    }
+    if ((paramInt != 1) && (paramInt != 3)) {
+      ((QimMusicPlayer)QIMManager.a().d(8)).a(paramInt);
     }
   }
   
-  public int a()
+  public int c()
   {
     boolean bool;
     label67:
     try
     {
-      MusicItemInfo localMusicItemInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
+      MusicItemInfo localMusicItemInfo = this.f;
       if (localMusicItemInfo == null) {
         return 3;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress > -1)
+      if (this.f.mProgress > -1)
       {
-        int i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress;
+        int i = this.f.mProgress;
         if (i == 100) {
           return 3;
         }
@@ -61,7 +71,7 @@ public class CaptureComboMusic
     finally {}
     try
     {
-      bool = FileUtils.fileExists(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath());
+      bool = FileUtils.fileExists(this.f.getLocalPath());
       if (bool) {
         return 3;
       }
@@ -73,70 +83,44 @@ public class CaptureComboMusic
     return 2;
   }
   
-  public int a(Activity paramActivity, int paramInt)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("applyMusic");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-      QLog.i("QCombo.Music", 2, localStringBuilder.toString());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null) {
-      return 0;
-    }
-    ((MusicProviderView)paramActivity.findViewById(2131364293)).a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-    return 0;
-  }
-  
-  public void a(Activity paramActivity, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null) {
-      return;
-    }
-    if ((paramInt != 1) && (paramInt != 3)) {
-      ((QimMusicPlayer)QIMManager.a().c(8)).a(paramInt);
-    }
-  }
-  
-  public int b()
+  public int d()
   {
     try
     {
       StringBuilder localStringBuilder;
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null)
+      if (this.f == null)
       {
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("download STATE_DOWNLOADED");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+          localStringBuilder.append(this.f);
           QLog.i("MusicProviderView.Downloader", 2, localStringBuilder.toString());
         }
         return 3;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress > -1)
+      if (this.f.mProgress > -1)
       {
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("download mMusic.mProgress");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress);
+          localStringBuilder.append(this.f.mProgress);
           QLog.i("MusicProviderView.Downloader", 2, localStringBuilder.toString());
         }
         return 1;
       }
-      if (!FileUtils.fileExists(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath()))
+      if (!FileUtils.fileExists(this.f.getLocalPath()))
       {
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("download .");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress);
+          localStringBuilder.append(this.f.mProgress);
           QLog.i("MusicProviderView.Downloader", 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress = 1;
-        QimMusicDownloader.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mUrl, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath(), this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener);
+        this.f.mProgress = 1;
+        QimMusicDownloader.a(this.f.mUrl, this.f.getLocalPath(), this.h);
         a();
         return 2;
       }
@@ -144,7 +128,7 @@ public class CaptureComboMusic
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("STATE_DOWNLOADED .");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mProgress);
+        localStringBuilder.append(this.f.mProgress);
         QLog.i("MusicProviderView.Downloader", 2, localStringBuilder.toString());
       }
       return 3;
@@ -152,20 +136,35 @@ public class CaptureComboMusic
     finally {}
   }
   
+  public float e()
+  {
+    try
+    {
+      int i = this.f.mProgress;
+      float f1 = i * 1.0F / 100.0F;
+      return f1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Music@");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("@");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(hashCode());
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.CaptureComboMusic
  * JD-Core Version:    0.7.0.1
  */

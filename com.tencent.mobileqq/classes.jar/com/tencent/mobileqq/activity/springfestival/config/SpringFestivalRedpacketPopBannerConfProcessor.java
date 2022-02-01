@@ -18,19 +18,6 @@ public class SpringFestivalRedpacketPopBannerConfProcessor
     return new SpringFestivalRedpacketPopBannerConfBean();
   }
   
-  protected SpringFestivalRedpacketPopBannerConfBean a(QConfItem[] paramArrayOfQConfItem)
-  {
-    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
-    {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.i("shua2021_SpringFestivalRedpacketPopBannerConfProcessor", 2, String.format("onParsed %s", new Object[] { paramArrayOfQConfItem }));
-      }
-      return SpringFestivalRedpacketPopBannerConfBean.a(paramArrayOfQConfItem);
-    }
-    return null;
-  }
-  
   public void a(SpringFestivalRedpacketPopBannerConfBean paramSpringFestivalRedpacketPopBannerConfBean)
   {
     try
@@ -41,7 +28,7 @@ public class SpringFestivalRedpacketPopBannerConfProcessor
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       if (localQQAppInterface != null)
       {
-        int i = QConfigManager.a().a(723, localQQAppInterface.getCurrentAccountUin());
+        int i = QConfigManager.b().a(723, localQQAppInterface.getCurrentAccountUin());
         ((SpringFestivalRedpacketConfigManager)localQQAppInterface.getManager(QQManagerFactory.SPRING_FESTIVAL_RED_PACKET_MANAGER)).a(i, paramSpringFestivalRedpacketPopBannerConfBean);
       }
       super.onUpdate(paramSpringFestivalRedpacketPopBannerConfBean);
@@ -53,8 +40,21 @@ public class SpringFestivalRedpacketPopBannerConfProcessor
     }
   }
   
+  protected SpringFestivalRedpacketPopBannerConfBean b(QConfItem[] paramArrayOfQConfItem)
+  {
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
+    {
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
+      if (QLog.isColorLevel()) {
+        QLog.i("shua2021_SpringFestivalRedpacketPopBannerConfProcessor", 2, String.format("onParsed %s", new Object[] { paramArrayOfQConfItem }));
+      }
+      return SpringFestivalRedpacketPopBannerConfBean.a(paramArrayOfQConfItem);
+    }
+    return null;
+  }
+  
   @Nullable
-  public SpringFestivalRedpacketPopBannerConfBean b(QConfItem[] paramArrayOfQConfItem)
+  public SpringFestivalRedpacketPopBannerConfBean c(QConfItem[] paramArrayOfQConfItem)
   {
     return (SpringFestivalRedpacketPopBannerConfBean)super.onParsed(paramArrayOfQConfItem);
   }
@@ -86,7 +86,7 @@ public class SpringFestivalRedpacketPopBannerConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketPopBannerConfProcessor
  * JD-Core Version:    0.7.0.1
  */

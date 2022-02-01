@@ -14,7 +14,7 @@ class FeedItemCellTypeCommonPgcVideoSocial$4
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.a.setDuplicateParentStateEnabled(true);
       this.b.setDuplicateParentStateEnabled(true);
     }
     return false;
@@ -22,7 +22,7 @@ class FeedItemCellTypeCommonPgcVideoSocial$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeCommonPgcVideoSocial.4
  * JD-Core Version:    0.7.0.1
  */

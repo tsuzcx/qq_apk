@@ -40,7 +40,7 @@ public final class ApolloPanelRedDotUtil
   }
   
   @JvmStatic
-  public static final boolean a(int paramInt)
+  public static final boolean b(int paramInt)
   {
     Object localObject1 = a(paramInt);
     if (localObject1 == null) {
@@ -59,12 +59,12 @@ public final class ApolloPanelRedDotUtil
     ((StringBuilder)localObject2).append(((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.get());
     ((StringBuilder)localObject2).append(' ');
     QLog.d("ApolloPanelRedDotUtil", 1, ((StringBuilder)localObject2).toString());
-    return (((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.get() == 1) && (CmShowWnsUtils.m());
+    return (((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.get() == 1) && (CmShowWnsUtils.p());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloPanelRedDotUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -26,12 +26,12 @@ class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$1
     }
     if (paramBoolean)
     {
-      QQToast.a(NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.a), HardCodeUtil.a(2131707519), 0).a();
+      QQToast.makeText(NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.c(this.a), HardCodeUtil.a(2131905334), 0).show();
       NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.a, paramLong);
       this.a.d();
       return;
     }
-    QQToast.a(NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.a), HardCodeUtil.a(2131707526), 0).a();
+    QQToast.makeText(NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.c(this.a), HardCodeUtil.a(2131905341), 0).show();
   }
   
   public void onSuspiciousDel(boolean paramBoolean, int paramInt, long paramLong)
@@ -75,7 +75,7 @@ class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$1
       if (paramArrayList != null)
       {
         paramArrayOfByte = this.a;
-        NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(paramArrayOfByte, NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(paramArrayOfByte) + paramArrayList.size());
+        NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(paramArrayOfByte, NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.b(paramArrayOfByte) + paramArrayList.size());
       }
       this.a.d();
     }
@@ -96,7 +96,7 @@ class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.1
  * JD-Core Version:    0.7.0.1
  */

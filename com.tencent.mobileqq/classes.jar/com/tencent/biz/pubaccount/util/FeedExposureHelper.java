@@ -9,10 +9,10 @@ import com.tencent.widget.AbsListView;
 
 public abstract class FeedExposureHelper
 {
-  private FeedExposureHelper.Range jdField_a_of_type_ComTencentBizPubaccountUtilFeedExposureHelper$Range;
-  private final String jdField_a_of_type_JavaLangString = "FeedExposureHelper";
+  private final String a = "FeedExposureHelper";
+  private FeedExposureHelper.Range b;
   
-  private float a(int paramInt)
+  private float b(int paramInt)
   {
     AbsBaseArticleInfo localAbsBaseArticleInfo = a(paramInt);
     float f;
@@ -50,26 +50,26 @@ public abstract class FeedExposureHelper
         return null;
       }
       localObject1 = localObject2;
-      if (paramRange1.b >= paramRange2.jdField_a_of_type_Int)
+      if (paramRange1.c >= paramRange2.b)
       {
-        if (paramRange1.jdField_a_of_type_Int > paramRange2.b) {
+        if (paramRange1.b > paramRange2.c) {
           return null;
         }
         localObject1 = new FeedExposureHelper.Range();
         int i;
-        if (paramRange1.jdField_a_of_type_Int > paramRange2.jdField_a_of_type_Int) {
-          i = paramRange1.jdField_a_of_type_Int;
-        } else {
-          i = paramRange2.jdField_a_of_type_Int;
-        }
-        ((FeedExposureHelper.Range)localObject1).jdField_a_of_type_Int = i;
-        if (paramRange1.b < paramRange2.b) {
+        if (paramRange1.b > paramRange2.b) {
           i = paramRange1.b;
         } else {
           i = paramRange2.b;
         }
         ((FeedExposureHelper.Range)localObject1).b = i;
-        ((FeedExposureHelper.Range)localObject1).jdField_a_of_type_Long = Math.abs(paramRange1.jdField_a_of_type_Long - paramRange2.jdField_a_of_type_Long);
+        if (paramRange1.c < paramRange2.c) {
+          i = paramRange1.c;
+        } else {
+          i = paramRange2.c;
+        }
+        ((FeedExposureHelper.Range)localObject1).c = i;
+        ((FeedExposureHelper.Range)localObject1).a = Math.abs(paramRange1.a - paramRange2.a);
       }
     }
     return localObject1;
@@ -78,7 +78,7 @@ public abstract class FeedExposureHelper
   public FeedExposureHelper.Range a(AbsListView paramAbsListView)
   {
     FeedExposureHelper.Range localRange = new FeedExposureHelper.Range();
-    localRange.jdField_a_of_type_Long = System.currentTimeMillis();
+    localRange.a = System.currentTimeMillis();
     int k = paramAbsListView.getHeight();
     int m = paramAbsListView.getFirstVisiblePosition();
     int n = paramAbsListView.getChildCount();
@@ -86,8 +86,8 @@ public abstract class FeedExposureHelper
     int i = j;
     if (n == 0)
     {
-      localRange.jdField_a_of_type_Int = 0;
-      localRange.b = 10;
+      localRange.b = 0;
+      localRange.c = 10;
       i = j;
     }
     View localView;
@@ -97,7 +97,7 @@ public abstract class FeedExposureHelper
       j = a(m, i);
       if (a(localView, j, k))
       {
-        localRange.jdField_a_of_type_Int = j;
+        localRange.b = j;
         break;
       }
       i += 1;
@@ -109,7 +109,7 @@ public abstract class FeedExposureHelper
       j = a(m, i);
       if (a(localView, j, k))
       {
-        localRange.b = j;
+        localRange.c = j;
         return localRange;
       }
       i -= 1;
@@ -131,11 +131,11 @@ public abstract class FeedExposureHelper
     ((StringBuilder)localObject).append("thisRange: ");
     ((StringBuilder)localObject).append(paramAbsListView);
     QLog.d("FeedExposureHelper", 2, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountUtilFeedExposureHelper$Range;
+    localObject = this.b;
     if (localObject != null)
     {
       localObject = a((FeedExposureHelper.Range)localObject, paramAbsListView);
-      if ((localObject != null) && (((FeedExposureHelper.Range)localObject).jdField_a_of_type_Long > 1000L))
+      if ((localObject != null) && (((FeedExposureHelper.Range)localObject).a > 1000L))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("sameRange: ");
@@ -144,9 +144,9 @@ public abstract class FeedExposureHelper
         a((FeedExposureHelper.Range)localObject);
       }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilFeedExposureHelper$Range = paramAbsListView;
+    this.b = paramAbsListView;
     if (paramInt == 5) {
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilFeedExposureHelper$Range = null;
+      this.b = null;
     }
   }
   
@@ -162,12 +162,12 @@ public abstract class FeedExposureHelper
     if (paramView.getTop() > 0) {
       i = paramInt2 - paramView.getTop();
     }
-    return i >= paramView.getHeight() * a(paramInt1);
+    return i >= paramView.getHeight() * b(paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.FeedExposureHelper
  * JD-Core Version:    0.7.0.1
  */

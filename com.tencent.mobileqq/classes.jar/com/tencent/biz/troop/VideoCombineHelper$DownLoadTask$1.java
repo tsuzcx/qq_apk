@@ -22,13 +22,13 @@ class VideoCombineHelper$DownLoadTask$1
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    if (paramDownloadTask.a == 0)
+    if (paramDownloadTask.c == 0)
     {
-      paramDownloadTask = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      paramDownloadTask = this.d.b.values().iterator();
       while (paramDownloadTask.hasNext()) {
         if (!((File)paramDownloadTask.next()).exists())
         {
-          this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask);
+          this.d.f.a(this.d);
           return;
         }
       }
@@ -38,19 +38,19 @@ class VideoCombineHelper$DownLoadTask$1
       int i;
       try
       {
-        paramDownloadTask = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b.iterator();
+        paramDownloadTask = this.a.h.iterator();
         i = 1;
         if (paramDownloadTask.hasNext())
         {
           localObject1 = (String)paramDownloadTask.next();
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.a());
+          ((StringBuilder)localObject2).append(this.d.d());
           ((StringBuilder)localObject2).append(File.separator);
           ((StringBuilder)localObject2).append("v_");
           ((StringBuilder)localObject2).append(i);
           ((StringBuilder)localObject2).append(".mp4");
           localObject2 = new File(((StringBuilder)localObject2).toString());
-          this.jdField_a_of_type_JavaUtilArrayList.add(((File)localObject2).getAbsolutePath());
+          this.b.add(((File)localObject2).getAbsolutePath());
           if (((File)localObject2).exists()) {
             break label514;
           }
@@ -63,33 +63,33 @@ class VideoCombineHelper$DownLoadTask$1
       catch (IOException paramDownloadTask)
       {
         QLog.e(".troop.VideoCombineHelper", 1, paramDownloadTask, new Object[0]);
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask);
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b = this.jdField_a_of_type_JavaUtilArrayList;
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask);
-        paramDownloadTask = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask;
-        paramDownloadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task = new VideoCombineHelper.CombineTask(paramDownloadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.c, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.d, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.c);
+        this.d.f.a(this.d);
+        this.a.h = this.b;
+        this.d.f.b(this.d);
+        paramDownloadTask = this.d;
+        paramDownloadTask.h = new VideoCombineHelper.CombineTask(paramDownloadTask.c, this.d.f, this.d.g, this.a.h, this.a.i, this.a.f);
         paramDownloadTask = (AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web");
         if (VideoEnvironment.checkAndLoadAVCodec()) {
-          this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.b();
-        } else if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.a) {
-          this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
+          this.d.b();
+        } else if (this.a.a) {
+          this.d.f.b(this.d.h);
         } else {
-          this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
+          this.d.f.a(this.d.h);
         }
         paramDownloadTask = new StringBuilder();
         paramDownloadTask.append("downLoadTime = ");
-        paramDownloadTask.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+        paramDownloadTask.append(System.currentTimeMillis() - this.c);
         QLog.d(".troop.trace_video_combine", 2, paramDownloadTask.toString());
         return;
       }
-      Object localObject1 = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask;
+      Object localObject1 = this.d;
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("donwload failed!code = ");
-      ((StringBuilder)localObject2).append(paramDownloadTask.a);
+      ((StringBuilder)localObject2).append(paramDownloadTask.c);
       ((StringBuilder)localObject2).append("errmsg = ");
-      ((StringBuilder)localObject2).append(paramDownloadTask.b);
-      ((VideoCombineHelper.DownLoadTask)localObject1).d = ((StringBuilder)localObject2).toString();
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask);
+      ((StringBuilder)localObject2).append(paramDownloadTask.d);
+      ((VideoCombineHelper.DownLoadTask)localObject1).i = ((StringBuilder)localObject2).toString();
+      this.d.f.a(this.d);
       return;
       label514:
       i += 1;
@@ -98,7 +98,7 @@ class VideoCombineHelper$DownLoadTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.DownLoadTask.1
  * JD-Core Version:    0.7.0.1
  */

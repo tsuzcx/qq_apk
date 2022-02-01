@@ -10,23 +10,23 @@ class WerewolvesHostInterface$3
 {
   WerewolvesHostInterface$3(WerewolvesHostInterface paramWerewolvesHostInterface, Object paramObject, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    paramView = ReflectUtils.a(this.jdField_a_of_type_JavaLangObject.getClass(), "onClick", new Class[] { Integer.TYPE });
+    paramView = ReflectUtils.a(this.a.getClass(), "onClick", new Class[] { Integer.TYPE });
     try
     {
-      paramView.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt) });
+      paramView.invoke(this.a, new Object[] { Integer.valueOf(paramInt) });
     }
     catch (Exception paramView)
     {
       paramView.printStackTrace();
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHostInterface.3
  * JD-Core Version:    0.7.0.1
  */

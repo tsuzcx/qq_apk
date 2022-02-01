@@ -13,27 +13,27 @@ import android.widget.RelativeLayout;
 public class OvalProgress
   extends RelativeLayout
 {
-  private double jdField_a_of_type_Double;
   public float a;
-  private int jdField_a_of_type_Int = -3355444;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private OvalProgress.TagProgress jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = -1.0F;
-  private int jdField_b_of_type_Int = -16745985;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF;
-  private float jdField_c_of_type_Float = -1.0F;
-  private Paint jdField_c_of_type_AndroidGraphicsPaint;
-  private RectF jdField_c_of_type_AndroidGraphicsRectF;
-  private Paint jdField_d_of_type_AndroidGraphicsPaint;
-  private RectF jdField_d_of_type_AndroidGraphicsRectF;
-  private Paint jdField_e_of_type_AndroidGraphicsPaint;
-  private RectF jdField_e_of_type_AndroidGraphicsRectF;
-  private RectF f;
+  private Paint b;
+  private Paint c;
+  private Paint d;
+  private Paint e;
+  private Paint f;
   private RectF g;
   private RectF h;
+  private RectF i;
+  private RectF j;
+  private RectF k;
+  private RectF l;
+  private RectF m;
+  private RectF n;
+  private OvalProgress.TagProgress o;
+  private float p = -1.0F;
+  private float q = -1.0F;
+  private boolean r = false;
+  private double s;
+  private int t = -3355444;
+  private int u = -16745985;
   
   public OvalProgress(Context paramContext)
   {
@@ -55,169 +55,169 @@ public class OvalProgress
     if (paramDouble <= 0.0D) {
       return 0.0D;
     }
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.jdField_a_of_type_Double > 0.0D)
+    int i1;
+    if (this.o.a > 0.0D)
     {
       double d1 = 90;
       Double.isNaN(d1);
-      i = (int)(1.0D * paramDouble * d1 / this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.jdField_a_of_type_Double);
+      i1 = (int)(1.0D * paramDouble * d1 / this.o.a);
     }
     else
     {
-      i = 0;
+      i1 = 0;
     }
-    int j = i;
-    if (i > 90) {
-      j = 90;
+    int i2 = i1;
+    if (i1 > 90) {
+      i2 = 90;
     }
-    paramCanvas.drawArc(this.g, 180.0F, j, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-    return paramDouble - this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.jdField_a_of_type_Double;
+    paramCanvas.drawArc(this.m, 180.0F, i2, false, this.e);
+    return paramDouble - this.o.a;
   }
   
   private void a(Canvas paramCanvas)
   {
-    paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawArc(this.jdField_c_of_type_AndroidGraphicsRectF, 90.0F, 180.0F, false, this.jdField_c_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawArc(this.jdField_d_of_type_AndroidGraphicsRectF, 270.0F, 180.0F, false, this.jdField_c_of_type_AndroidGraphicsPaint);
-    e(paramCanvas, d(paramCanvas, c(paramCanvas, b(paramCanvas, a(paramCanvas, this.jdField_a_of_type_Double)))));
+    paramCanvas.drawRect(this.g, this.b);
+    paramCanvas.drawRect(this.h, this.b);
+    paramCanvas.drawArc(this.i, 90.0F, 180.0F, false, this.d);
+    paramCanvas.drawArc(this.j, 270.0F, 180.0F, false, this.d);
+    e(paramCanvas, d(paramCanvas, c(paramCanvas, b(paramCanvas, a(paramCanvas, this.s)))));
   }
   
   private boolean a()
   {
-    int i = getWidth();
-    int j = getHeight();
-    if ((i <= 0) && (j <= 0)) {
+    int i1 = getWidth();
+    int i2 = getHeight();
+    if ((i1 <= 0) && (i2 <= 0)) {
       return false;
     }
-    if (this.jdField_a_of_type_Float <= 0.0F) {
-      this.jdField_a_of_type_Float = (getResources().getDisplayMetrics().density * 4.0F / 2.0F);
+    if (this.a <= 0.0F) {
+      this.a = (getResources().getDisplayMetrics().density * 4.0F / 2.0F);
     }
-    if ((this.jdField_a_of_type_AndroidGraphicsPaint == null) || (this.jdField_b_of_type_AndroidGraphicsPaint == null))
+    if ((this.b == null) || (this.c == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-      this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
+      this.b = new Paint();
+      this.b.setAntiAlias(true);
+      this.b.setColor(this.t);
+      this.b.setStrokeWidth(2.0F);
+      this.c = new Paint();
+      this.c.setAntiAlias(true);
+      this.c.setColor(this.u);
+      this.c.setStrokeWidth(2.0F);
     }
     Object localObject;
     float f2;
     float f3;
-    if ((this.jdField_c_of_type_AndroidGraphicsRectF == null) || (this.jdField_d_of_type_AndroidGraphicsRectF == null) || (this.g == null) || (this.h == null) || (this.jdField_c_of_type_AndroidGraphicsPaint == null) || (this.jdField_d_of_type_AndroidGraphicsPaint == null))
+    if ((this.i == null) || (this.j == null) || (this.m == null) || (this.n == null) || (this.d == null) || (this.e == null))
     {
-      this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_d_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_d_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_d_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-      this.jdField_d_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-      this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-      localObject = this.jdField_c_of_type_AndroidGraphicsRectF;
+      this.d = new Paint();
+      this.d.setAntiAlias(true);
+      this.d.setColor(this.t);
+      this.d.setStrokeWidth(2.0F);
+      this.d.setStyle(Paint.Style.STROKE);
+      this.e = new Paint();
+      this.e.setAntiAlias(true);
+      this.e.setColor(this.u);
+      this.e.setStrokeWidth(2.0F);
+      this.e.setStyle(Paint.Style.STROKE);
+      this.i = new RectF();
+      localObject = this.i;
       ((RectF)localObject).left = 1.0F;
       f2 = ((RectF)localObject).left;
-      f1 = j;
+      f1 = i2;
       ((RectF)localObject).right = (f2 + f1 - 2.0F);
-      localObject = this.jdField_c_of_type_AndroidGraphicsRectF;
+      localObject = this.i;
       ((RectF)localObject).top = 1.0F;
-      f2 = j - 1;
+      f2 = i2 - 1;
       ((RectF)localObject).bottom = f2;
-      this.jdField_d_of_type_AndroidGraphicsRectF = new RectF();
-      localObject = this.jdField_d_of_type_AndroidGraphicsRectF;
-      int k = i - 1;
-      f3 = k - (j - 2);
+      this.j = new RectF();
+      localObject = this.j;
+      int i3 = i1 - 1;
+      f3 = i3 - (i2 - 2);
       ((RectF)localObject).left = f3;
-      float f4 = k;
+      float f4 = i3;
       ((RectF)localObject).right = f4;
       ((RectF)localObject).top = 1.0F;
       ((RectF)localObject).bottom = f2;
-      this.g = new RectF();
-      localObject = this.g;
+      this.m = new RectF();
+      localObject = this.m;
       ((RectF)localObject).left = 1.0F;
       ((RectF)localObject).right = (((RectF)localObject).left + f1 - 2.0F);
-      localObject = this.g;
+      localObject = this.m;
       ((RectF)localObject).top = 1.0F;
       ((RectF)localObject).bottom = f2;
-      this.h = new RectF();
-      localObject = this.h;
+      this.n = new RectF();
+      localObject = this.n;
       ((RectF)localObject).left = f3;
       ((RectF)localObject).right = f4;
       ((RectF)localObject).top = 1.0F;
       ((RectF)localObject).bottom = f2;
     }
-    float f1 = i - j;
+    float f1 = i1 - i2;
     double d1;
-    if ((this.jdField_a_of_type_AndroidGraphicsRectF == null) || (this.jdField_b_of_type_AndroidGraphicsRectF == null) || (this.jdField_e_of_type_AndroidGraphicsRectF == null) || (this.f == null))
+    if ((this.g == null) || (this.h == null) || (this.k == null) || (this.l == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-      localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-      d1 = i - f1;
+      this.g = new RectF();
+      localObject = this.g;
+      d1 = i1 - f1;
       Double.isNaN(d1);
       ((RectF)localObject).left = ((float)(d1 * 1.0D / 2.0D - 0.5D));
       d1 = ((RectF)localObject).left + f1;
       Double.isNaN(d1);
       ((RectF)localObject).right = ((float)(d1 + 0.5D + 0.5D));
-      localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+      localObject = this.g;
       ((RectF)localObject).top = 0.0F;
       ((RectF)localObject).bottom = 2.0F;
-      this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-      this.jdField_b_of_type_AndroidGraphicsRectF.left = this.jdField_a_of_type_AndroidGraphicsRectF.left;
-      this.jdField_b_of_type_AndroidGraphicsRectF.right = this.jdField_a_of_type_AndroidGraphicsRectF.right;
-      localObject = this.jdField_b_of_type_AndroidGraphicsRectF;
-      f2 = j - 2;
+      this.h = new RectF();
+      this.h.left = this.g.left;
+      this.h.right = this.g.right;
+      localObject = this.h;
+      f2 = i2 - 2;
       ((RectF)localObject).top = f2;
-      f3 = j;
+      f3 = i2;
       ((RectF)localObject).bottom = f3;
-      this.jdField_e_of_type_AndroidGraphicsRectF = new RectF();
-      this.jdField_e_of_type_AndroidGraphicsRectF.left = this.jdField_a_of_type_AndroidGraphicsRectF.left;
-      this.jdField_e_of_type_AndroidGraphicsRectF.right = this.jdField_a_of_type_AndroidGraphicsRectF.right;
-      localObject = this.jdField_e_of_type_AndroidGraphicsRectF;
+      this.k = new RectF();
+      this.k.left = this.g.left;
+      this.k.right = this.g.right;
+      localObject = this.k;
       ((RectF)localObject).top = 0.0F;
       ((RectF)localObject).bottom = 2.0F;
-      this.f = new RectF();
-      this.f.left = this.jdField_e_of_type_AndroidGraphicsRectF.left;
-      this.f.right = this.jdField_e_of_type_AndroidGraphicsRectF.right;
-      localObject = this.f;
+      this.l = new RectF();
+      this.l.left = this.k.left;
+      this.l.right = this.k.right;
+      localObject = this.l;
       ((RectF)localObject).top = f2;
       ((RectF)localObject).bottom = f3;
     }
     double d2;
-    if ((this.jdField_e_of_type_AndroidGraphicsPaint == null) || (this.jdField_b_of_type_Float == -1.0F) || (this.jdField_c_of_type_Float == -1.0F))
+    if ((this.f == null) || (this.p == -1.0F) || (this.q == -1.0F))
     {
-      this.jdField_e_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_e_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_e_of_type_AndroidGraphicsPaint.setColor(-65536);
-      d1 = (j - 2) / 2;
+      this.f = new Paint();
+      this.f.setAntiAlias(true);
+      this.f.setColor(-65536);
+      d1 = (i2 - 2) / 2;
       Double.isNaN(d1);
       d1 /= 1.4142135623731D;
-      f2 = (this.jdField_d_of_type_AndroidGraphicsRectF.left + this.jdField_d_of_type_AndroidGraphicsRectF.right) / 2.0F;
-      f3 = (this.jdField_d_of_type_AndroidGraphicsRectF.top + this.jdField_d_of_type_AndroidGraphicsRectF.bottom) / 2.0F;
+      f2 = (this.j.left + this.j.right) / 2.0F;
+      f3 = (this.j.top + this.j.bottom) / 2.0F;
       d2 = f2;
       Double.isNaN(d2);
-      this.jdField_b_of_type_Float = ((float)(d2 + d1));
+      this.p = ((float)(d2 + d1));
       d2 = f3;
       Double.isNaN(d2);
-      this.jdField_c_of_type_Float = ((float)(d2 - d1));
+      this.q = ((float)(d2 - d1));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress == null)
+    if (this.o == null)
     {
-      d1 = j - 2;
+      d1 = i2 - 2;
       Double.isNaN(d1);
       d1 *= 3.141592653589793D;
       d2 = 2.0F * f1;
       Double.isNaN(d2);
       d2 += d1;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress = new OvalProgress.TagProgress(this);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress;
+      this.o = new OvalProgress.TagProgress(this);
+      localObject = this.o;
       double d3 = 0.25D * d1 / d2;
-      ((OvalProgress.TagProgress)localObject).jdField_a_of_type_Double = d3;
+      ((OvalProgress.TagProgress)localObject).a = d3;
       double d4 = f1;
       Double.isNaN(d4);
       d4 = d4 * 1.0D / d2;
@@ -235,18 +235,18 @@ public class OvalProgress
     if (paramDouble <= 0.0D) {
       return 0.0D;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.b > 0.0D) {
-      d1 = paramDouble / this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.b;
+    if (this.o.b > 0.0D) {
+      d1 = paramDouble / this.o.b;
     }
     double d2 = d1;
     if (d1 > 1.0D) {
       d2 = 1.0D;
     }
-    d1 = this.jdField_e_of_type_AndroidGraphicsRectF.right - this.jdField_e_of_type_AndroidGraphicsRectF.left;
+    d1 = this.k.right - this.k.left;
     Double.isNaN(d1);
     float f1 = (float)(d2 * d1);
-    paramCanvas.drawRect(this.jdField_e_of_type_AndroidGraphicsRectF.left, this.jdField_e_of_type_AndroidGraphicsRectF.top, this.jdField_e_of_type_AndroidGraphicsRectF.left + f1, this.jdField_e_of_type_AndroidGraphicsRectF.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
-    return paramDouble - this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.b;
+    paramCanvas.drawRect(this.k.left, this.k.top, this.k.left + f1, this.k.bottom, this.c);
+    return paramDouble - this.o.b;
   }
   
   private double c(Canvas paramCanvas, double paramDouble)
@@ -254,23 +254,23 @@ public class OvalProgress
     if (paramDouble <= 0.0D) {
       return 0.0D;
     }
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.c > 0.0D)
+    int i1;
+    if (this.o.c > 0.0D)
     {
       double d1 = '´';
       Double.isNaN(d1);
-      i = (int)(1.0D * paramDouble * d1 / this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.c);
+      i1 = (int)(1.0D * paramDouble * d1 / this.o.c);
     }
     else
     {
-      i = 0;
+      i1 = 0;
     }
-    int j = i;
-    if (i > 180) {
-      j = 180;
+    int i2 = i1;
+    if (i1 > 180) {
+      i2 = 180;
     }
-    paramCanvas.drawArc(this.h, 270.0F, j, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-    return paramDouble - this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.c;
+    paramCanvas.drawArc(this.n, 270.0F, i2, false, this.e);
+    return paramDouble - this.o.c;
   }
   
   private double d(Canvas paramCanvas, double paramDouble)
@@ -279,18 +279,18 @@ public class OvalProgress
     if (paramDouble <= 0.0D) {
       return 0.0D;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.d > 0.0D) {
-      d1 = paramDouble / this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.d;
+    if (this.o.d > 0.0D) {
+      d1 = paramDouble / this.o.d;
     }
     double d2 = d1;
     if (d1 > 1.0D) {
       d2 = 1.0D;
     }
-    d1 = this.f.right - this.f.left;
+    d1 = this.l.right - this.l.left;
     Double.isNaN(d1);
     float f1 = (float)((1.0D - d2) * d1);
-    paramCanvas.drawRect(this.f.left + f1, this.f.top, this.f.right, this.f.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
-    return paramDouble - this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.d;
+    paramCanvas.drawRect(this.l.left + f1, this.l.top, this.l.right, this.l.bottom, this.c);
+    return paramDouble - this.o.d;
   }
   
   private double e(Canvas paramCanvas, double paramDouble)
@@ -298,29 +298,29 @@ public class OvalProgress
     if (paramDouble <= 0.0D) {
       return 0.0D;
     }
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.e > 0.0D)
+    int i1;
+    if (this.o.e > 0.0D)
     {
-      if (paramDouble > this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.e * 0.99D)
+      if (paramDouble > this.o.e * 0.99D)
       {
-        i = 90;
+        i1 = 90;
       }
       else
       {
         double d1 = 90;
         Double.isNaN(d1);
-        i = (int)(1.0D * paramDouble * d1 / this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.e);
+        i1 = (int)(1.0D * paramDouble * d1 / this.o.e);
       }
     }
     else {
-      i = 0;
+      i1 = 0;
     }
-    int j = i;
-    if (i > 90) {
-      j = 90;
+    int i2 = i1;
+    if (i1 > 90) {
+      i2 = 90;
     }
-    paramCanvas.drawArc(this.g, 90.0F, j, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-    return paramDouble - this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress$TagProgress.e;
+    paramCanvas.drawArc(this.m, 90.0F, i2, false, this.e);
+    return paramDouble - this.o.e;
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -329,8 +329,8 @@ public class OvalProgress
     if (a())
     {
       a(paramCanvas);
-      if (this.jdField_a_of_type_Boolean) {
-        paramCanvas.drawCircle(this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, 4.0F, this.jdField_e_of_type_AndroidGraphicsPaint);
+      if (this.r) {
+        paramCanvas.drawCircle(this.p, this.q, 4.0F, this.f);
       }
     }
   }
@@ -341,34 +341,34 @@ public class OvalProgress
     {
       if (paramLong2 > paramLong1)
       {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Double = 1.0D;
+        this.r = false;
+        this.s = 1.0D;
       }
       else
       {
-        this.jdField_a_of_type_Boolean = false;
+        this.r = false;
         double d1 = paramLong2;
         Double.isNaN(d1);
         double d2 = paramLong1;
         Double.isNaN(d2);
-        this.jdField_a_of_type_Double = (d1 * 1.0D / d2);
+        this.s = (d1 * 1.0D / d2);
       }
     }
     else {
-      this.jdField_a_of_type_Double = 0.0D;
+      this.s = 0.0D;
     }
     postInvalidate();
   }
   
   public void setThemeColor(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.t = paramInt1;
+    this.u = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OvalProgress
  * JD-Core Version:    0.7.0.1
  */

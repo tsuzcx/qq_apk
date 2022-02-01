@@ -47,7 +47,7 @@ public class RIJCommentInLikeFeedUpvoteArticleHandler
     ((PBUInt32Field)localObject).set(j);
     localObject = localReqBody.bytes_inner_uniq_id;
     if (paramFastWebArticleInfo != null) {
-      paramFastWebArticleInfo = paramFastWebArticleInfo.j;
+      paramFastWebArticleInfo = paramFastWebArticleInfo.q;
     } else {
       paramFastWebArticleInfo = "";
     }
@@ -96,7 +96,7 @@ public class RIJCommentInLikeFeedUpvoteArticleHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJCommentInLikeFeedUpvoteArticleHandler
  * JD-Core Version:    0.7.0.1
  */

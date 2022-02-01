@@ -16,21 +16,21 @@ final class VipGrayConfigHelper$1
 {
   public void run()
   {
-    int i = VipGrayConfigHelper.a().get();
+    int i = VipGrayConfigHelper.c().get();
     String str;
     AtomicInteger localAtomicInteger;
     Object localObject;
     AtomicReference localAtomicReference;
     if (i >= 0)
     {
-      if (i >= VipGrayConfigHelper.a().size()) {
+      if (i >= VipGrayConfigHelper.d().size()) {
         return;
       }
-      str = (String)VipGrayConfigHelper.a().get(i);
-      localAtomicInteger = (AtomicInteger)VipGrayConfigHelper.a().get(str);
-      localObject = (AtomicInteger)VipGrayConfigHelper.b().get(str);
+      str = (String)VipGrayConfigHelper.d().get(i);
+      localAtomicInteger = (AtomicInteger)VipGrayConfigHelper.e().get(str);
+      localObject = (AtomicInteger)VipGrayConfigHelper.f().get(str);
       int j;
-      for (localAtomicReference = (AtomicReference)VipGrayConfigHelper.c().get(str);; localAtomicReference = (AtomicReference)VipGrayConfigHelper.c().get(str))
+      for (localAtomicReference = (AtomicReference)VipGrayConfigHelper.g().get(str);; localAtomicReference = (AtomicReference)VipGrayConfigHelper.g().get(str))
       {
         j = i;
         if (localAtomicInteger.get() < ((AtomicInteger)localObject).get()) {
@@ -38,15 +38,15 @@ final class VipGrayConfigHelper$1
         }
         i += 1;
         j = i;
-        if (i >= VipGrayConfigHelper.a().size()) {
+        if (i >= VipGrayConfigHelper.d().size()) {
           break;
         }
-        str = (String)VipGrayConfigHelper.a().get(i);
-        localAtomicInteger = (AtomicInteger)VipGrayConfigHelper.a().get(str);
-        localObject = (AtomicInteger)VipGrayConfigHelper.b().get(str);
+        str = (String)VipGrayConfigHelper.d().get(i);
+        localAtomicInteger = (AtomicInteger)VipGrayConfigHelper.e().get(str);
+        localObject = (AtomicInteger)VipGrayConfigHelper.f().get(str);
       }
-      VipGrayConfigHelper.a().set(j);
-      if (j >= VipGrayConfigHelper.a().size()) {
+      VipGrayConfigHelper.c().set(j);
+      if (j >= VipGrayConfigHelper.d().size()) {
         return;
       }
       if (QLog.isColorLevel())
@@ -82,7 +82,7 @@ final class VipGrayConfigHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VipGrayConfigHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,19 +14,9 @@ public class C2CAppShortcutBarService
 {
   private C2CAppShortcutBarHelper a;
   
-  public int a()
-  {
-    return 1;
-  }
-  
   public View a()
   {
-    return this.a.a();
-  }
-  
-  public ViewGroup.LayoutParams a()
-  {
-    return this.a.a();
+    return this.a.b();
   }
   
   public void a(int paramInt, Bundle paramBundle)
@@ -39,24 +29,34 @@ public class C2CAppShortcutBarService
     this.a = new C2CAppShortcutBarHelper(paramIAIOShortcutBarLogic);
   }
   
-  public boolean a()
-  {
-    return this.a.c();
-  }
-  
   public boolean a(MotionEvent paramMotionEvent)
   {
     return false;
   }
   
-  public int b()
+  public ViewGroup.LayoutParams b()
   {
-    return ViewUtils.a(39.0F);
+    return this.a.c();
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public int d()
+  {
+    return ViewUtils.dip2px(39.0F);
+  }
+  
+  public boolean e()
+  {
+    return this.a.s();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.C2CAppShortcutBarService
  * JD-Core Version:    0.7.0.1
  */

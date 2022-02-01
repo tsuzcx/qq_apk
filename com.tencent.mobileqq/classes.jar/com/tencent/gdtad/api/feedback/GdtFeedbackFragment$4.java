@@ -20,28 +20,28 @@ class GdtFeedbackFragment$4
     try
     {
       GdtFeedbackResultParams localGdtFeedbackResultParams = new GdtFeedbackResultParams();
-      if (this.jdField_a_of_type_Int != 3)
+      if (this.a != 3)
       {
-        String str = this.jdField_a_of_type_JavaLangString;
+        String str = this.b;
         if (TextUtils.isEmpty(str))
         {
-          AdLog.e(GdtFeedbackFragment.a(), "cannot handle this action because of an empty jump url");
+          AdLog.e(GdtFeedbackFragment.b(), "cannot handle this action because of an empty jump url");
         }
         else
         {
           Object localObject = str;
-          if (GdtFeedbackFragment.a(this.this$0))
+          if (GdtFeedbackFragment.c(this.this$0))
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append(str);
             ((StringBuilder)localObject).append(URLEncoder.encode("&isnm=2", "utf-8"));
             localObject = ((StringBuilder)localObject).toString();
           }
-          localObject = AdBrowser.showWithoutAd(GdtFeedbackFragment.a(this.this$0), (String)localObject, null);
-          localGdtFeedbackResultParams.jdField_a_of_type_ComTencentAdTangramAdError = ((AdError)localObject);
+          localObject = AdBrowser.showWithoutAd(GdtFeedbackFragment.b(this.this$0), (String)localObject, null);
+          localGdtFeedbackResultParams.a = ((AdError)localObject);
           if (!((AdError)localObject).isSuccess())
           {
-            str = GdtFeedbackFragment.a();
+            str = GdtFeedbackFragment.b();
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("cannot start AdBrowser. error_code = ");
             localStringBuilder.append(((AdError)localObject).getErrorCode());
@@ -51,23 +51,23 @@ class GdtFeedbackFragment$4
       }
       else
       {
-        AdToast.show((Context)GdtFeedbackFragment.a(this.this$0).get(), 2, this.this$0.getResources().getString(2131692850), 0);
-        AdLog.i(GdtFeedbackFragment.a(), "handle hide ad");
-        localGdtFeedbackResultParams.jdField_a_of_type_ComTencentAdTangramAdError = new AdError(0);
+        AdToast.show((Context)GdtFeedbackFragment.b(this.this$0).get(), 2, this.this$0.getResources().getString(2131889959), 0);
+        AdLog.i(GdtFeedbackFragment.b(), "handle hide ad");
+        localGdtFeedbackResultParams.a = new AdError(0);
       }
-      localGdtFeedbackResultParams.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      localGdtFeedbackResultParams.b = this.a;
       GdtFeedbackFragment.a(this.this$0, localGdtFeedbackResultParams);
       return;
     }
     catch (Exception localException)
     {
-      AdLog.e(GdtFeedbackFragment.a(), "onItemClicked Handler error in sub thread", localException);
+      AdLog.e(GdtFeedbackFragment.b(), "onItemClicked Handler error in sub thread", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.feedback.GdtFeedbackFragment.4
  * JD-Core Version:    0.7.0.1
  */

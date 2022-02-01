@@ -4,70 +4,56 @@ import java.util.ArrayList;
 
 public class PtvTemplateInfo
 {
-  public static int j = 1;
-  public String A = "";
-  public double a;
-  public int a;
-  public long a;
+  public static int y = 1;
+  public String A;
+  public String B;
+  public String C;
+  public boolean D = true;
+  public String E;
+  public String F;
+  public String G;
+  public String H;
+  public String I;
+  public String J;
+  public String K;
+  public boolean L = true;
+  public String M;
+  public String N;
+  public boolean O;
+  public String P;
+  public String Q;
+  public boolean R;
+  public String S = "";
+  public String T = "";
+  public String U = "";
+  public double V = 0.0D;
+  public long W;
+  public long X;
   public String a;
-  public ArrayList<DoodleInfo> a;
-  public boolean a;
-  public int b;
-  public long b;
   public String b;
-  public boolean b;
-  public int c;
   public String c;
-  public boolean c;
-  public int d = 0;
   public String d;
-  public boolean d;
-  public int e;
   public String e;
-  public boolean e;
-  public int f;
-  public String f;
   public boolean f;
-  public int g;
-  public String g;
   public boolean g;
-  public int h = 0;
-  public String h;
   public boolean h;
-  public int i;
-  public String i;
-  public boolean i;
-  public String j = "";
-  public String k;
-  public String l;
-  public String m;
-  public String n;
-  public String o;
-  public String p;
+  public int i = 0;
+  public int j = 0;
+  public ArrayList<DoodleInfo> k;
+  public int l;
+  public int m = 0;
+  public boolean n;
+  public int o = 0;
+  public int p = 0;
   public String q;
   public String r;
   public String s;
-  public String t;
-  public String u;
-  public String v;
-  public String w;
-  public String x;
-  public String y = "";
-  public String z = "";
-  
-  public PtvTemplateInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_g_of_type_Int = 0;
-    this.jdField_i_of_type_JavaLangString = "";
-    this.jdField_i_of_type_Int = 0;
-    this.jdField_f_of_type_Boolean = true;
-    this.jdField_g_of_type_Boolean = true;
-    this.jdField_a_of_type_Double = 0.0D;
-  }
+  public int t = 0;
+  public int u = 0;
+  public String v = "";
+  public String w = "";
+  public int x = 0;
+  public boolean z;
   
   public String a(int paramInt)
   {
@@ -88,16 +74,16 @@ public class PtvTemplateInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PtvTemplateInfo{id='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", name='");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", doodleInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('\'');
     localStringBuilder.append(",usable=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

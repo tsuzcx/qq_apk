@@ -12,13 +12,13 @@ class TroopFileToTroopForwarder$2
   
   public void run()
   {
-    int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131299168);
-    QQToast.a(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131715151), 0).b(i);
+    int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131299920);
+    QQToast.makeText(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131912639), 0).show(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.forward.TroopFileToTroopForwarder.2
  * JD-Core Version:    0.7.0.1
  */

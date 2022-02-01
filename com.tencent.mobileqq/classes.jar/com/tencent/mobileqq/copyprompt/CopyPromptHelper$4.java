@@ -12,16 +12,16 @@ class CopyPromptHelper$4
   
   public void run()
   {
-    if ((CopyPromptHelper.a(this.this$0) != null) && (CopyPromptHelper.a(this.this$0).getParent() != null))
+    if ((CopyPromptHelper.e(this.this$0) != null) && (CopyPromptHelper.e(this.this$0).getParent() != null))
     {
-      ((RelativeLayout)CopyPromptHelper.a(this.this$0).c.findViewById(2131364485)).removeView(CopyPromptHelper.a(this.this$0));
+      ((RelativeLayout)CopyPromptHelper.d(this.this$0).aZ.findViewById(2131430542)).removeView(CopyPromptHelper.e(this.this$0));
       CopyPromptHelper.a(this.this$0, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.copyprompt.CopyPromptHelper.4
  * JD-Core Version:    0.7.0.1
  */

@@ -22,17 +22,12 @@ import mqq.os.MqqHandler;
 public class OpenSdkQIPCClient
   extends BaseOpenSdkQIPCClient
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new OpenSdkQIPCClient.3(this);
+  private static boolean a = false;
+  private BroadcastReceiver b = new OpenSdkQIPCClient.3(this);
   
   public OpenSdkQIPCClient(String paramString)
   {
     super(paramString);
-  }
-  
-  public static OpenSdkQIPCClient a()
-  {
-    return OpenSdkQIPCClient.Holder.a;
   }
   
   private void a(Bundle paramBundle, int paramInt)
@@ -60,7 +55,7 @@ public class OpenSdkQIPCClient
     localStringBuilder.append(str3);
     SSOLog.a("OpenSdkQIPCClient", new Object[] { localStringBuilder.toString() });
     if (OpenSdkIFrameProcessor.a()) {
-      MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("mqq.opensdk.intent.action.PUZZLEVERIFYCODE"));
+      MobileQQ.getContext().registerReceiver(this.b, new IntentFilter("mqq.opensdk.intent.action.PUZZLEVERIFYCODE"));
     }
     AuthModelUtil.a(str3, str1, str2, new OpenSdkQIPCClient.2(this, paramInt));
   }
@@ -83,7 +78,7 @@ public class OpenSdkQIPCClient
       callbackResult(paramInt1, EIPCResult.createResult(paramInt3, (Bundle)localObject));
       if (OpenSdkIFrameProcessor.a())
       {
-        MobileQQ.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        MobileQQ.getContext().unregisterReceiver(this.b);
         return;
       }
     }
@@ -93,18 +88,9 @@ public class OpenSdkQIPCClient
     }
   }
   
-  public static void b()
+  public static OpenSdkQIPCClient b()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("registerModule isRegisterModule=");
-    localStringBuilder.append(jdField_a_of_type_Boolean);
-    SSOLog.b("OpenSdkQIPCClient", localStringBuilder.toString());
-    if (!jdField_a_of_type_Boolean)
-    {
-      QIPCClientHelper.getInstance().getClient().registerModule(a());
-      QIPCClientHelper.getInstance().getClient().connect(new OpenSdkQIPCClient.1());
-      jdField_a_of_type_Boolean = true;
-    }
+    return OpenSdkQIPCClient.Holder.a;
   }
   
   private void b(Bundle paramBundle)
@@ -134,13 +120,27 @@ public class OpenSdkQIPCClient
   public static void c()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("unRegisterModule isRegisterModule=");
-    localStringBuilder.append(jdField_a_of_type_Boolean);
-    SSOLog.a("OpenSdkQIPCClient", new Object[] { localStringBuilder.toString() });
-    if (jdField_a_of_type_Boolean)
+    localStringBuilder.append("registerModule isRegisterModule=");
+    localStringBuilder.append(a);
+    SSOLog.b("OpenSdkQIPCClient", localStringBuilder.toString());
+    if (!a)
     {
-      QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-      jdField_a_of_type_Boolean = false;
+      QIPCClientHelper.getInstance().getClient().registerModule(b());
+      QIPCClientHelper.getInstance().getClient().connect(new OpenSdkQIPCClient.1());
+      a = true;
+    }
+  }
+  
+  public static void d()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unRegisterModule isRegisterModule=");
+    localStringBuilder.append(a);
+    SSOLog.a("OpenSdkQIPCClient", new Object[] { localStringBuilder.toString() });
+    if (a)
+    {
+      QIPCClientHelper.getInstance().getClient().unRegisterModule(b());
+      a = false;
     }
   }
   
@@ -160,7 +160,7 @@ public class OpenSdkQIPCClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.OpenSdkQIPCClient
  * JD-Core Version:    0.7.0.1
  */

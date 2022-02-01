@@ -125,21 +125,21 @@ public class DialogBaseActivity
     if (!isFinishing())
     {
       ReportController.b(this.app, "dc00898", "", "", "0X8006AA4", "0X8006AA4", 0, 0, "", "", "", "");
-      String str1 = getResources().getString(2131694747);
+      String str1 = getResources().getString(2131892450);
       int i;
       if (paramBoolean) {
-        i = 2131703408;
+        i = 2131901367;
       } else {
-        i = 2131703407;
+        i = 2131901366;
       }
       String str2 = HardCodeUtil.a(i);
       if (paramBoolean) {
-        i = 2131703411;
+        i = 2131901370;
       } else {
-        i = 2131703409;
+        i = 2131901368;
       }
       String str3 = HardCodeUtil.a(i);
-      DialogUtil.a(this, 230, str2, str1, HardCodeUtil.a(2131703410), str3, new DialogBaseActivity.2(this, paramBoolean), new DialogBaseActivity.3(this, paramBoolean)).show();
+      DialogUtil.a(this, 230, str2, str1, HardCodeUtil.a(2131901369), str3, new DialogBaseActivity.2(this, paramBoolean), new DialogBaseActivity.3(this, paramBoolean)).show();
     }
   }
   
@@ -165,7 +165,7 @@ public class DialogBaseActivity
   protected void showToast(int paramInt, String paramString)
   {
     if (!isFinishing()) {
-      QQToast.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
+      QQToast.makeText(this, paramInt, paramString, 0).show(getTitleBarHeight());
     }
   }
   
@@ -176,7 +176,7 @@ public class DialogBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.DialogBaseActivity
  * JD-Core Version:    0.7.0.1
  */

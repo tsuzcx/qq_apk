@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/q2x" android:layout_width="fill_parent" android:layout_height="40.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/q31" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip" />
+    <TextView android:textSize="14.0dip" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/q32" android:layout_width="96.0dip" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:text="班级投票聚餐" android:maxEms="6" android:singleLine="true" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/q2y" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/j2z" />
+</LinearLayout>

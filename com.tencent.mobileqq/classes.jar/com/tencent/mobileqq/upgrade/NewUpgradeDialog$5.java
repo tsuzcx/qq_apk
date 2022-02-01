@@ -7,12 +7,12 @@ class NewUpgradeDialog$5
   
   public void run()
   {
-    NewUpgradeDialog.d(this.this$0);
+    NewUpgradeDialog.f(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeDialog.5
  * JD-Core Version:    0.7.0.1
  */

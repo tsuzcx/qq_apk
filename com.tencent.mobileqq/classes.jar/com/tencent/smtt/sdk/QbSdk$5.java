@@ -15,21 +15,21 @@ final class QbSdk$5
     }
     TbsLog.i("QbSdk", "onDownloadFinish needDownloadDecoupleCore is false", true);
     TbsDownloader.a = false;
+    if (QbSdk.b() != null) {
+      QbSdk.b().onDownloadFinish(paramInt);
+    }
     if (QbSdk.c() != null) {
       QbSdk.c().onDownloadFinish(paramInt);
-    }
-    if (QbSdk.d() != null) {
-      QbSdk.d().onDownloadFinish(paramInt);
     }
   }
   
   public void onDownloadProgress(int paramInt)
   {
-    if (QbSdk.d() != null) {
-      QbSdk.d().onDownloadProgress(paramInt);
-    }
     if (QbSdk.c() != null) {
       QbSdk.c().onDownloadProgress(paramInt);
+    }
+    if (QbSdk.b() != null) {
+      QbSdk.b().onDownloadProgress(paramInt);
     }
   }
   
@@ -43,17 +43,17 @@ final class QbSdk$5
       bool = true;
     }
     TbsDownloader.a = bool;
+    if (QbSdk.b() != null) {
+      QbSdk.b().onInstallFinish(paramInt);
+    }
     if (QbSdk.c() != null) {
       QbSdk.c().onInstallFinish(paramInt);
-    }
-    if (QbSdk.d() != null) {
-      QbSdk.d().onInstallFinish(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.QbSdk.5
  * JD-Core Version:    0.7.0.1
  */

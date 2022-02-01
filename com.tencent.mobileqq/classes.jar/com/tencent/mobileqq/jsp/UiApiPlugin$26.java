@@ -11,14 +11,14 @@ class UiApiPlugin$26
   
   public void run()
   {
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
-    boolean bool = UiApiPlugin.a(localActivity, UiApiPlugin.a(localActivity, null, this.jdField_a_of_type_JavaLangString, "qqbrowser_float_shortcut"), this.b, this.c);
+    Activity localActivity = this.a;
+    boolean bool = UiApiPlugin.a(localActivity, UiApiPlugin.a(localActivity, null, this.b, "qqbrowser_float_shortcut"), this.c, this.d);
     ThreadManagerV2.getUIHandlerV2().post(new UiApiPlugin.26.1(this, bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.26
  * JD-Core Version:    0.7.0.1
  */

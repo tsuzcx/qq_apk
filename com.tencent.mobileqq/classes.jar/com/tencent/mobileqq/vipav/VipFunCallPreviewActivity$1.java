@@ -25,13 +25,13 @@ class VipFunCallPreviewActivity$1
       }
       if ((paramMessage.obj != null) && ((paramMessage.obj instanceof BitmapDrawable)))
       {
-        RelativeLayout localRelativeLayout = (RelativeLayout)this.a.findViewById(2131380934);
+        RelativeLayout localRelativeLayout = (RelativeLayout)this.a.findViewById(2131449924);
         BitmapDrawable localBitmapDrawable = (BitmapDrawable)paramMessage.obj;
         if ((localBitmapDrawable != null) && (localRelativeLayout != null))
         {
           localRelativeLayout.setBackgroundDrawable(localBitmapDrawable);
           if (paramMessage.arg1 == 1) {
-            this.a.a.setBackgroundDrawable(localBitmapDrawable);
+            this.a.d.setBackgroundDrawable(localBitmapDrawable);
           }
         }
       }
@@ -44,7 +44,7 @@ class VipFunCallPreviewActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vipav.VipFunCallPreviewActivity.1
  * JD-Core Version:    0.7.0.1
  */

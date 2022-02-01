@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 
 public class BitmapCache$Entry
 {
-  int jdField_a_of_type_Int;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  int a;
+  Bitmap b;
   
   public BitmapCache$Entry()
   {
@@ -14,13 +14,13 @@ public class BitmapCache$Entry
   
   public void a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.a = -1;
+    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BitmapCache.Entry
  * JD-Core Version:    0.7.0.1
  */

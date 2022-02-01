@@ -9,7 +9,7 @@ class BeautySeekView$2
   
   public void run()
   {
-    BeautySeekView.a(this.this$0).setVisibility(4);
+    BeautySeekView.b(this.this$0).setVisibility(4);
   }
 }
 

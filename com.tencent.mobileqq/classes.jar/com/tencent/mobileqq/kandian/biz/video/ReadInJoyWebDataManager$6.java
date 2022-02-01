@@ -20,19 +20,19 @@ final class ReadInJoyWebDataManager$6
     try
     {
       localObject2 = new Bundle();
-      Object localObject1 = (TicketManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(2);
-      Object localObject3 = this.jdField_a_of_type_MqqAppAppRuntime.getAccount();
-      localObject1 = ((TicketManager)localObject1).getSkey(this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
+      Object localObject1 = (TicketManager)this.a.getManager(2);
+      Object localObject3 = this.a.getAccount();
+      localObject1 = ((TicketManager)localObject1).getSkey(this.a.getAccount());
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("uin=o");
       localStringBuilder.append((String)localObject3);
       localStringBuilder.append("; skey=");
       localStringBuilder.append((String)localObject1);
       ((Bundle)localObject2).putString("Cookie", localStringBuilder.toString());
-      ((Bundle)localObject2).putString("User-Agent", ReadInJoyWebDataManager.a());
-      ((Bundle)localObject2).putString("qq", this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
+      ((Bundle)localObject2).putString("User-Agent", ReadInJoyWebDataManager.h());
+      ((Bundle)localObject2).putString("qq", this.a.getAccount());
       ((Bundle)localObject2).putString("bid", "2");
-      ((Bundle)localObject2).putString("logArray", this.jdField_a_of_type_JavaLangString);
+      ((Bundle)localObject2).putString("logArray", this.b);
       localObject3 = new HashMap();
       ((HashMap)localObject3).put("BUNDLE", localObject2);
       ((HashMap)localObject3).put("CONTEXT", BaseApplicationImpl.getApplication());
@@ -40,7 +40,7 @@ final class ReadInJoyWebDataManager$6
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("sendLog :content :");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.b);
         QLog.w("ReadInJoyWebDataManager", 2, ((StringBuilder)localObject2).toString());
       }
       localObject2 = new ReadInJoyWebDataManager.6.1(this);
@@ -65,7 +65,7 @@ final class ReadInJoyWebDataManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.ReadInJoyWebDataManager.6
  * JD-Core Version:    0.7.0.1
  */

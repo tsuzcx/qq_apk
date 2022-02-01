@@ -18,25 +18,19 @@ import mqq.app.MobileQQ;
 public abstract class InfoStickerDrawable
   extends Drawable
 {
-  public static final int g = a(1.0F, MobileQQ.getContext().getResources());
-  protected ValueAnimator a;
-  protected Context a;
-  protected AnimStateTypeEvaluator a;
-  private InfoStickerDrawable.AnimationListener a;
-  protected String a;
-  protected ArrayList<Integer> a;
-  protected Bitmap b = null;
-  protected int f = 0;
+  public static final int m = a(1.0F, MobileQQ.getContext().getResources());
+  private InfoStickerDrawable.AnimationListener a = null;
+  protected AnimStateTypeEvaluator f = new AnimStateTypeEvaluator();
+  protected ArrayList<Integer> g = null;
+  protected Context h = null;
+  protected String i = null;
+  protected int j = 0;
+  protected ValueAnimator k;
+  protected Bitmap l = null;
   
   public InfoStickerDrawable(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator = new AnimStateTypeEvaluator();
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetInfoStickerDrawable$AnimationListener = null;
-    this.jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.i = paramString;
   }
   
   public static final int a(float paramFloat, Resources paramResources)
@@ -45,11 +39,6 @@ public abstract class InfoStickerDrawable
       return 0;
     }
     return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
-  }
-  
-  public int a()
-  {
-    return this.f;
   }
   
   protected int a(ArrayList<Integer> paramArrayList, int paramInt1, int paramInt2)
@@ -64,16 +53,11 @@ public abstract class InfoStickerDrawable
     return paramInt2;
   }
   
-  public Bitmap a()
-  {
-    return a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a());
-  }
-  
   public Bitmap a(long paramLong)
   {
-    Bitmap localBitmap = b();
+    Bitmap localBitmap = i();
     Canvas localCanvas = new Canvas(localBitmap);
-    ArrayList localArrayList = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a(paramLong);
+    ArrayList localArrayList = this.f.a(paramLong);
     if (localArrayList != null) {
       a(localCanvas, localArrayList);
     }
@@ -84,46 +68,56 @@ public abstract class InfoStickerDrawable
   
   public abstract String[] a(String paramString);
   
-  protected Bitmap b()
-  {
-    Bitmap localBitmap = this.b;
-    if (localBitmap == null) {
-      this.b = Bitmap.createBitmap(getIntrinsicWidth(), getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-    } else {
-      new Canvas(localBitmap).drawColor(0, PorterDuff.Mode.CLEAR);
-    }
-    return this.b;
-  }
-  
   protected abstract void b();
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected void c()
-  {
-    AnimStateTypeEvaluator localAnimStateTypeEvaluator = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofObject(localAnimStateTypeEvaluator, new Object[] { localAnimStateTypeEvaluator.b(), this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a() });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new InfoStickerDrawable.1(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new InfoStickerDrawable.2(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-  }
   
   public void draw(Canvas paramCanvas)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.g;
     if (localArrayList != null) {
       a(paramCanvas, localArrayList);
     }
   }
   
+  protected void e()
+  {
+    AnimStateTypeEvaluator localAnimStateTypeEvaluator = this.f;
+    this.k = ValueAnimator.ofObject(localAnimStateTypeEvaluator, new Object[] { localAnimStateTypeEvaluator.b(), this.f.a() });
+    this.k.setInterpolator(new DecelerateInterpolator());
+    this.k.addUpdateListener(new InfoStickerDrawable.1(this));
+    this.k.addListener(new InfoStickerDrawable.2(this));
+    this.k.setDuration(this.f.c());
+    this.k.start();
+  }
+  
+  public int f()
+  {
+    return this.j;
+  }
+  
+  public String g()
+  {
+    return this.i;
+  }
+  
   public int getOpacity()
   {
     return -3;
+  }
+  
+  public Bitmap h()
+  {
+    return a(this.f.c());
+  }
+  
+  protected Bitmap i()
+  {
+    Bitmap localBitmap = this.l;
+    if (localBitmap == null) {
+      this.l = Bitmap.createBitmap(getIntrinsicWidth(), getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+    } else {
+      new Canvas(localBitmap).drawColor(0, PorterDuff.Mode.CLEAR);
+    }
+    return this.l;
   }
   
   public void setAlpha(int paramInt) {}
@@ -132,7 +126,7 @@ public abstract class InfoStickerDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.widget.InfoStickerDrawable
  * JD-Core Version:    0.7.0.1
  */

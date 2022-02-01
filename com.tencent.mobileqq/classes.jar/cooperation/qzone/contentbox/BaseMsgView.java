@@ -31,8 +31,8 @@ import mqq.app.AppRuntime;
 public abstract class BaseMsgView
   extends FrameLayout
 {
-  private static final int IMAGE_HEIGHT = ViewUtils.b(230.0F);
-  private static final int IMAGE_WIDTH = ViewUtils.a() - ViewUtils.b(24.0F);
+  private static final int IMAGE_HEIGHT = ViewUtils.dpToPx(230.0F);
+  private static final int IMAGE_WIDTH = ViewUtils.getScreenWidth() - ViewUtils.dpToPx(24.0F);
   private static final int MSG_PAGER_NEXT_ITEM = 10000;
   protected static final int PAGER_ITEM_TIME = 3000;
   private static final String TAG = "QZoneMsgManager.BaseMsgView";
@@ -250,7 +250,7 @@ public abstract class BaseMsgView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.BaseMsgView
  * JD-Core Version:    0.7.0.1
  */

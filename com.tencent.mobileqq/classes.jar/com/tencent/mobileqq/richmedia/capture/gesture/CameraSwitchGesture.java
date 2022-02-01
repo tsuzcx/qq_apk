@@ -13,34 +13,34 @@ import com.tencent.ttpic.openapi.filter.GLGestureListener;
 public class CameraSwitchGesture
   implements GLGestureListener
 {
-  int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  CameraSwitchGesture.CameraSwitchGestureListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraSwitchGesture$CameraSwitchGestureListener;
-  int jdField_b_of_type_Int;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  private final int c;
+  int a;
+  int b;
+  CameraSwitchGesture.CameraSwitchGestureListener c;
   private final int d;
   private final int e;
+  private MotionEvent f;
+  private MotionEvent g;
+  private final int h;
+  private long i;
   
   public CameraSwitchGesture(Context paramContext, CameraSwitchGesture.CameraSwitchGestureListener paramCameraSwitchGestureListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraSwitchGesture$CameraSwitchGestureListener = paramCameraSwitchGestureListener;
+    this.c = paramCameraSwitchGestureListener;
     paramContext = ViewConfiguration.get(paramContext);
-    this.c = ViewConfiguration.getDoubleTapTimeout();
-    this.d = 1000;
-    this.jdField_a_of_type_Int = paramContext.getScaledDoubleTapSlop();
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = (i * i);
-    this.e = paramContext.getScaledTouchSlop();
-    this.jdField_a_of_type_Long = 0L;
+    this.d = ViewConfiguration.getDoubleTapTimeout();
+    this.e = 1000;
+    this.a = paramContext.getScaledDoubleTapSlop();
+    int j = this.a;
+    this.b = (j * j);
+    this.h = paramContext.getScaledTouchSlop();
+    this.i = 0L;
   }
   
   private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    int i = (int)paramFloat3 - (int)paramFloat1;
-    int j = (int)paramFloat4 - (int)paramFloat2;
-    return i * i + j * j > this.e;
+    int j = (int)paramFloat3 - (int)paramFloat1;
+    int k = (int)paramFloat4 - (int)paramFloat2;
+    return j * j + k * k > this.h;
   }
   
   private boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
@@ -52,19 +52,19 @@ public class CameraSwitchGesture
       if (paramMotionEvent2 == null) {
         return false;
       }
-      if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) < this.d) {
+      if (Math.abs(System.currentTimeMillis() - this.i) < this.e) {
         return false;
       }
-      if (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > this.c) {
+      if (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > this.d) {
         return false;
       }
       if (a(paramMotionEvent1.getX(), paramMotionEvent1.getY(), paramMotionEvent2.getX(), paramMotionEvent2.getY())) {
         return false;
       }
-      int i = (int)paramMotionEvent1.getX() - (int)paramMotionEvent3.getX();
-      int j = (int)paramMotionEvent1.getY() - (int)paramMotionEvent3.getY();
+      int j = (int)paramMotionEvent1.getX() - (int)paramMotionEvent3.getX();
+      int k = (int)paramMotionEvent1.getY() - (int)paramMotionEvent3.getY();
       bool1 = bool2;
-      if (i * i + j * j < this.jdField_b_of_type_Int) {
+      if (j * j + k * k < this.b) {
         bool1 = true;
       }
     }
@@ -78,30 +78,30 @@ public class CameraSwitchGesture
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    int i = paramMotionEvent.getPointerCount();
-    int j = paramMotionEvent.getAction() & 0xFF;
+    int j = paramMotionEvent.getPointerCount();
+    int k = paramMotionEvent.getAction() & 0xFF;
     AEQLog.a("GLGestureListener", "[gestureFix][CameraSwitchGesture]:onTouchEvent");
-    if ((i == 1) && (!paramBoolean))
+    if ((j == 1) && (!paramBoolean))
     {
-      if (j != 0)
+      if (k != 0)
       {
-        if (j != 1) {
+        if (k != 1) {
           return false;
         }
-        localMotionEvent = this.jdField_b_of_type_AndroidViewMotionEvent;
+        localMotionEvent = this.g;
         if (localMotionEvent != null) {
           localMotionEvent.recycle();
         }
-        this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+        this.g = MotionEvent.obtain(paramMotionEvent);
         return false;
       }
-      if (a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent))
+      if (a(this.f, this.g, paramMotionEvent))
       {
         AEQLog.a("GLGestureListener", "[gestureFix][CameraSwitchGesture]:camera double click");
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraSwitchGesture$CameraSwitchGestureListener != null)
+        if (this.c != null)
         {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraSwitchGesture$CameraSwitchGestureListener.a();
+          this.i = System.currentTimeMillis();
+          this.c.a();
           StoryReportor.a("camera_clkdouble", -1, 0, new String[0]);
           ((ICaptureReportUtil)QRoute.api(ICaptureReportUtil.class)).reportDoubleClickChangeCamera();
           if (QLog.isColorLevel()) {
@@ -109,18 +109,18 @@ public class CameraSwitchGesture
           }
         }
       }
-      MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+      MotionEvent localMotionEvent = this.f;
       if (localMotionEvent != null) {
         localMotionEvent.recycle();
       }
-      this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      this.f = MotionEvent.obtain(paramMotionEvent);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.gesture.CameraSwitchGesture
  * JD-Core Version:    0.7.0.1
  */

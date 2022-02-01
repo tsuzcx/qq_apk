@@ -13,7 +13,7 @@ public class MusicFragmentProviderView$MusicPlayTask
   {
     if (MusicFragmentProviderView.a(this.this$0) != null)
     {
-      MusicFragmentProviderView.a(this.this$0).incrementAndGet();
+      MusicFragmentProviderView.b(this.this$0).incrementAndGet();
       if (this.this$0.a != null) {
         this.this$0.a.sendEmptyMessage(0);
       }
@@ -22,7 +22,7 @@ public class MusicFragmentProviderView$MusicPlayTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.MusicFragmentProviderView.MusicPlayTask
  * JD-Core Version:    0.7.0.1
  */

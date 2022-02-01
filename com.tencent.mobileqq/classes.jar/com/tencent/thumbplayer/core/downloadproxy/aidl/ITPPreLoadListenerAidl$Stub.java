@@ -10,6 +10,7 @@ public abstract class ITPPreLoadListenerAidl$Stub
   implements ITPPreLoadListenerAidl
 {
   private static final String DESCRIPTOR = "com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl";
+  static final int TRANSACTION_onPcdnDownloadFailed = 4;
   static final int TRANSACTION_onPrepareDownloadProgressUpdate = 3;
   static final int TRANSACTION_onPrepareError = 2;
   static final int TRANSACTION_onPrepareOK = 1;
@@ -44,10 +45,17 @@ public abstract class ITPPreLoadListenerAidl$Stub
       {
         if (paramInt1 != 3)
         {
-          if (paramInt1 != 1598968902) {
-            return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+          if (paramInt1 != 4)
+          {
+            if (paramInt1 != 1598968902) {
+              return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+            }
+            paramParcel2.writeString("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl");
+            return true;
           }
-          paramParcel2.writeString("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl");
+          paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl");
+          onPcdnDownloadFailed(paramParcel1.readString());
+          paramParcel2.writeNoException();
           return true;
         }
         paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl");
@@ -68,7 +76,7 @@ public abstract class ITPPreLoadListenerAidl$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl.Stub
  * JD-Core Version:    0.7.0.1
  */

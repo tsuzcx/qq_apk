@@ -8,13 +8,12 @@ import com.tencent.mobileqq.persistence.TableBuilder;
 public class ReadInJoyDataProvider$ReadInJoyDBHelper
   extends SQLiteOpenHelper
 {
-  public String a;
+  public String a = "";
   
   public ReadInJoyDataProvider$ReadInJoyDBHelper(ReadInJoyDataProvider paramReadInJoyDataProvider, Context paramContext, String paramString)
   {
     super(paramContext, paramReadInJoyDataProvider.toString(), null, 84);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   private void a(SQLiteDatabase paramSQLiteDatabase, String paramString)
@@ -146,7 +145,7 @@ public class ReadInJoyDataProvider$ReadInJoyDBHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ReadInJoyDataProvider.ReadInJoyDBHelper
  * JD-Core Version:    0.7.0.1
  */

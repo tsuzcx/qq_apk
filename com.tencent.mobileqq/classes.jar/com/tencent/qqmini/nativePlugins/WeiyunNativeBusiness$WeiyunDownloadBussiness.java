@@ -12,13 +12,13 @@ import org.json.JSONObject;
 public class WeiyunNativeBusiness$WeiyunDownloadBussiness
 {
   public static String a;
-  private WeiyunNativeBusiness.WeiyunDownloadBussiness.WeiyunDownloadClientQIPCModule a;
+  private WeiyunNativeBusiness.WeiyunDownloadBussiness.WeiyunDownloadClientQIPCModule b;
   
   public WeiyunNativeBusiness$WeiyunDownloadBussiness(IMiniAppContext paramIMiniAppContext)
   {
-    jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getQQProcessName();
-    this.jdField_a_of_type_ComTencentQqminiNativePluginsWeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule = WeiyunNativeBusiness.WeiyunDownloadBussiness.WeiyunDownloadClientQIPCModule.a();
-    WeiyunNativeBusiness.WeiyunDownloadBussiness.WeiyunDownloadClientQIPCModule localWeiyunDownloadClientQIPCModule = this.jdField_a_of_type_ComTencentQqminiNativePluginsWeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule;
+    a = BaseApplicationImpl.getApplication().getQQProcessName();
+    this.b = WeiyunNativeBusiness.WeiyunDownloadBussiness.WeiyunDownloadClientQIPCModule.a();
+    WeiyunNativeBusiness.WeiyunDownloadBussiness.WeiyunDownloadClientQIPCModule localWeiyunDownloadClientQIPCModule = this.b;
     if (localWeiyunDownloadClientQIPCModule != null) {
       localWeiyunDownloadClientQIPCModule.a(paramIMiniAppContext);
     }
@@ -26,7 +26,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
   
   protected void a(String paramString, RequestEvent paramRequestEvent)
   {
-    this.jdField_a_of_type_ComTencentQqminiNativePluginsWeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule.a(paramRequestEvent);
+    this.b.a(paramRequestEvent);
     paramRequestEvent = new Bundle();
     paramRequestEvent.putString("downloadId", paramString);
     QIPCClientHelper.getInstance().callServer("Module_WeiyunDownloadService", "WeiyunDownloadServiceIPC_Action__Pause", paramRequestEvent, null);
@@ -34,13 +34,13 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
   
   protected void a(JSONObject paramJSONObject, String paramString, RequestEvent paramRequestEvent)
   {
-    this.jdField_a_of_type_ComTencentQqminiNativePluginsWeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule.a(paramRequestEvent);
+    this.b.a(paramRequestEvent);
     try
     {
-      this.jdField_a_of_type_ComTencentQqminiNativePluginsWeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule.a(paramString);
+      this.b.a(paramString);
       paramRequestEvent = new Bundle();
       paramRequestEvent.putString("downloadId", paramString);
-      paramRequestEvent.putString("process", jdField_a_of_type_JavaLangString);
+      paramRequestEvent.putString("process", a);
       paramRequestEvent.putString("file_id", (String)paramJSONObject.get("file_id"));
       paramRequestEvent.putString("filename", (String)paramJSONObject.get("filename"));
       paramRequestEvent.putString("pdir_key", (String)paramJSONObject.get("pdir_key"));
@@ -79,8 +79,8 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
   
   protected void b(String paramString, RequestEvent paramRequestEvent)
   {
-    this.jdField_a_of_type_ComTencentQqminiNativePluginsWeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule.a(paramRequestEvent);
-    this.jdField_a_of_type_ComTencentQqminiNativePluginsWeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule.b(paramString);
+    this.b.a(paramRequestEvent);
+    this.b.b(paramString);
     paramRequestEvent = new Bundle();
     paramRequestEvent.putString("downloadId", paramString);
     QIPCClientHelper.getInstance().callServer("Module_WeiyunDownloadService", "WeiyunDownloadServiceIPC_Action__Cancel", paramRequestEvent, null);
@@ -88,7 +88,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.WeiyunNativeBusiness.WeiyunDownloadBussiness
  * JD-Core Version:    0.7.0.1
  */

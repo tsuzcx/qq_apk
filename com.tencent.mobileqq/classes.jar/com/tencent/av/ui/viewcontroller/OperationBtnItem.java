@@ -4,92 +4,94 @@ import android.text.TextUtils;
 
 public class OperationBtnItem
 {
-  public int a;
-  private String a;
-  public boolean a;
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = null;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean = true;
-  private boolean d = false;
+  public int a = -1;
+  public boolean b = false;
+  private int c = 0;
+  private String d = "";
+  private int e = 0;
+  private String f = null;
+  private boolean g = true;
+  private boolean h = true;
+  private boolean i = false;
   
   public OperationBtnItem(int paramInt1, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Int = paramInt2;
+    this.c = paramInt1;
+    this.d = paramString;
+    this.e = paramInt2;
   }
   
   public int a()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.c;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void a(String paramString)
   {
-    if (!TextUtils.equals(paramString, this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Boolean = true;
+    if (!TextUtils.equals(paramString, this.d)) {
+      this.b = true;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
+    this.g = paramBoolean;
   }
   
   public int b()
   {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    return OperationMenuViewFactory.a(this.c);
   }
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.f = paramString;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.i = paramBoolean;
   }
   
-  public boolean b()
+  public int c()
   {
-    return this.d;
+    return this.e;
   }
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
-  public boolean c()
+  public String d()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.f;
+  }
+  
+  public boolean f()
+  {
+    return this.g;
+  }
+  
+  public boolean g()
+  {
+    return this.i;
+  }
+  
+  public boolean h()
+  {
+    return this.h;
   }
 }
 

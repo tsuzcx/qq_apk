@@ -129,10 +129,10 @@ public class ParcelableWrapper
   {
     if (paramString != null)
     {
-      Object localObject = (ParcelableWrapper.ParcableInfo)sParcableCache.get(paramString);
-      if (localObject == null)
+      ParcelableWrapper.ParcableInfo localParcableInfo = (ParcelableWrapper.ParcableInfo)sParcableCache.get(paramString);
+      if (localParcableInfo == null)
       {
-        localObject = paramClass;
+        Object localObject = paramClass;
         if (paramClass == null) {
           try
           {
@@ -150,20 +150,22 @@ public class ParcelableWrapper
             throw new RuntimeException(paramClass.toString());
           }
         }
-        try
-        {
-          ParcelableWrapper.ParcableInfo localParcableInfo = (ParcelableWrapper.ParcableInfo)sParcableCache.get(paramString);
-          paramClass = localParcableInfo;
-          if (localParcableInfo == null)
+        if (localObject != null) {
+          try
           {
-            paramClass = parseParcableInfo((Class)localObject);
-            sParcableCache.put(paramString, paramClass);
+            localParcableInfo = (ParcelableWrapper.ParcableInfo)sParcableCache.get(paramString);
+            paramClass = localParcableInfo;
+            if (localParcableInfo == null)
+            {
+              paramClass = parseParcableInfo((Class)localObject);
+              sParcableCache.put(paramString, paramClass);
+            }
+            return paramClass;
           }
-          return paramClass;
+          finally {}
         }
-        finally {}
       }
-      return localObject;
+      return localParcableInfo;
     }
     throw new NullPointerException("getParcableInfo.clsName can not be null!");
   }
@@ -626,7 +628,7 @@ public class ParcelableWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.util.ParcelableWrapper
  * JD-Core Version:    0.7.0.1
  */

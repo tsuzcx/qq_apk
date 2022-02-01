@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 
@@ -31,7 +31,8 @@ public class WXImageObject
     }
     catch (Exception paramBitmap)
     {
-      Object localObject = new StringBuilder("WXImageObject <init>, exception:");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("WXImageObject <init>, exception:");
       ((StringBuilder)localObject).append(paramBitmap.getMessage());
       Log.e("MicroMsg.SDK.WXImageObject", ((StringBuilder)localObject).toString());
     }
@@ -44,7 +45,7 @@ public class WXImageObject
   
   private int getFileSize(String paramString)
   {
-    return d.getFileSize(paramString);
+    return b.a(paramString);
   }
   
   public boolean checkArgs()
@@ -111,7 +112,7 @@ public class WXImageObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXImageObject
  * JD-Core Version:    0.7.0.1
  */

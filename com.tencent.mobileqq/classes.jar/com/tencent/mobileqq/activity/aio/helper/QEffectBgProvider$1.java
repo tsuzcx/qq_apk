@@ -12,13 +12,13 @@ class QEffectBgProvider$1
   public void a(ColorScreenConfig paramColorScreenConfig, Object paramObject)
   {
     if (paramColorScreenConfig != null) {
-      QEffectBgProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQEffectBgProvider).postDelayed(new QEffectBgProvider.1.1(this, paramColorScreenConfig), 1000L);
+      QEffectBgProvider.a(this.b).postDelayed(new QEffectBgProvider.1.1(this, paramColorScreenConfig), 1000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QEffectBgProvider.1
  * JD-Core Version:    0.7.0.1
  */

@@ -51,15 +51,15 @@ class AVGameRoomCenterFragment$3
     }
     if (paramBoolean)
     {
-      paramString.a(paramString.b() ^ true);
-      if (paramString.b())
+      paramString.a(paramString.i() ^ true);
+      if (paramString.i())
       {
         localObject = this.a;
-        AVGameRoomCenterFragment.a((AVGameRoomCenterFragment)localObject, ((AVGameRoomCenterFragment)localObject).getString(2131690429), this.a.getString(2131690428), this.a.getString(2131690499), new AVGameRoomCenterFragment.3.1(this), null, null);
+        AVGameRoomCenterFragment.a((AVGameRoomCenterFragment)localObject, ((AVGameRoomCenterFragment)localObject).getString(2131887340), this.a.getString(2131887339), this.a.getString(2131887410), new AVGameRoomCenterFragment.3.1(this), null, null);
       }
     }
     paramString.b(true);
-    AVGameRoomCenterFragment.a(this.a).notifyDataSetChanged();
+    AVGameRoomCenterFragment.e(this.a).notifyDataSetChanged();
   }
   
   public void a(boolean paramBoolean, long paramLong, List<AVGameLobbyConstants.BannerInfo> paramList, AVGameLobbyConstants.RandomMatchInfo paramRandomMatchInfo, List<AVGameLobbySurvivalContentInfo> paramList1, List<AVGameLobbyCommonContentInfo> paramList2, List<AVGameLobbyRandomMatchContentInfo> paramList3, int paramInt, String paramString)
@@ -108,32 +108,32 @@ class AVGameRoomCenterFragment$3
     if (!paramBoolean) {
       return;
     }
-    AVGameRoomCenterFragment.a(this.a).c();
-    AVGameRoomCenterFragment.a(this.a).a();
+    AVGameRoomCenterFragment.b(this.a).d();
+    AVGameRoomCenterFragment.b(this.a).b();
     if ((paramList == null) || (paramList.size() == 0)) {
-      AVGameRoomCenterFragment.a(this.a);
+      AVGameRoomCenterFragment.c(this.a);
     }
     int j = 0;
     paramInt = 0;
     int i;
-    while (paramInt < AVGameRoomCenterFragment.a(this.a).a())
+    while (paramInt < AVGameRoomCenterFragment.b(this.a).a())
     {
-      if (AVGameRoomCenterFragment.a(this.a).a(paramInt) != null)
+      if (AVGameRoomCenterFragment.b(this.a).a(paramInt) != null)
       {
-        i = AVGameRoomCenterFragment.a(this.a).a(paramInt).a();
+        i = AVGameRoomCenterFragment.b(this.a).a(paramInt).a();
         if (i != 0)
         {
           if (i == 1)
           {
-            paramString = (AVGameLobbyFixedContentInfo)AVGameRoomCenterFragment.a(this.a).a(paramInt);
+            paramString = (AVGameLobbyFixedContentInfo)AVGameRoomCenterFragment.b(this.a).b(paramInt);
             if ((paramString != null) && (paramRandomMatchInfo != null))
             {
-              paramString.a(paramRandomMatchInfo.jdField_a_of_type_Int);
-              localObject = new String[paramRandomMatchInfo.jdField_a_of_type_JavaUtilList.size()];
+              paramString.a(paramRandomMatchInfo.a);
+              localObject = new String[paramRandomMatchInfo.b.size()];
               i = 0;
-              while (i < paramRandomMatchInfo.jdField_a_of_type_JavaUtilList.size())
+              while (i < paramRandomMatchInfo.b.size())
               {
-                localObject[i] = ((Long)paramRandomMatchInfo.jdField_a_of_type_JavaUtilList.get(i)).toString();
+                localObject[i] = ((Long)paramRandomMatchInfo.b.get(i)).toString();
                 i += 1;
               }
               paramString.a((String[])localObject);
@@ -142,7 +142,7 @@ class AVGameRoomCenterFragment$3
         }
         else
         {
-          paramString = (AVGameLobbyBannerContentInfo)AVGameRoomCenterFragment.a(this.a).a(paramInt);
+          paramString = (AVGameLobbyBannerContentInfo)AVGameRoomCenterFragment.b(this.a).b(paramInt);
           if (paramString != null) {
             paramString.a(paramList);
           }
@@ -150,43 +150,43 @@ class AVGameRoomCenterFragment$3
       }
       paramInt += 1;
     }
-    if ((!AVGameRoomCenterFragment.a(this.a)) && (((paramList1 != null) && (paramList1.size() != 0)) || ((paramList2 != null) && (paramList2.size() != 0)))) {
-      AVGameRoomCenterFragment.a(this.a).a(new AVGameLobbyTitleContentInfo(6, 1));
+    if ((!AVGameRoomCenterFragment.d(this.a)) && (((paramList1 != null) && (paramList1.size() != 0)) || ((paramList2 != null) && (paramList2.size() != 0)))) {
+      AVGameRoomCenterFragment.b(this.a).a(new AVGameLobbyTitleContentInfo(6, 1));
     }
     if ((paramList1 != null) && (paramList1.size() != 0))
     {
-      if (AVGameRoomCenterFragment.a(this.a)) {
-        AVGameRoomCenterFragment.a(this.a).a(paramList1, 1);
+      if (AVGameRoomCenterFragment.d(this.a)) {
+        AVGameRoomCenterFragment.b(this.a).a(paramList1, 1);
       } else {
-        AVGameRoomCenterFragment.a(this.a).a(paramList1);
+        AVGameRoomCenterFragment.b(this.a).a(paramList1);
       }
       paramInt = 0;
       while (paramInt < paramList1.size())
       {
-        if (((AVGameLobbySurvivalContentInfo)paramList1.get(paramInt)).d()) {
-          ReportController.b(AVGameRoomCenterFragment.a(this.a).getAppRuntime(), "dc00898", "", "", "survival_main_exp", "survival_main_exp", 0, 0, "", "", "", String.valueOf(((AVGameLobbySurvivalContentInfo)paramList1.get(paramInt)).d()));
+        if (((AVGameLobbySurvivalContentInfo)paramList1.get(paramInt)).t()) {
+          ReportController.b(AVGameRoomCenterFragment.a(this.a).getAppRuntime(), "dc00898", "", "", "survival_main_exp", "survival_main_exp", 0, 0, "", "", "", String.valueOf(((AVGameLobbySurvivalContentInfo)paramList1.get(paramInt)).f()));
         }
         ReportController.b(AVGameRoomCenterFragment.a(this.a).getAppRuntime(), "dc00898", "", "", "0X800B68F", "0X800B68F", 0, 0, "", "", "", "");
         paramInt += 1;
       }
     }
-    if ((!AVGameRoomCenterFragment.a(this.a)) && (paramList2 != null) && (paramList2.size() != 0)) {
-      AVGameRoomCenterFragment.a(this.a).a(paramList2);
+    if ((!AVGameRoomCenterFragment.d(this.a)) && (paramList2 != null) && (paramList2.size() != 0)) {
+      AVGameRoomCenterFragment.b(this.a).a(paramList2);
     }
-    if ((!AVGameRoomCenterFragment.a(this.a)) && (paramList3 != null) && (paramList3.size() != 0))
+    if ((!AVGameRoomCenterFragment.d(this.a)) && (paramList3 != null) && (paramList3.size() != 0))
     {
-      AVGameRoomCenterFragment.a(this.a).a(new AVGameLobbyTitleContentInfo(6, 0));
+      AVGameRoomCenterFragment.b(this.a).a(new AVGameLobbyTitleContentInfo(6, 0));
       paramInt = j;
       while (paramInt < paramList3.size())
       {
-        i = ((AVGameLobbyRandomMatchContentInfo)paramList3.get(paramInt)).b;
+        i = ((AVGameLobbyRandomMatchContentInfo)paramList3.get(paramInt)).c;
         ReportController.b(AVGameRoomCenterFragment.a(this.a).getAppRuntime(), "dc00898", "", "", "0X800B49E", "0X800B49E", 0, 0, String.valueOf(i), "2", "", "");
         paramInt += 1;
       }
-      AVGameRoomCenterFragment.a(this.a).a(paramList3);
+      AVGameRoomCenterFragment.b(this.a).a(paramList3);
     }
-    AVGameRoomCenterFragment.a(this.a).b();
-    AVGameRoomCenterFragment.a(this.a).notifyDataSetChanged();
+    AVGameRoomCenterFragment.b(this.a).c();
+    AVGameRoomCenterFragment.e(this.a).notifyDataSetChanged();
   }
 }
 

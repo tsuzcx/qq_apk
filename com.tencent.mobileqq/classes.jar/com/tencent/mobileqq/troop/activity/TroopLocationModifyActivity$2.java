@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.troop.activity;
 
-import android.view.View;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class TroopLocationModifyActivity$2
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public void OnClick(View paramView, int paramInt)
+  TroopLocationModifyActivity$2(TroopLocationModifyActivity paramTroopLocationModifyActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.e();
-    if (paramInt == 0) {
-      this.a.b("");
+    if (paramDialogInterface == this.a.h) {
+      this.a.h = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity.2
  * JD-Core Version:    0.7.0.1
  */

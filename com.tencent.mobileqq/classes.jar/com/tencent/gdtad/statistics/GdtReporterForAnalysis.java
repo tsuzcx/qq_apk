@@ -51,14 +51,14 @@ public final class GdtReporterForAnalysis
   public static void a(Context paramContext, GdtC2SReportInterface paramGdtC2SReportInterface, String paramString)
   {
     paramContext = BaseApplicationImpl.getContext();
-    paramGdtC2SReportInterface = a(paramContext, 1056, new GdtAd(paramGdtC2SReportInterface.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramGdtC2SReportInterface.jdField_a_of_type_Int, paramGdtC2SReportInterface.b, paramString);
+    paramGdtC2SReportInterface = a(paramContext, 1056, new GdtAd(paramGdtC2SReportInterface.c), paramGdtC2SReportInterface.a, paramGdtC2SReportInterface.b, paramString);
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtC2SReportInterface, 102));
   }
   
   public static void a(Context paramContext, GdtC2SReportInterface paramGdtC2SReportInterface, String paramString, int paramInt)
   {
     paramContext = BaseApplicationImpl.getContext();
-    paramGdtC2SReportInterface = a(paramContext, 1060, new GdtAd(paramGdtC2SReportInterface.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramGdtC2SReportInterface.jdField_a_of_type_Int, paramGdtC2SReportInterface.b, paramString);
+    paramGdtC2SReportInterface = a(paramContext, 1060, new GdtAd(paramGdtC2SReportInterface.c), paramGdtC2SReportInterface.a, paramGdtC2SReportInterface.b, paramString);
     paramGdtC2SReportInterface.httpErrorCode = paramInt;
     if (paramGdtC2SReportInterface.httpErrorCode == 200) {
       paramGdtC2SReportInterface.internalErrorCode = 0;
@@ -73,7 +73,7 @@ public final class GdtReporterForAnalysis
   public static void a(Context paramContext, GdtC2SReportInterface paramGdtC2SReportInterface, String paramString, int paramInt, long paramLong)
   {
     paramContext = BaseApplicationImpl.getContext();
-    paramGdtC2SReportInterface = a(paramContext, 1057, new GdtAd(paramGdtC2SReportInterface.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramGdtC2SReportInterface.jdField_a_of_type_Int, paramGdtC2SReportInterface.b, paramString);
+    paramGdtC2SReportInterface = a(paramContext, 1057, new GdtAd(paramGdtC2SReportInterface.c), paramGdtC2SReportInterface.a, paramGdtC2SReportInterface.b, paramString);
     paramGdtC2SReportInterface.httpErrorCode = paramInt;
     if (paramGdtC2SReportInterface.httpErrorCode == 200) {
       paramGdtC2SReportInterface.internalErrorCode = 0;
@@ -88,7 +88,7 @@ public final class GdtReporterForAnalysis
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtReporterForAnalysis
  * JD-Core Version:    0.7.0.1
  */

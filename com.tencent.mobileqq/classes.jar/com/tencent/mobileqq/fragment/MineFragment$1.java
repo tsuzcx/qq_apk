@@ -20,17 +20,17 @@ final class MineFragment$1
     boolean bool1;
     if (paramInt == 0)
     {
-      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setVisibilityForPeople(this.a.getCurrentAccountUin(), false);
+      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setVisibilityForPeople(this.b.getCurrentAccountUin(), false);
       bool1 = false;
     }
     else
     {
-      bool1 = ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getLocVisiblityForPeople(this.a.getCurrentAccountUin());
+      bool1 = ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getLocVisiblityForPeople(this.b.getCurrentAccountUin());
     }
     paramArrayOfByte = new HashMap();
     paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
     paramBundle = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
-    String str = this.a.getCurrentAccountUin();
+    String str = this.b.getCurrentAccountUin();
     boolean bool2;
     if (paramInt == 0) {
       bool2 = true;
@@ -51,7 +51,7 @@ final class MineFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.MineFragment.1
  * JD-Core Version:    0.7.0.1
  */

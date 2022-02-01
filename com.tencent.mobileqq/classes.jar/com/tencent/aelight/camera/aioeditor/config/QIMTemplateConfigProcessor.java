@@ -27,7 +27,7 @@ public class QIMTemplateConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -67,7 +67,7 @@ public class QIMTemplateConfigProcessor
     if (!((IQIMPtvTemplateManager)QRoute.api(IQIMPtvTemplateManager.class)).isConfigFileExist()) {
       return 0;
     }
-    return SharedPreUtils.D(BaseApplicationImpl.getContext());
+    return SharedPreUtils.X(BaseApplicationImpl.getContext());
   }
   
   public void onReqFailed(int paramInt)
@@ -82,7 +82,7 @@ public class QIMTemplateConfigProcessor
     if (!((IQIMPtvTemplateManager)QRoute.api(IQIMPtvTemplateManager.class)).isConfigFileExist())
     {
       QLog.i("QIMTemplateConfigProcessor", 1, "config file not exist");
-      QConfigManager.a().a(307, 0);
+      QConfigManager.b().a(307, 0);
       return 0;
     }
     return super.onSend(paramInt);
@@ -95,7 +95,7 @@ public class QIMTemplateConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.config.QIMTemplateConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

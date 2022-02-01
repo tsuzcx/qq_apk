@@ -76,12 +76,12 @@ public class TroopEssenceUtil
   
   public static int a(SessionInfo paramSessionInfo, ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int == 1)
+    if (paramSessionInfo.a == 1)
     {
       long l1 = 0L;
       try
       {
-        long l2 = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        long l2 = Long.parseLong(paramSessionInfo.b);
         l1 = l2;
       }
       catch (Exception paramSessionInfo)
@@ -150,20 +150,20 @@ public class TroopEssenceUtil
       if (paramChatMessage == null) {
         return 0;
       }
-      if (AnonymousChatHelper.a(paramChatMessage)) {
+      if (AnonymousChatHelper.c(paramChatMessage)) {
         return 0;
       }
       if ((paramChatMessage.isSendFromLocal()) && ((paramChatMessage.extraflag == 32768) || (paramChatMessage.extraflag == 32772))) {
         return 0;
       }
-      paramChatMessage = (TroopEssenceMsgEntryConfig)QConfigManager.a().a(668);
-      if ((paramChatMessage != null) && (paramChatMessage.a(Long.toString(paramTroopEssenceMsgItemKey.jdField_a_of_type_Long))))
+      paramChatMessage = (TroopEssenceMsgEntryConfig)QConfigManager.b().b(668);
+      if ((paramChatMessage != null) && (paramChatMessage.a(Long.toString(paramTroopEssenceMsgItemKey.a))))
       {
         if (paramChatMessage.a() == 0) {
           return 0;
         }
-        boolean bool1 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).isTroopAdmin(paramQQAppInterface, Long.toString(paramTroopEssenceMsgItemKey.jdField_a_of_type_Long), paramQQAppInterface.getCurrentUin());
-        boolean bool2 = TroopUtils.a(paramQQAppInterface, Long.toString(paramTroopEssenceMsgItemKey.jdField_a_of_type_Long), paramQQAppInterface.getCurrentUin());
+        boolean bool1 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).isTroopAdmin(paramQQAppInterface, Long.toString(paramTroopEssenceMsgItemKey.a), paramQQAppInterface.getCurrentUin());
+        boolean bool2 = TroopUtils.a(paramQQAppInterface, Long.toString(paramTroopEssenceMsgItemKey.a), paramQQAppInterface.getCurrentUin());
         int i;
         if ((!bool1) && (!bool2)) {
           i = 0;
@@ -173,7 +173,7 @@ public class TroopEssenceUtil
         Object localObject = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
         if (localObject != null)
         {
-          localObject = ((TroopManager)localObject).c(String.valueOf(paramTroopEssenceMsgItemKey.jdField_a_of_type_Long));
+          localObject = ((TroopManager)localObject).g(String.valueOf(paramTroopEssenceMsgItemKey.a));
           if (localObject != null)
           {
             j = ((TroopInfo)localObject).wMemberNum;
@@ -187,13 +187,13 @@ public class TroopEssenceUtil
         }
         paramChatMessage = (TroopEssenceMsgManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER);
         paramChatMessage.b(paramTroopEssenceMsgItemKey);
-        paramTroopEssenceMsgItemKey = paramChatMessage.a(paramTroopEssenceMsgItemKey);
+        paramTroopEssenceMsgItemKey = paramChatMessage.c(paramTroopEssenceMsgItemKey);
         if (paramTroopEssenceMsgItemKey != null)
         {
-          if (paramTroopEssenceMsgItemKey.jdField_a_of_type_Int == 2) {
+          if (paramTroopEssenceMsgItemKey.a == 2) {
             return 1;
           }
-          if ((i == 0) && (!TextUtils.isEmpty(paramTroopEssenceMsgItemKey.b)) && (!paramTroopEssenceMsgItemKey.b.equals(paramQQAppInterface.getCurrentUin()))) {
+          if ((i == 0) && (!TextUtils.isEmpty(paramTroopEssenceMsgItemKey.c)) && (!paramTroopEssenceMsgItemKey.c.equals(paramQQAppInterface.getCurrentUin()))) {
             return 0;
           }
           return 2;
@@ -217,7 +217,7 @@ public class TroopEssenceUtil
       l1 = l2;
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = paramQQAppInterface.c(paramString);
+        paramQQAppInterface = paramQQAppInterface.g(paramString);
         l1 = l2;
         if (paramQQAppInterface != null) {
           l1 = paramQQAppInterface.dwGroupClassExt;
@@ -229,20 +229,20 @@ public class TroopEssenceUtil
   
   public static MessageForUniteGrayTip a(QQAppInterface paramQQAppInterface, TroopEssenceMsgItem.TroopBatchEssenceMsgPushItem paramTroopBatchEssenceMsgPushItem)
   {
-    if ((paramQQAppInterface != null) && (paramTroopBatchEssenceMsgPushItem != null) && (paramTroopBatchEssenceMsgPushItem.jdField_a_of_type_JavaUtilArrayList != null) && (!paramTroopBatchEssenceMsgPushItem.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    if ((paramQQAppInterface != null) && (paramTroopBatchEssenceMsgPushItem != null) && (paramTroopBatchEssenceMsgPushItem.b != null) && (!paramTroopBatchEssenceMsgPushItem.b.isEmpty()))
     {
-      String str2 = String.valueOf(paramTroopBatchEssenceMsgPushItem.jdField_a_of_type_Long);
-      String str1 = BaseApplicationImpl.getContext().getResources().getString(2131719833);
-      Object localObject1 = BaseApplicationImpl.getContext().getResources().getString(2131719832).replace("$COUNT", String.valueOf(paramTroopBatchEssenceMsgPushItem.jdField_a_of_type_JavaUtilArrayList.size()));
+      String str2 = String.valueOf(paramTroopBatchEssenceMsgPushItem.a);
+      String str1 = BaseApplicationImpl.getContext().getResources().getString(2131917438);
+      Object localObject1 = BaseApplicationImpl.getContext().getResources().getString(2131917437).replace("$COUNT", String.valueOf(paramTroopBatchEssenceMsgPushItem.b.size()));
       Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(paramTroopBatchEssenceMsgPushItem.b);
+      ((StringBuilder)localObject2).append(paramTroopBatchEssenceMsgPushItem.d);
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append(str1);
       localObject2 = ((StringBuilder)localObject2).toString();
-      localObject1 = new UniteGrayTipParam(str2, str2, (String)localObject2, 1, -5040, 131090, MessageCache.a());
+      localObject1 = new UniteGrayTipParam(str2, str2, (String)localObject2, 1, -5040, 131090, MessageCache.c());
       long l = 0L;
       int i = 0;
-      paramTroopBatchEssenceMsgPushItem = paramTroopBatchEssenceMsgPushItem.jdField_a_of_type_JavaUtilArrayList.iterator();
+      paramTroopBatchEssenceMsgPushItem = paramTroopBatchEssenceMsgPushItem.b.iterator();
       while (paramTroopBatchEssenceMsgPushItem.hasNext())
       {
         TroopEssenceMsgItem localTroopEssenceMsgItem = (TroopEssenceMsgItem)paramTroopBatchEssenceMsgPushItem.next();
@@ -271,15 +271,15 @@ public class TroopEssenceUtil
     if ((paramQQAppInterface != null) && (paramTroopEssenceMsgPushItem != null) && (paramTroopEssenceMsgPushItem.a != null))
     {
       Object localObject2 = String.valueOf(paramTroopEssenceMsgPushItem.a.troopUin);
-      Object localObject1 = BaseApplicationImpl.getContext().getResources().getString(2131719834);
-      String str1 = BaseApplicationImpl.getContext().getResources().getString(2131719833);
-      String str3 = ((String)localObject1).replace("$MSGSENDERNAME", paramTroopEssenceMsgPushItem.b);
+      Object localObject1 = BaseApplicationImpl.getContext().getResources().getString(2131917439);
+      String str1 = BaseApplicationImpl.getContext().getResources().getString(2131917438);
+      String str3 = ((String)localObject1).replace("$MSGSENDERNAME", paramTroopEssenceMsgPushItem.d);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(str3);
-      ((StringBuilder)localObject1).append(BaseApplicationImpl.getContext().getResources().getString(2131719836));
+      ((StringBuilder)localObject1).append(BaseApplicationImpl.getContext().getResources().getString(2131917441));
       ((StringBuilder)localObject1).append(str1);
       String str2 = ((StringBuilder)localObject1).toString();
-      localObject1 = new UniteGrayTipParam((String)localObject2, (String)localObject2, str2, 1, -5040, 131090, MessageCache.a());
+      localObject1 = new UniteGrayTipParam((String)localObject2, (String)localObject2, str2, 1, -5040, 131090, MessageCache.c());
       Bundle localBundle = new Bundle();
       localBundle.putInt("key_action", 58);
       localBundle.putString("textColor", "#40A0FF");
@@ -353,9 +353,9 @@ public class TroopEssenceUtil
     if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
       if (paramString2.equals(paramQQAppInterface.getCurrentUin())) {
-        return BaseApplicationImpl.getContext().getResources().getString(2131719835);
+        return BaseApplicationImpl.getContext().getResources().getString(2131917440);
       }
-      paramString1 = ContactUtils.a(paramQQAppInterface, paramString2, paramString1, ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).d(paramString1), true, null);
+      paramString1 = ContactUtils.a(paramQQAppInterface, paramString2, paramString1, ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).v(paramString1), true, null);
       if (!TextUtils.isEmpty(paramString1))
       {
         paramQQAppInterface = paramString1;
@@ -394,8 +394,8 @@ public class TroopEssenceUtil
       if ((paramContext instanceof BaseActivity))
       {
         paramContext = ((BaseActivity)paramContext).getChatFragment();
-        if ((paramContext != null) && (paramContext.a() != null) && ((paramContext.a() instanceof BaseTroopChatPie))) {
-          paramContext.a().b().a().a().a(103, l, 0);
+        if ((paramContext != null) && (paramContext.k() != null) && ((paramContext.k() instanceof BaseTroopChatPie))) {
+          paramContext.k().bv().e().d().a(103, l, 0);
         }
       }
       ReportController.b(null, "dc00898", "", paramString1, "0X800B34C", "0X800B34C", 0, 0, String.valueOf(a(paramQQAppInterface, paramString1)), "", "", "");
@@ -448,11 +448,6 @@ public class TroopEssenceUtil
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    ReportController.b(null, "dc00898", "", paramString, "0X800B34F", "0X800B34F", 0, 0, String.valueOf(a(paramQQAppInterface, paramString)), "", "", "");
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt1, Context paramContext, int paramInt2)
   {
     if (!TextUtils.isEmpty(paramString))
@@ -494,7 +489,7 @@ public class TroopEssenceUtil
     TroopEssenceMsgItem localTroopEssenceMsgItem = new TroopEssenceMsgItem();
     try
     {
-      localTroopEssenceMsgItem.troopUin = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      localTroopEssenceMsgItem.troopUin = Long.parseLong(paramSessionInfo.b);
     }
     catch (Exception paramSessionInfo)
     {
@@ -512,12 +507,12 @@ public class TroopEssenceUtil
   
   public static void a(ChatMessage paramChatMessage, QQCustomMenu paramQQCustomMenu, @Nonnull SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int == 1)
+    if (paramSessionInfo.a == 1)
     {
       long l1 = 0L;
       try
       {
-        long l2 = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        long l2 = Long.parseLong(paramSessionInfo.b);
         l1 = l2;
       }
       catch (Exception paramSessionInfo)
@@ -527,11 +522,11 @@ public class TroopEssenceUtil
       int i = a(paramQQAppInterface, new TroopEssenceMsgItem.TroopEssenceMsgItemKey(l1, paramChatMessage.shmsgseq, MessageUtils.b(paramChatMessage.msgUid)), paramChatMessage);
       if (i == 2)
       {
-        paramQQCustomMenu.a(2131366309, paramContext.getString(2131719847), 0);
+        paramQQCustomMenu.a(2131432608, paramContext.getString(2131917452), 0);
         return;
       }
       if (i == 1) {
-        paramQQCustomMenu.a(2131366308, paramContext.getString(2131719846), 0);
+        paramQQCustomMenu.a(2131432607, paramContext.getString(2131917451), 0);
       }
     }
   }
@@ -549,7 +544,7 @@ public class TroopEssenceUtil
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      if (paramList.size() > jdField_a_of_type_Int) {
+      if (paramList.size() > a) {
         return false;
       }
       paramList = paramList.iterator();
@@ -583,11 +578,88 @@ public class TroopEssenceUtil
     return false;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  public static boolean a(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage != null)
+    {
+      if (!(paramChatMessage instanceof MessageForStructing)) {
+        return false;
+      }
+      paramChatMessage = ((MessageForStructing)paramChatMessage).structingMsg;
+      if (paramChatMessage == null) {
+        return false;
+      }
+      if ((paramChatMessage.mMsgServiceID != 1) && (paramChatMessage.mMsgServiceID != 33) && (paramChatMessage.mMsgServiceID != 95)) {
+        return ((paramChatMessage instanceof StructMsgForGeneralShare)) && (((StructMsgForGeneralShare)paramChatMessage).mSourceAppid == 101458937L);
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    ReportController.b(null, "dc00898", "", paramString, "0X800B34F", "0X800B34F", 0, 0, String.valueOf(a(paramQQAppInterface, paramString)), "", "", "");
+  }
+  
+  public static boolean b(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage != null)
+    {
+      if (!(paramChatMessage instanceof MessageForArkApp)) {
+        return false;
+      }
+      MessageForArkApp localMessageForArkApp = (MessageForArkApp)paramChatMessage;
+      if (localMessageForArkApp != null)
+      {
+        if (localMessageForArkApp.ark_app_message == null) {
+          return false;
+        }
+        if ("com.tencent.structmsg".equals(localMessageForArkApp.ark_app_message.appName)) {
+          return true;
+        }
+        if (d(paramChatMessage)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    ReportController.b(null, "dc00898", "", paramString, "0X800B34E", "0X800B34E", 0, 0, String.valueOf(a(paramQQAppInterface, paramString)), "", "", "");
+  }
+  
+  public static boolean c(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage == null) {
+      return false;
+    }
+    if ((paramChatMessage instanceof MessageForStructing))
+    {
+      paramChatMessage = ((MessageForStructing)paramChatMessage).structingMsg;
+      if (paramChatMessage != null)
+      {
+        if (paramChatMessage.mMsgServiceID == 95) {
+          return true;
+        }
+        if (((paramChatMessage instanceof StructMsgForGeneralShare)) && (((StructMsgForGeneralShare)paramChatMessage).mSourceAppid == 101458937L)) {
+          return true;
+        }
+        if ((!TextUtils.isEmpty(paramChatMessage.mMsgUrl)) && (FMConstants.a(paramChatMessage.mMsgUrl))) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public static boolean d(QQAppInterface paramQQAppInterface, String paramString)
   {
     if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString)))
     {
-      TroopEssenceMsgEntryConfig localTroopEssenceMsgEntryConfig = (TroopEssenceMsgEntryConfig)QConfigManager.a().a(668);
+      TroopEssenceMsgEntryConfig localTroopEssenceMsgEntryConfig = (TroopEssenceMsgEntryConfig)QConfigManager.b().b(668);
       boolean bool1;
       Object localObject;
       if ((localTroopEssenceMsgEntryConfig != null) && (localTroopEssenceMsgEntryConfig.a(paramString)) && (localTroopEssenceMsgEntryConfig.a() != 0))
@@ -602,7 +674,7 @@ public class TroopEssenceUtil
         localObject = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
         if (localObject != null)
         {
-          localObject = ((TroopManager)localObject).c(paramString);
+          localObject = ((TroopManager)localObject).g(paramString);
           if (localObject != null)
           {
             i = ((TroopInfo)localObject).wMemberNum;
@@ -626,8 +698,8 @@ public class TroopEssenceUtil
         }
         localObject = (TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER);
         boolean bool3 = ((TroopGagMgr)localObject).a(paramString, paramQQAppInterface.getCurrentUin());
-        paramQQAppInterface = ((TroopGagMgr)localObject).a(paramString);
-        if (((!bool2) && (bool3)) || ((!bool1) && (paramQQAppInterface != null) && (paramQQAppInterface.jdField_a_of_type_Long > 0L)))
+        paramQQAppInterface = ((TroopGagMgr)localObject).b(paramString);
+        if (((!bool2) && (bool3)) || ((!bool1) && (paramQQAppInterface != null) && (paramQQAppInterface.b > 0L)))
         {
           if (com.tencent.TMG.utils.QLog.isColorLevel())
           {
@@ -641,7 +713,7 @@ public class TroopEssenceUtil
             paramString.append(", gagTimeStamp = ");
             long l;
             if (paramQQAppInterface != null) {
-              l = paramQQAppInterface.jdField_a_of_type_Long;
+              l = paramQQAppInterface.b;
             } else {
               l = -1L;
             }
@@ -680,78 +752,6 @@ public class TroopEssenceUtil
     }
     if (com.tencent.TMG.utils.QLog.isColorLevel()) {
       com.tencent.TMG.utils.QLog.i("TroopEssenceUtil", 1, "shouldShouldEssenchEntry: app == null || troopUin is invalid");
-    }
-    return false;
-  }
-  
-  public static boolean a(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage != null)
-    {
-      if (!(paramChatMessage instanceof MessageForStructing)) {
-        return false;
-      }
-      paramChatMessage = ((MessageForStructing)paramChatMessage).structingMsg;
-      if (paramChatMessage == null) {
-        return false;
-      }
-      if ((paramChatMessage.mMsgServiceID != 1) && (paramChatMessage.mMsgServiceID != 33) && (paramChatMessage.mMsgServiceID != 95)) {
-        return ((paramChatMessage instanceof StructMsgForGeneralShare)) && (((StructMsgForGeneralShare)paramChatMessage).mSourceAppid == 101458937L);
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    ReportController.b(null, "dc00898", "", paramString, "0X800B34E", "0X800B34E", 0, 0, String.valueOf(a(paramQQAppInterface, paramString)), "", "", "");
-  }
-  
-  public static boolean b(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage != null)
-    {
-      if (!(paramChatMessage instanceof MessageForArkApp)) {
-        return false;
-      }
-      MessageForArkApp localMessageForArkApp = (MessageForArkApp)paramChatMessage;
-      if (localMessageForArkApp != null)
-      {
-        if (localMessageForArkApp.ark_app_message == null) {
-          return false;
-        }
-        if ("com.tencent.structmsg".equals(localMessageForArkApp.ark_app_message.appName)) {
-          return true;
-        }
-        if (d(paramChatMessage)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  
-  public static boolean c(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {
-      return false;
-    }
-    if ((paramChatMessage instanceof MessageForStructing))
-    {
-      paramChatMessage = ((MessageForStructing)paramChatMessage).structingMsg;
-      if (paramChatMessage != null)
-      {
-        if (paramChatMessage.mMsgServiceID == 95) {
-          return true;
-        }
-        if (((paramChatMessage instanceof StructMsgForGeneralShare)) && (((StructMsgForGeneralShare)paramChatMessage).mSourceAppid == 101458937L)) {
-          return true;
-        }
-        if ((!TextUtils.isEmpty(paramChatMessage.mMsgUrl)) && (FMConstants.a(paramChatMessage.mMsgUrl))) {
-          return true;
-        }
-      }
     }
     return false;
   }
@@ -830,7 +830,7 @@ public class TroopEssenceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceUtil
  * JD-Core Version:    0.7.0.1
  */

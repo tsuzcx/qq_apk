@@ -2,48 +2,50 @@ package com.google.android.material;
 
 public final class R$style
 {
-  public static final int A = 2064580907;
-  public static final int B = 2064580909;
-  public static final int C = 2064580912;
-  public static final int D = 2064580913;
-  public static final int E = 2064580914;
-  public static final int F = 2064580941;
-  public static final int G = 2064580942;
-  public static final int H = 2064580943;
-  public static final int I = 2064580963;
-  public static final int J = 2064580965;
-  public static final int K = 2064580970;
-  public static final int L = 2064580974;
-  public static final int a = 2064580675;
-  public static final int b = 2064580679;
-  public static final int c = 2064580682;
-  public static final int d = 2064580726;
-  public static final int e = 2064580736;
-  public static final int f = 2064580737;
-  public static final int g = 2064580757;
-  public static final int h = 2064580850;
-  public static final int i = 2064580851;
-  public static final int j = 2064580852;
-  public static final int k = 2064580853;
-  public static final int l = 2064580854;
-  public static final int m = 2064580855;
-  public static final int n = 2064580856;
-  public static final int o = 2064580858;
-  public static final int p = 2064580859;
-  public static final int q = 2064580860;
-  public static final int r = 2064580872;
-  public static final int s = 2064580873;
-  public static final int t = 2064580881;
-  public static final int u = 2064580893;
-  public static final int v = 2064580899;
-  public static final int w = 2064580895;
-  public static final int x = 2064580900;
-  public static final int y = 2064580905;
-  public static final int z = 2064580906;
+  public static final int A = 2131952866;
+  public static final int B = 2131952867;
+  public static final int C = 2131952868;
+  public static final int D = 2131952870;
+  public static final int E = 2131952873;
+  public static final int F = 2131952874;
+  public static final int G = 2131952875;
+  public static final int H = 2131952902;
+  public static final int I = 2131952903;
+  public static final int J = 2131952904;
+  public static final int K = 2131952924;
+  public static final int L = 2131952926;
+  public static final int M = 2131952931;
+  public static final int N = 2131952935;
+  public static final int a = 2131951968;
+  public static final int b = 2131952151;
+  public static final int c = 2131952154;
+  public static final int d = 2131952396;
+  public static final int e = 2131952445;
+  public static final int f = 2131952455;
+  public static final int g = 2131952456;
+  public static final int h = 2131952514;
+  public static final int i = 2131952746;
+  public static final int j = 2131952811;
+  public static final int k = 2131952812;
+  public static final int l = 2131952813;
+  public static final int m = 2131952814;
+  public static final int n = 2131952815;
+  public static final int o = 2131952816;
+  public static final int p = 2131952817;
+  public static final int q = 2131952819;
+  public static final int r = 2131952820;
+  public static final int s = 2131952821;
+  public static final int t = 2131952833;
+  public static final int u = 2131952834;
+  public static final int v = 2131952842;
+  public static final int w = 2131952854;
+  public static final int x = 2131952860;
+  public static final int y = 2131952856;
+  public static final int z = 2131952861;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.R.style
  * JD-Core Version:    0.7.0.1
  */

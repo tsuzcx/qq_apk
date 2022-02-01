@@ -15,18 +15,18 @@ import com.tencent.qphone.base.util.QLog;
 
 public class AVGameLaunchWebHelper
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new AVGameLaunchWebHelper.2(this);
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private IToolProcStart jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new AVGameLaunchWebHelper.1(this);
-  private boolean jdField_a_of_type_Boolean;
+  private Activity a;
+  private Handler b;
+  private IToolProcStart c;
+  private boolean d;
+  private QQProgressDialog e;
+  private final Runnable f = new AVGameLaunchWebHelper.1(this);
+  private Application.ActivityLifecycleCallbacks g = new AVGameLaunchWebHelper.2(this);
   
   public AVGameLaunchWebHelper(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.a = paramActivity;
+    this.b = new Handler();
     b();
   }
   
@@ -35,7 +35,7 @@ public class AVGameLaunchWebHelper
     if (QLog.isColorLevel()) {
       QLog.d("AVGameLaunchWebHelper", 2, "executeCallable");
     }
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.b;
     if (localHandler != null) {
       localHandler.post(paramRunnable);
     }
@@ -43,12 +43,12 @@ public class AVGameLaunchWebHelper
   
   private void b()
   {
-    ((Application)this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()).registerActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
+    ((Application)this.a.getApplicationContext()).registerActivityLifecycleCallbacks(this.g);
   }
   
   private void c()
   {
-    ((Application)this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()).unregisterActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
+    ((Application)this.a.getApplicationContext()).unregisterActivityLifecycleCallbacks(this.g);
   }
   
   private void d()
@@ -57,22 +57,22 @@ public class AVGameLaunchWebHelper
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("showProgress mProgressShowing:");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.d);
       QLog.d("AVGameLaunchWebHelper", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+      if (this.e == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131708933));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
+        this.e = new QQProgressDialog(this.a, this.a.getResources().getDimensionPixelSize(2131299920));
+        this.e.a(HardCodeUtil.a(2131906700));
+        this.e.c(false);
       }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      this.d = true;
+      this.e.show();
       return;
     }
     catch (Exception localException)
@@ -91,18 +91,18 @@ public class AVGameLaunchWebHelper
     {
       StringBuilder localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("hideProgress  mProgressShowing:");
-      localStringBuilder1.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder1.append(this.d);
       QLog.d("AVGameLaunchWebHelper", 2, localStringBuilder1.toString());
     }
     try
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      if (this.b != null) {
+        this.b.removeCallbacks(this.f);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if ((this.e != null) && (this.e.isShowing())) {
+        this.e.dismiss();
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       return;
     }
     catch (Exception localException)
@@ -124,39 +124,39 @@ public class AVGameLaunchWebHelper
       QLog.d("AVGameLaunchWebHelper", 2, "release");
     }
     e();
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.b;
     if (localObject != null)
     {
       ((Handler)localObject).removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.b = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart;
+    localObject = this.c;
     if (localObject != null)
     {
       ((IToolProcStart)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart = null;
+      this.c = null;
     }
   }
   
   public void a(Activity paramActivity, Runnable paramRunnable)
   {
     QLog.d("AVGameLaunchWebHelper", 2, "preLoadToolProcAndExecuteCallable");
-    if (UITools.a(this.jdField_a_of_type_AndroidAppActivity))
+    if (UITools.e(this.a))
     {
       a(paramRunnable);
       return;
     }
     long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart == null) {
-      this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart = ((IQRToolProcStartApi)QRoute.api(IQRToolProcStartApi.class)).get();
+    if (this.c == null) {
+      this.c = ((IQRToolProcStartApi)QRoute.api(IQRToolProcStartApi.class)).get();
     }
-    paramActivity = this.jdField_a_of_type_AndroidOsHandler;
+    paramActivity = this.b;
     if (paramActivity != null)
     {
-      paramActivity.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+      paramActivity.removeCallbacks(this.f);
+      this.b.postDelayed(this.f, 1000L);
     }
-    this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart.a("preLoadToolProc", 5000L, new AVGameLaunchWebHelper.3(this, paramRunnable, l));
+    this.c.a("preLoadToolProc", 5000L, new AVGameLaunchWebHelper.3(this, paramRunnable, l));
   }
 }
 

@@ -67,23 +67,23 @@ public class WeiyunJsPlugin
   public WeiYunFileInfo a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
     WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
-    localWeiYunFileInfo.jdField_a_of_type_JavaLangString = paramString4;
+    localWeiYunFileInfo.a = paramString4;
     localWeiYunFileInfo.c = paramString3;
-    localWeiYunFileInfo.jdField_a_of_type_Long = paramLong;
-    localWeiYunFileInfo.f = "FTN5K";
-    localWeiYunFileInfo.g = paramString2;
-    localWeiYunFileInfo.jdField_a_of_type_Int = 2;
-    localWeiYunFileInfo.e = URLUtil.b(paramString1);
+    localWeiYunFileInfo.d = paramLong;
+    localWeiYunFileInfo.j = "FTN5K";
+    localWeiYunFileInfo.k = paramString2;
+    localWeiYunFileInfo.f = 2;
+    localWeiYunFileInfo.i = URLUtil.d(paramString1);
     paramString1 = new StringBuilder();
     paramString1.append(WeiyunPathUtil.b());
     paramString1.append("/");
     paramString1.append(paramString3);
-    localWeiYunFileInfo.h = paramString1.toString();
+    localWeiYunFileInfo.l = paramString1.toString();
     paramString1 = new StringBuilder();
     paramString1.append("FTN5K=");
     paramString1.append(paramString2);
-    localWeiYunFileInfo.jdField_b_of_type_JavaLangString = paramString1.toString();
-    localWeiYunFileInfo.jdField_b_of_type_Long = System.currentTimeMillis();
+    localWeiYunFileInfo.b = paramString1.toString();
+    localWeiYunFileInfo.e = System.currentTimeMillis();
     return localWeiYunFileInfo;
   }
   
@@ -97,7 +97,7 @@ public class WeiyunJsPlugin
       }
       if (this.mRuntime != null)
       {
-        if (this.mRuntime.a() == null) {
+        if (this.mRuntime.d() == null) {
           return false;
         }
         if (paramString3.equals("createDownload")) {
@@ -125,7 +125,7 @@ public class WeiyunJsPlugin
       paramString1 = new Intent("com.weiyun.BROADCAST");
       paramString1.setPackage(MobileQQ.getContext().getPackageName());
       paramString1.putExtra("fileinfos", paramJsBridgeListener);
-      this.mRuntime.a().sendBroadcast(paramString1);
+      this.mRuntime.d().sendBroadcast(paramString1);
     }
     catch (Exception paramJsBridgeListener)
     {
@@ -143,7 +143,7 @@ public class WeiyunJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.WeiyunJsPlugin
  * JD-Core Version:    0.7.0.1
  */

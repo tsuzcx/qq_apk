@@ -48,20 +48,9 @@ public class PushReportController
     return "none";
   }
   
-  private static String a(QQAppInterface paramQQAppInterface, PushReportController.PushReportItem paramPushReportItem)
-  {
-    paramPushReportItem.a = DeviceInfoUtil.d();
-    SosoLbsInfo localSosoLbsInfo = ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).getSosoInfo();
-    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null)) {
-      paramPushReportItem.c = localSosoLbsInfo.mLocation.city;
-    }
-    paramPushReportItem.b = a(paramQQAppInterface);
-    return paramPushReportItem.toString();
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, PushReportController.PushReportItem paramPushReportItem)
   {
-    paramPushReportItem = a(paramQQAppInterface, paramPushReportItem);
+    paramPushReportItem = b(paramQQAppInterface, paramPushReportItem);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -108,10 +97,21 @@ public class PushReportController
       }
     }
   }
+  
+  private static String b(QQAppInterface paramQQAppInterface, PushReportController.PushReportItem paramPushReportItem)
+  {
+    paramPushReportItem.a = DeviceInfoUtil.f();
+    SosoLbsInfo localSosoLbsInfo = ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).getSosoInfo();
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null)) {
+      paramPushReportItem.c = localSosoLbsInfo.mLocation.city;
+    }
+    paramPushReportItem.b = a(paramQQAppInterface);
+    return paramPushReportItem.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.PushReportController
  * JD-Core Version:    0.7.0.1
  */

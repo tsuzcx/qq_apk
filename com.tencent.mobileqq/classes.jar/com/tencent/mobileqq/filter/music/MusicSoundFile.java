@@ -13,57 +13,36 @@ import java.util.List;
 @SuppressLint({"NewApi"})
 public class MusicSoundFile
 {
-  private int jdField_a_of_type_Int;
-  private MusicSoundFile.ProgressListener jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile$ProgressListener = null;
-  private ArrayList<Float> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean a;
-  private int b = 0;
-  private int c = 1024;
-  
-  public MusicSoundFile()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private int a(int paramInt)
-  {
-    double d1 = paramInt;
-    Double.isNaN(d1);
-    double d2 = this.jdField_a_of_type_Int;
-    Double.isNaN(d2);
-    double d3 = a();
-    Double.isNaN(d3);
-    return (int)(d1 * 1.0D * d2 / (d3 * 1000.0D) + 0.5D);
-  }
+  public boolean a = false;
+  private MusicSoundFile.ProgressListener b = null;
+  private int c;
+  private int d = 0;
+  private ArrayList<Float> e = new ArrayList();
+  private int f = 1024;
   
   private void a(MusicSoundFile.ProgressListener paramProgressListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile$ProgressListener = paramProgressListener;
-  }
-  
-  public static boolean a()
-  {
-    return ("Meizu".equals(Build.MANUFACTURER)) && (Build.VERSION.SDK_INT <= 22);
+    this.b = paramProgressListener;
   }
   
   /* Error */
   private boolean a(File paramFile, int paramInt, MusicItemInfo paramMusicItemInfo)
   {
     // Byte code:
-    //   0: new 79	android/media/MediaExtractor
+    //   0: new 46	android/media/MediaExtractor
     //   3: dup
-    //   4: invokespecial 80	android/media/MediaExtractor:<init>	()V
+    //   4: invokespecial 47	android/media/MediaExtractor:<init>	()V
     //   7: astore 30
     //   9: aload_1
-    //   10: invokevirtual 86	java/io/File:length	()J
+    //   10: invokevirtual 53	java/io/File:length	()J
     //   13: l2i
     //   14: istore 20
     //   16: aload 30
     //   18: aload_1
-    //   19: invokevirtual 90	java/io/File:getPath	()Ljava/lang/String;
-    //   22: invokevirtual 94	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
+    //   19: invokevirtual 57	java/io/File:getPath	()Ljava/lang/String;
+    //   22: invokevirtual 61	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
     //   25: aload 30
-    //   27: invokevirtual 97	android/media/MediaExtractor:getTrackCount	()I
+    //   27: invokevirtual 65	android/media/MediaExtractor:getTrackCount	()I
     //   30: istore 14
     //   32: aconst_null
     //   33: astore 24
@@ -74,19 +53,19 @@ public class MusicSoundFile
     //   42: if_icmpge +51 -> 93
     //   45: aload 30
     //   47: iload 13
-    //   49: invokevirtual 101	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   49: invokevirtual 69	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   52: astore 24
     //   54: aload 24
     //   56: ifnull +28 -> 84
     //   59: aload 24
-    //   61: ldc 103
-    //   63: invokevirtual 109	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   66: ldc 111
-    //   68: invokevirtual 115	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   61: ldc 71
+    //   63: invokevirtual 77	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   66: ldc 79
+    //   68: invokevirtual 85	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   71: ifeq +13 -> 84
     //   74: aload 30
     //   76: iload 13
-    //   78: invokevirtual 119	android/media/MediaExtractor:selectTrack	(I)V
+    //   78: invokevirtual 89	android/media/MediaExtractor:selectTrack	(I)V
     //   81: goto +12 -> 93
     //   84: iload 13
     //   86: iconst_1
@@ -99,11 +78,11 @@ public class MusicSoundFile
     //   100: aload 24
     //   102: ifnonnull +10 -> 112
     //   105: aload 30
-    //   107: invokevirtual 122	android/media/MediaExtractor:release	()V
+    //   107: invokevirtual 92	android/media/MediaExtractor:release	()V
     //   110: iconst_0
     //   111: ireturn
     //   112: aload_3
-    //   113: getfield 127	com/tencent/mobileqq/richmedia/capture/data/MusicItemInfo:musicStart	I
+    //   113: getfield 97	com/tencent/mobileqq/richmedia/capture/data/MusicItemInfo:musicStart	I
     //   116: iload_2
     //   117: iadd
     //   118: istore 13
@@ -112,41 +91,41 @@ public class MusicSoundFile
     //   125: aload 30
     //   127: iload 13
     //   129: i2l
-    //   130: ldc2_w 128
+    //   130: ldc2_w 98
     //   133: lmul
     //   134: iconst_2
-    //   135: invokevirtual 133	android/media/MediaExtractor:seekTo	(JI)V
+    //   135: invokevirtual 103	android/media/MediaExtractor:seekTo	(JI)V
     //   138: aload 24
-    //   140: ldc 135
-    //   142: invokevirtual 139	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   140: ldc 105
+    //   142: invokevirtual 109	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   145: istore 16
     //   147: aload_0
     //   148: aload 24
-    //   150: ldc 141
-    //   152: invokevirtual 139	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   155: putfield 42	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_Int	I
+    //   150: ldc 111
+    //   152: invokevirtual 109	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   155: putfield 113	com/tencent/mobileqq/filter/music/MusicSoundFile:c	I
     //   158: aload_3
-    //   159: invokevirtual 144	com/tencent/mobileqq/richmedia/capture/data/MusicItemInfo:isMyMusicInfo	()Z
+    //   159: invokevirtual 117	com/tencent/mobileqq/richmedia/capture/data/MusicItemInfo:isMyMusicInfo	()Z
     //   162: ifeq +18 -> 180
     //   165: aload_3
-    //   166: getfield 147	com/tencent/mobileqq/richmedia/capture/data/MusicItemInfo:musicEnd	I
+    //   166: getfield 120	com/tencent/mobileqq/richmedia/capture/data/MusicItemInfo:musicEnd	I
     //   169: istore 14
     //   171: aload_3
-    //   172: getfield 127	com/tencent/mobileqq/richmedia/capture/data/MusicItemInfo:musicStart	I
+    //   172: getfield 97	com/tencent/mobileqq/richmedia/capture/data/MusicItemInfo:musicStart	I
     //   175: istore 13
     //   177: goto +26 -> 203
     //   180: aload 24
-    //   182: ldc 149
-    //   184: invokevirtual 153	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
+    //   182: ldc 122
+    //   184: invokevirtual 126	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
     //   187: l2f
-    //   188: ldc 154
+    //   188: ldc 127
     //   190: fdiv
-    //   191: ldc 155
+    //   191: ldc 128
     //   193: fadd
     //   194: f2i
     //   195: istore 14
     //   197: aload_3
-    //   198: getfield 127	com/tencent/mobileqq/richmedia/capture/data/MusicItemInfo:musicStart	I
+    //   198: getfield 97	com/tencent/mobileqq/richmedia/capture/data/MusicItemInfo:musicStart	I
     //   201: istore 13
     //   203: iload 14
     //   205: iload 13
@@ -154,25 +133,25 @@ public class MusicSoundFile
     //   208: iadd
     //   209: isub
     //   210: i2f
-    //   211: ldc 154
+    //   211: ldc 127
     //   213: fdiv
     //   214: aload_0
-    //   215: getfield 42	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_Int	I
+    //   215: getfield 113	com/tencent/mobileqq/filter/music/MusicSoundFile:c	I
     //   218: i2f
     //   219: fmul
-    //   220: ldc 155
+    //   220: ldc 128
     //   222: fadd
     //   223: f2i
     //   224: istore 21
     //   226: aload_0
     //   227: sipush 1024
-    //   230: putfield 23	com/tencent/mobileqq/filter/music/MusicSoundFile:c	I
+    //   230: putfield 26	com/tencent/mobileqq/filter/music/MusicSoundFile:f	I
     //   233: aload_0
-    //   234: getfield 42	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_Int	I
+    //   234: getfield 113	com/tencent/mobileqq/filter/music/MusicSoundFile:c	I
     //   237: i2f
     //   238: fstore 10
     //   240: aload_0
-    //   241: getfield 23	com/tencent/mobileqq/filter/music/MusicSoundFile:c	I
+    //   241: getfield 26	com/tencent/mobileqq/filter/music/MusicSoundFile:f	I
     //   244: istore_2
     //   245: fload 10
     //   247: fconst_1
@@ -180,7 +159,7 @@ public class MusicSoundFile
     //   249: iload_2
     //   250: i2f
     //   251: fdiv
-    //   252: ldc 156
+    //   252: ldc 129
     //   254: fcmpg
     //   255: ifge +20 -> 275
     //   258: iload_2
@@ -190,56 +169,56 @@ public class MusicSoundFile
     //   266: iload_2
     //   267: iconst_2
     //   268: idiv
-    //   269: putfield 23	com/tencent/mobileqq/filter/music/MusicSoundFile:c	I
+    //   269: putfield 26	com/tencent/mobileqq/filter/music/MusicSoundFile:f	I
     //   272: goto -39 -> 233
     //   275: aload 24
-    //   277: ldc 103
-    //   279: invokevirtual 109	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   282: invokestatic 162	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
+    //   277: ldc 71
+    //   279: invokevirtual 77	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   282: invokestatic 135	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
     //   285: astore 33
     //   287: aload 33
     //   289: aload 24
     //   291: aconst_null
     //   292: aconst_null
     //   293: iconst_0
-    //   294: invokevirtual 166	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
+    //   294: invokevirtual 139	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
     //   297: aload 33
-    //   299: invokevirtual 169	android/media/MediaCodec:start	()V
+    //   299: invokevirtual 142	android/media/MediaCodec:start	()V
     //   302: aload 33
-    //   304: invokevirtual 173	android/media/MediaCodec:getInputBuffers	()[Ljava/nio/ByteBuffer;
+    //   304: invokevirtual 146	android/media/MediaCodec:getInputBuffers	()[Ljava/nio/ByteBuffer;
     //   307: astore 34
     //   309: aload 33
-    //   311: invokevirtual 176	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
+    //   311: invokevirtual 149	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
     //   314: astore 25
-    //   316: new 178	android/media/MediaCodec$BufferInfo
+    //   316: new 151	android/media/MediaCodec$BufferInfo
     //   319: dup
-    //   320: invokespecial 179	android/media/MediaCodec$BufferInfo:<init>	()V
+    //   320: invokespecial 152	android/media/MediaCodec$BufferInfo:<init>	()V
     //   323: astore 29
-    //   325: ldc 180
-    //   327: invokestatic 186	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   325: ldc 153
+    //   327: invokestatic 159	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
     //   330: astore_1
     //   331: iconst_1
-    //   332: invokestatic 192	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   332: invokestatic 165	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   335: astore 26
     //   337: aload_0
     //   338: monitorenter
     //   339: aload_0
-    //   340: getfield 32	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   343: invokevirtual 195	java/util/ArrayList:clear	()V
+    //   340: getfield 35	com/tencent/mobileqq/filter/music/MusicSoundFile:e	Ljava/util/ArrayList;
+    //   343: invokevirtual 168	java/util/ArrayList:clear	()V
     //   346: aload_0
     //   347: monitorexit
     //   348: aload_0
     //   349: iconst_0
-    //   350: putfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
+    //   350: putfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
     //   353: aload_0
-    //   354: invokevirtual 45	com/tencent/mobileqq/filter/music/MusicSoundFile:a	()I
+    //   354: invokevirtual 170	com/tencent/mobileqq/filter/music/MusicSoundFile:b	()I
     //   357: iload 16
     //   359: imul
     //   360: newarray short
     //   362: astore 28
     //   364: aload_0
     //   365: iconst_1
-    //   366: putfield 25	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_Boolean	Z
+    //   366: putfield 28	com/tencent/mobileqq/filter/music/MusicSoundFile:a	Z
     //   369: aconst_null
     //   370: astore 27
     //   372: iconst_0
@@ -248,19 +227,19 @@ public class MusicSoundFile
     //   376: istore 15
     //   378: iconst_0
     //   379: istore 13
-    //   381: ldc 196
+    //   381: ldc 171
     //   383: fstore 11
-    //   385: ldc 196
+    //   385: ldc 171
     //   387: fstore 10
-    //   389: ldc 196
+    //   389: ldc 171
     //   391: fstore 12
     //   393: aload 24
     //   395: astore 31
     //   397: iload 16
     //   399: istore_2
     //   400: aload 33
-    //   402: ldc2_w 197
-    //   405: invokevirtual 202	android/media/MediaCodec:dequeueInputBuffer	(J)I
+    //   402: ldc2_w 172
+    //   405: invokevirtual 177	android/media/MediaCodec:dequeueInputBuffer	(J)I
     //   408: istore 16
     //   410: iload 15
     //   412: ifne +215 -> 627
@@ -271,24 +250,24 @@ public class MusicSoundFile
     //   424: iload 16
     //   426: aaload
     //   427: iconst_0
-    //   428: invokevirtual 206	android/media/MediaExtractor:readSampleData	(Ljava/nio/ByteBuffer;I)I
+    //   428: invokevirtual 181	android/media/MediaExtractor:readSampleData	(Ljava/nio/ByteBuffer;I)I
     //   431: istore 17
     //   433: aload 26
-    //   435: invokevirtual 209	java/lang/Boolean:booleanValue	()Z
+    //   435: invokevirtual 184	java/lang/Boolean:booleanValue	()Z
     //   438: istore 23
     //   440: iload 23
     //   442: ifeq +44 -> 486
     //   445: aload 31
-    //   447: ldc 103
-    //   449: invokevirtual 109	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   452: ldc 211
-    //   454: invokevirtual 65	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   447: ldc 71
+    //   449: invokevirtual 77	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   452: ldc 186
+    //   454: invokevirtual 190	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   457: ifeq +29 -> 486
     //   460: iload 17
     //   462: iconst_2
     //   463: if_icmpne +23 -> 486
     //   466: aload 30
-    //   468: invokevirtual 214	android/media/MediaExtractor:advance	()Z
+    //   468: invokevirtual 193	android/media/MediaExtractor:advance	()Z
     //   471: pop
     //   472: iload 13
     //   474: iload 17
@@ -303,9 +282,9 @@ public class MusicSoundFile
     //   493: iload 16
     //   495: iconst_0
     //   496: iconst_0
-    //   497: ldc2_w 215
+    //   497: ldc2_w 194
     //   500: iconst_4
-    //   501: invokevirtual 220	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
+    //   501: invokevirtual 199	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
     //   504: iconst_1
     //   505: istore 15
     //   507: goto +103 -> 610
@@ -316,51 +295,51 @@ public class MusicSoundFile
     //   516: iconst_0
     //   517: iload 17
     //   519: aload 30
-    //   521: invokevirtual 223	android/media/MediaExtractor:getSampleTime	()J
+    //   521: invokevirtual 202	android/media/MediaExtractor:getSampleTime	()J
     //   524: iconst_0
-    //   525: invokevirtual 220	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
+    //   525: invokevirtual 199	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
     //   528: aload 30
-    //   530: invokevirtual 214	android/media/MediaExtractor:advance	()Z
+    //   530: invokevirtual 193	android/media/MediaExtractor:advance	()Z
     //   533: pop
     //   534: iload 13
     //   536: iload 17
     //   538: iadd
     //   539: istore 13
     //   541: aload_0
-    //   542: getfield 21	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile$ProgressListener	Lcom/tencent/mobileqq/filter/music/MusicSoundFile$ProgressListener;
+    //   542: getfield 24	com/tencent/mobileqq/filter/music/MusicSoundFile:b	Lcom/tencent/mobileqq/filter/music/MusicSoundFile$ProgressListener;
     //   545: ifnull +65 -> 610
     //   548: aload_0
-    //   549: getfield 21	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile$ProgressListener	Lcom/tencent/mobileqq/filter/music/MusicSoundFile$ProgressListener;
+    //   549: getfield 24	com/tencent/mobileqq/filter/music/MusicSoundFile:b	Lcom/tencent/mobileqq/filter/music/MusicSoundFile$ProgressListener;
     //   552: iload 13
     //   554: i2f
     //   555: iload 20
     //   557: i2f
     //   558: fdiv
     //   559: f2d
-    //   560: invokeinterface 227 3 0
+    //   560: invokeinterface 207 3 0
     //   565: ifne +45 -> 610
     //   568: aload_3
-    //   569: invokevirtual 230	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   569: invokevirtual 210	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   572: pop
     //   573: aload 30
-    //   575: invokevirtual 122	android/media/MediaExtractor:release	()V
+    //   575: invokevirtual 92	android/media/MediaExtractor:release	()V
     //   578: aload 33
-    //   580: invokevirtual 233	android/media/MediaCodec:stop	()V
+    //   580: invokevirtual 213	android/media/MediaCodec:stop	()V
     //   583: aload 33
-    //   585: invokevirtual 234	android/media/MediaCodec:release	()V
+    //   585: invokevirtual 214	android/media/MediaCodec:release	()V
     //   588: aload_3
-    //   589: invokevirtual 230	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   589: invokevirtual 210	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   592: pop
     //   593: aload 30
-    //   595: invokevirtual 122	android/media/MediaExtractor:release	()V
+    //   595: invokevirtual 92	android/media/MediaExtractor:release	()V
     //   598: aload 33
-    //   600: invokevirtual 233	android/media/MediaCodec:stop	()V
+    //   600: invokevirtual 213	android/media/MediaCodec:stop	()V
     //   603: aload 33
-    //   605: invokevirtual 234	android/media/MediaCodec:release	()V
+    //   605: invokevirtual 214	android/media/MediaCodec:release	()V
     //   608: iconst_1
     //   609: ireturn
     //   610: iconst_0
-    //   611: invokestatic 192	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   611: invokestatic 165	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   614: astore 26
     //   616: goto +11 -> 627
     //   619: astore_3
@@ -373,22 +352,22 @@ public class MusicSoundFile
     //   631: astore 32
     //   633: aload 33
     //   635: aload 32
-    //   637: ldc2_w 197
-    //   640: invokevirtual 238	android/media/MediaCodec:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
+    //   637: ldc2_w 172
+    //   640: invokevirtual 218	android/media/MediaCodec:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
     //   643: istore 18
     //   645: iload 18
     //   647: iflt +625 -> 1272
     //   650: aload 32
-    //   652: getfield 241	android/media/MediaCodec$BufferInfo:size	I
+    //   652: getfield 221	android/media/MediaCodec$BufferInfo:size	I
     //   655: ifle +617 -> 1272
     //   658: aload 32
-    //   660: getfield 241	android/media/MediaCodec$BufferInfo:size	I
+    //   660: getfield 221	android/media/MediaCodec$BufferInfo:size	I
     //   663: istore 16
     //   665: iload 14
     //   667: iload 16
     //   669: if_icmpge +23 -> 692
     //   672: aload 32
-    //   674: getfield 241	android/media/MediaCodec$BufferInfo:size	I
+    //   674: getfield 221	android/media/MediaCodec$BufferInfo:size	I
     //   677: istore 14
     //   679: iload 14
     //   681: newarray byte
@@ -402,21 +381,21 @@ public class MusicSoundFile
     //   697: aload 27
     //   699: iconst_0
     //   700: aload 32
-    //   702: getfield 241	android/media/MediaCodec$BufferInfo:size	I
-    //   705: invokevirtual 245	java/nio/ByteBuffer:get	([BII)Ljava/nio/ByteBuffer;
+    //   702: getfield 221	android/media/MediaCodec$BufferInfo:size	I
+    //   705: invokevirtual 225	java/nio/ByteBuffer:get	([BII)Ljava/nio/ByteBuffer;
     //   708: pop
     //   709: aload 25
     //   711: iload 18
     //   713: aaload
-    //   714: invokevirtual 230	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   714: invokevirtual 210	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   717: pop
     //   718: aload_3
-    //   719: invokevirtual 248	java/nio/ByteBuffer:remaining	()I
+    //   719: invokevirtual 228	java/nio/ByteBuffer:remaining	()I
     //   722: aload 32
-    //   724: getfield 241	android/media/MediaCodec$BufferInfo:size	I
+    //   724: getfield 221	android/media/MediaCodec$BufferInfo:size	I
     //   727: if_icmpge +1471 -> 2198
     //   730: aload_3
-    //   731: invokevirtual 251	java/nio/ByteBuffer:position	()I
+    //   731: invokevirtual 231	java/nio/ByteBuffer:position	()I
     //   734: istore 19
     //   736: iload 19
     //   738: i2d
@@ -425,13 +404,13 @@ public class MusicSoundFile
     //   743: i2d
     //   744: dstore 6
     //   746: dload 6
-    //   748: invokestatic 40	java/lang/Double:isNaN	(D)Z
+    //   748: invokestatic 236	java/lang/Double:isNaN	(D)Z
     //   751: pop
     //   752: iload 13
     //   754: i2d
     //   755: dstore 8
     //   757: dload 8
-    //   759: invokestatic 40	java/lang/Double:isNaN	(D)Z
+    //   759: invokestatic 236	java/lang/Double:isNaN	(D)Z
     //   762: pop
     //   763: dload 6
     //   765: dconst_1
@@ -440,17 +419,17 @@ public class MusicSoundFile
     //   769: ddiv
     //   770: dstore 6
     //   772: dload 4
-    //   774: invokestatic 40	java/lang/Double:isNaN	(D)Z
+    //   774: invokestatic 236	java/lang/Double:isNaN	(D)Z
     //   777: pop
     //   778: dload 4
     //   780: dload 6
     //   782: dmul
-    //   783: ldc2_w 252
+    //   783: ldc2_w 237
     //   786: dmul
     //   787: d2i
     //   788: istore 17
     //   790: aload 32
-    //   792: getfield 241	android/media/MediaCodec$BufferInfo:size	I
+    //   792: getfield 221	android/media/MediaCodec$BufferInfo:size	I
     //   795: istore 22
     //   797: iload 17
     //   799: istore 16
@@ -458,16 +437,16 @@ public class MusicSoundFile
     //   803: iload 19
     //   805: isub
     //   806: iload 22
-    //   808: ldc 254
+    //   808: ldc 239
     //   810: iadd
     //   811: if_icmpge +33 -> 844
     //   814: aload 32
-    //   816: getfield 241	android/media/MediaCodec$BufferInfo:size	I
+    //   816: getfield 221	android/media/MediaCodec$BufferInfo:size	I
     //   819: istore 16
     //   821: iload 16
     //   823: iload 19
     //   825: iadd
-    //   826: ldc 254
+    //   826: ldc 239
     //   828: iadd
     //   829: istore 16
     //   831: goto +13 -> 844
@@ -482,7 +461,7 @@ public class MusicSoundFile
     //   848: iload 17
     //   850: ifle +21 -> 871
     //   853: iload 16
-    //   855: invokestatic 186	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   855: invokestatic 159	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
     //   858: astore_1
     //   859: goto +14 -> 873
     //   862: iload 17
@@ -498,7 +477,7 @@ public class MusicSoundFile
     //   879: astore_1
     //   880: goto +1118 -> 1998
     //   883: aload_3
-    //   884: invokevirtual 257	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   884: invokevirtual 242	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
     //   887: pop
     //   888: aload_3
     //   889: astore 29
@@ -508,7 +487,7 @@ public class MusicSoundFile
     //   896: astore 24
     //   898: aload_1
     //   899: aload 29
-    //   901: invokevirtual 261	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
+    //   901: invokevirtual 246	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
     //   904: pop
     //   905: aload_1
     //   906: astore_3
@@ -516,7 +495,7 @@ public class MusicSoundFile
     //   908: astore 24
     //   910: aload_1
     //   911: iload 19
-    //   913: invokevirtual 264	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   913: invokevirtual 249	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
     //   916: pop
     //   917: goto +3 -> 920
     //   920: aload_1
@@ -527,8 +506,8 @@ public class MusicSoundFile
     //   926: aload 27
     //   928: iconst_0
     //   929: aload 32
-    //   931: getfield 241	android/media/MediaCodec$BufferInfo:size	I
-    //   934: invokevirtual 266	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
+    //   931: getfield 221	android/media/MediaCodec$BufferInfo:size	I
+    //   934: invokevirtual 251	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
     //   937: pop
     //   938: aload_1
     //   939: astore_3
@@ -537,13 +516,13 @@ public class MusicSoundFile
     //   943: aload 33
     //   945: iload 18
     //   947: iconst_0
-    //   948: invokevirtual 270	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
+    //   948: invokevirtual 255	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
     //   951: aload_1
     //   952: astore_3
     //   953: aload_1
     //   954: astore 24
     //   956: aload_1
-    //   957: invokevirtual 251	java/nio/ByteBuffer:position	()I
+    //   957: invokevirtual 231	java/nio/ByteBuffer:position	()I
     //   960: istore 22
     //   962: aload_1
     //   963: astore_3
@@ -551,10 +530,10 @@ public class MusicSoundFile
     //   965: astore 24
     //   967: iload 22
     //   969: aload_0
-    //   970: getfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
+    //   970: getfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
     //   973: isub
     //   974: aload_0
-    //   975: invokevirtual 45	com/tencent/mobileqq/filter/music/MusicSoundFile:a	()I
+    //   975: invokevirtual 170	com/tencent/mobileqq/filter/music/MusicSoundFile:b	()I
     //   978: iconst_2
     //   979: imul
     //   980: iload_2
@@ -566,19 +545,19 @@ public class MusicSoundFile
     //   988: astore 24
     //   990: aload_1
     //   991: aload_0
-    //   992: getfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
-    //   995: invokevirtual 264	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   992: getfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
+    //   995: invokevirtual 249	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
     //   998: pop
     //   999: aload_1
     //   1000: astore_3
     //   1001: aload_1
     //   1002: astore 24
     //   1004: aload_1
-    //   1005: getstatic 276	java/nio/ByteOrder:LITTLE_ENDIAN	Ljava/nio/ByteOrder;
-    //   1008: invokevirtual 280	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   1011: invokevirtual 284	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
+    //   1005: getstatic 261	java/nio/ByteOrder:LITTLE_ENDIAN	Ljava/nio/ByteOrder;
+    //   1008: invokevirtual 265	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   1011: invokevirtual 269	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
     //   1014: aload 28
-    //   1016: invokevirtual 289	java/nio/ShortBuffer:get	([S)Ljava/nio/ShortBuffer;
+    //   1016: invokevirtual 274	java/nio/ShortBuffer:get	([S)Ljava/nio/ShortBuffer;
     //   1019: pop
     //   1020: aload_1
     //   1021: astore_3
@@ -586,7 +565,7 @@ public class MusicSoundFile
     //   1023: astore 24
     //   1025: aload_1
     //   1026: iload 22
-    //   1028: invokevirtual 264	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   1028: invokevirtual 249	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
     //   1031: pop
     //   1032: aload_1
     //   1033: astore_3
@@ -594,15 +573,15 @@ public class MusicSoundFile
     //   1035: astore 24
     //   1037: aload_0
     //   1038: aload_0
-    //   1039: getfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
+    //   1039: getfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
     //   1042: aload_0
-    //   1043: invokevirtual 45	com/tencent/mobileqq/filter/music/MusicSoundFile:a	()I
+    //   1043: invokevirtual 170	com/tencent/mobileqq/filter/music/MusicSoundFile:b	()I
     //   1046: iconst_2
     //   1047: imul
     //   1048: iload_2
     //   1049: imul
     //   1050: iadd
-    //   1051: putfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
+    //   1051: putfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
     //   1054: iconst_0
     //   1055: istore 16
     //   1057: iconst_m1
@@ -636,7 +615,7 @@ public class MusicSoundFile
     //   1100: iload 18
     //   1102: iadd
     //   1103: saload
-    //   1104: invokestatic 294	java/lang/Math:abs	(I)I
+    //   1104: invokestatic 280	java/lang/Math:abs	(I)I
     //   1107: iadd
     //   1108: istore 19
     //   1110: iload 18
@@ -666,7 +645,7 @@ public class MusicSoundFile
     //   1151: astore 24
     //   1153: iload 17
     //   1155: i2d
-    //   1156: invokestatic 298	java/lang/Math:sqrt	(D)D
+    //   1156: invokestatic 284	java/lang/Math:sqrt	(D)D
     //   1159: d2f
     //   1160: fstore 12
     //   1162: aload_1
@@ -685,27 +664,27 @@ public class MusicSoundFile
     //   1182: fcmpg
     //   1183: ifge +24 -> 1207
     //   1186: aload_0
-    //   1187: getfield 32	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   1187: getfield 35	com/tencent/mobileqq/filter/music/MusicSoundFile:e	Ljava/util/ArrayList;
     //   1190: fload 10
     //   1192: fload 12
     //   1194: fadd
     //   1195: fconst_2
     //   1196: fdiv
-    //   1197: invokestatic 303	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   1200: invokevirtual 306	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1197: invokestatic 289	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   1200: invokevirtual 292	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1203: pop
     //   1204: goto +1012 -> 2216
     //   1207: aload_0
-    //   1208: getfield 32	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   1208: getfield 35	com/tencent/mobileqq/filter/music/MusicSoundFile:e	Ljava/util/ArrayList;
     //   1211: fload 11
     //   1213: fload 10
     //   1215: fadd
     //   1216: fload 12
     //   1218: fadd
-    //   1219: ldc_w 307
+    //   1219: ldc_w 293
     //   1222: fdiv
-    //   1223: invokestatic 303	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   1226: invokevirtual 306	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1223: invokestatic 289	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   1226: invokevirtual 292	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1229: pop
     //   1230: goto +986 -> 2216
     //   1233: aload_0
@@ -741,7 +720,7 @@ public class MusicSoundFile
     //   1283: aload_1
     //   1284: astore 24
     //   1286: aload 33
-    //   1288: invokevirtual 176	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
+    //   1288: invokevirtual 149	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
     //   1291: astore 25
     //   1293: goto +938 -> 2231
     //   1296: aload_1
@@ -749,7 +728,7 @@ public class MusicSoundFile
     //   1298: aload_1
     //   1299: astore 24
     //   1301: aload 32
-    //   1303: getfield 310	android/media/MediaCodec$BufferInfo:flags	I
+    //   1303: getfield 296	android/media/MediaCodec$BufferInfo:flags	I
     //   1306: iconst_4
     //   1307: iand
     //   1308: ifne +24 -> 1332
@@ -758,7 +737,7 @@ public class MusicSoundFile
     //   1313: aload_1
     //   1314: astore 24
     //   1316: aload_1
-    //   1317: invokevirtual 251	java/nio/ByteBuffer:position	()I
+    //   1317: invokevirtual 231	java/nio/ByteBuffer:position	()I
     //   1320: iload_2
     //   1321: iconst_2
     //   1322: imul
@@ -771,7 +750,7 @@ public class MusicSoundFile
     //   1334: aload_1
     //   1335: astore 24
     //   1337: aload_1
-    //   1338: invokevirtual 251	java/nio/ByteBuffer:position	()I
+    //   1338: invokevirtual 231	java/nio/ByteBuffer:position	()I
     //   1341: istore 17
     //   1343: aload_1
     //   1344: astore_3
@@ -779,10 +758,10 @@ public class MusicSoundFile
     //   1346: astore 24
     //   1348: iload 17
     //   1350: aload_0
-    //   1351: getfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
+    //   1351: getfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
     //   1354: isub
     //   1355: aload_0
-    //   1356: invokevirtual 45	com/tencent/mobileqq/filter/music/MusicSoundFile:a	()I
+    //   1356: invokevirtual 170	com/tencent/mobileqq/filter/music/MusicSoundFile:b	()I
     //   1359: iconst_2
     //   1360: imul
     //   1361: iload_2
@@ -794,19 +773,19 @@ public class MusicSoundFile
     //   1369: astore 24
     //   1371: aload_1
     //   1372: aload_0
-    //   1373: getfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
-    //   1376: invokevirtual 264	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   1373: getfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
+    //   1376: invokevirtual 249	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
     //   1379: pop
     //   1380: aload_1
     //   1381: astore_3
     //   1382: aload_1
     //   1383: astore 24
     //   1385: aload_1
-    //   1386: getstatic 276	java/nio/ByteOrder:LITTLE_ENDIAN	Ljava/nio/ByteOrder;
-    //   1389: invokevirtual 280	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   1392: invokevirtual 284	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
+    //   1386: getstatic 261	java/nio/ByteOrder:LITTLE_ENDIAN	Ljava/nio/ByteOrder;
+    //   1389: invokevirtual 265	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   1392: invokevirtual 269	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
     //   1395: aload 28
-    //   1397: invokevirtual 289	java/nio/ShortBuffer:get	([S)Ljava/nio/ShortBuffer;
+    //   1397: invokevirtual 274	java/nio/ShortBuffer:get	([S)Ljava/nio/ShortBuffer;
     //   1400: pop
     //   1401: aload_1
     //   1402: astore_3
@@ -814,7 +793,7 @@ public class MusicSoundFile
     //   1404: astore 24
     //   1406: aload_1
     //   1407: iload 17
-    //   1409: invokevirtual 264	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   1409: invokevirtual 249	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
     //   1412: pop
     //   1413: aload_1
     //   1414: astore_3
@@ -822,15 +801,15 @@ public class MusicSoundFile
     //   1416: astore 24
     //   1418: aload_0
     //   1419: aload_0
-    //   1420: getfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
+    //   1420: getfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
     //   1423: aload_0
-    //   1424: invokevirtual 45	com/tencent/mobileqq/filter/music/MusicSoundFile:a	()I
+    //   1424: invokevirtual 170	com/tencent/mobileqq/filter/music/MusicSoundFile:b	()I
     //   1427: iconst_2
     //   1428: imul
     //   1429: iload_2
     //   1430: imul
     //   1431: iadd
-    //   1432: putfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
+    //   1432: putfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
     //   1435: iconst_0
     //   1436: istore 13
     //   1438: iconst_m1
@@ -864,7 +843,7 @@ public class MusicSoundFile
     //   1481: iload 15
     //   1483: iadd
     //   1484: saload
-    //   1485: invokestatic 294	java/lang/Math:abs	(I)I
+    //   1485: invokestatic 280	java/lang/Math:abs	(I)I
     //   1488: iadd
     //   1489: istore 16
     //   1491: iload 15
@@ -894,7 +873,7 @@ public class MusicSoundFile
     //   1532: astore 24
     //   1534: iload 14
     //   1536: i2d
-    //   1537: invokestatic 298	java/lang/Math:sqrt	(D)D
+    //   1537: invokestatic 284	java/lang/Math:sqrt	(D)D
     //   1540: d2i
     //   1541: i2f
     //   1542: fstore 12
@@ -914,27 +893,27 @@ public class MusicSoundFile
     //   1564: fcmpg
     //   1565: ifge +24 -> 1589
     //   1568: aload_0
-    //   1569: getfield 32	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   1569: getfield 35	com/tencent/mobileqq/filter/music/MusicSoundFile:e	Ljava/util/ArrayList;
     //   1572: fload 10
     //   1574: fload 12
     //   1576: fadd
     //   1577: fconst_2
     //   1578: fdiv
-    //   1579: invokestatic 303	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   1582: invokevirtual 306	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1579: invokestatic 289	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   1582: invokevirtual 292	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1585: pop
     //   1586: goto +668 -> 2254
     //   1589: aload_0
-    //   1590: getfield 32	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   1590: getfield 35	com/tencent/mobileqq/filter/music/MusicSoundFile:e	Ljava/util/ArrayList;
     //   1593: fload 11
     //   1595: fload 10
     //   1597: fadd
     //   1598: fload 12
     //   1600: fadd
-    //   1601: ldc_w 307
+    //   1601: ldc_w 293
     //   1604: fdiv
-    //   1605: invokestatic 303	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   1608: invokevirtual 306	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1605: invokestatic 289	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   1608: invokevirtual 292	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1611: pop
     //   1612: goto +642 -> 2254
     //   1615: aload_0
@@ -959,7 +938,7 @@ public class MusicSoundFile
     //   1643: astore 24
     //   1645: iload 17
     //   1647: aload_0
-    //   1648: getfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
+    //   1648: getfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
     //   1651: if_icmple +320 -> 1971
     //   1654: aload_1
     //   1655: astore_3
@@ -967,7 +946,7 @@ public class MusicSoundFile
     //   1657: astore 24
     //   1659: iload 17
     //   1661: aload_0
-    //   1662: getfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
+    //   1662: getfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
     //   1665: isub
     //   1666: iconst_2
     //   1667: idiv
@@ -979,19 +958,19 @@ public class MusicSoundFile
     //   1675: astore 24
     //   1677: aload_1
     //   1678: aload_0
-    //   1679: getfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
-    //   1682: invokevirtual 264	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   1679: getfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
+    //   1682: invokevirtual 249	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
     //   1685: pop
     //   1686: aload_1
     //   1687: astore_3
     //   1688: aload_1
     //   1689: astore 24
     //   1691: aload_1
-    //   1692: getstatic 276	java/nio/ByteOrder:LITTLE_ENDIAN	Ljava/nio/ByteOrder;
-    //   1695: invokevirtual 280	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   1698: invokevirtual 284	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
+    //   1692: getstatic 261	java/nio/ByteOrder:LITTLE_ENDIAN	Ljava/nio/ByteOrder;
+    //   1695: invokevirtual 265	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   1698: invokevirtual 269	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
     //   1701: aload 25
-    //   1703: invokevirtual 289	java/nio/ShortBuffer:get	([S)Ljava/nio/ShortBuffer;
+    //   1703: invokevirtual 274	java/nio/ShortBuffer:get	([S)Ljava/nio/ShortBuffer;
     //   1706: pop
     //   1707: aload_1
     //   1708: astore_3
@@ -999,7 +978,7 @@ public class MusicSoundFile
     //   1710: astore 24
     //   1712: aload_1
     //   1713: iload 17
-    //   1715: invokevirtual 264	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   1715: invokevirtual 249	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
     //   1718: pop
     //   1719: aload_1
     //   1720: astore_3
@@ -1007,7 +986,7 @@ public class MusicSoundFile
     //   1722: astore 24
     //   1724: aload_0
     //   1725: iload 17
-    //   1727: putfield 27	com/tencent/mobileqq/filter/music/MusicSoundFile:b	I
+    //   1727: putfield 30	com/tencent/mobileqq/filter/music/MusicSoundFile:d	I
     //   1730: iconst_0
     //   1731: istore 13
     //   1733: iconst_m1
@@ -1041,7 +1020,7 @@ public class MusicSoundFile
     //   1776: iload 15
     //   1778: iadd
     //   1779: saload
-    //   1780: invokestatic 294	java/lang/Math:abs	(I)I
+    //   1780: invokestatic 280	java/lang/Math:abs	(I)I
     //   1783: iadd
     //   1784: istore 16
     //   1786: iload 15
@@ -1071,7 +1050,7 @@ public class MusicSoundFile
     //   1827: astore 24
     //   1829: iload 14
     //   1831: i2d
-    //   1832: invokestatic 298	java/lang/Math:sqrt	(D)D
+    //   1832: invokestatic 284	java/lang/Math:sqrt	(D)D
     //   1835: d2f
     //   1836: fstore 12
     //   1838: aload_1
@@ -1085,10 +1064,10 @@ public class MusicSoundFile
     //   1848: fcmpg
     //   1849: ifge +19 -> 1868
     //   1852: aload_0
-    //   1853: getfield 32	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   1853: getfield 35	com/tencent/mobileqq/filter/music/MusicSoundFile:e	Ljava/util/ArrayList;
     //   1856: fload 12
-    //   1858: invokestatic 303	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   1861: invokevirtual 306	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1858: invokestatic 289	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   1861: invokevirtual 292	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1864: pop
     //   1865: goto +91 -> 1956
     //   1868: fload 11
@@ -1096,7 +1075,7 @@ public class MusicSoundFile
     //   1871: fcmpg
     //   1872: ifge +43 -> 1915
     //   1875: aload_0
-    //   1876: getfield 32	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   1876: getfield 35	com/tencent/mobileqq/filter/music/MusicSoundFile:e	Ljava/util/ArrayList;
     //   1879: astore_3
     //   1880: fload 10
     //   1882: fload 12
@@ -1106,37 +1085,37 @@ public class MusicSoundFile
     //   1887: fstore 10
     //   1889: aload_3
     //   1890: fload 10
-    //   1892: invokestatic 303	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   1895: invokevirtual 306	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1892: invokestatic 289	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   1895: invokevirtual 292	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1898: pop
     //   1899: aload_0
-    //   1900: getfield 32	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   1900: getfield 35	com/tencent/mobileqq/filter/music/MusicSoundFile:e	Ljava/util/ArrayList;
     //   1903: fload 10
-    //   1905: invokestatic 303	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   1908: invokevirtual 306	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1905: invokestatic 289	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   1908: invokevirtual 292	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1911: pop
     //   1912: goto +44 -> 1956
     //   1915: aload_0
-    //   1916: getfield 32	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   1916: getfield 35	com/tencent/mobileqq/filter/music/MusicSoundFile:e	Ljava/util/ArrayList;
     //   1919: fload 11
     //   1921: fload 10
     //   1923: fadd
     //   1924: fload 12
     //   1926: fadd
-    //   1927: ldc_w 307
+    //   1927: ldc_w 293
     //   1930: fdiv
-    //   1931: invokestatic 303	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   1934: invokevirtual 306	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1931: invokestatic 289	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   1934: invokevirtual 292	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1937: pop
     //   1938: aload_0
-    //   1939: getfield 32	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   1939: getfield 35	com/tencent/mobileqq/filter/music/MusicSoundFile:e	Ljava/util/ArrayList;
     //   1942: fload 10
     //   1944: fload 12
     //   1946: fadd
     //   1947: fconst_2
     //   1948: fdiv
-    //   1949: invokestatic 303	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   1952: invokevirtual 306	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1949: invokestatic 289	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   1952: invokevirtual 292	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1955: pop
     //   1956: aload_0
     //   1957: monitorexit
@@ -1156,26 +1135,26 @@ public class MusicSoundFile
     //   1976: aload_0
     //   1977: monitorenter
     //   1978: aload_0
-    //   1979: getfield 32	com/tencent/mobileqq/filter/music/MusicSoundFile:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   1979: getfield 35	com/tencent/mobileqq/filter/music/MusicSoundFile:e	Ljava/util/ArrayList;
     //   1982: fload 10
     //   1984: fload 12
     //   1986: fadd
     //   1987: fconst_2
     //   1988: fdiv
-    //   1989: invokestatic 303	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   1992: invokevirtual 306	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1989: invokestatic 289	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   1992: invokevirtual 292	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1995: pop
     //   1996: aload_0
     //   1997: monitorexit
     //   1998: aload_1
-    //   1999: invokevirtual 230	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   1999: invokevirtual 210	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   2002: pop
     //   2003: aload 30
-    //   2005: invokevirtual 122	android/media/MediaExtractor:release	()V
+    //   2005: invokevirtual 92	android/media/MediaExtractor:release	()V
     //   2008: aload 33
-    //   2010: invokevirtual 233	android/media/MediaCodec:stop	()V
+    //   2010: invokevirtual 213	android/media/MediaCodec:stop	()V
     //   2013: aload 33
-    //   2015: invokevirtual 234	android/media/MediaCodec:release	()V
+    //   2015: invokevirtual 214	android/media/MediaCodec:release	()V
     //   2018: iconst_1
     //   2019: ireturn
     //   2020: astore 25
@@ -1212,33 +1191,33 @@ public class MusicSoundFile
     //   2064: astore_3
     //   2065: goto +41 -> 2106
     //   2068: astore_3
-    //   2069: ldc_w 312
+    //   2069: ldc_w 298
     //   2072: iconst_1
-    //   2073: ldc_w 314
+    //   2073: ldc_w 300
     //   2076: aload_3
-    //   2077: invokestatic 320	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2077: invokestatic 305	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   2080: aload_1
-    //   2081: invokevirtual 230	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   2081: invokevirtual 210	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   2084: pop
     //   2085: aload 30
-    //   2087: invokevirtual 122	android/media/MediaExtractor:release	()V
+    //   2087: invokevirtual 92	android/media/MediaExtractor:release	()V
     //   2090: aload 33
-    //   2092: invokevirtual 233	android/media/MediaCodec:stop	()V
+    //   2092: invokevirtual 213	android/media/MediaCodec:stop	()V
     //   2095: aload 33
-    //   2097: invokevirtual 234	android/media/MediaCodec:release	()V
+    //   2097: invokevirtual 214	android/media/MediaCodec:release	()V
     //   2100: iconst_1
     //   2101: ireturn
     //   2102: astore_3
     //   2103: goto -46 -> 2057
     //   2106: aload_3
-    //   2107: invokevirtual 230	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   2107: invokevirtual 210	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   2110: pop
     //   2111: aload 30
-    //   2113: invokevirtual 122	android/media/MediaExtractor:release	()V
+    //   2113: invokevirtual 92	android/media/MediaExtractor:release	()V
     //   2116: aload 33
-    //   2118: invokevirtual 233	android/media/MediaCodec:stop	()V
+    //   2118: invokevirtual 213	android/media/MediaCodec:stop	()V
     //   2121: aload 33
-    //   2123: invokevirtual 234	android/media/MediaCodec:release	()V
+    //   2123: invokevirtual 214	android/media/MediaCodec:release	()V
     //   2126: aload_1
     //   2127: athrow
     //   2128: astore_1
@@ -1246,27 +1225,27 @@ public class MusicSoundFile
     //   2130: monitorexit
     //   2131: aload_1
     //   2132: athrow
-    //   2133: new 322	java/lang/StringBuilder
+    //   2133: new 307	java/lang/StringBuilder
     //   2136: dup
-    //   2137: invokespecial 323	java/lang/StringBuilder:<init>	()V
+    //   2137: invokespecial 308	java/lang/StringBuilder:<init>	()V
     //   2140: astore_3
     //   2141: aload_3
-    //   2142: ldc_w 325
-    //   2145: invokevirtual 329	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2142: ldc_w 310
+    //   2145: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2148: pop
     //   2149: aload_3
     //   2150: aload_1
-    //   2151: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   2151: invokevirtual 317	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   2154: pop
-    //   2155: new 334	java/lang/RuntimeException
+    //   2155: new 319	java/lang/RuntimeException
     //   2158: dup
     //   2159: aload_3
-    //   2160: invokevirtual 337	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2163: invokespecial 339	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   2160: invokevirtual 322	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2163: invokespecial 324	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
     //   2166: athrow
     //   2167: astore_1
     //   2168: aload 30
-    //   2170: invokevirtual 122	android/media/MediaExtractor:release	()V
+    //   2170: invokevirtual 92	android/media/MediaExtractor:release	()V
     //   2173: goto +5 -> 2178
     //   2176: aload_1
     //   2177: athrow
@@ -1512,18 +1491,34 @@ public class MusicSoundFile
     return new String[] { "mp3", "wav", "3gpp", "3gp", "amr", "aac", "m4a", "ogg" };
   }
   
+  private int b(int paramInt)
+  {
+    double d1 = paramInt;
+    Double.isNaN(d1);
+    double d2 = this.c;
+    Double.isNaN(d2);
+    double d3 = b();
+    Double.isNaN(d3);
+    return (int)(d1 * 1.0D * d2 / (d3 * 1000.0D) + 0.5D);
+  }
+  
+  public static boolean c()
+  {
+    return ("Meizu".equals(Build.MANUFACTURER)) && (Build.VERSION.SDK_INT <= 22);
+  }
+  
   public float a(int paramInt)
   {
     try
     {
-      n = a(paramInt);
-      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= n)) {
+      n = b(paramInt);
+      if ((this.e == null) || (this.e.size() <= n)) {
         break label253;
       }
-      paramInt = a(2000);
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() < paramInt)
+      paramInt = b(2000);
+      if (this.e.size() < paramInt)
       {
-        paramInt = this.jdField_a_of_type_JavaUtilArrayList.size();
+        paramInt = this.e.size();
         break label271;
       }
       j = n - paramInt / 2;
@@ -1531,11 +1526,11 @@ public class MusicSoundFile
         break label271;
       }
       i = paramInt / 2 + n;
-      if (i <= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (i <= this.e.size()) {
         break label279;
       }
-      paramInt = this.jdField_a_of_type_JavaUtilArrayList.size() - paramInt;
-      i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      paramInt = this.e.size() - paramInt;
+      i = this.e.size();
     }
     finally
     {
@@ -1584,7 +1579,7 @@ public class MusicSoundFile
     }
     if (j < i)
     {
-      f3 = ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(j)).floatValue();
+      f3 = ((Float)this.e.get(j)).floatValue();
       f5 = localObject2;
       if (f3 < localObject2)
       {
@@ -1596,10 +1591,10 @@ public class MusicSoundFile
     }
     else
     {
-      if ((localObject2 < localObject1) && (((Float)this.jdField_a_of_type_JavaUtilArrayList.get(n)).floatValue() > 0.0F))
+      if ((localObject2 < localObject1) && (((Float)this.e.get(n)).floatValue() > 0.0F))
       {
         f2 = localObject3 / (i - paramInt - k);
-        f2 = (((Float)this.jdField_a_of_type_JavaUtilArrayList.get(n)).floatValue() - f2) / (localObject1 - f2);
+        f2 = (((Float)this.e.get(n)).floatValue() - f2) / (localObject1 - f2);
         f1 = f2;
         if (f2 < 0.0F) {
           f1 = -1.0F;
@@ -1609,11 +1604,6 @@ public class MusicSoundFile
       return -1.0F;
       return -1.0F;
     }
-  }
-  
-  public int a()
-  {
-    return this.c;
   }
   
   public boolean a(MusicItemInfo paramMusicItemInfo, MusicSoundFile.ProgressListener paramProgressListener, int paramInt)
@@ -1640,10 +1630,15 @@ public class MusicSoundFile
     }
     throw new FileNotFoundException((String)localObject);
   }
+  
+  public int b()
+  {
+    return this.f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filter.music.MusicSoundFile
  * JD-Core Version:    0.7.0.1
  */

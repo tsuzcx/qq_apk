@@ -15,8 +15,8 @@ class ViolaFragmentPresenter$8
   
   public void a()
   {
-    this.a.a.d();
-    this.a.a.a();
+    this.a.b.h();
+    this.a.b.a();
     if (QLog.isColorLevel()) {
       QLog.d("ViolaFragment", 2, "reloadPage success!");
     }
@@ -25,8 +25,8 @@ class ViolaFragmentPresenter$8
   public void a(int paramInt)
   {
     Object localObject;
-    if (ViolaFragmentPresenter.a(this.a) != null) {
-      localObject = ViolaFragmentPresenter.a(this.a).getMainLooper();
+    if (ViolaFragmentPresenter.d(this.a) != null) {
+      localObject = ViolaFragmentPresenter.d(this.a).getMainLooper();
     } else {
       localObject = BaseActivity.sTopActivity.getMainLooper();
     }
@@ -57,7 +57,7 @@ class ViolaFragmentPresenter$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.presenter.ViolaFragmentPresenter.8
  * JD-Core Version:    0.7.0.1
  */

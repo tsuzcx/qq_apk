@@ -38,7 +38,7 @@ class BaseActivityInjectImpl$MyShakeListener$1
     if (bool)
     {
       localObject = this.a;
-      if ((SettingCloneUtil.readValue((Context)localObject, null, ((QBaseActivity)localObject).getString(2131694975), "qqsetting_screenshot_key", false)) && (ReflectionUtil.a(BaseApplicationImpl.sApplication)))
+      if ((SettingCloneUtil.readValue((Context)localObject, null, ((QBaseActivity)localObject).getString(2131892702), "qqsetting_screenshot_key", false)) && (ReflectionUtil.a(BaseApplicationImpl.sApplication)))
       {
         if (!this.a.isSupportScreenShot())
         {
@@ -56,16 +56,16 @@ class BaseActivityInjectImpl$MyShakeListener$1
           QBaseActivity localQBaseActivity = this.a;
           localQBaseActivity.screenShot = localIScreenShotService.newInstance((Context)localObject, localQBaseActivity.getWindow());
         }
-        if (!this.a.screenShot.a()) {
+        if (!this.a.screenShot.b()) {
           return;
         }
-        bool = this.a.screenShot.c();
+        bool = this.a.screenShot.d();
         if (bool)
         {
           ScreenShot.a("MyShakeListener - screenshot is showing");
           return;
         }
-        if (!this.a.screenShot.b())
+        if (!this.a.screenShot.c())
         {
           ScreenShot.a("MyShakeListener - screenshot cant activate");
           this.a.cleanScreenShot();
@@ -95,7 +95,7 @@ class BaseActivityInjectImpl$MyShakeListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.lifecycle.BaseActivityInjectImpl.MyShakeListener.1
  * JD-Core Version:    0.7.0.1
  */

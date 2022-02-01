@@ -14,35 +14,38 @@ import com.tencent.aelight.camera.aioeditor.setting.IQIMCameraContainer;
 public class AECirclePhotoUnit
   extends QIMCameraLifeCycleBaseUnit
 {
-  private AECirclePhotoListFragment jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListFragment;
-  private ICameraEntrance jdField_a_of_type_ComTencentAelightCameraAioeditorSettingICameraEntrance;
-  private IQIMCameraContainer jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer;
+  private IQIMCameraContainer a;
+  private ICameraEntrance b;
+  private AECirclePhotoListFragment c;
   
   public AECirclePhotoUnit(IQIMCameraContainer paramIQIMCameraContainer, ICameraEntrance paramICameraEntrance)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer = paramIQIMCameraContainer;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingICameraEntrance = paramICameraEntrance;
-  }
-  
-  public void I()
-  {
-    super.I();
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().getLayoutInflater().inflate(2064318611, null);
+    this.a = paramIQIMCameraContainer;
+    this.b = paramICameraEntrance;
   }
   
   public void a()
   {
-    Intent localIntent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().getIntent();
-    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 9);
+    Intent localIntent = this.a.getActivity().getIntent();
+    if (localIntent.getBooleanExtra("BUNDLE_KEY_FS_CAN_ONLY_EDIT_VIDEO", false)) {
+      localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 35);
+    } else {
+      localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 9);
+    }
     localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM_VIDEO", 1);
     localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", false);
     localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 0);
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListFragment = new AECirclePhotoListFragment();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().getFragmentManager().beginTransaction().add(2064122201, this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListFragment).commit();
+    this.c = new AECirclePhotoListFragment();
+    this.a.getActivity().getFragmentManager().beginTransaction().add(2063991080, this.c).commit();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    AECirclePhotoListFragment localAECirclePhotoListFragment = this.c;
+    if (localAECirclePhotoListFragment != null) {
+      localAECirclePhotoListFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
   }
   
   public void a(Bundle paramBundle)
@@ -50,40 +53,50 @@ public class AECirclePhotoUnit
     super.a(paramBundle);
   }
   
-  public boolean a()
+  public void ai()
   {
-    AECirclePhotoListFragment localAECirclePhotoListFragment = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListFragment;
-    if (localAECirclePhotoListFragment != null) {
-      return localAECirclePhotoListFragment.b();
-    }
-    return true;
+    super.ai();
   }
   
-  public void g()
+  public boolean ak()
   {
-    super.g();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().finish();
-  }
-  
-  public boolean i()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer == null) {
+    if (this.a == null) {
       return false;
     }
-    AECirclePhotoListFragment localAECirclePhotoListFragment = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListFragment;
-    if ((localAECirclePhotoListFragment != null) && (localAECirclePhotoListFragment.a())) {
+    AECirclePhotoListFragment localAECirclePhotoListFragment = this.c;
+    if ((localAECirclePhotoListFragment != null) && (localAECirclePhotoListFragment.f())) {
       return true;
     }
-    localAECirclePhotoListFragment = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListFragment;
+    localAECirclePhotoListFragment = this.c;
     if ((localAECirclePhotoListFragment != null) && (localAECirclePhotoListFragment.a != null)) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListFragment.a.a(null);
+      this.c.a.a(null);
     }
     return true;
+  }
+  
+  public boolean b()
+  {
+    AECirclePhotoListFragment localAECirclePhotoListFragment = this.c;
+    if (localAECirclePhotoListFragment != null) {
+      return localAECirclePhotoListFragment.g();
+    }
+    return true;
+  }
+  
+  public View j()
+  {
+    return this.a.getActivity().getLayoutInflater().inflate(2064056490, null);
+  }
+  
+  public void m()
+  {
+    super.m();
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoUnit
  * JD-Core Version:    0.7.0.1
  */

@@ -2,24 +2,27 @@ package com.tencent.aelight.camera.aeeditor.record;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import com.tencent.aelight.camera.aeeditor.data.AEEditorImageInfo;
 import com.tencent.aelight.camera.aeeditor.module.filter.ImageFilterInfoCache;
 import com.tencent.aelight.camera.aeeditor.module.imagetemplate.ImageTemplateControlListener;
+import com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerViewModel;
+import com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextViewModel;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.aelight.camera.util.api.IAECameraPrefsUtil;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.tavcut.aekit.AEKitModel;
-import com.tencent.tavcut.aekit.PreSegModel;
-import com.tencent.tavcut.bean.CropConfig;
-import com.tencent.tavcut.session.TAVCutImageSession;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.effect.MediaEffectModel;
-import com.tencent.weseevideo.model.template.MediaTemplateModel;
-import com.tencent.weseevideo.model.template.auto.AEFrameModel;
-import com.tencent.weseevideo.model.template.auto.AutomaticMediaTemplateModel;
+import com.tencent.qcircle.tavcut.aekit.AEKitModel;
+import com.tencent.qcircle.tavcut.aekit.PreSegModel;
+import com.tencent.qcircle.tavcut.bean.CropConfig;
+import com.tencent.qcircle.tavcut.session.TAVCutImageSession;
+import com.tencent.qcircle.weseevideo.model.MediaModel;
+import com.tencent.qcircle.weseevideo.model.effect.MediaEffectModel;
+import com.tencent.qcircle.weseevideo.model.template.MediaTemplateModel;
+import com.tencent.qcircle.weseevideo.model.template.auto.AEFrameModel;
+import com.tencent.qcircle.weseevideo.model.template.auto.AutomaticMediaTemplateModel;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,56 +33,96 @@ import org.json.JSONObject;
 public class AEEditorImageRecord
   extends AEEditorBaseRecord
 {
-  protected static AEEditorImageRecord a;
-  protected static byte[] a;
   public static final String b = "AEEditorImageRecord";
-  private SparseArray<Boolean> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private AEEditorRecordDataManager jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager;
-  private TAVCutImageSession jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  protected static byte[] c = new byte[1];
+  protected static AEEditorImageRecord d;
+  private TAVCutImageSession e;
+  private SparseArray<Boolean> f = new SparseArray();
+  private ArrayList<String> g;
+  private AEEditorRecordDataManager h;
   
-  static
+  private Matrix a(String paramString)
   {
-    jdField_a_of_type_ArrayOfByte = new byte[1];
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = paramString.split(",");
+      if ((paramString != null) && (paramString.length == 9))
+      {
+        Matrix localMatrix = new Matrix();
+        float[] arrayOfFloat = new float[9];
+        int i = 0;
+        while (i < 9)
+        {
+          arrayOfFloat[i] = Float.parseFloat(paramString[i]);
+          i += 1;
+        }
+        localMatrix.setValues(arrayOfFloat);
+        return localMatrix;
+      }
+    }
+    catch (Exception paramString)
+    {
+      AEQLog.a(b, paramString);
+    }
+    return null;
   }
   
   public static AEEditorImageRecord a()
   {
-    if (jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorImageRecord == null) {
-      synchronized (jdField_a_of_type_ArrayOfByte)
+    if (d == null) {
+      synchronized (c)
       {
-        if (jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorImageRecord == null) {
-          jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorImageRecord = new AEEditorImageRecord();
+        if (d == null) {
+          d = new AEEditorImageRecord();
         }
       }
     }
-    return jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorImageRecord;
+    return d;
   }
   
-  public void a()
+  private String a(Matrix paramMatrix)
   {
-    AEEditorRecordDataManager localAEEditorRecordDataManager = this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager;
-    if ((localAEEditorRecordDataManager != null) && (localAEEditorRecordDataManager.b())) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager.b();
+    if (paramMatrix == null) {
+      return "";
     }
+    float[] arrayOfFloat = new float[9];
+    paramMatrix.getValues(arrayOfFloat);
+    paramMatrix = new StringBuffer();
+    int i = 0;
+    while (i < arrayOfFloat.length)
+    {
+      if (i > 0) {
+        paramMatrix.append(",");
+      }
+      paramMatrix.append(arrayOfFloat[i]);
+      i += 1;
+    }
+    return paramMatrix.toString();
   }
   
   public void a(Intent paramIntent, ArrayList<String> paramArrayList)
   {
-    paramIntent.putExtra("key_qcircle_publish_back_edit", this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager.b());
+    AEEditorRecordDataManager localAEEditorRecordDataManager = this.h;
+    if (localAEEditorRecordDataManager == null) {
+      return;
+    }
+    paramIntent.putExtra("key_qcircle_publish_back_edit", localAEEditorRecordDataManager.k());
     if (paramArrayList == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+    if (this.g == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager.b())
+    if (this.h.k())
     {
       int i = 0;
       while (i < paramArrayList.size())
       {
-        if (!((Boolean)this.jdField_a_of_type_AndroidUtilSparseArray.get(i, Boolean.valueOf(false))).booleanValue()) {
-          paramArrayList.set(i, this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        if (!((Boolean)this.f.get(i, Boolean.valueOf(false))).booleanValue()) {
+          paramArrayList.set(i, this.g.get(i));
         }
         i += 1;
       }
@@ -88,16 +131,16 @@ public class AEEditorImageRecord
   
   public void a(ImageTemplateControlListener paramImageTemplateControlListener, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession == null) {
+    if (this.e == null) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager.a() != 2) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager.a() != 1)) {
+    if ((this.h.d() != 2) && (this.h.d() != 1)) {
       return;
     }
-    if (((Boolean)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt, Boolean.valueOf(false))).booleanValue()) {
+    if (((Boolean)this.f.get(paramInt, Boolean.valueOf(false))).booleanValue()) {
       return;
     }
-    JSONObject localJSONObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager.a(paramInt);
+    JSONObject localJSONObject = this.h.b(paramInt);
     if (localJSONObject != null) {
       try
       {
@@ -107,26 +150,26 @@ public class AEEditorImageRecord
         }
         localObject = localJSONObject.optJSONObject("filter");
         if (localObject != null) {
-          b(paramImageTemplateControlListener, this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession, (JSONObject)localObject, paramInt);
+          b(paramImageTemplateControlListener, this.e, (JSONObject)localObject, paramInt);
         }
         localObject = localJSONObject.optJSONObject("preseg");
         if (localObject != null) {
-          c(paramImageTemplateControlListener, this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession, (JSONObject)localObject, paramInt);
+          c(paramImageTemplateControlListener, this.e, (JSONObject)localObject, paramInt);
         }
         localObject = localJSONObject.optJSONObject("frame");
         if (localObject != null) {
-          a(paramImageTemplateControlListener, this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession, (JSONObject)localObject, paramInt);
+          a(paramImageTemplateControlListener, this.e, (JSONObject)localObject, paramInt);
         }
         localObject = localJSONObject.optJSONArray("sticker");
         if (localObject != null) {
-          a(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession, (JSONArray)localObject, paramInt);
+          a(this.e, (JSONArray)localObject, paramInt);
         }
         localJSONObject = localJSONObject.optJSONObject("template");
         if (localJSONObject != null) {
           b(paramImageTemplateControlListener, localJSONObject, paramInt);
         }
-        this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.updateAndRenderTemplate(paramInt, false, new AEEditorImageRecord.1(this, paramInt));
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, Boolean.valueOf(true));
+        this.e.updateAndRenderTemplate(paramInt, false, new AEEditorImageRecord.1(this, paramInt));
+        this.f.put(paramInt, Boolean.valueOf(true));
         return;
       }
       catch (Exception paramImageTemplateControlListener)
@@ -168,10 +211,15 @@ public class AEEditorImageRecord
     try
     {
       paramInt = paramJSONObject.optInt("crop_type");
-      paramJSONObject = new CropConfig((float)paramJSONObject.optDouble("crop_x"), (float)paramJSONObject.optDouble("crop_y"), (float)paramJSONObject.optDouble("crop_w"), (float)paramJSONObject.optDouble("crop_h"));
+      float f1 = (float)paramJSONObject.optDouble("crop_x");
+      float f2 = (float)paramJSONObject.optDouble("crop_y");
+      float f3 = (float)paramJSONObject.optDouble("crop_w");
+      float f4 = (float)paramJSONObject.optDouble("crop_h");
+      paramJSONObject = a(paramJSONObject.optString("crop_matrix"));
+      CropConfig localCropConfig = new CropConfig(f1, f2, f3, f4);
       if (paramImageTemplateControlListener != null)
       {
-        paramImageTemplateControlListener.a(paramJSONObject, paramInt);
+        paramImageTemplateControlListener.a(localCropConfig, paramInt, paramJSONObject);
         return;
       }
     }
@@ -181,15 +229,16 @@ public class AEEditorImageRecord
     }
   }
   
-  public void a(TAVCutImageSession paramTAVCutImageSession, Bundle paramBundle, ArrayList<String> paramArrayList)
+  public void a(TAVCutImageSession paramTAVCutImageSession, Bundle paramBundle, ArrayList<String> paramArrayList, AEEditorTextViewModel paramAEEditorTextViewModel, AEEditorStickerViewModel paramAEEditorStickerViewModel)
   {
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession = paramTAVCutImageSession;
-    this.jdField_a_of_type_JavaUtilArrayList = paramBundle.getStringArrayList("key_qcircle_publish_out_imagepath");
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager = AEEditorRecordDataManager.a();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager.a.size() == 0) {
-      this.jdField_a_of_type_JavaUtilArrayList = null;
+    super.a(paramAEEditorTextViewModel, paramAEEditorStickerViewModel);
+    this.e = paramTAVCutImageSession;
+    this.g = paramBundle.getStringArrayList("key_qcircle_publish_out_imagepath");
+    this.h = AEEditorRecordDataManager.a();
+    if (this.h.b.size() == 0) {
+      this.g = null;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager.a(paramArrayList, this.jdField_a_of_type_JavaUtilArrayList);
+    this.h.a(paramArrayList, this.g);
   }
   
   public void a(TAVCutImageSession paramTAVCutImageSession, JSONArray paramJSONArray, int paramInt)
@@ -217,77 +266,79 @@ public class AEEditorImageRecord
       try
       {
         JSONArray localJSONArray = new JSONArray();
-        List localList = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getMediaModels();
+        List localList = this.e.getMediaModels();
         if (localList != null) {}
         try
         {
           if (localList.size() > 0)
           {
             i = 0;
-            Object localObject2 = paramList;
+            Object localObject3 = paramList;
+            Object localObject2 = this;
             Object localObject1 = paramImageFilterInfoCache;
             if (i < localList.size())
             {
-              Object localObject3 = (MediaModel)localList.get(i);
-              if (localObject3 == null) {
-                break label715;
+              Object localObject4 = (MediaModel)localList.get(i);
+              if (localObject4 == null) {
+                break label751;
               }
               JSONObject localJSONObject1 = new JSONObject();
-              if ((localObject2 != null) && (paramList.size() > i))
+              if ((localObject3 != null) && (paramList.size() > i))
               {
-                j = ((AEEditorImageInfo)((List)localObject2).get(i)).c;
-                f1 = ((AEEditorImageInfo)((List)localObject2).get(i)).a.getX();
-                f2 = ((AEEditorImageInfo)((List)localObject2).get(i)).a.getY();
-                float f3 = ((AEEditorImageInfo)((List)localObject2).get(i)).a.getWidth();
-                float f4 = ((AEEditorImageInfo)((List)localObject2).get(i)).a.getHeight();
-                localObject2 = new JSONObject();
-                ((JSONObject)localObject2).put("crop_type", j);
-                ((JSONObject)localObject2).put("crop_x", f1);
-                ((JSONObject)localObject2).put("crop_y", f2);
-                ((JSONObject)localObject2).put("crop_w", f3);
-                ((JSONObject)localObject2).put("crop_h", f4);
-                localJSONObject1.put("crop", localObject2);
+                j = ((AEEditorImageInfo)((List)localObject3).get(i)).e;
+                f1 = ((AEEditorImageInfo)((List)localObject3).get(i)).d.getX();
+                f2 = ((AEEditorImageInfo)((List)localObject3).get(i)).d.getY();
+                float f3 = ((AEEditorImageInfo)((List)localObject3).get(i)).d.getWidth();
+                float f4 = ((AEEditorImageInfo)((List)localObject3).get(i)).d.getHeight();
+                localObject5 = new JSONObject();
+                ((JSONObject)localObject5).put("crop_type", j);
+                ((JSONObject)localObject5).put("crop_x", f1);
+                ((JSONObject)localObject5).put("crop_y", f2);
+                ((JSONObject)localObject5).put("crop_w", f3);
+                ((JSONObject)localObject5).put("crop_h", f4);
+                ((JSONObject)localObject5).put("crop_matrix", ((AEEditorImageRecord)localObject2).a(((AEEditorImageInfo)((List)localObject3).get(i)).a()));
+                localJSONObject1.put("crop", localObject5);
               }
-              Object localObject4 = ((MediaModel)localObject3).getMediaTemplateModel().getAutomaticMediaTemplateModel();
-              if (localObject4 != null)
+              Object localObject5 = ((MediaModel)localObject4).getMediaTemplateModel().getAutomaticMediaTemplateModel();
+              if (localObject5 != null)
               {
-                localObject2 = ((AutomaticMediaTemplateModel)localObject4).getTemplateDir();
-                if (!TextUtils.isEmpty((CharSequence)localObject2))
+                localObject3 = ((AutomaticMediaTemplateModel)localObject5).getTemplateDir();
+                if (!TextUtils.isEmpty((CharSequence)localObject3))
                 {
-                  localObject4 = ((AutomaticMediaTemplateModel)localObject4).getAEFrameModel().getId();
-                  localObject5 = new JSONObject();
-                  ((JSONObject)localObject5).put("id", localObject4);
-                  ((JSONObject)localObject5).put("dir", localObject2);
-                  localJSONObject1.put("frame", localObject5);
+                  localObject5 = ((AutomaticMediaTemplateModel)localObject5).getAEFrameModel().getId();
+                  localJSONObject2 = new JSONObject();
+                  localJSONObject2.put("id", localObject5);
+                  localJSONObject2.put("dir", localObject3);
+                  localJSONObject1.put("frame", localJSONObject2);
                 }
               }
-              localObject2 = ((MediaModel)localObject3).getMediaEffectModel();
-              localObject3 = a(((MediaEffectModel)localObject2).getStickerModelList());
-              int j = ((JSONArray)localObject3).length();
+              localObject3 = ((MediaModel)localObject4).getMediaEffectModel();
+              localObject2 = ((AEEditorImageRecord)localObject2).a(((MediaEffectModel)localObject3).getStickerModelList());
+              int j = ((JSONArray)localObject2).length();
               if (j > 0) {
-                localJSONObject1.put("sticker", localObject3);
+                localJSONObject1.put("sticker", localObject2);
               }
-              Object localObject5 = ((MediaEffectModel)localObject2).getAeKitModel();
+              localObject5 = ((MediaEffectModel)localObject3).getAeKitModel();
               if (localObject5 == null) {
-                break label712;
+                break label748;
               }
               float f1 = ((AEKitModel)localObject5).getEffectStrength();
-              localObject3 = ((AEKitModel)localObject5).getLutPath();
+              localObject2 = ((AEKitModel)localObject5).getLutPath();
               float f2 = ((AEKitModel)localObject5).getGlowAlpha();
               ((AEKitModel)localObject5).getAdjustParams();
               localObject4 = ((AEKitModel)localObject5).getMaterial();
               localObject5 = ((AEKitModel)localObject5).getOverlayImgPath();
               JSONObject localJSONObject2 = new JSONObject();
               if (localObject1 != null) {
-                localJSONObject2.putOpt("filter_id", ((ImageFilterInfoCache)localObject1).b(i));
+                localJSONObject2.putOpt("filter_id", ((ImageFilterInfoCache)localObject1).j(i));
               }
               localJSONObject2.put("effectStrength", f1);
-              localJSONObject2.put("lutPath", localObject3);
+              localJSONObject2.put("lutPath", localObject2);
               localJSONObject2.put("glowStrength", f2);
               localJSONObject2.put("materialPath", localObject4);
               localJSONObject2.put("overlayImgPath", localObject5);
               localJSONObject1.put("filter", localJSONObject2);
-              localObject1 = ((MediaEffectModel)localObject2).getPreSegModel();
+              localObject1 = ((MediaEffectModel)localObject3).getPreSegModel();
               if ((localObject1 != null) && (!TextUtils.isEmpty(((PreSegModel)localObject1).getSegMaterial())))
               {
                 localObject2 = new JSONObject();
@@ -301,11 +352,11 @@ public class AEEditorImageRecord
                 localJSONObject1.put("template", localObject1);
               }
               localJSONArray.put(localJSONObject1);
-              break label715;
+              break label751;
             }
           }
           ((IAECameraPrefsUtil)QRoute.api(IAECameraPrefsUtil.class)).putLong("key_ae_editor_record_type", 1L, 0);
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager.a(paramArrayList1, paramArrayList2, localJSONArray, this.jdField_a_of_type_AndroidUtilSparseArray, paramInt);
+          this.h.a(paramArrayList1, paramArrayList2, localJSONArray, this.f, paramInt);
           return;
         }
         catch (Exception paramArrayList1) {}
@@ -313,18 +364,18 @@ public class AEEditorImageRecord
       }
       catch (Exception paramArrayList1) {}
       return;
-      label712:
+      label748:
       continue;
-      label715:
+      label751:
       i += 1;
     }
   }
   
   public void b()
   {
-    AEEditorRecordDataManager localAEEditorRecordDataManager = this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager;
-    if (localAEEditorRecordDataManager != null) {
-      localAEEditorRecordDataManager.c();
+    AEEditorRecordDataManager localAEEditorRecordDataManager = this.h;
+    if ((localAEEditorRecordDataManager != null) && (localAEEditorRecordDataManager.k())) {
+      this.h.g();
     }
   }
   
@@ -339,12 +390,12 @@ public class AEEditorImageRecord
         return;
       }
       str1 = paramJSONObject.optString("filter_id");
-      float f = (float)paramJSONObject.optDouble("effectStrength");
+      float f1 = (float)paramJSONObject.optDouble("effectStrength");
       String str2 = paramJSONObject.optString("lutPath");
-      paramTAVCutImageSession.updateTemplateAEKitModel(paramInt, f, str2, (float)paramJSONObject.optDouble("glowStrength"), null, paramJSONObject.optString("materialPath"));
+      paramTAVCutImageSession.updateTemplateAEKitModel(paramInt, f1, str2, (float)paramJSONObject.optDouble("glowStrength"), null, paramJSONObject.optString("materialPath"));
       if (paramImageTemplateControlListener != null)
       {
-        paramImageTemplateControlListener.a(str1, str2, f);
+        paramImageTemplateControlListener.a(str1, str2, f1);
         return;
       }
     }
@@ -373,10 +424,9 @@ public class AEEditorImageRecord
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorRecordDataManager != null)
-    {
-      AEEditorRecordDataManager.e();
-      jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorImageRecord = null;
+    AEEditorRecordDataManager localAEEditorRecordDataManager = this.h;
+    if (localAEEditorRecordDataManager != null) {
+      localAEEditorRecordDataManager.h();
     }
   }
   
@@ -396,10 +446,19 @@ public class AEEditorImageRecord
       AEQLog.a(b, paramImageTemplateControlListener);
     }
   }
+  
+  public void d()
+  {
+    if (this.h != null)
+    {
+      AEEditorRecordDataManager.j();
+      d = null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.record.AEEditorImageRecord
  * JD-Core Version:    0.7.0.1
  */

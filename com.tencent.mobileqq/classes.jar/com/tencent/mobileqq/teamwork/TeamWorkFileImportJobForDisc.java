@@ -17,8 +17,8 @@ import org.json.JSONObject;
 public class TeamWorkFileImportJobForDisc
   extends TeamWorkFileImportJob
 {
-  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new TeamWorkFileImportJobForDisc.1(this);
-  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  FileManagerEntity a;
+  private FileTransferObserver d = new TeamWorkFileImportJobForDisc.1(this);
   
   public TeamWorkFileImportJobForDisc(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
@@ -35,23 +35,23 @@ public class TeamWorkFileImportJobForDisc
   
   public void a(AppInterface paramAppInterface)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo != null) && ((paramAppInterface instanceof QQAppInterface)))
+    if ((this.b != null) && ((paramAppInterface instanceof QQAppInterface)))
     {
       paramAppInterface = (QQAppInterface)paramAppInterface;
-      if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Int == 3000) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString)))
+      if ((this.b.m) && (this.b.a == 3000) && (!TextUtils.isEmpty(this.b.b)))
       {
-        Object localObject = paramAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Long);
+        Object localObject = paramAppInterface.getMessageFacade().b(this.b.b, this.b.a, this.b.e);
         if ((localObject != null) && ((localObject instanceof MessageForFile))) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = FileManagerUtil.a(paramAppInterface, (MessageForFile)localObject);
+          this.a = FileManagerUtil.a(paramAppInterface, (MessageForFile)localObject);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramAppInterface.getFileManagerDataCenter().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Int);
+        if (this.a == null) {
+          this.a = paramAppInterface.getFileManagerDataCenter().a(this.b.e, this.b.b, this.b.a);
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-        if ((localObject != null) && (!TextUtils.isEmpty(((FileManagerEntity)localObject).Uuid)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin)))
+        localObject = this.a;
+        if ((localObject != null) && (!TextUtils.isEmpty(((FileManagerEntity)localObject).Uuid)) && (!TextUtils.isEmpty(this.a.peerUin)))
         {
           i = 1;
-          paramAppInterface.getFileTransferHandler().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver);
+          paramAppInterface.getFileTransferHandler().a(this.a.nSessionId, this.a.fileName, Long.parseLong(this.a.peerUin), this.a.Uuid, this.d);
           break label227;
         }
       }
@@ -59,16 +59,16 @@ public class TeamWorkFileImportJobForDisc
       label227:
       if (i == 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.fileImportFromLocalFile(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
+        this.b.m = false;
+        this.c.fileImportFromLocalFile(this.b);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.addToFileImportingMap(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
+      this.c.addToFileImportingMap(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForDisc
  * JD-Core Version:    0.7.0.1
  */

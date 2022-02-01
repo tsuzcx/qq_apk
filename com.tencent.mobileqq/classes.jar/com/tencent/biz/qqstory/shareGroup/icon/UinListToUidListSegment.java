@@ -34,7 +34,7 @@ public class UinListToUidListSegment
     this.a = localStringBuilder.toString();
   }
   
-  private List<String> a(@NonNull List<String> paramList)
+  private List<String> b(@NonNull List<String> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     UserManager localUserManager = (UserManager)SuperManager.a(2);
@@ -51,7 +51,7 @@ public class UinListToUidListSegment
     return localArrayList;
   }
   
-  private void b(@NonNull List<String> paramList)
+  private void c(@NonNull List<String> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
@@ -63,11 +63,11 @@ public class UinListToUidListSegment
   
   public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if ((paramUpdateUserInfoEvent != null) && (!paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null))
+    if ((paramUpdateUserInfoEvent != null) && (!paramUpdateUserInfoEvent.g.isFail()) && (paramUpdateUserInfoEvent.b != null))
     {
       IconLog.b(this.a, "convert user info success");
       ArrayList localArrayList = new ArrayList();
-      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
+      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.b.iterator();
       while (paramUpdateUserInfoEvent.hasNext()) {
         localArrayList.add(((QQUserUIItem)paramUpdateUserInfoEvent.next()).uid);
       }
@@ -78,7 +78,7 @@ public class UinListToUidListSegment
     if (paramUpdateUserInfoEvent == null) {
       paramUpdateUserInfoEvent = new ErrorMessage(-1, "event is null");
     } else {
-      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
+      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.g;
     }
     notifyError(paramUpdateUserInfoEvent);
   }
@@ -88,7 +88,7 @@ public class UinListToUidListSegment
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       paramJobContext = Collections.unmodifiableList(paramList);
-      paramList = a(paramJobContext);
+      paramList = b(paramJobContext);
       if (paramList != null)
       {
         IconLog.a(this.a, "getUnionIdListFromCache ok");
@@ -96,7 +96,7 @@ public class UinListToUidListSegment
         return;
       }
       IconLog.a(this.a, "fireGetUnionIdListFromServer");
-      b(paramJobContext);
+      c(paramJobContext);
       return;
     }
     notifyError(new ErrorMessage(-1, "uinList should not be empty"));

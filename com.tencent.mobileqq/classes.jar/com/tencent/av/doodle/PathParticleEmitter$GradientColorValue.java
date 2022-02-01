@@ -5,63 +5,57 @@ import java.io.BufferedReader;
 public class PathParticleEmitter$GradientColorValue
   extends PathParticleEmitter.ParticleValue
 {
-  private static float[] b;
-  float[] a;
-  private float[] c = { 1.0F, 1.0F, 1.0F };
-  
-  static
-  {
-    jdField_b_of_type_ArrayOfFloat = new float[4];
-  }
+  private static float[] d = new float[4];
+  float[] a = { 0.0F };
+  private float[] e = { 1.0F, 1.0F, 1.0F };
   
   public PathParticleEmitter$GradientColorValue()
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F };
-    this.jdField_b_of_type_Boolean = true;
+    this.c = true;
   }
   
   public void a(BufferedReader paramBufferedReader)
   {
     super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
-    this.c = new float[PathParticleEmitter.a(paramBufferedReader, "colorsCount")];
+    this.e = new float[PathParticleEmitter.c(paramBufferedReader, "colorsCount")];
     int j = 0;
     int i = 0;
     float[] arrayOfFloat;
     StringBuilder localStringBuilder;
     for (;;)
     {
-      arrayOfFloat = this.c;
+      arrayOfFloat = this.e;
       if (i >= arrayOfFloat.length) {
         break;
       }
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("colors");
       localStringBuilder.append(i);
-      arrayOfFloat[i] = PathParticleEmitter.a(paramBufferedReader, localStringBuilder.toString());
+      arrayOfFloat[i] = PathParticleEmitter.d(paramBufferedReader, localStringBuilder.toString());
       i += 1;
     }
-    this.jdField_a_of_type_ArrayOfFloat = new float[PathParticleEmitter.a(paramBufferedReader, "timelineCount")];
+    this.a = new float[PathParticleEmitter.c(paramBufferedReader, "timelineCount")];
     i = j;
     for (;;)
     {
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+      arrayOfFloat = this.a;
       if (i >= arrayOfFloat.length) {
         break;
       }
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("timeline");
       localStringBuilder.append(i);
-      arrayOfFloat[i] = PathParticleEmitter.a(paramBufferedReader, localStringBuilder.toString());
+      arrayOfFloat[i] = PathParticleEmitter.d(paramBufferedReader, localStringBuilder.toString());
       i += 1;
     }
   }
   
   public float[] a(float paramFloat)
   {
-    float[] arrayOfFloat2 = this.jdField_a_of_type_ArrayOfFloat;
+    float[] arrayOfFloat2 = this.a;
     int k = arrayOfFloat2.length;
     int i = 1;
     int j = 0;
@@ -77,13 +71,13 @@ public class PathParticleEmitter$GradientColorValue
     label53:
     float f4 = arrayOfFloat2[j];
     j *= 3;
-    float[] arrayOfFloat1 = this.c;
+    float[] arrayOfFloat1 = this.e;
     float f1 = arrayOfFloat1[j];
     float f2 = arrayOfFloat1[(j + 1)];
     float f3 = arrayOfFloat1[(j + 2)];
     if (i == -1)
     {
-      arrayOfFloat1 = jdField_b_of_type_ArrayOfFloat;
+      arrayOfFloat1 = d;
       arrayOfFloat1[0] = f1;
       arrayOfFloat1[1] = f2;
       arrayOfFloat1[2] = f3;
@@ -91,7 +85,7 @@ public class PathParticleEmitter$GradientColorValue
     }
     paramFloat = (paramFloat - f4) / (arrayOfFloat2[i] - f4);
     i *= 3;
-    arrayOfFloat2 = jdField_b_of_type_ArrayOfFloat;
+    arrayOfFloat2 = d;
     arrayOfFloat2[0] = (f1 + (arrayOfFloat1[i] - f1) * paramFloat);
     arrayOfFloat2[1] = (f2 + (arrayOfFloat1[(i + 1)] - f2) * paramFloat);
     arrayOfFloat2[2] = (f3 + (arrayOfFloat1[(i + 2)] - f3) * paramFloat);

@@ -29,7 +29,7 @@ final class PublicAccountUtilImpl$9
     }
     if (!paramBoolean)
     {
-      PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+      PublicAccountUtilImpl.access$300(this.a, 2131892951);
       return;
     }
     try
@@ -56,13 +56,13 @@ final class PublicAccountUtilImpl$9
             ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountUtilImpl.9.1(this, paramBundle), 10L);
             return;
           }
-          PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+          PublicAccountUtilImpl.access$300(this.a, 2131892951);
           return;
         }
-        PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+        PublicAccountUtilImpl.access$300(this.a, 2131892951);
         return;
       }
-      PublicAccountUtilImpl.access$300(this.jdField_a_of_type_AndroidContentContext, 2131695217);
+      PublicAccountUtilImpl.access$300(this.a, 2131892951);
       return;
     }
     catch (Exception paramBundle) {}
@@ -70,7 +70,7 @@ final class PublicAccountUtilImpl$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.9
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.camerasdk.avreport;
 
-import com.tencent.aekit.api.standard.AEModule;
-
 public class AEKitBean
   extends BaseBean
 {
@@ -68,7 +66,7 @@ public class AEKitBean
   
   public AEKitBean(String paramString)
   {
-    super("AEKit", paramString, AEModule.getVersion());
+    super("LightSDK", paramString, "2.3.5");
   }
   
   public AEKitBean(String paramString1, String paramString2, String paramString3)
@@ -155,7 +153,7 @@ public class AEKitBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.AEKitBean
  * JD-Core Version:    0.7.0.1
  */

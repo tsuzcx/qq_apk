@@ -39,7 +39,7 @@ class VideoCoverFragment$5
       ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
       int i = paramURLDrawable.getIntrinsicWidth();
       int j = paramURLDrawable.getIntrinsicHeight();
-      localLayoutParams.width = (AIOUtils.b(23.0F, VideoCoverFragment.a(this.a).getResources()) * i / j);
+      localLayoutParams.width = (AIOUtils.b(23.0F, VideoCoverFragment.i(this.a).getResources()) * i / j);
       paramView.setLayoutParams(localLayoutParams);
       ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
       paramView.requestLayout();
@@ -48,7 +48,7 @@ class VideoCoverFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.5
  * JD-Core Version:    0.7.0.1
  */

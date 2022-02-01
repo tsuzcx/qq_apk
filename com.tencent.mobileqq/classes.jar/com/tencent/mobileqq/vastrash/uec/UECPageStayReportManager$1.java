@@ -22,11 +22,11 @@ class UECPageStayReportManager$1
       localInterruptedException.printStackTrace();
     }
     ArrayList localArrayList2 = new ArrayList();
-    synchronized (UECPageStayReportManager.a(this.this$0))
+    synchronized (UECPageStayReportManager.b(this.this$0))
     {
-      localArrayList2.addAll(UECPageStayReportManager.a(this.this$0));
-      UECPageStayReportManager.a(this.this$0).clear();
-      UECPageStayReportManager.a(this.this$0).set(false);
+      localArrayList2.addAll(UECPageStayReportManager.b(this.this$0));
+      UECPageStayReportManager.b(this.this$0).clear();
+      UECPageStayReportManager.c(this.this$0).set(false);
       UECPageStayReportManager.a(this.this$0, localArrayList2);
       if (QLog.isDevelopLevel()) {
         QLog.d("UECPageStayReportManager", 4, "report finish!!!");
@@ -37,7 +37,7 @@ class UECPageStayReportManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.uec.UECPageStayReportManager.1
  * JD-Core Version:    0.7.0.1
  */

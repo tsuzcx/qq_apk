@@ -15,25 +15,25 @@ class HelloQQHelper$1
     localStringBuilder.append("onDetectResult detected:");
     localStringBuilder.append(paramFloat);
     AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
-    if ((paramFloat > HelloQQHelper.a(this.a).a) && (System.currentTimeMillis() - HelloQQHelper.a(this.a) > 2500L))
+    if ((paramFloat > HelloQQHelper.a(this.a).i) && (System.currentTimeMillis() - HelloQQHelper.b(this.a) > 2500L))
     {
       HelloQQHelper.a(this.a, System.currentTimeMillis());
-      if (HelloQQHelper.a(this.a) != null) {
-        HelloQQHelper.a(this.a).a();
+      if (HelloQQHelper.c(this.a) != null) {
+        HelloQQHelper.c(this.a).a();
       }
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (HelloQQHelper.a(this.a) != null) {
-      HelloQQHelper.a(this.a).a(paramBoolean);
+    if (HelloQQHelper.c(this.a) != null) {
+      HelloQQHelper.c(this.a).a(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.HelloQQHelper.1
  * JD-Core Version:    0.7.0.1
  */

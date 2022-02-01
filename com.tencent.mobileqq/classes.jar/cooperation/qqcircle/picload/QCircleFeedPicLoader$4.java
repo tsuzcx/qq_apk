@@ -28,13 +28,13 @@ class QCircleFeedPicLoader$4
       localObject = this.val$option;
       ((Option)localObject).mLoadType = 2;
       QCircleFeedPicLoader.access$000(this.this$0, (Option)localObject, this.val$listener);
-      QCircleNetSpeed.g().start();
+      RFWNetSpeed.g().start();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.picload.QCircleFeedPicLoader.4
  * JD-Core Version:    0.7.0.1
  */

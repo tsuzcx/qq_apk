@@ -11,7 +11,6 @@ import com.tencent.mobileqq.apollo.model.MessageForApollo;
 import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
 import com.tencent.mobileqq.apollo.utils.ApolloRecentManager;
 import com.tencent.mobileqq.apollo.utils.api.IApolloClassFactory;
-import com.tencent.mobileqq.apollo.web.CmShowWebIPCModule;
 
 public class ApolloClassFactoryImpl
   implements IApolloClassFactory
@@ -61,11 +60,6 @@ public class ApolloClassFactoryImpl
     return ApolloStoreActivity.class;
   }
   
-  public Class getCmShowModuleClass()
-  {
-    return CmShowWebIPCModule.class;
-  }
-  
   public Class getMessageForApolloClass()
   {
     return MessageForApollo.class;
@@ -73,7 +67,7 @@ public class ApolloClassFactoryImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.impl.ApolloClassFactoryImpl
  * JD-Core Version:    0.7.0.1
  */

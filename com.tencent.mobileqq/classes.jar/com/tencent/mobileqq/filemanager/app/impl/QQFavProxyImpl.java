@@ -54,19 +54,19 @@ public class QQFavProxyImpl
       if (localObject1 == null) {
         return;
       }
-      if (((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_JavaUtilList == null) {
-        ((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+      if (((IQQFavProxy.GetFileListResult)localObject1).d == null) {
+        ((IQQFavProxy.GetFileListResult)localObject1).d = new ArrayList();
       }
       if (bool)
       {
         this.mResultCbs.remove(Long.valueOf(paramLong));
         if (paramList != null) {
-          ((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_JavaUtilList.addAll(paramList);
+          ((IQQFavProxy.GetFileListResult)localObject1).d.addAll(paramList);
         }
         if (paramBundle != null) {
-          ((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_Long = paramBundle.getLong("resultTimestamp");
+          ((IQQFavProxy.GetFileListResult)localObject1).c = paramBundle.getLong("resultTimestamp");
         }
-        ((IQQFavProxy.GetFileListResult)localObject1).a(0, ((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_JavaUtilList, paramBundle);
+        ((IQQFavProxy.GetFileListResult)localObject1).a(0, ((IQQFavProxy.GetFileListResult)localObject1).d, paramBundle);
         return;
       }
       localObject2 = TAG;
@@ -75,10 +75,10 @@ public class QQFavProxyImpl
       localStringBuilder.append("onGettedFileList. fav is getting and waiting");
       QLog.i((String)localObject2, 1, localStringBuilder.toString());
       if (paramList != null) {
-        ((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_JavaUtilList.addAll(paramList);
+        ((IQQFavProxy.GetFileListResult)localObject1).d.addAll(paramList);
       }
       if (paramBundle != null) {
-        ((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_Long = paramBundle.getLong("resultTimestamp");
+        ((IQQFavProxy.GetFileListResult)localObject1).c = paramBundle.getLong("resultTimestamp");
       }
     }
   }
@@ -131,7 +131,7 @@ public class QQFavProxyImpl
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(FTL);
     localStringBuilder.append("downloadThumb. favId:");
-    localStringBuilder.append(paramFavFileInfo.jdField_a_of_type_Long);
+    localStringBuilder.append(paramFavFileInfo.a);
     localStringBuilder.append(" format:");
     localStringBuilder.append(i);
     QLog.i(str, 1, localStringBuilder.toString());
@@ -162,10 +162,10 @@ public class QQFavProxyImpl
     {
       localObject = (IQQFavProxy.GetFileListResult)((HashMap)localObject).get(Long.valueOf(paramLong));
       if (paramList != null) {
-        paramList.addAll(((IQQFavProxy.GetFileListResult)localObject).jdField_a_of_type_JavaUtilList);
+        paramList.addAll(((IQQFavProxy.GetFileListResult)localObject).d);
       }
       if (localObject != null) {
-        return ((IQQFavProxy.GetFileListResult)localObject).jdField_a_of_type_Long;
+        return ((IQQFavProxy.GetFileListResult)localObject).c;
       }
     }
     return 0L;
@@ -300,7 +300,7 @@ public class QQFavProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.impl.QQFavProxyImpl
  * JD-Core Version:    0.7.0.1
  */

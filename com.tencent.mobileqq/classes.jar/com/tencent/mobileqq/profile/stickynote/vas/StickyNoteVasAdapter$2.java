@@ -13,14 +13,14 @@ class StickyNoteVasAdapter$2
   
   public void a(boolean paramBoolean, UniBusiGetOneItemWithCheckRsp paramUniBusiGetOneItemWithCheckRsp)
   {
-    if (StickyNoteVasAdapter.a(this.a) == null) {
+    if (StickyNoteVasAdapter.e(this.a) == null) {
       return;
     }
     if (!paramBoolean)
     {
       if ((paramUniBusiGetOneItemWithCheckRsp != null) && (paramUniBusiGetOneItemWithCheckRsp.stDetail != null))
       {
-        if (paramUniBusiGetOneItemWithCheckRsp.stDetail.itemId == StickyNoteVasAdapter.a(this.a).itemId)
+        if (paramUniBusiGetOneItemWithCheckRsp.stDetail.itemId == StickyNoteVasAdapter.e(this.a).itemId)
         {
           if (paramUniBusiGetOneItemWithCheckRsp.ret == 0)
           {
@@ -28,17 +28,17 @@ class StickyNoteVasAdapter$2
             this.a.b();
             return;
           }
-          if (StickyNoteVasAdapter.a(this.a))
+          if (StickyNoteVasAdapter.f(this.a))
           {
             paramUniBusiGetOneItemWithCheckRsp = this.a;
-            StickyNoteVasAdapter.a(paramUniBusiGetOneItemWithCheckRsp, StickyNoteVasAdapter.a(paramUniBusiGetOneItemWithCheckRsp), StickyNoteVasAdapter.a(this.a).stAidInfo.androidAid, StickyNoteVasAdapter.a(this.a).stAidInfo.payType, StickyNoteVasAdapter.a(this.a).stAidInfo.errMsg, StickyNoteVasAdapter.a(this.a).stAidInfo.month);
+            StickyNoteVasAdapter.a(paramUniBusiGetOneItemWithCheckRsp, StickyNoteVasAdapter.c(paramUniBusiGetOneItemWithCheckRsp), StickyNoteVasAdapter.e(this.a).stAidInfo.androidAid, StickyNoteVasAdapter.e(this.a).stAidInfo.payType, StickyNoteVasAdapter.e(this.a).stAidInfo.errMsg, StickyNoteVasAdapter.e(this.a).stAidInfo.month);
           }
         }
       }
       else
       {
         StickyNoteVasAdapter.a(this.a, false);
-        QQToast.a(StickyNoteVasAdapter.a(this.a), HardCodeUtil.a(2131714908), 0).a();
+        QQToast.makeText(StickyNoteVasAdapter.c(this.a), HardCodeUtil.a(2131912406), 0).show();
         StickyNoteVasAdapter.a(this.a, null);
         StickyNoteVasAdapter.a(this.a, -1);
       }
@@ -50,7 +50,7 @@ class StickyNoteVasAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteVasAdapter.2
  * JD-Core Version:    0.7.0.1
  */

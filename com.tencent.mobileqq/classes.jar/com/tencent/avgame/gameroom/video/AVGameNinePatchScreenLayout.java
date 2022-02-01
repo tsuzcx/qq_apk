@@ -10,36 +10,29 @@ import java.util.List;
 public class AVGameNinePatchScreenLayout
   extends AVGameScreenLayoutStyle
 {
-  public static final int a;
-  static final int[] jdField_a_of_type_ArrayOfInt;
-  static final int[][] jdField_a_of_type_Array2dOfInt;
-  static final int[] b;
+  static final int[][] a;
+  public static final int b = a.length;
+  static final int[] c = { 0, 3, 4, 1, 6, 7, 8, 5, 2 };
+  static final int[] d = { 0, 4, 5, 1, 8, 9, 12, 6, 2, 13, 10, 14, 15, 11, 7, 3 };
   
   static
   {
-    int[] arrayOfInt1 = { 1, 1 };
-    int[] arrayOfInt2 = { 1, 2 };
-    int[] arrayOfInt3 = { 2, 2, 1 };
-    int[] arrayOfInt4 = { 2, 2, 2 };
-    int[] arrayOfInt5 = { 2, 2, 3 };
-    int[] arrayOfInt6 = { 3, 3, 3 };
-    int[] arrayOfInt7 = { 3, 3, 2, 2 };
-    int[] arrayOfInt8 = { 3, 3, 3, 2 };
-    int[] arrayOfInt9 = { 3, 3, 3, 3 };
-    int[] arrayOfInt10 = { 3, 3, 3, 4 };
-    int[] arrayOfInt11 = { 3, 3, 4, 4 };
-    int[] arrayOfInt12 = { 3, 4, 4, 4 };
-    int[] arrayOfInt13 = { 4, 4, 4, 4 };
-    jdField_a_of_type_Array2dOfInt = new int[][] { { 1 }, arrayOfInt1, arrayOfInt2, { 2, 2 }, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 2, 3, 3 }, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, arrayOfInt10, arrayOfInt11, arrayOfInt12, arrayOfInt13 };
-    jdField_a_of_type_Int = jdField_a_of_type_Array2dOfInt.length;
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 3, 4, 1, 6, 7, 8, 5, 2 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 0, 4, 5, 1, 8, 9, 12, 6, 2, 13, 10, 14, 15, 11, 7, 3 };
+    int[] arrayOfInt1 = { 1 };
+    int[] arrayOfInt2 = { 2, 2, 2 };
+    int[] arrayOfInt3 = { 2, 2, 3 };
+    int[] arrayOfInt4 = { 2, 3, 3 };
+    int[] arrayOfInt5 = { 3, 3, 3 };
+    int[] arrayOfInt6 = { 3, 3, 3, 2 };
+    int[] arrayOfInt7 = { 3, 3, 3, 4 };
+    int[] arrayOfInt8 = { 3, 3, 4, 4 };
+    int[] arrayOfInt9 = { 4, 4, 4, 4 };
+    a = new int[][] { arrayOfInt1, { 1, 1 }, { 1, 2 }, { 2, 2 }, { 2, 2, 1 }, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 3, 3, 2, 2 }, arrayOfInt6, { 3, 3, 3, 3 }, arrayOfInt7, arrayOfInt8, { 3, 4, 4, 4 }, arrayOfInt9 };
   }
   
   public AVGameNinePatchScreenLayout(Context paramContext, AVGameAppInterface paramAVGameAppInterface)
   {
     super(paramContext, paramAVGameAppInterface);
-    this.jdField_b_of_type_Int = 1;
+    this.e = 1;
   }
   
   private List<Rect> a(int paramInt1, int paramInt2, int paramInt3)
@@ -47,7 +40,7 @@ public class AVGameNinePatchScreenLayout
     if (paramInt1 <= 0) {
       return null;
     }
-    int[] arrayOfInt2 = jdField_a_of_type_Array2dOfInt[(paramInt1 - 1)];
+    int[] arrayOfInt2 = a[(paramInt1 - 1)];
     int i3 = arrayOfInt2.length;
     int n = (paramInt3 + 0) / i3 - 0;
     ArrayList localArrayList = new ArrayList();
@@ -88,9 +81,9 @@ public class AVGameNinePatchScreenLayout
     }
     int[] arrayOfInt1;
     if (k != 0) {
-      arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
+      arrayOfInt1 = c;
     } else {
-      arrayOfInt1 = jdField_b_of_type_ArrayOfInt;
+      arrayOfInt1 = d;
     }
     if (k != 0) {
       j = 3;
@@ -167,7 +160,7 @@ public class AVGameNinePatchScreenLayout
     while (i < j)
     {
       paramList = paramArrayOfAVGameVideoView1[i];
-      if (paramList.a()) {
+      if (paramList.c()) {
         paramArrayOfAVGameVideoView2.add(paramList);
       }
       i += 1;
@@ -177,7 +170,7 @@ public class AVGameNinePatchScreenLayout
     }
     i = paramArrayOfAVGameVideoView2.size();
     j = Math.min(i, i);
-    int k = jdField_a_of_type_Int;
+    int k = b;
     i = j;
     if (j > k) {
       i = k;
@@ -190,7 +183,7 @@ public class AVGameNinePatchScreenLayout
       if (paramList == null) {
         break;
       }
-      ((AVGameVideoView)paramArrayOfAVGameVideoView2.get(paramInt1)).b(paramList.left, paramList.top, paramList.right, paramList.bottom);
+      ((AVGameVideoView)paramArrayOfAVGameVideoView2.get(paramInt1)).c(paramList.left, paramList.top, paramList.right, paramList.bottom);
       ((AVGameVideoView)paramArrayOfAVGameVideoView2.get(paramInt1)).a(0, 0, 0, 0);
       paramInt1 += 1;
     }

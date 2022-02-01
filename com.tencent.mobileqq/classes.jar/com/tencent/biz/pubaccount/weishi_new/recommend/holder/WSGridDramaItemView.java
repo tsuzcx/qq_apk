@@ -20,7 +20,6 @@ import com.tencent.biz.pubaccount.weishi_new.recommend.WSGridBeaconReport;
 import com.tencent.biz.pubaccount.weishi_new.report.UserActionReportPresenter;
 import com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUIUtil;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView;
 import com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView;
 import java.util.ArrayList;
@@ -29,40 +28,35 @@ public class WSGridDramaItemView
   extends AbsWSItemView<stSimpleMetaFeed>
   implements View.OnClickListener
 {
-  private static final int jdField_a_of_type_Int = WSFeedUtils.a(5.0F);
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSRecommendAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
-  private RoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView;
-  private KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private RoundCornerImageView jdField_b_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView;
-  private RoundCornerImageView c;
-  private RoundCornerImageView d;
+  private static final int d = WSFeedUtils.a(5.0F);
+  private TextView e;
+  private KandianUrlImageView f;
+  private RoundCornerImageView g;
+  private RoundCornerImageView h;
+  private RoundCornerImageView i;
+  private RoundCornerImageView j;
+  private WSRecommendAdapter k;
+  private stSimpleMetaFeed l;
+  private int m;
+  private String n;
   
   public WSGridDramaItemView(Context paramContext, View paramView)
   {
     super(paramContext, paramView);
   }
   
-  private int a()
-  {
-    return (WeishiUIUtil.c() - WSItemDecoration.jdField_a_of_type_Int * 3) / 2;
-  }
-  
   private void e()
   {
-    stDramaFall localstDramaFall = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.dramaInfo;
+    stDramaFall localstDramaFall = this.l.dramaInfo;
     if (localstDramaFall == null) {
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
-    if ((localObject1 != null) && (!TextUtils.isEmpty(((WSRecommendAdapter)localObject1).jdField_a_of_type_JavaLangString)))
+    Object localObject1 = this.k;
+    if ((localObject1 != null) && (!TextUtils.isEmpty(((WSRecommendAdapter)localObject1).l)))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("feeds_");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.k.l);
       localObject1 = ((StringBuilder)localObject1).toString();
     }
     else
@@ -73,68 +67,73 @@ public class WSGridDramaItemView
     String str = "";
     if ((localObject2 != null) && (localstDramaFall.dramaInfo.dramaInfo != null))
     {
-      str = localstDramaFall.dramaInfo.dramaInfo.coverImg;
-      localObject2 = localstDramaFall.dramaInfo.dramaInfo.name;
-      this.jdField_a_of_type_JavaLangString = localstDramaFall.dramaInfo.dramaInfo.id;
+      localObject2 = localstDramaFall.dramaInfo.dramaInfo.coverImg;
+      str = localstDramaFall.dramaInfo.dramaInfo.name;
+      this.n = localstDramaFall.dramaInfo.dramaInfo.id;
     }
     else
     {
       localObject2 = "";
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-    WSPicLoader.a(this.jdField_a_of_type_AndroidContentContext, this.d, WeishiUtils.a(str), WSFeedUtils.a(2131165740), (String)localObject1, this.jdField_b_of_type_Int);
-    WSPicLoader.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView, localstDramaFall.bgCover, WSFeedUtils.a(2131167394));
-    WSPicLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, localstDramaFall.titleCover, WSFeedUtils.a(2131167333));
+    this.e.setText(str);
+    WSPicLoader.a().a(this.j, (String)localObject2, WSFeedUtils.f(2131166336), (String)localObject1, this.m);
+    WSPicLoader.a().a(this.g, localstDramaFall.bgCover, WSFeedUtils.f(2131168464));
+    WSPicLoader.a().a(this.f, localstDramaFall.titleCover, WSFeedUtils.f(2131168376));
     if (localstDramaFall.images != null)
     {
       if (localstDramaFall.images.size() > 0) {
-        WSPicLoader.a(this.c, (String)localstDramaFall.images.get(0), WSFeedUtils.a(2131165740));
+        WSPicLoader.a().a(this.i, (String)localstDramaFall.images.get(0), WSFeedUtils.f(2131166336));
       }
       if (localstDramaFall.images.size() > 1) {
-        WSPicLoader.a(this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView, (String)localstDramaFall.images.get(1), WSFeedUtils.a(2131165740));
+        WSPicLoader.a().a(this.h, (String)localstDramaFall.images.get(1), WSFeedUtils.f(2131166336));
       }
     }
   }
   
   private void e(int paramInt)
   {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((int)(paramInt * 1.777778F + WSItemDecoration.jdField_a_of_type_Int));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    ViewGroup.LayoutParams localLayoutParams = this.a.getLayoutParams();
+    localLayoutParams.height = ((int)(paramInt * 1.777778F + WSItemDecoration.a));
+    this.a.setLayoutParams(localLayoutParams);
+  }
+  
+  private int f()
+  {
+    return (WeishiUIUtil.c() - WSItemDecoration.a * 3) / 2;
   }
   
   public void a() {}
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.m = paramInt;
   }
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
+    this.l = paramstSimpleMetaFeed;
     e();
   }
   
   public void a(WSRecommendAdapter paramWSRecommendAdapter)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter = paramWSRecommendAdapter;
+    this.k = paramWSRecommendAdapter;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView = ((RoundCornerImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376625));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379667));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369357));
-    this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView = ((RoundCornerImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376629));
-    this.c = ((RoundCornerImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376628));
-    this.d = ((RoundCornerImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376626));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView.setCorner(jdField_a_of_type_Int, 0);
-    this.d.setCorner(jdField_a_of_type_Int, 0);
-    this.c.setCorner(jdField_a_of_type_Int, 1);
-    this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView.setCorner(jdField_a_of_type_Int, 1);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    e(a());
+    this.g = ((RoundCornerImageView)this.a.findViewById(2131444885));
+    this.e = ((TextView)this.a.findViewById(2131448447));
+    this.f = ((KandianUrlImageView)this.a.findViewById(2131436375));
+    this.h = ((RoundCornerImageView)this.a.findViewById(2131444889));
+    this.i = ((RoundCornerImageView)this.a.findViewById(2131444888));
+    this.j = ((RoundCornerImageView)this.a.findViewById(2131444886));
+    this.g.setCorner(d, 0);
+    this.j.setCorner(d, 0);
+    this.i.setCorner(d, 1);
+    this.h.setCorner(d, 1);
+    this.a.setOnClickListener(this);
+    e(f());
   }
   
   public void b(int paramInt) {}
@@ -147,21 +146,21 @@ public class WSGridDramaItemView
   
   public void onClick(View paramView)
   {
-    WSDramaPageIntentParams localWSDramaPageIntentParams = new WSDramaPageIntentParams("grid_drama_card", this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString);
-    paramView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
+    WSDramaPageIntentParams localWSDramaPageIntentParams = new WSDramaPageIntentParams("grid_drama_card", this.b).a(this.n);
+    paramView = this.k;
     if (paramView != null) {
-      paramView = paramView.jdField_a_of_type_JavaLangString;
+      paramView = paramView.l;
     } else {
       paramView = "";
     }
     WSDramaPageFragment.a(localWSDramaPageIntentParams.c(paramView));
-    paramView = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-    WSGridBeaconReport.a("gzh_click", paramView, UserActionReportPresenter.a(paramView, this.jdField_b_of_type_Int), 1000001, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString);
+    paramView = this.l;
+    WSGridBeaconReport.a("gzh_click", paramView, UserActionReportPresenter.a(paramView, this.m), 1000001, this.k.l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridDramaItemView
  * JD-Core Version:    0.7.0.1
  */

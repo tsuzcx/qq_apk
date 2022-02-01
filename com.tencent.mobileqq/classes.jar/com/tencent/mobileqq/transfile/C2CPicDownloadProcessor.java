@@ -193,7 +193,7 @@ public class C2CPicDownloadProcessor
       if ((this.mNetReq != null) && (((HttpNetReq)this.mNetReq).decoder != null))
       {
         localObject1 = (HttpNetReq)this.mNetReq;
-        this.mProcessorReport.mReportInfo.put("param_picDecryptTime", String.valueOf(((PicCryptor)((HttpNetReq)localObject1).decoder).a));
+        this.mProcessorReport.mReportInfo.put("param_picDecryptTime", String.valueOf(((PicCryptor)((HttpNetReq)localObject1).decoder).b));
       }
       localObject2 = this.mUiRequest.mRec;
       localObject1 = localObject2;
@@ -529,7 +529,7 @@ public class C2CPicDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPicDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class CustomLottieView$3
   {
     try
     {
-      Object localObject1 = new JSONObject(FileUtil.readString(this.jdField_a_of_type_JavaLangString)).getJSONObject("starframe");
+      Object localObject1 = new JSONObject(FileUtil.readString(this.a)).getJSONObject("starframe");
       int i = 0;
       if (localObject1 != null) {
         i = ((JSONObject)localObject1).getInt("starframe");
@@ -25,9 +25,9 @@ class CustomLottieView$3
       localObject1 = CustomLottieView.a(this.this$0);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("t=");
-      ((StringBuilder)localObject2).append(CustomLottieView.a(this.this$0));
+      ((StringBuilder)localObject2).append(CustomLottieView.b(this.this$0));
       Log.e((String)localObject1, ((StringBuilder)localObject2).toString());
-      CustomLottieView.a(this.this$0).put(this.jdField_a_of_type_JavaLangString, Integer.valueOf(CustomLottieView.a(this.this$0)));
+      CustomLottieView.c(this.this$0).put(this.a, Integer.valueOf(CustomLottieView.b(this.this$0)));
     }
     catch (Exception localException)
     {
@@ -38,7 +38,7 @@ class CustomLottieView$3
       QLog.i((String)localObject2, 1, localStringBuilder.toString());
       localException.printStackTrace();
     }
-    LoadToPlayInter localLoadToPlayInter = this.jdField_a_of_type_ComTencentFalcoBaseLibapiLottieLoadToPlayInter;
+    LoadToPlayInter localLoadToPlayInter = this.b;
     if (localLoadToPlayInter != null) {
       localLoadToPlayInter.onPrepareStart();
     }
@@ -46,7 +46,7 @@ class CustomLottieView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.lottie.CustomLottieView.3
  * JD-Core Version:    0.7.0.1
  */

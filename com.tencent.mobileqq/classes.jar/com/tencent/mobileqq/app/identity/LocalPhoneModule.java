@@ -21,33 +21,24 @@ import tencent.im.login.GetLocalPhone.LocalPhoneUploadUrl;
 
 public class LocalPhoneModule
 {
-  private final int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final List<GetLocalPhone.LocalPhoneCodeData> jdField_a_of_type_JavaUtilList;
+  private String a;
   private final String b;
   private String c;
   private final String d;
   private String e;
   private String f;
-  private String g;
+  private final int g;
+  private String h;
+  private final List<GetLocalPhone.LocalPhoneCodeData> i;
   
   public LocalPhoneModule(int paramInt, String paramString1, String paramString2, String paramString3)
   {
     this.d = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
     this.b = paramString1;
-    this.g = paramString3;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    QLog.d("LocalPhoneModule", 1, new Object[] { "LocalPhoneModule init , guid hash is ", Integer.valueOf(this.g.hashCode()) });
-  }
-  
-  private GetLocalPhone.GetPhoneRsp a(String paramString)
-  {
-    GetLocalPhone.GetPhoneRsp localGetPhoneRsp = new GetLocalPhone.GetPhoneRsp();
-    if (Proto2JsonUtil.a(paramString, localGetPhoneRsp)) {
-      return localGetPhoneRsp;
-    }
-    return null;
+    this.h = paramString3;
+    this.i = new ArrayList();
+    QLog.d("LocalPhoneModule", 1, new Object[] { "LocalPhoneModule init , guid hash is ", Integer.valueOf(this.h.hashCode()) });
   }
   
   private GetLocalPhone.GetUrlRsp a(String paramString)
@@ -61,13 +52,13 @@ public class LocalPhoneModule
   
   private void a(String paramString1, String paramString2, LocalPhoneModule.UrlTokenCallback paramUrlTokenCallback)
   {
-    LocalPhoneServlet.a(b(), LocalPhoneServlet.a(this.jdField_a_of_type_Int, paramString1, paramString2, this.g, ""), new LocalPhoneModule.4(this, paramUrlTokenCallback));
+    LocalPhoneServlet.a(c(), LocalPhoneServlet.a(this.g, paramString1, paramString2, this.h, ""), new LocalPhoneModule.4(this, paramUrlTokenCallback));
   }
   
   private void a(List<GetLocalPhone.LocalPhoneCodeData> paramList, LocalPhoneModule.MaskPhoneCallback paramMaskPhoneCallback)
   {
-    paramList = LocalPhoneServlet.a(this.jdField_a_of_type_Int, this.c, this.b, this.d, this.g, paramList);
-    LocalPhoneServlet.a(c(), paramList, new LocalPhoneModule.6(this, paramMaskPhoneCallback));
+    paramList = LocalPhoneServlet.a(this.g, this.c, this.b, this.d, this.h, paramList);
+    LocalPhoneServlet.a(d(), paramList, new LocalPhoneModule.6(this, paramMaskPhoneCallback));
   }
   
   private void a(List<GetLocalPhone.LocalPhoneCodeData> paramList1, List<GetLocalPhone.LocalPhoneCodeData> paramList2)
@@ -96,7 +87,7 @@ public class LocalPhoneModule
   
   private void a(GetLocalPhone.GetPhoneReq paramGetPhoneReq, LocalPhoneModule.PhoneNumCallback paramPhoneNumCallback)
   {
-    LocalPhoneServlet.a(c(), paramGetPhoneReq, new LocalPhoneModule.3(this, paramPhoneNumCallback));
+    LocalPhoneServlet.a(d(), paramGetPhoneReq, new LocalPhoneModule.3(this, paramPhoneNumCallback));
   }
   
   private void a(GetLocalPhone.GetUrlRspBody paramGetUrlRspBody, LocalPhoneModule.UrlTokenCallback paramUrlTokenCallback)
@@ -122,11 +113,6 @@ public class LocalPhoneModule
     paramUrlTokenCallback.a(-100006, new Exception("startGetUrlToken, urls is empty"));
   }
   
-  private String b()
-  {
-    return "https://getlocalphone.qq.com/trpc.login.localphone.GetLocalPhone/GetUrlService";
-  }
-  
   private GetLocalPhone.GetPhoneRsp b(String paramString)
   {
     GetLocalPhone.GetPhoneRsp localGetPhoneRsp = new GetLocalPhone.GetPhoneRsp();
@@ -138,18 +124,26 @@ public class LocalPhoneModule
   
   private String c()
   {
+    return "https://getlocalphone.qq.com/trpc.login.localphone.GetLocalPhone/GetUrlService";
+  }
+  
+  private GetLocalPhone.GetPhoneRsp c(String paramString)
+  {
+    GetLocalPhone.GetPhoneRsp localGetPhoneRsp = new GetLocalPhone.GetPhoneRsp();
+    if (Proto2JsonUtil.a(paramString, localGetPhoneRsp)) {
+      return localGetPhoneRsp;
+    }
+    return null;
+  }
+  
+  private String d()
+  {
     return "https://getlocalphone.qq.com/trpc.login.localphone.GetLocalPhone/GetPhoneService";
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    QLog.d("LocalPhoneModule", 1, "destroy module");
-    GateWayVerifyManager.a().a();
+    return this.a;
   }
   
   public void a(LocalPhoneModule.MaskPhoneCallback paramMaskPhoneCallback)
@@ -159,12 +153,18 @@ public class LocalPhoneModule
   
   public void a(LocalPhoneModule.PhoneNumCallback paramPhoneNumCallback)
   {
-    a(LocalPhoneServlet.a(this.jdField_a_of_type_Int, this.c, this.b, this.d, this.e, this.f, this.g, this.jdField_a_of_type_JavaUtilList), paramPhoneNumCallback);
+    a(LocalPhoneServlet.a(this.g, this.c, this.b, this.d, this.e, this.f, this.h, this.i), paramPhoneNumCallback);
+  }
+  
+  public void b()
+  {
+    QLog.d("LocalPhoneModule", 1, "destroy module");
+    GateWayVerifyManager.a().e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.LocalPhoneModule
  * JD-Core Version:    0.7.0.1
  */

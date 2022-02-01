@@ -11,44 +11,44 @@ import java.util.List;
 class QQPermission$MultiPermissionRequester
   extends QQPermission.BasePermissionsListener
 {
-  private int jdField_a_of_type_Int;
-  private QQPermission.BasePermissionsListener jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener;
-  private QQPermission jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission;
-  private List<BasePermissionHandler> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private List<List<String>> jdField_b_of_type_JavaUtilList;
+  private int a;
+  private QQPermission b;
+  private QQPermission.BasePermissionsListener c;
+  private List<BasePermissionHandler> d;
+  private List<List<String>> e;
+  private int f;
   
   public QQPermission$MultiPermissionRequester(QQPermission paramQQPermission, String[] paramArrayOfString, int paramInt, QQPermission.BasePermissionsListener paramBasePermissionsListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission = paramQQPermission;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener = paramBasePermissionsListener;
-    QQPermission.BasePermissionsListener.a(this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener, (String[])Arrays.copyOf(paramArrayOfString, paramArrayOfString.length));
+    this.b = paramQQPermission;
+    this.a = paramInt;
+    this.c = paramBasePermissionsListener;
+    QQPermission.BasePermissionsListener.a(this.c, (String[])Arrays.copyOf(paramArrayOfString, paramArrayOfString.length));
     a(paramArrayOfString);
   }
   
   private void a(String[] paramArrayOfString)
   {
     int i = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.f = 0;
+    this.d = new ArrayList();
+    this.e = new ArrayList();
     int j = paramArrayOfString.length;
     while (i < j)
     {
       String str = paramArrayOfString[i];
-      Object localObject = QQPermission.a(this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission, str);
-      int k = this.jdField_a_of_type_JavaUtilList.indexOf(localObject);
+      Object localObject = QQPermission.a(this.b, str);
+      int k = this.d.indexOf(localObject);
       if (k < 0)
       {
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        this.d.add(localObject);
         localObject = new ArrayList();
         ((List)localObject).add(str);
-        this.jdField_b_of_type_JavaUtilList.add(localObject);
+        this.e.add(localObject);
       }
       else
       {
-        ((List)this.jdField_b_of_type_JavaUtilList.get(k)).add(str);
+        ((List)this.e.get(k)).add(str);
       }
       i += 1;
     }
@@ -57,39 +57,45 @@ class QQPermission$MultiPermissionRequester
   public void a()
   {
     super.a();
-    this.jdField_b_of_type_Int += 1;
-    if (!a()) {
-      this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a();
+    this.f += 1;
+    if (!b()) {
+      this.c.a();
     }
   }
   
   public void a(PermissionRequestDialog paramPermissionRequestDialog, List<String> paramList)
   {
     super.a(paramPermissionRequestDialog, paramList);
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a(paramPermissionRequestDialog, paramList);
+    this.c.a(paramPermissionRequestDialog, paramList);
   }
   
   public void a(PermissionRequestView paramPermissionRequestView, List<String> paramList)
   {
     super.a(paramPermissionRequestView, paramList);
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a(paramPermissionRequestView, paramList);
+    this.c.a(paramPermissionRequestView, paramList);
   }
   
   public void a(String paramString)
   {
     super.a(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a(paramString);
+    this.c.a(paramString);
   }
   
-  public boolean a()
+  public void a(List<String> paramList, List<Integer> paramList1)
+  {
+    super.a(paramList, paramList1);
+    this.c.a(paramList, paramList1);
+  }
+  
+  public boolean b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("requestNext: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.f);
     QPLog.a("QQPermission", localStringBuilder.toString());
-    if (this.jdField_b_of_type_Int < this.jdField_a_of_type_JavaUtilList.size())
+    if (this.f < this.d.size())
     {
-      ((BasePermissionHandler)this.jdField_a_of_type_JavaUtilList.get(this.jdField_b_of_type_Int)).a((List)this.jdField_b_of_type_JavaUtilList.get(this.jdField_b_of_type_Int), this.jdField_a_of_type_Int, this);
+      ((BasePermissionHandler)this.d.get(this.f)).a((List)this.e.get(this.f), this.a, this);
       return true;
     }
     return false;
@@ -97,7 +103,7 @@ class QQPermission$MultiPermissionRequester
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqpermission.QQPermission.MultiPermissionRequester
  * JD-Core Version:    0.7.0.1
  */

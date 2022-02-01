@@ -24,25 +24,25 @@ final class ReadInJoyLegacyUtils$3
       {
         ReadInJoyLegacyUtils.a.dismiss();
         ReadInJoyLegacyUtils.a = null;
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-        ReadInJoyLegacyUtils.c(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
+        this.a.finish();
+        ReadInJoyLegacyUtils.c(this.a, this.c, this.b);
       }
     }
     else
     {
-      ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, false, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
-      paramDialogInterface = this.jdField_a_of_type_AndroidAppActivity;
+      ForwardSdkShareOption.a(this.a, false, "shareToQzone", Long.valueOf(this.b.a()).longValue());
+      paramDialogInterface = this.a;
       if ((paramDialogInterface != null) && (!paramDialogInterface.isFinishing()))
       {
-        this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
+        this.a.setResult(0);
+        this.a.finish();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyLegacyUtils.3
  * JD-Core Version:    0.7.0.1
  */

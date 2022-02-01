@@ -33,12 +33,12 @@ class WatermarkDataManager$2
       ???.append("GetWatermarkDictRequest [onReceive] watermarkDict.size:");
       ???.append(paramBaseRequest.size());
       AEQLog.b("WaterMarkManager", ???.toString());
-      synchronized (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager)
+      synchronized (this.b)
       {
-        WatermarkDataManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager).clear();
-        WatermarkDataManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager).putAll(paramBaseRequest);
-        WatermarkDataManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager, System.currentTimeMillis());
-        this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager$IWatermarkDictCallback.onGetWatermarkDict(paramBaseRequest);
+        WatermarkDataManager.a(this.b).clear();
+        WatermarkDataManager.a(this.b).putAll(paramBaseRequest);
+        WatermarkDataManager.a(this.b, System.currentTimeMillis());
+        this.a.onGetWatermarkDict(paramBaseRequest);
         return;
       }
     }
@@ -52,7 +52,7 @@ class WatermarkDataManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkDataManager.2
  * JD-Core Version:    0.7.0.1
  */

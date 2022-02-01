@@ -15,14 +15,14 @@ class MMApkFileSafeChecker$6
     //   3: astore 8
     //   5: aconst_null
     //   6: astore 9
-    //   8: new 32	java/io/BufferedInputStream
+    //   8: new 33	java/io/BufferedInputStream
     //   11: dup
-    //   12: new 34	java/io/FileInputStream
+    //   12: new 35	java/io/FileInputStream
     //   15: dup
     //   16: aload_0
-    //   17: getfield 17	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   20: invokespecial 37	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   23: invokespecial 40	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   17: getfield 18	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:a	Ljava/lang/String;
+    //   20: invokespecial 38	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   23: invokespecial 41	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   26: astore 6
     //   28: aload 6
     //   30: astore 5
@@ -31,13 +31,13 @@ class MMApkFileSafeChecker$6
     //   37: astore 10
     //   39: aload 6
     //   41: astore 5
-    //   43: ldc 42
-    //   45: invokestatic 48	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   43: ldc 43
+    //   45: invokestatic 49	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   48: astore 4
     //   50: aload 6
     //   52: astore 5
-    //   54: ldc 50
-    //   56: invokestatic 48	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   54: ldc 51
+    //   56: invokestatic 49	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   59: astore 7
     //   61: goto +25 -> 86
     //   64: astore 7
@@ -48,14 +48,14 @@ class MMApkFileSafeChecker$6
     //   74: aload 6
     //   76: astore 5
     //   78: aload 7
-    //   80: invokevirtual 53	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   80: invokevirtual 54	java/security/NoSuchAlgorithmException:printStackTrace	()V
     //   83: aconst_null
     //   84: astore 7
     //   86: aload 6
     //   88: astore 5
     //   90: aload 6
     //   92: aload 10
-    //   94: invokevirtual 59	java/io/InputStream:read	([B)I
+    //   94: invokevirtual 60	java/io/InputStream:read	([B)I
     //   97: istore_1
     //   98: iload_1
     //   99: ifle +32 -> 131
@@ -65,31 +65,31 @@ class MMApkFileSafeChecker$6
     //   108: aload 10
     //   110: iconst_0
     //   111: iload_1
-    //   112: invokevirtual 63	java/security/MessageDigest:update	([BII)V
+    //   112: invokevirtual 64	java/security/MessageDigest:update	([BII)V
     //   115: aload 6
     //   117: astore 5
     //   119: aload 7
     //   121: aload 10
     //   123: iconst_0
     //   124: iload_1
-    //   125: invokevirtual 63	java/security/MessageDigest:update	([BII)V
+    //   125: invokevirtual 64	java/security/MessageDigest:update	([BII)V
     //   128: goto -42 -> 86
     //   131: aload 6
     //   133: astore 5
     //   135: aload 6
-    //   137: invokevirtual 66	java/io/InputStream:close	()V
+    //   137: invokevirtual 67	java/io/InputStream:close	()V
     //   140: goto +14 -> 154
     //   143: astore 10
     //   145: aload 6
     //   147: astore 5
     //   149: aload 10
-    //   151: invokevirtual 67	java/io/IOException:printStackTrace	()V
+    //   151: invokevirtual 68	java/io/IOException:printStackTrace	()V
     //   154: aload 4
     //   156: ifnull +17 -> 173
     //   159: aload 6
     //   161: astore 5
     //   163: aload 4
-    //   165: invokevirtual 71	java/security/MessageDigest:digest	()[B
+    //   165: invokevirtual 72	java/security/MessageDigest:digest	()[B
     //   168: astore 4
     //   170: goto +6 -> 176
     //   173: aconst_null
@@ -101,7 +101,7 @@ class MMApkFileSafeChecker$6
     //   185: aload 6
     //   187: astore 5
     //   189: aload 7
-    //   191: invokevirtual 71	java/security/MessageDigest:digest	()[B
+    //   191: invokevirtual 72	java/security/MessageDigest:digest	()[B
     //   194: astore 7
     //   196: aload 7
     //   198: astore 5
@@ -113,11 +113,11 @@ class MMApkFileSafeChecker$6
     //   213: iconst_1
     //   214: istore_2
     //   215: aload 6
-    //   217: invokevirtual 66	java/io/InputStream:close	()V
+    //   217: invokevirtual 67	java/io/InputStream:close	()V
     //   220: goto +10 -> 230
     //   223: astore 6
     //   225: aload 6
-    //   227: invokevirtual 67	java/io/IOException:printStackTrace	()V
+    //   227: invokevirtual 68	java/io/IOException:printStackTrace	()V
     //   230: aload 5
     //   232: astore 7
     //   234: aload 4
@@ -143,7 +143,7 @@ class MMApkFileSafeChecker$6
     //   274: aload 6
     //   276: astore 5
     //   278: aload 7
-    //   280: invokevirtual 67	java/io/IOException:printStackTrace	()V
+    //   280: invokevirtual 68	java/io/IOException:printStackTrace	()V
     //   283: iload_3
     //   284: istore_2
     //   285: aload 8
@@ -155,7 +155,7 @@ class MMApkFileSafeChecker$6
     //   298: aload 4
     //   300: astore 5
     //   302: aload 6
-    //   304: invokevirtual 66	java/io/InputStream:close	()V
+    //   304: invokevirtual 67	java/io/InputStream:close	()V
     //   307: iload_3
     //   308: istore_2
     //   309: aload 8
@@ -165,7 +165,7 @@ class MMApkFileSafeChecker$6
     //   317: goto +71 -> 388
     //   320: astore 4
     //   322: aload 4
-    //   324: invokevirtual 67	java/io/IOException:printStackTrace	()V
+    //   324: invokevirtual 68	java/io/IOException:printStackTrace	()V
     //   327: iload_3
     //   328: istore_2
     //   329: aload 8
@@ -179,7 +179,7 @@ class MMApkFileSafeChecker$6
     //   345: aload 6
     //   347: astore 5
     //   349: aload 7
-    //   351: invokevirtual 72	java/io/FileNotFoundException:printStackTrace	()V
+    //   351: invokevirtual 73	java/io/FileNotFoundException:printStackTrace	()V
     //   354: iload_3
     //   355: istore_2
     //   356: aload 8
@@ -191,62 +191,62 @@ class MMApkFileSafeChecker$6
     //   369: aload 4
     //   371: astore 5
     //   373: aload 6
-    //   375: invokevirtual 66	java/io/InputStream:close	()V
+    //   375: invokevirtual 67	java/io/InputStream:close	()V
     //   378: aload 4
     //   380: astore 5
     //   382: aload 8
     //   384: astore 7
     //   386: iload_3
     //   387: istore_2
-    //   388: new 74	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo
+    //   388: new 75	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo
     //   391: dup
     //   392: aload_0
-    //   393: getfield 15	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:this$0	Lcom/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker;
-    //   396: invokespecial 77	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:<init>	(Lcom/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker;)V
+    //   393: getfield 16	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:this$0	Lcom/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker;
+    //   396: invokespecial 78	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:<init>	(Lcom/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker;)V
     //   399: astore 4
     //   401: aload 4
     //   403: aload 5
-    //   405: putfield 80	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:jdField_a_of_type_ArrayOfByte	[B
+    //   405: putfield 81	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:a	[B
     //   408: aload 4
     //   410: aload 7
-    //   412: putfield 83	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:jdField_b_of_type_ArrayOfByte	[B
+    //   412: putfield 83	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:b	[B
     //   415: aload 4
     //   417: aload_0
-    //   418: getfield 17	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   421: invokestatic 88	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/lang/String;)J
-    //   424: putfield 91	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:jdField_a_of_type_Long	J
+    //   418: getfield 18	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:a	Ljava/lang/String;
+    //   421: invokestatic 89	com/tencent/mobileqq/filemanager/util/FileUtil:f	(Ljava/lang/String;)J
+    //   424: putfield 93	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:c	J
     //   427: aload 4
-    //   429: invokestatic 97	java/lang/System:currentTimeMillis	()J
-    //   432: putfield 99	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:jdField_b_of_type_Long	J
+    //   429: invokestatic 99	java/lang/System:currentTimeMillis	()J
+    //   432: putfield 102	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:d	J
     //   435: iload_2
     //   436: ifeq +32 -> 468
     //   439: aload 4
-    //   441: getfield 80	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:jdField_a_of_type_ArrayOfByte	[B
+    //   441: getfield 81	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:a	[B
     //   444: ifnull +24 -> 468
     //   447: aload 4
-    //   449: getfield 83	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:jdField_b_of_type_ArrayOfByte	[B
+    //   449: getfield 83	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo:b	[B
     //   452: ifnull +16 -> 468
     //   455: aload_0
-    //   456: getfield 15	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:this$0	Lcom/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker;
+    //   456: getfield 16	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:this$0	Lcom/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker;
     //   459: aload_0
-    //   460: getfield 17	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   460: getfield 18	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:a	Ljava/lang/String;
     //   463: aload 4
-    //   465: invokestatic 104	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker:a	(Lcom/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker;Ljava/lang/String;Lcom/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo;)V
+    //   465: invokestatic 107	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker:a	(Lcom/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker;Ljava/lang/String;Lcom/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$FileDigestInfo;)V
     //   468: aload_0
-    //   469: getfield 19	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$IGetDigestResult	Lcom/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$IGetDigestResult;
+    //   469: getfield 20	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:b	Lcom/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$IGetDigestResult;
     //   472: iload_2
     //   473: aload 4
-    //   475: invokeinterface 109 3 0
+    //   475: invokeinterface 112 3 0
     //   480: return
     //   481: astore 4
     //   483: aload 5
     //   485: ifnull +18 -> 503
     //   488: aload 5
-    //   490: invokevirtual 66	java/io/InputStream:close	()V
+    //   490: invokevirtual 67	java/io/InputStream:close	()V
     //   493: goto +10 -> 503
     //   496: astore 5
     //   498: aload 5
-    //   500: invokevirtual 67	java/io/IOException:printStackTrace	()V
+    //   500: invokevirtual 68	java/io/IOException:printStackTrace	()V
     //   503: goto +6 -> 509
     //   506: aload 4
     //   508: athrow
@@ -335,7 +335,7 @@ class MMApkFileSafeChecker$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.6
  * JD-Core Version:    0.7.0.1
  */

@@ -4,95 +4,65 @@ import android.text.TextUtils;
 
 public class UFTFileUploaderProp$ExtfFileInfo
 {
-  protected long a;
   protected String a;
-  protected byte[] a;
   protected String b;
-  protected byte[] b;
-  protected String c;
-  protected byte[] c;
+  protected long c;
   protected byte[] d;
   protected byte[] e;
   protected byte[] f;
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
+  protected byte[] g;
+  protected byte[] h;
+  protected byte[] i;
+  protected String j;
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_c_of_type_JavaLangString = "filePath is empty";
-      return false;
-    }
-    return true;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
+    this.d = paramArrayOfByte;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void b(byte[] paramArrayOfByte)
   {
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
+    this.e = paramArrayOfByte;
   }
   
-  public byte[] b()
+  public long c()
   {
-    return this.jdField_b_of_type_ArrayOfByte;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.c;
   }
   
   public void c(byte[] paramArrayOfByte)
   {
-    this.jdField_c_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public byte[] c()
-  {
-    return this.jdField_c_of_type_ArrayOfByte;
+    this.f = paramArrayOfByte;
   }
   
   public void d(byte[] paramArrayOfByte)
   {
-    this.d = paramArrayOfByte;
+    this.g = paramArrayOfByte;
   }
   
   public byte[] d()
@@ -102,7 +72,7 @@ public class UFTFileUploaderProp$ExtfFileInfo
   
   public void e(byte[] paramArrayOfByte)
   {
-    this.e = paramArrayOfByte;
+    this.h = paramArrayOfByte;
   }
   
   public byte[] e()
@@ -112,17 +82,47 @@ public class UFTFileUploaderProp$ExtfFileInfo
   
   public void f(byte[] paramArrayOfByte)
   {
-    this.f = paramArrayOfByte;
+    this.i = paramArrayOfByte;
   }
   
   public byte[] f()
   {
     return this.f;
   }
+  
+  public byte[] g()
+  {
+    return this.g;
+  }
+  
+  public byte[] h()
+  {
+    return this.h;
+  }
+  
+  public byte[] i()
+  {
+    return this.i;
+  }
+  
+  public boolean j()
+  {
+    if (TextUtils.isEmpty(this.a))
+    {
+      this.j = "filePath is empty";
+      return false;
+    }
+    return true;
+  }
+  
+  public String k()
+  {
+    return this.j;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.UFTFileUploaderProp.ExtfFileInfo
  * JD-Core Version:    0.7.0.1
  */

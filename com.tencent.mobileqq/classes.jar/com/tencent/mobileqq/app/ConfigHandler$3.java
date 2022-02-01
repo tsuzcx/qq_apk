@@ -14,9 +14,9 @@ class ConfigHandler$3
   
   public void run()
   {
-    File localFile = new File(this.this$0.a.getApplication().getFilesDir(), "WeatherResource.zip");
-    Object localObject = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-    int i = HttpDownloadUtil.downloadData(this.this$0.a, (String)localObject, localFile);
+    File localFile = new File(this.this$0.c.getApplication().getFilesDir(), "WeatherResource.zip");
+    Object localObject = MsfSdkUtils.insertMtype("ConfigCheck", this.a);
+    int i = HttpDownloadUtil.downloadData(this.this$0.c, (String)localObject, localFile);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -28,7 +28,7 @@ class ConfigHandler$3
     }
     boolean bool;
     if (i == 0) {
-      bool = this.jdField_a_of_type_ComTencentMobileqqWeatherApiIWeatherRuntimeService.unzipResource(this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+      bool = this.b.unzipResource(this.c, localFile.getAbsolutePath());
     } else {
       bool = false;
     }
@@ -37,7 +37,7 @@ class ConfigHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.3
  * JD-Core Version:    0.7.0.1
  */

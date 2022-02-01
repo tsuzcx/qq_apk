@@ -14,17 +14,17 @@ public class TroopBindPAReloadFilter
 {
   public List<ChatMessage> a(AIOContext paramAIOContext, List<ChatMessage> paramList)
   {
-    BaseSessionInfo localBaseSessionInfo = paramAIOContext.a();
+    BaseSessionInfo localBaseSessionInfo = paramAIOContext.O();
     paramAIOContext = (TroopBindPublicAccountMgr)paramAIOContext.a().getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
-    if (paramAIOContext.b(localBaseSessionInfo.a)) {
-      paramAIOContext.a(localBaseSessionInfo.a, paramList);
+    if (paramAIOContext.h(localBaseSessionInfo.b)) {
+      paramAIOContext.a(localBaseSessionInfo.b, paramList);
     }
     return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.TroopBindPAReloadFilter
  * JD-Core Version:    0.7.0.1
  */

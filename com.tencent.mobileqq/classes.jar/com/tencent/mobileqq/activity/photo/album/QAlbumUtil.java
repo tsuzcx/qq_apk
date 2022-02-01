@@ -289,27 +289,27 @@ public class QAlbumUtil
   
   private static void xInAnim(Activity paramActivity)
   {
-    paramActivity.overridePendingTransition(2130772006, 2130772007);
+    paramActivity.overridePendingTransition(2130772009, 2130772010);
   }
   
   private static void xOutAnim(Activity paramActivity)
   {
-    paramActivity.overridePendingTransition(2130772002, 2130772003);
+    paramActivity.overridePendingTransition(2130772005, 2130772006);
   }
   
   private static void yInAnim(Activity paramActivity)
   {
-    paramActivity.overridePendingTransition(2130771993, 2130771994);
+    paramActivity.overridePendingTransition(2130771996, 2130771997);
   }
   
   private static void yOutAnim(Activity paramActivity)
   {
-    paramActivity.overridePendingTransition(2130771991, 2130771992);
+    paramActivity.overridePendingTransition(2130771994, 2130771995);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.QAlbumUtil
  * JD-Core Version:    0.7.0.1
  */

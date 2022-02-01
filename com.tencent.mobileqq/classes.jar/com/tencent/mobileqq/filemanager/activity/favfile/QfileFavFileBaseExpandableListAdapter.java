@@ -31,34 +31,34 @@ import java.util.List;
 public class QfileFavFileBaseExpandableListAdapter
   extends QfileBaseExpandableListAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
   protected BaseFileAssistantActivity a;
-  private QfileFavFileBaseExpandableListAdapter.IAdapterCallBack jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileBaseExpandableListAdapter$IAdapterCallBack;
-  private View.OnClickListener b;
+  private Context b;
+  private LayoutInflater c;
+  private View.OnClickListener d;
+  private View.OnLongClickListener i;
+  private View.OnClickListener j;
+  private QfileFavFileBaseExpandableListAdapter.IAdapterCallBack k;
   
   public QfileFavFileBaseExpandableListAdapter(Context paramContext, LinkedHashMap<String, List<FavFileInfo>> paramLinkedHashMap, BaseFileAssistantActivity paramBaseFileAssistantActivity, View.OnClickListener paramOnClickListener1, View.OnLongClickListener paramOnLongClickListener, View.OnClickListener paramOnClickListener2, QfileFavFileBaseExpandableListAdapter.IAdapterCallBack paramIAdapterCallBack)
   {
     super(paramContext, paramLinkedHashMap);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = paramBaseFileAssistantActivity;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-    this.b = paramOnClickListener2;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileBaseExpandableListAdapter$IAdapterCallBack = paramIAdapterCallBack;
+    this.b = paramContext;
+    this.a = paramBaseFileAssistantActivity;
+    this.c = LayoutInflater.from(this.b);
+    this.d = paramOnClickListener1;
+    this.i = paramOnLongClickListener;
+    this.j = paramOnClickListener2;
+    this.k = paramIAdapterCallBack;
   }
   
   private String a(FavFileInfo paramFavFileInfo)
   {
-    String str1 = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).formatNewRefreshTime(paramFavFileInfo.jdField_c_of_type_Long);
-    String str2 = FileUtil.a(paramFavFileInfo.b);
+    String str1 = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).formatNewRefreshTime(paramFavFileInfo.g);
+    String str2 = FileUtil.a(paramFavFileInfo.f);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str1);
     localStringBuilder.append(" ");
-    localStringBuilder.append(paramFavFileInfo.m);
+    localStringBuilder.append(paramFavFileInfo.s);
     localStringBuilder.append(" ");
     localStringBuilder.append(str2);
     return localStringBuilder.toString();
@@ -81,20 +81,20 @@ public class QfileFavFileBaseExpandableListAdapter
   
   protected void a(FavFileInfo paramFavFileInfo, AsyncImageView paramAsyncImageView)
   {
-    int i = QQFileManagerUtil.b(paramFavFileInfo.jdField_c_of_type_JavaLangString);
-    if ((i == 0) || (i == 2))
+    int m = QQFileManagerUtil.k(paramFavFileInfo.d);
+    if ((m == 0) || (m == 2))
     {
       String str;
-      if (FileUtils.fileExistsAndNotEmpty(paramFavFileInfo.k)) {
+      if (FileUtils.fileExistsAndNotEmpty(paramFavFileInfo.n)) {
+        str = paramFavFileInfo.n;
+      } else if (FileUtils.fileExistsAndNotEmpty(paramFavFileInfo.m)) {
+        str = paramFavFileInfo.m;
+      } else if (FileUtils.fileExistsAndNotEmpty(paramFavFileInfo.l)) {
+        str = paramFavFileInfo.l;
+      } else if (FileUtils.fileExistsAndNotEmpty(paramFavFileInfo.k)) {
         str = paramFavFileInfo.k;
       } else if (FileUtils.fileExistsAndNotEmpty(paramFavFileInfo.j)) {
         str = paramFavFileInfo.j;
-      } else if (FileUtils.fileExistsAndNotEmpty(paramFavFileInfo.i)) {
-        str = paramFavFileInfo.i;
-      } else if (FileUtils.fileExistsAndNotEmpty(paramFavFileInfo.h)) {
-        str = paramFavFileInfo.h;
-      } else if (FileUtils.fileExistsAndNotEmpty(paramFavFileInfo.g)) {
-        str = paramFavFileInfo.g;
       } else {
         str = "";
       }
@@ -104,7 +104,7 @@ public class QfileFavFileBaseExpandableListAdapter
         return;
       }
     }
-    QQFileManagerUtil.a(paramAsyncImageView, paramFavFileInfo.e, i);
+    QQFileManagerUtil.a(paramAsyncImageView, paramFavFileInfo.h, m);
   }
   
   public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
@@ -121,39 +121,39 @@ public class QfileFavFileBaseExpandableListAdapter
     {
       Object localObject = new QfileFavFileBaseExpandableListAdapter.FavFileItemHolder(this);
       localView = paramView;
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560778, paramViewGroup, false);
+      paramView = this.c.inflate(2131627036, paramViewGroup, false);
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376167));
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).c = ((RelativeLayout)paramView.findViewById(2131444373));
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).c.setOnClickListener(this.d);
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).c.setOnLongClickListener(this.i);
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject);
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).c.setTag(localObject);
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramView.findViewById(2131361949));
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).d = ((CircleFileStateView)paramView.findViewById(2131427503));
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131366794));
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).f = ((CheckBox)paramView.findViewById(2131433116));
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366781));
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).g = ((AsyncImageView)paramView.findViewById(2131433103));
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).g.setOnClickListener(this.d);
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setTag(localObject);
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).g.setTag(localObject);
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366792));
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).h = ((TextView)paramView.findViewById(2131433114));
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setGravity(48);
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).h.setGravity(48);
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).h.setMaxLines(2);
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366779));
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).i = ((TextView)paramView.findViewById(2131433101));
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369727));
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).j = ((TextView)paramView.findViewById(2131436844));
       localView = paramView;
-      int i = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).dp2px(70, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int m = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).dp2px(70, this.b.getResources());
       localView = paramView;
-      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(i, i);
+      ((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)localObject).g.setAsyncClipSize(m, m);
       localView = paramView;
       paramView.setTag(localObject);
       paramViewGroup = (ViewGroup)localObject;
@@ -162,66 +162,66 @@ public class QfileFavFileBaseExpandableListAdapter
       paramViewGroup = (QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)paramView.getTag();
       label368:
       localView = paramView;
-      a(localFavFileInfo, paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView);
+      a(localFavFileInfo, paramViewGroup.g);
       localView = paramView;
-      paramViewGroup.jdField_b_of_type_Int = paramInt1;
+      paramViewGroup.b = paramInt1;
       localView = paramView;
-      paramViewGroup.jdField_a_of_type_Int = paramInt2;
+      paramViewGroup.a = paramInt2;
       localView = paramView;
-      paramViewGroup.jdField_a_of_type_JavaLangObject = localFavFileInfo;
+      paramViewGroup.k = localFavFileInfo;
       localView = paramView;
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setOnClickListener(this.b);
+      paramViewGroup.d.setOnClickListener(this.j);
       localView = paramView;
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+      paramViewGroup.d.setState(2);
       localView = paramView;
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setTag(paramViewGroup);
+      paramViewGroup.d.setTag(paramViewGroup);
       localView = paramView;
-      paramViewGroup.jdField_c_of_type_Int = 1;
+      paramViewGroup.e = 1;
       localView = paramView;
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+      paramViewGroup.d.setVisibility(8);
       localView = paramView;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFavFileInfo.jdField_c_of_type_JavaLangString);
+      paramViewGroup.h.setText(localFavFileInfo.d);
       localView = paramView;
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(a(localFavFileInfo));
+      paramViewGroup.i.setText(a(localFavFileInfo));
       localView = paramView;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131692375);
+      localObject = this.a.getString(2131889363);
       localView = paramView;
-      String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131692346);
+      String str = this.a.getString(2131889334);
       localView = paramView;
       StringBuilder localStringBuilder = new StringBuilder();
       localView = paramView;
-      localStringBuilder.append(((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).formatNewRefreshTime(localFavFileInfo.jdField_c_of_type_Long));
+      localStringBuilder.append(((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).formatNewRefreshTime(localFavFileInfo.g));
       localView = paramView;
       localStringBuilder.append(a(str, (String)localObject));
       localView = paramView;
       localObject = localStringBuilder.toString();
       localView = paramView;
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      paramViewGroup.j.setText((CharSequence)localObject);
       localView = paramView;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.f())
+      if (this.a.D())
       {
         localView = paramView;
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+        paramViewGroup.d.setVisibility(8);
         localView = paramView;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+        paramViewGroup.f.setVisibility(0);
         localView = paramView;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(FMDataCache.a(localFavFileInfo));
+        paramViewGroup.f.setChecked(FMDataCache.c(localFavFileInfo));
       }
       else
       {
         localView = paramView;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
+        paramViewGroup.f.setVisibility(8);
       }
       localView = paramView;
-      localObject = (LinearLayout.LayoutParams)paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
+      localObject = (LinearLayout.LayoutParams)paramViewGroup.i.getLayoutParams();
       localView = paramView;
-      ((LinearLayout.LayoutParams)localObject).topMargin = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).dp2px(3, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((LinearLayout.LayoutParams)localObject).topMargin = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).dp2px(3, this.b.getResources());
       localView = paramView;
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setLineSpacing(TypedValue.applyDimension(1, 0.8F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()), 1.0F);
+      paramViewGroup.i.setLineSpacing(TypedValue.applyDimension(1, 0.8F, this.b.getResources().getDisplayMetrics()), 1.0F);
       localView = paramView;
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramViewGroup.i.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localView = paramView;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(TypedValue.applyDimension(1, 0.25F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()), 1.0F);
+      paramViewGroup.h.setLineSpacing(TypedValue.applyDimension(1, 0.25F, this.b.getResources().getDisplayMetrics()), 1.0F);
       return paramView;
     }
     catch (Exception paramView)
@@ -233,7 +233,7 @@ public class QfileFavFileBaseExpandableListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileBaseExpandableListAdapter
  * JD-Core Version:    0.7.0.1
  */

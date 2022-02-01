@@ -6,20 +6,20 @@ import java.util.List;
 
 public class FTSMessageSearchEngine$FTSSearchResultItem
 {
-  public int a;
-  public long a;
-  public HashSet<Long> a;
   public List<FTSMessage> a;
   public int b;
   public int c;
   public int d;
-  public int e;
-  public int f;
+  public long e;
+  public HashSet<Long> f;
   public int g;
+  public int h;
+  public int i;
+  public int j;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.FTSSearchResultItem
  * JD-Core Version:    0.7.0.1
  */

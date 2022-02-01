@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 class ApolloMusicPlayer$1
   implements MediaPlayer.OnCompletionListener
 {
-  int jdField_a_of_type_Int = this.b;
+  int a = this.b;
   
   ApolloMusicPlayer$1(ApolloMusicPlayer paramApolloMusicPlayer, int paramInt) {}
   
@@ -17,20 +17,20 @@ class ApolloMusicPlayer$1
   {
     try
     {
-      this.jdField_a_of_type_Int -= 1;
+      this.a -= 1;
       paramMediaPlayer.seekTo(0);
-      if ((this.jdField_a_of_type_Int > 0) && (!this.jdField_a_of_type_ComTencentMobileqqApolloAudioApolloMusicPlayer.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
+      if ((this.a > 0) && (!this.c.e.get()))
       {
         paramMediaPlayer.start();
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloAudioApolloMusicPlayer.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloAudioApolloMusicPlayer.a(false);
+      if (this.c.e.get()) {
+        this.c.a(false);
       }
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloAudioApolloMusicPlayer.jdField_a_of_type_JavaLangObject)
+      synchronized (this.c.a)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloAudioApolloMusicPlayer.jdField_a_of_type_JavaUtilList.contains(paramMediaPlayer)) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloAudioApolloMusicPlayer.jdField_a_of_type_JavaUtilList.remove(paramMediaPlayer);
+        if (this.c.b.contains(paramMediaPlayer)) {
+          this.c.b.remove(paramMediaPlayer);
         }
         if (QLog.isColorLevel())
         {
@@ -56,7 +56,7 @@ class ApolloMusicPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.audio.ApolloMusicPlayer.1
  * JD-Core Version:    0.7.0.1
  */

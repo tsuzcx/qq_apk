@@ -14,11 +14,11 @@ class ConfessChatPie$4
   {
     String str;
     StringBuilder localStringBuilder;
-    if ((paramString != null) && (paramString.equals(this.a.a.jdField_a_of_type_JavaLangString)) && (paramInt1 == this.a.a.jdField_a_of_type_Int) && (paramInt2 == this.a.a.e))
+    if ((paramString != null) && (paramString.equals(this.a.ah.b)) && (paramInt1 == this.a.ah.a) && (paramInt2 == this.a.ah.v))
     {
       if (QLog.isColorLevel())
       {
-        str = this.a.b;
+        str = this.a.c;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onSendResult_confess uin ");
         localStringBuilder.append(paramString);
@@ -31,13 +31,13 @@ class ConfessChatPie$4
         QLog.d(str, 2, localStringBuilder.toString());
       }
       paramString = this.a;
-      paramString.m = true;
+      paramString.as = true;
       paramString.a(262144, null, paramLong);
       return;
     }
     if (QLog.isColorLevel())
     {
-      str = this.a.b;
+      str = this.a.c;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onSendResult_confess err uin ");
       localStringBuilder.append(paramString);
@@ -53,16 +53,16 @@ class ConfessChatPie$4
   
   protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
   {
-    this.a.e(65536);
+    this.a.j(65536);
   }
   
   protected void onUpdateSendMsgError_confess(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2, int paramInt3)
   {
-    if ((paramString1 != null) && (paramString1.equals(this.a.a.jdField_a_of_type_JavaLangString)) && (paramInt1 == this.a.a.jdField_a_of_type_Int) && (paramInt3 == this.a.a.e))
+    if ((paramString1 != null) && (paramString1.equals(this.a.ah.b)) && (paramInt1 == this.a.ah.a) && (paramInt3 == this.a.ah.v))
     {
       if (QLog.isColorLevel())
       {
-        paramSendMessageHandler = this.a.b;
+        paramSendMessageHandler = this.a.c;
         paramString2 = new StringBuilder();
         paramString2.append("onUpdateSendMsgError_confess uin ");
         paramString2.append(paramString1);
@@ -76,12 +76,12 @@ class ConfessChatPie$4
         paramString2.append(paramInt3);
         QLog.d(paramSendMessageHandler, 2, paramString2.toString());
       }
-      this.a.e(196608);
+      this.a.j(196608);
       return;
     }
     if (QLog.isColorLevel())
     {
-      paramSendMessageHandler = this.a.b;
+      paramSendMessageHandler = this.a.c;
       paramString2 = new StringBuilder();
       paramString2.append("onUpdateSendMsgError_confess err uin ");
       paramString2.append(paramString1);
@@ -97,7 +97,7 @@ class ConfessChatPie$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.4
  * JD-Core Version:    0.7.0.1
  */

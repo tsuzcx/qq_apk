@@ -10,7 +10,7 @@ class ILiveLoginTicketManager$1
   
   public void a()
   {
-    APICallback localAPICallback = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+    APICallback localAPICallback = this.a;
     if (localAPICallback != null) {
       localAPICallback.a();
     }
@@ -18,7 +18,7 @@ class ILiveLoginTicketManager$1
   
   public void a(int paramInt)
   {
-    APICallback localAPICallback = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+    APICallback localAPICallback = this.a;
     if (localAPICallback != null) {
       localAPICallback.a(paramInt);
     }
@@ -26,7 +26,7 @@ class ILiveLoginTicketManager$1
   
   public void a(int paramInt, String paramString)
   {
-    APICallback localAPICallback = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+    APICallback localAPICallback = this.a;
     if (localAPICallback != null) {
       localAPICallback.a(paramInt, paramString);
     }
@@ -34,9 +34,9 @@ class ILiveLoginTicketManager$1
   
   public void a(JSONObject paramJSONObject)
   {
-    ILiveLoginTicketManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager, paramJSONObject.optString("access_token"));
-    ILiveLoginTicketManager.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager, paramJSONObject.optString("openid"));
-    APICallback localAPICallback = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+    ILiveLoginTicketManager.a(this.b, paramJSONObject.optString("access_token"));
+    ILiveLoginTicketManager.b(this.b, paramJSONObject.optString("openid"));
+    APICallback localAPICallback = this.a;
     if (localAPICallback != null) {
       localAPICallback.a(paramJSONObject);
     }
@@ -44,7 +44,7 @@ class ILiveLoginTicketManager$1
   
   public void b(JSONObject paramJSONObject)
   {
-    APICallback localAPICallback = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+    APICallback localAPICallback = this.a;
     if (localAPICallback != null) {
       localAPICallback.b(paramJSONObject);
     }
@@ -52,7 +52,7 @@ class ILiveLoginTicketManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.ILiveLoginTicketManager.1
  * JD-Core Version:    0.7.0.1
  */

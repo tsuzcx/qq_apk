@@ -3,7 +3,7 @@ package com.tencent.viola.core;
 import android.text.TextUtils;
 import com.tencent.viola.utils.ViolaLogUtils;
 
-final class ViolaSDKEngine$1
+class ViolaSDKEngine$1
   implements Runnable
 {
   ViolaSDKEngine$1(InitConfig paramInitConfig, ViolaSDKEngine.InitCallback paramInitCallback, String paramString) {}
@@ -37,7 +37,7 @@ final class ViolaSDKEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.ViolaSDKEngine.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,9 @@ import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayoutListener;
 
 public abstract interface IDoodleMsgLayout
 {
-  public abstract int a();
-  
   public abstract void a();
   
   public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
   
   public abstract boolean a(View paramView);
   
@@ -24,13 +20,17 @@ public abstract interface IDoodleMsgLayout
   
   public abstract void b(boolean paramBoolean);
   
-  public abstract boolean b();
-  
-  public abstract void c();
+  public abstract boolean c();
   
   public abstract void d();
   
-  public abstract void e();
+  public abstract boolean e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract int getDataState();
   
   public abstract void setOperateListener(View.OnClickListener paramOnClickListener, View.OnTouchListener paramOnTouchListener, View.OnLongClickListener paramOnLongClickListener, DoodleMsgLayoutListener paramDoodleMsgLayoutListener);
   
@@ -38,7 +38,7 @@ public abstract interface IDoodleMsgLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doodle.IDoodleMsgLayout
  * JD-Core Version:    0.7.0.1
  */

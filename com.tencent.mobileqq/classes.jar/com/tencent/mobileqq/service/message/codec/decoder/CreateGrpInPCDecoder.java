@@ -33,8 +33,8 @@ public class CreateGrpInPCDecoder
     long l2 = paramList.msg_uid.get();
     int j = paramList.msg_type.get();
     paramMsg = String.valueOf(Utils.a(EndianUtil.a(paramMsg.msg_body.msg_content.get().toByteArray())));
-    paramList = (TroopManager)paramMessageHandler.a.getManager(QQManagerFactory.TROOP_MANAGER);
-    if ((paramList != null) && (paramList.b(paramMsg) == null))
+    paramList = (TroopManager)paramMessageHandler.n.getManager(QQManagerFactory.TROOP_MANAGER);
+    if ((paramList != null) && (paramList.f(paramMsg) == null))
     {
       paramDecodeProtoPkgContext = new TroopInfo();
       paramDecodeProtoPkgContext.troopuin = paramMsg;
@@ -42,16 +42,16 @@ public class CreateGrpInPCDecoder
       paramDecodeProtoPkgContext.dwAdditionalFlag = 1L;
       paramList.b(paramDecodeProtoPkgContext);
     }
-    paramList = (ITroopBatchInfohandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.TROOP_BATCH_INFO_HANDLER);
+    paramList = (ITroopBatchInfohandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.TROOP_BATCH_INFO_HANDLER);
     if (paramList != null) {
-      paramMessageHandler.a.getHandler(getClass()).postDelayed(new CreateGrpInPCDecoder.1(this, paramList, paramMsg), 2000L);
+      paramMessageHandler.n.getHandler(getClass()).postDelayed(new CreateGrpInPCDecoder.1(this, paramList, paramMsg), 2000L);
     }
-    MessageProtoCodec.a(l1, i, l2, j, paramMessageHandler.a());
+    MessageProtoCodec.a(l1, i, l2, j, paramMessageHandler.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.CreateGrpInPCDecoder
  * JD-Core Version:    0.7.0.1
  */

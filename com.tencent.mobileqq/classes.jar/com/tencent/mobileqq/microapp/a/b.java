@@ -12,7 +12,7 @@ final class b
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (StringUtil.a(paramIntent.getAction())) {
+    if (StringUtil.isEmpty(paramIntent.getAction())) {
       return;
     }
     if (a.a(this.a) != null) {
@@ -22,7 +22,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,24 +9,24 @@ import java.util.Map;
 
 public class BaseChatItemLayoutViewWrapperFactory
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseChatItemLayout jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
-  private Map<Class<? extends BaseChatItemLayoutViewWrapper>, BaseChatItemLayoutViewWrapper> jdField_a_of_type_JavaUtilMap;
+  private Map<Class<? extends BaseChatItemLayoutViewWrapper>, BaseChatItemLayoutViewWrapper> a;
+  private BaseChatItemLayout b;
+  private Context c;
   
   public BaseChatItemLayoutViewWrapperFactory(BaseChatItemLayout paramBaseChatItemLayout, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramBaseChatItemLayout;
+    this.c = paramContext;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_JavaUtilMap == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
-      this.jdField_a_of_type_JavaUtilMap.put(NickNameLayoutViewWrapper.class, new NickNameLayoutViewWrapper(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_JavaUtilMap.put(BubbleViewWrapper.class, new BubbleViewWrapper(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_JavaUtilMap.put(HeadIconWrapper.class, new HeadIconWrapper(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_AndroidContentContext));
+      this.a = new HashMap();
+      this.a.put(NickNameLayoutViewWrapper.class, new NickNameLayoutViewWrapper(this.b, this.c));
+      this.a.put(BubbleViewWrapper.class, new BubbleViewWrapper(this.b, this.c));
+      this.a.put(HeadIconWrapper.class, new HeadIconWrapper(this.b, this.c));
     }
   }
   
@@ -34,7 +34,7 @@ public class BaseChatItemLayoutViewWrapperFactory
   public <T extends BaseChatItemLayoutViewWrapper> T a(Class<? extends BaseChatItemLayoutViewWrapper> paramClass)
   {
     a();
-    paramClass = (BaseChatItemLayoutViewWrapper)this.jdField_a_of_type_JavaUtilMap.get(paramClass);
+    paramClass = (BaseChatItemLayoutViewWrapper)this.a.get(paramClass);
     if (paramClass == null) {
       QLog.e("BaseChatItemLayoutViewWrapperFactory", 1, "wrapper check failed");
     }
@@ -43,7 +43,7 @@ public class BaseChatItemLayoutViewWrapperFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.BaseChatItemLayoutViewWrapperFactory
  * JD-Core Version:    0.7.0.1
  */

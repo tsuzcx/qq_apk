@@ -24,7 +24,7 @@ final class PluginPreloader$2
       localStringBuilder.append(" preload:fail:installerror");
       QLog.d("PluginPreloader", 2, localStringBuilder.toString());
     }
-    PluginPreloadReportUtils.a(this.jdField_a_of_type_MqqAppAppRuntime, 1, paramInt, paramInt, 3, "preload:fail:installerror", this.c, new String[] { paramString });
+    PluginPreloadReportUtils.a(this.a, 1, paramInt, paramInt, 3, "preload:fail:installerror", this.e, new String[] { paramString });
   }
   
   public void onInstallFinish(String paramString)
@@ -32,13 +32,13 @@ final class PluginPreloader$2
     if (QLog.isColorLevel()) {
       QLog.d("PluginPreloader", 2, "plugin install success, do preload.");
     }
-    PluginPreloadReportUtils.a(this.jdField_a_of_type_MqqAppAppRuntime, 0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentComicApiIQQComicPluginUtil$ExtraResult.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentComicApiIQQComicPluginUtil$ExtraResult.jdField_a_of_type_JavaLangString, this.c, new String[] { paramString });
-    this.jdField_a_of_type_ComTencentComicPluginPreloadStrategy.a();
+    PluginPreloadReportUtils.a(this.a, 0, this.b, this.c, this.d.a, this.d.b, this.e, new String[] { paramString });
+    this.f.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.PluginPreloader.2
  * JD-Core Version:    0.7.0.1
  */

@@ -74,7 +74,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
       ((StringBuilder)localObject).append(paramString1);
       QLog.w(paramString2, 1, ((StringBuilder)localObject).toString());
     }
-    else if (QQAudioHelper.c())
+    else if (QQAudioHelper.f())
     {
       paramString2 = this.TAG;
       localObject = new StringBuilder();
@@ -223,7 +223,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     //   202: pop
     //   203: aload_3
     //   204: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   207: invokestatic 160	com/tencent/mobileqq/utils/QQAudioHelper:c	(Ljava/lang/String;)V
+    //   207: invokestatic 161	com/tencent/mobileqq/utils/QQAudioHelper:c	(Ljava/lang/String;)V
     //   210: aload_1
     //   211: areturn
     //   212: astore_3
@@ -246,7 +246,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     //   240: invokespecial 41	java/lang/StringBuilder:<init>	()V
     //   243: astore 5
     //   245: aload 5
-    //   247: ldc 162
+    //   247: ldc 163
     //   249: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   252: pop
     //   253: aload 5
@@ -262,7 +262,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     //   271: aload 5
     //   273: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   276: aload_3
-    //   277: invokestatic 165	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   277: invokestatic 166	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   280: aload_1
     //   281: astore_3
     //   282: aload_3
@@ -297,8 +297,8 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     //   1: invokestatic 104	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +15 -> 19
     //   7: iload_2
-    //   8: invokestatic 174	com/tencent/av/ManageConfig/QAVConfig:b	(I)Lcom/tencent/av/ManageConfig/QAVConfItem;
-    //   11: getfield 178	com/tencent/av/ManageConfig/QAVConfItem:a	Ljava/lang/String;
+    //   8: invokestatic 175	com/tencent/av/ManageConfig/QAVConfig:b	(I)Lcom/tencent/av/ManageConfig/QAVConfItem;
+    //   11: getfield 179	com/tencent/av/ManageConfig/QAVConfItem:b	Ljava/lang/String;
     //   14: astore 5
     //   16: goto +48 -> 64
     //   19: new 40	java/lang/StringBuilder
@@ -306,7 +306,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     //   23: invokespecial 41	java/lang/StringBuilder:<init>	()V
     //   26: astore 5
     //   28: aload 5
-    //   30: ldc 180
+    //   30: ldc 181
     //   32: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload 5
@@ -336,7 +336,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     //   81: invokevirtual 144	com/tencent/mobileqq/utils/confighandler/ConfigInfo:setUin	(Ljava/lang/String;)V
     //   84: aload_1
     //   85: iload_2
-    //   86: invokestatic 183	com/tencent/av/ManageConfig/QAVConfig:a	(I)I
+    //   86: invokestatic 184	com/tencent/av/ManageConfig/QAVConfig:c	(I)I
     //   89: i2l
     //   90: putfield 148	com/tencent/mobileqq/utils/confighandler/ConfigInfo:serverVer	J
     //   93: aload_1
@@ -355,13 +355,13 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     //   115: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: pop
     //   119: aload_3
-    //   120: ldc 184
+    //   120: ldc 185
     //   122: invokestatic 158	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   125: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   128: pop
     //   129: aload_3
     //   130: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   133: invokestatic 160	com/tencent/mobileqq/utils/QQAudioHelper:c	(Ljava/lang/String;)V
+    //   133: invokestatic 161	com/tencent/mobileqq/utils/QQAudioHelper:c	(Ljava/lang/String;)V
     //   136: aload_1
     //   137: areturn
     //   138: astore_3
@@ -384,7 +384,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     //   166: invokespecial 41	java/lang/StringBuilder:<init>	()V
     //   169: astore 5
     //   171: aload 5
-    //   173: ldc 162
+    //   173: ldc 163
     //   175: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   178: pop
     //   179: aload 5
@@ -400,7 +400,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     //   197: aload 5
     //   199: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   202: aload_3
-    //   203: invokestatic 165	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   203: invokestatic 166	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   206: aload_1
     //   207: astore_3
     //   208: aload_3
@@ -472,7 +472,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.ConfigHandler
  * JD-Core Version:    0.7.0.1
  */

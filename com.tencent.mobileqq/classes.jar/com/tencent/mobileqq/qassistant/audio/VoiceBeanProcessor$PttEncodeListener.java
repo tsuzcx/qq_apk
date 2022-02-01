@@ -10,24 +10,24 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class VoiceBeanProcessor$PttEncodeListener
   implements IAudioProcessorListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+  private Context a = BaseApplication.getContext();
+  private int b;
   
   public int a()
   {
-    return Math.max(2000, this.jdField_a_of_type_Int);
+    return Math.max(2000, this.b);
   }
   
   public void a(IAudioProcessor paramIAudioProcessor, IAudioProcessor.ProcessData paramProcessData) {}
   
   public void b(IAudioProcessor paramIAudioProcessor, IAudioProcessor.ProcessData paramProcessData)
   {
-    this.jdField_a_of_type_Int = ((int)AudioHelper.a(this.jdField_a_of_type_AndroidContentContext, paramProcessData.jdField_a_of_type_ArrayOfByte, paramProcessData.jdField_a_of_type_Int, 1.0F));
+    this.b = ((int)AudioHelper.a(this.a, paramProcessData.c, paramProcessData.a, 1.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.VoiceBeanProcessor.PttEncodeListener
  * JD-Core Version:    0.7.0.1
  */

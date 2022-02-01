@@ -2,18 +2,18 @@ package com.tencent.mobileqq.pic;
 
 public class PicUploadExtra
 {
-  public int a;
   public String a;
-  public boolean a;
   public String b;
-  public boolean b;
-  public String c;
   public boolean c;
   public String d;
+  public String e;
+  public boolean f;
+  public boolean g;
+  public int h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicUploadExtra
  * JD-Core Version:    0.7.0.1
  */

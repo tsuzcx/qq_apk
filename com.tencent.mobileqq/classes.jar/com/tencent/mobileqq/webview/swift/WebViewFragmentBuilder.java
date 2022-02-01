@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.comic.ui.QQComicFragment;
 import com.tencent.mobileqq.emoticonview.EmoStoreWebViewFragment;
-import com.tencent.mobileqq.nearby.verify.FaceVerifyWebFragment;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import com.tencent.mobileqq.richstatus.SignatureEditFragment;
 import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
@@ -20,7 +19,8 @@ public class WebViewFragmentBuilder
   
   static
   {
-    a.put("5", FaceVerifyWebFragment.class);
+    a.put("7", com.tencent.mobileqq.qqlive.verified.FaceVerifyWebFragment.class);
+    a.put("5", com.tencent.mobileqq.nearby.verify.FaceVerifyWebFragment.class);
     a.put("4", EmoStoreWebViewFragment.class);
     a.put("3", SignatureEditFragment.class);
     a.put("2", QzoneTranslucentBrowserFragment.class);
@@ -70,9 +70,7 @@ public class WebViewFragmentBuilder
       paramIntent.putExtra("isScreenOrientationPortrait", true);
       return a(1, paramSwiftWebViewFragmentSupporter, paramWebViewTabBarData, paramIntent);
     }
-    if (a(SwiftWebViewUtils.a(paramIntent))) {
-      return a(5, paramSwiftWebViewFragmentSupporter, paramWebViewTabBarData, paramIntent);
-    }
+    SwiftWebViewUtils.a(paramIntent);
     paramWebViewTabBarData = b(paramSwiftWebViewFragmentSupporter, paramWebViewTabBarData, paramIntent);
     if (paramWebViewTabBarData != null) {
       return paramWebViewTabBarData;
@@ -83,42 +81,20 @@ public class WebViewFragmentBuilder
     return WebViewFragment.newInstance(paramIntent);
   }
   
-  private static boolean a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        Object localObject = Uri.parse(paramString);
-        paramString = ((Uri)localObject).getHost();
-        localObject = ((Uri)localObject).getQueryParameter("useCMShowWebview");
-        if ((!TextUtils.isEmpty(paramString)) && (paramString.contains("qq.com")) && (!TextUtils.isEmpty((CharSequence)localObject)))
-        {
-          int i = Integer.parseInt((String)localObject);
-          if (i == 1) {
-            return true;
-          }
-        }
-        return false;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return false;
-  }
-  
   private static WebViewFragment b(SwiftWebViewFragmentSupporter paramSwiftWebViewFragmentSupporter, WebViewTabBarData paramWebViewTabBarData, Intent paramIntent)
   {
     if (paramWebViewTabBarData.url.contains("https://ida.webank.com/api/web/login")) {
-      return a(6, paramSwiftWebViewFragmentSupporter, paramWebViewTabBarData, paramIntent);
+      return a(5, paramSwiftWebViewFragmentSupporter, paramWebViewTabBarData, paramIntent);
+    }
+    if (paramWebViewTabBarData.url.equals("https://qlive.qq.com/pages/name-auth.html")) {
+      return a(7, paramSwiftWebViewFragmentSupporter, paramWebViewTabBarData, paramIntent);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragmentBuilder
  * JD-Core Version:    0.7.0.1
  */

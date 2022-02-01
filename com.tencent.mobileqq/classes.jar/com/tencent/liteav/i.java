@@ -1,12 +1,12 @@
 package com.tencent.liteav;
 
 import android.content.Context;
-import com.tencent.liteav.basic.a.c;
+import com.tencent.liteav.basic.b.c;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.basic.module.TXCStatus;
-import com.tencent.liteav.basic.util.d;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.e;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.liteav.screencapture.a;
 import com.tencent.liteav.screencapture.a.a;
 import java.lang.ref.WeakReference;
@@ -21,9 +21,9 @@ public class i
   private final a a;
   private l b;
   private EGLContext c = null;
-  private WeakReference<com.tencent.liteav.basic.b.b> d = null;
+  private WeakReference<com.tencent.liteav.basic.c.b> d = null;
   private int e;
-  private d f;
+  private e f;
   private int g;
   private int h;
   private String i = "";
@@ -36,11 +36,11 @@ public class i
   
   public i(Context paramContext, g paramg, a.a parama)
   {
-    this.a = new a(paramContext, paramg.V, parama);
+    this.a = new a(paramContext, paramg.W, parama);
     this.a.a(this);
     paramg.a();
     this.f = c(paramg.a, paramg.b);
-    this.e = paramg.h;
+    this.e = paramg.i;
     this.g = paramg.a;
     this.h = paramg.b;
     TXCLog.i("TXCScreenCaptureSource", "capture size: %s, encode size: %dx%d", new Object[] { this.f, Integer.valueOf(this.g), Integer.valueOf(this.h) });
@@ -63,7 +63,7 @@ public class i
     finally {}
   }
   
-  private d c(int paramInt1, int paramInt2)
+  private e c(int paramInt1, int paramInt2)
   {
     int i1;
     if (paramInt1 > paramInt2) {
@@ -71,7 +71,7 @@ public class i
     } else {
       i1 = 0;
     }
-    d locald = new d();
+    e locale = new e();
     if ((paramInt1 <= 1280) && (paramInt2 <= 1280))
     {
       paramInt2 = 720;
@@ -80,14 +80,14 @@ public class i
       } else {
         paramInt1 = 720;
       }
-      locald.a = paramInt1;
+      locale.a = paramInt1;
       if (i1 != 0) {
         paramInt1 = paramInt2;
       } else {
         paramInt1 = 1280;
       }
-      locald.b = paramInt1;
-      return locald;
+      locale.b = paramInt1;
+      return locale;
     }
     int i2;
     if (i1 != 0) {
@@ -95,14 +95,14 @@ public class i
     } else {
       i2 = Math.min(paramInt1, paramInt2);
     }
-    locald.a = i2;
+    locale.a = i2;
     if (i1 != 0) {
       paramInt1 = Math.min(paramInt1, paramInt2);
     } else {
       paramInt1 = Math.max(paramInt1, paramInt2);
     }
-    locald.b = paramInt1;
-    return locald;
+    locale.b = paramInt1;
+    return locale;
   }
   
   private void f(boolean paramBoolean)
@@ -158,7 +158,7 @@ public class i
     {
       this.n = false;
       Monitor.a(2, String.format("VideoCapture[%d]: capture first frame", new Object[] { Integer.valueOf(hashCode()) }), "", 0);
-      f.a(this.d, 1007, "First frame capture completed");
+      h.a(this.d, 1007, "First frame capture completed");
       TXCLog.i("TXCScreenCaptureSource", "on Got first frame");
     }
     this.k += 1L;
@@ -189,14 +189,14 @@ public class i
       paramEGLContext.a = paramInt2;
       paramEGLContext.b = 0;
       paramEGLContext.j = 0;
-      paramEGLContext.l = f.a(paramEGLContext.e, paramEGLContext.f, this.g, this.h);
+      paramEGLContext.l = h.a(paramEGLContext.e, paramEGLContext.f, this.g, this.h);
       this.b.b(paramEGLContext);
     }
   }
   
   public void a(c paramc) {}
   
-  public void a(com.tencent.liteav.basic.b.b paramb)
+  public void a(com.tencent.liteav.basic.c.b paramb)
   {
     this.d = new WeakReference(paramb);
     a locala = this.a;
@@ -217,7 +217,7 @@ public class i
     while (a(this.o)) {}
     paramObject = this.b;
     if (paramObject != null) {
-      paramObject.s();
+      paramObject.t();
     }
   }
   
@@ -260,11 +260,11 @@ public class i
   
   public void b(boolean paramBoolean)
   {
-    d locald = c(this.g, this.h);
-    if (!locald.equals(this.f))
+    e locale = c(this.g, this.h);
+    if (!locale.equals(this.f))
     {
-      this.f = locald;
-      this.a.a(locald.a, locald.b);
+      this.f = locale;
+      this.a.a(locale.a, locale.b);
       TXCLog.i("TXCScreenCaptureSource", "capture size: %s, encode size: %dx%d", new Object[] { this.f, Integer.valueOf(this.g), Integer.valueOf(this.h) });
     }
   }
@@ -347,7 +347,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.i
  * JD-Core Version:    0.7.0.1
  */

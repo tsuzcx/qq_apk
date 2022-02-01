@@ -19,11 +19,11 @@ class FeedCommentBackgroundSyncer$CommentPullConsumer$1
   public void a(CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
   {
     super.onNext(paramGetFeedCommentEvent);
-    if (paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramGetFeedCommentEvent.g.isSuccess())
     {
       CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-      localCommentManager.a(paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList, paramGetFeedCommentEvent.jdField_a_of_type_JavaLangString, false, false);
-      paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList.addAll(localCommentManager.b(paramGetFeedCommentEvent.jdField_a_of_type_JavaLangString, false));
+      localCommentManager.a(paramGetFeedCommentEvent.k, paramGetFeedCommentEvent.e, false, false);
+      paramGetFeedCommentEvent.k.addAll(localCommentManager.b(paramGetFeedCommentEvent.e, false));
     }
     StoryDispatcher.a().dispatch(paramGetFeedCommentEvent);
     this.a.b();

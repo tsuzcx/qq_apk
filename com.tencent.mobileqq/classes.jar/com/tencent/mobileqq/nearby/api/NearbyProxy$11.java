@@ -26,11 +26,11 @@ class NearbyProxy$11
       ((Long)paramArrayOfObject[1]).longValue();
       String str = (String)paramArrayOfObject[2];
       int i = ((Integer)paramArrayOfObject[3]).intValue();
-      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "blacklist_sequence", Integer.valueOf(i));
+      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.a.a.getAccount(), "blacklist_sequence", Integer.valueOf(i));
       paramArrayOfObject = new ArrayList();
       paramArrayOfObject.add(Long.valueOf(str));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver);
-      ((ShieldMsgManger)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SHIELD_LIST_MANAGER)).a(1001, paramArrayOfObject, 1);
+      this.a.a.addObserver(this.a.o);
+      ((ShieldMsgManger)this.a.a.getManager(QQManagerFactory.SHIELD_LIST_MANAGER)).a(1001, paramArrayOfObject, 1);
       return;
     }
     NearbyProxy.a(this.a, 4115, new Object[] { Boolean.valueOf(false) });
@@ -46,10 +46,10 @@ class NearbyProxy$11
     }
     if (paramBoolean)
     {
-      ShieldMsgManger localShieldMsgManger = (ShieldMsgManger)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
+      ShieldMsgManger localShieldMsgManger = (ShieldMsgManger)this.a.a.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(Long.valueOf(paramString));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver);
+      this.a.a.addObserver(this.a.o);
       localShieldMsgManger.b(1001, localArrayList, 1);
       return;
     }
@@ -58,7 +58,7 @@ class NearbyProxy$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.NearbyProxy.11
  * JD-Core Version:    0.7.0.1
  */

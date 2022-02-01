@@ -10,12 +10,12 @@ class NewFriendActivity$1
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a = null;
+    this.a.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.activity.NewFriendActivity.1
  * JD-Core Version:    0.7.0.1
  */

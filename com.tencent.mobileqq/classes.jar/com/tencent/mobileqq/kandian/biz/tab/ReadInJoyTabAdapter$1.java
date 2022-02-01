@@ -13,24 +13,24 @@ class ReadInJoyTabAdapter$1
   
   public void onClick(View paramView)
   {
-    ReadInJoyTabAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyTabAdapter, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTabChannelCoverInfo);
-    if (ReadInJoyTabAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyTabAdapter) != null) {
-      ReadInJoyTabAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyTabAdapter).a(this.jdField_a_of_type_Int);
+    ReadInJoyTabAdapter.a(this.e, this.a);
+    if (ReadInJoyTabAdapter.a(this.e) != null) {
+      ReadInJoyTabAdapter.a(this.e).a(this.b);
     }
-    paramView = this.b;
+    paramView = this.c;
     int j = ChannelCoverView.b;
     int i;
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
+    if (this.d.getVisibility() == 0) {
       i = 1;
     } else {
       i = 0;
     }
-    ChannelCoverView.a("0X8009496", paramView, j, i, this.jdField_a_of_type_Int);
+    ChannelCoverView.a("0X8009496", paramView, j, i, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyTabAdapter.1
  * JD-Core Version:    0.7.0.1
  */

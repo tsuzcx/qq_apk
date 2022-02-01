@@ -8,97 +8,92 @@ public class DeliverData
   implements Parcelable
 {
   public static final Parcelable.Creator<DeliverData> CREATOR = new DeliverData.1();
-  private static int jdField_a_of_type_Int = 9;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int[] jdField_b_of_type_ArrayOfInt;
-  private String[] jdField_b_of_type_ArrayOfJavaLangString;
+  private static int a = 9;
+  private int[] b;
+  private int[] c;
+  private String[] d;
+  private String[] e;
   
   public DeliverData()
   {
-    int i = jdField_a_of_type_Int;
-    this.jdField_a_of_type_ArrayOfInt = new int[i];
-    this.jdField_b_of_type_ArrayOfInt = new int[i];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[i];
-    this.jdField_b_of_type_ArrayOfJavaLangString = new String[i];
+    int i = a;
+    this.b = new int[i];
+    this.c = new int[i];
+    this.d = new String[i];
+    this.e = new String[i];
   }
   
   public DeliverData(Parcel paramParcel)
   {
-    int i = jdField_a_of_type_Int;
-    this.jdField_a_of_type_ArrayOfInt = new int[i];
-    this.jdField_b_of_type_ArrayOfInt = new int[i];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[i];
-    this.jdField_b_of_type_ArrayOfJavaLangString = new String[i];
+    int i = a;
+    this.b = new int[i];
+    this.c = new int[i];
+    this.d = new String[i];
+    this.e = new String[i];
     if (paramParcel.readInt() > 0) {
-      paramParcel.readIntArray(this.jdField_a_of_type_ArrayOfInt);
+      paramParcel.readIntArray(this.b);
     }
     if (paramParcel.readInt() > 0) {
-      paramParcel.readIntArray(this.jdField_b_of_type_ArrayOfInt);
+      paramParcel.readIntArray(this.c);
     }
     if (paramParcel.readInt() > 0) {
-      paramParcel.readStringArray(this.jdField_a_of_type_ArrayOfJavaLangString);
+      paramParcel.readStringArray(this.d);
     }
     if (paramParcel.readInt() > 0) {
-      paramParcel.readStringArray(this.jdField_b_of_type_ArrayOfJavaLangString);
+      paramParcel.readStringArray(this.e);
     }
   }
   
   public void a()
   {
-    int i = jdField_a_of_type_Int;
-    this.jdField_a_of_type_ArrayOfInt = new int[i];
-    this.jdField_b_of_type_ArrayOfInt = new int[i];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[i];
-    this.jdField_b_of_type_ArrayOfJavaLangString = new String[i];
+    int i = a;
+    this.b = new int[i];
+    this.c = new int[i];
+    this.d = new String[i];
+    this.e = new String[i];
   }
   
   public void a(int paramInt, Integer paramInteger)
   {
-    if (paramInt < jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ArrayOfInt[paramInt] = paramInteger.intValue();
+    if (paramInt < a) {
+      this.b[paramInt] = paramInteger.intValue();
     }
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (paramInt < jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ArrayOfJavaLangString[paramInt] = paramString;
+    if (paramInt < a) {
+      this.d[paramInt] = paramString;
     }
-  }
-  
-  public int[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfInt;
-  }
-  
-  public String[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
   }
   
   public void b(int paramInt, Integer paramInteger)
   {
-    if (paramInt < jdField_a_of_type_Int) {
-      this.jdField_b_of_type_ArrayOfInt[paramInt] = paramInteger.intValue();
+    if (paramInt < a) {
+      this.c[paramInt] = paramInteger.intValue();
     }
   }
   
   public void b(int paramInt, String paramString)
   {
-    if (paramInt < jdField_a_of_type_Int) {
-      this.jdField_b_of_type_ArrayOfJavaLangString[paramInt] = paramString;
+    if (paramInt < a) {
+      this.e[paramInt] = paramString;
     }
   }
   
   public int[] b()
   {
-    return this.jdField_b_of_type_ArrayOfInt;
+    return this.b;
   }
   
-  public String[] b()
+  public int[] c()
   {
-    return this.jdField_b_of_type_ArrayOfJavaLangString;
+    return this.c;
+  }
+  
+  public String[] d()
+  {
+    return this.d;
   }
   
   public int describeContents()
@@ -106,43 +101,48 @@ public class DeliverData
     return 0;
   }
   
+  public String[] e()
+  {
+    return this.e;
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    Object localObject = this.b;
     if ((localObject != null) && (localObject.length > 0))
     {
       paramParcel.writeInt(localObject.length);
-      paramParcel.writeIntArray(this.jdField_a_of_type_ArrayOfInt);
+      paramParcel.writeIntArray(this.b);
     }
     else
     {
       paramParcel.writeInt(0);
     }
-    localObject = this.jdField_b_of_type_ArrayOfInt;
+    localObject = this.c;
     if ((localObject != null) && (localObject.length > 0))
     {
       paramParcel.writeInt(localObject.length);
-      paramParcel.writeIntArray(this.jdField_b_of_type_ArrayOfInt);
+      paramParcel.writeIntArray(this.c);
     }
     else
     {
       paramParcel.writeInt(0);
     }
-    localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
+    localObject = this.d;
     if ((localObject != null) && (localObject.length > 0))
     {
       paramParcel.writeInt(localObject.length);
-      paramParcel.writeStringArray(this.jdField_a_of_type_ArrayOfJavaLangString);
+      paramParcel.writeStringArray(this.d);
     }
     else
     {
       paramParcel.writeInt(0);
     }
-    localObject = this.jdField_b_of_type_ArrayOfJavaLangString;
+    localObject = this.e;
     if ((localObject != null) && (localObject.length > 0))
     {
       paramParcel.writeInt(localObject.length);
-      paramParcel.writeStringArray(this.jdField_b_of_type_ArrayOfJavaLangString);
+      paramParcel.writeStringArray(this.e);
       return;
     }
     paramParcel.writeInt(0);
@@ -150,7 +150,7 @@ public class DeliverData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.ugc.DeliverData
  * JD-Core Version:    0.7.0.1
  */

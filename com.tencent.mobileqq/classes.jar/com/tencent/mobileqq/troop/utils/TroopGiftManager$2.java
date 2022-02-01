@@ -31,10 +31,10 @@ class TroopGiftManager$2
         paramBundle.append(" data=");
         paramBundle.append(paramArrayOfByte);
         paramBundle.append(" callback=");
-        paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback);
+        paramBundle.append(this.b);
         QLog.i(".troop.send_gift", 2, paramBundle.toString());
       }
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback;
+      paramArrayOfByte = this.b;
       paramBundle = new StringBuilder();
       paramBundle.append("errorCode=");
       paramBundle.append(paramInt);
@@ -85,9 +85,9 @@ class TroopGiftManager$2
             paramArrayOfByte = new TroopGiftAioPanelData.EmptyPackagePage((Oidb_0xcd1.EmptyPackagePage)localObject2);
           }
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback != null)
+        if (this.b != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a((List)localObject1, paramArrayOfByte);
+          this.b.a((List)localObject1, paramArrayOfByte);
           return;
         }
       }
@@ -101,13 +101,13 @@ class TroopGiftManager$2
         paramBundle.append(paramArrayOfByte);
         QLog.i(".troop.send_gift", 2, paramBundle.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(-1, "InvalidProtocolBufferMicroException");
+      this.b.a(-1, "InvalidProtocolBufferMicroException");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftManager.2
  * JD-Core Version:    0.7.0.1
  */

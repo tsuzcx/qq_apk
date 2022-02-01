@@ -14,31 +14,31 @@ class QQLSActivity$7
 {
   QQLSActivity$7(QQLSActivity paramQQLSActivity, MessageForPtt paramMessageForPtt, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    ChatActivityFacade.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    paramView = ChatActivityFacade.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), new SessionInfo(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    ChatActivityFacade.a(QQLSActivity.i(this.c), this.a);
+    paramView = ChatActivityFacade.a(QQLSActivity.i(this.c), new SessionInfo(), this.a);
     if (paramView != null) {
       try
       {
         ((MessageForPtt)paramView).c2cViaOffline = true;
         Bundle localBundle = new Bundle();
         localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
-        ChatActivityFacade.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
+        ChatActivityFacade.a(QQLSActivity.i(this.c), this.a.istroop, this.a.frienduin, this.a.getLocalFilePath(), paramView.uniseq, true, this.a.voiceLength * 1000, this.a.voiceType, true, this.a.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
       }
       catch (RuntimeException paramView)
       {
         paramView.printStackTrace();
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, paramView.getMessage(), 0).a();
+        QQToast.makeText(this.c, paramView.getMessage(), 0).show();
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.f();
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.g();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.7
  * JD-Core Version:    0.7.0.1
  */

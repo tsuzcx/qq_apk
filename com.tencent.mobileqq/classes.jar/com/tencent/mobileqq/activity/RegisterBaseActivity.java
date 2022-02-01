@@ -14,22 +14,15 @@ public class RegisterBaseActivity
   extends QIphoneTitleBarActivity
   implements DialogInterface.OnClickListener
 {
-  protected Dialog a;
-  protected Handler a;
-  protected String a;
-  protected boolean a;
-  protected boolean b = true;
-  
-  public RegisterBaseActivity()
-  {
-    this.jdField_a_of_type_JavaLangString = "86";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new RegisterBaseActivity.1(this);
-  }
+  protected String a = "86";
+  protected boolean b = false;
+  protected boolean c = true;
+  protected Handler d = new RegisterBaseActivity.1(this);
+  protected Dialog e;
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new RegisterBaseActivity.3(this));
+    this.d.post(new RegisterBaseActivity.3(this));
   }
   
   protected void a(String paramString, int paramInt)
@@ -43,7 +36,7 @@ public class RegisterBaseActivity
       if (paramString.endsWith("\n")) {
         str = paramString.substring(0, paramString.length() - 1);
       }
-      new QQToastNotifier(this).a(str, getTitleBarHeight(), 0, paramInt);
+      new QQToastNotifier(this).notifyUser(str, getTitleBarHeight(), 0, paramInt);
     }
   }
   
@@ -78,7 +71,7 @@ public class RegisterBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterBaseActivity
  * JD-Core Version:    0.7.0.1
  */

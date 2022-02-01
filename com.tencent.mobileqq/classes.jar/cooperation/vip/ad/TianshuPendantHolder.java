@@ -29,62 +29,62 @@ public class TianshuPendantHolder
   extends ConversationActivePendantHolderBase
   implements ARMapHongBaoListView.onPendentClickListener
 {
-  public static float c = 112.0F;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TianshuPendantHolder.AnimationDrawableProxyView jdField_a_of_type_CooperationVipAdTianshuPendantHolder$AnimationDrawableProxyView;
-  private TianShuAccess.AdItem jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem;
-  private String jdField_a_of_type_JavaLangString;
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  public static float a = 112.0F;
+  private TianShuAccess.AdItem b;
+  private QQAppInterface c;
+  private TianshuPendantHolder.AnimationDrawableProxyView d;
+  private Drawable e;
+  private Rect f;
+  private Rect g;
+  private String h;
   
   public TianshuPendantHolder(QQAppInterface paramQQAppInterface, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838298);
+    this.c = paramQQAppInterface;
+    if (this.e == null) {
+      this.e = this.m.getResources().getDrawable(2130838346);
     }
   }
   
   private void a()
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ARMapHongBaoListView))) {
-      ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewView).setPendantHolder(null);
+    if ((this.n != null) && ((this.n instanceof ARMapHongBaoListView))) {
+      ((ARMapHongBaoListView)this.n).setPendantHolder(null);
     }
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.c;
     if (localQQAppInterface != null)
     {
-      TianShuAccess.AdItem localAdItem = this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem;
+      TianShuAccess.AdItem localAdItem = this.b;
       if (localAdItem != null) {
-        TianshuAdUtils.a(localQQAppInterface, 122, String.valueOf(localAdItem.iAdId.get()), this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.traceinfo.get());
+        TianshuAdUtils.a(localQQAppInterface, 122, String.valueOf(localAdItem.iAdId.get()), this.b.traceinfo.get());
       }
     }
   }
   
-  private void h()
+  private void b()
   {
-    TianshuAdUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 4004);
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ARMapHongBaoListView)))
+    TianshuAdUtils.a(this.c, this.m, this.h, 4004);
+    if ((this.n != null) && ((this.n instanceof ARMapHongBaoListView)))
     {
-      ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewView).setPendantHolder(null);
-      ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewView).setOnPendentClickListener(null);
+      ((ARMapHongBaoListView)this.n).setPendantHolder(null);
+      ((ARMapHongBaoListView)this.n).setOnPendentClickListener(null);
     }
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.c;
     if (localQQAppInterface != null)
     {
-      TianShuAccess.AdItem localAdItem = this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem;
+      TianShuAccess.AdItem localAdItem = this.b;
       if (localAdItem != null) {
-        TianshuAdUtils.a(localQQAppInterface, 102, String.valueOf(localAdItem.iAdId.get()), this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.traceinfo.get());
+        TianshuAdUtils.a(localQQAppInterface, 102, String.valueOf(localAdItem.iAdId.get()), this.b.traceinfo.get());
       }
     }
   }
   
-  private void i()
+  private void j()
   {
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+      this.B = null;
       return;
     }
     catch (Throwable localThrowable)
@@ -95,21 +95,14 @@ public class TianshuPendantHolder
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    Rect localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+    Rect localRect = this.g;
     if ((localRect != null) && (localRect.contains((int)paramFloat1, (int)paramFloat2)))
     {
       a();
       return;
     }
-    h();
+    b();
   }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-  }
-  
-  protected void a(Canvas paramCanvas) {}
   
   public void a(TianShuAccess.AdItem paramAdItem)
   {
@@ -118,8 +111,8 @@ public class TianshuPendantHolder
       QLog.e("TianshuPendantHolder", 2, "showLayer with null ");
       return;
     }
-    this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = paramAdItem;
-    this.jdField_a_of_type_JavaLangString = null;
+    this.b = paramAdItem;
+    this.h = null;
     Object localObject = paramAdItem.argList.get().iterator();
     paramAdItem = null;
     while (((Iterator)localObject).hasNext())
@@ -128,22 +121,22 @@ public class TianshuPendantHolder
       if (localMapEntry.key.get().equals("image")) {
         paramAdItem = localMapEntry.value.get();
       } else if (localMapEntry.key.get().equals("url")) {
-        this.jdField_a_of_type_JavaLangString = localMapEntry.value.get();
+        this.h = localMapEntry.value.get();
       }
     }
-    if ((!TextUtils.isEmpty(paramAdItem)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((!TextUtils.isEmpty(paramAdItem)) && (!TextUtils.isEmpty(this.h)))
     {
-      localObject = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = VasApngUtil.getApngURLDrawable(paramAdItem, new int[] { 2 }, (Drawable)localObject, null, null);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      localObject = URLDrawableHelperConstants.a;
+      this.B = VasApngUtil.getApngURLDrawable(paramAdItem, new int[] { 2 }, (Drawable)localObject, null, null);
+      if (this.B != null)
       {
-        this.jdField_a_of_type_CooperationVipAdTianshuPendantHolder$AnimationDrawableProxyView = new TianshuPendantHolder.AnimationDrawableProxyView(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        paramAdItem = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        this.d = new TianshuPendantHolder.AnimationDrawableProxyView(this, this.m, this.n, this.B);
+        paramAdItem = this.c;
         if (paramAdItem != null)
         {
-          localObject = this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem;
+          localObject = this.b;
           if (localObject != null) {
-            TianshuAdUtils.a(paramAdItem, 101, String.valueOf(((TianShuAccess.AdItem)localObject).iAdId.get()), this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.traceinfo.get());
+            TianshuAdUtils.a(paramAdItem, 101, String.valueOf(((TianShuAccess.AdItem)localObject).iAdId.get()), this.b.traceinfo.get());
           }
         }
       }
@@ -154,27 +147,36 @@ public class TianshuPendantHolder
       ((StringBuilder)localObject).append("setpendantres error with image url ");
       ((StringBuilder)localObject).append(paramAdItem);
       ((StringBuilder)localObject).append(" jumpUrl ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.h);
       QLog.e("TianshuPendantHolder", 1, ((StringBuilder)localObject).toString());
     }
   }
   
-  public RectF b(int paramInt)
+  public void b(float paramFloat1, float paramFloat2) {}
+  
+  public void b(int paramInt)
   {
-    float f1 = -AIOUtils.b(20.0F, this.jdField_a_of_type_AndroidViewView.getResources());
-    RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-    float f2 = this.j;
-    float f3 = this.k;
-    float f4 = paramInt;
-    localRectF.set(f2 - f1, f3 - f1 - f4, this.j + this.l + f1, this.k + this.m + f1 - f4);
-    return this.jdField_b_of_type_AndroidGraphicsRectF;
+    super.b(paramInt);
   }
   
-  public void b()
+  protected void b(Canvas paramCanvas) {}
+  
+  public RectF c(int paramInt)
+  {
+    float f1 = -AIOUtils.b(20.0F, this.n.getResources());
+    RectF localRectF = this.k;
+    float f2 = this.x;
+    float f3 = this.y;
+    float f4 = paramInt;
+    localRectF.set(f2 - f1, f3 - f1 - f4, this.x + this.z + f1, this.y + this.A + f1 - f4);
+    return this.k;
+  }
+  
+  public void c()
   {
     try
     {
-      i();
+      j();
       if (QLog.isColorLevel())
       {
         QLog.i("TianshuPendantHolder", 2, "stopAnimation...");
@@ -187,33 +189,31 @@ public class TianshuPendantHolder
     }
   }
   
-  public void b(float paramFloat1, float paramFloat2) {}
-  
-  protected void b(Canvas paramCanvas)
+  protected void c(Canvas paramCanvas)
   {
-    super.b(paramCanvas);
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null)
+    super.c(paramCanvas);
+    if (this.e != null)
     {
       paramCanvas.save();
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      this.e.setBounds(this.f);
+      this.e.draw(paramCanvas);
       paramCanvas.restore();
     }
   }
   
-  public void c()
+  public void d()
   {
     try
     {
-      int j = this.jdField_a_of_type_AndroidViewView.getWidth();
+      int j = this.n.getWidth();
       int i = j;
       if (j == 0) {
         i = ScreenUtil.SCREEN_WIDTH;
       }
-      j = AIOUtils.b(160.0F, this.jdField_a_of_type_AndroidViewView.getResources());
-      a(i - j + 0, 0, j, AIOUtils.b(c, this.jdField_a_of_type_AndroidViewView.getResources()), this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.j + j - AIOUtils.b(23.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.k + AIOUtils.b(22.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.j + j - AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.k + AIOUtils.b(37.0F, this.jdField_a_of_type_AndroidViewView.getResources()));
-      this.jdField_b_of_type_AndroidGraphicsRect = new Rect(this.j + j - AIOUtils.b(23.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.k, this.j + j, this.k + AIOUtils.b(37.0F, this.jdField_a_of_type_AndroidViewView.getResources()));
+      j = AIOUtils.b(160.0F, this.n.getResources());
+      a(i - j + 0, 0, j, AIOUtils.b(a, this.n.getResources()), this.n);
+      this.f = new Rect(this.x + j - AIOUtils.b(23.0F, this.n.getResources()), this.y + AIOUtils.b(22.0F, this.n.getResources()), this.x + j - AIOUtils.b(8.0F, this.n.getResources()), this.y + AIOUtils.b(37.0F, this.n.getResources()));
+      this.g = new Rect(this.x + j - AIOUtils.b(23.0F, this.n.getResources()), this.y, this.x + j, this.y + AIOUtils.b(37.0F, this.n.getResources()));
       return;
     }
     catch (Throwable localThrowable)
@@ -224,7 +224,7 @@ public class TianshuPendantHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuPendantHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,7 @@ public class CmGameInitParams
 {
   public static final int GAME_MODE_CHALLENGE = 2;
   public static final int GAME_MODE_INSTANT_PK = 0;
-  public static final int GAME_MODE_STANDBY = 4;
   public static final int GAME_MODE_STORE = 1;
-  public static final int GAME_MODE_STRANGER = 3;
   private static final long serialVersionUID = 1L;
   public String accessToken;
   public int accessTokenRet;
@@ -60,7 +58,7 @@ public class CmGameInitParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.data.CmGameInitParams
  * JD-Core Version:    0.7.0.1
  */

@@ -68,15 +68,15 @@ public final class LoaderUtilsImpl
   public File getApkFile(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    if (!QVipSDKProcessor.c().a()) {
+    if (!QVipSDKProcessor.e().a()) {
       return new File("none");
     }
     if ((!GLDrawableDownloadHelper.a(paramContext)) || (this.isFirstLoadApk))
     {
-      GLDrawableDownloadHelper.a();
+      GLDrawableDownloadHelper.b();
       this.isFirstLoadApk = false;
     }
-    return new File(GLDrawableDownloadHelper.a(paramContext));
+    return new File(GLDrawableDownloadHelper.b(paramContext));
   }
   
   @NotNull

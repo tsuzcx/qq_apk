@@ -14,7 +14,7 @@ public class QQGamePreloadConfProcessor
 {
   public static QQGamePreloadConfBean a()
   {
-    return (QQGamePreloadConfBean)QConfigManager.a().a(631);
+    return (QQGamePreloadConfBean)QConfigManager.b().b(631);
   }
   
   @NonNull
@@ -102,7 +102,7 @@ public class QQGamePreloadConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.config.QQGamePreloadConfProcessor
  * JD-Core Version:    0.7.0.1
  */

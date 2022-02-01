@@ -26,22 +26,20 @@ import org.xmlpull.v1.XmlSerializer;
 public class StructMsgItemTr
   extends AbsStructMsgElement
 {
-  public final ArrayList<AbsStructMsgElement> a;
-  public boolean a;
-  public int o = AIOUtils.b(2.5F, BaseApplicationImpl.getContext().getResources());
-  public int p = this.o;
-  private int q = 0;
+  public final ArrayList<AbsStructMsgElement> au = new ArrayList();
+  public int av = AIOUtils.b(2.5F, BaseApplicationImpl.getContext().getResources());
+  public int aw = this.av;
+  public boolean ax = false;
+  private int ay = 0;
   
   public StructMsgItemTr()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "tr";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.b = "tr";
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.ax)
     {
       if ((paramView != null) && ((paramView instanceof ViewGroup)))
       {
@@ -56,10 +54,10 @@ public class StructMsgItemTr
       for (;;)
       {
         localObject = paramView;
-        if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (i >= this.au.size()) {
           break;
         }
-        localObject = (AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject = (AbsStructMsgElement)this.au.get(i);
         if ((localObject instanceof StructMsgItemTd))
         {
           StructMsgItemTd localStructMsgItemTd = (StructMsgItemTd)localObject;
@@ -67,17 +65,17 @@ public class StructMsgItemTr
           if ((localView instanceof TextView))
           {
             int j;
-            if (localStructMsgItemTd.r == 0) {
+            if (localStructMsgItemTd.aR == 0) {
               j = 1;
             } else {
-              j = localStructMsgItemTd.r;
+              j = localStructMsgItemTd.aR;
             }
-            if (this.q != 1) {
+            if (this.ay != 1) {
               localObject = new LinearLayout.LayoutParams(0, -1, j);
             } else {
               localObject = new LinearLayout.LayoutParams(-2, -1);
             }
-            ((TextView)localView).setGravity(localStructMsgItemTd.p);
+            ((TextView)localView).setGravity(localStructMsgItemTd.aP);
             paramView.addView(localView, (ViewGroup.LayoutParams)localObject);
           }
         }
@@ -88,26 +86,21 @@ public class StructMsgItemTr
     return localObject;
   }
   
-  public String a()
-  {
-    return "tr";
-  }
-  
   void a(AbsStructMsgElement paramAbsStructMsgElement)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramAbsStructMsgElement);
+    this.au.add(paramAbsStructMsgElement);
   }
   
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.q = paramObjectInput.readInt();
-    this.o = paramObjectInput.readInt();
-    this.p = paramObjectInput.readInt();
+    this.ay = paramObjectInput.readInt();
+    this.av = paramObjectInput.readInt();
+    this.aw = paramObjectInput.readInt();
     int j = paramObjectInput.readInt();
     Object localObject = paramObjectInput.readUTF();
     if ((localObject != null) && (((String)localObject).toLowerCase().equals("true"))) {
-      this.jdField_a_of_type_Boolean = true;
+      this.ax = true;
     }
     int i = 0;
     while (i < j)
@@ -129,17 +122,17 @@ public class StructMsgItemTr
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.q);
-    paramObjectOutput.writeInt(this.o);
-    paramObjectOutput.writeInt(this.p);
-    paramObjectOutput.writeInt(this.jdField_a_of_type_JavaUtilArrayList.size());
-    if (this.jdField_a_of_type_Boolean) {
+    paramObjectOutput.writeInt(this.ay);
+    paramObjectOutput.writeInt(this.av);
+    paramObjectOutput.writeInt(this.aw);
+    paramObjectOutput.writeInt(this.au.size());
+    if (this.ax) {
       localObject = "true";
     } else {
       localObject = "false";
     }
     paramObjectOutput.writeUTF((String)localObject);
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject = this.au.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((AbsStructMsgElement)((Iterator)localObject).next()).a(paramObjectOutput);
     }
@@ -157,7 +150,7 @@ public class StructMsgItemTr
     if (!TextUtils.isEmpty(str)) {
       try
       {
-        this.q = Integer.valueOf(str).intValue();
+        this.ay = Integer.valueOf(str).intValue();
       }
       catch (NumberFormatException localNumberFormatException1)
       {
@@ -175,22 +168,22 @@ public class StructMsgItemTr
         try
         {
           localObject3 = BaseApplicationImpl.getContext().getResources();
-          this.o = AIOUtils.b(Float.valueOf(localObject1[0]).floatValue(), (Resources)localObject3);
-          this.p = AIOUtils.b(Float.valueOf(localObject1[1]).floatValue(), (Resources)localObject3);
+          this.av = AIOUtils.b(Float.valueOf(localObject1[0]).floatValue(), (Resources)localObject3);
+          this.aw = AIOUtils.b(Float.valueOf(localObject1[1]).floatValue(), (Resources)localObject3);
         }
         catch (NumberFormatException localNumberFormatException2)
         {
           if (QLog.isColorLevel()) {
             QLog.w("StructMsgItemTr", 2, "h must be a numeric ", localNumberFormatException2);
           }
-          this.o = 0;
-          this.p = 0;
+          this.av = 0;
+          this.aw = 0;
         }
       }
     }
     Object localObject2 = paramStructMsgNode.a("hidden");
     if ((localObject2 != null) && (((String)localObject2).toLowerCase().equals("true"))) {
-      this.jdField_a_of_type_Boolean = true;
+      this.ax = true;
     }
     int i = 0;
     while (i < paramStructMsgNode.a())
@@ -209,10 +202,15 @@ public class StructMsgItemTr
     }
     return true;
   }
+  
+  public String b()
+  {
+    return "tr";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTr
  * JD-Core Version:    0.7.0.1
  */

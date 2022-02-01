@@ -31,7 +31,7 @@ public class TroopHonorSwitchProcessor
   private void a(boolean paramBoolean)
   {
     FriendsManager localFriendsManager = (FriendsManager)this.appRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Card localCard = localFriendsManager.a(this.appRuntime.getCurrentUin());
+    Card localCard = localFriendsManager.f(this.appRuntime.getCurrentUin());
     if ((localCard != null) && (localCard.troopHonorSwitch != paramBoolean))
     {
       localCard.troopHonorSwitch = paramBoolean;
@@ -103,7 +103,7 @@ public class TroopHonorSwitchProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.processor.TroopHonorSwitchProcessor
  * JD-Core Version:    0.7.0.1
  */

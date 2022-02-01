@@ -14,25 +14,25 @@ class QQCustomDialogWtihEmoticonInput$11
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.hideSoftInputFromWindow();
-    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    this.b.hideSoftInputFromWindow();
+    DialogInterface.OnClickListener localOnClickListener = this.a;
     if (localOnClickListener != null)
     {
-      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput, 1);
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.c)
+      localOnClickListener.onClick(this.b, 1);
+      if (this.b.w)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView());
+        if (this.b.m) {
+          this.b.u.removeView(this.b.r.getView());
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+          this.b.u.removeView(this.b.q);
         }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.c = false;
+        this.b.w = false;
       }
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.dismiss();
+      if (this.b.isShowing()) {
+        this.b.dismiss();
       }
       label118:
       EventCollector.getInstance().onViewClicked(paramView);
@@ -46,7 +46,7 @@ class QQCustomDialogWtihEmoticonInput$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput.11
  * JD-Core Version:    0.7.0.1
  */

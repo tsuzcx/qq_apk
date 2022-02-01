@@ -7,6 +7,7 @@ import com.tencent.mobileqq.imcore.proxy.basic.TimeFormatterUtilsProxy;
 import com.tencent.mobileqq.imcore.proxy.business.ColorNickManagerProxy;
 import com.tencent.mobileqq.imcore.proxy.business.ConversationDataFactoryProxy;
 import com.tencent.mobileqq.imcore.proxy.business.FriendsProxy;
+import com.tencent.mobileqq.imcore.proxy.business.GameMsgBoxRuntimeServiceProxy;
 import com.tencent.mobileqq.imcore.proxy.business.HotChatManagerProxy;
 import com.tencent.mobileqq.imcore.proxy.business.RecentDataListManagerProxy;
 import com.tencent.mobileqq.imcore.proxy.business.RecentFaceDecoderProxy;
@@ -49,6 +50,7 @@ public final class IMCoreProxyRegister
     RecentFaceDecoderProxy.a(new IMCoreProxyRegister.19());
     TempMsgBoxManagerProxy.a(new IMCoreProxyRegister.20());
     FriendsProxy.a(new IMCoreProxyRegister.21());
+    GameMsgBoxRuntimeServiceProxy.a(new IMCoreProxyRegister.22());
   }
   
   private static void c()
@@ -89,7 +91,7 @@ public final class IMCoreProxyRegister
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.IMCoreProxyRegister
  * JD-Core Version:    0.7.0.1
  */

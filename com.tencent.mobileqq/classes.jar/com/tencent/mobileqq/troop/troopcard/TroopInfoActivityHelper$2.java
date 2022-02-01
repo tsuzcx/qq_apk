@@ -17,21 +17,21 @@ final class TroopInfoActivityHelper$2
       paramBundle = paramBundle.getByteArray("data");
       if (paramBundle != null)
       {
-        TroopInfoActivityHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramBundle, this.jdField_a_of_type_ComTencentMobileqqTroopTroopcardTroopInfoActivityHelper$ISetSameCityCheckTypeInfo);
+        TroopInfoActivityHelper.a(this.a, paramBundle, this.b);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopcardTroopInfoActivityHelper$ISetSameCityCheckTypeInfo.a("");
+      this.b.a("");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcardTroopInfoActivityHelper$ISetSameCityCheckTypeInfo.a("");
+    this.b.a("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcard.TroopInfoActivityHelper.2
  * JD-Core Version:    0.7.0.1
  */

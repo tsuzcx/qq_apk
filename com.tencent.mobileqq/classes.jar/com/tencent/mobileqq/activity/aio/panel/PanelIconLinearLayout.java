@@ -29,20 +29,19 @@ public class PanelIconLinearLayout
   extends ChatPanelBarLinearLayout
 {
   public static int b;
-  public int a;
-  private PanelIconLinearLayout.IconClickInterceptListener jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$IconClickInterceptListener;
-  private PanelIconLinearLayout.InterceptListener jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$InterceptListener;
-  private PanelIconLinearLayout.PanelIconCallback jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$PanelIconCallback;
-  private PanelIconLinearLayout.PanelIconLongCallback jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$PanelIconLongCallback;
-  private IChatPanelBarController jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController;
-  private IChatPanelReporter jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarReporterIChatPanelReporter;
+  public int a = 100;
+  private PanelIconLinearLayout.PanelIconCallback c;
+  private PanelIconLinearLayout.PanelIconLongCallback d;
+  private PanelIconLinearLayout.InterceptListener e;
+  private IChatPanelReporter f;
+  private IChatPanelBarController g;
+  private PanelIconLinearLayout.IconClickInterceptListener h;
   
   public PanelIconLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 100;
     setOrientation(0);
-    setBackgroundResource(2130850227);
+    setBackgroundResource(2130852018);
     b = AIOUtils.b(40.0F, paramContext.getResources());
   }
   
@@ -60,19 +59,6 @@ public class PanelIconLinearLayout
     }
   }
   
-  public ArrayList<int[]> a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
-  {
-    return (ArrayList)this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController.a(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
-  }
-  
-  public void a()
-  {
-    IChatPanelBarController localIChatPanelBarController = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController;
-    if (localIChatPanelBarController != null) {
-      localIChatPanelBarController.a();
-    }
-  }
-  
   public void a(BaseChatPie paramBaseChatPie)
   {
     a(paramBaseChatPie, null);
@@ -80,21 +66,21 @@ public class PanelIconLinearLayout
   
   public void a(BaseChatPie paramBaseChatPie, UpdateParams paramUpdateParams)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController.a(paramBaseChatPie, paramUpdateParams);
+    this.g.a(paramBaseChatPie, paramUpdateParams);
     AIOMusicSkin.a().b(getContext(), this);
   }
   
   public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController = new ChatPanelBarController(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController.a(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarReporterIChatPanelReporter = new ChatPanelReporter(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarReporterIChatPanelReporter);
+    this.g = new ChatPanelBarController(this);
+    this.g.a(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
+    this.f = new ChatPanelReporter(this.g);
+    this.g.a(this.f);
   }
   
   public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, int[] paramArrayOfInt, int paramInt)
   {
-    IChatPanelBarController localIChatPanelBarController = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController;
+    IChatPanelBarController localIChatPanelBarController = this.g;
     if (localIChatPanelBarController != null) {
       localIChatPanelBarController.a(paramQQAppInterface, paramSessionInfo, paramArrayOfInt, paramInt);
     }
@@ -102,12 +88,25 @@ public class PanelIconLinearLayout
   
   public void a(boolean paramBoolean, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController.b(paramBoolean, paramBaseChatPie);
+    this.g.b(paramBoolean, paramBaseChatPie);
+  }
+  
+  public ArrayList<int[]> b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  {
+    return (ArrayList)this.g.b(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
   }
   
   public void b(boolean paramBoolean, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController.a(paramBoolean, paramBaseChatPie);
+    this.g.a(paramBoolean, paramBaseChatPie);
+  }
+  
+  public void getPlusRedTouchAndUpdate()
+  {
+    IChatPanelBarController localIChatPanelBarController = this.g;
+    if (localIChatPanelBarController != null) {
+      localIChatPanelBarController.a();
+    }
   }
   
   public void onClick(View paramView)
@@ -115,7 +114,7 @@ public class PanelIconLinearLayout
     Object localObject1 = paramView.getTag();
     if ((localObject1 instanceof Integer))
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$IconClickInterceptListener;
+      Object localObject2 = this.h;
       if ((localObject2 != null) && (((PanelIconLinearLayout.IconClickInterceptListener)localObject2).a(((Integer)localObject1).intValue())))
       {
         if (QLog.isColorLevel())
@@ -126,9 +125,9 @@ public class PanelIconLinearLayout
           QLog.d("PanelIconLinearLayout", 2, ((StringBuilder)localObject2).toString());
         }
       }
-      else if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController.a(paramView))
+      else if (!this.g.a(paramView))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$PanelIconCallback;
+        localObject1 = this.c;
         if (localObject1 != null) {
           ((PanelIconLinearLayout.PanelIconCallback)localObject1).a(((Integer)paramView.getTag()).intValue());
         }
@@ -139,7 +138,7 @@ public class PanelIconLinearLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    PanelIconLinearLayout.InterceptListener localInterceptListener = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$InterceptListener;
+    PanelIconLinearLayout.InterceptListener localInterceptListener = this.e;
     if (localInterceptListener != null) {
       return localInterceptListener.interceptTouchEvent(paramMotionEvent);
     }
@@ -151,17 +150,17 @@ public class PanelIconLinearLayout
     if (!(paramView.getTag() instanceof Integer)) {
       return false;
     }
-    PanelIconLinearLayout.PanelIconLongCallback localPanelIconLongCallback = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$PanelIconLongCallback;
+    PanelIconLinearLayout.PanelIconLongCallback localPanelIconLongCallback = this.d;
     if (localPanelIconLongCallback != null) {
       return localPanelIconLongCallback.a(paramView.getTag());
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController.b(paramView);
+    return this.g.b(paramView);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_Int, 1073741824));
-    setMeasuredDimension(getMeasuredWidth(), this.jdField_a_of_type_Int);
+    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.a, 1073741824));
+    setMeasuredDimension(getMeasuredWidth(), this.a);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -177,7 +176,7 @@ public class PanelIconLinearLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    PanelIconLinearLayout.InterceptListener localInterceptListener = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$InterceptListener;
+    PanelIconLinearLayout.InterceptListener localInterceptListener = this.e;
     if (localInterceptListener != null) {
       return localInterceptListener.handleTouchEvent(paramMotionEvent);
     }
@@ -263,7 +262,7 @@ public class PanelIconLinearLayout
       localStringBuilder.append("]");
       QLog.d("PanelIconLinearLayout", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     requestLayout();
   }
   
@@ -279,27 +278,27 @@ public class PanelIconLinearLayout
   
   public void setHelperProvider(HelperProvider paramHelperProvider)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController.a(paramHelperProvider);
+    this.g.a(paramHelperProvider);
   }
   
   public void setInterceptListener(PanelIconLinearLayout.InterceptListener paramInterceptListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$InterceptListener = paramInterceptListener;
+    this.e = paramInterceptListener;
   }
   
   public void setPanelIconClickInterceptListener(PanelIconLinearLayout.IconClickInterceptListener paramIconClickInterceptListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$IconClickInterceptListener = paramIconClickInterceptListener;
+    this.h = paramIconClickInterceptListener;
   }
   
   public void setPanelIconListener(PanelIconLinearLayout.PanelIconCallback paramPanelIconCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$PanelIconCallback = paramPanelIconCallback;
+    this.c = paramPanelIconCallback;
   }
   
   public void setPanelIconLongListener(PanelIconLinearLayout.PanelIconLongCallback paramPanelIconLongCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout$PanelIconLongCallback = paramPanelIconLongCallback;
+    this.d = paramPanelIconLongCallback;
   }
   
   public void setSelected(int paramInt)
@@ -319,12 +318,12 @@ public class PanelIconLinearLayout
   
   public void setShowRed(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController.a(paramInt, paramBoolean);
+    this.g.a(paramInt, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout
  * JD-Core Version:    0.7.0.1
  */

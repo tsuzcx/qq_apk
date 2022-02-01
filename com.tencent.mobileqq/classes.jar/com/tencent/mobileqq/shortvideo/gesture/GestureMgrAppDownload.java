@@ -12,16 +12,16 @@ import com.tencent.qphone.base.util.QLog;
 
 public class GestureMgrAppDownload
 {
-  DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
-  GestureMgrAppDownload.DownloadContrl jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl = null;
-  boolean jdField_a_of_type_Boolean = false;
+  DownloadInfo a = null;
+  GestureMgrAppDownload.DownloadContrl b = null;
+  boolean c = false;
   
   GestureMgrAppDownload()
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("QavGesture", 4, "GestureMgrAppDownload in QQAppInterface");
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl = new GestureMgrAppDownload.DownloadContrl();
+    this.b = new GestureMgrAppDownload.DownloadContrl();
   }
   
   static void a(int paramInt)
@@ -43,7 +43,7 @@ public class GestureMgrAppDownload
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, ConfigInfo paramConfigInfo)
   {
-    GestureMgr.a().a.b(paramQQAppInterface, paramString, paramConfigInfo);
+    GestureMgr.e().b.b(paramQQAppInterface, paramString, paramConfigInfo);
   }
   
   public static void a(DownloadInfo paramDownloadInfo, int paramInt)
@@ -74,31 +74,31 @@ public class GestureMgrAppDownload
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_so_version_");
     localStringBuilder.append(paramString);
-    localEditor.putString(localStringBuilder.toString(), AppSetting.g()).commit();
+    localEditor.putString(localStringBuilder.toString(), AppSetting.i()).commit();
   }
   
   public static boolean a()
   {
-    return GestureMgr.a().a.b();
+    return GestureMgr.e().b.b();
   }
   
   void b(QQAppInterface paramQQAppInterface, String paramString, ConfigInfo paramConfigInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = ((DownloadInfo)paramConfigInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+    this.a = ((DownloadInfo)paramConfigInfo);
+    if (this.a == null) {
+      this.a = DownloadInfo.get();
     }
     paramQQAppInterface = new StringBuilder();
     paramQQAppInterface.append("handle_QAG_Gesture_Config, configInfo[");
     paramQQAppInterface.append(paramConfigInfo);
     paramQQAppInterface.append("], mDownloadInfo[");
-    paramQQAppInterface.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+    paramQQAppInterface.append(this.a);
     paramQQAppInterface.append("]");
     QLog.w("QavGesture", 1, paramQQAppInterface.toString());
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo != null) {
+      this.c = false;
+      if (this.a != null) {
         a();
       }
     }
@@ -116,13 +116,13 @@ public class GestureMgrAppDownload
         QLog.d("QavGesture", 1, "innerDownload, getNetEngine 为空");
         return false;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+      if (this.a == null) {
+        this.a = DownloadInfo.get();
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo;
+      localObject = this.a;
       if (localObject == null)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.c = true;
         return false;
       }
       if (11 != GestureUtil.a((DownloadInfo)localObject)) {
@@ -130,7 +130,7 @@ public class GestureMgrAppDownload
       }
       bool2 = bool1;
       if (bool1) {
-        bool2 = this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrAppDownload$DownloadContrl.a((DownloadInfo)localObject);
+        bool2 = this.b.a((DownloadInfo)localObject);
       }
       return bool2;
     }
@@ -140,7 +140,7 @@ public class GestureMgrAppDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.gesture.GestureMgrAppDownload
  * JD-Core Version:    0.7.0.1
  */

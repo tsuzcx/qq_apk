@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/okn" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/oko" android:padding="10.0dip" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/dpm" android:scaleType="centerCrop" android:layout_alignBottom="@id/okp" android:layout_alignParentRight="true" />
-    <ImageView android:id="@id/okp" android:padding="8.0dip" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/iio" android:scaleType="centerCrop" android:layout_alignParentLeft="true" />
-</RelativeLayout>
+    <include layout="@layout/coa" />
+    <View android:background="?79" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <include layout="@layout/cof" />
+</LinearLayout>

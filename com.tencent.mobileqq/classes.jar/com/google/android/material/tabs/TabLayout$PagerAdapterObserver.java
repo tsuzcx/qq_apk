@@ -9,17 +9,17 @@ class TabLayout$PagerAdapterObserver
   
   public void onChanged()
   {
-    this.a.b();
+    this.a.e();
   }
   
   public void onInvalidated()
   {
-    this.a.b();
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.tabs.TabLayout.PagerAdapterObserver
  * JD-Core Version:    0.7.0.1
  */

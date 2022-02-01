@@ -28,7 +28,7 @@ public class OptimizedScaleGestureDetector
   }
   
   @TargetApi(19)
-  private boolean a()
+  private boolean b()
   {
     return (Build.VERSION.SDK_INT >= 19) && (isQuickScaleEnabled()) && (getCurrentSpan() == getCurrentSpanY());
   }
@@ -36,7 +36,7 @@ public class OptimizedScaleGestureDetector
   public float getScaleFactor()
   {
     float f3 = super.getScaleFactor();
-    if (a())
+    if (b())
     {
       float f1 = this.a;
       float f4 = this.b;
@@ -72,7 +72,7 @@ public class OptimizedScaleGestureDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.detector.OptimizedScaleGestureDetector
  * JD-Core Version:    0.7.0.1
  */

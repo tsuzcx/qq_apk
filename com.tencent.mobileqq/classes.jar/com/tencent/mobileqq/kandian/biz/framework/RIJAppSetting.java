@@ -40,6 +40,8 @@ import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEn
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport;
 import com.tencent.mobileqq.kandian.repo.aladdin.handlers.DailyModeConfigHandler;
 import com.tencent.mobileqq.kandian.repo.common.RIJShowKanDianTabSp;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.TabChannelCoverInfo;
+import com.tencent.mobileqq.kandian.repo.xtab.api.impl.RIJXTabConfigHandler;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
@@ -59,12 +61,13 @@ import mqq.os.MqqHandler;
 public class RIJAppSetting
 {
   public static int a;
-  private static long a;
-  public static Object a;
-  public static Map<String, MessageForStructing> a;
-  public static volatile boolean a;
-  public static int b;
-  private static volatile boolean b;
+  public static volatile boolean b;
+  public static Map<String, MessageForStructing> c;
+  public static Object d;
+  public static int e = -1;
+  public static TabChannelCoverInfo f = RIJXTabConfigHandler.INSTANCE.getDefaultEnterTabInfo();
+  private static volatile boolean g;
+  private static long h;
   
   static
   {
@@ -74,17 +77,11 @@ public class RIJAppSetting
     } else {
       i = 1;
     }
-    jdField_a_of_type_Int = i;
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_b_of_type_Boolean = true;
-    jdField_b_of_type_Int = -1;
-  }
-  
-  public static int a()
-  {
-    return jdField_a_of_type_Int;
+    a = i;
+    b = false;
+    c = new HashMap();
+    d = new Object();
+    g = true;
   }
   
   public static int a(int paramInt)
@@ -97,16 +94,6 @@ public class RIJAppSetting
       return 2;
     }
     return 1;
-  }
-  
-  public static MessageForStructing a(QQAppInterface paramQQAppInterface)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      MessageForStructing localMessageForStructing = (MessageForStructing)jdField_a_of_type_JavaUtilMap.get(paramQQAppInterface.getCurrentAccountUin());
-      jdField_a_of_type_JavaUtilMap.remove(paramQQAppInterface.getCurrentAccountUin());
-      return localMessageForStructing;
-    }
   }
   
   public static SystemBarCompact a(Activity paramActivity)
@@ -122,7 +109,7 @@ public class RIJAppSetting
   public static String a(long paramLong)
   {
     boolean bool;
-    if (a() == 6) {
+    if (b() == 6) {
       bool = true;
     } else {
       bool = false;
@@ -131,15 +118,15 @@ public class RIJAppSetting
     if (paramLong == 1004L)
     {
       if (bool) {
-        i = ReadInJoyHelper.b(BaseApplicationImpl.getApplication().getRuntime(), 0);
+        i = ReadInJoyHelper.e(BaseApplicationImpl.getApplication().getRuntime(), 0);
       } else {
-        i = ReadInJoyHelper.a(BaseApplicationImpl.getApplication().getRuntime(), 0);
+        i = ReadInJoyHelper.c(BaseApplicationImpl.getApplication().getRuntime(), 0);
       }
     }
     else if (bool) {
-      i = ReadInJoyHelper.c(BaseApplicationImpl.getApplication().getRuntime());
+      i = ReadInJoyHelper.i(BaseApplicationImpl.getApplication().getRuntime());
     } else {
-      i = ReadInJoyHelper.b(BaseApplicationImpl.getApplication().getRuntime());
+      i = ReadInJoyHelper.h(BaseApplicationImpl.getApplication().getRuntime());
     }
     String str = "1";
     if (i == 0) {
@@ -147,24 +134,11 @@ public class RIJAppSetting
     } else if ((i != 1) && (i == 2)) {
       str = "0";
     }
-    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), true, false);
-    if (localObject == null)
-    {
-      QLog.d("RIJAppSetting", 1, "getVideoAutoPlaySetting failed to get sp");
-      return str;
-    }
-    if (bool) {
-      localObject = ((SharedPreferences)localObject).getString("SP_VIDEO_CHANNEL_AUTO_PLAY_SWITCH_VIDEO_FLOW_SETTING", str);
-    } else {
-      localObject = ((SharedPreferences)localObject).getString("SP_VIDEO_CHANNEL_AUTO_PLAY_SWITCH_SETTING", str);
-    }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getVideoAutoPlaySetting(),isVideoFlowEnter = ");
       localStringBuilder.append(bool);
-      localStringBuilder.append(", autoSetting = ");
-      localStringBuilder.append((String)localObject);
       localStringBuilder.append(",localSettingDefaultValue=");
       localStringBuilder.append(str);
       localStringBuilder.append(", remoteSettingDefaultValue=");
@@ -173,31 +147,7 @@ public class RIJAppSetting
       localStringBuilder.append(paramLong);
       QLog.d("RIJAppSetting", 2, localStringBuilder.toString());
     }
-    return localObject;
-  }
-  
-  public static String a(String paramString)
-  {
-    return ReadInJoyStringUtils.b(paramString);
-  }
-  
-  public static void a()
-  {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
-    if ((localAppRuntime instanceof QQAppInterface))
-    {
-      if (!((QQAppInterface)localAppRuntime).mAutomator.b())
-      {
-        ReadinjoySPEventReport.f();
-        return;
-      }
-      ThreadManager.getSubThreadHandler().postDelayed(new RIJAppSetting.2(), 500L);
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    jdField_a_of_type_Int = paramInt;
+    return str;
   }
   
   public static void a(Activity paramActivity, Frame paramFrame, boolean paramBoolean, View paramView, int paramInt)
@@ -209,7 +159,7 @@ public class RIJAppSetting
       if (bool)
       {
         ImmersiveUtils.setStatusBarDarkMode(paramActivity.getWindow(), true);
-        if ((VersionUtils.k()) && (SystemUtil.b()))
+        if ((VersionUtils.k()) && (SystemUtil.d()))
         {
           if (!paramBoolean) {
             i = 1280;
@@ -218,7 +168,7 @@ public class RIJAppSetting
         }
         paramView.setBackgroundColor(-1);
       }
-      else if ((VersionUtils.k()) && (!SystemUtil.b()) && (!SystemUtil.d()))
+      else if ((VersionUtils.k()) && (!SystemUtil.d()) && (!SystemUtil.g()))
       {
         paramActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
         paramView.setBackgroundColor(-1);
@@ -233,7 +183,7 @@ public class RIJAppSetting
     }
     else
     {
-      if ((ImmersiveUtils.supportStatusBarDarkMode()) && ((!VersionUtils.k()) || (!SystemUtil.b()))) {
+      if ((ImmersiveUtils.supportStatusBarDarkMode()) && ((!VersionUtils.k()) || (!SystemUtil.d()))) {
         ImmersiveUtils.setStatusBarDarkMode(paramActivity.getWindow(), false);
       }
       paramFrame.a(paramView, false);
@@ -276,9 +226,9 @@ public class RIJAppSetting
       {
         paramActivity.getWindow().addFlags(67108864);
         paramSystemBarCompact.init();
-        if (ThemeUtil.isNowThemeIsNight(RIJQQAppInterfaceUtil.a(), false, null))
+        if (ThemeUtil.isNowThemeIsNight(RIJQQAppInterfaceUtil.e(), false, null))
         {
-          if ((!SystemUtil.b()) && (!SystemUtil.d()))
+          if ((!SystemUtil.d()) && (!SystemUtil.g()))
           {
             paramSystemBarCompact.setStatusBarColor(-7829368);
             return;
@@ -287,13 +237,13 @@ public class RIJAppSetting
           paramSystemBarCompact.setStatusBarDarkMode(true);
           return;
         }
-        if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
+        if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.d()) && (!SystemUtil.g()))
         {
           a(paramActivity, true);
           paramSystemBarCompact.setStatusBarColor(-1);
           return;
         }
-        if (!SystemUtil.d())
+        if (!SystemUtil.g())
         {
           paramSystemBarCompact.setStatusBarColor(-2368549);
           return;
@@ -309,7 +259,7 @@ public class RIJAppSetting
     if (paramView != null)
     {
       paramView.setBackgroundResource(0);
-      if (ThemeUtil.isNowThemeIsNight(RIJQQAppInterfaceUtil.a(), false, null))
+      if (ThemeUtil.isNowThemeIsNight(RIJQQAppInterfaceUtil.e(), false, null))
       {
         paramView.setBackgroundColor(Color.parseColor("#888888"));
         return;
@@ -333,10 +283,10 @@ public class RIJAppSetting
         paramQBaseActivity.mSystemBarComp = new SystemBarCompact(paramQBaseActivity, true, -1);
       }
       paramQBaseActivity.mSystemBarComp.init();
-      if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.d()) && (!SystemUtil.g()))
       {
         paramQBaseActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
-        if (ThemeUtil.isInNightMode(RIJQQAppInterfaceUtil.a()))
+        if (ThemeUtil.isInNightMode(RIJQQAppInterfaceUtil.e()))
         {
           paramQBaseActivity.mSystemBarComp.setStatusBarColor(1996488704);
           return;
@@ -344,7 +294,7 @@ public class RIJAppSetting
         paramQBaseActivity.mSystemBarComp.setStatusBarColor(paramInt);
         return;
       }
-      if (!SystemUtil.d())
+      if (!SystemUtil.g())
       {
         paramQBaseActivity.mSystemBarComp.setStatusBarColor(-2368549);
         return;
@@ -366,14 +316,14 @@ public class RIJAppSetting
   
   public static void a(String paramString)
   {
-    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), true, false);
+    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.e(), true, false);
     if (localObject == null)
     {
       QLog.d("RIJAppSetting", 1, "updateVideoAutoPlaySetting failed to get sp");
       return;
     }
     localObject = ((SharedPreferences)localObject).edit();
-    if (a() == 6) {
+    if (b() == 6) {
       ((SharedPreferences.Editor)localObject).putString("SP_VIDEO_CHANNEL_AUTO_PLAY_SWITCH_VIDEO_FLOW_SETTING", paramString);
     } else {
       ((SharedPreferences.Editor)localObject).putString("SP_VIDEO_CHANNEL_AUTO_PLAY_SWITCH_SETTING", paramString);
@@ -384,45 +334,14 @@ public class RIJAppSetting
   public static void a(String paramString1, int paramInt, String paramString2)
   {
     QLog.d(paramString1, paramInt, paramString2);
-    if (ReadInJoyHelper.a() != -1L) {
+    if (ReadInJoyHelper.h() != -1L) {
       System.currentTimeMillis();
     }
   }
   
-  public static boolean a()
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    return (localBaseActivity != null) && (((localBaseActivity instanceof ReadInJoyNewFeedsActivity)) || (localBaseActivity.getClass().getSimpleName().toLowerCase().contains("kandian")) || (localBaseActivity.getClass().getSimpleName().toLowerCase().contains("readinjoy")));
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (b()) && (paramInt == jdField_b_of_type_Int);
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    long l = paramLong;
-    if (paramLong <= 0L) {
-      l = System.currentTimeMillis();
-    }
-    paramLong = l - ReadInJoyHelper.a((QQAppInterface)RIJQQAppInterfaceUtil.a());
-    if (QLog.isColorLevel())
-    {
-      boolean bool;
-      if (paramLong < ReadInJoyPageItemCache.jdField_a_of_type_Int) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      QLog.d("RIJAppSetting", 2, new Object[] { "isNeedToRememberHistoryPos, timeInterval = ", Long.valueOf(paramLong), " , isNeedToRemember = ", Boolean.valueOf(bool) });
-    }
-    return paramLong < ReadInJoyPageItemCache.jdField_a_of_type_Int;
-  }
-  
   public static boolean a(Context paramContext)
   {
-    return (GuardManager.a != null) && (GuardManager.a.a());
+    return (GuardManager.sInstance != null) && (GuardManager.sInstance.isApplicationForeground());
   }
   
   public static boolean a(AppInterface paramAppInterface)
@@ -438,10 +357,24 @@ public class RIJAppSetting
     return bool;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public static int b()
   {
-    KeyguardManager localKeyguardManager = (KeyguardManager)BaseApplicationImpl.getContext().getApplicationContext().getSystemService("keyguard");
-    return (paramQQAppInterface.isBackgroundPause) || (paramQQAppInterface.isBackgroundStop) || (localKeyguardManager.inKeyguardRestrictedInputMode());
+    return a;
+  }
+  
+  public static MessageForStructing b(QQAppInterface paramQQAppInterface)
+  {
+    synchronized (d)
+    {
+      MessageForStructing localMessageForStructing = (MessageForStructing)c.get(paramQQAppInterface.getCurrentAccountUin());
+      c.remove(paramQQAppInterface.getCurrentAccountUin());
+      return localMessageForStructing;
+    }
+  }
+  
+  public static String b(String paramString)
+  {
+    return ReadInJoyStringUtils.b(paramString);
   }
   
   public static void b(Activity paramActivity, boolean paramBoolean)
@@ -453,20 +386,64 @@ public class RIJAppSetting
       {
         if (paramBoolean)
         {
-          ((MainFragment)paramActivity).s();
+          ((MainFragment)paramActivity).B();
           return;
         }
-        ((MainFragment)paramActivity).r();
+        ((MainFragment)paramActivity).A();
       }
     }
   }
   
-  public static void b(QQAppInterface paramQQAppInterface)
+  public static boolean b(int paramInt)
+  {
+    return (e()) && (paramInt == e);
+  }
+  
+  public static boolean b(long paramLong)
+  {
+    long l = paramLong;
+    if (paramLong <= 0L) {
+      l = System.currentTimeMillis();
+    }
+    paramLong = l - ReadInJoyHelper.c((QQAppInterface)RIJQQAppInterfaceUtil.e());
+    if (QLog.isColorLevel())
+    {
+      boolean bool;
+      if (paramLong < ReadInJoyPageItemCache.a) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      QLog.d("RIJAppSetting", 2, new Object[] { "isNeedToRememberHistoryPos, timeInterval = ", Long.valueOf(paramLong), " , isNeedToRemember = ", Boolean.valueOf(bool) });
+    }
+    return paramLong < ReadInJoyPageItemCache.a;
+  }
+  
+  public static void c()
+  {
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
+    if ((localAppRuntime instanceof QQAppInterface))
+    {
+      if (!((QQAppInterface)localAppRuntime).mAutomator.g())
+      {
+        ReadinjoySPEventReport.c(false);
+        return;
+      }
+      ThreadManager.getSubThreadHandler().postDelayed(new RIJAppSetting.2(), 500L);
+    }
+  }
+  
+  public static void c(int paramInt)
+  {
+    a = paramInt;
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface == null) {
       return;
     }
-    MessageForStructing localMessageForStructing = a(paramQQAppInterface);
+    MessageForStructing localMessageForStructing = b(paramQQAppInterface);
     if (a(paramQQAppInterface)) {
       return;
     }
@@ -476,7 +453,7 @@ public class RIJAppSetting
       if (localQQMessageFacade != null)
       {
         localMessageForStructing.time = NetConnInfoCenter.getServerTime();
-        MessageRecord localMessageRecord = ((KandianMergeManager)paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(localMessageForStructing);
+        MessageRecord localMessageRecord = ((KandianMergeManager)paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).b(localMessageForStructing);
         if (localMessageRecord != null) {
           localQQMessageFacade.a(localMessageRecord, paramQQAppInterface.getCurrentUin());
         }
@@ -488,7 +465,38 @@ public class RIJAppSetting
     }
   }
   
-  public static boolean b()
+  public static void d(QQAppInterface paramQQAppInterface)
+  {
+    if (g)
+    {
+      g = false;
+      c();
+    }
+    if (ReadInJoyHelper.w())
+    {
+      ReadInJoyLogicEngine.a().f(0);
+      ReadInJoyLogicEngine.a().f(56);
+      ReadInJoyLogicEngine.a().g(40677);
+      if (DailyModeConfigHandler.b(DailyModeConfigHandler.j())) {
+        ReadInJoyLogicEngine.a().f(DailyModeConfigHandler.j());
+      }
+    }
+    b = true;
+    ThreadManager.post(new RIJAppSetting.3(paramQQAppInterface), 8, null, false);
+  }
+  
+  public static boolean d()
+  {
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    return (localBaseActivity != null) && (((localBaseActivity instanceof ReadInJoyNewFeedsActivity)) || (localBaseActivity.getClass().getSimpleName().toLowerCase().contains("kandian")) || (localBaseActivity.getClass().getSimpleName().toLowerCase().contains("readinjoy")));
+  }
+  
+  public static void e(QQAppInterface paramQQAppInterface)
+  {
+    b = false;
+  }
+  
+  public static boolean e()
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     boolean bool2 = localBaseActivity instanceof SplashActivity;
@@ -502,27 +510,7 @@ public class RIJAppSetting
     return bool1;
   }
   
-  public static void c(QQAppInterface paramQQAppInterface)
-  {
-    if (jdField_b_of_type_Boolean)
-    {
-      jdField_b_of_type_Boolean = false;
-      a();
-    }
-    if (ReadInJoyHelper.m())
-    {
-      ReadInJoyLogicEngine.a().d(0);
-      ReadInJoyLogicEngine.a().d(56);
-      ReadInJoyLogicEngine.a().e(40677);
-      if (DailyModeConfigHandler.b(DailyModeConfigHandler.b())) {
-        ReadInJoyLogicEngine.a().d(DailyModeConfigHandler.b());
-      }
-    }
-    jdField_a_of_type_Boolean = true;
-    ThreadManager.post(new RIJAppSetting.3(paramQQAppInterface), 8, null, false);
-  }
-  
-  public static boolean c()
+  public static boolean f()
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if (!(localBaseActivity instanceof PublicFragmentActivity)) {
@@ -531,44 +519,45 @@ public class RIJAppSetting
     return ((PublicFragmentActivity)localBaseActivity).a() instanceof ReadInJoyDailyFragment;
   }
   
-  public static void d(QQAppInterface paramQQAppInterface)
+  public static boolean f(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Boolean = false;
+    KeyguardManager localKeyguardManager = (KeyguardManager)BaseApplicationImpl.getContext().getApplicationContext().getSystemService("keyguard");
+    return (paramQQAppInterface.isBackgroundPause) || (paramQQAppInterface.isBackgroundStop) || (localKeyguardManager.inKeyguardRestrictedInputMode());
   }
   
-  public static boolean d()
+  public static boolean g()
   {
-    return (a()) || (b());
+    return (d()) || (e());
   }
   
-  public static boolean e()
+  public static boolean h()
   {
     long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long <= 200L)
+    if (l - h <= 200L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("RIJAppSetting", 2, "click too fast");
       }
-      jdField_a_of_type_Long = l;
+      h = l;
       return true;
     }
-    jdField_a_of_type_Long = l;
+    h = l;
     return false;
   }
   
-  public static boolean f()
+  public static boolean i()
   {
     return Build.VERSION.SDK_INT >= 14;
   }
   
-  public static boolean g()
+  public static boolean j()
   {
     return QLog.isColorLevel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting
  * JD-Core Version:    0.7.0.1
  */

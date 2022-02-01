@@ -7,58 +7,58 @@ import android.view.ViewParent;
 public class OverScrollRecyclerView$OverScrollingState
   implements OverScrollRecyclerView.IDecoratorState
 {
-  protected float a;
-  protected int a;
-  protected final OverScrollRecyclerView.MotionAttributes a;
   protected final OverScrollRecyclerView.OverScrollStateManager a;
   protected float b;
+  protected float c;
+  protected final OverScrollRecyclerView.MotionAttributes d;
+  protected int e;
   
   public OverScrollRecyclerView$OverScrollingState(OverScrollRecyclerView.OverScrollStateManager paramOverScrollStateManager, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager = paramOverScrollStateManager;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$MotionAttributes = new OverScrollRecyclerView.MotionAttributes();
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
+    this.a = paramOverScrollStateManager;
+    this.d = new OverScrollRecyclerView.MotionAttributes();
+    this.b = paramFloat1;
+    this.c = paramFloat2;
   }
   
   public void a(OverScrollRecyclerView.IDecoratorState paramIDecoratorState)
   {
     int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStartAttributes.jdField_a_of_type_Boolean) {
+    if (this.a.c.c) {
       i = 1;
     } else {
       i = 2;
     }
-    this.jdField_a_of_type_Int = i;
+    this.e = i;
   }
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    OverScrollRecyclerView.OverScrollStartAttributes localOverScrollStartAttributes = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStartAttributes;
-    if (localOverScrollStartAttributes.jdField_a_of_type_Int != paramMotionEvent.getPointerId(0))
+    OverScrollRecyclerView.OverScrollStartAttributes localOverScrollStartAttributes = this.a.c;
+    if (localOverScrollStartAttributes.a != paramMotionEvent.getPointerId(0))
     {
-      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager;
-      paramMotionEvent.a(paramMotionEvent.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$BounceBackState);
+      paramMotionEvent = this.a;
+      paramMotionEvent.a(paramMotionEvent.g);
       return true;
     }
-    View localView = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager.a();
-    OverScrollRecyclerView.IOverScrollDecor localIOverScrollDecor = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$IOverScrollDecor;
-    if (!localIOverScrollDecor.a(localView, this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$MotionAttributes, paramMotionEvent)) {
+    View localView = this.a.b();
+    OverScrollRecyclerView.IOverScrollDecor localIOverScrollDecor = this.a.b;
+    if (!localIOverScrollDecor.a(localView, this.d, paramMotionEvent)) {
       return true;
     }
-    float f2 = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$MotionAttributes.b;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$MotionAttributes.jdField_a_of_type_Boolean == localOverScrollStartAttributes.jdField_a_of_type_Boolean) {
-      f1 = this.jdField_a_of_type_Float;
-    } else {
+    float f2 = this.d.b;
+    if (this.d.c == localOverScrollStartAttributes.c) {
       f1 = this.b;
+    } else {
+      f1 = this.c;
     }
     float f1 = f2 / f1;
-    f2 = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$MotionAttributes.jdField_a_of_type_Float + f1;
-    if (((localOverScrollStartAttributes.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$MotionAttributes.jdField_a_of_type_Boolean) && (f2 <= localOverScrollStartAttributes.jdField_a_of_type_Float)) || ((!localOverScrollStartAttributes.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$MotionAttributes.jdField_a_of_type_Boolean) && (f2 >= localOverScrollStartAttributes.jdField_a_of_type_Float)))
+    f2 = this.d.a + f1;
+    if (((localOverScrollStartAttributes.c) && (!this.d.c) && (f2 <= localOverScrollStartAttributes.b)) || ((!localOverScrollStartAttributes.c) && (this.d.c) && (f2 >= localOverScrollStartAttributes.b)))
     {
-      localIOverScrollDecor.a(localView, localOverScrollStartAttributes.jdField_a_of_type_Float, paramMotionEvent);
-      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager;
-      paramMotionEvent.a(paramMotionEvent.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$IdleState);
+      localIOverScrollDecor.a(localView, localOverScrollStartAttributes.b, paramMotionEvent);
+      paramMotionEvent = this.a;
+      paramMotionEvent.a(paramMotionEvent.e);
       return true;
     }
     if (localView.getParent() != null) {
@@ -66,7 +66,7 @@ public class OverScrollRecyclerView$OverScrollingState
     }
     long l = paramMotionEvent.getEventTime() - paramMotionEvent.getHistoricalEventTime(0);
     if (l > 0L) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager.jdField_a_of_type_Float = (f1 / (float)l);
+      this.a.d = (f1 / (float)l);
     }
     localIOverScrollDecor.a(localView, f2);
     return true;
@@ -74,14 +74,14 @@ public class OverScrollRecyclerView$OverScrollingState
   
   public boolean b(MotionEvent paramMotionEvent)
   {
-    paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager;
-    paramMotionEvent.a(paramMotionEvent.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$BounceBackState);
+    paramMotionEvent = this.a;
+    paramMotionEvent.a(paramMotionEvent.g);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OverScrollRecyclerView.OverScrollingState
  * JD-Core Version:    0.7.0.1
  */

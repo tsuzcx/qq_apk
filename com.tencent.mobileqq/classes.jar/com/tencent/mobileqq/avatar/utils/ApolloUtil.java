@@ -21,11 +21,6 @@ import mqq.app.AppRuntime;
 
 public class ApolloUtil
 {
-  public static int a(int paramInt)
-  {
-    return paramInt >>> 4 & 0xF;
-  }
-  
   public static int a(int paramInt1, int paramInt2)
   {
     return paramInt1 << 4 | paramInt2;
@@ -116,10 +111,10 @@ public class ApolloUtil
   
   public static String a(int paramInt)
   {
-    int i = b(paramInt);
-    paramInt = a(paramInt);
-    String str1 = b(i);
-    String str2 = c(paramInt);
+    int i = c(paramInt);
+    paramInt = b(paramInt);
+    String str1 = d(i);
+    String str2 = e(paramInt);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str2);
     localStringBuilder.append("/");
@@ -179,7 +174,7 @@ public class ApolloUtil
   
   public static int b(int paramInt)
   {
-    return paramInt & 0xF;
+    return paramInt >>> 4 & 0xF;
   }
   
   /* Error */
@@ -199,24 +194,24 @@ public class ApolloUtil
     //   18: aconst_null
     //   19: areturn
     //   20: aload_1
-    //   21: invokestatic 32	com/tencent/mobileqq/avatar/utils/ApolloUtil:a	(Ljava/lang/String;)I
+    //   21: invokestatic 31	com/tencent/mobileqq/avatar/utils/ApolloUtil:a	(Ljava/lang/String;)I
     //   24: istore 6
-    //   26: invokestatic 38	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   29: invokevirtual 42	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   32: invokevirtual 48	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   35: getfield 54	android/util/DisplayMetrics:density	F
+    //   26: invokestatic 37	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   29: invokevirtual 41	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   32: invokevirtual 47	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   35: getfield 53	android/util/DisplayMetrics:density	F
     //   38: fstore_3
     //   39: fload_3
-    //   40: ldc 218
+    //   40: ldc 219
     //   42: fmul
     //   43: f2i
     //   44: istore 7
     //   46: fload_3
-    //   47: ldc 219
+    //   47: ldc 220
     //   49: fmul
     //   50: f2i
     //   51: istore 8
-    //   53: new 62	android/graphics/RectF
+    //   53: new 61	android/graphics/RectF
     //   56: dup
     //   57: fconst_0
     //   58: fconst_0
@@ -224,7 +219,7 @@ public class ApolloUtil
     //   61: i2f
     //   62: iload 8
     //   64: i2f
-    //   65: invokespecial 65	android/graphics/RectF:<init>	(FFFF)V
+    //   65: invokespecial 64	android/graphics/RectF:<init>	(FFFF)V
     //   68: astore 12
     //   70: iload_2
     //   71: iconst_4
@@ -242,9 +237,9 @@ public class ApolloUtil
     //   92: bipush 80
     //   94: istore_2
     //   95: aload_0
-    //   96: invokevirtual 70	android/graphics/Bitmap:getHeight	()I
+    //   96: invokevirtual 69	android/graphics/Bitmap:getHeight	()I
     //   99: i2f
-    //   100: ldc 219
+    //   100: ldc 220
     //   102: fmul
     //   103: iload_2
     //   104: i2f
@@ -253,18 +248,18 @@ public class ApolloUtil
     //   107: istore 9
     //   109: iload 9
     //   111: i2f
-    //   112: ldc 218
+    //   112: ldc 219
     //   114: fmul
-    //   115: ldc 219
+    //   115: ldc 220
     //   117: fdiv
     //   118: f2i
     //   119: istore 5
     //   121: iload 5
     //   123: aload_0
-    //   124: invokevirtual 60	android/graphics/Bitmap:getWidth	()I
+    //   124: invokevirtual 59	android/graphics/Bitmap:getWidth	()I
     //   127: if_icmple +14 -> 141
     //   130: aload_0
-    //   131: invokevirtual 60	android/graphics/Bitmap:getWidth	()I
+    //   131: invokevirtual 59	android/graphics/Bitmap:getWidth	()I
     //   134: istore 5
     //   136: iconst_1
     //   137: istore_2
@@ -272,7 +267,7 @@ public class ApolloUtil
     //   141: iconst_0
     //   142: istore_2
     //   143: aload_0
-    //   144: invokevirtual 60	android/graphics/Bitmap:getWidth	()I
+    //   144: invokevirtual 59	android/graphics/Bitmap:getWidth	()I
     //   147: iload 5
     //   149: isub
     //   150: i2f
@@ -280,7 +275,7 @@ public class ApolloUtil
     //   152: fdiv
     //   153: f2i
     //   154: istore 10
-    //   156: new 67	android/graphics/Rect
+    //   156: new 66	android/graphics/Rect
     //   159: dup
     //   160: iload 10
     //   162: iconst_0
@@ -288,22 +283,22 @@ public class ApolloUtil
     //   165: iload 10
     //   167: iadd
     //   168: iload 9
-    //   170: invokespecial 73	android/graphics/Rect:<init>	(IIII)V
+    //   170: invokespecial 72	android/graphics/Rect:<init>	(IIII)V
     //   173: astore 13
-    //   175: ldc 220
+    //   175: ldc 221
     //   177: fload_3
     //   178: fmul
     //   179: f2i
     //   180: iconst_2
     //   181: idiv
     //   182: istore 5
-    //   184: ldc 221
+    //   184: ldc 222
     //   186: fload_3
     //   187: fmul
     //   188: f2i
     //   189: istore 9
     //   191: fload_3
-    //   192: ldc 222
+    //   192: ldc 223
     //   194: fmul
     //   195: f2i
     //   196: istore 10
@@ -317,7 +312,7 @@ public class ApolloUtil
     //   209: iconst_2
     //   210: imul
     //   211: istore 11
-    //   213: new 62	android/graphics/RectF
+    //   213: new 61	android/graphics/RectF
     //   216: dup
     //   217: fload_3
     //   218: fload 4
@@ -329,44 +324,44 @@ public class ApolloUtil
     //   228: iload 11
     //   230: iadd
     //   231: i2f
-    //   232: invokespecial 65	android/graphics/RectF:<init>	(FFFF)V
+    //   232: invokespecial 64	android/graphics/RectF:<init>	(FFFF)V
     //   235: astore 14
     //   237: iload 7
     //   239: iload 8
-    //   241: getstatic 79	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   244: invokestatic 83	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   241: getstatic 78	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   244: invokestatic 82	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   247: astore_1
-    //   248: ldc 224
-    //   250: ldc 225
-    //   252: invokestatic 227	com/tencent/mobileqq/avatar/utils/ApolloUtil:a	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
+    //   248: ldc 225
+    //   250: ldc 226
+    //   252: invokestatic 228	com/tencent/mobileqq/avatar/utils/ApolloUtil:a	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
     //   255: astore 15
-    //   257: new 85	android/graphics/Canvas
+    //   257: new 84	android/graphics/Canvas
     //   260: dup
     //   261: aload_1
-    //   262: invokespecial 88	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   262: invokespecial 87	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
     //   265: astore 16
-    //   267: new 90	android/graphics/Paint
+    //   267: new 89	android/graphics/Paint
     //   270: dup
-    //   271: invokespecial 91	android/graphics/Paint:<init>	()V
+    //   271: invokespecial 90	android/graphics/Paint:<init>	()V
     //   274: astore 17
     //   276: aload 17
     //   278: iconst_1
-    //   279: invokevirtual 95	android/graphics/Paint:setAntiAlias	(Z)V
+    //   279: invokevirtual 94	android/graphics/Paint:setAntiAlias	(Z)V
     //   282: aload 17
     //   284: iconst_1
-    //   285: invokevirtual 98	android/graphics/Paint:setDither	(Z)V
+    //   285: invokevirtual 97	android/graphics/Paint:setDither	(Z)V
     //   288: aload 17
     //   290: iconst_1
-    //   291: invokevirtual 101	android/graphics/Paint:setFilterBitmap	(Z)V
+    //   291: invokevirtual 100	android/graphics/Paint:setFilterBitmap	(Z)V
     //   294: aload 16
     //   296: iconst_0
     //   297: iconst_0
     //   298: iconst_0
     //   299: iconst_0
-    //   300: invokevirtual 104	android/graphics/Canvas:drawARGB	(IIII)V
+    //   300: invokevirtual 103	android/graphics/Canvas:drawARGB	(IIII)V
     //   303: aload 17
     //   305: iload 6
-    //   307: invokevirtual 108	android/graphics/Paint:setColor	(I)V
+    //   307: invokevirtual 107	android/graphics/Paint:setColor	(I)V
     //   310: iload 5
     //   312: i2f
     //   313: fstore_3
@@ -375,30 +370,30 @@ public class ApolloUtil
     //   318: fload_3
     //   319: fload_3
     //   320: aload 17
-    //   322: invokevirtual 112	android/graphics/Canvas:drawRoundRect	(Landroid/graphics/RectF;FFLandroid/graphics/Paint;)V
+    //   322: invokevirtual 111	android/graphics/Canvas:drawRoundRect	(Landroid/graphics/RectF;FFLandroid/graphics/Paint;)V
     //   325: aload 17
-    //   327: new 114	android/graphics/PorterDuffXfermode
+    //   327: new 113	android/graphics/PorterDuffXfermode
     //   330: dup
-    //   331: getstatic 230	android/graphics/PorterDuff$Mode:SRC_OVER	Landroid/graphics/PorterDuff$Mode;
-    //   334: invokespecial 123	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
-    //   337: invokevirtual 127	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
+    //   331: getstatic 231	android/graphics/PorterDuff$Mode:SRC_OVER	Landroid/graphics/PorterDuff$Mode;
+    //   334: invokespecial 122	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
+    //   337: invokevirtual 126	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
     //   340: pop
     //   341: iload_2
     //   342: ifeq +75 -> 417
     //   345: aload 13
-    //   347: invokevirtual 233	android/graphics/Rect:width	()I
+    //   347: invokevirtual 234	android/graphics/Rect:width	()I
     //   350: i2f
     //   351: aload 12
-    //   353: invokevirtual 237	android/graphics/RectF:height	()F
+    //   353: invokevirtual 238	android/graphics/RectF:height	()F
     //   356: fmul
     //   357: aload 13
-    //   359: invokevirtual 239	android/graphics/Rect:height	()I
+    //   359: invokevirtual 240	android/graphics/Rect:height	()I
     //   362: i2f
     //   363: fdiv
     //   364: f2i
     //   365: istore_2
     //   366: aload 12
-    //   368: invokevirtual 241	android/graphics/RectF:width	()F
+    //   368: invokevirtual 242	android/graphics/RectF:width	()F
     //   371: iload_2
     //   372: i2f
     //   373: fsub
@@ -409,51 +404,51 @@ public class ApolloUtil
     //   379: aload 16
     //   381: aload_0
     //   382: aload 13
-    //   384: new 62	android/graphics/RectF
+    //   384: new 61	android/graphics/RectF
     //   387: dup
     //   388: iload 5
     //   390: i2f
     //   391: aload 12
-    //   393: getfield 244	android/graphics/RectF:top	F
+    //   393: getfield 245	android/graphics/RectF:top	F
     //   396: iload 5
     //   398: iload_2
     //   399: iadd
     //   400: i2f
     //   401: aload 12
-    //   403: getfield 247	android/graphics/RectF:bottom	F
-    //   406: invokespecial 65	android/graphics/RectF:<init>	(FFFF)V
+    //   403: getfield 248	android/graphics/RectF:bottom	F
+    //   406: invokespecial 64	android/graphics/RectF:<init>	(FFFF)V
     //   409: aload 17
-    //   411: invokevirtual 131	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
+    //   411: invokevirtual 130	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
     //   414: goto +15 -> 429
     //   417: aload 16
     //   419: aload_0
     //   420: aload 13
     //   422: aload 12
     //   424: aload 17
-    //   426: invokevirtual 131	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
+    //   426: invokevirtual 130	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
     //   429: aload 15
     //   431: ifnull +49 -> 480
     //   434: aload 17
-    //   436: new 114	android/graphics/PorterDuffXfermode
+    //   436: new 113	android/graphics/PorterDuffXfermode
     //   439: dup
-    //   440: getstatic 250	android/graphics/PorterDuff$Mode:DST_OUT	Landroid/graphics/PorterDuff$Mode;
-    //   443: invokespecial 123	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
-    //   446: invokevirtual 127	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
+    //   440: getstatic 251	android/graphics/PorterDuff$Mode:DST_OUT	Landroid/graphics/PorterDuff$Mode;
+    //   443: invokespecial 122	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
+    //   446: invokevirtual 126	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
     //   449: pop
     //   450: aload 16
     //   452: aload 15
-    //   454: new 67	android/graphics/Rect
+    //   454: new 66	android/graphics/Rect
     //   457: dup
     //   458: iconst_0
     //   459: iconst_0
     //   460: aload 15
-    //   462: invokevirtual 60	android/graphics/Bitmap:getWidth	()I
+    //   462: invokevirtual 59	android/graphics/Bitmap:getWidth	()I
     //   465: aload 15
-    //   467: invokevirtual 70	android/graphics/Bitmap:getHeight	()I
-    //   470: invokespecial 73	android/graphics/Rect:<init>	(IIII)V
+    //   467: invokevirtual 69	android/graphics/Bitmap:getHeight	()I
+    //   470: invokespecial 72	android/graphics/Rect:<init>	(IIII)V
     //   473: aload 12
     //   475: aload 17
-    //   477: invokevirtual 131	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
+    //   477: invokevirtual 130	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
     //   480: aload_1
     //   481: areturn
     //   482: astore 12
@@ -465,24 +460,24 @@ public class ApolloUtil
     //   492: astore_1
     //   493: aconst_null
     //   494: astore_0
-    //   495: ldc 133
+    //   495: ldc 132
     //   497: iconst_1
     //   498: iconst_3
     //   499: anewarray 4	java/lang/Object
     //   502: dup
     //   503: iconst_0
-    //   504: ldc 252
+    //   504: ldc 253
     //   506: aastore
     //   507: dup
     //   508: iconst_1
     //   509: aload_1
-    //   510: invokevirtual 139	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   510: invokevirtual 138	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   513: aastore
     //   514: dup
     //   515: iconst_2
     //   516: aload_1
     //   517: aastore
-    //   518: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   518: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   521: aload_0
     //   522: areturn
     // Local variable table:
@@ -516,7 +511,12 @@ public class ApolloUtil
     //   237	248	492	java/lang/Throwable
   }
   
-  private static String b(int paramInt)
+  public static int c(int paramInt)
+  {
+    return paramInt & 0xF;
+  }
+  
+  private static String d(int paramInt)
   {
     String str = "100";
     if (paramInt != 0)
@@ -533,7 +533,7 @@ public class ApolloUtil
     return str;
   }
   
-  private static String c(int paramInt)
+  private static String e(int paramInt)
   {
     String str = "head";
     if (paramInt != 0)
@@ -548,7 +548,7 @@ public class ApolloUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.utils.ApolloUtil
  * JD-Core Version:    0.7.0.1
  */

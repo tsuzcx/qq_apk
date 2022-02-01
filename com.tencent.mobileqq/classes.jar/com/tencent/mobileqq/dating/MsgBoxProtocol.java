@@ -30,7 +30,7 @@ public class MsgBoxProtocol
     {
       localReqBody.a2.set(str);
       localReqBody.platform.set(1);
-      localReqBody.version.set("8.7.0");
+      localReqBody.version.set("8.8.17");
       localReqBody.original_id.set(paramAppInterface.getCurrentAccountUin());
       localReqBody.original_key.set((String)localObject);
       localReqBody.original_id_type.set(1);
@@ -69,7 +69,7 @@ public class MsgBoxProtocol
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.MsgBoxProtocol
  * JD-Core Version:    0.7.0.1
  */

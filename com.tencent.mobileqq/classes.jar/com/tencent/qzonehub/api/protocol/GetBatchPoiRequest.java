@@ -12,12 +12,12 @@ import java.util.Map;
 public class GetBatchPoiRequest
   extends QZoneCommonRequest
 {
-  private int a;
   public JceStruct a;
+  private int b;
   
   public GetBatchPoiRequest(ArrayList<LbsDataV2.GpsInfo> paramArrayList, int paramInt1, Map<String, String> paramMap, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt2;
     GetBatchPoiReq_V2 localGetBatchPoiReq_V2 = new GetBatchPoiReq_V2();
     localGetBatchPoiReq_V2.stCommon = new ReqCommon_V2();
     localGetBatchPoiReq_V2.stCommon.iAppId = paramInt1;
@@ -33,7 +33,7 @@ public class GetBatchPoiRequest
       paramInt1 += 1;
     }
     localGetBatchPoiReq_V2.opMask = 1;
-    this.jdField_a_of_type_ComQqTafJceJceStruct = localGetBatchPoiReq_V2;
+    this.a = localGetBatchPoiReq_V2;
   }
   
   public String getCmdString()
@@ -43,12 +43,12 @@ public class GetBatchPoiRequest
   
   public JceStruct getReq()
   {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+    return this.a;
   }
   
   public int getType()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public String uniKey()
@@ -58,7 +58,7 @@ public class GetBatchPoiRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.protocol.GetBatchPoiRequest
  * JD-Core Version:    0.7.0.1
  */

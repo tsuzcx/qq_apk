@@ -12,14 +12,14 @@ final class OldMutualMarkLogicHelper$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationDetector.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, true, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 0, this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable, 4);
+    if (this.a.a()) {
+      this.b.a(this.c, false, true, this.d, 0, this.a, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.oldlogic.OldMutualMarkLogicHelper.2
  * JD-Core Version:    0.7.0.1
  */

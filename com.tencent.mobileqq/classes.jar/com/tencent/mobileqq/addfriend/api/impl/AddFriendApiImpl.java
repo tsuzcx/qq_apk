@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.addfriend.api.IAddFriendApi;
+import com.tencent.mobileqq.addfriend.helper.OpenIdHelper;
 import com.tencent.mobileqq.addfriend.processor.switchprocessor.AddFriendSettingProcessor;
 import com.tencent.mobileqq.addfriend.ui.AddFriendCheckFragment;
 import com.tencent.mobileqq.addfriend.utils.AddFriendUtil;
+import com.tencent.mobileqq.data.OpenID;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -19,6 +21,11 @@ import tencent.im.s2c.frdsysmsg.FrdSysMsg.FriendSysMsg;
 public class AddFriendApiImpl
   implements IAddFriendApi
 {
+  public void addOpenId(String paramString, OpenID paramOpenID, AppRuntime paramAppRuntime)
+  {
+    OpenIdHelper.a(paramAppRuntime).a(paramString, paramOpenID);
+  }
+  
   public boolean couldAddFriendSuccessDirectly(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     return AddFriendUtil.a(paramInt1, paramInt2, paramBoolean);
@@ -36,12 +43,12 @@ public class AddFriendApiImpl
   
   public int getLocalSelfAddFriendSetting(AppRuntime paramAppRuntime)
   {
-    return AddFriendSettingProcessor.a(paramAppRuntime);
+    return AddFriendSettingProcessor.b(paramAppRuntime);
   }
   
   public String getRemark(String paramString)
   {
-    return AddFriendUtil.a(paramString);
+    return AddFriendUtil.b(paramString);
   }
   
   public void getSelfAddFriendSetting(AppRuntime paramAppRuntime)
@@ -51,7 +58,7 @@ public class AddFriendApiImpl
   
   public String getsOpenId()
   {
-    return AddFriendCheckFragment.a();
+    return AddFriendCheckFragment.b();
   }
   
   public boolean isIfShowAFDlg()
@@ -119,7 +126,7 @@ public class AddFriendApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.api.impl.AddFriendApiImpl
  * JD-Core Version:    0.7.0.1
  */

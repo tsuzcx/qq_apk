@@ -31,7 +31,7 @@ class GdtUserInfoAuthorizationHelper$1
     }
     boolean bool2 = true;
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.a))
+    if (this.a.contains(AuthorizationItem.a))
     {
       bool1 = bool2;
       if (TextUtils.isEmpty(str1)) {
@@ -39,20 +39,20 @@ class GdtUserInfoAuthorizationHelper$1
       }
     }
     bool2 = bool1;
-    if (this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.b))
+    if (this.a.contains(AuthorizationItem.b))
     {
       bool2 = bool1;
       if (TextUtils.isEmpty(str2)) {
         bool2 = false;
       }
     }
-    if ((this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.c)) && (TextUtils.isEmpty(paramBundle))) {
+    if ((this.a.contains(AuthorizationItem.c)) && (TextUtils.isEmpty(paramBundle))) {
       bool2 = false;
     }
-    paramBundle = GdtUserInfoAuthorizationHelper.a(this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper, str1, str2, paramBundle, this.jdField_a_of_type_JavaUtilList);
+    paramBundle = GdtUserInfoAuthorizationHelper.a(this.d, str1, str2, paramBundle, this.a);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      GdtUserInfoAuthorizationHelper.a(this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper, this.jdField_a_of_type_AndroidAppActivity, bool2, paramBundle, this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback, this.jdField_a_of_type_JavaUtilList);
+      GdtUserInfoAuthorizationHelper.a(this.d, this.b, bool2, paramBundle, this.c, this.a);
       return;
     }
     ThreadManager.getUIHandler().post(new GdtUserInfoAuthorizationHelper.1.1(this, bool2, paramBundle));
@@ -60,7 +60,7 @@ class GdtUserInfoAuthorizationHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtUserInfoAuthorizationHelper.1
  * JD-Core Version:    0.7.0.1
  */

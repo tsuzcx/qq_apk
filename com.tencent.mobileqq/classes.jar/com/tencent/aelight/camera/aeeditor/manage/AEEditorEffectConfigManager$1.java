@@ -9,9 +9,9 @@ class AEEditorEffectConfigManager$1
   {
     synchronized ()
     {
-      AEEditorEffectUtils.a(this.a, AEEditorEffectConfigManager.a());
+      AEEditorEffectUtils.a(this.a, AEEditorEffectConfigManager.b());
       if (AEEditorEffectConfigManager.a(this.this$0) != null) {
-        AEEditorEffectConfigManager.a(this.this$0).a(AEEditorEffectConfigManager.a());
+        AEEditorEffectConfigManager.a(this.this$0).a(AEEditorEffectConfigManager.b());
       }
       return;
     }
@@ -19,7 +19,7 @@ class AEEditorEffectConfigManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.manage.AEEditorEffectConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

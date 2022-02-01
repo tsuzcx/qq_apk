@@ -30,28 +30,28 @@ import mqq.os.MqqHandler;
 public class TenDocMessageResultAdapter
   extends BaseMessageResultAdapter
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private List<TencentDocItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<TencentDocItem> a = new ArrayList();
+  private LayoutInflater b;
+  private Runnable c;
   
   public TenDocMessageResultAdapter(Context paramContext, MqqWeakReferenceHandler paramMqqWeakReferenceHandler, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
     super(paramContext, paramMqqWeakReferenceHandler, paramSessionInfo, paramQQAppInterface);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.b = LayoutInflater.from(paramContext);
   }
   
-  private ChatHistorySearchData a()
+  private ChatHistorySearchData e()
   {
     ChatHistorySearchData localChatHistorySearchData = new ChatHistorySearchData();
     localChatHistorySearchData.mSearchData1 = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       TencentDocItem localTencentDocItem = (TencentDocItem)localIterator.next();
       MessageRecord localMessageRecord = localTencentDocItem.mRecord;
       if (localMessageRecord != null)
       {
-        MessageForText localMessageForText = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord.selfuin, localMessageRecord.frienduin, localMessageRecord.senderuin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (byte)1, (byte)0, (short)0, localTencentDocItem.mSearchWords);
+        MessageForText localMessageForText = MessageRecordFactory.a(this.h, localMessageRecord.selfuin, localMessageRecord.frienduin, localMessageRecord.senderuin, this.g.a, (byte)1, (byte)0, (short)0, localTencentDocItem.mSearchWords);
         localMessageForText.msgData = GroupUtil.a(localTencentDocItem);
         localMessageForText.shmsgseq = localMessageRecord.shmsgseq;
         localMessageForText.msgseq = localMessageRecord.msgseq;
@@ -66,18 +66,18 @@ public class TenDocMessageResultAdapter
   
   public void a()
   {
-    this.b.clear();
+    this.d.clear();
     notifyDataSetChanged();
   }
   
   public void a(long paramLong, String paramString, int paramInt)
   {
-    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    Runnable localRunnable = this.c;
     if (localRunnable != null) {
       ThreadManager.removeJobFromThreadPool(localRunnable, 16);
     }
-    this.jdField_a_of_type_JavaLangRunnable = new TenDocMessageResultAdapter.LoadRunnable(this, paramInt, paramString, paramLong);
-    ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
+    this.c = new TenDocMessageResultAdapter.LoadRunnable(this, paramInt, paramString, paramLong);
+    ThreadManager.getSubThreadHandler().post(this.c);
   }
   
   public void a(List<TencentDocItem> paramList)
@@ -85,7 +85,7 @@ public class TenDocMessageResultAdapter
     if (paramList == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
     notifyDataSetChanged();
   }
   
@@ -103,8 +103,8 @@ public class TenDocMessageResultAdapter
         localStringBuilder.append(paramList.size());
         QLog.d("TenDocMessageResultAdapter", 2, localStringBuilder.toString());
       }
-      this.b.clear();
-      this.b.addAll(paramList);
+      this.d.clear();
+      this.d.addAll(paramList);
       notifyDataSetChanged();
     }
   }
@@ -115,11 +115,11 @@ public class TenDocMessageResultAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559335, paramViewGroup, false);
+      localView = this.b.inflate(2131625301, paramViewGroup, false);
       paramView = new BaseMessageResultAdapter.MessageHolder();
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)localView.findViewById(2131378886));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365535));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368343));
+      paramView.b = ((ColorNickTextView)localView.findViewById(2131447587));
+      paramView.c = ((TextView)localView.findViewById(2131431754));
+      paramView.a = ((ImageView)localView.findViewById(2131435219));
       localView.setTag(paramView);
     }
     else
@@ -128,7 +128,7 @@ public class TenDocMessageResultAdapter
       localView = paramView;
       paramView = (View)localObject1;
     }
-    Object localObject1 = ((MessageItem)localObject2).a;
+    Object localObject1 = ((MessageItem)localObject2).b;
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("get view mr: ");
     ((StringBuilder)localObject3).append(localObject1);
@@ -144,9 +144,9 @@ public class TenDocMessageResultAdapter
       {
         localObject3 = ((MessageItem)localObject2).a(((TencentDocItem)localObject1).mTitle, -11353092);
         localObject2 = ((MessageItem)localObject2).a(((TencentDocItem)localObject1).mDescription, -11353092);
-        paramView.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject3);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-        LinkAdapter.a(paramView.jdField_a_of_type_AndroidWidgetImageView, ((TencentDocItem)localObject1).mIcon);
+        paramView.b.setText((CharSequence)localObject3);
+        paramView.c.setText((CharSequence)localObject2);
+        LinkAdapter.a(paramView.a, ((TencentDocItem)localObject1).mIcon);
       }
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
@@ -155,7 +155,7 @@ public class TenDocMessageResultAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter
  * JD-Core Version:    0.7.0.1
  */

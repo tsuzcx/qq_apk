@@ -38,7 +38,7 @@ public class ColorNoteIPCServer
     return a;
   }
   
-  private IColorNoteHelper a()
+  private IColorNoteHelper b()
   {
     return (IColorNoteHelper)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IColorNoteHelper.class, "all");
   }
@@ -46,7 +46,7 @@ public class ColorNoteIPCServer
   EIPCResult a(Bundle paramBundle)
   {
     paramBundle = paramBundle.getString("extra_unikey");
-    boolean bool = a().isColorNoteExit(paramBundle);
+    boolean bool = b().isColorNoteExit(paramBundle);
     paramBundle = new Bundle();
     paramBundle.putBoolean("extra_is_colornote_exists", bool);
     return EIPCResult.createResult(0, paramBundle);
@@ -54,7 +54,7 @@ public class ColorNoteIPCServer
   
   EIPCResult b(Bundle paramBundle)
   {
-    boolean bool = a().addColorNote(paramBundle);
+    boolean bool = b().addColorNote(paramBundle);
     paramBundle = new Bundle();
     paramBundle.putBoolean("extra_add_colornote_succ", bool);
     return EIPCResult.createResult(0, paramBundle);
@@ -64,7 +64,7 @@ public class ColorNoteIPCServer
   {
     String str = paramBundle.getString("extra_unikey");
     int i = paramBundle.getInt("color_note_extra_type");
-    boolean bool = a().deleteColorNote(str, i);
+    boolean bool = b().deleteColorNote(str, i);
     paramBundle = new Bundle();
     paramBundle.putBoolean("extra_delete_colornote_succ", bool);
     return EIPCResult.createResult(0, paramBundle);
@@ -72,7 +72,7 @@ public class ColorNoteIPCServer
   
   EIPCResult d(Bundle paramBundle)
   {
-    boolean bool = a().canAddColorNote();
+    boolean bool = b().canAddColorNote();
     paramBundle = new Bundle();
     paramBundle.putBoolean("extra_can_add_colornote", bool);
     return EIPCResult.createResult(0, paramBundle);
@@ -82,7 +82,7 @@ public class ColorNoteIPCServer
   {
     String str = paramBundle.getString("extra_unikey");
     boolean bool = paramBundle.getBoolean("extra_update_colornote_state");
-    return EIPCResult.createResult(0, a().updateColorNoteState(str, bool));
+    return EIPCResult.createResult(0, b().updateColorNoteState(str, bool));
   }
   
   EIPCResult f(Bundle paramBundle)
@@ -91,7 +91,7 @@ public class ColorNoteIPCServer
     String str2 = paramBundle.getString("extra_field_name");
     String str3 = paramBundle.getString("extra_field_value");
     int i = paramBundle.getInt("extra_field_type");
-    boolean bool = a().updateColorNote(str1, str2, str3, i);
+    boolean bool = b().updateColorNote(str1, str2, str3, i);
     paramBundle = new Bundle();
     paramBundle.putBoolean("extra_update_colornote_succ", bool);
     return EIPCResult.createResult(0, paramBundle);
@@ -100,7 +100,7 @@ public class ColorNoteIPCServer
   EIPCResult g(Bundle paramBundle)
   {
     paramBundle = (ColorNote)paramBundle.getSerializable("color_note_recently_viewed_comparator");
-    boolean bool = a().updateRecentNote(paramBundle);
+    boolean bool = b().updateRecentNote(paramBundle);
     paramBundle = new Bundle();
     paramBundle.putBoolean("color_note_clear_succ", bool);
     return EIPCResult.createResult(0, paramBundle);
@@ -155,7 +155,7 @@ public class ColorNoteIPCServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.ColorNoteIPCServer
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ class AECirclePhotoListLogic$12$2
   
   public void run()
   {
-    if (AECirclePhotoListLogic.a(this.a.this$0).isShowing()) {
-      AECirclePhotoListLogic.a(this.a.this$0).dismiss();
+    if (AECirclePhotoListLogic.c(this.a.this$0).isShowing()) {
+      AECirclePhotoListLogic.c(this.a.this$0).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic.12.2
  * JD-Core Version:    0.7.0.1
  */

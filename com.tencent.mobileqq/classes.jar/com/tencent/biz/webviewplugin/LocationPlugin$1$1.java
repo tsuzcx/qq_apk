@@ -21,12 +21,12 @@ class LocationPlugin$1$1
       localStringBuilder.append(paramInt);
       QLog.e("LocationPlugin", 2, localStringBuilder.toString());
     }
-    LocationPlugin.a(this.a.jdField_a_of_type_ComTencentBizWebviewpluginLocationPlugin, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
+    LocationPlugin.a(this.a.b, paramSosoLbsInfo, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.LocationPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

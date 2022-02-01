@@ -153,71 +153,71 @@ public class HealthShortVideoUtils
     //   224: lcmp
     //   225: ifne +24 -> 249
     //   228: aload 12
-    //   230: getfield 136	com/tencent/mobileqq/vashealth/shortVideo/HealthShortVideoUtils$UploadRspBody:jdField_a_of_type_Int	I
+    //   230: getfield 136	com/tencent/mobileqq/vashealth/shortVideo/HealthShortVideoUtils$UploadRspBody:a	I
     //   233: iconst_1
     //   234: if_icmpne +6 -> 240
     //   237: goto +16 -> 253
     //   240: aload 12
-    //   242: getfield 138	com/tencent/mobileqq/vashealth/shortVideo/HealthShortVideoUtils$UploadRspBody:jdField_a_of_type_Long	J
+    //   242: getfield 137	com/tencent/mobileqq/vashealth/shortVideo/HealthShortVideoUtils$UploadRspBody:b	J
     //   245: lstore_3
     //   246: goto +7 -> 253
-    //   249: ldc2_w 139
+    //   249: ldc2_w 138
     //   252: lstore_3
     //   253: aload_2
     //   254: ifnull +11 -> 265
     //   257: aload_2
     //   258: invokevirtual 102	java/io/OutputStream:flush	()V
     //   261: aload_2
-    //   262: invokevirtual 143	java/io/OutputStream:close	()V
+    //   262: invokevirtual 142	java/io/OutputStream:close	()V
     //   265: aload 13
-    //   267: invokevirtual 144	java/io/ByteArrayOutputStream:flush	()V
+    //   267: invokevirtual 143	java/io/ByteArrayOutputStream:flush	()V
     //   270: aload 13
-    //   272: invokevirtual 145	java/io/ByteArrayOutputStream:close	()V
+    //   272: invokevirtual 144	java/io/ByteArrayOutputStream:close	()V
     //   275: aload_1
     //   276: ifnull +7 -> 283
     //   279: aload_1
-    //   280: invokevirtual 146	java/io/InputStream:close	()V
+    //   280: invokevirtual 145	java/io/InputStream:close	()V
     //   283: aload 5
     //   285: ifnull +8 -> 293
     //   288: aload 5
-    //   290: invokevirtual 149	java/net/HttpURLConnection:disconnect	()V
-    //   293: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   290: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
+    //   293: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   296: ifeq +66 -> 362
-    //   299: new 157	java/lang/StringBuilder
+    //   299: new 156	java/lang/StringBuilder
     //   302: dup
-    //   303: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   303: invokespecial 157	java/lang/StringBuilder:<init>	()V
     //   306: astore_0
     //   307: aload_0
-    //   308: ldc 160
-    //   310: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: ldc 159
+    //   310: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   313: pop
     //   314: aload_0
     //   315: invokestatic 29	java/lang/System:currentTimeMillis	()J
     //   318: lload 10
     //   320: lsub
-    //   321: invokevirtual 167	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   321: invokevirtual 166	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   324: pop
     //   325: aload_0
-    //   326: ldc 169
-    //   328: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   326: ldc 168
+    //   328: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   331: pop
     //   332: aload_0
     //   333: lload_3
-    //   334: invokevirtual 167	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   334: invokevirtual 166	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   337: pop
     //   338: aload_0
-    //   339: ldc 171
-    //   341: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   339: ldc 170
+    //   341: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   344: pop
     //   345: aload_0
     //   346: iload 8
-    //   348: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   348: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   351: pop
-    //   352: ldc 176
+    //   352: ldc 175
     //   354: iconst_2
     //   355: aload_0
-    //   356: invokevirtual 180	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   359: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   356: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   359: invokestatic 183	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   362: lload_3
     //   363: lreturn
     //   364: astore_0
@@ -252,21 +252,21 @@ public class HealthShortVideoUtils
     //   409: aload 12
     //   411: invokevirtual 102	java/io/OutputStream:flush	()V
     //   414: aload 12
-    //   416: invokevirtual 143	java/io/OutputStream:close	()V
+    //   416: invokevirtual 142	java/io/OutputStream:close	()V
     //   419: aload_2
     //   420: ifnull +11 -> 431
     //   423: aload_2
-    //   424: invokevirtual 144	java/io/ByteArrayOutputStream:flush	()V
+    //   424: invokevirtual 143	java/io/ByteArrayOutputStream:flush	()V
     //   427: aload_2
-    //   428: invokevirtual 145	java/io/ByteArrayOutputStream:close	()V
+    //   428: invokevirtual 144	java/io/ByteArrayOutputStream:close	()V
     //   431: aload_1
     //   432: ifnull +7 -> 439
     //   435: aload_1
-    //   436: invokevirtual 146	java/io/InputStream:close	()V
+    //   436: invokevirtual 145	java/io/InputStream:close	()V
     //   439: aload 5
     //   441: ifnull +8 -> 449
     //   444: aload 5
-    //   446: invokevirtual 149	java/net/HttpURLConnection:disconnect	()V
+    //   446: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
     //   449: goto +5 -> 454
     //   452: aload_0
     //   453: athrow
@@ -350,8 +350,8 @@ public class HealthShortVideoUtils
       paramString1.add(new BasicNameValuePair("tags", str3));
       paramString1.add(new BasicNameValuePair("cat", str4));
       paramString1.add(new BasicNameValuePair("size", String.valueOf(FileUtils.getFileSizes(str1))));
-      paramString1.add(new BasicNameValuePair("sha", HexUtil.bytes2HexStr(QQFileManagerUtil.d(str1))));
-      paramString1.add(new BasicNameValuePair("md5", HexUtil.bytes2HexStr(QQFileManagerUtil.e(str1))));
+      paramString1.add(new BasicNameValuePair("sha", HexUtil.bytes2HexStr(QQFileManagerUtil.o(str1))));
+      paramString1.add(new BasicNameValuePair("md5", HexUtil.bytes2HexStr(QQFileManagerUtil.p(str1))));
       if (QLog.isColorLevel())
       {
         paramString3 = new StringBuilder();
@@ -416,7 +416,7 @@ public class HealthShortVideoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.shortVideo.HealthShortVideoUtils
  * JD-Core Version:    0.7.0.1
  */

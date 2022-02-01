@@ -11,14 +11,14 @@ class SystemWebChromeClient$2
   {
     WebView localWebView = this.a.getWebView();
     if (localWebView != null) {
-      ((android.webkit.WebView.WebViewTransport)this.b.obj).setWebView(localWebView.b());
+      ((android.webkit.WebView.WebViewTransport)this.b.obj).setWebView(localWebView.a());
     }
     this.b.sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebChromeClient.2
  * JD-Core Version:    0.7.0.1
  */

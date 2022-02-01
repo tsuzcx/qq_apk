@@ -5,22 +5,20 @@ import java.lang.ref.WeakReference;
 
 public class QidianProfileCardActivity$PaGroupStruct
 {
-  public int a;
-  public String a;
   public WeakReference<URLImageView> a;
+  public int b = 0;
+  public String c = "";
   
   public QidianProfileCardActivity$PaGroupStruct(URLImageView paramURLImageView, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramURLImageView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = new WeakReference(paramURLImageView);
+    this.b = paramInt;
+    this.c = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.PaGroupStruct
  * JD-Core Version:    0.7.0.1
  */

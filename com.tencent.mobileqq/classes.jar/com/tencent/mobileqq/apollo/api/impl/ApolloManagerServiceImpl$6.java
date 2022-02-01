@@ -1,56 +1,112 @@
 package com.tencent.mobileqq.apollo.api.impl;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.api.IApolloActionUsedManager;
+import com.tencent.mobileqq.apollo.handler.ApolloExtensionHandler;
+import com.tencent.mobileqq.apollo.model.ApolloBaseInfo;
+import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
+import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
 
 class ApolloManagerServiceImpl$6
-  implements Runnable
+  extends Handler
 {
-  ApolloManagerServiceImpl$6(ApolloManagerServiceImpl paramApolloManagerServiceImpl) {}
-  
-  public void run()
+  ApolloManagerServiceImpl$6(ApolloManagerServiceImpl paramApolloManagerServiceImpl, Looper paramLooper)
   {
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object localObject1;
+    if (paramMessage.what == 4096)
     {
-      Object localObject1 = BaseApplicationImpl.getApplication();
-      int i = 0;
-      localObject1 = ((BaseApplicationImpl)localObject1).getSharedPreferences("aio_used_action_sp", 0);
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("sp_key_apollo_panel_action_used_last_request_time");
-      ((StringBuilder)localObject2).append(ApolloManagerServiceImpl.access$200(this.this$0).getCurrentAccountUin());
-      long l = ((SharedPreferences)localObject1).getLong(((StringBuilder)localObject2).toString(), 0L);
-      if (QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOPanelTag", 0) != 0) {
-        i = 1;
-      }
-      localObject2 = (ApolloActionUsedManagerImpl)ApolloManagerServiceImpl.access$200(this.this$0).getRuntimeService(IApolloActionUsedManager.class, "all");
-      if (((System.currentTimeMillis() - l > 43200000L) || (System.currentTimeMillis() - l < 0L) || (((ApolloActionUsedManagerImpl)localObject2).isDataExpired())) && (i != 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("[cmshow]ApolloManager", 2, "getApolloActionUsedListReqFromNetwork send req");
-        }
-        ((ApolloActionUsedManagerImpl)localObject2).getActionIdDataFromServer(-1);
-        localObject1 = ((SharedPreferences)localObject1).edit();
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("sp_key_apollo_panel_action_used_last_request_time");
-        ((StringBuilder)localObject2).append(ApolloManagerServiceImpl.access$200(this.this$0).getCurrentAccountUin());
-        ((SharedPreferences.Editor)localObject1).putLong(((StringBuilder)localObject2).toString(), System.currentTimeMillis()).commit();
+      AppInterface localAppInterface = ApolloManagerServiceImpl.access$200(this.a);
+      if (localAppInterface == null) {
         return;
       }
+      paramMessage = (ApolloExtensionHandler)localAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
+      if (paramMessage != null)
+      {
+        localObject1 = new ArrayList(ApolloManagerServiceImpl.sBulkPullDressList.size());
+        try
+        {
+          Object localObject2 = ApolloManagerServiceImpl.sBulkPullDressList.iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            String str = (String)((Iterator)localObject2).next();
+            if (!((ArrayList)localObject1).contains(str)) {
+              ((ArrayList)localObject1).add(Long.valueOf(Long.parseLong(str)));
+            }
+          }
+          localObject2 = ((ApolloDaoManagerServiceImpl)localAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all")).getSelfApolloBaseInfo();
+          if ((localObject2 != null) && (((ApolloBaseInfo)localObject2).apolloLocalTS != ((ApolloBaseInfo)localObject2).apolloServerTS) && (!((ArrayList)localObject1).contains(localAppInterface.getCurrentUin()))) {
+            ((ArrayList)localObject1).add(Long.valueOf(localAppInterface.getLongAccountUin()));
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.d("[cmshow]ApolloManager", 2, "handle msg MSG_TYPE_QUERY_APOLLO_INFO error! ", localException);
+        }
+        paramMessage.a((ArrayList)localObject1, "troop");
+        ApolloManagerServiceImpl.sBulkPullDressList.clear();
+        if (ApolloManagerServiceImpl.sBulkApolloInfoList.size() > 0)
+        {
+          paramMessage.a((String[])ApolloManagerServiceImpl.sBulkApolloInfoList.toArray(new String[0]));
+          ApolloManagerServiceImpl.sBulkApolloInfoList.clear();
+        }
+      }
     }
-    catch (Throwable localThrowable)
+    else
     {
-      QLog.d("[cmshow]ApolloManager", 1, "[doAfterOpenAIO]  getBattleGameList error! exception = ", localThrowable);
+      if (paramMessage.what == 4097)
+      {
+        localObject1 = (String)paramMessage.obj;
+        if (paramMessage.arg1 == 1)
+        {
+          if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!ApolloManagerServiceImpl.sBulkPullDressList.contains(localObject1)))
+          {
+            ApolloManagerServiceImpl.sBulkPullDressList.add(localObject1);
+            if (QLog.isColorLevel())
+            {
+              paramMessage = new StringBuilder();
+              paramMessage.append("addToBulkPullMap-->dress uin:");
+              paramMessage.append((String)localObject1);
+              QLog.d("[cmshow]ApolloManager", 2, paramMessage.toString());
+            }
+          }
+        }
+        else if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!ApolloManagerServiceImpl.sBulkApolloInfoList.contains(localObject1)))
+        {
+          ApolloManagerServiceImpl.sBulkApolloInfoList.add(localObject1);
+          if (QLog.isColorLevel())
+          {
+            paramMessage = new StringBuilder();
+            paramMessage.append("addToBulkPullMap-->info uin:");
+            paramMessage.append((String)localObject1);
+            QLog.d("[cmshow]ApolloManager", 2, paramMessage.toString());
+          }
+        }
+        ApolloManagerServiceImpl.access$800(this.a).removeMessages(4096);
+        ApolloManagerServiceImpl.access$800(this.a).sendEmptyMessageDelayed(4096, 200L);
+        return;
+      }
+      if (paramMessage.what == 4098) {
+        ApolloManagerServiceImpl.access$900(this.a);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl.6
  * JD-Core Version:    0.7.0.1
  */

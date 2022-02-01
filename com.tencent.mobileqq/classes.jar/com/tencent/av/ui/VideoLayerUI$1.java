@@ -14,18 +14,18 @@ class VideoLayerUI$1
   
   public void run()
   {
-    if (this.this$0.b == null) {
+    if (this.this$0.ad == null) {
       return;
     }
-    int i = this.this$0.b.getHeight();
-    int j = this.this$0.b.getWidth();
+    int i = this.this$0.ad.getHeight();
+    int j = this.this$0.ad.getWidth();
     if ((i != 0) && (j != 0))
     {
-      j = this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299268);
+      j = this.this$0.X.getResources().getDimensionPixelSize(2131300024);
       VideoLayerUI localVideoLayerUI = this.this$0;
       i -= j;
-      VideoLayerUI.a(localVideoLayerUI, new Rect(0, i - localVideoLayerUI.m, VideoLayerUI.a(this.this$0).widthPixels, i));
-      QLog.w(this.this$0.jdField_a_of_type_JavaLangString, 1, "initGlRootView mSlideWindowAreas init end");
+      VideoLayerUI.a(localVideoLayerUI, new Rect(0, i - localVideoLayerUI.L, VideoLayerUI.a(this.this$0).widthPixels, i));
+      QLog.w(this.this$0.U, 1, "initGlRootView mSlideWindowAreas init end");
     }
   }
 }

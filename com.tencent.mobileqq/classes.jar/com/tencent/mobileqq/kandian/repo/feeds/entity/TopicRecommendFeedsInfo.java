@@ -16,20 +16,15 @@ import tencent.im.oidb.articlesummary.articlesummary.TopicRecommendInfo;
 
 public class TopicRecommendFeedsInfo
 {
-  public int a;
   public long a;
-  public TopicRecommendFeedsInfo.TopicRecommendFeedsTitle a;
-  public String a;
-  public ArrayList<TopicRecommendFeedsInfo.TopicRecommendInfo> a;
-  public long b;
-  public TopicRecommendFeedsInfo.TopicRecommendFeedsTitle b;
-  public String b;
-  public String c;
-  
-  public TopicRecommendFeedsInfo()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public int b;
+  public long c;
+  public String d;
+  public TopicRecommendFeedsInfo.TopicRecommendFeedsTitle e;
+  public TopicRecommendFeedsInfo.TopicRecommendFeedsTitle f;
+  public ArrayList<TopicRecommendFeedsInfo.TopicRecommendInfo> g = new ArrayList();
+  public String h;
+  public String i;
   
   public static TopicRecommendFeedsInfo a(articlesummary.TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo)
   {
@@ -40,13 +35,13 @@ public class TopicRecommendFeedsInfo
     }
     TopicRecommendFeedsInfo localTopicRecommendFeedsInfo = new TopicRecommendFeedsInfo();
     if (paramTopicRecommendFeedsInfo.uint64_feeds_id.has()) {
-      localTopicRecommendFeedsInfo.jdField_a_of_type_Long = paramTopicRecommendFeedsInfo.uint64_feeds_id.get();
+      localTopicRecommendFeedsInfo.a = paramTopicRecommendFeedsInfo.uint64_feeds_id.get();
     }
     if (paramTopicRecommendFeedsInfo.bytes_subscribe_name.has()) {
-      localTopicRecommendFeedsInfo.jdField_c_of_type_JavaLangString = paramTopicRecommendFeedsInfo.bytes_subscribe_name.get().toStringUtf8();
+      localTopicRecommendFeedsInfo.i = paramTopicRecommendFeedsInfo.bytes_subscribe_name.get().toStringUtf8();
     }
     if (paramTopicRecommendFeedsInfo.uint32_feeds_style.has()) {
-      localTopicRecommendFeedsInfo.jdField_a_of_type_Int = paramTopicRecommendFeedsInfo.uint32_feeds_style.get();
+      localTopicRecommendFeedsInfo.b = paramTopicRecommendFeedsInfo.uint32_feeds_style.get();
     }
     Object localObject;
     if (paramTopicRecommendFeedsInfo.msg_topic_recommend_info.has())
@@ -57,55 +52,55 @@ public class TopicRecommendFeedsInfo
         articlesummary.TopicRecommendInfo localTopicRecommendInfo = (articlesummary.TopicRecommendInfo)((Iterator)localObject).next();
         TopicRecommendFeedsInfo.TopicRecommendInfo localTopicRecommendInfo1 = new TopicRecommendFeedsInfo.TopicRecommendInfo();
         if (localTopicRecommendInfo.bytes_business_name.has()) {
-          localTopicRecommendInfo1.jdField_a_of_type_JavaLangString = localTopicRecommendInfo.bytes_business_name.get().toStringUtf8();
+          localTopicRecommendInfo1.b = localTopicRecommendInfo.bytes_business_name.get().toStringUtf8();
         }
         if (localTopicRecommendInfo.bytes_business_name_prefix.has()) {
-          localTopicRecommendInfo1.jdField_c_of_type_JavaLangString = localTopicRecommendInfo.bytes_business_name_prefix.get().toStringUtf8();
+          localTopicRecommendInfo1.d = localTopicRecommendInfo.bytes_business_name_prefix.get().toStringUtf8();
         }
         if (localTopicRecommendInfo.bytes_business_url.has()) {
-          localTopicRecommendInfo1.jdField_b_of_type_JavaLangString = localTopicRecommendInfo.bytes_business_url.get().toStringUtf8();
+          localTopicRecommendInfo1.c = localTopicRecommendInfo.bytes_business_url.get().toStringUtf8();
         }
         if (localTopicRecommendInfo.uint32_business_id.has()) {
-          localTopicRecommendInfo1.jdField_a_of_type_Int = localTopicRecommendInfo.uint32_business_id.get();
+          localTopicRecommendInfo1.a = localTopicRecommendInfo.uint32_business_id.get();
         }
         if (localTopicRecommendInfo.uint32_number_of_participants.has()) {
-          localTopicRecommendInfo1.jdField_b_of_type_Int = localTopicRecommendInfo.uint32_number_of_participants.get();
+          localTopicRecommendInfo1.e = localTopicRecommendInfo.uint32_number_of_participants.get();
         }
         if (localTopicRecommendInfo.bytes_pic_url.has()) {
-          localTopicRecommendInfo1.d = localTopicRecommendInfo.bytes_pic_url.get().toStringUtf8();
+          localTopicRecommendInfo1.f = localTopicRecommendInfo.bytes_pic_url.get().toStringUtf8();
         }
         if (localTopicRecommendInfo.uint32_is_follow.has()) {
-          localTopicRecommendInfo1.jdField_c_of_type_Int = localTopicRecommendInfo.uint32_is_follow.get();
+          localTopicRecommendInfo1.g = localTopicRecommendInfo.uint32_is_follow.get();
         }
-        localTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.add(localTopicRecommendInfo1);
+        localTopicRecommendFeedsInfo.g.add(localTopicRecommendInfo1);
       }
     }
     if (paramTopicRecommendFeedsInfo.msg_left_title.has())
     {
       localObject = (articlesummary.TopicRecommendFeedsTitle)paramTopicRecommendFeedsInfo.msg_left_title.get();
-      localTopicRecommendFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle = new TopicRecommendFeedsInfo.TopicRecommendFeedsTitle();
+      localTopicRecommendFeedsInfo.e = new TopicRecommendFeedsInfo.TopicRecommendFeedsTitle();
       if (((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_title_content.has()) {
-        localTopicRecommendFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_a_of_type_JavaLangString = ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_title_content.get().toStringUtf8();
+        localTopicRecommendFeedsInfo.e.a = ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_title_content.get().toStringUtf8();
       }
       if (((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_url.has()) {
-        localTopicRecommendFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_b_of_type_JavaLangString = ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_url.get().toStringUtf8();
+        localTopicRecommendFeedsInfo.e.b = ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_url.get().toStringUtf8();
       }
     }
     if (paramTopicRecommendFeedsInfo.msg_right_title.has())
     {
       localObject = (articlesummary.TopicRecommendFeedsTitle)paramTopicRecommendFeedsInfo.msg_right_title.get();
-      localTopicRecommendFeedsInfo.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle = new TopicRecommendFeedsInfo.TopicRecommendFeedsTitle();
+      localTopicRecommendFeedsInfo.f = new TopicRecommendFeedsInfo.TopicRecommendFeedsTitle();
       if (((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_title_content.has()) {
-        localTopicRecommendFeedsInfo.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_a_of_type_JavaLangString = ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_title_content.get().toStringUtf8();
+        localTopicRecommendFeedsInfo.f.a = ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_title_content.get().toStringUtf8();
       }
       if (((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_url.has()) {
-        localTopicRecommendFeedsInfo.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_b_of_type_JavaLangString = ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_url.get().toStringUtf8();
+        localTopicRecommendFeedsInfo.f.b = ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_url.get().toStringUtf8();
       }
     }
     if ((paramTopicRecommendFeedsInfo.bytes_comments.has()) && (paramTopicRecommendFeedsInfo.bytes_comments.get() != null)) {
       try
       {
-        localTopicRecommendFeedsInfo.jdField_b_of_type_JavaLangString = new String(paramTopicRecommendFeedsInfo.bytes_comments.get().toByteArray(), "utf-8");
+        localTopicRecommendFeedsInfo.h = new String(paramTopicRecommendFeedsInfo.bytes_comments.get().toByteArray(), "utf-8");
       }
       catch (Exception localException)
       {
@@ -113,14 +108,14 @@ public class TopicRecommendFeedsInfo
       }
     }
     if (paramTopicRecommendFeedsInfo.uint64_uin.has()) {
-      localTopicRecommendFeedsInfo.jdField_b_of_type_Long = paramTopicRecommendFeedsInfo.uint64_uin.get();
+      localTopicRecommendFeedsInfo.c = paramTopicRecommendFeedsInfo.uint64_uin.get();
     }
     if (paramTopicRecommendFeedsInfo.bytes_subscribe_id.has())
     {
       paramTopicRecommendFeedsInfo = paramTopicRecommendFeedsInfo.bytes_subscribe_id.get().toByteArray();
       try
       {
-        localTopicRecommendFeedsInfo.jdField_a_of_type_JavaLangString = new String(paramTopicRecommendFeedsInfo, "utf-8");
+        localTopicRecommendFeedsInfo.d = new String(paramTopicRecommendFeedsInfo, "utf-8");
         return localTopicRecommendFeedsInfo;
       }
       catch (Exception paramTopicRecommendFeedsInfo)
@@ -133,55 +128,55 @@ public class TopicRecommendFeedsInfo
   
   private void a(List<articlesummary.TopicRecommendInfo> paramList)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.g.iterator();
     while (localIterator.hasNext())
     {
       TopicRecommendFeedsInfo.TopicRecommendInfo localTopicRecommendInfo = (TopicRecommendFeedsInfo.TopicRecommendInfo)localIterator.next();
       articlesummary.TopicRecommendInfo localTopicRecommendInfo1 = new articlesummary.TopicRecommendInfo();
-      localTopicRecommendInfo1.uint32_number_of_participants.set(localTopicRecommendInfo.jdField_b_of_type_Int);
-      if (!TextUtils.isEmpty(localTopicRecommendInfo.jdField_a_of_type_JavaLangString)) {
-        localTopicRecommendInfo1.bytes_business_name.set(ByteStringMicro.copyFromUtf8(localTopicRecommendInfo.jdField_a_of_type_JavaLangString));
-      }
-      if (!TextUtils.isEmpty(localTopicRecommendInfo.jdField_c_of_type_JavaLangString)) {
-        localTopicRecommendInfo1.bytes_business_name_prefix.set(ByteStringMicro.copyFromUtf8(localTopicRecommendInfo.jdField_c_of_type_JavaLangString));
-      }
-      if (!TextUtils.isEmpty(localTopicRecommendInfo.jdField_b_of_type_JavaLangString)) {
-        localTopicRecommendInfo1.bytes_business_url.set(ByteStringMicro.copyFromUtf8(localTopicRecommendInfo.jdField_b_of_type_JavaLangString));
+      localTopicRecommendInfo1.uint32_number_of_participants.set(localTopicRecommendInfo.e);
+      if (!TextUtils.isEmpty(localTopicRecommendInfo.b)) {
+        localTopicRecommendInfo1.bytes_business_name.set(ByteStringMicro.copyFromUtf8(localTopicRecommendInfo.b));
       }
       if (!TextUtils.isEmpty(localTopicRecommendInfo.d)) {
-        localTopicRecommendInfo1.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(localTopicRecommendInfo.d));
+        localTopicRecommendInfo1.bytes_business_name_prefix.set(ByteStringMicro.copyFromUtf8(localTopicRecommendInfo.d));
       }
-      localTopicRecommendInfo1.uint32_business_id.set(localTopicRecommendInfo.jdField_a_of_type_Int);
-      localTopicRecommendInfo1.uint32_is_follow.set(localTopicRecommendInfo.jdField_c_of_type_Int);
+      if (!TextUtils.isEmpty(localTopicRecommendInfo.c)) {
+        localTopicRecommendInfo1.bytes_business_url.set(ByteStringMicro.copyFromUtf8(localTopicRecommendInfo.c));
+      }
+      if (!TextUtils.isEmpty(localTopicRecommendInfo.f)) {
+        localTopicRecommendInfo1.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(localTopicRecommendInfo.f));
+      }
+      localTopicRecommendInfo1.uint32_business_id.set(localTopicRecommendInfo.a);
+      localTopicRecommendInfo1.uint32_is_follow.set(localTopicRecommendInfo.g);
       paramList.add(localTopicRecommendInfo1);
-    }
-  }
-  
-  private void a(articlesummary.TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle != null)
-    {
-      articlesummary.TopicRecommendFeedsTitle localTopicRecommendFeedsTitle = new articlesummary.TopicRecommendFeedsTitle();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_b_of_type_JavaLangString)) {
-        localTopicRecommendFeedsTitle.bytes_url.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_b_of_type_JavaLangString));
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_a_of_type_JavaLangString)) {
-        localTopicRecommendFeedsTitle.bytes_title_content.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_a_of_type_JavaLangString));
-      }
-      paramTopicRecommendFeedsInfo.msg_left_title.set(localTopicRecommendFeedsTitle);
     }
   }
   
   private void b(articlesummary.TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo)
   {
-    if (this.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle != null)
+    if (this.e != null)
     {
       articlesummary.TopicRecommendFeedsTitle localTopicRecommendFeedsTitle = new articlesummary.TopicRecommendFeedsTitle();
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_b_of_type_JavaLangString)) {
-        localTopicRecommendFeedsTitle.bytes_url.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_b_of_type_JavaLangString));
+      if (!TextUtils.isEmpty(this.e.b)) {
+        localTopicRecommendFeedsTitle.bytes_url.set(ByteStringMicro.copyFromUtf8(this.e.b));
       }
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_a_of_type_JavaLangString)) {
-        localTopicRecommendFeedsTitle.bytes_title_content.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_a_of_type_JavaLangString));
+      if (!TextUtils.isEmpty(this.e.a)) {
+        localTopicRecommendFeedsTitle.bytes_title_content.set(ByteStringMicro.copyFromUtf8(this.e.a));
+      }
+      paramTopicRecommendFeedsInfo.msg_left_title.set(localTopicRecommendFeedsTitle);
+    }
+  }
+  
+  private void c(articlesummary.TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo)
+  {
+    if (this.f != null)
+    {
+      articlesummary.TopicRecommendFeedsTitle localTopicRecommendFeedsTitle = new articlesummary.TopicRecommendFeedsTitle();
+      if (!TextUtils.isEmpty(this.f.b)) {
+        localTopicRecommendFeedsTitle.bytes_url.set(ByteStringMicro.copyFromUtf8(this.f.b));
+      }
+      if (!TextUtils.isEmpty(this.f.a)) {
+        localTopicRecommendFeedsTitle.bytes_title_content.set(ByteStringMicro.copyFromUtf8(this.f.a));
       }
       paramTopicRecommendFeedsInfo.msg_right_title.set(localTopicRecommendFeedsTitle);
     }
@@ -190,22 +185,22 @@ public class TopicRecommendFeedsInfo
   public articlesummary.TopicRecommendFeedsInfo a()
   {
     articlesummary.TopicRecommendFeedsInfo localTopicRecommendFeedsInfo = new articlesummary.TopicRecommendFeedsInfo();
-    localTopicRecommendFeedsInfo.uint32_feeds_style.set(this.jdField_a_of_type_Int);
-    localTopicRecommendFeedsInfo.uint64_feeds_id.set(this.jdField_a_of_type_Long);
-    if (this.jdField_c_of_type_JavaLangString != null) {
-      localTopicRecommendFeedsInfo.bytes_subscribe_name.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    localTopicRecommendFeedsInfo.uint32_feeds_style.set(this.b);
+    localTopicRecommendFeedsInfo.uint64_feeds_id.set(this.a);
+    if (this.i != null) {
+      localTopicRecommendFeedsInfo.bytes_subscribe_name.set(ByteStringMicro.copyFromUtf8(this.i));
     }
     ArrayList localArrayList = new ArrayList();
     a(localArrayList);
     localTopicRecommendFeedsInfo.msg_topic_recommend_info.set(localArrayList);
-    a(localTopicRecommendFeedsInfo);
     b(localTopicRecommendFeedsInfo);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      localTopicRecommendFeedsInfo.bytes_subscribe_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    c(localTopicRecommendFeedsInfo);
+    if (this.d != null) {
+      localTopicRecommendFeedsInfo.bytes_subscribe_id.set(ByteStringMicro.copyFromUtf8(this.d));
     }
-    localTopicRecommendFeedsInfo.uint64_uin.set(this.jdField_b_of_type_Long);
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      localTopicRecommendFeedsInfo.bytes_comments.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    localTopicRecommendFeedsInfo.uint64_uin.set(this.c);
+    if (this.h != null) {
+      localTopicRecommendFeedsInfo.bytes_comments.set(ByteStringMicro.copyFromUtf8(this.h));
     }
     return localTopicRecommendFeedsInfo;
   }
@@ -214,17 +209,17 @@ public class TopicRecommendFeedsInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("feedsId = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", topicAuthorUin = ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", subsribeId = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.TopicRecommendFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

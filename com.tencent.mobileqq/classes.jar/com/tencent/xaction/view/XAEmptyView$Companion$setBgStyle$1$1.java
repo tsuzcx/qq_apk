@@ -20,16 +20,16 @@ final class XAEmptyView$Companion$setBgStyle$1$1
   {
     Object localObject = this.a.getNinePatchChunk();
     if ((localObject != null) && (NinePatch.isNinePatchChunk((byte[])localObject))) {
-      localObject = (Drawable)new NinePatchDrawable(this.this$0.jdField_a_of_type_AndroidViewView.getResources(), new NinePatch(this.a, (byte[])localObject, null));
+      localObject = (Drawable)new NinePatchDrawable(this.this$0.c.getResources(), new NinePatch(this.a, (byte[])localObject, null));
     } else {
-      localObject = (Drawable)new BitmapDrawable(this.this$0.jdField_a_of_type_AndroidViewView.getResources(), this.a);
+      localObject = (Drawable)new BitmapDrawable(this.this$0.c.getResources(), this.a);
     }
-    DecorDrawable.Companion.a(DecorDrawable.Companion, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_AndroidViewView, (Drawable)localObject, false, 8, null);
+    DecorDrawable.Companion.a(DecorDrawable.Companion, this.this$0.e, this.this$0.c, (Drawable)localObject, false, 8, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.view.XAEmptyView.Companion.setBgStyle.1.1
  * JD-Core Version:    0.7.0.1
  */

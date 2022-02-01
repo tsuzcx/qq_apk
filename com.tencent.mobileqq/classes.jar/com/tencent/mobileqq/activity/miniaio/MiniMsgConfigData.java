@@ -11,14 +11,8 @@ import org.json.JSONObject;
 
 public class MiniMsgConfigData
 {
-  public Map<Integer, Boolean> a;
-  public boolean a;
-  
-  public MiniMsgConfigData()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  public boolean a = true;
+  public Map<Integer, Boolean> b = new HashMap();
   
   public static MiniMsgConfigData a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -26,7 +20,7 @@ public class MiniMsgConfigData
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("parse.configData : ");
-      ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].a);
+      ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].b);
       QLog.d("mini_msg_config", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new MiniMsgConfigData();
@@ -34,11 +28,11 @@ public class MiniMsgConfigData
     {
       try
       {
-        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].b);
         if (paramArrayOfQConfItem.optInt("allSwitch") == 1)
         {
           bool = true;
-          ((MiniMsgConfigData)localObject).jdField_a_of_type_Boolean = bool;
+          ((MiniMsgConfigData)localObject).a = bool;
           paramArrayOfQConfItem = paramArrayOfQConfItem.optJSONArray("business");
           int j = paramArrayOfQConfItem.length();
           int i = 0;
@@ -50,7 +44,7 @@ public class MiniMsgConfigData
               break label187;
             }
             bool = true;
-            ((MiniMsgConfigData)localObject).jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Boolean.valueOf(bool));
+            ((MiniMsgConfigData)localObject).b.put(Integer.valueOf(k), Boolean.valueOf(bool));
             i += 1;
             continue;
           }
@@ -72,15 +66,15 @@ public class MiniMsgConfigData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("allSwitch = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",businessSwitch: ");
-    if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
+    if (this.b.size() > 0)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      Iterator localIterator = this.b.keySet().iterator();
       while (localIterator.hasNext())
       {
         Integer localInteger = (Integer)localIterator.next();
-        boolean bool = ((Boolean)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).booleanValue();
+        boolean bool = ((Boolean)this.b.get(localInteger)).booleanValue();
         localStringBuilder.append(localInteger);
         localStringBuilder.append("=");
         localStringBuilder.append(bool);
@@ -92,7 +86,7 @@ public class MiniMsgConfigData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgConfigData
  * JD-Core Version:    0.7.0.1
  */

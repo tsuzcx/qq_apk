@@ -21,6 +21,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MayKnowRecommend.MayKnowRecommendLabel;
 import com.tencent.mobileqq.data.RecommendLabel;
+import com.tencent.mobileqq.guild.api.IQQGuildRouterApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.SearchFragmentInfoInterface;
 import com.tencent.mobileqq.search.SearchUtil;
@@ -55,228 +56,203 @@ import org.json.JSONObject;
 public class GroupBaseNetSearchModelItem
   extends ISearchResultPositionModel
 {
-  public int a;
-  protected long a;
-  Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-  protected CharSequence a;
+  public String A;
+  public String B;
+  public int C;
+  public String D;
+  public String E;
+  public String F;
+  public boolean G;
+  public int[] H = new int[3];
+  public boolean I;
+  StringBuffer J = new StringBuffer();
+  Context K = BaseApplicationImpl.getContext();
+  public int L;
+  public int M = 0;
+  public boolean N = false;
+  public int O;
+  public String P;
+  public boolean Q;
+  public int R;
+  public long S;
+  public String T;
+  public String U = "";
+  public List<RecommendLabel> V;
+  public String W = null;
+  public int X;
+  public int Y = -1;
+  public int Z = -1;
   protected String a;
-  StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
-  public ArrayList<GroupLabel> a;
-  public List<String> a;
-  protected boolean a;
-  public int[] a;
-  public int b;
-  public long b;
-  protected CharSequence b;
+  public int aa;
+  public String ab;
+  public int ac;
+  public int ad;
+  public int ae;
+  private int ai;
+  private int aj;
+  private boolean ak = false;
+  private boolean al = false;
+  private int am = 0;
+  private String an;
   public String b;
-  public List<RecommendLabel> b;
-  public boolean b;
-  public int c;
-  public long c;
   public String c;
-  public boolean c;
-  public int d;
   protected String d;
-  public boolean d;
-  public int e;
-  protected String e;
-  public boolean e;
-  public int f;
+  public String e;
   protected String f;
-  public boolean f;
-  public int g;
-  protected String g;
-  public int h;
-  public String h;
-  private boolean h;
-  public int i;
-  public String i;
-  private boolean i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
+  protected long g;
+  protected CharSequence h;
+  protected CharSequence i;
+  protected String j;
+  protected boolean k = false;
+  public List<String> l;
   public int m;
-  public String m;
-  public int n;
   public String n;
-  public int o;
-  public String o;
+  public boolean o = false;
   public int p;
-  public String p;
-  public int q;
-  public String q;
+  public int q = 2131168119;
   public int r;
-  public String r;
   public int s;
-  public String s;
   public int t;
-  private String t;
-  private int w;
-  private int x;
-  private int y = 0;
+  public int u = -1;
+  public long v;
+  public String w;
+  public String x;
+  public int y = -1;
+  public ArrayList<GroupLabel> z;
   
-  public GroupBaseNetSearchModelItem()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 2131167139;
-    this.jdField_g_of_type_Int = -1;
-    this.jdField_h_of_type_Int = -1;
-    this.jdField_a_of_type_ArrayOfInt = new int[3];
-    this.jdField_k_of_type_Int = 0;
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_r_of_type_JavaLangString = "";
-    this.jdField_s_of_type_JavaLangString = null;
-    this.jdField_o_of_type_Int = -1;
-    this.jdField_p_of_type_Int = -1;
-  }
+  public GroupBaseNetSearchModelItem() {}
   
   public GroupBaseNetSearchModelItem(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, List<String> paramList, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 2131167139;
-    this.jdField_g_of_type_Int = -1;
-    this.jdField_h_of_type_Int = -1;
-    this.jdField_a_of_type_ArrayOfInt = new int[3];
-    this.jdField_k_of_type_Int = 0;
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_r_of_type_JavaLangString = "";
-    this.jdField_s_of_type_JavaLangString = null;
-    this.jdField_o_of_type_Int = -1;
-    this.jdField_p_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_e_of_type_JavaLangString = paramString5;
-    this.jdField_f_of_type_JavaLangString = paramString6;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_m_of_type_Int = 1;
-    this.jdField_c_of_type_Long = 0L;
-    a();
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.g = paramLong;
+    this.l = paramList;
+    this.m = paramInt;
+    this.Q = false;
+    this.R = 1;
+    this.S = 0L;
+    s();
+    r();
   }
   
   public GroupBaseNetSearchModelItem(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, List<String> paramList, int paramInt1, String paramString7, String paramString8, int paramInt2, String paramString9, String paramString10, String paramString11)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 2131167139;
-    this.jdField_g_of_type_Int = -1;
-    this.jdField_h_of_type_Int = -1;
-    this.jdField_a_of_type_ArrayOfInt = new int[3];
-    this.jdField_k_of_type_Int = 0;
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_r_of_type_JavaLangString = "";
-    this.jdField_s_of_type_JavaLangString = null;
-    this.jdField_o_of_type_Int = -1;
-    this.jdField_p_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_e_of_type_JavaLangString = paramString5;
-    this.jdField_f_of_type_JavaLangString = paramString6;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_k_of_type_JavaLangString = paramString7;
-    this.jdField_l_of_type_JavaLangString = paramString8;
-    this.jdField_i_of_type_Int = paramInt2;
-    this.jdField_m_of_type_JavaLangString = paramString9;
-    this.n = paramString10;
-    this.jdField_o_of_type_JavaLangString = paramString11;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_m_of_type_Int = 1;
-    this.jdField_c_of_type_Long = 0L;
-    a();
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.g = paramLong;
+    this.l = paramList;
+    this.m = paramInt1;
+    this.A = paramString7;
+    this.B = paramString8;
+    this.C = paramInt2;
+    this.D = paramString9;
+    this.E = paramString10;
+    this.F = paramString11;
+    this.Q = false;
+    this.R = 1;
+    this.S = 0L;
+    s();
+    r();
   }
   
-  private void a()
+  private void s()
   {
     Object localObject1;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("extension info:");
-      ((StringBuilder)localObject1).append(this.jdField_f_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.f);
       QLog.d("Q.uniteSearch.GroupBaseNetSearchModelItem", 2, ((StringBuilder)localObject1).toString());
     }
-    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {}
+    if (!TextUtils.isEmpty(this.f)) {}
     for (;;)
     {
       try
       {
-        Object localObject3 = new JSONObject(this.jdField_f_of_type_JavaLangString);
+        Object localObject3 = new JSONObject(this.f);
         String str = ((JSONObject)localObject3).optString("thirdLineText");
-        if (a(this.jdField_a_of_type_Long, (JSONObject)localObject3))
+        if (a(this.g, (JSONObject)localObject3))
         {
           if (!QLog.isColorLevel()) {
-            break label1343;
+            break label1430;
           }
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("child class has already parsed json data. groupMask=");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+          ((StringBuilder)localObject1).append(this.g);
           QLog.d("Q.uniteSearch.GroupBaseNetSearchModelItem", 2, ((StringBuilder)localObject1).toString());
           return;
         }
-        long l1 = this.jdField_a_of_type_Long;
+        long l1 = this.g;
         i1 = (int)l1;
         Object localObject2;
         if (i1 != 1001)
         {
+          localObject1 = "Q.uniteSearch.GroupBaseNetSearchModelItem";
           if (i1 != 1002)
           {
-            if (i1 == 1073745984)
+            if (i1 != 1107)
             {
-              this.jdField_b_of_type_Int = ((JSONObject)localObject3).optInt("video_or_music");
-              localObject1 = ((JSONObject)localObject3).optString("busi_mask");
-              if (!TextUtils.isEmpty((CharSequence)localObject1))
+              if (i1 == 1073745984)
               {
-                if (Integer.parseInt((String)localObject1) == 2049) {
-                  this.jdField_a_of_type_JavaLangCharSequence = ((JSONObject)localObject3).optString("brief");
-                } else if (Integer.parseInt((String)localObject1) == 64) {
-                  this.jdField_a_of_type_JavaLangCharSequence = ((JSONObject)localObject3).optString("content");
-                } else if (Integer.parseInt((String)localObject1) == 4096) {
-                  this.jdField_a_of_type_JavaLangCharSequence = ((JSONObject)localObject3).optString("description");
+                this.p = ((JSONObject)localObject3).optInt("video_or_music");
+                localObject1 = ((JSONObject)localObject3).optString("busi_mask");
+                if (!TextUtils.isEmpty((CharSequence)localObject1))
+                {
+                  if (Integer.parseInt((String)localObject1) == 2049) {
+                    this.h = ((JSONObject)localObject3).optString("brief");
+                  } else if (Integer.parseInt((String)localObject1) == 64) {
+                    this.h = ((JSONObject)localObject3).optString("content");
+                  } else if (Integer.parseInt((String)localObject1) == 4096) {
+                    this.h = ((JSONObject)localObject3).optString("description");
+                  }
+                  localObject1 = ((JSONObject)localObject3).optString("from");
+                  localObject2 = DateUtil.a(Long.parseLong(((JSONObject)localObject3).optString("create_time")));
+                  localObject3 = new StringBuilder();
+                  ((StringBuilder)localObject3).append((String)localObject1);
+                  ((StringBuilder)localObject3).append((String)localObject2);
+                  this.i = ((StringBuilder)localObject3).toString();
+                  this.k = true;
                 }
-                localObject1 = ((JSONObject)localObject3).optString("from");
-                localObject2 = DateUtil.a(Long.parseLong(((JSONObject)localObject3).optString("create_time")));
-                localObject3 = new StringBuilder();
-                ((StringBuilder)localObject3).append((String)localObject1);
-                ((StringBuilder)localObject3).append((String)localObject2);
-                this.jdField_b_of_type_JavaLangCharSequence = ((StringBuilder)localObject3).toString();
-                this.jdField_a_of_type_Boolean = true;
               }
+            }
+            else
+            {
+              if (((JSONObject)localObject3).optLong("join_flag", -1L) <= 0L) {
+                break label1431;
+              }
+              i1 = 0;
+              this.R = i1;
+              this.T = ((JSONObject)localObject3).optString("join_guild_sig");
+              this.d = ((JSONObject)localObject3).optString("avatar", this.d);
+              this.ab = ((JSONObject)localObject3).optString("guild_code");
+              this.o = true;
             }
           }
           else
           {
-            this.jdField_b_of_type_Long = ((JSONObject)localObject3).optLong("flag_ext");
-            this.jdField_g_of_type_JavaLangString = "";
-            localObject1 = ((JSONObject)localObject3).optJSONArray("label");
-            if (localObject1 != null)
+            this.v = ((JSONObject)localObject3).optLong("flag_ext");
+            this.j = "";
+            localObject2 = ((JSONObject)localObject3).optJSONArray("label");
+            if (localObject2 != null)
             {
-              localObject2 = new ArrayList();
+              ArrayList localArrayList = new ArrayList();
               i1 = 0;
-              int i2 = ((JSONArray)localObject1).length();
+              int i2 = ((JSONArray)localObject2).length();
               if (i1 < i2)
               {
                 try
                 {
-                  JSONObject localJSONObject1 = ((JSONArray)localObject1).getJSONObject(i1);
+                  JSONObject localJSONObject1 = ((JSONArray)localObject2).getJSONObject(i1);
                   localObject4 = new GroupLabel();
                   NearbyGroup.Color localColor = new NearbyGroup.Color();
                   JSONObject localJSONObject2 = localJSONObject1.optJSONObject("edging_color");
@@ -292,62 +268,62 @@ public class GroupBaseNetSearchModelItem
                   ((GroupLabel)localObject4).text_color = localColor;
                   ((GroupLabel)localObject4).strWording = localJSONObject1.optString("name");
                   ((GroupLabel)localObject4).type = localJSONObject1.optLong("attr");
-                  ((ArrayList)localObject2).add(localObject4);
+                  localArrayList.add(localObject4);
                 }
                 catch (JSONException localJSONException2)
                 {
                   if (!QLog.isColorLevel()) {
-                    break label1344;
+                    break label1436;
                   }
                 }
                 Object localObject4 = new StringBuilder();
                 ((StringBuilder)localObject4).append("parse extension JSONException:");
                 ((StringBuilder)localObject4).append(localJSONException2.toString());
-                QLog.e("Q.uniteSearch.GroupBaseNetSearchModelItem", 2, ((StringBuilder)localObject4).toString());
-                break label1344;
+                QLog.e((String)localObject1, 2, ((StringBuilder)localObject4).toString());
+                break label1436;
               }
-              this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
+              this.z = localArrayList;
             }
             localObject2 = ((JSONObject)localObject3).optString("memo");
             localObject1 = localObject2;
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696146);
+              localObject1 = this.K.getString(2131893911);
             }
-            this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
+            this.h = ((CharSequence)localObject1);
             l1 = ((JSONObject)localObject3).optLong("active", 0L);
             long l2 = ((JSONObject)localObject3).optLong("join_group_flag", -1L);
             long l3 = ((JSONObject)localObject3).optLong("privilege_flag", 0L);
-            this.jdField_r_of_type_JavaLangString = ((JSONObject)localObject3).optString("arithmetic");
+            this.U = ((JSONObject)localObject3).optString("arithmetic");
             if (((JSONObject)localObject3).optInt("exact_search") != 1) {
-              break label1351;
+              break label1443;
             }
             bool = true;
-            this.jdField_d_of_type_Boolean = bool;
-            this.jdField_c_of_type_Long = l1;
+            this.I = bool;
+            this.S = l1;
             if (l2 <= -1L) {
-              break label1357;
+              break label1449;
             }
             i1 = 0;
-            this.jdField_m_of_type_Int = i1;
+            this.R = i1;
             if ((0x200 & l3) == 0L) {
-              break label1362;
+              break label1454;
             }
             bool = true;
-            this.jdField_f_of_type_Boolean = bool;
-            this.jdField_q_of_type_JavaLangString = ((JSONObject)localObject3).optString("join_group_auth");
-            this.jdField_p_of_type_Int = ((JSONObject)localObject3).optInt("allow", -1);
-            this.jdField_q_of_type_Int = ((JSONObject)localObject3).optInt("invite_only", 0);
+            this.Q = bool;
+            this.T = ((JSONObject)localObject3).optString("join_group_auth");
+            this.Z = ((JSONObject)localObject3).optInt("allow", -1);
+            this.aa = ((JSONObject)localObject3).optInt("invite_only", 0);
           }
         }
         else
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("(");
-          ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.b);
           ((StringBuilder)localObject1).append(")");
-          this.jdField_g_of_type_JavaLangString = ((StringBuilder)localObject1).toString();
-          this.jdField_d_of_type_Int = ((JSONObject)localObject3).optInt("gender");
-          this.jdField_e_of_type_Int = ((JSONObject)localObject3).optInt("age");
+          this.j = ((StringBuilder)localObject1).toString();
+          this.r = ((JSONObject)localObject3).optInt("gender");
+          this.s = ((JSONObject)localObject3).optInt("age");
           a(((JSONObject)localObject3).optString("college"), 1);
           if (((JSONObject)localObject3).optString("location").equals(((JSONObject)localObject3).optString("hometown")))
           {
@@ -359,26 +335,26 @@ public class GroupBaseNetSearchModelItem
             a(((JSONObject)localObject3).optString("hometown"), 4);
           }
           a(((JSONObject)localObject3).optString("constellation"), 2);
-          this.jdField_a_of_type_JavaLangCharSequence = ((JSONObject)localObject3).optString("location");
-          this.jdField_j_of_type_JavaLangString = ((JSONObject)localObject3).optString("authIcon");
-          this.jdField_s_of_type_JavaLangString = ((JSONObject)localObject3).optString("longnick");
-          this.jdField_p_of_type_Int = ((JSONObject)localObject3).optInt("allow", -1);
-          this.jdField_f_of_type_Int = ((JSONObject)localObject3).optInt("liangrichflag", 0);
-          this.jdField_g_of_type_Int = ((JSONObject)localObject3).optInt("liangnumblevel", -1);
+          this.h = ((JSONObject)localObject3).optString("location");
+          this.x = ((JSONObject)localObject3).optString("authIcon");
+          this.W = ((JSONObject)localObject3).optString("longnick");
+          this.Z = ((JSONObject)localObject3).optInt("allow", -1);
+          this.t = ((JSONObject)localObject3).optInt("liangrichflag", 0);
+          this.u = ((JSONObject)localObject3).optInt("liangnumblevel", -1);
           try
           {
-            this.jdField_l_of_type_Int = ((JSONObject)localObject3).optInt("cspecialflag");
+            this.O = ((JSONObject)localObject3).optInt("cspecialflag");
             localObject2 = ((JSONObject)localObject3).optString("qdmasteruin");
             localObject1 = ((JSONObject)localObject3).optString("qdemailuin");
-            this.jdField_p_of_type_JavaLangString = ((JSONObject)localObject3).optString("kfaccount");
+            this.P = ((JSONObject)localObject3).optString("kfaccount");
             localObject3 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-            QidianManager.a((QQAppInterface)localObject3, this.jdField_l_of_type_Int, this.jdField_b_of_type_JavaLangString);
-            QidianManager.a((QQAppInterface)localObject3, this.jdField_b_of_type_JavaLangString, (String)localObject2);
-            if ((QidianManager.b(this.jdField_l_of_type_Int)) || (QidianManager.c(this.jdField_l_of_type_Int)))
+            QidianManager.a((QQAppInterface)localObject3, this.O, this.b);
+            QidianManager.a((QQAppInterface)localObject3, this.b, (String)localObject2);
+            if ((QidianManager.b(this.O)) || (QidianManager.c(this.O)))
             {
               if (TextUtils.isEmpty((CharSequence)localObject1))
               {
-                this.jdField_g_of_type_JavaLangString = "";
+                this.j = "";
                 QLog.d("Q.uniteSearch.GroupBaseNetSearchModelItem", 1, "Parse search qidian json qdemailuin is empty ");
               }
               else
@@ -387,9 +363,9 @@ public class GroupBaseNetSearchModelItem
                 ((StringBuilder)localObject2).append("(");
                 ((StringBuilder)localObject2).append((String)localObject1);
                 ((StringBuilder)localObject2).append(")");
-                this.jdField_g_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+                this.j = ((StringBuilder)localObject2).toString();
               }
-              if (TextUtils.isEmpty(this.jdField_p_of_type_JavaLangString)) {
+              if (TextUtils.isEmpty(this.P)) {
                 QLog.d("Q.uniteSearch.GroupBaseNetSearchModelItem", 1, "Parse search qidian json kfaccount is empty ");
               }
             }
@@ -401,7 +377,7 @@ public class GroupBaseNetSearchModelItem
             {
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("Parse search qidian json fail: ");
-              ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+              ((StringBuilder)localObject2).append(this.b);
               ((StringBuilder)localObject2).append(" | ");
               ((StringBuilder)localObject2).append(localException.getMessage());
               QLog.d("Q.uniteSearch.GroupBaseNetSearchModelItem", 2, ((StringBuilder)localObject2).toString());
@@ -410,7 +386,7 @@ public class GroupBaseNetSearchModelItem
         }
         if (!TextUtils.isEmpty(str))
         {
-          this.jdField_b_of_type_JavaLangCharSequence = str;
+          this.i = str;
           return;
         }
       }
@@ -419,31 +395,23 @@ public class GroupBaseNetSearchModelItem
         localJSONException1.printStackTrace();
       }
       return;
-      label1343:
+      label1430:
       return;
-      label1344:
-      i1 += 1;
-      continue;
-      label1351:
-      boolean bool = false;
-      continue;
-      label1357:
+      label1431:
       int i1 = 1;
       continue;
-      label1362:
+      label1436:
+      i1 += 1;
+      continue;
+      label1443:
+      boolean bool = false;
+      continue;
+      label1449:
+      i1 = 1;
+      continue;
+      label1454:
       bool = false;
     }
-  }
-  
-  public int a()
-  {
-    if (d() == 1001) {
-      return 1;
-    }
-    if (d() == 1002) {
-      return 4;
-    }
-    return 0;
   }
   
   public int a(int paramInt)
@@ -456,15 +424,15 @@ public class GroupBaseNetSearchModelItem
         if (paramInt != 3) {
           i1 = -1;
         } else {
-          i1 = this.jdField_t_of_type_Int;
+          i1 = this.ae;
         }
       }
       else {
-        i1 = this.jdField_s_of_type_Int;
+        i1 = this.ad;
       }
     }
     else {
-      i1 = this.jdField_r_of_type_Int;
+      i1 = this.ac;
     }
     if (QLog.isColorLevel())
     {
@@ -480,15 +448,15 @@ public class GroupBaseNetSearchModelItem
   
   public CharSequence a()
   {
-    Object localObject1 = new HighlightModel(this.jdField_a_of_type_JavaUtilList, b());
-    this.jdField_a_of_type_JavaLangCharSequence = SearchUtils.a(this.jdField_a_of_type_JavaLangCharSequence);
-    Object localObject2 = this.jdField_a_of_type_JavaLangCharSequence;
+    Object localObject1 = new HighlightModel(this.l, g());
+    this.h = SearchUtils.b(this.h);
+    Object localObject2 = this.h;
     boolean bool = false;
     localObject2 = ((HighlightModel)localObject1).a((CharSequence)localObject2, false, false, false);
-    if (((HighlightModel)localObject1).jdField_a_of_type_Int > 0) {
+    if (((HighlightModel)localObject1).b > 0) {
       bool = true;
     }
-    this.jdField_i_of_type_Boolean = bool;
+    this.al = bool;
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
@@ -503,8 +471,8 @@ public class GroupBaseNetSearchModelItem
     int i1;
     if (bool2)
     {
-      paramString = BaseApplicationImpl.getApplication().getResources().getString(2131699488);
-      i1 = this.jdField_m_of_type_Int;
+      paramString = BaseApplicationImpl.getApplication().getResources().getString(2131897519);
+      i1 = this.R;
       if (i1 != 0)
       {
         if (i1 != 1) {
@@ -514,20 +482,20 @@ public class GroupBaseNetSearchModelItem
         {
           bool1 = true;
           break;
-          paramString = BaseApplicationImpl.getApplication().getResources().getString(2131699489);
+          paramString = BaseApplicationImpl.getApplication().getResources().getString(2131897520);
           break;
-          paramString = BaseApplicationImpl.getApplication().getResources().getString(2131699488);
+          paramString = BaseApplicationImpl.getApplication().getResources().getString(2131897519);
         }
       }
-      paramString = BaseApplicationImpl.getApplication().getResources().getString(2131699490);
+      paramString = BaseApplicationImpl.getApplication().getResources().getString(2131897521);
       return new Pair(paramString, Boolean.valueOf(bool1));
     }
     if ("ActiveEntitySearchResultPresenter_pay_troop".equals(paramString)) {
-      return Boolean.valueOf(this.jdField_f_of_type_Boolean);
+      return Boolean.valueOf(this.Q);
     }
     if ("ActiveEntitySearchResultPresenter_hot_troop".equals(paramString))
     {
-      int i2 = (int)this.jdField_c_of_type_Long;
+      int i2 = (int)this.S;
       i1 = i2;
       if (i2 < 0) {
         i1 = 0;
@@ -541,20 +509,10 @@ public class GroupBaseNetSearchModelItem
     return super.a(paramString);
   }
   
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.y = paramInt;
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
-    this.w = paramInt1;
-    this.x = paramInt2;
+    this.ai = paramInt1;
+    this.aj = paramInt2;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -566,42 +524,43 @@ public class GroupBaseNetSearchModelItem
   
   public void a(View paramView)
   {
+    Object localObject1;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onAction(). jumpUrl = ");
-      ((StringBuilder)localObject1).append(this.jdField_e_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.e);
       ((StringBuilder)localObject1).append("  id=");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.b);
       QLog.d("Q.uniteSearch.GroupBaseNetSearchModelItem", 2, ((StringBuilder)localObject1).toString());
     }
-    int i1 = d();
+    int i1 = j();
     if (i1 != 1001)
     {
       if (i1 != 1002)
       {
         if (i1 == 268435456)
         {
-          SearchUtils.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_JavaLangString, this.jdField_t_of_type_JavaLangString, e(), e());
-          SearchUtils.a(this.jdField_a_of_type_JavaLangString, 120, 0, this.jdField_j_of_type_Int, paramView);
-          localObject1 = this.jdField_t_of_type_JavaLangString;
+          SearchUtils.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.a, this.an, o(), p());
+          SearchUtils.a(this.a, 120, 0, this.L, paramView);
+          localObject1 = this.an;
           if ((localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-            UniteSearchReportController.a(null, 0, this.jdField_a_of_type_Int, "0X8009D31", 4, 0, this.jdField_b_of_type_JavaLangString, null);
-          } else if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (this.jdField_c_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))) {
-            UniteSearchReportController.a(null, 0, this.jdField_a_of_type_Int, "0X8009D35", 0, 0, this.jdField_b_of_type_JavaLangString, null);
+            UniteSearchReportController.a(null, 0, this.m, "0X8009D31", 4, 0, this.b, null);
+          } else if (q()) {
+            UniteSearchReportController.a(null, 0, this.m, "0X8009D35", 0, 0, this.b, null);
           } else {
-            UniteSearchReportController.a(null, 0, this.jdField_a_of_type_Int, "0X8009D49", 0, 0, this.jdField_b_of_type_JavaLangString, null);
+            UniteSearchReportController.a(null, 0, this.m, "0X8009D49", 0, 0, this.b, null);
           }
         }
       }
       else {
-        SearchUtils.a(this.jdField_a_of_type_JavaLangString, 80, 0, this.jdField_j_of_type_Int, paramView);
+        SearchUtils.a(this.a, 80, 0, this.L, paramView);
       }
     }
     else
     {
-      SearchUtils.a(this.jdField_a_of_type_JavaLangString, 70, 0, this.jdField_j_of_type_Int, paramView);
-      if (this.jdField_o_of_type_Int == 1)
+      SearchUtils.a(this.a, 70, 0, this.L, paramView);
+      if (this.Y == 1)
       {
         ReportController.b(null, "dc00898", "", "", "0X800A33A", "0X800A33A", 0, 0, "", "", "", "");
         ReportController.b(null, "dc00898", "", "", "0X800A33A", "0X800A33A", 2, 0, "", "", "", "");
@@ -612,242 +571,260 @@ public class GroupBaseNetSearchModelItem
         ReportController.b(null, "dc00898", "", "", "0X800A33A", "0X800A33A", 1, 0, "", "", "", "");
       }
     }
-    if (this.jdField_a_of_type_Long == 1002L) {
+    if (this.g == 1002L) {
       ReportUtil.a(this);
     }
     Object localObject2 = paramView.getContext();
-    Object localObject4;
     Object localObject3;
-    Object localObject5;
-    Object localObject7;
+    Object localObject4;
+    Object localObject6;
     if ((localObject2 instanceof SearchInfoInterface))
     {
-      localObject4 = (SearchInfoInterface)localObject2;
-      ((SearchInfoInterface)localObject4).b();
+      localObject3 = (SearchInfoInterface)localObject2;
+      ((SearchInfoInterface)localObject3).m();
       localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject1 = ((SearchInfoInterface)localObject4).a();
+      localObject1 = ((SearchInfoInterface)localObject3).n();
       if ((localObject1 instanceof SearchFragmentInfoInterface)) {
         localObject1 = (SearchFragmentInfoInterface)localObject1;
       } else {
         localObject1 = null;
       }
-      i1 = ((SearchInfoInterface)localObject4).a();
+      i1 = ((SearchInfoInterface)localObject3).i();
+      Object localObject5;
       if (i1 != 1)
       {
         if (i1 != 2)
         {
-          if (i1 == 3)
+          if (i1 != 3) {
+            break label1843;
+          }
+          if ((localObject1 != null) && (((SearchFragmentInfoInterface)localObject1).dm_()))
           {
-            if ((localObject1 != null) && (((SearchFragmentInfoInterface)localObject1).b()))
-            {
-              ((SearchFragmentInfoInterface)localObject1).a(true);
-              localObject1 = ((SearchInfoInterface)localObject4).a();
-              localObject3 = new StringBuilder();
-              ((StringBuilder)localObject3).append("");
-              ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
-              localObject3 = ((StringBuilder)localObject3).toString();
-              localObject5 = new StringBuilder();
-              ((StringBuilder)localObject5).append("");
-              ((StringBuilder)localObject5).append(a(2));
-              SearchUtils.a("sub_result", "clk_sub_first_result", new String[] { localObject1, localObject3, ((StringBuilder)localObject5).toString(), SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject4).a()) });
-            }
-            localObject1 = ((SearchInfoInterface)localObject4).a();
-            localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("");
-            ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
-            localObject3 = ((StringBuilder)localObject3).toString();
+            ((SearchFragmentInfoInterface)localObject1).a(true);
+            localObject1 = ((SearchInfoInterface)localObject3).h();
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("");
+            ((StringBuilder)localObject4).append(this.g);
+            localObject4 = ((StringBuilder)localObject4).toString();
             localObject5 = new StringBuilder();
             ((StringBuilder)localObject5).append("");
             ((StringBuilder)localObject5).append(a(2));
-            SearchUtils.a("sub_result", "clk_result", new String[] { localObject1, localObject3, ((StringBuilder)localObject5).toString(), SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject4).a()) });
-            localObject1 = "all_result";
-            break label1877;
+            SearchUtils.a("sub_result", "clk_sub_first_result", new String[] { localObject1, localObject4, ((StringBuilder)localObject5).toString(), SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject3).j()) });
           }
+          localObject1 = ((SearchInfoInterface)localObject3).h();
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("");
+          ((StringBuilder)localObject4).append(this.g);
+          localObject4 = ((StringBuilder)localObject4).toString();
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("");
+          ((StringBuilder)localObject5).append(a(2));
+          SearchUtils.a("sub_result", "clk_result", new String[] { localObject1, localObject4, ((StringBuilder)localObject5).toString(), SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject3).j()) });
         }
         else
         {
-          if ((localObject1 != null) && (((SearchFragmentInfoInterface)localObject1).b()))
+          if ((localObject1 != null) && (((SearchFragmentInfoInterface)localObject1).dm_()))
           {
             ((SearchFragmentInfoInterface)localObject1).a(true);
-            localObject1 = ((SearchInfoInterface)localObject4).a();
-            localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("");
-            ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
-            localObject3 = ((StringBuilder)localObject3).toString();
+            localObject1 = ((SearchInfoInterface)localObject3).h();
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("");
+            ((StringBuilder)localObject4).append(this.g);
+            localObject4 = ((StringBuilder)localObject4).toString();
             localObject5 = new StringBuilder();
             ((StringBuilder)localObject5).append("");
             ((StringBuilder)localObject5).append(a(2));
-            SearchUtils.a("all_result", "clk_tab_first_result", new String[] { localObject1, localObject3, ((StringBuilder)localObject5).toString(), SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject4).a()) });
+            SearchUtils.a("all_result", "clk_tab_first_result", new String[] { localObject1, localObject4, ((StringBuilder)localObject5).toString(), SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject3).j()) });
           }
-          localObject1 = ((SearchInfoInterface)localObject4).a();
-          localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append("");
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
-          SearchUtils.a("all_result", "clk_tab_result", new String[] { localObject1, ((StringBuilder)localObject3).toString(), "", SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject4).a()) });
+          localObject1 = ((SearchInfoInterface)localObject3).h();
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("");
+          ((StringBuilder)localObject4).append(this.g);
+          SearchUtils.a("all_result", "clk_tab_result", new String[] { localObject1, ((StringBuilder)localObject4).toString(), "", SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject3).j()) });
         }
       }
       else
       {
-        localObject3 = "all_result";
-        Object localObject6;
-        StringBuilder localStringBuilder2;
-        Object localObject8;
-        if ((SearchUtils.b.containsKey(this)) && (d() != 268435456))
+        StringBuilder localStringBuilder;
+        Object localObject7;
+        if ((SearchUtils.l.containsKey(this)) && (j() != 268435456))
         {
-          localObject6 = (SearchUtils.ObjectItemInfo)SearchUtils.b.get(this);
-          localObject5 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          localObject7 = new JSONObject();
+          localObject5 = (SearchUtils.ObjectItemInfo)SearchUtils.l.get(this);
+          localObject4 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          localObject6 = new JSONObject();
           try
           {
-            ((JSONObject)localObject7).put("project", UniteSearchReportController.a());
-            ((JSONObject)localObject7).put("event_src", "client");
-            ((JSONObject)localObject7).put("obj_lct", ((SearchUtils.ObjectItemInfo)localObject6).jdField_a_of_type_Int);
-            ((JSONObject)localObject7).put("get_src", "web");
+            ((JSONObject)localObject6).put("project", UniteSearchReportController.a());
+            ((JSONObject)localObject6).put("event_src", "client");
+            ((JSONObject)localObject6).put("obj_lct", ((SearchUtils.ObjectItemInfo)localObject5).c);
+            ((JSONObject)localObject6).put("get_src", "web");
           }
           catch (JSONException localJSONException2)
           {
-            localStringBuilder2 = new StringBuilder();
-            localStringBuilder2.append("e = ");
-            localStringBuilder2.append(localJSONException2);
-            QLog.e("Q.uniteSearch.GroupBaseNetSearchModelItem", 2, localStringBuilder2.toString());
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("e = ");
+            localStringBuilder.append(localJSONException2);
+            QLog.e("Q.uniteSearch.GroupBaseNetSearchModelItem", 2, localStringBuilder.toString());
           }
-          localObject8 = new ReportModelDC02528().module((String)localObject3).action("clk_item");
-          localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append(this.jdField_a_of_type_Long);
-          localStringBuilder2.append("");
-          localObject6 = ((ReportModelDC02528)localObject8).obj1(localStringBuilder2.toString()).obj2(((SearchUtils.ObjectItemInfo)localObject6).jdField_b_of_type_JavaLangString).ver1(this.jdField_a_of_type_JavaLangString).ver2(UniteSearchReportController.a(this.jdField_a_of_type_Int)).ver7(((JSONObject)localObject7).toString());
-          localObject7 = new StringBuilder();
-          ((StringBuilder)localObject7).append(((QQAppInterface)localObject5).getCurrentAccountUin());
-          ((StringBuilder)localObject7).append(SearchUtils.d);
-          UniteSearchReportController.a(null, ((ReportModelDC02528)localObject6).session_id(((StringBuilder)localObject7).toString()));
+          localObject7 = new ReportModelDC02528().module("all_result").action("clk_item");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.g);
+          localStringBuilder.append("");
+          localObject5 = ((ReportModelDC02528)localObject7).obj1(localStringBuilder.toString()).obj2(((SearchUtils.ObjectItemInfo)localObject5).e).ver1(this.a).ver2(UniteSearchReportController.a(this.m)).ver7(((JSONObject)localObject6).toString());
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append(((QQAppInterface)localObject4).getCurrentAccountUin());
+          ((StringBuilder)localObject6).append(SearchUtils.j);
+          UniteSearchReportController.a(null, ((ReportModelDC02528)localObject5).session_id(((StringBuilder)localObject6).toString()));
         }
-        if (SearchUtils.a(this.jdField_a_of_type_Long))
+        if (SearchUtils.a(this.g))
         {
-          if (SearchUtils.a.containsKey(this))
+          if (SearchUtils.k.containsKey(this))
           {
-            localObject5 = (SearchUtils.ObjectItemInfo)SearchUtils.a.get(this);
-            if (((SearchUtils.ObjectItemInfo)localObject5).jdField_b_of_type_Boolean) {
+            localObject4 = (SearchUtils.ObjectItemInfo)SearchUtils.k.get(this);
+            if (((SearchUtils.ObjectItemInfo)localObject4).f) {
               i1 = 2;
             } else {
               i1 = 1;
             }
-            localObject6 = this.jdField_a_of_type_JavaLangString;
-            localObject7 = new StringBuilder();
-            ((StringBuilder)localObject7).append("");
-            ((StringBuilder)localObject7).append(this.jdField_a_of_type_Long);
-            localObject7 = ((StringBuilder)localObject7).toString();
-            localObject8 = new StringBuilder();
-            ((StringBuilder)localObject8).append(((SearchUtils.ObjectItemInfo)localObject5).jdField_b_of_type_JavaLangString);
-            ((StringBuilder)localObject8).append("");
-            localObject8 = ((StringBuilder)localObject8).toString();
-            localStringBuilder2 = new StringBuilder();
-            localStringBuilder2.append(((SearchUtils.ObjectItemInfo)localObject5).jdField_a_of_type_Int);
-            localStringBuilder2.append("");
-            SearchUtils.a((String)localObject3, "clk_object", i1, 0, new String[] { localObject6, localObject7, localObject8, localStringBuilder2.toString() });
-          }
-          if ((localObject1 != null) && (((SearchFragmentInfoInterface)localObject1).b()))
-          {
-            ((SearchFragmentInfoInterface)localObject1).a(true);
-            localObject1 = ((SearchInfoInterface)localObject4).a();
-            localObject5 = new StringBuilder();
-            ((StringBuilder)localObject5).append("");
-            ((StringBuilder)localObject5).append(this.jdField_a_of_type_Long);
-            localObject5 = ((StringBuilder)localObject5).toString();
+            localObject5 = this.a;
             localObject6 = new StringBuilder();
             ((StringBuilder)localObject6).append("");
-            ((StringBuilder)localObject6).append(a(3));
-            SearchUtils.a((String)localObject3, "clk_first_result", new String[] { localObject1, localObject5, ((StringBuilder)localObject6).toString(), SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject4).a()) });
+            ((StringBuilder)localObject6).append(this.g);
+            localObject6 = ((StringBuilder)localObject6).toString();
+            localObject7 = new StringBuilder();
+            ((StringBuilder)localObject7).append(((SearchUtils.ObjectItemInfo)localObject4).e);
+            ((StringBuilder)localObject7).append("");
+            localObject7 = ((StringBuilder)localObject7).toString();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(((SearchUtils.ObjectItemInfo)localObject4).c);
+            localStringBuilder.append("");
+            SearchUtils.a("all_result", "clk_object", i1, 0, new String[] { localObject5, localObject6, localObject7, localStringBuilder.toString() });
+          }
+          if ((localObject1 != null) && (((SearchFragmentInfoInterface)localObject1).dm_()))
+          {
+            ((SearchFragmentInfoInterface)localObject1).a(true);
+            localObject1 = ((SearchInfoInterface)localObject3).h();
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("");
+            ((StringBuilder)localObject4).append(this.g);
+            localObject4 = ((StringBuilder)localObject4).toString();
+            localObject5 = new StringBuilder();
+            ((StringBuilder)localObject5).append("");
+            ((StringBuilder)localObject5).append(a(3));
+            SearchUtils.a("all_result", "clk_first_result", new String[] { localObject1, localObject4, ((StringBuilder)localObject5).toString(), SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject3).j()) });
           }
         }
         else
         {
-          if (SearchUtil.jdField_b_of_type_Boolean) {
+          if (SearchUtil.b) {
             i1 = 2;
           } else {
             i1 = 1;
           }
-          localObject5 = ((SearchInfoInterface)localObject4).a();
-          localObject6 = new StringBuilder();
-          ((StringBuilder)localObject6).append("");
-          ((StringBuilder)localObject6).append(this.jdField_a_of_type_Long);
-          SearchUtils.a((String)localObject3, "clk_content", i1, 0, new String[] { localObject5, ((StringBuilder)localObject6).toString(), "", SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject4).a()) });
-          if ((localObject1 != null) && (((SearchFragmentInfoInterface)localObject1).b()))
+          localObject4 = ((SearchInfoInterface)localObject3).h();
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("");
+          ((StringBuilder)localObject5).append(this.g);
+          SearchUtils.a("all_result", "clk_content", i1, 0, new String[] { localObject4, ((StringBuilder)localObject5).toString(), "", SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject3).j()) });
+          if ((localObject1 != null) && (((SearchFragmentInfoInterface)localObject1).dm_()))
           {
             ((SearchFragmentInfoInterface)localObject1).a(true);
-            localObject1 = ((SearchInfoInterface)localObject4).a();
+            localObject1 = ((SearchInfoInterface)localObject3).h();
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("");
+            ((StringBuilder)localObject4).append(this.g);
+            localObject4 = ((StringBuilder)localObject4).toString();
             localObject5 = new StringBuilder();
             ((StringBuilder)localObject5).append("");
-            ((StringBuilder)localObject5).append(this.jdField_a_of_type_Long);
-            localObject5 = ((StringBuilder)localObject5).toString();
-            localObject6 = new StringBuilder();
-            ((StringBuilder)localObject6).append("");
-            ((StringBuilder)localObject6).append(a(2));
-            SearchUtils.a((String)localObject3, "clk_first_result", new String[] { localObject1, localObject5, ((StringBuilder)localObject6).toString(), SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject4).a()) });
-            localObject1 = localObject3;
-            break label1877;
+            ((StringBuilder)localObject5).append(a(2));
+            SearchUtils.a("all_result", "clk_first_result", new String[] { localObject1, localObject4, ((StringBuilder)localObject5).toString(), SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject3).j()) });
           }
         }
       }
     }
-    Object localObject1 = "all_result";
-    label1877:
+    label1843:
     i1 = 4;
-    if (d() == 268435456)
+    if (j() == 268435456)
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(this.a);
+      localObject1 = ((StringBuilder)localObject1).toString();
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("");
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(this.b);
       localObject3 = ((StringBuilder)localObject3).toString();
       localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("");
-      ((StringBuilder)localObject4).append(this.jdField_b_of_type_JavaLangString);
-      localObject4 = ((StringBuilder)localObject4).toString();
-      localObject5 = new StringBuilder();
-      ((StringBuilder)localObject5).append("");
-      ((StringBuilder)localObject5).append(this.jdField_j_of_type_Int + 1);
-      SearchUtils.a((String)localObject1, "clk_function", new String[] { localObject3, localObject4, ((StringBuilder)localObject5).toString() });
-      if ("63".equals(a()))
+      ((StringBuilder)localObject4).append(this.L + 1);
+      SearchUtils.a("all_result", "clk_function", new String[] { localObject1, localObject3, ((StringBuilder)localObject4).toString() });
+      if ("63".equals(c()))
       {
-        localObject3 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).startNewWeatherWebPageActivity(paramView.getContext(), (AppInterface)localObject3)) {
+        localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).startNewWeatherWebPageActivity(paramView.getContext(), (AppInterface)localObject1)) {
           return;
         }
       }
-      if (((paramView.getContext() instanceof UniteSearchActivity)) && (SearchUtils.b.containsKey(this)))
+      if (((paramView.getContext() instanceof UniteSearchActivity)) && (SearchUtils.l.containsKey(this)))
       {
-        localObject4 = (SearchUtils.ObjectItemInfo)SearchUtils.b.get(this);
-        localObject3 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        localObject5 = new JSONObject();
+        localObject3 = (SearchUtils.ObjectItemInfo)SearchUtils.l.get(this);
+        localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        localObject4 = new JSONObject();
         try
         {
-          ((JSONObject)localObject5).put("project", UniteSearchReportController.a());
-          ((JSONObject)localObject5).put("event_src", "client");
-          ((JSONObject)localObject5).put("obj_lct", ((SearchUtils.ObjectItemInfo)localObject4).jdField_a_of_type_Int);
-          ((JSONObject)localObject5).put("get_src", "native");
+          ((JSONObject)localObject4).put("project", UniteSearchReportController.a());
+          ((JSONObject)localObject4).put("event_src", "client");
+          ((JSONObject)localObject4).put("obj_lct", ((SearchUtils.ObjectItemInfo)localObject3).c);
+          ((JSONObject)localObject4).put("get_src", "native");
         }
         catch (JSONException localJSONException1)
         {
-          localObject7 = new StringBuilder();
-          ((StringBuilder)localObject7).append("e = ");
-          ((StringBuilder)localObject7).append(localJSONException1);
-          QLog.e("Q.uniteSearch.GroupBaseNetSearchModelItem", 2, ((StringBuilder)localObject7).toString());
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append("e = ");
+          ((StringBuilder)localObject6).append(localJSONException1);
+          QLog.e("Q.uniteSearch.GroupBaseNetSearchModelItem", 2, ((StringBuilder)localObject6).toString());
         }
-        localObject1 = new ReportModelDC02528().module((String)localObject1).action("clk_item");
-        StringBuilder localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append(((SearchUtils.ObjectItemInfo)localObject4).jdField_a_of_type_Long);
-        localStringBuilder1.append("");
-        localObject1 = ((ReportModelDC02528)localObject1).obj1(localStringBuilder1.toString()).obj2(((SearchUtils.ObjectItemInfo)localObject4).jdField_b_of_type_JavaLangString).ver1(((SearchUtils.ObjectItemInfo)localObject4).jdField_a_of_type_JavaLangString).ver2(UniteSearchReportController.a(UniteSearchActivity.jdField_d_of_type_Int)).ver7(((JSONObject)localObject5).toString());
+        ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_item");
+        localObject6 = new StringBuilder();
+        ((StringBuilder)localObject6).append(((SearchUtils.ObjectItemInfo)localObject3).b);
+        ((StringBuilder)localObject6).append("");
+        localObject3 = localReportModelDC02528.obj1(((StringBuilder)localObject6).toString()).obj2(((SearchUtils.ObjectItemInfo)localObject3).e).ver1(((SearchUtils.ObjectItemInfo)localObject3).a).ver2(UniteSearchReportController.a(UniteSearchActivity.f)).ver7(((JSONObject)localObject4).toString());
         localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(((QQAppInterface)localObject3).getCurrentAccountUin());
-        ((StringBuilder)localObject4).append(SearchUtils.d);
-        UniteSearchReportController.a(null, ((ReportModelDC02528)localObject1).session_id(((StringBuilder)localObject4).toString()));
+        ((StringBuilder)localObject4).append(((QQAppInterface)localObject1).getCurrentAccountUin());
+        ((StringBuilder)localObject4).append(SearchUtils.j);
+        UniteSearchReportController.a(null, ((ReportModelDC02528)localObject3).session_id(((StringBuilder)localObject4).toString()));
       }
     }
-    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
+    int i2;
+    if (this.g == 1107L)
     {
-      localObject1 = this.jdField_e_of_type_JavaLangString;
-      if ("3".equals(this.jdField_b_of_type_JavaLangString)) {
-        localObject1 = VasWebviewUtil.a(this.jdField_e_of_type_JavaLangString, 55);
+      i1 = 246614;
+      if (this.m == 99)
+      {
+        i1 = 246613;
+        i2 = 2;
+      }
+      else
+      {
+        i2 = 1;
+      }
+      if (this.R == 0)
+      {
+        paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        ((IQQGuildRouterApi)QRoute.api(IQQGuildRouterApi.class)).openGuild(paramView, (Context)localObject2, false, null, this.b);
+      }
+      else
+      {
+        ((IQQGuildRouterApi)QRoute.api(IQQGuildRouterApi.class)).addGuildByAuthSig((Context)localObject2, this.b, this.T, i1);
+      }
+      SearchUtils.a("Sgrp", "search_result", "clk", i2, 0, new String[] { this.b });
+      return;
+    }
+    if (!TextUtils.isEmpty(this.e))
+    {
+      localObject1 = this.e;
+      if ("3".equals(this.b)) {
+        localObject1 = VasWebviewUtil.b(this.e, 55);
       }
       if ((!((String)localObject1).startsWith("http")) && (!((String)localObject1).startsWith("https")))
       {
@@ -870,60 +847,59 @@ public class GroupBaseNetSearchModelItem
       ((Context)localObject2).startActivity(paramView);
       return;
     }
-    long l1 = this.jdField_a_of_type_Long;
+    long l1 = this.g;
     if (l1 == 268435456L)
     {
-      SearchUtils.a(paramView.getContext(), Integer.valueOf(this.jdField_b_of_type_JavaLangString).intValue(), this.jdField_a_of_type_Int);
+      SearchUtils.a(paramView.getContext(), Integer.valueOf(this.b).intValue(), this.m);
       return;
     }
     boolean bool;
     if (l1 == 1001L)
     {
-      bool = b();
+      bool = m();
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("onAction mobileNumberResult = ");
         ((StringBuilder)localObject1).append(bool);
         ((StringBuilder)localObject1).append(",id = ");
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.b);
         QLog.d("Q.uniteSearch.GroupBaseNetSearchModelItem", 2, ((StringBuilder)localObject1).toString());
       }
       localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       localObject2 = new SearchResultItem();
-      ((SearchResultItem)localObject2).jdField_a_of_type_Long = Long.valueOf(this.jdField_b_of_type_JavaLangString).longValue();
+      ((SearchResultItem)localObject2).a = Long.valueOf(this.b).longValue();
     }
     try
     {
-      if ((!QidianManager.b(this.jdField_l_of_type_Int)) && (!QidianManager.c(this.jdField_l_of_type_Int))) {
-        break label2723;
+      if ((!QidianManager.b(this.O)) && (!QidianManager.c(this.O))) {
+        break label2820;
       }
-      ((SearchResultItem)localObject2).jdField_a_of_type_Long = Long.valueOf(this.jdField_p_of_type_JavaLangString).longValue();
+      ((SearchResultItem)localObject2).a = Long.valueOf(this.P).longValue();
     }
     catch (Exception localException)
     {
-      label2714:
+      label2811:
       int i3;
-      int i2;
-      break label2714;
+      break label2811;
     }
     QLog.i("Q.uniteSearch.GroupBaseNetSearchModelItem", 1, "qidian corp jump error");
-    label2723:
-    ((SearchResultItem)localObject2).jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    if (RobotUtils.a((QQAppInterface)localObject1, this.jdField_b_of_type_JavaLangString))
+    label2820:
+    ((SearchResultItem)localObject2).c = this.c;
+    if (RobotUtils.a((QQAppInterface)localObject1, this.b))
     {
-      RobotUtils.a(paramView.getContext(), null, this.jdField_b_of_type_JavaLangString);
+      RobotUtils.a(paramView.getContext(), null, this.b);
       return;
     }
-    if (this.jdField_a_of_type_Int != 99) {
+    if (this.m != 99) {
       i1 = 3;
     }
     if (bool)
     {
-      ((SearchResultItem)localObject2).jdField_a_of_type_Long = 0L;
-      ((SearchResultItem)localObject2).jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      ((SearchResultItem)localObject2).a = 0L;
+      ((SearchResultItem)localObject2).d = this.b;
     }
-    AddFriendActivity.a((Activity)paramView.getContext(), (SearchResultItem)localObject2, (QQAppInterface)localObject1, true, i1);
+    AddFriendActivity.startProfileCardActivity((Activity)paramView.getContext(), (SearchResultItem)localObject2, (QQAppInterface)localObject1, true, i1);
     return;
     if (l1 == 1002L)
     {
@@ -934,15 +910,14 @@ public class GroupBaseNetSearchModelItem
         if (localObject3 != null)
         {
           i3 = ((Intent)localObject3).getIntExtra("from_type_for_report", 0);
-          break label2863;
+          break label2960;
         }
       }
       i3 = 0;
-      label2863:
+      label2960:
+      i2 = 103;
       if (i3 == 9) {
         i2 = 112;
-      } else {
-        i2 = 103;
       }
       i1 = i2;
       if (localObject1 != null)
@@ -972,50 +947,45 @@ public class GroupBaseNetSearchModelItem
       if ((i1 != 103) && (i1 != 104))
       {
         if ((i1 == 112) || (i1 == 113)) {
-          if (this.jdField_d_of_type_Boolean) {
+          if (this.I) {
             i1 = 30018;
           } else {
             i1 = 30020;
           }
         }
       }
-      else if (this.jdField_d_of_type_Boolean) {
+      else if (this.I) {
         i1 = 30014;
       } else {
         i1 = 30016;
       }
-      localObject1 = TroopInfoUIUtil.a(this.jdField_b_of_type_JavaLangString, i1);
+      localObject1 = TroopInfoUIUtil.a(this.b, i1);
       ((Bundle)localObject1).putInt("exposureSource", 3);
-      ((Bundle)localObject1).putString("keyword", b());
+      ((Bundle)localObject1).putString("keyword", g());
       ((Bundle)localObject1).putBoolean("isFromNative", true);
       ((Bundle)localObject1).putInt("t_s_f", 1000);
-      ((Bundle)localObject1).putString("authSig", this.jdField_q_of_type_JavaLangString);
+      ((Bundle)localObject1).putString("authSig", this.T);
       TroopUtils.a(paramView.getContext(), (Bundle)localObject1, 2);
     }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_t_of_type_JavaLangString = paramString;
   }
   
   public void a(String paramString, int paramInt)
   {
     if ((paramString != null) && (!paramString.equals("")))
     {
-      if (this.jdField_b_of_type_JavaUtilList == null) {
-        this.jdField_b_of_type_JavaUtilList = new ArrayList();
+      if (this.V == null) {
+        this.V = new ArrayList();
       }
       if (paramInt == 3)
       {
-        if (this.jdField_b_of_type_JavaUtilList.size() > 2)
+        if (this.V.size() > 2)
         {
-          int i1 = this.jdField_d_of_type_Int;
+          int i1 = this.r;
           if ((i1 == 1) || (i1 == 2)) {}
         }
         else
         {
-          if (this.jdField_b_of_type_JavaUtilList.size() <= 3) {
+          if (this.V.size() <= 3) {
             break label78;
           }
         }
@@ -1046,13 +1016,8 @@ public class GroupBaseNetSearchModelItem
       else {
         localMayKnowRecommendLabel.edging_color = android.graphics.Color.parseColor("#7373FF");
       }
-      this.jdField_b_of_type_JavaUtilList.add(localMayKnowRecommendLabel);
+      this.V.add(localMayKnowRecommendLabel);
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
   }
   
   public boolean a(long paramLong, JSONObject paramJSONObject)
@@ -1070,52 +1035,18 @@ public class GroupBaseNetSearchModelItem
   
   public int b()
   {
-    return this.w;
+    if (j() == 1001) {
+      return 1;
+    }
+    if (j() == 1002) {
+      return 4;
+    }
+    return 0;
   }
   
-  public CharSequence b()
+  public void b(int paramInt)
   {
-    int i1 = d();
-    boolean bool = false;
-    if (i1 == 268435456) {
-      try
-      {
-        CharSequence localCharSequence = SearchUtils.a(this.jdField_c_of_type_JavaLangString, b(), true);
-        return localCharSequence;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("Q.uniteSearch.GroupBaseNetSearchModelItem", 2, localException, new Object[0]);
-        return this.jdField_c_of_type_JavaLangString;
-      }
-    }
-    Object localObject = new HighlightModel(this.jdField_a_of_type_JavaUtilList, b());
-    if (d() == 1002)
-    {
-      this.jdField_c_of_type_JavaLangString = SearchUtils.a(this.jdField_c_of_type_JavaLangString);
-      localSpannableString = ((HighlightModel)localObject).a(this.jdField_c_of_type_JavaLangString, true);
-      localObject = localSpannableString;
-      if (localSpannableString == null) {
-        localObject = "";
-      }
-      return localObject;
-    }
-    this.jdField_c_of_type_JavaLangString = SearchUtils.a(this.jdField_c_of_type_JavaLangString);
-    SpannableString localSpannableString = ((HighlightModel)localObject).a(this.jdField_c_of_type_JavaLangString, true);
-    if (((HighlightModel)localObject).jdField_a_of_type_Int > 0) {
-      bool = true;
-    }
-    this.jdField_h_of_type_Boolean = bool;
-    localObject = localSpannableString;
-    if (localSpannableString == null) {
-      localObject = "";
-    }
-    return localObject;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.am = paramInt;
   }
   
   public void b(int paramInt1, int paramInt2)
@@ -1127,24 +1058,154 @@ public class GroupBaseNetSearchModelItem
         if (paramInt1 != 3) {
           return;
         }
-        this.jdField_t_of_type_Int = paramInt2;
+        this.ae = paramInt2;
         return;
       }
-      this.jdField_s_of_type_Int = paramInt2;
+      this.ad = paramInt2;
       return;
     }
-    this.jdField_r_of_type_Int = paramInt2;
+    this.ac = paramInt2;
   }
   
-  public boolean b()
+  public void b(String paramString)
   {
-    boolean bool3 = TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString);
+    this.an = paramString;
+  }
+  
+  public String c()
+  {
+    return this.b;
+  }
+  
+  public int ck_()
+  {
+    return this.ai;
+  }
+  
+  public int cl_()
+  {
+    return this.aj;
+  }
+  
+  public CharSequence d()
+  {
+    int i1 = j();
+    boolean bool = false;
+    if (i1 == 268435456) {
+      try
+      {
+        CharSequence localCharSequence = SearchUtils.a(this.c, g(), true);
+        return localCharSequence;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("Q.uniteSearch.GroupBaseNetSearchModelItem", 2, localException, new Object[0]);
+        return this.c;
+      }
+    }
+    Object localObject = new HighlightModel(this.l, g());
+    if (j() == 1002)
+    {
+      this.c = SearchUtils.b(this.c);
+      localSpannableString = ((HighlightModel)localObject).a(this.c, true);
+      localObject = localSpannableString;
+      if (localSpannableString == null) {
+        localObject = "";
+      }
+      return localObject;
+    }
+    this.c = SearchUtils.b(this.c);
+    SpannableString localSpannableString = ((HighlightModel)localObject).a(this.c, true);
+    if (((HighlightModel)localObject).b > 0) {
+      bool = true;
+    }
+    this.ak = bool;
+    localObject = localSpannableString;
+    if (localSpannableString == null) {
+      localObject = "";
+    }
+    return localObject;
+  }
+  
+  public CharSequence e()
+  {
+    HighlightModel localHighlightModel = new HighlightModel(this.l, g());
+    boolean bool = TextUtils.isEmpty(this.n);
+    Object localObject1 = null;
+    Object localObject2 = null;
+    if (!bool)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("(");
+      ((StringBuilder)localObject2).append(this.n);
+      ((StringBuilder)localObject2).append(")");
+      localObject2 = SearchUtils.b(((StringBuilder)localObject2).toString());
+    }
+    else if (this.t == 1)
+    {
+      this.j = SearchUtils.b(this.j);
+      LhLogoResources localLhLogoResources = PrettyAccountUtil.a(this.u);
+      localObject1 = localObject2;
+      if (localLhLogoResources != null) {
+        localObject1 = localLhLogoResources.lightColor;
+      }
+      localObject2 = PrettyAccountUtil.a(this.t, this.u, this.j, this.b);
+    }
+    else
+    {
+      localObject2 = SearchUtils.b(this.j);
+    }
+    localObject2 = localHighlightModel.a((CharSequence)localObject2, (String)localObject1, false, false, true);
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "";
+    }
+    return localObject1;
+  }
+  
+  public CharSequence f()
+  {
+    if ((!this.ak) && (!this.al))
+    {
+      SpannableString localSpannableString = new HighlightModel(this.l, g()).a(this.i, false, this.k);
+      Object localObject = localSpannableString;
+      if (localSpannableString == null) {
+        localObject = "";
+      }
+      return localObject;
+    }
+    return this.i;
+  }
+  
+  public String g()
+  {
+    return this.a;
+  }
+  
+  public boolean h()
+  {
+    return false;
+  }
+  
+  public String i()
+  {
+    return this.d;
+  }
+  
+  public int j()
+  {
+    return (int)this.g;
+  }
+  
+  public boolean m()
+  {
+    boolean bool3 = TextUtils.isEmpty(this.f);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (!bool3) {
       try
       {
-        int i1 = new JSONObject(this.jdField_f_of_type_JavaLangString).optInt("is_mobile_no", 0);
+        int i1 = new JSONObject(this.f).optInt("is_mobile_no", 0);
         bool1 = bool2;
         if (i1 == 1) {
           bool1 = true;
@@ -1166,93 +1227,44 @@ public class GroupBaseNetSearchModelItem
     return bool1;
   }
   
-  public CharSequence c()
+  public String n()
   {
-    HighlightModel localHighlightModel = new HighlightModel(this.jdField_a_of_type_JavaUtilList, b());
-    boolean bool = TextUtils.isEmpty(this.jdField_h_of_type_JavaLangString);
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (!bool)
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("(");
-      ((StringBuilder)localObject2).append(this.jdField_h_of_type_JavaLangString);
-      ((StringBuilder)localObject2).append(")");
-      localObject2 = SearchUtils.a(((StringBuilder)localObject2).toString());
-    }
-    else if (this.jdField_f_of_type_Int == 1)
-    {
-      this.jdField_g_of_type_JavaLangString = SearchUtils.a(this.jdField_g_of_type_JavaLangString);
-      LhLogoResources localLhLogoResources = PrettyAccountUtil.a(this.jdField_g_of_type_Int);
-      localObject1 = localObject2;
-      if (localLhLogoResources != null) {
-        localObject1 = localLhLogoResources.lightColor;
-      }
-      localObject2 = PrettyAccountUtil.a(this.jdField_f_of_type_Int, this.jdField_g_of_type_Int, this.jdField_g_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
-    }
-    else
-    {
-      localObject2 = SearchUtils.a(this.jdField_g_of_type_JavaLangString);
-    }
-    localObject2 = localHighlightModel.a((CharSequence)localObject2, (String)localObject1, false, false, true);
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = "";
-    }
-    return localObject1;
-  }
-  
-  public String c()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public int d()
-  {
-    return (int)this.jdField_a_of_type_Long;
-  }
-  
-  public CharSequence d()
-  {
-    if ((!this.jdField_h_of_type_Boolean) && (!this.jdField_i_of_type_Boolean))
-    {
-      SpannableString localSpannableString = new HighlightModel(this.jdField_a_of_type_JavaUtilList, b()).a(this.jdField_b_of_type_JavaLangCharSequence, false, this.jdField_a_of_type_Boolean);
-      Object localObject = localSpannableString;
-      if (localSpannableString == null) {
-        localObject = "";
-      }
-      return localObject;
-    }
-    return this.jdField_b_of_type_JavaLangCharSequence;
-  }
-  
-  public String d()
-  {
-    String str = this.jdField_r_of_type_JavaLangString;
+    String str = this.U;
     if (str != null) {
       return str;
     }
     return "";
   }
   
-  public int e()
+  public String o()
   {
-    return this.y;
+    return this.b;
   }
   
-  public String e()
+  public int p()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.am;
   }
   
-  public int f_()
+  public boolean q()
   {
-    return this.x;
+    return (!TextUtils.isEmpty(this.c)) && (this.c.equals(this.a));
+  }
+  
+  protected void r()
+  {
+    if (this.g == 268435456L)
+    {
+      f(11);
+      if (q()) {
+        f(4);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem
  * JD-Core Version:    0.7.0.1
  */

@@ -17,25 +17,25 @@ class MessageHandler$2
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("sendReceiptMessageRead.prepareRetryRunnable: ");
-      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(this.g);
       ((StringBuilder)localObject).append(" / ");
-      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(this.m);
       QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.this$0.createToServiceMsg("MessageSvc.PbReceiptRead", null);
-    ((ToServiceMsg)localObject).putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
-    ((ToServiceMsg)localObject).extraData.putLong("msgSeq", this.jdField_a_of_type_Int);
+    ((ToServiceMsg)localObject).putWupBuffer(this.a.toByteArray());
+    ((ToServiceMsg)localObject).extraData.putLong("msgSeq", this.b);
     ((ToServiceMsg)localObject).extraData.putInt("msgtype", 1);
-    ((ToServiceMsg)localObject).extraData.putString("uin", Long.toString(this.jdField_a_of_type_Long));
-    ((ToServiceMsg)localObject).extraData.putLong("timeOut", this.c);
-    ((ToServiceMsg)localObject).extraData.putInt("retryIndex", this.b);
-    ((ToServiceMsg)localObject).setTimeout(this.c);
+    ((ToServiceMsg)localObject).extraData.putString("uin", Long.toString(this.c));
+    ((ToServiceMsg)localObject).extraData.putLong("timeOut", this.g);
+    ((ToServiceMsg)localObject).extraData.putInt("retryIndex", this.m);
+    ((ToServiceMsg)localObject).setTimeout(this.g);
     this.this$0.sendPbReq((ToServiceMsg)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.2
  * JD-Core Version:    0.7.0.1
  */

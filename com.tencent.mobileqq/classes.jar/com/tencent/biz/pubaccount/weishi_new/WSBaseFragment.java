@@ -1,14 +1,24 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.Window;
+import androidx.annotation.Nullable;
 import com.tencent.biz.pubaccount.weishi_new.drama.part.IWSPartLifeCycle;
 import com.tencent.biz.pubaccount.weishi_new.drama.part.IWSPartLifeOwner;
 import com.tencent.biz.pubaccount.weishi_new.drama.part.WSPartLifeCycleDelegate;
+import com.tencent.biz.pubaccount.weishi_new.main.WSTopEdgeGestureLayout;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.mobileqq.activity.fling.FlingHandler;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -16,40 +26,119 @@ import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.HashSet;
 
 public abstract class WSBaseFragment<V extends IWSBaseView, P extends IWSPresenter<V>>
   extends PublicBaseFragment
-  implements IWSBaseView, IWSDelegateCallback<V, P>, IWSPartLifeOwner
+  implements IWSBaseView, IWSDelegateCallback<V, P>, WSFragmentUserVisibleController.UserVisibleCallback, IWSPartLifeOwner
 {
-  private IWSFragmentDelegate<V, P> jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSFragmentDelegate;
-  protected P a;
-  private WSPartLifeCycleDelegate jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaPartWSPartLifeCycleDelegate;
-  private MiniMsgUser jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
-  protected boolean a;
-  public boolean b;
-  private boolean c;
+  protected Context a;
+  protected P b;
+  protected WSTopEdgeGestureLayout c;
+  protected boolean d;
+  public boolean e;
+  private IWSFragmentDelegate<V, P> f;
+  private WSPartLifeCycleDelegate g;
+  private final WSFragmentUserVisibleController h = new WSFragmentUserVisibleController(this, this);
+  private MiniMsgUser i;
+  private boolean j;
   
-  public V a()
+  protected void a(@NonNull Activity paramActivity)
+  {
+    if (paramActivity.getWindow() == null) {
+      return;
+    }
+    if (Build.VERSION.SDK_INT < 19) {
+      return;
+    }
+    if ((paramActivity instanceof PublicTransFragmentActivity)) {
+      paramActivity.setTheme(1929904128);
+    }
+  }
+  
+  public void a(P paramP)
+  {
+    this.b = paramP;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSBaseFragment.java][onVisibleToUserChanged] isVisibleToUser:");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(", invokeInResumeOrPause:");
+    localStringBuilder.append(paramBoolean2);
+    localStringBuilder.append(", this:");
+    localStringBuilder.append(this);
+    WSLog.e("WSLifecycleLog", localStringBuilder.toString());
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (getBaseActivity() == null) {
+      return false;
+    }
+    int m = Build.VERSION.SDK_INT;
+    int k = 9216;
+    if ((m >= 23) && (!SystemUtil.g()) && (!SystemUtil.d()))
+    {
+      if (!paramBoolean) {
+        k = 1280;
+      }
+      getBaseActivity().getWindow().getDecorView().setSystemUiVisibility(k);
+      return paramBoolean;
+    }
+    boolean bool;
+    if (ImmersiveUtils.supportStatusBarDarkMode())
+    {
+      ImmersiveUtils.setStatusBarDarkMode(getBaseActivity().getWindow(), paramBoolean);
+      bool = paramBoolean;
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        bool = paramBoolean;
+        if (SystemUtil.d())
+        {
+          if (!paramBoolean) {
+            k = 1280;
+          }
+          getBaseActivity().getWindow().getDecorView().setSystemUiVisibility(k);
+          return paramBoolean;
+        }
+      }
+    }
+    else
+    {
+      bool = false;
+    }
+    return bool;
+  }
+  
+  public V aH_()
   {
     return this;
   }
   
   @NonNull
-  protected IWSFragmentDelegate<V, P> a()
+  protected IWSFragmentDelegate<V, P> aM_()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSFragmentDelegate == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSFragmentDelegate = new WSFragmentDelegateImpl(this);
+    if (this.f == null) {
+      this.f = new WSFragmentDelegateImpl(this);
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSFragmentDelegate;
+    return this.f;
   }
   
-  public MiniMsgUser a()
+  protected boolean aN_()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+    return ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
   }
   
-  protected MiniMsgUserParam a()
+  public P aO_()
+  {
+    return this.b;
+  }
+  
+  protected MiniMsgUserParam aV_()
   {
     MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
     localMiniMsgUserParam.businessName = 6;
@@ -62,163 +151,204 @@ public abstract class WSBaseFragment<V extends IWSBaseView, P extends IWSPresent
     return localMiniMsgUserParam;
   }
   
-  public HashSet<IWSPartLifeCycle> a()
+  public boolean aW_()
+  {
+    return this.h.e();
+  }
+  
+  public MiniMsgUser aY_()
+  {
+    return this.i;
+  }
+  
+  public void aZ_()
+  {
+    Object localObject = getActivity();
+    if (!(localObject instanceof PublicFragmentActivity)) {
+      return;
+    }
+    localObject = ((PublicFragmentActivity)localObject).mSystemBarComp;
+    ((SystemBarCompact)localObject).setStatusBarVisible(2, 0);
+    ((SystemBarCompact)localObject).setStatusBarColor(0);
+  }
+  
+  public boolean ba_()
+  {
+    boolean bool = this.h.d();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSBaseFragment.java][isVisibleToUser] isVisibleToUser:");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(", this:");
+    localStringBuilder.append(this);
+    WSLog.e("WSLifecycleLog", localStringBuilder.toString());
+    return bool;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.h.b(paramBoolean);
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    super.setUserVisibleHint(paramBoolean);
+  }
+  
+  protected void d_(boolean paramBoolean)
+  {
+    WSTopEdgeGestureLayout localWSTopEdgeGestureLayout = this.c;
+    if (localWSTopEdgeGestureLayout != null) {
+      localWSTopEdgeGestureLayout.setIsIntercept(paramBoolean);
+    }
+  }
+  
+  protected boolean h()
+  {
+    return false;
+  }
+  
+  protected void i() {}
+  
+  public void initSideFling(Context paramContext, FlingHandler paramFlingHandler)
+  {
+    super.initSideFling(paramContext, paramFlingHandler);
+    this.c = new WSTopEdgeGestureLayout(paramContext);
+    if ((paramFlingHandler != null) && ((paramFlingHandler instanceof FlingGestureHandler)))
+    {
+      paramContext = (FlingGestureHandler)paramFlingHandler;
+      paramContext.setTopLayout(this.c);
+      paramContext.mTopLayout.setInterceptScrollLRFlag(true);
+    }
+  }
+  
+  public HashSet<IWSPartLifeCycle> j()
   {
     return null;
   }
   
-  protected void a() {}
-  
-  public void a(P paramP)
+  public void onActivityCreated(@Nullable Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter = paramP;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (getBaseActivity() == null) {
-      return false;
-    }
-    int j = Build.VERSION.SDK_INT;
-    int i = 9216;
-    if ((j >= 23) && (!SystemUtil.d()) && (!SystemUtil.b()))
-    {
-      if (!paramBoolean) {
-        i = 1280;
-      }
-      getBaseActivity().getWindow().getDecorView().setSystemUiVisibility(i);
-      return paramBoolean;
-    }
-    boolean bool;
-    if (ImmersiveUtils.supportStatusBarDarkMode())
-    {
-      ImmersiveUtils.setStatusBarDarkMode(getBaseActivity().getWindow(), paramBoolean);
-      bool = paramBoolean;
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        bool = paramBoolean;
-        if (SystemUtil.b())
-        {
-          if (!paramBoolean) {
-            i = 1280;
-          }
-          getBaseActivity().getWindow().getDecorView().setSystemUiVisibility(i);
-          return paramBoolean;
-        }
-      }
-    }
-    else
-    {
-      bool = false;
-    }
-    return bool;
-  }
-  
-  public P b()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter;
-  }
-  
-  protected boolean h_()
-  {
-    return false;
+    super.onActivityCreated(paramBundle);
+    this.h.a();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.b = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-    a().a(paramBundle);
-    if (h_())
+    this.a = getContext();
+    this.e = aN_();
+    aM_().a(paramBundle);
+    if (h())
     {
-      paramBundle = a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = new MiniMsgUser(getBaseActivity(), paramBundle);
+      paramBundle = aV_();
+      this.i = new MiniMsgUser(getBaseActivity(), paramBundle);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaPartWSPartLifeCycleDelegate = new WSPartLifeCycleDelegate();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaPartWSPartLifeCycleDelegate.h();
+    this.g = new WSPartLifeCycleDelegate();
+    this.g.m();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    a().b();
-    if (h_())
+    aM_().b();
+    if (h())
     {
-      MiniMsgUser localMiniMsgUser = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+      MiniMsgUser localMiniMsgUser = this.i;
       if (localMiniMsgUser != null) {
         localMiniMsgUser.destroy();
       }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaPartWSPartLifeCycleDelegate.i();
+    this.g.n();
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    a().a();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaPartWSPartLifeCycleDelegate.F_();
+    aM_().a();
+    this.g.d();
   }
   
   public void onPause()
   {
     super.onPause();
-    if (h_())
+    this.h.c();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[WSBaseFragment.java][onPause] mIsUserVisibleHint:");
+    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(", this:");
+    ((StringBuilder)localObject).append(this);
+    WSLog.e("WSLifecycleLog", ((StringBuilder)localObject).toString());
+    if (h())
     {
-      MiniMsgUser localMiniMsgUser = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
-      if (localMiniMsgUser != null) {
-        localMiniMsgUser.onBackground();
+      localObject = this.i;
+      if (localObject != null) {
+        ((MiniMsgUser)localObject).onBackground();
       }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaPartWSPartLifeCycleDelegate.d();
+    this.g.f();
   }
   
   public void onResume()
   {
     super.onResume();
-    if (h_())
+    this.h.b();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[WSBaseFragment.java][onResume] mIsUserVisibleHint:");
+    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(", this:");
+    ((StringBuilder)localObject).append(this);
+    WSLog.e("WSLifecycleLog", ((StringBuilder)localObject).toString());
+    if (h())
     {
-      MiniMsgUser localMiniMsgUser = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
-      if (localMiniMsgUser != null) {
-        localMiniMsgUser.onForeground();
+      localObject = this.i;
+      if (localObject != null) {
+        ((MiniMsgUser)localObject).onForeground();
       }
     }
-    a();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaPartWSPartLifeCycleDelegate.c();
+    i();
+    this.g.e();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    a().a(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaPartWSPartLifeCycleDelegate.a(a());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaPartWSPartLifeCycleDelegate.E_();
+    aM_().a(paramView, paramBundle);
+    this.g.a(j());
+    this.g.c();
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if ((paramBoolean) && (!this.c))
+    if ((paramBoolean) && (!this.j))
     {
-      if (h_())
+      if (h())
       {
-        MiniMsgUser localMiniMsgUser = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+        MiniMsgUser localMiniMsgUser = this.i;
         if (localMiniMsgUser != null) {
           localMiniMsgUser.showOnFirst();
         }
       }
-      this.c = true;
+      this.j = true;
     }
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
-    this.jdField_a_of_type_Boolean = getUserVisibleHint();
+    this.h.a(paramBoolean);
+    this.d = getUserVisibleHint();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSBaseFragment.java][setUserVisibleHint] mIsUserVisibleHint:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", this:");
+    localStringBuilder.append(this);
+    WSLog.g("WSLifecycleLog", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSBaseFragment
  * JD-Core Version:    0.7.0.1
  */

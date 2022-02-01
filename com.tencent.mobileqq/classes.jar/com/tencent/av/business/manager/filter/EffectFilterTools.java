@@ -24,16 +24,55 @@ import java.util.List;
 public class EffectFilterTools
   extends EffectConfigBase<FilterItem>
 {
-  static boolean jdField_a_of_type_Boolean = false;
-  FilterItem jdField_a_of_type_ComTencentAvBusinessManagerFilterFilterItem = null;
-  private FilterDesc jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
+  static boolean k = false;
+  FilterItem l = null;
+  private FilterDesc m;
   
   public EffectFilterTools(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
   }
   
-  public static String a(String paramString)
+  public static boolean a(Context paramContext)
+  {
+    boolean bool = k;
+    if (bool) {
+      return bool;
+    }
+    if (!EffectsRenderController.m())
+    {
+      AVLog.printColorLog("EffectFilterTools", "isSupport Error: 1");
+      return false;
+    }
+    if (!EffectsRenderController.a(4, 1400000L)) {
+      return false;
+    }
+    if ((paramContext != null) && (TextUtils.isEmpty(QAVConfig.b(132).b))) {
+      return false;
+    }
+    paramContext = EffectFaceDeviceConfig.g();
+    if ((paramContext != null) && (!paramContext.a()))
+    {
+      AVLog.printColorLog("EffectFilterTools", "  isSupportFilter false");
+      return false;
+    }
+    k = true;
+    return k;
+  }
+  
+  public static boolean a(PendantItem paramPendantItem)
+  {
+    if (paramPendantItem == null) {
+      return false;
+    }
+    boolean bool = PendantItem.isOnlySupportOldFilter(paramPendantItem.getKind()) ^ true;
+    if (QLog.isColorLevel()) {
+      QLog.i("EffectFilterTools", 2, String.format("isSupportFilter, support[%s], kind[%s], id[%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramPendantItem.getKind()), paramPendantItem.getId() }));
+    }
+    return bool;
+  }
+  
+  public static String d(String paramString)
   {
     String str = paramString;
     if (paramString != null)
@@ -61,82 +100,18 @@ public class EffectFilterTools
     return str;
   }
   
-  public static boolean a(Context paramContext)
-  {
-    boolean bool = jdField_a_of_type_Boolean;
-    if (bool) {
-      return bool;
-    }
-    if (!EffectsRenderController.f())
-    {
-      AVLog.printColorLog("EffectFilterTools", "isSupport Error: 1");
-      return false;
-    }
-    if (!EffectsRenderController.a(4, 1400000L)) {
-      return false;
-    }
-    if ((paramContext != null) && (TextUtils.isEmpty(QAVConfig.b(132).a))) {
-      return false;
-    }
-    paramContext = EffectFaceDeviceConfig.a();
-    if ((paramContext != null) && (!paramContext.a()))
-    {
-      AVLog.printColorLog("EffectFilterTools", "  isSupportFilter false");
-      return false;
-    }
-    jdField_a_of_type_Boolean = true;
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean a(PendantItem paramPendantItem)
-  {
-    if (paramPendantItem == null) {
-      return false;
-    }
-    boolean bool = PendantItem.isOnlySupportOldFilter(paramPendantItem.getKind()) ^ true;
-    if (QLog.isColorLevel()) {
-      QLog.i("EffectFilterTools", 2, String.format("isSupportFilter, support[%s], kind[%s], id[%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramPendantItem.getKind()), paramPendantItem.getId() }));
-    }
-    return bool;
-  }
-  
-  public int a()
-  {
-    return 132;
-  }
-  
-  public FilterDesc a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
-  }
-  
-  protected Class<?> a()
-  {
-    return FilterItem.class;
-  }
-  
   public String a(FilterItem paramFilterItem)
   {
     if ((paramFilterItem != null) && (!TextUtils.isEmpty(paramFilterItem.getResUrl())) && (!TextUtils.isEmpty(paramFilterItem.getId())))
     {
       String str = b(paramFilterItem);
-      paramFilterItem = a(paramFilterItem.getResUrl());
+      paramFilterItem = d(paramFilterItem.getResUrl());
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(str);
       localStringBuilder.append(paramFilterItem);
       return localStringBuilder.toString();
     }
     return null;
-  }
-  
-  public List<FilterItem> a(String paramString)
-  {
-    paramString = super.a(paramString);
-    ArrayList localArrayList = new ArrayList();
-    if (paramString != null) {
-      localArrayList.addAll(paramString);
-    }
-    return localArrayList;
   }
   
   protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
@@ -151,40 +126,38 @@ public class EffectFilterTools
   {
     if ((paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getFilterName())))
     {
-      b(paramLong, (FilterItem)a(paramPendantItem.getFilterName()));
+      b(paramLong, (FilterItem)b(paramPendantItem.getFilterName()));
       return;
     }
-    b(paramLong, this.jdField_a_of_type_ComTencentAvBusinessManagerFilterFilterItem);
+    b(paramLong, this.l);
   }
-  
-  protected void a(FilterItem paramFilterItem) {}
   
   public boolean a(long paramLong, FilterItem paramFilterItem)
   {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerFilterFilterItem = paramFilterItem;
+    this.l = paramFilterItem;
     return b(paramLong, paramFilterItem);
   }
   
   protected boolean a(String paramString)
   {
-    super.c();
-    paramString = this.jdField_a_of_type_JavaUtilList;
+    super.g();
+    paramString = this.e;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramString != null)
     {
-      paramString = this.jdField_a_of_type_JavaUtilList.iterator();
+      paramString = this.e.iterator();
       int i = 0;
       int j = 0;
       while (paramString.hasNext())
       {
         FilterItem localFilterItem = (FilterItem)paramString.next();
-        long l = AudioHelper.b();
-        if (AudioHelper.b())
+        long l1 = AudioHelper.c();
+        if (AudioHelper.e())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("preDownloadResource, seq[");
-          localStringBuilder.append(l);
+          localStringBuilder.append(l1);
           localStringBuilder.append("], res[");
           localStringBuilder.append(localFilterItem.getResUrl());
           localStringBuilder.append("], icon[");
@@ -196,7 +169,7 @@ public class EffectFilterTools
         {
           j += 1;
           if ((!TextUtils.isEmpty(localFilterItem.getResUrl())) && (!localFilterItem.isUsable())) {
-            a(l, localFilterItem);
+            b(l1, localFilterItem);
           } else {
             i += 1;
           }
@@ -210,25 +183,52 @@ public class EffectFilterTools
     return bool1;
   }
   
+  public int b()
+  {
+    return 132;
+  }
+  
+  protected void b(FilterItem paramFilterItem) {}
+  
   boolean b(long paramLong, FilterItem paramFilterItem)
   {
     boolean bool = super.a(paramLong, paramFilterItem);
-    SessionInfo localSessionInfo = VideoController.a().a();
+    SessionInfo localSessionInfo = VideoController.f().k();
     if (TextUtils.isEmpty(a(paramFilterItem)))
     {
-      localSessionInfo.a.clear(2);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = null;
+      localSessionInfo.bG.clear(2);
+      this.m = null;
     }
     else
     {
-      localSessionInfo.a.set(2);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = new FilterDesc(Integer.valueOf(paramFilterItem.getFilterId()).intValue(), paramFilterItem.getPredownload(), paramFilterItem.getResUrl(), paramFilterItem.getMd5(), paramFilterItem.getIconUrl(), paramFilterItem.getIconMd5(), paramFilterItem.getId(), 0, b(paramFilterItem));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.type = paramFilterItem.getFiltertype();
+      localSessionInfo.bG.set(2);
+      this.m = new FilterDesc(Integer.valueOf(paramFilterItem.getFilterId()).intValue(), paramFilterItem.getPredownload(), paramFilterItem.getResUrl(), paramFilterItem.getMd5(), paramFilterItem.getIconUrl(), paramFilterItem.getIconMd5(), paramFilterItem.getId(), 0, b(paramFilterItem));
+      this.m.type = paramFilterItem.getFiltertype();
     }
     if (paramFilterItem != null) {
-      EffectFilterTools.DataReport.a((FilterItem)a());
+      EffectFilterTools.DataReport.a((FilterItem)c());
     }
     return bool;
+  }
+  
+  public List<FilterItem> c(String paramString)
+  {
+    paramString = super.c(paramString);
+    ArrayList localArrayList = new ArrayList();
+    if (paramString != null) {
+      localArrayList.addAll(paramString);
+    }
+    return localArrayList;
+  }
+  
+  protected Class<?> i()
+  {
+    return FilterItem.class;
+  }
+  
+  public FilterDesc j()
+  {
+    return this.m;
   }
 }
 

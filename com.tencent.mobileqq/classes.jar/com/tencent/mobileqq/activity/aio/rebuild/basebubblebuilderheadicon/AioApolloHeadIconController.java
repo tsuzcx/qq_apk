@@ -20,23 +20,23 @@ public class AioApolloHeadIconController
   
   private void c(Object paramObject)
   {
-    a(paramObject, 0, AIOUtils.b(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), ViewUtils.a(45.0F), ViewUtils.a(60.0F), false);
-  }
-  
-  public boolean a()
-  {
-    return AioApolloHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    a(paramObject, 0, AIOUtils.b(5.0F, this.c.getResources()), ViewUtils.dip2px(45.0F), ViewUtils.dip2px(60.0F), false);
   }
   
   protected void b()
   {
-    String str = a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    c(Util.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str));
+    String str = a(this.a);
+    c(Util.b(this.b, str));
+  }
+  
+  public boolean h()
+  {
+    return AioApolloHelper.a(this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.AioApolloHeadIconController
  * JD-Core Version:    0.7.0.1
  */

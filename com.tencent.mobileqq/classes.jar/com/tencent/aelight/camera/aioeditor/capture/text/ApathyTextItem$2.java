@@ -19,13 +19,13 @@ class ApathyTextItem$2
     ((StringBuilder)localObject).append(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
     ((StringBuilder)localObject).append(paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString());
     localObject = ((StringBuilder)localObject).toString();
-    this.jdField_a_of_type_Int = (((String)localObject).length() - TroopFileUtils.b((String)localObject).length() + 20);
+    this.b = (((String)localObject).length() - TroopFileUtils.c((String)localObject).length() + 20);
     return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.ApathyTextItem.2
  * JD-Core Version:    0.7.0.1
  */

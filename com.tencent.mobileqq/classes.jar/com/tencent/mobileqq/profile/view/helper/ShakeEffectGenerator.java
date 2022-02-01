@@ -7,22 +7,22 @@ import com.tencent.mobileqq.util.DisplayUtil;
 
 public class ShakeEffectGenerator
 {
-  private final int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new ShakeEffectGenerator.1(this);
-  private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private boolean jdField_a_of_type_Boolean = false;
+  private final int a;
   private final int b;
-  private int c = 0;
-  private int d = 0;
+  private View c;
+  private boolean d = false;
+  private int e = 0;
+  private int f = 0;
+  private TranslateAnimation g;
+  private Animation.AnimationListener h = new ShakeEffectGenerator.1(this);
   
   public ShakeEffectGenerator(View paramView)
   {
     if (paramView != null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_Int = DisplayUtil.a(this.jdField_a_of_type_AndroidViewView.getContext(), 15.0F);
-      double d1 = this.jdField_a_of_type_Int;
+      this.c = paramView;
+      this.a = DisplayUtil.a(this.c.getContext(), 15.0F);
+      double d1 = this.a;
       Double.isNaN(d1);
       this.b = ((int)(d1 / 1.5D));
       return;
@@ -32,9 +32,9 @@ public class ShakeEffectGenerator
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.c = 0;
-    this.d = 0;
+    this.d = false;
+    this.e = 0;
+    this.f = 0;
     int j;
     int i;
     int k;
@@ -51,34 +51,34 @@ public class ShakeEffectGenerator
       if (Math.random() <= 0.5D) {
         i = -i;
       }
-      k = this.c;
-      m = this.d;
-      n = this.jdField_a_of_type_Int;
+      k = this.e;
+      m = this.f;
+      n = this.a;
     } while ((j + k) * (j + k) + (i + m) * (i + m) > n * n);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(k, k + j, m, m + i);
-    this.c = (j + this.c);
-    this.d = (i + this.d);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(this.b * (int)(Math.random() * 30.0D + 50.0D));
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_AndroidViewView.getAnimation() == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
+    this.g = new TranslateAnimation(k, k + j, m, m + i);
+    this.e = (j + this.e);
+    this.f = (i + this.f);
+    this.g.setDuration(this.b * (int)(Math.random() * 30.0D + 50.0D));
+    this.g.setAnimationListener(this.h);
+    this.c.startAnimation(this.g);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    if (a()) {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.d = true;
+    if (c()) {
+      this.c.clearAnimation();
     }
+  }
+  
+  public boolean c()
+  {
+    return this.c.getAnimation() == this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.helper.ShakeEffectGenerator
  * JD-Core Version:    0.7.0.1
  */

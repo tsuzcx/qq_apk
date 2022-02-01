@@ -25,11 +25,11 @@ class MemoriesFeedListPageLoader$FeedIdPullSegment
   protected void a(JobContext paramJobContext, Integer paramInteger)
   {
     Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((FeedListPageLoaderBase.GetFeedIdListResult)localObject).a.size() <= 0) && (!((FeedListPageLoaderBase.GetFeedIdListResult)localObject).b))
+    if ((((FeedListPageLoaderBase.GetFeedIdListResult)localObject).a.size() <= 0) && (!((FeedListPageLoaderBase.GetFeedIdListResult)localObject).c))
     {
       localObject = new GetProfileFeedIdListRequest();
-      ((GetProfileFeedIdListRequest)localObject).a = this.a.a();
-      ((GetProfileFeedIdListRequest)localObject).b = QQStoryContext.a().b();
+      ((GetProfileFeedIdListRequest)localObject).e = this.a.c();
+      ((GetProfileFeedIdListRequest)localObject).f = QQStoryContext.a().i();
       CmdTaskManger.a().a((NetworkRequest)localObject, new MemoriesFeedListPageLoader.FeedIdPullSegment.1(this, paramJobContext, paramInteger));
       return;
     }

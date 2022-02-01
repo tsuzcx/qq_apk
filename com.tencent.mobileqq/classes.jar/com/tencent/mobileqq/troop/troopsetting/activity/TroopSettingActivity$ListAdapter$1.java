@@ -10,12 +10,12 @@ class TroopSettingActivity$ListAdapter$1
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$ListAdapter.a.runOnUiThread(new TroopSettingActivity.ListAdapter.1.1(this, paramString));
+    this.d.a.runOnUiThread(new TroopSettingActivity.ListAdapter.1.1(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.ListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,12 +22,12 @@ final class e
     //   23: aload_0
     //   24: getfield 12	com/tencent/featuretoggle/hltxkg/common/c/b/b/e:a	Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;
     //   27: aload 4
-    //   29: getfield 44	com/tencent/featuretoggle/hltxkg/common/c/b/b/c$a:jdField_a_of_type_Int	I
+    //   29: getfield 44	com/tencent/featuretoggle/hltxkg/common/c/b/b/c$a:b	I
     //   32: invokestatic 47	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:a	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;I)I
     //   35: istore_1
     //   36: lload_2
     //   37: aload 4
-    //   39: getfield 50	com/tencent/featuretoggle/hltxkg/common/c/b/b/c$a:jdField_a_of_type_Long	J
+    //   39: getfield 50	com/tencent/featuretoggle/hltxkg/common/c/b/b/c$a:a	J
     //   42: lsub
     //   43: iload_1
     //   44: i2l
@@ -35,22 +35,22 @@ final class e
     //   46: ifgt +13 -> 59
     //   49: lload_2
     //   50: aload 4
-    //   52: getfield 50	com/tencent/featuretoggle/hltxkg/common/c/b/b/c$a:jdField_a_of_type_Long	J
+    //   52: getfield 50	com/tencent/featuretoggle/hltxkg/common/c/b/b/c$a:a	J
     //   55: lcmp
     //   56: ifge +34 -> 90
     //   59: iconst_2
-    //   60: invokestatic 53	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:a	(I)I
+    //   60: invokestatic 53	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:b	(I)I
     //   63: pop
     //   64: aload_0
     //   65: getfield 12	com/tencent/featuretoggle/hltxkg/common/c/b/b/e:a	Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;
-    //   68: invokestatic 56	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:a	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;)Z
+    //   68: invokestatic 56	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:b	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;)Z
     //   71: ifne +19 -> 90
     //   74: invokestatic 61	com/tencent/featuretoggle/hltxkg/common/a/i:a	()Lcom/tencent/featuretoggle/hltxkg/common/a/i;
     //   77: invokevirtual 64	com/tencent/featuretoggle/hltxkg/common/a/i:b	()Ljava/util/concurrent/ThreadPoolExecutor;
     //   80: aload_0
     //   81: getfield 12	com/tencent/featuretoggle/hltxkg/common/c/b/b/e:a	Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;
-    //   84: invokestatic 67	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:a	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;)Ljava/lang/Runnable;
-    //   87: invokevirtual 73	java/util/concurrent/ThreadPoolExecutor:execute	(Ljava/lang/Runnable;)V
+    //   84: invokestatic 68	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:c	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;)Ljava/lang/Runnable;
+    //   87: invokevirtual 74	java/util/concurrent/ThreadPoolExecutor:execute	(Ljava/lang/Runnable;)V
     //   90: return
     //   91: astore 4
     //   93: aload 4
@@ -75,7 +75,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.c.b.b.e
  * JD-Core Version:    0.7.0.1
  */

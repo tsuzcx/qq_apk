@@ -96,7 +96,7 @@ public class PermissionListAdapter
       {
         paramView = new FormSimpleItem(this.context);
         paramView.a(true);
-        paramView.setLeftText(HardCodeUtil.a(2131694148));
+        paramView.setLeftText(HardCodeUtil.a(2131891778));
         paramView.setOnClickListener(this.subMsgPermissionClickListener);
         return paramView;
       }
@@ -105,7 +105,7 @@ public class PermissionListAdapter
       } else {
         paramView = new FormSwitchItem(this.context);
       }
-      paramView.a().setTag(localAuthorizeInfo.scopeName);
+      paramView.getSwitch().setTag(localAuthorizeInfo.scopeName);
       if (localAuthorizeInfo.authFlag != 2) {
         bool1 = false;
       }
@@ -136,7 +136,7 @@ public class PermissionListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PermissionListAdapter
  * JD-Core Version:    0.7.0.1
  */

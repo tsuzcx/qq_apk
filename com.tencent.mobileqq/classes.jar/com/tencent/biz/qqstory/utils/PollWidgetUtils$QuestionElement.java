@@ -11,7 +11,7 @@ public class PollWidgetUtils$QuestionElement
   public PollWidgetUtils$QuestionElement(PollWidgetUtils.WidgetWrapper paramWidgetWrapper, View paramView)
   {
     super(paramWidgetWrapper, paramView);
-    this.a = ((TextView)paramView.findViewById(2131378499));
+    this.a = ((TextView)paramView.findViewById(2131447114));
     this.a.setMaxLines(1);
     this.a.setSingleLine();
   }
@@ -29,11 +29,11 @@ public class PollWidgetUtils$QuestionElement
     this.a.setText(paramCharSequence);
   }
   
-  public void b_(boolean paramBoolean)
+  public void f_(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.a.setBackgroundResource(2130844614);
+      this.a.setBackgroundResource(2130845987);
       return;
     }
     this.a.setBackgroundResource(0);

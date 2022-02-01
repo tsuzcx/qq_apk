@@ -91,37 +91,6 @@ public class AuthorityUtil
     return BaseImageUtil.a(paramBitmap, paramInt1, paramInt1, paramInt2);
   }
   
-  public static Bitmap a(String paramString)
-  {
-    try
-    {
-      Object localObject = (HttpURLConnection)new URL(paramString).openConnection();
-      ((HttpURLConnection)localObject).setDoInput(true);
-      ((HttpURLConnection)localObject).connect();
-      localObject = ((HttpURLConnection)localObject).getInputStream();
-      Bitmap localBitmap = SafeBitmapFactory.decodeStream((InputStream)localObject);
-      ((InputStream)localObject).close();
-      return localBitmap;
-    }
-    catch (Exception localException)
-    {
-      SSOLog.b("AuthorityUtil", new Object[] { "-->getbitmap Exception, url = ", paramString, ", exception message : ", localException.getMessage() });
-      return null;
-      SSOLog.b("AuthorityUtil", new Object[] { "-->getbitmap decodeStream oom, url = ", paramString });
-      return null;
-    }
-    catch (IOException localIOException)
-    {
-      SSOLog.b("AuthorityUtil", new Object[] { "-->getbitmap IOException, url = ", paramString, ", exception message : ", localIOException.getMessage() });
-      return null;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      label73:
-      break label73;
-    }
-  }
-  
   public static Bundle a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
   {
     Bundle localBundle = new Bundle();
@@ -136,10 +105,10 @@ public class AuthorityUtil
     localBundle.putString("share_type", paramString8);
     localBundle.putString("detail", paramString9);
     localBundle.putString("os_ver", Build.VERSION.RELEASE);
-    localBundle.putString("network", APNUtil.a(CommonDataAdapter.a().a()));
-    localBundle.putString("apn", APNUtil.b(CommonDataAdapter.a().a()));
+    localBundle.putString("network", APNUtil.a(CommonDataAdapter.a().b()));
+    localBundle.putString("apn", APNUtil.b(CommonDataAdapter.a().b()));
     localBundle.putString("model_name", Build.MODEL);
-    localBundle.putString("qq_ver", CommonDataAdapter.a().c());
+    localBundle.putString("qq_ver", CommonDataAdapter.a().g());
     return localBundle;
   }
   
@@ -183,36 +152,6 @@ public class AuthorityUtil
       i += 2;
     }
     return localBundle;
-  }
-  
-  public static String a(Activity paramActivity)
-  {
-    Object localObject1 = "";
-    int i = 0;
-    while (i < 3)
-    {
-      localObject1 = paramActivity.getCallingPackage();
-      SSOLog.a("AuthorityUtil", new Object[] { "getPkgName=", localObject1 });
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        return localObject1;
-      }
-      Object localObject2 = paramActivity.getCallingActivity();
-      if (localObject2 == null)
-      {
-        SSOLog.b("AuthorityUtil", "getPkgName component=null");
-      }
-      else
-      {
-        localObject2 = ((ComponentName)localObject2).getPackageName();
-        SSOLog.a("AuthorityUtil", new Object[] { "getPkgName getPackageName=", localObject2 });
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          return localObject2;
-        }
-      }
-      i += 1;
-    }
-    return localObject1;
   }
   
   public static String a(Context paramContext, String paramString1, String paramString2)
@@ -309,16 +248,16 @@ public class AuthorityUtil
   
   public static String a(AuthResponse paramAuthResponse, Resources paramResources, int paramInt)
   {
-    String str2 = HardCodeUtil.a(2131694647);
+    String str2 = HardCodeUtil.a(2131892333);
     String str1 = str2;
     if (paramAuthResponse != null)
     {
       str1 = str2;
-      if (!TextUtils.isEmpty(paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBStringField.get())) {
-        str1 = paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBStringField.get();
+      if (!TextUtils.isEmpty(paramAuthResponse.b.get())) {
+        str1 = paramAuthResponse.b.get();
       }
     }
-    return String.format(paramResources.getString(2131696495), new Object[] { str1, Integer.valueOf(paramInt) });
+    return String.format(paramResources.getString(2131894269), new Object[] { str1, Integer.valueOf(paramInt) });
   }
   
   public static String a(String paramString)
@@ -359,40 +298,13 @@ public class AuthorityUtil
         }
       }
     }
-    paramList = AuthParamUtil.a(paramIntent, "login_success_uin");
+    paramList = AuthParamUtil.b(paramIntent, "login_success_uin");
     if ((!TextUtils.isEmpty(paramList)) && (!paramList.equals(localObject)))
     {
       SSOLog.a("AuthorityUtil", new Object[] { "--> getCurrentUin set currentUin=", a(paramList) });
       return paramList;
     }
     return localObject;
-  }
-  
-  public static String a(Object... paramVarArgs)
-  {
-    int i = 0;
-    if ((paramVarArgs != null) && (paramVarArgs.length % 2 == 0))
-    {
-      int j = paramVarArgs.length;
-      JSONObject localJSONObject = new JSONObject();
-      for (;;)
-      {
-        if (i < j - 1) {
-          try
-          {
-            localJSONObject.put(String.valueOf(paramVarArgs[i]), paramVarArgs[(i + 1)]);
-            i += 2;
-          }
-          catch (JSONException paramVarArgs)
-          {
-            SSOLog.a("AuthorityUtil", "JSONException", paramVarArgs);
-          }
-        }
-      }
-      return localJSONObject.toString();
-    }
-    SSOLog.a("AuthorityUtil", new Object[] { "toJSONString invalid params" });
-    return "";
   }
   
   public static HashMap<String, String> a(String... paramVarArgs)
@@ -414,29 +326,29 @@ public class AuthorityUtil
   public static JSONObject a(AuthResponse paramAuthResponse, long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("ret", paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get());
-    localJSONObject.put("openid", paramAuthResponse.c.get());
-    localJSONObject.put("access_token", paramAuthResponse.jdField_b_of_type_ComTencentMobileqqPbPBStringField.get());
-    localJSONObject.put("pay_token", paramAuthResponse.d.get());
-    localJSONObject.put("expires_in", paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBInt64Field.get());
+    localJSONObject.put("ret", paramAuthResponse.a.get());
+    localJSONObject.put("openid", paramAuthResponse.e.get());
+    localJSONObject.put("access_token", paramAuthResponse.c.get());
+    localJSONObject.put("pay_token", paramAuthResponse.f.get());
+    localJSONObject.put("expires_in", paramAuthResponse.d.get());
     if (paramBoolean)
     {
-      localJSONObject.put("code", paramAuthResponse.n.get());
-      localJSONObject.put("proxy_code", paramAuthResponse.jdField_a_of_type_ComTencentQconnProtofileAuth$ProxyAuthResponse.code.get());
-      localJSONObject.put("proxy_expires_in", paramAuthResponse.jdField_a_of_type_ComTencentQconnProtofileAuth$ProxyAuthResponse.expires_in.get());
+      localJSONObject.put("code", paramAuthResponse.s.get());
+      localJSONObject.put("proxy_code", paramAuthResponse.r.code.get());
+      localJSONObject.put("proxy_expires_in", paramAuthResponse.r.expires_in.get());
     }
-    localJSONObject.put("pf", paramAuthResponse.f.get());
-    localJSONObject.put("pfkey", paramAuthResponse.g.get());
-    localJSONObject.put("msg", paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBStringField.get());
-    if (paramAuthResponse.jdField_b_of_type_ComTencentMobileqqPbPBUInt32Field.has()) {
-      localJSONObject.put("sendinstall", paramAuthResponse.jdField_b_of_type_ComTencentMobileqqPbPBUInt32Field.get());
+    localJSONObject.put("pf", paramAuthResponse.h.get());
+    localJSONObject.put("pfkey", paramAuthResponse.i.get());
+    localJSONObject.put("msg", paramAuthResponse.b.get());
+    if (paramAuthResponse.l.has()) {
+      localJSONObject.put("sendinstall", paramAuthResponse.l.get());
     }
-    if ((paramAuthResponse.j.has()) && (!TextUtils.isEmpty(paramAuthResponse.j.get()))) {
-      localJSONObject.put("installwording", paramAuthResponse.j.get());
+    if ((paramAuthResponse.m.has()) && (!TextUtils.isEmpty(paramAuthResponse.m.get()))) {
+      localJSONObject.put("installwording", paramAuthResponse.m.get());
     }
-    if ((paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField.has()) && (paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField.size() > 0))
+    if ((paramAuthResponse.n.has()) && (paramAuthResponse.n.size() > 0))
     {
-      paramAuthResponse = paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField.get().iterator();
+      paramAuthResponse = paramAuthResponse.n.get().iterator();
       while (paramAuthResponse.hasNext())
       {
         appType.PassData localPassData = (appType.PassData)paramAuthResponse.next();
@@ -447,22 +359,6 @@ public class AuthorityUtil
     localJSONObject.put("query_authority_cost", paramLong2);
     localJSONObject.put("authority_cost", paramLong3);
     return localJSONObject;
-  }
-  
-  public static JSONObject a(String paramString)
-  {
-    try
-    {
-      paramString = new URL(paramString.replace("auth://", "https://"));
-      JSONObject localJSONObject = a(new JSONObject(), paramString.getQuery());
-      a(localJSONObject, paramString.getRef());
-      return localJSONObject;
-    }
-    catch (Exception paramString)
-    {
-      SSOLog.a("AuthorityUtil", "parseUrlToJson", paramString);
-    }
-    return new JSONObject();
   }
   
   private static JSONObject a(JSONObject paramJSONObject, String paramString)
@@ -494,27 +390,6 @@ public class AuthorityUtil
     }
   }
   
-  public static void a(Activity paramActivity)
-  {
-    if (ImmersiveUtils.isSupporImmersive() == 1)
-    {
-      int i = paramActivity.getResources().getColor(2131167394);
-      localObject = new SystemBarCompact(paramActivity, true, i);
-      ((SystemBarCompact)localObject).setStatusBarColor(i);
-      ((SystemBarCompact)localObject).init();
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(Build.MANUFACTURER);
-    ((StringBuilder)localObject).append(Build.MODEL);
-    localObject = ((StringBuilder)localObject).toString();
-    if ((!((String)localObject).equals("MeizuPRO 7-S")) && (!((String)localObject).equalsIgnoreCase("MeizuM711C"))) {
-      ImmersiveUtils.trySetImmersiveStatusBar(paramActivity.getWindow());
-    } else {
-      ImmersiveUtils.clearCoverForStatus(paramActivity.getWindow(), true);
-    }
-    ImmersiveUtils.setStatusTextColor(true, paramActivity.getWindow());
-  }
-  
   public static void a(Context paramContext)
   {
     Intent localIntent = new Intent();
@@ -536,11 +411,6 @@ public class AuthorityUtil
     if (paramBoolean) {
       paramPBStringField.set("support_110537=1");
     }
-  }
-  
-  public static void a(String paramString)
-  {
-    a(null, paramString, null);
   }
   
   public static void a(AppRuntime paramAppRuntime, String paramString)
@@ -762,25 +632,6 @@ public class AuthorityUtil
     return paramMessageMicro;
   }
   
-  public static byte[] a(String paramString)
-  {
-    GatewayVerify.ReqBody localReqBody = new GatewayVerify.ReqBody();
-    Object localObject = new GatewayVerify.ReqConnectLogin();
-    PBStringField localPBStringField = ((GatewayVerify.ReqConnectLogin)localObject).str_connect_data;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("appid=");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("&sdkp=a");
-    localPBStringField.set(localStringBuilder.toString());
-    localReqBody.msg_req_connect_login.set((MessageMicro)localObject);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getConnectData appid=");
-    ((StringBuilder)localObject).append(paramString);
-    ((StringBuilder)localObject).append("&sdkp=a");
-    SSOLog.b("AuthorityUtil", new Object[] { ((StringBuilder)localObject).toString() });
-    return localReqBody.toByteArray();
-  }
-  
   public static byte[] a(String paramString, AppRuntime paramAppRuntime, boolean paramBoolean)
   {
     if (TextUtils.isEmpty(paramString))
@@ -825,7 +676,7 @@ public class AuthorityUtil
   
   public static Object[] a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3)
   {
-    boolean bool2 = AuthMemoryCache.a().a(paramString1);
+    boolean bool2 = AuthMemoryCache.a().b(paramString1);
     Object localObject = paramAppRuntime.getAccount();
     if ((!bool2) && (TextUtils.equals((CharSequence)localObject, paramString1)))
     {
@@ -894,6 +745,54 @@ public class AuthorityUtil
     return null;
   }
   
+  public static String b(Object... paramVarArgs)
+  {
+    int i = 0;
+    if ((paramVarArgs != null) && (paramVarArgs.length % 2 == 0))
+    {
+      int j = paramVarArgs.length;
+      JSONObject localJSONObject = new JSONObject();
+      for (;;)
+      {
+        if (i < j - 1) {
+          try
+          {
+            localJSONObject.put(String.valueOf(paramVarArgs[i]), paramVarArgs[(i + 1)]);
+            i += 2;
+          }
+          catch (JSONException paramVarArgs)
+          {
+            SSOLog.a("AuthorityUtil", "JSONException", paramVarArgs);
+          }
+        }
+      }
+      return localJSONObject.toString();
+    }
+    SSOLog.a("AuthorityUtil", new Object[] { "toJSONString invalid params" });
+    return "";
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    if (ImmersiveUtils.isSupporImmersive() == 1)
+    {
+      int i = paramActivity.getResources().getColor(2131168464);
+      localObject = new SystemBarCompact(paramActivity, true, i);
+      ((SystemBarCompact)localObject).setStatusBarColor(i);
+      ((SystemBarCompact)localObject).init();
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append(Build.MODEL);
+    localObject = ((StringBuilder)localObject).toString();
+    if ((!((String)localObject).equals("MeizuPRO 7-S")) && (!((String)localObject).equalsIgnoreCase("MeizuM711C"))) {
+      ImmersiveUtils.trySetImmersiveStatusBar(paramActivity.getWindow());
+    } else {
+      ImmersiveUtils.clearCoverForStatus(paramActivity.getWindow(), true);
+    }
+    ImmersiveUtils.setStatusTextColor(true, paramActivity.getWindow());
+  }
+  
   public static boolean b(WtloginManager paramWtloginManager, String paramString)
   {
     if (paramWtloginManager == null)
@@ -926,10 +825,111 @@ public class AuthorityUtil
     SSOLog.a("AuthorityUtil", new Object[] { paramWtloginManager.toString() });
     return false;
   }
+  
+  public static byte[] b(String paramString)
+  {
+    GatewayVerify.ReqBody localReqBody = new GatewayVerify.ReqBody();
+    Object localObject = new GatewayVerify.ReqConnectLogin();
+    PBStringField localPBStringField = ((GatewayVerify.ReqConnectLogin)localObject).str_connect_data;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("appid=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("&sdkp=a");
+    localPBStringField.set(localStringBuilder.toString());
+    localReqBody.msg_req_connect_login.set((MessageMicro)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getConnectData appid=");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("&sdkp=a");
+    SSOLog.b("AuthorityUtil", new Object[] { ((StringBuilder)localObject).toString() });
+    return localReqBody.toByteArray();
+  }
+  
+  public static String c(Activity paramActivity)
+  {
+    Object localObject1 = "";
+    int i = 0;
+    while (i < 3)
+    {
+      localObject1 = paramActivity.getCallingPackage();
+      SSOLog.a("AuthorityUtil", new Object[] { "getPkgName=", localObject1 });
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        return localObject1;
+      }
+      Object localObject2 = paramActivity.getCallingActivity();
+      if (localObject2 == null)
+      {
+        SSOLog.b("AuthorityUtil", "getPkgName component=null");
+      }
+      else
+      {
+        localObject2 = ((ComponentName)localObject2).getPackageName();
+        SSOLog.a("AuthorityUtil", new Object[] { "getPkgName getPackageName=", localObject2 });
+        localObject1 = localObject2;
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          return localObject2;
+        }
+      }
+      i += 1;
+    }
+    return localObject1;
+  }
+  
+  public static JSONObject c(String paramString)
+  {
+    try
+    {
+      paramString = new URL(paramString.replace("auth://", "https://"));
+      JSONObject localJSONObject = a(new JSONObject(), paramString.getQuery());
+      a(localJSONObject, paramString.getRef());
+      return localJSONObject;
+    }
+    catch (Exception paramString)
+    {
+      SSOLog.a("AuthorityUtil", "parseUrlToJson", paramString);
+    }
+    return new JSONObject();
+  }
+  
+  public static Bitmap d(String paramString)
+  {
+    try
+    {
+      Object localObject = (HttpURLConnection)new URL(paramString).openConnection();
+      ((HttpURLConnection)localObject).setDoInput(true);
+      ((HttpURLConnection)localObject).connect();
+      localObject = ((HttpURLConnection)localObject).getInputStream();
+      Bitmap localBitmap = SafeBitmapFactory.decodeStream((InputStream)localObject);
+      ((InputStream)localObject).close();
+      return localBitmap;
+    }
+    catch (Exception localException)
+    {
+      SSOLog.b("AuthorityUtil", new Object[] { "-->getbitmap Exception, url = ", paramString, ", exception message : ", localException.getMessage() });
+      return null;
+      SSOLog.b("AuthorityUtil", new Object[] { "-->getbitmap decodeStream oom, url = ", paramString });
+      return null;
+    }
+    catch (IOException localIOException)
+    {
+      SSOLog.b("AuthorityUtil", new Object[] { "-->getbitmap IOException, url = ", paramString, ", exception message : ", localIOException.getMessage() });
+      return null;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label75:
+      break label75;
+    }
+  }
+  
+  public static void e(String paramString)
+  {
+    a(null, paramString, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.util.AuthorityUtil
  * JD-Core Version:    0.7.0.1
  */

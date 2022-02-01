@@ -14,10 +14,10 @@ public class LabelTextView
   extends TextView
   implements ThemeImageWrapper.DrawInterface
 {
-  private int jdField_a_of_type_Int = 2147483647;
   protected ThemeImageWrapper a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  private int b = 2147483647;
+  private boolean c = false;
+  private boolean d = false;
   
   public LabelTextView(Context paramContext)
   {
@@ -48,16 +48,16 @@ public class LabelTextView
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper = new ThemeImageWrapper();
-    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper.setSupportMaskView(true);
-    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper.setMaskShape(ThemeImageWrapper.MODE_OTHER);
+    this.a = new ThemeImageWrapper();
+    this.a.setSupportMaskView(true);
+    this.a.setMaskShape(ThemeImageWrapper.MODE_OTHER);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.b)
+    if (this.d)
     {
-      ThemeImageWrapper localThemeImageWrapper = this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper;
+      ThemeImageWrapper localThemeImageWrapper = this.a;
       if (localThemeImageWrapper != null)
       {
         localThemeImageWrapper.onDraw(paramCanvas, this);
@@ -70,8 +70,8 @@ public class LabelTextView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.jdField_a_of_type_Boolean) {
-      if (getMeasuredWidth() < this.jdField_a_of_type_Int)
+    if (this.c) {
+      if (getMeasuredWidth() < this.b)
       {
         if (getVisibility() == 0) {
           setVisibility(8);
@@ -85,14 +85,14 @@ public class LabelTextView
   
   public void setMinWidthCheck(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     boolean bool;
     if (paramInt > 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.c = bool;
   }
   
   public void setParam(int paramInt1, int paramInt2, float paramFloat)
@@ -111,7 +111,7 @@ public class LabelTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.LabelTextView
  * JD-Core Version:    0.7.0.1
  */

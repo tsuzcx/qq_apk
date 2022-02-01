@@ -68,15 +68,15 @@ class QQServiceForAV$4
       localObject3 = ???;
     }
     label175:
-    synchronized (this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV.a)
+    synchronized (this.c.m)
     {
-      i = this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV.a.beginBroadcast();
+      i = this.c.m.beginBroadcast();
       for (;;)
       {
         if (paramInt < i) {
           try
           {
-            ((IQQServiceCallback)this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV.a.getBroadcastItem(paramInt)).a(bool, this.jdField_a_of_type_JavaLangString, this.b, (String)localObject3);
+            ((IQQServiceCallback)this.c.m.getBroadcastItem(paramInt)).a(bool, this.a, this.b, (String)localObject3);
             paramInt += 1;
           }
           catch (RemoteException localRemoteException)
@@ -91,7 +91,7 @@ class QQServiceForAV$4
           }
         }
       }
-      this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV.a.finishBroadcast();
+      this.c.m.finishBroadcast();
       return;
     }
     for (;;)

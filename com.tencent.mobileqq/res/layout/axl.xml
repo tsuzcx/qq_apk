@@ -16,7 +16,7 @@
         <com.tencent.widget.RoundRelativeLayout android:id="@id/chb" android:layout_width="55.0dip" android:layout_height="28.0dip" android:layout_centerVertical="true" />
         <RelativeLayout android:id="@id/chc" android:layout_width="55.0dip" android:layout_height="28.0dip" android:layout_centerVertical="true">
             <TextView android:textSize="20.0dip" android:id="@id/chd" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="0.0dip" android:text="+" android:layout_alignParentLeft="true" />
-            <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/cgp" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginLeft="20.0dip" android:text="@string/qxj" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/cgp" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginLeft="20.0dip" android:text="@string/ka2" android:layout_centerVertical="true" />
             <View android:id="@id/chi" android:background="@drawable/eyg" android:visibility="gone" android:layout_width="22.0dip" android:layout_height="16.0dip" android:layout_centerInParent="true" />
         </RelativeLayout>
         <com.tencent.widget.RoundRelativeLayout android:id="@id/cha" android:layout_width="55.0dip" android:layout_height="28.0dip" android:layout_centerVertical="true">

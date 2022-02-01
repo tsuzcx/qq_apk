@@ -11,25 +11,25 @@ class SignTextEditFragment$10
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    SignTextEditFragment localSignTextEditFragment = this.a;
-    SignTextEditFragment.a(localSignTextEditFragment, localSignTextEditFragment.a, paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
     if (this.a.getBaseActivity() == null) {
       return;
     }
     if (paramInt == -1) {
-      QQToast.a(this.a.getBaseActivity(), 2131718834, 1).a();
+      QQToast.makeText(this.a.getBaseActivity(), 2131916364, 1).show();
     }
     SignTextEditFragment localSignTextEditFragment = this.a;
-    SignTextEditFragment.a(localSignTextEditFragment, localSignTextEditFragment.a, SignTextEditFragment.a(this.a).b());
+    SignTextEditFragment.a(localSignTextEditFragment, localSignTextEditFragment.m, SignTextEditFragment.c(this.a).d());
+  }
+  
+  public void b(int paramInt, boolean paramBoolean)
+  {
+    SignTextEditFragment localSignTextEditFragment = this.a;
+    SignTextEditFragment.a(localSignTextEditFragment, localSignTextEditFragment.m, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment.10
  * JD-Core Version:    0.7.0.1
  */

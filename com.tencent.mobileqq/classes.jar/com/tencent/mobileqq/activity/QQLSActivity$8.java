@@ -25,7 +25,7 @@ class QQLSActivity$8
       ((StringBuilder)localObject1).append(paramBoolean1);
       QLog.d("MsgRevoke", 4, ((StringBuilder)localObject1).toString());
     }
-    this.a.a.removeMessages(267387140);
+    this.a.v.removeMessages(267387140);
     Object localObject1 = new ArrayList();
     Object localObject2;
     if ((paramList != null) && (paramList.size() > 0))
@@ -45,9 +45,9 @@ class QQLSActivity$8
     if ((paramBoolean1) && (!((List)localObject1).isEmpty()) && (((ChatMessage)((List)localObject1).get(0) instanceof MessageForPtt)))
     {
       localObject1 = (MessageForPtt)((List)localObject1).get(0);
-      localObject2 = MediaPlayerManager.a(QQLSActivity.a(this.a)).a();
+      localObject2 = MediaPlayerManager.a(QQLSActivity.i(this.a)).f();
       if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).frienduin != null) && (((ChatMessage)localObject2).frienduin.equals(((MessageForPtt)localObject1).frienduin)) && (((ChatMessage)localObject2).uniseq == ((MessageForPtt)localObject1).uniseq))) {
-        MediaPlayerManager.a(QQLSActivity.a(this.a)).a(true);
+        MediaPlayerManager.a(QQLSActivity.i(this.a)).a(true);
       }
     }
     super.onMsgRevokeNotice(paramBoolean1, paramList, paramBoolean2);
@@ -55,7 +55,7 @@ class QQLSActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.8
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ public class QQAladdinPrefUtils
 {
   public static int a(int paramInt)
   {
-    SharedPreferences localSharedPreferences = a();
+    SharedPreferences localSharedPreferences = c();
     if (localSharedPreferences == null)
     {
       Log.e("AladdinPrefUtils", "getConfigVersionById: return 0 for sp is null");
@@ -28,24 +28,36 @@ public class QQAladdinPrefUtils
     return localSharedPreferences.getInt(localStringBuilder.toString(), 0);
   }
   
-  private static SharedPreferences a()
+  public static void a()
   {
-    AppRuntime localAppRuntime = ((IRIJRuntimeUtils)QRoute.api(IRIJRuntimeUtils.class)).getAppRuntime();
-    if (localAppRuntime == null)
+    Log.d("AladdinPrefUtils", "clearAladdinCommonConfigs");
+    SharedPreferences localSharedPreferences = c();
+    if (localSharedPreferences == null)
     {
-      Log.e("AladdinPrefUtils", "getSharedPreferences: null for runtime is null");
-      return null;
+      Log.d("AladdinPrefUtils", "clearAladdinCommonConfigs: sp is null");
+      return;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("readinjoy_sp_aladdin_");
-    ((StringBuilder)localObject).append(localAppRuntime.getAccount());
-    localObject = ((StringBuilder)localObject).toString();
-    return localAppRuntime.getApplication().getSharedPreferences((String)localObject, 0);
+    localSharedPreferences.edit().clear().apply();
   }
   
-  public static String a()
+  public static void a(int paramInt1, int paramInt2)
   {
-    Object localObject1 = a();
+    Object localObject = c();
+    if (localObject == null)
+    {
+      Log.e("AladdinPrefUtils", "setConfigVersionById: sp is null");
+      return;
+    }
+    localObject = ((SharedPreferences)localObject).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("config_version_");
+    localStringBuilder.append(paramInt1);
+    ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), paramInt2).apply();
+  }
+  
+  public static String b()
+  {
+    Object localObject1 = c();
     if (localObject1 != null)
     {
       localObject1 = ((SharedPreferences)localObject1).getAll();
@@ -70,36 +82,24 @@ public class QQAladdinPrefUtils
     return "error";
   }
   
-  public static void a()
+  private static SharedPreferences c()
   {
-    Log.d("AladdinPrefUtils", "clearAladdinCommonConfigs");
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null)
+    AppRuntime localAppRuntime = ((IRIJRuntimeUtils)QRoute.api(IRIJRuntimeUtils.class)).getAppRuntime();
+    if (localAppRuntime == null)
     {
-      Log.d("AladdinPrefUtils", "clearAladdinCommonConfigs: sp is null");
-      return;
+      Log.e("AladdinPrefUtils", "getSharedPreferences: null for runtime is null");
+      return null;
     }
-    localSharedPreferences.edit().clear().apply();
-  }
-  
-  public static void a(int paramInt1, int paramInt2)
-  {
-    Object localObject = a();
-    if (localObject == null)
-    {
-      Log.e("AladdinPrefUtils", "setConfigVersionById: sp is null");
-      return;
-    }
-    localObject = ((SharedPreferences)localObject).edit();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("config_version_");
-    localStringBuilder.append(paramInt1);
-    ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), paramInt2).apply();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("readinjoy_sp_aladdin_");
+    ((StringBuilder)localObject).append(localAppRuntime.getAccount());
+    localObject = ((StringBuilder)localObject).toString();
+    return localAppRuntime.getApplication().getSharedPreferences((String)localObject, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.QQAladdinPrefUtils
  * JD-Core Version:    0.7.0.1
  */

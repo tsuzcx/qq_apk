@@ -13,13 +13,6 @@ public abstract class SimpleRemoteEmoticon
   extends BaseEmoticonExposure
   implements IStickerRecEmoticon
 {
-  public URLDrawable.URLDrawableOptions a()
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mExtraInfo = this;
-    return localURLDrawableOptions;
-  }
-  
   public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
     if (paramURL == null) {
@@ -30,12 +23,33 @@ public abstract class SimpleRemoteEmoticon
     return paramURL;
   }
   
-  public URL a()
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt) {}
+  
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo) {}
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public URLDrawable.URLDrawableOptions c()
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mExtraInfo = this;
+    return localURLDrawableOptions;
+  }
+  
+  public int j()
+  {
+    return 1;
+  }
+  
+  public URL k()
   {
     URL localURL2;
     try
     {
-      URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((StickerRecData)this).l());
+      URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((StickerRecData)this).y());
     }
     catch (MalformedURLException localMalformedURLException)
     {
@@ -53,28 +67,14 @@ public abstract class SimpleRemoteEmoticon
     return localURL2;
   }
   
-  public void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt) {}
-  
-  public void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public String d()
+  public String m()
   {
     return "z-";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.SimpleRemoteEmoticon
  * JD-Core Version:    0.7.0.1
  */

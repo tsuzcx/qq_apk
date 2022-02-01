@@ -10,10 +10,10 @@ class MultiVideoCtrlLayerUIBase$RefreshFaceRunnable
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI != null) {
-      this.this$0.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a();
+    if (this.this$0.t != null) {
+      this.this$0.t.a();
     }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 2000L);
+    this.this$0.al.a().postDelayed(this, 2000L);
   }
 }
 

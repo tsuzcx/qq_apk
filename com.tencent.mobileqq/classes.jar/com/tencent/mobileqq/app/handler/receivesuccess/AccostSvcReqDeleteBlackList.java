@@ -14,7 +14,7 @@ public class AccostSvcReqDeleteBlackList
       String str = paramToServiceMsg.extraData.getString("deleteUin");
       int i = paramToServiceMsg.extraData.getInt("fromType");
       if (paramFromServiceMsg.getResultCode() == 1000) {
-        paramMessageHandler.b(str);
+        paramMessageHandler.c(str);
       }
       boolean bool;
       if (paramFromServiceMsg.getResultCode() == 1000) {
@@ -28,7 +28,7 @@ public class AccostSvcReqDeleteBlackList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.AccostSvcReqDeleteBlackList
  * JD-Core Version:    0.7.0.1
  */

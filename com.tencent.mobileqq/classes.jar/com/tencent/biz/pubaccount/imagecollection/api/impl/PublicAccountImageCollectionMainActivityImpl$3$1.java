@@ -9,16 +9,16 @@ class PublicAccountImageCollectionMainActivityImpl$3$1
   
   public void run()
   {
-    TextView localTextView = this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiImplPublicAccountImageCollectionMainActivityImpl$3.a.zanCountText;
+    TextView localTextView = this.b.a.zanCountText;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localTextView.setText(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionMainActivityImpl.3.1
  * JD-Core Version:    0.7.0.1
  */

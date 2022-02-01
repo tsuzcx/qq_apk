@@ -22,8 +22,8 @@ public final class AvatarBadgeDisplay$handleLoadUserInfoSucceed$1
   public void onLoadFialed(@Nullable URLDrawable paramURLDrawable, @Nullable Throwable paramThrowable)
   {
     QLog.e("AvatarBadgeDisplay", 2, paramThrowable, new Object[] { "handleLoadUserInfoSucceed, onLoadFialed" });
-    paramURLDrawable = this.jdField_a_of_type_KotlinJvmFunctionsFunction2;
-    long l = Long.parseLong(this.jdField_a_of_type_JavaLangString);
+    paramURLDrawable = this.a;
+    long l = Long.parseLong(this.b);
     paramThrowable = ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).getDefaultFaceDrawable(true);
     Intrinsics.checkExpressionValueIsNotNull(paramThrowable, "QRoute.api(IQQAvatarUtil…DefaultFaceDrawable(true)");
     paramURLDrawable.invoke(Long.valueOf(l), paramThrowable);
@@ -35,11 +35,11 @@ public final class AvatarBadgeDisplay$handleLoadUserInfoSucceed$1
   {
     if (paramURLDrawable != null)
     {
-      this.jdField_a_of_type_KotlinJvmFunctionsFunction2.invoke(Long.valueOf(Long.parseLong(this.jdField_a_of_type_JavaLangString)), paramURLDrawable);
+      this.a.invoke(Long.valueOf(Long.parseLong(this.b)), paramURLDrawable);
       return;
     }
-    paramURLDrawable = this.jdField_a_of_type_KotlinJvmFunctionsFunction2;
-    long l = Long.parseLong(this.jdField_a_of_type_JavaLangString);
+    paramURLDrawable = this.a;
+    long l = Long.parseLong(this.b);
     Drawable localDrawable = ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).getDefaultFaceDrawable(true);
     Intrinsics.checkExpressionValueIsNotNull(localDrawable, "QRoute.api(IQQAvatarUtil…DefaultFaceDrawable(true)");
     paramURLDrawable.invoke(Long.valueOf(l), localDrawable);
@@ -47,7 +47,7 @@ public final class AvatarBadgeDisplay$handleLoadUserInfoSucceed$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.badge.AvatarBadgeDisplay.handleLoadUserInfoSucceed.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class WordChainHbFragment$2$1
   
   public void onClick(View paramView)
   {
-    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplWordChainHbFragment$2.this$0);
-    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplWordChainHbFragment$2.this$0, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplWordChainHbFragment$WordChainTypeLabel);
-    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplWordChainHbFragment$2.this$0, this.jdField_a_of_type_AndroidWidgetTextView);
+    WordChainHbFragment.d(this.c.this$0);
+    WordChainHbFragment.a(this.c.this$0, this.a, this.b);
+    WordChainHbFragment.a(this.c.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.WordChainHbFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

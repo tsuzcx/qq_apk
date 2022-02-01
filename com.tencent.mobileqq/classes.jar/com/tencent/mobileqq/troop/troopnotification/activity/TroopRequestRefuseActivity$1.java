@@ -13,12 +13,12 @@ class TroopRequestRefuseActivity$1
   {
     if (this.a.length() > 25)
     {
-      this.this$0.a.setTextColor(-65536);
+      this.this$0.c.setTextColor(-65536);
       TroopRequestRefuseActivity.a(this.this$0, false);
     }
     else
     {
-      this.this$0.a.setTextColor(Color.rgb(119, 119, 119));
+      this.this$0.c.setTextColor(Color.rgb(119, 119, 119));
       TroopRequestRefuseActivity.b(this.this$0, true);
     }
     Object localObject = new StringBuilder();
@@ -33,12 +33,12 @@ class TroopRequestRefuseActivity$1
       ((StringBuilder)localObject).append("…");
       localObject = ((StringBuilder)localObject).toString();
     }
-    this.this$0.a.setText((CharSequence)localObject);
+    this.this$0.c.setText((CharSequence)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestRefuseActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ final class NetworkUtils$1
   {
     if (paramBoolean)
     {
-      NetworkUtils.a(this.a);
+      NetworkUtils.f(this.a);
       return;
     }
     NetworkUtils.a("");

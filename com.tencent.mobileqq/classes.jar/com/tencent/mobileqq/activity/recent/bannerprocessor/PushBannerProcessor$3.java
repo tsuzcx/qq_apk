@@ -21,12 +21,12 @@ class PushBannerProcessor$3
     PushBanner localPushBanner = (PushBanner)paramView.getTag();
     if (localPushBanner != null)
     {
-      localPushBanner.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.f();
+      localPushBanner.m.l();
       int i = 0;
       try
       {
-        if (!TextUtils.isEmpty(localPushBanner.jdField_a_of_type_JavaLangString)) {
-          i = Integer.parseInt(localPushBanner.jdField_a_of_type_JavaLangString);
+        if (!TextUtils.isEmpty(localPushBanner.a)) {
+          i = Integer.parseInt(localPushBanner.a);
         }
       }
       catch (Throwable localThrowable)
@@ -34,17 +34,17 @@ class PushBannerProcessor$3
         localThrowable.printStackTrace();
         i = 0;
       }
-      ReportController.b(PushBannerProcessor.g(this.a).getAppRuntime(), "dc00898", "", "", "0X80087C1", "0X80087C1", i, 0, "", "", "", "");
-      ConfigManager localConfigManager = new ConfigManager(PushBannerProcessor.h(this.a).getApplicationContext(), ConfigServlet.jdField_a_of_type_JavaLangString);
-      localConfigManager.b();
+      ReportController.b(PushBannerProcessor.h(this.a).getAppRuntime(), "dc00898", "", "", "0X80087C1", "0X80087C1", i, 0, "", "", "", "");
+      ConfigManager localConfigManager = new ConfigManager(PushBannerProcessor.i(this.a).getApplicationContext(), ConfigServlet.a);
       localConfigManager.c();
+      localConfigManager.d();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.PushBannerProcessor.3
  * JD-Core Version:    0.7.0.1
  */

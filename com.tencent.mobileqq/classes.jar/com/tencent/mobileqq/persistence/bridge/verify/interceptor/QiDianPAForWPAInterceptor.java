@@ -8,7 +8,7 @@ public class QiDianPAForWPAInterceptor
 {
   public Class a(Interceptor.Chain<Class> paramChain)
   {
-    if (QidianPAForWpa.class.getSimpleName().equals(a(paramChain))) {
+    if (QidianPAForWpa.class.getSimpleName().equals(b(paramChain))) {
       return QidianPAForWpa.class;
     }
     return (Class)paramChain.proceed();
@@ -16,7 +16,7 @@ public class QiDianPAForWPAInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.QiDianPAForWPAInterceptor
  * JD-Core Version:    0.7.0.1
  */

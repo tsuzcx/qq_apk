@@ -14,10 +14,10 @@ final class CommentProteusListenerUtil$Companion$initSecondPageReplyCommentClick
   
   public final void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter;
+    paramViewBase = this.a;
     if (paramViewBase != null)
     {
-      ((ReadInJoySecondCommentListAdapter)paramViewBase).b(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem);
+      ((ReadInJoySecondCommentListAdapter)paramViewBase).b(this.b);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.kandian.biz.comment.ReadInJoySecondCommentListAdapter");
@@ -25,7 +25,7 @@ final class CommentProteusListenerUtil$Companion$initSecondPageReplyCommentClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion.initSecondPageReplyCommentClickListener.1.configClickListener.1
  * JD-Core Version:    0.7.0.1
  */

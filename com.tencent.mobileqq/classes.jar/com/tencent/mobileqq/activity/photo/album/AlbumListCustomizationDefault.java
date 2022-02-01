@@ -28,31 +28,31 @@ public class AlbumListCustomizationDefault
   implements AlbumListCustomization.IalbumListAdapterCallBack
 {
   protected AlbumListData a;
-  protected AlbumListFragment a;
+  protected AlbumListFragment b;
   
   public AlbumListCustomizationDefault(AbstractAlbumListFragment paramAbstractAlbumListFragment)
   {
     super(paramAbstractAlbumListFragment);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListFragment = ((AlbumListFragment)paramAbstractAlbumListFragment);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListCustomization$IalbumListAdapterCallBack = this;
-    this.a = new AlbumListData();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData = ((AlbumListData)this.a);
+    this.b = ((AlbumListFragment)paramAbstractAlbumListFragment);
+    this.g = this;
+    this.f = new AlbumListData();
+    this.a = ((AlbumListData)this.f);
   }
   
   public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     paramView = super.a(paramInt, paramView, paramViewGroup);
-    Object localObject1 = a();
+    Object localObject1 = d();
     Object localObject2 = ((NewAlbumListAdapter)localObject1).a(paramInt);
     paramViewGroup = (TextView)paramView;
     if (((QQAlbumInfo)localObject2).id.equals("qzone_album"))
     {
-      localObject2 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130847897);
-      ((Drawable)localObject2).setBounds(0, 0, ((NewAlbumListAdapter)localObject1).a, ((NewAlbumListAdapter)localObject1).b);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839270).getConstantState();
+      localObject2 = this.h.getResources().getDrawable(2130853604);
+      ((Drawable)localObject2).setBounds(0, 0, ((NewAlbumListAdapter)localObject1).k, ((NewAlbumListAdapter)localObject1).l);
+      if (this.a.c == null) {
+        this.a.c = this.h.getResources().getDrawable(2130839446).getConstantState();
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState.newDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources());
+      localObject1 = this.a.c.newDrawable(this.h.getResources());
       ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
       paramViewGroup.setCompoundDrawables((Drawable)localObject2, null, (Drawable)localObject1, null);
     }
@@ -64,40 +64,25 @@ public class AlbumListCustomizationDefault
     return paramView;
   }
   
-  protected NewAlbumListAdapter a()
-  {
-    return (NewAlbumListAdapter)super.b();
-  }
-  
   protected PhotoOtherData a()
   {
     return new AlbumListCustomizationDefault.1(this);
   }
   
-  protected AlbumListAdapter a()
-  {
-    return new NewAlbumListAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListFragment);
-  }
-  
-  public String a()
-  {
-    return super.a();
-  }
-  
   public void a(Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.isShowQzoneAlbum) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839270).getConstantState();
+    if (this.d.isShowQzoneAlbum) {
+      this.a.c = this.h.getResources().getDrawable(2130839446).getConstantState();
     }
     super.a(paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.isShowQzoneAlbum = paramIntent.getBooleanExtra("PhotoConst.IS_SHOW_QZONE_ALBUM", false);
-    a().a(((PhotoOtherData)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumOtherCommonData).jdField_a_of_type_Long);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.isShowQzoneAlbum) && (!((PhotoOtherData)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumOtherCommonData).jdField_a_of_type_Boolean))
+    this.a.a = paramIntent.getBooleanExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", false);
+    this.d.isShowQzoneAlbum = paramIntent.getBooleanExtra("PhotoConst.IS_SHOW_QZONE_ALBUM", false);
+    d().a(((PhotoOtherData)this.e).b);
+    if ((this.d.isShowQzoneAlbum) && (!((PhotoOtherData)this.e).c))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumQZonePhotoObserver = new AlbumListCustomizationDefault.QZoneGetAlbumListNumObserver(this);
-      ((IQzoneReq)QRoute.api(IQzoneReq.class)).sentGetAlbumListNumServlet(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumQZonePhotoObserver, MobileQQ.sMobileQQ.peekAppRuntime().getLongAccountUin());
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839270).getConstantState();
+      this.a.b = new AlbumListCustomizationDefault.QZoneGetAlbumListNumObserver(this);
+      ((IQzoneReq)QRoute.api(IQzoneReq.class)).sentGetAlbumListNumServlet(this.a.b, MobileQQ.sMobileQQ.peekAppRuntime().getLongAccountUin());
+      this.a.c = this.h.getResources().getDrawable(2130839446).getConstantState();
     }
   }
   
@@ -114,7 +99,7 @@ public class AlbumListCustomizationDefault
       QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
       localBundle.putString("keyAction", "actionSelectPicture");
       localBundle.putBoolean("key_need_change_to_jpg", true);
-      QZoneHelper.forwardToPersonalAlbumSelect(this.jdField_a_of_type_AndroidAppActivity, localUserInfo, localBundle, 10016);
+      QZoneHelper.forwardToPersonalAlbumSelect(this.h, localUserInfo, localBundle, 10016);
       return a(paramIntent, paramQQAlbumInfo);
     }
     paramIntent.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", paramIntent.getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0));
@@ -128,10 +113,25 @@ public class AlbumListCustomizationDefault
   {
     return (!paramQQAlbumInfo.id.equals("qzone_album")) && (paramBoolean);
   }
+  
+  public String b()
+  {
+    return super.b();
+  }
+  
+  protected AlbumListAdapter c()
+  {
+    return new NewAlbumListAdapter(this.b);
+  }
+  
+  protected NewAlbumListAdapter d()
+  {
+    return (NewAlbumListAdapter)super.e();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AlbumListCustomizationDefault
  * JD-Core Version:    0.7.0.1
  */

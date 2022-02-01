@@ -700,7 +700,7 @@ public class RedTouchWebviewHandler
     //   608: astore_2
     //   609: aload_0
     //   610: getfield 447	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   613: invokevirtual 452	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
+    //   613: invokevirtual 453	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:b	()Lcom/tencent/common/app/AppInterface;
     //   616: invokestatic 335	com/tencent/mobileqq/tianshu/utils/RedTouchUtil:a	(Lcom/tencent/common/app/AppInterface;)Ljava/lang/String;
     //   619: astore 8
     //   621: iload_3
@@ -718,49 +718,49 @@ public class RedTouchWebviewHandler
     //   644: istore 5
     //   646: new 368	android/os/Bundle
     //   649: dup
-    //   650: invokespecial 453	android/os/Bundle:<init>	()V
+    //   650: invokespecial 454	android/os/Bundle:<init>	()V
     //   653: astore 8
     //   655: aload 8
     //   657: ldc 32
     //   659: iload 4
-    //   661: invokestatic 457	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   664: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   661: invokestatic 458	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   664: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   667: aload 8
     //   669: ldc_w 419
     //   672: aload 7
-    //   674: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   674: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   677: aload 8
-    //   679: ldc_w 463
+    //   679: ldc_w 464
     //   682: iload 5
-    //   684: invokestatic 457	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   687: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   684: invokestatic 458	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   687: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   690: aload 8
     //   692: ldc_w 413
     //   695: aload 12
-    //   697: invokevirtual 467	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   697: invokevirtual 468	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
     //   700: aload 8
     //   702: ldc 29
     //   704: aload_2
-    //   705: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   705: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   708: aload 8
     //   710: ldc_w 366
     //   713: aload 11
-    //   715: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   715: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   718: aload 8
     //   720: ldc 23
     //   722: aload_1
-    //   723: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   723: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   726: aload_0
-    //   727: ldc_w 469
+    //   727: ldc_w 470
     //   730: aload_1
     //   731: aload_0
-    //   732: getfield 473	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mOnRemoteResp	Lcom/tencent/mobileqq/emosm/OnRemoteRespObserver;
-    //   735: getfield 478	com/tencent/mobileqq/emosm/OnRemoteRespObserver:key	I
+    //   732: getfield 474	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mOnRemoteResp	Lcom/tencent/mobileqq/emosm/OnRemoteRespObserver;
+    //   735: getfield 479	com/tencent/mobileqq/emosm/OnRemoteRespObserver:key	I
     //   738: aload 8
-    //   740: invokestatic 483	com/tencent/mobileqq/emosm/DataFactory:a	(Ljava/lang/String;Ljava/lang/String;ILandroid/os/Bundle;)Landroid/os/Bundle;
+    //   740: invokestatic 484	com/tencent/mobileqq/emosm/DataFactory:a	(Ljava/lang/String;Ljava/lang/String;ILandroid/os/Bundle;)Landroid/os/Bundle;
     //   743: iconst_0
     //   744: iconst_1
-    //   745: invokespecial 487	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:sendRemoteReq	(Landroid/os/Bundle;ZZ)V
+    //   745: invokespecial 488	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:sendRemoteReq	(Landroid/os/Bundle;ZZ)V
     //   748: invokestatic 220	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   751: ifeq +46 -> 797
     //   754: getstatic 222	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:TAG	Ljava/lang/String;
@@ -770,7 +770,7 @@ public class RedTouchWebviewHandler
     //   762: invokespecial 188	java/lang/StringBuilder:<init>	()V
     //   765: astore 7
     //   767: aload 7
-    //   769: ldc_w 489
+    //   769: ldc_w 490
     //   772: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   775: pop
     //   776: aload 7
@@ -792,7 +792,7 @@ public class RedTouchWebviewHandler
     //   805: aload 10
     //   807: invokevirtual 362	org/json/JSONObject:toString	()Ljava/lang/String;
     //   810: aastore
-    //   811: invokevirtual 493	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   811: invokevirtual 494	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   814: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -998,20 +998,20 @@ public class RedTouchWebviewHandler
     try
     {
       localObject2 = new JSONObject(paramBundle);
-      paramBundle = this.mRuntime.a();
+      paramBundle = this.mRuntime.d();
       localObject1 = new BusinessInfoCheckUpdate.ReportReqBody();
-      ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).uin.set(Long.parseLong(this.mRuntime.a().getCurrentAccountUin()));
-      ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).clientver.set("8.7.0.5295");
+      ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).uin.set(Long.parseLong(this.mRuntime.b().getCurrentAccountUin()));
+      ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).clientver.set("8.8.17.5770");
       ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).platid.set(109);
-      Object localObject5 = (IRedTouchManager)this.mRuntime.a().getRuntimeService(IRedTouchManager.class, "");
+      Object localObject5 = (IRedTouchManager)this.mRuntime.b().getRuntimeService(IRedTouchManager.class, "");
       ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).appid.set(((IRedTouchManager)localObject5).getAppIdByPath((String)localObject4));
       localObject4 = ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).platver;
       localObject5 = new StringBuilder();
       ((StringBuilder)localObject5).append(Build.VERSION.SDK_INT);
       ((StringBuilder)localObject5).append("");
       ((PBStringField)localObject4).set(((StringBuilder)localObject5).toString());
-      if (((RedAppInfo)localObject3).a() != null) {
-        ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).missionid.set(((RedAppInfo)localObject3).a());
+      if (((RedAppInfo)localObject3).g() != null) {
+        ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).missionid.set(((RedAppInfo)localObject3).g());
       }
       localObject3 = new ArrayList();
       localObject4 = ((JSONObject)localObject2).keys();
@@ -1034,7 +1034,7 @@ public class RedTouchWebviewHandler
       ((JSONObject)localObject2).put("cmd", 5);
       ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).buffer.set(((JSONObject)localObject2).toString());
       ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).reportdata.set((List)localObject3);
-      localObject2 = new ToServiceMsg("mobileqq.service", this.mRuntime.a().getCurrentAccountUin(), "RedTouchSvc.ClientReport");
+      localObject2 = new ToServiceMsg("mobileqq.service", this.mRuntime.b().getCurrentAccountUin(), "RedTouchSvc.ClientReport");
       ((ToServiceMsg)localObject2).putWupBuffer(((BusinessInfoCheckUpdate.ReportReqBody)localObject1).toByteArray());
       ((ToServiceMsg)localObject2).extraData.putBoolean("req_pb_protocol_flag", true);
       long l = ((ToServiceMsg)localObject2).getWupBuffer().length;
@@ -1045,7 +1045,7 @@ public class RedTouchWebviewHandler
       ((ToServiceMsg)localObject2).putWupBuffer((byte[])localObject1);
       paramBundle = new NewIntent(paramBundle.getApplication(), TempServlet.class);
       paramBundle.putExtra(ToServiceMsg.class.getSimpleName(), (Parcelable)localObject2);
-      this.mRuntime.a().startServlet(paramBundle);
+      this.mRuntime.b().startServlet(paramBundle);
       localJSONObject.put("code", 0);
       if (QLog.isColorLevel())
       {
@@ -1136,7 +1136,7 @@ public class RedTouchWebviewHandler
         if (((RedAppInfo)localObject2).b() != 0)
         {
           localObject1 = str1;
-          localObject2 = getRedBufferJson(new JSONObject(((RedAppInfo)localObject2).a()));
+          localObject2 = getRedBufferJson(new JSONObject(((RedAppInfo)localObject2).d()));
           paramBundle = str1;
           if (localObject2 != null)
           {
@@ -1191,7 +1191,7 @@ public class RedTouchWebviewHandler
       {
         paramBundle.put("code", 0);
         ((JSONObject)localObject2).put("hintType", ((RedAppInfo)localObject1).c());
-        ((JSONObject)localObject2).put("number", ((RedAppInfo)localObject1).f());
+        ((JSONObject)localObject2).put("number", ((RedAppInfo)localObject1).i());
         ((JSONObject)localObject2).put("isShow", ((RedAppInfo)localObject1).b());
         paramBundle.put("data", localObject2);
       }
@@ -1782,38 +1782,38 @@ public class RedTouchWebviewHandler
     //   1179: astore_0
     //   1180: new 368	android/os/Bundle
     //   1183: dup
-    //   1184: invokespecial 453	android/os/Bundle:<init>	()V
+    //   1184: invokespecial 454	android/os/Bundle:<init>	()V
     //   1187: astore 13
     //   1189: aload 13
     //   1191: ldc 32
     //   1193: iload 5
-    //   1195: invokestatic 457	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   1198: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1195: invokestatic 458	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1198: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1201: aload 13
     //   1203: ldc_w 419
     //   1206: aload_0
-    //   1207: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1207: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1210: aload 13
-    //   1212: ldc_w 463
+    //   1212: ldc_w 464
     //   1215: iload 6
-    //   1217: invokestatic 457	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   1220: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1217: invokestatic 458	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1220: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1223: aload 13
     //   1225: ldc_w 413
     //   1228: aload 18
-    //   1230: invokevirtual 467	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   1230: invokevirtual 468	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
     //   1233: aload 13
     //   1235: ldc 29
     //   1237: aload 11
-    //   1239: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1239: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1242: aload 13
     //   1244: ldc_w 366
     //   1247: aload 12
-    //   1249: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1249: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1252: aload 13
     //   1254: ldc 23
     //   1256: aload_3
-    //   1257: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1257: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1260: new 795	java/util/HashMap
     //   1263: dup
     //   1264: invokespecial 796	java/util/HashMap:<init>	()V
@@ -2447,38 +2447,38 @@ public class RedTouchWebviewHandler
     //   1224: astore 14
     //   1226: new 368	android/os/Bundle
     //   1229: dup
-    //   1230: invokespecial 453	android/os/Bundle:<init>	()V
+    //   1230: invokespecial 454	android/os/Bundle:<init>	()V
     //   1233: astore 15
     //   1235: aload 15
     //   1237: ldc 32
     //   1239: iload 5
-    //   1241: invokestatic 457	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   1244: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1241: invokestatic 458	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1244: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1247: aload 15
     //   1249: ldc_w 419
     //   1252: aload 14
-    //   1254: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1254: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1257: aload 15
-    //   1259: ldc_w 463
+    //   1259: ldc_w 464
     //   1262: iload 4
-    //   1264: invokestatic 457	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   1267: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1264: invokestatic 458	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1267: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1270: aload 15
     //   1272: ldc_w 413
     //   1275: aload_0
-    //   1276: invokevirtual 467	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   1276: invokevirtual 468	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
     //   1279: aload 15
     //   1281: ldc 29
     //   1283: aload 13
-    //   1285: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1285: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1288: aload 15
     //   1290: aload 12
     //   1292: aload 11
-    //   1294: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1294: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1297: aload 15
     //   1299: aload 10
     //   1301: aload_3
-    //   1302: invokevirtual 461	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1302: invokevirtual 462	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1305: new 795	java/util/HashMap
     //   1308: dup
     //   1309: invokespecial 796	java/util/HashMap:<init>	()V
@@ -2904,7 +2904,7 @@ public class RedTouchWebviewHandler
       localObject1 = paramString;
       localObject2 = ((JSONObject)localObject3).getString("path");
       localObject1 = paramString;
-      boolean bool = RedTouchUtil.a(this.mRuntime.a()).equals(localObject2);
+      boolean bool = RedTouchUtil.a(this.mRuntime.b()).equals(localObject2);
       if (!bool)
       {
         localObject1 = paramString;
@@ -2962,7 +2962,7 @@ public class RedTouchWebviewHandler
   protected void onCreate()
   {
     super.onCreate();
-    this.browserApp = this.mRuntime.a();
+    this.browserApp = this.mRuntime.b();
   }
   
   protected void onDestroy()
@@ -3182,7 +3182,7 @@ public class RedTouchWebviewHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchWebviewHandler
  * JD-Core Version:    0.7.0.1
  */

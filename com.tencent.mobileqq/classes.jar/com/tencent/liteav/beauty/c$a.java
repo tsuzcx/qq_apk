@@ -1,7 +1,6 @@
 package com.tencent.liteav.beauty;
 
 import android.content.Context;
-import android.opengl.GLES20;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -38,12 +37,7 @@ class c$a
   public void a()
   {
     TXCLog.i(this.b, "come into releaseEGL");
-    if ((c.o(this.a) != null) && (c.o(this.a)[0] > 0))
-    {
-      GLES20.glDeleteBuffers(1, c.o(this.a), 0);
-      c.a(this.a, null);
-    }
-    c.p(this.a);
+    c.o(this.a);
     if (c.n(this.a) != null)
     {
       c.n(this.a).c();
@@ -55,7 +49,6 @@ class c$a
       c.a(this.a, null);
     }
     c.b(this.a, false);
-    NativeLoad.getInstance();
     NativeLoad.nativeDeleteYuv2Yuv();
     TXCLog.i(this.b, "come out releaseEGL");
   }
@@ -127,7 +120,7 @@ class c$a
       else
       {
         a();
-        this.a.d.a();
+        c.p(this.a).a();
       }
       i = 0;
       break label203;
@@ -151,7 +144,7 @@ class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.c.a
  * JD-Core Version:    0.7.0.1
  */

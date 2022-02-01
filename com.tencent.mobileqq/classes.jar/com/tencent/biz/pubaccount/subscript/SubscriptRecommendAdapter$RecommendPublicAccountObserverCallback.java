@@ -5,11 +5,11 @@ import com.tencent.biz.pubaccount.api.IPublicAccountObserver.OnCallback;
 public class SubscriptRecommendAdapter$RecommendPublicAccountObserverCallback
   extends IPublicAccountObserver.OnCallback
 {
-  SubscriptRecommendAdapter.RecommendItem jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem = null;
+  SubscriptRecommendAdapter.RecommendItem a = null;
   
   public SubscriptRecommendAdapter$RecommendPublicAccountObserverCallback(SubscriptRecommendAdapter paramSubscriptRecommendAdapter, SubscriptRecommendAdapter.RecommendItem paramRecommendItem)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem = paramRecommendItem;
+    this.a = paramRecommendItem;
   }
   
   public void onFollowPublicAccount(boolean paramBoolean, String paramString)
@@ -19,7 +19,7 @@ public class SubscriptRecommendAdapter$RecommendPublicAccountObserverCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter.RecommendPublicAccountObserverCallback
  * JD-Core Version:    0.7.0.1
  */

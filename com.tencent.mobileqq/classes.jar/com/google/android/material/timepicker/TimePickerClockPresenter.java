@@ -8,40 +8,32 @@ import com.google.android.material.R.string;
 class TimePickerClockPresenter
   implements ClockHandView.OnActionUpListener, ClockHandView.OnRotateListener, TimePickerPresenter, TimePickerView.OnPeriodChangeListener, TimePickerView.OnSelectionChange
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11" };
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "00", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22" };
+  private static final String[] a = { "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11" };
+  private static final String[] b = { "00", "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22" };
   private static final String[] c = { "00", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" };
-  private float jdField_a_of_type_Float;
-  private TimeModel jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel;
-  private TimePickerView jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
+  private TimePickerView d;
+  private TimeModel e;
+  private float f;
+  private float g;
+  private boolean h = false;
   
   public TimePickerClockPresenter(TimePickerView paramTimePickerView, TimeModel paramTimeModel)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView = paramTimePickerView;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel = paramTimeModel;
+    this.d = paramTimePickerView;
+    this.e = paramTimeModel;
     a();
-  }
-  
-  private int a()
-  {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.a == 1) {
-      return 15;
-    }
-    return 30;
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.c != paramInt2) || (this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.b != paramInt1))
+    if ((this.e.c != paramInt2) || (this.e.b != paramInt1))
     {
       if (Build.VERSION.SDK_INT >= 21) {
         paramInt1 = 4;
       } else {
         paramInt1 = 1;
       }
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.performHapticFeedback(paramInt1);
+      this.d.performHapticFeedback(paramInt1);
     }
   }
   
@@ -50,66 +42,74 @@ class TimePickerClockPresenter
     int i = 0;
     while (i < paramArrayOfString.length)
     {
-      paramArrayOfString[i] = TimeModel.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.getResources(), paramArrayOfString[i], paramString);
+      paramArrayOfString[i] = TimeModel.a(this.d.getResources(), paramArrayOfString[i], paramString);
       i += 1;
     }
   }
   
-  private String[] a()
+  private String[] e()
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.a == 1) {
-      return jdField_b_of_type_ArrayOfJavaLangString;
+    if (this.e.a == 1) {
+      return b;
     }
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return a;
   }
   
-  private void e()
+  private int f()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.e, this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.a(), this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.c);
+    if (this.e.a == 1) {
+      return 15;
+    }
+    return 30;
   }
   
-  private void f()
+  private void g()
   {
-    a(jdField_a_of_type_ArrayOfJavaLangString, "%d");
-    a(jdField_b_of_type_ArrayOfJavaLangString, "%d");
+    this.d.a(this.e.e, this.e.a(), this.e.c);
+  }
+  
+  private void h()
+  {
+    a(a, "%d");
+    a(b, "%d");
     a(c, "%02d");
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.a == 0) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.a();
+    if (this.e.a == 0) {
+      this.d.a();
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.a(this);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.a(this);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.a(this);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.a(this);
-    f();
+    this.d.a(this);
+    this.d.a(this);
+    this.d.a(this);
+    this.d.a(this);
+    h();
     b();
   }
   
   public void a(float paramFloat, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.h) {
       return;
     }
-    int i = this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.b;
-    int j = this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.c;
+    int i = this.e.b;
+    int j = this.e.c;
     int k = Math.round(paramFloat);
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.d == 12)
+    if (this.e.d == 12)
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.b((k + 3) / 6);
-      this.jdField_a_of_type_Float = ((float)Math.floor(this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.c * 6));
+      this.e.b((k + 3) / 6);
+      this.f = ((float)Math.floor(this.e.c * 6));
     }
     else
     {
-      int m = a() / 2;
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.a((k + m) / a());
-      this.jdField_b_of_type_Float = (this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.a() * a());
+      int m = f() / 2;
+      this.e.a((k + m) / f());
+      this.g = (this.e.a() * f());
     }
     if (!paramBoolean)
     {
-      e();
+      g();
       a(i, j);
     }
   }
@@ -127,13 +127,13 @@ class TimePickerClockPresenter
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.a(bool);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.d = paramInt;
-    TimePickerView localTimePickerView = this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView;
+    this.d.a(bool);
+    this.e.d = paramInt;
+    TimePickerView localTimePickerView = this.d;
     if (bool) {
       localObject = c;
     } else {
-      localObject = a();
+      localObject = e();
     }
     int i;
     if (bool) {
@@ -142,38 +142,38 @@ class TimePickerClockPresenter
       i = R.string.j;
     }
     localTimePickerView.a((String[])localObject, i);
-    Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView;
-    float f;
+    Object localObject = this.d;
+    float f1;
     if (bool) {
-      f = this.jdField_a_of_type_Float;
+      f1 = this.f;
     } else {
-      f = this.jdField_b_of_type_Float;
+      f1 = this.g;
     }
-    ((TimePickerView)localObject).a(f, paramBoolean);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.a(paramInt);
-    localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView;
+    ((TimePickerView)localObject).a(f1, paramBoolean);
+    this.d.a(paramInt);
+    localObject = this.d;
     ((TimePickerView)localObject).a(new ClickActionDelegate(((TimePickerView)localObject).getContext(), R.string.i));
-    localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView;
+    localObject = this.d;
     ((TimePickerView)localObject).b(new ClickActionDelegate(((TimePickerView)localObject).getContext(), R.string.k));
   }
   
   public void b()
   {
-    this.jdField_b_of_type_Float = (this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.a() * a());
-    this.jdField_a_of_type_Float = (this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.c * 6);
-    a(this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.d, false);
-    e();
+    this.g = (this.e.a() * f());
+    this.f = (this.e.c * 6);
+    a(this.e.d, false);
+    g();
   }
   
   public void b(float paramFloat, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = true;
-    int i = this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.c;
-    int j = this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.b;
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.d == 10)
+    this.h = true;
+    int i = this.e.c;
+    int j = this.e.b;
+    if (this.e.d == 10)
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.a(this.jdField_b_of_type_Float, false);
-      if (!((AccessibilityManager)ContextCompat.getSystemService(this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.getContext(), AccessibilityManager.class)).isTouchExplorationEnabled()) {
+      this.d.a(this.g, false);
+      if (!((AccessibilityManager)ContextCompat.getSystemService(this.d.getContext(), AccessibilityManager.class)).isTouchExplorationEnabled()) {
         a(12, true);
       }
     }
@@ -183,34 +183,34 @@ class TimePickerClockPresenter
       if (!paramBoolean)
       {
         k = (k + 15) / 30;
-        this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.b(k * 5);
-        this.jdField_a_of_type_Float = (this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.c * 6);
+        this.e.b(k * 5);
+        this.f = (this.e.c * 6);
       }
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.a(this.jdField_a_of_type_Float, paramBoolean);
+      this.d.a(this.f, paramBoolean);
     }
-    this.jdField_a_of_type_Boolean = false;
-    e();
+    this.h = false;
+    g();
     a(j, i);
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimeModel.c(paramInt);
+    this.e.c(paramInt);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.setVisibility(0);
+    this.d.setVisibility(0);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView.setVisibility(8);
+    this.d.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.timepicker.TimePickerClockPresenter
  * JD-Core Version:    0.7.0.1
  */

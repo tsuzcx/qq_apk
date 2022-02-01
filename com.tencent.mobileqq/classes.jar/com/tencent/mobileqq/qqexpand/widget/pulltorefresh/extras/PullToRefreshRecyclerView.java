@@ -33,50 +33,50 @@ public class PullToRefreshRecyclerView
     super(paramContext, paramMode, paramAnimationStyle);
   }
   
-  private int d()
+  private int getFirstVisiblePosition()
   {
-    View localView = ((RecyclerView)this.a).getChildAt(0);
+    View localView = ((RecyclerView)this.e).getChildAt(0);
     if (localView != null) {
-      return ((RecyclerView)this.a).getChildPosition(localView);
+      return ((RecyclerView)this.e).getChildPosition(localView);
     }
     return -1;
   }
   
-  private int e()
+  private int getLastVisiblePosition()
   {
-    View localView = ((RecyclerView)this.a).getChildAt(((RecyclerView)this.a).getChildCount() - 1);
+    View localView = ((RecyclerView)this.e).getChildAt(((RecyclerView)this.e).getChildCount() - 1);
     if (localView != null) {
-      return ((RecyclerView)this.a).getChildPosition(localView);
+      return ((RecyclerView)this.e).getChildPosition(localView);
     }
     return -1;
   }
   
-  private boolean e()
+  private boolean l()
   {
-    RecyclerView.Adapter localAdapter = ((RecyclerView)a()).getAdapter();
+    RecyclerView.Adapter localAdapter = ((RecyclerView)getRefreshableView()).getAdapter();
     if (localAdapter != null)
     {
       if (localAdapter.getItemCount() == 0) {
         return true;
       }
-      if (d() == 0) {
-        return ((RecyclerView)this.a).getChildAt(0).getTop() >= ((RecyclerView)this.a).getTop();
+      if (getFirstVisiblePosition() == 0) {
+        return ((RecyclerView)this.e).getChildAt(0).getTop() >= ((RecyclerView)this.e).getTop();
       }
       return false;
     }
     return true;
   }
   
-  private boolean f()
+  private boolean m()
   {
-    RecyclerView.Adapter localAdapter = ((RecyclerView)a()).getAdapter();
+    RecyclerView.Adapter localAdapter = ((RecyclerView)getRefreshableView()).getAdapter();
     if (localAdapter != null)
     {
       if (localAdapter.getItemCount() == 0) {
         return true;
       }
-      if (e() >= ((RecyclerView)this.a).getAdapter().getItemCount() - 1) {
-        return ((RecyclerView)this.a).getChildAt(((RecyclerView)this.a).getChildCount() - 1).getBottom() <= ((RecyclerView)this.a).getBottom();
+      if (getLastVisiblePosition() >= ((RecyclerView)this.e).getAdapter().getItemCount() - 1) {
+        return ((RecyclerView)this.e).getChildAt(((RecyclerView)this.e).getChildCount() - 1).getBottom() <= ((RecyclerView)this.e).getBottom();
       }
       return false;
     }
@@ -88,24 +88,24 @@ public class PullToRefreshRecyclerView
     return new RecyclerView(paramContext, paramAttributeSet);
   }
   
-  public final PullToRefreshBase.Orientation a()
-  {
-    return PullToRefreshBase.Orientation.VERTICAL;
-  }
-  
   protected boolean a()
   {
-    return e();
+    return l();
   }
   
   protected boolean b()
   {
-    return f();
+    return m();
+  }
+  
+  public final PullToRefreshBase.Orientation getPullToRefreshScrollDirection()
+  {
+    return PullToRefreshBase.Orientation.VERTICAL;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.pulltorefresh.extras.PullToRefreshRecyclerView
  * JD-Core Version:    0.7.0.1
  */

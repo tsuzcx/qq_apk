@@ -17,13 +17,13 @@ class VideoInviteActivity$3
 {
   VideoInviteActivity$3(VideoInviteActivity paramVideoInviteActivity, ActionSheet paramActionSheet, boolean paramBoolean, long paramLong) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_AndroidWidgetImageButton != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
+    this.a.dismiss();
+    if ((this.d.B != null) && (this.d.C != null))
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(true);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
+      this.d.B.setEnabled(true);
+      this.d.C.setEnabled(true);
     }
     VideoInviteActivity.3.1 local1 = null;
     if (paramInt != 0) {
@@ -38,81 +38,81 @@ class VideoInviteActivity$3
     for (;;)
     {
       break;
-      paramView = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity;
-      paramView.j = true;
-      if (this.jdField_a_of_type_Boolean)
+      paramView = this.d;
+      paramView.S = true;
+      if (this.b)
       {
-        if (paramView.jdField_b_of_type_Boolean) {
+        if (paramView.g) {
           paramView = "0X80043A3";
         } else {
           paramView = "0X80043B5";
         }
       }
-      else if (paramView.jdField_b_of_type_Boolean) {
+      else if (paramView.g) {
         paramView = "0X80043A9";
       } else {
         paramView = "0X80043AF";
       }
-      ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
+      ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.d.i), Integer.toString(this.d.K), "", "");
       paramView = local1;
       continue;
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {
+        if (this.d.g) {
           paramView = "0X80043A2";
         } else {
           paramView = "0X80043B4";
         }
       }
-      else if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {
+      else if (this.d.g) {
         paramView = "0X80043A8";
       } else {
         paramView = "0X80043AE";
       }
-      ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
-      paramView = VideoInviteActivity.c(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity).getString(2131695662);
+      ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.d.i), Integer.toString(this.d.K), "", "");
+      paramView = VideoInviteActivity.c(this.d).getString(2131893421);
       continue;
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {
+        if (this.d.g) {
           paramView = "0X80043A1";
         } else {
           paramView = "0X80043B3";
         }
       }
-      else if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {
+      else if (this.d.g) {
         paramView = "0X80043A7";
       } else {
         paramView = "0X80043AD";
       }
-      ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
-      paramView = VideoInviteActivity.b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity).getString(2131695663);
+      ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.d.i), Integer.toString(this.d.K), "", "");
+      paramView = VideoInviteActivity.b(this.d).getString(2131893422);
       continue;
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {
+        if (this.d.g) {
           paramView = "0X80043A0";
         } else {
           paramView = "0X80043B2";
         }
       }
-      else if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {
+      else if (this.d.g) {
         paramView = "0X80043A6";
       } else {
         paramView = "0X80043AC";
       }
-      ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i), "");
-      paramView = VideoInviteActivity.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity).getString(2131695661);
+      ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.d.i), Integer.toString(this.d.K), Integer.toString(this.d.M), "");
+      paramView = VideoInviteActivity.a(this.d).getString(2131893420);
     }
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.jdField_a_of_type_Long, true);
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_e_of_type_Int, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_e_of_type_JavaLangString, paramView, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.j);
-    if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.j) && (QQUtils.a(VideoInviteActivity.d(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity))))
+    this.d.a(this.c, true);
+    this.d.d().a(this.d.j, this.d.o, this.d.p, this.d.q, paramView, this.d.S);
+    if ((this.d.S) && (QQUtils.a(VideoInviteActivity.d(this.d))))
     {
-      paramView = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+      paramView = this.d.H.a();
       local1 = new VideoInviteActivity.3.1(this);
-      VideoInviteActivity localVideoInviteActivity = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity;
+      VideoInviteActivity localVideoInviteActivity = this.d;
       long l;
-      if (GesturePWDUtils.getJumpLock(localVideoInviteActivity, localVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin())) {
+      if (GesturePWDUtils.getJumpLock(localVideoInviteActivity, localVideoInviteActivity.H.getCurrentAccountUin())) {
         l = 500L;
       } else {
         l = 0L;

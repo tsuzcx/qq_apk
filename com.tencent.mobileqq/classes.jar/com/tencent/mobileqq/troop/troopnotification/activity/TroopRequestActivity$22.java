@@ -20,16 +20,16 @@ class TroopRequestActivity$22
     }
     if (paramBoolean)
     {
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131719158), 0).a();
-      this.a.c.setVisibility(8);
+      QQToast.makeText(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131916694), 0).show();
+      this.a.F.setVisibility(8);
       return;
     }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131719155), 0).a();
+    QQToast.makeText(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131916691), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.22
  * JD-Core Version:    0.7.0.1
  */

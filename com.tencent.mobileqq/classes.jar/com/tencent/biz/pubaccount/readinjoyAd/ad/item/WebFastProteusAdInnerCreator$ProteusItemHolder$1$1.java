@@ -20,7 +20,7 @@ class WebFastProteusAdInnerCreator$ProteusItemHolder$1$1
   
   public void onClick(ViewBase paramViewBase)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusAdInnerCreator$ProteusItemHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityProteusItemData != null)
+    if (this.a.b.b != null)
     {
       int k = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
       Object localObject = AdClickPos.SoftAdComponent;
@@ -52,13 +52,13 @@ class WebFastProteusAdInnerCreator$ProteusItemHolder$1$1
             break;
           case 1090: 
             localObject = AdClickPos.SoftAdClickBtn;
-            if (FastWeqAdUtils.h((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusAdInnerCreator$ProteusItemHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData))
+            if (FastWeqAdUtils.h((AdData)this.a.b.g))
             {
-              FastWeqAdUtils.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusAdInnerCreator$ProteusItemHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData, 8);
+              FastWeqAdUtils.a(this.a.a, (AdData)this.a.b.g, 8);
               return;
             }
             paramViewBase = (ViewBase)localObject;
-            if (FastWeqAdUtils.i((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusAdInnerCreator$ProteusItemHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData))
+            if (FastWeqAdUtils.i((AdData)this.a.b.g))
             {
               paramViewBase = (ViewBase)localObject;
               i = 1;
@@ -81,14 +81,14 @@ class WebFastProteusAdInnerCreator$ProteusItemHolder$1$1
           break label334;
           localObject = AdClickPos.SoftAdClickBtn;
           paramViewBase = (ViewBase)localObject;
-          if (!FastWeqAdUtils.a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusAdInnerCreator$ProteusItemHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityProteusItemData))) {
+          if (!FastWeqAdUtils.a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo((AdData)this.a.b.b))) {
             break;
           }
           paramViewBase = (ViewBase)localObject;
         }
       }
-      if (this.a.jdField_a_of_type_AndroidContentContext != null) {
-        JumpAdUtils.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusAdInnerCreator$ProteusItemHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+      if (this.a.a != null) {
+        JumpAdUtils.a(this.a.b.g, paramViewBase.getNativeView(), this.a.a);
       }
       int j = 0;
       int i = 8;
@@ -96,12 +96,12 @@ class WebFastProteusAdInnerCreator$ProteusItemHolder$1$1
       label334:
       if ((j != 0) && (k != -1))
       {
-        localObject = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdItemWebFastProteusAdInnerCreator$ProteusItemHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityProteusItemData);
+        localObject = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo((AdData)this.a.b.b);
         if ((localObject != null) && (((AdvertisementInfo)localObject).mSoftAdType != 0)) {
           ((AdvertisementInfo)localObject).adClickPos = paramViewBase;
         }
         paramViewBase = (IRIJFastWebRecommendAdService)QRoute.api(IRIJFastWebRecommendAdService.class);
-        Context localContext = this.a.jdField_a_of_type_AndroidContentContext;
+        Context localContext = this.a.a;
         if (i == 8) {
           bool = true;
         }
@@ -112,7 +112,7 @@ class WebFastProteusAdInnerCreator$ProteusItemHolder$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.item.WebFastProteusAdInnerCreator.ProteusItemHolder.1.1
  * JD-Core Version:    0.7.0.1
  */

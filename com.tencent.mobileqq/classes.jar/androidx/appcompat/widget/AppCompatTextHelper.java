@@ -11,13 +11,16 @@ import android.os.Build.VERSION;
 import android.os.LocaleList;
 import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.appcompat.R.styleable;
+import androidx.core.view.ViewCompat;
 import androidx.core.widget.AutoSizeableTextView;
 import androidx.core.widget.TextViewCompat;
+import java.lang.ref.WeakReference;
 import java.util.Locale;
 
 class AppCompatTextHelper
@@ -39,9 +42,10 @@ class AppCompatTextHelper
   private Typeface mFontTypeface;
   private int mFontWeight = -1;
   private int mStyle = 0;
+  @NonNull
   private final TextView mView;
   
-  AppCompatTextHelper(TextView paramTextView)
+  AppCompatTextHelper(@NonNull TextView paramTextView)
   {
     this.mView = paramTextView;
     this.mAutoSizeTextHelper = new AppCompatTextViewAutoSizeHelper(this.mView);
@@ -186,21 +190,21 @@ class AppCompatTextHelper
     int j = this.mFontWeight;
     int k = this.mStyle;
     if (!paramContext.isRestricted()) {
-      paramContext = new AppCompatTextHelper.ApplyTextViewCallback(this, j, k);
+      paramContext = new AppCompatTextHelper.1(this, j, k, new WeakReference(this.mView));
     }
     try
     {
       paramContext = paramTintTypedArray.getFont(i, this.mStyle, paramContext);
       if (paramContext == null) {
-        break label283;
+        break label294;
       }
       if ((Build.VERSION.SDK_INT < 28) || (this.mFontWeight == -1)) {
-        break label278;
+        break label289;
       }
       paramContext = Typeface.create(paramContext, 0);
       j = this.mFontWeight;
       if ((this.mStyle & 0x2) == 0) {
-        break label394;
+        break label405;
       }
       bool1 = true;
     }
@@ -215,10 +219,10 @@ class AppCompatTextHelper
       }
     }
     this.mFontTypeface = Typeface.create(paramContext, j, bool1);
-    break label283;
-    label278:
+    break label294;
+    label289:
     this.mFontTypeface = paramContext;
-    label283:
+    label294:
     if (this.mFontTypeface == null)
     {
       bool1 = true;
@@ -323,11 +327,13 @@ class AppCompatTextHelper
   }
   
   @SuppressLint({"NewApi"})
-  void loadFromAttributes(AttributeSet paramAttributeSet, int paramInt)
+  void loadFromAttributes(@Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     Context localContext = this.mView.getContext();
     AppCompatDrawableManager localAppCompatDrawableManager = AppCompatDrawableManager.get();
     Object localObject1 = TintTypedArray.obtainStyledAttributes(localContext, paramAttributeSet, R.styleable.AppCompatTextHelper, paramInt, 0);
+    Object localObject2 = this.mView;
+    ViewCompat.saveAttributeDataForStyleable((View)localObject2, ((TextView)localObject2).getContext(), R.styleable.AppCompatTextHelper, paramAttributeSet, ((TintTypedArray)localObject1).getWrappedTypeArray(), paramInt, 0);
     int i = ((TintTypedArray)localObject1).getResourceId(R.styleable.AppCompatTextHelper_android_textAppearance, -1);
     if (((TintTypedArray)localObject1).hasValue(R.styleable.AppCompatTextHelper_android_drawableLeft)) {
       this.mDrawableLeftTint = createTintInfo(localContext, localAppCompatDrawableManager, ((TintTypedArray)localObject1).getResourceId(R.styleable.AppCompatTextHelper_android_drawableLeft, 0));
@@ -351,14 +357,16 @@ class AppCompatTextHelper
       }
     }
     ((TintTypedArray)localObject1).recycle();
-    boolean bool3 = this.mView.getTransformationMethod() instanceof PasswordTransformationMethod;
+    boolean bool2 = this.mView.getTransformationMethod() instanceof PasswordTransformationMethod;
     boolean bool1;
-    label431:
+    Object localObject5;
+    Object localObject3;
+    label458:
     Object localObject4;
     if (i != -1)
     {
       localObject6 = TintTypedArray.obtainStyledAttributes(localContext, i, R.styleable.TextAppearance);
-      if ((!bool3) && (((TintTypedArray)localObject6).hasValue(R.styleable.TextAppearance_textAllCaps)))
+      if ((!bool2) && (((TintTypedArray)localObject6).hasValue(R.styleable.TextAppearance_textAllCaps)))
       {
         bool1 = ((TintTypedArray)localObject6).getBoolean(R.styleable.TextAppearance_textAllCaps, false);
         i = 1;
@@ -387,7 +395,7 @@ class AppCompatTextHelper
           localObject3 = localObject1;
           localObject1 = localObject2;
           localObject2 = localObject3;
-          break label431;
+          break label458;
         }
         localObject3 = localObject1;
         localObject1 = localObject2;
@@ -413,26 +421,19 @@ class AppCompatTextHelper
     }
     else
     {
-      localObject4 = null;
       localObject1 = null;
       localObject3 = null;
-      localObject2 = null;
       i = 0;
       bool1 = false;
+      localObject2 = null;
+      localObject4 = null;
       localObject5 = null;
     }
     TintTypedArray localTintTypedArray = TintTypedArray.obtainStyledAttributes(localContext, paramAttributeSet, R.styleable.TextAppearance, paramInt, 0);
-    int j = i;
-    boolean bool2 = bool1;
-    if (!bool3)
+    if ((!bool2) && (localTintTypedArray.hasValue(R.styleable.TextAppearance_textAllCaps)))
     {
-      j = i;
-      bool2 = bool1;
-      if (localTintTypedArray.hasValue(R.styleable.TextAppearance_textAllCaps))
-      {
-        bool2 = localTintTypedArray.getBoolean(R.styleable.TextAppearance_textAllCaps, false);
-        j = 1;
-      }
+      bool1 = localTintTypedArray.getBoolean(R.styleable.TextAppearance_textAllCaps, false);
+      i = 1;
     }
     Object localObject6 = localObject1;
     Object localObject7 = localObject2;
@@ -458,18 +459,17 @@ class AppCompatTextHelper
     if (localTintTypedArray.hasValue(R.styleable.TextAppearance_textLocale)) {
       localObject4 = localTintTypedArray.getString(R.styleable.TextAppearance_textLocale);
     }
-    Object localObject2 = localObject3;
+    localObject1 = localObject3;
     if (Build.VERSION.SDK_INT >= 26)
     {
-      localObject2 = localObject3;
+      localObject1 = localObject3;
       if (localTintTypedArray.hasValue(R.styleable.TextAppearance_fontVariationSettings)) {
-        localObject2 = localTintTypedArray.getString(R.styleable.TextAppearance_fontVariationSettings);
+        localObject1 = localTintTypedArray.getString(R.styleable.TextAppearance_fontVariationSettings);
       }
     }
     if ((Build.VERSION.SDK_INT >= 28) && (localTintTypedArray.hasValue(R.styleable.TextAppearance_android_textSize)) && (localTintTypedArray.getDimensionPixelSize(R.styleable.TextAppearance_android_textSize, -1) == 0)) {
       this.mView.setTextSize(0, 0.0F);
     }
-    localObject1 = localAppCompatDrawableManager;
     updateTypefaceAndStyle(localContext, localTintTypedArray);
     localTintTypedArray.recycle();
     if (localObject7 != null) {
@@ -481,19 +481,19 @@ class AppCompatTextHelper
     if (localObject8 != null) {
       this.mView.setLinkTextColor((ColorStateList)localObject8);
     }
-    if ((!bool3) && (j != 0)) {
-      setAllCaps(bool2);
+    if ((!bool2) && (i != 0)) {
+      setAllCaps(bool1);
     }
-    Object localObject3 = this.mFontTypeface;
-    if (localObject3 != null) {
+    localObject2 = this.mFontTypeface;
+    if (localObject2 != null) {
       if (this.mFontWeight == -1) {
-        this.mView.setTypeface((Typeface)localObject3, this.mStyle);
+        this.mView.setTypeface((Typeface)localObject2, this.mStyle);
       } else {
-        this.mView.setTypeface((Typeface)localObject3);
+        this.mView.setTypeface((Typeface)localObject2);
       }
     }
-    if (localObject2 != null) {
-      this.mView.setFontVariationSettings((String)localObject2);
+    if (localObject1 != null) {
+      this.mView.setFontVariationSettings((String)localObject1);
     }
     if (localObject4 != null) {
       if (Build.VERSION.SDK_INT >= 24)
@@ -502,57 +502,56 @@ class AppCompatTextHelper
       }
       else if (Build.VERSION.SDK_INT >= 21)
       {
-        localObject2 = ((String)localObject4).substring(0, ((String)localObject4).indexOf(','));
-        this.mView.setTextLocale(Locale.forLanguageTag((String)localObject2));
+        localObject1 = ((String)localObject4).substring(0, ((String)localObject4).indexOf(','));
+        this.mView.setTextLocale(Locale.forLanguageTag((String)localObject1));
       }
     }
     this.mAutoSizeTextHelper.loadFromAttributes(paramAttributeSet, paramInt);
     if ((AutoSizeableTextView.PLATFORM_SUPPORTS_AUTOSIZE) && (this.mAutoSizeTextHelper.getAutoSizeTextType() != 0))
     {
-      localObject2 = this.mAutoSizeTextHelper.getAutoSizeTextAvailableSizes();
-      if (localObject2.length > 0) {
+      localObject1 = this.mAutoSizeTextHelper.getAutoSizeTextAvailableSizes();
+      if (localObject1.length > 0) {
         if (this.mView.getAutoSizeStepGranularity() != -1.0F) {
           this.mView.setAutoSizeTextTypeUniformWithConfiguration(this.mAutoSizeTextHelper.getAutoSizeMinTextSize(), this.mAutoSizeTextHelper.getAutoSizeMaxTextSize(), this.mAutoSizeTextHelper.getAutoSizeStepGranularity(), 0);
         } else {
-          this.mView.setAutoSizeTextTypeUniformWithPresetSizes((int[])localObject2, 0);
+          this.mView.setAutoSizeTextTypeUniformWithPresetSizes((int[])localObject1, 0);
         }
       }
     }
     localObject6 = TintTypedArray.obtainStyledAttributes(localContext, paramAttributeSet, R.styleable.AppCompatTextView);
     paramInt = ((TintTypedArray)localObject6).getResourceId(R.styleable.AppCompatTextView_drawableLeftCompat, -1);
     if (paramInt != -1) {
-      paramAttributeSet = ((AppCompatDrawableManager)localObject1).getDrawable(localContext, paramInt);
+      paramAttributeSet = localAppCompatDrawableManager.getDrawable(localContext, paramInt);
     } else {
       paramAttributeSet = null;
     }
-    Object localObject5 = localObject1;
     paramInt = ((TintTypedArray)localObject6).getResourceId(R.styleable.AppCompatTextView_drawableTopCompat, -1);
     if (paramInt != -1) {
-      localObject1 = ((AppCompatDrawableManager)localObject5).getDrawable(localContext, paramInt);
+      localObject1 = localAppCompatDrawableManager.getDrawable(localContext, paramInt);
     } else {
       localObject1 = null;
     }
     paramInt = ((TintTypedArray)localObject6).getResourceId(R.styleable.AppCompatTextView_drawableRightCompat, -1);
     if (paramInt != -1) {
-      localObject2 = ((AppCompatDrawableManager)localObject5).getDrawable(localContext, paramInt);
+      localObject2 = localAppCompatDrawableManager.getDrawable(localContext, paramInt);
     } else {
       localObject2 = null;
     }
     paramInt = ((TintTypedArray)localObject6).getResourceId(R.styleable.AppCompatTextView_drawableBottomCompat, -1);
     if (paramInt != -1) {
-      localObject3 = ((AppCompatDrawableManager)localObject5).getDrawable(localContext, paramInt);
+      localObject3 = localAppCompatDrawableManager.getDrawable(localContext, paramInt);
     } else {
       localObject3 = null;
     }
     paramInt = ((TintTypedArray)localObject6).getResourceId(R.styleable.AppCompatTextView_drawableStartCompat, -1);
     if (paramInt != -1) {
-      localObject4 = ((AppCompatDrawableManager)localObject5).getDrawable(localContext, paramInt);
+      localObject4 = localAppCompatDrawableManager.getDrawable(localContext, paramInt);
     } else {
       localObject4 = null;
     }
     paramInt = ((TintTypedArray)localObject6).getResourceId(R.styleable.AppCompatTextView_drawableEndCompat, -1);
     if (paramInt != -1) {
-      localObject5 = ((AppCompatDrawableManager)localObject5).getDrawable(localContext, paramInt);
+      localObject5 = localAppCompatDrawableManager.getDrawable(localContext, paramInt);
     } else {
       localObject5 = null;
     }
@@ -569,7 +568,7 @@ class AppCompatTextHelper
     }
     paramInt = ((TintTypedArray)localObject6).getDimensionPixelSize(R.styleable.AppCompatTextView_firstBaselineToTopHeight, -1);
     i = ((TintTypedArray)localObject6).getDimensionPixelSize(R.styleable.AppCompatTextView_lastBaselineToBottomHeight, -1);
-    j = ((TintTypedArray)localObject6).getDimensionPixelSize(R.styleable.AppCompatTextView_lineHeight, -1);
+    int j = ((TintTypedArray)localObject6).getDimensionPixelSize(R.styleable.AppCompatTextView_lineHeight, -1);
     ((TintTypedArray)localObject6).recycle();
     if (paramInt != -1) {
       TextViewCompat.setFirstBaselineToTopHeight(this.mView, paramInt);
@@ -579,6 +578,18 @@ class AppCompatTextHelper
     }
     if (j != -1) {
       TextViewCompat.setLineHeight(this.mView, j);
+    }
+  }
+  
+  void onAsyncTypefaceReceived(WeakReference<TextView> paramWeakReference, Typeface paramTypeface)
+  {
+    if (this.mAsyncFontPending)
+    {
+      this.mFontTypeface = paramTypeface;
+      paramWeakReference = (TextView)paramWeakReference.get();
+      if (paramWeakReference != null) {
+        paramWeakReference.setTypeface(paramTypeface, this.mStyle);
+      }
     }
   }
   
@@ -624,12 +635,6 @@ class AppCompatTextHelper
     if (paramContext != null) {
       this.mView.setTypeface(paramContext, this.mStyle);
     }
-  }
-  
-  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
-  public void runOnUiThread(@NonNull Runnable paramRunnable)
-  {
-    this.mView.post(paramRunnable);
   }
   
   void setAllCaps(boolean paramBoolean)
@@ -691,16 +696,6 @@ class AppCompatTextHelper
   {
     if ((!AutoSizeableTextView.PLATFORM_SUPPORTS_AUTOSIZE) && (!isAutoSizeEnabled())) {
       setTextSizeInternal(paramInt, paramFloat);
-    }
-  }
-  
-  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
-  public void setTypefaceByCallback(@NonNull Typeface paramTypeface)
-  {
-    if (this.mAsyncFontPending)
-    {
-      this.mView.setTypeface(paramTypeface);
-      this.mFontTypeface = paramTypeface;
     }
   }
 }

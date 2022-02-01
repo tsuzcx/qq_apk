@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.location.callback;
 
-import androidx.fragment.app.FragmentManager;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
@@ -15,14 +14,14 @@ public class AioCallback
   {
     if ((BaseActivity.sTopActivity instanceof BaseActivity))
     {
-      Object localObject = (ChatFragment)BaseActivity.sTopActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      Object localObject = BaseActivity.sTopActivity.getChatFragment();
       if (localObject != null)
       {
-        localObject = ((ChatFragment)localObject).a();
-        if ((localObject != null) && (((BaseChatPie)localObject).d() >= 2)) {
+        localObject = ((ChatFragment)localObject).k();
+        if ((localObject != null) && (((BaseChatPie)localObject).bb() >= 2)) {
           try
           {
-            ((BaseChatPie)localObject).e(131072);
+            ((BaseChatPie)localObject).j(131072);
             return;
           }
           catch (Throwable localThrowable)
@@ -66,7 +65,7 @@ public class AioCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.callback.AioCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -4,16 +4,16 @@ import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.media.MediaCodec;
-import android.media.MediaFormat;
 import android.os.Build.VERSION;
 import com.tencent.tav.coremedia.CGSize;
-import com.tencent.tav.extractor.AssetExtractor;
+import com.tencent.tav.extractor.ExtractorUtils;
 import java.nio.ByteBuffer;
 
 public class DecoderUtils
 {
-  public static final String MIME_AUDIO = "audio/";
-  public static final String MIME_VIDEO = "video/";
+  public static final int AUDIO_SAMPLE_SIZE = 8192;
+  public static final int RESAMPLE_CHANNEL_COUNT = 1;
+  public static final int RESAMPLE_SAMPLE_RATE = 44100;
   public static final int TIMEOUT_US = 1000;
   
   public static long getAudioDuration(long paramLong, int paramInt1, int paramInt2)
@@ -21,158 +21,9 @@ public class DecoderUtils
     return paramLong * 1000000L / (paramInt1 * 2 * paramInt2);
   }
   
-  public static long getAudioDuration(AssetExtractor paramAssetExtractor)
-  {
-    try
-    {
-      int j = paramAssetExtractor.getTrackCount();
-      int i = 0;
-      while (i < j)
-      {
-        MediaFormat localMediaFormat = paramAssetExtractor.getTrackFormat(i);
-        if ((localMediaFormat.getString("mime").startsWith("audio/")) && (localMediaFormat.containsKey("durationUs")))
-        {
-          long l = localMediaFormat.getLong("durationUs");
-          return l;
-        }
-        i += 1;
-      }
-    }
-    catch (Exception|Error paramAssetExtractor)
-    {
-      label61:
-      break label61;
-    }
-    return 0L;
-  }
-  
-  public static long getDuration(AssetExtractor paramAssetExtractor)
-  {
-    try
-    {
-      int j = paramAssetExtractor.getTrackCount();
-      int i = 0;
-      long l2 = 0L;
-      long l4;
-      for (long l1 = l2; i < j; l1 = l4)
-      {
-        MediaFormat localMediaFormat = paramAssetExtractor.getTrackFormat(i);
-        String str = localMediaFormat.getString("mime");
-        boolean bool = str.startsWith("video/");
-        long l3;
-        if (bool)
-        {
-          l3 = l2;
-          l4 = l1;
-          if (localMediaFormat.containsKey("durationUs"))
-          {
-            l3 = localMediaFormat.getLong("durationUs");
-            l4 = l1;
-          }
-        }
-        else
-        {
-          l3 = l2;
-          l4 = l1;
-          if (str.startsWith("audio/"))
-          {
-            l3 = l2;
-            l4 = l1;
-            if (localMediaFormat.containsKey("durationUs"))
-            {
-              l4 = localMediaFormat.getLong("durationUs");
-              l3 = l2;
-            }
-          }
-        }
-        i += 1;
-        l2 = l3;
-      }
-      if (l2 > 0L) {
-        return l2;
-      }
-      return l1;
-    }
-    catch (Exception|Error paramAssetExtractor) {}
-    return 0L;
-  }
-  
   public static long getDuration(String paramString)
   {
-    try
-    {
-      AssetExtractor localAssetExtractor = new AssetExtractor();
-      localAssetExtractor.setDataSource(paramString);
-      long l = getDuration(localAssetExtractor);
-      try
-      {
-        localAssetExtractor.release();
-        return l;
-      }
-      catch (Error paramString)
-      {
-        paramString.printStackTrace();
-        return l;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return l;
-      }
-    }
-    catch (Exception|Error paramString)
-    {
-      label38:
-      break label38;
-    }
-    return 0L;
-  }
-  
-  public static MediaFormat getFirstFormat(AssetExtractor paramAssetExtractor, String paramString)
-  {
-    try
-    {
-      int j = paramAssetExtractor.getTrackCount();
-      int i = 0;
-      while (i < j)
-      {
-        MediaFormat localMediaFormat = paramAssetExtractor.getTrackFormat(i);
-        boolean bool = localMediaFormat.getString("mime").startsWith(paramString);
-        if (bool) {
-          return localMediaFormat;
-        }
-        i += 1;
-      }
-    }
-    catch (Exception|Error paramAssetExtractor)
-    {
-      label47:
-      break label47;
-    }
-    return null;
-  }
-  
-  public static int getFirstTrackIndex(AssetExtractor paramAssetExtractor, String paramString)
-  {
-    try
-    {
-      int j = paramAssetExtractor.getTrackCount();
-      int i = 0;
-      while (i < j)
-      {
-        boolean bool = paramAssetExtractor.getTrackFormat(i).getString("mime").startsWith(paramString);
-        if (bool) {
-          return i;
-        }
-        i += 1;
-      }
-    }
-    catch (Exception|Error paramAssetExtractor)
-    {
-      label42:
-      break label42;
-    }
-    return -1;
+    return ExtractorUtils.getDuration(paramString);
   }
   
   public static ByteBuffer getInputBuffer(MediaCodec paramMediaCodec, int paramInt)
@@ -297,6 +148,13 @@ public class DecoderUtils
     return localMatrix1;
   }
   
+  public static Matrix getRotationMatrix(int paramInt, float paramFloat1, float paramFloat2)
+  {
+    Matrix localMatrix = new Matrix();
+    getRotationMatrix(localMatrix, paramInt, paramFloat1, paramFloat2);
+    return localMatrix;
+  }
+  
   public static void getRotationMatrix(Matrix paramMatrix, int paramInt, float paramFloat1, float paramFloat2)
   {
     int i = paramInt % 4;
@@ -403,7 +261,7 @@ public class DecoderUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.DecoderUtils
  * JD-Core Version:    0.7.0.1
  */

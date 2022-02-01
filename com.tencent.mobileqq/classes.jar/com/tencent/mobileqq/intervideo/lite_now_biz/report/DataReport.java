@@ -17,7 +17,7 @@ public class DataReport
   
   public static void a(Bundle paramBundle, String paramString, long paramLong1, long paramLong2)
   {
-    String str = NowBizConfigManager.b(paramBundle);
+    String str = NowBizConfigManager.c(paramBundle);
     paramBundle = a(paramBundle, "fromid");
     if (QLog.isColorLevel())
     {
@@ -59,7 +59,7 @@ public class DataReport
   {
     Object localObject = a(paramBundle, "fromid");
     String str2 = a(paramBundle, "roomid");
-    String str3 = NowBizConfigManager.b(paramBundle);
+    String str3 = NowBizConfigManager.c(paramBundle);
     String str4 = BaseApplicationImpl.getApplication().getRuntime().getCurrentUin();
     boolean bool = QLog.isColorLevel();
     String str1 = "now_lite";
@@ -99,7 +99,7 @@ public class DataReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.report.DataReport
  * JD-Core Version:    0.7.0.1
  */

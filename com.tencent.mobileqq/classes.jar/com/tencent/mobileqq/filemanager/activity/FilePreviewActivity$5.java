@@ -18,15 +18,15 @@ class FilePreviewActivity$5
     ReportController.b(this.a.app, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
     FilePreviewActivity localFilePreviewActivity1 = this.a;
     QQAppInterface localQQAppInterface = localFilePreviewActivity1.app;
-    TeamWorkFileImportInfo localTeamWorkFileImportInfo = FilePreviewActivity.a(this.a);
+    TeamWorkFileImportInfo localTeamWorkFileImportInfo = FilePreviewActivity.b(this.a);
     FilePreviewActivity localFilePreviewActivity2 = this.a;
-    FilePreviewActivity.a(localFilePreviewActivity1, TeamWorkConvertUtils.a(localQQAppInterface, localTeamWorkFileImportInfo, localFilePreviewActivity2, "<FileAssistant>FilePreviewActivity", localFilePreviewActivity2.getString(2131719543), false));
+    FilePreviewActivity.a(localFilePreviewActivity1, TeamWorkConvertUtils.a(localQQAppInterface, localTeamWorkFileImportInfo, localFilePreviewActivity2, "<FileAssistant>FilePreviewActivity", localFilePreviewActivity2.getString(2131917106), false));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.5
  * JD-Core Version:    0.7.0.1
  */

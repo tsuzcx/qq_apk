@@ -9,14 +9,14 @@ class MultiCardManager$3$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$GetGroupRecommendUinListsListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$GetGroupRecommendUinListsListener.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$3.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.b.b != null) {
+      this.b.b.a(this.b.a, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.3.1
  * JD-Core Version:    0.7.0.1
  */

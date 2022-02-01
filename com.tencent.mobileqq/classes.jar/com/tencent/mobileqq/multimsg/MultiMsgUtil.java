@@ -12,6 +12,7 @@ import com.tencent.mobileqq.app.message.DatalineMessageManager;
 import com.tencent.mobileqq.app.message.MultiMsgProxy;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.MessageForAniSticker;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForArkBabyqReply;
 import com.tencent.mobileqq.data.MessageForDLFile;
@@ -56,45 +57,6 @@ public class MultiMsgUtil
   public static boolean a = true;
   public static boolean b = true;
   
-  public static int a(ChatMessage paramChatMessage)
-  {
-    if (a(paramChatMessage))
-    {
-      paramChatMessage = (MessageForStructing)paramChatMessage;
-      if ((paramChatMessage.structingMsg != null) && ("viewMultiMsg".equals(paramChatMessage.structingMsg.mMsgAction)))
-      {
-        i = paramChatMessage.structingMsg.mTSum;
-        break label47;
-      }
-    }
-    int i = 0;
-    label47:
-    return i + 1;
-  }
-  
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null)
-    {
-      if (paramQQAppInterface == null) {
-        return null;
-      }
-      String str1 = paramMessageRecord.getExtInfoFromExtStr("outest_uin");
-      String str2 = paramMessageRecord.getExtInfoFromExtStr("outest_uintype");
-      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("outest_uniseq");
-      try
-      {
-        paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(str1, Integer.parseInt(str2), Long.parseLong(paramMessageRecord));
-        return paramQQAppInterface;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        QLog.e("MultiMsg_TAG", 1, paramQQAppInterface, new Object[0]);
-      }
-    }
-    return null;
-  }
-  
   public static String a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
     if (paramQQAppInterface != null)
@@ -106,7 +68,7 @@ public class MultiMsgUtil
       {
         localObject = (MessageForStructing)paramMessageRecord;
         if ((((MessageForStructing)localObject).structingMsg != null) && (((MessageForStructing)localObject).structingMsg.mMsgServiceID == 128)) {
-          return HardCodeUtil.a(2131707046);
+          return HardCodeUtil.a(2131904886);
         }
       }
       Object localObject = new Message();
@@ -127,11 +89,6 @@ public class MultiMsgUtil
       }
     }
     return null;
-  }
-  
-  public static String a(String paramString)
-  {
-    return paramString;
   }
   
   public static ArrayList<ChatMessage> a(QQAppInterface paramQQAppInterface, ArrayList<ChatMessage> paramArrayList)
@@ -276,13 +233,13 @@ public class MultiMsgUtil
       paramChatMessage = (MessageForDLFile)paramChatMessage;
       i = paramChatMessage.deviceType;
       long l = paramChatMessage.associatedId;
-      paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(i).a(l);
+      paramQQAppInterface = paramQQAppInterface.getMessageFacade().d(i).a(l);
       bool1 = bool2;
       if (paramQQAppInterface == null) {
         return bool1;
       }
       bool1 = bool2;
-      if (!FileUtil.a(paramQQAppInterface.path)) {
+      if (!FileUtil.b(paramQQAppInterface.path)) {
         return bool1;
       }
       break;
@@ -318,6 +275,50 @@ public class MultiMsgUtil
     return false;
   }
   
+  public static int b(ChatMessage paramChatMessage)
+  {
+    if (a(paramChatMessage))
+    {
+      paramChatMessage = (MessageForStructing)paramChatMessage;
+      if ((paramChatMessage.structingMsg != null) && ("viewMultiMsg".equals(paramChatMessage.structingMsg.mMsgAction)))
+      {
+        i = paramChatMessage.structingMsg.mTSum;
+        break label48;
+      }
+    }
+    int i = 0;
+    label48:
+    return i + 1;
+  }
+  
+  public static MessageRecord b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null)
+    {
+      if (paramQQAppInterface == null) {
+        return null;
+      }
+      String str1 = paramMessageRecord.getExtInfoFromExtStr("outest_uin");
+      String str2 = paramMessageRecord.getExtInfoFromExtStr("outest_uintype");
+      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("outest_uniseq");
+      try
+      {
+        paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(str1, Integer.parseInt(str2), Long.parseLong(paramMessageRecord));
+        return paramQQAppInterface;
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        QLog.e("MultiMsg_TAG", 1, paramQQAppInterface, new Object[0]);
+      }
+    }
+    return null;
+  }
+  
+  public static String b(String paramString)
+  {
+    return paramString;
+  }
+  
   public static void b(String paramString, Object... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
@@ -325,12 +326,12 @@ public class MultiMsgUtil
     }
   }
   
-  public static boolean b(ChatMessage paramChatMessage)
+  public static boolean c(ChatMessage paramChatMessage)
   {
-    return ((paramChatMessage instanceof MessageForText)) || ((paramChatMessage instanceof MessageForReplyText)) || ((paramChatMessage instanceof MessageForPic)) || ((paramChatMessage instanceof MessageForStructing)) || ((paramChatMessage instanceof MessageForShortVideo)) || ((paramChatMessage instanceof MessageForArkApp)) || ((paramChatMessage instanceof MessageForFile)) || ((paramChatMessage instanceof MessageForMixedMsg)) || ((paramChatMessage instanceof MessageForTroopFile));
+    return ((paramChatMessage instanceof MessageForText)) || ((paramChatMessage instanceof MessageForReplyText)) || ((paramChatMessage instanceof MessageForPic)) || ((paramChatMessage instanceof MessageForStructing)) || ((paramChatMessage instanceof MessageForShortVideo)) || ((paramChatMessage instanceof MessageForArkApp)) || ((paramChatMessage instanceof MessageForFile)) || ((paramChatMessage instanceof MessageForMixedMsg)) || ((paramChatMessage instanceof MessageForTroopFile)) || ((paramChatMessage instanceof MessageForAniSticker));
   }
   
-  public static boolean c(ChatMessage paramChatMessage)
+  public static boolean d(ChatMessage paramChatMessage)
   {
     boolean bool;
     if ((!(paramChatMessage instanceof MessageForGrayTips)) && (!(paramChatMessage instanceof MessageForUniteGrayTip)) && (!(paramChatMessage instanceof MessageForIncompatibleGrayTips)) && (!(paramChatMessage instanceof MessageForNewGrayTips)) && (!(paramChatMessage instanceof MessageForSafeGrayTips)) && (!(paramChatMessage instanceof MessageForFoldMsgGrayTips)) && (!(paramChatMessage instanceof MessageForNearbyMarketGrayTips)) && (!(paramChatMessage instanceof MessageForQQWalletTips)) && (!(paramChatMessage instanceof MessageForSplitLineTips))) {
@@ -346,7 +347,7 @@ public class MultiMsgUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgUtil
  * JD-Core Version:    0.7.0.1
  */

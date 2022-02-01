@@ -13,10 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import com.tencent.qcircle.weishi.module.edit.widget.playtrack.provider.BaseVideoThumbAssetCache.LRUKey;
+import com.tencent.qcircle.weishi.module.edit.widget.playtrack.provider.VideoThumbListener;
+import com.tencent.qcircle.weishi.module.edit.widget.playtrack.provider.VideoThumbProviderManager;
 import com.tencent.tav.coremedia.CMTime;
-import com.tencent.weishi.module.edit.widget.playtrack.provider.BaseVideoThumbAssetCache.LRUKey;
-import com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbListener;
-import com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbProviderManager;
 import java.util.Iterator;
 import kotlin.Lazy;
 import kotlin.LazyKt;
@@ -28,17 +28,17 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/aelight/camera/aeeditor/view/reorder/ThumbClipView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/weishi/module/edit/widget/playtrack/provider/VideoThumbListener;", "context", "Landroid/content/Context;", "attributeSet", "Landroid/util/AttributeSet;", "defStyleAttrs", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "mResourcePath", "", "mSelectedStart", "", "mUuid", "path", "Landroid/graphics/Path;", "radius", "getRadius", "()I", "radius$delegate", "Lkotlin/Lazy;", "thumb1", "Landroid/widget/ImageView;", "createObjTag", "uuid", "index", "dispatchDraw", "", "canvas", "Landroid/graphics/Canvas;", "onAttachedToWindow", "onDetachedFromWindow", "onSizeChanged", "w", "h", "oldw", "oldh", "onThumbGenerated", "tag", "", "startTime", "Lcom/tencent/tav/coremedia/CMTime;", "bitmap", "Landroid/graphics/Bitmap;", "setClipUrl", "selectedStart", "aelight_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/aelight/camera/aeeditor/view/reorder/ThumbClipView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/qcircle/weishi/module/edit/widget/playtrack/provider/VideoThumbListener;", "context", "Landroid/content/Context;", "attributeSet", "Landroid/util/AttributeSet;", "defStyleAttrs", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "mResourcePath", "", "mSelectedStart", "", "mUuid", "path", "Landroid/graphics/Path;", "radius", "getRadius", "()I", "radius$delegate", "Lkotlin/Lazy;", "thumb1", "Landroid/widget/ImageView;", "createObjTag", "uuid", "index", "dispatchDraw", "", "canvas", "Landroid/graphics/Canvas;", "onAttachedToWindow", "onDetachedFromWindow", "onSizeChanged", "w", "h", "oldw", "oldh", "onThumbGenerated", "tag", "", "startTime", "Lcom/tencent/tav/coremedia/CMTime;", "bitmap", "Landroid/graphics/Bitmap;", "setClipUrl", "selectedStart", "aelight_impl_release"}, k=1, mv={1, 1, 16})
 public final class ThumbClipView
   extends FrameLayout
   implements VideoThumbListener
 {
-  private long jdField_a_of_type_Long;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private String jdField_a_of_type_JavaLangString;
-  private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)ThumbClipView.radius.2.INSTANCE);
-  private String b;
+  private Path a;
+  private final Lazy b = LazyKt.lazy((Function0)ThumbClipView.radius.2.INSTANCE);
+  private ImageView c;
+  private String d;
+  private String e;
+  private long f;
   
   @JvmOverloads
   public ThumbClipView(@NotNull Context paramContext)
@@ -56,13 +56,8 @@ public final class ThumbClipView
   public ThumbClipView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    View.inflate(paramContext, 2064318573, (ViewGroup)this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2064122706));
-  }
-  
-  private final int a()
-  {
-    return ((Number)this.jdField_a_of_type_KotlinLazy.getValue()).intValue();
+    View.inflate(paramContext, 2064056445, (ViewGroup)this);
+    this.c = ((ImageView)findViewById(2063991487));
   }
   
   private final String a(String paramString, int paramInt)
@@ -74,9 +69,14 @@ public final class ThumbClipView
     return localStringBuilder.toString();
   }
   
+  private final int getRadius()
+  {
+    return ((Number)this.b.getValue()).intValue();
+  }
+  
   protected void dispatchDraw(@Nullable Canvas paramCanvas)
   {
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    Path localPath = this.a;
     if ((localPath != null) && (paramCanvas != null)) {
       paramCanvas.clipPath(localPath);
     }
@@ -98,16 +98,16 @@ public final class ThumbClipView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    this.a = new Path();
+    Path localPath = this.a;
     if (localPath != null) {
-      localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), a(), a(), Path.Direction.CW);
+      localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), getRadius(), getRadius(), Path.Direction.CW);
     }
   }
   
   public void onThumbGenerated(@Nullable Object paramObject, @Nullable CMTime paramCMTime, @Nullable Bitmap paramBitmap)
   {
-    Iterator localIterator = ((Iterable)CollectionsKt.listOf(this.jdField_a_of_type_AndroidWidgetImageView)).iterator();
+    Iterator localIterator = ((Iterable)CollectionsKt.listOf(this.c)).iterator();
     while (localIterator.hasNext())
     {
       ImageView localImageView = (ImageView)localIterator.next();
@@ -125,13 +125,13 @@ public final class ThumbClipView
           continue;
         }
       }
-      VideoThumbProviderManager.getInstance().releaseBitmapCacheByKey(new BaseVideoThumbAssetCache.LRUKey(this.b, this.jdField_a_of_type_Long + 500L));
-      String str = this.jdField_a_of_type_JavaLangString;
+      VideoThumbProviderManager.getInstance().releaseBitmapCacheByKey(new BaseVideoThumbAssetCache.LRUKey(this.e, this.f + 500L));
+      String str = this.d;
       paramCMTime = localBitmap;
       if (str != null) {
         paramCMTime = a(str, 0);
       }
-      localBitmap = VideoThumbProviderManager.getInstance().getBitmapByTime(this.jdField_a_of_type_Long + 500L, paramCMTime, this.b);
+      localBitmap = VideoThumbProviderManager.getInstance().getBitmapByTime(this.f + 500L, paramCMTime, this.e);
       if (localImageView != null) {
         localImageView.setTag(paramCMTime);
       }
@@ -148,10 +148,10 @@ public final class ThumbClipView
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "uuid");
     Intrinsics.checkParameterIsNotNull(paramString2, "path");
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-    Iterator localIterator = ((Iterable)CollectionsKt.listOf(this.jdField_a_of_type_AndroidWidgetImageView)).iterator();
+    this.d = paramString1;
+    this.e = paramString2;
+    this.f = paramLong;
+    Iterator localIterator = ((Iterable)CollectionsKt.listOf(this.c)).iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
@@ -177,7 +177,7 @@ public final class ThumbClipView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.reorder.ThumbClipView
  * JD-Core Version:    0.7.0.1
  */

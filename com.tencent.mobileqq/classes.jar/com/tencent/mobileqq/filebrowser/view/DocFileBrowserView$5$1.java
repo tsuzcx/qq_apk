@@ -17,20 +17,20 @@ class DocFileBrowserView$5$1
       if (paramInt != 2) {
         return;
       }
-      DocFileBrowserView.a(this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$5.this$0, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$5.a);
+      DocFileBrowserView.a(this.b.this$0, this.a, this.b.a);
       return;
     }
-    TeamWorkConvertUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$5.this$0.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$5.a, new DocFileBrowserView.5.1.1(this));
+    TeamWorkConvertUtils.a(this.a, this.b.this$0.e, "FileBrowserViewBase", this.b.a, new DocFileBrowserView.5.1.1(this));
   }
   
   public void a(ImageView paramImageView)
   {
-    DocFileBrowserView.b(this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$5.this$0, paramImageView);
+    DocFileBrowserView.b(this.b.this$0, paramImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.view.DocFileBrowserView.5.1
  * JD-Core Version:    0.7.0.1
  */

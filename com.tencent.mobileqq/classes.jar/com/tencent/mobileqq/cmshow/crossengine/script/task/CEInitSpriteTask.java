@@ -1,24 +1,32 @@
 package com.tencent.mobileqq.cmshow.crossengine.script.task;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.cmshow.brickengine.script.task.BKInitSpriteTask;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.script.Script;
+import com.tencent.mobileqq.cmshow.engine.script.ScriptHelper;
+import com.tencent.mobileqq.cmshow.engine.script.task.InitSpriteTask;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/crossengine/script/task/CEInitSpriteTask;", "Lcom/tencent/mobileqq/cmshow/brickengine/script/task/BKInitSpriteTask;", "()V", "buildScript", "", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/crossengine/script/task/CEInitSpriteTask;", "Lcom/tencent/mobileqq/cmshow/engine/script/task/InitSpriteTask;", "apolloResManager", "Lcom/tencent/mobileqq/cmshow/engine/resource/IApolloResManager;", "(Lcom/tencent/mobileqq/cmshow/engine/resource/IApolloResManager;)V", "buildScript", "Lcom/tencent/mobileqq/cmshow/engine/script/Script;", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class CEInitSpriteTask
-  extends BKInitSpriteTask
+  extends InitSpriteTask
 {
   @Deprecated
   public static final CEInitSpriteTask.Companion a = new CEInitSpriteTask.Companion(null);
   
-  @NotNull
-  public String a()
+  public CEInitSpriteTask(@NotNull IApolloResManager paramIApolloResManager)
   {
-    Object localObject2 = a().toString();
+    super(paramIApolloResManager);
+  }
+  
+  @NotNull
+  public Script a()
+  {
+    Object localObject2 = c().toString();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "buildParams().toString()");
     Object localObject1 = localObject2;
     if (!TextUtils.isEmpty((CharSequence)b()))
@@ -47,12 +55,12 @@ public final class CEInitSpriteTask
       ((StringBuilder)localObject2).append((String)localObject1);
       QLog.w("[cmshow][ScriptTask][CEInitSpriteTask]", 2, ((StringBuilder)localObject2).toString());
     }
-    return localObject1;
+    return ScriptHelper.a.b((String)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.script.task.CEInitSpriteTask
  * JD-Core Version:    0.7.0.1
  */

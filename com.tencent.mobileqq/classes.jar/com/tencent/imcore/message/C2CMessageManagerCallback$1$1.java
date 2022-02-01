@@ -10,12 +10,12 @@ class C2CMessageManagerCallback$1$1
   
   public void run()
   {
-    QQToast.a(this.a.a, 2131697700, 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+    QQToast.makeText(this.a.g, 2131895473, 0).show(((BaseActivity)this.a.g).getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageManagerCallback.1.1
  * JD-Core Version:    0.7.0.1
  */

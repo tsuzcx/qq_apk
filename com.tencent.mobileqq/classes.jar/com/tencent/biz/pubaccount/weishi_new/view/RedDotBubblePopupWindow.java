@@ -20,29 +20,28 @@ public class RedDotBubblePopupWindow
   extends PopupWindow
   implements View.OnClickListener
 {
-  private static final int jdField_a_of_type_Int = ViewUtils.a(8.0F);
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  protected Handler a;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private RedDotBubblePopupWindow.DisPopupRunnable jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRedDotBubblePopupWindow$DisPopupRunnable;
-  private RedDotBubblePopupWindow.RedDotBubblePopupListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRedDotBubblePopupWindow$RedDotBubblePopupListener;
-  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private TextView b;
-  private TextView c;
+  private static final int b = ViewUtils.dip2px(8.0F);
+  protected Handler a = new Handler(Looper.getMainLooper());
+  private Activity c;
+  private View d;
+  private TextView e;
+  private TextView f;
+  private TextView g;
+  private ArrayList<View> h = new ArrayList();
+  private RedDotBubblePopupWindow.RedDotBubblePopupListener i;
+  private RedDotBubblePopupWindow.DisPopupRunnable j;
   
   public RedDotBubblePopupWindow(Activity paramActivity, RedDotBubblePopupWindow.RedDotBubblePopupListener paramRedDotBubblePopupListener)
   {
     super(paramActivity);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRedDotBubblePopupWindow$RedDotBubblePopupListener = paramRedDotBubblePopupListener;
+    this.c = paramActivity;
+    this.i = paramRedDotBubblePopupListener;
   }
   
   private void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = 0;
+    Iterator localIterator = this.h.iterator();
+    int k = 0;
     while (localIterator.hasNext())
     {
       Object localObject = (View)localIterator.next();
@@ -52,29 +51,29 @@ public class RedDotBubblePopupWindow
         if ((localObject instanceof ViewGroup.MarginLayoutParams))
         {
           localObject = (ViewGroup.MarginLayoutParams)localObject;
-          int j;
-          if (i == 0) {
-            j = 0;
+          int m;
+          if (k == 0) {
+            m = 0;
           } else {
-            j = jdField_a_of_type_Int;
+            m = b;
           }
-          ((ViewGroup.MarginLayoutParams)localObject).leftMargin = j;
+          ((ViewGroup.MarginLayoutParams)localObject).leftMargin = m;
         }
-        i += 1;
+        k += 1;
       }
     }
   }
   
   private void b(View paramView, ArrayList<stNotificationRedDot> paramArrayList)
   {
-    paramView.findViewById(2131370288).setOnClickListener(this);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131370027));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131366469));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131372214));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370033));
-    this.b = ((TextView)paramView.findViewById(2131366471));
-    this.c = ((TextView)paramView.findViewById(2131372215));
+    paramView.findViewById(2131437520).setOnClickListener(this);
+    this.h.clear();
+    this.h.add(paramView.findViewById(2131437183));
+    this.h.add(paramView.findViewById(2131432788));
+    this.h.add(paramView.findViewById(2131439716));
+    this.e = ((TextView)paramView.findViewById(2131437189));
+    this.f = ((TextView)paramView.findViewById(2131432790));
+    this.g = ((TextView)paramView.findViewById(2131439717));
     String str1 = "";
     if (paramArrayList != null)
     {
@@ -104,29 +103,29 @@ public class RedDotBubblePopupWindow
     String str2 = str1;
     if (TextUtils.isEmpty(str2))
     {
-      ((View)this.jdField_a_of_type_JavaUtilArrayList.get(0)).setVisibility(8);
+      ((View)this.h.get(0)).setVisibility(8);
     }
     else
     {
-      ((View)this.jdField_a_of_type_JavaUtilArrayList.get(0)).setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
+      ((View)this.h.get(0)).setVisibility(0);
+      this.e.setText(str2);
     }
     if (TextUtils.isEmpty((CharSequence)localObject2))
     {
-      ((View)this.jdField_a_of_type_JavaUtilArrayList.get(1)).setVisibility(8);
+      ((View)this.h.get(1)).setVisibility(8);
     }
     else
     {
-      ((View)this.jdField_a_of_type_JavaUtilArrayList.get(1)).setVisibility(0);
-      this.b.setText((CharSequence)localObject2);
+      ((View)this.h.get(1)).setVisibility(0);
+      this.f.setText((CharSequence)localObject2);
     }
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      ((View)this.jdField_a_of_type_JavaUtilArrayList.get(2)).setVisibility(8);
+      ((View)this.h.get(2)).setVisibility(8);
       return;
     }
-    ((View)this.jdField_a_of_type_JavaUtilArrayList.get(2)).setVisibility(0);
-    this.c.setText((CharSequence)localObject1);
+    ((View)this.h.get(2)).setVisibility(0);
+    this.g.setText((CharSequence)localObject1);
   }
   
   public void a()
@@ -134,18 +133,18 @@ public class RedDotBubblePopupWindow
     if (isShowing()) {
       dismiss();
     }
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.a;
     if (localHandler != null)
     {
-      RedDotBubblePopupWindow.DisPopupRunnable localDisPopupRunnable = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRedDotBubblePopupWindow$DisPopupRunnable;
+      RedDotBubblePopupWindow.DisPopupRunnable localDisPopupRunnable = this.j;
       if (localDisPopupRunnable != null)
       {
         localHandler.removeCallbacksAndMessages(localDisPopupRunnable);
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRedDotBubblePopupWindow$DisPopupRunnable = null;
+        this.j = null;
       }
     }
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidAppActivity = null;
+    this.d = null;
+    this.c = null;
   }
   
   public void a(View paramView, ArrayList<stNotificationRedDot> paramArrayList)
@@ -156,12 +155,12 @@ public class RedDotBubblePopupWindow
     if (paramView == null) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.d == null)
     {
       setBackgroundDrawable(new BitmapDrawable());
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559988, null);
-      b(this.jdField_a_of_type_AndroidViewView, paramArrayList);
-      setContentView(this.jdField_a_of_type_AndroidViewView);
+      this.d = LayoutInflater.from(this.c).inflate(2131626031, null);
+      b(this.d, paramArrayList);
+      setContentView(this.d);
       setWidth(-2);
       setHeight(-2);
       b();
@@ -171,9 +170,9 @@ public class RedDotBubblePopupWindow
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131370288)
+    if (paramView.getId() == 2131437520)
     {
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRedDotBubblePopupWindow$RedDotBubblePopupListener;
+      paramView = this.i;
       if (paramView != null) {
         paramView.a();
       }
@@ -183,7 +182,7 @@ public class RedDotBubblePopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RedDotBubblePopupWindow
  * JD-Core Version:    0.7.0.1
  */

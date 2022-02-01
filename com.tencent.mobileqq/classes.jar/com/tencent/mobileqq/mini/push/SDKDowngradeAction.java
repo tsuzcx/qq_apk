@@ -39,7 +39,7 @@ public class SDKDowngradeAction
         localObject = new Intent("com.tencent.mobile.mini.process.exit");
         ((Intent)localObject).setPackage("com.tencent.mobileqq");
         BaseApplication.getContext().sendBroadcast((Intent)localObject);
-        MiniSdkUtil.a(paramMiniAppControlInfo.booleanValue());
+        MiniSdkUtil.b(paramMiniAppControlInfo.booleanValue());
         ThreadManager.getSubThreadHandler().postDelayed(new SDKDowngradeAction.1(this), 3000L);
         return;
       }
@@ -57,7 +57,7 @@ public class SDKDowngradeAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.push.SDKDowngradeAction
  * JD-Core Version:    0.7.0.1
  */

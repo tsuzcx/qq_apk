@@ -29,22 +29,22 @@ public class TroopCardBanner
   extends BaseTroopCardView
   implements View.OnClickListener
 {
-  protected ImageView a;
-  protected LinearLayout a;
-  protected ViewPager a;
-  protected ArrayList<ImageView> a;
-  protected popclassifc.BannerCard a;
+  protected ViewPager d;
+  protected popclassifc.BannerCard e;
+  protected LinearLayout f;
+  protected ArrayList<ImageView> g;
+  protected ImageView h;
   
   private String a()
   {
     try
     {
-      Object localObject = (AddContactTroopManage)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.ADDCONTACT_TROOP_SEARCH_POP_MANAGE);
-      if ((localObject != null) && (((AddContactTroopManage)localObject).a() != null) && (((AddContactTroopManage)localObject).a().popRsb != null))
+      Object localObject = (AddContactTroopManage)this.c.getManager(QQManagerFactory.ADDCONTACT_TROOP_SEARCH_POP_MANAGE);
+      if ((localObject != null) && (((AddContactTroopManage)localObject).b() != null) && (((AddContactTroopManage)localObject).b().popRsb != null))
       {
-        int i = ((AddContactTroopManage)localObject).a().popRsb.uint32_longitude.get();
-        int j = ((AddContactTroopManage)localObject).a().popRsb.uint32_latitude.get();
-        localObject = ((AddContactTroopManage)localObject).a().popRsb.str_city_id.get();
+        int i = ((AddContactTroopManage)localObject).b().popRsb.uint32_longitude.get();
+        int j = ((AddContactTroopManage)localObject).b().popRsb.uint32_latitude.get();
+        localObject = ((AddContactTroopManage)localObject).b().popRsb.str_city_id.get();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("lon=");
         localStringBuilder.append(String.valueOf(i));
@@ -65,32 +65,32 @@ public class TroopCardBanner
   
   private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.f.removeAllViews();
+    this.g = new ArrayList();
+    this.h = null;
     if (paramBoolean)
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.size())
+      while (i < this.e.rpt_banner_items.size())
       {
-        ImageView localImageView = new ImageView(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-        int j = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a(), 6.0F);
+        ImageView localImageView = new ImageView(this.c.getApplication());
+        int j = DisplayUtil.a(this.a.b(), 6.0F);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, j);
         if (i != 0) {
-          localLayoutParams.leftMargin = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a(), 4.0F);
+          localLayoutParams.leftMargin = DisplayUtil.a(this.a.b(), 4.0F);
         }
         localImageView.setLayoutParams(localLayoutParams);
         if (i == 0)
         {
-          this.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-          localImageView.setImageResource(2130837972);
+          this.h = localImageView;
+          localImageView.setImageResource(2130837996);
         }
         else
         {
-          localImageView.setImageResource(2130837973);
+          localImageView.setImageResource(2130837997);
         }
-        this.jdField_a_of_type_JavaUtilArrayList.add(localImageView);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localImageView);
+        this.g.add(localImageView);
+        this.f.addView(localImageView);
         i += 1;
       }
     }
@@ -101,7 +101,7 @@ public class TroopCardBanner
     int i = ((Integer)paramView.getTag()).intValue();
     if (i >= 0)
     {
-      Object localObject1 = (popclassifc.BannerItem)this.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.get(i);
+      Object localObject1 = (popclassifc.BannerItem)this.e.rpt_banner_items.get(i);
       if (localObject1 != null)
       {
         Object localObject2 = ((popclassifc.BannerItem)localObject1).str_transfer_url.get();
@@ -127,29 +127,29 @@ public class TroopCardBanner
             localObject1 = localStringBuilder.toString();
           }
         }
-        localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localObject2 = new Intent(this.b, QQBrowserActivity.class);
         ((Intent)localObject2).putExtra("url", (String)localObject1);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
+        this.b.startActivity((Intent)localObject2);
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_banner", 0, 0, "", String.valueOf(i), "", "");
+      ReportController.b(this.c, "P_CliOper", "Grp_find", "", "grptab", "Clk_banner", 0, 0, "", String.valueOf(i), "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setData(popclassifc.BannerCard paramBannerCard)
   {
-    this.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard = paramBannerCard;
-    paramBannerCard = this.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard;
+    this.e = paramBannerCard;
+    paramBannerCard = this.e;
     if ((paramBannerCard != null) && (paramBannerCard.rpt_banner_items.size() > 0))
     {
-      int i = this.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.size();
+      int i = this.e.rpt_banner_items.size();
       boolean bool = true;
       if (i <= 1) {
         bool = false;
       }
       a(bool);
-      this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setAdapter(new TroopCardBanner.CPagerAdapter(this));
-      this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setCurrentItem(0);
+      this.d.setAdapter(new TroopCardBanner.CPagerAdapter(this));
+      this.d.setCurrentItem(0);
     }
   }
 }

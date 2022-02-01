@@ -13,7 +13,7 @@ public class TencentDocDataLineTipsConfigProcessor
 {
   public static TencentDocDataLineTipsConfigBean a()
   {
-    return (TencentDocDataLineTipsConfigBean)QConfigManager.a().a(383);
+    return (TencentDocDataLineTipsConfigBean)QConfigManager.b().b(383);
   }
   
   @NonNull
@@ -65,7 +65,7 @@ public class TencentDocDataLineTipsConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocDataLineTipsConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

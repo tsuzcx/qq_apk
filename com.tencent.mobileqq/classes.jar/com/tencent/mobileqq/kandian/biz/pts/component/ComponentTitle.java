@@ -29,8 +29,8 @@ public class ComponentTitle
   extends FrameLayout
   implements ComponentView
 {
-  CmpCtxt a;
-  TextView c;
+  CmpCtxt c;
+  TextView d;
   
   public ComponentTitle(Context paramContext)
   {
@@ -61,14 +61,14 @@ public class ComponentTitle
     b(paramContext);
     if ((paramObject instanceof IReadInJoyModel))
     {
-      this.a.a((IReadInJoyModel)paramObject);
+      this.c.a((IReadInJoyModel)paramObject);
       b();
     }
   }
   
   private void b(Context paramContext)
   {
-    this.a = new CmpCtxt();
+    this.c = new CmpCtxt();
     a(paramContext);
     a();
   }
@@ -77,13 +77,13 @@ public class ComponentTitle
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131560156, this, true);
-    this.c = ((TextView)findViewById(2131365056));
+    LayoutInflater.from(paramContext).inflate(2131626203, this, true);
+    this.d = ((TextView)findViewById(2131431189));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
   {
-    this.a.a(paramCellListener);
+    this.c.a(paramCellListener);
   }
   
   public void a(Object paramObject)
@@ -91,20 +91,20 @@ public class ComponentTitle
     if ((paramObject instanceof IReadInJoyModel))
     {
       paramObject = (IReadInJoyModel)paramObject;
-      this.a.a(paramObject);
+      this.c.a(paramObject);
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       try
       {
-        AbsBaseArticleInfo localAbsBaseArticleInfo = paramObject.a();
-        if (((RIJItemViewTypeUtils.m(localAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.l(localAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.n(localAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.p(localAbsBaseArticleInfo))) && (!RIJItemViewTypeUtils.x(paramObject.a()))) {
-          paramObject = ((UGCVideoInfo)paramObject.a().mSocialFeedInfo.a.b.get(0)).e;
-        } else if (RIJFeedsType.h(localAbsBaseArticleInfo)) {
-          paramObject = ((NewPolymericInfo.PackArticleInfo)localAbsBaseArticleInfo.mNewPolymericInfo.a.get(0)).a;
+        AbsBaseArticleInfo localAbsBaseArticleInfo = paramObject.k();
+        if (((RIJItemViewTypeUtils.m(localAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.l(localAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.n(localAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.p(localAbsBaseArticleInfo))) && (!RIJItemViewTypeUtils.x(paramObject.k()))) {
+          paramObject = ((UGCVideoInfo)paramObject.k().mSocialFeedInfo.s.c.get(0)).e;
+        } else if (RIJFeedsType.l(localAbsBaseArticleInfo)) {
+          paramObject = ((NewPolymericInfo.PackArticleInfo)localAbsBaseArticleInfo.mNewPolymericInfo.p.get(0)).b;
         } else {
-          paramObject = paramObject.a().mTitle;
+          paramObject = paramObject.k().mTitle;
         }
         localSpannableStringBuilder.append(paramObject);
-        this.c.setText(localSpannableStringBuilder);
+        this.d.setText(localSpannableStringBuilder);
         return;
       }
       catch (Exception paramObject)
@@ -116,43 +116,43 @@ public class ComponentTitle
   
   public void b()
   {
-    FrameLayout.LayoutParams localLayoutParams1 = (FrameLayout.LayoutParams)this.c.getLayoutParams();
-    if (this.a.k())
+    FrameLayout.LayoutParams localLayoutParams1 = (FrameLayout.LayoutParams)this.d.getLayoutParams();
+    if (this.c.l())
     {
       localLayoutParams1.setMargins(0, 0, 0, 0);
-      if (this.a.l()) {
-        this.c.setLineSpacing(4.0F, 1.0F);
+      if (this.c.m()) {
+        this.d.setLineSpacing(4.0F, 1.0F);
       }
     }
-    else if (RIJFeedsType.h(this.a.a.a()))
+    else if (RIJFeedsType.l(this.c.a.k()))
     {
-      this.c.setTextSize(14.0F);
-      this.c.setTextColor(Color.parseColor("#D8FFFFFF"));
-      this.c.setLines(2);
-      this.c.setEllipsize(TextUtils.TruncateAt.END);
-      FrameLayout.LayoutParams localLayoutParams2 = (FrameLayout.LayoutParams)this.c.getLayoutParams();
+      this.d.setTextSize(14.0F);
+      this.d.setTextColor(Color.parseColor("#D8FFFFFF"));
+      this.d.setLines(2);
+      this.d.setEllipsize(TextUtils.TruncateAt.END);
+      FrameLayout.LayoutParams localLayoutParams2 = (FrameLayout.LayoutParams)this.d.getLayoutParams();
       localLayoutParams2.leftMargin = 0;
       localLayoutParams2.topMargin = AIOUtils.b(4.0F, getResources());
       localLayoutParams2.rightMargin = AIOUtils.b(10.0F, getResources());
       localLayoutParams2.bottomMargin = AIOUtils.b(0.0F, getResources());
-      this.c.setLayoutParams(localLayoutParams2);
-      this.c.setGravity(51);
-      this.c.setPadding(0, AIOUtils.b(2.0F, getResources()), 0, AIOUtils.b(2.0F, getResources()));
+      this.d.setLayoutParams(localLayoutParams2);
+      this.d.setGravity(51);
+      this.d.setPadding(0, AIOUtils.b(2.0F, getResources()), 0, AIOUtils.b(2.0F, getResources()));
     }
-    else if (this.a.j())
+    else if (this.c.k())
     {
-      int i = this.c.getPaddingTop();
-      this.c.getBottom();
-      int j = this.c.getPaddingLeft();
-      int k = this.c.getPaddingRight();
-      if (this.a.a())
+      int i = this.d.getPaddingTop();
+      this.d.getBottom();
+      int j = this.d.getPaddingLeft();
+      int k = this.d.getPaddingRight();
+      if (this.c.b())
       {
         localLayoutParams1.topMargin = AIOUtils.b(0.0F, getResources());
         localLayoutParams1.bottomMargin = AIOUtils.b(0.0F, getResources());
         localLayoutParams1.leftMargin = AIOUtils.b(11.0F, getResources());
         localLayoutParams1.rightMargin = AIOUtils.b(11.0F, getResources());
         int m = AIOUtils.b(10.0F, getResources());
-        this.c.setPadding(j, i, k, m);
+        this.d.setPadding(j, i, k, m);
       }
       else
       {
@@ -160,25 +160,25 @@ public class ComponentTitle
         localLayoutParams1.bottomMargin = AIOUtils.b(0.0F, getResources());
         localLayoutParams1.leftMargin = AIOUtils.b(11.0F, getResources());
         localLayoutParams1.rightMargin = AIOUtils.b(11.0F, getResources());
-        this.c.setPadding(j, i, k, 0);
+        this.d.setPadding(j, i, k, 0);
       }
     }
-    else if ((!this.a.b()) && (!this.a.c()))
+    else if ((!this.c.c()) && (!this.c.d()))
     {
-      if (this.a.d())
+      if (this.c.e())
       {
         localLayoutParams1.topMargin = AIOUtils.b(0.0F, getResources());
         localLayoutParams1.bottomMargin = AIOUtils.b(0.0F, getResources());
         localLayoutParams1.leftMargin = AIOUtils.b(12.0F, getResources());
         localLayoutParams1.rightMargin = AIOUtils.b(20.0F, getResources());
       }
-      else if ((!this.a.e()) && (!this.a.g()) && (!CmpCtxt.b(this.a.a.a())) && (!this.a.h()))
+      else if ((!this.c.f()) && (!this.c.h()) && (!CmpCtxt.b(this.c.a.k())) && (!this.c.i()))
       {
-        if (this.a.f())
+        if (this.c.g())
         {
-          this.c.setMinimumHeight(AIOUtils.b(40.0F, getResources()));
+          this.d.setMinimumHeight(AIOUtils.b(40.0F, getResources()));
         }
-        else if (this.a.a())
+        else if (this.c.b())
         {
           localLayoutParams1.topMargin = AIOUtils.b(13.0F, getResources());
           localLayoutParams1.bottomMargin = AIOUtils.b(0.0F, getResources());
@@ -208,30 +208,35 @@ public class ComponentTitle
       localLayoutParams1.leftMargin = AIOUtils.b(12.0F, getResources());
       localLayoutParams1.rightMargin = AIOUtils.b(20.0F, getResources());
     }
-    if ((DeviceInfoUtil.k() >= 1080L) && ((this.c.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
+    if ((DeviceInfoUtil.F() >= 1080L) && ((this.d.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
     {
       localLayoutParams1.topMargin = Math.max(localLayoutParams1.topMargin - AIOUtils.b(4.5F, getResources()), 0);
       localLayoutParams1.bottomMargin = Math.max(localLayoutParams1.bottomMargin - AIOUtils.b(6.0F, getResources()), 0);
     }
-    this.c.setLayoutParams(localLayoutParams1);
+    this.d.setLayoutParams(localLayoutParams1);
+  }
+  
+  public TextView getTitle()
+  {
+    return this.d;
   }
   
   public void setReadedStatus(boolean paramBoolean)
   {
-    if ((!this.a.i()) && (!this.a.k()) && (!CmpCtxt.b(this.a.a.a())))
+    if ((!this.c.j()) && (!this.c.l()) && (!CmpCtxt.b(this.c.a.k())))
     {
       if (!paramBoolean)
       {
-        this.c.setTextColor(getContext().getResources().getColor(2131165327));
+        this.d.setTextColor(getContext().getResources().getColor(2131165564));
         return;
       }
-      this.c.setTextColor(getContext().getResources().getColor(2131166508));
+      this.d.setTextColor(getContext().getResources().getColor(2131167365));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentTitle
  * JD-Core Version:    0.7.0.1
  */

@@ -25,34 +25,29 @@ import org.jetbrains.annotations.Nullable;
 public abstract class BasePage
   extends PageProxy
 {
-  private static int jdField_a_of_type_Int;
-  public static final BasePage.Companion a;
-  private View jdField_a_of_type_AndroidViewView;
+  public static final BasePage.Companion b = new BasePage.Companion(null);
+  private static int c;
+  private View a;
   
-  static
+  private final boolean n()
   {
-    jdField_a_of_type_ComTencentTkdTopicsdkFrameworkBasePage$Companion = new BasePage.Companion(null);
-  }
-  
-  private final boolean a()
-  {
-    if (jdField_a_of_type_Int > 0)
+    if (c > 0)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(getClass().getName());
       localStringBuilder.append(" is killed cos' killCount == ");
-      localStringBuilder.append(jdField_a_of_type_Int);
+      localStringBuilder.append(c);
       TLog.d("BasePage", localStringBuilder.toString());
-      c();
-      jdField_a_of_type_Int -= 1;
+      l();
+      c -= 1;
       return true;
     }
     return false;
   }
   
-  private final void f()
+  private final void o()
   {
-    Object localObject = a();
+    Object localObject = b();
     if (localObject != null)
     {
       localObject = ((Activity)localObject).getWindow();
@@ -67,29 +62,29 @@ public abstract class BasePage
     if ((localObject instanceof FrameLayout))
     {
       View localView;
-      if (g())
+      if (j())
       {
-        if (this.jdField_a_of_type_AndroidViewView == null)
+        if (this.a == null)
         {
           localObject = (FrameLayout)localObject;
-          this.jdField_a_of_type_AndroidViewView = ((View)new LinearLayout(((FrameLayout)localObject).getContext()));
-          localView = this.jdField_a_of_type_AndroidViewView;
+          this.a = ((View)new LinearLayout(((FrameLayout)localObject).getContext()));
+          localView = this.a;
           if (localView != null)
           {
             Context localContext = ((FrameLayout)localObject).getContext();
             Intrinsics.checkExpressionValueIsNotNull(localContext, "decorView.context");
-            localView.setBackgroundColor(localContext.getResources().getColor(R.color.jdField_a_of_type_Int));
+            localView.setBackgroundColor(localContext.getResources().getColor(R.color.a));
           }
-          ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+          ((FrameLayout)localObject).addView(this.a, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
         }
       }
       else
       {
-        localView = this.jdField_a_of_type_AndroidViewView;
+        localView = this.a;
         if (localView != null)
         {
           ((FrameLayout)localObject).removeView(localView);
-          this.jdField_a_of_type_AndroidViewView = ((View)null);
+          this.a = ((View)null);
         }
       }
     }
@@ -121,9 +116,9 @@ public abstract class BasePage
   {
     Intrinsics.checkParameterIsNotNull(paramLayoutInflater, "inflater");
     if (Build.VERSION.SDK_INT >= 19) {
-      if (p_())
+      if (g())
       {
-        paramBundle = a();
+        paramBundle = b();
         if (paramBundle != null)
         {
           paramBundle = paramBundle.getWindow();
@@ -134,16 +129,17 @@ public abstract class BasePage
       }
       else if (Build.VERSION.SDK_INT >= 23)
       {
-        paramBundle = a();
+        paramBundle = b();
         if (paramBundle != null)
         {
           Object localObject = paramBundle.getWindow();
-          if ((localObject != null) && (f()))
+          if ((localObject != null) && (i()))
           {
             ((Window)localObject).addFlags(-2147483648);
             ((Window)localObject).clearFlags(67108864);
-            paramBundle = a();
+            paramBundle = c();
             ((Window)localObject).setStatusBarColor(((Number)paramBundle.getFirst()).intValue());
+            ((Window)localObject).setNavigationBarColor(((Number)paramBundle.getFirst()).intValue());
             localObject = ((Window)localObject).getDecorView();
             Intrinsics.checkExpressionValueIsNotNull(localObject, "decorView");
             ((View)localObject).setSystemUiVisibility(((Number)paramBundle.getSecond()).intValue());
@@ -156,19 +152,19 @@ public abstract class BasePage
   
   @RequiresApi(23)
   @NotNull
-  public Pair<Integer, Integer> a()
+  public Pair<Integer, Integer> c()
   {
     label41:
     int i;
-    if (g())
+    if (j())
     {
-      Object localObject = a();
+      Object localObject = b();
       if (localObject != null)
       {
         localObject = ((Activity)localObject).getResources();
         if (localObject != null)
         {
-          localObject = Integer.valueOf(((Resources)localObject).getColor(R.color.jdField_a_of_type_Int));
+          localObject = Integer.valueOf(((Resources)localObject).getColor(R.color.a));
           break label41;
         }
       }
@@ -185,46 +181,46 @@ public abstract class BasePage
     return new Pair(Integer.valueOf(i), Integer.valueOf(8192));
   }
   
-  public void b()
-  {
-    if (a()) {
-      return;
-    }
-    super.b();
-    f();
-  }
-  
-  public final void c()
-  {
-    Activity localActivity = a();
-    if (localActivity != null) {
-      localActivity.finish();
-    }
-  }
-  
-  public boolean e()
-  {
-    return Build.VERSION.SDK_INT >= 19;
-  }
-  
-  public boolean f()
-  {
-    return true;
-  }
-  
   public boolean g()
   {
     return false;
   }
   
-  public boolean p_()
+  public boolean h()
+  {
+    return Build.VERSION.SDK_INT >= 19;
+  }
+  
+  public boolean i()
+  {
+    return true;
+  }
+  
+  public boolean j()
   {
     return false;
+  }
+  
+  public void k()
+  {
+    if (n()) {
+      return;
+    }
+    super.k();
+    o();
+  }
+  
+  public final void l()
+  {
+    Activity localActivity = b();
+    if (localActivity != null) {
+      localActivity.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.BasePage
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,17 @@ class NearbyProfileDisplayTribePanel$10
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView = new Intent(this.a.e, QQBrowserActivity.class);
     paramView.putExtra("url", "https://nearby.qq.com/nearby-visitor/index.html?_proxy=1&_wwv=128");
-    this.a.a.startActivity(paramView);
+    this.a.e.startActivity(paramView);
     NearbyProfileDisplayTribePanel.a(this.a, null);
     ThreadManager.post(new NearbyProfileDisplayTribePanel.10.1(this), 5, null, false);
-    ReportController.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
+    ReportController.b(this.a.e.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.10
  * JD-Core Version:    0.7.0.1
  */

@@ -26,12 +26,12 @@ public class VideoStatus
     Object localObject;
     if ((k != 3000) && (k != 1))
     {
-      if ((!paramBaseQQAppInterface.isVideoChatting()) || ((paramBaseQQAppInterface.getAVNotifyCenter().e() != 1) && (paramBaseQQAppInterface.getAVNotifyCenter().e() != 2))) {
+      if ((!paramBaseQQAppInterface.isVideoChatting()) || ((paramBaseQQAppInterface.getAVNotifyCenter().t() != 1) && (paramBaseQQAppInterface.getAVNotifyCenter().t() != 2))) {
         break label290;
       }
-      i = paramBaseQQAppInterface.getAVNotifyCenter().f();
-      localObject = paramBaseQQAppInterface.getAVNotifyCenter().c();
-      String str = paramBaseQQAppInterface.getAVNotifyCenter().d();
+      i = paramBaseQQAppInterface.getAVNotifyCenter().u();
+      localObject = paramBaseQQAppInterface.getAVNotifyCenter().v();
+      String str = paramBaseQQAppInterface.getAVNotifyCenter().w();
       if ((k != i) || ((!paramRecentBaseData.getRecentUserUin().equals(localObject)) && (!paramRecentBaseData.getRecentUserUin().equals(str)))) {
         break label290;
       }
@@ -51,7 +51,7 @@ public class VideoStatus
     }
     l = 0L;
     m = UIToolsTemp.a(k);
-    if (paramBaseQQAppInterface.getAVNotifyCenter().a(m, l) > 0L)
+    if (paramBaseQQAppInterface.getAVNotifyCenter().c(m, l) > 0L)
     {
       if (paramBaseQQAppInterface.getAVNotifyCenter().a(m, l)) {
         paramRecentBaseData.mStatus = 2;
@@ -63,14 +63,14 @@ public class VideoStatus
     {
       localObject = paramBaseQQAppInterface.getAVNotifyCenter().a(l, 2);
       if (localObject != null) {
-        i = ((AVNotifyCenter.VideoRoomInfo)localObject).a + 0;
+        i = ((AVNotifyCenter.VideoRoomInfo)localObject).c + 0;
       } else {
         i = 0;
       }
       localObject = paramBaseQQAppInterface.getAVNotifyCenter().a(l, 10);
       j = i;
       if (localObject != null) {
-        j = i + ((AVNotifyCenter.VideoRoomInfo)localObject).a;
+        j = i + ((AVNotifyCenter.VideoRoomInfo)localObject).c;
       }
       if (j > 0) {
         if (paramBaseQQAppInterface.getAVNotifyCenter().a(m, l)) {
@@ -81,7 +81,7 @@ public class VideoStatus
       }
     }
     label290:
-    if ((k == 0) && (paramBaseQQAppInterface.getAVNotifyCenter().d(paramRecentBaseData.getRecentUserUin()))) {
+    if ((k == 0) && (paramBaseQQAppInterface.getAVNotifyCenter().i(paramRecentBaseData.getRecentUserUin()))) {
       paramRecentBaseData.mStatus = 5;
     }
     return false;
@@ -94,7 +94,7 @@ public class VideoStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.statusIcon.VideoStatus
  * JD-Core Version:    0.7.0.1
  */

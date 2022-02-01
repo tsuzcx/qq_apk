@@ -72,7 +72,7 @@ public class ActivateFriendsDecoder
       {
         localObject = (MessageForActivateFriends)localObject;
         if ((((MessageForActivateFriends)localObject).getMsgBody() == null) || (((MessageForActivateFriends)localObject).getMsgBody().uint32_msg_type.get() == paramInt)) {
-          paramQQAppInterface.getMessageFacade().b(AppConstants.ACTIVATE_FRIENDS_UIN, 0, ((MessageForActivateFriends)localObject).uniseq);
+          paramQQAppInterface.getMessageFacade().h(AppConstants.ACTIVATE_FRIENDS_UIN, 0, ((MessageForActivateFriends)localObject).uniseq);
         }
       }
       else if (QLog.isColorLevel())
@@ -87,7 +87,7 @@ public class ActivateFriendsDecoder
   
   public static boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject2 = paramQQAppInterface.getMessageFacade().a(AppConstants.ACTIVATE_FRIENDS_UIN, 0);
+    Object localObject2 = paramQQAppInterface.getMessageFacade().h(AppConstants.ACTIVATE_FRIENDS_UIN, 0);
     Object localObject1 = new SubMsgType0x76.MsgBody();
     int j;
     int i;
@@ -248,15 +248,15 @@ public class ActivateFriendsDecoder
     int i = paramMsg.msg_head.msg_seq.get();
     long l3 = paramMsg.msg_head.msg_uid.get();
     int j = paramMsg.msg_head.msg_type.get();
-    if (a(paramMessageHandler.a, paramMsgType0x210.msg_content.get().toByteArray(), l2, l1, i, j, paramMsgType0x210.sub_msg_type.get())) {
-      paramMessageHandler.a().a("handleActivateFriendsPush2", true, 1, true, false);
+    if (a(paramMessageHandler.n, paramMsgType0x210.msg_content.get().toByteArray(), l2, l1, i, j, paramMsgType0x210.sub_msg_type.get())) {
+      paramMessageHandler.D().a("handleActivateFriendsPush2", true, 1, true, false);
     }
-    MessageProtoCodec.a(l2, i, l3, j, paramMessageHandler.a());
+    MessageProtoCodec.a(l2, i, l3, j, paramMessageHandler.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.ActivateFriendsDecoder
  * JD-Core Version:    0.7.0.1
  */

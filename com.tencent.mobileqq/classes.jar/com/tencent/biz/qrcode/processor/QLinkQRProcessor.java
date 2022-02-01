@@ -23,38 +23,38 @@ public class QLinkQRProcessor
     return "QLinkQRProcessor";
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public boolean a(int paramInt, String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
     paramString1 = paramString1.toLowerCase();
-    return (a(paramInt)) && ((paramString1.startsWith("qqf2f://qf/")) || ("qlink".equalsIgnoreCase(paramScannerParams.a)));
+    return (a(paramInt)) && ((paramString1.startsWith("qqf2f://qf/")) || ("qlink".equalsIgnoreCase(paramScannerParams.b)));
   }
   
   public boolean a(String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
-    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+    if (!(this.a instanceof QQAppInterface)) {
       return false;
     }
-    paramString2 = (QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime;
-    AppActivity localAppActivity = (AppActivity)this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.a();
+    paramString2 = (QQAppInterface)this.a;
+    AppActivity localAppActivity = (AppActivity)this.b.d();
     if (paramString1.toLowerCase().startsWith("qqf2f://qf/"))
     {
       if ((!paramString2.isRingerVibrate()) && (!paramString2.isRingerSilent()) && (!paramString2.isRingEqualsZero())) {
-        AudioUtil.b(2131230765, false);
+        AudioUtil.b(2131230835, false);
       }
-      paramString2.getQQProxyForQlink().a(localAppActivity, paramString1, this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback);
+      paramString2.getQQProxyForQlink().a(localAppActivity, paramString1, this.b);
       return true;
     }
-    if ("qlink".equalsIgnoreCase(paramScannerParams.a))
+    if ("qlink".equalsIgnoreCase(paramScannerParams.b))
     {
-      paramString2.getQQProxyForQlink().a(localAppActivity, this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback);
+      paramString2.getQQProxyForQlink().a(localAppActivity, this.b);
       return true;
     }
     return false;
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

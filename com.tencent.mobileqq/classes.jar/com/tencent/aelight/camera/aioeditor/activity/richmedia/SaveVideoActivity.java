@@ -24,10 +24,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class SaveVideoActivity
   extends FlowActivity
 {
-  private static FFmpeg jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg;
-  private SaveVideoActivity.SaveVideoTask jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaSaveVideoActivity$SaveVideoTask;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private static FFmpeg d;
+  private SaveVideoActivity.SaveVideoTask e;
+  private boolean f;
+  private int g;
   
   public static Intent a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
@@ -85,15 +85,15 @@ public class SaveVideoActivity
   
   public void onBackPressed()
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.f) {
       super.onBackPressed();
     }
   }
   
   protected void onCreate(Bundle paramBundle)
   {
-    this.i = false;
-    this.j = false;
+    this.y = false;
+    this.z = false;
     super.onCreate(paramBundle);
     paramBundle = getIntent();
     if (paramBundle == null)
@@ -103,33 +103,33 @@ public class SaveVideoActivity
     }
     com.tencent.mobileqq.editor.composite.CodecParam.mRecordFrames = paramBundle.getIntExtra("sv_total_frame_count", 0);
     com.tencent.mobileqq.editor.composite.CodecParam.mRecordTime = paramBundle.getIntExtra("sv_total_record_time", 0);
-    this.jdField_b_of_type_Int = paramBundle.getIntExtra("requestCode", -1);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaSaveVideoActivity$SaveVideoTask = new SaveVideoActivity.SaveVideoTask(this, CaptureContext.a());
-    SaveVideoActivity.SaveVideoTask.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaSaveVideoActivity$SaveVideoTask, paramBundle.getBooleanExtra("video_edit_flag", false));
-    SaveVideoActivity.SaveVideoTask.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaSaveVideoActivity$SaveVideoTask, paramBundle.getIntExtra("save_video_businessid", -1));
-    Utils.executeAsyncTaskOnSerialExcuter(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaSaveVideoActivity$SaveVideoTask, new Void[] { (Void)null });
+    this.g = paramBundle.getIntExtra("requestCode", -1);
+    this.e = new SaveVideoActivity.SaveVideoTask(this, CaptureContext.a());
+    SaveVideoActivity.SaveVideoTask.a(this.e, paramBundle.getBooleanExtra("video_edit_flag", false));
+    SaveVideoActivity.SaveVideoTask.a(this.e, paramBundle.getIntExtra("save_video_businessid", -1));
+    Utils.executeAsyncTaskOnSerialExcuter(this.e, new Void[] { (Void)null });
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     if (paramInt == 4)
     {
-      this.jdField_b_of_type_Boolean = true;
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaSaveVideoActivity$SaveVideoTask != null) && (!isFinishing()))
+      this.f = true;
+      if ((this.e != null) && (!isFinishing()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("SaveVideoActivity", 2, "cancel save video");
         }
-        if (SlideShowPhotoListManager.a().b() == 22)
+        if (SlideShowPhotoListManager.a().e() == 22)
         {
-          int i = this.jdField_b_of_type_Int;
+          int i = this.g;
           if (i == 111) {
             LpReportInfo_pf00064.allReport(680, 12, 2);
           } else if (i == 222) {
             LpReportInfo_pf00064.allReport(680, 13, 2);
           }
         }
-        SaveVideoActivity.SaveVideoTask.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaSaveVideoActivity$SaveVideoTask).set(true);
+        SaveVideoActivity.SaveVideoTask.a(this.e).set(true);
         setResult(0, getIntent());
         if (getIntent() != null) {
           ThreadManager.postImmediately(new SaveVideoActivity.1(this, getIntent().getStringExtra("fakeId")), null, true);
@@ -141,7 +141,7 @@ public class SaveVideoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.SaveVideoActivity
  * JD-Core Version:    0.7.0.1
  */

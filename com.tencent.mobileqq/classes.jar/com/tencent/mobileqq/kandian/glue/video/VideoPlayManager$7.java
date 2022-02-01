@@ -13,23 +13,23 @@ class VideoPlayManager$7
   
   public void run()
   {
-    if (VideoPlayManager.a(this.this$0) != null)
+    if (VideoPlayManager.k(this.this$0) != null)
     {
-      Iterator localIterator = VideoPlayManager.a(this.this$0).iterator();
+      Iterator localIterator = VideoPlayManager.k(this.this$0).iterator();
       while (localIterator.hasNext())
       {
         OnPlayStateListener localOnPlayStateListener = (OnPlayStateListener)localIterator.next();
         if (localOnPlayStateListener != null) {
-          localOnPlayStateListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
+          localOnPlayStateListener.a(this.a, this.b, this.c, this.d, this.e);
         }
       }
     }
-    VideoPlayManager.a(this.this$0, this.b, true);
+    VideoPlayManager.a(this.this$0, this.d, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoPlayManager.7
  * JD-Core Version:    0.7.0.1
  */

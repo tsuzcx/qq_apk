@@ -7,19 +7,19 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class FeedFeatureItem
 {
-  public int a;
   public String a;
-  public boolean a;
   public int b;
-  public boolean b;
   public int c;
+  public int d;
+  public boolean e;
+  public boolean f;
   
   public void a(qqstory_struct.FeedFeature paramFeedFeature)
   {
-    this.jdField_a_of_type_JavaLangString = paramFeedFeature.feed_id.get().toStringUtf8();
-    this.jdField_a_of_type_Int = paramFeedFeature.total_like_num.get();
-    this.jdField_b_of_type_Int = paramFeedFeature.total_comment_num.get();
-    this.c = paramFeedFeature.total_viewing_num.get();
+    this.a = paramFeedFeature.feed_id.get().toStringUtf8();
+    this.b = paramFeedFeature.total_like_num.get();
+    this.c = paramFeedFeature.total_comment_num.get();
+    this.d = paramFeedFeature.total_viewing_num.get();
     int i = paramFeedFeature.deny_comment.get();
     boolean bool2 = false;
     if (i == 1) {
@@ -27,12 +27,12 @@ public class FeedFeatureItem
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
+    this.e = bool1;
     boolean bool1 = bool2;
     if (paramFeedFeature.has_like.get() == 1) {
       bool1 = true;
     }
-    this.jdField_b_of_type_Boolean = bool1;
+    this.f = bool1;
   }
   
   public boolean equals(Object paramObject)
@@ -46,18 +46,18 @@ public class FeedFeatureItem
         return false;
       }
       paramObject = (FeedFeatureItem)paramObject;
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       if (str != null) {
-        return str.equals(paramObject.jdField_a_of_type_JavaLangString);
+        return str.equals(paramObject.a);
       }
-      return paramObject.jdField_a_of_type_JavaLangString == null;
+      return paramObject.a == null;
     }
     return false;
   }
   
   public int hashCode()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if (str != null) {
       return str.hashCode();
     }
@@ -68,23 +68,23 @@ public class FeedFeatureItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("FeedFeatureItem{feedId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", totalLikeCount=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", totalCommentCount=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", totalViewCount=");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", totalViewCount=");
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", isDenyComment=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.FeedFeatureItem
  * JD-Core Version:    0.7.0.1
  */

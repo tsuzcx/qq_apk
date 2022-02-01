@@ -1,16 +1,21 @@
 package com.tencent.av.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import com.tencent.av.camera.api.ICameraManagerApi;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class AVActivity$18
-  implements DialogInterface.OnDismissListener
+  implements ActionSheet.OnButtonClickListener
 {
   AVActivity$18(AVActivity paramAVActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView, int paramInt)
   {
-    this.a.j();
+    if (this.a.M != null)
+    {
+      this.a.M.rotateCamera();
+      this.a.M.saveCameraAngle();
+    }
   }
 }
 

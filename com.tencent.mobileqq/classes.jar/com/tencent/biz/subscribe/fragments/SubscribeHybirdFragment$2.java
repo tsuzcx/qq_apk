@@ -19,17 +19,17 @@ class SubscribeHybirdFragment$2
   
   public ColorNote getColorNote()
   {
-    if ((SubscribeHybirdFragment.a(this.a) != null) && (SubscribeHybirdFragment.a(this.a) != null))
+    if ((SubscribeHybirdFragment.c(this.a) != null) && (SubscribeHybirdFragment.d(this.a) != null))
     {
-      byte[] arrayOfByte = ObjectTransformUtil.a(new SubscribeColorNoteReserveBean(SubscribeHybirdFragment.a(this.a).toByteArray(), SubscribeHybirdFragment.a(this.a).pageType));
+      byte[] arrayOfByte = ObjectTransformUtil.a(new SubscribeColorNoteReserveBean(SubscribeHybirdFragment.c(this.a).toByteArray(), SubscribeHybirdFragment.d(this.a).pageType));
       Object localObject = new ShareInfoBean();
-      ((ShareInfoBean)localObject).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = SubscribeHybirdFragment.a(this.a);
-      ((ShareInfoBean)localObject).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = SubscribeHybirdFragment.a(this.a);
-      String str1 = SubscribeHybirdFragment.a(this.a).id.get();
-      String str2 = ((ShareInfoBean)localObject).c();
-      ((ShareInfoBean)localObject).d();
-      String str3 = ((ShareInfoBean)localObject).e();
-      localObject = ((ShareInfoBean)localObject).f();
+      ((ShareInfoBean)localObject).b = SubscribeHybirdFragment.c(this.a);
+      ((ShareInfoBean)localObject).e = SubscribeHybirdFragment.d(this.a);
+      String str1 = SubscribeHybirdFragment.c(this.a).id.get();
+      String str2 = ((ShareInfoBean)localObject).d();
+      ((ShareInfoBean)localObject).e();
+      String str3 = ((ShareInfoBean)localObject).f();
+      localObject = ((ShareInfoBean)localObject).g();
       if (TextUtils.isEmpty(str1)) {
         return null;
       }

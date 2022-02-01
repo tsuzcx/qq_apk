@@ -27,6 +27,7 @@ public class MimeHelper
   public static final String MIME_TYPE_MOBILEQQ_CAMERA = "mobileqq/camera";
   public static final String MIME_TYPE_VIDEO = "video";
   private static final String TAG = "QQAlbum";
+  public static final String VIDEO_MOV = "video/quicktime";
   public static final String VIDEO_MP4 = "video/mp4";
   
   public static String[] getMimeType(String paramString)
@@ -70,7 +71,7 @@ public class MimeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MimeHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class AdVideoViewController$1
   public void onClick(View paramView)
   {
     Object localObject;
-    if ((paramView != null) && (paramView.getId() == 2131362267))
+    if ((paramView != null) && (paramView.getId() == 2131427854))
     {
       QZLog.i("AdVideoView", " @getGdtInfo dispear");
       if (!TextUtils.isEmpty(AdVideoViewController.a(this.a).negativeFeedbackUrl))
@@ -24,23 +24,23 @@ class AdVideoViewController$1
         localObject = AdVideoViewController.a(this.a).negativeFeedbackUrl.replace("__ACT_TYPE__", "2001");
         this.a.a((String)localObject);
       }
-      if (AdVideoViewController.a(this.a) != null)
+      if (AdVideoViewController.b(this.a) != null)
       {
-        AdVideoViewController.a(this.a).setVisibility(8);
+        AdVideoViewController.c(this.a).setVisibility(8);
         localObject = this.a;
         ((AdVideoViewController)localObject).a(3, AdVideoViewController.a((AdVideoViewController)localObject).recCookie);
         localObject = this.a;
-        ((AdVideoViewController)localObject).a(((AdVideoViewController)localObject).jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView, AdVideoViewController.a(this.a));
+        ((AdVideoViewController)localObject).a(((AdVideoViewController)localObject).b, AdVideoViewController.b(this.a));
       }
     }
     else
     {
       localObject = this.a;
-      ((AdVideoViewController)localObject).a(AdVideoViewController.a((AdVideoViewController)localObject), AdVideoViewController.a(this.a));
+      ((AdVideoViewController)localObject).a(AdVideoViewController.d((AdVideoViewController)localObject), AdVideoViewController.a(this.a));
       localObject = this.a;
       ((AdVideoViewController)localObject).a(2, AdVideoViewController.a((AdVideoViewController)localObject).recCookie);
-      if ((AdVideoViewController.a(this.a) != null) && (this.a.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null)) {
-        this.a.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new AdVideoViewController.1.1(this);
+      if ((AdVideoViewController.a(this.a) != null) && (this.a.d == null)) {
+        this.a.d = new AdVideoViewController.1.1(this);
       }
       AdVideoViewController.a(this.a, true);
     }
@@ -49,7 +49,7 @@ class AdVideoViewController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.qzone.logic.AdVideoViewController.1
  * JD-Core Version:    0.7.0.1
  */

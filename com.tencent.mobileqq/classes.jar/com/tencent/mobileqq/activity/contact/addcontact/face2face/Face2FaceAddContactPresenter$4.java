@@ -16,7 +16,7 @@ class Face2FaceAddContactPresenter$4
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onFace2FaceAddContactPush mSessionId:");
-      localStringBuilder.append(Face2FaceAddContactPresenter.a(this.a));
+      localStringBuilder.append(Face2FaceAddContactPresenter.b(this.a));
       localStringBuilder.append(" sessionId:");
       localStringBuilder.append(paramString2);
       localStringBuilder.append(" faceFriends:");
@@ -25,9 +25,9 @@ class Face2FaceAddContactPresenter$4
       localStringBuilder.append(paramString1);
       QLog.d("Face2FaceAddContactPresenter", 2, localStringBuilder.toString());
     }
-    if ((TextUtils.equals(paramString2, Face2FaceAddContactPresenter.a(this.a))) && (Face2FaceAddContactPresenter.a(this.a) != null) && (TextUtils.equals(paramString1, Face2FaceAddContactPresenter.a(this.a).getCurrentAccountUin())) && (paramList != null) && (paramList.size() > 0))
+    if ((TextUtils.equals(paramString2, Face2FaceAddContactPresenter.b(this.a))) && (Face2FaceAddContactPresenter.d(this.a) != null) && (TextUtils.equals(paramString1, Face2FaceAddContactPresenter.d(this.a).getCurrentAccountUin())) && (paramList != null) && (paramList.size() > 0))
     {
-      Face2FaceAddContactPresenter.a(this.a);
+      Face2FaceAddContactPresenter.c(this.a);
       if (Face2FaceAddContactPresenter.a(this.a) != null) {
         Face2FaceAddContactPresenter.a(this.a).a(paramString1, paramList);
       }
@@ -42,7 +42,7 @@ class Face2FaceAddContactPresenter$4
       localStringBuilder.append("onExitFace2FaceAddContact isSuccess:");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(" mSessionId:");
-      localStringBuilder.append(Face2FaceAddContactPresenter.a(this.a));
+      localStringBuilder.append(Face2FaceAddContactPresenter.b(this.a));
       localStringBuilder.append(" sessionId:");
       localStringBuilder.append(paramString1);
       localStringBuilder.append(" errorCode:");
@@ -51,7 +51,7 @@ class Face2FaceAddContactPresenter$4
       localStringBuilder.append(paramString2);
       QLog.d("Face2FaceAddContactPresenter", 2, localStringBuilder.toString());
     }
-    Face2FaceAddContactPresenter.a(this.a);
+    Face2FaceAddContactPresenter.c(this.a);
     if (Face2FaceAddContactPresenter.a(this.a) != null) {
       Face2FaceAddContactPresenter.a(this.a).a();
     }
@@ -65,7 +65,7 @@ class Face2FaceAddContactPresenter$4
       localStringBuilder.append("onEnterFace2FaceAddContact isSuccess:");
       localStringBuilder.append(paramBoolean1);
       localStringBuilder.append(" mSessionId:");
-      localStringBuilder.append(Face2FaceAddContactPresenter.a(this.a));
+      localStringBuilder.append(Face2FaceAddContactPresenter.b(this.a));
       localStringBuilder.append(" sessionId:");
       localStringBuilder.append(paramString1);
       localStringBuilder.append(" errorCode:");
@@ -95,7 +95,7 @@ class Face2FaceAddContactPresenter$4
       localStringBuilder.append("onFace2FaceAddContactHeartBeat isSuccess:");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(" mSessionId:");
-      localStringBuilder.append(Face2FaceAddContactPresenter.a(this.a));
+      localStringBuilder.append(Face2FaceAddContactPresenter.b(this.a));
       localStringBuilder.append(" sessionId:");
       localStringBuilder.append(paramString1);
       localStringBuilder.append(" errorCode:");
@@ -111,7 +111,7 @@ class Face2FaceAddContactPresenter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactPresenter.4
  * JD-Core Version:    0.7.0.1
  */

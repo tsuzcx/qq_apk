@@ -10,18 +10,18 @@ class BoatAnimDirector$2
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.b != null)
     {
-      this.this$0.a.setBackgroundColor(-1442840576);
+      this.this$0.b.setBackgroundColor(-1442840576);
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
       localAlphaAnimation.setDuration(300L);
-      this.this$0.a.startAnimation(localAlphaAnimation);
+      this.this$0.b.startAnimation(localAlphaAnimation);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.BoatAnimDirector.2
  * JD-Core Version:    0.7.0.1
  */

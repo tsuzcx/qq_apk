@@ -11,10 +11,10 @@ class MultiVideoCtrlLayerUI4Discussion$9
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.a.d;
+    paramDialogInterface = this.a.X;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showConfirmBoxToHangup, no, mRelationId[");
-    localStringBuilder.append(this.a.b);
+    localStringBuilder.append(this.a.j);
     localStringBuilder.append("]");
     QLog.w(paramDialogInterface, 1, localStringBuilder.toString());
   }

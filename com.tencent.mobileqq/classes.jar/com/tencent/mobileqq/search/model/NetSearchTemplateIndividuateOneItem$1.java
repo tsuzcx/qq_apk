@@ -19,13 +19,13 @@ class NetSearchTemplateIndividuateOneItem$1
     if (paramURLDrawable != null)
     {
       paramURLDrawable = VipUtils.a(AIOUtils.b(12.0F, BaseApplicationImpl.getContext().getResources()), paramURLDrawable);
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewNetSearchTemplateIndividuateOneView.b.setCompoundDrawables(null, null, paramURLDrawable, null);
+      this.a.o.setCompoundDrawables(null, null, paramURLDrawable, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.NetSearchTemplateIndividuateOneItem.1
  * JD-Core Version:    0.7.0.1
  */

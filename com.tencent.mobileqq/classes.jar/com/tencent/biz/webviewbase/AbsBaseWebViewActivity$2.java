@@ -1,9 +1,7 @@
 package com.tencent.biz.webviewbase;
 
 import android.graphics.Bitmap;
-import android.net.Uri;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebView;
 
@@ -22,14 +20,14 @@ class AbsBaseWebViewActivity$2
     super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
   {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
+    return a(paramWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewbase.AbsBaseWebViewActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -6,21 +6,21 @@ import java.lang.reflect.Method;
 
 public final class ServiceManager
 {
-  private static Class<?> jdField_a_of_type_JavaLangClass;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static Class<?> a;
   private static Method b;
   private static Method c;
   private static Method d;
+  private static Method e;
   
   static
   {
     try
     {
-      jdField_a_of_type_JavaLangClass = Class.forName("android.os.ServiceManager");
-      jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("getService", new Class[] { String.class });
-      b = jdField_a_of_type_JavaLangClass.getDeclaredMethod("addService", new Class[] { String.class, IBinder.class });
-      c = jdField_a_of_type_JavaLangClass.getDeclaredMethod("checkService", new Class[] { String.class });
-      d = jdField_a_of_type_JavaLangClass.getDeclaredMethod("listServices", new Class[0]);
+      a = Class.forName("android.os.ServiceManager");
+      b = a.getDeclaredMethod("getService", new Class[] { String.class });
+      c = a.getDeclaredMethod("addService", new Class[] { String.class, IBinder.class });
+      d = a.getDeclaredMethod("checkService", new Class[] { String.class });
+      e = a.getDeclaredMethod("listServices", new Class[0]);
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
@@ -41,7 +41,7 @@ public final class ServiceManager
   
   public static IBinder a(String paramString)
   {
-    return (IBinder)a(jdField_a_of_type_JavaLangReflectMethod, new Object[] { paramString });
+    return (IBinder)a(b, new Object[] { paramString });
   }
   
   private static Object a(Method paramMethod, Object... paramVarArgs)
@@ -70,7 +70,7 @@ public final class ServiceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.kapalaiadapter.ServiceManager
  * JD-Core Version:    0.7.0.1
  */

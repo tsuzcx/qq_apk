@@ -9,7 +9,7 @@ final class PokeItemHelper$1
   
   public void run()
   {
-    HapticManager localHapticManager = HapticManager.a();
+    HapticManager localHapticManager = HapticManager.b();
     int i = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(PokeItemHelper.e);
@@ -22,7 +22,7 @@ final class PokeItemHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PokeItemHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,7 @@ class QQMusicPlayService$2
     localIntentFilter.addAction("QQMusicPlay_exit_action");
     try
     {
-      BaseApplicationImpl.getContext().registerReceiver(QQMusicPlayService.a(this.this$0), localIntentFilter);
+      BaseApplicationImpl.getContext().registerReceiver(QQMusicPlayService.c(this.this$0), localIntentFilter);
     }
     catch (Exception localException)
     {
@@ -36,10 +36,10 @@ class QQMusicPlayService$2
     QQMusicPlayService.a(NetworkUtil.isNetworkAvailable(this.this$0.getApplicationContext()));
     QQMusicPlayService localQQMusicPlayService = this.this$0;
     QQMusicPlayService.a(localQQMusicPlayService, new QQMusicPlayService.NetInfoHandler(localQQMusicPlayService));
-    AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getContext(), QQMusicPlayService.a(this.this$0));
+    AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getContext(), QQMusicPlayService.d(this.this$0));
     try
     {
-      QQMusicPlayService.a(this.this$0);
+      QQMusicPlayService.e(this.this$0);
       return;
     }
     catch (Throwable localThrowable)
@@ -51,7 +51,7 @@ class QQMusicPlayService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayService.2
  * JD-Core Version:    0.7.0.1
  */

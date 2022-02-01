@@ -9,14 +9,14 @@ class PhotoListCustomizationArk$1$1
   
   public void run()
   {
-    if (PhotoListCustomizationArk.a(this.a.this$0) != null) {
-      PhotoListCustomizationArk.b(this.a.this$0).closeContextMenu();
+    if (PhotoListCustomizationArk.d(this.a.this$0) != null) {
+      PhotoListCustomizationArk.e(this.a.this$0).closeContextMenu();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationArk.1.1
  * JD-Core Version:    0.7.0.1
  */

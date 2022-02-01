@@ -123,9 +123,9 @@ public class HotChatHandler
   extends BusinessHandler
   implements IHotChatHandler
 {
-  public static final String EXIT_HOT_CHAT_FAIL = HardCodeUtil.a(2131705641);
-  public static final String EXIT_HOT_CHAT_SUCCESS = HardCodeUtil.a(2131705650);
-  public static final String JOIN_HOT_CHAT_FAIL = HardCodeUtil.a(2131705649);
+  public static final String EXIT_HOT_CHAT_FAIL = HardCodeUtil.a(2131903527);
+  public static final String EXIT_HOT_CHAT_SUCCESS = HardCodeUtil.a(2131903536);
+  public static final String JOIN_HOT_CHAT_FAIL = HardCodeUtil.a(2131903535);
   private static final String TAG = "HotChatHandler";
   public QQAppInterface app;
   private volatile boolean mIsReqiringMyHotChat = false;
@@ -215,11 +215,11 @@ public class HotChatHandler
         }
       }
       localObject1 = new LBS.Attribute();
-      localObject2 = DeviceInfoUtil.a();
+      localObject2 = DeviceInfoUtil.b();
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         ((LBS.Attribute)localObject1).imei.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
       }
-      localObject2 = DeviceInfoUtil.b();
+      localObject2 = DeviceInfoUtil.c();
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         ((LBS.Attribute)localObject1).imsi.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
       }
@@ -357,7 +357,7 @@ public class HotChatHandler
   
   private void handleCreateHotChatResp(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    String str = HardCodeUtil.a(2131705646);
+    String str = HardCodeUtil.a(2131903532);
     HotChatInfo localHotChatInfo = (HotChatInfo)paramToServiceMsg.extraData.getSerializable("HOT_CHAT_INFO");
     boolean bool = paramToServiceMsg.extraData.getBoolean("isWifiHotChat", false);
     if (paramFromServiceMsg.getResultCode() != 1000)
@@ -407,7 +407,7 @@ public class HotChatHandler
       localHotChatInfo.troopCode = String.valueOf(l2);
       localHotChatInfo.state = 0;
       ((HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(localHotChatInfo, 4);
-      notifyUI(1032, true, new Object[] { HardCodeUtil.a(2131705636), localHotChatInfo.troopCode, localHotChatInfo.troopUin, localHotChatInfo.name, Boolean.valueOf(bool) });
+      notifyUI(1032, true, new Object[] { HardCodeUtil.a(2131903522), localHotChatInfo.troopCode, localHotChatInfo.troopUin, localHotChatInfo.name, Boolean.valueOf(bool) });
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -421,26 +421,26 @@ public class HotChatHandler
       switch (i)
       {
       default: 
-        paramToServiceMsg = HardCodeUtil.a(2131705655);
+        paramToServiceMsg = HardCodeUtil.a(2131903541);
         break;
       case 1294: 
-        paramToServiceMsg = HardCodeUtil.a(2131705652);
+        paramToServiceMsg = HardCodeUtil.a(2131903538);
         break;
       case 1293: 
-        paramToServiceMsg = HardCodeUtil.a(2131705643);
+        paramToServiceMsg = HardCodeUtil.a(2131903529);
         break;
       case 1292: 
-        paramToServiceMsg = HardCodeUtil.a(2131705638);
+        paramToServiceMsg = HardCodeUtil.a(2131903524);
         break;
       case 1291: 
-        paramToServiceMsg = HardCodeUtil.a(2131705642);
+        paramToServiceMsg = HardCodeUtil.a(2131903528);
         break;
       case 1290: 
-        paramToServiceMsg = HardCodeUtil.a(2131705651);
+        paramToServiceMsg = HardCodeUtil.a(2131903537);
         break;
       }
     } else {
-      paramToServiceMsg = HardCodeUtil.a(2131705648);
+      paramToServiceMsg = HardCodeUtil.a(2131903534);
     }
     notifyUI(1032, false, new Object[] { localHotChatInfo.troopUin, paramToServiceMsg, localHotChatInfo.name });
   }
@@ -448,7 +448,7 @@ public class HotChatHandler
   private void handleCreateHotChatRespErrorOrTimeOut(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     paramToServiceMsg = (HotChatInfo)paramToServiceMsg.extraData.get("HOT_CHAT_INFO");
-    notifyUI(1032, false, new Object[] { paramToServiceMsg.troopUin, HardCodeUtil.a(2131705653), paramToServiceMsg.name });
+    notifyUI(1032, false, new Object[] { paramToServiceMsg.troopUin, HardCodeUtil.a(2131903539), paramToServiceMsg.name });
   }
   
   private void handleDismissHotChat(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -505,7 +505,7 @@ public class HotChatHandler
         }
       }
       paramFromServiceMsg = (HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-      paramObject = paramFromServiceMsg.a(str);
+      paramObject = paramFromServiceMsg.c(str);
       if (paramObject != null) {
         paramFromServiceMsg.a(paramObject, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL);
       }
@@ -705,8 +705,8 @@ public class HotChatHandler
     {
       paramToServiceMsg = (HotChatManager.HotChatStateWrapper)paramToServiceMsg.extraData.getSerializable("targetHotChatState");
       paramFromServiceMsg = (HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-      paramFromServiceMsg.a(paramFromServiceMsg.a(str1), paramToServiceMsg);
-      notifyUI(1033, true, new Object[] { str1, HardCodeUtil.a(2131705650) });
+      paramFromServiceMsg.a(paramFromServiceMsg.c(str1), paramToServiceMsg);
+      notifyUI(1033, true, new Object[] { str1, HardCodeUtil.a(2131903536) });
       return;
     }
     notifyUI(1033, false, new Object[] { str1, str2 });
@@ -727,23 +727,23 @@ public class HotChatHandler
     // Byte code:
     //   0: aload_1
     //   1: getfield 136	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   4: ldc_w 717
-    //   7: invokevirtual 721	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   4: ldc_w 718
+    //   7: invokevirtual 722	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
     //   10: astore 7
     //   12: aload_1
     //   13: getfield 136	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   16: ldc_w 723
-    //   19: invokevirtual 396	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   16: ldc_w 724
+    //   19: invokevirtual 397	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   22: astore 8
-    //   24: new 418	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   24: new 419	tencent/im/oidb/oidb_sso$OIDBSSOPkg
     //   27: dup
-    //   28: invokespecial 419	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   28: invokespecial 420	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
     //   31: astore_1
     //   32: aload_1
     //   33: aload_3
-    //   34: checkcast 421	[B
-    //   37: checkcast 421	[B
-    //   40: invokevirtual 425	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   34: checkcast 422	[B
+    //   37: checkcast 422	[B
+    //   40: invokevirtual 426	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   43: pop
     //   44: aload_1
     //   45: astore_3
@@ -760,67 +760,67 @@ public class HotChatHandler
     //   64: ldc 14
     //   66: iconst_2
     //   67: aload_2
-    //   68: invokevirtual 583	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:toString	()Ljava/lang/String;
-    //   71: invokestatic 406	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   68: invokevirtual 584	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:toString	()Ljava/lang/String;
+    //   71: invokestatic 407	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   74: aload_1
     //   75: astore_3
     //   76: aload_3
     //   77: ifnull +25 -> 102
     //   80: aload_3
-    //   81: getfield 428	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   84: invokevirtual 431	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   81: getfield 429	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   84: invokevirtual 432	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   87: ifeq +15 -> 102
     //   90: aload_3
-    //   91: getfield 428	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   94: invokevirtual 434	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   91: getfield 429	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   94: invokevirtual 435	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   97: istore 4
     //   99: goto +6 -> 105
     //   102: iconst_m1
     //   103: istore 4
     //   105: iload 4
     //   107: ifne +354 -> 461
-    //   110: new 725	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody
+    //   110: new 726	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody
     //   113: dup
-    //   114: invokespecial 726	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:<init>	()V
+    //   114: invokespecial 727	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:<init>	()V
     //   117: astore 6
     //   119: aload 6
     //   121: aload_3
-    //   122: getfield 437	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   125: invokevirtual 441	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   128: invokevirtual 445	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   131: invokevirtual 727	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   122: getfield 438	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   125: invokevirtual 442	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   128: invokevirtual 446	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   131: invokevirtual 728	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   134: pop
     //   135: aload 6
-    //   137: getfield 730	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:string_group_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   140: invokevirtual 438	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   137: getfield 731	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:string_group_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   140: invokevirtual 439	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   143: ifeq +18 -> 161
     //   146: aload 6
-    //   148: getfield 730	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:string_group_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   151: invokevirtual 441	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   154: invokevirtual 460	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   148: getfield 731	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:string_group_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   151: invokevirtual 442	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   154: invokevirtual 461	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   157: astore_1
     //   158: goto +5 -> 163
     //   161: aconst_null
     //   162: astore_1
     //   163: aload 6
-    //   165: getfield 733	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:string_jumping_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   168: invokevirtual 438	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   165: getfield 734	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:string_jumping_url	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   168: invokevirtual 439	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   171: ifeq +18 -> 189
     //   174: aload 6
-    //   176: getfield 733	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:string_jumping_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   179: invokevirtual 441	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   182: invokevirtual 460	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   176: getfield 734	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:string_jumping_url	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   179: invokevirtual 442	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   182: invokevirtual 461	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   185: astore_2
     //   186: goto +5 -> 191
     //   189: aconst_null
     //   190: astore_2
     //   191: aload 6
-    //   193: getfield 737	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:uint64_administrator_uin	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   196: invokevirtual 740	com/tencent/mobileqq/pb/PBRepeatField:has	()Z
+    //   193: getfield 738	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:uint64_administrator_uin	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   196: invokevirtual 741	com/tencent/mobileqq/pb/PBRepeatField:has	()Z
     //   199: ifeq +15 -> 214
     //   202: aload 6
-    //   204: getfield 737	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:uint64_administrator_uin	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   207: invokevirtual 743	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
+    //   204: getfield 738	tencent/im/oidb/cmd0x8b2/oidb_0x8b2$RspBody:uint64_administrator_uin	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   207: invokevirtual 744	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
     //   210: astore_3
     //   211: goto +5 -> 216
     //   214: aconst_null
@@ -848,66 +848,66 @@ public class HotChatHandler
     //   248: ldc 14
     //   250: iconst_2
     //   251: aload_3
-    //   252: invokevirtual 591	java/lang/Exception:toString	()Ljava/lang/String;
-    //   255: invokestatic 406	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   252: invokevirtual 592	java/lang/Exception:toString	()Ljava/lang/String;
+    //   255: invokestatic 407	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   258: aload_2
     //   259: astore_3
     //   260: aconst_null
     //   261: astore_2
     //   262: aload_0
     //   263: getfield 48	com/tencent/mobileqq/hotchat/app/HotChatHandler:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   266: getstatic 554	com/tencent/mobileqq/app/QQManagerFactory:HOT_CHAT_MANAGER	I
-    //   269: invokevirtual 560	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   272: checkcast 562	com/tencent/mobileqq/app/HotChatManager
+    //   266: getstatic 555	com/tencent/mobileqq/app/QQManagerFactory:HOT_CHAT_MANAGER	I
+    //   269: invokevirtual 561	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   272: checkcast 563	com/tencent/mobileqq/app/HotChatManager
     //   275: astore 6
     //   277: aload 6
     //   279: aload 8
-    //   281: invokevirtual 594	com/tencent/mobileqq/app/HotChatManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/HotChatInfo;
+    //   281: invokevirtual 595	com/tencent/mobileqq/app/HotChatManager:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/HotChatInfo;
     //   284: astore 9
     //   286: aload 9
     //   288: ifnull +127 -> 415
     //   291: aload_1
     //   292: ifnonnull +14 -> 306
     //   295: aload 9
-    //   297: getfield 746	com/tencent/mobileqq/data/HotChatInfo:memo	Ljava/lang/String;
+    //   297: getfield 747	com/tencent/mobileqq/data/HotChatInfo:memo	Ljava/lang/String;
     //   300: ifnonnull +18 -> 318
     //   303: goto +21 -> 324
     //   306: aload_1
     //   307: aload 9
-    //   309: getfield 746	com/tencent/mobileqq/data/HotChatInfo:memo	Ljava/lang/String;
-    //   312: invokevirtual 626	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   309: getfield 747	com/tencent/mobileqq/data/HotChatInfo:memo	Ljava/lang/String;
+    //   312: invokevirtual 627	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   315: ifne +9 -> 324
     //   318: aload 9
     //   320: iconst_0
-    //   321: putfield 749	com/tencent/mobileqq/data/HotChatInfo:memoShowed	Z
+    //   321: putfield 750	com/tencent/mobileqq/data/HotChatInfo:memoShowed	Z
     //   324: aload 9
     //   326: aload_1
-    //   327: putfield 746	com/tencent/mobileqq/data/HotChatInfo:memo	Ljava/lang/String;
+    //   327: putfield 747	com/tencent/mobileqq/data/HotChatInfo:memo	Ljava/lang/String;
     //   330: aload 9
     //   332: aload_3
-    //   333: putfield 752	com/tencent/mobileqq/data/HotChatInfo:memoUrl	Ljava/lang/String;
+    //   333: putfield 753	com/tencent/mobileqq/data/HotChatInfo:memoUrl	Ljava/lang/String;
     //   336: new 224	java/util/ArrayList
     //   339: dup
-    //   340: invokespecial 753	java/util/ArrayList:<init>	()V
+    //   340: invokespecial 754	java/util/ArrayList:<init>	()V
     //   343: astore 10
     //   345: aload_2
     //   346: ifnull +55 -> 401
     //   349: aload_2
-    //   350: invokeinterface 758 1 0
+    //   350: invokeinterface 759 1 0
     //   355: ifle +46 -> 401
     //   358: iconst_0
     //   359: istore 5
     //   361: iload 5
     //   363: aload_2
-    //   364: invokeinterface 758 1 0
+    //   364: invokeinterface 759 1 0
     //   369: if_icmpge +32 -> 401
     //   372: aload 10
     //   374: aload_2
     //   375: iload 5
-    //   377: invokeinterface 761 2 0
-    //   382: checkcast 763	java/lang/Long
-    //   385: invokestatic 766	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   388: invokevirtual 768	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   377: invokeinterface 762 2 0
+    //   382: checkcast 764	java/lang/Long
+    //   385: invokestatic 767	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   388: invokevirtual 769	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   391: pop
     //   392: iload 5
     //   394: iconst_1
@@ -916,10 +916,10 @@ public class HotChatHandler
     //   398: goto -37 -> 361
     //   401: aload 9
     //   403: aload 10
-    //   405: putfield 772	com/tencent/mobileqq/data/HotChatInfo:adminUins	Ljava/util/List;
+    //   405: putfield 773	com/tencent/mobileqq/data/HotChatInfo:adminUins	Ljava/util/List;
     //   408: aload 6
     //   410: aload 9
-    //   412: invokevirtual 775	com/tencent/mobileqq/app/HotChatManager:a	(Lcom/tencent/mobileqq/data/HotChatInfo;)V
+    //   412: invokevirtual 776	com/tencent/mobileqq/app/HotChatManager:a	(Lcom/tencent/mobileqq/data/HotChatInfo;)V
     //   415: aload_0
     //   416: sipush 1036
     //   419: iconst_1
@@ -950,7 +950,7 @@ public class HotChatHandler
     //   452: iconst_5
     //   453: aload_2
     //   454: aastore
-    //   455: invokevirtual 410	com/tencent/mobileqq/hotchat/app/HotChatHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   455: invokevirtual 411	com/tencent/mobileqq/hotchat/app/HotChatHandler:notifyUI	(IZLjava/lang/Object;)V
     //   458: goto +52 -> 510
     //   461: aconst_null
     //   462: astore_1
@@ -984,54 +984,54 @@ public class HotChatHandler
     //   500: iconst_5
     //   501: aconst_null
     //   502: aastore
-    //   503: invokevirtual 410	com/tencent/mobileqq/hotchat/app/HotChatHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   503: invokevirtual 411	com/tencent/mobileqq/hotchat/app/HotChatHandler:notifyUI	(IZLjava/lang/Object;)V
     //   506: aconst_null
     //   507: astore_3
     //   508: aload_3
     //   509: astore_2
     //   510: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   513: ifeq +89 -> 602
-    //   516: new 471	java/lang/StringBuilder
+    //   516: new 472	java/lang/StringBuilder
     //   519: dup
-    //   520: invokespecial 472	java/lang/StringBuilder:<init>	()V
+    //   520: invokespecial 473	java/lang/StringBuilder:<init>	()V
     //   523: astore 6
     //   525: aload 6
-    //   527: ldc_w 777
-    //   530: invokevirtual 478	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   527: ldc_w 778
+    //   530: invokevirtual 479	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   533: pop
     //   534: aload 6
     //   536: iload 4
-    //   538: invokevirtual 485	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   538: invokevirtual 486	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   541: pop
     //   542: aload 6
-    //   544: ldc_w 779
-    //   547: invokevirtual 478	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   544: ldc_w 780
+    //   547: invokevirtual 479	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   550: pop
     //   551: aload 6
     //   553: aload_1
-    //   554: invokevirtual 478	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   554: invokevirtual 479	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   557: pop
     //   558: aload 6
-    //   560: ldc_w 781
-    //   563: invokevirtual 478	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   560: ldc_w 782
+    //   563: invokevirtual 479	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   566: pop
     //   567: aload 6
     //   569: aload_3
-    //   570: invokevirtual 478	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   570: invokevirtual 479	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   573: pop
     //   574: aload 6
-    //   576: ldc_w 783
-    //   579: invokevirtual 478	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   576: ldc_w 784
+    //   579: invokevirtual 479	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   582: pop
     //   583: aload 6
     //   585: aload_2
-    //   586: invokevirtual 786	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   586: invokevirtual 787	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   589: pop
-    //   590: ldc_w 663
+    //   590: ldc_w 664
     //   593: iconst_2
     //   594: aload 6
-    //   596: invokevirtual 499	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   599: invokestatic 406	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   596: invokevirtual 500	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   599: invokestatic 407	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   602: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1449,7 +1449,7 @@ public class HotChatHandler
             paramToServiceMsg = (HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
             localObject3 = paramFromServiceMsg;
             localObject4 = paramObject;
-            localObject1 = paramToServiceMsg.a(str);
+            localObject1 = paramToServiceMsg.c(str);
             if (localObject1 != null)
             {
               if (paramObject == null)
@@ -1629,7 +1629,7 @@ public class HotChatHandler
       paramFromServiceMsg = String.valueOf(str4);
       paramObject = new StringBuilder();
       paramObject.append(str3);
-      paramObject.append(BaseApplicationImpl.getContext().getString(2131693198));
+      paramObject.append(BaseApplicationImpl.getContext().getString(2131890738));
       AddMessageHelper.a(paramToServiceMsg, paramFromServiceMsg, paramObject.toString(), 1, false, true);
       notifyUI(1052, true, new Object[] { str1, Integer.valueOf(i), str2, null });
     }
@@ -1729,7 +1729,7 @@ public class HotChatHandler
       paramObject = String.valueOf(str4);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(str3);
-      localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131693198));
+      localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131890738));
       AddMessageHelper.a(paramFromServiceMsg, paramObject, localStringBuilder.toString(), 1, false, true);
       notifyUI(1037, true, new Object[] { str1, Integer.valueOf(i), str2, paramToServiceMsg });
     }
@@ -1848,7 +1848,7 @@ public class HotChatHandler
     }
     else if (paramInt3 == 2)
     {
-      HotChatInfo localHotChatInfo2 = paramToServiceMsg.a(localHotChatInfo1.troopUin);
+      HotChatInfo localHotChatInfo2 = paramToServiceMsg.c(localHotChatInfo1.troopUin);
       if (localHotChatInfo2 == null)
       {
         paramToServiceMsg.a(localHotChatInfo1, 4);
@@ -1868,7 +1868,7 @@ public class HotChatHandler
     if (paramWifiPOIInfo.uint64_exit_group_code.has())
     {
       long l = paramWifiPOIInfo.uint64_exit_group_code.get();
-      paramWifiPOIInfo = paramToServiceMsg.a();
+      paramWifiPOIInfo = paramToServiceMsg.c();
       if ((localObject != null) && (paramWifiPOIInfo.size() > 0))
       {
         paramWifiPOIInfo = paramWifiPOIInfo.iterator();
@@ -2000,7 +2000,7 @@ public class HotChatHandler
         }
       }
       paramToServiceMsg = (HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-      paramFromServiceMsg = paramToServiceMsg.a(str);
+      paramFromServiceMsg = paramToServiceMsg.c(str);
       if (paramFromServiceMsg != null)
       {
         if ((localArrayList != null) && (localArrayList.size() > 0))
@@ -2256,7 +2256,7 @@ public class HotChatHandler
   @Nullable
   private List<HotChatInfo> processHotChat(HotChatInfo paramHotChatInfo, HotChatManager paramHotChatManager)
   {
-    List localList = paramHotChatManager.a();
+    List localList = paramHotChatManager.c();
     if ((localList != null) && (localList.size() > 0))
     {
       int i = localList.size() - 1;
@@ -2300,7 +2300,7 @@ public class HotChatHandler
     String str = String.valueOf(paramString1);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString3);
-    localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131693198));
+    localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131890738));
     AddMessageHelper.a(localQQAppInterface, str, localStringBuilder.toString(), 1, false, true);
     notifyUI(1037, true, new Object[] { paramString1, Integer.valueOf(0), paramString2, "" });
   }
@@ -2549,10 +2549,10 @@ public class HotChatHandler
   public void getMyHotChatList()
   {
     getMyHotChatList(0);
-    if (SharedPreUtils.h(this.app.getApplication(), getCurrentAccountUin())) {
+    if (SharedPreUtils.aF(this.app.getApplication(), getCurrentAccountUin())) {
       getMyHotChatList(2);
     }
-    if (SharedPreUtils.g(this.app.getApplication(), getCurrentAccountUin())) {
+    if (SharedPreUtils.aE(this.app.getApplication(), getCurrentAccountUin())) {
       ((WerewolvesHandler)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(new HotChatHandler.1(this));
     }
   }
@@ -3218,7 +3218,7 @@ public class HotChatHandler
     try
     {
       localReqBody.uint64_group_code.set(Long.parseLong(paramString));
-      HotChatInfo localHotChatInfo = ((HotChatManager)paramAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(paramString);
+      HotChatInfo localHotChatInfo = ((HotChatManager)paramAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).c(paramString);
       localObject = null;
       paramAppInterface = (AppInterface)localObject;
       if (localHotChatInfo != null)
@@ -3342,7 +3342,7 @@ public class HotChatHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.app.HotChatHandler
  * JD-Core Version:    0.7.0.1
  */

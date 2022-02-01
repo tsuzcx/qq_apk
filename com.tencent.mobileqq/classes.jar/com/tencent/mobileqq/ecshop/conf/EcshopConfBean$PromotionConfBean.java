@@ -5,25 +5,17 @@ import java.util.Map;
 
 public class EcshopConfBean$PromotionConfBean
 {
-  public int a;
-  public String a;
-  public Map<String, String> a;
-  public String b;
-  public Map<String, String> b;
+  public String a = "";
+  public String b = "";
   public String c = "";
   public String d = "";
-  
-  public EcshopConfBean$PromotionConfBean()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
-  }
+  public int e;
+  public Map<String, String> f = new HashMap();
+  public Map<String, String> g = new HashMap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.conf.EcshopConfBean.PromotionConfBean
  * JD-Core Version:    0.7.0.1
  */

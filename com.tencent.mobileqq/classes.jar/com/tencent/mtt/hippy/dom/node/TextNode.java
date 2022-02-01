@@ -1,6 +1,8 @@
 package com.tencent.mtt.hippy.dom.node;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
@@ -17,7 +19,6 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.text.style.AbsoluteSizeSpan;
-import android.text.style.BackgroundColorSpan;
 import android.text.style.CharacterStyle;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StrikethroughSpan;
@@ -25,6 +26,7 @@ import android.text.style.UnderlineSpan;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.HippyGlobalConfigs;
 import com.tencent.mtt.hippy.adapter.font.HippyFontScaleAdapter;
+import com.tencent.mtt.hippy.adapter.image.HippyDrawable;
 import com.tencent.mtt.hippy.adapter.image.HippyImageLoader;
 import com.tencent.mtt.hippy.annotation.HippyControllerProps;
 import com.tencent.mtt.hippy.common.HippyMap;
@@ -50,6 +52,7 @@ public class TextNode
   public static final String PROP_SHADOW_RADIUS = "textShadowRadius";
   private static final g.a TEXT_MEASURE_FUNCTION = new TextNode.1();
   public static final int UNSET = -1;
+  protected HippyEngineContext engineContext;
   private int mBackgroundColor;
   private int mColor = -16777216;
   protected boolean mEnableScale = false;
@@ -60,7 +63,7 @@ public class TextNode
   private int mFontWeight = -1;
   private ArrayList<String> mGestureTypes = null;
   protected HippyImageLoader mImageAdapter;
-  private boolean mIsBackgroundColorSet = false;
+  private final boolean mIsBackgroundColorSet = false;
   private boolean mIsLineThroughTextDecorationSet = false;
   private boolean mIsUnderlineTextDecorationSet = false;
   private final boolean mIsVirtual;
@@ -75,7 +78,7 @@ public class TextNode
   private float mTextShadowOffsetDy = 0.0F;
   private float mTextShadowRadius = 1.0F;
   private WeakReference<HippyTextView> mTextViewWeakRefrence = null;
-  protected TextUtils.TruncateAt mTruncateAt = TextUtils.TruncateAt.END;
+  protected final TextUtils.TruncateAt mTruncateAt = TextUtils.TruncateAt.END;
   final TextPaint sTextPaintInstance = new TextPaint(1);
   
   public TextNode(boolean paramBoolean)
@@ -88,23 +91,44 @@ public class TextNode
   
   private void createImageSpanOperation(List<TextNode.a> paramList, SpannableStringBuilder paramSpannableStringBuilder, ImageNode paramImageNode)
   {
-    Object localObject = paramImageNode.getTotalProps();
-    if ((localObject != null) && (((HippyMap)localObject).containsKey("src"))) {
-      localObject = ((HippyMap)localObject).getString("src");
-    } else {
-      localObject = null;
+    Object localObject1 = paramImageNode.getTotalProps();
+    Object localObject4 = null;
+    Object localObject2;
+    Object localObject3;
+    if (localObject1 != null)
+    {
+      localObject2 = ((HippyMap)localObject1).getString("src");
+      localObject3 = ((HippyMap)localObject1).getString("defaultSource");
     }
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return;
+    else
+    {
+      localObject3 = null;
+      localObject2 = localObject3;
     }
-    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#00000000"));
-    localColorDrawable.setBounds(0, 0, Math.round(paramImageNode.getStyleWidth()), Math.round(paramImageNode.getStyleHeight()));
-    localObject = new c(localColorDrawable, (String)localObject, paramImageNode, this.mImageAdapter);
-    paramImageNode.setImageSpan((c)localObject);
+    localObject1 = localObject4;
+    if (!TextUtils.isEmpty((CharSequence)localObject3))
+    {
+      HippyImageLoader localHippyImageLoader = this.mImageAdapter;
+      localObject1 = localObject4;
+      if (localHippyImageLoader != null)
+      {
+        localObject3 = localHippyImageLoader.getImage((String)localObject3, null).getBitmap();
+        localObject1 = localObject4;
+        if (localObject3 != null) {
+          localObject1 = new BitmapDrawable((Bitmap)localObject3);
+        }
+      }
+    }
+    if (localObject1 == null) {
+      localObject1 = new ColorDrawable(Color.parseColor("#00000000"));
+    }
+    ((Drawable)localObject1).setBounds(0, 0, Math.round(paramImageNode.getStyleWidth()), Math.round(paramImageNode.getStyleHeight()));
+    localObject1 = new c((Drawable)localObject1, (String)localObject2, paramImageNode, this.mImageAdapter, this.engineContext);
+    paramImageNode.setImageSpan((c)localObject1);
     int i = paramSpannableStringBuilder.length();
     paramSpannableStringBuilder.append("[img]");
     int j = i + 5;
-    paramList.add(new TextNode.a(i, j, localObject));
+    paramList.add(new TextNode.a(i, j, localObject1));
     if ((paramImageNode.getGestureTypes() != null) && (paramImageNode.getGestureTypes().size() > 0))
     {
       paramSpannableStringBuilder = new f(paramImageNode.getId(), true);
@@ -196,26 +220,22 @@ public class TextNode
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(((String)localObject1).subSequence(0, paramInt1).toString());
     localStringBuilder.append(truncate((String)localObject2, this.sTextPaintInstance, paramInt3, this.mTruncateAt));
-    localObject2 = localStringBuilder.toString();
-    if (((String)localObject2).length() - 1 >= 0) {
-      paramInt1 = ((String)localObject2).length() - 1;
-    } else {
-      paramInt1 = 0;
-    }
-    localObject2 = (CharacterStyle[])localSpannableStringBuilder.getSpans(paramInt1, ((String)localObject1).length(), CharacterStyle.class);
+    i = Math.max(localStringBuilder.toString().length() - 1, 0);
+    localObject2 = (CharacterStyle[])localSpannableStringBuilder.getSpans(i, ((String)localObject1).length(), CharacterStyle.class);
     if ((localObject2 != null) && (localObject2.length > 0))
     {
-      i = localObject2.length;
-      while (paramInt2 < i)
+      int j = localObject2.length;
+      paramInt1 = paramInt2;
+      while (paramInt1 < j)
       {
-        localStringBuilder = localObject2[paramInt2];
-        if (localSpannableStringBuilder.getSpanStart(localStringBuilder) >= paramInt1) {
+        localStringBuilder = localObject2[paramInt1];
+        if (localSpannableStringBuilder.getSpanStart(localStringBuilder) >= i) {
           localSpannableStringBuilder.removeSpan(localStringBuilder);
         }
-        paramInt2 += 1;
+        paramInt1 += 1;
       }
     }
-    return new StaticLayout(localSpannableStringBuilder.replace(paramInt1, ((String)localObject1).length(), "…"), this.sTextPaintInstance, paramInt3, this.mTextAlign, 1.0F, 0.0F, true);
+    return new StaticLayout(localSpannableStringBuilder.replace(i, ((String)localObject1).length(), "…"), this.sTextPaintInstance, paramInt3, this.mTextAlign, 1.0F, 0.0F, true);
   }
   
   private SpannableStringBuilder createSpan(CharSequence paramCharSequence, boolean paramBoolean)
@@ -246,9 +266,7 @@ public class TextNode
     if (k <= m)
     {
       paramList.add(new TextNode.a(k, m, new ForegroundColorSpan(paramTextNode.mColor)));
-      if (paramTextNode.mIsBackgroundColorSet) {
-        paramList.add(new TextNode.a(k, m, new BackgroundColorSpan(paramTextNode.mBackgroundColor)));
-      }
+      paramTextNode.getClass();
       if ((paramTextNode.mLetterSpacing != -1.0F) && (Build.VERSION.SDK_INT >= 21)) {
         paramList.add(new TextNode.a(k, m, new d(paramTextNode.mLetterSpacing)));
       }
@@ -267,7 +285,7 @@ public class TextNode
         paramList.add(new TextNode.a(k, m, new AbsoluteSizeSpan(i)));
       }
       if ((paramTextNode.mFontStyle != -1) || (paramTextNode.mFontWeight != -1) || (paramTextNode.mFontFamily != null)) {
-        paramList.add(new TextNode.a(k, m, new h(paramTextNode.mFontStyle, paramTextNode.mFontWeight, paramTextNode.mFontFamily)));
+        paramList.add(new TextNode.a(k, m, new h(paramTextNode.mFontStyle, paramTextNode.mFontWeight, paramTextNode.mFontFamily, this.mFontScaleAdapter)));
       }
       if (paramTextNode.mIsUnderlineTextDecorationSet) {
         paramList.add(new TextNode.a(k, m, new UnderlineSpan()));
@@ -322,14 +340,14 @@ public class TextNode
         else
         {
           if (!(localb instanceof ImageNode)) {
-            break label684;
+            break label657;
           }
           createImageSpanOperation(paramList, paramSpannableStringBuilder, (ImageNode)localb);
         }
         localb.markUpdateSeen();
         i += 1;
         continue;
-        label684:
+        label657:
         paramList = new StringBuilder();
         paramList.append(localb.getViewClass());
         paramList.append("is not support in Text");
@@ -346,7 +364,7 @@ public class TextNode
     return -1;
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onClick")
+  @HippyControllerProps(defaultType="boolean", name="onClick")
   public void clickEnable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -367,7 +385,7 @@ public class TextNode
   
   protected void createCustomSpan(CharSequence paramCharSequence, Spannable paramSpannable) {}
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="enableScale")
+  @HippyControllerProps(defaultType="boolean", name="enableScale")
   public void enableScale(boolean paramBoolean)
   {
     this.mEnableScale = paramBoolean;
@@ -477,6 +495,7 @@ public class TextNode
   public void layoutBefore(HippyEngineContext paramHippyEngineContext)
   {
     super.layoutBefore(paramHippyEngineContext);
+    this.engineContext = paramHippyEngineContext;
     if (this.mFontScaleAdapter == null) {
       this.mFontScaleAdapter = paramHippyEngineContext.getGlobalConfigs().getFontScaleAdapter();
     }
@@ -519,7 +538,7 @@ public class TextNode
     markUpdated();
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onLongClick")
+  @HippyControllerProps(defaultType="boolean", name="onLongClick")
   public void longClickEnable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -547,7 +566,7 @@ public class TextNode
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onPressIn")
+  @HippyControllerProps(defaultType="boolean", name="onPressIn")
   public void pressInEnable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -684,7 +703,7 @@ public class TextNode
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onTouchCancel")
+  @HippyControllerProps(defaultType="boolean", name="onTouchCancel")
   public void touchCancelable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -696,7 +715,7 @@ public class TextNode
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onTouchDown")
+  @HippyControllerProps(defaultType="boolean", name="onTouchDown")
   public void touchDownEnable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -708,7 +727,7 @@ public class TextNode
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onTouchEnd")
+  @HippyControllerProps(defaultType="boolean", name="onTouchEnd")
   public void touchEndEnable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -720,7 +739,7 @@ public class TextNode
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onTouchMove")
+  @HippyControllerProps(defaultType="boolean", name="onTouchMove")
   public void touchUpEnable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -776,7 +795,7 @@ public class TextNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.TextNode
  * JD-Core Version:    0.7.0.1
  */

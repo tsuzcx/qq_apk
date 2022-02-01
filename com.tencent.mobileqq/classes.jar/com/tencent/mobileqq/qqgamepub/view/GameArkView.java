@@ -26,22 +26,22 @@ public class GameArkView
   extends RelativeLayout
   implements ArkViewImplement.LoadCallback, IHeaderView, HippyViewBase
 {
-  private int jdField_a_of_type_Int = 101;
-  private long jdField_a_of_type_Long;
-  private ArkView jdField_a_of_type_ComTencentArkOpenArkView;
-  private QQGameMsgInfo jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
+  private ArkView a;
+  private String b;
   private boolean c = true;
-  private boolean d = false;
+  private long d;
+  private int e = 101;
+  private QQGameMsgInfo f;
+  private String g;
+  private boolean h = false;
+  private boolean i = true;
+  private boolean j = false;
   
   public GameArkView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(getContext()).inflate(2131559150, this);
-    this.jdField_a_of_type_ComTencentArkOpenArkView = ((ArkView)findViewById(2131374419));
+    LayoutInflater.from(getContext()).inflate(2131624905, this);
+    this.a = ((ArkView)findViewById(2131442586));
     for (;;)
     {
       try
@@ -55,21 +55,21 @@ public class GameArkView
           if (paramAttributeSet.toString() == null) {
             break label228;
           }
-          f = paramContext.density;
-          QLog.d("QQGamePub_GameArkView", 4, new Object[] { Float.valueOf(f) });
+          f1 = paramContext.density;
+          QLog.d("QQGamePub_GameArkView", 4, new Object[] { Float.valueOf(f1) });
         }
-        f = FontSettingManager.systemMetrics.density;
+        f1 = FontSettingManager.systemMetrics.density;
         if (paramContext != null)
         {
-          f = Math.min(f, paramContext.density);
+          f1 = Math.min(f1, paramContext.density);
           if (QLog.isColorLevel())
           {
             paramContext = new StringBuilder();
             paramContext.append("min density= ");
-            paramContext.append(f);
+            paramContext.append(f1);
             QLog.d("QQGamePub_GameArkView", 4, paramContext.toString());
           }
-          this.jdField_a_of_type_ComTencentArkOpenArkView.setScaleDensity(f);
+          this.a.setScaleDensity(f1);
           return;
         }
       }
@@ -82,21 +82,21 @@ public class GameArkView
       }
       return;
       label228:
-      float f = -1.0F;
+      float f1 = -1.0F;
     }
   }
   
-  private void f()
+  private void g()
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentArkOpenArkView != null) && (GamePubAccountHelper.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentArkOpenArkView.onPause();
+      if ((this.a != null) && (GamePubAccountHelper.f(this.b)) && (this.c)) {
+        this.a.onPause();
       }
-      if (this.jdField_b_of_type_Boolean)
+      if (this.h)
       {
-        e();
-        this.jdField_b_of_type_Boolean = false;
+        f();
+        this.h = false;
         return;
       }
     }
@@ -109,36 +109,31 @@ public class GameArkView
     }
   }
   
-  private void g()
+  private void h()
   {
     b();
     ThreadManagerV2.getUIHandlerV2().postDelayed(new GameArkView.2(this), 50L);
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null)
+    if (this.a != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQGamePub_GameArkView", 1, "GameArkView onResume");
       }
-      this.jdField_a_of_type_Int = 101;
-      this.jdField_a_of_type_ComTencentArkOpenArkView.onResume();
+      this.e = 101;
+      this.a.onResume();
     }
   }
   
   public void a(QQGameMsgInfo paramQQGameMsgInfo, Context paramContext, int paramInt, String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null)
+    this.g = paramString;
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo = paramQQGameMsgInfo;
-      this.jdField_a_of_type_JavaLangString = paramQQGameMsgInfo.arkAppName;
+      this.f = paramQQGameMsgInfo;
+      this.b = paramQQGameMsgInfo.arkAppName;
       paramContext = new ArkView.InitInfo();
       paramContext.appID = paramQQGameMsgInfo.arkAppName;
       paramContext.view = paramQQGameMsgInfo.arkAppView;
@@ -149,78 +144,83 @@ public class GameArkView
       {
         paramString = new StringBuilder();
         paramString.append(paramQQGameMsgInfo.loadArkResPath);
-        paramString.append(this.jdField_a_of_type_JavaLangString);
+        paramString.append(this.b);
         paramContext.resPath = paramString.toString();
       }
-      this.jdField_a_of_type_ComTencentArkOpenArkView.load(paramContext, this);
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.a.load(paramContext, this);
+      this.d = SystemClock.elapsedRealtime();
       if (QLog.isColorLevel())
       {
         paramQQGameMsgInfo = new StringBuilder();
         paramQQGameMsgInfo.append("init...mPubType:");
-        paramQQGameMsgInfo.append(this.jdField_b_of_type_JavaLangString);
+        paramQQGameMsgInfo.append(this.g);
         paramQQGameMsgInfo.append(",appName:");
-        paramQQGameMsgInfo.append(this.jdField_a_of_type_JavaLangString);
+        paramQQGameMsgInfo.append(this.b);
         paramQQGameMsgInfo.append(",loadArkResPath:");
         paramQQGameMsgInfo.append(paramContext.resPath);
         paramQQGameMsgInfo.append(",process:");
         paramQQGameMsgInfo.append(MobileQQ.processName);
         paramQQGameMsgInfo.append(",mInitStartTime:");
-        paramQQGameMsgInfo.append(this.jdField_a_of_type_Long);
+        paramQQGameMsgInfo.append(this.d);
         QLog.i("QQGamePub_GameArkView", 2, paramQQGameMsgInfo.toString());
       }
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 101;
-  }
-  
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null)
+    if (this.a != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQGamePub_GameArkView", 1, "GameArkView onPause");
       }
-      this.jdField_a_of_type_Int = 102;
-      this.jdField_a_of_type_ComTencentArkOpenArkView.onPause();
+      this.e = 102;
+      this.a.onPause();
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null)
+    if (this.a != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQGamePub_GameArkView", 1, "GameArkView onDestory");
       }
-      this.jdField_a_of_type_ComTencentArkOpenArkView.onDestroy();
+      this.a.onDestroy();
     }
   }
   
-  public void d()
+  public boolean d()
   {
-    ArkView localArkView = this.jdField_a_of_type_ComTencentArkOpenArkView;
+    return this.e == 101;
+  }
+  
+  public void e()
+  {
+    ArkView localArkView = this.a;
     if (localArkView != null) {
       localArkView.onDestroy();
     }
   }
   
-  public void e()
+  public void f()
   {
-    this.jdField_b_of_type_Boolean = true;
-    if (!this.d)
+    this.h = true;
+    if (!this.j)
     {
       QLog.d("QQGamePub_GameArkView", 1, "not callArKExposure,because ark is not loaded");
       return;
     }
-    if (this.c)
+    if (this.i)
     {
-      g();
-      this.c = false;
+      h();
+      this.i = false;
     }
+  }
+  
+  public String getAppName()
+  {
+    return this.b;
   }
   
   public NativeGestureDispatcher getGestureDispatcher()
@@ -244,16 +244,16 @@ public class GameArkView
       ((StringBuilder)localObject1).append(paramBoolean);
       QLog.d("QQGamePub_GameArkView", 1, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo != null)
+    if (this.f != null)
     {
-      long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-      Object localObject2 = GamePubAccountHelper.a(this.jdField_b_of_type_JavaLangString).d("76918").c("207984").a(2, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.advId).b(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.gameAppId);
+      long l = SystemClock.elapsedRealtime() - this.d;
+      Object localObject2 = GamePubAccountHelper.c(this.g).d("76918").c("207984").a(2, this.f.advId).b(this.f.gameAppId);
       if (l > 0L) {
         localObject1 = String.valueOf(l);
       } else {
         localObject1 = "";
       }
-      localObject1 = ((WadlReportBuilder)localObject2).a(17, (String)localObject1).a(18, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.arkAppName);
+      localObject1 = ((WadlReportBuilder)localObject2).a(17, (String)localObject1).a(18, this.f.arkAppName);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramInt1);
       ((StringBuilder)localObject2).append("");
@@ -279,18 +279,18 @@ public class GameArkView
       ((StringBuilder)localObject1).append(paramInt);
       QLog.d("QQGamePub_GameArkView", 1, ((StringBuilder)localObject1).toString());
     }
-    this.d = true;
+    this.j = true;
     ThreadManagerV2.getUIHandlerV2().postDelayed(new GameArkView.1(this), 500L);
-    if (this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo != null)
+    if (this.f != null)
     {
-      long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-      Object localObject2 = GamePubAccountHelper.a(this.jdField_b_of_type_JavaLangString).d("76918").c("207984").a(2, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.advId).b(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.gameAppId);
+      long l = SystemClock.elapsedRealtime() - this.d;
+      Object localObject2 = GamePubAccountHelper.c(this.g).d("76918").c("207984").a(2, this.f.advId).b(this.f.gameAppId);
       if (l > 0L) {
         localObject1 = String.valueOf(l);
       } else {
         localObject1 = "";
       }
-      localObject1 = ((WadlReportBuilder)localObject2).a(17, (String)localObject1).a(18, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.arkAppName);
+      localObject1 = ((WadlReportBuilder)localObject2).a(17, (String)localObject1).a(18, this.f.arkAppName);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramInt);
       ((StringBuilder)localObject2).append("");
@@ -302,12 +302,12 @@ public class GameArkView
   
   public void setPrePause(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.GameArkView
  * JD-Core Version:    0.7.0.1
  */

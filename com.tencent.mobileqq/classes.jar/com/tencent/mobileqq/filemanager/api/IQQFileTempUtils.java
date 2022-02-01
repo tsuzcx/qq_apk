@@ -331,6 +331,8 @@ public abstract interface IQQFileTempUtils
   
   public abstract FileManagerEntity sendLocalFile(BaseQQAppInterface paramBaseQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean);
   
+  public abstract void sendLocalFileToGuild(BaseQQAppInterface paramBaseQQAppInterface, String paramString1, String paramString2, Set<FileInfo> paramSet);
+  
   public abstract void sendLocalFileToTroop(Set<FileInfo> paramSet);
   
   public abstract void sendQlinkFiles(Activity paramActivity, String paramString, ArrayList<String> paramArrayList, int paramInt);
@@ -379,7 +381,7 @@ public abstract interface IQQFileTempUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.IQQFileTempUtils
  * JD-Core Version:    0.7.0.1
  */

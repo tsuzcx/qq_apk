@@ -11,14 +11,14 @@ class ReminderListFragment$10
   public void run()
   {
     if (this.this$0.getBaseActivity() != null) {
-      QQToast.a(this.this$0.getBaseActivity(), this.a, 0).a();
+      QQToast.makeText(this.this$0.getBaseActivity(), this.a, 0).show();
     }
-    ReminderListFragment.a(this.this$0).a();
+    ReminderListFragment.e(this.this$0).e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.10
  * JD-Core Version:    0.7.0.1
  */

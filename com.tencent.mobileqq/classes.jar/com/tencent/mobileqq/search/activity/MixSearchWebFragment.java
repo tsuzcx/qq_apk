@@ -36,6 +36,7 @@ import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
 import com.tencent.mobileqq.widget.WebViewProgressBarController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.theme.SkinEngine;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import org.json.JSONException;
@@ -45,85 +46,85 @@ public class MixSearchWebFragment
   extends WebViewFragment
   implements TextWatcher, TextView.OnEditorActionListener
 {
-  protected Button a;
-  protected ImageButton a;
-  protected ImageView a;
   protected RelativeLayout a;
-  protected QuickPinyinEditText a;
-  public String a;
+  protected QuickPinyinEditText b;
+  protected Button c;
+  protected ImageButton d;
+  protected ImageView e;
+  public String f;
   
   private void a()
   {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.a;
     if (localRelativeLayout == null) {
       return;
     }
-    localRelativeLayout.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850682));
-    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#777777"));
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850685));
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850694));
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setCompoundDrawablesWithIntrinsicBounds(SkinEngine.getInstances().getDefaultThemeDrawable(2130850689), null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setPadding(UIUtils.a(getQBaseActivity(), 10.0F), this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getPaddingTop(), this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getPaddingRight(), this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getPaddingBottom());
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setTextColor(-16777216);
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setHintTextColor(Color.parseColor("#a6a6a6"));
+    localRelativeLayout.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130852486));
+    this.c.setTextColor(Color.parseColor("#777777"));
+    this.c.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130852489));
+    this.b.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130852498));
+    this.b.setCompoundDrawablesWithIntrinsicBounds(SkinEngine.getInstances().getDefaultThemeDrawable(2130852493), null, null, null);
+    this.b.setPadding(UIUtils.a(getQBaseActivity(), 10.0F), this.b.getPaddingTop(), this.b.getPaddingRight(), this.b.getPaddingBottom());
+    this.b.setTextColor(-16777216);
+    this.b.setHintTextColor(Color.parseColor("#a6a6a6"));
   }
   
   private void a(Bundle paramBundle)
   {
     if ("1".equals(getIntent().getStringExtra("showloadingbar"))) {
-      getUIStyleHandler().a.a(true);
+      getUIStyleHandler().w.a(true);
     } else {
-      getUIStyleHandler().a.a(false);
+      getUIStyleHandler().w.a(false);
     }
-    if ((getSwiftTitleUI().a.getLayoutParams() instanceof RelativeLayout.LayoutParams))
+    if ((getSwiftTitleUI().o.getLayoutParams() instanceof RelativeLayout.LayoutParams))
     {
       Object localObject2 = BaseApplicationImpl.getApplication();
-      getSwiftTitleUI().a.setVisibility(8);
-      Object localObject1 = (ViewGroup)getSwiftTitleUI().a.getParent();
-      paramBundle = LayoutInflater.from((Context)localObject2).inflate(2131561427, null);
+      getSwiftTitleUI().o.setVisibility(8);
+      Object localObject1 = (ViewGroup)getSwiftTitleUI().o.getParent();
+      paramBundle = LayoutInflater.from((Context)localObject2).inflate(2131627783, null);
       int i = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
-      localObject2 = new RelativeLayout.LayoutParams(-1, (int)((Context)localObject2).getResources().getDimension(2131299168));
+      localObject2 = new RelativeLayout.LayoutParams(-1, (int)((Context)localObject2).getResources().getDimension(2131299920));
       ((RelativeLayout.LayoutParams)localObject2).addRule(10, -1);
       ((RelativeLayout.LayoutParams)localObject2).topMargin = i;
       ((ViewGroup)localObject1).addView(paramBundle, (ViewGroup.LayoutParams)localObject2);
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText = ((QuickPinyinEditText)paramBundle.findViewById(2131366333));
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setOnEditorActionListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.addTextChangedListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(50) });
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText;
+      this.b = ((QuickPinyinEditText)paramBundle.findViewById(2131432634));
+      this.b.setOnEditorActionListener(this);
+      this.b.addTextChangedListener(this);
+      this.b.setFilters(new InputFilter[] { new InputFilter.LengthFilter(50) });
+      localObject1 = this.b;
       ((QuickPinyinEditText)localObject1).a = 50;
       ((QuickPinyinEditText)localObject1).setImeOptions(3);
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setHint(getIntent().getStringExtra("placeholder"));
-      this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("searchword");
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramBundle.findViewById(2131368340));
-      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new MixSearchWebFragment.2(this));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramBundle.findViewById(2131363868));
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131690728);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new MixSearchWebFragment.3(this));
+      this.b.setHint(getIntent().getStringExtra("placeholder"));
+      this.f = getIntent().getStringExtra("searchword");
+      this.d = ((ImageButton)paramBundle.findViewById(2131435215));
+      this.d.setOnClickListener(new MixSearchWebFragment.2(this));
+      this.c = ((Button)paramBundle.findViewById(2131429816));
+      this.c.setText(2131887648);
+      this.c.setOnClickListener(new MixSearchWebFragment.3(this));
       if ("1".equals(getIntent().getStringExtra("hiderightbtn"))) {
-        this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+        this.c.setVisibility(8);
       } else {
-        this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+        this.c.setVisibility(0);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramBundle.findViewById(2131369289));
+      this.e = ((ImageView)paramBundle.findViewById(2131436275));
       if ("1".equals(getIntent().getStringExtra("hideleftarrow"))) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.e.setVisibility(8);
       } else {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.e.setVisibility(0);
       }
-      if ((this.jdField_a_of_type_AndroidWidgetButton.getVisibility() == 8) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 8)) {
-        this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      if ((this.c.getVisibility() == 8) && (this.e.getVisibility() == 8)) {
+        this.c.setVisibility(0);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new MixSearchWebFragment.4(this));
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getViewTreeObserver().addOnGlobalLayoutListener(new MixSearchWebFragment.5(this));
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      this.e.setOnClickListener(new MixSearchWebFragment.4(this));
+      this.b.getViewTreeObserver().addOnGlobalLayoutListener(new MixSearchWebFragment.5(this));
+      if (!TextUtils.isEmpty(this.f))
       {
-        if (this.jdField_a_of_type_JavaLangString.length() > 50) {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.substring(0, 50);
+        if (this.f.length() > 50) {
+          this.f = this.f.substring(0, 50);
         }
-        this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText(this.jdField_a_of_type_JavaLangString);
+        this.b.setText(this.f);
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramBundle);
+      this.a = ((RelativeLayout)paramBundle);
       a();
     }
   }
@@ -155,20 +156,20 @@ public class MixSearchWebFragment
   
   public void a(String paramString1, String paramString2)
   {
-    QuickPinyinEditText localQuickPinyinEditText = this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText;
+    QuickPinyinEditText localQuickPinyinEditText = this.b;
     if (localQuickPinyinEditText != null)
     {
       localQuickPinyinEditText.setHint(paramString2);
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText(paramString1);
+      this.b.setText(paramString1);
     }
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
     if (TextUtils.isEmpty(paramEditable)) {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      this.d.setVisibility(8);
     } else {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      this.d.setVisibility(0);
     }
     JSONObject localJSONObject = new JSONObject();
     try
@@ -207,43 +208,49 @@ public class MixSearchWebFragment
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt != 3) && ((paramKeyEvent == null) || (paramKeyEvent.getKeyCode() != 66))) {
-      return false;
-    }
-    paramTextView = this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getText();
-    paramKeyEvent = "";
-    if (paramTextView == null) {
-      paramTextView = "";
-    } else {
-      paramTextView = this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getText().toString().trim();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getHint() != null) {
-      paramKeyEvent = this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getHint().toString().trim();
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    boolean bool = true;
+    if ((paramInt != 3) && ((paramKeyEvent == null) || (paramKeyEvent.getKeyCode() != 66)))
     {
-      localJSONObject.put("searchWord", paramTextView);
-      localJSONObject.put("placeholder", paramKeyEvent);
+      bool = false;
     }
-    catch (JSONException localJSONException)
+    else
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onEditorAction, searchWord = ");
-      localStringBuilder.append(paramTextView);
-      localStringBuilder.append(", placeholder = ");
-      localStringBuilder.append(paramKeyEvent);
-      localStringBuilder.append(", e = ");
-      localStringBuilder.append(localJSONException);
-      QLog.e("WebLog_WebViewFragment", 1, localStringBuilder.toString());
+      Object localObject = this.b.getText();
+      String str = "";
+      if (localObject == null) {
+        localObject = "";
+      } else {
+        localObject = this.b.getText().toString().trim();
+      }
+      if (this.b.getHint() != null) {
+        str = this.b.getHint().toString().trim();
+      }
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("searchWord", localObject);
+        localJSONObject.put("placeholder", str);
+      }
+      catch (JSONException localJSONException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onEditorAction, searchWord = ");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(", placeholder = ");
+        localStringBuilder.append(str);
+        localStringBuilder.append(", e = ");
+        localStringBuilder.append(localJSONException);
+        QLog.e("WebLog_WebViewFragment", 1, localStringBuilder.toString());
+      }
+      getWebView().callJs("MixSearchButtonClicked", new String[] { localJSONObject.toString() });
+      localObject = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+      if (localObject != null) {
+        ((InputMethodManager)localObject).hideSoftInputFromWindow(this.b.getWindowToken(), 0);
+      }
+      this.b.clearFocus();
     }
-    getWebView().callJs("MixSearchButtonClicked", new String[] { localJSONObject.toString() });
-    paramTextView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    if (paramTextView != null) {
-      paramTextView.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getWindowToken(), 0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.clearFocus();
-    return true;
+    EventCollector.getInstance().onEditorAction(paramTextView, paramInt, paramKeyEvent);
+    return bool;
   }
   
   public void onPostThemeChanged()
@@ -256,7 +263,7 @@ public class MixSearchWebFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.MixSearchWebFragment
  * JD-Core Version:    0.7.0.1
  */

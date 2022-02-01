@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 public class MiniProgramLpReportDC05115$ReportModel
 {
   private String androidID = null;
-  private String clientVersion = "8.7.0.5295";
+  private String clientVersion = "8.8.17.5770";
   private int cpuAVG;
   private long crashErrorNum = 0L;
   private String deviceManufacturer = Build.MANUFACTURER;
@@ -70,32 +70,32 @@ public class MiniProgramLpReportDC05115$ReportModel
     //   6: ifnonnull +16 -> 22
     //   9: aload_0
     //   10: invokestatic 167	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
-    //   13: invokevirtual 170	com/tencent/open/adapter/CommonDataAdapter:a	()Landroid/content/Context;
-    //   16: invokestatic 176	com/tencent/mobileqq/utils/NetworkUtil:getCurrentWifiSSID	(Landroid/content/Context;)Ljava/lang/String;
+    //   13: invokevirtual 171	com/tencent/open/adapter/CommonDataAdapter:b	()Landroid/content/Context;
+    //   16: invokestatic 177	com/tencent/mobileqq/utils/NetworkUtil:getCurrentWifiSSID	(Landroid/content/Context;)Ljava/lang/String;
     //   19: putfield 137	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:networkSSID	Ljava/lang/String;
     //   22: aload_0
     //   23: getfield 139	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:androidID	Ljava/lang/String;
     //   26: ifnonnull +43 -> 69
     //   29: aload_0
     //   30: invokestatic 167	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
-    //   33: invokevirtual 170	com/tencent/open/adapter/CommonDataAdapter:a	()Landroid/content/Context;
-    //   36: invokevirtual 182	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   39: ldc 184
-    //   41: invokestatic 190	android/provider/Settings$Secure:getString	(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+    //   33: invokevirtual 171	com/tencent/open/adapter/CommonDataAdapter:b	()Landroid/content/Context;
+    //   36: invokevirtual 183	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   39: ldc 185
+    //   41: invokestatic 191	android/provider/Settings$Secure:getString	(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
     //   44: putfield 139	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:androidID	Ljava/lang/String;
     //   47: goto +22 -> 69
     //   50: astore 7
     //   52: goto +314 -> 366
     //   55: astore 7
-    //   57: ldc 192
+    //   57: ldc 193
     //   59: iconst_1
     //   60: aload 7
     //   62: iconst_0
     //   63: anewarray 4	java/lang/Object
-    //   66: invokestatic 198	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   66: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   69: aload_0
     //   70: getfield 144	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestCostList	Ljava/util/List;
-    //   73: invokeinterface 204 1 0
+    //   73: invokeinterface 205 1 0
     //   78: istore_2
     //   79: lconst_0
     //   80: lstore 5
@@ -103,22 +103,22 @@ public class MiniProgramLpReportDC05115$ReportModel
     //   83: ifne +63 -> 146
     //   86: aload_0
     //   87: getfield 144	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestCostList	Ljava/util/List;
-    //   90: invokeinterface 208 1 0
+    //   90: invokeinterface 209 1 0
     //   95: istore_1
     //   96: aload_0
     //   97: getfield 144	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestCostList	Ljava/util/List;
-    //   100: invokeinterface 212 1 0
+    //   100: invokeinterface 213 1 0
     //   105: astore 7
     //   107: lconst_0
     //   108: lstore_3
     //   109: aload 7
-    //   111: invokeinterface 217 1 0
+    //   111: invokeinterface 218 1 0
     //   116: ifeq +22 -> 138
     //   119: lload_3
     //   120: aload 7
-    //   122: invokeinterface 221 1 0
-    //   127: checkcast 223	java/lang/Long
-    //   130: invokevirtual 227	java/lang/Long:longValue	()J
+    //   122: invokeinterface 222 1 0
+    //   127: checkcast 224	java/lang/Long
+    //   130: invokevirtual 228	java/lang/Long:longValue	()J
     //   133: ladd
     //   134: lstore_3
     //   135: goto -26 -> 109
@@ -127,25 +127,25 @@ public class MiniProgramLpReportDC05115$ReportModel
     //   140: iload_1
     //   141: i2l
     //   142: ldiv
-    //   143: putfield 229	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestCost	J
+    //   143: putfield 230	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestCost	J
     //   146: aload_0
     //   147: getfield 146	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestLengths	Ljava/util/List;
-    //   150: invokeinterface 204 1 0
+    //   150: invokeinterface 205 1 0
     //   155: ifne +61 -> 216
     //   158: aload_0
     //   159: getfield 146	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestLengths	Ljava/util/List;
-    //   162: invokeinterface 212 1 0
+    //   162: invokeinterface 213 1 0
     //   167: astore 7
     //   169: lconst_0
     //   170: lstore_3
     //   171: aload 7
-    //   173: invokeinterface 217 1 0
+    //   173: invokeinterface 218 1 0
     //   178: ifeq +22 -> 200
     //   181: lload_3
     //   182: aload 7
-    //   184: invokeinterface 221 1 0
-    //   189: checkcast 223	java/lang/Long
-    //   192: invokevirtual 227	java/lang/Long:longValue	()J
+    //   184: invokeinterface 222 1 0
+    //   189: checkcast 224	java/lang/Long
+    //   192: invokevirtual 228	java/lang/Long:longValue	()J
     //   195: ladd
     //   196: lstore_3
     //   197: goto -26 -> 171
@@ -153,34 +153,34 @@ public class MiniProgramLpReportDC05115$ReportModel
     //   201: lload_3
     //   202: aload_0
     //   203: getfield 146	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestLengths	Ljava/util/List;
-    //   206: invokeinterface 208 1 0
+    //   206: invokeinterface 209 1 0
     //   211: i2l
     //   212: ldiv
-    //   213: putfield 231	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestLength	J
+    //   213: putfield 232	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestLength	J
     //   216: aload_0
     //   217: getfield 148	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestCostList	Ljava/util/List;
-    //   220: invokeinterface 204 1 0
+    //   220: invokeinterface 205 1 0
     //   225: ifne +67 -> 292
     //   228: aload_0
     //   229: getfield 148	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestCostList	Ljava/util/List;
-    //   232: invokeinterface 208 1 0
+    //   232: invokeinterface 209 1 0
     //   237: istore_1
     //   238: aload_0
     //   239: getfield 148	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestCostList	Ljava/util/List;
-    //   242: invokeinterface 212 1 0
+    //   242: invokeinterface 213 1 0
     //   247: astore 7
     //   249: lconst_0
     //   250: lstore_3
     //   251: aload 7
-    //   253: invokeinterface 217 1 0
+    //   253: invokeinterface 218 1 0
     //   258: ifeq +26 -> 284
     //   261: lload_3
     //   262: aload 7
-    //   264: invokeinterface 221 1 0
-    //   269: checkcast 223	java/lang/Long
-    //   272: invokevirtual 227	java/lang/Long:longValue	()J
+    //   264: invokeinterface 222 1 0
+    //   269: checkcast 224	java/lang/Long
+    //   272: invokevirtual 228	java/lang/Long:longValue	()J
     //   275: lconst_0
-    //   276: invokestatic 237	java/lang/Math:max	(JJ)J
+    //   276: invokestatic 238	java/lang/Math:max	(JJ)J
     //   279: ladd
     //   280: lstore_3
     //   281: goto -30 -> 251
@@ -189,25 +189,25 @@ public class MiniProgramLpReportDC05115$ReportModel
     //   286: iload_1
     //   287: i2l
     //   288: ldiv
-    //   289: putfield 239	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestCost	J
+    //   289: putfield 240	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestCost	J
     //   292: aload_0
     //   293: getfield 150	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestLengths	Ljava/util/List;
-    //   296: invokeinterface 204 1 0
+    //   296: invokeinterface 205 1 0
     //   301: ifne +62 -> 363
     //   304: aload_0
     //   305: getfield 150	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestLengths	Ljava/util/List;
-    //   308: invokeinterface 212 1 0
+    //   308: invokeinterface 213 1 0
     //   313: astore 7
     //   315: lload 5
     //   317: lstore_3
     //   318: aload 7
-    //   320: invokeinterface 217 1 0
+    //   320: invokeinterface 218 1 0
     //   325: ifeq +22 -> 347
     //   328: lload_3
     //   329: aload 7
-    //   331: invokeinterface 221 1 0
-    //   336: checkcast 223	java/lang/Long
-    //   339: invokevirtual 227	java/lang/Long:longValue	()J
+    //   331: invokeinterface 222 1 0
+    //   336: checkcast 224	java/lang/Long
+    //   339: invokevirtual 228	java/lang/Long:longValue	()J
     //   342: ladd
     //   343: lstore_3
     //   344: goto -26 -> 318
@@ -215,10 +215,10 @@ public class MiniProgramLpReportDC05115$ReportModel
     //   348: lload_3
     //   349: aload_0
     //   350: getfield 150	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestLengths	Ljava/util/List;
-    //   353: invokeinterface 208 1 0
+    //   353: invokeinterface 209 1 0
     //   358: i2l
     //   359: ldiv
-    //   360: putfield 241	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestLength	J
+    //   360: putfield 242	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestLength	J
     //   363: aload_0
     //   364: monitorexit
     //   365: return
@@ -478,7 +478,7 @@ public class MiniProgramLpReportDC05115$ReportModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05115.ReportModel
  * JD-Core Version:    0.7.0.1
  */

@@ -9,82 +9,82 @@ public class ExtendFriendInfo
   implements Parcelable, Cloneable
 {
   public static final Parcelable.Creator<ExtendFriendInfo> CREATOR = new ExtendFriendInfo.1();
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
   public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
   public boolean c;
-  public int d;
   public String d;
   public int e;
   public int f;
   public int g;
   public int h;
+  public int i;
+  public boolean j;
+  public boolean k;
+  public String l;
+  public String m;
+  public long n;
+  public int o;
+  public int p;
   
   public ExtendFriendInfo()
   {
-    this.e = 0;
-    this.f = 0;
+    this.h = 0;
+    this.i = 0;
   }
   
   protected ExtendFriendInfo(Parcel paramParcel)
   {
     boolean bool2 = false;
-    this.e = 0;
-    this.f = 0;
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.h = 0;
+    this.i = 0;
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readInt();
+    this.d = paramParcel.readString();
     if (paramParcel.readByte() != 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
+    this.c = bool1;
     this.e = paramParcel.readInt();
     this.f = paramParcel.readInt();
+    this.g = paramParcel.readInt();
+    this.h = paramParcel.readInt();
+    this.i = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_b_of_type_Boolean = bool1;
+    this.j = bool1;
     boolean bool1 = bool2;
     if (paramParcel.readByte() != 0) {
       bool1 = true;
     }
-    this.jdField_c_of_type_Boolean = bool1;
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.g = paramParcel.readInt();
-    this.h = paramParcel.readInt();
+    this.k = bool1;
+    this.l = paramParcel.readString();
+    this.m = paramParcel.readString();
+    this.n = paramParcel.readLong();
+    this.o = paramParcel.readInt();
+    this.p = paramParcel.readInt();
   }
   
   public ExtendFriendInfo(Card paramCard)
   {
-    this.e = 0;
-    this.f = 0;
-    this.jdField_a_of_type_JavaLangString = paramCard.declaration;
-    this.jdField_a_of_type_Int = paramCard.popularity;
-    this.jdField_b_of_type_JavaLangString = paramCard.voiceUrl;
-    this.jdField_a_of_type_Boolean = paramCard.isShowCard;
-    this.jdField_b_of_type_Int = paramCard.extendFriendVoiceDuration;
-    this.jdField_c_of_type_Int = paramCard.fontId;
-    this.jdField_d_of_type_Int = paramCard.clothesId;
-    this.jdField_c_of_type_JavaLangString = paramCard.schoolId;
-    this.jdField_d_of_type_JavaLangString = paramCard.schoolName;
-    this.jdField_a_of_type_Long = paramCard.authState;
-    this.g = paramCard.idx;
-    this.h = paramCard.category;
+    this.h = 0;
+    this.i = 0;
+    this.a = paramCard.declaration;
+    this.b = paramCard.popularity;
+    this.d = paramCard.voiceUrl;
+    this.c = paramCard.isShowCard;
+    this.e = paramCard.extendFriendVoiceDuration;
+    this.f = paramCard.fontId;
+    this.g = paramCard.clothesId;
+    this.l = paramCard.schoolId;
+    this.m = paramCard.schoolName;
+    this.n = paramCard.authState;
+    this.o = paramCard.idx;
+    this.p = paramCard.category;
   }
   
   public boolean a()
@@ -109,7 +109,7 @@ public class ExtendFriendInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.bean.profile.ExtendFriendInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -10,20 +10,20 @@ import android.widget.FrameLayout;
 
 public class ViewUtils$InputMethodShowHelper
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new ViewUtils.InputMethodShowHelper.1(this);
   public ViewUtils.OnInputMethodChangeListener a;
+  private ViewTreeObserver.OnGlobalLayoutListener c = new ViewUtils.InputMethodShowHelper.1(this);
+  private View d;
+  private int e;
   
   public ViewUtils$InputMethodShowHelper(ViewUtils paramViewUtils, Activity paramActivity)
   {
     paramViewUtils = (FrameLayout)paramActivity.findViewById(16908290);
     if (paramViewUtils != null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramViewUtils.getChildAt(0);
-      paramViewUtils = this.jdField_a_of_type_AndroidViewView;
+      this.d = paramViewUtils.getChildAt(0);
+      paramViewUtils = this.d;
       if (paramViewUtils != null) {
-        paramViewUtils.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+        paramViewUtils.getViewTreeObserver().addOnGlobalLayoutListener(this.c);
       }
     }
     else
@@ -32,46 +32,46 @@ public class ViewUtils$InputMethodShowHelper
     }
   }
   
-  private int a()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    return localRect.bottom - localRect.top;
-  }
-  
   private void a()
   {
-    int i = a();
-    if (i != this.jdField_a_of_type_Int)
+    int i = b();
+    if (i != this.e)
     {
-      int j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      int j = this.d.getRootView().getHeight();
       if (j - i > j / 4) {
-        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsUiViewUtils$OnInputMethodChangeListener.a(true);
+        this.a.a(true);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsUiViewUtils$OnInputMethodChangeListener.a(false);
+        this.a.a(false);
       }
-      this.jdField_a_of_type_Int = i;
+      this.e = i;
     }
+  }
+  
+  private int b()
+  {
+    Rect localRect = new Rect();
+    this.d.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
   }
   
   public void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
-    paramActivity = this.jdField_a_of_type_AndroidViewView;
+    this.d = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
+    paramActivity = this.d;
     if (paramActivity != null) {
-      paramActivity.getViewTreeObserver().removeOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+      paramActivity.getViewTreeObserver().removeOnGlobalLayoutListener(this.c);
     }
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsUiViewUtils$OnInputMethodChangeListener = null;
+    this.a = null;
   }
   
   public void a(ViewUtils.OnInputMethodChangeListener paramOnInputMethodChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsUiViewUtils$OnInputMethodChangeListener = paramOnInputMethodChangeListener;
+    this.a = paramOnInputMethodChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.ui.ViewUtils.InputMethodShowHelper
  * JD-Core Version:    0.7.0.1
  */

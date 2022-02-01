@@ -24,15 +24,15 @@ public class BottomSheetDialogFragment
   private void a(@NonNull BottomSheetBehavior<?> paramBottomSheetBehavior, boolean paramBoolean)
   {
     this.a = paramBoolean;
-    if (paramBottomSheetBehavior.b() == 5)
+    if (paramBottomSheetBehavior.d() == 5)
     {
       a();
       return;
     }
     if ((getDialog() instanceof BottomSheetDialog)) {
-      ((BottomSheetDialog)getDialog()).a();
+      ((BottomSheetDialog)getDialog()).d();
     }
-    paramBottomSheetBehavior.a(new BottomSheetDialogFragment.BottomSheetDismissCallback(this, null));
+    paramBottomSheetBehavior.b(new BottomSheetDialogFragment.BottomSheetDismissCallback(this, null));
     paramBottomSheetBehavior.d(5);
   }
   
@@ -43,7 +43,7 @@ public class BottomSheetDialogFragment
     {
       localObject = (BottomSheetDialog)localObject;
       BottomSheetBehavior localBottomSheetBehavior = ((BottomSheetDialog)localObject).a();
-      if ((localBottomSheetBehavior.a()) && (((BottomSheetDialog)localObject).a()))
+      if ((localBottomSheetBehavior.b()) && (((BottomSheetDialog)localObject).b()))
       {
         a(localBottomSheetBehavior, paramBoolean);
         return true;
@@ -74,7 +74,7 @@ public class BottomSheetDialogFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomsheet.BottomSheetDialogFragment
  * JD-Core Version:    0.7.0.1
  */

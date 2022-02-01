@@ -16,6 +16,7 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.mobileqq.troop.org.pb.oidb_0xe96.ReqBody;
 import com.tencent.mobileqq.troop.org.pb.oidb_0xe9a.ReqBody;
 import com.tencent.mobileqq.utils.IPUtils;
@@ -144,7 +145,7 @@ public class LoginVerifyServlet
     localOIDBSSOPkg.uint32_command.set(paramInt1);
     localOIDBSSOPkg.uint32_service_type.set(paramInt2);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    localOIDBSSOPkg.str_client_version.set(AppSetting.h());
     paramArrayOfByte = new NewIntent(paramAppRuntime.getApp(), LoginVerifyServlet.class);
     paramArrayOfByte.setObserver(paramBusinessObserver);
     paramArrayOfByte.putExtra("cmd", paramString);
@@ -193,7 +194,7 @@ public class LoginVerifyServlet
     if (localObject != null)
     {
       boolean bool = ((WifiManager)localObject).isWifiEnabled();
-      localObject = ((WifiManager)localObject).getConnectionInfo();
+      localObject = NetworkMonitor.getConnectionInfo((WifiManager)localObject);
       if ((bool) && (localObject != null))
       {
         paramString.uint32_client_addr.set(((WifiInfo)localObject).getIpAddress());
@@ -225,7 +226,7 @@ public class LoginVerifyServlet
     }
     paramString.uint32_seq.set(a.addAndGet(1));
     paramString.uint32_timestamp.set((int)(System.currentTimeMillis() / 1000L));
-    paramString.uint32_version.set(AppSetting.a());
+    paramString.uint32_version.set(AppSetting.d());
     paramString.uint64_appid.set(101810106L);
     long l = new Random().nextLong();
     paramString.uint64_nonce.set(l);
@@ -367,7 +368,7 @@ public class LoginVerifyServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.LoginVerifyServlet
  * JD-Core Version:    0.7.0.1
  */

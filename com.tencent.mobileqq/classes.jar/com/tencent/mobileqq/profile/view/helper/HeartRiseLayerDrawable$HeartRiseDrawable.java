@@ -10,15 +10,15 @@ import android.view.animation.AccelerateInterpolator;
 class HeartRiseLayerDrawable$HeartRiseDrawable
   extends BitmapDrawable
 {
-  private static int d;
-  private static int e;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private AccelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator = new AccelerateInterpolator(1.5F);
-  private float jdField_b_of_type_Float = 0.5F;
-  private int jdField_b_of_type_Int = 50;
-  private int c = 0;
+  private static int h;
+  private static int i;
+  private float a;
+  private int b;
+  private float c = 0.5F;
+  private int d = 50;
+  private int e = 0;
+  private long f = 0L;
+  private AccelerateInterpolator g = new AccelerateInterpolator(1.5F);
   
   public HeartRiseLayerDrawable$HeartRiseDrawable(Resources paramResources, Bitmap paramBitmap)
   {
@@ -30,13 +30,13 @@ class HeartRiseLayerDrawable$HeartRiseDrawable
     if ((paramBitmap != null) && (paramResources != null))
     {
       HeartRiseDrawable[] arrayOfHeartRiseDrawable = new HeartRiseDrawable[paramInt];
-      e = paramBitmap.getWidth() / 2;
-      d = paramBitmap.getHeight() / 2;
-      int i = 0;
-      while (i < paramInt)
+      i = paramBitmap.getWidth() / 2;
+      h = paramBitmap.getHeight() / 2;
+      int j = 0;
+      while (j < paramInt)
       {
-        arrayOfHeartRiseDrawable[i] = new HeartRiseDrawable(paramResources, paramBitmap);
-        i += 1;
+        arrayOfHeartRiseDrawable[j] = new HeartRiseDrawable(paramResources, paramBitmap);
+        j += 1;
       }
       return arrayOfHeartRiseDrawable;
     }
@@ -45,65 +45,65 @@ class HeartRiseLayerDrawable$HeartRiseDrawable
   
   public void a(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_Float = ((float)paramLong);
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = 1;
+    this.a = ((float)paramLong);
+    this.b = paramInt;
+    this.e = 1;
     invalidateSelf();
   }
   
   public void draw(Canvas paramCanvas)
   {
-    int k = this.c;
-    int j = 1;
-    int i = j;
-    if (k != 0)
+    int m = this.e;
+    int k = 1;
+    int j = k;
+    if (m != 0)
     {
-      if (k != 1)
+      if (m != 1)
       {
-        if (k != 2)
+        if (m != 2)
         {
-          i = j;
+          j = k;
           break label199;
         }
-        float f2 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Float;
+        float f2 = (float)(SystemClock.uptimeMillis() - this.f) / this.a;
         if (f2 > 1.0F)
         {
-          this.c = 3;
-          i = j;
+          this.e = 3;
+          j = k;
           break label199;
         }
         paramCanvas.save();
-        float f3 = this.jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator.getInterpolation(f2);
+        float f3 = this.g.getInterpolation(f2);
         if (f3 > 0.5F) {
           f1 = -f3;
         } else {
           f1 = -(1.0F - f3);
         }
-        float f4 = this.jdField_b_of_type_Int;
-        i = this.jdField_a_of_type_Int;
-        paramCanvas.translate(f1 * f4, i - f3 * i);
-        float f1 = this.jdField_b_of_type_Float;
-        paramCanvas.scale(f2 * f1, f1 * f2, e, d);
+        float f4 = this.d;
+        j = this.b;
+        paramCanvas.translate(f1 * f4, j - f3 * j);
+        float f1 = this.c;
+        paramCanvas.scale(f2 * f1, f1 * f2, i, h);
         setAlpha((int)(255.0F - f2 * 255.0F));
         super.draw(paramCanvas);
         paramCanvas.restore();
       }
       else
       {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        this.c = 2;
+        this.f = SystemClock.uptimeMillis();
+        this.e = 2;
       }
-      i = 0;
+      j = 0;
     }
     label199:
-    if (i == 0) {
+    if (j == 0) {
       invalidateSelf();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.helper.HeartRiseLayerDrawable.HeartRiseDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,16 @@ class FloatingVideoWrapper$13
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    float f1 = this.jdField_a_of_type_Float;
+    float f1 = this.a;
     float f2 = paramValueAnimator.floatValue();
     float f3 = this.b;
-    float f4 = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_AndroidViewView.setAlpha(f1 + f2 * (f3 - f4));
+    float f4 = this.a;
+    this.c.setAlpha(f1 + f2 * (f3 - f4));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.uiwrapper.FloatingVideoWrapper.13
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class NearbyProfileDisplayTribePanel$23
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.d(true);
+    this.a.e(true);
     ReportController.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.23
  * JD-Core Version:    0.7.0.1
  */

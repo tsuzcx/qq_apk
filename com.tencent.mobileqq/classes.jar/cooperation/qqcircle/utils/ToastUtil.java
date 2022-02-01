@@ -11,7 +11,7 @@ public class ToastUtil
   public static void determineShowByCode(long paramLong, Context paramContext, int paramInt1, String paramString, int paramInt2)
   {
     if ((paramLong != 10022L) && (paramLong != 10023L)) {
-      QQToast.a(paramContext, paramInt1, paramString, paramInt2).a();
+      QQToast.makeText(paramContext, paramInt1, paramString, paramInt2).show();
     }
   }
   
@@ -22,7 +22,7 @@ public class ToastUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.utils.ToastUtil
  * JD-Core Version:    0.7.0.1
  */

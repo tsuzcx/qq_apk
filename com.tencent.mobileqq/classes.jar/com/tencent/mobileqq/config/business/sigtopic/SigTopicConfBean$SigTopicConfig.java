@@ -12,22 +12,16 @@ import org.json.JSONObject;
 public class SigTopicConfBean$SigTopicConfig
   implements IQStorageSafable<String>
 {
-  public String a;
-  public ArrayList<SigTopicConfBean.TopicInfo> a;
-  private String b = "place_holder";
-  private String c = "data";
-  private String d = "topic_id";
-  private String e = "topic_name";
-  
-  public SigTopicConfBean$SigTopicConfig()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public String a = "";
+  public ArrayList<SigTopicConfBean.TopicInfo> b = new ArrayList();
+  private String c = "place_holder";
+  private String d = "data";
+  private String e = "topic_id";
+  private String f = "topic_name";
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.b.clear();
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("SigTopicConfig", 1, "SigTopic config content is empty");
@@ -38,8 +32,8 @@ public class SigTopicConfBean$SigTopicConfig
       try
       {
         JSONObject localJSONObject = new JSONObject(paramString);
-        paramString = localJSONObject.optJSONArray(this.c);
-        this.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.b, HardCodeUtil.a(2131714033));
+        paramString = localJSONObject.optJSONArray(this.d);
+        this.a = localJSONObject.optString(this.c, HardCodeUtil.a(2131911564));
         if (paramString == null) {
           break label192;
         }
@@ -49,9 +43,9 @@ public class SigTopicConfBean$SigTopicConfig
         }
         localJSONObject = paramString.getJSONObject(i);
         localTopicInfo = new SigTopicConfBean.TopicInfo();
-        localTopicInfo.jdField_a_of_type_Int = localJSONObject.optInt(this.d);
-        localTopicInfo.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.e);
-        if (!TextUtils.isEmpty(localTopicInfo.jdField_a_of_type_JavaLangString)) {
+        localTopicInfo.a = localJSONObject.optInt(this.e);
+        localTopicInfo.b = localJSONObject.optString(this.f);
+        if (!TextUtils.isEmpty(localTopicInfo.b)) {
           break label198;
         }
         if (!QLog.isColorLevel()) {
@@ -66,7 +60,7 @@ public class SigTopicConfBean$SigTopicConfig
         QLog.e("SigTopicConfig", 1, "SigTopic config parse exception", paramString);
       }
       if (j != 0) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localTopicInfo);
+        this.b.add(localTopicInfo);
       }
       i += 1;
       continue;
@@ -82,13 +76,13 @@ public class SigTopicConfBean$SigTopicConfig
   
   public String toString()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.b.size() > 0)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("recommend title is ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.toString());
+      localStringBuilder.append(this.b.toString());
       return localStringBuilder.toString();
     }
     return "";
@@ -96,7 +90,7 @@ public class SigTopicConfBean$SigTopicConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.sigtopic.SigTopicConfBean.SigTopicConfig
  * JD-Core Version:    0.7.0.1
  */

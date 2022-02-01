@@ -15,7 +15,7 @@ public class YybHandleUtil
   public static String a = "YybHandleUtil";
   public static String b = "APK/MobileAssistant_main.apk";
   public static String c = "yyb.apk";
-  public static final String d = HardCodeUtil.a(2131716503);
+  public static final String d = HardCodeUtil.a(2131913936);
   
   public static String a(int paramInt)
   {
@@ -54,25 +54,25 @@ public class YybHandleUtil
     return localStringBuilder.toString();
   }
   
-  public static void a()
+  public static boolean a()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(CommonDataAdapter.a().b().getFilesDir().getAbsolutePath());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(c);
+    localObject = ((StringBuilder)localObject).toString();
+    return AppUtil.b(CommonDataAdapter.a().b(), (String)localObject);
+  }
+  
+  public static void b()
   {
     LogUtility.c(a, "---deleteYYBApkPackage--");
     ThreadManager.getSubThreadHandler().post(new YybHandleUtil.1());
   }
-  
-  public static boolean a()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(CommonDataAdapter.a().a().getFilesDir().getAbsolutePath());
-    ((StringBuilder)localObject).append(File.separator);
-    ((StringBuilder)localObject).append(c);
-    localObject = ((StringBuilder)localObject).toString();
-    return AppUtil.a(CommonDataAdapter.a().a(), (String)localObject);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.YybHandleUtil
  * JD-Core Version:    0.7.0.1
  */

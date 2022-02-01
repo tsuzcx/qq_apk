@@ -25,14 +25,14 @@ class VerifyCodeActivity$3
       }
     }
     else {
-      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131691958), 0).show();
+      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131888925), 0).show();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyCodeActivity.3
  * JD-Core Version:    0.7.0.1
  */

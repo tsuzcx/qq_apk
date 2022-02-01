@@ -11,16 +11,16 @@ import java.lang.reflect.Method;
 
 public class FlymeOSStatusBarFontUtils
 {
-  private static int jdField_a_of_type_Int;
-  private static Field jdField_a_of_type_JavaLangReflectField;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static Method a;
   private static Method b;
+  private static Field c;
+  private static int d;
   
   static
   {
     try
     {
-      jdField_a_of_type_JavaLangReflectMethod = Activity.class.getMethod("setStatusBarDarkIcon", new Class[] { Integer.TYPE });
+      a = Activity.class.getMethod("setStatusBarDarkIcon", new Class[] { Integer.TYPE });
     }
     catch (NoSuchMethodException localNoSuchMethodException1)
     {
@@ -36,7 +36,7 @@ public class FlymeOSStatusBarFontUtils
     }
     try
     {
-      jdField_a_of_type_JavaLangReflectField = WindowManager.LayoutParams.class.getField("statusBarColor");
+      c = WindowManager.LayoutParams.class.getField("statusBarColor");
     }
     catch (NoSuchFieldException localNoSuchFieldException1)
     {
@@ -44,7 +44,7 @@ public class FlymeOSStatusBarFontUtils
     }
     try
     {
-      jdField_a_of_type_Int = View.class.getField("SYSTEM_UI_FLAG_LIGHT_STATUS_BAR").getInt(null);
+      d = View.class.getField("SYSTEM_UI_FLAG_LIGHT_STATUS_BAR").getInt(null);
       return;
     }
     catch (IllegalAccessException localIllegalAccessException)
@@ -93,9 +93,9 @@ public class FlymeOSStatusBarFontUtils
     int j = paramView.getSystemUiVisibility();
     int i;
     if (paramBoolean) {
-      i = jdField_a_of_type_Int | j;
+      i = d | j;
     } else {
-      i = (jdField_a_of_type_Int ^ 0xFFFFFFFF) & j;
+      i = (d ^ 0xFFFFFFFF) & j;
     }
     if (i != j) {
       paramView.setSystemUiVisibility(i);
@@ -105,13 +105,13 @@ public class FlymeOSStatusBarFontUtils
   private static void a(Window paramWindow, int paramInt)
   {
     WindowManager.LayoutParams localLayoutParams = paramWindow.getAttributes();
-    Field localField = jdField_a_of_type_JavaLangReflectField;
+    Field localField = c;
     if (localField != null) {
       try
       {
         if (localField.getInt(localLayoutParams) != paramInt)
         {
-          jdField_a_of_type_JavaLangReflectField.set(localLayoutParams, Integer.valueOf(paramInt));
+          c.set(localLayoutParams, Integer.valueOf(paramInt));
           paramWindow.setAttributes(localLayoutParams);
           return;
         }
@@ -185,7 +185,7 @@ public class FlymeOSStatusBarFontUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.FlymeOSStatusBarFontUtils
  * JD-Core Version:    0.7.0.1
  */

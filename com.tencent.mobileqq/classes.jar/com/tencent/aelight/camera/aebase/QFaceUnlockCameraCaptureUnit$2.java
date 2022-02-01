@@ -22,31 +22,31 @@ class QFaceUnlockCameraCaptureUnit$2
       if (QLog.isColorLevel()) {
         QLog.i("QFaceUnlockCameraCaptureUnit", 0, "startRecord begin");
       }
-      if (QFaceUnlockCameraCaptureUnit.a(this.this$0) == null) {
+      if (QFaceUnlockCameraCaptureUnit.d(this.this$0) == null) {
         QFaceUnlockCameraCaptureUnit.a(this.this$0, new MediaRecorder());
       }
-      if (CameraControl.a().a != null)
+      if (CameraControl.a().d != null)
       {
-        localObject2 = CameraControl.a().a.getParameters();
+        localObject2 = CameraControl.a().d.getParameters();
         Object localObject1 = ((Camera.Parameters)localObject2).getSupportedPreviewSizes();
         localObject2 = ((Camera.Parameters)localObject2).getSupportedVideoSizes();
         localObject1 = QFaceUnlockCameraCaptureUnit.a(this.this$0, (List)localObject1, (List)localObject2);
-        CameraControl.a().a.unlock();
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).setOrientationHint(270);
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).reset();
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).setCamera(CameraControl.a().a);
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).setAudioSource(0);
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).setVideoSource(1);
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).setOutputFormat(2);
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).setVideoSize(((Camera.Size)localObject1).width, ((Camera.Size)localObject1).height);
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).setVideoEncoder(2);
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).setAudioEncoder(3);
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).setVideoEncodingBitRate(5242880);
+        CameraControl.a().d.unlock();
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).setOrientationHint(270);
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).reset();
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).setCamera(CameraControl.a().d);
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).setAudioSource(0);
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).setVideoSource(1);
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).setOutputFormat(2);
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).setVideoSize(((Camera.Size)localObject1).width, ((Camera.Size)localObject1).height);
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).setVideoEncoder(2);
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).setAudioEncoder(3);
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).setVideoEncodingBitRate(5242880);
         QFaceUnlockCameraCaptureUnit.a(this.this$0, ShortVideoUtils.getLocalShortVideoPath());
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).setOutputFile(QFaceUnlockCameraCaptureUnit.a(this.this$0));
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).prepare();
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).start();
-        QFaceUnlockCameraCaptureUnit.a(this.this$0).postDelayed(QFaceUnlockCameraCaptureUnit.a(this.this$0), 1000L);
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).setOutputFile(QFaceUnlockCameraCaptureUnit.e(this.this$0));
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).prepare();
+        QFaceUnlockCameraCaptureUnit.d(this.this$0).start();
+        QFaceUnlockCameraCaptureUnit.c(this.this$0).postDelayed(QFaceUnlockCameraCaptureUnit.f(this.this$0), 1000L);
         if (QLog.isColorLevel())
         {
           QLog.i("QFaceUnlockCameraCaptureUnit", 0, "startRecord end");
@@ -66,7 +66,7 @@ class QFaceUnlockCameraCaptureUnit$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.QFaceUnlockCameraCaptureUnit.2
  * JD-Core Version:    0.7.0.1
  */

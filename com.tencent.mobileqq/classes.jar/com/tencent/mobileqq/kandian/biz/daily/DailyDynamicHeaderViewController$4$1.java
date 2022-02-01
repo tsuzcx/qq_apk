@@ -13,18 +13,18 @@ class DailyDynamicHeaderViewController$4$1
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
-    DailyDynamicHeaderViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyDynamicHeaderViewController$4.a, 5);
+    DailyDynamicHeaderViewController.a(this.b.a, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.DailyDynamicHeaderViewController.4.1
  * JD-Core Version:    0.7.0.1
  */

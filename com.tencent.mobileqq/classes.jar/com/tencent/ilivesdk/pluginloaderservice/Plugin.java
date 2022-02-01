@@ -7,75 +7,75 @@ public class Plugin
   extends AbstractPlugin
   implements IPlugin
 {
-  private IPlugin a;
+  private IPlugin m;
   
   public Context a(Context paramContext)
   {
-    IPlugin localIPlugin = this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin;
-    if ((localIPlugin != null) && (localIPlugin.a())) {
-      return this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.a(paramContext);
+    IPlugin localIPlugin = this.m;
+    if ((localIPlugin != null) && (localIPlugin.l())) {
+      return this.m.a(paramContext);
     }
     return super.a(paramContext);
   }
   
-  public Plugin a()
-  {
-    Plugin localPlugin = new Plugin();
-    localPlugin.jdField_a_of_type_JavaLangString = c();
-    localPlugin.jdField_b_of_type_JavaLangString = a();
-    localPlugin.c = d();
-    localPlugin.d = b();
-    localPlugin.jdField_a_of_type_ArrayOfJavaLangString = a();
-    localPlugin.jdField_b_of_type_ArrayOfJavaLangString = c();
-    localPlugin.jdField_a_of_type_Boolean = b();
-    localPlugin.e = m();
-    localPlugin.jdField_b_of_type_Int = b();
-    localPlugin.jdField_a_of_type_Int = a();
-    localPlugin.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPluginClassLoader = this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPluginClassLoader;
-    localPlugin.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInstallPluginConfig$PluginFileInfo = this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInstallPluginConfig$PluginFileInfo;
-    return localPlugin;
-  }
-  
   public <T> T a(Class<T> paramClass, String paramString)
   {
-    IPlugin localIPlugin = this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin;
-    if ((localIPlugin != null) && (localIPlugin.a())) {
-      return this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.a(paramClass, paramString);
+    IPlugin localIPlugin = this.m;
+    if ((localIPlugin != null) && (localIPlugin.l())) {
+      return this.m.a(paramClass, paramString);
     }
     return super.a(paramClass, paramString);
   }
   
   public void a(IPlugin paramIPlugin)
   {
-    if (paramIPlugin.a()) {
-      this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin = paramIPlugin;
+    if (paramIPlugin.l()) {
+      this.m = paramIPlugin;
     }
   }
   
-  public boolean a()
+  public String[] j()
   {
-    IPlugin localIPlugin = this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin;
-    return ((localIPlugin != null) && (localIPlugin.a())) || (this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPluginClassLoader != null);
+    return this.i;
   }
   
-  public boolean b()
+  public boolean l()
   {
-    return this.jdField_a_of_type_Boolean;
+    IPlugin localIPlugin = this.m;
+    return ((localIPlugin != null) && (localIPlugin.l())) || (this.b != null);
   }
   
-  public String[] c()
+  public String s()
   {
-    return this.jdField_b_of_type_ArrayOfJavaLangString;
+    return this.j;
   }
   
-  public String m()
+  public boolean t()
   {
-    return this.e;
+    return this.k;
+  }
+  
+  public Plugin u()
+  {
+    Plugin localPlugin = new Plugin();
+    localPlugin.a = e();
+    localPlugin.c = a();
+    localPlugin.f = f();
+    localPlugin.g = b();
+    localPlugin.h = c();
+    localPlugin.i = j();
+    localPlugin.k = t();
+    localPlugin.j = s();
+    localPlugin.e = r();
+    localPlugin.d = q();
+    localPlugin.b = this.b;
+    localPlugin.l = this.l;
+    return localPlugin;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.Plugin
  * JD-Core Version:    0.7.0.1
  */

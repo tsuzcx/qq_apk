@@ -9,14 +9,14 @@ class AIOImageListScene$7
   
   public void run()
   {
-    if ((this.this$0.a != null) && (!((AIOPhotoListAdapter)this.this$0.a).a(false))) {
-      this.this$0.a.notifyDataSetChanged();
+    if ((this.this$0.q != null) && (!((AIOPhotoListAdapter)this.this$0.q).b(false))) {
+      this.this$0.q.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageListScene.7
  * JD-Core Version:    0.7.0.1
  */

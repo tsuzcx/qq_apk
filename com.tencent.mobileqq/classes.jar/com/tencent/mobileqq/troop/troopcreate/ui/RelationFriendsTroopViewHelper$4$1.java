@@ -14,15 +14,15 @@ class RelationFriendsTroopViewHelper$4$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.a != null)
     {
-      RelationFriendsTroopViewHelper.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiRelationFriendsTroopViewHelper$4.a).clear();
+      RelationFriendsTroopViewHelper.b(this.b.a).clear();
       int i = 0;
-      while ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i < 5))
+      while ((i < this.a.size()) && (i < 5))
       {
         Object localObject = new RelationTroopEntity();
-        ((RelationTroopEntity)localObject).troopInfo = ((ITroopSearchService.SearchResult)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a;
-        RelationFriendsTroopViewHelper.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiRelationFriendsTroopViewHelper$4.a).add(localObject);
+        ((RelationTroopEntity)localObject).troopInfo = ((ITroopSearchService.SearchResult)this.a.get(i)).a;
+        RelationFriendsTroopViewHelper.b(this.b.a).add(localObject);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -37,13 +37,13 @@ class RelationFriendsTroopViewHelper$4$1
         }
         i += 1;
       }
-      RelationFriendsTroopViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiRelationFriendsTroopViewHelper$4.a).a();
+      RelationFriendsTroopViewHelper.c(this.b.a).c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.RelationFriendsTroopViewHelper.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ class MagicFaceSuperBigDecoder$1
       }
       localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("func mDecoder.run begins, isStartDecodr:");
-      localStringBuilder1.append(this.this$0.jdField_a_of_type_Boolean);
+      localStringBuilder1.append(this.this$0.f);
       QLog.d("MagicFaceSuperBigDecoder", 2, localStringBuilder1.toString());
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -42,55 +42,55 @@ class MagicFaceSuperBigDecoder$1
       localStringBuilder2.append(localException.getMessage());
       QLog.d("MagicFaceSuperBigDecoder", 2, localStringBuilder2.toString());
     }
-    if (this.this$0.jdField_a_of_type_Boolean)
+    if (this.this$0.f)
     {
       l1 = System.currentTimeMillis();
-      j = this.this$0.a(this.this$0.jdField_a_of_type_ArrayOfByte, this.this$0.jdField_d_of_type_Int);
-      this.this$0.jdField_c_of_type_Int = (j - this.this$0.jdField_d_of_type_Int);
-      if (this.this$0.jdField_c_of_type_Int <= 0)
+      j = this.this$0.a(this.this$0.h, this.this$0.l);
+      this.this$0.k = (j - this.this$0.l);
+      if (this.this$0.k <= 0)
       {
         if (QLog.isColorLevel())
         {
           localStringBuilder1 = new StringBuilder();
           localStringBuilder1.append("func mDecoder.run ends, 【condition】 frame len <= 0, videoFrameLength:");
-          localStringBuilder1.append(this.this$0.jdField_c_of_type_Int);
+          localStringBuilder1.append(this.this$0.k);
           QLog.d("MagicFaceSuperBigDecoder", 2, localStringBuilder1.toString());
         }
       }
       else
       {
-        this.this$0.a(this.this$0.jdField_c_of_type_Int, this.this$0.jdField_d_of_type_Int, this.this$0.jdField_a_of_type_ArrayOfByte);
-        this.this$0.jdField_d_of_type_Int = j;
-        this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.decodeVideoDecoderReturnYUV(this.this$0.jdField_b_of_type_ArrayOfByte, this.this$0.jdField_c_of_type_Int, this.this$0.jdField_c_of_type_ArrayOfByte);
-        if (this.this$0.jdField_e_of_type_Int == -1)
+        this.this$0.a(this.this$0.k, this.this$0.l, this.this$0.h);
+        this.this$0.l = j;
+        this.this$0.g.decodeVideoDecoderReturnYUV(this.this$0.i, this.this$0.k, this.this$0.j);
+        if (this.this$0.m == -1)
         {
-          this.this$0.jdField_e_of_type_Int = this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.getWidthVideoDecoder();
-          this.this$0.jdField_f_of_type_Int = this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.getHeightVideoDecoder();
+          this.this$0.m = this.this$0.g.getWidthVideoDecoder();
+          this.this$0.n = this.this$0.g.getHeightVideoDecoder();
         }
-        j = this.this$0.a(this.this$0.jdField_d_of_type_ArrayOfByte, this.this$0.h);
-        this.this$0.g = (j - this.this$0.h);
-        this.this$0.b(this.this$0.g, this.this$0.h, this.this$0.jdField_d_of_type_ArrayOfByte);
-        if (this.this$0.g <= 0)
+        j = this.this$0.a(this.this$0.o, this.this$0.s);
+        this.this$0.r = (j - this.this$0.s);
+        this.this$0.b(this.this$0.r, this.this$0.s, this.this$0.o);
+        if (this.this$0.r <= 0)
         {
           if (QLog.isColorLevel())
           {
             localStringBuilder1 = new StringBuilder();
             localStringBuilder1.append("func mDecoder.run ends, 【condition】 frame len <= 0, alphaFrameLength:");
-            localStringBuilder1.append(this.this$0.g);
+            localStringBuilder1.append(this.this$0.r);
             QLog.d("MagicFaceSuperBigDecoder", 2, localStringBuilder1.toString());
           }
         }
         else
         {
-          this.this$0.h = j;
-          this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.decodeAlphaDecoderReturnYUV(this.this$0.jdField_e_of_type_ArrayOfByte, this.this$0.g, this.this$0.jdField_f_of_type_ArrayOfByte);
-          if (this.this$0.i == -1)
+          this.this$0.s = j;
+          this.this$0.g.decodeAlphaDecoderReturnYUV(this.this$0.p, this.this$0.r, this.this$0.q);
+          if (this.this$0.t == -1)
           {
-            this.this$0.i = this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.getWidthAlphaDecoder();
-            this.this$0.j = this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.getHeightAlphaDecoder();
+            this.this$0.t = this.this$0.g.getWidthAlphaDecoder();
+            this.this$0.u = this.this$0.g.getHeightAlphaDecoder();
           }
-          if (this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicfaceRenderListener != null) {
-            this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicfaceRenderListener.a(this.this$0.jdField_c_of_type_ArrayOfByte, this.this$0.jdField_f_of_type_ArrayOfByte, this.this$0.jdField_e_of_type_Int, this.this$0.jdField_f_of_type_Int, 0.0F);
+          if (this.this$0.c != null) {
+            this.this$0.c.a(this.this$0.j, this.this$0.q, this.this$0.m, this.this$0.n, 0.0F);
           }
           l3 = System.currentTimeMillis() - l1;
           if (QLog.isColorLevel())
@@ -100,11 +100,11 @@ class MagicFaceSuperBigDecoder$1
             localStringBuilder1.append(l3);
             QLog.d("MagicFaceSuperBigDecoder", 2, localStringBuilder1.toString());
           }
-          if (l3 < this.this$0.jdField_b_of_type_Int)
+          if (l3 < this.this$0.e)
           {
             if (localObject > 0L)
             {
-              l1 = this.this$0.jdField_b_of_type_Int - l3;
+              l1 = this.this$0.e - l3;
               if (l1 <= localObject) {
                 break label756;
               }
@@ -113,7 +113,7 @@ class MagicFaceSuperBigDecoder$1
             }
             else
             {
-              Thread.sleep(this.this$0.jdField_b_of_type_Int - l3);
+              Thread.sleep(this.this$0.e - l3);
               l1 = localObject;
             }
           }
@@ -121,7 +121,7 @@ class MagicFaceSuperBigDecoder$1
           {
             l1 = localObject;
             if (i == 0) {
-              i = this.this$0.jdField_b_of_type_Int;
+              i = this.this$0.e;
             }
           }
         }
@@ -145,7 +145,7 @@ class MagicFaceSuperBigDecoder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.model.MagicFaceSuperBigDecoder.1
  * JD-Core Version:    0.7.0.1
  */

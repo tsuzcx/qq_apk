@@ -17,121 +17,120 @@ import mqq.os.MqqHandler;
 
 public class MessageSignal
 {
-  private int jdField_a_of_type_Int = 0;
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int c;
-  private int d = 10;
+  private final AIOContext a;
+  private boolean b = false;
+  private boolean c = false;
+  private int d = 0;
   private int e = 0;
+  private int f = 0;
+  private int g = 10;
+  private int h = 0;
+  private Runnable i;
   
   public MessageSignal(AIOContext paramAIOContext)
   {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.a = paramAIOContext;
   }
   
-  private void c()
+  private void h()
   {
-    this.jdField_a_of_type_JavaLangRunnable = new MessageSignal.1(this);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMsgCache().b();
-    boolean bool = true;
-    if (i != 1) {
-      bool = false;
-    }
-    this.jdField_a_of_type_Boolean = bool;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("mIsMsgSignalOpen: ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
-      QLog.d("MessageSignal", 2, localStringBuilder.toString());
-    }
+    this.i = new MessageSignal.1(this);
   }
   
   public void a(Editable paramEditable)
   {
     if (a()) {
-      if ((!this.jdField_b_of_type_Boolean) && (paramEditable.length() > 0))
+      if ((!this.c) && (paramEditable.length() > 0))
       {
-        this.e = c();
-        int i = this.e;
-        if ((i == 2) || (i == 3))
+        this.h = e();
+        int j = this.h;
+        if ((j == 2) || (j == 3))
         {
-          this.jdField_b_of_type_Boolean = true;
-          this.jdField_a_of_type_Int = 1;
-          if (this.jdField_a_of_type_JavaLangRunnable == null) {
-            c();
+          this.c = true;
+          this.d = 1;
+          if (this.i == null) {
+            h();
           }
-          ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
+          ThreadManager.getSubThreadHandler().post(this.i);
         }
       }
       else if (paramEditable.length() == 0)
       {
-        ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Int = 40;
-        this.jdField_c_of_type_Int = 0;
-        this.jdField_b_of_type_Int = 0;
+        ThreadManager.getSubThreadHandler().removeCallbacks(this.i);
+        this.c = false;
+        this.d = 40;
+        this.f = 0;
         this.e = 0;
+        this.h = 0;
       }
     }
   }
   
   public void a(ChatActivityFacade.SendMsgParams paramSendMsgParams)
   {
-    paramSendMsgParams.jdField_b_of_type_Int = b();
-    paramSendMsgParams.jdField_a_of_type_Int = a();
-    paramSendMsgParams.jdField_c_of_type_Boolean = a();
-    paramSendMsgParams.jdField_c_of_type_Int = c();
-    paramSendMsgParams.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramSendMsgParams.h = ((ChatPieInputHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(6)).jdField_a_of_type_Boolean;
-    paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = ((ReplyHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(119)).b();
+    paramSendMsgParams.d = c();
+    paramSendMsgParams.c = b();
+    paramSendMsgParams.e = a();
+    paramSendMsgParams.f = e();
+    paramSendMsgParams.g = System.currentTimeMillis();
+    paramSendMsgParams.x = ((ChatPieInputHelper)this.a.a(6)).a;
+    paramSendMsgParams.h = ((ReplyHelper)this.a.a(119)).c();
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public int b()
   {
-    return this.jdField_c_of_type_Int;
+    return this.d;
   }
   
-  public void b()
+  public int c()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 60;
-    this.jdField_c_of_type_Int = 0;
-    this.e = 0;
-    ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    return this.f;
   }
   
-  int c()
+  public void d()
+  {
+    int j = this.a.a().getMsgCache().F();
+    boolean bool = true;
+    if (j != 1) {
+      bool = false;
+    }
+    this.b = bool;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mIsMsgSignalOpen: ");
+      localStringBuilder.append(this.b);
+      QLog.d("MessageSignal", 2, localStringBuilder.toString());
+    }
+  }
+  
+  int e()
   {
     return NetworkUtil.getSystemNetwork(BaseApplication.getContext());
   }
   
-  int d()
+  int f()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a().length();
+    return this.a.p().d().f().a().length();
+  }
+  
+  public void g()
+  {
+    this.c = false;
+    this.d = 60;
+    this.f = 0;
+    this.h = 0;
+    ThreadManager.getSubThreadHandler().removeCallbacks(this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.input.MessageSignal
  * JD-Core Version:    0.7.0.1
  */

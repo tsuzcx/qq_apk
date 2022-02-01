@@ -69,11 +69,11 @@ public class CircleImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.q, paramInt, 0);
-    this.mBorderWidth = paramContext.getDimensionPixelSize(R.styleable.c, 0);
-    this.mBorderColor = paramContext.getColor(R.styleable.a, 0);
-    this.mBorderOverlay = paramContext.getBoolean(R.styleable.b, false);
-    this.mFillColor = paramContext.getColor(R.styleable.d, 0);
-    this.mRoundRadius = paramContext.getDimensionPixelOffset(R.styleable.e, 0);
+    this.mBorderWidth = paramContext.getDimensionPixelSize(R.styleable.t, 0);
+    this.mBorderColor = paramContext.getColor(R.styleable.r, 0);
+    this.mBorderOverlay = paramContext.getBoolean(R.styleable.s, false);
+    this.mFillColor = paramContext.getColor(R.styleable.u, 0);
+    this.mRoundRadius = paramContext.getDimensionPixelOffset(R.styleable.v, 0);
     paramContext.recycle();
     init();
   }
@@ -351,7 +351,7 @@ public class CircleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.circleimageview.CircleImageView
  * JD-Core Version:    0.7.0.1
  */

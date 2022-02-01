@@ -10,7 +10,7 @@ class TroopAssistantActivity$17
   
   public void run()
   {
-    int i = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b();
+    int i = this.a.w();
     String str;
     if (i > 99) {
       str = "99+";
@@ -24,7 +24,7 @@ class TroopAssistantActivity$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.17
  * JD-Core Version:    0.7.0.1
  */

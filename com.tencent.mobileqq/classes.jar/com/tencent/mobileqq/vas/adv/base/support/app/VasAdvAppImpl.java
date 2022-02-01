@@ -33,13 +33,6 @@ public final class VasAdvAppImpl
 {
   private final AtomicBoolean a = new AtomicBoolean(false);
   
-  private final AppRuntime a()
-  {
-    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    Intrinsics.checkExpressionValueIsNotNull(localAppRuntime, "MobileQQ.sMobileQQ.waitAppRuntime(null)");
-    return localAppRuntime;
-  }
-  
   private final void a(View paramView)
   {
     View localView = paramView;
@@ -54,51 +47,23 @@ public final class VasAdvAppImpl
     return paramAtomicBoolean.compareAndSet(false, true);
   }
   
-  private final void b()
+  private final void e()
   {
     Boolean localBoolean = Boolean.valueOf(true);
     QbSdk.initTbsSettings(MapsKt.mutableMapOf(new Pair[] { TuplesKt.to("use_speedy_classloader", localBoolean), TuplesKt.to("use_dexloader_service", localBoolean) }));
-    WebAccelerator.initTbsEnvironment(a(), 2);
+    WebAccelerator.initTbsEnvironment(b(), 2);
+  }
+  
+  private final AppRuntime f()
+  {
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    Intrinsics.checkExpressionValueIsNotNull(localAppRuntime, "MobileQQ.sMobileQQ.waitAppRuntime(null)");
+    return localAppRuntime;
   }
   
   public long a()
   {
-    return a().getLongAccountUin();
-  }
-  
-  @NotNull
-  public Context a()
-  {
-    BaseApplication localBaseApplication = MobileQQ.context;
-    Intrinsics.checkExpressionValueIsNotNull(localBaseApplication, "MobileQQ.context");
-    return (Context)localBaseApplication;
-  }
-  
-  @Nullable
-  public View a()
-  {
-    Object localObject1 = a();
-    if (localObject1 != null)
-    {
-      localObject1 = (AppInterface)localObject1;
-      Object localObject2 = new Intent();
-      ((Intent)localObject2).putExtra("ignoreLoginWeb", true);
-      localObject1 = new WebViewWrapper((AppRuntime)localObject1, null, (Intent)localObject2, a(), true).a();
-      localObject2 = (View)localObject1;
-      a((View)localObject2);
-      ((TouchWebView)localObject1).setBackgroundColor(0);
-      ((TouchWebView)localObject1).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-      ((TouchWebView)localObject1).setVisibility(8);
-      return localObject2;
-    }
-    throw new TypeCastException("null cannot be cast to non-null type com.tencent.common.app.AppInterface");
-  }
-  
-  public void a()
-  {
-    if (a(this.a)) {
-      VasAdvAppInterface.DefaultImpls.a(this, (Runnable)new VasAdvAppImpl.initTbsEnvironment.1(this), false, false, 6, null);
-    }
+    return f().getLongAccountUin();
   }
   
   public void a(@NotNull Runnable paramRunnable, long paramLong)
@@ -133,10 +98,45 @@ public final class VasAdvAppImpl
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     return PackageUtil.a(paramContext, paramString);
   }
+  
+  @NotNull
+  public Context b()
+  {
+    BaseApplication localBaseApplication = MobileQQ.context;
+    Intrinsics.checkExpressionValueIsNotNull(localBaseApplication, "MobileQQ.context");
+    return (Context)localBaseApplication;
+  }
+  
+  public void c()
+  {
+    if (a(this.a)) {
+      VasAdvAppInterface.DefaultImpls.a(this, (Runnable)new VasAdvAppImpl.initTbsEnvironment.1(this), false, false, 6, null);
+    }
+  }
+  
+  @Nullable
+  public View d()
+  {
+    Object localObject1 = f();
+    if (localObject1 != null)
+    {
+      localObject1 = (AppInterface)localObject1;
+      Object localObject2 = new Intent();
+      ((Intent)localObject2).putExtra("ignoreLoginWeb", true);
+      localObject1 = new WebViewWrapper((AppRuntime)localObject1, null, (Intent)localObject2, b(), true).c();
+      localObject2 = (View)localObject1;
+      a((View)localObject2);
+      ((TouchWebView)localObject1).setBackgroundColor(0);
+      ((TouchWebView)localObject1).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+      ((TouchWebView)localObject1).setVisibility(8);
+      return localObject2;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.common.app.AppInterface");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.support.app.VasAdvAppImpl
  * JD-Core Version:    0.7.0.1
  */

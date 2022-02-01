@@ -12,6 +12,8 @@ import com.tencent.mobileqq.apollo.model.ApolloGameData;
 import com.tencent.mobileqq.apollo.model.ApolloObtainedActionData;
 import com.tencent.mobileqq.apollo.model.ApolloPandora;
 import com.tencent.mobileqq.apollo.model.ApolloRecommendAction;
+import com.tencent.mobileqq.apollo.model.ApolloRelationTag;
+import com.tencent.mobileqq.apollo.model.CmBattleGameInfo;
 import com.tencent.mobileqq.qroute.annotation.Service;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -52,6 +54,8 @@ public abstract interface IApolloDaoManagerService
   
   public abstract List<ApolloBattleGameInfo> getBattleGameList(int paramInt);
   
+  public abstract List<CmBattleGameInfo> getCmBattleGameInfoList();
+  
   public abstract List<ApolloActionData> getFavActionList();
   
   public abstract List<ApolloFavActionData> getFavPackageActionList();
@@ -66,6 +70,8 @@ public abstract interface IApolloDaoManagerService
   
   public abstract List<ApolloRecommendAction> getRecommendList();
   
+  public abstract List<ApolloRelationTag> getRelationTagList();
+  
   public abstract boolean hasAioPushData(AioPushData paramAioPushData);
   
   public abstract void insertFavActionPackageData(ApolloFavActionData paramApolloFavActionData);
@@ -78,6 +84,8 @@ public abstract interface IApolloDaoManagerService
   
   public abstract void removeAllRecommendActionList();
   
+  public abstract void removeAllRelationTag();
+  
   public abstract void saveActionTag(List<ApolloActionTag> paramList);
   
   public abstract void saveObtainedActionList(JSONArray paramJSONArray);
@@ -88,11 +96,15 @@ public abstract interface IApolloDaoManagerService
   
   public abstract void saveRecommendActionList(List<ApolloRecommendAction> paramList);
   
+  public abstract void saveRelationTag(List<ApolloRelationTag> paramList);
+  
   public abstract void updateBattleGameInfo(int paramInt, List<ApolloBattleGameInfo> paramList);
+  
+  public abstract void updateCmBattleGameInfo(List<CmBattleGameInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService
  * JD-Core Version:    0.7.0.1
  */

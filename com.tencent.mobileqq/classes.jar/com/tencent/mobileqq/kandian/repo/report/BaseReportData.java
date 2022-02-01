@@ -5,110 +5,104 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.TabChannelCoverInfo;
 
 public abstract class BaseReportData
 {
-  public int a;
-  public long a;
-  public AbsBaseArticleInfo a;
-  public TabChannelCoverInfo a;
-  public ReportInfo.DynamicInsertReportData a;
-  public Long a;
-  public String a;
+  public long A = 0L;
+  public int B = 0;
+  public TabChannelCoverInfo C;
+  public int D;
+  public int E;
+  public String F;
+  public ReportInfo.DynamicInsertReportData G;
   public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public AbsBaseArticleInfo b;
-  public String b;
   public boolean b;
-  public int c;
-  public String c;
   public boolean c;
-  public int d;
-  public String d;
   public boolean d;
-  public int e;
-  public String e;
   public boolean e;
   public int f;
-  public String f;
-  public boolean f;
-  public int g;
-  public int h = 0;
-  public int i = 0;
-  public int j = 0;
-  public int k = 0;
-  public int l;
-  public int m;
-  
-  public BaseReportData()
-  {
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-  }
+  public Long g;
+  public int h;
+  public long i;
+  public int j;
+  public String k;
+  public AbsBaseArticleInfo l;
+  public AbsBaseArticleInfo m;
+  public String n;
+  public int o;
+  public int p;
+  public byte[] q;
+  public String r;
+  public String s;
+  public String t;
+  public int u;
+  public int v;
+  public int w = 0;
+  public boolean x = false;
+  public int y = 0;
+  public int z = 0;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("BaseReportData{mIsReported=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mReportID=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangLong);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", mStrategyId=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", mAlgorithmID=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", mArticleType=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", mFeedsSource='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mVideoVid='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.n);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mFeedsChannelEntrance=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.o);
     localStringBuilder.append(", mFeedsFriendsInteraction=");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.p);
     localStringBuilder.append(", mStrCircleId='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.r);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mPuin='");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.s);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mInnerUniqueID='");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.t);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mKandianTabSource=");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(this.u);
     localStringBuilder.append(", mKandianMode=");
-    localStringBuilder.append(this.g);
+    localStringBuilder.append(this.v);
     localStringBuilder.append(", mVideoRecommendStrategyID=");
-    localStringBuilder.append(this.h);
+    localStringBuilder.append(this.w);
     localStringBuilder.append(", mVideoIsDynamicRecommend=");
-    localStringBuilder.append(this.jdField_f_of_type_Boolean);
+    localStringBuilder.append(this.x);
     localStringBuilder.append(", adsSource=");
-    localStringBuilder.append(this.i);
+    localStringBuilder.append(this.y);
     localStringBuilder.append(", adsJump=");
-    localStringBuilder.append(this.j);
+    localStringBuilder.append(this.z);
     localStringBuilder.append(", mExposeTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.A);
     localStringBuilder.append(", mPosition=");
-    localStringBuilder.append(this.k);
+    localStringBuilder.append(this.B);
     localStringBuilder.append(", location=");
-    localStringBuilder.append(this.l);
+    localStringBuilder.append(this.D);
     localStringBuilder.append(", entryPath=");
-    localStringBuilder.append(this.m);
+    localStringBuilder.append(this.E);
     localStringBuilder.append(", dailyCookie='");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.F);
     localStringBuilder.append('\'');
     localStringBuilder.append(", dynamicInsertReportData=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoReportReportInfo$DynamicInsertReportData);
+    localStringBuilder.append(this.G);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.report.BaseReportData
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,10 @@ class GameCenterAPIJavaScript$8
     GameCenterAPIJavaScript.VideoViewInfo localVideoViewInfo = (GameCenterAPIJavaScript.VideoViewInfo)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
     if (localVideoViewInfo != null)
     {
-      localVideoViewInfo.d = paramBoolean;
+      localVideoViewInfo.o = paramBoolean;
       GameCenterAPIJavaScript localGameCenterAPIJavaScript = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localVideoViewInfo.l);
+      localStringBuilder.append(localVideoViewInfo.x);
       localStringBuilder.append("(");
       localStringBuilder.append(localVideoViewInfo.a());
       localStringBuilder.append(");");
@@ -26,7 +26,7 @@ class GameCenterAPIJavaScript$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.GameCenterAPIJavaScript.8
  * JD-Core Version:    0.7.0.1
  */

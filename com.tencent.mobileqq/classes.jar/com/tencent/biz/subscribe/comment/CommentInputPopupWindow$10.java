@@ -7,10 +7,10 @@ class CommentInputPopupWindow$10
 {
   public void run()
   {
-    CommentInputPopupWindow.a(this.this$0).setVisibility(8);
-    CommentInputPopupWindow.b(this.this$0).setVisibility(0);
-    CommentInputPopupWindow.a(this.this$0, true);
-    CommentInputPopupWindow.a(this.this$0).requestFocus();
+    CommentInputPopupWindow.l(this.this$0).setVisibility(8);
+    CommentInputPopupWindow.m(this.this$0).setVisibility(0);
+    CommentInputPopupWindow.c(this.this$0, true);
+    CommentInputPopupWindow.h(this.this$0).requestFocus();
   }
 }
 

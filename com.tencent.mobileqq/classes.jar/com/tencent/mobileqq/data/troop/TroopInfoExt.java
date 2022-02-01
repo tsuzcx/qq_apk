@@ -17,6 +17,8 @@ public class TroopInfoExt
   public byte[] luckyWord;
   public long luckyWordId = 0L;
   public int starId = 0;
+  public int temporaryExpireTime = 0;
+  public int todoSeq = 0;
   
   public static TroopInfoExt parseFromGroupInfoExt(oidb_0xef0.GroupInfoExt paramGroupInfoExt)
   {
@@ -41,6 +43,12 @@ public class TroopInfoExt
       if (((oidb_0xef0.GroupInfoExt)paramGroupInfoExt.get()).uint32_essential_msg_switch.has()) {
         localTroopInfoExt.essenceSwitch = ((oidb_0xef0.GroupInfoExt)paramGroupInfoExt.get()).uint32_essential_msg_switch.get();
       }
+      if (((oidb_0xef0.GroupInfoExt)paramGroupInfoExt.get()).uint32_todo_seq.has()) {
+        localTroopInfoExt.todoSeq = ((oidb_0xef0.GroupInfoExt)paramGroupInfoExt.get()).uint32_todo_seq.get();
+      }
+      if (((oidb_0xef0.GroupInfoExt)paramGroupInfoExt.get()).uint32_blacklist_expire_time.has()) {
+        localTroopInfoExt.temporaryExpireTime = ((oidb_0xef0.GroupInfoExt)paramGroupInfoExt.get()).uint32_blacklist_expire_time.get();
+      }
     }
     return localTroopInfoExt;
   }
@@ -56,12 +64,14 @@ public class TroopInfoExt
     }
     localGroupInfoExt.uint32_star_id.set(this.starId);
     localGroupInfoExt.uint32_essential_msg_switch.set(this.essenceSwitch);
+    localGroupInfoExt.uint32_todo_seq.set(this.todoSeq);
+    localGroupInfoExt.uint32_blacklist_expire_time.set(this.temporaryExpireTime);
     return localGroupInfoExt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.troop.TroopInfoExt
  * JD-Core Version:    0.7.0.1
  */

@@ -38,7 +38,7 @@ public class CampusCirclePlugin
     int n = 0;
     if (paramString3 != null)
     {
-      Resources localResources = paramString3.d.getContext().getResources();
+      Resources localResources = paramString3.x.getContext().getResources();
       int i1 = (int)(localResources.getDisplayMetrics().density * 30.0F);
       int i = 10;
       paramString2 = "";
@@ -88,11 +88,11 @@ public class CampusCirclePlugin
       paramString1 = null;
       if (bool)
       {
-        paramJsBridgeListener = localResources.getDrawable(2130844948);
+        paramJsBridgeListener = localResources.getDrawable(2130846384);
       }
       else if ("arrow_down".equals(paramJsBridgeListener))
       {
-        paramJsBridgeListener = localResources.getDrawable(2130844947);
+        paramJsBridgeListener = localResources.getDrawable(2130846383);
       }
       else
       {
@@ -110,7 +110,7 @@ public class CampusCirclePlugin
       } else if (i > i1) {
         i = i1;
       }
-      paramString3.a.a(j, paramJsBridgeListener, i);
+      paramString3.g.a(j, paramJsBridgeListener, i);
       bool = true;
     }
     return bool;
@@ -143,7 +143,7 @@ public class CampusCirclePlugin
       return true;
     }
     paramString1 = new JSONObject();
-    paramString2 = CampusCircleIpcClient.a().a();
+    paramString2 = CampusCircleIpcClient.a().b();
     boolean bool;
     int j;
     int i;
@@ -245,7 +245,7 @@ public class CampusCirclePlugin
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
         long l = paramJsBridgeListener.getLong("schoolId");
         paramJsBridgeListener = paramJsBridgeListener.getString("schoolName");
-        paramString1 = this.mRuntime.a();
+        paramString1 = this.mRuntime.d();
         if (paramString1 != null)
         {
           paramString2 = new Intent();
@@ -280,13 +280,13 @@ public class CampusCirclePlugin
     boolean bool2 = super.handleEvent(paramString, paramLong, paramMap);
     bool1 = bool2;
     if (paramLong == 8589934598L) {
-      if (this.mRuntime.a().getIntent().getIntExtra("uintype", -1) == 1030) {
+      if (this.mRuntime.d().getIntent().getIntExtra("uintype", -1) == 1030) {
         bool3 = false;
       }
     }
     try
     {
-      paramString = Uri.parse(this.mRuntime.a().getIntent().getStringExtra("url"));
+      paramString = Uri.parse(this.mRuntime.d().getIntent().getStringExtra("url"));
       bool1 = bool3;
       if (paramString != null)
       {
@@ -306,12 +306,12 @@ public class CampusCirclePlugin
     if (bool1) {
       return bool2;
     }
-    paramString = new Intent(this.mRuntime.a(), SplashActivity.class);
+    paramString = new Intent(this.mRuntime.d(), SplashActivity.class);
     paramString.putExtra("fragment_id", 1);
     paramString.putExtra("main_tab_id", 4);
     paramString.setFlags(603979776);
     paramString.putExtra("from", "campus_notice");
-    this.mRuntime.a().startActivity(paramString);
+    this.mRuntime.d().startActivity(paramString);
     if (QLog.isDevelopLevel()) {
       QLog.i("CampusNoticeManager", 4, "EVENT_BEFORE_ACTIVITY_FINISH");
     }
@@ -350,7 +350,7 @@ public class CampusCirclePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusCirclePlugin
  * JD-Core Version:    0.7.0.1
  */

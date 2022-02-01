@@ -12,8 +12,8 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.aelight.camera.log.AEQLog;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.CutModelKt;
 import com.tencent.tavsticker.utils.ViewUtils;
-import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
 import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
 import com.tencent.widget.itemtouchhelper.ItemTouchHelper.Callback;
 import java.util.List;
@@ -26,20 +26,20 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderContainerView;", "Landroid/support/v7/widget/RecyclerView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttrs", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "adapter", "Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderContainerView$SpacingAdapter;", "getAdapter", "()Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderContainerView$SpacingAdapter;", "adapter$delegate", "Lkotlin/Lazy;", "dragUUID", "dragViewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemTouchHelper", "Lcom/tencent/widget/itemtouchhelper/ItemTouchHelper;", "linearLayoutManager", "Landroid/support/v7/widget/LinearLayoutManager;", "reorderListener", "Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderListener;", "getReorderListener", "()Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderListener;", "setReorderListener", "(Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderListener;)V", "screenWidth", "getScreenWidth", "()I", "screenWidth$delegate", "targetIndex", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "initial", "", "scrollToTarget", "uuid", "point", "Landroid/graphics/Point;", "startDrag", "index", "submitList", "data", "", "Lcom/tencent/weseevideo/camera/mvauto/redo/CutModelKt;", "SpacingAdapter", "SpacingVH", "aelight_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderContainerView;", "Landroid/support/v7/widget/RecyclerView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttrs", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "adapter", "Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderContainerView$SpacingAdapter;", "getAdapter", "()Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderContainerView$SpacingAdapter;", "adapter$delegate", "Lkotlin/Lazy;", "dragUUID", "dragViewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemTouchHelper", "Lcom/tencent/widget/itemtouchhelper/ItemTouchHelper;", "linearLayoutManager", "Landroid/support/v7/widget/LinearLayoutManager;", "reorderListener", "Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderListener;", "getReorderListener", "()Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderListener;", "setReorderListener", "(Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderListener;)V", "screenWidth", "getScreenWidth", "()I", "screenWidth$delegate", "targetIndex", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "initial", "", "scrollToTarget", "uuid", "point", "Landroid/graphics/Point;", "startDrag", "index", "submitList", "data", "", "Lcom/tencent/qcircle/weseevideo/camera/mvauto/redo/CutModelKt;", "SpacingAdapter", "SpacingVH", "aelight_impl_release"}, k=1, mv={1, 1, 16})
 public final class ReorderContainerView
   extends RecyclerView
 {
-  private int jdField_a_of_type_Int;
-  private final LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+  private final String a = "ReorderContainerView";
+  private final Lazy b = LazyKt.lazy((Function0)ReorderContainerView.adapter.2.INSTANCE);
+  private final Lazy c;
+  private final LinearLayoutManager d;
   @Nullable
-  private ReorderListener jdField_a_of_type_ComTencentAelightCameraAeeditorViewReorderReorderListener;
-  private ItemTouchHelper jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper;
-  private final String jdField_a_of_type_JavaLangString = "ReorderContainerView";
-  private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)ReorderContainerView.adapter.2.INSTANCE);
-  private String jdField_b_of_type_JavaLangString;
-  private final Lazy jdField_b_of_type_KotlinLazy;
+  private ReorderListener e;
+  private ItemTouchHelper f;
+  private int g;
+  private String h;
+  private RecyclerView.ViewHolder i;
   
   @JvmOverloads
   public ReorderContainerView(@NotNull Context paramContext)
@@ -57,41 +57,40 @@ public final class ReorderContainerView
   public ReorderContainerView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_b_of_type_KotlinLazy = LazyKt.lazy((Function0)new ReorderContainerView.screenWidth.2(paramContext));
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(paramContext, 0, false);
-    this.jdField_a_of_type_Int = -1;
+    this.c = LazyKt.lazy((Function0)new ReorderContainerView.screenWidth.2(paramContext));
+    this.d = new LinearLayoutManager(paramContext, 0, false);
+    this.g = -1;
   }
   
-  private final ReorderContainerView.SpacingAdapter a()
+  private final ReorderContainerView.SpacingAdapter getAdapter()
   {
-    return (ReorderContainerView.SpacingAdapter)this.jdField_a_of_type_KotlinLazy.getValue();
+    return (ReorderContainerView.SpacingAdapter)this.b.getValue();
+  }
+  
+  private final int getScreenWidth()
+  {
+    return ((Number)this.c.getValue()).intValue();
   }
   
   public final int a(@NotNull String paramString, @NotNull Point paramPoint)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "uuid");
     Intrinsics.checkParameterIsNotNull(paramPoint, "point");
-    this.jdField_b_of_type_JavaLangString = paramString;
-    int i = a().a(paramString);
-    int j = paramPoint.x;
-    int k = ViewUtils.dip2px(-45.0F);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.scrollToPositionWithOffset(i + 1, j + k);
-    return i;
-  }
-  
-  @Nullable
-  public final ReorderListener a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewReorderReorderListener;
+    this.h = paramString;
+    int j = getAdapter().a(paramString);
+    int k = paramPoint.x;
+    int m = ViewUtils.dip2px(-45.0F);
+    this.d.scrollToPositionWithOffset(j + 1, k + m);
+    return j;
   }
   
   public final void a()
   {
-    setLayoutManager((RecyclerView.LayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    setAdapter((RecyclerView.Adapter)a());
-    addItemDecoration((RecyclerView.ItemDecoration)new SpacesItemDecoration(getResources().getDimensionPixelSize(2063990829)));
-    this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper = new ItemTouchHelper((ItemTouchHelper.Callback)new ReorderContainerView.initial.itemTouchCallback.1(this, 51, 0));
-    ItemTouchHelper localItemTouchHelper = this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper;
+    setLayoutManager((RecyclerView.LayoutManager)this.d);
+    setAdapter((RecyclerView.Adapter)getAdapter());
+    addItemDecoration((RecyclerView.ItemDecoration)new SpacesItemDecoration(getResources().getDimensionPixelSize(2063859756)));
+    this.f = new ItemTouchHelper((ItemTouchHelper.Callback)new ReorderContainerView.initial.itemTouchCallback.1(this, 51, 0));
+    ItemTouchHelper localItemTouchHelper = this.f;
     if (localItemTouchHelper != null) {
       localItemTouchHelper.attachToRecyclerView((RecyclerView)this);
     }
@@ -99,7 +98,7 @@ public final class ReorderContainerView
   
   public final void a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Object localObject1 = this.a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("startDrag() called with: index = [");
     ((StringBuilder)localObject2).append(paramInt);
@@ -108,30 +107,30 @@ public final class ReorderContainerView
     localObject1 = findViewHolderForLayoutPosition(paramInt + 1);
     if (localObject1 != null)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper;
+      localObject2 = this.f;
       if (localObject2 != null) {
         ((ItemTouchHelper)localObject2).startDrag((RecyclerView.ViewHolder)localObject1);
       }
-      AEQLog.b(this.jdField_a_of_type_JavaLangString, "startDrag() called with: vh = [$]");
+      AEQLog.b(this.a, "startDrag() called with: vh = [$]");
     }
   }
   
   public final void a(@NotNull List<CutModelKt> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "data");
-    a().a(paramList);
+    getAdapter().a(paramList);
   }
   
   public boolean dispatchTouchEvent(@Nullable MotionEvent paramMotionEvent)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("dispatchTouchEvent: width: ");
     localStringBuilder.append(getWidth());
     localStringBuilder.append(", height: ");
     localStringBuilder.append(getHeight());
     AEQLog.a(str, localStringBuilder.toString());
-    str = this.jdField_a_of_type_JavaLangString;
+    str = this.a;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("dispatchTouchEvent() called with: ev = [");
     localStringBuilder.append(paramMotionEvent);
@@ -140,14 +139,20 @@ public final class ReorderContainerView
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
+  @Nullable
+  public final ReorderListener getReorderListener()
+  {
+    return this.e;
+  }
+  
   public final void setReorderListener(@Nullable ReorderListener paramReorderListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewReorderReorderListener = paramReorderListener;
+    this.e = paramReorderListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.reorder.ReorderContainerView
  * JD-Core Version:    0.7.0.1
  */

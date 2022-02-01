@@ -41,7 +41,7 @@ public class RIJCommentInLikeFeedBiuAtlasHandler
       paramToServiceMsg.append(i);
       QLog.d("RIJCommentInLikeFeedBiuAtlasHandler", 1, paramToServiceMsg.toString());
     }
-    paramToServiceMsg = BaseApplication.getContext().getString(2131717858);
+    paramToServiceMsg = BaseApplication.getContext().getString(2131915331);
     if (localRspBody.bytes_result_desc.has())
     {
       paramToServiceMsg = localRspBody.bytes_result_desc.get().toStringUtf8();
@@ -51,12 +51,12 @@ public class RIJCommentInLikeFeedBiuAtlasHandler
       QLog.d("RIJCommentInLikeFeedBiuAtlasHandler", 2, paramFromServiceMsg.toString());
     }
     long l = localRspBody.uint64_feeds_id.get();
-    this.a.post(new RIJCommentInLikeFeedBiuAtlasHandler.1(this, l, i, paramToServiceMsg));
+    this.b.post(new RIJCommentInLikeFeedBiuAtlasHandler.1(this, l, i, paramToServiceMsg));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJCommentInLikeFeedBiuAtlasHandler
  * JD-Core Version:    0.7.0.1
  */

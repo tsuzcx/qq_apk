@@ -16,7 +16,7 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$4
     if (paramInt == 0) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.resPath = paramPathResult;
+        this.a.resPath = paramPathResult;
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -30,12 +30,12 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$4
         paramPathResult.printStackTrace();
       }
     }
-    CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo);
+    CustomizeStrategyFactory.d().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.SkinRedPacketStrategy.4
  * JD-Core Version:    0.7.0.1
  */

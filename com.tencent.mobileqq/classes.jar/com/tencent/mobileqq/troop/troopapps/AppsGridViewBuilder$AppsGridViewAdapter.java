@@ -26,22 +26,22 @@ public class AppsGridViewBuilder$AppsGridViewAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private AppsGridViewBuilder jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder;
-  private List<TroopAppShortcutContainer.TroopAppInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<TroopAppShortcutContainer.TroopAppInfo> a = new ArrayList();
+  private AppsGridViewBuilder b;
+  private LayoutInflater c;
+  private int d = 0;
   
   public AppsGridViewBuilder$AppsGridViewAdapter(AppsGridViewBuilder paramAppsGridViewBuilder, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder = paramAppsGridViewBuilder;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramAppsGridViewBuilder;
+    this.c = LayoutInflater.from(this.b.f);
+    this.d = paramInt;
   }
   
   public TroopAppShortcutContainer.TroopAppInfo a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (TroopAppShortcutContainer.TroopAppInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (TroopAppShortcutContainer.TroopAppInfo)this.a.get(paramInt);
     }
     return null;
   }
@@ -50,15 +50,15 @@ public class AppsGridViewBuilder$AppsGridViewAdapter
   {
     if (paramList != null)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.a.clear();
+      this.a.addAll(paramList);
       notifyDataSetChanged();
     }
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public long getItemId(int paramInt)
@@ -70,7 +70,7 @@ public class AppsGridViewBuilder$AppsGridViewAdapter
   {
     TroopAppShortcutContainer.TroopAppInfo localTroopAppInfo = a(paramInt);
     if (localTroopAppInfo != null) {
-      return localTroopAppInfo.jdField_a_of_type_Int;
+      return localTroopAppInfo.a;
     }
     return 0;
   }
@@ -82,11 +82,11 @@ public class AppsGridViewBuilder$AppsGridViewAdapter
     {
       if (i == 0)
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559856, paramViewGroup, false);
+        paramView = this.c.inflate(2131625899, paramViewGroup, false);
         localObject1 = new AppsGridViewBuilder.AppsGridViewHolder();
-        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379161));
-        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).b = ((ImageView)paramView.findViewById(2131379162));
-        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379163));
+        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).a = ((ImageView)paramView.findViewById(2131447897));
+        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).b = ((ImageView)paramView.findViewById(2131447898));
+        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).c = ((TextView)paramView.findViewById(2131447899));
         paramView.setTag(localObject1);
       }
       else
@@ -94,15 +94,15 @@ public class AppsGridViewBuilder$AppsGridViewAdapter
         if (i != 1) {
           break label232;
         }
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559857, paramViewGroup, false);
+        paramView = this.c.inflate(2131625900, paramViewGroup, false);
         localObject1 = new AppsGridViewBuilder.AppsGridViewHolder();
-        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379161));
+        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).a = ((ImageView)paramView.findViewById(2131447897));
         paramView.setTag(localObject1);
       }
       localObject2 = paramView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject2).height = (this.jdField_a_of_type_Int - 6);
+      ((ViewGroup.LayoutParams)localObject2).height = (this.d - 6);
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.c)
+      if (this.b.l)
       {
         localObject2 = new GradientDrawable();
         ((GradientDrawable)localObject2).setCornerRadius(16.0F);
@@ -138,53 +138,53 @@ public class AppsGridViewBuilder$AppsGridViewAdapter
     }
     else
     {
-      ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer$TroopAppInfo = ((TroopAppShortcutContainer.TroopAppInfo)localObject2);
+      ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).d = ((TroopAppShortcutContainer.TroopAppInfo)localObject2);
       if (i == 0)
       {
-        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(((TroopAppShortcutContainer.TroopAppInfo)localObject2).jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.c) {
-          ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#ffffff"));
+        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).c.setText(((TroopAppShortcutContainer.TroopAppInfo)localObject2).d);
+        if (this.b.l) {
+          ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).c.setTextColor(Color.parseColor("#ffffff"));
         }
       }
       Object localObject3;
-      if (((TroopAppShortcutContainer.TroopAppInfo)localObject2).jdField_a_of_type_Int == 1)
+      if (((TroopAppShortcutContainer.TroopAppInfo)localObject2).a == 1)
       {
-        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130851154));
-        TroopAppShortcutUtils.a(((AppsGridViewBuilder.AppsGridViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView);
+        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).a.setImageDrawable(this.b.f.getResources().getDrawable(2130853399));
+        TroopAppShortcutUtils.a(((AppsGridViewBuilder.AppsGridViewHolder)localObject1).a);
         ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).b.setVisibility(8);
       }
       else
       {
-        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(null);
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_AndroidContentContext;
-        ImageView localImageView = ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView;
-        String str = ((TroopAppShortcutContainer.TroopAppInfo)localObject2).jdField_b_of_type_JavaLangString;
+        ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).a.setOnTouchListener(null);
+        localObject3 = this.b.f;
+        ImageView localImageView = ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).a;
+        String str = ((TroopAppShortcutContainer.TroopAppInfo)localObject2).e;
         boolean bool;
-        if (((TroopAppShortcutContainer.TroopAppInfo)localObject2).e == 1) {
+        if (((TroopAppShortcutContainer.TroopAppInfo)localObject2).m == 1) {
           bool = true;
         } else {
           bool = false;
         }
         TroopAppShortcutUtils.a((Context)localObject3, localImageView, str, 24.0F, bool);
-        if (((TroopAppShortcutContainer.TroopAppInfo)localObject2).d != 0) {
+        if (((TroopAppShortcutContainer.TroopAppInfo)localObject2).k != 0) {
           ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).b.setVisibility(0);
         } else {
           ((AppsGridViewBuilder.AppsGridViewHolder)localObject1).b.setVisibility(8);
         }
       }
-      i = ((TroopAppShortcutContainer.TroopAppInfo)localObject2).jdField_a_of_type_Int;
+      i = ((TroopAppShortcutContainer.TroopAppInfo)localObject2).a;
       localObject1 = "";
-      if ((i == 0) && (((TroopAppShortcutContainer.TroopAppInfo)localObject2).jdField_b_of_type_Long == 101914115L))
+      if ((i == 0) && (((TroopAppShortcutContainer.TroopAppInfo)localObject2).c == 101914115L))
       {
         localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_Long);
+        ((StringBuilder)localObject3).append(this.b.b);
         ((StringBuilder)localObject3).append("");
         QQGameTroopManager.a(1, ((StringBuilder)localObject3).toString(), true);
       }
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
-        if (((TroopAppShortcutContainer.TroopAppInfo)localObject2).jdField_a_of_type_JavaLangString != null) {
-          localObject1 = ((TroopAppShortcutContainer.TroopAppInfo)localObject2).jdField_a_of_type_JavaLangString;
+        if (((TroopAppShortcutContainer.TroopAppInfo)localObject2).d != null) {
+          localObject1 = ((TroopAppShortcutContainer.TroopAppInfo)localObject2).d;
         }
         paramView.setContentDescription((CharSequence)localObject1);
       }
@@ -208,27 +208,27 @@ public class AppsGridViewBuilder$AppsGridViewAdapter
     if ((localObject != null) && ((localObject instanceof AppsGridViewBuilder.AppsGridViewHolder)))
     {
       localObject = (AppsGridViewBuilder.AppsGridViewHolder)localObject;
-      if (((AppsGridViewBuilder.AppsGridViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer$TroopAppInfo != null)
+      if (((AppsGridViewBuilder.AppsGridViewHolder)localObject).d != null)
       {
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("onItemClick appInfo:");
-          localStringBuilder.append(((AppsGridViewBuilder.AppsGridViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer$TroopAppInfo.toString());
+          localStringBuilder.append(((AppsGridViewBuilder.AppsGridViewHolder)localObject).d.toString());
           QLog.d("AppsGridViewBuilder", 2, localStringBuilder.toString());
         }
-        if (((AppsGridViewBuilder.AppsGridViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer$TroopAppInfo.jdField_a_of_type_Int == 1)
+        if (((AppsGridViewBuilder.AppsGridViewHolder)localObject).d.a == 1)
         {
-          TroopAppShortcutUtils.a(1, this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+          TroopAppShortcutUtils.a(1, this.b.b, this.b.g, this.b.f, this.b.h);
         }
-        else if (((AppsGridViewBuilder.AppsGridViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer$TroopAppInfo.jdField_a_of_type_Int == 0)
+        else if (((AppsGridViewBuilder.AppsGridViewHolder)localObject).d.a == 0)
         {
-          TroopAppShortcutUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_Long), ((AppsGridViewBuilder.AppsGridViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer$TroopAppInfo.jdField_b_of_type_Long, ((AppsGridViewBuilder.AppsGridViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer$TroopAppInfo.c, 1, ((AppsGridViewBuilder.AppsGridViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer$TroopAppInfo.d);
-          long l1 = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_Long;
-          long l2 = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_b_of_type_Long;
-          long l3 = ((AppsGridViewBuilder.AppsGridViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer$TroopAppInfo.jdField_b_of_type_Long;
-          int i = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsAppsGridViewBuilder.jdField_a_of_type_Int;
-          if (((AppsGridViewBuilder.AppsGridViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer$TroopAppInfo.jdField_a_of_type_Long == 0L) {
+          TroopAppShortcutUtils.a(this.b.g, this.b.f, this.b.h, String.valueOf(this.b.b), ((AppsGridViewBuilder.AppsGridViewHolder)localObject).d.c, ((AppsGridViewBuilder.AppsGridViewHolder)localObject).d.f, 1, ((AppsGridViewBuilder.AppsGridViewHolder)localObject).d.k);
+          long l1 = this.b.b;
+          long l2 = this.b.c;
+          long l3 = ((AppsGridViewBuilder.AppsGridViewHolder)localObject).d.c;
+          int i = this.b.k;
+          if (((AppsGridViewBuilder.AppsGridViewHolder)localObject).d.b == 0L) {
             localObject = "1";
           } else {
             localObject = "2";
@@ -242,7 +242,7 @@ public class AppsGridViewBuilder$AppsGridViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.AppsGridViewBuilder.AppsGridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

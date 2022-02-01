@@ -12,7 +12,7 @@ class KandianMergeManager$10
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramContext = ReadInJoyLogicEngine.a().a();
+    paramContext = ReadInJoyLogicEngine.a().Z();
     if (paramContext != null) {
       paramContext.a();
     }
@@ -20,7 +20,7 @@ class KandianMergeManager$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.10
  * JD-Core Version:    0.7.0.1
  */

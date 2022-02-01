@@ -26,18 +26,13 @@ import java.lang.reflect.Field;
 public class PublicFragmentActivity
   extends BaseActivity
 {
-  private static ArrayMap<String, PublicFragmentActivity.IViewCreator> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
-  private PublicBaseFragment jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
-  private ClassLoader jdField_a_of_type_JavaLangClassLoader = null;
+  private static ArrayMap<String, PublicFragmentActivity.IViewCreator> b = new ArrayMap();
+  private PublicBaseFragment a;
+  private ClassLoader c = null;
   
   public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
     PublicFragmentActivity.Launcher.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
-  }
-  
-  public static void a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, int paramInt)
-  {
-    a(paramActivity, null, paramClass, paramInt);
   }
   
   public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
@@ -109,7 +104,7 @@ public class PublicFragmentActivity
   
   public static void a(String paramString, PublicFragmentActivity.IViewCreator paramIViewCreator)
   {
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramString, paramIViewCreator);
+    b.put(paramString, paramIViewCreator);
   }
   
   private PublicBaseFragment b()
@@ -134,7 +129,7 @@ public class PublicFragmentActivity
   
   public PublicBaseFragment a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    return this.a;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -142,8 +137,8 @@ public class PublicFragmentActivity
     Object localObject = EventCollector.getInstance();
     boolean bool = true;
     ((EventCollector)localObject).onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
-    if ((localObject == null) || (!((PublicBaseFragment)localObject).needDispatchTouchEvent()) || (!this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.dispatchTouchEvent(paramMotionEvent))) {
+    localObject = this.a;
+    if ((localObject == null) || (!((PublicBaseFragment)localObject).needDispatchTouchEvent()) || (!this.a.dispatchTouchEvent(paramMotionEvent))) {
       bool = super.dispatchTouchEvent(paramMotionEvent);
     }
     EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
@@ -152,7 +147,7 @@ public class PublicFragmentActivity
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if (localPublicBaseFragment != null) {
       localPublicBaseFragment.onActivityResult(paramInt1 & 0xFFFF, paramInt2, paramIntent);
     }
@@ -160,13 +155,13 @@ public class PublicFragmentActivity
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment = b();
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    this.a = b();
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if (localPublicBaseFragment != null)
     {
       this.mNeedStatusTrans = localPublicBaseFragment.needStatusTrans();
-      this.mActNeedImmersive = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.needImmersive();
-      this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.initWindowStyleAndAnimation(this);
+      this.mActNeedImmersive = this.a.needImmersive();
+      this.a.initWindowStyleAndAnimation(this);
     }
     if (paramBundle != null)
     {
@@ -176,22 +171,22 @@ public class PublicFragmentActivity
       a(paramBundle);
     }
     super.doOnCreate(paramBundle);
-    setContentView(2131558488);
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment == null)
+    setContentView(2131624037);
+    if (this.a == null)
     {
       finish();
       return false;
     }
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131367211, this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment);
+    paramBundle.replace(2131433667, this.a);
     paramBundle.commitAllowingStateLoss();
-    this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.initSideFling(this, this.mFlingHandler);
+    this.a.initSideFling(this, this.mFlingHandler);
     return true;
   }
   
   protected boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if ((localPublicBaseFragment != null) && (localPublicBaseFragment.doOnKeyDown(paramInt, paramKeyEvent))) {
       return true;
     }
@@ -201,7 +196,7 @@ public class PublicFragmentActivity
   protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if (localPublicBaseFragment != null) {
       localPublicBaseFragment.onNewIntent(paramIntent);
     }
@@ -209,7 +204,7 @@ public class PublicFragmentActivity
   
   public void finish()
   {
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if ((localPublicBaseFragment == null) || (!localPublicBaseFragment.overrideFinish())) {
       superFinish();
     }
@@ -217,7 +212,7 @@ public class PublicFragmentActivity
   
   public String getCIOPageName()
   {
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if (localPublicBaseFragment != null) {
       return localPublicBaseFragment.getCIOPageName();
     }
@@ -227,14 +222,14 @@ public class PublicFragmentActivity
   public ClassLoader getClassLoader()
   {
     Object localObject = super.getClassLoader();
-    ClassLoader localClassLoader2 = this.jdField_a_of_type_JavaLangClassLoader;
+    ClassLoader localClassLoader2 = this.c;
     ClassLoader localClassLoader1 = localClassLoader2;
     if (localClassLoader2 == null) {
       localClassLoader1 = QzonePluginProxyActivity.getQZonePluginClassLoaderInUI();
     }
     if (localClassLoader1 != null)
     {
-      this.jdField_a_of_type_JavaLangClassLoader = localClassLoader1;
+      this.c = localClassLoader1;
       localObject = localClassLoader1;
     }
     return localObject;
@@ -242,13 +237,13 @@ public class PublicFragmentActivity
   
   public boolean isSupportScreenShot()
   {
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     return (localPublicBaseFragment == null) || (localPublicBaseFragment.isSupportScreenShot());
   }
   
   protected boolean isWrapContent()
   {
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if (localPublicBaseFragment != null) {
       return localPublicBaseFragment.isWrapContent();
     }
@@ -258,7 +253,7 @@ public class PublicFragmentActivity
   protected void onAccountChanged()
   {
     super.onAccountChanged();
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if (localPublicBaseFragment != null) {
       localPublicBaseFragment.onAccountChanged();
     }
@@ -266,7 +261,7 @@ public class PublicFragmentActivity
   
   protected boolean onBackEvent()
   {
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if (localPublicBaseFragment == null) {
       return super.onBackEvent();
     }
@@ -282,9 +277,9 @@ public class PublicFragmentActivity
   
   public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    if (jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramString))
+    if (b.containsKey(paramString))
     {
-      View localView = ((PublicFragmentActivity.IViewCreator)jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString)).a(paramString, paramContext, paramAttributeSet);
+      View localView = ((PublicFragmentActivity.IViewCreator)b.get(paramString)).a(paramString, paramContext, paramAttributeSet);
       if (localView != null) {
         return localView;
       }
@@ -295,7 +290,7 @@ public class PublicFragmentActivity
   public void onMultiWindowModeChanged(boolean paramBoolean)
   {
     super.onMultiWindowModeChanged(paramBoolean);
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if (localPublicBaseFragment != null) {
       localPublicBaseFragment.onMultiWindowModeChanged(paramBoolean);
     }
@@ -304,7 +299,7 @@ public class PublicFragmentActivity
   public void onPostThemeChanged()
   {
     super.onPostThemeChanged();
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if (localPublicBaseFragment != null) {
       localPublicBaseFragment.onPostThemeChanged();
     }
@@ -313,7 +308,7 @@ public class PublicFragmentActivity
   public void onPreThemeChanged()
   {
     super.onPreThemeChanged();
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if (localPublicBaseFragment != null) {
       localPublicBaseFragment.onPreThemeChanged();
     }
@@ -322,7 +317,7 @@ public class PublicFragmentActivity
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if (localPublicBaseFragment != null) {
       localPublicBaseFragment.onWindowFocusChanged(paramBoolean);
     }
@@ -338,12 +333,12 @@ public class PublicFragmentActivity
   
   public void superFinish()
   {
-    PublicBaseFragment localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    PublicBaseFragment localPublicBaseFragment = this.a;
     if (localPublicBaseFragment != null) {
       localPublicBaseFragment.beforeFinish();
     }
     super.finish();
-    localPublicBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
+    localPublicBaseFragment = this.a;
     if (localPublicBaseFragment != null) {
       localPublicBaseFragment.onFinish();
     }
@@ -352,14 +347,14 @@ public class PublicFragmentActivity
   public String toString()
   {
     String str = super.toString();
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment != null)
+    if (this.a != null)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(str);
       ((StringBuilder)localObject).append("#");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.getClass().getName());
+      ((StringBuilder)localObject).append(this.a.getClass().getName());
       ((StringBuilder)localObject).append("@");
-      ((StringBuilder)localObject).append(Integer.toHexString(this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.hashCode()));
+      ((StringBuilder)localObject).append(Integer.toHexString(this.a.hashCode()));
       return ((StringBuilder)localObject).toString();
     }
     Object localObject = str;
@@ -380,7 +375,7 @@ public class PublicFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

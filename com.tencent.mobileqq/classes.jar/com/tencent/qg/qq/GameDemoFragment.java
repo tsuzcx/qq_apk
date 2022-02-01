@@ -18,21 +18,21 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCol
 public class GameDemoFragment
   extends MiniAppBaseFragment
 {
-  private QGGLSurfaceView jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView;
-  DoraemonApiWrapper jdField_a_of_type_ComTencentQgSdkDoraemonDoraemonApiWrapper;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  DoraemonApiWrapper a;
+  private QGGLSurfaceView b;
+  private String[] c;
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ArrayOfJavaLangString = getArguments().getStringArray("key_run_js");
+    this.c = getArguments().getStringArray("key_run_js");
     getBaseActivity().getWindowManager().getDefaultDisplay().getWidth();
     getBaseActivity().getWindowManager().getDefaultDisplay().getHeight();
     ((IDoraemonService)QRoute.api(IDoraemonService.class)).createAPIManager(getBaseActivity(), 3, a());
-    this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView = new QGGLSurfaceView(getBaseActivity());
-    this.jdField_a_of_type_ComTencentQgSdkDoraemonDoraemonApiWrapper = new DoraemonApiWrapperMockImpl(this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView);
-    this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView.setQGEventListener(new GameDemoFragment.1(this));
-    paramLayoutInflater = this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView;
+    this.b = new QGGLSurfaceView(getBaseActivity());
+    this.a = new DoraemonApiWrapperMockImpl(this.b);
+    this.b.setQGEventListener(new GameDemoFragment.1(this));
+    paramLayoutInflater = this.b;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -40,17 +40,17 @@ public class GameDemoFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    DoraemonApiWrapper localDoraemonApiWrapper = this.jdField_a_of_type_ComTencentQgSdkDoraemonDoraemonApiWrapper;
+    DoraemonApiWrapper localDoraemonApiWrapper = this.a;
     if (localDoraemonApiWrapper != null)
     {
       localDoraemonApiWrapper.release();
-      this.jdField_a_of_type_ComTencentQgSdkDoraemonDoraemonApiWrapper = null;
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.qq.GameDemoFragment
  * JD-Core Version:    0.7.0.1
  */

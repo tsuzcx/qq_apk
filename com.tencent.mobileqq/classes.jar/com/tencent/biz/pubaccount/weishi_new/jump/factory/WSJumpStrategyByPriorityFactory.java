@@ -7,6 +7,7 @@ import com.tencent.biz.pubaccount.weishi_new.jump.IWSStSchemaJumpFactor;
 import com.tencent.biz.pubaccount.weishi_new.jump.WSClientJumpStrategy;
 import com.tencent.biz.pubaccount.weishi_new.jump.WSDownloadAppStrategy;
 import com.tencent.biz.pubaccount.weishi_new.jump.WSMiniAppJumpStrategy;
+import com.tencent.biz.pubaccount.weishi_new.jump.WSQQSchemeJumpStrategy;
 import com.tencent.biz.pubaccount.weishi_new.jump.WSWebJumpStrategy;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
@@ -18,17 +19,20 @@ public class WSJumpStrategyByPriorityFactory
   public AbsWSJump a(IWSStSchemaJumpFactor paramIWSStSchemaJumpFactor)
   {
     boolean bool = WeishiGuideUtils.a(BaseApplicationImpl.getContext());
-    if ((bool) && (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.a().schema))) {
+    if (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.b().qqSchema)) {
+      return new WSQQSchemeJumpStrategy(paramIWSStSchemaJumpFactor);
+    }
+    if ((bool) && (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.b().schema))) {
       return new WSClientJumpStrategy(paramIWSStSchemaJumpFactor);
     }
-    if (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.a().miniAppSchema)) {
+    if (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.b().miniAppSchema)) {
       return new WSMiniAppJumpStrategy(paramIWSStSchemaJumpFactor);
     }
-    if (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.a().H5Url))
+    if (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.b().H5Url))
     {
-      String str = paramIWSStSchemaJumpFactor.a().schema;
-      if ((paramIWSStSchemaJumpFactor.b()) && (!TextUtils.isEmpty(str)) && (!bool)) {
-        WeishiUtils.a(str);
+      String str = paramIWSStSchemaJumpFactor.b().schema;
+      if ((paramIWSStSchemaJumpFactor.e()) && (!TextUtils.isEmpty(str)) && (!bool)) {
+        WeishiUtils.e(str);
       }
       return new WSWebJumpStrategy(paramIWSStSchemaJumpFactor);
     }
@@ -40,7 +44,7 @@ public class WSJumpStrategyByPriorityFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.jump.factory.WSJumpStrategyByPriorityFactory
  * JD-Core Version:    0.7.0.1
  */

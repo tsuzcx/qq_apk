@@ -13,9 +13,9 @@ public class ReadInJoyWechatSimpleVideoCell
   {
     JSONObject localJSONObject = new JSONObject();
     Util.c(paramAbsBaseArticleInfo, localJSONObject);
-    Util.ae(paramAbsBaseArticleInfo, localJSONObject);
+    Util.af(paramAbsBaseArticleInfo, localJSONObject);
     Util.a(paramAbsBaseArticleInfo, localJSONObject, false);
-    Util.n(paramAbsBaseArticleInfo, localJSONObject);
+    Util.o(paramAbsBaseArticleInfo, localJSONObject);
     Util.g(paramAbsBaseArticleInfo, localJSONObject);
     localJSONObject.put("style_ID", "ReadInjoy_wechat_simple_video_cell");
     localJSONObject.put("video_id", paramAbsBaseArticleInfo.getVideoVid());
@@ -28,8 +28,8 @@ public class ReadInJoyWechatSimpleVideoCell
     }
     localJSONObject.put("video_cover_image_url", str);
     localJSONObject.put("dt_pgid", "14");
-    Util.aq(paramAbsBaseArticleInfo, localJSONObject);
-    Util.G(paramAbsBaseArticleInfo, localJSONObject);
+    Util.ar(paramAbsBaseArticleInfo, localJSONObject);
+    Util.H(paramAbsBaseArticleInfo, localJSONObject);
     Util.a(localJSONObject, paramAbsBaseArticleInfo);
     a(paramAbsBaseArticleInfo, localJSONObject);
     return localJSONObject;
@@ -37,12 +37,12 @@ public class ReadInJoyWechatSimpleVideoCell
   
   private static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
   {
-    if (!Util.e(paramAbsBaseArticleInfo)) {
+    if (!Util.f(paramAbsBaseArticleInfo)) {
       return;
     }
     try
     {
-      Util.ap(paramAbsBaseArticleInfo, paramJSONObject);
+      Util.aq(paramAbsBaseArticleInfo, paramJSONObject);
       Util.d(paramAbsBaseArticleInfo, paramJSONObject);
       Util.b(paramAbsBaseArticleInfo, paramJSONObject);
     }
@@ -60,7 +60,7 @@ public class ReadInJoyWechatSimpleVideoCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.data.ReadInJoyWechatSimpleVideoCell
  * JD-Core Version:    0.7.0.1
  */

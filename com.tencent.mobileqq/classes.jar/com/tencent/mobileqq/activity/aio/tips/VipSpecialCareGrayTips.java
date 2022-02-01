@@ -28,36 +28,36 @@ import mqq.os.MqqHandler;
 public class VipSpecialCareGrayTips
   implements GrayTipsTask, Runnable
 {
-  private final int jdField_a_of_type_Int = 30;
-  private final long jdField_a_of_type_Long = 604800000L;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private Time jdField_a_of_type_AndroidTextFormatTime;
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean = false;
-  private final int b = 20;
-  private final int c = 2;
+  private final long a = 604800000L;
+  private final int b = 30;
+  private final int c = 20;
+  private final int d = 2;
+  private QQAppInterface e;
+  private TipsManager f;
+  private BaseSessionInfo g;
+  private Time h;
+  private boolean i = false;
+  private SharedPreferences j;
   
   public VipSpecialCareGrayTips(QQAppInterface paramQQAppInterface, TipsManager paramTipsManager, Activity paramActivity, BaseSessionInfo paramBaseSessionInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplication.getContext().getSharedPreferences("free_call", 0);
+    this.e = paramQQAppInterface;
+    this.f = paramTipsManager;
+    this.g = paramBaseSessionInfo;
+    this.j = BaseApplication.getContext().getSharedPreferences("free_call", 0);
   }
   
   private boolean a()
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    SharedPreferences localSharedPreferences = this.e.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e.getCurrentAccountUin());
+    localStringBuilder.append(this.g.b);
     if (!QvipSpecialCareUtil.a(localStringBuilder.toString()))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("specialcare_already_set");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.g.b);
       if (!localSharedPreferences.getBoolean(localStringBuilder.toString(), false)) {
         return false;
       }
@@ -69,63 +69,63 @@ public class VipSpecialCareGrayTips
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_specialcare_tips_count_");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.e.getCurrentAccountUin());
     localStringBuilder.append("_");
     localStringBuilder.append(paramString);
     paramString = localStringBuilder.toString();
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, 0) >= 2;
+    return this.j.getInt(paramString, 0) >= 2;
   }
   
-  private boolean b()
+  private boolean d()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("key_specialcare_gray_tips_");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject).append(this.e.getCurrentAccountUin());
     ((StringBuilder)localObject).append("_");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.g.b);
     localObject = ((StringBuilder)localObject).toString();
-    localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString((String)localObject, "");
-    long l1 = MessageCache.a() * 1000L;
+    localObject = this.j.getString((String)localObject, "");
+    long l1 = MessageCache.c() * 1000L;
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
-        this.jdField_a_of_type_AndroidTextFormatTime = new Time();
+      if (this.h == null) {
+        this.h = new Time();
       }
-      this.jdField_a_of_type_AndroidTextFormatTime.set(l1);
-      int i = this.jdField_a_of_type_AndroidTextFormatTime.year;
-      int j = this.jdField_a_of_type_AndroidTextFormatTime.month;
-      int k = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-      int m = this.jdField_a_of_type_AndroidTextFormatTime.hour;
+      this.h.set(l1);
+      int k = this.h.year;
+      int m = this.h.month;
+      int n = this.h.monthDay;
+      int i1 = this.h.hour;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("curDate :");
-        localStringBuilder.append(i);
-        localStringBuilder.append(" - ");
-        localStringBuilder.append(j);
-        localStringBuilder.append(" - ");
         localStringBuilder.append(k);
         localStringBuilder.append(" - ");
         localStringBuilder.append(m);
+        localStringBuilder.append(" - ");
+        localStringBuilder.append(n);
+        localStringBuilder.append(" - ");
+        localStringBuilder.append(i1);
         QLog.d("VipSpecialCareGrayTips", 2, localStringBuilder.toString());
       }
       long l2 = Long.parseLong((String)localObject);
-      this.jdField_a_of_type_AndroidTextFormatTime.set(l2);
-      i = this.jdField_a_of_type_AndroidTextFormatTime.year;
-      j = this.jdField_a_of_type_AndroidTextFormatTime.month;
-      k = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-      m = this.jdField_a_of_type_AndroidTextFormatTime.hour;
+      this.h.set(l2);
+      k = this.h.year;
+      m = this.h.month;
+      n = this.h.monthDay;
+      i1 = this.h.hour;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("lastShowDate :");
-        ((StringBuilder)localObject).append(i);
-        ((StringBuilder)localObject).append(" - ");
-        ((StringBuilder)localObject).append(j);
-        ((StringBuilder)localObject).append(" - ");
         ((StringBuilder)localObject).append(k);
         ((StringBuilder)localObject).append(" - ");
         ((StringBuilder)localObject).append(m);
+        ((StringBuilder)localObject).append(" - ");
+        ((StringBuilder)localObject).append(n);
+        ((StringBuilder)localObject).append(" - ");
+        ((StringBuilder)localObject).append(i1);
         QLog.d("VipSpecialCareGrayTips", 2, ((StringBuilder)localObject).toString());
       }
       if (l1 - l2 <= 604800000L)
@@ -139,12 +139,12 @@ public class VipSpecialCareGrayTips
     return true;
   }
   
-  private boolean c()
+  private boolean e()
   {
-    if ((b()) && (!a()) && (!a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString)))
+    if ((d()) && (!a()) && (!a(this.g.b)))
     {
       long l = System.currentTimeMillis() / 1000L;
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
+      Object localObject1 = this.e.getMessageFacade().h(this.g.b, this.g.a);
       if (localObject1 == null)
       {
         if (QLog.isColorLevel()) {
@@ -153,34 +153,34 @@ public class VipSpecialCareGrayTips
         return false;
       }
       localObject1 = ((List)localObject1).iterator();
-      int k = 0;
-      int i2 = 0;
-      int i5;
-      for (int i = 0; ((Iterator)localObject1).hasNext(); i = i5)
+      int n = 0;
+      int i4 = 0;
+      int i7;
+      for (int k = 0; ((Iterator)localObject1).hasNext(); k = i7)
       {
         Object localObject2 = (MessageRecord)((Iterator)localObject1).next();
-        int i3 = k;
-        int i4 = i2;
-        i5 = i;
+        int i5 = n;
+        int i6 = i4;
+        i7 = k;
         if (((MessageRecord)localObject2).time >= l - 86400L)
         {
-          i3 = k;
-          i4 = i2;
-          i5 = i;
+          i5 = n;
+          i6 = i4;
+          i7 = k;
           if (((MessageRecord)localObject2).time <= l)
           {
-            int j = k;
+            int m = n;
             if (((MessageRecord)localObject2).isSend())
             {
-              j = k;
+              m = n;
               if (((MessageRecord)localObject2).msgtype == -1000)
               {
-                j = k;
-                if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b((MessageRecord)localObject2))
+                m = n;
+                if (!this.e.getMsgCache().f((MessageRecord)localObject2))
                 {
-                  j = k;
+                  m = n;
                   if (((MessageRecord)localObject2).extraflag != 32768) {
-                    j = k + 1;
+                    m = n + 1;
                   }
                 }
               }
@@ -189,95 +189,95 @@ public class VipSpecialCareGrayTips
             {
               if (((MessageRecord)localObject2).isSend())
               {
-                i3 = j;
-                i4 = i2;
-                i5 = i;
-                if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b((MessageRecord)localObject2))
+                i5 = m;
+                i6 = i4;
+                i7 = k;
+                if (!this.e.getMsgCache().f((MessageRecord)localObject2))
                 {
-                  i3 = j;
-                  i4 = i2;
-                  i5 = i;
+                  i5 = m;
+                  i6 = i4;
+                  i7 = k;
                   if (((MessageRecord)localObject2).extraflag == 32768) {}
                 }
               }
               else
               {
-                i4 = i2 + 1;
-                i3 = j;
-                i5 = i;
+                i6 = i4 + 1;
+                i5 = m;
+                i7 = k;
               }
             }
             else
             {
-              i3 = j;
-              i4 = i2;
-              i5 = i;
+              i5 = m;
+              i6 = i4;
+              i7 = k;
               if (((MessageRecord)localObject2).msgtype == -2009)
               {
-                i3 = j;
-                i4 = i2;
-                i5 = i;
+                i5 = m;
+                i6 = i4;
+                i7 = k;
                 if ((localObject2 instanceof MessageForVideo))
                 {
                   localObject2 = (MessageForVideo)localObject2;
                   ((MessageForVideo)localObject2).parse();
-                  i3 = j;
-                  i4 = i2;
-                  i5 = i;
+                  i5 = m;
+                  i6 = i4;
+                  i7 = k;
                   if (((MessageForVideo)localObject2).text != null)
                   {
-                    i3 = j;
-                    i4 = i2;
-                    i5 = i;
-                    if (((MessageForVideo)localObject2).text.contains(BaseApplicationImpl.getApplication().getResources().getString(2131720243)))
+                    i5 = m;
+                    i6 = i4;
+                    i7 = k;
+                    if (((MessageForVideo)localObject2).text.contains(BaseApplicationImpl.getApplication().getResources().getString(2131917877)))
                     {
-                      localObject2 = UITools.a(((MessageForVideo)localObject2).text);
-                      int m;
-                      int n;
+                      localObject2 = UITools.b(((MessageForVideo)localObject2).text);
+                      int i1;
+                      int i2;
                       if ((localObject2 != null) && (localObject2.length == 3))
                       {
-                        m = Integer.valueOf(localObject2[0]).intValue();
-                        n = Integer.valueOf(localObject2[1]).intValue();
-                        k = Integer.valueOf(localObject2[2]).intValue();
+                        i1 = Integer.valueOf(localObject2[0]).intValue();
+                        i2 = Integer.valueOf(localObject2[1]).intValue();
+                        n = Integer.valueOf(localObject2[2]).intValue();
                       }
                       else if ((localObject2 != null) && (localObject2.length == 2))
                       {
-                        n = Integer.valueOf(localObject2[0]).intValue();
-                        k = Integer.valueOf(localObject2[1]).intValue();
-                        m = 0;
+                        i2 = Integer.valueOf(localObject2[0]).intValue();
+                        n = Integer.valueOf(localObject2[1]).intValue();
+                        i1 = 0;
                       }
                       else
                       {
-                        k = 0;
-                        m = 0;
                         n = 0;
+                        i1 = 0;
+                        i2 = 0;
                       }
-                      int i1;
-                      if (m <= 0)
+                      int i3;
+                      if (i1 <= 0)
                       {
-                        i1 = i;
-                        if (n < 10) {}
+                        i3 = k;
+                        if (i2 < 10) {}
                       }
                       else
                       {
-                        i1 = i + 1;
+                        i3 = k + 1;
                       }
-                      i3 = j;
-                      i4 = i2;
-                      i5 = i1;
+                      i5 = m;
+                      i6 = i4;
+                      i7 = i3;
                       if (QLog.isColorLevel())
                       {
                         localObject2 = new StringBuilder();
                         ((StringBuilder)localObject2).append("video msg,hour=");
-                        ((StringBuilder)localObject2).append(m);
+                        ((StringBuilder)localObject2).append(i1);
                         ((StringBuilder)localObject2).append(",minute=");
-                        ((StringBuilder)localObject2).append(n);
+                        ((StringBuilder)localObject2).append(i2);
                         ((StringBuilder)localObject2).append(",second=");
-                        ((StringBuilder)localObject2).append(k);
+                        ((StringBuilder)localObject2).append(n);
                         QLog.d("VipSpecialCareGrayTips", 2, ((StringBuilder)localObject2).toString());
-                        i5 = i1;
-                        i4 = i2;
-                        i3 = j;
+                        i7 = i3;
+                        i6 = i4;
+                        i5 = m;
                       }
                     }
                   }
@@ -286,51 +286,51 @@ public class VipSpecialCareGrayTips
             }
           }
         }
-        if (i3 > 30)
+        if (i5 > 30)
         {
           if (QLog.isColorLevel())
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("sendMsgCount>30. shouldShowTips=true , count=");
-            ((StringBuilder)localObject1).append(i3);
-            QLog.d("VipSpecialCareGrayTips", 2, ((StringBuilder)localObject1).toString());
-          }
-          return true;
-        }
-        if (i4 > 20)
-        {
-          if (QLog.isColorLevel())
-          {
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("pttMsgCount>20. shouldShowTips=true , count=");
-            ((StringBuilder)localObject1).append(i4);
-            QLog.d("VipSpecialCareGrayTips", 2, ((StringBuilder)localObject1).toString());
-          }
-          return true;
-        }
-        if (i5 > 2)
-        {
-          if (QLog.isColorLevel())
-          {
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("longVideoMsgCount>2. shouldShowTips=true , count=");
             ((StringBuilder)localObject1).append(i5);
             QLog.d("VipSpecialCareGrayTips", 2, ((StringBuilder)localObject1).toString());
           }
           return true;
         }
-        k = i3;
-        i2 = i4;
+        if (i6 > 20)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("pttMsgCount>20. shouldShowTips=true , count=");
+            ((StringBuilder)localObject1).append(i6);
+            QLog.d("VipSpecialCareGrayTips", 2, ((StringBuilder)localObject1).toString());
+          }
+          return true;
+        }
+        if (i7 > 2)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("longVideoMsgCount>2. shouldShowTips=true , count=");
+            ((StringBuilder)localObject1).append(i7);
+            QLog.d("VipSpecialCareGrayTips", 2, ((StringBuilder)localObject1).toString());
+          }
+          return true;
+        }
+        n = i5;
+        i4 = i6;
       }
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("shouldShowTips=false , sendMsgCount=");
-        ((StringBuilder)localObject1).append(k);
+        ((StringBuilder)localObject1).append(n);
         ((StringBuilder)localObject1).append(", pttMsgCount=");
-        ((StringBuilder)localObject1).append(i2);
+        ((StringBuilder)localObject1).append(i4);
         ((StringBuilder)localObject1).append(", longVideoMsgCount=");
-        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(k);
         QLog.d("VipSpecialCareGrayTips", 2, ((StringBuilder)localObject1).toString());
       }
       return false;
@@ -338,19 +338,9 @@ public class VipSpecialCareGrayTips
     return false;
   }
   
-  public MessageRecord a(Object... paramVarArgs)
-  {
-    paramVarArgs = MessageRecordFactory.a(-5005);
-    long l = MessageCache.a();
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, str, "", l, -5005, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, l);
-    paramVarArgs.isread = true;
-    return paramVarArgs;
-  }
-  
   public void a(int paramInt, Object... paramVarArgs)
   {
-    if ((UinTypeUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 0))
+    if ((UinTypeUtil.b(this.g.a)) && (this.g.a == 0))
     {
       if (paramInt != 1001) {
         return;
@@ -359,9 +349,14 @@ public class VipSpecialCareGrayTips
     }
   }
   
-  public int[] a()
+  public MessageRecord a_(Object... paramVarArgs)
   {
-    return null;
+    paramVarArgs = MessageRecordFactory.a(-5005);
+    long l = MessageCache.c();
+    String str = this.e.getCurrentAccountUin();
+    paramVarArgs.init(str, this.g.b, str, "", l, -5005, this.g.a, l);
+    paramVarArgs.isread = true;
+    return paramVarArgs;
   }
   
   public int b()
@@ -369,16 +364,21 @@ public class VipSpecialCareGrayTips
     return 2001;
   }
   
+  public int[] c()
+  {
+    return null;
+  }
+  
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("VipSpecialCareGrayTips", 2, ".....run......");
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = true;
+    if (!this.i) {
+      this.i = true;
     }
     long l1 = System.currentTimeMillis();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, true);
+    Object localObject1 = this.e.getMessageFacade().b(this.g.b, this.g.a, true);
     long l2 = System.currentTimeMillis();
     Object localObject2;
     if (QLog.isColorLevel())
@@ -396,31 +396,31 @@ public class VipSpecialCareGrayTips
       }
       return;
     }
-    if ((c()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0])))
+    if ((e()) && (this.f.a(this, new Object[0])))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("key_specialcare_gray_tips_");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject1).append(this.e.getCurrentAccountUin());
       ((StringBuilder)localObject1).append("_");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.g.b);
       localObject2 = ((StringBuilder)localObject1).toString();
-      localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      ((SharedPreferences.Editor)localObject1).putString((String)localObject2, String.valueOf(MessageCache.a() * 1000L));
+      localObject1 = this.j.edit();
+      ((SharedPreferences.Editor)localObject1).putString((String)localObject2, String.valueOf(MessageCache.c() * 1000L));
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("key_specialcare_tips_count_");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject2).append(this.e.getCurrentAccountUin());
       ((StringBuilder)localObject2).append("_");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.g.b);
       localObject2 = ((StringBuilder)localObject2).toString();
-      ((SharedPreferences.Editor)localObject1).putInt((String)localObject2, this.jdField_a_of_type_AndroidContentSharedPreferences.getInt((String)localObject2, 0) + 1);
+      ((SharedPreferences.Editor)localObject1).putInt((String)localObject2, this.j.getInt((String)localObject2, 0) + 1);
       ((SharedPreferences.Editor)localObject1).commit();
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Vip_SpecialRemind", "0X8005056", "0X8005056", 0, 1, new String[0]);
+      VipUtils.a(this.e, "Vip_SpecialRemind", "0X8005056", "0X8005056", 0, 1, new String[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.VipSpecialCareGrayTips
  * JD-Core Version:    0.7.0.1
  */

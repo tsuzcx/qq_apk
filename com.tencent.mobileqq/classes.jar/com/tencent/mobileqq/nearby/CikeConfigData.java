@@ -10,20 +10,14 @@ import org.json.JSONObject;
 
 public class CikeConfigData
 {
-  public String a;
-  private boolean a;
+  public String a = "";
   public String b = "";
   public String c = "";
   public String d = "";
   public String e = "";
   public String f = "";
   public String g = "";
-  
-  public CikeConfigData()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-  }
+  private boolean h = false;
   
   public static CikeConfigData a(Context paramContext, String paramString, int paramInt)
   {
@@ -59,17 +53,17 @@ public class CikeConfigData
     if (paramJSONObject != null)
     {
       CikeConfigData localCikeConfigData = new CikeConfigData();
-      localCikeConfigData.jdField_a_of_type_JavaLangString = paramJSONObject.optString("iconurl");
+      localCikeConfigData.a = paramJSONObject.optString("iconurl");
       localCikeConfigData.b = paramJSONObject.optString("title_text");
       if (a(paramContext))
       {
-        localCikeConfigData.jdField_a_of_type_Boolean = true;
+        localCikeConfigData.h = true;
         localCikeConfigData.c = paramJSONObject.optString("download_installapp_text");
         localCikeConfigData.d = paramJSONObject.optString("jump_app_scheme");
       }
       else
       {
-        localCikeConfigData.jdField_a_of_type_Boolean = false;
+        localCikeConfigData.h = false;
         localCikeConfigData.c = paramJSONObject.optString("download_text");
         localCikeConfigData.d = paramJSONObject.optString("download_url_android");
       }
@@ -87,7 +81,7 @@ public class CikeConfigData
   
   public void a(long paramLong)
   {
-    if ((this.jdField_a_of_type_Boolean) && (paramLong != 0L) && (!TextUtils.isEmpty(this.d)))
+    if ((this.h) && (paramLong != 0L) && (!TextUtils.isEmpty(this.d)))
     {
       if (this.d.contains("?"))
       {
@@ -110,7 +104,7 @@ public class CikeConfigData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("imageUrl:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" titleTxt:");
     localStringBuilder.append(this.b);
     localStringBuilder.append(" btnTxt:");
@@ -128,7 +122,7 @@ public class CikeConfigData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.CikeConfigData
  * JD-Core Version:    0.7.0.1
  */

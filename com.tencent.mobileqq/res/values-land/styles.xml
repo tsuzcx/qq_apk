@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="a8i" parent="@style/4f">
+        <item name="aiq">as_</item>
+        <item name="aj1">lhu</item>
+    </style>
+    <style name="a_b" parent="@style/a85">
+        <item name="android:textAppearance">?ajr</item>
+        <item name="android:textColor">?76</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">@integer/as</item>
+    </style>
+</resources>

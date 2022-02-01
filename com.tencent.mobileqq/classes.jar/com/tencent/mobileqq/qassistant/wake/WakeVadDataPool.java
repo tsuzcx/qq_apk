@@ -12,64 +12,64 @@ import java.util.Set;
 
 public class WakeVadDataPool
 {
-  private final int jdField_a_of_type_Int = 20;
-  private VadHelper jdField_a_of_type_ComTencentMobileqqUtilsVadHelper;
-  private Queue<byte[]> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private Set<byte[]> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private final int jdField_b_of_type_Int = 7;
-  private Queue<byte[]> jdField_b_of_type_JavaUtilQueue = new LinkedList();
-  private int c = 3;
-  private int d = 0;
+  private Queue<byte[]> a = new LinkedList();
+  private final int b = 20;
+  private final int c = 7;
+  private int d = 3;
+  private int e = 0;
+  private VadHelper f;
+  private Set<byte[]> g = new HashSet();
+  private Queue<byte[]> h = new LinkedList();
   
   public WakeVadDataPool()
   {
-    VadHelper localVadHelper = this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper;
+    VadHelper localVadHelper = this.f;
     if ((localVadHelper == null) || (localVadHelper.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper = new VadHelper();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper.c();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper.a();
+      this.f = new VadHelper();
+      this.f.c();
+      this.f.a();
     }
   }
   
-  private void a(byte[] paramArrayOfByte)
+  private void b(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte != null) {}
     try
     {
-      this.jdField_b_of_type_JavaUtilQueue.offer(paramArrayOfByte);
-      this.jdField_a_of_type_JavaUtilSet.remove(paramArrayOfByte);
+      this.h.offer(paramArrayOfByte);
+      this.g.remove(paramArrayOfByte);
     }
     finally {}
   }
   
-  private byte[] a()
+  private byte[] b()
   {
     try
     {
       byte[] arrayOfByte;
-      if (this.jdField_b_of_type_JavaUtilQueue.isEmpty()) {
+      if (this.h.isEmpty()) {
         arrayOfByte = new byte[3200];
       } else {
-        arrayOfByte = (byte[])this.jdField_b_of_type_JavaUtilQueue.poll();
+        arrayOfByte = (byte[])this.h.poll();
       }
-      this.jdField_a_of_type_JavaUtilSet.add(arrayOfByte);
+      this.g.add(arrayOfByte);
       return arrayOfByte;
     }
     finally {}
   }
   
-  private void b()
+  private void c()
   {
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      Iterator localIterator = this.g.iterator();
       while (localIterator.hasNext())
       {
         byte[] arrayOfByte = (byte[])localIterator.next();
-        this.jdField_b_of_type_JavaUtilQueue.offer(arrayOfByte);
+        this.h.offer(arrayOfByte);
       }
-      this.jdField_a_of_type_JavaUtilSet.clear();
+      this.g.clear();
       return;
     }
     finally {}
@@ -79,19 +79,19 @@ public class WakeVadDataPool
     }
   }
   
-  private void b(byte[] paramArrayOfByte)
+  private void c(byte[] paramArrayOfByte)
   {
-    byte[] arrayOfByte = a();
+    byte[] arrayOfByte = b();
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramArrayOfByte.length);
-    if (this.jdField_a_of_type_JavaUtilQueue.size() > 7) {
-      a((byte[])this.jdField_a_of_type_JavaUtilQueue.poll());
+    if (this.a.size() > 7) {
+      b((byte[])this.a.poll());
     }
-    this.jdField_a_of_type_JavaUtilQueue.offer(arrayOfByte);
+    this.a.offer(arrayOfByte);
   }
   
   public ArrayList<byte[]> a(byte[] paramArrayOfByte)
   {
-    WXVadData localWXVadData = this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper.a(paramArrayOfByte);
+    WXVadData localWXVadData = this.f.a(paramArrayOfByte);
     ArrayList localArrayList = new ArrayList();
     if (localWXVadData == null)
     {
@@ -99,21 +99,21 @@ public class WakeVadDataPool
       localArrayList.add(paramArrayOfByte);
       return localArrayList;
     }
-    int i = this.c;
+    int i = this.d;
     if (localWXVadData.RET_STATE == 2)
     {
-      this.c = 2;
+      this.d = 2;
       if (i != 1)
       {
         if (i == 3) {
-          this.d = 0;
+          this.e = 0;
         }
       }
       else
       {
-        localArrayList.addAll(this.jdField_a_of_type_JavaUtilQueue);
-        this.jdField_a_of_type_JavaUtilQueue.clear();
-        b();
+        localArrayList.addAll(this.a);
+        this.a.clear();
+        c();
       }
       localArrayList.add(paramArrayOfByte);
     }
@@ -123,41 +123,41 @@ public class WakeVadDataPool
       {
         if (i == 3)
         {
-          int j = this.d;
+          int j = this.e;
           if (j > 20)
           {
-            this.d = 0;
-            this.c = 1;
-            this.jdField_a_of_type_JavaUtilQueue.clear();
-            b(paramArrayOfByte);
+            this.e = 0;
+            this.d = 1;
+            this.a.clear();
+            c(paramArrayOfByte);
           }
           else
           {
-            this.d = (j + 1);
+            this.e = (j + 1);
             localArrayList.add(paramArrayOfByte);
           }
         }
       }
       else
       {
-        this.c = 3;
-        this.d = 1;
+        this.d = 3;
+        this.e = 1;
         localArrayList.add(paramArrayOfByte);
       }
     }
     else
     {
-      b(paramArrayOfByte);
+      c(paramArrayOfByte);
     }
     paramArrayOfByte = new StringBuilder();
     paramArrayOfByte.append("status：");
-    paramArrayOfByte.append(this.c);
+    paramArrayOfByte.append(this.d);
     paramArrayOfByte.append(",preStatus:");
     paramArrayOfByte.append(i);
     paramArrayOfByte.append(",nextCount:");
-    paramArrayOfByte.append(this.d);
+    paramArrayOfByte.append(this.e);
     paramArrayOfByte.append(",onlinePreData.size:");
-    paramArrayOfByte.append(this.jdField_a_of_type_JavaUtilQueue.size());
+    paramArrayOfByte.append(this.a.size());
     paramArrayOfByte.append(",outData.size:");
     paramArrayOfByte.append(localArrayList.size());
     AssistantUtils.a("HelloQQWake", paramArrayOfByte.toString());
@@ -166,7 +166,7 @@ public class WakeVadDataPool
   
   public void a()
   {
-    VadHelper localVadHelper = this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper;
+    VadHelper localVadHelper = this.f;
     if (localVadHelper != null) {
       localVadHelper.a();
     }
@@ -174,7 +174,7 @@ public class WakeVadDataPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.WakeVadDataPool
  * JD-Core Version:    0.7.0.1
  */

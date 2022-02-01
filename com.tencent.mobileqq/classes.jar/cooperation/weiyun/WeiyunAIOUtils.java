@@ -98,7 +98,7 @@ public class WeiyunAIOUtils
       paramList = TroopFileUtils.a(paramQQAppInterface, (MessageForTroopFile)paramList);
       if (paramList != null)
       {
-        if (paramList.e == null) {
+        if (paramList.r == null) {
           return false;
         }
         TroopFileUtils.a(paramActivity, paramQQAppInterface, localArrayList1);
@@ -116,10 +116,10 @@ public class WeiyunAIOUtils
     }
     if (bool)
     {
-      QQToast.a(paramQQAppInterface.getApp(), 2131692690, 0).b(paramInt);
+      QQToast.makeText(paramQQAppInterface.getApp(), 2131889761, 0).show(paramInt);
       return true;
     }
-    QQToast.a(paramQQAppInterface.getApp(), 2131692743, 0).b(paramInt);
+    QQToast.makeText(paramQQAppInterface.getApp(), 2131889814, 0).show(paramInt);
     return false;
   }
   
@@ -128,13 +128,13 @@ public class WeiyunAIOUtils
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80067F8", "0X80067F8", 0, 0, "", "", "", "");
     if (!NetworkUtil.isNetSupport(paramActivity))
     {
-      QQToast.a(paramQQAppInterface.getApp(), 2131692183, 0).b(paramInt);
+      QQToast.makeText(paramQQAppInterface.getApp(), 2131889169, 0).show(paramInt);
       return false;
     }
-    List localList = MultiMsgManager.a().a();
+    List localList = MultiMsgManager.a().i();
     if (localList.size() == 0)
     {
-      QQToast.a(paramQQAppInterface.getApp(), 2131698523, 0).b(paramInt);
+      QQToast.makeText(paramQQAppInterface.getApp(), 2131896469, 0).show(paramInt);
       return false;
     }
     if (localList.size() == 1) {
@@ -164,15 +164,15 @@ public class WeiyunAIOUtils
             if (!AbsStructMsgItem.class.isInstance(localObject1)) {
               break;
             }
-            localObject1 = ((AbsStructMsgItem)localObject1).a.iterator();
+            localObject1 = ((AbsStructMsgItem)localObject1).ax.iterator();
             while (((Iterator)localObject1).hasNext())
             {
               Object localObject2 = (AbsStructMsgElement)((Iterator)localObject1).next();
               if (StructMsgItemImage.class.isInstance(localObject2))
               {
                 localObject2 = (StructMsgItemImage)localObject2;
-                if ((!a(((StructMsgItemImage)localObject2).a)) && (!ZhituManager.a(((StructMsgItemImage)localObject2).a))) {
-                  localArrayList.add(((StructMsgItemImage)localObject2).a);
+                if ((!a(((StructMsgItemImage)localObject2).aF)) && (!ZhituManager.a(((StructMsgItemImage)localObject2).aF))) {
+                  localArrayList.add(((StructMsgItemImage)localObject2).aF);
                 }
               }
             }
@@ -193,7 +193,7 @@ public class WeiyunAIOUtils
       if ((localArrayList.size() == 0) && ((paramArrayList1 == null) || (paramArrayList1.size() == 0))) {
         return false;
       }
-      paramQQAppInterface.getFileManagerEngine().a().a(localArrayList, paramArrayList1, new WeiyunAIOUtils.WeiyunCallbackImpl(paramMqqHandler, paramQQAppInterface.getApp(), paramQQAppInterface, paramInt));
+      paramQQAppInterface.getFileManagerEngine().d().a(localArrayList, paramArrayList1, new WeiyunAIOUtils.WeiyunCallbackImpl(paramMqqHandler, paramQQAppInterface.getApp(), paramQQAppInterface, paramInt));
       return true;
     }
     return false;
@@ -221,7 +221,7 @@ public class WeiyunAIOUtils
       localObject1 = (MessageForDLFile)localIterator.next();
       int i = ((MessageForDLFile)localObject1).deviceType;
       long l2 = ((MessageForDLFile)localObject1).associatedId;
-      localObject2 = paramQQAppInterface.getMessageFacade().a(i).a(l2);
+      localObject2 = paramQQAppInterface.getMessageFacade().d(i).a(l2);
       if (FileUtils.fileExistsAndNotEmpty(((DataLineMsgRecord)localObject2).path))
       {
         l1 += ((DataLineMsgRecord)localObject2).filesize;
@@ -230,12 +230,12 @@ public class WeiyunAIOUtils
     }
     if ((paramList.size() + paramList1.size() > 0) && (localArrayList.size() == 0))
     {
-      FMToastUtil.a(2131692557);
+      FMToastUtil.a(2131889580);
       return false;
     }
-    if ((FileManagerUtil.a()) && (l1 > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
+    if ((FileManagerUtil.b()) && (l1 > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
     {
-      FMDialogUtil.a(BaseActivity.sTopActivity, 2131692561, 2131692566, new WeiyunAIOUtils.4(paramQQAppInterface, paramList, paramList1, paramArrayList, paramArrayList1, paramArrayList2, paramMqqHandler, paramInt));
+      FMDialogUtil.a(BaseActivity.sTopActivity, 2131889584, 2131889589, new WeiyunAIOUtils.4(paramQQAppInterface, paramList, paramList1, paramArrayList, paramArrayList1, paramArrayList2, paramMqqHandler, paramInt));
       return false;
     }
     return b(paramQQAppInterface, paramList, paramList1, paramArrayList, paramArrayList1, paramArrayList2, paramMqqHandler, paramInt);
@@ -248,10 +248,10 @@ public class WeiyunAIOUtils
   
   private static void b(QQAppInterface paramQQAppInterface, Activity paramActivity, DataLineMsgRecord paramDataLineMsgRecord)
   {
-    if ((FileManagerUtil.a()) && (paramDataLineMsgRecord.filesize > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
+    if ((FileManagerUtil.b()) && (paramDataLineMsgRecord.filesize > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
     {
       if (FreeWifiHelper.a(paramActivity, 5, new WeiyunAIOUtils.5(paramQQAppInterface, paramActivity, paramDataLineMsgRecord))) {
-        FMDialogUtil.a(paramActivity, 2131692561, 2131692564, new WeiyunAIOUtils.6(paramQQAppInterface, paramActivity, paramDataLineMsgRecord));
+        FMDialogUtil.a(paramActivity, 2131889584, 2131889587, new WeiyunAIOUtils.6(paramQQAppInterface, paramActivity, paramDataLineMsgRecord));
       }
     }
     else {
@@ -273,18 +273,18 @@ public class WeiyunAIOUtils
       paramMqqHandler = FileManagerUtil.a(paramQQAppInterface, paramActivity);
       if (paramMqqHandler.cloudType == 0)
       {
-        FMToastUtil.a(2131692557);
+        FMToastUtil.a(2131889580);
         return false;
       }
       if (paramMqqHandler.status == 16)
       {
-        FMToastUtil.a(2131692717);
+        FMToastUtil.a(2131889788);
         return false;
       }
       if (FileModel.a(paramActivity).a(false))
       {
         if (FreeWifiHelper.a(BaseActivity.sTopActivity, 5, new WeiyunAIOUtils.1(paramQQAppInterface, paramList))) {
-          FMDialogUtil.a(BaseActivity.sTopActivity, 2131692561, 2131692564, new WeiyunAIOUtils.2(paramQQAppInterface, paramList));
+          FMDialogUtil.a(BaseActivity.sTopActivity, 2131889584, 2131889587, new WeiyunAIOUtils.2(paramQQAppInterface, paramList));
         }
       }
       else {
@@ -301,12 +301,12 @@ public class WeiyunAIOUtils
           paramList = (MessageForDLFile)paramList;
           paramInt = paramList.deviceType;
           long l = paramList.associatedId;
-          paramList = paramQQAppInterface.getMessageFacade().a(paramInt).a(l);
+          paramList = paramQQAppInterface.getMessageFacade().d(paramInt).a(l);
           if (paramList != null)
           {
             if (!FileUtils.fileExistsAndNotEmpty(paramList.path))
             {
-              FMToastUtil.a(2131692557);
+              FMToastUtil.a(2131889580);
               return false;
             }
             b(paramQQAppInterface, paramActivity, paramList);
@@ -322,15 +322,15 @@ public class WeiyunAIOUtils
             Object localObject1 = (AbsStructMsgElement)paramList.next();
             if (AbsStructMsgItem.class.isInstance(localObject1))
             {
-              localObject1 = ((AbsStructMsgItem)localObject1).a.iterator();
+              localObject1 = ((AbsStructMsgItem)localObject1).ax.iterator();
               while (((Iterator)localObject1).hasNext())
               {
                 Object localObject2 = (AbsStructMsgElement)((Iterator)localObject1).next();
                 if (StructMsgItemImage.class.isInstance(localObject2))
                 {
                   localObject2 = (StructMsgItemImage)localObject2;
-                  if (!a(((StructMsgItemImage)localObject2).a)) {
-                    paramActivity.add(((StructMsgItemImage)localObject2).a);
+                  if (!a(((StructMsgItemImage)localObject2).aF)) {
+                    paramActivity.add(((StructMsgItemImage)localObject2).aF);
                   }
                 }
               }
@@ -339,16 +339,16 @@ public class WeiyunAIOUtils
           if (paramActivity.size() > 0)
           {
             a(paramQQAppInterface, paramActivity, null, null, paramMqqHandler, paramInt);
-            QQToast.a(paramQQAppInterface.getApp(), 2131692690, 0).b(paramInt);
+            QQToast.makeText(paramQQAppInterface.getApp(), 2131889761, 0).show(paramInt);
           }
           else
           {
-            QQToast.a(paramQQAppInterface.getApp(), 2131692743, 0).b(paramInt);
+            QQToast.makeText(paramQQAppInterface.getApp(), 2131889814, 0).show(paramInt);
           }
         }
         else
         {
-          QQToast.a(paramQQAppInterface.getApp(), 2131692743, 0).b(paramInt);
+          QQToast.makeText(paramQQAppInterface.getApp(), 2131889814, 0).show(paramInt);
           return false;
         }
       }
@@ -356,19 +356,19 @@ public class WeiyunAIOUtils
       {
         if (a(paramList))
         {
-          FMToastUtil.a(2131692557);
+          FMToastUtil.a(2131889580);
           return false;
         }
         if ((bool) && (ZhituManager.a((MessageForPic)paramList)))
         {
-          FMToastUtil.a(2131692557);
+          FMToastUtil.a(2131889580);
           return false;
         }
-        paramQQAppInterface.getFileManagerEngine().a().a(paramList, new WeiyunAIOUtils.WeiyunCallbackImpl(paramMqqHandler, paramActivity, paramQQAppInterface, paramInt));
+        paramQQAppInterface.getFileManagerEngine().d().a(paramList, new WeiyunAIOUtils.WeiyunCallbackImpl(paramMqqHandler, paramActivity, paramQQAppInterface, paramInt));
         if (Looper.myLooper() != Looper.getMainLooper()) {
           ThreadManager.getUIHandler().post(new WeiyunAIOUtils.3(paramQQAppInterface, paramInt));
         } else {
-          QQToast.a(paramQQAppInterface.getApp(), 2131692690, 0).b(paramInt);
+          QQToast.makeText(paramQQAppInterface.getApp(), 2131889761, 0).show(paramInt);
         }
       }
     }
@@ -389,7 +389,7 @@ public class WeiyunAIOUtils
       paramList = (MessageForDLFile)paramList1.next();
       int i = paramList.deviceType;
       long l = paramList.associatedId;
-      DataLineMsgRecord localDataLineMsgRecord = paramQQAppInterface.getMessageFacade().a(i).a(l);
+      DataLineMsgRecord localDataLineMsgRecord = paramQQAppInterface.getMessageFacade().d(i).a(l);
       bool3 = FileUtils.fileExistsAndNotEmpty(localDataLineMsgRecord.path);
       if (bool3)
       {
@@ -400,11 +400,11 @@ public class WeiyunAIOUtils
         if (paramList == null)
         {
           localDataLineMsgRecord.nWeiyunSessionId = paramQQAppInterface.getFileManagerEngine().a(localDataLineMsgRecord.path, null, paramQQAppInterface.getAccount(), 0, false).nSessionId;
-          paramQQAppInterface.getMessageFacade().a(i).d(localDataLineMsgRecord.msgId);
+          paramQQAppInterface.getMessageFacade().d(i).f(localDataLineMsgRecord.msgId);
         }
         else
         {
-          paramQQAppInterface.getFileManagerEngine().a(localDataLineMsgRecord.nWeiyunSessionId);
+          paramQQAppInterface.getFileManagerEngine().b(localDataLineMsgRecord.nWeiyunSessionId);
         }
       }
       bool1 |= bool3;
@@ -427,23 +427,23 @@ public class WeiyunAIOUtils
     if (localObject == null)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(FileManagerUtil.c(paramDataLineMsgRecord.filename));
-      ((StringBuilder)localObject).append(paramActivity.getString(2131692688));
+      ((StringBuilder)localObject).append(FileManagerUtil.j(paramDataLineMsgRecord.filename));
+      ((StringBuilder)localObject).append(paramActivity.getString(2131889759));
       FMToastUtil.b(((StringBuilder)localObject).toString());
       paramDataLineMsgRecord.nWeiyunSessionId = paramQQAppInterface.getFileManagerEngine().a(paramDataLineMsgRecord.path, null, paramQQAppInterface.getAccount(), 0, false).nSessionId;
-      paramQQAppInterface.getMessageFacade().a(i).d(paramDataLineMsgRecord.msgId);
+      paramQQAppInterface.getMessageFacade().d(i).f(paramDataLineMsgRecord.msgId);
       return;
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(FileManagerUtil.c(paramDataLineMsgRecord.filename));
-    ((StringBuilder)localObject).append(paramActivity.getString(2131692688));
+    ((StringBuilder)localObject).append(FileManagerUtil.j(paramDataLineMsgRecord.filename));
+    ((StringBuilder)localObject).append(paramActivity.getString(2131889759));
     FMToastUtil.b(((StringBuilder)localObject).toString());
-    paramQQAppInterface.getFileManagerEngine().a(paramDataLineMsgRecord.nWeiyunSessionId);
+    paramQQAppInterface.getFileManagerEngine().b(paramDataLineMsgRecord.nWeiyunSessionId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.weiyun.WeiyunAIOUtils
  * JD-Core Version:    0.7.0.1
  */

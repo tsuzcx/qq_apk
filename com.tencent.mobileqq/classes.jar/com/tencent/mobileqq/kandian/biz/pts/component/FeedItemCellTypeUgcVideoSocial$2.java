@@ -13,13 +13,13 @@ class FeedItemCellTypeUgcVideoSocial$2
   
   public void onClick(View paramView)
   {
-    RIJJumpUtils.a(this.a.jdField_a_of_type_AndroidContentContext, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
-    RIJFrameworkReportManager.b(((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).c());
+    RIJJumpUtils.a(this.a.e, ((IReadInJoyModel)this.a.b).k(), 2, false, 2, false);
+    RIJFrameworkReportManager.b(((IReadInJoyModel)this.a.b).k(), ((IReadInJoyModel)this.a.b).m());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeUgcVideoSocial.2
  * JD-Core Version:    0.7.0.1
  */

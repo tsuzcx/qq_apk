@@ -28,6 +28,7 @@ public class Player
   private int bgColor = -16777216;
   private PlayerItem currentItem;
   private ErrorMsg errMsg;
+  private boolean ignorePreparePosition = false;
   private boolean loop = false;
   private AudioFocusHelper mAudioFocuser;
   private boolean mHasPostedSeek;
@@ -264,6 +265,11 @@ public class Player
     return true;
   }
   
+  public boolean isIgnorePreparePosition()
+  {
+    return this.ignorePreparePosition;
+  }
+  
   public boolean isPlaying()
   {
     try
@@ -371,6 +377,14 @@ public class Player
     localPlayerThread.sendMessage(24, paramOnReadSnapShootListener, "readSnapShootBitmap");
   }
   
+  public boolean refresh()
+  {
+    if (this.released) {
+      return false;
+    }
+    return this.mPlayThread.refresh();
+  }
+  
   public void release()
   {
     try
@@ -442,6 +456,17 @@ public class Player
     seekToTime(paramCMTime, CMTime.CMTimeZero, CMTime.CMTimeZero, paramCallback);
   }
   
+  public void setAudioRevertMode(boolean paramBoolean)
+  {
+    if ((this.mPlayerStatus != IPlayer.PlayerStatus.PLAYING) && (this.mPlayerStatus != IPlayer.PlayerStatus.PAUSED))
+    {
+      PlayerItem localPlayerItem = this.currentItem;
+      if (localPlayerItem != null) {
+        localPlayerItem.setAudioRevertMode(paramBoolean);
+      }
+    }
+  }
+  
   public void setBgColor(int paramInt)
   {
     this.bgColor = paramInt;
@@ -453,6 +478,11 @@ public class Player
     if (localPlayerThread != null) {
       localPlayerThread.sendMessage(25, paramOnGetTavExtraListener, "setGetTavExtraListener");
     }
+  }
+  
+  public void setIgnorePreparePosition(boolean paramBoolean)
+  {
+    this.ignorePreparePosition = paramBoolean;
   }
   
   public void setLoop(boolean paramBoolean)
@@ -513,6 +543,17 @@ public class Player
     PlayerThread localPlayerThread = this.mPlayThread;
     if (localPlayerThread != null) {
       localPlayerThread.setRenderContextParams(paramRenderContextParams);
+    }
+  }
+  
+  public void setVideoRevertMode(boolean paramBoolean)
+  {
+    if ((this.mPlayerStatus != IPlayer.PlayerStatus.PLAYING) && (this.mPlayerStatus != IPlayer.PlayerStatus.PAUSED))
+    {
+      PlayerItem localPlayerItem = this.currentItem;
+      if (localPlayerItem != null) {
+        localPlayerItem.setVideoRevertMode(paramBoolean);
+      }
     }
   }
   
@@ -673,7 +714,7 @@ public class Player
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.player.Player
  * JD-Core Version:    0.7.0.1
  */

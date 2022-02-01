@@ -37,14 +37,14 @@ class RIJProteusMethod$MethodDecodeEmotion
       str1 = "";
       paramString = localObject;
     }
-    paramVarArgs = new SpannableStringBuilder(new QQText(str1, 3, 16));
+    paramVarArgs = new SpannableStringBuilder(new QQText(str1, 3, 16, null, new RIJProteusMethod.MethodDecodeEmotion.1(this, paramString)));
     ((IRIJCommentEmotionUtil)QRoute.api(IRIJCommentEmotionUtil.class)).decodeCommentEmotion(paramString, paramVarArgs);
     return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.RIJProteusMethod.MethodDecodeEmotion
  * JD-Core Version:    0.7.0.1
  */

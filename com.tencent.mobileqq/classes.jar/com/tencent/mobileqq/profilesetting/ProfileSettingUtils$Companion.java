@@ -116,13 +116,13 @@ public final class ProfileSettingUtils$Companion
           if ((j == 42172) && ((paramCard.extendFriendEntryAddFriend != 1) || (!((IExpandManagerProxy)QRoute.api(IExpandManagerProxy.class)).isResourceReady((AppRuntime)paramQQAppInterface)))) {
             return null;
           }
-          if ((j == 42075) && (SharedPreUtils.U((Context)paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1)) {
+          if ((j == 42075) && (SharedPreUtils.am((Context)paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1)) {
             return null;
           }
           if ((j == 42488) && (!FansTroopUtils.a())) {
             return null;
           }
-          if ((j == 42505) && (StudyModeManager.a())) {
+          if ((j == 42505) && (StudyModeManager.h())) {
             return null;
           }
           if (paramProfileDisplaySettingItem != null) {
@@ -203,8 +203,8 @@ public final class ProfileSettingUtils$Companion
     Intrinsics.checkParameterIsNotNull(paramCard, "card");
     Intrinsics.checkParameterIsNotNull(paramArrayList, "outItems");
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new ProfileDisplaySettingItem(5, 2131695058));
-    Integer[][] arrayOfInteger = ProfileSettingConstants.a.a();
+    localArrayList.add(new ProfileDisplaySettingItem(5, 2131892786));
+    Integer[][] arrayOfInteger = ProfileSettingConstants.a.b();
     int j = arrayOfInteger.length;
     int i = 0;
     Object localObject1;
@@ -233,8 +233,8 @@ public final class ProfileSettingUtils$Companion
       }
       i += 1;
     }
-    localArrayList.add(new ProfileDisplaySettingItem(5, 2131695060));
-    arrayOfInteger = ProfileSettingConstants.a.b();
+    localArrayList.add(new ProfileDisplaySettingItem(5, 2131892788));
+    arrayOfInteger = ProfileSettingConstants.a.c();
     j = arrayOfInteger.length;
     i = 0;
     while (i < j)
@@ -261,7 +261,7 @@ public final class ProfileSettingUtils$Companion
         {
           localArrayList.add(new ProfileDisplaySettingItem(4));
           ((ProfileDisplaySettingItem)localObject2).a(3);
-          ((ProfileDisplaySettingItem)localObject2).b(2131710630);
+          ((ProfileDisplaySettingItem)localObject2).b(2131908313);
           ((ProfileDisplaySettingItem)localObject2).d(0);
         }
         localArrayList.add(localObject2);
@@ -275,7 +275,7 @@ public final class ProfileSettingUtils$Companion
   
   public final boolean a(int paramInt)
   {
-    Integer[] arrayOfInteger = ProfileSettingConstants.a.a();
+    Integer[] arrayOfInteger = ProfileSettingConstants.a.d();
     int j = arrayOfInteger.length;
     int i = 0;
     while (i < j)
@@ -299,7 +299,7 @@ public final class ProfileSettingUtils$Companion
     Intrinsics.checkParameterIsNotNull(paramArrayList, "settingItems");
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext()) {
-      if (((ProfileDisplaySettingItem)paramArrayList.next()).a()) {
+      if (((ProfileDisplaySettingItem)paramArrayList.next()).f()) {
         return true;
       }
     }
@@ -308,7 +308,7 @@ public final class ProfileSettingUtils$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileSettingUtils.Companion
  * JD-Core Version:    0.7.0.1
  */

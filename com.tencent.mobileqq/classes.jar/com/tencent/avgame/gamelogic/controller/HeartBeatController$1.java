@@ -16,12 +16,12 @@ class HeartBeatController$1
       if (i != 2) {
         return;
       }
-      HeartBeatController.b(this.a);
+      HeartBeatController.d(this.a);
       return;
     }
     paramMessage = this.a;
-    HeartBeatController.a(paramMessage, HeartBeatController.a(paramMessage), HeartBeatController.a(this.a));
-    HeartBeatController.a(this.a);
+    HeartBeatController.a(paramMessage, HeartBeatController.a(paramMessage), HeartBeatController.b(this.a));
+    HeartBeatController.c(this.a);
   }
 }
 

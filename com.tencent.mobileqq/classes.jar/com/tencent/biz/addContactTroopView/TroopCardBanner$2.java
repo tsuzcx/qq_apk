@@ -8,7 +8,7 @@ class TroopCardBanner$2
 {
   public void run()
   {
-    this.this$0.a.post(new TroopCardBanner.2.1(this));
+    this.this$0.d.post(new TroopCardBanner.2.1(this));
   }
 }
 

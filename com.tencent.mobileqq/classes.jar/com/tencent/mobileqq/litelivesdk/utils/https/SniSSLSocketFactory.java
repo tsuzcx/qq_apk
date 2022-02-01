@@ -16,8 +16,8 @@ import javax.net.ssl.SSLSocketFactory;
 public class SniSSLSocketFactory
   extends SSLSocketFactory
 {
-  private String jdField_a_of_type_JavaLangString;
-  HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier;
+  HostnameVerifier a;
+  private String b;
   
   public Socket createSocket()
   {
@@ -55,11 +55,11 @@ public class SniSSLSocketFactory
     paramSocket = (SSLSocket)localSSLCertificateSocketFactory.createSocket(paramString, paramInt);
     paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
     if (Build.VERSION.SDK_INT >= 17) {
-      localSSLCertificateSocketFactory.setHostname(paramSocket, this.jdField_a_of_type_JavaLangString);
+      localSSLCertificateSocketFactory.setHostname(paramSocket, this.b);
     }
     try
     {
-      paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.jdField_a_of_type_JavaLangString });
+      paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.b });
     }
     catch (Exception paramString)
     {
@@ -67,15 +67,15 @@ public class SniSSLSocketFactory
       break label100;
     }
     paramString = paramSocket.getSession();
-    if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier == null) {
-      this.jdField_a_of_type_JavaxNetSslHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
+    if (this.a == null) {
+      this.a = HttpsURLConnection.getDefaultHostnameVerifier();
     }
-    if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(this.jdField_a_of_type_JavaLangString, paramString)) {
+    if (this.a.verify(this.b, paramString)) {
       return paramSocket;
     }
     paramSocket = new StringBuilder();
     paramSocket.append("Cannot verify hostname: ");
-    paramSocket.append(this.jdField_a_of_type_JavaLangString);
+    paramSocket.append(this.b);
     throw new SSLPeerUnverifiedException(paramSocket.toString());
   }
   
@@ -91,7 +91,7 @@ public class SniSSLSocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.https.SniSSLSocketFactory
  * JD-Core Version:    0.7.0.1
  */

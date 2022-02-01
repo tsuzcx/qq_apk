@@ -12,46 +12,36 @@ public class DatingFilters
   implements Parcelable
 {
   public static final Parcelable.Creator<DatingFilters> CREATOR = new DatingFilters.1();
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static String[] c;
-  public int a;
-  public appoint_define.LocaleInfo a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f = 0;
+  public static final String[] a = { HardCodeUtil.a(2131900993), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
+  public static final int[] b = { 0, 22, 26, 35, 120 };
+  public static final int[] c = { 0, 18, 23, 27, 36 };
+  public static final String[] d = { HardCodeUtil.a(2131900991), HardCodeUtil.a(2131900997), HardCodeUtil.a(2131900996), HardCodeUtil.a(2131900994), HardCodeUtil.a(2131900992) };
+  public static String[] e = { HardCodeUtil.a(2131900999), HardCodeUtil.a(2131901001), HardCodeUtil.a(2131900998), HardCodeUtil.a(2131900995), HardCodeUtil.a(2131900990), HardCodeUtil.a(2131901000) };
+  public int f;
   public int g;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131703018), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 22, 26, 35, 120 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 0, 18, 23, 27, 36 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131703016), HardCodeUtil.a(2131703022), HardCodeUtil.a(2131703021), HardCodeUtil.a(2131703019), HardCodeUtil.a(2131703017) };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131703024), HardCodeUtil.a(2131703026), HardCodeUtil.a(2131703023), HardCodeUtil.a(2131703020), HardCodeUtil.a(2131703015), HardCodeUtil.a(2131703025) };
-  }
+  public int h;
+  public int i;
+  public int j;
+  public int k = 0;
+  public appoint_define.LocaleInfo l = null;
+  public int m;
   
   private DatingFilters(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo = null;
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.d = paramParcel.readInt();
-    this.e = paramParcel.readInt();
     this.f = paramParcel.readInt();
     this.g = paramParcel.readInt();
+    this.h = paramParcel.readInt();
+    this.i = paramParcel.readInt();
+    this.j = paramParcel.readInt();
+    this.k = paramParcel.readInt();
+    this.m = paramParcel.readInt();
     paramParcel = paramParcel.readString();
     if ((paramParcel != null) && (!paramParcel.equals(""))) {}
     try
     {
       appoint_define.LocaleInfo localLocaleInfo = new appoint_define.LocaleInfo();
       localLocaleInfo.mergeFrom(paramParcel.getBytes("ISO-8859-1"));
-      this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo = localLocaleInfo;
+      this.l = localLocaleInfo;
       return;
     }
     catch (Exception paramParcel)
@@ -59,9 +49,9 @@ public class DatingFilters
       label116:
       break label116;
     }
-    this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo = null;
+    this.l = null;
     return;
-    this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo = null;
+    this.l = null;
   }
   
   public int describeContents()
@@ -81,41 +71,41 @@ public class DatingFilters
       return false;
     }
     paramObject = (DatingFilters)paramObject;
-    if (this.e != paramObject.e) {
+    if (this.j != paramObject.j) {
+      return false;
+    }
+    if (this.k != paramObject.k) {
+      return false;
+    }
+    if (this.h != paramObject.h) {
+      return false;
+    }
+    if (this.g != paramObject.g) {
       return false;
     }
     if (this.f != paramObject.f) {
       return false;
     }
-    if (this.jdField_c_of_type_Int != paramObject.jdField_c_of_type_Int) {
-      return false;
-    }
-    if (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) {
-      return false;
-    }
-    if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-      return false;
-    }
-    appoint_define.LocaleInfo localLocaleInfo1 = this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo;
-    appoint_define.LocaleInfo localLocaleInfo2 = paramObject.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo;
-    return (localLocaleInfo1 == localLocaleInfo2) || ((localLocaleInfo1 != null) && (localLocaleInfo2 != null) && (localLocaleInfo1.str_name.get().equals(paramObject.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo.str_name.get())));
+    appoint_define.LocaleInfo localLocaleInfo1 = this.l;
+    appoint_define.LocaleInfo localLocaleInfo2 = paramObject.l;
+    return (localLocaleInfo1 == localLocaleInfo2) || ((localLocaleInfo1 != null) && (localLocaleInfo2 != null) && (localLocaleInfo1.str_name.get().equals(paramObject.l.str_name.get())));
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DatingFilters [gender=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", datingTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", datingContent=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(", age=");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(", career=");
     localStringBuilder.append(this.f);
+    localStringBuilder.append(", datingTime=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", datingContent=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", age=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", career=");
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", dest=");
-    Object localObject = this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo;
+    Object localObject = this.l;
     if (localObject == null) {
       localObject = "null";
     } else {
@@ -128,20 +118,20 @@ public class DatingFilters
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.d);
-    paramParcel.writeInt(this.e);
     paramParcel.writeInt(this.f);
     paramParcel.writeInt(this.g);
+    paramParcel.writeInt(this.h);
+    paramParcel.writeInt(this.i);
+    paramParcel.writeInt(this.j);
+    paramParcel.writeInt(this.k);
+    paramParcel.writeInt(this.m);
     try
     {
       String str;
-      if (this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo == null) {
+      if (this.l == null) {
         str = "";
       } else {
-        str = new String(this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo.toByteArray(), "ISO-8859-1");
+        str = new String(this.l.toByteArray(), "ISO-8859-1");
       }
       paramParcel.writeString(str);
       return;
@@ -154,7 +144,7 @@ public class DatingFilters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingFilters
  * JD-Core Version:    0.7.0.1
  */

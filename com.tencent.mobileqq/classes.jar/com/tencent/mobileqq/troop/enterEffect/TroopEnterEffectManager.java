@@ -36,38 +36,38 @@ public class TroopEnterEffectManager
       ((StringBuilder)localObject1).append("addGrayTips uin = ");
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append(" wording = ");
-      ((StringBuilder)localObject1).append(paramGrayTipsConfig.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramGrayTipsConfig.d);
       QLog.d("TroopEnterEffectManager", 2, ((StringBuilder)localObject1).toString());
     }
-    paramString = new UniteGrayTipParam(paramString, this.a.getCurrentAccountUin(), paramGrayTipsConfig.jdField_a_of_type_JavaLangString, 1, -5020, 131078, MessageCache.a());
+    paramString = new UniteGrayTipParam(paramString, this.a.getCurrentAccountUin(), paramGrayTipsConfig.d, 1, -5020, 131078, MessageCache.c());
     int i = 0;
     Object localObject2;
-    while (i < paramGrayTipsConfig.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < paramGrayTipsConfig.e.size())
     {
-      localObject1 = (TroopEnterEffectConfig.GrayTipsConfig.Link)paramGrayTipsConfig.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localObject1 = (TroopEnterEffectConfig.GrayTipsConfig.Link)paramGrayTipsConfig.e.get(i);
       localObject2 = new Bundle();
-      if (paramGrayTipsConfig.jdField_c_of_type_Int == 1)
+      if (paramGrayTipsConfig.g == 1)
       {
         ((Bundle)localObject2).putInt("key_action", 1);
-        ((Bundle)localObject2).putString("key_action_DATA", ((TroopEnterEffectConfig.GrayTipsConfig.Link)localObject1).jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject2).putString("key_action_DATA", ((TroopEnterEffectConfig.GrayTipsConfig.Link)localObject1).c);
       }
-      else if (paramGrayTipsConfig.jdField_c_of_type_Int == 2)
+      else if (paramGrayTipsConfig.g == 2)
       {
         ((Bundle)localObject2).putInt("key_action", 30);
-        ((Bundle)localObject2).putString("key_action_DATA", VasH5PayUtil.a(paramGrayTipsConfig.jdField_b_of_type_JavaLangString, paramGrayTipsConfig.d, paramGrayTipsConfig.e, paramGrayTipsConfig.f, paramGrayTipsConfig.jdField_c_of_type_JavaLangString));
+        ((Bundle)localObject2).putString("key_action_DATA", VasH5PayUtil.a(paramGrayTipsConfig.h, paramGrayTipsConfig.i, paramGrayTipsConfig.j, paramGrayTipsConfig.k, paramGrayTipsConfig.l));
       }
-      paramString.a(((TroopEnterEffectConfig.GrayTipsConfig.Link)localObject1).jdField_a_of_type_Int, ((TroopEnterEffectConfig.GrayTipsConfig.Link)localObject1).b, (Bundle)localObject2);
+      paramString.a(((TroopEnterEffectConfig.GrayTipsConfig.Link)localObject1).a, ((TroopEnterEffectConfig.GrayTipsConfig.Link)localObject1).b, (Bundle)localObject2);
       i += 1;
     }
-    if (paramGrayTipsConfig.jdField_b_of_type_Boolean)
+    if (paramGrayTipsConfig.f)
     {
       localObject1 = new Bundle();
       ((Bundle)localObject1).putInt("key_action", 29);
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(paramGrayTipsConfig.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append(paramGrayTipsConfig.a);
       ((StringBuilder)localObject2).append("");
       ((Bundle)localObject1).putString("key_action_DATA", ((StringBuilder)localObject2).toString());
-      paramString.a(paramGrayTipsConfig.jdField_a_of_type_JavaLangString.length() - 4, paramGrayTipsConfig.jdField_a_of_type_JavaLangString.length(), (Bundle)localObject1);
+      paramString.a(paramGrayTipsConfig.d.length() - 4, paramGrayTipsConfig.d.length(), (Bundle)localObject1);
     }
     paramGrayTipsConfig = new MessageForUniteGrayTip();
     paramGrayTipsConfig.initGrayTipMsg(this.a, paramString);
@@ -80,7 +80,7 @@ public class TroopEnterEffectManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager
  * JD-Core Version:    0.7.0.1
  */

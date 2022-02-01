@@ -23,26 +23,26 @@ import com.tencent.widget.AbsListView.OnScrollListener;
 public class HiBoomHelper
   implements ILifeCycleHelper, AbsListView.OnScrollListener
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private BusinessObserver jdField_a_of_type_ComTencentMobileqqAppBusinessObserver;
-  private HiBoomForwardAuthObserver jdField_a_of_type_ComTencentMobileqqHiboomApiHiBoomForwardAuthObserver;
+  private Paint a;
+  private BaseChatPie b;
+  private BusinessObserver c;
+  private HiBoomForwardAuthObserver d;
   
   public HiBoomHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.b = paramBaseChatPie;
   }
   
   private void a()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if ((localBaseChatPie != null) && (localBaseChatPie.a != null))
+    BaseChatPie localBaseChatPie = this.b;
+    if ((localBaseChatPie != null) && (localBaseChatPie.d != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
+      if (this.c != null) {
+        this.b.d.removeObserver(this.c);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqHiboomApiHiBoomForwardAuthObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.removeObserver(this.jdField_a_of_type_ComTencentMobileqqHiboomApiHiBoomForwardAuthObserver);
+      if (this.d != null) {
+        this.b.d.removeObserver(this.d);
       }
     }
   }
@@ -53,7 +53,7 @@ public class HiBoomHelper
     paramString = HiBoomConstants.a(paramString);
     if ((paramString != null) && (paramString.length() > 20))
     {
-      QQToast.a(paramContext, HardCodeUtil.a(2131705557), 0).a();
+      QQToast.makeText(paramContext, HardCodeUtil.a(2131903444), 0).show();
       ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800932C", "0X800932C", 0, 0, "", "", "", "");
       return false;
     }
@@ -62,13 +62,13 @@ public class HiBoomHelper
   
   private void b()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if ((localBaseChatPie != null) && (localBaseChatPie.a != null))
+    BaseChatPie localBaseChatPie = this.b;
+    if ((localBaseChatPie != null) && (localBaseChatPie.d != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getHiBoomAuthObserver(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
-      this.jdField_a_of_type_ComTencentMobileqqHiboomApiHiBoomForwardAuthObserver = new HiBoomForwardAuthObserver(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.addObserver(this.jdField_a_of_type_ComTencentMobileqqHiboomApiHiBoomForwardAuthObserver);
+      this.c = ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getHiBoomAuthObserver(this.b.aX());
+      this.b.d.addObserver(this.c);
+      this.d = new HiBoomForwardAuthObserver(this.b.aX());
+      this.b.d.addObserver(this.d);
     }
   }
   
@@ -79,12 +79,12 @@ public class HiBoomHelper
   
   public boolean a(Context paramContext, String paramString, EditTextUI paramEditTextUI)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    if (this.a == null) {
+      this.a = new Paint();
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramEditTextUI.a());
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramEditTextUI.a());
-    return (paramString.length() < 200) && (!paramString.contains("\n")) && ((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString) + AIOUtils.b(45.0F, paramContext.getResources()) + paramEditTextUI.b() < paramEditTextUI.h());
+    this.a.setTypeface(paramEditTextUI.o());
+    this.a.setTextSize(paramEditTextUI.p());
+    return (paramString.length() < 200) && (!paramString.contains("\n")) && ((int)this.a.measureText(paramString) + AIOUtils.b(45.0F, paramContext.getResources()) + paramEditTextUI.e() < paramEditTextUI.q());
   }
   
   public String getTag()
@@ -122,12 +122,12 @@ public class HiBoomHelper
     if (paramInt == 0)
     {
       com.etrump.mixlayout.api.ETFontUtil.enableAnimation = true;
-      paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-      if ((paramAbsListView != null) && (paramAbsListView.a != null)) {
-        ((IFontManagerService)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.getRuntimeService(IFontManagerService.class, "")).resumeFontAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+      paramAbsListView = this.b;
+      if ((paramAbsListView != null) && (paramAbsListView.d != null)) {
+        ((IFontManagerService)this.b.d.getRuntimeService(IFontManagerService.class, "")).resumeFontAnimation(this.b);
       }
     }
-    else if (!PicItemBuilder.j)
+    else if (!PicItemBuilder.C)
     {
       com.etrump.mixlayout.api.ETFontUtil.enableAnimation = false;
     }
@@ -135,7 +135,7 @@ public class HiBoomHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.HiBoomHelper
  * JD-Core Version:    0.7.0.1
  */

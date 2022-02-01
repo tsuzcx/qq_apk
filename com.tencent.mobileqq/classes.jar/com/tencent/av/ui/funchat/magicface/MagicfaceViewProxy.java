@@ -21,22 +21,22 @@ public class MagicfaceViewProxy
   implements EffectConfigBase.IEffectConfigCallback<FaceItem>
 {
   protected RelativeLayout a;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private EffectFaceManager jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager;
-  FaceItem jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem;
-  protected MagicfaceViewForAV a;
-  WeakReference<ViewGroup> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean;
+  protected MagicfaceViewForAV b;
+  WeakReference<ViewGroup> c;
+  boolean d;
+  FaceItem e;
+  private VideoAppInterface f;
+  private EffectFaceManager g;
   
   public MagicfaceViewProxy(VideoAppInterface paramVideoAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.f = paramVideoAppInterface;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager == null) {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager = ((EffectFaceManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3));
+    if (this.g == null) {
+      this.g = ((EffectFaceManager)this.f.c(3));
     }
   }
   
@@ -49,7 +49,7 @@ public class MagicfaceViewProxy
     } else if (paramFaceItem.isSameType("voicesticker")) {
       b(paramViewGroup);
     }
-    this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager.a(paramLong, paramFaceItem, paramFaceItem.getId(), paramBoolean, this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV);
+    this.g.a(paramLong, paramFaceItem, paramFaceItem.getId(), paramBoolean, this.b);
   }
   
   private void b(ViewGroup paramViewGroup)
@@ -57,28 +57,28 @@ public class MagicfaceViewProxy
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("realyShowView : ");
     boolean bool;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+    if (this.a == null) {
       bool = true;
     } else {
       bool = false;
     }
     ((StringBuilder)localObject).append(bool);
     AVLog.printErrorLog("MagicfaceViewProxy", ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
+    if (this.a == null)
     {
-      localObject = View.inflate(BaseApplicationImpl.getContext(), 2131559722, null);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131370610));
-      this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV = ((MagicfaceViewForAV)((View)localObject).findViewById(2131370608));
-      this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV.setZOrderMediaOverlay(true);
-      this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV.getHolder().setFormat(-2);
-      localObject = paramViewGroup.findViewById(2131373660);
+      localObject = View.inflate(BaseApplicationImpl.getContext(), 2131625762, null);
+      this.a = ((RelativeLayout)((View)localObject).findViewById(2131437884));
+      this.b = ((MagicfaceViewForAV)((View)localObject).findViewById(2131437882));
+      this.b.setZOrderMediaOverlay(true);
+      this.b.getHolder().setFormat(-2);
+      localObject = paramViewGroup.findViewById(2131441334);
       int i = -1;
       if (localObject != null) {
         i = paramViewGroup.indexOfChild((View)localObject);
       }
-      paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, i);
+      paramViewGroup.addView(this.a, i);
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.a.setVisibility(0);
   }
   
   public void a(long paramLong, ViewGroup paramViewGroup, ControlUIObserver.RequestPlayMagicFace paramRequestPlayMagicFace)
@@ -95,7 +95,7 @@ public class MagicfaceViewProxy
     }
     ((StringBuilder)localObject).append(bool1);
     ((StringBuilder)localObject).append("], mItem[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem);
+    ((StringBuilder)localObject).append(this.e);
     ((StringBuilder)localObject).append("], seq[");
     ((StringBuilder)localObject).append(paramLong);
     ((StringBuilder)localObject).append("]");
@@ -104,12 +104,12 @@ public class MagicfaceViewProxy
       return;
     }
     a();
-    this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager.a(paramLong, this);
-    localObject = (FaceItem)this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager.a(paramRequestPlayMagicFace.c);
+    this.g.a(paramLong, this);
+    localObject = (FaceItem)this.g.b(paramRequestPlayMagicFace.b);
     boolean bool2;
     if (localObject != null)
     {
-      EffectSupportManager localEffectSupportManager = (EffectSupportManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5);
+      EffectSupportManager localEffectSupportManager = (EffectSupportManager)this.f.c(5);
       bool1 = localEffectSupportManager.a(3, "normal");
       bool2 = localEffectSupportManager.a(3, "interact");
       if ((bool1) && ((bool2) || (!((FaceItem)localObject).isInteract()))) {
@@ -121,15 +121,15 @@ public class MagicfaceViewProxy
       if (!bool1) {
         if (((FaceItem)localObject).isUsable())
         {
-          a(paramLong, paramViewGroup, paramRequestPlayMagicFace.b, (FaceItem)localObject, paramRequestPlayMagicFace.a);
+          a(paramLong, paramViewGroup, paramRequestPlayMagicFace.c, (FaceItem)localObject, paramRequestPlayMagicFace.f);
           bool2 = bool1;
         }
         else
         {
-          this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramViewGroup);
-          this.jdField_a_of_type_Boolean = paramRequestPlayMagicFace.b;
-          this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem = ((FaceItem)localObject);
-          this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager.a(paramRequestPlayMagicFace.a(), (ItemBase)localObject);
+          this.c = new WeakReference(paramViewGroup);
+          this.d = paramRequestPlayMagicFace.c;
+          this.e = ((FaceItem)localObject);
+          this.g.b(paramRequestPlayMagicFace.a(), (ItemBase)localObject);
           bool2 = bool1;
         }
       }
@@ -151,12 +151,12 @@ public class MagicfaceViewProxy
   
   public void a(long paramLong, FaceItem paramFaceItem, boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (paramFaceItem != null))
+    if ((paramBoolean) && (this.c != null) && (paramFaceItem != null))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem;
+      Object localObject = this.e;
       if ((localObject != null) && (((FaceItem)localObject).getId().equalsIgnoreCase(paramFaceItem.getId())))
       {
-        localObject = (ViewGroup)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = (ViewGroup)this.c.get();
         if (localObject != null)
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -166,7 +166,7 @@ public class MagicfaceViewProxy
           localStringBuilder.append(paramFaceItem);
           localStringBuilder.append("]");
           QLog.w("MagicfaceViewProxy", 1, localStringBuilder.toString());
-          a(paramLong, (ViewGroup)localObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem, 6);
+          a(paramLong, (ViewGroup)localObject, this.d, this.e, 6);
         }
       }
     }
@@ -177,19 +177,19 @@ public class MagicfaceViewProxy
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("realyHideView : ");
     boolean bool;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+    if (this.a == null) {
       bool = true;
     } else {
       bool = false;
     }
     ((StringBuilder)localObject).append(bool);
     AVLog.printColorLog("MagicfaceViewProxy", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    localObject = this.a;
     if (localObject != null)
     {
       paramViewGroup.removeView((View)localObject);
-      this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV = null;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+      this.b = null;
+      this.a = null;
     }
   }
   
@@ -198,12 +198,12 @@ public class MagicfaceViewProxy
     if (paramViewGroup == null) {
       return;
     }
-    if (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)) {
+    if (!this.f.d(3)) {
       return;
     }
     a();
-    this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager.b(-1048L, this);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager.a(0, paramString, paramBoolean);
+    this.g.b(-1048L, this);
+    this.g.a(0, paramString, paramBoolean);
     a(paramViewGroup);
   }
   

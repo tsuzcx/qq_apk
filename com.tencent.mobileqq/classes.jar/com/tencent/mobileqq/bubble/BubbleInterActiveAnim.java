@@ -55,38 +55,32 @@ import org.jetbrains.annotations.Nullable;
 public class BubbleInterActiveAnim
   extends AIOAnimationConatiner.AIOAnimator
 {
-  public Handler a;
-  public BubbleManager a;
-  public List<View> a;
-  public ConcurrentHashMap<Long, BubbleInterActiveAnim.AnimHolder> a;
-  public int b;
-  public List<AnimatorSet> b;
-  public ConcurrentHashMap<String, Bitmap> b;
-  public int c = 0;
-  public int d;
+  public BubbleManager d;
+  public List<View> e = new ArrayList();
+  public List<AnimatorSet> f = new ArrayList();
+  public ConcurrentHashMap<Long, BubbleInterActiveAnim.AnimHolder> g = new ConcurrentHashMap();
+  public int h;
+  public int i = 0;
+  public int j = 0;
+  public ConcurrentHashMap<String, Bitmap> k = new ConcurrentHashMap();
+  public Handler l = new BubbleInterActiveAnim.1(this, Looper.getMainLooper());
   
   public BubbleInterActiveAnim(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
     super(paramInt, paramAIOAnimationConatiner, paramListView);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new BubbleInterActiveAnim.1(this, Looper.getMainLooper());
-    this.jdField_b_of_type_Int = AIOUtils.b(12.0F, paramListView.getContext().getResources());
-    this.c = AIOUtils.b(50.0F, paramListView.getContext().getResources());
-    this.jdField_d_of_type_Int = AIOUtils.b(45.0F, paramListView.getContext().getResources());
+    this.h = AIOUtils.b(12.0F, paramListView.getContext().getResources());
+    this.i = AIOUtils.b(50.0F, paramListView.getContext().getResources());
+    this.j = AIOUtils.b(45.0F, paramListView.getContext().getResources());
   }
   
   private int a(Rect paramRect1, Rect paramRect2, String paramString, int paramInt)
   {
-    int i = paramString.charAt(0);
-    if (i != 66)
+    int m = paramString.charAt(0);
+    if (m != 66)
     {
-      if (i != 67)
+      if (m != 67)
       {
-        if (i == 84) {
+        if (m == 84) {
           paramInt = paramRect1.top;
         }
       }
@@ -102,14 +96,14 @@ public class BubbleInterActiveAnim
   
   private int a(Rect paramRect1, Rect paramRect2, String paramString, boolean paramBoolean, int paramInt)
   {
-    int i = paramString.charAt(1);
+    int m = paramString.charAt(1);
     if (paramBoolean)
     {
-      if (i != 67)
+      if (m != 67)
       {
-        if (i != 76)
+        if (m != 76)
         {
-          if (i != 82) {
+          if (m != 82) {
             break label169;
           }
           paramInt = paramRect1.right;
@@ -125,27 +119,27 @@ public class BubbleInterActiveAnim
     }
     else
     {
-      int j = paramRect2.left + paramRect2.right;
-      if (i != 67)
+      int n = paramRect2.left + paramRect2.right;
+      if (m != 67)
       {
-        if (i != 76)
+        if (m != 76)
         {
-          if (i != 82) {
+          if (m != 82) {
             break label169;
           }
-          paramInt = paramRect1.left - j;
-          i = paramRect2.left;
+          paramInt = paramRect1.left - n;
+          m = paramRect2.left;
         }
         else
         {
-          paramInt = paramRect1.right - j;
-          i = paramRect2.left;
+          paramInt = paramRect1.right - n;
+          m = paramRect2.left;
         }
-        paramInt -= i;
+        paramInt -= m;
       }
       else
       {
-        paramInt = (paramRect1.right - paramRect1.left) / 2 - j - paramRect2.left;
+        paramInt = (paramRect1.right - paramRect1.left) / 2 - n - paramRect2.left;
       }
     }
     label169:
@@ -167,36 +161,36 @@ public class BubbleInterActiveAnim
       long l3;
       if (a(paramAIOAnimationConatiner))
       {
-        paramQQAppInterface = paramAIOAnimationConatiner.a().getAdapter();
-        int i = paramAIOAnimationConatiner.a().getFirstVisiblePosition();
-        int j = paramAIOAnimationConatiner.a().getLastVisiblePosition();
+        paramQQAppInterface = paramAIOAnimationConatiner.getListView().getAdapter();
+        int m = paramAIOAnimationConatiner.getListView().getFirstVisiblePosition();
+        int n = paramAIOAnimationConatiner.getListView().getLastVisiblePosition();
         l2 = -1L;
         l1 = l2;
         boolean bool = false;
-        while (j >= i)
+        while (n >= m)
         {
-          Object localObject2 = new BubbleInterActiveAnim.DealChatMessage(paramMessageRecord, paramAIOAnimationConatiner, bool, j, paramQQAppInterface.getItem(j)).a();
+          Object localObject2 = new BubbleInterActiveAnim.DealChatMessage(paramMessageRecord, paramAIOAnimationConatiner, bool, n, paramQQAppInterface.getItem(n)).e();
           if (!((BubbleInterActiveAnim.DealChatMessage)localObject2).a())
           {
-            Object localObject3 = ((BubbleInterActiveAnim.DealChatMessage)localObject2).a();
-            Object localObject1 = ((BubbleInterActiveAnim.DealChatMessage)localObject2).a();
-            bool = ((BubbleInterActiveAnim.DealChatMessage)localObject2).a().b();
+            Object localObject3 = ((BubbleInterActiveAnim.DealChatMessage)localObject2).b();
+            Object localObject1 = ((BubbleInterActiveAnim.DealChatMessage)localObject2).c();
+            bool = ((BubbleInterActiveAnim.DealChatMessage)localObject2).d().b();
             if (a((BaseBubbleBuilder.ViewHolder)localObject3))
             {
               localObject2 = a((MessageRecord)localObject1);
               localObject3 = localBubbleManager.a((int)((ChatMessage)localObject1).vipBubbleID, false);
               if (!a((ChatMessage)localObject1, (BubbleConfig)localObject3))
               {
-                localObject1 = new BubbleInterActiveAnim.GetOtherSeq2(paramMessageRecord, paramSessionInfo, str, localBubbleConfig, l2, l1, (ChatMessage)localObject1, (String)localObject2, (BubbleConfig)localObject3).a();
+                localObject1 = new BubbleInterActiveAnim.GetOtherSeq2(paramMessageRecord, paramSessionInfo, str, localBubbleConfig, l2, l1, (ChatMessage)localObject1, (String)localObject2, (BubbleConfig)localObject3).d();
                 if (((BubbleInterActiveAnim.GetOtherSeq2)localObject1).a()) {
                   break;
                 }
-                l2 = ((BubbleInterActiveAnim.GetOtherSeq2)localObject1).a();
-                l1 = ((BubbleInterActiveAnim.GetOtherSeq2)localObject1).b();
+                l2 = ((BubbleInterActiveAnim.GetOtherSeq2)localObject1).b();
+                l1 = ((BubbleInterActiveAnim.GetOtherSeq2)localObject1).c();
               }
             }
           }
-          j -= 1;
+          n -= 1;
         }
         l3 = l1;
       }
@@ -222,7 +216,7 @@ public class BubbleInterActiveAnim
       paramLong1 = paramLong2;
       for (;;)
       {
-        l = paramLong1;
+        l1 = paramLong1;
         if (!paramMessageRecord.hasNext()) {
           break;
         }
@@ -231,17 +225,17 @@ public class BubbleInterActiveAnim
         }
       }
     }
-    long l = paramLong1;
+    long l1 = paramLong1;
     if (paramMessageRecord.atInfoList != null)
     {
-      l = paramLong1;
+      l1 = paramLong1;
       if (paramMessageRecord.atInfoList.size() > 0)
       {
         paramMessageRecord = paramMessageRecord.atInfoList.iterator();
         paramLong1 = paramLong2;
         for (;;)
         {
-          l = paramLong1;
+          l1 = paramLong1;
           if (!paramMessageRecord.hasNext()) {
             break;
           }
@@ -251,13 +245,7 @@ public class BubbleInterActiveAnim
         }
       }
     }
-    return l;
-  }
-  
-  @NotNull
-  private Animator.AnimatorListener a(BubbleInterActiveAnim.AnimHolder paramAnimHolder)
-  {
-    return new BubbleInterActiveAnim.5(this, paramAnimHolder);
+    return l1;
   }
   
   @NotNull
@@ -268,16 +256,16 @@ public class BubbleInterActiveAnim
   
   private Pair<Integer, Integer> a(BubbleInterActiveAnim.AnimHolder paramAnimHolder, BubbleNewAnimConf.InterActiveAnimConf paramInterActiveAnimConf, Pair<Integer, Integer> paramPair)
   {
-    if ((!TextUtils.isEmpty(paramInterActiveAnimConf.jdField_e_of_type_JavaLangString)) && (paramInterActiveAnimConf.jdField_c_of_type_AndroidGraphicsRect != null)) {
-      return a(paramAnimHolder.jdField_a_of_type_AndroidGraphicsRect, paramInterActiveAnimConf.jdField_c_of_type_AndroidGraphicsRect, paramInterActiveAnimConf.jdField_e_of_type_JavaLangString, paramAnimHolder.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend());
+    if ((!TextUtils.isEmpty(paramInterActiveAnimConf.o)) && (paramInterActiveAnimConf.q != null)) {
+      return a(paramAnimHolder.a, paramInterActiveAnimConf.q, paramInterActiveAnimConf.o, paramAnimHolder.c.isSend());
     }
     if (QLog.isColorLevel())
     {
       paramAnimHolder = new StringBuilder();
       paramAnimHolder.append("start align: ");
-      paramAnimHolder.append(paramInterActiveAnimConf.jdField_e_of_type_JavaLangString);
+      paramAnimHolder.append(paramInterActiveAnimConf.o);
       paramAnimHolder.append(", startRect: ");
-      paramAnimHolder.append(paramInterActiveAnimConf.jdField_c_of_type_AndroidGraphicsRect);
+      paramAnimHolder.append(paramInterActiveAnimConf.q);
       QLog.i("BubbleInterActiveAnim", 2, paramAnimHolder.toString());
     }
     return paramPair;
@@ -308,7 +296,7 @@ public class BubbleInterActiveAnim
   
   private static String a(MessageRecord paramMessageRecord, SessionInfo paramSessionInfo, String paramString)
   {
-    if ((paramSessionInfo.jdField_a_of_type_Int == 0) || (paramSessionInfo.jdField_a_of_type_Int == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000)) {
+    if ((paramSessionInfo.a == 0) || (paramSessionInfo.a == 1) || (paramSessionInfo.a == 3000)) {
       paramString = a(paramMessageRecord);
     }
     return paramString;
@@ -316,32 +304,32 @@ public class BubbleInterActiveAnim
   
   private void a(BaseBubbleBuilder.ViewHolder paramViewHolder1, BaseBubbleBuilder.ViewHolder paramViewHolder2, long paramLong1, long paramLong2)
   {
-    int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramViewHolder1.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Int, 8)) && (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramViewHolder2.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Int, 8))) {
-      i = 1;
+    int m;
+    if ((this.d.a(paramViewHolder1.i.a, 8)) && (this.d.a(paramViewHolder2.i.a, 8))) {
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    if (i != 0)
+    if (m != 0)
     {
       localObject1 = new Pair(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
-      Object localObject2 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+      Object localObject2 = this.l.obtainMessage(1);
       ((Message)localObject2).obj = localObject1;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramViewHolder1.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Int, false);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramViewHolder2.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Int, false);
-      localObject2 = ((BubbleConfig)localObject2).b.values().iterator();
+      this.l.sendMessage((Message)localObject2);
+      localObject2 = this.d.a(paramViewHolder1.i.a, false);
+      localObject1 = this.d.a(paramViewHolder2.i.a, false);
+      localObject2 = ((BubbleConfig)localObject2).y.values().iterator();
       while (((Iterator)localObject2).hasNext()) {
-        a((BubbleNewAnimConf)((Iterator)localObject2).next(), paramViewHolder1.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Int);
+        a((BubbleNewAnimConf)((Iterator)localObject2).next(), paramViewHolder1.i.a);
       }
-      a((BubbleNewAnimConf)((BubbleConfig)localObject1).b.get("passive_animation"), paramViewHolder2.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Int);
+      a((BubbleNewAnimConf)((BubbleConfig)localObject1).y.get("passive_animation"), paramViewHolder2.i.a);
       return;
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("resource is not all ready, originalMsg: ");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramViewHolder1.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Int, 8));
+    ((StringBuilder)localObject1).append(this.d.a(paramViewHolder1.i.a, 8));
     ((StringBuilder)localObject1).append(", target msg: ");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramViewHolder2.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Int, 8));
+    ((StringBuilder)localObject1).append(this.d.a(paramViewHolder2.i.a, 8));
     QLog.e("BubbleInterActiveAnim", 1, ((StringBuilder)localObject1).toString());
   }
   
@@ -350,7 +338,7 @@ public class BubbleInterActiveAnim
     if ((paramDouble2 != 0.0D) && (paramDouble1 != 0.0D))
     {
       paramPathPoint.c = ((float)Math.toDegrees(Math.asin(paramDouble1 / paramDouble2)));
-      if (!paramAnimFrameData.jdField_a_of_type_Boolean) {
+      if (!paramAnimFrameData.d) {
         paramPathPoint.c = (-paramPathPoint.c);
       }
     }
@@ -377,12 +365,12 @@ public class BubbleInterActiveAnim
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("refresh seq ");
-        localStringBuilder.append(paramAnimHolder.jdField_a_of_type_Long);
+        localStringBuilder.append(paramAnimHolder.g);
         localStringBuilder.append(" 's bubbleView");
         QLog.i("BubbleInterActiveAnim", 2, localStringBuilder.toString());
       }
-      paramAnimHolder.jdField_a_of_type_AndroidViewView = paramObject1.jdField_a_of_type_AndroidViewView;
-      paramAnimHolder.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramObject1.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+      paramAnimHolder.f = paramObject1.h;
+      paramAnimHolder.c = paramObject1.q;
     }
     else
     {
@@ -390,10 +378,10 @@ public class BubbleInterActiveAnim
       {
         paramObject1 = new StringBuilder();
         paramObject1.append("stop current bubble animation! ");
-        paramObject1.append(paramAnimHolder.jdField_a_of_type_Long);
+        paramObject1.append(paramAnimHolder.g);
         QLog.w("BubbleInterActiveAnim", 2, paramObject1.toString());
       }
-      paramAnimHolder.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+      paramAnimHolder.j.cancel();
     }
     if ((paramObject2 != null) && ((paramObject2 instanceof BaseBubbleBuilder.ViewHolder)))
     {
@@ -402,38 +390,38 @@ public class BubbleInterActiveAnim
       {
         paramObject2 = new StringBuilder();
         paramObject2.append("refresh seq ");
-        paramObject2.append(paramAnimHolder.jdField_b_of_type_Long);
+        paramObject2.append(paramAnimHolder.h);
         paramObject2.append(" 's bubbleView");
         QLog.i("BubbleInterActiveAnim", 2, paramObject2.toString());
       }
-      paramAnimHolder.jdField_b_of_type_ComTencentMobileqqDataMessageRecord = paramObject1.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+      paramAnimHolder.d = paramObject1.q;
       return;
     }
     if (QLog.isColorLevel())
     {
       paramObject1 = new StringBuilder();
       paramObject1.append("stop current bubble animation! ");
-      paramObject1.append(paramAnimHolder.jdField_b_of_type_Long);
+      paramObject1.append(paramAnimHolder.h);
       QLog.i("BubbleInterActiveAnim", 2, paramObject1.toString());
     }
-    paramAnimHolder.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+    paramAnimHolder.j.cancel();
   }
   
   private boolean a(long paramLong)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetListView != null) && (this.jdField_a_of_type_ComTencentWidgetListView.getAdapter() != null) && (paramLong > 0L))
+    if ((this.b != null) && (this.b.getAdapter() != null) && (paramLong > 0L))
     {
       Object localObject2 = null;
-      ListAdapter localListAdapter = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
-      int i = localListAdapter.getCount() - 1;
+      ListAdapter localListAdapter = this.b.getAdapter();
+      int m = localListAdapter.getCount() - 1;
       Object localObject1;
       for (;;)
       {
         localObject1 = localObject2;
-        if (i < 0) {
+        if (m < 0) {
           break;
         }
-        localObject1 = localListAdapter.getItem(i);
+        localObject1 = localListAdapter.getItem(m);
         if ((localObject1 instanceof ChatMessage))
         {
           localObject1 = (ChatMessage)localObject1;
@@ -441,7 +429,7 @@ public class BubbleInterActiveAnim
             break;
           }
         }
-        i -= 1;
+        m -= 1;
       }
       if (a((ChatMessage)localObject1)) {
         return true;
@@ -465,67 +453,67 @@ public class BubbleInterActiveAnim
   
   private static boolean a(BaseBubbleBuilder.ViewHolder paramViewHolder)
   {
-    return (paramViewHolder != null) && (paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo != null);
+    return (paramViewHolder != null) && (paramViewHolder.i != null);
   }
   
   private boolean a(BaseBubbleBuilder.ViewHolder paramViewHolder1, BaseBubbleBuilder.ViewHolder paramViewHolder2)
   {
-    return (paramViewHolder1 == null) || (paramViewHolder2 == null) || (paramViewHolder1.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo == null) || (paramViewHolder2.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo == null);
+    return (paramViewHolder1 == null) || (paramViewHolder2 == null) || (paramViewHolder1.i == null) || (paramViewHolder2.i == null);
   }
   
   private static boolean a(AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    return (paramAIOAnimationConatiner.a() != null) && (paramAIOAnimationConatiner.a().getAdapter() != null);
+    return (paramAIOAnimationConatiner.getListView() != null) && (paramAIOAnimationConatiner.getListView().getAdapter() != null);
   }
   
   public static boolean a(AIOAnimationConatiner paramAIOAnimationConatiner, long paramLong)
   {
-    ListAdapter localListAdapter = paramAIOAnimationConatiner.a().getAdapter();
-    int j;
-    int i;
-    if (paramAIOAnimationConatiner.a().getChildCount() > 0)
+    ListAdapter localListAdapter = paramAIOAnimationConatiner.getListView().getAdapter();
+    int n;
+    int m;
+    if (paramAIOAnimationConatiner.getListView().getChildCount() > 0)
     {
       if ((localListAdapter instanceof HeaderViewListAdapter))
       {
-        j = paramAIOAnimationConatiner.a().getFirstVisiblePosition();
-        i = paramAIOAnimationConatiner.a().getLastVisiblePosition();
+        n = paramAIOAnimationConatiner.getListView().getFirstVisiblePosition();
+        m = paramAIOAnimationConatiner.getListView().getLastVisiblePosition();
       }
       else if ((localListAdapter instanceof ChatAdapter1))
       {
-        j = paramAIOAnimationConatiner.a().getFirstVisiblePosition() - paramAIOAnimationConatiner.a().getHeaderViewsCount();
-        i = paramAIOAnimationConatiner.a().getLastVisiblePosition() - paramAIOAnimationConatiner.a().getFooterViewsCount();
+        n = paramAIOAnimationConatiner.getListView().getFirstVisiblePosition() - paramAIOAnimationConatiner.getListView().getHeaderViewsCount();
+        m = paramAIOAnimationConatiner.getListView().getLastVisiblePosition() - paramAIOAnimationConatiner.getListView().getFooterViewsCount();
       }
       else
       {
-        i = 0;
-        j = 0;
+        m = 0;
+        n = 0;
       }
-      if ((j < 0) || (j >= localListAdapter.getCount())) {
-        j = 0;
+      if ((n < 0) || (n >= localListAdapter.getCount())) {
+        n = 0;
       }
-      if ((i < 0) || (i >= localListAdapter.getCount())) {
-        i = 0;
+      if ((m < 0) || (m >= localListAdapter.getCount())) {
+        m = 0;
       }
     }
     else
     {
-      i = 0;
-      j = 0;
+      m = 0;
+      n = 0;
     }
-    return a(paramLong, localListAdapter, j, i);
+    return a(paramLong, localListAdapter, n, m);
   }
   
   private static boolean a(BubbleConfig paramBubbleConfig)
   {
-    if ((paramBubbleConfig != null) && (paramBubbleConfig.b != null))
+    if ((paramBubbleConfig != null) && (paramBubbleConfig.y != null))
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("bubble config mInterActivePackageID: ");
-        localStringBuilder.append(paramBubbleConfig.f);
+        localStringBuilder.append(paramBubbleConfig.v);
         localStringBuilder.append(", bubble mInterActiveType: ");
-        localStringBuilder.append(paramBubbleConfig.g);
+        localStringBuilder.append(paramBubbleConfig.w);
         QLog.i("BubbleInterActiveAnim", 2, localStringBuilder.toString());
       }
       return false;
@@ -535,26 +523,26 @@ public class BubbleInterActiveAnim
   
   private static boolean a(BubbleConfig paramBubbleConfig1, BubbleConfig paramBubbleConfig2, boolean paramBoolean)
   {
-    if (paramBubbleConfig1.g == 3)
+    if (paramBubbleConfig1.w == 3)
     {
-      if (((paramBubbleConfig2.g != 2) || (paramBubbleConfig2.f == paramBubbleConfig1.f)) && (paramBubbleConfig2.g != 3)) {}
+      if (((paramBubbleConfig2.w != 2) || (paramBubbleConfig2.v == paramBubbleConfig1.v)) && (paramBubbleConfig2.w != 3)) {}
     }
     else {
       for (;;)
       {
         return true;
-        if (paramBubbleConfig1.g == 1)
+        if (paramBubbleConfig1.w == 1)
         {
-          if ((paramBubbleConfig1.f == paramBubbleConfig2.f) && (paramBubbleConfig1.g == paramBubbleConfig2.g)) {}
+          if ((paramBubbleConfig1.v == paramBubbleConfig2.v) && (paramBubbleConfig1.w == paramBubbleConfig2.w)) {}
         }
         else {
           do
           {
             return false;
-            if ((paramBubbleConfig1.g != 2) || ((paramBubbleConfig2.g != 2) && (paramBubbleConfig2.g != 3))) {
+            if ((paramBubbleConfig1.w != 2) || ((paramBubbleConfig2.w != 2) && (paramBubbleConfig2.w != 3))) {
               break;
             }
-          } while (paramBubbleConfig2.f == paramBubbleConfig1.f);
+          } while (paramBubbleConfig2.v == paramBubbleConfig1.v);
         }
       }
     }
@@ -565,7 +553,7 @@ public class BubbleInterActiveAnim
   {
     if (paramChatMessage != null)
     {
-      paramChatMessage = EmojiStickerManager.a().a(paramChatMessage);
+      paramChatMessage = EmojiStickerManager.a().c(paramChatMessage);
       if ((paramChatMessage != null) && (!paramChatMessage.isEmpty()))
       {
         if (QLog.isColorLevel()) {
@@ -579,7 +567,7 @@ public class BubbleInterActiveAnim
   
   private static boolean a(ChatMessage paramChatMessage, BubbleConfig paramBubbleConfig)
   {
-    if ((paramBubbleConfig != null) && (paramBubbleConfig.b != null))
+    if ((paramBubbleConfig != null) && (paramBubbleConfig.y != null))
     {
       if (QLog.isColorLevel())
       {
@@ -587,9 +575,9 @@ public class BubbleInterActiveAnim
         localStringBuilder.append("record seq: ");
         localStringBuilder.append(paramChatMessage.uniseq);
         localStringBuilder.append(", other bubble config mInterActivePackageID: ");
-        localStringBuilder.append(paramBubbleConfig.f);
+        localStringBuilder.append(paramBubbleConfig.v);
         localStringBuilder.append(", other bubble config mInterActiveType: ");
-        localStringBuilder.append(paramBubbleConfig.g);
+        localStringBuilder.append(paramBubbleConfig.w);
         QLog.i("BubbleInterActiveAnim", 2, localStringBuilder.toString());
       }
       return false;
@@ -603,7 +591,7 @@ public class BubbleInterActiveAnim
   
   private static long b(MessageRecord paramMessageRecord, SessionInfo paramSessionInfo, long paramLong1, long paramLong2, ChatMessage paramChatMessage, String paramString)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+    if (paramSessionInfo.a == 0) {
       return paramLong1;
     }
     return a(paramMessageRecord, paramLong1, paramLong2, paramChatMessage, paramString);
@@ -611,29 +599,29 @@ public class BubbleInterActiveAnim
   
   private static BubbleInterActiveAnim.AnimFrameData b(float paramFloat1, BubbleInterActiveAnim.AnimFrameData paramAnimFrameData1, BubbleInterActiveAnim.AnimFrameData paramAnimFrameData2, long paramLong, float paramFloat2, float paramFloat3, PathPoint paramPathPoint, BubbleInterActiveAnim.AnimFrameData paramAnimFrameData3)
   {
-    if (paramAnimFrameData1.jdField_b_of_type_Boolean)
+    if (paramAnimFrameData1.e)
     {
       double d1 = paramFloat1;
-      int i;
+      int m;
       if (d1 >= 1.0D)
       {
-        i = 100;
+        m = 100;
       }
       else
       {
         Double.isNaN(d1);
-        i = (int)((d1 + 0.005D) * 100.0D);
+        m = (int)((d1 + 0.005D) * 100.0D);
       }
-      paramAnimFrameData3.jdField_a_of_type_Int = i;
-      if ((paramAnimFrameData3.jdField_a_of_type_Int - paramAnimFrameData2.jdField_a_of_type_Int >= 5) || (paramAnimFrameData2.jdField_a_of_type_Int == 0))
+      paramAnimFrameData3.i = m;
+      if ((paramAnimFrameData3.i - paramAnimFrameData2.i >= 5) || (paramAnimFrameData2.i == 0))
       {
-        if ((paramAnimFrameData2.jdField_b_of_type_Int == 0) || (paramAnimFrameData2.c == 0))
+        if ((paramAnimFrameData2.j == 0) || (paramAnimFrameData2.k == 0))
         {
-          paramAnimFrameData2.jdField_b_of_type_Int = ((int)paramAnimFrameData1.jdField_a_of_type_ComTencentMobileqqBubblePathPoint.a);
-          paramAnimFrameData2.c = ((int)paramAnimFrameData1.jdField_a_of_type_ComTencentMobileqqBubblePathPoint.b);
+          paramAnimFrameData2.j = ((int)paramAnimFrameData1.g.a);
+          paramAnimFrameData2.k = ((int)paramAnimFrameData1.g.b);
         }
-        d1 = Math.abs(paramFloat3 - paramAnimFrameData2.c);
-        double d2 = Math.abs(paramFloat2 - paramAnimFrameData2.jdField_b_of_type_Int);
+        d1 = Math.abs(paramFloat3 - paramAnimFrameData2.k);
+        double d2 = Math.abs(paramFloat2 - paramAnimFrameData2.j);
         d2 = Math.sqrt(Math.pow(d1, 2.0D) + Math.pow(d2, 2.0D));
         a(paramAnimFrameData2, paramPathPoint, d1, d2);
         if (QLog.isColorLevel())
@@ -653,92 +641,39 @@ public class BubbleInterActiveAnim
           paramAnimFrameData1.append(System.currentTimeMillis() - paramLong);
           QLog.i("BubbleInterActiveAnim", 2, paramAnimFrameData1.toString());
         }
-        paramAnimFrameData2.jdField_a_of_type_Int = paramAnimFrameData3.jdField_a_of_type_Int;
+        paramAnimFrameData2.i = paramAnimFrameData3.i;
       }
       if (paramFloat1 == 1.0F) {
         paramPathPoint.c = 360.0F;
       }
     }
-    paramAnimFrameData2.jdField_b_of_type_Int = ((int)paramFloat2);
-    paramAnimFrameData2.c = ((int)paramFloat3);
+    paramAnimFrameData2.j = ((int)paramFloat2);
+    paramAnimFrameData2.k = ((int)paramFloat3);
     return paramAnimFrameData3;
   }
   
   private static boolean b(SessionInfo paramSessionInfo, BubbleConfig paramBubbleConfig1, BubbleConfig paramBubbleConfig2)
   {
-    int i = paramSessionInfo.jdField_a_of_type_Int;
+    int m = paramSessionInfo.a;
     boolean bool2 = false;
-    if (i == 0) {
+    if (m == 0) {
       return true;
     }
     boolean bool1 = bool2;
-    if (paramBubbleConfig1.f != -1)
+    if (paramBubbleConfig1.v != -1)
     {
       bool1 = bool2;
-      if (paramBubbleConfig2.f != -1) {
+      if (paramBubbleConfig2.v != -1) {
         bool1 = a(paramBubbleConfig1, paramBubbleConfig2, false);
       }
     }
     return bool1;
   }
   
-  public ObjectAnimator a(BubbleInterActiveAnim.AnimHolder paramAnimHolder)
+  @NotNull
+  private Animator.AnimatorListener e(BubbleInterActiveAnim.AnimHolder paramAnimHolder)
   {
-    Object localObject1 = (BubbleNewAnimConf.InterActiveAnimConf)paramAnimHolder.jdField_a_of_type_JavaUtilHashMap.get("animation_start");
-    ObjectAnimator localObjectAnimator = a(paramAnimHolder, paramAnimHolder.jdField_a_of_type_AndroidGraphicsRect, (BubbleNewAnimConf.InterActiveAnimConf)localObject1);
-    localObjectAnimator.setRepeatCount(((BubbleNewAnimConf.InterActiveAnimConf)localObject1).jdField_a_of_type_Int - 1);
-    if (((BubbleNewAnimConf.InterActiveAnimConf)paramAnimHolder.jdField_a_of_type_JavaUtilHashMap.get("animation_running")).jdField_b_of_type_Boolean)
-    {
-      Object localObject3 = (BubbleNewAnimConf.InterActiveAnimConf)paramAnimHolder.jdField_a_of_type_JavaUtilHashMap.get("animation_end");
-      Object localObject2 = a(paramAnimHolder.jdField_a_of_type_AndroidGraphicsRect, ((BubbleNewAnimConf.InterActiveAnimConf)localObject1).jdField_a_of_type_AndroidGraphicsRect, ((BubbleNewAnimConf.InterActiveAnimConf)localObject1).jdField_c_of_type_JavaLangString, paramAnimHolder.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend());
-      localObject3 = a(paramAnimHolder.jdField_b_of_type_AndroidGraphicsRect, ((BubbleNewAnimConf.InterActiveAnimConf)localObject3).jdField_a_of_type_AndroidGraphicsRect, ((BubbleNewAnimConf.InterActiveAnimConf)localObject3).jdField_c_of_type_JavaLangString, paramAnimHolder.jdField_b_of_type_ComTencentMobileqqDataMessageRecord.isSend());
-      int i = ((Integer)((Pair)localObject2).first).intValue();
-      int j = ((Integer)((Pair)localObject2).second).intValue();
-      int k = ((Integer)((Pair)localObject3).first).intValue();
-      double d1 = Math.abs(((Integer)((Pair)localObject3).second).intValue() - j);
-      double d2 = Math.abs(k - i);
-      d2 = Math.sqrt(Math.pow(d1, 2.0D) + Math.pow(d2, 2.0D));
-      float f1;
-      if ((d2 != 0.0D) && (d1 != 0.0D))
-      {
-        Double.isNaN(d1);
-        float f2 = (float)Math.toDegrees(Math.asin(d1 / d2));
-        f1 = f2;
-        if (!paramAnimHolder.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
-          f1 = -f2;
-        }
-      }
-      else
-      {
-        f1 = 0.0F;
-      }
-      localObject2 = ObjectAnimator.ofFloat(paramAnimHolder.jdField_a_of_type_AndroidWidgetImageView, "rotation", new float[] { 0.0F, f1 });
-      i = ((BubbleNewAnimConf.InterActiveAnimConf)localObject1).jdField_a_of_type_Int - 1;
-      long l;
-      if (i > 0) {
-        l = i * localObjectAnimator.getDuration();
-      } else {
-        l = localObjectAnimator.getDuration();
-      }
-      ((ObjectAnimator)localObject2).setDuration(l);
-      localObject1 = localObject2;
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("start animation, rotate view: ");
-        ((StringBuilder)localObject1).append(f1);
-        ((StringBuilder)localObject1).append(", duration: ");
-        ((StringBuilder)localObject1).append(l);
-        QLog.i("BubbleInterActiveAnim", 2, ((StringBuilder)localObject1).toString());
-        localObject1 = localObject2;
-      }
-    }
-    else
-    {
-      localObject1 = null;
-    }
-    localObjectAnimator.addListener(a(paramAnimHolder, (ObjectAnimator)localObject1));
-    return localObjectAnimator;
+    return new BubbleInterActiveAnim.5(this, paramAnimHolder);
   }
   
   public ObjectAnimator a(BubbleInterActiveAnim.AnimHolder paramAnimHolder, Rect paramRect, BubbleNewAnimConf.InterActiveAnimConf paramInterActiveAnimConf)
@@ -751,76 +686,76 @@ public class BubbleInterActiveAnim
     if (paramRect != null)
     {
       localObject1 = localFile;
-      if (paramInterActiveAnimConf.jdField_e_of_type_Int == -1)
+      if (paramInterActiveAnimConf.m == -1)
       {
-        if (paramRect == paramAnimHolder.jdField_a_of_type_AndroidGraphicsRect) {
-          localObject1 = paramAnimHolder.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        if (paramRect == paramAnimHolder.a) {
+          localObject1 = paramAnimHolder.c;
         } else {
-          localObject1 = paramAnimHolder.jdField_b_of_type_ComTencentMobileqqDataMessageRecord;
+          localObject1 = paramAnimHolder.d;
         }
         boolean bool = ((MessageRecord)localObject1).isSend();
-        paramRect = a(paramRect, paramInterActiveAnimConf.jdField_a_of_type_AndroidGraphicsRect, paramInterActiveAnimConf.jdField_c_of_type_JavaLangString, bool);
+        paramRect = a(paramRect, paramInterActiveAnimConf.i, paramInterActiveAnimConf.h, bool);
         localObject1 = new PathPoint(-1, ((Integer)paramRect.first).intValue(), ((Integer)paramRect.second).intValue());
       }
     }
-    localFile = new File(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramInterActiveAnimConf.jdField_d_of_type_Int, false), paramInterActiveAnimConf.jdField_d_of_type_JavaLangString);
+    localFile = new File(this.d.d(paramInterActiveAnimConf.l, false), paramInterActiveAnimConf.k);
     paramRect = new ArrayList();
-    int i = 0;
-    while (i < paramInterActiveAnimConf.jdField_b_of_type_Int)
+    int m = 0;
+    while (m < paramInterActiveAnimConf.d)
     {
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(localFile.getAbsolutePath());
       ((StringBuilder)localObject2).append(File.separatorChar);
-      ((StringBuilder)localObject2).append(paramInterActiveAnimConf.jdField_b_of_type_JavaLangString);
-      i += 1;
-      ((StringBuilder)localObject2).append(String.format("%04d.png", new Object[] { Integer.valueOf(i) }));
+      ((StringBuilder)localObject2).append(paramInterActiveAnimConf.e);
+      m += 1;
+      ((StringBuilder)localObject2).append(String.format("%04d.png", new Object[] { Integer.valueOf(m) }));
       localObject2 = ((StringBuilder)localObject2).toString();
       BubbleInterActiveAnim.AnimFrameData localAnimFrameData = new BubbleInterActiveAnim.AnimFrameData();
-      localAnimFrameData.jdField_b_of_type_JavaLangString = ((String)localObject2);
+      localAnimFrameData.b = ((String)localObject2);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramInterActiveAnimConf.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramInterActiveAnimConf.a);
       localStringBuilder.append((String)localObject2);
-      localAnimFrameData.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-      localAnimFrameData.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder = paramAnimHolder;
-      localAnimFrameData.jdField_a_of_type_AndroidGraphicsRect = paramInterActiveAnimConf.jdField_a_of_type_AndroidGraphicsRect;
-      if (paramInterActiveAnimConf.jdField_a_of_type_Boolean) {
-        localAnimFrameData.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramAnimHolder.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend() ^ true);
+      localAnimFrameData.a = localStringBuilder.toString();
+      localAnimFrameData.l = paramAnimHolder;
+      localAnimFrameData.h = paramInterActiveAnimConf.i;
+      if (paramInterActiveAnimConf.f) {
+        localAnimFrameData.c = Boolean.valueOf(paramAnimHolder.c.isSend() ^ true);
       }
-      localAnimFrameData.jdField_a_of_type_Boolean = paramAnimHolder.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend();
-      if (paramInterActiveAnimConf.jdField_e_of_type_Int == -1) {
-        localAnimFrameData.jdField_a_of_type_ComTencentMobileqqBubblePathPoint = ((PathPoint)localObject1);
+      localAnimFrameData.d = paramAnimHolder.c.isSend();
+      if (paramInterActiveAnimConf.m == -1) {
+        localAnimFrameData.g = ((PathPoint)localObject1);
       }
       paramRect.add(localAnimFrameData);
     }
     paramAnimHolder = new Keyframe[paramRect.size() + 1];
-    float f = 1.0F / paramRect.size();
+    float f1 = 1.0F / paramRect.size();
     paramAnimHolder[0] = Keyframe.ofObject(0.0F, paramRect.get(0));
-    i = 0;
-    while (i < paramRect.size())
+    m = 0;
+    while (m < paramRect.size())
     {
-      if (i != paramRect.size() - 1)
+      if (m != paramRect.size() - 1)
       {
-        int j = i + 1;
-        paramAnimHolder[j] = Keyframe.ofObject(j * f, paramRect.get(i));
+        int n = m + 1;
+        paramAnimHolder[n] = Keyframe.ofObject(n * f1, paramRect.get(m));
       }
       else
       {
-        paramAnimHolder[(i + 1)] = Keyframe.ofObject(1.0F, paramRect.get(i));
+        paramAnimHolder[(m + 1)] = Keyframe.ofObject(1.0F, paramRect.get(m));
       }
-      i += 1;
+      m += 1;
     }
     paramAnimHolder = PropertyValuesHolder.ofKeyframe("bitmapData", paramAnimHolder);
     paramAnimHolder.setEvaluator(new BubbleInterActiveAnim.BimapEvaluator(this));
-    return ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { paramAnimHolder }).setDuration(paramRect.size() * paramInterActiveAnimConf.jdField_a_of_type_Long);
+    return ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { paramAnimHolder }).setDuration(paramRect.size() * paramInterActiveAnimConf.b);
   }
   
   public ObjectAnimator a(BubbleInterActiveAnim.AnimHolder paramAnimHolder, BubbleNewAnimConf.InterActiveAnimConf paramInterActiveAnimConf)
   {
     Object localObject2 = a(paramAnimHolder, paramInterActiveAnimConf, null);
     Object localObject1;
-    if ((!TextUtils.isEmpty(paramInterActiveAnimConf.f)) && (paramInterActiveAnimConf.jdField_d_of_type_AndroidGraphicsRect != null))
+    if ((!TextUtils.isEmpty(paramInterActiveAnimConf.p)) && (paramInterActiveAnimConf.r != null))
     {
-      localObject1 = a(paramAnimHolder.jdField_b_of_type_AndroidGraphicsRect, paramInterActiveAnimConf.jdField_d_of_type_AndroidGraphicsRect, paramInterActiveAnimConf.f, paramAnimHolder.jdField_b_of_type_ComTencentMobileqqDataMessageRecord.isSend());
+      localObject1 = a(paramAnimHolder.b, paramInterActiveAnimConf.r, paramInterActiveAnimConf.p, paramAnimHolder.d.isSend());
     }
     else
     {
@@ -828,9 +763,9 @@ public class BubbleInterActiveAnim
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("end align ");
-        ((StringBuilder)localObject1).append(paramInterActiveAnimConf.f);
+        ((StringBuilder)localObject1).append(paramInterActiveAnimConf.p);
         ((StringBuilder)localObject1).append(", endRect: ");
-        ((StringBuilder)localObject1).append(paramInterActiveAnimConf.jdField_d_of_type_AndroidGraphicsRect);
+        ((StringBuilder)localObject1).append(paramInterActiveAnimConf.r);
         QLog.i("BubbleInterActiveAnim", 2, ((StringBuilder)localObject1).toString());
       }
       localObject1 = null;
@@ -840,33 +775,33 @@ public class BubbleInterActiveAnim
       if (localObject1 == null) {
         return null;
       }
-      int j = ((Integer)((Pair)localObject2).first).intValue();
-      int k = ((Integer)((Pair)localObject2).second).intValue();
-      int m = ((Integer)((Pair)localObject1).first).intValue();
-      int n = ((Integer)((Pair)localObject1).second).intValue();
+      int n = ((Integer)((Pair)localObject2).first).intValue();
+      int i1 = ((Integer)((Pair)localObject2).second).intValue();
+      int i2 = ((Integer)((Pair)localObject1).first).intValue();
+      int i3 = ((Integer)((Pair)localObject1).second).intValue();
       localObject1 = new ArrayList();
-      ((ArrayList)localObject1).add(PathPoint.b(j, k));
-      ((ArrayList)localObject1).add(PathPoint.a(m, n));
+      ((ArrayList)localObject1).add(PathPoint.b(n, i1));
+      ((ArrayList)localObject1).add(PathPoint.a(i2, i3));
       localObject2 = new BubbleInterActiveAnim.PathEvaluator();
       BubbleInterActiveAnim.AnimFrameData[] arrayOfAnimFrameData = new BubbleInterActiveAnim.AnimFrameData[((ArrayList)localObject1).size()];
-      int i = 0;
-      while (i < arrayOfAnimFrameData.length)
+      int m = 0;
+      while (m < arrayOfAnimFrameData.length)
       {
         BubbleInterActiveAnim.AnimFrameData localAnimFrameData = new BubbleInterActiveAnim.AnimFrameData();
-        localAnimFrameData.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder = paramAnimHolder;
-        localAnimFrameData.jdField_a_of_type_ComTencentMobileqqBubblePathPoint = ((PathPoint)((ArrayList)localObject1).get(i));
-        if (paramInterActiveAnimConf.jdField_a_of_type_Boolean) {
-          localAnimFrameData.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramAnimHolder.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend() ^ true);
+        localAnimFrameData.l = paramAnimHolder;
+        localAnimFrameData.g = ((PathPoint)((ArrayList)localObject1).get(m));
+        if (paramInterActiveAnimConf.f) {
+          localAnimFrameData.c = Boolean.valueOf(paramAnimHolder.c.isSend() ^ true);
         }
-        localAnimFrameData.jdField_a_of_type_Boolean = paramAnimHolder.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend();
-        localAnimFrameData.jdField_b_of_type_Boolean = paramInterActiveAnimConf.jdField_b_of_type_Boolean;
-        localAnimFrameData.jdField_a_of_type_AndroidGraphicsRect = paramInterActiveAnimConf.jdField_a_of_type_AndroidGraphicsRect;
-        arrayOfAnimFrameData[i] = localAnimFrameData;
-        i += 1;
+        localAnimFrameData.d = paramAnimHolder.c.isSend();
+        localAnimFrameData.e = paramInterActiveAnimConf.n;
+        localAnimFrameData.h = paramInterActiveAnimConf.i;
+        arrayOfAnimFrameData[m] = localAnimFrameData;
+        m += 1;
       }
       paramAnimHolder = ObjectAnimator.ofObject(this, "pathLocation", (TypeEvaluator)localObject2, arrayOfAnimFrameData);
-      float f = (Math.abs(j - m) + Math.abs(k - n)) * 1.0F / this.c;
-      paramAnimHolder.setDuration(((float)paramInterActiveAnimConf.jdField_a_of_type_Long * f));
+      float f1 = (Math.abs(n - i2) + Math.abs(i1 - i3)) * 1.0F / this.i;
+      paramAnimHolder.setDuration(((float)paramInterActiveAnimConf.b * f1));
       return paramAnimHolder;
     }
     return null;
@@ -874,24 +809,24 @@ public class BubbleInterActiveAnim
   
   public Rect a(BaseBubbleBuilder.ViewHolder paramViewHolder, long paramLong, ListView paramListView)
   {
-    int i = paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Int;
-    paramListView = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(i, false);
+    int m = paramViewHolder.i.a;
+    paramListView = this.d.a(m, false);
     if (paramListView == null) {
       return null;
     }
-    if ((BubbleNewAnimConf)paramListView.b.get("animation_start") == null)
+    if ((BubbleNewAnimConf)paramListView.y.get("animation_start") == null)
     {
-      paramListView = paramListView.b.values().iterator();
+      paramListView = paramListView.y.values().iterator();
       while ((paramListView.hasNext()) && ((BubbleNewAnimConf)paramListView.next() == null)) {}
     }
-    paramListView = paramViewHolder.jdField_a_of_type_AndroidViewView;
-    int j = paramListView.getLeft();
-    i = paramListView.getTop();
+    paramListView = paramViewHolder.h;
+    int n = paramListView.getLeft();
+    m = paramListView.getTop();
     paramViewHolder = (View)paramListView.getParent();
     while ((paramViewHolder != null) && (!(paramViewHolder instanceof BaseChatItemLayout)))
     {
-      j += paramViewHolder.getLeft();
-      i += paramViewHolder.getTop();
+      n += paramViewHolder.getLeft();
+      m += paramViewHolder.getTop();
       paramViewHolder = paramViewHolder.getParent();
       if ((paramViewHolder instanceof View)) {
         paramViewHolder = (View)paramViewHolder;
@@ -900,99 +835,26 @@ public class BubbleInterActiveAnim
       }
     }
     paramViewHolder = new Rect();
-    paramViewHolder.left = (BaseChatItemLayout.j + j);
-    paramViewHolder.right = (j + (paramListView.getRight() - paramListView.getLeft()) - BaseChatItemLayout.j);
-    paramViewHolder.top = (BaseChatItemLayout.h + i);
-    paramViewHolder.bottom = (i + (paramListView.getBottom() - paramListView.getTop()) - BaseChatItemLayout.i);
+    paramViewHolder.left = (BaseChatItemLayout.getBubblePaddingAlignHead() + n);
+    paramViewHolder.right = (n + (paramListView.getRight() - paramListView.getLeft()) - BaseChatItemLayout.getBubblePaddingAlignHead());
+    paramViewHolder.top = (BaseChatItemLayout.k + m);
+    paramViewHolder.bottom = (m + (paramListView.getBottom() - paramListView.getTop()) - BaseChatItemLayout.l);
     return paramViewHolder;
   }
   
   public Pair<Integer, Integer> a(Rect paramRect1, Rect paramRect2, String paramString, boolean paramBoolean)
   {
-    int i = a(paramRect1, paramRect2, paramString, 0);
-    return new Pair(Integer.valueOf(a(paramRect1, paramRect2, paramString, paramBoolean, 0)), Integer.valueOf(i));
-  }
-  
-  public BubbleInterActiveAnim.AnimHolder a(long paramLong1, long paramLong2)
-  {
-    Object localObject1 = AIOUtils.a(AIOUtils.a(this.jdField_a_of_type_ComTencentWidgetListView, AIOUtils.a(paramLong1, this.jdField_a_of_type_ComTencentWidgetListView.getAdapter())));
-    boolean bool = localObject1 instanceof BaseBubbleBuilder.ViewHolder;
-    BubbleNewAnimConf localBubbleNewAnimConf = null;
-    if (bool) {
-      localObject1 = (BaseBubbleBuilder.ViewHolder)localObject1;
-    } else {
-      localObject1 = null;
-    }
-    Object localObject2 = AIOUtils.a(AIOUtils.a(this.jdField_a_of_type_ComTencentWidgetListView, AIOUtils.a(paramLong2, this.jdField_a_of_type_ComTencentWidgetListView.getAdapter())));
-    if ((localObject2 instanceof BaseBubbleBuilder.ViewHolder)) {
-      localObject2 = (BaseBubbleBuilder.ViewHolder)localObject2;
-    } else {
-      localObject2 = null;
-    }
-    if (a((BaseBubbleBuilder.ViewHolder)localObject1, (BaseBubbleBuilder.ViewHolder)localObject2)) {
-      return null;
-    }
-    int i = ((BaseBubbleBuilder.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Int;
-    int j = ((BaseBubbleBuilder.ViewHolder)localObject2).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Int;
-    BubbleConfig localBubbleConfig = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(i, false);
-    Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(j, false);
-    Object localObject3 = localBubbleNewAnimConf;
-    if (localBubbleConfig != null)
-    {
-      localObject3 = localBubbleNewAnimConf;
-      if (localObject4 != null)
-      {
-        localObject3 = localBubbleNewAnimConf;
-        if (localBubbleConfig.b != null)
-        {
-          if (((BubbleConfig)localObject4).b == null) {
-            return null;
-          }
-          localBubbleNewAnimConf = (BubbleNewAnimConf)localBubbleConfig.b.get("animation_start");
-          localObject4 = (BubbleNewAnimConf)((BubbleConfig)localObject4).b.get("passive_animation");
-          if (localBubbleNewAnimConf == null)
-          {
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("can't find mInterActiveAnims from bubbleId: ");
-            ((StringBuilder)localObject1).append(i);
-            QLog.e("BubbleInterActiveAnim", 1, ((StringBuilder)localObject1).toString());
-            return null;
-          }
-          localObject3 = new BubbleInterActiveAnim.AnimHolder();
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((BaseBubbleBuilder.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_b_of_type_ComTencentMobileqqDataMessageRecord = ((BaseBubbleBuilder.ViewHolder)localObject2).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_a_of_type_JavaUtilHashMap = new HashMap(localBubbleConfig.b);
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_a_of_type_JavaUtilHashMap.put("passive_animation", localObject4);
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_ComTencentWidgetListView.getContext());
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView.layout(0, 0, localBubbleNewAnimConf.jdField_a_of_type_AndroidGraphicsRect.right, localBubbleNewAnimConf.jdField_a_of_type_AndroidGraphicsRect.bottom);
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_a_of_type_AndroidGraphicsRect = a((BaseBubbleBuilder.ViewHolder)localObject1, paramLong1, this.jdField_a_of_type_ComTencentWidgetListView);
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_b_of_type_AndroidGraphicsRect = a((BaseBubbleBuilder.ViewHolder)localObject2, paramLong2, this.jdField_a_of_type_ComTencentWidgetListView);
-          localObject2 = (View)((BaseBubbleBuilder.ViewHolder)localObject2).jdField_a_of_type_AndroidViewView.getParent();
-          i = ((View)((BaseBubbleBuilder.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView.getParent()).getTop() - ((View)localObject2).getTop();
-          localObject2 = ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_b_of_type_AndroidGraphicsRect;
-          ((Rect)localObject2).top -= i;
-          localObject2 = ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_b_of_type_AndroidGraphicsRect;
-          ((Rect)localObject2).bottom -= i;
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_a_of_type_AndroidViewView = ((BaseBubbleBuilder.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView;
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), localObject3);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addView(((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView);
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_a_of_type_Long = paramLong1;
-          ((BubbleInterActiveAnim.AnimHolder)localObject3).jdField_b_of_type_Long = paramLong2;
-        }
-      }
-    }
-    return localObject3;
+    int m = a(paramRect1, paramRect2, paramString, 0);
+    return new Pair(Integer.valueOf(a(paramRect1, paramRect2, paramString, paramBoolean, 0)), Integer.valueOf(m));
   }
   
   protected void a(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    Iterator localIterator = this.g.values().iterator();
     while (localIterator.hasNext())
     {
       BubbleInterActiveAnim.AnimHolder localAnimHolder = (BubbleInterActiveAnim.AnimHolder)localIterator.next();
-      if ((localAnimHolder != null) && (localAnimHolder.jdField_a_of_type_AndroidWidgetImageView != null))
+      if ((localAnimHolder != null) && (localAnimHolder.e != null))
       {
         if (QLog.isColorLevel())
         {
@@ -1000,10 +862,10 @@ public class BubbleInterActiveAnim
           localStringBuilder.append("add delta ");
           localStringBuilder.append(paramInt);
           localStringBuilder.append(" for seq: ");
-          localStringBuilder.append(localAnimHolder.jdField_a_of_type_Long);
+          localStringBuilder.append(localAnimHolder.g);
           QLog.i("BubbleInterActiveAnim", 2, localStringBuilder.toString());
         }
-        localAnimHolder.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(localAnimHolder.jdField_a_of_type_AndroidWidgetImageView.getTranslationY() + paramInt);
+        localAnimHolder.e.setTranslationY(localAnimHolder.e.getTranslationY() + paramInt);
       }
     }
   }
@@ -1015,32 +877,32 @@ public class BubbleInterActiveAnim
   
   public void a(BubbleInterActiveAnim.AnimHolder paramAnimHolder)
   {
-    paramAnimHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeView(paramAnimHolder.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramAnimHolder.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0) {
+    paramAnimHolder.e.setVisibility(8);
+    this.a.removeView(paramAnimHolder.e);
+    this.g.remove(Long.valueOf(paramAnimHolder.g));
+    if (this.g.size() == 0) {
       d();
     }
   }
   
   public void a(BubbleNewAnimConf paramBubbleNewAnimConf, int paramInt)
   {
-    File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramInt, false), paramBubbleNewAnimConf.jdField_d_of_type_JavaLangString);
+    File localFile = new File(this.d.d(paramInt, false), paramBubbleNewAnimConf.k);
     paramInt = 0;
-    while (paramInt < paramBubbleNewAnimConf.jdField_b_of_type_Int)
+    while (paramInt < paramBubbleNewAnimConf.d)
     {
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(localFile.getAbsolutePath());
       ((StringBuilder)localObject1).append(File.separatorChar);
-      ((StringBuilder)localObject1).append(paramBubbleNewAnimConf.jdField_b_of_type_JavaLangString);
-      int i = paramInt + 1;
-      ((StringBuilder)localObject1).append(String.format("%04d.png", new Object[] { Integer.valueOf(i) }));
+      ((StringBuilder)localObject1).append(paramBubbleNewAnimConf.e);
+      int m = paramInt + 1;
+      ((StringBuilder)localObject1).append(String.format("%04d.png", new Object[] { Integer.valueOf(m) }));
       Object localObject2 = ((StringBuilder)localObject1).toString();
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(paramBubbleNewAnimConf.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramBubbleNewAnimConf.a);
       ((StringBuilder)localObject1).append((String)localObject2);
       String str = ((StringBuilder)localObject1).toString();
-      if (!this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+      if (!this.k.containsKey(str))
       {
         Object localObject3 = GlobalImageCache.a.get(str);
         localObject1 = null;
@@ -1064,34 +926,29 @@ public class BubbleInterActiveAnim
       }
       else
       {
-        localObject1 = (Bitmap)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        localObject1 = (Bitmap)this.k.get(str);
       }
-      paramInt = i;
+      paramInt = m;
       if (localObject1 != null)
       {
         GlobalImageCache.a.put(str, localObject1);
-        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject1);
-        paramInt = i;
+        this.k.put(str, localObject1);
+        paramInt = m;
       }
     }
   }
   
-  protected boolean a(int paramInt)
-  {
-    return true;
-  }
-  
   protected boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    Iterator localIterator = this.g.values().iterator();
     while (localIterator.hasNext())
     {
       BubbleInterActiveAnim.AnimHolder localAnimHolder = (BubbleInterActiveAnim.AnimHolder)localIterator.next();
-      if ((localAnimHolder != null) && (localAnimHolder.jdField_a_of_type_AndroidViewView != null))
+      if ((localAnimHolder != null) && (localAnimHolder.f != null))
       {
-        paramInt1 = AIOUtils.a(localAnimHolder.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentWidgetListView.getAdapter());
-        paramInt2 = AIOUtils.a(localAnimHolder.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentWidgetListView.getAdapter());
-        a(localAnimHolder, AIOUtils.a(AIOUtils.a(this.jdField_a_of_type_ComTencentWidgetListView, paramInt1)), AIOUtils.a(AIOUtils.a(this.jdField_a_of_type_ComTencentWidgetListView, paramInt2)));
+        paramInt1 = AIOUtils.a(localAnimHolder.g, this.b.getAdapter());
+        paramInt2 = AIOUtils.a(localAnimHolder.h, this.b.getAdapter());
+        a(localAnimHolder, AIOUtils.b(AIOUtils.a(this.b, paramInt1)), AIOUtils.b(AIOUtils.a(this.b, paramInt2)));
       }
     }
     return false;
@@ -1118,7 +975,7 @@ public class BubbleInterActiveAnim
         paramVarArgs.append(l2);
         QLog.d("BubbleInterActiveAnim", 1, paramVarArgs.toString());
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager == null)
+      if (this.d == null)
       {
         paramVarArgs = BaseApplicationImpl.getApplication().getRuntime();
         if ((paramVarArgs instanceof QQAppInterface)) {
@@ -1129,7 +986,7 @@ public class BubbleInterActiveAnim
         if (paramVarArgs == null) {
           return false;
         }
-        this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager = ((BubbleManager)paramVarArgs.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER));
+        this.d = ((BubbleManager)paramVarArgs.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER));
       }
       a(l1, l2);
       return true;
@@ -1139,40 +996,70 @@ public class BubbleInterActiveAnim
   
   public ObjectAnimator b(BubbleInterActiveAnim.AnimHolder paramAnimHolder)
   {
-    Object localObject1 = (BubbleNewAnimConf)paramAnimHolder.jdField_a_of_type_JavaUtilHashMap.get("animation_running");
-    if (!(localObject1 instanceof BubbleNewAnimConf.InterActiveAnimConf)) {
-      return null;
-    }
-    Object localObject2 = (BubbleNewAnimConf.InterActiveAnimConf)localObject1;
-    if (((BubbleNewAnimConf.InterActiveAnimConf)localObject2).jdField_e_of_type_Int == -1) {
-      return null;
-    }
-    if (((BubbleNewAnimConf.InterActiveAnimConf)localObject2).jdField_e_of_type_Int == 0) {
-      localObject1 = a(paramAnimHolder, (BubbleNewAnimConf.InterActiveAnimConf)localObject2);
-    } else {
-      localObject1 = b(paramAnimHolder, (BubbleNewAnimConf.InterActiveAnimConf)localObject2);
-    }
-    localObject2 = a(paramAnimHolder, paramAnimHolder.jdField_a_of_type_AndroidGraphicsRect, (BubbleNewAnimConf.InterActiveAnimConf)localObject2);
-    if (localObject1 != null)
+    Object localObject1 = (BubbleNewAnimConf.InterActiveAnimConf)paramAnimHolder.i.get("animation_start");
+    ObjectAnimator localObjectAnimator = a(paramAnimHolder, paramAnimHolder.a, (BubbleNewAnimConf.InterActiveAnimConf)localObject1);
+    localObjectAnimator.setRepeatCount(((BubbleNewAnimConf.InterActiveAnimConf)localObject1).c - 1);
+    if (((BubbleNewAnimConf.InterActiveAnimConf)paramAnimHolder.i.get("animation_running")).n)
     {
-      if (localObject2 == null) {
-        return null;
+      Object localObject3 = (BubbleNewAnimConf.InterActiveAnimConf)paramAnimHolder.i.get("animation_end");
+      Object localObject2 = a(paramAnimHolder.a, ((BubbleNewAnimConf.InterActiveAnimConf)localObject1).i, ((BubbleNewAnimConf.InterActiveAnimConf)localObject1).h, paramAnimHolder.c.isSend());
+      localObject3 = a(paramAnimHolder.b, ((BubbleNewAnimConf.InterActiveAnimConf)localObject3).i, ((BubbleNewAnimConf.InterActiveAnimConf)localObject3).h, paramAnimHolder.d.isSend());
+      int m = ((Integer)((Pair)localObject2).first).intValue();
+      int n = ((Integer)((Pair)localObject2).second).intValue();
+      int i1 = ((Integer)((Pair)localObject3).first).intValue();
+      double d1 = Math.abs(((Integer)((Pair)localObject3).second).intValue() - n);
+      double d2 = Math.abs(i1 - m);
+      d2 = Math.sqrt(Math.pow(d1, 2.0D) + Math.pow(d2, 2.0D));
+      float f1;
+      if ((d2 != 0.0D) && (d1 != 0.0D))
+      {
+        Double.isNaN(d1);
+        float f2 = (float)Math.toDegrees(Math.asin(d1 / d2));
+        f1 = f2;
+        if (!paramAnimHolder.c.isSend()) {
+          f1 = -f2;
+        }
       }
-      ((ObjectAnimator)localObject2).setDuration(((ObjectAnimator)localObject2).getDuration() / 2L);
-      ((ObjectAnimator)localObject2).setRepeatCount(-1);
-      ((ObjectAnimator)localObject1).addListener(new BubbleInterActiveAnim.7(this, paramAnimHolder, (ObjectAnimator)localObject2));
-      return localObject1;
+      else
+      {
+        f1 = 0.0F;
+      }
+      localObject2 = ObjectAnimator.ofFloat(paramAnimHolder.e, "rotation", new float[] { 0.0F, f1 });
+      m = ((BubbleNewAnimConf.InterActiveAnimConf)localObject1).c - 1;
+      long l1;
+      if (m > 0) {
+        l1 = m * localObjectAnimator.getDuration();
+      } else {
+        l1 = localObjectAnimator.getDuration();
+      }
+      ((ObjectAnimator)localObject2).setDuration(l1);
+      localObject1 = localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("start animation, rotate view: ");
+        ((StringBuilder)localObject1).append(f1);
+        ((StringBuilder)localObject1).append(", duration: ");
+        ((StringBuilder)localObject1).append(l1);
+        QLog.i("BubbleInterActiveAnim", 2, ((StringBuilder)localObject1).toString());
+        localObject1 = localObject2;
+      }
     }
-    return null;
+    else
+    {
+      localObject1 = null;
+    }
+    localObjectAnimator.addListener(a(paramAnimHolder, (ObjectAnimator)localObject1));
+    return localObjectAnimator;
   }
   
   public ObjectAnimator b(BubbleInterActiveAnim.AnimHolder paramAnimHolder, BubbleNewAnimConf.InterActiveAnimConf paramInterActiveAnimConf)
   {
     Object localObject2 = a(paramAnimHolder, paramInterActiveAnimConf, null);
     Object localObject1;
-    if ((!TextUtils.isEmpty(paramInterActiveAnimConf.f)) && (paramInterActiveAnimConf.jdField_d_of_type_AndroidGraphicsRect != null))
+    if ((!TextUtils.isEmpty(paramInterActiveAnimConf.p)) && (paramInterActiveAnimConf.r != null))
     {
-      localObject1 = a(paramAnimHolder.jdField_b_of_type_AndroidGraphicsRect, paramInterActiveAnimConf.jdField_d_of_type_AndroidGraphicsRect, paramInterActiveAnimConf.f, paramAnimHolder.jdField_b_of_type_ComTencentMobileqqDataMessageRecord.isSend());
+      localObject1 = a(paramAnimHolder.b, paramInterActiveAnimConf.r, paramInterActiveAnimConf.p, paramAnimHolder.d.isSend());
     }
     else
     {
@@ -1180,9 +1067,9 @@ public class BubbleInterActiveAnim
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("end align ");
-        ((StringBuilder)localObject1).append(paramInterActiveAnimConf.f);
+        ((StringBuilder)localObject1).append(paramInterActiveAnimConf.p);
         ((StringBuilder)localObject1).append(", endRect: ");
-        ((StringBuilder)localObject1).append(paramInterActiveAnimConf.jdField_d_of_type_AndroidGraphicsRect);
+        ((StringBuilder)localObject1).append(paramInterActiveAnimConf.r);
         QLog.i("BubbleInterActiveAnim", 2, ((StringBuilder)localObject1).toString());
       }
       localObject1 = null;
@@ -1192,31 +1079,31 @@ public class BubbleInterActiveAnim
       if (localObject1 == null) {
         return null;
       }
-      int j = ((Integer)((Pair)localObject2).first).intValue();
-      int k = ((Integer)((Pair)localObject2).second).intValue();
-      int m = ((Integer)((Pair)localObject1).first).intValue();
-      int n = ((Integer)((Pair)localObject1).second).intValue();
+      int n = ((Integer)((Pair)localObject2).first).intValue();
+      int i1 = ((Integer)((Pair)localObject2).second).intValue();
+      int i2 = ((Integer)((Pair)localObject1).first).intValue();
+      int i3 = ((Integer)((Pair)localObject1).second).intValue();
       float f3;
       float f2;
       float f5;
       float f4;
-      if (paramInterActiveAnimConf.jdField_e_of_type_Int == 1)
+      if (paramInterActiveAnimConf.m == 1)
       {
-        f1 = m - j;
-        f3 = j;
-        f2 = n - k;
-        f5 = k;
+        f1 = i2 - n;
+        f3 = n;
+        f2 = i3 - i1;
+        f5 = i1;
         f4 = f2 * 1.0F + f5;
         f2 = 0.1F * f2 + f5;
         f1 = f1 * 0.25F + f3;
         f3 = f1;
       }
-      else if (paramInterActiveAnimConf.jdField_e_of_type_Int == 2)
+      else if (paramInterActiveAnimConf.m == 2)
       {
-        f1 = m - j;
-        f5 = j;
-        f2 = n - k;
-        f4 = k;
+        f1 = i2 - n;
+        f5 = n;
+        f2 = i3 - i1;
+        f4 = i1;
         f3 = f1 * 1.0F + f5;
         f2 = f2 * 0.25F + f4;
         f4 = f2;
@@ -1230,27 +1117,27 @@ public class BubbleInterActiveAnim
         f4 = 0.0F;
       }
       localObject1 = new ArrayList();
-      ((ArrayList)localObject1).add(PathPoint.b(j, k));
-      ((ArrayList)localObject1).add(PathPoint.a(f1, f2, f3, f4, m, n));
+      ((ArrayList)localObject1).add(PathPoint.b(n, i1));
+      ((ArrayList)localObject1).add(PathPoint.a(f1, f2, f3, f4, i2, i3));
       localObject2 = new BubbleInterActiveAnim.AnimFrameData[((ArrayList)localObject1).size()];
-      int i = 0;
-      while (i < localObject2.length)
+      int m = 0;
+      while (m < localObject2.length)
       {
         BubbleInterActiveAnim.AnimFrameData localAnimFrameData = new BubbleInterActiveAnim.AnimFrameData();
-        localAnimFrameData.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder = paramAnimHolder;
-        localAnimFrameData.jdField_a_of_type_ComTencentMobileqqBubblePathPoint = ((PathPoint)((ArrayList)localObject1).get(i));
-        if (paramInterActiveAnimConf.jdField_a_of_type_Boolean) {
-          localAnimFrameData.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramAnimHolder.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend() ^ true);
+        localAnimFrameData.l = paramAnimHolder;
+        localAnimFrameData.g = ((PathPoint)((ArrayList)localObject1).get(m));
+        if (paramInterActiveAnimConf.f) {
+          localAnimFrameData.c = Boolean.valueOf(paramAnimHolder.c.isSend() ^ true);
         }
-        localAnimFrameData.jdField_a_of_type_Boolean = paramAnimHolder.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend();
-        localAnimFrameData.jdField_a_of_type_AndroidGraphicsRect = paramInterActiveAnimConf.jdField_a_of_type_AndroidGraphicsRect;
-        localAnimFrameData.jdField_b_of_type_Boolean = paramInterActiveAnimConf.jdField_b_of_type_Boolean;
-        localObject2[i] = localAnimFrameData;
-        i += 1;
+        localAnimFrameData.d = paramAnimHolder.c.isSend();
+        localAnimFrameData.h = paramInterActiveAnimConf.i;
+        localAnimFrameData.e = paramInterActiveAnimConf.n;
+        localObject2[m] = localAnimFrameData;
+        m += 1;
       }
       paramAnimHolder = ObjectAnimator.ofObject(this, "pathLocation", new BubbleInterActiveAnim.PathEvaluator(), (Object[])localObject2);
-      float f1 = (Math.abs(j - m) + Math.abs(k - n)) * 1.0F / this.c;
-      double d1 = (float)paramInterActiveAnimConf.jdField_a_of_type_Long * f1;
+      float f1 = (Math.abs(n - i2) + Math.abs(i1 - i3)) * 1.0F / this.i;
+      double d1 = (float)paramInterActiveAnimConf.b * f1;
       Double.isNaN(d1);
       paramAnimHolder.setDuration((d1 * 3.141592653589793D * 0.6000000238418579D));
       return paramAnimHolder;
@@ -1260,73 +1147,180 @@ public class BubbleInterActiveAnim
   
   public void b(long paramLong1, long paramLong2)
   {
-    BubbleInterActiveAnim.AnimHolder localAnimHolder = a(paramLong1, paramLong2);
+    BubbleInterActiveAnim.AnimHolder localAnimHolder = c(paramLong1, paramLong2);
     if (localAnimHolder != null)
     {
-      Object localObject1 = a(localAnimHolder);
+      Object localObject1 = b(localAnimHolder);
       if (localObject1 == null)
       {
         QLog.e("BubbleInterActiveAnim", 1, "startAnimator is null");
         return;
       }
-      ObjectAnimator localObjectAnimator1 = b(localAnimHolder);
+      ObjectAnimator localObjectAnimator1 = c(localAnimHolder);
       if (localObjectAnimator1 == null)
       {
         QLog.e("BubbleInterActiveAnim", 1, "runningAnimator is null");
         return;
       }
-      Object localObject2 = (BubbleNewAnimConf.InterActiveAnimConf)localAnimHolder.jdField_a_of_type_JavaUtilHashMap.get("animation_end");
-      ObjectAnimator localObjectAnimator2 = a(localAnimHolder, localAnimHolder.jdField_b_of_type_AndroidGraphicsRect, (BubbleNewAnimConf.InterActiveAnimConf)localObject2);
+      Object localObject2 = (BubbleNewAnimConf.InterActiveAnimConf)localAnimHolder.i.get("animation_end");
+      ObjectAnimator localObjectAnimator2 = a(localAnimHolder, localAnimHolder.b, (BubbleNewAnimConf.InterActiveAnimConf)localObject2);
       if (localObjectAnimator2 == null)
       {
         QLog.e("BubbleInterActiveAnim", 1, "endAnimator is null");
         return;
       }
-      localObjectAnimator2.setRepeatCount(((BubbleNewAnimConf.InterActiveAnimConf)localObject2).jdField_a_of_type_Int - 1);
-      localObject2 = c(localAnimHolder);
+      localObjectAnimator2.setRepeatCount(((BubbleNewAnimConf.InterActiveAnimConf)localObject2).c - 1);
+      localObject2 = d(localAnimHolder);
       if (localObject2 == null)
       {
         QLog.e("BubbleInterActiveAnim", 1, "passiveAnimator is null");
         return;
       }
-      localAnimHolder.jdField_a_of_type_AndroidAnimationAnimatorSet.playSequentially(new Animator[] { localObject1, localObjectAnimator1, localObjectAnimator2, localObject2 });
-      localAnimHolder.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new BubbleInterActiveAnim.3(this, localAnimHolder));
-      localObject1 = a(localAnimHolder);
-      localAnimHolder.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener((Animator.AnimatorListener)localObject1);
-      this.jdField_a_of_type_AndroidOsHandler.post(new BubbleInterActiveAnim.4(this, localAnimHolder));
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), localAnimHolder);
+      localAnimHolder.j.playSequentially(new Animator[] { localObject1, localObjectAnimator1, localObjectAnimator2, localObject2 });
+      localAnimHolder.j.addListener(new BubbleInterActiveAnim.3(this, localAnimHolder));
+      localObject1 = e(localAnimHolder);
+      localAnimHolder.j.addListener((Animator.AnimatorListener)localObject1);
+      this.l.post(new BubbleInterActiveAnim.4(this, localAnimHolder));
+      this.g.put(Long.valueOf(paramLong1), localAnimHolder);
     }
+  }
+  
+  protected boolean b(int paramInt)
+  {
+    return true;
   }
   
   public ObjectAnimator c(BubbleInterActiveAnim.AnimHolder paramAnimHolder)
   {
-    BubbleNewAnimConf.InterActiveAnimConf localInterActiveAnimConf = (BubbleNewAnimConf.InterActiveAnimConf)paramAnimHolder.jdField_a_of_type_JavaUtilHashMap.get("passive_animation");
-    ObjectAnimator localObjectAnimator = a(paramAnimHolder, paramAnimHolder.jdField_b_of_type_AndroidGraphicsRect, localInterActiveAnimConf);
+    Object localObject1 = (BubbleNewAnimConf)paramAnimHolder.i.get("animation_running");
+    if (!(localObject1 instanceof BubbleNewAnimConf.InterActiveAnimConf)) {
+      return null;
+    }
+    Object localObject2 = (BubbleNewAnimConf.InterActiveAnimConf)localObject1;
+    if (((BubbleNewAnimConf.InterActiveAnimConf)localObject2).m == -1) {
+      return null;
+    }
+    if (((BubbleNewAnimConf.InterActiveAnimConf)localObject2).m == 0) {
+      localObject1 = a(paramAnimHolder, (BubbleNewAnimConf.InterActiveAnimConf)localObject2);
+    } else {
+      localObject1 = b(paramAnimHolder, (BubbleNewAnimConf.InterActiveAnimConf)localObject2);
+    }
+    localObject2 = a(paramAnimHolder, paramAnimHolder.a, (BubbleNewAnimConf.InterActiveAnimConf)localObject2);
+    if (localObject1 != null)
+    {
+      if (localObject2 == null) {
+        return null;
+      }
+      ((ObjectAnimator)localObject2).setDuration(((ObjectAnimator)localObject2).getDuration() / 2L);
+      ((ObjectAnimator)localObject2).setRepeatCount(-1);
+      ((ObjectAnimator)localObject1).addListener(new BubbleInterActiveAnim.7(this, paramAnimHolder, (ObjectAnimator)localObject2));
+      return localObject1;
+    }
+    return null;
+  }
+  
+  public BubbleInterActiveAnim.AnimHolder c(long paramLong1, long paramLong2)
+  {
+    Object localObject1 = AIOUtils.b(AIOUtils.a(this.b, AIOUtils.a(paramLong1, this.b.getAdapter())));
+    boolean bool = localObject1 instanceof BaseBubbleBuilder.ViewHolder;
+    BubbleNewAnimConf localBubbleNewAnimConf = null;
+    if (bool) {
+      localObject1 = (BaseBubbleBuilder.ViewHolder)localObject1;
+    } else {
+      localObject1 = null;
+    }
+    Object localObject2 = AIOUtils.b(AIOUtils.a(this.b, AIOUtils.a(paramLong2, this.b.getAdapter())));
+    if ((localObject2 instanceof BaseBubbleBuilder.ViewHolder)) {
+      localObject2 = (BaseBubbleBuilder.ViewHolder)localObject2;
+    } else {
+      localObject2 = null;
+    }
+    if (a((BaseBubbleBuilder.ViewHolder)localObject1, (BaseBubbleBuilder.ViewHolder)localObject2)) {
+      return null;
+    }
+    int m = ((BaseBubbleBuilder.ViewHolder)localObject1).i.a;
+    int n = ((BaseBubbleBuilder.ViewHolder)localObject2).i.a;
+    BubbleConfig localBubbleConfig = this.d.a(m, false);
+    Object localObject4 = this.d.a(n, false);
+    Object localObject3 = localBubbleNewAnimConf;
+    if (localBubbleConfig != null)
+    {
+      localObject3 = localBubbleNewAnimConf;
+      if (localObject4 != null)
+      {
+        localObject3 = localBubbleNewAnimConf;
+        if (localBubbleConfig.y != null)
+        {
+          if (((BubbleConfig)localObject4).y == null) {
+            return null;
+          }
+          localBubbleNewAnimConf = (BubbleNewAnimConf)localBubbleConfig.y.get("animation_start");
+          localObject4 = (BubbleNewAnimConf)((BubbleConfig)localObject4).y.get("passive_animation");
+          if (localBubbleNewAnimConf == null)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("can't find mInterActiveAnims from bubbleId: ");
+            ((StringBuilder)localObject1).append(m);
+            QLog.e("BubbleInterActiveAnim", 1, ((StringBuilder)localObject1).toString());
+            return null;
+          }
+          localObject3 = new BubbleInterActiveAnim.AnimHolder();
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).c = ((BaseBubbleBuilder.ViewHolder)localObject1).q;
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).d = ((BaseBubbleBuilder.ViewHolder)localObject2).q;
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).i = new HashMap(localBubbleConfig.y);
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).i.put("passive_animation", localObject4);
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).e = new ImageView(this.b.getContext());
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).e.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).e.layout(0, 0, localBubbleNewAnimConf.i.right, localBubbleNewAnimConf.i.bottom);
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).e.setVisibility(4);
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).a = a((BaseBubbleBuilder.ViewHolder)localObject1, paramLong1, this.b);
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).b = a((BaseBubbleBuilder.ViewHolder)localObject2, paramLong2, this.b);
+          localObject2 = (View)((BaseBubbleBuilder.ViewHolder)localObject2).h.getParent();
+          m = ((View)((BaseBubbleBuilder.ViewHolder)localObject1).h.getParent()).getTop() - ((View)localObject2).getTop();
+          localObject2 = ((BubbleInterActiveAnim.AnimHolder)localObject3).b;
+          ((Rect)localObject2).top -= m;
+          localObject2 = ((BubbleInterActiveAnim.AnimHolder)localObject3).b;
+          ((Rect)localObject2).bottom -= m;
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).f = ((BaseBubbleBuilder.ViewHolder)localObject1).h;
+          this.g.put(Long.valueOf(paramLong1), localObject3);
+          this.a.addView(((BubbleInterActiveAnim.AnimHolder)localObject3).e);
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).g = paramLong1;
+          ((BubbleInterActiveAnim.AnimHolder)localObject3).h = paramLong2;
+        }
+      }
+    }
+    return localObject3;
+  }
+  
+  protected void c()
+  {
+    Iterator localIterator = this.g.values().iterator();
+    while (localIterator.hasNext())
+    {
+      BubbleInterActiveAnim.AnimHolder localAnimHolder = (BubbleInterActiveAnim.AnimHolder)localIterator.next();
+      if ((localAnimHolder != null) && (localAnimHolder.e != null)) {
+        localAnimHolder.j.cancel();
+      }
+    }
+  }
+  
+  public ObjectAnimator d(BubbleInterActiveAnim.AnimHolder paramAnimHolder)
+  {
+    BubbleNewAnimConf.InterActiveAnimConf localInterActiveAnimConf = (BubbleNewAnimConf.InterActiveAnimConf)paramAnimHolder.i.get("passive_animation");
+    ObjectAnimator localObjectAnimator = a(paramAnimHolder, paramAnimHolder.b, localInterActiveAnimConf);
     if (localObjectAnimator == null)
     {
       QLog.e("BubbleInterActiveAnim", 1, "passiveAnimator is null");
       return null;
     }
-    localObjectAnimator.setRepeatCount(localInterActiveAnimConf.jdField_a_of_type_Int - 1);
+    localObjectAnimator.setRepeatCount(localInterActiveAnimConf.c - 1);
     localObjectAnimator.addListener(new BubbleInterActiveAnim.8(this, paramAnimHolder));
     return localObjectAnimator;
-  }
-  
-  protected void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      BubbleInterActiveAnim.AnimHolder localAnimHolder = (BubbleInterActiveAnim.AnimHolder)localIterator.next();
-      if ((localAnimHolder != null) && (localAnimHolder.jdField_a_of_type_AndroidWidgetImageView != null)) {
-        localAnimHolder.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-      }
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleInterActiveAnim
  * JD-Core Version:    0.7.0.1
  */

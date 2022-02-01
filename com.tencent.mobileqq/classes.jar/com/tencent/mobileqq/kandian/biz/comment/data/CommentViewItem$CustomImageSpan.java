@@ -11,26 +11,26 @@ import android.text.style.ImageSpan;
 class CommentViewItem$CustomImageSpan
   extends ImageSpan
 {
-  private int jdField_a_of_type_Int;
   private int b;
+  private int c;
   
   public CommentViewItem$CustomImageSpan(CommentViewItem paramCommentViewItem, Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super(paramContext.getApplicationContext(), paramInt1, paramInt2);
-    this.b = paramInt4;
-    this.jdField_a_of_type_Int = paramInt3;
+    this.c = paramInt4;
+    this.b = paramInt3;
   }
   
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
     paramCharSequence = getDrawable();
-    if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
+    if ((this.b > 0) && (this.c > 0))
     {
       Rect localRect = new Rect();
       localRect.left = 0;
-      localRect.right = this.jdField_a_of_type_Int;
+      localRect.right = this.b;
       localRect.top = 0;
-      localRect.bottom = this.b;
+      localRect.bottom = this.c;
       paramCharSequence.setBounds(localRect);
     }
     paramCanvas.save();
@@ -63,12 +63,12 @@ class CommentViewItem$CustomImageSpan
       paramFontMetricsInt.bottom = paramInt2;
       paramFontMetricsInt.descent = paramInt2;
     }
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.CommentViewItem.CustomImageSpan
  * JD-Core Version:    0.7.0.1
  */

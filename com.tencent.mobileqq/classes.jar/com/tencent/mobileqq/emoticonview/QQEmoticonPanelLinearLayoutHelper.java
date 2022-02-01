@@ -11,7 +11,6 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
 import android.text.TextUtils.TruncateAt;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -21,8 +20,6 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -103,6 +100,7 @@ public class QQEmoticonPanelLinearLayoutHelper
   protected PopOutEmoticonGesture mPopOutEmoticonGesture;
   public StickerFrameLayout mPopupEmo;
   private URLImageView mPopupEmoImage;
+  private PopupWindow mPopupWindow;
   private ViewGroup mRootView;
   private RelativeLayout mShowEmoRlyt;
   private ImageView mStickerCancel;
@@ -111,8 +109,10 @@ public class QQEmoticonPanelLinearLayoutHelper
   private FrameLayout mWindowContent;
   private int panelType = -1;
   private AudioPlayer player;
+  protected boolean popOutEmoAnimMode;
   float screenHeight;
   float screenWidth;
+  private boolean showDescribeInPreview = false;
   private boolean showSticker = false;
   private boolean showing = false;
   private boolean stickerMode = false;
@@ -140,7 +140,7 @@ public class QQEmoticonPanelLinearLayoutHelper
     ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
     localLinearLayout.addView(this.mShowEmoRlyt, (ViewGroup.LayoutParams)localObject);
     localObject = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131374398);
+    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131442564);
     this.mShowEmoRlyt.addView(this.mPopupEmoImage, (ViewGroup.LayoutParams)localObject);
     fillPopEmoLayout(this.mShowEmoRlyt);
     this.mEmoTitleTv = getEmoTitleTv(paramEmoticonInfo);
@@ -153,9 +153,9 @@ public class QQEmoticonPanelLinearLayoutHelper
     paramEmoticonInfo.rightMargin = i;
     this.mShowEmoRlyt.addView(this.mEmoTitleTv, paramEmoticonInfo);
     this.mArrowImageView = new ImageView(getContext());
-    this.mArrowImageView.setImageDrawable(this.mCurrentView.getResources().getDrawable(2130837967));
-    paramEmoticonInfo = new LinearLayout.LayoutParams(ViewUtils.a(18.0F), ViewUtils.a(12.0F));
-    paramEmoticonInfo.topMargin = (-ViewUtils.a(9.0F));
+    this.mArrowImageView.setImageDrawable(this.mCurrentView.getResources().getDrawable(2130837991));
+    paramEmoticonInfo = new LinearLayout.LayoutParams(ViewUtils.dip2px(18.0F), ViewUtils.dip2px(12.0F));
+    paramEmoticonInfo.topMargin = (-ViewUtils.dip2px(9.0F));
     paramEmoticonInfo.gravity = 1;
     localLinearLayout.addView(this.mArrowImageView, paramEmoticonInfo);
   }
@@ -168,23 +168,23 @@ public class QQEmoticonPanelLinearLayoutHelper
   private void fillPopEmoLayout(RelativeLayout paramRelativeLayout)
   {
     this.mStickerCancel = new ImageView(getContext());
-    this.mStickerCancel.setId(2131362351);
+    this.mStickerCancel.setId(2131427951);
     float f = this.density;
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(f * 20.0F), (int)(f * 20.0F));
     localLayoutParams.addRule(11);
     localLayoutParams.addRule(10);
     paramRelativeLayout.addView(this.mStickerCancel, localLayoutParams);
-    this.mStickerCancel.setImageDrawable(this.mCurrentView.getResources().getDrawable(2130847402));
+    this.mStickerCancel.setImageDrawable(this.mCurrentView.getResources().getDrawable(2130849056));
     this.mStickerCancel.setVisibility(4);
     this.mStickerConfirm = new ImageView(getContext());
-    this.mStickerConfirm.setId(2131362352);
+    this.mStickerConfirm.setId(2131427952);
     f = this.density;
     localLayoutParams = new RelativeLayout.LayoutParams((int)(f * 20.0F), (int)(f * 20.0F));
     localLayoutParams.addRule(11);
     localLayoutParams.addRule(12);
     paramRelativeLayout.addView(this.mStickerConfirm, localLayoutParams);
     this.mStickerConfirm.setVisibility(4);
-    this.mStickerConfirm.setImageDrawable(this.mCurrentView.getResources().getDrawable(2130848833));
+    this.mStickerConfirm.setImageDrawable(this.mCurrentView.getResources().getDrawable(2130850500));
   }
   
   private int getChildViewIndex(View paramView)
@@ -351,9 +351,9 @@ public class QQEmoticonPanelLinearLayoutHelper
   private void updatePopupEmoLayout(int paramInt, ViewGroup.MarginLayoutParams paramMarginLayoutParams)
   {
     paramMarginLayoutParams.leftMargin = (tmp.left - (paramInt - tmp.width()) / 2);
-    if (paramMarginLayoutParams.leftMargin + paramInt >= ViewUtils.a())
+    if (paramMarginLayoutParams.leftMargin + paramInt >= ViewUtils.getScreenWidth())
     {
-      paramMarginLayoutParams.leftMargin = (ViewUtils.a() - paramInt);
+      paramMarginLayoutParams.leftMargin = (ViewUtils.getScreenWidth() - paramInt);
       return;
     }
     if (paramMarginLayoutParams.leftMargin <= 0) {
@@ -414,7 +414,7 @@ public class QQEmoticonPanelLinearLayoutHelper
   {
     TextView localTextView = new TextView(getContext());
     localTextView.setText(EmoticonUtils.getSystemAndEmojiEmoticonName(paramEmoticonInfo));
-    localTextView.setId(2131374398);
+    localTextView.setId(2131442564);
     if (ThemeUtil.isNowThemeIsNight(MobileQQ.sMobileQQ.waitAppRuntime(null), false, null)) {
       paramEmoticonInfo = "#8D8D93";
     } else {
@@ -443,10 +443,15 @@ public class QQEmoticonPanelLinearLayoutHelper
     if ((this.mPopupEmo != null) && (this.showing) && (this.mWindowContent != null) && (!this.haveRemovedWindowContent))
     {
       this.haveRemovedWindowContent = true;
-      ((WindowManager)getContext().getSystemService("window")).removeViewImmediate(this.mWindowContent);
-      Object localObject = this.player;
+      Object localObject = this.mPopupWindow;
+      if (localObject != null)
+      {
+        ((PopupWindow)localObject).dismiss();
+        this.mPopupWindow = null;
+      }
+      localObject = this.player;
       if (localObject != null) {
-        ((AudioPlayer)localObject).c();
+        ((AudioPlayer)localObject).d();
       }
       localObject = this.callback;
       if (localObject != null) {
@@ -468,7 +473,7 @@ public class QQEmoticonPanelLinearLayoutHelper
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131362241)
+    if (paramView.getId() == 2131427822)
     {
       if (QLog.isColorLevel()) {
         QLog.d("EmotionPanelLinearLayout", 4, " add_to_custom_face ");
@@ -526,7 +531,7 @@ public class QQEmoticonPanelLinearLayoutHelper
           updatePointViewAlpha(1.0F);
           this.mPointView = null;
           localObject = this.mPopOutEmoticonGesture;
-          if ((localObject != null) && (((PopOutEmoticonGesture)localObject).a()))
+          if ((localObject != null) && (((PopOutEmoticonGesture)localObject).c()))
           {
             this.mPopOutEmoticonGesture.a(paramMotionEvent);
             return true;
@@ -546,17 +551,31 @@ public class QQEmoticonPanelLinearLayoutHelper
             boolean bool = isInvokeSticker(this.lastTouchX, this.lastTouchY, f1, f2);
             localObject = this.mPopOutEmoticonGesture;
             int j;
-            if ((localObject != null) && (((PopOutEmoticonGesture)localObject).a())) {
+            if ((localObject != null) && (((PopOutEmoticonGesture)localObject).c())) {
               j = 1;
             } else {
               j = 0;
             }
-            if ((j != 0) && (i != 0) && (bool))
+            if (this.popOutEmoAnimMode)
             {
+              if ((j == 0) || (i == 0) || (!bool)) {
+                break label1373;
+              }
               if (this.mPointView == null) {
                 this.mPointView = findPointChild(this.lastRelativeTouchX, this.lastRelativeTouchY);
               }
               this.mPopOutEmoticonGesture.a(paramMotionEvent);
+              if (this.hasReportPressMove) {
+                break label1373;
+              }
+              this.hasReportPressMove = true;
+              bool = PopOutEmoticonUtil.a(this.mEmocInfo);
+              if (bool) {
+                paramMotionEvent = "0X800BC22";
+              } else {
+                paramMotionEvent = "0X800BB9F";
+              }
+              PopOutAnimViewHelper.a(paramMotionEvent, this.mEmocInfo, bool);
               return true;
             }
             if ((((IEmosmService)QRoute.api(IEmosmService.class)).getEmojiStickerSwitch()) && (i != 0) && (bool))
@@ -634,11 +653,6 @@ public class QQEmoticonPanelLinearLayoutHelper
               if ((this.mRootView != null) && (this.showSticker) && (!this.isDiyEmotion) && (this.stickerMode) && (((IEmosmService)QRoute.api(IEmosmService.class)).getEmojiStickerSwitch())) {
                 this.mRootView.onTouchEvent(paramMotionEvent);
               }
-              if ((PopOutEmoticonUtil.a(this.panelType, this.mEmocInfo)) && (!this.hasReportPressMove))
-              {
-                this.hasReportPressMove = true;
-                PopOutAnimViewHelper.a("0X800BB9F", this.mEmocInfo);
-              }
             }
           }
           if (((!this.showSticker) && (this.mWindowContent != null)) || (!((IEmosmService)QRoute.api(IEmosmService.class)).getEmojiStickerSwitch())) {
@@ -694,7 +708,7 @@ public class QQEmoticonPanelLinearLayoutHelper
           hidePopupWindow();
         }
         localObject = this.mPopOutEmoticonGesture;
-        if ((localObject != null) && (((PopOutEmoticonGesture)localObject).a()))
+        if ((localObject != null) && (((PopOutEmoticonGesture)localObject).c()))
         {
           this.mPopOutEmoticonGesture.a(paramMotionEvent);
           return true;
@@ -724,6 +738,7 @@ public class QQEmoticonPanelLinearLayoutHelper
         this.mCurrentView.postDelayed(this.mPendingCheckForLongPress, ViewConfiguration.getLongPressTimeout());
       }
     }
+    label1373:
     return true;
   }
   
@@ -812,7 +827,7 @@ public class QQEmoticonPanelLinearLayoutHelper
             if (!((SharedPreferences)localObject3).getBoolean(((StringBuilder)localObject4).toString(), false)) {
               return;
             }
-            localObject4 = (ImageView)paramView.findViewById(2131378202);
+            localObject4 = (ImageView)paramView.findViewById(2131446720);
             if (QLog.isColorLevel())
             {
               localObject5 = new StringBuilder();
@@ -821,7 +836,7 @@ public class QQEmoticonPanelLinearLayoutHelper
               QLog.d("EmotionPanelLinearLayout", 2, ((StringBuilder)localObject5).toString());
             }
             Object localObject5 = URLDrawable.URLDrawableOptions.obtain();
-            ((URLDrawable.URLDrawableOptions)localObject5).mLoadingDrawable = this.context.getResources().getDrawable(2130847348);
+            ((URLDrawable.URLDrawableOptions)localObject5).mLoadingDrawable = this.context.getResources().getDrawable(2130848999);
             localObject5 = URLDrawable.getDrawable(((SharedPreferences)localObject3).getString("magic_promotion_imgUrl", ""), (URLDrawable.URLDrawableOptions)localObject5);
             if ((localObject4 != null) && (localObject5 != null)) {
               ((ImageView)localObject4).setImageDrawable((Drawable)localObject5);
@@ -874,6 +889,32 @@ public class QQEmoticonPanelLinearLayoutHelper
     }
   }
   
+  public PopupWindow popupFullScreen(Context paramContext, View paramView, Drawable paramDrawable)
+  {
+    PopupWindow localPopupWindow = new PopupWindow(paramContext);
+    localPopupWindow.setWindowLayoutMode(-1, -1);
+    localPopupWindow.setFocusable(true);
+    if (paramView.getParent() != null) {
+      ((ViewGroup)paramView.getParent()).removeView(paramView);
+    }
+    localPopupWindow.setBackgroundDrawable(paramDrawable);
+    localPopupWindow.setContentView(paramView);
+    localPopupWindow.showAtLocation(new View(paramContext), 0, 0, 0);
+    return localPopupWindow;
+  }
+  
+  public void removeStickerMaskOnPanel()
+  {
+    EmoticonMainPanel localEmoticonMainPanel = (EmoticonMainPanel)((IEmosmService)QRoute.api(IEmosmService.class)).tryGetEmoticonMainPanel(this.mInteractionListener);
+    if (localEmoticonMainPanel != null)
+    {
+      if (localEmoticonMainPanel.stickerMaskLayout == null) {
+        return;
+      }
+      localEmoticonMainPanel.removeView(localEmoticonMainPanel.stickerMaskLayout);
+    }
+  }
+  
   public void setBusinessType(int paramInt)
   {
     this.businessType = paramInt;
@@ -894,24 +935,29 @@ public class QQEmoticonPanelLinearLayoutHelper
     this.panelType = paramInt;
   }
   
+  public void setShowDescribeInPreview(boolean paramBoolean)
+  {
+    this.showDescribeInPreview = paramBoolean;
+  }
+  
   public void showAddCustomFacePop(View paramView, EmoticonInfo paramEmoticonInfo)
   {
     LinearLayout localLinearLayout = new LinearLayout(getContext());
     localLinearLayout.setOrientation(1);
     localLinearLayout.setGravity(1);
     Object localObject = new TextView(getContext());
-    ((TextView)localObject).setId(2131362241);
+    ((TextView)localObject).setId(2131427822);
     ((TextView)localObject).setTag(paramEmoticonInfo);
     ((TextView)localObject).setOnClickListener(this);
-    ((TextView)localObject).setTextColor(getContext().getResources().getColor(2131167394));
+    ((TextView)localObject).setTextColor(getContext().getResources().getColor(2131168464));
     ((TextView)localObject).setTextSize(14.0F);
     ((TextView)localObject).setGravity(17);
-    ((TextView)localObject).setText(getContext().getResources().getString(2131699745));
-    ((TextView)localObject).setBackgroundResource(2130838897);
-    localLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(ViewUtils.a(65.0F), ViewUtils.a(46.0F)));
+    ((TextView)localObject).setText(getContext().getResources().getString(2131897778));
+    ((TextView)localObject).setBackgroundResource(2130839051);
+    localLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(ViewUtils.dip2px(65.0F), ViewUtils.dip2px(46.0F)));
     paramEmoticonInfo = new ImageView(getContext());
-    paramEmoticonInfo.setImageDrawable(getContext().getResources().getDrawable(2130838864));
-    localLinearLayout.addView(paramEmoticonInfo, new LinearLayout.LayoutParams(ViewUtils.a(20.0F), ViewUtils.a(10.0F)));
+    paramEmoticonInfo.setImageDrawable(getContext().getResources().getDrawable(2130839043));
+    localLinearLayout.addView(paramEmoticonInfo, new LinearLayout.LayoutParams(ViewUtils.dip2px(20.0F), ViewUtils.dip2px(10.0F)));
     localObject = (LinearLayout.LayoutParams)paramEmoticonInfo.getLayoutParams();
     ((LinearLayout.LayoutParams)localObject).topMargin = (-com.tencent.mobileqq.EmotionUtils.a(7.0F, getContext().getResources()));
     ((LinearLayout.LayoutParams)localObject).bottomMargin = com.tencent.mobileqq.EmotionUtils.a(3.0F, getContext().getResources());
@@ -990,18 +1036,18 @@ public class QQEmoticonPanelLinearLayoutHelper
       int i = paramEmoticonInfo.type;
       if ((this.mRootView != null) && (!this.isDiyEmotion) && (!this.isSelfieFaceEmotion) && (((IEmosmService)QRoute.api(IEmosmService.class)).getEmojiStickerSwitch()))
       {
-        if (this.mRootView.findViewById(2131374055) != null)
+        if (this.mRootView.findViewById(2131442150) != null)
         {
           this.isPreviewShowPoping = true;
           return;
         }
         this.isPreviewShowPoping = false;
         this.mPopupEmo = new StickerFrameLayout(getContext());
-        this.mPopupEmo.setId(2131374055);
+        this.mPopupEmo.setId(2131442150);
         this.mPopupEmo.setTag(paramEmoticonInfo);
-        this.mPopupEmo.setTag(2131374091, Integer.valueOf(this.panelType));
+        this.mPopupEmo.setTag(2131442186, Integer.valueOf(this.panelType));
         this.mPopupEmoImage = new URLImageView(getContext());
-        this.mPopupEmoImage.setId(2131362353);
+        this.mPopupEmoImage.setId(2131427953);
         this.mPopupEmoImage.setAdjustViewBounds(false);
         this.mPopupEmoImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
         ((Drawable)localObject1).setCallback(this.mPopupEmoImage);
@@ -1011,7 +1057,7 @@ public class QQEmoticonPanelLinearLayoutHelper
         } else {
           localObject2 = null;
         }
-        if (EmoticonUtils.isShowEmoTitleInPreview(localObject2, paramEmoticonInfo))
+        if (EmoticonUtils.isShowEmoTitleInPreview(localObject2, paramEmoticonInfo, this.showDescribeInPreview))
         {
           addEmoTitleLayout(paramEmoticonInfo, f);
         }
@@ -1059,7 +1105,7 @@ public class QQEmoticonPanelLinearLayoutHelper
           } else {
             localObject2 = null;
           }
-          if (EmoticonUtils.isShowEmoTitleInPreview(localObject2, paramEmoticonInfo))
+          if (EmoticonUtils.isShowEmoTitleInPreview(localObject2, paramEmoticonInfo, this.showDescribeInPreview))
           {
             addEmoTitleLayout(paramEmoticonInfo, f);
           }
@@ -1087,7 +1133,7 @@ public class QQEmoticonPanelLinearLayoutHelper
       if ((i != 1) && (i != 2) && (i != 7) && (i != 10))
       {
         i = (int)(f * 110.0F);
-        this.mPopupEmo.setBackgroundResource(2130837975);
+        this.mPopupEmo.setBackgroundResource(2130837999);
         this.mPopupEmo.setPadding(k, k, k, k);
         ((RelativeLayout.LayoutParams)localObject3).bottomMargin = 0;
         j = (int)(100.0F * f);
@@ -1104,7 +1150,7 @@ public class QQEmoticonPanelLinearLayoutHelper
         } else {
           localObject2 = null;
         }
-        if (EmoticonUtils.isShowEmoTitleInPreview(localObject2, paramEmoticonInfo))
+        if (EmoticonUtils.isShowEmoTitleInPreview(localObject2, paramEmoticonInfo, this.showDescribeInPreview))
         {
           j = (int)(94.0F * f);
           i = (int)(97.0F * f);
@@ -1118,7 +1164,7 @@ public class QQEmoticonPanelLinearLayoutHelper
             {
               ((TextView)localObject2).setVisibility(0);
               this.mArrowImageView.setVisibility(0);
-              this.mShowEmoRlyt.setBackgroundResource(2130837966);
+              this.mShowEmoRlyt.setBackgroundResource(2130837990);
               if (QLog.isColorLevel()) {
                 QLog.d("EmotionPanelLinearLayout", 4, "emo title is visible");
               }
@@ -1133,7 +1179,7 @@ public class QQEmoticonPanelLinearLayoutHelper
           ((RelativeLayout.LayoutParams)localObject3).width = m;
           ((RelativeLayout.LayoutParams)localObject3).height = m;
           this.mPopupEmo.setPadding(k, k, k, k);
-          this.mPopupEmo.setBackgroundResource(2130837976);
+          this.mPopupEmo.setBackgroundResource(2130838000);
         }
         ((RelativeLayout.LayoutParams)localObject3).bottomMargin = ((int)(6.0F * f));
         ((RelativeLayout.LayoutParams)localObject3).addRule(14);
@@ -1152,7 +1198,7 @@ public class QQEmoticonPanelLinearLayoutHelper
         } else {
           localObject2 = null;
         }
-        if (EmoticonUtils.isShowEmoTitleInPreview(localObject2, paramEmoticonInfo)) {
+        if (EmoticonUtils.isShowEmoTitleInPreview(localObject2, paramEmoticonInfo, this.showDescribeInPreview)) {
           updatePopupEmoLayout(i, (ViewGroup.MarginLayoutParams)localObject3);
         } else if (k < 0) {
           ((RelativeLayout.LayoutParams)localObject3).leftMargin = (tmp.left - (i - tmp.width()) / 2 - k / 2);
@@ -1176,7 +1222,7 @@ public class QQEmoticonPanelLinearLayoutHelper
         } else {
           localObject2 = null;
         }
-        if (EmoticonUtils.isShowEmoTitleInPreview(localObject2, paramEmoticonInfo)) {
+        if (EmoticonUtils.isShowEmoTitleInPreview(localObject2, paramEmoticonInfo, this.showDescribeInPreview)) {
           updatePopupEmoLayout(i, (ViewGroup.MarginLayoutParams)localObject3);
         } else if (k > 0) {
           ((FrameLayout.LayoutParams)localObject3).leftMargin = (tmp.left - (i - tmp.width()) / 2 - k / 2);
@@ -1196,17 +1242,11 @@ public class QQEmoticonPanelLinearLayoutHelper
       }
       else if (this.mWindowContent != null)
       {
-        paramView = (WindowManager)getContext().getSystemService("window");
-        i = 40;
-        if (ImmersiveUtils.isSupporImmersive() == 1) {
-          i = 67108904;
+        paramView = this.mPopupWindow;
+        if ((paramView != null) && (paramView.isShowing())) {
+          this.mPopupWindow.dismiss();
         }
-        j = i;
-        if (Build.VERSION.SDK_INT >= 19) {
-          j = i | 0x8000000;
-        }
-        localObject2 = new WindowManager.LayoutParams(-1, -1, 2, j, -3);
-        paramView.addView(this.mWindowContent, (ViewGroup.LayoutParams)localObject2);
+        this.mPopupWindow = popupFullScreen(this.context, this.mWindowContent, new ColorDrawable(0));
         this.haveRemovedWindowContent = false;
         this.showing = true;
       }
@@ -1216,7 +1256,7 @@ public class QQEmoticonPanelLinearLayoutHelper
       {
         paramView = this.player;
         if (paramView != null) {
-          paramView.c();
+          paramView.d();
         }
       }
       if ((paramEmoticonInfo.type == 6) && (bool) && ((localObject1 instanceof URLDrawable)))
@@ -1299,7 +1339,7 @@ public class QQEmoticonPanelLinearLayoutHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.QQEmoticonPanelLinearLayoutHelper
  * JD-Core Version:    0.7.0.1
  */

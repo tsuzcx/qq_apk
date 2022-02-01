@@ -9,7 +9,7 @@ class DetailCommentHelper$4
   
   public void run()
   {
-    DetailCommentHelper.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
+    DetailCommentHelper.a(this.this$0, this.a, this.b);
   }
 }
 

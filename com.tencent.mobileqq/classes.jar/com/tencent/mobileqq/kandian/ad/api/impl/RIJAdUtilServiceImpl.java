@@ -30,6 +30,8 @@ import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdGameComponentInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementExtInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementSoftInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.diversion.DiversionManager;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.diversion.DiversionUtil;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.ext.AdRequestExtKt;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.manager.GiftPackageManager;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.SuperMaskExtKt;
@@ -44,6 +46,10 @@ import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdSwitchUtil;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadData;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdActionUtilService;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
@@ -61,7 +67,9 @@ import com.tencent.mobileqq.kandian.repo.feeds.api.IVideoCardUIModelFactory;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.video.IVideoCardUIModel;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.open.downloadnew.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.util.HashMap;
 import java.util.List;
@@ -79,7 +87,7 @@ public class RIJAdUtilServiceImpl
   
   public void addGdtWebClickReport(AdvertisementInfo paramAdvertisementInfo)
   {
-    ReadInJoyAdUtils.b(paramAdvertisementInfo);
+    ReadInJoyAdUtils.q(paramAdvertisementInfo);
   }
   
   public String addHeadForUrl(String paramString, boolean paramBoolean)
@@ -180,22 +188,22 @@ public class RIJAdUtilServiceImpl
   public void doADVideoItemHolderOnPause(VideoItemHolder paramVideoItemHolder)
   {
     paramVideoItemHolder = (ADVideoItemHolder)paramVideoItemHolder;
-    if (paramVideoItemHolder.a != null) {
-      paramVideoItemHolder.a.b();
+    if (paramVideoItemHolder.U != null) {
+      paramVideoItemHolder.U.b();
     }
-    if (paramVideoItemHolder.b != null) {
-      paramVideoItemHolder.b.b();
+    if (paramVideoItemHolder.V != null) {
+      paramVideoItemHolder.V.b();
     }
   }
   
   public void doADVideoItemHolderOnResume(VideoItemHolder paramVideoItemHolder)
   {
     paramVideoItemHolder = (ADVideoItemHolder)paramVideoItemHolder;
-    if (paramVideoItemHolder.a != null) {
-      paramVideoItemHolder.a.a();
+    if (paramVideoItemHolder.U != null) {
+      paramVideoItemHolder.U.a();
     }
-    if (paramVideoItemHolder.b != null) {
-      paramVideoItemHolder.b.a();
+    if (paramVideoItemHolder.V != null) {
+      paramVideoItemHolder.V.a();
     }
   }
   
@@ -238,7 +246,7 @@ public class RIJAdUtilServiceImpl
   
   public String generateVid(String paramString)
   {
-    return NativeAdUtils.a(paramString);
+    return NativeAdUtils.b(paramString);
   }
   
   public double getADDistanceByPos(double[] paramArrayOfDouble, Context paramContext)
@@ -254,51 +262,51 @@ public class RIJAdUtilServiceImpl
   public ADVideoAppDownloadData getADVideoAppDownloadData(Object paramObject)
   {
     paramObject = (AdData)paramObject;
-    if ((paramObject != null) && (paramObject.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo != null))
+    if ((paramObject != null) && (paramObject.an != null))
     {
       ADVideoAppDownloadData localADVideoAppDownloadData = new ADVideoAppDownloadData();
-      if (paramObject.h())
+      if (paramObject.j())
       {
-        Object localObject = paramObject.b.opt("extendInfo");
+        Object localObject = paramObject.aE.opt("extendInfo");
         if ((localObject instanceof JSONObject))
         {
           localObject = (JSONObject)localObject;
-          localADVideoAppDownloadData.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("game_app_id");
-          localADVideoAppDownloadData.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("game_apk_url");
+          localADVideoAppDownloadData.a = ((JSONObject)localObject).optString("game_app_id");
+          localADVideoAppDownloadData.b = ((JSONObject)localObject).optString("game_apk_url");
           localADVideoAppDownloadData.d = ((JSONObject)localObject).optString("game_pkg_name");
           localADVideoAppDownloadData.e = ((JSONObject)localObject).optString("game_app_name");
           localADVideoAppDownloadData.c = ((JSONObject)localObject).optString("game_apk_url");
-          localADVideoAppDownloadData.j = paramObject.b.optString("button");
+          localADVideoAppDownloadData.q = paramObject.aE.optString("button");
         }
       }
       else
       {
-        localADVideoAppDownloadData.jdField_a_of_type_JavaLangString = paramObject.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.c;
-        localADVideoAppDownloadData.jdField_b_of_type_JavaLangString = paramObject.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.jdField_a_of_type_JavaLangString;
-        localADVideoAppDownloadData.d = paramObject.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.jdField_b_of_type_JavaLangString;
-        localADVideoAppDownloadData.e = paramObject.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.d;
-        localADVideoAppDownloadData.c = paramObject.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.e;
+        localADVideoAppDownloadData.a = paramObject.an.c;
+        localADVideoAppDownloadData.b = paramObject.an.a;
+        localADVideoAppDownloadData.d = paramObject.an.b;
+        localADVideoAppDownloadData.e = paramObject.an.d;
+        localADVideoAppDownloadData.c = paramObject.an.e;
         if (isGameComponentType(paramObject))
         {
-          localADVideoAppDownloadData.jdField_a_of_type_Boolean = true;
-          if (paramObject.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo != null) {
-            localADVideoAppDownloadData.j = paramObject.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.l;
+          localADVideoAppDownloadData.l = true;
+          if (paramObject.as != null) {
+            localADVideoAppDownloadData.q = paramObject.as.m;
           }
         }
-        else if (paramObject.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null)
+        else if (paramObject.j != null)
         {
-          localADVideoAppDownloadData.j = paramObject.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdBtnTxt;
+          localADVideoAppDownloadData.q = paramObject.j.mAdBtnTxt;
         }
       }
-      localADVideoAppDownloadData.jdField_b_of_type_Int = 0;
-      localADVideoAppDownloadData.jdField_a_of_type_Int = 0;
-      localADVideoAppDownloadData.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData = paramObject;
-      if (!TextUtils.isEmpty(paramObject.A)) {
-        localADVideoAppDownloadData.f = paramObject.A;
+      localADVideoAppDownloadData.g = 0;
+      localADVideoAppDownloadData.f = 0;
+      localADVideoAppDownloadData.o = paramObject;
+      if (!TextUtils.isEmpty(paramObject.L)) {
+        localADVideoAppDownloadData.h = paramObject.L;
       }
-      localADVideoAppDownloadData.g = paramObject.S;
-      localADVideoAppDownloadData.h = paramObject.R;
-      localADVideoAppDownloadData.i = paramObject.Q;
+      localADVideoAppDownloadData.i = paramObject.au;
+      localADVideoAppDownloadData.j = paramObject.at;
+      localADVideoAppDownloadData.n = paramObject.aq;
       return localADVideoAppDownloadData;
     }
     return null;
@@ -306,7 +314,7 @@ public class RIJAdUtilServiceImpl
   
   public View getAdBottomRecommendFromADVideoItemHolder(Object paramObject)
   {
-    return ((ADVideoItemHolder)paramObject).c;
+    return ((ADVideoItemHolder)paramObject).f;
   }
   
   public ShapeDrawable getAdBox(int paramInt, Context paramContext)
@@ -316,12 +324,12 @@ public class RIJAdUtilServiceImpl
   
   public String getAdCookie()
   {
-    return NativeAdUtils.a();
+    return NativeAdUtils.b();
   }
   
   public JSONObject getAdDataBusiJson(Object paramObject)
   {
-    return NativeAdUtils.a((AdData)paramObject);
+    return NativeAdUtils.b((AdData)paramObject);
   }
   
   public String getAdvertisementInfoNickName(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -336,12 +344,12 @@ public class RIJAdUtilServiceImpl
   
   public int getBigAppAdStyle(AdvertisementInfo paramAdvertisementInfo)
   {
-    return ReadInJoyAdUtils.d(paramAdvertisementInfo);
+    return ReadInJoyAdUtils.s(paramAdvertisementInfo);
   }
   
   public int getBigPicAdapterType(AdvertisementInfo paramAdvertisementInfo)
   {
-    return ReadInJoyAdUtils.c(paramAdvertisementInfo);
+    return ReadInJoyAdUtils.p(paramAdvertisementInfo);
   }
   
   public Bitmap getBitmap(String paramString, int paramInt1, int paramInt2)
@@ -351,7 +359,7 @@ public class RIJAdUtilServiceImpl
   
   public JSONObject getBusiJson(AdvertisementInfo paramAdvertisementInfo)
   {
-    return NativeAdUtils.a(paramAdvertisementInfo);
+    return NativeAdUtils.b(paramAdvertisementInfo);
   }
   
   public JSONObject getBusiJson(AdvertisementInfo paramAdvertisementInfo, HashMap<String, Object> paramHashMap)
@@ -361,7 +369,7 @@ public class RIJAdUtilServiceImpl
   
   public JSONObject getBusiJson(AdData paramAdData)
   {
-    return NativeAdUtils.a(paramAdData);
+    return NativeAdUtils.b(paramAdData);
   }
   
   public JSONObject getBusiJson(AdData paramAdData, HashMap<String, Object> paramHashMap)
@@ -396,15 +404,20 @@ public class RIJAdUtilServiceImpl
   
   public String getGamePkgName(AdvertisementInfo paramAdvertisementInfo)
   {
-    return ReadInJoyAdUtils.a(paramAdvertisementInfo);
+    return ReadInJoyAdUtils.d(paramAdvertisementInfo);
   }
   
   public int getGameType(AdvertisementInfo paramAdvertisementInfo)
   {
-    return ReadInJoyAdUtils.a(paramAdvertisementInfo);
+    return ReadInJoyAdUtils.c(paramAdvertisementInfo);
   }
   
   public int getGdtCarrierCode()
+  {
+    return AdDeviceInfoUtil.f();
+  }
+  
+  public String getGdtIMEI()
   {
     return AdDeviceInfoUtil.b();
   }
@@ -416,32 +429,32 @@ public class RIJAdUtilServiceImpl
   
   public boolean getIfAllowFastWebAdRequestToFormalNets()
   {
-    return ReadInJoyAdSettingUtil.a();
+    return ReadInJoyAdSettingUtil.c();
   }
   
   public boolean getIfOpenFilterPatchAdReq()
   {
-    return ReadInJoyAdSettingUtil.d();
+    return ReadInJoyAdSettingUtil.l();
   }
   
   public boolean getIfOpenRoundDownloadProgress()
   {
-    return ReadInJoyAdSettingUtil.c();
+    return ReadInJoyAdSettingUtil.i();
   }
   
   public boolean getIfOpenSuperMaskSwitch()
   {
-    return ReadInJoyAdSettingUtil.b();
+    return ReadInJoyAdSettingUtil.f();
   }
   
   public double[] getLocationInfoPos(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return NativeAdUtils.a(paramAbsBaseArticleInfo);
+    return NativeAdUtils.b(paramAbsBaseArticleInfo);
   }
   
   public String getMAC()
   {
-    return AdDeviceInfoUtil.c();
+    return AdDeviceInfoUtil.d();
   }
   
   public int getNativeAdExposureOrigin(AdData paramAdData)
@@ -456,7 +469,7 @@ public class RIJAdUtilServiceImpl
   
   public int getSmallGameReportType(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.a(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.o(paramAbsBaseArticleInfo);
   }
   
   public String getStarUrl(float paramFloat, int paramInt)
@@ -486,15 +499,20 @@ public class RIJAdUtilServiceImpl
   
   public boolean getVideoInfoRowKey(VideoAdInfo paramVideoAdInfo)
   {
-    return ReadInJoyAdUtils.a(paramVideoAdInfo);
+    return ReadInJoyAdUtils.b(paramVideoAdInfo);
   }
   
   public String getVideoInfoSoftAdExpoStatKey(VideoInfo paramVideoInfo)
   {
     if ((paramVideoInfo != null) && (((IRIJVideoAdService)QRoute.api(IRIJVideoAdService.class)).getAdvertisementInfo(paramVideoInfo) != null) && (((IRIJVideoAdService)QRoute.api(IRIJVideoAdService.class)).getAdvertisementInfo(paramVideoInfo).mAdvertisementSoftInfo != null)) {
-      return ((IRIJVideoAdService)QRoute.api(IRIJVideoAdService.class)).getAdvertisementInfo(paramVideoInfo).mAdvertisementSoftInfo.T;
+      return ((IRIJVideoAdService)QRoute.api(IRIJVideoAdService.class)).getAdvertisementInfo(paramVideoInfo).mAdvertisementSoftInfo.ad;
     }
     return "";
+  }
+  
+  public String getWxVersionName(Context paramContext)
+  {
+    return AdDeviceInfoUtil.a(paramContext);
   }
   
   public boolean hasAddLocationInfo(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -504,7 +522,7 @@ public class RIJAdUtilServiceImpl
   
   public boolean hasColorIcon(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.c(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.d(paramAbsBaseArticleInfo);
   }
   
   public boolean installApk(BannerInfo paramBannerInfo)
@@ -529,27 +547,27 @@ public class RIJAdUtilServiceImpl
   
   public boolean isADVideoWithURL(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.n(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.p(paramAbsBaseArticleInfo);
   }
   
   public boolean isAdExpandLivePicCard(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.s(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.u(paramAbsBaseArticleInfo);
   }
   
   public boolean isAdExpandLiveVideoCard(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.r(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.t(paramAbsBaseArticleInfo);
   }
   
   public boolean isAdExpandPicCard(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.t(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.v(paramAbsBaseArticleInfo);
   }
   
   public boolean isAdInteractType(AdvertisementInfo paramAdvertisementInfo)
   {
-    return ReadInJoyAdUtils.c(paramAdvertisementInfo);
+    return ReadInJoyAdUtils.e(paramAdvertisementInfo);
   }
   
   public boolean isAdProteusView(int paramInt)
@@ -557,9 +575,24 @@ public class RIJAdUtilServiceImpl
     return ProteusSupportAdUtil.a(paramInt);
   }
   
+  public boolean isAdShakeVideoCard(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return ReadInJoyAdUtils.x(paramAbsBaseArticleInfo);
+  }
+  
+  public boolean isAdSmallVideo(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return ReadInJoyAdUtils.z(paramAbsBaseArticleInfo);
+  }
+  
+  public boolean isAdSurpriseVideoCard(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return ReadInJoyAdUtils.w(paramAbsBaseArticleInfo);
+  }
+  
   public boolean isAdvertisementInfo(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.p(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.r(paramAbsBaseArticleInfo);
   }
   
   public boolean isAmsSubscribeAd(AdvertisementInfo paramAdvertisementInfo)
@@ -574,7 +607,7 @@ public class RIJAdUtilServiceImpl
   
   public boolean isAppAdvertisementInfo(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.q(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.s(paramAbsBaseArticleInfo);
   }
   
   public boolean isAppExist(Context paramContext, String paramString)
@@ -597,7 +630,7 @@ public class RIJAdUtilServiceImpl
   
   public boolean isBrandOptimizationAdType(AdvertisementInfo paramAdvertisementInfo)
   {
-    return ReadInJoyAdUtils.g(paramAdvertisementInfo);
+    return ReadInJoyAdUtils.k(paramAdvertisementInfo);
   }
   
   public boolean isChannelCanRequstAd(int paramInt)
@@ -622,17 +655,17 @@ public class RIJAdUtilServiceImpl
   
   public boolean isEducationLargeImgAd(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.a(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.b(paramAbsBaseArticleInfo);
   }
   
   public boolean isEducationLargeVideoAd(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.b(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.c(paramAbsBaseArticleInfo);
   }
   
   public boolean isFromAms(AdvertisementInfo paramAdvertisementInfo)
   {
-    return ReadInJoyAdUtils.k(paramAdvertisementInfo);
+    return ReadInJoyAdUtils.r(paramAdvertisementInfo);
   }
   
   public boolean isGameComponentType(AdData paramAdData)
@@ -657,57 +690,57 @@ public class RIJAdUtilServiceImpl
   
   public boolean isMiniGame185(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.h(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.i(paramAbsBaseArticleInfo);
   }
   
   public boolean isMiniGame285(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.g(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.h(paramAbsBaseArticleInfo);
   }
   
   public boolean isMiniGame65(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.j(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.k(paramAbsBaseArticleInfo);
   }
   
   public boolean isMiniGameAdCardHorzi(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.f(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.g(paramAbsBaseArticleInfo);
   }
   
   public boolean isMiniGameAdCardType(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.e(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.f(paramAbsBaseArticleInfo);
   }
   
   public boolean isMiniGameArticleCard(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.m(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.n(paramAbsBaseArticleInfo);
   }
   
   public boolean isMiniGameDoubleVideo(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.k(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.l(paramAbsBaseArticleInfo);
   }
   
   public boolean isMiniGameDoubleVideoSingle(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.l(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.m(paramAbsBaseArticleInfo);
   }
   
   public boolean isMiniGameNewStyle(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.i(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.j(paramAbsBaseArticleInfo);
   }
   
   public boolean isNoXtabExpandAd(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyAdUtils.u(paramAbsBaseArticleInfo);
+    return ReadInJoyAdUtils.y(paramAbsBaseArticleInfo);
   }
   
   public boolean isPkAdType(AdvertisementInfo paramAdvertisementInfo)
   {
-    return ReadInJoyAdUtils.e(paramAdvertisementInfo);
+    return ReadInJoyAdUtils.i(paramAdvertisementInfo);
   }
   
   public int isPkgDownloading(Context paramContext, BannerInfo paramBannerInfo)
@@ -722,7 +755,7 @@ public class RIJAdUtilServiceImpl
   
   public boolean isRepeatedValid(AdvertisementInfo paramAdvertisementInfo)
   {
-    return ReadInJoyAdUtils.d(paramAdvertisementInfo);
+    return ReadInJoyAdUtils.f(paramAdvertisementInfo);
   }
   
   public boolean isSoftDownloadAd(AdvertisementInfo paramAdvertisementInfo)
@@ -732,7 +765,7 @@ public class RIJAdUtilServiceImpl
   
   public boolean isSuperBackgroundAdType(AdvertisementInfo paramAdvertisementInfo)
   {
-    return ReadInJoyAdUtils.f(paramAdvertisementInfo);
+    return ReadInJoyAdUtils.j(paramAdvertisementInfo);
   }
   
   public boolean isUgcAd(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -762,12 +795,60 @@ public class RIJAdUtilServiceImpl
   
   public void launchApp(Context paramContext, String paramString)
   {
-    NativeAdUtils.a(paramContext, paramString);
+    NativeAdUtils.b(paramContext, paramString);
+  }
+  
+  public void loadImage(URLImageView paramURLImageView, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Activity paramActivity)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      if (paramInt4 != -1) {
+        localURLDrawableOptions.mUseMemoryCache = false;
+      }
+      localURLDrawableOptions.mRequestWidth = AIOUtils.b(paramInt2, paramActivity.getResources());
+      localURLDrawableOptions.mRequestHeight = AIOUtils.b(paramInt3, paramActivity.getResources());
+      paramActivity = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      if (paramInt4 == 0)
+      {
+        paramActivity.setTag(URLDrawableDecodeHandler.a(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight));
+        paramActivity.setDecodeHandler(URLDrawableDecodeHandler.k);
+        paramActivity.setTag(new int[] { 0, 0, paramInt1, 1 });
+        paramActivity.setDecodeHandler(URLDrawableDecodeHandler.k);
+      }
+      else if (paramInt4 == 1)
+      {
+        paramActivity.setTag(URLDrawableDecodeHandler.a(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight));
+        paramActivity.setDecodeHandler(URLDrawableDecodeHandler.k);
+        paramActivity.setTag(new int[] { 0, 0, paramInt1, 3 });
+        paramActivity.setDecodeHandler(URLDrawableDecodeHandler.k);
+      }
+      else
+      {
+        paramActivity.setTag(URLDrawableDecodeHandler.b(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, paramInt1));
+        paramActivity.setDecodeHandler(URLDrawableDecodeHandler.j);
+      }
+      paramURLImageView.setImageDrawable(paramActivity);
+      return;
+    }
+    catch (Exception paramURLImageView)
+    {
+      label231:
+      break label231;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramURLImageView = new StringBuilder();
+      paramURLImageView.append("后台下发的url格式有问题：");
+      paramURLImageView.append(paramString);
+      QLog.d("RIJAdUtilServiceImpl", 2, paramURLImageView.toString());
+    }
   }
   
   public oidb_0x6cf.PhoneInfo makePhoneInfo()
   {
-    return AdDeviceInfoUtil.a();
+    return AdDeviceInfoUtil.g();
   }
   
   public boolean openApp(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo)
@@ -783,7 +864,7 @@ public class RIJAdUtilServiceImpl
   
   public void preLoadAdForMiniProgram(AdvertisementInfo paramAdvertisementInfo)
   {
-    ReadInJoyAdUtils.a(paramAdvertisementInfo);
+    ReadInJoyAdUtils.h(paramAdvertisementInfo);
   }
   
   public void preLoadAdForMiniProgramInVideos(VideoAdInfo paramVideoAdInfo)
@@ -853,7 +934,7 @@ public class RIJAdUtilServiceImpl
   
   public void resetClickStateInVideoMode(Object paramObject)
   {
-    ReadInJoyAdUtils.a((VideoPlayParam)paramObject);
+    ReadInJoyAdUtils.b((VideoPlayParam)paramObject);
   }
   
   public void saveAdCookie(String paramString)
@@ -871,6 +952,16 @@ public class RIJAdUtilServiceImpl
     ReadInJoyAdUtils.a(paramAdvertisementInfo, paramInt, (IVideoFeedsPlayManager)paramObject);
   }
   
+  public boolean showDiversionBar()
+  {
+    return DiversionUtil.c();
+  }
+  
+  public void showDiversionWindow(Activity paramActivity)
+  {
+    DiversionManager.a().a(paramActivity);
+  }
+  
   public void showVideoAdToast(BaseItemHolder paramBaseItemHolder, String paramString)
   {
     AdVideoButtonUIUtils.a((ADVideoItemHolder)paramBaseItemHolder, paramString);
@@ -883,7 +974,7 @@ public class RIJAdUtilServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJAdUtilServiceImpl
  * JD-Core Version:    0.7.0.1
  */

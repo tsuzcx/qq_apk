@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/pfw" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="bottom" android:id="@id/pfi" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginBottom="50.0dip">
+        <SeekBar android:layout_gravity="bottom" android:id="@id/pfv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="10.0dip" android:maxHeight="2.0dip" android:minHeight="2.0dip" android:paddingStart="6.0dip" android:paddingEnd="6.0dip" style="@style/acp" />
+        <FrameLayout android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:maxHeight="2.0dip" android:minHeight="2.0dip">
+            <View android:id="@id/pfz" android:background="@color/al9" android:layout_width="0.0dip" android:layout_height="2.0dip" />
+        </FrameLayout>
+    </FrameLayout>
+    <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/pg2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginBottom="18.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/pfs" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/j6_" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/pg1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:30 / " />
+        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/pg3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:56" />
+    </LinearLayout>
+</FrameLayout>

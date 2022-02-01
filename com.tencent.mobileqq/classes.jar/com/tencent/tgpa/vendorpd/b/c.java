@@ -146,7 +146,7 @@ public class c
     {
       MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
       localMessageDigest.update(paramString.getBytes("utf-8"));
-      paramString = b(new BigInteger(1, localMessageDigest.digest()).toString(16));
+      paramString = c(new BigInteger(1, localMessageDigest.digest()).toString(16));
       return paramString;
     }
     catch (UnsupportedEncodingException paramString)
@@ -179,7 +179,23 @@ public class c
     return null;
   }
   
-  public static byte[] a(String paramString)
+  private static String b(byte[] paramArrayOfByte)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      int j = paramArrayOfByte[i] & 0xFF;
+      if (j < 16) {
+        localStringBuffer.append("0");
+      }
+      localStringBuffer.append(Integer.toHexString(j));
+      i += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static byte[] b(String paramString)
   {
     if ((paramString != null) && (paramString.length() != 0))
     {
@@ -201,7 +217,7 @@ public class c
     return null;
   }
   
-  private static String b(String paramString)
+  private static String c(String paramString)
   {
     if (paramString.length() == 32) {
       return paramString;
@@ -209,28 +225,12 @@ public class c
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("0");
     localStringBuilder.append(paramString);
-    return b(localStringBuilder.toString());
-  }
-  
-  private static String b(byte[] paramArrayOfByte)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      int j = paramArrayOfByte[i] & 0xFF;
-      if (j < 16) {
-        localStringBuffer.append("0");
-      }
-      localStringBuffer.append(Integer.toHexString(j));
-      i += 1;
-    }
-    return localStringBuffer.toString();
+    return c(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tgpa.vendorpd.b.c
  * JD-Core Version:    0.7.0.1
  */

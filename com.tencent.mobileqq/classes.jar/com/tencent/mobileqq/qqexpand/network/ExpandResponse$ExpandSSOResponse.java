@@ -13,7 +13,7 @@ import expand.network.gateway.SSODownStreamHead;
 public class ExpandResponse$ExpandSSOResponse
   extends ExpandResponse
 {
-  private gateway.SSODownStream a;
+  private gateway.SSODownStream d;
   
   public ExpandResponse$ExpandSSOResponse(int paramInt, String paramString)
   {
@@ -22,24 +22,24 @@ public class ExpandResponse$ExpandSSOResponse
   
   public void a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_Int == 1000)
+    if (this.a == 1000)
     {
-      this.jdField_a_of_type_ExpandNetworkGateway$SSODownStream = new gateway.SSODownStream();
-      this.jdField_a_of_type_ExpandNetworkGateway$SSODownStream.head = new gateway.SSODownStreamHead();
+      this.d = new gateway.SSODownStream();
+      this.d.head = new gateway.SSODownStreamHead();
       try
       {
-        this.jdField_a_of_type_ExpandNetworkGateway$SSODownStream.mergeFrom(paramArrayOfByte);
-        if (!this.jdField_a_of_type_ExpandNetworkGateway$SSODownStream.head.has()) {
+        this.d.mergeFrom(paramArrayOfByte);
+        if (!this.d.head.has()) {
           return;
         }
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_ExpandNetworkGateway$SSODownStream.head.code.get();
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ExpandNetworkGateway$SSODownStream.head.msg.get();
+        this.a = this.d.head.code.get();
+        this.b = this.d.head.msg.get();
         return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
         QLog.w("expand.cmd.ExpandSSOResponse", 1, paramArrayOfByte.toString());
-        this.jdField_a_of_type_Int = 900000002;
+        this.a = 900000002;
         return;
       }
     }
@@ -47,9 +47,9 @@ public class ExpandResponse$ExpandSSOResponse
     {
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("cmd error=");
-      paramArrayOfByte.append(this.jdField_a_of_type_Int);
+      paramArrayOfByte.append(this.a);
       paramArrayOfByte.append(" msg=");
-      paramArrayOfByte.append(this.jdField_a_of_type_JavaLangString);
+      paramArrayOfByte.append(this.b);
       QLog.w("expand.cmd.ExpandSSOResponse", 1, paramArrayOfByte.toString());
     }
   }
@@ -57,16 +57,16 @@ public class ExpandResponse$ExpandSSOResponse
   @Nullable
   public byte[] a()
   {
-    gateway.SSODownStream localSSODownStream = this.jdField_a_of_type_ExpandNetworkGateway$SSODownStream;
-    if ((localSSODownStream != null) && (localSSODownStream.body.has()) && (this.jdField_a_of_type_ExpandNetworkGateway$SSODownStream.body.get() != null)) {
-      return this.jdField_a_of_type_ExpandNetworkGateway$SSODownStream.body.get().toByteArray();
+    gateway.SSODownStream localSSODownStream = this.d;
+    if ((localSSODownStream != null) && (localSSODownStream.body.has()) && (this.d.body.get() != null)) {
+      return this.d.body.get().toByteArray();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.network.ExpandResponse.ExpandSSOResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,26 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.nearby.NearbyUtils;
 
 class NearbyProfileEditPanel$12
-  implements Runnable
+  implements TextWatcher
 {
   NearbyProfileEditPanel$12(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    int i = this.this$0.h.getTop();
-    int j = (int)(this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.mDensity * 20.0F);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollTo(0, i - j);
+    NearbyUtils.a(this.a.n, 30);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.12
  * JD-Core Version:    0.7.0.1
  */

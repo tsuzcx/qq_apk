@@ -9,23 +9,23 @@ import android.widget.TextView;
 class AESelectionLocationAdapter$AESelectionHolder
   extends RecyclerView.ViewHolder
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  public View a;
-  public ImageView a;
   public TextView a;
+  public ImageView b;
+  public View c;
+  private Context e;
   
   public AESelectionLocationAdapter$AESelectionHolder(AESelectionLocationAdapter paramAESelectionLocationAdapter, View paramView, Context paramContext)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122341));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122342));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2064122379);
+    this.e = paramContext;
+    this.b = ((ImageView)paramView.findViewById(2063991217));
+    this.a = ((TextView)paramView.findViewById(2063991218));
+    this.c = paramView.findViewById(2063991254);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.poi.AESelectionLocationAdapter.AESelectionHolder
  * JD-Core Version:    0.7.0.1
  */

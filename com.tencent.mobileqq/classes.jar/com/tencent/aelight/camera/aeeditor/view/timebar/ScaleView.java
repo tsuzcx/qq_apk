@@ -17,38 +17,66 @@ import com.tencent.aelight.camera.aeeditor.view.timebar.scale.ScaleAdapter;
 public class ScaleView
   extends View
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private ScaleGestureDetector.OnScaleGestureListener jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener = new ScaleView.1(this);
-  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private ScaleView.MotionModel jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.None;
-  private ScaleView.OnBarMoveListener jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$OnBarMoveListener;
-  private ScaleView.onMoveByUserListener jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$onMoveByUserListener;
   protected ScaleAdapter a;
-  private int b;
-  private int c;
+  private int b = 0;
+  private ScaleView.MotionModel c = ScaleView.MotionModel.None;
+  private Scroller d;
+  private VelocityTracker e;
+  private int f;
+  private int g;
+  private long h;
+  private ScaleView.OnBarMoveListener i;
+  private ScaleGestureDetector.OnScaleGestureListener j = new ScaleView.1(this);
+  private ScaleView.onMoveByUserListener k;
+  private ScaleGestureDetector l;
   
   public ScaleView(Context paramContext)
   {
     super(paramContext);
-    a();
+    b();
   }
   
   public ScaleView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    b();
   }
   
   public ScaleView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
+    b();
   }
   
-  private int a(int paramInt1, int paramInt2)
+  private void a(int paramInt1, int paramInt2)
+  {
+    this.e.computeCurrentVelocity(500);
+    int m = (int)this.e.getXVelocity();
+    if ((Math.abs(m) > this.f) && (Math.abs(m) < this.g))
+    {
+      this.c = ScaleView.MotionModel.FlingScroll;
+      this.d.fling(paramInt1, paramInt2, -m, 0, 0, a(), 0, getHeight());
+      awakenScrollBars(this.d.getDuration());
+      invalidate();
+      return;
+    }
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((ScaleAdapter)localObject).g();
+    }
+    localObject = this.i;
+    if (localObject != null) {
+      ((ScaleView.OnBarMoveListener)localObject).b(getScrollX());
+    }
+  }
+  
+  private void a(MotionEvent paramMotionEvent)
+  {
+    this.c = ScaleView.MotionModel.Down;
+    this.b = ((int)paramMotionEvent.getX());
+  }
+  
+  private int b(int paramInt1, int paramInt2)
   {
     paramInt1 -= paramInt2;
     if (paramInt1 > 0)
@@ -65,213 +93,190 @@ public class ScaleView
     return 0;
   }
   
-  private int a(long paramLong)
+  private int b(long paramLong)
   {
-    return (int)(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a() * this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(paramLong));
-  }
-  
-  private long a()
-  {
-    if (a() == getScrollX()) {
-      return this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.b();
-    }
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.c();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(getContext(), this.jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener);
-    ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
-    this.b = localViewConfiguration.getScaledMinimumFlingVelocity();
-    this.c = localViewConfiguration.getScaledMaximumFlingVelocity();
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(500);
-    int i = (int)this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity();
-    if ((Math.abs(i) > this.b) && (Math.abs(i) < this.c))
-    {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.FlingScroll;
-      this.jdField_a_of_type_AndroidWidgetScroller.fling(paramInt1, paramInt2, -i, 0, 0, a(), 0, getHeight());
-      awakenScrollBars(this.jdField_a_of_type_AndroidWidgetScroller.getDuration());
-      invalidate();
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter;
-    if (localObject != null) {
-      ((ScaleAdapter)localObject).a();
-    }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$OnBarMoveListener;
-    if (localObject != null) {
-      ((ScaleView.OnBarMoveListener)localObject).b(getScrollX());
-    }
-  }
-  
-  private void a(MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.Down;
-    this.jdField_a_of_type_Int = ((int)paramMotionEvent.getX());
+    return (int)(this.a.f() * this.a.b(paramLong));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.Zoom;
-    this.jdField_a_of_type_Long = a();
+    this.d = new Scroller(getContext());
+    this.l = new ScaleGestureDetector(getContext(), this.j);
+    ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
+    this.f = localViewConfiguration.getScaledMinimumFlingVelocity();
+    this.g = localViewConfiguration.getScaledMaximumFlingVelocity();
   }
   
   private void b(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel != ScaleView.MotionModel.Zoom) && ((this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.Down) || (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.Move)))
+    if ((this.c != ScaleView.MotionModel.Zoom) && ((this.c == ScaleView.MotionModel.Down) || (this.c == ScaleView.MotionModel.Move)))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.Move;
-      int i = (int)paramMotionEvent.getX();
-      scrollBy(a(this.jdField_a_of_type_Int, i), 0);
-      this.jdField_a_of_type_Int = i;
+      this.c = ScaleView.MotionModel.Move;
+      int m = (int)paramMotionEvent.getX();
+      scrollBy(b(this.b, m), 0);
+      this.b = m;
     }
   }
   
   private void c()
   {
-    ScaleView.onMoveByUserListener localonMoveByUserListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$onMoveByUserListener;
-    if (localonMoveByUserListener != null) {
-      localonMoveByUserListener.a();
-    }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.None;
-    int i = getScrollX();
-    int j = getScrollY();
-    if (i < 0)
-    {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.ComputeScroll;
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, j, -i, -j);
-      return;
-    }
-    if (i > a())
-    {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.ComputeScroll;
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, j, a() - i, -j);
-      return;
-    }
-    a(i, j);
+    this.c = ScaleView.MotionModel.Zoom;
+    this.h = getDeviationTime();
   }
   
   private void c(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    if (this.e == null) {
+      this.e = VelocityTracker.obtain();
     }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+    this.e.addMovement(paramMotionEvent);
   }
   
   private void d()
   {
-    scrollTo(a(this.jdField_a_of_type_Long), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
+    ScaleView.onMoveByUserListener localonMoveByUserListener = this.k;
+    if (localonMoveByUserListener != null) {
+      localonMoveByUserListener.a();
+    }
+    this.c = ScaleView.MotionModel.None;
+    int m = getScrollX();
+    int n = getScrollY();
+    if (m < 0)
+    {
+      this.c = ScaleView.MotionModel.ComputeScroll;
+      this.d.startScroll(m, n, -m, -n);
+      return;
+    }
+    if (m > a())
+    {
+      this.c = ScaleView.MotionModel.ComputeScroll;
+      this.d.startScroll(m, n, a() - m, -n);
+      return;
+    }
+    a(m, n);
+  }
+  
+  private void e()
+  {
+    scrollTo(b(this.h), this.d.getCurrY());
+  }
+  
+  private long getDeviationTime()
+  {
+    if (a() == getScrollX()) {
+      return this.a.c();
+    }
+    return this.a.d();
   }
   
   public int a()
   {
-    ScaleAdapter localScaleAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter;
-    return localScaleAdapter.a(localScaleAdapter.b());
+    ScaleAdapter localScaleAdapter = this.a;
+    return localScaleAdapter.c(localScaleAdapter.c());
   }
   
   public void a(long paramLong)
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(paramLong);
-    int j = getScrollX();
-    int k = getScrollY();
-    this.jdField_a_of_type_AndroidWidgetScroller.startScroll(j, k, i - j, -k, 0);
+    int m = this.a.c(paramLong);
+    int n = getScrollX();
+    int i1 = getScrollY();
+    this.d.startScroll(n, i1, m - n, -i1, 0);
     postInvalidate();
   }
   
   @RequiresApi(api=16)
   public void a(long paramLong, int paramInt)
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(paramLong);
-    int j = getScrollX();
-    int k = getScrollY();
-    this.jdField_a_of_type_AndroidWidgetScroller.startScroll(j, k, i - j, -k, paramInt);
+    int m = this.a.c(paramLong);
+    int n = getScrollX();
+    int i1 = getScrollY();
+    this.d.startScroll(n, i1, m - n, -i1, paramInt);
     postInvalidateOnAnimation();
   }
   
   public void a(ScaleAdapter paramScaleAdapter)
   {
-    setScaleAdapter(paramScaleAdapter, a());
+    setScaleAdapter(paramScaleAdapter, getDeviationTime());
   }
   
   public void computeScroll()
   {
     super.computeScroll();
-    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+    if (this.d.computeScrollOffset())
     {
-      scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
+      scrollTo(this.d.getCurrX(), this.d.getCurrY());
       postInvalidate();
     }
-    else if ((this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.ComputeScroll) || (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.FlingScroll))
+    else if ((this.c == ScaleView.MotionModel.ComputeScroll) || (this.c == ScaleView.MotionModel.FlingScroll))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.None;
+      this.c = ScaleView.MotionModel.None;
     }
-    ScaleAdapter localScaleAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter;
+    ScaleAdapter localScaleAdapter = this.a;
     if (localScaleAdapter == null) {
       return;
     }
-    localScaleAdapter.a();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$OnBarMoveListener != null)
+    localScaleAdapter.g();
+    if (this.i != null)
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.None)
+      if (this.c == ScaleView.MotionModel.None)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$OnBarMoveListener.b(getScrollX());
+        this.i.b(getScrollX());
         return;
       }
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.Move) || (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.FlingScroll)) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$OnBarMoveListener.a(getScrollX());
+      if ((this.c == ScaleView.MotionModel.Move) || (this.c == ScaleView.MotionModel.FlingScroll)) {
+        this.i.a(getScrollX());
       }
     }
+  }
+  
+  public int getFinalScrollX()
+  {
+    return this.d.getFinalX();
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    VelocityTracker localVelocityTracker = this.e;
     if (localVelocityTracker != null)
     {
       localVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+      this.e = null;
     }
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
-    if (this.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress()) {
+    this.l.onTouchEvent(paramMotionEvent);
+    if (this.l.isInProgress()) {
       return true;
     }
     c(paramMotionEvent);
-    int i = paramMotionEvent.getActionMasked();
-    if (i != 0)
+    int m = paramMotionEvent.getActionMasked();
+    if (m != 0)
     {
-      if (i != 1)
+      if (m != 1)
       {
-        if (i != 2)
+        if (m != 2)
         {
-          if (i != 5)
+          if (m != 5)
           {
-            this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.None;
+            this.c = ScaleView.MotionModel.None;
             return true;
           }
-          b();
+          c();
           return true;
         }
         b(paramMotionEvent);
         return true;
       }
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.Zoom)
+      if (this.c == ScaleView.MotionModel.Zoom)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.None;
+        this.c = ScaleView.MotionModel.None;
         return true;
       }
-      c();
+      d();
       return true;
     }
     a(paramMotionEvent);
@@ -280,46 +285,46 @@ public class ScaleView
   
   public void setCurrTime(long paramLong)
   {
-    if (paramLong < this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a()) {
+    if (paramLong < this.a.b()) {
       return;
     }
-    if (paramLong > this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.b()) {
+    if (paramLong > this.a.c()) {
       return;
     }
-    this.jdField_a_of_type_Long = paramLong;
-    d();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a();
+    this.h = paramLong;
+    e();
+    this.a.g();
     postInvalidate();
   }
   
   public void setMoveByUserListener(ScaleView.onMoveByUserListener paramonMoveByUserListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$onMoveByUserListener = paramonMoveByUserListener;
+    this.k = paramonMoveByUserListener;
   }
   
   public void setOnBarMoveListener(ScaleView.OnBarMoveListener paramOnBarMoveListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleView$OnBarMoveListener = paramOnBarMoveListener;
+    this.i = paramOnBarMoveListener;
   }
   
   public void setScaleAdapter(ScaleAdapter paramScaleAdapter)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter = paramScaleAdapter;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(this);
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a();
+    this.a = paramScaleAdapter;
+    this.a.a(this);
+    this.h = this.a.b();
   }
   
   public void setScaleAdapter(ScaleAdapter paramScaleAdapter, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter = paramScaleAdapter;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(this);
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a();
+    this.a = paramScaleAdapter;
+    this.a.a(this);
+    this.h = this.a.b();
     setCurrTime(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.timebar.ScaleView
  * JD-Core Version:    0.7.0.1
  */

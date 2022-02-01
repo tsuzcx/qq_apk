@@ -22,17 +22,17 @@ final class MoveTrigger$monitor$1
     Intrinsics.checkParameterIsNotNull(paramView, "v");
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getVts() > 0.0F)
+    if (this.a.getVts() > 0.0F)
     {
-      localObject = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getTrackerHelper();
+      localObject = this.a.getTrackerHelper();
       if (localObject != null) {
         ((VelocityTrackerHelper)localObject).a(paramMotionEvent);
       }
     }
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
-    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setCx(f1);
-    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setCy(f2);
+    this.a.getState().setCx(f1);
+    this.a.getState().setCy(f2);
     int i = paramMotionEvent.getAction();
     if (i != 0)
     {
@@ -41,38 +41,38 @@ final class MoveTrigger$monitor$1
         if (i != 2) {
           return true;
         }
-        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setDx(f1 - this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().getLastX());
-        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setDy(f2 - this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().getLastY());
-        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setMovedX(f1 - this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().getLastDownX());
-        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setMovedY(f2 - this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().getLastDownY());
-        paramMotionEvent = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger;
-        localObject = this.jdField_a_of_type_ComTencentXactionApiIView.getDecor().getProxy();
+        this.a.getState().setDx(f1 - this.a.getState().getLastX());
+        this.a.getState().setDy(f2 - this.a.getState().getLastY());
+        this.a.getState().setMovedX(f1 - this.a.getState().getLastDownX());
+        this.a.getState().setMovedY(f2 - this.a.getState().getLastDownY());
+        paramMotionEvent = this.a;
+        localObject = this.b.getDecor().b();
         if (localObject == null) {
           Intrinsics.throwNpe();
         }
         paramMotionEvent.updateProgress((View)localObject, "move");
-        paramMotionEvent = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger;
-        MoveTrigger.access$actionMove(paramMotionEvent, paramView, paramMotionEvent.getState().getDx(), this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().getDy());
-        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastX(f1);
-        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastY(f2);
+        paramMotionEvent = this.a;
+        MoveTrigger.access$actionMove(paramMotionEvent, paramView, paramMotionEvent.getState().getDx(), this.a.getState().getDy());
+        this.a.getState().setLastX(f1);
+        this.a.getState().setLastY(f2);
         return true;
       }
-      MoveTrigger.access$trackerActionUp(this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger, this.jdField_a_of_type_AndroidViewView, paramView);
+      MoveTrigger.access$trackerActionUp(this.a, this.c, paramView);
       return true;
     }
-    if (this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getVts() > 0.0F)
+    if (this.a.getVts() > 0.0F)
     {
-      paramView = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getTrackerHelper();
+      paramView = this.a.getTrackerHelper();
       if (paramView != null) {
-        paramView.a();
+        paramView.b();
       }
     }
-    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastDownX(f1);
-    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastDownY(f2);
-    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastX(f1);
-    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastY(f2);
-    paramView = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger;
-    paramMotionEvent = this.jdField_a_of_type_ComTencentXactionApiIView.getDecor().getProxy();
+    this.a.getState().setLastDownX(f1);
+    this.a.getState().setLastDownY(f2);
+    this.a.getState().setLastX(f1);
+    this.a.getState().setLastY(f2);
+    paramView = this.a;
+    paramMotionEvent = this.b.getDecor().b();
     if (paramMotionEvent == null) {
       Intrinsics.throwNpe();
     }
@@ -82,7 +82,7 @@ final class MoveTrigger$monitor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.MoveTrigger.monitor.1
  * JD-Core Version:    0.7.0.1
  */

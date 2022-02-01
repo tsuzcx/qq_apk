@@ -17,9 +17,9 @@ class AutoReplyAdapter$1
   {
     if (AutoReplyAdapter.a(this.a).size() > 10)
     {
-      QQToast.a(AutoReplyAdapter.a(this.a), 1, 2131690253, 1).a();
+      QQToast.makeText(AutoReplyAdapter.b(this.a), 1, 2131887164, 1).show();
     }
-    else if (AutoReplyAdapter.a(this.a) != null)
+    else if (AutoReplyAdapter.c(this.a) != null)
     {
       int i;
       if (AutoReplyAdapter.a(this.a).size() > 1) {
@@ -29,14 +29,14 @@ class AutoReplyAdapter$1
       }
       AutoReplyText localAutoReplyText = new AutoReplyText("", i);
       localAutoReplyText.getExtra().putBoolean("addFlag", true);
-      AutoReplyAdapter.a(this.a).b(localAutoReplyText, false);
+      AutoReplyAdapter.c(this.a).b(localAutoReplyText, false);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyAdapter.1
  * JD-Core Version:    0.7.0.1
  */

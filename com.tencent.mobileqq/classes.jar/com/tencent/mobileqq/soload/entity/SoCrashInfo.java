@@ -13,22 +13,18 @@ import java.util.List;
 
 public class SoCrashInfo
 {
-  public int a;
-  public long a;
   public String a;
-  public List<Long> a;
   public int b;
-  public long b;
+  public long c;
+  public List<Long> d = new LinkedList();
+  public long e;
+  public int f;
   
-  SoCrashInfo()
-  {
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-  }
+  SoCrashInfo() {}
   
   SoCrashInfo(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   private static int a(String paramString, int paramInt)
@@ -66,12 +62,12 @@ public class SoCrashInfo
     {
       SoCrashInfo localSoCrashInfo = new SoCrashInfo();
       paramString = Uri.parse(paramString);
-      localSoCrashInfo.jdField_a_of_type_JavaLangString = paramString.getQueryParameter("ver");
-      localSoCrashInfo.jdField_a_of_type_Int = a(paramString.getQueryParameter("loadCTs"), 0);
-      localSoCrashInfo.jdField_a_of_type_Long = a(paramString.getQueryParameter("lastLCT"), 0L);
-      localSoCrashInfo.jdField_a_of_type_JavaUtilList = a(paramString.getQueryParameters("prc"));
-      localSoCrashInfo.jdField_b_of_type_Long = a(paramString.getQueryParameter("runCPT"), 0L);
-      localSoCrashInfo.jdField_b_of_type_Int = a(paramString.getQueryParameter("runCTs"), 0);
+      localSoCrashInfo.a = paramString.getQueryParameter("ver");
+      localSoCrashInfo.b = a(paramString.getQueryParameter("loadCTs"), 0);
+      localSoCrashInfo.c = a(paramString.getQueryParameter("lastLCT"), 0L);
+      localSoCrashInfo.d = a(paramString.getQueryParameters("prc"));
+      localSoCrashInfo.e = a(paramString.getQueryParameter("runCPT"), 0L);
+      localSoCrashInfo.f = a(paramString.getQueryParameter("runCTs"), 0);
       return localSoCrashInfo;
     }
     catch (Throwable paramString)
@@ -110,18 +106,18 @@ public class SoCrashInfo
     }
     if (paramInt == 1)
     {
-      localSoCrashInfo1.jdField_b_of_type_Int += 1;
-      if (localSoCrashInfo1.jdField_b_of_type_Int >= 999) {
-        localSoCrashInfo1.jdField_b_of_type_Int = 0;
+      localSoCrashInfo1.f += 1;
+      if (localSoCrashInfo1.f >= 999) {
+        localSoCrashInfo1.f = 0;
       }
       long l = NetConnInfoCenter.getServerTimeMillis();
-      localSoCrashInfo1.jdField_a_of_type_JavaUtilList.add(Long.valueOf(l));
-      if (localSoCrashInfo1.jdField_a_of_type_JavaUtilList.size() >= 3) {
-        if (Math.abs(l - ((Long)localSoCrashInfo1.jdField_a_of_type_JavaUtilList.get(0)).longValue()) <= 1800000L) {
-          localSoCrashInfo1.jdField_b_of_type_Long = l;
+      localSoCrashInfo1.d.add(Long.valueOf(l));
+      if (localSoCrashInfo1.d.size() >= 3) {
+        if (Math.abs(l - ((Long)localSoCrashInfo1.d.get(0)).longValue()) <= 1800000L) {
+          localSoCrashInfo1.e = l;
         } else {
-          while (localSoCrashInfo1.jdField_a_of_type_JavaUtilList.size() >= 3) {
-            localSoCrashInfo1.jdField_a_of_type_JavaUtilList.remove(0);
+          while (localSoCrashInfo1.d.size() >= 3) {
+            localSoCrashInfo1.d.remove(0);
           }
         }
       }
@@ -130,17 +126,17 @@ public class SoCrashInfo
     }
     if (paramInt == 0)
     {
-      localSoCrashInfo1.jdField_a_of_type_Int += 1;
-      paramInt = localSoCrashInfo1.jdField_a_of_type_Int;
+      localSoCrashInfo1.b += 1;
+      paramInt = localSoCrashInfo1.b;
       if (paramInt > 2)
       {
         SoConfigManager.a().a(paramString1, paramString2);
-        SoLoadUtils.b(paramString1);
-        SoLoadUtils.a(paramString1);
+        SoLoadUtils.e(paramString1);
+        SoLoadUtils.c(paramString1);
         return;
       }
       if (paramInt == 1) {
-        localSoCrashInfo1.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+        localSoCrashInfo1.c = NetConnInfoCenter.getServerTimeMillis();
       }
       SoLoadUtils.a(localSoCrashInfo1, paramString1);
     }
@@ -151,16 +147,16 @@ public class SoCrashInfo
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?");
     localStringBuilder.append("ver=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("&loadCTs=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("&lastLCT=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("&runCTs=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("&runCPT=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    localStringBuilder.append(this.e);
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext())
     {
       long l = ((Long)localIterator.next()).longValue();
@@ -170,39 +166,39 @@ public class SoCrashInfo
     return localStringBuilder.toString();
   }
   
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Long > 0L;
-  }
-  
   public boolean b()
   {
-    return (a()) && (Math.abs(NetConnInfoCenter.getServerTimeMillis() - this.jdField_b_of_type_Long) <= 7200000L);
+    return this.e > 0L;
   }
   
   public boolean c()
   {
-    return (this.jdField_a_of_type_Int >= 2) && (Math.abs(NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long) < 21600000L);
+    return (b()) && (Math.abs(NetConnInfoCenter.getServerTimeMillis() - this.e) <= 7200000L);
   }
   
   public boolean d()
   {
-    return (this.jdField_a_of_type_Int >= 2) && (Math.abs(NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long) >= 21600000L);
+    return (this.b >= 2) && (Math.abs(NetConnInfoCenter.getServerTimeMillis() - this.c) < 21600000L);
   }
   
   public boolean e()
   {
-    int i = this.jdField_b_of_type_Int;
-    return (i > 0) && (i % 3 == 0);
+    return (this.b >= 2) && (Math.abs(NetConnInfoCenter.getServerTimeMillis() - this.c) >= 21600000L);
   }
   
   public boolean f()
   {
-    if (d()) {
+    int i = this.f;
+    return (i > 0) && (i % 3 == 0);
+  }
+  
+  public boolean g()
+  {
+    if (e()) {
       return true;
     }
-    if (!a()) {
-      return e();
+    if (!b()) {
+      return f();
     }
     return true;
   }
@@ -211,25 +207,25 @@ public class SoCrashInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("SoCrashInfo{mSoVer='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mLoadCrashTimes=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", mFirstLoadCrashTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", mRunCrashProtectTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", mPreRunCrashTimes=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", mRunCrashTimes=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.entity.SoCrashInfo
  * JD-Core Version:    0.7.0.1
  */

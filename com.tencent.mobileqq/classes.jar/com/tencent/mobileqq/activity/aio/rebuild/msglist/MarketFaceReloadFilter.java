@@ -17,11 +17,11 @@ public class MarketFaceReloadFilter
 {
   public List<ChatMessage> a(AIOContext paramAIOContext, List<ChatMessage> paramList)
   {
-    if ((paramAIOContext.a().a().a()) && (paramList.size() > 0))
+    if ((paramAIOContext.e().e().f()) && (paramList.size() > 0))
     {
       ChatMessage localChatMessage = (ChatMessage)paramList.get(paramList.size() - 1);
       localChatMessage.mPendantAnimatable = true;
-      if (((localChatMessage instanceof MessageForMarketFace)) && (!((FullScreenInputHelper)paramAIOContext.a(24)).c()))
+      if (((localChatMessage instanceof MessageForMarketFace)) && (!((FullScreenInputHelper)paramAIOContext.a(24)).e()))
       {
         MessageForMarketFace localMessageForMarketFace = (MessageForMarketFace)localChatMessage;
         MarkFaceMessage localMarkFaceMessage2 = localMessageForMarketFace.mMarkFaceMessage;
@@ -31,7 +31,7 @@ public class MarketFaceReloadFilter
           localChatMessage.parse();
           localMarkFaceMessage1 = localMessageForMarketFace.mMarkFaceMessage;
         }
-        if (((localMarkFaceMessage1.mobileparam != null) && (localMarkFaceMessage1.mobileparam.length > 0)) || ((localMarkFaceMessage1.mediaType == 3) && (UinTypeUtil.b(paramAIOContext.a().a)))) {
+        if (((localMarkFaceMessage1.mobileparam != null) && (localMarkFaceMessage1.mobileparam.length > 0)) || ((localMarkFaceMessage1.mediaType == 3) && (UinTypeUtil.b(paramAIOContext.O().a)))) {
           localMessageForMarketFace.needToPlay = true;
         }
       }
@@ -41,7 +41,7 @@ public class MarketFaceReloadFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.MarketFaceReloadFilter
  * JD-Core Version:    0.7.0.1
  */

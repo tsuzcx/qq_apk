@@ -5,7 +5,7 @@ class EffectSettingBtn$3
 {
   public void run()
   {
-    if (this.this$0.a == null) {
+    if (this.this$0.e == null) {
       return;
     }
     EffectSettingBtn.a(this.this$0, -1006L);

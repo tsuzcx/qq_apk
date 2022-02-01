@@ -15,46 +15,46 @@ import kotlin.jvm.internal.Intrinsics;
 public final class LongContentInfoUpdaterVideoSmallPic
   extends LongContentInfoUpdater
 {
-  protected void a()
+  protected void e()
   {
-    Object localObject1 = a();
+    Object localObject1 = b();
     if (localObject1 != null) {
-      ((SocializeFeedsInfo)localObject1).a = 1;
+      ((SocializeFeedsInfo)localObject1).b = 1;
     }
     Object localObject2 = a();
-    localObject1 = a();
+    localObject1 = c();
     LongContentInfo localLongContentInfo1 = null;
     if (localObject1 != null)
     {
-      localObject1 = ((LongContentInfo)localObject1).a;
+      localObject1 = ((LongContentInfo)localObject1).c;
       if (localObject1 != null)
       {
-        localObject1 = ((PGCVideoInfo)localObject1).g;
+        localObject1 = ((PGCVideoInfo)localObject1).k;
         break label49;
       }
     }
     localObject1 = null;
     label49:
     ((AbsBaseArticleInfo)localObject2).mTitle = ((String)localObject1);
-    localObject2 = a();
+    localObject2 = d();
     if (localObject2 != null)
     {
-      ((PGCFeedsInfo)localObject2).a = true;
-      LongContentInfo localLongContentInfo2 = a();
+      ((PGCFeedsInfo)localObject2).f = true;
+      LongContentInfo localLongContentInfo2 = c();
       localObject1 = localLongContentInfo1;
       if (localLongContentInfo2 != null) {
-        localObject1 = localLongContentInfo2.a;
+        localObject1 = localLongContentInfo2.c;
       }
       ((PGCFeedsInfo)localObject2).b = new ArrayList();
       ((PGCFeedsInfo)localObject2).b.add(localObject1);
       try
       {
         localObject1 = a();
-        localLongContentInfo1 = a();
+        localLongContentInfo1 = c();
         if (localLongContentInfo1 == null) {
           Intrinsics.throwNpe();
         }
-        ((AbsBaseArticleInfo)localObject1).mSinglePicture = new URL(localLongContentInfo1.a.d);
+        ((AbsBaseArticleInfo)localObject1).mSinglePicture = new URL(localLongContentInfo1.c.d);
         return;
       }
       catch (MalformedURLException localMalformedURLException)
@@ -66,7 +66,7 @@ public final class LongContentInfoUpdaterVideoSmallPic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.longcontentinfoupdater.LongContentInfoUpdaterVideoSmallPic
  * JD-Core Version:    0.7.0.1
  */

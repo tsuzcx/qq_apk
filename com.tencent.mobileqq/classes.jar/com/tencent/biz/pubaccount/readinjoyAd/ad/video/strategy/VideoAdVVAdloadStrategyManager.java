@@ -16,47 +16,47 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class VideoAdVVAdloadStrategyManager
   implements IVideoAdVVAdloadStrategyManager
 {
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new VideoAdVVAdloadStrategyManager.1(this, Looper.getMainLooper());
-  private IVideoAdTimeLoadManager jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIVideoAdTimeLoadManager;
-  private IVideoFeedsAdapter jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<VideoInfo> jdField_a_of_type_JavaUtilArrayList;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private String a;
+  private long b;
+  private AtomicBoolean c = new AtomicBoolean(false);
+  private IVideoFeedsAdapter d;
+  private ArrayList<VideoInfo> e;
+  private IVideoAdTimeLoadManager f;
+  private Handler g = new VideoAdVVAdloadStrategyManager.1(this, Looper.getMainLooper());
   
   public VideoAdVVAdloadStrategyManager(IVideoFeedsAdapter paramIVideoFeedsAdapter, ArrayList<VideoInfo> paramArrayList, IVideoAdTimeLoadManager paramIVideoAdTimeLoadManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter = paramIVideoFeedsAdapter;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIVideoAdTimeLoadManager = paramIVideoAdTimeLoadManager;
+    this.d = paramIVideoFeedsAdapter;
+    this.e = paramArrayList;
+    this.f = paramIVideoAdTimeLoadManager;
   }
   
   private void a(long paramLong, boolean paramBoolean)
   {
-    if (VideoAdStrategyManager.a != 3)
+    if (VideoAdStrategyManager.b != 3)
     {
       QLog.d("VideoAdVVAdloadStrategyManager", 2, "chooseStrategy:不是混合策略,结束运行");
       b();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
+      this.c.compareAndSet(false, true);
       return;
     }
-    if (paramLong >= VideoAdStrategyManager.i * 1000)
+    if (paramLong >= VideoAdStrategyManager.l * 1000)
     {
-      VideoAdStrategyManager.a = 1;
+      VideoAdStrategyManager.b = 1;
       QLog.d("VideoAdVVAdloadStrategyManager", 2, "chooseStrategy:走时长策略");
       b();
       e();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
+      this.c.compareAndSet(false, true);
       return;
     }
     if (paramBoolean)
     {
-      if (paramLong < VideoAdStrategyManager.i * 1000)
+      if (paramLong < VideoAdStrategyManager.l * 1000)
       {
-        VideoAdStrategyManager.a = 2;
+        VideoAdStrategyManager.b = 2;
         QLog.d("VideoAdVVAdloadStrategyManager", 2, "chooseStrategy:走vv策略");
       }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
+      this.c.compareAndSet(false, true);
     }
   }
   
@@ -66,7 +66,7 @@ public class VideoAdVVAdloadStrategyManager
     try
     {
       Object localObject;
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter != null) && (VideoAdTimeLoadManager.a != null))
+      if ((this.d != null) && (VideoAdTimeLoadManager.a != null))
       {
         Iterator localIterator = VideoAdTimeLoadManager.a.iterator();
         while (localIterator.hasNext())
@@ -74,10 +74,10 @@ public class VideoAdVVAdloadStrategyManager
           localObject = (VideoInfo)localIterator.next();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("clearAdVideoInfo  del vid : ");
-          localStringBuilder.append(((VideoInfo)localObject).jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(((VideoInfo)localObject).b);
           QLog.d("VideoAdVVAdloadStrategyManager", 2, localStringBuilder.toString());
-          this.jdField_a_of_type_JavaUtilArrayList.remove(localObject);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.d((VideoInfo)localObject);
+          this.e.remove(localObject);
+          this.d.d((VideoInfo)localObject);
         }
       }
       return;
@@ -93,22 +93,22 @@ public class VideoAdVVAdloadStrategyManager
   
   private void f()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIVideoAdTimeLoadManager != null) && (VideoAdStrategyManager.a != 1))
+    if ((this.f != null) && (VideoAdStrategyManager.b != 1))
     {
       QLog.d("VideoAdVVAdloadStrategyManager", 2, "结束 adloadtime");
-      this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIVideoAdTimeLoadManager.e();
+      this.f.e();
     }
   }
   
   public void a()
   {
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!VideoAdStrategyManager.d()))
+    if ((!this.c.get()) && (!VideoAdStrategyManager.d()))
     {
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      Handler localHandler = this.g;
       if (localHandler != null)
       {
         localHandler.removeMessages(4097);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4097, 500L);
+        this.g.sendEmptyMessageDelayed(4097, 500L);
       }
       return;
     }
@@ -117,14 +117,14 @@ public class VideoAdVVAdloadStrategyManager
   
   public void a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
+    if ((!TextUtils.isEmpty(paramString)) && (!this.c.get()))
     {
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        this.jdField_a_of_type_JavaLangString = paramString;
+      if (this.a == null) {
+        this.a = paramString;
       }
-      if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
+      if (!TextUtils.equals(this.a, paramString))
       {
-        a(this.jdField_a_of_type_Long, true);
+        a(this.b, true);
         b();
       }
       return;
@@ -152,12 +152,12 @@ public class VideoAdVVAdloadStrategyManager
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      if (this.g != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(4097);
+        this.g.removeMessages(4097);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("暂停计时:");
-        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append(this.b);
         QLog.d("VideoAdVVAdloadStrategyManager", 2, localStringBuilder.toString());
       }
       return;
@@ -171,14 +171,14 @@ public class VideoAdVVAdloadStrategyManager
   
   public void d()
   {
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    VideoAdStrategyManager.c = false;
-    VideoAdStrategyManager.a = 0;
+    this.g = null;
+    VideoAdStrategyManager.m = false;
+    VideoAdStrategyManager.b = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdVVAdloadStrategyManager
  * JD-Core Version:    0.7.0.1
  */

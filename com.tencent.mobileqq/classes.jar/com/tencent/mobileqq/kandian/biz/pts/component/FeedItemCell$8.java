@@ -1,43 +1,26 @@
 package com.tencent.mobileqq.kandian.biz.pts.component;
 
-import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import java.util.ArrayList;
 
 class FeedItemCell$8
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  FeedItemCell$8(FeedItemCell paramFeedItemCell, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, Object paramObject, boolean paramBoolean) {}
+  FeedItemCell$8(FeedItemCell paramFeedItemCell, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, Object paramObject) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localArrayList.add(((IReadInJoyModel)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
-      i += 1;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("headerUninterestConfirm,");
-      Object localObject = this.b;
-      if (localObject == null) {
-        localObject = "null";
-      } else {
-        localObject = ((ArrayList)localObject).toString();
-      }
-      localStringBuilder.append((String)localObject);
-      QLog.d("FeedItemCell", 2, localStringBuilder.toString());
-    }
-    this.this$0.a.b(this.jdField_a_of_type_Int, localArrayList, this.b, this.jdField_a_of_type_JavaLangObject, false, this.jdField_a_of_type_Boolean);
+    FeedItemCell.a(this.e, this.a, this.b, this.c, this.d, true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCell.8
  * JD-Core Version:    0.7.0.1
  */

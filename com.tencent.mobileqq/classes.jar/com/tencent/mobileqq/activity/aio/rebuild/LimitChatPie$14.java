@@ -13,11 +13,11 @@ class LimitChatPie$14
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.isFinishing())) {
+    if ((this.this$0.f != null) && (this.this$0.f.isFinishing())) {
       return;
     }
-    XPanelContainer localXPanelContainer = this.this$0.a();
-    View localView = localXPanelContainer.findViewById(2131362965);
+    XPanelContainer localXPanelContainer = this.this$0.bm();
+    View localView = localXPanelContainer.findViewById(2131428764);
     if (localView != null)
     {
       localXPanelContainer.removeView(localView);
@@ -27,7 +27,7 @@ class LimitChatPie$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.14
  * JD-Core Version:    0.7.0.1
  */

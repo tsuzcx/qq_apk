@@ -10,12 +10,12 @@ class AECirclePhotoListLogic$10
   
   public void run()
   {
-    QQToast.a(this.this$0.a.a(), "暂无媒体文件", 1000).a();
+    QQToast.makeText(this.this$0.g.g(), "暂无媒体文件", 1000).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic.10
  * JD-Core Version:    0.7.0.1
  */

@@ -35,19 +35,8 @@ import java.util.TimeZone;
 
 public class StoryListUtils
 {
-  public static String a;
-  public static final int[] a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 120, 200, 320, 512, 640, 750, 1000 };
-    jdField_a_of_type_JavaLangString = Integer.toString(jdField_a_of_type_ArrayOfInt[0]);
-  }
-  
-  public static float a(long paramLong)
-  {
-    return (float)(NetConnInfoCenter.getServerTimeMillis() - paramLong) / 3600000.0F;
-  }
+  public static final int[] a = { 120, 200, 320, 512, 640, 750, 1000 };
+  public static String b = Integer.toString(a[0]);
   
   public static int a(int paramInt)
   {
@@ -78,7 +67,7 @@ public class StoryListUtils
       int[] arrayOfInt = new int[2];
       paramView.getLocationOnScreen(arrayOfInt);
       int i = paramView.getHeight();
-      int j = UIUtils.d(paramView.getContext()) / 2;
+      int j = UIUtils.e(paramView.getContext()) / 2;
       if (i > 0)
       {
         i = Math.min(Math.abs(j - arrayOfInt[1]), Math.abs(j - (arrayOfInt[1] + i)));
@@ -208,91 +197,91 @@ public class StoryListUtils
       str = null;
       break;
     case 13: 
-      str = HardCodeUtil.a(2131714241);
+      str = HardCodeUtil.a(2131911764);
       break;
     case 12: 
-      str = HardCodeUtil.a(2131714270);
+      str = HardCodeUtil.a(2131911793);
       break;
     case 11: 
-      str = HardCodeUtil.a(2131714257);
+      str = HardCodeUtil.a(2131911780);
       break;
     case 10: 
-      str = HardCodeUtil.a(2131714273);
+      str = HardCodeUtil.a(2131911796);
       break;
     case 9: 
-      str = HardCodeUtil.a(2131714262);
+      str = HardCodeUtil.a(2131911785);
       break;
     case 8: 
-      str = HardCodeUtil.a(2131714253);
+      str = HardCodeUtil.a(2131911776);
       break;
     case 7: 
-      str = HardCodeUtil.a(2131714245);
+      str = HardCodeUtil.a(2131911768);
       break;
     case 6: 
-      str = HardCodeUtil.a(2131714239);
+      str = HardCodeUtil.a(2131911762);
       break;
     case 5: 
-      str = HardCodeUtil.a(2131714275);
+      str = HardCodeUtil.a(2131911798);
       break;
     case 4: 
-      str = HardCodeUtil.a(2131714248);
+      str = HardCodeUtil.a(2131911771);
       break;
     case 3: 
-      str = HardCodeUtil.a(2131714258);
+      str = HardCodeUtil.a(2131911781);
       break;
     case 2: 
-      str = HardCodeUtil.a(2131714259);
+      str = HardCodeUtil.a(2131911782);
       break;
     case 1: 
-      str = HardCodeUtil.a(2131714274);
+      str = HardCodeUtil.a(2131911797);
       break;
     case 0: 
-      str = HardCodeUtil.a(2131714280);
+      str = HardCodeUtil.a(2131911803);
       break;
     case -1: 
-      str = HardCodeUtil.a(2131714261);
+      str = HardCodeUtil.a(2131911784);
       break;
     case -2: 
-      str = HardCodeUtil.a(2131714281);
+      str = HardCodeUtil.a(2131911804);
       break;
     case -3: 
-      str = HardCodeUtil.a(2131714266);
+      str = HardCodeUtil.a(2131911789);
       break;
     case -4: 
-      str = HardCodeUtil.a(2131714265);
+      str = HardCodeUtil.a(2131911788);
       break;
     case -5: 
-      str = HardCodeUtil.a(2131714244);
+      str = HardCodeUtil.a(2131911767);
       break;
     case -6: 
-      str = HardCodeUtil.a(2131714254);
+      str = HardCodeUtil.a(2131911777);
       break;
     case -7: 
-      str = HardCodeUtil.a(2131714276);
+      str = HardCodeUtil.a(2131911799);
       break;
     case -8: 
-      str = HardCodeUtil.a(2131714240);
+      str = HardCodeUtil.a(2131911763);
       break;
     case -9: 
-      str = HardCodeUtil.a(2131714243);
+      str = HardCodeUtil.a(2131911766);
       break;
     case -10: 
-      str = HardCodeUtil.a(2131714279);
+      str = HardCodeUtil.a(2131911802);
       break;
     case -11: 
-      str = HardCodeUtil.a(2131714250);
+      str = HardCodeUtil.a(2131911773);
       break;
     case -12: 
-      str = HardCodeUtil.a(2131714252);
+      str = HardCodeUtil.a(2131911775);
     }
     if (TextUtils.isEmpty(str)) {
-      return HardCodeUtil.a(2131714251);
+      return HardCodeUtil.a(2131911774);
     }
     Object localObject = str;
     if (paramBoolean)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131714263));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131911786));
       ((StringBuilder)localObject).append(str);
       localObject = ((StringBuilder)localObject).toString();
     }
@@ -466,7 +455,7 @@ public class StoryListUtils
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    Object localObject = ((QQStoryManager)paramQQAppInterface.getManager(QQManagerFactory.QQSTORY_MANAGER)).a(false);
+    Object localObject = ((QQStoryManager)paramQQAppInterface.getManager(QQManagerFactory.QQSTORY_MANAGER)).j(false);
     paramQQAppInterface = new ArrayList();
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
@@ -547,7 +536,7 @@ public class StoryListUtils
     Calendar localCalendar = Calendar.getInstance();
     long l = NetConnInfoCenter.getServerTimeMillis();
     if ((l - paramLong) / 1000L < 60L) {
-      return HardCodeUtil.a(2131714255);
+      return HardCodeUtil.a(2131911778);
     }
     localCalendar.setTimeInMillis(paramLong);
     int i = localCalendar.get(1);
@@ -560,17 +549,22 @@ public class StoryListUtils
     int i2 = localCalendar.get(1);
     int i3 = localCalendar.get(6);
     if (m == i3) {
-      return String.format(Locale.getDefault(), HardCodeUtil.a(2131714260), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
+      return String.format(Locale.getDefault(), HardCodeUtil.a(2131911783), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
     }
     localCalendar.setTimeInMillis(paramLong);
     localCalendar.add(6, 1);
     if (localCalendar.get(6) == i3) {
-      return String.format(Locale.getDefault(), HardCodeUtil.a(2131714249), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
+      return String.format(Locale.getDefault(), HardCodeUtil.a(2131911772), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
     }
     if (i != i2) {
       return String.format(Locale.getDefault(), "%d年%d月%d日", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
     }
     return String.format(Locale.getDefault(), "%d月%d日 %02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(n), Integer.valueOf(i1) });
+  }
+  
+  public static float c(long paramLong)
+  {
+    return (float)(NetConnInfoCenter.getServerTimeMillis() - paramLong) / 3600000.0F;
   }
   
   public static int c(View paramView)
@@ -583,7 +577,7 @@ public class StoryListUtils
       int[] arrayOfInt = new int[2];
       paramView.getLocationOnScreen(arrayOfInt);
       int i = paramView.getHeight();
-      int j = UIUtils.d(paramView.getContext());
+      int j = UIUtils.e(paramView.getContext());
       if (i > 0)
       {
         i = Math.min(Math.abs(j - arrayOfInt[1]), Math.abs(j - (arrayOfInt[1] + i)));

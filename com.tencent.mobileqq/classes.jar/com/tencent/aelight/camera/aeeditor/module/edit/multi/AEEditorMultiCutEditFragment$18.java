@@ -14,19 +14,19 @@ class AEEditorMultiCutEditFragment$18
   
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AEEditorMultiCutEditFragment.a(this.a).setScrollX(paramView.getScrollX());
-    AEEditorMultiCutEditFragment.a(this.a).postInvalidate();
-    if (AEEditorMultiCutEditFragment.a(this.a).a()) {
-      AEEditorMultiCutEditFragment.a(this.a).b();
+    AEEditorMultiCutEditFragment.u(this.a).setScrollX(paramView.getScrollX());
+    AEEditorMultiCutEditFragment.u(this.a).postInvalidate();
+    if (AEEditorMultiCutEditFragment.e(this.a).a()) {
+      AEEditorMultiCutEditFragment.e(this.a).c();
     }
     AEEditorMultiCutEditFragment localAEEditorMultiCutEditFragment = this.a;
-    AEEditorMultiCutEditFragment.c(localAEEditorMultiCutEditFragment, AEEditorMultiCutEditFragment.a(localAEEditorMultiCutEditFragment).b(paramView.getScrollX()));
-    this.a.a.c();
+    AEEditorMultiCutEditFragment.c(localAEEditorMultiCutEditFragment, AEEditorMultiCutEditFragment.k(localAEEditorMultiCutEditFragment).c(paramView.getScrollX()));
+    this.a.h.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.18
  * JD-Core Version:    0.7.0.1
  */

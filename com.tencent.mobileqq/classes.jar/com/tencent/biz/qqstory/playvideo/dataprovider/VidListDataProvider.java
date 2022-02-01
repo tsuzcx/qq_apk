@@ -8,40 +8,34 @@ import java.util.Map;
 public class VidListDataProvider
   implements IDataProvider
 {
-  private IDataProvider.Data jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data;
-  private IDataProvider.GroupInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupInfo;
-  private IDataProvider.StartInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$StartInfo;
-  public final String a;
-  public final List<String> a;
+  public final List<String> a = new ArrayList();
+  public final String b;
+  private IDataProvider.GroupInfo c;
+  private IDataProvider.Data d;
+  private IDataProvider.StartInfo e;
   
   public VidListDataProvider(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data = new IDataProvider.Data();
-    paramString = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data;
+    this.a.add(paramString);
+    this.b = paramString;
+    this.d = new IDataProvider.Data();
+    paramString = this.d;
+    paramString.d = true;
     paramString.b = true;
-    paramString.jdField_a_of_type_Boolean = true;
-    paramString.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupInfo = new IDataProvider.GroupInfo(new IDataProvider.GroupId("TROOP_GROUD_ID"));
-    paramString = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupInfo;
-    paramString.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramString.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    paramString.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupInfo);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$StartInfo = new IDataProvider.StartInfo(new IDataProvider.GroupId("TROOP_GROUD_ID"), this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$StartInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupInfo = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupInfo;
+    paramString.c = new ArrayList();
+    this.c = new IDataProvider.GroupInfo(new IDataProvider.GroupId("TROOP_GROUD_ID"));
+    paramString = this.c;
+    paramString.f = this.b;
+    paramString.c = this.a;
+    paramString.d.put(this.b, "TROOP_FEED_ID");
+    this.d.c.add(this.c);
+    this.e = new IDataProvider.StartInfo(new IDataProvider.GroupId("TROOP_GROUD_ID"), this.b, "TROOP_FEED_ID");
+    this.e.d = this.c;
   }
   
   public IDataProvider.Data a(@Nullable IDataProvider.GroupId paramGroupId, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data;
-  }
-  
-  public IDataProvider.StartInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$StartInfo;
+    return this.d;
   }
   
   public void a() {}
@@ -55,10 +49,15 @@ public class VidListDataProvider
   public void b() {}
   
   public void b(IDataProvider.ICallBack paramICallBack) {}
+  
+  public IDataProvider.StartInfo c()
+  {
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.VidListDataProvider
  * JD-Core Version:    0.7.0.1
  */

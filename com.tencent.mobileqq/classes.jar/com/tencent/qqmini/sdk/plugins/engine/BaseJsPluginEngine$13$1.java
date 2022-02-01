@@ -13,27 +13,27 @@ class BaseJsPluginEngine$13$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine.authDialog == null) {
+    if (this.e.i.authDialog == null) {
       return;
     }
     AuthDialog.AuthDialogResBuilder localAuthDialogResBuilder = new AuthDialog.AuthDialogResBuilder();
-    Object localObject1 = this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMiniAppProxy;
-    Object localObject2 = this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.jdField_a_of_type_AndroidContentContext;
-    Object localObject3 = this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
-    localObject1 = localAuthDialogResBuilder.setMiniAppIconUrl(((MiniAppProxy)localObject1).getDrawable((Context)localObject2, (String)localObject3, i, i, null)).setMiniAppName(this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.jdField_b_of_type_JavaLangString).setAuthTitle(this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.c);
-    localObject2 = this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMiniAppProxy;
-    localObject3 = this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.jdField_a_of_type_AndroidContentContext;
-    String str = this.jdField_a_of_type_JavaLangString;
-    i = this.jdField_b_of_type_Int;
-    ((AuthDialog.AuthDialogResBuilder)localObject1).setUserIconUrl(((MiniAppProxy)localObject2).getDrawable((Context)localObject3, str, i, i, null)).setUserName(this.jdField_b_of_type_JavaLangString).setAuthDesc(this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.d).setReportSubAction(this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.e).setMiniAppInfo(this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine.mMiniAppContext.getMiniAppInfo()).setLeftBtnText("取消").setLeftBtnClickListener(new BaseJsPluginEngine.13.1.2(this)).setRightBtnText("允许").setRightBtnClickListener(new BaseJsPluginEngine.13.1.1(this));
-    this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine.authDialog.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine$13.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine.authDialog.show(localAuthDialogResBuilder);
+    Object localObject1 = this.e.a;
+    Object localObject2 = this.e.b;
+    Object localObject3 = this.e.c;
+    int i = this.a;
+    localObject1 = localAuthDialogResBuilder.setMiniAppIconUrl(((MiniAppProxy)localObject1).getDrawable((Context)localObject2, (String)localObject3, i, i, null)).setMiniAppName(this.e.d).setAuthTitle(this.e.e);
+    localObject2 = this.e.a;
+    localObject3 = this.e.b;
+    String str = this.b;
+    i = this.c;
+    ((AuthDialog.AuthDialogResBuilder)localObject1).setUserIconUrl(((MiniAppProxy)localObject2).getDrawable((Context)localObject3, str, i, i, null)).setUserName(this.d).setAuthDesc(this.e.f).setReportSubAction(this.e.g).setMiniAppInfo(this.e.i.mMiniAppContext.getMiniAppInfo()).setLeftBtnText(this.e.h).setLeftBtnClickListener(new BaseJsPluginEngine.13.1.2(this)).setRightBtnText("允许").setRightBtnClickListener(new BaseJsPluginEngine.13.1.1(this));
+    this.e.i.authDialog.setCanceledOnTouchOutside(false);
+    this.e.i.authDialog.show(localAuthDialogResBuilder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.engine.BaseJsPluginEngine.13.1
  * JD-Core Version:    0.7.0.1
  */

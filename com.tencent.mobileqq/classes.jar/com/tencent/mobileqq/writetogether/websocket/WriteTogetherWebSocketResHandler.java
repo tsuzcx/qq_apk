@@ -9,15 +9,15 @@ import okio.ByteString;
 
 public class WriteTogetherWebSocketResHandler
 {
-  private static final String jdField_a_of_type_JavaLangString;
-  private WriteTogetherDecodeFactory jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgWriteTogetherDecodeFactory = new WriteTogetherDecodeFactory();
+  private static final String a;
+  private WriteTogetherDecodeFactory b = new WriteTogetherDecodeFactory();
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WriteTogether.");
     localStringBuilder.append(WriteTogetherWebSocketResHandler.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   private void b(String paramString)
@@ -26,7 +26,7 @@ public class WriteTogetherWebSocketResHandler
     int i = 0;
     while (i < arrayOfString.length)
     {
-      WriteTogetherDecodeFactory localWriteTogetherDecodeFactory = this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgWriteTogetherDecodeFactory;
+      WriteTogetherDecodeFactory localWriteTogetherDecodeFactory = this.b;
       String str = arrayOfString[i];
       int j = i + 1;
       if (j < arrayOfString.length) {
@@ -56,7 +56,7 @@ public class WriteTogetherWebSocketResHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.WriteTogetherWebSocketResHandler
  * JD-Core Version:    0.7.0.1
  */

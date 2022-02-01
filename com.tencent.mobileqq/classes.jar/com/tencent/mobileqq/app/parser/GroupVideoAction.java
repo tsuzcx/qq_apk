@@ -19,13 +19,13 @@ public class GroupVideoAction
   
   private boolean c()
   {
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("roomcode");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromid");
-    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("isgroupcode");
-    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("backtype");
-    String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("open_type");
-    String str6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("extra");
-    IGroupVideoManager localIGroupVideoManager = (IGroupVideoManager)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER);
+    String str1 = (String)this.f.get("roomcode");
+    String str2 = (String)this.f.get("fromid");
+    String str3 = (String)this.f.get("isgroupcode");
+    String str4 = (String)this.f.get("backtype");
+    String str5 = (String)this.f.get("open_type");
+    String str6 = (String)this.f.get("extra");
+    IGroupVideoManager localIGroupVideoManager = (IGroupVideoManager)this.a.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER);
     try
     {
       i = Integer.parseInt(str3);
@@ -46,14 +46,14 @@ public class GroupVideoAction
     localStringBuilder.append(" isGroupCode:");
     localStringBuilder.append(str3);
     QLog.i("GroupVideoAction", 1, localStringBuilder.toString());
-    localIGroupVideoManager.a(this.jdField_a_of_type_AndroidContentContext, str1, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentUin(), i, "download", str2, str4, str5, str6);
+    localIGroupVideoManager.a(this.b, str1, this.a.getCurrentUin(), i, "download", str2, str4, str5, str6);
     return true;
   }
   
-  private boolean j()
+  private boolean d()
   {
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromid");
-    localObject = (IGroupVideoManager)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER);
+    Object localObject = (String)this.f.get("fromid");
+    localObject = (IGroupVideoManager)this.a.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER);
     QLog.i("GroupVideoAction", 1, "[goToPreLoadGroupVideoPlugin]");
     ((IGroupVideoManager)localObject).a(null, 10L);
     return true;
@@ -64,11 +64,11 @@ public class GroupVideoAction
     boolean bool = false;
     try
     {
-      if ("openroom".equals(this.c)) {
+      if ("openroom".equals(this.e)) {
         return c();
       }
-      if ("preload".equals(this.c)) {
-        bool = j();
+      if ("preload".equals(this.e)) {
+        bool = d();
       }
       return bool;
     }
@@ -78,14 +78,14 @@ public class GroupVideoAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("GroupVideoAction", 1, localStringBuilder.toString());
-      b_("GroupVideoAction");
+      h_("GroupVideoAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.GroupVideoAction
  * JD-Core Version:    0.7.0.1
  */

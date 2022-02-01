@@ -1,45 +1,61 @@
 package com.tencent.turingfd.sdk.xq;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 public class Taurus
-  extends case
+  extends else
 {
-  public static UrsaMajor Bb = new UrsaMajor();
-  public static Triangulum Cb = new Triangulum();
-  public static Solar Db = new Solar();
-  public int Eb = 0;
-  public int Fb = 0;
-  public UrsaMajor Gb = null;
-  public Triangulum Hb = null;
-  public Solar Ib = null;
-  public int ba = 0;
+  public static List<String> a;
+  public static List<String> b;
+  public int c = 0;
+  public String d = "";
+  public int e = 0;
+  public String f = "";
+  public List<String> g = null;
+  public List<String> h = null;
   
-  public void a(byte parambyte)
+  static
   {
-    parambyte.b(this.ba, 0);
-    parambyte.b(this.Eb, 1);
-    parambyte.b(this.Fb, 2);
-    Object localObject = this.Gb;
+    ArrayList localArrayList = new ArrayList();
+    a = localArrayList;
+    localArrayList.add("");
+    localArrayList = new ArrayList();
+    b = localArrayList;
+    localArrayList.add("");
+  }
+  
+  public void a(case paramcase)
+  {
+    paramcase.a(this.c, 0);
+    Object localObject = this.d;
     if (localObject != null) {
-      parambyte.a((case)localObject, 3);
+      paramcase.a((String)localObject, 1);
     }
-    localObject = this.Hb;
+    paramcase.a(this.e, 2);
+    localObject = this.f;
     if (localObject != null) {
-      parambyte.a((case)localObject, 4);
+      paramcase.a((String)localObject, 3);
     }
-    localObject = this.Ib;
+    localObject = this.g;
     if (localObject != null) {
-      parambyte.a((case)localObject, 5);
+      paramcase.a((Collection)localObject, 4);
+    }
+    localObject = this.h;
+    if (localObject != null) {
+      paramcase.a((Collection)localObject, 5);
     }
   }
   
   public void a(try paramtry)
   {
-    this.ba = paramtry.a(this.ba, 0, true);
-    this.Eb = paramtry.a(this.Eb, 1, false);
-    this.Fb = paramtry.a(this.Fb, 2, false);
-    this.Gb = ((UrsaMajor)paramtry.a(Bb, 3, false));
-    this.Hb = ((Triangulum)paramtry.a(Cb, 4, false));
-    this.Ib = ((Solar)paramtry.a(Db, 5, false));
+    this.c = paramtry.a(this.c, 0, true);
+    this.d = paramtry.b(1, false);
+    this.e = paramtry.a(this.e, 2, false);
+    this.f = paramtry.b(3, false);
+    this.g = ((List)paramtry.a(a, 4, false));
+    this.h = ((List)paramtry.a(b, 5, false));
   }
   
   public boolean equals(Object paramObject)
@@ -54,12 +70,12 @@ public class Taurus
       return false;
     }
     paramObject = (Taurus)paramObject;
-    return (char.equals(this.ba, paramObject.ba)) && (char.equals(this.Eb, paramObject.Eb)) && (char.equals(this.Fb, paramObject.Fb)) && (char.equals(this.Gb, paramObject.Gb)) && (char.equals(this.Hb, paramObject.Hb)) && (char.equals(this.Ib, paramObject.Ib));
+    return (goto.a(this.c, paramObject.c)) && (this.d.equals(paramObject.d)) && (goto.a(this.e, paramObject.e)) && (this.f.equals(paramObject.f)) && (this.g.equals(paramObject.g)) && (this.h.equals(paramObject.h));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Taurus
  * JD-Core Version:    0.7.0.1
  */

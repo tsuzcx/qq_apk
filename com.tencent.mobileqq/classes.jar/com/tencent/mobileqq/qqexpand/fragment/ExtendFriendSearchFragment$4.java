@@ -10,14 +10,14 @@ class ExtendFriendSearchFragment$4
   
   public void a(String paramString, int paramInt)
   {
-    this.a.a.setText(paramString);
-    this.a.a.setSelection(this.a.a.length());
+    this.a.U.setText(paramString);
+    this.a.U.setSelection(this.a.U.length());
     this.a.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendSearchFragment.4
  * JD-Core Version:    0.7.0.1
  */

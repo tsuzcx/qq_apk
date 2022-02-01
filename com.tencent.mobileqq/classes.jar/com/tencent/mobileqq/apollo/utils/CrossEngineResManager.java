@@ -9,7 +9,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 import mqq.app.MobileQQ;
-import org.jetbrains.annotations.NotNull;
 
 public class CrossEngineResManager
 {
@@ -80,40 +79,6 @@ public class CrossEngineResManager
     return 0;
   }
   
-  private static long a(@NotNull String paramString)
-  {
-    String[] arrayOfString = paramString.split(".");
-    int i = arrayOfString.length;
-    long l1 = 0L;
-    if (i < 3) {
-      return 0L;
-    }
-    i = 0;
-    long l2;
-    for (;;)
-    {
-      l2 = l1;
-      if (i < 3)
-      {
-        l2 = l1 * 1000L;
-        try
-        {
-          int j = Integer.parseInt(arrayOfString[i]);
-          l1 = l2 + j;
-          i += 1;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("parse version error. version=");
-          localStringBuilder.append(paramString);
-          QLog.e("[cmshow]CrossEngineResManager", 1, localStringBuilder.toString(), localNumberFormatException);
-        }
-      }
-    }
-    return l2;
-  }
-  
   public static void a(CrossEngineResManager.LoadListener paramLoadListener)
   {
     if (a())
@@ -124,7 +89,7 @@ public class CrossEngineResManager
       }
       return;
     }
-    if (!b("v8jni"))
+    if (!c("v8jni"))
     {
       if (paramLoadListener != null) {
         paramLoadListener.a(-1);
@@ -132,11 +97,6 @@ public class CrossEngineResManager
       return;
     }
     SoLoadManager.getInstance().load("Standalone", new CrossEngineResManager.1(paramLoadListener));
-  }
-  
-  public static void a(String paramString)
-  {
-    SharedPreUtils.g(MobileQQ.sMobileQQ.getApplicationContext(), paramString);
   }
   
   public static boolean a()
@@ -151,11 +111,11 @@ public class CrossEngineResManager
     if (bool2) {
       return false;
     }
-    String str = SharedPreUtils.h(MobileQQ.sMobileQQ.getApplicationContext());
+    String str = SharedPreUtils.A(MobileQQ.sMobileQQ.getApplicationContext());
     if (TextUtils.isEmpty(str)) {
       return true;
     }
-    if (a(paramString) > a(str)) {
+    if (VersionUtil.a(paramString, str) > 0) {
       bool1 = true;
     }
     return bool1;
@@ -166,14 +126,38 @@ public class CrossEngineResManager
     SoLoadManager.getInstance().download("Standalone", new CrossEngineResManager.2(paramLoadListener));
   }
   
+  public static void b(String paramString)
+  {
+    SharedPreUtils.J(MobileQQ.sMobileQQ.getApplicationContext(), paramString);
+  }
+  
   public static boolean b()
   {
-    File localFile1 = new File(ApolloConstant.j);
-    File localFile2 = new File(ApolloConstant.j, "EngineResource");
+    File localFile1 = new File(ApolloConstant.k);
+    File localFile2 = new File(ApolloConstant.k, "EngineResource");
     return (localFile1.exists()) && (localFile2.exists());
   }
   
-  private static boolean b(String paramString)
+  public static void c(CrossEngineResManager.LoadListener paramLoadListener)
+  {
+    boolean bool = c("v8jni");
+    int i = -1;
+    if (!bool)
+    {
+      if (paramLoadListener != null) {
+        paramLoadListener.a(-1);
+      }
+      return;
+    }
+    if (SoLoadManager.getInstance().loadSync("Standalone", null).isSucc()) {
+      i = 0;
+    }
+    if (paramLoadListener != null) {
+      paramLoadListener.a(i);
+    }
+  }
+  
+  private static boolean c(String paramString)
   {
     try
     {
@@ -190,28 +174,14 @@ public class CrossEngineResManager
     return false;
   }
   
-  public static void c(CrossEngineResManager.LoadListener paramLoadListener)
+  private static void d()
   {
-    boolean bool = b("v8jni");
-    int i = -1;
-    if (!bool)
-    {
-      if (paramLoadListener != null) {
-        paramLoadListener.a(-1);
-      }
-      return;
-    }
-    if (SoLoadManager.getInstance().loadSync("Standalone", null).isSucc()) {
-      i = 0;
-    }
-    if (paramLoadListener != null) {
-      paramLoadListener.a(i);
-    }
+    FileUtils.deleteDirectory(ApolloConstant.k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.CrossEngineResManager
  * JD-Core Version:    0.7.0.1
  */

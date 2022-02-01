@@ -14,61 +14,44 @@ public abstract class UFTBaseUploadFileOp
   extends UFTBaseOp
   implements IUFTFileUploaderCallback
 {
-  protected IUFTFileUploader a;
-  protected UFTBaseUploadFileOp.UFTUploadFileOpCallback a;
-  protected boolean b;
+  protected IUFTFileUploader c;
+  protected UFTBaseUploadFileOp.UFTUploadFileOpCallback d;
+  protected boolean e = false;
   
   public UFTBaseUploadFileOp(AppRuntime paramAppRuntime, UFTBaseTaskInfo paramUFTBaseTaskInfo, UFTTransferKey paramUFTTransferKey, UFTBaseUploadFileOp.UFTUploadFileOpCallback paramUFTUploadFileOpCallback)
   {
     super(paramAppRuntime, paramUFTBaseTaskInfo, paramUFTTransferKey, paramUFTUploadFileOpCallback);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback = paramUFTUploadFileOpCallback;
-  }
-  
-  public int a()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    return super.a();
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback = null;
-    IUFTFileUploader localIUFTFileUploader = this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader;
-    if (localIUFTFileUploader != null) {
-      localIUFTFileUploader.a();
-    }
+    this.d = paramUFTUploadFileOpCallback;
   }
   
   public void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback != null))
+    if ((!this.j) && (this.d != null))
     {
       if (UFTLog.a())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("TId[");
-        localStringBuilder.append(a());
+        localStringBuilder.append(i());
         localStringBuilder.append("] on upload progress. fsize:");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().a());
+        localStringBuilder.append(this.h.r().a());
         localStringBuilder.append(" tsize:");
         localStringBuilder.append(paramLong1);
         localStringBuilder.append(" speed:");
         localStringBuilder.append(paramLong3);
         UFTLog.a("[UFTTransfer] UFTUploadFileBaseOp", 4, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback.a(paramLong1, paramLong2, paramLong3);
+      this.d.a(paramLong1, paramLong2, paramLong3);
     }
   }
   
   public void a(long paramLong, String paramString1, String paramString2)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback != null))
+    if ((!this.j) && (this.d != null))
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("TId[");
-      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(i());
       ((StringBuilder)localObject).append("] on upload roll back. rollbackPos:");
       ((StringBuilder)localObject).append(paramLong);
       UFTLog.c("[UFTTransfer] UFTUploadFileBaseOp", 1, ((StringBuilder)localObject).toString());
@@ -81,13 +64,13 @@ public abstract class UFTBaseUploadFileOp
         paramString1.append("]");
         localObject = paramString1.toString();
       }
-      paramString1 = this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader;
+      paramString1 = this.c;
       if (paramString1 != null) {
-        paramLong = paramString1.b_();
+        paramLong = paramString1.e();
       } else {
         paramLong = 0L;
       }
-      this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback.a(9009, (String)localObject, paramLong, paramString2, null);
+      this.d.a(9009, (String)localObject, paramLong, paramString2, null);
     }
   }
   
@@ -100,27 +83,27 @@ public abstract class UFTBaseUploadFileOp
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("TId[");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(i());
     ((StringBuilder)localObject).append("] on sub uploader success");
     UFTLog.b("[UFTTransfer] UFTUploadFileBaseOp", 1, ((StringBuilder)localObject).toString());
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback != null))
+    if ((!this.j) && (this.d != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader;
+      localObject = this.c;
       long l;
       if (localObject != null) {
-        l = ((IUFTFileUploader)localObject).b_();
+        l = ((IUFTFileUploader)localObject).e();
       } else {
         l = 0L;
       }
-      this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback.a(0, "", l, null, paramObject);
+      this.d.a(0, "", l, null, paramObject);
     }
   }
   
   public void a(String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.j)
     {
-      UFTBaseUploadFileOp.UFTUploadFileOpCallback localUFTUploadFileOpCallback = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback;
+      UFTBaseUploadFileOp.UFTUploadFileOpCallback localUFTUploadFileOpCallback = this.d;
       if (localUFTUploadFileOpCallback != null) {
         localUFTUploadFileOpCallback.a(paramString);
       }
@@ -129,7 +112,7 @@ public abstract class UFTBaseUploadFileOp
   
   public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2, Object paramObject)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback != null))
+    if ((!this.j) && (this.d != null))
     {
       if (paramInt == 0) {
         paramInt = 9001;
@@ -145,7 +128,7 @@ public abstract class UFTBaseUploadFileOp
       }
       paramString1 = new StringBuilder();
       paramString1.append("TId[");
-      paramString1.append(a());
+      paramString1.append(i());
       paramString1.append("] on upload err. finished:");
       paramString1.append(paramBoolean);
       paramString1.append(" errcode:");
@@ -164,26 +147,26 @@ public abstract class UFTBaseUploadFileOp
         paramString1.a(str);
         UFTBaseUploadFileOp.UploadFileOpRetData.a(paramString1, paramObject);
         UFTBaseUploadFileOp.UploadFileOpRetData.a(paramString1, paramString2);
-        paramString2 = this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader;
+        paramString2 = this.c;
         if (paramString2 != null) {
-          UFTBaseUploadFileOp.UploadFileOpRetData.b(paramString1, paramString2.a());
+          UFTBaseUploadFileOp.UploadFileOpRetData.b(paramString1, paramString2.c());
         }
         UFTBaseUploadFileOp.UploadFileOpRetData.c(paramString1, a());
         a(paramString1);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback.a(paramInt, str, paramLong, paramString2, paramObject);
+      this.d.a(paramInt, str, paramLong, paramString2, paramObject);
     }
   }
   
   public void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback != null))
+    this.e = paramBoolean;
+    if ((!this.j) && (this.d != null))
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("TId[");
-      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(i());
       ((StringBuilder)localObject).append("] on upload suc. isflash:");
       ((StringBuilder)localObject).append(paramBoolean);
       UFTLog.b("[UFTTransfer] UFTUploadFileBaseOp", 1, ((StringBuilder)localObject).toString());
@@ -191,9 +174,9 @@ public abstract class UFTBaseUploadFileOp
       ((UFTBaseUploadFileOp.UploadFileOpRetData)localObject).a(0);
       UFTBaseUploadFileOp.UploadFileOpRetData.a((UFTBaseUploadFileOp.UploadFileOpRetData)localObject, paramBoolean);
       UFTBaseUploadFileOp.UploadFileOpRetData.a((UFTBaseUploadFileOp.UploadFileOpRetData)localObject, paramObject);
-      paramObject = this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader;
+      paramObject = this.c;
       if (paramObject != null) {
-        UFTBaseUploadFileOp.UploadFileOpRetData.b((UFTBaseUploadFileOp.UploadFileOpRetData)localObject, paramObject.a());
+        UFTBaseUploadFileOp.UploadFileOpRetData.b((UFTBaseUploadFileOp.UploadFileOpRetData)localObject, paramObject.c());
       }
       UFTBaseUploadFileOp.UploadFileOpRetData.c((UFTBaseUploadFileOp.UploadFileOpRetData)localObject, a());
       a((UFTBaseUploadFileOp.UploadFileOpRetData)localObject);
@@ -202,73 +185,19 @@ public abstract class UFTBaseUploadFileOp
   
   public abstract boolean a();
   
-  public void aS_()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("TId[");
-    ((StringBuilder)localObject).append(a());
-    ((StringBuilder)localObject).append("] on upload url or file id outdate");
-    UFTLog.d("[UFTTransfer] UFTUploadFileBaseOp", 1, ((StringBuilder)localObject).toString());
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTBaseUploadFileOp$UFTUploadFileOpCallback;
-      if (localObject != null) {
-        ((UFTBaseUploadFileOp.UFTUploadFileOpCallback)localObject).a();
-      }
-    }
-  }
-  
   public long b()
   {
-    IUFTFileUploader localIUFTFileUploader = this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader;
-    if (localIUFTFileUploader != null) {
-      return localIUFTFileUploader.b();
-    }
-    return 0L;
-  }
-  
-  public String b()
-  {
-    IUFTFileUploader localIUFTFileUploader = this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader;
-    if (localIUFTFileUploader != null) {
-      return localIUFTFileUploader.a();
-    }
-    return "";
-  }
-  
-  public void b(String paramString) {}
-  
-  public int c()
-  {
-    IUFTFileUploader localIUFTFileUploader = this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader;
-    if (localIUFTFileUploader != null) {
-      return localIUFTFileUploader.a();
-    }
-    return 0;
-  }
-  
-  public long c()
-  {
-    IUFTFileUploader localIUFTFileUploader = this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader;
-    if (localIUFTFileUploader != null) {
-      return localIUFTFileUploader.b_();
-    }
-    return 0L;
-  }
-  
-  public long d()
-  {
-    if (this.jdField_a_of_type_Long > 0L)
+    if (this.l > 0L)
     {
       long l1;
-      if (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long) {
-        l1 = this.jdField_b_of_type_Long;
+      if (this.m > this.l) {
+        l1 = this.m;
       }
-      for (long l2 = this.jdField_a_of_type_Long;; l2 = this.jdField_a_of_type_Long)
+      for (long l2 = this.l;; l2 = this.l)
       {
         return l1 - l2;
         l1 = System.currentTimeMillis();
-        if (l1 <= this.jdField_a_of_type_Long) {
+        if (l1 <= this.l) {
           break;
         }
       }
@@ -276,18 +205,20 @@ public abstract class UFTBaseUploadFileOp
     return 0L;
   }
   
-  public long e()
+  public void b(String paramString) {}
+  
+  public long d()
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.e) {
       return 0L;
     }
-    long l2 = d();
+    long l2 = b();
     if (l2 <= 0L) {
       return 0L;
     }
     long l1;
-    if (c() > b()) {
-      l1 = c() - b();
+    if (k() > j()) {
+      l1 = k() - j();
     } else {
       l1 = 0L;
     }
@@ -297,10 +228,78 @@ public abstract class UFTBaseUploadFileOp
     float f = (float)l2 / 1000.0F;
     return ((float)l1 / f);
   }
+  
+  public void dx_()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("TId[");
+    ((StringBuilder)localObject).append(i());
+    ((StringBuilder)localObject).append("] on upload url or file id outdate");
+    UFTLog.d("[UFTTransfer] UFTUploadFileBaseOp", 1, ((StringBuilder)localObject).toString());
+    if (!this.j)
+    {
+      localObject = this.d;
+      if (localObject != null) {
+        ((UFTBaseUploadFileOp.UFTUploadFileOpCallback)localObject).a();
+      }
+    }
+  }
+  
+  public int e()
+  {
+    this.e = false;
+    return super.e();
+  }
+  
+  public void f()
+  {
+    super.f();
+    this.d = null;
+    IUFTFileUploader localIUFTFileUploader = this.c;
+    if (localIUFTFileUploader != null) {
+      localIUFTFileUploader.a();
+    }
+  }
+  
+  public long j()
+  {
+    IUFTFileUploader localIUFTFileUploader = this.c;
+    if (localIUFTFileUploader != null) {
+      return localIUFTFileUploader.f();
+    }
+    return 0L;
+  }
+  
+  public long k()
+  {
+    IUFTFileUploader localIUFTFileUploader = this.c;
+    if (localIUFTFileUploader != null) {
+      return localIUFTFileUploader.e();
+    }
+    return 0L;
+  }
+  
+  public int l()
+  {
+    IUFTFileUploader localIUFTFileUploader = this.c;
+    if (localIUFTFileUploader != null) {
+      return localIUFTFileUploader.b();
+    }
+    return 0;
+  }
+  
+  public String m()
+  {
+    IUFTFileUploader localIUFTFileUploader = this.c;
+    if (localIUFTFileUploader != null) {
+      return localIUFTFileUploader.d();
+    }
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTBaseUploadFileOp
  * JD-Core Version:    0.7.0.1
  */

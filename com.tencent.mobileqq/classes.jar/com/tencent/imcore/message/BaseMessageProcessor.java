@@ -27,7 +27,6 @@ import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 public abstract class BaseMessageProcessor
 {
   public static int a = 1;
-  private static BaseMessageProcessor.Callback jdField_a_of_type_ComTencentImcoreMessageBaseMessageProcessor$Callback;
   public static int b = 2;
   public static int c = 3;
   public static int d = 4;
@@ -43,25 +42,21 @@ public abstract class BaseMessageProcessor
   public static int n = -2;
   public static int o = 1;
   public static int p = 2;
-  protected AppInterface a;
-  protected BaseMessageHandler a;
-  protected IMessageFacade a;
-  private List<ProcessorObserver> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static BaseMessageProcessor.Callback u;
+  protected AppInterface q;
+  protected BaseMessageHandler r;
+  protected IMessageFacade s;
+  private List<ProcessorObserver> t = new ArrayList();
   
   static {}
   
   public BaseMessageProcessor(AppInterface paramAppInterface, BaseMessageHandler paramBaseMessageHandler)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler = paramBaseMessageHandler;
+    this.q = paramAppInterface;
+    this.r = paramBaseMessageHandler;
     if (paramAppInterface.isLogin()) {
-      this.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, ""));
+      this.s = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, ""));
     }
-  }
-  
-  private MessageCache a()
-  {
-    return jdField_a_of_type_ComTencentImcoreMessageBaseMessageProcessor$Callback.a(this);
   }
   
   private Boolean a(List<msg_comm.Msg> paramList, Boolean paramBoolean, StringBuilder paramStringBuilder, Set<String> paramSet, msg_comm.Msg paramMsg)
@@ -92,7 +87,7 @@ public abstract class BaseMessageProcessor
   
   public static void a(BaseMessageProcessor.Callback paramCallback)
   {
-    jdField_a_of_type_ComTencentImcoreMessageBaseMessageProcessor$Callback = paramCallback;
+    u = paramCallback;
   }
   
   private void a(SendMessageHandler paramSendMessageHandler)
@@ -144,6 +139,11 @@ public abstract class BaseMessageProcessor
     return false;
   }
   
+  private MessageCache b()
+  {
+    return u.a(this);
+  }
+  
   protected Pair<Boolean, StringBuilder> a(List<msg_comm.Msg> paramList1, List<msg_comm.Msg> paramList2)
   {
     Boolean localBoolean = Boolean.valueOf(false);
@@ -160,7 +160,7 @@ public abstract class BaseMessageProcessor
   
   public AppInterface a()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    return this.q;
   }
   
   public OnLinePushParamReturnMsg a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
@@ -177,9 +177,9 @@ public abstract class BaseMessageProcessor
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.t)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.t.iterator();
       while (localIterator.hasNext()) {
         ((ProcessorObserver)localIterator.next()).b(paramInt, paramBoolean, paramObject);
       }
@@ -195,9 +195,9 @@ public abstract class BaseMessageProcessor
   
   public void a(ProcessorObserver paramProcessorObserver)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.t)
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramProcessorObserver);
+      this.t.add(paramProcessorObserver);
       return;
     }
   }
@@ -210,10 +210,10 @@ public abstract class BaseMessageProcessor
       if (paramBoolean2) {
         paramToServiceMsg.setNeedRemindSlowNetwork(true);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.sendPbReq(paramToServiceMsg);
+      this.r.sendPbReq(paramToServiceMsg);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.send(paramToServiceMsg);
+    this.r.send(paramToServiceMsg);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
@@ -224,9 +224,9 @@ public abstract class BaseMessageProcessor
   
   public void a(String paramString, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.t)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.t.iterator();
       while (localIterator.hasNext()) {
         ((ProcessorObserver)localIterator.next()).a(getClass().getSimpleName(), paramString, paramBoolean1, paramInt, paramBoolean2, paramBoolean3);
       }
@@ -240,10 +240,10 @@ public abstract class BaseMessageProcessor
   
   public void a(String paramString, boolean paramBoolean1, List<MessageRecord> arg3, boolean paramBoolean2, boolean paramBoolean3)
   {
-    int i1 = MsgProxyUtils.a(???, a());
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    int i1 = MsgProxyUtils.a(???, b());
+    synchronized (this.t)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.t.iterator();
       while (localIterator.hasNext()) {
         ((ProcessorObserver)localIterator.next()).a(getClass().getSimpleName(), paramString, paramBoolean1, i1, paramBoolean2, paramBoolean3);
       }
@@ -292,23 +292,23 @@ public abstract class BaseMessageProcessor
       return;
     }
     SendMessageHandler localSendMessageHandler = new SendMessageHandler();
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l1, localSendMessageHandler);
+    this.r.a(l1, localSendMessageHandler);
     a(paramBoolean2, paramBoolean3, paramRequestBuilder, l1, paramLong, localSendMessageHandler);
     a(localSendMessageHandler);
   }
   
   protected boolean a(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageBaseMessageProcessor$Callback.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramMessageRecord, paramBoolean);
+    return u.a(this.q, paramMessageRecord, paramBoolean);
   }
   
   public void b(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
   
   public void b(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.t)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.t.iterator();
       while (localIterator.hasNext()) {
         ((ProcessorObserver)localIterator.next()).c(paramInt, paramBoolean, paramObject);
       }
@@ -322,7 +322,7 @@ public abstract class BaseMessageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

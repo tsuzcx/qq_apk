@@ -11,16 +11,16 @@ public class CaptureAsyncStep$OnShowOther
   protected int doStep()
   {
     QIMCaptureVarManager localQIMCaptureVarManager = (QIMCaptureVarManager)QIMManager.a(13);
-    localQIMCaptureVarManager.d(0);
+    localQIMCaptureVarManager.e(0);
     localQIMCaptureVarManager.a(2);
-    MemoryClearManager.a().h = 1;
-    MemoryClearManager.a().j = 1;
+    MemoryClearManager.b().q = 1;
+    MemoryClearManager.b().s = 1;
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.control.CaptureAsyncStep.OnShowOther
  * JD-Core Version:    0.7.0.1
  */

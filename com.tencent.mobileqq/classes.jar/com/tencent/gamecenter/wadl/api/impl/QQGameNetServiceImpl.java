@@ -118,14 +118,14 @@ public class QQGameNetServiceImpl
       QLog.d("Wadl_QQGameNetServiceImpl", 1, ((StringBuilder)localObject).toString());
       localObject = new JSONObject();
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("ad_tag", paramWadlParams.n);
-      localJSONObject.put("appid", paramWadlParams.a);
-      localJSONObject.put("channel_id", paramWadlParams.c);
-      localJSONObject.put("download_url", paramWadlParams.jdField_e_of_type_JavaLangString);
-      localJSONObject.put("source_url", paramWadlParams.m);
-      localJSONObject.put("refer", paramWadlParams.o);
-      localJSONObject.put("version_code", String.valueOf(paramWadlParams.jdField_e_of_type_Int));
-      localJSONObject.put("clientver", "8.7.0");
+      localJSONObject.put("ad_tag", paramWadlParams.y);
+      localJSONObject.put("appid", paramWadlParams.e);
+      localJSONObject.put("channel_id", paramWadlParams.i);
+      localJSONObject.put("download_url", paramWadlParams.k);
+      localJSONObject.put("source_url", paramWadlParams.x);
+      localJSONObject.put("refer", paramWadlParams.z);
+      localJSONObject.put("version_code", String.valueOf(paramWadlParams.l));
+      localJSONObject.put("clientver", "8.8.17");
       localJSONObject.put("tbs_version", i);
       localJSONObject.put("net_type", NetworkUtil.getNetworkType(MobileQQ.sMobileQQ));
       ((JSONObject)localObject).put("req", localJSONObject);
@@ -188,7 +188,7 @@ public class QQGameNetServiceImpl
     {
       JSONObject localJSONObject1 = new JSONObject();
       JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("qq_version", AppSetting.f());
+      localJSONObject2.put("qq_version", AppSetting.h());
       localJSONObject1.put("req", localJSONObject2);
       requestWebSso("13625", localJSONObject1, null);
       return;
@@ -218,7 +218,7 @@ public class QQGameNetServiceImpl
         {
           localObject = ((AppRuntime)localObject).getAccount();
           localJSONObject2.put("uin", localObject);
-          localJSONObject2.put("skey", GameCenterUtil.b());
+          localJSONObject2.put("skey", GameCenterUtil.c());
           localJSONObject1.put("req", localJSONObject2);
           localObject = new Bundle();
           ((Bundle)localObject).putString("appid", paramString);
@@ -247,7 +247,7 @@ public class QQGameNetServiceImpl
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("game_appid", paramString);
       localJSONObject.put("qq_plat", 1);
-      localJSONObject.put("qq_version", "8.7.0.5295");
+      localJSONObject.put("qq_version", "8.8.17.5770");
       ((JSONObject)localObject).put("req", localJSONObject);
       requestWebSso("12855", (JSONObject)localObject, null);
       return;
@@ -439,7 +439,7 @@ public class QQGameNetServiceImpl
       localObject = new JSONObject();
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("scene_id", paramInt);
-      localJSONObject.put("uin", GameCenterUtil.a());
+      localJSONObject.put("uin", GameCenterUtil.b());
       localJSONObject.put("tt", 1);
       ((JSONObject)localObject).put("req", localJSONObject);
       requestWebSso("13325", (JSONObject)localObject, null);
@@ -473,7 +473,7 @@ public class QQGameNetServiceImpl
         Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.7.0.5295");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.8.17.5770");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject2);
         localObject2 = new JSONObject();
@@ -500,7 +500,7 @@ public class QQGameNetServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.api.impl.QQGameNetServiceImpl
  * JD-Core Version:    0.7.0.1
  */

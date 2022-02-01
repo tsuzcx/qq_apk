@@ -21,7 +21,7 @@ public class TimeCleanStep
     while (i < m)
     {
       File localFile1 = new File(paramArrayOfString[i]);
-      double d1 = a(localFile1);
+      double d1 = b(localFile1);
       File[] arrayOfFile = localFile1.listFiles();
       if (arrayOfFile != null)
       {
@@ -52,9 +52,9 @@ public class TimeCleanStep
           }
           j += 1;
         }
-        d2 = a(localFile1);
-        paramCleanContext.jdField_b_of_type_Double += d1 - d2;
-        paramCleanContext.jdField_b_of_type_Int += k;
+        d2 = b(localFile1);
+        paramCleanContext.f += d1 - d2;
+        paramCleanContext.e += k;
       }
       i += 1;
     }
@@ -62,7 +62,7 @@ public class TimeCleanStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.cachecleaner.TimeCleanStep
  * JD-Core Version:    0.7.0.1
  */

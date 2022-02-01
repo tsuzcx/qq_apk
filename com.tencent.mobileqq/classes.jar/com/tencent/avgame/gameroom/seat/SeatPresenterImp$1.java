@@ -9,7 +9,7 @@ class SeatPresenterImp$1
   
   public void run()
   {
-    this.this$0.a(GameEngine.a().a());
+    this.this$0.a(GameEngine.a().s());
   }
 }
 

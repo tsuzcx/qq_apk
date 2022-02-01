@@ -61,7 +61,7 @@ public class ProteusJsHelper
     try
     {
       QLog.d("kandianreport.ProteusJsHelper", 1, "prepare to load.");
-      KandianReportSoLoader.b();
+      KandianReportSoLoader.g();
       return;
     }
     catch (Throwable localThrowable)
@@ -70,13 +70,13 @@ public class ProteusJsHelper
     }
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
     try
     {
-      if (!KandianReportSoLoader.c())
+      if (!KandianReportSoLoader.e())
       {
         bool1 = bool2;
         KandianReportSoLoader.a(new ProteusJsHelper.1());
@@ -88,7 +88,7 @@ public class ProteusJsHelper
       if (!bool2)
       {
         bool1 = bool2;
-        KandianReportSoLoader.b();
+        KandianReportSoLoader.g();
         return bool2;
       }
     }
@@ -134,7 +134,7 @@ public class ProteusJsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.task.ProteusJsHelper
  * JD-Core Version:    0.7.0.1
  */

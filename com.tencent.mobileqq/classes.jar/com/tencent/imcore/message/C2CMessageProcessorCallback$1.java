@@ -10,12 +10,12 @@ class C2CMessageProcessorCallback$1
   
   public void run()
   {
-    QidianUtils.a(this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mQidianMasterUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mQidianTaskId), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mQidianTipText, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time);
+    QidianUtils.a(this.a.q, this.b.istroop, this.b.frienduin, String.valueOf(this.b.mQidianMasterUin), String.valueOf(this.b.mQidianTaskId), this.b.mQidianTipText, this.b.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageProcessorCallback.1
  * JD-Core Version:    0.7.0.1
  */

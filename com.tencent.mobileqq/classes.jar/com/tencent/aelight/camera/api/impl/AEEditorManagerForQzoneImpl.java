@@ -49,6 +49,11 @@ public class AEEditorManagerForQzoneImpl
     AEEditorManagerForQzone.getInstance().cancelMission(paramString);
   }
   
+  public void cancelQFSMission(String paramString)
+  {
+    AEEditorManagerForQzone.getInstance().cancelQFSMission(paramString);
+  }
+  
   public boolean checkAEResVersionOKForAEBasePackage()
   {
     return ((IAEResUtil)QRoute.api(IAEResUtil.class)).checkAEResVersionOK(AEResInfo.AE_RES_BASE_PACKAGE);
@@ -97,6 +102,11 @@ public class AEEditorManagerForQzoneImpl
   public void launchAEMutiCameraFromCircle(Context paramContext, Bundle paramBundle)
   {
     AECameraLauncher.c(paramContext, paramBundle);
+  }
+  
+  public void launchAEMutiCameraFromFS(Context paramContext, Bundle paramBundle)
+  {
+    AECameraLauncher.d(paramContext, paramBundle);
   }
   
   public void launchQQPhotoSelect(Context paramContext, Intent paramIntent)
@@ -154,6 +164,11 @@ public class AEEditorManagerForQzoneImpl
     AEEditorManagerForQzone.getInstance().retryMission(paramString);
   }
   
+  public void retryQFSMission(String paramString)
+  {
+    AEEditorManagerForQzone.getInstance().retryQFSMission(paramString);
+  }
+  
   public void saveMission(String paramString)
   {
     AEEditorManagerForQzone.getInstance().saveMission(paramString);
@@ -161,7 +176,7 @@ public class AEEditorManagerForQzoneImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.api.impl.AEEditorManagerForQzoneImpl
  * JD-Core Version:    0.7.0.1
  */

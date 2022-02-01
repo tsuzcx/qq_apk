@@ -11,13 +11,13 @@ class AIORevokeMsgHelper$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper.d(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    this.b.d(this.a);
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIORevokeMsgHelper.2
  * JD-Core Version:    0.7.0.1
  */

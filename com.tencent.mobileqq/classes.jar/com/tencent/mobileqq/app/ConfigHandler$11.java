@@ -13,15 +13,15 @@ class ConfigHandler$11
   
   public void run()
   {
-    Object localObject = UpgradeController.a().a();
+    Object localObject = UpgradeController.a().d();
     if (localObject != null)
     {
-      if (((UpgradeDetailWrapper)localObject).a == null) {
+      if (((UpgradeDetailWrapper)localObject).e == null) {
         return;
       }
-      boolean bool = SPSettings.b();
-      int i = SPSettings.b();
-      int j = ((UpgradeDetailWrapper)localObject).a.a;
+      boolean bool = SPSettings.c();
+      int i = SPSettings.d();
+      int j = ((UpgradeDetailWrapper)localObject).e.d;
       if ((bool) && (j == i)) {
         i = 1;
       } else {
@@ -39,7 +39,7 @@ class ConfigHandler$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.11
  * JD-Core Version:    0.7.0.1
  */

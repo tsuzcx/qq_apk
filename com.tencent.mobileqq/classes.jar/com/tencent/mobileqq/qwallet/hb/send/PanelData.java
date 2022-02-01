@@ -4,43 +4,44 @@ import org.json.JSONObject;
 
 public class PanelData
 {
-  public int a;
   public String a;
-  public JSONObject a;
-  public String b;
+  public int b;
   public String c;
   public String d;
   public String e;
+  public String f;
+  public int g;
+  public JSONObject h;
   
   public PanelData() {}
   
   public PanelData(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    this.a = paramString1;
+    this.b = paramInt;
+    this.c = paramString2;
+    this.d = paramString3;
+    this.e = paramString4;
+    this.f = paramString5;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("id: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" type: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" name: ");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(" name: ");
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" params: ");
-    localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject);
+    localStringBuilder.append(this.h);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.PanelData
  * JD-Core Version:    0.7.0.1
  */

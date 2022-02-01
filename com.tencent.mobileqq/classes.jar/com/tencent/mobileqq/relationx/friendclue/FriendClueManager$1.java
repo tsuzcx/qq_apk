@@ -11,13 +11,13 @@ class FriendClueManager$1
   
   public void run()
   {
-    String str = FriendClueManager.a(this.this$0).getResources().getString(2131719223);
-    QQToast.a(FriendClueManager.a(this.this$0), 1, str, 1).a();
+    String str = FriendClueManager.a(this.this$0).getResources().getString(2131916775);
+    QQToast.makeText(FriendClueManager.a(this.this$0), 1, str, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueManager.1
  * JD-Core Version:    0.7.0.1
  */

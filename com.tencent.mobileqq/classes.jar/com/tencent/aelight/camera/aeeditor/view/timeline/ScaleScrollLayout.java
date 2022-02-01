@@ -13,10 +13,10 @@ import com.tencent.aelight.camera.log.AEQLog;
 public class ScaleScrollLayout
   extends RelativeLayout
 {
-  private Point jdField_a_of_type_AndroidGraphicsPoint = null;
-  private View jdField_a_of_type_AndroidViewView = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  private Point a = null;
+  private View b = null;
+  private boolean c = false;
+  private boolean d = false;
   
   public ScaleScrollLayout(Context paramContext)
   {
@@ -33,19 +33,14 @@ public class ScaleScrollLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public Point a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPoint;
-  }
-  
   public void a()
   {
-    this.b = false;
+    this.d = false;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.b;
+    return this.d;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -54,26 +49,31 @@ public class ScaleScrollLayout
     ((StringBuilder)localObject).append(paramMotionEvent.getAction());
     ((StringBuilder)localObject).append("");
     AEQLog.a("MvCutFragment", ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_AndroidGraphicsPoint = new Point((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY());
+    this.a = new Point((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY());
     boolean bool;
     if ((paramMotionEvent.getActionMasked() != 1) && (paramMotionEvent.getActionMasked() != 3)) {
       bool = false;
     } else {
       bool = true;
     }
-    this.b = bool;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    this.d = bool;
+    if (this.b != null)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.c)
       {
         localObject = MotionEvent.obtain(paramMotionEvent);
         ((MotionEvent)localObject).setAction(0);
-        this.jdField_a_of_type_AndroidViewView.dispatchTouchEvent((MotionEvent)localObject);
-        this.jdField_a_of_type_Boolean = true;
+        this.b.dispatchTouchEvent((MotionEvent)localObject);
+        this.c = true;
       }
-      return this.jdField_a_of_type_AndroidViewView.dispatchTouchEvent(paramMotionEvent);
+      return this.b.dispatchTouchEvent(paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
+  }
+  
+  public Point getLastDownMotionEvent()
+  {
+    return this.a;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -101,13 +101,13 @@ public class ScaleScrollLayout
   
   public void setHandleView(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Boolean = false;
+    this.b = paramView;
+    this.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.timeline.ScaleScrollLayout
  * JD-Core Version:    0.7.0.1
  */

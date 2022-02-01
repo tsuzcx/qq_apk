@@ -23,40 +23,26 @@ import java.util.Set;
 
 public class StickerBubbleAnimationHelper
 {
-  private static int jdField_a_of_type_Int;
-  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private static Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private static String jdField_a_of_type_JavaLangString;
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private static Set<Object> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private static int[] jdField_a_of_type_ArrayOfInt;
+  private static Animation a;
+  private static Random b = new Random();
+  private static int[] c;
+  private static Set<Object> d = new HashSet();
+  private static int e;
+  private static Drawable f;
+  private static String g;
   
   public static int a(@NonNull String paramString)
   {
     try
     {
-      if (!paramString.equals(jdField_a_of_type_JavaLangString))
+      if (!paramString.equals(g))
       {
-        jdField_a_of_type_Int = SharedPreUtils.b(paramString);
-        jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-        jdField_a_of_type_JavaLangString = paramString;
+        e = SharedPreUtils.p(paramString);
+        f = null;
+        g = paramString;
       }
-      int i = jdField_a_of_type_Int;
+      int i = e;
       return i;
-    }
-    finally {}
-  }
-  
-  @Nullable
-  public static Drawable a(@NonNull String paramString)
-  {
-    try
-    {
-      if (((!paramString.equals(jdField_a_of_type_JavaLangString)) || (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) && (a(paramString) > 0)) {
-        jdField_a_of_type_AndroidGraphicsDrawableDrawable = PEPanelHelper.a(a(paramString));
-      }
-      paramString = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      return paramString;
     }
     finally {}
   }
@@ -78,22 +64,22 @@ public class StickerBubbleAnimationHelper
     paramArrayOfInt = new AddItemRequest().a(new Point(paramInt1 / 2, 0)).a(paramString).a(bool);
     paramInt2 = 2000;
     if (bool) {
-      paramInt1 = -jdField_a_of_type_JavaUtilRandom.nextInt(2000) + 1000;
+      paramInt1 = -b.nextInt(2000) + 1000;
     } else {
-      paramInt1 = -jdField_a_of_type_JavaUtilRandom.nextInt(8000) + 4000;
+      paramInt1 = -b.nextInt(8000) + 4000;
     }
-    double d = paramInt1;
+    double d1 = paramInt1;
     if (bool)
     {
-      paramString = jdField_a_of_type_JavaUtilRandom;
+      paramString = b;
       paramInt1 = 500;
     }
     else
     {
-      paramString = jdField_a_of_type_JavaUtilRandom;
+      paramString = b;
       paramInt1 = paramInt2;
     }
-    return paramArrayOfInt.a(new ItemStatus.Velocity(d, paramString.nextInt(paramInt1))).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(49);
+    return paramArrayOfInt.a(new ItemStatus.Velocity(d1, paramString.nextInt(paramInt1))).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(49);
   }
   
   public static AddItemRequest a(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
@@ -101,17 +87,17 @@ public class StickerBubbleAnimationHelper
     boolean bool = a(paramInt);
     paramPoint = new AddItemRequest().a(paramPoint).a(paramString).a(bool);
     if (bool) {
-      paramInt = -jdField_a_of_type_JavaUtilRandom.nextInt(1500) + 750;
+      paramInt = -b.nextInt(1500) + 750;
     } else {
-      paramInt = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
+      paramInt = -b.nextInt(6000) + 3000;
     }
-    double d = paramInt;
+    double d1 = paramInt;
     if (bool) {
-      paramInt = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);
+      paramInt = -1000 - b.nextInt(500);
     } else {
-      paramInt = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000);
+      paramInt = -2000 - b.nextInt(1000);
     }
-    return paramPoint.a(new ItemStatus.Velocity(d, paramInt)).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(85);
+    return paramPoint.a(new ItemStatus.Velocity(d1, paramInt)).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(85);
   }
   
   public static void a(View paramView)
@@ -119,17 +105,17 @@ public class StickerBubbleAnimationHelper
     if (QLog.isColorLevel()) {
       QLog.d("StickerBubbleHelper", 2, "stopAndClean");
     }
-    StickerBubbleAnimationViewHolder.a().a();
+    StickerBubbleAnimationViewHolder.b().a();
   }
   
   public static void a(@NonNull PEItemData paramPEItemData, @NonNull String paramString)
   {
     try
     {
-      jdField_a_of_type_Int = paramPEItemData.jdField_a_of_type_Int;
-      jdField_a_of_type_AndroidGraphicsDrawableDrawable = PEPanelHelper.a(jdField_a_of_type_Int);
-      SharedPreUtils.b(paramPEItemData.jdField_a_of_type_Int, paramString);
-      jdField_a_of_type_JavaLangString = paramString;
+      e = paramPEItemData.a;
+      f = PEPanelHelper.c(e);
+      SharedPreUtils.d(paramPEItemData.a, paramString);
+      g = paramString;
       return;
     }
     finally
@@ -141,17 +127,17 @@ public class StickerBubbleAnimationHelper
   
   public static void a(Object paramObject, View paramView)
   {
-    jdField_a_of_type_JavaUtilSet.remove(paramObject);
-    if (jdField_a_of_type_JavaUtilSet.isEmpty())
+    d.remove(paramObject);
+    if (d.isEmpty())
     {
-      paramObject = jdField_a_of_type_AndroidViewAnimationAnimation;
+      paramObject = a;
       if ((paramObject != null) && (paramObject.hasStarted()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("StickerBubbleHelper", 2, "cancelShakeWindowAnim");
         }
-        jdField_a_of_type_AndroidViewAnimationAnimation.cancel();
-        jdField_a_of_type_AndroidViewAnimationAnimation.reset();
+        a.cancel();
+        a.reset();
         paramView.clearAnimation();
       }
     }
@@ -188,9 +174,9 @@ public class StickerBubbleAnimationHelper
   
   public static int[] a(QQAppInterface paramQQAppInterface)
   {
-    if (jdField_a_of_type_ArrayOfInt == null)
+    if (c == null)
     {
-      paramQQAppInterface = PokeItemHelper.a(paramQQAppInterface, 7);
+      paramQQAppInterface = PokeItemHelper.c(paramQQAppInterface, 7);
       if (paramQQAppInterface != null)
       {
         paramQQAppInterface = paramQQAppInterface.split(",");
@@ -203,7 +189,7 @@ public class StickerBubbleAnimationHelper
             localObject[i] = Integer.parseInt(paramQQAppInterface[i]);
             i += 1;
           }
-          jdField_a_of_type_ArrayOfInt = (int[])localObject;
+          c = (int[])localObject;
         }
         catch (NumberFormatException paramQQAppInterface)
         {
@@ -214,7 +200,7 @@ public class StickerBubbleAnimationHelper
         }
       }
     }
-    Object localObject = jdField_a_of_type_ArrayOfInt;
+    Object localObject = c;
     paramQQAppInterface = (QQAppInterface)localObject;
     if (localObject == null)
     {
@@ -227,43 +213,57 @@ public class StickerBubbleAnimationHelper
     return paramQQAppInterface;
   }
   
+  @Nullable
+  public static Drawable b(@NonNull String paramString)
+  {
+    try
+    {
+      if (((!paramString.equals(g)) || (f == null)) && (a(paramString) > 0)) {
+        f = PEPanelHelper.c(a(paramString));
+      }
+      paramString = f;
+      return paramString;
+    }
+    finally {}
+  }
+  
   public static AddItemRequest b(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
   {
     boolean bool = a(paramInt);
     paramPoint = new AddItemRequest().a(paramPoint).a(paramString).a(bool);
     if (bool) {
-      paramInt = -jdField_a_of_type_JavaUtilRandom.nextInt(1500) + 750;
+      paramInt = -b.nextInt(1500) + 750;
     } else {
-      paramInt = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
+      paramInt = -b.nextInt(6000) + 3000;
     }
-    double d = paramInt;
+    double d1 = paramInt;
     if (bool) {
-      paramInt = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);
+      paramInt = -1000 - b.nextInt(500);
     } else {
-      paramInt = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000);
+      paramInt = -2000 - b.nextInt(1000);
     }
-    return paramPoint.a(new ItemStatus.Velocity(d, paramInt)).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(81);
+    return paramPoint.a(new ItemStatus.Velocity(d1, paramInt)).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(81);
   }
   
   public static void b(Object paramObject, View paramView)
   {
-    jdField_a_of_type_JavaUtilSet.add(paramObject);
-    if (jdField_a_of_type_AndroidViewAnimationAnimation == null)
+    d.add(paramObject);
+    if (a == null)
     {
-      jdField_a_of_type_AndroidViewAnimationAnimation = a(paramView.getContext());
-      jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new StickerBubbleAnimationHelper.1());
+      a = a(paramView.getContext());
+      a.setAnimationListener(new StickerBubbleAnimationHelper.1());
     }
     if (QLog.isColorLevel()) {
       QLog.d("StickerBubbleHelper", 2, "start to shake");
     }
     if (paramView != null) {
-      paramView.startAnimation(jdField_a_of_type_AndroidViewAnimationAnimation);
+      paramView.startAnimation(a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationHelper
  * JD-Core Version:    0.7.0.1
  */

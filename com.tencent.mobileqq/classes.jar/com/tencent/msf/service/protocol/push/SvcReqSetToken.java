@@ -28,6 +28,7 @@ public final class SvcReqSetToken
   public String sPushSound = "";
   public String sSound = "";
   public String sVideoSound = "";
+  public long uGroupProSwitch = 0L;
   public byte[] vNewToken = null;
   public byte[] vNewVoipToken = null;
   public byte[] vProfileID = null;
@@ -50,9 +51,9 @@ public final class SvcReqSetToken
   
   public SvcReqSetToken() {}
   
-  public SvcReqSetToken(long paramLong, ArrayList paramArrayList1, String paramString1, String paramString2, byte paramByte1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, String paramString3, String paramString4, String paramString5, byte paramByte7, ArrayList paramArrayList2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte paramByte8, byte[] paramArrayOfByte3)
+  public SvcReqSetToken(long paramLong1, ArrayList paramArrayList1, String paramString1, String paramString2, byte paramByte1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, String paramString3, String paramString4, String paramString5, byte paramByte7, ArrayList paramArrayList2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte paramByte8, byte[] paramArrayOfByte3, long paramLong2)
   {
-    this.lUin = paramLong;
+    this.lUin = paramLong1;
     this.vTokenID = paramArrayList1;
     this.sSound = paramString1;
     this.sExtends = paramString2;
@@ -71,6 +72,7 @@ public final class SvcReqSetToken
     this.vNewVoipToken = paramArrayOfByte2;
     this.bScenes = paramByte8;
     this.vProfileID = paramArrayOfByte3;
+    this.uGroupProSwitch = paramLong2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -94,6 +96,7 @@ public final class SvcReqSetToken
     this.vNewVoipToken = ((byte[])paramJceInputStream.read(cache_vNewVoipToken, 16, false));
     this.bScenes = paramJceInputStream.read(this.bScenes, 17, false);
     this.vProfileID = ((byte[])paramJceInputStream.read(cache_vProfileID, 18, false));
+    this.uGroupProSwitch = paramJceInputStream.read(this.uGroupProSwitch, 19, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -138,11 +141,12 @@ public final class SvcReqSetToken
     if (localObject != null) {
       paramJceOutputStream.write((byte[])localObject, 18);
     }
+    paramJceOutputStream.write(this.uGroupProSwitch, 19);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.push.SvcReqSetToken
  * JD-Core Version:    0.7.0.1
  */

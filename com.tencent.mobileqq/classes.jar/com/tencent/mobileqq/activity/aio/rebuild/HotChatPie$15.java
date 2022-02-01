@@ -14,12 +14,12 @@ class HotChatPie$15
   
   public void run()
   {
-    if (HotChatPie.e(this.this$0) == null)
+    if (HotChatPie.i(this.this$0) == null)
     {
       localObject = this.this$0;
-      HotChatPie.b((HotChatPie)localObject, new TroopFeedsCenterLogic(((HotChatPie)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, HotChatPie.b(this.this$0), HotChatPie.b(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips, HotChatPie.b(this.this$0), null));
+      HotChatPie.b((HotChatPie)localObject, new TroopFeedsCenterLogic(((HotChatPie)localObject).d, this.this$0.f, this.this$0.ah, HotChatPie.j(this.this$0), HotChatPie.k(this.this$0), this.this$0.bp, HotChatPie.l(this.this$0), null));
     }
-    Object localObject = (IHotChatHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName());
+    Object localObject = (IHotChatHandler)this.this$0.d.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName());
     if (this.a.userCreate == 1)
     {
       ((IHotChatHandler)localObject).getUserCreateHotChatAnnounce(this.a.troopUin);
@@ -32,7 +32,7 @@ class HotChatPie$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.15
  * JD-Core Version:    0.7.0.1
  */

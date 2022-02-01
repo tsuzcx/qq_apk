@@ -20,16 +20,16 @@ import java.util.List;
 public class TabBarView2
   extends TabBarView
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842901, 16842904 };
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private Paint c;
-  private int p = 16;
-  private int q = 16;
-  private int r = -16776961;
-  private int s = 25;
-  private int t = 9;
-  private int u = 15;
+  private static final int[] B = { 16842901, 16842904 };
+  private int C = 16;
+  private int D = 16;
+  private int E = -16776961;
+  private int F = 25;
+  private int G = 9;
+  private int H = 15;
+  private Paint I;
+  private RectF J;
+  private Rect K = new Rect();
   
   public TabBarView2(Context paramContext)
   {
@@ -39,88 +39,75 @@ public class TabBarView2
   public TabBarView2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = ViewUtils.a(56.0F);
-    this.m = 16;
-    boolean bool1 = QQTheme.e();
-    int j = this.s;
-    boolean bool2 = QQTheme.a();
-    boolean bool3 = QQTheme.f();
-    int k = 2131165574;
-    int m = 2131167142;
+    this.c = ViewUtils.dip2px(56.0F);
+    this.n = 16;
+    boolean bool1 = QQTheme.isDefaultTheme();
+    int k = this.F;
+    boolean bool2 = QQTheme.isNowThemeIsNight();
+    boolean bool3 = QQTheme.isNowSimpleUI();
+    int j = 2131168001;
+    int m = 2131168122;
+    int i;
     if (bool3)
     {
-      if (bool2) {
-        i = 2131166499;
-      } else {
-        i = 2131166498;
-      }
-      j = 255;
+      m = 2131168059;
+      k = 255;
+      i = 2131168072;
+      j = 2131168072;
+    }
+    else if (bool2)
+    {
+      j = 2131165915;
+      m = 2131165914;
+      i = 2131165913;
+      k = 30;
+    }
+    else if (!bool1)
+    {
+      i = 2131168001;
     }
     else
     {
-      if (bool2)
-      {
-        k = 2131165573;
-        m = 2131165572;
-        i = 2131165571;
-        j = 30;
-        break label165;
-      }
-      if (bool1) {
-        break label162;
-      }
-      i = 2131167063;
+      i = 2131165916;
+      j = 2131165916;
     }
-    k = 2131167063;
-    break label165;
-    label162:
-    int i = 2131165574;
-    label165:
-    this.f = getResources().getColor(m);
-    this.e = getResources().getColor(k);
-    this.r = getResources().getColor(i);
+    this.g = getResources().getColor(m);
+    this.f = getResources().getColor(j);
+    this.E = getResources().getColor(i);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
-    this.t = ((int)TypedValue.applyDimension(1, this.t, localDisplayMetrics));
-    this.u = ((int)TypedValue.applyDimension(1, this.u, localDisplayMetrics));
-    this.p = ((int)TypedValue.applyDimension(1, this.p, localDisplayMetrics));
-    this.q = ((int)TypedValue.applyDimension(1, this.q, localDisplayMetrics));
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
-    this.r = paramContext.getColor(R.styleable.bo, this.r);
-    this.s = paramContext.getInt(R.styleable.bn, this.s);
-    this.p = paramContext.getDimensionPixelSize(R.styleable.br, this.p);
-    this.q = paramContext.getDimensionPixelSize(R.styleable.bs, this.q);
-    this.t = paramContext.getDimensionPixelSize(R.styleable.bq, this.t);
-    this.u = paramContext.getDimensionPixelSize(R.styleable.bp, this.u);
+    this.G = ((int)TypedValue.applyDimension(1, this.G, localDisplayMetrics));
+    this.H = ((int)TypedValue.applyDimension(1, this.H, localDisplayMetrics));
+    this.C = ((int)TypedValue.applyDimension(1, this.C, localDisplayMetrics));
+    this.D = ((int)TypedValue.applyDimension(1, this.D, localDisplayMetrics));
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, B);
+    this.E = paramContext.getColor(R.styleable.dK, this.E);
+    this.F = paramContext.getInt(R.styleable.dJ, this.F);
+    this.C = paramContext.getDimensionPixelSize(R.styleable.dN, this.C);
+    this.D = paramContext.getDimensionPixelSize(R.styleable.dO, this.D);
+    this.G = paramContext.getDimensionPixelSize(R.styleable.dM, this.G);
+    this.H = paramContext.getDimensionPixelSize(R.styleable.dL, this.H);
     paramContext.recycle();
-    if (("1103".equals(QQTheme.a())) || (QQTheme.f()))
+    if (("1103".equals(QQTheme.getCurrentThemeId())) || (QQTheme.isNowSimpleUI()))
     {
-      this.r = getResources().getColor(i);
-      this.s = j;
+      this.E = getResources().getColor(i);
+      this.F = k;
     }
-    b();
+    d();
   }
   
-  private void b()
+  private void b(Canvas paramCanvas)
   {
-    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  }
-  
-  protected void a(Canvas paramCanvas)
-  {
-    Object localObject = getChildAt(this.o);
+    Object localObject = getChildAt(this.t);
     if (localObject != null)
     {
-      this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.r);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setAlpha(this.s);
-      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(this.o);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(this.m * getContext().getResources().getDisplayMetrics().density + 0.5F);
-      String str = (String)this.jdField_c_of_type_JavaUtilList.get(this.o);
-      this.jdField_b_of_type_AndroidGraphicsPaint.getTextBounds(str, 0, str.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-      float f1 = this.jdField_a_of_type_AndroidGraphicsRect.width();
-      float f2 = this.jdField_a_of_type_AndroidGraphicsRect.height();
+      this.I.setColor(this.E);
+      this.I.setAlpha(this.F);
+      View localView = (View)this.v.get(this.t);
+      this.A.setTextSize(this.n * getContext().getResources().getDisplayMetrics().density + 0.5F);
+      String str = (String)this.x.get(this.t);
+      this.A.getTextBounds(str, 0, str.length(), this.K);
+      float f1 = this.K.width();
+      float f2 = this.K.height();
       int i = ((View)localObject).getRight();
       int m = ((View)localObject).getLeft();
       int j = ((View)localObject).getBottom();
@@ -137,33 +124,51 @@ public class TabBarView2
         int i3 = ((View)localObject).getTop();
         j = k;
         i = m;
-        if (this.jdField_a_of_type_Float > 0.0F)
+        if (this.r > 0.0F)
         {
-          localObject = getChildAt(this.n);
+          localObject = getChildAt(this.s);
           j = k;
           i = m;
           if (localObject != null)
           {
-            f1 = this.jdField_b_of_type_AndroidGraphicsPaint.measureText(((String)this.jdField_c_of_type_JavaUtilList.get(this.n)).toString());
+            f1 = this.A.measureText(((String)this.x.get(this.s)).toString());
             j = (int)((((View)localObject).getRight() - ((View)localObject).getLeft() - f1) / 2.0F);
             i = (int)(j + f1);
-            j = (int)(k + this.jdField_a_of_type_Float * (((View)localObject).getLeft() + j - this.d - k));
-            i = (int)(m + this.jdField_a_of_type_Float * (((View)localObject).getLeft() + i + this.d - m));
+            j = (int)(k + this.r * (((View)localObject).getLeft() + j - this.e - k));
+            i = (int)(m + this.r * (((View)localObject).getLeft() + i + this.e - m));
           }
         }
-        localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-        k = this.u;
+        localObject = this.J;
+        k = this.H;
         f1 = j - k;
-        j = this.t;
+        j = this.G;
         ((RectF)localObject).set(f1, i2 + n - j, i + k, i3 + i1 + j);
-        paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.p, this.q, this.jdField_c_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawRoundRect(this.J, this.C, this.D, this.I);
       }
     }
+  }
+  
+  private void d()
+  {
+    this.I = new Paint();
+    this.I.setAntiAlias(true);
+    this.I.setStyle(Paint.Style.FILL);
+    this.J = new RectF();
+  }
+  
+  protected void a(Canvas paramCanvas)
+  {
+    if (QQTheme.isNowSimpleUI())
+    {
+      a(paramCanvas, this.I, this.f);
+      return;
+    }
+    b(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabBarView2
  * JD-Core Version:    0.7.0.1
  */

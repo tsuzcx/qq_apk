@@ -15,30 +15,30 @@ final class ScreenShotHelper$2
   
   public void run()
   {
-    Object localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (Activity)this.a.get();
     if (localObject != null) {
       if (((Activity)localObject).hasWindowFocus())
       {
-        localObject = ((ViewGroup)((Activity)localObject).getWindow().getDecorView().getRootView()).findViewById(2131376981);
+        localObject = ((ViewGroup)((Activity)localObject).getWindow().getDecorView().getRootView()).findViewById(2131445345);
         if (localObject != null) {
-          ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView((View)localObject);
+          ((ViewGroup)this.b.getParent()).removeView((View)localObject);
         }
       }
       else
       {
         if ((23 <= Build.VERSION.SDK_INT) && (!((Activity)localObject).isDestroyed()))
         {
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 5000L);
+          this.c.postDelayed(this, 5000L);
           return;
         }
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        this.c.removeCallbacksAndMessages(null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ class SpriteGLView$1
   
   public void run()
   {
-    this.this$0.p();
+    this.this$0.q();
     Object[] arrayOfObject = SpriteGLView.a(this.this$0).toArray();
     int j = arrayOfObject.length;
     int i = 0;
@@ -17,7 +17,7 @@ class SpriteGLView$1
     {
       Object localObject = arrayOfObject[i];
       if ((localObject instanceof Node)) {
-        ((Node)localObject).a();
+        ((Node)localObject).f();
       }
       i += 1;
     }
@@ -26,7 +26,7 @@ class SpriteGLView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView.1
  * JD-Core Version:    0.7.0.1
  */

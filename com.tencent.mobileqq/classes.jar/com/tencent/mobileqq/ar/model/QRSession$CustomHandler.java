@@ -23,14 +23,14 @@ class QRSession$CustomHandler
       if (i != 101) {
         return;
       }
-      if (QRSession.a(this.a))
+      if (QRSession.b(this.a))
       {
         QRSession.a(this.a, false);
         ((IQRScanReportApi)QRoute.api(IQRScanReportApi.class)).markScanStart();
       }
       try
       {
-        QRSession.b(this.a);
+        QRSession.c(this.a);
         return;
       }
       catch (Throwable paramMessage)
@@ -49,7 +49,7 @@ class QRSession$CustomHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QRSession.CustomHandler
  * JD-Core Version:    0.7.0.1
  */

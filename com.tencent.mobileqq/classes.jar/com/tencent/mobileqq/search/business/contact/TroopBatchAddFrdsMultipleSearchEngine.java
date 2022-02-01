@@ -10,32 +10,31 @@ import java.util.Set;
 public class TroopBatchAddFrdsMultipleSearchEngine
   extends ContactSearchEngine
 {
-  private Comparator<IContactSearchModel> a;
+  private Comparator<IContactSearchModel> d = new TroopBatchAddFrdsMultipleSearchEngine.1(this);
   
   public TroopBatchAddFrdsMultipleSearchEngine(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
     super(paramAppInterface, paramInt1, paramInt2, paramString, paramSet);
-    this.jdField_a_of_type_JavaUtilComparator = new TroopBatchAddFrdsMultipleSearchEngine.1(this);
   }
   
-  private boolean a(String paramString)
+  private boolean c(String paramString)
   {
-    return ((IFriendDataService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IFriendDataService.class, "")).isFriend(paramString);
+    return ((IFriendDataService)this.b.getRuntimeService(IFriendDataService.class, "")).isFriend(paramString);
   }
   
-  private boolean b(String paramString)
+  private boolean d(String paramString)
   {
-    return ((IAddFriendServiceApi)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IAddFriendServiceApi.class, "")).hasSendAddFriendReq(paramString, false);
+    return ((IAddFriendServiceApi)this.b.getRuntimeService(IAddFriendServiceApi.class, "")).hasSendAddFriendReq(paramString, false);
   }
   
-  public Comparator<IContactSearchModel> a()
+  public Comparator<IContactSearchModel> f()
   {
-    return this.jdField_a_of_type_JavaUtilComparator;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.TroopBatchAddFrdsMultipleSearchEngine
  * JD-Core Version:    0.7.0.1
  */

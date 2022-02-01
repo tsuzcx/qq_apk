@@ -26,30 +26,30 @@ final class VasSplashDownloadManager$1
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("downloadPicAGifAVideoRes adid");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(this.a);
     QLog.i("QSplash@VasSplashUtil", 1, ((StringBuilder)localObject1).toString());
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(this.b);
     ((StringBuilder)localObject1).append(".splashtemp");
-    VasSplashUtil.b(((StringBuilder)localObject1).toString());
+    VasSplashUtil.f(((StringBuilder)localObject1).toString());
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("vas_ad_res_png realStart, key  ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       ((StringBuilder)localObject1).append("_");
       ((StringBuilder)localObject1).append(this.b);
-      QLog.i("QSplash@VasSplashDownloadManager", 2, ((StringBuilder)localObject1).toString());
+      QLog.i("splash.tag.QSplash@VasSplashDownloadManager", 2, ((StringBuilder)localObject1).toString());
     }
     localObject1 = new HttpNetReq();
     Object localObject2 = (QQAppInterface)this.app;
-    String str = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
+    String str = this.a;
+    int i = this.c;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(this.b);
     localStringBuilder.append(".splashtemp");
-    ((HttpNetReq)localObject1).mCallback = new VasSplashDownloadManager.DownLoadNetEngine((QQAppInterface)localObject2, str, i, localStringBuilder.toString(), this.c, this.d);
-    ((HttpNetReq)localObject1).mReqUrl = this.d;
+    ((HttpNetReq)localObject1).mCallback = new VasSplashDownloadManager.DownLoadNetEngine((QQAppInterface)localObject2, str, i, localStringBuilder.toString(), this.d, this.e);
+    ((HttpNetReq)localObject1).mReqUrl = this.e;
     ((HttpNetReq)localObject1).mHttpMethod = 0;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(this.b);
@@ -60,7 +60,7 @@ final class VasSplashDownloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vassplash.common.VasSplashDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

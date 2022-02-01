@@ -24,7 +24,7 @@ class LiteActivity$16
     int i = paramInt1;
     if (paramInt1 == 0)
     {
-      paramInt1 = FileManagerUtil.a(paramString);
+      paramInt1 = FileManagerUtil.c(paramString);
       if (paramInt1 != 0)
       {
         if (paramInt1 != 1)
@@ -44,8 +44,8 @@ class LiteActivity$16
       }
     }
     DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-    localDataLineMsgRecord.msgtype = DataLineHandler.a(i);
-    localDataLineMsgRecord.sessionid = paramDataLineHandler.a(0, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a).longValue();
+    localDataLineMsgRecord.msgtype = DataLineHandler.b(i);
+    localDataLineMsgRecord.sessionid = paramDataLineHandler.a(0, this.b.j).longValue();
     localDataLineMsgRecord.path = paramString;
     localDataLineMsgRecord.thumbPath = null;
     localDataLineMsgRecord.groupId = paramInt2;
@@ -57,13 +57,13 @@ class LiteActivity$16
   protected String a(Integer... paramVarArgs)
   {
     int i = paramVarArgs[0].intValue();
-    a(this.jdField_a_of_type_JavaUtilArrayList, i);
+    a(this.a, i);
     return null;
   }
   
   protected void a(String paramString)
   {
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(false);
+    this.b.a(false);
   }
   
   void a(List<String> paramList, int paramInt)
@@ -71,7 +71,7 @@ class LiteActivity$16
     if (paramList == null) {
       return;
     }
-    DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.b.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     for (;;)
     {
       int j = paramList.size();
@@ -81,7 +81,7 @@ class LiteActivity$16
         while (i < j)
         {
           localObject1 = (String)paramList.get(i);
-          localObject1 = a(localDataLineHandler, LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, (String)localObject1), paramInt, 0, 0, 0);
+          localObject1 = a(localDataLineHandler, LiteActivity.a(this.b, (String)localObject1), paramInt, 0, 0, 0);
           if (localObject1 != null) {
             localDataLineHandler.a((DataLineMsgRecord)localObject1, false);
           }
@@ -93,12 +93,12 @@ class LiteActivity$16
       if ((j > 3) && (j < 50))
       {
         localObject1 = new ArrayList();
-        int k = localDataLineHandler.a();
+        int k = localDataLineHandler.g();
         i = 0;
         while (i < j)
         {
           localObject2 = (String)paramList.get(i);
-          localDataLineMsgRecord = a(localDataLineHandler, LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, (String)localObject2), paramInt, k, j, i);
+          localDataLineMsgRecord = a(localDataLineHandler, LiteActivity.a(this.b, (String)localObject2), paramInt, k, j, i);
           if (localDataLineMsgRecord != null) {
             ((ArrayList)localObject1).add(localDataLineMsgRecord);
           }
@@ -125,12 +125,12 @@ class LiteActivity$16
         return;
       }
       Object localObject1 = new ArrayList();
-      j = localDataLineHandler.a();
+      j = localDataLineHandler.g();
       int i = 0;
       while (i < 50)
       {
         localObject2 = (String)paramList.get(i);
-        localDataLineMsgRecord = a(localDataLineHandler, LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, (String)localObject2), paramInt, j, 50, i);
+        localDataLineMsgRecord = a(localDataLineHandler, LiteActivity.a(this.b, (String)localObject2), paramInt, j, 50, i);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject1).add(localDataLineMsgRecord);
         }

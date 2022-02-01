@@ -20,7 +20,7 @@ public class StickerMsgGeneralFlagProvider
     boolean bool = paramBoolean;
     if (paramMessageRecord.msgtype == -2058)
     {
-      StickerInfo localStickerInfo = EmojiStickerManager.a(paramMessageRecord);
+      StickerInfo localStickerInfo = EmojiStickerManager.d(paramMessageRecord);
       bool = paramBoolean;
       if (localStickerInfo != null)
       {
@@ -58,7 +58,7 @@ public class StickerMsgGeneralFlagProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.generalflag.StickerMsgGeneralFlagProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,24 @@
 package com.tencent.mobileqq.webprocess;
 
-import com.tencent.mobileqq.webview.util.ITbsDownloader;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.smtt.sdk.TbsDownloader;
-import mqq.app.AppRuntime;
+import com.tencent.sonic.sdk.SonicEngine;
+import java.util.Map;
 
 class WebProcessReceiver$1
   implements Runnable
 {
-  WebProcessReceiver$1(WebProcessReceiver paramWebProcessReceiver, boolean paramBoolean1, AppRuntime paramAppRuntime, boolean paramBoolean2) {}
+  WebProcessReceiver$1(WebProcessReceiver paramWebProcessReceiver, Map paramMap) {}
   
   public void run()
   {
-    if (TbsDownloader.needDownload(BaseApplication.getContext(), this.jdField_a_of_type_Boolean))
-    {
-      AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
-      if ((localAppRuntime instanceof ITbsDownloader)) {
-        ((ITbsDownloader)localAppRuntime).a(false, this.jdField_a_of_type_Boolean, this.b ^ true);
-      }
+    SonicEngine localSonicEngine = WebAccelerateHelper.getSonicEngine();
+    if (localSonicEngine != null) {
+      localSonicEngine.removeExpiredSessionCache(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebProcessReceiver.1
  * JD-Core Version:    0.7.0.1
  */

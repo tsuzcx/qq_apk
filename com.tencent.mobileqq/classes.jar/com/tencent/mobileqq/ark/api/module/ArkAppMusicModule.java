@@ -21,29 +21,23 @@ import org.json.JSONObject;
 public class ArkAppMusicModule
   extends ArkAppModuleBase
 {
-  private static ArkAppMusicModule.GlobalMusicCallback jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppMusicModule$GlobalMusicCallback;
-  protected static final ArrayList<WeakReference<ArkAppMusicModule>> a;
-  private static String e = "";
-  protected long a;
-  protected SongInfo a;
-  protected String a;
-  private WeakReference<ArkAppMusicModule> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  protected static final ArrayList<WeakReference<ArkAppMusicModule>> a = new ArrayList();
+  private static String k = "";
+  private static ArkAppMusicModule.GlobalMusicCallback m;
+  protected long b = 0L;
+  protected String c;
+  protected SongInfo d;
+  private WeakReference<ArkAppMusicModule> l;
   
   public ArkAppMusicModule(ark.Application paramApplication, int paramInt)
   {
     super(paramApplication, paramInt);
-    this.jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppMusicModule$GlobalMusicCallback = new ArkAppMusicModule.GlobalMusicCallback(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
-    jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangRefWeakReference);
+    m = new ArkAppMusicModule.GlobalMusicCallback(this.f);
+    this.l = new WeakReference(this);
+    a.add(this.l);
   }
   
-  protected static int a(int paramInt)
+  protected static int b(int paramInt)
   {
     if (paramInt != 0)
     {
@@ -65,19 +59,19 @@ public class ArkAppMusicModule
     return 4;
   }
   
-  public static String a()
+  public static String d()
   {
-    if (TextUtils.isEmpty(e)) {
-      e = QQPlayerService.a(1, "ark.music.module");
+    if (TextUtils.isEmpty(k)) {
+      k = QQPlayerService.a(1, "ark.music.module");
     }
-    return e;
+    return k;
   }
   
   public void Destruct()
   {
-    QQPlayerService.c(jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppMusicModule$GlobalMusicCallback);
-    jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaLangRefWeakReference);
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    QQPlayerService.c(m);
+    a.remove(this.l);
+    this.l = null;
     super.Destruct();
   }
   
@@ -150,18 +144,18 @@ public class ArkAppMusicModule
     double d1;
     if (paramString.equals("GetCurrentTime"))
     {
-      int i = QQPlayerService.a();
+      int i = QQPlayerService.c();
       double d2 = 0.0D;
       if (i != 2)
       {
         d1 = d2;
-        if (QQPlayerService.a() != 3) {}
+        if (QQPlayerService.c() != 3) {}
       }
       else
       {
         try
         {
-          i = QQPlayerService.f();
+          i = QQPlayerService.k();
           d1 = i;
           Double.isNaN(d1);
           d1 /= 1000.0D;
@@ -177,36 +171,36 @@ public class ArkAppMusicModule
     }
     if (paramString.equals("GetDuration"))
     {
-      d1 = QQPlayerService.d();
+      d1 = QQPlayerService.i();
       Double.isNaN(d1);
       paramVariantWrapper.SetDouble(d1 / 1000.0D);
       return true;
     }
     if (paramString.equals("GetState"))
     {
-      paramVariantWrapper.SetInt(a(QQPlayerService.a()));
+      paramVariantWrapper.SetInt(b(QQPlayerService.c()));
       return true;
     }
     if (paramString.equals("GetCurrentSong"))
     {
-      a(paramArrayOfVariantWrapper[0], QQPlayerService.b());
+      a(paramArrayOfVariantWrapper[0], QQPlayerService.g());
       return true;
     }
     if (paramString.equals("SetCallback"))
     {
-      paramString = a(this.jdField_a_of_type_Long);
+      paramString = a(this.b);
       if (paramString != null) {
         paramString.Reset();
       }
       paramString = paramArrayOfVariantWrapper[0];
       if ((paramString != null) && (paramString.IsFunction()))
       {
-        this.jdField_a_of_type_Long = a(paramString.Copy());
-        QQPlayerService.b(jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppMusicModule$GlobalMusicCallback);
+        this.b = a(paramString.Copy());
+        QQPlayerService.b(m);
         QQPlayerService.a(null);
         return true;
       }
-      this.jdField_a_of_type_Long = 0L;
+      this.b = 0L;
       return true;
     }
     if (paramString.equals("AttachEvent"))
@@ -217,18 +211,18 @@ public class ArkAppMusicModule
         if (!"State".equals(paramString.GetString())) {
           return true;
         }
-        paramString = a(this.jdField_a_of_type_Long);
+        paramString = a(this.b);
         if (paramString != null) {
           paramString.Reset();
         }
         paramString = paramArrayOfVariantWrapper[1];
         if ((paramString != null) && (paramString.IsFunction()))
         {
-          this.jdField_a_of_type_Long = a(paramString.Copy());
+          this.b = a(paramString.Copy());
           QQPlayerService.a(null);
           return true;
         }
-        this.jdField_a_of_type_Long = 0L;
+        this.b = 0L;
       }
       return true;
     }
@@ -240,7 +234,7 @@ public class ArkAppMusicModule
         if (!"State".equals(paramString.GetString())) {
           return true;
         }
-        paramString = a(this.jdField_a_of_type_Long);
+        paramString = a(this.b);
         if (paramString != null) {
           paramString.Reset();
         }
@@ -252,23 +246,23 @@ public class ArkAppMusicModule
   
   public void a(int paramInt)
   {
-    long l = this.jdField_a_of_type_Long;
-    if (l == 0L)
+    long l1 = this.b;
+    if (l1 == 0L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ark.music.module", 2, "ArkAppMusicModule.callback.invalid");
       }
       return;
     }
-    ark.VariantWrapper localVariantWrapper = b(l);
-    SongInfo localSongInfo2 = QQPlayerService.b();
+    ark.VariantWrapper localVariantWrapper = b(l1);
+    SongInfo localSongInfo2 = QQPlayerService.g();
     SongInfo localSongInfo1 = localSongInfo2;
     if (localSongInfo2 == null) {
-      localSongInfo1 = this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo;
+      localSongInfo1 = this.d;
     }
     a(localVariantWrapper, paramInt, localSongInfo1);
     if (paramInt == 4) {
-      this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo = null;
+      this.d = null;
     }
   }
   
@@ -276,7 +270,7 @@ public class ArkAppMusicModule
   {
     if ((paramVariantWrapper != null) && (paramVariantWrapper.IsFunction()) && (paramSongInfo != null))
     {
-      paramInt = a(paramInt);
+      paramInt = b(paramInt);
       if (paramInt == 5)
       {
         if (QLog.isColorLevel()) {
@@ -293,10 +287,10 @@ public class ArkAppMusicModule
       JSONObject localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("url", paramSongInfo.jdField_b_of_type_JavaLangString);
-        localJSONObject.put("title", paramSongInfo.c);
-        localJSONObject.put("singer", paramSongInfo.h);
-        localJSONObject.put("id", String.format(Locale.CHINA, "%d", new Object[] { Long.valueOf(paramSongInfo.jdField_a_of_type_Long) }));
+        localJSONObject.put("url", paramSongInfo.d);
+        localJSONObject.put("title", paramSongInfo.e);
+        localJSONObject.put("singer", paramSongInfo.j);
+        localJSONObject.put("id", String.format(Locale.CHINA, "%d", new Object[] { Long.valueOf(paramSongInfo.a) }));
       }
       catch (JSONException paramSongInfo)
       {
@@ -331,10 +325,10 @@ public class ArkAppMusicModule
         JSONObject localJSONObject = new JSONObject();
         try
         {
-          localJSONObject.put("url", paramSongInfo.jdField_b_of_type_JavaLangString);
-          localJSONObject.put("title", paramSongInfo.c);
-          localJSONObject.put("singer", paramSongInfo.h);
-          localJSONObject.put("id", String.format(Locale.CHINA, "%d", new Object[] { Long.valueOf(paramSongInfo.jdField_a_of_type_Long) }));
+          localJSONObject.put("url", paramSongInfo.d);
+          localJSONObject.put("title", paramSongInfo.e);
+          localJSONObject.put("singer", paramSongInfo.j);
+          localJSONObject.put("id", String.format(Locale.CHINA, "%d", new Object[] { Long.valueOf(paramSongInfo.a) }));
         }
         catch (JSONException paramSongInfo)
         {
@@ -360,15 +354,15 @@ public class ArkAppMusicModule
         return;
       }
       SongInfo localSongInfo = new SongInfo();
-      localSongInfo.jdField_b_of_type_Int = 4;
-      localSongInfo.jdField_b_of_type_JavaLangString = paramArrayOfVariantWrapper[0].GetString();
+      localSongInfo.m = 4;
+      localSongInfo.d = paramArrayOfVariantWrapper[0].GetString();
       try
       {
         paramArrayOfVariantWrapper = new JSONObject(paramArrayOfVariantWrapper[1].GetTableAsJsonString());
-        localSongInfo.f = paramArrayOfVariantWrapper.optString("url");
-        localSongInfo.c = paramArrayOfVariantWrapper.optString("title");
-        localSongInfo.h = paramArrayOfVariantWrapper.optString("singer");
-        localSongInfo.jdField_a_of_type_Long = paramArrayOfVariantWrapper.optLong("id");
+        localSongInfo.h = paramArrayOfVariantWrapper.optString("url");
+        localSongInfo.e = paramArrayOfVariantWrapper.optString("title");
+        localSongInfo.j = paramArrayOfVariantWrapper.optString("singer");
+        localSongInfo.a = paramArrayOfVariantWrapper.optLong("id");
       }
       catch (JSONException paramArrayOfVariantWrapper)
       {
@@ -380,15 +374,10 @@ public class ArkAppMusicModule
           QLog.d("ark.music.module", 2, localStringBuilder.toString());
         }
       }
-      this.jdField_a_of_type_JavaLangString = localSongInfo.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo = localSongInfo;
+      this.c = localSongInfo.d;
+      this.d = localSongInfo;
       ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThread(new ArkAppMusicModule.1(this, localSongInfo));
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
   }
   
   protected ArkModuleMethod[] a()
@@ -398,12 +387,17 @@ public class ArkAppMusicModule
   
   public boolean b()
   {
+    return false;
+  }
+  
+  public boolean c()
+  {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppMusicModule
  * JD-Core Version:    0.7.0.1
  */

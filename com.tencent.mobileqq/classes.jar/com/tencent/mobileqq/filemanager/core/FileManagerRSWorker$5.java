@@ -14,7 +14,7 @@ class FileManagerRSWorker$5
   
   public void a()
   {
-    this.a.j();
+    this.a.r();
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -45,7 +45,7 @@ class FileManagerRSWorker$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.5
  * JD-Core Version:    0.7.0.1
  */

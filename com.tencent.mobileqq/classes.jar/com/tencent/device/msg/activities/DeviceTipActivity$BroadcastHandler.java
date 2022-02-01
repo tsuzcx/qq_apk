@@ -30,12 +30,12 @@ class DeviceTipActivity$BroadcastHandler
     {
       if (paramContext.equals("android.intent.action.SCREEN_OFF"))
       {
-        AudioUtil.a();
+        AudioUtil.b();
         return;
       }
       if (paramContext.equals("android.intent.action.SCREEN_ON"))
       {
-        AudioUtil.a(2131230746, -1, null);
+        AudioUtil.a(2131230814, -1, null);
         return;
       }
       if (paramContext.equals("SmartDevice_receiveDPMsg"))
@@ -55,7 +55,7 @@ class DeviceTipActivity$BroadcastHandler
         paramContext = paramIntent.getExtras();
         long l = paramContext.getLong("din", 0L);
         paramContext = paramContext.getString("uin", "");
-        if ((this.a.b.equals(String.valueOf(Long.valueOf(l)))) && (!TextUtils.isEmpty(paramContext))) {
+        if ((this.a.A.equals(String.valueOf(Long.valueOf(l)))) && (!TextUtils.isEmpty(paramContext))) {
           this.a.finish();
         }
       }
@@ -64,7 +64,7 @@ class DeviceTipActivity$BroadcastHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.activities.DeviceTipActivity.BroadcastHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -14,14 +14,14 @@ class TroopMemberListInnerFrame$9
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) && (((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).isGameClockBusiness(this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity)) && (((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).isNeedReqGameInfo(this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity))) {
-      ((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).reqGameInfoWhenIdle(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity);
+    if ((paramInt == 0) && (((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).isGameClockBusiness(this.a.f)) && (((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).isNeedReqGameInfo(this.a.f))) {
+      ((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).reqGameInfoWhenIdle(this.a.h, this.a.d, this.a.f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopMemberListInnerFrame.9
  * JD-Core Version:    0.7.0.1
  */

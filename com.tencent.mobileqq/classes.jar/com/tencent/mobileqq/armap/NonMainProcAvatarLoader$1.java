@@ -19,7 +19,7 @@ class NonMainProcAvatarLoader$1
   {
     if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
     {
-      if (paramIntent.getIntExtra("faceType", -1) != this.a.jdField_a_of_type_Int) {
+      if (paramIntent.getIntExtra("faceType", -1) != this.a.c) {
         return;
       }
       paramContext = paramIntent.getStringArrayListExtra("uinList");
@@ -33,33 +33,33 @@ class NonMainProcAvatarLoader$1
           ((StringBuilder)localObject).append("onReceive, uinListSize:");
           ((StringBuilder)localObject).append(j);
           ((StringBuilder)localObject).append(" reqSize:");
-          ((StringBuilder)localObject).append(this.a.jdField_a_of_type_JavaUtilHashSet.size());
+          ((StringBuilder)localObject).append(this.a.f.size());
           QLog.d("NonMainAppHeadLoader", 2, ((StringBuilder)localObject).toString());
         }
-        Object localObject = new ArrayList(this.a.jdField_a_of_type_JavaUtilHashSet.size());
+        Object localObject = new ArrayList(this.a.f.size());
         int i = 0;
         while (i < j)
         {
           String str = (String)paramContext.get(i);
-          if (this.a.jdField_a_of_type_JavaUtilHashSet.contains(str))
+          if (this.a.f.contains(str))
           {
-            this.a.jdField_a_of_type_JavaUtilHashSet.remove(str);
+            this.a.f.remove(str);
             ((ArrayList)localObject).add(str);
           }
-          this.a.jdField_b_of_type_AndroidSupportV4UtilLruCache.put(str, paramIntent.get(i));
+          this.a.e.put(str, paramIntent.get(i));
           i += 1;
         }
         paramContext = Message.obtain();
         paramContext.obj = localObject;
         paramContext.what = 1001;
-        this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(paramContext);
+        this.a.j.sendMessage(paramContext);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.NonMainProcAvatarLoader.1
  * JD-Core Version:    0.7.0.1
  */

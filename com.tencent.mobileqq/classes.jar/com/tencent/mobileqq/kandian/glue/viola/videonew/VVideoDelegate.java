@@ -6,21 +6,23 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import com.tencent.mobileqq.kandian.base.video.player.PlayerStatusListener;
+import com.tencent.mobileqq.kandian.base.video.player.pool.PlayerPool;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsHelper;
-import com.tencent.mobileqq.kandian.biz.video.api.IReadInJoyPlayer;
+import com.tencent.mobileqq.kandian.biz.video.ReadInJoyPlayerFactory;
 import com.tencent.mobileqq.kandian.biz.video.api.IReadInJoyPlayerFactory;
 import com.tencent.mobileqq.kandian.biz.video.api.IVideoPreDownloadMgr;
 import com.tencent.mobileqq.kandian.biz.video.api.IVideoVolumeController.EventListener;
 import com.tencent.mobileqq.kandian.biz.video.playfeedback.PlayFeedbackHelper;
+import com.tencent.mobileqq.kandian.biz.viola.ReadInJoyViolaChannelFragment;
 import com.tencent.mobileqq.kandian.biz.viola.video.VideoInfo;
 import com.tencent.mobileqq.kandian.biz.viola.video.constants.ViolaVideoConstants.ResizeType;
 import com.tencent.mobileqq.kandian.biz.viola.view.ViolaFragment;
 import com.tencent.mobileqq.kandian.biz.viola.view.ViolaLazyFragment;
 import com.tencent.mobileqq.kandian.glue.video.VideoVolumeController;
+import com.tencent.mobileqq.kandian.glue.video.player.ReadInJoyPlayer;
 import com.tencent.mobileqq.kandian.glue.viola.CommonSuspensionGestureLayout;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoEntity;
@@ -35,74 +37,61 @@ import org.json.JSONObject;
 public class VVideoDelegate
   implements PlayerStatusListener, IVideoVolumeController.EventListener, ViolaVideoConstants.ResizeType, VVideoView.OnVideoViewControlListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long;
   protected Activity a;
-  IReadInJoyPlayer jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer;
+  protected VVideoView b;
+  ReadInJoyPlayer c;
   @Nullable
-  private VideoInfo jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo;
-  protected VVideoView a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean = false;
-  private boolean d = false;
-  private boolean e = false;
-  private boolean f = false;
+  private VideoInfo d;
+  private long e;
+  private int f = -1;
   private boolean g = false;
   private boolean h = false;
+  private int i;
+  private boolean j = false;
+  private boolean k = false;
+  private boolean l = false;
+  private boolean m = false;
+  private int n = 0;
+  private boolean o = false;
+  private boolean p = false;
+  private boolean q = false;
+  private boolean r = false;
+  private boolean s = false;
   
-  public VVideoDelegate(Activity paramActivity, VVideoView paramVVideoView, int paramInt, ViolaInstance paramViolaInstance, String paramString, boolean paramBoolean)
+  public VVideoDelegate(Activity paramActivity, VVideoView paramVVideoView, int paramInt, ViolaInstance paramViolaInstance, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.e = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer = ((IReadInJoyPlayerFactory)QRoute.api(IReadInJoyPlayerFactory.class)).createPlayer(paramInt, paramString, paramBoolean);
-    this.f = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaVideonewVVideoView = paramVVideoView;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    VideoVolumeController.getInstance().inKandianModule(paramActivity);
+    this.l = paramBoolean1;
+    this.r = paramBoolean2;
+    if (paramBoolean2) {
+      this.c = ((ReadInJoyPlayer)PlayerPool.a.a(paramActivity, new VVideoDelegate.1(this, paramInt, paramString, paramBoolean1)));
+    } else {
+      this.c = ((ReadInJoyPlayer)ReadInJoyPlayerFactory.get().createPlayer(paramInt, paramString, paramBoolean1));
+    }
+    this.m = paramBoolean1;
+    this.b = paramVVideoView;
+    this.a = paramActivity;
+    VideoVolumeController.getInstance().inKandianModule(paramVVideoView);
     VideoVolumeController.getInstance().addEventListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(paramVVideoView);
+    this.c.a(this);
+    this.c.a(paramVVideoView);
     if ((paramViolaInstance != null) && (paramViolaInstance.isPageVisiable())) {
       VideoVolumeController.getInstance().requestOrAbandonAudioFocus(true, "viola video");
     }
-    this.d = (true ^ TextUtils.isEmpty(paramString));
-  }
-  
-  private int a()
-  {
-    int i = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a();
-    if (i != 0) {
-      if ((i != 1) && (i != 2))
+    this.k = (true ^ TextUtils.isEmpty(paramString));
+    if (paramViolaInstance != null) {
+      try
       {
-        if (i != 3)
+        if (((paramViolaInstance.getFragment() instanceof ReadInJoyViolaChannelFragment)) && (((ReadInJoyViolaChannelFragment)paramViolaInstance.getFragment()).n))
         {
-          if (i != 4)
-          {
-            if (i != 5)
-            {
-              if (i != 7) {
-                return 6;
-              }
-            }
-            else {
-              return 4;
-            }
-          }
-          else {
-            return 3;
-          }
-        }
-        else {
-          return 2;
+          c();
+          return;
         }
       }
-      else {
-        return 1;
+      catch (Exception paramActivity)
+      {
+        paramActivity.printStackTrace();
       }
     }
-    return 5;
   }
   
   public static final int a(long paramLong)
@@ -131,11 +120,11 @@ public class VVideoDelegate
         localJSONObject.put("message", paramString);
       }
       paramString = new JSONObject();
-      paramString.put("width", this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.b());
-      paramString.put("height", this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.c());
+      paramString.put("width", this.c.w());
+      paramString.put("height", this.c.x());
       localJSONObject.put("videoSize", paramString);
       localJSONObject.put("errorData", paramJSONObject);
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaVideonewVVideoView.a("stateChange", localJSONObject);
+      this.b.a("stateChange", localJSONObject);
     }
     catch (Exception paramString)
     {
@@ -148,36 +137,36 @@ public class VVideoDelegate
       }
     }
     if (paramInt == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaVideonewVVideoView.a();
+      this.b.a();
     }
   }
   
   private void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(paramString1, paramString2);
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.e();
-    if ((!bool) && (!this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.i()) && (!this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.d()))
+    this.c.a(paramString1, paramString2);
+    boolean bool = this.c.r();
+    if ((!bool) && (!this.c.v()) && (!this.c.q()))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.h())
+      if (this.c.u())
       {
         a(2, null);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.g())
+      if (this.c.t())
       {
         a(4, null);
         return;
       }
       paramString1 = new StringBuilder();
       paramString1.append("seamlessPlay error state: ");
-      paramString1.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a());
+      paramString1.append(this.c.l());
       QLog.e("VVideoControlListenerImpl", 2, paramString1.toString());
-      this.e = true;
-      this.f = true;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.f();
-      paramString1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo;
+      this.l = true;
+      this.m = true;
+      this.c.h();
+      paramString1 = this.d;
       if (paramString1 != null) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(paramString1.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_d_of_type_Int);
+        this.c.a(paramString1.a, this.d.b, this.d.i, this.e, this.d.e);
       }
     }
     else
@@ -187,20 +176,55 @@ public class VVideoDelegate
       }
       a(3, null);
       if (bool) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.j();
+        this.c.A();
       }
     }
   }
   
-  private void k()
+  private int l()
   {
-    if (this.jdField_b_of_type_Boolean)
+    int i1 = this.c.l();
+    if (i1 != 0) {
+      if ((i1 != 1) && (i1 != 2))
+      {
+        if (i1 != 3)
+        {
+          if (i1 != 4)
+          {
+            if (i1 != 5)
+            {
+              if (i1 != 7) {
+                return 6;
+              }
+            }
+            else {
+              return 4;
+            }
+          }
+          else {
+            return 3;
+          }
+        }
+        else {
+          return 2;
+        }
+      }
+      else {
+        return 1;
+      }
+    }
+    return 5;
+  }
+  
+  private void m()
+  {
+    if (this.h)
     {
       try
       {
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("hasUI", 0);
-        this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaVideonewVVideoView.a("didEnterFullScreen", localJSONObject);
+        this.b.a("didEnterFullScreen", localJSONObject);
         return;
       }
       catch (Exception localException)
@@ -216,7 +240,7 @@ public class VVideoDelegate
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaVideonewVVideoView.a("didExitFullScreen", null);
+      this.b.a("didExitFullScreen", null);
     }
   }
   
@@ -224,7 +248,7 @@ public class VVideoDelegate
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(paramFloat);
+    this.c.a(paramFloat);
   }
   
   public void a(int paramInt, VVideoView paramVVideoView, boolean paramBoolean, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener)
@@ -232,41 +256,41 @@ public class VVideoDelegate
     if (QLog.isColorLevel()) {
       QLog.d("VVideoControlListenerImpl", 2, "deal enterFullScreen: ");
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.h = true;
     if (!paramBoolean) {
       if (paramInt == 0) {
-        this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
+        this.a.setRequestedOrientation(0);
       } else {
-        this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(8);
+        this.a.setRequestedOrientation(8);
       }
     }
-    paramVVideoView = this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaVideonewVVideoView;
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    paramVVideoView = this.b;
+    Activity localActivity = this.a;
     Window localWindow = localActivity.getWindow();
-    this.jdField_b_of_type_Int = localWindow.getDecorView().getSystemUiVisibility();
+    this.i = localWindow.getDecorView().getSystemUiVisibility();
     if (paramBoolean)
     {
       localWindow.setFlags(1024, 1024);
-      if (CommonSuspensionGestureLayout.c()) {
-        VideoFeedsHelper.c(this.jdField_a_of_type_AndroidAppActivity);
+      if (CommonSuspensionGestureLayout.h()) {
+        VideoFeedsHelper.i(this.a);
       } else {
-        VideoFeedsHelper.b(localActivity);
+        VideoFeedsHelper.h(localActivity);
       }
     }
     else
     {
-      VideoFeedsHelper.b(localActivity);
+      VideoFeedsHelper.h(localActivity);
     }
-    if ((paramVVideoView.a() != null) && (paramVVideoView.a().getInstance() != null) && ((paramVVideoView.a().getInstance().getFragment() instanceof ViolaLazyFragment)))
+    if ((paramVVideoView.getComponent() != null) && (paramVVideoView.getComponent().getInstance() != null) && ((paramVVideoView.getComponent().getInstance().getFragment() instanceof ViolaLazyFragment)))
     {
-      paramVVideoView = (ViolaLazyFragment)paramVVideoView.a().getInstance().getFragment();
+      paramVVideoView = (ViolaLazyFragment)paramVVideoView.getComponent().getInstance().getFragment();
       if (paramVVideoView != null)
       {
         paramVVideoView.hideTitleBar();
         paramVVideoView.hideStatusBar();
       }
     }
-    k();
+    m();
     try
     {
       paramVVideoView = new JSONObject();
@@ -285,34 +309,34 @@ public class VVideoDelegate
   
   public void a(IVideoPreDownloadMgr paramIVideoPreDownloadMgr)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(paramIVideoPreDownloadMgr);
+    this.c.a(paramIVideoPreDownloadMgr);
   }
   
   public void a(VVideoView paramVVideoView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo != null) && (!this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a()))
+    if ((this.d != null) && (!this.c.b()) && (!this.s))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.b(this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_d_of_type_Int);
+      this.c.b(this.g);
+      this.c.a(this.d.a, this.d.b, this.d.i, this.e, this.d.e);
     }
   }
   
   public void a(VVideoView paramVVideoView, int paramInt)
   {
-    if (!this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.b(paramInt);
+    if (!this.j) {
+      this.c.b(paramInt);
     }
   }
   
   public void a(VVideoView paramVVideoView, String paramString)
   {
     if (paramString.equals("contain")) {
-      this.jdField_c_of_type_Int = 0;
+      this.n = 0;
     } else if (paramString.equals("cover")) {
-      this.jdField_c_of_type_Int = 2;
+      this.n = 2;
     }
-    if (this.f) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(this.jdField_c_of_type_Int);
+    if (this.m) {
+      this.c.a(this.n);
     }
   }
   
@@ -321,12 +345,12 @@ public class VVideoDelegate
     try
     {
       paramVVideoView = new JSONObject();
-      paramVVideoView.put("state", a());
-      paramVVideoView.put("currentTime", a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.b()));
-      paramVVideoView.put("totalTime", this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a() / 1000L);
+      paramVVideoView.put("state", l());
+      paramVVideoView.put("currentTime", a(this.c.k()));
+      paramVVideoView.put("totalTime", this.c.j() / 1000L);
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("width", this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.b());
-      localJSONObject.put("height", this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.c());
+      localJSONObject.put("width", this.c.w());
+      localJSONObject.put("height", this.c.x());
       paramVVideoView.put("videoSize", localJSONObject);
       paramOnVideoViewMethodListener.OnMethodSuccess(paramString, paramVVideoView);
       return;
@@ -344,7 +368,12 @@ public class VVideoDelegate
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("open: ");
       localStringBuilder.append(paramJSONObject);
+      localStringBuilder.append(", isDestroyed=");
+      localStringBuilder.append(this.s);
       QLog.d("VVideoControlListenerImpl", 2, localStringBuilder.toString());
+    }
+    if (this.s) {
+      return;
     }
     try
     {
@@ -352,31 +381,35 @@ public class VVideoDelegate
       boolean bool2 = paramJSONObject.optBoolean("autoPreplay", false);
       a(paramVVideoView, paramJSONObject.optString("resize"));
       c(paramVVideoView, paramJSONObject.optInt("timeupdateRate"));
-      g_(paramJSONObject.optBoolean("endWithLastFrame"));
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("cover_frame", false);
-      this.jdField_a_of_type_Long = (paramJSONObject.optLong("start_position", 0L) * 1000L);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo = new VideoInfo(paramJSONObject.getJSONObject("video_info"));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.e(paramJSONObject.optBoolean("muted", false));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(Float.valueOf(paramJSONObject.optString("rate", "1.0")).floatValue());
-      if (paramJSONObject.optBoolean("debugInfoEnable", ReadInJoyHelper.j(ReadInJoyUtils.a())))
+      l_(paramJSONObject.optBoolean("endWithLastFrame"));
+      this.g = paramJSONObject.optBoolean("cover_frame", false);
+      this.e = (paramJSONObject.optLong("start_position", 0L) * 1000L);
+      this.d = new VideoInfo(paramJSONObject.getJSONObject("video_info"));
+      if ((!VideoVolumeController.getInstance().isBizFocusing()) && (!VideoVolumeController.getInstance().isHadChangeVolumeAfterLossFocus())) {
+        this.c.e(true);
+      } else {
+        this.c.e(paramJSONObject.optBoolean("muted", false));
+      }
+      this.c.a(Float.valueOf(paramJSONObject.optString("rate", "1.0")).floatValue());
+      if (paramJSONObject.optBoolean("debugInfoEnable", ReadInJoyHelper.o(ReadInJoyUtils.b())))
       {
         paramVVideoView = paramJSONObject.optString("debugInfo");
-        ReadInJoyHelper.i(ReadInJoyUtils.a(), true);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.b(paramVVideoView);
+        ReadInJoyHelper.i(ReadInJoyUtils.b(), true);
+        this.c.b(paramVVideoView);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_e_of_type_Int == 1)
+      if (this.d.j == 1)
       {
-        this.jdField_c_of_type_Int = VideoFeedsHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_c_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(this.jdField_c_of_type_Int);
+        this.n = VideoFeedsHelper.c(this.a, this.d.c, this.d.d);
+        this.c.a(this.n);
       }
-      if (this.d)
+      if (this.k)
       {
-        a(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_d_of_type_JavaLangString);
+        a(this.d.b, this.d.i);
         return;
       }
       if (bool1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_d_of_type_Int);
+        this.c.a(this.d.a, this.d.b, this.d.i, this.e, this.d.e);
         return;
       }
       if (bool2)
@@ -396,21 +429,18 @@ public class VVideoDelegate
   
   public void a(VVideoView paramVVideoView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.e(paramBoolean);
+    if ((VideoVolumeController.getInstance().isBizFocusing()) || (VideoVolumeController.getInstance().isHadChangeVolumeAfterLossFocus())) {
+      this.c.e(paramBoolean);
+    }
   }
   
   public void a(String paramString) {}
   
   public void a(String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener)
   {
-    Map localMap = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a();
+    Map localMap = this.c.B();
     PlayFeedbackHelper.a(localMap);
     paramOnVideoViewMethodListener.OnMethodSuccess(paramString, new JSONObject(localMap));
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
   }
   
   public void b() {}
@@ -421,28 +451,33 @@ public class VVideoDelegate
     {
       paramVVideoView = new StringBuilder();
       paramVVideoView.append("play: status=");
-      paramVVideoView.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a());
+      paramVVideoView.append(this.c.l());
       paramVVideoView.append(", isPreload=");
-      paramVVideoView.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a());
+      paramVVideoView.append(this.c.b());
       paramVVideoView.append(", videoinfo=");
-      paramVVideoView.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo);
+      paramVVideoView.append(this.d);
       paramVVideoView.append(", mStartPosition:");
-      paramVVideoView.append(this.jdField_a_of_type_Long);
+      paramVVideoView.append(this.e);
+      paramVVideoView.append(", isDestroyed=");
+      paramVVideoView.append(this.s);
       QLog.d("VVideoControlListenerImpl", 2, paramVVideoView.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_d_of_type_Int);
+    if (this.s) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.b())
+    if ((this.d != null) && (this.c.b()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.c();
+      this.c.a(this.d.a, this.d.b, this.d.i, this.e, this.d.e);
       return;
     }
-    paramVVideoView = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo;
+    if (this.c.o())
+    {
+      this.c.e();
+      return;
+    }
+    paramVVideoView = this.d;
     if (paramVVideoView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(paramVVideoView.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_d_of_type_Int);
+      this.c.a(paramVVideoView.a, this.d.b, this.d.i, this.e, this.d.e);
     }
   }
   
@@ -453,23 +488,23 @@ public class VVideoDelegate
     if (QLog.isColorLevel()) {
       QLog.d("VVideoControlListenerImpl", 2, "deal exitFullScreen: ");
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
-    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
-    paramVVideoView = this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaVideonewVVideoView;
-    Window localWindow = this.jdField_a_of_type_AndroidAppActivity.getWindow();
-    localWindow.getDecorView().setSystemUiVisibility(this.jdField_b_of_type_Int);
+    this.h = false;
+    this.a.setRequestedOrientation(1);
+    this.a.setRequestedOrientation(1);
+    paramVVideoView = this.b;
+    Window localWindow = this.a.getWindow();
+    localWindow.getDecorView().setSystemUiVisibility(this.i);
     localWindow.clearFlags(1024);
-    if ((paramVVideoView.a() != null) && (paramVVideoView.a().getInstance() != null) && ((paramVVideoView.a().getInstance().getFragment() instanceof ViolaLazyFragment)))
+    if ((paramVVideoView.getComponent() != null) && (paramVVideoView.getComponent().getInstance() != null) && ((paramVVideoView.getComponent().getInstance().getFragment() instanceof ViolaLazyFragment)))
     {
-      paramVVideoView = (ViolaFragment)paramVVideoView.a().getInstance().getFragment();
+      paramVVideoView = (ViolaFragment)paramVVideoView.getComponent().getInstance().getFragment();
       if (paramVVideoView != null)
       {
         paramVVideoView.showTitleBar();
         paramVVideoView.recoverStatusBar();
       }
     }
-    k();
+    m();
     if ((TextUtils.isEmpty(paramString)) && (paramOnVideoViewMethodListener != null)) {
       try
       {
@@ -495,10 +530,15 @@ public class VVideoDelegate
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("resetSrc: ");
       localStringBuilder.append(paramJSONObject);
+      localStringBuilder.append(", isDestroyed=");
+      localStringBuilder.append(this.s);
       QLog.d("VVideoControlListenerImpl", 2, localStringBuilder.toString());
     }
-    this.d = false;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.f();
+    if (this.s) {
+      return;
+    }
+    this.k = false;
+    this.c.h();
     a(paramVVideoView, paramJSONObject);
   }
   
@@ -506,44 +546,44 @@ public class VVideoDelegate
   
   public void beforeVideoStart()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo;
+    Object localObject = this.d;
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(((VideoInfo)localObject).jdField_e_of_type_JavaLangString);
-      boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_a_of_type_Boolean;
+      this.c.a(((VideoInfo)localObject).k);
+      boolean bool2 = this.d.m;
       boolean bool1 = true;
-      int i;
+      int i1;
       if (bool2) {
-        i = 1;
+        i1 = 1;
       } else {
-        i = 2;
+        i1 = 2;
       }
-      localObject = new VideoEntity.Builder().setContentId(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_e_of_type_JavaLangString).setPage(this.jdField_a_of_type_AndroidAppActivity);
-      if (i != 1) {
+      localObject = new VideoEntity.Builder().setContentId(this.d.k).setPage(this.a);
+      if (i1 != 1) {
         bool1 = false;
       }
-      localObject = ((VideoEntity.Builder)localObject).ignoreReport(bool1).setContentType(i).setVideoDuration(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_d_of_type_Int).addCustomParams(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_a_of_type_JavaUtilMap).setIdentifier(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo.jdField_e_of_type_JavaLangString).build();
-      VideoReport.bindVideoPlayerInfo(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer, (VideoEntity)localObject);
+      localObject = ((VideoEntity.Builder)localObject).ignoreReport(bool1).setContentType(i1).setVideoDuration(this.d.e).addCustomParams(this.d.n).setIdentifier(this.d.k).build();
+      VideoReport.bindVideoPlayerInfo(this.c, (VideoEntity)localObject);
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.l();
+    this.c.D();
     VideoVolumeController.getInstance().requestOrAbandonAudioFocus(true, "viola video");
-    if (this.jdField_b_of_type_Boolean) {
-      VideoFeedsHelper.b(this.jdField_a_of_type_AndroidAppActivity);
+    if (this.h) {
+      VideoFeedsHelper.h(this.a);
     }
   }
   
   public void c(VVideoView paramVVideoView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.d();
+    this.c.f();
   }
   
   public void c(VVideoView paramVVideoView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.c(paramInt);
+    this.c.c(paramInt);
   }
   
   public void c(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener)
@@ -551,7 +591,7 @@ public class VVideoDelegate
     try
     {
       paramVVideoView = new JSONObject();
-      paramVVideoView.put("videoToken", this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a());
+      paramVVideoView.put("videoToken", this.c.y());
       paramOnVideoViewMethodListener.OnMethodSuccess(paramString, paramVVideoView);
       return;
     }
@@ -565,100 +605,111 @@ public class VVideoDelegate
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.k();
+    this.c.C();
     VideoVolumeController.getInstance().requestOrAbandonAudioFocus(false, "viola video");
   }
   
   public void d(VVideoView paramVVideoView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.f();
+    this.c.h();
   }
   
   public void e() {}
   
   public void e(VVideoView paramVVideoView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a();
+    this.c.a();
   }
   
   public void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.m();
-    VideoVolumeController.getInstance().outKandianModule(this.jdField_a_of_type_AndroidAppActivity);
+    if (this.r)
+    {
+      this.c.E();
+      if ((this.a != null) && (!PlayerPool.a.a(this.a, this.c))) {
+        this.c.F();
+      }
+    }
+    else
+    {
+      this.c.F();
+    }
+    VideoVolumeController.getInstance().outKandianModule(this.b);
     VideoVolumeController.getInstance().removeEventListener(this);
-    this.jdField_a_of_type_AndroidAppActivity = null;
+    this.a = null;
+    this.s = true;
   }
   
   public void f(VVideoView paramVVideoView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.g();
-  }
-  
-  public void f_(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.d(paramBoolean);
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.i();
+    this.c.m();
   }
   
   public void g(VVideoView paramVVideoView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.h();
+    this.c.n();
   }
   
-  public void g_(boolean paramBoolean)
+  public boolean g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.c(paramBoolean);
+    return this.h;
   }
   
   public void h()
   {
-    if (!this.e)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.b();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(this.jdField_c_of_type_Int);
-      this.f = true;
-    }
+    this.c.z();
   }
   
   public void i()
   {
-    if (!this.e)
+    if (!this.l)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.b();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a(this.jdField_c_of_type_Int);
-      this.f = true;
-      ViolaSDKManager.getInstance().postOnUiThreadDelay(new VVideoDelegate.1(this), 0L);
-      g();
+      this.c.c();
+      this.c.a(this.n);
+      this.m = true;
     }
   }
   
   public void j()
   {
-    ViolaSDKManager.getInstance().postOnUiThreadDelay(new VVideoDelegate.2(this), 0L);
+    if (!this.l)
+    {
+      this.c.c();
+      this.c.a(this.n);
+      this.m = true;
+      ViolaSDKManager.getInstance().postOnUiThreadDelay(new VVideoDelegate.2(this), 0L);
+      h();
+    }
   }
   
-  public void l_(int paramInt)
+  public void k()
   {
-    this.jdField_a_of_type_Long = (paramInt * 1000);
+    ViolaSDKManager.getInstance().postOnUiThreadDelay(new VVideoDelegate.3(this), 0L);
+  }
+  
+  public void k_(boolean paramBoolean)
+  {
+    this.c.d(paramBoolean);
+  }
+  
+  public void l_(boolean paramBoolean)
+  {
+    this.c.c(paramBoolean);
   }
   
   public void onBufferEnd()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.h())
+    if (this.c.u())
     {
       a(2, null);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.g()) {
+    if (this.c.t()) {
       a(4, null);
     }
   }
@@ -675,26 +726,41 @@ public class VVideoDelegate
   
   public void onFirstFrameRendered()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaVideonewVVideoView.a("firstFrameReady", null);
-    if (this.h) {
+    this.b.a("firstFrameReady", null);
+    if (this.p) {
       a(2, null);
     }
-    this.g = true;
+    this.o = true;
+  }
+  
+  public void onFocusGain()
+  {
+    ReadInJoyPlayer localReadInJoyPlayer = this.c;
+    if ((localReadInJoyPlayer != null) && (this.q))
+    {
+      localReadInJoyPlayer.e(false);
+      this.q = false;
+    }
+  }
+  
+  public void onFocusLoss()
+  {
+    ReadInJoyPlayer localReadInJoyPlayer = this.c;
+    if ((localReadInJoyPlayer != null) && (!localReadInJoyPlayer.i()))
+    {
+      this.c.e(true);
+      this.q = true;
+    }
   }
   
   public void onHeadsetStateChanged(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.e(false);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.e(true);
+    this.c.e(paramBoolean ^ true);
   }
   
   public void onPhoneCome()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.d();
+    this.c.f();
   }
   
   public void onProgressChanged(long paramLong)
@@ -703,8 +769,8 @@ public class VVideoDelegate
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("currentTime", a(paramLong));
-      localJSONObject.put("totalTime", this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.a() / 1000L);
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaVideonewVVideoView.a("playTimeChange", localJSONObject);
+      localJSONObject.put("totalTime", this.c.j() / 1000L);
+      this.b.a("playTimeChange", localJSONObject);
       return;
     }
     catch (Exception localException)
@@ -715,19 +781,22 @@ public class VVideoDelegate
   
   public void onSystemVolumeChanged(int paramInt)
   {
+    Object localObject = this.c;
+    boolean bool;
     if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.e(true);
+      bool = true;
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer.e(false);
+      bool = false;
     }
+    ((ReadInJoyPlayer)localObject).e(bool);
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      if (this.jdField_a_of_type_Int == -1) {
-        this.jdField_a_of_type_Int = VideoVolumeController.getInstance().getStreamMaxVolume(3);
+      localObject = new JSONObject();
+      if (this.f == -1) {
+        this.f = VideoVolumeController.getInstance().getStreamMaxVolume(3);
       }
-      localJSONObject.put("value", paramInt / this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaVideonewVVideoView.a("volumeChange", localJSONObject);
+      ((JSONObject)localObject).put("value", paramInt / this.f);
+      this.b.a("volumeChange", localObject);
       return;
     }
     catch (Exception localException)
@@ -764,8 +833,8 @@ public class VVideoDelegate
   
   public void onVideoOpen()
   {
-    this.g = false;
-    this.h = false;
+    this.o = false;
+    this.p = false;
   }
   
   public void onVideoPause()
@@ -785,23 +854,28 @@ public class VVideoDelegate
   
   public void onVideoStart()
   {
-    if (this.g) {
+    if (this.o) {
       a(2, null);
     }
-    this.h = true;
+    this.p = true;
   }
   
   public void onVideoStop()
   {
     a(7, null);
-    this.h = false;
-    this.g = false;
-    VideoReport.unbindVideoPlayerInfo(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIReadInJoyPlayer);
+    this.p = false;
+    this.o = false;
+    VideoReport.unbindVideoPlayerInfo(this.c);
+  }
+  
+  public void r_(int paramInt)
+  {
+    this.e = (paramInt * 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.VVideoDelegate
  * JD-Core Version:    0.7.0.1
  */

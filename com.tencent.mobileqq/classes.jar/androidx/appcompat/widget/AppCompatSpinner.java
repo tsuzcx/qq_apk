@@ -16,9 +16,11 @@ import android.view.ViewTreeObserver;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.VisibleForTesting;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.view.TintableBackgroundView;
 
@@ -41,281 +43,285 @@ public class AppCompatSpinner
   private SpinnerAdapter mTempAdapter;
   final Rect mTempRect;
   
-  public AppCompatSpinner(Context paramContext)
+  public AppCompatSpinner(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public AppCompatSpinner(Context paramContext, int paramInt)
+  public AppCompatSpinner(@NonNull Context paramContext, int paramInt)
   {
-    this(paramContext, null, 2131035217, paramInt);
+    this(paramContext, null, R.attr.spinnerStyle, paramInt);
   }
   
-  public AppCompatSpinner(Context paramContext, AttributeSet paramAttributeSet)
+  public AppCompatSpinner(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035217);
+    this(paramContext, paramAttributeSet, R.attr.spinnerStyle);
   }
   
-  public AppCompatSpinner(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppCompatSpinner(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     this(paramContext, paramAttributeSet, paramInt, -1);
   }
   
-  public AppCompatSpinner(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
+  public AppCompatSpinner(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
     this(paramContext, paramAttributeSet, paramInt1, paramInt2, null);
   }
   
   /* Error */
-  public AppCompatSpinner(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2, android.content.res.Resources.Theme paramTheme)
+  public AppCompatSpinner(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, int paramInt2, android.content.res.Resources.Theme paramTheme)
   {
     // Byte code:
     //   0: aload_0
     //   1: aload_1
     //   2: aload_2
     //   3: iload_3
-    //   4: invokespecial 61	android/widget/Spinner:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    //   4: invokespecial 68	android/widget/Spinner:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;I)V
     //   7: aload_0
-    //   8: new 63	android/graphics/Rect
+    //   8: new 70	android/graphics/Rect
     //   11: dup
-    //   12: invokespecial 65	android/graphics/Rect:<init>	()V
-    //   15: putfield 67	androidx/appcompat/widget/AppCompatSpinner:mTempRect	Landroid/graphics/Rect;
-    //   18: aload_1
-    //   19: aload_2
-    //   20: getstatic 72	androidx/appcompat/R$styleable:Spinner	[I
-    //   23: iload_3
-    //   24: iconst_0
-    //   25: invokestatic 78	androidx/appcompat/widget/TintTypedArray:obtainStyledAttributes	(Landroid/content/Context;Landroid/util/AttributeSet;[III)Landroidx/appcompat/widget/TintTypedArray;
-    //   28: astore 10
-    //   30: aload_0
-    //   31: new 80	androidx/appcompat/widget/AppCompatBackgroundHelper
-    //   34: dup
-    //   35: aload_0
-    //   36: invokespecial 83	androidx/appcompat/widget/AppCompatBackgroundHelper:<init>	(Landroid/view/View;)V
-    //   39: putfield 85	androidx/appcompat/widget/AppCompatSpinner:mBackgroundTintHelper	Landroidx/appcompat/widget/AppCompatBackgroundHelper;
-    //   42: aload 5
-    //   44: ifnull +20 -> 64
-    //   47: aload_0
-    //   48: new 87	androidx/appcompat/view/ContextThemeWrapper
-    //   51: dup
-    //   52: aload_1
-    //   53: aload 5
-    //   55: invokespecial 90	androidx/appcompat/view/ContextThemeWrapper:<init>	(Landroid/content/Context;Landroid/content/res/Resources$Theme;)V
-    //   58: putfield 92	androidx/appcompat/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
-    //   61: goto +41 -> 102
-    //   64: aload 10
-    //   66: getstatic 95	androidx/appcompat/R$styleable:Spinner_popupTheme	I
-    //   69: iconst_0
-    //   70: invokevirtual 99	androidx/appcompat/widget/TintTypedArray:getResourceId	(II)I
-    //   73: istore 6
-    //   75: iload 6
-    //   77: ifeq +20 -> 97
-    //   80: aload_0
-    //   81: new 87	androidx/appcompat/view/ContextThemeWrapper
-    //   84: dup
-    //   85: aload_1
-    //   86: iload 6
-    //   88: invokespecial 101	androidx/appcompat/view/ContextThemeWrapper:<init>	(Landroid/content/Context;I)V
-    //   91: putfield 92	androidx/appcompat/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
-    //   94: goto +8 -> 102
-    //   97: aload_0
-    //   98: aload_1
-    //   99: putfield 92	androidx/appcompat/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
-    //   102: iload 4
-    //   104: istore 7
-    //   106: iload 4
-    //   108: iconst_m1
-    //   109: if_icmpne +126 -> 235
-    //   112: aload_1
-    //   113: aload_2
-    //   114: getstatic 41	androidx/appcompat/widget/AppCompatSpinner:ATTRS_ANDROID_SPINNERMODE	[I
-    //   117: iload_3
-    //   118: iconst_0
-    //   119: invokevirtual 106	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
-    //   122: astore 5
-    //   124: iload 4
-    //   126: istore 6
-    //   128: aload 5
-    //   130: astore 8
-    //   132: aload 5
-    //   134: iconst_0
-    //   135: invokevirtual 112	android/content/res/TypedArray:hasValue	(I)Z
-    //   138: ifeq +16 -> 154
-    //   141: aload 5
-    //   143: astore 8
-    //   145: aload 5
-    //   147: iconst_0
-    //   148: iconst_0
-    //   149: invokevirtual 115	android/content/res/TypedArray:getInt	(II)I
-    //   152: istore 6
-    //   154: iload 6
-    //   156: istore 7
-    //   158: aload 5
-    //   160: ifnull +75 -> 235
-    //   163: iload 6
-    //   165: istore 4
-    //   167: aload 5
-    //   169: invokevirtual 118	android/content/res/TypedArray:recycle	()V
-    //   172: iload 4
-    //   174: istore 7
-    //   176: goto +59 -> 235
-    //   179: astore 9
-    //   181: goto +15 -> 196
-    //   184: astore_1
-    //   185: aconst_null
-    //   186: astore 8
-    //   188: goto +35 -> 223
-    //   191: astore 9
+    //   12: invokespecial 72	android/graphics/Rect:<init>	()V
+    //   15: putfield 74	androidx/appcompat/widget/AppCompatSpinner:mTempRect	Landroid/graphics/Rect;
+    //   18: aload_0
+    //   19: aload_0
+    //   20: invokevirtual 78	androidx/appcompat/widget/AppCompatSpinner:getContext	()Landroid/content/Context;
+    //   23: invokestatic 84	androidx/appcompat/widget/ThemeUtils:checkAppCompatTheme	(Landroid/view/View;Landroid/content/Context;)V
+    //   26: aload_1
+    //   27: aload_2
+    //   28: getstatic 89	androidx/appcompat/R$styleable:Spinner	[I
+    //   31: iload_3
+    //   32: iconst_0
+    //   33: invokestatic 95	androidx/appcompat/widget/TintTypedArray:obtainStyledAttributes	(Landroid/content/Context;Landroid/util/AttributeSet;[III)Landroidx/appcompat/widget/TintTypedArray;
+    //   36: astore 10
+    //   38: aload_0
+    //   39: new 97	androidx/appcompat/widget/AppCompatBackgroundHelper
+    //   42: dup
+    //   43: aload_0
+    //   44: invokespecial 100	androidx/appcompat/widget/AppCompatBackgroundHelper:<init>	(Landroid/view/View;)V
+    //   47: putfield 102	androidx/appcompat/widget/AppCompatSpinner:mBackgroundTintHelper	Landroidx/appcompat/widget/AppCompatBackgroundHelper;
+    //   50: aload 5
+    //   52: ifnull +20 -> 72
+    //   55: aload_0
+    //   56: new 104	androidx/appcompat/view/ContextThemeWrapper
+    //   59: dup
+    //   60: aload_1
+    //   61: aload 5
+    //   63: invokespecial 107	androidx/appcompat/view/ContextThemeWrapper:<init>	(Landroid/content/Context;Landroid/content/res/Resources$Theme;)V
+    //   66: putfield 109	androidx/appcompat/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
+    //   69: goto +41 -> 110
+    //   72: aload 10
+    //   74: getstatic 112	androidx/appcompat/R$styleable:Spinner_popupTheme	I
+    //   77: iconst_0
+    //   78: invokevirtual 116	androidx/appcompat/widget/TintTypedArray:getResourceId	(II)I
+    //   81: istore 6
+    //   83: iload 6
+    //   85: ifeq +20 -> 105
+    //   88: aload_0
+    //   89: new 104	androidx/appcompat/view/ContextThemeWrapper
+    //   92: dup
+    //   93: aload_1
+    //   94: iload 6
+    //   96: invokespecial 118	androidx/appcompat/view/ContextThemeWrapper:<init>	(Landroid/content/Context;I)V
+    //   99: putfield 109	androidx/appcompat/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
+    //   102: goto +8 -> 110
+    //   105: aload_0
+    //   106: aload_1
+    //   107: putfield 109	androidx/appcompat/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
+    //   110: iload 4
+    //   112: istore 7
+    //   114: iload 4
+    //   116: iconst_m1
+    //   117: if_icmpne +126 -> 243
+    //   120: aload_1
+    //   121: aload_2
+    //   122: getstatic 41	androidx/appcompat/widget/AppCompatSpinner:ATTRS_ANDROID_SPINNERMODE	[I
+    //   125: iload_3
+    //   126: iconst_0
+    //   127: invokevirtual 123	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
+    //   130: astore 5
+    //   132: iload 4
+    //   134: istore 6
+    //   136: aload 5
+    //   138: astore 8
+    //   140: aload 5
+    //   142: iconst_0
+    //   143: invokevirtual 129	android/content/res/TypedArray:hasValue	(I)Z
+    //   146: ifeq +16 -> 162
+    //   149: aload 5
+    //   151: astore 8
+    //   153: aload 5
+    //   155: iconst_0
+    //   156: iconst_0
+    //   157: invokevirtual 132	android/content/res/TypedArray:getInt	(II)I
+    //   160: istore 6
+    //   162: iload 6
+    //   164: istore 7
+    //   166: aload 5
+    //   168: ifnull +75 -> 243
+    //   171: iload 6
+    //   173: istore 4
+    //   175: aload 5
+    //   177: invokevirtual 135	android/content/res/TypedArray:recycle	()V
+    //   180: iload 4
+    //   182: istore 7
+    //   184: goto +59 -> 243
+    //   187: astore 9
+    //   189: goto +15 -> 204
+    //   192: astore_1
     //   193: aconst_null
-    //   194: astore 5
-    //   196: aload 5
-    //   198: astore 8
-    //   200: ldc 21
-    //   202: ldc 120
-    //   204: aload 9
-    //   206: invokestatic 126	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   209: pop
-    //   210: iload 4
-    //   212: istore 7
-    //   214: aload 5
-    //   216: ifnull +19 -> 235
-    //   219: goto -52 -> 167
-    //   222: astore_1
-    //   223: aload 8
-    //   225: ifnull +8 -> 233
-    //   228: aload 8
-    //   230: invokevirtual 118	android/content/res/TypedArray:recycle	()V
-    //   233: aload_1
-    //   234: athrow
-    //   235: iload 7
-    //   237: ifeq +112 -> 349
-    //   240: iload 7
-    //   242: iconst_1
-    //   243: if_icmpeq +6 -> 249
-    //   246: goto +132 -> 378
-    //   249: new 128	androidx/appcompat/widget/AppCompatSpinner$DropdownPopup
-    //   252: dup
-    //   253: aload_0
-    //   254: aload_0
-    //   255: getfield 92	androidx/appcompat/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
-    //   258: aload_2
-    //   259: iload_3
-    //   260: invokespecial 131	androidx/appcompat/widget/AppCompatSpinner$DropdownPopup:<init>	(Landroidx/appcompat/widget/AppCompatSpinner;Landroid/content/Context;Landroid/util/AttributeSet;I)V
-    //   263: astore 5
-    //   265: aload_0
-    //   266: getfield 92	androidx/appcompat/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
-    //   269: aload_2
-    //   270: getstatic 72	androidx/appcompat/R$styleable:Spinner	[I
-    //   273: iload_3
-    //   274: iconst_0
-    //   275: invokestatic 78	androidx/appcompat/widget/TintTypedArray:obtainStyledAttributes	(Landroid/content/Context;Landroid/util/AttributeSet;[III)Landroidx/appcompat/widget/TintTypedArray;
-    //   278: astore 8
-    //   280: aload_0
-    //   281: aload 8
-    //   283: getstatic 134	androidx/appcompat/R$styleable:Spinner_android_dropDownWidth	I
-    //   286: bipush 254
-    //   288: invokevirtual 137	androidx/appcompat/widget/TintTypedArray:getLayoutDimension	(II)I
-    //   291: putfield 139	androidx/appcompat/widget/AppCompatSpinner:mDropDownWidth	I
-    //   294: aload 5
-    //   296: aload 8
-    //   298: getstatic 142	androidx/appcompat/R$styleable:Spinner_android_popupBackground	I
-    //   301: invokevirtual 146	androidx/appcompat/widget/TintTypedArray:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   304: invokevirtual 150	androidx/appcompat/widget/AppCompatSpinner$DropdownPopup:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   307: aload 5
-    //   309: aload 10
-    //   311: getstatic 153	androidx/appcompat/R$styleable:Spinner_android_prompt	I
-    //   314: invokevirtual 157	androidx/appcompat/widget/TintTypedArray:getString	(I)Ljava/lang/String;
-    //   317: invokevirtual 161	androidx/appcompat/widget/AppCompatSpinner$DropdownPopup:setPromptText	(Ljava/lang/CharSequence;)V
-    //   320: aload 8
-    //   322: invokevirtual 162	androidx/appcompat/widget/TintTypedArray:recycle	()V
-    //   325: aload_0
-    //   326: aload 5
-    //   328: putfield 164	androidx/appcompat/widget/AppCompatSpinner:mPopup	Landroidx/appcompat/widget/AppCompatSpinner$SpinnerPopup;
-    //   331: aload_0
-    //   332: new 166	androidx/appcompat/widget/AppCompatSpinner$1
-    //   335: dup
-    //   336: aload_0
-    //   337: aload_0
-    //   338: aload 5
-    //   340: invokespecial 169	androidx/appcompat/widget/AppCompatSpinner$1:<init>	(Landroidx/appcompat/widget/AppCompatSpinner;Landroid/view/View;Landroidx/appcompat/widget/AppCompatSpinner$DropdownPopup;)V
-    //   343: putfield 171	androidx/appcompat/widget/AppCompatSpinner:mForwardingListener	Landroidx/appcompat/widget/ForwardingListener;
-    //   346: goto +32 -> 378
-    //   349: aload_0
-    //   350: new 173	androidx/appcompat/widget/AppCompatSpinner$DialogPopup
-    //   353: dup
-    //   354: aload_0
-    //   355: invokespecial 176	androidx/appcompat/widget/AppCompatSpinner$DialogPopup:<init>	(Landroidx/appcompat/widget/AppCompatSpinner;)V
-    //   358: putfield 164	androidx/appcompat/widget/AppCompatSpinner:mPopup	Landroidx/appcompat/widget/AppCompatSpinner$SpinnerPopup;
-    //   361: aload_0
-    //   362: getfield 164	androidx/appcompat/widget/AppCompatSpinner:mPopup	Landroidx/appcompat/widget/AppCompatSpinner$SpinnerPopup;
-    //   365: aload 10
-    //   367: getstatic 153	androidx/appcompat/R$styleable:Spinner_android_prompt	I
-    //   370: invokevirtual 157	androidx/appcompat/widget/TintTypedArray:getString	(I)Ljava/lang/String;
-    //   373: invokeinterface 179 2 0
-    //   378: aload 10
-    //   380: getstatic 182	androidx/appcompat/R$styleable:Spinner_android_entries	I
-    //   383: invokevirtual 186	androidx/appcompat/widget/TintTypedArray:getTextArray	(I)[Ljava/lang/CharSequence;
-    //   386: astore 5
-    //   388: aload 5
-    //   390: ifnull +27 -> 417
-    //   393: new 188	android/widget/ArrayAdapter
-    //   396: dup
-    //   397: aload_1
-    //   398: ldc 189
-    //   400: aload 5
-    //   402: invokespecial 192	android/widget/ArrayAdapter:<init>	(Landroid/content/Context;I[Ljava/lang/Object;)V
-    //   405: astore_1
-    //   406: aload_1
-    //   407: ldc 193
-    //   409: invokevirtual 197	android/widget/ArrayAdapter:setDropDownViewResource	(I)V
-    //   412: aload_0
-    //   413: aload_1
-    //   414: invokevirtual 201	androidx/appcompat/widget/AppCompatSpinner:setAdapter	(Landroid/widget/SpinnerAdapter;)V
-    //   417: aload 10
-    //   419: invokevirtual 162	androidx/appcompat/widget/TintTypedArray:recycle	()V
-    //   422: aload_0
-    //   423: iconst_1
-    //   424: putfield 203	androidx/appcompat/widget/AppCompatSpinner:mPopupSet	Z
-    //   427: aload_0
-    //   428: getfield 205	androidx/appcompat/widget/AppCompatSpinner:mTempAdapter	Landroid/widget/SpinnerAdapter;
-    //   431: astore_1
-    //   432: aload_1
-    //   433: ifnull +13 -> 446
+    //   194: astore 8
+    //   196: goto +35 -> 231
+    //   199: astore 9
+    //   201: aconst_null
+    //   202: astore 5
+    //   204: aload 5
+    //   206: astore 8
+    //   208: ldc 21
+    //   210: ldc 137
+    //   212: aload 9
+    //   214: invokestatic 143	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   217: pop
+    //   218: iload 4
+    //   220: istore 7
+    //   222: aload 5
+    //   224: ifnull +19 -> 243
+    //   227: goto -52 -> 175
+    //   230: astore_1
+    //   231: aload 8
+    //   233: ifnull +8 -> 241
+    //   236: aload 8
+    //   238: invokevirtual 135	android/content/res/TypedArray:recycle	()V
+    //   241: aload_1
+    //   242: athrow
+    //   243: iload 7
+    //   245: ifeq +112 -> 357
+    //   248: iload 7
+    //   250: iconst_1
+    //   251: if_icmpeq +6 -> 257
+    //   254: goto +132 -> 386
+    //   257: new 145	androidx/appcompat/widget/AppCompatSpinner$DropdownPopup
+    //   260: dup
+    //   261: aload_0
+    //   262: aload_0
+    //   263: getfield 109	androidx/appcompat/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
+    //   266: aload_2
+    //   267: iload_3
+    //   268: invokespecial 148	androidx/appcompat/widget/AppCompatSpinner$DropdownPopup:<init>	(Landroidx/appcompat/widget/AppCompatSpinner;Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    //   271: astore 5
+    //   273: aload_0
+    //   274: getfield 109	androidx/appcompat/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
+    //   277: aload_2
+    //   278: getstatic 89	androidx/appcompat/R$styleable:Spinner	[I
+    //   281: iload_3
+    //   282: iconst_0
+    //   283: invokestatic 95	androidx/appcompat/widget/TintTypedArray:obtainStyledAttributes	(Landroid/content/Context;Landroid/util/AttributeSet;[III)Landroidx/appcompat/widget/TintTypedArray;
+    //   286: astore 8
+    //   288: aload_0
+    //   289: aload 8
+    //   291: getstatic 151	androidx/appcompat/R$styleable:Spinner_android_dropDownWidth	I
+    //   294: bipush 254
+    //   296: invokevirtual 154	androidx/appcompat/widget/TintTypedArray:getLayoutDimension	(II)I
+    //   299: putfield 156	androidx/appcompat/widget/AppCompatSpinner:mDropDownWidth	I
+    //   302: aload 5
+    //   304: aload 8
+    //   306: getstatic 159	androidx/appcompat/R$styleable:Spinner_android_popupBackground	I
+    //   309: invokevirtual 163	androidx/appcompat/widget/TintTypedArray:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   312: invokevirtual 167	androidx/appcompat/widget/AppCompatSpinner$DropdownPopup:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   315: aload 5
+    //   317: aload 10
+    //   319: getstatic 170	androidx/appcompat/R$styleable:Spinner_android_prompt	I
+    //   322: invokevirtual 174	androidx/appcompat/widget/TintTypedArray:getString	(I)Ljava/lang/String;
+    //   325: invokevirtual 178	androidx/appcompat/widget/AppCompatSpinner$DropdownPopup:setPromptText	(Ljava/lang/CharSequence;)V
+    //   328: aload 8
+    //   330: invokevirtual 179	androidx/appcompat/widget/TintTypedArray:recycle	()V
+    //   333: aload_0
+    //   334: aload 5
+    //   336: putfield 181	androidx/appcompat/widget/AppCompatSpinner:mPopup	Landroidx/appcompat/widget/AppCompatSpinner$SpinnerPopup;
+    //   339: aload_0
+    //   340: new 183	androidx/appcompat/widget/AppCompatSpinner$1
+    //   343: dup
+    //   344: aload_0
+    //   345: aload_0
+    //   346: aload 5
+    //   348: invokespecial 186	androidx/appcompat/widget/AppCompatSpinner$1:<init>	(Landroidx/appcompat/widget/AppCompatSpinner;Landroid/view/View;Landroidx/appcompat/widget/AppCompatSpinner$DropdownPopup;)V
+    //   351: putfield 188	androidx/appcompat/widget/AppCompatSpinner:mForwardingListener	Landroidx/appcompat/widget/ForwardingListener;
+    //   354: goto +32 -> 386
+    //   357: aload_0
+    //   358: new 190	androidx/appcompat/widget/AppCompatSpinner$DialogPopup
+    //   361: dup
+    //   362: aload_0
+    //   363: invokespecial 193	androidx/appcompat/widget/AppCompatSpinner$DialogPopup:<init>	(Landroidx/appcompat/widget/AppCompatSpinner;)V
+    //   366: putfield 181	androidx/appcompat/widget/AppCompatSpinner:mPopup	Landroidx/appcompat/widget/AppCompatSpinner$SpinnerPopup;
+    //   369: aload_0
+    //   370: getfield 181	androidx/appcompat/widget/AppCompatSpinner:mPopup	Landroidx/appcompat/widget/AppCompatSpinner$SpinnerPopup;
+    //   373: aload 10
+    //   375: getstatic 170	androidx/appcompat/R$styleable:Spinner_android_prompt	I
+    //   378: invokevirtual 174	androidx/appcompat/widget/TintTypedArray:getString	(I)Ljava/lang/String;
+    //   381: invokeinterface 196 2 0
+    //   386: aload 10
+    //   388: getstatic 199	androidx/appcompat/R$styleable:Spinner_android_entries	I
+    //   391: invokevirtual 203	androidx/appcompat/widget/TintTypedArray:getTextArray	(I)[Ljava/lang/CharSequence;
+    //   394: astore 5
+    //   396: aload 5
+    //   398: ifnull +28 -> 426
+    //   401: new 205	android/widget/ArrayAdapter
+    //   404: dup
+    //   405: aload_1
+    //   406: ldc 206
+    //   408: aload 5
+    //   410: invokespecial 209	android/widget/ArrayAdapter:<init>	(Landroid/content/Context;I[Ljava/lang/Object;)V
+    //   413: astore_1
+    //   414: aload_1
+    //   415: getstatic 214	androidx/appcompat/R$layout:support_simple_spinner_dropdown_item	I
+    //   418: invokevirtual 218	android/widget/ArrayAdapter:setDropDownViewResource	(I)V
+    //   421: aload_0
+    //   422: aload_1
+    //   423: invokevirtual 222	androidx/appcompat/widget/AppCompatSpinner:setAdapter	(Landroid/widget/SpinnerAdapter;)V
+    //   426: aload 10
+    //   428: invokevirtual 179	androidx/appcompat/widget/TintTypedArray:recycle	()V
+    //   431: aload_0
+    //   432: iconst_1
+    //   433: putfield 224	androidx/appcompat/widget/AppCompatSpinner:mPopupSet	Z
     //   436: aload_0
-    //   437: aload_1
-    //   438: invokevirtual 201	androidx/appcompat/widget/AppCompatSpinner:setAdapter	(Landroid/widget/SpinnerAdapter;)V
-    //   441: aload_0
-    //   442: aconst_null
-    //   443: putfield 205	androidx/appcompat/widget/AppCompatSpinner:mTempAdapter	Landroid/widget/SpinnerAdapter;
-    //   446: aload_0
-    //   447: getfield 85	androidx/appcompat/widget/AppCompatSpinner:mBackgroundTintHelper	Landroidx/appcompat/widget/AppCompatBackgroundHelper;
-    //   450: aload_2
-    //   451: iload_3
-    //   452: invokevirtual 209	androidx/appcompat/widget/AppCompatBackgroundHelper:loadFromAttributes	(Landroid/util/AttributeSet;I)V
-    //   455: return
+    //   437: getfield 226	androidx/appcompat/widget/AppCompatSpinner:mTempAdapter	Landroid/widget/SpinnerAdapter;
+    //   440: astore_1
+    //   441: aload_1
+    //   442: ifnull +13 -> 455
+    //   445: aload_0
+    //   446: aload_1
+    //   447: invokevirtual 222	androidx/appcompat/widget/AppCompatSpinner:setAdapter	(Landroid/widget/SpinnerAdapter;)V
+    //   450: aload_0
+    //   451: aconst_null
+    //   452: putfield 226	androidx/appcompat/widget/AppCompatSpinner:mTempAdapter	Landroid/widget/SpinnerAdapter;
+    //   455: aload_0
+    //   456: getfield 102	androidx/appcompat/widget/AppCompatSpinner:mBackgroundTintHelper	Landroidx/appcompat/widget/AppCompatBackgroundHelper;
+    //   459: aload_2
+    //   460: iload_3
+    //   461: invokevirtual 230	androidx/appcompat/widget/AppCompatBackgroundHelper:loadFromAttributes	(Landroid/util/AttributeSet;I)V
+    //   464: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	456	0	this	AppCompatSpinner
-    //   0	456	1	paramContext	Context
-    //   0	456	2	paramAttributeSet	AttributeSet
-    //   0	456	3	paramInt1	int
-    //   0	456	4	paramInt2	int
-    //   0	456	5	paramTheme	android.content.res.Resources.Theme
-    //   73	91	6	i	int
-    //   104	140	7	j	int
-    //   130	191	8	localObject	java.lang.Object
-    //   179	1	9	localException1	java.lang.Exception
-    //   191	14	9	localException2	java.lang.Exception
-    //   28	390	10	localTintTypedArray	TintTypedArray
+    //   0	465	0	this	AppCompatSpinner
+    //   0	465	1	paramContext	Context
+    //   0	465	2	paramAttributeSet	AttributeSet
+    //   0	465	3	paramInt1	int
+    //   0	465	4	paramInt2	int
+    //   0	465	5	paramTheme	android.content.res.Resources.Theme
+    //   81	91	6	i	int
+    //   112	140	7	j	int
+    //   138	191	8	localObject	java.lang.Object
+    //   187	1	9	localException1	java.lang.Exception
+    //   199	14	9	localException2	java.lang.Exception
+    //   36	391	10	localTintTypedArray	TintTypedArray
     // Exception table:
     //   from	to	target	type
-    //   132	141	179	java/lang/Exception
-    //   145	154	179	java/lang/Exception
-    //   112	124	184	finally
-    //   112	124	191	java/lang/Exception
-    //   132	141	222	finally
-    //   145	154	222	finally
-    //   200	210	222	finally
+    //   140	149	187	java/lang/Exception
+    //   153	162	187	java/lang/Exception
+    //   120	132	192	finally
+    //   120	132	199	java/lang/Exception
+    //   140	149	230	finally
+    //   153	162	230	finally
+    //   208	218	230	finally
   }
   
   int compatMeasureContentWidth(SpinnerAdapter paramSpinnerAdapter, Drawable paramDrawable)

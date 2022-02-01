@@ -13,7 +13,7 @@ class VideoFeedsAdapter$12
     if (QLog.isColorLevel()) {
       QLog.i("Q.pubaccount.video.feedsVideoFeedsAdapter", 2, "INetInfoHandler onNetMobile2None()");
     }
-    VideoFeedsAdapter.g(this.a);
+    VideoFeedsAdapter.q(this.a);
   }
   
   public void onNetMobile2Wifi(String paramString)
@@ -25,7 +25,7 @@ class VideoFeedsAdapter$12
       localStringBuilder.append(paramString);
       QLog.i("Q.pubaccount.video.feedsVideoFeedsAdapter", 2, localStringBuilder.toString());
     }
-    VideoFeedsAdapter.a(this.a, true);
+    VideoFeedsAdapter.c(this.a, true);
   }
   
   public void onNetNone2Mobile(String paramString)
@@ -37,7 +37,7 @@ class VideoFeedsAdapter$12
       localStringBuilder.append(paramString);
       QLog.i("Q.pubaccount.video.feedsVideoFeedsAdapter", 2, localStringBuilder.toString());
     }
-    VideoFeedsAdapter.a(this.a, false);
+    VideoFeedsAdapter.c(this.a, false);
   }
   
   public void onNetNone2Wifi(String paramString)
@@ -49,7 +49,7 @@ class VideoFeedsAdapter$12
       localStringBuilder.append(paramString);
       QLog.i("Q.pubaccount.video.feedsVideoFeedsAdapter", 2, localStringBuilder.toString());
     }
-    VideoFeedsAdapter.a(this.a, true);
+    VideoFeedsAdapter.c(this.a, true);
   }
   
   public void onNetWifi2Mobile(String paramString)
@@ -61,7 +61,7 @@ class VideoFeedsAdapter$12
       localStringBuilder.append(paramString);
       QLog.i("Q.pubaccount.video.feedsVideoFeedsAdapter", 2, localStringBuilder.toString());
     }
-    VideoFeedsAdapter.a(this.a, false);
+    VideoFeedsAdapter.c(this.a, false);
   }
   
   public void onNetWifi2None()
@@ -69,12 +69,12 @@ class VideoFeedsAdapter$12
     if (QLog.isColorLevel()) {
       QLog.i("Q.pubaccount.video.feedsVideoFeedsAdapter", 2, "INetInfoHandler onNetWifi2None()");
     }
-    VideoFeedsAdapter.g(this.a);
+    VideoFeedsAdapter.q(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsAdapter.12
  * JD-Core Version:    0.7.0.1
  */

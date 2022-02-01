@@ -6,40 +6,40 @@ import java.util.Map;
 
 public class UinFraudInfo
 {
-  private static UinFraudInfo jdField_a_of_type_ComTencentMobileqqAntiphingUinFraudInfo;
-  private Map<Long, UinFraudInfo.FraudInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<Long, Long> b = new HashMap();
+  private static UinFraudInfo a;
+  private Map<Long, UinFraudInfo.FraudInfo> b = new HashMap();
+  private Map<Long, Long> c = new HashMap();
   
   public static UinFraudInfo a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqAntiphingUinFraudInfo == null) {
-      jdField_a_of_type_ComTencentMobileqqAntiphingUinFraudInfo = new UinFraudInfo();
+    if (a == null) {
+      a = new UinFraudInfo();
     }
-    return jdField_a_of_type_ComTencentMobileqqAntiphingUinFraudInfo;
+    return a;
   }
   
   public int a(long paramLong)
   {
     long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
+    if (this.b.containsKey(Long.valueOf(paramLong)))
     {
-      UinFraudInfo.FraudInfo localFraudInfo = (UinFraudInfo.FraudInfo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      if (l - localFraudInfo.jdField_a_of_type_Long < 3600000L)
+      UinFraudInfo.FraudInfo localFraudInfo = (UinFraudInfo.FraudInfo)this.b.get(Long.valueOf(paramLong));
+      if (l - localFraudInfo.b < 3600000L)
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
         }
-        return localFraudInfo.jdField_a_of_type_Int;
+        return localFraudInfo.a;
       }
       if (QLog.isDevelopLevel()) {
         QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
       }
-      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+      this.b.remove(Long.valueOf(paramLong));
       return 0;
     }
-    if (this.b.containsKey(Long.valueOf(paramLong)))
+    if (this.c.containsKey(Long.valueOf(paramLong)))
     {
-      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() < 43200000L)
+      if (l - ((Long)this.c.get(Long.valueOf(paramLong))).longValue() < 43200000L)
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is false");
@@ -49,7 +49,7 @@ public class UinFraudInfo
       if (QLog.isDevelopLevel()) {
         QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
       }
-      this.b.remove(Long.valueOf(paramLong));
+      this.c.remove(Long.valueOf(paramLong));
       return 0;
     }
     if (QLog.isDevelopLevel()) {
@@ -58,56 +58,44 @@ public class UinFraudInfo
     return 0;
   }
   
-  public void a(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (this.b.size() > 500) {
-      this.b.clear();
-    }
-    this.b.put(Long.valueOf(paramLong), Long.valueOf(l));
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-    }
-  }
-  
   public void a(long paramLong, int paramInt)
   {
     long l = System.currentTimeMillis();
     UinFraudInfo.FraudInfo localFraudInfo = new UinFraudInfo.FraudInfo(this);
-    localFraudInfo.jdField_a_of_type_Int = paramInt;
-    localFraudInfo.jdField_a_of_type_Long = l;
-    if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
+    localFraudInfo.a = paramInt;
+    localFraudInfo.b = l;
+    if (this.b.size() > 500) {
+      this.b.clear();
     }
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localFraudInfo);
-    if (this.b.containsKey(Long.valueOf(paramLong))) {
-      this.b.remove(Long.valueOf(paramLong));
+    this.b.put(Long.valueOf(paramLong), localFraudInfo);
+    if (this.c.containsKey(Long.valueOf(paramLong))) {
+      this.c.remove(Long.valueOf(paramLong));
     }
   }
   
-  public boolean a(long paramLong)
+  public boolean b(long paramLong)
   {
     long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
+    if (this.b.containsKey(Long.valueOf(paramLong)))
     {
-      if (l - ((UinFraudInfo.FraudInfo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
+      if (l - ((UinFraudInfo.FraudInfo)this.b.get(Long.valueOf(paramLong))).b > 3600000L)
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");
         }
-        this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+        this.b.remove(Long.valueOf(paramLong));
         return true;
       }
       return false;
     }
-    if (this.b.containsKey(Long.valueOf(paramLong)))
+    if (this.c.containsKey(Long.valueOf(paramLong)))
     {
-      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() > 43200000L)
+      if (l - ((Long)this.c.get(Long.valueOf(paramLong))).longValue() > 43200000L)
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("AntiFraud", 4, "NonFraudUin, Found from local cache, timestamp is out of data");
         }
-        this.b.remove(Long.valueOf(paramLong));
+        this.c.remove(Long.valueOf(paramLong));
         return true;
       }
       return false;
@@ -117,10 +105,22 @@ public class UinFraudInfo
     }
     return true;
   }
+  
+  public void c(long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (this.c.size() > 500) {
+      this.c.clear();
+    }
+    this.c.put(Long.valueOf(paramLong), Long.valueOf(l));
+    if (this.b.containsKey(Long.valueOf(paramLong))) {
+      this.b.remove(Long.valueOf(paramLong));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.antiphing.UinFraudInfo
  * JD-Core Version:    0.7.0.1
  */

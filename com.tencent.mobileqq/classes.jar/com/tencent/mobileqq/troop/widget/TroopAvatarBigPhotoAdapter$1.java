@@ -76,36 +76,36 @@ class TroopAvatarBigPhotoAdapter$1
   
   public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
+    if (this.a.getVisibility() != 0) {
+      this.a.setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a.get()).setText(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.a());
+    this.a.setProgress(paramInt / 100);
+    if ((this.c.j != null) && (this.c.j.get() != null)) {
+      ((TextView)this.c.j.get()).setText(this.a.getProgressText());
     }
   }
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
+    this.c.a(this.a);
+    this.b.setImageDrawable(paramURLDrawable);
     if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {
       paramView = paramURLDrawable.getURL().toString();
     } else {
       paramView = "";
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a.get()).setVisibility(8);
+    if ((this.c.j != null) && (this.c.j.get() != null)) {
+      ((TextView)this.c.j.get()).setVisibility(8);
     }
-    paramURLDrawable = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter;
-    paramURLDrawable.a = null;
-    paramURLDrawable.c = false;
+    paramURLDrawable = this.c;
+    paramURLDrawable.j = null;
+    paramURLDrawable.i = false;
     ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopAvatarBigPhotoAdapter.1
  * JD-Core Version:    0.7.0.1
  */

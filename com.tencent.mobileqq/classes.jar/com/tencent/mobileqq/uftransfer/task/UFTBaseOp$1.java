@@ -7,11 +7,11 @@ class UFTBaseOp$1
   
   public void run()
   {
-    if (this.this$0.a) {
+    if (this.this$0.j) {
       return;
     }
     UFTBaseOp localUFTBaseOp = this.this$0;
-    localUFTBaseOp.a = true;
+    localUFTBaseOp.j = true;
     if (UFTBaseOp.a(localUFTBaseOp) != null) {
       UFTBaseOp.a(this.this$0).a(this.a);
     }
@@ -19,7 +19,7 @@ class UFTBaseOp$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.UFTBaseOp.1
  * JD-Core Version:    0.7.0.1
  */

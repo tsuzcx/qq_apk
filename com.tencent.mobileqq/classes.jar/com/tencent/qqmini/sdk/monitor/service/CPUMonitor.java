@@ -137,7 +137,7 @@ public class CPUMonitor
     //   132: astore_2
     //   133: aload_1
     //   134: aload_2
-    //   135: invokestatic 192	com/tencent/qqmini/sdk/monitor/service/CPUMonitor:parseCPURate	(Ljava/lang/String;Ljava/lang/String;)V
+    //   135: invokestatic 192	com/tencent/qqmini/sdk/monitor/service/CPUMonitor:parseCpuRate	(Ljava/lang/String;Ljava/lang/String;)V
     //   138: iconst_0
     //   139: putstatic 73	com/tencent/qqmini/sdk/monitor/service/CPUMonitor:isError	Z
     //   142: aload_0
@@ -283,7 +283,7 @@ public class CPUMonitor
     return isError;
   }
   
-  private static void parseCPURate(String arg0, String paramString2)
+  private static void parseCpuRate(String arg0, String paramString2)
   {
     ??? = ???.split(" ");
     if (??? != null)
@@ -392,7 +392,7 @@ public class CPUMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.service.CPUMonitor
  * JD-Core Version:    0.7.0.1
  */

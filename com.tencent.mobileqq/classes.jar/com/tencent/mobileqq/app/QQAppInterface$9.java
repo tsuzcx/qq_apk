@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app;
 
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.managers.PushNoticeManager;
-import com.tencent.mobileqq.pushnotice.PushNoticeUtil;
+import com.tencent.mobileqq.pushnotice.ThirdPushManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.notification.NotifyIdManager;
 
@@ -32,10 +32,10 @@ class QQAppInterface$9
       localQQNotificationManager.cancel("QQAppInterface_removeNotification", 3000531);
       NotifyIdManager localNotifyIdManager = (NotifyIdManager)this.this$0.getManager(QQManagerFactory.NOTIFY_ID_MANAGER);
       if (localNotifyIdManager != null) {
-        localNotifyIdManager.a();
+        localNotifyIdManager.c();
       }
       ((PushNoticeManager)this.this$0.getManager(QQManagerFactory.PUSH_NOTICE_MANAGER)).a(localQQNotificationManager, -1);
-      PushNoticeUtil.a(this.this$0.getApplication());
+      ThirdPushManager.a().a(this.this$0.getApplication());
       if (QLog.isColorLevel())
       {
         QLog.d("notification", 2, "removeNotification");
@@ -52,7 +52,7 @@ class QQAppInterface$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.9
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ public class MsgProxyDiscussMsgRespPB
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.MessageHandler", 2, "registerproxy->handleMsgProxyDiscussMsgResp_PB.");
       }
-      if (RegisterProxyHandler.b)
+      if (RegisterProxyHandler.d)
       {
-        paramMessageHandler.a.a(3, paramToServiceMsg, paramFromServiceMsg, paramObject);
+        paramMessageHandler.e.a(3, paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
       paramMessageHandler.c(paramToServiceMsg, paramFromServiceMsg, paramObject);
@@ -26,7 +26,7 @@ public class MsgProxyDiscussMsgRespPB
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MsgProxyDiscussMsgRespPB
  * JD-Core Version:    0.7.0.1
  */

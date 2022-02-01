@@ -15,7 +15,7 @@ class ForwardMultServerShare$3
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      String str = ForwardMultServerShare.a();
+      String str = ForwardMultServerShare.d();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("notifyImageSendMessage onError msg =");
       localStringBuilder.append(paramString);
@@ -37,28 +37,28 @@ class ForwardMultServerShare$3
     {
       long l = paramBundle.getLong("0xdc2_9_sendTime", -1L);
       if (QLog.isColorLevel()) {
-        QLog.d(ForwardMultServerShare.a(), 2, new Object[] { "notifyImageSendMessage onResult currentRequestTime =", Long.valueOf(ForwardMultServerShare.a(this.a)), ", sendStamp = ", Long.valueOf(l) });
+        QLog.d(ForwardMultServerShare.d(), 2, new Object[] { "notifyImageSendMessage onResult currentRequestTime =", Long.valueOf(ForwardMultServerShare.f(this.a)), ", sendStamp = ", Long.valueOf(l) });
       }
-      if ((l == -1L) || (l != ForwardMultServerShare.a(this.a)))
+      if ((l == -1L) || (l != ForwardMultServerShare.f(this.a)))
       {
-        ForwardMultServerShare.a(this.a);
+        ForwardMultServerShare.c(this.a);
         return;
       }
     }
-    paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
+    paramArrayOfByte = ForwardUtils.b(paramArrayOfByte);
     if ((paramInt == 0) && (paramArrayOfByte != null))
     {
       ForwardMultServerShare.a(this.a, paramArrayOfByte);
-      ForwardUtils.a(ForwardMultServerShare.a(this.a), paramArrayOfByte, ForwardMultServerShare.a(this.a), ForwardMultServerShare.a(this.a).getString("share_comment_message_for_server"));
+      ForwardMultServerShare.b(this.a, paramArrayOfByte);
       return;
     }
-    QLog.e(ForwardMultServerShare.a(), 1, new Object[] { "notifyImageSendMessage onResult error errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
-    ForwardMultServerShare.a(this.a);
+    QLog.e(ForwardMultServerShare.d(), 1, new Object[] { "notifyImageSendMessage onResult error errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
+    ForwardMultServerShare.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardMultServerShare.3
  * JD-Core Version:    0.7.0.1
  */

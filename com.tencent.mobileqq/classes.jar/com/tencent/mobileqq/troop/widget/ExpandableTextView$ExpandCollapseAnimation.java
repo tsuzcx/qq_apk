@@ -8,26 +8,26 @@ import android.widget.TextView;
 public class ExpandableTextView$ExpandCollapseAnimation
   extends Animation
 {
-  private final int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final int b;
+  private final View b;
+  private final int c;
+  private final int d;
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    int i = this.b;
-    int j = this.jdField_a_of_type_Int;
+    int i = this.d;
+    int j = this.c;
     i = (int)((i - j) * paramFloat + j);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView.a.setMaxHeight(i - ExpandableTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView));
-    if (Float.compare(ExpandableTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView), 1.0F) != 0) {
-      ExpandableTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView.a, ExpandableTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView) + paramFloat * (1.0F - ExpandableTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetExpandableTextView)));
+    this.a.a.setMaxHeight(i - ExpandableTextView.a(this.a));
+    if (Float.compare(ExpandableTextView.b(this.a), 1.0F) != 0) {
+      ExpandableTextView.a(this.a.a, ExpandableTextView.b(this.a) + paramFloat * (1.0F - ExpandableTextView.b(this.a)));
     }
-    this.jdField_a_of_type_AndroidViewView.getLayoutParams().height = i;
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    this.b.getLayoutParams().height = i;
+    this.b.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.ExpandableTextView.ExpandCollapseAnimation
  * JD-Core Version:    0.7.0.1
  */

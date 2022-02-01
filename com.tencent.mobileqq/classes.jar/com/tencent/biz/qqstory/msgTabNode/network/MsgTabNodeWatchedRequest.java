@@ -15,13 +15,18 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public class MsgTabNodeWatchedRequest
   extends NetworkRequest<MsgTabNodeWatchedRequest.MsgTabNodeWatchedResponse>
 {
-  static final String a = StoryApi.a("StorySvc.msgtab_node_watched");
-  public long b;
-  public String b;
-  public int c;
-  public int d;
+  static final String e = StoryApi.a("StorySvc.msgtab_node_watched");
+  public String f;
+  public int g;
+  public int h;
+  public long i;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     Object localObject = new qqstory_service.RspMsgTabNodeWatched();
     try
@@ -39,24 +44,19 @@ public class MsgTabNodeWatchedRequest
     return null;
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
-    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqMsgTabNodeWatched.node_type.set(this.c);
-    localReqMsgTabNodeWatched.operation.set(this.d);
-    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
+    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.f));
+    localReqMsgTabNodeWatched.node_type.set(this.g);
+    localReqMsgTabNodeWatched.operation.set(this.h);
+    localReqMsgTabNodeWatched.recommend_id.set(this.i);
     return localReqMsgTabNodeWatched.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeWatchedRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -17,18 +17,18 @@ final class GdtFeedbackJsCallHandler
   implements GdtJsCallHandler
 {
   public static final String a = "GdtFeedbackJsCallHandler";
-  private GdtFeedbackListener jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackListener;
-  private WeakReference<GdtAdWebPlugin> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<GdtAdWebPlugin> b;
+  private GdtFeedbackListener c;
   
   private void a(String paramString, int paramInt1, int paramInt2)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject1 = this.b;
     if (localObject1 != null)
     {
       localObject1 = (GdtAdWebPlugin)((WeakReference)localObject1).get();
       if (localObject1 != null)
       {
-        Object localObject2 = jdField_a_of_type_JavaLangString;
+        Object localObject2 = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("sendResult2Web actionType = ");
         localStringBuilder.append(paramInt1);
@@ -41,7 +41,7 @@ final class GdtFeedbackJsCallHandler
         }
         catch (Exception localException)
         {
-          AdLog.e(jdField_a_of_type_JavaLangString, "sendResult2Web error ", localException);
+          AdLog.e(a, "sendResult2Web error ", localException);
         }
         ((GdtAdWebPlugin)localObject1).callJs(paramString, new String[] { ((JSONObject)localObject2).toString() });
       }
@@ -58,10 +58,10 @@ final class GdtFeedbackJsCallHandler
     }
     if ((paramGdtAdWebPlugin != null) && (localActivity != null))
     {
-      this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackListener = new GdtFeedbackJsCallHandler.1(this, paramString);
+      this.c = new GdtFeedbackJsCallHandler.1(this, paramString);
       try
       {
-        Object localObject = jdField_a_of_type_JavaLangString;
+        Object localObject = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("args = ");
         localStringBuilder.append(paramVarArgs[0]);
@@ -72,24 +72,24 @@ final class GdtFeedbackJsCallHandler
         int i = ((JSONObject)localObject).optInt("orientation");
         paramVarArgs = (qq_ad_get.QQAdGetRsp.AdInfo)GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramVarArgs));
         boolean bool = ((JSONObject)localObject).optBoolean("isDarkMode");
-        this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramGdtAdWebPlugin);
-        ((IGdtAPI)QRoute.api(IGdtAPI.class)).startGdtFeedbackFragment(StartGdtFeedbackParams.a(new WeakReference(localActivity), new WeakReference(this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackListener), new GdtAd(paramVarArgs), i, bool));
+        this.b = new WeakReference(paramGdtAdWebPlugin);
+        ((IGdtAPI)QRoute.api(IGdtAPI.class)).startGdtFeedbackFragment(StartGdtFeedbackParams.a(new WeakReference(localActivity), new WeakReference(this.c), new GdtAd(paramVarArgs), i, bool));
         return true;
       }
       catch (Throwable paramGdtAdWebPlugin)
       {
-        AdLog.e(jdField_a_of_type_JavaLangString, "GdtFeedbackJsCallHandler e1", paramGdtAdWebPlugin);
+        AdLog.e(a, "GdtFeedbackJsCallHandler e1", paramGdtAdWebPlugin);
         a(paramString, 0, 4);
         return false;
       }
     }
-    AdLog.e(jdField_a_of_type_JavaLangString, "handleJsCallRequest error");
+    AdLog.e(a, "handleJsCallRequest error");
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtFeedbackJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

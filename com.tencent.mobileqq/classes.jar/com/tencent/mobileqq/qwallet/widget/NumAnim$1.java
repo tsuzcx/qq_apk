@@ -8,13 +8,19 @@ class NumAnim$1
   public NumAnim.SpannableValue getNumber(double paramDouble)
   {
     if (((paramDouble < 1000.0D) || (paramDouble >= 10000.0D)) && (paramDouble >= 0.0D)) {}
-    String str = NumAnim.a(paramDouble, true);
-    return new NumAnim.SpannableValue(str, 0, str.indexOf("."), str.indexOf("万"));
+    String str2 = NumAnim.a(paramDouble, true);
+    String str1;
+    if (paramDouble >= 10000.0D) {
+      str1 = "万";
+    } else {
+      str1 = ".";
+    }
+    return new NumAnim.SpannableValue(str2, 0, str2.indexOf(str1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.widget.NumAnim.1
  * JD-Core Version:    0.7.0.1
  */

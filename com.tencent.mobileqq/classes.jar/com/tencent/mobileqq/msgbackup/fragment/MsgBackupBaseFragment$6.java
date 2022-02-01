@@ -12,24 +12,24 @@ class MsgBackupBaseFragment$6
   
   public void run()
   {
-    if (!MsgBackupTransportProcessor.a().b())
+    if (!MsgBackupTransportProcessor.a().l())
     {
-      if (SystemClock.elapsedRealtime() - this.this$0.jdField_b_of_type_Long > 30000L)
+      if (SystemClock.elapsedRealtime() - this.this$0.V > 30000L)
       {
-        Message localMessage = this.this$0.a.obtainMessage(10009);
-        this.this$0.a.sendMessage(localMessage);
-        this.this$0.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this);
+        Message localMessage = this.this$0.I.obtainMessage(10009);
+        this.this$0.I.sendMessage(localMessage);
+        this.this$0.J.removeCallbacks(this);
         return;
       }
-      this.this$0.jdField_b_of_type_MqqOsMqqHandler.postDelayed(this, 1000L);
+      this.this$0.J.postDelayed(this, 1000L);
       return;
     }
-    this.this$0.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this);
+    this.this$0.J.removeCallbacks(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment.6
  * JD-Core Version:    0.7.0.1
  */

@@ -23,33 +23,33 @@ import java.util.List;
 
 public class TianshuBigInsertPage
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final Conversation jdField_a_of_type_ComTencentMobileqqActivityHomeConversation;
-  private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
-  private TianShuAccess.AdItem jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem;
+  private View a;
   private View b;
+  private DragFrameLayout c;
+  private ImageView d;
+  private final Conversation e;
+  private TianShuAccess.AdItem f;
   
   public TianshuBigInsertPage(Conversation paramConversation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation = paramConversation;
+    this.e = paramConversation;
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = ((DragFrameLayout)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().findViewById(2131365172));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().getLayoutInflater().inflate(2131558582, this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, false);
-    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131378674);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131378669).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().getColor(2131165482));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378670));
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new TianshuBigInsertPage.1(this));
-    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378671)).setOnClickListener(new TianshuBigInsertPage.2(this));
+    this.c = ((DragFrameLayout)this.e.P().findViewById(2131431325));
+    this.a = this.e.P().getLayoutInflater().inflate(2131624140, this.c, false);
+    this.b = this.a.findViewById(2131447331);
+    this.a.findViewById(2131447326).setBackgroundColor(this.e.Q().getColor(2131165803));
+    this.d = ((ImageView)this.a.findViewById(2131447327));
+    this.a.setOnTouchListener(new TianshuBigInsertPage.1(this));
+    ((ImageView)this.a.findViewById(2131447328)).setOnClickListener(new TianshuBigInsertPage.2(this));
   }
   
   private void b()
   {
-    ViewUtils.a(this.jdField_a_of_type_AndroidViewView);
+    ViewUtils.removeViewFromParent(this.a);
   }
   
   private static void b(View paramView)
@@ -67,8 +67,8 @@ public class TianshuBigInsertPage
       QLog.e("TianshuBigInsertPage", 2, "showLayer with null ");
       return;
     }
-    this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = paramAdItem;
-    Object localObject = this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.argList.get().iterator();
+    this.f = paramAdItem;
+    Object localObject = this.f.argList.get().iterator();
     String str = null;
     paramAdItem = null;
     while (((Iterator)localObject).hasNext())
@@ -89,13 +89,13 @@ public class TianshuBigInsertPage
       ((StringBuilder)localObject).append(paramAdItem);
       QLog.d("TianshuBigInsertPage", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new TianshuBigInsertPage.3(this, paramAdItem));
+    this.d.setOnClickListener(new TianshuBigInsertPage.3(this, paramAdItem));
     PreloadStaticApi.a().getResPath(str, new TianshuBigInsertPage.4(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuBigInsertPage
  * JD-Core Version:    0.7.0.1
  */

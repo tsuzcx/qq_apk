@@ -26,7 +26,7 @@ class WerewolvesHostInterface$4
   {
     try
     {
-      ((INearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).a().put(this.jdField_a_of_type_JavaLangString, Integer.valueOf(1));
+      ((INearbyCardManager)this.a.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).f().put(this.b, Integer.valueOf(1));
       if (!paramBoolean) {
         break label397;
       }
@@ -46,28 +46,28 @@ class WerewolvesHostInterface$4
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("sendOperateFollowUser,targetUin:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject).append(", op:");
         ((StringBuilder)localObject).append(this.b);
+        ((StringBuilder)localObject).append(", op:");
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(", errMsg:");
         ((StringBuilder)localObject).append(paramBundle);
         QLog.d("Q.werewolf.WerewolvesHostInterfaceQ.nearby.follow", 2, ((StringBuilder)localObject).toString());
-        QQToast.a(BaseApplicationImpl.getContext(), 1, paramBundle, 0).a();
+        QQToast.makeText(BaseApplicationImpl.getContext(), 1, paramBundle, 0).show();
         return;
       }
       paramBundle = ((JSONObject)localObject).getJSONObject("result");
       if (((JSONObject)localObject).optInt("retcode") != 0) {
         break label397;
       }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(5, new Object[] { Boolean.valueOf(true), Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      if (this.d) {
+        this.e.manager.c().a(5, new Object[] { Boolean.valueOf(true), Boolean.valueOf(this.d) });
       }
       localObject = BaseApplicationImpl.getContext();
       localBaseApplication = BaseApplicationImpl.getContext();
-      if (!this.b.equals("1")) {
+      if (!this.c.equals("1")) {
         break label558;
       }
-      paramInt = 2131694391;
+      paramInt = 2131892070;
     }
     catch (Exception paramBundle)
     {
@@ -78,17 +78,17 @@ class WerewolvesHostInterface$4
         label397:
         continue;
         label558:
-        paramInt = 2131694399;
+        paramInt = 2131892078;
       }
     }
-    QQToast.a((Context)localObject, 2, localBaseApplication.getString(paramInt), 0).a();
+    QQToast.makeText((Context)localObject, 2, localBaseApplication.getString(paramInt), 0).show();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("sendOperateFollowUser,targetUin:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(", op:");
       ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(", op:");
+      ((StringBuilder)localObject).append(this.c);
       ((StringBuilder)localObject).append(", result:");
       ((StringBuilder)localObject).append(paramBundle.toString());
       QLog.d("Q.werewolf.WerewolvesHostInterfaceQ.nearby.follow", 2, ((StringBuilder)localObject).toString());
@@ -98,30 +98,30 @@ class WerewolvesHostInterface$4
       QLog.d("Q.werewolf.WerewolvesHostInterface", 2, "sendOperateFollowUser, Exception");
     }
     paramBundle = BaseApplicationImpl.getContext();
-    if (this.b.equals("1")) {
-      paramInt = 2131694390;
+    if (this.c.equals("1")) {
+      paramInt = 2131892069;
     } else {
-      paramInt = 2131694398;
+      paramInt = 2131892077;
     }
     paramBundle = paramBundle.getString(paramInt);
-    QQToast.a(BaseApplicationImpl.getContext(), 1, paramBundle, 0).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), 1, paramBundle, 0).show();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("sendOperateFollowUser,targetUin:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(", op:");
       ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(", op:");
+      ((StringBuilder)localObject).append(this.c);
       ((StringBuilder)localObject).append(", re:");
       ((StringBuilder)localObject).append(paramBundle);
       QLog.d("Q.werewolf.WerewolvesHostInterfaceQ.nearby.follow", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(5, new Object[] { Boolean.valueOf(false), Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    this.e.manager.c().a(5, new Object[] { Boolean.valueOf(false), Boolean.valueOf(this.d) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHostInterface.4
  * JD-Core Version:    0.7.0.1
  */

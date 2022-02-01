@@ -27,7 +27,7 @@ public class SoConfigServiceImpl
   
   public Map<String, SoInfo> getSoInfos()
   {
-    return SoConfigManager.a().a();
+    return SoConfigManager.a().b();
   }
   
   public void getSoLoadInfoAsync(Bundle paramBundle, OnGetSoLoadInfoListener paramOnGetSoLoadInfoListener)
@@ -69,7 +69,7 @@ public class SoConfigServiceImpl
           ((StringBuilder)localObject).append(j);
           QLog.d("SoLoadWidget.SoConfigServiceImpl", 2, ((StringBuilder)localObject).toString());
         }
-        Object localObject = QConfigManager.a().a(526);
+        Object localObject = QConfigManager.b().a(526);
         if (localObject != null)
         {
           int k = -2;
@@ -90,7 +90,7 @@ public class SoConfigServiceImpl
   
   public void removeSoInfo(String paramString)
   {
-    if (!StringUtil.a(paramString))
+    if (!StringUtil.isEmpty(paramString))
     {
       Map localMap = getSoInfos();
       if (localMap != null) {
@@ -101,7 +101,7 @@ public class SoConfigServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.SoConfigServiceImpl
  * JD-Core Version:    0.7.0.1
  */

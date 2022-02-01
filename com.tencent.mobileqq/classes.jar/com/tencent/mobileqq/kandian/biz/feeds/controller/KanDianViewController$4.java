@@ -15,9 +15,9 @@ class KanDianViewController$4
   
   public void run()
   {
-    if (((KanDianViewController.a(this.this$0) instanceof ReadInJoyListViewGroup)) && (KanDianViewController.a(this.this$0).a() == 0))
+    if (((KanDianViewController.b(this.this$0) instanceof ReadInJoyListViewGroup)) && (KanDianViewController.b(this.this$0).getChannelID() == 0))
     {
-      ListView localListView = ((ReadInJoyListViewGroup)KanDianViewController.a(this.this$0)).a();
+      ListView localListView = ((ReadInJoyListViewGroup)KanDianViewController.b(this.this$0)).getListView();
       if (localListView != null)
       {
         localListView.setInterpolator(new AccelerateDecelerateInterpolator());
@@ -33,7 +33,7 @@ class KanDianViewController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.KanDianViewController.4
  * JD-Core Version:    0.7.0.1
  */

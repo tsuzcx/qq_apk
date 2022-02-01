@@ -5,43 +5,43 @@ import com.tencent.widget.ScrollView;
 
 public class WebViewTouchHelper
 {
-  private static final String jdField_a_of_type_JavaLangString = "WebViewTouchHelper";
-  private float jdField_a_of_type_Float;
-  public int a;
-  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  public OverScroller a;
-  private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
+  private static final String d = "WebViewTouchHelper";
   public boolean a;
+  public OverScroller b;
+  public int c;
+  private TouchWebView e;
+  private ScrollView f;
+  private float g;
   
   public WebViewTouchHelper(ScrollView paramScrollView, TouchWebView paramTouchWebView)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
-    this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
+    this.e = paramTouchWebView;
+    this.f = paramScrollView;
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.g = paramFloat;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_ComTencentWidgetScrollView != null)
+    this.c = paramInt;
+    if (this.f != null)
     {
-      TouchWebView localTouchWebView = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+      TouchWebView localTouchWebView = this.e;
       if (localTouchWebView == null) {
         return;
       }
-      if ((this.jdField_a_of_type_Float > 0.0F) && (!localTouchWebView.canScrollVertically(-1)) && (paramInt == 0) && (this.jdField_a_of_type_ComTencentWidgetScrollView.canScrollVertically(-1))) {
-        this.jdField_a_of_type_ComTencentWidgetScrollView.fling((int)-this.jdField_a_of_type_Float);
+      if ((this.g > 0.0F) && (!localTouchWebView.canScrollVertically(-1)) && (paramInt == 0) && (this.f.canScrollVertically(-1))) {
+        this.f.fling((int)-this.g);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.WebViewTouchHelper
  * JD-Core Version:    0.7.0.1
  */

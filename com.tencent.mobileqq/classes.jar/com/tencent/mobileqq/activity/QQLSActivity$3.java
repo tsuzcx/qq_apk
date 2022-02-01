@@ -18,7 +18,7 @@ class QQLSActivity$3
   {
     paramView = (RecentBaseData)QQLSActivity.a(this.a).getItem(paramInt);
     paramLong = paramAdapterView.getAdapter().getItemId(paramInt);
-    if ((paramLong == QQLSActivity.a(this.a)) && (Math.abs(QQLSActivity.b(this.a) - System.currentTimeMillis()) < 300L))
+    if ((paramLong == QQLSActivity.b(this.a)) && (Math.abs(QQLSActivity.c(this.a) - System.currentTimeMillis()) < 300L))
     {
       if (QLog.isColorLevel()) {
         QLog.e("QQLSActivity", 2, "mRecentList is double click");
@@ -34,18 +34,18 @@ class QQLSActivity$3
     }
     QQLSActivity.a(this.a, paramLong);
     QQLSActivity.b(this.a, System.currentTimeMillis());
-    if (QQLSActivity.a(this.a)) {
-      QQLSActivity.a(this.a).setText(2131698991);
+    if (QQLSActivity.d(this.a)) {
+      QQLSActivity.e(this.a).setText(2131896995);
     } else {
-      QQLSActivity.a(this.a).setText(2131698990);
+      QQLSActivity.e(this.a).setText(2131896994);
     }
-    paramAdapterView = QQLSActivity.a(this.a).obtainMessage(6);
-    QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
+    paramAdapterView = QQLSActivity.f(this.a).obtainMessage(6);
+    QQLSActivity.f(this.a).sendMessageDelayed(paramAdapterView, 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.3
  * JD-Core Version:    0.7.0.1
  */

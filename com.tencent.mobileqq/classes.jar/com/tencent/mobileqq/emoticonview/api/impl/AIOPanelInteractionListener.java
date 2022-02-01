@@ -43,7 +43,7 @@ public class AIOPanelInteractionListener
   {
     BaseChatPie localBaseChatPie = this.baseChatPie;
     if (localBaseChatPie != null) {
-      return localBaseChatPie.b();
+      return localBaseChatPie.bv();
     }
     return null;
   }
@@ -52,7 +52,7 @@ public class AIOPanelInteractionListener
   {
     BaseChatPie localBaseChatPie = this.baseChatPie;
     if (localBaseChatPie != null) {
-      return (IAIOEmoticonUIHelper)localBaseChatPie.a(105);
+      return (IAIOEmoticonUIHelper)localBaseChatPie.q(105);
     }
     return null;
   }
@@ -61,7 +61,7 @@ public class AIOPanelInteractionListener
   {
     BaseChatPie localBaseChatPie = this.baseChatPie;
     if (localBaseChatPie != null) {
-      return localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx;
+      return localBaseChatPie.Y;
     }
     return null;
   }
@@ -70,7 +70,7 @@ public class AIOPanelInteractionListener
   {
     BaseChatPie localBaseChatPie = this.baseChatPie;
     if (localBaseChatPie != null) {
-      return localBaseChatPie.c;
+      return localBaseChatPie.aZ;
     }
     return null;
   }
@@ -83,8 +83,8 @@ public class AIOPanelInteractionListener
   public String getCurFriendUin()
   {
     BaseChatPie localBaseChatPie = this.baseChatPie;
-    if ((localBaseChatPie != null) && (localBaseChatPie.a() != null)) {
-      return this.baseChatPie.a().jdField_a_of_type_JavaLangString;
+    if ((localBaseChatPie != null) && (localBaseChatPie.aE() != null)) {
+      return this.baseChatPie.aE().b;
     }
     return null;
   }
@@ -92,8 +92,8 @@ public class AIOPanelInteractionListener
   public int getCurType()
   {
     BaseChatPie localBaseChatPie = this.baseChatPie;
-    if ((localBaseChatPie != null) && (localBaseChatPie.a() != null)) {
-      return this.baseChatPie.a().jdField_a_of_type_Int;
+    if ((localBaseChatPie != null) && (localBaseChatPie.aE() != null)) {
+      return this.baseChatPie.aE().a;
     }
     return -1;
   }
@@ -117,7 +117,7 @@ public class AIOPanelInteractionListener
   {
     BaseChatPie localBaseChatPie = this.baseChatPie;
     if (localBaseChatPie != null) {
-      return localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
+      return localBaseChatPie.W;
     }
     return null;
   }
@@ -136,7 +136,7 @@ public class AIOPanelInteractionListener
   {
     BaseChatPie localBaseChatPie = this.baseChatPie;
     if (localBaseChatPie != null) {
-      return localBaseChatPie.e();
+      return localBaseChatPie.bw();
     }
     return 0;
   }
@@ -163,7 +163,7 @@ public class AIOPanelInteractionListener
   {
     BaseChatPie localBaseChatPie = this.baseChatPie;
     if (localBaseChatPie != null) {
-      localBaseChatPie.c(paramMotionEvent);
+      localBaseChatPie.d(paramMotionEvent);
     }
   }
   
@@ -171,7 +171,7 @@ public class AIOPanelInteractionListener
   {
     BaseChatPie localBaseChatPie = this.baseChatPie;
     if (localBaseChatPie != null) {
-      localBaseChatPie.o();
+      localBaseChatPie.I();
     }
   }
   
@@ -186,10 +186,10 @@ public class AIOPanelInteractionListener
   public void setPaneliconsInterceptListener(IPanelInteractionListener.InterceptListener paramInterceptListener)
   {
     Object localObject = this.baseChatPie;
-    if ((localObject != null) && (((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null))
+    if ((localObject != null) && (((BaseChatPie)localObject).W != null))
     {
       this.interceptListener = paramInterceptListener;
-      localObject = this.baseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
+      localObject = this.baseChatPie.W;
       if (paramInterceptListener != null) {
         paramInterceptListener = this;
       } else {
@@ -202,8 +202,8 @@ public class AIOPanelInteractionListener
   public void setPaneliconsShowRed(int paramInt, boolean paramBoolean)
   {
     BaseChatPie localBaseChatPie = this.baseChatPie;
-    if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null)) {
-      this.baseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setShowRed(paramInt, paramBoolean);
+    if ((localBaseChatPie != null) && (localBaseChatPie.W != null)) {
+      this.baseChatPie.W.setShowRed(paramInt, paramBoolean);
     }
   }
   
@@ -211,7 +211,7 @@ public class AIOPanelInteractionListener
   {
     BaseChatPie localBaseChatPie = this.baseChatPie;
     if (localBaseChatPie != null) {
-      localBaseChatPie.i(paramBoolean);
+      localBaseChatPie.l(paramBoolean);
     }
   }
   
@@ -220,7 +220,7 @@ public class AIOPanelInteractionListener
     Object localObject = this.baseChatPie;
     if (localObject != null)
     {
-      localObject = ((BaseChatPie)localObject).a();
+      localObject = ((BaseChatPie)localObject).bi();
       if (localObject != null) {
         ((AIOAnimationConatiner)localObject).a();
       }
@@ -229,7 +229,7 @@ public class AIOPanelInteractionListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.api.impl.AIOPanelInteractionListener
  * JD-Core Version:    0.7.0.1
  */

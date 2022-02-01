@@ -47,7 +47,7 @@ class UpgradeTipsDialog$1
       paramWebView.append(paramString1);
       QLog.d("UpgradeController", 2, paramWebView.toString());
     }
-    ReportController.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "Update_tips", "Upd_fail", 0, paramInt, "", "", "", "");
+    ReportController.b(UpgradeTipsDialog.b(this.a), "CliOper", "", "", "Update_tips", "Upd_fail", 0, paramInt, "", "", "", "");
   }
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
@@ -67,7 +67,7 @@ class UpgradeTipsDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeTipsDialog.1
  * JD-Core Version:    0.7.0.1
  */

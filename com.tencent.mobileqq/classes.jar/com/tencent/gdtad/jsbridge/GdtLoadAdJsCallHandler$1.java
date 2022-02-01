@@ -21,10 +21,10 @@ class GdtLoadAdJsCallHandler$1
       if (GdtLoadAdJsCallHandler.a(this.a).get() == null) {
         return;
       }
-      String str = (String)GdtLoadAdJsCallHandler.a(this.a).get(paramGdtAdLoader);
-      GdtLoadAdJsCallHandler.a(this.a).remove(paramGdtAdLoader);
-      Object localObject1 = GdtJsonPbUtil.a(paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
-      Object localObject2 = GdtJsonPbUtil.a(paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
+      String str = (String)GdtLoadAdJsCallHandler.b(this.a).get(paramGdtAdLoader);
+      GdtLoadAdJsCallHandler.b(this.a).remove(paramGdtAdLoader);
+      Object localObject1 = GdtJsonPbUtil.a(paramGdtAdLoader.a().a);
+      Object localObject2 = GdtJsonPbUtil.a(paramGdtAdLoader.a().b);
       paramGdtAdLoader = new JSONObject();
       try
       {
@@ -41,7 +41,7 @@ class GdtLoadAdJsCallHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtLoadAdJsCallHandler.1
  * JD-Core Version:    0.7.0.1
  */

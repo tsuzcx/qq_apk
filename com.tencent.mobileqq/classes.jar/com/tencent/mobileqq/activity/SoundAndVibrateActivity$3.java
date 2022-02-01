@@ -18,9 +18,9 @@ class SoundAndVibrateActivity$3
     this.a.b(0);
     SoundAndVibrateActivity localSoundAndVibrateActivity = this.a;
     SettingCloneUtil.writeValueForInt(localSoundAndVibrateActivity, localSoundAndVibrateActivity.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230720);
-    if (this.a.a().booleanValue())
+    if (this.a.b().booleanValue())
     {
-      this.a.b();
+      this.a.c();
       localSoundAndVibrateActivity = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("android.resource://");
@@ -34,7 +34,7 @@ class SoundAndVibrateActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SoundAndVibrateActivity.3
  * JD-Core Version:    0.7.0.1
  */

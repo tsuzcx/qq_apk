@@ -17,29 +17,29 @@ import mqq.app.AppRuntime;
 
 public class RobotChatUtil
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
+  private static WeakReference<Drawable> a;
+  private static String b = "";
   
   public static Drawable a(Context paramContext)
   {
     if (paramContext == null) {
       return null;
     }
-    return paramContext.getResources().getDrawable(2130846369);
+    return paramContext.getResources().getDrawable(2130847842);
   }
   
   private static Drawable a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    paramQQAppInterface = jdField_a_of_type_JavaLangRefWeakReference;
+    paramQQAppInterface = a;
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = (Drawable)paramQQAppInterface.get();
       if (paramQQAppInterface != null)
       {
-        if ((TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) || (!jdField_a_of_type_JavaLangString.equals(ThemeUtil.curThemeId)))
+        if ((TextUtils.isEmpty(b)) || (!b.equals(ThemeUtil.curThemeId)))
         {
           ThemeUtil.setThemeFilter(paramQQAppInterface, ThemeUtil.curThemeId);
-          jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
+          b = ThemeUtil.curThemeId;
         }
         return paramQQAppInterface;
       }
@@ -50,25 +50,10 @@ public class RobotChatUtil
     {
       paramQQAppInterface = paramContext.getConstantState().newDrawable().mutate();
       ThemeUtil.setThemeFilter(paramQQAppInterface, ThemeUtil.curThemeId);
-      jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-      jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+      b = ThemeUtil.curThemeId;
+      a = new WeakReference(paramQQAppInterface);
     }
     return paramQQAppInterface;
-  }
-  
-  public static ThemeURLImageView a(Context paramContext)
-  {
-    if (paramContext == null) {
-      return null;
-    }
-    Drawable localDrawable = a(paramContext);
-    if (localDrawable == null) {
-      return null;
-    }
-    paramContext = new ThemeURLImageView(paramContext);
-    paramContext.setContentDescription("BOT");
-    paramContext.setImageDrawable(localDrawable);
-    return paramContext;
   }
   
   public static void a(Context paramContext, SingleLineTextView paramSingleLineTextView, String paramString)
@@ -102,10 +87,25 @@ public class RobotChatUtil
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     return ((localAppRuntime instanceof QQAppInterface)) && (RobotUtils.a((QQAppInterface)localAppRuntime, paramString));
   }
+  
+  public static ThemeURLImageView b(Context paramContext)
+  {
+    if (paramContext == null) {
+      return null;
+    }
+    Drawable localDrawable = a(paramContext);
+    if (localDrawable == null) {
+      return null;
+    }
+    paramContext = new ThemeURLImageView(paramContext);
+    paramContext.setContentDescription("BOT");
+    paramContext.setImageDrawable(localDrawable);
+    return paramContext;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.robotchat.RobotChatUtil
  * JD-Core Version:    0.7.0.1
  */

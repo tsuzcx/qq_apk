@@ -16,26 +16,26 @@ class VideoEncoderCore$VideoEncodeThread
     {
       do
       {
-        if (VideoEncoderCore.a(this.this$0))
+        if (VideoEncoderCore.b(this.this$0))
         {
           QLog.d("VideoEncoderCore", 1, "VideoEncodeThread thread exit.");
           return;
         }
-        long l = VideoEncoderCore.a(this.this$0);
+        long l = VideoEncoderCore.c(this.this$0);
         if (l == 0L) {
           try
           {
-            VideoEncoderCore.a().wait();
+            VideoEncoderCore.c().wait();
           }
           catch (Exception localException2)
           {
             QLog.e("VideoEncoderCore", 1, "VideoEncodeThread wait exception?", localException2);
           }
         }
-      } while (VideoEncoderCore.a(this.this$0) == 0L);
+      } while (VideoEncoderCore.c(this.this$0) == 0L);
       try
       {
-        VideoEncoderCore.a(this.this$0, VideoEncoderCore.a(this.this$0), false);
+        VideoEncoderCore.a(this.this$0, VideoEncoderCore.c(this.this$0), false);
       }
       catch (Exception localException1)
       {
@@ -54,7 +54,7 @@ class VideoEncoderCore$VideoEncodeThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore.VideoEncodeThread
  * JD-Core Version:    0.7.0.1
  */

@@ -21,19 +21,19 @@ class BaseChatPie$25
         localStringBuilder.append(paramBoolean2);
         QLog.d("interactive", 2, localStringBuilder.toString());
       }
-      this.a.af();
+      this.a.bc();
     }
   }
   
   protected void onImpeach(boolean paramBoolean, String paramString)
   {
-    ((AIOJubaoDialogHelper)this.a.a(70)).a();
+    ((AIOJubaoDialogHelper)this.a.q(70)).a();
     if (paramBoolean)
     {
-      this.a.a.showDialog(232);
+      this.a.f.showDialog(232);
       return;
     }
-    this.a.a.showDialog(233);
+    this.a.f.showDialog(233);
   }
   
   protected void onSetCalReactiveDays(boolean paramBoolean)
@@ -43,13 +43,13 @@ class BaseChatPie$25
       if (QLog.isColorLevel()) {
         QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
       }
-      this.a.af();
+      this.a.bc();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.25
  * JD-Core Version:    0.7.0.1
  */

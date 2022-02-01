@@ -9,44 +9,44 @@ import java.io.File;
 public class StorageManager
   implements SDCardMountMonitorReceiver.SDCardMountStateListener
 {
-  private static StorageManager jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoMediadeviceStorageManager;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private StorageManager.OnSdCardChangedListener jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoMediadeviceStorageManager$OnSdCardChangedListener;
-  private String jdField_a_of_type_JavaLangString = "";
+  private static StorageManager b;
+  private static final Object c = new Object();
+  private String a = "";
+  private StorageManager.OnSdCardChangedListener d;
   
   private StorageManager()
   {
-    a();
+    c();
     SDCardMountMonitorReceiver.getInstance().addListener(this);
   }
   
   public static StorageManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoMediadeviceStorageManager == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (b == null) {
+      synchronized (c)
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoMediadeviceStorageManager == null) {
-          jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoMediadeviceStorageManager = new StorageManager();
+        if (b == null) {
+          b = new StorageManager();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoMediadeviceStorageManager;
+    return b;
   }
   
-  private void a()
+  private void c()
   {
-    this.jdField_a_of_type_JavaLangString = CacheManager.getVideoFileCacheDir();
+    this.a = CacheManager.getVideoFileCacheDir();
     Object localObject;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("updateStorePath, storeVideoPath=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("StorageManager", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      localObject = new File(this.a);
       if (!((File)localObject).exists())
       {
         ((File)localObject).mkdirs();
@@ -59,9 +59,9 @@ public class StorageManager
     }
   }
   
-  public String a()
+  public String b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void onSDCardMountStateChange(boolean paramBoolean)
@@ -74,20 +74,20 @@ public class StorageManager
       QLog.d("StorageManager", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = CacheManager.getVideoFileCacheDir();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoMediadeviceStorageManager$OnSdCardChangedListener != null) && (!((String)localObject).equals(this.jdField_a_of_type_JavaLangString)))
+    if ((this.d != null) && (!((String)localObject).equals(this.a)))
     {
       if (paramBoolean)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoMediadeviceStorageManager$OnSdCardChangedListener.a(1, this.jdField_a_of_type_JavaLangString);
+        this.d.a(1, this.a);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoMediadeviceStorageManager$OnSdCardChangedListener.a(0, this.jdField_a_of_type_JavaLangString);
+      this.d.a(0, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.mediadevice.StorageManager
  * JD-Core Version:    0.7.0.1
  */

@@ -20,28 +20,28 @@ import com.tencent.widget.XListView;
 public class AECircleAlbumListFragment
   extends Fragment
 {
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   public AECircleAlbumListFragment.IAlbumListBack a;
-  public AECircleAlbumListLogic a;
-  public AlbumListAdapter a;
-  AlbumListBaseData jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListBaseData;
-  XFrameLayout jdField_a_of_type_ComTencentWidgetXFrameLayout;
-  public XListView a;
+  public AECircleAlbumListLogic b;
+  AlbumListBaseData c;
+  FrameLayout d;
+  public AlbumListAdapter e;
+  public XListView f;
+  XFrameLayout g;
   
   @TargetApi(14)
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetXFrameLayout = ((XFrameLayout)paramView.findViewById(2064122346));
-    this.jdField_a_of_type_ComTencentWidgetXFrameLayout.setCornerRadiusAndMode(Utils.dp2px(10.0D), 5);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2064121941));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setWrapByScroll(true);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterAlbumListAdapter);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new AECircleAlbumListFragment.AlbumListItemClickListener(this, null));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2064121944));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new AECircleAlbumListFragment.1(this));
-    paramView.findViewById(2064121943).setVisibility(8);
+    this.g = ((XFrameLayout)paramView.findViewById(2063991219));
+    this.g.setCornerRadiusAndMode(Utils.dp2px(10.0D), 5);
+    this.f = ((XListView)paramView.findViewById(2063990876));
+    this.f.setWrapByScroll(true);
+    this.f.setAdapter(this.e);
+    this.f.setOnItemClickListener(new AECircleAlbumListFragment.AlbumListItemClickListener(this, null));
+    this.f.setOverScrollMode(2);
+    this.f.setVerticalScrollBarEnabled(false);
+    this.d = ((FrameLayout)paramView.findViewById(2063990879));
+    this.d.setOnClickListener(new AECircleAlbumListFragment.1(this));
+    paramView.findViewById(2063990878).setVisibility(8);
     int i = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_index", 0);
     int j = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_y", 0);
     Looper.myQueue().addIdleHandler(new AECircleAlbumListFragment.2(this, i, j));
@@ -54,16 +54,16 @@ public class AECircleAlbumListFragment
   
   public void a(AECircleAlbumListFragment.IAlbumListBack paramIAlbumListBack)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListFragment$IAlbumListBack = paramIAlbumListBack;
+    this.a = paramIAlbumListBack;
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2064318680, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListLogic = a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListBaseData = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListLogic.a;
+    paramLayoutInflater = paramLayoutInflater.inflate(2064056510, paramViewGroup, false);
+    this.b = a();
+    this.c = this.b.c;
     paramViewGroup = getActivity().getIntent();
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListLogic.a(paramViewGroup);
+    this.b.a(paramViewGroup);
     a(paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -71,15 +71,15 @@ public class AECircleAlbumListFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    AECircleAlbumListLogic localAECircleAlbumListLogic = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListLogic;
+    AECircleAlbumListLogic localAECircleAlbumListLogic = this.b;
     if (localAECircleAlbumListLogic != null) {
-      localAECircleAlbumListLogic.a();
+      localAECircleAlbumListLogic.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECircleAlbumListFragment
  * JD-Core Version:    0.7.0.1
  */

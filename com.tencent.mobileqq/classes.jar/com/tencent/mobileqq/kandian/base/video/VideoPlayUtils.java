@@ -55,11 +55,6 @@ public class VideoPlayUtils
     return paramInt2 * 512 + paramInt1 * paramInt3 / paramInt2;
   }
   
-  public static String a()
-  {
-    return "";
-  }
-  
   public static String a(int paramInt)
   {
     switch (paramInt)
@@ -86,14 +81,28 @@ public class VideoPlayUtils
     return " PLAY_STATE_IDLE ";
   }
   
-  public static String a(int paramInt1, int paramInt2)
+  public static Map<String, String> a(VideoPlayerWrapper paramVideoPlayerWrapper)
+  {
+    HashMap localHashMap = new HashMap();
+    if (paramVideoPlayerWrapper != null)
+    {
+      localHashMap.put("param_url", paramVideoPlayerWrapper.U());
+      localHashMap.put("param_bitrate", String.valueOf(paramVideoPlayerWrapper.c));
+      localHashMap.put("param_duration", String.valueOf(paramVideoPlayerWrapper.I()));
+      localHashMap.put("param_file_size", String.valueOf(paramVideoPlayerWrapper.M()));
+      localHashMap.put("param_is265", String.valueOf(paramVideoPlayerWrapper.i));
+    }
+    return localHashMap;
+  }
+  
+  public static String b(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 123)
     {
       if (paramInt2 == 103)
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131716079));
+        localStringBuilder.append(HardCodeUtil.a(2131913529));
         localStringBuilder.append(paramInt1);
         localStringBuilder.append("-");
         localStringBuilder.append(paramInt2);
@@ -102,7 +111,7 @@ public class VideoPlayUtils
       if (paramInt2 == 108)
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131718106));
+        localStringBuilder.append(HardCodeUtil.a(2131915583));
         localStringBuilder.append(": ");
         localStringBuilder.append(paramInt1);
         localStringBuilder.append("-");
@@ -110,7 +119,7 @@ public class VideoPlayUtils
         return localStringBuilder.toString();
       }
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131716093));
+      localStringBuilder.append(HardCodeUtil.a(2131913542));
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("-");
       localStringBuilder.append(paramInt2);
@@ -121,7 +130,7 @@ public class VideoPlayUtils
       if (paramInt2 == 204)
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131716089));
+        localStringBuilder.append(HardCodeUtil.a(2131913538));
         localStringBuilder.append(paramInt1);
         localStringBuilder.append("-");
         localStringBuilder.append(paramInt2);
@@ -130,14 +139,14 @@ public class VideoPlayUtils
       if (paramInt2 == 202)
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131716082));
+        localStringBuilder.append(HardCodeUtil.a(2131913532));
         localStringBuilder.append(paramInt1);
         localStringBuilder.append("-");
         localStringBuilder.append(paramInt2);
         return localStringBuilder.toString();
       }
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131716069));
+      localStringBuilder.append(HardCodeUtil.a(2131913520));
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("-");
       localStringBuilder.append(paramInt2);
@@ -148,44 +157,30 @@ public class VideoPlayUtils
       if (paramInt2 == 80)
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131716081));
+        localStringBuilder.append(HardCodeUtil.a(2131913531));
         localStringBuilder.append(paramInt1);
         localStringBuilder.append("-");
         localStringBuilder.append(paramInt2);
         return localStringBuilder.toString();
       }
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131716071));
+      localStringBuilder.append(HardCodeUtil.a(2131913522));
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("-");
       localStringBuilder.append(paramInt2);
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131716077));
+    localStringBuilder.append(HardCodeUtil.a(2131913527));
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("-");
     localStringBuilder.append(paramInt2);
     return localStringBuilder.toString();
   }
-  
-  public static Map<String, String> a(VideoPlayerWrapper paramVideoPlayerWrapper)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramVideoPlayerWrapper != null)
-    {
-      localHashMap.put("param_url", paramVideoPlayerWrapper.b());
-      localHashMap.put("param_bitrate", String.valueOf(paramVideoPlayerWrapper.a));
-      localHashMap.put("param_duration", String.valueOf(paramVideoPlayerWrapper.b()));
-      localHashMap.put("param_file_size", String.valueOf(paramVideoPlayerWrapper.d()));
-      localHashMap.put("param_is265", String.valueOf(paramVideoPlayerWrapper.b));
-    }
-    return localHashMap;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.VideoPlayUtils
  * JD-Core Version:    0.7.0.1
  */

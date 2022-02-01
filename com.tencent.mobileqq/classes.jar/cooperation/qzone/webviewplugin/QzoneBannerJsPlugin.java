@@ -50,7 +50,7 @@ public class QzoneBannerJsPlugin
       }
       if (paramJsBridgeListener != null)
       {
-        paramString1 = paramJsBridgeListener.getTag(2131368394);
+        paramString1 = paramJsBridgeListener.getTag(2131435276);
         if ((paramString1 != null) && ((paramString1 instanceof WebViewBannerInterface)))
         {
           paramString1 = (WebViewBannerInterface)paramString1;
@@ -84,12 +84,12 @@ public class QzoneBannerJsPlugin
             }
             if (i == 2)
             {
-              paramString1.setBannerHeight((int)ViewUtils.a((float)d1));
+              paramString1.setBannerHeight((int)ViewUtils.dip2px((float)d1));
               return true;
             }
             if (i == 3)
             {
-              double d2 = ViewUtils.a();
+              double d2 = ViewUtils.getScreenWidth();
               Double.isNaN(d2);
               paramString1.setBannerHeight((int)(d1 * d2));
               return true;
@@ -187,7 +187,7 @@ public class QzoneBannerJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneBannerJsPlugin
  * JD-Core Version:    0.7.0.1
  */

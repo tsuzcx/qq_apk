@@ -12,20 +12,20 @@ class StyleLoaderHelper$DummyCallback$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("check style config param: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" code: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     QLog.d("TemplateFactory", 1, localStringBuilder.toString());
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersStyleLoaderHelper$DummyCallback.a(this.jdField_a_of_type_JavaLangString, i);
+      this.c.a(this.a, i);
     }
-    ProteusCDNUtils.a(StyleLoaderHelper.DummyCallback.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersStyleLoaderHelper$DummyCallback), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    ProteusCDNUtils.a(StyleLoaderHelper.DummyCallback.a(this.c), this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.StyleLoaderHelper.DummyCallback.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,50 +21,21 @@ public class FavEmoSingleSend
   extends EmoAsyncStep
   implements UpCallBack
 {
-  private CustomEmotionData jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
-  private IFavEmoRoamingHandler jdField_a_of_type_ComTencentMobileqqEmosmIFavEmoRoamingHandler;
-  private IFavroamingDBManagerService jdField_a_of_type_ComTencentMobileqqEmosmApiIFavroamingDBManagerService;
-  private IFavroamingManagerService jdField_a_of_type_ComTencentMobileqqEmosmApiIFavroamingManagerService;
-  private TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Timer jdField_a_of_type_JavaUtilTimer;
   public boolean a;
-  private boolean b;
+  private final Object b = new Object();
+  private boolean k;
+  private CustomEmotionData l;
+  private IFavroamingManagerService m;
+  private IFavroamingDBManagerService n;
+  private IFavEmoRoamingHandler o;
+  private TransferRequest p;
+  private Timer q;
   
   public FavEmoSingleSend(CustomEmotionData paramCustomEmotionData, boolean paramBoolean)
   {
-    this.b = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData = paramCustomEmotionData;
-    b();
-  }
-  
-  protected int a()
-  {
-    QLog.d("FavEmoSingleSend", 1, new Object[] { "doStep, isResend: ", Boolean.valueOf(this.b), " ", this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData });
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = this.jdField_a_of_type_ComTencentMobileqqEmosmApiIFavroamingManagerService.syncUpload(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, this);
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest == null)
-    {
-      QLog.d("FavEmoSingleSend", 1, "doStep, network not support");
-      a("failed", 0, 3, 0);
-      return 7;
-    }
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimer.schedule(new FavEmoSingleSend.1(this), 30000L);
-    try
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.wait(40000L);
-      }
-    }
-    catch (Exception localException)
-    {
-      label135:
-      break label135;
-    }
-    this.jdField_a_of_type_JavaUtilTimer.cancel();
-    return 7;
-    throw localObject2;
+    this.k = paramBoolean;
+    this.l = paramCustomEmotionData;
+    c();
   }
   
   public MessageRecord a(im_msg_body.RichText paramRichText)
@@ -82,21 +53,42 @@ public class FavEmoSingleSend
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    CustomEmotionData localCustomEmotionData = this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
+    this.a = bool;
+    CustomEmotionData localCustomEmotionData = this.l;
     localCustomEmotionData.RomaingType = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIFavroamingDBManagerService.updateCustomEmotion(localCustomEmotionData);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIFavroamingDBManagerService.trimCache();
-    this.jdField_a_of_type_ComTencentMobileqqEmosmIFavEmoRoamingHandler.notifyUI(2, true, Integer.valueOf(paramInt1));
-    FavEmoSendControlConstant.a(this.jdField_a_of_type_Boolean, paramInt2, paramInt3);
+    this.n.updateCustomEmotion(localCustomEmotionData);
+    this.n.trimCache();
+    this.o.notifyUI(2, true, Integer.valueOf(paramInt1));
+    FavEmoSendControlConstant.a(this.a, paramInt2, paramInt3);
   }
   
-  public void b()
+  protected int b()
   {
-    BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIFavroamingManagerService = ((IFavroamingManagerService)localBaseQQAppInterface.getRuntimeService(IFavroamingManagerService.class));
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIFavroamingDBManagerService = ((IFavroamingDBManagerService)localBaseQQAppInterface.getRuntimeService(IFavroamingDBManagerService.class));
-    this.jdField_a_of_type_ComTencentMobileqqEmosmIFavEmoRoamingHandler = ((IFavEmoRoamingHandler)localBaseQQAppInterface.getBusinessHandler(FavEmoRoamingHandler.a));
+    QLog.d("FavEmoSingleSend", 1, new Object[] { "doStep, isResend: ", Boolean.valueOf(this.k), " ", this.l });
+    this.p = this.m.syncUpload(this.l, this);
+    if (this.p == null)
+    {
+      QLog.d("FavEmoSingleSend", 1, "doStep, network not support");
+      a("failed", 0, 3, 0);
+      return 7;
+    }
+    this.q = new Timer();
+    this.q.schedule(new FavEmoSingleSend.1(this), 30000L);
+    try
+    {
+      synchronized (this.b)
+      {
+        this.b.wait(40000L);
+      }
+    }
+    catch (Exception localException)
+    {
+      label135:
+      break label135;
+    }
+    this.q.cancel();
+    return 7;
+    throw localObject2;
   }
   
   public void b(UpCallBack.SendResult arg1)
@@ -110,7 +102,7 @@ public class FavEmoSingleSend
     {
       QLog.e("FavEmoSingleSend", 1, "uploadCameraEmoList success");
       a("isUpdate", 0, 0, 0);
-      EmoticonOperateReport.reportFavAddEmotionEvent(null, 3, ???.d, null);
+      EmoticonOperateReport.reportFavAddEmotionEvent(null, 3, ???.g, null);
     }
     else if (-1 == ???.a)
     {
@@ -128,16 +120,24 @@ public class FavEmoSingleSend
       }
       a("failed", j, i, ???.b);
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaLangObject.notify();
+      this.b.notify();
       return;
     }
+  }
+  
+  public void c()
+  {
+    BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+    this.m = ((IFavroamingManagerService)localBaseQQAppInterface.getRuntimeService(IFavroamingManagerService.class));
+    this.n = ((IFavroamingDBManagerService)localBaseQQAppInterface.getRuntimeService(IFavroamingDBManagerService.class));
+    this.o = ((IFavEmoRoamingHandler)localBaseQQAppInterface.getBusinessHandler(FavEmoRoamingHandler.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.FavEmoSingleSend
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ public class VipWZRYTemplateHelper
   public static String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ProfileCardTemplateUtil.a());
+    localStringBuilder.append(ProfileCardTemplateUtil.b());
     localStringBuilder.append("wzryTemplate/");
     return localStringBuilder.toString();
   }
@@ -69,10 +69,10 @@ public class VipWZRYTemplateHelper
     {
       String str = a();
       paramString = new File(str, "xydata.json");
-      if (VipWZRYTemplateConfig.jdField_a_of_type_ComTencentMobileqqProfileVipWZRYTemplateConfig == null) {
+      if (VipWZRYTemplateConfig.a == null) {
         VipWZRYTemplateConfig.a(paramString.getAbsolutePath());
       }
-      if (VipWZRYTemplateConfig.jdField_a_of_type_ComTencentMobileqqProfileVipWZRYTemplateConfig != null)
+      if (VipWZRYTemplateConfig.a != null)
       {
         paramString = new File(str, "logo.png");
         Object localObject1 = new File(str, "bgImage.jpg");
@@ -87,20 +87,20 @@ public class VipWZRYTemplateHelper
         } else {
           bool1 = false;
         }
-        localObject2 = VipWZRYTemplateConfig.jdField_a_of_type_ComTencentMobileqqProfileVipWZRYTemplateConfig;
-        if (((VipWZRYTemplateConfig)localObject2).jdField_a_of_type_AndroidUtilSparseArray != null)
+        localObject2 = VipWZRYTemplateConfig.a;
+        if (((VipWZRYTemplateConfig)localObject2).b != null)
         {
           int i = 0;
-          for (boolean bool2 = bool1; i < ((VipWZRYTemplateConfig)localObject2).jdField_a_of_type_AndroidUtilSparseArray.size(); bool2 = bool1)
+          for (boolean bool2 = bool1; i < ((VipWZRYTemplateConfig)localObject2).b.size(); bool2 = bool1)
           {
-            paramString = (VipWZRYTemplateConfig.WZRYHonorItem)((VipWZRYTemplateConfig)localObject2).jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+            paramString = (VipWZRYTemplateConfig.WZRYHonorItem)((VipWZRYTemplateConfig)localObject2).b.valueAt(i);
             bool1 = bool2;
-            if (paramString.a != null)
+            if (paramString.e != null)
             {
               bool1 = bool2;
-              if (!TextUtils.isEmpty(paramString.a.a))
+              if (!TextUtils.isEmpty(paramString.e.a))
               {
-                localObject1 = paramString.a.a;
+                localObject1 = paramString.e.a;
                 paramString = (String)localObject1;
                 if (((String)localObject1).contains("/")) {
                   paramString = ((String)localObject1).substring(((String)localObject1).lastIndexOf("/"));
@@ -124,7 +124,7 @@ public class VipWZRYTemplateHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipWZRYTemplateHelper
  * JD-Core Version:    0.7.0.1
  */

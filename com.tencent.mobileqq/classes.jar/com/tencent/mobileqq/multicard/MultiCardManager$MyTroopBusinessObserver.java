@@ -43,19 +43,19 @@ class MultiCardManager$MyTroopBusinessObserver
         paramLong = l;
       }
     }
-    if ((paramInt1 == 9) && (paramLong == MultiCardManager.a(this.a)) && (MultiCardManager.b(this.a) != null)) {
-      synchronized (MultiCardManager.b(this.a))
+    if ((paramInt1 == 9) && (paramLong == MultiCardManager.d(this.a)) && (MultiCardManager.e(this.a) != null)) {
+      synchronized (MultiCardManager.e(this.a))
       {
-        paramList = (WeakReference)MultiCardManager.b(this.a).get(Long.valueOf(paramLong));
+        paramList = (WeakReference)MultiCardManager.e(this.a).get(Long.valueOf(paramLong));
         if (paramList != null)
         {
           paramList = (MultiCardManager.GetGroupMemberNickListener)paramList.get();
           if (paramList != null)
           {
             new ArrayList(0);
-            synchronized (MultiCardManager.c(this.a))
+            synchronized (MultiCardManager.f(this.a))
             {
-              ArrayList localArrayList = (ArrayList)MultiCardManager.c(this.a).get(Long.valueOf(paramLong));
+              ArrayList localArrayList = (ArrayList)MultiCardManager.f(this.a).get(Long.valueOf(paramLong));
               MultiCardManager.a(this.a, paramLong, localArrayList, paramList);
               return;
             }
@@ -67,7 +67,7 @@ class MultiCardManager$MyTroopBusinessObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.MyTroopBusinessObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -24,16 +24,16 @@ class EditTroopMemberNickService$12
   {
     if (paramBoolean)
     {
-      VasWebviewUtil.a(EditTroopMemberNickService.a(this.a).getCurrentUin(), "group_nickname", "set", "", 1, 0, 0, "", "", "");
+      VasWebviewUtil.a(EditTroopMemberNickService.b(this.a).getCurrentUin(), "group_nickname", "set", "", 1, 0, 0, "", "", "");
       if (QLog.isColorLevel()) {
         QLog.d("ColorNick", 2, "onSetColorNick. clear saved colorNick");
       }
       this.a.a(true);
-      paramString = (ITroopMemberCardHandler)EditTroopMemberNickService.a(this.a).getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER);
+      paramString = (ITroopMemberCardHandler)EditTroopMemberNickService.b(this.a).getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER);
     }
     try
     {
-      paramString.a(Long.parseLong(this.a.c), Long.parseLong(this.a.d));
+      paramString.a(Long.parseLong(this.a.j), Long.parseLong(this.a.k));
       return;
     }
     catch (Exception paramString)
@@ -43,17 +43,17 @@ class EditTroopMemberNickService$12
       Context localContext;
       break label98;
     }
-    EditTroopMemberNickService.a(this.a).loadingProgress(false);
+    EditTroopMemberNickService.d(this.a).loadingProgress(false);
     return;
-    EditTroopMemberNickService.a(this.a).loadingProgress(false);
+    EditTroopMemberNickService.d(this.a).loadingProgress(false);
     if (paramInt == 1282)
     {
-      VasWebviewUtil.a(EditTroopMemberNickService.a(this.a).getCurrentUin(), "group_nickname", "group_nickname_9", "", 1, 0, 0, "", "", "");
-      paramString = HardCodeUtil.a(2131703796);
-      str = HardCodeUtil.a(2131703790);
+      VasWebviewUtil.a(EditTroopMemberNickService.b(this.a).getCurrentUin(), "group_nickname", "group_nickname_9", "", 1, 0, 0, "", "", "");
+      paramString = HardCodeUtil.a(2131901741);
+      str = HardCodeUtil.a(2131901736);
       try
       {
-        DialogUtil.a(EditTroopMemberNickService.a(this.a), 230, paramString, str, HardCodeUtil.a(2131703783), HardCodeUtil.a(2131703787), new EditTroopMemberNickService.12.1(this), new EditTroopMemberNickService.12.2(this)).show();
+        DialogUtil.a(EditTroopMemberNickService.f(this.a), 230, paramString, str, HardCodeUtil.a(2131901729), HardCodeUtil.a(2131901733), new EditTroopMemberNickService.12.1(this), new EditTroopMemberNickService.12.2(this)).show();
         return;
       }
       catch (Exception paramString)
@@ -64,21 +64,21 @@ class EditTroopMemberNickService$12
     }
     if (1283 == paramInt)
     {
-      QQToast.a(EditTroopMemberNickService.a(this.a), 1, HardCodeUtil.a(2131703786), 0).b(EditTroopMemberNickService.a(this.a));
+      QQToast.makeText(EditTroopMemberNickService.f(this.a), 1, HardCodeUtil.a(2131901732), 0).show(EditTroopMemberNickService.g(this.a));
       return;
     }
     if (1793 == paramInt)
     {
-      localContext = EditTroopMemberNickService.a(this.a);
+      localContext = EditTroopMemberNickService.f(this.a);
       str = paramString;
       if (TextUtils.isEmpty(paramString)) {
-        str = EditTroopMemberNickService.a(this.a, 2131693355);
+        str = EditTroopMemberNickService.a(this.a, 2131890904);
       }
-      QQToast.a(localContext, 1, str, 0).b(EditTroopMemberNickService.a(this.a));
+      QQToast.makeText(localContext, 1, str, 0).show(EditTroopMemberNickService.g(this.a));
       return;
     }
-    QQToast.a(EditTroopMemberNickService.a(this.a), 1, 2131694199, 0).b(EditTroopMemberNickService.a(this.a));
-    this.a.a.postDelayed(new EditTroopMemberNickService.12.3(this), 1500L);
+    QQToast.makeText(EditTroopMemberNickService.f(this.a), 1, 2131891837, 0).show(EditTroopMemberNickService.g(this.a));
+    this.a.L.postDelayed(new EditTroopMemberNickService.12.3(this), 1500L);
   }
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
@@ -97,7 +97,7 @@ class EditTroopMemberNickService$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.12
  * JD-Core Version:    0.7.0.1
  */

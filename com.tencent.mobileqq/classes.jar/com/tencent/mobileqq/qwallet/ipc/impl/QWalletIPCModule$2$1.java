@@ -29,12 +29,12 @@ class QWalletIPCModule$2$1
     ((Bundle)localObject).putInt("result", paramInt);
     ((Bundle)localObject).putString("path", paramString2);
     ((Bundle)localObject).putSerializable("res_info", paramResourceInfo);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, (Bundle)localObject);
+    this.a.send(0, (Bundle)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.ipc.impl.QWalletIPCModule.2.1
  * JD-Core Version:    0.7.0.1
  */

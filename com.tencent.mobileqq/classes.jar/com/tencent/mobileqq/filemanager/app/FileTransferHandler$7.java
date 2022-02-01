@@ -19,51 +19,51 @@ class FileTransferHandler$7
   
   public void run()
   {
-    FileManagerUtil.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight > 0) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth > 0))
+    FileManagerUtil.n(this.a);
+    if ((this.a.imgHeight > 0) && (this.a.imgWidth > 0))
     {
-      this.jdField_a_of_type_TencentImMsgResv21Hummer_resv_21$FileImgInfo.uint32_file_height.set(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight);
-      this.jdField_a_of_type_TencentImMsgResv21Hummer_resv_21$FileImgInfo.uint32_file_width.set(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth);
-      this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x4SubMsgType0x4$MsgBody.file_image_info.set(this.jdField_a_of_type_TencentImMsgResv21Hummer_resv_21$FileImgInfo);
+      this.b.uint32_file_height.set(this.a.imgHeight);
+      this.b.uint32_file_width.set(this.a.imgWidth);
+      this.c.file_image_info.set(this.b);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("Id[");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      ((StringBuilder)localObject1).append(this.a.nSessionId);
       ((StringBuilder)localObject1).append("]Send CCMsg, setThumbSize height[");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight);
+      ((StringBuilder)localObject1).append(this.a.imgHeight);
       ((StringBuilder)localObject1).append("], width[");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth);
+      ((StringBuilder)localObject1).append(this.a.imgWidth);
       ((StringBuilder)localObject1).append("]");
       QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
     }
-    else if ((!FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity)) && ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 2)))
+    else if ((!FileManagerUtil.b(this.a)) && ((this.a.nFileType == 0) || (this.a.nFileType == 2)))
     {
       new Handler(Looper.getMainLooper()).postDelayed(new FileTransferHandler.7.1(this), 1000L);
     }
-    Object localObject1 = this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x4SubMsgType0x4$MsgBody.toByteArray();
+    Object localObject1 = this.c.toByteArray();
     FMTransC2CMsgInfo localFMTransC2CMsgInfo = new FMTransC2CMsgInfo();
     localFMTransC2CMsgInfo.busiType = 1028;
-    localFMTransC2CMsgInfo.uuid = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-    localFMTransC2CMsgInfo.uniseq = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq;
-    localFMTransC2CMsgInfo.fileTransferObserver = this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver;
-    localFMTransC2CMsgInfo.msgSeq = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgSeq;
-    localFMTransC2CMsgInfo.msgUid = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgUid;
-    localFMTransC2CMsgInfo.sessionId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    localFMTransC2CMsgInfo.uuid = this.a.Uuid;
+    localFMTransC2CMsgInfo.uniseq = this.a.uniseq;
+    localFMTransC2CMsgInfo.fileTransferObserver = this.d;
+    localFMTransC2CMsgInfo.msgSeq = this.a.msgSeq;
+    localFMTransC2CMsgInfo.msgUid = this.a.msgUid;
+    localFMTransC2CMsgInfo.sessionId = this.a.nSessionId;
+    Object localObject2 = this.a;
     localFMTransC2CMsgInfo.entity = ((FileManagerEntity)localObject2);
     ((FileManagerEntity)localObject2).bOnceSuccess = true;
-    ((FileManagerEntity)localObject2).strQRUrl = FileManagerUtil.e((FileManagerEntity)localObject2);
-    this.this$0.a.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    ((FileManagerEntity)localObject2).strQRUrl = FileManagerUtil.r((FileManagerEntity)localObject2);
+    this.this$0.a.getFileManagerDataCenter().c(this.a);
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("=_= ^> [Send CC]send offline CC [");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    ((StringBuilder)localObject2).append(this.a.nSessionId);
     ((StringBuilder)localObject2).append("], 0x211, 0x4");
     QLog.i("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject2).toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new FileTransferHandler.7.2(this, (byte[])localObject1, localFMTransC2CMsgInfo));
+    this.e.post(new FileTransferHandler.7.2(this, (byte[])localObject1, localFMTransC2CMsgInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.7
  * JD-Core Version:    0.7.0.1
  */

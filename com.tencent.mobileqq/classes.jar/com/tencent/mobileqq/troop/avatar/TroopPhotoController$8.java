@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.troop.avatar;
 
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.troop.TroopClipPic;
-import com.tencent.mobileqq.data.troop.TroopInfo;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.observer.AccountObserver;
@@ -14,7 +12,7 @@ class TroopPhotoController$8
   
   public void onUpdateSKey(String paramString1, String paramString2)
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = this.a.z.size();
     if (paramString1 == null)
     {
       for (;;)
@@ -24,24 +22,25 @@ class TroopPhotoController$8
           break;
         }
         paramString1 = this.a;
-        paramString1 = TroopPhotoController.a(paramString1, ((TroopClipPic)paramString1.jdField_a_of_type_JavaUtilArrayList.get(j)).ts);
+        paramString1 = TroopPhotoController.a(paramString1, ((TroopClipPic)paramString1.z.get(j)).ts);
         if (paramString1 != null)
         {
-          this.a.jdField_a_of_type_JavaUtilList.remove(paramString1);
-          this.a.b(paramString1);
+          this.a.y.remove(paramString1);
+          this.a.a(paramString1);
         }
         i = j;
       }
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.a.z.clear();
       return;
     }
     paramString2 = this.a;
-    paramString2.a(paramString2.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    paramString2.u = paramString1;
+    paramString2.a(paramString2.z, this.a.s);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.avatar.TroopPhotoController.8
  * JD-Core Version:    0.7.0.1
  */

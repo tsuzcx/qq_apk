@@ -24,7 +24,7 @@ class GroupPicUploadProcessor$2
     {
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("<BDH_LOG> Transaction End : Failed. New : SendTotalCost:");
-      paramArrayOfByte.append(l - GroupPicUploadProcessor.access$200(this.this$0));
+      paramArrayOfByte.append(l - this.this$0.startTime);
       paramArrayOfByte.append("ms");
       QLog.d("GroupPicUploadProcessor", 2, paramArrayOfByte.toString());
     }
@@ -45,7 +45,7 @@ class GroupPicUploadProcessor$2
     {
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("<BDH_LOG> Transaction End : Success. New : SendTotalCost:");
-      paramArrayOfByte.append(l - GroupPicUploadProcessor.access$200(this.this$0));
+      paramArrayOfByte.append(l - this.this$0.startTime);
       paramArrayOfByte.append("ms ,fileSize:");
       paramArrayOfByte.append(this.this$0.file.fileSize);
       paramArrayOfByte.append(" transInfo:");
@@ -70,7 +70,7 @@ class GroupPicUploadProcessor$2
   {
     long l = SystemClock.uptimeMillis();
     this.this$0.log("<BDH_LOG> onSwitch2BackupChannel() switch to HTTP channel");
-    this.this$0.mProcessorReport.mReportInfo.put("param_switchChannel", String.valueOf(l - GroupPicUploadProcessor.access$200(this.this$0)));
+    this.this$0.mProcessorReport.mReportInfo.put("param_switchChannel", String.valueOf(l - this.this$0.startTime));
   }
   
   public void onTransStart()
@@ -88,15 +88,15 @@ class GroupPicUploadProcessor$2
     if ((l < this.this$0.mFileSize) && (!this.this$0.mIsCancel) && (!this.this$0.mIsPause))
     {
       this.this$0.sendProgressMessage();
-      if (GroupPicUploadProcessor.access$000(this.this$0)) {
-        ((IPeakIpcController)QRoute.api(IPeakIpcController.class)).updatePeakVideoAndPicStatus(GroupPicUploadProcessor.access$100(this.this$0), 1002, this.this$0.getProgress());
+      if (this.this$0.isStoryPhoto) {
+        ((IPeakIpcController)QRoute.api(IPeakIpcController.class)).updatePeakVideoAndPicStatus(this.this$0.picMsg, 1002, this.this$0.getProgress());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.GroupPicUploadProcessor.2
  * JD-Core Version:    0.7.0.1
  */

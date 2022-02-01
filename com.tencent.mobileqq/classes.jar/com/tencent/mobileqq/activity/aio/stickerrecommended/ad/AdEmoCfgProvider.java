@@ -115,13 +115,13 @@ public class AdEmoCfgProvider
     //   100: aload 6
     //   102: iload_3
     //   103: invokevirtual 100	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   106: invokestatic 103	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfgProvider:a	(Lorg/json/JSONObject;)Lcom/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdItem;
+    //   106: invokestatic 104	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfgProvider:b	(Lorg/json/JSONObject;)Lcom/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdItem;
     //   109: astore 8
     //   111: aload 8
     //   113: ifnull +13 -> 126
     //   116: aload 7
     //   118: aload 8
-    //   120: invokeinterface 109 2 0
+    //   120: invokeinterface 110 2 0
     //   125: pop
     //   126: iload_3
     //   127: iconst_1
@@ -144,12 +144,12 @@ public class AdEmoCfgProvider
     //   156: invokespecial 27	java/lang/StringBuilder:<init>	()V
     //   159: astore 8
     //   161: aload 8
-    //   163: ldc 111
+    //   163: ldc 112
     //   165: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   168: pop
     //   169: aload 8
     //   171: aload_0
-    //   172: invokevirtual 112	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   172: invokevirtual 113	org/json/JSONObject:toString	()Ljava/lang/String;
     //   175: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   178: pop
     //   179: ldc 58
@@ -162,12 +162,12 @@ public class AdEmoCfgProvider
     //   194: istore 5
     //   196: iload_1
     //   197: istore_2
-    //   198: new 114	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg
+    //   198: new 115	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg
     //   201: dup
     //   202: iload 5
     //   204: iload_2
     //   205: aload 7
-    //   207: invokespecial 117	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg:<init>	(ZILjava/util/List;)V
+    //   207: invokespecial 118	com/tencent/mobileqq/activity/aio/stickerrecommended/ad/AdEmoCfg:<init>	(ZILjava/util/List;)V
     //   210: areturn
     // Local variable table:
     //   start	length	slot	name	signature
@@ -190,62 +190,6 @@ public class AdEmoCfgProvider
     //   116	126	133	org/json/JSONException
     //   41	57	138	org/json/JSONException
     //   11	27	145	org/json/JSONException
-  }
-  
-  public static AdItem a(JSONObject paramJSONObject)
-  {
-    localArrayList1 = new ArrayList();
-    localArrayList2 = new ArrayList();
-    try
-    {
-      JSONArray localJSONArray;
-      int i;
-      if (paramJSONObject.has("keyWords"))
-      {
-        localJSONArray = paramJSONObject.getJSONArray("keyWords");
-        i = 0;
-        while (i < localJSONArray.length())
-        {
-          localArrayList1.add(localJSONArray.getString(i));
-          i += 1;
-        }
-      }
-      Object localObject1;
-      if (paramJSONObject.has("emos"))
-      {
-        localJSONArray = paramJSONObject.getJSONArray("emos");
-        i = 0;
-        while (i < localJSONArray.length())
-        {
-          Object localObject2 = localJSONArray.getJSONObject(i);
-          localObject1 = ((JSONObject)localObject2).optString("imgUrl", "");
-          String str1 = ((JSONObject)localObject2).optString("md5", "");
-          long l = ((JSONObject)localObject2).optLong("fileSize", 0L);
-          int j = ((JSONObject)localObject2).optInt("width", 0);
-          int k = ((JSONObject)localObject2).optInt("height", 0);
-          String str2 = ((JSONObject)localObject2).optString("jumpUrl", "");
-          localObject2 = ((JSONObject)localObject2).optString("desc", "");
-          AdEmoItem localAdEmoItem = new AdEmoItem();
-          localAdEmoItem.jdField_a_of_type_JavaLangString = ((String)localObject1);
-          localAdEmoItem.jdField_b_of_type_JavaLangString = str1;
-          localAdEmoItem.jdField_a_of_type_Long = Long.valueOf(l).longValue();
-          localAdEmoItem.jdField_a_of_type_Int = j;
-          localAdEmoItem.jdField_b_of_type_Int = k;
-          localAdEmoItem.c = str2;
-          localAdEmoItem.d = ((String)localObject2);
-          localArrayList2.add(localAdEmoItem);
-          i += 1;
-        }
-      }
-      return new AdItem(localArrayList1, localArrayList2);
-    }
-    catch (JSONException localJSONException)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("parseAdItemJson has exception， adObject = ");
-      ((StringBuilder)localObject1).append(paramJSONObject.toString());
-      QLog.e("AdEmoCfgProvider", 2, ((StringBuilder)localObject1).toString(), localJSONException);
-    }
   }
   
   public static void a(Context paramContext, String paramString, JSONObject paramJSONObject)
@@ -281,10 +225,66 @@ public class AdEmoCfgProvider
     }
     finally {}
   }
+  
+  public static AdItem b(JSONObject paramJSONObject)
+  {
+    localArrayList1 = new ArrayList();
+    localArrayList2 = new ArrayList();
+    try
+    {
+      JSONArray localJSONArray;
+      int i;
+      if (paramJSONObject.has("keyWords"))
+      {
+        localJSONArray = paramJSONObject.getJSONArray("keyWords");
+        i = 0;
+        while (i < localJSONArray.length())
+        {
+          localArrayList1.add(localJSONArray.getString(i));
+          i += 1;
+        }
+      }
+      Object localObject1;
+      if (paramJSONObject.has("emos"))
+      {
+        localJSONArray = paramJSONObject.getJSONArray("emos");
+        i = 0;
+        while (i < localJSONArray.length())
+        {
+          Object localObject2 = localJSONArray.getJSONObject(i);
+          localObject1 = ((JSONObject)localObject2).optString("imgUrl", "");
+          String str1 = ((JSONObject)localObject2).optString("md5", "");
+          long l = ((JSONObject)localObject2).optLong("fileSize", 0L);
+          int j = ((JSONObject)localObject2).optInt("width", 0);
+          int k = ((JSONObject)localObject2).optInt("height", 0);
+          String str2 = ((JSONObject)localObject2).optString("jumpUrl", "");
+          localObject2 = ((JSONObject)localObject2).optString("desc", "");
+          AdEmoItem localAdEmoItem = new AdEmoItem();
+          localAdEmoItem.a = ((String)localObject1);
+          localAdEmoItem.b = str1;
+          localAdEmoItem.c = Long.valueOf(l).longValue();
+          localAdEmoItem.d = j;
+          localAdEmoItem.e = k;
+          localAdEmoItem.f = str2;
+          localAdEmoItem.g = ((String)localObject2);
+          localArrayList2.add(localAdEmoItem);
+          i += 1;
+        }
+      }
+      return new AdItem(localArrayList1, localArrayList2);
+    }
+    catch (JSONException localJSONException)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parseAdItemJson has exception， adObject = ");
+      ((StringBuilder)localObject1).append(paramJSONObject.toString());
+      QLog.e("AdEmoCfgProvider", 2, ((StringBuilder)localObject1).toString(), localJSONException);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.ad.AdEmoCfgProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -24,9 +24,9 @@ class RichmediaClient$2
       LOG.a("PTV.RichmediaClient", "ICallBack.Stub() getData start. ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER");
       PresendPicMgr localPresendPicMgr = PresendPicMgr.a();
       StringBuilder localStringBuilder = null;
-      if ((localPresendPicMgr != null) && (localPresendPicMgr.jdField_a_of_type_Boolean))
+      if ((localPresendPicMgr != null) && (localPresendPicMgr.c))
       {
-        paramBundle = new Messenger(localPresendPicMgr.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr$PresendHandler).getBinder();
+        paramBundle = new Messenger(localPresendPicMgr.a).getBinder();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("ICallBack.Stub() getData. ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER , b = ");
         localStringBuilder.append(paramBundle);
@@ -47,13 +47,28 @@ class RichmediaClient$2
       if (paramBundle != null)
       {
         localBundle.putParcelable("key_presend_mgr_handler", new BinderWarpper(paramBundle));
-        localBundle.putInt("PhotoConst.PHOTO_COUNT", localPresendPicMgr.a());
+        localBundle.putInt("PhotoConst.PHOTO_COUNT", localPresendPicMgr.d());
       }
     }
     return localBundle;
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void a(CompressInfo paramCompressInfo)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ICallBack.Stub() compress start. info.src = ");
+    localStringBuilder.append(paramCompressInfo.h);
+    localStringBuilder.append(",uuid = ");
+    localStringBuilder.append(paramCompressInfo.a);
+    LOG.a("PTV.RichmediaClient", localStringBuilder.toString());
+    ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(paramCompressInfo);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ICallBack.Stub() compress finish. info = ");
+    localStringBuilder.append(paramCompressInfo);
+    LOG.a("PTV.RichmediaClient", localStringBuilder.toString());
+  }
+  
+  public void b(int paramInt, Bundle paramBundle)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("sendRequest. cmd = ");
@@ -103,7 +118,7 @@ class RichmediaClient$2
               if (paramBundle != null)
               {
                 paramBundle.a(paramInt);
-                paramBundle.b();
+                paramBundle.c();
               }
             }
           }
@@ -134,7 +149,7 @@ class RichmediaClient$2
         {
           localObject = PresendPicMgr.a();
           if (localObject != null) {
-            ((PresendPicMgr)localObject).b();
+            ((PresendPicMgr)localObject).c();
           }
           paramBundle = PresendPicMgr.b(IPresendPicMgr.Stub.a(paramBundle.a));
           localObject = new StringBuilder();
@@ -147,25 +162,10 @@ class RichmediaClient$2
       }
     }
   }
-  
-  public void a(CompressInfo paramCompressInfo)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ICallBack.Stub() compress start. info.src = ");
-    localStringBuilder.append(paramCompressInfo.c);
-    localStringBuilder.append(",uuid = ");
-    localStringBuilder.append(paramCompressInfo.a);
-    LOG.a("PTV.RichmediaClient", localStringBuilder.toString());
-    ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(paramCompressInfo);
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ICallBack.Stub() compress finish. info = ");
-    localStringBuilder.append(paramCompressInfo);
-    LOG.a("PTV.RichmediaClient", localStringBuilder.toString());
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaClient.2
  * JD-Core Version:    0.7.0.1
  */

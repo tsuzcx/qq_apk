@@ -14,10 +14,10 @@ class LocationPickFragment$7
   {
     if (1 == paramMotionEvent.getAction())
     {
-      if (!LocationPickFragment.a(this.a).b())
+      if (!LocationPickFragment.d(this.a).h())
       {
-        LocationPickFragment.a(this.a).setDisplayFromType(3);
-        LocationPickFragment.a(this.a).a();
+        LocationPickFragment.d(this.a).setDisplayFromType(3);
+        LocationPickFragment.d(this.a).a();
       }
       ReportController.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
     }
@@ -26,7 +26,7 @@ class LocationPickFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickFragment.7
  * JD-Core Version:    0.7.0.1
  */

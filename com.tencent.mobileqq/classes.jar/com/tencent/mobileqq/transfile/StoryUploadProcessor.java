@@ -65,7 +65,7 @@ public class StoryUploadProcessor
   
   private String getSdcardInfo()
   {
-    return String.format("sdcard free size:%d, upload dir exist:%b ", new Object[] { Long.valueOf(com.tencent.biz.qqstory.utils.FileUtils.a()), Boolean.valueOf(com.tencent.mobileqq.utils.FileUtils.fileExists(QQStoryConstant.f)) });
+    return String.format("sdcard free size:%d, upload dir exist:%b ", new Object[] { Long.valueOf(com.tencent.biz.qqstory.utils.FileUtils.b()), Boolean.valueOf(com.tencent.mobileqq.utils.FileUtils.fileExists(QQStoryConstant.g)) });
   }
   
   public static int makeStoryErrorCoder(int paramInt)
@@ -75,7 +75,7 @@ public class StoryUploadProcessor
   
   private int thisFileRemoveByOtherSoftWareErrorCode(String paramString)
   {
-    String str = com.tencent.biz.qqstory.utils.FileUtils.a(paramString);
+    String str = com.tencent.biz.qqstory.utils.FileUtils.f(paramString);
     long l1;
     try
     {
@@ -86,7 +86,7 @@ public class StoryUploadProcessor
       SLog.c(TAG, "exception", localException);
       l1 = 0L;
     }
-    long l2 = com.tencent.biz.qqstory.utils.FileUtils.b(QQStoryConstant.f);
+    long l2 = com.tencent.biz.qqstory.utils.FileUtils.h(QQStoryConstant.g);
     SLog.e(TAG, "orig file create time:%d, flag file create time:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
     if ((l2 != 0L) && ((l1 <= 0L) || (l2 <= l1)))
     {
@@ -247,9 +247,9 @@ public class StoryUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Int = -1;
-      localSendResult.jdField_b_of_type_Int = makeStoryErrorCoder(this.mProcessorReport.errCode);
-      localSendResult.jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
+      localSendResult.a = -1;
+      localSendResult.b = makeStoryErrorCoder(this.mProcessorReport.errCode);
+      localSendResult.c = this.mProcessorReport.errDesc;
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
   }
@@ -267,15 +267,15 @@ public class StoryUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Int = 0;
+      localSendResult.a = 0;
       if (this.file.fileType == 196610)
       {
-        localSendResult.jdField_b_of_type_JavaLangString = this.mPhotoUrl;
+        localSendResult.d = this.mPhotoUrl;
       }
       else
       {
-        localSendResult.c = this.mVid;
-        localSendResult.jdField_b_of_type_JavaLangString = this.mVideoUrl;
+        localSendResult.f = this.mVid;
+        localSendResult.d = this.mVideoUrl;
       }
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
@@ -300,7 +300,7 @@ public class StoryUploadProcessor
       localObject3 = new qqstory_bhd_upload_pic.ReqStoryPic();
       ((qqstory_bhd_upload_pic.ReqStoryPic)localObject3).platform.set(2);
       ((qqstory_bhd_upload_pic.ReqStoryPic)localObject3).tojpg.set(0);
-      ((qqstory_bhd_upload_pic.ReqStoryPic)localObject3).version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+      ((qqstory_bhd_upload_pic.ReqStoryPic)localObject3).version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
       this.file.bdhExtendInfo = ((qqstory_bhd_upload_pic.ReqStoryPic)localObject3).toByteArray();
     }
     else if (this.file.fileType == 196609)
@@ -380,7 +380,7 @@ public class StoryUploadProcessor
       onError();
       return;
     }
-    if (!NetworkUtils.a(QQStoryContext.a().a()))
+    if (!NetworkUtils.a(QQStoryContext.a().c()))
     {
       this.mProcessorReport.setError(880001, "no network", null, null);
       onError();
@@ -391,7 +391,7 @@ public class StoryUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.StoryUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

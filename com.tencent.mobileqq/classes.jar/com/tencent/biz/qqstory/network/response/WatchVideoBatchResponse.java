@@ -14,12 +14,11 @@ import java.util.List;
 public class WatchVideoBatchResponse
   extends BaseResponse
 {
-  public List<ReportWatchVideoManager.InnerVideoItem> a;
+  public List<ReportWatchVideoManager.InnerVideoItem> a = new ArrayList();
   
   public WatchVideoBatchResponse(qqstory_service.RspWatchVideoBatch paramRspWatchVideoBatch)
   {
     super(paramRspWatchVideoBatch.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     paramRspWatchVideoBatch = paramRspWatchVideoBatch.succ_video_list.get();
     if (paramRspWatchVideoBatch == null) {
       return;
@@ -30,7 +29,7 @@ public class WatchVideoBatchResponse
       qqstory_service.VideoItem localVideoItem = (qqstory_service.VideoItem)paramRspWatchVideoBatch.next();
       ReportWatchVideoManager.InnerVideoItem localInnerVideoItem = new ReportWatchVideoManager.InnerVideoItem();
       localInnerVideoItem.a = localVideoItem.vid.get().toStringUtf8();
-      this.jdField_a_of_type_JavaUtilList.add(localInnerVideoItem);
+      this.a.add(localInnerVideoItem);
     }
   }
   
@@ -38,16 +37,16 @@ public class WatchVideoBatchResponse
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WatchVideoBatchResponse{ errorCode=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" succList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.WatchVideoBatchResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -21,35 +21,35 @@ class ReadInJoySocializeRecommendFollowView$10$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onUpdateAfterAccountFollow uin = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(" isFollow = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.b);
       QLog.d("ReadInJoySocializeRecommendFollowView", 2, ((StringBuilder)localObject).toString());
     }
-    if ((ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a) != null) && (this.jdField_a_of_type_Long == ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a).mSocialFeedInfo.a.jdField_a_of_type_Long) && (!this.jdField_a_of_type_Boolean) && (ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a).isShowRecommendList))
+    if ((ReadInJoySocializeRecommendFollowView.g(this.c.a) != null) && (this.a == ReadInJoySocializeRecommendFollowView.g(this.c.a).mSocialFeedInfo.c.a) && (!this.b) && (ReadInJoySocializeRecommendFollowView.g(this.c.a).isShowRecommendList))
     {
-      ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a, false);
-      ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a).isShowRecommendList = false;
+      ReadInJoySocializeRecommendFollowView.a(this.c.a, false);
+      ReadInJoySocializeRecommendFollowView.g(this.c.a).isShowRecommendList = false;
     }
-    if ((ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a) != null) && (ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a).mRecommendFollowInfos != null) && (ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a).mRecommendFollowInfos.a != null))
+    if ((ReadInJoySocializeRecommendFollowView.g(this.c.a) != null) && (ReadInJoySocializeRecommendFollowView.g(this.c.a).mRecommendFollowInfos != null) && (ReadInJoySocializeRecommendFollowView.g(this.c.a).mRecommendFollowInfos.c != null))
     {
-      localObject = ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a).mRecommendFollowInfos.a.iterator();
+      localObject = ReadInJoySocializeRecommendFollowView.g(this.c.a).mRecommendFollowInfos.c.iterator();
       while (((Iterator)localObject).hasNext())
       {
         RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)((Iterator)localObject).next();
-        if (this.jdField_a_of_type_Long == localRecommendFollowInfo.uin)
+        if (this.a == localRecommendFollowInfo.uin)
         {
-          localRecommendFollowInfo.isFollowed = this.jdField_a_of_type_Boolean;
-          ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a, localRecommendFollowInfo);
+          localRecommendFollowInfo.isFollowed = this.b;
+          ReadInJoySocializeRecommendFollowView.a(this.c.a, localRecommendFollowInfo);
         }
       }
-      ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a).notifyDataSetChanged();
+      ReadInJoySocializeRecommendFollowView.c(this.c.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoySocializeRecommendFollowView.10.1
  * JD-Core Version:    0.7.0.1
  */

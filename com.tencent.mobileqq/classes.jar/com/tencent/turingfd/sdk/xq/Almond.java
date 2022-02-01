@@ -1,36 +1,55 @@
 package com.tencent.turingfd.sdk.xq;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class Almond
-  extends case
+public class Almond
+  extends else
 {
-  public static Map<Integer, Integer> kc = new HashMap();
-  public Map<Integer, Integer> lc = null;
+  public static List<UrsaMinor> a;
+  public int b = 0;
+  public List<UrsaMinor> c = null;
   
   static
   {
-    Integer localInteger = Integer.valueOf(0);
-    kc.put(localInteger, localInteger);
+    ArrayList localArrayList = new ArrayList();
+    a = localArrayList;
+    localArrayList.add(new UrsaMinor());
   }
   
-  public void a(byte parambyte)
+  public void a(case paramcase)
   {
-    Map localMap = this.lc;
-    if (localMap != null) {
-      parambyte.a(localMap, 0);
+    paramcase.a(this.b, 0);
+    List localList = this.c;
+    if (localList != null) {
+      paramcase.a(localList, 1);
     }
   }
   
   public void a(try paramtry)
   {
-    this.lc = ((Map)paramtry.a(kc, 0, false));
+    this.b = paramtry.a(this.b, 0, true);
+    this.c = ((List)paramtry.a(a, 1, false));
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if (!(paramObject instanceof Almond)) {
+      return false;
+    }
+    paramObject = (Almond)paramObject;
+    return (goto.a(this.b, paramObject.b)) && (this.c.equals(paramObject.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Almond
  * JD-Core Version:    0.7.0.1
  */

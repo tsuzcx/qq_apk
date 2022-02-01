@@ -17,10 +17,10 @@ class SubscribePersonalBottomOpusFragment$3
   
   public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.registerCertifiedAccountUrl.get()))
+    if (!TextUtils.isEmpty(this.a.e.poster.registerCertifiedAccountUrl.get()))
     {
-      SubscribeLaucher.a(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.registerCertifiedAccountUrl.get());
-      VSReporter.b(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.id.get(), "auth_person", "apply_clk", 0, 0, new String[0]);
+      SubscribeLaucher.a(this.a.e.poster.registerCertifiedAccountUrl.get());
+      VSReporter.b(this.a.e.poster.id.get(), "auth_person", "apply_clk", 0, 0, new String[0]);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

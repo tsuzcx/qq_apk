@@ -19,6 +19,7 @@ import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.apollo.web.api.impl.ApolloJsPluginImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -49,6 +50,13 @@ public class ApolloWebDataHandlerImpl
     sDisableCache = BaseApplicationImpl.getApplication().getSharedPreferences("sp_apollo_webView", 4).getBoolean("sp_key_disable_thunder_cache", false);
   }
   
+  private void colorLogD(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, paramString);
+    }
+  }
+  
   private ApolloUrlInterceptor getInterceptor(CustomWebView paramCustomWebView)
   {
     if (paramCustomWebView == null) {
@@ -57,7 +65,7 @@ public class ApolloWebDataHandlerImpl
     paramCustomWebView = paramCustomWebView.getPluginEngine();
     if (paramCustomWebView != null)
     {
-      paramCustomWebView = paramCustomWebView.a("apollo");
+      paramCustomWebView = paramCustomWebView.b("apollo");
       if ((paramCustomWebView != null) && ((paramCustomWebView instanceof ApolloJsPluginImpl))) {
         return ((ApolloJsPluginImpl)paramCustomWebView).getInterceptor();
       }
@@ -87,83 +95,46 @@ public class ApolloWebDataHandlerImpl
     return localObject;
   }
   
-  public boolean doInterceptApolloCmd(String paramString1, String paramString2, AppInterface paramAppInterface, Object paramObject)
+  private boolean shouldInterceptSsoCmd(String paramString1, WebViewPlugin paramWebViewPlugin, String paramString2, AppInterface paramAppInterface)
   {
-    WebViewPlugin localWebViewPlugin;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
-    {
-      if (!(paramObject instanceof WebViewPlugin))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("[cmshow]apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, webViewPluginObj is not instanceof WebViewPlugin");
-        }
-        return false;
-      }
-      localWebViewPlugin = (WebViewPlugin)paramObject;
-      if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, NetworkUtil.isNetworkAvailable:false");
-        }
-        return false;
-      }
-      if ((localWebViewPlugin.mRuntime != null) && (localWebViewPlugin.mRuntime.a() != null)) {
-        if (this.mSSOConfig == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, mSSOConfig is null");
-          }
-          return false;
-        }
-      }
-    }
     for (;;)
     {
       try
       {
-        str3 = getApolloClientId(paramString1);
+        String str3 = getApolloClientId(paramString1);
         if (TextUtils.isEmpty(str3))
         {
-          if (!QLog.isColorLevel()) {
-            break label795;
-          }
-          paramString2 = new StringBuilder();
-          paramString2.append("doInterceptApollo false, url is:");
-          paramString2.append(paramString1);
-          paramString2.append(" no need preload");
-          QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, paramString2.toString());
+          paramWebViewPlugin = new StringBuilder();
+          paramWebViewPlugin.append("doInterceptApollo false, url is:");
+          paramWebViewPlugin.append(paramString1);
+          paramWebViewPlugin.append(" no need preload");
+          colorLogD(paramWebViewPlugin.toString());
           return false;
         }
-        paramObject = getInterceptor(localWebViewPlugin.mRuntime.a());
-        if (paramObject == null)
+        ApolloUrlInterceptor localApolloUrlInterceptor = getInterceptor(paramWebViewPlugin.mRuntime.a());
+        if (localApolloUrlInterceptor == null)
         {
-          if (!QLog.isColorLevel()) {
-            break label797;
-          }
-          QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, apolloSession is null");
+          colorLogD("doInterceptApollo false, apolloSession is null");
           return false;
         }
-        localJSONObject = new JSONObject(paramString2);
-        str1 = localJSONObject.getString("callback");
+        JSONObject localJSONObject = new JSONObject(paramString2);
+        String str1 = localJSONObject.getString("callback");
         if (TextUtils.isEmpty(str1)) {
           return false;
         }
-        str2 = localJSONObject.getString("cmd");
+        String str2 = localJSONObject.getString("cmd");
         if (!this.mSSOConfig.a(str3, str2))
         {
-          if (!QLog.isColorLevel()) {
-            break label799;
-          }
           paramString1 = new StringBuilder();
           paramString1.append("doInterceptApollo false, apolloClientId:");
           paramString1.append(str3);
           paramString1.append(" cmd:");
           paramString1.append(str2);
           paramString1.append(",mSSOConfig.isValidCmd:false");
-          QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, paramString1.toString());
+          colorLogD(paramString1.toString());
           return false;
         }
-        str3 = this.mSSOConfig.a(str3, str2);
+        str3 = this.mSSOConfig.b(str3, str2);
         paramString2 = (ApolloWebDataHandlerImpl.WebSSOTask)this.mPreloadSSODatas.get(str3);
         if (paramString2 != null)
         {
@@ -171,103 +142,101 @@ public class ApolloWebDataHandlerImpl
           {
             if (paramString2.a(str2))
             {
-              if (QLog.isColorLevel())
+              paramString1 = new StringBuilder();
+              paramString1.append("doInterceptApolloCmd, webSSOTask.isValid true, mResultJson=");
+              paramString1.append(paramString2);
+              colorLogD(paramString1.toString());
+              if (ApolloWebDataHandlerImpl.WebSSOTask.b(paramString2) != null)
               {
-                paramString1 = new StringBuilder();
-                paramString1.append("doInterceptApolloCmd, webSSOTask.isValid true, mResultJson=");
-                paramString1.append(paramString2);
-                QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, paramString1.toString());
+                ApolloWebDataHandlerImpl.WebSSOTask.b(paramString2).c = System.currentTimeMillis();
+                ApolloWebDataHandlerImpl.WebSSOTask.b(paramString2).d = System.currentTimeMillis();
               }
-              if (ApolloWebDataHandlerImpl.WebSSOTask.a(paramString2) != null)
-              {
-                ApolloWebDataHandlerImpl.WebSSOTask.a(paramString2).c = System.currentTimeMillis();
-                ApolloWebDataHandlerImpl.WebSSOTask.a(paramString2).d = System.currentTimeMillis();
-              }
-              localWebViewPlugin.callJs(str1, new String[] { ApolloWebDataHandlerImpl.WebSSOTask.a(paramString2).toString() });
+              paramWebViewPlugin.callJs(str1, new String[] { ApolloWebDataHandlerImpl.WebSSOTask.c(paramString2).toString() });
               this.mPreloadSSODatas.remove(str3);
               return true;
             }
-            if (QLog.isColorLevel())
-            {
-              StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append("doInterceptApolloCmd, webSSOTask.isValid false,webSSOTask:");
-              localStringBuilder.append(paramString2);
-              QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, localStringBuilder.toString());
-            }
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("doInterceptApolloCmd, webSSOTask.isValid false,webSSOTask:");
+            localStringBuilder.append(paramString2);
+            colorLogD(localStringBuilder.toString());
             this.mPreloadSSODatas.remove(str3);
-            break label810;
+            break label522;
           }
-          if (ApolloWebDataHandlerImpl.WebSSOTask.a(paramString2) == null) {
-            break label801;
+          if (ApolloWebDataHandlerImpl.WebSSOTask.b(paramString2) != null) {
+            ApolloWebDataHandlerImpl.WebSSOTask.b(paramString2).c = System.currentTimeMillis();
           }
-          ApolloWebDataHandlerImpl.WebSSOTask.a(paramString2).c = System.currentTimeMillis();
-          paramString2.a(new ApolloWebDataHandlerImpl.WebDataCallBack(this, str1, localWebViewPlugin));
-          if (!QLog.isColorLevel()) {
-            break label804;
-          }
-          QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, "doInterceptApolloCmd, has webSSOTask = true, but webSSOTask.mReceivedSSO:false, wait notify!");
-          break label804;
+          paramString2.a(new ApolloWebDataHandlerImpl.WebDataCallBack(this, str1, paramWebViewPlugin));
+          colorLogD("doInterceptApolloCmd, has webSSOTask = true, but webSSOTask.mReceivedSSO:false, wait notify!");
+          i = 0;
         }
-        if (!QLog.isColorLevel()) {
-          break label810;
+        else
+        {
+          colorLogD("doInterceptApolloCmd, has webSSOTask = false,create webSSOTask!");
+          break label522;
         }
-        QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, "doInterceptApolloCmd, has webSSOTask = false,create webSSOTask!");
+        if (i != 0)
+        {
+          if (localApolloUrlInterceptor != null) {
+            paramString2 = localApolloUrlInterceptor.b();
+          } else {
+            paramString2 = new ApolloWebStatistics();
+          }
+          paramString2.c = System.currentTimeMillis();
+          paramString2 = new ApolloWebDataHandlerImpl.WebSSOTask(paramString2, str3, str2);
+          paramString2.a(new ApolloWebDataHandlerImpl.WebDataCallBack(this, str1, paramWebViewPlugin));
+          if (paramWebViewPlugin.mRuntime != null) {
+            paramString2.a(paramWebViewPlugin.mRuntime.d(), paramString1, localJSONObject, paramAppInterface);
+          }
+          this.mPreloadSSODatas.put(str3, paramString2);
+        }
+        return true;
       }
       catch (Exception paramString1)
       {
-        String str3;
-        JSONObject localJSONObject;
-        String str1;
-        String str2;
         paramString1.printStackTrace();
         return false;
       }
-      if (i != 0)
-      {
-        if (paramObject != null) {
-          paramString2 = paramObject.a();
-        } else {
-          paramString2 = new ApolloWebStatistics();
-        }
-        paramString2.c = System.currentTimeMillis();
-        paramString2 = new ApolloWebDataHandlerImpl.WebSSOTask(paramString2, str3, str2);
-        paramString2.a(new ApolloWebDataHandlerImpl.WebDataCallBack(this, str1, localWebViewPlugin));
-        if (localWebViewPlugin.mRuntime != null) {
-          paramString2.a(localWebViewPlugin.mRuntime.a(), paramString1, localJSONObject, paramAppInterface);
-        }
-        this.mPreloadSSODatas.put(str3, paramString2);
-      }
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, "doInterceptApollo false, plugin.mRuntime.getWebView() is null");
-      }
-      return false;
-      if (QLog.isColorLevel())
-      {
-        paramObject = new StringBuilder();
-        paramObject.append("doInterceptApollo false, url=");
-        paramObject.append(paramString1);
-        paramObject.append(" app:");
-        paramObject.append(paramAppInterface);
-        paramObject.append(" requestStr:");
-        paramObject.append(paramString2);
-        QLog.e("[cmshow]apollo_client_ApolloWebDataHandler", 2, paramObject.toString());
-      }
-      return false;
-      label795:
-      return false;
-      label797:
-      return false;
-      label799:
-      return false;
-      label801:
-      continue;
-      label804:
-      int i = 0;
-      continue;
-      label810:
-      i = 1;
+      label522:
+      int i = 1;
     }
+  }
+  
+  public boolean doInterceptApolloCmd(String paramString1, String paramString2, AppInterface paramAppInterface, Object paramObject)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      if (!(paramObject instanceof WebViewPlugin))
+      {
+        colorLogD("doInterceptApollo false, webViewPluginObj is not instanceof WebViewPlugin");
+        return false;
+      }
+      paramObject = (WebViewPlugin)paramObject;
+      if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
+      {
+        colorLogD("doInterceptApollo false, NetworkUtil.isNetworkAvailable:false");
+        return false;
+      }
+      if ((paramObject.mRuntime != null) && (paramObject.mRuntime.a() != null))
+      {
+        if (this.mSSOConfig == null)
+        {
+          colorLogD("doInterceptApollo false, mSSOConfig is null");
+          return false;
+        }
+        return shouldInterceptSsoCmd(paramString1, paramObject, paramString2, paramAppInterface);
+      }
+      colorLogD("doInterceptApollo false, plugin.mRuntime.getWebView() is null");
+      return false;
+    }
+    paramObject = new StringBuilder();
+    paramObject.append("doInterceptApollo false, url=");
+    paramObject.append(paramString1);
+    paramObject.append(" app:");
+    paramObject.append(paramAppInterface);
+    paramObject.append(" requestStr:");
+    paramObject.append(paramString2);
+    colorLogD(paramObject.toString());
+    return false;
   }
   
   public String getApolloClientId(String paramString)
@@ -320,7 +289,7 @@ public class ApolloWebDataHandlerImpl
         }
         return null;
       }
-      paramString1 = this.mSSOConfig.a(paramString2, (String)localObject);
+      paramString1 = this.mSSOConfig.b(paramString2, (String)localObject);
       paramString2 = (ApolloWebDataHandlerImpl.WebSSOTask)this.mPreloadSSODatas.get(paramString1);
       if (paramString2 != null)
       {
@@ -335,12 +304,12 @@ public class ApolloWebDataHandlerImpl
               ((StringBuilder)localObject).append(paramString2);
               QLog.d("[cmshow]apollo_client_ApolloWebDataHandler", 2, ((StringBuilder)localObject).toString());
             }
-            if (ApolloWebDataHandlerImpl.WebSSOTask.a(paramString2) != null)
+            if (ApolloWebDataHandlerImpl.WebSSOTask.b(paramString2) != null)
             {
-              ApolloWebDataHandlerImpl.WebSSOTask.a(paramString2).c = System.currentTimeMillis();
-              ApolloWebDataHandlerImpl.WebSSOTask.a(paramString2).d = System.currentTimeMillis();
+              ApolloWebDataHandlerImpl.WebSSOTask.b(paramString2).c = System.currentTimeMillis();
+              ApolloWebDataHandlerImpl.WebSSOTask.b(paramString2).d = System.currentTimeMillis();
             }
-            paramString2 = new WebResourceResponse("text/plain", "utf-8", ApolloClientUtil.a(ApolloWebDataHandlerImpl.WebSSOTask.a(paramString2).toString()));
+            paramString2 = new WebResourceResponse("text/plain", "utf-8", ApolloClientUtil.c(ApolloWebDataHandlerImpl.WebSSOTask.c(paramString2).toString()));
             this.mPreloadSSODatas.remove(paramString1);
             return paramString2;
           }
@@ -366,7 +335,7 @@ public class ApolloWebDataHandlerImpl
   {
     ApolloSSOConfig localApolloSSOConfig = this.mSSOConfig;
     if (localApolloSSOConfig != null) {
-      return localApolloSSOConfig.a(paramString);
+      return localApolloSSOConfig.d(paramString);
     }
     return null;
   }
@@ -397,7 +366,7 @@ public class ApolloWebDataHandlerImpl
       }
       Object localObject = this.mSSOConfig;
       if (localObject != null) {
-        return ((ApolloSSOConfig)localObject).a(paramString);
+        return ((ApolloSSOConfig)localObject).b(paramString);
       }
     }
     return false;
@@ -423,7 +392,7 @@ public class ApolloWebDataHandlerImpl
         return;
       }
       this.mSSOConfig.a(paramAppInterface);
-      Object localObject1 = this.mSSOConfig.a(paramString1);
+      Object localObject1 = this.mSSOConfig.c(paramString1);
       if ((localObject1 != null) && (!((Set)localObject1).isEmpty()))
       {
         Object localObject2;
@@ -440,7 +409,7 @@ public class ApolloWebDataHandlerImpl
         while (((Iterator)localObject1).hasNext())
         {
           Object localObject3 = (String)((Iterator)localObject1).next();
-          Object localObject4 = this.mSSOConfig.a(paramString1, (String)localObject3);
+          Object localObject4 = this.mSSOConfig.b(paramString1, (String)localObject3);
           localObject2 = (ApolloWebDataHandlerImpl.WebSSOTask)this.mPreloadSSODatas.get(localObject4);
           if ((localObject2 != null) && (((ApolloWebDataHandlerImpl.WebSSOTask)localObject2).a((String)localObject3)))
           {
@@ -505,7 +474,7 @@ public class ApolloWebDataHandlerImpl
       if (i != -1) {
         str = paramString1.substring(0, i);
       }
-      ApolloClientUtil.a(ApolloClientUtil.d(ApolloClientUtil.e(str)), paramString2);
+      FileUtils.writeFile(ApolloClientUtil.e(ApolloClientUtil.f(str)), paramString2);
       if (QLog.isColorLevel())
       {
         paramString1 = new StringBuilder();
@@ -568,7 +537,7 @@ public class ApolloWebDataHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.handler.api.impl.ApolloWebDataHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

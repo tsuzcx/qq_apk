@@ -13,9 +13,9 @@ class PlayOperationViewModelImpl$9$1
   
   public void run()
   {
-    ReportTask localReportTask = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelImplPlayOperationViewModelImpl$9.a.app).a("dc00899").b("grp_lbs").c("video").d("playpage_like_click").e(((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getAnchorUin());
+    ReportTask localReportTask = new ReportTask(this.b.a.app).a("dc00899").b("grp_lbs").c("video").d("playpage_like_click").e(((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getAnchorUin());
     String str1 = "";
-    int i = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyCardManager.b();
+    int i = this.a.c();
     String str2 = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getFrom();
     if (TextUtils.equals(((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getFrom(), "2")) {
       str1 = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getFeedId();
@@ -25,7 +25,7 @@ class PlayOperationViewModelImpl$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.viewmodel.impl.PlayOperationViewModelImpl.9.1
  * JD-Core Version:    0.7.0.1
  */

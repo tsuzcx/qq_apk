@@ -15,13 +15,13 @@ class WSDramaMiddlePart$1
   public void onClick(View paramView)
   {
     WSDramaMiddlePart.a(this.a, WSDramaUtils.a);
-    paramView = (WSDramaItemData)WSDramaMiddlePart.a(this.a).getItem(WSDramaMiddlePart.a(this.a).a());
-    WSDramaBeaconReport.b(paramView.b(), paramView.c(), paramView.a(), paramView.a(), this.a.a());
+    paramView = (WSDramaItemData)WSDramaMiddlePart.a(this.a).getItem(WSDramaMiddlePart.a(this.a).b());
+    WSDramaBeaconReport.b(paramView.d(), paramView.e(), paramView.b(), paramView.c(), this.a.k());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.WSDramaMiddlePart.1
  * JD-Core Version:    0.7.0.1
  */

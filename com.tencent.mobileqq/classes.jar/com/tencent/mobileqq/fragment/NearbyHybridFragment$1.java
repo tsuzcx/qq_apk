@@ -14,17 +14,17 @@ class NearbyHybridFragment$1
     if (paramInt4 > paramInt2)
     {
       if (paramInt2 == 0) {
-        this.a.a.b();
+        this.a.d.c();
       }
     }
-    else if ((paramInt4 < paramInt2) && (paramInt2 >= this.a.b.getHeight())) {
-      this.a.a.a();
+    else if ((paramInt4 < paramInt2) && (paramInt2 >= this.a.u.getHeight())) {
+      this.a.d.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.1
  * JD-Core Version:    0.7.0.1
  */

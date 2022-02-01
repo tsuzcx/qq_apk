@@ -17,7 +17,7 @@ public class ReadInJoyFollowActivity
   
   private void a()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131376123);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131444326);
     this.a = new ReadInJoyChannelViewController(this);
     this.a.a(70);
     this.a.b(0);
@@ -40,11 +40,11 @@ public class ReadInJoyFollowActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2131560199);
+    setContentView(2131626246);
     getWindow().setBackgroundDrawable(null);
     setClickableTitle("BB圈", new ReadInJoyFollowActivity.1(this));
     a();
-    this.a.aw_();
+    this.a.cT_();
     return true;
   }
   
@@ -88,7 +88,7 @@ public class ReadInJoyFollowActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.follow.ReadInJoyFollowActivity
  * JD-Core Version:    0.7.0.1
  */

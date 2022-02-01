@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -14,6 +15,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
 
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
 public class SearchView$SearchAutoComplete
@@ -31,7 +33,7 @@ public class SearchView$SearchAutoComplete
   
   public SearchView$SearchAutoComplete(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131034222);
+    this(paramContext, paramAttributeSet, R.attr.autoCompleteTextViewStyle);
   }
   
   public SearchView$SearchAutoComplete(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -56,6 +58,21 @@ public class SearchView$SearchAutoComplete
   public boolean enoughToFilter()
   {
     return (this.mThreshold <= 0) || (super.enoughToFilter());
+  }
+  
+  void ensureImeVisible()
+  {
+    if (Build.VERSION.SDK_INT >= 29)
+    {
+      setInputMethodMode(1);
+      if (enoughToFilter()) {
+        showDropDown();
+      }
+    }
+    else
+    {
+      SearchView.PRE_API_29_HIDDEN_METHOD_INVOKER.ensureImeVisible(this);
+    }
   }
   
   boolean isEmpty()
@@ -124,7 +141,7 @@ public class SearchView$SearchAutoComplete
     {
       this.mHasPendingShowSoftInputRequest = true;
       if (SearchView.isLandscapeMode(getContext())) {
-        SearchView.HIDDEN_METHOD_INVOKER.ensureImeVisible(this, true);
+        ensureImeVisible();
       }
     }
   }

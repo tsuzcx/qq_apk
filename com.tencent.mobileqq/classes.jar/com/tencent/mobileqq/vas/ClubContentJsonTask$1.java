@@ -23,9 +23,9 @@ final class ClubContentJsonTask$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ClubContentJsonTask jsondownfail task.key = ");
-    localStringBuilder.append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramDownloadTask.b);
     QLog.e("ClubContentJsonTask", 1, localStringBuilder.toString());
-    if ((paramDownloadTask.jdField_a_of_type_JavaLangString != null) && (paramDownloadTask.jdField_a_of_type_JavaLangString.equals(ClubContentJsonTask.g.jdField_a_of_type_JavaLangString)) && (paramAppRuntime != null)) {
+    if ((paramDownloadTask.b != null) && (paramDownloadTask.b.equals(ClubContentJsonTask.g.a)) && (paramAppRuntime != null)) {
       a(paramAppRuntime);
     }
     return false;
@@ -34,7 +34,7 @@ final class ClubContentJsonTask$1
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    Object localObject4 = paramDownloadTask.a();
+    Object localObject4 = paramDownloadTask.b();
     Object localObject2 = ((Bundle)localObject4).getString("method");
     Object localObject1 = localObject2;
     if (localObject2 == null) {
@@ -49,18 +49,18 @@ final class ClubContentJsonTask$1
     {
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("Club_jsonDownloadListener key = ");
-      ((StringBuilder)localObject3).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject3).append(",satatus = ");
-      ((StringBuilder)localObject3).append(paramDownloadTask.a());
-      ((StringBuilder)localObject3).append(",errCode = ");
-      ((StringBuilder)localObject3).append(paramDownloadTask.jdField_a_of_type_Int);
-      ((StringBuilder)localObject3).append(",errMsg = ");
       ((StringBuilder)localObject3).append(paramDownloadTask.b);
+      ((StringBuilder)localObject3).append(",satatus = ");
+      ((StringBuilder)localObject3).append(paramDownloadTask.e());
+      ((StringBuilder)localObject3).append(",errCode = ");
+      ((StringBuilder)localObject3).append(paramDownloadTask.c);
+      ((StringBuilder)localObject3).append(",errMsg = ");
+      ((StringBuilder)localObject3).append(paramDownloadTask.d);
       QLog.d("ClubContentJsonTask", 2, ((StringBuilder)localObject3).toString());
     }
     localObject3 = MobileQQ.sMobileQQ.peekAppRuntime();
     boolean bool;
-    if ((paramDownloadTask.a() == 3) && (paramDownloadTask.jdField_a_of_type_Int == 0))
+    if ((paramDownloadTask.e() == 3) && (paramDownloadTask.c == 0))
     {
       ClubContentJsonTask.a(paramDownloadTask, (Bundle)localObject4, (AppRuntime)localObject3);
       bool = true;
@@ -75,7 +75,7 @@ final class ClubContentJsonTask$1
       ((StringBuilder)localObject4).append("jsonDownloadListener,ret=");
       ((StringBuilder)localObject4).append(bool);
       ((StringBuilder)localObject4).append(",file.name:");
-      ((StringBuilder)localObject4).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject4).append(paramDownloadTask.b);
       ((StringBuilder)localObject4).append(",method:");
       ((StringBuilder)localObject4).append((String)localObject1);
       ((StringBuilder)localObject4).append(",ifromet:");
@@ -86,7 +86,7 @@ final class ClubContentJsonTask$1
       try
       {
         localObject4 = new HashMap();
-        ((HashMap)localObject4).put("param_jsonName", paramDownloadTask.jdField_a_of_type_JavaLangString);
+        ((HashMap)localObject4).put("param_jsonName", paramDownloadTask.b);
         ((HashMap)localObject4).put("param_method", localObject1);
         ((HashMap)localObject4).put("param_from", localObject2);
         StatisticCollector.getInstance(((AppRuntime)localObject3).getApplication().getApplicationContext()).collectPerformance(((AppRuntime)localObject3).getAccount(), "ClubContentJsonLoaded", bool, 1L, 0L, (HashMap)localObject4, "", false);
@@ -108,7 +108,7 @@ final class ClubContentJsonTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ClubContentJsonTask.1
  * JD-Core Version:    0.7.0.1
  */

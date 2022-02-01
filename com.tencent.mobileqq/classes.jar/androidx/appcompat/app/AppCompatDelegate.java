@@ -11,10 +11,12 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import androidx.annotation.CallSuper;
 import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.StyleRes;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.view.ActionMode.Callback;
@@ -26,6 +28,7 @@ import java.util.Iterator;
 
 public abstract class AppCompatDelegate
 {
+  static final boolean DEBUG = false;
   public static final int FEATURE_ACTION_MODE_OVERLAY = 10;
   public static final int FEATURE_SUPPORT_ACTION_BAR = 108;
   public static final int FEATURE_SUPPORT_ACTION_BAR_OVERLAY = 109;
@@ -39,15 +42,25 @@ public abstract class AppCompatDelegate
   public static final int MODE_NIGHT_UNSPECIFIED = -100;
   public static final int MODE_NIGHT_YES = 2;
   static final String TAG = "AppCompatDelegate";
-  private static final ArraySet<WeakReference<AppCompatDelegate>> sActiveDelegates = new ArraySet();
-  private static final Object sActiveDelegatesLock = new Object();
+  private static final ArraySet<WeakReference<AppCompatDelegate>> sActivityDelegates = new ArraySet();
+  private static final Object sActivityDelegatesLock = new Object();
   private static int sDefaultNightMode = -100;
+  
+  static void addActiveDelegate(@NonNull AppCompatDelegate paramAppCompatDelegate)
+  {
+    synchronized (sActivityDelegatesLock)
+    {
+      removeDelegateFromActives(paramAppCompatDelegate);
+      sActivityDelegates.add(new WeakReference(paramAppCompatDelegate));
+      return;
+    }
+  }
   
   private static void applyDayNightToActiveDelegates()
   {
-    synchronized (sActiveDelegatesLock)
+    synchronized (sActivityDelegatesLock)
     {
-      Iterator localIterator = sActiveDelegates.iterator();
+      Iterator localIterator = sActivityDelegates.iterator();
       while (localIterator.hasNext())
       {
         AppCompatDelegate localAppCompatDelegate = (AppCompatDelegate)((WeakReference)localIterator.next()).get();
@@ -97,19 +110,9 @@ public abstract class AppCompatDelegate
     return VectorEnabledTintResources.isCompatVectorFromResourcesEnabled();
   }
   
-  static void markStarted(@NonNull AppCompatDelegate paramAppCompatDelegate)
+  static void removeActivityDelegate(@NonNull AppCompatDelegate paramAppCompatDelegate)
   {
-    synchronized (sActiveDelegatesLock)
-    {
-      removeDelegateFromActives(paramAppCompatDelegate);
-      sActiveDelegates.add(new WeakReference(paramAppCompatDelegate));
-      return;
-    }
-  }
-  
-  static void markStopped(@NonNull AppCompatDelegate paramAppCompatDelegate)
-  {
-    synchronized (sActiveDelegatesLock)
+    synchronized (sActivityDelegatesLock)
     {
       removeDelegateFromActives(paramAppCompatDelegate);
       return;
@@ -118,9 +121,9 @@ public abstract class AppCompatDelegate
   
   private static void removeDelegateFromActives(@NonNull AppCompatDelegate paramAppCompatDelegate)
   {
-    synchronized (sActiveDelegatesLock)
+    synchronized (sActivityDelegatesLock)
     {
-      Iterator localIterator = sActiveDelegates.iterator();
+      Iterator localIterator = sActivityDelegates.iterator();
       while (localIterator.hasNext())
       {
         AppCompatDelegate localAppCompatDelegate = (AppCompatDelegate)((WeakReference)localIterator.next()).get();
@@ -159,7 +162,16 @@ public abstract class AppCompatDelegate
   
   public abstract boolean applyDayNight();
   
+  @Deprecated
   public void attachBaseContext(Context paramContext) {}
+  
+  @CallSuper
+  @NonNull
+  public Context attachBaseContext2(@NonNull Context paramContext)
+  {
+    attachBaseContext(paramContext);
+    return paramContext;
+  }
   
   public abstract View createView(@Nullable View paramView, String paramString, @NonNull Context paramContext, @NonNull AttributeSet paramAttributeSet);
   
@@ -213,6 +225,7 @@ public abstract class AppCompatDelegate
   
   public abstract void setHandleNativeActionModesEnabled(boolean paramBoolean);
   
+  @RequiresApi(17)
   public abstract void setLocalNightMode(int paramInt);
   
   public abstract void setSupportActionBar(@Nullable Toolbar paramToolbar);

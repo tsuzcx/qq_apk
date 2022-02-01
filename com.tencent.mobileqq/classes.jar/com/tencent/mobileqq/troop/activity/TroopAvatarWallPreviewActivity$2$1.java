@@ -10,19 +10,19 @@ class TroopAvatarWallPreviewActivity$2$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity$2.this$0.isFinishing()) {
+    if (this.b.this$0.isFinishing()) {
       return;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity$2.this$0.mIsFromPhotoWall)
+    if (!this.b.this$0.mIsFromPhotoWall)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity$2.this$0.initGallery(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity$2.a);
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity$2.this$0.mAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity$2.this$0.mTroopUin, this.jdField_a_of_type_ComTencentMobileqqDataSetting);
+      this.b.this$0.initGallery(this.b.a);
+      this.b.this$0.mAdapter.a(this.b.this$0.mTroopUin, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

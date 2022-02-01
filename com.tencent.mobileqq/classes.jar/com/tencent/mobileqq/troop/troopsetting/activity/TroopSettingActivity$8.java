@@ -18,12 +18,12 @@ class TroopSettingActivity$8
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     int i;
-    if ((TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 512))) {
+    if ((TroopInfo.hasPayPrivilege(this.a.i.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.i.mTroopPrivilegeFlag, 512))) {
       i = 1;
     } else {
       i = 0;
     }
-    if (!this.a.a.isMember)
+    if (!this.a.i.isMember)
     {
       if (i == 0) {
         return false;
@@ -31,7 +31,7 @@ class TroopSettingActivity$8
       if (paramMotionEvent.getAction() == 0) {
         paramView.getBackground().setColorFilter(new LightingColorFilter(0, -950263));
       }
-      if ((paramMotionEvent.getX() >= this.a.getResources().getDisplayMetrics().widthPixels - 2) || (paramMotionEvent.getX() <= 0.0F) || (paramMotionEvent.getY() <= 0.0F) || (paramMotionEvent.getY() > this.a.getResources().getDimensionPixelSize(2131297080) - 2) || (paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
+      if ((paramMotionEvent.getX() >= this.a.getResources().getDisplayMetrics().widthPixels - 2) || (paramMotionEvent.getX() <= 0.0F) || (paramMotionEvent.getY() <= 0.0F) || (paramMotionEvent.getY() > this.a.getResources().getDimensionPixelSize(2131297461) - 2) || (paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
         paramView.getBackground().setColorFilter(new LightingColorFilter(0, -158425));
       }
     }
@@ -40,7 +40,7 @@ class TroopSettingActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.8
  * JD-Core Version:    0.7.0.1
  */

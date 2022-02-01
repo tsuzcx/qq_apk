@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textSize="18.0dip" android:textColor="@color/bp" android:textColorHint="#ffbbbbbb" android:gravity="center_vertical" android:id="@id/g4z" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="49.0dip" android:hint="@string/eo3" android:maxLines="1" android:singleLine="true" android:imeOptions="actionNone" />
+    <EditText android:textSize="18.0dip" android:textColor="@color/black" android:textColorHint="#ffbbbbbb" android:gravity="center_vertical" android:id="@id/g4z" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="49.0dip" android:hint="@string/eo3" android:maxLines="1" android:singleLine="true" android:imeOptions="actionNone" />
     <View android:background="@color/xf" android:layout_width="fill_parent" android:layout_height="2.0px" />
 </LinearLayout>

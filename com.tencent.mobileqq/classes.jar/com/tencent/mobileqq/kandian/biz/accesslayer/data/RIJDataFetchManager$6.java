@@ -16,7 +16,7 @@ class RIJDataFetchManager$6
   
   public void run()
   {
-    boolean bool = this.this$0.d();
+    boolean bool = this.this$0.h();
     int m = 2;
     Object localObject2 = "0";
     int k = 0;
@@ -25,13 +25,13 @@ class RIJDataFetchManager$6
     int i;
     if (!bool)
     {
-      if ((RIJDataFetchManager.a(this.this$0).a() instanceof BaseActivity)) {
-        bool = SharedPreUtils.p(RIJDataFetchManager.a(this.this$0).a(), ((BaseActivity)RIJDataFetchManager.a(this.this$0).a()).getCurrentAccountUin());
+      if ((RIJDataFetchManager.a(this.this$0).q() instanceof BaseActivity)) {
+        bool = SharedPreUtils.bz(RIJDataFetchManager.a(this.this$0).q(), ((BaseActivity)RIJDataFetchManager.a(this.this$0).q()).getCurrentAccountUin());
       } else {
         bool = false;
       }
-      if ((RIJDataFetchManager.a(this.this$0).a() instanceof BaseActivity)) {
-        localObject1 = ((ReadInJoySkinManager)((BaseActivity)RIJDataFetchManager.a(this.this$0).a()).app.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER)).a();
+      if ((RIJDataFetchManager.a(this.this$0).q() instanceof BaseActivity)) {
+        localObject1 = ((ReadInJoySkinManager)((BaseActivity)RIJDataFetchManager.a(this.this$0).q()).app.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER)).b();
       } else {
         localObject1 = "0";
       }
@@ -50,12 +50,12 @@ class RIJDataFetchManager$6
         i = 0;
         localObject1 = localObject2;
       }
-      if ((RIJDataFetchManager.a(this.this$0).a() instanceof BaseActivity))
+      if ((RIJDataFetchManager.a(this.this$0).q() instanceof BaseActivity))
       {
-        localObject2 = (ReadInJoyRefreshManager)((BaseActivity)RIJDataFetchManager.a(this.this$0).a()).app.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
-        if ((((ReadInJoyRefreshManager)localObject2).a() == 1) && (((ReadInJoyRefreshManager)localObject2).b()))
+        localObject2 = (ReadInJoyRefreshManager)((BaseActivity)RIJDataFetchManager.a(this.this$0).q()).app.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
+        if ((((ReadInJoyRefreshManager)localObject2).d() == 1) && (((ReadInJoyRefreshManager)localObject2).e()))
         {
-          localObject1 = ((ReadInJoyRefreshManager)localObject2).a();
+          localObject1 = ((ReadInJoyRefreshManager)localObject2).c();
           i = m;
           j = k;
           break label261;
@@ -69,12 +69,12 @@ class RIJDataFetchManager$6
       localObject1 = localObject2;
     }
     label261:
-    RIJFrameworkReportManager.a(RIJDataFetchManager.a(this.this$0).d(), j, (String)localObject1, i);
+    RIJFrameworkReportManager.a(RIJDataFetchManager.a(this.this$0).r(), j, (String)localObject1, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataFetchManager.6
  * JD-Core Version:    0.7.0.1
  */

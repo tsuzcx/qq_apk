@@ -19,156 +19,148 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/entry/dialog/BaseEntryDialogView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "cancelClickListener", "Lkotlin/Function0;", "", "getCancelClickListener", "()Lkotlin/jvm/functions/Function0;", "setCancelClickListener", "(Lkotlin/jvm/functions/Function0;)V", "containerView", "Landroid/view/View;", "getContainerView", "()Landroid/view/View;", "setContainerView", "(Landroid/view/View;)V", "leftClickListener", "getLeftClickListener", "setLeftClickListener", "leftImageView", "Landroid/widget/ImageView;", "leftLayout", "leftLongClickListener", "", "getLeftLongClickListener", "setLeftLongClickListener", "leftTextView", "Landroid/widget/TextView;", "rightClickListener", "getRightClickListener", "setRightClickListener", "rightImageView", "rightLayout", "rightLongClickListener", "getRightLongClickListener", "setRightLongClickListener", "rightTextView", "doOnCreate", "getLayoutId", "", "initLeftLayout", "initRightLayout", "setLeftComponent", "leftDrawable", "Landroid/graphics/drawable/Drawable;", "leftWording", "", "setRightComponent", "rightDrawable", "rightWording", "topicsdk-entryview_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/entry/dialog/BaseEntryDialogView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "layoutId", "", "(Landroid/content/Context;I)V", "cancelClickListener", "Lkotlin/Function0;", "", "getCancelClickListener", "()Lkotlin/jvm/functions/Function0;", "setCancelClickListener", "(Lkotlin/jvm/functions/Function0;)V", "containerView", "Landroid/view/View;", "getContainerView", "()Landroid/view/View;", "setContainerView", "(Landroid/view/View;)V", "leftClickListener", "getLeftClickListener", "setLeftClickListener", "leftImageView", "Landroid/widget/ImageView;", "leftLayout", "leftLongClickListener", "", "getLeftLongClickListener", "setLeftLongClickListener", "leftTextView", "Landroid/widget/TextView;", "rightClickListener", "getRightClickListener", "setRightClickListener", "rightImageView", "rightLayout", "rightLongClickListener", "getRightLongClickListener", "setRightLongClickListener", "rightTextView", "initLeftLayout", "initRightLayout", "setLeftComponent", "leftDrawable", "Landroid/graphics/drawable/Drawable;", "leftWording", "", "setRightComponent", "rightDrawable", "rightWording", "topicsdk-entryview_release"}, k=1, mv={1, 1, 16})
 @SuppressLint({"ViewConstructor"})
 public class BaseEntryDialogView
   extends LinearLayout
 {
   @NotNull
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private View a;
+  private LinearLayout b;
+  private ImageView c;
+  private TextView d;
+  private LinearLayout e;
+  private ImageView f;
+  private TextView g;
   @Nullable
-  private Function0<Unit> jdField_a_of_type_KotlinJvmFunctionsFunction0;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private Function0<Unit> h;
   @Nullable
-  private Function0<Boolean> jdField_b_of_type_KotlinJvmFunctionsFunction0;
+  private Function0<Boolean> i;
   @Nullable
-  private Function0<Unit> c;
+  private Function0<Unit> j;
   @Nullable
-  private Function0<Boolean> d;
+  private Function0<Boolean> k;
   @Nullable
-  private Function0<Unit> e;
+  private Function0<Unit> l;
   
-  public BaseEntryDialogView(@NotNull Context paramContext)
+  public BaseEntryDialogView(@NotNull Context paramContext, int paramInt)
   {
     super(paramContext);
-    paramContext = LayoutInflater.from(paramContext).inflate(a(), (ViewGroup)this, true);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…etLayoutId(), this, true)");
-    this.jdField_a_of_type_AndroidViewView = paramContext;
-    b();
-    c();
+    paramContext = LayoutInflater.from(paramContext).inflate(paramInt, (ViewGroup)this, true);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…ate(layoutId, this, true)");
+    this.a = paramContext;
     a();
+    b();
   }
   
-  private final void b()
+  private final void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.v);
+    Object localObject = this.a.findViewById(R.id.x);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "containerView.findViewById(R.id.ll_left)");
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localObject);
-    localObject = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.i);
+    this.b = ((LinearLayout)localObject);
+    localObject = this.a.findViewById(R.id.i);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "containerView.findViewById(R.id.iv_left)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject);
-    localObject = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.F);
+    this.c = ((ImageView)localObject);
+    localObject = this.a.findViewById(R.id.H);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "containerView.findViewById(R.id.tv_left)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
-    localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    this.d = ((TextView)localObject);
+    localObject = this.b;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("leftLayout");
     }
     ((LinearLayout)localObject).setOnClickListener((View.OnClickListener)new BaseEntryDialogView.initLeftLayout.1(this));
-    localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    localObject = this.b;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("leftLayout");
     }
     ((LinearLayout)localObject).setOnLongClickListener((View.OnLongClickListener)new BaseEntryDialogView.initLeftLayout.2(this));
   }
   
-  private final void c()
+  private final void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.w);
+    Object localObject = this.a.findViewById(R.id.y);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "containerView.findViewById(R.id.ll_right)");
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localObject);
-    localObject = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.m);
+    this.e = ((LinearLayout)localObject);
+    localObject = this.a.findViewById(R.id.n);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "containerView.findViewById(R.id.iv_right)");
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localObject);
-    localObject = this.jdField_a_of_type_AndroidViewView.findViewById(R.id.G);
+    this.f = ((ImageView)localObject);
+    localObject = this.a.findViewById(R.id.K);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "containerView.findViewById(R.id.tv_right)");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localObject);
-    localObject = this.jdField_b_of_type_AndroidWidgetLinearLayout;
+    this.g = ((TextView)localObject);
+    localObject = this.e;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("rightLayout");
     }
     ((LinearLayout)localObject).setOnClickListener((View.OnClickListener)new BaseEntryDialogView.initRightLayout.1(this));
-    localObject = this.jdField_b_of_type_AndroidWidgetLinearLayout;
+    localObject = this.e;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("rightLayout");
     }
     ((LinearLayout)localObject).setOnLongClickListener((View.OnLongClickListener)new BaseEntryDialogView.initRightLayout.2(this));
   }
   
-  public int a()
+  @Nullable
+  public final Function0<Unit> getCancelClickListener()
   {
-    return -1;
+    return this.l;
   }
   
   @NotNull
-  public final View a()
+  public final View getContainerView()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.a;
   }
   
   @Nullable
-  public final Function0<Unit> a()
+  public final Function0<Unit> getLeftClickListener()
   {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction0;
-  }
-  
-  public void a() {}
-  
-  @Nullable
-  public final Function0<Boolean> b()
-  {
-    return this.jdField_b_of_type_KotlinJvmFunctionsFunction0;
+    return this.h;
   }
   
   @Nullable
-  public final Function0<Unit> c()
+  public final Function0<Boolean> getLeftLongClickListener()
   {
-    return this.c;
+    return this.i;
   }
   
   @Nullable
-  public final Function0<Boolean> d()
+  public final Function0<Unit> getRightClickListener()
   {
-    return this.d;
+    return this.j;
   }
   
   @Nullable
-  public final Function0<Unit> e()
+  public final Function0<Boolean> getRightLongClickListener()
   {
-    return this.e;
+    return this.k;
   }
   
   public final void setCancelClickListener(@Nullable Function0<Unit> paramFunction0)
   {
-    this.e = paramFunction0;
+    this.l = paramFunction0;
   }
   
   public final void setContainerView(@NotNull View paramView)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "<set-?>");
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramView;
   }
   
   public final void setLeftClickListener(@Nullable Function0<Unit> paramFunction0)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
+    this.h = paramFunction0;
   }
   
   public final void setLeftComponent(@NotNull Drawable paramDrawable, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramDrawable, "leftDrawable");
     Intrinsics.checkParameterIsNotNull(paramString, "leftWording");
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.c;
     if (localImageView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("leftImageView");
     }
     localImageView.setImageDrawable(paramDrawable);
-    paramDrawable = this.jdField_a_of_type_AndroidWidgetTextView;
+    paramDrawable = this.d;
     if (paramDrawable == null) {
       Intrinsics.throwUninitializedPropertyAccessException("leftTextView");
     }
@@ -177,24 +169,24 @@ public class BaseEntryDialogView
   
   public final void setLeftLongClickListener(@Nullable Function0<Boolean> paramFunction0)
   {
-    this.jdField_b_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
+    this.i = paramFunction0;
   }
   
   public final void setRightClickListener(@Nullable Function0<Unit> paramFunction0)
   {
-    this.c = paramFunction0;
+    this.j = paramFunction0;
   }
   
   public final void setRightComponent(@NotNull Drawable paramDrawable, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramDrawable, "rightDrawable");
     Intrinsics.checkParameterIsNotNull(paramString, "rightWording");
-    ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.f;
     if (localImageView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("rightImageView");
     }
     localImageView.setImageDrawable(paramDrawable);
-    paramDrawable = this.jdField_b_of_type_AndroidWidgetTextView;
+    paramDrawable = this.g;
     if (paramDrawable == null) {
       Intrinsics.throwUninitializedPropertyAccessException("rightTextView");
     }
@@ -203,12 +195,12 @@ public class BaseEntryDialogView
   
   public final void setRightLongClickListener(@Nullable Function0<Boolean> paramFunction0)
   {
-    this.d = paramFunction0;
+    this.k = paramFunction0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.entry.dialog.BaseEntryDialogView
  * JD-Core Version:    0.7.0.1
  */

@@ -27,17 +27,17 @@ import mqq.app.MobileQQ;
 public class CloudAVEngineImpl
   implements ICloudAVEngine, IRuntimeInterface
 {
-  private static volatile CloudAVEngineImpl jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl;
-  private int jdField_a_of_type_Int = 1;
-  private CloudAVEngineImpl.AVEngineCache jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache;
-  private CloudAVEngineImpl.AVEngineHandler jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineHandler = new CloudAVEngineImpl.AVEngineHandler(this, ThreadManager.getFileThreadLooper());
-  private QSecFramework.IGoingUpHandler jdField_a_of_type_ComTencentQqprotectQsecQSecFramework$IGoingUpHandler;
-  private HashMap<Integer, CloudAVEngineImpl.CloudDetectEntry> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<CloudAVEngineImpl.CloudDetectEntry> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
+  private static volatile CloudAVEngineImpl k;
+  private int a = 1;
   private int b;
   private int c;
-  private int d;
+  private boolean d;
+  private List<CloudAVEngineImpl.CloudDetectEntry> e = new LinkedList();
+  private HashMap<Integer, CloudAVEngineImpl.CloudDetectEntry> f = new HashMap();
+  private CloudAVEngineImpl.AVEngineHandler g = new CloudAVEngineImpl.AVEngineHandler(this, ThreadManager.getFileThreadLooper());
+  private CloudAVEngineImpl.AVEngineCache h;
+  private QSecFramework.IGoingUpHandler i;
+  private int j;
   
   public CloudAVEngineImpl()
   {
@@ -45,41 +45,10 @@ public class CloudAVEngineImpl
     localStringBuilder.append(MobileQQ.sMobileQQ.getDir("qqprotect", 0).toString());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("QSecCache2.dat");
-    this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache = new CloudAVEngineImpl.AVEngineCache(localStringBuilder.toString(), 50);
-    this.jdField_a_of_type_ComTencentQqprotectQsecQSecFramework$IGoingUpHandler = new CloudAVEngineImpl.NativeRequestHandler(this, null);
-    QSecFramework.a(1L, this.jdField_a_of_type_ComTencentQqprotectQsecQSecFramework$IGoingUpHandler);
+    this.h = new CloudAVEngineImpl.AVEngineCache(localStringBuilder.toString(), 50);
+    this.i = new CloudAVEngineImpl.NativeRequestHandler(this, null);
+    QSecFramework.a(1L, this.i);
     SecSvcHandlerHelper.a("QSec.AVEng", new CloudAVEngineImpl.1(this));
-  }
-  
-  private int a(CloudAVEngineImpl.CloudDetectEntry paramCloudDetectEntry)
-  {
-    paramCloudDetectEntry = paramCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle;
-    String str = paramCloudDetectEntry.jdField_a_of_type_JavaLangString;
-    int j = 16;
-    if (str != null) {
-      j = 16 + paramCloudDetectEntry.jdField_a_of_type_JavaLangString.length();
-    }
-    int i = j;
-    if (paramCloudDetectEntry.jdField_b_of_type_JavaLangString != null) {
-      i = j + paramCloudDetectEntry.jdField_b_of_type_JavaLangString.length();
-    }
-    j = i;
-    if (paramCloudDetectEntry.jdField_c_of_type_JavaLangString != null) {
-      j = i + paramCloudDetectEntry.jdField_c_of_type_JavaLangString.length();
-    }
-    i = j;
-    if (paramCloudDetectEntry.d != null) {
-      i = j + paramCloudDetectEntry.d.length();
-    }
-    j = i;
-    if (paramCloudDetectEntry.e != null) {
-      j = i + paramCloudDetectEntry.e.length();
-    }
-    i = j;
-    if (paramCloudDetectEntry.jdField_a_of_type_ArrayOfByte != null) {
-      i = j + paramCloudDetectEntry.jdField_a_of_type_ArrayOfByte.length;
-    }
-    return i;
   }
   
   private QSecCloudAVEngineMsg.QSecCloudQuery a(List<CloudAVEngineImpl.CloudDetectEntry> paramList)
@@ -96,29 +65,29 @@ public class CloudAVEngineImpl
       while (paramList.hasNext())
       {
         CloudAVEngineImpl.CloudDetectEntry localCloudDetectEntry = (CloudAVEngineImpl.CloudDetectEntry)paramList.next();
-        ICloudAVEngine.DetectBundle localDetectBundle = localCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle;
+        ICloudAVEngine.DetectBundle localDetectBundle = localCloudDetectEntry.g;
         QSecCloudAVEngineMsg.QSecCloudQueryEntry localQSecCloudQueryEntry = new QSecCloudAVEngineMsg.QSecCloudQueryEntry();
-        localQSecCloudQueryEntry.entryId.set(localCloudDetectEntry.jdField_a_of_type_Int);
-        localQSecCloudQueryEntry.fileType.set(localDetectBundle.jdField_a_of_type_Int);
-        localQSecCloudQueryEntry.scenarioType.set(localDetectBundle.jdField_b_of_type_Int);
-        localQSecCloudQueryEntry.fileSize.set(localDetectBundle.jdField_c_of_type_Int);
-        if (localDetectBundle.jdField_c_of_type_JavaLangString != null) {
-          localQSecCloudQueryEntry.packageName.set(localDetectBundle.jdField_c_of_type_JavaLangString);
-        }
-        if (localDetectBundle.jdField_a_of_type_JavaLangString != null) {
-          localQSecCloudQueryEntry.fileName.set(localDetectBundle.jdField_a_of_type_JavaLangString);
+        localQSecCloudQueryEntry.entryId.set(localCloudDetectEntry.a);
+        localQSecCloudQueryEntry.fileType.set(localDetectBundle.a);
+        localQSecCloudQueryEntry.scenarioType.set(localDetectBundle.b);
+        localQSecCloudQueryEntry.fileSize.set(localDetectBundle.c);
+        if (localDetectBundle.f != null) {
+          localQSecCloudQueryEntry.packageName.set(localDetectBundle.f);
         }
         if (localDetectBundle.d != null) {
-          localQSecCloudQueryEntry.appName.set(localDetectBundle.d);
+          localQSecCloudQueryEntry.fileName.set(localDetectBundle.d);
         }
-        if (localDetectBundle.jdField_b_of_type_JavaLangString != null) {
-          localQSecCloudQueryEntry.fileMd5.set(localDetectBundle.jdField_b_of_type_JavaLangString);
+        if (localDetectBundle.g != null) {
+          localQSecCloudQueryEntry.appName.set(localDetectBundle.g);
         }
         if (localDetectBundle.e != null) {
-          localQSecCloudQueryEntry.certMd5.set(localDetectBundle.e);
+          localQSecCloudQueryEntry.fileMd5.set(localDetectBundle.e);
         }
-        if (localDetectBundle.jdField_a_of_type_ArrayOfByte != null) {
-          localQSecCloudQueryEntry.extraInfo.set(ByteStringMicro.copyFrom(localDetectBundle.jdField_a_of_type_ArrayOfByte));
+        if (localDetectBundle.h != null) {
+          localQSecCloudQueryEntry.certMd5.set(localDetectBundle.h);
+        }
+        if (localDetectBundle.i != null) {
+          localQSecCloudQueryEntry.extraInfo.set(ByteStringMicro.copyFrom(localDetectBundle.i));
         }
         localQSecCloudQueryBody.queryEntry.add(localQSecCloudQueryEntry);
       }
@@ -134,45 +103,18 @@ public class CloudAVEngineImpl
     return null;
   }
   
-  private CloudAVEngineImpl.CloudDetectEntry a(Object paramObject)
-  {
-    try
-    {
-      paramObject = (CloudAVEngineImpl.CloudDetectEntry)paramObject;
-      return paramObject;
-    }
-    catch (Exception paramObject)
-    {
-      paramObject.printStackTrace();
-    }
-    return null;
-  }
-  
   public static CloudAVEngineImpl a()
   {
-    if (jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl == null) {
+    if (k == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl == null) {
-          jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl = new CloudAVEngineImpl();
+        if (k == null) {
+          k = new CloudAVEngineImpl();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl;
-  }
-  
-  private void a()
-  {
-    this.d += 1;
-    if (this.d >= 5)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Rpt to %d", new Object[] { Integer.valueOf(this.d) }));
-      }
-      this.d = 0;
-      a(1);
-    }
+    return k;
   }
   
   private void a(int paramInt)
@@ -182,7 +124,7 @@ public class CloudAVEngineImpl
   
   private void a(int paramInt, ICloudAVEngine.ResultBundle paramResultBundle)
   {
-    CloudAVEngineImpl.CloudDetectEntry localCloudDetectEntry = (CloudAVEngineImpl.CloudDetectEntry)this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+    CloudAVEngineImpl.CloudDetectEntry localCloudDetectEntry = (CloudAVEngineImpl.CloudDetectEntry)this.f.remove(Integer.valueOf(paramInt));
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -194,10 +136,10 @@ public class CloudAVEngineImpl
     }
     if (localCloudDetectEntry != null)
     {
-      if ((paramResultBundle.jdField_a_of_type_Long != 0L) && (!TextUtils.isEmpty(localCloudDetectEntry.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache.a(localCloudDetectEntry.jdField_a_of_type_JavaLangString, paramResultBundle);
+      if ((paramResultBundle.d != 0L) && (!TextUtils.isEmpty(localCloudDetectEntry.f))) {
+        this.h.a(localCloudDetectEntry.f, paramResultBundle);
       }
-      paramResultBundle.jdField_a_of_type_Boolean = false;
+      paramResultBundle.f = false;
       a(localCloudDetectEntry, 3, paramResultBundle);
     }
   }
@@ -207,37 +149,37 @@ public class CloudAVEngineImpl
     if (paramCloudDetectEntry == null) {
       return;
     }
-    String str = paramCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.a();
-    paramCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_b_of_type_JavaLangString = str;
+    String str = paramCloudDetectEntry.g.a();
+    paramCloudDetectEntry.g.e = str;
     if (QLog.isColorLevel()) {
-      QLog.d("QSec.AVEngine", 2, String.format("File: %s, md5: %s", new Object[] { paramCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_a_of_type_JavaLangString, str }));
+      QLog.d("QSec.AVEngine", 2, String.format("File: %s, md5: %s", new Object[] { paramCloudDetectEntry.g.d, str }));
     }
   }
   
   private void a(CloudAVEngineImpl.CloudDetectEntry paramCloudDetectEntry, int paramInt, ICloudAVEngine.ResultBundle paramResultBundle)
   {
-    if (paramCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$IAVEngineEventListener != null) {
-      paramCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$IAVEngineEventListener.a(paramInt, paramCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle, paramResultBundle);
+    if (paramCloudDetectEntry.h != null) {
+      paramCloudDetectEntry.h.a(paramInt, paramCloudDetectEntry.g, paramResultBundle);
     }
   }
   
   private void a(Object paramObject)
   {
-    int j;
-    int i;
+    int n;
+    int m;
     try
     {
       paramObject = (QSecCloudAVEngineMsg.QSecCloudRespBody)paramObject;
-      j = -1;
-      i = j;
+      n = -1;
+      m = n;
       if (paramObject.status == null) {
         break label439;
       }
-      i = j;
+      m = n;
       if (!paramObject.status.has()) {
         break label439;
       }
-      i = paramObject.status.get();
+      m = paramObject.status.get();
     }
     catch (Exception paramObject)
     {
@@ -245,17 +187,17 @@ public class CloudAVEngineImpl
       Iterator localIterator;
       label95:
       Object localObject;
-      int k;
-      int m;
-      int n;
       int i1;
+      int i2;
+      int i3;
+      int i4;
       label276:
       paramObject.printStackTrace();
       return;
     }
     if ((paramObject.version != null) && (paramObject.version.has()))
     {
-      i = paramObject.version.get();
+      m = paramObject.version.get();
       break label446;
       if (paramObject.respEntry != null)
       {
@@ -272,27 +214,27 @@ public class CloudAVEngineImpl
             if ((((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).entryId == null) || (!((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).entryId.has())) {
               continue;
             }
-            k = ((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).entryId.get();
+            i1 = ((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).entryId.get();
             if ((((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).attrType == null) || (!((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).attrType.has())) {
               continue;
             }
-            m = ((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).attrType.get();
+            i2 = ((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).attrType.get();
             if ((((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).category == null) || (!((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).category.has())) {
               continue;
             }
-            n = ((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).category.get();
+            i3 = ((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).category.get();
             if ((((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).subCategory == null) || (!((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).subCategory.has())) {
               continue;
             }
-            i1 = ((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).subCategory.get();
+            i4 = ((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).subCategory.get();
             if ((((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).timeToLive == null) || (!((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).timeToLive.has())) {
               break label452;
             }
-            i = ((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).timeToLive.get();
+            m = ((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).timeToLive.get();
             if ((((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).actionType == null) || (!((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).actionType.has())) {
               break label457;
             }
-            j = ((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).actionType.get();
+            n = ((QSecCloudAVEngineMsg.QSecCloudRespEntry)localObject).actionType.get();
           }
         }
       }
@@ -310,62 +252,36 @@ public class CloudAVEngineImpl
         }
       }
       localResultBundle = new ICloudAVEngine.ResultBundle();
-      localResultBundle.jdField_a_of_type_Int = m;
-      localResultBundle.jdField_b_of_type_Int = n;
-      localResultBundle.jdField_c_of_type_Int = i1;
-      localResultBundle.d = j;
-      if (i != 0) {
-        localResultBundle.jdField_a_of_type_Long = (new Date().getTime() + i * 1000);
+      localResultBundle.a = i2;
+      localResultBundle.b = i3;
+      localResultBundle.c = i4;
+      localResultBundle.e = n;
+      if (m != 0) {
+        localResultBundle.d = (new Date().getTime() + m * 1000);
       }
-      localResultBundle.jdField_a_of_type_ArrayOfByte = paramObject;
-      a(k, localResultBundle);
+      localResultBundle.g = paramObject;
+      a(i1, localResultBundle);
       break label95;
-      this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache.a();
+      this.h.a();
       return;
       return;
       label439:
-      if (i == 0) {
+      if (m == 0) {
         break;
       }
       return;
-      i = 0;
+      m = 0;
       label446:
-      if (i == 1) {
+      if (m == 1) {
         break label67;
       }
       return;
       label452:
-      i = 0;
+      m = 0;
       break label276;
       label457:
-      j = 0;
+      n = 0;
     }
-  }
-  
-  private void a(List<CloudAVEngineImpl.CloudDetectEntry> paramList)
-  {
-    if (paramList.size() <= 0) {
-      return;
-    }
-    int[] arrayOfInt = new int[paramList.size()];
-    int i = 0;
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      CloudAVEngineImpl.CloudDetectEntry localCloudDetectEntry = (CloudAVEngineImpl.CloudDetectEntry)paramList.next();
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("Add to wait resp map: ");
-        localStringBuilder.append(localCloudDetectEntry.toString());
-        QLog.d("QSec.AVEngine", 2, localStringBuilder.toString());
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localCloudDetectEntry.jdField_a_of_type_Int), localCloudDetectEntry);
-      arrayOfInt[i] = localCloudDetectEntry.jdField_a_of_type_Int;
-      i += 1;
-    }
-    paramList = this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineHandler;
-    paramList.sendMessageDelayed(paramList.obtainMessage(3, arrayOfInt), 30000L);
   }
   
   private boolean a(QSecCloudAVEngineMsg.QSecCloudQuery paramQSecCloudQuery)
@@ -375,75 +291,14 @@ public class CloudAVEngineImpl
   
   private void b()
   {
-    LinkedList localLinkedList = new LinkedList();
-    int m = this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    int j = 0;
-    for (;;)
+    this.j += 1;
+    if (this.j >= 5)
     {
-      if (i < m) {}
-      try
-      {
-        localObject = (CloudAVEngineImpl.CloudDetectEntry)this.jdField_a_of_type_JavaUtilList.get(i);
-        int k = ((CloudAVEngineImpl.CloudDetectEntry)localObject).jdField_c_of_type_Int + j;
-        if (k > 1000)
-        {
-          localObject = a(localLinkedList);
-          if (localObject != null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("QSec.AVEngine", 2, String.format("Pack size: %d, count: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(localLinkedList.size()) }));
-            }
-            a(localLinkedList);
-            a((QSecCloudAVEngineMsg.QSecCloudQuery)localObject);
-          }
-          this.jdField_c_of_type_Int -= j;
-          this.jdField_b_of_type_Int -= localLinkedList.size();
-          localLinkedList.clear();
-          i -= 1;
-          j = 0;
-        }
-        else
-        {
-          localLinkedList.add(localObject);
-          j = k;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, String.format("Rpt to %d", new Object[] { Integer.valueOf(this.j) }));
       }
-      catch (Exception localException)
-      {
-        Object localObject;
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_c_of_type_Int = 0;
-        this.jdField_b_of_type_Int = 0;
-        localException.printStackTrace();
-      }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      if (localLinkedList.size() != 0)
-      {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QSec.AVEngine", 2, String.format("Commit Left (%d:%d)", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int) }));
-          }
-          localObject = a(localLinkedList);
-          if (localObject != null)
-          {
-            a(localLinkedList);
-            a((QSecCloudAVEngineMsg.QSecCloudQuery)localObject);
-          }
-          this.jdField_c_of_type_Int = 0;
-          this.jdField_b_of_type_Int = 0;
-          return;
-        }
-        this.jdField_a_of_type_JavaUtilList.addAll(localLinkedList);
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QSec.AVEngine", 2, String.format("Has %d(count: %d) left.", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(localLinkedList.size()) }));
-          return;
-        }
-      }
-      return;
-      i += 1;
+      this.j = 0;
+      a(1);
     }
   }
   
@@ -451,21 +306,21 @@ public class CloudAVEngineImpl
   {
     if (paramCloudDetectEntry != null)
     {
-      paramCloudDetectEntry.jdField_a_of_type_JavaLangString = paramCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_b_of_type_JavaLangString;
+      paramCloudDetectEntry.f = paramCloudDetectEntry.g.e;
       Object localObject;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Lookup cache, key: ");
-        ((StringBuilder)localObject).append(paramCloudDetectEntry.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramCloudDetectEntry.f);
         QLog.d("QSec.AVEngine", 2, ((StringBuilder)localObject).toString());
       }
-      if (!TextUtils.isEmpty(paramCloudDetectEntry.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(paramCloudDetectEntry.f))
       {
-        localObject = this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache.a(paramCloudDetectEntry.jdField_a_of_type_JavaLangString);
+        localObject = this.h.a(paramCloudDetectEntry.f);
         if (localObject != null)
         {
-          ((ICloudAVEngine.ResultBundle)localObject).jdField_a_of_type_Boolean = true;
+          ((ICloudAVEngine.ResultBundle)localObject).f = true;
           a(paramCloudDetectEntry, 3, (ICloudAVEngine.ResultBundle)localObject);
           return;
         }
@@ -482,26 +337,26 @@ public class CloudAVEngineImpl
     try
     {
       paramObject = (int[])paramObject;
-      int k = paramObject.length;
-      int i = 0;
-      int j = 0;
-      while (i < k)
+      int i1 = paramObject.length;
+      int m = 0;
+      int n = 0;
+      while (m < i1)
       {
-        int m = paramObject[i];
+        int i2 = paramObject[m];
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("Timeout entry id:");
-          ((StringBuilder)localObject).append(m);
+          ((StringBuilder)localObject).append(i2);
           QLog.d("QSec.AVEngine", 2, ((StringBuilder)localObject).toString());
         }
-        Object localObject = (CloudAVEngineImpl.CloudDetectEntry)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(m));
+        Object localObject = (CloudAVEngineImpl.CloudDetectEntry)this.f.get(Integer.valueOf(i2));
         if (localObject != null) {
-          if (((CloudAVEngineImpl.CloudDetectEntry)localObject).jdField_b_of_type_Int < 1)
+          if (((CloudAVEngineImpl.CloudDetectEntry)localObject).d < 1)
           {
-            ((CloudAVEngineImpl.CloudDetectEntry)localObject).jdField_b_of_type_Int += 1;
-            e((CloudAVEngineImpl.CloudDetectEntry)localObject);
-            j = 1;
+            ((CloudAVEngineImpl.CloudDetectEntry)localObject).d += 1;
+            f((CloudAVEngineImpl.CloudDetectEntry)localObject);
+            n = 1;
           }
           else
           {
@@ -509,17 +364,17 @@ public class CloudAVEngineImpl
             {
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("No retry chance for entry id: ");
-              localStringBuilder.append(m);
+              localStringBuilder.append(i2);
               QLog.d("QSec.AVEngine", 2, localStringBuilder.toString());
             }
-            a();
-            this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(m));
+            b();
+            this.f.remove(Integer.valueOf(i2));
             a((CloudAVEngineImpl.CloudDetectEntry)localObject, 2, null);
           }
         }
-        i += 1;
+        m += 1;
       }
-      if (j != 0) {
+      if (n != 0) {
         flushRequest();
       }
       return;
@@ -530,15 +385,129 @@ public class CloudAVEngineImpl
     }
   }
   
+  private void b(List<CloudAVEngineImpl.CloudDetectEntry> paramList)
+  {
+    if (paramList.size() <= 0) {
+      return;
+    }
+    int[] arrayOfInt = new int[paramList.size()];
+    int m = 0;
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      CloudAVEngineImpl.CloudDetectEntry localCloudDetectEntry = (CloudAVEngineImpl.CloudDetectEntry)paramList.next();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Add to wait resp map: ");
+        localStringBuilder.append(localCloudDetectEntry.toString());
+        QLog.d("QSec.AVEngine", 2, localStringBuilder.toString());
+      }
+      this.f.put(Integer.valueOf(localCloudDetectEntry.a), localCloudDetectEntry);
+      arrayOfInt[m] = localCloudDetectEntry.a;
+      m += 1;
+    }
+    paramList = this.g;
+    paramList.sendMessageDelayed(paramList.obtainMessage(3, arrayOfInt), 30000L);
+  }
+  
+  private CloudAVEngineImpl.CloudDetectEntry c(Object paramObject)
+  {
+    try
+    {
+      paramObject = (CloudAVEngineImpl.CloudDetectEntry)paramObject;
+      return paramObject;
+    }
+    catch (Exception paramObject)
+    {
+      paramObject.printStackTrace();
+    }
+    return null;
+  }
+  
+  private void c()
+  {
+    LinkedList localLinkedList = new LinkedList();
+    int i2 = this.e.size();
+    int m = 0;
+    int n = 0;
+    for (;;)
+    {
+      if (m < i2) {}
+      try
+      {
+        localObject = (CloudAVEngineImpl.CloudDetectEntry)this.e.get(m);
+        int i1 = ((CloudAVEngineImpl.CloudDetectEntry)localObject).e + n;
+        if (i1 > 1000)
+        {
+          localObject = a(localLinkedList);
+          if (localObject != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QSec.AVEngine", 2, String.format("Pack size: %d, count: %d", new Object[] { Integer.valueOf(n), Integer.valueOf(localLinkedList.size()) }));
+            }
+            b(localLinkedList);
+            a((QSecCloudAVEngineMsg.QSecCloudQuery)localObject);
+          }
+          this.c -= n;
+          this.b -= localLinkedList.size();
+          localLinkedList.clear();
+          m -= 1;
+          n = 0;
+        }
+        else
+        {
+          localLinkedList.add(localObject);
+          n = i1;
+        }
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        this.e.clear();
+        this.c = 0;
+        this.b = 0;
+        localException.printStackTrace();
+      }
+      this.e.clear();
+      if (localLinkedList.size() != 0)
+      {
+        if (this.d)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QSec.AVEngine", 2, String.format("Commit Left (%d:%d)", new Object[] { Integer.valueOf(this.c), Integer.valueOf(this.b) }));
+          }
+          localObject = a(localLinkedList);
+          if (localObject != null)
+          {
+            b(localLinkedList);
+            a((QSecCloudAVEngineMsg.QSecCloudQuery)localObject);
+          }
+          this.c = 0;
+          this.b = 0;
+          return;
+        }
+        this.e.addAll(localLinkedList);
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QSec.AVEngine", 2, String.format("Has %d(count: %d) left.", new Object[] { Integer.valueOf(this.c), Integer.valueOf(localLinkedList.size()) }));
+          return;
+        }
+      }
+      return;
+      m += 1;
+    }
+  }
+  
   private void c(CloudAVEngineImpl.CloudDetectEntry paramCloudDetectEntry)
   {
     if (paramCloudDetectEntry != null)
     {
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
-      paramCloudDetectEntry.jdField_a_of_type_Int = i;
-      paramCloudDetectEntry.jdField_b_of_type_Int = 0;
-      e(paramCloudDetectEntry);
+      int m = this.a;
+      this.a = (m + 1);
+      paramCloudDetectEntry.a = m;
+      paramCloudDetectEntry.d = 0;
+      f(paramCloudDetectEntry);
     }
   }
   
@@ -550,16 +519,16 @@ public class CloudAVEngineImpl
     if (QLog.isColorLevel()) {
       QLog.d("QSec.AVEngine", 2, String.format("Start flow: %s", new Object[] { paramCloudDetectEntry.toString() }));
     }
-    if (TextUtils.isEmpty(paramCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_b_of_type_JavaLangString))
+    if (TextUtils.isEmpty(paramCloudDetectEntry.g.e))
     {
       a(paramCloudDetectEntry);
-      if (TextUtils.isEmpty(paramCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_b_of_type_JavaLangString))
+      if (TextUtils.isEmpty(paramCloudDetectEntry.g.e))
       {
         a(paramCloudDetectEntry, 4, null);
         return;
       }
     }
-    if (paramCloudDetectEntry.jdField_a_of_type_Boolean)
+    if (paramCloudDetectEntry.b)
     {
       b(paramCloudDetectEntry);
       return;
@@ -567,24 +536,55 @@ public class CloudAVEngineImpl
     c(paramCloudDetectEntry);
   }
   
-  private void e(CloudAVEngineImpl.CloudDetectEntry paramCloudDetectEntry)
+  private int e(CloudAVEngineImpl.CloudDetectEntry paramCloudDetectEntry)
   {
-    if (this.jdField_b_of_type_Int >= 100)
+    paramCloudDetectEntry = paramCloudDetectEntry.g;
+    String str = paramCloudDetectEntry.d;
+    int n = 16;
+    if (str != null) {
+      n = 16 + paramCloudDetectEntry.d.length();
+    }
+    int m = n;
+    if (paramCloudDetectEntry.e != null) {
+      m = n + paramCloudDetectEntry.e.length();
+    }
+    n = m;
+    if (paramCloudDetectEntry.f != null) {
+      n = m + paramCloudDetectEntry.f.length();
+    }
+    m = n;
+    if (paramCloudDetectEntry.g != null) {
+      m = n + paramCloudDetectEntry.g.length();
+    }
+    n = m;
+    if (paramCloudDetectEntry.h != null) {
+      n = m + paramCloudDetectEntry.h.length();
+    }
+    m = n;
+    if (paramCloudDetectEntry.i != null) {
+      m = n + paramCloudDetectEntry.i.length;
+    }
+    return m;
+  }
+  
+  private void f(CloudAVEngineImpl.CloudDetectEntry paramCloudDetectEntry)
+  {
+    if (this.b >= 100)
     {
       a(paramCloudDetectEntry, 1, null);
       return;
     }
-    if (paramCloudDetectEntry.jdField_c_of_type_Int == 0) {
-      paramCloudDetectEntry.jdField_c_of_type_Int = a(paramCloudDetectEntry);
+    if (paramCloudDetectEntry.e == 0) {
+      paramCloudDetectEntry.e = e(paramCloudDetectEntry);
     }
-    this.jdField_c_of_type_Int += paramCloudDetectEntry.jdField_c_of_type_Int;
-    this.jdField_b_of_type_Int += 1;
-    this.jdField_a_of_type_JavaUtilList.add(paramCloudDetectEntry);
+    this.c += paramCloudDetectEntry.e;
+    this.b += 1;
+    this.e.add(paramCloudDetectEntry);
     if (QLog.isColorLevel()) {
-      QLog.d("QSec.AVEngine", 2, String.format("Enqueue request, entryId: %d, pending count: %d, pending size: %d", new Object[] { Integer.valueOf(paramCloudDetectEntry.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int) }));
+      QLog.d("QSec.AVEngine", 2, String.format("Enqueue request, entryId: %d, pending count: %d, pending size: %d", new Object[] { Integer.valueOf(paramCloudDetectEntry.a), Integer.valueOf(this.b), Integer.valueOf(this.c) }));
     }
-    if ((paramCloudDetectEntry.jdField_b_of_type_Boolean == true) || (this.jdField_c_of_type_Int >= 1000)) {
-      b();
+    if ((paramCloudDetectEntry.c == true) || (this.c >= 1000)) {
+      c();
     }
   }
   
@@ -594,21 +594,21 @@ public class CloudAVEngineImpl
       return 13;
     }
     CloudAVEngineImpl.CloudDetectEntry localCloudDetectEntry = new CloudAVEngineImpl.CloudDetectEntry(null);
-    localCloudDetectEntry.jdField_a_of_type_Boolean = paramBoolean1;
-    localCloudDetectEntry.jdField_b_of_type_Boolean = paramBoolean2;
-    localCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle = paramDetectBundle;
-    localCloudDetectEntry.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$IAVEngineEventListener = paramIAVEngineEventListener;
-    if ((paramDetectBundle.jdField_c_of_type_Int == 0) && (!TextUtils.isEmpty(paramDetectBundle.jdField_a_of_type_JavaLangString))) {
-      paramDetectBundle.jdField_c_of_type_Int = ((int)new File(paramDetectBundle.jdField_a_of_type_JavaLangString).length());
+    localCloudDetectEntry.b = paramBoolean1;
+    localCloudDetectEntry.c = paramBoolean2;
+    localCloudDetectEntry.g = paramDetectBundle;
+    localCloudDetectEntry.h = paramIAVEngineEventListener;
+    if ((paramDetectBundle.c == 0) && (!TextUtils.isEmpty(paramDetectBundle.d))) {
+      paramDetectBundle.c = ((int)new File(paramDetectBundle.d).length());
     }
-    paramDetectBundle = this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineHandler;
+    paramDetectBundle = this.g;
     paramDetectBundle.sendMessage(paramDetectBundle.obtainMessage(1, localCloudDetectEntry));
     return 0;
   }
   
   public void flushRequest()
   {
-    CloudAVEngineImpl.AVEngineHandler localAVEngineHandler = this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineHandler;
+    CloudAVEngineImpl.AVEngineHandler localAVEngineHandler = this.g;
     localAVEngineHandler.sendMessage(localAVEngineHandler.obtainMessage(2));
   }
   
@@ -619,7 +619,7 @@ public class CloudAVEngineImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -28,13 +28,13 @@ class TeamWorkHandlerImpl$2
     paramTicket.append("getSkeyFromServerAndRetry get skey from server : Done,result: ");
     paramTicket.append(i);
     QLog.i("TeamWorkHandlerImpl", 1, paramTicket.toString());
-    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getSkey(TeamWorkHandlerImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTeamworkApiImplTeamWorkHandlerImpl).getCurrentAccountUin());
+    paramTicket = this.a.getSkey(TeamWorkHandlerImpl.access$000(this.c).getCurrentAccountUin());
     if ((!TextUtils.isEmpty(paramTicket)) && (paramTicket.length() > 0))
     {
-      TeamWorkHandlerImpl.access$302(this.jdField_a_of_type_ComTencentMobileqqTeamworkApiImplTeamWorkHandlerImpl, 0);
+      TeamWorkHandlerImpl.access$302(this.c, 0);
       QLog.i("TeamWorkHandlerImpl", 1, "getSkeyFromServerAndRetry get skey from server success!");
     }
-    TeamWorkHandlerImpl.access$200(this.jdField_a_of_type_ComTencentMobileqqTeamworkApiImplTeamWorkHandlerImpl, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+    TeamWorkHandlerImpl.access$200(this.c, this.b);
   }
   
   public void Failed(ErrMsg paramErrMsg)
@@ -43,7 +43,7 @@ class TeamWorkHandlerImpl$2
     localStringBuilder.append("getSkeyFromServerAndRetry get skey from server : Failed, ");
     localStringBuilder.append(paramErrMsg);
     QLog.i("TeamWorkHandlerImpl", 1, localStringBuilder.toString());
-    TeamWorkHandlerImpl.access$200(this.jdField_a_of_type_ComTencentMobileqqTeamworkApiImplTeamWorkHandlerImpl, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+    TeamWorkHandlerImpl.access$200(this.c, this.b);
   }
   
   public void Timeout(ErrMsg paramErrMsg)
@@ -52,12 +52,12 @@ class TeamWorkHandlerImpl$2
     localStringBuilder.append("getSkeyFromServerAndRetry get skey from server : Timeout, ");
     localStringBuilder.append(paramErrMsg);
     QLog.i("TeamWorkHandlerImpl", 1, localStringBuilder.toString());
-    TeamWorkHandlerImpl.access$200(this.jdField_a_of_type_ComTencentMobileqqTeamworkApiImplTeamWorkHandlerImpl, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+    TeamWorkHandlerImpl.access$200(this.c, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkHandlerImpl.2
  * JD-Core Version:    0.7.0.1
  */

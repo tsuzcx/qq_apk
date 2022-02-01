@@ -11,27 +11,27 @@ class QQStoryBaseFragment$2
 {
   public void run()
   {
-    if (this.this$0.a())
+    if (this.this$0.f())
     {
       SLog.d("IphoneTitleBarFragment", "Activity has been destroy.");
       return;
     }
-    if (this.this$0.jdField_a_of_type_AndroidAppDialog == null)
+    if (this.this$0.n == null)
     {
-      this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseFragment$ProgressView = new QQStoryBaseFragment.ProgressView(this.jdField_a_of_type_AndroidContentContext);
-      this.this$0.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this.jdField_a_of_type_AndroidContentContext);
-      this.this$0.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-      this.this$0.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-      this.this$0.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
-      this.this$0.jdField_a_of_type_AndroidAppDialog.setContentView(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseFragment$ProgressView);
+      this.this$0.o = new QQStoryBaseFragment.ProgressView(this.a);
+      this.this$0.n = new ReportDialog(this.a);
+      this.this$0.n.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+      this.this$0.n.setCanceledOnTouchOutside(false);
+      this.this$0.n.requestWindowFeature(1);
+      this.this$0.n.setContentView(this.this$0.o);
     }
     else
     {
-      this.this$0.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.this$0.n.dismiss();
     }
-    this.this$0.jdField_a_of_type_AndroidAppDialog.setCancelable(this.jdField_a_of_type_Boolean);
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseFragment$ProgressView.a(this.jdField_a_of_type_JavaLangCharSequence);
-    this.this$0.jdField_a_of_type_AndroidAppDialog.show();
+    this.this$0.n.setCancelable(this.b);
+    this.this$0.o.a(this.c);
+    this.this$0.n.show();
   }
 }
 

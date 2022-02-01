@@ -25,92 +25,92 @@ public class RIJDynamicChannelGridViewAdapter
   extends RIJBaseChannelGridViewAdapter
   implements View.OnClickListener, ReadInJoyDynamicGridView.OnDragListener, ReadInJoyDynamicGridView.OnDropListener, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener
 {
-  private final RIJDynamicChannelGridViewAdapter.DynamicAdapterCallback a;
-  private final int c;
-  private int d = 0;
+  private final RIJDynamicChannelGridViewAdapter.DynamicAdapterCallback g;
+  private final int h;
+  private int i = 0;
   
   public RIJDynamicChannelGridViewAdapter(Context paramContext, int paramInt1, int paramInt2, RIJDynamicChannelGridViewAdapter.DynamicAdapterCallback paramDynamicAdapterCallback, int paramInt3)
   {
     super(paramContext, paramInt1, paramInt2, paramDynamicAdapterCallback);
-    this.c = paramInt3;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJDynamicChannelGridViewAdapter$DynamicAdapterCallback = paramDynamicAdapterCallback;
+    this.h = paramInt3;
+    this.g = paramDynamicAdapterCallback;
   }
   
   private int a(TabChannelCoverInfo paramTabChannelCoverInfo)
   {
-    int j = -1291845632;
-    int i = j;
+    int k = -1291845632;
+    int j = k;
     if (paramTabChannelCoverInfo != null)
     {
       if (paramTabChannelCoverInfo.fontsColor != 0) {
         return paramTabChannelCoverInfo.fontsColor;
       }
-      i = j;
+      j = k;
       if (paramTabChannelCoverInfo.isCurrent) {
-        i = -15550475;
+        j = -15550475;
       }
     }
-    return i;
+    return j;
   }
   
-  List<TabChannelCoverInfo> a(List<TabChannelCoverInfo> paramList)
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.g.a(this, paramInt1, paramInt2);
+  }
+  
+  public void cS_()
+  {
+    this.g.a();
+  }
+  
+  List<TabChannelCoverInfo> d(List<TabChannelCoverInfo> paramList)
   {
     if ((paramList != null) && (paramList.size() != 0))
     {
-      int i = this.c;
-      if ((i >= 0) && (i < paramList.size())) {
-        ((TabChannelCoverInfo)paramList.get(this.c)).isCurrent = true;
+      int j = this.h;
+      if ((j >= 0) && (j < paramList.size())) {
+        ((TabChannelCoverInfo)paramList.get(this.h)).isCurrent = true;
       }
-      int k = 0;
-      i = 0;
+      int m = 0;
+      j = 0;
       TabChannelCoverInfo localTabChannelCoverInfo;
-      while (i < paramList.size())
+      while (j < paramList.size())
       {
-        localTabChannelCoverInfo = (TabChannelCoverInfo)paramList.get(i);
+        localTabChannelCoverInfo = (TabChannelCoverInfo)paramList.get(j);
         if (localTabChannelCoverInfo != null)
         {
           boolean bool;
-          if (i == this.c) {
+          if (j == this.h) {
             bool = true;
           } else {
             bool = false;
           }
           localTabChannelCoverInfo.isCurrent = bool;
         }
-        i += 1;
+        j += 1;
       }
-      int j = 0;
-      i = k;
-      while (i < paramList.size())
+      int k = 0;
+      j = m;
+      while (j < paramList.size())
       {
-        localTabChannelCoverInfo = (TabChannelCoverInfo)paramList.get(i);
-        k = j;
+        localTabChannelCoverInfo = (TabChannelCoverInfo)paramList.get(j);
+        m = k;
         if (localTabChannelCoverInfo != null)
         {
           if (localTabChannelCoverInfo.reason != 4) {
             break;
           }
-          k = j + 1;
+          m = k + 1;
         }
-        i += 1;
-        j = k;
+        j += 1;
+        k = m;
       }
-      this.d = j;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJDynamicChannelGridViewAdapter$DynamicAdapterCallback.a(this.d);
+      this.i = k;
+      this.g.a(this.i);
       return paramList;
     }
     QLog.d("RIJDynamicChannelGridViewAdapter", 2, "No channel Cache info.");
     return paramList;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJDynamicChannelGridViewAdapter$DynamicAdapterCallback.a(this, paramInt1, paramInt2);
-  }
-  
-  public void av_()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJDynamicChannelGridViewAdapter$DynamicAdapterCallback.a();
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -118,18 +118,18 @@ public class RIJDynamicChannelGridViewAdapter
     TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)getItem(paramInt);
     if (paramView == null)
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560235, null);
+      paramViewGroup = LayoutInflater.from(this.a).inflate(2131626282, null);
       paramView = new RIJDynamicChannelGridViewAdapter.ChannelItemViewHolder();
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131370075));
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView = ((AutoFitTextView)paramViewGroup.findViewById(2131364464));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131376320));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131376325));
-      paramView.b = ((ImageView)paramViewGroup.findViewById(2131365501));
-      paramView.b.setOnClickListener(this);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView.setOnGetMaxWidthCallback(paramView);
-      paramView.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)paramViewGroup.findViewById(2131369387));
-      if (paramView.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView != null) {
-        paramView.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setCorner(this.b);
+      paramView.a = ((LinearLayout)paramViewGroup.findViewById(2131437237));
+      paramView.b = ((AutoFitTextView)paramViewGroup.findViewById(2131430505));
+      paramView.c = ((ImageView)paramViewGroup.findViewById(2131444531));
+      paramView.d = ((TextView)paramViewGroup.findViewById(2131444538));
+      paramView.e = ((ImageView)paramViewGroup.findViewById(2131431716));
+      paramView.e.setOnClickListener(this);
+      paramView.b.setOnGetMaxWidthCallback(paramView);
+      paramView.f = ((KanDianUrlRoundCornerImageView)paramViewGroup.findViewById(2131436420));
+      if (paramView.f != null) {
+        paramView.f.setCorner(this.d);
       }
       paramViewGroup.setTag(paramView);
     }
@@ -140,75 +140,75 @@ public class RIJDynamicChannelGridViewAdapter
       paramView = (View)localObject;
     }
     paramViewGroup.setAlpha(1.0F);
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView.setText(localTabChannelCoverInfo.mChannelCoverName);
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView.setTextColor(a(localTabChannelCoverInfo));
-    Object localObject = paramView.b;
-    int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 0;
+    paramView.b.setText(localTabChannelCoverInfo.mChannelCoverName);
+    paramView.b.setTextColor(a(localTabChannelCoverInfo));
+    Object localObject = paramView.e;
+    int j;
+    if (this.f) {
+      j = 0;
     } else {
-      i = 8;
+      j = 8;
     }
-    ((ImageView)localObject).setVisibility(i);
-    paramView.b.setTag(localTabChannelCoverInfo);
-    paramView.b.setTag(2131376102, Integer.valueOf(paramInt));
-    if ((paramInt < this.d) && (this.jdField_a_of_type_Boolean))
+    ((ImageView)localObject).setVisibility(j);
+    paramView.e.setTag(localTabChannelCoverInfo);
+    paramView.e.setTag(2131444305, Integer.valueOf(paramInt));
+    if ((paramInt < this.i) && (this.f))
     {
       paramViewGroup.setAlpha(0.5F);
-      paramView.b.setVisibility(8);
+      paramView.e.setVisibility(8);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramView.c.setVisibility(8);
+      paramView.d.setVisibility(8);
       return paramViewGroup;
     }
-    localObject = paramView.jdField_a_of_type_AndroidWidgetImageView;
+    localObject = paramView.c;
     if (RIJChannelHelper.a(localTabChannelCoverInfo) == 0) {
       paramInt = 0;
     } else {
       paramInt = 8;
     }
     ((ImageView)localObject).setVisibility(paramInt);
-    if ((RIJChannelHelper.a(localTabChannelCoverInfo) == 1) && (localTabChannelCoverInfo.redPoint.c <= 0L))
+    if ((RIJChannelHelper.a(localTabChannelCoverInfo) == 1) && (localTabChannelCoverInfo.redPoint.d <= 0L))
     {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      a(localTabChannelCoverInfo, paramView.jdField_a_of_type_AndroidWidgetTextView);
+      paramView.d.setVisibility(0);
+      a(localTabChannelCoverInfo, paramView.d);
       return paramViewGroup;
     }
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    paramView.d.setVisibility(8);
     return paramViewGroup;
   }
   
-  public void k_(int paramInt) {}
-  
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131365501) {
+    if (paramView.getId() != 2131431716) {
       return;
     }
-    int i = ((Integer)paramView.getTag(2131376102)).intValue();
+    int j = ((Integer)paramView.getTag(2131444305)).intValue();
     paramView = (TabChannelCoverInfo)paramView.getTag();
-    QLog.d("RIJDynamicChannelGridViewAdapter", 1, new Object[] { "onClick, delete button position = ", Integer.valueOf(i) });
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJDynamicChannelGridViewAdapter$DynamicAdapterCallback.a(i, paramView, this);
+    QLog.d("RIJDynamicChannelGridViewAdapter", 1, new Object[] { "onClick, delete button position = ", Integer.valueOf(j) });
+    this.g.a(j, paramView, this);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     paramView = (TabChannelCoverInfo)getItem(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJDynamicChannelGridViewAdapter$DynamicAdapterCallback.a(paramAdapterView, this, paramInt, paramView);
+    this.g.a(paramAdapterView, this, paramInt, paramView);
   }
   
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     paramView = (TabChannelCoverInfo)getItem(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJDynamicChannelGridViewAdapter$DynamicAdapterCallback.b(paramAdapterView, this, paramInt, paramView);
+    this.g.b(paramAdapterView, this, paramInt, paramView);
     return true;
   }
+  
+  public void p_(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.RIJDynamicChannelGridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

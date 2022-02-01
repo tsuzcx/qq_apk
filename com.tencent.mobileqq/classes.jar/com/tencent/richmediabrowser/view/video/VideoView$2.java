@@ -30,23 +30,23 @@ class VideoView$2
     localStringBuilder.append(", h:");
     localStringBuilder.append(paramInt2);
     localIBrowserLog.d("VideoView", 4, localStringBuilder.toString());
-    if (VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView) != null) {
-      VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView).onCapFrame(paramLong, paramBoolean, paramInt1, paramInt2, paramBitmap);
+    if (VideoView.access$100(this.b) != null) {
+      VideoView.access$100(this.b).onCapFrame(paramLong, paramBoolean, paramInt1, paramInt2, paramBitmap);
     }
   }
   
   public void onDownloadComplete(long paramLong)
   {
     BrowserLogHelper.getInstance().getGalleryLog().d("VideoView", 4, "onDownloadComplete");
-    if (VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView) != null) {
-      VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView).onDownloadComplete(paramLong);
+    if (VideoView.access$100(this.b) != null) {
+      VideoView.access$100(this.b).onDownloadComplete(paramLong);
     }
   }
   
   public void onDownloadProgress(long paramLong1, long paramLong2)
   {
-    if (VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView) != null) {
-      VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView).onDownloadProgress(paramLong1, paramLong2);
+    if (VideoView.access$100(this.b) != null) {
+      VideoView.access$100(this.b).onDownloadProgress(paramLong1, paramLong2);
     }
   }
   
@@ -57,15 +57,15 @@ class VideoView$2
     localStringBuilder.append("onFirstFrameRendered, id:");
     localStringBuilder.append(paramLong);
     localIBrowserLog.d("VideoView", 4, localStringBuilder.toString());
-    if (VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView) != null) {
-      VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView).onFirstFrameRendered(paramLong);
+    if (VideoView.access$100(this.b) != null) {
+      VideoView.access$100(this.b).onFirstFrameRendered(paramLong);
     }
   }
   
   public void onLoopBack(long paramLong1, long paramLong2)
   {
-    if (VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView) != null) {
-      VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView).onLoopBack(paramLong1, paramLong2);
+    if (VideoView.access$100(this.b) != null) {
+      VideoView.access$100(this.b).onLoopBack(paramLong1, paramLong2);
     }
   }
   
@@ -84,20 +84,20 @@ class VideoView$2
     localStringBuilder.append(" , exInfo = ");
     localStringBuilder.append(paramString);
     localIBrowserLog.e("VideoView", 1, localStringBuilder.toString());
-    if (VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView) != null)
+    if (VideoView.access$100(this.b) != null)
     {
-      VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView).onPlayError(paramLong, paramInt1, paramInt2, paramInt3, paramString);
+      VideoView.access$100(this.b).onPlayError(paramLong, paramInt1, paramInt2, paramInt3, paramString);
       return;
     }
-    VideoView.access$200(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView, paramInt1, paramInt3, this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
+    VideoView.access$200(this.b, paramInt1, paramInt3, this.a);
   }
   
   public void onPlayProgress(long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView != null)
+    if (this.b.mVideoView != null)
     {
       double d1 = paramLong2;
-      double d2 = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.getVideoDurationMs();
+      double d2 = this.b.mVideoView.getVideoDurationMs();
       Double.isNaN(d1);
       Double.isNaN(d2);
       int i = (int)(d1 / d2 * 10000.0D);
@@ -110,11 +110,11 @@ class VideoView$2
       localStringBuilder.append(" , progress = ");
       localStringBuilder.append(i);
       localIBrowserLog.d("VideoView", 4, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.progressTime.setText(BrowserUtils.a(paramLong2));
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.playBar.setProgress(i);
+      this.b.progressTime.setText(BrowserUtils.a(paramLong2));
+      this.b.playBar.setProgress(i);
     }
-    if (VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView) != null) {
-      VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView).onPlayProgress(paramLong1, paramLong2);
+    if (VideoView.access$100(this.b) != null) {
+      VideoView.access$100(this.b).onPlayProgress(paramLong1, paramLong2);
     }
   }
   
@@ -136,53 +136,53 @@ class VideoView$2
           if (paramInt != 8)
           {
             if (paramInt == 9) {
-              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.abandonAudioFocus();
+              this.b.abandonAudioFocus();
             }
           }
           else
           {
-            if (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView != null) {
-              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.progressTime.setText(BrowserUtils.a(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.getVideoDurationMs()));
+            if (this.b.mVideoView != null) {
+              this.b.progressTime.setText(BrowserUtils.a(this.b.mVideoView.getVideoDurationMs()));
             }
-            this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.playBar.setProgress(100);
-            VideoView.access$000(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView, 0);
-            this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.updateUI();
+            this.b.playBar.setProgress(100);
+            VideoView.access$000(this.b, 0);
+            this.b.updateUI();
           }
         }
         else
         {
-          VideoView.access$000(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView, 4);
-          this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.updateUI();
+          VideoView.access$000(this.b, 4);
+          this.b.updateUI();
         }
       }
       else
       {
-        VideoView.access$000(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView, 2);
-        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.updateUI();
+        VideoView.access$000(this.b, 2);
+        this.b.updateUI();
       }
     }
     else
     {
-      VideoView.access$000(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView, 3);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.updateUI();
-      if (!this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mIsMute) {
-        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.requestAudioFocus();
+      VideoView.access$000(this.b, 3);
+      this.b.updateUI();
+      if (!this.a.mIsMute) {
+        this.b.requestAudioFocus();
       }
-      localObject = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.videoPresenter.getCurrentVideoData();
+      localObject = this.b.videoPresenter.getCurrentVideoData();
       if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.videoPresenter.dealVideoMutePlay(((VideoData)localObject).id, false);
-        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.videoPresenter.dealVideoAutoPlay(((VideoData)localObject).id, false);
+        this.b.videoPresenter.dealVideoMutePlay(((VideoData)localObject).id, false);
+        this.b.videoPresenter.dealVideoAutoPlay(((VideoData)localObject).id, false);
       }
     }
-    if (VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView) != null) {
-      VideoView.access$100(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView).onStateChange(paramLong, paramInt);
+    if (VideoView.access$100(this.b) != null) {
+      VideoView.access$100(this.b).onStateChange(paramLong, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.video.VideoView.2
  * JD-Core Version:    0.7.0.1
  */

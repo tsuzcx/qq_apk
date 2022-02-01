@@ -13,12 +13,12 @@ class GdtAdWSVerticalVideoItemView$3$1
   public void onExposure(WeakReference<View> paramWeakReference)
   {
     QZLog.w("AdExposureChecker", "onExposure");
-    GdtAdUtil.a(this.a.this$0.a, GdtAdWSVerticalVideoItemView.a(this.a.this$0));
+    GdtAdUtil.a(this.a.this$0.g, GdtAdWSVerticalVideoItemView.c(this.a.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.GdtAdWSVerticalVideoItemView.3.1
  * JD-Core Version:    0.7.0.1
  */

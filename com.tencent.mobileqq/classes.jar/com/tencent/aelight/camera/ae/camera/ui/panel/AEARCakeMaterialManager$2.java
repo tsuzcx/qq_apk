@@ -1,38 +1,25 @@
 package com.tencent.aelight.camera.ae.camera.ui.panel;
 
-import com.tencent.aelight.camera.ae.data.AEMaterialMetaData;
-import com.tencent.aelight.camera.ae.download.AEMaterialDownloader.MaterialDownloadListener;
-import com.tencent.aelight.camera.log.AEQLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.aelight.camera.ae.AEKitForQQ;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.manager.FeatureManager;
 
 class AEARCakeMaterialManager$2
-  implements AEMaterialDownloader.MaterialDownloadListener
+  implements Runnable
 {
   AEARCakeMaterialManager$2(AEARCakeMaterialManager paramAEARCakeMaterialManager) {}
   
-  public void onDownloadFinish(AEMaterialMetaData paramAEMaterialMetaData, boolean paramBoolean, int paramInt)
+  public void run()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("arcake : onDownloadFinish ");
-    localStringBuilder.append(paramBoolean);
-    AEQLog.a("AEARCakeMaterialManager", localStringBuilder.toString());
-    if ((paramAEMaterialMetaData != null) && (paramBoolean))
-    {
-      ThreadManager.getUIHandler().post(new AEARCakeMaterialManager.2.1(this, paramAEMaterialMetaData));
-      return;
+    QLog.d("Q.videostory.capture", QLog._DEFAULT_REPORTLOG_LEVEL, "use material failed because of so load failed");
+    if (AEKitForQQ.a()) {
+      FeatureManager.loadBasicFeatures();
     }
-    AEQLog.a("AEARCakeMaterialManager", "arcake : can not set material ");
-  }
-  
-  public void onProgressUpdate(AEMaterialMetaData paramAEMaterialMetaData, int paramInt)
-  {
-    ThreadManager.getUIHandler().post(new AEARCakeMaterialManager.2.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEARCakeMaterialManager.2
  * JD-Core Version:    0.7.0.1
  */

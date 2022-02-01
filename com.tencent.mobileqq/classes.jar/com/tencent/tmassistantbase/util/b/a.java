@@ -75,7 +75,7 @@ class a
     }
   }
   
-  private String e()
+  private String d()
   {
     StringBuilder localStringBuilder = this.a;
     localStringBuilder.append("|");
@@ -102,7 +102,7 @@ class a
   
   public void a(Throwable paramThrowable)
   {
-    Log.e("LogBuilder", e(), paramThrowable);
+    Log.e("LogBuilder", d(), paramThrowable);
   }
   
   public a b(String paramString)
@@ -121,15 +121,10 @@ class a
   
   public void b()
   {
-    Log.i("LogBuilder", e());
+    Log.i("LogBuilder", d());
   }
   
-  public void c()
-  {
-    Log.e("LogBuilder", e());
-  }
-  
-  public a d()
+  public a c()
   {
     Object localObject = new Throwable().fillInStackTrace().getStackTrace();
     int j = localObject.length;
@@ -158,7 +153,7 @@ class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -287,7 +287,7 @@ public class DataMigrationService
       localWtloginHelper.SetMsfTransportFlag(1);
       localWtloginHelper.SetListener(new DataMigrationService.2(this, paramString1, paramString2, paramString3, paramInt1, paramInt2, localWtloginHelper));
       byte[] arrayOfByte = util.getPkgSigFromApkName(this, "com.tencent.tim");
-      int i = localWtloginHelper.GetA1WithA1(localAppRuntime.getAccount(), 16L, 16L, "com.tencent.tim".getBytes(), 1L, 16L, 16L, "8.7.0".getBytes(), arrayOfByte, new WUserSigInfo(), new WFastLoginInfo());
+      int i = localWtloginHelper.GetA1WithA1(localAppRuntime.getAccount(), 16L, 16L, "com.tencent.tim".getBytes(), 1L, 16L, 16L, "8.8.17".getBytes(), arrayOfByte, new WUserSigInfo(), new WFastLoginInfo());
       if (QLog.isColorLevel()) {
         QLog.d("DataMigrationService", 2, new Object[] { "sendActionAfterGetTicket| retCode=", Integer.valueOf(i), ", account=", localAppRuntime.getAccount() });
       }
@@ -318,7 +318,7 @@ public class DataMigrationService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataMigrationService
  * JD-Core Version:    0.7.0.1
  */

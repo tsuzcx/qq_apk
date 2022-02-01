@@ -32,7 +32,7 @@ class MiniAppDesktopAdapter$DittoViewHolder
       DesktopDittoAreaView localDesktopDittoAreaView = (DesktopDittoAreaView)this.itemView;
       localDesktopDittoAreaView.setContentAreaForJsonFile(str, true);
       localDesktopDittoAreaView.setDittoData(paramDesktopDittoInfo);
-      this.itemView.setPadding(0, ViewUtils.b(20.0F), 0, 0);
+      this.itemView.setPadding(0, ViewUtils.dpToPx(20.0F), 0, 0);
       localDesktopDittoAreaView.handleExposureReport();
     }
   }
@@ -49,7 +49,7 @@ class MiniAppDesktopAdapter$DittoViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.DittoViewHolder
  * JD-Core Version:    0.7.0.1
  */

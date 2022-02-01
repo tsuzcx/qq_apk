@@ -21,12 +21,12 @@ public class WsReplyContainer
   extends LinearLayout
   implements View.OnClickListener, View.OnLongClickListener
 {
-  private int jdField_a_of_type_Int;
-  private stSimpleMetaComment jdField_a_of_type_UserGrowthStSimpleMetaComment;
-  private OnCommentElementClickListener jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener;
-  private ReplyActionView jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView;
+  private int a;
   private int b;
-  private int c;
+  private OnCommentElementClickListener c;
+  private ReplyActionView d;
+  private stSimpleMetaComment e;
+  private int f;
   
   public WsReplyContainer(Context paramContext)
   {
@@ -49,11 +49,11 @@ public class WsReplyContainer
   
   private void b() {}
   
-  protected void a(stSimpleMetaComment paramstSimpleMetaComment, int paramInt, String paramString)
+  protected void a(stSimpleMetaComment paramstSimpleMetaComment, int paramInt, String paramString, WSOnGetReportInfo paramWSOnGetReportInfo)
   {
     if ((paramstSimpleMetaComment != null) && (paramstSimpleMetaComment.replyList.size() != 0))
     {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaComment = paramstSimpleMetaComment;
+      this.e = paramstSimpleMetaComment;
       ArrayList localArrayList = paramstSimpleMetaComment.replyList;
       int j = localArrayList.size();
       if (paramInt > 0) {
@@ -61,7 +61,7 @@ public class WsReplyContainer
       } else {
         paramInt = j;
       }
-      this.c = paramInt;
+      this.f = paramInt;
       setVisibility(0);
       removeAllViews();
       int i = 0;
@@ -70,35 +70,36 @@ public class WsReplyContainer
         stSimpleMetaReply localstSimpleMetaReply = (stSimpleMetaReply)localArrayList.get(i);
         WsReplyView localWsReplyView = new WsReplyView(getContext());
         localWsReplyView.setPosition(i);
-        localWsReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener);
+        localWsReplyView.setOnCommentElementClickListener(this.c);
         localWsReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
         localWsReplyView.setClickable(true);
         localWsReplyView.setFocusable(true);
+        localWsReplyView.setReportParams(paramWSOnGetReportInfo, this.a);
         localWsReplyView.setData(paramstSimpleMetaComment, localstSimpleMetaReply, paramString);
         addView(localWsReplyView);
         i += 1;
       }
       if (paramInt <= j)
       {
-        if (this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView == null)
+        if (this.d == null)
         {
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView = new ReplyActionView(getContext());
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.setClickable(true);
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setOnClickListener(this);
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setOnClickListener(this);
+          this.d = new ReplyActionView(getContext());
+          this.d.setClickable(true);
+          this.d.getMoreReply().setOnClickListener(this);
+          this.d.getLessReply().setOnClickListener(this);
         }
         if (paramInt > this.b)
         {
           if (paramInt == j)
           {
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(8);
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(0);
+            this.d.getMoreReply().setVisibility(8);
+            this.d.getLessReply().setVisibility(0);
           }
           else
           {
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(HardCodeUtil.a(2131713321));
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(0);
+            this.d.getMoreReply().setText(HardCodeUtil.a(2131910874));
+            this.d.getMoreReply().setVisibility(0);
+            this.d.getLessReply().setVisibility(0);
           }
         }
         else if (j > paramInt)
@@ -106,22 +107,22 @@ public class WsReplyContainer
           paramInt = j - paramInt;
           if (paramInt > 0)
           {
-            paramstSimpleMetaComment = this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a();
+            paramstSimpleMetaComment = this.d.getMoreReply();
             paramString = new StringBuilder();
-            paramString.append(HardCodeUtil.a(2131713319));
+            paramString.append(HardCodeUtil.a(2131910872));
             paramString.append(paramInt);
-            paramString.append(HardCodeUtil.a(2131713320));
+            paramString.append(HardCodeUtil.a(2131910873));
             paramstSimpleMetaComment.setText(paramString.toString());
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
+            this.d.getMoreReply().setVisibility(0);
+            this.d.getLessReply().setVisibility(8);
           }
         }
         else
         {
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(8);
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
+          this.d.getMoreReply().setVisibility(8);
+          this.d.getLessReply().setVisibility(8);
         }
-        addView(this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView);
+        addView(this.d);
       }
       setVisibility(0);
       return;
@@ -133,21 +134,21 @@ public class WsReplyContainer
   {
     int i = paramView.getId();
     Object localObject;
-    if (i != 2131369989)
+    if (i != 2131437142)
     {
-      if (i != 2131371510) {
+      if (i != 2131438887) {
         return;
       }
-      localObject = this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener;
+      localObject = this.c;
       if (localObject != null) {
-        ((OnCommentElementClickListener)localObject).a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment);
+        ((OnCommentElementClickListener)localObject).a(paramView, 10, this.a, this.e);
       }
     }
-    else if (this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener != null)
+    else if (this.c != null)
     {
-      localObject = this.jdField_a_of_type_UserGrowthStSimpleMetaComment;
-      i = getHeight() / this.c;
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localObject, Integer.valueOf(i) });
+      localObject = this.e;
+      i = getHeight() / this.f;
+      this.c.a(paramView, 11, this.a, new Object[] { localObject, Integer.valueOf(i) });
     }
   }
   
@@ -163,17 +164,17 @@ public class WsReplyContainer
   
   public void setOnCommentElementClickListener(OnCommentElementClickListener paramOnCommentElementClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener = paramOnCommentElementClickListener;
+    this.c = paramOnCommentElementClickListener;
   }
   
   public void setPosition(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsReplyContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -27,8 +27,6 @@ public abstract interface IQQComicConfigApi
   
   public abstract boolean isEnableCancelRedPointDataCache();
   
-  public abstract boolean isEnableNewReader();
-  
   public abstract boolean isEnableShowCancelRedPointDialog();
   
   public abstract boolean isIgnoreInteractiveControll();
@@ -45,7 +43,7 @@ public abstract interface IQQComicConfigApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.comic.api.IQQComicConfigApi
  * JD-Core Version:    0.7.0.1
  */

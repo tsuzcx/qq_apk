@@ -2,38 +2,38 @@ package com.tencent.mobileqq.msgbackup.data;
 
 public class MsgBackupPushData
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private int b;
   
   private MsgBackupPushData(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramString;
+    this.b = paramInt;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("--MsgBackupPushData--");
     localStringBuilder.append(",sig:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",bizType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupPushData
  * JD-Core Version:    0.7.0.1
  */

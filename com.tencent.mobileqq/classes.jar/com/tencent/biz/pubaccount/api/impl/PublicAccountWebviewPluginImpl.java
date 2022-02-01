@@ -106,7 +106,7 @@ public class PublicAccountWebviewPluginImpl
       paramString1 = new Intent("action_folder_msg_change");
       paramString1.putExtra("msg", paramJsBridgeListener);
       paramString1.putExtra("type", i);
-      this.mRuntime.a().sendBroadcast(paramString1);
+      this.mRuntime.d().sendBroadcast(paramString1);
       return true;
     }
     catch (Exception paramJsBridgeListener) {}
@@ -115,7 +115,7 @@ public class PublicAccountWebviewPluginImpl
       paramString1 = new JSONObject(paramVarArgs[0]);
       paramJsBridgeListener = paramString1.optString("callback");
       paramString1 = paramString1.optString("uin");
-      paramString2 = this.mRuntime.a();
+      paramString2 = this.mRuntime.d();
       if (((paramString2 instanceof EcshopWebActivity)) && (!TextUtils.isEmpty(paramJsBridgeListener)))
       {
         ((EcshopWebActivity)paramString2).a(paramString1);
@@ -128,20 +128,20 @@ public class PublicAccountWebviewPluginImpl
     else if ("getShopFirstMsg".equals(paramString3))
     {
       paramJsBridgeListener = new JSONObject(paramVarArgs[0]).getString("callback");
-      paramString1 = this.mRuntime.a();
+      paramString1 = this.mRuntime.d();
       if (((paramString1 instanceof EcshopWebActivity)) && (!TextUtils.isEmpty(paramJsBridgeListener)))
       {
         paramString1 = (EcshopWebActivity)paramString1;
         paramString2 = new JSONObject();
-        if ((paramString1.a != null) && (!paramString1.a.isEmpty()))
+        if ((paramString1.b != null) && (!paramString1.b.isEmpty()))
         {
-          paramString3 = (RecentShopParcel)paramString1.a.get(0);
+          paramString3 = (RecentShopParcel)paramString1.b.get(0);
           paramVarArgs = new JSONObject();
-          if ((paramString3 != null) && (paramString3.jdField_b_of_type_Int > 0) && (paramString3.jdField_a_of_type_Long >= paramString1.jdField_b_of_type_Long) && (paramString3.jdField_a_of_type_Long > paramString3.jdField_b_of_type_Long))
+          if ((paramString3 != null) && (paramString3.g > 0) && (paramString3.j >= paramString1.g) && (paramString3.j > paramString3.k))
           {
-            paramVarArgs.put("uin", paramString3.jdField_a_of_type_JavaLangString);
+            paramVarArgs.put("uin", paramString3.a);
             paramVarArgs.put("msg", paramString3.d);
-            paramVarArgs.put("nick", paramString3.jdField_b_of_type_JavaLangString);
+            paramVarArgs.put("nick", paramString3.b);
             paramString2.put("data", paramVarArgs);
           }
         }
@@ -175,7 +175,7 @@ public class PublicAccountWebviewPluginImpl
           paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
           i = paramJsBridgeListener.optInt("y_offset");
           boolean bool = paramJsBridgeListener.optBoolean("show_list");
-          paramJsBridgeListener = this.mRuntime.a();
+          paramJsBridgeListener = this.mRuntime.d();
           if (!(paramJsBridgeListener instanceof EcshopWebActivity)) {
             break label854;
           }
@@ -200,7 +200,7 @@ public class PublicAccountWebviewPluginImpl
         try
         {
           i = new JSONObject(paramVarArgs[0]).optInt("reddot");
-          paramJsBridgeListener = this.mRuntime.a();
+          paramJsBridgeListener = this.mRuntime.d();
           if (!(paramJsBridgeListener instanceof EcshopWebActivity)) {
             break label854;
           }
@@ -220,7 +220,7 @@ public class PublicAccountWebviewPluginImpl
         try
         {
           paramJsBridgeListener = new JSONObject(paramVarArgs[0]).getString("callback");
-          paramString1 = this.mRuntime.a();
+          paramString1 = this.mRuntime.d();
           if ((paramString1 instanceof EcshopWebActivity))
           {
             paramString1 = paramString1.getIntent().getBundleExtra("bundle");
@@ -265,7 +265,7 @@ public class PublicAccountWebviewPluginImpl
     if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
     {
       if (paramBoolean2) {
-        Toast.makeText(this.mRuntime.a().getApplicationContext(), HardCodeUtil.a(2131708795), 0).show();
+        Toast.makeText(this.mRuntime.d().getApplicationContext(), HardCodeUtil.a(2131906571), 0).show();
       }
     }
     else
@@ -281,7 +281,7 @@ public class PublicAccountWebviewPluginImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountWebviewPluginImpl
  * JD-Core Version:    0.7.0.1
  */

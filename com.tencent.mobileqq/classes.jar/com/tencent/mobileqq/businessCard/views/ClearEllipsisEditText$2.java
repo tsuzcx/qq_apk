@@ -16,7 +16,7 @@ class ClearEllipsisEditText$2
       return false;
     }
     int i;
-    if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {
+    if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.c(this.a).getIntrinsicWidth()) {
       i = 1;
     } else {
       i = 0;
@@ -32,7 +32,7 @@ class ClearEllipsisEditText$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText.2
  * JD-Core Version:    0.7.0.1
  */

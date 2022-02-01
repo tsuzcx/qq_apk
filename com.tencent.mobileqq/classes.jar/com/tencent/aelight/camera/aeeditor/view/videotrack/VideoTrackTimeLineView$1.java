@@ -1,10 +1,10 @@
 package com.tencent.aelight.camera.aeeditor.view.videotrack;
 
 import android.graphics.Bitmap;
-import com.tencent.weishi.module.edit.widget.playtrack.provider.IPlayTrackViewBitmapProvider;
-import com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbProviderManager;
-import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
-import com.tencent.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
+import com.tencent.qcircle.weishi.module.edit.widget.playtrack.provider.IPlayTrackViewBitmapProvider;
+import com.tencent.qcircle.weishi.module.edit.widget.playtrack.provider.VideoThumbProviderManager;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.CutModelKt;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
 
 class VideoTrackTimeLineView$1
   implements IPlayTrackViewBitmapProvider
@@ -21,12 +21,12 @@ class VideoTrackTimeLineView$1
     } else {
       paramLong = ((float)VideoTrackTimeLineView.a(this.a).getResource().getSelectTimeStart() + (float)(paramLong * VideoTrackTimeLineView.a(this.a).getResource().getSelectTimeDuration()) * 1.0F / (float)VideoTrackTimeLineView.a(this.a).getResource().getScaleDuration());
     }
-    return VideoThumbProviderManager.getInstance().getBitmapByTime(paramLong, this.a.a(), VideoTrackTimeLineView.a(this.a).getResource().getPath());
+    return VideoThumbProviderManager.getInstance().getBitmapByTime(paramLong, this.a.getAssetPath(), VideoTrackTimeLineView.a(this.a).getResource().getPath());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.videotrack.VideoTrackTimeLineView.1
  * JD-Core Version:    0.7.0.1
  */

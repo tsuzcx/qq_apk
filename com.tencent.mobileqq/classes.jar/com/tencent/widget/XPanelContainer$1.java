@@ -11,15 +11,15 @@ class XPanelContainer$1
   public void onSystemUiVisibilityChange(int paramInt)
   {
     boolean bool;
-    if (paramInt == 0) {
-      bool = false;
-    } else {
+    if (paramInt != 0) {
       bool = true;
+    } else {
+      bool = false;
     }
-    if (XPanelContainer.b != bool)
+    if (XPanelContainer.h != bool)
     {
       XPanelContainer.a(this.a, true);
-      XPanelContainer.b = bool;
+      XPanelContainer.h = bool;
     }
     if (QLog.isColorLevel())
     {
@@ -34,7 +34,7 @@ class XPanelContainer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.XPanelContainer.1
  * JD-Core Version:    0.7.0.1
  */

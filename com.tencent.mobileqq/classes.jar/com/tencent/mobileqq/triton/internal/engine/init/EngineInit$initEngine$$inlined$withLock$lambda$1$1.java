@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.triton.internal.engine.init;
 
+import com.tencent.mobileqq.triton.internal.engine.EngineContext;
 import com.tencent.mobileqq.triton.internal.model.PlatformConfig;
 import com.tencent.mobileqq.triton.script.ScriptPlugin;
 import com.tencent.mobileqq.triton.script.ScriptPluginFactory;
@@ -21,12 +22,12 @@ final class EngineInit$initEngine$$inlined$withLock$lambda$1$1
   @NotNull
   public final ScriptPlugin invoke()
   {
-    return EngineInit.access$getPlatformConfig$p(this.this$0.this$0).getScriptPluginFactory().create();
+    return EngineInit.access$getPlatformConfig$p(this.this$0.this$0).getScriptPluginFactory().create(this.this$0.this$0.getEngineContext().getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.engine.init.EngineInit.initEngine..inlined.withLock.lambda.1.1
  * JD-Core Version:    0.7.0.1
  */

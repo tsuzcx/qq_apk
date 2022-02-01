@@ -28,8 +28,8 @@ public class NewFriendSlideTabBuilder
   
   public View a(int paramInt, View paramView)
   {
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter.c();
-    int i = this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter.b();
+    paramInt = this.e.n();
+    int i = this.e.m();
     NewFriendSlideTabBuilder.NewFriendSildeTabHolder localNewFriendSildeTabHolder;
     Object localObject;
     if ((paramView != null) && ((paramView.getTag() instanceof NewFriendSlideTabBuilder.NewFriendSildeTabHolder)))
@@ -39,8 +39,8 @@ public class NewFriendSlideTabBuilder
     else
     {
       localNewFriendSildeTabHolder = new NewFriendSlideTabBuilder.NewFriendSildeTabHolder();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561245, null);
-      localNewFriendSildeTabHolder.a = ((ThemeTabLayout)paramView.findViewById(2131378236));
+      paramView = LayoutInflater.from(this.c).inflate(2131627601, null);
+      localNewFriendSildeTabHolder.a = ((ThemeTabLayout)paramView.findViewById(2131446755));
       localNewFriendSildeTabHolder.a.a(this);
       if (QLog.isColorLevel())
       {
@@ -51,8 +51,8 @@ public class NewFriendSlideTabBuilder
         ((StringBuilder)localObject).append(i);
         QLog.d("NewFriendSlideTabBuilder", 2, ((StringBuilder)localObject).toString());
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage != null) || ((this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage instanceof NewFriendSlideTabMessage))) {
-        localNewFriendSildeTabHolder.a.a(((NewFriendSlideTabMessage)this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage).a, i);
+      if ((this.g != null) || ((this.g instanceof NewFriendSlideTabMessage))) {
+        localNewFriendSildeTabHolder.a.a(((NewFriendSlideTabMessage)this.g).a, i);
       }
       localNewFriendSildeTabHolder.a.setOnTabSelectedListener(this);
       paramView.setTag(localNewFriendSildeTabHolder);
@@ -67,20 +67,12 @@ public class NewFriendSlideTabBuilder
       ((StringBuilder)localObject).append(i);
       QLog.d("NewFriendSlideTabBuilder", 2, ((StringBuilder)localObject).toString());
     }
-    if ((localNewFriendSildeTabHolder != null) && (localNewFriendSildeTabHolder.a != null) && ((this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage != null) || ((this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage instanceof NewFriendSlideTabMessage))))
+    if ((localNewFriendSildeTabHolder != null) && (localNewFriendSildeTabHolder.a != null) && ((this.g != null) || ((this.g instanceof NewFriendSlideTabMessage))))
     {
-      localObject = ((NewFriendSlideTabMessage)this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage).a;
+      localObject = ((NewFriendSlideTabMessage)this.g).a;
       localNewFriendSildeTabHolder.a.b((ArrayList)localObject, i);
     }
     return paramView;
-  }
-  
-  public ArrayList<ConnectionsTabInfo> a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage == null) && (!(this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage instanceof NewFriendSlideTabMessage))) {
-      return null;
-    }
-    return ((NewFriendSlideTabMessage)this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage).a;
   }
   
   public void a(TabLayoutCompat.Tab paramTab)
@@ -89,18 +81,26 @@ public class NewFriendSlideTabBuilder
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("builder onTabSelected tab ->");
-      localStringBuilder.append(paramTab.a());
+      localStringBuilder.append(paramTab.d());
       QLog.d("NewFriendSlideTabBuilder", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter != null) && (paramTab != null))
+    if ((this.e != null) && (paramTab != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter.b(((Integer)paramTab.a()).intValue(), paramTab.a());
-      int i = this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter.b();
-      ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00898", "", "", "frd_recom", "frd_tab_clk", i, 0, "0", "3", "", "");
+      this.e.b(((Integer)paramTab.a()).intValue(), paramTab.d());
+      int i = this.e.m();
+      ReportController.b(this.d, "dc00898", "", "", "frd_recom", "frd_tab_clk", i, 0, "0", "3", "", "");
     }
   }
   
   public void b(TabLayoutCompat.Tab paramTab) {}
+  
+  public ArrayList<ConnectionsTabInfo> c()
+  {
+    if ((this.g == null) && (!(this.g instanceof NewFriendSlideTabMessage))) {
+      return null;
+    }
+    return ((NewFriendSlideTabMessage)this.g).a;
+  }
   
   public void c(View paramView)
   {
@@ -109,17 +109,17 @@ public class NewFriendSlideTabBuilder
     }
     if (ThemeUtil.isDefaultTheme())
     {
-      paramView.setBackgroundResource(2130839393);
+      paramView.setBackgroundResource(2130839577);
       return;
     }
-    paramView.setBackgroundResource(2130850578);
+    paramView.setBackgroundResource(2130852374);
   }
   
   public void c(TabLayoutCompat.Tab paramTab) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendSlideTabBuilder
  * JD-Core Version:    0.7.0.1
  */

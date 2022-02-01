@@ -9,21 +9,21 @@ import java.util.HashMap;
 
 public class VideoDTReport$Builder
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString = "";
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString = "";
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString = "";
-  private int jdField_f_of_type_Int;
-  private String jdField_f_of_type_JavaLangString;
-  private int g = -1;
+  private String a;
+  private long b;
+  private String c = "";
+  private String d = "";
+  private String e = "";
+  private long f;
+  private int g;
+  private int h;
+  private int i;
+  private String j = "";
+  private int k;
+  private int l;
+  private String m;
+  private int n;
+  private int o = -1;
   
   public static Builder a(VideoPlayParam paramVideoPlayParam)
   {
@@ -31,19 +31,19 @@ public class VideoDTReport$Builder
     if (paramVideoPlayParam == null) {
       return localBuilder;
     }
-    localBuilder.jdField_d_of_type_JavaLangString = paramVideoPlayParam.k;
-    localBuilder.jdField_b_of_type_JavaLangString = paramVideoPlayParam.jdField_c_of_type_JavaLangString;
-    if (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null)
+    localBuilder.e = paramVideoPlayParam.A;
+    localBuilder.c = paramVideoPlayParam.d;
+    if (paramVideoPlayParam.D != null)
     {
-      localBuilder.jdField_a_of_type_Long = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mChannelID;
-      localBuilder.jdField_c_of_type_Int = VideoDTReport.a(paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.videoReportInfo);
-      localBuilder.jdField_f_of_type_JavaLangString = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.videoReportInfo;
+      localBuilder.b = paramVideoPlayParam.D.mChannelID;
+      localBuilder.i = VideoDTReport.a(paramVideoPlayParam.D.videoReportInfo);
+      localBuilder.m = paramVideoPlayParam.D.videoReportInfo;
     }
-    if (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerDataAbsReadInJoyVideoReportData != null)
+    if (paramVideoPlayParam.z != null)
     {
-      localBuilder.jdField_c_of_type_JavaLangString = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerDataAbsReadInJoyVideoReportData.jdField_b_of_type_JavaLangString;
-      localBuilder.jdField_b_of_type_Int = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerDataAbsReadInJoyVideoReportData.m;
-      localBuilder.jdField_a_of_type_Int = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerDataAbsReadInJoyVideoReportData.l;
+      localBuilder.d = paramVideoPlayParam.z.e;
+      localBuilder.h = paramVideoPlayParam.z.P;
+      localBuilder.g = paramVideoPlayParam.z.O;
     }
     return localBuilder;
   }
@@ -54,130 +54,130 @@ public class VideoDTReport$Builder
     if (paramVideoInfo == null) {
       return localBuilder;
     }
-    localBuilder.jdField_b_of_type_JavaLangString = paramVideoInfo.jdField_a_of_type_JavaLangString;
-    localBuilder.jdField_d_of_type_JavaLangString = paramVideoInfo.j;
-    localBuilder.jdField_a_of_type_Long = 409409L;
-    localBuilder.jdField_c_of_type_Int = VideoDTReport.a(paramVideoInfo.w);
-    localBuilder.jdField_c_of_type_JavaLangString = paramVideoInfo.g;
-    localBuilder.jdField_b_of_type_Int = paramVideoInfo.b();
-    localBuilder.jdField_a_of_type_Int = paramVideoInfo.a();
-    localBuilder.jdField_f_of_type_JavaLangString = paramVideoInfo.w;
+    localBuilder.c = paramVideoInfo.b;
+    localBuilder.e = paramVideoInfo.q;
+    localBuilder.b = 409409L;
+    localBuilder.i = VideoDTReport.a(paramVideoInfo.ao);
+    localBuilder.d = paramVideoInfo.l;
+    localBuilder.h = paramVideoInfo.j();
+    localBuilder.g = paramVideoInfo.i();
+    localBuilder.m = paramVideoInfo.ao;
     return localBuilder;
   }
   
-  private boolean a()
+  private boolean b()
   {
-    return (this.jdField_f_of_type_JavaLangString != null) || (this.g > 0);
+    return (this.m != null) || (this.o > 0);
   }
   
   public Builder a(int paramInt)
   {
-    this.g = paramInt;
+    this.o = paramInt;
     return this;
   }
   
   public Builder a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
     return this;
   }
   
   public Builder a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
   public Builder a(boolean paramBoolean)
   {
-    int i;
+    int i1;
     if (paramBoolean) {
-      i = 1;
+      i1 = 1;
     } else {
-      i = 2;
+      i1 = 2;
     }
-    this.jdField_d_of_type_Int = i;
+    this.k = i1;
     return this;
   }
   
   public HashMap<String, Object> a()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("dt_appkey", RIJDtConstant.jdField_a_of_type_JavaLangString);
-    localHashMap.put("dt_pgid", VideoDTReport.a(this.jdField_a_of_type_JavaLangString));
-    localHashMap.put("channel_id", Long.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("vid", VideoDTReport.a(this.jdField_b_of_type_JavaLangString));
-    localHashMap.put("rowkey", VideoDTReport.a(this.jdField_c_of_type_JavaLangString));
+    localHashMap.put("dt_appkey", RIJDtConstant.a);
+    localHashMap.put("dt_pgid", VideoDTReport.b(this.a));
+    localHashMap.put("channel_id", Long.valueOf(this.b));
+    localHashMap.put("vid", VideoDTReport.b(this.c));
+    localHashMap.put("rowkey", VideoDTReport.b(this.d));
     localHashMap.put("cid", "");
     localHashMap.put("cmsid", "");
-    localHashMap.put("puin", VideoDTReport.a(this.jdField_d_of_type_JavaLangString));
-    localHashMap.put("video_height", Integer.valueOf(this.jdField_b_of_type_Int));
-    localHashMap.put("video_width", Integer.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("is_short", Integer.valueOf(this.jdField_c_of_type_Int));
-    localHashMap.put("play_sessionid", VideoDTReport.a(this.jdField_e_of_type_JavaLangString));
-    localHashMap.put("play_type", Integer.valueOf(this.jdField_d_of_type_Int));
-    localHashMap.put("play_loop_type", Integer.valueOf(this.jdField_e_of_type_Int));
-    localHashMap.put("backend_info", VideoDTReport.a(this.jdField_f_of_type_JavaLangString));
+    localHashMap.put("puin", VideoDTReport.b(this.e));
+    localHashMap.put("video_height", Integer.valueOf(this.h));
+    localHashMap.put("video_width", Integer.valueOf(this.g));
+    localHashMap.put("is_short", Integer.valueOf(this.i));
+    localHashMap.put("play_sessionid", VideoDTReport.b(this.j));
+    localHashMap.put("play_type", Integer.valueOf(this.k));
+    localHashMap.put("play_loop_type", Integer.valueOf(this.l));
+    localHashMap.put("backend_info", VideoDTReport.b(this.m));
     return localHashMap;
   }
   
   public Builder b(int paramInt)
   {
-    this.jdField_f_of_type_Int = paramInt;
+    this.n = paramInt;
     return this;
   }
   
   public Builder b(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.f = paramLong;
     return this;
   }
   
   public Builder b(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.d = paramString;
     return this;
   }
   
   public Builder c(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.k = paramInt;
     return this;
   }
   
   public Builder c(String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    this.e = paramString;
     return this;
   }
   
   public Builder d(int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
+    this.l = paramInt;
     return this;
   }
   
   public Builder d(String paramString)
   {
-    this.jdField_e_of_type_JavaLangString = paramString;
+    this.j = paramString;
     return this;
   }
   
   public Builder e(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
     return this;
   }
   
   public Builder f(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.h = paramInt;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.report.VideoDTReport.Builder
  * JD-Core Version:    0.7.0.1
  */

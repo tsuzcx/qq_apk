@@ -14,35 +14,35 @@ import com.tencent.mobileqq.vas.avatar.VasAvatarLoader;
 public class ScreenShareAskArkBottomUpDialog
   extends DialogFromBottom
 {
-  private ScreenShareAskArkBottomUpDialog.OnArrowClickListener jdField_a_of_type_ComTencentAvUiScreenShareAskArkBottomUpDialog$OnArrowClickListener = null;
-  private ScreenShareAskArkBottomUpDialog.OnConfirmListener jdField_a_of_type_ComTencentAvUiScreenShareAskArkBottomUpDialog$OnConfirmListener = null;
+  private ScreenShareAskArkBottomUpDialog.OnConfirmListener a = null;
+  private ScreenShareAskArkBottomUpDialog.OnArrowClickListener b = null;
   
   public ScreenShareAskArkBottomUpDialog(Context paramContext, String paramString, Object paramObject, ScreenShareAskArkBottomUpDialog.OnConfirmListener paramOnConfirmListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentAvUiScreenShareAskArkBottomUpDialog$OnConfirmListener = paramOnConfirmListener;
+    this.a = paramOnConfirmListener;
     a(paramContext, paramString, paramObject);
   }
   
   private void a(Context paramContext, String paramString, Object paramObject)
   {
-    paramContext = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131561413, null);
-    ((TextView)paramContext.findViewById(2131376971)).setText(paramString);
-    paramString = (VasAvatar)paramContext.findViewById(2131376970);
+    paramContext = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131627769, null);
+    ((TextView)paramContext.findViewById(2131445335)).setText(paramString);
+    paramString = (VasAvatar)paramContext.findViewById(2131445334);
     if ((paramObject instanceof Drawable)) {
       paramString.setImageDrawable((Drawable)paramObject);
     } else {
       paramString.setLoader(null, (VasAvatarLoader)paramObject);
     }
     setContentView(paramContext);
-    ((ImageView)paramContext.findViewById(2131376968)).setOnClickListener(new ScreenShareAskArkBottomUpDialog.1(this));
+    ((ImageView)paramContext.findViewById(2131445332)).setOnClickListener(new ScreenShareAskArkBottomUpDialog.1(this));
     setOnCancelListener(new ScreenShareAskArkBottomUpDialog.2(this));
-    ((Button)paramContext.findViewById(2131376969)).setOnClickListener(new ScreenShareAskArkBottomUpDialog.3(this));
+    ((Button)paramContext.findViewById(2131445333)).setOnClickListener(new ScreenShareAskArkBottomUpDialog.3(this));
   }
   
   public void a(ScreenShareAskArkBottomUpDialog.OnArrowClickListener paramOnArrowClickListener)
   {
-    this.jdField_a_of_type_ComTencentAvUiScreenShareAskArkBottomUpDialog$OnArrowClickListener = paramOnArrowClickListener;
+    this.b = paramOnArrowClickListener;
   }
 }
 

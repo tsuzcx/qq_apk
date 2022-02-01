@@ -26,14 +26,14 @@ public class WatermarkEditView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private DatePicker jdField_a_of_type_AndroidWidgetDatePicker;
-  private WatermarkEditListAdapter jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter;
-  private WatermarkEditView.OnRendorTextListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditView$OnRendorTextListener;
-  private WatermarkListView jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkListView;
   protected VideoStoryCapturePartManager a;
-  private List<WMElement> jdField_a_of_type_JavaUtilList;
+  private WatermarkListView b;
+  private Activity c;
+  private DatePicker d;
+  private WatermarkEditListAdapter e;
+  private WatermarkEditView.OnRendorTextListener f;
+  private int g = 0;
+  private List<WMElement> h;
   
   public WatermarkEditView(Context paramContext)
   {
@@ -52,8 +52,8 @@ public class WatermarkEditView
   
   private void b()
   {
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAePartVideoStoryCapturePartManager.a(589824)) && (((Boolean)this.jdField_a_of_type_ComTencentAelightCameraAePartVideoStoryCapturePartManager.a(589826, new Object[0])).booleanValue())) {
-      this.jdField_a_of_type_ComTencentAelightCameraAePartVideoStoryCapturePartManager.a(589826, new Object[0]);
+    if ((this.a.a(589824)) && (((Boolean)this.a.a(589826, new Object[0])).booleanValue())) {
+      this.a.b(589826, new Object[0]);
     }
   }
   
@@ -64,31 +64,31 @@ public class WatermarkEditView
   
   public void a(Activity paramActivity, VideoStoryCapturePartManager paramVideoStoryCapturePartManager)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentAelightCameraAePartVideoStoryCapturePartManager = paramVideoStoryCapturePartManager;
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkListView = ((WatermarkListView)findViewById(2064122151));
-    this.jdField_a_of_type_AndroidWidgetDatePicker = ((DatePicker)findViewById(2064122096));
-    findViewById(2064122694).setOnClickListener(this);
-    paramVideoStoryCapturePartManager = (TextView)findViewById(2064122695);
+    this.c = paramActivity;
+    this.a = paramVideoStoryCapturePartManager;
+    this.b = ((WatermarkListView)findViewById(2063991041));
+    this.d = ((DatePicker)findViewById(2063991010));
+    findViewById(2063991484).setOnClickListener(this);
+    paramVideoStoryCapturePartManager = (TextView)findViewById(2063991485);
     paramVideoStoryCapturePartManager.setOnClickListener(this);
-    if (AECameraEntryManager.k(paramActivity.getIntent()))
+    if (AECameraEntryManager.o(paramActivity.getIntent()))
     {
-      paramVideoStoryCapturePartManager.setTextColor(paramActivity.getResources().getColor(2063925310));
+      paramVideoStoryCapturePartManager.setTextColor(paramActivity.getResources().getColor(2063794238));
       return;
     }
-    paramVideoStoryCapturePartManager.setTextColor(paramActivity.getResources().getColor(2063925311));
+    paramVideoStoryCapturePartManager.setTextColor(paramActivity.getResources().getColor(2063794239));
   }
   
   public void a(List<WMElement> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter = new WatermarkEditListAdapter(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkListView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter);
-    this.jdField_a_of_type_AndroidWidgetDatePicker.setVisibility(8);
-    paramList = this.jdField_a_of_type_AndroidWidgetDatePicker;
-    paramList.init(paramList.getYear(), this.jdField_a_of_type_AndroidWidgetDatePicker.getMonth(), this.jdField_a_of_type_AndroidWidgetDatePicker.getDayOfMonth(), this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter.a(new WatermarkEditView.1(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkListView.postDelayed(new WatermarkEditView.2(this), 100L);
+    this.h = paramList;
+    this.e = new WatermarkEditListAdapter(this.c, this.h);
+    this.b.setAdapter(this.e);
+    this.d.setVisibility(8);
+    paramList = this.d;
+    paramList.init(paramList.getYear(), this.d.getMonth(), this.d.getDayOfMonth(), this.e);
+    this.e.a(new WatermarkEditView.1(this));
+    this.b.postDelayed(new WatermarkEditView.2(this), 100L);
     setVisibility(0);
   }
   
@@ -98,47 +98,47 @@ public class WatermarkEditView
     {
     default: 
       return;
-    case 2064122695: 
+    case 2063991485: 
       a();
       postDelayed(new WatermarkEditView.3(this), 200L);
       int i = 0;
-      while (i < this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkListView.a())
+      while (i < this.b.getViewHolderCount())
       {
-        Object localObject = (WatermarkEditListAdapter.EditTextViewHolder)this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkListView.a(i);
-        if ((localObject != null) && (!CollectionUtils.indexOutOfBounds(this.jdField_a_of_type_JavaUtilList, i)))
+        Object localObject = (WatermarkEditListAdapter.EditTextViewHolder)this.b.a(i);
+        if ((localObject != null) && (!CollectionUtils.indexOutOfBounds(this.h, i)))
         {
-          paramView = (WMElement)this.jdField_a_of_type_JavaUtilList.get(i);
+          paramView = (WMElement)this.h.get(i);
           if (paramView != null) {
             if ((!"SINCE".equals(paramView.type)) && (!"COUNTDOWN".equals(paramView.type)))
             {
               if ("CHECK_IN".equals(paramView.type))
               {
-                if (((WatermarkEditListAdapter.EditTextViewHolder)localObject).jdField_a_of_type_Boolean)
+                if (((WatermarkEditListAdapter.EditTextViewHolder)localObject).d)
                 {
-                  ((WatermarkEditListAdapter.EditTextViewHolder)localObject).jdField_a_of_type_Boolean = false;
+                  ((WatermarkEditListAdapter.EditTextViewHolder)localObject).d = false;
                   paramView.resetCheckIn();
                 }
               }
               else if ("EDITABLE_LOCATION".equals(paramView.type))
               {
-                localObject = StringUtils.removeUTF8Emoji(((WatermarkEditListAdapter.EditTextViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.getText().toString().trim());
+                localObject = StringUtils.removeUTF8Emoji(((WatermarkEditListAdapter.EditTextViewHolder)localObject).g.getText().toString().trim());
                 if (!TextUtils.isEmpty((CharSequence)localObject)) {
                   paramView.setLocation((String)localObject);
                 }
               }
               else
               {
-                paramView.setText(StringUtils.removeUTF8Emoji(((WatermarkEditListAdapter.EditTextViewHolder)localObject).jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim()));
+                paramView.setText(StringUtils.removeUTF8Emoji(((WatermarkEditListAdapter.EditTextViewHolder)localObject).a.getText().toString().trim()));
               }
             }
-            else if ((((WatermarkEditListAdapter.EditTextViewHolder)localObject).jdField_a_of_type_AndroidWidgetEditText.getTag() != null) && ((((WatermarkEditListAdapter.EditTextViewHolder)localObject).jdField_a_of_type_AndroidWidgetEditText.getTag() instanceof Date))) {
-              paramView.setDate(((Date)((WatermarkEditListAdapter.EditTextViewHolder)localObject).jdField_a_of_type_AndroidWidgetEditText.getTag()).getTime());
+            else if ((((WatermarkEditListAdapter.EditTextViewHolder)localObject).a.getTag() != null) && ((((WatermarkEditListAdapter.EditTextViewHolder)localObject).a.getTag() instanceof Date))) {
+              paramView.setDate(((Date)((WatermarkEditListAdapter.EditTextViewHolder)localObject).a.getTag()).getTime());
             }
           }
         }
         i += 1;
       }
-      paramView = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditView$OnRendorTextListener;
+      paramView = this.f;
       if (paramView != null) {
         paramView.a();
       }
@@ -157,17 +157,17 @@ public class WatermarkEditView
   
   public void setActionBarHeight(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public void setOnRenderTextListener(WatermarkEditView.OnRendorTextListener paramOnRendorTextListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditView$OnRendorTextListener = paramOnRendorTextListener;
+    this.f = paramOnRendorTextListener;
   }
   
   public void setWaterMarkLocation(String paramString)
   {
-    WatermarkEditListAdapter localWatermarkEditListAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter;
+    WatermarkEditListAdapter localWatermarkEditListAdapter = this.e;
     if (localWatermarkEditListAdapter != null) {
       localWatermarkEditListAdapter.a(paramString);
     }
@@ -175,7 +175,7 @@ public class WatermarkEditView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkEditView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,19 +8,19 @@ import com.tencent.qphone.base.util.QLog;
 final class PressScaleAnimDelegate$ScaleAnimUpdateListener
   implements ValueAnimator.AnimatorUpdateListener
 {
-  float jdField_a_of_type_Float = 1.0F;
-  final View jdField_a_of_type_AndroidViewView;
+  final View a;
+  float b = 1.0F;
   
   PressScaleAnimDelegate$ScaleAnimUpdateListener(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramView;
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_AndroidViewView.invalidate();
+    this.b = f;
+    this.a.invalidate();
     if (QLog.isColorLevel())
     {
       paramValueAnimator = new StringBuilder();
@@ -32,7 +32,7 @@ final class PressScaleAnimDelegate$ScaleAnimUpdateListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.PressScaleAnimDelegate.ScaleAnimUpdateListener
  * JD-Core Version:    0.7.0.1
  */

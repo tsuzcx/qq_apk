@@ -30,20 +30,20 @@ class UniformDownload$UniDownloadListener$1
       localStringBuilder.append("handleCheck, success: ");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(", canceled: ");
-      localStringBuilder.append(UniformDownload.UniDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener));
+      localStringBuilder.append(UniformDownload.UniDownloadListener.a(this.d));
       QLog.d("UniformDownloadMgr<FileAssistant>", 2, localStringBuilder.toString());
     }
-    Activity localActivity = (Activity)UniformDownload.UniDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener).get();
+    Activity localActivity = (Activity)UniformDownload.UniDownloadListener.b(this.d).get();
     Intent localIntent;
     DownloadURLCheck.RspDownloadUrlCheckRecmd localRspDownloadUrlCheckRecmd;
-    if ((!UniformDownload.UniDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener)) && (localActivity != null))
+    if ((!UniformDownload.UniDownloadListener.a(this.d)) && (localActivity != null))
     {
       if (localActivity.isFinishing()) {
         return;
       }
       localIntent = new Intent();
-      localIntent.putExtra("param_url", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("_filesize", this.jdField_a_of_type_Long);
+      localIntent.putExtra("param_url", this.a);
+      localIntent.putExtra("_filesize", this.b);
       localIntent.putExtra("big_brother_source_key", localActivity.getIntent().getStringExtra("big_brother_source_key"));
       if (paramBoolean)
       {
@@ -101,12 +101,12 @@ class UniformDownload$UniDownloadListener$1
         QLog.e("UniformDownloadMgr<FileAssistant>", 1, paramBundle, new Object[0]);
       }
       PublicFragmentActivity.Launcher.a(localActivity, localIntent, PublicFragmentActivity.class, ApkFileDownloadFragment.class);
-      if (this.jdField_a_of_type_Boolean)
+      if (this.c)
       {
         localActivity.finish();
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener.a.sendEmptyMessage(2);
+      this.d.a.sendEmptyMessage(2);
       return;
       label429:
       paramInt = 0;
@@ -121,7 +121,7 @@ class UniformDownload$UniDownloadListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.app.UniformDownload.UniDownloadListener.1
  * JD-Core Version:    0.7.0.1
  */

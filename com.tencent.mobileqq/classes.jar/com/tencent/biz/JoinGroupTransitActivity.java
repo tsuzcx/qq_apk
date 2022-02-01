@@ -13,26 +13,26 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class JoinGroupTransitActivity
   extends BaseActivity
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private JoinGroupHandler jdField_a_of_type_ComTencentBizJoinGroupHandler;
-  private JoinGroupTransitActivity.UIHandler jdField_a_of_type_ComTencentBizJoinGroupTransitActivity$UIHandler;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b = "";
+  private JoinGroupHandler c;
+  private long d;
+  private JoinGroupTransitActivity.UIHandler e;
+  private int f;
   
   private void a()
   {
     try
     {
-      this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("source_scheme");
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.a = getIntent().getStringExtra("source_scheme");
+      if (TextUtils.isEmpty(this.a)) {
         finish();
       }
-      this.jdField_a_of_type_ComTencentBizJoinGroupTransitActivity$UIHandler = new JoinGroupTransitActivity.UIHandler(this);
-      JumpAction localJumpAction = JumpParser.a(this.app, this, this.jdField_a_of_type_JavaLangString);
+      this.e = new JoinGroupTransitActivity.UIHandler(this);
+      JumpAction localJumpAction = JumpParser.a(this.app, this, this.a);
       this.b = localJumpAction.b("activity_titile_name");
-      this.jdField_a_of_type_Long = Long.valueOf(localJumpAction.b("group_code")).longValue();
-      this.jdField_a_of_type_Int = Integer.valueOf(localJumpAction.b("subsource_id")).intValue();
+      this.d = Long.valueOf(localJumpAction.b("group_code")).longValue();
+      this.f = Integer.valueOf(localJumpAction.b("subsource_id")).intValue();
       return;
     }
     catch (Exception localException)
@@ -55,16 +55,16 @@ public class JoinGroupTransitActivity
   {
     super.doOnCreate(paramBundle);
     a();
-    this.jdField_a_of_type_ComTencentBizJoinGroupHandler = new JoinGroupHandler(this, this.app, this.jdField_a_of_type_Int, this.b, new JoinGroupTransitActivity.1(this));
-    this.jdField_a_of_type_ComTencentBizJoinGroupHandler.a();
-    this.jdField_a_of_type_ComTencentBizJoinGroupTransitActivity$UIHandler.sendEmptyMessage(0);
+    this.c = new JoinGroupHandler(this, this.app, this.f, this.b, new JoinGroupTransitActivity.1(this));
+    this.c.a();
+    this.e.sendEmptyMessage(0);
     return true;
   }
   
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_ComTencentBizJoinGroupHandler.b();
+    this.c.b();
   }
   
   @Override

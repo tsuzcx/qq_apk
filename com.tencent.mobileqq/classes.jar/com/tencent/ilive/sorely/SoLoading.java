@@ -21,14 +21,14 @@ public class SoLoading
   public SoLoading(Context paramContext, String paramString)
   {
     View localView = LayoutInflater.from(paramContext).inflate(R.layout.loading_dialog, null);
-    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(R.id.dialog_view);
-    ImageView localImageView = (ImageView)localView.findViewById(2131368591);
+    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131431916);
+    ImageView localImageView = (ImageView)localView.findViewById(2131435503);
     this.tipTextView = ((TextView)localView.findViewById(R.id.tipTextView));
     if (!TextUtils.isEmpty(paramString)) {
       this.tipTextView.setText(paramString);
     }
-    localImageView.startAnimation(AnimationUtils.loadAnimation(paramContext, 2130772098));
-    this.loading = new Dialog(paramContext, 2131756040);
+    localImageView.startAnimation(AnimationUtils.loadAnimation(paramContext, 2130772141));
+    this.loading = new Dialog(paramContext, 2131953180);
     this.loading.setCancelable(false);
     this.loading.setContentView(localLinearLayout, new LinearLayout.LayoutParams(-1, -1));
   }
@@ -54,7 +54,7 @@ public class SoLoading
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.sorely.SoLoading
  * JD-Core Version:    0.7.0.1
  */

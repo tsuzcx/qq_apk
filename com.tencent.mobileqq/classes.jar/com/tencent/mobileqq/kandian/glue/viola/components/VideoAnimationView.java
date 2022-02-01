@@ -32,21 +32,20 @@ public final class VideoAnimationView
   extends VPNGImageView
   implements IVView<VideoAnimationComponent>, LiveRoomGiftCallback
 {
-  public static final VideoAnimationView.Companion a;
+  public static final VideoAnimationView.Companion a = new VideoAnimationView.Companion(null);
   @NotNull
-  private static final Map<Integer, Integer> jdField_a_of_type_JavaUtilMap;
-  private int jdField_a_of_type_Int;
-  private WeakReference<VideoAnimationComponent> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
+  private static final Map<Integer, Integer> e;
+  private WeakReference<VideoAnimationComponent> b;
+  private boolean c = true;
+  private int d;
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqKandianGlueViolaComponentsVideoAnimationView$Companion = new VideoAnimationView.Companion(null);
     Integer localInteger1 = Integer.valueOf(3);
     Object localObject = Integer.valueOf(1);
     localObject = TuplesKt.to(localObject, localObject);
     Integer localInteger2 = Integer.valueOf(2);
-    jdField_a_of_type_JavaUtilMap = MapsKt.mutableMapOf(new Pair[] { localObject, TuplesKt.to(localInteger2, localInteger2), TuplesKt.to(localInteger1, localInteger1) });
+    e = MapsKt.mutableMapOf(new Pair[] { localObject, TuplesKt.to(localInteger2, localInteger2), TuplesKt.to(localInteger1, localInteger1) });
   }
   
   public VideoAnimationView(@NotNull Context paramContext)
@@ -85,7 +84,7 @@ public final class VideoAnimationView
   
   private final void a(int paramInt)
   {
-    VideoAnimationComponent localVideoAnimationComponent = a();
+    VideoAnimationComponent localVideoAnimationComponent = getComponent();
     if (localVideoAnimationComponent != null) {
       localVideoAnimationComponent.fireEvent("stateChange", new JSONObject().put("state", paramInt));
     }
@@ -112,8 +111,8 @@ public final class VideoAnimationView
     if (this.mVPNGRenderer == null) {
       return;
     }
-    this.jdField_a_of_type_Int = 1;
-    if (!this.jdField_a_of_type_Boolean)
+    this.d = 1;
+    if (!this.c)
     {
       this.mVPNGRenderer.a(getWidth(), getHeight());
       VPNGRenderer localVPNGRenderer = this.mVPNGRenderer;
@@ -125,19 +124,9 @@ public final class VideoAnimationView
     a(1);
   }
   
-  @Nullable
-  public VideoAnimationComponent a()
-  {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localWeakReference != null) {
-      return (VideoAnimationComponent)localWeakReference.get();
-    }
-    return null;
-  }
-  
   public final void a()
   {
-    if (this.jdField_a_of_type_Int == 1) {
+    if (this.d == 1) {
       return;
     }
     f();
@@ -145,49 +134,59 @@ public final class VideoAnimationView
   
   public void a(@Nullable VideoAnimationComponent paramVideoAnimationComponent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoAnimationComponent);
+    this.b = new WeakReference(paramVideoAnimationComponent);
   }
   
   public final void a(boolean paramBoolean1, @NotNull String paramString, boolean paramBoolean2)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "src");
-    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.c = paramBoolean1;
     setPlayOnSubThread(true);
     a(paramString, paramBoolean2);
   }
   
   public final void b()
   {
-    if ((this.jdField_a_of_type_Int == 1) && (this.mVPNGRenderer != null))
+    if ((this.d == 1) && (this.mVPNGRenderer != null))
     {
       this.mVPNGRenderer.i();
-      this.jdField_a_of_type_Int = 2;
+      this.d = 2;
     }
   }
   
   public final void c()
   {
-    if ((this.jdField_a_of_type_Int == 2) && (this.mVPNGRenderer != null))
+    if ((this.d == 2) && (this.mVPNGRenderer != null))
     {
       this.mVPNGRenderer.j();
-      this.jdField_a_of_type_Int = 1;
+      this.d = 1;
       a(1);
     }
   }
   
   public final void d()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.d;
     if (((i == 1) || (i == 2)) && (this.mVPNGRenderer != null))
     {
       this.mVPNGRenderer.c();
-      this.jdField_a_of_type_Int = 3;
+      this.d = 3;
     }
   }
   
   public final void e()
   {
     d();
+  }
+  
+  @Nullable
+  public VideoAnimationComponent getComponent()
+  {
+    WeakReference localWeakReference = this.b;
+    if (localWeakReference != null) {
+      return (VideoAnimationComponent)localWeakReference.get();
+    }
+    return null;
   }
   
   public void onCall(int paramInt, @Nullable String paramString)
@@ -209,13 +208,13 @@ public final class VideoAnimationView
     else {
       paramInt = 2;
     }
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 3)) {
+    if ((!this.c) && (this.d == 3)) {
       return;
     }
-    if ((paramInt != 0) && (paramInt != this.jdField_a_of_type_Int))
+    if ((paramInt != 0) && (paramInt != this.d))
     {
-      this.jdField_a_of_type_Int = paramInt;
-      paramString = (Integer)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      this.d = paramInt;
+      paramString = (Integer)e.get(Integer.valueOf(paramInt));
       if (paramString != null) {
         a(((Number)paramString).intValue());
       }
@@ -233,7 +232,7 @@ public final class VideoAnimationView
         this.mVPNGRenderer.b(this.mIsLoop);
       }
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.mVPNGRenderer != null))
+    if ((this.c) && (this.mVPNGRenderer != null))
     {
       this.mVPNGRenderer.a(paramInt1, paramInt2);
       this.mVPNGRenderer.a(paramSurfaceTexture);
@@ -254,7 +253,7 @@ public final class VideoAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.components.VideoAnimationView
  * JD-Core Version:    0.7.0.1
  */

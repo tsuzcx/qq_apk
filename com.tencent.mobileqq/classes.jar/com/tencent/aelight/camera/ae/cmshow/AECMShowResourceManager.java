@@ -16,8 +16,8 @@ import java.util.concurrent.CountDownLatch;
 public class AECMShowResourceManager
   extends AEEditorResourceDownloader
 {
-  private HashMap<String, AEEditorDownloadResBean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
+  private final CountDownLatch j = new CountDownLatch(1);
+  private HashMap<String, AEEditorDownloadResBean> k = new HashMap();
   
   private AECMShowResourceManager()
   {
@@ -30,26 +30,26 @@ public class AECMShowResourceManager
   }
   
   @Nullable
-  private AEEditorDownloadResBean a(String paramString)
+  private AEEditorDownloadResBean c(String paramString)
   {
-    return (AEEditorDownloadResBean)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    return (AEEditorDownloadResBean)this.k.get(paramString);
   }
   
-  private void c()
+  private void d()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch)
+    synchronized (this.j)
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.getCount() <= 0L)
+      if (this.j.getCount() <= 0L)
       {
         AEQLog.a("AECMShowResourceManager", "[prepareResourceConfig], configured");
         return;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashMap.putAll(AECMShowConfigManager.a().a());
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      this.k.clear();
+      this.k.putAll(AECMShowConfigManager.d().a());
+      this.j.countDown();
       try
       {
-        this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.await();
+        this.j.await();
       }
       catch (InterruptedException localInterruptedException)
       {
@@ -72,7 +72,7 @@ public class AECMShowResourceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowResourceManager
  * JD-Core Version:    0.7.0.1
  */

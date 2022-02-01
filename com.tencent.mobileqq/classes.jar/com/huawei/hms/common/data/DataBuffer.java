@@ -27,7 +27,7 @@ public abstract interface DataBuffer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.huawei.hms.common.data.DataBuffer
  * JD-Core Version:    0.7.0.1
  */

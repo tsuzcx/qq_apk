@@ -9,12 +9,12 @@ class MusicGeneWebViewPlugin$6
   
   public void run()
   {
-    MusicGeneWebViewPlugin.a(this.this$0);
+    MusicGeneWebViewPlugin.f(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin.6
  * JD-Core Version:    0.7.0.1
  */

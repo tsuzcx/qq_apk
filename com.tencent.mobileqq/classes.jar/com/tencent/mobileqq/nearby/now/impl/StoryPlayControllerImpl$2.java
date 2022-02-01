@@ -25,12 +25,12 @@ class StoryPlayControllerImpl$2
   
   public void a()
   {
-    if ((NetworkUtil.a(this.a.getContext())) && (this.a.mAdapter.jdField_a_of_type_JavaUtilList.size() != 0))
+    if ((NetworkUtil.a(this.a.getContext())) && (this.a.mAdapter.d.size() != 0))
     {
-      this.a.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.a();
-      this.a.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(0);
-      this.a.stuffContainerView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setOnRetryClickListener(new StoryPlayControllerImpl.2.1(this));
+      this.a.stuffContainerView.j.a();
+      this.a.stuffContainerView.j.setVisibility(0);
+      this.a.stuffContainerView.m.setVisibility(0);
+      this.a.stuffContainerView.j.setOnRetryClickListener(new StoryPlayControllerImpl.2.1(this));
     }
   }
   
@@ -47,18 +47,18 @@ class StoryPlayControllerImpl$2
     }
     if ((paramInt2 <= 0) && (this.a.mPlayListDataModel.a().size() != 0))
     {
-      this.a.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-      this.a.stuffContainerView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.a.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProgressControler.a(this.a.mPlayListDataModel.a());
-      this.a.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProgressControler.b(this.a.mPlayListDataModel.a());
-      if (this.a.mAdapter.jdField_a_of_type_Boolean)
+      this.a.stuffContainerView.j.setVisibility(8);
+      this.a.stuffContainerView.m.setVisibility(8);
+      this.a.stuffContainerView.h.a(this.a.mPlayListDataModel.d());
+      this.a.stuffContainerView.h.b(this.a.mPlayListDataModel.d());
+      if (this.a.mAdapter.g)
       {
         if (StoryPlayControllerImpl.access$100(this.a))
         {
           paramInt2 = 0;
           while (paramInt2 < this.a.mPlayListDataModel.a().size())
           {
-            if (((VideoData)this.a.mPlayListDataModel.a().get(paramInt2)).jdField_a_of_type_JavaLangString.equals(StoryPlayControllerImpl.access$200(this.a))) {
+            if (((VideoData)this.a.mPlayListDataModel.a().get(paramInt2)).c.equals(StoryPlayControllerImpl.access$200(this.a))) {
               break label242;
             }
             paramInt2 += 1;
@@ -74,7 +74,7 @@ class StoryPlayControllerImpl$2
           if (i != -1)
           {
             ((StoryPlayControllerImpl)localObject).mCurrentIndex = i;
-            ((StoryPlayControllerImpl)localObject).mAdapter.jdField_a_of_type_Int = this.a.mCurrentIndex;
+            ((StoryPlayControllerImpl)localObject).mAdapter.h = this.a.mCurrentIndex;
           }
           QualityReporter.b();
         }
@@ -95,7 +95,7 @@ class StoryPlayControllerImpl$2
         StoryPlayControllerImpl.access$300((StoryPlayControllerImpl)localObject, ((StoryPlayControllerImpl)localObject).mCurrentIndex);
         return;
       }
-      if (!this.a.mAdapter.jdField_a_of_type_Boolean)
+      if (!this.a.mAdapter.g)
       {
         this.a.mAdapter.a(paramInt1, this.a.mPlayListDataModel.a());
         this.a.initReporterFeedType();
@@ -121,7 +121,7 @@ class StoryPlayControllerImpl$2
       }
       return;
     }
-    if (this.a.mAdapter.jdField_a_of_type_JavaUtilList.size() != 0)
+    if (this.a.mAdapter.d.size() != 0)
     {
       if (QLog.isColorLevel())
       {
@@ -133,9 +133,9 @@ class StoryPlayControllerImpl$2
       return;
     }
     this.a.stuffContainerView.b(false);
-    this.a.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(0);
-    this.a.stuffContainerView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.a(paramInt2);
+    this.a.stuffContainerView.j.setVisibility(0);
+    this.a.stuffContainerView.m.setVisibility(0);
+    this.a.stuffContainerView.j.a(paramInt2);
   }
   
   public void a(VideoData paramVideoData)
@@ -147,30 +147,30 @@ class StoryPlayControllerImpl$2
       ((StringBuilder)localObject).append("onFillData ! data is: ");
       ((StringBuilder)localObject).append(paramVideoData.toString());
       ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(paramVideoData.c);
+      ((StringBuilder)localObject).append(paramVideoData.e);
       QLog.i("VideoPlayController", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.a.mAdapter.jdField_a_of_type_JavaUtilList.size() == 1) && (this.a.mAdapter.jdField_a_of_type_AndroidUtilSparseArray.size() == 1) && (this.a.mAdapter.b.size() == 1))
+    if ((this.a.mAdapter.d.size() == 1) && (this.a.mAdapter.b.size() == 1) && (this.a.mAdapter.c.size() == 1))
     {
       if (QLog.isColorLevel()) {
         QLog.i("VideoPlayController", 2, "onFillData ! suc");
       }
-      paramVideoData.c = ((VideoData)this.a.mAdapter.jdField_a_of_type_JavaUtilList.get(0)).c;
-      this.a.mAdapter.jdField_a_of_type_JavaUtilList.set(0, paramVideoData);
-      ((VideoPlayerPagerAdapter.VideoViewHolder)this.a.mAdapter.jdField_a_of_type_AndroidUtilSparseArray.get(0)).jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
-      localObject = (VideoPlayerPagerAdapter.VideoViewHolder)this.a.mAdapter.jdField_a_of_type_AndroidUtilSparseArray.get(0);
-      IShortVideoCommentsView localIShortVideoCommentsView = (IShortVideoCommentsView)this.a.mAdapter.b.get(0);
+      paramVideoData.e = ((VideoData)this.a.mAdapter.d.get(0)).e;
+      this.a.mAdapter.d.set(0, paramVideoData);
+      ((VideoPlayerPagerAdapter.VideoViewHolder)this.a.mAdapter.b.get(0)).h = paramVideoData;
+      localObject = (VideoPlayerPagerAdapter.VideoViewHolder)this.a.mAdapter.b.get(0);
+      IShortVideoCommentsView localIShortVideoCommentsView = (IShortVideoCommentsView)this.a.mAdapter.c.get(0);
       localIShortVideoCommentsView.setVideoData(paramVideoData);
       localIShortVideoCommentsView.initLocationView();
       localIShortVideoCommentsView.initRecorderInfoView();
-      ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setCurrentAnchorUin(paramVideoData.jdField_a_of_type_Long);
+      ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).d.setCurrentAnchorUin(paramVideoData.i);
       this.a.onFillData(localObject, paramVideoData, false, localIShortVideoCommentsView, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.impl.StoryPlayControllerImpl.2
  * JD-Core Version:    0.7.0.1
  */

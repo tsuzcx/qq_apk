@@ -15,56 +15,58 @@ final class MatrixUtil
   static
   {
     int[] arrayOfInt1 = { 1, 1, 1, 1, 1, 1, 1 };
-    int[] arrayOfInt2 = { 1, 0, 0, 0, 0, 0, 1 };
+    int[] arrayOfInt2 = { 1, 0, 1, 1, 1, 0, 1 };
     int[] arrayOfInt3 = { 1, 0, 1, 1, 1, 0, 1 };
-    int[] arrayOfInt4 = { 1, 0, 1, 1, 1, 0, 1 };
-    int[] arrayOfInt5 = { 1, 0, 1, 1, 1, 0, 1 };
-    int[] arrayOfInt6 = { 1, 1, 1, 1, 1, 1, 1 };
-    a = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 1, 0, 0, 0, 0, 0, 1 }, arrayOfInt6 };
-    arrayOfInt1 = new int[] { 1, 1, 1, 1, 1 };
-    arrayOfInt2 = new int[] { 1, 0, 1, 0, 1 };
-    arrayOfInt3 = new int[] { 1, 0, 0, 0, 1 };
-    b = new int[][] { arrayOfInt1, { 1, 0, 0, 0, 1 }, arrayOfInt2, arrayOfInt3, { 1, 1, 1, 1, 1 } };
-    arrayOfInt1 = new int[] { 6, 26, -1, -1, -1, -1, -1 };
-    arrayOfInt2 = new int[] { 6, 30, -1, -1, -1, -1, -1 };
-    arrayOfInt3 = new int[] { 6, 22, 38, -1, -1, -1, -1 };
-    arrayOfInt4 = new int[] { 6, 24, 42, -1, -1, -1, -1 };
-    arrayOfInt5 = new int[] { 6, 26, 46, -1, -1, -1, -1 };
-    arrayOfInt6 = new int[] { 6, 28, 50, -1, -1, -1, -1 };
-    int[] arrayOfInt7 = { 6, 30, 54, -1, -1, -1, -1 };
-    int[] arrayOfInt8 = { 6, 32, 58, -1, -1, -1, -1 };
-    int[] arrayOfInt9 = { 6, 26, 48, 70, -1, -1, -1 };
-    int[] arrayOfInt10 = { 6, 30, 54, 78, -1, -1, -1 };
-    int[] arrayOfInt11 = { 6, 34, 62, 90, -1, -1, -1 };
-    int[] arrayOfInt12 = { 6, 28, 50, 72, 94, -1, -1 };
-    int[] arrayOfInt13 = { 6, 30, 54, 78, 102, -1, -1 };
-    int[] arrayOfInt14 = { 6, 30, 58, 86, 114, -1, -1 };
-    int[] arrayOfInt15 = { 6, 34, 62, 90, 118, -1, -1 };
-    int[] arrayOfInt16 = { 6, 26, 50, 74, 98, 122, -1 };
-    int[] arrayOfInt17 = { 6, 30, 56, 82, 108, 134, -1 };
-    int[] arrayOfInt18 = { 6, 34, 60, 86, 112, 138, -1 };
-    int[] arrayOfInt19 = { 6, 30, 58, 86, 114, 142, -1 };
-    int[] arrayOfInt20 = { 6, 34, 62, 90, 118, 146, -1 };
-    int[] arrayOfInt21 = { 6, 30, 54, 78, 102, 126, 150 };
-    int[] arrayOfInt22 = { 6, 24, 50, 76, 102, 128, 154 };
-    int[] arrayOfInt23 = { 6, 28, 54, 80, 106, 132, 158 };
-    int[] arrayOfInt24 = { 6, 32, 58, 84, 110, 136, 162 };
-    int[] arrayOfInt25 = { 6, 26, 54, 82, 110, 138, 166 };
-    int[] arrayOfInt26 = { 6, 30, 58, 86, 114, 142, 170 };
-    c = new int[][] { { -1, -1, -1, -1, -1, -1, -1 }, { 6, 18, -1, -1, -1, -1, -1 }, { 6, 22, -1, -1, -1, -1, -1 }, arrayOfInt1, arrayOfInt2, { 6, 34, -1, -1, -1, -1, -1 }, arrayOfInt3, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8, { 6, 34, 62, -1, -1, -1, -1 }, { 6, 26, 46, 66, -1, -1, -1 }, arrayOfInt9, { 6, 26, 50, 74, -1, -1, -1 }, arrayOfInt10, { 6, 30, 56, 82, -1, -1, -1 }, { 6, 30, 58, 86, -1, -1, -1 }, arrayOfInt11, arrayOfInt12, { 6, 26, 50, 74, 98, -1, -1 }, arrayOfInt13, { 6, 28, 54, 80, 106, -1, -1 }, { 6, 32, 58, 84, 110, -1, -1 }, arrayOfInt14, arrayOfInt15, arrayOfInt16, { 6, 30, 54, 78, 102, 126, -1 }, { 6, 26, 52, 78, 104, 130, -1 }, arrayOfInt17, arrayOfInt18, arrayOfInt19, arrayOfInt20, arrayOfInt21, arrayOfInt22, arrayOfInt23, arrayOfInt24, arrayOfInt25, arrayOfInt26 };
+    int[] arrayOfInt4 = { 1, 0, 0, 0, 0, 0, 1 };
+    int[] arrayOfInt5 = { 1, 1, 1, 1, 1, 1, 1 };
+    a = new int[][] { arrayOfInt1, { 1, 0, 0, 0, 0, 0, 1 }, arrayOfInt2, arrayOfInt3, { 1, 0, 1, 1, 1, 0, 1 }, arrayOfInt4, arrayOfInt5 };
+    b = new int[][] { { 1, 1, 1, 1, 1 }, { 1, 0, 0, 0, 1 }, { 1, 0, 1, 0, 1 }, { 1, 0, 0, 0, 1 }, { 1, 1, 1, 1, 1 } };
+    arrayOfInt1 = new int[] { 6, 18, -1, -1, -1, -1, -1 };
+    arrayOfInt2 = new int[] { 6, 26, -1, -1, -1, -1, -1 };
+    arrayOfInt3 = new int[] { 6, 34, -1, -1, -1, -1, -1 };
+    arrayOfInt4 = new int[] { 6, 22, 38, -1, -1, -1, -1 };
+    arrayOfInt5 = new int[] { 6, 24, 42, -1, -1, -1, -1 };
+    int[] arrayOfInt6 = { 6, 26, 46, -1, -1, -1, -1 };
+    int[] arrayOfInt7 = { 6, 28, 50, -1, -1, -1, -1 };
+    int[] arrayOfInt8 = { 6, 30, 54, -1, -1, -1, -1 };
+    int[] arrayOfInt9 = { 6, 32, 58, -1, -1, -1, -1 };
+    int[] arrayOfInt10 = { 6, 34, 62, -1, -1, -1, -1 };
+    int[] arrayOfInt11 = { 6, 26, 46, 66, -1, -1, -1 };
+    int[] arrayOfInt12 = { 6, 26, 48, 70, -1, -1, -1 };
+    int[] arrayOfInt13 = { 6, 26, 50, 74, -1, -1, -1 };
+    int[] arrayOfInt14 = { 6, 30, 58, 86, -1, -1, -1 };
+    int[] arrayOfInt15 = { 6, 34, 62, 90, -1, -1, -1 };
+    int[] arrayOfInt16 = { 6, 28, 50, 72, 94, -1, -1 };
+    int[] arrayOfInt17 = { 6, 26, 50, 74, 98, -1, -1 };
+    int[] arrayOfInt18 = { 6, 30, 54, 78, 102, -1, -1 };
+    int[] arrayOfInt19 = { 6, 28, 54, 80, 106, -1, -1 };
+    int[] arrayOfInt20 = { 6, 32, 58, 84, 110, -1, -1 };
+    int[] arrayOfInt21 = { 6, 34, 62, 90, 118, -1, -1 };
+    int[] arrayOfInt22 = { 6, 26, 50, 74, 98, 122, -1 };
+    int[] arrayOfInt23 = { 6, 30, 54, 78, 102, 126, -1 };
+    int[] arrayOfInt24 = { 6, 26, 52, 78, 104, 130, -1 };
+    int[] arrayOfInt25 = { 6, 30, 56, 82, 108, 134, -1 };
+    int[] arrayOfInt26 = { 6, 34, 60, 86, 112, 138, -1 };
+    int[] arrayOfInt27 = { 6, 30, 58, 86, 114, 142, -1 };
+    int[] arrayOfInt28 = { 6, 34, 62, 90, 118, 146, -1 };
+    int[] arrayOfInt29 = { 6, 30, 54, 78, 102, 126, 150 };
+    int[] arrayOfInt30 = { 6, 28, 54, 80, 106, 132, 158 };
+    int[] arrayOfInt31 = { 6, 32, 58, 84, 110, 136, 162 };
+    int[] arrayOfInt32 = { 6, 26, 54, 82, 110, 138, 166 };
+    int[] arrayOfInt33 = { 6, 30, 58, 86, 114, 142, 170 };
+    c = new int[][] { { -1, -1, -1, -1, -1, -1, -1 }, arrayOfInt1, { 6, 22, -1, -1, -1, -1, -1 }, arrayOfInt2, { 6, 30, -1, -1, -1, -1, -1 }, arrayOfInt3, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, arrayOfInt10, arrayOfInt11, arrayOfInt12, arrayOfInt13, { 6, 30, 54, 78, -1, -1, -1 }, { 6, 30, 56, 82, -1, -1, -1 }, arrayOfInt14, arrayOfInt15, arrayOfInt16, arrayOfInt17, arrayOfInt18, arrayOfInt19, arrayOfInt20, { 6, 30, 58, 86, 114, -1, -1 }, arrayOfInt21, arrayOfInt22, arrayOfInt23, arrayOfInt24, arrayOfInt25, arrayOfInt26, arrayOfInt27, arrayOfInt28, arrayOfInt29, { 6, 24, 50, 76, 102, 128, 154 }, arrayOfInt30, arrayOfInt31, arrayOfInt32, arrayOfInt33 };
     arrayOfInt1 = new int[] { 8, 0 };
-    arrayOfInt2 = new int[] { 8, 1 };
-    arrayOfInt3 = new int[] { 8, 2 };
-    arrayOfInt4 = new int[] { 8, 3 };
-    arrayOfInt5 = new int[] { 8, 4 };
-    arrayOfInt6 = new int[] { 8, 5 };
-    arrayOfInt7 = new int[] { 8, 7 };
-    arrayOfInt8 = new int[] { 8, 8 };
-    arrayOfInt9 = new int[] { 7, 8 };
-    arrayOfInt10 = new int[] { 5, 8 };
-    arrayOfInt11 = new int[] { 2, 8 };
-    arrayOfInt12 = new int[] { 0, 8 };
-    d = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, arrayOfInt10, { 4, 8 }, { 3, 8 }, arrayOfInt11, { 1, 8 }, arrayOfInt12 };
+    arrayOfInt2 = new int[] { 8, 3 };
+    arrayOfInt3 = new int[] { 8, 4 };
+    arrayOfInt4 = new int[] { 8, 5 };
+    arrayOfInt5 = new int[] { 8, 7 };
+    arrayOfInt6 = new int[] { 7, 8 };
+    arrayOfInt7 = new int[] { 5, 8 };
+    arrayOfInt8 = new int[] { 4, 8 };
+    arrayOfInt9 = new int[] { 3, 8 };
+    arrayOfInt10 = new int[] { 2, 8 };
+    arrayOfInt11 = new int[] { 1, 8 };
+    d = new int[][] { arrayOfInt1, { 8, 1 }, { 8, 2 }, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 8, 8 }, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, arrayOfInt10, arrayOfInt11, { 0, 8 } };
   }
   
   static int a(int paramInt)
@@ -96,7 +98,7 @@ final class MatrixUtil
     while (i < 8)
     {
       int j = paramInt1 + i;
-      if (a(paramByteMatrix.a(j, paramInt2)))
+      if (b(paramByteMatrix.a(j, paramInt2)))
       {
         paramByteMatrix.a(j, paramInt2, 0);
         i += 1;
@@ -131,7 +133,7 @@ final class MatrixUtil
         while (j < 2)
         {
           k = n - j;
-          if (a(paramByteMatrix.a(k, i1)))
+          if (b(paramByteMatrix.a(k, i1)))
           {
             boolean bool1;
             if (i < paramBitArray.a())
@@ -192,7 +194,7 @@ final class MatrixUtil
   
   static void a(ErrorCorrectionLevel paramErrorCorrectionLevel, int paramInt, BitArray paramBitArray)
   {
-    if (QRCode.a(paramInt))
+    if (QRCode.b(paramInt))
     {
       paramInt = paramErrorCorrectionLevel.getBits() << 3 | paramInt;
       paramBitArray.a(paramInt, 5);
@@ -256,18 +258,13 @@ final class MatrixUtil
     paramByteMatrix.a((byte)-1);
   }
   
-  private static boolean a(int paramInt)
-  {
-    return paramInt == -1;
-  }
-  
   private static void b(int paramInt1, int paramInt2, ByteMatrix paramByteMatrix)
   {
     int i = 0;
     while (i < 7)
     {
       int j = paramInt2 + i;
-      if (a(paramByteMatrix.a(paramInt1, j)))
+      if (b(paramByteMatrix.a(paramInt1, j)))
       {
         paramByteMatrix.a(paramInt1, j, 0);
         i += 1;
@@ -310,13 +307,18 @@ final class MatrixUtil
     {
       j = i + 1;
       int k = j % 2;
-      if (a(paramByteMatrix.a(i, 6))) {
+      if (b(paramByteMatrix.a(i, 6))) {
         paramByteMatrix.a(i, 6, k);
       }
-      if (a(paramByteMatrix.a(6, i))) {
+      if (b(paramByteMatrix.a(6, i))) {
         paramByteMatrix.a(6, i, k);
       }
     }
+  }
+  
+  private static boolean b(int paramInt)
+  {
+    return paramInt == -1;
   }
   
   private static void c(int paramInt1, int paramInt2, ByteMatrix paramByteMatrix)
@@ -351,7 +353,7 @@ final class MatrixUtil
       {
         int m = localObject[i];
         int n = localObject[j];
-        if ((n != -1) && (m != -1) && (a(paramByteMatrix.a(n, m)))) {
+        if ((n != -1) && (m != -1) && (b(paramByteMatrix.a(n, m)))) {
           c(n - 2, m - 2, paramByteMatrix);
         }
         j += 1;
@@ -401,7 +403,7 @@ final class MatrixUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.zxing.qrcode.encoder.MatrixUtil
  * JD-Core Version:    0.7.0.1
  */

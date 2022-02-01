@@ -60,8 +60,6 @@ public class SimpleGameRoomStatusListener
   
   public void c(String paramString, EngineData paramEngineData) {}
   
-  public void g() {}
-  
   public void h() {}
   
   public void i() {}
@@ -69,6 +67,8 @@ public class SimpleGameRoomStatusListener
   public void j() {}
   
   public void k() {}
+  
+  public void l() {}
 }
 
 

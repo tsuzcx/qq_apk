@@ -22,28 +22,28 @@ import mqq.os.MqqHandler;
 
 public class PicPreDownloaderCore
 {
-  private PicPreDownloader jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader;
-  private PreDownloadStrategyBeta jdField_a_of_type_ComTencentMobileqqPicPreDownloadStrategyBeta;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private final List<PicReq> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
-  protected Map<String, Integer> a;
-  private ConcurrentLinkedQueue<PicPreDownloaderCore.PicPreDownRunner> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private PriorityBlockingQueue<PicReq> jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue = new PriorityBlockingQueue();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private final List<PicReq> jdField_b_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
-  private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  private final List<PicReq> c = Collections.synchronizedList(new LinkedList());
-  private final List<PicReq> d = Collections.synchronizedList(new LinkedList());
+  protected Map<String, Integer> a = Collections.synchronizedMap(new HashMap());
+  private AtomicInteger b = new AtomicInteger();
+  private AtomicInteger c = new AtomicInteger();
+  private PreDownloadStrategyBeta d;
+  private PicPreDownloader e;
+  private MqqHandler f;
+  private Runnable g;
+  private AtomicBoolean h = new AtomicBoolean(false);
+  private PriorityBlockingQueue<PicReq> i = new PriorityBlockingQueue();
+  private ConcurrentLinkedQueue<PicPreDownloaderCore.PicPreDownRunner> j = new ConcurrentLinkedQueue();
+  private final List<PicReq> k = Collections.synchronizedList(new LinkedList());
+  private final List<PicReq> l = Collections.synchronizedList(new LinkedList());
+  private final List<PicReq> m = Collections.synchronizedList(new LinkedList());
+  private final List<PicReq> n = Collections.synchronizedList(new LinkedList());
+  private final List<PicReq> o = Collections.synchronizedList(new LinkedList());
   
   public PicPreDownloaderCore(PicPreDownloader paramPicPreDownloader, PreDownloadStrategyBeta paramPreDownloadStrategyBeta)
   {
-    this.jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
-    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader = paramPicPreDownloader;
-    this.jdField_a_of_type_ComTencentMobileqqPicPreDownloadStrategyBeta = paramPreDownloadStrategyBeta;
-    this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
-    this.jdField_a_of_type_JavaLangRunnable = new PicPreDownloaderCore.1(this);
+    this.e = paramPicPreDownloader;
+    this.d = paramPreDownloadStrategyBeta;
+    this.f = ThreadManager.getSubThreadHandler();
+    this.g = new PicPreDownloaderCore.1(this);
   }
   
   private PicReq a(String paramString, Collection<PicReq> paramCollection)
@@ -59,10 +59,10 @@ public class PicPreDownloaderCore
             break;
           }
           localPicReq = (PicReq)localIterator.next();
-        } while (localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo == null);
-        i = localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_e_of_type_Int;
+        } while (localPicReq.f == null);
+        i1 = localPicReq.f.t;
         bool = true;
-        if (i != 1) {
+        if (i1 != 1) {
           break label180;
         }
       }
@@ -71,7 +71,7 @@ public class PicPreDownloaderCore
         for (;;)
         {
           PicReq localPicReq;
-          int i;
+          int i1;
           String str;
           for (;;)
           {
@@ -80,24 +80,24 @@ public class PicPreDownloaderCore
           boolean bool = false;
         }
       }
-      i = ((IPicHelper)QRoute.api(IPicHelper.class)).getFileSizeType(localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_e_of_type_JavaLangString, bool);
-      str = BaseTransFileController.makeReceiveKey(localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.f, localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_g_of_type_JavaLangString, i);
+      i1 = ((IPicHelper)QRoute.api(IPicHelper.class)).getFileSizeType(localPicReq.f.l, bool);
+      str = BaseTransFileController.makeReceiveKey(localPicReq.f.m, localPicReq.f.n, i1);
     } while ((paramString == null) || (!paramString.equals(str)));
     paramCollection.remove(localPicReq);
-    this.jdField_a_of_type_JavaUtilMap.remove(localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_g_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a(localPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -5);
+    this.a.remove(localPicReq.f.n);
+    this.e.a(localPicReq.l, -5);
     return localPicReq;
     return null;
   }
   
-  private void f()
+  private void h()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < 3)
+    if (this.b.get() < 3)
     {
-      PicPreDownloaderCore.PicPreDownRunner localPicPreDownRunner = (PicPreDownloaderCore.PicPreDownRunner)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      PicPreDownloaderCore.PicPreDownRunner localPicPreDownRunner = (PicPreDownloaderCore.PicPreDownRunner)this.j.poll();
       if (localPicPreDownRunner != null)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+        this.b.incrementAndGet();
         ThreadManager.excute(localPicPreDownRunner, 16, null, false);
       }
     }
@@ -105,7 +105,7 @@ public class PicPreDownloaderCore
   
   protected int a(MessageForPic paramMessageForPic)
   {
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramMessageForPic.uuid);
+    Integer localInteger = (Integer)this.a.get(paramMessageForPic.uuid);
     if (localInteger == null) {
       return -1;
     }
@@ -117,7 +117,7 @@ public class PicPreDownloaderCore
         while (((Iterator)localObject).hasNext())
         {
           PicReq localPicReq = (PicReq)((Iterator)localObject).next();
-          if (paramMessageForPic.subMsgId == localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_g_of_type_Int)
+          if (paramMessageForPic.subMsgId == localPicReq.f.C)
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("uuid: ");
@@ -125,8 +125,8 @@ public class PicPreDownloaderCore
             ((StringBuilder)localObject).append(" subMsgId: ");
             ((StringBuilder)localObject).append(paramMessageForPic.subMsgId);
             Logger.a("PIC_TAG_PRELOAD", "getPriority", ((StringBuilder)localObject).toString());
-            int i = localInteger.intValue();
-            return i;
+            int i1 = localInteger.intValue();
+            return i1;
           }
         }
         return -1;
@@ -138,65 +138,80 @@ public class PicPreDownloaderCore
   
   PicReq a(boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.k)
     {
-      int i = this.jdField_a_of_type_JavaUtilList.size();
+      int i1 = this.k.size();
       Object localObject1;
-      if (i > 0)
+      if (i1 > 0)
       {
         Logger.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from AIORequests");
-        localObject1 = this.jdField_a_of_type_JavaUtilList;
-        i -= 1;
-        localObject1 = (PicReq)((List)localObject1).get(i);
+        localObject1 = this.k;
+        i1 -= 1;
+        localObject1 = (PicReq)((List)localObject1).get(i1);
         if (paramBoolean) {
-          this.jdField_a_of_type_JavaUtilList.remove(i);
+          this.k.remove(i1);
         }
         return localObject1;
       }
-      synchronized (this.jdField_b_of_type_JavaUtilList)
+      synchronized (this.l)
       {
-        i = this.jdField_b_of_type_JavaUtilList.size();
-        if (i > 0)
+        i1 = this.l.size();
+        if (i1 > 0)
         {
           Logger.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from C2CRequests");
-          localObject1 = this.jdField_b_of_type_JavaUtilList;
-          i -= 1;
-          localObject1 = (PicReq)((List)localObject1).get(i);
+          localObject1 = this.l;
+          i1 -= 1;
+          localObject1 = (PicReq)((List)localObject1).get(i1);
           if (paramBoolean) {
-            this.jdField_b_of_type_JavaUtilList.remove(i);
+            this.l.remove(i1);
           }
           return localObject1;
         }
-        synchronized (this.c)
+        synchronized (this.m)
         {
-          i = this.c.size();
-          if (i > 0)
+          i1 = this.m.size();
+          if (i1 > 0)
           {
-            Logger.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from DiscussionRequests");
-            localObject1 = this.c;
-            i -= 1;
-            localObject1 = (PicReq)((List)localObject1).get(i);
+            Logger.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from GuildRequests");
+            localObject1 = this.m;
+            i1 -= 1;
+            localObject1 = (PicReq)((List)localObject1).get(i1);
             if (paramBoolean) {
-              this.c.remove(i);
+              this.m.remove(i1);
             }
             return localObject1;
           }
-          synchronized (this.d)
+          synchronized (this.n)
           {
-            i = this.d.size();
-            if (i > 0)
+            i1 = this.n.size();
+            if (i1 > 0)
             {
-              Logger.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from GroupRequests");
-              localObject1 = this.d;
-              i -= 1;
-              localObject1 = (PicReq)((List)localObject1).get(i);
+              Logger.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from DiscussionRequests");
+              localObject1 = this.n;
+              i1 -= 1;
+              localObject1 = (PicReq)((List)localObject1).get(i1);
               if (paramBoolean) {
-                this.d.remove(i);
+                this.n.remove(i1);
               }
               return localObject1;
             }
-            Logger.a("PIC_TAG_PRELOAD", "getPicRequest", "cannot get any request");
-            return null;
+            synchronized (this.o)
+            {
+              i1 = this.o.size();
+              if (i1 > 0)
+              {
+                Logger.a("PIC_TAG_PRELOAD", "getPicRequest", "get a pic request from GroupRequests");
+                localObject1 = this.o;
+                i1 -= 1;
+                localObject1 = (PicReq)((List)localObject1).get(i1);
+                if (paramBoolean) {
+                  this.o.remove(i1);
+                }
+                return localObject1;
+              }
+              Logger.a("PIC_TAG_PRELOAD", "getPicRequest", "cannot get any request");
+              return null;
+            }
           }
         }
       }
@@ -209,34 +224,30 @@ public class PicPreDownloaderCore
     localStringBuilder.append("priority=");
     localStringBuilder.append(paramInt);
     Logger.a("PIC_TAG_PRELOAD", "getRequestsByPriority", localStringBuilder.toString());
-    if (paramInt != 2)
+    switch (paramInt)
     {
-      if (paramInt != 3)
-      {
-        if (paramInt != 4)
-        {
-          if (paramInt != 5)
-          {
-            if (paramInt != 6) {
-              return null;
-            }
-            return this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue;
-          }
-          return this.jdField_a_of_type_JavaUtilList;
-        }
-        return this.jdField_b_of_type_JavaUtilList;
-      }
-      return this.c;
+    default: 
+      return null;
+    case 7: 
+      return this.i;
+    case 6: 
+      return this.k;
+    case 5: 
+      return this.l;
+    case 4: 
+      return this.m;
+    case 3: 
+      return this.n;
     }
-    return this.d;
+    return this.o;
   }
   
   protected void a()
   {
-    MqqHandler localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+    MqqHandler localMqqHandler = this.f;
     if (localMqqHandler != null)
     {
-      Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+      Runnable localRunnable = this.g;
       if (localRunnable != null) {
         localMqqHandler.removeCallbacks(localRunnable);
       }
@@ -245,11 +256,11 @@ public class PicPreDownloaderCore
   
   protected void a(PicReq paramPicReq)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.add(paramPicReq);
-    paramPicReq.f = paramPicReq.jdField_e_of_type_Int;
-    paramPicReq.jdField_e_of_type_Int = 6;
-    this.jdField_a_of_type_JavaUtilMap.put(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_g_of_type_JavaLangString, Integer.valueOf(6));
-    if (paramPicReq.jdField_a_of_type_Int == 6) {
+    this.i.add(paramPicReq);
+    paramPicReq.p = paramPicReq.o;
+    paramPicReq.o = 7;
+    this.a.put(paramPicReq.f.n, Integer.valueOf(7));
+    if (paramPicReq.a == 6) {
       str = " big";
     } else {
       str = " thumb";
@@ -260,33 +271,39 @@ public class PicPreDownloaderCore
     String str = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(", uniseq:");
-    localStringBuilder.append(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.a);
+    localStringBuilder.append(paramPicReq.f.g);
     localStringBuilder.append(", subMsgId:");
-    localStringBuilder.append(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_g_of_type_Int);
+    localStringBuilder.append(paramPicReq.f.C);
     localStringBuilder.append(", priority:");
-    localStringBuilder.append(paramPicReq.jdField_e_of_type_Int);
+    localStringBuilder.append(paramPicReq.o);
     Logger.a("PIC_TAG_PRELOAD", str, localStringBuilder.toString());
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+    this.c.addAndGet(1);
   }
   
   protected void a(PicReq paramPicReq, int paramInt1, int paramInt2)
   {
     List localList;
     String str;
-    if (paramInt2 == 5)
+    if (paramInt2 == 6)
     {
-      localList = this.jdField_a_of_type_JavaUtilList;
-      paramPicReq.jdField_e_of_type_Int = 5;
+      localList = this.k;
+      paramPicReq.o = 6;
       if (paramInt1 != 2)
       {
-        if (paramInt1 != 3) {
-          paramPicReq.f = 2;
-        } else {
-          paramPicReq.f = 4;
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 4) {
+            paramPicReq.p = 2;
+          } else {
+            paramPicReq.p = 4;
+          }
+        }
+        else {
+          paramPicReq.p = 5;
         }
       }
       else {
-        paramPicReq.f = 3;
+        paramPicReq.p = 3;
       }
       str = "AIORequests";
     }
@@ -296,24 +313,34 @@ public class PicPreDownloaderCore
       {
         if (paramInt1 != 3)
         {
-          localList = this.d;
-          paramPicReq.jdField_e_of_type_Int = 2;
-          paramPicReq.f = paramPicReq.jdField_e_of_type_Int;
-          str = "GroupRequests";
+          if (paramInt1 != 4)
+          {
+            localList = this.o;
+            paramPicReq.o = 2;
+            paramPicReq.p = paramPicReq.o;
+            str = "GroupRequests";
+          }
+          else
+          {
+            localList = this.m;
+            paramPicReq.o = 4;
+            paramPicReq.p = paramPicReq.o;
+            str = "GuildRequests";
+          }
         }
         else
         {
-          localList = this.jdField_b_of_type_JavaUtilList;
-          paramPicReq.jdField_e_of_type_Int = 4;
-          paramPicReq.f = paramPicReq.jdField_e_of_type_Int;
+          localList = this.l;
+          paramPicReq.o = 5;
+          paramPicReq.p = paramPicReq.o;
           str = "C2CRequests";
         }
       }
       else
       {
-        localList = this.c;
-        paramPicReq.jdField_e_of_type_Int = 3;
-        paramPicReq.f = paramPicReq.jdField_e_of_type_Int;
+        localList = this.n;
+        paramPicReq.o = 3;
+        paramPicReq.p = paramPicReq.o;
         str = "DiscussionRequests";
       }
     }
@@ -329,8 +356,8 @@ public class PicPreDownloaderCore
       localStringBuilder.append(str);
       Logger.a("PIC_TAG_PRELOAD", "addBigPicRequest", localStringBuilder.toString());
       localList.add(paramPicReq);
-      e();
-      this.jdField_a_of_type_JavaUtilMap.put(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_g_of_type_JavaLangString, Integer.valueOf(paramPicReq.jdField_e_of_type_Int));
+      f();
+      this.a.put(paramPicReq.f.n, Integer.valueOf(paramPicReq.o));
     }
   }
   
@@ -345,76 +372,84 @@ public class PicPreDownloaderCore
       ((StringBuilder)localObject).append(paramMessageRecord.shmsgseq);
       localObject = ((StringBuilder)localObject).toString();
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(new PicPreDownloaderCore.PicPreDownRunner(this, paramRunnable, (String)localObject));
-    f();
+    this.j.offer(new PicPreDownloaderCore.PicPreDownRunner(this, paramRunnable, (String)localObject));
+    h();
   }
   
   public void a(String paramString)
   {
-    PicReq localPicReq = a(paramString, this.jdField_a_of_type_JavaUtilList);
+    PicReq localPicReq = a(paramString, this.k);
     StringBuilder localStringBuilder;
     if (localPicReq != null)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("From AIORequests, uniseq:");
-      localStringBuilder.append(localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.a);
+      localStringBuilder.append(localPicReq.f.g);
       localStringBuilder.append(",key:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(",cmd:");
-      localStringBuilder.append(localPicReq.jdField_a_of_type_Int);
+      localStringBuilder.append(localPicReq.a);
       Logger.a("PIC_TAG_PRELOAD", "", "drop", localStringBuilder.toString());
       return;
     }
-    localPicReq = a(paramString, this.jdField_b_of_type_JavaUtilList);
+    localPicReq = a(paramString, this.l);
     if (localPicReq != null)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("From AIORequests, uniseq:");
-      localStringBuilder.append(localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.a);
+      localStringBuilder.append(localPicReq.f.g);
       localStringBuilder.append(",key:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(",cmd:");
-      localStringBuilder.append(localPicReq.jdField_a_of_type_Int);
+      localStringBuilder.append(localPicReq.a);
       Logger.a("PIC_TAG_PRELOAD", "", "drop", localStringBuilder.toString());
       return;
     }
-    localPicReq = a(paramString, this.c);
+    localPicReq = a(paramString, this.m);
     if (localPicReq != null)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("From AIORequests, uniseq:");
-      localStringBuilder.append(localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.a);
+      localStringBuilder.append(localPicReq.f.g);
       localStringBuilder.append(",key:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(",cmd:");
-      localStringBuilder.append(localPicReq.jdField_a_of_type_Int);
+      localStringBuilder.append(localPicReq.a);
       Logger.a("PIC_TAG_PRELOAD", "", "drop", localStringBuilder.toString());
       return;
     }
-    localPicReq = a(paramString, this.d);
+    localPicReq = a(paramString, this.n);
     if (localPicReq != null)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("From AIORequests, uniseq:");
-      localStringBuilder.append(localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.a);
+      localStringBuilder.append(localPicReq.f.g);
       localStringBuilder.append(",key:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(",cmd:");
-      localStringBuilder.append(localPicReq.jdField_a_of_type_Int);
+      localStringBuilder.append(localPicReq.a);
+      Logger.a("PIC_TAG_PRELOAD", "", "drop", localStringBuilder.toString());
+      return;
+    }
+    localPicReq = a(paramString, this.o);
+    if (localPicReq != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("From AIORequests, uniseq:");
+      localStringBuilder.append(localPicReq.f.g);
+      localStringBuilder.append(",key:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",cmd:");
+      localStringBuilder.append(localPicReq.a);
       Logger.a("PIC_TAG_PRELOAD", "", "drop", localStringBuilder.toString());
       return;
     }
     Logger.a("PIC_TAG_PRELOAD", "", "drop", "Cannot be found in the request stacks");
   }
   
-  protected boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
   protected boolean a(MessageForPic paramMessageForPic, int paramInt)
   {
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramMessageForPic.uuid);
+    Integer localInteger = (Integer)this.a.get(paramMessageForPic.uuid);
     boolean bool = false;
     if (localInteger == null)
     {
@@ -449,7 +484,7 @@ public class PicPreDownloaderCore
       while (localIterator.hasNext())
       {
         localObject2 = (PicReq)localIterator.next();
-        if (paramMessageForPic.subMsgId == ((PicReq)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_g_of_type_Int)
+        if (paramMessageForPic.subMsgId == ((PicReq)localObject2).f.C)
         {
           bool = true;
           localObject1 = localObject2;
@@ -460,11 +495,11 @@ public class PicPreDownloaderCore
         localObject2 = a(paramInt);
         if (localObject2 != null)
         {
-          ((PicReq)localObject1).f = ((PicReq)localObject1).jdField_e_of_type_Int;
-          ((PicReq)localObject1).jdField_e_of_type_Int = paramInt;
+          ((PicReq)localObject1).p = ((PicReq)localObject1).o;
+          ((PicReq)localObject1).o = paramInt;
           localCollection.remove(localObject1);
           ((Collection)localObject2).add(localObject1);
-          this.jdField_a_of_type_JavaUtilMap.put(paramMessageForPic.uuid, Integer.valueOf(paramInt));
+          this.a.put(paramMessageForPic.uuid, Integer.valueOf(paramInt));
           Logger.a("PIC_TAG_PRELOAD", "filter", "update the picReq");
           return bool;
         }
@@ -482,73 +517,73 @@ public class PicPreDownloaderCore
     }
   }
   
-  protected boolean a(PicReq paramPicReq)
+  protected boolean b()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.contains(paramPicReq))
+    return this.h.get();
+  }
+  
+  protected boolean b(PicReq paramPicReq)
+  {
+    if (this.i.contains(paramPicReq))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.remove(paramPicReq);
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-      this.jdField_a_of_type_JavaUtilMap.remove(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_g_of_type_JavaLangString);
+      this.i.remove(paramPicReq);
+      this.c.decrementAndGet();
+      this.a.remove(paramPicReq.f.n);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("uniseq:");
-      localStringBuilder.append(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.a);
+      localStringBuilder.append(paramPicReq.f.g);
       localStringBuilder.append(", cmd:");
-      localStringBuilder.append(paramPicReq.jdField_a_of_type_Int);
+      localStringBuilder.append(paramPicReq.a);
       localStringBuilder.append(", curHandingNum:");
-      localStringBuilder.append(this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      localStringBuilder.append(this.c.get());
       Logger.a("PIC_TAG_PRELOAD", "onDownload", localStringBuilder.toString());
       return true;
     }
     return false;
   }
   
-  public void b()
+  public void c()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.h.set(false);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("mIsPicPreloadSuitable:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    ((StringBuilder)localObject).append(this.h.get());
     Logger.a("PIC_TAG_PRELOAD", "picPreDownloadOff", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+    localObject = this.f;
     if (localObject != null)
     {
-      Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+      Runnable localRunnable = this.g;
       if (localRunnable != null)
       {
         ((MqqHandler)localObject).removeCallbacks(localRunnable);
-        this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
+        this.f.postDelayed(this.g, 60000L);
       }
     }
   }
   
-  protected boolean b()
+  public void d()
   {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < 1;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.h.set(true);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mIsPicPreloadSuitable:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    localStringBuilder.append(this.h.get());
     Logger.a("PIC_TAG_PRELOAD", "picPreDownloadOn", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.d();
+    this.e.d();
   }
   
-  public void d()
+  public void e()
   {
     try
     {
-      int i = this.jdField_a_of_type_JavaUtilList.size();
+      int i1 = this.k.size();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder1 = new StringBuilder();
         localStringBuilder1.append("clearAIORequests(): AIORequests size=");
-        localStringBuilder1.append(i);
+        localStringBuilder1.append(i1);
         QLog.d("PIC_TAG_PRELOAD", 2, localStringBuilder1.toString());
       }
-      ThreadManager.excute(new PicPreDownloaderCore.2(this, i), 16, null, false);
+      ThreadManager.excute(new PicPreDownloaderCore.2(this, i1), 16, null, false);
       return;
     }
     catch (Exception localException)
@@ -563,42 +598,48 @@ public class PicPreDownloaderCore
     }
   }
   
-  protected void e()
+  protected void f()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() + this.jdField_b_of_type_JavaUtilList.size() + this.c.size() + this.d.size() > this.jdField_a_of_type_ComTencentMobileqqPicPreDownloadStrategyBeta.a.longValue())
+    if (this.k.size() + this.l.size() + this.n.size() + this.o.size() + this.m.size() > this.d.ab.longValue())
     {
       Object localObject1 = null;
-      synchronized (this.d)
+      synchronized (this.o)
       {
-        if (this.d.size() > 0) {
-          localObject1 = (PicReq)this.d.remove(0);
+        if (this.o.size() > 0) {
+          localObject1 = (PicReq)this.o.remove(0);
         }
-        synchronized (this.c)
+        synchronized (this.n)
         {
-          if (this.c.size() > 0) {
-            localObject1 = (PicReq)this.c.remove(0);
+          if (this.n.size() > 0) {
+            localObject1 = (PicReq)this.n.remove(0);
           }
-          synchronized (this.jdField_b_of_type_JavaUtilList)
+          synchronized (this.m)
           {
-            if (this.jdField_b_of_type_JavaUtilList.size() > 0) {
-              localObject1 = (PicReq)this.jdField_b_of_type_JavaUtilList.remove(0);
+            if (this.m.size() > 0) {
+              localObject1 = (PicReq)this.m.remove(0);
             }
-            synchronized (this.jdField_a_of_type_JavaUtilList)
+            synchronized (this.l)
             {
-              if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-                localObject1 = (PicReq)this.jdField_a_of_type_JavaUtilList.remove(0);
+              if (this.l.size() > 0) {
+                localObject1 = (PicReq)this.l.remove(0);
               }
-              if (localObject1 != null)
+              synchronized (this.k)
               {
-                this.jdField_a_of_type_JavaUtilMap.remove(((PicReq)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_g_of_type_JavaLangString);
-                localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicPreDownloadStrategyBeta;
-                ((PreDownloadStrategyBeta)localObject1).N += 1L;
-                localObject1 = new StringBuilder();
-                ((StringBuilder)localObject1).append("over max request list size: ");
-                ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqPicPreDownloadStrategyBeta.a);
-                ((StringBuilder)localObject1).append(", remove a request");
-                Logger.a("PIC_TAG_PRELOAD", "checkRequestListSize", ((StringBuilder)localObject1).toString());
-                return;
+                if (this.k.size() > 0) {
+                  localObject1 = (PicReq)this.k.remove(0);
+                }
+                if (localObject1 != null)
+                {
+                  this.a.remove(((PicReq)localObject1).f.n);
+                  localObject1 = this.d;
+                  ((PreDownloadStrategyBeta)localObject1).Q += 1L;
+                  localObject1 = new StringBuilder();
+                  ((StringBuilder)localObject1).append("over max request list size: ");
+                  ((StringBuilder)localObject1).append(this.d.ab);
+                  ((StringBuilder)localObject1).append(", remove a request");
+                  Logger.a("PIC_TAG_PRELOAD", "checkRequestListSize", ((StringBuilder)localObject1).toString());
+                  return;
+                }
               }
             }
           }
@@ -606,10 +647,15 @@ public class PicPreDownloaderCore
       }
     }
   }
+  
+  protected boolean g()
+  {
+    return this.c.get() < 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloaderCore
  * JD-Core Version:    0.7.0.1
  */

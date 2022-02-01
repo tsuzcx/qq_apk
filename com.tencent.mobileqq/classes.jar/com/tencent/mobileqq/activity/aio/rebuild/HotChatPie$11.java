@@ -15,28 +15,28 @@ class HotChatPie$11
   public boolean a(HotChatNote paramHotChatNote)
   {
     if (QLog.isDevelopLevel()) {
-      NearbyUtils.a(this.a.b, "onShowHotchatNote", new Object[] { paramHotChatNote });
+      NearbyUtils.a(this.a.c, "onShowHotchatNote", new Object[] { paramHotChatNote });
     }
     if (paramHotChatNote == null)
     {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatSCHelper.getCurShowingNote()) && (HotChatPie.a(this.a) != null)) {
-        HotChatPie.b(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, null, null);
+      if ((this.a.bU.getCurShowingNote()) && (HotChatPie.b(this.a) != null)) {
+        HotChatPie.c(this.a).a(this.a.d, this.a.e, null, null);
       }
       return false;
     }
-    if (HotChatPie.c(this.a) == null)
+    if (HotChatPie.d(this.a) == null)
     {
       HotChatPie localHotChatPie = this.a;
-      HotChatPie.a(localHotChatPie, new TroopFeedsCenterLogic(localHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, HotChatPie.a(this.a), HotChatPie.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips, HotChatPie.a(this.a), null));
+      HotChatPie.a(localHotChatPie, new TroopFeedsCenterLogic(localHotChatPie.d, this.a.f, this.a.ah, HotChatPie.e(this.a), HotChatPie.f(this.a), this.a.bp, HotChatPie.g(this.a), null));
     }
-    HotChatPie.d(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramHotChatNote.a, paramHotChatNote.b);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatSCHelper.setCurShowingNote(true);
+    HotChatPie.h(this.a).a(this.a.d, this.a.e, paramHotChatNote.c, paramHotChatNote.d);
+    this.a.bU.setCurShowingNote(true);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.11
  * JD-Core Version:    0.7.0.1
  */

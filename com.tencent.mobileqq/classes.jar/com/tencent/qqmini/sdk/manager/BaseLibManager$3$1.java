@@ -23,7 +23,7 @@ class BaseLibManager$3$1
     localStringBuilder.append(", miniAppEnginLib ");
     localStringBuilder.append(localObject);
     QMLog.i("miniapp-process_BaseLibManager", localStringBuilder.toString());
-    if ((TextUtils.isEmpty(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getSoPath())) || (!"1.22.0.00008".equals(this.this$1.val$baseLibVersion)))
+    if ((TextUtils.isEmpty(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getSoPath())) || (!"1.29.0.00002".equals(this.this$1.val$baseLibVersion)))
     {
       if (!LocalGameEngine.g().isWnsConfigModel())
       {
@@ -50,7 +50,7 @@ class BaseLibManager$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.BaseLibManager.3.1
  * JD-Core Version:    0.7.0.1
  */

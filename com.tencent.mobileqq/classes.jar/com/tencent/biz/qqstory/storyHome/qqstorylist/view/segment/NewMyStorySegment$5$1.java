@@ -13,10 +13,10 @@ class NewMyStorySegment$5$1
   
   public void a(GetMyStoryVideoListStep.Result paramResult)
   {
-    if ((paramResult.a != null) && (TextUtils.equals(paramResult.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    if ((paramResult.f != null) && (TextUtils.equals(paramResult.f.a, this.a)))
     {
-      NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment$5.a).a = paramResult.a;
-      NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment$5.a).sendMessage(NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment$5.a).obtainMessage(0, NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment$5.a)));
+      NewMyStorySegment.b(this.b.a).t = paramResult.f;
+      NewMyStorySegment.a(this.b.a).sendMessage(NewMyStorySegment.a(this.b.a).obtainMessage(0, NewMyStorySegment.b(this.b.a)));
     }
   }
 }

@@ -10,12 +10,12 @@ class VSEntranceWidget$1$2
   
   public void run()
   {
-    ((ImageView)this.jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidget$1.a).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    ((ImageView)this.b.a).setImageDrawable(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidget.1.2
  * JD-Core Version:    0.7.0.1
  */

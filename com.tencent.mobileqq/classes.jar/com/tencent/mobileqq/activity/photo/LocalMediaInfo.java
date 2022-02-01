@@ -25,6 +25,7 @@ public class LocalMediaInfo
   public String filterID = "";
   public int index;
   public boolean isMakeVideo;
+  public boolean isProgressThumbnail = true;
   public boolean isRecord;
   public boolean isRegionThumbUseNewDecoder = false;
   public boolean isSyncToWeishi;
@@ -307,7 +308,7 @@ public class LocalMediaInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.LocalMediaInfo
  * JD-Core Version:    0.7.0.1
  */

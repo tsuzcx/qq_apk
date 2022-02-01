@@ -26,11 +26,6 @@ public class DefaultLoadingView
     addView(this.a);
   }
   
-  protected int a()
-  {
-    return 2131561611;
-  }
-  
   public void a(WebView paramWebView)
   {
     paramWebView.addView(this, new FrameLayout.LayoutParams(-1, -1));
@@ -39,6 +34,11 @@ public class DefaultLoadingView
   public void b(WebView paramWebView)
   {
     paramWebView.removeView(this);
+  }
+  
+  protected int getLayoutId()
+  {
+    return 2131627974;
   }
 }
 

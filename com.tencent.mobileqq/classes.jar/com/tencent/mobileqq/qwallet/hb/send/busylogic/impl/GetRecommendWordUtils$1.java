@@ -17,7 +17,7 @@ final class GetRecommendWordUtils$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    GetRecommendWordUtils.a().remove(Integer.valueOf(this.jdField_a_of_type_Int));
+    GetRecommendWordUtils.c().remove(Integer.valueOf(this.a));
     Object localObject;
     if (QLog.isColorLevel())
     {
@@ -29,7 +29,7 @@ final class GetRecommendWordUtils$1
       ((StringBuilder)localObject).append(",bundle:");
       ((StringBuilder)localObject).append(paramBundle);
       ((StringBuilder)localObject).append(",cost:");
-      ((StringBuilder)localObject).append(NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(NetConnInfoCenter.getServerTimeMillis() - this.b);
       QLog.d("GetRandomRecommendWordUtils", 2, ((StringBuilder)localObject).toString());
     }
     try
@@ -53,15 +53,15 @@ final class GetRecommendWordUtils$1
         if (paramInt == 0)
         {
           localObject = new GetRecommendWordUtils.RspRecommendInfo();
-          ((GetRecommendWordUtils.RspRecommendInfo)localObject).jdField_a_of_type_JavaUtilList = paramBundle.copywriter.get();
-          ((GetRecommendWordUtils.RspRecommendInfo)localObject).jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-          if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplGetRecommendWordUtils$GetRandomWordsListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplGetRecommendWordUtils$GetRandomWordsListener.a(true, this.jdField_a_of_type_Int, (GetRecommendWordUtils.RspRecommendInfo)localObject);
+          ((GetRecommendWordUtils.RspRecommendInfo)localObject).a = paramBundle.copywriter.get();
+          ((GetRecommendWordUtils.RspRecommendInfo)localObject).b = NetConnInfoCenter.getServerTimeMillis();
+          if (this.c != null) {
+            this.c.a(true, this.a, (GetRecommendWordUtils.RspRecommendInfo)localObject);
           }
         }
-        else if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplGetRecommendWordUtils$GetRandomWordsListener != null)
+        else if (this.c != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplGetRecommendWordUtils$GetRandomWordsListener.a(false, 0, null);
+          this.c.a(false, 0, null);
           return;
         }
       }
@@ -78,7 +78,7 @@ final class GetRecommendWordUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.GetRecommendWordUtils.1
  * JD-Core Version:    0.7.0.1
  */

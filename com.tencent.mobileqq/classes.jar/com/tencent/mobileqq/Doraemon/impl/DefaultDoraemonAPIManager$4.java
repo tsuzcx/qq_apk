@@ -15,17 +15,17 @@ class DefaultDoraemonAPIManager$4
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAPIManager.d();
+    this.e.g();
     paramDialogInterface = new StringBuilder();
     paramDialogInterface.append("cancel ");
-    paramDialogInterface.append(this.jdField_a_of_type_ComTencentMobileqqDoraemonUserPermission.a);
+    paramDialogInterface.append(this.a.a);
     QLog.i("DoraemonOpenAPI.apiMgr", 1, paramDialogInterface.toString());
-    DefaultDoraemonAPIManager.c(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAPIManager, 4, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPIConfig, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback);
+    DefaultDoraemonAPIManager.c(this.e, 4, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAPIManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -11,38 +11,37 @@ import com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper;
 import com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper.IBannerInteract;
 import com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper.MessageToShowBanner;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsLoadDelegate;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5.Builder;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class ReadInJoyVideoInteract
   implements BBannerHelper.IBannerInteract
 {
-  @NonNull
-  private final PendingIntent jdField_a_of_type_AndroidAppPendingIntent;
-  @Nullable
-  private BBannerHelper.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner;
-  String jdField_a_of_type_JavaLangString;
-  @NonNull
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean;
+  String a;
   String b;
   String c;
   String d;
+  boolean e;
+  @NonNull
+  private final PendingIntent f;
+  @NonNull
+  private final WeakReference<QQAppInterface> g;
+  @Nullable
+  private BBannerHelper.MessageToShowBanner h;
   
   public ReadInJoyVideoInteract(@NonNull PendingIntent paramPendingIntent, @NonNull QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.f = paramPendingIntent;
+    this.g = new WeakReference(paramQQAppInterface);
+    this.a = paramString1;
     this.b = paramString2;
     this.c = paramString3;
     this.d = paramString4;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Intent paramIntent, PendingIntent paramPendingIntent, String paramString1, String paramString2)
@@ -73,20 +72,19 @@ public class ReadInJoyVideoInteract
   
   private void a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    if (this.g.get() != null)
     {
-      VideoR5.Builder localBuilder = new VideoR5.Builder(this.d, this.jdField_a_of_type_JavaLangString, this.c, this.b);
-      localBuilder.j(this.b);
-      IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      String str2 = this.jdField_a_of_type_JavaLangString;
+      VideoR5.Builder localBuilder = new VideoR5.Builder(this.d, this.a, this.c, this.b);
+      localBuilder.k(this.b);
+      AppInterface localAppInterface = (AppInterface)this.g.get();
+      String str2 = this.a;
       String str1;
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.e) {
         str1 = "1";
       } else {
         str1 = "0";
       }
-      localIPublicAccountReportUtils.publicAccountReportClickEvent(localAppInterface, str2, paramString, paramString, 0, 0, str1, "", "", localBuilder.a().a(), false);
+      PublicAccountReportUtils.a(localAppInterface, str2, paramString, paramString, 0, 0, str1, "", "", localBuilder.b().a(), false);
     }
   }
   
@@ -97,7 +95,7 @@ public class ReadInJoyVideoInteract
   
   public void a(@Nullable BBannerHelper.MessageToShowBanner paramMessageToShowBanner)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner = paramMessageToShowBanner;
+    this.h = paramMessageToShowBanner;
   }
   
   public boolean isNeedAutoCloseWhenAccountChange()
@@ -107,41 +105,41 @@ public class ReadInJoyVideoInteract
   
   public void onClose()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {
+    if (this.h == null) {
       return;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.g.get();
     if (localQQAppInterface == null) {
       return;
     }
-    BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
-    VideoFeedsLoadDelegate.a(this.jdField_a_of_type_AndroidAppPendingIntent);
+    BBannerHelper.a(localQQAppInterface, this.h);
+    VideoFeedsLoadDelegate.a(this.f);
     a("0X80097FA");
   }
   
   public void onEnter()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {
+    if (this.h == null) {
       return;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.g.get();
     if (localQQAppInterface == null) {
       return;
     }
     try
     {
-      this.jdField_a_of_type_AndroidAppPendingIntent.send();
+      this.f.send();
     }
     catch (PendingIntent.CanceledException localCanceledException)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("send pending intent fail with ");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidAppPendingIntent);
+      localStringBuilder.append(this.f);
       localStringBuilder.append("\r\n");
       localStringBuilder.append(localCanceledException);
       QLog.e("ReadInjoyVideoInteract", 1, localStringBuilder.toString());
     }
-    BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+    BBannerHelper.a(localQQAppInterface, this.h);
     a("0X80097F9");
   }
   
@@ -149,7 +147,7 @@ public class ReadInJoyVideoInteract
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.ReadInJoyVideoInteract
  * JD-Core Version:    0.7.0.1
  */

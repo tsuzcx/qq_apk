@@ -28,154 +28,154 @@ public class VoiceTextEditViewHelper
   extends VoiceTextBaseViewHelpr
   implements View.OnClickListener, VoiceTextShowAnimator.LoadingTextListner
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new VoiceTextEditViewHelper.1(this);
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  TextView.OnEditorActionListener jdField_a_of_type_AndroidWidgetTextView$OnEditorActionListener = new VoiceTextEditViewHelper.2(this);
-  private VoiceTextShowAnimator jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator;
+  TextView.OnEditorActionListener e = new VoiceTextEditViewHelper.2(this);
+  private Handler f;
+  private EditText g;
+  private VoiceTextShowAnimator h;
+  private TextWatcher i = new VoiceTextEditViewHelper.1(this);
   
   public VoiceTextEditViewHelper(VoiceTextStateModel paramVoiceTextStateModel, AppRuntime paramAppRuntime, Handler paramHandler)
   {
     super(paramAppRuntime, paramVoiceTextStateModel);
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator = new VoiceTextShowAnimator();
+    this.f = paramHandler;
+    this.h = new VoiceTextShowAnimator();
   }
   
-  private void i()
+  private void m()
   {
     SpannableString localSpannableString;
-    if (a().a())
+    if (d().a())
     {
-      localSpannableString = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a();
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(localSpannableString);
+      localSpannableString = this.h.c();
+      this.g.setText(localSpannableString);
       return;
     }
-    if (a().b())
+    if (d().b())
     {
-      localSpannableString = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a(a().b());
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(localSpannableString);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a());
+      localSpannableString = this.h.b(c().b());
+      this.g.setText(localSpannableString);
+      this.g.setSelection(this.h.d(), this.h.d());
       return;
     }
-    if (a().c()) {
-      k();
+    if (d().c()) {
+      o();
     }
   }
   
-  private void j()
+  private void n()
   {
-    if (QQTheme.a())
+    if (QQTheme.isNowThemeIsNight())
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(Color.parseColor("#777777"));
+      this.g.setTextColor(Color.parseColor("#777777"));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(Color.parseColor("#03081a"));
+    this.g.setTextColor(Color.parseColor("#03081a"));
   }
   
-  private void k()
+  private void o()
   {
-    Object localObject = a().b();
-    if (StringUtil.a((String)localObject))
+    Object localObject = c().b();
+    if (StringUtil.isEmpty((String)localObject))
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-      a().a(5);
-      this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.b();
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131716330), 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168));
+      this.g.setText("");
+      d().a(5);
+      this.g.setFocusableInTouchMode(true);
+      this.h.b();
+      QQToast.makeText(this.b, HardCodeUtil.a(2131913772), 0).show(this.b.getResources().getDimensionPixelSize(2131299920));
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a((String)localObject))
+    if (this.h.a((String)localObject))
     {
-      j();
-      this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.b();
-      this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
-      a().a(5);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(((String)localObject).length(), ((String)localObject).length());
+      n();
+      this.g.setText((CharSequence)localObject);
+      this.h.b();
+      this.g.setFocusableInTouchMode(true);
+      d().a(5);
+      this.g.setSelection(((String)localObject).length(), ((String)localObject).length());
       return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a((String)localObject);
-    this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a());
-  }
-  
-  public EditText a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetEditText;
+    localObject = this.h.b((String)localObject);
+    this.g.setText((CharSequence)localObject);
+    this.g.setSelection(this.h.d(), this.h.d());
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new VoiceTextEditViewHelper.3(this));
+    this.f.post(new VoiceTextEditViewHelper.3(this));
   }
   
   public void a(VoiceTextUserOpListener paramVoiceTextUserOpListener)
   {
     super.a(paramVoiceTextUserOpListener);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131167142), this);
+    this.h.a(this.a, this.b.getResources().getColorStateList(2131168122), this);
   }
   
   public void a(VoiceTextPanel paramVoiceTextPanel)
   {
     super.a(paramVoiceTextPanel);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramVoiceTextPanel.findViewById(2131366027));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHorizontallyScrolling(false);
-    this.jdField_a_of_type_AndroidWidgetEditText.setLines(100);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(this.jdField_a_of_type_AndroidWidgetTextView$OnEditorActionListener);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+    this.g = ((EditText)paramVoiceTextPanel.findViewById(2131432302));
+    this.g.setHorizontallyScrolling(false);
+    this.g.setLines(100);
+    this.g.setOnClickListener(this);
+    this.g.setOnEditorActionListener(this.e);
+    this.g.addTextChangedListener(this.i);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+    this.g.setText(paramString);
   }
   
   public void f()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
+    this.g.setEnabled(true);
+    this.g.setFocusableInTouchMode(false);
   }
   
   public void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a();
+    this.g.setText("");
   }
   
-  public void h()
+  public EditText h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.b();
+    return this.g;
+  }
+  
+  public void i()
+  {
+    this.g.setFocusable(true);
+    this.g.setFocusableInTouchMode(true);
+    this.g.requestFocus();
+  }
+  
+  public void j()
+  {
+    this.g.setText("");
+    this.g.setFocusableInTouchMode(true);
+  }
+  
+  public void k()
+  {
+    this.h.a();
+  }
+  
+  public void l()
+  {
+    this.h.b();
   }
   
   public void onClick(View paramView)
   {
-    if ((a().a()) || (a().b())) {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131716336), 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168));
+    if ((d().a()) || (d().b())) {
+      QQToast.makeText(this.b, HardCodeUtil.a(2131913778), 0).show(this.b.getResources().getDimensionPixelSize(2131299920));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextEditViewHelper
  * JD-Core Version:    0.7.0.1
  */

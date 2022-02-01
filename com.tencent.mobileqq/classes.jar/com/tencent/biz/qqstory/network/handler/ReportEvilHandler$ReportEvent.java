@@ -6,29 +6,29 @@ import com.tencent.biz.qqstory.base.ErrorMessage;
 public class ReportEvilHandler$ReportEvent
   extends BaseEvent
 {
-  public final int a;
   public final String a;
   public final String b;
+  public final int c;
   
   public ReportEvilHandler$ReportEvent(ReportEvilHandler paramReportEvilHandler, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.g = paramErrorMessage;
     this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString1;
+    this.c = paramInt;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReportEvent{vid='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", uin='");
     localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", impeachType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("} ");
     localStringBuilder.append(super.toString());
     return localStringBuilder.toString();
@@ -36,7 +36,7 @@ public class ReportEvilHandler$ReportEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.ReportEvilHandler.ReportEvent
  * JD-Core Version:    0.7.0.1
  */

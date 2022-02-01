@@ -22,7 +22,7 @@ class NearbyAuthVideoPlayerFragment$3
       localStringBuilder.append(paramBoolean);
       QLog.d("NearbyAuthVideoPlayerFragment", 2, localStringBuilder.toString());
     }
-    ((INearbyCardManager)this.a.getBaseActivity().app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).a().put(this.a.getBaseActivity().app.getCurrentAccountUin(), Integer.valueOf(1));
+    ((INearbyCardManager)this.a.getBaseActivity().app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).f().put(this.a.getBaseActivity().app.getCurrentAccountUin(), Integer.valueOf(1));
     if (paramBoolean) {
       this.a.getBaseActivity().finish();
     }
@@ -30,7 +30,7 @@ class NearbyAuthVideoPlayerFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.3
  * JD-Core Version:    0.7.0.1
  */

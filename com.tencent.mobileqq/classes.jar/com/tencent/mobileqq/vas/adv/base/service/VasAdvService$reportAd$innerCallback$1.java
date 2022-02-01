@@ -31,7 +31,7 @@ public final class VasAdvService$reportAd$innerCallback$1
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "rspBytes");
     try
     {
-      paramArrayOfByte = VasAdvService.a(VasAdvService.a, paramArrayOfByte);
+      paramArrayOfByte = VasAdvService.b(VasAdvService.a, paramArrayOfByte);
       VasAdvService.a(VasAdvService.a, paramArrayOfByte, this.a);
       return;
     }
@@ -49,7 +49,7 @@ public final class VasAdvService$reportAd$innerCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.service.VasAdvService.reportAd.innerCallback.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,29 +18,13 @@ public class ZanRankingChannel
   extends BaseMethodChannel
   implements ZanRankingIpcClient.ICallback
 {
-  public static final AtomicInteger a;
-  private Map<Integer, MethodChannel.Result> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  }
+  public static final AtomicInteger d = new AtomicInteger();
+  private Map<Integer, MethodChannel.Result> e = new ConcurrentHashMap();
   
   public ZanRankingChannel()
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    ZanRankingIpcClient.a().a();
+    ZanRankingIpcClient.a().b();
     ZanRankingIpcClient.a().a(this);
-  }
-  
-  public MethodChannel.MethodCallHandler a()
-  {
-    return new ZanRankingChannel.1(this);
-  }
-  
-  public MethodCodec a()
-  {
-    return ZanRankingChannelHandler.a;
   }
   
   public String a()
@@ -48,27 +32,37 @@ public class ZanRankingChannel
     return "com.tencent.qflutter/zanranking";
   }
   
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    ZanRankingIpcClient.a().b();
-  }
-  
   public void a(int paramInt, String paramString, boolean paramBoolean, CardCoverData paramCardCoverData)
   {
     QLog.d("ZanRankingChannel", 1, String.format("onGetCardCover seq=%d uin=%s fromCache=%b data=%s", new Object[] { Integer.valueOf(paramInt), paramString, Boolean.valueOf(paramBoolean), paramCardCoverData }));
-    paramString = (MethodChannel.Result)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+    paramString = (MethodChannel.Result)this.e.remove(Integer.valueOf(paramInt));
     if (paramString == null) {
       return;
     }
     paramString = new ZanRankingChannel.2(this, paramString, paramCardCoverData);
     ThreadManager.getUIHandlerV2().post(paramString);
   }
+  
+  public MethodCodec b()
+  {
+    return ZanRankingChannelHandler.b;
+  }
+  
+  public MethodChannel.MethodCallHandler c()
+  {
+    return new ZanRankingChannel.1(this);
+  }
+  
+  public void f()
+  {
+    super.f();
+    this.e.clear();
+    ZanRankingIpcClient.a().c();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.ZanRankingChannel
  * JD-Core Version:    0.7.0.1
  */

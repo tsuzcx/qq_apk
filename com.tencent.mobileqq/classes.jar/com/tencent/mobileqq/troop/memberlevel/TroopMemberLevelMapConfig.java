@@ -16,13 +16,13 @@ import org.json.JSONObject;
 
 public class TroopMemberLevelMapConfig
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private HashMap<Integer, TroopMemberLevelMapItem> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private TreeMap<Integer, Integer> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
-  private String jdField_b_of_type_JavaLangString = "";
-  private HashMap<Integer, TroopMemberLevelColorItem> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private String c = "";
+  private List<Integer> a = new ArrayList();
+  private HashMap<Integer, TroopMemberLevelMapItem> b = new HashMap();
+  private HashMap<Integer, TroopMemberLevelColorItem> c = new HashMap();
+  private TreeMap<Integer, Integer> d = new TreeMap();
+  private String e = "";
+  private String f = "";
+  private String g = "";
   
   public static TroopMemberLevelMapConfig a(String paramString)
   {
@@ -213,13 +213,13 @@ public class TroopMemberLevelMapConfig
     localObject1 = localObject6;
     localObject2 = localObject5;
     localObject5 = new TroopMemberLevelMapConfig();
-    ((TroopMemberLevelMapConfig)localObject5).jdField_a_of_type_JavaUtilHashMap = localHashMap1;
-    ((TroopMemberLevelMapConfig)localObject5).jdField_b_of_type_JavaUtilHashMap = localHashMap2;
-    ((TroopMemberLevelMapConfig)localObject5).jdField_a_of_type_JavaUtilList = localArrayList;
-    ((TroopMemberLevelMapConfig)localObject5).jdField_a_of_type_JavaUtilTreeMap = localTreeMap;
-    ((TroopMemberLevelMapConfig)localObject5).jdField_a_of_type_JavaLangString = ((String)localObject1);
-    ((TroopMemberLevelMapConfig)localObject5).jdField_b_of_type_JavaLangString = ((String)localObject2);
-    ((TroopMemberLevelMapConfig)localObject5).c = paramString;
+    ((TroopMemberLevelMapConfig)localObject5).b = localHashMap1;
+    ((TroopMemberLevelMapConfig)localObject5).c = localHashMap2;
+    ((TroopMemberLevelMapConfig)localObject5).a = localArrayList;
+    ((TroopMemberLevelMapConfig)localObject5).d = localTreeMap;
+    ((TroopMemberLevelMapConfig)localObject5).e = ((String)localObject1);
+    ((TroopMemberLevelMapConfig)localObject5).f = ((String)localObject2);
+    ((TroopMemberLevelMapConfig)localObject5).g = paramString;
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
@@ -234,36 +234,9 @@ public class TroopMemberLevelMapConfig
     return localObject5;
   }
   
-  public int a(int paramInt)
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
-    int j = 0;
-    if (localObject1 == null) {
-      return 0;
-    }
-    localObject1 = ((HashMap)localObject1).keySet().iterator();
-    Object localObject2;
-    do
-    {
-      i = j;
-      if (!((Iterator)localObject1).hasNext()) {
-        break;
-      }
-      localObject2 = ((Iterator)localObject1).next();
-      localObject2 = (TroopMemberLevelMapItem)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
-    } while ((((TroopMemberLevelMapItem)localObject2).jdField_a_of_type_Int > paramInt) || (paramInt > ((TroopMemberLevelMapItem)localObject2).b));
-    int i = ((TroopMemberLevelMapItem)localObject2).c;
-    return i;
-  }
-  
-  public String a()
-  {
-    return this.c;
-  }
-  
   public String a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject1 = this.b;
     Object localObject2 = "";
     if (localObject1 == null)
     {
@@ -280,9 +253,9 @@ public class TroopMemberLevelMapConfig
         break;
       }
       localObject1 = (Integer)localIterator.next();
-      localObject1 = (TroopMemberLevelMapItem)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
-    } while ((localObject1 == null) || (((TroopMemberLevelMapItem)localObject1).jdField_a_of_type_Int > paramInt) || (((TroopMemberLevelMapItem)localObject1).b < paramInt));
-    localObject1 = ((TroopMemberLevelMapItem)localObject1).jdField_a_of_type_JavaLangString;
+      localObject1 = (TroopMemberLevelMapItem)this.b.get(localObject1);
+    } while ((localObject1 == null) || (((TroopMemberLevelMapItem)localObject1).a > paramInt) || (((TroopMemberLevelMapItem)localObject1).b < paramInt));
+    localObject1 = ((TroopMemberLevelMapItem)localObject1).d;
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
@@ -295,10 +268,15 @@ public class TroopMemberLevelMapConfig
   
   public boolean a()
   {
-    return TextUtils.isEmpty(this.c) ^ true;
+    return TextUtils.isEmpty(this.g) ^ true;
   }
   
-  public boolean a(String paramString)
+  public String b()
+  {
+    return this.g;
+  }
+  
+  public boolean b(String paramString)
   {
     if (QLog.isColorLevel())
     {
@@ -310,17 +288,17 @@ public class TroopMemberLevelMapConfig
     boolean bool3 = TextUtils.isEmpty(paramString);
     boolean bool2 = false;
     boolean bool1 = true;
-    if ((!bool3) && (this.jdField_a_of_type_JavaUtilList != null))
+    if ((!bool3) && (this.a != null))
     {
       paramString = paramString.substring(paramString.length() - 1);
       int i = 0;
       for (;;)
       {
         bool1 = bool2;
-        if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+        if (i >= this.a.size()) {
           break;
         }
-        if (String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)).equals(paramString))
+        if (String.valueOf(this.a.get(i)).equals(paramString))
         {
           bool1 = true;
           break;
@@ -340,7 +318,7 @@ public class TroopMemberLevelMapConfig
     {
       paramString = new StringBuilder();
       paramString.append("grayTroopUinList is null ? ");
-      if (this.jdField_a_of_type_JavaUtilList != null) {
+      if (this.a != null) {
         bool1 = false;
       }
       paramString.append(bool1);
@@ -349,29 +327,51 @@ public class TroopMemberLevelMapConfig
     return false;
   }
   
-  public int[] a()
+  public int[] b(int paramInt)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
-      return new int[] { Color.parseColor(this.jdField_a_of_type_JavaLangString), Color.parseColor(this.jdField_b_of_type_JavaLangString) };
-    }
-    return null;
-  }
-  
-  public int[] a(int paramInt)
-  {
-    Object localObject = (TroopMemberLevelColorItem)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    Object localObject = (TroopMemberLevelColorItem)this.c.get(Integer.valueOf(paramInt));
     if (localObject != null)
     {
-      String str = ((TroopMemberLevelColorItem)localObject).jdField_a_of_type_JavaLangString;
-      localObject = ((TroopMemberLevelColorItem)localObject).jdField_b_of_type_JavaLangString;
+      String str = ((TroopMemberLevelColorItem)localObject).b;
+      localObject = ((TroopMemberLevelColorItem)localObject).c;
       return new int[] { Color.parseColor(str), Color.parseColor((String)localObject) };
     }
     return null;
   }
   
-  public int b(int paramInt)
+  public int c(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilTreeMap;
+    Object localObject1 = this.b;
+    int j = 0;
+    if (localObject1 == null) {
+      return 0;
+    }
+    localObject1 = ((HashMap)localObject1).keySet().iterator();
+    Object localObject2;
+    do
+    {
+      i = j;
+      if (!((Iterator)localObject1).hasNext()) {
+        break;
+      }
+      localObject2 = ((Iterator)localObject1).next();
+      localObject2 = (TroopMemberLevelMapItem)this.b.get(localObject2);
+    } while ((((TroopMemberLevelMapItem)localObject2).a > paramInt) || (paramInt > ((TroopMemberLevelMapItem)localObject2).b));
+    int i = ((TroopMemberLevelMapItem)localObject2).c;
+    return i;
+  }
+  
+  public int[] c()
+  {
+    if ((!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f))) {
+      return new int[] { Color.parseColor(this.e), Color.parseColor(this.f) };
+    }
+    return null;
+  }
+  
+  public int d(int paramInt)
+  {
+    Object localObject = this.d;
     int j = 0;
     int i = j;
     if (localObject != null)
@@ -379,7 +379,7 @@ public class TroopMemberLevelMapConfig
       if (((TreeMap)localObject).size() == 0) {
         return 0;
       }
-      localObject = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
+      localObject = this.d.entrySet().iterator();
       int k;
       do
       {
@@ -397,7 +397,7 @@ public class TroopMemberLevelMapConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.memberlevel.TroopMemberLevelMapConfig
  * JD-Core Version:    0.7.0.1
  */

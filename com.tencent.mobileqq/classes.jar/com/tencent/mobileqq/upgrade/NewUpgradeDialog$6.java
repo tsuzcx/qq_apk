@@ -26,14 +26,14 @@ class NewUpgradeDialog$6
         localInterruptedException.printStackTrace();
       }
     }
-    if (!NewUpgradeDialog.a(this.this$0)) {
-      NewUpgradeDialog.b(this.this$0);
+    if (!NewUpgradeDialog.g(this.this$0)) {
+      NewUpgradeDialog.d(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeDialog.6
  * JD-Core Version:    0.7.0.1
  */

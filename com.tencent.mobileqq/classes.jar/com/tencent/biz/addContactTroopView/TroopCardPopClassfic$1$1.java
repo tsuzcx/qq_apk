@@ -11,7 +11,7 @@ class TroopCardPopClassfic$1$1
   
   public void onClick(View paramView)
   {
-    TroopCardPopClassfic.a(this.jdField_a_of_type_ComTencentBizAddContactTroopViewTroopCardPopClassfic$1.a, this.jdField_a_of_type_Int);
+    TroopCardPopClassfic.a(this.b.a, this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

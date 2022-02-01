@@ -12,11 +12,11 @@ import mqq.os.MqqHandler;
 
 public class BackgroundAliveTimeStatistic
 {
-  private static int jdField_a_of_type_Int = 0;
   public static long a = 0L;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static boolean b;
+  private static boolean b = false;
   private static boolean c;
+  private static int d;
+  private static boolean e;
   
   static
   {
@@ -27,30 +27,30 @@ public class BackgroundAliveTimeStatistic
     } else {
       bool1 = false;
     }
-    b = bool1;
-    jdField_a_of_type_Int = 0;
+    c = bool1;
+    d = 0;
     boolean bool1 = bool2;
     if (Math.random() < 9.999999747378752E-005D) {
       bool1 = true;
     }
-    c = bool1;
+    e = bool1;
   }
   
   public static void a()
   {
     try
     {
-      if ((b) && (c) && (jdField_a_of_type_Boolean))
+      if ((c) && (e) && (b))
       {
-        jdField_a_of_type_Long += 1L;
-        if (jdField_a_of_type_Long == 1L) {
-          jdField_a_of_type_Int = (int)Debug.getPss();
+        a += 1L;
+        if (a == 1L) {
+          d = (int)Debug.getPss();
         }
         Object localObject = MobileQQ.getContext();
         int i = 0;
         localObject = ((BaseApplication)localObject).getSharedPreferences("bg_alive_sp_file", 0).edit();
-        ((SharedPreferences.Editor)localObject).putLong("bg_time_sp_key", jdField_a_of_type_Long);
-        ((SharedPreferences.Editor)localObject).putInt("bg_mem_sp_key", jdField_a_of_type_Int);
+        ((SharedPreferences.Editor)localObject).putLong("bg_time_sp_key", a);
+        ((SharedPreferences.Editor)localObject).putInt("bg_mem_sp_key", d);
         if (GdtAppPreOrderUtil.a()) {
           i = 1;
         }
@@ -76,12 +76,12 @@ public class BackgroundAliveTimeStatistic
   {
     try
     {
-      if ((b) && (c) && (jdField_a_of_type_Boolean))
+      if ((c) && (e) && (b))
       {
-        jdField_a_of_type_Long = 0L;
-        jdField_a_of_type_Int = 0;
+        a = 0L;
+        d = 0;
         SharedPreferences.Editor localEditor = MobileQQ.getContext().getSharedPreferences("bg_alive_sp_file", 0).edit();
-        localEditor.putLong("bg_time_sp_key", jdField_a_of_type_Long);
+        localEditor.putLong("bg_time_sp_key", a);
         localEditor.putInt("bg_mem_sp_key", 0);
         localEditor.putInt("bg_download_launched_sp_key", 0);
         localEditor.apply();
@@ -98,11 +98,11 @@ public class BackgroundAliveTimeStatistic
   {
     try
     {
-      if ((!jdField_a_of_type_Boolean) && (b))
+      if ((!b) && (c))
       {
-        jdField_a_of_type_Boolean = true;
-        jdField_a_of_type_Long = 0L;
-        jdField_a_of_type_Int = 0;
+        b = true;
+        a = 0L;
+        d = 0;
         SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("bg_alive_sp_file", 0);
         SharedPreferences.Editor localEditor = localSharedPreferences.edit();
         a(localSharedPreferences.getLong("bg_time_sp_key", 0L), localSharedPreferences.getInt("bg_mem_sp_key", 0), localSharedPreferences.getInt("bg_download_launched_sp_key", 0));
@@ -121,7 +121,7 @@ public class BackgroundAliveTimeStatistic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.BackgroundAliveTimeStatistic
  * JD-Core Version:    0.7.0.1
  */

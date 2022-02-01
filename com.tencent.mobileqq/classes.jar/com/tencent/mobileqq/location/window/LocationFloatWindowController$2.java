@@ -27,7 +27,7 @@ class LocationFloatWindowController$2
       QLog.d("LocationShareController", 2, new Object[] { "[location] onDecodeTaskCompleted invoked. ", ((StringBuilder)localObject).toString() });
     }
     Bitmap localBitmap = BaseImageUtil.c(paramBitmap, 16, 16);
-    Object localObject = LocationAvatarHelper.a().a(paramString);
+    Object localObject = LocationAvatarHelper.a().b(paramString);
     long l = System.currentTimeMillis();
     paramBitmap = (Bitmap)localObject;
     if (localObject == null)
@@ -35,17 +35,17 @@ class LocationFloatWindowController$2
       paramBitmap = new FaceItem();
       LocationAvatarHelper.a().a(paramString, paramBitmap);
     }
-    paramBitmap.jdField_a_of_type_Long = l;
-    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
-    LocationFloatWindowController.a(this.a).a(paramString, localBitmap);
-    if (LocationFloatWindowController.a(this.a) != null) {
-      LocationFloatWindowController.a(this.a).onDecodeTaskCompleted(paramInt1, paramInt2, paramString, localBitmap);
+    paramBitmap.a = l;
+    paramBitmap.c = localBitmap;
+    LocationFloatWindowController.b(this.a).a(paramString, localBitmap);
+    if (LocationFloatWindowController.c(this.a) != null) {
+      LocationFloatWindowController.c(this.a).onDecodeTaskCompleted(paramInt1, paramInt2, paramString, localBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.LocationFloatWindowController.2
  * JD-Core Version:    0.7.0.1
  */

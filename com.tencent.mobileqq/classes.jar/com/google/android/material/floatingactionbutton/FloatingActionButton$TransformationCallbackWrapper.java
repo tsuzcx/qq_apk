@@ -8,37 +8,37 @@ class FloatingActionButton$TransformationCallbackWrapper<T extends FloatingActio
   implements FloatingActionButtonImpl.InternalTransformationCallback
 {
   @NonNull
-  private final TransformationCallback<T> jdField_a_of_type_ComGoogleAndroidMaterialAnimationTransformationCallback;
+  private final TransformationCallback<T> b;
   
   FloatingActionButton$TransformationCallbackWrapper(TransformationCallback<T> paramTransformationCallback)
   {
     Object localObject;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationTransformationCallback = localObject;
+    this.b = localObject;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationTransformationCallback.a(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton);
+    this.b.a(this.a);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationTransformationCallback.b(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton);
+    this.b.b(this.a);
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof TransformationCallbackWrapper)) && (((TransformationCallbackWrapper)paramObject).jdField_a_of_type_ComGoogleAndroidMaterialAnimationTransformationCallback.equals(this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationTransformationCallback));
+    return ((paramObject instanceof TransformationCallbackWrapper)) && (((TransformationCallbackWrapper)paramObject).b.equals(this.b));
   }
   
   public int hashCode()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationTransformationCallback.hashCode();
+    return this.b.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.FloatingActionButton.TransformationCallbackWrapper
  * JD-Core Version:    0.7.0.1
  */

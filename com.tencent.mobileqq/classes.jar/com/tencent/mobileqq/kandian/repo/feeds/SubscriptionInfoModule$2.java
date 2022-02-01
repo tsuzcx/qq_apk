@@ -12,14 +12,14 @@ class SubscriptionInfoModule$2
   {
     Object localObject = TroopBarAssistantManager.a();
     SubscriptionInfoModule localSubscriptionInfoModule = this.this$0;
-    SubscriptionInfoModule.a(localSubscriptionInfoModule, ((TroopBarAssistantManager)localObject).b((QQAppInterface)SubscriptionInfoModule.e(localSubscriptionInfoModule)));
+    SubscriptionInfoModule.a(localSubscriptionInfoModule, ((TroopBarAssistantManager)localObject).i((QQAppInterface)SubscriptionInfoModule.f(localSubscriptionInfoModule)));
     localObject = this.this$0;
-    ((SubscriptionInfoModule)localObject).a(SubscriptionInfoModule.a((SubscriptionInfoModule)localObject));
+    ((SubscriptionInfoModule)localObject).a(SubscriptionInfoModule.g((SubscriptionInfoModule)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.SubscriptionInfoModule.2
  * JD-Core Version:    0.7.0.1
  */

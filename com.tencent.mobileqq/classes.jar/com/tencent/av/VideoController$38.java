@@ -14,8 +14,8 @@ class VideoController$38
   public void a()
   {
     QLog.d(VideoController.a, 2, "onScreenShareRecv onCancel");
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameVideoProcessHelper.a(null);
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131695854, 1).a();
+    this.g.a(null);
+    QQToast.makeText(this.f, 1, 2131893613, 1).show();
   }
   
   public void a(boolean paramBoolean)
@@ -27,14 +27,14 @@ class VideoController$38
     QLog.d(str, 2, localStringBuilder.toString());
     if (paramBoolean)
     {
-      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, true, this.jdField_a_of_type_Int, false, this.c, this.jdField_b_of_type_Int);
+      VideoController.a(this.h, this.a, this.b, true, this.c, false, this.d, this.e);
     }
     else
     {
       QLog.e(VideoController.a, 2, "onScreenShareRecv fail to auth");
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131695854, 1).a();
+      QQToast.makeText(this.f, 1, 2131893613, 1).show();
     }
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameVideoProcessHelper.a(null);
+    this.g.a(null);
   }
 }
 

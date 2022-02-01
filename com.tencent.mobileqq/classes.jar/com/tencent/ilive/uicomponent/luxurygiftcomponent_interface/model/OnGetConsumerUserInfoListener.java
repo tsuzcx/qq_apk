@@ -6,7 +6,7 @@ public abstract interface OnGetConsumerUserInfoListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.OnGetConsumerUserInfoListener
  * JD-Core Version:    0.7.0.1
  */

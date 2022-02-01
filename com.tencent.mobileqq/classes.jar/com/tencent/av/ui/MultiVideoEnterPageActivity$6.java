@@ -10,12 +10,12 @@ class MultiVideoEnterPageActivity$6
   
   public void run()
   {
-    if ((NetworkUtil.getSystemNetwork(this.this$0) == 0) && (!this.this$0.jdField_a_of_type_Boolean))
+    if ((NetworkUtil.getSystemNetwork(this.this$0) == 0) && (!this.this$0.z))
     {
       this.this$0.finish();
-      MultiVideoEnterPageActivity.a(this.this$0, 0, 2130772191);
-      if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) {
-        this.this$0.jdField_a_of_type_ComTencentAvVideoController.onGAudioSDKError(this.this$0.c, this.this$0.jdField_a_of_type_Long, 22, 0);
+      MultiVideoEnterPageActivity.a(this.this$0, 0, 2130772257);
+      if (this.this$0.u != null) {
+        this.this$0.u.onGAudioSDKError(this.this$0.o, this.this$0.k, 22, 0);
       }
     }
   }

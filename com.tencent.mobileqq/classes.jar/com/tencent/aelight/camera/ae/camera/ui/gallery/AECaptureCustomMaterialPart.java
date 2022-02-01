@@ -20,9 +20,11 @@ import com.tencent.aelight.camera.ae.AEPath.CAMERA.CACHE;
 import com.tencent.aelight.camera.ae.AEPituCameraUnit;
 import com.tencent.aelight.camera.ae.AEViewModelProviders;
 import com.tencent.aelight.camera.ae.camera.ui.AECaptureController;
+import com.tencent.aelight.camera.ae.camera.ui.panel.AEBottomPanelViewModel;
 import com.tencent.aelight.camera.ae.data.AEMaterialMetaData;
 import com.tencent.aelight.camera.ae.mode.AECaptureMode;
 import com.tencent.aelight.camera.ae.mode.AEVideoStoryCaptureModeViewModel;
+import com.tencent.aelight.camera.ae.part.AEVideoStoryStateViewModel;
 import com.tencent.aelight.camera.ae.part.VideoStoryBasePart;
 import com.tencent.aelight.camera.ae.part.VideoStoryCapturePartManager;
 import com.tencent.aelight.camera.ae.view.AEPituCameraCaptureButtonLayout;
@@ -40,122 +42,115 @@ import mqq.os.MqqHandler;
 public class AECaptureCustomMaterialPart
   extends VideoStoryBasePart
 {
-  private static final String jdField_a_of_type_JavaLangString;
-  private int jdField_a_of_type_Int;
+  private static final String k;
   @NonNull
-  private View jdField_a_of_type_AndroidViewView;
-  @NonNull
-  private final AEPituCameraUnit jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit;
-  private AEMaterialMetaData jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
-  private AECaptureMode jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode = AECaptureMode.NORMAL;
-  private AEVideoStoryCaptureModeViewModel jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel;
-  private final HashMap<String, AECaptureCustomMaterialPart.MaterialConfigWrapper> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
-  private int jdField_b_of_type_Int;
+  private View a;
   @Nullable
-  private View jdField_b_of_type_AndroidViewView;
+  private View b;
   @Nullable
   private View c;
+  @NonNull
+  private final AEPituCameraUnit d;
+  private AEVideoStoryCaptureModeViewModel e;
+  private AEVideoStoryStateViewModel f;
+  private AEBottomPanelViewModel g;
+  private AECaptureMode h = AECaptureMode.NORMAL;
+  private AEMaterialMetaData i;
+  private final HashMap<String, AECaptureCustomMaterialPart.MaterialConfigWrapper> j = new HashMap();
+  private final int[] l = new int[2];
+  private int m;
+  private int n;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AEPath.CAMERA.CACHE.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(AEPath.CAMERA.CACHE.a);
     localStringBuilder.append("/temp_store_file.png");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    k = localStringBuilder.toString();
   }
   
   public AECaptureCustomMaterialPart(Activity paramActivity, View paramView, VideoStoryCapturePartManager paramVideoStoryCapturePartManager)
   {
     super(paramActivity, paramView, paramVideoStoryCapturePartManager);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit = ((AEPituCameraUnit)paramVideoStoryCapturePartManager.a(65537, new Object[0]));
-    a();
+    this.d = ((AEPituCameraUnit)paramVideoStoryCapturePartManager.a(65537, new Object[0]));
     b();
-  }
-  
-  private int a()
-  {
-    View localView = this.c;
-    if (localView == null) {
-      return 0;
-    }
-    return localView.getTop();
+    c();
   }
   
   private Bitmap a(String paramString, int paramInt1, int paramInt2)
   {
     Object localObject1 = new BitmapFactory.Options();
-    int i2 = 1;
-    int m = 1;
+    int i7 = 1;
+    int i4 = 1;
     ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
     BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject1);
-    int n = ((BitmapFactory.Options)localObject1).outWidth;
-    int i1 = ((BitmapFactory.Options)localObject1).outHeight;
-    if ((n > 0) && (i1 > 0))
+    int i5 = ((BitmapFactory.Options)localObject1).outWidth;
+    int i6 = ((BitmapFactory.Options)localObject1).outHeight;
+    if ((i5 > 0) && (i6 > 0))
     {
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("start decode image of path: ");
       ((StringBuilder)localObject2).append(paramString);
       ((StringBuilder)localObject2).append(", width = ");
-      ((StringBuilder)localObject2).append(n);
+      ((StringBuilder)localObject2).append(i5);
       ((StringBuilder)localObject2).append(", height = ");
-      ((StringBuilder)localObject2).append(i1);
+      ((StringBuilder)localObject2).append(i6);
       ((StringBuilder)localObject2).append(", targetWidth = ");
       ((StringBuilder)localObject2).append(paramInt1);
       ((StringBuilder)localObject2).append(", targetHeight = ");
       ((StringBuilder)localObject2).append(paramInt2);
       AEQLog.a("AECaptureCustomMaterialPart", ((StringBuilder)localObject2).toString());
-      float f1 = n / i1;
-      int i;
-      int j;
-      int k;
+      float f1 = i5 / i6;
+      int i1;
+      int i2;
+      int i3;
       if (f1 > 2.0F)
       {
-        i = i1 * 2;
-        j = i1;
-        k = 1;
+        i1 = i6 * 2;
+        i2 = i6;
+        i3 = 1;
       }
       else if (f1 < 0.5F)
       {
-        j = n * 2;
-        k = 1;
-        i = n;
+        i2 = i5 * 2;
+        i3 = 1;
+        i1 = i5;
       }
       else
       {
-        i = n;
-        j = i1;
-        k = 0;
+        i1 = i5;
+        i2 = i6;
+        i3 = 0;
       }
-      if ((i > paramInt1) || (j > paramInt2))
+      if ((i1 > paramInt1) || (i2 > paramInt2))
       {
-        int i3 = i / 2;
-        int i4 = j / 2;
+        int i8 = i1 / 2;
+        int i9 = i2 / 2;
         for (;;)
         {
-          f1 = i3;
-          float f2 = m;
-          i2 = m;
+          f1 = i8;
+          float f2 = i4;
+          i7 = i4;
           if (f1 / f2 <= paramInt1 * 0.65F) {
             break;
           }
-          i2 = m;
-          if (i4 / f2 <= paramInt2 * 0.65F) {
+          i7 = i4;
+          if (i9 / f2 <= paramInt2 * 0.65F) {
             break;
           }
-          m *= 2;
+          i4 *= 2;
         }
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("decode image: inSampleSize = ");
-      ((StringBuilder)localObject2).append(i2);
+      ((StringBuilder)localObject2).append(i7);
       AEQLog.a("AECaptureCustomMaterialPart", ((StringBuilder)localObject2).toString());
       ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
-      ((BitmapFactory.Options)localObject1).inSampleSize = i2;
-      if (k != 0) {
+      ((BitmapFactory.Options)localObject1).inSampleSize = i7;
+      if (i3 != 0) {
         try
         {
-          localObject2 = new Rect((n - i) / 2, (i1 - j) / 2, (n + i) / 2, (i1 + j) / 2);
+          localObject2 = new Rect((i5 - i1) / 2, (i6 - i2) / 2, (i5 + i1) / 2, (i6 + i2) / 2);
           localObject2 = BitmapRegionDecoder.newInstance(new FileInputStream(new File(paramString)), false).decodeRegion((Rect)localObject2, (BitmapFactory.Options)localObject1);
           return localObject2;
         }
@@ -174,44 +169,22 @@ public class AECaptureCustomMaterialPart
     return null;
   }
   
-  private void a()
-  {
-    int i = ParamsUtil.a();
-    if (i < 3)
-    {
-      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      arrayOfInt[0] = 1024;
-      arrayOfInt[1] = 576;
-      return;
-    }
-    if (i < 5)
-    {
-      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      arrayOfInt[0] = 1280;
-      arrayOfInt[1] = 720;
-      return;
-    }
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    arrayOfInt[0] = 1920;
-    arrayOfInt[1] = 1080;
-  }
-  
   private void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
+    if (this.a.getVisibility() == 0) {
       b(paramFloat);
     }
   }
   
   private void a(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a().a(null);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = paramAEMaterialMetaData;
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
+    this.d.am().a(null);
+    this.i = paramAEMaterialMetaData;
+    Object localObject = this.i;
     boolean bool = false;
-    if ((localObject != null) && (localObject != AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData))
+    if ((localObject != null) && (localObject != AEMaterialMetaData.l))
     {
-      localObject = (AECaptureCustomMaterialPart.MaterialConfigWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k);
+      localObject = (AECaptureCustomMaterialPart.MaterialConfigWrapper)this.j.get(this.i.m);
       if (localObject != null)
       {
         if (((AECaptureCustomMaterialPart.MaterialConfigWrapper)localObject).a != null) {
@@ -220,7 +193,7 @@ public class AECaptureCustomMaterialPart
         a(bool);
         return;
       }
-      ThreadManager.getFileThreadHandler().post(new AECaptureCustomMaterialPart.4(this, paramAEMaterialMetaData));
+      ThreadManager.getFileThreadHandler().post(new AECaptureCustomMaterialPart.7(this, paramAEMaterialMetaData));
       return;
     }
     a(false);
@@ -231,7 +204,7 @@ public class AECaptureCustomMaterialPart
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ThreadManager.getFileThreadHandler().post(new AECaptureCustomMaterialPart.3(this, paramString));
+    ThreadManager.getFileThreadHandler().post(new AECaptureCustomMaterialPart.6(this, paramString));
   }
   
   @MainThread
@@ -239,40 +212,10 @@ public class AECaptureCustomMaterialPart
   {
     if (paramBoolean)
     {
-      f();
+      g();
       return;
     }
-    e();
-  }
-  
-  private boolean a()
-  {
-    boolean bool1 = this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.l();
-    boolean bool2 = false;
-    if (bool1) {
-      return false;
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode != AECaptureMode.NORMAL) {
-      return false;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
-    bool1 = bool2;
-    if (localObject != null)
-    {
-      if (localObject == AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData) {
-        return false;
-      }
-      localObject = (AECaptureCustomMaterialPart.MaterialConfigWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k);
-      bool1 = bool2;
-      if (localObject != null)
-      {
-        bool1 = bool2;
-        if (((AECaptureCustomMaterialPart.MaterialConfigWrapper)localObject).a != null) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    f();
   }
   
   public static boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -290,95 +233,174 @@ public class AECaptureCustomMaterialPart
   
   private void b()
   {
-    File localFile = new File(AEPath.CAMERA.CACHE.jdField_a_of_type_JavaLangString);
+    int i1 = ParamsUtil.b();
+    if (i1 < 3)
+    {
+      arrayOfInt = this.l;
+      arrayOfInt[0] = 1024;
+      arrayOfInt[1] = 576;
+      return;
+    }
+    if (i1 < 5)
+    {
+      arrayOfInt = this.l;
+      arrayOfInt[0] = 1280;
+      arrayOfInt[1] = 720;
+      return;
+    }
+    int[] arrayOfInt = this.l;
+    arrayOfInt[0] = 1920;
+    arrayOfInt[1] = 1080;
+  }
+  
+  private void b(float paramFloat)
+  {
+    e();
+    this.a.setTranslationY(Math.min(paramFloat, i()));
+  }
+  
+  private void c()
+  {
+    File localFile = new File(AEPath.CAMERA.CACHE.a);
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
   }
   
-  private void b(float paramFloat)
-  {
-    d();
-    View localView = this.jdField_b_of_type_AndroidViewView;
-    float f;
-    if (localView != null) {
-      f = Math.max(0.0F, localView.getTop() + a() - this.jdField_a_of_type_AndroidViewView.getBottom());
-    } else {
-      f = paramFloat;
-    }
-    this.jdField_a_of_type_AndroidViewView.setTranslationY(Math.min(paramFloat, f));
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel = ((AEVideoStoryCaptureModeViewModel)AEViewModelProviders.a(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit).get(AEVideoStoryCaptureModeViewModel.class));
-    this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel.a.observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, new AECaptureCustomMaterialPart.2(this));
-  }
-  
   private void d()
   {
-    if (this.jdField_b_of_type_AndroidViewView == null) {
-      this.jdField_b_of_type_AndroidViewView = this.mRootView.findViewById(2064122228);
+    this.e = ((AEVideoStoryCaptureModeViewModel)AEViewModelProviders.a(this.d).get(AEVideoStoryCaptureModeViewModel.class));
+    this.f = ((AEVideoStoryStateViewModel)AEViewModelProviders.a(this.d).get(AEVideoStoryStateViewModel.class));
+    this.g = ((AEBottomPanelViewModel)AEViewModelProviders.a(this.d).get(AEBottomPanelViewModel.class));
+    this.e.a.observe(this.d, new AECaptureCustomMaterialPart.2(this));
+    this.f.a().observe(this.d, new AECaptureCustomMaterialPart.3(this));
+    this.f.c().observe(this.d, new AECaptureCustomMaterialPart.4(this));
+    this.g.a().observe(this.d, new AECaptureCustomMaterialPart.5(this));
+  }
+  
+  private void e()
+  {
+    if (this.b == null) {
+      this.b = this.mRootView.findViewById(2063991110);
     }
     if (this.c == null)
     {
-      Object localObject = this.jdField_b_of_type_AndroidViewView;
+      Object localObject = this.b;
       if (localObject != null)
       {
-        localObject = (AbsAECaptureButton)((View)localObject).findViewById(2064122025);
+        localObject = (AbsAECaptureButton)((View)localObject).findViewById(2063990959);
         if ((localObject instanceof AEPituCameraCaptureButtonLayout))
         {
-          this.c = ((AEPituCameraCaptureButtonLayout)localObject).jdField_b_of_type_AndroidViewView;
+          this.c = ((AEPituCameraCaptureButtonLayout)localObject).y;
           return;
         }
         if ((localObject instanceof QIMCameraCaptureButtonLayoutNew)) {
-          this.c = ((QIMCameraCaptureButtonLayoutNew)localObject).jdField_b_of_type_AndroidViewView;
+          this.c = ((QIMCameraCaptureButtonLayoutNew)localObject).e;
         }
       }
     }
   }
   
-  private void e()
-  {
-    if (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
-      return;
-    }
-    h();
-  }
-  
   private void f()
   {
-    if (!a()) {
+    View localView = this.a;
+    if (localView == null) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
+    if (localView.getVisibility() != 0) {
       return;
     }
-    g();
+    l();
   }
   
   private void g()
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.animate().alpha(1.0F).setDuration(200L).setListener(null);
+    if (!h()) {
+      return;
+    }
+    View localView = this.a;
+    if (localView == null) {
+      return;
+    }
+    if (localView.getVisibility() == 0) {
+      return;
+    }
+    k();
   }
   
-  private void h()
+  private boolean h()
   {
-    this.jdField_a_of_type_AndroidViewView.animate().alpha(0.0F).setDuration(200L).setListener(new AECaptureCustomMaterialPart.5(this));
+    boolean bool1 = this.d.M();
+    boolean bool2 = false;
+    if (bool1) {
+      return false;
+    }
+    if (this.h != AECaptureMode.NORMAL) {
+      return false;
+    }
+    Object localObject = this.i;
+    bool1 = bool2;
+    if (localObject != null)
+    {
+      if (localObject == AEMaterialMetaData.l) {
+        return false;
+      }
+      localObject = (AECaptureCustomMaterialPart.MaterialConfigWrapper)this.j.get(this.i.m);
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (((AECaptureCustomMaterialPart.MaterialConfigWrapper)localObject).a != null) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  private int i()
+  {
+    e();
+    int i1 = this.a.getBottom();
+    View localView = this.b;
+    if (localView != null) {
+      i1 = localView.getTop() + j();
+    }
+    return i1 - this.a.getBottom();
+  }
+  
+  private int j()
+  {
+    View localView = this.c;
+    if (localView == null) {
+      return 0;
+    }
+    return localView.getTop();
+  }
+  
+  private void k()
+  {
+    this.a.setAlpha(0.0F);
+    this.a.setVisibility(0);
+    this.a.animate().alpha(1.0F).setDuration(200L).setListener(null);
+  }
+  
+  private void l()
+  {
+    this.a.animate().alpha(0.0F).setDuration(200L).setListener(new AECaptureCustomMaterialPart.8(this));
   }
   
   protected void initView()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.l()) {
+    if (this.d.M()) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = ((ViewStub)this.mRootView.findViewById(2064122662)).inflate();
-    this.jdField_a_of_type_AndroidViewView.findViewById(2064121995).setOnClickListener(new AECaptureCustomMaterialPart.1(this));
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    c();
     d();
+    this.a = ((ViewStub)this.mRootView.findViewById(2063991452)).inflate();
+    this.a.findViewById(2063990923).setOnClickListener(new AECaptureCustomMaterialPart.1(this));
+    this.a.setVisibility(8);
+    d();
+    e();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -401,28 +423,28 @@ public class AECaptureCustomMaterialPart
       if ((paramVarArgs != null) && (paramVarArgs.length > 0))
       {
         paramVarArgs = (List)paramVarArgs[0];
-        this.jdField_a_of_type_Int = ((Integer)paramVarArgs.get(0)).intValue();
-        this.jdField_b_of_type_Int = ((Integer)paramVarArgs.get(1)).intValue();
-        if (ParamsUtil.a() < 3)
+        this.m = ((Integer)paramVarArgs.get(0)).intValue();
+        this.n = ((Integer)paramVarArgs.get(1)).intValue();
+        if (ParamsUtil.b() < 3)
         {
-          paramInt = this.jdField_a_of_type_Int;
-          if (paramInt < this.jdField_b_of_type_Int)
+          paramInt = this.m;
+          if (paramInt < this.n)
           {
-            this.jdField_a_of_type_Int = Math.min(paramInt, this.jdField_a_of_type_ArrayOfInt[1]);
-            this.jdField_b_of_type_Int = Math.min(this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfInt[0]);
+            this.m = Math.min(paramInt, this.l[1]);
+            this.n = Math.min(this.n, this.l[0]);
             return;
           }
-          this.jdField_a_of_type_Int = Math.min(paramInt, this.jdField_a_of_type_ArrayOfInt[0]);
-          this.jdField_b_of_type_Int = Math.min(this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfInt[1]);
+          this.m = Math.min(paramInt, this.l[0]);
+          this.n = Math.min(this.n, this.l[1]);
           return;
         }
       }
       break;
     case 851972: 
-      e();
+      f();
       return;
     case 851971: 
-      f();
+      g();
       return;
     case 851970: 
       if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof AEMaterialMetaData)))
@@ -441,7 +463,7 @@ public class AECaptureCustomMaterialPart
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.gallery.AECaptureCustomMaterialPart
  * JD-Core Version:    0.7.0.1
  */

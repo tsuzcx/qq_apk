@@ -13,22 +13,22 @@ class PoiLoader$4$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[status][poiLoader][");
-      localStringBuilder.append(PoiLoader.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$4.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader));
+      localStringBuilder.append(PoiLoader.b(this.b.d));
       localStringBuilder.append("] loadPoiFromNetwork. latLng: ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$4.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+      localStringBuilder.append(this.b.a);
       localStringBuilder.append(" poiBean: ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean);
+      localStringBuilder.append(this.a);
       QLog.d("PoiLoader", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$4.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader.a.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean.latLng, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$4.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean);
+    if (this.a != null) {
+      this.b.d.a.a(this.a.latLng, this.b.b, this.a);
     }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$4.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$OnPoiLoadListener.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean);
+    this.b.c.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiLoader.4.1
  * JD-Core Version:    0.7.0.1
  */

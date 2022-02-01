@@ -20,16 +20,16 @@ public class AioShareMusicIPCWebClient
     super("AioShareMusicIPCWebClient");
   }
   
-  public static AioShareMusicIPCWebClient a()
-  {
-    return AioShareMusicIPCWebClient.Holder.a();
-  }
-  
   public static void a(JSONObject paramJSONObject, String paramString, EIPCResultCallback paramEIPCResultCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("data", paramJSONObject.toString());
     QIPCClientHelper.getInstance().getClient().callServer("AioShareMusicIPCMainClient", paramString, localBundle, paramEIPCResultCallback);
+  }
+  
+  public static AioShareMusicIPCWebClient b()
+  {
+    return AioShareMusicIPCWebClient.Holder.a();
   }
   
   public void a()
@@ -39,7 +39,7 @@ public class AioShareMusicIPCWebClient
       this.a = null;
       if (QIPCClientHelper.getInstance().getClient() != null)
       {
-        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+        QIPCClientHelper.getInstance().getClient().unRegisterModule(b());
         if (QLog.isColorLevel())
         {
           QLog.d("AioShareMusic.AioShareMusicIPCWebClient", 2, "unregister real");
@@ -60,7 +60,7 @@ public class AioShareMusicIPCWebClient
     }
     try
     {
-      AioShareMusicIPCWebClient localAioShareMusicIPCWebClient = a();
+      AioShareMusicIPCWebClient localAioShareMusicIPCWebClient = b();
       this.a = paramAioShareMusicClient2WebCallback;
       QIPCClientHelper.getInstance().register(localAioShareMusicIPCWebClient);
       if (QLog.isColorLevel())

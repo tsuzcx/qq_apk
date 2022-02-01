@@ -19,7 +19,7 @@ public class BlessPtvModule
   extends Entity
 {
   public static final String DEFAULT_MODULE_ID = "0";
-  public static final String DEFAULT_MODULE_TITLE = HardCodeUtil.a(2131701377);
+  public static final String DEFAULT_MODULE_TITLE = HardCodeUtil.a(2131899405);
   public static final String DEFAULT_VIP_LEVEL = "0";
   public static String path;
   public int audioLength;
@@ -87,7 +87,7 @@ public class BlessPtvModule
   public Drawable getPngDrawable(Activity paramActivity)
   {
     if ("0".equals(this.id)) {
-      return paramActivity.getResources().getDrawable(2130838759);
+      return paramActivity.getResources().getDrawable(2130838981);
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(path);
@@ -131,11 +131,11 @@ public class BlessPtvModule
     if (this.id == "0")
     {
       String str = this.defaultM4aPath;
-      if ((str != null) && (FileUtil.b(str))) {
+      if ((str != null) && (FileUtil.d(str))) {
         return true;
       }
     }
-    else if ((FileUtil.b(getLrcPath())) && (FileUtil.b(getM4aPath())) && (FileUtil.b(getPicPath())))
+    else if ((FileUtil.d(getLrcPath())) && (FileUtil.d(getM4aPath())) && (FileUtil.d(getPicPath())))
     {
       return true;
     }
@@ -149,7 +149,7 @@ public class BlessPtvModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessPtvModule
  * JD-Core Version:    0.7.0.1
  */

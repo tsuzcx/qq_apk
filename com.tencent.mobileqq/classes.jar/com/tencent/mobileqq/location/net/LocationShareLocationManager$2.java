@@ -18,9 +18,9 @@ import mqq.os.MqqHandler;
 class LocationShareLocationManager$2
   implements TencentLocationListener
 {
-  private Runnable jdField_b_of_type_JavaLangRunnable = this.jdField_a_of_type_JavaLangRunnable;
-  private volatile boolean jdField_b_of_type_Boolean = true;
-  private volatile boolean c = true ^ this.jdField_a_of_type_Boolean;
+  private volatile boolean f = true;
+  private volatile boolean g = true ^ this.a;
+  private Runnable h = this.b;
   
   LocationShareLocationManager$2(LocationShareLocationManager paramLocationShareLocationManager, boolean paramBoolean, Runnable paramRunnable, MqqHandler paramMqqHandler, LocationRoom paramLocationRoom) {}
   
@@ -34,45 +34,45 @@ class LocationShareLocationManager$2
       if (QLog.isColorLevel())
       {
         paramTencentLocation = localLatLng;
-        if (LocationShareLocationManager.a != null) {
-          paramTencentLocation = LocationShareLocationManager.a;
+        if (LocationShareLocationManager.b != null) {
+          paramTencentLocation = LocationShareLocationManager.b;
         }
       }
       if ((paramTencentLocation.getLatitude() == 0.0D) && (paramTencentLocation.getLongitude() == 0.0D))
       {
-        if (this.jdField_b_of_type_Boolean)
+        if (this.f)
         {
-          this.jdField_b_of_type_Boolean = false;
+          this.f = false;
           QLog.e("Q.LocationShare", 1, "[LocationManager] onLocationChanged: invoked. (0,0) detected");
         }
         return;
       }
-      LocationShareLocationManager.a(this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager, paramTencentLocation);
+      LocationShareLocationManager.a(this.e, paramTencentLocation);
     }
-    if ((this.c) && (this.jdField_b_of_type_JavaLangRunnable != null))
+    if ((this.g) && (this.h != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.LocationShare", 2, "[LocationManager] onLocationChanged: invoked. remove over time runnable");
       }
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-      this.jdField_b_of_type_JavaLangRunnable = null;
+      this.c.removeCallbacks(this.h);
+      this.h = null;
     }
     if (paramInt != 0)
     {
-      paramTencentLocation = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
-      LocationShareViewModel.a((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), paramTencentLocation.a(), paramTencentLocation.a(), 1);
+      paramTencentLocation = this.d.e();
+      LocationShareViewModel.a((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), paramTencentLocation.a(), paramTencentLocation.b(), 1);
     }
     else
     {
-      if (this.c)
+      if (this.g)
       {
-        this.c = false;
-        LocationShareRoomManager.a().a(LocationShareLocationManager.a(this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager).a(), LocationShareLocationManager.a(this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager).a());
+        this.g = false;
+        LocationShareRoomManager.a().a(LocationShareLocationManager.a(this.e).a(), LocationShareLocationManager.a(this.e).b());
       }
       LocationShareLocationManager.a().a(true);
     }
     if ((paramInt == 0) || (HwNetworkUtil.isNetworkAvailable(BaseApplication.getContext()))) {
-      MagnifierSDK.a().a().a("requestSoso", new Object[] { Integer.valueOf(-1), Boolean.valueOf(false), "LocationHandler", localInteger, localInteger, localInteger, localInteger });
+      MagnifierSDK.b().i().a("requestSoso", new Object[] { Integer.valueOf(-1), Boolean.valueOf(false), "LocationHandler", localInteger, localInteger, localInteger, localInteger });
     }
     if (QLog.isColorLevel())
     {
@@ -89,7 +89,7 @@ class LocationShareLocationManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationShareLocationManager.2
  * JD-Core Version:    0.7.0.1
  */

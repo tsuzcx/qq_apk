@@ -15,7 +15,7 @@ class ExpandChatRepository$3$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject = this.a;
     if ((localObject instanceof MessageRecord))
     {
       localObject = (MessageRecord)localObject;
@@ -29,28 +29,28 @@ class ExpandChatRepository$3$1
         localStringBuilder.append(((MessageRecord)localObject).senderuin);
         QLog.d("expand.chat.ExpandChatRepository", 2, localStringBuilder.toString());
       }
-      if ((!TextUtils.isEmpty(((MessageRecord)localObject).senderuin)) && (!((MessageRecord)localObject).senderuin.equals(ExpandChatRepository.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$3.a).getCurrentAccountUin()))) {
-        ExpandChatRepository.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$3.a, true);
+      if ((!TextUtils.isEmpty(((MessageRecord)localObject).senderuin)) && (!((MessageRecord)localObject).senderuin.equals(ExpandChatRepository.d(this.b.a).getCurrentAccountUin()))) {
+        ExpandChatRepository.a(this.b.a, true);
       }
-      ExpandChatRepository.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$3.a);
+      ExpandChatRepository.e(this.b.a);
       return;
     }
-    if (((localObject instanceof RecentUser)) && (ExpandChatRepository.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$3.a)))
+    if (((localObject instanceof RecentUser)) && (ExpandChatRepository.f(this.b.a)))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("RecentUser uin =");
-        ((StringBuilder)localObject).append(((RecentUser)this.jdField_a_of_type_JavaLangObject).uin);
+        ((StringBuilder)localObject).append(((RecentUser)this.a).uin);
         QLog.d("expand.chat.ExpandChatRepository", 2, ((StringBuilder)localObject).toString());
       }
-      ExpandChatRepository.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$3.a);
+      ExpandChatRepository.e(this.b.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.chat.ExpandChatRepository.3.1
  * JD-Core Version:    0.7.0.1
  */

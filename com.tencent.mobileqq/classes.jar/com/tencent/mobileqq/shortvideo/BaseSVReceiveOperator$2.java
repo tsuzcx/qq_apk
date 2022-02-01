@@ -14,25 +14,25 @@ final class BaseSVReceiveOperator$2
   
   public void run()
   {
-    ShortVideoPreDownloader localShortVideoPreDownloader = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface).getShortVideoPredownloer();
-    if (localShortVideoPreDownloader.jdField_b_of_type_JavaUtilConcurrentPriorityBlockingQueue.contains(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq))
+    ShortVideoPreDownloader localShortVideoPreDownloader = ((QQAppInterface)this.a).getShortVideoPredownloer();
+    if (localShortVideoPreDownloader.l.contains(this.b))
     {
-      localShortVideoPreDownloader.jdField_b_of_type_JavaUtilConcurrentPriorityBlockingQueue.remove(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq);
-      localShortVideoPreDownloader.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-      localShortVideoPreDownloader.a.remove(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_JavaLangString);
+      localShortVideoPreDownloader.l.remove(this.b);
+      localShortVideoPreDownloader.m.decrementAndGet();
+      localShortVideoPreDownloader.c.remove(this.b.e.a);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("uniseq:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b.e.g);
       localStringBuilder.append(",curHandingNum:");
-      localStringBuilder.append(localShortVideoPreDownloader.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      localStringBuilder.append(localShortVideoPreDownloader.m.get());
       Logger.a("PIC_TAG_PRELOAD", "onDownload", localStringBuilder.toString());
-      ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface).getShortVideoPredownloer().c();
+      ((QQAppInterface)this.a).getShortVideoPredownloer().c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.BaseSVReceiveOperator.2
  * JD-Core Version:    0.7.0.1
  */

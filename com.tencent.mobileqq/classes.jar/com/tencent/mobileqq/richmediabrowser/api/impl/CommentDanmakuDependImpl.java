@@ -31,9 +31,9 @@ public class CommentDanmakuDependImpl
   
   public int getAnonymousHeadId(String paramString)
   {
-    paramString = AnonymousChatHelper.a().a(paramString);
+    paramString = AnonymousChatHelper.a().b(paramString);
     if (paramString != null) {
-      return paramString.jdField_a_of_type_Int;
+      return paramString.c;
     }
     return 0;
   }
@@ -45,9 +45,9 @@ public class CommentDanmakuDependImpl
   
   public String getAnonymousNickName(String paramString)
   {
-    paramString = AnonymousChatHelper.a().a(paramString);
+    paramString = AnonymousChatHelper.a().b(paramString);
     if (paramString != null) {
-      return paramString.jdField_a_of_type_JavaLangString;
+      return paramString.d;
     }
     return "";
   }
@@ -65,7 +65,7 @@ public class CommentDanmakuDependImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.api.impl.CommentDanmakuDependImpl
  * JD-Core Version:    0.7.0.1
  */

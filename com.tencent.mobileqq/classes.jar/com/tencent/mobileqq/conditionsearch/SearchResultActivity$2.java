@@ -15,27 +15,27 @@ class SearchResultActivity$2
   
   public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    SearchResultActivity.a(this.a).c(SearchResultActivity.a(this.a));
+    SearchResultActivity.d(this.a).c(SearchResultActivity.c(this.a));
   }
   
   public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    SearchResultActivity.a(this.a).b(SearchResultActivity.a(this.a));
+    SearchResultActivity.d(this.a).b(SearchResultActivity.c(this.a));
   }
   
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
-    SearchResultActivity.a(this.a).a(SearchResultActivity.a(this.a));
+    SearchResultActivity.d(this.a).a(SearchResultActivity.c(this.a));
     if (NetworkUtil.isNetSupport(this.a))
     {
-      SearchResultActivity.c(this.a);
+      SearchResultActivity.e(this.a);
     }
     else
     {
-      SearchResultActivity.a(this.a).a(1);
+      SearchResultActivity.d(this.a).a(1);
       paramView = Message.obtain();
       paramView.what = 3;
-      SearchResultActivity.a(this.a).sendMessageDelayed(paramView, 1000L);
+      SearchResultActivity.f(this.a).sendMessageDelayed(paramView, 1000L);
     }
     SearchResultActivity.a(this.a, System.currentTimeMillis());
     return true;
@@ -45,7 +45,7 @@ class SearchResultActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.SearchResultActivity.2
  * JD-Core Version:    0.7.0.1
  */

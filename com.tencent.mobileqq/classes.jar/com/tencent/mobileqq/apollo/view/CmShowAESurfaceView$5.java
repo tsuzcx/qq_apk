@@ -12,23 +12,23 @@ class CmShowAESurfaceView$5
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    if (this.a != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[cmshowFirstTime][cmShowSetKapuModel] kapuModel = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilHashMap.toString());
+      localStringBuilder.append(this.a.toString());
       QLog.d("[cmshow]CmShowAESurfaceView", 2, localStringBuilder.toString());
     }
     else
     {
       QLog.d("[cmshow]CmShowAESurfaceView", 2, "[cmshowFirstTime][cmShowSetKapuModel] kapuModel is null ");
     }
-    CmShowAESurfaceView.a(this.this$0).cmShowSetKapuModel(this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgLightCameraController$CmShowCallback);
+    CmShowAESurfaceView.d(this.this$0).cmShowSetKapuModel(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.CmShowAESurfaceView.5
  * JD-Core Version:    0.7.0.1
  */

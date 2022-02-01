@@ -17,36 +17,24 @@ import com.tencent.qphone.base.util.QLog;
 public class FollowPersonViewHolder
   extends BaseViewHolder
 {
-  protected boolean a;
-  
-  protected String a(QQUserUIItem paramQQUserUIItem)
-  {
-    if ((paramQQUserUIItem != null) && (paramQQUserUIItem.isAvailable()))
-    {
-      if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
-        return paramQQUserUIItem.nickName;
-      }
-      return paramQQUserUIItem.getDisplayName();
-    }
-    return null;
-  }
+  protected boolean g;
   
   protected void a(QQUserUIItem paramQQUserUIItem)
   {
-    Object localObject2 = a(paramQQUserUIItem);
+    Object localObject2 = b(paramQQUserUIItem);
     Object localObject1;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.g)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846865);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.c.setImageResource(2130848417);
+      this.c.setVisibility(0);
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = HardCodeUtil.a(2131704773);
+        localObject1 = HardCodeUtil.a(2131902675);
       }
     }
     else
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.c.setVisibility(8);
       localObject1 = localObject2;
       if (paramQQUserUIItem != null)
       {
@@ -60,14 +48,14 @@ public class FollowPersonViewHolder
     if (localObject1 == null) {
       localObject2 = PlayModeUtils.b;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+    this.d.setText((CharSequence)localObject2);
     boolean bool = true;
     if ((paramQQUserUIItem != null) && (HttpUtil.isValidUrl(paramQQUserUIItem.headUrl))) {
-      PlayModeUtils.b(this.jdField_a_of_type_AndroidWidgetImageView, paramQQUserUIItem.headUrl, true, (int)DisplayUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 50.0F));
+      PlayModeUtils.b(this.b, paramQQUserUIItem.headUrl, true, (int)DisplayUtils.a(this.d.getContext(), 50.0F));
     } else {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(ImageUtil.e());
+      this.b.setImageDrawable(ImageUtil.j());
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.e.setVisibility(8);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -94,21 +82,33 @@ public class FollowPersonViewHolder
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     super.a(paramMsgTabNodeInfo);
-    this.itemView.setTag(paramMsgTabNodeInfo.a);
-    paramMsgTabNodeInfo = ((UserManager)SuperManager.a(2)).c(paramMsgTabNodeInfo.a);
+    this.itemView.setTag(paramMsgTabNodeInfo.d);
+    paramMsgTabNodeInfo = ((UserManager)SuperManager.a(2)).c(paramMsgTabNodeInfo.d);
     boolean bool;
     if ((paramMsgTabNodeInfo != null) && (paramMsgTabNodeInfo.isVipButNoFriend())) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.g = bool;
     a(paramMsgTabNodeInfo);
+  }
+  
+  protected String b(QQUserUIItem paramQQUserUIItem)
+  {
+    if ((paramQQUserUIItem != null) && (paramQQUserUIItem.isAvailable()))
+    {
+      if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
+        return paramQQUserUIItem.nickName;
+      }
+      return paramQQUserUIItem.getDisplayName();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.FollowPersonViewHolder
  * JD-Core Version:    0.7.0.1
  */

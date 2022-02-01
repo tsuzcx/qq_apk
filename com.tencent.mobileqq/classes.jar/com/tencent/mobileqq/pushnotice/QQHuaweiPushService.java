@@ -19,9 +19,9 @@ public class QQHuaweiPushService
   public void onNewToken(String paramString)
   {
     super.onNewToken(paramString);
-    PushNoticeUtil.a(paramString);
-    if (!TextUtils.isEmpty(PushNoticeUtil.a)) {
-      PushNoticeUtil.a();
+    ThirdPushManager.a().a(paramString);
+    if (!TextUtils.isEmpty(paramString)) {
+      ThirdPushManager.a().c();
     }
     if (QLog.isColorLevel())
     {
@@ -34,7 +34,7 @@ public class QQHuaweiPushService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushnotice.QQHuaweiPushService
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class BusinessCmrTmpChatPie$3$1
   
   public void run()
   {
-    CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBusinessCmrTmpChatPie$3.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBusinessCmrTmpChatPie$3.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new BusinessCmrTmpChatPie.3.1.1(this));
+    CrmUtils.b(this.b.a.d, this.a);
+    this.b.a.f.runOnUiThread(new BusinessCmrTmpChatPie.3.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.3.1
  * JD-Core Version:    0.7.0.1
  */

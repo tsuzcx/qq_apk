@@ -49,16 +49,16 @@ class CommentsDataSourceImpl$3
           paramBundle.append(paramArrayOfByte.result.get());
           QLog.i("CommentsDataSource", 1, paramBundle.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$DeleteCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)paramArrayOfByte.result.get());
-        paramArrayOfByte = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        this.b.a(this.c, (int)paramArrayOfByte.result.get());
+        paramArrayOfByte = (AppInterface)this.a.get();
         if (paramArrayOfByte == null) {
           break label295;
         }
-        ((INearbyMomentManager)paramArrayOfByte.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).a(CommentsDataSourceImpl.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSourceImpl).a, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a);
+        ((INearbyMomentManager)paramArrayOfByte.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).a(CommentsDataSourceImpl.b(this.d).c, this.c.a);
         return;
       }
       QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$DeleteCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+      this.b.a(this.c, -1);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -68,14 +68,14 @@ class CommentsDataSourceImpl$3
       break label258;
     }
     QLog.i("CommentsDataSource", 1, "merge delete resp data error");
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$DeleteCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+    this.b.a(this.c, -1);
     return;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$DeleteCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+    this.b.a(this.c, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.datasource.CommentsDataSourceImpl.3
  * JD-Core Version:    0.7.0.1
  */

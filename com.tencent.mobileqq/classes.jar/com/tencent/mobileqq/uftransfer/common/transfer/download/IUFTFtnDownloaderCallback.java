@@ -8,11 +8,11 @@ public abstract interface IUFTFtnDownloaderCallback
   
   public abstract void a(byte[] paramArrayOfByte, long paramLong, String paramString);
   
-  public abstract void f_(String paramString);
+  public abstract void q_(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.download.IUFTFtnDownloaderCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -26,42 +26,42 @@ class AddFriendVerifyActivity$22
         if (i != 3) {
           return;
         }
-        QQToast.a(this.a.getApplicationContext(), 1, 2131720148, 0).b(this.a.getTitleBarHeight());
+        QQToast.makeText(this.a.getApplicationContext(), 1, 2131917778, 0).show(this.a.getTitleBarHeight());
         return;
       }
       if (this.a.isFinishing()) {
         return;
       }
-      if (TextUtils.isEmpty(AddFriendVerifyActivity.c(this.a))) {}
+      if (TextUtils.isEmpty(AddFriendVerifyActivity.u(this.a))) {}
     }
     try
     {
-      paramMessage = new File(AddFriendVerifyActivity.d(this.a)).toURL();
-      AddFriendVerifyActivity.a(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
+      paramMessage = new File(AddFriendVerifyActivity.v(this.a)).toURL();
+      AddFriendVerifyActivity.w(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
     }
     catch (MalformedURLException paramMessage)
     {
       label110:
       break label110;
     }
-    if (AddFriendVerifyActivity.a(this.a) != null)
+    if (AddFriendVerifyActivity.t(this.a) != null)
     {
-      AddFriendVerifyActivity.a(this.a).setVisibility(8);
+      AddFriendVerifyActivity.t(this.a).setVisibility(8);
       return;
       if (this.a.isFinishing()) {
         return;
       }
-      if (AddFriendVerifyActivity.a(this.a) != null)
+      if (AddFriendVerifyActivity.t(this.a) != null)
       {
-        AddFriendVerifyActivity.a(this.a).setVisibility(0);
-        ((Animatable)AddFriendVerifyActivity.a(this.a).getDrawable()).start();
+        AddFriendVerifyActivity.t(this.a).setVisibility(0);
+        ((Animatable)AddFriendVerifyActivity.t(this.a).getDrawable()).start();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.22
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public class AVCallCompactJob
       if (paramVideoController == null) {
         return;
       }
-      paramVideoController = paramVideoController.a();
+      paramVideoController = paramVideoController.az();
       Runnable localRunnable = this.a;
       if ((localRunnable != null) && (paramVideoController != null))
       {
@@ -32,7 +32,7 @@ public class AVCallCompactJob
       if (paramVideoController == null) {
         return;
       }
-      paramVideoController = paramVideoController.a();
+      paramVideoController = paramVideoController.az();
       if (paramVideoController != null) {
         this.a = paramVideoController.a(paramBaseActivity, paramVideoAppInterface);
       }

@@ -8,14 +8,6 @@ import android.view.View;
 
 public abstract interface IQIMCameraLifeCallback
 {
-  public abstract void I();
-  
-  public abstract void J();
-  
-  public abstract void K();
-  
-  public abstract View a();
-  
   public abstract void a(int paramInt1, int paramInt2);
   
   public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
@@ -28,21 +20,29 @@ public abstract interface IQIMCameraLifeCallback
   
   public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
   
+  public abstract void ai();
+  
+  public abstract void aj();
+  
+  public abstract boolean ak();
+  
+  public abstract void al();
+  
   public abstract void b(Bundle paramBundle);
   
-  public abstract void d(boolean paramBoolean);
+  public abstract void e(boolean paramBoolean);
   
-  public abstract void e();
+  public abstract View j();
   
-  public abstract void f();
+  public abstract void k();
   
-  public abstract void g();
+  public abstract void l();
   
-  public abstract boolean i();
+  public abstract void m();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.IQIMCameraLifeCallback
  * JD-Core Version:    0.7.0.1
  */

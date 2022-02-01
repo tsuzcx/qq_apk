@@ -13,27 +13,27 @@ class ReadInJoyAdPopSheetDialog$6
   
   public void onSoftKeyboardClosed()
   {
-    if (System.currentTimeMillis() - ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog) > 500L)
+    if (System.currentTimeMillis() - ReadInJoyAdPopSheetDialog.d(this.b) > 500L)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = AIOUtils.b(140.5F, ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog).getResources());
-      ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-      ReadInJoyAdPopSheetDialog.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog, System.currentTimeMillis());
+      this.a.topMargin = AIOUtils.b(140.5F, ReadInJoyAdPopSheetDialog.b(this.b).getResources());
+      ReadInJoyAdPopSheetDialog.e(this.b).setLayoutParams(this.a);
+      ReadInJoyAdPopSheetDialog.b(this.b, System.currentTimeMillis());
     }
   }
   
   public void onSoftKeyboardOpened(int paramInt)
   {
-    if (System.currentTimeMillis() - ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog) > 500L)
+    if (System.currentTimeMillis() - ReadInJoyAdPopSheetDialog.d(this.b) > 500L)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = AIOUtils.b(40.0F, ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog).getResources());
-      ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-      ReadInJoyAdPopSheetDialog.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog, System.currentTimeMillis());
+      this.a.topMargin = AIOUtils.b(40.0F, ReadInJoyAdPopSheetDialog.b(this.b).getResources());
+      ReadInJoyAdPopSheetDialog.e(this.b).setLayoutParams(this.a);
+      ReadInJoyAdPopSheetDialog.b(this.b, System.currentTimeMillis());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog.6
  * JD-Core Version:    0.7.0.1
  */

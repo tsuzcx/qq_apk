@@ -21,22 +21,22 @@ public final class FastWebVideoPlayManager$createPlayerObserver$1
     ReadInJoyAdLog.a("VideoPlayerWrapper_AD", "onCompletion");
     FastWebVideoPlayManager.a(FastWebVideoPlayManager.a).set(7);
     FastWebVideoPlayManager.a(FastWebVideoPlayManager.a, 7);
-    Iterator localIterator = ((Map)FastWebVideoPlayManager.a(FastWebVideoPlayManager.a)).entrySet().iterator();
+    Iterator localIterator = ((Map)FastWebVideoPlayManager.d(FastWebVideoPlayManager.a)).entrySet().iterator();
     while (localIterator.hasNext())
     {
       VideoStateCallback localVideoStateCallback = (VideoStateCallback)((Map.Entry)localIterator.next()).getValue();
       if (localVideoStateCallback != null)
       {
-        paramIVideoPlayerWrapper = FastWebVideoPlayManager.a(FastWebVideoPlayManager.a).a();
+        paramIVideoPlayerWrapper = FastWebVideoPlayManager.b(FastWebVideoPlayManager.a).b();
         if (paramIVideoPlayerWrapper != null) {
-          paramIVideoPlayerWrapper = paramIVideoPlayerWrapper.w;
+          paramIVideoPlayerWrapper = paramIVideoPlayerWrapper.G;
         } else {
           paramIVideoPlayerWrapper = null;
         }
         localVideoStateCallback.d(paramIVideoPlayerWrapper);
       }
     }
-    FastWebVideoPlayManager.a(FastWebVideoPlayManager.a).a().c(1);
+    FastWebVideoPlayManager.b(FastWebVideoPlayManager.a).c().c(1);
     FastWebVideoPlayManager.a(FastWebVideoPlayManager.a, false);
   }
   
@@ -44,16 +44,16 @@ public final class FastWebVideoPlayManager$createPlayerObserver$1
   {
     ReadInJoyAdLog.a("VideoPlayerWrapper_AD", "onVideoPrepared");
     FastWebVideoPlayManager.a(FastWebVideoPlayManager.a).set(2);
-    paramIVideoPlayerWrapper = FastWebVideoPlayManager.a(FastWebVideoPlayManager.a).a();
-    paramObject = FastWebVideoPlayManager.a(FastWebVideoPlayManager.a);
+    paramIVideoPlayerWrapper = FastWebVideoPlayManager.b(FastWebVideoPlayManager.a).c();
+    paramObject = FastWebVideoPlayManager.c(FastWebVideoPlayManager.a);
     long l;
     if (paramObject != null) {
-      l = paramObject.b();
+      l = paramObject.I();
     } else {
       l = 0L;
     }
     paramIVideoPlayerWrapper.g((int)l);
-    FastWebVideoPlayManager.a(FastWebVideoPlayManager.a).a().f(2);
+    FastWebVideoPlayManager.b(FastWebVideoPlayManager.a).c().f(2);
     FastWebVideoPlayManager.a.e();
   }
   
@@ -62,15 +62,15 @@ public final class FastWebVideoPlayManager$createPlayerObserver$1
     ReadInJoyAdLog.a("VideoPlayerWrapper_AD", "onError");
     FastWebVideoPlayManager.a(FastWebVideoPlayManager.a).set(6);
     FastWebVideoPlayManager.a(FastWebVideoPlayManager.a, 6);
-    paramString = ((Map)FastWebVideoPlayManager.a(FastWebVideoPlayManager.a)).entrySet().iterator();
+    paramString = ((Map)FastWebVideoPlayManager.d(FastWebVideoPlayManager.a)).entrySet().iterator();
     while (paramString.hasNext())
     {
       paramObject = (VideoStateCallback)((Map.Entry)paramString.next()).getValue();
       if (paramObject != null)
       {
-        paramIVideoPlayerWrapper = FastWebVideoPlayManager.a(FastWebVideoPlayManager.a).a();
+        paramIVideoPlayerWrapper = FastWebVideoPlayManager.b(FastWebVideoPlayManager.a).b();
         if (paramIVideoPlayerWrapper != null) {
-          paramIVideoPlayerWrapper = paramIVideoPlayerWrapper.w;
+          paramIVideoPlayerWrapper = paramIVideoPlayerWrapper.G;
         } else {
           paramIVideoPlayerWrapper = null;
         }
@@ -83,7 +83,7 @@ public final class FastWebVideoPlayManager$createPlayerObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.FastWebVideoPlayManager.createPlayerObserver.1
  * JD-Core Version:    0.7.0.1
  */

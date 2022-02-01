@@ -13,17 +13,21 @@ class ApolloPanel$2
   
   public void run()
   {
-    ApolloPanel.a(this.this$0).setVisibility(8);
-    ApolloPanel.a(this.this$0).setVisibility(8);
-    if (CmShowWnsUtils.b()) {
+    if (CmShowWnsUtils.q()) {
       ApolloPanel.a(this.this$0).setVisibility(0);
+    } else {
+      ApolloPanel.a(this.this$0).setVisibility(8);
     }
-    ApolloPanel.a(this.this$0).setVisibility(8);
+    ApolloPanel.d(this.this$0).setVisibility(8);
+    if (CmShowWnsUtils.b()) {
+      ApolloPanel.b(this.this$0).setVisibility(0);
+    }
+    ApolloPanel.e(this.this$0).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.2
  * JD-Core Version:    0.7.0.1
  */

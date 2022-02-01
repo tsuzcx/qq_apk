@@ -13,7 +13,7 @@ public class DeepCleanConfigProcessor
 {
   public static String a(Context paramContext, boolean paramBoolean)
   {
-    Object localObject = (DeepCleanConfigProcessor.DeepCleanConfigBean)QConfigManager.a().a(678);
+    Object localObject = (DeepCleanConfigProcessor.DeepCleanConfigBean)QConfigManager.b().b(678);
     String str = "";
     if (localObject != null) {
       if (paramBoolean)
@@ -43,14 +43,9 @@ public class DeepCleanConfigProcessor
     }
     localObject = str;
     if (TextUtils.isEmpty(str)) {
-      localObject = paramContext.getString(2131691471);
+      localObject = paramContext.getString(2131888429);
     }
     return localObject;
-  }
-  
-  public static void a()
-  {
-    SharedPreUtils.a(BaseApplication.getContext(), "", true, "key_deep_clean_user_click", Boolean.valueOf(true));
   }
   
   private static void a(Context paramContext, int paramInt)
@@ -62,13 +57,18 @@ public class DeepCleanConfigProcessor
   
   public static boolean a()
   {
-    DeepCleanConfigProcessor.DeepCleanConfigBean localDeepCleanConfigBean = (DeepCleanConfigProcessor.DeepCleanConfigBean)QConfigManager.a().a(678);
+    DeepCleanConfigProcessor.DeepCleanConfigBean localDeepCleanConfigBean = (DeepCleanConfigProcessor.DeepCleanConfigBean)QConfigManager.b().b(678);
     return (localDeepCleanConfigBean != null) && (localDeepCleanConfigBean.a());
   }
   
   private static boolean a(Context paramContext)
   {
     return ((Boolean)SharedPreUtils.a(paramContext, "", "key_deep_clean_user_click", Boolean.valueOf(false))).booleanValue();
+  }
+  
+  public static void b()
+  {
+    SharedPreUtils.a(BaseApplication.getContext(), "", true, "key_deep_clean_user_click", Boolean.valueOf(true));
   }
   
   @NonNull
@@ -85,7 +85,7 @@ public class DeepCleanConfigProcessor
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -141,7 +141,7 @@ public class DeepCleanConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.DeepCleanConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

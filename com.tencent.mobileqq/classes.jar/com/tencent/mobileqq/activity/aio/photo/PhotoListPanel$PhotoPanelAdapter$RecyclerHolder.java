@@ -7,53 +7,57 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.guild.api.IGuildDTReportApi;
 import com.tencent.mobileqq.hiboom.SquareRelativeLayout;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.NumberCheckBox;
 import mqq.util.WeakReference;
 
 public class PhotoListPanel$PhotoPanelAdapter$RecyclerHolder
   extends RecyclerView.ViewHolder
 {
-  public View a;
-  public FrameLayout a;
-  public ImageView a;
-  public TextView a;
-  public URLDrawable a;
-  public URLImageView a;
-  PhotoListPanel.CheckBoxClickedListener jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$CheckBoxClickedListener;
   public SquareRelativeLayout a;
-  public NumberCheckBox a;
-  public ImageView b;
+  public URLImageView b;
+  public NumberCheckBox c;
+  public FrameLayout d;
+  public ImageView e;
+  public ImageView f;
+  public URLDrawable g;
+  public View h;
+  public TextView i;
+  PhotoListPanel.CheckBoxClickedListener j;
   
   public PhotoListPanel$PhotoPanelAdapter$RecyclerHolder(PhotoListPanel.PhotoPanelAdapter paramPhotoPanelAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqHiboomSquareRelativeLayout = ((SquareRelativeLayout)paramView.findViewById(2131367033));
-    this.jdField_a_of_type_ComTencentMobileqqHiboomSquareRelativeLayout.setCloseSquare(true);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131369084));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$CheckBoxClickedListener = ((PhotoListPanel)paramPhotoPanelAdapter.a.get()).a();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131369007));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372600);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131369008));
-    FrameLayout localFrameLayout = this.jdField_a_of_type_AndroidWidgetFrameLayout;
-    if (localFrameLayout != null) {
-      localFrameLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$CheckBoxClickedListener);
-    }
-    if (((PhotoListPanel)paramPhotoPanelAdapter.a.get()).n)
+    this.a = ((SquareRelativeLayout)paramView.findViewById(2131433481));
+    this.a.setCloseSquare(true);
+    this.b = ((URLImageView)paramView.findViewById(2131436048));
+    this.j = ((PhotoListPanel)paramPhotoPanelAdapter.a.get()).e();
+    this.c = ((NumberCheckBox)paramView.findViewById(2131435966));
+    this.h = paramView.findViewById(2131440138);
+    this.d = ((FrameLayout)paramView.findViewById(2131435967));
+    FrameLayout localFrameLayout = this.d;
+    if (localFrameLayout != null)
     {
-      paramPhotoPanelAdapter = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+      localFrameLayout.setOnClickListener(this.j);
+      ((IGuildDTReportApi)QRoute.api(IGuildDTReportApi.class)).setElementClickParams(this.d, "em_aio_image_quick", null);
+    }
+    if (((PhotoListPanel)paramPhotoPanelAdapter.a.get()).ai)
+    {
+      paramPhotoPanelAdapter = this.d;
       if (paramPhotoPanelAdapter != null) {
         paramPhotoPanelAdapter.setVisibility(8);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369171));
-    this.b = ((ImageView)paramView.findViewById(2131369085));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369170));
+    this.e = ((ImageView)paramView.findViewById(2131436144));
+    this.f = ((ImageView)paramView.findViewById(2131436049));
+    this.i = ((TextView)paramView.findViewById(2131436143));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.PhotoPanelAdapter.RecyclerHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -12,38 +12,32 @@ public class VisibleSetParam
   implements Parcelable
 {
   public static final Parcelable.Creator<VisibleSetParam> CREATOR = new VisibleSetParam.1();
-  public static VisibleSetParam a;
-  public static VisibleSetParam b;
-  private final int jdField_a_of_type_Int;
-  private final List<Long> jdField_a_of_type_JavaUtilList;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianRepoDbStructVisibleSetParam = new VisibleSetParam(0, Collections.emptyList());
-    b = new VisibleSetParam(2, Collections.emptyList());
-  }
+  public static VisibleSetParam a = new VisibleSetParam(0, Collections.emptyList());
+  public static VisibleSetParam b = new VisibleSetParam(2, Collections.emptyList());
+  private final int c;
+  private final List<Long> d;
   
   public VisibleSetParam(int paramInt, @NonNull List<Long> paramList)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramInt;
+    this.d = paramList;
   }
   
   protected VisibleSetParam(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramParcel.readList(this.jdField_a_of_type_JavaUtilList, Long.class.getClassLoader());
+    this.c = paramParcel.readInt();
+    this.d = new ArrayList();
+    paramParcel.readList(this.d, Long.class.getClassLoader());
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.c;
   }
   
-  public List<Long> a()
+  public List<Long> b()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.d;
   }
   
   public int describeContents()
@@ -55,22 +49,22 @@ public class VisibleSetParam
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VisibleSetParam{visible_type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", uinWhiteList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilList);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeList(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.VisibleSetParam
  * JD-Core Version:    0.7.0.1
  */

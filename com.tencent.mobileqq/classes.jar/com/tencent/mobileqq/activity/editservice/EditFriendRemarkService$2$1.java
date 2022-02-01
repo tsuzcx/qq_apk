@@ -11,20 +11,20 @@ class EditFriendRemarkService$2$1
   
   public void run()
   {
-    EditFriendRemarkService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditFriendRemarkService$2.a).loadingProgress(false);
-    if (this.jdField_a_of_type_Boolean)
+    EditFriendRemarkService.a(this.c.a).loadingProgress(false);
+    if (this.a)
     {
-      EditFriendRemarkService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditFriendRemarkService$2.a).putExtra("result", this.jdField_a_of_type_JavaLangString);
-      EditFriendRemarkService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditFriendRemarkService$2.a).onFinishForResult(-1, EditFriendRemarkService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditFriendRemarkService$2.a));
+      EditFriendRemarkService.g(this.c.a).putExtra("result", this.b);
+      EditFriendRemarkService.a(this.c.a).onFinishForResult(-1, EditFriendRemarkService.g(this.c.a));
       return;
     }
-    QQToast.a(EditFriendRemarkService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditFriendRemarkService$2.a), 2, 2131694199, 0).a();
-    EditFriendRemarkService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditFriendRemarkService$2.a).onFinish();
+    QQToast.makeText(EditFriendRemarkService.b(this.c.a), 2, 2131891837, 0).show();
+    EditFriendRemarkService.a(this.c.a).onFinish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditFriendRemarkService.2.1
  * JD-Core Version:    0.7.0.1
  */

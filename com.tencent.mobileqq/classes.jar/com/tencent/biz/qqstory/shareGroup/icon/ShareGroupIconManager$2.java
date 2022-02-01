@@ -13,7 +13,7 @@ class ShareGroupIconManager$2
   @NonNull
   public Stream<Bitmap> a(ShareGroupDrawableState paramShareGroupDrawableState)
   {
-    return ShareGroupIconManager.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+    return ShareGroupIconManager.a(this.c, this.a, this.b);
   }
 }
 

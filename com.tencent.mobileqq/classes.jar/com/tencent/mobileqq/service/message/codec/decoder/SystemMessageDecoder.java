@@ -24,11 +24,11 @@ public class SystemMessageDecoder
   {
     if ((paramMsg.msg_body.has()) && (((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()))
     {
-      long l1 = Long.valueOf(paramMessageHandler.a.getCurrentAccountUin()).longValue();
+      long l1 = Long.valueOf(paramMessageHandler.n.getCurrentAccountUin()).longValue();
       long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
       short s = (short)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_type.get();
       if ((!paramBoolean1) && (!paramBoolean2) && (!paramBoolean3)) {
-        paramMessageHandler.a().a(l1, l2, s, -1006 - (s - 187), paramMsg, paramInt);
+        paramMessageHandler.B().a(l1, l2, s, -1006 - (s - 187), paramMsg, paramInt);
       }
       Object localObject = (msg_comm.MsgHead)paramMsg.msg_head.get();
       if (localObject != null)
@@ -96,17 +96,17 @@ public class SystemMessageDecoder
     if ((k == 188) || (k == 189)) {
       i = 1;
     }
-    if ((!paramDecodeProtoPkgContext.c) && (i == 0)) {
-      paramMessageHandler.a().a(2);
+    if ((!paramDecodeProtoPkgContext.i) && (i == 0)) {
+      paramMessageHandler.B().a(2);
     }
-    paramDecodeProtoPkgContext.g = 9998L;
-    a(paramMessageHandler, paramMsg, paramDecodeProtoPkgContext.a, paramDecodeProtoPkgContext.f, paramDecodeProtoPkgContext.d, j);
-    MessageProtoCodec.a(l1, j, l2, k, paramMessageHandler.a());
+    paramDecodeProtoPkgContext.x = 9998L;
+    a(paramMessageHandler, paramMsg, paramDecodeProtoPkgContext.g, paramDecodeProtoPkgContext.l, paramDecodeProtoPkgContext.j, j);
+    MessageProtoCodec.a(l1, j, l2, k, paramMessageHandler.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.SystemMessageDecoder
  * JD-Core Version:    0.7.0.1
  */

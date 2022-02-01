@@ -3,7 +3,7 @@ package com.tencent.widget;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 
 public class ThemeImageWrapper
 {
@@ -14,25 +14,25 @@ public class ThemeImageWrapper
   boolean isSupportMaskView = true;
   boolean mAdaptThemeForHead = false;
   Paint mMaskPaint = new Paint();
-  private int maskColor = ThemeUtil.NIGHTMODE_MASKCOLOR;
+  private int maskColor = QQTheme.NIGHTMODE_MASKCOLOR;
   private int maskMode = MODE_CIRCLE;
   RectF tempRectF = new RectF();
   
   public ThemeImageWrapper()
   {
     this.mMaskPaint.setAntiAlias(true);
-    this.mMaskPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
+    this.mMaskPaint.setColorFilter(QQTheme.NIGHTMODE_COLORFILTER);
     this.defColor = this.mMaskPaint.getColor();
   }
   
   public static boolean isNightMode()
   {
-    return ("1103".equals(ThemeUtil.curThemeId)) || ("2920".equals(ThemeUtil.curThemeId));
+    return ("1103".equals(QQTheme.getCurrentThemeId())) || ("2920".equals(QQTheme.getCurrentThemeId()));
   }
   
   public static boolean isNightModeForSimpleUI()
   {
-    return "2920".equals(ThemeUtil.curThemeId);
+    return "2920".equals(QQTheme.getCurrentThemeId());
   }
   
   public void adaptThemeForHead(boolean paramBoolean)
@@ -72,7 +72,7 @@ public class ThemeImageWrapper
           return;
         }
         if (this.mMaskPaint.getColorFilter() == null) {
-          this.mMaskPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
+          this.mMaskPaint.setColorFilter(QQTheme.NIGHTMODE_COLORFILTER);
         }
         this.mMaskPaint.setColor(this.defColor);
         paramCanvas.saveLayer(null, this.mMaskPaint, 31);
@@ -96,7 +96,7 @@ public class ThemeImageWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ThemeImageWrapper
  * JD-Core Version:    0.7.0.1
  */

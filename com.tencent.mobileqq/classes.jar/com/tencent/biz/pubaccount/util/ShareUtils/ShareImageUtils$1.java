@@ -15,16 +15,16 @@ final class ShareImageUtils$1
     {
       if (i != 0)
       {
-        QQToast.a(BaseApplicationImpl.getContext(), 2, 2131719009, 1).a();
+        QQToast.makeText(BaseApplicationImpl.getContext(), 2, 2131916544, 1).show();
         return;
       }
-      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131719027, 1).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2, 2131916563, 1).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.1
  * JD-Core Version:    0.7.0.1
  */

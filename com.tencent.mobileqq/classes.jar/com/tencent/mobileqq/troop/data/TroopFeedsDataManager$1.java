@@ -36,7 +36,7 @@ class TroopFeedsDataManager$1
           this.a.notifyObservers(Integer.valueOf(1010));
           return;
         }
-        this.a.a = ((List)paramMessage.obj);
+        this.a.d = ((List)paramMessage.obj);
         TroopFeedsDataManager.b(this.a);
         this.a.notifyObservers(Integer.valueOf(105));
         if (QLog.isColorLevel()) {
@@ -45,7 +45,7 @@ class TroopFeedsDataManager$1
       }
       else
       {
-        this.a.a = ((List)paramMessage.obj);
+        this.a.d = ((List)paramMessage.obj);
         TroopFeedsDataManager.a(this.a);
         this.a.notifyObservers(Integer.valueOf(101));
         if (QLog.isColorLevel())
@@ -59,14 +59,14 @@ class TroopFeedsDataManager$1
     }
     else
     {
-      this.a.a = ((List)paramMessage.obj);
+      this.a.d = ((List)paramMessage.obj);
       this.a.a(1000);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedsDataManager.1
  * JD-Core Version:    0.7.0.1
  */

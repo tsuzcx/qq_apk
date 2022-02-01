@@ -28,13 +28,13 @@ import java.util.List;
 public class FTSEntitySearchDetailActivity
   extends IphoneTitleBarActivity
 {
-  private static List<FTSEntity> a;
+  private static List<FTSEntity> b;
   public int a;
-  private List<FTSEntity> b;
+  private List<FTSEntity> c;
   
   public static void a(Context paramContext, String paramString1, String paramString2, CharSequence paramCharSequence, List<? extends FTSEntity> paramList, int paramInt1, String paramString3, int paramInt2)
   {
-    jdField_a_of_type_JavaUtilList = paramList;
+    b = paramList;
     paramList = new Intent(paramContext, FTSEntitySearchDetailActivity.class);
     paramList.putExtra("original_keyword", paramString1);
     paramList.putExtra("segment_keyword", paramString2);
@@ -54,7 +54,7 @@ public class FTSEntitySearchDetailActivity
       }
       return;
     }
-    int i = ((DiscussionManager)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString2);
+    int i = ((DiscussionManager)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).c(paramString2);
     if (i <= 0)
     {
       paramTextView.setText(paramString1);
@@ -127,20 +127,22 @@ public class FTSEntitySearchDetailActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.b = jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Int = getIntent().getIntExtra("extra_key_fts_type", 0);
-    setContentView(2131558898);
+    this.c = b;
+    this.a = getIntent().getIntExtra("extra_key_fts_type", 0);
+    setContentView(2131624520);
     paramBundle = getIntent().getStringExtra("uin");
     int i = getIntent().getIntExtra("uinType", -1);
     if (i == 3000) {
       a(ContactUtils.a(this.app, paramBundle, i), paramBundle, this.centerView);
+    } else if (i == 10007) {
+      super.setTitle(getIntent().getStringExtra("title"));
     } else {
       super.setTitle(ContactUtils.a(this.app, paramBundle, i));
     }
     Object localObject = super.getSupportFragmentManager();
-    paramBundle = FTSEntitySearchDetailFragment.a(getIntent().getStringExtra("original_keyword"), getIntent().getStringExtra("segment_keyword"), this.b);
+    paramBundle = FTSEntitySearchDetailFragment.a(getIntent().getStringExtra("original_keyword"), getIntent().getStringExtra("segment_keyword"), this.c);
     localObject = ((FragmentManager)localObject).beginTransaction();
-    ((FragmentTransaction)localObject).replace(2131365183, paramBundle);
+    ((FragmentTransaction)localObject).replace(2131431345, paramBundle);
     ((FragmentTransaction)localObject).commit();
     return true;
   }
@@ -148,7 +150,7 @@ public class FTSEntitySearchDetailActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    jdField_a_of_type_JavaUtilList = null;
+    b = null;
   }
   
   @Override
@@ -160,7 +162,7 @@ public class FTSEntitySearchDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity
  * JD-Core Version:    0.7.0.1
  */

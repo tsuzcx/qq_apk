@@ -2,34 +2,35 @@ package com.tencent.mobileqq.qqexpand.network;
 
 public class ExpandReqInfo$Builder
 {
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int b = 0;
-  private int c = 30;
+  private String a;
+  private byte[] b;
+  private int c = 0;
+  private int d = 0;
+  private int e = 30;
+  private boolean f = false;
+  private boolean g = false;
   
   public Builder a(int paramInt)
   {
-    this.c = paramInt;
+    this.e = paramInt;
     return this;
   }
   
   public Builder a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
   public Builder a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     return this;
   }
   
   public Builder a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.b = paramArrayOfByte;
     return this;
   }
   
@@ -37,10 +38,16 @@ public class ExpandReqInfo$Builder
   {
     return new ExpandReqInfo(this);
   }
+  
+  public Builder b(boolean paramBoolean)
+  {
+    this.g = paramBoolean;
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.network.ExpandReqInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

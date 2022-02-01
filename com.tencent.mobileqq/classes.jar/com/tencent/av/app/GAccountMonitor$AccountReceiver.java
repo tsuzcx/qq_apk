@@ -12,11 +12,11 @@ class GAccountMonitor$AccountReceiver
   extends BroadcastReceiver
 {
   public static String a = "AccountReceiver";
-  VideoAppInterface a;
+  VideoAppInterface b;
   
   public GAccountMonitor$AccountReceiver(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.b = paramVideoAppInterface;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -28,10 +28,10 @@ class GAccountMonitor$AccountReceiver
       }
       try
       {
-        paramContext = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+        paramContext = this.b.b();
         if (QLog.isColorLevel())
         {
-          str = jdField_a_of_type_JavaLangString;
+          str = a;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("recv account broadcast: ");
           localStringBuilder.append(paramIntent.getAction());
@@ -39,27 +39,27 @@ class GAccountMonitor$AccountReceiver
         }
         if (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_KICKED"))
         {
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1001);
+          this.b.b(1001);
           if (paramContext != null) {
-            paramContext.A();
+            paramContext.an();
           }
           Process.killProcess(Process.myPid());
           return;
         }
         if (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))
         {
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1003);
+          this.b.b(1003);
           if (paramContext != null) {
-            paramContext.A();
+            paramContext.an();
           }
           Process.killProcess(Process.myPid());
           return;
         }
         if (paramIntent.getAction().equals("mqq.intent.action.LOGOUT"))
         {
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1002);
+          this.b.b(1002);
           if (paramContext != null) {
-            paramContext.A();
+            paramContext.an();
           }
           Process.killProcess(Process.myPid());
           return;
@@ -67,12 +67,12 @@ class GAccountMonitor$AccountReceiver
         String str = paramIntent.getAction();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("mqq.intent.action.EXIT_");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName());
+        localStringBuilder.append(this.b.getApp().getPackageName());
         if (str.equals(localStringBuilder.toString()))
         {
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1005);
+          this.b.b(1005);
           if (paramContext != null) {
-            paramContext.A();
+            paramContext.an();
           }
           Process.killProcess(Process.myPid());
           return;
@@ -82,14 +82,14 @@ class GAccountMonitor$AccountReceiver
           if (paramContext == null) {
             return;
           }
-          if (paramContext.d) {
-            paramContext.a(paramContext.b, paramContext.a, 74);
+          if (paramContext.j) {
+            paramContext.a(paramContext.l, paramContext.k, 74);
           }
           if (QLog.isColorLevel()) {
-            QLog.e(jdField_a_of_type_JavaLangString, 2, "ACTION_ACCOUNT_CHANGED, video process exit!");
+            QLog.e(a, 2, "ACTION_ACCOUNT_CHANGED, video process exit!");
           }
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1004);
-          paramContext.A();
+          this.b.b(1004);
+          paramContext.an();
           Process.killProcess(Process.myPid());
           return;
         }
@@ -102,12 +102,12 @@ class GAccountMonitor$AccountReceiver
             if (!QLog.isColorLevel()) {
               return;
             }
-            QLog.e(jdField_a_of_type_JavaLangString, 2, "can not get the right value");
+            QLog.e(a, 2, "can not get the right value");
             return;
           }
           boolean bool = paramIntent.getBooleanExtra("Exit", false);
           int j = paramIntent.getIntExtra("avtype", 0);
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(79), Long.valueOf(l), Boolean.valueOf(bool), Integer.valueOf(j) });
+          this.b.a(new Object[] { Integer.valueOf(79), Long.valueOf(l), Boolean.valueOf(bool), Integer.valueOf(j) });
           if ((bool) && (j != 2))
           {
             paramContext.onGAudioRoomDestroy(i, l);
@@ -118,7 +118,7 @@ class GAccountMonitor$AccountReceiver
       catch (RuntimeException paramContext)
       {
         if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "RuntimeException", paramContext);
+          QLog.e(a, 2, "RuntimeException", paramContext);
         }
       }
     }

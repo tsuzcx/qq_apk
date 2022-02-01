@@ -9,8 +9,8 @@ import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
-import android.support.annotation.Nullable;
-import android.util.LongSparseArray;
+import androidx.annotation.Nullable;
+import androidx.collection.LongSparseArray;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
@@ -133,11 +133,7 @@ public class GradientStrokeContent
     Object localObject2 = (GradientColor)this.colorAnimation.getValue();
     int[] arrayOfInt = applyDynamicColorsIfNeeded(((GradientColor)localObject2).getColors());
     localObject2 = ((GradientColor)localObject2).getPositions();
-    i = (int)(this.boundsRect.left + this.boundsRect.width() / 2.0F + ((PointF)localObject1).x);
-    int j = (int)(this.boundsRect.top + this.boundsRect.height() / 2.0F + ((PointF)localObject1).y);
-    int k = (int)(this.boundsRect.left + this.boundsRect.width() / 2.0F + localPointF.x);
-    int m = (int)(this.boundsRect.top + this.boundsRect.height() / 2.0F + localPointF.y);
-    localObject1 = new LinearGradient(i, j, k, m, arrayOfInt, (float[])localObject2, Shader.TileMode.CLAMP);
+    localObject1 = new LinearGradient(((PointF)localObject1).x, ((PointF)localObject1).y, localPointF.x, localPointF.y, arrayOfInt, (float[])localObject2, Shader.TileMode.CLAMP);
     this.linearGradientCache.put(l, localObject1);
     return localObject1;
   }
@@ -156,12 +152,11 @@ public class GradientStrokeContent
     Object localObject2 = (GradientColor)this.colorAnimation.getValue();
     int[] arrayOfInt = applyDynamicColorsIfNeeded(((GradientColor)localObject2).getColors());
     localObject2 = ((GradientColor)localObject2).getPositions();
-    i = (int)(this.boundsRect.left + this.boundsRect.width() / 2.0F + ((PointF)localObject1).x);
-    int j = (int)(this.boundsRect.top + this.boundsRect.height() / 2.0F + ((PointF)localObject1).y);
-    int k = (int)(this.boundsRect.left + this.boundsRect.width() / 2.0F + localPointF.x);
-    int m = (int)(this.boundsRect.top + this.boundsRect.height() / 2.0F + localPointF.y);
-    float f = (float)Math.hypot(k - i, m - j);
-    localObject1 = new RadialGradient(i, j, f, arrayOfInt, (float[])localObject2, Shader.TileMode.CLAMP);
+    float f1 = ((PointF)localObject1).x;
+    float f2 = ((PointF)localObject1).y;
+    float f3 = localPointF.x;
+    float f4 = localPointF.y;
+    localObject1 = new RadialGradient(f1, f2, (float)Math.hypot(f3 - f1, f4 - f2), arrayOfInt, (float[])localObject2, Shader.TileMode.CLAMP);
     this.radialGradientCache.put(l, localObject1);
     return localObject1;
   }
@@ -171,11 +166,11 @@ public class GradientStrokeContent
     super.addValueCallback(paramT, paramLottieValueCallback);
     if (paramT == LottieProperty.GRADIENT_COLOR)
     {
+      if (this.colorCallbackAnimation != null) {
+        this.layer.removeAnimation(this.colorCallbackAnimation);
+      }
       if (paramLottieValueCallback == null)
       {
-        if (this.colorCallbackAnimation != null) {
-          this.layer.removeAnimation(this.colorCallbackAnimation);
-        }
         this.colorCallbackAnimation = null;
         return;
       }
@@ -197,6 +192,7 @@ public class GradientStrokeContent
     } else {
       localObject = getRadialGradient();
     }
+    ((Shader)localObject).setLocalMatrix(paramMatrix);
     this.paint.setShader((Shader)localObject);
     super.draw(paramCanvas, paramMatrix, paramInt);
   }
@@ -208,7 +204,7 @@ public class GradientStrokeContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.GradientStrokeContent
  * JD-Core Version:    0.7.0.1
  */

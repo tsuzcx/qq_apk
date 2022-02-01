@@ -26,14 +26,14 @@ class SoftAdExpoStatManager$1
     }
     localObject1 = SoftAdExpoStatManager.a(this.this$0);
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(SoftAdExpoStatManager.a(this.this$0));
+    ((StringBuilder)localObject2).append(SoftAdExpoStatManager.b(this.this$0));
     ((StringBuilder)localObject2).append("expo_stat_key_timewindow");
     SharePreferenceUtils.a((Context)localObject1, ((StringBuilder)localObject2).toString(), localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length()).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.SoftAdExpoStatManager.1
  * JD-Core Version:    0.7.0.1
  */

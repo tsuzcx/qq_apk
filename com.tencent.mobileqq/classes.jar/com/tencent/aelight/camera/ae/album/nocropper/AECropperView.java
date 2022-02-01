@@ -17,10 +17,10 @@ import com.tencent.aelight.camera.aeeditor.module.clip.image.EditorPicInfo;
 public class AECropperView
   extends FrameLayout
 {
-  private AECropperGridView jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperGridView;
   public AECropperImageView a;
-  private AECropperView.GridCallback jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperView$GridCallback;
-  private boolean jdField_a_of_type_Boolean = false;
+  private AECropperGridView b;
+  private boolean c = false;
+  private AECropperView.GridCallback d;
   
   public AECropperView(Context paramContext)
   {
@@ -40,83 +40,56 @@ public class AECropperView
     a(paramContext, paramAttributeSet);
   }
   
-  private CropResult a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return CropResult.a();
-    }
-    CropInfo localCropInfo = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView.a();
-    if (localCropInfo != null) {
-      return CropResult.a(localCropInfo);
-    }
-    return CropResult.b();
-  }
-  
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView = new AECropperImageView(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperGridView = new AECropperGridView(paramContext, paramAttributeSet);
+    this.a = new AECropperImageView(paramContext, paramAttributeSet);
+    this.b = new AECropperGridView(paramContext, paramAttributeSet);
     paramAttributeSet = new FrameLayout.LayoutParams(-1, 0);
     if (paramContext.getResources().getConfiguration().orientation == 2)
     {
       paramAttributeSet.width = 0;
       paramAttributeSet.height = -1;
     }
-    addView(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView, 0, paramAttributeSet);
-    addView(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperGridView, 1, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView.setGestureCallback(new AECropperView.TouchGestureCallback(this, null));
+    addView(this.a, 0, paramAttributeSet);
+    addView(this.b, 1, paramAttributeSet);
+    this.a.setGestureCallback(new AECropperView.TouchGestureCallback(this, null));
   }
   
-  public float a()
+  private CropResult getCropInfo()
   {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
-    if (localAECropperImageView == null) {
-      return 0.0F;
+    if (this.c) {
+      return CropResult.a();
     }
-    return localAECropperImageView.a();
-  }
-  
-  public int a()
-  {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
-    if (localAECropperImageView == null) {
-      return 1;
+    CropInfo localCropInfo = this.a.getCropInfo();
+    if (localCropInfo != null) {
+      return CropResult.a(localCropInfo);
     }
-    return localAECropperImageView.a();
-  }
-  
-  public Matrix a()
-  {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
-    if (localAECropperImageView == null) {
-      return new Matrix();
-    }
-    return new Matrix(localAECropperImageView.getImageMatrix());
+    return CropResult.b();
   }
   
   @Nullable
   public EditorPicInfo a(@NonNull EditorPicInfo paramEditorPicInfo)
   {
-    CropResult localCropResult = a();
-    if ((localCropResult.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperCropState == CropState.b) && (localCropResult.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperCropInfo != null))
+    CropResult localCropResult = getCropInfo();
+    if ((localCropResult.c == CropState.b) && (localCropResult.b != null))
     {
-      int i = b();
-      int j = c();
-      double d2 = localCropResult.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperCropInfo.a;
+      int i = getImageWidth();
+      int j = getImageHeight();
+      double d2 = localCropResult.b.a;
       Double.isNaN(d2);
       double d1 = i;
       Double.isNaN(d1);
       paramEditorPicInfo.x = (d2 * 1.0D / d1);
-      double d3 = localCropResult.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperCropInfo.b;
+      double d3 = localCropResult.b.b;
       Double.isNaN(d3);
       d2 = j;
       Double.isNaN(d2);
       paramEditorPicInfo.y = (d3 * 1.0D / d2);
-      d3 = localCropResult.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperCropInfo.c;
+      d3 = localCropResult.b.c;
       Double.isNaN(d3);
       Double.isNaN(d1);
       paramEditorPicInfo.w = (d3 * 1.0D / d1);
-      d1 = localCropResult.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperCropInfo.d;
+      d1 = localCropResult.b.d;
       Double.isNaN(d1);
       Double.isNaN(d2);
       paramEditorPicInfo.h = (d1 * 1.0D / d2);
@@ -127,37 +100,73 @@ public class AECropperView
   
   public void a()
   {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
+    AECropperImageView localAECropperImageView = this.a;
     if (localAECropperImageView != null) {
       localAECropperImageView.a();
     }
   }
   
-  public float b()
+  public float getCropToCenterZoom()
   {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
+    AECropperImageView localAECropperImageView = this.a;
     if (localAECropperImageView == null) {
       return 0.0F;
     }
-    return localAECropperImageView.b();
+    return localAECropperImageView.getCropCenterZoom();
   }
   
-  public int b()
+  public int getImageHeight()
   {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
+    AECropperImageView localAECropperImageView = this.a;
     if (localAECropperImageView == null) {
       return 0;
     }
-    return localAECropperImageView.b();
+    return localAECropperImageView.getImageHeight();
   }
   
-  public int c()
+  public Matrix getImageMatrix()
   {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
+    AECropperImageView localAECropperImageView = this.a;
+    if (localAECropperImageView == null) {
+      return new Matrix();
+    }
+    return new Matrix(localAECropperImageView.getImageMatrix());
+  }
+  
+  public int getImageWidth()
+  {
+    AECropperImageView localAECropperImageView = this.a;
     if (localAECropperImageView == null) {
       return 0;
     }
-    return localAECropperImageView.c();
+    return localAECropperImageView.getImageWidth();
+  }
+  
+  public float getMaxZoom()
+  {
+    AECropperImageView localAECropperImageView = this.a;
+    if (localAECropperImageView == null) {
+      return 0.0F;
+    }
+    return localAECropperImageView.getMaxZoom();
+  }
+  
+  public float getMinZoom()
+  {
+    AECropperImageView localAECropperImageView = this.a;
+    if (localAECropperImageView == null) {
+      return 0.0F;
+    }
+    return localAECropperImageView.getMinZoom();
+  }
+  
+  public int getRatioType()
+  {
+    AECropperImageView localAECropperImageView = this.a;
+    if (localAECropperImageView == null) {
+      return 1;
+    }
+    return localAECropperImageView.getRatioType();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -176,15 +185,15 @@ public class AECropperView
   
   public void setAnimateCallback(Animator.AnimatorListener paramAnimatorListener)
   {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
+    AECropperImageView localAECropperImageView = this.a;
     if (localAECropperImageView != null) {
-      localAECropperImageView.a = paramAnimatorListener;
+      localAECropperImageView.d = paramAnimatorListener;
     }
   }
   
   public void setDebug(boolean paramBoolean)
   {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
+    AECropperImageView localAECropperImageView = this.a;
     if (localAECropperImageView != null) {
       localAECropperImageView.setDEBUG(paramBoolean);
     }
@@ -192,7 +201,7 @@ public class AECropperView
   
   public void setGestureEnabled(boolean paramBoolean)
   {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
+    AECropperImageView localAECropperImageView = this.a;
     if (localAECropperImageView != null) {
       localAECropperImageView.setGestureEnabled(paramBoolean);
     }
@@ -200,12 +209,12 @@ public class AECropperView
   
   public void setGridCallback(AECropperView.GridCallback paramGridCallback)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperView$GridCallback = paramGridCallback;
+    this.d = paramGridCallback;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
+    AECropperImageView localAECropperImageView = this.a;
     if (localAECropperImageView != null) {
       localAECropperImageView.setImageBitmap(paramBitmap);
     }
@@ -213,7 +222,7 @@ public class AECropperView
   
   public void setImageMatrix(@NonNull Matrix paramMatrix)
   {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
+    AECropperImageView localAECropperImageView = this.a;
     if (localAECropperImageView != null) {
       localAECropperImageView.setImageMatrix(paramMatrix);
     }
@@ -221,7 +230,7 @@ public class AECropperView
   
   public void setMaxZoom(float paramFloat)
   {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
+    AECropperImageView localAECropperImageView = this.a;
     if (localAECropperImageView != null) {
       localAECropperImageView.setMaxZoom(paramFloat);
     }
@@ -229,7 +238,7 @@ public class AECropperView
   
   public void setMinZoom(float paramFloat)
   {
-    AECropperImageView localAECropperImageView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView;
+    AECropperImageView localAECropperImageView = this.a;
     if (localAECropperImageView != null) {
       localAECropperImageView.setMinZoom(paramFloat);
     }
@@ -237,7 +246,7 @@ public class AECropperView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.nocropper.AECropperView
  * JD-Core Version:    0.7.0.1
  */

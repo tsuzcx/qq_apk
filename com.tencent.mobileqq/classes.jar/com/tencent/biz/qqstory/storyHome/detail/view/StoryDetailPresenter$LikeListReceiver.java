@@ -17,18 +17,18 @@ class StoryDetailPresenter$LikeListReceiver
   
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent)
   {
-    if ((paramGetLikeListEvent.jdField_a_of_type_Boolean) && (paramGetLikeListEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) && (!paramGetLikeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (StoryDetailPresenter.a(paramStoryDetailPresenter) != null))
+    if ((paramGetLikeListEvent.b) && (paramGetLikeListEvent.a.equals(StoryDetailPresenter.f(paramStoryDetailPresenter))) && (!paramGetLikeListEvent.g.isFail()) && (StoryDetailPresenter.a(paramStoryDetailPresenter) != null))
     {
       SLog.a(this.TAG, "receive like list event. %s.", paramGetLikeListEvent.toString());
-      boolean bool2 = StoryDetailPresenter.a(paramStoryDetailPresenter);
+      boolean bool2 = StoryDetailPresenter.g(paramStoryDetailPresenter);
       boolean bool1;
-      if (paramGetLikeListEvent.jdField_a_of_type_Int == 0) {
+      if (paramGetLikeListEvent.c == 0) {
         bool1 = false;
       } else {
         bool1 = true;
       }
-      StoryDetailPresenter.a(paramStoryDetailPresenter).b(bool1, paramGetLikeListEvent.b);
-      StoryDetailPresenter.a(paramStoryDetailPresenter).b(paramGetLikeListEvent.jdField_a_of_type_JavaUtilList, true, bool1);
+      StoryDetailPresenter.a(paramStoryDetailPresenter).b(bool1, paramGetLikeListEvent.d);
+      StoryDetailPresenter.a(paramStoryDetailPresenter).b(paramGetLikeListEvent.f, true, bool1);
       if (bool2 == bool1) {
         paramStoryDetailPresenter.a();
       }

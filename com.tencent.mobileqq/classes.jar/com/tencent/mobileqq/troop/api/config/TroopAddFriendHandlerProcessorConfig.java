@@ -12,13 +12,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TroopAddFriendHandlerProcessorConfig
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static ArrayList<AbsTroopAddFriendHandlerProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static AtomicBoolean a = new AtomicBoolean(false);
+  private static final Object b = new Object();
+  private static ArrayList<AbsTroopAddFriendHandlerProcessor> c = new ArrayList();
   
   private TroopAddFriendHandlerProcessorConfig()
   {
-    a();
+    b();
   }
   
   public static TroopAddFriendHandlerProcessorConfig a()
@@ -26,7 +26,7 @@ public class TroopAddFriendHandlerProcessorConfig
     return TroopAddFriendHandlerProcessorConfig.SingletonHoler.a();
   }
   
-  private static void a()
+  private static void b()
   {
     if (TroopCustomizedProcessorRegister.e != null)
     {
@@ -37,7 +37,7 @@ public class TroopAddFriendHandlerProcessorConfig
         try
         {
           localObject = (AbsTroopAddFriendHandlerProcessor)((Class)localObject).newInstance();
-          jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          c.add(localObject);
         }
         catch (Throwable localThrowable)
         {
@@ -49,7 +49,7 @@ public class TroopAddFriendHandlerProcessorConfig
   
   public void a(@NonNull AppInterface paramAppInterface)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopAddFriendHandlerProcessor)localIterator.next()).a(paramAppInterface);
     }
@@ -57,7 +57,7 @@ public class TroopAddFriendHandlerProcessorConfig
   
   public void a(@NonNull AppInterface paramAppInterface, String paramString, HashMap<String, Integer> paramHashMap)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopAddFriendHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString, paramHashMap);
     }
@@ -65,7 +65,7 @@ public class TroopAddFriendHandlerProcessorConfig
   
   public void a(@NonNull AppInterface paramAppInterface, String paramString, HashMap<String, String> paramHashMap, List<String> paramList)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopAddFriendHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString, paramHashMap, paramList);
     }
@@ -73,7 +73,7 @@ public class TroopAddFriendHandlerProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopAddFriendHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

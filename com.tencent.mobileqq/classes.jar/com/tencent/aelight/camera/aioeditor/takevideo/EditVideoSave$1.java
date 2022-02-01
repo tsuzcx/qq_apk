@@ -11,19 +11,19 @@ class EditVideoSave$1
   
   public void run()
   {
-    this.this$0.g();
-    if (this.jdField_a_of_type_Int == 222)
+    this.this$0.d();
+    if (this.a == 222)
     {
-      String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_video_save_path");
-      this.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(str);
+      String str = this.b.getStringExtra("key_video_save_path");
+      this.this$0.t.a(str);
       return;
     }
-    QQToast.a(this.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getContext(), 2, HardCodeUtil.a(2131703913), 0).a();
+    QQToast.makeText(this.this$0.u.getContext(), 2, HardCodeUtil.a(2131901850), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoSave.1
  * JD-Core Version:    0.7.0.1
  */

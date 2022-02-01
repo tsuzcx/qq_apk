@@ -13,21 +13,21 @@ import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class ArkHorizontalListViewAdapter$ItemViewHolder
 {
-  public View a;
-  public Button a;
-  public ImageView a;
   public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public BaseChatItemLayout a;
-  public ArkAppLoadLayout a;
-  public ArkAppRootLayout a;
-  public ArkAppView a;
-  public LinearLayout b;
+  public ArkAppRootLayout b;
+  public ArkAppLoadLayout c;
+  public RelativeLayout d;
+  public ArkAppView e;
+  public View f;
+  public Button g;
+  public LinearLayout h;
+  public ImageView i;
+  public TextView j;
+  public BaseChatItemLayout k;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -25,9 +25,9 @@ class DocEnhancePart$4
     File localFile = new File((String)localObject);
     try
     {
-      ImageUtil.a(this.a, localFile);
+      ImageUtil.b(this.a, localFile);
       DocEnhancePart.a(this.this$0, (String)localObject);
-      DocEnhanceFragment.a((Activity)this.this$0.a(), 7532, (String)localObject, null, null, DocEnhancePart.a(this.this$0));
+      DocEnhanceFragment.a((Activity)this.this$0.u(), 7532, (String)localObject, null, null, DocEnhancePart.c(this.this$0));
       return;
     }
     catch (IOException localIOException)
@@ -38,7 +38,7 @@ class DocEnhancePart$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.docenhance.DocEnhancePart.4
  * JD-Core Version:    0.7.0.1
  */

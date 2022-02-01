@@ -5,19 +5,19 @@ import com.tencent.mobileqq.lyric.data.Lyric;
 
 public abstract interface ILyricView
 {
-  public abstract int a();
-  
-  public abstract String a();
-  
   public abstract void a();
   
   public abstract void a(int paramInt);
   
-  public abstract boolean a();
-  
   public abstract void b();
   
   public abstract void c();
+  
+  public abstract boolean d();
+  
+  public abstract String getSongId();
+  
+  public abstract int getState();
   
   public abstract void setAlign(Paint.Align paramAlign);
   
@@ -35,7 +35,7 @@ public abstract interface ILyricView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.ILyricView
  * JD-Core Version:    0.7.0.1
  */

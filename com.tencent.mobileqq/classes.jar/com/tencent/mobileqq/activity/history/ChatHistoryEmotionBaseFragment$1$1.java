@@ -10,14 +10,14 @@ class ChatHistoryEmotionBaseFragment$1$1
   
   public void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.changeToUnSelected();
+    this.a.b.a(this.a.c, 2, 5);
+    this.a.b.a();
+    this.a.d.changeToUnSelected();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

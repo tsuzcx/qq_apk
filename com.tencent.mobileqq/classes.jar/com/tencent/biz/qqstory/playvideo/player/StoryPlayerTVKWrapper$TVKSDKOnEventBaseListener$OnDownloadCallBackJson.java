@@ -5,25 +5,25 @@ import com.tencent.biz.qqstory.utils.JsonORM.Column;
 public class StoryPlayerTVKWrapper$TVKSDKOnEventBaseListener$OnDownloadCallBackJson
 {
   @JsonORM.Column(a="clipNo")
-  int jdField_a_of_type_Int;
+  int a;
   @JsonORM.Column(a="fileSize")
-  long jdField_a_of_type_Long;
-  @JsonORM.Column(a="errorMsg")
-  String jdField_a_of_type_JavaLangString;
+  long b;
   @JsonORM.Column(a="speedKBS")
-  int b;
-  @JsonORM.Column(a="offset")
   int c;
-  @JsonORM.Column(a="callBackType")
+  @JsonORM.Column(a="offset")
   int d;
-  @JsonORM.Column(a="errorCode")
+  @JsonORM.Column(a="callBackType")
   int e;
-  @JsonORM.Column(a="errorDetailCode")
+  @JsonORM.Column(a="errorCode")
   int f;
+  @JsonORM.Column(a="errorDetailCode")
+  int g;
+  @JsonORM.Column(a="errorMsg")
+  String h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.OnDownloadCallBackJson
  * JD-Core Version:    0.7.0.1
  */

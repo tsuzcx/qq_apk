@@ -7,12 +7,12 @@ import com.tencent.av.opengl.multiplevideos.renderbase.Filter;
 public class AEFilter
   extends Filter
 {
-  private AIAttr jdField_a_of_type_ComTencentAekitPluginCoreAIAttr;
-  private final String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private final String a;
+  private AIAttr b;
   private boolean c;
   private boolean d;
+  private boolean e;
+  private boolean f;
   
   public AEFilter()
   {
@@ -20,12 +20,12 @@ public class AEFilter
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AEFilter-");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_ComTencentAekitPluginCoreAIAttr = new AIAttr(new AIAttrProvider(null));
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
+    this.a = localStringBuilder.toString();
+    this.b = new AIAttr(new AIAttrProvider(null));
     this.c = false;
     this.d = false;
+    this.e = false;
+    this.f = false;
   }
 }
 

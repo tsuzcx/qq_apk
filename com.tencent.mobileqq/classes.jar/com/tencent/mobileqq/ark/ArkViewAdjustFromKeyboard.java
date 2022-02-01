@@ -13,12 +13,12 @@ import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class ArkViewAdjustFromKeyboard
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup.MarginLayoutParams jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams;
-  private ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
-  private int b = 0;
-  private int c = 0;
+  private View a;
+  private int b;
+  private ViewGroup.MarginLayoutParams c;
+  private int d = 0;
+  private ArkAppView e;
+  private int f = 0;
   
   private ArkViewAdjustFromKeyboard(Activity paramActivity, ArkAppView paramArkAppView)
   {
@@ -26,52 +26,45 @@ public class ArkViewAdjustFromKeyboard
     if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)localObject).getChildAt(0);
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    this.a = ((FrameLayout)localObject).getChildAt(0);
+    localObject = this.a;
     if (localObject != null) {
       ((View)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new ArkViewAdjustFromKeyboard.1(this));
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = paramArkAppView;
-    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams = ((ViewGroup.MarginLayoutParams)paramArkAppView.getLayoutParams());
+    this.e = paramArkAppView;
+    this.c = ((ViewGroup.MarginLayoutParams)paramArkAppView.getLayoutParams());
     paramArkAppView = new DisplayMetrics();
     paramActivity.getWindowManager().getDefaultDisplay().getMetrics(paramArkAppView);
-    this.c = paramArkAppView.heightPixels;
-    this.b = this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin;
-  }
-  
-  private int a()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    return localRect.bottom - localRect.top;
+    this.f = paramArkAppView.heightPixels;
+    this.d = this.c.topMargin;
   }
   
   private void a()
   {
-    int i = a();
-    if (i != this.jdField_a_of_type_Int)
+    int i = b();
+    if (i != this.b)
     {
-      int k = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      int k = this.a.getRootView().getHeight();
       int j = k - i;
       if (j > k / 4)
       {
-        Rect localRect = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getInputRect();
+        Rect localRect = this.e.getInputRect();
         int[] arrayOfInt = new int[2];
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLocationOnScreen(arrayOfInt);
+        this.e.getLocationOnScreen(arrayOfInt);
         k = localRect.bottom + arrayOfInt[1];
-        j = this.c - j;
+        j = this.f - j;
         if (j < k)
         {
-          this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = (j - k);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
+          this.c.topMargin = (j - k);
+          this.e.requestLayout();
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = this.b;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
+        this.c.topMargin = this.d;
+        this.e.requestLayout();
       }
-      this.jdField_a_of_type_Int = i;
+      this.b = i;
     }
   }
   
@@ -79,10 +72,17 @@ public class ArkViewAdjustFromKeyboard
   {
     new ArkViewAdjustFromKeyboard(paramActivity, paramArkAppView);
   }
+  
+  private int b()
+  {
+    Rect localRect = new Rect();
+    this.a.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkViewAdjustFromKeyboard
  * JD-Core Version:    0.7.0.1
  */

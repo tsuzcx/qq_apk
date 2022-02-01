@@ -35,36 +35,36 @@ public class FileSearchResultPresenter
   public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     super.a(paramISearchResultModel, paramISearchResultView);
-    if ((paramISearchResultView.a() != null) && (!TextUtils.isEmpty(paramISearchResultModel.b())))
-    {
-      paramISearchResultView.a().setVisibility(0);
-      paramISearchResultView.a().setText(paramISearchResultModel.b());
-    }
-    if ((paramISearchResultView.b() != null) && (!TextUtils.isEmpty(paramISearchResultModel.c())))
+    if ((paramISearchResultView.b() != null) && (!TextUtils.isEmpty(paramISearchResultModel.d())))
     {
       paramISearchResultView.b().setVisibility(0);
-      paramISearchResultView.b().setText(paramISearchResultModel.c());
+      paramISearchResultView.b().setText(paramISearchResultModel.d());
     }
-    if ((paramISearchResultView.c() != null) && (!TextUtils.isEmpty(paramISearchResultModel.a())))
+    if ((paramISearchResultView.c() != null) && (!TextUtils.isEmpty(paramISearchResultModel.e())))
     {
       paramISearchResultView.c().setVisibility(0);
-      paramISearchResultView.c().setText(paramISearchResultModel.a());
+      paramISearchResultView.c().setText(paramISearchResultModel.e());
     }
-    if ((paramISearchResultModel.d() == null) && (paramISearchResultView.d() != null)) {
-      paramISearchResultView.d().setVisibility(8);
-    }
-    if ((paramISearchResultView.d() != null) && (paramISearchResultModel.d() != null))
+    if ((paramISearchResultView.d() != null) && (!TextUtils.isEmpty(paramISearchResultModel.a())))
     {
       paramISearchResultView.d().setVisibility(0);
-      paramISearchResultView.d().setText(paramISearchResultModel.d());
+      paramISearchResultView.d().setText(paramISearchResultModel.a());
+    }
+    if ((paramISearchResultModel.f() == null) && (paramISearchResultView.e() != null)) {
+      paramISearchResultView.e().setVisibility(8);
+    }
+    if ((paramISearchResultView.e() != null) && (paramISearchResultModel.f() != null))
+    {
+      paramISearchResultView.e().setVisibility(0);
+      paramISearchResultView.e().setText(paramISearchResultModel.f());
     }
   }
   
   public void b(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
-    paramISearchResultView.a().setMaxWidth(800);
+    paramISearchResultView.b().setMaxWidth(800);
     Object localObject = (FileEntitySearchResultModel)paramISearchResultModel;
-    ImageView localImageView = paramISearchResultView.b();
+    ImageView localImageView = paramISearchResultView.g();
     localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     localImageView.setImageDrawable(null);
     localImageView.setBackgroundDrawable(null);
@@ -72,7 +72,7 @@ public class FileSearchResultPresenter
       return;
     }
     FileManagerEntity localFileManagerEntity = (FileManagerEntity)((FileEntitySearchResultModel)localObject).a.get(0);
-    int i = FileManagerUtil.a(localFileManagerEntity.fileName);
+    int i = FileManagerUtil.c(localFileManagerEntity.fileName);
     if ((i != 0) && (i != 2))
     {
       FileManagerUtil.a(localImageView, localFileManagerEntity);
@@ -102,18 +102,18 @@ public class FileSearchResultPresenter
       }
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        localImageView.setImageDrawable(BaseApplicationImpl.getContext().getResources().getDrawable(2130844363));
+        localImageView.setImageDrawable(BaseApplicationImpl.getContext().getResources().getDrawable(2130845680));
         return;
       }
       localFileManagerEntity.strThumbPath = ((String)localObject);
     }
     localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramISearchResultView.b().getHeight();
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramISearchResultView.b().getWidth();
-    paramISearchResultView = paramISearchResultView.d();
-    if ((paramISearchResultView != null) && (!TextUtils.isEmpty(paramISearchResultModel.d())))
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramISearchResultView.g().getHeight();
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramISearchResultView.g().getWidth();
+    paramISearchResultView = paramISearchResultView.e();
+    if ((paramISearchResultView != null) && (!TextUtils.isEmpty(paramISearchResultModel.f())))
     {
-      paramISearchResultView.setText(paramISearchResultModel.d());
+      paramISearchResultView.setText(paramISearchResultModel.f());
       paramISearchResultView.setVisibility(0);
     }
     paramISearchResultModel = FilePicURLDrawlableHelper.a(localFileManagerEntity);
@@ -121,7 +121,7 @@ public class FileSearchResultPresenter
     {
       paramISearchResultModel = URLDrawable.getDrawable(paramISearchResultModel, (URLDrawable.URLDrawableOptions)localObject);
       if (paramISearchResultModel == null) {
-        localImageView.setImageDrawable(localImageView.getContext().getResources().getDrawable(2130844363));
+        localImageView.setImageDrawable(localImageView.getContext().getResources().getDrawable(2130845680));
       }
       localImageView.setImageDrawable(paramISearchResultModel);
     }
@@ -129,7 +129,7 @@ public class FileSearchResultPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

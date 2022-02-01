@@ -12,13 +12,13 @@ class OCRPerformFragment$2
   
   public void run()
   {
-    Bitmap localBitmap = OCRPerformUtil.a(OCRPerformFragment.a(this.this$0), this.this$0.getResources().getDisplayMetrics());
-    OCRPerformFragment.a(this.this$0).obtainMessage(100, localBitmap).sendToTarget();
+    Bitmap localBitmap = OCRPerformUtil.a(OCRPerformFragment.b(this.this$0), this.this$0.getResources().getDisplayMetrics());
+    OCRPerformFragment.c(this.this$0).obtainMessage(100, localBitmap).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformFragment.2
  * JD-Core Version:    0.7.0.1
  */

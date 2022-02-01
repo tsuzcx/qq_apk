@@ -12,53 +12,46 @@ import java.util.List;
 
 public class PanoramaEffectDPC
 {
-  public static PanoramaEffectDPC a;
-  public int a;
-  public List<PanoramaEffectDPC.DeviceCPUinfo> a;
-  public boolean a;
-  public int b = 0;
+  public static PanoramaEffectDPC e;
+  public int a = 0;
+  public List<PanoramaEffectDPC.DeviceCPUinfo> b = null;
+  public int c = 0;
+  public boolean d = false;
   
-  public PanoramaEffectDPC()
+  public static PanoramaEffectDPC a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_Boolean = false;
+    PanoramaEffectDPC localPanoramaEffectDPC = e;
+    if ((localPanoramaEffectDPC == null) || (localPanoramaEffectDPC.d)) {
+      e = e();
+    }
+    return e;
   }
   
-  public static int a()
+  public static boolean b()
+  {
+    PanoramaEffectDPC localPanoramaEffectDPC = a();
+    return (localPanoramaEffectDPC != null) && (localPanoramaEffectDPC.a == 1);
+  }
+  
+  public static int c()
+  {
+    PanoramaEffectDPC localPanoramaEffectDPC = a();
+    if (localPanoramaEffectDPC != null) {
+      return localPanoramaEffectDPC.c;
+    }
+    return 3;
+  }
+  
+  public static List<PanoramaEffectDPC.DeviceCPUinfo> d()
   {
     PanoramaEffectDPC localPanoramaEffectDPC = a();
     if (localPanoramaEffectDPC != null) {
       return localPanoramaEffectDPC.b;
     }
-    return 3;
-  }
-  
-  public static PanoramaEffectDPC a()
-  {
-    PanoramaEffectDPC localPanoramaEffectDPC = jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaEffectDPC;
-    if ((localPanoramaEffectDPC == null) || (localPanoramaEffectDPC.jdField_a_of_type_Boolean)) {
-      jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaEffectDPC = b();
-    }
-    return jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaEffectDPC;
-  }
-  
-  public static List<PanoramaEffectDPC.DeviceCPUinfo> a()
-  {
-    PanoramaEffectDPC localPanoramaEffectDPC = a();
-    if (localPanoramaEffectDPC != null) {
-      return localPanoramaEffectDPC.jdField_a_of_type_JavaUtilList;
-    }
     return null;
   }
   
-  public static boolean a()
-  {
-    PanoramaEffectDPC localPanoramaEffectDPC = a();
-    return (localPanoramaEffectDPC != null) && (localPanoramaEffectDPC.jdField_a_of_type_Int == 1);
-  }
-  
-  private static PanoramaEffectDPC b()
+  private static PanoramaEffectDPC e()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC!");
@@ -207,9 +200,9 @@ public class PanoramaEffectDPC
         localArrayList.add(new PanoramaEffectDPC.DeviceCPUinfo(150, 8));
       }
       PanoramaEffectDPC localPanoramaEffectDPC = new PanoramaEffectDPC();
-      localPanoramaEffectDPC.jdField_a_of_type_Int = i;
-      localPanoramaEffectDPC.b = k;
-      localPanoramaEffectDPC.jdField_a_of_type_JavaUtilList = localArrayList;
+      localPanoramaEffectDPC.a = i;
+      localPanoramaEffectDPC.c = k;
+      localPanoramaEffectDPC.b = localArrayList;
       bool1 = bool2;
       if (str != null) {
         if (str.isEmpty()) {
@@ -218,7 +211,7 @@ public class PanoramaEffectDPC
           bool1 = false;
         }
       }
-      localPanoramaEffectDPC.jdField_a_of_type_Boolean = bool1;
+      localPanoramaEffectDPC.d = bool1;
       return localPanoramaEffectDPC;
       label642:
       int m = 0;
@@ -240,10 +233,10 @@ public class PanoramaEffectDPC
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
     localStringBuilder1.append("hotVideoSwitch: ");
-    localStringBuilder1.append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append(this.a);
     localStringBuilder1.append(" mPanoramaEffectMemory: ");
-    localStringBuilder1.append(this.b);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    localStringBuilder1.append(this.c);
+    Iterator localIterator = this.b.iterator();
     String str = "";
     while (localIterator.hasNext())
     {
@@ -254,7 +247,7 @@ public class PanoramaEffectDPC
         localStringBuilder2.append(str);
         localStringBuilder2.append(localDeviceCPUinfo.b);
         localStringBuilder2.append("_");
-        localStringBuilder2.append(localDeviceCPUinfo.jdField_a_of_type_Int);
+        localStringBuilder2.append(localDeviceCPUinfo.a);
         localStringBuilder2.append("-");
         str = localStringBuilder2.toString();
       }

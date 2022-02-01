@@ -13,46 +13,46 @@ import org.jetbrains.annotations.NotNull;
 public class AtPersonListAdapter$ViewHolder
 {
   @NotNull
-  private View jdField_a_of_type_AndroidViewView;
+  private ImageView a;
   @NotNull
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView b;
   @NotNull
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private View c;
   
   public AtPersonListAdapter$ViewHolder(@NotNull ViewGroup paramViewGroup)
   {
-    View localView = paramViewGroup.findViewById(R.id.e);
+    View localView = paramViewGroup.findViewById(R.id.b);
     Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.img_avatar)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView);
-    localView = paramViewGroup.findViewById(R.id.o);
+    this.a = ((ImageView)localView);
+    localView = paramViewGroup.findViewById(R.id.j);
     Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.tv_name)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
-    paramViewGroup = paramViewGroup.findViewById(R.id.r);
+    this.b = ((TextView)localView);
+    paramViewGroup = paramViewGroup.findViewById(R.id.n);
     Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "layout.findViewById(R.id.view_divider)");
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup;
-  }
-  
-  @NotNull
-  public final View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
+    this.c = paramViewGroup;
   }
   
   @NotNull
   public final ImageView a()
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
+    return this.a;
   }
   
   @NotNull
-  public final TextView a()
+  public final TextView b()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.b;
+  }
+  
+  @NotNull
+  public final View c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.atContact.AtPersonListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

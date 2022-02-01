@@ -13,6 +13,7 @@ import com.tencent.open.appcommon.js.DownloadInterface;
 import com.tencent.open.appcommon.js.HttpInterface;
 import com.tencent.open.appcommon.now.download.js.DownloadWebInterface;
 import com.tencent.open.appstore.js.DINewForCommonWebView;
+import com.tencent.open.appstore.js.YybTreasureCardJsPlugin;
 import com.tencent.open.export.js.VipDownloadInterface;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -31,13 +32,14 @@ public class OpenCenterPlugin
   private void a()
   {
     this.a = new HashMap();
-    Object localObject = this.mRuntime.a();
+    Object localObject = this.mRuntime.d();
     BaseJsCallBack localBaseJsCallBack = new BaseJsCallBack((Activity)localObject);
     VipDownloadInterface localVipDownloadInterface = new VipDownloadInterface((Activity)localObject, this.mRuntime.a());
     HttpInterface localHttpInterface = new HttpInterface((Activity)localObject, this.mRuntime.a());
     AppInterface localAppInterface = new AppInterface((Activity)localObject, this.mRuntime.a());
     DownloadInterface localDownloadInterface = new DownloadInterface((Activity)localObject, this.mRuntime.a());
     DINewForCommonWebView localDINewForCommonWebView = new DINewForCommonWebView((Activity)localObject, this.mRuntime.a());
+    YybTreasureCardJsPlugin localYybTreasureCardJsPlugin = new YybTreasureCardJsPlugin((Activity)localObject, this.mRuntime.a());
     localObject = new DownloadWebInterface((Activity)localObject, this.mRuntime.a());
     this.a.put(localBaseJsCallBack.getInterfaceName(), localBaseJsCallBack);
     this.a.put(localVipDownloadInterface.getInterfaceName(), localVipDownloadInterface);
@@ -45,6 +47,7 @@ public class OpenCenterPlugin
     this.a.put(localAppInterface.getInterfaceName(), localAppInterface);
     this.a.put(localDownloadInterface.getInterfaceName(), localDownloadInterface);
     this.a.put(localDINewForCommonWebView.getInterfaceName(), localDINewForCommonWebView);
+    this.a.put(localYybTreasureCardJsPlugin.getInterfaceName(), localYybTreasureCardJsPlugin);
     this.a.put(((BaseInterface)localObject).getInterfaceName(), localObject);
   }
   
@@ -70,7 +73,7 @@ public class OpenCenterPlugin
   
   public String[] getMultiNameSpace()
   {
-    return new String[] { "opencenter", "qqZoneAppList", "q_download_vip", "qzone_http", "qzone_app", "q_download", "q_download_now", "q_download_v2" };
+    return new String[] { "opencenter", "qqZoneAppList", "q_download_vip", "qzone_http", "qzone_app", "q_download", "q_download_now", "q_download_v2", "yyb_treasureCard" };
   }
   
   protected String getNameSpace()
@@ -81,7 +84,7 @@ public class OpenCenterPlugin
   protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (paramLong == 8589934593L) {
-      OpenAppClient.a(this.mRuntime.a());
+      OpenAppClient.a(this.mRuntime.b());
     }
     return false;
   }
@@ -169,7 +172,7 @@ public class OpenCenterPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OpenCenterPlugin
  * JD-Core Version:    0.7.0.1
  */

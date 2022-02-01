@@ -12,8 +12,8 @@ class VideoFeedsShareGuideController$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    VideoFeedsShareGuideController.a(this.a).startAnimation(VideoFeedsShareGuideController.a(this.a));
-    VideoFeedsShareGuideController.a(this.a).sendEmptyMessageDelayed(1, 300L);
+    VideoFeedsShareGuideController.f(this.a).startAnimation(VideoFeedsShareGuideController.e(this.a));
+    VideoFeedsShareGuideController.g(this.a).sendEmptyMessageDelayed(1, 300L);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -22,7 +22,7 @@ class VideoFeedsShareGuideController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareGuideController.2
  * JD-Core Version:    0.7.0.1
  */

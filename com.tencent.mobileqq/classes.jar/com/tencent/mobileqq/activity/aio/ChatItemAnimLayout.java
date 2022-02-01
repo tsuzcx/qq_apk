@@ -14,18 +14,18 @@ public class ChatItemAnimLayout
   extends RelativeLayout
   implements IChatShieldClick
 {
-  int Z;
-  long jdField_a_of_type_Long = -1L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new ChatItemAnimLayout.1(this);
-  public ChatItemAnimLayout.OnItemAnimEndListener a;
-  int aa = 255;
-  ChatMessage b;
-  protected boolean b;
-  protected boolean c;
-  float e = 1.0F;
-  float f = 1.0F;
-  float g = 0.0F;
-  float h = 0.0F;
+  private Handler a = new ChatItemAnimLayout.1(this);
+  public ChatItemAnimLayout.OnItemAnimEndListener aA;
+  protected boolean aB;
+  protected boolean aC;
+  float as = 1.0F;
+  float at = 1.0F;
+  float au = 0.0F;
+  float av = 0.0F;
+  int aw;
+  int ax = 255;
+  long ay = -1L;
+  ChatMessage az;
   
   public ChatItemAnimLayout(Context paramContext)
   {
@@ -42,9 +42,9 @@ public class ChatItemAnimLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private boolean a(ChatMessage paramChatMessage)
+  private boolean b(ChatMessage paramChatMessage)
   {
-    ChatMessage localChatMessage = this.jdField_b_of_type_ComTencentMobileqqDataChatMessage;
+    ChatMessage localChatMessage = this.az;
     boolean bool2 = false;
     if (localChatMessage == null) {
       return false;
@@ -53,13 +53,13 @@ public class ChatItemAnimLayout
       return true;
     }
     boolean bool1;
-    if ((localChatMessage != paramChatMessage) && ((paramChatMessage.msgseq == 0L) || (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage.msgseq != paramChatMessage.msgseq)) && ((paramChatMessage.msgUid == 0L) || (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage.msgUid != paramChatMessage.msgUid)))
+    if ((localChatMessage != paramChatMessage) && ((paramChatMessage.msgseq == 0L) || (this.az.msgseq != paramChatMessage.msgseq)) && ((paramChatMessage.msgUid == 0L) || (this.az.msgUid != paramChatMessage.msgUid)))
     {
       bool1 = bool2;
       if (paramChatMessage.uniseq != 0L)
       {
         bool1 = bool2;
-        if (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage.uniseq != paramChatMessage.uniseq) {}
+        if (this.az.uniseq != paramChatMessage.uniseq) {}
       }
     }
     else
@@ -71,20 +71,20 @@ public class ChatItemAnimLayout
   
   public void a(ChatMessage paramChatMessage)
   {
-    Object localObject = this.jdField_b_of_type_ComTencentMobileqqDataChatMessage;
+    Object localObject = this.az;
     if ((localObject != null) && (localObject != paramChatMessage))
     {
-      this.h = 0.0F;
-      this.aa = 255;
-      localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-      this.jdField_b_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+      this.av = 0.0F;
+      this.ax = 255;
+      localObject = this.a.obtainMessage(2);
+      this.a.sendMessage((Message)localObject);
+      this.az = paramChatMessage;
     }
   }
   
   public void a(ChatMessage paramChatMessage, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, ChatItemAnimLayout.OnItemAnimEndListener paramOnItemAnimEndListener)
   {
-    if (a(paramChatMessage))
+    if (b(paramChatMessage))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ChatItemAnimLayout", 2, "startAnim isTheSameMsg");
@@ -94,27 +94,27 @@ public class ChatItemAnimLayout
     if (QLog.isColorLevel()) {
       QLog.d("ChatItemAnimLayout", 2, "startAnim");
     }
-    this.jdField_b_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioChatItemAnimLayout$OnItemAnimEndListener = paramOnItemAnimEndListener;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.g = paramFloat1;
-    this.h = paramFloat2;
-    this.Z = ((int)(paramFloat3 * 255.0F));
-    this.aa = ((int)(paramFloat4 * 255.0F));
-    this.e = 0.0F;
-    this.f = 0.0F;
-    paramChatMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramChatMessage, 0L);
+    this.az = paramChatMessage;
+    this.aA = paramOnItemAnimEndListener;
+    this.ay = System.currentTimeMillis();
+    this.au = paramFloat1;
+    this.av = paramFloat2;
+    this.aw = ((int)(paramFloat3 * 255.0F));
+    this.ax = ((int)(paramFloat4 * 255.0F));
+    this.as = 0.0F;
+    this.at = 0.0F;
+    paramChatMessage = this.a.obtainMessage(0);
+    this.a.sendMessageDelayed(paramChatMessage, 0L);
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    float f1 = this.h;
-    float f2 = this.g;
-    float f3 = this.e;
-    int i = this.aa;
-    int j = this.Z;
-    setAlpha(((i - j) * this.f + j) / 255.0F);
+    float f1 = this.av;
+    float f2 = this.au;
+    float f3 = this.as;
+    int i = this.ax;
+    int j = this.aw;
+    setAlpha(((i - j) * this.at + j) / 255.0F);
     paramCanvas.translate((f1 - f2) * f3 + f2, 0.0F);
     try
     {
@@ -126,17 +126,17 @@ public class ChatItemAnimLayout
   
   public void setFrom(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.aC = paramBoolean;
   }
   
   public void setIsShieldTouchForItem(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.aB = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ChatItemAnimLayout
  * JD-Core Version:    0.7.0.1
  */

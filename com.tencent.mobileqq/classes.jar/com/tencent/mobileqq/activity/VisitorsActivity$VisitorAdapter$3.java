@@ -12,13 +12,13 @@ class VisitorsActivity$VisitorAdapter$3
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity$CustomViewHolder);
+    this.b.a.a(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.VisitorAdapter.3
  * JD-Core Version:    0.7.0.1
  */

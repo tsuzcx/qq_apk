@@ -7,38 +7,38 @@ import com.tencent.mobileqq.kandian.api.R.styleable;
 
 class TickerView$StyledAttributes
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
-  float jdField_c_of_type_Float;
-  int jdField_c_of_type_Int = -16777216;
-  float jdField_d_of_type_Float;
-  int jdField_d_of_type_Int;
+  int a;
+  int b;
+  float c;
+  float d;
+  float e;
+  String f;
+  int g = -16777216;
+  float h;
+  int i;
   
   TickerView$StyledAttributes(TickerView paramTickerView, Resources paramResources)
   {
-    this.jdField_d_of_type_Float = TypedValue.applyDimension(2, 12.0F, paramResources.getDisplayMetrics());
-    this.jdField_a_of_type_Int = 8388611;
+    this.h = TypedValue.applyDimension(2, 12.0F, paramResources.getDisplayMetrics());
+    this.a = 8388611;
   }
   
   void a(TypedArray paramTypedArray)
   {
-    this.jdField_a_of_type_Int = paramTypedArray.getInt(R.styleable.i, this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Int = paramTypedArray.getColor(R.styleable.k, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Float = paramTypedArray.getFloat(R.styleable.l, this.jdField_a_of_type_Float);
-    this.jdField_b_of_type_Float = paramTypedArray.getFloat(R.styleable.m, this.jdField_b_of_type_Float);
-    this.jdField_c_of_type_Float = paramTypedArray.getFloat(R.styleable.n, this.jdField_c_of_type_Float);
-    this.jdField_a_of_type_JavaLangString = paramTypedArray.getString(R.styleable.j);
-    this.jdField_c_of_type_Int = paramTypedArray.getColor(R.styleable.h, this.jdField_c_of_type_Int);
-    this.jdField_d_of_type_Float = paramTypedArray.getDimension(R.styleable.f, this.jdField_d_of_type_Float);
-    this.jdField_d_of_type_Int = paramTypedArray.getInt(R.styleable.g, this.jdField_d_of_type_Int);
+    this.a = paramTypedArray.getInt(R.styleable.cv, this.a);
+    this.b = paramTypedArray.getColor(R.styleable.cx, this.b);
+    this.c = paramTypedArray.getFloat(R.styleable.cy, this.c);
+    this.d = paramTypedArray.getFloat(R.styleable.cz, this.d);
+    this.e = paramTypedArray.getFloat(R.styleable.cA, this.e);
+    this.f = paramTypedArray.getString(R.styleable.cw);
+    this.g = paramTypedArray.getColor(R.styleable.cu, this.g);
+    this.h = paramTypedArray.getDimension(R.styleable.cs, this.h);
+    this.i = paramTypedArray.getInt(R.styleable.ct, this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ticker.TickerView.StyledAttributes
  * JD-Core Version:    0.7.0.1
  */

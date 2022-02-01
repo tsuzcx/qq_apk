@@ -15,17 +15,17 @@ class ReadInJoyNaviController$1$1
     paramAnimation = new TranslateAnimation(0.0F, 0.0F, ReadInJoyNaviController.e, 0.0F);
     paramAnimation.setDuration(30L);
     paramAnimation.setAnimationListener(new ReadInJoyNaviController.1.1.1(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    this.a.startAnimation(paramAnimation);
   }
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    ReadInJoyNaviController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNaviController$1.this$0).setAlpha(1.0F);
+    ReadInJoyNaviController.a(this.b.this$0).setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyNaviController.1.1
  * JD-Core Version:    0.7.0.1
  */

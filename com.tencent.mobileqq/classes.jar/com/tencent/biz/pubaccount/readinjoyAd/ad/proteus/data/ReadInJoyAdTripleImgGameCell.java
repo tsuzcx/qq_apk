@@ -26,11 +26,11 @@ public class ReadInJoyAdTripleImgGameCell
     ((IReadInJoyProteusBindUtil)QRoute.api(IReadInJoyProteusBindUtil.class)).addProteusDynamicData(localJSONObject1, paramAbsBaseArticleInfo);
     Object localObject1 = paramAbsBaseArticleInfo.mSmallMiniGameInfo;
     Object localObject3 = "";
-    if ((localObject1 != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.a != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.a.length() > 2))
+    if ((localObject1 != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.k != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.k.length() > 2))
     {
-      localObject3 = paramAbsBaseArticleInfo.mSmallMiniGameInfo.a.optString(0);
-      localObject2 = paramAbsBaseArticleInfo.mSmallMiniGameInfo.a.optString(1);
-      localObject1 = paramAbsBaseArticleInfo.mSmallMiniGameInfo.a.optString(2);
+      localObject3 = paramAbsBaseArticleInfo.mSmallMiniGameInfo.k.optString(0);
+      localObject2 = paramAbsBaseArticleInfo.mSmallMiniGameInfo.k.optString(1);
+      localObject1 = paramAbsBaseArticleInfo.mSmallMiniGameInfo.k.optString(2);
     }
     else
     {
@@ -46,16 +46,16 @@ public class ReadInJoyAdTripleImgGameCell
     Object localObject2 = new JSONObject();
     ((JSONObject)localObject2).put("multi_img_url3", localObject1);
     localJSONObject1.put("id_multi_img_3", localObject2);
-    if ((paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.q)))
+    if ((paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.t)))
     {
       localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("small_game_guide_icon_url", paramAbsBaseArticleInfo.mSmallMiniGameInfo.q);
+      ((JSONObject)localObject1).put("small_game_guide_icon_url", paramAbsBaseArticleInfo.mSmallMiniGameInfo.t);
       localJSONObject1.put("id_small_game_guide_icon", localObject1);
     }
-    if ((paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.s)))
+    if ((paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.v)))
     {
       localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("game_follow_btn_url", paramAbsBaseArticleInfo.mSmallMiniGameInfo.s);
+      ((JSONObject)localObject1).put("game_follow_btn_url", paramAbsBaseArticleInfo.mSmallMiniGameInfo.v);
       localJSONObject1.put("id_game_follow_btn", localObject1);
     }
     return localJSONObject1;
@@ -63,7 +63,7 @@ public class ReadInJoyAdTripleImgGameCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.data.ReadInJoyAdTripleImgGameCell
  * JD-Core Version:    0.7.0.1
  */

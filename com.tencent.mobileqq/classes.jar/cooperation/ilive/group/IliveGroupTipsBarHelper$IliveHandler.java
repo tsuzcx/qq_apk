@@ -32,7 +32,7 @@ class IliveGroupTipsBarHelper$IliveHandler
       return;
     }
     paramMessage = (IliveGroupTipsEntity)paramMessage.obj;
-    ((IliveGroupTipsManager)localQQAppInterface.getManager(QQManagerFactory.ILIVE_GROUP_TIPS_MANAGER)).a(String.valueOf(paramMessage.c), paramMessage.e, IliveGroupTipsManager.c);
+    ((IliveGroupTipsManager)localQQAppInterface.getManager(QQManagerFactory.ILIVE_GROUP_TIPS_MANAGER)).a(String.valueOf(paramMessage.i), paramMessage.j, IliveGroupTipsManager.c);
   }
   
   public void handleMessage(Message paramMessage)
@@ -45,7 +45,7 @@ class IliveGroupTipsBarHelper$IliveHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.group.IliveGroupTipsBarHelper.IliveHandler
  * JD-Core Version:    0.7.0.1
  */

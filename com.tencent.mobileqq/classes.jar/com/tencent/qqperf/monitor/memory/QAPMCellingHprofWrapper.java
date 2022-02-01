@@ -31,10 +31,10 @@ public class QAPMCellingHprofWrapper
   extends AbstractMagnifierItem
   implements IAPMModuleCelling
 {
-  private long jdField_a_of_type_Long = 0L;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
+  private SharedPreferences b = null;
+  private long c = 0L;
   
-  static void c()
+  static void l()
   {
     if (QLog.getUIN_REPORTLOG_LEVEL() < 2) {
       QLog.setUIN_REPORTLOG_LEVEL(2);
@@ -51,12 +51,6 @@ public class QAPMCellingHprofWrapper
     return "ceilinghprof";
   }
   
-  public void a()
-  {
-    super.a();
-    MemoryReporter.a().a();
-  }
-  
   public void a(DumpResult paramDumpResult)
   {
     MemoryCeilingMonitor.reportHprofFile(paramDumpResult);
@@ -67,37 +61,9 @@ public class QAPMCellingHprofWrapper
     MemoryReporter.a().a(paramIAPMMemoryClearListener);
   }
   
-  public boolean a()
-  {
-    BaseApplication localBaseApplication = MobileQQ.getContext();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("memory_reporter_");
-    localStringBuilder.append(MobileQQ.sProcessId);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("sp_key_last_shot_time", 0L);
-    if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) >= 86400000L)
-    {
-      if (b().canOpenPlugin())
-      {
-        c();
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("sp_key_last_shot_time", this.jdField_a_of_type_Long).putBoolean("key_need_report", true).commit();
-        return true;
-      }
-      return false;
-    }
-    c();
-    return true;
-  }
-  
   public String b()
   {
-    return b().getOldStrategy("0|1;15|1|0|1|1|0.00001|0.1|1;4;85,5,0.7,0.2;80,15,0.9,0.4;75,30,1,0.7_0|1;15|2|0|0.5|1|0.00001|0.1|1;4;85,5,0.7,0.2;80,15,0.9,0.4;75,30,1,0.7_0|1;15|3|0|0.25|0|0.00001|0.1|3;4;85,5,0.7,0.2;80,15,0.9,0.4;75,30,1,0.7_0|1;15|4|0|0.5|0|0.00001|0.1|4;4;85,5,0.7,0.2;80,15,0.9,0.4;75,30,1,0.7");
-  }
-  
-  public void b()
-  {
-    QAPM.setProperty(111, new QAPMMemCellingListener());
+    return f().getOldStrategy("0|1;15|1|0|1|1|0.00001|0.1|1;4;85,5,0.7,0.2;80,15,0.9,0.4;75,30,1,0.7_0|1;15|2|0|0.5|1|0.00001|0.1|1;4;85,5,0.7,0.2;80,15,0.9,0.4;75,30,1,0.7_0|1;15|3|0|0.25|0|0.00001|0.1|3;4;85,5,0.7,0.2;80,15,0.9,0.4;75,30,1,0.7_0|1;15|4|0|0.5|0|0.00001|0.1|4;4;85,5,0.7,0.2;80,15,0.9,0.4;75,30,1,0.7");
   }
   
   public void b(IAPMMemoryClearListener paramIAPMMemoryClearListener)
@@ -105,12 +71,46 @@ public class QAPMCellingHprofWrapper
     MemoryReporter.a().b(paramIAPMMemoryClearListener);
   }
   
-  public boolean b()
+  public boolean c()
   {
-    return MemoryReporter.a().jdField_a_of_type_Boolean;
+    BaseApplication localBaseApplication = MobileQQ.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("memory_reporter_");
+    localStringBuilder.append(MobileQQ.sProcessId);
+    this.b = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
+    this.c = this.b.getLong("sp_key_last_shot_time", 0L);
+    if (Math.abs(System.currentTimeMillis() - this.c) >= 86400000L)
+    {
+      if (f().canOpenPlugin())
+      {
+        l();
+        this.c = System.currentTimeMillis();
+        this.b.edit().putLong("sp_key_last_shot_time", this.c).putBoolean("key_need_report", true).commit();
+        return true;
+      }
+      return false;
+    }
+    l();
+    return true;
   }
   
-  public String c()
+  public void d()
+  {
+    super.d();
+    MemoryReporter.a().b();
+  }
+  
+  public boolean e()
+  {
+    return MemoryReporter.a().b;
+  }
+  
+  public void j()
+  {
+    QAPM.setProperty(111, new QAPMMemCellingListener());
+  }
+  
+  public String k()
   {
     StringBuilder localStringBuilder = new StringBuilder("RAM Info:all=");
     Object localObject = new DecimalFormat();
@@ -118,7 +118,7 @@ public class QAPMCellingHprofWrapper
     try
     {
       long l1 = DeviceInfoUtil.a() / 1024L / 1024L;
-      long l2 = DeviceInfoUtil.e() / 1024L / 1024L;
+      long l2 = DeviceInfoUtil.r() / 1024L / 1024L;
       Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getProcessMemoryInfo(new int[] { Process.myPid() });
       float f2 = -1.0F;
       float f1 = f2;
@@ -132,7 +132,7 @@ public class QAPMCellingHprofWrapper
       f2 = (float)Runtime.getRuntime().freeMemory() / 1024.0F / 1024.0F;
       float f3 = (float)Runtime.getRuntime().totalMemory() / 1024.0F / 1024.0F;
       float f4 = (float)Runtime.getRuntime().maxMemory() / 1024.0F / 1024.0F;
-      long l3 = HackVmImpl.jdField_a_of_type_Long / 1024L / 1024L;
+      long l3 = HackVmImpl.e / 1024L / 1024L;
       localStringBuilder.append(l1);
       localStringBuilder.append("M,avaiable:");
       localStringBuilder.append(l2);
@@ -151,8 +151,8 @@ public class QAPMCellingHprofWrapper
       localStringBuilder.append("M,SkinCache:");
       localStringBuilder.append(SkinEngine.dumpDrawableCacheMemSize() / 1024L / 1024L);
       localStringBuilder.append("M,LeakMonitor=");
-      localStringBuilder.append(MagnifierSDK.a().a().b());
-      localObject = (ArrayList)MemoryReporter.jdField_a_of_type_JavaUtilArrayList.clone();
+      localStringBuilder.append(MagnifierSDK.b().d().e());
+      localObject = (ArrayList)MemoryReporter.c.clone();
       if (((ArrayList)localObject).size() > 0)
       {
         localStringBuilder.append(",Leaked=[");
@@ -167,15 +167,15 @@ public class QAPMCellingHprofWrapper
     }
     catch (Throwable localThrowable)
     {
-      label433:
-      break label433;
+      label436:
+      break label436;
     }
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.QAPMCellingHprofWrapper
  * JD-Core Version:    0.7.0.1
  */

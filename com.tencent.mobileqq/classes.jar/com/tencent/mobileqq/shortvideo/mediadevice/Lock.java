@@ -2,26 +2,16 @@ package com.tencent.mobileqq.shortvideo.mediadevice;
 
 public class Lock
 {
-  public static long a;
-  public static Object a;
-  public static String a;
-  public static volatile boolean a;
-  public static long b;
-  public static String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_JavaLangString = "captureTest";
-    jdField_b_of_type_Long = 0L;
-    jdField_b_of_type_JavaLangString = "tag_v";
-  }
+  public static Object a = new Object();
+  public static volatile boolean b = false;
+  public static long c = 0L;
+  public static String d = "captureTest";
+  public static long e = 0L;
+  public static String f = "tag_v";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.Lock
  * JD-Core Version:    0.7.0.1
  */

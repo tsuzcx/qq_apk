@@ -21,7 +21,7 @@ class FollowCoverInfoModule$1
       try
       {
         FollowCoverInfoModule.a(this.this$0, ((SharedPreferences)localObject1).getInt("follow_tab_topic_update_info_exists", 0));
-        if (FollowCoverInfoModule.a(this.this$0) == 1)
+        if (FollowCoverInfoModule.b(this.this$0) == 1)
         {
           Object localObject2 = ((SharedPreferences)localObject1).getString("follow_tab_topic_update_info", null);
           Object localObject3;
@@ -42,7 +42,7 @@ class FollowCoverInfoModule$1
               localObject3 = (String)((Iterator)localObject2).next();
               Long localLong = Long.valueOf(((JSONObject)localObject1).optLong((String)localObject3, 0L));
               if (localLong.longValue() != 0L) {
-                FollowCoverInfoModule.a(this.this$0).put(Long.valueOf((String)localObject3), localLong);
+                FollowCoverInfoModule.c(this.this$0).put(Long.valueOf((String)localObject3), localLong);
               }
             }
           }
@@ -59,7 +59,7 @@ class FollowCoverInfoModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.follow.FollowCoverInfoModule.1
  * JD-Core Version:    0.7.0.1
  */

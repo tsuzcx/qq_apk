@@ -16,16 +16,16 @@ class ChatSettingActivity$3$1
   
   public void run()
   {
-    NowSummaryCard.MiniCard localMiniCard = (NowSummaryCard.MiniCard)this.jdField_a_of_type_JavaUtilList.get(0);
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$3.a.getResources().getDrawable(2130845589);
-    ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$3.a), localMiniCard.logo.get(), localDrawable, localDrawable, null, true);
-    ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$3.a, localMiniCard.nick.get());
-    ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$3.a).setText(ChatSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity$3.a));
+    NowSummaryCard.MiniCard localMiniCard = (NowSummaryCard.MiniCard)this.a.get(0);
+    Drawable localDrawable = this.b.a.getResources().getDrawable(2130847053);
+    ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(ChatSettingActivity.b(this.b.a), localMiniCard.logo.get(), localDrawable, localDrawable, null, true);
+    ChatSettingActivity.a(this.b.a, localMiniCard.nick.get());
+    ChatSettingActivity.d(this.b.a).setText(ChatSettingActivity.c(this.b.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

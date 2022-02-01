@@ -26,7 +26,7 @@ class QAPMLeakWrapper$1
   
   public void onHprofDumped(@NotNull String paramString)
   {
-    paramString = this.jdField_a_of_type_ComTencentQqperfMonitorBaseIDumpMemoryCallback;
+    paramString = this.a;
     if (paramString != null) {
       paramString.a();
     }
@@ -42,14 +42,14 @@ class QAPMLeakWrapper$1
     paramString = new ArrayList(4);
     paramString.addAll(DumpMemInfoHandler.a());
     paramString.addAll(DumpMemInfoHandler.b());
-    paramString.add(DumpMemInfoHandler.b());
-    paramString.add(DumpMemInfoHandler.a());
+    paramString.add(DumpMemInfoHandler.d());
+    paramString.add(DumpMemInfoHandler.c());
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.QAPMLeakWrapper.1
  * JD-Core Version:    0.7.0.1
  */

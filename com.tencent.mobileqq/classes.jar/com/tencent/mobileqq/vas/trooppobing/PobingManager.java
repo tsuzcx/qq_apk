@@ -27,11 +27,6 @@ public class PobingManager
     a.clear();
   }
   
-  public static void a(long paramLong)
-  {
-    a.put(Long.valueOf(paramLong), Boolean.valueOf(false));
-  }
-  
   public static void a(Context paramContext)
   {
     String str = QzoneConfig.getInstance().getConfig("qqsetting", "addgroupvasjumpurl", "https://m.vip.qq.com/freedom/newbird.html?_cwv=1&_wv=553648133&g_ch=aio");
@@ -62,10 +57,15 @@ public class PobingManager
     localStringBuilder.append(b.get(Integer.valueOf(paramInt)));
     return localStringBuilder.toString();
   }
+  
+  public static void b(long paramLong)
+  {
+    a.put(Long.valueOf(paramLong), Boolean.valueOf(false));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.trooppobing.PobingManager
  * JD-Core Version:    0.7.0.1
  */

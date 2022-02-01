@@ -63,8 +63,8 @@ final class FFmpegUtils$15
   {
     long l1 = System.currentTimeMillis();
     long l2 = this.startTime;
-    if (CaptureFreqMonitor.b) {
-      CaptureFreqMonitor.c.a(1, System.currentTimeMillis() - this.val$mergeStartTime);
+    if (CaptureFreqMonitor.d) {
+      CaptureFreqMonitor.f.a(1, System.currentTimeMillis() - this.val$mergeStartTime);
     }
     this.val$endCallback.onSuccess(paramString);
     paramString = new StringBuilder();
@@ -82,7 +82,7 @@ final class FFmpegUtils$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.ffmpeg.FFmpegUtils.15
  * JD-Core Version:    0.7.0.1
  */

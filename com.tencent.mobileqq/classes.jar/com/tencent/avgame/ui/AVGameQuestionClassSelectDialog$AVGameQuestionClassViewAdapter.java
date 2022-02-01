@@ -16,32 +16,32 @@ import java.util.List;
 public class AVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter
   extends RecyclerView.Adapter<AVGameQuestionClassSelectDialog.AVGameQuestionClassViewAdapter.AVGameQuestionClassViewHolder>
 {
-  private List<QuestionClassInfoItem> jdField_a_of_type_JavaUtilList = new ArrayList(0);
+  private List<QuestionClassInfoItem> b = new ArrayList(0);
   
   public AVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter(List<QuestionClassInfoItem> paramList)
   {
     Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.b = localObject;
   }
   
   public QuestionClassInfoItem a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (paramInt < localList.size())) {
-      return (QuestionClassInfoItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (QuestionClassInfoItem)this.b.get(paramInt);
     }
     return null;
   }
   
   public AVGameQuestionClassSelectDialog.AVGameQuestionClassViewAdapter.AVGameQuestionClassViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558692, paramViewGroup, false);
-    paramInt = ViewUtils.b(104.0F);
-    int i = ViewUtils.b(104.0F);
-    int j = ViewUtils.b(5.0F);
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624309, paramViewGroup, false);
+    paramInt = ViewUtils.dpToPx(104.0F);
+    int i = ViewUtils.dpToPx(104.0F);
+    int j = ViewUtils.dpToPx(5.0F);
     paramViewGroup.setLayoutParams(new RecyclerView.LayoutParams(paramInt, i));
     paramViewGroup.setPadding(j, j, j, j);
-    return new AVGameQuestionClassSelectDialog.AVGameQuestionClassViewAdapter.AVGameQuestionClassViewHolder(this, paramViewGroup, (ImageView)paramViewGroup.findViewById(2131363197), (ImageView)paramViewGroup.findViewById(2131363198), (TextView)paramViewGroup.findViewById(2131363199));
+    return new AVGameQuestionClassSelectDialog.AVGameQuestionClassViewAdapter.AVGameQuestionClassViewHolder(this, paramViewGroup, (ImageView)paramViewGroup.findViewById(2131429071), (ImageView)paramViewGroup.findViewById(2131429072), (TextView)paramViewGroup.findViewById(2131429073));
   }
   
   public void a(AVGameQuestionClassSelectDialog.AVGameQuestionClassViewAdapter.AVGameQuestionClassViewHolder paramAVGameQuestionClassViewHolder, int paramInt)
@@ -49,16 +49,16 @@ public class AVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter
     QuestionClassInfoItem localQuestionClassInfoItem = a(paramInt);
     if (localQuestionClassInfoItem != null)
     {
-      paramAVGameQuestionClassViewHolder.jdField_a_of_type_ComTencentAvgameGamelogicDataQuestionClassInfoItem = localQuestionClassInfoItem;
-      AVGameQuestionClassSelectDialog.a(localQuestionClassInfoItem.c, paramAVGameQuestionClassViewHolder.jdField_a_of_type_AndroidWidgetImageView);
+      paramAVGameQuestionClassViewHolder.d = localQuestionClassInfoItem;
+      AVGameQuestionClassSelectDialog.a(localQuestionClassInfoItem.c, paramAVGameQuestionClassViewHolder.a);
       if ((localQuestionClassInfoItem.b != null) && (localQuestionClassInfoItem.b.length() > 0))
       {
         AVGameQuestionClassSelectDialog.a(localQuestionClassInfoItem.b, paramAVGameQuestionClassViewHolder.b);
       }
       else
       {
-        paramAVGameQuestionClassViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localQuestionClassInfoItem.a);
-        paramAVGameQuestionClassViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramAVGameQuestionClassViewHolder.c.setText(localQuestionClassInfoItem.a);
+        paramAVGameQuestionClassViewHolder.c.setVisibility(0);
       }
       paramAVGameQuestionClassViewHolder.itemView.setOnClickListener(new AVGameQuestionClassSelectDialog.AVGameQuestionClassViewAdapter.1(this, localQuestionClassInfoItem));
       paramAVGameQuestionClassViewHolder.itemView.setOnTouchListener(new AVGameQuestionClassSelectDialog.AVGameQuestionClassViewAdapter.2(this));
@@ -68,7 +68,7 @@ public class AVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
 }
 

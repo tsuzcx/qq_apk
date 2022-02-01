@@ -13,12 +13,12 @@ final class KandianDailyReportUtils$3
   
   public void run()
   {
-    KandianDailyReportUtils.a().add(this.a);
+    KandianDailyReportUtils.i().add(this.a);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("add feeds 64e exposure info ");
     localStringBuilder.append(this.a);
     QLog.d("KandianDailyReportUtils", 1, localStringBuilder.toString());
-    if (!KandianDailyReportUtils.a())
+    if (!KandianDailyReportUtils.j())
     {
       ThreadManager.getSubThreadHandler().postDelayed(new KandianDailyReportUtils.3.1(this), 100L);
       KandianDailyReportUtils.a(true);
@@ -27,7 +27,7 @@ final class KandianDailyReportUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.KandianDailyReportUtils.3
  * JD-Core Version:    0.7.0.1
  */

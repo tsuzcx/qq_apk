@@ -20,7 +20,7 @@ class MiniGamePublicAccountWebFragment$4$1
       Drawable localDrawable = ((IQWalletApiProxy)QRoute.api(IQWalletApiProxy.class)).getDrawableForWallet(this.val$pathRes.filePath, null, null);
       if (localDrawable != null)
       {
-        ((ImageView)this.this$1.val$rootView.findViewById(2030239754)).setImageDrawable(localDrawable);
+        ((ImageView)this.this$1.val$rootView.findViewById(2030305307)).setImageDrawable(localDrawable);
         return;
       }
       MiniGamePublicAccountWebFragment.access$500(this.this$1.this$0);
@@ -31,7 +31,7 @@ class MiniGamePublicAccountWebFragment$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountWebFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class ForwardBaseOption$13
   {
     try
     {
-      DirectForwarder.a(this.a.a, paramAsyncTask, paramInt, new ForwardBaseOption.13.1(this));
+      DirectForwarder.a(this.b.s, paramAsyncTask, paramInt, new ForwardBaseOption.13.1(this));
       super.a(paramAsyncTask, paramInt);
       return;
     }
@@ -25,7 +25,7 @@ class ForwardBaseOption$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardBaseOption.13
  * JD-Core Version:    0.7.0.1
  */

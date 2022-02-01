@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="32.0dip" android:layout_height="54.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/o67" android:layout_width="8.0dip" android:layout_height="8.0dip" android:src="@drawable/etj" android:scaleType="centerInside" android:layout_weight="1.0" />
+    <TextView android:textSize="36.0dip" android:textColor="#ff00cafc" android:layout_gravity="center" android:id="@id/qkb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8" />
+</FrameLayout>

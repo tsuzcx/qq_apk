@@ -27,14 +27,14 @@ public class QZoneFloatJsHandleLogic
   {
     if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null))
     {
-      if (paramPluginRuntime.a() == null) {
+      if (paramPluginRuntime.d() == null) {
         return;
       }
-      FrameLayout localFrameLayout = (FrameLayout)paramPluginRuntime.a().findViewById(2131381075);
+      FrameLayout localFrameLayout = (FrameLayout)paramPluginRuntime.d().findViewById(2131450088);
       SurfaceView localSurfaceView = view;
       if ((localSurfaceView != null) && (localSurfaceView.getParent() == localFrameLayout))
       {
-        QZoneHelper.resumeQZoneFloatObjectView(paramPluginRuntime.a(), view);
+        QZoneHelper.resumeQZoneFloatObjectView(paramPluginRuntime.d(), view);
         return;
       }
       url = paramPluginRuntime.a().getUrl();
@@ -44,7 +44,7 @@ public class QZoneFloatJsHandleLogic
       if (TextUtils.isEmpty(data)) {
         return;
       }
-      view = QZoneHelper.createQZoneFloatObjectView(paramPluginRuntime.a(), data);
+      view = QZoneHelper.createQZoneFloatObjectView(paramPluginRuntime.d(), data);
       paramPluginRuntime = view;
       if (paramPluginRuntime != null) {
         localFrameLayout.addView(paramPluginRuntime, new FrameLayout.LayoutParams(-1, -1));
@@ -57,11 +57,11 @@ public class QZoneFloatJsHandleLogic
     if (paramPluginRuntime == null) {
       return;
     }
-    paramPluginRuntime = paramPluginRuntime.a();
+    paramPluginRuntime = paramPluginRuntime.d();
     if (paramPluginRuntime == null) {
       return;
     }
-    paramVarArgs = (FrameLayout)paramPluginRuntime.findViewById(2131381075);
+    paramVarArgs = (FrameLayout)paramPluginRuntime.findViewById(2131450088);
     if (paramVarArgs != null)
     {
       localObject = view;
@@ -92,7 +92,7 @@ public class QZoneFloatJsHandleLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneFloatJsHandleLogic
  * JD-Core Version:    0.7.0.1
  */

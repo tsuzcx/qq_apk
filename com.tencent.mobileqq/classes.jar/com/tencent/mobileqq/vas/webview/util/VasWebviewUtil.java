@@ -35,11 +35,17 @@ import org.jetbrains.annotations.NotNull;
 public class VasWebviewUtil
 {
   public static String a = "";
-  public static ConcurrentHashMap<String, String> a;
+  public static ConcurrentHashMap<String, String> b = new ConcurrentHashMap();
   
-  static
+  public static int a(long paramLong)
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    if (paramLong == 4L) {
+      return 3;
+    }
+    if (paramLong == 8L) {
+      return 2;
+    }
+    return 1;
   }
   
   public static Intent a(long paramLong, Intent paramIntent)
@@ -49,261 +55,236 @@ public class VasWebviewUtil
     }
     Intent localIntent = paramIntent;
     if (paramLong > 0L) {
-      localIntent = b(paramIntent, String.valueOf(paramLong));
+      localIntent = d(paramIntent, String.valueOf(paramLong));
     }
     return localIntent;
   }
   
-  private static Intent a(Intent paramIntent, String paramString)
+  @NotNull
+  private static Intent a(Context paramContext, String paramString, long paramLong, Intent paramIntent)
   {
-    return ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).putWebViewTitleStyle(paramIntent, paramString);
+    if (paramIntent != null) {
+      paramIntent.setClass(paramContext, ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getQQBrowserActivityClass());
+    } else {
+      paramIntent = new Intent(paramContext, ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getQQBrowserActivityClass());
+    }
+    paramString = b(paramContext, paramString, paramLong, paramIntent);
+    paramContext = paramIntent;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramIntent.putExtra("url", paramString);
+      paramContext = c(paramIntent, Uri.parse(paramString).getHost());
+    }
+    paramContext.putExtra("business", paramLong);
+    a(paramLong, paramContext);
+    if (paramContext.getLongExtra("startOpenPageTime", 0L) <= 0L) {
+      paramContext.putExtra("startOpenPageTime", System.currentTimeMillis());
+    }
+    paramContext.putExtra(((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).isShowAdKey(), false);
+    paramContext.putExtra("big_brother_source_key", "biz_src_jc_vip");
+    return paramContext;
   }
   
-  @NotNull
-  private static String a(int paramInt)
+  public static String a()
   {
-    String str = new EntryReportParams(paramInt).a();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("&traceDetail=base64-");
-    localStringBuilder.append(str);
-    return localStringBuilder.toString();
+    String str1 = IndividuationUrlHelper.a(MobileQQ.sMobileQQ.getApplicationContext(), "magicPlus", "");
+    String str2 = str1;
+    if (!TextUtils.isEmpty(str1))
+    {
+      str2 = str1;
+      if (MobileQQ.sMobileQQ.peekAppRuntime() != null) {
+        str2 = str1.replace("[uin]", MobileQQ.sMobileQQ.peekAppRuntime().getAccount());
+      }
+      str2 = str2.replace("[client]", "androidQQ").replace("[version]", "8.8.17.5770").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
+    }
+    return str2;
+  }
+  
+  public static String a(int paramInt, String paramString)
+  {
+    if ((paramInt != 2) && (paramInt != 3))
+    {
+      if (paramInt == 7) {
+        return "vip.gongneng.mobile.biaoqing.client_index_banner";
+      }
+      if (paramInt == 6) {
+        return "vip.gongneng.mobile.biaoqing.client_aio_magic";
+      }
+    }
+    else
+    {
+      paramString = "vip.gongneng.mobile.biaoqing.client_manager_top";
+    }
+    return paramString;
+  }
+  
+  public static String a(Intent paramIntent, Context paramContext)
+  {
+    if (!paramIntent.hasExtra("emoji_is_original")) {
+      return IndividuationUrlHelper.a(paramContext, "emojiDetail", "[id]", "");
+    }
+    String str = Integer.toString(paramIntent.getIntExtra("emoji_author_id", 0));
+    if (paramIntent.getBooleanExtra("emoji_is_original", false)) {
+      return IndividuationUrlHelper.a(paramContext, "openAuthorDetail", str, "");
+    }
+    return IndividuationUrlHelper.a(paramContext, "emojiAuthorDetail", str, "");
+  }
+  
+  public static String a(Intent paramIntent, Context paramContext, int paramInt1, String paramString, int paramInt2)
+  {
+    if ((paramInt2 == 1) || (paramInt2 == 3))
+    {
+      String str = b(paramIntent, paramContext);
+      if (a(paramInt1)) {
+        return a(paramIntent, paramContext);
+      }
+      if (paramInt1 == 11) {
+        return IndividuationUrlHelper.a(paramContext, "smallEmojiList", "[id]", "");
+      }
+      if (paramInt1 == 5) {
+        return IndividuationUrlHelper.a(paramContext, "emojiAuthorDetail", "[id]", "");
+      }
+      if (paramInt1 == 6) {
+        return a();
+      }
+      if (paramInt1 == 9) {
+        return b(paramContext, str);
+      }
+      paramString = str;
+      if (paramInt1 == 3) {
+        paramString = b(paramIntent, str);
+      }
+    }
+    return paramString;
   }
   
   public static String a(Intent paramIntent, Context paramContext, long paramLong, String paramString)
   {
-    int j = paramIntent.getIntExtra("emojimall_src", 1);
-    int i;
-    if (paramLong == 4L) {
-      i = 3;
-    } else if (paramLong == 8L) {
-      i = 2;
-    } else {
-      i = 1;
+    int j = 1;
+    int i = 1;
+    int k = paramIntent.getIntExtra("emojimall_src", 1);
+    paramContext = a(paramIntent, paramContext, k, paramString, a(paramLong));
+    if (TextUtils.isEmpty(paramContext)) {
+      return "";
     }
-    if ((i != 1) && (i != 3))
+    paramString = "vip.gongneng.mobile.biaoqing.client_tab_store";
+    String str;
+    if (a(k))
     {
-      paramContext = paramString;
+      Object localObject = paramIntent.getStringExtra("emojimall_detail_id");
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        i = 0;
+        localObject = paramContext;
+      }
+      else
+      {
+        localObject = paramContext.replace("[id]", (CharSequence)localObject).replace("[type]", "view");
+        paramString = "vip.gongneng.mobile.biaoqing.client_manager_item";
+      }
+      j = i;
+      paramContext = (Context)localObject;
+      str = paramString;
+      if (k == 12)
+      {
+        paramContext = new StringBuilder();
+        paramContext.append((String)localObject);
+        paramContext.append("&location=dashang");
+        paramContext = paramContext.toString();
+        j = i;
+        str = paramString;
+      }
     }
     else
     {
-      localObject = IndividuationUrlHelper.a(paramContext, "emoji", "");
-      paramString = (String)localObject;
-      if (((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).isFragmentStyleOrEmoStore(paramIntent)) {
-        paramString = ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).processEmoStoreHomeUrl((String)localObject);
-      }
-      if ((j != 8) && (j != 4) && (j != 12))
+      str = a(k, "vip.gongneng.mobile.biaoqing.client_tab_store");
+    }
+    paramString = paramContext;
+    if (j != 0)
+    {
+      paramContext = paramContext.replace("[adtag]", str).replace("[systemInt]", Integer.toString(Build.VERSION.SDK_INT));
+      a(paramContext);
+      paramContext = a(paramContext, paramIntent.getIntExtra("emomall_new_time", -1)).replace("[updateFlag]", Boolean.valueOf(paramIntent.getBooleanExtra("updateFlag", false)).toString());
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append(paramIntent.getIntExtra("updateId", 0));
+      paramString = a(paramIntent, paramContext.replace("[updateId]", paramString.toString()));
+      paramContext = paramString;
+      if (paramIntent.getBooleanExtra("emoji_to_dressup", false))
       {
-        if (j == 11)
+        paramIntent = new StringBuilder();
+        paramIntent.append(paramString);
+        paramIntent.append("&to=recommend");
+        paramContext = paramIntent.toString();
+      }
+      paramString = b(paramContext, 47);
+    }
+    return paramString;
+  }
+  
+  public static String a(Intent paramIntent, String paramString)
+  {
+    String str = paramString;
+    if (paramIntent.hasExtra(((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getKeyIsSmallEmoticon()))
+    {
+      str = paramString;
+      if (paramIntent.getBooleanExtra(((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getKeyIsSmallEmoticon(), false))
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append(paramString);
+        paramIntent.append("&emojiType=5");
+        str = paramIntent.toString();
+      }
+    }
+    return str;
+  }
+  
+  @NotNull
+  public static String a(String paramString, int paramInt)
+  {
+    if (paramInt > 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt);
+      return paramString.replace("[updateTime]", localStringBuilder.toString());
+    }
+    return paramString.replace("[updateTime]", "0");
+  }
+  
+  private static String a(String paramString, long paramLong)
+  {
+    ConcurrentHashMap localConcurrentHashMap = b;
+    Object localObject = paramString;
+    if (localConcurrentHashMap != null)
+    {
+      localObject = paramString;
+      if (localConcurrentHashMap.size() > 0)
+      {
+        localObject = paramString;
+        if ("1".equalsIgnoreCase((String)b.get(String.valueOf(paramLong))))
         {
-          paramContext = IndividuationUrlHelper.a(paramContext, "smallEmojiList", "[id]", "");
-        }
-        else if (j == 5)
-        {
-          paramContext = IndividuationUrlHelper.a(paramContext, "emojiAuthorDetail", "[id]", "");
-        }
-        else if (j == 6)
-        {
-          paramString = IndividuationUrlHelper.a(MobileQQ.sMobileQQ.getApplicationContext(), "magicPlus", "");
-          paramContext = paramString;
+          localObject = paramString;
           if (!TextUtils.isEmpty(paramString))
           {
-            paramContext = paramString;
-            if (MobileQQ.sMobileQQ.peekAppRuntime() != null) {
-              paramContext = paramString.replace("[uin]", MobileQQ.sMobileQQ.peekAppRuntime().getAccount());
-            }
-            paramContext = paramContext.replace("[client]", "androidQQ").replace("[version]", "8.7.0.5295").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
-          }
-        }
-        else if (j == 9)
-        {
-          paramContext = paramContext.getSharedPreferences("mobileQQ", 0).getString("magic_promotion_jump_url", "");
-          localObject = paramContext;
-          if (!TextUtils.isEmpty(paramContext))
-          {
-            paramString = paramContext;
-            if (MobileQQ.sMobileQQ.peekAppRuntime() != null) {
-              paramString = paramContext.replace("[uin]", MobileQQ.sMobileQQ.peekAppRuntime().getAccount());
-            }
-            localObject = paramString.replace("[client]", "androidQQ").replace("[version]", "8.7.0.5295").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
-            paramString = (String)localObject;
-          }
-          paramContext = paramString;
-          if (QLog.isColorLevel())
-          {
-            paramContext = new StringBuilder();
-            paramContext.append("promotion_jump_url:");
-            paramContext.append((String)localObject);
-            QLog.d("VasWebviewUtil", 2, paramContext.toString());
-            paramContext = paramString;
-          }
-        }
-        else
-        {
-          paramContext = paramString;
-          if (j == 3)
-          {
-            localObject = paramIntent.getStringExtra("currentId");
-            paramContext = paramString;
-            if (!TextUtils.isEmpty((CharSequence)localObject))
+            localObject = paramString;
+            if (!paramString.contains("async_cookie=1"))
             {
-              paramContext = paramString;
-              if (!TextUtils.isEmpty(paramString)) {
-                if (paramString.contains("?"))
-                {
-                  paramContext = new StringBuilder();
-                  paramContext.append(paramString);
-                  paramContext.append("&rec_id=");
-                  paramContext.append((String)localObject);
-                  paramContext = paramContext.toString();
-                }
-                else
-                {
-                  paramContext = new StringBuilder();
-                  paramContext.append(paramString);
-                  paramContext.append("?rec_id=");
-                  paramContext.append((String)localObject);
-                  paramContext = paramContext.toString();
-                }
+              paramString = ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).addParamToUrl(paramString, "async_cookie=1");
+              localObject = paramString;
+              if (QLog.isColorLevel())
+              {
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append("now business id ");
+                ((StringBuilder)localObject).append(paramLong);
+                ((StringBuilder)localObject).append("  use async_cookie");
+                QLog.i("VasWebviewUtil", 1, ((StringBuilder)localObject).toString());
+                localObject = paramString;
               }
             }
           }
         }
       }
-      else if (!paramIntent.hasExtra("emoji_is_original"))
-      {
-        paramContext = IndividuationUrlHelper.a(paramContext, "emojiDetail", "[id]", "");
-      }
-      else
-      {
-        paramString = Integer.toString(paramIntent.getIntExtra("emoji_author_id", 0));
-        if (paramIntent.getBooleanExtra("emoji_is_original", false)) {
-          paramContext = IndividuationUrlHelper.a(paramContext, "openAuthorDetail", paramString, "");
-        } else {
-          paramContext = IndividuationUrlHelper.a(paramContext, "emojiAuthorDetail", paramString, "");
-        }
-      }
-    }
-    if (TextUtils.isEmpty(paramContext)) {
-      return "";
-    }
-    paramString = "vip.gongneng.mobile.biaoqing.client_tab_store";
-    if ((j != 8) && (j != 4) && (j != 12))
-    {
-      if ((j != 2) && (j != 3))
-      {
-        if (j == 7) {
-          paramString = "vip.gongneng.mobile.biaoqing.client_index_banner";
-        } else if (j == 6) {
-          paramString = "vip.gongneng.mobile.biaoqing.client_aio_magic";
-        }
-      }
-      else {
-        paramString = "vip.gongneng.mobile.biaoqing.client_manager_top";
-      }
-      i = 1;
-    }
-    else
-    {
-      paramString = paramIntent.getStringExtra("emojimall_detail_id");
-      if (TextUtils.isEmpty(paramString))
-      {
-        localObject = "vip.gongneng.mobile.biaoqing.client_tab_store";
-        i = 0;
-        paramString = paramContext;
-        paramContext = (Context)localObject;
-      }
-      else
-      {
-        paramString = paramContext.replace("[id]", paramString).replace("[type]", "view");
-        paramContext = "vip.gongneng.mobile.biaoqing.client_manager_item";
-        i = 1;
-      }
-      localObject = paramString;
-      if (j == 12)
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramString);
-        ((StringBuilder)localObject).append("&location=dashang");
-        localObject = ((StringBuilder)localObject).toString();
-      }
-      paramString = paramContext;
-      paramContext = (Context)localObject;
-    }
-    Object localObject = paramContext;
-    if (i != 0)
-    {
-      paramContext = paramContext.replace("[adtag]", paramString).replace("[systemInt]", Integer.toString(Build.VERSION.SDK_INT));
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder();
-        paramString.append("loadHomePage:");
-        paramString.append(paramContext);
-        QLog.d("VasWebviewUtil", 2, paramString.toString());
-      }
-      i = paramIntent.getIntExtra("emomall_new_time", -1);
-      if (i > 0)
-      {
-        paramString = new StringBuilder();
-        paramString.append("");
-        paramString.append(i);
-        paramContext = paramContext.replace("[updateTime]", paramString.toString());
-      }
-      else
-      {
-        paramContext = paramContext.replace("[updateTime]", "0");
-      }
-      paramContext = paramContext.replace("[updateFlag]", Boolean.valueOf(paramIntent.getBooleanExtra("updateFlag", false)).toString());
-      paramString = new StringBuilder();
-      paramString.append("");
-      paramString.append(paramIntent.getIntExtra("updateId", 0));
-      paramString = paramContext.replace("[updateId]", paramString.toString());
-      paramContext = paramString;
-      if (paramIntent.hasExtra(((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getKeyIsSmallEmoticon()))
-      {
-        paramContext = paramString;
-        if (paramIntent.getBooleanExtra(((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getKeyIsSmallEmoticon(), false))
-        {
-          paramContext = new StringBuilder();
-          paramContext.append(paramString);
-          paramContext.append("&emojiType=5");
-          paramContext = paramContext.toString();
-        }
-      }
-      paramString = paramContext;
-      if (paramIntent.getBooleanExtra("emoji_to_dressup", false))
-      {
-        paramIntent = new StringBuilder();
-        paramIntent.append(paramContext);
-        paramIntent.append("&to=recommend");
-        paramString = paramIntent.toString();
-      }
-      localObject = a(paramString, 47);
-    }
-    return localObject;
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("vas_web_report_entry: ");
-      ((StringBuilder)localObject).append(paramInt);
-      ((StringBuilder)localObject).append("-->");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.d("WebReportAdapter", 2, ((StringBuilder)localObject).toString());
-    }
-    if (paramInt == 0) {
-      return paramString;
-    }
-    String str = a(paramInt);
-    Object localObject = paramString;
-    if (!TextUtils.isEmpty(str))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append(str);
-      localObject = ((StringBuilder)localObject).toString();
     }
     return localObject;
   }
@@ -335,9 +316,9 @@ public class VasWebviewUtil
     paramString.append("individuation --------------open GXH ");
     paramString.append((String)localObject);
     QLog.d("VasWebviewUtil", 2, paramString.toString());
-    if (VasUtil.a().isCanOpenGxhHippyPage())
+    if (VasUtil.b().isCanOpenGxhHippyPage())
     {
-      VasUtil.a().openGxhHippyPage();
+      VasUtil.b().openGxhHippyPage((String)localObject);
       return;
     }
     paramString = new Intent(paramContext, ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getQQBrowserActivityClass());
@@ -364,40 +345,9 @@ public class VasWebviewUtil
     } else {
       paramIntent = new Intent(paramContext, ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getQQBrowserActivityClass());
     }
-    ConcurrentHashMap localConcurrentHashMap = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-    Object localObject = paramString;
-    if (localConcurrentHashMap != null)
-    {
-      localObject = paramString;
-      if (localConcurrentHashMap.size() > 0)
-      {
-        localObject = paramString;
-        if ("1".equalsIgnoreCase((String)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramLong))))
-        {
-          localObject = paramString;
-          if (!TextUtils.isEmpty(paramString))
-          {
-            localObject = paramString;
-            if (!paramString.contains("async_cookie=1"))
-            {
-              paramString = ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).addParamToUrl(paramString, "async_cookie=1");
-              localObject = paramString;
-              if (QLog.isColorLevel())
-              {
-                localObject = new StringBuilder();
-                ((StringBuilder)localObject).append("now business id ");
-                ((StringBuilder)localObject).append(paramLong);
-                ((StringBuilder)localObject).append("  use async_cookie");
-                QLog.i("VasWebviewUtil", 1, ((StringBuilder)localObject).toString());
-                localObject = paramString;
-              }
-            }
-          }
-        }
-      }
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      paramIntent.putExtra("url", (String)localObject);
+    paramString = a(paramString, paramLong);
+    if (!TextUtils.isEmpty(paramString)) {
+      paramIntent.putExtra("url", paramString);
     }
     paramIntent.putExtra("business", paramLong);
     a(paramLong, paramIntent);
@@ -451,14 +401,14 @@ public class VasWebviewUtil
         i = 0;
       }
       String str2 = AppConstants.NET_TYPE_NAME[i];
-      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      if (TextUtils.isEmpty(a))
       {
         localObject = paramAppInterface.getResources().getDisplayMetrics();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(((DisplayMetrics)localObject).widthPixels);
         localStringBuilder.append("*");
         localStringBuilder.append(((DisplayMetrics)localObject).heightPixels);
-        jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+        a = localStringBuilder.toString();
       }
       Object localObject = new String[9];
       System.arraycopy(paramVarArgs, 0, localObject, 0, Math.min(9, paramVarArgs.length));
@@ -471,7 +421,7 @@ public class VasWebviewUtil
         }
         i += 1;
       }
-      paramAppInterface = Arrays.asList(new String[] { "1", str1, ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).getImei(paramAppInterface), "", "android", "201", Build.VERSION.RELEASE, "3001", "3001013", "", "", paramString1, "", "", "", paramString2, "", paramString3, "", "", paramString4, "", "", "8.7.0", "", "", "", "", "", "android", str2, jdField_a_of_type_JavaLangString, "", localObject[0], localObject[1], localObject[2], localObject[3], localObject[4], localObject[5], localObject[6], localObject[7], localObject[8] });
+      paramAppInterface = Arrays.asList(new String[] { "1", str1, ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).getImei(paramAppInterface), "", "android", "201", Build.VERSION.RELEASE, "3001", "3001013", "", "", paramString1, "", "", "", paramString2, "", paramString3, "", "", paramString4, "", "", "8.8.17", "", "", "", "", "", "android", str2, a, "", localObject[0], localObject[1], localObject[2], localObject[3], localObject[4], localObject[5], localObject[6], localObject[7], localObject[8] });
       ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDCEvent(localBaseQQAppInterface, "dc00145", paramAppInterface);
       if (QLog.isColorLevel())
       {
@@ -480,6 +430,17 @@ public class VasWebviewUtil
         paramString1.append(paramAppInterface.toString());
         QLog.d("VasWebviewUtil", 2, paramString1.toString());
       }
+    }
+  }
+  
+  private static void a(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadHomePage:");
+      localStringBuilder.append(paramString);
+      QLog.d("VasWebviewUtil", 2, localStringBuilder.toString());
     }
   }
   
@@ -666,24 +627,159 @@ public class VasWebviewUtil
     DcReportUtil.a(null, "sendtdbank|b_sng_qqvip_key_word_grey_keyword_show_new|key_word_grey", localStringBuilder.toString(), true);
   }
   
-  public static boolean a(Context paramContext)
+  public static boolean a(int paramInt)
   {
-    if (!Utils.a())
-    {
-      Toast.makeText(paramContext, paramContext.getString(2131718574), 0).show();
-      return false;
-    }
-    if (Utils.b() < 5242880L)
-    {
-      Toast.makeText(paramContext, paramContext.getString(2131718575), 0).show();
-      return false;
-    }
-    return true;
+    return (paramInt == 8) || (paramInt == 4) || (paramInt == 12);
   }
   
-  private static Intent b(Intent paramIntent, String paramString)
+  @NotNull
+  private static String b(int paramInt)
   {
-    return ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).insertWbPlugin(paramIntent, paramString);
+    String str = new EntryReportParams(paramInt).a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("&traceDetail=base64-");
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
+  }
+  
+  public static String b(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 0).getString("magic_promotion_jump_url", "");
+    Object localObject = paramContext;
+    if (!TextUtils.isEmpty(paramContext))
+    {
+      paramString = paramContext;
+      if (MobileQQ.sMobileQQ.peekAppRuntime() != null) {
+        paramString = paramContext.replace("[uin]", MobileQQ.sMobileQQ.peekAppRuntime().getAccount());
+      }
+      paramString = paramString.replace("[client]", "androidQQ").replace("[version]", "8.8.17.5770").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
+      localObject = paramString;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("promotion_jump_url:");
+      paramContext.append((String)localObject);
+      QLog.d("VasWebviewUtil", 2, paramContext.toString());
+    }
+    return paramString;
+  }
+  
+  private static String b(Context paramContext, String paramString, long paramLong, Intent paramIntent)
+  {
+    Object localObject;
+    if ((paramLong != 2L) && (paramLong != 4L))
+    {
+      localObject = paramString;
+      if (paramLong != 8L) {}
+    }
+    else
+    {
+      paramString = a(paramIntent, paramContext, paramLong, paramString);
+      paramContext = paramString;
+      if (paramIntent.getBooleanExtra("is_small_emoji", false))
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(paramString);
+        paramContext.append("&emojiType=5");
+        paramContext = paramContext.toString();
+      }
+      localObject = paramIntent.getStringExtra("emoji_ids");
+      paramString = paramContext;
+      if (localObject != null)
+      {
+        paramString = paramContext;
+        if (!((String)localObject).equals(""))
+        {
+          paramString = new StringBuilder();
+          paramString.append(paramContext);
+          paramString.append("&id=");
+          paramString.append((String)localObject);
+          paramString = paramString.toString();
+        }
+      }
+      paramContext = paramString;
+      if (paramIntent.getBooleanExtra(((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getKeyIsKandianEmoticon(), false))
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(paramString);
+        paramContext.append("&sceneType=1");
+        paramContext = paramContext.toString();
+      }
+      localObject = paramContext;
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("small emoji url = ");
+        paramString.append(paramContext);
+        QLog.i("VasWebviewUtil", 2, paramString.toString());
+        localObject = paramContext;
+      }
+    }
+    return a((String)localObject, paramLong);
+  }
+  
+  public static String b(Intent paramIntent, Context paramContext)
+  {
+    String str = IndividuationUrlHelper.a(paramContext, "emoji", "");
+    paramContext = str;
+    if (((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).isFragmentStyleOrEmoStore(paramIntent)) {
+      paramContext = ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).processEmoStoreHomeUrl(str);
+    }
+    return paramContext;
+  }
+  
+  public static String b(Intent paramIntent, String paramString)
+  {
+    String str = paramIntent.getStringExtra("currentId");
+    paramIntent = paramString;
+    if (!TextUtils.isEmpty(str))
+    {
+      paramIntent = paramString;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        if (paramString.contains("?"))
+        {
+          paramIntent = new StringBuilder();
+          paramIntent.append(paramString);
+          paramIntent.append("&rec_id=");
+          paramIntent.append(str);
+          return paramIntent.toString();
+        }
+        paramIntent = new StringBuilder();
+        paramIntent.append(paramString);
+        paramIntent.append("?rec_id=");
+        paramIntent.append(str);
+        paramIntent = paramIntent.toString();
+      }
+    }
+    return paramIntent;
+  }
+  
+  public static String b(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("vas_web_report_entry: ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("-->");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("WebReportAdapter", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramInt == 0) {
+      return paramString;
+    }
+    String str = b(paramInt);
+    Object localObject = paramString;
+    if (!TextUtils.isEmpty(str))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(str);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   public static void b(Context paramContext, String paramString, long paramLong, Intent paramIntent, boolean paramBoolean, int paramInt)
@@ -696,130 +792,54 @@ public class VasWebviewUtil
       return;
     }
     long l = System.currentTimeMillis();
-    if ((paramLong == 4194304L) && (!a(paramContext))) {
+    if ((paramLong == 4194304L) && (!b(paramContext))) {
       return;
     }
-    if (paramIntent != null) {
-      paramIntent.setClass(paramContext, ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getQQBrowserActivityClass());
-    } else {
-      paramIntent = new Intent(paramContext, ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getQQBrowserActivityClass());
-    }
-    if ((paramLong != 2L) && (paramLong != 4L))
-    {
-      localObject1 = paramString;
-      if (paramLong != 8L) {}
-    }
-    else
-    {
-      localObject1 = a(paramIntent, paramContext, paramLong, paramString);
-      paramString = (String)localObject1;
-      if (paramIntent != null)
-      {
-        paramString = (String)localObject1;
-        if (paramIntent.getBooleanExtra("is_small_emoji", false))
-        {
-          paramString = new StringBuilder();
-          paramString.append((String)localObject1);
-          paramString.append("&emojiType=5");
-          paramString = paramString.toString();
-        }
-        localObject2 = paramIntent.getStringExtra("emoji_ids");
-        localObject1 = paramString;
-        if (localObject2 != null)
-        {
-          localObject1 = paramString;
-          if (!((String)localObject2).equals(""))
-          {
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(paramString);
-            ((StringBuilder)localObject1).append("&id=");
-            ((StringBuilder)localObject1).append((String)localObject2);
-            localObject1 = ((StringBuilder)localObject1).toString();
-          }
-        }
-        paramString = (String)localObject1;
-        if (paramIntent.getBooleanExtra(((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getKeyIsKandianEmoticon(), false))
-        {
-          paramString = new StringBuilder();
-          paramString.append((String)localObject1);
-          paramString.append("&sceneType=1");
-          paramString = paramString.toString();
-        }
-      }
-      localObject1 = paramString;
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("small emoji url = ");
-        ((StringBuilder)localObject1).append(paramString);
-        QLog.i("VasWebviewUtil", 2, ((StringBuilder)localObject1).toString());
-        localObject1 = paramString;
-      }
-    }
-    Object localObject2 = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-    paramString = (String)localObject1;
-    if (localObject2 != null)
-    {
-      paramString = (String)localObject1;
-      if (((ConcurrentHashMap)localObject2).size() > 0)
-      {
-        paramString = (String)localObject1;
-        if ("1".equalsIgnoreCase((String)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramLong))))
-        {
-          paramString = (String)localObject1;
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            paramString = (String)localObject1;
-            if (!((String)localObject1).contains("async_cookie=1"))
-            {
-              localObject1 = ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).addParamToUrl((String)localObject1, "async_cookie=1");
-              paramString = (String)localObject1;
-              if (QLog.isColorLevel())
-              {
-                paramString = new StringBuilder();
-                paramString.append("now business id ");
-                paramString.append(paramLong);
-                paramString.append("  use async_cookie");
-                QLog.i("VasWebviewUtil", 1, paramString.toString());
-                paramString = (String)localObject1;
-              }
-            }
-          }
-        }
-      }
-    }
-    Object localObject1 = paramIntent;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramIntent.putExtra("url", paramString);
-      localObject1 = a(paramIntent, Uri.parse(paramString).getHost());
-    }
-    ((Intent)localObject1).putExtra("business", paramLong);
-    a(paramLong, (Intent)localObject1);
-    if (((Intent)localObject1).getLongExtra("startOpenPageTime", 0L) <= 0L) {
-      ((Intent)localObject1).putExtra("startOpenPageTime", System.currentTimeMillis());
-    }
-    ((Intent)localObject1).putExtra(((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).isShowAdKey(), false);
-    ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_jc_vip");
+    paramString = a(paramContext, paramString, paramLong, paramIntent);
     if (QLog.isColorLevel())
     {
       paramLong = System.currentTimeMillis();
-      paramString = new StringBuilder();
-      paramString.append("opeen vas webview cost: ");
-      paramString.append(paramLong - l);
-      QLog.i("VasWebviewUtil", 2, paramString.toString());
+      paramIntent = new StringBuilder();
+      paramIntent.append("opeen vas webview cost: ");
+      paramIntent.append(paramLong - l);
+      QLog.i("VasWebviewUtil", 2, paramIntent.toString());
     }
     if ((paramBoolean) && ((paramContext instanceof Activity)))
     {
-      ((Activity)paramContext).startActivityForResult((Intent)localObject1, paramInt);
+      ((Activity)paramContext).startActivityForResult(paramString, paramInt);
       return;
     }
-    paramContext.startActivity((Intent)localObject1);
+    paramContext.startActivity(paramString);
+  }
+  
+  public static boolean b(Context paramContext)
+  {
+    if (!Utils.b())
+    {
+      Toast.makeText(paramContext, paramContext.getString(2131916075), 0).show();
+      return false;
+    }
+    if (Utils.c() < 5242880L)
+    {
+      Toast.makeText(paramContext, paramContext.getString(2131916076), 0).show();
+      return false;
+    }
+    return true;
+  }
+  
+  private static Intent c(Intent paramIntent, String paramString)
+  {
+    return ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).putWebViewTitleStyle(paramIntent, paramString);
+  }
+  
+  private static Intent d(Intent paramIntent, String paramString)
+  {
+    return ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).insertWbPlugin(paramIntent, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.webview.util.VasWebviewUtil
  * JD-Core Version:    0.7.0.1
  */

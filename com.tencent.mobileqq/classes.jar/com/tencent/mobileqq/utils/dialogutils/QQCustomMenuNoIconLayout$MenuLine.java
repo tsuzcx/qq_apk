@@ -18,22 +18,22 @@ class QQCustomMenuNoIconLayout$MenuLine
   
   private void a(boolean paramBoolean)
   {
-    View localView = new View(QQCustomMenuNoIconLayout.a(this.a));
-    Resources localResources = QQCustomMenuNoIconLayout.a(this.a).getResources();
+    View localView = new View(QQCustomMenuNoIconLayout.f(this.a));
+    Resources localResources = QQCustomMenuNoIconLayout.f(this.a).getResources();
     int i;
     if (paramBoolean) {
-      i = 2131165818;
+      i = 2131166460;
     } else {
-      i = 2131165820;
+      i = 2131166462;
     }
     localView.setBackgroundColor(localResources.getColor(i));
     addView(localView, new LinearLayout.LayoutParams(1, -1));
-    localView = new View(QQCustomMenuNoIconLayout.a(this.a));
-    localResources = QQCustomMenuNoIconLayout.a(this.a).getResources();
+    localView = new View(QQCustomMenuNoIconLayout.f(this.a));
+    localResources = QQCustomMenuNoIconLayout.f(this.a).getResources();
     if (paramBoolean) {
-      i = 2131165819;
+      i = 2131166461;
     } else {
-      i = 2131165821;
+      i = 2131166463;
     }
     localView.setBackgroundColor(localResources.getColor(i));
     addView(localView, new LinearLayout.LayoutParams(1, -1));
@@ -47,7 +47,7 @@ class QQCustomMenuNoIconLayout$MenuLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout.MenuLine
  * JD-Core Version:    0.7.0.1
  */

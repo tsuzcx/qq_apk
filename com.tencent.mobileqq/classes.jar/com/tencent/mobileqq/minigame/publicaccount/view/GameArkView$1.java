@@ -13,7 +13,7 @@ class GameArkView$1
   {
     try
     {
-      if ((GamePubAccountHelper.a(GameArkView.access$000(this.this$0))) && (GameArkView.access$100(this.this$0)) && (GameArkView.access$200(this.this$0) != null))
+      if ((GamePubAccountHelper.f(GameArkView.access$000(this.this$0))) && (GameArkView.access$100(this.this$0)) && (GameArkView.access$200(this.this$0) != null))
       {
         GameArkView.access$200(this.this$0).onPause();
         return;
@@ -30,7 +30,7 @@ class GameArkView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.view.GameArkView.1
  * JD-Core Version:    0.7.0.1
  */

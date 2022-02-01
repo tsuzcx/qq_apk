@@ -25,8 +25,8 @@ class CommonTabFragment$1
     }
     if (paramInt != 0)
     {
-      QQToast.a(this.a.a, 1, HardCodeUtil.a(2131702434), 1).a();
-      this.a.c();
+      QQToast.makeText(this.a.ag, 1, HardCodeUtil.a(2131900437), 1).show();
+      this.a.d();
       return;
     }
     this.a.a(paramSosoLbsInfo);
@@ -34,7 +34,7 @@ class CommonTabFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.CommonTabFragment.1
  * JD-Core Version:    0.7.0.1
  */

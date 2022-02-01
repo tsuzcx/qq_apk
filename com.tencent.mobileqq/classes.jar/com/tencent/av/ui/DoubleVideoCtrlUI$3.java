@@ -13,15 +13,15 @@ class DoubleVideoCtrlUI$3
   public void run()
   {
     ChildLockCircle localChildLockCircle;
-    if ((this.this$0.a != null) && (this.this$0.a.get() != null)) {
-      localChildLockCircle = (ChildLockCircle)((Activity)this.this$0.a.get()).findViewById(2131373363);
+    if ((this.this$0.ak != null) && (this.this$0.ak.get() != null)) {
+      localChildLockCircle = (ChildLockCircle)((Activity)this.this$0.ak.get()).findViewById(2131441036);
     } else {
       localChildLockCircle = null;
     }
     if (localChildLockCircle != null)
     {
       if (QLog.isDevelopLevel()) {
-        QLog.w(this.this$0.d, 1, "timtest HideChildLockUIRunnable");
+        QLog.w(this.this$0.X, 1, "timtest HideChildLockUIRunnable");
       }
       localChildLockCircle.setVisibility(8);
     }

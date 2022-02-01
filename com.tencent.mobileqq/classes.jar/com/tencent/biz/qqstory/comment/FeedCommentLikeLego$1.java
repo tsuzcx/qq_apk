@@ -16,30 +16,30 @@ class FeedCommentLikeLego$1
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131364945)
+    if (i != 2131431070)
     {
-      if (i == 2131374514) {
-        QQStoryWatcherListActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, 10);
+      if (i == 2131442684) {
+        QQStoryWatcherListActivity.a(this.a.j, this.a.a.feedId, 10);
       }
     }
     else
     {
-      if (this.a.jdField_a_of_type_Int == 11) {
+      if (this.a.e == 11) {
         i = 211;
-      } else if (this.a.jdField_a_of_type_Int == 12) {
+      } else if (this.a.e == 12) {
         i = 222;
       } else {
         i = 210;
       }
-      StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
-      StoryReportor.a("home_page", "clk_reply_mini", StoryReportor.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(StoryReportor.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem)), StoryReportor.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      StoryDetailActivity.a(this.a.j, this.a.a.feedId, i, 0);
+      StoryReportor.a("home_page", "clk_reply_mini", StoryReportor.a(this.a.a), 0, new String[] { String.valueOf(StoryReportor.b(this.a.a)), StoryReportor.b(this.a.e), "", this.a.a.feedId });
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentLikeLego.1
  * JD-Core Version:    0.7.0.1
  */

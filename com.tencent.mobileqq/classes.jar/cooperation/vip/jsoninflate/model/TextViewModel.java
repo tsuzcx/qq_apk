@@ -10,28 +10,15 @@ public class TextViewModel
 {
   private float a;
   private float b;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
+  private int c;
+  private float d;
   
   public TextViewModel(String paramString, View paramView)
   {
     super(paramString, paramView);
   }
   
-  private void a(String paramString)
-  {
-    try
-    {
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setTextSize(0, a(paramString));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  private int b(String paramString)
+  private int a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
@@ -54,46 +41,59 @@ public class TextViewModel
   
   private void b(String paramString)
   {
+    try
+    {
+      ((TextView)this.h).setTextSize(0, e(paramString));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  private void c(String paramString)
+  {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ((TextView)this.jdField_a_of_type_AndroidViewView).setTextColor(Color.parseColor(paramString));
+    ((TextView)this.h).setTextColor(Color.parseColor(paramString));
   }
   
   protected void a(String paramString1, String paramString2)
   {
     super.a(paramString1, paramString2);
-    if (!(this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+    if (!(this.h instanceof TextView)) {
       return;
     }
     if ("content".equals(paramString1))
     {
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setText(paramString2);
+      ((TextView)this.h).setText(paramString2);
       return;
     }
     if ("text_color".equals(paramString1))
     {
-      b(paramString2);
+      c(paramString2);
       return;
     }
     if ("text_align".equals(paramString1))
     {
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setGravity(b(paramString2));
+      ((TextView)this.h).setGravity(a(paramString2));
       return;
     }
     if ("max_lines".equals(paramString1))
     {
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setMaxLines(Integer.parseInt(paramString2));
+      ((TextView)this.h).setMaxLines(Integer.parseInt(paramString2));
       return;
     }
     if ("shadow_color".equals(paramString1))
     {
-      this.jdField_c_of_type_Int = Color.parseColor(paramString2);
+      this.c = Color.parseColor(paramString2);
       return;
     }
     if ("shadow_x".equals(paramString1))
     {
-      this.jdField_a_of_type_Float = Float.parseFloat(paramString2);
+      this.a = Float.parseFloat(paramString2);
       return;
     }
     if ("shadow_y".equals(paramString1))
@@ -103,23 +103,23 @@ public class TextViewModel
     }
     if ("shadow_radius".equals(paramString1))
     {
-      this.jdField_c_of_type_Float = Float.parseFloat(paramString2);
+      this.d = Float.parseFloat(paramString2);
       return;
     }
     if ("text_size".equals(paramString1)) {
-      a(paramString2);
+      b(paramString2);
     }
   }
   
   protected void b()
   {
     super.b();
-    ((TextView)this.jdField_a_of_type_AndroidViewView).setShadowLayer(this.jdField_c_of_type_Float, this.jdField_a_of_type_Float, this.b, this.jdField_c_of_type_Int);
+    ((TextView)this.h).setShadowLayer(this.d, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.jsoninflate.model.TextViewModel
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ public abstract interface MessageFilterServiceInterface
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.messagefilterserviceinterface.MessageFilterServiceInterface
  * JD-Core Version:    0.7.0.1
  */

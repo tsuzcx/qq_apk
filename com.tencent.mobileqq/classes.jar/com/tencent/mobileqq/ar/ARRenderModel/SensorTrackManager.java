@@ -15,23 +15,21 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class SensorTrackManager
 {
-  public static boolean a;
-  public static final float[] a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SensorTrackManager.ARSensorTrackCallback jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager$ARSensorTrackCallback = null;
-  private ARSensorManager jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager;
-  private SimpleSensorChangeListener jdField_a_of_type_ComTencentMobileqqArmapSensorSimpleSensorChangeListener = new SensorTrackManager.1(this);
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-  private boolean jdField_b_of_type_Boolean = false;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
-  private float[] c = null;
-  private float[] d = new float[4];
+  public static final float[] a = new float[16];
+  public static boolean b = true;
+  private ARSensorManager c;
+  private Context d;
+  private ReentrantLock e = new ReentrantLock();
+  private boolean f = false;
+  private SensorTrackManager.ARSensorTrackCallback g = null;
+  private float[] h = new float[16];
+  private float[] i = null;
+  private SimpleSensorChangeListener j = new SensorTrackManager.1(this);
+  private float[] k = new float[4];
   
   static
   {
-    jdField_a_of_type_ArrayOfFloat = new float[16];
-    Matrix.setIdentityM(jdField_a_of_type_ArrayOfFloat, 0);
-    jdField_a_of_type_Boolean = true;
+    Matrix.setIdentityM(a, 0);
   }
   
   public static boolean a()
@@ -43,8 +41,8 @@ public class SensorTrackManager
     {
       String[] arrayOfString = new String[1];
       arrayOfString[0] = "";
-      int i = ((IDPCApi)QRoute.api(IDPCApi.class)).parseComplexParamsBySimpleStringParser(str, arrayOfString);
-      if ((i >= 1) && (Integer.valueOf(arrayOfString[0]).intValue() == 1)) {
+      int m = ((IDPCApi)QRoute.api(IDPCApi.class)).parseComplexParamsBySimpleStringParser(str, arrayOfString);
+      if ((m >= 1) && (Integer.valueOf(arrayOfString[0]).intValue() == 1)) {
         bool1 = true;
       } else {
         bool1 = false;
@@ -53,7 +51,7 @@ public class SensorTrackManager
       localStringBuilder.append("arCfg = ");
       localStringBuilder.append(str);
       localStringBuilder.append(", size = ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(m);
       localStringBuilder.append(", params[0] = ");
       localStringBuilder.append(arrayOfString[0]);
       localStringBuilder.append(", isUseGameRotationVector = ");
@@ -66,7 +64,7 @@ public class SensorTrackManager
     }
     if (!bool1)
     {
-      if (b()) {
+      if (g()) {
         return true;
       }
       bool2 = false;
@@ -74,31 +72,26 @@ public class SensorTrackManager
     return bool2;
   }
   
-  private static boolean b()
+  private static boolean g()
   {
     return (Build.MODEL.equalsIgnoreCase("HRY-AL00T")) || (Build.MODEL.equalsIgnoreCase("SM-G955F")) || (Build.MODEL.equalsIgnoreCase("AQM-AL00")) || (Build.MODEL.equalsIgnoreCase("MI CC9 Pro"));
-  }
-  
-  public void a()
-  {
-    a(true);
   }
   
   public void a(Context paramContext, SensorTrackManager.ARSensorTrackCallback paramARSensorTrackCallback)
   {
     long l = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager$ARSensorTrackCallback = paramARSensorTrackCallback;
-    b();
-    jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager.b();
+    this.d = paramContext;
+    this.g = paramARSensorTrackCallback;
+    c();
+    b = this.c.c();
     ARReport.a().c(System.currentTimeMillis() - l);
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    if (this.f != paramBoolean)
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
+      this.f = paramBoolean;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("enableSensor enabled: ");
       localStringBuilder.append(paramBoolean);
@@ -108,48 +101,53 @@ public class SensorTrackManager
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager == null) {
+    a(true);
+  }
+  
+  public void c()
+  {
+    if (this.c == null) {
       if (a()) {
-        this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager = new ARSensorManager(this.jdField_a_of_type_AndroidContentContext, 5);
+        this.c = new ARSensorManager(this.d, 5);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager = new ARSensorManager(this.jdField_a_of_type_AndroidContentContext, 4);
+        this.c = new ARSensorManager(this.d, 4);
       }
     }
     if (QLog.isColorLevel()) {
       QLog.d("SensorTrackManager", 2, "startupSensor");
     }
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorSimpleSensorChangeListener, 1);
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SensorTrackManager", 2, "stopSensor");
-    }
-    ARSensorManager localARSensorManager = this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager;
-    if (localARSensorManager != null)
-    {
-      localARSensorManager.a();
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager = null;
-    }
+    this.c.a(this.j, 1);
   }
   
   public void d()
   {
-    a(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("SensorTrackManager", 2, "stopSensor");
+    }
+    ARSensorManager localARSensorManager = this.c;
+    if (localARSensorManager != null)
+    {
+      localARSensorManager.b();
+      this.c = null;
+    }
   }
   
   public void e()
   {
-    c();
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = null;
+    a(false);
+  }
+  
+  public void f()
+  {
+    d();
+    this.d = null;
+    this.f = false;
+    this.i = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.SensorTrackManager
  * JD-Core Version:    0.7.0.1
  */

@@ -81,7 +81,7 @@ public class SwitchAccountActivity
     localObject1 = ((StringBuilder)localObject1).toString();
     int j = 0;
     SSOLog.a("SwitchAccountActivity", new Object[] { localObject1 });
-    SharedPrefs.c(paramString);
+    SharedPrefs.d(paramString);
     Object localObject3 = this.accountPre;
     Object localObject2 = null;
     localObject1 = localObject2;
@@ -128,7 +128,7 @@ public class SwitchAccountActivity
       SSOLog.a("SwitchAccountActivity", new Object[] { "-->deleteAccount--account to delete equals last account, clear last account" });
       this.accountEdi.remove("last_account").commit();
     }
-    localObject1 = new File(OpenSdkVirtualUtil.a(OpenSdkVirtualUtil.a(this.wtloginManager, paramString)));
+    localObject1 = new File(OpenSdkVirtualUtil.b(OpenSdkVirtualUtil.a(this.wtloginManager, paramString)));
     int i = j;
     if (!((File)localObject1).exists())
     {
@@ -147,10 +147,10 @@ public class SwitchAccountActivity
         paramString = this.container.getChildAt(i);
         if (this.container.getChildCount() == 1)
         {
-          paramString.setBackgroundResource(2130839433);
+          paramString.setBackgroundResource(2130839622);
           return;
         }
-        paramString.setBackgroundResource(2130839449);
+        paramString.setBackgroundResource(2130839638);
         return;
       }
       i += 1;
@@ -226,7 +226,7 @@ public class SwitchAccountActivity
     }
     ((StringBuilder)localObject).append(bool);
     SSOLog.a("SwitchAccountActivity", new Object[] { ((StringBuilder)localObject).toString() });
-    SharedPrefs.a(paramString1);
+    SharedPrefs.b(paramString1);
     WloginSimpleInfo localWloginSimpleInfo = new WloginSimpleInfo();
     localObject = new Intent();
     int i = this.mReqSrc;
@@ -273,10 +273,10 @@ public class SwitchAccountActivity
       if (j >= this.accountList.size()) {
         break;
       }
-      View localView = localLayoutInflater.inflate(2131558439, this.container, false);
-      TextView localTextView1 = (TextView)localView.findViewById(2131371854);
-      TextView localTextView2 = (TextView)localView.findViewById(2131380147);
-      ImageView localImageView = (ImageView)localView.findViewById(2131366401);
+      View localView = localLayoutInflater.inflate(2131623975, this.container, false);
+      TextView localTextView1 = (TextView)localView.findViewById(2131439295);
+      TextView localTextView2 = (TextView)localView.findViewById(2131449061);
+      ImageView localImageView = (ImageView)localView.findViewById(2131432714);
       String str = (String)this.accountList.get(j);
       localObject1 = new WloginSimpleInfo();
       this.wtloginManager.getBasicUserInfo(str, (WloginSimpleInfo)localObject1);
@@ -297,9 +297,9 @@ public class SwitchAccountActivity
         }
       }
       if (i == 0) {
-        localView.setBackgroundResource(2130839449);
+        localView.setBackgroundResource(2130839638);
       }
-      localView.findViewById(2131365466).setOnClickListener(new SwitchAccountActivity.2(this));
+      localView.findViewById(2131431681).setOnClickListener(new SwitchAccountActivity.2(this));
       localView.setOnClickListener(new SwitchAccountActivity.3(this));
       localView.setOnTouchListener(this.onTouch);
       localView.setTag(str);
@@ -317,7 +317,7 @@ public class SwitchAccountActivity
     ((StringBuilder)localObject1).append(k);
     SSOLog.a("SwitchAccountActivity", new Object[] { ((StringBuilder)localObject1).toString() });
     ReportCenter.a().a("", "", "", "1010", String.valueOf(k), "0", false, true);
-    localObject1 = localLayoutInflater.inflate(2131558455, this.container, false);
+    localObject1 = localLayoutInflater.inflate(2131623991, this.container, false);
     this.container.addView((View)localObject1);
     ((View)localObject1).setOnClickListener(new SwitchAccountActivity.4(this));
   }
@@ -329,12 +329,13 @@ public class SwitchAccountActivity
     localIntent.putExtra("key_req_src", this.mReqSrc);
     localIntent.putExtra("appid", this.mThirdAppId);
     localIntent.putExtra("param_qr_code_url", getIntent().getStringExtra("param_qr_code_url"));
+    localIntent.putExtra("oauth_app_name", getIntent().getStringExtra("oauth_app_name"));
     RouteUtils.a(this, localIntent, "/base/openSdkLogin", 1);
   }
   
   private void showLoginTip()
   {
-    this.mProgress.a(super.getString(2131694646));
+    this.mProgress.a(super.getString(2131892332));
     if ((!super.isFinishing()) && (!this.mProgress.isShowing()) && (getWindow().isActive())) {
       this.mProgress.show();
     }
@@ -397,7 +398,7 @@ public class SwitchAccountActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131562895);
+    super.setContentView(2131629355);
     this.accountPre = super.getSharedPreferences("accountList", 0);
     this.accountEdi = this.accountPre.edit();
     paramBundle = super.getIntent();
@@ -414,13 +415,13 @@ public class SwitchAccountActivity
     paramBundle.append("mReqSrc:");
     paramBundle.append(this.mReqSrc);
     SSOLog.a("SwitchAccountActivity", new Object[] { paramBundle.toString() });
-    super.setTitle(2131694654);
+    super.setTitle(2131892341);
     this.mProgress = new QQProgressDialog(this, getTitleBarHeight());
-    this.container = ((LinearLayout)super.findViewById(2131361904));
+    this.container = ((LinearLayout)super.findViewById(2131427458));
     this.mLoginBTS = SystemClock.elapsedRealtime();
     this.mApp = ((AbstractOpenSdkAppInterface)super.getAppRuntime());
     this.wtloginManager = ((WtloginManager)this.mApp.getManager(1));
-    this.accountList = SharedPrefs.a();
+    this.accountList = SharedPrefs.b();
     paramBundle = super.getIntent().getStringExtra("param_uin");
     ArrayList localArrayList = this.accountList;
     if (localArrayList != null) {
@@ -440,7 +441,7 @@ public class SwitchAccountActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.SwitchAccountActivity
  * JD-Core Version:    0.7.0.1
  */

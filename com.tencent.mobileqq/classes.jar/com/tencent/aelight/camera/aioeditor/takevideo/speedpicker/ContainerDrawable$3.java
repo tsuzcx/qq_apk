@@ -10,48 +10,48 @@ class ContainerDrawable$3
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    if (!ContainerDrawable.a(this.a)) {
+    if (!ContainerDrawable.b(this.a)) {
       return;
     }
-    if (!ContainerDrawable.b(this.a))
+    if (!ContainerDrawable.c(this.a))
     {
       ContainerDrawable.a(this.a, false);
-      if (ContainerDrawable.b(this.a) == 2) {
-        ContainerDrawable.a(this.a, 0);
+      if (ContainerDrawable.d(this.a) == 2) {
+        ContainerDrawable.b(this.a, 0);
       }
     }
     else
     {
       ContainerDrawable.a(this.a, false);
-      ContainerDrawable.a(this.a, 0);
+      ContainerDrawable.b(this.a, 0);
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!ContainerDrawable.a(this.a)) {
+    if (!ContainerDrawable.b(this.a)) {
       return;
     }
-    if (!ContainerDrawable.b(this.a))
+    if (!ContainerDrawable.c(this.a))
     {
       ContainerDrawable.a(this.a, false);
-      if (ContainerDrawable.b(this.a) == 1)
+      if (ContainerDrawable.d(this.a) == 1)
       {
-        ContainerDrawable.a(this.a, 3);
+        ContainerDrawable.b(this.a, 3);
         return;
       }
-      ContainerDrawable.a(this.a, 0);
+      ContainerDrawable.b(this.a, 0);
       return;
     }
-    if (ContainerDrawable.b(this.a) == 1)
+    if (ContainerDrawable.d(this.a) == 1)
     {
-      ContainerDrawable.a(this.a, 2);
+      ContainerDrawable.b(this.a, 2);
       paramAnimator = this.a;
-      ContainerDrawable.a(paramAnimator, ContainerDrawable.b(paramAnimator), 1000);
+      ContainerDrawable.a(paramAnimator, ContainerDrawable.d(paramAnimator), 1000);
       return;
     }
     ContainerDrawable.a(this.a, false);
-    ContainerDrawable.a(this.a, 0);
+    ContainerDrawable.b(this.a, 0);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -60,7 +60,7 @@ class ContainerDrawable$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.speedpicker.ContainerDrawable.3
  * JD-Core Version:    0.7.0.1
  */

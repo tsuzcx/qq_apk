@@ -48,6 +48,9 @@ class TPPlayer$EventHandler
       {
       default: 
         return;
+      case 282: 
+        ((TPPlayerListeners)localObject1).onInfo(this.mPlayer, 2101, 0L, 0L, paramMessage.obj);
+        return;
       case 281: 
         ((TPPlayerListeners)localObject1).onInfo(this.mPlayer, 2100, 0L, 0L, paramMessage.obj);
         return;
@@ -145,7 +148,7 @@ class TPPlayer$EventHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayer.EventHandler
  * JD-Core Version:    0.7.0.1
  */

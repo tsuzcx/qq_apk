@@ -19,11 +19,11 @@ public class b
     super("varying lowp vec2 textureCoordinate;\n \nuniform sampler2D inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}");
   }
   
-  private void q()
+  private void r()
   {
-    this.s = GLES20.glGetUniformLocation(p(), "whiteDegree");
-    this.r = GLES20.glGetUniformLocation(p(), "contrast");
-    this.t = GLES20.glGetUniformLocation(p(), "ruddyDegree");
+    this.s = GLES20.glGetUniformLocation(q(), "whiteDegree");
+    this.r = GLES20.glGetUniformLocation(q(), "contrast");
+    this.t = GLES20.glGetUniformLocation(q(), "ruddyDegree");
   }
   
   public void a(float paramFloat)
@@ -37,7 +37,6 @@ public class b
   
   public boolean a()
   {
-    NativeLoad.getInstance();
     this.a = NativeLoad.nativeLoadGLProgram(12);
     if ((this.a != 0) && (b())) {
       this.g = true;
@@ -60,13 +59,13 @@ public class b
   public boolean b()
   {
     super.b();
-    q();
+    r();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.b
  * JD-Core Version:    0.7.0.1
  */

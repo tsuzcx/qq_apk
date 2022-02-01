@@ -10,6 +10,8 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.net.InetAddress;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -46,7 +48,7 @@ public final class dg
     if (i != 0) {}
     try
     {
-      str = ((TelephonyManager)ac.a().getSystemService("phone")).getDeviceId();
+      str = PhoneInfoMonitor.getDeviceId((TelephonyManager)ac.a().getSystemService("phone"));
     }
     catch (Throwable localThrowable1)
     {
@@ -79,43 +81,43 @@ public final class dg
   public static String a(int paramInt)
   {
     // Byte code:
-    //   0: new 68	java/lang/StringBuilder
+    //   0: new 71	java/lang/StringBuilder
     //   3: dup
-    //   4: ldc 95
-    //   6: invokespecial 74	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   4: ldc 98
+    //   6: invokespecial 77	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   9: astore_1
     //   10: aload_1
     //   11: iload_0
-    //   12: invokevirtual 98	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   12: invokevirtual 101	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   15: pop
     //   16: aload_1
-    //   17: ldc 100
-    //   19: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: ldc 103
+    //   19: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: pop
     //   23: aload_1
-    //   24: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   24: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   27: astore_2
     //   28: aconst_null
     //   29: astore_1
-    //   30: new 102	java/io/BufferedReader
+    //   30: new 105	java/io/BufferedReader
     //   33: dup
-    //   34: new 104	java/io/FileReader
+    //   34: new 107	java/io/FileReader
     //   37: dup
     //   38: aload_2
-    //   39: invokespecial 105	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   42: invokespecial 108	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   39: invokespecial 108	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   42: invokespecial 111	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   45: astore_2
     //   46: aload_2
     //   47: astore_1
     //   48: aload_2
-    //   49: invokevirtual 111	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   49: invokevirtual 114	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   52: astore 4
     //   54: aload 4
     //   56: astore_3
     //   57: aload_2
     //   58: astore_1
     //   59: aload 4
-    //   61: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   61: invokestatic 65	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   64: ifne +11 -> 75
     //   67: aload_2
     //   68: astore_1
@@ -123,7 +125,7 @@ public final class dg
     //   71: invokevirtual 34	java/lang/String:trim	()Ljava/lang/String;
     //   74: astore_3
     //   75: aload_2
-    //   76: invokevirtual 114	java/io/BufferedReader:close	()V
+    //   76: invokevirtual 117	java/io/BufferedReader:close	()V
     //   79: aload_3
     //   80: areturn
     //   81: astore_3
@@ -140,11 +142,11 @@ public final class dg
     //   96: aload_2
     //   97: astore_1
     //   98: aload_3
-    //   99: invokevirtual 117	java/lang/Exception:printStackTrace	()V
+    //   99: invokevirtual 120	java/lang/Exception:printStackTrace	()V
     //   102: aload_2
     //   103: ifnull +7 -> 110
     //   106: aload_2
-    //   107: invokevirtual 114	java/io/BufferedReader:close	()V
+    //   107: invokevirtual 117	java/io/BufferedReader:close	()V
     //   110: aconst_null
     //   111: areturn
     //   112: astore_3
@@ -155,7 +157,7 @@ public final class dg
     //   117: aload_2
     //   118: ifnull +7 -> 125
     //   121: aload_2
-    //   122: invokevirtual 114	java/io/BufferedReader:close	()V
+    //   122: invokevirtual 117	java/io/BufferedReader:close	()V
     //   125: aload_1
     //   126: athrow
     //   127: astore_1
@@ -291,7 +293,7 @@ public final class dg
     if (i != 0) {}
     try
     {
-      str = ((TelephonyManager)ac.a().getSystemService("phone")).getSubscriberId();
+      str = PhoneInfoMonitor.getSubscriberId((TelephonyManager)ac.a().getSystemService("phone"));
     }
     catch (Throwable localThrowable1)
     {
@@ -368,7 +370,7 @@ public final class dg
     if (i != 0) {}
     try
     {
-      str = ((WifiManager)ac.a().getApplicationContext().getSystemService("wifi")).getConnectionInfo().getMacAddress();
+      str = NetworkMonitor.getConnectionInfo((WifiManager)ac.a().getApplicationContext().getSystemService("wifi")).getMacAddress();
     }
     catch (Throwable localThrowable1)
     {
@@ -536,7 +538,7 @@ public final class dg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.dg
  * JD-Core Version:    0.7.0.1
  */

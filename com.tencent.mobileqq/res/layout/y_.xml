@@ -3,6 +3,6 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/g8k" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/com" android:layout_centerInParent="true" android:contentDescription="@null" />
     <FrameLayout android:layout_width="30.0dip" android:layout_height="30.0dip">
-        <ImageView android:layout_gravity="bottom" android:id="@id/g92" android:visibility="gone" android:layout_width="@dimen/a5m" android:layout_height="@dimen/a5m" android:layout_marginLeft="20.0dip" android:src="@drawable/gzf" />
+        <ImageView android:layout_gravity="bottom" android:id="@id/g92" android:visibility="gone" android:layout_width="@dimen/a5m" android:layout_height="@dimen/a5m" android:layout_marginLeft="20.0dip" android:src="@drawable/ik8" />
     </FrameLayout>
 </FrameLayout>

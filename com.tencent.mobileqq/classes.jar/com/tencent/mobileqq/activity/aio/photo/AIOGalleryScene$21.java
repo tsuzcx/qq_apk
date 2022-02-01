@@ -17,89 +17,88 @@ class AIOGalleryScene$21
   
   public void run()
   {
-    if (AIOGalleryScene.x(this.this$0) != null)
+    if (AIOGalleryScene.E(this.this$0) != null)
     {
-      if (AIOGalleryScene.y(this.this$0).isFinishing()) {
+      if (AIOGalleryScene.F(this.this$0).isFinishing()) {
         return;
       }
-      boolean bool = QRUtils.a(this.jdField_a_of_type_Int);
-      String str2 = "";
-      Object localObject4 = null;
-      Object localObject3 = null;
       Object localObject1;
-      if (bool)
+      Object localObject3;
+      if (QRUtils.a(this.a))
       {
-        localObject1 = this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
-        if ((localObject1 instanceof Pair))
+        localObject1 = null;
+        Object localObject2 = null;
+        Object localObject5 = this.b.get(1);
+        if ((localObject5 instanceof Pair))
         {
-          localObject1 = (Pair)localObject1;
-          String str1 = String.valueOf(((Pair)localObject1).second).trim();
-          String str3 = String.valueOf(((Pair)localObject1).first).trim();
+          localObject1 = (Pair)localObject5;
+          localObject5 = String.valueOf(((Pair)localObject1).second).trim();
+          String str = String.valueOf(((Pair)localObject1).first).trim();
           try
           {
             localObject1 = new JSONObject();
             try
             {
-              ((JSONObject)localObject1).put("scannerType", str1);
-              ((JSONObject)localObject1).put("scannerResult", str3);
+              ((JSONObject)localObject1).put("scannerType", localObject5);
+              ((JSONObject)localObject1).put("scannerResult", str);
             }
             catch (JSONException localJSONException1) {}
-            localJSONException2.printStackTrace();
+            ((JSONException)localObject3).printStackTrace();
           }
-          catch (JSONException localJSONException2)
+          catch (JSONException localJSONException3)
           {
-            localObject1 = null;
+            localObject1 = localJSONException1;
+            localObject3 = localJSONException3;
           }
-        }
-        else
-        {
-          localObject1 = null;
         }
         if (localObject1 == null) {
           localObject1 = "";
         } else {
           localObject1 = ((JSONObject)localObject1).toString();
         }
-        AIOGalleryScene.a(this.this$0, 2131692775, 2130840169, 55, (String)localObject1, this.jdField_a_of_type_JavaUtilArrayList);
+        AIOGalleryScene.a(this.this$0, 2131889846, 2130840474, 55, (String)localObject1, this.c);
         ReportController.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
       }
-      if (QRUtils.b(this.jdField_a_of_type_Int))
+      if (QRUtils.b(this.a))
       {
-        Object localObject2 = this.jdField_a_of_type_AndroidUtilSparseArray.get(2);
-        localObject1 = localObject4;
-        if ((localObject2 instanceof String))
+        localObject1 = new JSONObject();
+        localObject3 = this.b.get(2);
+        if ((localObject3 instanceof String))
         {
-          localObject2 = (String)localObject2;
+          localObject3 = (String)localObject3;
           try
           {
-            localObject1 = new JSONObject();
-            try
-            {
-              ((JSONObject)localObject1).put("strMini", localObject2);
-            }
-            catch (JSONException localJSONException3) {}
-            localJSONException4.printStackTrace();
+            ((JSONObject)localObject1).put("strMini", localObject3);
           }
-          catch (JSONException localJSONException4)
+          catch (JSONException localJSONException2)
           {
-            localObject1 = localObject3;
+            localJSONException2.printStackTrace();
           }
         }
-        if (localObject1 == null) {
-          localObject1 = str2;
-        } else {
-          localObject1 = ((JSONObject)localObject1).toString();
+        Object localObject4 = this.b.get(1001);
+        if ((localObject4 instanceof String))
+        {
+          localObject4 = (String)localObject4;
+          try
+          {
+            ((JSONObject)localObject1).put("type", localObject4);
+          }
+          catch (Throwable localThrowable)
+          {
+            localThrowable.printStackTrace();
+          }
         }
-        AIOGalleryScene.a(this.this$0, 2131692774, 2130840168, 56, (String)localObject1, this.jdField_a_of_type_JavaUtilArrayList);
+        localObject1 = ((JSONObject)localObject1).toString();
+        AIOGalleryScene.a(this.this$0, 2131889845, 2130840473, 56, (String)localObject1, this.c);
         ReportController.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
       }
-      this.this$0.a.updateUI();
+      this.this$0.aF.updateUI();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.21
  * JD-Core Version:    0.7.0.1
  */

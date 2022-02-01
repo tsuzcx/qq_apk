@@ -30,35 +30,35 @@ class MemorySharePlayingListSync$1
   {
     MemorySharePlayingListSync localMemorySharePlayingListSync = this.a;
     int i = 0;
-    localMemorySharePlayingListSync.c = false;
+    localMemorySharePlayingListSync.e = false;
     if ((paramGetCollectionVideoListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      paramGetCollectionVideoListResponse.jdField_a_of_type_JavaUtilList = ((StoryManager)SuperManager.a(5)).a(paramGetCollectionVideoListResponse.jdField_a_of_type_JavaUtilList);
-      paramErrorMessage = paramGetCollectionVideoListResponse.jdField_a_of_type_JavaUtilList.iterator();
+      paramGetCollectionVideoListResponse.g = ((StoryManager)SuperManager.a(5)).a(paramGetCollectionVideoListResponse.g);
+      paramErrorMessage = paramGetCollectionVideoListResponse.g.iterator();
       while (paramErrorMessage.hasNext()) {
-        ((StoryVideoItem)paramErrorMessage.next()).mOwnerUid = this.a.jdField_d_of_type_JavaLangString;
+        ((StoryVideoItem)paramErrorMessage.next()).mOwnerUid = this.a.k;
       }
-      if (TextUtils.isEmpty(paramGetCollectionVideoListRequest.jdField_d_of_type_JavaLangString)) {
-        this.a.jdField_a_of_type_JavaUtilList.clear();
+      if (TextUtils.isEmpty(paramGetCollectionVideoListRequest.h)) {
+        this.a.b.clear();
       }
-      this.a.jdField_a_of_type_JavaLangString = paramGetCollectionVideoListResponse.c;
-      this.a.jdField_a_of_type_JavaUtilList.addAll(paramGetCollectionVideoListResponse.jdField_a_of_type_JavaUtilList);
+      this.a.c = paramGetCollectionVideoListResponse.b;
+      this.a.b.addAll(paramGetCollectionVideoListResponse.g);
       paramGetCollectionVideoListRequest = this.a;
-      paramGetCollectionVideoListRequest.jdField_a_of_type_Int = paramGetCollectionVideoListRequest.jdField_a_of_type_JavaUtilList.size();
-      this.a.jdField_b_of_type_Boolean = paramGetCollectionVideoListResponse.jdField_a_of_type_Boolean;
+      paramGetCollectionVideoListRequest.f = paramGetCollectionVideoListRequest.b.size();
+      this.a.d = paramGetCollectionVideoListResponse.e;
       paramGetCollectionVideoListRequest = this.a;
-      int j = paramGetCollectionVideoListResponse.jdField_b_of_type_Int;
+      int j = paramGetCollectionVideoListResponse.f;
       boolean bool = true;
       if (j != 1) {
         bool = false;
       }
-      paramGetCollectionVideoListRequest.jdField_d_of_type_Boolean = bool;
-      SLog.a("Q.qqstory.player.MemorySharePlayingListSync", "last load position:%d cookie:%s", Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_JavaLangString);
-      ((DownloadUrlManager)SuperManager.a(28)).a(paramGetCollectionVideoListResponse.jdField_b_of_type_JavaUtilList);
+      paramGetCollectionVideoListRequest.g = bool;
+      SLog.a("Q.qqstory.player.MemorySharePlayingListSync", "last load position:%d cookie:%s", Integer.valueOf(this.a.f), this.a.c);
+      ((DownloadUrlManager)SuperManager.a(28)).a(paramGetCollectionVideoListResponse.h);
       paramGetCollectionVideoListRequest = new ArrayList();
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+      while (i < this.a.b.size())
       {
-        paramGetCollectionVideoListRequest.add(((StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(i)).mVid);
+        paramGetCollectionVideoListRequest.add(((StoryVideoItem)this.a.b.get(i)).mVid);
         i += 1;
       }
       paramErrorMessage = BatchHandlerListPuller.a(paramGetCollectionVideoListRequest);
@@ -69,15 +69,15 @@ class MemorySharePlayingListSync$1
       return;
     }
     paramGetCollectionVideoListRequest = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-    paramGetCollectionVideoListRequest.jdField_a_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
-    paramGetCollectionVideoListRequest.jdField_b_of_type_JavaLangString = this.a.jdField_d_of_type_JavaLangString;
-    paramGetCollectionVideoListRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    paramGetCollectionVideoListRequest.a = this.a.h;
+    paramGetCollectionVideoListRequest.b = this.a.k;
+    paramGetCollectionVideoListRequest.g = paramErrorMessage;
     StoryDispatcher.a().dispatch(paramGetCollectionVideoListRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.MemorySharePlayingListSync.1
  * JD-Core Version:    0.7.0.1
  */

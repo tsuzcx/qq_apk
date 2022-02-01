@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ee7" android:background="@drawable/gh0" android:layout_width="65.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/al3" android:gravity="center" android:id="@id/qqr" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="0.5x" />
+    <View android:background="#33ffffff" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/al3" android:gravity="center" android:id="@id/qp4" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="0.75x" />
+    <View android:background="#33ffffff" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/al3" android:gravity="center" android:id="@id/qp8" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="1.0x" />
+    <View android:background="#33ffffff" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/al3" android:gravity="center" android:id="@id/qo1" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="1.5x" />
+    <View android:background="#33ffffff" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/al3" android:gravity="center" android:id="@id/qqq" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="2.0x" />
+</LinearLayout>

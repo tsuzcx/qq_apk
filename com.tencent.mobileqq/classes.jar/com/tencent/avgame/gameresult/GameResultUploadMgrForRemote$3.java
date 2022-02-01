@@ -10,20 +10,20 @@ class GameResultUploadMgrForRemote$3
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGameresultGameResultUploadMgrForRemote$UploadInfo.jdField_b_of_type_JavaLangString == null) {
+    if (this.a.b == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGameresultGameResultUploadMgrForRemote$UploadInfo.jdField_b_of_type_Boolean = true;
+    this.a.d = true;
     if (QLog.isDevelopLevel())
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b);
       ((StringBuilder)localObject).append(" upload video");
       QLog.i("GameResultUploadMgrForRemote_GameRC", 1, ((StringBuilder)localObject).toString());
     }
     Object localObject = GameResultUploadMgrForRemote.a(this.this$0);
     if (localObject != null) {
-      GameResultUploadMgrForRemote.a(this.this$0, (BaseQQAppInterface)localObject, this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_ComTencentAvgameGameresultGameResultUploadMgrForRemote$UploadInfo.jdField_b_of_type_JavaLangString);
+      GameResultUploadMgrForRemote.a(this.this$0, (BaseQQAppInterface)localObject, this.b, 1, this.a.b);
     }
   }
 }

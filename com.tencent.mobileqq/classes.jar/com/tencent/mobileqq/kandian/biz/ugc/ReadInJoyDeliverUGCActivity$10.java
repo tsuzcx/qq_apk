@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.kandian.biz.ugc;
 
 import android.view.View;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
@@ -12,34 +11,34 @@ class ReadInJoyDeliverUGCActivity$10
 {
   ReadInJoyDeliverUGCActivity$10(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
+    if (ReadInJoyDeliverUGCActivity.h(this.a)) {
       return;
     }
     ReadInJoyDeliverUGCActivity.b(this.a, true);
     paramView = this.a;
-    paramView.a = paramView.b;
+    paramView.p = paramView.q;
     if (paramInt != 0)
     {
       if (paramInt == 1)
       {
-        ReadInJoyDeliverUGCActivity.d(this.a);
+        ReadInJoyDeliverUGCActivity.j(this.a);
         RIJDeliverUGCReportUtil.d();
       }
     }
     else
     {
-      ReadInJoyDeliverUGCActivity.c(this.a);
+      ReadInJoyDeliverUGCActivity.i(this.a);
       RIJDeliverUGCReportUtil.c();
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", RIJTransMergeKanDianReport.c(), false);
+      PublicAccountReportUtils.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", RIJTransMergeKanDianReport.e(), false);
     }
-    ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
+    ReadInJoyDeliverUGCActivity.k(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverUGCActivity.10
  * JD-Core Version:    0.7.0.1
  */

@@ -8,32 +8,31 @@ import com.tencent.widget.XEditTextEx;
 public class EnterForSendHelper
   implements ILifeCycleHelper
 {
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  protected EnterForSendHelper.EnterForSend a;
-  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  protected boolean a;
+  protected boolean a = false;
+  protected EnterForSendHelper.EnterForSend b;
+  private final BaseChatPie c;
+  private final BaseActivity d;
   
   public EnterForSendHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.a();
+    this.c = paramBaseChatPie;
+    this.d = paramBaseChatPie.aX();
   }
   
   private void a(XEditTextEx paramXEditTextEx)
   {
-    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    this.jdField_a_of_type_Boolean = SettingCloneUtil.readValue(localBaseActivity, null, localBaseActivity.getString(2131694971), "qqsetting_enter_sendmsg_key", false);
-    if (this.jdField_a_of_type_Boolean) {
+    BaseActivity localBaseActivity = this.d;
+    this.a = SettingCloneUtil.readValue(localBaseActivity, null, localBaseActivity.getString(2131892698), "qqsetting_enter_sendmsg_key", false);
+    if (this.a) {
       paramXEditTextEx.setImeOptions(4);
     } else {
       paramXEditTextEx.setImeOptions(0);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperEnterForSendHelper$EnterForSend == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperEnterForSendHelper$EnterForSend = new EnterForSendHelper.EnterForSend(this, null);
+    if (this.b == null) {
+      this.b = new EnterForSendHelper.EnterForSend(this, null);
     }
-    paramXEditTextEx.setOnEditorActionListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperEnterForSendHelper$EnterForSend);
-    paramXEditTextEx.setOnKeyListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperEnterForSendHelper$EnterForSend);
+    paramXEditTextEx.setOnEditorActionListener(this.b);
+    paramXEditTextEx.setOnKeyListener(this.b);
   }
   
   public String getTag()
@@ -53,15 +52,15 @@ public class EnterForSendHelper
       if (paramInt != 10) {
         return;
       }
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a);
+      a(this.c.Y);
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.EnterForSendHelper
  * JD-Core Version:    0.7.0.1
  */

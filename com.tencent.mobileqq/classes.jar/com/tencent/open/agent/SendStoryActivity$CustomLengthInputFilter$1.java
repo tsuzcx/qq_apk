@@ -11,12 +11,12 @@ class SendStoryActivity$CustomLengthInputFilter$1
   
   public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
+    return this.a.getSpanStart(paramFriend2) - this.a.getSpanStart(paramFriend1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.SendStoryActivity.CustomLengthInputFilter.1
  * JD-Core Version:    0.7.0.1
  */

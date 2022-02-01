@@ -26,20 +26,15 @@ public class LbsManager
   implements IManager
 {
   public static BasicLocation a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private List<LbsManager.LbsUpdateListener> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  protected boolean a;
-  protected BasicLocation b;
-  private boolean b;
+  protected boolean b;
+  protected BasicLocation c;
+  private boolean d = false;
+  private List<LbsManager.LbsUpdateListener> e = new CopyOnWriteArrayList();
+  private Object f = new Object();
   
-  public LbsManager()
+  public static BasicLocation c()
   {
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public static BasicLocation a()
-  {
-    return jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation;
+    return a;
   }
   
   public void a()
@@ -49,39 +44,39 @@ public class LbsManager
   
   public void a(int paramInt)
   {
-    c();
+    e();
     new Handler().postDelayed(new LbsManager.2(this, paramInt), paramInt);
   }
   
   public void a(@NonNull BasicLocation paramBasicLocation, LbsManager.POIListRequestSession paramPOIListRequestSession, LbsManager.POIListRequestCallback paramPOIListRequestCallback)
   {
-    SLog.a("LbsManager", "requestPOIList([lat]%d, [lng]%d, [mars]%d, %s)", Integer.valueOf(paramBasicLocation.jdField_a_of_type_Int), Integer.valueOf(paramBasicLocation.b), Integer.valueOf(paramBasicLocation.c), paramPOIListRequestSession);
+    SLog.a("LbsManager", "requestPOIList([lat]%d, [lng]%d, [mars]%d, %s)", Integer.valueOf(paramBasicLocation.a), Integer.valueOf(paramBasicLocation.b), Integer.valueOf(paramBasicLocation.c), paramPOIListRequestSession);
     WeakReference localWeakReference = new WeakReference(paramPOIListRequestCallback);
     if (paramPOIListRequestSession == null)
     {
-      paramPOIListRequestCallback = LbsManager.POIListRequestSession.a();
+      paramPOIListRequestCallback = LbsManager.POIListRequestSession.b();
     }
     else
     {
       paramPOIListRequestCallback = paramPOIListRequestSession;
-      if (!TextUtils.isEmpty(paramPOIListRequestSession.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(paramPOIListRequestSession.d))
       {
-        paramPOIListRequestSession.jdField_b_of_type_Boolean = false;
+        paramPOIListRequestSession.c = false;
         paramPOIListRequestCallback = paramPOIListRequestSession;
       }
     }
     SLog.b("LbsManager", "requestPoiList");
     paramPOIListRequestSession = StoryApi.a("StorySvc.get_poi_list");
     qqstory_service.ReqGetPOIList localReqGetPOIList = new qqstory_service.ReqGetPOIList();
-    if (!TextUtils.isEmpty(paramPOIListRequestCallback.jdField_a_of_type_JavaLangString)) {
-      localReqGetPOIList.start_cookie.set(ByteStringMicro.copyFromUtf8(paramPOIListRequestCallback.jdField_a_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(paramPOIListRequestCallback.d)) {
+      localReqGetPOIList.start_cookie.set(ByteStringMicro.copyFromUtf8(paramPOIListRequestCallback.d));
     }
     localReqGetPOIList.coordinate.set(paramBasicLocation.c);
-    localReqGetPOIList.count.set(paramPOIListRequestCallback.jdField_a_of_type_Int);
-    if (!TextUtils.isEmpty(paramPOIListRequestCallback.jdField_b_of_type_JavaLangString)) {
-      localReqGetPOIList.keyword.set(ByteStringMicro.copyFromUtf8(paramPOIListRequestCallback.jdField_b_of_type_JavaLangString));
+    localReqGetPOIList.count.set(paramPOIListRequestCallback.a);
+    if (!TextUtils.isEmpty(paramPOIListRequestCallback.e)) {
+      localReqGetPOIList.keyword.set(ByteStringMicro.copyFromUtf8(paramPOIListRequestCallback.e));
     }
-    localReqGetPOIList.gps.lat.set(paramBasicLocation.jdField_a_of_type_Int);
+    localReqGetPOIList.gps.lat.set(paramBasicLocation.a);
     localReqGetPOIList.gps.lng.set(paramBasicLocation.b);
     localReqGetPOIList.gps.setHasFlag(true);
     paramBasicLocation = new Bundle();
@@ -90,58 +85,58 @@ public class LbsManager
   
   public void a(@NonNull LbsManager.LbsUpdateListener paramLbsUpdateListener)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramLbsUpdateListener))
+    if (!this.e.contains(paramLbsUpdateListener))
     {
       SLog.a("LbsManager", "registerLbsListener:%s", paramLbsUpdateListener.getClass().getName());
-      this.jdField_a_of_type_JavaUtilList.add(paramLbsUpdateListener);
+      this.e.add(paramLbsUpdateListener);
     }
   }
   
   protected void a(boolean paramBoolean, BasicLocation paramBasicLocation)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext()) {
       ((LbsManager.LbsUpdateListener)localIterator.next()).a(paramBoolean, paramBasicLocation);
     }
   }
   
-  public BasicLocation b()
-  {
-    return this.jdField_b_of_type_ComTencentBizQqstoryModelLbsBasicLocation;
-  }
-  
   public void b()
   {
     SLog.b("LbsManager", "onDestroy");
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.e.clear();
   }
   
   public void b(@NonNull LbsManager.LbsUpdateListener paramLbsUpdateListener)
   {
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramLbsUpdateListener))
+    if (this.e.contains(paramLbsUpdateListener))
     {
       SLog.a("LbsManager", "unregisterLbsListener:%s", paramLbsUpdateListener.getClass().getName());
-      this.jdField_a_of_type_JavaUtilList.remove(paramLbsUpdateListener);
+      this.e.remove(paramLbsUpdateListener);
     }
   }
   
-  public void c()
+  public BasicLocation d()
   {
-    this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Boolean)
+    return this.c;
+  }
+  
+  public void e()
+  {
+    this.d = false;
+    if (this.b)
     {
       SLog.d("LbsManager", "is locating..... return directly.");
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.f)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
         SLog.d("LbsManager", "is locating..... return directly.");
         return;
       }
       SLog.b("LbsManager", "requestLbs...");
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new LbsManager.1(this, 0, true, false, 60000L, false, false, "NewStoryTakeVideoActivity"));
       return;
     }
@@ -149,7 +144,7 @@ public class LbsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.lbs.LbsManager
  * JD-Core Version:    0.7.0.1
  */

@@ -6,18 +6,18 @@ import NS_COMM.COMM.StCommonExt;
 public class CertifiedAccountGetMsgTopRequest
   extends ProtoBufRequest
 {
-  private CertifiedAccountRead.StGetMsgPageTopReq a = new CertifiedAccountRead.StGetMsgPageTopReq();
+  private CertifiedAccountRead.StGetMsgPageTopReq b = new CertifiedAccountRead.StGetMsgPageTopReq();
   
   public CertifiedAccountGetMsgTopRequest(COMM.StCommonExt paramStCommonExt)
   {
     if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+      this.b.extInfo.set(paramStCommonExt);
     }
   }
   
   public byte[] a()
   {
-    return this.a.toByteArray();
+    return this.b.toByteArray();
   }
 }
 

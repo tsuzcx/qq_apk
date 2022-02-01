@@ -6,13 +6,13 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils.TruncateAt;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
@@ -24,6 +24,7 @@ import com.tencent.mobileqq.emoticonview.IFavoriteEmoticonInfo;
 import com.tencent.mobileqq.emoticonview.IPicEmoticonInfo;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.mobileqq.utils.SimpleModeHelper;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -38,9 +39,9 @@ public class EmotionBatchForwardOption
   public EmotionBatchForwardOption(Intent paramIntent)
   {
     super(paramIntent);
-    this.jdField_a_of_type_JavaUtilArrayList = paramIntent.getStringArrayListExtra("FAV_PATH_OR_ID");
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.a = paramIntent.getStringArrayListExtra("FAV_PATH_OR_ID");
+    if (this.a == null) {
+      this.a = new ArrayList();
     }
   }
   
@@ -107,7 +108,7 @@ public class EmotionBatchForwardOption
   private void a(ArrayList<String> paramArrayList)
   {
     Intent localIntent = new Intent();
-    localIntent.setClass(this.jdField_a_of_type_AndroidAppActivity, MiniChatActivity.class);
+    localIntent.setClass(this.s, MiniChatActivity.class);
     localIntent.addFlags(268435456);
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("minaio_scaled_ration", a(0.78F));
@@ -115,39 +116,40 @@ public class EmotionBatchForwardOption
     localIntent.putExtra("multi_forward_type", 4);
     localIntent.putStringArrayListExtra("FAV_PATH_OR_ID", paramArrayList);
     localIntent.putExtra("key_mini_from", 4);
-    PublicFragmentActivity.Launcher.a(this.jdField_a_of_type_AndroidAppActivity, localIntent, MiniChatActivity.class, MiniMultiForwardFragment.class);
+    PublicFragmentActivity.Launcher.a(this.s, localIntent, MiniChatActivity.class, MiniMultiForwardFragment.class);
   }
   
   protected View a()
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidAppActivity.getString(2131691945);
+    Object localObject1 = this.s.getString(2131888912);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+    ((StringBuilder)localObject2).append(this.a.size());
     Object localObject3 = String.format((String)localObject1, new Object[] { ((StringBuilder)localObject2).toString() });
-    localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
+    localObject1 = new LinearLayout(this.s);
     ((LinearLayout)localObject1).setOrientation(0);
-    localObject2 = new EllipsizingTextView(this.jdField_a_of_type_AndroidAppActivity, null);
+    localObject2 = new EllipsizingTextView(this.s, null);
     ((EllipsizingTextView)localObject2).setText(new QQText((CharSequence)localObject3, 3, 16));
     ((EllipsizingTextView)localObject2).setMaxLines(2);
     ((EllipsizingTextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-    ((EllipsizingTextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131165661));
+    ((EllipsizingTextView)localObject2).setTextColor(this.s.getResources().getColorStateList(2131166121));
     ((EllipsizingTextView)localObject2).setTextSize(14.0F);
-    localObject3 = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    ((ImageView)localObject3).setImageResource(2130840133);
+    localObject3 = new ImageView(this.s);
+    ((ImageView)localObject3).setImageResource(2130840437);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2, 1.0F);
     localLayoutParams.gravity = 17;
     ((LinearLayout)localObject1).addView((View)localObject2, localLayoutParams);
-    localObject2 = new LinearLayout.LayoutParams(ViewUtils.a(8.0F), ViewUtils.a(14.0F));
-    ((LinearLayout.LayoutParams)localObject2).gravity = 17;
-    ((LinearLayout.LayoutParams)localObject2).setMargins(ViewUtils.a(3.0F), 0, 0, 0);
-    ((LinearLayout)localObject1).addView((View)localObject3, (ViewGroup.LayoutParams)localObject2);
+    localLayoutParams = new LinearLayout.LayoutParams(ViewUtils.dip2px(8.0F), ViewUtils.dip2px(14.0F));
+    localLayoutParams.gravity = 17;
+    localLayoutParams.setMargins(ViewUtils.dip2px(3.0F), 0, 0, 0);
+    SimpleModeHelper.a((TextView)localObject2, (ImageView)localObject3, localLayoutParams);
+    ((LinearLayout)localObject1).addView((View)localObject3, localLayoutParams);
     ((LinearLayout)localObject1).setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
-    localObject2 = new View(this.jdField_a_of_type_AndroidAppActivity);
-    ((View)localObject2).setBackgroundResource(2130840143);
+    localObject2 = new View(this.s);
+    ((View)localObject2).setBackgroundResource(2130840448);
     ((View)localObject2).setOnClickListener(new EmotionBatchForwardOption.1(this));
-    localObject3 = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
-    int i = ViewUtils.a(20.0F);
+    localObject3 = new FrameLayout(this.s);
+    int i = ViewUtils.dip2px(20.0F);
     ((FrameLayout)localObject3).setPadding(0, i, 0, i);
     ((FrameLayout)localObject3).setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
     ((FrameLayout)localObject3).addView((View)localObject2, new FrameLayout.LayoutParams(-1, -1, 16));
@@ -155,14 +157,14 @@ public class EmotionBatchForwardOption
     return localObject3;
   }
   
-  protected void a()
+  protected void b()
   {
     ThreadManagerV2.executeOnSubThread(new EmotionBatchForwardOption.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.EmotionBatchForwardOption
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ class QQFileModel$1
   
   public void a()
   {
-    QQFileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateQQFileModel, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    QQFileModel.a(this.c, this.a, this.b);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.recreate.QQFileModel.1
  * JD-Core Version:    0.7.0.1
  */

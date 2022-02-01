@@ -22,14 +22,14 @@ public class MessageSvcPushNotify
       if ((paramObject instanceof RequestPushNotify))
       {
         RequestPushNotify localRequestPushNotify = (RequestPushNotify)paramObject;
-        paramMessageHandler.a.userActiveStatus = localRequestPushNotify.wUserActive;
+        paramMessageHandler.n.userActiveStatus = localRequestPushNotify.wUserActive;
         String str1;
         boolean bool1;
         if ((localRequestPushNotify.wGeneralFlag & 0x8) == 8)
         {
           str1 = Long.toString(localRequestPushNotify.lBindedUin);
           if ((localRequestPushNotify.wGeneralFlag & 0x10) == 16) {
-            paramMessageHandler.a.getMsgHandler().a().a(localRequestPushNotify);
+            paramMessageHandler.n.getMsgHandler().C().a(localRequestPushNotify);
           }
           bool1 = true;
         }
@@ -75,10 +75,10 @@ public class MessageSvcPushNotify
           QLog.d("SUB_ACCOUNT", 2, paramFromServiceMsg.toString());
         }
         if (str2 != null) {
-          ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).loadServerMessage(paramMessageHandler.a, str2, true);
+          ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).loadServerMessage(paramMessageHandler.n, str2, true);
         }
       }
-      else if (paramMessageHandler.a.mAutomator.a())
+      else if (paramMessageHandler.n.mAutomator.e())
       {
         paramMessageHandler.a(paramFromServiceMsg, paramObject);
       }
@@ -87,7 +87,7 @@ public class MessageSvcPushNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MessageSvcPushNotify
  * JD-Core Version:    0.7.0.1
  */

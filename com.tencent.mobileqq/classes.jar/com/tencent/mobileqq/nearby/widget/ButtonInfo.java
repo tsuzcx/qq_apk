@@ -4,16 +4,15 @@ import android.graphics.drawable.Drawable;
 
 public class ButtonInfo
 {
-  public int a;
-  public Drawable a;
-  public NearbyCustomDialog.OnClickListener a;
   public String a;
+  public Drawable b;
+  public int c = -1;
+  public NearbyCustomDialog.OnClickListener d;
   
   public ButtonInfo(String paramString, NearbyCustomDialog.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetNearbyCustomDialog$OnClickListener = paramOnClickListener;
+    this.a = paramString;
+    this.d = paramOnClickListener;
     a();
   }
   
@@ -21,7 +20,7 @@ public class ButtonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.ButtonInfo
  * JD-Core Version:    0.7.0.1
  */

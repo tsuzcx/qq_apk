@@ -16,83 +16,82 @@ import com.tencent.mobileqq.activity.richmedia.trimvideo.video.utils.ThumbnailUt
 public class FrameLoader
   extends ImageLoader<Integer>
 {
-  private int jdField_a_of_type_Int;
-  private MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
-  private LruCache<Integer, Drawable> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(180);
-  public FrameLoader.GetFrameReport a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int c;
+  public FrameLoader.GetFrameReport a = new FrameLoader.GetFrameReport();
+  private MediaMetadataRetriever b;
+  private String c;
   private int d;
+  private int e;
+  private int f;
+  private int g;
+  private boolean h;
+  private boolean i = false;
+  private LruCache<Integer, Drawable> j = new LruCache(180);
   
   public FrameLoader(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     super(paramString);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader$GetFrameReport = new FrameLoader.GetFrameReport();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramInt1;
+    this.e = paramInt2;
+    this.h = paramBoolean;
   }
   
   public LruCache<Integer, Drawable> a()
   {
-    return this.jdField_a_of_type_AndroidSupportV4UtilLruCache;
+    return this.j;
   }
   
   public Task a(ImageView paramImageView, Integer paramInteger)
   {
-    return new FrameLoader.FrameTask(paramImageView, this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever, paramInteger, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.d, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader$GetFrameReport, this.jdField_b_of_type_Boolean);
-  }
-  
-  @TargetApi(10)
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
-    MediaMetadataRetriever localMediaMetadataRetriever = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
-    if (localMediaMetadataRetriever != null) {
-      localMediaMetadataRetriever.release();
-    }
+    return new FrameLoader.FrameTask(paramImageView, this.b, paramInteger, this.d, this.e, this.g, this.f, this.h, this.a, this.i);
   }
   
   @TargetApi(10)
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.d = paramInt1;
+    this.g = paramInt1;
     SLog.a("Q.qqstory.frameWidget.FrameLoader", "initVideo,duration=%s,path=%s", Integer.valueOf(paramInt1), paramString);
     try
     {
-      if (this.jdField_a_of_type_Boolean) {
-        ThumbnailUtils.a(paramString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, 0, 0, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+      if (this.h) {
+        ThumbnailUtils.a(paramString, this.e, this.d, 0, 0, this.e, this.d);
       } else {
-        ThumbnailUtils.a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        ThumbnailUtils.a(paramString, this.d, this.e, 0, 0, this.d, this.e);
       }
-      this.jdField_b_of_type_Boolean = true;
+      this.i = true;
     }
     catch (Exception localException1)
     {
-      this.jdField_b_of_type_Boolean = false;
+      this.i = false;
       SLog.c("Q.qqstory.frameWidget.FrameLoader", "ThumbnailUtils init failed! e:%s", localException1);
     }
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = new MediaMetadataRetriever();
-      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.setDataSource(paramString);
+      this.b = new MediaMetadataRetriever();
+      this.b.setDataSource(paramString);
       if (Build.VERSION.SDK_INT >= 26) {
-        this.jdField_b_of_type_Boolean = false;
+        this.i = false;
       }
     }
     catch (Exception localException2)
     {
       SLog.e("Q.qqstory.frameWidget.FrameLoader", StringAppendTool.a(new Object[] { "MediaMetadataRetriever init failed! mVideoPath = ", paramString, "  e=", localException2 }));
       StoryReportor.b("story_local_video", "frame_loader", 0, 0, new String[] { paramString, localException2.getMessage() });
-      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = null;
+      this.b = null;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt2;
-    c();
+    this.c = paramString;
+    this.f = paramInt2;
+    d();
+  }
+  
+  @TargetApi(10)
+  public void b()
+  {
+    super.b();
+    this.j.evictAll();
+    MediaMetadataRetriever localMediaMetadataRetriever = this.b;
+    if (localMediaMetadataRetriever != null) {
+      localMediaMetadataRetriever.release();
+    }
   }
 }
 

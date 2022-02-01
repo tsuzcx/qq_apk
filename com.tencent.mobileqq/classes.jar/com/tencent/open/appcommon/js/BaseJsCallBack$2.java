@@ -10,12 +10,12 @@ class BaseJsCallBack$2
   
   public void run()
   {
-    MyAppApi.a().a(this.this$0.activity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.b);
+    MyAppApi.l().a(this.this$0.activity, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.BaseJsCallBack.2
  * JD-Core Version:    0.7.0.1
  */

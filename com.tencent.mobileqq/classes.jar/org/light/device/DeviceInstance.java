@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.google.gson.Gson;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -15,7 +16,9 @@ import org.light.utils.LightLogUtil;
 
 public final class DeviceInstance
 {
+  public static final String BRAND_HUAWEI = "HUAWEI";
   public static final String BRAND_MEIZU = "MEIZU";
+  public static final String BRAND_OPPO = "OPPO";
   public static final String BRAND_VIVO = "VIVO";
   public static final String BRAND_XIAOMI = "XIAOMI";
   public static final String MODEL_COOLPAD_8150 = "8150";
@@ -27,6 +30,7 @@ public final class DeviceInstance
   public static final String NUBIA_NX511J = "NUBIA_NX511J";
   private static String TAG = "DeviceInstance";
   private String mDeviceName = "";
+  private String mDeviceVersion = "";
   private ConcurrentHashMap<String, String> mModelMap = new ConcurrentHashMap();
   private ConcurrentHashMap<String, String> mSocMap = new ConcurrentHashMap();
   
@@ -35,9 +39,45 @@ public final class DeviceInstance
     showDeviceInfo();
   }
   
+  private String getHuaweiEMUIVersion()
+  {
+    return getOSVersion("ro.build.version.emui");
+  }
+  
   public static DeviceInstance getInstance()
   {
     return DeviceInstance.InstanceHolder.access$100();
+  }
+  
+  private String getOSVersion(String paramString)
+  {
+    try
+    {
+      Class localClass = Class.forName("android.os.SystemProperties");
+      paramString = (String)localClass.getDeclaredMethod("get", new Class[] { String.class }).invoke(localClass, new Object[] { paramString });
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      label39:
+      break label39;
+    }
+    return "";
+  }
+  
+  private String getOppoColorOSVersion()
+  {
+    return getOSVersion("ro.build.version.opporom");
+  }
+  
+  private String getVivoOSVersion()
+  {
+    return getOSVersion("ro.vivo.os.version");
+  }
+  
+  private String getXiaomiMIUIVersion()
+  {
+    return getOSVersion("ro.miui.ui.version.name");
   }
   
   private void initModels(Context paramContext, String paramString)
@@ -294,6 +334,42 @@ public final class DeviceInstance
     return paramString;
   }
   
+  public String getDeviceVersion()
+  {
+    if (TextUtils.isEmpty(this.mDeviceVersion)) {
+      if (isHuaweiDevice())
+      {
+        this.mDeviceVersion = getHuaweiEMUIVersion();
+      }
+      else
+      {
+        StringBuilder localStringBuilder;
+        if (isOppoDevice())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("ColorOS_");
+          localStringBuilder.append(getOppoColorOSVersion());
+          this.mDeviceVersion = localStringBuilder.toString();
+        }
+        else if (isXiaoMiDevice())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("MIUI_");
+          localStringBuilder.append(getXiaomiMIUIVersion());
+          this.mDeviceVersion = localStringBuilder.toString();
+        }
+        else if (isViVoDevice())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("VivoOS_");
+          localStringBuilder.append(getVivoOSVersion());
+          this.mDeviceVersion = localStringBuilder.toString();
+        }
+      }
+    }
+    return this.mDeviceVersion;
+  }
+  
   public int getMaxMemorySizeInKB()
   {
     String str = getDeviceName().toLowerCase().trim();
@@ -317,111 +393,39 @@ public final class DeviceInstance
     initSOCs(paramContext, paramString);
   }
   
-  public boolean isMeiZuDevice()
+  public boolean isHuaweiDevice()
   {
-    LightLogUtil.d(TAG, "[isMeiZuDevice] + BEGIN");
     String str = getDeviceName();
-    boolean bool;
-    if ((!TextUtils.isEmpty(str)) && (str.startsWith("MEIZU"))) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    str = TAG;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[isMeiZuDevice] + END, isMeizu = ");
-    localStringBuilder.append(bool);
-    LightLogUtil.d(str, localStringBuilder.toString());
-    return bool;
+    return (!TextUtils.isEmpty(str)) && (str.startsWith("HUAWEI"));
   }
   
-  public boolean isOppoX909Device()
+  public boolean isMeiZuDevice()
   {
     String str = getDeviceName();
-    return (!TextUtils.isEmpty(str)) && (str.equals("OPPO_X909"));
+    return (!TextUtils.isEmpty(str)) && (str.startsWith("MEIZU"));
+  }
+  
+  public boolean isOppoDevice()
+  {
+    String str = getDeviceName();
+    return (!TextUtils.isEmpty(str)) && (str.startsWith("OPPO"));
   }
   
   public boolean isViVoDevice()
   {
-    LightLogUtil.d(TAG, "[isViVoDevice] + BEGIN");
     String str = getDeviceName();
-    boolean bool;
-    if ((!TextUtils.isEmpty(str)) && (str.startsWith("VIVO"))) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    str = TAG;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[isViVoDevice] + END, isViVo = ");
-    localStringBuilder.append(bool);
-    LightLogUtil.d(str, localStringBuilder.toString());
-    return bool;
-  }
-  
-  public boolean isVivoY23LDevice()
-  {
-    String str = getDeviceName();
-    return (!TextUtils.isEmpty(str)) && (str.equals("VIVO_vivo_Y23L"));
+    return (!TextUtils.isEmpty(str)) && (str.startsWith("VIVO"));
   }
   
   public boolean isXiaoMiDevice()
   {
-    LightLogUtil.d(TAG, "[isXiaoMiDevice] + BEGIN");
     String str = getDeviceName();
-    boolean bool;
-    if ((!TextUtils.isEmpty(str)) && (str.startsWith("XIAOMI"))) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    str = TAG;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[isXiaoMiDevice] + END, isXiaomi = ");
-    localStringBuilder.append(bool);
-    LightLogUtil.d(str, localStringBuilder.toString());
-    return bool;
-  }
-  
-  public boolean isXiaoMiMixDevice()
-  {
-    LightLogUtil.d(TAG, "[isXiaoMiMixDevice] + BEGIN");
-    String str = getDeviceName();
-    boolean bool;
-    if ((!TextUtils.isEmpty(str)) && (str.equals("XIAOMI_MIX"))) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    str = TAG;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[isXiaoMiMixDevice] + END, isXiaoMiMix = ");
-    localStringBuilder.append(bool);
-    LightLogUtil.d(str, localStringBuilder.toString());
-    return bool;
-  }
-  
-  public boolean isXiaoMiRedmi6Device()
-  {
-    LightLogUtil.d(TAG, "[isXiaoMiRedmi6Device] + BEGIN");
-    String str = getDeviceName();
-    boolean bool;
-    if ((!TextUtils.isEmpty(str)) && (str.contains("Redmi_6"))) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    str = TAG;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[isXiaoMiRedmi6Device] + END, isRedmi6 = ");
-    localStringBuilder.append(bool);
-    LightLogUtil.d(str, localStringBuilder.toString());
-    return bool;
+    return (!TextUtils.isEmpty(str)) && (str.startsWith("XIAOMI"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.device.DeviceInstance
  * JD-Core Version:    0.7.0.1
  */

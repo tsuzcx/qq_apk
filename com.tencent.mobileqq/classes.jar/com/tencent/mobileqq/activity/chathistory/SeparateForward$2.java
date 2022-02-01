@@ -19,15 +19,15 @@ class SeparateForward$2
   protected void onBatchTroopCardDefaultNick(boolean paramBoolean, Object paramObject)
   {
     SeparateForward.a(this.a).removeMessages(1);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+    if ((this.a.a != null) && (this.a.a.isShowing()))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if (this.a.a != null) {
+        this.a.a.dismiss();
       }
-      MultiMsgManager.a().b.clear();
+      MultiMsgManager.a().d.clear();
       if ((paramBoolean) && (paramObject != null))
       {
-        MultiMsgManager.a().b.putAll((Map)paramObject);
+        MultiMsgManager.a().d.putAll((Map)paramObject);
         if (QLog.isDevelopLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -40,16 +40,16 @@ class SeparateForward$2
       {
         QLog.d("MultiMsg_TAG", 4, "onBatchTroopCardDefaultNick failed");
       }
-      if (MultiMsgManager.a().b.size() == 0)
+      if (MultiMsgManager.a().d.size() == 0)
       {
-        paramObject = (QBaseActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+        paramObject = (QBaseActivity)this.a.b.get();
         if (paramObject != null) {
-          QQToast.a(paramObject, 2131698526, 0).b(paramObject.getTitleBarHeight());
+          QQToast.makeText(paramObject, 2131896472, 0).show(paramObject.getTitleBarHeight());
         }
       }
       else
       {
-        this.a.a((Map)paramObject, MultiMsgManager.a().a);
+        this.a.a((Map)paramObject, MultiMsgManager.a().c);
       }
       return;
     }
@@ -58,7 +58,7 @@ class SeparateForward$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.SeparateForward.2
  * JD-Core Version:    0.7.0.1
  */

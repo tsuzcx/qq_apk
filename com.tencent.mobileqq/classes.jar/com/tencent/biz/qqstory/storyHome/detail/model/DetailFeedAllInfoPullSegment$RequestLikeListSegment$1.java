@@ -16,7 +16,7 @@ class DetailFeedAllInfoPullSegment$RequestLikeListSegment$1
   
   public void a(@NonNull DetailLikeListLoader.GetLikeListRequest paramGetLikeListRequest, @Nullable DetailLikeListLoader.GetLikeListResponse paramGetLikeListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    if (this.a.isJobCancelled())
     {
       SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
       return;
@@ -24,27 +24,27 @@ class DetailFeedAllInfoPullSegment$RequestLikeListSegment$1
     if ((paramGetLikeListResponse != null) && (!paramErrorMessage.isFail()))
     {
       boolean bool;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$RequestLikeListSegment.a == 0) {
+      if (this.c.a == 0) {
         bool = false;
       } else {
         bool = true;
       }
-      ((LikeManager)SuperManager.a(15)).a(paramGetLikeListResponse.a, this.jdField_a_of_type_JavaLangString, bool, true);
-      paramGetLikeListRequest = new DetailFeedAllInfoPullSegment.LikeData(bool, paramGetLikeListResponse.a, paramGetLikeListResponse.b, paramGetLikeListResponse.c);
+      ((LikeManager)SuperManager.a(15)).a(paramGetLikeListResponse.e, this.b, bool, true);
+      paramGetLikeListRequest = new DetailFeedAllInfoPullSegment.LikeData(bool, paramGetLikeListResponse.e, paramGetLikeListResponse.a, paramGetLikeListResponse.b);
       try
       {
-        DetailFeedAllInfoPullSegment.RequestLikeListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$RequestLikeListSegment, paramGetLikeListRequest);
+        DetailFeedAllInfoPullSegment.RequestLikeListSegment.a(this.c, paramGetLikeListRequest);
         return;
       }
       catch (NullPointerException paramGetLikeListRequest)
       {
         SLog.c("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "notifyResult error :%s", paramGetLikeListRequest);
-        DetailFeedAllInfoPullSegment.RequestLikeListSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$RequestLikeListSegment, new ErrorMessage());
+        DetailFeedAllInfoPullSegment.RequestLikeListSegment.b(this.c, new ErrorMessage());
         return;
       }
     }
     SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
-    DetailFeedAllInfoPullSegment.RequestLikeListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$RequestLikeListSegment, paramErrorMessage);
+    DetailFeedAllInfoPullSegment.RequestLikeListSegment.a(this.c, paramErrorMessage);
   }
 }
 

@@ -18,36 +18,35 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class MemoriesProfilePresenter
   implements IEventReceiver
 {
-  private int jdField_a_of_type_Int = -1;
-  public QQUserUIItem a;
-  private MemoriesProfilePresenter.GetCollectListEventReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetCollectListEventReceiver;
-  private MemoriesProfilePresenter.GetShareGroupListReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetShareGroupListReceiver;
-  private MemoriesProfilePresenter.GetYearNodeListReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetYearNodeListReceiver;
-  private MemoriesProfilePresenter.ProfilePresenterListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$ProfilePresenterListener;
-  private MemoriesProfilePresenter.UpdateUserInfoEventReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$UpdateUserInfoEventReceiver;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new MemoriesProfilePresenter.1(this);
   public String a;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private int b = -1;
+  public QQUserUIItem b = null;
+  private int c = -1;
+  private int d = -1;
+  private MemoriesProfilePresenter.ProfilePresenterListener e;
+  private AtomicBoolean f = new AtomicBoolean(false);
+  private MemoriesProfilePresenter.UpdateUserInfoEventReceiver g;
+  private MemoriesProfilePresenter.GetCollectListEventReceiver h;
+  private MemoriesProfilePresenter.GetShareGroupListReceiver i;
+  private MemoriesProfilePresenter.GetYearNodeListReceiver j;
+  private FriendListObserver k = new MemoriesProfilePresenter.1(this);
   
   public MemoriesProfilePresenter(String paramString, @NonNull MemoriesProfilePresenter.ProfilePresenterListener paramProfilePresenterListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = null;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$ProfilePresenterListener = paramProfilePresenterListener;
+    this.a = paramString;
+    this.e = paramProfilePresenterListener;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$UpdateUserInfoEventReceiver = new MemoriesProfilePresenter.UpdateUserInfoEventReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$UpdateUserInfoEventReceiver);
-    PlayModeUtils.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetCollectListEventReceiver = new MemoriesProfilePresenter.GetCollectListEventReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetCollectListEventReceiver);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetShareGroupListReceiver = new MemoriesProfilePresenter.GetShareGroupListReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetShareGroupListReceiver);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetYearNodeListReceiver = new MemoriesProfilePresenter.GetYearNodeListReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetYearNodeListReceiver);
+    this.g = new MemoriesProfilePresenter.UpdateUserInfoEventReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.g);
+    PlayModeUtils.b().addObserver(this.k);
+    this.h = new MemoriesProfilePresenter.GetCollectListEventReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.h);
+    this.i = new MemoriesProfilePresenter.GetShareGroupListReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.i);
+    this.j = new MemoriesProfilePresenter.GetYearNodeListReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.j);
   }
   
   public void a(boolean paramBoolean)
@@ -55,27 +54,27 @@ public class MemoriesProfilePresenter
     SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "request refresh user info data. from cache : %s.", Boolean.valueOf(paramBoolean));
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((UserManager)SuperManager.a(2)).b(this.jdField_a_of_type_JavaLangString);
-      SLog.a("Q.qqstory.memories.MemoriesProfilePresenter", "get user info from cache: %s.", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+      this.b = ((UserManager)SuperManager.a(2)).b(this.a);
+      SLog.a("Q.qqstory.memories.MemoriesProfilePresenter", "get user info from cache: %s.", this.b);
       return;
     }
-    SLog.a("Q.qqstory.memories.MemoriesProfilePresenter", "request user info by uid: %s.", this.jdField_a_of_type_JavaLangString);
-    new GetUserInfoHandler().a(1, new QQUserUIItem.UserID("", this.jdField_a_of_type_JavaLangString), String.valueOf(hashCode()), true, true);
+    SLog.a("Q.qqstory.memories.MemoriesProfilePresenter", "request user info by uid: %s.", this.a);
+    new GetUserInfoHandler().a(1, new QQUserUIItem.UserID("", this.a), String.valueOf(hashCode()), true, true);
   }
   
   public void b()
   {
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$UpdateUserInfoEventReceiver);
-    PlayModeUtils.a().removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetCollectListEventReceiver);
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetShareGroupListReceiver);
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetYearNodeListReceiver);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    StoryDispatcher.a().unRegisterSubscriber(this.g);
+    PlayModeUtils.b().removeObserver(this.k);
+    StoryDispatcher.a().unRegisterSubscriber(this.h);
+    StoryDispatcher.a().unRegisterSubscriber(this.i);
+    StoryDispatcher.a().unRegisterSubscriber(this.j);
+    this.f.set(true);
   }
   
   public boolean isValidate()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() ^ true;
+    return this.f.get() ^ true;
   }
 }
 

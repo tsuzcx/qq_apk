@@ -13,19 +13,19 @@ class QzoneEditPicturePartScheduleDelete$1
   public void onClick(View paramView)
   {
     StoryReportor.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
-    if (!this.a.a().b())
+    if (!this.a.b().e())
     {
       QzoneEditPicturePartScheduleDelete.a(this.a);
       return;
     }
-    this.a.a().a(false);
-    QzoneEditPicturePartScheduleDelete.a(this.a).setSelected(false);
-    this.a.a().a(3003);
+    this.a.b().a(false);
+    QzoneEditPicturePartScheduleDelete.b(this.a).setSelected(false);
+    this.a.b().a(3003);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.QzoneEditPicturePartScheduleDelete.1
  * JD-Core Version:    0.7.0.1
  */

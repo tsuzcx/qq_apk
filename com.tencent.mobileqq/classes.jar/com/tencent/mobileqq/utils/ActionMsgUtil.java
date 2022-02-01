@@ -43,7 +43,7 @@ public class ActionMsgUtil
       try
       {
         paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
-        localAppShareCookie.jdField_a_of_type_Int = paramArrayOfByte.get();
+        localAppShareCookie.a = paramArrayOfByte.get();
         if (paramArrayOfByte.get() != 0) {
           break label203;
         }
@@ -55,18 +55,18 @@ public class ActionMsgUtil
           byte[] arrayOfByte = new byte[paramArrayOfByte.getShort()];
           paramArrayOfByte.get(arrayOfByte);
           localAppShareCookie.c = i;
-          localAppShareCookie.jdField_a_of_type_JavaLangString = new String(arrayOfByte);
+          localAppShareCookie.d = new String(arrayOfByte);
           if (QLog.isColorLevel())
           {
             paramArrayOfByte = new StringBuilder();
             paramArrayOfByte.append("decodeAppShareCookie succes appShareCookie.buissnessType =");
-            paramArrayOfByte.append(localAppShareCookie.jdField_a_of_type_Int);
+            paramArrayOfByte.append(localAppShareCookie.a);
             paramArrayOfByte.append("appShareCookie.action");
             paramArrayOfByte.append(localAppShareCookie.b);
             paramArrayOfByte.append("appShareCookie.actionType");
             paramArrayOfByte.append(localAppShareCookie.c);
             paramArrayOfByte.append("appShareCookie.actionValue");
-            paramArrayOfByte.append(localAppShareCookie.jdField_a_of_type_JavaLangString);
+            paramArrayOfByte.append(localAppShareCookie.d);
             QLog.d("ActionMsgUtil", 2, paramArrayOfByte.toString());
             return localAppShareCookie;
           }
@@ -139,10 +139,15 @@ public class ActionMsgUtil
   {
     return paramInt == -2039;
   }
+  
+  public static boolean f(int paramInt)
+  {
+    return paramInt == -8018;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ActionMsgUtil
  * JD-Core Version:    0.7.0.1
  */

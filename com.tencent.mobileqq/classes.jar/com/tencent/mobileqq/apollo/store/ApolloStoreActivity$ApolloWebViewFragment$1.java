@@ -22,9 +22,9 @@ class ApolloStoreActivity$ApolloWebViewFragment$1
   public boolean interceptInitUIFrame()
   {
     this.webViewKernelCallBack.onShowPreview(new Bundle());
-    this.a.getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.setClickable(false);
-    this.a.getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(null);
-    this.a.getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.getSwiftTitleUI().o.setClickable(false);
+    this.a.getSwiftTitleUI().o.setOnTouchListener(null);
+    this.a.getSwiftTitleUI().d.setVisibility(8);
     if (this.a.getActivity() != null) {
       ImmersiveUtils.clearCoverForStatus(this.a.getActivity().getWindow(), true);
     }
@@ -45,7 +45,7 @@ class ApolloStoreActivity$ApolloWebViewFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreActivity.ApolloWebViewFragment.1
  * JD-Core Version:    0.7.0.1
  */

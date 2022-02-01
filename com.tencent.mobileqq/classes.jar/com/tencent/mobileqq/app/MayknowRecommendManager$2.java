@@ -14,13 +14,13 @@ class MayknowRecommendManager$2
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("key_is_success", paramBoolean);
     localBundle.putString("key_req_uin", paramString);
-    paramString = MayknowRecommendManager.a(this.a).obtainMessage(9, 0, 0, localBundle);
-    MayknowRecommendManager.a(this.a).sendMessage(paramString);
+    paramString = MayknowRecommendManager.b(this.a).obtainMessage(9, 0, 0, localBundle);
+    MayknowRecommendManager.b(this.a).sendMessage(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MayknowRecommendManager.2
  * JD-Core Version:    0.7.0.1
  */

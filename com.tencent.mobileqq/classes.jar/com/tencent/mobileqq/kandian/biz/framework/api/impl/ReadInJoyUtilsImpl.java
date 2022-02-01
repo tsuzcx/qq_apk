@@ -14,11 +14,11 @@ import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.kandian.base.utils.RIJDeviceUtil;
+import com.tencent.mobileqq.kandian.base.utils.RIJDisplayStyleManager;
 import com.tencent.mobileqq.kandian.base.utils.RIJNetworkUtils;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
-import com.tencent.mobileqq.kandian.base.utils.api.IRIJDisplayStyleManager;
-import com.tencent.mobileqq.kandian.base.view.api.IKanDianOptUtils;
+import com.tencent.mobileqq.kandian.base.view.api.impl.KanDianOptUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyLegacyUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.fastweb.CallCommentJs;
@@ -42,7 +42,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.KandianRedDotInfo;
 import com.tencent.mobileqq.kandian.repo.follow.FollowListInfoModule;
 import com.tencent.mobileqq.kandian.repo.follow.IFollowStatusObserver;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
 import kotlin.Metadata;
@@ -67,7 +66,7 @@ public final class ReadInJoyUtilsImpl
   public void calcVisibleItemCount(float paramFloat, @NotNull Resources paramResources)
   {
     Intrinsics.checkParameterIsNotNull(paramResources, "res");
-    ((IRIJDisplayStyleManager)QRoute.api(IRIJDisplayStyleManager.class)).calcVisibleItemCount(paramFloat, paramResources);
+    RIJDisplayStyleManager.INSTANCE.calcVisibleItemCount(paramFloat, paramResources);
   }
   
   public boolean canJumpFeedsForHasKeyguard(@NotNull MessageRecord paramMessageRecord)
@@ -99,7 +98,7 @@ public final class ReadInJoyUtilsImpl
   @NotNull
   public String getAccount()
   {
-    String str = RIJQQAppInterfaceUtil.a();
+    String str = RIJQQAppInterfaceUtil.d();
     Intrinsics.checkExpressionValueIsNotNull(str, "RIJQQAppInterfaceUtil.getAccount()");
     return str;
   }
@@ -107,7 +106,7 @@ public final class ReadInJoyUtilsImpl
   @NotNull
   public AppRuntime getAppRuntime()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     Intrinsics.checkExpressionValueIsNotNull(localAppRuntime, "RIJQQAppInterfaceUtil.getAppRuntime()");
     return localAppRuntime;
   }
@@ -115,7 +114,7 @@ public final class ReadInJoyUtilsImpl
   public int getDetailNetworkInfo(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return RIJNetworkUtils.a(paramContext);
+    return RIJNetworkUtils.d(paramContext);
   }
   
   @Nullable
@@ -138,12 +137,12 @@ public final class ReadInJoyUtilsImpl
   
   public int getKanDianMode()
   {
-    return RIJAppSetting.a();
+    return RIJAppSetting.b();
   }
   
   public long getLongAccountUin()
   {
-    return RIJQQAppInterfaceUtil.a();
+    return RIJQQAppInterfaceUtil.c();
   }
   
   public int getMergeKanDianPosInMsgTab()
@@ -155,7 +154,7 @@ public final class ReadInJoyUtilsImpl
   public Drawable getSpecAggregateAvatarForKanDian(@NotNull Drawable paramDrawable)
   {
     Intrinsics.checkParameterIsNotNull(paramDrawable, "oriIcon");
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       paramDrawable = RIJTransMergeKanDianReport.a((QQAppInterface)localAppRuntime, paramDrawable);
@@ -169,25 +168,36 @@ public final class ReadInJoyUtilsImpl
   public String getUnSecrecyInfo(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "text");
-    paramString = RIJAppSetting.a(paramString);
+    paramString = RIJAppSetting.b(paramString);
     Intrinsics.checkExpressionValueIsNotNull(paramString, "RIJAppSetting.getUnSecrecyInfo(text)");
     return paramString;
   }
   
   public int getUserMode()
   {
-    return RIJStudyModeUtils.a();
+    return RIJStudyModeUtils.d();
   }
   
   @Nullable
   public String getVideoParamFromJson(@Nullable String paramString, @Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return RIJPreParseData.a(paramString, paramAbsBaseArticleInfo);
+    return RIJPreParseData.b(paramString, paramAbsBaseArticleInfo);
   }
   
   public void handConversationToHide()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
+    if (localAppRuntime != null)
+    {
+      RIJAppSetting.e((QQAppInterface)localAppRuntime);
+      return;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
+  }
+  
+  public void handConversationToShow()
+  {
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       RIJAppSetting.d((QQAppInterface)localAppRuntime);
@@ -196,20 +206,9 @@ public final class ReadInJoyUtilsImpl
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
   
-  public void handConversationToShow()
-  {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
-    if (localAppRuntime != null)
-    {
-      RIJAppSetting.c((QQAppInterface)localAppRuntime);
-      return;
-    }
-    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
-  }
-  
   public void handNet2Wifi()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       RIJAppSetting.a((QQAppInterface)localAppRuntime);
@@ -230,7 +229,7 @@ public final class ReadInJoyUtilsImpl
   
   public boolean isDeleteNewKandian()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
       return ReadInJoyUtils.a((AppInterface)localAppRuntime);
     }
@@ -239,12 +238,12 @@ public final class ReadInJoyUtilsImpl
   
   public boolean isInKanDian()
   {
-    return RIJAppSetting.d();
+    return RIJAppSetting.g();
   }
   
   public boolean isMainFrameInit()
   {
-    return ((IKanDianOptUtils)QRoute.api(IKanDianOptUtils.class)).isMainFrameInInit();
+    return KanDianOptUtils.INSTANCE.isMainFrameInInit();
   }
   
   public boolean isStructMsgJumpForUG(@Nullable Object paramObject)
@@ -269,7 +268,7 @@ public final class ReadInJoyUtilsImpl
   public boolean isWendaCardViewType(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    return RIJFeedsType.t(paramAbsBaseArticleInfo);
+    return RIJFeedsType.z(paramAbsBaseArticleInfo);
   }
   
   public int jumpTo(@NotNull Context paramContext, @NotNull String paramString)
@@ -296,7 +295,7 @@ public final class ReadInJoyUtilsImpl
   public boolean needKanDianNotification(@NotNull MessageRecord paramMessageRecord)
   {
     Intrinsics.checkParameterIsNotNull(paramMessageRecord, "mr");
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
       return RIJPushNotification.a((QQAppInterface)localAppRuntime, paramMessageRecord);
     }
@@ -332,7 +331,7 @@ public final class ReadInJoyUtilsImpl
   
   public void reportForReadInJoyTabExposure(@Nullable BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       RIJKanDianTabReport.a((QQAppInterface)localAppRuntime, paramRedTypeInfo);
@@ -355,12 +354,12 @@ public final class ReadInJoyUtilsImpl
   public void reportWebRenderPluginEventCost(boolean paramBoolean, @NotNull String paramString, int paramInt, long paramLong)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "stepEvent");
-    RIJStatisticCollectorReport.a(RIJQQAppInterfaceUtil.a(), paramBoolean, paramString, paramInt, paramLong);
+    RIJStatisticCollectorReport.a(RIJQQAppInterfaceUtil.e(), paramBoolean, paramString, paramInt, paramLong);
   }
   
   public void setIsShowPopup(boolean paramBoolean)
   {
-    ReadInJoyUtils.a = paramBoolean;
+    ReadInJoyUtils.b = paramBoolean;
   }
   
   public void setStatusBar(@NotNull QBaseActivity paramQBaseActivity)
@@ -371,9 +370,9 @@ public final class ReadInJoyUtilsImpl
   
   public boolean shouldGetIndividualTimePush()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
-      return RIJMergeKanDianMessage.c((QQAppInterface)localAppRuntime);
+      return RIJMergeKanDianMessage.d((QQAppInterface)localAppRuntime);
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
@@ -392,7 +391,7 @@ public final class ReadInJoyUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

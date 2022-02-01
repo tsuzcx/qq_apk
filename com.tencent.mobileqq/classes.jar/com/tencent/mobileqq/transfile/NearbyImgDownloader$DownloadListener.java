@@ -41,7 +41,7 @@ public class NearbyImgDownloader$DownloadListener
       } else {
         localObject1 = null;
       }
-      if ((localObject1 != null) && ("type_history_head_pic".equals(((PicInfo)localObject1).g)) && (((!TextUtils.isEmpty(paramDownloadInfo.respXErrNo)) && (!paramDownloadInfo.respXErrNo.trim().equals("0"))) || ((!TextUtils.isEmpty(paramDownloadInfo.respXFailNo)) && (!paramDownloadInfo.respXFailNo.trim().equals("0")))))
+      if ((localObject1 != null) && ("type_history_head_pic".equals(((PicInfo)localObject1).h)) && (((!TextUtils.isEmpty(paramDownloadInfo.respXErrNo)) && (!paramDownloadInfo.respXErrNo.trim().equals("0"))) || ((!TextUtils.isEmpty(paramDownloadInfo.respXFailNo)) && (!paramDownloadInfo.respXFailNo.trim().equals("0")))))
       {
         if (QLog.isColorLevel())
         {
@@ -85,7 +85,7 @@ public class NearbyImgDownloader$DownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.NearbyImgDownloader.DownloadListener
  * JD-Core Version:    0.7.0.1
  */

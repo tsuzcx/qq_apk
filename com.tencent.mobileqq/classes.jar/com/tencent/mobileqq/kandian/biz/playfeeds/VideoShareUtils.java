@@ -4,11 +4,10 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.share.ShareResultCallback;
-import com.tencent.mobileqq.kandian.biz.share.api.IWxShareHelperFromReadInjoy;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.share.WxShareHelperFromReadInjoy;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 
@@ -77,10 +76,10 @@ public class VideoShareUtils
       paramString1 = paramString2;
     }
     int i;
-    if (!WXShareHelper.a().a()) {
-      i = 2131720478;
-    } else if (!WXShareHelper.a().b()) {
-      i = 2131720479;
+    if (!WXShareHelper.a().b()) {
+      i = 2131918154;
+    } else if (!WXShareHelper.a().c()) {
+      i = 2131918155;
     } else {
       i = -1;
     }
@@ -94,11 +93,11 @@ public class VideoShareUtils
       paramShareResultCallback = new VideoShareUtils.1(paramString2, paramShareResultCallback);
       WXShareHelper.a().a(paramShareResultCallback);
       if ((paramBoolean1) && (!TextUtils.isEmpty(paramString4)) && (!paramBoolean2)) {
-        ((IWxShareHelperFromReadInjoy)QRoute.api(IWxShareHelperFromReadInjoy.class)).shareVideoMiniProgram(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, paramString4);
-      } else if (ReadInJoyHelper.n(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime()) == 1) {
+        WxShareHelperFromReadInjoy.getInstance().shareVideoMiniProgram(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, paramString4);
+      } else if (ReadInJoyHelper.L(RIJQQAppInterfaceUtil.e()) == 1) {
         WXShareHelper.a().b(paramString2, paramBaseActivity, a(paramBitmap), paramString1, paramString3, paramBoolean1 ^ true);
       } else {
-        ((IWxShareHelperFromReadInjoy)QRoute.api(IWxShareHelperFromReadInjoy.class)).shareVideo(paramString2, paramBaseActivity, a(paramBitmap), paramString1, paramString3, paramBoolean1 ^ true);
+        WxShareHelperFromReadInjoy.getInstance().shareVideo(paramString2, paramBaseActivity, a(paramBitmap), paramString1, paramString3, paramBoolean1 ^ true);
       }
     }
     if (QLog.isColorLevel())
@@ -118,7 +117,7 @@ public class VideoShareUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoShareUtils
  * JD-Core Version:    0.7.0.1
  */

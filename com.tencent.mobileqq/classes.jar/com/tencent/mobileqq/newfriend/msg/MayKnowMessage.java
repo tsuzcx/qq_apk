@@ -16,34 +16,34 @@ public class MayKnowMessage
   
   public MayKnowMessage(MayKnowRecommend paramMayKnowRecommend)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend = paramMayKnowRecommend;
-    this.jdField_a_of_type_Long = paramMayKnowRecommend.timestamp;
+    this.a = paramMayKnowRecommend;
+    this.d = paramMayKnowRecommend.timestamp;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend.uin;
+    return this.a.uin;
   }
   
-  public String a(AppRuntime paramAppRuntime)
+  public String b(AppRuntime paramAppRuntime)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.c))
     {
       boolean bool = ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).isPhoneContactEnabled((AppInterface)paramAppRuntime);
-      paramAppRuntime = this.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend.getDisplayName(bool);
-      this.jdField_a_of_type_JavaLangString = String.format(MobileQQ.sMobileQQ.getApplicationContext().getString(2131689692), new Object[] { paramAppRuntime });
+      paramAppRuntime = this.a.getDisplayName(bool);
+      this.c = String.format(MobileQQ.sMobileQQ.getApplicationContext().getString(2131886304), new Object[] { paramAppRuntime });
     }
-    return this.jdField_a_of_type_JavaLangString;
+    return this.c;
   }
   
-  public boolean a()
+  public boolean b()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.msg.MayKnowMessage
  * JD-Core Version:    0.7.0.1
  */

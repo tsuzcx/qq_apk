@@ -14,14 +14,14 @@ class EditVideoSmartMusicPart$8
     if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
     {
       EditVideoSmartMusicPart.a(this.a, paramIntent);
-      EditVideoSmartMusicPart.d(this.a);
-      EditVideoSmartMusicPart.c(this.a);
+      EditVideoSmartMusicPart.p(this.a);
+      EditVideoSmartMusicPart.l(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.EditVideoSmartMusicPart.8
  * JD-Core Version:    0.7.0.1
  */

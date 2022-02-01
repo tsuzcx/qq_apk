@@ -15,53 +15,53 @@ public class FeedItemCellTypeNoteCard
     super(paramContext, paramIFaceDecoder, paramReadInJoyBaseAdapter);
   }
   
-  public FeedItemCell a()
+  public FeedItemCell b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().l().n();
+    this.h = true;
+    return i().n().p();
   }
   
-  public void b()
+  public FeedItemCell e()
   {
-    super.b();
-    ((ComponentContentNoteCard)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView).d();
-  }
-  
-  public FeedItemCell d()
-  {
-    ReadInJoyLifeCycleLinearLayout localReadInJoyLifeCycleLinearLayout = new ReadInJoyLifeCycleLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
+    ReadInJoyLifeCycleLinearLayout localReadInJoyLifeCycleLinearLayout = new ReadInJoyLifeCycleLinearLayout(this.e, null);
     localReadInJoyLifeCycleLinearLayout.setOrientation(1);
     localReadInJoyLifeCycleLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView != null) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView instanceof ComponentContentNoteCard))) {
-      localReadInJoyLifeCycleLinearLayout.addView((ComponentContentNoteCard)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView);
+    if ((this.l != null) && ((this.l instanceof ComponentContentNoteCard))) {
+      localReadInJoyLifeCycleLinearLayout.addView((ComponentContentNoteCard)this.l);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead != null) {
-      localReadInJoyLifeCycleLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead);
+    if (this.t != null) {
+      localReadInJoyLifeCycleLinearLayout.addView(this.t);
     }
     a(localReadInJoyLifeCycleLinearLayout);
     return this;
   }
   
-  public FeedItemCell e()
+  public FeedItemCell f()
   {
     return this;
   }
   
-  public FeedItemCell g()
+  public FeedItemCell i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView = new ComponentContentNoteCard(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter);
+    this.l = new ComponentContentNoteCard(this.e, this.g);
     return this;
   }
   
-  public FeedItemCell o()
+  public FeedItemCell q()
   {
-    super.o();
+    super.q();
     return this;
+  }
+  
+  public void y()
+  {
+    super.y();
+    ((ComponentContentNoteCard)this.l).d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeNoteCard
  * JD-Core Version:    0.7.0.1
  */

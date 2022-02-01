@@ -1,6 +1,7 @@
 package androidx.appcompat.widget;
 
 import android.animation.AnimatorListenerAdapter;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
@@ -19,22 +20,32 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.view.Window.Callback;
+import android.view.WindowInsets;
 import android.widget.OverScroller;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.id;
 import androidx.appcompat.view.menu.MenuPresenter.Callback;
+import androidx.core.graphics.Insets;
 import androidx.core.view.NestedScrollingParent;
 import androidx.core.view.NestedScrollingParent2;
 import androidx.core.view.NestedScrollingParent3;
 import androidx.core.view.NestedScrollingParentHelper;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsCompat.Builder;
 
+@SuppressLint({"UnknownNullness"})
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
 public class ActionBarOverlayLayout
   extends ViewGroup
   implements DecorContentParent, NestedScrollingParent, NestedScrollingParent2, NestedScrollingParent3
 {
   private static final int ACTION_BAR_ANIMATE_DELAY = 600;
-  static final int[] ATTRS = { 2131034120, 16842841 };
+  static final int[] ATTRS = { R.attr.actionBarSize, 16842841 };
   private static final String TAG = "ActionBarOverlayLayout";
   private int mActionBarHeight;
   ActionBarContainer mActionBarTop;
@@ -42,7 +53,9 @@ public class ActionBarOverlayLayout
   private final Runnable mAddActionBarHideOffset = new ActionBarOverlayLayout.3(this);
   boolean mAnimatingForFling;
   private final Rect mBaseContentInsets = new Rect();
-  private final Rect mBaseInnerInsets = new Rect();
+  @NonNull
+  private WindowInsetsCompat mBaseInnerInsets = WindowInsetsCompat.CONSUMED;
+  private final Rect mBaseInnerInsetsRect = new Rect();
   private ContentFrameLayout mContent;
   private final Rect mContentInsets = new Rect();
   ViewPropertyAnimator mCurrentActionBarTopAnimator;
@@ -52,10 +65,16 @@ public class ActionBarOverlayLayout
   private boolean mHideOnContentScroll;
   private int mHideOnContentScrollReference;
   private boolean mIgnoreWindowContentOverlay;
-  private final Rect mInnerInsets = new Rect();
+  @NonNull
+  private WindowInsetsCompat mInnerInsets = WindowInsetsCompat.CONSUMED;
+  private final Rect mInnerInsetsRect = new Rect();
   private final Rect mLastBaseContentInsets = new Rect();
-  private final Rect mLastBaseInnerInsets = new Rect();
-  private final Rect mLastInnerInsets = new Rect();
+  @NonNull
+  private WindowInsetsCompat mLastBaseInnerInsets = WindowInsetsCompat.CONSUMED;
+  private final Rect mLastBaseInnerInsetsRect = new Rect();
+  @NonNull
+  private WindowInsetsCompat mLastInnerInsets = WindowInsetsCompat.CONSUMED;
+  private final Rect mLastInnerInsetsRect = new Rect();
   private int mLastSystemUiVisibility;
   private boolean mOverlayMode;
   private final NestedScrollingParentHelper mParentHelper;
@@ -64,12 +83,12 @@ public class ActionBarOverlayLayout
   private Drawable mWindowContentOverlay;
   private int mWindowVisibility = 0;
   
-  public ActionBarOverlayLayout(Context paramContext)
+  public ActionBarOverlayLayout(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public ActionBarOverlayLayout(Context paramContext, AttributeSet paramAttributeSet)
+  public ActionBarOverlayLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     init(paramContext);
@@ -82,7 +101,7 @@ public class ActionBarOverlayLayout
     this.mAddActionBarHideOffset.run();
   }
   
-  private boolean applyInsets(View paramView, Rect paramRect, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  private boolean applyInsets(@NonNull View paramView, @NonNull Rect paramRect, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     paramView = (ActionBarOverlayLayout.LayoutParams)paramView.getLayoutParams();
     boolean bool;
@@ -181,9 +200,9 @@ public class ActionBarOverlayLayout
     this.mRemoveActionBarHideOffset.run();
   }
   
-  private boolean shouldHideActionBarOnFling(float paramFloat1, float paramFloat2)
+  private boolean shouldHideActionBarOnFling(float paramFloat)
   {
-    this.mFlingEstimator.fling(0, 0, 0, (int)paramFloat2, 0, 0, -2147483648, 2147483647);
+    this.mFlingEstimator.fling(0, 0, 0, (int)paramFloat, 0, 0, -2147483648, 2147483647);
     return this.mFlingEstimator.getFinalY() > this.mActionBarTop.getHeight();
   }
   
@@ -222,14 +241,16 @@ public class ActionBarOverlayLayout
   
   protected boolean fitSystemWindows(Rect paramRect)
   {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return super.fitSystemWindows(paramRect);
+    }
     pullChildren();
-    ViewCompat.getWindowSystemUiVisibility(this);
     boolean bool = applyInsets(this.mActionBarTop, paramRect, true, true, false, true);
-    this.mBaseInnerInsets.set(paramRect);
-    ViewUtils.computeFitSystemWindows(this, this.mBaseInnerInsets, this.mBaseContentInsets);
-    if (!this.mLastBaseInnerInsets.equals(this.mBaseInnerInsets))
+    this.mBaseInnerInsetsRect.set(paramRect);
+    ViewUtils.computeFitSystemWindows(this, this.mBaseInnerInsetsRect, this.mBaseContentInsets);
+    if (!this.mLastBaseInnerInsetsRect.equals(this.mBaseInnerInsetsRect))
     {
-      this.mLastBaseInnerInsets.set(this.mBaseInnerInsets);
+      this.mLastBaseInnerInsetsRect.set(this.mBaseInnerInsetsRect);
       bool = true;
     }
     if (!this.mLastBaseContentInsets.equals(this.mBaseContentInsets))
@@ -347,6 +368,31 @@ public class ActionBarOverlayLayout
     return this.mDecorToolbar.isOverflowMenuShowing();
   }
   
+  @RequiresApi(21)
+  public WindowInsets onApplyWindowInsets(@NonNull WindowInsets paramWindowInsets)
+  {
+    pullChildren();
+    paramWindowInsets = WindowInsetsCompat.toWindowInsetsCompat(paramWindowInsets);
+    Rect localRect = new Rect(paramWindowInsets.getSystemWindowInsetLeft(), paramWindowInsets.getSystemWindowInsetTop(), paramWindowInsets.getSystemWindowInsetRight(), paramWindowInsets.getSystemWindowInsetBottom());
+    boolean bool = applyInsets(this.mActionBarTop, localRect, true, true, false, true);
+    ViewCompat.computeSystemWindowInsets(this, paramWindowInsets, this.mBaseContentInsets);
+    this.mBaseInnerInsets = paramWindowInsets.inset(this.mBaseContentInsets.left, this.mBaseContentInsets.top, this.mBaseContentInsets.right, this.mBaseContentInsets.bottom);
+    if (!this.mLastBaseInnerInsets.equals(this.mBaseInnerInsets))
+    {
+      this.mLastBaseInnerInsets = this.mBaseInnerInsets;
+      bool = true;
+    }
+    if (!this.mLastBaseContentInsets.equals(this.mBaseContentInsets))
+    {
+      this.mLastBaseContentInsets.set(this.mBaseContentInsets);
+      bool = true;
+    }
+    if (bool) {
+      requestLayout();
+    }
+    return paramWindowInsets.consumeDisplayCutout().consumeSystemWindowInsets().consumeStableInsets().toWindowInsets();
+  }
+  
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
@@ -364,9 +410,7 @@ public class ActionBarOverlayLayout
   {
     paramInt2 = getChildCount();
     paramInt3 = getPaddingLeft();
-    getPaddingRight();
     paramInt4 = getPaddingTop();
-    getPaddingBottom();
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
     {
@@ -418,26 +462,44 @@ public class ActionBarOverlayLayout
       i = 0;
     }
     this.mContentInsets.set(this.mBaseContentInsets);
-    this.mInnerInsets.set(this.mBaseInnerInsets);
+    if (Build.VERSION.SDK_INT >= 21) {
+      this.mInnerInsets = this.mBaseInnerInsets;
+    } else {
+      this.mInnerInsetsRect.set(this.mBaseInnerInsetsRect);
+    }
     if ((!this.mOverlayMode) && (j == 0))
     {
       localObject = this.mContentInsets;
       ((Rect)localObject).top += i;
       localObject = this.mContentInsets;
       ((Rect)localObject).bottom += 0;
+      if (Build.VERSION.SDK_INT >= 21) {
+        this.mInnerInsets = this.mInnerInsets.inset(0, i, 0, 0);
+      }
+    }
+    else if (Build.VERSION.SDK_INT >= 21)
+    {
+      localObject = Insets.of(this.mInnerInsets.getSystemWindowInsetLeft(), this.mInnerInsets.getSystemWindowInsetTop() + i, this.mInnerInsets.getSystemWindowInsetRight(), this.mInnerInsets.getSystemWindowInsetBottom() + 0);
+      this.mInnerInsets = new WindowInsetsCompat.Builder(this.mInnerInsets).setSystemWindowInsets((Insets)localObject).build();
     }
     else
     {
-      localObject = this.mInnerInsets;
+      localObject = this.mInnerInsetsRect;
       ((Rect)localObject).top += i;
-      localObject = this.mInnerInsets;
+      localObject = this.mInnerInsetsRect;
       ((Rect)localObject).bottom += 0;
     }
     applyInsets(this.mContent, this.mContentInsets, true, true, true, true);
-    if (!this.mLastInnerInsets.equals(this.mInnerInsets))
+    if ((Build.VERSION.SDK_INT >= 21) && (!this.mLastInnerInsets.equals(this.mInnerInsets)))
     {
-      this.mLastInnerInsets.set(this.mInnerInsets);
-      this.mContent.dispatchFitSystemWindows(this.mInnerInsets);
+      localObject = this.mInnerInsets;
+      this.mLastInnerInsets = ((WindowInsetsCompat)localObject);
+      ViewCompat.dispatchApplyWindowInsets(this.mContent, (WindowInsetsCompat)localObject);
+    }
+    else if ((Build.VERSION.SDK_INT < 21) && (!this.mLastInnerInsetsRect.equals(this.mInnerInsetsRect)))
+    {
+      this.mLastInnerInsetsRect.set(this.mInnerInsetsRect);
+      this.mContent.dispatchFitSystemWindows(this.mInnerInsetsRect);
     }
     measureChildWithMargins(this.mContent, paramInt1, 0, paramInt2, 0);
     localObject = (ActionBarOverlayLayout.LayoutParams)this.mContent.getLayoutParams();
@@ -454,7 +516,7 @@ public class ActionBarOverlayLayout
   {
     if ((this.mHideOnContentScroll) && (paramBoolean))
     {
-      if (shouldHideActionBarOnFling(paramFloat1, paramFloat2)) {
+      if (shouldHideActionBarOnFling(paramFloat2)) {
         addActionBarHideOffset();
       } else {
         removeActionBarHideOffset();
@@ -597,9 +659,9 @@ public class ActionBarOverlayLayout
   {
     if (this.mContent == null)
     {
-      this.mContent = ((ContentFrameLayout)findViewById(2131361955));
-      this.mActionBarTop = ((ActionBarContainer)findViewById(2131361956));
-      this.mDecorToolbar = getDecorToolbar(findViewById(2131361954));
+      this.mContent = ((ContentFrameLayout)findViewById(R.id.action_bar_activity_content));
+      this.mActionBarTop = ((ActionBarContainer)findViewById(R.id.action_bar_container));
+      this.mDecorToolbar = getDecorToolbar(findViewById(R.id.action_bar));
     }
   }
   

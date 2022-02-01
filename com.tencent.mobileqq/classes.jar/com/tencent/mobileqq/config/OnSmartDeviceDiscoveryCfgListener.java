@@ -19,7 +19,7 @@ public class OnSmartDeviceDiscoveryCfgListener
       {
         paramString = new StringBuilder();
         paramString.append("handleConfigForTag smartDeviceDiscoverCfg content = ");
-        paramString.append(paramCfgParseResult.a);
+        paramString.append(paramCfgParseResult.d);
         QLog.d("OnSmartDeviceDiscoveryCfgListener", 2, paramString.toString());
       }
       paramInt = 1;
@@ -28,7 +28,7 @@ public class OnSmartDeviceDiscoveryCfgListener
     {
       try
       {
-        int i = new JSONObject(paramCfgParseResult.a).optInt("smart_device_discovery_config_switch");
+        int i = new JSONObject(paramCfgParseResult.d).optInt("smart_device_discovery_config_switch");
         paramCfgParseResult = BaseApplication.getContext();
         paramString = new StringBuilder();
         paramInt = i;
@@ -68,7 +68,7 @@ public class OnSmartDeviceDiscoveryCfgListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.OnSmartDeviceDiscoveryCfgListener
  * JD-Core Version:    0.7.0.1
  */

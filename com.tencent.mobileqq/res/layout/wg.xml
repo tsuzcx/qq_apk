@@ -15,7 +15,7 @@
         </RelativeLayout>
         <View android:background="@color/i5" android:layout_width="@dimen/m2" android:layout_height="fill_parent" />
         <RelativeLayout android:id="@id/i_d" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/aei" android:textColor="@color/fl" android:gravity="center" android:id="@id/dialogRightBtn" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/pp3" android:singleLine="true" />
+            <TextView android:textSize="@dimen/aei" android:textColor="@color/fl" android:gravity="center" android:id="@id/dialogRightBtn" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/j6l" android:singleLine="true" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

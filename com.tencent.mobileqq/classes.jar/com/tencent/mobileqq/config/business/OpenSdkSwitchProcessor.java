@@ -15,7 +15,7 @@ public class OpenSdkSwitchProcessor
 {
   public static OpenSdkSwitchConfBean b(int paramInt)
   {
-    OpenSdkSwitchConfBean localOpenSdkSwitchConfBean = (OpenSdkSwitchConfBean)QConfigManager.a().a(paramInt);
+    OpenSdkSwitchConfBean localOpenSdkSwitchConfBean = (OpenSdkSwitchConfBean)QConfigManager.b().b(paramInt);
     if (localOpenSdkSwitchConfBean != null) {
       return localOpenSdkSwitchConfBean;
     }
@@ -34,7 +34,7 @@ public class OpenSdkSwitchProcessor
     Object localObject = null;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      String str = paramArrayOfQConfItem[0].a;
+      String str = paramArrayOfQConfItem[0].b;
       if (!TextUtils.isEmpty(str))
       {
         paramArrayOfQConfItem = new StringBuilder();
@@ -110,7 +110,7 @@ public class OpenSdkSwitchProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkSwitchProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public class MultiVideos2c
       if (paramFromServiceMsg.type >= 32) {
         return;
       }
-      paramMessageHandler.a.getGAudioHandler().a(paramFromServiceMsg.video_buff);
+      paramMessageHandler.n.getGAudioHandler().a(paramFromServiceMsg.video_buff);
       if (paramFromServiceMsg.type != 10)
       {
         ToServiceMsg localToServiceMsg = paramMessageHandler.createToServiceMsg("MultiVideo.s2cack");
@@ -47,7 +47,7 @@ public class MultiVideos2c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MultiVideos2c
  * JD-Core Version:    0.7.0.1
  */

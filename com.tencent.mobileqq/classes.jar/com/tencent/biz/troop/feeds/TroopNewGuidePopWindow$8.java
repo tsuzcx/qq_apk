@@ -21,16 +21,16 @@ class TroopNewGuidePopWindow$8
     if (QLog.isColorLevel()) {
       QLog.i("TroopTipsPopWindow", 2, "mTroopNotifyAdImage onClick--------");
     }
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd.b);
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
-    ReportController.b(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "clk_ad", 0, 0, this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.b, String.valueOf(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.a), "8020205751015455", "");
+    Intent localIntent = new Intent(this.b.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.a.b);
+    this.b.a.startActivity(localIntent);
+    ReportController.b(this.b.w, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "clk_ad", 0, 0, this.b.z, String.valueOf(this.b.B.a), "8020205751015455", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.feeds.TroopNewGuidePopWindow.8
  * JD-Core Version:    0.7.0.1
  */

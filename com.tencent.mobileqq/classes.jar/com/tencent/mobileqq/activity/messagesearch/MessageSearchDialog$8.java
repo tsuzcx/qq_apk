@@ -20,31 +20,31 @@ class MessageSearchDialog$8
     Object localObject;
     if (QLog.isColorLevel())
     {
-      paramAdapterView = MessageSearchDialog.jdField_a_of_type_JavaLangString;
+      paramAdapterView = MessageSearchDialog.m;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onLongClick, position = ");
       ((StringBuilder)localObject).append(paramInt);
       QLog.i(paramAdapterView, 2, ((StringBuilder)localObject).toString());
     }
-    if (this.a.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter)
+    if (this.a.b.getAdapter() == this.a.n)
     {
       paramAdapterView = this.a;
-      paramAdapterView.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem = ((MessageItem)paramAdapterView.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.getItem(paramInt));
+      paramAdapterView.j = ((MessageItem)paramAdapterView.n.getItem(paramInt));
       paramView.setSelected(true);
       paramAdapterView = new QQCustomMenu();
-      paramAdapterView.a(2131365311, HardCodeUtil.a(2131706697), 2130838903);
-      paramAdapterView.a(2131367180, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692644), 2130838912);
+      paramAdapterView.a(2131431492, HardCodeUtil.a(2131904548), 2130839057);
+      paramAdapterView.a(2131433636, this.a.c.getString(2131889668), 2130839066);
       localObject = this.a;
-      ((MessageSearchDialog)localObject).jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, paramAdapterView, MessageSearchDialog.a((MessageSearchDialog)localObject), new MessageSearchDialog.8.1(this, paramView));
+      ((MessageSearchDialog)localObject).i = BubbleContextMenu.a(paramView, paramAdapterView, MessageSearchDialog.b((MessageSearchDialog)localObject), new MessageSearchDialog.8.1(this, paramView));
       return true;
     }
-    paramAdapterView = this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter;
+    paramAdapterView = this.a.o;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog.8
  * JD-Core Version:    0.7.0.1
  */

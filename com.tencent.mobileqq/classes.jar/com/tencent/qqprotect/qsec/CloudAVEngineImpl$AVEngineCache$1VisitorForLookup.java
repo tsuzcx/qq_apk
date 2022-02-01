@@ -3,21 +3,20 @@ package com.tencent.qqprotect.qsec;
 final class CloudAVEngineImpl$AVEngineCache$1VisitorForLookup
   extends CloudAVEngineImpl.AVEngineCache.CacheFileVisitor
 {
-  public ICloudAVEngine.ResultBundle a;
-  private String jdField_a_of_type_JavaLangString;
+  public ICloudAVEngine.ResultBundle a = null;
+  private String c;
   
   public CloudAVEngineImpl$AVEngineCache$1VisitorForLookup(CloudAVEngineImpl.AVEngineCache paramAVEngineCache, String paramString)
   {
     super(null);
-    this.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$ResultBundle = null;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public boolean a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle)
   {
-    if (paramString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
+    if (paramString.equalsIgnoreCase(this.c))
     {
-      this.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$ResultBundle = paramResultBundle;
+      this.a = paramResultBundle;
       return false;
     }
     return true;
@@ -25,7 +24,7 @@ final class CloudAVEngineImpl$AVEngineCache$1VisitorForLookup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.AVEngineCache.1VisitorForLookup
  * JD-Core Version:    0.7.0.1
  */

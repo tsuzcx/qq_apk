@@ -18,8 +18,8 @@ class PublicAccountH5AbilityPluginImpl$24
   {
     if (paramBundle != null)
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.activity != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.cancleProgressDailog();
+      if (this.d.activity != null) {
+        this.d.cancleProgressDailog();
       }
       String str = paramBundle.getString("pic_local_id");
       JSONObject localJSONObject = new JSONObject();
@@ -31,7 +31,7 @@ class PublicAccountH5AbilityPluginImpl$24
         {
           localJSONObject.put("retCode", -1);
           localJSONObject.put("msg", "fail");
-          if (this.jdField_a_of_type_Boolean)
+          if (this.a)
           {
             ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
             localObject = str;
@@ -45,7 +45,7 @@ class PublicAccountH5AbilityPluginImpl$24
         else
         {
           localObject = str;
-          if (this.jdField_a_of_type_Boolean)
+          if (this.a)
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("mqqpa://resourceid/");
@@ -56,7 +56,7 @@ class PublicAccountH5AbilityPluginImpl$24
           PublicAccountH5AbilityPluginImpl.localIdMap.put(localObject, paramBundle);
           localJSONObject.put("retCode", 0);
           paramBundle = new StringBuilder();
-          paramBundle.append(HardCodeUtil.a(2131708760));
+          paramBundle.append(HardCodeUtil.a(2131906539));
           paramBundle.append((String)localObject);
           localJSONObject.put("msg", paramBundle.toString());
           if (QLog.isColorLevel())
@@ -66,7 +66,7 @@ class PublicAccountH5AbilityPluginImpl$24
             paramBundle.append((String)localObject);
             QLog.i("PublicAccountH5AbilityPlugin", 2, paramBundle.toString());
           }
-          if (this.jdField_a_of_type_Boolean) {
+          if (this.a) {
             ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, 0, "1", "", "", "");
           } else {
             ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, 0, "1", "", "", "");
@@ -78,16 +78,16 @@ class PublicAccountH5AbilityPluginImpl$24
       {
         paramBundle.printStackTrace();
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.startNextDownloadTask(this.b);
+      this.d.callJs(this.b, new String[] { localJSONObject.toString() });
+      if (this.a) {
+        this.d.startNextDownloadTask(this.c);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.24
  * JD-Core Version:    0.7.0.1
  */

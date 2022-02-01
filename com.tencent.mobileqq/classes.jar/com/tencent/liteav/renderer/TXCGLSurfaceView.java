@@ -12,15 +12,15 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.AttributeSet;
-import com.tencent.liteav.basic.b.b;
-import com.tencent.liteav.basic.c.h;
-import com.tencent.liteav.basic.c.j;
-import com.tencent.liteav.basic.c.k;
-import com.tencent.liteav.basic.c.l;
-import com.tencent.liteav.basic.c.m;
-import com.tencent.liteav.basic.c.n;
-import com.tencent.liteav.basic.c.o;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.TXCOpenGlUtils;
+import com.tencent.liteav.basic.opengl.j;
+import com.tencent.liteav.basic.opengl.l;
+import com.tencent.liteav.basic.opengl.m;
+import com.tencent.liteav.basic.opengl.n;
+import com.tencent.liteav.basic.opengl.o;
+import com.tencent.liteav.basic.opengl.p;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.LinkedList;
@@ -32,14 +32,14 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class TXCGLSurfaceView
   extends TXCGLSurfaceViewBase
-  implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer, m
+  implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer, n
 {
-  private o A = null;
+  private p A = null;
   private int B = 0;
   private int C = 0;
   private boolean D = true;
   private boolean E = true;
-  private n F;
+  private o F;
   private long G;
   private byte[] H = null;
   private long I = 0L;
@@ -49,7 +49,7 @@ public class TXCGLSurfaceView
   WeakReference<b> a;
   private SurfaceTexture g;
   private EGLContext h;
-  private h i;
+  private j i;
   private int[] j;
   private float[] k = new float[16];
   private int l = 0;
@@ -122,9 +122,9 @@ public class TXCGLSurfaceView
           Bitmap localBitmap = Bitmap.createBitmap(i5, i4, Bitmap.Config.ARGB_8888);
           localByteBuffer.position(0);
           GLES20.glReadPixels(paramInt1, paramInt2, i5, i4, 6408, 5121, localByteBuffer);
-          o localo = this.A;
-          if (localo != null) {
-            new Thread(new TXCGLSurfaceView.5(this, localByteBuffer, localBitmap, i5, i4, localo)).start();
+          p localp = this.A;
+          if (localp != null) {
+            new Thread(new TXCGLSurfaceView.5(this, localByteBuffer, localBitmap, i5, i4, localp)).start();
           }
         }
       }
@@ -249,7 +249,6 @@ public class TXCGLSurfaceView
       if (this.c) {
         return;
       }
-      GLES20.glClear(16640);
       int i5 = getWidth();
       int i6 = getHeight();
       int i1 = this.B;
@@ -337,7 +336,7 @@ public class TXCGLSurfaceView
           i1 = i2;
         }
         localObject1 = this.i;
-        float[] arrayOfFloat = l.a(k.a, false, true);
+        float[] arrayOfFloat = m.a(l.a, false, true);
         f1 = i5 / i1;
         if (paramInt2 != 0) {
           paramBoolean1 = false;
@@ -349,7 +348,7 @@ public class TXCGLSurfaceView
         } else {
           paramBoolean2 = false;
         }
-        ((h)localObject1).a(paramInt3, paramInt4, i6, arrayOfFloat, f1, paramBoolean1, paramBoolean2);
+        ((j)localObject1).a(paramInt3, paramInt4, i6, arrayOfFloat, f1, paramBoolean1, paramBoolean2);
         if (paramInt2 != 0) {
           this.i.g();
         } else {
@@ -370,9 +369,9 @@ public class TXCGLSurfaceView
     }
   }
   
-  public void a(o paramo)
+  public void a(p paramp)
   {
-    this.A = paramo;
+    this.A = paramp;
     this.z = true;
   }
   
@@ -423,12 +422,12 @@ public class TXCGLSurfaceView
   protected void b()
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("surfaceDestroyed-->enter with mSurfaceTextureListener:");
+    ((StringBuilder)localObject).append("onSurfaceDestroyed-->enter with mSurfaceTextureListener:");
     ((StringBuilder)localObject).append(this.F);
     TXCLog.i("TXCGLSurfaceView", ((StringBuilder)localObject).toString());
     localObject = this.F;
     if (localObject != null) {
-      ((n)localObject).b(this.g);
+      ((o)localObject).b(this.g);
     }
     localObject = this.g;
     if (localObject != null)
@@ -580,7 +579,7 @@ public class TXCGLSurfaceView
     //   168: putfield 109	com/tencent/liteav/renderer/TXCGLSurfaceView:H	[B
     //   171: aload_0
     //   172: getfield 209	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
-    //   175: ifnull +444 -> 619
+    //   175: ifnull +454 -> 629
     //   178: aload_0
     //   179: getfield 209	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
     //   182: invokevirtual 313	android/graphics/SurfaceTexture:updateTexImage	()V
@@ -589,7 +588,7 @@ public class TXCGLSurfaceView
     //   189: aload_0
     //   190: getfield 64	com/tencent/liteav/renderer/TXCGLSurfaceView:k	[F
     //   193: invokevirtual 389	android/graphics/SurfaceTexture:getTransformMatrix	([F)V
-    //   196: goto +423 -> 619
+    //   196: goto +433 -> 629
     //   199: aload 14
     //   201: astore_1
     //   202: aload_0
@@ -631,7 +630,7 @@ public class TXCGLSurfaceView
     //   269: if_icmpne +17 -> 286
     //   272: iconst_1
     //   273: iload 6
-    //   275: if_icmpne +347 -> 622
+    //   275: if_icmpne +357 -> 632
     //   278: aload_0
     //   279: ldc2_w 390
     //   282: invokespecial 385	com/tencent/liteav/renderer/TXCGLSurfaceView:a	(J)V
@@ -701,19 +700,19 @@ public class TXCGLSurfaceView
     //   394: iadd
     //   395: putfield 115	com/tencent/liteav/renderer/TXCGLSurfaceView:K	I
     //   398: aload_0
-    //   399: getfield 325	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/c/n;
+    //   399: getfield 325	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/opengl/o;
     //   402: ifnull +44 -> 446
     //   405: aload_1
     //   406: ifnull +20 -> 426
     //   409: aload_0
-    //   410: getfield 325	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/c/n;
+    //   410: getfield 325	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/opengl/o;
     //   413: aload_1
     //   414: aload_0
     //   415: getfield 64	com/tencent/liteav/renderer/TXCGLSurfaceView:k	[F
     //   418: invokeinterface 402 3 0
     //   423: goto +23 -> 446
     //   426: aload_0
-    //   427: getfield 325	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/c/n;
+    //   427: getfield 325	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/opengl/o;
     //   430: aload_0
     //   431: getfield 404	com/tencent/liteav/renderer/TXCGLSurfaceView:j	[I
     //   434: iconst_0
@@ -726,27 +725,27 @@ public class TXCGLSurfaceView
     //   447: monitorenter
     //   448: aload_0
     //   449: getfield 255	com/tencent/liteav/renderer/TXCGLSurfaceView:c	Z
-    //   452: ifne +171 -> 623
+    //   452: ifne +181 -> 633
     //   455: iload 8
     //   457: istore 6
     //   459: goto +3 -> 462
     //   462: aload_0
     //   463: monitorexit
     //   464: iload 6
-    //   466: ifeq +152 -> 618
+    //   466: ifeq +162 -> 628
     //   469: aload_0
     //   470: invokevirtual 310	com/tencent/liteav/renderer/TXCGLSurfaceView:e	()I
     //   473: istore 6
     //   475: iload 6
     //   477: sipush 12288
-    //   480: if_icmpeq +138 -> 618
+    //   480: if_icmpeq +148 -> 628
     //   483: invokestatic 379	java/lang/System:currentTimeMillis	()J
     //   486: aload_0
     //   487: getfield 248	com/tencent/liteav/renderer/TXCGLSurfaceView:G	J
     //   490: lsub
     //   491: ldc2_w 408
     //   494: lcmp
-    //   495: ifle +123 -> 618
+    //   495: ifle +133 -> 628
     //   498: new 316	java/lang/StringBuilder
     //   501: dup
     //   502: invokespecial 317	java/lang/StringBuilder:<init>	()V
@@ -784,42 +783,46 @@ public class TXCGLSurfaceView
     //   572: invokevirtual 435	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   575: aload_1
     //   576: ldc_w 437
-    //   579: ldc_w 439
-    //   582: invokevirtual 443	android/os/Bundle:putCharSequence	(Ljava/lang/String;Ljava/lang/CharSequence;)V
-    //   585: aload_0
-    //   586: getfield 445	com/tencent/liteav/renderer/TXCGLSurfaceView:a	Ljava/lang/ref/WeakReference;
-    //   589: sipush 2110
-    //   592: aload_1
-    //   593: invokestatic 450	com/tencent/liteav/basic/util/f:a	(Ljava/lang/ref/WeakReference;ILandroid/os/Bundle;)V
-    //   596: return
-    //   597: astore_1
-    //   598: aload_0
-    //   599: monitorexit
-    //   600: aload_1
-    //   601: athrow
-    //   602: astore_1
-    //   603: aload_0
-    //   604: monitorexit
-    //   605: aload_1
-    //   606: athrow
+    //   579: invokestatic 440	com/tencent/liteav/basic/util/TXCTimeUtil:getUtcTimeTick	()J
+    //   582: invokevirtual 435	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   585: aload_1
+    //   586: ldc_w 442
+    //   589: ldc_w 444
+    //   592: invokevirtual 448	android/os/Bundle:putCharSequence	(Ljava/lang/String;Ljava/lang/CharSequence;)V
+    //   595: aload_0
+    //   596: getfield 450	com/tencent/liteav/renderer/TXCGLSurfaceView:a	Ljava/lang/ref/WeakReference;
+    //   599: sipush 2110
+    //   602: aload_1
+    //   603: invokestatic 455	com/tencent/liteav/basic/util/h:a	(Ljava/lang/ref/WeakReference;ILandroid/os/Bundle;)V
+    //   606: return
     //   607: astore_1
-    //   608: ldc_w 330
-    //   611: ldc_w 452
-    //   614: aload_1
-    //   615: invokestatic 455	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   618: return
-    //   619: goto -389 -> 230
-    //   622: return
-    //   623: iconst_0
-    //   624: istore 6
-    //   626: goto -164 -> 462
+    //   608: aload_0
+    //   609: monitorexit
+    //   610: aload_1
+    //   611: athrow
+    //   612: astore_1
+    //   613: aload_0
+    //   614: monitorexit
+    //   615: aload_1
+    //   616: athrow
+    //   617: astore_1
+    //   618: ldc_w 330
+    //   621: ldc_w 457
+    //   624: aload_1
+    //   625: invokestatic 460	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   628: return
+    //   629: goto -399 -> 230
+    //   632: return
+    //   633: iconst_0
+    //   634: istore 6
+    //   636: goto -174 -> 462
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	629	0	this	TXCGLSurfaceView
-    //   0	629	1	paramGL10	GL10
+    //   0	639	0	this	TXCGLSurfaceView
+    //   0	639	1	paramGL10	GL10
     //   294	65	2	d1	double
     //   304	60	4	d2	double
-    //   13	612	6	i1	int
+    //   13	622	6	i1	int
     //   114	156	7	i2	int
     //   10	446	8	i3	int
     //   18	361	9	l1	long
@@ -828,32 +831,32 @@ public class TXCGLSurfaceView
     //   141	87	14	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   448	455	597	finally
-    //   462	464	597	finally
-    //   598	600	597	finally
-    //   132	138	602	finally
-    //   154	196	602	finally
-    //   202	227	602	finally
-    //   235	245	602	finally
-    //   248	253	602	finally
-    //   253	258	602	finally
-    //   264	266	602	finally
-    //   603	605	602	finally
-    //   130	132	607	java/lang/Exception
-    //   278	285	607	java/lang/Exception
-    //   286	291	607	java/lang/Exception
-    //   295	301	607	java/lang/Exception
-    //   323	329	607	java/lang/Exception
-    //   338	344	607	java/lang/Exception
-    //   369	388	607	java/lang/Exception
-    //   388	405	607	java/lang/Exception
-    //   409	423	607	java/lang/Exception
-    //   426	446	607	java/lang/Exception
-    //   446	448	607	java/lang/Exception
-    //   469	475	607	java/lang/Exception
-    //   483	596	607	java/lang/Exception
-    //   600	602	607	java/lang/Exception
-    //   605	607	607	java/lang/Exception
+    //   448	455	607	finally
+    //   462	464	607	finally
+    //   608	610	607	finally
+    //   132	138	612	finally
+    //   154	196	612	finally
+    //   202	227	612	finally
+    //   235	245	612	finally
+    //   248	253	612	finally
+    //   253	258	612	finally
+    //   264	266	612	finally
+    //   613	615	612	finally
+    //   130	132	617	java/lang/Exception
+    //   278	285	617	java/lang/Exception
+    //   286	291	617	java/lang/Exception
+    //   295	301	617	java/lang/Exception
+    //   323	329	617	java/lang/Exception
+    //   338	344	617	java/lang/Exception
+    //   369	388	617	java/lang/Exception
+    //   388	405	617	java/lang/Exception
+    //   409	423	617	java/lang/Exception
+    //   426	446	617	java/lang/Exception
+    //   446	448	617	java/lang/Exception
+    //   469	475	617	java/lang/Exception
+    //   483	606	617	java/lang/Exception
+    //   610	612	617	java/lang/Exception
+    //   615	617	617	java/lang/Exception
   }
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
@@ -873,7 +876,7 @@ public class TXCGLSurfaceView
   {
     this.h = ((EGL10)EGLContext.getEGL()).eglGetCurrentContext();
     this.j = new int[1];
-    this.j[0] = j.b();
+    this.j[0] = TXCOpenGlUtils.b();
     paramGL10 = this.j;
     if (paramGL10[0] <= 0)
     {
@@ -883,11 +886,11 @@ public class TXCGLSurfaceView
     }
     this.g = new SurfaceTexture(paramGL10[0]);
     g();
-    this.i = new h();
+    this.i = new j();
     if (!this.i.a()) {
       return;
     }
-    this.i.a(l.e, l.a(k.a, false, false));
+    this.i.a(m.e, m.a(l.a, false, false));
     paramGL10 = this.F;
     if (paramGL10 != null) {
       paramGL10.a(this.g);
@@ -928,14 +931,14 @@ public class TXCGLSurfaceView
     b(new TXCGLSurfaceView.4(this));
   }
   
-  public void setSurfaceTextureListener(n paramn)
+  public void setSurfaceTextureListener(o paramo)
   {
-    this.F = paramn;
+    this.F = paramo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.renderer.TXCGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

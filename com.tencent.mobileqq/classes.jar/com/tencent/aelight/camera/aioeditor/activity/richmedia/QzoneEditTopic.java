@@ -27,30 +27,64 @@ import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
 public class QzoneEditTopic
   extends EditVideoPart
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private MusicDownloadListener jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener = new QzoneEditTopic.1(this);
-  private AudioPlayer jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer;
-  private final AudioPlayerBase.AudioPlayerListener jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener = new QzoneEditTopic.2(this);
-  private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private QzoneVerticalVideoTopicInfo jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private QzoneVerticalVideoTopicInfo a;
+  private View b;
+  private AudioPlayer c;
+  private MusicItemInfo d;
+  private boolean e;
+  private boolean f;
+  private MusicDownloadListener g = new QzoneEditTopic.1(this);
+  private final AudioPlayerBase.AudioPlayerListener h = new QzoneEditTopic.2(this);
   
   public QzoneEditTopic(QzEditVideoPartManager paramQzEditVideoPartManager, QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo)
   {
     super(paramQzEditVideoPartManager);
-    this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = paramQzoneVerticalVideoTopicInfo;
+    this.a = paramQzoneVerticalVideoTopicInfo;
   }
   
   private void a(MusicItemInfo paramMusicItemInfo)
   {
-    paramMusicItemInfo = QQMusicDownloader.a(paramMusicItemInfo.mUrl, paramMusicItemInfo.getLocalPath(), this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener);
+    paramMusicItemInfo = QQMusicDownloader.a(paramMusicItemInfo.mUrl, paramMusicItemInfo.getLocalPath(), this.g);
     if (paramMusicItemInfo != null) {
-      QQMusicDownloader.a(paramMusicItemInfo, this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener);
+      QQMusicDownloader.a(paramMusicItemInfo, this.g);
     }
   }
   
-  private boolean a(MusicItemInfo paramMusicItemInfo)
+  private void b(MusicItemInfo paramMusicItemInfo)
+  {
+    if (this.f) {
+      return;
+    }
+    i();
+    if ((this.c != null) && (paramMusicItemInfo != null))
+    {
+      if (!c(paramMusicItemInfo)) {
+        return;
+      }
+      this.c.a(7);
+      this.c.a(paramMusicItemInfo.getLocalPath());
+    }
+  }
+  
+  private void c()
+  {
+    this.b = LayoutInflater.from(u()).inflate(2131628681, null);
+    ((TextView)this.b.findViewById(2131448801)).setText(this.a.getDescName());
+    Object localObject = (URLImageView)this.b.findViewById(2131436489);
+    if (!TextUtils.isEmpty(this.a.getThumbImgUrl())) {
+      ((URLImageView)localObject).setBackgroundURL(this.a.getThumbImgUrl());
+    } else {
+      ((URLImageView)localObject).setVisibility(8);
+    }
+    localObject = (RelativeLayout)d(2063991043);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(12);
+    localLayoutParams.bottomMargin = AIOUtils.b(110.0F, s());
+    localLayoutParams.leftMargin = AIOUtils.b(10.0F, s());
+    ((RelativeLayout)localObject).addView(this.b, localLayoutParams);
+  }
+  
+  private boolean c(MusicItemInfo paramMusicItemInfo)
   {
     if (paramMusicItemInfo == null) {
       return false;
@@ -58,109 +92,75 @@ public class QzoneEditTopic
     return ((paramMusicItemInfo.mType != 5) && (paramMusicItemInfo.mType != 1)) || (FileUtils.fileExistsAndNotEmpty(paramMusicItemInfo.getLocalPath()));
   }
   
-  private void b()
+  private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(a()).inflate(2131562253, null);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379920)).setText(this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.getDescName());
-    Object localObject = (URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369437);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.getThumbImgUrl())) {
-      ((URLImageView)localObject).setBackgroundURL(this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.getThumbImgUrl());
-    } else {
-      ((URLImageView)localObject).setVisibility(8);
-    }
-    localObject = (RelativeLayout)a(2064122153);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(12);
-    localLayoutParams.bottomMargin = AIOUtils.b(110.0F, a());
-    localLayoutParams.leftMargin = AIOUtils.b(10.0F, a());
-    ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-  }
-  
-  private void b(MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.b) {
-      return;
-    }
-    h();
-    if ((this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer != null) && (paramMusicItemInfo != null))
+    if (this.a.hasMusic())
     {
-      if (!a(paramMusicItemInfo)) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.a(7);
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.a(paramMusicItemInfo.getLocalPath());
-    }
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.hasMusic())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = new MusicItemInfo();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mSongMid = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.getMusicId();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.getMusicName();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mUrl = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.getMusicUrl();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mType = 1;
-      EditVideoPlayerExport localEditVideoPlayerExport = (EditVideoPlayerExport)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(EditVideoPlayerExport.class);
+      this.d = new MusicItemInfo();
+      this.d.mSongMid = this.a.getMusicId();
+      this.d.mMusicName = this.a.getMusicName();
+      this.d.mUrl = this.a.getMusicUrl();
+      this.d.mType = 1;
+      EditVideoPlayerExport localEditVideoPlayerExport = (EditVideoPlayerExport)this.t.a(EditVideoPlayerExport.class);
       if (localEditVideoPlayerExport != null) {
         localEditVideoPlayerExport.a(true);
       }
-      if (a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo))
+      if (c(this.d))
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.e = true;
         return;
       }
-      a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+      a(this.d);
     }
   }
   
-  private void h()
+  private void i()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer == null)
+    if (this.c == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer = new AudioPlayer(a(), this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener);
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.c(3);
+      this.c = new AudioPlayer(u(), this.h);
+      this.c.c(3);
     }
-  }
-  
-  private void j()
-  {
-    if (this.b) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(Message.obtain(null, 3, 1, 0));
-    k();
-    b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
   }
   
   private void k()
   {
-    AudioPlayer localAudioPlayer = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer;
+    if (this.f) {
+      return;
+    }
+    this.t.a(Message.obtain(null, 3, 1, 0));
+    l();
+    b(this.d);
+  }
+  
+  private void l()
+  {
+    AudioPlayer localAudioPlayer = this.c;
     if (localAudioPlayer != null)
     {
-      localAudioPlayer.c();
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer = null;
+      localAudioPlayer.d();
+      this.c = null;
     }
   }
   
   public void a()
   {
     super.a();
-    b();
-    g();
+    c();
+    d();
   }
   
   public void a(int paramInt, @NonNull GenerateContext paramGenerateContext)
   {
-    MusicItemInfo localMusicItemInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
+    MusicItemInfo localMusicItemInfo = this.d;
     if ((localMusicItemInfo != null) && (!TextUtils.isEmpty(localMusicItemInfo.getLocalPath())))
     {
-      paramGenerateContext.a.backgroundMusicPath = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath();
-      paramGenerateContext.a.isMuteRecordVoice = true;
-      paramGenerateContext.a.backgroundMusicOffset = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart;
-      paramGenerateContext.a.backgroundMusicDuration = ((int)ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath()));
-      if (paramGenerateContext.a.backgroundMusicDuration <= 0) {
-        paramGenerateContext.a.backgroundMusicPath = null;
+      paramGenerateContext.d.backgroundMusicPath = this.d.getLocalPath();
+      paramGenerateContext.d.isMuteRecordVoice = true;
+      paramGenerateContext.d.backgroundMusicOffset = this.d.musicStart;
+      paramGenerateContext.d.backgroundMusicDuration = ((int)ShortVideoUtils.a(this.d.getLocalPath()));
+      if (paramGenerateContext.d.backgroundMusicDuration <= 0) {
+        paramGenerateContext.d.backgroundMusicPath = null;
       }
     }
   }
@@ -171,14 +171,14 @@ public class QzoneEditTopic
     {
       if (paramInt != 1)
       {
-        paramObject = this.jdField_a_of_type_AndroidViewView;
+        paramObject = this.b;
         if (paramObject != null) {
           paramObject.setVisibility(8);
         }
       }
       else
       {
-        paramObject = this.jdField_a_of_type_AndroidViewView;
+        paramObject = this.b;
         if (paramObject != null) {
           paramObject.setVisibility(8);
         }
@@ -186,7 +186,7 @@ public class QzoneEditTopic
     }
     else
     {
-      paramObject = this.jdField_a_of_type_AndroidViewView;
+      paramObject = this.b;
       if (paramObject != null) {
         paramObject.setVisibility(0);
       }
@@ -197,36 +197,36 @@ public class QzoneEditTopic
   {
     if (paramMessage.what == 14)
     {
-      k();
-      b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+      l();
+      b(this.d);
     }
     return super.a(paramMessage);
   }
   
-  public void d()
+  public void ax_()
   {
-    this.b = false;
-    super.d();
-    if (this.jdField_a_of_type_Boolean) {
-      j();
+    this.f = true;
+    super.ax_();
+    l();
+  }
+  
+  public void f()
+  {
+    this.f = false;
+    super.f();
+    if (this.e) {
+      k();
     }
   }
   
-  public void e()
+  public void g()
   {
-    super.e();
-  }
-  
-  public void z_()
-  {
-    this.b = true;
-    super.z_();
-    k();
+    super.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.QzoneEditTopic
  * JD-Core Version:    0.7.0.1
  */

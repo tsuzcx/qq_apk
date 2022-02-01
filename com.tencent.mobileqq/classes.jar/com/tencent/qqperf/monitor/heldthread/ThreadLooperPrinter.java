@@ -13,18 +13,18 @@ class ThreadLooperPrinter
   implements Printer
 {
   public static int a = 200;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int = 0;
-  private long jdField_c_of_type_Long;
+  private long b;
+  private long c;
+  private long d;
+  private String e;
+  private int f = 0;
+  private int g = 0;
+  private String h;
   
   ThreadLooperPrinter(int paramInt, String paramString)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.g = paramInt;
+    this.h = paramString;
   }
   
   private static String a(String paramString)
@@ -81,33 +81,33 @@ class ThreadLooperPrinter
       localStringBuilder.append(paramInt);
       QLog.d("TM.global.LooperPrinter", 2, localStringBuilder.toString());
     }
-    jdField_a_of_type_Int = paramInt;
+    a = paramInt;
   }
   
   public void println(String paramString)
   {
     if (paramString.startsWith(">>"))
     {
-      this.jdField_c_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_JavaLangString = paramString;
-      if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_c_of_type_Int)) {
-        UnifiedMonitor.a().reportStackIfTimeout(this.jdField_c_of_type_Int);
+      this.d = SystemClock.uptimeMillis();
+      this.e = paramString;
+      if (UnifiedMonitor.a().whetherStackEnabled(this.g)) {
+        UnifiedMonitor.a().reportStackIfTimeout(this.g);
       }
     }
-    else if ((this.jdField_c_of_type_Long != 0L) && (paramString.startsWith("<<")))
+    else if ((this.d != 0L) && (paramString.startsWith("<<")))
     {
-      this.jdField_a_of_type_Long += 1L;
-      long l = SystemClock.uptimeMillis() - this.jdField_c_of_type_Long;
-      this.jdField_c_of_type_Long = 0L;
-      this.jdField_b_of_type_Long += l;
+      this.b += 1L;
+      long l = SystemClock.uptimeMillis() - this.d;
+      this.d = 0L;
+      this.c += l;
       Object localObject = null;
       paramString = (String)localObject;
       if (QLog.isColorLevel()) {
         if (ThreadSetting.logcatBgTaskMonitor)
         {
-          paramString = a(this.jdField_a_of_type_JavaLangString);
+          paramString = a(this.e);
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(this.h);
           ((StringBuilder)localObject).append(", cost=");
           ((StringBuilder)localObject).append(l);
           ((StringBuilder)localObject).append(", ");
@@ -119,9 +119,9 @@ class ThreadLooperPrinter
           paramString = (String)localObject;
           if (l >= 200L)
           {
-            paramString = a(this.jdField_a_of_type_JavaLangString);
+            paramString = a(this.e);
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(this.h);
             ((StringBuilder)localObject).append(" OOT cost=");
             ((StringBuilder)localObject).append(l);
             ((StringBuilder)localObject).append(", ");
@@ -130,16 +130,16 @@ class ThreadLooperPrinter
           }
         }
       }
-      if (l > jdField_a_of_type_Int)
+      if (l > a)
       {
-        if (!UnifiedMonitor.a().whetherReportThisTime(this.jdField_c_of_type_Int))
+        if (!UnifiedMonitor.a().whetherReportThisTime(this.g))
         {
-          this.jdField_b_of_type_Int = 0;
+          this.f = 0;
           return;
         }
         localObject = paramString;
         if (paramString == null) {
-          localObject = a(this.jdField_a_of_type_JavaLangString);
+          localObject = a(this.e);
         }
         HashMap localHashMap = new HashMap(8);
         paramString = Foreground.getTopActivity();
@@ -149,14 +149,14 @@ class ThreadLooperPrinter
           paramString = "";
         }
         localHashMap.put("act", paramString);
-        UnifiedMonitor.a().addEvent(this.jdField_c_of_type_Int, (String)localObject, (int)l, this.jdField_b_of_type_Int, localHashMap);
-        this.jdField_b_of_type_Int = 0;
+        UnifiedMonitor.a().addEvent(this.g, (String)localObject, (int)l, this.f, localHashMap);
+        this.f = 0;
         return;
       }
-      if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_c_of_type_Int)) {
-        UnifiedMonitor.a().notifyNotTimeout(this.jdField_c_of_type_Int);
+      if (UnifiedMonitor.a().whetherStackEnabled(this.g)) {
+        UnifiedMonitor.a().notifyNotTimeout(this.g);
       }
-      this.jdField_b_of_type_Int += 1;
+      this.f += 1;
     }
   }
   
@@ -165,16 +165,16 @@ class ThreadLooperPrinter
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(super.toString());
     localStringBuilder.append("(msgCount = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", totalCost = ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.heldthread.ThreadLooperPrinter
  * JD-Core Version:    0.7.0.1
  */

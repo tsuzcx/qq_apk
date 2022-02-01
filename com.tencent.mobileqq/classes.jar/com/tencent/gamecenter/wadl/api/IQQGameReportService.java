@@ -20,10 +20,16 @@ public abstract interface IQQGameReportService
   public abstract void reportDC(AppRuntime paramAppRuntime, String paramString);
   
   public abstract void reportGamePubAccountMsgStatus(int paramInt, String paramString1, String paramString2);
+  
+  public abstract void reportToAtta(String paramString1, String paramString2, String paramString3);
+  
+  public abstract void reportToAttaForException(String paramString1, String paramString2, String paramString3, String paramString4);
+  
+  public abstract void reportToAttaForFps(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.api.IQQGameReportService
  * JD-Core Version:    0.7.0.1
  */

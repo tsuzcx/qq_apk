@@ -32,7 +32,7 @@ public class LoverDisbandRequestManager
     Intent localIntent = new Intent();
     localIntent.putExtra("currentUin", paramLong1);
     localIntent.putExtra("friendUin", paramLong2);
-    a(localIntent);
+    b(localIntent);
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -71,7 +71,7 @@ public class LoverDisbandRequestManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.LoverDisbandRequestManager
  * JD-Core Version:    0.7.0.1
  */

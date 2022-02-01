@@ -14,9 +14,9 @@ class WerewolvesDataManager$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.a.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(RecentInviteUser.class);
-    Object localObject1 = this.this$0.jdField_a_of_type_JavaLangObject;
+    this.this$0.b = this.a.getEntityManagerFactory().createEntityManager();
+    Object localObject2 = this.this$0.b.query(RecentInviteUser.class);
+    Object localObject1 = this.this$0.c;
     if (localObject2 != null) {}
     try
     {
@@ -24,7 +24,7 @@ class WerewolvesDataManager$1
       while (((Iterator)localObject2).hasNext())
       {
         RecentInviteUser localRecentInviteUser = (RecentInviteUser)((Iterator)localObject2).next();
-        this.this$0.jdField_a_of_type_JavaUtilMap.put(localRecentInviteUser.uniKey, localRecentInviteUser);
+        this.this$0.e.put(localRecentInviteUser.uniKey, localRecentInviteUser);
       }
       return;
     }
@@ -37,7 +37,7 @@ class WerewolvesDataManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.1
  * JD-Core Version:    0.7.0.1
  */

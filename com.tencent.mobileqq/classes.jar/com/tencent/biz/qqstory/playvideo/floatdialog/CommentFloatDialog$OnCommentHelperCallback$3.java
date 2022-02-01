@@ -17,8 +17,8 @@ class CommentFloatDialog$OnCommentHelperCallback$3
   public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
     SLog.a("Q.qqstory.player.CommentFloatDialog", "post comment result is %s.", Boolean.valueOf(paramBoolean));
-    if (!CommentFloatDialog.b(this.a.a)) {
-      CommentFloatDialog.a(this.a.a).p();
+    if (!CommentFloatDialog.j(this.a.a)) {
+      CommentFloatDialog.i(this.a.a).q();
     }
   }
   
@@ -34,7 +34,7 @@ class CommentFloatDialog$OnCommentHelperCallback$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentHelperCallback.3
  * JD-Core Version:    0.7.0.1
  */

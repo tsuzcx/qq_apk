@@ -15,24 +15,24 @@ class OCRResultFragmentNew$6
   protected void a(boolean paramBoolean, List<String> paramList)
   {
     super.a(paramBoolean, paramList);
-    if (OCRResultFragmentNew.a(this.a) != null)
+    if (OCRResultFragmentNew.c(this.a) != null)
     {
-      OCRResultFragmentNew.a(this.a).setOnCancelListener(null);
-      OCRResultFragmentNew.a(this.a).dismiss();
+      OCRResultFragmentNew.c(this.a).setOnCancelListener(null);
+      OCRResultFragmentNew.c(this.a).dismiss();
     }
     if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
     {
-      this.a.a.setParticipleItems(paramList);
-      this.a.a.a();
-      OCRResultFragmentNew.a(this.a, 2);
+      this.a.e.setParticipleItems(paramList);
+      this.a.e.a();
+      OCRResultFragmentNew.b(this.a, 2);
       return;
     }
-    QQToast.a(OCRResultFragmentNew.a(this.a), 1, HardCodeUtil.a(2131707827), 0).a();
+    QQToast.makeText(OCRResultFragmentNew.a(this.a), 1, HardCodeUtil.a(2131905641), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.6
  * JD-Core Version:    0.7.0.1
  */

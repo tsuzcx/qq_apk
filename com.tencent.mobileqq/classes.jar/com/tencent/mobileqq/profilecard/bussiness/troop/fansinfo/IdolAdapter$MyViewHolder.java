@@ -17,16 +17,16 @@ public class IdolAdapter$MyViewHolder
   IdolAdapter$MyViewHolder(View paramView)
   {
     super(paramView);
-    this.ivHead = ((URLImageView)paramView.findViewById(2131368033));
-    this.tvQscoretitle = ((TextView)paramView.findViewById(2131374721));
-    this.tvQscore = ((TextView)paramView.findViewById(2131374720));
-    this.tvRank = ((TextView)paramView.findViewById(2131375973));
-    this.tvName = ((TextView)paramView.findViewById(2131371697));
+    this.ivHead = ((URLImageView)paramView.findViewById(2131434878));
+    this.tvQscoretitle = ((TextView)paramView.findViewById(2131442909));
+    this.tvQscore = ((TextView)paramView.findViewById(2131442908));
+    this.tvRank = ((TextView)paramView.findViewById(2131444159));
+    this.tvName = ((TextView)paramView.findViewById(2131439121));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo.IdolAdapter.MyViewHolder
  * JD-Core Version:    0.7.0.1
  */

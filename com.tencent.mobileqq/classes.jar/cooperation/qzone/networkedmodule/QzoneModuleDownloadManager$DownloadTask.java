@@ -12,7 +12,7 @@ class QzoneModuleDownloadManager$DownloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.networkedmodule.QzoneModuleDownloadManager.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

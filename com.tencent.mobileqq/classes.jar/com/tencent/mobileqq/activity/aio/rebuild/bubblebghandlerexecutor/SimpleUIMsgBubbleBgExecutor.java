@@ -13,6 +13,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.bubble.BubbleInfo;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
+import com.tencent.mobileqq.utils.SimpleModeHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class SimpleUIMsgBubbleBgExecutor
@@ -27,29 +28,20 @@ public class SimpleUIMsgBubbleBgExecutor
   {
     boolean bool = paramChatMessage.isSend();
     Object localObject = this.a.getApp().getResources();
-    int i;
-    if (bool) {
-      i = 2130850336;
-    } else {
-      i = 2130850160;
-    }
+    int i = SimpleModeHelper.a(bool, true);
+    int j = SimpleModeHelper.a(bool, false);
     paramChatMessage = ((Resources)localObject).getDrawable(i);
-    if (bool) {
-      i = 2130850335;
-    } else {
-      i = 2130850159;
-    }
-    localObject = ((Resources)localObject).getDrawable(i);
+    localObject = ((Resources)localObject).getDrawable(j);
     StateListDrawable localStateListDrawable = new StateListDrawable();
     localStateListDrawable.addState(new int[] { 16842919 }, paramChatMessage);
     localStateListDrawable.addState(new int[] { 16842910 }, (Drawable)localObject);
-    paramViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localStateListDrawable);
-    paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo = new BubbleInfo(0);
+    paramViewHolder.h.setBackgroundDrawable(localStateListDrawable);
+    paramViewHolder.i = new BubbleInfo(0);
   }
   
   public int a()
   {
-    return ChatLayoutBubbleBgExecutorImpl.c;
+    return ChatLayoutBubbleBgExecutorImpl.f;
   }
   
   public void a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
@@ -59,12 +51,12 @@ public class SimpleUIMsgBubbleBgExecutor
   
   public boolean a(int paramInt, ChatMessage paramChatMessage)
   {
-    return (paramInt != 0) && (SimpleUIUtil.a());
+    return (paramInt != 0) && (SimpleUIUtil.e());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.bubblebghandlerexecutor.SimpleUIMsgBubbleBgExecutor
  * JD-Core Version:    0.7.0.1
  */

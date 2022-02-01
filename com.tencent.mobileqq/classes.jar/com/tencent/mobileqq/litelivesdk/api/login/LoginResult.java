@@ -8,34 +8,28 @@ public class LoginResult
   implements Parcelable
 {
   public static final Parcelable.Creator<LoginResult> CREATOR = new LoginResult.1();
-  public int a;
-  public long a;
   public String a;
-  public long b;
   public String b;
   public String c;
   public String d;
-  public String e;
+  public long e = 0L;
   public String f;
+  public String g;
+  public long h = 0L;
+  public int i;
   
-  public LoginResult()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-  }
+  public LoginResult() {}
   
   public LoginResult(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.e = paramParcel.readString();
+    this.e = paramParcel.readLong();
     this.f = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.g = paramParcel.readString();
+    this.i = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -45,19 +39,19 @@ public class LoginResult
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.e);
+    paramParcel.writeLong(this.e);
     paramParcel.writeString(this.f);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.g);
+    paramParcel.writeInt(this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.api.login.LoginResult
  * JD-Core Version:    0.7.0.1
  */

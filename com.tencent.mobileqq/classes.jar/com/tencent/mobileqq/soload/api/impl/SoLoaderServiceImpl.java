@@ -158,10 +158,24 @@ public class SoLoaderServiceImpl
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[LoadResult] resCode：");
-      ((StringBuilder)localObject).append(paramInt);
-      QLog.i("SoLoadWidget.SoloadServiceImpl", 2, ((StringBuilder)localObject).toString());
+      if ((paramLoadParam != null) && (paramLoadParam.mLoadItems != null) && (!paramLoadParam.mLoadItems.isEmpty())) {
+        localObject = paramLoadParam.mLoadItems.iterator();
+      }
+      while (((Iterator)localObject).hasNext())
+      {
+        LoadParam.LoadItem localLoadItem = (LoadParam.LoadItem)((Iterator)localObject).next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[LoadResult] soName: ");
+        localStringBuilder.append(localLoadItem.soFileName);
+        localStringBuilder.append(" resCode：");
+        localStringBuilder.append(paramInt);
+        QLog.i("SoLoadWidget.SoloadServiceImpl", 2, localStringBuilder.toString());
+        continue;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[LoadResult] resCode：");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.i("SoLoadWidget.SoloadServiceImpl", 2, ((StringBuilder)localObject).toString());
+      }
     }
     int i;
     if (paramLoadExtResult != null) {
@@ -177,7 +191,11 @@ public class SoLoaderServiceImpl
     if (paramInt != 0) {
       SoReportUtil.a(paramLoadParam, paramLong, "load.end", (String)localObject, i, null);
     }
-    if (paramOnLoadListener != null) {
+    if (paramOnLoadListener != null)
+    {
+      if (paramLoadExtResult == null) {
+        paramLoadExtResult = new LoadExtResult();
+      }
       paramOnLoadListener.onLoadResult(paramInt, paramLoadExtResult);
     }
     removeLoadingLoader(paramLoadParam);
@@ -284,31 +302,35 @@ public class SoLoaderServiceImpl
   
   private LoadExtResult loadSync(LoadParam paramLoadParam)
   {
-    Object localObject;
+    Object localObject1;
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("loadSync loadParam=");
-      ((StringBuilder)localObject).append(paramLoadParam);
-      QLog.i("SoLoadWidget.SoloadServiceImpl", 2, ((StringBuilder)localObject).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("loadSync loadParam=");
+      ((StringBuilder)localObject1).append(paramLoadParam);
+      QLog.i("SoLoadWidget.SoloadServiceImpl", 2, ((StringBuilder)localObject1).toString());
     }
     long l = SoReportUtil.a(paramLoadParam);
     if (!LoadParam.isValid(paramLoadParam))
     {
-      localObject = LoadExtResult.create(1, LoadParam.getItemSize(paramLoadParam));
+      localObject1 = LoadExtResult.create(1, LoadParam.getItemSize(paramLoadParam));
     }
     else
     {
-      localObject = getSoLoader(paramLoadParam);
+      localObject1 = getSoLoader(paramLoadParam);
       paramLoadParam.mCallType = LoadParam.CALL_TYPE_SYNC;
-      addLoadingLoader(paramLoadParam, (ISoLoader)localObject);
-      localObject = ((ISoLoader)localObject).a(paramLoadParam);
+      addLoadingLoader(paramLoadParam, (ISoLoader)localObject1);
+      localObject1 = ((ISoLoader)localObject1).a(paramLoadParam);
     }
-    handleLoadResult(((LoadExtResult)localObject).getResultCode(), (LoadExtResult)localObject, l, null, paramLoadParam);
-    if (((LoadExtResult)localObject).isNeedRetry(paramLoadParam)) {
-      handleLoadSyncFail((LoadExtResult)localObject, paramLoadParam);
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = new LoadExtResult();
     }
-    return localObject;
+    handleLoadResult(((LoadExtResult)localObject2).getResultCode(), (LoadExtResult)localObject2, l, null, paramLoadParam);
+    if (((LoadExtResult)localObject2).isNeedRetry(paramLoadParam)) {
+      handleLoadSyncFail((LoadExtResult)localObject2, paramLoadParam);
+    }
+    return localObject2;
   }
   
   private static void removeLoadingLoader(LoadParam paramLoadParam)
@@ -358,7 +380,7 @@ public class SoLoaderServiceImpl
   
   public String getInitVer(String paramString)
   {
-    return SoLoaderLogic.a(paramString);
+    return SoLoaderLogic.c(paramString);
   }
   
   public void getSoLoadInfoTaskAsync(LoadParam paramLoadParam, LoadParam.LoadItem paramLoadItem, OnGetSoLoadInfoListener paramOnGetSoLoadInfoListener)
@@ -368,7 +390,7 @@ public class SoLoaderServiceImpl
   
   public SoLoadInfo getSoLoadInfoTaskSync(LoadParam paramLoadParam, LoadParam.LoadItem paramLoadItem)
   {
-    return new GetSoLoadInfoTaskSync(paramLoadParam, paramLoadItem).a();
+    return new GetSoLoadInfoTaskSync(paramLoadParam, paramLoadItem).c();
   }
   
   public String getSoVer(String paramString)
@@ -408,7 +430,7 @@ public class SoLoaderServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.SoLoaderServiceImpl
  * JD-Core Version:    0.7.0.1
  */

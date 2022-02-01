@@ -14,13 +14,13 @@ final class RIJXTabBar$init$4
   {
     paramView = RIJXTabBar.a(this.a);
     if (paramView != null) {
-      paramView.c((View)RIJXTabBar.c(this.a));
+      paramView.c((View)RIJXTabBar.d(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.RIJXTabBar.init.4
  * JD-Core Version:    0.7.0.1
  */

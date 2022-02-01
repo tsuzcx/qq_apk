@@ -11,13 +11,13 @@ class AEEditorImageEditFragment$31
   public void a()
   {
     AEEditorImageEditFragment localAEEditorImageEditFragment = this.a;
-    localAEEditorImageEditFragment.a = null;
+    localAEEditorImageEditFragment.j = null;
     AEEditorImageEditFragment.a(localAEEditorImageEditFragment).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImageEditFragment.31
  * JD-Core Version:    0.7.0.1
  */

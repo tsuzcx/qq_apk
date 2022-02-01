@@ -6,9 +6,12 @@ import com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.temp.CircleGroupSt
 import com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.temp.ContactStrangerPlusPanelAppLoader;
 import com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.temp.DateStrangerPlusPanelAppLoader;
 import com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.temp.GroupOrDiscussionStrangerPlusPanelAppLoader;
+import com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.temp.MatchChatPlusPanelAppLoader;
 import com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.temp.MovieTicketStrangerPlusPanelAppLoader;
 import com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.temp.NearByStrangerPlusPanelAppLoader;
 import com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.temp.TribeStrangerPlusPanelAppLoader;
+import com.tencent.mobileqq.guild.temp.api.IGuildFeatureAdapterApi;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class PlusPanelLoaderFactory$1
   extends SparseArray<Class<? extends PlusPanelAppLoader>>
@@ -35,11 +38,13 @@ class PlusPanelLoaderFactory$1
     put(1021, CircleGroupStrangerPlusPanelAppLoader.class);
     put(6000, DataLinePCPlusPanelAppLoader.class);
     put(9501, DevicePlusPanelAppLoader.class);
+    put(1044, MatchChatPlusPanelAppLoader.class);
+    put(10014, ((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getGuildPlusPanelAppLoaderClass());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.PlusPanelLoaderFactory.1
  * JD-Core Version:    0.7.0.1
  */

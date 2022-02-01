@@ -2,12 +2,19 @@ package androidx.constraintlayout.solver.widgets;
 
 import androidx.constraintlayout.solver.LinearSystem;
 import androidx.constraintlayout.solver.Metrics;
+import androidx.constraintlayout.solver.SolverVariable;
 import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure;
+import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure.Measure;
 import androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure.Measurer;
 import androidx.constraintlayout.solver.widgets.analyzer.DependencyGraph;
+import androidx.constraintlayout.solver.widgets.analyzer.Direct;
+import androidx.constraintlayout.solver.widgets.analyzer.Grouping;
 import java.io.PrintStream;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class ConstraintWidgetContainer
   extends WidgetContainer
@@ -16,18 +23,22 @@ public class ConstraintWidgetContainer
   static final boolean DEBUG_GRAPH = false;
   private static final boolean DEBUG_LAYOUT = false;
   private static final int MAX_ITERATIONS = 8;
+  static int mycounter;
+  private WeakReference<ConstraintAnchor> horizontalWrapMax = null;
+  private WeakReference<ConstraintAnchor> horizontalWrapMin = null;
   BasicMeasure mBasicMeasureSolver = new BasicMeasure(this);
   int mDebugSolverPassCount = 0;
   public DependencyGraph mDependencyGraph = new DependencyGraph(this);
   public boolean mGroupsWrapOptimized = false;
   private boolean mHeightMeasuredTooSmall = false;
   ChainHead[] mHorizontalChainsArray = new ChainHead[4];
-  int mHorizontalChainsSize = 0;
+  public int mHorizontalChainsSize = 0;
   public boolean mHorizontalWrapOptimized = false;
   private boolean mIsRtl = false;
+  public BasicMeasure.Measure mMeasure = new BasicMeasure.Measure();
   protected BasicMeasure.Measurer mMeasurer = null;
   public Metrics mMetrics;
-  private int mOptimizationLevel = 263;
+  private int mOptimizationLevel = 257;
   int mPaddingBottom;
   int mPaddingLeft;
   int mPaddingRight;
@@ -35,11 +46,13 @@ public class ConstraintWidgetContainer
   public boolean mSkipSolver = false;
   protected LinearSystem mSystem = new LinearSystem();
   ChainHead[] mVerticalChainsArray = new ChainHead[4];
-  int mVerticalChainsSize = 0;
+  public int mVerticalChainsSize = 0;
   public boolean mVerticalWrapOptimized = false;
   private boolean mWidthMeasuredTooSmall = false;
   public int mWrapFixedHeight = 0;
   public int mWrapFixedWidth = 0;
+  private WeakReference<ConstraintAnchor> verticalWrapMax = null;
+  private WeakReference<ConstraintAnchor> verticalWrapMin = null;
   
   public ConstraintWidgetContainer() {}
   
@@ -53,6 +66,12 @@ public class ConstraintWidgetContainer
     super(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
+  public ConstraintWidgetContainer(String paramString, int paramInt1, int paramInt2)
+  {
+    super(paramInt1, paramInt2);
+    setDebugName(paramString);
+  }
+  
   private void addHorizontalChain(ConstraintWidget paramConstraintWidget)
   {
     int i = this.mHorizontalChainsSize;
@@ -64,6 +83,18 @@ public class ConstraintWidgetContainer
     this.mHorizontalChainsSize += 1;
   }
   
+  private void addMaxWrap(ConstraintAnchor paramConstraintAnchor, SolverVariable paramSolverVariable)
+  {
+    paramConstraintAnchor = this.mSystem.createObjectVariable(paramConstraintAnchor);
+    this.mSystem.addGreaterThan(paramSolverVariable, paramConstraintAnchor, 0, 5);
+  }
+  
+  private void addMinWrap(ConstraintAnchor paramConstraintAnchor, SolverVariable paramSolverVariable)
+  {
+    paramConstraintAnchor = this.mSystem.createObjectVariable(paramConstraintAnchor);
+    this.mSystem.addGreaterThan(paramConstraintAnchor, paramSolverVariable, 0, 5);
+  }
+  
   private void addVerticalChain(ConstraintWidget paramConstraintWidget)
   {
     int i = this.mVerticalChainsSize;
@@ -73,6 +104,151 @@ public class ConstraintWidgetContainer
     }
     this.mVerticalChainsArray[this.mVerticalChainsSize] = new ChainHead(paramConstraintWidget, 1, isRtl());
     this.mVerticalChainsSize += 1;
+  }
+  
+  public static boolean measure(ConstraintWidget paramConstraintWidget, BasicMeasure.Measurer paramMeasurer, BasicMeasure.Measure paramMeasure, int paramInt)
+  {
+    if (paramMeasurer == null) {
+      return false;
+    }
+    paramMeasure.horizontalBehavior = paramConstraintWidget.getHorizontalDimensionBehaviour();
+    paramMeasure.verticalBehavior = paramConstraintWidget.getVerticalDimensionBehaviour();
+    paramMeasure.horizontalDimension = paramConstraintWidget.getWidth();
+    paramMeasure.verticalDimension = paramConstraintWidget.getHeight();
+    paramMeasure.measuredNeedsSolverPass = false;
+    paramMeasure.measureStrategy = paramInt;
+    if (paramMeasure.horizontalBehavior == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
+    }
+    int i;
+    if (paramMeasure.verticalBehavior == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int m;
+    if ((paramInt != 0) && (paramConstraintWidget.mDimensionRatio > 0.0F)) {
+      m = 1;
+    } else {
+      m = 0;
+    }
+    int k;
+    if ((i != 0) && (paramConstraintWidget.mDimensionRatio > 0.0F)) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    int j = paramInt;
+    if (paramInt != 0)
+    {
+      j = paramInt;
+      if (paramConstraintWidget.hasDanglingDimension(0))
+      {
+        j = paramInt;
+        if (paramConstraintWidget.mMatchConstraintDefaultWidth == 0)
+        {
+          j = paramInt;
+          if (m == 0)
+          {
+            paramMeasure.horizontalBehavior = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
+            if ((i != 0) && (paramConstraintWidget.mMatchConstraintDefaultHeight == 0)) {
+              paramMeasure.horizontalBehavior = ConstraintWidget.DimensionBehaviour.FIXED;
+            }
+            j = 0;
+          }
+        }
+      }
+    }
+    paramInt = i;
+    if (i != 0)
+    {
+      paramInt = i;
+      if (paramConstraintWidget.hasDanglingDimension(1))
+      {
+        paramInt = i;
+        if (paramConstraintWidget.mMatchConstraintDefaultHeight == 0)
+        {
+          paramInt = i;
+          if (k == 0)
+          {
+            paramMeasure.verticalBehavior = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
+            if ((j != 0) && (paramConstraintWidget.mMatchConstraintDefaultWidth == 0)) {
+              paramMeasure.verticalBehavior = ConstraintWidget.DimensionBehaviour.FIXED;
+            }
+            paramInt = 0;
+          }
+        }
+      }
+    }
+    if (paramConstraintWidget.isResolvedHorizontally())
+    {
+      paramMeasure.horizontalBehavior = ConstraintWidget.DimensionBehaviour.FIXED;
+      j = 0;
+    }
+    if (paramConstraintWidget.isResolvedVertically())
+    {
+      paramMeasure.verticalBehavior = ConstraintWidget.DimensionBehaviour.FIXED;
+      paramInt = 0;
+    }
+    if (m != 0) {
+      if (paramConstraintWidget.mResolvedMatchConstraintDefault[0] == 4)
+      {
+        paramMeasure.horizontalBehavior = ConstraintWidget.DimensionBehaviour.FIXED;
+      }
+      else if (paramInt == 0)
+      {
+        if (paramMeasure.verticalBehavior == ConstraintWidget.DimensionBehaviour.FIXED)
+        {
+          paramInt = paramMeasure.verticalDimension;
+        }
+        else
+        {
+          paramMeasure.horizontalBehavior = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
+          paramMeasurer.measure(paramConstraintWidget, paramMeasure);
+          paramInt = paramMeasure.measuredHeight;
+        }
+        paramMeasure.horizontalBehavior = ConstraintWidget.DimensionBehaviour.FIXED;
+        if ((paramConstraintWidget.mDimensionRatioSide != 0) && (paramConstraintWidget.mDimensionRatioSide != -1)) {
+          paramMeasure.horizontalDimension = ((int)(paramConstraintWidget.getDimensionRatio() / paramInt));
+        } else {
+          paramMeasure.horizontalDimension = ((int)(paramConstraintWidget.getDimensionRatio() * paramInt));
+        }
+      }
+    }
+    if (k != 0) {
+      if (paramConstraintWidget.mResolvedMatchConstraintDefault[1] == 4)
+      {
+        paramMeasure.verticalBehavior = ConstraintWidget.DimensionBehaviour.FIXED;
+      }
+      else if (j == 0)
+      {
+        if (paramMeasure.horizontalBehavior == ConstraintWidget.DimensionBehaviour.FIXED)
+        {
+          paramInt = paramMeasure.horizontalDimension;
+        }
+        else
+        {
+          paramMeasure.verticalBehavior = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
+          paramMeasurer.measure(paramConstraintWidget, paramMeasure);
+          paramInt = paramMeasure.measuredWidth;
+        }
+        paramMeasure.verticalBehavior = ConstraintWidget.DimensionBehaviour.FIXED;
+        if ((paramConstraintWidget.mDimensionRatioSide != 0) && (paramConstraintWidget.mDimensionRatioSide != -1)) {
+          paramMeasure.verticalDimension = ((int)(paramInt * paramConstraintWidget.getDimensionRatio()));
+        } else {
+          paramMeasure.verticalDimension = ((int)(paramInt / paramConstraintWidget.getDimensionRatio()));
+        }
+      }
+    }
+    paramMeasurer.measure(paramConstraintWidget, paramMeasure);
+    paramConstraintWidget.setWidth(paramMeasure.measuredWidth);
+    paramConstraintWidget.setHeight(paramMeasure.measuredHeight);
+    paramConstraintWidget.setHasBaseline(paramMeasure.measuredHasBaseline);
+    paramConstraintWidget.setBaselineDistance(paramMeasure.measuredBaseline);
+    paramMeasure.measureStrategy = BasicMeasure.Measure.SELF_DIMENSIONS;
+    return paramMeasure.measuredNeedsSolverPass;
   }
   
   private void resetChains()
@@ -95,17 +271,18 @@ public class ConstraintWidgetContainer
   
   public boolean addChildrenToSolver(LinearSystem paramLinearSystem)
   {
-    addToSolver(paramLinearSystem);
+    boolean bool = optimizeFor(64);
+    addToSolver(paramLinearSystem, bool);
     int k = this.mChildren.size();
     int i = 0;
     int j = 0;
-    ConstraintWidget localConstraintWidget;
+    Object localObject1;
     while (i < k)
     {
-      localConstraintWidget = (ConstraintWidget)this.mChildren.get(i);
-      localConstraintWidget.setInBarrier(0, false);
-      localConstraintWidget.setInBarrier(1, false);
-      if ((localConstraintWidget instanceof Barrier)) {
+      localObject1 = (ConstraintWidget)this.mChildren.get(i);
+      ((ConstraintWidget)localObject1).setInBarrier(0, false);
+      ((ConstraintWidget)localObject1).setInBarrier(1, false);
+      if ((localObject1 instanceof Barrier)) {
         j = 1;
       }
       i += 1;
@@ -115,9 +292,9 @@ public class ConstraintWidgetContainer
       i = 0;
       while (i < k)
       {
-        localConstraintWidget = (ConstraintWidget)this.mChildren.get(i);
-        if ((localConstraintWidget instanceof Barrier)) {
-          ((Barrier)localConstraintWidget).markWidgets();
+        localObject1 = (ConstraintWidget)this.mChildren.get(i);
+        if ((localObject1 instanceof Barrier)) {
+          ((Barrier)localObject1).markWidgets();
         }
         i += 1;
       }
@@ -125,50 +302,109 @@ public class ConstraintWidgetContainer
     i = 0;
     while (i < k)
     {
-      localConstraintWidget = (ConstraintWidget)this.mChildren.get(i);
-      if (localConstraintWidget.addFirst()) {
-        localConstraintWidget.addToSolver(paramLinearSystem);
+      localObject1 = (ConstraintWidget)this.mChildren.get(i);
+      if (((ConstraintWidget)localObject1).addFirst()) {
+        ((ConstraintWidget)localObject1).addToSolver(paramLinearSystem, bool);
       }
       i += 1;
+    }
+    Object localObject2;
+    if (LinearSystem.USE_DEPENDENCY_ORDERING)
+    {
+      localObject1 = new HashSet();
+      i = 0;
+      while (i < k)
+      {
+        localObject2 = (ConstraintWidget)this.mChildren.get(i);
+        if (!((ConstraintWidget)localObject2).addFirst()) {
+          ((HashSet)localObject1).add(localObject2);
+        }
+        i += 1;
+      }
+      if (getHorizontalDimensionBehaviour() == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      addChildrenToSolverByDependency(this, paramLinearSystem, (HashSet)localObject1, i, false);
+      localObject1 = ((HashSet)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (ConstraintWidget)((Iterator)localObject1).next();
+        Optimizer.checkMatchParent(this, paramLinearSystem, (ConstraintWidget)localObject2);
+        ((ConstraintWidget)localObject2).addToSolver(paramLinearSystem, bool);
+      }
     }
     i = 0;
     while (i < k)
     {
-      localConstraintWidget = (ConstraintWidget)this.mChildren.get(i);
-      if ((localConstraintWidget instanceof ConstraintWidgetContainer))
+      localObject1 = (ConstraintWidget)this.mChildren.get(i);
+      if ((localObject1 instanceof ConstraintWidgetContainer))
       {
-        ConstraintWidget.DimensionBehaviour localDimensionBehaviour1 = localConstraintWidget.mListDimensionBehaviors[0];
-        ConstraintWidget.DimensionBehaviour localDimensionBehaviour2 = localConstraintWidget.mListDimensionBehaviors[1];
-        if (localDimensionBehaviour1 == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) {
-          localConstraintWidget.setHorizontalDimensionBehaviour(ConstraintWidget.DimensionBehaviour.FIXED);
+        localObject2 = localObject1.mListDimensionBehaviors[0];
+        ConstraintWidget.DimensionBehaviour localDimensionBehaviour = localObject1.mListDimensionBehaviors[1];
+        if (localObject2 == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) {
+          ((ConstraintWidget)localObject1).setHorizontalDimensionBehaviour(ConstraintWidget.DimensionBehaviour.FIXED);
         }
-        if (localDimensionBehaviour2 == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) {
-          localConstraintWidget.setVerticalDimensionBehaviour(ConstraintWidget.DimensionBehaviour.FIXED);
+        if (localDimensionBehaviour == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) {
+          ((ConstraintWidget)localObject1).setVerticalDimensionBehaviour(ConstraintWidget.DimensionBehaviour.FIXED);
         }
-        localConstraintWidget.addToSolver(paramLinearSystem);
-        if (localDimensionBehaviour1 == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) {
-          localConstraintWidget.setHorizontalDimensionBehaviour(localDimensionBehaviour1);
+        ((ConstraintWidget)localObject1).addToSolver(paramLinearSystem, bool);
+        if (localObject2 == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) {
+          ((ConstraintWidget)localObject1).setHorizontalDimensionBehaviour((ConstraintWidget.DimensionBehaviour)localObject2);
         }
-        if (localDimensionBehaviour2 == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) {
-          localConstraintWidget.setVerticalDimensionBehaviour(localDimensionBehaviour2);
+        if (localDimensionBehaviour == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) {
+          ((ConstraintWidget)localObject1).setVerticalDimensionBehaviour(localDimensionBehaviour);
         }
       }
       else
       {
-        Optimizer.checkMatchParent(this, paramLinearSystem, localConstraintWidget);
-        if (!localConstraintWidget.addFirst()) {
-          localConstraintWidget.addToSolver(paramLinearSystem);
+        Optimizer.checkMatchParent(this, paramLinearSystem, (ConstraintWidget)localObject1);
+        if (!((ConstraintWidget)localObject1).addFirst()) {
+          ((ConstraintWidget)localObject1).addToSolver(paramLinearSystem, bool);
         }
       }
       i += 1;
     }
     if (this.mHorizontalChainsSize > 0) {
-      Chain.applyChainConstraints(this, paramLinearSystem, 0);
+      Chain.applyChainConstraints(this, paramLinearSystem, null, 0);
     }
     if (this.mVerticalChainsSize > 0) {
-      Chain.applyChainConstraints(this, paramLinearSystem, 1);
+      Chain.applyChainConstraints(this, paramLinearSystem, null, 1);
     }
     return true;
+  }
+  
+  public void addHorizontalWrapMaxVariable(ConstraintAnchor paramConstraintAnchor)
+  {
+    WeakReference localWeakReference = this.horizontalWrapMax;
+    if ((localWeakReference == null) || (localWeakReference.get() == null) || (paramConstraintAnchor.getFinalValue() > ((ConstraintAnchor)this.horizontalWrapMax.get()).getFinalValue())) {
+      this.horizontalWrapMax = new WeakReference(paramConstraintAnchor);
+    }
+  }
+  
+  public void addHorizontalWrapMinVariable(ConstraintAnchor paramConstraintAnchor)
+  {
+    WeakReference localWeakReference = this.horizontalWrapMin;
+    if ((localWeakReference == null) || (localWeakReference.get() == null) || (paramConstraintAnchor.getFinalValue() > ((ConstraintAnchor)this.horizontalWrapMin.get()).getFinalValue())) {
+      this.horizontalWrapMin = new WeakReference(paramConstraintAnchor);
+    }
+  }
+  
+  void addVerticalWrapMaxVariable(ConstraintAnchor paramConstraintAnchor)
+  {
+    WeakReference localWeakReference = this.verticalWrapMax;
+    if ((localWeakReference == null) || (localWeakReference.get() == null) || (paramConstraintAnchor.getFinalValue() > ((ConstraintAnchor)this.verticalWrapMax.get()).getFinalValue())) {
+      this.verticalWrapMax = new WeakReference(paramConstraintAnchor);
+    }
+  }
+  
+  void addVerticalWrapMinVariable(ConstraintAnchor paramConstraintAnchor)
+  {
+    WeakReference localWeakReference = this.verticalWrapMin;
+    if ((localWeakReference == null) || (localWeakReference.get() == null) || (paramConstraintAnchor.getFinalValue() > ((ConstraintAnchor)this.verticalWrapMin.get()).getFinalValue())) {
+      this.verticalWrapMin = new WeakReference(paramConstraintAnchor);
+    }
   }
   
   public void defineTerminalWidgets()
@@ -291,47 +527,119 @@ public class ConstraintWidgetContainer
   {
     this.mX = 0;
     this.mY = 0;
-    int i2 = Math.max(0, getWidth());
-    int i3 = Math.max(0, getHeight());
     this.mWidthMeasuredTooSmall = false;
     this.mHeightMeasuredTooSmall = false;
-    if ((!optimizeFor(64)) && (!optimizeFor(128))) {
-      i = 0;
-    } else {
-      i = 1;
+    int i4 = this.mChildren.size();
+    int j = Math.max(0, getWidth());
+    int k = Math.max(0, getHeight());
+    ConstraintWidget.DimensionBehaviour localDimensionBehaviour1 = this.mListDimensionBehaviors[1];
+    ConstraintWidget.DimensionBehaviour localDimensionBehaviour2 = this.mListDimensionBehaviors[0];
+    Object localObject1 = this.mMetrics;
+    if (localObject1 != null) {
+      ((Metrics)localObject1).layouts += 1L;
     }
-    Object localObject = this.mSystem;
-    ((LinearSystem)localObject).graphOptimizer = false;
-    ((LinearSystem)localObject).newgraphOptimizer = false;
-    if ((this.mOptimizationLevel != 0) && (i != 0)) {
-      ((LinearSystem)localObject).newgraphOptimizer = true;
-    }
-    localObject = this.mListDimensionBehaviors[1];
-    ConstraintWidget.DimensionBehaviour localDimensionBehaviour = this.mListDimensionBehaviors[0];
-    ArrayList localArrayList = this.mChildren;
+    int i;
+    Object localObject2;
+    Object localObject3;
     int m;
-    if ((getHorizontalDimensionBehaviour() != ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) && (getVerticalDimensionBehaviour() != ConstraintWidget.DimensionBehaviour.WRAP_CONTENT)) {
-      m = 0;
+    if (Optimizer.enabled(this.mOptimizationLevel, 1))
+    {
+      Direct.solvingPass(this, getMeasurer());
+      i = 0;
+      while (i < i4)
+      {
+        localObject1 = (ConstraintWidget)this.mChildren.get(i);
+        if ((((ConstraintWidget)localObject1).isMeasureRequested()) && (!(localObject1 instanceof Guideline)) && (!(localObject1 instanceof Barrier)) && (!(localObject1 instanceof VirtualLayout)) && (!((ConstraintWidget)localObject1).isInVirtualLayout()))
+        {
+          localObject2 = ((ConstraintWidget)localObject1).getDimensionBehaviour(0);
+          localObject3 = ((ConstraintWidget)localObject1).getDimensionBehaviour(1);
+          if ((localObject2 == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) && (((ConstraintWidget)localObject1).mMatchConstraintDefaultWidth != 1) && (localObject3 == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) && (((ConstraintWidget)localObject1).mMatchConstraintDefaultHeight != 1)) {
+            m = 1;
+          } else {
+            m = 0;
+          }
+          if (m == 0)
+          {
+            localObject2 = new BasicMeasure.Measure();
+            measure((ConstraintWidget)localObject1, this.mMeasurer, (BasicMeasure.Measure)localObject2, BasicMeasure.Measure.SELF_DIMENSIONS);
+          }
+        }
+        i += 1;
+      }
+    }
+    int n;
+    if ((i4 > 2) && ((localDimensionBehaviour2 == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) || (localDimensionBehaviour1 == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT)) && (Optimizer.enabled(this.mOptimizationLevel, 1024)) && (Grouping.simpleSolvingPass(this, getMeasurer())))
+    {
+      i = j;
+      if (localDimensionBehaviour2 == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) {
+        if ((j < getWidth()) && (j > 0))
+        {
+          setWidth(j);
+          this.mWidthMeasuredTooSmall = true;
+          i = j;
+        }
+        else
+        {
+          i = getWidth();
+        }
+      }
+      j = k;
+      if (localDimensionBehaviour1 == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) {
+        if ((k < getHeight()) && (k > 0))
+        {
+          setHeight(k);
+          this.mHeightMeasuredTooSmall = true;
+          j = k;
+        }
+        else
+        {
+          j = getHeight();
+        }
+      }
+      m = i;
+      i = 1;
+      n = j;
+    }
+    else
+    {
+      i = 0;
+      n = k;
+      m = j;
+    }
+    if ((!optimizeFor(64)) && (!optimizeFor(128))) {
+      j = 0;
     } else {
-      m = 1;
+      j = 1;
+    }
+    localObject1 = this.mSystem;
+    ((LinearSystem)localObject1).graphOptimizer = false;
+    ((LinearSystem)localObject1).newgraphOptimizer = false;
+    if ((this.mOptimizationLevel != 0) && (j != 0)) {
+      ((LinearSystem)localObject1).newgraphOptimizer = true;
+    }
+    localObject1 = this.mChildren;
+    int i1;
+    if ((getHorizontalDimensionBehaviour() != ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) && (getVerticalDimensionBehaviour() != ConstraintWidget.DimensionBehaviour.WRAP_CONTENT)) {
+      i1 = 0;
+    } else {
+      i1 = 1;
     }
     resetChains();
-    int i4 = this.mChildren.size();
-    int i = 0;
-    while (i < i4)
+    j = 0;
+    while (j < i4)
     {
-      ConstraintWidget localConstraintWidget1 = (ConstraintWidget)this.mChildren.get(i);
-      if ((localConstraintWidget1 instanceof WidgetContainer)) {
-        ((WidgetContainer)localConstraintWidget1).layout();
+      localObject2 = (ConstraintWidget)this.mChildren.get(j);
+      if ((localObject2 instanceof WidgetContainer)) {
+        ((WidgetContainer)localObject2).layout();
       }
-      i += 1;
+      j += 1;
     }
-    int j = 0;
+    boolean bool4 = optimizeFor(64);
+    j = 0;
     boolean bool2 = true;
-    i = 0;
     while (bool2)
     {
-      int i1 = j + 1;
+      int i3 = j + 1;
       boolean bool1 = bool2;
       try
       {
@@ -350,6 +658,54 @@ public class ConstraintWidgetContainer
         bool1 = bool2;
         bool2 = addChildrenToSolver(this.mSystem);
         bool1 = bool2;
+        if (this.verticalWrapMin != null)
+        {
+          bool1 = bool2;
+          if (this.verticalWrapMin.get() != null)
+          {
+            bool1 = bool2;
+            addMinWrap((ConstraintAnchor)this.verticalWrapMin.get(), this.mSystem.createObjectVariable(this.mTop));
+            bool1 = bool2;
+            this.verticalWrapMin = null;
+          }
+        }
+        bool1 = bool2;
+        if (this.verticalWrapMax != null)
+        {
+          bool1 = bool2;
+          if (this.verticalWrapMax.get() != null)
+          {
+            bool1 = bool2;
+            addMaxWrap((ConstraintAnchor)this.verticalWrapMax.get(), this.mSystem.createObjectVariable(this.mBottom));
+            bool1 = bool2;
+            this.verticalWrapMax = null;
+          }
+        }
+        bool1 = bool2;
+        if (this.horizontalWrapMin != null)
+        {
+          bool1 = bool2;
+          if (this.horizontalWrapMin.get() != null)
+          {
+            bool1 = bool2;
+            addMinWrap((ConstraintAnchor)this.horizontalWrapMin.get(), this.mSystem.createObjectVariable(this.mLeft));
+            bool1 = bool2;
+            this.horizontalWrapMin = null;
+          }
+        }
+        bool1 = bool2;
+        if (this.horizontalWrapMax != null)
+        {
+          bool1 = bool2;
+          if (this.horizontalWrapMax.get() != null)
+          {
+            bool1 = bool2;
+            addMaxWrap((ConstraintAnchor)this.horizontalWrapMax.get(), this.mSystem.createObjectVariable(this.mRight));
+            bool1 = bool2;
+            this.horizontalWrapMax = null;
+          }
+        }
+        bool1 = bool2;
         if (bool2)
         {
           bool1 = bool2;
@@ -360,11 +716,11 @@ public class ConstraintWidgetContainer
       catch (Exception localException)
       {
         localException.printStackTrace();
-        PrintStream localPrintStream = System.out;
+        localObject3 = System.out;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("EXCEPTION : ");
         localStringBuilder.append(localException);
-        localPrintStream.println(localStringBuilder.toString());
+        ((PrintStream)localObject3).println(localStringBuilder.toString());
       }
       if (bool1)
       {
@@ -372,29 +728,29 @@ public class ConstraintWidgetContainer
       }
       else
       {
-        updateFromSolver(this.mSystem);
+        updateFromSolver(this.mSystem, bool4);
         j = 0;
         while (j < i4)
         {
-          ((ConstraintWidget)this.mChildren.get(j)).updateFromSolver(this.mSystem);
+          ((ConstraintWidget)this.mChildren.get(j)).updateFromSolver(this.mSystem, bool4);
           j += 1;
         }
       }
-      if ((m != 0) && (i1 < 8) && (Optimizer.flags[2] != 0))
+      if ((i1 != 0) && (i3 < 8) && (Optimizer.flags[2] != 0))
       {
         k = 0;
-        int n = 0;
+        int i2 = 0;
         j = 0;
         while (k < i4)
         {
-          ConstraintWidget localConstraintWidget2 = (ConstraintWidget)this.mChildren.get(k);
-          n = Math.max(n, localConstraintWidget2.mX + localConstraintWidget2.getWidth());
-          j = Math.max(j, localConstraintWidget2.mY + localConstraintWidget2.getHeight());
+          ConstraintWidget localConstraintWidget = (ConstraintWidget)this.mChildren.get(k);
+          i2 = Math.max(i2, localConstraintWidget.mX + localConstraintWidget.getWidth());
+          j = Math.max(j, localConstraintWidget.mY + localConstraintWidget.getHeight());
           k += 1;
         }
-        k = Math.max(this.mMinWidth, n);
+        k = Math.max(this.mMinWidth, i2);
         j = Math.max(this.mMinHeight, j);
-        if ((localDimensionBehaviour == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) && (getWidth() < k))
+        if ((localDimensionBehaviour2 == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) && (getWidth() < k))
         {
           setWidth(k);
           this.mListDimensionBehaviors[0] = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
@@ -405,7 +761,7 @@ public class ConstraintWidgetContainer
         {
           bool1 = false;
         }
-        if ((localObject == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) && (getHeight() < j))
+        if ((localDimensionBehaviour1 == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT) && (getHeight() < j))
         {
           setHeight(j);
           this.mListDimensionBehaviors[1] = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
@@ -434,7 +790,7 @@ public class ConstraintWidgetContainer
         i = 1;
       }
       boolean bool3 = bool1;
-      int k = i;
+      k = i;
       if (i == 0)
       {
         bool2 = bool1;
@@ -443,15 +799,15 @@ public class ConstraintWidgetContainer
         {
           bool2 = bool1;
           j = i;
-          if (i2 > 0)
+          if (m > 0)
           {
             bool2 = bool1;
             j = i;
-            if (getWidth() > i2)
+            if (getWidth() > m)
             {
               this.mWidthMeasuredTooSmall = true;
               this.mListDimensionBehaviors[0] = ConstraintWidget.DimensionBehaviour.FIXED;
-              setWidth(i2);
+              setWidth(m);
               bool2 = true;
               j = 1;
             }
@@ -463,32 +819,32 @@ public class ConstraintWidgetContainer
         {
           bool3 = bool2;
           k = j;
-          if (i3 > 0)
+          if (n > 0)
           {
             bool3 = bool2;
             k = j;
-            if (getHeight() > i3)
+            if (getHeight() > n)
             {
               this.mHeightMeasuredTooSmall = true;
               this.mListDimensionBehaviors[1] = ConstraintWidget.DimensionBehaviour.FIXED;
-              setHeight(i3);
+              setHeight(n);
               bool2 = true;
               i = 1;
-              break label878;
+              break label1485;
             }
           }
         }
       }
       bool2 = bool3;
       i = k;
-      label878:
-      j = i1;
+      label1485:
+      j = i3;
     }
-    this.mChildren = ((ArrayList)localArrayList);
+    this.mChildren = ((ArrayList)localObject1);
     if (i != 0)
     {
-      this.mListDimensionBehaviors[0] = localDimensionBehaviour;
-      this.mListDimensionBehaviors[1] = localObject;
+      this.mListDimensionBehaviors[0] = localDimensionBehaviour2;
+      this.mListDimensionBehaviors[1] = localDimensionBehaviour1;
     }
     resetSolverVariables(this.mSystem.getCache());
   }
@@ -525,7 +881,8 @@ public class ConstraintWidgetContainer
   public void setOptimizationLevel(int paramInt)
   {
     this.mOptimizationLevel = paramInt;
-    LinearSystem.OPTIMIZED_ENGINE = Optimizer.enabled(paramInt, 256);
+    LinearSystem localLinearSystem = this.mSystem;
+    LinearSystem.USE_DEPENDENCY_ORDERING = optimizeFor(512);
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -545,11 +902,12 @@ public class ConstraintWidgetContainer
   {
     int i = 0;
     paramArrayOfBoolean[2] = false;
-    updateFromSolver(paramLinearSystem);
+    boolean bool = optimizeFor(64);
+    updateFromSolver(paramLinearSystem, bool);
     int j = this.mChildren.size();
     while (i < j)
     {
-      ((ConstraintWidget)this.mChildren.get(i)).updateFromSolver(paramLinearSystem);
+      ((ConstraintWidget)this.mChildren.get(i)).updateFromSolver(paramLinearSystem, bool);
       i += 1;
     }
   }
@@ -573,7 +931,7 @@ public class ConstraintWidgetContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer
  * JD-Core Version:    0.7.0.1
  */

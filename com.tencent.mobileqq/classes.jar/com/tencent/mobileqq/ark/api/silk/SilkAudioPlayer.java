@@ -17,44 +17,44 @@ import mqq.app.AppRuntime;
 
 public class SilkAudioPlayer
 {
-  private final AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new SilkAudioPlayer.1(this);
-  private final AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private final SilkAudioPlayer.SilkAudioPlayerListener jdField_a_of_type_ComTencentMobileqqArkApiSilkSilkAudioPlayer$SilkAudioPlayerListener;
-  private VoicePlayer jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private VoicePlayer a;
+  private final AudioManager b;
+  private final SilkAudioPlayer.SilkAudioPlayerListener c;
+  private final Object d = new Object();
+  private volatile boolean e = false;
+  private final AudioManager.OnAudioFocusChangeListener f = new SilkAudioPlayer.1(this);
   
   public SilkAudioPlayer(@NonNull SilkAudioPlayer.SilkAudioPlayerListener paramSilkAudioPlayerListener)
   {
     if (paramSilkAudioPlayerListener != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkApiSilkSilkAudioPlayer$SilkAudioPlayerListener = paramSilkAudioPlayerListener;
-      this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
+      this.c = paramSilkAudioPlayerListener;
+      this.b = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
       return;
     }
     throw new NullPointerException("SilkAudioPlayer's listener is null");
   }
   
-  private int a(String paramString)
+  private int b(String paramString)
   {
-    paramString = a(paramString);
+    paramString = c(paramString);
     if (paramString == null) {
       return -1;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkApiSilkSilkAudioPlayer$SilkAudioPlayerListener.e();
+      this.c.f();
       return 0;
     }
-    return b(paramString);
+    return d(paramString);
   }
   
-  private String a(String paramString)
+  private String c(String paramString)
   {
     String str;
     try
     {
-      if (!FileUtil.b(paramString))
+      if (!FileUtil.d(paramString))
       {
         str = TransFileUtil.getTransferFilePath(BaseApplicationImpl.sApplication.getRuntime().getCurrentAccountUin(), MD5.toMD5(paramString), 23, null);
         File localFile = new File(str);
@@ -81,31 +81,31 @@ public class SilkAudioPlayer
     return str;
   }
   
-  private int b(String paramString)
+  private int d(String paramString)
   {
     try
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.d)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer != null)
+        if (this.a != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.e();
-          this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = null;
+          this.a.f();
+          this.a = null;
         }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = new VoicePlayer(paramString, new Handler(ThreadManager.getSubThreadLooper()), 1);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqArkApiSilkSilkAudioPlayer$SilkAudioPlayerListener);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
-        if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
-          this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
+        this.a = new VoicePlayer(paramString, new Handler(ThreadManager.getSubThreadLooper()), 1);
+        this.a.a(this.c);
+        this.a.c();
+        if (this.b != null) {
+          this.b.requestAudioFocus(this.f, 3, 2);
         }
-        this.jdField_a_of_type_ComTencentMobileqqArkApiSilkSilkAudioPlayer$SilkAudioPlayerListener.d();
+        this.c.e();
         return 1;
       }
       return 0;
     }
     catch (Exception paramString)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkApiSilkSilkAudioPlayer$SilkAudioPlayerListener.e();
+      this.c.f();
       QLog.e("SilkAudioPlayer", 1, "playLocal play audio error ", paramString);
     }
   }
@@ -114,16 +114,16 @@ public class SilkAudioPlayer
   {
     try
     {
-      this.jdField_a_of_type_Boolean = true;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      this.e = true;
+      synchronized (this.d)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer != null)
+        if (this.a != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.e();
-          this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = null;
+          this.a.f();
+          this.a = null;
         }
-        if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
-          this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
+        if (this.b != null) {
+          this.b.abandonAudioFocus(this.f);
         }
         return;
       }
@@ -141,9 +141,9 @@ public class SilkAudioPlayer
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqArkApiSilkSilkAudioPlayer$SilkAudioPlayerListener.b();
-    if (a(paramString) != -1) {
+    this.e = false;
+    this.c.c();
+    if (b(paramString) != -1) {
       return;
     }
     ThreadManager.excute(new SilkAudioPlayer.2(this, paramString), 128, null, true);
@@ -151,7 +151,7 @@ public class SilkAudioPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.silk.SilkAudioPlayer
  * JD-Core Version:    0.7.0.1
  */

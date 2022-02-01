@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/lp1" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginBottom="62.0dip">
-        <ProgressBar android:id="@id/lz7" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="10.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
-        <TextView android:textSize="16.0dip" android:textColor="#ffcccccc" android:id="@id/kbr" android:padding="10.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <FrameLayout android:id="@id/n0s" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</FrameLayout>
+    <com.tencent.biz.pubaccount.weishi_new.verticalvideo.view.WSSwipeRefreshLayout android:id="@id/p3b" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.kandian.biz.video.playfeeds.view.VideoFeedsRecyclerView android:id="@id/r2h" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+    </com.tencent.biz.pubaccount.weishi_new.verticalvideo.view.WSSwipeRefreshLayout>
+    <ViewStub android:layout_gravity="top" android:id="@id/qtu" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ProgressBar android:id="@id/qu3" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_margin="5.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/b0o" android:layout_centerInParent="true" />
+    <ViewStub android:id="@id/qti" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <FrameLayout android:id="@id/nbf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

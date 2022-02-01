@@ -14,7 +14,7 @@ public final class oidb_0x89b$ExitPublicGroupRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x89b.oidb_0x89b.ExitPublicGroupRspBody
  * JD-Core Version:    0.7.0.1
  */

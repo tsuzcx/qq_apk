@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-final class TransformParser$1
+class TransformParser$1
   implements FunctionParser.Mapper<Property<View, Float>, Float>
 {
   TransformParser$1(int paramInt1, int paramInt2, int paramInt3) {}
@@ -52,7 +52,7 @@ final class TransformParser$1
       paramInt1 = 0;
       while (paramInt1 < paramList.size())
       {
-        localHashMap.put(paramList.get(paramInt1), localArrayList.get(paramInt1));
+        localHashMap.put((Property)paramList.get(paramInt1), (Float)localArrayList.get(paramInt1));
         paramInt1 += 1;
       }
     }
@@ -155,7 +155,7 @@ final class TransformParser$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.animation.TransformParser.1
  * JD-Core Version:    0.7.0.1
  */

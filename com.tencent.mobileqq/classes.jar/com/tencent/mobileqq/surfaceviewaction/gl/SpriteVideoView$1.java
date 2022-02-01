@@ -12,15 +12,15 @@ class SpriteVideoView$1
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (this.this$0.a == 0) {
-      this.this$0.a = paramInt2;
+    if (this.this$0.b == 0) {
+      this.this$0.b = paramInt2;
     }
-    super.a(paramInt1, this.this$0.a);
+    super.a(paramInt1, this.this$0.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,30 +21,30 @@ import com.tencent.widget.XListView;
 public class AbstractAlbumListFragment
   extends QBaseFragment
 {
-  public FrameLayout a;
-  public AlbumListAdapter a;
-  public AlbumListBaseData a;
-  public AlbumListCustomization<? extends OtherCommonData> a;
   public IAlbumListChoose a;
-  public XFrameLayout a;
-  public XListView a;
+  public AlbumListAdapter b;
+  public AlbumListCustomization<? extends OtherCommonData> c;
+  public AlbumListBaseData d;
+  public FrameLayout e;
+  public XListView f;
+  public XFrameLayout g;
   
   @TargetApi(14)
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetXFrameLayout = ((XFrameLayout)paramView.findViewById(2131370141));
-    this.jdField_a_of_type_ComTencentWidgetXFrameLayout.setCornerRadiusAndMode(20, 5);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131362572));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setWrapByScroll(true);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListAdapter);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new AbstractAlbumListFragment.AlbumListItemClickListener(this, null));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362603));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new AbstractAlbumListFragment.1(this));
+    this.g = ((XFrameLayout)paramView.findViewById(2131437304));
+    this.g.setCornerRadiusAndMode(20, 5);
+    this.f = ((XListView)paramView.findViewById(2131428186));
+    this.f.setWrapByScroll(true);
+    this.f.setAdapter(this.b);
+    this.f.setOnItemClickListener(new AbstractAlbumListFragment.AlbumListItemClickListener(this, null));
+    this.f.setOverScrollMode(2);
+    this.e = ((FrameLayout)paramView.findViewById(2131428217));
+    this.e.setOnClickListener(new AbstractAlbumListFragment.1(this));
     int i = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_index", 0);
     int j = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_y", 0);
     Looper.myQueue().addIdleHandler(new AbstractAlbumListFragment.2(this, i, j));
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListCustomization.b();
+    this.c.h();
   }
   
   protected AlbumListCustomization<? extends OtherCommonData> a()
@@ -72,11 +72,11 @@ public class AbstractAlbumListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560957, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListCustomization = a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListBaseData = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListBaseData;
+    paramLayoutInflater = paramLayoutInflater.inflate(2131627298, paramViewGroup, false);
+    this.c = a();
+    this.d = this.c.f;
     paramViewGroup = getActivity().getIntent();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListCustomization.a(paramViewGroup);
+    this.c.a(paramViewGroup);
     a(paramLayoutInflater);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -90,9 +90,9 @@ public class AbstractAlbumListFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    AlbumListCustomization localAlbumListCustomization = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListCustomization;
+    AlbumListCustomization localAlbumListCustomization = this.c;
     if (localAlbumListCustomization != null) {
-      localAlbumListCustomization.a();
+      localAlbumListCustomization.g();
     }
   }
   
@@ -100,13 +100,13 @@ public class AbstractAlbumListFragment
   {
     super.onHiddenChanged(paramBoolean);
     if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListAdapter.notifyDataSetChanged();
+      this.b.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.albumlist.AbstractAlbumListFragment
  * JD-Core Version:    0.7.0.1
  */

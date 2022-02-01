@@ -13,12 +13,12 @@ final class RIJTabFrameBase$markAccountCompleteAndShowToast$1
   
   public final void run()
   {
-    QQToast.a((Context)this.this$0.a(), 2, (CharSequence)RIJUGCAddAccountAladdinUtils.d(), 0).a();
+    QQToast.makeText((Context)this.this$0.P(), 2, (CharSequence)RIJUGCAddAccountAladdinUtils.d(), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase.markAccountCompleteAndShowToast.1
  * JD-Core Version:    0.7.0.1
  */

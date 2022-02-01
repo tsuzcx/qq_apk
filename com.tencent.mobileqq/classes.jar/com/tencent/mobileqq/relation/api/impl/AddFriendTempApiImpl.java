@@ -15,7 +15,6 @@ import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -64,6 +63,7 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.relation.api.IAddFriendTempApi;
 import com.tencent.mobileqq.relationx.icebreaking.IceBreakingMng;
 import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.settings.fragment.PermissionPrivacyFragment;
 import com.tencent.mobileqq.systemmsg.SystemMsgUtils;
 import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
 import com.tencent.mobileqq.utils.ContactUtils;
@@ -131,7 +131,7 @@ public class AddFriendTempApiImpl
   public void clearAllSystemMsg(AppInterface paramAppInterface)
   {
     if ((paramAppInterface instanceof QQAppInterface)) {
-      ((QQAppInterface)paramAppInterface).getMsgHandler().a().f();
+      ((QQAppInterface)paramAppInterface).getMsgHandler().B().g();
     }
   }
   
@@ -210,7 +210,7 @@ public class AddFriendTempApiImpl
   
   public ArrayList<ConnectionsTabInfo> getConnectionsTabInfoListLocal(AppInterface paramAppInterface)
   {
-    return ((MayknowRecommendManager)paramAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).a();
+    return ((MayknowRecommendManager)paramAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).b();
   }
   
   public void getDiscussInfo(long paramLong, AppInterface paramAppInterface)
@@ -248,14 +248,14 @@ public class AddFriendTempApiImpl
   {
     paramAppInterface = (MayknowRecommendManager)paramAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
     if (paramAppInterface != null) {
-      return paramAppInterface.a(4);
+      return paramAppInterface.e(4);
     }
     return false;
   }
   
   public String getQIMNewFriendSource(AppInterface paramAppInterface)
   {
-    return ((FlashChatManager)paramAppInterface.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).c();
+    return ((FlashChatManager)paramAppInterface.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).k();
   }
   
   public ArrayList<QIMNotifyAddFriendMsg> getQIMNotifyAddFriendsMsg(boolean paramBoolean, AppInterface paramAppInterface)
@@ -293,7 +293,7 @@ public class AddFriendTempApiImpl
   
   public ArrayList<SchoolInfo> getSelfProfileSchoolInfo(AppInterface paramAppInterface)
   {
-    return ((BusinessCardManager)paramAppInterface.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER)).a();
+    return ((BusinessCardManager)paramAppInterface.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER)).b();
   }
   
   public int getSizeSmall()
@@ -318,7 +318,7 @@ public class AddFriendTempApiImpl
   
   public void gotoFriendSettingBrowser(Context paramContext)
   {
-    PermisionPrivacyActivity.a(paramContext);
+    PermissionPrivacyFragment.a(paramContext);
   }
   
   public boolean hasQidianExternal(HashMap<String, Object> paramHashMap)
@@ -328,7 +328,7 @@ public class AddFriendTempApiImpl
   
   public boolean hasQimSource(AppInterface paramAppInterface)
   {
-    return ((FlashChatManager)paramAppInterface.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).b();
+    return ((FlashChatManager)paramAppInterface.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).h();
   }
   
   public void insertCommonHobbyIfNeeded(AppInterface paramAppInterface, String paramString)
@@ -338,17 +338,17 @@ public class AddFriendTempApiImpl
   
   public boolean isMayKnowConnectionsUserClosed(AppInterface paramAppInterface)
   {
-    return ((CTEntryMng)paramAppInterface.getManager(QQManagerFactory.CTENTRY_MNG)).c();
+    return ((CTEntryMng)paramAppInterface.getManager(QQManagerFactory.CTENTRY_MNG)).e();
   }
   
   public boolean isNewFrdMiniCardSwitchOn(AppInterface paramAppInterface)
   {
-    return ((IceBreakingMng)paramAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).a();
+    return ((IceBreakingMng)paramAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).g();
   }
   
   public boolean isPhoneContactEnabled(AppInterface paramAppInterface)
   {
-    return ((MayknowRecommendManager)paramAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).a();
+    return ((MayknowRecommendManager)paramAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).m();
   }
   
   public boolean isQidianMaster(AppInterface paramAppInterface, String paramString)
@@ -402,11 +402,11 @@ public class AddFriendTempApiImpl
     localIntent.putExtra("qzone_permission_operateType", 1);
     localIntent.putExtra("qzone_permission_value", paramBoolean);
     paramString = new IPluginManager.PluginParams(0);
-    paramString.e = "QQ空间";
-    paramString.b = QzonePluginProxyActivity.getQZonePluginName();
-    paramString.jdField_a_of_type_JavaLangString = paramAppInterface.getCurrentAccountUin();
-    paramString.f = "com.qzone.permissionsetting.business.QZonePermissionReciver";
-    paramString.jdField_a_of_type_AndroidContentIntent = localIntent;
+    paramString.g = "QQ空间";
+    paramString.d = QzonePluginProxyActivity.getQZonePluginName();
+    paramString.c = paramAppInterface.getCurrentAccountUin();
+    paramString.h = "com.qzone.permissionsetting.business.QZonePermissionReciver";
+    paramString.j = localIntent;
     IPluginManager.b(paramAppInterface.getApp(), paramString);
   }
   
@@ -430,7 +430,7 @@ public class AddFriendTempApiImpl
   
   public void markQIMNotifyAddFriendsRead(AppInterface paramAppInterface)
   {
-    ((QIMNewFriendManager)paramAppInterface.getManager(QQManagerFactory.QIM_NEW_FRIEND_MANAGER)).b();
+    ((QIMNewFriendManager)paramAppInterface.getManager(QQManagerFactory.QIM_NEW_FRIEND_MANAGER)).d();
   }
   
   public void openSecCheckWebForFragment(AppInterface paramAppInterface, Context paramContext, QBaseFragment paramQBaseFragment, int paramInt, String paramString1, String paramString2)
@@ -482,29 +482,29 @@ public class AddFriendTempApiImpl
   
   public void sendDelSingleSystemMsg(structmsg.StructMsg paramStructMsg, String paramString, int paramInt, long paramLong, AppInterface paramAppInterface)
   {
-    ((QQAppInterface)paramAppInterface).getMsgHandler().a().a(paramStructMsg, paramString, paramInt, paramLong);
+    ((QQAppInterface)paramAppInterface).getMsgHandler().B().a(paramStructMsg, paramString, paramInt, paramLong);
   }
   
   public void sendFriendSystemMsgAction(int paramInt1, long paramLong1, long paramLong2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, structmsg.SystemMsgActionInfo paramSystemMsgActionInfo, int paramInt6, structmsg.StructMsg paramStructMsg, boolean paramBoolean, AppInterface paramAppInterface)
   {
-    ((QQAppInterface)paramAppInterface).getMsgHandler().a().a(paramInt1, paramLong1, paramLong2, paramInt2, paramInt3, paramInt4, paramInt5, paramSystemMsgActionInfo, paramInt6, paramStructMsg, paramBoolean);
+    ((QQAppInterface)paramAppInterface).getMsgHandler().B().a(paramInt1, paramLong1, paramLong2, paramInt2, paramInt3, paramInt4, paramInt5, paramSystemMsgActionInfo, paramInt6, paramStructMsg, paramBoolean);
   }
   
   public void sendFriendSystemMsgReadedReport(AppInterface paramAppInterface)
   {
-    ((QQAppInterface)paramAppInterface).getMsgHandler().a().b();
+    ((QQAppInterface)paramAppInterface).getMsgHandler().B().c();
   }
   
   public void sendGetNextFriendSystemMsg(AppInterface paramAppInterface)
   {
-    ((QQAppInterface)paramAppInterface).getMsgHandler().a().g();
+    ((QQAppInterface)paramAppInterface).getMsgHandler().B().h();
   }
   
   public void sendPokeMsg(AppInterface paramAppInterface, Context paramContext, String paramString)
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = String.valueOf(paramString);
-    localSessionInfo.b = localSessionInfo.jdField_a_of_type_JavaLangString;
+    localSessionInfo.b = String.valueOf(paramString);
+    localSessionInfo.c = localSessionInfo.b;
     ChatActivityFacade.b((QQAppInterface)paramAppInterface, paramContext, localSessionInfo);
   }
   
@@ -518,7 +518,7 @@ public class AddFriendTempApiImpl
   
   public boolean shouldShowMayKnowInNewFriend(AppInterface paramAppInterface)
   {
-    return ((MayknowRecommendManager)paramAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).e();
+    return ((MayknowRecommendManager)paramAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).q();
   }
   
   public void startAddContactsActivity(Context paramContext, int paramInt1, int paramInt2)
@@ -551,7 +551,7 @@ public class AddFriendTempApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relation.api.impl.AddFriendTempApiImpl
  * JD-Core Version:    0.7.0.1
  */

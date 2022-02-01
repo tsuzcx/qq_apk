@@ -10,21 +10,21 @@ final class VideoFeedsHelper$22
 {
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_AndroidViewWindowManager != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
+      if (this.b == null) {
         return;
       }
       paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = paramValueAnimator.y;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = paramValueAnimator.x;
-      this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      this.c.y = paramValueAnimator.y;
+      this.c.x = paramValueAnimator.x;
+      this.a.updateViewLayout(this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsHelper.22
  * JD-Core Version:    0.7.0.1
  */

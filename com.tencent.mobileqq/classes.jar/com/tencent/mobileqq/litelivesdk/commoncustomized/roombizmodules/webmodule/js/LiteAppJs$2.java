@@ -16,8 +16,8 @@ class LiteAppJs$2
     paramDialogInterface = new JSONObject();
     try
     {
-      paramDialogInterface.put("url", this.jdField_a_of_type_JavaUtilMap.get("url"));
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsLiteAppJs.callJsFunctionByNative("__PENDANT_WEBVIEW_CLOSE", paramDialogInterface);
+      paramDialogInterface.put("url", this.a.get("url"));
+      this.b.callJsFunctionByNative("__PENDANT_WEBVIEW_CLOSE", paramDialogInterface);
       return;
     }
     catch (JSONException paramDialogInterface)
@@ -28,7 +28,7 @@ class LiteAppJs$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.js.LiteAppJs.2
  * JD-Core Version:    0.7.0.1
  */

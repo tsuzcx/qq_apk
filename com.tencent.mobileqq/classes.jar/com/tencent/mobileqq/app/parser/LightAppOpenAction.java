@@ -23,18 +23,18 @@ public class LightAppOpenAction
   
   private boolean c()
   {
-    QQProgressDialog localQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext, 0, 2131558642, 17);
-    localQQProgressDialog.a(this.jdField_a_of_type_AndroidContentContext.getString(2131690163));
+    QQProgressDialog localQQProgressDialog = new QQProgressDialog(this.b, 0, 2131624257, 17);
+    localQQProgressDialog.a(this.b.getString(2131887062));
     localQQProgressDialog.getWindow().setDimAmount(0.0F);
     localQQProgressDialog.show();
     localQQProgressDialog.setCanceledOnTouchOutside(true);
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("app");
+    String str1 = (String)this.f.get("app");
     if ((TextUtils.isEmpty(str1)) && (QLog.isColorLevel())) {
       QLog.e("LightAppOpenAction", 2, "Ark mqqapi://ligthapp/open goToLightAppOpen jumpAction. appName=null");
     }
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("meta");
-    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("view");
-    ArkAppCenter localArkAppCenter = (ArkAppCenter)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER);
+    String str2 = (String)this.f.get("meta");
+    String str3 = (String)this.f.get("view");
+    ArkAppCenter localArkAppCenter = (ArkAppCenter)this.a.getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER);
     ArkAppMgr.getInstance().getAppPathByName(str1, "0.0.0.1", new LightAppOpenAction.1(this, localQQProgressDialog, str3, str2, str1));
     return true;
   }
@@ -52,14 +52,14 @@ public class LightAppOpenAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("LightAppOpenAction", 1, localStringBuilder.toString());
-      b_("LightAppOpenAction");
+      h_("LightAppOpenAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.LightAppOpenAction
  * JD-Core Version:    0.7.0.1
  */

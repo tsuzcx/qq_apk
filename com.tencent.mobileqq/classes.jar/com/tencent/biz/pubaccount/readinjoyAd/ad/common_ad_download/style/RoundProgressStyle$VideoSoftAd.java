@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 final class RoundProgressStyle$VideoSoftAd
   extends RoundProgressStyle
 {
-  private int btnResource = 2130841858;
+  private int btnResource = 2130842775;
   @NotNull
   private String btnTextColor = "#FFFFFF";
   private int btnTextLength = 2;
@@ -182,7 +182,7 @@ final class RoundProgressStyle$VideoSoftAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle.VideoSoftAd
  * JD-Core Version:    0.7.0.1
  */

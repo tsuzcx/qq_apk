@@ -28,84 +28,71 @@ import mqq.app.AppRuntime;
 public class VoiceTextPanel
   extends BaseVoicetoTextView
 {
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private BaseAIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext;
-  private VoiceTextSttProcessController jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttProcessController;
-  private VoiceTextScrollerListener jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener;
-  private VoiceTextStateModel jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel;
-  private VoiceTextPanel.VoiceTextUserOpListenerImp jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel$VoiceTextUserOpListenerImp;
-  private VoiceTextBottomViewHelper jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextBottomViewHelper;
-  private VoiceTextMaskViewHelper jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextMaskViewHelper;
-  private VoiceTextSlideViewHelper jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSlideViewHelper;
-  private VoiceTextUpViewHelper jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextUpViewHelper;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  public boolean a;
-  private boolean b = false;
+  public boolean a = true;
+  private AppRuntime b;
+  private BaseAIOContext c;
+  private BaseSessionInfo d;
+  private boolean e = false;
+  private VoiceTextStateModel f;
+  private VoiceTextSttProcessController g;
+  private VoiceTextSlideViewHelper h;
+  private VoiceTextBottomViewHelper i;
+  private VoiceTextUpViewHelper j;
+  private VoiceTextMaskViewHelper k;
+  private VoiceTextScrollerListener l;
+  private VoiceTextPanel.VoiceTextUserOpListenerImp m;
   
   public VoiceTextPanel(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = true;
   }
   
   public VoiceTextPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = true;
   }
   
   public VoiceTextPanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = true;
   }
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttProcessController.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextUpViewHelper.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextBottomViewHelper.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSlideViewHelper.a(this);
+    this.g.a();
+    this.j.a(this);
+    this.i.a(this);
+    this.h.a(this);
   }
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttProcessController.i();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextUpViewHelper.b();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextMaskViewHelper.c();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSlideViewHelper.d();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextBottomViewHelper.c();
-    this.jdField_a_of_type_Boolean = false;
+    this.g.i();
+    this.f.b();
+    this.j.b();
+    this.k.e();
+    this.h.d();
+    this.i.c();
+    this.a = false;
   }
   
   private void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttProcessController.h();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextMaskViewHelper.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextUpViewHelper.d();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSlideViewHelper.e();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttProcessController.k();
-    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).restoreChatPieOtherFunction(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext);
+    this.g.h();
+    this.k.b();
+    this.j.d();
+    this.h.e();
+    this.g.k();
+    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).restoreChatPieOtherFunction(this.c);
     ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).setIsInVoiceTxt(false);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public VoiceTextScrollerListener a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener;
-  }
-  
-  public VoiceTextUserOpListener a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel$VoiceTextUserOpListenerImp;
+    this.a = true;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextMaskViewHelper.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextMaskViewHelper.b() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttProcessController.g();
+    this.k.c();
+    if (this.k.d() != 0) {
+      this.g.g();
     }
   }
   
@@ -126,16 +113,16 @@ public class VoiceTextPanel
       localStringBuilder.append(paramBoolean);
       QLog.d("VoiceTextPanel", 2, localStringBuilder.toString());
     }
-    if (!this.b)
+    if (!this.e)
     {
-      int i = ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getCustomTitleViewBottom(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext);
+      int n = ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getCustomTitleViewBottom(this.c);
       if (paramInt2 != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSlideViewHelper.a(paramInt4);
+        this.h.a(paramInt4);
       } else {
-        paramInt2 += i;
+        paramInt2 += n;
       }
-      if ((paramInt2 > i) && (getTop() == i) && (!this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextMaskViewHelper.a(getRight() - getLeft(), this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextMaskViewHelper.a());
+      if ((paramInt2 > n) && (getTop() == n) && (!this.a)) {
+        this.k.a(getRight() - getLeft(), this.k.a());
       }
       if ((getTop() == paramInt2) && (paramInt4 == getBottom()) && (paramBoolean))
       {
@@ -144,7 +131,7 @@ public class VoiceTextPanel
         }
         return;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSlideViewHelper.a() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSlideViewHelper.a() + getTop() - paramInt2 < ScreenUtil.dip2px(2.0F)))
+      if ((this.h.f() > 0) && (this.h.f() + getTop() - paramInt2 < ScreenUtil.dip2px(2.0F)))
       {
         if (QLog.isColorLevel()) {
           QLog.d("VoiceTextPanel", 2, "onXContainerLayout normal state need no layout");
@@ -158,19 +145,19 @@ public class VoiceTextPanel
   
   public void a(AppRuntime paramAppRuntime, BaseAIOContext paramBaseAIOContext, BaseSessionInfo paramBaseSessionInfo, ViewGroup paramViewGroup1, ViewGroup paramViewGroup2)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext = paramBaseAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener = new VoiceTextPanel.VoiceTextScrollerListenerImp(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel$VoiceTextUserOpListenerImp = new VoiceTextPanel.VoiceTextUserOpListenerImp(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel = new VoiceTextStateModel();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttProcessController = new VoiceTextSttProcessController(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel, paramAppRuntime, this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextUpViewHelper = new VoiceTextUpViewHelper();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextBottomViewHelper = new VoiceTextBottomViewHelper();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSlideViewHelper = new VoiceTextSlideViewHelper();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextMaskViewHelper = new VoiceTextMaskViewHelper();
+    this.b = paramAppRuntime;
+    this.d = paramBaseSessionInfo;
+    this.c = paramBaseAIOContext;
+    this.l = new VoiceTextPanel.VoiceTextScrollerListenerImp(this);
+    this.m = new VoiceTextPanel.VoiceTextUserOpListenerImp(this);
+    this.f = new VoiceTextStateModel();
+    this.g = new VoiceTextSttProcessController(this.f, paramAppRuntime, this);
+    this.j = new VoiceTextUpViewHelper();
+    this.i = new VoiceTextBottomViewHelper();
+    this.h = new VoiceTextSlideViewHelper();
+    this.k = new VoiceTextMaskViewHelper();
     f();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextMaskViewHelper.a(paramViewGroup2, this, paramViewGroup1, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext);
+    this.k.a(paramViewGroup2, this, paramViewGroup1, this.c);
   }
   
   public void a(boolean paramBoolean)
@@ -181,31 +168,31 @@ public class VoiceTextPanel
       localStringBuilder.append("VoiceTextPanel onSoftInputShowing  isShow=");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(" isDrag=");
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.e);
       QLog.d("VoiceTextPanel", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().a(paramBoolean);
+    this.f.e().a(paramBoolean);
     if (paramBoolean)
     {
       ReportUtils.a("0X800A1DC", 0, 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSlideViewHelper.b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextBottomViewHelper.a();
+      this.h.b();
+      this.i.a();
     }
     else
     {
-      if (!this.b) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextBottomViewHelper.b();
+      if (!this.e) {
+        this.i.b();
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSlideViewHelper.c();
+      this.h.c();
     }
-    if ((!this.b) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextMaskViewHelper.a(paramBoolean);
+    if ((!this.e) && (!this.a)) {
+      this.k.a(paramBoolean);
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextUpViewHelper.c();
+    this.j.c();
   }
   
   public void c()
@@ -216,9 +203,9 @@ public class VoiceTextPanel
   
   public void d()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().a()) && (!this.jdField_a_of_type_Boolean))
+    if ((this.f.e().a()) && (!this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextMaskViewHelper.a(getRight() - getLeft(), this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextMaskViewHelper.a());
+      this.k.a(getRight() - getLeft(), this.k.a());
       return;
     }
     h();
@@ -227,6 +214,16 @@ public class VoiceTextPanel
   public void e()
   {
     h();
+  }
+  
+  public VoiceTextScrollerListener getVoiceTextScrollerListener()
+  {
+    return this.l;
+  }
+  
+  public VoiceTextUserOpListener getVoiceTextUserOpListener()
+  {
+    return this.m;
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -256,17 +253,17 @@ public class VoiceTextPanel
   
   public void setParam(String paramString1, RecordParams.RecorderParam paramRecorderParam, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextUpViewHelper.a(paramString1, paramRecorderParam, paramInt, this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttProcessController.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, paramRecorderParam, paramInt, paramString2, paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSlideViewHelper.a();
+    this.j.a(paramString1, paramRecorderParam, paramInt, this);
+    this.g.a(this.c, this.d, paramRecorderParam, paramInt, paramString2, paramString1);
+    this.h.a();
     g();
-    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).hideChatPieOtherFunction(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttProcessController.e();
+    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).hideChatPieOtherFunction(this.c);
+    this.g.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel
  * JD-Core Version:    0.7.0.1
  */

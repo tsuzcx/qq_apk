@@ -206,6 +206,25 @@
     },
 		{
 			"view_type": "UILabel",
+			"view_id": "id_ad_diversion",
+			"left_of_view": "id_dislike_button",
+			"event_type": "cmd_dislike_click",
+			"height": {
+				"type": "relative",
+				"value": "30"
+			},
+			"width": {
+				"type": "wrap_content"
+			},
+			"attributes":{
+				"setText:": "$id_ad_diversion_txt",
+				"setTextColorString:": "#B0B3BF",
+				"setFontSizeString:": "11",
+				"setNumberOfLinesString:": "1"
+			}
+		},
+		{
+			"view_type": "UILabel",
 			"view_id": "id_view_app",
 			"align_parent_right": "YES",
 			"align_parent_center_vertical": "YES",

@@ -39,7 +39,7 @@ public final class NotOnlineImageExtPb$ResvAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.hummer.resv6.NotOnlineImageExtPb.ResvAttr
  * JD-Core Version:    0.7.0.1
  */

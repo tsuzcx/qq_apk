@@ -1,8 +1,5 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import android.widget.ImageButton;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-
 class WsCommentInputPopupWindow$10
   implements Runnable
 {
@@ -10,15 +7,13 @@ class WsCommentInputPopupWindow$10
   
   public void run()
   {
-    WsCommentInputPopupWindow.a(this.this$0).setVisibility(8);
-    WsCommentInputPopupWindow.b(this.this$0).setVisibility(0);
+    WsCommentInputPopupWindow.d(this.this$0, true);
     WsCommentInputPopupWindow.b(this.this$0, true);
-    WsCommentInputPopupWindow.a(this.this$0).requestFocus();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.10
  * JD-Core Version:    0.7.0.1
  */

@@ -11,59 +11,59 @@ public class RIJUgcImageUploader
   implements IImageUploader
 {
   public static String a = "RIJUGC.RIJUgcImageUploader";
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IImageUploadListener jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadIImageUploadListener;
-  private ImageUploadController jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferImageUploadController;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString;
-  private volatile boolean jdField_b_of_type_Boolean = false;
+  private Context b;
+  private QQAppInterface c;
+  private IImageUploadListener d;
+  private String e;
+  private volatile boolean f = false;
+  private volatile boolean g = false;
+  private ImageUploadController h;
   
   public RIJUgcImageUploader(Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.e = paramString;
+    this.b = paramContext;
+    this.c = paramQQAppInterface;
   }
   
   public void a()
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("upload, path=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     QLog.i(str, 1, localStringBuilder.toString());
-    this.jdField_b_of_type_Boolean = true;
+    this.g = true;
     ThreadManagerV2.getUIHandlerV2().post(new RIJUgcImageUploader.1(this));
   }
   
   public void a(IImageUploadListener paramIImageUploadListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadIImageUploadListener = paramIImageUploadListener;
+    this.d = paramIImageUploadListener;
   }
   
   public void b()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.g)
     {
-      this.jdField_a_of_type_Boolean = true;
-      Object localObject = jdField_a_of_type_JavaLangString;
+      this.f = true;
+      Object localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("cancel, path=");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.e);
       QLog.i((String)localObject, 1, localStringBuilder.toString());
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferImageUploadController;
+      localObject = this.h;
       if (localObject != null)
       {
         ((ImageUploadController)localObject).a();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferImageUploadController.b();
+        this.h.b();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.upload.RIJUgcImageUploader
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ import com.tencent.image.URLImageView;
 public class RoundRectURLImageView
   extends URLImageView
 {
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat;
+  private float[] a;
+  private Path b;
+  private boolean c;
   
   public RoundRectURLImageView(Context paramContext)
   {
@@ -32,7 +32,7 @@ public class RoundRectURLImageView
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -40,8 +40,8 @@ public class RoundRectURLImageView
     int i;
     if (a())
     {
-      if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
-        this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+      if (this.b == null) {
+        this.b = new Path();
       }
       i = paramCanvas.save();
     }
@@ -49,10 +49,10 @@ public class RoundRectURLImageView
     {
       try
       {
-        Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+        Path localPath = this.b;
         RectF localRectF = new RectF(0.0F, 0.0F, getWidth(), getHeight());
         localPath.reset();
-        localPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
+        localPath.addRoundRect(localRectF, this.a, Path.Direction.CW);
         paramCanvas.clipPath(localPath);
         super.onDraw(paramCanvas);
       }
@@ -77,7 +77,7 @@ public class RoundRectURLImageView
   
   public void setNeedRadius(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void setRadius(float paramFloat)
@@ -92,7 +92,7 @@ public class RoundRectURLImageView
   
   public void setRadius(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.a = paramArrayOfFloat;
     boolean bool;
     if (paramArrayOfFloat != null) {
       bool = true;
@@ -104,7 +104,7 @@ public class RoundRectURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.RoundRectURLImageView
  * JD-Core Version:    0.7.0.1
  */

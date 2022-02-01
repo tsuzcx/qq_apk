@@ -77,10 +77,10 @@ public final class MiniGamePANativeModule
     }
     if (QQUtils.a((Context)localObject2, new String[] { localObject1 }))
     {
-      paramHippyMap = QQToast.a((Context)getActivity(), 2131692087, 0);
+      paramHippyMap = QQToast.makeText((Context)getActivity(), 2131889065, 0);
       localObject1 = getActivity();
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "activity");
-      paramHippyMap.b(((Activity)localObject1).getResources().getDimensionPixelSize(2131299168));
+      paramHippyMap.show(((Activity)localObject1).getResources().getDimensionPixelSize(2131299920));
       paramPromise.resolve("");
       return;
     }
@@ -110,7 +110,7 @@ public final class MiniGamePANativeModule
       AIOUtils.a(localIntent, new int[] { 1 });
       localIntent.putExtra("uin", AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN);
       localIntent.putExtra("uintype", 1008);
-      localIntent.putExtra("uinname", getActivity().getString(2131694179));
+      localIntent.putExtra("uinname", getActivity().getString(2131891810));
       localIntent.putExtra("aio_msg_source", 0);
       localIntent.putExtra("shouldreport", true);
       getActivity().startActivity(localIntent);
@@ -159,7 +159,7 @@ public final class MiniGamePANativeModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.hippy.module.MiniGamePANativeModule
  * JD-Core Version:    0.7.0.1
  */

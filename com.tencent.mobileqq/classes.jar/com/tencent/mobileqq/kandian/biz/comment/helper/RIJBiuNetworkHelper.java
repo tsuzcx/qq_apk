@@ -33,18 +33,18 @@ public final class RIJBiuNetworkHelper
   private final oidb_cmd0xe16.ReqBody a(SimpleCommentData paramSimpleCommentData)
   {
     oidb_cmd0xe16.ContentInfo localContentInfo = new oidb_cmd0xe16.ContentInfo();
-    localContentInfo.uint32_src.set(ReadInJoyCommentHelper.a(paramSimpleCommentData.d()));
+    localContentInfo.uint32_src.set(ReadInJoyCommentHelper.a(paramSimpleCommentData.j()));
     if ((paramSimpleCommentData instanceof FirstCommentCreateData))
     {
-      localContentInfo.str_rowkey.set(paramSimpleCommentData.c());
-      localContentInfo.str_article_id.set(paramSimpleCommentData.d());
-      localObject = ((FirstCommentCreateData)paramSimpleCommentData).b();
+      localContentInfo.str_rowkey.set(paramSimpleCommentData.d());
+      localContentInfo.str_article_id.set(paramSimpleCommentData.e());
+      localObject = ((FirstCommentCreateData)paramSimpleCommentData).c();
     }
     else if ((paramSimpleCommentData instanceof SubCommentCreateData))
     {
-      localContentInfo.str_rowkey.set(paramSimpleCommentData.c());
-      localContentInfo.str_article_id.set(paramSimpleCommentData.d());
-      localObject = ((SubCommentCreateData)paramSimpleCommentData).g();
+      localContentInfo.str_rowkey.set(paramSimpleCommentData.d());
+      localContentInfo.str_article_id.set(paramSimpleCommentData.e());
+      localObject = ((SubCommentCreateData)paramSimpleCommentData).n();
     }
     else
     {
@@ -57,10 +57,10 @@ public final class RIJBiuNetworkHelper
       if ((paramSimpleCommentData instanceof SubCommentCreateData))
       {
         paramSimpleCommentData = (SubCommentCreateData)paramSimpleCommentData;
-        if (paramSimpleCommentData.b() != 0L) {
-          localCommentInfo.uint64_sub_author.set(paramSimpleCommentData.b());
+        if (paramSimpleCommentData.l() != 0L) {
+          localCommentInfo.uint64_sub_author.set(paramSimpleCommentData.l());
         }
-        localCommentInfo.str_sub_comment_id.set(paramSimpleCommentData.f());
+        localCommentInfo.str_sub_comment_id.set(paramSimpleCommentData.m());
         int i;
         if (((CharSequence)paramSimpleCommentData.a()).length() > 0) {
           i = 1;
@@ -98,7 +98,7 @@ public final class RIJBiuNetworkHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.helper.RIJBiuNetworkHelper
  * JD-Core Version:    0.7.0.1
  */

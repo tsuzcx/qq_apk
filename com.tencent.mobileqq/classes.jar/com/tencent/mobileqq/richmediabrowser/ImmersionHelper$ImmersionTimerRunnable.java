@@ -15,14 +15,14 @@ class ImmersionHelper$ImmersionTimerRunnable
     BrowserLogHelper.getInstance().getGalleryLog().d("ImmersionHelper", 2, "ImmersionTimerRunnable run");
     ImmersionHelper localImmersionHelper = this.this$0;
     localImmersionHelper.a = true;
-    if (ImmersionHelper.a(localImmersionHelper).a != null) {
-      ImmersionHelper.a(this.this$0).a.e(false);
+    if (ImmersionHelper.a(localImmersionHelper).b != null) {
+      ImmersionHelper.a(this.this$0).b.e(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.ImmersionHelper.ImmersionTimerRunnable
  * JD-Core Version:    0.7.0.1
  */

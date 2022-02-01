@@ -28,7 +28,7 @@ class BaseActivityView$UiHandler
       {
         if (i == 3)
         {
-          ((BaseActivityView)localObject).i();
+          ((BaseActivityView)localObject).j();
           return;
         }
         localObject = new StringBuilder();
@@ -36,7 +36,7 @@ class BaseActivityView$UiHandler
         ((StringBuilder)localObject).append(paramMessage.what);
         throw new RuntimeException(((StringBuilder)localObject).toString());
       }
-      ((BaseActivityView)localObject).f();
+      ((BaseActivityView)localObject).g();
       return;
     }
     i = paramMessage.arg1;
@@ -48,7 +48,7 @@ class BaseActivityView$UiHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BaseActivityView.UiHandler
  * JD-Core Version:    0.7.0.1
  */

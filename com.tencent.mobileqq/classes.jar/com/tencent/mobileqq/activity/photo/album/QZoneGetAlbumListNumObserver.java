@@ -24,8 +24,8 @@ public class QZoneGetAlbumListNumObserver
       paramBundle = paramBundle.getSerializable("data");
       if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
       {
-        ((PhotoOtherData)this.a.get()).jdField_a_of_type_Long = ((get_albumlist_num_rsp)paramBundle).album_num;
-        ((PhotoOtherData)this.a.get()).jdField_a_of_type_Boolean = true;
+        ((PhotoOtherData)this.a.get()).b = ((get_albumlist_num_rsp)paramBundle).album_num;
+        ((PhotoOtherData)this.a.get()).c = true;
       }
       MobileQQ.sMobileQQ.peekAppRuntime().unRegistObserver(this);
       this.a.clear();
@@ -35,7 +35,7 @@ public class QZoneGetAlbumListNumObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.QZoneGetAlbumListNumObserver
  * JD-Core Version:    0.7.0.1
  */

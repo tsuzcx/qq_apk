@@ -25,36 +25,36 @@ import java.util.concurrent.ConcurrentHashMap;
 public class StickerDismissGestureDetector
   extends GestureDetector
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  private ChatXListView jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 1;
-  private int c;
+  private TopGestureLayout a;
+  private float b;
+  private float c;
+  private int d = 0;
+  private int e = 1;
+  private int f;
+  private ChatXListView g;
   public boolean isInTowFingerMode = false;
   
   public StickerDismissGestureDetector(TopGestureLayout paramTopGestureLayout, Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
     super(paramContext, paramOnGestureListener);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = paramTopGestureLayout;
+    this.a = paramTopGestureLayout;
   }
   
   void a(MotionEvent paramMotionEvent, ChatXListView paramChatXListView)
   {
-    float f4 = paramMotionEvent.getX(this.jdField_a_of_type_Int) - this.jdField_a_of_type_Float;
-    float f3 = paramMotionEvent.getX(this.jdField_b_of_type_Int) - this.jdField_b_of_type_Float;
-    this.jdField_a_of_type_Float = paramMotionEvent.getX(this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Float = paramMotionEvent.getX(this.jdField_b_of_type_Int);
+    float f4 = paramMotionEvent.getX(this.d) - this.b;
+    float f3 = paramMotionEvent.getX(this.e) - this.c;
+    this.b = paramMotionEvent.getX(this.d);
+    this.c = paramMotionEvent.getX(this.e);
     if (f4 * f3 < 0.0F)
     {
       int i;
       if (f4 < 0.0F) {
-        i = EmojiStickerManager.jdField_d_of_type_Int;
+        i = EmojiStickerManager.p;
       } else {
-        i = EmojiStickerManager.jdField_e_of_type_Int;
+        i = EmojiStickerManager.q;
       }
-      this.c = i;
+      this.f = i;
       if (paramChatXListView != null)
       {
         i = paramChatXListView.getChildCount() - 1;
@@ -66,21 +66,21 @@ public class StickerDismissGestureDetector
           if ((paramMotionEvent instanceof BaseChatItemLayout))
           {
             paramMotionEvent = (BaseChatItemLayout)paramMotionEvent;
-            if (this.c == EmojiStickerManager.jdField_d_of_type_Int)
+            if (this.f == EmojiStickerManager.p)
             {
               f1 = Math.min(0.0F, f4);
               f2 = Math.max(0.0F, f3);
-              paramMotionEvent.a((int)Math.abs(f1 - f2), this.c);
+              paramMotionEvent.a((int)Math.abs(f1 - f2), this.f);
             }
             else
             {
               f1 = f4;
               f2 = f3;
-              if (this.c == EmojiStickerManager.jdField_e_of_type_Int)
+              if (this.f == EmojiStickerManager.q)
               {
                 f1 = Math.max(0.0F, f4);
                 f2 = Math.min(0.0F, f3);
-                paramMotionEvent.a((int)Math.abs(f1 - f2), this.c);
+                paramMotionEvent.a((int)Math.abs(f1 - f2), this.f);
               }
             }
           }
@@ -105,21 +105,21 @@ public class StickerDismissGestureDetector
                 if ((localObject instanceof StickerGrayTipLayout))
                 {
                   localObject = (StickerGrayTipLayout)localObject;
-                  if (this.c == EmojiStickerManager.jdField_d_of_type_Int)
+                  if (this.f == EmojiStickerManager.p)
                   {
                     f1 = Math.min(0.0F, f4);
                     f2 = Math.max(0.0F, f3);
-                    ((StickerGrayTipLayout)localObject).doDismiss((int)Math.abs(f1 - f2), this.c);
+                    ((StickerGrayTipLayout)localObject).doDismiss((int)Math.abs(f1 - f2), this.f);
                   }
                   else
                   {
                     f1 = f4;
                     f2 = f3;
-                    if (this.c == EmojiStickerManager.jdField_e_of_type_Int)
+                    if (this.f == EmojiStickerManager.q)
                     {
                       f1 = Math.max(0.0F, f4);
                       f2 = Math.min(0.0F, f3);
-                      ((StickerGrayTipLayout)localObject).doDismiss((int)Math.abs(f1 - f2), this.c);
+                      ((StickerGrayTipLayout)localObject).doDismiss((int)Math.abs(f1 - f2), this.f);
                     }
                   }
                 }
@@ -168,16 +168,16 @@ public class StickerDismissGestureDetector
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     Object localObject1;
-    if (EmojiStickerManager.jdField_e_of_type_Boolean)
+    if (EmojiStickerManager.e)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131374092);
+      localObject1 = this.a.findViewById(2131442187);
       if (localObject1 != null) {
         return ((View)localObject1).onTouchEvent(paramMotionEvent);
       }
     }
-    if (EmojiStickerManager.jdField_d_of_type_Boolean)
+    if (EmojiStickerManager.d)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131374089);
+      localObject1 = this.a.findViewById(2131442184);
       if (localObject1 != null) {
         return ((View)localObject1).onTouchEvent(paramMotionEvent);
       }
@@ -189,8 +189,8 @@ public class StickerDismissGestureDetector
       localObject1 = BaseActivity.sTopActivity;
       if (((localObject1 instanceof BaseActivity)) && (((BaseActivity)localObject1).getChatFragment() != null))
       {
-        localObject1 = ((BaseActivity)localObject1).getChatFragment().a();
-        if ((((localObject1 instanceof BaseTroopChatPie)) || ((localObject1 instanceof FriendChatPie)) || ((localObject1 instanceof DiscussChatPie))) && (EmojiStickerManager.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0))
+        localObject1 = ((BaseActivity)localObject1).getChatFragment().k();
+        if ((((localObject1 instanceof BaseTroopChatPie)) || ((localObject1 instanceof FriendChatPie)) || ((localObject1 instanceof DiscussChatPie))) && (EmojiStickerManager.a().B.size() > 0))
         {
           this.isInTowFingerMode = true;
           i = paramMotionEvent.getAction() & paramMotionEvent.getActionMasked();
@@ -204,46 +204,46 @@ public class StickerDismissGestureDetector
                   if (i != 5) {
                     return true;
                   }
-                  localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370119);
+                  localObject1 = this.a.findViewById(2131437281);
                   if ((localObject1 instanceof ChatXListView)) {
-                    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
+                    this.g = ((ChatXListView)localObject1);
                   }
                   if (paramMotionEvent.getX(0) < paramMotionEvent.getX(1))
                   {
-                    this.jdField_a_of_type_Int = 0;
-                    this.jdField_b_of_type_Int = 1;
-                    this.jdField_a_of_type_Float = paramMotionEvent.getX(0);
-                    this.jdField_b_of_type_Float = paramMotionEvent.getX(1);
+                    this.d = 0;
+                    this.e = 1;
+                    this.b = paramMotionEvent.getX(0);
+                    this.c = paramMotionEvent.getX(1);
                     return true;
                   }
-                  this.jdField_a_of_type_Int = 1;
-                  this.jdField_b_of_type_Int = 0;
-                  this.jdField_a_of_type_Float = paramMotionEvent.getX(1);
-                  this.jdField_b_of_type_Float = paramMotionEvent.getX(0);
+                  this.d = 1;
+                  this.e = 0;
+                  this.b = paramMotionEvent.getX(1);
+                  this.c = paramMotionEvent.getX(0);
                   return true;
                 }
               }
               else
               {
-                if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null)
+                if (this.g == null)
                 {
-                  localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370119);
+                  localObject1 = this.a.findViewById(2131437281);
                   if ((localObject1 != null) && ((localObject1 instanceof ChatXListView))) {
-                    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
+                    this.g = ((ChatXListView)localObject1);
                   }
                 }
-                a(paramMotionEvent, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView);
+                a(paramMotionEvent, this.g);
                 return true;
               }
             }
-            this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = null;
+            this.g = null;
             return true;
           }
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370119);
+          localObject1 = this.a.findViewById(2131437281);
           if ((localObject1 instanceof ChatXListView)) {
-            this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
+            this.g = ((ChatXListView)localObject1);
           }
-          this.jdField_a_of_type_Float = paramMotionEvent.getX(0);
+          this.b = paramMotionEvent.getX(0);
           return true;
         }
       }
@@ -254,30 +254,30 @@ public class StickerDismissGestureDetector
       Object localObject2;
       if (paramMotionEvent.getAction() == 1)
       {
-        PttConstants.a = false;
-        if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null)
+        PttConstants.b = false;
+        if (this.g == null)
         {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370119);
+          localObject1 = this.a.findViewById(2131437281);
           if ((localObject1 != null) && ((localObject1 instanceof ChatXListView))) {
-            this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
+            this.g = ((ChatXListView)localObject1);
           }
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+        localObject1 = this.g;
         if (localObject1 != null)
         {
           i = ((ChatXListView)localObject1).getChildCount() - 1;
           while (i >= 0)
           {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(i);
+            localObject1 = this.g.getChildAt(i);
             boolean bool2;
             if ((localObject1 instanceof BaseChatItemLayout))
             {
               localObject1 = (BaseChatItemLayout)localObject1;
               bool2 = bool1;
               if (!bool1) {
-                bool2 = ((BaseChatItemLayout)localObject1).e();
+                bool2 = ((BaseChatItemLayout)localObject1).i();
               }
-              ((BaseChatItemLayout)localObject1).c();
+              ((BaseChatItemLayout)localObject1).h();
             }
             else
             {
@@ -313,7 +313,7 @@ public class StickerDismissGestureDetector
           }
           if (bool1)
           {
-            i = EmojiStickerManager.a().jdField_a_of_type_Int;
+            i = EmojiStickerManager.a().h;
             if (i == 1) {
               localObject1 = "2";
             } else if (i == 3000) {
@@ -321,7 +321,7 @@ public class StickerDismissGestureDetector
             } else {
               localObject1 = "1";
             }
-            if (this.c == EmojiStickerManager.jdField_d_of_type_Int) {
+            if (this.f == EmojiStickerManager.p) {
               VasWebviewUtil.a("", "Stick", "Hide", (String)localObject1, 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
             } else {
               VasWebviewUtil.a("", "Stick", "CancelHide", (String)localObject1, 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
@@ -332,40 +332,40 @@ public class StickerDismissGestureDetector
         {
           QLog.e("TopGestureLayout", 1, "on on pointer touch up but list view is null");
         }
-        this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = null;
+        this.g = null;
       }
       else if (paramMotionEvent.getAction() == 0)
       {
         this.isInTowFingerMode = false;
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370119);
+        localObject2 = this.a.findViewById(2131437281);
         localObject1 = localObject2;
         if (localObject2 == null) {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370120);
+          localObject1 = this.a.findViewById(2131437282);
         }
         if ((localObject1 != null) && ((localObject1 instanceof ChatXListView))) {
-          this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
+          this.g = ((ChatXListView)localObject1);
         }
       }
       else if (paramMotionEvent.getAction() == 2)
       {
-        if (!PttConstants.a)
+        if (!PttConstants.b)
         {
-          if (PttConstants.b) {
+          if (PttConstants.c) {
             return false;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null)
+          if (this.g == null)
           {
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370119);
+            localObject2 = this.a.findViewById(2131437281);
             localObject1 = localObject2;
             if (localObject2 == null) {
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131370120);
+              localObject1 = this.a.findViewById(2131437282);
             }
             if ((localObject1 != null) && ((localObject1 instanceof ChatXListView))) {
-              this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
+              this.g = ((ChatXListView)localObject1);
             }
           }
-          if (checkPttSlide(paramMotionEvent, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView)) {
-            PttConstants.a = true;
+          if (checkPttSlide(paramMotionEvent, this.g)) {
+            PttConstants.b = true;
           }
         }
         else
@@ -375,12 +375,12 @@ public class StickerDismissGestureDetector
       }
       else if (paramMotionEvent.getAction() == 3)
       {
-        PttConstants.a = false;
-        this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = null;
+        PttConstants.b = false;
+        this.g = null;
       }
       else
       {
-        PttConstants.a = false;
+        PttConstants.b = false;
       }
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -388,7 +388,7 @@ public class StickerDismissGestureDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.StickerDismissGestureDetector
  * JD-Core Version:    0.7.0.1
  */

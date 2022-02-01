@@ -23,15 +23,15 @@ import java.util.List;
 public class EditShareGroupRequest
   extends NetworkRequest<EditShareGroupResponse>
 {
-  protected static final String a;
-  public ShareGroupItem a;
+  protected static final String e = StoryApi.a("StorySvc.edit_share_group");
+  public ShareGroupItem f;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.edit_share_group");
+    return e;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspEditShareGroup localRspEditShareGroup = new qqstory_service.RspEditShareGroup();
     try
@@ -46,31 +46,26 @@ public class EditShareGroupRequest
     return null;
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqEditShareGroup localReqEditShareGroup = new qqstory_service.ReqEditShareGroup();
     qqstory_struct.ShareGroupInfo localShareGroupInfo = new qqstory_struct.ShareGroupInfo();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null)
+    if (this.f != null)
     {
       Object localObject = new qqstory_struct.ShareGroupBasicInfo();
-      ((qqstory_struct.ShareGroupBasicInfo)localObject).shared_group_id.set(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.allowStrangerVisitAndPost != -1) {
-        ((qqstory_struct.ShareGroupBasicInfo)localObject).allow_stranger_visit_and_post.set(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.allowStrangerVisitAndPost);
+      ((qqstory_struct.ShareGroupBasicInfo)localObject).shared_group_id.set(this.f.shareGroupId);
+      if (this.f.allowStrangerVisitAndPost != -1) {
+        ((qqstory_struct.ShareGroupBasicInfo)localObject).allow_stranger_visit_and_post.set(this.f.allowStrangerVisitAndPost);
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.name)) {
-        ((qqstory_struct.ShareGroupBasicInfo)localObject).name.set(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.name);
+      if (!TextUtils.isEmpty(this.f.name)) {
+        ((qqstory_struct.ShareGroupBasicInfo)localObject).name.set(this.f.name);
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.ownerUnionId)) {
-        ((qqstory_struct.ShareGroupBasicInfo)localObject).owner.set(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.ownerUnionId);
+      if (!TextUtils.isEmpty(this.f.ownerUnionId)) {
+        ((qqstory_struct.ShareGroupBasicInfo)localObject).owner.set(this.f.ownerUnionId);
       }
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.isEmpty()))
+      if ((this.f.headerUnionIdList != null) && (!this.f.headerUnionIdList.isEmpty()))
       {
-        Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.iterator();
+        Iterator localIterator = this.f.headerUnionIdList.iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
@@ -81,8 +76,8 @@ public class EditShareGroupRequest
       }
       localShareGroupInfo.basic_info.set((MessageMicro)localObject);
       localObject = new qqstory_struct.ShareGroupExtInfo();
-      if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isSubscribed != -1) {
-        ((qqstory_struct.ShareGroupExtInfo)localObject).has_join.set(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isSubscribed);
+      if (this.f.isSubscribed != -1) {
+        ((qqstory_struct.ShareGroupExtInfo)localObject).has_join.set(this.f.isSubscribed);
       }
       localShareGroupInfo.ext_info.set((MessageMicro)localObject);
     }
@@ -92,7 +87,7 @@ public class EditShareGroupRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.EditShareGroupRequest
  * JD-Core Version:    0.7.0.1
  */

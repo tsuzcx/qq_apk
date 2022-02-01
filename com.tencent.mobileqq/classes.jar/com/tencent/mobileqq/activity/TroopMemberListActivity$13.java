@@ -22,14 +22,14 @@ class TroopMemberListActivity$13
       this.a.mTitleSortImgBtn.setVisibility(0);
     }
     if (this.a.mAdapter != null) {
-      this.a.mAdapter.a();
+      this.a.mAdapter.c();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.13
  * JD-Core Version:    0.7.0.1
  */

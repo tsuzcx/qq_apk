@@ -26,13 +26,13 @@ class SensorModule$GeoListener
       localStringBuilder1.append(", info=");
       localStringBuilder1.append(paramSosoLbsInfo);
       localStringBuilder1.append(", isActive=");
-      localStringBuilder1.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder1.append(this.a);
       QLog.d("DoraemonOpenAPI.sensor.location", 2, localStringBuilder1.toString());
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
     if (paramInt == 0)
     {
       double d1 = paramSosoLbsInfo.mLocation.mLat02;
@@ -57,10 +57,10 @@ class SensorModule$GeoListener
           QLog.e("DoraemonOpenAPI.sensor", 2, localJSONException.getMessage(), localJSONException);
         }
       }
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramSosoLbsInfo);
+      DoraemonUtil.a(this.b, paramSosoLbsInfo);
       return;
     }
-    paramSosoLbsInfo = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+    paramSosoLbsInfo = this.b;
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("error ");
     localStringBuilder2.append(paramInt);
@@ -69,7 +69,7 @@ class SensorModule$GeoListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.SensorModule.GeoListener
  * JD-Core Version:    0.7.0.1
  */

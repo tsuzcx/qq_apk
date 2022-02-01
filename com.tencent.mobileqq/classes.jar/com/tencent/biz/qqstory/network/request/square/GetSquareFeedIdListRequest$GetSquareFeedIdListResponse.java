@@ -12,7 +12,7 @@ import java.util.List;
 public class GetSquareFeedIdListRequest$GetSquareFeedIdListResponse
   extends BasePageResponse
 {
-  public List<FeedIdListSeqInfo> a = new ArrayList();
+  public List<FeedIdListSeqInfo> e = new ArrayList();
   
   public GetSquareFeedIdListRequest$GetSquareFeedIdListResponse(qqstory_service.RspDiscoveryShareGroupList paramRspDiscoveryShareGroupList)
   {
@@ -21,13 +21,13 @@ public class GetSquareFeedIdListRequest$GetSquareFeedIdListResponse
     while (paramRspDiscoveryShareGroupList.hasNext())
     {
       FeedIdListSeqInfo localFeedIdListSeqInfo = new FeedIdListSeqInfo(((ByteStringMicro)paramRspDiscoveryShareGroupList.next()).toStringUtf8(), 0, "", "");
-      this.a.add(localFeedIdListSeqInfo);
+      this.e.add(localFeedIdListSeqInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.square.GetSquareFeedIdListRequest.GetSquareFeedIdListResponse
  * JD-Core Version:    0.7.0.1
  */

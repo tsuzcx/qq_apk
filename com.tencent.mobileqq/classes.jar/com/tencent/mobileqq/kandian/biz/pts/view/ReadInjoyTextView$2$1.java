@@ -12,20 +12,20 @@ class ReadInjoyTextView$2$1
   
   public void run()
   {
-    QLog.d("ReadInjoyTextView", 2, new Object[] { "setDecorationName callback, nick = ", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityReadInJoyUserInfo.decorationName });
-    ReadInjoyTextView localReadInjoyTextView = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyTextView$2.a;
+    QLog.d("ReadInjoyTextView", 2, new Object[] { "setDecorationName callback, nick = ", this.a.decorationName });
+    ReadInjoyTextView localReadInjoyTextView = this.b.c;
     String str;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityReadInJoyUserInfo.decorationName)) {
-      str = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyTextView$2.b;
+    if (TextUtils.isEmpty(this.a.decorationName)) {
+      str = this.b.b;
     } else {
-      str = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityReadInJoyUserInfo.decorationName;
+      str = this.a.decorationName;
     }
     localReadInjoyTextView.setText(RIJStringUtils.a(str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyTextView.2.1
  * JD-Core Version:    0.7.0.1
  */

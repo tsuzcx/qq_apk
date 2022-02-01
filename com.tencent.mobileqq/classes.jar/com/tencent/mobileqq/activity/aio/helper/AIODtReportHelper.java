@@ -50,29 +50,29 @@ import mqq.app.AppRuntime;
 public class AIODtReportHelper
   implements OnFinishListener, ILifeCycleHelper
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  @Nullable
-  private View jdField_a_of_type_AndroidViewView;
-  @Nullable
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   @NonNull
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
+  protected final BaseChatPie a;
+  @Nullable
+  protected SessionInfo b;
+  protected QQAppInterface c;
+  @Nullable
+  protected View d;
+  private int e;
+  private int f;
+  private int g;
+  private boolean h = false;
+  private long i = 0L;
+  private long j;
+  private boolean k;
   
-  AIODtReportHelper(@NonNull BaseChatPie paramBaseChatPie)
+  public AIODtReportHelper(@NonNull BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.a = paramBaseChatPie;
   }
   
   public static int a(int paramInt)
   {
-    int i = 1;
+    int m = 1;
     if (paramInt != 0)
     {
       if (paramInt != 1)
@@ -82,12 +82,14 @@ public class AIODtReportHelper
           if (paramInt != 1008)
           {
             if ((paramInt == 1009) || (paramInt == 1020)) {
-              break label142;
+              break label161;
             }
-            if (paramInt != 3000) {
-              if ((paramInt == 10002) || (paramInt == 10004) || (paramInt == 10008) || (paramInt == 10010)) {
-                break label142;
+            if (paramInt != 3000)
+            {
+              if ((paramInt == 10002) || (paramInt == 10004) || (paramInt == 10008) || (paramInt == 10010) || (paramInt == 10013)) {
+                break label161;
               }
+              if (paramInt == 10014) {}
             }
           }
           switch (paramInt)
@@ -97,18 +99,19 @@ public class AIODtReportHelper
             {
             default: 
               return 5;
+              return 6;
               return 4;
               return 3;
             }
             break;
           }
         }
-        label142:
+        label161:
         return 2;
       }
-      i = 0;
+      m = 0;
     }
-    return i;
+    return m;
   }
   
   private GroupCatalogBean a(String paramString)
@@ -120,36 +123,16 @@ public class AIODtReportHelper
     if (localGroupCatalogBean != null)
     {
       paramString = localGroupCatalogBean;
-      if (localGroupCatalogBean.jdField_a_of_type_Int > 2)
+      if (localGroupCatalogBean.a > 2)
       {
         paramString = localGroupCatalogBean;
-        if (localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean != null) {
-          paramString = a(localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean.b);
+        if (localGroupCatalogBean.e != null) {
+          paramString = a(localGroupCatalogBean.e.c);
         }
       }
       return paramString;
     }
     return null;
-  }
-  
-  private static String a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    String str2 = "0";
-    String str1 = str2;
-    if (localObject != null)
-    {
-      localObject = ((BaseApplicationImpl)localObject).peekAppRuntime();
-      str1 = str2;
-      if (localObject != null)
-      {
-        str1 = ((AppRuntime)localObject).getAccount();
-        if (TextUtils.isEmpty(str1)) {
-          return "0";
-        }
-      }
-    }
-    return str1;
   }
   
   private void a(int paramInt, Map<String, String> paramMap)
@@ -165,19 +148,13 @@ public class AIODtReportHelper
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  private void a(View paramView, String paramString)
-  {
-    VideoReport.setElementId(paramView, paramString);
-    VideoReport.setElementExposePolicy(paramView, ExposurePolicy.REPORT_NONE);
-  }
-  
   public static void a(SessionInfo paramSessionInfo, String paramString)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("type_aio_pg", String.valueOf(a(paramSessionInfo.jdField_a_of_type_Int)));
-    localHashMap.put("uin_to", paramSessionInfo.jdField_a_of_type_JavaLangString);
+    localHashMap.put("type_aio_pg", String.valueOf(a(paramSessionInfo.a)));
+    localHashMap.put("uin_to", paramSessionInfo.b);
     localHashMap.put("cur_time", paramString);
-    localHashMap.put("A8", a());
+    localHashMap.put("A8", p());
     UserAction.onUserAction("qq_aio_setting_click", true, 0L, 0L, localHashMap, true, true);
     paramSessionInfo = new StringBuilder();
     paramSessionInfo.append("reportClickSetting: params = ");
@@ -187,37 +164,37 @@ public class AIODtReportHelper
   
   private static void a(BaseChatPie paramBaseChatPie)
   {
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout);
+    a(paramBaseChatPie.W);
   }
   
   public static void a(BaseChatPie paramBaseChatPie, View paramView)
   {
     VideoReport.setElementId(paramView, "em_aio_more_panel");
     VideoReport.setElementExposePolicy(paramView, ExposurePolicy.REPORT_ALL);
-    int i;
-    if (((IRedTouchManager)paramBaseChatPie.a().getRuntimeService(IRedTouchManager.class, "")).getRedTouchInfoByAppSet(10) != null) {
-      i = 1;
+    int m;
+    if (((IRedTouchManager)paramBaseChatPie.i().getRuntimeService(IRedTouchManager.class, "")).getRedTouchInfoByAppSet(10) != null) {
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    VideoReport.setElementParam(paramView, "is_red_tips_before", Integer.valueOf(i));
+    VideoReport.setElementParam(paramView, "is_red_tips_before", Integer.valueOf(m));
   }
   
   public static void a(PanelIconLinearLayout paramPanelIconLinearLayout)
   {
-    int k = paramPanelIconLinearLayout.getChildCount();
-    int i = 0;
-    while (i < k)
+    int i1 = paramPanelIconLinearLayout.getChildCount();
+    int m = 0;
+    while (m < i1)
     {
-      Object localObject = paramPanelIconLinearLayout.getChildAt(i);
-      int m = ((Integer)((View)localObject).getTag()).intValue();
-      String str = DtAIOReportUtil.a(m);
+      Object localObject = paramPanelIconLinearLayout.getChildAt(m);
+      int i2 = ((Integer)((View)localObject).getTag()).intValue();
+      String str = DtAIOReportUtil.a(i2);
       boolean bool1 = TextUtils.isEmpty(str);
-      int j = 1;
+      int n = 1;
       if (bool1)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("AIODtReportHelper", 2, new Object[] { "[initChatPanelIconReportData]", " tag: ", Integer.valueOf(m), " has not register dt report id" });
+          QLog.d("AIODtReportHelper", 2, new Object[] { "[initChatPanelIconReportData]", " tag: ", Integer.valueOf(i2), " has not register dt report id" });
         }
       }
       else
@@ -231,8 +208,8 @@ public class AIODtReportHelper
         if ((localObject instanceof RedTouch))
         {
           localObject = (RedTouch)localObject;
-          bool2 = ((RedTouch)localObject).c();
-          localObject = ((RedTouch)localObject).a();
+          bool2 = ((RedTouch)localObject).h();
+          localObject = ((RedTouch)localObject).getTarget();
           bool1 = false;
         }
         else
@@ -242,18 +219,18 @@ public class AIODtReportHelper
           bool1 = bool3;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("AIODtReportHelper", 2, new Object[] { "[initChatPanelIconReportData] register panel icon: ", Integer.valueOf(m), "isOldRedDotSystem: ", Boolean.valueOf(bool1), " isShowing red dot: ", Boolean.valueOf(bool2) });
+          QLog.d("AIODtReportHelper", 2, new Object[] { "[initChatPanelIconReportData] register panel icon: ", Integer.valueOf(i2), "isOldRedDotSystem: ", Boolean.valueOf(bool1), " isShowing red dot: ", Boolean.valueOf(bool2) });
         }
         VideoReport.setElementId(localObject, str);
         VideoReport.setElementClickPolicy(localObject, ClickPolicy.REPORT_ALL);
         VideoReport.setElementExposePolicy(localObject, ExposurePolicy.REPORT_NONE);
         if (!bool2) {
-          j = 0;
+          n = 0;
         }
-        VideoReport.setElementParam(localObject, "is_red_tips_em", Integer.valueOf(j));
-        a((View)localObject, m);
+        VideoReport.setElementParam(localObject, "is_red_tips_em", Integer.valueOf(n));
+        a((View)localObject, i2);
       }
-      i += 1;
+      m += 1;
     }
   }
   
@@ -274,47 +251,31 @@ public class AIODtReportHelper
   
   private void a(Map<String, String> paramMap)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    Object localObject = this.b;
     if (localObject == null) {
       return;
     }
-    localObject = ((SessionInfo)localObject).jdField_a_of_type_JavaLangString;
-    localObject = ((ITroopInfoService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopInfoService.class, "")).getTroopInfo((String)localObject);
+    localObject = ((SessionInfo)localObject).b;
+    localObject = ((ITroopInfoService)this.c.getRuntimeService(ITroopInfoService.class, "")).getTroopInfo((String)localObject);
     a((TroopInfo)localObject);
     a(paramMap, (TroopInfo)localObject);
   }
   
   private void a(Map<String, String> paramMap, TroopInfo paramTroopInfo)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
-    boolean bool = paramTroopInfo.isTroopOwner(str);
-    int i = 1;
-    if (!bool) {
-      if (paramTroopInfo.isTroopAdmin(str)) {
-        i = 2;
-      } else if (((ITroopInfoService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(paramTroopInfo.troopuin) == null) {
-        i = 4;
-      }
+    String str = this.c.getCurrentUin();
+    int m;
+    if (paramTroopInfo.isTroopOwner(str)) {
+      m = 1;
+    } else if (paramTroopInfo.isTroopAdmin(str)) {
+      m = 2;
+    } else if (((ITroopInfoService)this.c.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(paramTroopInfo.troopuin) == null) {
+      m = 4;
+    } else {
+      m = 3;
     }
-    paramMap.put("group_uin_type", String.valueOf(i));
-    VideoReport.setPageParams(this.jdField_a_of_type_AndroidViewView, new PageParams(paramMap));
-  }
-  
-  private int b()
-  {
-    int j = this.jdField_a_of_type_Int;
-    int k = c(this.c);
-    int i;
-    if (k != 4)
-    {
-      i = j;
-      if (k != 0) {}
-    }
-    else
-    {
-      i = j / 2;
-    }
-    return i;
+    paramMap.put("group_uin_type", String.valueOf(m));
+    VideoReport.setPageParams(this.d, new PageParams(paramMap));
   }
   
   public static int b(int paramInt)
@@ -333,176 +294,115 @@ public class AIODtReportHelper
     return 2;
   }
   
-  private void b(View paramView)
-  {
-    VideoReport.resetPageParams(paramView);
-    HashMap localHashMap = new HashMap();
-    int i = c(this.c);
-    localHashMap.put("source_aio_appear", String.valueOf(i));
-    localHashMap.put("aio_session_time", String.valueOf(this.jdField_b_of_type_Long));
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    if (localObject != null)
-    {
-      int j = a(((SessionInfo)localObject).jdField_a_of_type_Int);
-      a(j, localHashMap);
-      localHashMap.put("type_aio_pg", String.valueOf(j));
-      localHashMap.put("uin_to", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      QLog.d("AIODtReportHelper_QQDtReporter", 1, new Object[] { "setViewReport, curType = ", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), ", exUinType = ", Integer.valueOf(j), ", curUin = ", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, ", mMsgSource = ", Integer.valueOf(this.c), ", exMsgSource = ", Integer.valueOf(i) });
-    }
-    else
-    {
-      QLog.d("AIODtReportHelper", 1, "setViewReport, but session is null");
-    }
-    localHashMap.put("aio_disappear_type", "3");
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
-    ((StringBuilder)localObject).append("");
-    localHashMap.put("aio_recv_msg_cnt", ((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-    ((StringBuilder)localObject).append("");
-    localHashMap.put("aio_send_msg_cnt", ((StringBuilder)localObject).toString());
-    VideoReport.setPageParams(paramView, new PageParams(localHashMap));
-    VideoReport.setPageId(this.jdField_a_of_type_AndroidViewView, "pg_aio");
-    VideoReport.setPageContentId(this.jdField_a_of_type_AndroidViewView, String.valueOf(SystemClock.elapsedRealtime()), true);
-  }
-  
   private void b(Map<String, String> paramMap)
   {
-    VideoReport.setPageParams(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), new PageParams(paramMap));
+    VideoReport.setPageParams(this.a.aW(), new PageParams(paramMap));
   }
   
-  private int c(int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt != 0)
-    {
-      i = paramInt;
-      if (paramInt != 1)
-      {
-        i = paramInt;
-        if (paramInt != 2)
-        {
-          i = paramInt;
-          if (paramInt != 3) {
-            i = 14;
-          }
-        }
-      }
-    }
-    return i;
-  }
-  
-  private void c(View paramView)
+  private void e(View paramView)
   {
     a(paramView, "em_return_button_aio_pg");
   }
   
-  private void d()
+  private int f(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    g();
-    VideoReport.addToDetectionWhitelist(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    ViewGroup localViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
-    this.jdField_a_of_type_AndroidViewView = localViewGroup;
-    View localView1 = localViewGroup.findViewById(2131369563);
-    View localView2 = localViewGroup.findViewById(2131369202);
-    View localView3 = localViewGroup.findViewById(2131369985);
-    View localView4 = localViewGroup.findViewById(2131379476);
-    View localView5 = localViewGroup.findViewById(2131369216);
-    b(localViewGroup);
-    c(localView1);
-    c(localView2);
-    c(localView3);
-    c(localView4);
-    d(localView5);
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    QLog.d("AIODtReportHelper", 1, new Object[] { "doOnAioCreate, mOnStartT = ", Long.valueOf(this.jdField_a_of_type_Long) });
-  }
-  
-  private void d(View paramView)
-  {
-    a(paramView, "em_setting_banner_aio_pg");
-  }
-  
-  private void e()
-  {
-    l();
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-    f();
+    int m = paramInt;
+    if (paramInt != 0)
+    {
+      m = paramInt;
+      if (paramInt != 1)
+      {
+        m = paramInt;
+        if (paramInt != 2)
+        {
+          m = paramInt;
+          if (paramInt != 3) {
+            m = 14;
+          }
+        }
+      }
+    }
+    return m;
   }
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b().a().a(this);
+    m();
+    a(this.a);
+    g();
   }
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
-    this.c = 999;
-    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
-    if ((localIntent != null) && (localIntent.getExtras() != null)) {
-      this.c = localIntent.getExtras().getInt("aio_msg_source", 999);
-    }
-    this.jdField_b_of_type_Long = System.nanoTime();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    VideoReport.resetPageParams(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+    this.a.bv().d().a(this);
   }
   
   private void h()
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      j();
+    this.c = this.a.d;
+    this.b = this.a.aE();
+    this.g = 999;
+    Intent localIntent = this.a.f.getIntent();
+    if ((localIntent != null) && (localIntent.getExtras() != null)) {
+      this.g = localIntent.getExtras().getInt("aio_msg_source", 999);
     }
+    this.j = System.nanoTime();
+    this.e = 0;
+    this.f = 0;
+    VideoReport.resetPageParams(this.a.aW());
   }
   
   private void i()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onStart: mOnStartT = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    QLog.d("AIODtReportHelper", 1, localStringBuilder.toString());
+    if (!this.k) {
+      k();
+    }
   }
   
   private void j()
   {
-    ViewGroup localViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
-    TreeMap localTreeMap = new TreeMap();
-    localTreeMap.put("aio_disappear_type", "3");
+    this.k = false;
+    this.i = SystemClock.elapsedRealtime();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("");
-    localTreeMap.put("aio_recv_msg_cnt", localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    localStringBuilder.append("");
-    localTreeMap.put("aio_send_msg_cnt", localStringBuilder.toString());
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    VideoReport.setPageParams(localViewGroup, new PageParams(localTreeMap));
+    localStringBuilder.append("onStart: mOnStartT = ");
+    localStringBuilder.append(this.i);
+    QLog.d("AIODtReportHelper", 1, localStringBuilder.toString());
   }
   
   private void k()
   {
-    if (this.jdField_a_of_type_Long > 0L)
+    ViewGroup localViewGroup = this.a.aW();
+    TreeMap localTreeMap = new TreeMap();
+    localTreeMap.put("aio_disappear_type", "3");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("");
+    localTreeMap.put("aio_recv_msg_cnt", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(n());
+    localStringBuilder.append("");
+    localTreeMap.put("aio_send_msg_cnt", localStringBuilder.toString());
+    this.e = 0;
+    this.f = 0;
+    VideoReport.setPageParams(localViewGroup, new PageParams(localTreeMap));
+  }
+  
+  private void l()
+  {
+    if (this.i > 0L)
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("stay_time", String.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+      localHashMap.put("stay_time", String.valueOf(SystemClock.elapsedRealtime() - this.i));
       localHashMap.put("cur_time", String.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-      localHashMap.put("is_return", String.valueOf(this.jdField_a_of_type_Boolean ^ true));
-      localHashMap.put("source_aio_appear", String.valueOf(c(this.c)));
-      String str = a();
+      localHashMap.put("is_return", String.valueOf(this.h ^ true));
+      localHashMap.put("source_aio_appear", String.valueOf(f(this.g)));
+      String str = p();
       localHashMap.put("A8", str);
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      Object localObject = this.b;
       if (localObject != null)
       {
-        localHashMap.put("type_aio_pg", String.valueOf(a(((SessionInfo)localObject).jdField_a_of_type_Int)));
-        localHashMap.put("uin_to", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        localHashMap.put("type_aio_pg", String.valueOf(a(((SessionInfo)localObject).a)));
+        localHashMap.put("uin_to", this.b.b);
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onStop report show: params = ");
@@ -514,56 +414,126 @@ public class AIODtReportHelper
     {
       QLog.d("AIODtReportHelper", 1, "onStop: mOnStartT = 0");
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  private void l()
-  {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b().a().a().a().a();
-    a(localView, "em_aio_textbox_amazing_button");
-    VideoReport.setElementExposePolicy(localView, ExposurePolicy.REPORT_NONE);
+    this.h = false;
+    this.i = 0L;
   }
   
   private void m()
   {
+    View localView = this.a.bv().p().d().c().a();
+    a(localView, "em_aio_textbox_amazing_button");
+    VideoReport.setElementExposePolicy(localView, ExposurePolicy.REPORT_NONE);
+  }
+  
+  private int n()
+  {
+    int n = this.e;
+    int i1 = f(this.g);
+    int m;
+    if (i1 != 4)
+    {
+      m = n;
+      if (i1 != 0) {}
+    }
+    else
+    {
+      m = n / 2;
+    }
+    return m;
+  }
+  
+  private void o()
+  {
     boolean bool = false;
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.d == null) {
       bool = true;
     }
     QLog.d("AIODtReportHelper", 1, new Object[] { "doOnDestroy: mRootView = null ? ", Boolean.valueOf(bool) });
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.d;
     if (localView != null)
     {
       VideoReport.pageLogicDestroy(localView);
-      this.jdField_a_of_type_AndroidViewView = null;
+      this.d = null;
     }
   }
   
-  public int a()
+  private static String p()
   {
-    return 0;
+    Object localObject = BaseApplicationImpl.getApplication();
+    String str2 = "0";
+    String str1 = str2;
+    if (localObject != null)
+    {
+      localObject = ((BaseApplicationImpl)localObject).peekAppRuntime();
+      str1 = str2;
+      if (localObject != null)
+      {
+        str1 = ((AppRuntime)localObject).getAccount();
+        if (TextUtils.isEmpty(str1)) {
+          return "0";
+        }
+      }
+    }
+    return str1;
   }
   
-  public void a()
+  protected void a()
+  {
+    this.h = true;
+    h();
+    VideoReport.addToDetectionWhitelist(this.a.f);
+    ViewGroup localViewGroup = this.a.aW();
+    this.d = localViewGroup;
+    b(localViewGroup);
+    a(localViewGroup);
+    this.i = SystemClock.elapsedRealtime();
+    QLog.d("AIODtReportHelper", 1, new Object[] { "doOnAioCreate, mOnStartT = ", Long.valueOf(this.i) });
+  }
+  
+  protected void a(View paramView)
+  {
+    View localView1 = paramView.findViewById(2131436666);
+    View localView2 = paramView.findViewById(2131436180);
+    View localView3 = paramView.findViewById(2131437136);
+    View localView4 = paramView.findViewById(2131448219);
+    paramView = paramView.findViewById(2131436194);
+    e(localView1);
+    e(localView2);
+    e(localView3);
+    e(localView4);
+    c(paramView);
+  }
+  
+  protected void a(View paramView, String paramString)
+  {
+    VideoReport.setElementId(paramView, paramString);
+    VideoReport.setElementExposePolicy(paramView, ExposurePolicy.REPORT_NONE);
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public void b()
   {
     Object localObject2 = new TreeMap();
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
-    int i = DtAIOReportUtil.a((String)localObject3);
-    if (i > 0) {
+    Object localObject3 = this.a.Y.getText().toString();
+    int m = DtAIOReportUtil.a((String)localObject3);
+    if (m > 0) {
       localObject1 = "1";
     } else {
       localObject1 = "0";
     }
     ((Map)localObject2).put("is_text_with_stickers", localObject1);
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(((String)localObject3).length() - i * 2);
+    ((StringBuilder)localObject1).append(((String)localObject3).length() - m * 2);
     ((StringBuilder)localObject1).append("");
     ((Map)localObject2).put("number_text_send", ((StringBuilder)localObject1).toString());
-    ((Map)localObject2).put("type_aio_pg", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.g));
-    ((Map)localObject2).put("uin_to", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    ((Map)localObject2).put("source_aio_appear", String.valueOf(c(this.c)));
-    ((Map)localObject2).put("aio_session_time", String.valueOf(this.jdField_b_of_type_Long));
+    ((Map)localObject2).put("type_aio_pg", String.valueOf(this.b.C));
+    ((Map)localObject2).put("uin_to", this.b.b);
+    ((Map)localObject2).put("source_aio_appear", String.valueOf(f(this.g)));
+    ((Map)localObject2).put("aio_session_time", String.valueOf(this.j));
     VideoReport.reportEvent("aio_textbox_send", (Map)localObject2);
     if (QLog.isColorLevel())
     {
@@ -581,74 +551,113 @@ public class AIODtReportHelper
     }
   }
   
-  public void a(int paramInt)
+  protected void b(View paramView)
   {
-    this.jdField_b_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
+    VideoReport.resetPageParams(paramView);
+    HashMap localHashMap = new HashMap();
+    int m = f(this.g);
+    localHashMap.put("source_aio_appear", String.valueOf(m));
+    localHashMap.put("aio_session_time", String.valueOf(this.j));
+    Object localObject = this.b;
+    if (localObject != null)
+    {
+      int n = a(((SessionInfo)localObject).a);
+      a(n, localHashMap);
+      localHashMap.put("type_aio_pg", String.valueOf(n));
+      localHashMap.put("uin_to", this.b.b);
+      QLog.d("AIODtReportHelper_QQDtReporter", 1, new Object[] { "setViewReport, curType = ", Integer.valueOf(this.b.a), ", exUinType = ", Integer.valueOf(n), ", curUin = ", this.b.b, ", mMsgSource = ", Integer.valueOf(this.g), ", exMsgSource = ", Integer.valueOf(m) });
+    }
+    else
+    {
+      QLog.d("AIODtReportHelper", 1, "setViewReport, but session is null");
+    }
+    localHashMap.put("aio_disappear_type", "3");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.f);
+    ((StringBuilder)localObject).append("");
+    localHashMap.put("aio_recv_msg_cnt", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.e);
+    ((StringBuilder)localObject).append("");
+    localHashMap.put("aio_send_msg_cnt", ((StringBuilder)localObject).toString());
+    VideoReport.setPageParams(paramView, new PageParams(localHashMap));
+    VideoReport.setPageId(this.d, "pg_aio");
+    VideoReport.setPageContentId(this.d, String.valueOf(SystemClock.elapsedRealtime()), true);
+  }
+  
+  public int bM_()
+  {
+    return 0;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.k = true;
+    Object localObject = this.a.aW();
     TreeMap localTreeMap = new TreeMap();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(b(paramInt));
     localStringBuilder.append("");
     localTreeMap.put("aio_disappear_type", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("");
     localTreeMap.put("aio_recv_msg_cnt", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
+    localStringBuilder.append(n());
     localStringBuilder.append("");
     localTreeMap.put("aio_send_msg_cnt", localStringBuilder.toString());
     VideoReport.setPageParams(localObject, new PageParams(localTreeMap));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[onExitAIO] set send: ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.e);
     ((StringBuilder)localObject).append(", recv: ");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(this.f);
     QLog.d("AIODtReportHelper", 1, ((StringBuilder)localObject).toString());
   }
   
-  public void a(View paramView)
+  protected void c(View paramView)
+  {
+    a(paramView, "em_setting_banner_aio_pg");
+  }
+  
+  public void d()
+  {
+    this.f += 1;
+    TreeMap localTreeMap = new TreeMap();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("");
+    localTreeMap.put("aio_recv_msg_cnt", localStringBuilder.toString());
+    b(localTreeMap);
+  }
+  
+  public void d(View paramView)
   {
     a(paramView, "em_aio_textbox_amazing_button");
     VideoReport.setElementExposePolicy(paramView, ExposurePolicy.REPORT_NONE);
-    VideoReport.setElementParam(paramView, "text_in_textbox", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+    VideoReport.setElementParam(paramView, "text_in_textbox", this.a.Y.getText().toString());
   }
   
-  public boolean a(int paramInt)
+  public boolean d(int paramInt)
   {
     return false;
   }
   
-  public boolean a(boolean paramBoolean)
+  public void e()
   {
-    return false;
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Int += 1;
+    this.e += 1;
     TreeMap localTreeMap = new TreeMap();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(n());
     localStringBuilder.append("");
     localTreeMap.put("aio_recv_msg_cnt", localStringBuilder.toString());
     b(localTreeMap);
   }
   
-  public void c()
+  public void e(int paramInt)
   {
-    this.jdField_a_of_type_Int += 1;
-    TreeMap localTreeMap = new TreeMap();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    localStringBuilder.append("");
-    localTreeMap.put("aio_recv_msg_cnt", localStringBuilder.toString());
-    b(localTreeMap);
-  }
-  
-  public void d(int paramInt)
-  {
-    a(paramInt);
+    c(paramInt);
   }
   
   @NonNull
@@ -677,27 +686,27 @@ public class AIODtReportHelper
               if (paramInt != 12) {
                 return;
               }
-              k();
+              l();
               return;
             }
-            h();
+            i();
             return;
           }
-          m();
+          o();
           return;
         }
-        e();
+        f();
         return;
       }
-      i();
+      j();
       return;
     }
-    d();
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIODtReportHelper
  * JD-Core Version:    0.7.0.1
  */

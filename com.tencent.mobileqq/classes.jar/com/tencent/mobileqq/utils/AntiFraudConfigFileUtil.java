@@ -25,10 +25,10 @@ import org.w3c.dom.Text;
 
 public class AntiFraudConfigFileUtil
 {
-  private int jdField_a_of_type_Int = -1;
-  private Bundle jdField_a_of_type_AndroidOsBundle = null;
-  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new AntiFraudConfigFileUtil.3(this);
-  private Bundle b = new Bundle();
+  private Bundle a = null;
+  private int b = -1;
+  private Bundle c = new Bundle();
+  private SecSvcObserver d = new AntiFraudConfigFileUtil.3(this);
   
   public static AntiFraudConfigFileUtil a()
   {
@@ -150,7 +150,7 @@ public class AntiFraudConfigFileUtil
     }
   }
   
-  private void a(String paramString)
+  private void f(String paramString)
   {
     if (QLog.isColorLevel())
     {
@@ -161,11 +161,11 @@ public class AntiFraudConfigFileUtil
     }
     paramString = a(paramString);
     if (paramString != null) {
-      b(paramString);
+      g(paramString);
     }
   }
   
-  private void b(String paramString)
+  private void g(String paramString)
   {
     Object localObject1 = DocumentBuilderFactory.newInstance();
     for (;;)
@@ -176,7 +176,7 @@ public class AntiFraudConfigFileUtil
         String str = localFile.getName();
         str = str.substring(0, str.lastIndexOf("."));
         Object localObject3 = ((DocumentBuilderFactory)localObject1).newDocumentBuilder().parse(localFile).getDocumentElement();
-        localObject1 = this.jdField_a_of_type_AndroidOsBundle.getBundle(str);
+        localObject1 = this.a.getBundle(str);
         if (localObject1 != null)
         {
           localObject1 = ((Bundle)localObject1).getString("Version");
@@ -214,7 +214,7 @@ public class AntiFraudConfigFileUtil
               QLog.d("UinSafety.WordingConfigFileUtil", 2, paramString.toString());
               return;
             }
-            if (ScConfigManager.a().a(paramString)) {
+            if (ScConfigManager.a().b(paramString)) {
               return;
             }
             Bundle localBundle1 = new Bundle();
@@ -223,7 +223,7 @@ public class AntiFraudConfigFileUtil
               paramString = Integer.toString(0);
             }
             localBundle1.putString("Version", paramString);
-            this.jdField_a_of_type_Int = j;
+            this.b = j;
             paramString = ((Element)localObject3).getElementsByTagName("SubConfig");
             i = 0;
             if (i < paramString.getLength())
@@ -254,7 +254,7 @@ public class AntiFraudConfigFileUtil
               i += 1;
               continue;
             }
-            this.jdField_a_of_type_AndroidOsBundle.putBundle(str, localBundle1);
+            this.a.putBundle(str, localBundle1);
             return;
           }
         }
@@ -277,54 +277,10 @@ public class AntiFraudConfigFileUtil
     }
   }
   
-  public int a(String paramString)
-  {
-    Object localObject = DocumentBuilderFactory.newInstance();
-    try
-    {
-      paramString = new File(paramString);
-      String str = paramString.getName();
-      str.substring(0, str.lastIndexOf("."));
-      paramString = ((DocumentBuilderFactory)localObject).newDocumentBuilder().parse(paramString).getDocumentElement().getAttribute("Version");
-      try
-      {
-        int i = Integer.parseInt(paramString);
-        return i;
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-        return -1;
-      }
-      return -1;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("exception occurred.");
-        ((StringBuilder)localObject).append(paramString.getMessage());
-        QLog.d("UinSafety.WordingConfigFileUtil", 2, ((StringBuilder)localObject).toString());
-      }
-      paramString.printStackTrace();
-    }
-  }
-  
-  public long a(String paramString)
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("_");
-    localStringBuilder.append("LastModifiedTime");
-    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
-  }
-  
   public Object a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     ThreadManager.getFileThreadHandler().post(new AntiFraudConfigFileUtil.2(this, paramString1));
-    paramString1 = this.jdField_a_of_type_AndroidOsBundle.getBundle(paramString1);
+    paramString1 = this.a.getBundle(paramString1);
     if (paramString1 != null)
     {
       Bundle localBundle2 = paramString1.getBundle(Integer.toString(paramInt1));
@@ -373,7 +329,7 @@ public class AntiFraudConfigFileUtil
     }
     ThreadManager.getFileThreadHandler().post(new AntiFraudConfigFileUtil.1(this, (String)localObject));
     paramString1 = null;
-    localObject = this.jdField_a_of_type_AndroidOsBundle.getBundle((String)localObject);
+    localObject = this.a.getBundle((String)localObject);
     if (localObject != null) {
       paramString1 = ((Bundle)localObject).getString(paramString2);
     }
@@ -385,9 +341,9 @@ public class AntiFraudConfigFileUtil
     if (paramQQAppInterface == null) {
       return;
     }
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
-    long l1 = a(paramString);
-    long l2 = b(paramString);
+    paramQQAppInterface.addObserver(this.d);
+    long l1 = b(paramString);
+    long l2 = c(paramString);
     if (System.currentTimeMillis() - l1 >= l2 * 1000L)
     {
       SecSvcHandler localSecSvcHandler = (SecSvcHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
@@ -407,70 +363,70 @@ public class AntiFraudConfigFileUtil
     //   1: ifnull +11 -> 12
     //   4: aload_1
     //   5: aload_0
-    //   6: getfield 29	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver	Lcom/tencent/mobileqq/app/SecSvcObserver;
-    //   9: invokevirtual 322	com/tencent/mobileqq/app/QQAppInterface:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
+    //   6: getfield 31	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:d	Lcom/tencent/mobileqq/app/SecSvcObserver;
+    //   9: invokevirtual 308	com/tencent/mobileqq/app/QQAppInterface:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
     //   12: aload_2
-    //   13: invokestatic 102	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   13: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   16: ifeq +4 -> 20
     //   19: return
     //   20: aload_2
-    //   21: ldc_w 352
-    //   24: invokevirtual 127	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   21: ldc_w 340
+    //   24: invokevirtual 128	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   27: ifeq +52 -> 79
     //   30: aload_0
     //   31: aload_2
-    //   32: invokevirtual 324	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:a	(Ljava/lang/String;)J
+    //   32: invokevirtual 311	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:b	(Ljava/lang/String;)J
     //   35: lstore 6
     //   37: aload_0
     //   38: aload_2
-    //   39: invokevirtual 326	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:b	(Ljava/lang/String;)J
+    //   39: invokevirtual 313	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:c	(Ljava/lang/String;)J
     //   42: lstore 8
     //   44: aload_1
     //   45: ifnull +362 -> 407
-    //   48: invokestatic 332	java/lang/System:currentTimeMillis	()J
+    //   48: invokestatic 319	java/lang/System:currentTimeMillis	()J
     //   51: lload 6
     //   53: lsub
     //   54: lload 8
-    //   56: ldc2_w 333
+    //   56: ldc2_w 320
     //   59: lmul
     //   60: lcmp
     //   61: iflt +346 -> 407
     //   64: aload_1
-    //   65: getstatic 340	com/tencent/mobileqq/app/BusinessHandlerFactory:SEC_SVC_HANDLER	Ljava/lang/String;
-    //   68: invokevirtual 344	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   71: checkcast 346	com/tencent/mobileqq/app/SecSvcHandler
+    //   65: getstatic 327	com/tencent/mobileqq/app/BusinessHandlerFactory:SEC_SVC_HANDLER	Ljava/lang/String;
+    //   68: invokevirtual 331	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   71: checkcast 333	com/tencent/mobileqq/app/SecSvcHandler
     //   74: aload_2
-    //   75: invokevirtual 347	com/tencent/mobileqq/app/SecSvcHandler:a	(Ljava/lang/String;)V
+    //   75: invokevirtual 335	com/tencent/mobileqq/app/SecSvcHandler:a	(Ljava/lang/String;)V
     //   78: return
     //   79: aload_2
-    //   80: ldc_w 312
-    //   83: invokevirtual 127	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   80: ldc_w 298
+    //   83: invokevirtual 128	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   86: ifeq +321 -> 407
     //   89: aload_0
     //   90: aload_2
-    //   91: invokevirtual 354	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   91: invokevirtual 342	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:d	(Ljava/lang/String;)Ljava/lang/String;
     //   94: astore 12
     //   96: aload_0
-    //   97: ldc_w 312
-    //   100: invokevirtual 173	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   97: ldc_w 298
+    //   100: invokevirtual 178	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:a	(Ljava/lang/String;)Ljava/lang/String;
     //   103: astore 14
     //   105: aload 12
-    //   107: invokestatic 102	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   107: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   110: istore 10
     //   112: aload_0
-    //   113: getfield 17	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:jdField_a_of_type_Int	I
+    //   113: getfield 19	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:b	I
     //   116: iconst_m1
     //   117: if_icmpne +21 -> 138
     //   120: aload 12
-    //   122: invokestatic 102	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   122: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   125: ifne +13 -> 138
     //   128: aload_0
     //   129: aload_0
     //   130: aload 14
-    //   132: invokevirtual 356	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:a	(Ljava/lang/String;)I
-    //   135: putfield 17	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:jdField_a_of_type_Int	I
+    //   132: invokevirtual 345	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:e	(Ljava/lang/String;)I
+    //   135: putfield 19	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:b	I
     //   138: aload_0
-    //   139: getfield 17	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:jdField_a_of_type_Int	I
+    //   139: getfield 19	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:b	I
     //   142: iconst_2
     //   143: if_icmpge +6 -> 149
     //   146: iconst_1
@@ -483,22 +439,22 @@ public class AntiFraudConfigFileUtil
     //   158: astore_2
     //   159: aconst_null
     //   160: astore 13
-    //   162: invokestatic 259	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   165: invokevirtual 360	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
-    //   168: ldc_w 362
-    //   171: invokevirtual 368	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   162: invokestatic 278	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   165: invokevirtual 349	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
+    //   168: ldc_w 351
+    //   171: invokevirtual 357	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   174: astore_1
-    //   175: new 370	java/io/FileOutputStream
+    //   175: new 359	java/io/FileOutputStream
     //   178: dup
     //   179: aload 14
-    //   181: invokespecial 371	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   181: invokespecial 360	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   184: astore_2
     //   185: sipush 4096
     //   188: newarray byte
     //   190: astore 11
     //   192: aload_1
     //   193: aload 11
-    //   195: invokevirtual 377	java/io/InputStream:read	([B)I
+    //   195: invokevirtual 366	java/io/InputStream:read	([B)I
     //   198: istore 5
     //   200: iload 5
     //   202: ifle +15 -> 217
@@ -506,14 +462,14 @@ public class AntiFraudConfigFileUtil
     //   206: aload 11
     //   208: iconst_0
     //   209: iload 5
-    //   211: invokevirtual 383	java/io/OutputStream:write	([BII)V
+    //   211: invokevirtual 372	java/io/OutputStream:write	([BII)V
     //   214: goto -22 -> 192
     //   217: aload_1
     //   218: ifnull +7 -> 225
     //   221: aload_1
-    //   222: invokevirtual 386	java/io/InputStream:close	()V
+    //   222: invokevirtual 375	java/io/InputStream:close	()V
     //   225: aload_2
-    //   226: invokevirtual 387	java/io/OutputStream:close	()V
+    //   226: invokevirtual 376	java/io/OutputStream:close	()V
     //   229: goto +81 -> 310
     //   232: astore 4
     //   234: aload_2
@@ -545,36 +501,36 @@ public class AntiFraudConfigFileUtil
     //   276: aload 13
     //   278: astore_1
     //   279: aload 11
-    //   281: invokevirtual 52	java/lang/Exception:printStackTrace	()V
+    //   281: invokevirtual 53	java/lang/Exception:printStackTrace	()V
     //   284: aload_1
     //   285: ifnull +10 -> 295
     //   288: aload_1
-    //   289: invokevirtual 386	java/io/InputStream:close	()V
+    //   289: invokevirtual 375	java/io/InputStream:close	()V
     //   292: goto +3 -> 295
     //   295: aload_2
     //   296: ifnull +14 -> 310
     //   299: aload_2
-    //   300: invokevirtual 387	java/io/OutputStream:close	()V
+    //   300: invokevirtual 376	java/io/OutputStream:close	()V
     //   303: goto +7 -> 310
     //   306: aload_1
-    //   307: invokevirtual 388	java/io/IOException:printStackTrace	()V
+    //   307: invokevirtual 377	java/io/IOException:printStackTrace	()V
     //   310: aload 12
     //   312: astore_1
     //   313: aload 14
-    //   315: invokestatic 392	com/tencent/mobileqq/filemanager/util/FileUtil:b	(Ljava/lang/String;)Z
+    //   315: invokestatic 381	com/tencent/mobileqq/filemanager/util/FileUtil:d	(Ljava/lang/String;)Z
     //   318: ifeq +63 -> 381
     //   321: aload 14
-    //   323: invokestatic 397	com/tencent/mobileqq/utils/SecUtil:getFileMd5	(Ljava/lang/String;)Ljava/lang/String;
+    //   323: invokestatic 386	com/tencent/mobileqq/utils/SecUtil:getFileMd5	(Ljava/lang/String;)Ljava/lang/String;
     //   326: astore_1
     //   327: aload_0
-    //   328: ldc_w 312
+    //   328: ldc_w 298
     //   331: aload_1
-    //   332: invokevirtual 399	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   332: invokevirtual 388	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   335: aload_0
     //   336: aload_0
     //   337: aload 14
-    //   339: invokevirtual 356	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:a	(Ljava/lang/String;)I
-    //   342: putfield 17	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:jdField_a_of_type_Int	I
+    //   339: invokevirtual 345	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:e	(Ljava/lang/String;)I
+    //   342: putfield 19	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:b	I
     //   345: goto +36 -> 381
     //   348: astore 4
     //   350: aload_2
@@ -582,29 +538,29 @@ public class AntiFraudConfigFileUtil
     //   352: aload_1
     //   353: ifnull +10 -> 363
     //   356: aload_1
-    //   357: invokevirtual 386	java/io/InputStream:close	()V
+    //   357: invokevirtual 375	java/io/InputStream:close	()V
     //   360: goto +3 -> 363
     //   363: aload_3
     //   364: ifnull +14 -> 378
     //   367: aload_3
-    //   368: invokevirtual 387	java/io/OutputStream:close	()V
+    //   368: invokevirtual 376	java/io/OutputStream:close	()V
     //   371: goto +7 -> 378
     //   374: aload_1
-    //   375: invokevirtual 388	java/io/IOException:printStackTrace	()V
+    //   375: invokevirtual 377	java/io/IOException:printStackTrace	()V
     //   378: aload 4
     //   380: athrow
     //   381: aload_1
     //   382: aload 4
-    //   384: invokestatic 310	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   384: invokestatic 296	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   387: ifne +20 -> 407
     //   390: aload_3
-    //   391: invokestatic 102	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   391: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   394: ifne +13 -> 407
     //   397: aload_0
-    //   398: ldc_w 312
+    //   398: ldc_w 298
     //   401: aload 4
     //   403: aload_3
-    //   404: invokevirtual 402	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   404: invokevirtual 391	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   407: return
     //   408: astore_1
     //   409: goto -103 -> 306
@@ -660,20 +616,9 @@ public class AntiFraudConfigFileUtil
     localEditor.commit();
   }
   
-  public void a(String paramString1, String paramString2)
-  {
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("_");
-    localStringBuilder.append("MD5");
-    localEditor.putString(localStringBuilder.toString(), paramString2);
-    localEditor.commit();
-  }
-  
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    int i = this.b.getInt(paramString2, 0);
+    int i = this.c.getInt(paramString2, 0);
     if (i != 1)
     {
       if (i == 3) {
@@ -681,7 +626,7 @@ public class AntiFraudConfigFileUtil
       }
       try
       {
-        this.b.putInt(paramString2, 1);
+        this.c.putInt(paramString2, 1);
       }
       catch (Throwable localThrowable)
       {
@@ -697,18 +642,8 @@ public class AntiFraudConfigFileUtil
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     localStringBuilder.append("_");
-    localStringBuilder.append("EffectTime");
+    localStringBuilder.append("LastModifiedTime");
     return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
-  }
-  
-  public String b(String paramString)
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("_");
-    localStringBuilder.append("MD5");
-    return localSharedPreferences.getString(localStringBuilder.toString(), null);
   }
   
   public void b(String paramString, long paramLong)
@@ -721,10 +656,75 @@ public class AntiFraudConfigFileUtil
     localEditor.putLong(localStringBuilder.toString(), paramLong);
     localEditor.commit();
   }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append("MD5");
+    localEditor.putString(localStringBuilder.toString(), paramString2);
+    localEditor.commit();
+  }
+  
+  public long c(String paramString)
+  {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append("EffectTime");
+    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+  }
+  
+  public String d(String paramString)
+  {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append("MD5");
+    return localSharedPreferences.getString(localStringBuilder.toString(), null);
+  }
+  
+  public int e(String paramString)
+  {
+    Object localObject = DocumentBuilderFactory.newInstance();
+    try
+    {
+      paramString = new File(paramString);
+      String str = paramString.getName();
+      str.substring(0, str.lastIndexOf("."));
+      paramString = ((DocumentBuilderFactory)localObject).newDocumentBuilder().parse(paramString).getDocumentElement().getAttribute("Version");
+      try
+      {
+        int i = Integer.parseInt(paramString);
+        return i;
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+        return -1;
+      }
+      return -1;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("exception occurred.");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        QLog.d("UinSafety.WordingConfigFileUtil", 2, ((StringBuilder)localObject).toString());
+      }
+      paramString.printStackTrace();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AntiFraudConfigFileUtil
  * JD-Core Version:    0.7.0.1
  */

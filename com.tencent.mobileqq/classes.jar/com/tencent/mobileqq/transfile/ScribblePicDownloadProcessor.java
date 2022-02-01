@@ -36,7 +36,7 @@ public class ScribblePicDownloadProcessor
     if (this.mMsg == null) {
       return;
     }
-    Object localObject1 = ScribbleUtils.a(this.mUiRequest.mOutFilePath);
+    Object localObject1 = ScribbleUtils.b(this.mUiRequest.mOutFilePath);
     if (((String)localObject1).equalsIgnoreCase(this.mMsg.combineFileMd5))
     {
       localObject1 = this.mMsg;
@@ -378,7 +378,7 @@ public class ScribblePicDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ScribblePicDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

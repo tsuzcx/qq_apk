@@ -14,14 +14,14 @@ final class MiniAppLauncher$3
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131706845));
+    localStringBuilder.append(HardCodeUtil.a(2131904693));
     localStringBuilder.append(this.val$appId);
-    QQToast.a(localBaseApplication, 1, localStringBuilder.toString(), 1).a();
+    QQToast.makeText(localBaseApplication, 1, localStringBuilder.toString(), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppLauncher.3
  * JD-Core Version:    0.7.0.1
  */

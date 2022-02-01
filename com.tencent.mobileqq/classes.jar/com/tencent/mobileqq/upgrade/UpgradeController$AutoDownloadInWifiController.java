@@ -9,11 +9,11 @@ import com.tencent.qphone.base.util.QLog;
 public class UpgradeController$AutoDownloadInWifiController
   implements INetEventHandler
 {
-  private Context jdField_a_of_type_AndroidContentContext;
+  private Context b;
   
   public UpgradeController$AutoDownloadInWifiController(UpgradeController paramUpgradeController)
   {
-    this.jdField_a_of_type_AndroidContentContext = UpgradeController.a(paramUpgradeController);
+    this.b = UpgradeController.b(paramUpgradeController);
   }
   
   public void a()
@@ -22,7 +22,7 @@ public class UpgradeController$AutoDownloadInWifiController
     {
       try
       {
-        AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this);
+        AppNetConnInfo.registerNetChangeReceiver(this.b, this);
       }
       finally
       {
@@ -36,7 +36,7 @@ public class UpgradeController$AutoDownloadInWifiController
       break label17;
     }
     if (AppNetConnInfo.isWifiConn()) {
-      this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeController.c(true);
+      this.a.c(true);
     } else if (QLog.isColorLevel()) {
       QLog.d("UpgradeConfigManager", 2, "start auto download but not in wifi, mark it");
     }
@@ -63,41 +63,41 @@ public class UpgradeController$AutoDownloadInWifiController
       label24:
       break label14;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeController.c();
+    this.a.g();
     return;
     throw localObject;
   }
   
   public void onNetChangeEvent(boolean paramBoolean)
   {
-    int i = NetworkUtil.getNetworkType(this.jdField_a_of_type_AndroidContentContext);
+    int i = NetworkUtil.getNetworkType(this.b);
     if (i == 0)
     {
-      if (UpgradeController.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeController)) {
-        this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeController.e();
+      if (UpgradeController.d(this.a)) {
+        this.a.i();
       }
     }
     else
     {
       if (i == 1)
       {
-        if (!UpgradeController.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeController))
+        if (!UpgradeController.d(this.a))
         {
-          this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeController.c(true);
+          this.a.c(true);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeController.d();
+        this.a.h();
         return;
       }
-      if ((i == 0) && (UpgradeController.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeController))) {
-        this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeController.e();
+      if ((i == 0) && (UpgradeController.d(this.a))) {
+        this.a.i();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeController.AutoDownloadInWifiController
  * JD-Core Version:    0.7.0.1
  */

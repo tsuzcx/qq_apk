@@ -11,18 +11,18 @@ class VideoFeedsShareController$5
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     VideoFeedsShareController.a(this.a, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    if ((VideoFeedsShareController.a(this.a) != null) && (VideoFeedsShareController.a(this.a).b()) && (VideoFeedsShareController.b(this.a)) && (!VideoFeedsShareController.c(this.a)) && (VideoFeedsShareController.a(this.a)) && (!VideoFeedsShareController.d(this.a))) {
-      VideoFeedsShareController.a(this.a).c();
+    if ((VideoFeedsShareController.b(this.a) != null) && (VideoFeedsShareController.b(this.a).i()) && (VideoFeedsShareController.c(this.a)) && (!VideoFeedsShareController.h(this.a)) && (VideoFeedsShareController.a(this.a)) && (!VideoFeedsShareController.i(this.a))) {
+      VideoFeedsShareController.b(this.a).h();
     }
-    if (VideoFeedsShareController.a(this.a) != null) {
-      VideoFeedsShareController.a(this.a).g();
+    if (VideoFeedsShareController.d(this.a) != null) {
+      VideoFeedsShareController.d(this.a).f();
     }
     VideoFeedsShareController.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.5
  * JD-Core Version:    0.7.0.1
  */

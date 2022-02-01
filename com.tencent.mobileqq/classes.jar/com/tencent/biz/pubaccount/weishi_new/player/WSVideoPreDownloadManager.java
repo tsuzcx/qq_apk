@@ -18,24 +18,24 @@ import java.util.Set;
 public class WSVideoPreDownloadManager
   implements WSVideoPluginInstall.OnVideoPluginInstallListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private WSVideoPluginInstall jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall;
-  private WSVideoPreDownloadManager.PreDownloadController jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager$PreDownloadController;
-  private IWSPlayerFactory jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerFactory;
-  private IWSPlayerPreDownloader.Listener jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener;
-  private IWSPlayerPreDownloader jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader;
-  private String jdField_a_of_type_JavaLangString;
-  private List<WSVideoPreDownloadManager.VideoPreDownloadParam> jdField_a_of_type_JavaUtilList = null;
-  private Set<String> jdField_a_of_type_JavaUtilSet = null;
+  private Context a;
+  private WSVideoPluginInstall b;
+  private WSVideoPreDownloadManager.PreDownloadController c;
+  private IWSPlayerPreDownloader.Listener d;
+  private IWSPlayerPreDownloader e;
+  private IWSPlayerFactory f;
+  private String g;
+  private Set<String> h = null;
+  private List<WSVideoPreDownloadManager.VideoPreDownloadParam> i = null;
   
   public WSVideoPreDownloadManager(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall = new WSVideoPluginInstall();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall.a(this);
-    if (!this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall.a())
+    this.a = paramContext;
+    this.b = new WSVideoPluginInstall();
+    this.b.a(this);
+    if (!this.b.b())
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall.a();
+      this.b.a();
       return;
     }
     c();
@@ -44,12 +44,12 @@ public class WSVideoPreDownloadManager
   
   private AbsWSPlayerInfo a(String paramString, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerFactory;
+    Object localObject = this.f;
     if (localObject == null) {
       return null;
     }
     localObject = ((IWSPlayerFactory)localObject).a();
-    ((AbsWSPlayerInfo)localObject).a(WSPlayerUtils.a(paramString), paramString, 101, paramInt);
+    ((AbsWSPlayerInfo)localObject).a(WSPlayerUtils.b(paramString), paramString, 101, paramInt);
     return localObject;
   }
   
@@ -60,7 +60,7 @@ public class WSVideoPreDownloadManager
       if (TextUtils.isEmpty(paramVideoPreDownloadParam.b)) {
         return;
       }
-      IWSPlayerPreDownloader localIWSPlayerPreDownloader = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader;
+      IWSPlayerPreDownloader localIWSPlayerPreDownloader = this.e;
       if (localIWSPlayerPreDownloader == null)
       {
         WSLog.d("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][innerDoPreDownload] start preload ERROR preDownloader == null!");
@@ -68,44 +68,44 @@ public class WSVideoPreDownloadManager
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[WSVideoPreDownloadManager.java][innerDoPreDownload] START DOWNLOAD!! duration:");
-      localStringBuilder.append(paramVideoPreDownloadParam.a);
+      localStringBuilder.append(paramVideoPreDownloadParam.d);
       localStringBuilder.append(", title:");
       localStringBuilder.append(paramVideoPreDownloadParam.c);
       localStringBuilder.append(", url:");
       localStringBuilder.append(paramVideoPreDownloadParam.b);
       WSLog.e("WS_VIDEO_PRE_DL", localStringBuilder.toString());
       if (!TextUtils.isEmpty(paramVideoPreDownloadParam.b)) {
-        localIWSPlayerPreDownloader.a(a(paramVideoPreDownloadParam.b, paramVideoPreDownloadParam.a));
+        localIWSPlayerPreDownloader.a(a(paramVideoPreDownloadParam.b, paramVideoPreDownloadParam.d));
       }
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerFactory = WSPlayerWrapHelper.a().a();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerFactory.a(BaseApplicationImpl.getContext());
+    this.f = WSPlayerWrapHelper.a().b();
+    this.e = this.f.a(BaseApplicationImpl.getContext());
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[WSVideoPreDownloadManager.java][initCacheMgr] mPreDownloader=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader);
+    ((StringBuilder)localObject).append(this.e);
     WSLog.e("WS_VIDEO_PRE_DL", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader;
+    localObject = this.e;
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader == null) {
+    if (this.e == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.h = new HashSet();
+    this.i = new ArrayList();
     WSLog.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][initSerialPreDownload] setPreloadCallback");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader.a(new WSVideoPreDownloadManager.2(this));
+    this.e.a(new WSVideoPreDownloadManager.2(this));
   }
   
   private void e()
   {
     WSLog.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][releaseSerialPreDownload]");
-    IWSPlayerPreDownloader localIWSPlayerPreDownloader = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader;
+    IWSPlayerPreDownloader localIWSPlayerPreDownloader = this.e;
     if (localIWSPlayerPreDownloader != null)
     {
       localIWSPlayerPreDownloader.a(null);
@@ -115,7 +115,7 @@ public class WSVideoPreDownloadManager
   
   private void f()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.i;
     if ((localList != null) && (localList.size() > 0))
     {
       WSVideoPreDownloadManager.VideoPreDownloadParam localVideoPreDownloadParam;
@@ -139,14 +139,14 @@ public class WSVideoPreDownloadManager
       WSLog.d("WS_VIDEO_PRE_DL", localStringBuilder2.toString());
       if ((localVideoPreDownloadParam != null) && (!TextUtils.isEmpty(localVideoPreDownloadParam.b)))
       {
-        this.jdField_a_of_type_JavaLangString = localVideoPreDownloadParam.b;
-        if (a(this.jdField_a_of_type_JavaLangString))
+        this.g = localVideoPreDownloadParam.b;
+        if (a(this.g))
         {
           localStringBuilder1 = new StringBuilder();
           localStringBuilder1.append("[WSVideoPreDownloadManager.java][preDownloadNotAlreadyVideo] checkIsCached is TRUE! videoTitle:");
           localStringBuilder1.append(localVideoPreDownloadParam.c);
           WSLog.e("WS_VIDEO_PRE_DL", localStringBuilder1.toString());
-          this.jdField_a_of_type_JavaLangString = null;
+          this.g = null;
           f();
           return;
         }
@@ -167,11 +167,11 @@ public class WSVideoPreDownloadManager
   {
     WSLog.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][destroy]");
     ThreadManager.post(new WSVideoPreDownloadManager.1(this), 5, null, true);
-    WSVideoPluginInstall localWSVideoPluginInstall = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall;
+    WSVideoPluginInstall localWSVideoPluginInstall = this.b;
     if (localWSVideoPluginInstall != null)
     {
-      localWSVideoPluginInstall.b();
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPluginInstall = null;
+      localWSVideoPluginInstall.c();
+      this.b = null;
     }
   }
   
@@ -182,11 +182,11 @@ public class WSVideoPreDownloadManager
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager$PreDownloadController;
+    Object localObject = this.c;
     if (localObject == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader != null)
+    if (this.e != null)
     {
       localObject = ((WSVideoPreDownloadManager.PreDownloadController)localObject).a(paramInt, paramBoolean);
       if ((localObject != null) && (((List)localObject).size() > 0))
@@ -206,12 +206,12 @@ public class WSVideoPreDownloadManager
   
   public void a(WSVideoPreDownloadManager.PreDownloadController paramPreDownloadController)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager$PreDownloadController = paramPreDownloadController;
+    this.c = paramPreDownloadController;
   }
   
   public void a(IWSPlayerPreDownloader.Listener paramListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener = paramListener;
+    this.d = paramListener;
   }
   
   public void a(boolean paramBoolean)
@@ -222,14 +222,14 @@ public class WSVideoPreDownloadManager
   
   public boolean a(String paramString)
   {
-    IWSPlayerPreDownloader localIWSPlayerPreDownloader = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader;
+    IWSPlayerPreDownloader localIWSPlayerPreDownloader = this.e;
     boolean bool2 = false;
     if (localIWSPlayerPreDownloader == null) {
       return false;
     }
-    Set localSet = this.jdField_a_of_type_JavaUtilSet;
+    Set localSet = this.h;
     boolean bool1;
-    if (!localIWSPlayerPreDownloader.a(a(paramString, 0)))
+    if (!localIWSPlayerPreDownloader.b(a(paramString, 0)))
     {
       bool1 = bool2;
       if (localSet != null)
@@ -247,7 +247,7 @@ public class WSVideoPreDownloadManager
   
   public void b()
   {
-    IWSPlayerPreDownloader localIWSPlayerPreDownloader = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader;
+    IWSPlayerPreDownloader localIWSPlayerPreDownloader = this.e;
     if (localIWSPlayerPreDownloader != null) {
       localIWSPlayerPreDownloader.a();
     }
@@ -255,7 +255,7 @@ public class WSVideoPreDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager
  * JD-Core Version:    0.7.0.1
  */

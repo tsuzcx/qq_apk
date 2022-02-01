@@ -25,48 +25,76 @@ class MotionLayout$MyTracker
   
   public void clear()
   {
-    this.tracker.clear();
+    VelocityTracker localVelocityTracker = this.tracker;
+    if (localVelocityTracker != null) {
+      localVelocityTracker.clear();
+    }
   }
   
   public void computeCurrentVelocity(int paramInt)
   {
-    this.tracker.computeCurrentVelocity(paramInt);
+    VelocityTracker localVelocityTracker = this.tracker;
+    if (localVelocityTracker != null) {
+      localVelocityTracker.computeCurrentVelocity(paramInt);
+    }
   }
   
   public void computeCurrentVelocity(int paramInt, float paramFloat)
   {
-    this.tracker.computeCurrentVelocity(paramInt, paramFloat);
+    VelocityTracker localVelocityTracker = this.tracker;
+    if (localVelocityTracker != null) {
+      localVelocityTracker.computeCurrentVelocity(paramInt, paramFloat);
+    }
   }
   
   public float getXVelocity()
   {
-    return this.tracker.getXVelocity();
+    VelocityTracker localVelocityTracker = this.tracker;
+    if (localVelocityTracker != null) {
+      return localVelocityTracker.getXVelocity();
+    }
+    return 0.0F;
   }
   
   public float getXVelocity(int paramInt)
   {
-    return this.tracker.getXVelocity(paramInt);
+    VelocityTracker localVelocityTracker = this.tracker;
+    if (localVelocityTracker != null) {
+      return localVelocityTracker.getXVelocity(paramInt);
+    }
+    return 0.0F;
   }
   
   public float getYVelocity()
   {
-    return this.tracker.getYVelocity();
+    VelocityTracker localVelocityTracker = this.tracker;
+    if (localVelocityTracker != null) {
+      return localVelocityTracker.getYVelocity();
+    }
+    return 0.0F;
   }
   
   public float getYVelocity(int paramInt)
   {
-    return getYVelocity(paramInt);
+    if (this.tracker != null) {
+      return getYVelocity(paramInt);
+    }
+    return 0.0F;
   }
   
   public void recycle()
   {
-    this.tracker.recycle();
-    this.tracker = null;
+    VelocityTracker localVelocityTracker = this.tracker;
+    if (localVelocityTracker != null)
+    {
+      localVelocityTracker.recycle();
+      this.tracker = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.motion.widget.MotionLayout.MyTracker
  * JD-Core Version:    0.7.0.1
  */

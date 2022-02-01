@@ -17,48 +17,48 @@ import com.tencent.widget.ListView;
 public class FileSelectorSearchGroupFragment
   extends IphoneTitleBarFragment
 {
-  private static FileSelectorSearchResultModel jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchResultModel;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private View jdField_a_of_type_AndroidViewView;
-  private FileSelectorSearchGroupFragment.FileSelectorSearchAdapter jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchGroupFragment$FileSelectorSearchAdapter;
-  private QFileCustomBottomBarManager jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileCustomBottomBarManager;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
+  private static FileSelectorSearchResultModel d;
+  private Bundle a;
+  private ListView b;
+  private View c;
+  private FileSelectorSearchGroupFragment.FileSelectorSearchAdapter e;
+  private QFileCustomBottomBarManager f;
   
   private String a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchResultModel != null) {
-      return String.format(getString(2131692448), new Object[] { Integer.valueOf(jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchResultModel.e_()), jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchResultModel.b() });
+    if (d != null) {
+      return String.format(getString(2131889436), new Object[] { Integer.valueOf(d.i()), d.g() });
     }
     return "";
   }
   
   public static void a(FileSelectorSearchResultModel paramFileSelectorSearchResultModel)
   {
-    jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchResultModel = paramFileSelectorSearchResultModel;
+    d = paramFileSelectorSearchResultModel;
   }
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     paramLayoutInflater = (RelativeLayout)this.mContentView;
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131370110));
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new FileSelectorSearchGroupFragment.1(this));
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131368121);
+    this.b = ((ListView)paramLayoutInflater.findViewById(2131437272));
+    this.b.setOnTouchListener(new FileSelectorSearchGroupFragment.1(this));
+    this.c = paramLayoutInflater.findViewById(2131434975);
     paramViewGroup = new QFileSendBottomView(paramLayoutInflater.getContext());
     paramBundle = new RelativeLayout.LayoutParams(-1, -2);
     paramBundle.addRule(12);
     paramLayoutInflater.addView(paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidOsBundle = getArguments().getBundle("qfile_search_param_ex_params");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileCustomBottomBarManager = QFileCustomBottomBarManager.a(getBaseActivity().app, getBaseActivity(), paramViewGroup, this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileCustomBottomBarManager.a(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileCustomBottomBarManager.b();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileCustomBottomBarManager.a(this.jdField_a_of_type_AndroidOsBundle);
-    paramViewGroup.a(this.jdField_a_of_type_ComTencentWidgetListView);
+    this.a = getArguments().getBundle("qfile_search_param_ex_params");
+    this.f = QFileCustomBottomBarManager.a(getBaseActivity().app, getBaseActivity(), paramViewGroup, this.a);
+    this.f.a(this.a);
+    this.f.b();
+    this.f.a(this.a);
+    paramViewGroup.a(this.b);
   }
   
   protected int getContentLayoutId()
   {
-    return 2131560823;
+    return 2131627081;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -69,22 +69,22 @@ public class FileSelectorSearchGroupFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchResultModel = null;
+    d = null;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    setTitle(jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchResultModel.d());
+    setTitle(d.k());
     super.onViewCreated(paramView, paramBundle);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368087)).setText(a());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchGroupFragment$FileSelectorSearchAdapter = new FileSelectorSearchGroupFragment.FileSelectorSearchAdapter(this, jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchResultModel);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchGroupFragment$FileSelectorSearchAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileCustomBottomBarManager.a();
+    ((TextView)this.c.findViewById(2131434940)).setText(a());
+    this.e = new FileSelectorSearchGroupFragment.FileSelectorSearchAdapter(this, d);
+    this.b.setAdapter(this.e);
+    this.f.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment
  * JD-Core Version:    0.7.0.1
  */

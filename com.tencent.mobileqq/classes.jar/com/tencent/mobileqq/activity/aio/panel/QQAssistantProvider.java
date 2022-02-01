@@ -9,18 +9,6 @@ import com.tencent.widget.XPanelContainer;
 public class QQAssistantProvider
   implements PanelProvider<View>
 {
-  private String a(int paramInt)
-  {
-    if (paramInt != 1)
-    {
-      if (paramInt != 2) {
-        return "chatPie change";
-      }
-      return "chatPie change EXT_PANEL_AUDIO";
-    }
-    return "chatPie change SOFT_INPUT_PANEL";
-  }
-  
   private boolean a(int paramInt)
   {
     boolean bool = true;
@@ -32,6 +20,18 @@ public class QQAssistantProvider
       bool = false;
     }
     return bool;
+  }
+  
+  private String b(int paramInt)
+  {
+    if (paramInt != 1)
+    {
+      if (paramInt != 2) {
+        return "chatPie change";
+      }
+      return "chatPie change EXT_PANEL_AUDIO";
+    }
+    return "chatPie change SOFT_INPUT_PANEL";
   }
   
   public View createPanel(Context paramContext)
@@ -61,10 +61,10 @@ public class QQAssistantProvider
     boolean bool1 = a(paramInt1);
     boolean bool2 = a(paramInt2);
     if (bool2) {
-      ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).stopRecord(a(paramInt2));
+      ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).stopRecord(b(paramInt2));
     }
     if ((bool1) && (!bool2)) {
-      ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).startRecord(a(paramInt1));
+      ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).startRecord(b(paramInt1));
     }
   }
   
@@ -76,7 +76,7 @@ public class QQAssistantProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.QQAssistantProvider
  * JD-Core Version:    0.7.0.1
  */

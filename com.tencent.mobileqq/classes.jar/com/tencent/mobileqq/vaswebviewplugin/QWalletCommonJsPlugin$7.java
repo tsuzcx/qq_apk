@@ -15,7 +15,7 @@ class QWalletCommonJsPlugin$7
     if (QLog.isColorLevel()) {
       QLog.d("QWalletCommonJsPlugin", 1, "CheckPermission user denied");
     }
-    DialogUtil.a(this.this$0.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.this$0.mRuntime.d(), paramArrayOfString, paramArrayOfInt);
     paramArrayOfString = this.this$0;
     paramArrayOfString.callJs(QWalletCommonJsPlugin.access$200(paramArrayOfString), new String[] { "{'result':-1, 'msg': 'no permission to read contact number'}" });
   }
@@ -30,7 +30,7 @@ class QWalletCommonJsPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

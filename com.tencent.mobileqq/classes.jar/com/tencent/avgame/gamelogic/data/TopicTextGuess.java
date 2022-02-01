@@ -6,11 +6,6 @@ import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
 public class TopicTextGuess
   extends TopicBase
 {
-  protected TopicBase a()
-  {
-    return new TopicTextGuess();
-  }
-  
   public void a(TopicBase paramTopicBase)
   {
     super.a(paramTopicBase);
@@ -26,11 +21,16 @@ public class TopicTextGuess
     return 5;
   }
   
+  protected TopicBase n()
+  {
+    return new TopicTextGuess();
+  }
+  
   @NonNull
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(d());
+    localStringBuilder.append(o());
     return localStringBuilder.toString();
   }
 }

@@ -15,29 +15,57 @@ import java.util.List;
 
 public abstract interface IExpandManager
 {
+  public abstract String A();
+  
+  public abstract String B();
+  
+  public abstract boolean C();
+  
+  public abstract String D();
+  
+  public abstract boolean E();
+  
+  public abstract boolean F();
+  
+  public abstract int G();
+  
+  public abstract int H();
+  
+  public abstract String I();
+  
+  public abstract String J();
+  
+  public abstract boolean K();
+  
+  public abstract boolean L();
+  
+  public abstract void M();
+  
+  public abstract ArrayList<ExpandBannerConfBean.BannerItem> N();
+  
+  public abstract void O();
+  
+  public abstract boolean P();
+  
+  public abstract int Q();
+  
+  public abstract void T();
+  
+  public abstract void U();
+  
+  public abstract ExtendFriendLocationInfo V();
+  
+  public abstract void W();
+  
+  public abstract int X();
+  
+  public abstract boolean Y();
+  
+  public abstract boolean Z();
+  
   public abstract int a();
   
-  public abstract int a(String paramString);
-  
-  public abstract CacheData a();
-  
-  public abstract ExtendFriendLocationInfo a();
-  
   public abstract ExpandUserInfo a(String paramString, boolean paramBoolean);
-  
-  public abstract ExpandConfig a();
-  
-  public abstract ExtendFriendSearchHistoryManager a();
-  
-  public abstract Object a();
-  
-  public abstract String a();
-  
-  public abstract ArrayList<ExpandBannerConfBean.BannerItem> a();
-  
-  public abstract List<String> a(int paramInt);
-  
-  public abstract void a();
   
   public abstract void a(int paramInt);
   
@@ -69,93 +97,67 @@ public abstract interface IExpandManager
   
   public abstract boolean a(ExpandConfig paramExpandConfig);
   
-  public abstract int b();
+  public abstract boolean aa();
   
-  public abstract ExpandConfig b();
+  public abstract String ab();
   
-  public abstract ExtendFriendSearchHistoryManager b();
+  public abstract boolean ac();
   
-  public abstract String b();
+  public abstract Object ag();
   
   public abstract List<String> b(int paramInt);
   
-  public abstract void b();
+  public abstract void b(boolean paramBoolean);
   
-  public abstract void b(int paramInt);
+  public abstract String c();
   
-  public abstract boolean b();
-  
-  public abstract void c();
+  public abstract List<String> c(int paramInt);
   
   public abstract void c(String paramString);
   
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract String d();
-  
-  public abstract void d();
+  public abstract void d(int paramInt);
   
   public abstract void d(String paramString);
   
   public abstract void d(boolean paramBoolean);
   
-  public abstract boolean d();
-  
-  public abstract int e();
-  
-  public abstract String e();
-  
   public abstract void e();
   
-  public abstract boolean e();
+  public abstract void e(boolean paramBoolean);
   
-  public abstract int f();
+  public abstract int f(String paramString);
   
   public abstract String f();
   
-  public abstract void f();
+  public abstract void h();
   
-  public abstract boolean f();
+  public abstract ExtendFriendSearchHistoryManager k();
   
-  public abstract int g();
+  public abstract ExtendFriendSearchHistoryManager l();
   
-  public abstract String g();
-  
-  public abstract void g();
-  
-  public abstract boolean g();
-  
-  public abstract int h();
-  
-  public abstract String h();
-  
-  public abstract boolean h();
-  
-  public abstract String i();
-  
-  public abstract boolean i();
-  
-  public abstract String j();
-  
-  public abstract boolean j();
-  
-  public abstract String k();
-  
-  public abstract boolean l();
-  
-  public abstract boolean m();
+  public abstract CacheData m();
   
   public abstract boolean n();
   
-  public abstract boolean o();
+  public abstract boolean r();
+  
+  public abstract int s();
+  
+  public abstract ExpandConfig t();
+  
+  public abstract ExpandConfig u();
+  
+  public abstract String w();
+  
+  public abstract boolean x();
+  
+  public abstract String y();
+  
+  public abstract int z();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.IExpandManager
  * JD-Core Version:    0.7.0.1
  */

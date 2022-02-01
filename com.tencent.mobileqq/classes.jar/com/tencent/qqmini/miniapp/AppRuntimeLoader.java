@@ -77,6 +77,18 @@ public class AppRuntimeLoader
     start();
   }
   
+  private void refreshLaunchParamIfNeeded(MiniAppInfo paramMiniAppInfo)
+  {
+    if (this.mMiniAppInfo == null) {
+      return;
+    }
+    LaunchParam localLaunchParam = this.mMiniAppInfo.launchParam;
+    paramMiniAppInfo = paramMiniAppInfo.launchParam;
+    localLaunchParam.scene = paramMiniAppInfo.scene;
+    localLaunchParam.fileMaterialInfoList = paramMiniAppInfo.fileMaterialInfoList;
+    updateMiniAppInfo(this.mMiniAppInfo);
+  }
+  
   private void setRuntimeBaselib()
   {
     if (this.mRuntime != null)
@@ -230,6 +242,7 @@ public class AppRuntimeLoader
   {
     if (paramMiniAppInfo.isFakeAppInfo())
     {
+      refreshLaunchParamIfNeeded(paramMiniAppInfo);
       this.fromUpdate = true;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("updateMiniAppInfoFromReload  fromUpdate: ");
@@ -247,7 +260,7 @@ public class AppRuntimeLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.AppRuntimeLoader
  * JD-Core Version:    0.7.0.1
  */

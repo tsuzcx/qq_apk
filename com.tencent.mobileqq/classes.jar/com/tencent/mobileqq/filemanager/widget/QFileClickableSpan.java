@@ -9,10 +9,10 @@ import android.view.View.OnClickListener;
 public class QFileClickableSpan
   extends ClickableSpan
 {
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
   private ColorStateList b;
+  private ColorStateList c;
+  private View.OnClickListener d;
   
   public QFileClickableSpan(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList)
   {
@@ -21,14 +21,14 @@ public class QFileClickableSpan
   
   public QFileClickableSpan(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList1, ColorStateList paramColorStateList2)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList1;
-    this.b = paramColorStateList2;
+    this.d = paramOnClickListener;
+    this.b = paramColorStateList1;
+    this.c = paramColorStateList2;
   }
   
   public void onClick(View paramView)
   {
-    View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    View.OnClickListener localOnClickListener = this.d;
     if (localOnClickListener != null) {
       localOnClickListener.onClick(paramView);
     }
@@ -38,11 +38,11 @@ public class QFileClickableSpan
   {
     super.updateDrawState(paramTextPaint);
     paramTextPaint.setUnderlineText(false);
-    ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
+    ColorStateList localColorStateList = this.b;
     int i;
     if (localColorStateList != null)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         i = localColorStateList.getColorForState(new int[] { 16842919 }, 0);
       } else {
         i = localColorStateList.getColorForState(new int[0], 0);
@@ -53,10 +53,10 @@ public class QFileClickableSpan
     {
       paramTextPaint.setColor(-16777216);
     }
-    localColorStateList = this.b;
+    localColorStateList = this.c;
     if (localColorStateList != null)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         i = localColorStateList.getColorForState(new int[] { 16842919 }, 0);
       } else {
         i = localColorStateList.getColorForState(new int[0], 0);
@@ -69,7 +69,7 @@ public class QFileClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileClickableSpan
  * JD-Core Version:    0.7.0.1
  */

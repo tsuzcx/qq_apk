@@ -22,19 +22,19 @@ import com.tencent.mobileqq.utils.ImageUtil;
 public class ProgressViewYellow
   extends View
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 10000L;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private ShapeDrawable jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable;
-  private int[] jdField_a_of_type_ArrayOfInt = { 2130845364, 2130845365, 2130845366, 2130845367, 2130845368, 2130845369, 2130845370, 2130845371, 2130845372, 2130845373, 2130845374, 2130845375, 2130845376, 2130845377, 2130845378, 2130845379, 2130845380, 2130845381, 2130845382, 2130845383 };
-  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = null;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long = 0L;
+  private ShapeDrawable a;
+  private int b;
   private int c;
   private int d;
+  private long e = 10000L;
+  private long f = 0L;
+  private int[] g = { 2130846820, 2130846821, 2130846822, 2130846823, 2130846824, 2130846825, 2130846826, 2130846827, 2130846828, 2130846829, 2130846830, 2130846831, 2130846832, 2130846833, 2130846834, 2130846835, 2130846836, 2130846837, 2130846838, 2130846839 };
+  private Bitmap[] h = null;
+  private Rect i;
+  private RectF j;
+  private int k;
+  private Paint l;
+  private Path m;
   
   public ProgressViewYellow(Context paramContext)
   {
@@ -56,31 +56,31 @@ public class ProgressViewYellow
   
   private void a()
   {
-    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131298282));
-    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131298284));
-    this.c = ((int)getResources().getDimension(2131298283));
-    int j = this.jdField_b_of_type_Int;
-    float f = j;
-    int i = 0;
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { f, j, j, j, j, j, j, j }, null, null));
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setColor(Color.parseColor("#FC7B31"));
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.d = 0;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
+    this.b = ((int)getResources().getDimension(2131298983));
+    this.c = ((int)getResources().getDimension(2131298985));
+    this.d = ((int)getResources().getDimension(2131298984));
+    int i1 = this.c;
+    float f1 = i1;
+    int n = 0;
+    this.a = new ShapeDrawable(new RoundRectShape(new float[] { f1, i1, i1, i1, i1, i1, i1, i1 }, null, null));
+    this.a.getPaint().setAntiAlias(true);
+    this.a.getPaint().setColor(Color.parseColor("#FC7B31"));
+    this.i = new Rect();
+    this.j = new RectF();
+    this.k = 0;
+    this.l = new Paint();
+    this.l.setAntiAlias(true);
+    this.l.setFilterBitmap(true);
     if ((Build.VERSION.SDK_INT < 11) || (Build.VERSION.SDK_INT >= 18)) {
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+      this.m = new Path();
     }
     try
     {
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[this.jdField_a_of_type_ArrayOfInt.length];
-      while (i < this.jdField_a_of_type_ArrayOfInt.length)
+      this.h = new Bitmap[this.g.length];
+      while (n < this.g.length)
       {
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = BitmapFactory.decodeResource(getResources(), this.jdField_a_of_type_ArrayOfInt[i]);
-        i += 1;
+        this.h[n] = BitmapFactory.decodeResource(getResources(), this.g[n]);
+        n += 1;
       }
       return;
     }
@@ -92,74 +92,74 @@ public class ProgressViewYellow
   
   public void a(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Long = (paramLong2 - paramLong1);
+    this.e = paramLong2;
+    this.f = (paramLong2 - paramLong1);
     postInvalidate();
   }
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_b_of_type_Long < this.jdField_a_of_type_Long)
+    if (this.f < this.e)
     {
-      int k = getWidth();
-      int j = getHeight();
-      int i = this.c;
-      k -= i;
-      int n = this.jdField_a_of_type_Int;
-      int m = (j - n) / 2;
-      n = (j + n) / 2;
-      int i1 = (int)((k - i) * this.jdField_b_of_type_Long / this.jdField_a_of_type_Long) + i;
-      this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.setBounds(i1, m, k, n);
-      this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.draw(paramCanvas);
-      j = this.d;
-      Object localObject1 = this.jdField_a_of_type_ArrayOfInt;
-      i = j;
-      if (j >= localObject1.length) {
-        i = j % localObject1.length;
+      int i2 = getWidth();
+      int i1 = getHeight();
+      int n = this.d;
+      i2 -= n;
+      int i4 = this.b;
+      int i3 = (i1 - i4) / 2;
+      i4 = (i1 + i4) / 2;
+      int i5 = (int)((i2 - n) * this.f / this.e) + n;
+      this.a.setBounds(i5, i3, i2, i4);
+      this.a.draw(paramCanvas);
+      i1 = this.k;
+      Object localObject1 = this.g;
+      n = i1;
+      if (i1 >= localObject1.length) {
+        n = i1 % localObject1.length;
       }
-      j = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getWidth();
-      int i2 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getHeight();
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, j, i2);
-      int i3 = k - i1;
-      if (j <= i3)
+      i1 = this.h[n].getWidth();
+      int i6 = this.h[n].getHeight();
+      this.i.set(0, 0, i1, i6);
+      int i7 = i2 - i5;
+      if (i1 <= i7)
       {
-        localObject1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i];
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, m, i1 + j, n);
-        paramCanvas.drawBitmap((Bitmap)localObject1, null, this.jdField_a_of_type_AndroidGraphicsRectF, null);
+        localObject1 = this.h[n];
+        this.j.set(i5, i3, i5 + i1, i4);
+        paramCanvas.drawBitmap((Bitmap)localObject1, null, this.j, null);
       }
       else
       {
-        localObject1 = Bitmap.createBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i], 0, 0, i3, i2, null, false);
-        Object localObject2 = this.jdField_a_of_type_AndroidGraphicsRectF;
-        float f1 = i1;
-        float f2 = m;
-        float f3 = k;
-        float f4 = n;
+        localObject1 = Bitmap.createBitmap(this.h[n], 0, 0, i7, i6, null, false);
+        Object localObject2 = this.j;
+        float f1 = i5;
+        float f2 = i3;
+        float f3 = i2;
+        float f4 = i4;
         ((RectF)localObject2).set(f1, f2, f3, f4);
         if ((Build.VERSION.SDK_INT >= 11) && (Build.VERSION.SDK_INT < 18))
         {
-          localObject1 = ImageUtil.b((Bitmap)localObject1, this.jdField_b_of_type_Int, i3, i2);
-          this.jdField_a_of_type_AndroidGraphicsRectF.set(f1, f2, f3, f4);
-          paramCanvas.drawBitmap((Bitmap)localObject1, null, this.jdField_a_of_type_AndroidGraphicsRectF, null);
+          localObject1 = ImageUtil.b((Bitmap)localObject1, this.c, i7, i6);
+          this.j.set(f1, f2, f3, f4);
+          paramCanvas.drawBitmap((Bitmap)localObject1, null, this.j, null);
         }
         else
         {
-          localObject2 = this.jdField_a_of_type_AndroidGraphicsPath;
-          RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-          i = this.jdField_b_of_type_Int;
-          ((Path)localObject2).addRoundRect(localRectF, i, i, Path.Direction.CW);
-          paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath, Region.Op.INTERSECT);
-          paramCanvas.drawBitmap((Bitmap)localObject1, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+          localObject2 = this.m;
+          RectF localRectF = this.j;
+          n = this.c;
+          ((Path)localObject2).addRoundRect(localRectF, n, n, Path.Direction.CW);
+          paramCanvas.clipPath(this.m, Region.Op.INTERSECT);
+          paramCanvas.drawBitmap((Bitmap)localObject1, null, this.j, this.l);
         }
       }
-      this.d += 1;
+      this.k += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ProgressViewYellow
  * JD-Core Version:    0.7.0.1
  */

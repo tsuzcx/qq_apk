@@ -12,8 +12,8 @@ class QQCustomArkDialog$2$2
   public void run()
   {
     Activity localActivity;
-    if (QQCustomArkDialog.a(this.a.a) != null) {
-      localActivity = (Activity)QQCustomArkDialog.a(this.a.a).get();
+    if (QQCustomArkDialog.c(this.a.a) != null) {
+      localActivity = (Activity)QQCustomArkDialog.c(this.a.a).get();
     } else {
       localActivity = null;
     }
@@ -27,7 +27,7 @@ class QQCustomArkDialog$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomArkDialog.2.2
  * JD-Core Version:    0.7.0.1
  */

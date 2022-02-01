@@ -16,8 +16,8 @@ import java.util.List;
 public class EditControlButtonLayout
   extends LinearLayout
 {
-  private final Comparator<Integer> jdField_a_of_type_JavaUtilComparator = new EditControlButtonLayout.2(this);
-  private final List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList(20);
+  private final List<Integer> a = new ArrayList(20);
+  private final Comparator<Integer> b = new EditControlButtonLayout.2(this);
   
   public EditControlButtonLayout(Context paramContext)
   {
@@ -53,24 +53,24 @@ public class EditControlButtonLayout
     if (k <= i1) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.a.clear();
     int i = 0;
     while (i < getChildCount())
     {
       if (getChildAt(i).getVisibility() != 8) {
-        this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(i));
+        this.a.add(Integer.valueOf(i));
       }
       i += 1;
     }
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+    if (this.a.isEmpty()) {
       return;
     }
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilComparator);
+    Collections.sort(this.a, this.b);
     i = -1;
     int j = 0;
-    while (j < this.jdField_a_of_type_JavaUtilList.size())
+    while (j < this.a.size())
     {
-      localObject = getChildAt(((Integer)this.jdField_a_of_type_JavaUtilList.get(j)).intValue());
+      localObject = getChildAt(((Integer)this.a.get(j)).intValue());
       int n = Math.abs(i1 - (((View)localObject).getLeft() + ((View)localObject).getRight()) / 2);
       int m = k;
       if (n < k)
@@ -84,7 +84,7 @@ public class EditControlButtonLayout
     if (i <= 0) {
       return;
     }
-    localObject = getChildAt(((Integer)this.jdField_a_of_type_JavaUtilList.get(i)).intValue());
+    localObject = getChildAt(((Integer)this.a.get(i)).intValue());
     j = ((View)localObject).getRight();
     k = ((View)localObject).getWidth();
     if ((j >= i1) && (j - i1 < k / 2)) {
@@ -94,15 +94,15 @@ public class EditControlButtonLayout
     k = 0;
     while (k <= i)
     {
-      j += getChildAt(((Integer)this.jdField_a_of_type_JavaUtilList.get(k)).intValue()).getWidth();
+      j += getChildAt(((Integer)this.a.get(k)).intValue()).getWidth();
       k += 1;
     }
     if (i < 4)
     {
       k = i + 1;
-      if (k < this.jdField_a_of_type_JavaUtilList.size())
+      if (k < this.a.size())
       {
-        localObject = getChildAt(((Integer)this.jdField_a_of_type_JavaUtilList.get(k)).intValue());
+        localObject = getChildAt(((Integer)this.a.get(k)).intValue());
         if (((View)localObject).getWidth() + j < i1)
         {
           j += ((View)localObject).getWidth();
@@ -114,9 +114,9 @@ public class EditControlButtonLayout
     if (f > 0.0F)
     {
       i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      while (i < this.a.size())
       {
-        localObject = getChildAt(((Integer)this.jdField_a_of_type_JavaUtilList.get(i)).intValue());
+        localObject = getChildAt(((Integer)this.a.get(i)).intValue());
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((View)localObject).getLayoutParams();
         if (i == 0) {
           j = 0;
@@ -124,7 +124,7 @@ public class EditControlButtonLayout
           j = (int)(1.0F + f);
         }
         localLayoutParams.leftMargin = j;
-        if (i == this.jdField_a_of_type_JavaUtilList.size() - 1) {
+        if (i == this.a.size() - 1) {
           j = 0;
         } else {
           j = (int)f;
@@ -148,7 +148,7 @@ public class EditControlButtonLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.view.widget.EditControlButtonLayout
  * JD-Core Version:    0.7.0.1
  */

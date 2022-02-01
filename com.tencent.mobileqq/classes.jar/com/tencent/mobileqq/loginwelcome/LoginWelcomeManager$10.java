@@ -20,15 +20,15 @@ class LoginWelcomeManager$10
     if (QLog.isColorLevel()) {
       QLog.d("LoginWelcomeManager", 2, "tryToShowCGLayer drawable onLoadSuccessed");
     }
-    if (this.a.a != null) {
-      this.a.a.a(paramURLDrawable);
+    if (this.a.h != null) {
+      this.a.h.a(paramURLDrawable);
     }
-    this.a.g();
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginWelcomeManager.10
  * JD-Core Version:    0.7.0.1
  */

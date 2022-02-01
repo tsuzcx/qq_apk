@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<vector android:height="20.0dip" android:width="20.0dip" android:viewportWidth="40.0" android:viewportHeight="40.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center_vertical" android:id="@id/my_" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/jt" android:indeterminateBehavior="repeat" />
-    <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/my9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/cuy" />
-</LinearLayout>
+    <group>
+        <clip-path android:pathData="M0,0h40v40h-40z" />
+        <path android:fillColor="#ff747f8d" android:pathData="M17,5L15.917,11.5L26.917,11.5L28,5L31,5L29.917,11.5L36.5,11.5L36.5,14.5L29.417,14.5L27.583,25.5L33.5,25.5L33.5,28.5L27.083,28.5L26,35L23,35L24.083,28.5L13.083,28.5L12,35L9,35L10.083,28.5L3.5,28.5L3.5,25.5L10.583,25.5L12.417,14.5L6.5,14.5L6.5,11.5L12.917,11.5L14,5L17,5ZM24.583,25.5L26.417,14.5L15.417,14.5L13.583,25.5L24.583,25.5Z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+    </group>
+</vector>

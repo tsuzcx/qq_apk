@@ -12,29 +12,29 @@ class AddFriendCheckFragment$3
   
   public void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    if (!AddFriendCheckFragment.a(this.a))
+    if (!AddFriendCheckFragment.b(this.a))
     {
-      if (this.a.jdField_a_of_type_Boolean) {
+      if (this.a.b) {
         return;
       }
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      if (this.a.a != null) {
+        this.a.a.removeCallbacksAndMessages(null);
       }
       if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
       {
         if (QLog.isColorLevel()) {
           QLog.d("AddFriendCheckFragment", 2, "openIdObserver success");
         }
-        if (!paramOpenID.openID.equals(AddFriendCheckFragment.a()))
+        if (!paramOpenID.openID.equals(AddFriendCheckFragment.b()))
         {
           AddFriendCheckFragment.a(this.a, true);
-          this.a.a();
+          this.a.c();
           return;
         }
-        AddFriendCheckFragment.a(this.a);
+        AddFriendCheckFragment.c(this.a);
         return;
       }
-      AddFriendCheckFragment.a(this.a);
+      AddFriendCheckFragment.c(this.a);
       if (QLog.isColorLevel()) {
         QLog.d("AddFriendCheckFragment", 2, "openIdObserver fail");
       }
@@ -43,7 +43,7 @@ class AddFriendCheckFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendCheckFragment.3
  * JD-Core Version:    0.7.0.1
  */

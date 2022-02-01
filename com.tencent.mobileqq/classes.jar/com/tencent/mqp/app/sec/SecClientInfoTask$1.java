@@ -42,39 +42,39 @@ class SecClientInfoTask$1
       Object localObject4 = new ClientInfoA.EnvParamPacket();
       ((ClientInfoA.EnvParamPacket)localObject4).u32_platform.set(1);
       ((ClientInfoA.EnvParamPacket)localObject4).str_sysversion.set(Build.VERSION.RELEASE);
-      ((ClientInfoA.EnvParamPacket)localObject4).str_qqversion.set("8.7.0.5295");
-      ((ClientInfoA.EnvParamPacket)localObject4).u32_appid.set(AppSetting.a());
+      ((ClientInfoA.EnvParamPacket)localObject4).str_qqversion.set("8.8.17.5770");
+      ((ClientInfoA.EnvParamPacket)localObject4).u32_appid.set(AppSetting.d());
       ((ClientInfoA.EnvParamPacket)localObject4).bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
       ((ClientInfoA.EnvParamPacket)localObject4).str_uin.set(str);
       ((ClientInfoA.ReportDetectResultPacket)localObject3).uint32_cmd.set(1);
       ((ClientInfoA.ReportDetectResultPacket)localObject3).envParam.set((MessageMicro)localObject4);
-      int i = SecClientInfoTask.a(this.this$0);
+      int i = SecClientInfoTask.b(this.this$0);
       if (i == 1)
       {
-        localObject1 = SecClientInfoTask.a(SecClientInfoTask.b(this.this$0));
+        localObject1 = SecClientInfoTask.a(SecClientInfoTask.c(this.this$0));
         if (localObject1 != null) {
           ((ClientInfoA.ReportDetectResultPacket)localObject3).bytes_buffer.set(ByteStringMicro.copyFrom((byte[])localObject1));
         }
         localObject1 = new ToServiceMsg("mobileqq.service", str, "ClientInfoA.SecReport");
       }
-      else if (SecClientInfoTask.a(this.this$0) == 2)
+      else if (SecClientInfoTask.b(this.this$0) == 2)
       {
         if (!SecClientInfoTask.a())
         {
           SecClientInfoTask.a(m.a(((QQAppInterface)localObject2).getApplication().getApplicationInfo().sourceDir));
           SecClientInfoTask.a(true);
         }
-        if ((SecClientInfoTask.a() != null) && (SecClientInfoTask.a().length() > 0)) {
-          ((ClientInfoA.ReportDetectResultPacket)localObject3).str_qqmd5.set(SecClientInfoTask.a());
+        if ((SecClientInfoTask.b() != null) && (SecClientInfoTask.b().length() > 0)) {
+          ((ClientInfoA.ReportDetectResultPacket)localObject3).str_qqmd5.set(SecClientInfoTask.b());
         }
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(SecUtil.toHexString(NetConnInfoCenter.GUID).toLowerCase());
-        ((StringBuilder)localObject1).append(SecClientInfoTask.b(this.this$0));
+        ((StringBuilder)localObject1).append(SecClientInfoTask.c(this.this$0));
         localObject1 = ((StringBuilder)localObject1).toString();
         localObject4 = MessageDigest.getInstance("MD5");
         ((MessageDigest)localObject4).update(((String)localObject1).getBytes());
         ((ClientInfoA.ReportDetectResultPacket)localObject3).bytes_buffer.set(ByteStringMicro.copyFrom(((MessageDigest)localObject4).digest()));
-        localObject1 = SecClientInfoTask.a(SecClientInfoTask.b(this.this$0) >> 1 & 0x7FFFFFFF);
+        localObject1 = SecClientInfoTask.a(SecClientInfoTask.c(this.this$0) >> 1 & 0x7FFFFFFF);
         if (localObject1 != null) {
           ((ClientInfoA.ReportDetectResultPacket)localObject3).bytes_buffer2.set(ByteStringMicro.copyFrom((byte[])localObject1));
         }
@@ -97,7 +97,7 @@ class SecClientInfoTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.SecClientInfoTask.1
  * JD-Core Version:    0.7.0.1
  */

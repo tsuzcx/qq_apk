@@ -10,9 +10,9 @@ class TroopTeamWorkFileSearchDialog$11
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.a;
     if (localObject != null) {
-      ((View)localObject).setDrawingCacheEnabled(this.jdField_a_of_type_Boolean);
+      ((View)localObject).setDrawingCacheEnabled(this.b);
     }
     if (QLog.isColorLevel())
     {
@@ -31,7 +31,7 @@ class TroopTeamWorkFileSearchDialog$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.11
  * JD-Core Version:    0.7.0.1
  */

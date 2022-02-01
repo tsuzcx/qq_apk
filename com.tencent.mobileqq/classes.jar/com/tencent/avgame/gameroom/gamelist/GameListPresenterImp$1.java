@@ -16,7 +16,7 @@ class GameListPresenterImp$1
     {
       GameListPresenterImp.a(this.a, false);
       if (AVGameUtil.b() == 2) {
-        this.a.a.a(this.a.a.a().getString(2131690390));
+        this.a.a.a(this.a.a.getViewContext().getString(2131887301));
       }
     }
   }

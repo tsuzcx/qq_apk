@@ -136,7 +136,7 @@ public class OnlineStatusExtInfoServlet
               ((IFriendDataService)localObject2).saveFriend((Friends)localObject3);
               ConstellationUtilKt.a(paramFromServiceMsg, i);
               ConstellationUtilKt.a(paramFromServiceMsg, (String)localObject1);
-              ConstellationUtilKt.b(paramFromServiceMsg, (String)localObject5);
+              ConstellationUtilKt.c(paramFromServiceMsg, (String)localObject5);
               localObject4 = ((Friends)localObject3).constellationTodayTrend;
               if ((bool1) || (TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty(str6)))
               {
@@ -174,7 +174,7 @@ public class OnlineStatusExtInfoServlet
               if (((IOnlineStatusService)paramFromServiceMsg.getRuntimeService(IOnlineStatusService.class, "")).getExtOnlineStatus() == 1040L) {
                 ExtensionBizInfoHelper.a.a(paramFromServiceMsg, 1040);
               }
-              localObject1 = ConstellationUtilKt.a(paramFromServiceMsg, paramFromServiceMsg.getCurrentAccountUin());
+              localObject1 = ConstellationUtilKt.b(paramFromServiceMsg, paramFromServiceMsg.getCurrentAccountUin());
               localObject2 = ((String)localObject1).split("\\|");
               paramFromServiceMsg = str1;
               if (localObject2.length == 2) {
@@ -305,7 +305,7 @@ public class OnlineStatusExtInfoServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusExtInfoServlet
  * JD-Core Version:    0.7.0.1
  */

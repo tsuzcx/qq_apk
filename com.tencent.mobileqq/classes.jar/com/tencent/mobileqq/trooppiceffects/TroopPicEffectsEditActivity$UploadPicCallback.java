@@ -41,12 +41,12 @@ public class TroopPicEffectsEditActivity$UploadPicCallback
     localIntent.putExtra("isFromTroopEffectPic", true);
     localTroopPicEffectsEditActivity.startActivity(AIOUtils.a(localIntent, new int[] { 1 }));
     localTroopPicEffectsEditActivity.finish();
-    localTroopPicEffectsEditActivity.a(localTroopPicEffectsEditActivity.a, (im_msg_body.CustomFace)paramSendResult.a, new TroopPicEffectsEditActivity.UploadPicCallback.1(this, localTroopPicEffectsEditActivity));
+    localTroopPicEffectsEditActivity.a(localTroopPicEffectsEditActivity.k, (im_msg_body.CustomFace)paramSendResult.l, new TroopPicEffectsEditActivity.UploadPicCallback.1(this, localTroopPicEffectsEditActivity));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.UploadPicCallback
  * JD-Core Version:    0.7.0.1
  */

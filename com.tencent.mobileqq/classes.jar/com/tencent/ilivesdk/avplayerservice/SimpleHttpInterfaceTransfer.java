@@ -11,13 +11,13 @@ import java.util.Map;
 public class SimpleHttpInterfaceTransfer
   extends SimpleCoreHttpImpl
 {
-  private HttpInterface jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface;
-  private LogInterface jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface = new SimpleHttpInterfaceTransfer.8(this);
+  private HttpInterface a;
+  private LogInterface b = new SimpleHttpInterfaceTransfer.8(this);
   
   public SimpleHttpInterfaceTransfer(HttpInterface paramHttpInterface)
   {
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface = paramHttpInterface;
-    paramHttpInterface = this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface;
+    this.a = paramHttpInterface;
+    paramHttpInterface = this.a;
     if (paramHttpInterface != null) {
       paramHttpInterface.init(new SimpleHttpInterfaceTransfer.1(this));
     }
@@ -25,7 +25,7 @@ public class SimpleHttpInterfaceTransfer
   
   public void download(String paramString1, Map<String, String> paramMap, String paramString2, SimpleCoreDownloadCallback paramSimpleCoreDownloadCallback)
   {
-    HttpInterface localHttpInterface = this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface;
+    HttpInterface localHttpInterface = this.a;
     if (localHttpInterface != null) {
       localHttpInterface.download(paramString1, paramMap, paramString2, new SimpleHttpInterfaceTransfer.6(this, paramSimpleCoreDownloadCallback));
     }
@@ -33,7 +33,7 @@ public class SimpleHttpInterfaceTransfer
   
   public void get(String paramString, SimpleCoreHttpResponse paramSimpleCoreHttpResponse)
   {
-    HttpInterface localHttpInterface = this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface;
+    HttpInterface localHttpInterface = this.a;
     if (localHttpInterface != null) {
       localHttpInterface.get(paramString, new SimpleHttpInterfaceTransfer.2(this, paramSimpleCoreHttpResponse));
     }
@@ -41,7 +41,7 @@ public class SimpleHttpInterfaceTransfer
   
   public void get(String paramString, Map<String, String> paramMap, SimpleCoreHttpResponse paramSimpleCoreHttpResponse)
   {
-    HttpInterface localHttpInterface = this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface;
+    HttpInterface localHttpInterface = this.a;
     if (localHttpInterface != null) {
       localHttpInterface.get(paramString, paramMap, new SimpleHttpInterfaceTransfer.3(this, paramSimpleCoreHttpResponse));
     }
@@ -49,7 +49,7 @@ public class SimpleHttpInterfaceTransfer
   
   public void post(String paramString, Map<String, String> paramMap, SimpleCoreHttpResponse paramSimpleCoreHttpResponse)
   {
-    HttpInterface localHttpInterface = this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface;
+    HttpInterface localHttpInterface = this.a;
     if (localHttpInterface != null) {
       localHttpInterface.post(paramString, paramMap, new SimpleHttpInterfaceTransfer.4(this, paramSimpleCoreHttpResponse));
     }
@@ -57,7 +57,7 @@ public class SimpleHttpInterfaceTransfer
   
   public void post(String paramString, Map<String, String> paramMap1, Map<String, String> paramMap2, SimpleCoreHttpResponse paramSimpleCoreHttpResponse)
   {
-    HttpInterface localHttpInterface = this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface;
+    HttpInterface localHttpInterface = this.a;
     if (localHttpInterface != null) {
       localHttpInterface.post(paramString, paramMap1, paramMap2, new SimpleHttpInterfaceTransfer.5(this, paramSimpleCoreHttpResponse));
     }
@@ -65,7 +65,7 @@ public class SimpleHttpInterfaceTransfer
   
   public void upload(String paramString, Map<String, String> paramMap1, Map<String, String> paramMap2, SimpleCoreUploadCallback paramSimpleCoreUploadCallback)
   {
-    HttpInterface localHttpInterface = this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface;
+    HttpInterface localHttpInterface = this.a;
     if (localHttpInterface != null) {
       localHttpInterface.upload(paramString, paramMap1, paramMap2, new SimpleHttpInterfaceTransfer.7(this, paramSimpleCoreUploadCallback));
     }
@@ -73,7 +73,7 @@ public class SimpleHttpInterfaceTransfer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.SimpleHttpInterfaceTransfer
  * JD-Core Version:    0.7.0.1
  */

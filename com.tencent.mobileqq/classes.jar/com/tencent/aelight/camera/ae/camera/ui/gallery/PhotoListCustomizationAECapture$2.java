@@ -13,17 +13,17 @@ class PhotoListCustomizationAECapture$2
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (PhotoListCustomizationAECapture.a(this.a) != null)
+    if (PhotoListCustomizationAECapture.b(this.a) != null)
     {
-      PhotoListCustomizationAECapture.a(this.a).removeObserver(PhotoListCustomizationAECapture.a(this.a));
+      PhotoListCustomizationAECapture.a(this.a).removeObserver(PhotoListCustomizationAECapture.b(this.a));
       PhotoListCustomizationAECapture.a(this.a, null);
     }
-    this.a.a.a.setClickable(true);
+    this.a.h.o.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.gallery.PhotoListCustomizationAECapture.2
  * JD-Core Version:    0.7.0.1
  */

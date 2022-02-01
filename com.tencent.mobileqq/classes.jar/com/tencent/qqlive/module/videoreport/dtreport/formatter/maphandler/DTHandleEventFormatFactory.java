@@ -23,6 +23,7 @@ public class DTHandleEventFormatFactory
     VIEW_KEY_SET.add("imp");
     VIEW_KEY_SET.add("clck");
     VIEW_KEY_SET.add("imp_end");
+    VIEW_KEY_SET.add("dt_submit");
     APP_KEY_SET.add("appout");
     APP_KEY_SET.add("appin");
     APP_KEY_SET.add("origin_vst");
@@ -86,7 +87,7 @@ public class DTHandleEventFormatFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.formatter.maphandler.DTHandleEventFormatFactory
  * JD-Core Version:    0.7.0.1
  */

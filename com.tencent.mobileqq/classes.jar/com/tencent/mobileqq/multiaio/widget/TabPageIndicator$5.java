@@ -10,7 +10,7 @@ class TabPageIndicator$5
   
   public void run()
   {
-    int i = this.a.getLeft() - TabPageIndicator.a(this.this$0);
+    int i = this.a.getLeft() - TabPageIndicator.f(this.this$0);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -26,7 +26,7 @@ class TabPageIndicator$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.TabPageIndicator.5
  * JD-Core Version:    0.7.0.1
  */

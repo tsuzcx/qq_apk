@@ -18,19 +18,19 @@ class PublicAccountDetailActivityImpl$10
       if (paramInt != 1) {
         return;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl.gotoChatActivity();
+      this.b.gotoChatActivity();
       paramDialogInterface.dismiss();
       return;
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl;
+    paramDialogInterface = this.b;
     paramDialogInterface.mShouldNotStayAtThisApp = true;
     paramDialogInterface.doOnBackPressed();
-    ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl.mProfileParams.a()).longValue());
+    ForwardSdkShareOption.a(this.a, true, "shareToQQ", Long.valueOf(this.b.mProfileParams.a()).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailActivityImpl.10
  * JD-Core Version:    0.7.0.1
  */

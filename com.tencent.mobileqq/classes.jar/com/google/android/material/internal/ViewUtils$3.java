@@ -11,12 +11,12 @@ final class ViewUtils$3
   
   public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialInternalViewUtils$OnApplyWindowInsetsListener.a(paramView, paramWindowInsetsCompat, new ViewUtils.RelativePadding(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalViewUtils$RelativePadding));
+    return this.a.a(paramView, paramWindowInsetsCompat, new ViewUtils.RelativePadding(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.ViewUtils.3
  * JD-Core Version:    0.7.0.1
  */

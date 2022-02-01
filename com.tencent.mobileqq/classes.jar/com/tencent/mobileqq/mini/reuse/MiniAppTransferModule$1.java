@@ -19,7 +19,7 @@ class MiniAppTransferModule$1
     DesktopDataManager localDesktopDataManager = (DesktopDataManager)this.val$runtime.getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
     if ((localDesktopDataManager != null) && (!TextUtils.isEmpty(this.val$appid)))
     {
-      if ((this.val$topType == 1) && (localDesktopDataManager.getTopMiniAppNumber() >= MiniAppConfProcessor.a()))
+      if ((this.val$topType == 1) && (localDesktopDataManager.getTopMiniAppNumber() >= MiniAppConfProcessor.f()))
       {
         this.this$0.callbackResult(this.val$callbackId, EIPCResult.createResult(-100, null));
         return;
@@ -43,7 +43,7 @@ class MiniAppTransferModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppTransferModule.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,8 @@ package com.tencent.mobileqq.kandian.biz.tab;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 class ReadinjoyTabFrame$14
@@ -12,7 +11,7 @@ class ReadinjoyTabFrame$14
 {
   public void run()
   {
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate((QQAppInterface)RIJQQAppInterfaceUtil.a(), "CliOper", "", "", "0X80066F7", "0X80066F7", 1, 1, Long.toString(this.a / 1000L), "", "", RIJTransMergeKanDianReport.b(), false);
+    PublicAccountReportUtils.a((QQAppInterface)RIJQQAppInterfaceUtil.e(), "CliOper", "", "", "0X80066F7", "0X80066F7", 1, 1, Long.toString(this.a / 1000L), "", "", RIJTransMergeKanDianReport.c(), false);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -24,7 +23,7 @@ class ReadinjoyTabFrame$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.14
  * JD-Core Version:    0.7.0.1
  */

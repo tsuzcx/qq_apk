@@ -12,7 +12,7 @@ final class MQPSensitiveMsgUtil$5
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("sp_confirmed_sensmsg_");
-    ((StringBuilder)localObject1).append(MQPSensitiveMsgUtil.a());
+    ((StringBuilder)localObject1).append(MQPSensitiveMsgUtil.b());
     localObject1 = ((StringBuilder)localObject1).toString();
     Object localObject2 = BaseApplication.getContext();
     int i = 0;
@@ -33,12 +33,12 @@ final class MQPSensitiveMsgUtil$5
     if (((Bundle)localObject2).size() > 0) {
       MQPSensitiveMsgUtil.a(((Bundle)localObject2).size() - 1);
     }
-    MQPSensitiveMsgUtil.a().putBundle(MQPSensitiveMsgUtil.a(), (Bundle)localObject2);
+    MQPSensitiveMsgUtil.c().putBundle(MQPSensitiveMsgUtil.b(), (Bundle)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.MQPSensitiveMsgUtil.5
  * JD-Core Version:    0.7.0.1
  */

@@ -14,20 +14,20 @@ public class VipCheckGift
 {
   protected int doStep()
   {
-    Object localObject = (VipGiftManager)this.mAutomator.a.getManager(QQManagerFactory.VIP_GIF_MANAGER);
-    VipGiftDownloadInfo localVipGiftDownloadInfo = ((VipGiftManager)localObject).a();
+    Object localObject = (VipGiftManager)this.mAutomator.k.getManager(QQManagerFactory.VIP_GIF_MANAGER);
+    VipGiftDownloadInfo localVipGiftDownloadInfo = ((VipGiftManager)localObject).e();
     if (localVipGiftDownloadInfo != null) {
-      if ((localVipGiftDownloadInfo.d == 0L) && (localVipGiftDownloadInfo.a != 0L))
+      if ((localVipGiftDownloadInfo.f == 0L) && (localVipGiftDownloadInfo.c != 0L))
       {
-        ((VipGiftManager)localObject).a(localVipGiftDownloadInfo.a);
+        ((VipGiftManager)localObject).c(localVipGiftDownloadInfo.c);
       }
-      else if (localVipGiftDownloadInfo.d == 2L)
+      else if (localVipGiftDownloadInfo.f == 2L)
       {
-        localObject = new NewIntent(this.mAutomator.a.getApplication(), VipGifServlet.class);
+        localObject = new NewIntent(this.mAutomator.k.getApplication(), VipGifServlet.class);
         ((NewIntent)localObject).setAction("gif_ui_show");
         ((NewIntent)localObject).putExtra("gif_ui_show_bid", 0);
-        ((NewIntent)localObject).putExtra("gif_ui_show_seq", localVipGiftDownloadInfo.a);
-        this.mAutomator.a.startServlet((NewIntent)localObject);
+        ((NewIntent)localObject).putExtra("gif_ui_show_seq", localVipGiftDownloadInfo.c);
+        this.mAutomator.k.startServlet((NewIntent)localObject);
       }
     }
     return 7;
@@ -35,7 +35,7 @@ public class VipCheckGift
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.VipCheckGift
  * JD-Core Version:    0.7.0.1
  */

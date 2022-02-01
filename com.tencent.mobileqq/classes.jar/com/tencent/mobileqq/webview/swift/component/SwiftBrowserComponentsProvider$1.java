@@ -9,29 +9,29 @@ class SwiftBrowserComponentsProvider$1
 {
   SwiftBrowserComponentsProvider$1(SwiftBrowserComponentsProvider paramSwiftBrowserComponentsProvider) {}
   
-  public Activity a()
-  {
-    return this.a.a.getHostActivity();
-  }
-  
-  public WebViewProvider a()
-  {
-    return this.a.a.getWebViewProvider();
-  }
-  
-  public SwiftBrowserComponentsProvider a()
-  {
-    return this.a;
-  }
-  
   public WebView a()
   {
     return this.a.a.getHostWebView();
   }
+  
+  public Activity b()
+  {
+    return this.a.a.getHostActivity();
+  }
+  
+  public WebViewProvider c()
+  {
+    return this.a.a.getWebViewProvider();
+  }
+  
+  public SwiftBrowserComponentsProvider d()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.1
  * JD-Core Version:    0.7.0.1
  */

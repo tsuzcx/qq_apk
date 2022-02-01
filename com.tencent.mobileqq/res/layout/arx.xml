@@ -2,7 +2,7 @@
 <LinearLayout android:orientation="vertical" android:background="#fff5f6fa" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/jpu" android:layout_width="fill_parent" android:layout_height="43.0dip">
-        <TextView android:textSize="17.0sp" android:textColor="@color/ai2" android:gravity="center" android:id="@id/ap3" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/qmq" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/ai2" android:gravity="center" android:id="@id/ap3" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/j6l" android:layout_alignParentLeft="true" />
         <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/ai2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qmp" android:layout_centerInParent="true" />
         <TextView android:textSize="17.0sp" android:textColor="@color/ak_" android:gravity="center" android:id="@id/b7v" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/qmr" android:layout_alignParentRight="true" />
     </RelativeLayout>

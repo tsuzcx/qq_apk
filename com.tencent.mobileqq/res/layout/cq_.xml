@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="40.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/nd8" android:layout_width="10.0dip" android:layout_height="5.0dip" android:layout_marginLeft="56.0dip" android:src="@drawable/h1i" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <FrameLayout android:background="@drawable/h1p" android:layout_width="wrap_content" android:layout_height="35.0dip" android:layout_marginLeft="34.0dip" android:layout_marginTop="-0.5dip" android:layout_below="@id/nd8" android:layout_alignParentLeft="true">
-        <TextView android:textSize="@dimen/ayk" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/kbr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="9.5dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="9.5dip" android:text="@string/yn1" />
-    </FrameLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.av.ui.effect.view.QavEffectSlidingTabView android:id="@id/e1y" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentTop="true" app:tabIndicatorColor="#00000000" app:tabIndicatorHeight="0.0dip" app:tabIndicatorPadding="8.0dip" app:tabPadding="15.0dip" app:tabStartEndMargin="4.0dip" app:tabTextCheckedColor="@color/awe" app:tabTextNormalColor="@color/awd" app:tabTextSize="14.0dip" />
+    <View android:id="@id/e_1" android:background="#19ffffff" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/e1y" />
+    <com.tencent.av.ui.effect.view.EffectViewPager android:id="@id/kwk" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/e_1" />
 </RelativeLayout>

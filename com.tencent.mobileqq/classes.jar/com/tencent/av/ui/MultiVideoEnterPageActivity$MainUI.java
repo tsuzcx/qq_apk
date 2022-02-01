@@ -8,46 +8,40 @@ import android.widget.TextView;
 
 class MultiVideoEnterPageActivity$MainUI
 {
-  Button jdField_a_of_type_AndroidWidgetButton = null;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  Button jdField_b_of_type_AndroidWidgetButton = null;
-  TextView jdField_b_of_type_AndroidWidgetTextView = null;
+  Button a = null;
+  Button b = null;
+  RelativeLayout c = null;
+  TextView d = null;
+  LinearLayout e = null;
   
   void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetButton = null;
-    this.jdField_b_of_type_AndroidWidgetButton = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+    this.c = null;
+    this.d = null;
+    this.a = null;
+    this.b = null;
+    this.e = null;
   }
   
   void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    Object localObject = this.c;
     if (localObject != null) {
       ((RelativeLayout)localObject).setVisibility(paramInt);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.d;
     if (localObject != null) {
       ((TextView)localObject).setVisibility(paramInt);
     }
-    localObject = this.jdField_b_of_type_AndroidWidgetTextView;
-    if (localObject != null) {
-      ((TextView)localObject).setVisibility(paramInt);
-    }
-    localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    localObject = this.e;
     if (localObject != null) {
       ((LinearLayout)localObject).setVisibility(paramInt);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetButton;
+    localObject = this.a;
     if (localObject != null) {
       ((Button)localObject).setVisibility(paramInt);
     }
-    localObject = this.jdField_b_of_type_AndroidWidgetButton;
+    localObject = this.b;
     if ((localObject != null) && (paramInt != 0)) {
       ((Button)localObject).setVisibility(paramInt);
     }
@@ -55,12 +49,11 @@ class MultiVideoEnterPageActivity$MainUI
   
   void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131373542));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131373376));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131373375));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131373406));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131373399));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity.findViewById(2131373404));
+    this.c = ((RelativeLayout)paramActivity.findViewById(2131441215));
+    this.d = ((TextView)paramActivity.findViewById(2131441049));
+    this.a = ((Button)paramActivity.findViewById(2131441080));
+    this.b = ((Button)paramActivity.findViewById(2131441073));
+    this.e = ((LinearLayout)paramActivity.findViewById(2131441078));
   }
 }
 

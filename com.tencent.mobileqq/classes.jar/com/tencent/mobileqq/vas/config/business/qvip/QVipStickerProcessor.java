@@ -23,7 +23,7 @@ public class QVipStickerProcessor
   
   static
   {
-    int i = jdField_a_of_type_Int;
+    int i = a;
     b = i;
     c = i;
   }
@@ -37,12 +37,12 @@ public class QVipStickerProcessor
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("sticker_max_show_num_");
     localStringBuilder.append(str);
-    ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), jdField_a_of_type_Int);
+    ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), a);
     ((SharedPreferences.Editor)localObject).apply();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("sticker_max_send_num_");
     localStringBuilder.append(str);
-    ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), jdField_a_of_type_Int);
+    ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), a);
     ((SharedPreferences.Editor)localObject).commit();
     ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).flatBuffersParserSetEnable(true);
     return new QVipStickerConfig();
@@ -61,7 +61,7 @@ public class QVipStickerProcessor
     if (i < m)
     {
       localObject1 = paramArrayOfQConfItem[i];
-      k = ((QConfItem)localObject1).jdField_a_of_type_Int;
+      k = ((QConfItem)localObject1).a;
       if (k < j)
       {
         localObject1 = new StringBuilder();
@@ -76,14 +76,14 @@ public class QVipStickerProcessor
     {
       try
       {
-        JSONObject localJSONObject = new JSONObject(new String(((QConfItem)localObject1).jdField_a_of_type_JavaLangString.getBytes("utf-8")));
+        JSONObject localJSONObject = new JSONObject(new String(((QConfItem)localObject1).b.getBytes("utf-8")));
         localObject2 = localAppRuntime.getApp().getSharedPreferences("sticker_pref", 0).edit();
         StringBuilder localStringBuilder;
         if (localJSONObject.has("emojiMaxShowNum"))
         {
           c = localJSONObject.optInt("emojiMaxShowNum");
           if (c <= 0) {
-            c = jdField_a_of_type_Int;
+            c = a;
           }
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("sticker_max_show_num_");
@@ -95,7 +95,7 @@ public class QVipStickerProcessor
         {
           b = localJSONObject.optInt("emojiMaxStickNum");
           if (b <= 0) {
-            b = jdField_a_of_type_Int;
+            b = a;
           }
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("sticker_max_send_num_");
@@ -120,7 +120,7 @@ public class QVipStickerProcessor
         localJSONException.printStackTrace();
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("item.content=");
-        ((StringBuilder)localObject2).append(((QConfItem)localObject1).jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(((QConfItem)localObject1).b);
         ((StringBuilder)localObject2).append(" e=");
         ((StringBuilder)localObject2).append(localJSONException);
         SLog.e("QVipStickerProcessor", ((StringBuilder)localObject2).toString());
@@ -130,7 +130,7 @@ public class QVipStickerProcessor
         localUnsupportedEncodingException.printStackTrace();
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("item.content=");
-        ((StringBuilder)localObject2).append(((QConfItem)localObject1).jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(((QConfItem)localObject1).b);
         ((StringBuilder)localObject2).append(" e=");
         ((StringBuilder)localObject2).append(localUnsupportedEncodingException);
         SLog.e("QVipStickerProcessor", ((StringBuilder)localObject2).toString());
@@ -161,7 +161,7 @@ public class QVipStickerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipStickerProcessor
  * JD-Core Version:    0.7.0.1
  */

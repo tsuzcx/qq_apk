@@ -51,7 +51,7 @@ import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.subaccount.api.ISubAccountAssistantForward;
 import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
 import com.tencent.mobileqq.troop.api.ILaunchTroopSysMsgUIUtilApi;
-import com.tencent.mobileqq.troop.troopcard.TroopInfoActivity;
+import com.tencent.mobileqq.troop.troopcard.ui.TroopInfoActivity;
 import com.tencent.mobileqq.troop.utils.RecommendTroopUtils;
 import com.tencent.mobileqq.troop.utils.RobotUtils;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
@@ -70,7 +70,7 @@ public class SearchPieceFetcherImpl
 {
   public boolean bEnableFtsTroop()
   {
-    return SearchConfigUtils.c();
+    return SearchConfigUtils.d();
   }
   
   public int enterChatWin(Context paramContext, AppInterface paramAppInterface, String paramString1, int paramInt, String paramString2, boolean paramBoolean)
@@ -105,12 +105,12 @@ public class SearchPieceFetcherImpl
   
   public String getCurrKeyword()
   {
-    return UniteSearchActivity.b;
+    return UniteSearchActivity.g;
   }
   
   public DownloadParams.DecodeHandler getDecodeHandler()
   {
-    return URLDrawableDecodeHandler.a;
+    return URLDrawableDecodeHandler.b;
   }
   
   public Pair<Integer, Integer> getFaceTypeAndResId(AppInterface paramAppInterface, int paramInt, String paramString)
@@ -120,7 +120,7 @@ public class SearchPieceFetcherImpl
   
   public int getFromForHistoryCode()
   {
-    return UniteSearchActivity.d;
+    return UniteSearchActivity.f;
   }
   
   public String getJumpUrl(Context paramContext, String paramString1, String paramString2)
@@ -130,7 +130,7 @@ public class SearchPieceFetcherImpl
     int i = j;
     if (bool)
     {
-      i = ((UniteSearchActivity)paramContext).a;
+      i = ((UniteSearchActivity)paramContext).b;
       if (i != 1)
       {
         if (i != 2)
@@ -183,7 +183,7 @@ public class SearchPieceFetcherImpl
   
   public List<TroopAssistantSearchInfo> getTroopAssistantSearchInfos(AppInterface paramAppInterface)
   {
-    Object localObject = TroopAssistantManager.a().b((QQAppInterface)paramAppInterface);
+    Object localObject = TroopAssistantManager.a().n((QQAppInterface)paramAppInterface);
     paramAppInterface = new ArrayList();
     if (localObject != null)
     {
@@ -192,8 +192,8 @@ public class SearchPieceFetcherImpl
       {
         TroopAssistantData localTroopAssistantData = (TroopAssistantData)((Iterator)localObject).next();
         TroopAssistantSearchInfo localTroopAssistantSearchInfo = new TroopAssistantSearchInfo();
-        localTroopAssistantSearchInfo.jdField_a_of_type_Long = localTroopAssistantData.lastmsgtime;
-        localTroopAssistantSearchInfo.jdField_a_of_type_JavaLangString = localTroopAssistantData.troopUin;
+        localTroopAssistantSearchInfo.b = localTroopAssistantData.lastmsgtime;
+        localTroopAssistantSearchInfo.a = localTroopAssistantData.troopUin;
         paramAppInterface.add(localTroopAssistantSearchInfo);
       }
     }
@@ -222,7 +222,7 @@ public class SearchPieceFetcherImpl
   
   public void initAssistTroopCache(AppInterface paramAppInterface)
   {
-    TroopAssistantManager.a().h((QQAppInterface)paramAppInterface);
+    TroopAssistantManager.a().p((QQAppInterface)paramAppInterface);
   }
   
   public boolean isHippyEngineOn()
@@ -247,7 +247,7 @@ public class SearchPieceFetcherImpl
   
   public boolean isSpecialCareInfo(String paramString)
   {
-    return ((FriendsManager)MobileQQ.sMobileQQ.peekAppRuntime().getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString) != null;
+    return ((FriendsManager)MobileQQ.sMobileQQ.peekAppRuntime().getManager(QQManagerFactory.FRIENDS_MANAGER)).y(paramString) != null;
   }
   
   public boolean isUinInAssist(String paramString)
@@ -308,7 +308,7 @@ public class SearchPieceFetcherImpl
   
   public void setGlobalSearchConfNeedSeparate()
   {
-    Object localObject = (GlobalSearchConfBean)QConfigManager.a().a(414);
+    Object localObject = (GlobalSearchConfBean)QConfigManager.b().b(414);
     if (localObject != null)
     {
       SearchConfigManager.needSeparate = ((GlobalSearchConfBean)localObject).a();
@@ -403,18 +403,18 @@ public class SearchPieceFetcherImpl
   {
     paramContext = new Intent();
     paramContext.putExtra("key_tab_mode", 2);
-    int j = GroupSystemMsgController.a().a(paramAppInterface);
+    int j = GroupSystemMsgController.a().b(paramAppInterface);
     int i = j;
     if (j <= 0) {
       i = RecommendTroopUtils.b(paramAppInterface);
     }
-    ((QQAppInterface)paramAppInterface).getConversationFacade().d(AppConstants.TROOP_NOTIFICATION_UIN, 9000, -i);
+    ((QQAppInterface)paramAppInterface).getConversationFacade().e(AppConstants.TROOP_NOTIFICATION_UIN, 9000, -i);
     ((ILaunchTroopSysMsgUIUtilApi)QRoute.api(ILaunchTroopSysMsgUIUtilApi.class)).launchTroopNotificationFragment(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.api.impl.SearchPieceFetcherImpl
  * JD-Core Version:    0.7.0.1
  */

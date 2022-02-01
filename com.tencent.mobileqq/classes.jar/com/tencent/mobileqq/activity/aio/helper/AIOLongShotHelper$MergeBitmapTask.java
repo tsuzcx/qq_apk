@@ -7,51 +7,51 @@ import java.util.concurrent.atomic.AtomicBoolean;
 class AIOLongShotHelper$MergeBitmapTask
   implements Runnable
 {
-  private AIOLongShotHelper jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIOLongShotHelper;
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+  private AIOLongShotHelper a;
+  private final AtomicBoolean b = new AtomicBoolean();
   
   public AIOLongShotHelper$MergeBitmapTask(AIOLongShotHelper paramAIOLongShotHelper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIOLongShotHelper = paramAIOLongShotHelper;
+    this.a = paramAIOLongShotHelper;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.b.set(true);
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return this.b.get();
   }
   
   public void run()
   {
-    if (a())
+    if (b())
     {
       if (QLog.isColorLevel()) {
         QLog.d("AIOLongShotHelper", 2, "run() isCanceled before mergeBitmaps");
       }
-      AIOLongShotHelper.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIOLongShotHelper);
-      AIOLongShotHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIOLongShotHelper, true, false, null);
+      AIOLongShotHelper.e(this.a);
+      AIOLongShotHelper.a(this.a, true, false, null);
       return;
     }
-    Bitmap localBitmap = AIOLongShotHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIOLongShotHelper);
-    AIOLongShotHelper.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIOLongShotHelper);
-    if (a())
+    Bitmap localBitmap = AIOLongShotHelper.f(this.a);
+    AIOLongShotHelper.e(this.a);
+    if (b())
     {
       if (QLog.isColorLevel()) {
         QLog.d("AIOLongShotHelper", 2, "run() isCanceled before encodeAndWritePNG");
       }
-      AIOLongShotHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIOLongShotHelper, true, false, null);
+      AIOLongShotHelper.a(this.a, true, false, null);
       return;
     }
-    AIOLongShotHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIOLongShotHelper, localBitmap);
+    AIOLongShotHelper.a(this.a, localBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper.MergeBitmapTask
  * JD-Core Version:    0.7.0.1
  */

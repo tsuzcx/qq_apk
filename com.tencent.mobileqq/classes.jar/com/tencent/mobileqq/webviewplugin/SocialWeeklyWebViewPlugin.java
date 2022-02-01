@@ -308,7 +308,7 @@ public class SocialWeeklyWebViewPlugin
     }
     if (!TextUtils.isEmpty(this.a))
     {
-      localObject = this.mRuntime.a();
+      localObject = this.mRuntime.d();
       if (localObject != null)
       {
         Intent localIntent = new Intent();
@@ -323,7 +323,7 @@ public class SocialWeeklyWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webviewplugin.SocialWeeklyWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

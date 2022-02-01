@@ -11,17 +11,17 @@ class MusicFilePresenter$6$1
   
   public void run()
   {
-    if ((this.a.this$0.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService != null) && (this.a.this$0.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.b(this.a.this$0.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.b())))
+    if ((this.a.this$0.a != null) && (this.a.this$0.a.b(this.a.this$0.d.c())))
     {
-      int i = this.a.this$0.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.a();
+      int i = this.a.this$0.a.b();
       this.a.this$0.b(i);
-      MusicFilePresenter.a(this.a.this$0).a(i);
+      MusicFilePresenter.d(this.a.this$0).a(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.MusicFilePresenter.6.1
  * JD-Core Version:    0.7.0.1
  */

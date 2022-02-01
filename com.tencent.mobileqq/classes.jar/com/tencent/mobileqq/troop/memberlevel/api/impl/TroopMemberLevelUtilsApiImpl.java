@@ -27,37 +27,37 @@ public class TroopMemberLevelUtilsApiImpl
       }
       if (!TextUtils.isEmpty(paramString))
       {
-        paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = paramString;
-        paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(302);
+        paramTroopMemberRankItem.c = paramString;
+        paramTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(302);
       }
       else if (paramBoolean1)
       {
-        paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715513);
-        paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(300);
+        paramTroopMemberRankItem.c = HardCodeUtil.a(2131912986);
+        paramTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(300);
       }
       else if (paramBoolean2)
       {
-        paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715502);
-        paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(301);
+        paramTroopMemberRankItem.c = HardCodeUtil.a(2131912975);
+        paramTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(301);
       }
       else
       {
         paramTroopInfo = paramTroopInfo.getNewTroopLevelMap();
         if ((paramTroopInfo != null) && (paramTroopInfo.size() > 0)) {
-          paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = ((String)paramTroopInfo.get(Integer.valueOf(paramInt)));
+          paramTroopMemberRankItem.c = ((String)paramTroopInfo.get(Integer.valueOf(paramInt)));
         }
-        if (TextUtils.isEmpty(paramTroopMemberRankItem.jdField_a_of_type_JavaLangString)) {
-          paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankTitleByLevelInConfig(paramInt);
+        if (TextUtils.isEmpty(paramTroopMemberRankItem.c)) {
+          paramTroopMemberRankItem.c = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankTitleByLevelInConfig(paramInt);
         }
-        paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(315);
+        paramTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(315);
       }
       if ((paramBoolean1) && (!paramBoolean3))
       {
-        paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715513);
+        paramTroopMemberRankItem.c = HardCodeUtil.a(2131912986);
         return;
       }
       if ((paramBoolean2) && (!paramBoolean3)) {
-        paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715502);
+        paramTroopMemberRankItem.c = HardCodeUtil.a(2131912975);
       }
     }
   }
@@ -66,22 +66,22 @@ public class TroopMemberLevelUtilsApiImpl
   {
     if (paramInt == 332)
     {
-      paramTroopMemberRankItem.jdField_a_of_type_Int = 332;
-      paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715509);
-      paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(332);
-      paramTroopMemberRankItem.jdField_b_of_type_Boolean = true;
-      paramTroopMemberRankItem.jdField_b_of_type_ArrayOfInt = null;
-      paramTroopMemberRankItem.jdField_a_of_type_Boolean = false;
+      paramTroopMemberRankItem.a = 332;
+      paramTroopMemberRankItem.c = HardCodeUtil.a(2131912982);
+      paramTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(332);
+      paramTroopMemberRankItem.g = true;
+      paramTroopMemberRankItem.e = null;
+      paramTroopMemberRankItem.f = false;
       return;
     }
     if (paramInt == 333)
     {
-      paramTroopMemberRankItem.jdField_a_of_type_Int = 333;
-      paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715514);
-      paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(333);
-      paramTroopMemberRankItem.jdField_b_of_type_Boolean = true;
-      paramTroopMemberRankItem.jdField_b_of_type_ArrayOfInt = null;
-      paramTroopMemberRankItem.jdField_a_of_type_Boolean = false;
+      paramTroopMemberRankItem.a = 333;
+      paramTroopMemberRankItem.c = HardCodeUtil.a(2131912987);
+      paramTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(333);
+      paramTroopMemberRankItem.g = true;
+      paramTroopMemberRankItem.e = null;
+      paramTroopMemberRankItem.f = false;
     }
   }
   
@@ -89,22 +89,22 @@ public class TroopMemberLevelUtilsApiImpl
   {
     if (paramBoolean2)
     {
-      paramTroopMemberRankItem.jdField_a_of_type_Int = 300;
-      paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715513);
-      paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(300);
-      paramTroopMemberRankItem.jdField_b_of_type_Boolean = true;
-      paramTroopMemberRankItem.jdField_b_of_type_ArrayOfInt = null;
-      paramTroopMemberRankItem.jdField_a_of_type_Boolean = false;
+      paramTroopMemberRankItem.a = 300;
+      paramTroopMemberRankItem.c = HardCodeUtil.a(2131912986);
+      paramTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(300);
+      paramTroopMemberRankItem.g = true;
+      paramTroopMemberRankItem.e = null;
+      paramTroopMemberRankItem.f = false;
       return;
     }
     if (paramBoolean1)
     {
-      paramTroopMemberRankItem.jdField_a_of_type_Int = 301;
-      paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715502);
-      paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(301);
-      paramTroopMemberRankItem.jdField_b_of_type_Boolean = true;
-      paramTroopMemberRankItem.jdField_b_of_type_ArrayOfInt = null;
-      paramTroopMemberRankItem.jdField_a_of_type_Boolean = false;
+      paramTroopMemberRankItem.a = 301;
+      paramTroopMemberRankItem.c = HardCodeUtil.a(2131912975);
+      paramTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(301);
+      paramTroopMemberRankItem.g = true;
+      paramTroopMemberRankItem.e = null;
+      paramTroopMemberRankItem.f = false;
     }
   }
   
@@ -117,46 +117,46 @@ public class TroopMemberLevelUtilsApiImpl
       }
       if (paramInt2 == 302)
       {
-        paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = paramString;
-        paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(302);
+        paramTroopMemberRankItem.c = paramString;
+        paramTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(302);
       }
       else if (paramInt2 == 300)
       {
-        paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715513);
-        paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(300);
+        paramTroopMemberRankItem.c = HardCodeUtil.a(2131912986);
+        paramTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(300);
       }
       else if (paramInt2 == 301)
       {
-        paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715502);
-        paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(301);
+        paramTroopMemberRankItem.c = HardCodeUtil.a(2131912975);
+        paramTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(301);
       }
       else
       {
         paramTroopInfo = paramTroopInfo.getNewTroopLevelMap();
         if ((paramTroopInfo != null) && (paramTroopInfo.size() > 0)) {
-          paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = ((String)paramTroopInfo.get(Integer.valueOf(paramInt1)));
+          paramTroopMemberRankItem.c = ((String)paramTroopInfo.get(Integer.valueOf(paramInt1)));
         }
-        if (TextUtils.isEmpty(paramTroopMemberRankItem.jdField_a_of_type_JavaLangString)) {
-          paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankTitleByLevelInConfig(paramInt1);
+        if (TextUtils.isEmpty(paramTroopMemberRankItem.c)) {
+          paramTroopMemberRankItem.c = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankTitleByLevelInConfig(paramInt1);
         }
-        paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(315);
+        paramTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(315);
       }
       if ((paramBoolean1) && (!paramBoolean3))
       {
-        paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715513);
+        paramTroopMemberRankItem.c = HardCodeUtil.a(2131912986);
         return;
       }
       if ((paramBoolean2) && (!paramBoolean3)) {
-        paramTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715502);
+        paramTroopMemberRankItem.c = HardCodeUtil.a(2131912975);
       }
     }
   }
   
   public int convertOldLevelToNewLevel(int paramInt)
   {
-    Object localObject = (TroopMemberLevelMapConfig)QConfigManager.a().a(659);
+    Object localObject = (TroopMemberLevelMapConfig)QConfigManager.b().b(659);
     if (localObject != null) {
-      paramInt = ((TroopMemberLevelMapConfig)localObject).b(paramInt);
+      paramInt = ((TroopMemberLevelMapConfig)localObject).d(paramInt);
     } else {
       paramInt = 0;
     }
@@ -172,43 +172,43 @@ public class TroopMemberLevelUtilsApiImpl
   
   public int convertRealLevelToMapLevel(int paramInt)
   {
-    TroopMemberLevelMapConfig localTroopMemberLevelMapConfig = (TroopMemberLevelMapConfig)QConfigManager.a().a(659);
+    TroopMemberLevelMapConfig localTroopMemberLevelMapConfig = (TroopMemberLevelMapConfig)QConfigManager.b().b(659);
     if (localTroopMemberLevelMapConfig != null) {
-      return localTroopMemberLevelMapConfig.a(paramInt);
+      return localTroopMemberLevelMapConfig.c(paramInt);
     }
     return 0;
   }
   
   public String getNewGroupMemberLevelJumpUrl()
   {
-    TroopMemberLevelMapConfig localTroopMemberLevelMapConfig = (TroopMemberLevelMapConfig)QConfigManager.a().a(659);
+    TroopMemberLevelMapConfig localTroopMemberLevelMapConfig = (TroopMemberLevelMapConfig)QConfigManager.b().b(659);
     if (localTroopMemberLevelMapConfig != null) {
-      return localTroopMemberLevelMapConfig.a();
+      return localTroopMemberLevelMapConfig.b();
     }
     return "";
   }
   
   public int[] getOnlyLevelColor()
   {
-    TroopMemberLevelMapConfig localTroopMemberLevelMapConfig = (TroopMemberLevelMapConfig)QConfigManager.a().a(659);
+    TroopMemberLevelMapConfig localTroopMemberLevelMapConfig = (TroopMemberLevelMapConfig)QConfigManager.b().b(659);
     if (localTroopMemberLevelMapConfig != null) {
-      return localTroopMemberLevelMapConfig.a();
+      return localTroopMemberLevelMapConfig.c();
     }
     return null;
   }
   
   public int[] getRankGradientColorByRankId(int paramInt)
   {
-    TroopMemberLevelMapConfig localTroopMemberLevelMapConfig = (TroopMemberLevelMapConfig)QConfigManager.a().a(659);
+    TroopMemberLevelMapConfig localTroopMemberLevelMapConfig = (TroopMemberLevelMapConfig)QConfigManager.b().b(659);
     if (localTroopMemberLevelMapConfig != null) {
-      return localTroopMemberLevelMapConfig.a(paramInt);
+      return localTroopMemberLevelMapConfig.b(paramInt);
     }
     return null;
   }
   
   public String getRankTitleByLevelInConfig(int paramInt)
   {
-    Object localObject = (TroopMemberLevelMapConfig)QConfigManager.a().a(659);
+    Object localObject = (TroopMemberLevelMapConfig)QConfigManager.b().b(659);
     if (localObject != null) {
       localObject = ((TroopMemberLevelMapConfig)localObject).a(paramInt);
     } else {
@@ -245,8 +245,8 @@ public class TroopMemberLevelUtilsApiImpl
       } else {
         bool2 = false;
       }
-      localTroopMemberRankItem.jdField_b_of_type_Boolean = bool2;
-      localTroopMemberRankItem.jdField_a_of_type_Boolean = bool1;
+      localTroopMemberRankItem.g = bool2;
+      localTroopMemberRankItem.f = bool1;
       if ((!bool1) && (!bool2) && (!bool3) && (!bool4)) {
         return localTroopMemberRankItem;
       }
@@ -254,27 +254,27 @@ public class TroopMemberLevelUtilsApiImpl
       if (paramTroopInfo.isQidianPrivateTroop())
       {
         getOnlyShowOwnerAndAdminRank(localTroopMemberRankItem, bool4, bool3);
-        paramString1.handleRichLevel(localTroopMemberRankItem.jdField_a_of_type_Int, paramByte, localTroopMemberRankItem);
+        paramString1.handleRichLevel(localTroopMemberRankItem.a, paramByte, localTroopMemberRankItem);
         return localTroopMemberRankItem;
       }
       if (paramTroopInfo.isHomeworkTroop())
       {
         getHomeWorkTroopShowRank(localTroopMemberRankItem, paramInt2);
-        paramString1.handleRichLevel(localTroopMemberRankItem.jdField_a_of_type_Int, paramByte, localTroopMemberRankItem);
+        paramString1.handleRichLevel(localTroopMemberRankItem.a, paramByte, localTroopMemberRankItem);
         return localTroopMemberRankItem;
       }
-      if (SimpleUIUtil.a())
+      if (SimpleUIUtil.e())
       {
         getOnlyShowOwnerAndAdminRank(localTroopMemberRankItem, bool4, bool3);
-        paramString1.handleRichLevel(localTroopMemberRankItem.jdField_a_of_type_Int, paramByte, localTroopMemberRankItem);
+        paramString1.handleRichLevel(localTroopMemberRankItem.a, paramByte, localTroopMemberRankItem);
         return localTroopMemberRankItem;
       }
-      localTroopMemberRankItem.jdField_a_of_type_Int = paramInt2;
-      localTroopMemberRankItem.jdField_b_of_type_Boolean = bool2;
-      localTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(paramInt2);
-      localTroopMemberRankItem.jdField_a_of_type_Boolean = bool1;
-      localTroopMemberRankItem.jdField_b_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getOnlyLevelColor();
-      localTroopMemberRankItem.jdField_b_of_type_Int = paramInt1;
+      localTroopMemberRankItem.a = paramInt2;
+      localTroopMemberRankItem.g = bool2;
+      localTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(paramInt2);
+      localTroopMemberRankItem.f = bool1;
+      localTroopMemberRankItem.e = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getOnlyLevelColor();
+      localTroopMemberRankItem.b = paramInt1;
       paramInt1 = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).convertRealLevelToMapLevel(paramInt1);
       if ((paramInt2 < 10000) && (paramInt2 > 0)) {
         getSelfSelectRankItem(localTroopMemberRankItem, paramTroopInfo, bool3, bool4, bool2, paramInt1, paramInt2, paramString2);
@@ -284,8 +284,8 @@ public class TroopMemberLevelUtilsApiImpl
       if (bool3)
       {
         paramInt1 = 300;
-        localTroopMemberRankItem.jdField_b_of_type_Boolean = true;
-        localTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(300);
+        localTroopMemberRankItem.g = true;
+        localTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(300);
       }
       for (;;)
       {
@@ -293,8 +293,8 @@ public class TroopMemberLevelUtilsApiImpl
         if (bool4)
         {
           paramInt1 = 301;
-          localTroopMemberRankItem.jdField_b_of_type_Boolean = true;
-          localTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(301);
+          localTroopMemberRankItem.g = true;
+          localTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(301);
         }
         else if (!TextUtils.isEmpty(paramString2))
         {
@@ -320,38 +320,38 @@ public class TroopMemberLevelUtilsApiImpl
       }
       int i = 302;
       TroopMemberRankItem localTroopMemberRankItem = new TroopMemberRankItem();
-      localTroopMemberRankItem.jdField_a_of_type_Boolean = false;
-      localTroopMemberRankItem.jdField_b_of_type_Int = 0;
-      localTroopMemberRankItem.jdField_b_of_type_ArrayOfInt = null;
-      localTroopMemberRankItem.jdField_b_of_type_Boolean = true;
+      localTroopMemberRankItem.f = false;
+      localTroopMemberRankItem.b = 0;
+      localTroopMemberRankItem.e = null;
+      localTroopMemberRankItem.g = true;
       boolean bool1 = paramTroopInfo.isTroopOwner(paramString1);
       boolean bool2 = paramTroopInfo.isTroopAdmin(paramString1);
       if (!TextUtils.isEmpty(paramString2))
       {
-        localTroopMemberRankItem.jdField_a_of_type_JavaLangString = paramString2;
-        localTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(302);
+        localTroopMemberRankItem.c = paramString2;
+        localTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(302);
       }
       else if (bool1)
       {
-        localTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715513);
+        localTroopMemberRankItem.c = HardCodeUtil.a(2131912986);
       }
       else if (bool2)
       {
-        localTroopMemberRankItem.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715502);
+        localTroopMemberRankItem.c = HardCodeUtil.a(2131912975);
       }
       else
       {
-        localTroopMemberRankItem.jdField_a_of_type_JavaLangString = "";
+        localTroopMemberRankItem.c = "";
       }
       if (bool1)
       {
         i = 300;
-        localTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(300);
+        localTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(300);
       }
       else if (bool2)
       {
         i = 301;
-        localTroopMemberRankItem.jdField_a_of_type_ArrayOfInt = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(301);
+        localTroopMemberRankItem.d = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getRankGradientColorByRankId(301);
       }
       ((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).handleRichLevel(i, paramByte, localTroopMemberRankItem);
       return localTroopMemberRankItem;
@@ -361,7 +361,7 @@ public class TroopMemberLevelUtilsApiImpl
   
   public boolean hasNewGroupMemberLevelJumpUrl()
   {
-    TroopMemberLevelMapConfig localTroopMemberLevelMapConfig = (TroopMemberLevelMapConfig)QConfigManager.a().a(659);
+    TroopMemberLevelMapConfig localTroopMemberLevelMapConfig = (TroopMemberLevelMapConfig)QConfigManager.b().b(659);
     if ((localTroopMemberLevelMapConfig != null) && (localTroopMemberLevelMapConfig.a()))
     {
       if (QLog.isColorLevel()) {
@@ -377,9 +377,9 @@ public class TroopMemberLevelUtilsApiImpl
   
   public boolean isNewRealLevelGrayTroop(String paramString)
   {
-    Object localObject = (TroopMemberLevelMapConfig)QConfigManager.a().a(659);
+    Object localObject = (TroopMemberLevelMapConfig)QConfigManager.b().b(659);
     boolean bool;
-    if ((localObject != null) && (((TroopMemberLevelMapConfig)localObject).a(paramString))) {
+    if ((localObject != null) && (((TroopMemberLevelMapConfig)localObject).b(paramString))) {
       bool = true;
     } else {
       bool = false;
@@ -398,7 +398,7 @@ public class TroopMemberLevelUtilsApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.memberlevel.api.impl.TroopMemberLevelUtilsApiImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ public class GLDLoaderImpl
   public void onLoadSucess()
   {
     super.onLoadSucess();
-    if (DeviceInfoUtils.b()) {
+    if (DeviceInfoUtils.isLowPerfDevice()) {
       GLDrawableApi.config().setFpsLimit(20);
     }
   }

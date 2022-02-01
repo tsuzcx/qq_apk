@@ -3,7 +3,7 @@ package com.tencent.avgame.ipc;
 class AVGameServerIPCModule$UserFlag
 {
   String a;
-  public final boolean[] a = new boolean[2];
+  public final boolean[] b = new boolean[2];
 }
 
 

@@ -2,10 +2,8 @@ package com.tencent.tavsticker.core;
 
 import android.content.Context;
 import android.graphics.PointF;
-import android.opengl.EGLContext;
 import android.support.annotation.MainThread;
 import android.view.MotionEvent;
-import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -509,16 +507,10 @@ public class TAVStickerContext
     return false;
   }
   
-  public CMSampleBuffer renderSticker(long paramLong, List<TAVSourceImage> paramList, EGLContext paramEGLContext)
+  public CMSampleBuffer renderSticker(long paramLong, List<TAVSourceImage> paramList)
   {
     renderStickerEditView(paramLong);
-    return super.renderSticker(paramLong, paramList, paramEGLContext);
-  }
-  
-  public boolean renderSticker(Surface paramSurface, long paramLong, List<TAVSourceImage> paramList, EGLContext paramEGLContext)
-  {
-    renderStickerEditView(paramLong);
-    return super.renderSticker(paramSurface, paramLong, paramList, paramEGLContext);
+    return super.renderSticker(paramLong, paramList);
   }
   
   protected void renderStickerEditView(long paramLong)
@@ -611,7 +603,7 @@ public class TAVStickerContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerContext
  * JD-Core Version:    0.7.0.1
  */

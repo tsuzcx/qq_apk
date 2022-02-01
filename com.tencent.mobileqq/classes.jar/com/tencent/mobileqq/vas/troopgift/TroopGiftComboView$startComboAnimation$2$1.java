@@ -21,18 +21,20 @@ final class TroopGiftComboView$startComboAnimation$2$1
     if (paramValueAnimator != null)
     {
       float f = ((Float)paramValueAnimator).floatValue();
-      int i = (int)(this.jdField_a_of_type_ComTencentMobileqqVasTroopgiftTroopGiftComboView$startComboAnimation$2.$comboTimes * f);
-      paramValueAnimator = this.jdField_a_of_type_OrgLibpagPAGView.getFile();
-      if (paramValueAnimator != null) {
-        paramValueAnimator = paramValueAnimator.getTextData(0);
+      int i = (int)(this.a.$comboTimes * f);
+      PAGFile localPAGFile = (PAGFile)this.b.getComposition();
+      if (localPAGFile != null) {
+        paramValueAnimator = localPAGFile.getTextData(0);
       } else {
         paramValueAnimator = null;
       }
       if (paramValueAnimator != null) {
         paramValueAnimator.text = String.valueOf(i);
       }
-      this.jdField_a_of_type_OrgLibpagPAGView.setTextData(0, paramValueAnimator);
-      this.jdField_a_of_type_OrgLibpagPAGView.flush();
+      if (localPAGFile != null) {
+        localPAGFile.replaceText(0, paramValueAnimator);
+      }
+      this.b.flush();
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
@@ -40,7 +42,7 @@ final class TroopGiftComboView$startComboAnimation$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopgift.TroopGiftComboView.startComboAnimation.2.1
  * JD-Core Version:    0.7.0.1
  */

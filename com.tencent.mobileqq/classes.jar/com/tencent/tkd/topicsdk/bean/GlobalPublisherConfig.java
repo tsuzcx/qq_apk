@@ -4,7 +4,6 @@ import com.tencent.tkd.topicsdk.bean.globalconfig.AddToTopicConfig;
 import com.tencent.tkd.topicsdk.bean.globalconfig.BusinessToastConfig;
 import com.tencent.tkd.topicsdk.bean.globalconfig.CommodityConfig;
 import com.tencent.tkd.topicsdk.bean.globalconfig.InputPanelConfig;
-import com.tencent.tkd.topicsdk.bean.globalconfig.ManageTopicConfig;
 import com.tencent.tkd.topicsdk.bean.globalconfig.PrivacySettingConfig;
 import com.tencent.tkd.topicsdk.bean.globalconfig.ReprintAuthorityConfig;
 import com.tencent.tkd.topicsdk.framework.StorageManager;
@@ -24,7 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "Ljava/io/Serializable;", "()V", "addToTopicConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/AddToTopicConfig;", "getAddToTopicConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/AddToTopicConfig;", "setAddToTopicConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/AddToTopicConfig;)V", "allowCreateTweetTopic", "", "getAllowCreateTweetTopic", "()Z", "setAllowCreateTweetTopic", "(Z)V", "allowDeleteTweetTopic", "getAllowDeleteTweetTopic", "setAllowDeleteTweetTopic", "businessToastConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/BusinessToastConfig;", "getBusinessToastConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/BusinessToastConfig;", "setBusinessToastConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/BusinessToastConfig;)V", "circleId", "", "getCircleId", "()Ljava/lang/String;", "setCircleId", "(Ljava/lang/String;)V", "commodityConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/CommodityConfig;", "getCommodityConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/CommodityConfig;", "setCommodityConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/CommodityConfig;)V", "communityInfo", "Lcom/tencent/tkd/topicsdk/bean/CommunityInfo;", "getCommunityInfo", "()Lcom/tencent/tkd/topicsdk/bean/CommunityInfo;", "setCommunityInfo", "(Lcom/tencent/tkd/topicsdk/bean/CommunityInfo;)V", "countLimit", "", "getCountLimit", "()I", "setCountLimit", "(I)V", "defaultPublishText", "getDefaultPublishText", "setDefaultPublishText", "enableRestoreDraft", "getEnableRestoreDraft", "setEnableRestoreDraft", "enableSaveDraft", "getEnableSaveDraft", "setEnableSaveDraft", "eventInfo", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getEventInfo", "()Ljava/util/HashMap;", "setEventInfo", "(Ljava/util/HashMap;)V", "forbidHighLightText", "getForbidHighLightText", "setForbidHighLightText", "forbidJumpUrl", "getForbidJumpUrl", "setForbidJumpUrl", "forbidToastText", "getForbidToastText", "setForbidToastText", "inputPanelConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/InputPanelConfig;", "getInputPanelConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/InputPanelConfig;", "setInputPanelConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/InputPanelConfig;)V", "maxImageSize", "getMaxImageSize", "setMaxImageSize", "maxVideoLength", "getMaxVideoLength", "setMaxVideoLength", "minVideoLength", "getMinVideoLength", "setMinVideoLength", "navigationBarText", "getNavigationBarText", "setNavigationBarText", "needTextTruncation", "getNeedTextTruncation", "setNeedTextTruncation", "originContentInfo", "Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "getOriginContentInfo", "()Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "setOriginContentInfo", "(Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;)V", "originText", "getOriginText", "setOriginText", "originVideoInfo", "Lcom/tencent/tkd/topicsdk/bean/VideoInfo;", "getOriginVideoInfo", "()Lcom/tencent/tkd/topicsdk/bean/VideoInfo;", "setOriginVideoInfo", "(Lcom/tencent/tkd/topicsdk/bean/VideoInfo;)V", "permissionFlag", "getPermissionFlag", "setPermissionFlag", "placeHolder", "getPlaceHolder", "setPlaceHolder", "privacySettingConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/PrivacySettingConfig;", "getPrivacySettingConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/PrivacySettingConfig;", "setPrivacySettingConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/PrivacySettingConfig;)V", "publishScene", "getPublishScene", "setPublishScene", "publisherTheme", "getPublisherTheme", "setPublisherTheme", "recentTopicDismissTime", "getRecentTopicDismissTime", "setRecentTopicDismissTime", "reportInfo", "getReportInfo", "setReportInfo", "reprintAuthorityConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/ReprintAuthorityConfig;", "getReprintAuthorityConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/ReprintAuthorityConfig;", "setReprintAuthorityConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/ReprintAuthorityConfig;)V", "scene", "getScene", "setScene", "showAddLocation", "getShowAddLocation", "setShowAddLocation", "showAddToTopic", "getShowAddToTopic", "setShowAddToTopic", "showBottomSelectorPanel", "getShowBottomSelectorPanel", "setShowBottomSelectorPanel", "showCommentAfterPublish", "getShowCommentAfterPublish", "setShowCommentAfterPublish", "showCommunitySelector", "getShowCommunitySelector", "setShowCommunitySelector", "showDefaultColumn", "getShowDefaultColumn", "setShowDefaultColumn", "showDeliverToKDCommunity", "getShowDeliverToKDCommunity", "setShowDeliverToKDCommunity", "showExtraPropertyContainer", "getShowExtraPropertyContainer", "setShowExtraPropertyContainer", "showPrivacySetting", "getShowPrivacySetting", "setShowPrivacySetting", "showPublishToast", "getShowPublishToast", "setShowPublishToast", "showRecentTopic", "getShowRecentTopic", "setShowRecentTopic", "showReprintAuthority", "getShowReprintAuthority", "setShowReprintAuthority", "showSaveAlbums", "getShowSaveAlbums", "setShowSaveAlbums", "showTopicSelector", "getShowTopicSelector", "setShowTopicSelector", "topicConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/ManageTopicConfig;", "getTopicConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/ManageTopicConfig;", "setTopicConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/ManageTopicConfig;)V", "topicInfo", "Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "getTopicInfo", "()Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "setTopicInfo", "(Lcom/tencent/tkd/topicsdk/bean/TopicInfo;)V", "tweetTopicChoiceType", "getTweetTopicChoiceType", "setTweetTopicChoiceType", "applyValidProtect", "", "getEditObjectListByOriginText", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/weibo/bean/EditObject;", "Lkotlin/collections/ArrayList;", "getEditObjectTypeByValue", "Lcom/tencent/tkd/weibo/bean/EditObject$EditObjectType;", "type", "needShowSelectCommunityView", "ownerType", "needShowSelectTopicView", "putBottomPanelConfig", "eventInfoJson", "Lorg/json/JSONObject;", "putBusinessToastConfig", "putCircleID", "putColumnConfig", "putCommodityConfig", "putInputPanelConfig", "putKDCommunityConfig", "putNeedShowPublishToast", "putOriginVideoInfo", "putPermissionInfo", "putPrivacyConfig", "putPublishOwner", "putPublishScene", "putRecentTopicConfig", "putReportInfo", "putReprintAuthorityConfig", "updatePanelConfig", "updateSelectorConfig", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "Ljava/io/Serializable;", "()V", "addToTopicConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/AddToTopicConfig;", "getAddToTopicConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/AddToTopicConfig;", "setAddToTopicConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/AddToTopicConfig;)V", "allowCreateTweetTopic", "", "getAllowCreateTweetTopic", "()Z", "setAllowCreateTweetTopic", "(Z)V", "allowDeleteTweetTopic", "getAllowDeleteTweetTopic", "setAllowDeleteTweetTopic", "allowEmoji", "getAllowEmoji", "setAllowEmoji", "businessToastConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/BusinessToastConfig;", "getBusinessToastConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/BusinessToastConfig;", "setBusinessToastConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/BusinessToastConfig;)V", "circleId", "", "getCircleId", "()Ljava/lang/String;", "setCircleId", "(Ljava/lang/String;)V", "commodityConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/CommodityConfig;", "getCommodityConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/CommodityConfig;", "setCommodityConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/CommodityConfig;)V", "communityInfo", "Lcom/tencent/tkd/topicsdk/bean/CommunityInfo;", "getCommunityInfo", "()Lcom/tencent/tkd/topicsdk/bean/CommunityInfo;", "setCommunityInfo", "(Lcom/tencent/tkd/topicsdk/bean/CommunityInfo;)V", "contentLowerLimit", "", "getContentLowerLimit", "()I", "setContentLowerLimit", "(I)V", "contentUpperLimit", "getContentUpperLimit", "setContentUpperLimit", "defaultPublishText", "getDefaultPublishText", "setDefaultPublishText", "enableRestoreDraft", "getEnableRestoreDraft", "setEnableRestoreDraft", "enableSaveDraft", "getEnableSaveDraft", "setEnableSaveDraft", "eventInfo", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getEventInfo", "()Ljava/util/HashMap;", "setEventInfo", "(Ljava/util/HashMap;)V", "inputPanelConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/InputPanelConfig;", "getInputPanelConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/InputPanelConfig;", "setInputPanelConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/InputPanelConfig;)V", "maxImageSize", "getMaxImageSize", "setMaxImageSize", "maxVideoLength", "getMaxVideoLength", "setMaxVideoLength", "maxVideoSize", "getMaxVideoSize", "setMaxVideoSize", "minVideoLength", "getMinVideoLength", "setMinVideoLength", "navigationBarText", "getNavigationBarText", "setNavigationBarText", "needTextTruncation", "getNeedTextTruncation", "setNeedTextTruncation", "originContentInfo", "Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "getOriginContentInfo", "()Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "setOriginContentInfo", "(Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;)V", "originText", "getOriginText", "setOriginText", "originVideoInfo", "Lcom/tencent/tkd/topicsdk/bean/VideoInfo;", "getOriginVideoInfo", "()Lcom/tencent/tkd/topicsdk/bean/VideoInfo;", "setOriginVideoInfo", "(Lcom/tencent/tkd/topicsdk/bean/VideoInfo;)V", "permissionInfo", "Lcom/tencent/tkd/topicsdk/bean/PermissionInfo;", "getPermissionInfo", "()Lcom/tencent/tkd/topicsdk/bean/PermissionInfo;", "setPermissionInfo", "(Lcom/tencent/tkd/topicsdk/bean/PermissionInfo;)V", "placeHolder", "getPlaceHolder", "setPlaceHolder", "privacySettingConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/PrivacySettingConfig;", "getPrivacySettingConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/PrivacySettingConfig;", "setPrivacySettingConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/PrivacySettingConfig;)V", "publishScene", "getPublishScene", "setPublishScene", "publisherTheme", "getPublisherTheme", "setPublisherTheme", "recentTopicDismissTime", "getRecentTopicDismissTime", "setRecentTopicDismissTime", "reportInfo", "getReportInfo", "setReportInfo", "reprintAuthorityConfig", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/ReprintAuthorityConfig;", "getReprintAuthorityConfig", "()Lcom/tencent/tkd/topicsdk/bean/globalconfig/ReprintAuthorityConfig;", "setReprintAuthorityConfig", "(Lcom/tencent/tkd/topicsdk/bean/globalconfig/ReprintAuthorityConfig;)V", "scene", "getScene", "setScene", "showAddLocation", "getShowAddLocation", "setShowAddLocation", "showAddToTopic", "getShowAddToTopic", "setShowAddToTopic", "showBottomSelectorPanel", "getShowBottomSelectorPanel", "setShowBottomSelectorPanel", "showCommentAfterPublish", "getShowCommentAfterPublish", "setShowCommentAfterPublish", "showCommunitySelector", "getShowCommunitySelector", "setShowCommunitySelector", "showDefaultColumn", "getShowDefaultColumn", "setShowDefaultColumn", "showDeliverType", "getShowDeliverType", "setShowDeliverType", "showExtraPropertyContainer", "getShowExtraPropertyContainer", "setShowExtraPropertyContainer", "showOriginalTag", "getShowOriginalTag", "setShowOriginalTag", "showPrivacySetting", "getShowPrivacySetting", "setShowPrivacySetting", "showPublishToast", "getShowPublishToast", "setShowPublishToast", "showRecentTopic", "getShowRecentTopic", "setShowRecentTopic", "showSaveAlbums", "getShowSaveAlbums", "setShowSaveAlbums", "showTopicSelector", "getShowTopicSelector", "setShowTopicSelector", "topicInfo", "Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "getTopicInfo", "()Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "setTopicInfo", "(Lcom/tencent/tkd/topicsdk/bean/TopicInfo;)V", "tweetTopicChoiceType", "getTweetTopicChoiceType", "setTweetTopicChoiceType", "applyValidProtect", "", "getEditObjectListByOriginText", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/weibo/bean/EditObject;", "Lkotlin/collections/ArrayList;", "getEditObjectTypeByValue", "Lcom/tencent/tkd/weibo/bean/EditObject$EditObjectType;", "type", "needShowSelectCommunityView", "ownerType", "needShowSelectTopicView", "putBottomPanelConfig", "eventInfoJson", "Lorg/json/JSONObject;", "putBusinessToastConfig", "putCircleID", "putColumnConfig", "putCommodityConfig", "putInputPanelConfig", "putNeedShowPublishToast", "putOriginVideoInfo", "putPermissionInfo", "putPrivacyConfig", "putPublishOwner", "putPublishScene", "putRecentTopicConfig", "putReportInfo", "putReprintAuthorityConfig", "updateByRestrictInfo", "info", "Lcom/tencent/tkd/topicsdk/bean/PublishRestrictInfo;", "updatePanelConfig", "updateSelectorConfig", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class GlobalPublisherConfig
   implements Serializable
 {
@@ -33,6 +32,7 @@ public final class GlobalPublisherConfig
   private AddToTopicConfig addToTopicConfig = new AddToTopicConfig();
   private boolean allowCreateTweetTopic;
   private boolean allowDeleteTweetTopic = true;
+  private boolean allowEmoji = true;
   @NotNull
   private BusinessToastConfig businessToastConfig = new BusinessToastConfig();
   @NotNull
@@ -41,7 +41,8 @@ public final class GlobalPublisherConfig
   private CommodityConfig commodityConfig = new CommodityConfig();
   @Nullable
   private CommunityInfo communityInfo;
-  private int countLimit;
+  private int contentLowerLimit;
+  private int contentUpperLimit;
   @NotNull
   private String defaultPublishText = "";
   private boolean enableRestoreDraft = true;
@@ -49,15 +50,10 @@ public final class GlobalPublisherConfig
   @Nullable
   private HashMap<?, ?> eventInfo;
   @NotNull
-  private String forbidHighLightText = "";
-  @NotNull
-  private String forbidJumpUrl = "";
-  @NotNull
-  private String forbidToastText = "";
-  @NotNull
-  private InputPanelConfig inputPanelConfig = new InputPanelConfig(false, false, false, false, false, false, 63, null);
+  private InputPanelConfig inputPanelConfig = new InputPanelConfig(false, false, false, false, false, false, false, false, 255, null);
   private int maxImageSize = 15360;
   private int maxVideoLength = 60000;
+  private int maxVideoSize = 1048576;
   private int minVideoLength = 5000;
   @NotNull
   private String navigationBarText = "";
@@ -68,7 +64,8 @@ public final class GlobalPublisherConfig
   private String originText = "";
   @Nullable
   private VideoInfo originVideoInfo;
-  private int permissionFlag = 1;
+  @NotNull
+  private PermissionInfo permissionInfo = new PermissionInfo();
   @NotNull
   private String placeHolder = "";
   @NotNull
@@ -89,33 +86,17 @@ public final class GlobalPublisherConfig
   private boolean showCommentAfterPublish = true;
   private boolean showCommunitySelector;
   private boolean showDefaultColumn;
-  private boolean showDeliverToKDCommunity;
+  private boolean showDeliverType;
   private boolean showExtraPropertyContainer = true;
+  private boolean showOriginalTag;
   private boolean showPrivacySetting;
   private boolean showPublishToast = true;
   private boolean showRecentTopic;
-  private boolean showReprintAuthority;
   private boolean showSaveAlbums = true;
   private boolean showTopicSelector;
-  @NotNull
-  private ManageTopicConfig topicConfig = new ManageTopicConfig();
   @Nullable
   private TopicInfo topicInfo;
   private int tweetTopicChoiceType;
-  
-  private final EditObject.EditObjectType a(int paramInt)
-  {
-    if (paramInt == EditObject.EditObjectType.TYPE_AT.ordinal()) {
-      return EditObject.EditObjectType.TYPE_AT;
-    }
-    if (paramInt == EditObject.EditObjectType.TYPE_TOPIC.ordinal()) {
-      return EditObject.EditObjectType.TYPE_TOPIC;
-    }
-    if (paramInt == EditObject.EditObjectType.TYPE_URL.ordinal()) {
-      return EditObject.EditObjectType.TYPE_URL;
-    }
-    return EditObject.EditObjectType.TYPE_NORMAL;
-  }
   
   private final void a()
   {
@@ -260,15 +241,35 @@ public final class GlobalPublisherConfig
     return bool1;
   }
   
+  private final EditObject.EditObjectType c(int paramInt)
+  {
+    if (paramInt == EditObject.EditObjectType.TYPE_AT.ordinal()) {
+      return EditObject.EditObjectType.TYPE_AT;
+    }
+    if (paramInt == EditObject.EditObjectType.TYPE_TOPIC.ordinal()) {
+      return EditObject.EditObjectType.TYPE_TOPIC;
+    }
+    if (paramInt == EditObject.EditObjectType.TYPE_URL.ordinal()) {
+      return EditObject.EditObjectType.TYPE_URL;
+    }
+    return EditObject.EditObjectType.TYPE_NORMAL;
+  }
+  
   private final void c(JSONObject paramJSONObject)
   {
     Object localObject = paramJSONObject.optJSONObject("businessToastConfig");
     if (localObject != null)
     {
       paramJSONObject = new BusinessToastConfig();
-      localObject = ((JSONObject)localObject).optString("publishSuccessToast");
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "info.optString(J_KEY_PUBLISH_SUCCESS_TOAST)");
-      paramJSONObject.setPublishSuccessToast((String)localObject);
+      String str = ((JSONObject)localObject).optString("publishSuccessToast");
+      Intrinsics.checkExpressionValueIsNotNull(str, "info.optString(J_KEY_PUBLISH_SUCCESS_TOAST)");
+      paramJSONObject.setPublishSuccessToast(str);
+      str = ((JSONObject)localObject).optString("publishFailToast");
+      Intrinsics.checkExpressionValueIsNotNull(str, "info.optString(J_KEY_PUBLISH_FAIL_TOAST)");
+      paramJSONObject.setPublishFailToast(str);
+      localObject = ((JSONObject)localObject).optString("saveDraftToast");
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "info.optString(J_KEY_SAVE_DRAFT_TOAST)");
+      paramJSONObject.setSaveDraftToast((String)localObject);
       this.businessToastConfig = paramJSONObject;
     }
   }
@@ -294,19 +295,20 @@ public final class GlobalPublisherConfig
   
   private final void e(JSONObject paramJSONObject)
   {
-    paramJSONObject = paramJSONObject.optJSONObject("permissionInfo");
-    if (paramJSONObject != null)
+    Object localObject = paramJSONObject.optJSONObject("permissionInfo");
+    if (localObject != null)
     {
-      this.permissionFlag = paramJSONObject.optInt("hasPermission", 1);
-      String str = paramJSONObject.optString("text");
-      Intrinsics.checkExpressionValueIsNotNull(str, "optString(J_KEY_TEXT)");
-      this.forbidToastText = str;
-      str = paramJSONObject.optString("highLightText");
-      Intrinsics.checkExpressionValueIsNotNull(str, "optString(J_KEY_HIGH_LIGHT_TEXT)");
-      this.forbidHighLightText = str;
-      paramJSONObject = paramJSONObject.optString("jumpUrl");
-      Intrinsics.checkExpressionValueIsNotNull(paramJSONObject, "optString(J_KEY_JUMP_URL)");
-      this.forbidJumpUrl = paramJSONObject;
+      paramJSONObject = this.permissionInfo;
+      paramJSONObject.setPermissionFlag(((JSONObject)localObject).optInt("hasPermission", 1));
+      String str = ((JSONObject)localObject).optString("text");
+      Intrinsics.checkExpressionValueIsNotNull(str, "info.optString(J_KEY_TEXT)");
+      paramJSONObject.setForbidToastText(str);
+      str = ((JSONObject)localObject).optString("highLightText");
+      Intrinsics.checkExpressionValueIsNotNull(str, "info.optString(J_KEY_HIGH_LIGHT_TEXT)");
+      paramJSONObject.setForbidHighLightText(str);
+      localObject = ((JSONObject)localObject).optString("jumpUrl");
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "info.optString(J_KEY_JUMP_URL)");
+      paramJSONObject.setForbidJumpUrl((String)localObject);
     }
   }
   
@@ -314,7 +316,7 @@ public final class GlobalPublisherConfig
   {
     int j = paramJSONObject.optInt("allowKOL");
     int i = 0;
-    if ((j == 1) || (StorageManager.a(StorageManager.a, "kolPermissionView", false, 2, null)) || (Intrinsics.areEqual(this.publishScene, "KOL"))) {
+    if ((j == 1) || (StorageManager.a(StorageManager.b, "kolPermissionView", false, 2, null)) || (Intrinsics.areEqual(this.publishScene, "KOL"))) {
       i = 1;
     }
     if (i != 0) {
@@ -369,7 +371,7 @@ public final class GlobalPublisherConfig
     } else {
       i = 0;
     }
-    if ((i != 0) && (StorageManager.a(StorageManager.a, "useDebugCircleIdView", false, 2, null))) {
+    if ((i != 0) && (StorageManager.a(StorageManager.b, "useDebugCircleIdView", false, 2, null))) {
       i = j;
     } else {
       i = 0;
@@ -419,7 +421,19 @@ public final class GlobalPublisherConfig
     } else {
       bool6 = false;
     }
-    this.inputPanelConfig = new InputPanelConfig(bool1, bool2, bool3, bool4, bool5, bool6);
+    boolean bool7;
+    if ((i & 0x80) != 0) {
+      bool7 = true;
+    } else {
+      bool7 = false;
+    }
+    boolean bool8;
+    if ((i & 0x100) != 0) {
+      bool8 = true;
+    } else {
+      bool8 = false;
+    }
+    this.inputPanelConfig = new InputPanelConfig(bool1, bool2, bool3, bool4, bool5, bool6, bool7, bool8);
   }
   
   private final void j(JSONObject paramJSONObject)
@@ -444,6 +458,7 @@ public final class GlobalPublisherConfig
     {
       this.minVideoLength = (paramJSONObject.optInt("minVideoLength", 5) * 1000);
       this.maxVideoLength = (paramJSONObject.optInt("maxVideoLength", 60) * 1000);
+      this.maxVideoSize = paramJSONObject.optInt("maxVideoSize", 1048576);
     }
   }
   
@@ -473,7 +488,7 @@ public final class GlobalPublisherConfig
     if (paramJSONObject != null)
     {
       ReprintAuthorityConfig localReprintAuthorityConfig = new ReprintAuthorityConfig();
-      this.showReprintAuthority = paramJSONObject.optBoolean("showAuthority");
+      this.showDeliverType = paramJSONObject.optBoolean("showAuthority");
       localReprintAuthorityConfig.setAllowReprint(paramJSONObject.optBoolean("allowReprint"));
       this.reprintAuthorityConfig = localReprintAuthorityConfig;
     }
@@ -542,32 +557,6 @@ public final class GlobalPublisherConfig
     }
   }
   
-  private final void p(JSONObject paramJSONObject)
-  {
-    int j = 0;
-    this.showDeliverToKDCommunity = paramJSONObject.optBoolean("showKDCommunity", false);
-    String str = paramJSONObject.optString("kdCommunityId", "");
-    paramJSONObject = paramJSONObject.optString("kdCommunityName", "");
-    Intrinsics.checkExpressionValueIsNotNull(str, "kdCommunityId");
-    int i;
-    if (((CharSequence)str).length() > 0) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (i != 0)
-    {
-      Intrinsics.checkExpressionValueIsNotNull(paramJSONObject, "kdCommunityName");
-      i = j;
-      if (((CharSequence)paramJSONObject).length() > 0) {
-        i = 1;
-      }
-      if (i != 0) {
-        this.communityInfo = new CommunityInfo(str, null, null, paramJSONObject, null, null, 54, null);
-      }
-    }
-  }
-  
   public final void applyValidProtect()
   {
     boolean bool = this.inputPanelConfig.getShowEmotionLPanel();
@@ -584,8 +573,8 @@ public final class GlobalPublisherConfig
       bool = true;
     }
     this.showExtraPropertyContainer = bool;
-    if (this.countLimit == 0) {
-      this.countLimit = 500;
+    if (this.contentUpperLimit == 0) {
+      this.contentUpperLimit = 500;
     }
     if (((CharSequence)this.placeHolder).length() != 0) {
       i = 0;
@@ -616,6 +605,11 @@ public final class GlobalPublisherConfig
     return this.allowDeleteTweetTopic;
   }
   
+  public final boolean getAllowEmoji()
+  {
+    return this.allowEmoji;
+  }
+  
   @NotNull
   public final BusinessToastConfig getBusinessToastConfig()
   {
@@ -640,9 +634,14 @@ public final class GlobalPublisherConfig
     return this.communityInfo;
   }
   
-  public final int getCountLimit()
+  public final int getContentLowerLimit()
   {
-    return this.countLimit;
+    return this.contentLowerLimit;
+  }
+  
+  public final int getContentUpperLimit()
+  {
+    return this.contentUpperLimit;
   }
   
   @NotNull
@@ -705,7 +704,7 @@ public final class GlobalPublisherConfig
         break;
       }
       localObject2 = (JSONObject)localObject2;
-      Object localObject3 = a(((JSONObject)localObject2).optInt("type"));
+      Object localObject3 = c(((JSONObject)localObject2).optInt("type"));
       String str = ((JSONObject)localObject2).optString("wording");
       Intrinsics.checkExpressionValueIsNotNull(str, "curTextInfo.optString(J_KEY_WORDING)");
       localObject3 = new EditObject(str, (EditObject.EditObjectType)localObject3);
@@ -747,24 +746,6 @@ public final class GlobalPublisherConfig
   }
   
   @NotNull
-  public final String getForbidHighLightText()
-  {
-    return this.forbidHighLightText;
-  }
-  
-  @NotNull
-  public final String getForbidJumpUrl()
-  {
-    return this.forbidJumpUrl;
-  }
-  
-  @NotNull
-  public final String getForbidToastText()
-  {
-    return this.forbidToastText;
-  }
-  
-  @NotNull
   public final InputPanelConfig getInputPanelConfig()
   {
     return this.inputPanelConfig;
@@ -778,6 +759,11 @@ public final class GlobalPublisherConfig
   public final int getMaxVideoLength()
   {
     return this.maxVideoLength;
+  }
+  
+  public final int getMaxVideoSize()
+  {
+    return this.maxVideoSize;
   }
   
   public final int getMinVideoLength()
@@ -814,9 +800,10 @@ public final class GlobalPublisherConfig
     return this.originVideoInfo;
   }
   
-  public final int getPermissionFlag()
+  @NotNull
+  public final PermissionInfo getPermissionInfo()
   {
-    return this.permissionFlag;
+    return this.permissionInfo;
   }
   
   @NotNull
@@ -895,14 +882,19 @@ public final class GlobalPublisherConfig
     return this.showDefaultColumn;
   }
   
-  public final boolean getShowDeliverToKDCommunity()
+  public final boolean getShowDeliverType()
   {
-    return this.showDeliverToKDCommunity;
+    return this.showDeliverType;
   }
   
   public final boolean getShowExtraPropertyContainer()
   {
     return this.showExtraPropertyContainer;
+  }
+  
+  public final boolean getShowOriginalTag()
+  {
+    return this.showOriginalTag;
   }
   
   public final boolean getShowPrivacySetting()
@@ -920,11 +912,6 @@ public final class GlobalPublisherConfig
     return this.showRecentTopic;
   }
   
-  public final boolean getShowReprintAuthority()
-  {
-    return this.showReprintAuthority;
-  }
-  
   public final boolean getShowSaveAlbums()
   {
     return this.showSaveAlbums;
@@ -933,12 +920,6 @@ public final class GlobalPublisherConfig
   public final boolean getShowTopicSelector()
   {
     return this.showTopicSelector;
-  }
-  
-  @NotNull
-  public final ManageTopicConfig getTopicConfig()
-  {
-    return this.topicConfig;
   }
   
   @Nullable
@@ -968,6 +949,11 @@ public final class GlobalPublisherConfig
     this.allowDeleteTweetTopic = paramBoolean;
   }
   
+  public final void setAllowEmoji(boolean paramBoolean)
+  {
+    this.allowEmoji = paramBoolean;
+  }
+  
   public final void setBusinessToastConfig(@NotNull BusinessToastConfig paramBusinessToastConfig)
   {
     Intrinsics.checkParameterIsNotNull(paramBusinessToastConfig, "<set-?>");
@@ -991,9 +977,14 @@ public final class GlobalPublisherConfig
     this.communityInfo = paramCommunityInfo;
   }
   
-  public final void setCountLimit(int paramInt)
+  public final void setContentLowerLimit(int paramInt)
   {
-    this.countLimit = paramInt;
+    this.contentLowerLimit = paramInt;
+  }
+  
+  public final void setContentUpperLimit(int paramInt)
+  {
+    this.contentUpperLimit = paramInt;
   }
   
   public final void setDefaultPublishText(@NotNull String paramString)
@@ -1017,24 +1008,6 @@ public final class GlobalPublisherConfig
     this.eventInfo = paramHashMap;
   }
   
-  public final void setForbidHighLightText(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.forbidHighLightText = paramString;
-  }
-  
-  public final void setForbidJumpUrl(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.forbidJumpUrl = paramString;
-  }
-  
-  public final void setForbidToastText(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.forbidToastText = paramString;
-  }
-  
   public final void setInputPanelConfig(@NotNull InputPanelConfig paramInputPanelConfig)
   {
     Intrinsics.checkParameterIsNotNull(paramInputPanelConfig, "<set-?>");
@@ -1049,6 +1022,11 @@ public final class GlobalPublisherConfig
   public final void setMaxVideoLength(int paramInt)
   {
     this.maxVideoLength = paramInt;
+  }
+  
+  public final void setMaxVideoSize(int paramInt)
+  {
+    this.maxVideoSize = paramInt;
   }
   
   public final void setMinVideoLength(int paramInt)
@@ -1083,9 +1061,10 @@ public final class GlobalPublisherConfig
     this.originVideoInfo = paramVideoInfo;
   }
   
-  public final void setPermissionFlag(int paramInt)
+  public final void setPermissionInfo(@NotNull PermissionInfo paramPermissionInfo)
   {
-    this.permissionFlag = paramInt;
+    Intrinsics.checkParameterIsNotNull(paramPermissionInfo, "<set-?>");
+    this.permissionInfo = paramPermissionInfo;
   }
   
   public final void setPlaceHolder(@NotNull String paramString)
@@ -1163,14 +1142,19 @@ public final class GlobalPublisherConfig
     this.showDefaultColumn = paramBoolean;
   }
   
-  public final void setShowDeliverToKDCommunity(boolean paramBoolean)
+  public final void setShowDeliverType(boolean paramBoolean)
   {
-    this.showDeliverToKDCommunity = paramBoolean;
+    this.showDeliverType = paramBoolean;
   }
   
   public final void setShowExtraPropertyContainer(boolean paramBoolean)
   {
     this.showExtraPropertyContainer = paramBoolean;
+  }
+  
+  public final void setShowOriginalTag(boolean paramBoolean)
+  {
+    this.showOriginalTag = paramBoolean;
   }
   
   public final void setShowPrivacySetting(boolean paramBoolean)
@@ -1188,11 +1172,6 @@ public final class GlobalPublisherConfig
     this.showRecentTopic = paramBoolean;
   }
   
-  public final void setShowReprintAuthority(boolean paramBoolean)
-  {
-    this.showReprintAuthority = paramBoolean;
-  }
-  
   public final void setShowSaveAlbums(boolean paramBoolean)
   {
     this.showSaveAlbums = paramBoolean;
@@ -1201,12 +1180,6 @@ public final class GlobalPublisherConfig
   public final void setShowTopicSelector(boolean paramBoolean)
   {
     this.showTopicSelector = paramBoolean;
-  }
-  
-  public final void setTopicConfig(@NotNull ManageTopicConfig paramManageTopicConfig)
-  {
-    Intrinsics.checkParameterIsNotNull(paramManageTopicConfig, "<set-?>");
-    this.topicConfig = paramManageTopicConfig;
   }
   
   public final void setTopicInfo(@Nullable TopicInfo paramTopicInfo)
@@ -1218,10 +1191,39 @@ public final class GlobalPublisherConfig
   {
     this.tweetTopicChoiceType = paramInt;
   }
+  
+  public final void updateByRestrictInfo(@NotNull PublishRestrictInfo paramPublishRestrictInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPublishRestrictInfo, "info");
+    int i;
+    if (paramPublishRestrictInfo.h())
+    {
+      i = this.permissionInfo.getPermissionFlag();
+      this.permissionInfo.setPermissionFlag(PermissionInfo.Companion.c(i));
+    }
+    Object localObject = paramPublishRestrictInfo.i();
+    if ((localObject != null) && (localObject != null))
+    {
+      i = this.permissionInfo.getPermissionFlag();
+      this.permissionInfo.setPermissionFlag(PermissionInfo.Companion.a(i));
+      this.permissionInfo.setPermissionStyle(2);
+      this.permissionInfo.setDialogInfo((DialogInfo)localObject);
+    }
+    this.showOriginalTag = paramPublishRestrictInfo.a();
+    if (paramPublishRestrictInfo.b())
+    {
+      this.contentUpperLimit = paramPublishRestrictInfo.c();
+      this.contentLowerLimit = paramPublishRestrictInfo.d();
+    }
+    localObject = this.inputPanelConfig;
+    ((InputPanelConfig)localObject).setShowTopicPanel(paramPublishRestrictInfo.e());
+    ((InputPanelConfig)localObject).setShowInvitedManuscript(paramPublishRestrictInfo.f());
+    this.allowEmoji = paramPublishRestrictInfo.g();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig
  * JD-Core Version:    0.7.0.1
  */

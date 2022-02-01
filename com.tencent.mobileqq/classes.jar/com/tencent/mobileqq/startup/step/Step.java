@@ -20,51 +20,51 @@ public class Step
   public static final int STEP_HACK_ALL_VM = 43;
   public static final int STEP_HACK_AVM = 42;
   public static final int STEP_HACK_DVM = 41;
-  public static final int STEP_HUAYANG_PLUGIN_CONTAINER = 37;
-  public static final int STEP_INIT_HOOK = 29;
+  public static final int STEP_HUAYANG_PLUGIN_CONTAINER = 38;
+  public static final int STEP_INIT_HOOK = 30;
   public static final int STEP_INIT_MAGNIFIERSDK = 16;
+  public static final int STEP_INIT_RMONITORSDK = 17;
   public static final int STEP_INIT_SKIN = 11;
-  public static final int STEP_INJECT_BITMAP_PATCH = 32;
-  public static final int STEP_INSTALL_OPTIMZIED_PLUGINS = 36;
+  public static final int STEP_INJECT_BITMAP_PATCH = 33;
+  public static final int STEP_INSTALL_OPTIMZIED_PLUGINS = 37;
   public static final int STEP_LITESDK_ON_TOOL_PROCESS = 50;
   public static final int STEP_LOAD_DATA = 7;
   public static final int STEP_LOAD_MODULE = 6;
-  public static final int STEP_LOAD_OTHER = 18;
-  public static final int STEP_LOAD_UI = 17;
+  public static final int STEP_LOAD_OTHER = 19;
+  public static final int STEP_LOAD_UI = 18;
   public static final int STEP_MANAGE_THREAD = 15;
   public static final int STEP_MEMORY_CACHE = 8;
-  public static final int STEP_MIGRATE_SUBSCRIBE_DB = 33;
+  public static final int STEP_MIGRATE_SUBSCRIBE_DB = 34;
   public static final int STEP_MONITOR_QZONE_STARTUP = 39;
-  public static final int STEP_MORE_DATA = 19;
+  public static final int STEP_MORE_DATA = 20;
   public static final int STEP_NEW_RUNTIME = 5;
   public static final int STEP_NOW_LIVE_CONTAINER = 46;
   public static final int STEP_OLD_ONCREATE = 9;
   public static final int STEP_OPEN_THRED_CREATE_HOOK = 40;
-  public static final int STEP_PRE_INIT_VALUES = 31;
+  public static final int STEP_PRE_INIT_VALUES = 32;
   public static final int STEP_QCIRCLE_INITIALIZE = 49;
   public static final int STEP_QQLIVE_AND_STUDY_ROOM_PLUGIN = 47;
   public static final int STEP_QSHADOW_PLUGIN_INITSTEP = 51;
-  public static final int STEP_QZONE_HOOK_THREAD = 38;
-  public static final int STEP_QZONE_PERFORMANCE_TRACER = 20;
+  public static final int STEP_QZONE_PERFORMANCE_TRACER = 21;
   public static final int STEP_RDM = 14;
   public static final int STEP_RECORD_REPORT_REGISTER = 45;
   public static final int STEP_SET_PERMISSION = 3;
-  public static final int STEP_SET_PLUGIN = 26;
+  public static final int STEP_SET_PLUGIN = 27;
   public static final int STEP_SET_SPLASH = 2;
   public static final int STEP_START_SERVICE = 10;
-  public static final int STEP_START_SERVICE_LITE = 21;
-  public static final int STEP_START_SERVICE_LITE_CMP = 22;
+  public static final int STEP_START_SERVICE_LITE = 22;
+  public static final int STEP_START_SERVICE_LITE_CMP = 23;
   public static final int STEP_TRY_LOAD_DEX = 1;
   public static final int STEP_UPDATE = 13;
-  public static final int STEP_UPDATE_ARKSO = 25;
-  public static final int STEP_UPDATE_AVSO = 24;
-  public static final int STEP_UPDATE_BUBBLE = 23;
-  public static final int STEP_UPDATE_PATCH_CONFIG = 34;
-  public static final int STEP_UPDATE_PLUGIN_VERSION = 27;
-  public static final int STEP_UPDATE_SECURE_FILE_STRATEGY = 35;
-  public static final int STEP_UPGRAD_DB = 30;
+  public static final int STEP_UPDATE_ARKSO = 26;
+  public static final int STEP_UPDATE_AVSO = 25;
+  public static final int STEP_UPDATE_BUBBLE = 24;
+  public static final int STEP_UPDATE_PATCH_CONFIG = 35;
+  public static final int STEP_UPDATE_PLUGIN_VERSION = 28;
+  public static final int STEP_UPDATE_SECURE_FILE_STRATEGY = 36;
+  public static final int STEP_UPGRAD_DB = 31;
   public static final int STEP_URL_DRAWABLE = 12;
-  public static final int STEP_WEBP = 28;
+  public static final int STEP_WEBP = 29;
   protected StartupDirector mDirector;
   private Handler mHandler;
   protected int mId;
@@ -117,7 +117,7 @@ public class Step
       localThread = null;
     }
     long l;
-    if (StartupDirector.a)
+    if (StartupDirector.b)
     {
       l = SystemClock.uptimeMillis();
       if (Looper.myLooper() == Looper.getMainLooper()) {
@@ -140,7 +140,7 @@ public class Step
     {
       QLog.e("AutoMonitor", 1, "", localThrowable);
     }
-    if (StartupDirector.a)
+    if (StartupDirector.b)
     {
       if (Looper.myLooper() == Looper.getMainLooper()) {
         TraceUtils.traceEnd();
@@ -166,7 +166,7 @@ public class Step
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Step
  * JD-Core Version:    0.7.0.1
  */

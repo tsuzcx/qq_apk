@@ -13,17 +13,17 @@ final class Changeset$13
   
   public String a(Matcher paramMatcher)
   {
-    paramMatcher = this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.a(Changeset.a(paramMatcher.group(1)));
+    paramMatcher = this.a.a(Changeset.b(paramMatcher.group(1)));
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.b.size())
     {
-      Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
+      Pair localPair = (Pair)this.b.get(i);
       if (((String)paramMatcher.first).equals(localPair.first))
       {
         if (((String)paramMatcher.second).compareTo((String)localPair.second) > 0) {
           break;
         }
-        Utils.a(this.jdField_a_of_type_JavaUtilList, i, 1);
+        Utils.a(this.b, i, 1);
         break;
       }
       i += 1;
@@ -33,7 +33,7 @@ final class Changeset$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Changeset.13
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,12 @@ public class LinkVideoInfoController$StoryVideoPublishStatusReceiver
   
   public void a(@NonNull LinkVideoInfoController paramLinkVideoInfoController, @NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    if ((LinkVideoInfoController.a(paramLinkVideoInfoController) != null) && (paramStoryVideoPublishStatusEvent.a != null))
+    if ((LinkVideoInfoController.a(paramLinkVideoInfoController) != null) && (paramStoryVideoPublishStatusEvent.c != null))
     {
-      if (!TextUtils.equals(LinkVideoInfoController.a(paramLinkVideoInfoController).a, paramStoryVideoPublishStatusEvent.a.mVid)) {
+      if (!TextUtils.equals(LinkVideoInfoController.a(paramLinkVideoInfoController).b, paramStoryVideoPublishStatusEvent.c.mVid)) {
         return;
       }
-      paramLinkVideoInfoController.a.i();
+      paramLinkVideoInfoController.a.x();
     }
   }
   

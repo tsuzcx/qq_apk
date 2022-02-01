@@ -9,13 +9,13 @@ import com.tribe.async.reactive.Stream;
 
 public class MsgTabVideoPreloaderDataProvider
 {
-  private int jdField_a_of_type_Int = 1;
-  private boolean jdField_a_of_type_Boolean = true;
+  private boolean a = true;
   private boolean b = true;
+  private int c = 1;
   
   public void a(@NonNull MsgTabNodeInfo paramMsgTabNodeInfo, MsgTabVideoPreloaderDataProvider.DataProviderListener paramDataProviderListener)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       if (this.b)
       {
@@ -34,7 +34,7 @@ public class MsgTabVideoPreloaderDataProvider
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void b(boolean paramBoolean)
@@ -44,7 +44,7 @@ public class MsgTabVideoPreloaderDataProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider
  * JD-Core Version:    0.7.0.1
  */

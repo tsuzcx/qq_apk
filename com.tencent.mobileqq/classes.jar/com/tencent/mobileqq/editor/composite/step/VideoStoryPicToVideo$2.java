@@ -10,11 +10,11 @@ class VideoStoryPicToVideo$2
   
   public void onFailure(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$ConvertListener != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$RetCode.a(943004);
-      this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$RetCode.a(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$ConvertListener.b(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$RetCode);
+      this.b.a(943004);
+      this.b.a(paramString);
+      this.a.b(this.b);
     }
     if (QLog.isColorLevel()) {
       QLog.d("VideoStoryPicToVideo", 2, "picToVideo failure");
@@ -39,9 +39,9 @@ class VideoStoryPicToVideo$2
   
   public void onSuccess(String paramString)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$ConvertListener;
+    paramString = this.a;
     if (paramString != null) {
-      paramString.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$RetCode);
+      paramString.a(this.b);
     }
     if (QLog.isColorLevel()) {
       QLog.d("VideoStoryPicToVideo", 2, "picToVideo sucess");
@@ -50,7 +50,7 @@ class VideoStoryPicToVideo$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.composite.step.VideoStoryPicToVideo.2
  * JD-Core Version:    0.7.0.1
  */

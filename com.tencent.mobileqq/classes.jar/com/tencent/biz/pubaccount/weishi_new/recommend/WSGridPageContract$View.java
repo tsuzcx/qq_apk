@@ -12,12 +12,6 @@ import java.util.List;
 public abstract interface WSGridPageContract$View
   extends IWSView<List<stSimpleMetaFeed>>
 {
-  public abstract int a();
-  
-  public abstract String a();
-  
-  public abstract List<stSimpleMetaFeed> a();
-  
   public abstract void a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed);
   
   public abstract void a(stGlobalConfig paramstGlobalConfig);
@@ -32,27 +26,33 @@ public abstract interface WSGridPageContract$View
   
   public abstract void a(List<stSimpleMetaFeed> paramList, boolean paramBoolean);
   
-  public abstract void a(boolean paramBoolean);
+  public abstract boolean aR_();
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract boolean aS_();
   
-  public abstract boolean a();
+  public abstract String aT_();
+  
+  public abstract void aU_();
   
   public abstract void b();
   
   public abstract void b(boolean paramBoolean);
   
-  public abstract boolean b();
+  public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void e();
+  public abstract void c();
   
-  public abstract void i();
+  public abstract void c_(boolean paramBoolean);
   
-  public abstract void j();
+  public abstract int d();
+  
+  public abstract List<stSimpleMetaFeed> f();
+  
+  public abstract void l();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridPageContract.View
  * JD-Core Version:    0.7.0.1
  */

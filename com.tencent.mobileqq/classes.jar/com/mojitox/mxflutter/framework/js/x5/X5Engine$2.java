@@ -9,14 +9,14 @@ class X5Engine$2
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsX5X5Engine.a();
-    ((X5Executor)this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsX5X5Engine.b()).b();
-    this.jdField_a_of_type_ComMojitoxMxflutterFrameworkCallbackExecuteScriptCallback.a(paramObject);
+    this.a.c();
+    ((X5Executor)this.a.b()).g();
+    this.b.a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.js.x5.X5Engine.2
  * JD-Core Version:    0.7.0.1
  */

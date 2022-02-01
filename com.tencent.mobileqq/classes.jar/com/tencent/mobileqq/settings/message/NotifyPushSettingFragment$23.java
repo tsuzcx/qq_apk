@@ -24,21 +24,21 @@ class NotifyPushSettingFragment$23
     {
       paramContext = paramIntent.getStringExtra("uin");
       boolean bool = paramIntent.getBooleanExtra("configPCActive", false);
-      if (NotifyPushSettingFragment.a(this.a).getAccount().equals(paramContext))
+      if (NotifyPushSettingFragment.c(this.a).getAccount().equals(paramContext))
       {
         if (bool)
         {
-          NotifyPushSettingFragment.f(this.a).setVisibility(0);
+          NotifyPushSettingFragment.n(this.a).setVisibility(0);
           return;
         }
-        NotifyPushSettingFragment.f(this.a).setVisibility(8);
+        NotifyPushSettingFragment.n(this.a).setVisibility(8);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.23
  * JD-Core Version:    0.7.0.1
  */

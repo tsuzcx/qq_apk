@@ -7,19 +7,16 @@ import java.util.Iterator;
 
 class ReadinjoySPEventReport$ScreenFeedsInfo
 {
-  public long a;
-  public ArrayList<Pair<AbsBaseArticleInfo, Float>> a;
+  public ArrayList<Pair<AbsBaseArticleInfo, Float>> a = new ArrayList();
   public long b;
+  public long c;
   
-  private ReadinjoySPEventReport$ScreenFeedsInfo(ReadinjoySPEventReport paramReadinjoySPEventReport)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  private ReadinjoySPEventReport$ScreenFeedsInfo(ReadinjoySPEventReport paramReadinjoySPEventReport) {}
   
   public ArrayList<Long> a()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(Long.valueOf(((AbsBaseArticleInfo)((Pair)localIterator.next()).first).mArticleID));
     }
@@ -29,7 +26,7 @@ class ReadinjoySPEventReport$ScreenFeedsInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("screenInfo : \n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       Pair localPair = (Pair)localIterator.next();
@@ -42,7 +39,7 @@ class ReadinjoySPEventReport$ScreenFeedsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.ScreenFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

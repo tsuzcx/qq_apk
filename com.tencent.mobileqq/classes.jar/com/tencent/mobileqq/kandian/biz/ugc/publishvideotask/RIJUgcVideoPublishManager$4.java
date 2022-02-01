@@ -13,8 +13,8 @@ class RIJUgcVideoPublishManager$4
   
   public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.getProgress();
-    if (RIJUgcVideoPublishManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskRIJUgcVideoPublishManager).containsKey(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.seqId)) {
+    int i = this.a.getProgress();
+    if (RIJUgcVideoPublishManager.d(this.b).containsKey(this.a.seqId)) {
       ThreadManagerV2.getUIHandlerV2().post(new RIJUgcVideoPublishManager.4.1(this, paramInt, paramBoolean1, paramBoolean2));
     }
     if (QLog.isColorLevel())
@@ -36,7 +36,7 @@ class RIJUgcVideoPublishManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.publishvideotask.RIJUgcVideoPublishManager.4
  * JD-Core Version:    0.7.0.1
  */

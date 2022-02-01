@@ -58,9 +58,9 @@ public class HBEntryShareActivity
   extends BaseActivity
   implements View.OnClickListener
 {
-  private volatile Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new HBEntryShareActivity.1(this);
-  private volatile String jdField_a_of_type_JavaLangString;
+  View.OnTouchListener a = new HBEntryShareActivity.1(this);
+  private volatile Drawable b;
+  private volatile String c;
   
   private Drawable a(String paramString, int paramInt1, int paramInt2)
   {
@@ -99,43 +99,43 @@ public class HBEntryShareActivity
     {
       Object localObject1 = (ViewGroup)getWindow().getDecorView().findViewById(16908290);
       ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(paramInt, (ViewGroup)localObject1, false);
-      localObject1 = (ImageView)localViewGroup.findViewById(2131374236);
-      Object localObject2 = (TextView)localViewGroup.findViewById(2131374237);
+      localObject1 = (ImageView)localViewGroup.findViewById(2131442331);
+      Object localObject2 = (TextView)localViewGroup.findViewById(2131442332);
       paramIntent.getStringExtra("header_icon");
       Object localObject3 = paramIntent.getStringExtra("header_name");
       String str = paramIntent.getStringExtra("header_text");
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty(str)))
+      if ((this.b != null) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty(str)))
       {
-        ((ImageView)localObject1).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        ((ImageView)localObject1).setImageDrawable(this.b);
         ((TextView)localObject2).setText(String.format("%s%s", new Object[] { localObject3, str }));
       }
       else
       {
-        ((ImageView)localObject1).setImageDrawable(getResources().getDrawable(2130845273));
-        ((TextView)localObject2).setText(getResources().getString(2131699332));
+        ((ImageView)localObject1).setImageDrawable(getResources().getDrawable(2130846729));
+        ((TextView)localObject2).setText(getResources().getString(2131897349));
       }
       localObject1 = FaceDrawable.getDefaultDrawable(1, 3);
       localObject1 = FaceDrawable.getFaceDrawable(this.app, 1, this.app.getCurrentAccountUin(), 3, (Drawable)localObject1, (Drawable)localObject1, null);
-      ((ImageView)localViewGroup.findViewById(2131374243)).setImageDrawable((Drawable)localObject1);
-      ((TextView)localViewGroup.findViewById(2131374244)).setText(ContactUtils.c(this.app, this.app.getCurrentUin()));
+      ((ImageView)localViewGroup.findViewById(2131442338)).setImageDrawable((Drawable)localObject1);
+      ((TextView)localViewGroup.findViewById(2131442339)).setText(ContactUtils.c(this.app, this.app.getCurrentUin()));
       localObject1 = Typeface.createFromAsset(getAssets(), "fonts/HuNan-CC.ttf");
-      localObject2 = (TextView)localViewGroup.findViewById(2131374232);
+      localObject2 = (TextView)localViewGroup.findViewById(2131442327);
       ((TextView)localObject2).setTypeface((Typeface)localObject1);
       ((TextView)localObject2).setText(String.valueOf(m));
-      localObject3 = (FrameLayout)localViewGroup.findViewById(2131374246);
+      localObject3 = (FrameLayout)localViewGroup.findViewById(2131442341);
       localObject2 = Utils.a(this.app, paramIntent.getStringExtra("background_img2"), ((FrameLayout)localObject3).getWidth(), ((FrameLayout)localObject3).getHeight(), "default_share_bg_fullscreen");
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         QLog.d("HBEntryShareActivity", 1, "load full bg null");
-        localObject1 = getResources().getDrawable(2130845420);
+        localObject1 = getResources().getDrawable(2130846876);
       }
       ((FrameLayout)localObject3).setBackgroundDrawable((Drawable)localObject1);
-      ((TextView)localViewGroup.findViewById(2131374233)).setText(String.format("%s%s%s", new Object[] { getResources().getString(2131699343), Integer.valueOf(i), getResources().getString(2131699341) }));
-      localObject1 = (TextView)localViewGroup.findViewById(2131374234);
+      ((TextView)localViewGroup.findViewById(2131442328)).setText(String.format("%s%s%s", new Object[] { getResources().getString(2131897360), Integer.valueOf(i), getResources().getString(2131897358) }));
+      localObject1 = (TextView)localViewGroup.findViewById(2131442329);
       if (j > 0)
       {
-        ((TextView)localObject1).setText(String.format("%s%s%s", new Object[] { getResources().getString(2131699345), Integer.valueOf(j), getResources().getString(2131699344) }));
+        ((TextView)localObject1).setText(String.format("%s%s%s", new Object[] { getResources().getString(2131897362), Integer.valueOf(j), getResources().getString(2131897361) }));
         ((TextView)localObject1).setVisibility(0);
       }
       else
@@ -145,28 +145,28 @@ public class HBEntryShareActivity
       localObject2 = a(getIntent().getStringExtra("middle_img2"), 320, 400);
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = getResources().getDrawable(2130845419);
+        localObject1 = getResources().getDrawable(2130846875);
       }
-      ((LinearLayout)localViewGroup.findViewById(2131374229)).setBackgroundDrawable((Drawable)localObject1);
-      localObject1 = (FrameLayout)localViewGroup.findViewById(2131374227);
-      localObject2 = (RoundImageView)localViewGroup.findViewById(2131374226);
+      ((LinearLayout)localViewGroup.findViewById(2131442324)).setBackgroundDrawable((Drawable)localObject1);
+      localObject1 = (FrameLayout)localViewGroup.findViewById(2131442322);
+      localObject2 = (RoundImageView)localViewGroup.findViewById(2131442321);
       localObject3 = a(getIntent().getStringExtra("qrcode_code"), 80, 80);
       if (localObject3 != null)
       {
-        ((FrameLayout)localObject1).setBackgroundDrawable(getResources().getDrawable(2130845429));
+        ((FrameLayout)localObject1).setBackgroundDrawable(getResources().getDrawable(2130846885));
         ((RoundImageView)localObject2).setImageDrawable((Drawable)localObject3);
       }
       else
       {
         ((FrameLayout)localObject1).setBackgroundColor(0);
-        ((RoundImageView)localObject2).setImageDrawable(getResources().getDrawable(2130845273));
+        ((RoundImageView)localObject2).setImageDrawable(getResources().getDrawable(2130846729));
       }
       localObject1 = paramIntent.getStringExtra("bottom_text");
       paramIntent = (Intent)localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        paramIntent = getResources().getString(2131699347);
+        paramIntent = getResources().getString(2131897364);
       }
-      ((TextView)localViewGroup.findViewById(2131374228)).setText(paramIntent);
+      ((TextView)localViewGroup.findViewById(2131442323)).setText(paramIntent);
       return localViewGroup;
     }
     paramIntent = new StringBuilder();
@@ -231,13 +231,13 @@ public class HBEntryShareActivity
   
   private void a()
   {
-    if (FileUtil.b(this.jdField_a_of_type_JavaLangString))
+    if (FileUtil.d(this.c))
     {
-      ScreenShotHelper.a(this, this.jdField_a_of_type_JavaLangString, true);
+      ScreenShotHelper.a(this, this.c, true);
       return;
     }
     a(true);
-    ViewGroup localViewGroup = a(getIntent(), 2131561115);
+    ViewGroup localViewGroup = a(getIntent(), 2131627465);
     if (localViewGroup != null) {
       localViewGroup.requestLayout();
     }
@@ -310,7 +310,7 @@ public class HBEntryShareActivity
     ((Intent)localObject).putExtra("middle_img1", paramString9);
     ((Intent)localObject).putExtra("middle_img2", paramString10);
     paramBaseActivity.startActivity((Intent)localObject);
-    paramBaseActivity.overridePendingTransition(2130772343, 2130772004);
+    paramBaseActivity.overridePendingTransition(2130772435, 2130772007);
   }
   
   private void a(String paramString, Map<String, String> paramMap)
@@ -325,7 +325,7 @@ public class HBEntryShareActivity
   
   private void a(boolean paramBoolean)
   {
-    View localView = findViewById(2131374240);
+    View localView = findViewById(2131442335);
     int i;
     if (paramBoolean) {
       i = 0;
@@ -369,53 +369,53 @@ public class HBEntryShareActivity
       if (k > m) {
         j = m;
       }
-      setContentView(2131561114);
-      findViewById(2131374231).setOnClickListener(this);
-      findViewById(2131374241).setOnClickListener(this);
-      findViewById(2131374240).setVisibility(8);
+      setContentView(2131627464);
+      findViewById(2131442326).setOnClickListener(this);
+      findViewById(2131442336).setOnClickListener(this);
+      findViewById(2131442335).setVisibility(8);
       localObject1 = Typeface.createFromAsset(getAssets(), "fonts/HuNan-CC.ttf");
-      Object localObject2 = (TextView)findViewById(2131374232);
+      Object localObject2 = (TextView)findViewById(2131442327);
       ((TextView)localObject2).setTypeface((Typeface)localObject1);
       ((TextView)localObject2).setText(String.valueOf(m));
-      ((TextView)findViewById(2131374233)).setText(String.format("%s%s%s", new Object[] { getResources().getString(2131699343), Integer.valueOf(j), getResources().getString(2131699341) }));
+      ((TextView)findViewById(2131442328)).setText(String.format("%s%s%s", new Object[] { getResources().getString(2131897360), Integer.valueOf(j), getResources().getString(2131897358) }));
       localObject2 = paramIntent.getStringExtra("ticket_text");
       localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = getResources().getString(2131699346);
+        localObject1 = getResources().getString(2131897363);
       }
-      ((TextView)findViewById(2131374242)).setText((CharSequence)localObject1);
-      Object localObject3 = (RelativeLayout)findViewById(2131374238);
+      ((TextView)findViewById(2131442337)).setText((CharSequence)localObject1);
+      Object localObject3 = (RelativeLayout)findViewById(2131442333);
       localObject2 = Utils.a(this.app, paramIntent.getStringExtra("background_img1"), ((RelativeLayout)localObject3).getWidth(), ((RelativeLayout)localObject3).getHeight(), "default_share_bg_window");
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         QLog.d("HBEntryShareActivity", 1, "load window bg null");
-        localObject1 = getResources().getDrawable(2130845418);
+        localObject1 = getResources().getDrawable(2130846874);
       }
       ((RelativeLayout)localObject3).setBackgroundDrawable((Drawable)localObject1);
-      localObject3 = (LinearLayout)findViewById(2131374229);
+      localObject3 = (LinearLayout)findViewById(2131442324);
       localObject2 = a(paramIntent.getStringExtra("middle_img1"), ((LinearLayout)localObject3).getWidth(), ((LinearLayout)localObject3).getHeight());
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = getResources().getDrawable(2130845419);
+        localObject1 = getResources().getDrawable(2130846875);
       }
       ((LinearLayout)localObject3).setBackgroundDrawable((Drawable)localObject1);
-      localObject1 = (ImageView)findViewById(2131374236);
-      localObject2 = (TextView)findViewById(2131374237);
+      localObject1 = (ImageView)findViewById(2131442331);
+      localObject2 = (TextView)findViewById(2131442332);
       paramIntent.getStringExtra("header_icon");
       localObject3 = paramIntent.getStringExtra("header_name");
       paramIntent = paramIntent.getStringExtra("header_text");
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty(paramIntent)))
+      if ((this.b != null) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty(paramIntent)))
       {
-        ((ImageView)localObject1).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        ((ImageView)localObject1).setImageDrawable(this.b);
         ((TextView)localObject2).setText(String.format("%s%s", new Object[] { localObject3, paramIntent }));
       }
       else
       {
-        ((ImageView)localObject1).setImageDrawable(getResources().getDrawable(2130845273));
-        ((TextView)localObject2).setText(getResources().getString(2131699332));
+        ((ImageView)localObject1).setImageDrawable(getResources().getDrawable(2130846729));
+        ((TextView)localObject2).setText(getResources().getString(2131897349));
       }
-      localObject1 = (TextView)findViewById(2131374241);
+      localObject1 = (TextView)findViewById(2131442336);
       if (getIntent().getIntExtra("not_share", 0) == 1) {
         k = 4;
       } else {
@@ -429,7 +429,7 @@ public class HBEntryShareActivity
         if ((paramIntent != null) && (localObject2 != null)) {
           paramIntent = a(paramIntent, (Drawable)localObject2);
         } else {
-          paramIntent = a(getResources().getDrawable(2130845421), getResources().getDrawable(2130845422));
+          paramIntent = a(getResources().getDrawable(2130846877), getResources().getDrawable(2130846878));
         }
         ((TextView)localObject1).setBackgroundDrawable(paramIntent);
       }
@@ -460,9 +460,9 @@ public class HBEntryShareActivity
           if (bool)
           {
             paramIntent = new ApngOptions();
-            paramIntent.a(URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+            paramIntent.a(URLDrawableHelperConstants.a);
             ((TextView)localObject1).setBackgroundDrawable(((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", paramIntent, (String)localObject2));
-            ((TextView)localObject1).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+            ((TextView)localObject1).setOnTouchListener(this.a);
           }
           else
           {
@@ -506,7 +506,7 @@ public class HBEntryShareActivity
     getWindow().setFlags(1024, 1024);
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(getIntent().getStringExtra("header_icon"), 72, 72);
+    this.b = a(getIntent().getStringExtra("header_icon"), 72, 72);
     return a(getIntent());
   }
   
@@ -525,9 +525,9 @@ public class HBEntryShareActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131374231)
+    if (i != 2131442326)
     {
-      if (i != 2131374241)
+      if (i != 2131442336)
       {
         i = -1;
       }
@@ -557,7 +557,7 @@ public class HBEntryShareActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.HBEntryShareActivity
  * JD-Core Version:    0.7.0.1
  */

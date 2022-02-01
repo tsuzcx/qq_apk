@@ -19,8 +19,8 @@ class RichmediaClient$1
     LOG.a("PTV.RichmediaClient", "onServiceConnected");
     this.a.b = new Messenger(paramIBinder);
     paramComponentName = Message.obtain(null, 1);
-    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
-    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_ComTencentMobileqqRichmediaICallBack.asBinder());
+    paramComponentName.replyTo = this.a.a;
+    paramIBinder = new BinderWarpper(this.a.h.asBinder());
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
     paramComponentName.setData(localBundle);
@@ -45,7 +45,7 @@ class RichmediaClient$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaClient.1
  * JD-Core Version:    0.7.0.1
  */

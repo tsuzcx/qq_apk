@@ -2,16 +2,15 @@ package com.tencent.av.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
 
 class DoubleVideoCtrlUI$17
   implements DialogInterface.OnClickListener
 {
-  DoubleVideoCtrlUI$17(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong, View paramView) {}
+  DoubleVideoCtrlUI$17(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DoubleVideoCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
+    paramDialogInterface.dismiss();
   }
 }
 

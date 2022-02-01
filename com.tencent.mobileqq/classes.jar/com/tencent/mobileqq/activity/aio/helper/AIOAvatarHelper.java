@@ -28,18 +28,18 @@ import com.tencent.widget.AbsListView.OnScrollListener;
 public class AIOAvatarHelper
   implements ILifeCycleHelper, AbsListView.OnScrollListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private AvatarObserver jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new AIOAvatarHelper.1(this);
+  private QQAppInterface a;
+  private Context b;
+  private BaseChatPie c;
+  private SessionInfo d;
+  private AvatarObserver e = new AIOAvatarHelper.1(this);
   
   public AIOAvatarHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.a = paramBaseChatPie.d;
+    this.b = paramBaseChatPie.e;
+    this.c = paramBaseChatPie;
+    this.d = paramBaseChatPie.ah;
   }
   
   public void a()
@@ -47,7 +47,7 @@ public class AIOAvatarHelper
     if (QLog.isColorLevel()) {
       QLog.i("AIOAvatarHelper", 2, "doOnCreate");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
+    this.a.addObserver(this.e);
   }
   
   public void b()
@@ -55,7 +55,7 @@ public class AIOAvatarHelper
     if (QLog.isColorLevel()) {
       QLog.i("AIOAvatarHelper", 2, "doOnDestroy");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
+    this.a.removeObserver(this.e);
   }
   
   @NonNull
@@ -86,41 +86,41 @@ public class AIOAvatarHelper
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    ((VasExtensionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, paramInt);
+    ((VasExtensionManager)this.a.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).c.a(this.c.U, this.c.V, paramInt);
     if (paramInt == 0)
     {
       AbstractGifImage.resumeAll();
       AbstractVideoImage.resumeAll();
       ApngImage.playByTag(0);
       VasFaceManager.b();
-      ShortVideoItemBuilder.f();
-      ShortVideoRealItemBuilder.f();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b().a().d();
-      AvatarPendantUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      ((AvatarPendantManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).b();
-      BubbleDiyFetcher.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-      DiyPendantFetcher.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
+      ShortVideoItemBuilder.i();
+      ShortVideoRealItemBuilder.i();
+      this.c.bv().h().e();
+      AvatarPendantUtil.a(this.a);
+      ((AvatarPendantManager)this.a.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).b();
+      BubbleDiyFetcher.a().a(this.a, 0);
+      DiyPendantFetcher.a().a(this.a, 0);
       return;
     }
     VasFaceManager.a();
-    if (!PicItemBuilder.j)
+    if (!PicItemBuilder.C)
     {
       AbstractGifImage.pauseAll();
       ApngImage.pauseAll();
     }
     AbstractVideoImage.pauseAll();
-    ShortVideoItemBuilder.e();
-    ShortVideoRealItemBuilder.e();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b().a().c();
+    ShortVideoItemBuilder.h();
+    ShortVideoRealItemBuilder.h();
+    this.c.bv().h().d();
     if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.f(false);
+      this.c.i(false);
     }
-    ((AvatarPendantManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).a();
+    ((AvatarPendantManager)this.a.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOAvatarHelper
  * JD-Core Version:    0.7.0.1
  */

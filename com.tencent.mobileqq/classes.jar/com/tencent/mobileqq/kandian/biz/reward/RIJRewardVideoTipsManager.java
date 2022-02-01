@@ -24,44 +24,39 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/reward/RIJRewardVideoTipsManager;", "", "context", "Landroid/app/Activity;", "rewardCoinManager", "Lcom/tencent/mobileqq/kandian/biz/reward/RIJVideoRewardCoinManager;", "(Landroid/app/Activity;Lcom/tencent/mobileqq/kandian/biz/reward/RIJVideoRewardCoinManager;)V", "curItemNeedShowGuide", "", "enable", "handler", "Landroid/os/Handler;", "holder", "Lcom/tencent/mobileqq/kandian/biz/playfeeds/videofeeds/ShortVideoItemHolder;", "isFullScreen", "()Z", "setFullScreen", "(Z)V", "popupWindow", "Lcom/tencent/mobileqq/kandian/biz/video/discovery/BubblePopupWindow;", "promptView", "Landroid/widget/TextView;", "rewardCoinGuideWordWidth", "", "rewardCoinGuideWords", "", "rewardSuccessAnimEnable", "rewardSuccessTipsWordWidth", "rewardSuccessTipsWords", "targetPercent", "", "vpngImageView", "Lcom/tencent/mobileqq/vpng/view/VPNGImageView;", "dismissPopupWindow", "", "initPromptView", "onCenterViewChanged", "itemHolder", "onDestory", "onProgressChanged", "pos", "", "duration", "isCommentVisiable", "onRewardSuccess", "type", "releaseVpng", "showBubblePopupWindow", "contentView", "Landroid/view/View;", "archer", "width", "xOffset", "yOffset", "callback", "Lkotlin/Function1;", "showRewardCoinGuide", "showRewardSuccessTips", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJRewardVideoTipsManager
 {
-  public static final RIJRewardVideoTipsManager.Companion a;
-  private final float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ShortVideoItemHolder jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsShortVideoItemHolder;
-  private RIJVideoRewardCoinManager jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJVideoRewardCoinManager;
-  private BubblePopupWindow jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
-  private VPNGImageView jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView;
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private final String jdField_b_of_type_JavaLangString;
-  private final boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJRewardVideoTipsManager$Companion = new RIJRewardVideoTipsManager.Companion(null);
-  }
+  public static final RIJRewardVideoTipsManager.Companion a = new RIJRewardVideoTipsManager.Companion(null);
+  private final boolean b;
+  private final float c;
+  private final String d;
+  private final String e;
+  private final boolean f;
+  private int g;
+  private int h;
+  private boolean i;
+  private ShortVideoItemHolder j;
+  private BubblePopupWindow k;
+  private TextView l;
+  private VPNGImageView m;
+  private Handler n;
+  private boolean o;
+  private Activity p;
+  private RIJVideoRewardCoinManager q;
   
   public RIJRewardVideoTipsManager(@Nullable Activity paramActivity, @Nullable RIJVideoRewardCoinManager paramRIJVideoRewardCoinManager)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJVideoRewardCoinManager = paramRIJVideoRewardCoinManager;
-    this.jdField_a_of_type_Boolean = RIJRewardTaskConfig.a();
-    this.jdField_a_of_type_Float = RIJRewardTaskConfig.a.a();
-    this.jdField_a_of_type_JavaLangString = RIJRewardTaskConfig.a.b();
-    this.jdField_b_of_type_JavaLangString = RIJRewardTaskConfig.a.c();
-    this.jdField_b_of_type_Boolean = RIJRewardTaskConfig.a.b();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.p = paramActivity;
+    this.q = paramRIJVideoRewardCoinManager;
+    this.b = RIJRewardTaskConfig.a();
+    this.c = RIJRewardTaskConfig.a.i();
+    this.d = RIJRewardTaskConfig.a.j();
+    this.e = RIJRewardTaskConfig.a.k();
+    this.f = RIJRewardTaskConfig.a.l();
+    this.n = new Handler();
   }
   
   private final void a(View paramView1, View paramView2, int paramInt1, int paramInt2, int paramInt3, Function1<? super BubblePopupWindow, Unit> paramFunction1)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
+    Object localObject = this.k;
     if ((localObject != null) && (localObject != null) && (((BubblePopupWindow)localObject).isShowing() == true)) {
       return;
     }
@@ -74,54 +69,54 @@ public final class RIJRewardVideoTipsManager
         throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
       }
     }
-    int i = ViewUtils.a(10.0F);
-    int j = ViewUtils.a(6.0F);
-    int k = ViewUtils.a(6.0F);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow = new BubblePopupWindow((Context)this.jdField_a_of_type_AndroidAppActivity);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
+    int i1 = ViewUtils.dip2px(10.0F);
+    int i2 = ViewUtils.dip2px(6.0F);
+    int i3 = ViewUtils.dip2px(6.0F);
+    this.k = new BubblePopupWindow((Context)this.p);
+    localObject = this.k;
     if (localObject != null) {
       ((BubblePopupWindow)localObject).setContentView(paramView1);
     }
-    paramView1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
+    paramView1 = this.k;
     if (paramView1 != null) {
       paramView1.setWidth(paramInt1);
     }
-    paramView1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
+    paramView1 = this.k;
     if (paramView1 != null) {
-      paramView1.a(k / 2);
+      paramView1.a(i3 / 2);
     }
-    paramView1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
+    paramView1 = this.k;
     if (paramView1 != null) {
-      paramView1.a(k, j);
+      paramView1.a(i3, i2);
     }
-    paramView1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
+    paramView1 = this.k;
     if (paramView1 != null) {
       paramView1.b((int)4294942528L);
     }
-    paramView1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
+    paramView1 = this.k;
     if (paramView1 != null) {
-      paramView1.c(i);
+      paramView1.c(i1);
     }
-    paramFunction1.invoke(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow);
+    paramFunction1.invoke(this.k);
     if (ReadInJoyHelper.b())
     {
-      paramView1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
+      paramView1 = this.k;
       if (paramView1 != null) {
-        paramView1.setAnimationStyle(2131756211);
+        paramView1.setAnimationStyle(2131953361);
       }
     }
     try
     {
-      paramView1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
+      paramView1 = this.k;
       if (paramView1 != null)
       {
         paramView1.showAsDropDown(paramView2, paramInt2, paramInt3, 3);
         return;
-        paramView1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
+        paramView1 = this.k;
         if (paramView1 != null) {
-          paramView1.setAnimationStyle(2131756212);
+          paramView1.setAnimationStyle(2131953362);
         }
-        paramView1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
+        paramView1 = this.k;
         if (paramView1 != null) {
           paramView1.showAsDropDown(paramView2, paramInt2, paramInt3, 48);
         }
@@ -133,7 +128,7 @@ public final class RIJRewardVideoTipsManager
   
   private final void b()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView;
+    Object localObject1 = this.m;
     if (localObject1 != null) {
       localObject1 = ((VPNGImageView)localObject1).getParent();
     } else {
@@ -145,102 +140,102 @@ public final class RIJRewardVideoTipsManager
     }
     localObject1 = (ViewGroup)localObject2;
     if (localObject1 != null) {
-      ((ViewGroup)localObject1).removeView((View)this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView);
+      ((ViewGroup)localObject1).removeView((View)this.m);
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView;
+    localObject1 = this.m;
     if (localObject1 != null) {
       ((VPNGImageView)localObject1).onRelease();
     }
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView = ((VPNGImageView)null);
+    this.m = ((VPNGImageView)null);
   }
   
   private final void c()
   {
-    if (this.d) {
+    if (this.o) {
       return;
     }
     e();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsShortVideoItemHolder;
+    Object localObject = this.j;
     if (localObject != null)
     {
-      localObject = ((ShortVideoItemHolder)localObject).a;
+      localObject = ((ShortVideoItemHolder)localObject).aK;
       if (localObject != null)
       {
-        localObject = ((IReadInJoyHeadImageView)localObject).a();
+        localObject = ((IReadInJoyHeadImageView)localObject).getView();
         if (localObject != null)
         {
-          TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+          TextView localTextView = this.l;
           if (localTextView != null) {
-            localTextView.setText((CharSequence)this.jdField_b_of_type_JavaLangString);
+            localTextView.setText((CharSequence)this.e);
           }
-          int i;
+          int i1;
           if (ReadInJoyHelper.b()) {
-            i = -this.jdField_b_of_type_Int - ViewUtils.a(8.0F);
+            i1 = -this.h - ViewUtils.dip2px(8.0F);
           } else {
-            i = 0;
+            i1 = 0;
           }
-          int j;
+          int i2;
           if (ReadInJoyHelper.b()) {
-            j = -((View)localObject).getHeight() + ViewUtils.a(5.0F);
+            i2 = -((View)localObject).getHeight() + ViewUtils.dip2px(5.0F);
           } else {
-            j = -((View)localObject).getHeight() - ViewUtils.a(50.0F);
+            i2 = -((View)localObject).getHeight() - ViewUtils.dip2px(50.0F);
           }
-          a((View)this.jdField_a_of_type_AndroidWidgetTextView, (View)localObject, this.jdField_b_of_type_Int, i, j, (Function1)new RIJRewardVideoTipsManager.showRewardSuccessTips.1.1((View)localObject));
+          a((View)this.l, (View)localObject, this.h, i1, i2, (Function1)new RIJRewardVideoTipsManager.showRewardSuccessTips.1.1((View)localObject));
         }
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed((Runnable)new RIJRewardVideoTipsManager.showRewardSuccessTips.2(this), 2000L);
+    this.n.postDelayed((Runnable)new RIJRewardVideoTipsManager.showRewardSuccessTips.2(this), 2000L);
   }
   
   private final void d()
   {
     e();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsShortVideoItemHolder;
+    Object localObject = this.j;
     if (localObject != null)
     {
-      localObject = ((ShortVideoItemHolder)localObject).c();
+      localObject = ((ShortVideoItemHolder)localObject).v();
       if (localObject != null)
       {
-        TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+        TextView localTextView = this.l;
         if (localTextView != null) {
-          localTextView.setText((CharSequence)this.jdField_a_of_type_JavaLangString);
+          localTextView.setText((CharSequence)this.d);
         }
-        int i;
+        int i1;
         if (ReadInJoyHelper.b()) {
-          i = -this.jdField_a_of_type_Int;
+          i1 = -this.g;
         } else {
-          i = -this.jdField_a_of_type_Int + ((ViewGroup)localObject).getWidth() + ViewUtils.a(8.0F);
+          i1 = -this.g + ((ViewGroup)localObject).getWidth() + ViewUtils.dip2px(8.0F);
         }
-        int j;
+        int i2;
         if (ReadInJoyHelper.b()) {
-          j = -((ViewGroup)localObject).getHeight() + ViewUtils.a(5.0F);
+          i2 = -((ViewGroup)localObject).getHeight() + ViewUtils.dip2px(5.0F);
         } else {
-          j = -((ViewGroup)localObject).getHeight() - ViewUtils.a(30.0F);
+          i2 = -((ViewGroup)localObject).getHeight() - ViewUtils.dip2px(30.0F);
         }
-        a((View)this.jdField_a_of_type_AndroidWidgetTextView, (View)localObject, this.jdField_a_of_type_Int, i, j, (Function1)new RIJRewardVideoTipsManager.showRewardCoinGuide.1.1((ViewGroup)localObject));
+        a((View)this.l, (View)localObject, this.g, i1, i2, (Function1)new RIJRewardVideoTipsManager.showRewardCoinGuide.1.1((ViewGroup)localObject));
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed((Runnable)new RIJRewardVideoTipsManager.showRewardCoinGuide.2(this), 2000L);
+    this.n.postDelayed((Runnable)new RIJRewardVideoTipsManager.showRewardCoinGuide.2(this), 2000L);
   }
   
   private final void e()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView == null)
+    if (this.l == null)
     {
-      int i = ViewUtils.a(8.0F);
-      int j = ViewUtils.a(10.0F);
-      TextView localTextView = new TextView((Context)this.jdField_a_of_type_AndroidAppActivity);
-      localTextView.setId(2131378460);
+      int i1 = ViewUtils.dip2px(8.0F);
+      int i2 = ViewUtils.dip2px(10.0F);
+      TextView localTextView = new TextView((Context)this.p);
+      localTextView.setId(2131447062);
       localTextView.setGravity(17);
       localTextView.setTextSize(2, 14.0F);
       localTextView.setTextColor(-1);
-      localTextView.setPadding(j, i, j, i);
+      localTextView.setPadding(i2, i1, i2, i1);
       localTextView.setSingleLine(true);
-      float f1 = localTextView.getPaint().measureText(this.jdField_a_of_type_JavaLangString);
-      float f2 = j * 2;
-      this.jdField_a_of_type_Int = ((int)(f1 + f2 + ViewUtils.a(6.0F)));
-      this.jdField_b_of_type_Int = ((int)(localTextView.getPaint().measureText(this.jdField_b_of_type_JavaLangString) + f2 + ViewUtils.a(6.0F)));
-      this.jdField_a_of_type_AndroidWidgetTextView = localTextView;
+      float f1 = localTextView.getPaint().measureText(this.d);
+      float f2 = i2 * 2;
+      this.g = ((int)(f1 + f2 + ViewUtils.dip2px(6.0F)));
+      this.h = ((int)(localTextView.getPaint().measureText(this.e) + f2 + ViewUtils.dip2px(6.0F)));
+      this.l = localTextView;
     }
   }
   
@@ -248,7 +243,7 @@ public final class RIJRewardVideoTipsManager
   {
     try
     {
-      BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow;
+      BubblePopupWindow localBubblePopupWindow = this.k;
       if (localBubblePopupWindow != null) {
         localBubblePopupWindow.dismiss();
       }
@@ -258,19 +253,19 @@ public final class RIJRewardVideoTipsManager
       label13:
       break label13;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow = ((BubblePopupWindow)null);
+    this.k = ((BubblePopupWindow)null);
   }
   
   public final void a()
   {
-    this.jdField_a_of_type_AndroidAppActivity = ((Activity)null);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJVideoRewardCoinManager = ((RIJVideoRewardCoinManager)null);
+    this.p = ((Activity)null);
+    this.q = ((RIJVideoRewardCoinManager)null);
     b();
   }
   
   public final void a(int paramInt)
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.f)
     {
       Object localObject2 = "https://kd.qpic.cn/bankjiang/images/oneCoinAnimation_1109_cb1cc6ed.mp4";
       Object localObject1 = localObject2;
@@ -281,20 +276,20 @@ public final class RIJRewardVideoTipsManager
           localObject1 = "https://kd.qpic.cn/bankjiang/images/threeCoinAnimation_1109_11efdc28.mp4";
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView = new VPNGImageView((Context)this.jdField_a_of_type_AndroidAppActivity);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView;
+      this.m = new VPNGImageView((Context)this.p);
+      localObject2 = this.m;
       if (localObject2 != null) {
         ((VPNGImageView)localObject2).setBackgroundColor(1275068416);
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView;
+      localObject2 = this.m;
       if (localObject2 != null) {
         ((VPNGImageView)localObject2).setPlayOnSubThread(true);
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView;
+      localObject2 = this.m;
       if (localObject2 != null) {
         ((VPNGImageView)localObject2).setVideo((String)localObject1, false, 1, (LiveRoomGiftCallback)new RIJRewardVideoTipsManager.onRewardSuccess.1(this));
       }
-      localObject1 = this.jdField_a_of_type_AndroidAppActivity;
+      localObject1 = this.p;
       if (localObject1 != null)
       {
         localObject1 = ((Activity)localObject1).getWindow();
@@ -312,7 +307,7 @@ public final class RIJRewardVideoTipsManager
       }
       localObject1 = (ViewGroup)localObject2;
       if (localObject1 != null) {
-        ((ViewGroup)localObject1).addView((View)this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView, -1, -1);
+        ((ViewGroup)localObject1).addView((View)this.m, -1, -1);
       }
     }
     else
@@ -323,41 +318,41 @@ public final class RIJRewardVideoTipsManager
   
   public final void a(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    int k = 1;
+    int i3 = 1;
     if (!paramBoolean)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsShortVideoItemHolder;
+      localObject = this.j;
       if (localObject != null)
       {
-        localObject = ((ShortVideoItemHolder)localObject).d;
+        localObject = ((ShortVideoItemHolder)localObject).af;
         if ((localObject != null) && (((ViewGroup)localObject).getVisibility() == 8))
         {
-          i = 1;
+          i1 = 1;
           break label50;
         }
       }
     }
-    int i = 0;
+    int i1 = 0;
     label50:
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJVideoRewardCoinManager;
+    Object localObject = this.q;
     if (localObject != null) {
-      paramBoolean = ((RIJVideoRewardCoinManager)localObject).a();
+      paramBoolean = ((RIJVideoRewardCoinManager)localObject).j();
     } else {
       paramBoolean = false;
     }
-    int j;
-    if ((paramLong2 > 0L) && ((float)paramLong1 / (float)paramLong2 > this.jdField_a_of_type_Float)) {
-      j = 1;
+    int i2;
+    if ((paramLong2 > 0L) && ((float)paramLong1 / (float)paramLong2 > this.c)) {
+      i2 = 1;
     } else {
-      j = 0;
+      i2 = 0;
     }
-    if ((!this.jdField_a_of_type_Boolean) || (!RIJRewardTaskConfig.a.d())) {
-      k = 0;
+    if ((!this.b) || (!RIJRewardTaskConfig.a.r())) {
+      i3 = 0;
     }
-    if ((i != 0) && (this.c) && (!paramBoolean) && (j != 0) && (k != 0))
+    if ((i1 != 0) && (this.i) && (!paramBoolean) && (i2 != 0) && (i3 != 0))
     {
-      this.c = false;
-      RIJRewardTaskConfig.a.a();
+      this.i = false;
+      RIJRewardTaskConfig.a.s();
       d();
     }
   }
@@ -366,7 +361,7 @@ public final class RIJRewardVideoTipsManager
   {
     if (paramShortVideoItemHolder != null)
     {
-      ViewGroup localViewGroup = paramShortVideoItemHolder.c();
+      ViewGroup localViewGroup = paramShortVideoItemHolder.v();
       if ((localViewGroup != null) && (localViewGroup.getVisibility() == 0))
       {
         bool = true;
@@ -375,20 +370,20 @@ public final class RIJRewardVideoTipsManager
     }
     boolean bool = false;
     label27:
-    this.c = bool;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsShortVideoItemHolder = paramShortVideoItemHolder;
+    this.i = bool;
+    this.j = paramShortVideoItemHolder;
     f();
     b();
   }
   
   public final void a(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.o = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJRewardVideoTipsManager
  * JD-Core Version:    0.7.0.1
  */

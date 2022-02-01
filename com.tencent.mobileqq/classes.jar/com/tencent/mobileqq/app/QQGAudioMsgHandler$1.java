@@ -13,15 +13,15 @@ class QQGAudioMsgHandler$1
   {
     if (paramInt1 == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(7, this.jdField_a_of_type_Long, 2, 0, 0, 21, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
+      this.c.b.a(10, 1, this.a, null, this.b);
+      this.c.b.a(7, this.a, 2, 0, 0, 21, this.b);
+      this.c.b.a(21, 1, this.a, 0L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQGAudioMsgHandler.1
  * JD-Core Version:    0.7.0.1
  */

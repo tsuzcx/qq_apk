@@ -10,9 +10,9 @@ import java.util.Map;
 
 public class VipComicUrlHelper
 {
-  private static Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static Map<String, String> a;
   private static Map<String, String> b = new HashMap();
+  private static boolean c = false;
   
   static
   {
@@ -44,7 +44,7 @@ public class VipComicUrlHelper
   
   public static String a(String paramString)
   {
-    Object localObject1 = jdField_a_of_type_JavaUtilMap;
+    Object localObject1 = a;
     if (localObject1 != null) {
       localObject1 = (String)((Map)localObject1).get(paramString);
     } else {
@@ -158,7 +158,7 @@ public class VipComicUrlHelper
   {
     try
     {
-      boolean bool = jdField_a_of_type_Boolean;
+      boolean bool = c;
       if (bool) {
         return;
       }
@@ -175,42 +175,15 @@ public class VipComicUrlHelper
       if (bool) {
         return;
       }
-      if (jdField_a_of_type_JavaUtilMap == null) {
-        jdField_a_of_type_JavaUtilMap = new HashMap();
+      if (a == null) {
+        a = new HashMap();
       }
-      jdField_a_of_type_JavaUtilMap.clear();
-      jdField_a_of_type_JavaUtilMap.putAll(paramIntent);
-      jdField_a_of_type_Boolean = true;
+      a.clear();
+      a.putAll(paramIntent);
+      c = true;
       return;
     }
     finally {}
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramString != null) {
-      if ((paramString.indexOf("banSlideToTab=1") == -1) && (paramString.indexOf("bodong.vip.qq.com") == -1) && (paramString.indexOf("qc.vip.qq.com") == -1))
-      {
-        bool1 = bool2;
-        if (paramString.indexOf("cdn.vip.qq.com/club/client/comic") == -1) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isBoodoUrl() url is ");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(" isBoodo is ");
-      localStringBuilder.append(bool1);
-      QLog.d("VipComicUrlHelper", 2, localStringBuilder.toString());
-    }
-    return bool1;
   }
   
   public static String b(String paramString1, String paramString2, String paramString3)
@@ -241,10 +214,37 @@ public class VipComicUrlHelper
     }
     return localObject;
   }
+  
+  public static boolean b(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString != null) {
+      if ((paramString.indexOf("banSlideToTab=1") == -1) && (paramString.indexOf("bodong.vip.qq.com") == -1) && (paramString.indexOf("qc.vip.qq.com") == -1))
+      {
+        bool1 = bool2;
+        if (paramString.indexOf("cdn.vip.qq.com/club/client/comic") == -1) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isBoodoUrl() url is ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" isBoodo is ");
+      localStringBuilder.append(bool1);
+      QLog.d("VipComicUrlHelper", 2, localStringBuilder.toString());
+    }
+    return bool1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.utils.VipComicUrlHelper
  * JD-Core Version:    0.7.0.1
  */

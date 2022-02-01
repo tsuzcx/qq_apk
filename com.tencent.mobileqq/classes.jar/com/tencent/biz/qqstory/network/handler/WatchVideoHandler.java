@@ -28,48 +28,48 @@ public class WatchVideoHandler
   public void a(@NonNull WatchVideoRequest paramWatchVideoRequest, @Nullable WatchVideoResponse paramWatchVideoResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     WatchVideoHandler.WatchVideoEvent localWatchVideoEvent = new WatchVideoHandler.WatchVideoEvent();
-    localWatchVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    localWatchVideoEvent.jdField_a_of_type_JavaLangString = paramWatchVideoRequest.jdField_b_of_type_JavaLangString;
-    if (TroopStoryUtil.a(localWatchVideoEvent.jdField_a_of_type_JavaLangString)) {
-      paramWatchVideoRequest.jdField_c_of_type_JavaLangString = "4_10000";
+    localWatchVideoEvent.g = paramErrorMessage;
+    localWatchVideoEvent.a = paramWatchVideoRequest.f;
+    if (TroopStoryUtil.a(localWatchVideoEvent.a)) {
+      paramWatchVideoRequest.g = "4_10000";
     }
-    localWatchVideoEvent.jdField_b_of_type_JavaLangString = paramWatchVideoRequest.jdField_c_of_type_JavaLangString;
-    localWatchVideoEvent.jdField_a_of_type_Boolean = paramWatchVideoRequest.jdField_a_of_type_Boolean;
+    localWatchVideoEvent.b = paramWatchVideoRequest.g;
+    localWatchVideoEvent.c = paramWatchVideoRequest.h;
     StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
-    if ((paramWatchVideoRequest.jdField_c_of_type_Int != 3) && (paramWatchVideoRequest.jdField_c_of_type_Int != 4) && (paramWatchVideoRequest.jdField_c_of_type_Int != 31) && (paramWatchVideoRequest.jdField_c_of_type_Int != 62))
+    if ((paramWatchVideoRequest.i != 3) && (paramWatchVideoRequest.i != 4) && (paramWatchVideoRequest.i != 31) && (paramWatchVideoRequest.i != 62))
     {
-      localWatchVideoEvent.jdField_a_of_type_Int = localStoryManager.a(paramWatchVideoRequest.jdField_c_of_type_JavaLangString);
-      SLog.a("Q.qqstory.player.WatchVideoHandler", "read video %s , source = %d , not effect recent story", paramWatchVideoRequest.jdField_b_of_type_JavaLangString, Integer.valueOf(paramWatchVideoRequest.jdField_c_of_type_Int));
+      localWatchVideoEvent.d = localStoryManager.i(paramWatchVideoRequest.g);
+      SLog.a("Q.qqstory.player.WatchVideoHandler", "read video %s , source = %d , not effect recent story", paramWatchVideoRequest.f, Integer.valueOf(paramWatchVideoRequest.i));
     }
     else
     {
-      localWatchVideoEvent.jdField_a_of_type_Int = localStoryManager.a("Q.qqstory.player.WatchVideoHandler", paramWatchVideoRequest.jdField_c_of_type_JavaLangString, paramWatchVideoRequest.jdField_b_of_type_JavaLangString);
+      localWatchVideoEvent.d = localStoryManager.a("Q.qqstory.player.WatchVideoHandler", paramWatchVideoRequest.g, paramWatchVideoRequest.f);
     }
-    StoryItem localStoryItem = localStoryManager.a(paramWatchVideoRequest.jdField_c_of_type_JavaLangString, 1);
+    StoryItem localStoryItem = localStoryManager.a(paramWatchVideoRequest.g, 1);
     if (localStoryItem != null) {
       if (localStoryItem.unReadCount != 0)
       {
-        localStoryItem.unReadCount = localWatchVideoEvent.jdField_a_of_type_Int;
-        localStoryManager.a(paramWatchVideoRequest.jdField_c_of_type_JavaLangString, 1, localStoryItem);
-        SLog.d("Q.qqstory.player.WatchVideoHandler", String.format("read video %s ,update %s unread count , count = %d", new Object[] { paramWatchVideoRequest.jdField_b_of_type_JavaLangString, localStoryItem.key, Integer.valueOf(localStoryItem.unReadCount) }));
+        localStoryItem.unReadCount = localWatchVideoEvent.d;
+        localStoryManager.a(paramWatchVideoRequest.g, 1, localStoryItem);
+        SLog.d("Q.qqstory.player.WatchVideoHandler", String.format("read video %s ,update %s unread count , count = %d", new Object[] { paramWatchVideoRequest.f, localStoryItem.key, Integer.valueOf(localStoryItem.unReadCount) }));
       }
       else
       {
-        localStoryManager.a(paramWatchVideoRequest.jdField_c_of_type_JavaLangString, 1);
+        localStoryManager.b(paramWatchVideoRequest.g, 1);
       }
     }
     if ((paramWatchVideoResponse != null) && (paramErrorMessage.isSuccess()))
     {
-      this.a.add(paramWatchVideoRequest.jdField_b_of_type_JavaLangString);
+      this.a.add(paramWatchVideoRequest.f);
       StoryDispatcher.a().dispatch(localWatchVideoEvent);
       return;
     }
     StoryDispatcher.a().dispatch(localWatchVideoEvent);
-    paramWatchVideoResponse = localStoryManager.a(paramWatchVideoRequest.jdField_b_of_type_JavaLangString);
+    paramWatchVideoResponse = localStoryManager.a(paramWatchVideoRequest.f);
     if (paramWatchVideoResponse == null) {
       return;
     }
-    ((ReportWatchVideoManager)SuperManager.a(13)).a(paramWatchVideoRequest.jdField_b_of_type_JavaLangString, paramWatchVideoRequest.jdField_c_of_type_JavaLangString, paramWatchVideoRequest.jdField_a_of_type_Boolean, paramWatchVideoResponse.mCreateTime, paramWatchVideoRequest.jdField_c_of_type_Int, paramWatchVideoRequest.d, true);
+    ((ReportWatchVideoManager)SuperManager.a(13)).a(paramWatchVideoRequest.f, paramWatchVideoRequest.g, paramWatchVideoRequest.h, paramWatchVideoResponse.mCreateTime, paramWatchVideoRequest.i, paramWatchVideoRequest.k, true);
   }
   
   public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, long paramLong)
@@ -80,18 +80,18 @@ public class WatchVideoHandler
         return;
       }
       WatchVideoRequest localWatchVideoRequest = new WatchVideoRequest();
-      localWatchVideoRequest.jdField_b_of_type_JavaLangString = paramString1;
-      localWatchVideoRequest.jdField_c_of_type_JavaLangString = paramString2;
-      localWatchVideoRequest.jdField_a_of_type_Boolean = paramBoolean;
-      localWatchVideoRequest.jdField_c_of_type_Int = paramInt;
-      localWatchVideoRequest.jdField_b_of_type_Long = paramLong;
+      localWatchVideoRequest.f = paramString1;
+      localWatchVideoRequest.g = paramString2;
+      localWatchVideoRequest.h = paramBoolean;
+      localWatchVideoRequest.i = paramInt;
+      localWatchVideoRequest.j = paramLong;
       CmdTaskManger.a().a(localWatchVideoRequest, this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.WatchVideoHandler
  * JD-Core Version:    0.7.0.1
  */

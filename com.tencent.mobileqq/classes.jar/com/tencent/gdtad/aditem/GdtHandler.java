@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.ad.tangram.statistics.AdReporterForClick;
+import com.tencent.ad.tangram.statistics.AdReporterForLinkEvent;
 import com.tencent.ad.tangram.util.AdClickUtil;
 import com.tencent.ad.tangram.util.AdClickUtil.Params;
 import com.tencent.ad.tangram.util.AdClickUtil.Result;
@@ -26,51 +27,6 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class GdtHandler
 {
-  public static AdClickUtil.Params a(GdtHandler.Params paramParams)
-  {
-    Object localObject = null;
-    if (paramParams == null) {
-      return null;
-    }
-    AdClickUtil.Params localParams = new AdClickUtil.Params();
-    localParams.activity = paramParams.jdField_a_of_type_JavaLangRefWeakReference;
-    localParams.ad = paramParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-    localParams.reportForClick = paramParams.jdField_a_of_type_Boolean;
-    localParams.sceneID = paramParams.jdField_a_of_type_Int;
-    localParams.componentID = paramParams.jdField_b_of_type_Int;
-    localParams.enableAutoDownload = paramParams.jdField_b_of_type_Boolean;
-    if (paramParams.jdField_b_of_type_JavaLangRefWeakReference != null) {
-      localObject = new WeakReference(paramParams.jdField_b_of_type_JavaLangRefWeakReference.get());
-    }
-    localParams.appReceiver = ((WeakReference)localObject);
-    localParams.videoCeilingSupportedIfNotInstalled = paramParams.c;
-    localParams.videoCeilingSupportedIfInstalled = paramParams.d;
-    localParams.videoSpliceSupported = paramParams.e;
-    localParams.mediaViewLocationRect = paramParams.jdField_a_of_type_AndroidGraphicsRect;
-    localParams.videoStartPositionMillis = paramParams.jdField_a_of_type_Long;
-    localParams.extrasForIntent = new Bundle();
-    localParams.extrasForIntent.putString("big_brother_source_key", "biz_src_ads");
-    if (paramParams.jdField_a_of_type_AndroidOsBundle != null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("toParams pass refId ");
-      ((StringBuilder)localObject).append(paramParams.jdField_a_of_type_AndroidOsBundle);
-      GdtLog.b("GdtHandler", ((StringBuilder)localObject).toString());
-      localParams.extrasForIntent.putAll(paramParams.jdField_a_of_type_AndroidOsBundle);
-    }
-    else
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("toParams not pass refId \n");
-      ((StringBuilder)localObject).append(QLog.getStackTraceString(new IllegalArgumentException()));
-      GdtLog.b("GdtHandler", ((StringBuilder)localObject).toString());
-    }
-    localParams.videoPlayForced = paramParams.f;
-    localParams.halfScreenPageEnabled = paramParams.g;
-    localParams.antiSpamParams = paramParams.jdField_a_of_type_JavaLangString;
-    return localParams;
-  }
-  
   @Deprecated
   public static void a(GdtHandler.Params paramParams)
   {
@@ -84,17 +40,18 @@ public class GdtHandler
     }
     Object localObject2 = null;
     if ((paramParams != null) && (paramParams.a())) {
-      localObject1 = (Activity)paramParams.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject1 = (Activity)paramParams.r.get();
     } else {
       localObject1 = null;
     }
     if (localObject1 != null) {
       localIGdtAdAPI.initGdtContext((Context)localObject1, new InitGdtContextParams());
     }
-    b(paramParams);
+    AdReporterForLinkEvent.reportAsync((Context)localObject1, 4000000, paramParams.a, null, null);
+    c(paramParams);
     Object localObject1 = localObject2;
     if (paramParams != null) {
-      localObject1 = paramParams.jdField_a_of_type_OrgJsonJSONObject;
+      localObject1 = paramParams.o;
     }
     GdtReportForAntiSpam.a((JSONObject)localObject1);
   }
@@ -116,6 +73,7 @@ public class GdtHandler
         boolean bool2 = paramString.getBoolean("appAutoDownload");
         boolean bool3 = paramString.optBoolean("videoCeilingSupported", false);
         boolean bool4 = paramString.optBoolean("videoCeilingSupportedIfInstalled", false);
+        String str = paramString.optString("widthHeightRatioOfVerticalVideoCeiling");
         boolean bool5 = paramString.optBoolean("videoSpliceSupported", false);
         JSONObject localJSONObject2 = paramString.optJSONObject("mediaViewLocationRect");
         Rect localRect = new Rect();
@@ -124,24 +82,25 @@ public class GdtHandler
         }
         int i = localJSONObject2.optInt("left", 0);
         int j = localJSONObject2.optInt("top", 0);
-        int k = localJSONObject2.optInt("right", 0);
         try
         {
+          int k = localJSONObject2.optInt("right", 0);
           int m = localJSONObject2.optInt("bottom", 0);
           localRect.left = i;
           localRect.top = j;
           localRect.right = k;
           localRect.bottom = m;
-          paramOptions.jdField_a_of_type_Boolean = bool1;
-          paramOptions.jdField_b_of_type_Boolean = bool2;
-          paramOptions.c = bool3;
-          paramOptions.d = bool4;
-          paramOptions.e = bool5;
-          paramOptions.jdField_a_of_type_AndroidGraphicsRect = localRect;
-          paramOptions.f = paramString.optBoolean("videoPlayForced");
-          paramOptions.g = paramString.optBoolean("halfScreenPageEnabled");
+          paramOptions.b = bool1;
+          paramOptions.e = bool2;
+          paramOptions.f = bool3;
+          paramOptions.g = bool4;
+          paramOptions.h = str;
+          paramOptions.i = bool5;
+          paramOptions.j = localRect;
+          paramOptions.l = paramString.optBoolean("videoPlayForced");
+          paramOptions.m = paramString.optBoolean("halfScreenPageEnabled");
           if (localJSONObject1.has("adInfo")) {
-            paramOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject1.getJSONObject("adInfo"))));
+            paramOptions.a = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject1.getJSONObject("adInfo"))));
           }
           return true;
         }
@@ -153,16 +112,62 @@ public class GdtHandler
     }
   }
   
-  private static void b(GdtHandler.Params paramParams)
+  public static AdClickUtil.Params b(GdtHandler.Params paramParams)
+  {
+    Object localObject = null;
+    if (paramParams == null) {
+      return null;
+    }
+    AdClickUtil.Params localParams = new AdClickUtil.Params();
+    localParams.activity = paramParams.r;
+    localParams.ad = paramParams.a;
+    localParams.reportForClick = paramParams.b;
+    localParams.sceneID = paramParams.c;
+    localParams.componentID = paramParams.d;
+    localParams.enableAutoDownload = paramParams.e;
+    if (paramParams.s != null) {
+      localObject = new WeakReference(paramParams.s.get());
+    }
+    localParams.appReceiver = ((WeakReference)localObject);
+    localParams.videoCeilingSupportedIfNotInstalled = paramParams.f;
+    localParams.videoCeilingSupportedIfInstalled = paramParams.g;
+    localParams.widthHeightRatioOfVerticalVideoCeiling = paramParams.h;
+    localParams.videoSpliceSupported = paramParams.i;
+    localParams.mediaViewLocationRect = paramParams.j;
+    localParams.videoStartPositionMillis = paramParams.k;
+    localParams.extrasForIntent = new Bundle();
+    localParams.extrasForIntent.putString("big_brother_source_key", "biz_src_ads");
+    if (paramParams.p != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("toParams pass refId ");
+      ((StringBuilder)localObject).append(paramParams.p);
+      GdtLog.b("GdtHandler", ((StringBuilder)localObject).toString());
+      localParams.extrasForIntent.putAll(paramParams.p);
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("toParams not pass refId \n");
+      ((StringBuilder)localObject).append(QLog.getStackTraceString(new IllegalArgumentException()));
+      GdtLog.b("GdtHandler", ((StringBuilder)localObject).toString());
+    }
+    localParams.videoPlayForced = paramParams.l;
+    localParams.halfScreenPageEnabled = paramParams.m;
+    localParams.antiSpamParams = paramParams.n;
+    return localParams;
+  }
+  
+  private static void c(GdtHandler.Params paramParams)
   {
     if (paramParams == null) {
       return;
     }
-    if (paramParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd == null) {
+    if (paramParams.a == null) {
       return;
     }
-    AdClickUtil.Params localParams = a(paramParams);
-    boolean bool = paramParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd.isWeChatMiniApp();
+    AdClickUtil.Params localParams = b(paramParams);
+    boolean bool = paramParams.a.isWeChatMiniApp();
     int i = 1;
     if (bool)
     {
@@ -174,8 +179,8 @@ public class GdtHandler
         QLog.i("GdtHandler", 1, "gdtAdAPI == null");
         return;
       }
-      localObject = localIGdtAdAPI.jumpToWechatMiniApp((Handler)localObject, paramParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
-      if (paramParams.jdField_a_of_type_Boolean)
+      localObject = localIGdtAdAPI.jumpToWechatMiniApp((Handler)localObject, paramParams.a);
+      if (paramParams.b)
       {
         paramParams = AdClickUtil.getUrlForClick(localParams);
         AdReporterForClick.reportAsync(new WeakReference((Context)localParams.activity.get()), localParams.ad, paramParams);
@@ -192,7 +197,7 @@ public class GdtHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtHandler
  * JD-Core Version:    0.7.0.1
  */

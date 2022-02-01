@@ -13,11 +13,11 @@ class CustomizedServiceManager$1
   
   public BootBizModules build(Bundle paramBundle)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i == 7) {
       try
       {
-        paramBundle = new CustomAudienceRoomBizModules((BaseSDKPageBizBootModules)((Class)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i))).newInstance());
+        paramBundle = new CustomAudienceRoomBizModules((BaseSDKPageBizBootModules)((Class)this.b.get(Integer.valueOf(i))).newInstance());
         return paramBundle;
       }
       catch (InstantiationException paramBundle)
@@ -35,7 +35,7 @@ class CustomizedServiceManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.framework.customizedmgr.CustomizedServiceManager.1
  * JD-Core Version:    0.7.0.1
  */

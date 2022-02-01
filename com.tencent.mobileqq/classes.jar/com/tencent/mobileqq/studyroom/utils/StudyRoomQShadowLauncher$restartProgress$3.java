@@ -11,19 +11,19 @@ final class StudyRoomQShadowLauncher$restartProgress$3
   
   public final void run()
   {
-    if (StudyRoomQShadowLauncher.a(this.this$0) > 90)
+    if (StudyRoomQShadowLauncher.v(this.this$0) > 90)
     {
-      StudyRoomQShadowLauncher.a(this.this$0).a();
+      StudyRoomQShadowLauncher.g(this.this$0).a();
       QLog.i("studyroom.QShadowLauncher", 1, "touch max fake progress");
       return;
     }
     StudyRoomQShadowLauncher localStudyRoomQShadowLauncher = this.this$0;
-    StudyRoomQShadowLauncher.b(localStudyRoomQShadowLauncher, StudyRoomQShadowLauncher.a(localStudyRoomQShadowLauncher) + 1);
+    StudyRoomQShadowLauncher.b(localStudyRoomQShadowLauncher, StudyRoomQShadowLauncher.v(localStudyRoomQShadowLauncher) + 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.utils.StudyRoomQShadowLauncher.restartProgress.3
  * JD-Core Version:    0.7.0.1
  */

@@ -21,9 +21,9 @@ public class QzoneCommonJsPlugin
       }
       if ("jumpQQCleanPage".equalsIgnoreCase(paramString3))
       {
-        if (this.parentPlugin.mRuntime.a() != null)
+        if (this.parentPlugin.mRuntime.d() != null)
         {
-          QQSettingCleanActivity.a(this.parentPlugin.mRuntime.a());
+          QQSettingCleanActivity.a(this.parentPlugin.mRuntime.d());
           return true;
         }
         QLog.e("jumpCleanPage", 2, "call activity with null runtime");
@@ -34,7 +34,7 @@ public class QzoneCommonJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneCommonJsPlugin
  * JD-Core Version:    0.7.0.1
  */

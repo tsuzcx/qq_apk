@@ -17,21 +17,21 @@ class GivingHeartItemBuilder$3
   public void onAnimationStart(Animator paramAnimator)
   {
     super.onAnimationStart(paramAnimator);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation != null)
+    if (this.a.A != null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.mImageLayer = null;
-      paramAnimator = ((ViewGroup)((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131362288);
+      this.a.A.mImageLayer = null;
+      paramAnimator = ((ViewGroup)((Activity)this.a.e).getWindow().getDecorView()).getChildAt(0).findViewById(2131427887);
       if (paramAnimator != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setDuration(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getDuration());
-        paramAnimator.startAnimation(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation);
+        this.a.A.setDuration(this.a.z.getDuration());
+        paramAnimator.startAnimation(this.a.A);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

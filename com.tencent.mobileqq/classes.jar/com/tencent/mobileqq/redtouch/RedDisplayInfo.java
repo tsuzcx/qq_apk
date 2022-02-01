@@ -10,27 +10,27 @@ public class RedDisplayInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<RedDisplayInfo> CREATOR = new RedDisplayInfo.1();
-  private RedTypeInfo jdField_a_of_type_ComTencentMobileqqRedtouchRedTypeInfo;
-  ArrayList<RedTypeInfo> jdField_a_of_type_JavaUtilArrayList;
-  
-  public RedTypeInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTypeInfo;
-  }
+  ArrayList<RedTypeInfo> a;
+  private RedTypeInfo b;
   
   public List<RedTypeInfo> a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.a;
   }
   
   public void a(RedTypeInfo paramRedTypeInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTypeInfo = paramRedTypeInfo;
+    this.b = paramRedTypeInfo;
   }
   
   public void a(ArrayList<RedTypeInfo> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.a = paramArrayList;
+  }
+  
+  public RedTypeInfo b()
+  {
+    return this.b;
   }
   
   public int describeContents()
@@ -40,13 +40,13 @@ public class RedDisplayInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
-    paramParcel.writeSerializable(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTypeInfo);
+    paramParcel.writeList(this.a);
+    paramParcel.writeSerializable(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedDisplayInfo
  * JD-Core Version:    0.7.0.1
  */

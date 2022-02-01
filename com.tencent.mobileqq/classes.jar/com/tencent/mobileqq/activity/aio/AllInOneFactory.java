@@ -51,13 +51,13 @@ public class AllInOneFactory
       return ((AllInOneFactory.AllInOneSupplier)a.get(Integer.valueOf(paramMessageRecord.istroop))).a(paramQQAppInterface, paramString, paramSessionInfo, paramMessageRecord);
     }
     paramQQAppInterface = new AllInOne(paramMessageRecord.senderuin, 19);
-    paramQQAppInterface.nickname = paramSessionInfo.d;
+    paramQQAppInterface.nickname = paramSessionInfo.e;
     return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AllInOneFactory
  * JD-Core Version:    0.7.0.1
  */

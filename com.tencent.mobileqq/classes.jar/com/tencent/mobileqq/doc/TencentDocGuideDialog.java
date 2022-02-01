@@ -16,11 +16,11 @@ public class TencentDocGuideDialog
   
   public TencentDocGuideDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131756360);
-    super.setContentView(2131558725);
+    super(paramContext, 2131953523);
+    super.setContentView(2131624345);
     super.setCanceledOnTouchOutside(false);
     super.setCancelable(false);
-    super.findViewById(2131364149).setOnClickListener(this);
+    super.findViewById(2131430116).setOnClickListener(this);
   }
   
   public void a(TencentDocGuideDialog.Callback paramCallback)
@@ -39,7 +39,7 @@ public class TencentDocGuideDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doc.TencentDocGuideDialog
  * JD-Core Version:    0.7.0.1
  */

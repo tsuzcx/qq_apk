@@ -34,6 +34,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.troop.QQGuildMemberCard;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.data.troop.TroopMemberCard;
 import com.tencent.mobileqq.data.troop.TroopMemberCard.MemberGameInfo;
@@ -205,7 +206,7 @@ public class ProfileTroopMemInfoComponent
     if ((this.mData != null) && (((ProfileCardInfo)this.mData).allInOne != null))
     {
       ITroopLinkApi localITroopLinkApi = (ITroopLinkApi)QRoute.api(ITroopLinkApi.class);
-      Object localObject2 = TroopMemberGlobalLevelUtils.a();
+      Object localObject2 = TroopMemberGlobalLevelUtils.b();
       Object localObject1 = localObject2;
       if (this.mData != null)
       {
@@ -302,20 +303,20 @@ public class ProfileTroopMemInfoComponent
     {
       if (this.mGameInfoView == null)
       {
-        this.mGameInfoView = this.mActivity.getLayoutInflater().inflate(2131561347, null);
+        this.mGameInfoView = this.mActivity.getLayoutInflater().inflate(2131627703, null);
         bool1 = true;
       }
       else
       {
         bool1 = false;
       }
-      TextView localTextView1 = (TextView)this.mGameInfoView.findViewById(2131367486);
-      TextView localTextView2 = (TextView)this.mGameInfoView.findViewById(2131367495);
+      TextView localTextView1 = (TextView)this.mGameInfoView.findViewById(2131434004);
+      TextView localTextView2 = (TextView)this.mGameInfoView.findViewById(2131434013);
       localTextView2.setBackgroundDrawable(BizTroopUtil.a(this.mActivity.getResources(), Color.parseColor("#3094cf")));
-      Object localObject = (ImageView)this.mGameInfoView.findViewById(2131375974);
-      TextView localTextView3 = (TextView)this.mGameInfoView.findViewById(2131367496);
-      TextView localTextView4 = (TextView)this.mGameInfoView.findViewById(2131367497);
-      ImageView localImageView = (ImageView)this.mGameInfoView.findViewById(2131362975);
+      Object localObject = (ImageView)this.mGameInfoView.findViewById(2131444160);
+      TextView localTextView3 = (TextView)this.mGameInfoView.findViewById(2131434014);
+      TextView localTextView4 = (TextView)this.mGameInfoView.findViewById(2131434015);
+      ImageView localImageView = (ImageView)this.mGameInfoView.findViewById(2131428774);
       TroopMemberCard.MemberGameInfo localMemberGameInfo = paramProfileCardInfo.troopMemberCard.mMemberGameInfo;
       if (localMemberGameInfo != null)
       {
@@ -470,31 +471,67 @@ public class ProfileTroopMemInfoComponent
     boolean bool2 = true;
     boolean bool3 = true;
     boolean bool1 = true;
+    if (((!bool4) && (!paramProfileCardInfo.isQQGuildCard)) || ((paramProfileCardInfo.troopMemberCard == null) && (paramProfileCardInfo.guildMemberCard == null)))
+    {
+      if (this.mJoinTimeView == null) {
+        bool1 = false;
+      }
+      paramProfileCardInfo = this.mJoinTimeView;
+      if (paramProfileCardInfo != null) {
+        paramProfileCardInfo.setVisibility(8);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileTroopMemInfoComponent", 2, String.format("makeOrRefreshTroopMemJoinTime, Not showing mem join time", new Object[0]));
+      }
+      return bool1;
+    }
+    Object localObject2 = paramProfileCardInfo.troopMemberCard;
+    localObject1 = "";
     long l;
-    if ((bool4) && (paramProfileCardInfo.troopMemberCard != null))
+    if ((localObject2 != null) && (paramProfileCardInfo.troopMemberCard.joinTime > 0L))
     {
       l = paramProfileCardInfo.troopMemberCard.joinTime;
-      str = "";
-      localObject2 = str;
-      if (l > 0L)
-      {
-        l = paramProfileCardInfo.troopMemberCard.joinTime;
-        localObject1 = str;
-        if (paramProfileCardInfo.troopMemberCard.joinTime == 1L) {}
-      }
+      localObject3 = localObject1;
+      if (paramProfileCardInfo.troopMemberCard.joinTime == 1L) {}
     }
     try
     {
-      localObject1 = DateFormat.format(this.mActivity.getString(2131693369), 1000L * l).toString();
+      localObject3 = DateFormat.format(this.mActivity.getString(2131890918), 1000L * l).toString();
     }
     catch (Exception paramProfileCardInfo)
     {
       for (;;)
       {
-        localObject1 = str;
+        localObject3 = localObject1;
       }
     }
-    Object localObject2 = localObject1;
+    localObject2 = localObject3;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ProfileTroopMemInfoComponent", 2, String.format("makeOrRefreshTroopMemJoinTime, timeStamp: %s, joinTime: %s", new Object[] { Long.valueOf(l), localObject3 }));
+      localObject2 = localObject3;
+      break label325;
+      localObject2 = localObject1;
+      if (paramProfileCardInfo.guildMemberCard != null)
+      {
+        localObject2 = localObject1;
+        if (paramProfileCardInfo.guildMemberCard.joinTime > 0L) {
+          l = paramProfileCardInfo.guildMemberCard.joinTime;
+        }
+      }
+    }
+    try
+    {
+      paramProfileCardInfo = DateFormat.format(this.mActivity.getString(2131890883), 1000L * l).toString();
+      localObject1 = paramProfileCardInfo;
+    }
+    catch (Exception paramProfileCardInfo)
+    {
+      label282:
+      label325:
+      break label282;
+    }
+    localObject2 = localObject1;
     if (QLog.isColorLevel())
     {
       QLog.d("ProfileTroopMemInfoComponent", 2, String.format("makeOrRefreshTroopMemJoinTime, timeStamp: %s, joinTime: %s", new Object[] { Long.valueOf(l), localObject1 }));
@@ -502,7 +539,9 @@ public class ProfileTroopMemInfoComponent
     }
     if (TextUtils.isEmpty((CharSequence)localObject2))
     {
-      if (this.mJoinTimeView == null) {
+      if (this.mJoinTimeView != null) {
+        bool1 = bool2;
+      } else {
         bool1 = false;
       }
       paramProfileCardInfo = this.mJoinTimeView;
@@ -513,37 +552,23 @@ public class ProfileTroopMemInfoComponent
     }
     if (this.mJoinTimeView == null)
     {
-      this.mJoinTimeView = this.mActivity.getLayoutInflater().inflate(2131562969, null);
-      paramProfileCardInfo = (ImageView)this.mJoinTimeView.findViewById(2131368343);
-      paramProfileCardInfo.setImageResource(2130845964);
+      this.mJoinTimeView = this.mActivity.getLayoutInflater().inflate(2131629577, null);
+      paramProfileCardInfo = (ImageView)this.mJoinTimeView.findViewById(2131435219);
+      paramProfileCardInfo.setImageResource(2130847434);
       paramProfileCardInfo.clearColorFilter();
-      paramProfileCardInfo.setColorFilter(10067634);
-      bool1 = bool2;
+      bool1 = bool3;
     }
     else
     {
       bool1 = false;
     }
-    paramProfileCardInfo = (TextView)this.mJoinTimeView.findViewById(2131369087);
-    localObject1 = (ImageView)this.mJoinTimeView.findViewById(2131362975);
+    paramProfileCardInfo = (TextView)this.mJoinTimeView.findViewById(2131436051);
+    localObject1 = (ImageView)this.mJoinTimeView.findViewById(2131428774);
     ((ImageView)localObject1).setVisibility(8);
     paramProfileCardInfo.setText((CharSequence)localObject2);
     this.mJoinTimeView.setVisibility(0);
     QLog.d("ProfileTroopMemInfoComponent", 2, "makeOrRefreshTroopMemJoinTime 05");
     updateItemTheme(this.mJoinTimeView, paramProfileCardInfo, null, (ImageView)localObject1);
-    return bool1;
-    if (this.mJoinTimeView != null) {
-      bool1 = bool3;
-    } else {
-      bool1 = false;
-    }
-    paramProfileCardInfo = this.mJoinTimeView;
-    if (paramProfileCardInfo != null) {
-      paramProfileCardInfo.setVisibility(8);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileTroopMemInfoComponent", 2, String.format("makeOrRefreshTroopMemJoinTime, Not showing mem join time", new Object[0]));
-    }
     return bool1;
   }
   
@@ -568,19 +593,18 @@ public class ProfileTroopMemInfoComponent
     }
     if (this.mRecentSaidView == null)
     {
-      this.mRecentSaidView = this.mActivity.getLayoutInflater().inflate(2131562969, null);
-      localObject = (ImageView)this.mRecentSaidView.findViewById(2131368343);
-      ((ImageView)localObject).setImageResource(2130845978);
+      this.mRecentSaidView = this.mActivity.getLayoutInflater().inflate(2131629577, null);
+      localObject = (ImageView)this.mRecentSaidView.findViewById(2131435219);
+      ((ImageView)localObject).setImageResource(2130847448);
       ((ImageView)localObject).clearColorFilter();
-      ((ImageView)localObject).setColorFilter(10067634);
       bool1 = bool2;
     }
     else
     {
       bool1 = false;
     }
-    Object localObject = (TextView)this.mRecentSaidView.findViewById(2131369087);
-    ImageView localImageView = (ImageView)this.mRecentSaidView.findViewById(2131362975);
+    Object localObject = (TextView)this.mRecentSaidView.findViewById(2131436051);
+    ImageView localImageView = (ImageView)this.mRecentSaidView.findViewById(2131428774);
     DataTag localDataTag = new DataTag(78, null);
     this.mRecentSaidView.setTag(localDataTag);
     this.mRecentSaidView.setOnClickListener(this);
@@ -659,8 +683,8 @@ public class ProfileTroopMemInfoComponent
   {
     paramView.setVisibility(0);
     Context localContext = paramView.getContext();
-    TextView localTextView = (TextView)paramView.findViewById(2131369087);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131362975);
+    TextView localTextView = (TextView)paramView.findViewById(2131436051);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131428774);
     if (!TextUtils.isEmpty(paramProfileCardInfo.troopRecentSaid))
     {
       localTextView.setText(paramProfileCardInfo.troopRecentSaid);
@@ -669,8 +693,8 @@ public class ProfileTroopMemInfoComponent
       paramView.setOnClickListener(paramOnClickListener);
       return;
     }
-    localTextView.setText(localContext.getString(2131697589));
-    localTextView.setContentDescription(localContext.getString(2131697589));
+    localTextView.setText(localContext.getString(2131895362));
+    localTextView.setContentDescription(localContext.getString(2131895362));
     localImageView.setVisibility(0);
     paramView.setOnClickListener(paramOnClickListener);
   }
@@ -719,26 +743,25 @@ public class ProfileTroopMemInfoComponent
     boolean bool3 = paramProfileCardInfo.isTroopMemberCard;
     boolean bool2 = true;
     boolean bool1 = true;
-    if ((bool3) && (paramProfileCardInfo.troopGlamourLevel >= 0) && (!((TroopManager)localObject).m(paramProfileCardInfo.troopUin)))
+    if ((bool3) && (paramProfileCardInfo.troopGlamourLevel >= 0) && (!((TroopManager)localObject).Z(paramProfileCardInfo.troopUin)))
     {
       if (this.mActivity == null) {
         return false;
       }
       if (this.mCharmLevelView == null)
       {
-        this.mCharmLevelView = this.mActivity.getLayoutInflater().inflate(2131562969, null);
-        localObject = (ImageView)this.mCharmLevelView.findViewById(2131368343);
-        ((ImageView)localObject).setImageResource(2130845960);
+        this.mCharmLevelView = this.mActivity.getLayoutInflater().inflate(2131629577, null);
+        localObject = (ImageView)this.mCharmLevelView.findViewById(2131435219);
+        ((ImageView)localObject).setImageResource(2130847430);
         ((ImageView)localObject).clearColorFilter();
-        ((ImageView)localObject).setColorFilter(10067634);
       }
       else
       {
         bool1 = false;
       }
-      localObject = (TextView)this.mCharmLevelView.findViewById(2131369087);
-      ImageView localImageView = (ImageView)this.mCharmLevelView.findViewById(2131362975);
-      ((TextView)localObject).setText(this.mActivity.getString(2131693370));
+      localObject = (TextView)this.mCharmLevelView.findViewById(2131436051);
+      ImageView localImageView = (ImageView)this.mCharmLevelView.findViewById(2131428774);
+      ((TextView)localObject).setText(this.mActivity.getString(2131890919));
       DataTag localDataTag = new DataTag(80, null);
       this.mCharmLevelView.setTag(localDataTag);
       this.mCharmLevelView.setOnClickListener(this);
@@ -794,7 +817,7 @@ public class ProfileTroopMemInfoComponent
     this.mActivity.addObserver(this.troopOnlinePushObserver);
     this.mActivity.addObserver(this.mTroopManagerBizObserver);
     init();
-    paramQBaseActivity = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).b(((ProfileCardInfo)this.mData).troopUin);
+    paramQBaseActivity = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).f(((ProfileCardInfo)this.mData).troopUin);
     checkAndUpdateTroopInfo(paramQBaseActivity);
     if ((paramQBaseActivity != null) && (paramQBaseActivity.isGameBind())) {
       TroopReportor.a("Grp_game", "Mber_data", "mdata_exp", 0, 0, new String[] { paramQBaseActivity.troopuin });
@@ -836,7 +859,7 @@ public class ProfileTroopMemInfoComponent
         localObject = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
         ITroopManagerBizHandler localITroopManagerBizHandler = (ITroopManagerBizHandler)((QQAppInterface)this.mApp).getBusinessHandler(BusinessHandlerFactory.TROOP_MANAGER_BIZ_HANDLER);
         ITroopMemberCardHandler localITroopMemberCardHandler = (ITroopMemberCardHandler)((QQAppInterface)this.mApp).getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER);
-        TroopInfo localTroopInfo = ((TroopManager)localObject).b(((ProfileCardInfo)this.mData).troopUin);
+        TroopInfo localTroopInfo = ((TroopManager)localObject).f(((ProfileCardInfo)this.mData).troopUin);
         checkAndUpdateTroopInfo(localTroopInfo);
         if ((localTroopInfo != null) && (localITroopMemberCardHandler != null))
         {
@@ -845,7 +868,7 @@ public class ProfileTroopMemInfoComponent
           }
           localITroopMemberCardHandler.a(((ProfileCardInfo)this.mData).troopUin, localTroopInfo.troopcode, localArrayList);
           localITroopMemberCardHandler.a(Long.parseLong(((ProfileCardInfo)this.mData).troopUin), Long.parseLong(((ProfileCardInfo)this.mData).allInOne.uin));
-          if (!((TroopManager)localObject).m(((ProfileCardInfo)this.mData).troopUin))
+          if (!((TroopManager)localObject).Z(((ProfileCardInfo)this.mData).troopUin))
           {
             if (QLog.isColorLevel()) {
               QLog.d("ProfileTroopMemInfoComponent", 2, "requestTroopMemberInfo.requestGlobalTroopLevel");
@@ -875,7 +898,7 @@ public class ProfileTroopMemInfoComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.ProfileTroopMemInfoComponent
  * JD-Core Version:    0.7.0.1
  */

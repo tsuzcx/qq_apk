@@ -17,7 +17,7 @@ class LyricViewInternalBase$1
   {
     paramMessage = new StringBuilder();
     paramMessage.append("mRefreshHandler -> handleMessage begin, mState:");
-    paramMessage.append(this.a.l);
+    paramMessage.append(this.a.x);
     Log.d("ModuleLyricViewInternal", paramMessage.toString());
     this.a.requestLayout();
     this.a.invalidate();
@@ -25,7 +25,7 @@ class LyricViewInternalBase$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.widget.LyricViewInternalBase.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class AddPhoneNumberFragment$8$1$2
   {
     BaseActivity localBaseActivity = this.this$2.this$1.this$0.getBaseActivity();
     if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {
-      QQToast.a(localBaseActivity, this.val$message, 0).a();
+      QQToast.makeText(localBaseActivity, this.val$message, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.AddPhoneNumberFragment.8.1.2
  * JD-Core Version:    0.7.0.1
  */

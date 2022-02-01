@@ -5,10 +5,10 @@ import android.os.Handler;
 public class ThreadExecutor
   implements Thread.UncaughtExceptionHandler
 {
-  HippyHandlerThread mDomThread;
-  private int mGroupId = -1;
-  HippyHandlerThread mJsBridgeThread;
-  HippyHandlerThread mJsThread;
+  final HippyHandlerThread mDomThread;
+  private int mGroupId;
+  final HippyHandlerThread mJsBridgeThread;
+  final HippyHandlerThread mJsThread;
   ThreadExecutor.UncaughtExceptionHandler mUncaughtExceptionHandler;
   
   public ThreadExecutor(int paramInt)
@@ -122,7 +122,7 @@ public class ThreadExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.common.ThreadExecutor
  * JD-Core Version:    0.7.0.1
  */

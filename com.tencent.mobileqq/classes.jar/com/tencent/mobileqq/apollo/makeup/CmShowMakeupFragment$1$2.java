@@ -9,7 +9,7 @@ class CmShowMakeupFragment$1$2
   
   public void run()
   {
-    if (CmShowMakeupFragment.a(this.a.a))
+    if (CmShowMakeupFragment.b(this.a.a))
     {
       QLog.d("[cmshow]CmShowMakeupFragment", 0, "[cmShowResPreLoad][onComplete] step = STEP_FETCH_BUNDLE , aekitview ready , refresh bundle path");
       return;
@@ -19,7 +19,7 @@ class CmShowMakeupFragment$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowMakeupFragment.1.2
  * JD-Core Version:    0.7.0.1
  */

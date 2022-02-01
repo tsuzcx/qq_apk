@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
 @QAPI(process={"all"})
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/api/IKanDianPublisher;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "buildKDCommunityInfo", "", "config", "Lorg/json/JSONObject;", "kdCommunityId", "", "kdCommunityName", "buildOriginTopicInfo", "topicId", "", "coverUrl", "title", "brief", "allowSubmit", "", "buildPublisherScene", "from", "callback", "buildSelectVideoInfo", "duration", "", "fileSize", "coverPath", "width", "height", "filePath", "buildUgcEntryExtraInfo", "ugcEntryExtraInfo", "Lcom/tencent/mobileqq/kandian/biz/ugc/entity/UgcEntryExtraInfo;", "buildVideoOriginTopicInfo", "topicName", "getRemoteConfig", "Lcom/tencent/mobileqq/kandian/biz/publisher/api/IPublisherRemoteConfig;", "init", "context", "Landroid/content/Context;", "openCreateTopicPage", "extra", "openCreateTopicPageForResult", "activity", "Landroid/app/Activity;", "requestCode", "openEditTopicPage", "openEditTopicPageForResult", "openPublishArticlePage", "openPublishArticlePageForResult", "openSelectVideoPage", "openSelectVideoPageForResult", "registerPublishObserver", "observer", "Lcom/tencent/mobileqq/kandian/biz/publisher/api/IKanDianPublisher$IPublisherObserver;", "unRegisterPublishObserver", "IPublisherObserver", "kandian-api_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/api/IKanDianPublisher;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "buildKDCommunityInfo", "", "config", "Lorg/json/JSONObject;", "kdCommunityId", "", "kdCommunityName", "buildOriginTopicInfo", "topicId", "", "coverUrl", "title", "brief", "allowSubmit", "", "buildPublisherScene", "from", "callback", "buildSelectVideoInfo", "duration", "", "fileSize", "coverPath", "width", "height", "filePath", "buildUgcEntryExtraInfo", "ugcEntryExtraInfo", "Lcom/tencent/mobileqq/kandian/biz/ugc/entity/UgcEntryExtraInfo;", "getRemoteConfig", "Lcom/tencent/mobileqq/kandian/biz/publisher/api/IPublisherRemoteConfig;", "init", "context", "Landroid/content/Context;", "openPublishArticlePage", "extra", "openPublishArticlePageForResult", "activity", "Landroid/app/Activity;", "requestCode", "openSelectVideoPage", "openSelectVideoPageForResult", "registerPublishObserver", "observer", "Lcom/tencent/mobileqq/kandian/biz/publisher/api/IKanDianPublisher$IPublisherObserver;", "unRegisterPublishObserver", "IPublisherObserver", "kandian-api_release"}, k=1, mv={1, 1, 16})
 public abstract interface IKanDianPublisher
   extends QRouteApi
 {
@@ -26,20 +26,10 @@ public abstract interface IKanDianPublisher
   
   public abstract void buildUgcEntryExtraInfo(@NotNull JSONObject paramJSONObject, @NotNull UgcEntryExtraInfo paramUgcEntryExtraInfo);
   
-  public abstract void buildVideoOriginTopicInfo(@NotNull JSONObject paramJSONObject, long paramLong, @NotNull String paramString);
-  
   @NotNull
   public abstract IPublisherRemoteConfig getRemoteConfig();
   
   public abstract void init(@NotNull Context paramContext);
-  
-  public abstract void openCreateTopicPage(@NotNull Context paramContext, @Nullable JSONObject paramJSONObject);
-  
-  public abstract void openCreateTopicPageForResult(@NotNull Activity paramActivity, int paramInt, @Nullable JSONObject paramJSONObject);
-  
-  public abstract void openEditTopicPage(@NotNull Context paramContext, @Nullable JSONObject paramJSONObject);
-  
-  public abstract void openEditTopicPageForResult(@NotNull Activity paramActivity, int paramInt, @Nullable JSONObject paramJSONObject);
   
   public abstract void openPublishArticlePage(@NotNull Context paramContext, @Nullable JSONObject paramJSONObject);
   
@@ -57,7 +47,7 @@ public abstract interface IKanDianPublisher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.api.IKanDianPublisher
  * JD-Core Version:    0.7.0.1
  */

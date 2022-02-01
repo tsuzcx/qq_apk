@@ -38,7 +38,7 @@ public class C2CProcessCallBack
   {
     a(paramFileManagerEntity, paramLong1, paramString1);
     paramString1 = this.a.getCurrentAccountUin();
-    this.a.getFileManagerDataCenter().a(paramString2, paramString1, true, "", paramLong2, true, paramInt, paramString3, paramFileManagerEntity.msgSeq, paramLong3, paramFileManagerEntity.msgUid, -1L, MessageCache.a());
+    this.a.getFileManagerDataCenter().a(paramString2, paramString1, true, "", paramLong2, true, paramInt, paramString3, paramFileManagerEntity.msgSeq, paramLong3, paramFileManagerEntity.msgUid, -1L, MessageCache.c());
     this.a.getFileManagerDataCenter().a(paramFileManagerEntity);
     return paramFileManagerEntity.nSessionId;
   }
@@ -48,11 +48,11 @@ public class C2CProcessCallBack
     FileManagerEntity localFileManagerEntity = new FileManagerEntity();
     localFileManagerEntity.nSessionId = FileManagerUtil.a().longValue();
     localFileManagerEntity.fileName = paramString4;
-    if ((paramTroopFileInfo != null) && (FileUtil.a(paramTroopFileInfo.l)))
+    if ((paramTroopFileInfo != null) && (FileUtil.b(paramTroopFileInfo.y)))
     {
       paramString4 = new BitmapFactory.Options();
       paramString4.inJustDecodeBounds = true;
-      FilePicURLDrawlableHelper.a(paramTroopFileInfo.l, paramString4);
+      FilePicURLDrawlableHelper.a(paramTroopFileInfo.y, paramString4);
       if ((paramString4.outHeight > 0) && (paramString4.outWidth > 0))
       {
         localFileManagerEntity.imgWidth = paramString4.outWidth;
@@ -111,19 +111,19 @@ public class C2CProcessCallBack
     localFileManagerEntity.peerUin = paramString1;
     localFileManagerEntity.peerNick = FileManagerUtil.a(this.a, paramString1, null, paramInt1);
     localFileManagerEntity.selfUin = paramString2;
-    localFileManagerEntity.srvTime = (MessageCache.a() * 1000L);
+    localFileManagerEntity.srvTime = (MessageCache.c() * 1000L);
     localFileManagerEntity.setCloudType(4);
     localFileManagerEntity.status = 2;
-    localFileManagerEntity.msgSeq = FileManagerUtil.a();
-    localFileManagerEntity.msgUid = FileManagerUtil.b();
+    localFileManagerEntity.msgSeq = FileManagerUtil.f();
+    localFileManagerEntity.msgUid = FileManagerUtil.g();
     localFileManagerEntity.fileSize = paramLong2;
     localFileManagerEntity.TroopUin = paramLong1;
     localFileManagerEntity.busId = paramInt2;
     localFileManagerEntity.strTroopFilePath = paramString3;
     if (paramTroopFileInfo != null)
     {
-      localFileManagerEntity.strTroopFileID = paramTroopFileInfo.a.toString();
-      localFileManagerEntity.lastTime = paramTroopFileInfo.c;
+      localFileManagerEntity.strTroopFileID = paramTroopFileInfo.b.toString();
+      localFileManagerEntity.lastTime = paramTroopFileInfo.j;
     }
     localFileManagerEntity.TroopUin = paramLong1;
     localFileManagerEntity.forwardTroopFileEntrance = paramInt3;
@@ -185,9 +185,9 @@ public class C2CProcessCallBack
       paramString = localTroopFileTransferManager.a(paramString);
       if (paramString != null)
       {
-        paramFileManagerEntity.yybApkPackageName = paramString.k;
-        paramFileManagerEntity.yybApkName = paramString.l;
-        paramFileManagerEntity.yybApkIconUrl = paramString.m;
+        paramFileManagerEntity.yybApkPackageName = paramString.A;
+        paramFileManagerEntity.yybApkName = paramString.B;
+        paramFileManagerEntity.yybApkIconUrl = paramString.C;
       }
     }
   }
@@ -279,14 +279,14 @@ public class C2CProcessCallBack
         long l3 = ((FileManagerEntity)localObject1).msgUid;
         paramString2 = (String)localObject1;
         ((FileTransferHandler)localObject3).a(paramLong, str1, (String)localObject2, str2, l1, paramString4, l2, l3, null);
-        if (FileManagerUtil.a(paramString2.fileName) == 0)
+        if (FileManagerUtil.c(paramString2.fileName) == 0)
         {
           paramString2 = this.a.getFileManagerEngine().a(paramString2, 5);
           break label757;
         }
-        if (FileManagerUtil.a(paramString2.fileName) == 2)
+        if (FileManagerUtil.c(paramString2.fileName) == 2)
         {
-          paramString2 = this.a.getFileManagerEngine().b(paramString2);
+          paramString2 = this.a.getFileManagerEngine().c(paramString2);
           break label757;
         }
       }
@@ -295,14 +295,14 @@ public class C2CProcessCallBack
         paramString2 = (String)localObject1;
         ((C2CProcessCallBack)localObject2).a.getFileManagerNotifyCenter().a(paramString2, 63, "");
         ((C2CProcessCallBack)localObject2).a.getFileTransferHandler().a(paramString2.peerUin, paramString2, null);
-        if (FileManagerUtil.a(paramString2.fileName) == 0)
+        if (FileManagerUtil.c(paramString2.fileName) == 0)
         {
           paramString2 = ((C2CProcessCallBack)localObject2).a.getFileManagerEngine().a(paramString2, 5);
           break label757;
         }
-        if (FileManagerUtil.a(paramString2.fileName) == 2)
+        if (FileManagerUtil.c(paramString2.fileName) == 2)
         {
-          paramString2 = ((C2CProcessCallBack)localObject2).a.getFileManagerEngine().a(paramString2);
+          paramString2 = ((C2CProcessCallBack)localObject2).a.getFileManagerEngine().b(paramString2);
           break label757;
         }
       }
@@ -325,7 +325,7 @@ public class C2CProcessCallBack
       if (!TextUtils.isEmpty(paramString1)) {
         FMToastUtil.c(paramString1);
       } else {
-        FMToastUtil.c(BaseApplicationImpl.getContext().getString(2131692559));
+        FMToastUtil.c(BaseApplicationImpl.getContext().getString(2131889582));
       }
       paramBoolean = false;
     }
@@ -370,7 +370,7 @@ public class C2CProcessCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.C2CProcessCallBack
  * JD-Core Version:    0.7.0.1
  */

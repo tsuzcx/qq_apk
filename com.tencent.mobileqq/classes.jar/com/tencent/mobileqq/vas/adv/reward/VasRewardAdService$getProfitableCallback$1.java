@@ -11,7 +11,7 @@ public final class VasRewardAdService$getProfitableCallback$1
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasAdvRewardVasRewardAdBaseService$ShowAdCallback.a(true);
+    this.b.a(true);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -21,17 +21,17 @@ public final class VasRewardAdService$getProfitableCallback$1
     }
     if (paramBoolean == true)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasAdvRewardVasRewardAdService.c();
+      this.a.c();
       return;
     }
     if (!paramBoolean) {
-      VasRewardAdService.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvRewardVasRewardAdService, 4);
+      VasRewardAdService.a(this.a, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.reward.VasRewardAdService.getProfitableCallback.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class DrawImageUtil
 {
   public static Bitmap a(DoodleItem paramDoodleItem, int paramInt1, int paramInt2, float paramFloat)
   {
-    if ((paramDoodleItem != null) && (paramDoodleItem.a() != null) && (paramDoodleItem.a().size() > 0)) {}
+    if ((paramDoodleItem != null) && (paramDoodleItem.c() != null) && (paramDoodleItem.c().size() > 0)) {}
     for (;;)
     {
       float f6;
@@ -42,13 +42,13 @@ public class DrawImageUtil
         localPaint.setStrokeJoin(Paint.Join.ROUND);
         f6 = i;
         f2 = j;
-        Object localObject1 = paramDoodleItem.a().iterator();
+        Object localObject1 = paramDoodleItem.c().iterator();
         f7 = 0.0F;
         f4 = 0.0F;
         if (!((Iterator)localObject1).hasNext()) {
           break label581;
         }
-        Object localObject2 = ((PathData)((Iterator)localObject1).next()).a().iterator();
+        Object localObject2 = ((PathData)((Iterator)localObject1).next()).e().iterator();
         float f1 = f4;
         float f3 = f7;
         paramFloat = f2;
@@ -92,20 +92,20 @@ public class DrawImageUtil
         localObject2 = new Path();
         paramFloat = paramInt1 / f1;
         f4 = paramInt2 / f1;
-        localObject3 = paramDoodleItem.a().iterator();
+        localObject3 = paramDoodleItem.c().iterator();
         if (((Iterator)localObject3).hasNext())
         {
           PathData localPathData = (PathData)((Iterator)localObject3).next();
-          paramDoodleItem = localPathData.a();
+          paramDoodleItem = localPathData.g();
           if (paramDoodleItem == null) {
             continue;
           }
           ((Path)localObject2).moveTo((paramDoodleItem.a() - f3) * paramFloat, (paramDoodleItem.b() - f2) * f4);
-          ArrayList localArrayList = localPathData.a();
+          ArrayList localArrayList = localPathData.e();
           paramInt1 = 1;
           f1 = paramFloat;
           paramFloat = f1;
-          if (paramInt1 >= localPathData.c()) {
+          if (paramInt1 >= localPathData.d()) {
             continue;
           }
           localObject1 = (PathData.PointData)localArrayList.get(paramInt1);
@@ -140,7 +140,7 @@ public class DrawImageUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawImageUtil
  * JD-Core Version:    0.7.0.1
  */

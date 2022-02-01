@@ -13,14 +13,14 @@ public final class StepConfigProcessor$Companion
   @NotNull
   public final StepConfigBean a()
   {
-    Object localObject = QConfigManager.a().a(738);
+    Object localObject = QConfigManager.b().b(738);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
     return (StepConfigBean)localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.config.StepConfigProcessor.Companion
  * JD-Core Version:    0.7.0.1
  */

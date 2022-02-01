@@ -9,9 +9,9 @@ import com.tencent.widget.ActionSheet.OnButtonClickListener;
 class TroopShareUtility$4
   implements ActionSheet.OnButtonClickListener
 {
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (this.a.c) {
+    if (this.a.r) {
       return;
     }
     if (QLog.isColorLevel())
@@ -22,24 +22,24 @@ class TroopShareUtility$4
       QLog.i("TroopShareUtility", 2, paramView.toString());
     }
     paramView = this.a;
-    paramView.c = true;
+    paramView.r = true;
     if (paramInt != 0)
     {
       if (paramInt != 1)
       {
         paramView.b(false);
         paramView = this.a;
-        paramView.jdField_a_of_type_Int = -1;
-        paramView.jdField_b_of_type_Int = -1;
-        if ((paramView.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity instanceof TroopCreateLogicActivity)) {
-          ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity).finish();
+        paramView.a = -1;
+        paramView.b = -1;
+        if ((paramView.h instanceof TroopCreateLogicActivity)) {
+          ((TroopCreateLogicActivity)this.a.h).finish();
         }
       }
       else
       {
         paramView.b(true);
         paramView = this.a;
-        paramView.jdField_b_of_type_Int = 0;
+        paramView.b = 0;
         TroopShareUtility.b(paramView);
       }
     }
@@ -47,15 +47,15 @@ class TroopShareUtility$4
     {
       paramView.b(true);
       paramView = this.a;
-      paramView.jdField_b_of_type_Int = 1;
+      paramView.b = 1;
       TroopShareUtility.b(paramView);
     }
-    this.a.jdField_b_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.q.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopshare.TroopShareUtility.4
  * JD-Core Version:    0.7.0.1
  */

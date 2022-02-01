@@ -60,7 +60,7 @@ public final class BitmapUtils
     return paramBitmap;
   }
   
-  private final ExifInterface a(String paramString)
+  private final ExifInterface c(String paramString)
   {
     try
     {
@@ -80,11 +80,11 @@ public final class BitmapUtils
   {
     // Byte code:
     //   0: aload_1
-    //   1: ldc 107
-    //   3: invokestatic 110	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1: ldc 108
+    //   3: invokestatic 111	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
     //   6: aload_1
-    //   7: checkcast 112	java/lang/CharSequence
-    //   10: invokestatic 118	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   7: checkcast 113	java/lang/CharSequence
+    //   10: invokestatic 119	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   13: ifeq +5 -> 18
     //   16: aconst_null
     //   17: areturn
@@ -92,33 +92,33 @@ public final class BitmapUtils
     //   19: checkcast 50	android/graphics/Bitmap
     //   22: astore 6
     //   24: aconst_null
-    //   25: checkcast 120	java/io/BufferedInputStream
+    //   25: checkcast 121	java/io/BufferedInputStream
     //   28: astore 5
     //   30: aload 5
     //   32: astore_3
-    //   33: new 120	java/io/BufferedInputStream
+    //   33: new 121	java/io/BufferedInputStream
     //   36: dup
-    //   37: new 122	java/io/FileInputStream
+    //   37: new 123	java/io/FileInputStream
     //   40: dup
     //   41: aload_1
-    //   42: invokespecial 123	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   45: checkcast 125	java/io/InputStream
-    //   48: invokespecial 128	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   42: invokespecial 124	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   45: checkcast 126	java/io/InputStream
+    //   48: invokespecial 129	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   51: astore 4
     //   53: aload 4
-    //   55: checkcast 125	java/io/InputStream
-    //   58: invokestatic 134	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   55: checkcast 126	java/io/InputStream
+    //   58: invokestatic 135	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   61: astore 5
     //   63: aload 5
     //   65: astore_3
     //   66: aload 4
-    //   68: invokevirtual 137	java/io/BufferedInputStream:close	()V
+    //   68: invokevirtual 138	java/io/BufferedInputStream:close	()V
     //   71: aload 5
     //   73: astore_3
     //   74: goto +86 -> 160
     //   77: astore 4
     //   79: ldc 82
-    //   81: ldc 139
+    //   81: ldc 140
     //   83: aload 4
     //   85: checkcast 86	java/lang/Throwable
     //   88: invokestatic 92	com/tencent/tkd/topicsdk/framework/TLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -143,7 +143,7 @@ public final class BitmapUtils
     //   126: aload 5
     //   128: astore_3
     //   129: ldc 82
-    //   131: ldc 141
+    //   131: ldc 142
     //   133: aload 4
     //   135: checkcast 86	java/lang/Throwable
     //   138: invokestatic 92	com/tencent/tkd/topicsdk/framework/TLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -154,30 +154,30 @@ public final class BitmapUtils
     //   149: aload 6
     //   151: astore_3
     //   152: aload 5
-    //   154: invokevirtual 137	java/io/BufferedInputStream:close	()V
+    //   154: invokevirtual 138	java/io/BufferedInputStream:close	()V
     //   157: aload 6
     //   159: astore_3
     //   160: aload_0
     //   161: aload_1
-    //   162: invokespecial 143	com/tencent/tkd/topicsdk/common/BitmapUtils:a	(Ljava/lang/String;)Landroid/media/ExifInterface;
+    //   162: invokespecial 144	com/tencent/tkd/topicsdk/common/BitmapUtils:c	(Ljava/lang/String;)Landroid/media/ExifInterface;
     //   165: astore_1
     //   166: aload_1
     //   167: ifnull +32 -> 199
     //   170: aload_1
-    //   171: ldc 145
+    //   171: ldc 146
     //   173: iconst_1
-    //   174: invokevirtual 149	android/media/ExifInterface:getAttributeInt	(Ljava/lang/String;I)I
+    //   174: invokevirtual 150	android/media/ExifInterface:getAttributeInt	(Ljava/lang/String;I)I
     //   177: istore_2
     //   178: getstatic 39	com/tencent/tkd/topicsdk/common/BitmapUtils:a	Lcom/tencent/tkd/topicsdk/common/BitmapUtils;
     //   181: iload_2
-    //   182: invokespecial 151	com/tencent/tkd/topicsdk/common/BitmapUtils:a	(I)I
+    //   182: invokespecial 152	com/tencent/tkd/topicsdk/common/BitmapUtils:a	(I)I
     //   185: istore_2
     //   186: aload_3
     //   187: ifnull +12 -> 199
     //   190: getstatic 39	com/tencent/tkd/topicsdk/common/BitmapUtils:a	Lcom/tencent/tkd/topicsdk/common/BitmapUtils;
     //   193: aload_3
     //   194: iload_2
-    //   195: invokespecial 153	com/tencent/tkd/topicsdk/common/BitmapUtils:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+    //   195: invokespecial 154	com/tencent/tkd/topicsdk/common/BitmapUtils:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
     //   198: areturn
     //   199: aload_3
     //   200: areturn
@@ -185,7 +185,7 @@ public final class BitmapUtils
     //   202: aload 5
     //   204: astore_3
     //   205: ldc 82
-    //   207: ldc 155
+    //   207: ldc 156
     //   209: aload_1
     //   210: checkcast 86	java/lang/Throwable
     //   213: invokestatic 92	com/tencent/tkd/topicsdk/framework/TLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -197,11 +197,11 @@ public final class BitmapUtils
     //   224: aload_3
     //   225: ifnull +22 -> 247
     //   228: aload_3
-    //   229: invokevirtual 137	java/io/BufferedInputStream:close	()V
+    //   229: invokevirtual 138	java/io/BufferedInputStream:close	()V
     //   232: goto +15 -> 247
     //   235: astore_3
     //   236: ldc 82
-    //   238: ldc 139
+    //   238: ldc 140
     //   240: aload_3
     //   241: checkcast 86	java/lang/Throwable
     //   244: invokestatic 92	com/tencent/tkd/topicsdk/framework/TLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -239,7 +239,7 @@ public final class BitmapUtils
   }
   
   @NotNull
-  public final Pair<Integer, Integer> a(@NotNull String paramString)
+  public final Pair<Integer, Integer> b(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "path");
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
@@ -250,7 +250,7 @@ public final class BitmapUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.BitmapUtils
  * JD-Core Version:    0.7.0.1
  */

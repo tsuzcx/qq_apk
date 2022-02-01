@@ -13,7 +13,7 @@ import java.util.List;
 public abstract interface IGameMsgSendTimesRulesApi
   extends QRouteApi
 {
-  public abstract void doInit(AppInterface paramAppInterface, String paramString, int paramInt1, int paramInt2, List<ChatMessage> paramList);
+  public abstract void doInit(int paramInt1, AppInterface paramAppInterface, String paramString, int paramInt2, int paramInt3, List<ChatMessage> paramList);
   
   public abstract boolean isAbleToAction();
   
@@ -27,7 +27,7 @@ public abstract interface IGameMsgSendTimesRulesApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.IGameMsgSendTimesRulesApi
  * JD-Core Version:    0.7.0.1
  */

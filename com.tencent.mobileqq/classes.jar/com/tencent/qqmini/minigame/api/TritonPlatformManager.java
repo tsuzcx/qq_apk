@@ -9,7 +9,6 @@ import com.tencent.mobileqq.triton.model.DebugConfig;
 import com.tencent.mobileqq.triton.script.ScriptPluginFactory;
 import com.tencent.mobileqq.triton.utils.Downloader;
 import com.tencent.mobileqq.triton.utils.LogDelegate;
-import com.tencent.qqmini.minigame.manager.EnginePackageManager;
 import com.tencent.qqmini.minigame.utils.GameLog;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.thread.ThreadPools;
@@ -21,7 +20,7 @@ import kotlin.jvm.JvmStatic;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/minigame/api/TritonPlatformManager;", "", "()V", "TAG", "", "platform", "Lcom/tencent/mobileqq/triton/TritonPlatform;", "getTritonPlatform", "context", "Landroid/content/Context;", "lib_minigame_internalRelease"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/minigame/api/TritonPlatformManager;", "", "()V", "TAG", "", "platform", "Lcom/tencent/mobileqq/triton/TritonPlatform;", "getTritonPlatform", "context", "Landroid/content/Context;", "enginePackage", "Lcom/tencent/qqmini/minigame/api/MiniEnginePackage;", "lib_minigame_internalRelease"}, k=1, mv={1, 1, 16})
 public final class TritonPlatformManager
 {
   public static final TritonPlatformManager INSTANCE = new TritonPlatformManager();
@@ -30,11 +29,12 @@ public final class TritonPlatformManager
   
   @JvmStatic
   @NotNull
-  public static final TritonPlatform getTritonPlatform(@NotNull Context paramContext)
+  public static final TritonPlatform getTritonPlatform(@NotNull Context paramContext, @NotNull MiniEnginePackage paramMiniEnginePackage)
   {
     try
     {
       Intrinsics.checkParameterIsNotNull(paramContext, "context");
+      Intrinsics.checkParameterIsNotNull(paramMiniEnginePackage, "enginePackage");
       Object localObject = platform;
       if (localObject == null) {
         try
@@ -42,13 +42,10 @@ public final class TritonPlatformManager
           paramContext = new TritonPlatform.Builder().context(paramContext);
           localObject = ProxyManager.get(MiniAppProxy.class);
           Intrinsics.checkExpressionValueIsNotNull(localObject, "ProxyManager.get(MiniAppProxy::class.java)");
-          paramContext = paramContext.debugConfig(new DebugConfig(((MiniAppProxy)localObject).isDebugVersion(), GameWnsUtils.getGamePresentDetectInterval(), GameWnsUtils.getNoPresentDurationLimit(), GameWnsUtils.getFrameNoChangeLimit(), GameWnsUtils.getNoPresentTouchLimit())).enableCodeCache(GameWnsUtils.getGameEnableCodeCache()).enableOpenGlEs3(GameWnsUtils.enableOpengles3());
-          localObject = EnginePackageManager.getEnginePackage();
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "EnginePackageManager.getEnginePackage()");
-          paramContext = paramContext.enginePackage((EnginePackage)localObject);
-          localObject = GameLog.getInstance();
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "GameLog.getInstance()");
-          platform = paramContext.logger((LogDelegate)localObject).scriptPluginFactory((ScriptPluginFactory)MiniScriptPluginFactory.INSTANCE).mainThreadExecutor(ThreadPools.getMainThreadExecutor()).workerExecutor((Executor)ThreadPools.getComputationThreadPool()).downloader((Downloader)MiniDownloader.INSTANCE).build();
+          paramContext = paramContext.debugConfig(new DebugConfig(((MiniAppProxy)localObject).isDebugVersion(), GameWnsUtils.getGamePresentDetectInterval(), GameWnsUtils.getNoPresentDurationLimit(), GameWnsUtils.getFrameNoChangeLimit(), GameWnsUtils.getNoPresentTouchLimit())).enableCodeCache(GameWnsUtils.getGameEnableCodeCache()).enableOpenGlEs3(GameWnsUtils.enableOpengles3()).enginePackage((EnginePackage)paramMiniEnginePackage);
+          paramMiniEnginePackage = GameLog.getInstance();
+          Intrinsics.checkExpressionValueIsNotNull(paramMiniEnginePackage, "GameLog.getInstance()");
+          platform = paramContext.logger((LogDelegate)paramMiniEnginePackage).scriptPluginFactory((ScriptPluginFactory)MiniScriptPluginFactory.INSTANCE).mainThreadExecutor(ThreadPools.getMainThreadExecutor()).workerExecutor((Executor)ThreadPools.getComputationThreadPool()).downloader((Downloader)MiniDownloader.INSTANCE).build();
         }
         catch (TritonPlatformInitTwiceException paramContext)
         {
@@ -67,7 +64,7 @@ public final class TritonPlatformManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.api.TritonPlatformManager
  * JD-Core Version:    0.7.0.1
  */

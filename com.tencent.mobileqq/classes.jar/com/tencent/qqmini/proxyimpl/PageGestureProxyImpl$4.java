@@ -14,15 +14,15 @@ class PageGestureProxyImpl$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (PageGestureProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplPageGestureProxyImpl).isShowing()) {
-      PageGestureProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplPageGestureProxyImpl).dismiss();
+    if (PageGestureProxyImpl.c(this.b).isShowing()) {
+      PageGestureProxyImpl.c(this.b).dismiss();
     }
-    ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).showList(this.jdField_a_of_type_AndroidAppActivity, true);
+    ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).showList(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.PageGestureProxyImpl.4
  * JD-Core Version:    0.7.0.1
  */

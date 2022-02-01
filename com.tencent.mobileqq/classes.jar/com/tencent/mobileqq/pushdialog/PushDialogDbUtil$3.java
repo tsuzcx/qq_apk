@@ -16,7 +16,7 @@ class PushDialogDbUtil$3
     {
       synchronized (PushDialogDbUtil.a(this.this$0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persist(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate);
+        this.a.persist(this.b);
       }
     }
     catch (SQLiteException localSQLiteException)
@@ -28,11 +28,11 @@ class PushDialogDbUtil$3
       {
         ??? = new StringBuilder();
         ((StringBuilder)???).append("PushDialogTemplate insert: ");
-        ((StringBuilder)???).append(new Date(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.time));
+        ((StringBuilder)???).append(new Date(this.b.time));
         ((StringBuilder)???).append(",");
-        ((StringBuilder)???).append(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.mUin);
+        ((StringBuilder)???).append(this.b.mUin);
         ((StringBuilder)???).append(",");
-        ((StringBuilder)???).append(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.c2c_type);
+        ((StringBuilder)???).append(this.b.c2c_type);
         QLog.d("PushDialogDbUtil", 3, ((StringBuilder)???).toString());
       }
       return;
@@ -41,7 +41,7 @@ class PushDialogDbUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.PushDialogDbUtil.3
  * JD-Core Version:    0.7.0.1
  */

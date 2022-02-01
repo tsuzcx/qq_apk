@@ -20,14 +20,14 @@ public class TroopAssistantHomeFeedPlayPageLoader
   {
     super(paramTroopAssistantHomeFeedPlayInfo);
     paramTroopAssistantHomeFeedPlayInfo = (FeedManager)SuperManager.a(11);
-    if (paramTroopAssistantHomeFeedPlayInfo.b != null) {
-      this.a = paramTroopAssistantHomeFeedPlayInfo.b;
+    if (paramTroopAssistantHomeFeedPlayInfo.h != null) {
+      this.b = paramTroopAssistantHomeFeedPlayInfo.h;
     }
   }
   
   public FeedIdListSeqInfo a(String paramString)
   {
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.a.iterator();
     while (localIterator.hasNext())
     {
       FeedIdListSeqInfo localFeedIdListSeqInfo = (FeedIdListSeqInfo)localIterator.next();
@@ -42,17 +42,17 @@ public class TroopAssistantHomeFeedPlayPageLoader
   
   public void a(boolean paramBoolean, int paramInt, IGroupPageLoader.CallBack paramCallBack)
   {
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.b.a;
     if ((paramBoolean) && (((List)localObject).size() > 0))
     {
       List localList = b((List)localObject);
-      paramCallBack.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
+      paramCallBack.a(new ErrorMessage(), localList, this.b.b);
       SLog.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
       return;
     }
     localObject = new GetTroopAssistantFeedIdListRequest();
-    ((GetTroopAssistantFeedIdListRequest)localObject).a = this.a.a();
-    SLog.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((GetTroopAssistantFeedIdListRequest)localObject).a);
+    ((GetTroopAssistantFeedIdListRequest)localObject).e = this.b.c();
+    SLog.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((GetTroopAssistantFeedIdListRequest)localObject).e);
     CmdTaskManger.a().a((NetworkRequest)localObject, new TroopAssistantHomeFeedPlayPageLoader.1(this, paramCallBack));
   }
   
@@ -60,7 +60,7 @@ public class TroopAssistantHomeFeedPlayPageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.TroopAssistantHomeFeedPlayPageLoader
  * JD-Core Version:    0.7.0.1
  */

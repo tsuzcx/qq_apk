@@ -13,30 +13,6 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"getColorCompat", "", "Landroid/content/res/Resources;", "id", "getColorStateListCompat", "Landroid/content/res/ColorStateList;", "getDrawableCompat", "Landroid/graphics/drawable/Drawable;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
 public final class ResourcesExtKt
 {
-  public static final int a(@NotNull Resources paramResources, @ColorRes int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramResources, "$this$getColorCompat");
-    if (Build.VERSION.SDK_INT >= 23) {
-      return paramResources.getColor(paramInt, null);
-    }
-    return paramResources.getColor(paramInt);
-  }
-  
-  @NotNull
-  public static final ColorStateList a(@NotNull Resources paramResources, @ColorRes int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramResources, "$this$getColorStateListCompat");
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      paramResources = paramResources.getColorStateList(paramInt, null);
-      Intrinsics.checkExpressionValueIsNotNull(paramResources, "getColorStateList(id, null)");
-      return paramResources;
-    }
-    paramResources = paramResources.getColorStateList(paramInt);
-    Intrinsics.checkExpressionValueIsNotNull(paramResources, "getColorStateList(id)");
-    return paramResources;
-  }
-  
   @NotNull
   public static final Drawable a(@NotNull Resources paramResources, @DrawableRes int paramInt)
   {
@@ -51,10 +27,34 @@ public final class ResourcesExtKt
     Intrinsics.checkExpressionValueIsNotNull(paramResources, "getDrawable(id)");
     return paramResources;
   }
+  
+  public static final int b(@NotNull Resources paramResources, @ColorRes int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramResources, "$this$getColorCompat");
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramResources.getColor(paramInt, null);
+    }
+    return paramResources.getColor(paramInt);
+  }
+  
+  @NotNull
+  public static final ColorStateList c(@NotNull Resources paramResources, @ColorRes int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramResources, "$this$getColorStateListCompat");
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      paramResources = paramResources.getColorStateList(paramInt, null);
+      Intrinsics.checkExpressionValueIsNotNull(paramResources, "getColorStateList(id, null)");
+      return paramResources;
+    }
+    paramResources = paramResources.getColorStateList(paramInt);
+    Intrinsics.checkExpressionValueIsNotNull(paramResources, "getColorStateList(id)");
+    return paramResources;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mvvm.ResourcesExtKt
  * JD-Core Version:    0.7.0.1
  */

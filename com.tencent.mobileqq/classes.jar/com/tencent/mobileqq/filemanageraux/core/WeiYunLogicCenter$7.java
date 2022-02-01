@@ -32,7 +32,7 @@ class WeiYunLogicCenter$7
         paramString1.append("]");
         QLog.d("WeiYunLogicCenter<FileAssistant>", 2, paramString1.toString());
       }
-      WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiYunLogicCenter).getFileManagerNotifyCenter().a(true, 39, new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramString2, this.jdField_a_of_type_JavaLangObject });
+      WeiYunLogicCenter.c(this.d).getFileManagerNotifyCenter().a(true, 39, new Object[] { this.a, Integer.valueOf(this.b), paramString2, this.c });
       return;
     }
     if (QLog.isColorLevel())
@@ -49,7 +49,7 @@ class WeiYunLogicCenter$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter.7
  * JD-Core Version:    0.7.0.1
  */

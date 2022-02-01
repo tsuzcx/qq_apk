@@ -8,8 +8,8 @@ import java.util.Map;
 
 public final class b
 {
-  private static b jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonCBAB = new b();
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new c(this, 8, 1.0F, true);
+  private static b a = new b();
+  private Map<String, String> b = new c(this, 8, 1.0F, true);
   
   private b()
   {
@@ -20,7 +20,7 @@ public final class b
   
   public static b a()
   {
-    return jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonCBAB;
+    return a;
   }
   
   public static String a(int paramInt)
@@ -40,9 +40,9 @@ public final class b
   public final String a(String paramString)
   {
     if ((!com.tencent.featuretoggle.hltxkg.common.e.c.a(paramString)) && (!"unknown".equals(paramString))) {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      synchronized (this.b)
       {
-        paramString = (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        paramString = (String)this.b.get(paramString);
         if (!com.tencent.featuretoggle.hltxkg.common.e.c.a(paramString)) {
           return paramString;
         }
@@ -59,11 +59,11 @@ public final class b
       if ("unknown".equals(paramString2)) {
         return;
       }
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      synchronized (this.b)
       {
-        if (!paramString2.equals((String)this.jdField_a_of_type_JavaUtilMap.get(paramString1)))
+        if (!paramString2.equals((String)this.b.get(paramString1)))
         {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+          this.b.put(paramString1, paramString2);
           paramString1 = b();
           paramString2 = new StringBuilder("HalleyOperInfo_");
           paramString2.append(a.c());
@@ -82,9 +82,9 @@ public final class b
       try
       {
         if (!com.tencent.featuretoggle.hltxkg.common.e.c.a(paramString)) {
-          synchronized (this.jdField_a_of_type_JavaUtilMap)
+          synchronized (this.b)
           {
-            this.jdField_a_of_type_JavaUtilMap.clear();
+            this.b.clear();
             String[] arrayOfString = paramString.split("h;l");
             if (arrayOfString != null)
             {
@@ -98,7 +98,7 @@ public final class b
                 }
                 Object localObject2 = localObject3[0];
                 localObject3 = localObject3[1];
-                this.jdField_a_of_type_JavaUtilMap.put(localObject2, localObject3);
+                this.b.put(localObject2, localObject3);
                 break label149;
               }
             }
@@ -126,10 +126,10 @@ public final class b
   public final String b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.b)
     {
-      ArrayList localArrayList1 = new ArrayList(this.jdField_a_of_type_JavaUtilMap.keySet());
-      ArrayList localArrayList2 = new ArrayList(this.jdField_a_of_type_JavaUtilMap.values());
+      ArrayList localArrayList1 = new ArrayList(this.b.keySet());
+      ArrayList localArrayList2 = new ArrayList(this.b.values());
       int i = 0;
       while (i < localArrayList1.size())
       {
@@ -151,7 +151,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.c.b.a.b
  * JD-Core Version:    0.7.0.1
  */

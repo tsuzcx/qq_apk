@@ -398,7 +398,7 @@ public final class LoggerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.slf4j.LoggerFactory
  * JD-Core Version:    0.7.0.1
  */

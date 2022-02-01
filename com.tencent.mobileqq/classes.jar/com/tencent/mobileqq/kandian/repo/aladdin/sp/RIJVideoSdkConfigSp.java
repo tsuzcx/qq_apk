@@ -7,7 +7,7 @@ public class RIJVideoSdkConfigSp
 {
   public static int a()
   {
-    int i = ((Integer)RIJSPUtils.a("readinjoy_preplay_time_limit", Integer.valueOf(6))).intValue();
+    int i = ((Integer)RIJSPUtils.b("readinjoy_preplay_time_limit", Integer.valueOf(6))).intValue();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -32,7 +32,7 @@ public class RIJVideoSdkConfigSp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.sp.RIJVideoSdkConfigSp
  * JD-Core Version:    0.7.0.1
  */

@@ -25,19 +25,19 @@ class AddTroopAppCgi$1
       }
       if (paramInt == 0)
       {
-        ((AddTroopAppCgi.CgiCallBack)AddTroopAppCgi.a(this.a).get()).a(AddTroopAppCgi.a(this.a));
+        ((AddTroopAppCgi.CgiCallBack)AddTroopAppCgi.a(this.a).get()).a(AddTroopAppCgi.b(this.a));
         return;
       }
-      ((AddTroopAppCgi.CgiCallBack)AddTroopAppCgi.a(this.a).get()).a(paramInt, paramJSONObject, AddTroopAppCgi.a(this.a));
+      ((AddTroopAppCgi.CgiCallBack)AddTroopAppCgi.a(this.a).get()).a(paramInt, paramJSONObject, AddTroopAppCgi.b(this.a));
       return;
     }
     QLog.e("AddTroopAppCgi", 1, "add appid get result err");
-    ((AddTroopAppCgi.CgiCallBack)AddTroopAppCgi.a(this.a).get()).a(-1, "", AddTroopAppCgi.a(this.a));
+    ((AddTroopAppCgi.CgiCallBack)AddTroopAppCgi.a(this.a).get()).a(-1, "", AddTroopAppCgi.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.AddTroopAppCgi.1
  * JD-Core Version:    0.7.0.1
  */

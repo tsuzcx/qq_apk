@@ -30,36 +30,36 @@ class ContactsInjectImpl$1
       if (FriendListHandler.getSpecialRecommendStat == 3) {
         return;
       }
-      if (this.a.k)
+      if (this.a.P)
       {
         if (QLog.isColorLevel()) {
           QLog.d("SpecialCare", 2, "hasSpecialCareFriend=true");
         }
         return;
       }
-      if (this.a.a == null) {
+      if (this.a.A == null) {
         return;
       }
-      localObject = ((FriendsManager)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).f();
+      localObject = ((FriendsManager)this.a.A.getManager(QQManagerFactory.FRIENDS_MANAGER)).o();
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        this.a.k = true;
+        this.a.P = true;
         return;
       }
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("hasSpecialCareFriend=");
-        ((StringBuilder)localObject).append(this.a.k);
+        ((StringBuilder)localObject).append(this.a.P);
         QLog.d("SpecialCare", 2, ((StringBuilder)localObject).toString());
       }
-      ((FriendListHandler)((QQAppInterface)this.a.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getSpecialCareRecommend(0, 10, null, true, true);
+      ((FriendListHandler)((QQAppInterface)this.a.A).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getSpecialCareRecommend(0, 10, null, true, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.ContactsInjectImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,13 @@ public class QQStoryShareGroupProfileActivity$ReportVideoReceiver
   
   public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull ReportEvilHandler.ReportEvent paramReportEvent)
   {
-    if (paramReportEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramReportEvent.g.isSuccess())
     {
-      QQToast.a(PlayModeUtils.a(), 2, HardCodeUtil.a(2131710983), 0).a();
-      StoryReportor.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramReportEvent.jdField_a_of_type_Int), "5" });
+      QQToast.makeText(PlayModeUtils.a(), 2, HardCodeUtil.a(2131908649), 0).show();
+      StoryReportor.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramReportEvent.c), "5" });
       return;
     }
-    QQToast.a(PlayModeUtils.a(), 1, HardCodeUtil.a(2131710978), 0).a();
+    QQToast.makeText(PlayModeUtils.a(), 1, HardCodeUtil.a(2131908644), 0).show();
     StoryReportor.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
   }
   

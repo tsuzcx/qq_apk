@@ -8,6 +8,7 @@ import android.os.Process;
 import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.api.IMiniCallback;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -114,6 +115,11 @@ public class AppBrandProxy
     }
   }
   
+  public void preDownloadPkg(String paramString1, String paramString2, IMiniCallback paramIMiniCallback)
+  {
+    AppBrandLaunchManager.g().preDownloadPkg(paramString1, paramString2, paramIMiniCallback);
+  }
+  
   public void preloadMiniApp()
   {
     if (!isMainProcess())
@@ -179,7 +185,7 @@ public class AppBrandProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandProxy
  * JD-Core Version:    0.7.0.1
  */

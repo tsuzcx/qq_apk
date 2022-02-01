@@ -7,6 +7,9 @@ import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.widget.RemoteViews;
 import androidx.annotation.RestrictTo;
+import androidx.core.R.color;
+import androidx.core.R.id;
+import androidx.core.R.layout;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,12 +21,12 @@ public class NotificationCompat$DecoratedCustomViewStyle
   
   private RemoteViews createRemoteViews(RemoteViews paramRemoteViews, boolean paramBoolean)
   {
+    int i = R.layout.notification_template_custom_big;
     int m = 1;
     int k = 0;
-    RemoteViews localRemoteViews = applyStandardTemplate(true, 2131559507, false);
-    localRemoteViews.removeAllViews(2131362007);
+    RemoteViews localRemoteViews1 = applyStandardTemplate(true, i, false);
+    localRemoteViews1.removeAllViews(R.id.actions);
     List localList = getNonContextualActions(this.mBuilder.mActions);
-    int i;
     if ((paramBoolean) && (localList != null))
     {
       int n = Math.min(localList.size(), 3);
@@ -36,7 +39,8 @@ public class NotificationCompat$DecoratedCustomViewStyle
           if (i >= n) {
             break;
           }
-          localRemoteViews.addView(2131362007, generateActionButton((NotificationCompat.Action)localList.get(i)));
+          RemoteViews localRemoteViews2 = generateActionButton((NotificationCompat.Action)localList.get(i));
+          localRemoteViews1.addView(R.id.actions, localRemoteViews2);
           i += 1;
         }
       }
@@ -47,10 +51,10 @@ public class NotificationCompat$DecoratedCustomViewStyle
     } else {
       i = 8;
     }
-    localRemoteViews.setViewVisibility(2131362007, i);
-    localRemoteViews.setViewVisibility(2131361967, i);
-    buildIntoRemoteViews(localRemoteViews, paramRemoteViews);
-    return localRemoteViews;
+    localRemoteViews1.setViewVisibility(R.id.actions, i);
+    localRemoteViews1.setViewVisibility(R.id.action_divider, i);
+    buildIntoRemoteViews(localRemoteViews1, paramRemoteViews);
+    return localRemoteViews1;
   }
   
   private RemoteViews generateActionButton(NotificationCompat.Action paramAction)
@@ -64,18 +68,18 @@ public class NotificationCompat$DecoratedCustomViewStyle
     Object localObject = this.mBuilder.mContext.getPackageName();
     int j;
     if (i != 0) {
-      j = 2131559504;
+      j = R.layout.notification_action_tombstone;
     } else {
-      j = 2131559503;
+      j = R.layout.notification_action;
     }
     localObject = new RemoteViews((String)localObject, j);
-    ((RemoteViews)localObject).setImageViewBitmap(2131361970, createColoredBitmap(paramAction.getIconCompat(), this.mBuilder.mContext.getResources().getColor(2131165896)));
-    ((RemoteViews)localObject).setTextViewText(2131362006, paramAction.title);
+    ((RemoteViews)localObject).setImageViewBitmap(R.id.action_image, createColoredBitmap(paramAction.getIconCompat(), this.mBuilder.mContext.getResources().getColor(R.color.notification_action_color_filter)));
+    ((RemoteViews)localObject).setTextViewText(R.id.action_text, paramAction.title);
     if (i == 0) {
-      ((RemoteViews)localObject).setOnClickPendingIntent(2131361964, paramAction.actionIntent);
+      ((RemoteViews)localObject).setOnClickPendingIntent(R.id.action_container, paramAction.actionIntent);
     }
     if (Build.VERSION.SDK_INT >= 15) {
-      ((RemoteViews)localObject).setContentDescription(2131361964, paramAction.title);
+      ((RemoteViews)localObject).setContentDescription(R.id.action_container, paramAction.title);
     }
     return localObject;
   }

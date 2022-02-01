@@ -41,20 +41,16 @@ public class ForwardQQStoryMsgOption
     super(paramIntent);
   }
   
-  protected void a()
+  protected void W()
   {
-    String str;
-    if (c() != 0) {
-      str = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getInputValue();
-    } else {
-      str = "";
+    super.W();
+    o();
+    if (this.ad != null) {
+      a("cancel", this.ad.mMsgAction, this.s);
     }
-    this.jdField_a_of_type_AndroidOsBundle.putString("share_comment_message", str);
-    e();
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null) {
-      a("clk_send", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgAction, this.jdField_a_of_type_AndroidAppActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.share", 2, "forwardOnCancel");
     }
-    super.a();
   }
   
   protected void a(String paramString1, String paramString2, Context paramContext)
@@ -62,7 +58,7 @@ public class ForwardQQStoryMsgOption
     Object localObject = null;
     try
     {
-      paramString2 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, paramString2);
+      paramString2 = JumpParser.a(this.q, paramContext, paramString2);
     }
     catch (Exception paramContext)
     {
@@ -77,7 +73,7 @@ public class ForwardQQStoryMsgOption
           QLog.w("Q.qqstory.share", 2, "report exp:", paramContext);
           paramString2 = (String)localObject;
         }
-        int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
+        int i = this.t.getInt("uintype");
         int j = -1;
         if (i == 0) {
           i = 1;
@@ -138,45 +134,45 @@ public class ForwardQQStoryMsgOption
   protected boolean a(QQCustomDialog paramQQCustomDialog)
   {
     paramQQCustomDialog.getWindow().setSoftInputMode(19);
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
+    if (this.ad != null)
     {
-      int i = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 12.0F);
-      int j = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 164.0F);
-      int k = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 265.0F);
-      int m = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 140.0F);
-      int n = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 27.0F);
+      int i = DisplayUtil.a(this.s, 12.0F);
+      int j = DisplayUtil.a(this.s, 164.0F);
+      int k = DisplayUtil.a(this.s, 265.0F);
+      int m = DisplayUtil.a(this.s, 140.0F);
+      int n = DisplayUtil.a(this.s, 27.0F);
       int i1 = Color.parseColor("#e1e1e5");
-      Object localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
+      Object localObject1 = new LinearLayout(this.s);
       ((LinearLayout)localObject1).setOrientation(1);
       Object localObject3 = new LinearLayout.LayoutParams(-2, -2);
       ((LinearLayout.LayoutParams)localObject3).gravity = 1;
-      Object localObject5 = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
+      Object localObject5 = new RelativeLayout(this.s);
       Object localObject6 = new LinearLayout.LayoutParams(j, k);
-      Object localObject4 = new URLImageView(this.jdField_a_of_type_AndroidAppActivity);
+      Object localObject4 = new URLImageView(this.s);
       ((URLImageView)localObject4).setScaleType(ImageView.ScaleType.CENTER_CROP);
       RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
-      URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidAppActivity);
+      URLImageView localURLImageView = new URLImageView(this.s);
       localURLImageView.setScaleType(ImageView.ScaleType.FIT_START);
       RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(m, n);
       localLayoutParams2.addRule(9);
       localLayoutParams2.addRule(10);
       localLayoutParams2.leftMargin = i;
-      localLayoutParams2.topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 15.0F);
-      TextView localTextView = new TextView(this.jdField_a_of_type_AndroidAppActivity);
+      localLayoutParams2.topMargin = DisplayUtil.a(this.s, 15.0F);
+      TextView localTextView = new TextView(this.s);
       localTextView.setTextColor(-7829368);
       localTextView.setTextSize(1, 12.0F);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams.topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 5.0F);
+      localLayoutParams.topMargin = DisplayUtil.a(this.s, 5.0F);
       localLayoutParams.gravity = 3;
       ((RelativeLayout)localObject5).addView((View)localObject4, localLayoutParams1);
       ((RelativeLayout)localObject5).addView(localURLImageView, localLayoutParams2);
       ((LinearLayout)localObject1).addView((View)localObject5, (ViewGroup.LayoutParams)localObject6);
       ((LinearLayout)localObject1).addView(localTextView, localLayoutParams);
       paramQQCustomDialog.addView((View)localObject1, (LinearLayout.LayoutParams)localObject3);
-      localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName);
+      localTextView.setText(this.ad.mSourceName);
       try
       {
-        localObject3 = new JSONObject(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mQQStoryExtra);
+        localObject3 = new JSONObject(this.ad.mQQStoryExtra);
         localObject1 = ((JSONObject)localObject3).optString("coverImgUrl");
         try
         {
@@ -198,7 +194,7 @@ public class ForwardQQStoryMsgOption
       {
         localObject5 = new StringBuilder();
         ((StringBuilder)localObject5).append("addStructView:");
-        ((StringBuilder)localObject5).append(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mQQStoryExtra);
+        ((StringBuilder)localObject5).append(this.ad.mQQStoryExtra);
         QLog.d("Q.qqstory.share", 2, ((StringBuilder)localObject5).toString());
       }
       try
@@ -245,9 +241,9 @@ public class ForwardQQStoryMsgOption
       }
       try
       {
-        this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)paramQQCustomDialog.getWindow().getDecorView().findViewById(2131376994));
-        if (this.jdField_a_of_type_AndroidWidgetScrollView != null) {
-          this.jdField_a_of_type_AndroidWidgetScrollView.getViewTreeObserver().addOnGlobalLayoutListener(this);
+        this.a = ((ScrollView)paramQQCustomDialog.getWindow().getDecorView().findViewById(2131445358));
+        if (this.a != null) {
+          this.a.getViewTreeObserver().addOnGlobalLayoutListener(this);
         }
       }
       catch (Exception paramQQCustomDialog)
@@ -260,14 +256,35 @@ public class ForwardQQStoryMsgOption
           QLog.w("Q.qqstory.share", 2, localStringBuilder.toString());
         }
       }
-      a("list_clk", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgAction, this.jdField_a_of_type_AndroidAppActivity);
+      a("list_clk", this.ad.mMsgAction, this.s);
     }
     return true;
   }
   
-  protected void e()
+  protected void b()
   {
-    ScrollView localScrollView = this.jdField_a_of_type_AndroidWidgetScrollView;
+    String str;
+    if (F() != 0) {
+      str = this.A.getInputValue();
+    } else {
+      str = "";
+    }
+    this.t.putString("share_comment_message", str);
+    o();
+    if (this.ad != null) {
+      a("clk_send", this.ad.mMsgAction, this.s);
+    }
+    super.b();
+  }
+  
+  protected boolean k()
+  {
+    return false;
+  }
+  
+  protected void o()
+  {
+    ScrollView localScrollView = this.a;
     if (localScrollView != null) {
       try
       {
@@ -283,34 +300,17 @@ public class ForwardQQStoryMsgOption
     }
   }
   
-  protected boolean m()
-  {
-    return false;
-  }
-  
   public void onGlobalLayout()
   {
-    ScrollView localScrollView = this.jdField_a_of_type_AndroidWidgetScrollView;
+    ScrollView localScrollView = this.a;
     if (localScrollView != null) {
       localScrollView.post(new ForwardQQStoryMsgOption.1(this));
-    }
-  }
-  
-  protected void t()
-  {
-    super.t();
-    e();
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null) {
-      a("cancel", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgAction, this.jdField_a_of_type_AndroidAppActivity);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share", 2, "forwardOnCancel");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardQQStoryMsgOption
  * JD-Core Version:    0.7.0.1
  */

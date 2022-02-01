@@ -67,10 +67,10 @@ class TroopAvatarWallGalleryAdapter$1
     if (QLog.isColorLevel()) {
       QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadProgressed progress=%d", new Object[] { Integer.valueOf(paramInt) }));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
+    if (this.a.getVisibility() != 0) {
+      this.a.setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
+    this.a.setProgress(paramInt / 100);
   }
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
@@ -78,8 +78,8 @@ class TroopAvatarWallGalleryAdapter$1
     if (QLog.isColorLevel()) {
       QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadSuccessed ", new Object[0]));
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
+    this.c.a(this.a);
+    this.b.setImageDrawable(paramURLDrawable);
     if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {
       paramView = paramURLDrawable.getURL().toString();
     } else {
@@ -90,7 +90,7 @@ class TroopAvatarWallGalleryAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopAvatarWallGalleryAdapter.1
  * JD-Core Version:    0.7.0.1
  */

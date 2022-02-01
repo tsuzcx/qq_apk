@@ -18,27 +18,27 @@ class ComponentContentRecommendFollowGroup$4$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onUpdateAfterAccountFollow uin = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(" isFollow = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.b);
       QLog.d("ComponentContentRecommendFollowGroup", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = ComponentContentRecommendFollowGroup.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowGroup$4.a).mRecommendFollowInfos.a.iterator();
+    Object localObject = ComponentContentRecommendFollowGroup.b(this.c.a).mRecommendFollowInfos.c.iterator();
     while (((Iterator)localObject).hasNext())
     {
       RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)((Iterator)localObject).next();
-      if (this.jdField_a_of_type_Long == localRecommendFollowInfo.uin)
+      if (this.a == localRecommendFollowInfo.uin)
       {
-        localRecommendFollowInfo.isFollowed = this.jdField_a_of_type_Boolean;
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowGroup$4.a.b(localRecommendFollowInfo);
+        localRecommendFollowInfo.isFollowed = this.b;
+        this.c.a.b(localRecommendFollowInfo);
       }
     }
-    ComponentContentRecommendFollowGroup.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowGroup$4.a).notifyDataSetChanged();
+    ComponentContentRecommendFollowGroup.a(this.c.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentRecommendFollowGroup.4.1
  * JD-Core Version:    0.7.0.1
  */

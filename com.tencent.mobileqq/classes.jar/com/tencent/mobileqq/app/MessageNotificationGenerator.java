@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import com.tencent.imcore.message.Message;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.notification.struct.NotificationElement;
 import com.tencent.mobileqq.app.notification.struct.NotificationElementBuilder;
 import com.tencent.mobileqq.chat.MessageNotificationSettingManager;
@@ -14,6 +13,7 @@ import com.tencent.mobileqq.managers.MsgPushReportHelper;
 import com.tencent.mobileqq.managers.QQLSRecentManager;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.service.MobileQQServiceExtend;
+import com.tencent.mobileqq.settings.message.NotifyPushSettingFragment;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.util.MessageRecordUtil;
 import com.tencent.mobileqq.utils.QQUtils;
@@ -32,15 +32,15 @@ public class MessageNotificationGenerator
   
   static void a(QQAppInterface paramQQAppInterface, Message paramMessage, boolean paramBoolean, NotificationElement paramNotificationElement)
   {
-    paramNotificationElement = paramNotificationElement.a();
+    paramNotificationElement = paramNotificationElement.b();
     if ((paramBoolean) && (paramMessage.istroop != 6000) && (paramMessage.istroop != 1009) && (!paramMessage.frienduin.equals(AppConstants.RECOMMEND_CONTACT_UIN))) {
       if (QQUtils.a(paramQQAppInterface.getApp()))
       {
         QQLSRecentManager localQQLSRecentManager = (QQLSRecentManager)paramQQAppInterface.getManager(QQManagerFactory.QQLS_DATA_MANAGER);
-        if (NotifyPushSettingActivity.a()) {
+        if (NotifyPushSettingFragment.a()) {
           paramBoolean = false;
         } else {
-          paramBoolean = SettingCloneUtil.readValue(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getApp().getString(2131693837), "qqsetting_lock_screen_whenexit_key", true);
+          paramBoolean = SettingCloneUtil.readValue(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getApp().getString(2131891413), "qqsetting_lock_screen_whenexit_key", true);
         }
         boolean bool = MessageNotificationSettingManager.a(paramQQAppInterface).a(paramMessage.frienduin, paramMessage.istroop);
         if ((paramBoolean) && (bool))
@@ -60,11 +60,11 @@ public class MessageNotificationGenerator
   
   public static void a(QQAppInterface paramQQAppInterface, @NonNull MessageRecord paramMessageRecord, NotificationElement paramNotificationElement, String paramString)
   {
-    String str1 = paramNotificationElement.b();
-    Bitmap localBitmap = paramNotificationElement.a();
-    String str2 = paramNotificationElement.c();
-    String str3 = paramNotificationElement.d();
-    Intent localIntent = paramNotificationElement.a();
+    String str1 = paramNotificationElement.c();
+    Bitmap localBitmap = paramNotificationElement.f();
+    String str2 = paramNotificationElement.d();
+    String str3 = paramNotificationElement.e();
+    Intent localIntent = paramNotificationElement.b();
     if (QLog.isColorLevel())
     {
       paramNotificationElement = new StringBuilder();
@@ -80,7 +80,7 @@ public class MessageNotificationGenerator
     }
     paramNotificationElement = localBitmap;
     if (localBitmap == null) {
-      paramNotificationElement = BitmapManager.a(paramQQAppInterface.getApp().getResources(), 2130840405);
+      paramNotificationElement = BitmapManager.a(paramQQAppInterface.getApp().getResources(), 2130841158);
     }
     if (paramNotificationElement != null)
     {
@@ -116,7 +116,7 @@ public class MessageNotificationGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageNotificationGenerator
  * JD-Core Version:    0.7.0.1
  */

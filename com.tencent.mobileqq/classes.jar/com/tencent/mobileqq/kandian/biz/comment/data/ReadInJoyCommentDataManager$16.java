@@ -15,22 +15,22 @@ class ReadInJoyCommentDataManager$16
   
   public void a(@NotNull CreateCommentResult paramCreateCommentResult)
   {
-    if (paramCreateCommentResult.jdField_a_of_type_Long != -1L) {
-      ReadInJoyCommentDataManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager).b(paramCreateCommentResult.jdField_a_of_type_Long, new Pair(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData));
+    if (paramCreateCommentResult.a != -1L) {
+      ReadInJoyCommentDataManager.h(this.c).c(paramCreateCommentResult.a, new Pair(this.a, this.b));
     }
-    if (paramCreateCommentResult.b) {
-      ReadInJoyCommentDataManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager, paramCreateCommentResult);
+    if (paramCreateCommentResult.j) {
+      ReadInJoyCommentDataManager.a(this.c, paramCreateCommentResult);
     } else {
-      ReadInJoyCommentDataManager.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager, paramCreateCommentResult);
+      ReadInJoyCommentDataManager.b(this.c, paramCreateCommentResult);
     }
-    if (!paramCreateCommentResult.jdField_a_of_type_Boolean) {
-      RIJCommentNetworkHelper.a(paramCreateCommentResult.jdField_a_of_type_Int);
+    if (!paramCreateCommentResult.b) {
+      RIJCommentNetworkHelper.a(paramCreateCommentResult.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager.16
  * JD-Core Version:    0.7.0.1
  */

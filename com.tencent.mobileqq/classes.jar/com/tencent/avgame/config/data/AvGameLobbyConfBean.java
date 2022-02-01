@@ -7,15 +7,10 @@ import org.json.JSONObject;
 
 public class AvGameLobbyConfBean
 {
-  private int a;
+  private int a = 0;
   private int b = 0;
   private int c = 10;
   private int d = 5;
-  
-  public AvGameLobbyConfBean()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
   
   public static AvGameLobbyConfBean a(QConfItem paramQConfItem)
   {
@@ -27,14 +22,14 @@ public class AvGameLobbyConfBean
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("parse taskid->");
-        localStringBuilder.append(paramQConfItem.jdField_a_of_type_Int);
+        localStringBuilder.append(paramQConfItem.a);
         localStringBuilder.append(" content->");
-        localStringBuilder.append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramQConfItem.b);
         QLog.d("AvGameLobbyConfBean", 2, localStringBuilder.toString());
       }
       try
       {
-        paramQConfItem = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString);
+        paramQConfItem = new JSONObject(paramQConfItem.b);
         localAvGameLobbyConfBean.c(paramQConfItem.optInt("homePage_A", 0));
         localAvGameLobbyConfBean.d(paramQConfItem.optInt("roomPage_B", 0));
         localAvGameLobbyConfBean.a(paramQConfItem.optInt("matchTime", 10));
@@ -84,12 +79,12 @@ public class AvGameLobbyConfBean
   
   public int c()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public int d()
@@ -108,7 +103,7 @@ public class AvGameLobbyConfBean
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("homePage_A:");
-    localStringBuilder2.append(this.jdField_a_of_type_Int);
+    localStringBuilder2.append(this.a);
     localStringBuilder2.append("|");
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();

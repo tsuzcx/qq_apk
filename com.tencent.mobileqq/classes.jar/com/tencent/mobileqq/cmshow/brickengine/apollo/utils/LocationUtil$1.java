@@ -14,25 +14,25 @@ final class LocationUtil$1
   
   public void a(int paramInt)
   {
-    LocationUtil.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed permission");
+    LocationUtil.a(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, "", paramInt, "location city failed permission");
   }
   
   public void a(int paramInt, String paramString)
   {
-    LocationUtil.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed");
+    LocationUtil.a(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, "", paramInt, "location city failed");
   }
   
   public void a(JSONObject paramJSONObject)
   {
     paramJSONObject = paramJSONObject.optString("city", "");
-    LocationUtil.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, paramJSONObject, 0, "location success");
+    LocationUtil.a(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, paramJSONObject, 0, "location success");
   }
   
   public void b(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.LocationUtil.1
  * JD-Core Version:    0.7.0.1
  */

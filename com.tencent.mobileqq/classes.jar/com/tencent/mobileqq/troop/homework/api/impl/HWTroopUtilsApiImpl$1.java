@@ -19,7 +19,7 @@ class HWTroopUtilsApiImpl$1
   
   public void run()
   {
-    Object localObject = ((ITroopManagerService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopManagerService.class, "")).getTroopAppListData(this.jdField_a_of_type_JavaLangString);
+    Object localObject = ((ITroopManagerService)this.a.getRuntimeService(ITroopManagerService.class, "")).getTroopAppListData(this.b);
     if (localObject != null) {}
     try
     {
@@ -39,7 +39,7 @@ class HWTroopUtilsApiImpl$1
         } while (localAppInfo.appid.get() != 1104445552L);
         localAppInfo.push_red_point.set(0);
         localRspBody.infos.set((List)localObject);
-        ((ITroopManagerService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopManagerService.class, "")).setTroopAppListData(this.jdField_a_of_type_JavaLangString, localRspBody.toByteArray());
+        ((ITroopManagerService)this.a.getRuntimeService(ITroopManagerService.class, "")).setTroopAppListData(this.b, localRspBody.toByteArray());
         return;
       }
       if (QLog.isColorLevel()) {
@@ -59,7 +59,7 @@ class HWTroopUtilsApiImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.api.impl.HWTroopUtilsApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

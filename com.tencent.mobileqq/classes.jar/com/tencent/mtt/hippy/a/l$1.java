@@ -1,14 +1,11 @@
 package com.tencent.mtt.hippy.a;
 
-import java.io.File;
 import java.io.InputStream;
 
 class l$1
   implements a
 {
   l$1(l paraml, g paramg) {}
-  
-  public void a(File paramFile) {}
   
   public void a(InputStream paramInputStream)
   {
@@ -28,7 +25,7 @@ class l$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.l.1
  * JD-Core Version:    0.7.0.1
  */

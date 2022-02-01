@@ -11,105 +11,26 @@ import com.tencent.aelight.camera.aeeditor.module.MetaMaterialKt;
 import com.tencent.aelight.camera.aeeditor.module.filter.AEEditorResourceManager;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qcircle.tavcut.bean.TextEditorData;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.tavcut.bean.TextEditorData;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AEEditorTextViewModel
   extends AEEditorTextBaseViewModel
 {
-  private final List<MetaMaterial> b;
-  private final String jdField_c_of_type_JavaLangString = BaseApplicationImpl.getContext().getResources().getString(2064515191);
-  private final List<MetaMaterial> jdField_c_of_type_JavaUtilList = new ArrayList();
-  private final MutableLiveData<String> jdField_d_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private String jdField_d_of_type_JavaLangString;
-  private final List<MetaMaterial> jdField_d_of_type_JavaUtilList = new ArrayList();
-  private final MutableLiveData<List<MetaMaterial>> e = new MutableLiveData();
-  private final MutableLiveData<Integer> f = new MutableLiveData();
-  
-  public AEEditorTextViewModel()
-  {
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  private String a(String paramString)
-  {
-    if (a(paramString, this.jdField_b_of_type_JavaUtilList) != null) {
-      return "CATEGORY_FONT_TYPE";
-    }
-    if (a(paramString, this.jdField_c_of_type_JavaUtilList) != null) {
-      return "CATEGORY_FONT_PATTERN";
-    }
-    if (a(paramString, this.jdField_d_of_type_JavaUtilList) != null) {
-      return "CATEGORY_FONT_STYLE";
-    }
-    return null;
-  }
+  private final MutableLiveData<String> h = new MutableLiveData();
+  private final MutableLiveData<List<MetaMaterial>> i = new MutableLiveData();
+  private final MutableLiveData<Integer> j = new MutableLiveData();
+  private final List<MetaMaterial> k = new ArrayList();
+  private final List<MetaMaterial> l = new ArrayList();
+  private final List<MetaMaterial> m = new ArrayList();
+  private final String n = BaseApplicationImpl.getContext().getResources().getString(2064187537);
+  private String o;
   
   private boolean a(String paramString1, String paramString2)
   {
     return ("CATEGORY_FONT_TYPE".equals(paramString1)) && ("CATEGORY_FONT_TYPE".equals(paramString2));
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData != null)
-    {
-      String str = this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getItemID();
-      boolean bool = b(a(str), this.jdField_d_of_type_JavaLangString);
-      int k = 0;
-      int i;
-      int j;
-      if (bool)
-      {
-        i = k;
-        if (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getFontPath() != null)
-        {
-          i = k;
-          if (this.jdField_b_of_type_JavaUtilList != null)
-          {
-            j = 0;
-            for (;;)
-            {
-              i = k;
-              if (j >= this.jdField_b_of_type_JavaUtilList.size()) {
-                break;
-              }
-              str = TextMetaMaterialKt.d((MetaMaterial)this.jdField_b_of_type_JavaUtilList.get(j));
-              if ((!str.isEmpty()) && (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getFontPath().contains(str)))
-              {
-                i = j;
-                break;
-              }
-              j += 1;
-            }
-          }
-        }
-      }
-      else
-      {
-        i = k;
-        if (this.jdField_a_of_type_JavaUtilList != null)
-        {
-          j = 0;
-          for (;;)
-          {
-            i = k;
-            if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
-              break;
-            }
-            if ((this.jdField_a_of_type_JavaUtilList.get(j) != null) && (str.equals(((MetaMaterial)this.jdField_a_of_type_JavaUtilList.get(j)).id)))
-            {
-              i = j;
-              break;
-            }
-            j += 1;
-          }
-        }
-      }
-      this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(Integer.valueOf(i));
-    }
   }
   
   private boolean b(String paramString1, String paramString2)
@@ -117,157 +38,200 @@ public class AEEditorTextViewModel
     return (("CATEGORY_FONT_PATTERN".equals(paramString1)) || ("CATEGORY_FONT_STYLE".equals(paramString1))) && ("CATEGORY_FONT_TYPE".equals(paramString2));
   }
   
-  private void c()
+  private void e(String paramString)
   {
-    Integer localInteger;
-    if (("CATEGORY_FONT_TYPE".equals(this.jdField_d_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData != null)) {
-      localInteger = Integer.valueOf(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getTextColor());
-    } else {
-      localInteger = null;
-    }
-    this.f.postValue(localInteger);
-  }
-  
-  private void c(String paramString)
-  {
-    if ((paramString != null) && (!paramString.equals(this.jdField_d_of_type_JavaLangString)))
+    if ((paramString != null) && (!paramString.equals(this.o)))
     {
-      this.jdField_d_of_type_JavaLangString = paramString;
-      paramString = this.jdField_d_of_type_JavaLangString;
-      int i = -1;
-      int j = paramString.hashCode();
-      if (j != -1778477271)
+      this.o = paramString;
+      paramString = this.o;
+      int i1 = -1;
+      int i2 = paramString.hashCode();
+      if (i2 != -1778477271)
       {
-        if (j != 162245921)
+        if (i2 != 162245921)
         {
-          if ((j == 700715906) && (paramString.equals("CATEGORY_FONT_STYLE"))) {
-            i = 2;
+          if ((i2 == 700715906) && (paramString.equals("CATEGORY_FONT_STYLE"))) {
+            i1 = 2;
           }
         }
         else if (paramString.equals("CATEGORY_FONT_PATTERN")) {
-          i = 1;
+          i1 = 1;
         }
       }
       else if (paramString.equals("CATEGORY_FONT_TYPE")) {
-        i = 0;
+        i1 = 0;
       }
-      if (i != 0)
+      if (i1 != 0)
       {
-        if (i != 1)
+        if (i1 != 1)
         {
-          if (i == 2) {
-            this.jdField_a_of_type_JavaUtilList = this.jdField_d_of_type_JavaUtilList;
+          if (i1 == 2) {
+            this.e = this.m;
           }
         }
         else {
-          this.jdField_a_of_type_JavaUtilList = this.jdField_c_of_type_JavaUtilList;
+          this.e = this.l;
         }
       }
       else {
-        this.jdField_a_of_type_JavaUtilList = this.jdField_b_of_type_JavaUtilList;
+        this.e = this.k;
       }
-      this.jdField_d_of_type_AndroidxLifecycleMutableLiveData.postValue(this.jdField_d_of_type_JavaLangString);
-      this.e.postValue(this.jdField_a_of_type_JavaUtilList);
-      b();
-      c();
+      this.h.postValue(this.o);
+      this.i.postValue(this.e);
+      k();
+      l();
       return;
     }
-    b();
-    c();
+    k();
+    l();
   }
   
-  private void d(String paramString)
+  private void f(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData != null)
+    if (this.f != null)
     {
       if (paramString == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setItemID(paramString);
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setPagFilePath(AEEditorResourceManager.a().c());
-      if (a()) {
-        this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setContent(this.jdField_c_of_type_JavaLangString);
+      this.f.setItemID(paramString);
+      this.f.setPagFilePath(AEEditorResourceManager.a().C());
+      if (f()) {
+        this.f.setContent(this.n);
       }
-      this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.postValue(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+      this.c.postValue(this.f);
     }
   }
   
-  public int a(String paramString)
+  private String g(String paramString)
   {
-    int i = a(paramString, this.jdField_b_of_type_JavaUtilList);
-    if (i >= 0) {
-      return i;
+    if (a(paramString, this.k) != null) {
+      return "CATEGORY_FONT_TYPE";
     }
-    i = a(paramString, this.jdField_c_of_type_JavaUtilList);
-    if (i >= 0) {
-      return i;
+    if (a(paramString, this.l) != null) {
+      return "CATEGORY_FONT_PATTERN";
     }
-    return a(paramString, this.jdField_d_of_type_JavaUtilList);
+    if (a(paramString, this.m) != null) {
+      return "CATEGORY_FONT_STYLE";
+    }
+    return null;
+  }
+  
+  private void k()
+  {
+    if (this.f != null)
+    {
+      String str = this.f.getItemID();
+      boolean bool = b(g(str), this.o);
+      int i3 = 0;
+      int i1;
+      int i2;
+      if (bool)
+      {
+        i1 = i3;
+        if (this.f.getFontPath() != null)
+        {
+          i1 = i3;
+          if (this.k != null)
+          {
+            i2 = 0;
+            for (;;)
+            {
+              i1 = i3;
+              if (i2 >= this.k.size()) {
+                break;
+              }
+              str = TextMetaMaterialKt.e((MetaMaterial)this.k.get(i2));
+              if ((!str.isEmpty()) && (this.f.getFontPath().contains(str)))
+              {
+                i1 = i2;
+                break;
+              }
+              i2 += 1;
+            }
+          }
+        }
+      }
+      else
+      {
+        i1 = i3;
+        if (this.e != null)
+        {
+          i2 = 0;
+          for (;;)
+          {
+            i1 = i3;
+            if (i2 >= this.e.size()) {
+              break;
+            }
+            if ((this.e.get(i2) != null) && (str.equals(((MetaMaterial)this.e.get(i2)).id)))
+            {
+              i1 = i2;
+              break;
+            }
+            i2 += 1;
+          }
+        }
+      }
+      this.b.postValue(Integer.valueOf(i1));
+    }
+  }
+  
+  private void l()
+  {
+    Integer localInteger;
+    if (("CATEGORY_FONT_TYPE".equals(this.o)) && (this.f != null)) {
+      localInteger = Integer.valueOf(this.f.getTextColor());
+    } else {
+      localInteger = null;
+    }
+    this.j.postValue(localInteger);
   }
   
   public MetaMaterial a(String paramString)
   {
-    MetaMaterial localMetaMaterial = a(paramString, this.jdField_b_of_type_JavaUtilList);
+    MetaMaterial localMetaMaterial = a(paramString, this.k);
     if (localMetaMaterial != null) {
       return localMetaMaterial;
     }
-    localMetaMaterial = a(paramString, this.jdField_c_of_type_JavaUtilList);
+    localMetaMaterial = a(paramString, this.l);
     if (localMetaMaterial != null) {
       return localMetaMaterial;
     }
-    return a(paramString, this.jdField_d_of_type_JavaUtilList);
-  }
-  
-  public List<MetaMaterial> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    List localList = this.jdField_c_of_type_JavaUtilList;
-    if (localList != null) {
-      localArrayList.addAll(localList);
-    }
-    localList = this.jdField_d_of_type_JavaUtilList;
-    if (localList != null) {
-      localArrayList.addAll(localList);
-    }
-    localList = this.jdField_b_of_type_JavaUtilList;
-    if (localList != null) {
-      localArrayList.addAll(localList);
-    }
-    return localArrayList;
+    return a(paramString, this.m);
   }
   
   void a(@NonNull MetaMaterial paramMetaMaterial)
   {
-    if (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData == null)
+    if (this.f == null)
     {
-      AEQLog.d(this.jdField_a_of_type_JavaLangString, "[updateText] mCurText is null");
+      AEQLog.d(this.a, "[updateText] mCurText is null");
       return;
     }
-    this.jdField_b_of_type_JavaLangString = TextMetaMaterialKt.a(paramMetaMaterial);
-    String str1 = AEEditorResourceManager.a().a(TextMetaMaterialKt.d(paramMetaMaterial), 0);
-    this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setFont(str1);
-    str1 = TextMetaMaterialKt.e(paramMetaMaterial);
-    String str2 = a(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getItemID());
-    if (a(str2, MetaMaterialKt.d(paramMetaMaterial)))
+    this.g = TextMetaMaterialKt.b(paramMetaMaterial);
+    String str1 = AEEditorResourceManager.a().a(TextMetaMaterialKt.e(paramMetaMaterial), 0);
+    this.f.setFont(str1);
+    str1 = TextMetaMaterialKt.f(paramMetaMaterial);
+    String str2 = g(this.f.getItemID());
+    if (a(str2, MetaMaterialKt.g(paramMetaMaterial)))
     {
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setItemID(paramMetaMaterial.id);
+      this.f.setItemID(paramMetaMaterial.id);
     }
-    else if (b(str2, MetaMaterialKt.d(paramMetaMaterial)))
+    else if (b(str2, MetaMaterialKt.g(paramMetaMaterial)))
     {
-      str1 = this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getContent();
+      str1 = this.f.getContent();
     }
     else
     {
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setItemID(paramMetaMaterial.id);
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setPagFilePath(TextMetaMaterialKt.f(paramMetaMaterial));
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setTextColor(TextMetaMaterialKt.a(paramMetaMaterial));
-      TextEditorDataExKt.a(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData, TextMetaMaterialKt.c(paramMetaMaterial));
+      this.f.setItemID(paramMetaMaterial.id);
+      this.f.setPagFilePath(TextMetaMaterialKt.m(paramMetaMaterial));
+      this.f.setTextColor(TextMetaMaterialKt.g(paramMetaMaterial));
+      TextEditorDataExKt.a(this.f, TextMetaMaterialKt.i(paramMetaMaterial));
     }
-    a(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData, paramMetaMaterial, this.jdField_b_of_type_JavaLangString);
-    if ((!"blur".equals(this.jdField_b_of_type_JavaLangString)) && (a())) {
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setContent(str1);
+    a(this.f, paramMetaMaterial, this.g);
+    if ((!"blur".equals(this.g)) && (f())) {
+      this.f.setContent(str1);
     }
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.postValue(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+    this.c.postValue(this.f);
   }
   
   public void a(@NonNull MetaMaterial paramMetaMaterial, @Nullable Boolean paramBoolean)
@@ -285,41 +249,41 @@ public class AEEditorTextViewModel
           return;
         }
         b(paramMetaMaterial);
-        c();
+        l();
         return;
       }
-      d(paramMetaMaterial.id);
+      f(paramMetaMaterial.id);
     }
   }
   
   public void a(@Nullable TextEditorData paramTextEditorData)
   {
-    this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData = paramTextEditorData;
-    if (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData == null) {
+    this.f = paramTextEditorData;
+    if (this.f == null) {
       paramTextEditorData = null;
     } else {
-      paramTextEditorData = this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getItemID();
+      paramTextEditorData = this.f.getItemID();
     }
     if (paramTextEditorData == null)
     {
-      this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(Integer.valueOf(-1));
-      c();
+      this.b.postValue(Integer.valueOf(-1));
+      l();
       return;
     }
-    if ("sticker_lyric".equals(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getStickerType()))
+    if ("sticker_lyric".equals(this.f.getStickerType()))
     {
-      this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(Integer.valueOf(-1));
+      this.b.postValue(Integer.valueOf(-1));
       return;
     }
     paramTextEditorData = a(paramTextEditorData);
     if (paramTextEditorData == null)
     {
-      this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(Integer.valueOf(-1));
-      c();
+      this.b.postValue(Integer.valueOf(-1));
+      l();
       return;
     }
-    this.jdField_b_of_type_JavaLangString = TextMetaMaterialKt.a(paramTextEditorData);
-    c(MetaMaterialKt.d(paramTextEditorData));
+    this.g = TextMetaMaterialKt.b(paramTextEditorData);
+    e(MetaMaterialKt.g(paramTextEditorData));
   }
   
   public void a(List<MetaCategory> paramList)
@@ -328,29 +292,42 @@ public class AEEditorTextViewModel
     {
       if (((MetaCategory)paramList.get(0)).materials != null)
       {
-        this.jdField_b_of_type_JavaUtilList.clear();
-        this.jdField_b_of_type_JavaUtilList.addAll(TextMetaMaterialKt.a("CATEGORY_FONT_TYPE", ((MetaCategory)paramList.get(0)).materials));
+        this.k.clear();
+        this.k.addAll(TextMetaMaterialKt.a("CATEGORY_FONT_TYPE", ((MetaCategory)paramList.get(0)).materials));
         if ((((MetaCategory)paramList.get(0)).materials.size() > 0) && (((MetaCategory)paramList.get(0)).materials.get(0) != null))
         {
           MetaMaterial localMetaMaterial = TextMetaMaterialHelper.a.a((MetaMaterial)((MetaCategory)paramList.get(0)).materials.get(0));
           TextMetaMaterialKt.i(localMetaMaterial, "CATEGORY_FONT_TYPE");
-          this.jdField_b_of_type_JavaUtilList.add(0, localMetaMaterial);
+          this.k.add(0, localMetaMaterial);
         }
       }
       if (((MetaCategory)paramList.get(1)).materials != null)
       {
-        this.jdField_c_of_type_JavaUtilList.clear();
-        this.jdField_c_of_type_JavaUtilList.addAll(TextMetaMaterialKt.a("CATEGORY_FONT_PATTERN", ((MetaCategory)paramList.get(1)).materials));
-        this.jdField_c_of_type_JavaUtilList.add(0, TextMetaMaterialHelper.a.a("FONT_PATTERN_NON_ID"));
+        this.l.clear();
+        this.l.addAll(TextMetaMaterialKt.a("CATEGORY_FONT_PATTERN", ((MetaCategory)paramList.get(1)).materials));
+        this.l.add(0, TextMetaMaterialHelper.a.a("FONT_PATTERN_NON_ID"));
       }
       if (((MetaCategory)paramList.get(2)).materials != null)
       {
-        this.jdField_d_of_type_JavaUtilList.clear();
-        this.jdField_d_of_type_JavaUtilList.addAll(TextMetaMaterialKt.a("CATEGORY_FONT_STYLE", ((MetaCategory)paramList.get(2)).materials));
-        this.jdField_d_of_type_JavaUtilList.add(0, TextMetaMaterialHelper.a.a("FONT_STYLE_NON_ID"));
+        this.m.clear();
+        this.m.addAll(TextMetaMaterialKt.a("CATEGORY_FONT_STYLE", ((MetaCategory)paramList.get(2)).materials));
+        this.m.add(0, TextMetaMaterialHelper.a.a("FONT_STYLE_NON_ID"));
       }
-      c("CATEGORY_FONT_TYPE");
+      e("CATEGORY_FONT_TYPE");
     }
+  }
+  
+  public int b(String paramString)
+  {
+    int i1 = b(paramString, this.k);
+    if (i1 >= 0) {
+      return i1;
+    }
+    i1 = b(paramString, this.l);
+    if (i1 >= 0) {
+      return i1;
+    }
+    return b(paramString, this.m);
   }
   
   void b(int paramInt)
@@ -361,36 +338,54 @@ public class AEEditorTextViewModel
     default: 
       str = null;
       break;
-    case 2064122765: 
+    case 2063991540: 
       str = "CATEGORY_FONT_TYPE";
       break;
-    case 2064122764: 
+    case 2063991539: 
       str = "CATEGORY_FONT_STYLE";
       break;
-    case 2064122763: 
+    case 2063991538: 
       str = "CATEGORY_FONT_PATTERN";
     }
-    c(str);
+    e(str);
   }
   
-  LiveData<String> d()
+  LiveData<String> g()
   {
-    return this.jdField_d_of_type_AndroidxLifecycleMutableLiveData;
+    return this.h;
   }
   
-  LiveData<List<MetaMaterial>> e()
+  LiveData<List<MetaMaterial>> h()
   {
-    return this.e;
+    return this.i;
   }
   
-  LiveData<Integer> f()
+  LiveData<Integer> i()
   {
-    return this.f;
+    return this.j;
+  }
+  
+  public List<MetaMaterial> j()
+  {
+    ArrayList localArrayList = new ArrayList();
+    List localList = this.l;
+    if (localList != null) {
+      localArrayList.addAll(localList);
+    }
+    localList = this.m;
+    if (localList != null) {
+      localArrayList.addAll(localList);
+    }
+    localList = this.k;
+    if (localList != null) {
+      localArrayList.addAll(localList);
+    }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextViewModel
  * JD-Core Version:    0.7.0.1
  */

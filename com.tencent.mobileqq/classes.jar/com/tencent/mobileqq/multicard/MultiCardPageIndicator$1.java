@@ -34,17 +34,17 @@ class MultiCardPageIndicator$1
     }
     if (localObject1 != null)
     {
-      int i = MultiCardPageIndicator.a(this.a).a();
-      int j = ((MultiCardPageIndicator.MultiAIOHolder)localObject1).jdField_a_of_type_Int;
+      int i = MultiCardPageIndicator.a(this.a).getCurrentItem();
+      int j = ((MultiCardPageIndicator.MultiAIOHolder)localObject1).b;
       this.a.setCurrentItem(j);
       ReportController.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
-      ((MultiCardPageIndicator.MultiAIOHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      ((MultiCardPageIndicator.MultiAIOHolder)localObject1).a.setVisibility(0);
       MultiCardPageIndicator.a(this.a).setCurrentItem(j);
-      if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
-        MultiCardPageIndicator.a(this.a).a(j);
+      if ((i == j) && (MultiCardPageIndicator.b(this.a) != null)) {
+        MultiCardPageIndicator.b(this.a).a(j);
       }
-      if (MultiCardPageIndicator.a(this.a) != null) {
-        MultiCardPageIndicator.a(this.a).a(j);
+      if (MultiCardPageIndicator.c(this.a) != null) {
+        MultiCardPageIndicator.c(this.a).a(j);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -52,7 +52,7 @@ class MultiCardPageIndicator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardPageIndicator.1
  * JD-Core Version:    0.7.0.1
  */

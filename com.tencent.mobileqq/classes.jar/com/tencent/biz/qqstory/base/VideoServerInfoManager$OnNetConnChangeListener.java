@@ -12,12 +12,12 @@ class VideoServerInfoManager$OnNetConnChangeListener
   public void onNetChangeEvent(boolean paramBoolean)
   {
     SLog.d("Q.qqstory.publish:VideoServerInfoManager", "network change");
-    this.a.b.set(true);
+    this.a.f.set(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.VideoServerInfoManager.OnNetConnChangeListener
  * JD-Core Version:    0.7.0.1
  */

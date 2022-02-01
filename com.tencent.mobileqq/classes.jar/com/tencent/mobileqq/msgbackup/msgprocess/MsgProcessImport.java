@@ -15,13 +15,13 @@ import org.json.JSONObject;
 public abstract class MsgProcessImport
   extends MsgProcessConstant
 {
-  protected MsgBackupResEntity a;
-  protected Map<String, String> a;
+  protected Map<String, String> b;
+  protected MsgBackupResEntity c;
   
   public MsgProcessImport(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    this.jdField_a_of_type_JavaUtilMap = a(paramMsgBackupResEntity.extraDataStr);
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity = paramMsgBackupResEntity;
+    this.b = c(paramMsgBackupResEntity.extraDataStr);
+    this.c = paramMsgBackupResEntity;
   }
   
   protected static int a()
@@ -29,7 +29,7 @@ public abstract class MsgProcessImport
     return AppConstants.SDCARD_PATH.length();
   }
   
-  public static HashMap<String, String> a(String paramString)
+  public static HashMap<String, String> c(String paramString)
   {
     localHashMap = new HashMap();
     try
@@ -46,30 +46,6 @@ public abstract class MsgProcessImport
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-    }
-  }
-  
-  public abstract ResDownloadObject a();
-  
-  public abstract String a();
-  
-  public void a()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("import resEntity:");
-    ((StringBuilder)localObject2).append(((MsgBackupResEntity)localObject1).toLogString());
-    a(((StringBuilder)localObject2).toString());
-    localObject1 = b();
-    localObject2 = a();
-    try
-    {
-      a((String)localObject2, (String)localObject1);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
     }
   }
   
@@ -95,18 +71,42 @@ public abstract class MsgProcessImport
           paramString1 = "-1";
         }
         localStringBuilder.append(paramString1);
-        a(localStringBuilder.toString());
+        b(localStringBuilder.toString());
       }
       return;
     }
-    a("importFile null error ");
+    b("importFile null error ");
   }
   
-  public abstract String b();
+  public abstract ResDownloadObject b();
+  
+  public abstract String c();
+  
+  public abstract String d();
+  
+  public void e()
+  {
+    Object localObject1 = this.c;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("import resEntity:");
+    ((StringBuilder)localObject2).append(((MsgBackupResEntity)localObject1).toLogString());
+    b(((StringBuilder)localObject2).toString());
+    localObject1 = d();
+    localObject2 = c();
+    try
+    {
+      a((String)localObject2, (String)localObject1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessImport
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package org.light;
 
 import android.content.Context;
-import org.light.report.avreport.LightSDKRecord;
 
 public class LightEngine
 {
@@ -10,7 +9,6 @@ public class LightEngine
   
   static
   {
-    LibraryLoadUtils.loadLibrary("YTCommon");
     LibraryLoadUtils.loadLibrary("light-sdk");
     nativeInit();
   }
@@ -31,6 +29,8 @@ public class LightEngine
   
   private final native void nativeRelease();
   
+  public native String GetPerfReport();
+  
   public native AudioOutput audioOutput();
   
   protected void finalize()
@@ -39,6 +39,8 @@ public class LightEngine
     nativeFinalize();
   }
   
+  public native boolean generatePerfReportToLocal();
+  
   public native String getBenchData();
   
   public native boolean getDisableRenderer();
@@ -46,8 +48,6 @@ public class LightEngine
   public native int getOriginTexture();
   
   public native int getResultTexture();
-  
-  public native LightSDKRecord getSDKRecord();
   
   public native PerformanceData performanceData();
   
@@ -68,15 +68,21 @@ public class LightEngine
   
   public native void setDisableRenderer(boolean paramBoolean);
   
-  public native void setImageDebugInfo(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3);
+  public native void setImageDebugInfo(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
+  
+  public native void setPerfEnable(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  
+  public native void setPerformanceRunMode(int paramInt);
   
   public native boolean setSurface(LightSurface paramLightSurface);
+  
+  public native Controller[] setTemplateAssets(TemplateClip[] paramArrayOfTemplateClip);
   
   public native VideoOutput videoOutput();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.LightEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -10,26 +10,26 @@ import java.util.HashMap;
 
 public class ScConfigManager
 {
-  private static final ScConfigManager jdField_a_of_type_ComTencentMqpAppSecScConfigManager = new ScConfigManager();
-  private static final ScConfigManager.ConfigParserMapItem[] jdField_a_of_type_ArrayOfComTencentMqpAppSecScConfigManager$ConfigParserMapItem = { new ScConfigManager.ConfigParserMapItem("SecCenterConfig", new SecCenterConfigParser()) };
-  private HashMap<String, SecBaseConfig> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashMap<String, String> b = new HashMap();
+  private static final ScConfigManager a = new ScConfigManager();
+  private static final ScConfigManager.ConfigParserMapItem[] d = { new ScConfigManager.ConfigParserMapItem("SecCenterConfig", new SecCenterConfigParser()) };
+  private HashMap<String, SecBaseConfig> b = new HashMap();
+  private HashMap<String, String> c = new HashMap();
   
   private ScConfigManager()
   {
-    this.b.put("SecCenterConfig", "qq_security_sccfg");
+    this.c.put("SecCenterConfig", "qq_security_sccfg");
   }
   
   public static IConfigParser a(String paramString)
   {
-    ScConfigManager.ConfigParserMapItem[] arrayOfConfigParserMapItem = jdField_a_of_type_ArrayOfComTencentMqpAppSecScConfigManager$ConfigParserMapItem;
+    ScConfigManager.ConfigParserMapItem[] arrayOfConfigParserMapItem = d;
     int j = arrayOfConfigParserMapItem.length;
     int i = 0;
     while (i < j)
     {
       ScConfigManager.ConfigParserMapItem localConfigParserMapItem = arrayOfConfigParserMapItem[i];
-      if (localConfigParserMapItem.jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return localConfigParserMapItem.jdField_a_of_type_ComTencentMqpAppSecIConfigParser;
+      if (localConfigParserMapItem.a.equals(paramString)) {
+        return localConfigParserMapItem.b;
       }
       i += 1;
     }
@@ -38,39 +38,7 @@ public class ScConfigManager
   
   public static ScConfigManager a()
   {
-    return jdField_a_of_type_ComTencentMqpAppSecScConfigManager;
-  }
-  
-  private SecBaseConfig a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-      {
-        paramString = (SecBaseConfig)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        return paramString;
-      }
-      return null;
-    }
-  }
-  
-  private String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(BaseApplication.getContext().getFilesDir().getPath());
-    localStringBuilder.append("/");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(".xml");
-    return localStringBuilder.toString();
-  }
-  
-  private void a(String paramString)
-  {
-    String str = a(paramString);
-    if (b(str)) {
-      a(paramString, str);
-    }
-    c(str);
+    return a;
   }
   
   /* Error */
@@ -81,39 +49,39 @@ public class ScConfigManager
     //   1: astore 4
     //   3: aconst_null
     //   4: astore 6
-    //   6: invokestatic 79	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   9: invokevirtual 123	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
+    //   6: invokestatic 76	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   9: invokevirtual 80	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
     //   12: astore 5
-    //   14: new 72	java/lang/StringBuilder
+    //   14: new 82	java/lang/StringBuilder
     //   17: dup
-    //   18: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   18: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   21: astore 7
     //   23: aload 7
     //   25: aload_0
     //   26: aload_1
-    //   27: invokespecial 125	com/tencent/mqp/app/sec/ScConfigManager:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   30: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: invokespecial 87	com/tencent/mqp/app/sec/ScConfigManager:f	(Ljava/lang/String;)Ljava/lang/String;
+    //   30: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: pop
     //   34: aload 7
-    //   36: ldc 97
-    //   38: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: ldc 93
+    //   38: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: pop
     //   42: aload 5
     //   44: aload 7
-    //   46: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokevirtual 131	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   46: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   49: invokevirtual 103	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   52: astore 5
-    //   54: new 133	java/io/FileOutputStream
+    //   54: new 105	java/io/FileOutputStream
     //   57: dup
     //   58: aload_2
-    //   59: invokespecial 135	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   59: invokespecial 107	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   62: astore 4
     //   64: sipush 4096
     //   67: newarray byte
     //   69: astore_1
     //   70: aload 5
     //   72: aload_1
-    //   73: invokevirtual 141	java/io/InputStream:read	([B)I
+    //   73: invokevirtual 113	java/io/InputStream:read	([B)I
     //   76: istore_3
     //   77: iload_3
     //   78: ifle +14 -> 92
@@ -121,14 +89,14 @@ public class ScConfigManager
     //   83: aload_1
     //   84: iconst_0
     //   85: iload_3
-    //   86: invokevirtual 147	java/io/OutputStream:write	([BII)V
+    //   86: invokevirtual 119	java/io/OutputStream:write	([BII)V
     //   89: goto -19 -> 70
     //   92: aload 5
     //   94: ifnull +8 -> 102
     //   97: aload 5
-    //   99: invokevirtual 150	java/io/InputStream:close	()V
+    //   99: invokevirtual 122	java/io/InputStream:close	()V
     //   102: aload 4
-    //   104: invokevirtual 151	java/io/OutputStream:close	()V
+    //   104: invokevirtual 123	java/io/OutputStream:close	()V
     //   107: return
     //   108: astore_1
     //   109: goto +11 -> 120
@@ -162,19 +130,19 @@ public class ScConfigManager
     //   156: aload 6
     //   158: astore_1
     //   159: aload_2
-    //   160: invokevirtual 154	java/lang/Exception:printStackTrace	()V
+    //   160: invokevirtual 126	java/lang/Exception:printStackTrace	()V
     //   163: aload_1
     //   164: ifnull +10 -> 174
     //   167: aload_1
-    //   168: invokevirtual 150	java/io/InputStream:close	()V
+    //   168: invokevirtual 122	java/io/InputStream:close	()V
     //   171: goto +3 -> 174
     //   174: aload 4
     //   176: ifnull +13 -> 189
     //   179: aload 4
-    //   181: invokevirtual 151	java/io/OutputStream:close	()V
+    //   181: invokevirtual 123	java/io/OutputStream:close	()V
     //   184: return
     //   185: aload_1
-    //   186: invokevirtual 155	java/io/IOException:printStackTrace	()V
+    //   186: invokevirtual 127	java/io/IOException:printStackTrace	()V
     //   189: return
     //   190: astore 5
     //   192: aload_1
@@ -182,15 +150,15 @@ public class ScConfigManager
     //   194: aload_2
     //   195: ifnull +10 -> 205
     //   198: aload_2
-    //   199: invokevirtual 150	java/io/InputStream:close	()V
+    //   199: invokevirtual 122	java/io/InputStream:close	()V
     //   202: goto +3 -> 205
     //   205: aload 4
     //   207: ifnull +15 -> 222
     //   210: aload 4
-    //   212: invokevirtual 151	java/io/OutputStream:close	()V
+    //   212: invokevirtual 123	java/io/OutputStream:close	()V
     //   215: goto +7 -> 222
     //   218: aload_1
-    //   219: invokevirtual 155	java/io/IOException:printStackTrace	()V
+    //   219: invokevirtual 127	java/io/IOException:printStackTrace	()V
     //   222: goto +6 -> 228
     //   225: aload 5
     //   227: athrow
@@ -232,33 +200,65 @@ public class ScConfigManager
     //   210	215	235	java/io/IOException
   }
   
-  private String b(String paramString)
+  private void c(String paramString)
   {
-    return (String)this.b.get(paramString);
+    String str = d(paramString);
+    if (e(str)) {
+      a(paramString, str);
+    }
+    i(str);
   }
   
-  private boolean b(String paramString)
+  private String d(String paramString)
   {
-    return FileUtil.b(paramString) ^ true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplication.getContext().getFilesDir().getPath());
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".xml");
+    return localStringBuilder.toString();
   }
   
-  private String c(String paramString)
+  private boolean e(String paramString)
+  {
+    return FileUtil.d(paramString) ^ true;
+  }
+  
+  private String f(String paramString)
+  {
+    return (String)this.c.get(paramString);
+  }
+  
+  private SecBaseConfig g(String paramString)
+  {
+    synchronized (this.b)
+    {
+      if (this.b.containsKey(paramString))
+      {
+        paramString = (SecBaseConfig)this.b.get(paramString);
+        return paramString;
+      }
+      return null;
+    }
+  }
+  
+  private String h(String paramString)
   {
     paramString = new File(paramString).getName();
     return paramString.substring(0, paramString.lastIndexOf("."));
   }
   
-  private boolean c(String arg1)
+  private boolean i(String arg1)
   {
-    String str = c(???);
+    String str = h(???);
     Object localObject2 = a(str);
     if (localObject2 != null)
     {
       localObject2 = ((IConfigParser)localObject2).a(???);
       if (localObject2 != null) {
-        synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+        synchronized (this.b)
         {
-          this.jdField_a_of_type_JavaUtilHashMap.put(str, localObject2);
+          this.b.put(str, localObject2);
         }
       }
       return true;
@@ -268,15 +268,15 @@ public class ScConfigManager
   
   public SecBaseConfig a(String paramString, boolean paramBoolean)
   {
-    SecBaseConfig localSecBaseConfig2 = a(paramString);
+    SecBaseConfig localSecBaseConfig2 = g(paramString);
     SecBaseConfig localSecBaseConfig1 = localSecBaseConfig2;
     if (localSecBaseConfig2 == null)
     {
       localSecBaseConfig1 = localSecBaseConfig2;
       if (paramBoolean)
       {
-        a(paramString);
-        localSecBaseConfig1 = a(paramString);
+        c(paramString);
+        localSecBaseConfig1 = g(paramString);
       }
     }
     return localSecBaseConfig1;
@@ -294,14 +294,14 @@ public class ScConfigManager
     }
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
-    return c(paramString);
+    return i(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.ScConfigManager
  * JD-Core Version:    0.7.0.1
  */

@@ -71,7 +71,7 @@ public class PublicAccountDetailImpl
   public int mShowMsgFlag = -1;
   @notColumn
   public mobileqq_mp.GetPublicAccountMenuResponse menuButtonResp;
-  public String name = HardCodeUtil.a(2131699959);
+  public String name = HardCodeUtil.a(2131898007);
   public List<mobileqq_mp.ConfigGroupInfo> newGroupInfoList;
   @notColumn
   public List<IPublicAccountConfigAttr> paConfigAttrs;
@@ -80,7 +80,7 @@ public class PublicAccountDetailImpl
   public int seqno = 0;
   public int sharedFollowerCount = 0;
   public int showFlag = 0;
-  public String summary = HardCodeUtil.a(2131699962);
+  public String summary = HardCodeUtil.a(2131898009);
   @unique
   public String uin;
   @notColumn
@@ -486,10 +486,10 @@ public class PublicAccountDetailImpl
         if (localPaConfigInfo.a == 2)
         {
           j = i;
-          if (localPaConfigInfo.e == 3)
+          if (localPaConfigInfo.g == 3)
           {
             this.isSyncLbs = true;
-            i = localPaConfigInfo.d;
+            i = localPaConfigInfo.f;
             if (i != 0)
             {
               if (i != 1)
@@ -500,7 +500,7 @@ public class PublicAccountDetailImpl
                   {
                     StringBuilder localStringBuilder = new StringBuilder();
                     localStringBuilder.append("Error Eqq lbs state value: ");
-                    localStringBuilder.append(localPaConfigInfo.d);
+                    localStringBuilder.append(localPaConfigInfo.f);
                     QLog.e("EqqDetail", 2, localStringBuilder.toString());
                   }
                 }
@@ -570,8 +570,8 @@ public class PublicAccountDetailImpl
           break;
         }
         localPaConfigInfo = (IPublicAccountConfigAttr.PaConfigInfo)((Iterator)localObject2).next();
-      } while (localPaConfigInfo.e != 5);
-      if (localPaConfigInfo.d == 1) {
+      } while (localPaConfigInfo.g != 5);
+      if (localPaConfigInfo.f == 1) {
         i = 1;
       } else {
         i = 0;
@@ -683,7 +683,7 @@ public class PublicAccountDetailImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailImpl
  * JD-Core Version:    0.7.0.1
  */

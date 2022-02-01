@@ -11,13 +11,12 @@ import com.tencent.qphone.base.util.QLog;
 public abstract class BaseSearchEntryModel<T extends View>
 {
   protected int a;
-  public long a;
-  public boolean a;
+  public long b;
+  public boolean c = true;
   
   public BaseSearchEntryModel(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public static BaseSearchEntryModel a(int paramInt1, int paramInt2, boolean paramBoolean)
@@ -70,7 +69,7 @@ public abstract class BaseSearchEntryModel<T extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.BaseSearchEntryModel
  * JD-Core Version:    0.7.0.1
  */

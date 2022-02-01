@@ -25,13 +25,13 @@ class AddFriendVerifyActivity$12
       paramURLDrawable = ImageUtil.a(paramURLDrawable);
       QQAppInterface localQQAppInterface = this.a.app;
       paramURLDrawable = QQAppInterface.getCircleFaceBitmap(paramURLDrawable, 50, 50);
-      this.a.a.setImageDrawable(new BitmapDrawable(paramURLDrawable));
+      this.a.m.setImageDrawable(new BitmapDrawable(paramURLDrawable));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.12
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ import com.tencent.qphone.base.util.QLog;
 class PhotoCropActivity$LoadBitmapTask
   extends AsyncTask<Void, Void, Bitmap>
 {
-  private int jdField_a_of_type_Int;
+  private int b;
   
   private PhotoCropActivity$LoadBitmapTask(PhotoCropActivity paramPhotoCropActivity) {}
   
@@ -30,29 +30,29 @@ class PhotoCropActivity$LoadBitmapTask
     try
     {
       localObject = new BitmapFactory.Options();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_Boolean) {
+      if (this.a.w) {
         paramVarArgs = Bitmap.Config.ARGB_8888;
       } else {
         paramVarArgs = Bitmap.Config.RGB_565;
       }
       ((BitmapFactory.Options)localObject).inPreferredConfig = paramVarArgs;
       ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-      ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-      ((BitmapFactory.Options)localObject).inSampleSize = ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).calculateInSampleSize((BitmapFactory.Options)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.g, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.g);
+      ImageUtil.a(this.a.o, (BitmapFactory.Options)localObject);
+      ((BitmapFactory.Options)localObject).inSampleSize = ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).calculateInSampleSize((BitmapFactory.Options)localObject, this.a.u, this.a.u);
       ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-      paramVarArgs = ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-      paramVarArgs = ((IPicUtil)QRoute.api(IPicUtil.class)).getExifBitmap(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString, paramVarArgs);
+      paramVarArgs = ImageUtil.a(this.a.o, (BitmapFactory.Options)localObject);
+      paramVarArgs = ((IPicUtil)QRoute.api(IPicUtil.class)).getExifBitmap(this.a.o, paramVarArgs);
       return paramVarArgs;
     }
     catch (Exception paramVarArgs)
     {
-      this.jdField_a_of_type_Int = 2;
+      this.b = 2;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("LoadBitmapTask err ");
       ((StringBuilder)localObject).append(paramVarArgs);
       QLog.d("PhotoCropActivity", 1, ((StringBuilder)localObject).toString());
       return null;
-      this.jdField_a_of_type_Int = 1;
+      this.b = 1;
       return null;
     }
     catch (OutOfMemoryError paramVarArgs)
@@ -67,47 +67,47 @@ class PhotoCropActivity$LoadBitmapTask
     PhotoCropActivity localPhotoCropActivity;
     if (paramBitmap != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setRestrict(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.d);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageBitmap(paramBitmap);
+      this.a.c.setRestrict(this.a.q, this.a.r);
+      this.a.c.setImageBitmap(paramBitmap);
       paramBitmap = new ViewGroup.LayoutParams(-1, -1);
-      localPhotoCropActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity;
-      localPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView = new RegionView(localPhotoCropActivity, localPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.e, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.f, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.h, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, paramBitmap);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView, paramBitmap);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 250L);
+      localPhotoCropActivity = this.a;
+      localPhotoCropActivity.d = new RegionView(localPhotoCropActivity, localPhotoCropActivity.c, this.a.s, this.a.t, this.a.v, this.a.w);
+      this.a.b.removeAllViews();
+      this.a.b.addView(this.a.c, paramBitmap);
+      this.a.b.addView(this.a.d, paramBitmap);
+      if (this.a.D != null) {
+        this.a.D.sendEmptyMessageDelayed(1000, 250L);
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.getIntent().getBooleanExtra("open_chat_from_avator", false))
+      if (this.a.getIntent().getBooleanExtra("open_chat_from_avator", false))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setRestrict(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.d);
+        this.a.c.setRestrict(this.a.q, this.a.r);
         paramBitmap = new ViewGroup.LayoutParams(-1, -1);
-        localPhotoCropActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity;
-        localPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView = new RegionView(localPhotoCropActivity, localPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.e, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.f, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.h, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, paramBitmap);
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView, paramBitmap);
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+        localPhotoCropActivity = this.a;
+        localPhotoCropActivity.d = new RegionView(localPhotoCropActivity, localPhotoCropActivity.c, this.a.s, this.a.t, this.a.v, this.a.w);
+        this.a.b.removeAllViews();
+        this.a.b.addView(this.a.c, paramBitmap);
+        this.a.b.addView(this.a.d, paramBitmap);
+        this.a.e.setEnabled(false);
         return;
       }
-      int i = this.jdField_a_of_type_Int;
+      int i = this.b;
       if (i == 1) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, HardCodeUtil.a(2131708067), 0).a();
+        QQToast.makeText(this.a, HardCodeUtil.a(2131905866), 0).show();
       } else if (i == 2) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, HardCodeUtil.a(2131708068), 0).a();
+        QQToast.makeText(this.a, HardCodeUtil.a(2131905867), 0).show();
       } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, HardCodeUtil.a(2131708066), 0).a();
+        QQToast.makeText(this.a, HardCodeUtil.a(2131905865), 0).show();
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.finish();
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoCropActivity.LoadBitmapTask
  * JD-Core Version:    0.7.0.1
  */

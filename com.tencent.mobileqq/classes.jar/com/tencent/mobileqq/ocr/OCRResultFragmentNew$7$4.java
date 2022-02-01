@@ -9,13 +9,13 @@ class OCRResultFragmentNew$7$4
   
   public void run()
   {
-    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a, true);
-    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a).a(this.jdField_a_of_type_Int);
+    OCRResultFragmentNew.a(this.b.a, true);
+    OCRResultFragmentNew.d(this.b.a).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.4
  * JD-Core Version:    0.7.0.1
  */

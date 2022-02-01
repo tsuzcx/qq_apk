@@ -12,7 +12,7 @@ class ReadinjoyTabFrame$6
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((!ReadinjoyTabFrame.a(this.a)) && (ReadinjoyTabFrame.a(this.a) != null) && (ReadinjoyTabFrame.a(this.a).getVisibility() == 0)) {
+    if ((!ReadinjoyTabFrame.e(this.a)) && (ReadinjoyTabFrame.f(this.a) != null) && (ReadinjoyTabFrame.f(this.a).getVisibility() == 0)) {
       RecommendFeedsDiandianEntranceManager.getInstance().reportEntryIconExposure(0, paramInt2);
     }
     RIJPushNotifyManager.Companion.a().dismiss(true, "MATCH_ALL_UIN");
@@ -20,7 +20,7 @@ class ReadinjoyTabFrame$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.6
  * JD-Core Version:    0.7.0.1
  */

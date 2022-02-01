@@ -3,6 +3,7 @@ package com.tencent.ad.tangram.protocol;
 public final class qq_ad_get$QQAdGetRsp$AdInfo$DisplayInfo$AdvertiserInfo
 {
   public long ad_first_category = 0L;
+  public long ad_industry_id = 0L;
   public long ad_second_category = 0L;
   public long advertiser_id = 0L;
   public String corporate_image_name;

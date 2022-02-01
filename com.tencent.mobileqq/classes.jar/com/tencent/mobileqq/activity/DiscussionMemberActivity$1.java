@@ -13,18 +13,18 @@ class DiscussionMemberActivity$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    if (paramAnimation == this.a)
     {
-      this.jdField_a_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
-      DiscussionMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(8);
+      this.b.show();
+      this.e.c.setAnimation(null);
+      DiscussionMemberActivity.a(this.e).setVisibility(8);
       return;
     }
-    if (paramAnimation == this.b)
+    if (paramAnimation == this.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.requestLayout();
+      this.e.c.setAnimation(null);
+      this.e.c.offsetTopAndBottom(this.d);
+      this.e.c.requestLayout();
     }
   }
   
@@ -34,7 +34,7 @@ class DiscussionMemberActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionMemberActivity.1
  * JD-Core Version:    0.7.0.1
  */

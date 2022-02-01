@@ -12,15 +12,15 @@ class ARScanEntryView$37
   
   public void a()
   {
-    ARScanEntryView.f(this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView, false);
-    this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.b("ClickTips");
-    ARScanEntryView.g(this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView, true);
-    ARScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView).postDelayed(new ARScanEntryView.37.1(this), 1000L);
+    ARScanEntryView.h(this.c, false);
+    this.c.d("ClickTips");
+    ARScanEntryView.i(this.c, true);
+    ARScanEntryView.d(this.c).postDelayed(new ARScanEntryView.37.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.37
  * JD-Core Version:    0.7.0.1
  */

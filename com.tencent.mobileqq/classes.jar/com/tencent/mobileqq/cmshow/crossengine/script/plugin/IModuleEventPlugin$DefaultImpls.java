@@ -39,19 +39,14 @@ public final class IModuleEventPlugin$DefaultImpls
     Intrinsics.checkParameterIsNotNull(paramCEArgument, "argument");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[cmshow][CECMShowOffscreenEngine]_");
-    localStringBuilder.append(paramIModuleEventPlugin.a());
+    localStringBuilder.append(paramIModuleEventPlugin.b());
     paramIModuleEventPlugin = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[handleModuleEvent] error, no method to handle this cmd:");
-    localStringBuilder.append(paramCEArgument.c());
+    localStringBuilder.append(paramCEArgument.f());
     localStringBuilder.append("! ");
     QLog.e(paramIModuleEventPlugin, 1, localStringBuilder.toString());
     return null;
-  }
-  
-  public static boolean a(IModuleEventPlugin paramIModuleEventPlugin)
-  {
-    return IEventPlugin.DefaultImpls.a((IEventPlugin)paramIModuleEventPlugin);
   }
   
   public static boolean a(IModuleEventPlugin paramIModuleEventPlugin, @NotNull String paramString)
@@ -59,10 +54,15 @@ public final class IModuleEventPlugin$DefaultImpls
     Intrinsics.checkParameterIsNotNull(paramString, "cmd");
     return IEventPlugin.DefaultImpls.a((IEventPlugin)paramIModuleEventPlugin, paramString);
   }
+  
+  public static boolean b(IModuleEventPlugin paramIModuleEventPlugin)
+  {
+    return IEventPlugin.DefaultImpls.a((IEventPlugin)paramIModuleEventPlugin);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.script.plugin.IModuleEventPlugin.DefaultImpls
  * JD-Core Version:    0.7.0.1
  */

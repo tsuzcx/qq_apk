@@ -23,14 +23,14 @@ class FullScreenInputHelper$2
     StringBuilder localStringBuilder;
     if (paramString.equalsIgnoreCase("emotion"))
     {
-      paramXMLReader = FullScreenInputHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFullScreenInputHelper, paramXMLReader, "id");
+      paramXMLReader = FullScreenInputHelper.a(this.b, paramXMLReader, "id");
       if (!TextUtils.isEmpty(paramXMLReader))
       {
-        if ((!jdField_a_of_type_Boolean) && (paramXMLReader == null)) {
+        if ((!a) && (paramXMLReader == null)) {
           throw new AssertionError();
         }
         i = Integer.parseInt(paramXMLReader);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFullScreenInputHelper;
+        localObject = this.b;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("\024");
         localStringBuilder.append((char)i);
@@ -55,14 +55,14 @@ class FullScreenInputHelper$2
       int j = 0;
       while (i < 4)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFullScreenInputHelper;
+        localObject = this.b;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("index");
         localStringBuilder.append(i);
         localObject = FullScreenInputHelper.a((FullScreenInputHelper)localObject, paramXMLReader, localStringBuilder.toString());
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          if ((!jdField_a_of_type_Boolean) && (localObject == null)) {
+          if ((!a) && (localObject == null)) {
             throw new AssertionError();
           }
           paramString[i] = ((char)Integer.parseInt((String)localObject));
@@ -72,7 +72,7 @@ class FullScreenInputHelper$2
       }
       if (j != 0)
       {
-        paramXMLReader = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFullScreenInputHelper;
+        paramXMLReader = this.b;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("\024");
         ((StringBuilder)localObject).append(paramString[0]);
@@ -86,7 +86,7 @@ class FullScreenInputHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.2
  * JD-Core Version:    0.7.0.1
  */

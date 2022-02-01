@@ -20,15 +20,15 @@ final class AIOGalleryUtils$3
   {
     try
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
+      if (this.a.exists())
       {
-        ImageUtil.b(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_JavaIoFile);
-        ImageUtil.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        ImageUtil.b(BaseApplicationImpl.getApplication(), this.a);
+        ImageUtil.b(this.b, this.a.getAbsolutePath());
       }
-      if (FileUtil.a(this.b, this.jdField_a_of_type_JavaIoFile))
+      if (FileUtil.a(this.c, this.a))
       {
-        ImageUtil.a(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_JavaIoFile);
-        ImageUtil.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        ImageUtil.a(BaseApplicationImpl.getApplication(), this.a);
+        ImageUtil.b(this.b, this.a.getAbsolutePath());
         return Boolean.valueOf(true);
       }
       return Boolean.valueOf(false);
@@ -46,7 +46,7 @@ final class AIOGalleryUtils$3
   
   protected void a(Boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = this.b;
     int i;
     if ((localObject instanceof BaseActivity)) {
       i = ((BaseActivity)localObject).getTitleBarHeight();
@@ -54,12 +54,12 @@ final class AIOGalleryUtils$3
       i = 0;
     }
     if (paramBoolean.booleanValue()) {
-      localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131694891);
+      localObject = this.b.getString(2131892595);
     } else {
-      localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131694911);
+      localObject = this.b.getString(2131892637);
     }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, (CharSequence)localObject, 0).b(i);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserUtilsAIOGalleryUtils$OnSavePhoto;
+    QQToast.makeText(this.b, 2, (CharSequence)localObject, 0).show(i);
+    localObject = this.d;
     if (localObject != null) {
       ((AIOGalleryUtils.OnSavePhoto)localObject).c(paramBoolean.booleanValue());
     }
@@ -67,7 +67,7 @@ final class AIOGalleryUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.utils.AIOGalleryUtils.3
  * JD-Core Version:    0.7.0.1
  */

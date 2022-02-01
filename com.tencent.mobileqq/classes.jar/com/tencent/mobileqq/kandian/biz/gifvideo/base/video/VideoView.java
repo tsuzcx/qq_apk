@@ -165,7 +165,7 @@ public class VideoView
   private static Drawable getLoadingDrawable()
   {
     if (mLoadingDrawable == null) {
-      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130851081);
+      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130853313);
     }
     return mLoadingDrawable;
   }
@@ -225,7 +225,7 @@ public class VideoView
     {
       this.videoViewLayout = new FrameLayout(this.mContext);
       this.videoViewLayout.setContentDescription("videoviewFL");
-      this.videoViewLayout.setBackgroundDrawable(getResources().getDrawable(2130841770));
+      this.videoViewLayout.setBackgroundDrawable(getResources().getDrawable(2130842687));
       addView(this.videoViewLayout, -1, -1);
     }
   }
@@ -234,14 +234,14 @@ public class VideoView
   {
     if ((this.showVideoMask) && (this.videoMaskController == null))
     {
-      this.videoMaskController = new VideoMaskController(getContext(), this, this.videoPlayController.a());
+      this.videoMaskController = new VideoMaskController(getContext(), this, this.videoPlayController.i());
       VideoMaskController localVideoMaskController = this.videoMaskController;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(VideoMaskController.class.getSimpleName());
       localStringBuilder.append(".");
       localStringBuilder.append(this.suffix);
       localVideoMaskController.a(localStringBuilder.toString());
-      this.videoMaskController.a().b().c().a(this.articleInfo);
+      this.videoMaskController.p().r().s().a(this.articleInfo);
     }
   }
   
@@ -267,7 +267,7 @@ public class VideoView
       i = 4;
     }
     ((NativeReadInjoyImageView)localObject).setVisibility(i);
-    this.mPlayIconImageView.setImageResource(2130842790);
+    this.mPlayIconImageView.setImageResource(2130843744);
     setPlayIcon();
   }
   
@@ -416,12 +416,12 @@ public class VideoView
   
   private boolean shouldShowPlayIcon()
   {
-    return (this.isPlayIconVisible) && (!VideoPlayController.a.a());
+    return (this.isPlayIconVisible) && (!VideoPlayController.a.f());
   }
   
   private void updateXyAxis(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if (!Util.e(paramAbsBaseArticleInfo)) {
+    if (!Util.f(paramAbsBaseArticleInfo)) {
       return;
     }
     if (paramAbsBaseArticleInfo.mVideoJsonHeight > 0)
@@ -451,14 +451,14 @@ public class VideoView
   public void destroy()
   {
     QLog.d(this.tag, 1, "destroy");
-    this.videoPlayController.d();
+    this.videoPlayController.o();
   }
   
   public void displayCover()
   {
     removeHideCoverRunnable();
     removeShowCoverRunnable();
-    if (RIJThreadHandler.a())
+    if (RIJThreadHandler.f())
     {
       this.showCoverRunnable.run();
       return;
@@ -468,7 +468,7 @@ public class VideoView
   
   public int getAction()
   {
-    return this.videoPlayController.b().get();
+    return this.videoPlayController.w().get();
   }
   
   public AbsBaseArticleInfo getArticleInfo()
@@ -479,8 +479,8 @@ public class VideoView
   public long getCurrentProgress()
   {
     long l;
-    if (this.videoPlayController.a() != null) {
-      l = this.videoPlayController.a().b();
+    if (this.videoPlayController.i() != null) {
+      l = this.videoPlayController.i().o();
     } else {
       l = 0L;
     }
@@ -489,21 +489,21 @@ public class VideoView
   
   public float getCurrentRatio()
   {
-    if (this.videoPlayController.a() != null) {
-      return this.videoPlayController.a().a();
+    if (this.videoPlayController.i() != null) {
+      return this.videoPlayController.i().a();
     }
     return 0.0F;
   }
   
   public int getCurrentState()
   {
-    return this.videoPlayController.a().get();
+    return this.videoPlayController.v().get();
   }
   
   public long getPercentage()
   {
-    if (this.videoPlayController.a() != null) {
-      return this.videoPlayController.a().b();
+    if (this.videoPlayController.i() != null) {
+      return this.videoPlayController.i().o();
     }
     return 0L;
   }
@@ -535,7 +535,7 @@ public class VideoView
     QLog.d(this.tag, 1, "hideLoading");
     VideoMaskController localVideoMaskController = this.videoMaskController;
     if (localVideoMaskController != null) {
-      localVideoMaskController.m();
+      localVideoMaskController.v();
     }
   }
   
@@ -544,7 +544,7 @@ public class VideoView
     QLog.d(this.tag, 1, "hideVideoError");
     VideoMaskController localVideoMaskController = this.videoMaskController;
     if (localVideoMaskController != null) {
-      localVideoMaskController.k();
+      localVideoMaskController.t();
     }
   }
   
@@ -578,12 +578,12 @@ public class VideoView
   
   public boolean isMute()
   {
-    return this.videoPlayController.a();
+    return this.videoPlayController.d();
   }
   
   public boolean isPlaying()
   {
-    return this.videoPlayController.a().get() == 7;
+    return this.videoPlayController.v().get() == 7;
   }
   
   public boolean isShown()
@@ -616,7 +616,7 @@ public class VideoView
     removePlayProgressMessage();
     localObject = this.videoMaskController;
     if (localObject != null) {
-      ((VideoMaskController)localObject).c();
+      ((VideoMaskController)localObject).i();
     }
     this.videoPlayController.b(this);
     SimpleEventBus.getInstance().unRegisterReceiver(this.eventReceiver);
@@ -626,8 +626,8 @@ public class VideoView
   public void onError()
   {
     hideLoading();
-    String str1 = ErrorCode.a(this.videoPlayController.b(), this.videoPlayController.c(), this.videoPlayController.a());
-    String str2 = HardCodeUtil.a(2131716161);
+    String str1 = ErrorCode.a(this.videoPlayController.g(), this.videoPlayController.h(), this.videoPlayController.f());
+    String str2 = HardCodeUtil.a(2131913610);
     String str3 = this.tag;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("errorMsg: ");
@@ -652,8 +652,8 @@ public class VideoView
     VideoMaskController localVideoMaskController = this.videoMaskController;
     if (localVideoMaskController != null)
     {
-      localVideoMaskController.a(this.videoPlayController.a());
-      this.videoMaskController.a();
+      localVideoMaskController.a(this.videoPlayController.i());
+      this.videoMaskController.g();
     }
     SimpleEventBus.getInstance().registerReceiver(this.eventReceiver);
   }
@@ -664,7 +664,7 @@ public class VideoView
     removePlayProgressMessage();
     VideoMaskController localVideoMaskController = this.videoMaskController;
     if (localVideoMaskController != null) {
-      localVideoMaskController.i();
+      localVideoMaskController.o();
     }
   }
   
@@ -679,7 +679,7 @@ public class VideoView
     }
     VideoMaskController localVideoMaskController = this.videoMaskController;
     if (localVideoMaskController != null) {
-      localVideoMaskController.h();
+      localVideoMaskController.n();
     }
     postPlayProgressMessage();
     hideVideoError();
@@ -718,13 +718,13 @@ public class VideoView
     this.mProgressHandler.removeCallbacksAndMessages(null);
     Object localObject = this.videoMaskController;
     if (localObject != null) {
-      ((VideoMaskController)localObject).b();
+      ((VideoMaskController)localObject).h();
     }
     removePlayProgressMessage();
     hideLoading();
     localObject = this.mVideoView;
     if (localObject != null) {
-      ((IVideoView)localObject).b();
+      ((IVideoView)localObject).c();
     }
     localObject = this.videoPlayListener;
     if (localObject != null) {
@@ -741,7 +741,7 @@ public class VideoView
   public void pause()
   {
     QLog.d(this.tag, 2, "pause");
-    this.videoPlayController.b();
+    this.videoPlayController.m();
   }
   
   public void postPlayProgressMessage()
@@ -772,14 +772,14 @@ public class VideoView
   {
     VideoMaskController localVideoMaskController = this.videoMaskController;
     if (localVideoMaskController != null) {
-      localVideoMaskController.d();
+      localVideoMaskController.j();
     }
   }
   
   @UiThread
   public void resume()
   {
-    this.videoPlayController.c();
+    this.videoPlayController.n();
   }
   
   public void run()
@@ -791,7 +791,7 @@ public class VideoView
       long l1;
       try
       {
-        l1 = this.videoPlayController.a().b();
+        l1 = this.videoPlayController.i().o();
       }
       catch (Exception localException)
       {
@@ -1003,7 +1003,7 @@ public class VideoView
     QLog.d(this.tag, 1, "showLoading");
     VideoMaskController localVideoMaskController = this.videoMaskController;
     if (localVideoMaskController != null) {
-      localVideoMaskController.l();
+      localVideoMaskController.u();
     }
     this.mPlayIconImageView.setVisibility(4);
   }
@@ -1043,7 +1043,7 @@ public class VideoView
     localStringBuilder.append(this.mAction.get());
     QLog.d(str, 2, localStringBuilder.toString());
     setManualPause(false);
-    this.videoPlayController.a();
+    this.videoPlayController.l();
   }
   
   public void updateProgress(int paramInt)
@@ -1056,22 +1056,22 @@ public class VideoView
   
   public void updateSeekBarImmediately()
   {
-    IPlayer localIPlayer = this.videoPlayController.a();
+    IPlayer localIPlayer = this.videoPlayController.i();
     if ((localIPlayer != null) && (this.videoMaskController != null))
     {
-      long l1 = localIPlayer.b();
-      long l2 = localIPlayer.a();
+      long l1 = localIPlayer.o();
+      long l2 = localIPlayer.n();
       double d = (float)l1 * 100.0F / (float)l2;
       Double.isNaN(d);
       int i = Math.min((int)(d + 0.5D) + 1, 100);
-      this.videoMaskController.a().setProgress(i);
-      this.videoPlayController.h();
+      this.videoMaskController.b().setProgress(i);
+      this.videoPlayController.t();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoView
  * JD-Core Version:    0.7.0.1
  */

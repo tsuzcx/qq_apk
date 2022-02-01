@@ -7,6 +7,7 @@ import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateBaseItem;
+import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import org.json.JSONException;
@@ -22,10 +23,19 @@ public class NetSearchTemplateMiniAppItem
   public NetSearchTemplateMiniAppItem(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_g_of_type_Boolean = false;
+    this.ag = false;
   }
   
-  public void a(String paramString)
+  public void e(int paramInt)
+  {
+    MiniProgramSearchResultModel localMiniProgramSearchResultModel = this.a;
+    if (localMiniProgramSearchResultModel != null) {
+      localMiniProgramSearchResultModel.e(paramInt);
+    }
+    super.e(paramInt);
+  }
+  
+  public void o_(String paramString)
   {
     try
     {
@@ -35,6 +45,7 @@ public class NetSearchTemplateMiniAppItem
       str2 = localJSONObject.optString("appIcon");
       str3 = localJSONObject.optString("appid");
       i = localJSONObject.optInt("showMask", 0);
+      j = localJSONObject.optInt("miniAppType", 0);
       StringBuilder localStringBuilder = null;
       paramString = localStringBuilder;
       if (localJSONObject.has("friendExtra"))
@@ -50,7 +61,7 @@ public class NetSearchTemplateMiniAppItem
         }
       }
       if (TextUtils.isEmpty(paramString)) {
-        break label277;
+        break label327;
       }
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
@@ -67,30 +78,46 @@ public class NetSearchTemplateMiniAppItem
         String str2;
         String str3;
         int i;
+        int j;
         continue;
-        label277:
+        label327:
         paramString = (String)localObject;
       }
     }
-    paramString = new MiniAppLocalSearchEntity(str3, str1, str2, paramString, i);
+    paramString = new MiniAppLocalSearchEntity(str3, str1, str2, paramString, i, j);
     localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.a = new MiniProgramSearchResultModel((QQAppInterface)localObject, this.c, paramString, this.jdField_g_of_type_JavaLangString);
-    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) && (str1.equalsIgnoreCase(this.jdField_g_of_type_JavaLangString))) {
+    this.a = new MiniProgramSearchResultModel((QQAppInterface)localObject, this.p, paramString, this.m);
+    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(this.m)) && (str1.equalsIgnoreCase(this.m))) {
       this.b = true;
     } else {
       this.b = false;
     }
-    if (localObject != null)
-    {
+    if (localObject != null) {
       ((IMiniAppService)QRoute.api(IMiniAppService.class)).updateDataDbFromNetResultInLocalSearchManager(paramString);
-      return;
-      QLog.e("NetSearchTemplateMiniAppItem", 1, "parseLayoutExtensions, exception.");
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseLayoutExtensions, content=");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("NetSearchTemplateMiniAppItem", 1, ((StringBuilder)localObject).toString());
+    return;
+    QLog.e("NetSearchTemplateMiniAppItem", 1, "parseLayoutExtensions, exception.");
+  }
+  
+  public void p()
+  {
+    super.p();
+    String str;
+    if (this.b) {
+      str = "0X8009D32";
+    } else {
+      str = "0X8009D44";
+    }
+    UniteSearchReportController.a(null, 0, this.p, str, 0, 0, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.NetSearchTemplateMiniAppItem
  * JD-Core Version:    0.7.0.1
  */

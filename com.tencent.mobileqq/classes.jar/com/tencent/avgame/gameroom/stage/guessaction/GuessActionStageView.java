@@ -28,26 +28,26 @@ public class GuessActionStageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void a()
+  protected void b()
   {
-    LayoutInflater.from(getContext()).inflate(2131558666, this, true);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365268));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379056));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379039));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379550));
-    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379551));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379041));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378169));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370232);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367771);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new GuessActionStageView.1(this));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, UiUtils.b());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().width = UiUtils.a();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = new GuessActionStagePresenter(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    LayoutInflater.from(getContext()).inflate(2131624283, this, true);
+    this.g = ((ImageView)findViewById(2131431441));
+    this.f = ((LinearLayout)findViewById(2131447779));
+    this.c = ((TextView)findViewById(2131447762));
+    this.i = ((AVGameText)findViewById(2131448302));
+    this.j = ((AVGameText)findViewById(2131448303));
+    this.d = ((TextView)findViewById(2131447764));
+    this.e = ((ImageView)findViewById(2131446682));
+    this.k = findViewById(2131437420);
+    this.h = findViewById(2131434340);
+    this.e.setOnClickListener(new GuessActionStageView.1(this));
+    this.d.setTextSize(0, UiUtils.b());
+    this.f.getLayoutParams().width = UiUtils.a();
+    this.a = new GuessActionStagePresenter(this);
+    this.g.setVisibility(4);
+    this.f.setVisibility(4);
+    this.e.setVisibility(4);
+    this.h.setVisibility(8);
   }
 }
 

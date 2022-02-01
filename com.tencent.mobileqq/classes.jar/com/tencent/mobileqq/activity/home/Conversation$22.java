@@ -10,12 +10,12 @@ class Conversation$22
   
   public void run()
   {
-    ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).reportRecentList(this.this$0.a());
+    ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).reportRecentList(this.this$0.s());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.22
  * JD-Core Version:    0.7.0.1
  */

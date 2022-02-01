@@ -15,163 +15,155 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class AVGameMediaRenderHelper
 {
+  private long A = 0L;
+  private long B = 0L;
+  private long C = 0L;
+  private long D = 0L;
+  private long E = 0L;
   protected int a;
-  private long jdField_a_of_type_Long = 0L;
-  protected Point a;
-  protected Rect a;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  protected GreetingYUVProgram a;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  protected Boolean a;
-  private ConcurrentHashMap<Long, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  protected volatile boolean a;
-  protected byte[] a;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
-  private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer = new ByteBuffer[3];
   protected int b;
-  private long jdField_b_of_type_Long = 0L;
-  protected volatile boolean b;
-  protected byte[] b;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
   protected int c;
-  private long c;
-  protected boolean c;
-  protected byte[] c;
   protected int d;
-  private long jdField_d_of_type_Long = 0L;
-  private boolean jdField_d_of_type_Boolean = true;
-  private int jdField_e_of_type_Int = -1;
-  private long jdField_e_of_type_Long = 0L;
-  private long f = 0L;
-  private long g = 0L;
-  private long h = 0L;
-  
-  public AVGameMediaRenderHelper()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_c_of_type_Long = 0L;
-  }
-  
-  private Point a()
-  {
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-    int i;
-    int j;
-    if (localRect != null)
-    {
-      i = localRect.right;
-      i = this.jdField_a_of_type_AndroidGraphicsRect.left;
-      j = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-      int k = this.jdField_a_of_type_AndroidGraphicsRect.top;
-      i = this.jdField_a_of_type_AndroidGraphicsRect.left;
-      j = this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidGraphicsRect.top - (j - k);
-    }
-    else
-    {
-      i = (this.jdField_a_of_type_Int - 640) / 2;
-      j = this.jdField_b_of_type_Int - 480 - 40;
-    }
-    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(i, j);
-    return this.jdField_a_of_type_AndroidGraphicsPoint;
-  }
+  protected Point e;
+  protected Boolean f;
+  protected volatile boolean g = false;
+  protected volatile boolean h = false;
+  protected byte[] i;
+  protected byte[] j;
+  protected byte[] k;
+  protected boolean l = false;
+  protected Rect m;
+  protected GreetingYUVProgram n;
+  private ByteBuffer[] o = new ByteBuffer[3];
+  private int[] p = new int[3];
+  private TextureRender q;
+  private float[] r = new float[16];
+  private float[] s = new float[16];
+  private SurfaceTexture t;
+  private int u = -1;
+  private ConcurrentHashMap<Long, Long> v = new ConcurrentHashMap();
+  private long w = 0L;
+  private long x = 0L;
+  private boolean y = true;
+  private long z = 0L;
   
   private void a(long paramLong) {}
   
   private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    byte[] arrayOfByte = this.i;
     if (arrayOfByte != null)
     {
       if (arrayOfByte.length == 1) {
         return;
       }
-      if ((this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0] == null) || (this.jdField_a_of_type_ArrayOfInt[0] != paramArrayOfByte1.length)) {
+      if ((this.o[0] == null) || (this.p[0] != paramArrayOfByte1.length)) {
         try
         {
-          this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0] = ByteBuffer.allocateDirect(paramArrayOfByte1.length);
-          this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0].order(ByteOrder.nativeOrder());
+          this.o[0] = ByteBuffer.allocateDirect(paramArrayOfByte1.length);
+          this.o[0].order(ByteOrder.nativeOrder());
         }
         catch (Throwable localThrowable)
         {
           QLog.e("AVGameMediaRenderHelper", 1, "textureYUV fail.", localThrowable);
         }
       }
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0].clear();
-      this.jdField_a_of_type_ArrayOfInt[0] = paramArrayOfByte1.length;
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0].put(paramArrayOfByte1);
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0].position(0);
-      if ((this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1] == null) || (this.jdField_a_of_type_ArrayOfInt[1] != paramArrayOfByte2.length)) {
+      this.o[0].clear();
+      this.p[0] = paramArrayOfByte1.length;
+      this.o[0].put(paramArrayOfByte1);
+      this.o[0].position(0);
+      if ((this.o[1] == null) || (this.p[1] != paramArrayOfByte2.length)) {
         try
         {
-          this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1] = ByteBuffer.allocateDirect(paramArrayOfByte2.length);
-          this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1].order(ByteOrder.nativeOrder());
+          this.o[1] = ByteBuffer.allocateDirect(paramArrayOfByte2.length);
+          this.o[1].order(ByteOrder.nativeOrder());
         }
         catch (Throwable paramArrayOfByte1)
         {
           QLog.e("AVGameMediaRenderHelper", 1, "textureYUV fail.", paramArrayOfByte1);
         }
       }
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1].clear();
-      this.jdField_a_of_type_ArrayOfInt[1] = paramArrayOfByte2.length;
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1].put(paramArrayOfByte2);
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1].position(0);
-      if ((this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2] == null) || (this.jdField_a_of_type_ArrayOfInt[2] != paramArrayOfByte3.length)) {
+      this.o[1].clear();
+      this.p[1] = paramArrayOfByte2.length;
+      this.o[1].put(paramArrayOfByte2);
+      this.o[1].position(0);
+      if ((this.o[2] == null) || (this.p[2] != paramArrayOfByte3.length)) {
         try
         {
-          this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2] = ByteBuffer.allocateDirect(paramArrayOfByte3.length);
-          this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2].order(ByteOrder.nativeOrder());
+          this.o[2] = ByteBuffer.allocateDirect(paramArrayOfByte3.length);
+          this.o[2].order(ByteOrder.nativeOrder());
         }
         catch (Throwable paramArrayOfByte1)
         {
           QLog.e("AVGameMediaRenderHelper", 1, "textureYUV fail.", paramArrayOfByte1);
         }
       }
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2].clear();
-      this.jdField_a_of_type_ArrayOfInt[2] = paramArrayOfByte3.length;
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2].put(paramArrayOfByte3);
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2].position(0);
+      this.o[2].clear();
+      this.p[2] = paramArrayOfByte3.length;
+      this.o[2].put(paramArrayOfByte3);
+      this.o[2].position(0);
     }
   }
   
-  private void f()
+  private Point f()
   {
-    ??? = this.jdField_a_of_type_ArrayOfByte;
+    Rect localRect = this.m;
+    int i1;
+    int i2;
+    if (localRect != null)
+    {
+      i1 = localRect.right;
+      i1 = this.m.left;
+      i2 = this.m.bottom;
+      int i3 = this.m.top;
+      i1 = this.m.left;
+      i2 = this.b - this.m.top - (i2 - i3);
+    }
+    else
+    {
+      i1 = (this.a - 640) / 2;
+      i2 = this.b - 480 - 40;
+    }
+    this.e = new Point(i1, i2);
+    return this.e;
+  }
+  
+  private void g()
+  {
+    ??? = this.i;
     if (??? != null)
     {
       if (???.length == 1) {
         return;
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqArARRenderModelGreetingYUVProgram.a()) {
-        this.jdField_a_of_type_ComTencentMobileqqArARRenderModelGreetingYUVProgram.a();
+      if (!this.n.a()) {
+        this.n.b();
       }
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      synchronized (this.i)
       {
-        if (this.jdField_a_of_type_Boolean)
+        if (this.g)
         {
-          a(this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.jdField_c_of_type_ArrayOfByte);
-          this.jdField_a_of_type_ComTencentMobileqqArARRenderModelGreetingYUVProgram.a(this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0], this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1], this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2], this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-          this.jdField_a_of_type_Boolean = false;
+          a(this.i, this.j, this.k);
+          this.n.a(this.o[0], this.o[1], this.o[2], this.c, this.d);
+          this.g = false;
         }
         return;
       }
     }
   }
   
-  private void g()
+  private void h()
   {
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0] != null) && (this.jdField_c_of_type_Int != 0))
+    if ((this.l) && (this.h) && (this.o[0] != null) && (this.c != 0))
     {
-      Object localObject = this.jdField_a_of_type_ArrayOfByte;
+      Object localObject = this.i;
       if (localObject != null)
       {
         if (localObject.length == 1) {
           return;
         }
         QLog.d("AVGameMediaRenderHelper", 1, "loadVerticalBuffer");
-        this.jdField_c_of_type_Boolean = false;
+        this.l = false;
         localObject = new float[8];
         Object tmp70_68 = localObject;
         tmp70_68[0] = -1.0F;
@@ -190,19 +182,19 @@ public class AVGameMediaRenderHelper
         Object tmp102_97 = tmp97_92;
         tmp102_97[7] = -1.0F;
         tmp102_97;
-        Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+        Rect localRect = this.m;
         if (localRect != null)
         {
-          int i = localRect.right;
-          int j = this.jdField_a_of_type_AndroidGraphicsRect.left;
-          int k = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-          int m = this.jdField_a_of_type_AndroidGraphicsRect.top;
-          int n = this.jdField_c_of_type_Int;
-          int i1 = this.jdField_d_of_type_Int;
-          float f1 = i - j;
-          float f2 = k - m;
+          int i1 = localRect.right;
+          int i2 = this.m.left;
+          int i3 = this.m.bottom;
+          int i4 = this.m.top;
+          int i5 = this.c;
+          int i6 = this.d;
+          float f1 = i1 - i2;
+          float f2 = i3 - i4;
           float f3 = f1 / f2;
-          float f4 = n / i1;
+          float f4 = i5 / i6;
           if (f3 < f4)
           {
             f1 = f4 * f1 / f2;
@@ -220,7 +212,7 @@ public class AVGameMediaRenderHelper
             localObject[7] *= f1;
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqArARRenderModelGreetingYUVProgram.a((float[])localObject);
+        this.n.a((float[])localObject);
       }
     }
   }
@@ -228,39 +220,39 @@ public class AVGameMediaRenderHelper
   public void a()
   {
     QLog.d("AVGameMediaRenderHelper", 1, "onGLSurfaceDestroy");
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelGreetingYUVProgram.c();
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelGreetingYUVProgram = null;
-    this.jdField_a_of_type_ArrayOfByte = new byte[1];
-    this.jdField_b_of_type_ArrayOfByte = new byte[1];
-    this.jdField_c_of_type_ArrayOfByte = new byte[1];
+    this.q.release();
+    this.n.d();
+    this.n = null;
+    this.i = new byte[1];
+    this.j = new byte[1];
+    this.k = new byte[1];
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     QLog.d("AVGameMediaRenderHelper", 1, "onGLSurfaceCreate");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelGreetingYUVProgram = new GreetingYUVProgram(0);
-    this.jdField_a_of_type_ArrayOfByte = new byte[1];
-    this.jdField_b_of_type_ArrayOfByte = new byte[1];
-    this.jdField_c_of_type_ArrayOfByte = new byte[1];
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-    Matrix.scaleM(this.jdField_b_of_type_ArrayOfFloat, 0, 1.0F, -1.0F, 1.0F);
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.n = new GreetingYUVProgram(0);
+    this.i = new byte[1];
+    this.j = new byte[1];
+    this.k = new byte[1];
+    this.q = new TextureRender();
+    Matrix.setIdentityM(this.r, 0);
+    Matrix.setIdentityM(this.s, 0);
+    Matrix.scaleM(this.s, 0, 1.0F, -1.0F, 1.0F);
   }
   
   protected void a(Rect paramRect, int paramInt1, int paramInt2)
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.h)
     {
-      Boolean localBoolean = this.jdField_a_of_type_JavaLangBoolean;
+      Boolean localBoolean = this.f;
       if (localBoolean != null)
       {
-        this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-        this.jdField_a_of_type_Int = paramInt1;
-        this.jdField_b_of_type_Int = paramInt2;
+        this.m = paramRect;
+        this.a = paramInt1;
+        this.b = paramInt2;
         if (localBoolean.booleanValue()) {
           c();
         } else {
@@ -279,15 +271,15 @@ public class AVGameMediaRenderHelper
     ((StringBuilder)???).append("notifySelfMediaRender enable:=");
     ((StringBuilder)???).append(paramBoolean);
     QLog.d("AVGameMediaRenderHelper", 1, ((StringBuilder)???).toString());
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    ??? = this.jdField_a_of_type_ArrayOfByte;
-    if ((??? != null) && (???.length != 1) && (!this.jdField_b_of_type_Boolean)) {
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
+    this.h = paramBoolean;
+    ??? = this.i;
+    if ((??? != null) && (???.length != 1) && (!this.h)) {
+      synchronized (this.i)
       {
-        this.jdField_a_of_type_ArrayOfByte = new byte[1];
-        this.jdField_b_of_type_ArrayOfByte = new byte[1];
-        this.jdField_c_of_type_ArrayOfByte = new byte[1];
-        this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = new ByteBuffer[3];
+        this.i = new byte[1];
+        this.j = new byte[1];
+        this.k = new byte[1];
+        this.o = new ByteBuffer[3];
         return;
       }
     }
@@ -295,53 +287,53 @@ public class AVGameMediaRenderHelper
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong)
   {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ArrayOfByte != null))
+    if ((this.h) && (this.i != null))
     {
       a(paramLong);
-      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-      int i = this.jdField_a_of_type_ArrayOfByte.length;
-      int j = paramInt1 * paramInt2;
-      if (i != j)
+      this.f = Boolean.valueOf(true);
+      int i1 = this.i.length;
+      int i2 = paramInt1 * paramInt2;
+      if (i1 != i2)
       {
-        this.jdField_a_of_type_ArrayOfByte = new byte[j];
-        i = j / 4;
-        this.jdField_b_of_type_ArrayOfByte = new byte[i];
-        this.jdField_c_of_type_ArrayOfByte = new byte[i];
-        this.jdField_c_of_type_Boolean = true;
+        this.i = new byte[i2];
+        i1 = i2 / 4;
+        this.j = new byte[i1];
+        this.k = new byte[i1];
+        this.l = true;
         QLog.d("AVGameMediaRenderHelper", 1, "onPushVideoMsg mRenderParamsChang;=true");
       }
-      this.jdField_c_of_type_Int = paramInt1;
-      this.jdField_d_of_type_Int = paramInt2;
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      this.c = paramInt1;
+      this.d = paramInt2;
+      synchronized (this.i)
       {
-        this.jdField_a_of_type_Boolean = true;
-        System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
-        System.arraycopy(paramArrayOfByte, this.jdField_a_of_type_ArrayOfByte.length, this.jdField_b_of_type_ArrayOfByte, 0, this.jdField_b_of_type_ArrayOfByte.length);
-        System.arraycopy(paramArrayOfByte, this.jdField_a_of_type_ArrayOfByte.length + this.jdField_b_of_type_ArrayOfByte.length, this.jdField_c_of_type_ArrayOfByte, 0, this.jdField_c_of_type_ArrayOfByte.length);
+        this.g = true;
+        System.arraycopy(paramArrayOfByte, 0, this.i, 0, this.i.length);
+        System.arraycopy(paramArrayOfByte, this.i.length, this.j, 0, this.j.length);
+        System.arraycopy(paramArrayOfByte, this.i.length + this.j.length, this.k, 0, this.k.length);
         e();
         return;
       }
     }
     paramArrayOfByte = new StringBuilder();
     paramArrayOfByte.append("onPushVideoMsg fail mEnablePlayYUV ");
-    paramArrayOfByte.append(this.jdField_b_of_type_Boolean);
+    paramArrayOfByte.append(this.h);
     QLog.d("AVGameMediaRenderHelper", 1, paramArrayOfByte.toString());
   }
   
   protected void b()
   {
-    SurfaceTexture localSurfaceTexture = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-    if ((localSurfaceTexture != null) && (this.jdField_e_of_type_Int != -1))
+    SurfaceTexture localSurfaceTexture = this.t;
+    if ((localSurfaceTexture != null) && (this.u != -1))
     {
-      if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
+      if (this.m == null) {
         return;
       }
       try
       {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-        GLES20.glViewport(a().x, a().x, this.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top);
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_e_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
-        GLES20.glViewport(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.t.getTransformMatrix(this.r);
+        GLES20.glViewport(f().x, f().x, this.m.right - this.m.left, this.m.bottom - this.m.top);
+        this.q.drawTexture(36197, this.u, this.r, this.s);
+        GLES20.glViewport(0, 0, this.a, this.b);
         return;
       }
       finally {}
@@ -350,18 +342,18 @@ public class AVGameMediaRenderHelper
   
   protected void c()
   {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaLangBoolean != null) && (this.jdField_c_of_type_Int != 0) && (this.jdField_a_of_type_ArrayOfByte.length != 1) && (this.jdField_a_of_type_AndroidGraphicsRect != null))
+    if ((this.h) && (this.f != null) && (this.c != 0) && (this.i.length != 1) && (this.m != null))
     {
-      f();
       g();
-      if (this.jdField_a_of_type_ArrayOfByte.length == 1) {
+      h();
+      if (this.i.length == 1) {
         return;
       }
-      GLES20.glViewport(a().x, a().y, this.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top);
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelGreetingYUVProgram.b();
-      GLES20.glViewport(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      if (this.jdField_d_of_type_Boolean) {
-        this.jdField_d_of_type_Boolean = false;
+      GLES20.glViewport(f().x, f().y, this.m.right - this.m.left, this.m.bottom - this.m.top);
+      this.n.c();
+      GLES20.glViewport(0, 0, this.a, this.b);
+      if (this.y) {
+        this.y = false;
       }
       return;
     }
@@ -370,20 +362,20 @@ public class AVGameMediaRenderHelper
   
   public void d()
   {
-    this.jdField_c_of_type_Long += 1L;
-    if (this.jdField_d_of_type_Long == 0L) {
-      this.jdField_d_of_type_Long = SystemClock.elapsedRealtime();
+    this.z += 1L;
+    if (this.A == 0L) {
+      this.A = SystemClock.elapsedRealtime();
     }
-    if (SystemClock.elapsedRealtime() - this.jdField_d_of_type_Long >= 1000L)
+    if (SystemClock.elapsedRealtime() - this.A >= 1000L)
     {
-      this.jdField_e_of_type_Long = this.jdField_c_of_type_Long;
-      this.jdField_c_of_type_Long = 0L;
-      this.jdField_d_of_type_Long = SystemClock.elapsedRealtime();
+      this.B = this.z;
+      this.z = 0L;
+      this.A = SystemClock.elapsedRealtime();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("updateFPSRate mFrameRate:=");
-        localStringBuilder.append(this.jdField_e_of_type_Long);
+        localStringBuilder.append(this.B);
         QLog.d("AVGameMediaRenderHelper", 1, localStringBuilder.toString());
       }
     }
@@ -391,20 +383,20 @@ public class AVGameMediaRenderHelper
   
   public void e()
   {
-    this.f += 1L;
-    if (this.g == 0L) {
-      this.g = SystemClock.elapsedRealtime();
+    this.C += 1L;
+    if (this.D == 0L) {
+      this.D = SystemClock.elapsedRealtime();
     }
-    if (SystemClock.elapsedRealtime() - this.g >= 1000L)
+    if (SystemClock.elapsedRealtime() - this.D >= 1000L)
     {
-      this.h = this.f;
-      this.f = 0L;
-      this.g = SystemClock.elapsedRealtime();
+      this.E = this.C;
+      this.C = 0L;
+      this.D = SystemClock.elapsedRealtime();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("updateFPSRate updateDecodeRate:=");
-        localStringBuilder.append(this.jdField_e_of_type_Long);
+        localStringBuilder.append(this.B);
         QLog.d("AVGameMediaRenderHelper", 1, localStringBuilder.toString());
       }
     }

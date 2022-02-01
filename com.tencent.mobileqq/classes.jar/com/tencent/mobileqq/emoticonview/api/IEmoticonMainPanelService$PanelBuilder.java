@@ -39,6 +39,8 @@ public abstract interface IEmoticonMainPanelService$PanelBuilder
   
   public abstract PanelBuilder setHideEmoSettingBtn();
   
+  public abstract PanelBuilder setIsGuildLiveChannel(boolean paramBoolean);
+  
   public abstract PanelBuilder setIsOnlySysEmotion(boolean paramBoolean);
   
   public abstract PanelBuilder setKanDianBiu(boolean paramBoolean);
@@ -50,10 +52,12 @@ public abstract interface IEmoticonMainPanelService$PanelBuilder
   public abstract PanelBuilder setSysEmotionOrder(int[] paramArrayOfInt);
   
   public abstract PanelBuilder setToastOffset(int paramInt);
+  
+  public abstract PanelBuilder showDescribeInPreview(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.api.IEmoticonMainPanelService.PanelBuilder
  * JD-Core Version:    0.7.0.1
  */

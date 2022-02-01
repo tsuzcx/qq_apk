@@ -21,7 +21,7 @@ final class VipUtils$4
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       if (paramURLDrawable.getCurrDrawable() != null) {
         paramURLDrawable.getCurrDrawable().setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
@@ -30,12 +30,12 @@ final class VipUtils$4
     else if (paramURLDrawable.getCurrDrawable() != null) {
       paramURLDrawable.getCurrDrawable().setColorFilter(null);
     }
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, VipUtils.a(AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), paramURLDrawable));
+    this.b.setCompoundDrawables(null, VipUtils.a(AIOUtils.b(15.0F, this.c.getResources()), paramURLDrawable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.4
  * JD-Core Version:    0.7.0.1
  */

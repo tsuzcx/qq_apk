@@ -22,20 +22,20 @@ class AudioRecordPlayer$4
     if (paramInt != 0)
     {
       AudioRecordPlayer.a(this.a).i("AudioRecordPlayer", "onEventProcess: change roles fail.", new Object[0]);
-      if (AudioRecordPlayer.a(this.a) != null) {
-        AudioRecordPlayer.a(this.a).a(paramInt, "chang roles to link mic audio fail.");
+      if (AudioRecordPlayer.d(this.a) != null) {
+        AudioRecordPlayer.d(this.a).a(paramInt, "chang roles to link mic audio fail.");
       }
       return;
     }
-    AudioRecordPlayer.a(this.a).d = 3;
-    if (AudioRecordPlayer.a(this.a)) {
+    AudioRecordPlayer.c(this.a).h = 3;
+    if (AudioRecordPlayer.f(this.a)) {
       this.a.a(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.AudioRecordPlayer.4
  * JD-Core Version:    0.7.0.1
  */

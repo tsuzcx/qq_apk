@@ -11,52 +11,52 @@ import com.tencent.qphone.base.util.QLog;
 class ReadInJoyGlobalReporter$ScreenBroadcastReceiver
   extends BroadcastReceiver
 {
-  private String jdField_a_of_type_JavaLangString = null;
+  private String b = null;
   
   private ReadInJoyGlobalReporter$ScreenBroadcastReceiver(ReadInJoyGlobalReporter paramReadInJoyGlobalReporter) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString))
+    this.b = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(this.b))
     {
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("ScreenBroadcastReceiver ACTION_SCREEN_ON appstatus=");
-        paramContext.append(ReadInJoyGlobalReporter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter));
+        paramContext.append(ReadInJoyGlobalReporter.a(this.a));
         QLog.d("ReadInJoyGlobalReporter", 2, paramContext.toString());
       }
     }
-    else if ("android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString))
+    else if ("android.intent.action.SCREEN_OFF".equals(this.b))
     {
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("ScreenBroadcastReceiver ACTION_SCREEN_OFF appstatus = ");
-        paramContext.append(ReadInJoyGlobalReporter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter));
+        paramContext.append(ReadInJoyGlobalReporter.a(this.a));
         QLog.d("ReadInJoyGlobalReporter", 2, paramContext.toString());
       }
-      if (ReadInJoyGlobalReporter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter) == 2)
+      if (ReadInJoyGlobalReporter.a(this.a) == 2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter.a();
-        this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter.f();
+        this.a.a();
+        this.a.k();
       }
     }
-    else if ("android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString))
+    else if ("android.intent.action.USER_PRESENT".equals(this.b))
     {
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("ScreenBroadcastReceiver ACTION_USER_PRESENT app status=");
-        paramContext.append(ReadInJoyGlobalReporter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter));
+        paramContext.append(ReadInJoyGlobalReporter.a(this.a));
         QLog.d("ReadInJoyGlobalReporter", 2, paramContext.toString());
       }
-      if ((ReadInJoyGlobalReporter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter) == 2) && ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)))
+      if ((ReadInJoyGlobalReporter.a(this.a) == 2) && ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)))
       {
         paramContext = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
         if (paramContext != null) {
-          this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter.a(paramContext, NetConnInfoCenter.getServerTimeMillis());
+          this.a.a(paramContext, NetConnInfoCenter.getServerTimeMillis());
         }
       }
     }
@@ -64,7 +64,7 @@ class ReadInJoyGlobalReporter$ScreenBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.ReadInJoyGlobalReporter.ScreenBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

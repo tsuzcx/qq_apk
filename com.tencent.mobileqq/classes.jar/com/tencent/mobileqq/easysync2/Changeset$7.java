@@ -10,7 +10,7 @@ final class Changeset$7
   
   public String a(Matcher paramMatcher)
   {
-    int i = Changeset.a(paramMatcher.group(1));
+    int i = Changeset.b(paramMatcher.group(1));
     paramMatcher = this.a.a(i);
     if (paramMatcher == null) {
       return "";
@@ -24,7 +24,7 @@ final class Changeset$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Changeset.7
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public final class AvGameNotify$NotifyMatchV2UserCreateRoom
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     trpc.qq_vgame.nofity.AvGameNotify.NotifyMatchV2UserCreateRoom
  * JD-Core Version:    0.7.0.1
  */

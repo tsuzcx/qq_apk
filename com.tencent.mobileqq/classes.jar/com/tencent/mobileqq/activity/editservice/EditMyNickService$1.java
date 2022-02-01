@@ -30,26 +30,26 @@ class EditMyNickService$1
       if (!EditMyNickService.a(this.a, paramView, (String)localObject)) {
         return;
       }
-      if (((String)localObject).equals(EditMyNickService.a(this.a)))
+      if (((String)localObject).equals(EditMyNickService.b(this.a)))
       {
         EditMyNickService.a(this.a).onFinish();
         return;
       }
-      if (!NetworkUtil.isNetSupport(EditMyNickService.a(this.a).getApplication().getApplicationContext()))
+      if (!NetworkUtil.isNetSupport(EditMyNickService.c(this.a).getApplication().getApplicationContext()))
       {
-        QQToast.a(EditMyNickService.a(this.a), 1, 2131694424, 0).a();
+        QQToast.makeText(EditMyNickService.d(this.a), 1, 2131892104, 0).show();
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("EditMyNickService", 2, String.format("edit self nick, uin: %s, result: %s", new Object[] { EditMyNickService.b(this.a), localObject }));
+        QLog.d("EditMyNickService", 2, String.format("edit self nick, uin: %s, result: %s", new Object[] { EditMyNickService.e(this.a), localObject }));
       }
-      if ((EditMyNickService.b(this.a) != null) && (!EditMyNickService.b(this.a).equals(EditMyNickService.a(this.a).getCurrentAccountUin()))) {
+      if ((EditMyNickService.e(this.a) != null) && (!EditMyNickService.e(this.a).equals(EditMyNickService.c(this.a).getCurrentAccountUin()))) {
         return;
       }
       EditMyNickService.a(this.a).loadingProgress(true);
       paramView = new Bundle();
       paramView.putString("nick", (String)localObject);
-      ((IProfileProtocolService)EditMyNickService.a(this.a).getRuntimeService(IProfileProtocolService.class, "all")).setProfileDetail(paramView);
+      ((IProfileProtocolService)EditMyNickService.c(this.a).getRuntimeService(IProfileProtocolService.class, "all")).setProfileDetail(paramView);
       EditMyNickService.a(this.a, Boolean.valueOf(true));
       return;
     }
@@ -58,7 +58,7 @@ class EditMyNickService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditMyNickService.1
  * JD-Core Version:    0.7.0.1
  */

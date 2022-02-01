@@ -2,6 +2,7 @@ package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetDropdownAppListRsp;
+import NS_MINI_INTERFACE.INTERFACE.StOperationApp;
 import NS_MINI_INTERFACE.INTERFACE.StSearchModuleInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -56,7 +57,7 @@ class DesktopDataManager$3
         DesktopDataManager.access$300(this.this$0).clear();
         this.this$0.clearRecommendExposureList();
         DesktopDataManager.access$400(paramJSONObject.realRecommdInternal.get());
-        this.this$0.updateData(paramJSONObject.fixApps.get(), paramJSONObject.modules.get(), (INTERFACE.StSearchModuleInfo)paramJSONObject.searchInfo.get());
+        this.this$0.updateData(paramJSONObject.fixApps.get(), paramJSONObject.modules.get(), (INTERFACE.StSearchModuleInfo)paramJSONObject.searchInfo.get(), (INTERFACE.StOperationApp)paramJSONObject.operationApp.get());
         DesktopDataManager.access$502(this.this$0, (COMM.StCommonExt)paramJSONObject.extInfo.get());
         MiniAppUtils.saveGdtCookie(DesktopDataManager.access$500(this.this$0));
         DesktopDataManager.access$602(this.this$0, paramJSONObject.freshInternal.get());
@@ -99,7 +100,7 @@ class DesktopDataManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.3
  * JD-Core Version:    0.7.0.1
  */

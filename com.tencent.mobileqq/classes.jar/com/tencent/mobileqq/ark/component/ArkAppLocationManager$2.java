@@ -11,18 +11,18 @@ class ArkAppLocationManager$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, paramArrayOfString, paramArrayOfInt);
-    this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager.denied();
+    DialogUtil.a(this.a, paramArrayOfString, paramArrayOfInt);
+    this.b.denied();
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppLocationManager.grant();
+    this.b.grant();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.component.ArkAppLocationManager.2
  * JD-Core Version:    0.7.0.1
  */

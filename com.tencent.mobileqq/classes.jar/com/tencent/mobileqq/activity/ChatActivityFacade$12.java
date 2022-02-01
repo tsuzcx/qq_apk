@@ -13,9 +13,9 @@ final class ChatActivityFacade$12
   {
     try
     {
-      String str = this.jdField_a_of_type_JavaLangString;
-      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a;
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      String str = this.a;
+      int i = this.b.a;
+      QQAppInterface localQQAppInterface = this.c;
       StatisticConstants.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
       return;
     }
@@ -24,7 +24,7 @@ final class ChatActivityFacade$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.12
  * JD-Core Version:    0.7.0.1
  */

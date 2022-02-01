@@ -32,52 +32,49 @@ import mqq.app.AppRuntime;
 public class AddFrdHelper
   implements View.OnClickListener, IFriendListObserverForAddFrdProxy
 {
-  public int a;
-  public TroopMemberListActivity.ATroopMember a;
   public TroopMemberListActivity a;
-  private final FriendObserver jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver = new AddFrdHelper.2(this);
-  private final IFriendObserver jdField_a_of_type_ComTencentMobileqqFriendObserverIFriendObserver = (IFriendObserver)((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).getFriendListObserverForAddFrd(this);
-  public IAddFrdStateMngProxy a;
-  private AddFrdHelper.TroopMemberListConfig jdField_a_of_type_ComTencentMobileqqTroopMemberlistAddFrdHelper$TroopMemberListConfig = null;
-  public final ArrayList<String> a;
-  public boolean a;
+  public final ArrayList<String> b;
+  public boolean c = false;
+  public int d = 0;
+  public TroopMemberListActivity.ATroopMember e = null;
+  public IAddFrdStateMngProxy f;
+  private AddFrdHelper.TroopMemberListConfig g = null;
+  private final FriendObserver h = new AddFrdHelper.2(this);
+  private final IFriendObserver i = (IFriendObserver)((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).getFriendListObserverForAddFrd(this);
   
   public AddFrdHelper(TroopMemberListActivity paramTroopMemberListActivity)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity = paramTroopMemberListActivity;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIAddFrdStateMngProxy = ((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).getAddFrdStateMngProxy(paramTroopMemberListActivity.app);
-    paramTroopMemberListActivity.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverIFriendObserver);
-    paramTroopMemberListActivity.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver);
+    this.a = paramTroopMemberListActivity;
+    this.b = new ArrayList(5);
+    this.f = ((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).getAddFrdStateMngProxy(paramTroopMemberListActivity.app);
+    paramTroopMemberListActivity.app.addObserver(this.i);
+    paramTroopMemberListActivity.app.addObserver(this.h);
   }
   
   public void a()
   {
-    TroopMemberListActivity.ATroopMember localATroopMember = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember;
+    TroopMemberListActivity.ATroopMember localATroopMember = this.e;
     if (localATroopMember != null)
     {
       a(localATroopMember);
-      a(1, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember.a);
+      a(1, this.e.a);
     }
     else
     {
       b();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember = null;
+    this.e = null;
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (paramInt > this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_Int = paramInt;
+    if (paramInt > this.d) {
+      this.d = paramInt;
     }
-    if ((this.jdField_a_of_type_Int < 2) && (!TextUtils.isEmpty(paramString))) {
+    if ((this.d < 2) && (!TextUtils.isEmpty(paramString))) {
       try
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        this.b.add(paramString);
       }
       catch (Throwable paramString)
       {
@@ -89,7 +86,7 @@ public class AddFrdHelper
       b();
       return;
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
+    paramString = this.a;
     if ((paramString != null) && (paramString.isResume())) {
       paramString.runOnUiThread(new AddFrdHelper.1(this));
     }
@@ -97,7 +94,7 @@ public class AddFrdHelper
   
   public void a(TroopMemberListActivity.ATroopMember paramATroopMember)
   {
-    TroopMemberListActivity localTroopMemberListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
+    TroopMemberListActivity localTroopMemberListActivity = this.a;
     if (paramATroopMember != null)
     {
       if (localTroopMemberListActivity == null) {
@@ -105,20 +102,20 @@ public class AddFrdHelper
       }
       if (!a(localTroopMemberListActivity.mTroopInfo))
       {
-        paramATroopMember.n = 0;
+        paramATroopMember.U = 0;
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIAddFrdStateMngProxy != null)
+      if (this.f != null)
       {
         if (((ITroopRobotService)localTroopMemberListActivity.app.getRuntimeService(ITroopRobotService.class, "all")).isRobotUin(paramATroopMember.a))
         {
-          paramATroopMember.n = 0;
+          paramATroopMember.U = 0;
           return;
         }
-        paramATroopMember.n = this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIAddFrdStateMngProxy.a(paramATroopMember.a, localTroopMemberListActivity.app);
+        paramATroopMember.U = this.f.a(paramATroopMember.a, localTroopMemberListActivity.app);
         return;
       }
-      paramATroopMember.n = 0;
+      paramATroopMember.U = 0;
     }
   }
   
@@ -127,39 +124,39 @@ public class AddFrdHelper
     if (paramTmViewHolder == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
-    if ((paramTmViewHolder.f != null) && (localObject != null))
+    Object localObject = this.a;
+    if ((paramTmViewHolder.w != null) && (localObject != null))
     {
       TroopInfo localTroopInfo = ((TroopMemberListActivity)localObject).mTroopInfo;
       localObject = ((TroopMemberListActivity)localObject).app;
       if (paramATroopMember == null) {}
-      while ((paramATroopMember.n != 3) && (paramATroopMember.n != 2))
+      while ((paramATroopMember.U != 3) && (paramATroopMember.U != 2))
       {
-        i = 0;
+        j = 0;
         break;
       }
-      int i = 1;
-      if (i != 0)
+      int j = 1;
+      if (j != 0)
       {
-        paramTmViewHolder.f.setVisibility(0);
-        Button localButton = (Button)paramTmViewHolder.f.findViewById(2131362212);
-        paramTmViewHolder = (TextView)paramTmViewHolder.f.findViewById(2131362214);
-        if (paramATroopMember.n == 2)
+        paramTmViewHolder.w.setVisibility(0);
+        Button localButton = (Button)paramTmViewHolder.w.findViewById(2131427793);
+        paramTmViewHolder = (TextView)paramTmViewHolder.w.findViewById(2131427795);
+        if (paramATroopMember.U == 2)
         {
           localButton.setVisibility(8);
           paramTmViewHolder.setVisibility(0);
           return;
         }
-        if (paramATroopMember.n == 3)
+        if (paramATroopMember.U == 3)
         {
           localButton.setTag(paramATroopMember);
           localButton.setOnClickListener(this);
-          localButton.setText(HardCodeUtil.a(2131700055));
+          localButton.setText(HardCodeUtil.a(2131898101));
           localButton.setVisibility(0);
           paramTmViewHolder.setVisibility(8);
-          if (!this.jdField_a_of_type_Boolean)
+          if (!this.c)
           {
-            this.jdField_a_of_type_Boolean = true;
+            this.c = true;
             paramTmViewHolder = "";
             if (localTroopInfo != null)
             {
@@ -181,7 +178,7 @@ public class AddFrdHelper
       }
       else
       {
-        paramTmViewHolder.f.setVisibility(8);
+        paramTmViewHolder.w.setVisibility(8);
       }
     }
   }
@@ -205,14 +202,14 @@ public class AddFrdHelper
       if (paramTroopInfo.isQidianPrivateTroop()) {
         return false;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopMemberlistAddFrdHelper$TroopMemberListConfig == null) {
+      if (this.g == null) {
         d();
       }
       bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopMemberlistAddFrdHelper$TroopMemberListConfig.jdField_a_of_type_JavaUtilList.contains(Long.valueOf(paramTroopInfo.dwGroupClassExt)))
+      if (this.g.a.contains(Long.valueOf(paramTroopInfo.dwGroupClassExt)))
       {
         bool1 = bool2;
-        if (paramTroopInfo.wMemberNum <= this.jdField_a_of_type_ComTencentMobileqqTroopMemberlistAddFrdHelper$TroopMemberListConfig.jdField_a_of_type_Int) {
+        if (paramTroopInfo.wMemberNum <= this.g.b) {
           bool1 = true;
         }
       }
@@ -222,7 +219,7 @@ public class AddFrdHelper
   
   public void b()
   {
-    TroopMemberListActivity localTroopMemberListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
+    TroopMemberListActivity localTroopMemberListActivity = this.a;
     if ((localTroopMemberListActivity != null) && (!localTroopMemberListActivity.isFinishing()) && (localTroopMemberListActivity.isResume()))
     {
       if (Thread.currentThread() != Looper.getMainLooper().getThread())
@@ -232,20 +229,20 @@ public class AddFrdHelper
         }
         return;
       }
-      int i = this.jdField_a_of_type_Int;
+      int j = this.d;
       TroopMemberListActivity.ATroopMember localATroopMember;
-      if (i == 1) {
+      if (j == 1) {
         try
         {
           Iterator localIterator1 = localTroopMemberListActivity.mListData.iterator();
           while (localIterator1.hasNext())
           {
             localATroopMember = (TroopMemberListActivity.ATroopMember)localIterator1.next();
-            if ((localATroopMember != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(localATroopMember.a))) {
+            if ((localATroopMember != null) && (this.b.contains(localATroopMember.a))) {
               a(localATroopMember);
             }
           }
-          if (i != 2) {
+          if (j != 2) {
             break label200;
           }
         }
@@ -265,7 +262,7 @@ public class AddFrdHelper
               a(localATroopMember);
             }
           }
-          this.jdField_a_of_type_Int = 0;
+          this.d = 0;
         }
         catch (Throwable localThrowable3)
         {
@@ -276,7 +273,7 @@ public class AddFrdHelper
       try
       {
         label200:
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.b.clear();
         return;
       }
       catch (Throwable localThrowable1)
@@ -292,25 +289,25 @@ public class AddFrdHelper
   
   public void c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = ((TroopMemberListActivity)localObject).app;
       if (localObject != null)
       {
-        ((AppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverIFriendObserver);
-        ((AppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver);
+        ((AppInterface)localObject).removeObserver(this.i);
+        ((AppInterface)localObject).removeObserver(this.h);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity = null;
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIAddFrdStateMngProxy = null;
+    this.a = null;
+    this.f = null;
   }
   
   protected void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopMemberlistAddFrdHelper$TroopMemberListConfig == null)
+    if (this.g == null)
     {
-      TroopMemberListActivity localTroopMemberListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
+      TroopMemberListActivity localTroopMemberListActivity = this.a;
       Object localObject2 = null;
       Object localObject1 = localObject2;
       if (localTroopMemberListActivity != null)
@@ -320,18 +317,18 @@ public class AddFrdHelper
           localObject1 = localTroopMemberListActivity.app.getCurrentAccountUin();
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopMemberlistAddFrdHelper$TroopMemberListConfig = new AddFrdHelper.TroopMemberListConfig((String)localObject1);
+      this.g = new AddFrdHelper.TroopMemberListConfig((String)localObject1);
     }
   }
   
   public void onClick(View paramView)
   {
-    TroopMemberListActivity localTroopMemberListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
+    TroopMemberListActivity localTroopMemberListActivity = this.a;
     Object localObject = paramView.getTag();
     if ((localTroopMemberListActivity != null) && ((localObject instanceof TroopMemberListActivity.ATroopMember)))
     {
       TroopMemberListActivity.ATroopMember localATroopMember = (TroopMemberListActivity.ATroopMember)localObject;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember = localATroopMember;
+      this.e = localATroopMember;
       String str = localTroopMemberListActivity.mTroopCode;
       localObject = str;
       if (str == null)
@@ -341,7 +338,7 @@ public class AddFrdHelper
           localObject = localTroopMemberListActivity.mTroopInfo.troopcode;
         }
       }
-      localObject = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(localTroopMemberListActivity, 1, localATroopMember.a, (String)localObject, 3004, 13, localATroopMember.m, null, null, null, null);
+      localObject = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(localTroopMemberListActivity, 1, localATroopMember.a, (String)localObject, 3004, 13, localATroopMember.n, null, null, null, null);
       ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(localTroopMemberListActivity, (Intent)localObject);
       if (localTroopMemberListActivity.mTroopInfo != null) {
         localObject = String.valueOf(localTroopMemberListActivity.mTroopInfo.dwGroupClassExt);
@@ -355,7 +352,7 @@ public class AddFrdHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.memberlist.AddFrdHelper
  * JD-Core Version:    0.7.0.1
  */

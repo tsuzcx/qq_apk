@@ -12,7 +12,7 @@ class QQPlayerService$QQPlayerBroadcastReceiverReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QQPlayerService.b(this.a))
+    if (QQPlayerService.f(this.a))
     {
       if (QLog.isColorLevel()) {
         QLog.i("QQPlayerService", 2, "received broadcast after service destroy");
@@ -28,16 +28,16 @@ class QQPlayerService$QQPlayerBroadcastReceiverReceiver
     }
     if (("com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) || ("qqplayer_exit_action".equals(paramIntent.getAction())))
     {
-      if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
-        this.a.a.b = true;
+      if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.d != null)) {
+        this.a.d.d = true;
       }
-      QQPlayerService.c(this.a.getApplicationContext());
+      QQPlayerService.e(this.a.getApplicationContext());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.QQPlayerService.QQPlayerBroadcastReceiverReceiver
  * JD-Core Version:    0.7.0.1
  */

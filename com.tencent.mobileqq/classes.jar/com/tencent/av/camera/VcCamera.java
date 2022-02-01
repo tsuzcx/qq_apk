@@ -20,12 +20,11 @@ public class VcCamera
   extends AndroidCamera
   implements FocusDetectCallback
 {
-  private Camera.AutoFocusCallback a;
+  private Camera.AutoFocusCallback z = new VcCamera.1(this);
   
   public VcCamera(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback = new VcCamera.1(this);
   }
   
   @TargetApi(9)
@@ -42,7 +41,7 @@ public class VcCamera
       AVLog.printColorLog("AndroidCamera", "getSupportedFocusModes empty");
       return;
     }
-    EffectFaceDeviceConfig localEffectFaceDeviceConfig = EffectFaceDeviceConfig.a();
+    EffectFaceDeviceConfig localEffectFaceDeviceConfig = EffectFaceDeviceConfig.g();
     boolean bool;
     if ((localEffectFaceDeviceConfig != null) && (localEffectFaceDeviceConfig.e())) {
       bool = true;
@@ -75,12 +74,12 @@ public class VcCamera
   
   private void a(boolean paramBoolean, List<String> paramList, Camera.Parameters paramParameters)
   {
-    if ((paramBoolean) && (this.h >= 9) && (paramList.contains("continuous-video"))) {
+    if ((paramBoolean) && (this.n >= 9) && (paramList.contains("continuous-video"))) {
       paramParameters.setFocusMode("continuous-video");
     }
     try
     {
-      this.jdField_a_of_type_AndroidHardwareCamera.setParameters(paramParameters);
+      this.k.setParameters(paramParameters);
       return;
     }
     catch (Exception paramList) {}
@@ -89,12 +88,12 @@ public class VcCamera
   protected void a(long paramLong, int paramInt1, int paramInt2)
   {
     super.a(paramLong, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_AndroidHardwareCamera != null)
+    if (this.k != null)
     {
       Object localObject = null;
       try
       {
-        Camera.Parameters localParameters = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
+        Camera.Parameters localParameters = this.k.getParameters();
         localObject = localParameters;
       }
       catch (Exception localException)
@@ -117,18 +116,18 @@ public class VcCamera
     }
   }
   
-  public boolean c(long paramLong)
+  public boolean e(long paramLong)
   {
     try
     {
-      boolean bool = b;
+      boolean bool = e;
       if (bool)
       {
         Object localObject3 = null;
         Object localObject1;
         try
         {
-          localObject1 = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
+          localObject1 = this.k.getParameters();
         }
         catch (Exception localException)
         {
@@ -141,28 +140,28 @@ public class VcCamera
         }
         a((Camera.Parameters)localObject1, false);
       }
-      bool = super.c(paramLong);
+      bool = super.e(paramLong);
       return bool;
     }
     finally {}
   }
   
-  public int h()
+  public int n()
   {
-    return a(this.i, this.jdField_a_of_type_AndroidHardwareCamera).c;
+    return a(this.r, this.k).c;
   }
   
   public void onFocusDetectResult(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidHardwareCamera == null)
+      if (this.k == null)
       {
         AVLog.printColorLog("AndroidCamera", "camera null, return");
         return;
       }
       GraphicRenderMgr.getInstance().setIsFocusing(true);
-      this.jdField_a_of_type_AndroidHardwareCamera.autoFocus(this.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback);
+      this.k.autoFocus(this.z);
     }
   }
 }

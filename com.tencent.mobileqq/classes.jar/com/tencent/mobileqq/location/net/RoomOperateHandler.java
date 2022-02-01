@@ -22,7 +22,7 @@ public class RoomOperateHandler
 {
   private void a(int paramInt1, int paramInt2, long paramLong)
   {
-    Object localObject1 = LocationShareLocationManager.a().a();
+    Object localObject1 = LocationShareLocationManager.a().c();
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
@@ -77,7 +77,7 @@ public class RoomOperateHandler
     }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i;
     if (a(paramToServiceMsg, paramFromServiceMsg, paramObject)) {
@@ -113,7 +113,7 @@ public class RoomOperateHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.RoomOperateHandler
  * JD-Core Version:    0.7.0.1
  */

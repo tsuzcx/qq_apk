@@ -9,16 +9,16 @@ import org.xml.sax.helpers.DefaultHandler;
 public class PlistHandler
   extends DefaultHandler
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private String jdField_a_of_type_JavaLangString;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  Stack<Object> jdField_a_of_type_JavaUtilStack = new Stack();
-  private boolean jdField_a_of_type_Boolean = false;
+  Stack<Object> a = new Stack();
+  private boolean b = false;
+  private String c;
+  private Object d;
+  private StringBuilder e = new StringBuilder();
   
   public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
     if (paramInt2 > 0) {
-      this.jdField_a_of_type_JavaLangStringBuilder.append(new String(paramArrayOfChar, paramInt1, paramInt2).trim());
+      this.e.append(new String(paramArrayOfChar, paramInt1, paramInt2).trim());
     }
   }
   
@@ -28,20 +28,20 @@ public class PlistHandler
   {
     if (!"plist".equals(paramString2)) {
       if ("array".equals(paramString2)) {
-        this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
+        this.d = this.a.pop();
       } else if ("dict".equals(paramString2)) {
-        this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
+        this.d = this.a.pop();
       } else if ("key".equals(paramString2)) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangStringBuilder.toString();
+        this.c = this.e.toString();
       } else if (("string".equals(paramString2)) || ("integer".equals(paramString2))) {
-        if ((this.jdField_a_of_type_JavaUtilStack.peek() instanceof HashMap)) {
-          ((HashMap)this.jdField_a_of_type_JavaUtilStack.peek()).put(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangStringBuilder.toString());
-        } else if ((this.jdField_a_of_type_JavaUtilStack.peek() instanceof ArrayList)) {
-          ((ArrayList)this.jdField_a_of_type_JavaUtilStack.peek()).add(this.jdField_a_of_type_JavaLangStringBuilder.toString());
+        if ((this.a.peek() instanceof HashMap)) {
+          ((HashMap)this.a.peek()).put(this.c, this.e.toString());
+        } else if ((this.a.peek() instanceof ArrayList)) {
+          ((ArrayList)this.a.peek()).add(this.e.toString());
         }
       }
     }
-    paramString1 = this.jdField_a_of_type_JavaLangStringBuilder;
+    paramString1 = this.e;
     paramString1.delete(0, paramString1.length());
   }
   
@@ -51,50 +51,50 @@ public class PlistHandler
   {
     if ("plist".equals(paramString2))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       return;
     }
     if ("array".equals(paramString2))
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
         paramString1 = new ArrayList();
-        this.jdField_a_of_type_JavaUtilStack.push(paramString1);
-        this.jdField_a_of_type_Boolean = false;
+        this.a.push(paramString1);
+        this.b = false;
         return;
       }
-      paramString1 = this.jdField_a_of_type_JavaUtilStack.peek();
+      paramString1 = this.a.peek();
       paramString2 = new ArrayList();
       if ((paramString1 instanceof ArrayList)) {
         ((ArrayList)paramString1).add(paramString2);
       } else if ((paramString1 instanceof HashMap)) {
-        ((HashMap)paramString1).put(this.jdField_a_of_type_JavaLangString, paramString2);
+        ((HashMap)paramString1).put(this.c, paramString2);
       }
-      this.jdField_a_of_type_JavaUtilStack.push(paramString2);
+      this.a.push(paramString2);
       return;
     }
     if ("dict".equals(paramString2))
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        this.jdField_a_of_type_JavaUtilStack.push(new HashMap());
-        this.jdField_a_of_type_Boolean = false;
+        this.a.push(new HashMap());
+        this.b = false;
         return;
       }
-      paramString1 = this.jdField_a_of_type_JavaUtilStack.peek();
+      paramString1 = this.a.peek();
       paramString2 = new HashMap();
       if ((paramString1 instanceof ArrayList)) {
         ((ArrayList)paramString1).add(paramString2);
       } else if ((paramString1 instanceof HashMap)) {
-        ((HashMap)paramString1).put(this.jdField_a_of_type_JavaLangString, paramString2);
+        ((HashMap)paramString1).put(this.c, paramString2);
       }
-      this.jdField_a_of_type_JavaUtilStack.push(paramString2);
+      this.a.push(paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.PlistHandler
  * JD-Core Version:    0.7.0.1
  */

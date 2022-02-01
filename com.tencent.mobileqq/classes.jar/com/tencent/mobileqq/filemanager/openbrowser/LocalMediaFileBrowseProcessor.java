@@ -13,9 +13,9 @@ public class LocalMediaFileBrowseProcessor
   public LocalMediaFileBrowseProcessor(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_JavaUtilList.add(a(0, paramFileManagerEntity));
+    this.b.add(a(0, paramFileManagerEntity));
     paramQQAppInterface = FileViewerAdapterBase.a(paramQQAppInterface, paramFileManagerEntity);
-    this.b.add(paramQQAppInterface);
+    this.e.add(paramQQAppInterface);
   }
   
   public LocalMediaFileBrowseProcessor(QQAppInterface paramQQAppInterface, List<FileInfo> paramList, FileInfo paramFileInfo)
@@ -27,29 +27,29 @@ public class LocalMediaFileBrowseProcessor
     while (paramQQAppInterface.hasNext())
     {
       paramList = (FileInfo)paramQQAppInterface.next();
-      if (a(paramList.a(), 3))
+      if (a(paramList.l(), 3))
       {
         int k = j;
         if (j == 0)
         {
           k = j;
-          if (paramList.d().equals(paramFileInfo.d()))
+          if (paramList.e().equals(paramFileInfo.e()))
           {
             k = j;
-            if (paramList.a() == paramFileInfo.a())
+            if (paramList.f() == paramFileInfo.f())
             {
               k = j;
-              if (paramList.b() == paramFileInfo.b())
+              if (paramList.g() == paramFileInfo.g())
               {
-                this.jdField_a_of_type_Int = i;
+                this.c = i;
                 k = 1;
               }
             }
           }
         }
-        this.jdField_a_of_type_JavaUtilList.add(a(i, paramList));
+        this.b.add(a(i, paramList));
         paramList = FileViewerAdapterBase.a(paramList);
-        this.b.add(paramList);
+        this.e.add(paramList);
         i += 1;
         j = k;
       }
@@ -58,7 +58,7 @@ public class LocalMediaFileBrowseProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.openbrowser.LocalMediaFileBrowseProcessor
  * JD-Core Version:    0.7.0.1
  */

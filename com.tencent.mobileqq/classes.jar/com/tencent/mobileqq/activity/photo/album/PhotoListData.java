@@ -8,40 +8,32 @@ import java.util.HashMap;
 public class PhotoListData
   extends PhotoListBaseData
 {
-  public int a;
-  public long a;
-  public NewPhotoListActivityHandler a;
-  QZoneGetAlbumListNumObserver a;
-  public String a;
-  public HashMap<String, PhotoSendParams> a;
-  public boolean a;
-  public String b;
-  public HashMap<String, byte[]> b;
-  public boolean b;
-  public String c;
-  public HashMap<LocalMediaInfo, LocalMediaInfo> c;
+  public boolean a = false;
+  public HashMap<String, PhotoSendParams> b;
   public boolean c;
-  public String d;
-  public boolean d = true;
-  public boolean e = false;
+  public boolean d = false;
+  public boolean e = true;
   public boolean f = false;
-  public boolean g = false;
-  public boolean h;
-  public boolean i = false;
+  public HashMap<String, byte[]> g;
+  public String h;
+  public String i;
   public boolean j = false;
   public boolean k = false;
-  
-  public PhotoListData()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public boolean l;
+  public int m;
+  public String n;
+  public String o;
+  public boolean p = false;
+  public boolean q = false;
+  public long r = -1L;
+  public HashMap<LocalMediaInfo, LocalMediaInfo> s = new HashMap();
+  public boolean t = false;
+  public NewPhotoListActivityHandler u;
+  QZoneGetAlbumListNumObserver v;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListData
  * JD-Core Version:    0.7.0.1
  */

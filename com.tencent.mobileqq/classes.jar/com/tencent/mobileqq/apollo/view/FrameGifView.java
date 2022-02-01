@@ -12,34 +12,23 @@ public class FrameGifView
   extends ImageView
   implements SimpleFrameZipDecoder.OnFrameDecodeListener
 {
-  FrameGifView.AnimationListener jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$AnimationListener;
-  private FrameGifView.DecoderRunnable jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable = new FrameGifView.DecoderRunnable();
-  protected QQFrameZipDecoder a;
+  private FrameGifView.DecoderRunnable a = new FrameGifView.DecoderRunnable();
+  FrameGifView.AnimationListener b;
+  protected QQFrameZipDecoder c = new QQFrameZipDecoder(this);
   
   public FrameGifView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder = new QQFrameZipDecoder(this);
   }
   
   public FrameGifView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder = new QQFrameZipDecoder(this);
   }
   
   public FrameGifView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder = new QQFrameZipDecoder(this);
-  }
-  
-  public void a()
-  {
-    FrameGifView.AnimationListener localAnimationListener = this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$AnimationListener;
-    if (localAnimationListener != null) {
-      localAnimationListener.a();
-    }
   }
   
   public void a(int paramInt, Bitmap paramBitmap)
@@ -47,34 +36,42 @@ public class FrameGifView
     super.setImageBitmap(paramBitmap);
   }
   
-  public int b()
+  public void b()
   {
-    QQFrameZipDecoder localQQFrameZipDecoder = this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
+    FrameGifView.AnimationListener localAnimationListener = this.b;
+    if (localAnimationListener != null) {
+      localAnimationListener.a();
+    }
+  }
+  
+  public void c()
+  {
+    QQFrameZipDecoder localQQFrameZipDecoder = this.c;
+    if (localQQFrameZipDecoder != null) {
+      localQQFrameZipDecoder.b();
+    }
+  }
+  
+  public void d()
+  {
+    QQFrameZipDecoder localQQFrameZipDecoder = this.c;
+    if (localQQFrameZipDecoder != null) {
+      localQQFrameZipDecoder.c();
+    }
+  }
+  
+  public int getState()
+  {
+    QQFrameZipDecoder localQQFrameZipDecoder = this.c;
     if (localQQFrameZipDecoder != null) {
       return localQQFrameZipDecoder.a();
     }
     return 0;
   }
   
-  public void b()
-  {
-    QQFrameZipDecoder localQQFrameZipDecoder = this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
-    if (localQQFrameZipDecoder != null) {
-      localQQFrameZipDecoder.a();
-    }
-  }
-  
-  public void c()
-  {
-    QQFrameZipDecoder localQQFrameZipDecoder = this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
-    if (localQQFrameZipDecoder != null) {
-      localQQFrameZipDecoder.b();
-    }
-  }
-  
   public void setAnimaListener(FrameGifView.AnimationListener paramAnimationListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$AnimationListener = paramAnimationListener;
+    this.b = paramAnimationListener;
   }
   
   public void setGifData(int paramInt, Drawable paramDrawable, String paramString1, String paramString2, boolean paramBoolean)
@@ -82,18 +79,18 @@ public class FrameGifView
     if (getDrawable() == null) {
       super.setImageDrawable(paramDrawable);
     }
-    paramDrawable = this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
+    paramDrawable = this.c;
     if (paramDrawable != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable.a(paramDrawable, paramInt, paramString1, paramString2, paramBoolean);
-      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable);
-      ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable);
+      this.a.a(paramDrawable, paramInt, paramString1, paramString2, paramBoolean);
+      ThreadManager.getSubThreadHandler().removeCallbacks(this.a);
+      ThreadManager.getSubThreadHandler().post(this.a);
     }
   }
   
   public void setPlayLoop(boolean paramBoolean)
   {
-    QQFrameZipDecoder localQQFrameZipDecoder = this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
+    QQFrameZipDecoder localQQFrameZipDecoder = this.c;
     if (localQQFrameZipDecoder != null) {
       localQQFrameZipDecoder.a(paramBoolean);
     }
@@ -101,7 +98,7 @@ public class FrameGifView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.FrameGifView
  * JD-Core Version:    0.7.0.1
  */

@@ -24,10 +24,10 @@ class QQNotifySettingBaseFragment$2$1
   
   public void run()
   {
-    Object localObject1 = (AcsSubNoticeRsp)this.jdField_a_of_type_AndroidOsBundle.getSerializable("rsp");
+    Object localObject1 = (AcsSubNoticeRsp)this.a.getSerializable("rsp");
     if (localObject1 == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment.b(3, "system error");
+      this.b.b.b(3, "system error");
       return;
     }
     int i = ((AcsSubNoticeRsp)localObject1).ret_code;
@@ -41,8 +41,8 @@ class QQNotifySettingBaseFragment$2$1
     QLog.i((String)localObject2, 1, localStringBuilder.toString());
     if (i != 0)
     {
-      if ((i == 2) && (QQNotifySettingBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment) != null)) {
-        QQNotifySettingBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment).onFakePros("", ((AcsSubNoticeRsp)localObject1).err_str, new QQNotifySettingBaseFragment.2.1.1(this));
+      if ((i == 2) && (QQNotifySettingBaseFragment.h(this.b.b) != null)) {
+        QQNotifySettingBaseFragment.h(this.b.b).onFakePros("", ((AcsSubNoticeRsp)localObject1).err_str, new QQNotifySettingBaseFragment.2.1.1(this));
       }
     }
     else
@@ -54,25 +54,25 @@ class QQNotifySettingBaseFragment$2$1
       localStringBuilder.append(localObject1);
       QLog.i((String)localObject2, 1, localStringBuilder.toString());
       if ((localObject1 != null) && (DateUtil.a(((AcsMsg)localObject1).notice_time * 1000L))) {
-        QQNotifySettingBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment).saveReminderMsg((AcsMsg)localObject1);
+        QQNotifySettingBaseFragment.c(this.b.b).saveReminderMsg((AcsMsg)localObject1);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment.a != null)
+      if (this.b.b.f != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment.a.setClickable(false);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment.a.isChecked()) {
-          ((IQQReminderCalendarService)this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQReminderCalendarService.class, "")).setCalendarAlarm(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment.getQBaseActivity(), QQNotifySettingBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment));
+        this.b.b.f.setClickable(false);
+        if (this.b.b.f.isChecked()) {
+          ((IQQReminderCalendarService)this.b.a.getRuntimeService(IQQReminderCalendarService.class, "")).setCalendarAlarm(this.b.b.getQBaseActivity(), QQNotifySettingBaseFragment.d(this.b.b));
         }
       }
-      boolean bool = NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment.getBaseActivity());
+      boolean bool = NetworkUtil.isNetSupport(this.b.b.getBaseActivity());
       localObject1 = QQNotifySettingBaseFragment.a();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("QQReminderServlet.sendSubscribeReminder isNerSupport: ");
       ((StringBuilder)localObject2).append(bool);
       QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
       if (bool) {
-        if (QQNotifySettingBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment) != null)
+        if (QQNotifySettingBaseFragment.e(this.b.b) != null)
         {
-          localObject1 = (ActivateFriendsManager)QQNotifySettingBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment).getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS);
+          localObject1 = (ActivateFriendsManager)QQNotifySettingBaseFragment.e(this.b.b).getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS);
           if (localObject1 != null)
           {
             bool = ((ActivateFriendsManager)localObject1).b(true);
@@ -106,15 +106,15 @@ class QQNotifySettingBaseFragment$2$1
       if (QLog.isColorLevel()) {
         QLog.d(QQNotifySettingBaseFragment.a(), 2, "do report: QQnotice.set.add");
       }
-      ReportController.b(null, "P_CliOper", "QQnotice", "", "", "QQnotice.set.add", 0, 0, "", "", QQNotifySettingBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment), QQNotifySettingBaseFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment));
-      MobileReportManager.getInstance().reportActionOfNotice("qqremind", "1", "2", 102, QQNotifySettingBaseFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment), "15", 1);
+      ReportController.b(null, "P_CliOper", "QQnotice", "", "", "QQnotice.set.add", 0, 0, "", "", QQNotifySettingBaseFragment.f(this.b.b), QQNotifySettingBaseFragment.g(this.b.b));
+      MobileReportManager.getInstance().reportActionOfNotice("qqremind", "1", "2", 102, QQNotifySettingBaseFragment.g(this.b.b), "15", 1);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment$2.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifySettingBaseFragment.b(i, str);
+    this.b.b.b(i, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

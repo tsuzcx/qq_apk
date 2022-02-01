@@ -16,12 +16,12 @@ public class WebProcessReceiver
   extends BroadcastReceiver
 {
   public static final String ACTION_DOWNLOAD_TBS = "action_download_tbs";
+  public static final AtomicBoolean S_TBS_DOWNLOADING = new AtomicBoolean(false);
   public static final String TAG = "WebProcessReceiver";
-  public static final AtomicBoolean sTBSDownloading = new AtomicBoolean(false);
   
   public void downloadTbs(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (sTBSDownloading.compareAndSet(false, true))
+    if (S_TBS_DOWNLOADING.compareAndSet(false, true))
     {
       long l = System.currentTimeMillis();
       Object localObject = new StringBuilder();
@@ -71,7 +71,7 @@ public class WebProcessReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.receiver.WebProcessReceiver
  * JD-Core Version:    0.7.0.1
  */

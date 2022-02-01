@@ -10,12 +10,11 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/debug/DatongVerifyManager;", "", "()V", "SP_KEY", "", "verifyClazz", "Ljava/lang/Class;", "setAppId", "", "appId", "setVerifyOn", "verifyOn", "", "showVerifyToggleDialog", "activity", "Landroid/app/Activity;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class DatongVerifyManager
 {
-  public static final DatongVerifyManager a;
-  private static Class<?> a;
+  public static final DatongVerifyManager a = new DatongVerifyManager();
+  private static Class<?> b;
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqDebugDatongVerifyManager = new DatongVerifyManager();
     Object localObject2;
     try
     {
@@ -31,12 +30,12 @@ public final class DatongVerifyManager
     if (Result.isFailure-impl(localObject2)) {
       localObject3 = null;
     }
-    jdField_a_of_type_JavaLangClass = (Class)localObject3;
+    b = (Class)localObject3;
   }
   
   private final void a(boolean paramBoolean)
   {
-    Object localObject = jdField_a_of_type_JavaLangClass;
+    Object localObject = b;
     if (localObject != null) {
       localObject = ((Class)localObject).getDeclaredMethod("setVerifyOn", new Class[] { Boolean.TYPE });
     } else {
@@ -50,7 +49,7 @@ public final class DatongVerifyManager
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "appId");
-    Object localObject = jdField_a_of_type_JavaLangClass;
+    Object localObject = b;
     if (localObject != null) {
       localObject = ((Class)localObject).getDeclaredMethod("setAppId", new Class[] { String.class });
     } else {
@@ -63,7 +62,7 @@ public final class DatongVerifyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.debug.DatongVerifyManager
  * JD-Core Version:    0.7.0.1
  */

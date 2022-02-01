@@ -18,34 +18,34 @@ import java.util.Set;
 
 public class FrameManager
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Map<String, BitmapDrawable[]> jdField_a_of_type_JavaUtilMap;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private Map<String, Integer> b;
+  private Context a;
+  private Map<String, BitmapDrawable[]> b;
+  private Map<String, Integer> c;
+  private Set<String> d = new HashSet();
   
   public FrameManager(Context paramContext, Map paramMap1, Map paramMap2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilMap = paramMap1;
-    this.b = paramMap2;
+    this.a = paramContext;
+    this.b = paramMap1;
+    this.c = paramMap2;
   }
   
   @Nullable
   private Bitmap a(@NonNull Bitmap paramBitmap, double paramDouble)
   {
-    double d = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    Double.isNaN(d);
-    paramDouble = paramDouble * d / 2.75D;
+    double d1 = this.a.getResources().getDisplayMetrics().density;
+    Double.isNaN(d1);
+    paramDouble = paramDouble * d1 / 2.75D;
     try
     {
       int i = paramBitmap.getWidth();
-      d = i;
-      Double.isNaN(d);
-      i = (int)(d * paramDouble);
+      d1 = i;
+      Double.isNaN(d1);
+      i = (int)(d1 * paramDouble);
       int j = paramBitmap.getHeight();
-      d = j;
-      Double.isNaN(d);
-      j = (int)(d * paramDouble);
+      d1 = j;
+      Double.isNaN(d1);
+      j = (int)(d1 * paramDouble);
       paramBitmap = Bitmap.createScaledBitmap(paramBitmap, i, j, true);
       return paramBitmap;
     }
@@ -98,16 +98,16 @@ public class FrameManager
     ThreadManager.excute(new FrameManager.2(this, paramArrayOfBitmapDrawable, paramIFrameDecode, paramString, paramInt), 64, null, true);
   }
   
-  private void a(String paramString)
+  private void b(String paramString)
   {
     ThreadManager.excute(new FrameManager.1(this, paramString), 64, null, true);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
     this.b.clear();
-    this.jdField_a_of_type_JavaUtilSet.clear();
+    this.c.clear();
+    this.d.clear();
   }
   
   public void a(Set<String> paramSet)
@@ -116,21 +116,21 @@ public class FrameManager
     while (paramSet.hasNext())
     {
       String str = (String)paramSet.next();
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str))
+      if (!this.b.containsKey(str))
       {
         FrameCache.CacheItem localCacheItem = FrameCache.a(str);
         if (localCacheItem != null)
         {
-          this.jdField_a_of_type_JavaUtilMap.put(str, localCacheItem.a());
-          this.b.put(str, Integer.valueOf(localCacheItem.a()));
+          this.b.put(str, localCacheItem.a());
+          this.c.put(str, Integer.valueOf(localCacheItem.b()));
           if (QLog.isColorLevel()) {
             QLog.d("StickerBubble_FrameDecode", 2, "get frames from cache");
           }
         }
-        else if (!this.jdField_a_of_type_JavaUtilSet.contains(str))
+        else if (!this.d.contains(str))
         {
-          this.jdField_a_of_type_JavaUtilSet.add(str);
-          a(str);
+          this.d.add(str);
+          b(str);
         }
       }
     }
@@ -138,7 +138,7 @@ public class FrameManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.frame.FrameManager
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ public class CustomizeStrategyFactory$VIPHBStrategy
         ((StringBuilder)localObject).append("VIPHBStrategy.get Id = ");
         ((StringBuilder)localObject).append(paramRedPacketInfo.templateId);
         ((StringBuilder)localObject).append("content = ");
-        ((StringBuilder)localObject).append(paramRedPacketInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramRedPacketInfo.d);
         QLog.d("CustomizeStrategyFactory", 2, ((StringBuilder)localObject).toString());
       }
       Object localObject = (IIndividualRedPacket)this.a.getRuntimeService(IIndividualRedPacket.class);
@@ -75,16 +75,16 @@ public class CustomizeStrategyFactory$VIPHBStrategy
     if ((paramRedPacketInfo != null) && ((paramInterfaceRedPkgElem instanceof VipRedPkgElem)))
     {
       paramInterfaceRedPkgElem = (VipRedPkgElem)paramInterfaceRedPkgElem;
-      paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap = paramInterfaceRedPkgElem.jdField_a_of_type_AndroidGraphicsBitmap;
-      paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramInterfaceRedPkgElem.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-      paramRedPacketInfo.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$AnimConfig = paramInterfaceRedPkgElem.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$AnimConfig;
-      paramRedPacketInfo.b = paramInterfaceRedPkgElem.jdField_a_of_type_Boolean;
+      paramRedPacketInfo.e = paramInterfaceRedPkgElem.b;
+      paramRedPacketInfo.i = paramInterfaceRedPkgElem.c;
+      paramRedPacketInfo.h = paramInterfaceRedPkgElem.d;
+      paramRedPacketInfo.g = paramInterfaceRedPkgElem.e;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.VIPHBStrategy
  * JD-Core Version:    0.7.0.1
  */

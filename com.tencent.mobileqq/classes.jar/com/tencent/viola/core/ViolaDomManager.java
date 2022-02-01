@@ -50,6 +50,18 @@ public class ViolaDomManager
     }
   }
   
+  void batch(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    paramString = (DOMActionContextImpl)this.mDomContextImpMap.get(paramString);
+    if (paramString == null) {
+      return;
+    }
+    paramString.batch();
+  }
+  
   void consumeRenderTask(String paramString)
   {
     throwIfNotDomThread();
@@ -85,20 +97,15 @@ public class ViolaDomManager
   {
     DOMActionContext localDOMActionContext = (DOMActionContext)this.mDomContextImpMap.get(paramString);
     Object localObject = localDOMActionContext;
-    if (localDOMActionContext == null) {
+    if (localDOMActionContext == null)
+    {
+      localObject = localDOMActionContext;
       if (paramBoolean)
       {
         localObject = new DOMActionContextImpl(paramString, this.mRenderManager);
         this.mDomContextImpMap.put(paramString, localObject);
       }
-      else
-      {
-        ViolaSDKManager.getInstance().getViolaInstance(paramString);
-        return;
-      }
     }
-    System.currentTimeMillis();
-    System.nanoTime();
     paramDOMAction.executeDom((DOMActionContext)localObject);
   }
   
@@ -117,6 +124,19 @@ public class ViolaDomManager
     }
   }
   
+  public void forceBatch(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    paramString = (DOMActionContextImpl)this.mDomContextImpMap.get(paramString);
+    if (paramString == null) {
+      return;
+    }
+    paramString.markDirty();
+    paramString.batch();
+  }
+  
   public void forceNvBatch()
   {
     throwIfNotDomThread();
@@ -130,6 +150,19 @@ public class ViolaDomManager
         localDOMActionContextImpl.nvBatch();
       }
     }
+  }
+  
+  public void forceNvBatch(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    paramString = (DOMActionContextImpl)this.mDomContextImpMap.get(paramString);
+    if (paramString == null) {
+      return;
+    }
+    paramString.markDirty();
+    paramString.nvBatch();
   }
   
   public DOMActionContext getDomContext(String paramString)
@@ -281,7 +314,7 @@ public class ViolaDomManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.ViolaDomManager
  * JD-Core Version:    0.7.0.1
  */

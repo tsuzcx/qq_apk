@@ -30,19 +30,19 @@ class MiniLoadingAdLayout$LoadingAdOnClickListener
   {
     QLog.i("MiniLoadingAdLayout", 1, "LoadingAd reportClick");
     paramView = new GdtHandler.Params();
-    paramView.c = 11;
-    paramView.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)this.this$0.getContext());
-    paramView.jdField_a_of_type_ComTencentGdtadAditemGdtAd = MiniLoadingAdLayout.access$100(this.this$0);
-    paramView.jdField_a_of_type_Boolean = true;
-    paramView.b = MiniLoadingAdLayout.access$900(this.this$0);
+    paramView.q = 11;
+    paramView.r = new WeakReference((Activity)this.this$0.getContext());
+    paramView.a = MiniLoadingAdLayout.access$100(this.this$0);
+    paramView.b = true;
+    paramView.e = MiniLoadingAdLayout.access$900(this.this$0);
     Object localObject1 = new Bundle();
     ((Bundle)localObject1).putString("big_brother_ref_source_key", "biz_src_miniappD");
-    paramView.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject1);
+    paramView.p = ((Bundle)localObject1);
     localObject1 = this.this$0;
     localObject1 = MiniLoadingAdLayout.access$1000((MiniLoadingAdLayout)localObject1, MiniLoadingAdLayout.access$000((MiniLoadingAdLayout)localObject1));
     Object localObject2 = this.this$0;
     localObject2 = MiniLoadingAdLayout.access$200((MiniLoadingAdLayout)localObject2, MiniLoadingAdLayout.access$000((MiniLoadingAdLayout)localObject2), MiniLoadingAdLayout.access$100(this.this$0).getUrlForClick(), 5);
-    paramView.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).toString();
+    paramView.n = ((JSONObject)localObject1).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("report click antiSpamParams=");
     localStringBuilder.append(((JSONObject)localObject1).toString());
@@ -57,7 +57,7 @@ class MiniLoadingAdLayout$LoadingAdOnClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout.LoadingAdOnClickListener
  * JD-Core Version:    0.7.0.1
  */

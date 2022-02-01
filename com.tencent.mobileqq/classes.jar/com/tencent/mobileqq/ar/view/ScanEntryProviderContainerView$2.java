@@ -11,15 +11,15 @@ class ScanEntryProviderContainerView$2
   
   public void run()
   {
-    QQToast localQQToast = QQToast.a(this.this$0.a, HardCodeUtil.a(2131713434), 1);
-    localQQToast.a();
-    localQQToast.a();
+    QQToast localQQToast = QQToast.makeText(this.this$0.a, HardCodeUtil.a(2131910985), 1);
+    localQQToast.setAutoTextSize();
+    localQQToast.show();
     ((Activity)this.this$0.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView.2
  * JD-Core Version:    0.7.0.1
  */

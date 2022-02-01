@@ -131,7 +131,7 @@ public class RIJAdDownloadServiceImpl
   
   public boolean hasReportCache(String paramString, DownloadPercent paramDownloadPercent)
   {
-    return RIJAdDownloadCache.a.a(paramString, paramDownloadPercent);
+    return RIJAdDownloadCache.a.b(paramString, paramDownloadPercent);
   }
   
   public String parseApkDownloadUrl(JSONObject paramJSONObject)
@@ -146,7 +146,7 @@ public class RIJAdDownloadServiceImpl
   
   public void removeReportCache(String paramString)
   {
-    RIJAdDownloadCache.a.a(paramString);
+    RIJAdDownloadCache.a.b(paramString);
   }
   
   public void reportAdDownloadClick(Context paramContext, DownloadClickState paramDownloadClickState, AdvertisementInfo paramAdvertisementInfo)
@@ -181,7 +181,7 @@ public class RIJAdDownloadServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJAdDownloadServiceImpl
  * JD-Core Version:    0.7.0.1
  */

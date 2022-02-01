@@ -17,20 +17,20 @@ class AIOEmotionFragment$7
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getBaseActivity(), this.a.a().getAccount(), 8, this.a.a.epId, false, false);
+      this.a.m.setBackgroundColor(Color.parseColor("#F7F7F7"));
+      EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getBaseActivity(), this.a.c().getAccount(), 8, this.a.D.epId, false, false);
       this.a.a("0X800997F");
     }
     else if (paramMotionEvent.getAction() == 0)
     {
-      this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+      this.a.m.setBackgroundColor(Color.parseColor("#DEDEDE"));
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.7
  * JD-Core Version:    0.7.0.1
  */

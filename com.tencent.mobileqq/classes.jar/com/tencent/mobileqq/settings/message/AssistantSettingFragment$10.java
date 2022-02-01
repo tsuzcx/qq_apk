@@ -16,13 +16,13 @@ class AssistantSettingFragment$10
     Bundle localBundle = new Bundle();
     localBundle.putInt("start_from", 2);
     AssistantSettingFragment.a(paramView.getContext(), localBundle);
-    ReportController.a(AssistantSettingFragment.a(this.a), "0X800B886");
+    ReportController.a(AssistantSettingFragment.c(this.a), "0X800B886");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.10
  * JD-Core Version:    0.7.0.1
  */

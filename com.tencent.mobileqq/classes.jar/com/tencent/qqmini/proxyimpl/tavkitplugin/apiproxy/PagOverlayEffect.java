@@ -13,14 +13,14 @@ public class PagOverlayEffect
     return new PagOverlayEffect.MyFilter(this.a);
   }
   
-  public List<TAVSticker> a()
-  {
-    return this.a;
-  }
-  
   public void a(List<TAVSticker> paramList)
   {
     this.a = paramList;
+  }
+  
+  public List<TAVSticker> b()
+  {
+    return this.a;
   }
   
   public String getReportKey()
@@ -30,7 +30,7 @@ public class PagOverlayEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.PagOverlayEffect
  * JD-Core Version:    0.7.0.1
  */

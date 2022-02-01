@@ -15,7 +15,7 @@ public class MiniAppRecommInfo
   public static final Parcelable.Creator<MiniAppRecommInfo> CREATOR = new MiniAppRecommInfo.1();
   public List<MiniAppRecommInfo.MiniApp> appInfoList = new ArrayList();
   public long cacheValidTime = System.currentTimeMillis() / 1000L + 3600L;
-  public String headDesc = HardCodeUtil.a(2131706867);
+  public String headDesc = HardCodeUtil.a(2131904714);
   
   public MiniAppRecommInfo() {}
   
@@ -40,7 +40,7 @@ public class MiniAppRecommInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.bean.feed.MiniAppRecommInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,8 @@ class AVPreloadEngine$AVPreloadPlayListener$6
   {
     AVPreloadLog.a("AVPreloadEngine", "start decoder", new Object[0]);
     FrameDecoder localFrameDecoder = FrameDecoder.a();
-    int i = this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$FrameData.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$FrameData.b;
+    int i = this.a.a;
+    int j = this.a.b;
     if (i * j > 92000.0F)
     {
       float f;
@@ -37,29 +37,29 @@ class AVPreloadEngine$AVPreloadPlayListener$6
       j = 0;
     }
     long l = System.currentTimeMillis();
-    Bitmap localBitmap2 = localFrameDecoder.a(AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener.a), this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$FrameData.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$FrameData.c, this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$FrameData.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$FrameData.b, i, j);
+    Bitmap localBitmap2 = localFrameDecoder.a(AVPreloadEngine.f(this.b.a), this.a.c, this.a.d, this.a.a, this.a.b, i, j);
     Bitmap localBitmap1 = localBitmap2;
     if (localBitmap2 == null)
     {
       AVPreloadLog.c("AVPreload|Core", "------first frame decoder fail! Retry one!!", new Object[0]);
-      localBitmap1 = localFrameDecoder.a(AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener.a), this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$FrameData.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$FrameData.c, this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$FrameData.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$FrameData.b, i, j);
+      localBitmap1 = localFrameDecoder.a(AVPreloadEngine.f(this.b.a), this.a.c, this.a.d, this.a.a, this.a.b, i, j);
     }
-    AVPreloadEngine.AVPreloadPlayListener.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener).a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$FrameData.jdField_a_of_type_Int);
-    AVPreloadEngine.AVPreloadPlayListener.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener).b(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$FrameData.b);
-    AVPreloadEngine.AVPreloadPlayListener.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener).h(AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener.a));
-    AVPreloadEngine.AVPreloadPlayListener.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener).d(System.currentTimeMillis() - l);
-    AVPreloadEngine.AVPreloadPlayListener.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener).e(System.nanoTime() / 1000L);
+    AVPreloadEngine.AVPreloadPlayListener.a(this.b).a(this.a.a);
+    AVPreloadEngine.AVPreloadPlayListener.a(this.b).b(this.a.b);
+    AVPreloadEngine.AVPreloadPlayListener.a(this.b).h(AVPreloadEngine.e(this.b.a));
+    AVPreloadEngine.AVPreloadPlayListener.a(this.b).d(System.currentTimeMillis() - l);
+    AVPreloadEngine.AVPreloadPlayListener.a(this.b).e(System.nanoTime() / 1000L);
     if (localBitmap1 == null)
     {
       AVPreloadLog.c("AVPreload|Core", "------first frame decoder fail, bitmap is null", new Object[0]);
       return;
     }
-    AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener.a).post(new AVPreloadEngine.AVPreloadPlayListener.BitmapRunnable(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener, localBitmap1, null));
+    AVPreloadEngine.c(this.b.a).post(new AVPreloadEngine.AVPreloadPlayListener.BitmapRunnable(this.b, localBitmap1, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadEngine.AVPreloadPlayListener.6
  * JD-Core Version:    0.7.0.1
  */

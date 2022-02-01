@@ -26,15 +26,15 @@ public class TroopKeyWordHelper
   
   public void onMoveToState(int paramInt)
   {
-    String str = this.a.d();
+    String str = this.a.ag();
     if (!TextUtils.isEmpty(str)) {
-      TroopKeywordManager.a(this.a.a).a(str);
+      TroopKeywordManager.a(this.a.d).c(str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopKeyWordHelper
  * JD-Core Version:    0.7.0.1
  */

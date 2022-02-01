@@ -2,7 +2,6 @@ package com.tencent.mobileqq.message.newmsg;
 
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ForegroundNotifyManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
@@ -15,8 +14,6 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class NewMsgNotificationManager$1
   implements CompoundButton.OnCheckedChangeListener
 {
-  NewMsgNotificationManager$1(NewMsgNotificationManager paramNewMsgNotificationManager, BaseActivity paramBaseActivity, FormSwitchItem paramFormSwitchItem1, FormSwitchItem paramFormSwitchItem2) {}
-  
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     boolean bool = QLog.isColorLevel();
@@ -25,25 +22,25 @@ class NewMsgNotificationManager$1
       QLog.d("NewMsgNotificationManager", 2, new Object[] { "NEW_MSG_NOTIFICATION_KEY::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
     }
     FormSwitchItem localFormSwitchItem;
-    if (!this.jdField_a_of_type_ComTencentMobileqqMessageNewmsgNewMsgNotificationManager.c())
+    if (!this.d.c())
     {
-      this.jdField_a_of_type_ComTencentMobileqqMessageNewmsgNewMsgNotificationManager.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      localFormSwitchItem = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+      this.d.a(this.a);
+      this.b.setOnCheckedChangeListener(null);
+      localFormSwitchItem = this.b;
       localFormSwitchItem.setChecked(localFormSwitchItem.a() ^ true);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_ComTencentMobileqqMessageNewmsgNewMsgNotificationManager.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+      this.b.setOnCheckedChangeListener(this.d.c);
     }
     else
     {
-      localFormSwitchItem = this.b;
+      localFormSwitchItem = this.c;
       if (!paramBoolean) {
         i = 8;
       }
       localFormSwitchItem.setVisibility(i);
-      if (ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqMessageNewmsgNewMsgNotificationManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).h()) {
-        this.b.setVisibility(8);
+      if (ForegroundNotifyManager.a(this.d.a).f()) {
+        this.c.setVisibility(8);
       }
-      SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqMessageNewmsgNewMsgNotificationManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqMessageNewmsgNewMsgNotificationManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), null, "new_msg_notification_key", paramBoolean);
+      SettingCloneUtil.writeValue(this.d.a.getApp(), this.d.a.getCurrentUin(), null, "new_msg_notification_key", paramBoolean);
       PushNoticeUtil.a(paramBoolean);
       if (paramBoolean) {
         i = 1;
@@ -57,7 +54,7 @@ class NewMsgNotificationManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.message.newmsg.NewMsgNotificationManager.1
  * JD-Core Version:    0.7.0.1
  */

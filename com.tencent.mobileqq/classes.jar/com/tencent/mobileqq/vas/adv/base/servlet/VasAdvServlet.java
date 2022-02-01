@@ -17,14 +17,8 @@ import org.jetbrains.annotations.Nullable;
 public final class VasAdvServlet
   extends MSFServlet
 {
-  public static final VasAdvServlet.Companion a;
-  private static final Map<String, VasAdvCallback> a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqVasAdvBaseServletVasAdvServlet$Companion = new VasAdvServlet.Companion(null);
-    jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
-  }
+  public static final VasAdvServlet.Companion a = new VasAdvServlet.Companion(null);
+  private static final Map<String, VasAdvCallback> b = (Map)new LinkedHashMap();
   
   public void onReceive(@Nullable Intent paramIntent, @Nullable FromServiceMsg paramFromServiceMsg)
   {
@@ -34,7 +28,7 @@ public final class VasAdvServlet
       paramIntent = paramIntent.getStringExtra("req_uuid");
       if ((!TextUtils.isEmpty((CharSequence)str)) && (!TextUtils.isEmpty((CharSequence)paramIntent)))
       {
-        Object localObject = (VasAdvCallback)jdField_a_of_type_JavaUtilMap.remove(paramIntent);
+        Object localObject = (VasAdvCallback)b.remove(paramIntent);
         if (!paramFromServiceMsg.isSuccess())
         {
           if (localObject != null) {
@@ -118,7 +112,7 @@ public final class VasAdvServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.servlet.VasAdvServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -17,13 +17,13 @@ class AnimationDrawableFactory$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (AnimationDrawableFactory.a(this.this$0) != null) && (AnimationDrawableFactory.a(this.this$0).get(this.jdField_a_of_type_JavaLangString) != null))
+    if ((this.a) && (AnimationDrawableFactory.a(this.this$0) != null) && (AnimationDrawableFactory.a(this.this$0).get(this.b) != null))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("animationDrawable use cache");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.b);
       QLog.i("AnimationDrawableFactory", 2, ((StringBuilder)localObject1).toString());
-      localObject1 = (AnimationDrawable)AnimationDrawableFactory.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
+      localObject1 = (AnimationDrawable)AnimationDrawableFactory.a(this.this$0).get(this.b);
     }
     else
     {
@@ -32,7 +32,7 @@ class AnimationDrawableFactory$1
     Object localObject2 = localObject1;
     if (localObject1 == null)
     {
-      Object localObject3 = new File(this.jdField_a_of_type_JavaLangString);
+      Object localObject3 = new File(this.b);
       localObject2 = localObject1;
       if (((File)localObject3).exists())
       {
@@ -48,7 +48,7 @@ class AnimationDrawableFactory$1
             if (localObject3.length > 0)
             {
               Arrays.sort((Object[])localObject3, new AnimationDrawableFactory.1.1(this));
-              int j = this.jdField_a_of_type_Int / localObject3.length;
+              int j = this.c / localObject3.length;
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("createFromDirectory perDuration=");
               ((StringBuilder)localObject1).append(j);
@@ -66,14 +66,14 @@ class AnimationDrawableFactory$1
                   if (localObject1 != null) {
                     ((AnimationDrawable)localObject2).addFrame(new BitmapDrawable((Bitmap)localObject1), j);
                   }
-                  AnimationDrawableFactory.a(this.this$0).put(this.jdField_a_of_type_JavaLangString, localObject2);
+                  AnimationDrawableFactory.a(this.this$0).put(this.b, localObject2);
                 }
                 catch (OutOfMemoryError localOutOfMemoryError)
                 {
                   label319:
                   break label319;
                 }
-                localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory$CreateDrawableResultListener;
+                localObject1 = this.d;
                 if (localObject1 != null)
                 {
                   ((AnimationDrawableFactory.CreateDrawableResultListener)localObject1).a(false, null);
@@ -87,7 +87,7 @@ class AnimationDrawableFactory$1
         }
       }
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory$CreateDrawableResultListener;
+    Object localObject1 = this.d;
     if (localObject1 != null)
     {
       if (localObject2 != null)

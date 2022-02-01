@@ -16,22 +16,22 @@ class QFileDiscTransferWrapper$3$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("waterTest, onGetAppDetailTimeLimit. apkName[");
-    localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkName);
+    localStringBuilder.append(this.a.a.yybApkName);
     localStringBuilder.append("]");
     QLog.i("QFileC2CTransferWrapper<FileAssistant>", 1, localStringBuilder.toString());
-    QQFileManagerUtil.FileExecutor.a().execute(this.a.jdField_a_of_type_JavaLangRunnable);
+    QQFileManagerUtil.FileExecutor.a().execute(this.a.b);
   }
   
   public void a(boolean paramBoolean, AppDetail paramAppDetail)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkPackageName = paramAppDetail.packageName;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkName = paramAppDetail.appName;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkIconUrl = paramAppDetail.iconUrl;
+    this.a.a.yybApkPackageName = paramAppDetail.packageName;
+    this.a.a.yybApkName = paramAppDetail.appName;
+    this.a.a.yybApkIconUrl = paramAppDetail.iconUrl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileDiscTransferWrapper.3.1
  * JD-Core Version:    0.7.0.1
  */

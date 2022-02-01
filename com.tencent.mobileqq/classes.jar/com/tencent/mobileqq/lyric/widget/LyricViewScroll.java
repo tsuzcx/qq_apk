@@ -12,31 +12,30 @@ import java.util.Timer;
 public class LyricViewScroll
   extends ScrollView
 {
-  protected volatile int a;
-  protected Scroller a;
-  private LyricViewScroll.LyricViewScrollListener a;
   protected Timer a;
-  protected volatile boolean a;
-  private volatile boolean b = true;
-  private volatile boolean c;
+  protected volatile boolean b = false;
+  protected volatile int c;
+  protected Scroller d;
+  private volatile boolean e = true;
+  private volatile boolean f;
+  private LyricViewScroll.LyricViewScrollListener g;
   
   public LyricViewScroll(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new AccelerateDecelerateInterpolator());
+    this.d = new Scroller(paramContext, new AccelerateDecelerateInterpolator());
   }
   
   public void a(int paramInt)
   {
-    if (!this.c)
+    if (!this.f)
     {
-      paramInt -= this.jdField_a_of_type_Int;
+      paramInt -= this.c;
       if (paramInt != 0)
       {
-        Scroller localScroller = this.jdField_a_of_type_AndroidWidgetScroller;
-        localScroller.startScroll(localScroller.getFinalX(), this.jdField_a_of_type_Int, 0, paramInt, 500);
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetScroller.getFinalY();
+        Scroller localScroller = this.d;
+        localScroller.startScroll(localScroller.getFinalX(), this.c, 0, paramInt, 500);
+        this.c = this.d.getFinalY();
         invalidate();
       }
     }
@@ -44,7 +43,7 @@ public class LyricViewScroll
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    if (!this.b) {
+    if (!this.e) {
       return true;
     }
     int i = paramMotionEvent.getAction() & 0xFF;
@@ -65,24 +64,24 @@ public class LyricViewScroll
           else
           {
             Log.v("LyricViewScroll", "onTouchEvent -> ACTION_CANCEL");
-            this.jdField_a_of_type_Int = getScrollY();
-            this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener.b(this.jdField_a_of_type_Int);
-            this.c = false;
-            if (this.jdField_a_of_type_Boolean)
+            this.c = getScrollY();
+            this.g.b(this.c);
+            this.f = false;
+            if (this.b)
             {
-              localObject = this.jdField_a_of_type_JavaUtilTimer;
+              localObject = this.a;
               if (localObject != null)
               {
                 ((Timer)localObject).cancel();
-                this.jdField_a_of_type_Boolean = false;
+                this.b = false;
               }
             }
           }
         }
         else
         {
-          this.c = true;
-          localObject = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener;
+          this.f = true;
+          localObject = this.g;
           if (localObject != null) {
             ((LyricViewScroll.LyricViewScrollListener)localObject).a(getScrollY());
           }
@@ -91,31 +90,31 @@ public class LyricViewScroll
       else
       {
         Log.v("LyricViewScroll", "onTouchEvent -> ACTION_UP");
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.b)
         {
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_JavaUtilTimer = new Timer();
-          this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new LyricViewScroll.1(this), 100L, 100L);
+          this.b = true;
+          this.a = new Timer();
+          this.a.scheduleAtFixedRate(new LyricViewScroll.1(this), 100L, 100L);
         }
       }
     }
     else
     {
       Log.v("LyricViewScroll", "onTouchEvent -> ACTION_DOWN");
-      this.c = true;
-      if (this.jdField_a_of_type_Boolean)
+      this.f = true;
+      if (this.b)
       {
-        localObject = this.jdField_a_of_type_JavaUtilTimer;
+        localObject = this.a;
         if (localObject != null)
         {
           ((Timer)localObject).cancel();
-          this.jdField_a_of_type_Boolean = false;
+          this.b = false;
         }
       }
     }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
+      this.d.forceFinished(true);
       boolean bool = super.onTouchEvent(paramMotionEvent);
       return bool;
     }
@@ -128,10 +127,10 @@ public class LyricViewScroll
   
   public void b(int paramInt)
   {
-    if (!this.c)
+    if (!this.f)
     {
-      this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
-      this.jdField_a_of_type_Int = paramInt;
+      this.d.forceFinished(true);
+      this.c = paramInt;
       scrollTo(0, paramInt);
     }
   }
@@ -139,9 +138,9 @@ public class LyricViewScroll
   public void computeScroll()
   {
     super.computeScroll();
-    if ((this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset()) && (!this.c))
+    if ((this.d.computeScrollOffset()) && (!this.f))
     {
-      smoothScrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
+      smoothScrollTo(this.d.getCurrX(), this.d.getCurrY());
       postInvalidate();
     }
   }
@@ -153,17 +152,17 @@ public class LyricViewScroll
   
   public void setScrollEnable(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void setScrollListener(LyricViewScroll.LyricViewScrollListener paramLyricViewScrollListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener = paramLyricViewScrollListener;
+    this.g = paramLyricViewScrollListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewScroll
  * JD-Core Version:    0.7.0.1
  */

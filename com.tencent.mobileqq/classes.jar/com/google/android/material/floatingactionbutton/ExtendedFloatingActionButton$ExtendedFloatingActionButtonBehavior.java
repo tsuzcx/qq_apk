@@ -19,26 +19,26 @@ import java.util.List;
 public class ExtendedFloatingActionButton$ExtendedFloatingActionButtonBehavior<T extends ExtendedFloatingActionButton>
   extends CoordinatorLayout.Behavior<T>
 {
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private Rect a;
   @Nullable
-  private ExtendedFloatingActionButton.OnChangedCallback jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$OnChangedCallback;
-  private boolean jdField_a_of_type_Boolean;
+  private ExtendedFloatingActionButton.OnChangedCallback b;
   @Nullable
-  private ExtendedFloatingActionButton.OnChangedCallback jdField_b_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$OnChangedCallback;
-  private boolean jdField_b_of_type_Boolean;
+  private ExtendedFloatingActionButton.OnChangedCallback c;
+  private boolean d;
+  private boolean e;
   
   public ExtendedFloatingActionButton$ExtendedFloatingActionButtonBehavior()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
+    this.d = false;
+    this.e = true;
   }
   
   public ExtendedFloatingActionButton$ExtendedFloatingActionButtonBehavior(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.y);
-    this.jdField_a_of_type_Boolean = paramContext.getBoolean(R.styleable.bE, false);
-    this.jdField_b_of_type_Boolean = paramContext.getBoolean(R.styleable.bF, true);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.cC);
+    this.d = paramContext.getBoolean(R.styleable.cD, false);
+    this.e = paramContext.getBoolean(R.styleable.cE, true);
     paramContext.recycle();
   }
   
@@ -54,7 +54,7 @@ public class ExtendedFloatingActionButton$ExtendedFloatingActionButtonBehavior<T
   private boolean a(@NonNull View paramView, @NonNull ExtendedFloatingActionButton paramExtendedFloatingActionButton)
   {
     paramExtendedFloatingActionButton = (CoordinatorLayout.LayoutParams)paramExtendedFloatingActionButton.getLayoutParams();
-    if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
+    if ((!this.d) && (!this.e)) {
       return false;
     }
     return paramExtendedFloatingActionButton.getAnchorId() == paramView.getId();
@@ -65,12 +65,12 @@ public class ExtendedFloatingActionButton$ExtendedFloatingActionButtonBehavior<T
     if (!a(paramAppBarLayout, paramExtendedFloatingActionButton)) {
       return false;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (this.a == null) {
+      this.a = new Rect();
     }
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    Rect localRect = this.a;
     DescendantOffsetUtils.b(paramCoordinatorLayout, paramAppBarLayout, localRect);
-    if (localRect.bottom <= paramAppBarLayout.e()) {
+    if (localRect.bottom <= paramAppBarLayout.getMinimumHeightForVisibleOverlappingContent()) {
       a(paramExtendedFloatingActionButton);
     } else {
       b(paramExtendedFloatingActionButton);
@@ -95,16 +95,16 @@ public class ExtendedFloatingActionButton$ExtendedFloatingActionButtonBehavior<T
   protected void a(@NonNull ExtendedFloatingActionButton paramExtendedFloatingActionButton)
   {
     ExtendedFloatingActionButton.OnChangedCallback localOnChangedCallback;
-    if (this.jdField_b_of_type_Boolean) {
-      localOnChangedCallback = this.jdField_b_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$OnChangedCallback;
+    if (this.e) {
+      localOnChangedCallback = this.c;
     } else {
-      localOnChangedCallback = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$OnChangedCallback;
+      localOnChangedCallback = this.b;
     }
     MotionStrategy localMotionStrategy;
-    if (this.jdField_b_of_type_Boolean) {
-      localMotionStrategy = ExtendedFloatingActionButton.a(paramExtendedFloatingActionButton);
+    if (this.e) {
+      localMotionStrategy = ExtendedFloatingActionButton.c(paramExtendedFloatingActionButton);
     } else {
-      localMotionStrategy = ExtendedFloatingActionButton.b(paramExtendedFloatingActionButton);
+      localMotionStrategy = ExtendedFloatingActionButton.d(paramExtendedFloatingActionButton);
     }
     ExtendedFloatingActionButton.a(paramExtendedFloatingActionButton, localMotionStrategy, localOnChangedCallback);
   }
@@ -144,16 +144,16 @@ public class ExtendedFloatingActionButton$ExtendedFloatingActionButtonBehavior<T
   protected void b(@NonNull ExtendedFloatingActionButton paramExtendedFloatingActionButton)
   {
     ExtendedFloatingActionButton.OnChangedCallback localOnChangedCallback;
-    if (this.jdField_b_of_type_Boolean) {
-      localOnChangedCallback = this.jdField_b_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$OnChangedCallback;
+    if (this.e) {
+      localOnChangedCallback = this.c;
     } else {
-      localOnChangedCallback = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton$OnChangedCallback;
+      localOnChangedCallback = this.b;
     }
     MotionStrategy localMotionStrategy;
-    if (this.jdField_b_of_type_Boolean) {
-      localMotionStrategy = ExtendedFloatingActionButton.c(paramExtendedFloatingActionButton);
+    if (this.e) {
+      localMotionStrategy = ExtendedFloatingActionButton.e(paramExtendedFloatingActionButton);
     } else {
-      localMotionStrategy = ExtendedFloatingActionButton.d(paramExtendedFloatingActionButton);
+      localMotionStrategy = ExtendedFloatingActionButton.f(paramExtendedFloatingActionButton);
     }
     ExtendedFloatingActionButton.a(paramExtendedFloatingActionButton, localMotionStrategy, localOnChangedCallback);
   }
@@ -167,7 +167,7 @@ public class ExtendedFloatingActionButton$ExtendedFloatingActionButtonBehavior<T
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton.ExtendedFloatingActionButtonBehavior
  * JD-Core Version:    0.7.0.1
  */

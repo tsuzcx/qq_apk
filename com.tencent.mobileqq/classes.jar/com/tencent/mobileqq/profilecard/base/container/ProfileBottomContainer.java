@@ -178,7 +178,7 @@ public class ProfileBottomContainer
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80085C5", "0X80085C5", 0, 0, String.valueOf(j), "", "", "");
     }
     if (i == 3094) {
-      ReportController.a(paramQQAppInterface, "dc00898", "", paramProfileCardInfo.allInOne.uin, "0X80092E2", "0X80092E2", 0, 0, String.valueOf(j), ExtendFriendReport.a(), ExtendFriendReport.a(paramQQAppInterface), ExtendFriendReport.c());
+      ReportController.a(paramQQAppInterface, "dc00898", "", paramProfileCardInfo.allInOne.uin, "0X80092E2", "0X80092E2", 0, 0, String.valueOf(j), ExtendFriendReport.d(), ExtendFriendReport.a(paramQQAppInterface), ExtendFriendReport.f());
     }
     if (addFriendSourceFromNearby(paramQQAppInterface, paramQBaseActivity, paramProfileCardInfo, paramDialog, i)) {
       return;
@@ -215,7 +215,7 @@ public class ProfileBottomContainer
     {
       Dialog localDialog = paramDialog;
       if (paramDialog == null) {
-        localDialog = LBSHandler.a(paramQBaseActivity, paramQBaseActivity.getString(2131694401), new ProfileBottomContainer.9(paramQQAppInterface, paramQBaseActivity, paramProfileCardInfo), new ProfileBottomContainer.10());
+        localDialog = LBSHandler.a(paramQBaseActivity, paramQBaseActivity.getString(2131892080), new ProfileBottomContainer.9(paramQQAppInterface, paramQBaseActivity, paramProfileCardInfo), new ProfileBottomContainer.10());
       }
       if ((!localDialog.isShowing()) && (!paramQBaseActivity.isFinishing())) {
         localDialog.show();
@@ -227,7 +227,7 @@ public class ProfileBottomContainer
   
   public static void enterAudioCall(QQAppInterface paramQQAppInterface, QBaseActivity paramQBaseActivity, ProfileCardInfo paramProfileCardInfo)
   {
-    int i = ProfileCardUtil.a(paramProfileCardInfo.allInOne);
+    int i = ProfileCardUtil.b(paramProfileCardInfo.allInOne);
     String str3 = getCallNickName(paramProfileCardInfo, paramQQAppInterface);
     String str1;
     String str2;
@@ -270,7 +270,7 @@ public class ProfileBottomContainer
   public static void enterChat(QQAppInterface paramQQAppInterface, QBaseActivity paramQBaseActivity, ProfileCardInfo paramProfileCardInfo)
   {
     AllInOne localAllInOne = paramProfileCardInfo.allInOne;
-    int j = ProfileCardUtil.a(localAllInOne);
+    int j = ProfileCardUtil.b(localAllInOne);
     if ((localAllInOne.preWinUin != null) && (localAllInOne.preWinUin.length() > 0) && (localAllInOne.preWinType != 3000) && (localAllInOne.preWinType != 1) && (localAllInOne.preWinType != 2) && (localAllInOne.preWinType != 1033) && (localAllInOne.preWinType != 1034) && (localAllInOne.preWinType != 1044) && (localAllInOne.preWinType != 1045) && (localAllInOne.preWinUin.equals(localAllInOne.uin)))
     {
       paramQQAppInterface = new Intent();
@@ -353,12 +353,12 @@ public class ProfileBottomContainer
       localIntent.putExtra("rich_accost_sig", paramProfileCardInfo.allInOne.chatCookie);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileBottomContainer", 2, String.format(Locale.getDefault(), "enterChar uin: %s name: %s sig: %s", new Object[] { Utils.a(paramProfileCardInfo.allInOne.uin), Utils.a(str), Utils.a(paramProfileCardInfo.allInOne.chatCookie) }));
+      QLog.d("ProfileBottomContainer", 2, String.format(Locale.getDefault(), "enterChar uin: %s name: %s sig: %s", new Object[] { Utils.i(paramProfileCardInfo.allInOne.uin), Utils.i(str), Utils.b(paramProfileCardInfo.allInOne.chatCookie) }));
     }
     paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = paramQQAppInterface.a(paramProfileCardInfo.allInOne.uin);
+      paramQQAppInterface = paramQQAppInterface.b(paramProfileCardInfo.allInOne.uin);
       if ((paramQQAppInterface != null) && ((CrmUtils.a(paramQQAppInterface.cSpecialFlag)) || (QidianManager.b(paramQQAppInterface.cSpecialFlag)))) {
         localIntent.putExtra("chat_subType", 1);
       }
@@ -375,12 +375,12 @@ public class ProfileBottomContainer
     localIntent.putExtra("PREVIOUS_WINDOW", this.mActivity.getClass().getName());
     localIntent.putExtra("PREVIOUS_UIN", ((ProfileCardInfo)this.mData).allInOne.uin);
     Object localObject = (FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if ((!((ProfileCardInfo)this.mData).troopMemberCard.isFriend) && ((localObject == null) || (!((FriendsManager)localObject).b(((ProfileCardInfo)this.mData).allInOne.uin)))) {
+    if ((!((ProfileCardInfo)this.mData).troopMemberCard.isFriend) && ((localObject == null) || (!((FriendsManager)localObject).n(((ProfileCardInfo)this.mData).allInOne.uin)))) {
       localIntent.putExtra("uintype", 1000);
     } else {
       localIntent.putExtra("uintype", 0);
     }
-    String str = ContactUtils.b(this.mQQAppInterface, ((ProfileCardInfo)this.mData).troopUin, ((ProfileCardInfo)this.mData).allInOne.uin);
+    String str = ContactUtils.d(this.mQQAppInterface, ((ProfileCardInfo)this.mData).troopUin, ((ProfileCardInfo)this.mData).allInOne.uin);
     localObject = str;
     if (TextUtils.isEmpty(str)) {
       localObject = ((ProfileCardInfo)this.mData).troopMemberCard.nick;
@@ -410,7 +410,7 @@ public class ProfileBottomContainer
   
   private static String getCallNickName(ProfileCardInfo paramProfileCardInfo, QQAppInterface paramQQAppInterface)
   {
-    int i = ProfileCardUtil.a(paramProfileCardInfo.allInOne);
+    int i = ProfileCardUtil.b(paramProfileCardInfo.allInOne);
     Object localObject2 = null;
     Object localObject1 = null;
     if (i == 0)
@@ -470,14 +470,14 @@ public class ProfileBottomContainer
   
   private void handleAddFriendClick()
   {
-    if (QSecFramework.a().a(1001).booleanValue()) {
-      QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(6), "addfriend", null }, null);
+    if (QSecFramework.c().a(1001).booleanValue()) {
+      QSecFramework.c().a(5, 0, 2, new Object[] { Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(6), "addfriend", null }, null);
     }
     addFriendInner();
     if (((ProfileCardInfo)this.mData).allInOne.profileEntryType == 119) {
       ReportController.b(this.mApp, "dc01160", "", "", "0X800A410", "0X800A410", 0, 0, "", "", "", "");
     }
-    if (Utils.b(((ProfileCardInfo)this.mData).allInOne.uin)) {
+    if (Utils.c(((ProfileCardInfo)this.mData).allInOne.uin)) {
       ReportController.b(this.mApp, "dc00898", "", "", "0X8008274", "0X8008274", 0, 0, "", "", "", "");
     }
     ProfileCardReport.reportAddFriendClick(this.mQQAppInterface, (ProfileCardInfo)this.mData);
@@ -487,7 +487,7 @@ public class ProfileBottomContainer
   {
     if (((ProfileCardInfo)this.mData).allInOne.profileEntryType == 126)
     {
-      DialogUtil.a(this.mActivity, 230, "", this.mActivity.getString(2131692158), this.mActivity.getString(2131692625), this.mActivity.getString(2131692157), new ProfileBottomContainer.3(this), new ProfileBottomContainer.4(this)).show();
+      DialogUtil.a(this.mActivity, 230, "", this.mActivity.getString(2131889144), this.mActivity.getString(2131889648), this.mActivity.getString(2131889143), new ProfileBottomContainer.3(this), new ProfileBottomContainer.4(this)).show();
     }
     else
     {
@@ -516,10 +516,9 @@ public class ProfileBottomContainer
     arrayOfInt[0] = 1;
     arrayOfInt[1] = 2;
     VideoActionSheet localVideoActionSheet = VideoActionSheet.a(this.mActivity);
-    localVideoActionSheet.setMainTitle(2131689542);
-    localVideoActionSheet.addButton(2131719732);
-    localVideoActionSheet.addButton(2131719746);
-    localVideoActionSheet.addCancelButton(2131690728);
+    localVideoActionSheet.addButton(2131917335);
+    localVideoActionSheet.addButton(2131917349);
+    localVideoActionSheet.addCancelButton(2131887648);
     localVideoActionSheet.setOnDismissListener(new ProfileBottomContainer.7(this));
     localVideoActionSheet.setOnButtonClickListener(new ProfileBottomContainer.8(this, arrayOfInt, localVideoActionSheet));
     localVideoActionSheet.show();
@@ -560,11 +559,11 @@ public class ProfileBottomContainer
   
   private void handleTemplateClick(View paramView, DataTag paramDataTag)
   {
-    View localView = paramView.findViewById(2131380160);
+    View localView = paramView.findViewById(2131449075);
     ViewParent localViewParent = paramView.getParent();
     paramView = localView;
     if ((localViewParent instanceof View)) {
-      paramView = ((View)localViewParent).findViewById(2131380160);
+      paramView = ((View)localViewParent).findViewById(2131449075);
     }
     int i = 1;
     if (paramView != null)
@@ -612,7 +611,7 @@ public class ProfileBottomContainer
     ((Map)localObject2).put("big_brother_ref_source_key", "biz_src_hdsp_liwu");
     TroopGiftUtil.a(this.mActivity, ((ProfileCardInfo)this.mData).troopUin, ((ProfileCardInfo)this.mData).card.uin, (String)localObject1, "profilecard", this.mQQAppInterface, (Map)localObject2);
     ProfileCardReport.reportTroopProfileCardGivePresentClick(this.mQQAppInterface, (ProfileCardInfo)this.mData);
-    localObject1 = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).b(((ProfileCardInfo)this.mData).troopUin);
+    localObject1 = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).f(((ProfileCardInfo)this.mData).troopUin);
     if (localObject1 != null)
     {
       int i;
@@ -643,30 +642,30 @@ public class ProfileBottomContainer
     if (((ProfileCardInfo)this.mData).isTroopMemberCard)
     {
       if (((ProfileCardInfo)this.mData).allInOne.pa == 0) {
-        updateBtn(this.mBtnsContainer.getChildAt(0), 23, 2131695054, 1, 2131691214);
+        updateBtn(this.mBtnsContainer.getChildAt(0), 23, 2131892782, 1, 2131888160);
       }
-      updateBtn(this.mBtnsContainer.getChildAt(1), 81, 2131693301, 1, 2131691161);
+      updateBtn(this.mBtnsContainer.getChildAt(1), 81, 2131890849, 1, 2131888107);
     }
     else if (QVipUtils.a(this.mQQAppInterface))
     {
-      updateBtn(this.mBtnsContainer.getChildAt(0), 92, 2131695055, 1, 2131695055);
-      updateBtn(this.mBtnsContainer.getChildAt(1), 81, 2131693301, 1, 2131691161);
+      updateBtn(this.mBtnsContainer.getChildAt(0), 92, 2131892783, 1, 2131892783);
+      updateBtn(this.mBtnsContainer.getChildAt(1), 81, 2131890849, 1, 2131888107);
     }
     else
     {
-      updateBtn(this.mBtnsContainer.getChildAt(0), 23, 2131695054, 1, 2131691214);
-      updateBtn(this.mBtnsContainer.getChildAt(1), 81, 2131693301, 1, 2131691161);
+      updateBtn(this.mBtnsContainer.getChildAt(0), 23, 2131892782, 1, 2131888160);
+      updateBtn(this.mBtnsContainer.getChildAt(1), 81, 2131890849, 1, 2131888107);
     }
     FriendsManager localFriendsManager = (FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localFriendsManager != null) {
-      paramBoolean1 = localFriendsManager.b(this.mApp.getCurrentUin());
+      paramBoolean1 = localFriendsManager.n(this.mApp.getCurrentUin());
     }
     if ((((ProfileCardInfo)this.mData).allInOne.pa == 0) && (!paramBoolean1))
     {
-      updateBtn(this.mBtnsContainer.getChildAt(2), 7, 2131693278, 2, 2131691148);
+      updateBtn(this.mBtnsContainer.getChildAt(2), 7, 2131890826, 2, 2131888094);
       return;
     }
-    updateBtn(this.mBtnsContainer.getChildAt(2), 8, 2131718751, 2, 2131691231);
+    updateBtn(this.mBtnsContainer.getChildAt(2), 8, 2131916257, 2, 2131888177);
   }
   
   private void handleUpdateBtnGroupInner2(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -676,32 +675,32 @@ public class ProfileBottomContainer
     default: 
       return;
     case 7: 
-      updateBtn(this.mBtnsContainer.getChildAt(4), 8, 2131718751, 2, 2131691231);
+      updateBtn(this.mBtnsContainer.getChildAt(4), 8, 2131916257, 2, 2131888177);
       return;
     case 6: 
-      updateBtn(this.mBtnsContainer.getChildAt(4), 7, 2131693278, 2, 2131691148);
+      updateBtn(this.mBtnsContainer.getChildAt(4), 7, 2131890826, 2, 2131888094);
       return;
     case 5: 
-      updateBtn(this.mBtnsContainer.getChildAt(1), 7, 2131693278, 1, 2131691148);
+      updateBtn(this.mBtnsContainer.getChildAt(1), 7, 2131890826, 1, 2131888094);
       updateBtn(this.mBtnsContainer.getChildAt(2), 20, this.mConfigHelper.getVoiceBtnWording(), 1, this.mConfigHelper.getVoiceBtnWording(), 0);
       return;
     case 4: 
       updateBtn(this.mBtnsContainer.getChildAt(1), 20, this.mConfigHelper.getVoiceBtnWording(), 1, this.mConfigHelper.getVoiceBtnWording(), 0);
-      if ((!paramBoolean2) && (!StudyModeManager.a()))
+      if ((!paramBoolean2) && (!StudyModeManager.h()))
       {
-        updateBtn(this.mBtnsContainer.getChildAt(2), 95, 2131698746, 1, 2131698746);
+        updateBtn(this.mBtnsContainer.getChildAt(2), 95, 2131896704, 1, 2131896704);
         ReportController.b(this.mApp, "", "", "", "0X800A1C4", "0X800A1C4", 0, 0, "", "", "", "");
       }
-      updateBtn(this.mBtnsContainer.getChildAt(4), 8, 2131718751, 2, 2131691231);
+      updateBtn(this.mBtnsContainer.getChildAt(4), 8, 2131916257, 2, 2131888177);
       return;
     case 3: 
-      updateBtn(this.mBtnsContainer.getChildAt(1), 7, 2131693278, 1, 2131691148);
-      updateBtn(this.mBtnsContainer.getChildAt(4), 8, 2131718751, 2, 2131691231);
+      updateBtn(this.mBtnsContainer.getChildAt(1), 7, 2131890826, 1, 2131888094);
+      updateBtn(this.mBtnsContainer.getChildAt(4), 8, 2131916257, 2, 2131888177);
       return;
     }
-    updateBtn(this.mBtnsContainer.getChildAt(1), 7, 2131693278, 1, 2131691148);
+    updateBtn(this.mBtnsContainer.getChildAt(1), 7, 2131890826, 1, 2131888094);
     updateBtn(this.mBtnsContainer.getChildAt(2), 20, this.mConfigHelper.getVoiceBtnWording(), 1, this.mConfigHelper.getVoiceBtnWording(), 0);
-    updateBtn(this.mBtnsContainer.getChildAt(4), 8, 2131718751, 2, 2131691231);
+    updateBtn(this.mBtnsContainer.getChildAt(4), 8, 2131916257, 2, 2131888177);
   }
   
   private void handleUpdateBtnGroupInner3(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -713,21 +712,21 @@ public class ProfileBottomContainer
       return;
     case 12: 
       if (ProfilePAUtils.isPaTypeCanAddAsFriend(((ProfileCardInfo)this.mData).allInOne)) {
-        updateBtn(this.mBtnsContainer.getChildAt(1), 7, 2131693278, 1, 2131691148);
+        updateBtn(this.mBtnsContainer.getChildAt(1), 7, 2131890826, 1, 2131888094);
       } else {
         updateBtn(this.mBtnsContainer.getChildAt(1), 20, this.mConfigHelper.getVoiceBtnWording(), 1, this.mConfigHelper.getVoiceBtnWording(), 0);
       }
-      if ((!paramBoolean2) && (!StudyModeManager.a())) {
-        updateBtn(this.mBtnsContainer.getChildAt(2), 77, 2131698746, 1, 2131698746);
+      if ((!paramBoolean2) && (!StudyModeManager.h())) {
+        updateBtn(this.mBtnsContainer.getChildAt(2), 77, 2131896704, 1, 2131896704);
       }
-      updateBtn(this.mBtnsContainer.getChildAt(4), 8, 2131718751, 2, 2131691231);
+      updateBtn(this.mBtnsContainer.getChildAt(4), 8, 2131916257, 2, 2131888177);
       return;
     case 11: 
-      updateBtn(this.mBtnsContainer.getChildAt(1), 59, 2131693350, 1, 2131693350);
-      updateBtn(this.mBtnsContainer.getChildAt(4), 7, 2131693278, 2, 2131691148);
+      updateBtn(this.mBtnsContainer.getChildAt(1), 59, 2131890899, 1, 2131890899);
+      updateBtn(this.mBtnsContainer.getChildAt(4), 7, 2131890826, 2, 2131888094);
       return;
     case 10: 
-      updateBtn(this.mBtnsContainer.getChildAt(1), 59, 2131693350, 1, 2131693350);
+      updateBtn(this.mBtnsContainer.getChildAt(1), 59, 2131890899, 1, 2131890899);
       return;
     }
     updateBtn(this.mBtnsContainer.getChildAt(1), 20, this.mConfigHelper.getVoiceBtnWording(), 1, this.mConfigHelper.getVoiceBtnWording(), 0);
@@ -738,28 +737,28 @@ public class ProfileBottomContainer
     Object localObject2 = this.mActivity.getResources();
     Object localObject1 = this.mActivity.getLayoutInflater();
     paramLinearLayout.removeAllViews();
-    int i = ((Resources)localObject2).getDimensionPixelSize(2131296729);
-    int j = ((Resources)localObject2).getDimensionPixelSize(2131296729);
+    int i = ((Resources)localObject2).getDimensionPixelSize(2131297060);
+    int j = ((Resources)localObject2).getDimensionPixelSize(2131297060);
     if ((this.mData != null) && (((ProfileCardInfo)this.mData).allInOne != null) && (((ProfileCardInfo)this.mData).allInOne.pa != 33))
     {
       LinearLayout.LayoutParams localLayoutParams;
       if ((((ProfileCardInfo)this.mData).allInOne.pa == 0) && (!TextUtils.isEmpty(((ProfileCardInfo)this.mData).allInOne.uin)))
       {
-        localObject2 = ((LayoutInflater)localObject1).inflate(2131562019, null);
+        localObject2 = ((LayoutInflater)localObject1).inflate(2131628445, null);
         localLayoutParams = new LinearLayout.LayoutParams(0, -2);
         localLayoutParams.weight = 1.0F;
         localLayoutParams.rightMargin = j;
         paramLinearLayout.addView((View)localObject2, localLayoutParams);
-        this.mTemplateCardRedTouch = new RedTouch(this.mActivity, (View)localObject2).d(30).e(30).a();
+        this.mTemplateCardRedTouch = new RedTouch(this.mActivity, (View)localObject2).b(30.0F).c(30.0F).a();
         if (this.mTemplateCardRedTouch != null) {
           updateTemplateRedTouch();
         }
-        localObject2 = ((LayoutInflater)localObject1).inflate(2131562019, null);
+        localObject2 = ((LayoutInflater)localObject1).inflate(2131628445, null);
         localLayoutParams = new LinearLayout.LayoutParams(0, -2);
         localLayoutParams.weight = 1.0F;
         localLayoutParams.rightMargin = i;
         paramLinearLayout.addView((View)localObject2, localLayoutParams);
-        localObject2 = ((LayoutInflater)localObject1).inflate(2131561308, null);
+        localObject2 = ((LayoutInflater)localObject1).inflate(2131627664, null);
         localLayoutParams = new LinearLayout.LayoutParams(0, -2);
         localLayoutParams.weight = 1.0F;
         localLayoutParams.rightMargin = i;
@@ -767,26 +766,26 @@ public class ProfileBottomContainer
       }
       if (((ProfileCardInfo)this.mData).allInOne.pa != 0)
       {
-        localObject2 = ((LayoutInflater)localObject1).inflate(2131561324, null);
+        localObject2 = ((LayoutInflater)localObject1).inflate(2131627680, null);
         localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
         localLayoutParams.rightMargin = j;
         paramLinearLayout.addView((View)localObject2, localLayoutParams);
-        localObject2 = ((LayoutInflater)localObject1).inflate(2131561393, null);
+        localObject2 = ((LayoutInflater)localObject1).inflate(2131627749, null);
         localLayoutParams = new LinearLayout.LayoutParams(0, -2);
         localLayoutParams.weight = 1.0F;
         localLayoutParams.rightMargin = j;
         paramLinearLayout.addView((View)localObject2, localLayoutParams);
-        localObject2 = ((LayoutInflater)localObject1).inflate(2131561393, null);
+        localObject2 = ((LayoutInflater)localObject1).inflate(2131627749, null);
         localLayoutParams = new LinearLayout.LayoutParams(0, -2);
         localLayoutParams.weight = 1.0F;
         localLayoutParams.rightMargin = j;
         paramLinearLayout.addView((View)localObject2, localLayoutParams);
-        localObject2 = ((LayoutInflater)localObject1).inflate(2131561393, null);
+        localObject2 = ((LayoutInflater)localObject1).inflate(2131627749, null);
         localLayoutParams = new LinearLayout.LayoutParams(0, -2);
         localLayoutParams.weight = 1.0F;
         localLayoutParams.rightMargin = j;
         paramLinearLayout.addView((View)localObject2, localLayoutParams);
-        localObject1 = ((LayoutInflater)localObject1).inflate(2131561308, null);
+        localObject1 = ((LayoutInflater)localObject1).inflate(2131627664, null);
         localObject2 = new LinearLayout.LayoutParams(0, -2);
         ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
         ((LinearLayout.LayoutParams)localObject2).rightMargin = j;
@@ -799,8 +798,8 @@ public class ProfileBottomContainer
   {
     if (this.mViewContainer != null)
     {
-      this.mActivity.getLayoutInflater().inflate(2131561309, (ViewGroup)this.mViewContainer);
-      this.mBtnsContainer = ((LinearLayout)((FrameLayout)this.mViewContainer).findViewById(2131364110));
+      this.mActivity.getLayoutInflater().inflate(2131627665, (ViewGroup)this.mViewContainer);
+      this.mBtnsContainer = ((LinearLayout)((FrameLayout)this.mViewContainer).findViewById(2131430077));
       initBottomBtns(this.mBtnsContainer);
       ((FrameLayout)this.mViewContainer).setVisibility(8);
       this.mBtnsContainer.setVisibility(8);
@@ -846,15 +845,15 @@ public class ProfileBottomContainer
           }
           else
           {
-            if (TextUtils.isEmpty(paramProfileCardInfo.profileName.a.a)) {
+            if (TextUtils.isEmpty(paramProfileCardInfo.profileName.a.b)) {
               break;
             }
-            localObject1 = paramProfileCardInfo.profileName.a.a;
+            localObject1 = paramProfileCardInfo.profileName.a.b;
           }
         }
       }
       localObject2 = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardActivityClass();
-      localObject1 = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(paramQBaseActivity, 2, str, null, paramInt1, paramInt2, (String)localObject1, null, ((Class)localObject2).getName(), paramQBaseActivity.getString(2131690706), null);
+      localObject1 = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(paramQBaseActivity, 2, str, null, paramInt1, paramInt2, (String)localObject1, null, ((Class)localObject2).getName(), paramQBaseActivity.getString(2131887625), null);
       ((Intent)localObject1).putExtra("param_return_profilecard_pa", paramProfileCardInfo.allInOne.pa);
       ((Intent)localObject1).putExtra("key_param_age_area", paramString);
       ProfileActivity.a(paramQBaseActivity, (Intent)localObject1, paramProfileCardInfo);
@@ -904,16 +903,16 @@ public class ProfileBottomContainer
       }
       localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = paramProfileCardInfo.profileName.a.a;
+        localObject1 = paramProfileCardInfo.profileName.a.b;
       }
-      paramString = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(paramQBaseActivity, 1, paramProfileCardInfo.allInOne.uin, localObject3, paramInt1, paramInt2, (String)localObject1, null, paramString, paramQBaseActivity.getString(2131690706), null);
+      paramString = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(paramQBaseActivity, 1, paramProfileCardInfo.allInOne.uin, localObject3, paramInt1, paramInt2, (String)localObject1, null, paramString, paramQBaseActivity.getString(2131887625), null);
       paramString.putExtra("from_babyq", paramBoolean);
       ProfileActivity.a(paramQBaseActivity, paramString, paramProfileCardInfo);
       ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(paramQBaseActivity, paramString);
       return;
     }
     localObject1 = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardActivityClass();
-    localObject1 = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(paramQBaseActivity, 1, paramProfileCardInfo.allInOne.uin, localObject3, paramInt1, paramInt2, (String)localObject2, null, ((Class)localObject1).getName(), paramQBaseActivity.getString(2131690706), null);
+    localObject1 = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(paramQBaseActivity, 1, paramProfileCardInfo.allInOne.uin, localObject3, paramInt1, paramInt2, (String)localObject2, null, ((Class)localObject1).getName(), paramQBaseActivity.getString(2131887625), null);
     ((Intent)localObject1).putExtra("from_babyq", paramBoolean);
     ProfileActivity.a(paramQBaseActivity, (Intent)localObject1, paramProfileCardInfo);
     if (paramInt1 == 3094)
@@ -933,7 +932,7 @@ public class ProfileBottomContainer
     BusinessInfoCheckUpdate.AppInfo localAppInfo = this.mTemplateRedPointInfo;
     if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() != 0))
     {
-      ((RedTouchManager)this.mApp.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(String.format("%d%s%d", new Object[] { Integer.valueOf(100100), ".", Integer.valueOf(100120) }));
+      ((RedTouchManager)this.mApp.getManager(QQManagerFactory.MGR_RED_TOUCH)).c(String.format("%d%s%d", new Object[] { Integer.valueOf(100100), ".", Integer.valueOf(100120) }));
       this.mTemplateRedPointInfo = null;
     }
   }
@@ -1391,31 +1390,31 @@ public class ProfileBottomContainer
       DataTag localDataTag = new DataTag(paramInt1, null);
       if (paramInt2 == 0)
       {
-        paramView = (ImageButton)paramView.findViewById(2131368591);
+        paramView = (ImageButton)paramView.findViewById(2131435503);
         paramView.setTag(localDataTag);
         paramView.setOnClickListener(this);
         paramView.setImageResource(paramInt3);
         paramView.setContentDescription(paramString2);
         return;
       }
-      paramView = (Button)paramView.findViewById(2131379994);
+      paramView = (Button)paramView.findViewById(2131448897);
       paramView.setTag(localDataTag);
       paramView.setOnClickListener(this);
       paramView.setContentDescription(paramString2);
       paramView.setText(paramString1);
       paramView.setSingleLine();
-      paramInt3 = 2131167089;
+      paramInt3 = 2131168041;
       if (paramInt2 == 2) {
-        paramInt2 = 2131167089;
+        paramInt2 = 2131168041;
       } else {
-        paramInt2 = 2131167091;
+        paramInt2 = 2131168043;
       }
       if (ThemeUtil.isInNightMode(this.mApp)) {
         paramInt2 = paramInt3;
       }
       paramView.setTextColor(this.mActivity.getResources().getColor(paramInt2));
-      if ((7 == paramInt1) && (QSecFramework.a().a(1001).booleanValue())) {
-        QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(1), paramView }, null);
+      if ((7 == paramInt1) && (QSecFramework.c().a(1001).booleanValue())) {
+        QSecFramework.c().a(5, 0, 1, new Object[] { Integer.valueOf(1), paramView }, null);
       }
     }
   }
@@ -1447,7 +1446,7 @@ public class ProfileBottomContainer
     }
     boolean bool2 = paramBoolean;
     boolean bool4 = bool3;
-    if (Utils.b(((ProfileCardInfo)this.mData).allInOne.uin))
+    if (Utils.c(((ProfileCardInfo)this.mData).allInOne.uin))
     {
       bool1 = bool3;
       if (this.mIsFromArkBabyQ)
@@ -1559,9 +1558,9 @@ public class ProfileBottomContainer
     Object localObject = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
     boolean bool1 = ((ProfileCardInfo)this.mData).isTroopMemberCard;
     boolean bool2 = true;
-    if ((bool1) && (((TroopManager)localObject).m(((ProfileCardInfo)this.mData).troopUin)))
+    if ((bool1) && (((TroopManager)localObject).Z(((ProfileCardInfo)this.mData).troopUin)))
     {
-      localObject = ((TroopManager)localObject).c(((ProfileCardInfo)this.mData).troopUin);
+      localObject = ((TroopManager)localObject).g(((ProfileCardInfo)this.mData).troopUin);
       ProfileTroopMemInfoComponent localProfileTroopMemInfoComponent = (ProfileTroopMemInfoComponent)this.mComponentCenter.getComponent(1013);
       if (localProfileTroopMemInfoComponent != null) {
         localProfileTroopMemInfoComponent.checkAndUpdateTroopInfo((TroopInfo)localObject);
@@ -1727,7 +1726,7 @@ public class ProfileBottomContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.container.ProfileBottomContainer
  * JD-Core Version:    0.7.0.1
  */

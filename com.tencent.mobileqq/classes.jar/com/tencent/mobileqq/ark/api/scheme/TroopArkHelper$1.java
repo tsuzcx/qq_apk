@@ -15,14 +15,14 @@ class TroopArkHelper$1
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqArkApiSchemeTroopArkHelper.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
-      ((ITroopBatchInfohandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_BATCH_INFO_HANDLER)).a(TroopFileHandler.a(this.jdField_a_of_type_ComTencentMobileqqArkApiSchemeTroopArkHelper.jdField_a_of_type_JavaLangString), true, 0);
+      this.a.addObserver(this.b.b);
+      ((ITroopBatchInfohandler)this.a.getBusinessHandler(BusinessHandlerFactory.TROOP_BATCH_INFO_HANDLER)).a(TroopFileHandler.a(this.b.a), true, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.scheme.TroopArkHelper.1
  * JD-Core Version:    0.7.0.1
  */

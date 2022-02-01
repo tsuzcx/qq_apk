@@ -20,7 +20,7 @@ public class SuperMaskResPreloadServiceImpl
   
   public ConcurrentHashMap<String, MaterialData> getAllDBData()
   {
-    return this.resManager.a();
+    return this.resManager.g();
   }
   
   public void init()
@@ -47,7 +47,7 @@ public class SuperMaskResPreloadServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.SuperMaskResPreloadServiceImpl
  * JD-Core Version:    0.7.0.1
  */

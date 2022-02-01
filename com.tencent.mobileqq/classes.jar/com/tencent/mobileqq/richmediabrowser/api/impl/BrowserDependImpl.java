@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.widget.RelativeLayout;
+import androidx.annotation.NonNull;
 import com.tencent.aelight.camera.qqstory.api.IAELaunchEditPic;
 import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.mobileqq.MsgRevokeListener;
@@ -19,6 +20,7 @@ import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.haoliyou.orion.ZhuoXusManager;
+import com.tencent.mobileqq.mini.api.IMiniAppFileMaterialService;
 import com.tencent.mobileqq.pic.PicShareToWX;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -38,6 +40,7 @@ import com.tencent.mobileqq.richmediabrowser.utils.ForwardUtils;
 import com.tencent.mobileqq.richmediabrowser.utils.GalleryJumpUtils;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.RichMediaShareActionSheetUtil;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
@@ -58,6 +61,16 @@ public class BrowserDependImpl
 {
   private static final String TAG = "BrowserDependImpl";
   
+  private boolean addOpenWithMiniAppMenuItemIfNeeded(@NonNull ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList)
+  {
+    if (((IMiniAppFileMaterialService)QRoute.api(IMiniAppFileMaterialService.class)).isMimeTypeSupported("image/*"))
+    {
+      RichMediaShareActionSheetUtil.a(166, 64, paramArrayList);
+      return true;
+    }
+    return false;
+  }
+  
   private boolean isNeedUpdateMsg(MessageForShortVideo paramMessageForShortVideo, int paramInt1, int paramInt2, int paramInt3)
   {
     return ((paramMessageForShortVideo.videoFileStatus == 1002) || (paramMessageForShortVideo.videoFileStatus == 2002)) && (paramMessageForShortVideo.videoFileStatus == paramInt1) && (paramInt2 - paramInt3 < 10);
@@ -73,14 +86,14 @@ public class BrowserDependImpl
     AIOGalleryMsgRevokeMgr.a(paramActivity, paramRelativeLayout);
   }
   
-  public String checkQQCode(Uri paramUri, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList, Activity paramActivity, String paramString, ShareActionSheet paramShareActionSheet)
+  public String checkQQCode(Uri paramUri, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList1, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList2, Activity paramActivity, String paramString, ShareActionSheet paramShareActionSheet)
   {
     Object localObject = (IScanUtilApi)QRoute.api(IScanUtilApi.class);
     int k = 0;
     localObject = ((IScanUtilApi)localObject).decodeQQCodeFromFile(paramUri, paramActivity, 3, false);
     if (localObject != null)
     {
-      ThreadManager.getUIHandler().post(new BrowserDependImpl.3(this, paramActivity, (ScannerResult)localObject, paramArrayList, paramString, paramShareActionSheet));
+      ThreadManager.getUIHandler().post(new BrowserDependImpl.3(this, paramActivity, (ScannerResult)localObject, paramArrayList2, paramString, paramArrayList1, paramShareActionSheet));
       if (((ScannerResult)localObject).a != null) {
         i = ((ScannerResult)localObject).a.size();
       } else {
@@ -92,21 +105,22 @@ public class BrowserDependImpl
       } else {
         j = 0;
       }
-      paramArrayList = BrowserLogHelper.getInstance().getGalleryLog();
-      paramActivity = new StringBuilder();
-      paramActivity.append("qrSize = ");
-      paramActivity.append(i);
-      paramActivity.append(", miniSize = ");
-      paramActivity.append(j);
-      paramArrayList.d("BrowserDependImpl", 4, paramActivity.toString());
+      paramArrayList1 = BrowserLogHelper.getInstance().getGalleryLog();
+      paramArrayList2 = new StringBuilder();
+      paramArrayList2.append("qrSize = ");
+      paramArrayList2.append(i);
+      paramArrayList2.append(", miniSize = ");
+      paramArrayList2.append(j);
+      paramArrayList1.d("BrowserDependImpl", 4, paramArrayList2.toString());
     }
     else
     {
+      ThreadManager.getUIHandler().post(new BrowserDependImpl.4(this, paramArrayList1, paramShareActionSheet));
       BrowserLogHelper.getInstance().getGalleryLog().d("BrowserDependImpl", 4, "checkQQCode scannerResult is null");
     }
     int i = k;
     if (localObject != null) {
-      i = ((ScannerResult)localObject).a();
+      i = ((ScannerResult)localObject).e();
     }
     if (i > 0) {
       return paramUri.getPath();
@@ -138,7 +152,7 @@ public class BrowserDependImpl
     if ((paramParcelable instanceof AIOPictureData))
     {
       Bundle localBundle = new Bundle();
-      localBundle.putString("pic_md5", ((AIOPictureData)paramParcelable).f);
+      localBundle.putString("pic_md5", ((AIOPictureData)paramParcelable).u);
       paramParcelable = new BrowserDependImpl.1(this, paramActivity);
       QIPCClientHelper.getInstance().callServer("EmoticonIPCModule", "action_group_emo_big_pic_add_fav", localBundle, paramParcelable);
     }
@@ -147,26 +161,26 @@ public class BrowserDependImpl
   public void dealPicForwardToGroupAlbum(AIOPictureData paramAIOPictureData, Context paramContext, IProvider paramIProvider)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ParamsManager.a().d());
+    localStringBuilder.append(ParamsManager.a().k());
     localStringBuilder.append("__qzone_pic_permission__");
-    localStringBuilder.append(ParamsManager.a().a());
-    if (LocalMultiProcConfig.getInt4Uin(localStringBuilder.toString(), -1, Long.valueOf(ParamsManager.a().d()).longValue()) == 0)
+    localStringBuilder.append(ParamsManager.a().e());
+    if (LocalMultiProcConfig.getInt4Uin(localStringBuilder.toString(), -1, Long.valueOf(ParamsManager.a().k()).longValue()) == 0)
     {
-      paramAIOPictureData = new QQCustomDialog(paramContext, 2131756189);
-      paramAIOPictureData.setContentView(2131558978);
-      paramAIOPictureData.setTitle(paramContext.getString(2131720003));
-      paramAIOPictureData.setMessage(paramContext.getString(2131720001));
-      paramAIOPictureData.setNegativeButton(paramContext.getString(2131720002), new BrowserDependImpl.2(this, paramContext));
+      paramAIOPictureData = new QQCustomDialog(paramContext, 2131953338);
+      paramAIOPictureData.setContentView(2131624611);
+      paramAIOPictureData.setTitle(paramContext.getString(2131917608));
+      paramAIOPictureData.setMessage(paramContext.getString(2131917606));
+      paramAIOPictureData.setNegativeButton(paramContext.getString(2131917607), new BrowserDependImpl.2(this, paramContext));
       paramAIOPictureData.setCanceledOnTouchOutside(false);
       paramAIOPictureData.setCancelable(false);
       paramAIOPictureData.show();
-      QZoneClickReport.startReportImediately(ParamsManager.a().d(), "40", "1");
+      QZoneClickReport.startReportImediately(ParamsManager.a().k(), "40", "1");
       return;
     }
     if (paramIProvider != null) {
       paramIProvider.a("Pic_Forward_Grpalbum", 0);
     }
-    AIOGalleryUtils.a((Activity)paramContext, ParamsManager.a().d(), ParamsManager.a().a(), ParamsManager.a().b(), paramAIOPictureData.a, paramAIOPictureData.jdField_e_of_type_JavaLangString, paramAIOPictureData.jdField_e_of_type_Long, -1);
+    AIOGalleryUtils.a((Activity)paramContext, ParamsManager.a().k(), ParamsManager.a().e(), ParamsManager.a().f(), paramAIOPictureData.j, paramAIOPictureData.r, paramAIOPictureData.s, -1);
   }
   
   public void dealSendToWeiYun(Parcelable paramParcelable)
@@ -174,7 +188,7 @@ public class BrowserDependImpl
     if ((paramParcelable instanceof AIOPictureData))
     {
       Bundle localBundle = new Bundle();
-      localBundle.putString("pic_md5", ((AIOPictureData)paramParcelable).f);
+      localBundle.putString("pic_md5", ((AIOPictureData)paramParcelable).u);
       QIPCClientHelper.getInstance().callServer("EmoticonIPCModule", "action_group_emo_big_pic_upload_wy", localBundle, null);
     }
   }
@@ -238,11 +252,11 @@ public class BrowserDependImpl
         paramBundle.putParcelable("FORWARD_MSG_FOR_PIC", paramParcelable);
         paramBundle.putBoolean("key_help_forward_pic", true);
         paramBundle.putBoolean("key_allow_multiple_forward_from_limit", false);
-        if (!TextUtils.isEmpty(paramParcelable.m))
+        if (!TextUtils.isEmpty(paramParcelable.H))
         {
           paramBundle.putBoolean("forward_send_template_pic", true);
-          paramBundle.putString("widgetinfo", paramParcelable.m);
-          paramBundle.putString("key_camera_material_name", paramParcelable.n);
+          paramBundle.putString("widgetinfo", paramParcelable.H);
+          paramBundle.putString("key_camera_material_name", paramParcelable.I);
         }
         paramFile = new Intent();
         paramFile.putExtras(paramBundle);
@@ -282,7 +296,7 @@ public class BrowserDependImpl
           paramBundle.putInt("PhotoConst.SEND_SIZE_SPEC", 2);
         }
         paramBundle.putParcelable("FORWARD_MSG_FOR_PIC", DataUtils.a(paramParcelable));
-        if (paramParcelable.c == 4) {
+        if (paramParcelable.v == 4) {
           paramBundle.putBoolean("HOT_PIC_HAS_EXTRA", true);
         }
         paramFile = new Intent();
@@ -322,12 +336,12 @@ public class BrowserDependImpl
   
   public boolean isFileSizeEnable(File paramFile)
   {
-    return (PicShareToWX.a() != null) && (PicShareToWX.a().a(paramFile));
+    return (PicShareToWX.b() != null) && (PicShareToWX.b().a(paramFile));
   }
   
   public boolean isPicShareToWXEnable()
   {
-    return (PicShareToWX.a() != null) && (PicShareToWX.a().a());
+    return (PicShareToWX.b() != null) && (PicShareToWX.b().e());
   }
   
   public boolean isShortVideoType(int paramInt)
@@ -374,7 +388,7 @@ public class BrowserDependImpl
   
   public boolean saveImageNeedBlock()
   {
-    return ZhuoXusManager.a().a();
+    return ZhuoXusManager.a().b();
   }
   
   public void savePic(Activity paramActivity, File paramFile, String paramString)
@@ -389,7 +403,7 @@ public class BrowserDependImpl
   
   public boolean scanQrCodeNeedBlock()
   {
-    return ZhuoXusManager.a().b();
+    return ZhuoXusManager.a().c();
   }
   
   public void sharePicToWXFromPeak(String paramString, Context paramContext)
@@ -466,7 +480,7 @@ public class BrowserDependImpl
         return;
       }
       int j;
-      if ((i != 6) && (i != 17) && (i != 9))
+      if ((i != 6) && (i != 17) && (i != 9) && (i != 67))
       {
         j = paramInt2;
         if (i != 20) {}
@@ -498,7 +512,7 @@ public class BrowserDependImpl
         paramMessageRecord.videoFileProgress = j;
       }
       String str = ShortVideoUtils.findVideoPathIfExists(paramMessageRecord);
-      if ((paramInt1 == 2003) && (!StringUtil.a(str))) {
+      if ((paramInt1 == 2003) && (!StringUtil.isEmpty(str))) {
         paramMessageRecord.lastModified = new File(str).lastModified();
       }
       if ((paramIBrowserProvider instanceof IAIOBrowserProvider)) {
@@ -509,7 +523,7 @@ public class BrowserDependImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.api.impl.BrowserDependImpl
  * JD-Core Version:    0.7.0.1
  */

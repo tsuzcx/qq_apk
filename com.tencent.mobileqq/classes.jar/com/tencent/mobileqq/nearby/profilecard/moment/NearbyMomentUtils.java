@@ -46,20 +46,20 @@ public class NearbyMomentUtils
     int m = ((Calendar)localObject).get(1);
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat();
     if (l2 < 600000L) {
-      return HardCodeUtil.a(2131707258);
+      return HardCodeUtil.a(2131905085);
     }
     if (l2 < 3600000L)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(l2 / 60L / 1000L + 1L);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131707251));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131905078));
       return ((StringBuilder)localObject).toString();
     }
     if ((l2 < 21600000L) && (k == i))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(l2 / 60L / 60L / 1000L);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131707245));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131905072));
       return ((StringBuilder)localObject).toString();
     }
     if ((l2 < 86400000L) && (k == i))
@@ -71,7 +71,7 @@ public class NearbyMomentUtils
     {
       localSimpleDateFormat.applyPattern("HH:mm");
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131707256));
+      localStringBuilder.append(HardCodeUtil.a(2131905083));
       localStringBuilder.append(localSimpleDateFormat.format(((Calendar)localObject).getTime()));
       return localStringBuilder.toString();
     }
@@ -150,7 +150,7 @@ public class NearbyMomentUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ class AddRequestActivity$2
     INewFriendApi localINewFriendApi = (INewFriendApi)QRoute.api(INewFriendApi.class);
     QQAppInterface localQQAppInterface = this.a.app;
     AddRequestActivity localAddRequestActivity = this.a;
-    localINewFriendApi.openProfileCard(localQQAppInterface, localAddRequestActivity, localAddRequestActivity.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), localIntent);
+    localINewFriendApi.openProfileCard(localQQAppInterface, localAddRequestActivity, localAddRequestActivity.a, AddRequestActivity.b(this.a), this.a.i, AddRequestActivity.c(this.a), localIntent);
     if (AddRequestActivity.a(this.a) != null) {
       ReportController.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
     }
@@ -31,7 +31,7 @@ class AddRequestActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.2
  * JD-Core Version:    0.7.0.1
  */

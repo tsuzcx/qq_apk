@@ -221,6 +221,7 @@ public class TPPlayManagerImpl
           this.mDownloadProxy.setUserData("carrier_pesudo_code", TPPlayerConfig.getUserUpc());
           this.mDownloadProxy.setUserData("carrier_pesudo_state", Integer.valueOf(TPPlayerConfig.getUserUpcState()));
           this.mDownloadProxy.setUserData("external_network_ip", TPPlayerConfig.getOutNetIp());
+          this.mDownloadProxy.setUserData("max_use_memory", Integer.valueOf(TPPlayerConfig.getProxyMaxUseMemoryMB()));
           this.loadProxySucc = true;
           return;
         }
@@ -1409,7 +1410,7 @@ public class TPPlayManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPPlayManagerImpl
  * JD-Core Version:    0.7.0.1
  */

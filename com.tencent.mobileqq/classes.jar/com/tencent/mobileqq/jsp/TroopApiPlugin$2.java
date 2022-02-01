@@ -13,18 +13,18 @@ class TroopApiPlugin$2
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_Int == -1) {
+    if (this.a.e == -1) {
       return;
     }
     if (1 == paramInt1) {
-      TroopApiPlugin.a(this.a, 2131693506);
+      TroopApiPlugin.a(this.a, 2131891060);
     }
-    this.a.jdField_a_of_type_Int = -1;
+    this.a.e = -1;
   }
   
   protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.a.jdField_a_of_type_Int == -1) {
+    if (this.a.e == -1) {
       return;
     }
     if (1 == paramInt1) {
@@ -33,35 +33,35 @@ class TroopApiPlugin$2
         if ((paramInt2 != 0) && (paramInt2 != 1))
         {
           if (paramInt2 != 2) {
-            TroopApiPlugin.a(this.a, 2131693506);
+            TroopApiPlugin.a(this.a, 2131891060);
           } else {
-            TroopApiPlugin.a(this.a, 2131719932);
+            TroopApiPlugin.a(this.a, 2131917537);
           }
         }
-        else if ((this.a.jdField_a_of_type_Int != 2) && (this.a.jdField_a_of_type_Int != 5))
+        else if ((this.a.e != 2) && (this.a.e != 5))
         {
-          TroopApiPlugin.a(this.a, 2131693507, 2);
+          TroopApiPlugin.a(this.a, 2131891061, 2);
           paramString = this.a;
-          paramString.callJs(paramString.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0,\"message\":\"ok\"}" });
+          paramString.callJs(paramString.c, new String[] { "{\"result\":0,\"message\":\"ok\"}" });
         }
         else
         {
           paramString = this.a;
-          paramString.callJs(paramString.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
+          paramString.callJs(paramString.c, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
         }
       }
       else
       {
         paramString = this.a;
-        paramString.callJs(paramString.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
+        paramString.callJs(paramString.c, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
       }
     }
-    this.a.jdField_a_of_type_Int = -1;
+    this.a.e = -1;
   }
   
   protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
   {
-    if (this.a.b == 0) {
+    if (this.a.f == 0) {
       return;
     }
     if (paramBoolean)
@@ -88,7 +88,7 @@ class TroopApiPlugin$2
       }
       else if (paramTroopInfo.cGroupOption == 1)
       {
-        this.a.jdField_a_of_type_Int = paramTroopInfo.cGroupOption;
+        this.a.e = paramTroopInfo.cGroupOption;
         TroopApiPlugin.a(this.a, paramTroopInfo);
       }
       else
@@ -102,15 +102,15 @@ class TroopApiPlugin$2
         QLog.d("TroopApiPlugin", 2, "AddTroop onSend0x88d_1_forJoinTroop_Ret failed.");
       }
       paramTroopInfo = this.a;
-      paramTroopInfo.callJs(paramTroopInfo.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
-      TroopApiPlugin.a(this.a, 2131718218);
+      paramTroopInfo.callJs(paramTroopInfo.c, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
+      TroopApiPlugin.a(this.a, 2131915700);
     }
-    this.a.b = 0;
+    this.a.f = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.TroopApiPlugin.2
  * JD-Core Version:    0.7.0.1
  */

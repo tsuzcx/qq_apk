@@ -13,26 +13,12 @@ import org.json.JSONObject;
 public class QFileDatalineConfigBean
   implements IQFileDatalineConfigBean, IQStorageSafable<String>
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public boolean b;
-  public long c = 3000L;
-  
-  public QFileDatalineConfigBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 104857600L;
-    this.jdField_b_of_type_Long = 3145728L;
-    this.jdField_a_of_type_JavaLangString = "{}";
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
+  public boolean a = false;
+  public boolean b = false;
+  public long c = 104857600L;
+  public long d = 3145728L;
+  public long e = 3000L;
+  public String f = "{}";
   
   public void a(String paramString)
   {
@@ -40,14 +26,14 @@ public class QFileDatalineConfigBean
       QLog.e("QFileDatalineConfigBean", 1, "onParse: but configContent is null!");
     }
     paramString = paramString.toLowerCase();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.f = paramString;
     try
     {
       paramString = new JSONObject(paramString);
       if (!paramString.has("switch")) {
         return;
       }
-      this.jdField_a_of_type_Boolean = paramString.getBoolean("switch");
+      this.a = paramString.getBoolean("switch");
       if (!paramString.has("options")) {
         return;
       }
@@ -55,12 +41,12 @@ public class QFileDatalineConfigBean
       if (paramString.has("offline"))
       {
         JSONObject localJSONObject = paramString.getJSONObject("offline");
-        this.jdField_a_of_type_Long = localJSONObject.getLong("onlyofflinesize");
-        this.jdField_b_of_type_Long = localJSONObject.getLong("autodown");
+        this.c = localJSONObject.getLong("onlyofflinesize");
+        this.d = localJSONObject.getLong("autodown");
       }
       if (paramString.has("wlan"))
       {
-        this.c = paramString.getJSONObject("wlan").getLong("offlinedealy");
+        this.e = paramString.getJSONObject("wlan").getLong("offlinedealy");
         return;
       }
     }
@@ -91,9 +77,9 @@ public class QFileDatalineConfigBean
       if (localJSONObject1 == null) {
         localObject3 = new JSONObject();
       }
-      ((JSONObject)localObject2).put("onlyofflinesize", this.jdField_a_of_type_Long);
-      ((JSONObject)localObject2).put("autodown", this.jdField_b_of_type_Long);
-      ((JSONObject)localObject3).put("offlinedealy", this.c);
+      ((JSONObject)localObject2).put("onlyofflinesize", this.c);
+      ((JSONObject)localObject2).put("autodown", this.d);
+      ((JSONObject)localObject3).put("offlinedealy", this.e);
       ((JSONObject)localObject1).putOpt("offline", localObject2);
       ((JSONObject)localObject1).putOpt("wlan", localObject3);
       localJSONObject2.putOpt("options", localObject1);
@@ -115,37 +101,42 @@ public class QFileDatalineConfigBean
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public long b()
   {
-    return this.jdField_a_of_type_Long;
+    return this.d;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    this.b = paramBoolean;
   }
   
   public long c()
   {
     return this.c;
   }
+  
+  public long d()
+  {
+    return this.e;
+  }
+  
+  public boolean e()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileDatalineConfigBean
  * JD-Core Version:    0.7.0.1
  */

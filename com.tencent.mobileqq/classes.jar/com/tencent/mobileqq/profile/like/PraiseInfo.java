@@ -13,21 +13,21 @@ import org.json.JSONObject;
 public class PraiseInfo
 {
   public int a;
-  public Bitmap a;
-  public String a;
-  public int b;
-  public Bitmap b;
   public String b;
-  public Bitmap c;
   public String c;
-  public String d;
+  public int d;
   public String e;
-  public String f;
+  public Bitmap f;
   public String g;
+  public Bitmap h;
+  public String i;
+  public Bitmap j;
+  public String k;
+  public String l;
   
   public PraiseInfo(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public static PraiseInfo a(int paramInt, String paramString)
@@ -50,8 +50,8 @@ public class PraiseInfo
       }
       paramString = new JSONObject(paramString);
       localPraiseInfo = new PraiseInfo(paramInt);
-      localPraiseInfo.jdField_a_of_type_JavaLangString = paramString.optString("name");
-      localPraiseInfo.jdField_b_of_type_JavaLangString = paramString.optString("text");
+      localPraiseInfo.b = paramString.optString("name");
+      localPraiseInfo.c = paramString.optString("text");
       if (paramString.has("color"))
       {
         localObject = paramString.optString("color").trim();
@@ -79,7 +79,7 @@ public class PraiseInfo
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("#");
       ((StringBuilder)localObject).append(paramString);
-      localPraiseInfo.jdField_b_of_type_Int = Color.parseColor(((StringBuilder)localObject).toString());
+      localPraiseInfo.d = Color.parseColor(((StringBuilder)localObject).toString());
       return localPraiseInfo;
     }
     catch (Exception paramString)
@@ -119,7 +119,7 @@ public class PraiseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseInfo
  * JD-Core Version:    0.7.0.1
  */

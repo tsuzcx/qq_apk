@@ -34,7 +34,7 @@ class PublicAccountDetailActivityImpl$1
       localObject = (AccountDetailDynamicInfo)((IPublicAccountDetailDynamicDataManagerService)((PublicAccountDetailActivityImpl)localObject).app.getRuntimeService(IPublicAccountDetailDynamicDataManagerService.class, "all")).getAccountDetailDynamicInfoFromCache(this.a.uin);
       if (localObject != null)
       {
-        this.a.mAccountDetailAdapter.a(((AccountDetailDynamicInfo)localObject).b(), ((AccountDetailDynamicInfo)localObject).a);
+        this.a.mAccountDetailAdapter.a(((AccountDetailDynamicInfo)localObject).b(), ((AccountDetailDynamicInfo)localObject).d);
         this.a.mAccountDetailAdapter.a(((AccountDetailDynamicInfo)localObject).b());
       }
     }
@@ -72,7 +72,7 @@ class PublicAccountDetailActivityImpl$1
     } else if ((paramInt == 4) || ((paramInt == 0) && (!bool1))) {
       this.a.errorStatus = PublicAccountDetailActivityImpl.NO_MORE_DATA;
     }
-    this.a.mAccountDetailAdapter.b(this.a.errorStatus);
+    this.a.mAccountDetailAdapter.c(this.a.errorStatus);
     this.a.mAccountDetailAdapter.notifyDataSetChanged();
   }
   
@@ -90,7 +90,7 @@ class PublicAccountDetailActivityImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailActivityImpl.1
  * JD-Core Version:    0.7.0.1
  */

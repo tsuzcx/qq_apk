@@ -27,13 +27,13 @@ import org.jetbrains.annotations.NotNull;
 public class BlockContainer
   extends FrameLayout
 {
-  private static final String jdField_a_of_type_JavaLangString = "BlockContainer";
-  private RecyclerView.LayoutManager jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager;
-  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  protected BlockMerger a;
+  private static final String c = "BlockContainer";
   protected NestScrollRecyclerView a;
-  private StatusView jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
-  private BaseFragment jdField_a_of_type_ComTencentMobileqqAppBaseFragment;
+  protected BlockMerger b;
+  private StatusView d;
+  private RecyclerView.LayoutManager e;
+  private BaseFragment f;
+  private ExtraTypeInfo g;
   
   public BlockContainer(Context paramContext)
   {
@@ -52,43 +52,9 @@ public class BlockContainer
   }
   
   @NotNull
-  private BlockMerger b()
+  private BlockMerger f()
   {
     return new BlockMerger(this);
-  }
-  
-  protected int a()
-  {
-    return 2131558738;
-  }
-  
-  public ExtraTypeInfo a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = new ExtraTypeInfo();
-    }
-    return this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  }
-  
-  public BlockMerger a()
-  {
-    return this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
-  }
-  
-  public NestScrollRecyclerView a()
-  {
-    return this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView;
-  }
-  
-  public StatusView a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView == null)
-    {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = a(this);
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.setVisibility(8);
-      addView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView, new ViewGroup.LayoutParams(-1, -1));
-    }
-    return this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
   }
   
   protected StatusView a(View paramView)
@@ -99,33 +65,28 @@ public class BlockContainer
     return paramView;
   }
   
-  public BaseFragment a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppBaseFragment;
-  }
-  
   protected void a()
   {
-    LayoutInflater.from(getContext()).inflate(a(), this);
+    LayoutInflater.from(getContext()).inflate(getLayoutId(), this);
     a(this);
   }
   
   protected void a(FrameLayout paramFrameLayout)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView = ((NestScrollRecyclerView)paramFrameLayout.findViewById(2131364416));
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView.setHasFixedSize(true);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView.setNestedScrollingEnabled(false);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger = b();
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView.addItemDecoration(new BlockContainer.MergeItemDecorationDelegate(this, this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger));
+    this.a = ((NestScrollRecyclerView)paramFrameLayout.findViewById(2131430447));
+    this.a.setHasFixedSize(true);
+    this.a.setNestedScrollingEnabled(false);
+    this.b = f();
+    this.a.setAdapter(this.b);
+    this.a.addItemDecoration(new BlockContainer.MergeItemDecorationDelegate(this, this.b));
     setLayoutManagerType(1, 1);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView.setItemAnimator(null);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView.setOverScrollMode(2);
+    this.a.setItemAnimator(null);
+    this.a.setOverScrollMode(2);
   }
   
   public void a(BlockMerger.ShareDataChangeListener paramShareDataChangeListener)
   {
-    BlockMerger localBlockMerger = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
+    BlockMerger localBlockMerger = this.b;
     if (localBlockMerger != null) {
       localBlockMerger.a(paramShareDataChangeListener);
     }
@@ -133,7 +94,7 @@ public class BlockContainer
   
   public void a(MultiViewBlock paramMultiViewBlock)
   {
-    BlockMerger localBlockMerger = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
+    BlockMerger localBlockMerger = this.b;
     if (localBlockMerger != null) {
       localBlockMerger.a(paramMultiViewBlock);
     }
@@ -147,50 +108,94 @@ public class BlockContainer
     }
   }
   
-  public boolean a()
-  {
-    BlockMerger localBlockMerger = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
-    if (localBlockMerger != null) {
-      return localBlockMerger.a();
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView;
-    if (localObject != null)
-    {
-      if ((((NestScrollRecyclerView)localObject).getLayoutManager() instanceof LinearLayoutManager)) {
-        ((LinearLayoutManager)this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView.getLayoutManager()).setRecycleChildrenOnDetach(true);
-      }
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView.setAdapter(null);
-    }
-    localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
-    if (localObject != null) {
-      ((BlockMerger)localObject).d();
-    }
-    if ((a() != null) && (a().a() != null)) {
-      a().a().setImageDrawable(null);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseFragment = null;
-  }
-  
   public boolean b()
   {
-    BlockMerger localBlockMerger = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
+    BlockMerger localBlockMerger = this.b;
     if (localBlockMerger != null) {
-      return localBlockMerger.d();
+      return localBlockMerger.g();
     }
     return false;
   }
   
   public void c()
   {
-    BlockMerger localBlockMerger = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
-    if (localBlockMerger != null) {
-      localBlockMerger.e();
+    Object localObject = this.a;
+    if (localObject != null)
+    {
+      if ((((NestScrollRecyclerView)localObject).getLayoutManager() instanceof LinearLayoutManager)) {
+        ((LinearLayoutManager)this.a.getLayoutManager()).setRecycleChildrenOnDetach(true);
+      }
+      this.a.setAdapter(null);
     }
+    localObject = this.b;
+    if (localObject != null) {
+      ((BlockMerger)localObject).e();
+    }
+    if ((getStatusView() != null) && (getStatusView().getIvLoadingPic() != null)) {
+      getStatusView().getIvLoadingPic().setImageDrawable(null);
+    }
+    this.f = null;
+  }
+  
+  public boolean d()
+  {
+    BlockMerger localBlockMerger = this.b;
+    if (localBlockMerger != null) {
+      return localBlockMerger.p();
+    }
+    return false;
+  }
+  
+  public void e()
+  {
+    BlockMerger localBlockMerger = this.b;
+    if (localBlockMerger != null) {
+      localBlockMerger.i();
+    }
+  }
+  
+  public BlockMerger getBlockMerger()
+  {
+    return this.b;
+  }
+  
+  public ExtraTypeInfo getExtraTypeInfo()
+  {
+    if (this.g == null) {
+      this.g = new ExtraTypeInfo();
+    }
+    return this.g;
+  }
+  
+  public BaseFragment getFragment()
+  {
+    return this.f;
+  }
+  
+  protected int getLayoutId()
+  {
+    return 2131624358;
+  }
+  
+  public RecyclerView.LayoutManager getLayoutManager()
+  {
+    return this.e;
+  }
+  
+  public NestScrollRecyclerView getRecyclerView()
+  {
+    return this.a;
+  }
+  
+  public StatusView getStatusView()
+  {
+    if (this.d == null)
+    {
+      this.d = a(this);
+      this.d.setVisibility(8);
+      addView(this.d, new ViewGroup.LayoutParams(-1, -1));
+    }
+    return this.d;
   }
   
   protected void onAttachedToWindow()
@@ -205,7 +210,7 @@ public class BlockContainer
   
   public void setBlockWrapper(BlockPart paramBlockPart)
   {
-    BlockMerger localBlockMerger = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
+    BlockMerger localBlockMerger = this.b;
     if (localBlockMerger != null) {
       localBlockMerger.a(paramBlockPart);
     }
@@ -213,7 +218,7 @@ public class BlockContainer
   
   public void setEnableLoadMore(boolean paramBoolean)
   {
-    BlockMerger localBlockMerger = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
+    BlockMerger localBlockMerger = this.b;
     if (localBlockMerger != null) {
       localBlockMerger.c(paramBoolean);
     }
@@ -221,7 +226,7 @@ public class BlockContainer
   
   public void setEnableRefresh(boolean paramBoolean)
   {
-    BlockMerger localBlockMerger = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
+    BlockMerger localBlockMerger = this.b;
     if (localBlockMerger != null) {
       localBlockMerger.a(paramBoolean);
     }
@@ -229,7 +234,7 @@ public class BlockContainer
   
   public void setExtraTypeInfo(ExtraTypeInfo paramExtraTypeInfo)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
+    this.g = paramExtraTypeInfo;
   }
   
   public void setLayoutManagerType(int paramInt1, int paramInt2)
@@ -240,46 +245,46 @@ public class BlockContainer
       {
         if (paramInt1 == 3)
         {
-          this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView.setHasFixedSize(false);
-          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new SafeStaggeredGridLayoutManager(paramInt2, 1);
-          ((SafeStaggeredGridLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setGapStrategy(0);
+          this.a.setHasFixedSize(false);
+          this.e = new SafeStaggeredGridLayoutManager(paramInt2, 1);
+          ((SafeStaggeredGridLayoutManager)this.e).setGapStrategy(0);
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new SafeGridLayoutManager(getContext(), paramInt2);
-        ((SafeGridLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setSpanSizeLookup(this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger.a());
+        this.e = new SafeGridLayoutManager(getContext(), paramInt2);
+        ((SafeGridLayoutManager)this.e).setSpanSizeLookup(this.b.h());
       }
     }
     else {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new SafeLinearLayoutManager(getContext(), 1, false);
+      this.e = new SafeLinearLayoutManager(getContext(), 1, false);
     }
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
+    this.a.setLayoutManager(this.e);
+    this.b.a(this.e);
   }
   
   public void setParentFragment(BaseFragment paramBaseFragment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseFragment = paramBaseFragment;
+    this.f = paramBaseFragment;
   }
   
   public void setRefreshing(boolean paramBoolean)
   {
-    BlockMerger localBlockMerger = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
+    BlockMerger localBlockMerger = this.b;
     if (localBlockMerger != null)
     {
-      if ((paramBoolean) && (!localBlockMerger.c())) {
-        this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger.b(true);
+      if ((paramBoolean) && (!localBlockMerger.n())) {
+        this.b.b(true);
       }
-      if ((!paramBoolean) && (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger.c())) {
-        this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger.b(false);
+      if ((!paramBoolean) && (this.b.n())) {
+        this.b.b(false);
       }
     }
   }
   
   public void setShareData(String paramString, BlockMerger.ShareData paramShareData)
   {
-    BlockMerger localBlockMerger = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
+    BlockMerger localBlockMerger = this.b;
     if (localBlockMerger != null) {
       localBlockMerger.a(paramString, paramShareData);
     }
@@ -287,12 +292,12 @@ public class BlockContainer
   
   public void setStatusView(StatusView paramStatusView)
   {
-    StatusView localStatusView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
+    StatusView localStatusView = this.d;
     if (localStatusView != null) {
-      ((ViewGroup)localStatusView.getParent()).removeView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView);
+      ((ViewGroup)localStatusView.getParent()).removeView(this.d);
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = paramStatusView;
-    addView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView, new ViewGroup.LayoutParams(-1, -1));
+    this.d = paramStatusView;
+    addView(this.d, new ViewGroup.LayoutParams(-1, -1));
   }
 }
 

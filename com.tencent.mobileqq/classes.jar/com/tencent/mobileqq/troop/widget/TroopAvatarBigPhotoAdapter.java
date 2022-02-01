@@ -13,12 +13,12 @@ import android.view.ViewPropertyAnimator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.kandian.base.image.api.IPublicAccountHttpDownloader;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.troop.api.ITroopAvatarUtilApi;
@@ -38,40 +38,40 @@ import java.util.List;
 public class TroopAvatarBigPhotoAdapter
   extends BaseAdapter
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  Setting jdField_a_of_type_ComTencentMobileqqDataSetting = null;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<TextView> jdField_a_of_type_JavaLangRefWeakReference = null;
-  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
-  protected List<String> a;
-  boolean jdField_a_of_type_Boolean = false;
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString = null;
-  protected List<String> b;
-  boolean jdField_b_of_type_Boolean = true;
-  int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean = false;
-  boolean d;
-  boolean e;
+  Context a;
+  int b;
+  QQAppInterface c;
+  String d;
+  boolean e = false;
+  String f = null;
+  Setting g = null;
+  boolean h = true;
+  boolean i = false;
+  WeakReference<TextView> j = null;
+  int k;
+  int l;
+  float m;
+  float n;
+  boolean o;
+  boolean p;
+  ArrayList<Integer> q;
+  protected List<String> r;
+  protected List<String> s;
   
   public TroopAvatarBigPhotoAdapter(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = ((int)paramContext.getResources().getDimension(2131297550));
+    this.c = paramQQAppInterface;
+    this.a = paramContext;
+    this.b = ((int)paramContext.getResources().getDimension(2131298203));
   }
   
   private URL a(URL paramURL)
   {
     URL localURL = paramURL;
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.f))
     {
       localURL = paramURL;
-      if ("2000".equals(this.jdField_b_of_type_JavaLangString))
+      if ("2000".equals(this.f))
       {
         localURL = paramURL;
         if (paramURL.getProtocol().startsWith("http"))
@@ -84,16 +84,16 @@ public class TroopAvatarBigPhotoAdapter
     return localURL;
   }
   
-  private boolean a(int paramInt)
+  private boolean b(int paramInt)
   {
-    List localList = this.jdField_b_of_type_JavaUtilList;
-    return (localList != null) && (localList.size() > paramInt) && (!TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_JavaUtilList.get(paramInt))) && (AbsDownloader.getFile((String)this.jdField_b_of_type_JavaUtilList.get(paramInt)) != null);
+    List localList = this.s;
+    return (localList != null) && (localList.size() > paramInt) && (!TextUtils.isEmpty((CharSequence)this.s.get(paramInt))) && (AbsDownloader.getFile((String)this.s.get(paramInt)) != null);
   }
   
   public String a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < getCount())) {
-      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((this.r != null) && (paramInt < getCount())) {
+      return (String)this.r.get(paramInt);
     }
     return null;
   }
@@ -101,21 +101,21 @@ public class TroopAvatarBigPhotoAdapter
   void a()
   {
     Object localObject = new int[2];
-    int i = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(0)).intValue();
-    int j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(1)).intValue();
-    int k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(2)).intValue();
-    int m = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(3)).intValue();
-    this.jdField_b_of_type_Int = (i - localObject[0]);
-    this.jdField_c_of_type_Int = (j - localObject[1]);
-    this.jdField_a_of_type_Float = (k / ViewUtils.a());
-    this.jdField_b_of_type_Float = (m / ViewUtils.b());
+    int i1 = ((Integer)this.q.get(0)).intValue();
+    int i2 = ((Integer)this.q.get(1)).intValue();
+    int i3 = ((Integer)this.q.get(2)).intValue();
+    int i4 = ((Integer)this.q.get(3)).intValue();
+    this.k = (i1 - localObject[0]);
+    this.l = (i2 - localObject[1]);
+    this.m = (i3 / ViewUtils.getScreenWidth());
+    this.n = (i4 / ViewUtils.getScreenHeight());
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("calculateScale()   leftLocation = ");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(i1);
       ((StringBuilder)localObject).append(" topLocation = ");
-      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(i2);
       QLog.i("TroopAvatarBigPhotoAdapter", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -124,33 +124,33 @@ public class TroopAvatarBigPhotoAdapter
   {
     if (paramViewHolder != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      if (this.c == null) {
         return;
       }
-      URLImageView localURLImageView = paramViewHolder.jdField_a_of_type_ComTencentImageURLImageView;
-      ImageProgressCircle localImageProgressCircle = paramViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+      URLImageView localURLImageView = paramViewHolder.a;
+      ImageProgressCircle localImageProgressCircle = paramViewHolder.b;
       paramViewHolder = a(paramInt);
-      if ((!this.jdField_c_of_type_Boolean) && (!a(paramInt)))
+      if ((!this.i) && (!b(paramInt)))
       {
         QLog.d("TroopAvatarBigPhotoAdapter", 2, "load current");
       }
       else
       {
-        paramViewHolder = (String)this.jdField_b_of_type_JavaUtilList.get(paramInt);
+        paramViewHolder = (String)this.s.get(paramInt);
         QLog.d("TroopAvatarBigPhotoAdapter", 2, "load origin");
       }
       if (TextUtils.isEmpty(paramViewHolder)) {
         return;
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.e)
       {
         localObject2 = (ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class);
         if (((ITroopAvatarUtilApi)localObject2).isNumeric(paramViewHolder))
         {
-          if ((paramViewHolder != null) && (paramViewHolder.equals(AvatarInfo.jdField_a_of_type_JavaLangString))) {
-            localObject1 = ((ITroopAvatarUtilApi)localObject2).getAvatarAddress(paramViewHolder, this.jdField_a_of_type_JavaLangString, 0);
+          if ((paramViewHolder != null) && (paramViewHolder.equals(AvatarInfo.a))) {
+            localObject1 = ((ITroopAvatarUtilApi)localObject2).getAvatarAddress(paramViewHolder, this.d, 0);
           } else {
-            localObject1 = ((ITroopAvatarUtilApi)localObject2).getAvatarAddress(paramViewHolder, this.jdField_a_of_type_JavaLangString, 1);
+            localObject1 = ((ITroopAvatarUtilApi)localObject2).getAvatarAddress(paramViewHolder, this.d, 1);
           }
           localObject1 = ((ITroopAvatarUtilApi)localObject2).getArtWork((String)localObject1);
           break label179;
@@ -169,7 +169,7 @@ public class TroopAvatarBigPhotoAdapter
       if ((!TextUtils.isEmpty((CharSequence)localObject2)) && ((((String)localObject2).equals("http")) || (((String)localObject2).equals("https")))) {
         try
         {
-          if (this.e) {
+          if (this.p) {
             localObject1 = new URL("qzone_cover", "original", (String)localObject1);
           } else {
             localObject1 = new URL((String)localObject1);
@@ -187,32 +187,32 @@ public class TroopAvatarBigPhotoAdapter
       {
         localObject1 = new File((String)localObject1).toURL();
         localObject1 = a((URL)localObject1);
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataSetting;
-        if (((localObject2 == null) || (((Setting)localObject2).bHeadType == 0)) && (paramViewHolder != null) && (paramViewHolder.equals(AvatarInfo.jdField_a_of_type_JavaLangString)))
+        localObject2 = this.g;
+        if (((localObject2 == null) || (((Setting)localObject2).bHeadType == 0)) && (paramViewHolder != null) && (paramViewHolder.equals(AvatarInfo.a)))
         {
-          localURLImageView.setImageResource(2130842585);
+          localURLImageView.setImageResource(2130843538);
           return;
         }
         paramViewHolder = URLDrawable.URLDrawableOptions.obtain();
-        paramViewHolder.mRequestWidth = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
-        paramViewHolder.mRequestHeight = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
+        paramViewHolder.mRequestWidth = this.a.getResources().getDisplayMetrics().widthPixels;
+        paramViewHolder.mRequestHeight = this.a.getResources().getDisplayMetrics().heightPixels;
         paramViewHolder.mLoadingDrawable = URLDrawableHelperConstants.a;
-        if (this.jdField_b_of_type_Boolean) {
+        if (this.h) {
           paramViewHolder.mPlayGifImage = true;
         }
         localURLImageView.setImageDrawable(URLDrawable.getDrawable((URL)localObject1, paramViewHolder));
-        if ((!this.d) && (this.e) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+        if ((!this.o) && (this.p) && (this.q != null))
         {
           a(localURLImageView);
-          this.d = true;
+          this.o = true;
         }
         if (QLog.isColorLevel())
         {
           paramViewHolder = new StringBuilder();
           paramViewHolder.append("loadBigMap() mWidthScale = ");
-          paramViewHolder.append(this.jdField_a_of_type_Float);
+          paramViewHolder.append(this.m);
           paramViewHolder.append(" mHeightScale = ");
-          paramViewHolder.append(this.jdField_b_of_type_Float);
+          paramViewHolder.append(this.n);
           QLog.i("TroopAvatarBigPhotoAdapter", 2, paramViewHolder.toString());
         }
         a(localImageProgressCircle);
@@ -230,7 +230,7 @@ public class TroopAvatarBigPhotoAdapter
   
   public void a(TextView paramTextView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTextView);
+    this.j = new WeakReference(paramTextView);
   }
   
   void a(URLImageView paramURLImageView)
@@ -238,23 +238,23 @@ public class TroopAvatarBigPhotoAdapter
     a();
     paramURLImageView.setPivotX(0.0F);
     paramURLImageView.setPivotY(0.0F);
-    paramURLImageView.setScaleX(this.jdField_a_of_type_Float);
-    paramURLImageView.setScaleY(this.jdField_b_of_type_Float);
-    paramURLImageView.setTranslationX(this.jdField_b_of_type_Int);
-    paramURLImageView.setTranslationY(this.jdField_c_of_type_Int);
+    paramURLImageView.setScaleX(this.m);
+    paramURLImageView.setScaleY(this.n);
+    paramURLImageView.setTranslationX(this.k);
+    paramURLImageView.setTranslationY(this.l);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("enterAnimation()   mWidthScale = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Float);
+      ((StringBuilder)localObject).append(this.m);
       ((StringBuilder)localObject).append(" mHeightScale = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Float);
+      ((StringBuilder)localObject).append(this.n);
       QLog.i("TroopAvatarBigPhotoAdapter", 2, ((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("enterAnimation()   mLeftDelta = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.k);
       ((StringBuilder)localObject).append(" mTopDelta = ");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+      ((StringBuilder)localObject).append(this.l);
       QLog.i("TroopAvatarBigPhotoAdapter", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new DecelerateInterpolator();
@@ -273,53 +273,53 @@ public class TroopAvatarBigPhotoAdapter
   
   public void a(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.f = paramString;
   }
   
   public void a(String paramString, Setting paramSetting)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqDataSetting = paramSetting;
+    this.d = paramString;
+    this.g = paramSetting;
   }
   
   public void a(ArrayList<Integer> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.q = paramArrayList;
   }
   
   public void a(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.r = paramList;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.e = paramBoolean;
+    this.p = paramBoolean;
   }
   
   public void b(List<String> paramList)
   {
-    this.jdField_b_of_type_JavaUtilList = paramList;
+    this.s = paramList;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void d(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.r;
     if (localList != null) {
       return localList.size();
     }
@@ -336,10 +336,10 @@ public class TroopAvatarBigPhotoAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558894, null);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624516, null);
       paramView = new TroopAvatarBigPhotoAdapter.ViewHolder(this);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368461));
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle = ((ImageProgressCircle)localView.findViewById(2131368560));
+      paramView.a = ((URLImageView)localView.findViewById(2131435357));
+      paramView.b = ((ImageProgressCircle)localView.findViewById(2131435466));
       localView.setTag(paramView);
     }
     else
@@ -348,7 +348,7 @@ public class TroopAvatarBigPhotoAdapter
       localView = paramView;
       paramView = localViewHolder;
     }
-    a(paramView.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    a(paramView.b);
     a(paramInt, paramView);
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -356,7 +356,7 @@ public class TroopAvatarBigPhotoAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopAvatarBigPhotoAdapter
  * JD-Core Version:    0.7.0.1
  */

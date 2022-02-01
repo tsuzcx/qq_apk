@@ -14,7 +14,7 @@ class BaseLibManager$2
   public void run()
   {
     String str1 = StorageUtil.getPreference().getString("downloadUrl", null);
-    String str2 = StorageUtil.getPreference().getString("version", "1.22.0.00008");
+    String str2 = StorageUtil.getPreference().getString("version", "1.29.0.00002");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("updateBaseLib start. baseLibVersion=");
     localStringBuilder.append(str2);
@@ -28,7 +28,7 @@ class BaseLibManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.BaseLibManager.2
  * JD-Core Version:    0.7.0.1
  */

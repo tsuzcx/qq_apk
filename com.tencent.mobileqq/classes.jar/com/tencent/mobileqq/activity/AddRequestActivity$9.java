@@ -12,23 +12,23 @@ class AddRequestActivity$9
   
   protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (AddRequestActivity.a(this.a))
+    if (AddRequestActivity.e(this.a))
     {
       if (!paramBoolean)
       {
         paramString = this.a;
-        paramString.showToast(2130839573, paramString.getString(2131718739));
+        paramString.showToast(2130839791, paramString.getString(2131916242));
         return;
       }
       Bundle localBundle = new Bundle();
       localBundle.putString("base_uin", paramString);
-      String str = this.a.b;
-      if (TextUtils.isEmpty(this.a.b)) {
+      String str = this.a.l;
+      if (TextUtils.isEmpty(this.a.l)) {
         str = this.a.a;
       }
       localBundle.putString("base_nick", str);
-      localBundle.putInt("verfy_type", AddRequestActivity.b(this.a));
-      localBundle.putString("verfy_msg", AddRequestActivity.a(this.a));
+      localBundle.putInt("verfy_type", AddRequestActivity.f(this.a));
+      localBundle.putString("verfy_msg", AddRequestActivity.g(this.a));
       if (AddRequestActivity.a(this.a) != null) {
         paramBoolean = true;
       } else {
@@ -48,7 +48,7 @@ class AddRequestActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.9
  * JD-Core Version:    0.7.0.1
  */

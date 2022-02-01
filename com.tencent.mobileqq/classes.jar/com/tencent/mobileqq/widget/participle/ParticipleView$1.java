@@ -19,7 +19,7 @@ class ParticipleView$1
     while (paramValueAnimator.hasNext())
     {
       ParticipleView.ParticipleEntity localParticipleEntity = (ParticipleView.ParticipleEntity)paramValueAnimator.next();
-      float f = Math.min((float)(l - ParticipleView.ParticipleEntity.a(localParticipleEntity)) / ParticipleView.a(this.a), 1.0F);
+      float f = Math.min((float)(l - ParticipleView.ParticipleEntity.e(localParticipleEntity)) / ParticipleView.b(this.a), 1.0F);
       ParticipleView.ParticipleEntity.a(localParticipleEntity, f);
       if (f < 1.0F) {
         i = 0;
@@ -29,7 +29,7 @@ class ParticipleView$1
     }
     if (i != 0)
     {
-      ParticipleView.a(this.a).cancel();
+      ParticipleView.c(this.a).cancel();
       ParticipleView.a(this.a, null);
       ParticipleView.a(this.a).clear();
       if (QLog.isColorLevel()) {
@@ -41,7 +41,7 @@ class ParticipleView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.participle.ParticipleView.1
  * JD-Core Version:    0.7.0.1
  */

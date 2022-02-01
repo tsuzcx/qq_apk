@@ -7,12 +7,12 @@ class GdtVideoCommonView$5
   
   public void run()
   {
-    GdtVideoCommonView.b(this.this$0);
+    GdtVideoCommonView.e(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.5
  * JD-Core Version:    0.7.0.1
  */

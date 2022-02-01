@@ -9,28 +9,28 @@ class FastWebActivity$21
 {
   FastWebActivity$21(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
   
-  public int a()
-  {
-    return 0;
-  }
-  
-  public BaseData a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData;
-  }
-  
   public void a()
   {
-    ReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData);
+    ReportUtil.b(this.a);
   }
   
   public void b() {}
   
   public void c() {}
+  
+  public int d()
+  {
+    return 0;
+  }
+  
+  public BaseData e()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.21
  * JD-Core Version:    0.7.0.1
  */

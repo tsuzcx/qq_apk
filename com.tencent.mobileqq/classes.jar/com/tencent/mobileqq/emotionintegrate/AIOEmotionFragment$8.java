@@ -14,15 +14,15 @@ class AIOEmotionFragment$8
   {
     if (paramEmoticonPackage == null)
     {
-      AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 7);
+      AIOEmotionFragment.a(this.b, this.a, 7);
       return;
     }
-    MarketFaceItemBuilder.a(7, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, null, true);
+    MarketFaceItemBuilder.a(7, this.b.getBaseActivity(), this.a, paramEmoticonPackage, this.b.E, this.b.C, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.8
  * JD-Core Version:    0.7.0.1
  */

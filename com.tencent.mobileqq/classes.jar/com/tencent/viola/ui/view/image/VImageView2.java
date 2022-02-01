@@ -52,17 +52,17 @@ public class VImageView2
   
   private void blurImage(Drawable paramDrawable, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    ImageDrawable.blurImage(paramDrawable, getScaleType(), this.mUrl, paramLayoutParams.width - getPaddingLeft() - getPaddingRight(), paramLayoutParams.height - getPaddingTop() - getPaddingBottom(), paramInt, getScaleRadioForBlur(), new VImageView2.3(this));
+    ImageDrawable.blurImage(paramDrawable, getScaleType(), this.mUrl, paramLayoutParams.width - getPaddingLeft() - getPaddingRight(), paramLayoutParams.height - getPaddingTop() - getPaddingBottom(), paramInt, getScaleRadioForBlur(), new VImageView2.3(this), sizeLimitIfCenterCrop());
   }
   
   private void createRoundImageAndBlur(Drawable paramDrawable, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    ImageDrawable.createRoundImageAndBlur(paramDrawable, getScaleType(), this.mUrl, paramInt, paramLayoutParams.width - getPaddingLeft() - getPaddingRight(), paramLayoutParams.height - getPaddingTop() - getPaddingBottom(), getScaleRadioForBlur(), new VImageView2.5(this));
+    ImageDrawable.createRoundImageAndBlur(paramDrawable, getScaleType(), this.mUrl, paramInt, paramLayoutParams.width - getPaddingLeft() - getPaddingRight(), paramLayoutParams.height - getPaddingTop() - getPaddingBottom(), getScaleRadioForBlur(), new VImageView2.5(this), sizeLimitIfCenterCrop());
   }
   
   private void createRoundImageDrawable(Drawable paramDrawable, ViewGroup.LayoutParams paramLayoutParams)
   {
-    ImageDrawable.createImageDrawableForRound(paramDrawable, getScaleType(), paramLayoutParams.width - getPaddingLeft() - getPaddingRight(), paramLayoutParams.height - getPaddingTop() - getPaddingBottom(), this.mUrl, new VImageView2.4(this));
+    ImageDrawable.createImageDrawableForRound(paramDrawable, getScaleType(), paramLayoutParams.width - getPaddingLeft() - getPaddingRight(), paramLayoutParams.height - getPaddingTop() - getPaddingBottom(), this.mUrl, new VImageView2.4(this), sizeLimitIfCenterCrop());
   }
   
   private int getScaleRadioForBlur()
@@ -231,6 +231,22 @@ public class VImageView2
     }
   }
   
+  private boolean sizeLimitIfCenterCrop()
+  {
+    Object localObject = getComponent();
+    if (localObject == null) {
+      return true;
+    }
+    localObject = ((VComponent)localObject).getDomObject();
+    if (localObject == null) {
+      return true;
+    }
+    if (!((DomObject)localObject).getAttributes().containsKey("sizeLimitIfCover")) {
+      return true;
+    }
+    return ViolaUtils.getBoolean(((DomObject)localObject).getAttributes().get("sizeLimitIfCover"));
+  }
+  
   public void bindComponent(VImage2 paramVImage2)
   {
     this.mImageRef = new WeakReference(paramVImage2);
@@ -290,12 +306,12 @@ public class VImageView2
   
   public ImageView.ScaleType getScaleType()
   {
-    VImage2 localVImage2 = getComponent();
-    if ((localVImage2 != null) && (localVImage2.getDomObject() != null))
+    Object localObject = getComponent();
+    if ((localObject != null) && (((VImage2)localObject).getDomObject() != null))
     {
-      Object localObject = localVImage2.getDomObject().getAttributes().get("resize");
+      localObject = ((VImage2)localObject).getDomObject().getAttributes().get("resize");
       if (((localObject instanceof String)) && (!TextUtils.isEmpty(localObject.toString()))) {
-        return localVImage2.getResizeMode((String)localObject);
+        return VImage2.getResizeMode((String)localObject);
       }
       return super.getScaleType();
     }
@@ -517,7 +533,7 @@ public class VImageView2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.image.VImageView2
  * JD-Core Version:    0.7.0.1
  */

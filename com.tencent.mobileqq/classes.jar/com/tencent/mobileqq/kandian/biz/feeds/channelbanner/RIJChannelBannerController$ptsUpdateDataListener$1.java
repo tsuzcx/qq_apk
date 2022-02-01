@@ -18,7 +18,7 @@ final class RIJChannelBannerController$ptsUpdateDataListener$1
     ((StringBuilder)localObject).append("[onDataUpdated] jsonData = ");
     ((StringBuilder)localObject).append(paramString);
     QLog.i("RIJChannelBannerController", 1, ((StringBuilder)localObject).toString());
-    localObject = RIJChannelBannerController.a(this.a);
+    localObject = RIJChannelBannerController.c(this.a);
     if (localObject != null)
     {
       Intrinsics.checkExpressionValueIsNotNull(paramString, "jsonData");
@@ -28,7 +28,7 @@ final class RIJChannelBannerController$ptsUpdateDataListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.channelbanner.RIJChannelBannerController.ptsUpdateDataListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,19 +19,14 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class VoiceCacheHolder
 {
-  public static byte[] a;
-  private volatile ConfirmSendInfo jdField_a_of_type_ComTencentMobileqqQassistantDataConfirmSendInfo;
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile List<VoiceBean> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
-  private FileOutputStream jdField_b_of_type_JavaIoFileOutputStream;
-  private String jdField_b_of_type_JavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfByte = RecordParams.a(1, 16000);
-  }
+  public static byte[] a = RecordParams.a(1, 16000);
+  private volatile List<VoiceBean> b = new ArrayList();
+  private volatile ConfirmSendInfo c;
+  private AtomicLong d = new AtomicLong();
+  private String e;
+  private String f;
+  private FileOutputStream g;
+  private FileOutputStream h;
   
   public VoiceCacheHolder()
   {
@@ -56,82 +51,47 @@ public class VoiceCacheHolder
     return l2 + l1;
   }
   
-  private VoiceBean a()
-  {
-    this.jdField_a_of_type_JavaLangString = AssistantUtils.a(String.valueOf(System.nanoTime()), "slk");
-    a(this.jdField_a_of_type_JavaIoFileOutputStream, null, true);
-    this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_a_of_type_JavaLangString);
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("write slk pth(normal): ");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
-    AssistantUtils.a("VoiceCacheHolder", ((StringBuilder)localObject1).toString());
-    a(this.jdField_a_of_type_JavaIoFileOutputStream, jdField_a_of_type_ArrayOfByte, false);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    localObject1 = null;
-    int i = 0;
-    Object localObject2;
-    while (localIterator.hasNext())
-    {
-      localObject2 = (VoiceBean)localIterator.next();
-      if (((VoiceBean)localObject2).e())
-      {
-        a(this.jdField_a_of_type_JavaIoFileOutputStream, ((VoiceBean)localObject2).jdField_a_of_type_ArrayOfByte, false);
-        i += 1;
-        localObject1 = localObject2;
-      }
-    }
-    a(this.jdField_a_of_type_JavaIoFileOutputStream, null, true);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(a((VoiceBean)localObject1, 0L, i));
-    if (localObject1 != null)
-    {
-      localObject2 = AssistantUtils.a(AssistantUtils.b(((VoiceBean)localObject1).jdField_a_of_type_JavaLangString), "slk");
-      FileUtils.rename(this.jdField_a_of_type_JavaLangString, (String)localObject2);
-      this.jdField_a_of_type_JavaLangString = ((String)localObject2);
-    }
-    return localObject1;
-  }
-  
   private VoiceBean a(VoiceBeanProcessor paramVoiceBeanProcessor)
   {
-    this.jdField_a_of_type_JavaLangString = AssistantUtils.a(String.valueOf(System.nanoTime()), "slk");
-    a(this.jdField_a_of_type_JavaIoFileOutputStream, null, true);
-    this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_a_of_type_JavaLangString);
+    this.e = AssistantUtils.b(String.valueOf(System.nanoTime()), "slk");
+    a(this.g, null, true);
+    this.g = new FileOutputStream(this.e);
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("write slk pth(divide): ");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(this.e);
     AssistantUtils.a("VoiceCacheHolder", ((StringBuilder)localObject1).toString());
-    a(this.jdField_a_of_type_JavaIoFileOutputStream, jdField_a_of_type_ArrayOfByte, false);
-    long l3 = this.jdField_a_of_type_ComTencentMobileqqQassistantDataConfirmSendInfo.jdField_a_of_type_Long * 32L;
-    Object localObject2 = AssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqQassistantDataConfirmSendInfo.jdField_a_of_type_JavaLangString);
+    a(this.g, a, false);
+    long l3 = this.c.a * 32L;
+    Object localObject2 = AssistantUtils.c(this.c.c);
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqQassistantDataConfirmSendInfo.a());
+    ((StringBuilder)localObject1).append(this.c.a());
     ((StringBuilder)localObject1).append(", locateOff:");
     ((StringBuilder)localObject1).append(l3);
     AssistantUtils.a("VoiceCacheHolder", ((StringBuilder)localObject1).toString());
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     long l1 = 0L;
     int j;
     for (int i = 0; localIterator.hasNext(); i = j)
     {
       localObject1 = (VoiceBean)localIterator.next();
       l2 = l1;
-      if (((VoiceBean)localObject1).jdField_a_of_type_JavaLangString.equals(localObject2))
+      if (((VoiceBean)localObject1).h.equals(localObject2))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("divide bean: ");
-        localStringBuilder.append(((VoiceBean)localObject1).a());
+        localStringBuilder.append(((VoiceBean)localObject1).c());
         AssistantUtils.a("VoiceCacheHolder", localStringBuilder.toString());
-        if ((l3 >= l1) && (l3 <= ((VoiceBean)localObject1).b + l1))
+        if ((l3 >= l1) && (l3 <= ((VoiceBean)localObject1).f + l1))
         {
           l2 = l3 - l1;
           break label340;
         }
-        l2 = l1 + ((VoiceBean)localObject1).b;
+        l2 = l1 + ((VoiceBean)localObject1).f;
       }
       j = i;
-      if (((VoiceBean)localObject1).e())
+      if (((VoiceBean)localObject1).f())
       {
-        a(this.jdField_a_of_type_JavaIoFileOutputStream, ((VoiceBean)localObject1).jdField_a_of_type_ArrayOfByte, false);
+        a(this.g, ((VoiceBean)localObject1).a, false);
         j = i + 1;
       }
       l1 = l2;
@@ -147,29 +107,29 @@ public class VoiceCacheHolder
     AssistantUtils.a("VoiceCacheHolder", ((StringBuilder)localObject2).toString());
     if ((localObject1 != null) && (l2 > 0L))
     {
-      paramVoiceBeanProcessor = a(paramVoiceBeanProcessor, ((VoiceBean)localObject1).jdField_a_of_type_Long, l2);
-      a(this.jdField_a_of_type_JavaIoFileOutputStream, paramVoiceBeanProcessor, false);
+      paramVoiceBeanProcessor = a(paramVoiceBeanProcessor, ((VoiceBean)localObject1).e, l2);
+      a(this.g, paramVoiceBeanProcessor, false);
     }
-    a(this.jdField_a_of_type_JavaIoFileOutputStream, null, true);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(a((VoiceBean)localObject1, l2, i));
+    a(this.g, null, true);
+    this.d.set(a((VoiceBean)localObject1, l2, i));
     if (localObject1 != null)
     {
-      paramVoiceBeanProcessor = AssistantUtils.a(AssistantUtils.b(((VoiceBean)localObject1).jdField_a_of_type_JavaLangString), "slk");
-      FileUtils.rename(this.jdField_a_of_type_JavaLangString, paramVoiceBeanProcessor);
-      this.jdField_a_of_type_JavaLangString = paramVoiceBeanProcessor;
+      paramVoiceBeanProcessor = AssistantUtils.b(AssistantUtils.d(((VoiceBean)localObject1).h), "slk");
+      FileUtils.rename(this.e, paramVoiceBeanProcessor);
+      this.e = paramVoiceBeanProcessor;
     }
     return localObject1;
   }
   
   private void a(VoiceBean paramVoiceBean)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() < 2)
+    if (this.b.size() < 2)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.b.clear();
       a();
     }
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    this.jdField_a_of_type_JavaUtilList.add(i - 1, paramVoiceBean);
+    int i = this.b.size();
+    this.b.add(i - 1, paramVoiceBean);
   }
   
   private void a(FileOutputStream paramFileOutputStream, byte[] paramArrayOfByte, boolean paramBoolean)
@@ -203,13 +163,13 @@ public class VoiceCacheHolder
       }
       try
       {
-        RandomAccessFile localRandomAccessFile = new RandomAccessFile(this.jdField_b_of_type_JavaLangString, "rw");
+        RandomAccessFile localRandomAccessFile = new RandomAccessFile(this.f, "rw");
         localRandomAccessFile.seek(paramLong1);
         byte[] arrayOfByte = new byte[(int)paramLong2];
         localRandomAccessFile.read(arrayOfByte, 0, arrayOfByte.length);
         paramVoiceBeanProcessor = paramVoiceBeanProcessor.a(arrayOfByte);
         localRandomAccessFile.close();
-        paramVoiceBeanProcessor = paramVoiceBeanProcessor.jdField_a_of_type_ArrayOfByte;
+        paramVoiceBeanProcessor = paramVoiceBeanProcessor.a;
         return paramVoiceBeanProcessor;
       }
       catch (IOException paramVoiceBeanProcessor)
@@ -225,77 +185,84 @@ public class VoiceCacheHolder
     return null;
   }
   
-  private String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      localStringBuilder.append(((VoiceBean)localIterator.next()).a());
-      localStringBuilder.append("\n");
-    }
-    return localStringBuilder.toString();
-  }
-  
   private void b(int paramInt, VoiceBeanProcessor paramVoiceBeanProcessor)
   {
-    VoiceTimeTraceUtil.a().b();
-    a(this.jdField_b_of_type_JavaIoFileOutputStream, null, true);
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantDataConfirmSendInfo == null) {
-      paramVoiceBeanProcessor = a();
+    VoiceTimeTraceUtil.a().c();
+    a(this.h, null, true);
+    if (this.c == null) {
+      paramVoiceBeanProcessor = f();
     } else {
       paramVoiceBeanProcessor = a(paramVoiceBeanProcessor);
     }
-    VoiceTimeTraceUtil.a().a("SLK", this.jdField_a_of_type_JavaLangString);
+    VoiceTimeTraceUtil.a().a("SLK", this.e);
     if (paramVoiceBeanProcessor != null) {
-      paramVoiceBeanProcessor = AssistantUtils.b(paramVoiceBeanProcessor.jdField_a_of_type_JavaLangString);
+      paramVoiceBeanProcessor = AssistantUtils.d(paramVoiceBeanProcessor.h);
     } else {
       paramVoiceBeanProcessor = "";
     }
     if (!TextUtils.isEmpty(paramVoiceBeanProcessor))
     {
-      String str = AssistantUtils.a(paramVoiceBeanProcessor, "pcm");
-      FileUtils.rename(this.jdField_b_of_type_JavaLangString, str);
-      this.jdField_b_of_type_JavaLangString = str;
+      String str = AssistantUtils.b(paramVoiceBeanProcessor, "pcm");
+      FileUtils.rename(this.f, str);
+      this.f = str;
     }
-    VoiceTimeTraceUtil.a().a("BUF", paramVoiceBeanProcessor, b());
-    VoiceTimeTraceUtil.a().a("PCM", this.jdField_b_of_type_JavaLangString);
-    VoiceTimeTraceUtil.a().a();
+    VoiceTimeTraceUtil.a().a("BUF", paramVoiceBeanProcessor, g());
+    VoiceTimeTraceUtil.a().a("PCM", this.f);
+    VoiceTimeTraceUtil.a().b();
     paramVoiceBeanProcessor = new StringBuilder();
     paramVoiceBeanProcessor.append("clear cache buffer, final size: ");
-    paramVoiceBeanProcessor.append(this.jdField_a_of_type_JavaUtilList.size());
+    paramVoiceBeanProcessor.append(this.b.size());
     AssistantUtils.a("VoiceCacheHolder", paramVoiceBeanProcessor.toString());
-    this.jdField_a_of_type_JavaUtilList.clear();
-    VoiceTimeTraceUtil.a().c();
+    this.b.clear();
+    VoiceTimeTraceUtil.a().d();
     a(null);
   }
   
-  public int a()
+  private VoiceBean f()
   {
-    try
+    this.e = AssistantUtils.b(String.valueOf(System.nanoTime()), "slk");
+    a(this.g, null, true);
+    this.g = new FileOutputStream(this.e);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("write slk pth(normal): ");
+    ((StringBuilder)localObject1).append(this.e);
+    AssistantUtils.a("VoiceCacheHolder", ((StringBuilder)localObject1).toString());
+    a(this.g, a, false);
+    Iterator localIterator = this.b.iterator();
+    localObject1 = null;
+    int i = 0;
+    Object localObject2;
+    while (localIterator.hasNext())
     {
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      return i;
+      localObject2 = (VoiceBean)localIterator.next();
+      if (((VoiceBean)localObject2).f())
+      {
+        a(this.g, ((VoiceBean)localObject2).a, false);
+        i += 1;
+        localObject1 = localObject2;
+      }
     }
-    finally
+    a(this.g, null, true);
+    this.d.set(a((VoiceBean)localObject1, 0L, i));
+    if (localObject1 != null)
     {
-      localObject = finally;
-      throw localObject;
+      localObject2 = AssistantUtils.b(AssistantUtils.d(((VoiceBean)localObject1).h), "slk");
+      FileUtils.rename(this.e, (String)localObject2);
+      this.e = ((String)localObject2);
     }
+    return localObject1;
   }
   
-  public long a()
+  private String g()
   {
-    try
+    StringBuilder localStringBuilder = new StringBuilder("\n");
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
     {
-      long l = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
-      return l;
+      localStringBuilder.append(((VoiceBean)localIterator.next()).c());
+      localStringBuilder.append("\n");
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return localStringBuilder.toString();
   }
   
   public VoiceBean a(int paramInt)
@@ -303,9 +270,9 @@ public class VoiceCacheHolder
     if (paramInt >= 0) {
       try
       {
-        if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+        if (paramInt < this.b.size())
         {
-          VoiceBean localVoiceBean = (VoiceBean)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+          VoiceBean localVoiceBean = (VoiceBean)this.b.get(paramInt);
           return localVoiceBean;
         }
       }
@@ -318,39 +285,24 @@ public class VoiceCacheHolder
     return null;
   }
   
-  public String a()
-  {
-    try
-    {
-      String str;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        str = "";
-      } else {
-        str = this.jdField_a_of_type_JavaLangString;
-      }
-      return str;
-    }
-    finally {}
-  }
-  
   public void a()
   {
     try
     {
       AssistantUtils.a("VoiceCacheHolder", "rawVadBuffer, fix null bean at header&tailor.");
-      Object localObject1 = AssistantUtils.a();
-      this.jdField_a_of_type_JavaUtilList.add(0, new VoiceBean(null, (String)localObject1));
-      this.jdField_a_of_type_JavaUtilList.add(new VoiceBean(null, (String)localObject1));
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(0L);
+      Object localObject1 = AssistantUtils.e();
+      this.b.add(0, new VoiceBean(null, (String)localObject1));
+      this.b.add(new VoiceBean(null, (String)localObject1));
+      this.d.set(0L);
       try
       {
-        this.jdField_b_of_type_JavaLangString = AssistantUtils.a(String.valueOf(System.currentTimeMillis()), "pcm");
+        this.f = AssistantUtils.b(String.valueOf(System.currentTimeMillis()), "pcm");
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("write pcm pth: ");
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.f);
         AssistantUtils.a("VoiceCacheHolder", ((StringBuilder)localObject1).toString());
-        a(this.jdField_b_of_type_JavaIoFileOutputStream, null, true);
-        this.jdField_b_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_b_of_type_JavaLangString);
+        a(this.h, null, true);
+        this.h = new FileOutputStream(this.f);
       }
       catch (FileNotFoundException localFileNotFoundException)
       {
@@ -370,13 +322,13 @@ public class VoiceCacheHolder
     //   2: aload_0
     //   3: iload_1
     //   4: aload_2
-    //   5: invokespecial 301	com/tencent/mobileqq/qassistant/audio/VoiceCacheHolder:b	(ILcom/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor;)V
+    //   5: invokespecial 309	com/tencent/mobileqq/qassistant/audio/VoiceCacheHolder:b	(ILcom/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor;)V
     //   8: goto +12 -> 20
     //   11: astore_2
     //   12: goto +11 -> 23
     //   15: astore_2
     //   16: aload_2
-    //   17: invokevirtual 231	java/io/FileNotFoundException:printStackTrace	()V
+    //   17: invokevirtual 237	java/io/FileNotFoundException:printStackTrace	()V
     //   20: aload_0
     //   21: monitorexit
     //   22: return
@@ -398,7 +350,7 @@ public class VoiceCacheHolder
   
   public void a(@Nullable ConfirmSendInfo paramConfirmSendInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQassistantDataConfirmSendInfo = paramConfirmSendInfo;
+    this.c = paramConfirmSendInfo;
   }
   
   public void a(byte[] paramArrayOfByte, VoiceBean paramVoiceBean)
@@ -410,7 +362,7 @@ public class VoiceCacheHolder
       if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
         break label40;
       }
-      a(this.jdField_b_of_type_JavaIoFileOutputStream, paramArrayOfByte, false);
+      a(this.h, paramArrayOfByte, false);
     }
     finally
     {
@@ -421,11 +373,54 @@ public class VoiceCacheHolder
     throw paramArrayOfByte;
   }
   
-  public boolean a()
+  public String b()
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
+      String str;
+      if (TextUtils.isEmpty(this.e)) {
+        str = "";
+      } else {
+        str = this.e;
+      }
+      return str;
+    }
+    finally {}
+  }
+  
+  public long c()
+  {
+    try
+    {
+      long l = this.d.get();
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public int d()
+  {
+    try
+    {
+      int i = this.b.size();
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public boolean e()
+  {
+    try
+    {
+      boolean bool = this.b.isEmpty();
       return bool;
     }
     finally
@@ -437,7 +432,7 @@ public class VoiceCacheHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.VoiceCacheHolder
  * JD-Core Version:    0.7.0.1
  */

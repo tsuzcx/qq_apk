@@ -13,44 +13,44 @@ import java.util.Map;
 class QfileFavFileRecordProvider$FavFileRecords
   extends QfileFavFileRecordProvider.FileRecordGroup
 {
-  Comparator<FavFileInfo> jdField_a_of_type_JavaUtilComparator = new QfileFavFileRecordProvider.FavFileRecords.1(this);
-  Map<Long, FavFileInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
+  Map<Long, FavFileInfo> a = new HashMap();
+  Comparator<FavFileInfo> b = new QfileFavFileRecordProvider.FavFileRecords.1(this);
   
   QfileFavFileRecordProvider$FavFileRecords(QfileFavFileRecordProvider paramQfileFavFileRecordProvider) {}
   
   FavFileInfo a(long paramLong)
   {
-    return (FavFileInfo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+    return (FavFileInfo)this.a.get(Long.valueOf(paramLong));
   }
   
   List<FavFileInfo> a(int paramInt)
   {
     if (paramInt == 1) {
-      return this.jdField_a_of_type_JavaUtilArrayList;
-    }
-    if (paramInt == 2) {
-      return this.b;
-    }
-    if (paramInt == 3) {
-      return this.c;
-    }
-    if (paramInt == 4) {
       return this.d;
     }
-    if (paramInt == 5) {
+    if (paramInt == 2) {
       return this.e;
     }
-    return this.e;
+    if (paramInt == 3) {
+      return this.f;
+    }
+    if (paramInt == 4) {
+      return this.g;
+    }
+    if (paramInt == 5) {
+      return this.h;
+    }
+    return this.h;
   }
   
   void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.b.clear();
-    this.c.clear();
     this.d.clear();
     this.e.clear();
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.f.clear();
+    this.g.clear();
+    this.h.clear();
+    this.a.clear();
     String str = QfileFavFileRecordProvider.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(QfileFavFileRecordProvider.b);
@@ -67,17 +67,17 @@ class QfileFavFileRecordProvider$FavFileRecords
       }
       ArrayList localArrayList;
       if (paramInt == 1) {
-        localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-      } else if (paramInt == 2) {
-        localArrayList = this.b;
-      } else if (paramInt == 3) {
-        localArrayList = this.c;
-      } else if (paramInt == 4) {
         localArrayList = this.d;
+      } else if (paramInt == 2) {
+        localArrayList = this.e;
+      } else if (paramInt == 3) {
+        localArrayList = this.f;
+      } else if (paramInt == 4) {
+        localArrayList = this.g;
       } else if (paramInt == 5) {
-        localArrayList = this.e;
+        localArrayList = this.h;
       } else {
-        localArrayList = this.e;
+        localArrayList = this.h;
       }
       int i = 0;
       Object localObject1 = paramList.iterator();
@@ -86,7 +86,7 @@ class QfileFavFileRecordProvider$FavFileRecords
         localObject2 = (FavFileInfo)((Iterator)localObject1).next();
         if (localObject2 != null)
         {
-          if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(((FavFileInfo)localObject2).a)))
+          if (this.a.containsKey(Long.valueOf(((FavFileInfo)localObject2).a)))
           {
             String str = QfileFavFileRecordProvider.a;
             StringBuilder localStringBuilder = new StringBuilder();
@@ -96,12 +96,12 @@ class QfileFavFileRecordProvider$FavFileRecords
             QLog.w(str, 1, localStringBuilder.toString());
           }
           localArrayList.add(localObject2);
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(((FavFileInfo)localObject2).a), localObject2);
+          this.a.put(Long.valueOf(((FavFileInfo)localObject2).a), localObject2);
           i = 1;
         }
       }
       if (i != 0) {
-        Collections.sort(localArrayList, this.jdField_a_of_type_JavaUtilComparator);
+        Collections.sort(localArrayList, this.b);
       }
       localObject1 = QfileFavFileRecordProvider.a;
       Object localObject2 = new StringBuilder();
@@ -118,7 +118,7 @@ class QfileFavFileRecordProvider$FavFileRecords
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileRecordProvider.FavFileRecords
  * JD-Core Version:    0.7.0.1
  */

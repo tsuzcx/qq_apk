@@ -9,17 +9,17 @@ class SpringFestivalEntryManager$13
   
   public void run()
   {
-    if ((this.a.a instanceof MsgTabBannerData))
+    if ((this.a.c instanceof MsgTabBannerData))
     {
-      MsgTabBannerData localMsgTabBannerData = (MsgTabBannerData)this.a.a;
+      MsgTabBannerData localMsgTabBannerData = (MsgTabBannerData)this.a.c;
       SpringFestivalEntryManager.a(this.this$0, localMsgTabBannerData);
-      SpringFestivalEntryManager.a(this.this$0).a(localMsgTabBannerData);
+      SpringFestivalEntryManager.g(this.this$0).a(localMsgTabBannerData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalEntryManager.13
  * JD-Core Version:    0.7.0.1
  */

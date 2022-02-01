@@ -12,17 +12,17 @@ class KPLProfileCardActivity$4
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!this.a.a)
+    if (!this.a.l)
     {
       ReportController.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
-      this.a.a = true;
+      this.a.l = true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.KPLProfileCardActivity.4
  * JD-Core Version:    0.7.0.1
  */

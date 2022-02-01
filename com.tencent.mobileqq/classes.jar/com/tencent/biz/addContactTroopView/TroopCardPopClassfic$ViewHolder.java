@@ -10,20 +10,20 @@ import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 public class TroopCardPopClassfic$ViewHolder
   extends RecyclerView.ViewHolder
 {
-  public ImageView a;
   public TextView a;
+  public ImageView b;
   
   public TroopCardPopClassfic$ViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372939));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372938));
+    this.a = ((TextView)paramView.findViewById(2131440503));
+    this.b = ((ImageView)paramView.findViewById(2131440502));
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
+      this.b.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(null);
+    this.b.setColorFilter(null);
   }
 }
 

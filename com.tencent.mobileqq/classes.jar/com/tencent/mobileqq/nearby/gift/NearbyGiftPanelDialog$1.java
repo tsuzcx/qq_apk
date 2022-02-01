@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.troopgift.TroopGiftAioPanelData;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
 import com.tencent.mobileqq.troop.utils.TroopGiftManager;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -21,10 +21,10 @@ class NearbyGiftPanelDialog$1
   {
     if (QLog.isColorLevel())
     {
-      String str = NearbyGiftPanelDialog.a();
+      String str = NearbyGiftPanelDialog.c();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onError() time =  ");
-      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      localStringBuilder.append(System.currentTimeMillis() - this.b);
       localStringBuilder.append(", errorCode = ");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(", errorMsg = ");
@@ -35,15 +35,15 @@ class NearbyGiftPanelDialog$1
   
   public void a(String paramString, int paramInt)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.jdField_a_of_type_Int);
+    int i = this.a.a(this.e.i);
     Object localObject1;
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = NearbyGiftPanelDialog.a();
+      localObject1 = NearbyGiftPanelDialog.c();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("onGetExtraData() time =  ");
-      ((StringBuilder)localObject2).append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append(System.currentTimeMillis() - this.b);
       ((StringBuilder)localObject2).append(", configURL = ");
       ((StringBuilder)localObject2).append(paramString);
       ((StringBuilder)localObject2).append(", version:");
@@ -52,7 +52,7 @@ class NearbyGiftPanelDialog$1
       ((StringBuilder)localObject2).append(i);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    if ((paramInt <= i) && (TroopGiftAioPanelData.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.jdField_a_of_type_Int) != null)) {
+    if ((paramInt <= i) && (TroopGiftAioPanelData.b(this.e.g, this.e.i) != null)) {
       return;
     }
     if (!TextUtils.isEmpty(paramString))
@@ -66,16 +66,16 @@ class NearbyGiftPanelDialog$1
       ((StringBuilder)localObject1).append("troopGiftConfig.tmp");
       localObject1 = ((StringBuilder)localObject1).toString();
       paramString = new DownloadTask(paramString, new File((String)localObject1));
-      paramString.b = 3;
+      paramString.e = 3;
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("filePath", (String)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a().startDownload(paramString, new NearbyGiftPanelDialog.1.1(this, paramInt), (Bundle)localObject2);
+      this.c.i().startDownload(paramString, new NearbyGiftPanelDialog.1.1(this, paramInt), (Bundle)localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog.1
  * JD-Core Version:    0.7.0.1
  */

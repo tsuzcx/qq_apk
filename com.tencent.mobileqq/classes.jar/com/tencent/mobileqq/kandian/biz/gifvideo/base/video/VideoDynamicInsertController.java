@@ -19,22 +19,22 @@ import org.jetbrains.annotations.Nullable;
 public final class VideoDynamicInsertController
   implements VideoPlayController.OnStateChangeListener
 {
+  @NotNull
+  private String a;
+  @NotNull
+  private final ConcurrentHashMap<String, Integer> b;
+  @NotNull
+  private Set<String> c;
   @Nullable
-  private VideoPlayController jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
-  @NotNull
-  private String jdField_a_of_type_JavaLangString;
-  @NotNull
-  private Set<String> jdField_a_of_type_JavaUtilSet;
-  @NotNull
-  private final ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private VideoPlayController d;
   
   public VideoDynamicInsertController(@Nullable VideoPlayController paramVideoPlayController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController = paramVideoPlayController;
-    this.jdField_a_of_type_JavaLangString = "VideoDynamicInsertController";
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilSet = SetsKt.emptySet();
-    paramVideoPlayController = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    this.d = paramVideoPlayController;
+    this.a = "VideoDynamicInsertController";
+    this.b = new ConcurrentHashMap();
+    this.c = SetsKt.emptySet();
+    paramVideoPlayController = this.d;
     if (paramVideoPlayController != null) {
       paramVideoPlayController.a((VideoPlayController.OnStateChangeListener)this);
     }
@@ -45,32 +45,24 @@ public final class VideoDynamicInsertController
     if (paramString == null) {
       return -1;
     }
-    paramString = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    paramString = (Integer)this.b.get(paramString);
     if (paramString == null) {
       paramString = Integer.valueOf(-1);
     }
     return paramString.intValue();
   }
   
-  private final boolean a(String paramString)
-  {
-    if (paramString == null) {
-      return false;
-    }
-    return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
-  }
-  
   private final void b(int paramInt)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("requestControllInfo delayTime:");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(", rowKey: ");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    Object localObject = this.d;
     if (localObject != null)
     {
-      localObject = ((VideoPlayController)localObject).a();
+      localObject = ((VideoPlayController)localObject).k();
       if (localObject != null)
       {
         localObject = ((AbsBaseArticleInfo)localObject).innerUniqueID;
@@ -84,31 +76,27 @@ public final class VideoDynamicInsertController
     ThreadManager.a().postDelayed((Runnable)new VideoDynamicInsertController.requestControllInfo.1(this), paramInt);
   }
   
-  @Nullable
-  public final VideoPlayController a()
+  private final boolean b(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    if (paramString == null) {
+      return false;
+    }
+    return this.c.contains(paramString);
   }
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @NotNull
-  public final ConcurrentHashMap<String, Integer> a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    return this.a;
   }
   
   public final void a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    Object localObject1 = this.d;
     Object localObject2 = null;
     if (localObject1 != null)
     {
-      localObject1 = ((VideoPlayController)localObject1).a();
+      localObject1 = ((VideoPlayController)localObject1).k();
       if (localObject1 != null)
       {
         localObject1 = ((AbsBaseArticleInfo)localObject1).innerUniqueID;
@@ -118,24 +106,36 @@ public final class VideoDynamicInsertController
     localObject1 = null;
     label31:
     int i = a((String)localObject1);
-    if ((localObject1 != null) && (i != -1) && (paramInt >= i) && (!a((String)localObject1)))
+    if ((localObject1 != null) && (i != -1) && (paramInt >= i) && (!b((String)localObject1)))
     {
-      Object localObject3 = this.jdField_a_of_type_JavaLangString;
+      Object localObject3 = this.a;
       Object localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("updateProgress: ");
       ((StringBuilder)localObject4).append(paramInt);
       ((StringBuilder)localObject4).append(", actionProgress: ");
       ((StringBuilder)localObject4).append(i);
       QLog.d((String)localObject3, 1, ((StringBuilder)localObject4).toString());
-      this.jdField_a_of_type_JavaUtilSet = SetsKt.plus(this.jdField_a_of_type_JavaUtilSet, localObject1);
+      this.c = SetsKt.plus(this.c, localObject1);
       localObject3 = RIJFeedsDynamicInsertController.INSTANCE;
-      localObject4 = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+      localObject4 = this.d;
       localObject1 = localObject2;
       if (localObject4 != null) {
-        localObject1 = ((VideoPlayController)localObject4).a();
+        localObject1 = ((VideoPlayController)localObject4).k();
       }
       ((RIJFeedsDynamicInsertController)localObject3).requestDynamicInsertInTL((AbsBaseArticleInfo)localObject1, new RIJFeedsInsertAction(ActionType.ACTION_VIDEO_PLAY_PROGRESS, paramInt, 0, 0, 12, null));
     }
+  }
+  
+  @NotNull
+  public final ConcurrentHashMap<String, Integer> b()
+  {
+    return this.b;
+  }
+  
+  @Nullable
+  public final VideoPlayController c()
+  {
+    return this.d;
   }
   
   public void onStateChanged(int paramInt1, int paramInt2)
@@ -143,16 +143,16 @@ public final class VideoDynamicInsertController
     if (paramInt2 != 7) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    Object localObject = this.d;
     if (localObject != null)
     {
-      localObject = ((VideoPlayController)localObject).a();
+      localObject = ((VideoPlayController)localObject).k();
       if ((localObject != null) && ((int)((AbsBaseArticleInfo)localObject).mChannelID == 0))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+        localObject = this.d;
         if (localObject != null)
         {
-          localObject = ((VideoPlayController)localObject).a();
+          localObject = ((VideoPlayController)localObject).k();
           if (localObject != null)
           {
             localObject = ((AbsBaseArticleInfo)localObject).innerUniqueID;
@@ -170,7 +170,7 @@ public final class VideoDynamicInsertController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoDynamicInsertController
  * JD-Core Version:    0.7.0.1
  */

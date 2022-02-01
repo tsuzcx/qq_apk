@@ -58,13 +58,13 @@ class GdtInterstitialJsCallHandler
         } else {
           paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
         }
-        localOptions.jdField_a_of_type_AndroidOsBundle = new Bundle();
-        localOptions.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
+        localOptions.p = new Bundle();
+        localOptions.p.putString("big_brother_ref_source_key", paramVarArgs);
         GdtLog.b("GdtInterstitialJsCallHandler", String.format("handleJsCallRequest Source.KEY_REF_ID:%s", new Object[] { paramVarArgs }));
         paramVarArgs = new GdtInterstitialParams();
-        paramVarArgs.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = localOptions;
-        paramVarArgs.jdField_a_of_type_Int = j;
-        paramVarArgs.jdField_a_of_type_Boolean = true;
+        paramVarArgs.d = localOptions;
+        paramVarArgs.e = j;
+        paramVarArgs.f = true;
         bool = ((IGdtInterstitialAPI)QRoute.api(IGdtInterstitialAPI.class)).build(localActivity, paramVarArgs).a(localActivity);
         paramGdtAdWebPlugin.callJs(paramString, null);
         if (!bool) {
@@ -73,9 +73,9 @@ class GdtInterstitialJsCallHandler
         GdtAnalysisHelperForInterstitial.a(localActivity, paramVarArgs, i);
         paramString = localObject;
         if (paramGdtAdWebPlugin != null) {
-          paramString = paramGdtAdWebPlugin.a();
+          paramString = paramGdtAdWebPlugin.b();
         }
-        AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, true, "showInterstitial", paramString, localOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+        AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, true, "showInterstitial", paramString, localOptions.a);
         return true;
       }
       catch (Throwable paramGdtAdWebPlugin)
@@ -92,7 +92,7 @@ class GdtInterstitialJsCallHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtInterstitialJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

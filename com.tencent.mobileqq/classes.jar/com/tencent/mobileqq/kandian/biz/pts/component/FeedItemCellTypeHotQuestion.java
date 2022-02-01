@@ -15,21 +15,21 @@ public class FeedItemCellTypeHotQuestion
     super(paramContext, paramIFaceDecoder, paramReadInJoyBaseAdapter);
   }
   
-  public FeedItemCell a()
+  public FeedItemCell b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g();
+    this.h = true;
+    return i();
   }
   
-  public FeedItemCell d()
+  public FeedItemCell e()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      LinearLayout localLinearLayout = new LinearLayout(this.e);
       localLinearLayout.setOrientation(1);
-      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.b(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView != null) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView instanceof ComponentContentHotQuestion))) {
-        localLinearLayout.addView((ComponentContentHotQuestion)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView);
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.b(150.0F, this.e.getResources()), -2));
+      if ((this.l != null) && ((this.l instanceof ComponentContentHotQuestion))) {
+        localLinearLayout.addView((ComponentContentHotQuestion)this.l);
       }
       a(localLinearLayout);
       return this;
@@ -37,20 +37,20 @@ public class FeedItemCellTypeHotQuestion
     throw new Exception("buildComponent() must after buildComponent()!");
   }
   
-  public FeedItemCell e()
+  public FeedItemCell f()
   {
     return null;
   }
   
-  public FeedItemCell g()
+  public FeedItemCell i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView = new ComponentContentHotQuestion(this.jdField_a_of_type_AndroidContentContext);
+    this.l = new ComponentContentHotQuestion(this.e);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeHotQuestion
  * JD-Core Version:    0.7.0.1
  */

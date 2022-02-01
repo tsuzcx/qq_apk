@@ -15,14 +15,14 @@ class DynamicChannelHeaderModule$2
   public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
     QLog.d("DynamicChannelHeaderModule", 2, new Object[] { "onResult result = ", paramJSONObject, ", requestCode = ", Integer.valueOf(paramInt) });
-    if (DynamicChannelHeaderModule.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataDynamicChannelHeaderModule)) {
-      DynamicChannelHeaderModule.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataDynamicChannelHeaderModule).execute(new DynamicChannelHeaderModule.2.1(this, paramJSONObject, paramBundle));
+    if (DynamicChannelHeaderModule.a(this.c)) {
+      DynamicChannelHeaderModule.b(this.c).execute(new DynamicChannelHeaderModule.2.1(this, paramJSONObject, paramBundle));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.data.DynamicChannelHeaderModule.2
  * JD-Core Version:    0.7.0.1
  */

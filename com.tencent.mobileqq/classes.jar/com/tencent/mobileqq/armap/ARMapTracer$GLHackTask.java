@@ -7,32 +7,32 @@ import java.lang.ref.WeakReference;
 public class ARMapTracer$GLHackTask
   implements Runnable
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static GLHackTask b;
-  private GLHackTask jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$GLHackTask;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private WeakReference<ARGLSurfaceView> jdField_a_of_type_JavaLangRefWeakReference;
+  private static final Object d = new Object();
+  private static GLHackTask e;
+  private static int f = 0;
+  private Runnable a;
+  private GLHackTask b;
+  private WeakReference<ARGLSurfaceView> c;
   
   public ARMapTracer$GLHackTask(Runnable paramRunnable, ARGLSurfaceView paramARGLSurfaceView)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    this.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$GLHackTask = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramARGLSurfaceView);
+    this.a = paramRunnable;
+    this.b = null;
+    this.c = new WeakReference(paramARGLSurfaceView);
   }
   
   public static GLHackTask a(Runnable paramRunnable, ARGLSurfaceView paramARGLSurfaceView)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (d)
     {
-      if (b != null)
+      if (e != null)
       {
-        GLHackTask localGLHackTask = b;
-        b = localGLHackTask.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$GLHackTask;
-        localGLHackTask.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$GLHackTask = null;
-        localGLHackTask.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-        localGLHackTask.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramARGLSurfaceView);
-        jdField_a_of_type_Int -= 1;
+        GLHackTask localGLHackTask = e;
+        e = localGLHackTask.b;
+        localGLHackTask.b = null;
+        localGLHackTask.a = paramRunnable;
+        localGLHackTask.c = new WeakReference(paramARGLSurfaceView);
+        f -= 1;
         return localGLHackTask;
       }
       return new GLHackTask(paramRunnable, paramARGLSurfaceView);
@@ -41,15 +41,15 @@ public class ARMapTracer$GLHackTask
   
   private void a()
   {
-    this.jdField_a_of_type_JavaLangRunnable = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    this.a = null;
+    this.c = null;
+    synchronized (d)
     {
-      if (jdField_a_of_type_Int < 50)
+      if (f < 50)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$GLHackTask = b;
-        b = this;
-        jdField_a_of_type_Int += 1;
+        this.b = e;
+        e = this;
+        f += 1;
       }
       return;
     }
@@ -58,14 +58,14 @@ public class ARMapTracer$GLHackTask
   public void run()
   {
     long l = SystemClock.elapsedRealtime();
-    if ((this.jdField_a_of_type_JavaLangRunnable != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!((ARGLSurfaceView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).mIsDestroyed)) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    if ((this.a != null) && (this.c.get() != null) && (!((ARGLSurfaceView)this.c.get()).mIsDestroyed)) {
+      this.a.run();
     }
     l = SystemClock.elapsedRealtime() - l;
     if ((QLog.isDevelopLevel()) && (l > 33L))
     {
       String str = GLHackTask.class.getSimpleName();
-      Object localObject = this.jdField_a_of_type_JavaLangRunnable;
+      Object localObject = this.a;
       if (localObject != null) {
         localObject = localObject.getClass().getName();
       } else {
@@ -78,7 +78,7 @@ public class ARMapTracer$GLHackTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARMapTracer.GLHackTask
  * JD-Core Version:    0.7.0.1
  */

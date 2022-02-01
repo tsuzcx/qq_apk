@@ -14,35 +14,40 @@ public class BlacklistStatus
       {
         if (paramInt != 5012)
         {
-          if (paramInt != 8047)
+          if (paramInt != 6017)
           {
-            switch (paramInt)
+            if (paramInt != 8047)
             {
-            default: 
-              return;
-            case 6007: 
-              paramMessageObserver.pcOnlinesStatus(paramArrayOfObject);
-              return;
-            case 6006: 
-              paramMessageObserver.getOfflineStart(paramBoolean);
-              return;
-            case 6005: 
-              paramMessageObserver.getOfflineFinish(paramBoolean);
-              return;
-            case 6004: 
-              paramMessageObserver.pushReadedNotify(paramBoolean, paramObject);
-              return;
-            case 6003: 
-              paramMessageObserver.sendResult(paramBoolean, paramArrayOfObject);
-              return;
-            case 6002: 
-              paramMessageObserver.reqDeleteBlacklist(paramBoolean, (Object[])paramObject);
+              switch (paramInt)
+              {
+              default: 
+                return;
+              case 6007: 
+                paramMessageObserver.pcOnlinesStatus(paramArrayOfObject);
+                return;
+              case 6006: 
+                paramMessageObserver.getOfflineStart(paramBoolean);
+                return;
+              case 6005: 
+                paramMessageObserver.getOfflineFinish(paramBoolean);
+                return;
+              case 6004: 
+                paramMessageObserver.pushReadedNotify(paramBoolean, paramObject);
+                return;
+              case 6003: 
+                paramMessageObserver.sendResult(paramBoolean, paramArrayOfObject);
+                return;
+              case 6002: 
+                paramMessageObserver.reqDeleteBlacklist(paramBoolean, (Object[])paramObject);
+                return;
+              }
+              paramMessageObserver.reqInsertBlacklist(paramBoolean, paramObject);
               return;
             }
-            paramMessageObserver.reqInsertBlacklist(paramBoolean, paramObject);
+            paramMessageObserver.updateSelfMsgSeqAndTime(paramObject);
             return;
           }
-          paramMessageObserver.updateSelfMsgSeqAndTime(paramObject);
+          paramMessageObserver.recvEmoticonRandomResult(paramBoolean, paramArrayOfObject);
           return;
         }
         paramMessageObserver.c2cOnlineFile(paramBoolean, paramArrayOfObject);
@@ -56,7 +61,7 @@ public class BlacklistStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.messageobserver.BlacklistStatus
  * JD-Core Version:    0.7.0.1
  */

@@ -2,18 +2,18 @@ package com.tencent.mobileqq.easysync2;
 
 public class CloneResult
 {
-  public AttribPool a;
   public String a;
+  public AttribPool b;
   
   public CloneResult(String paramString, AttribPool paramAttribPool)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool = paramAttribPool;
+    this.a = paramString;
+    this.b = paramAttribPool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.CloneResult
  * JD-Core Version:    0.7.0.1
  */

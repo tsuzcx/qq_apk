@@ -20,7 +20,7 @@ final class NotifyMsgApiImpl$1
       if (NotifyMsgApiImpl.gDbHelper == null) {
         NotifyMsgApiImpl.gDbHelper = new NotifyMsgDBHelper(MobileQQ.sMobileQQ);
       }
-      ??? = QWalletTools.a();
+      ??? = QWalletTools.b();
       if (??? == null) {
         return;
       }
@@ -38,7 +38,7 @@ final class NotifyMsgApiImpl$1
         NotifyMsgRecord localNotifyMsgRecord1 = (NotifyMsgRecord)NotifyMsgApiImpl.gWaitNotifyRecords.get(i);
         if (localNotifyMsgRecord1 != null)
         {
-          NotifyMsgRecord localNotifyMsgRecord2 = NotifyMsgApiImpl.getRecord(NotifyMsgApiImpl.gList, localNotifyMsgRecord1.b, localNotifyMsgRecord1.a);
+          NotifyMsgRecord localNotifyMsgRecord2 = NotifyMsgApiImpl.getRecord(NotifyMsgApiImpl.gList, localNotifyMsgRecord1.c, localNotifyMsgRecord1.d);
           if (localNotifyMsgRecord2 != null)
           {
             ((ArrayList)localObject4).add(NotifyMsgApiImpl.onMergeMsg(localNotifyMsgRecord1, localNotifyMsgRecord2));
@@ -89,7 +89,7 @@ final class NotifyMsgApiImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.NotifyMsgApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

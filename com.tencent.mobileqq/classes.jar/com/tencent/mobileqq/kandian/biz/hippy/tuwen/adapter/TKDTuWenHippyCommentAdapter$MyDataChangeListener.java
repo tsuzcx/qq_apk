@@ -49,17 +49,17 @@ class TKDTuWenHippyCommentAdapter$MyDataChangeListener
   {
     if ((paramBoolean) && (paramCommentViewItem != null))
     {
-      Object localObject = paramCommentViewItem.a;
+      Object localObject = paramCommentViewItem.c;
       if (localObject != null)
       {
         paramCommentViewItem = ((BaseCommentData)localObject).commentId;
         if ((localObject instanceof SubCommentData))
         {
           localObject = ((SubCommentData)localObject).parentCommentId;
-          TKDTuWenHippyCommentAdapter.access$1400(this.this$0, (String)localObject, paramCommentViewItem);
+          TKDTuWenHippyCommentAdapter.access$1300(this.this$0, (String)localObject, paramCommentViewItem);
           return;
         }
-        TKDTuWenHippyCommentAdapter.access$1300(this.this$0, paramCommentViewItem);
+        TKDTuWenHippyCommentAdapter.access$1200(this.this$0, paramCommentViewItem);
       }
     }
   }
@@ -72,7 +72,7 @@ class TKDTuWenHippyCommentAdapter$MyDataChangeListener
       if (paramInt2 != 1) {
         paramBoolean = false;
       }
-      TKDTuWenHippyCommentAdapter.access$1100(this.this$0, paramBaseCommentData.commentId, paramBoolean);
+      TKDTuWenHippyCommentAdapter.access$1000(this.this$0, paramBaseCommentData.commentId, paramBoolean);
     }
   }
   
@@ -84,13 +84,13 @@ class TKDTuWenHippyCommentAdapter$MyDataChangeListener
   {
     if ((paramBoolean) && (paramCommentViewItem != null))
     {
-      paramCommentViewItem = paramCommentViewItem.a;
+      paramCommentViewItem = paramCommentViewItem.c;
       if ((paramCommentViewItem != null) && ((paramCommentViewItem instanceof SubCommentData)))
       {
         paramCommentViewItem = (SubCommentData)paramCommentViewItem;
         String str1 = paramCommentViewItem.parentCommentId;
         String str2 = paramCommentViewItem.repliedCommentId;
-        TKDTuWenHippyCommentAdapter.access$1200(this.this$0, str1, str2, prepareSubCommentData(paramCommentViewItem));
+        TKDTuWenHippyCommentAdapter.access$1100(this.this$0, str1, str2, prepareSubCommentData(paramCommentViewItem));
       }
     }
   }
@@ -101,7 +101,7 @@ class TKDTuWenHippyCommentAdapter$MyDataChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.tuwen.adapter.TKDTuWenHippyCommentAdapter.MyDataChangeListener
  * JD-Core Version:    0.7.0.1
  */

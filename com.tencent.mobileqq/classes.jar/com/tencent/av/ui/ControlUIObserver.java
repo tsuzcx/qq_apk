@@ -14,7 +14,7 @@ import java.util.Observer;
 public class ControlUIObserver
   implements Observer
 {
-  Handler a = null;
+  Handler b = null;
   
   public static <T extends ControlUIObserver.BaseParameter> T a(Object[] paramArrayOfObject)
   {
@@ -80,6 +80,8 @@ public class ControlUIObserver
   protected void b(int paramInt, long paramLong) {}
   
   protected void b(long paramLong) {}
+  
+  protected void b(long paramLong, boolean paramBoolean, String paramString) {}
   
   protected void b(ControlUIObserver.CPreEventInfo paramCPreEventInfo) {}
   
@@ -169,19 +171,19 @@ public class ControlUIObserver
                     c();
                     return;
                   case 137: 
-                    o();
+                    r();
                     return;
                   case 136: 
-                    n();
+                    q();
                     return;
                   case 135: 
-                    m();
+                    p();
                     return;
                   }
-                  j();
+                  m();
                   return;
                 case 127: 
-                  l();
+                  o();
                   return;
                 case 126: 
                   bool1 = ((Boolean)paramObject[1]).booleanValue();
@@ -204,7 +206,7 @@ public class ControlUIObserver
                   a(paramObject[1]);
                   return;
                 }
-                i();
+                l();
                 return;
               case 119: 
                 c(((Integer)paramObject[1]).intValue());
@@ -238,11 +240,25 @@ public class ControlUIObserver
               return;
             }
             break;
+          case 22201: 
+            if (((Boolean)paramObject[1]).booleanValue())
+            {
+              f();
+              return;
+            }
+            g();
+            return;
           case 20001: 
-            a(SeqUtil.a(paramObject, 1), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3]);
+            b(SeqUtil.a(paramObject, 1), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3]);
             return;
           case 15001: 
             a(SeqUtil.a(paramObject, 1), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+            return;
+          case 9051: 
+            h();
+            return;
+          case 9050: 
+            a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3]);
             return;
           case 9008: 
             a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
@@ -281,13 +297,13 @@ public class ControlUIObserver
             b(((Integer)paramObject[1]).intValue());
             return;
           case 8002: 
-            h();
+            k();
             return;
           case 8001: 
             b((String)paramObject[1]);
             return;
           case 6012: 
-            k();
+            n();
             return;
           case 6009: 
             c((String)paramObject[2]);
@@ -305,10 +321,10 @@ public class ControlUIObserver
             f(SeqUtil.a(paramObject, 1));
             return;
           case 109: 
-            g();
+            j();
             return;
           case 108: 
-            f();
+            i();
             return;
           case 107: 
             d(SeqUtil.a(paramObject, 1));
@@ -346,7 +362,7 @@ public class ControlUIObserver
       }
     }
     else {
-      p();
+      s();
     }
   }
   
@@ -400,13 +416,13 @@ public class ControlUIObserver
   
   protected void g(long paramLong) {}
   
-  public void h() {}
+  protected void h() {}
   
   protected void i() {}
   
   protected void j() {}
   
-  protected void k() {}
+  public void k() {}
   
   protected void l() {}
   
@@ -418,15 +434,21 @@ public class ControlUIObserver
   
   protected void p() {}
   
+  protected void q() {}
+  
+  protected void r() {}
+  
+  protected void s() {}
+  
   public void update(Observable paramObservable, Object paramObject)
   {
     paramObservable = Looper.getMainLooper();
     if (Thread.currentThread() != paramObservable.getThread())
     {
-      if (this.a == null) {
-        this.a = new Handler(paramObservable);
+      if (this.b == null) {
+        this.b = new Handler(paramObservable);
       }
-      this.a.post(new ControlUIObserver.1(this, paramObject));
+      this.b.post(new ControlUIObserver.1(this, paramObject));
       return;
     }
     b(paramObject);

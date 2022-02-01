@@ -9,14 +9,14 @@ class RangeSlider$RangeSliderState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<RangeSliderState> CREATOR = new RangeSlider.RangeSliderState.1();
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  private float a;
+  private int b;
   
   private RangeSlider$RangeSliderState(Parcel paramParcel)
   {
     super(paramParcel.readParcelable(RangeSliderState.class.getClassLoader()));
-    this.jdField_a_of_type_Float = paramParcel.readFloat();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readFloat();
+    this.b = paramParcel.readInt();
   }
   
   RangeSlider$RangeSliderState(Parcelable paramParcelable)
@@ -27,13 +27,13 @@ class RangeSlider$RangeSliderState
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.jdField_a_of_type_Float);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeFloat(this.a);
+    paramParcel.writeInt(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.slider.RangeSlider.RangeSliderState
  * JD-Core Version:    0.7.0.1
  */

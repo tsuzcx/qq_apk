@@ -56,7 +56,7 @@ public abstract class ICallBack$Stub
         if (paramParcel1.readInt() != 0) {
           localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
         }
-        a(paramInt1, (Bundle)localObject1);
+        b(paramInt1, (Bundle)localObject1);
         paramParcel2.writeNoException();
         return true;
       }
@@ -96,7 +96,7 @@ public abstract class ICallBack$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ICallBack.Stub
  * JD-Core Version:    0.7.0.1
  */

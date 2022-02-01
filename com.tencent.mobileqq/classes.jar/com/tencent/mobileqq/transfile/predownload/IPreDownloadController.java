@@ -7,8 +7,13 @@ import mqq.app.api.IRuntimeService;
 public abstract interface IPreDownloadController
   extends IRuntimeService
 {
+  public static final int BUSINESS_CHIRP = 10040;
   public static final int BUSINESS_DEFINE_STAT = 10000;
+  public static final int BUSINESS_MINI_SCAN_DECODE = 10083;
+  public static final int BUSINESS_MINI_SCAN_DETECT = 10084;
+  public static final int BUSINESS_MINI_SCAN_DETECT_MODEL = 10085;
   public static final int BUSINESS_ONLINE_STATUS_ANIMATION = 10096;
+  public static final int BUSINESS_QBAR_AI_RES = 10090;
   public static final int BUSINESS_QWALLET_RES = 10069;
   
   public abstract AbsPreDownloadTask cancelPreDownload(String paramString);
@@ -35,7 +40,7 @@ public abstract interface IPreDownloadController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.IPreDownloadController
  * JD-Core Version:    0.7.0.1
  */

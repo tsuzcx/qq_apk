@@ -21,14 +21,14 @@ final class VideoCropPresenter$startVideoCrop$1$1
   
   public final void invoke()
   {
-    if (VideoCropPresenter.a(this.this$0.this$0)) {
+    if (VideoCropPresenter.b(this.this$0.this$0)) {
       return;
     }
     if ((FileUtils.a.a(this.$targetPath)) && (Intrinsics.areEqual(this.$result, Boolean.valueOf(true))))
     {
-      localObject = VideoCropPresenter.a(this.this$0.this$0);
+      localObject = VideoCropPresenter.c(this.this$0.this$0);
       if (localObject != null) {
-        ((VideoCropContract.IView)localObject).a(this.this$0.this$0.a(), this.$targetPath);
+        ((VideoCropContract.IView)localObject).a(this.this$0.this$0.g(), this.$targetPath);
       }
       int i = this.this$0.$item.getEndMergeTime();
       int j = this.this$0.$item.getStartMergeTime();
@@ -44,12 +44,12 @@ final class VideoCropPresenter$startVideoCrop$1$1
     }
     else
     {
-      localObject = VideoCropPresenter.a(this.this$0.this$0);
+      localObject = VideoCropPresenter.c(this.this$0.this$0);
       if (localObject != null) {
-        ((VideoCropContract.IView)localObject).aV_();
+        ((VideoCropContract.IView)localObject).dP_();
       }
     }
-    Object localObject = VideoCropPresenter.a(this.this$0.this$0);
+    Object localObject = VideoCropPresenter.c(this.this$0.this$0);
     if (localObject != null) {
       ((VideoCropContract.IView)localObject).a(false);
     }
@@ -57,7 +57,7 @@ final class VideoCropPresenter$startVideoCrop$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPresenter.startVideoCrop.1.1
  * JD-Core Version:    0.7.0.1
  */

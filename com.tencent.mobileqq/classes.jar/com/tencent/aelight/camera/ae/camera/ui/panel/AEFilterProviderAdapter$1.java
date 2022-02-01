@@ -10,13 +10,13 @@ class AEFilterProviderAdapter$1
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter$ViewHolder.getLayoutPosition();
-    AEFilterProviderAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter).a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter$ViewHolder.itemView, i);
+    int i = this.a.getLayoutPosition();
+    AEFilterProviderAdapter.a(this.b).a(this.a.itemView, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEFilterProviderAdapter.1
  * JD-Core Version:    0.7.0.1
  */

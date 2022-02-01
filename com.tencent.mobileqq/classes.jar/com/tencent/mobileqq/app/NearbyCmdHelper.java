@@ -139,7 +139,7 @@ public class NearbyCmdHelper
   {
     int i = a(paramToServiceMsg);
     if ((paramBaseProtocolCoder instanceof NearbyProtocolCoder)) {
-      paramToServiceMsg = ((NearbyProtocolCoder)paramBaseProtocolCoder).a[i];
+      paramToServiceMsg = ((NearbyProtocolCoder)paramBaseProtocolCoder).b[i];
     } else if ((paramBaseProtocolCoder instanceof LBSService)) {
       paramToServiceMsg = ((LBSService)paramBaseProtocolCoder).a[i];
     } else {
@@ -230,7 +230,7 @@ public class NearbyCmdHelper
           localUserData = paramFromServiceMsg.stUserData;
           i = a(paramToServiceMsg);
           if ((paramBaseProtocolCoder instanceof NearbyProtocolCoder)) {
-            ((NearbyProtocolCoder)paramBaseProtocolCoder).a[i] = localUserData;
+            ((NearbyProtocolCoder)paramBaseProtocolCoder).b[i] = localUserData;
           } else if ((paramBaseProtocolCoder instanceof LBSService)) {
             ((LBSService)paramBaseProtocolCoder).a[i] = localUserData;
           }
@@ -583,22 +583,22 @@ public class NearbyCmdHelper
   {
     if (paramDatingFilters != null)
     {
-      paramReqInfo.uint32_time.set(paramDatingFilters.jdField_b_of_type_Int);
-      paramReqInfo.uint32_subject.set(paramDatingFilters.d);
-      paramReqInfo.uint32_gender.set(paramDatingFilters.jdField_a_of_type_Int);
-      paramReqInfo.uint32_age_low.set(DatingFilters.jdField_b_of_type_ArrayOfInt[paramDatingFilters.e]);
-      paramReqInfo.uint32_age_up.set(DatingFilters.jdField_a_of_type_ArrayOfInt[paramDatingFilters.e]);
+      paramReqInfo.uint32_time.set(paramDatingFilters.g);
+      paramReqInfo.uint32_subject.set(paramDatingFilters.i);
+      paramReqInfo.uint32_gender.set(paramDatingFilters.f);
+      paramReqInfo.uint32_age_low.set(DatingFilters.c[paramDatingFilters.j]);
+      paramReqInfo.uint32_age_up.set(DatingFilters.b[paramDatingFilters.j]);
       PBUInt32Field localPBUInt32Field = paramReqInfo.uint32_profession;
       int i;
-      if (paramDatingFilters.f < 0) {
+      if (paramDatingFilters.k < 0) {
         i = 0;
       } else {
-        i = paramDatingFilters.f;
+        i = paramDatingFilters.k;
       }
       localPBUInt32Field.set(i);
       paramReqInfo.bytes_cookie.set(ByteStringMicro.copyFrom(new byte[0]));
-      if ((paramDatingFilters.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo != null) && (paramDatingFilters.d == 5)) {
-        paramReqInfo.msg_destination.set(paramDatingFilters.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo);
+      if ((paramDatingFilters.l != null) && (paramDatingFilters.i == 5)) {
+        paramReqInfo.msg_destination.set(paramDatingFilters.l);
       }
     }
   }
@@ -639,23 +639,23 @@ public class NearbyCmdHelper
     // Byte code:
     //   0: aload_1
     //   1: getfield 17	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   4: ldc_w 606
-    //   7: invokevirtual 610	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   4: ldc_w 607
+    //   7: invokevirtual 611	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
     //   10: istore 5
     //   12: aload_1
     //   13: getfield 17	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   16: ldc_w 612
-    //   19: invokevirtual 610	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   16: ldc_w 613
+    //   19: invokevirtual 611	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
     //   22: istore 6
     //   24: aload_1
     //   25: getfield 17	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   28: ldc_w 814
-    //   31: invokevirtual 921	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   28: ldc_w 815
+    //   31: invokevirtual 925	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   34: istore_3
     //   35: aload_1
     //   36: getfield 17	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   39: ldc_w 816
-    //   42: invokevirtual 921	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   39: ldc_w 817
+    //   42: invokevirtual 925	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   45: istore 4
     //   47: iload 5
     //   49: ifeq +12 -> 61
@@ -665,65 +665,65 @@ public class NearbyCmdHelper
     //   58: ifne +8 -> 66
     //   61: iload 6
     //   63: ifeq +405 -> 468
-    //   66: new 935	NeighborSvc/ReqHeader
+    //   66: new 939	NeighborSvc/ReqHeader
     //   69: dup
-    //   70: invokespecial 936	NeighborSvc/ReqHeader:<init>	()V
+    //   70: invokespecial 940	NeighborSvc/ReqHeader:<init>	()V
     //   73: astore_0
     //   74: aload_0
     //   75: iconst_2
-    //   76: putfield 939	NeighborSvc/ReqHeader:shVersion	S
+    //   76: putfield 943	NeighborSvc/ReqHeader:shVersion	S
     //   79: aload_0
     //   80: aload_1
-    //   81: invokevirtual 942	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
-    //   84: invokestatic 550	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   87: invokestatic 946	com/tencent/common/app/BaseProtocolCoder:createUserId	(J)J
-    //   90: putfield 949	NeighborSvc/ReqHeader:lMID	J
+    //   81: invokevirtual 946	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
+    //   84: invokestatic 551	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   87: invokestatic 950	com/tencent/common/app/BaseProtocolCoder:createUserId	(J)J
+    //   90: putfield 953	NeighborSvc/ReqHeader:lMID	J
     //   93: aload_0
-    //   94: invokestatic 953	com/tencent/common/config/AppSetting:a	()I
+    //   94: invokestatic 957	com/tencent/common/config/AppSetting:d	()I
     //   97: i2l
-    //   98: putfield 956	NeighborSvc/ReqHeader:iAppID	J
+    //   98: putfield 960	NeighborSvc/ReqHeader:iAppID	J
     //   101: aload_0
     //   102: iconst_0
-    //   103: putfield 959	NeighborSvc/ReqHeader:eBusiType	I
+    //   103: putfield 963	NeighborSvc/ReqHeader:eBusiType	I
     //   106: aload_0
     //   107: iconst_2
-    //   108: putfield 962	NeighborSvc/ReqHeader:eMqqSysType	I
-    //   111: new 964	NeighborSvc/ReqUserInfo
+    //   108: putfield 966	NeighborSvc/ReqHeader:eMqqSysType	I
+    //   111: new 968	NeighborSvc/ReqUserInfo
     //   114: dup
-    //   115: invokespecial 965	NeighborSvc/ReqUserInfo:<init>	()V
+    //   115: invokespecial 969	NeighborSvc/ReqUserInfo:<init>	()V
     //   118: astore 7
     //   120: aload 7
-    //   122: ldc_w 967
-    //   125: putfield 970	NeighborSvc/ReqUserInfo:strAuthName	Ljava/lang/String;
+    //   122: ldc_w 971
+    //   125: putfield 974	NeighborSvc/ReqUserInfo:strAuthName	Ljava/lang/String;
     //   128: aload 7
-    //   130: ldc_w 972
-    //   133: putfield 975	NeighborSvc/ReqUserInfo:strAuthPassword	Ljava/lang/String;
+    //   130: ldc_w 976
+    //   133: putfield 979	NeighborSvc/ReqUserInfo:strAuthPassword	Ljava/lang/String;
     //   136: aload 7
     //   138: iconst_0
-    //   139: putfield 978	NeighborSvc/ReqUserInfo:eListType	I
+    //   139: putfield 982	NeighborSvc/ReqUserInfo:eListType	I
     //   142: iload 5
     //   144: ifeq +49 -> 193
     //   147: aload 7
-    //   149: new 164	java/util/ArrayList
+    //   149: new 165	java/util/ArrayList
     //   152: dup
     //   153: iconst_1
-    //   154: invokespecial 406	java/util/ArrayList:<init>	(I)V
-    //   157: putfield 979	NeighborSvc/ReqUserInfo:vCells	Ljava/util/ArrayList;
+    //   154: invokespecial 407	java/util/ArrayList:<init>	(I)V
+    //   157: putfield 983	NeighborSvc/ReqUserInfo:vCells	Ljava/util/ArrayList;
     //   160: aload 7
-    //   162: new 164	java/util/ArrayList
+    //   162: new 165	java/util/ArrayList
     //   165: dup
     //   166: iconst_1
-    //   167: invokespecial 406	java/util/ArrayList:<init>	(I)V
-    //   170: putfield 980	NeighborSvc/ReqUserInfo:vMacs	Ljava/util/ArrayList;
+    //   167: invokespecial 407	java/util/ArrayList:<init>	(I)V
+    //   170: putfield 984	NeighborSvc/ReqUserInfo:vMacs	Ljava/util/ArrayList;
     //   173: aload 7
-    //   175: new 650	NeighborSvc/GPS
+    //   175: new 651	NeighborSvc/GPS
     //   178: dup
     //   179: iload_3
     //   180: iload 4
     //   182: iconst_0
     //   183: iconst_1
-    //   184: invokespecial 981	NeighborSvc/GPS:<init>	(IIII)V
-    //   187: putfield 982	NeighborSvc/ReqUserInfo:stGps	LNeighborSvc/GPS;
+    //   184: invokespecial 985	NeighborSvc/GPS:<init>	(IIII)V
+    //   187: putfield 986	NeighborSvc/ReqUserInfo:stGps	LNeighborSvc/GPS;
     //   190: goto +199 -> 389
     //   193: iload 6
     //   195: iconst_1
@@ -733,115 +733,115 @@ public class NearbyCmdHelper
     //   203: iload 4
     //   205: ifeq +49 -> 254
     //   208: aload 7
-    //   210: new 164	java/util/ArrayList
+    //   210: new 165	java/util/ArrayList
     //   213: dup
     //   214: iconst_1
-    //   215: invokespecial 406	java/util/ArrayList:<init>	(I)V
-    //   218: putfield 979	NeighborSvc/ReqUserInfo:vCells	Ljava/util/ArrayList;
+    //   215: invokespecial 407	java/util/ArrayList:<init>	(I)V
+    //   218: putfield 983	NeighborSvc/ReqUserInfo:vCells	Ljava/util/ArrayList;
     //   221: aload 7
-    //   223: new 164	java/util/ArrayList
+    //   223: new 165	java/util/ArrayList
     //   226: dup
     //   227: iconst_1
-    //   228: invokespecial 406	java/util/ArrayList:<init>	(I)V
-    //   231: putfield 980	NeighborSvc/ReqUserInfo:vMacs	Ljava/util/ArrayList;
+    //   228: invokespecial 407	java/util/ArrayList:<init>	(I)V
+    //   231: putfield 984	NeighborSvc/ReqUserInfo:vMacs	Ljava/util/ArrayList;
     //   234: aload 7
-    //   236: new 650	NeighborSvc/GPS
+    //   236: new 651	NeighborSvc/GPS
     //   239: dup
     //   240: iload_3
     //   241: iload 4
     //   243: iconst_0
     //   244: iconst_1
-    //   245: invokespecial 981	NeighborSvc/GPS:<init>	(IIII)V
-    //   248: putfield 982	NeighborSvc/ReqUserInfo:stGps	LNeighborSvc/GPS;
+    //   245: invokespecial 985	NeighborSvc/GPS:<init>	(IIII)V
+    //   248: putfield 986	NeighborSvc/ReqUserInfo:stGps	LNeighborSvc/GPS;
     //   251: goto +138 -> 389
-    //   254: ldc_w 984
-    //   257: invokestatic 694	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   260: checkcast 984	com/tencent/mobileqq/soso/location/api/ILbsManagerServiceApi
-    //   263: new 986	com/tencent/mobileqq/app/NearbyCmdHelper$1
+    //   254: ldc_w 988
+    //   257: invokestatic 695	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   260: checkcast 988	com/tencent/mobileqq/soso/location/api/ILbsManagerServiceApi
+    //   263: new 990	com/tencent/mobileqq/app/NearbyCmdHelper$1
     //   266: dup
-    //   267: ldc_w 988
+    //   267: ldc_w 992
     //   270: aload_1
-    //   271: invokespecial 991	com/tencent/mobileqq/app/NearbyCmdHelper$1:<init>	(Ljava/lang/String;Lcom/tencent/qphone/base/remote/ToServiceMsg;)V
-    //   274: invokeinterface 995 2 0
+    //   271: invokespecial 995	com/tencent/mobileqq/app/NearbyCmdHelper$1:<init>	(Ljava/lang/String;Lcom/tencent/qphone/base/remote/ToServiceMsg;)V
+    //   274: invokeinterface 999 2 0
     //   279: aload_1
     //   280: monitorenter
     //   281: aload_1
-    //   282: invokevirtual 998	java/lang/Object:wait	()V
+    //   282: invokevirtual 1002	java/lang/Object:wait	()V
     //   285: goto +14 -> 299
     //   288: astore_0
     //   289: goto +175 -> 464
     //   292: astore 8
     //   294: aload 8
-    //   296: invokevirtual 1001	java/lang/InterruptedException:printStackTrace	()V
+    //   296: invokevirtual 1005	java/lang/InterruptedException:printStackTrace	()V
     //   299: aload_1
     //   300: monitorexit
-    //   301: ldc_w 1003
-    //   304: invokestatic 694	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   307: checkcast 1003	com/tencent/mobileqq/nearby/api/ILbsUtils
+    //   301: ldc_w 1007
+    //   304: invokestatic 695	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   307: checkcast 1007	com/tencent/mobileqq/nearby/api/ILbsUtils
     //   310: iconst_1
-    //   311: ldc_w 984
-    //   314: invokestatic 694	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   317: checkcast 984	com/tencent/mobileqq/soso/location/api/ILbsManagerServiceApi
-    //   320: ldc_w 988
-    //   323: invokeinterface 1007 2 0
-    //   328: invokeinterface 1011 3 0
+    //   311: ldc_w 988
+    //   314: invokestatic 695	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   317: checkcast 988	com/tencent/mobileqq/soso/location/api/ILbsManagerServiceApi
+    //   320: ldc_w 992
+    //   323: invokeinterface 1011 2 0
+    //   328: invokeinterface 1015 3 0
     //   333: astore 8
     //   335: aload 8
     //   337: ifnonnull +5 -> 342
     //   340: iconst_0
     //   341: ireturn
     //   342: aload 8
-    //   344: getfield 124	NearbyGroup/LBSInfo:stGps	LNearbyGroup/GPS;
+    //   344: getfield 125	NearbyGroup/LBSInfo:stGps	LNearbyGroup/GPS;
     //   347: ifnull +42 -> 389
     //   350: aload 8
-    //   352: getfield 124	NearbyGroup/LBSInfo:stGps	LNearbyGroup/GPS;
+    //   352: getfield 125	NearbyGroup/LBSInfo:stGps	LNearbyGroup/GPS;
     //   355: astore 8
     //   357: aload 7
-    //   359: new 650	NeighborSvc/GPS
+    //   359: new 651	NeighborSvc/GPS
     //   362: dup
     //   363: aload 8
-    //   365: getfield 130	NearbyGroup/GPS:iLat	I
+    //   365: getfield 131	NearbyGroup/GPS:iLat	I
     //   368: aload 8
-    //   370: getfield 133	NearbyGroup/GPS:iLon	I
+    //   370: getfield 134	NearbyGroup/GPS:iLon	I
     //   373: aload 8
-    //   375: getfield 136	NearbyGroup/GPS:iAlt	I
+    //   375: getfield 137	NearbyGroup/GPS:iAlt	I
     //   378: aload 8
-    //   380: getfield 139	NearbyGroup/GPS:eType	I
-    //   383: invokespecial 981	NeighborSvc/GPS:<init>	(IIII)V
-    //   386: putfield 982	NeighborSvc/ReqUserInfo:stGps	LNeighborSvc/GPS;
+    //   380: getfield 140	NearbyGroup/GPS:eType	I
+    //   383: invokespecial 985	NeighborSvc/GPS:<init>	(IIII)V
+    //   386: putfield 986	NeighborSvc/ReqUserInfo:stGps	LNeighborSvc/GPS;
     //   389: aload 7
-    //   391: getstatic 418	NeighborComm/LocalInfoType:LocalInfoType_Decode	LNeighborComm/LocalInfoType;
-    //   394: invokevirtual 422	NeighborComm/LocalInfoType:value	()I
-    //   397: putfield 1012	NeighborSvc/ReqUserInfo:eLocalInfo	I
-    //   400: new 1014	NeighborSvc/ReqGetPoint
+    //   391: getstatic 419	NeighborComm/LocalInfoType:LocalInfoType_Decode	LNeighborComm/LocalInfoType;
+    //   394: invokevirtual 423	NeighborComm/LocalInfoType:value	()I
+    //   397: putfield 1016	NeighborSvc/ReqUserInfo:eLocalInfo	I
+    //   400: new 1018	NeighborSvc/ReqGetPoint
     //   403: dup
     //   404: aload 7
     //   406: iload 5
     //   408: i2b
     //   409: iload 6
     //   411: i2b
-    //   412: invokespecial 1017	NeighborSvc/ReqGetPoint:<init>	(LNeighborSvc/ReqUserInfo;BB)V
+    //   412: invokespecial 1021	NeighborSvc/ReqGetPoint:<init>	(LNeighborSvc/ReqUserInfo;BB)V
     //   415: astore 7
     //   417: aload_2
-    //   418: ldc_w 1019
-    //   421: invokevirtual 1022	com/qq/jce/wup/UniPacket:setServantName	(Ljava/lang/String;)V
+    //   418: ldc_w 1023
+    //   421: invokevirtual 1026	com/qq/jce/wup/UniPacket:setServantName	(Ljava/lang/String;)V
     //   424: aload_2
-    //   425: ldc_w 1024
-    //   428: invokevirtual 1027	com/qq/jce/wup/UniPacket:setFuncName	(Ljava/lang/String;)V
+    //   425: ldc_w 1028
+    //   428: invokevirtual 1031	com/qq/jce/wup/UniPacket:setFuncName	(Ljava/lang/String;)V
     //   431: aload_2
-    //   432: ldc_w 1029
+    //   432: ldc_w 1033
     //   435: aload_0
-    //   436: invokevirtual 1032	com/qq/jce/wup/UniPacket:put	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   436: invokevirtual 1036	com/qq/jce/wup/UniPacket:put	(Ljava/lang/String;Ljava/lang/Object;)V
     //   439: aload_2
-    //   440: ldc_w 1034
+    //   440: ldc_w 1038
     //   443: aload 7
-    //   445: invokevirtual 1032	com/qq/jce/wup/UniPacket:put	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   445: invokevirtual 1036	com/qq/jce/wup/UniPacket:put	(Ljava/lang/String;Ljava/lang/Object;)V
     //   448: aload_1
-    //   449: ldc2_w 1035
-    //   452: invokevirtual 1040	com/tencent/qphone/base/remote/ToServiceMsg:setTimeout	(J)V
+    //   449: ldc2_w 1039
+    //   452: invokevirtual 1044	com/tencent/qphone/base/remote/ToServiceMsg:setTimeout	(J)V
     //   455: aload_1
-    //   456: ldc_w 811
-    //   459: invokevirtual 1043	com/tencent/qphone/base/remote/ToServiceMsg:setServiceCmd	(Ljava/lang/String;)V
+    //   456: ldc_w 812
+    //   459: invokevirtual 1047	com/tencent/qphone/base/remote/ToServiceMsg:setServiceCmd	(Ljava/lang/String;)V
     //   462: iconst_1
     //   463: ireturn
     //   464: aload_1
@@ -1018,7 +1018,7 @@ public class NearbyCmdHelper
       paramAppInterface = new ReqHeader();
       paramAppInterface.shVersion = 3;
       paramAppInterface.lMID = BaseProtocolCoder.createUserId(Long.parseLong(paramToServiceMsg.getUin()));
-      paramAppInterface.iAppID = AppSetting.a();
+      paramAppInterface.iAppID = AppSetting.d();
       paramAppInterface.eBusiType = 0;
       paramAppInterface.eMqqSysType = 2;
       paramToServiceMsg = new ReqUserInfo();
@@ -1089,7 +1089,7 @@ public class NearbyCmdHelper
         }
         if (paramObject.size() <= 0)
         {
-          paramBusinessHandler.notifyUI(4, false, new Object[] { "", null, HardCodeUtil.a(2131707159), Integer.valueOf(i), Integer.valueOf(j) });
+          paramBusinessHandler.notifyUI(4, false, new Object[] { "", null, HardCodeUtil.a(2131904992), Integer.valueOf(i), Integer.valueOf(j) });
           NearbyUtils.a("Q.nearby_people_card.", "handle_oidb_0x9c7_0", new Object[] { Integer.valueOf(m), localBoolean, null, paramToServiceMsg });
           return;
         }
@@ -1110,7 +1110,7 @@ public class NearbyCmdHelper
       paramBusinessHandler.notifyUI(paramInt, false, new Object[] { "", null, paramToServiceMsg, Integer.valueOf(i), Integer.valueOf(j) });
       return;
     }
-    paramBusinessHandler.notifyUI(paramInt, false, new Object[] { "", null, HardCodeUtil.a(2131707158), localObject, localObject });
+    paramBusinessHandler.notifyUI(paramInt, false, new Object[] { "", null, HardCodeUtil.a(2131904991), localObject, localObject });
   }
   
   public static void d(BusinessHandler paramBusinessHandler, int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1170,7 +1170,7 @@ public class NearbyCmdHelper
           if (paramInt != 0) {
             bool2 = false;
           }
-          paramToServiceMsg.a(bool2);
+          paramToServiceMsg.b(bool2);
         }
         paramBusinessHandler.notifyUI(7, bool1, null);
       }
@@ -1280,7 +1280,7 @@ public class NearbyCmdHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyCmdHelper
  * JD-Core Version:    0.7.0.1
  */

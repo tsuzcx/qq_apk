@@ -7,39 +7,39 @@ import java.util.ArrayList;
 public class AccountDetailDynamicInfo
 {
   public long a;
-  private ArrayList<DynamicInfo> a = new ArrayList();
-  public boolean a;
   public long b;
-  private ArrayList<DynamicInfo> b = new ArrayList();
   public long c;
+  public boolean d;
+  private ArrayList<DynamicInfo> e = new ArrayList();
+  private ArrayList<DynamicInfo> f = new ArrayList();
   
   public ArrayList<DynamicInfo> a()
   {
-    return this.a;
+    return this.e;
   }
   
   public void a(ArrayList<DynamicInfo> paramArrayList)
   {
     if (paramArrayList != null) {
-      this.a.addAll(paramArrayList);
+      this.e.addAll(paramArrayList);
     }
     if (QLog.isColorLevel())
     {
       paramArrayList = new StringBuilder();
       paramArrayList.append("mDynamicInfoList.size():");
-      paramArrayList.append(this.a.size());
+      paramArrayList.append(this.e.size());
       QLog.d("addOldDynamicInfoItemList", 2, paramArrayList.toString());
     }
   }
   
   public ArrayList<DynamicInfo> b()
   {
-    return this.b;
+    return this.f;
   }
   
   public void b(ArrayList<String> paramArrayList)
   {
-    this.b.clear();
+    this.f.clear();
     int j = 0;
     int i;
     if (paramArrayList == null) {
@@ -54,23 +54,23 @@ public class AccountDetailDynamicInfo
       {
         DynamicInfo localDynamicInfo = new DynamicInfo();
         localDynamicInfo.a(str);
-        this.b.add(localDynamicInfo);
+        this.f.add(localDynamicInfo);
       }
       j += 1;
     }
-    this.a.addAll(this.b);
+    this.e.addAll(this.f);
     if (QLog.isColorLevel())
     {
       paramArrayList = new StringBuilder();
       paramArrayList.append("mDynamicInfoList.size():");
-      paramArrayList.append(this.b.size());
+      paramArrayList.append(this.f.size());
       QLog.d("parceJson2DynamicInfoItemList", 2, paramArrayList.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.bean.AccountDetailDynamicInfo
  * JD-Core Version:    0.7.0.1
  */

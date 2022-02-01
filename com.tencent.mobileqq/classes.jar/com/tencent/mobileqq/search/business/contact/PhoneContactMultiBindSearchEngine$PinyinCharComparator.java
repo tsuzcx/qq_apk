@@ -12,24 +12,24 @@ import java.util.Comparator;
 final class PhoneContactMultiBindSearchEngine$PinyinCharComparator
   implements Comparator<IContactSearchModel>
 {
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private final IPhoneContactService jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService;
+  AppInterface a;
+  private final IPhoneContactService b;
   
   PhoneContactMultiBindSearchEngine$PinyinCharComparator(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService = ((IPhoneContactService)paramAppInterface.getRuntimeService(IPhoneContactService.class, ""));
+    this.a = paramAppInterface;
+    this.b = ((IPhoneContactService)paramAppInterface.getRuntimeService(IPhoneContactService.class, ""));
   }
   
   private boolean a(String paramString, boolean paramBoolean)
   {
-    return ((IAddFriendServiceApi)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IAddFriendServiceApi.class, "")).hasSendAddFriendReq(paramString, paramBoolean, false);
+    return ((IAddFriendServiceApi)this.a.getRuntimeService(IAddFriendServiceApi.class, "")).hasSendAddFriendReq(paramString, paramBoolean, false);
   }
   
   public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
   {
-    paramIContactSearchModel1 = this.jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService.queryContactByCodeNumber(((ContactSearchModelPhoneContact)paramIContactSearchModel1).e());
-    paramIContactSearchModel2 = this.jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService.queryContactByCodeNumber(((ContactSearchModelPhoneContact)paramIContactSearchModel2).e());
+    paramIContactSearchModel1 = this.b.queryContactByCodeNumber(((ContactSearchModelPhoneContact)paramIContactSearchModel1).s());
+    paramIContactSearchModel2 = this.b.queryContactByCodeNumber(((ContactSearchModelPhoneContact)paramIContactSearchModel2).s());
     if ((paramIContactSearchModel1 != null) && (paramIContactSearchModel2 != null))
     {
       if ((paramIContactSearchModel1.uin.equals("0")) && (paramIContactSearchModel2.uin.equals("0")))
@@ -78,7 +78,7 @@ final class PhoneContactMultiBindSearchEngine$PinyinCharComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.PhoneContactMultiBindSearchEngine.PinyinCharComparator
  * JD-Core Version:    0.7.0.1
  */

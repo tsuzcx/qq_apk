@@ -3,14 +3,14 @@ package com.tencent.av.opengl.effects;
 public class EffectBeautyTools$SkinColorFilterDesc
 {
   public int a;
-  public String a;
   public String b;
+  public String c;
   
   public EffectBeautyTools$SkinColorFilterDesc(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.a = paramInt;
+    this.b = paramString1;
+    this.c = paramString2;
   }
 }
 

@@ -36,20 +36,20 @@ class SendMultiPictureHelper$1
     ((StringBuilder)localObject).append(paramMessage.mUin);
     ((StringBuilder)localObject).append(paramMessage.uniseq);
     localObject = ((StringBuilder)localObject).toString();
-    localObject = ((ITransFileController)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).findProcessor((String)localObject);
+    localObject = ((ITransFileController)this.a.b.getRuntimeService(ITransFileController.class)).findProcessor((String)localObject);
     if ((localObject instanceof BaseTransProcessor)) {
       i = ((BaseTransProcessor)localObject).getProgress();
     } else {
       i = 0;
     }
-    if (this.a.f) {
+    if (this.a.s) {
       return;
     }
-    if (this.a.jdField_b_of_type_Boolean)
+    if (this.a.m)
     {
       if (paramMessage.status == 1005)
       {
-        this.a.e = true;
+        this.a.r = true;
         return;
       }
       if (paramMessage.status == 1003)
@@ -58,13 +58,13 @@ class SendMultiPictureHelper$1
         return;
       }
       localObject = this.a;
-      SendMultiPictureHelper.a((SendMultiPictureHelper)localObject, ((SendMultiPictureHelper)localObject).c, this.a.jdField_a_of_type_JavaLangString, paramMessage.uniseq);
+      SendMultiPictureHelper.a((SendMultiPictureHelper)localObject, ((SendMultiPictureHelper)localObject).k, this.a.h, paramMessage.uniseq);
       return;
     }
     if (paramMessage.status == 1003)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(100) }));
+      if (this.a.c != null) {
+        this.a.c.setMessage(String.format(this.a.o, new Object[] { Integer.valueOf(this.a.e + 1), Integer.valueOf(this.a.f), Integer.valueOf(100) }));
       }
       this.a.a();
       return;
@@ -74,14 +74,14 @@ class SendMultiPictureHelper$1
       this.a.a();
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
+    if (this.a.c != null) {
+      this.a.c.setMessage(String.format(this.a.o, new Object[] { Integer.valueOf(this.a.e + 1), Integer.valueOf(this.a.f), Integer.valueOf(i) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SendMultiPictureHelper.1
  * JD-Core Version:    0.7.0.1
  */

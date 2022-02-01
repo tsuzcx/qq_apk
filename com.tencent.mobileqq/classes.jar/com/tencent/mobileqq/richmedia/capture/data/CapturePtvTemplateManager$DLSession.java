@@ -6,14 +6,14 @@ import java.util.ArrayList;
 
 public class CapturePtvTemplateManager$DLSession
 {
-  public int a;
-  public PtvTemplateManager.IPtvTemplateDownloadListener a;
-  public PtvTemplateManager.PtvTemplateInfo a;
   public ArrayList<CapturePtvTemplateManager.DLItem> a = new ArrayList();
+  public PtvTemplateManager.PtvTemplateInfo b;
+  public PtvTemplateManager.IPtvTemplateDownloadListener c;
+  public int d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.DLSession
  * JD-Core Version:    0.7.0.1
  */

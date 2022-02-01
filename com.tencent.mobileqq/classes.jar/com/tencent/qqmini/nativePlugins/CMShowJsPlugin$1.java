@@ -13,7 +13,7 @@ class CMShowJsPlugin$1
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramJSONObject);
+      this.a.ok(paramJSONObject);
       return;
     }
     if (paramJSONObject != null) {
@@ -21,12 +21,12 @@ class CMShowJsPlugin$1
     } else {
       paramJSONObject = "";
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramJSONObject);
+    this.a.fail(paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.CMShowJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,15 +10,15 @@ public abstract interface IOnlineMusicStatusManager
   
   public abstract Lyric a(String paramString);
   
-  public abstract QQPlayerCallback a();
-  
   public abstract void a(int paramInt);
+  
+  public abstract QQPlayerCallback b();
   
   public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.manager.IOnlineMusicStatusManager
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class CustomWebModule$8
   {
     if (paramSendChatInputEvent != null)
     {
-      if (this.a.a == null) {
+      if (this.a.f == null) {
         return;
       }
       int i = paramSendChatInputEvent.mType;
@@ -30,7 +30,7 @@ class CustomWebModule$8
           paramSendChatInputEvent.append(localJSONObject.toString());
           paramSendChatInputEvent.append("))");
           paramSendChatInputEvent = paramSendChatInputEvent.toString();
-          this.a.a.evaluateJavascript(paramSendChatInputEvent, new CustomWebModule.8.1(this));
+          this.a.f.evaluateJavascript(paramSendChatInputEvent, new CustomWebModule.8.1(this));
           return;
         }
         catch (JSONException paramSendChatInputEvent)
@@ -40,14 +40,14 @@ class CustomWebModule$8
         }
       }
       if (i == 2) {
-        this.a.a.evaluateJavascript("javascript:__WEBVIEW_CANCELKEYBOARD()", new CustomWebModule.8.2(this));
+        this.a.f.evaluateJavascript("javascript:__WEBVIEW_CANCELKEYBOARD()", new CustomWebModule.8.2(this));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.CustomWebModule.8
  * JD-Core Version:    0.7.0.1
  */

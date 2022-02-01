@@ -197,13 +197,13 @@ public class EmoticonUtils
     return "";
   }
   
-  public static boolean isShowEmoTitleInPreview(Object paramObject, EmoticonInfo paramEmoticonInfo)
+  public static boolean isShowEmoTitleInPreview(Object paramObject, EmoticonInfo paramEmoticonInfo, boolean paramBoolean)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramEmoticonInfo != null)
     {
-      if (paramObject == null) {
+      if ((paramObject == null) && (!paramBoolean)) {
         return false;
       }
       bool1 = bool2;
@@ -279,7 +279,7 @@ public class EmoticonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonUtils
  * JD-Core Version:    0.7.0.1
  */

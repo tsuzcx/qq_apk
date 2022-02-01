@@ -14,34 +14,34 @@ class QRDisplayActivity$6$1
   public void run()
   {
     Object localObject;
-    if (this.a.this$0.jdField_c_of_type_Int == 1)
+    if (this.a.this$0.t == 1)
     {
-      this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.a.this$0.app.getFaceBitmap(this.a.this$0.jdField_c_of_type_JavaLangString, false);
+      this.a.this$0.j = this.a.this$0.app.getFaceBitmap(this.a.this$0.n, false);
       QRDisplayActivity localQRDisplayActivity = this.a.this$0;
-      if (this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        localObject = ImageUtil.a(true);
+      if (this.a.this$0.j == null) {
+        localObject = ImageUtil.b(true);
       } else {
-        localObject = ImageUtil.a(this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap, 50, 50);
+        localObject = ImageUtil.a(this.a.this$0.j, 50, 50);
       }
-      localQRDisplayActivity.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
+      localQRDisplayActivity.j = ((Bitmap)localObject);
     }
-    else if (this.a.this$0.jdField_c_of_type_Int == 2)
+    else if (this.a.this$0.t == 2)
     {
-      this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.a.this$0.app.getTroopFaceBitmap(this.a.this$0.jdField_c_of_type_JavaLangString, (byte)3, false, false);
-      if (this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.d();
+      this.a.this$0.j = this.a.this$0.app.getTroopFaceBitmap(this.a.this$0.n, (byte)3, false, false);
+      if (this.a.this$0.j == null) {
+        this.a.this$0.j = ImageUtil.g();
       }
-      this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap, 50, 50);
+      this.a.this$0.j = ImageUtil.a(this.a.this$0.j, 50, 50);
     }
     else
     {
-      localObject = this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.a.this$0.jdField_c_of_type_JavaLangString, true);
+      localObject = this.a.this$0.C.a(this.a.this$0.n, true);
       if ((localObject instanceof BitmapDrawable)) {
-        this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)localObject).getBitmap();
+        this.a.this$0.j = ((BitmapDrawable)localObject).getBitmap();
       }
     }
-    if (this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.f();
+    if (this.a.this$0.j == null) {
+      this.a.this$0.j = ImageUtil.k();
     }
   }
 }

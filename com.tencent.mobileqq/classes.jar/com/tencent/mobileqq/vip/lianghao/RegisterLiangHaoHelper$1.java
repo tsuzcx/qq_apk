@@ -20,14 +20,14 @@ class RegisterLiangHaoHelper$1
     RegisterLiangHaoHelper.a(this.a, paramLiangHaoRsp);
     if (RegisterLiangHaoHelper.a(this.a) != null)
     {
-      RegisterLiangHaoHelper.a(this.a);
+      RegisterLiangHaoHelper.b(this.a);
       RegisterLiangHaoHelper.a(this.a).a(paramLiangHaoRsp.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.RegisterLiangHaoHelper.1
  * JD-Core Version:    0.7.0.1
  */

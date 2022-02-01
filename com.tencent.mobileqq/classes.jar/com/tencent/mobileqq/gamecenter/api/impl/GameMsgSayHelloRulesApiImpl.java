@@ -12,16 +12,16 @@ public class GameMsgSayHelloRulesApiImpl
 {
   private GameMsgSayHelloRules mInstance;
   
-  public void doInit(AppInterface paramAppInterface, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, List<ChatMessage> paramList)
+  public void doInit(int paramInt1, AppInterface paramAppInterface, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3, List<ChatMessage> paramList)
   {
-    this.mInstance = new GameMsgSayHelloRules(paramAppInterface, paramString1, paramInt1, paramInt2, paramString2, paramString3, paramList);
+    this.mInstance = new GameMsgSayHelloRules(paramInt1, paramAppInterface, paramString1, paramInt2, paramInt3, paramString2, paramString3, paramList);
   }
   
   public boolean isAbleToAction()
   {
     GameMsgSayHelloRules localGameMsgSayHelloRules = this.mInstance;
     if (localGameMsgSayHelloRules != null) {
-      return localGameMsgSayHelloRules.a();
+      return localGameMsgSayHelloRules.b();
     }
     return false;
   }
@@ -38,7 +38,7 @@ public class GameMsgSayHelloRulesApiImpl
   {
     GameMsgSayHelloRules localGameMsgSayHelloRules = this.mInstance;
     if (localGameMsgSayHelloRules != null) {
-      localGameMsgSayHelloRules.b();
+      localGameMsgSayHelloRules.c();
     }
   }
   
@@ -52,7 +52,7 @@ public class GameMsgSayHelloRulesApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.impl.GameMsgSayHelloRulesApiImpl
  * JD-Core Version:    0.7.0.1
  */

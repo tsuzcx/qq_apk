@@ -41,7 +41,7 @@ final class AEOldShortVideoArtResourceMgr$1
           else
           {
             Object localObject3 = AEOldShortVideoSoManager.a((String)localObject2);
-            j = ((AEOldShortVideoSoManager.CfgParser)localObject3).a();
+            j = ((AEOldShortVideoSoManager.CfgParser)localObject3).d();
             if (j != 0)
             {
               localObject3 = new StringBuilder();
@@ -136,7 +136,7 @@ final class AEOldShortVideoArtResourceMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoArtResourceMgr.1
  * JD-Core Version:    0.7.0.1
  */

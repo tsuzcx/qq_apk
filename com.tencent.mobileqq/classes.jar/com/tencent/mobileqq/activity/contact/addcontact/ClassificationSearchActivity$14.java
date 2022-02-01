@@ -17,15 +17,15 @@ class ClassificationSearchActivity$14
   {
     EntityManager localEntityManager = this.this$0.app.getEntityManagerFactory().createEntityManager();
     List localList = localEntityManager.query(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
-    Message localMessage = this.this$0.a.obtainMessage(1);
+    Message localMessage = this.this$0.A.obtainMessage(1);
     localMessage.obj = localList;
-    this.this$0.a.sendMessage(localMessage);
+    this.this$0.A.sendMessage(localMessage);
     localEntityManager.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.14
  * JD-Core Version:    0.7.0.1
  */

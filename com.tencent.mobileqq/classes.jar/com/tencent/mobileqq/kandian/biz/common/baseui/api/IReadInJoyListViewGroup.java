@@ -8,11 +8,11 @@ import org.jetbrains.annotations.NotNull;
 public abstract interface IReadInJoyListViewGroup
 {
   @NotNull
-  public abstract ListView a();
+  public abstract ListView getListView();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.baseui.api.IReadInJoyListViewGroup
  * JD-Core Version:    0.7.0.1
  */

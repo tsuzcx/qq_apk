@@ -7,14 +7,14 @@ import android.view.animation.Transformation;
 public class UiApiPlugin$ExpandAnimation
   extends Animation
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
+  View a;
+  int b;
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
+    paramTransformation = this.a.getLayoutParams();
+    paramTransformation.height = ((int)(this.b * paramFloat));
+    this.a.setLayoutParams(paramTransformation);
   }
   
   public boolean willChangeBounds()
@@ -24,7 +24,7 @@ public class UiApiPlugin$ExpandAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.ExpandAnimation
  * JD-Core Version:    0.7.0.1
  */

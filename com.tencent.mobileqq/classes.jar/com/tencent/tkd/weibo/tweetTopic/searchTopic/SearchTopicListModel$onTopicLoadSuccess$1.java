@@ -12,12 +12,12 @@ final class SearchTopicListModel$onTopicLoadSuccess$1
   
   public final void run()
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction7.invoke(Boolean.valueOf(true), Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfByte, Integer.valueOf(0), "");
+    this.a.invoke(Boolean.valueOf(true), Boolean.valueOf(this.b), Integer.valueOf(this.c.size()), this.c, this.d, Integer.valueOf(0), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.tweetTopic.searchTopic.SearchTopicListModel.onTopicLoadSuccess.1
  * JD-Core Version:    0.7.0.1
  */

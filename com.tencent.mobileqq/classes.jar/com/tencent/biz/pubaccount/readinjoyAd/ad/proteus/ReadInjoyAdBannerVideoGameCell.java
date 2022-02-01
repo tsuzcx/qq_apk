@@ -11,31 +11,31 @@ public class ReadInjoyAdBannerVideoGameCell
   {
     try
     {
-      if (paramAdData.a == null) {
+      if (paramAdData.as == null) {
         return paramJSONObject;
       }
       paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_video_game_cell");
-      if (!TextUtils.isEmpty(paramAdData.J)) {
+      if (!TextUtils.isEmpty(paramAdData.aa)) {
         paramJSONObject.put("id_game_small_img", new JSONObject());
       }
-      boolean bool = TextUtils.isEmpty(paramAdData.q);
+      boolean bool = TextUtils.isEmpty(paramAdData.u);
       if (!bool)
       {
         localJSONObject = new JSONObject();
-        localJSONObject.put("text", paramAdData.q);
+        localJSONObject.put("text", paramAdData.u);
         paramJSONObject.put("id_tv_author", localJSONObject);
       }
-      if (!TextUtils.isEmpty(paramAdData.k))
+      if (!TextUtils.isEmpty(paramAdData.m))
       {
         localJSONObject = new JSONObject();
-        localJSONObject.put("text", paramAdData.k);
+        localJSONObject.put("text", paramAdData.m);
         paramJSONObject.put("id_tv_title", localJSONObject);
       }
       paramJSONObject.put("id_ad_banner_bottom_video", new JSONObject());
       JSONObject localJSONObject = new JSONObject();
-      if (!TextUtils.isEmpty(paramAdData.L))
+      if (!TextUtils.isEmpty(paramAdData.ah))
       {
-        localJSONObject.put("text", paramAdData.L);
+        localJSONObject.put("text", paramAdData.ah);
         paramJSONObject.put("id_ad_dislike_button", localJSONObject);
       }
       paramJSONObject.put("id_game_operate_area", new JSONObject());
@@ -56,7 +56,7 @@ public class ReadInjoyAdBannerVideoGameCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.ReadInjoyAdBannerVideoGameCell
  * JD-Core Version:    0.7.0.1
  */

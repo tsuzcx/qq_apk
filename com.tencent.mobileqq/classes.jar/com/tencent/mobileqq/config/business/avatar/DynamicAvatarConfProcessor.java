@@ -36,7 +36,7 @@ public final class DynamicAvatarConfProcessor
       }
       if ((i ^ 0x1) != 0)
       {
-        String str = paramArrayOfQConfItem[0].a;
+        String str = paramArrayOfQConfItem[0].b;
         if (QLog.isColorLevel())
         {
           paramArrayOfQConfItem = new StringBuilder();
@@ -98,7 +98,7 @@ public final class DynamicAvatarConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.avatar.DynamicAvatarConfProcessor
  * JD-Core Version:    0.7.0.1
  */

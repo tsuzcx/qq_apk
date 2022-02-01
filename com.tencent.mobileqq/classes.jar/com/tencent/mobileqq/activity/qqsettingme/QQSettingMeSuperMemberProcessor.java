@@ -35,6 +35,7 @@ import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.VasUtils;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.mobileqq.vas.VipGrayConfigHelper;
 import com.tencent.mobileqq.vas.api.IVasDepTemp;
@@ -55,54 +56,20 @@ public class QQSettingMeSuperMemberProcessor
   extends QQSettingMeBaseMenuProcessor
   implements ISuperMemberDataCatcher
 {
-  private final BroadcastReceiver a;
-  public MutableLiveData<QQSettingMeSuperMemberPayButtonBean> b;
-  private boolean b;
-  public MutableLiveData<String> c;
-  private boolean c;
-  public MutableLiveData<QQSettingMeDynamicItemBean> d = new MutableLiveData();
-  
-  public QQSettingMeSuperMemberProcessor()
-  {
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData(new QQSettingMeSuperMemberPayButtonBean());
-    this.jdField_c_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QQSettingMeSuperMemberProcessor.1(this);
-  }
-  
-  private boolean a()
-  {
-    if (!this.jdField_c_of_type_Boolean) {
-      return true;
-    }
-    long l = QVipConfigManager.a(this.jdField_a_of_type_MqqAppAppRuntime, "setting_me_last_request_success_time", 0L);
-    int i = QVipConfigManager.a(this.jdField_a_of_type_MqqAppAppRuntime, "setting_me_vip_sync_freq", 0);
-    if (NetConnInfoCenter.getServerTime() - l <= i)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("ignore the vip info request because current time=");
-      localStringBuilder.append(NetConnInfoCenter.getServerTime());
-      localStringBuilder.append(" requestTimestamp=");
-      localStringBuilder.append(l);
-      localStringBuilder.append(" and updateFrequency=");
-      localStringBuilder.append(i);
-      QLog.e("QVipSettingMe.QQSettingRedesign", 1, localStringBuilder.toString());
-      return false;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("need the vip info request because current time=");
-    localStringBuilder.append(NetConnInfoCenter.getServerTime());
-    localStringBuilder.append(" requestTimestamp=");
-    localStringBuilder.append(l);
-    localStringBuilder.append(" and updateFrequency=");
-    localStringBuilder.append(i);
-    QLog.e("QVipSettingMe.QQSettingRedesign", 1, localStringBuilder.toString());
-    return true;
-  }
+  public MutableLiveData<QQSettingMeSuperMemberPayButtonBean> b = new MutableLiveData(new QQSettingMeSuperMemberPayButtonBean());
+  public MutableLiveData<String> i = new MutableLiveData();
+  public MutableLiveData<QQSettingMeDynamicItemBean> j = new MutableLiveData();
+  private boolean k;
+  private boolean l;
+  private final BroadcastReceiver m = new QQSettingMeSuperMemberProcessor.1(this);
   
   private void b(String paramString)
   {
-    long l = System.currentTimeMillis();
-    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime;
+    if (VasUtils.b()) {
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    Object localObject1 = this.c;
     Object localObject3 = "";
     IRedTouchManager localIRedTouchManager = (IRedTouchManager)((AppRuntime)localObject1).getRuntimeService(IRedTouchManager.class, "");
     BusinessInfoCheckUpdate.AppInfo localAppInfo = localIRedTouchManager.getAppInfoByPath(String.valueOf(100400));
@@ -132,30 +99,30 @@ public class QQSettingMeSuperMemberProcessor
       }
     }
     localObject3 = new StringBuilder();
-    int j = NetworkUtil.getSystemNetwork(this.jdField_a_of_type_MqqAppAppRuntime.getApp().getApplicationContext());
+    int i1 = NetworkUtil.getSystemNetwork(this.c.getApp().getApplicationContext());
     boolean bool1 = TextUtils.isEmpty((CharSequence)localObject2);
     boolean bool2 = false;
-    int i;
+    int n;
     if (bool1)
     {
-      localObject2 = b().jdField_a_of_type_JavaLangString;
-      i = 1;
+      localObject2 = l().b;
+      n = 1;
     }
     else
     {
-      i = 0;
+      n = 0;
     }
     if (!((String)localObject2).contains("?"))
     {
       ((StringBuilder)localObject3).append((String)localObject2);
       ((StringBuilder)localObject3).append("?platform=1&type=20001&networkInfo=");
-      ((StringBuilder)localObject3).append(j);
+      ((StringBuilder)localObject3).append(i1);
     }
     else
     {
       ((StringBuilder)localObject3).append((String)localObject2);
       ((StringBuilder)localObject3).append("&platform=1&type=20001&networkInfo=");
-      ((StringBuilder)localObject3).append(j);
+      ((StringBuilder)localObject3).append(i1);
     }
     localObject3 = localIRedTouchManager.wrapperRedTouchUrl(((StringBuilder)localObject3).toString(), localAppInfo);
     bool1 = bool2;
@@ -174,7 +141,7 @@ public class QQSettingMeSuperMemberProcessor
     if (paramString != null)
     {
       localObject2 = localObject3;
-      if (i != 0)
+      if (n != 0)
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject3);
@@ -182,22 +149,22 @@ public class QQSettingMeSuperMemberProcessor
         localObject2 = ((StringBuilder)localObject2).toString();
       }
     }
-    if (VasUtil.a().isCanOpenQQVipHippyPage())
+    if (VasUtil.b().isCanOpenQQVipHippyPage())
     {
-      VasUtil.a().openQQVipHippyPage();
+      VasUtil.b().openQQVipHippyPage((String)localObject2);
     }
     else
     {
-      paramString = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, QQBrowserActivity.class);
+      paramString = new Intent(this.d, QQBrowserActivity.class);
       paramString.putExtra("broadcastAction", "com.tencent.mobileqq.opencenter.vipInfo");
-      paramString.putExtra("startOpenPageTime", l);
+      paramString.putExtra("startOpenPageTime", l1);
       paramString.putExtra("portraitOnly", true);
-      paramString.putExtra("uin", this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      paramString.putExtra("uin", this.c.getCurrentAccountUin());
       paramString.putExtra("hide_operation_bar", true);
       paramString.putExtra("hide_more_button", true);
       paramString.putExtra("has_red_dot", bool1);
-      paramString.putExtra("leftBtnText", this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getString(2131689529));
-      VasWebviewUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, (String)localObject2, 256L, paramString, false, -1);
+      paramString.putExtra("leftBtnText", this.d.getResources().getString(2131886137));
+      VasWebviewUtil.b(this.d, (String)localObject2, 256L, paramString, false, -1);
       QLog.e("QQSettingRedesign", 1, "VipInfoHandler gotoOpenCenterBrowser");
     }
     if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() != 0)) {
@@ -205,64 +172,83 @@ public class QQSettingMeSuperMemberProcessor
     }
   }
   
-  private void j()
+  private void m()
   {
-    Object localObject1 = QQSettingConfigManager.a().a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime);
+    Object localObject1 = QQSettingConfigManager.a().a((QQAppInterface)this.c);
     Object localObject2 = Integer.valueOf(2);
     Object localObject3 = (MenumItem)((Map)localObject1).get(localObject2);
     if (localObject3 == null) {
       return;
     }
     localObject1 = new QQSettingMeDynamicItemBean();
-    ((QQSettingMeDynamicItemBean)localObject1).jdField_a_of_type_JavaLangString = QQSettingConfigManager.a().a((Integer)localObject2);
+    ((QQSettingMeDynamicItemBean)localObject1).a = QQSettingConfigManager.a().b((Integer)localObject2);
     if (!TextUtils.isEmpty(((MenumItem)localObject3).title)) {
-      ((QQSettingMeDynamicItemBean)localObject1).jdField_a_of_type_ComTencentMobileqqTextQQText = ChatRoomUtil.a(((MenumItem)localObject3).title, 16);
+      ((QQSettingMeDynamicItemBean)localObject1).b = ChatRoomUtil.a(((MenumItem)localObject3).title, 16);
     }
     if (!TextUtils.isEmpty(((MenumItem)localObject3).icon))
     {
       localObject2 = ((MenumItem)localObject3).icon;
       localObject3 = URLDrawableHelperConstants.a;
-      ((QQSettingMeDynamicItemBean)localObject1).jdField_a_of_type_ComTencentImageURLDrawable = VasApngUtil.getApngURLDrawable((String)localObject2, new int[] { 1 }, (Drawable)localObject3, null, null);
+      ((QQSettingMeDynamicItemBean)localObject1).c = VasApngUtil.getApngURLDrawable((String)localObject2, new int[] { 1 }, (Drawable)localObject3, null, null);
     }
-    this.d.postValue(localObject1);
+    this.j.postValue(localObject1);
   }
   
-  private void k()
+  private void n()
   {
-    if (QQSettingConfigManager.a().a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, 4)) {
+    if (QQSettingConfigManager.a().a((QQAppInterface)this.c, 4)) {
       return;
     }
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences("vipTitleSpFile", 0);
-    MutableLiveData localMutableLiveData = this.jdField_c_of_type_AndroidxLifecycleMutableLiveData;
+    SharedPreferences localSharedPreferences = this.c.getApplication().getSharedPreferences("vipTitleSpFile", 0);
+    MutableLiveData localMutableLiveData = this.i;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("vipTitleSpKey_");
-    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+    localStringBuilder.append(this.c.getCurrentAccountUin());
     localStringBuilder.append("_");
-    localStringBuilder.append(LocaleManager.a());
+    localStringBuilder.append(LocaleManager.d());
     localMutableLiveData.setValue(localSharedPreferences.getString(localStringBuilder.toString(), ""));
   }
   
-  private void l()
+  private void o()
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin(), 4);
-    b().jdField_a_of_type_JavaLangString = localSharedPreferences.getString("VIPCenter_url_key", "https://club.vip.qq.com/index?_wv=16778247&_wwv=68&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_alpha=0&pay_src=10&_wvx=10&default=1&_proxy=1");
+    SharedPreferences localSharedPreferences = this.c.getApplication().getSharedPreferences(this.c.getCurrentAccountUin(), 4);
+    l().b = localSharedPreferences.getString("VIPCenter_url_key", "https://club.vip.qq.com/index?_wv=16778247&_wwv=68&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_alpha=0&pay_src=10&_wvx=10&default=1&_proxy=1");
     ThreadManager.getSubThreadHandler().post(new QQSettingMeSuperMemberProcessor.9(this));
+  }
+  
+  private boolean p()
+  {
+    if (!this.l) {
+      return true;
+    }
+    long l1 = QVipConfigManager.a(this.c, "setting_me_last_request_success_time", 0L);
+    int n = QVipConfigManager.a(this.c, "setting_me_vip_sync_freq", 0);
+    if (NetConnInfoCenter.getServerTime() - l1 <= n)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ignore the vip info request because current time=");
+      localStringBuilder.append(NetConnInfoCenter.getServerTime());
+      localStringBuilder.append(" requestTimestamp=");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(" and updateFrequency=");
+      localStringBuilder.append(n);
+      QLog.e("QVipSettingMe.QQSettingRedesign", 1, localStringBuilder.toString());
+      return false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("need the vip info request because current time=");
+    localStringBuilder.append(NetConnInfoCenter.getServerTime());
+    localStringBuilder.append(" requestTimestamp=");
+    localStringBuilder.append(l1);
+    localStringBuilder.append(" and updateFrequency=");
+    localStringBuilder.append(n);
+    QLog.e("QVipSettingMe.QQSettingRedesign", 1, localStringBuilder.toString());
+    return true;
   }
   
   public QQSettingMeSuperMemberPayButtonBean a()
   {
-    return (QQSettingMeSuperMemberPayButtonBean)this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.getValue();
-  }
-  
-  public String a()
-  {
-    return "d_vip_identity";
-  }
-  
-  public void a()
-  {
-    k();
-    j();
+    return (QQSettingMeSuperMemberPayButtonBean)this.b.getValue();
   }
   
   public void a(View paramView)
@@ -271,61 +257,63 @@ public class QQSettingMeSuperMemberProcessor
       QLog.i("QQSettingRedesign", 2, "enter vip");
     }
     ThreadManager.excute(new QQSettingMeSuperMemberProcessor.6(this), 16, null, true);
-    paramView = (IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "");
-    boolean bool = QQSettingMe.a("d_vip_identity").c();
-    int i = VipInfoHandler.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), bool);
+    paramView = (IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "");
+    boolean bool = QQSettingMe.c("d_vip_identity").h();
+    int n = VipInfoHandler.a((QQAppInterface)this.c, this.c.getCurrentUin(), bool);
     if (bool) {
       paramView = MobileReportManager.getNewReportInfo(paramView.getAppInfoByPath(String.valueOf(100400)));
     } else {
       paramView = MobileReportManager.getNewDefaultReportInfo("outside", "1");
     }
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800A8BE", "0X800A8BE", i, 0, String.valueOf(i), "", "", "");
+    ReportController.b(this.c, "dc00898", "", "", "0X800A8BE", "0X800A8BE", n, 0, String.valueOf(n), "", "", "");
     b(paramView);
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "0X8004185", "0X8004185", 0, 0, "", "", "", "");
-    MobileReportManager.getInstance().qqSetingMeReport(1, 102, String.valueOf(i));
+    ReportController.b(this.c, "CliOper", "", "", "0X8004185", "0X8004185", 0, 0, "", "", "", "");
+    MobileReportManager.getInstance().qqSetingMeReport(1, 102, String.valueOf(n));
     if (QQSettingMe.a > 0)
     {
-      com.tencent.mobileqq.activity.recent.DrawerFrame.a = 2;
+      com.tencent.mobileqq.activity.recent.DrawerFrame.b = 2;
       return;
     }
-    com.tencent.mobileqq.activity.recent.DrawerFrame.a = QQSettingMe.a;
+    com.tencent.mobileqq.activity.recent.DrawerFrame.b = QQSettingMe.a;
   }
   
   public void a(QQSettingMe paramQQSettingMe)
   {
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeSuperMemberProcessor.2(this, paramQQSettingMe));
-    this.d.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeSuperMemberProcessor.3(this, paramQQSettingMe));
-    this.jdField_c_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeSuperMemberProcessor.4(this, paramQQSettingMe));
+    this.b.observe(this.e, new QQSettingMeSuperMemberProcessor.2(this, paramQQSettingMe));
+    this.j.observe(this.e, new QQSettingMeSuperMemberProcessor.3(this, paramQQSettingMe));
+    this.i.observe(this.e, new QQSettingMeSuperMemberProcessor.4(this, paramQQSettingMe));
   }
   
   public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo, boolean paramBoolean)
   {
     QQSettingMeRedTouchUtil.a(paramAppInfo);
-    QQSettingMeSuperMemberPayButtonBean localQQSettingMeSuperMemberPayButtonBean = b();
-    localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo = paramAppInfo;
-    if (!this.jdField_a_of_type_Boolean) {
+    QQSettingMeSuperMemberPayButtonBean localQQSettingMeSuperMemberPayButtonBean = l();
+    localQQSettingMeSuperMemberPayButtonBean.a = paramAppInfo;
+    if (!this.g) {
       return;
     }
     ThreadManagerV2.getUIHandlerV2().post(new QQSettingMeSuperMemberProcessor.8(this, localQQSettingMeSuperMemberPayButtonBean));
   }
   
-  @NonNull
-  public QQSettingMeSuperMemberPayButtonBean b()
+  public String b()
   {
-    if (this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.getValue() == null) {
-      return new QQSettingMeSuperMemberPayButtonBean();
-    }
-    return (QQSettingMeSuperMemberPayButtonBean)this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.getValue();
+    return "d_vip_identity";
   }
   
-  public void b()
+  public void c()
   {
-    super.b();
-    if (!this.jdField_c_of_type_Boolean)
+    n();
+    m();
+  }
+  
+  public void d()
+  {
+    super.d();
+    if (!this.l)
     {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.mobileqq.opencenter.vipInfo"));
+        this.d.registerReceiver(this.m, new IntentFilter("com.tencent.mobileqq.opencenter.vipInfo"));
       }
       catch (Exception localException)
       {
@@ -340,26 +328,26 @@ public class QQSettingMeSuperMemberProcessor
       if (TextUtils.isEmpty(VipGrayConfigHelper.a().b)) {
         ThreadManager.excute(new QQSettingMeSuperMemberProcessor.5(this), 16, null, true);
       }
-      this.jdField_c_of_type_Boolean = true;
+      this.l = true;
     }
-    this.jdField_b_of_type_Boolean = false;
-    j();
-    l();
-    if (QQSettingMe.a("d_vip_identity").getVisibility() == 0)
+    this.k = false;
+    m();
+    o();
+    if (QQSettingMe.b("d_vip_identity").getVisibility() == 0)
     {
-      BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath(String.valueOf(100400));
-      int i = VipInfoHandler.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), RedTouch.a(localAppInfo));
-      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800A8C3", "0X800A8C3", i, 0, String.valueOf(i), "", "", "");
-      MobileReportManager.getInstance().qqSetingMeReport(1, 101, String.valueOf(i));
+      BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath(String.valueOf(100400));
+      int n = VipInfoHandler.a((QQAppInterface)this.c, this.c.getCurrentUin(), RedTouch.d(localAppInfo));
+      ReportController.b(this.c, "dc00898", "", "", "0X800A8C3", "0X800A8C3", n, 0, String.valueOf(n), "", "", "");
+      MobileReportManager.getInstance().qqSetingMeReport(1, 101, String.valueOf(n));
     }
   }
   
-  public void d()
+  public void f()
   {
-    if (this.jdField_c_of_type_Boolean) {
+    if (this.l) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        this.d.unregisterReceiver(this.m);
         return;
       }
       catch (Exception localException)
@@ -371,65 +359,74 @@ public class QQSettingMeSuperMemberProcessor
     }
   }
   
-  public void f()
+  public void h()
   {
-    j();
+    m();
   }
   
-  public void g()
+  public void i()
   {
     QQSettingMeSuperMemberPayButtonBean localQQSettingMeSuperMemberPayButtonBean = new QQSettingMeSuperMemberPayButtonBean();
     try
     {
-      localQQSettingMeSuperMemberPayButtonBean.b = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin();
-      localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_MQQPayRuleCfg = VipInfoHandler.a(localQQSettingMeSuperMemberPayButtonBean.b);
-      localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_Boolean = VipInfoHandler.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_MQQPayRuleCfg, this.jdField_b_of_type_Boolean);
-      if (localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_MQQPayRuleCfg == null) {
+      localQQSettingMeSuperMemberPayButtonBean.c = this.c.getCurrentUin();
+      localQQSettingMeSuperMemberPayButtonBean.d = VipInfoHandler.a(localQQSettingMeSuperMemberPayButtonBean.c);
+      localQQSettingMeSuperMemberPayButtonBean.e = VipInfoHandler.a((QQAppInterface)this.c, localQQSettingMeSuperMemberPayButtonBean.d, this.k);
+      if (localQQSettingMeSuperMemberPayButtonBean.d == null) {
         QLog.e("QQSettingRedesign", 1, "VipInfoHandler getPayRule is null");
       } else {
-        QLog.e("QQSettingRedesign", 1, new Object[] { "VipInfoHandler getPayRule ", localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_MQQPayRuleCfg.iconText, " needShowPayButton=", Boolean.valueOf(localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_Boolean), " url=", localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_MQQPayRuleCfg.iconUrl, " exposed:", Boolean.valueOf(this.jdField_b_of_type_Boolean) });
+        QLog.e("QQSettingRedesign", 1, new Object[] { "VipInfoHandler getPayRule ", localQQSettingMeSuperMemberPayButtonBean.d.iconText, " needShowPayButton=", Boolean.valueOf(localQQSettingMeSuperMemberPayButtonBean.e), " url=", localQQSettingMeSuperMemberPayButtonBean.d.iconUrl, " exposed:", Boolean.valueOf(this.k) });
       }
-      if ((localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+      if ((localQQSettingMeSuperMemberPayButtonBean.e) && (!this.k))
       {
-        this.jdField_b_of_type_Boolean = true;
-        ReportController.b(null, "dc00898", "", "", "", "0X800A632", VipInfoHandler.a(localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_MQQPayRuleCfg), 1, 0, "1", localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_MQQPayRuleCfg.advId, "", "");
-        VipInfoHandler.a(101, localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_MQQPayRuleCfg.advId);
+        this.k = true;
+        ReportController.b(null, "dc00898", "", "", "", "0X800A632", VipInfoHandler.b(localQQSettingMeSuperMemberPayButtonBean.d), 1, 0, "1", localQQSettingMeSuperMemberPayButtonBean.d.advId, "", "");
+        VipInfoHandler.a(101, localQQSettingMeSuperMemberPayButtonBean.d.advId);
       }
       Object localObject;
       if (QLog.isColorLevel())
       {
-        localObject = (IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "");
-        localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo = ((IRedTouchManager)localObject).getAppInfoByPath(String.valueOf(100400));
+        localObject = (IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "");
+        localQQSettingMeSuperMemberPayButtonBean.a = ((IRedTouchManager)localObject).getAppInfoByPath(String.valueOf(100400));
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("VipInfoHandler vipAppinfo: ");
-        localStringBuilder.append(((IRedTouchManager)localObject).appToString(localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo));
+        localStringBuilder.append(((IRedTouchManager)localObject).appToString(localQQSettingMeSuperMemberPayButtonBean.a));
         QLog.d("QQSettingRedesign", 2, localStringBuilder.toString());
       }
-      if (((localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo != null) && (localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() == 1)) || (localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_Boolean))
+      if (((localQQSettingMeSuperMemberPayButtonBean.a != null) && (localQQSettingMeSuperMemberPayButtonBean.a.iNewFlag.get() == 1)) || (localQQSettingMeSuperMemberPayButtonBean.e))
       {
         QLog.e("QQSettingRedesign", 1, "VipInfoHandler PreloadWebService updateVipItemView");
-        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, PreloadWebService.class);
+        localObject = new Intent(this.d, PreloadWebService.class);
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.startService((Intent)localObject);
+          this.d.startService((Intent)localObject);
         }
         catch (Throwable localThrowable)
         {
           QLog.e("QQSettingRedesign", 2, "PreloadWebService", localThrowable);
         }
       }
-      localQQSettingMeSuperMemberPayButtonBean.jdField_a_of_type_AndroidViewView$OnClickListener = new QQSettingMeSuperMemberProcessor.7(this, localQQSettingMeSuperMemberPayButtonBean);
+      localQQSettingMeSuperMemberPayButtonBean.f = new QQSettingMeSuperMemberProcessor.7(this, localQQSettingMeSuperMemberPayButtonBean);
     }
     catch (Exception localException)
     {
       QLog.e("QQSettingRedesign", 1, "updateVipItemView: ", localException);
     }
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.setValue(localQQSettingMeSuperMemberPayButtonBean);
+    this.b.setValue(localQQSettingMeSuperMemberPayButtonBean);
+  }
+  
+  @NonNull
+  public QQSettingMeSuperMemberPayButtonBean l()
+  {
+    if (this.b.getValue() == null) {
+      return new QQSettingMeSuperMemberPayButtonBean();
+    }
+    return (QQSettingMeSuperMemberPayButtonBean)this.b.getValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeSuperMemberProcessor
  * JD-Core Version:    0.7.0.1
  */

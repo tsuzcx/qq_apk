@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/hy7" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.OverScrollRecyclerView android:id="@id/oeh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" />
-    <include layout="@layout/cnl" />
-</RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/qc3" android:paddingTop="@dimen/1p" android:paddingBottom="@dimen/1p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/ba_" android:layout_centerInParent="true">
+            <TextView android:textSize="@dimen/bab" android:textColor="@color/av_" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pb" />
+            <TextView android:textSize="@dimen/baa" android:textColor="@color/66" android:id="@id/bg6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pb" android:lineSpacingMultiplier="1.2" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/icon" android:visibility="gone" android:layout_width="@dimen/ba9" android:layout_height="@dimen/ba9" android:src="@drawable/jmt" android:scaleType="fitCenter" android:layout_toLeftOf="@id/qc3" android:layout_centerVertical="true" />
+        <TextView android:id="@id/otu" android:visibility="gone" android:layout_centerVertical="true" style="@style/7f" />
+        <TextView android:id="@id/i4v" android:visibility="gone" android:layout_centerVertical="true" style="@style/a5w" />
+    </RelativeLayout>
+    <ImageView android:layout_gravity="bottom" android:id="@id/bmt" style="@style/58" />
+</LinearLayout>

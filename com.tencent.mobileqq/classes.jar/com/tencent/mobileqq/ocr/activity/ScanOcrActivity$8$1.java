@@ -11,31 +11,31 @@ class ScanOcrActivity$8$1
   
   public void run()
   {
-    if ((ScanOcrActivity.b(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$8.a)) && (!TextUtils.isEmpty(ScanOcrActivity.b(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$8.a))) && (ScanOcrActivity.b(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$8.a).equals(this.jdField_a_of_type_JavaLangString)))
+    if ((ScanOcrActivity.p(this.e.a)) && (!TextUtils.isEmpty(ScanOcrActivity.q(this.e.a))) && (ScanOcrActivity.q(this.e.a).equals(this.a)))
     {
-      if (!ScanOcrActivity.c(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$8.a))
+      if (!ScanOcrActivity.r(this.e.a))
       {
-        ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$8.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+        ScanOcrActivity.a(this.e.a, this.b, this.c, this.a, this.d);
         return;
       }
-      ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$8.a, new ScanOcrActivity.OcrResultCache());
-      ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$8.a).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$8.a).jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult = this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult;
-      ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$8.a).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$8.a).jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      ScanOcrActivity.a(this.e.a, new ScanOcrActivity.OcrResultCache());
+      ScanOcrActivity.s(this.e.a).a = this.b;
+      ScanOcrActivity.s(this.e.a).b = this.c;
+      ScanOcrActivity.s(this.e.a).c = this.a;
+      ScanOcrActivity.s(this.e.a).d = this.d;
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("OcrCallback onResult is not In recog, mRecogPicPath:");
-    localStringBuilder.append(ScanOcrActivity.b(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$8.a));
+    localStringBuilder.append(ScanOcrActivity.q(this.e.a));
     localStringBuilder.append(" ,imagePath:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     QLog.d("Q.ocr.ScanOcrActivity", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.activity.ScanOcrActivity.8.1
  * JD-Core Version:    0.7.0.1
  */

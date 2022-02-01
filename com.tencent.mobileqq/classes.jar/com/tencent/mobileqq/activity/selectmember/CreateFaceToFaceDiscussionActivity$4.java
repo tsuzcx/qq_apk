@@ -18,13 +18,13 @@ class CreateFaceToFaceDiscussionActivity$4
       ReportController.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
     }
     this.a.finish();
-    this.a.overridePendingTransition(2130772002, 2130772003);
+    this.a.overridePendingTransition(2130772005, 2130772006);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.4
  * JD-Core Version:    0.7.0.1
  */

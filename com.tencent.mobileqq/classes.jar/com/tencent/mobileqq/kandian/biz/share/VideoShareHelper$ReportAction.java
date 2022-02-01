@@ -25,33 +25,25 @@ class VideoShareHelper$ReportAction
     VideoShareHelper.a(this.a, false);
     try
     {
-      paramActionSheetItem = URLEncoder.encode(paramString, "UTF-8");
+      URLEncoder.encode(paramString, "UTF-8");
     }
     catch (UnsupportedEncodingException paramString)
     {
-      label20:
-      StringBuilder localStringBuilder;
-      break label20;
+      label19:
+      break label19;
     }
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "encode url failed, because UTF-8 is unknown");
     }
-    paramActionSheetItem = null;
     if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.getSubscribeUin())) {
-      paramString = paramAbsBaseArticleInfo.getSubscribeUin();
+      paramAbsBaseArticleInfo.getSubscribeUin();
     } else if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.thirdUin)) {
       paramString = paramAbsBaseArticleInfo.thirdUin;
-    } else {
-      paramString = "0";
     }
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("https://post.mp.qq.com/jubao/index?_wv=3&puin=");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("&uin_type=0&url=");
-    localStringBuilder.append(paramActionSheetItem);
-    localStringBuilder.append("&type=4&key=");
-    localStringBuilder.append(paramAbsBaseArticleInfo.getInnerUniqueID());
-    paramAbsBaseArticleInfo = localStringBuilder.toString();
+    paramString = new StringBuilder();
+    paramString.append("https://web.kandian.qq.com/tpl/kdReport?pgyid=2021&type=content&rowkey=");
+    paramString.append(paramAbsBaseArticleInfo.getInnerUniqueID());
+    paramAbsBaseArticleInfo = paramString.toString();
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
@@ -59,15 +51,15 @@ class VideoShareHelper$ReportAction
       paramString.append(paramAbsBaseArticleInfo);
       QLog.d("Q.readinjoy.video.VideoShareHelper", 2, paramString.toString());
     }
-    paramString = new Intent(VideoShareHelper.a(this.a), QQBrowserActivity.class);
+    paramString = new Intent(VideoShareHelper.f(this.a), QQBrowserActivity.class);
     paramString.putExtra("url", paramAbsBaseArticleInfo);
     paramString.putExtra("hide_more_button", true);
-    VideoShareHelper.a(this.a).startActivity(paramString);
+    VideoShareHelper.f(this.a).startActivity(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.VideoShareHelper.ReportAction
  * JD-Core Version:    0.7.0.1
  */

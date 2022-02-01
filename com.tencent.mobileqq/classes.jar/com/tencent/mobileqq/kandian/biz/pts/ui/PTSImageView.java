@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.pts.ui;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.text.TextUtils;
 import android.widget.ImageView.ScaleType;
@@ -23,9 +24,9 @@ public class PTSImageView
   private URL mPathUrl;
   private PTSViewDecorationUtil.RoundedCorner mRoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this);
   
-  public PTSImageView(PTSNodeImage paramPTSNodeImage)
+  public PTSImageView(Context paramContext)
   {
-    super(paramPTSNodeImage.getContext());
+    super(paramContext);
     setScaleType(ImageView.ScaleType.CENTER_CROP);
   }
   
@@ -41,8 +42,8 @@ public class PTSImageView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    ImageRequest localImageRequest = this.mController.a();
-    if (((localImageRequest == null) || (localImageRequest.a)) && (!TextUtils.isEmpty(this.mPath))) {
+    ImageRequest localImageRequest = this.mController.b();
+    if (((localImageRequest == null) || (localImageRequest.d)) && (!TextUtils.isEmpty(this.mPath))) {
       setImageSrc(this.mPath);
     }
   }
@@ -58,20 +59,18 @@ public class PTSImageView
   {
     try
     {
-      if ((this.mPath != null) && (this.mPath.equalsIgnoreCase(paramString)) && (this.mPathUrl != null))
-      {
-        QLog.d("PTSImageView", 2, "[setImageSrc], current path unchanged ");
-      }
-      else
+      if ((this.mPath == null) || (!this.mPath.equalsIgnoreCase(paramString)) || (this.mPathUrl == null))
       {
         this.mPath = paramString;
         this.mPathUrl = new URL(this.mPath);
-        QLog.d("PTSImageView", 2, "[setImageSrc], current path changed ");
       }
-      paramString = new StringBuilder();
-      paramString.append("[setImageSrc], mPathUrl = ");
-      paramString.append(this.mPathUrl);
-      QLog.d("PTSImageView", 2, paramString.toString());
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("[setImageSrc], mPathUrl = ");
+        paramString.append(this.mPathUrl);
+        QLog.d("PTSImageView", 2, paramString.toString());
+      }
       ReadInJoyDisplayUtils.a(this, this.mPathUrl, getContext());
       return;
     }
@@ -87,7 +86,7 @@ public class PTSImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.ui.PTSImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class VideoStoryAIScenePart$12
   
   public void a(TTAutoAISceneType paramTTAutoAISceneType)
   {
-    CameraCaptureView.AISceneCallback localAISceneCallback = (CameraCaptureView.AISceneCallback)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    CameraCaptureView.AISceneCallback localAISceneCallback = (CameraCaptureView.AISceneCallback)this.a.get();
     if (localAISceneCallback != null) {
       localAISceneCallback.a(paramTTAutoAISceneType);
     }
@@ -19,7 +19,7 @@ class VideoStoryAIScenePart$12
   
   public void a(String paramString)
   {
-    CameraCaptureView.AISceneCallback localAISceneCallback = (CameraCaptureView.AISceneCallback)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    CameraCaptureView.AISceneCallback localAISceneCallback = (CameraCaptureView.AISceneCallback)this.a.get();
     if (localAISceneCallback != null) {
       localAISceneCallback.a(paramString);
     }
@@ -27,7 +27,7 @@ class VideoStoryAIScenePart$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.aiscene.VideoStoryAIScenePart.12
  * JD-Core Version:    0.7.0.1
  */

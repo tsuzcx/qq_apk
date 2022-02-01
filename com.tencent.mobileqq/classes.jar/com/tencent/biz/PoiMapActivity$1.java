@@ -10,7 +10,7 @@ class PoiMapActivity$1
   
   public void onMapClick(LatLng paramLatLng)
   {
-    this.a.f();
+    this.a.g();
   }
 }
 

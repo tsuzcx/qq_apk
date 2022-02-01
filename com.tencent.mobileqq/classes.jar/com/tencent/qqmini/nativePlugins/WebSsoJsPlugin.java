@@ -25,8 +25,8 @@ public class WebSsoJsPlugin
   extends BaseJsPlugin
   implements WadlCmdListener
 {
-  private int jdField_a_of_type_Int = 0;
-  SparseArray<RequestEvent> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  SparseArray<RequestEvent> a = new SparseArray();
+  private int b = 0;
   
   public WebSsoJsPlugin()
   {
@@ -37,8 +37,8 @@ public class WebSsoJsPlugin
   {
     try
     {
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
+      int i = this.b;
+      this.b = (i + 1);
       return i;
     }
     finally
@@ -88,8 +88,8 @@ public class WebSsoJsPlugin
     if (i == -1) {
       return;
     }
-    RequestEvent localRequestEvent = (RequestEvent)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+    RequestEvent localRequestEvent = (RequestEvent)this.a.get(i);
+    this.a.remove(i);
     if (localRequestEvent == null) {
       return;
     }
@@ -133,13 +133,13 @@ public class WebSsoJsPlugin
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null) && (((HashSet)localObject2).contains(localObject1)))
       {
         int i = a();
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramRequestEvent);
+        this.a.put(i, paramRequestEvent);
         localObject2 = new Bundle();
         ((Bundle)localObject2).putInt("mini_seq", i);
         ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).requestWebSso((String)localObject1, localJSONObject, (Bundle)localObject2);
         return;
       }
-      paramRequestEvent.fail(HardCodeUtil.a(2131716369));
+      paramRequestEvent.fail(HardCodeUtil.a(2131913809));
       return;
     }
     catch (Throwable localThrowable)
@@ -147,7 +147,7 @@ public class WebSsoJsPlugin
       label126:
       break label126;
     }
-    paramRequestEvent.fail(HardCodeUtil.a(2131716368));
+    paramRequestEvent.fail(HardCodeUtil.a(2131913808));
     if (QLog.isColorLevel()) {
       QLog.w("WebSsoJsPlugin", 2, "requestWebSSO,decode param error");
     }
@@ -155,7 +155,7 @@ public class WebSsoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.WebSsoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

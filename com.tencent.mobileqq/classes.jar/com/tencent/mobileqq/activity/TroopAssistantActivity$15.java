@@ -26,13 +26,13 @@ class TroopAssistantActivity$15
       return;
     }
     paramMenuItem = this.a;
-    paramMenuItem.d = (true ^ paramMenuItem.d);
-    TroopAssistantManager.a().b(this.a.app, this.a.d);
+    paramMenuItem.g = (true ^ paramMenuItem.g);
+    TroopAssistantManager.a().b(this.a.app, this.a.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.15
  * JD-Core Version:    0.7.0.1
  */

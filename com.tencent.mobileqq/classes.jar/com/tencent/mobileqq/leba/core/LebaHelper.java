@@ -5,22 +5,17 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.leba.business.ILebaBasisApi;
 import com.tencent.mobileqq.leba.entity.GroupInfo;
 import com.tencent.mobileqq.leba.entity.LebaPluginInfo;
-import com.tencent.mobileqq.leba.entity.LebaViewItem;
+import com.tencent.mobileqq.leba.logic.LebaPluginLogic;
 import com.tencent.mobileqq.leba.observer.ResourcePluginListener;
 import com.tencent.mobileqq.leba.pb.PluginConfig.GetResourceReq;
 import com.tencent.mobileqq.leba.pb.PluginConfig.GetResourceReqInfo;
 import com.tencent.mobileqq.leba.pb.PluginConfig.GetResourceRespInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.studymode.api.IStudyModeManager;
-import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppSetting;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,27 +25,24 @@ import mqq.app.AppRuntime;
 
 public class LebaHelper
 {
-  int jdField_a_of_type_Int = 0;
-  public ILebaBasisApi a;
-  public IStudyModeManager a;
-  List<LebaPluginInfo> jdField_a_of_type_JavaUtilList;
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  boolean jdField_a_of_type_Boolean = false;
-  byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  int jdField_b_of_type_Int = 0;
-  List<LebaPluginInfo> jdField_b_of_type_JavaUtilList;
-  public boolean b;
-  public List<ResourcePluginListener> c;
-  boolean c;
+  AppRuntime a;
+  byte[] b = new byte[0];
+  List<LebaPluginInfo> c;
+  List<LebaPluginInfo> d;
+  public List<ResourcePluginListener> e;
+  boolean f = false;
+  int g = 0;
+  boolean h = false;
+  int i = 0;
+  public ILebaBasisApi j;
+  public boolean k = false;
   
   public LebaHelper(AppRuntime paramAppRuntime)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+    this.a = paramAppRuntime;
+    this.c = new ArrayList();
+    this.d = new ArrayList();
+    this.e = new ArrayList();
   }
   
   public static LebaPluginInfo a(PluginConfig.GetResourceRespInfo paramGetResourceRespInfo)
@@ -67,19 +59,19 @@ public class LebaHelper
     }
     localLebaPluginInfo.uiResId = l;
     boolean bool = paramGetResourceRespInfo.state.has();
-    int j = 0;
+    int n = 0;
     if (bool) {
-      i = paramGetResourceRespInfo.state.get();
+      m = paramGetResourceRespInfo.state.get();
     } else {
-      i = 0;
+      m = 0;
     }
-    localLebaPluginInfo.state = i;
+    localLebaPluginInfo.state = m;
     if (paramGetResourceRespInfo.res_seq.has()) {
-      i = paramGetResourceRespInfo.res_seq.get();
+      m = paramGetResourceRespInfo.res_seq.get();
     } else {
-      i = 0;
+      m = 0;
     }
-    localLebaPluginInfo.sResSeq = i;
+    localLebaPluginInfo.sResSeq = m;
     bool = paramGetResourceRespInfo.pkg_name.has();
     String str = "";
     if (bool) {
@@ -114,11 +106,11 @@ public class LebaHelper
     }
     localLebaPluginInfo.strGotoUrl = ((String)localObject);
     if (paramGetResourceRespInfo.can_change_state.has()) {
-      i = paramGetResourceRespInfo.can_change_state.get();
+      m = paramGetResourceRespInfo.can_change_state.get();
     } else {
-      i = 1;
+      m = 1;
     }
-    localLebaPluginInfo.cCanChangeState = i;
+    localLebaPluginInfo.cCanChangeState = m;
     if (paramGetResourceRespInfo.res_conf.has()) {
       localObject = paramGetResourceRespInfo.res_conf.get();
     } else {
@@ -126,11 +118,11 @@ public class LebaHelper
     }
     localLebaPluginInfo.resConf = ((String)localObject);
     localLebaPluginInfo.cDataType = 0;
-    int i = j;
+    int m = n;
     if (paramGetResourceRespInfo.simple_mode.has()) {
-      i = paramGetResourceRespInfo.simple_mode.get();
+      m = paramGetResourceRespInfo.simple_mode.get();
     }
-    localLebaPluginInfo.showInSimpleMode = i;
+    localLebaPluginInfo.showInSimpleMode = m;
     Object localObject = str;
     if (paramGetResourceRespInfo.grid_icon_url.has()) {
       localObject = paramGetResourceRespInfo.grid_icon_url.get();
@@ -146,61 +138,61 @@ public class LebaHelper
     return localLebaPluginInfo;
   }
   
-  private void b(Runnable paramRunnable)
+  private void a(Runnable paramRunnable)
   {
     ThreadManager.post(paramRunnable, 8, null, true);
   }
   
   /* Error */
-  private void j()
+  private void k()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
+    //   1: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
     //   4: astore_2
     //   5: aload_2
     //   6: ifnull +233 -> 239
     //   9: aload_2
-    //   10: invokevirtual 190	mqq/app/AppRuntime:isLogin	()Z
+    //   10: invokevirtual 195	mqq/app/AppRuntime:isLogin	()Z
     //   13: ifne +4 -> 17
     //   16: return
     //   17: aload_0
-    //   18: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   21: invokevirtual 194	mqq/app/AppRuntime:getPreferences	()Landroid/content/SharedPreferences;
+    //   18: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   21: invokevirtual 199	mqq/app/AppRuntime:getPreferences	()Landroid/content/SharedPreferences;
     //   24: astore_2
-    //   25: new 156	java/lang/StringBuilder
+    //   25: new 163	java/lang/StringBuilder
     //   28: dup
-    //   29: invokespecial 157	java/lang/StringBuilder:<init>	()V
+    //   29: invokespecial 164	java/lang/StringBuilder:<init>	()V
     //   32: astore_3
     //   33: aload_3
-    //   34: ldc 196
-    //   36: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: ldc 201
+    //   36: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: pop
     //   40: aload_3
     //   41: aload_0
-    //   42: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   45: invokevirtual 199	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   48: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   45: invokevirtual 204	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
+    //   48: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   51: pop
     //   52: aload_2
     //   53: aload_3
-    //   54: invokevirtual 168	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   54: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   57: iconst_1
-    //   58: invokeinterface 205 3 0
+    //   58: invokeinterface 210 3 0
     //   63: ifeq +176 -> 239
-    //   66: invokestatic 208	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   66: invokestatic 213	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   69: ifeq +11 -> 80
-    //   72: ldc 210
+    //   72: ldc 215
     //   74: iconst_4
-    //   75: ldc 212
-    //   77: invokestatic 215	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   75: ldc 217
+    //   77: invokestatic 219	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   80: aload_0
-    //   81: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   84: invokevirtual 219	mqq/app/AppRuntime:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   87: invokevirtual 225	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   81: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   84: invokevirtual 223	mqq/app/AppRuntime:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   87: invokevirtual 229	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   90: astore_3
     //   91: aload_3
-    //   92: invokestatic 229	com/tencent/mobileqq/leba/entity/LebaPluginInfo:getAll	(Lcom/tencent/mobileqq/persistence/EntityManager;)Ljava/util/List;
+    //   92: invokestatic 233	com/tencent/mobileqq/leba/entity/LebaPluginInfo:getAll	(Lcom/tencent/mobileqq/persistence/EntityManager;)Ljava/util/List;
     //   95: astore 4
     //   97: aload 4
     //   99: ifnull +59 -> 158
@@ -208,73 +200,73 @@ public class LebaHelper
     //   103: istore_1
     //   104: iload_1
     //   105: aload 4
-    //   107: invokeinterface 234 1 0
+    //   107: invokeinterface 238 1 0
     //   112: if_icmpge +46 -> 158
     //   115: aload 4
     //   117: iload_1
-    //   118: invokeinterface 237 2 0
-    //   123: checkcast 48	com/tencent/mobileqq/leba/entity/LebaPluginInfo
+    //   118: invokeinterface 241 2 0
+    //   123: checkcast 55	com/tencent/mobileqq/leba/entity/LebaPluginInfo
     //   126: astore 5
     //   128: aload 5
     //   130: ifnull +21 -> 151
     //   133: aload 5
-    //   135: getfield 137	com/tencent/mobileqq/leba/entity/LebaPluginInfo:cDataType	B
+    //   135: getfield 144	com/tencent/mobileqq/leba/entity/LebaPluginInfo:cDataType	B
     //   138: iconst_1
     //   139: if_icmpne +12 -> 151
     //   142: aload_3
     //   143: aload 5
-    //   145: getfield 69	com/tencent/mobileqq/leba/entity/LebaPluginInfo:uiResId	J
-    //   148: invokestatic 241	com/tencent/mobileqq/leba/entity/LebaPluginInfo:remove	(Lcom/tencent/mobileqq/persistence/EntityManager;J)V
+    //   145: getfield 76	com/tencent/mobileqq/leba/entity/LebaPluginInfo:uiResId	J
+    //   148: invokestatic 245	com/tencent/mobileqq/leba/entity/LebaPluginInfo:remove	(Lcom/tencent/mobileqq/persistence/EntityManager;J)V
     //   151: iload_1
     //   152: iconst_1
     //   153: iadd
     //   154: istore_1
     //   155: goto -51 -> 104
     //   158: aload_3
-    //   159: invokevirtual 246	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   159: invokevirtual 250	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   162: goto +17 -> 179
     //   165: astore_2
     //   166: goto +67 -> 233
     //   169: astore 4
     //   171: aload 4
-    //   173: invokevirtual 249	java/lang/Exception:printStackTrace	()V
+    //   173: invokevirtual 253	java/lang/Exception:printStackTrace	()V
     //   176: goto -18 -> 158
     //   179: aload_2
-    //   180: invokeinterface 253 1 0
+    //   180: invokeinterface 257 1 0
     //   185: astore_2
-    //   186: new 156	java/lang/StringBuilder
+    //   186: new 163	java/lang/StringBuilder
     //   189: dup
-    //   190: invokespecial 157	java/lang/StringBuilder:<init>	()V
+    //   190: invokespecial 164	java/lang/StringBuilder:<init>	()V
     //   193: astore_3
     //   194: aload_3
-    //   195: ldc 196
-    //   197: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   195: ldc 201
+    //   197: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   200: pop
     //   201: aload_3
     //   202: aload_0
-    //   203: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   206: invokevirtual 199	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   209: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   206: invokevirtual 204	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
+    //   209: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   212: pop
     //   213: aload_2
     //   214: aload_3
-    //   215: invokevirtual 168	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   215: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   218: iconst_0
-    //   219: invokeinterface 259 3 0
+    //   219: invokeinterface 263 3 0
     //   224: pop
     //   225: aload_2
-    //   226: invokeinterface 262 1 0
+    //   226: invokeinterface 266 1 0
     //   231: pop
     //   232: return
     //   233: aload_3
-    //   234: invokevirtual 246	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   234: invokevirtual 250	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   237: aload_2
     //   238: athrow
     //   239: return
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	240	0	this	LebaHelper
-    //   103	52	1	i	int
+    //   103	52	1	m	int
     //   4	49	2	localObject1	Object
     //   165	15	2	localObject2	Object
     //   185	53	2	localEditor	android.content.SharedPreferences.Editor
@@ -293,33 +285,33 @@ public class LebaHelper
     //   133	151	169	java/lang/Exception
   }
   
-  private void k()
+  private void l()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LebaHelper", 2, "loadServerPlugins");
+      QLog.d("Leba.Helper", 2, "loadServerPlugins");
     }
-    Map localMap = LebaUtil.a(LebaUtil.a(this.jdField_a_of_type_MqqAppAppRuntime));
+    Map localMap = LebaUtil.a(LebaUtil.b(this.a));
     if (localMap == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("LebaHelper", 2, "loadServerPlugins, groupMap is null");
+        QLog.d("Leba.Helper", 2, "loadServerPlugins, groupMap is null");
       }
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager();
+    Object localObject2 = this.a.getEntityManagerFactory().createEntityManager();
     List localList1 = LebaPluginInfo.getAll((EntityManager)localObject2);
     ((EntityManager)localObject2).close();
     localObject2 = new StringBuilder();
     if ((localList1 != null) && (localList1.size() > 0)) {}
     for (;;)
     {
-      int i;
-      synchronized (this.jdField_b_of_type_JavaUtilList)
+      int m;
+      synchronized (this.d)
       {
-        i = localList1.size() - 1;
-        if (i >= 0)
+        m = localList1.size() - 1;
+        if (m >= 0)
         {
-          LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)localList1.get(i);
+          LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)localList1.get(m);
           GroupInfo localGroupInfo = (GroupInfo)localMap.get(Long.valueOf(localLebaPluginInfo.uiResId));
           if (localGroupInfo == null)
           {
@@ -333,255 +325,16 @@ public class LebaHelper
           localLebaPluginInfo.sPriority = LebaUtil.a(localGroupInfo);
           break label265;
         }
-        this.jdField_b_of_type_JavaUtilList.addAll(localList1);
+        this.d.addAll(localList1);
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("loadServerPlugins data =  ");
       localStringBuilder.append(localObject2);
-      QLog.i("LebaHelper", 1, localStringBuilder.toString());
+      QLog.i("Leba.Helper", 1, localStringBuilder.toString());
       return;
       label265:
-      i -= 1;
+      m -= 1;
     }
-  }
-  
-  /* Error */
-  public PluginConfig.GetResourceReq a()
-  {
-    // Byte code:
-    //   0: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +12 -> 15
-    //   6: ldc 210
-    //   8: iconst_2
-    //   9: ldc_w 315
-    //   12: invokestatic 172	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   15: aload_0
-    //   16: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   19: invokestatic 318	com/tencent/mobileqq/leba/core/LebaUtil:b	(Lmqq/app/AppRuntime;)Z
-    //   22: ifeq +27 -> 49
-    //   25: ldc 210
-    //   27: iconst_1
-    //   28: ldc_w 320
-    //   31: invokestatic 172	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   34: aload_0
-    //   35: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   38: iconst_0
-    //   39: invokestatic 323	com/tencent/mobileqq/leba/core/LebaUtil:a	(Lmqq/app/AppRuntime;I)V
-    //   42: aload_0
-    //   43: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   46: invokestatic 325	com/tencent/mobileqq/leba/core/LebaUtil:a	(Lmqq/app/AppRuntime;)V
-    //   49: aload_0
-    //   50: getfield 327	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaBasisApi	Lcom/tencent/mobileqq/leba/business/ILebaBasisApi;
-    //   53: astore 4
-    //   55: aload 4
-    //   57: ifnull +18 -> 75
-    //   60: aload 4
-    //   62: invokeinterface 332 1 0
-    //   67: ifeq +8 -> 75
-    //   70: iconst_1
-    //   71: istore_1
-    //   72: goto +5 -> 77
-    //   75: iconst_0
-    //   76: istore_1
-    //   77: iload_1
-    //   78: ifeq +92 -> 170
-    //   81: ldc 210
-    //   83: iconst_1
-    //   84: ldc_w 334
-    //   87: invokestatic 172	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   90: aload_0
-    //   91: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   94: iconst_0
-    //   95: invokestatic 323	com/tencent/mobileqq/leba/core/LebaUtil:a	(Lmqq/app/AppRuntime;I)V
-    //   98: aload_0
-    //   99: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   102: invokevirtual 219	mqq/app/AppRuntime:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   105: invokevirtual 225	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   108: astore 4
-    //   110: aload 4
-    //   112: ldc 48
-    //   114: invokevirtual 338	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
-    //   117: pop
-    //   118: aload 4
-    //   120: ifnull +50 -> 170
-    //   123: aload 4
-    //   125: invokevirtual 246	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   128: goto +42 -> 170
-    //   131: astore 5
-    //   133: goto +24 -> 157
-    //   136: astore 5
-    //   138: ldc 210
-    //   140: iconst_1
-    //   141: ldc_w 340
-    //   144: aload 5
-    //   146: invokestatic 344	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   149: aload 4
-    //   151: ifnull +19 -> 170
-    //   154: goto -31 -> 123
-    //   157: aload 4
-    //   159: ifnull +8 -> 167
-    //   162: aload 4
-    //   164: invokevirtual 246	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   167: aload 5
-    //   169: athrow
-    //   170: aload_0
-    //   171: aload_0
-    //   172: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   175: invokevirtual 346	com/tencent/mobileqq/leba/core/LebaHelper:a	(Lmqq/app/AppRuntime;)Z
-    //   178: ifeq +20 -> 198
-    //   181: ldc 210
-    //   183: iconst_1
-    //   184: ldc_w 348
-    //   187: invokestatic 172	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   190: aload_0
-    //   191: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   194: iconst_0
-    //   195: invokestatic 323	com/tencent/mobileqq/leba/core/LebaUtil:a	(Lmqq/app/AppRuntime;I)V
-    //   198: aload_0
-    //   199: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   202: invokestatic 351	com/tencent/mobileqq/leba/core/LebaUtil:b	(Lmqq/app/AppRuntime;)I
-    //   205: istore_3
-    //   206: aload_0
-    //   207: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   210: invokevirtual 219	mqq/app/AppRuntime:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   213: invokevirtual 225	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   216: invokestatic 229	com/tencent/mobileqq/leba/entity/LebaPluginInfo:getAll	(Lcom/tencent/mobileqq/persistence/EntityManager;)Ljava/util/List;
-    //   219: astore 4
-    //   221: new 37	java/util/ArrayList
-    //   224: dup
-    //   225: invokespecial 38	java/util/ArrayList:<init>	()V
-    //   228: astore 5
-    //   230: aload 4
-    //   232: ifnull +139 -> 371
-    //   235: iconst_0
-    //   236: istore_1
-    //   237: iload_1
-    //   238: aload 4
-    //   240: invokeinterface 234 1 0
-    //   245: if_icmpge +126 -> 371
-    //   248: aload 4
-    //   250: iload_1
-    //   251: invokeinterface 237 2 0
-    //   256: checkcast 48	com/tencent/mobileqq/leba/entity/LebaPluginInfo
-    //   259: astore 6
-    //   261: aload 6
-    //   263: ifnull +101 -> 364
-    //   266: aload 6
-    //   268: getfield 137	com/tencent/mobileqq/leba/entity/LebaPluginInfo:cDataType	B
-    //   271: ifne +93 -> 364
-    //   274: new 48	com/tencent/mobileqq/leba/entity/LebaPluginInfo
-    //   277: dup
-    //   278: invokespecial 49	com/tencent/mobileqq/leba/entity/LebaPluginInfo:<init>	()V
-    //   281: astore 7
-    //   283: iload_3
-    //   284: ifgt +8 -> 292
-    //   287: iconst_0
-    //   288: istore_2
-    //   289: goto +9 -> 298
-    //   292: aload 6
-    //   294: getfield 80	com/tencent/mobileqq/leba/entity/LebaPluginInfo:sResSeq	I
-    //   297: istore_2
-    //   298: aload 7
-    //   300: iload_2
-    //   301: putfield 80	com/tencent/mobileqq/leba/entity/LebaPluginInfo:sResSeq	I
-    //   304: aload 7
-    //   306: aload 6
-    //   308: getfield 69	com/tencent/mobileqq/leba/entity/LebaPluginInfo:uiResId	J
-    //   311: putfield 69	com/tencent/mobileqq/leba/entity/LebaPluginInfo:uiResId	J
-    //   314: aload 5
-    //   316: aload 7
-    //   318: invokevirtual 354	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   321: pop
-    //   322: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   325: ifeq +39 -> 364
-    //   328: new 156	java/lang/StringBuilder
-    //   331: dup
-    //   332: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   335: astore 7
-    //   337: aload 7
-    //   339: ldc 89
-    //   341: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   344: pop
-    //   345: aload 7
-    //   347: aload 6
-    //   349: invokevirtual 293	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   352: pop
-    //   353: ldc 210
-    //   355: iconst_2
-    //   356: aload 7
-    //   358: invokevirtual 168	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   361: invokestatic 215	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   364: iload_1
-    //   365: iconst_1
-    //   366: iadd
-    //   367: istore_1
-    //   368: goto -131 -> 237
-    //   371: iload_3
-    //   372: istore_1
-    //   373: aload 5
-    //   375: invokevirtual 357	java/util/ArrayList:isEmpty	()Z
-    //   378: ifeq +5 -> 383
-    //   381: iconst_0
-    //   382: istore_1
-    //   383: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   386: ifeq +81 -> 467
-    //   389: new 156	java/lang/StringBuilder
-    //   392: dup
-    //   393: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   396: astore 6
-    //   398: aload 6
-    //   400: ldc_w 359
-    //   403: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   406: pop
-    //   407: aload 6
-    //   409: iload_1
-    //   410: invokevirtual 362	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   413: pop
-    //   414: aload 6
-    //   416: ldc_w 364
-    //   419: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   422: pop
-    //   423: aload 6
-    //   425: aload 5
-    //   427: invokevirtual 365	java/util/ArrayList:size	()I
-    //   430: invokevirtual 362	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   433: pop
-    //   434: aload 6
-    //   436: ldc_w 367
-    //   439: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   442: pop
-    //   443: aload 6
-    //   445: aload 4
-    //   447: invokeinterface 234 1 0
-    //   452: invokevirtual 362	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   455: pop
-    //   456: ldc 210
-    //   458: iconst_2
-    //   459: aload 6
-    //   461: invokevirtual 168	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   464: invokestatic 215	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   467: aload_0
-    //   468: iload_1
-    //   469: aload 5
-    //   471: invokevirtual 370	com/tencent/mobileqq/leba/core/LebaHelper:a	(ILjava/util/List;)Lcom/tencent/mobileqq/leba/pb/PluginConfig$GetResourceReq;
-    //   474: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	475	0	this	LebaHelper
-    //   71	398	1	i	int
-    //   288	13	2	j	int
-    //   205	167	3	k	int
-    //   53	393	4	localObject1	Object
-    //   131	1	5	localObject2	Object
-    //   136	32	5	localThrowable	java.lang.Throwable
-    //   228	242	5	localArrayList	ArrayList
-    //   259	201	6	localObject3	Object
-    //   281	76	7	localObject4	Object
-    // Exception table:
-    //   from	to	target	type
-    //   110	118	131	finally
-    //   138	149	131	finally
-    //   110	118	136	java/lang/Throwable
   }
   
   public PluginConfig.GetResourceReq a(int paramInt, List<LebaPluginInfo> paramList)
@@ -602,84 +355,61 @@ public class LebaHelper
         }
       }
     }
-    paramList = this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager;
-    int i;
-    if ((paramList != null) && (paramList.getStudyModeSwitch())) {
-      i = 4026;
-    } else {
-      i = 4000;
-    }
+    int m = LebaPluginLogic.b();
     paramList = new StringBuilder();
     paramList.append("getLebaPluginListReq pluginType = ");
-    paramList.append(i);
-    QLog.i("LebaHelper", 1, paramList.toString());
+    paramList.append(m);
+    QLog.i("Leba.Helper", 1, paramList.toString());
     paramList = new PluginConfig.GetResourceReq();
-    paramList.plugin_type.set(i);
+    paramList.plugin_type.set(m);
     paramList.plugin_layout_seq.set(paramInt);
     paramList.reqinfo_list.set(localArrayList);
     return paramList;
   }
   
-  public List<LebaPluginInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaBasisApi = ((ILebaBasisApi)QRoute.api(ILebaBasisApi.class));
-    this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager = ((IStudyModeManager)QRoute.api(IStudyModeManager.class));
+    this.j = ((ILebaBasisApi)QRoute.api(ILebaBasisApi.class));
   }
   
   public void a(int paramInt1, List<GroupInfo> paramList, int paramInt2, int paramInt3)
   {
-    int j = LebaUtil.b(this.jdField_a_of_type_MqqAppAppRuntime);
-    int i;
+    int n = LebaUtil.a(this.a);
+    int m;
     if (paramList == null) {
-      i = -1;
+      m = -1;
     } else {
-      i = paramList.size();
+      m = paramList.size();
     }
-    QLog.i("LebaHelper", 1, String.format("saveLebaGroupInfo, localSeq=%d, seq=%d , groupListSize=%d, layoutType=%d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(paramInt2) }));
-    if ((paramInt1 > 0) && (paramInt1 != j) && (paramList != null))
+    QLog.i("Leba.Helper", 1, String.format("saveLebaGroupInfo, localSeq=%d, seq=%d , groupListSize=%d, layoutType=%d", new Object[] { Integer.valueOf(n), Integer.valueOf(paramInt1), Integer.valueOf(m), Integer.valueOf(paramInt2) }));
+    if ((paramInt1 > 0) && (paramInt1 != n) && (paramList != null))
     {
-      LebaUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, paramInt1);
-      LebaUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, paramList);
-      LebaUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, paramInt2, paramInt3);
+      LebaUtil.a(this.a, paramInt1);
+      LebaUtil.a(this.a, paramList);
+      LebaUtil.a(this.a, paramInt2, paramInt3);
     }
   }
   
   public void a(ResourcePluginListener paramResourcePluginListener)
   {
-    synchronized (this.jdField_c_of_type_JavaUtilList)
+    synchronized (this.e)
     {
-      if (!this.jdField_c_of_type_JavaUtilList.contains(paramResourcePluginListener)) {
-        this.jdField_c_of_type_JavaUtilList.add(paramResourcePluginListener);
+      if (!this.e.contains(paramResourcePluginListener)) {
+        this.e.add(paramResourcePluginListener);
       }
       return;
     }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    ThreadManager.excute(paramRunnable, 128, null, true);
-  }
-  
-  public void a(AppRuntime paramAppRuntime)
-  {
-    QLog.i("leba_study", 1, "tryCloseShowAllPluginAsyn");
-    a(new LebaHelper.4(this, paramAppRuntime));
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_c_of_type_Boolean = false;
-      i();
+      this.h = false;
+      j();
       return;
     }
-    this.jdField_c_of_type_Boolean = true;
+    this.h = true;
   }
   
   /* Error */
@@ -693,7 +423,7 @@ public class LebaHelper
     //   4: aload 4
     //   6: iload 5
     //   8: iload 6
-    //   10: invokevirtual 475	com/tencent/mobileqq/leba/core/LebaHelper:b	(ZILjava/util/List;Ljava/util/List;II)V
+    //   10: invokevirtual 416	com/tencent/mobileqq/leba/core/LebaHelper:b	(ZILjava/util/List;Ljava/util/List;II)V
     //   13: iconst_0
     //   14: istore 8
     //   16: iconst_0
@@ -702,27 +432,27 @@ public class LebaHelper
     //   20: ifeq +624 -> 644
     //   23: aload_0
     //   24: iconst_0
-    //   25: putfield 25	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_Boolean	Z
+    //   25: putfield 32	com/tencent/mobileqq/leba/core/LebaHelper:f	Z
     //   28: aload_0
-    //   29: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   32: invokevirtual 219	mqq/app/AppRuntime:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   35: invokevirtual 225	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   29: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   32: invokevirtual 223	mqq/app/AppRuntime:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   35: invokevirtual 229	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   38: astore 16
     //   40: aload 16
-    //   42: invokevirtual 479	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   42: invokevirtual 420	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   45: astore 17
-    //   47: new 481	java/lang/StringBuffer
+    //   47: new 422	java/lang/StringBuffer
     //   50: dup
-    //   51: invokespecial 482	java/lang/StringBuffer:<init>	()V
+    //   51: invokespecial 423	java/lang/StringBuffer:<init>	()V
     //   54: astore 18
     //   56: aload 18
-    //   58: ldc_w 484
-    //   61: invokevirtual 487	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   58: ldc_w 425
+    //   61: invokevirtual 428	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   64: pop
     //   65: aload 17
-    //   67: invokevirtual 492	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   67: invokevirtual 433	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   70: aload 4
-    //   72: invokeinterface 374 1 0
+    //   72: invokeinterface 319 1 0
     //   77: astore 4
     //   79: iconst_0
     //   80: istore_1
@@ -733,15 +463,15 @@ public class LebaHelper
     //   87: iload 9
     //   89: istore 11
     //   91: aload 4
-    //   93: invokeinterface 379 1 0
+    //   93: invokeinterface 324 1 0
     //   98: ifeq +224 -> 322
     //   101: iload_1
     //   102: istore 14
     //   104: iload 9
     //   106: istore 11
     //   108: aload 4
-    //   110: invokeinterface 383 1 0
-    //   115: checkcast 48	com/tencent/mobileqq/leba/entity/LebaPluginInfo
+    //   110: invokeinterface 328 1 0
+    //   115: checkcast 55	com/tencent/mobileqq/leba/entity/LebaPluginInfo
     //   118: astore 19
     //   120: aload 19
     //   122: ifnonnull +6 -> 128
@@ -752,14 +482,14 @@ public class LebaHelper
     //   133: istore 11
     //   135: aload 18
     //   137: aload 19
-    //   139: invokevirtual 495	java/lang/StringBuffer:append	(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+    //   139: invokevirtual 436	java/lang/StringBuffer:append	(Ljava/lang/Object;)Ljava/lang/StringBuffer;
     //   142: pop
     //   143: iload_1
     //   144: istore 14
     //   146: iload 9
     //   148: istore 11
     //   150: aload 19
-    //   152: getfield 115	com/tencent/mobileqq/leba/entity/LebaPluginInfo:sResSubType	S
+    //   152: getfield 122	com/tencent/mobileqq/leba/entity/LebaPluginInfo:sResSubType	S
     //   155: ifeq +26 -> 181
     //   158: iload_1
     //   159: istore 13
@@ -770,7 +500,7 @@ public class LebaHelper
     //   168: iload 9
     //   170: istore 11
     //   172: aload 19
-    //   174: getfield 115	com/tencent/mobileqq/leba/entity/LebaPluginInfo:sResSubType	S
+    //   174: getfield 122	com/tencent/mobileqq/leba/entity/LebaPluginInfo:sResSubType	S
     //   177: iconst_2
     //   178: if_icmpne +93 -> 271
     //   181: iload_1
@@ -782,7 +512,7 @@ public class LebaHelper
     //   191: iload 9
     //   193: istore 11
     //   195: aload 19
-    //   197: getfield 74	com/tencent/mobileqq/leba/entity/LebaPluginInfo:state	I
+    //   197: getfield 81	com/tencent/mobileqq/leba/entity/LebaPluginInfo:state	I
     //   200: iconst_3
     //   201: if_icmpne +23 -> 224
     //   204: iload_1
@@ -791,7 +521,7 @@ public class LebaHelper
     //   209: istore 11
     //   211: aload 16
     //   213: aload 19
-    //   215: invokestatic 499	com/tencent/mobileqq/leba/entity/LebaPluginInfo:persistOrReplace	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/leba/entity/LebaPluginInfo;)V
+    //   215: invokestatic 440	com/tencent/mobileqq/leba/entity/LebaPluginInfo:persistOrReplace	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/leba/entity/LebaPluginInfo;)V
     //   218: iconst_1
     //   219: istore 12
     //   221: iconst_1
@@ -805,7 +535,7 @@ public class LebaHelper
     //   236: iload 10
     //   238: istore 11
     //   240: aload 19
-    //   242: getfield 74	com/tencent/mobileqq/leba/entity/LebaPluginInfo:state	I
+    //   242: getfield 81	com/tencent/mobileqq/leba/entity/LebaPluginInfo:state	I
     //   245: iconst_1
     //   246: if_icmpne +25 -> 271
     //   249: iload 12
@@ -814,7 +544,7 @@ public class LebaHelper
     //   255: istore 11
     //   257: aload 16
     //   259: aload 19
-    //   261: invokestatic 499	com/tencent/mobileqq/leba/entity/LebaPluginInfo:persistOrReplace	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/leba/entity/LebaPluginInfo;)V
+    //   261: invokestatic 440	com/tencent/mobileqq/leba/entity/LebaPluginInfo:persistOrReplace	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/leba/entity/LebaPluginInfo;)V
     //   264: iconst_1
     //   265: istore 13
     //   267: iload 10
@@ -828,7 +558,7 @@ public class LebaHelper
     //   282: iload 15
     //   284: istore 11
     //   286: aload 19
-    //   288: getfield 74	com/tencent/mobileqq/leba/entity/LebaPluginInfo:state	I
+    //   288: getfield 81	com/tencent/mobileqq/leba/entity/LebaPluginInfo:state	I
     //   291: iconst_2
     //   292: if_icmpne -208 -> 84
     //   295: iload 13
@@ -837,8 +567,8 @@ public class LebaHelper
     //   301: istore 11
     //   303: aload 16
     //   305: aload 19
-    //   307: getfield 69	com/tencent/mobileqq/leba/entity/LebaPluginInfo:uiResId	J
-    //   310: invokestatic 241	com/tencent/mobileqq/leba/entity/LebaPluginInfo:remove	(Lcom/tencent/mobileqq/persistence/EntityManager;J)V
+    //   307: getfield 76	com/tencent/mobileqq/leba/entity/LebaPluginInfo:uiResId	J
+    //   310: invokestatic 245	com/tencent/mobileqq/leba/entity/LebaPluginInfo:remove	(Lcom/tencent/mobileqq/persistence/EntityManager;J)V
     //   313: iconst_1
     //   314: istore_1
     //   315: iload 15
@@ -849,11 +579,11 @@ public class LebaHelper
     //   325: iload 9
     //   327: istore 11
     //   329: aload 17
-    //   331: invokevirtual 501	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   331: invokevirtual 442	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   334: aload 17
-    //   336: invokevirtual 504	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   336: invokevirtual 445	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   339: aload 16
-    //   341: invokevirtual 246	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   341: invokevirtual 250	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   344: iconst_1
     //   345: istore 10
     //   347: goto +56 -> 403
@@ -866,52 +596,52 @@ public class LebaHelper
     //   362: istore 14
     //   364: iconst_0
     //   365: istore 11
-    //   367: ldc 210
+    //   367: ldc 215
     //   369: iconst_1
-    //   370: ldc_w 506
+    //   370: ldc_w 447
     //   373: aload 4
-    //   375: invokestatic 508	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   375: invokestatic 450	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   378: aload 4
-    //   380: invokevirtual 249	java/lang/Exception:printStackTrace	()V
+    //   380: invokevirtual 253	java/lang/Exception:printStackTrace	()V
     //   383: aload 17
-    //   385: invokevirtual 504	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   385: invokevirtual 445	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   388: aload 16
-    //   390: invokevirtual 246	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   390: invokevirtual 250	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   393: iconst_0
     //   394: istore 10
     //   396: iload 11
     //   398: istore 9
     //   400: iload 14
     //   402: istore_1
-    //   403: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   403: invokestatic 161	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   406: ifeq +53 -> 459
     //   409: aload 18
-    //   411: ldc_w 510
+    //   411: ldc_w 452
     //   414: iconst_3
     //   415: anewarray 4	java/lang/Object
     //   418: dup
     //   419: iconst_0
     //   420: iload 10
-    //   422: invokestatic 515	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   422: invokestatic 457	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   425: aastore
     //   426: dup
     //   427: iconst_1
     //   428: iload 9
-    //   430: invokestatic 515	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   430: invokestatic 457	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   433: aastore
     //   434: dup
     //   435: iconst_2
     //   436: iload_1
-    //   437: invokestatic 515	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   437: invokestatic 457	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   440: aastore
-    //   441: invokestatic 444	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   444: invokevirtual 487	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   441: invokestatic 396	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   444: invokevirtual 428	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   447: pop
-    //   448: ldc 210
+    //   448: ldc 215
     //   450: iconst_2
     //   451: aload 18
-    //   453: invokevirtual 516	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   456: invokestatic 172	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   453: invokevirtual 458	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   456: invokestatic 178	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   459: iload 10
     //   461: ifeq +13 -> 474
     //   464: aload_0
@@ -919,51 +649,51 @@ public class LebaHelper
     //   466: aload_3
     //   467: iload 5
     //   469: iload 6
-    //   471: invokevirtual 518	com/tencent/mobileqq/leba/core/LebaHelper:a	(ILjava/util/List;II)V
+    //   471: invokevirtual 460	com/tencent/mobileqq/leba/core/LebaHelper:a	(ILjava/util/List;II)V
     //   474: aload_0
-    //   475: invokevirtual 521	com/tencent/mobileqq/leba/core/LebaHelper:h	()V
+    //   475: invokevirtual 462	com/tencent/mobileqq/leba/core/LebaHelper:i	()V
     //   478: aload_0
-    //   479: invokevirtual 472	com/tencent/mobileqq/leba/core/LebaHelper:i	()V
+    //   479: invokevirtual 413	com/tencent/mobileqq/leba/core/LebaHelper:j	()V
     //   482: iload 9
     //   484: ifeq +24 -> 508
     //   487: aload_0
-    //   488: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   491: ldc_w 523
-    //   494: ldc 89
-    //   496: invokevirtual 527	mqq/app/AppRuntime:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
-    //   499: checkcast 523	com/tencent/mobileqq/tianshu/api/IRedTouchServer
+    //   488: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   491: ldc_w 464
+    //   494: ldc 96
+    //   496: invokevirtual 468	mqq/app/AppRuntime:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   499: checkcast 464	com/tencent/mobileqq/tianshu/api/IRedTouchServer
     //   502: iconst_1
-    //   503: invokeinterface 530 2 0
+    //   503: invokeinterface 471 2 0
     //   508: iload_1
     //   509: ifeq +65 -> 574
-    //   512: new 37	java/util/ArrayList
+    //   512: new 44	java/util/ArrayList
     //   515: dup
     //   516: aload_0
-    //   517: getfield 44	com/tencent/mobileqq/leba/core/LebaHelper:jdField_c_of_type_JavaUtilList	Ljava/util/List;
-    //   520: invokespecial 533	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
-    //   523: invokeinterface 374 1 0
+    //   517: getfield 51	com/tencent/mobileqq/leba/core/LebaHelper:e	Ljava/util/List;
+    //   520: invokespecial 474	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   523: invokeinterface 319 1 0
     //   528: astore_3
     //   529: aload_3
-    //   530: invokeinterface 379 1 0
+    //   530: invokeinterface 324 1 0
     //   535: ifeq +178 -> 713
     //   538: aload_3
-    //   539: invokeinterface 383 1 0
-    //   544: checkcast 535	com/tencent/mobileqq/leba/observer/ResourcePluginListener
+    //   539: invokeinterface 328 1 0
+    //   544: checkcast 476	com/tencent/mobileqq/leba/observer/ResourcePluginListener
     //   547: astore 4
     //   549: iload 9
     //   551: ifeq +13 -> 564
     //   554: aload 4
     //   556: iconst_3
     //   557: iconst_1
-    //   558: invokestatic 538	com/tencent/mobileqq/leba/observer/ResourcePluginListener:a	(Lcom/tencent/mobileqq/leba/observer/ResourcePluginListener;BI)V
+    //   558: invokestatic 479	com/tencent/mobileqq/leba/observer/ResourcePluginListener:a	(Lcom/tencent/mobileqq/leba/observer/ResourcePluginListener;BI)V
     //   561: goto -32 -> 529
     //   564: aload 4
     //   566: iconst_2
     //   567: iconst_1
-    //   568: invokestatic 538	com/tencent/mobileqq/leba/observer/ResourcePluginListener:a	(Lcom/tencent/mobileqq/leba/observer/ResourcePluginListener;BI)V
+    //   568: invokestatic 479	com/tencent/mobileqq/leba/observer/ResourcePluginListener:a	(Lcom/tencent/mobileqq/leba/observer/ResourcePluginListener;BI)V
     //   571: goto -42 -> 529
     //   574: aload_0
-    //   575: getfield 44	com/tencent/mobileqq/leba/core/LebaHelper:jdField_c_of_type_JavaUtilList	Ljava/util/List;
+    //   575: getfield 51	com/tencent/mobileqq/leba/core/LebaHelper:e	Ljava/util/List;
     //   578: astore_3
     //   579: aload_3
     //   580: monitorenter
@@ -971,17 +701,17 @@ public class LebaHelper
     //   583: istore_2
     //   584: iload_2
     //   585: aload_0
-    //   586: getfield 44	com/tencent/mobileqq/leba/core/LebaHelper:jdField_c_of_type_JavaUtilList	Ljava/util/List;
-    //   589: invokeinterface 234 1 0
+    //   586: getfield 51	com/tencent/mobileqq/leba/core/LebaHelper:e	Ljava/util/List;
+    //   589: invokeinterface 238 1 0
     //   594: if_icmpge +28 -> 622
     //   597: aload_0
-    //   598: getfield 44	com/tencent/mobileqq/leba/core/LebaHelper:jdField_c_of_type_JavaUtilList	Ljava/util/List;
+    //   598: getfield 51	com/tencent/mobileqq/leba/core/LebaHelper:e	Ljava/util/List;
     //   601: iload_2
-    //   602: invokeinterface 237 2 0
-    //   607: checkcast 535	com/tencent/mobileqq/leba/observer/ResourcePluginListener
+    //   602: invokeinterface 241 2 0
+    //   607: checkcast 476	com/tencent/mobileqq/leba/observer/ResourcePluginListener
     //   610: iconst_1
     //   611: iconst_1
-    //   612: invokestatic 538	com/tencent/mobileqq/leba/observer/ResourcePluginListener:a	(Lcom/tencent/mobileqq/leba/observer/ResourcePluginListener;BI)V
+    //   612: invokestatic 479	com/tencent/mobileqq/leba/observer/ResourcePluginListener:a	(Lcom/tencent/mobileqq/leba/observer/ResourcePluginListener;BI)V
     //   615: iload_2
     //   616: iconst_1
     //   617: iadd
@@ -996,34 +726,34 @@ public class LebaHelper
     //   629: aload 4
     //   631: athrow
     //   632: aload 17
-    //   634: invokevirtual 504	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   634: invokevirtual 445	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   637: aload 16
-    //   639: invokevirtual 246	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   639: invokevirtual 250	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   642: aload_3
     //   643: athrow
     //   644: aload_0
-    //   645: getfield 44	com/tencent/mobileqq/leba/core/LebaHelper:jdField_c_of_type_JavaUtilList	Ljava/util/List;
+    //   645: getfield 51	com/tencent/mobileqq/leba/core/LebaHelper:e	Ljava/util/List;
     //   648: astore_3
     //   649: aload_3
     //   650: monitorenter
     //   651: aload_0
     //   652: iconst_1
-    //   653: putfield 25	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_Boolean	Z
+    //   653: putfield 32	com/tencent/mobileqq/leba/core/LebaHelper:f	Z
     //   656: iload 8
     //   658: istore_2
     //   659: iload_2
     //   660: aload_0
-    //   661: getfield 44	com/tencent/mobileqq/leba/core/LebaHelper:jdField_c_of_type_JavaUtilList	Ljava/util/List;
-    //   664: invokeinterface 234 1 0
+    //   661: getfield 51	com/tencent/mobileqq/leba/core/LebaHelper:e	Ljava/util/List;
+    //   664: invokeinterface 238 1 0
     //   669: if_icmpge +28 -> 697
     //   672: aload_0
-    //   673: getfield 44	com/tencent/mobileqq/leba/core/LebaHelper:jdField_c_of_type_JavaUtilList	Ljava/util/List;
+    //   673: getfield 51	com/tencent/mobileqq/leba/core/LebaHelper:e	Ljava/util/List;
     //   676: iload_2
-    //   677: invokeinterface 237 2 0
-    //   682: checkcast 535	com/tencent/mobileqq/leba/observer/ResourcePluginListener
+    //   677: invokeinterface 241 2 0
+    //   682: checkcast 476	com/tencent/mobileqq/leba/observer/ResourcePluginListener
     //   685: iconst_m1
     //   686: iconst_1
-    //   687: invokestatic 538	com/tencent/mobileqq/leba/observer/ResourcePluginListener:a	(Lcom/tencent/mobileqq/leba/observer/ResourcePluginListener;BI)V
+    //   687: invokestatic 479	com/tencent/mobileqq/leba/observer/ResourcePluginListener:a	(Lcom/tencent/mobileqq/leba/observer/ResourcePluginListener;BI)V
     //   690: iload_2
     //   691: iconst_1
     //   692: iadd
@@ -1049,8 +779,8 @@ public class LebaHelper
     //   0	714	4	paramList1	List<LebaPluginInfo>
     //   0	714	5	paramInt2	int
     //   0	714	6	paramInt3	int
-    //   17	565	7	i	int
-    //   14	643	8	j	int
+    //   17	565	7	m	int
+    //   14	643	8	n	int
     //   82	468	9	bool1	boolean
     //   186	274	10	bool2	boolean
     //   89	308	11	bool3	boolean
@@ -1104,556 +834,440 @@ public class LebaHelper
   public void a(boolean paramBoolean, com.tencent.mobileqq.leba.pb.PluginConfig.GetResourceResp paramGetResourceResp)
   {
     // Byte code:
-    //   0: invokestatic 545	java/util/Collections:emptyList	()Ljava/util/List;
-    //   3: astore 13
-    //   5: invokestatic 545	java/util/Collections:emptyList	()Ljava/util/List;
-    //   8: astore 11
+    //   0: invokestatic 487	java/util/Collections:emptyList	()Ljava/util/List;
+    //   3: astore 15
+    //   5: invokestatic 487	java/util/Collections:emptyList	()Ljava/util/List;
+    //   8: astore 14
     //   10: iconst_m1
-    //   11: istore 5
-    //   13: iload_1
-    //   14: ifeq +625 -> 639
-    //   17: aload_2
-    //   18: ifnull +563 -> 581
-    //   21: aload_2
-    //   22: getfield 548	com/tencent/mobileqq/leba/pb/PluginConfig$GetResourceResp:plugin_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   25: invokevirtual 65	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   28: istore 8
-    //   30: aload_2
-    //   31: getfield 552	com/tencent/mobileqq/leba/pb/PluginConfig$GetResourceResp:plugin_layout	Lcom/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout;
-    //   34: invokevirtual 555	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:has	()Z
-    //   37: istore 10
-    //   39: aconst_null
-    //   40: astore 15
-    //   42: iload 10
-    //   44: ifeq +721 -> 765
-    //   47: aload_2
-    //   48: getfield 552	com/tencent/mobileqq/leba/pb/PluginConfig$GetResourceResp:plugin_layout	Lcom/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout;
-    //   51: invokevirtual 558	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   54: checkcast 554	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout
-    //   57: astore 12
-    //   59: goto +3 -> 62
-    //   62: aload 12
-    //   64: ifnull +346 -> 410
-    //   67: aload 12
-    //   69: getfield 561	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:layout_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   72: invokevirtual 61	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   75: ifeq +15 -> 90
-    //   78: aload 12
-    //   80: getfield 561	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:layout_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   83: invokevirtual 65	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   86: istore_3
-    //   87: goto +5 -> 92
+    //   11: istore_3
+    //   12: iload_1
+    //   13: ifeq +606 -> 619
+    //   16: aload_2
+    //   17: ifnull +539 -> 556
+    //   20: aload_2
+    //   21: getfield 490	com/tencent/mobileqq/leba/pb/PluginConfig$GetResourceResp:plugin_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   24: invokevirtual 72	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   27: istore 5
+    //   29: aload_2
+    //   30: getfield 494	com/tencent/mobileqq/leba/pb/PluginConfig$GetResourceResp:plugin_layout	Lcom/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout;
+    //   33: invokevirtual 497	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:has	()Z
+    //   36: istore 11
+    //   38: aconst_null
+    //   39: astore 17
+    //   41: iload 11
+    //   43: ifeq +692 -> 735
+    //   46: aload_2
+    //   47: getfield 494	com/tencent/mobileqq/leba/pb/PluginConfig$GetResourceResp:plugin_layout	Lcom/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout;
+    //   50: invokevirtual 500	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   53: checkcast 496	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout
+    //   56: astore 16
+    //   58: goto +3 -> 61
+    //   61: aload 16
+    //   63: ifnull +352 -> 415
+    //   66: aload 16
+    //   68: getfield 503	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:layout_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   71: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   74: ifeq +16 -> 90
+    //   77: aload 16
+    //   79: getfield 503	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:layout_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   82: invokevirtual 72	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   85: istore 6
+    //   87: goto +6 -> 93
     //   90: iconst_m1
-    //   91: istore_3
-    //   92: iload 5
+    //   91: istore 6
+    //   93: iload_3
     //   94: istore 4
-    //   96: aload 11
-    //   98: astore 14
-    //   100: iload 5
-    //   102: istore 7
-    //   104: iload_3
-    //   105: istore 9
-    //   107: aload 12
-    //   109: getfield 562	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:plugin_layout_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   112: invokevirtual 61	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   115: ifeq +24 -> 139
-    //   118: aload 11
-    //   120: astore 14
-    //   122: iload 5
-    //   124: istore 7
-    //   126: iload_3
-    //   127: istore 9
-    //   129: aload 12
-    //   131: getfield 562	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:plugin_layout_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   134: invokevirtual 65	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   137: istore 4
-    //   139: aload 11
-    //   141: astore 14
-    //   143: iload 4
-    //   145: istore 7
-    //   147: iload_3
-    //   148: istore 9
-    //   150: aload 12
-    //   152: getfield 565	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:group_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   155: invokevirtual 566	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
-    //   158: ifeq +24 -> 182
-    //   161: aload 11
-    //   163: astore 14
-    //   165: iload 4
-    //   167: istore 7
-    //   169: iload_3
-    //   170: istore 9
-    //   172: aload 12
-    //   174: getfield 565	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:group_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   177: invokevirtual 568	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   180: astore 15
-    //   182: aload 11
-    //   184: astore 12
-    //   186: iload 4
-    //   188: istore 5
-    //   190: iload_3
-    //   191: istore 6
-    //   193: aload 15
-    //   195: ifnull +222 -> 417
-    //   198: aload 11
-    //   200: astore 14
-    //   202: iload 4
-    //   204: istore 7
-    //   206: iload_3
-    //   207: istore 9
-    //   209: new 37	java/util/ArrayList
-    //   212: dup
-    //   213: invokespecial 38	java/util/ArrayList:<init>	()V
-    //   216: astore 11
-    //   218: iconst_0
-    //   219: istore 6
-    //   221: iconst_0
-    //   222: istore 5
-    //   224: iload 6
-    //   226: aload 15
-    //   228: invokeinterface 234 1 0
-    //   233: if_icmpge +155 -> 388
-    //   236: aload 15
-    //   238: iload 6
-    //   240: invokeinterface 237 2 0
-    //   245: checkcast 570	com/tencent/mobileqq/leba/pb/PluginConfig$PluginGroup
-    //   248: astore 12
-    //   250: iload 5
-    //   252: istore 7
-    //   254: aload 12
-    //   256: invokevirtual 571	com/tencent/mobileqq/leba/pb/PluginConfig$PluginGroup:has	()Z
-    //   259: ifeq +116 -> 375
-    //   262: iload 5
-    //   264: istore 7
-    //   266: aload 12
-    //   268: getfield 574	com/tencent/mobileqq/leba/pb/PluginConfig$PluginGroup:res_id	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   271: invokevirtual 577	com/tencent/mobileqq/pb/PBRepeatField:has	()Z
-    //   274: ifeq +101 -> 375
-    //   277: aload 12
-    //   279: getfield 574	com/tencent/mobileqq/leba/pb/PluginConfig$PluginGroup:res_id	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   282: invokevirtual 578	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
-    //   285: astore 12
-    //   287: iconst_0
-    //   288: istore 7
-    //   290: iload 7
-    //   292: aload 12
-    //   294: invokeinterface 234 1 0
-    //   299: if_icmpge +72 -> 371
-    //   302: new 288	com/tencent/mobileqq/leba/entity/GroupInfo
-    //   305: dup
-    //   306: invokespecial 579	com/tencent/mobileqq/leba/entity/GroupInfo:<init>	()V
-    //   309: astore 14
-    //   311: aload 14
-    //   313: aload 12
-    //   315: iload 7
-    //   317: invokeinterface 237 2 0
-    //   322: checkcast 435	java/lang/Integer
-    //   325: invokevirtual 582	java/lang/Integer:intValue	()I
-    //   328: i2l
-    //   329: putfield 584	com/tencent/mobileqq/leba/entity/GroupInfo:jdField_a_of_type_Long	J
-    //   332: aload 14
-    //   334: iload 6
-    //   336: putfield 585	com/tencent/mobileqq/leba/entity/GroupInfo:jdField_a_of_type_Int	I
-    //   339: iload 5
-    //   341: iconst_1
-    //   342: iadd
-    //   343: istore 5
-    //   345: aload 14
-    //   347: iload 5
-    //   349: putfield 586	com/tencent/mobileqq/leba/entity/GroupInfo:jdField_b_of_type_Int	I
-    //   352: aload 11
-    //   354: aload 14
-    //   356: invokeinterface 393 2 0
-    //   361: pop
-    //   362: iload 7
-    //   364: iconst_1
-    //   365: iadd
-    //   366: istore 7
-    //   368: goto -78 -> 290
-    //   371: iload 5
-    //   373: istore 7
-    //   375: iload 6
-    //   377: iconst_1
-    //   378: iadd
-    //   379: istore 6
-    //   381: iload 7
-    //   383: istore 5
-    //   385: goto -161 -> 224
-    //   388: aload 11
-    //   390: astore 12
-    //   392: iload 4
-    //   394: istore 5
-    //   396: iload_3
-    //   397: istore 6
-    //   399: goto +18 -> 417
-    //   402: astore_2
-    //   403: aload 11
-    //   405: astore 12
-    //   407: goto +150 -> 557
-    //   410: iconst_m1
-    //   411: istore 6
-    //   413: aload 11
-    //   415: astore 12
-    //   417: aload 12
-    //   419: astore 14
-    //   421: iload 5
-    //   423: istore 7
-    //   425: iload 6
-    //   427: istore 9
-    //   429: aload_2
-    //   430: getfield 589	com/tencent/mobileqq/leba/pb/PluginConfig$GetResourceResp:respinfo_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   433: invokevirtual 568	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   436: astore 11
-    //   438: aload 12
-    //   440: astore 14
-    //   442: iload 5
-    //   444: istore 7
-    //   446: iload 6
-    //   448: istore 9
-    //   450: new 37	java/util/ArrayList
-    //   453: dup
-    //   454: invokespecial 38	java/util/ArrayList:<init>	()V
-    //   457: astore_2
-    //   458: aload 11
-    //   460: ifnull +75 -> 535
-    //   463: aload 11
-    //   465: invokeinterface 374 1 0
-    //   470: astore 11
-    //   472: aload 11
-    //   474: invokeinterface 379 1 0
-    //   479: ifeq +56 -> 535
-    //   482: aload 11
-    //   484: invokeinterface 383 1 0
-    //   489: checkcast 51	com/tencent/mobileqq/leba/pb/PluginConfig$GetResourceRespInfo
-    //   492: invokestatic 591	com/tencent/mobileqq/leba/core/LebaHelper:a	(Lcom/tencent/mobileqq/leba/pb/PluginConfig$GetResourceRespInfo;)Lcom/tencent/mobileqq/leba/entity/LebaPluginInfo;
-    //   495: astore 13
-    //   497: aload 13
-    //   499: ifnonnull +6 -> 505
-    //   502: goto -30 -> 472
-    //   505: aload_2
-    //   506: aload 13
-    //   508: invokeinterface 393 2 0
-    //   513: pop
-    //   514: goto -42 -> 472
-    //   517: astore 11
-    //   519: aload_2
-    //   520: astore 13
-    //   522: aload 11
-    //   524: astore_2
-    //   525: iload 5
-    //   527: istore 4
-    //   529: iload 6
-    //   531: istore_3
-    //   532: goto +25 -> 557
-    //   535: aload_2
-    //   536: astore 13
-    //   538: aload 12
-    //   540: astore 11
-    //   542: goto +56 -> 598
-    //   545: astore_2
-    //   546: iload 9
-    //   548: istore_3
-    //   549: iload 7
-    //   551: istore 4
-    //   553: aload 14
-    //   555: astore 12
-    //   557: aload 12
-    //   559: astore 11
-    //   561: goto +54 -> 615
-    //   564: astore_2
-    //   565: goto +7 -> 572
-    //   568: astore_2
-    //   569: iconst_m1
-    //   570: istore 8
-    //   572: iconst_m1
-    //   573: istore_3
-    //   574: iload 5
-    //   576: istore 4
-    //   578: goto +37 -> 615
-    //   581: ldc 210
-    //   583: iconst_1
-    //   584: ldc_w 593
-    //   587: invokestatic 172	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   590: iconst_0
-    //   591: istore_1
-    //   592: iconst_m1
-    //   593: istore 8
-    //   595: iconst_m1
-    //   596: istore 6
-    //   598: aload 13
-    //   600: astore_2
-    //   601: iload 8
-    //   603: istore_3
-    //   604: iload 5
-    //   606: istore 4
-    //   608: goto +28 -> 636
-    //   611: astore_2
-    //   612: goto -43 -> 569
-    //   615: ldc 210
-    //   617: iconst_1
-    //   618: ldc_w 595
-    //   621: aload_2
-    //   622: invokestatic 508	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   625: aload 13
-    //   627: astore_2
-    //   628: iconst_0
-    //   629: istore_1
-    //   630: iload_3
-    //   631: istore 6
-    //   633: iload 8
-    //   635: istore_3
-    //   636: goto +14 -> 650
-    //   639: iconst_m1
-    //   640: istore 4
-    //   642: iconst_m1
-    //   643: istore_3
-    //   644: iconst_m1
-    //   645: istore 6
-    //   647: aload 13
-    //   649: astore_2
-    //   650: aload_2
-    //   651: ifnull +14 -> 665
-    //   654: aload_2
-    //   655: invokeinterface 234 1 0
-    //   660: istore 5
-    //   662: goto +6 -> 668
-    //   665: iconst_0
-    //   666: istore 5
-    //   668: aload 11
-    //   670: ifnull +15 -> 685
-    //   673: aload 11
-    //   675: invokeinterface 234 1 0
-    //   680: istore 7
-    //   682: goto +6 -> 688
-    //   685: iconst_0
-    //   686: istore 7
-    //   688: ldc 210
-    //   690: iconst_1
-    //   691: bipush 6
-    //   693: anewarray 4	java/lang/Object
+    //   96: iload_3
+    //   97: istore 7
+    //   99: aload 16
+    //   101: getfield 504	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:plugin_layout_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   104: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   107: ifeq +16 -> 123
+    //   110: iload_3
+    //   111: istore 7
+    //   113: aload 16
+    //   115: getfield 504	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:plugin_layout_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   118: invokevirtual 72	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   121: istore 4
+    //   123: iload 4
+    //   125: istore 7
+    //   127: aload 16
+    //   129: getfield 507	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:group_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   132: invokevirtual 508	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   135: ifeq +17 -> 152
+    //   138: iload 4
+    //   140: istore 7
+    //   142: aload 16
+    //   144: getfield 507	com/tencent/mobileqq/leba/pb/PluginConfig$PluginLayout:group_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   147: invokevirtual 510	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   150: astore 17
+    //   152: aload 17
+    //   154: ifnull +244 -> 398
+    //   157: iload 4
+    //   159: istore 7
+    //   161: new 44	java/util/ArrayList
+    //   164: dup
+    //   165: invokespecial 45	java/util/ArrayList:<init>	()V
+    //   168: astore 16
+    //   170: iconst_0
+    //   171: istore 9
+    //   173: iconst_0
+    //   174: istore 7
+    //   176: iload 5
+    //   178: istore_3
+    //   179: iload_3
+    //   180: istore 8
+    //   182: iload 9
+    //   184: aload 17
+    //   186: invokeinterface 238 1 0
+    //   191: if_icmpge +183 -> 374
+    //   194: iload_3
+    //   195: istore 8
+    //   197: aload 17
+    //   199: iload 9
+    //   201: invokeinterface 241 2 0
+    //   206: checkcast 512	com/tencent/mobileqq/leba/pb/PluginConfig$PluginGroup
+    //   209: astore 14
+    //   211: iload_3
+    //   212: istore 8
+    //   214: aload 14
+    //   216: invokevirtual 513	com/tencent/mobileqq/leba/pb/PluginConfig$PluginGroup:has	()Z
+    //   219: ifeq +146 -> 365
+    //   222: iload_3
+    //   223: istore 8
+    //   225: aload 14
+    //   227: getfield 516	com/tencent/mobileqq/leba/pb/PluginConfig$PluginGroup:res_id	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   230: invokevirtual 519	com/tencent/mobileqq/pb/PBRepeatField:has	()Z
+    //   233: ifeq +132 -> 365
+    //   236: iload_3
+    //   237: istore 8
+    //   239: aload 14
+    //   241: getfield 516	com/tencent/mobileqq/leba/pb/PluginConfig$PluginGroup:res_id	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   244: invokevirtual 520	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
+    //   247: astore 14
+    //   249: iload 7
+    //   251: istore 5
+    //   253: iconst_0
+    //   254: istore 7
+    //   256: iload_3
+    //   257: istore 8
+    //   259: iload 7
+    //   261: aload 14
+    //   263: invokeinterface 238 1 0
+    //   268: if_icmpge +90 -> 358
+    //   271: iload_3
+    //   272: istore 8
+    //   274: new 292	com/tencent/mobileqq/leba/entity/GroupInfo
+    //   277: dup
+    //   278: invokespecial 521	com/tencent/mobileqq/leba/entity/GroupInfo:<init>	()V
+    //   281: astore 18
+    //   283: iload_3
+    //   284: istore 8
+    //   286: aload 14
+    //   288: iload 7
+    //   290: invokeinterface 241 2 0
+    //   295: checkcast 387	java/lang/Integer
+    //   298: invokevirtual 524	java/lang/Integer:intValue	()I
+    //   301: istore 10
+    //   303: iload 10
+    //   305: i2l
+    //   306: lstore 12
+    //   308: aload 18
+    //   310: lload 12
+    //   312: putfield 526	com/tencent/mobileqq/leba/entity/GroupInfo:a	J
+    //   315: aload 18
+    //   317: iload 9
+    //   319: putfield 528	com/tencent/mobileqq/leba/entity/GroupInfo:b	I
+    //   322: iload 5
+    //   324: iconst_1
+    //   325: iadd
+    //   326: istore 5
+    //   328: aload 18
+    //   330: iload 5
+    //   332: putfield 530	com/tencent/mobileqq/leba/entity/GroupInfo:c	I
+    //   335: aload 16
+    //   337: aload 18
+    //   339: invokeinterface 340 2 0
+    //   344: pop
+    //   345: iload 7
+    //   347: iconst_1
+    //   348: iadd
+    //   349: istore 7
+    //   351: goto -95 -> 256
+    //   354: astore_2
+    //   355: goto +36 -> 391
+    //   358: iload 5
+    //   360: istore 7
+    //   362: goto +3 -> 365
+    //   365: iload 9
+    //   367: iconst_1
+    //   368: iadd
+    //   369: istore 9
+    //   371: goto -192 -> 179
+    //   374: iload_3
+    //   375: istore 5
+    //   377: aload 16
+    //   379: astore 14
+    //   381: iload 4
+    //   383: istore_3
+    //   384: goto +34 -> 418
+    //   387: astore_2
+    //   388: iload 8
+    //   390: istore_3
+    //   391: aload 16
+    //   393: astore 14
+    //   395: goto +192 -> 587
+    //   398: iload 4
+    //   400: istore_3
+    //   401: goto +17 -> 418
+    //   404: astore_2
+    //   405: iload 5
+    //   407: istore_3
+    //   408: iload 7
+    //   410: istore 4
+    //   412: goto +175 -> 587
+    //   415: iconst_m1
+    //   416: istore 6
+    //   418: aload_2
+    //   419: getfield 533	com/tencent/mobileqq/leba/pb/PluginConfig$GetResourceResp:respinfo_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   422: invokevirtual 510	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   425: astore 16
+    //   427: new 44	java/util/ArrayList
+    //   430: dup
+    //   431: invokespecial 45	java/util/ArrayList:<init>	()V
+    //   434: astore_2
+    //   435: aload 16
+    //   437: ifnull +74 -> 511
+    //   440: aload 16
+    //   442: invokeinterface 319 1 0
+    //   447: astore 15
+    //   449: aload 15
+    //   451: invokeinterface 324 1 0
+    //   456: ifeq +55 -> 511
+    //   459: aload 15
+    //   461: invokeinterface 328 1 0
+    //   466: checkcast 58	com/tencent/mobileqq/leba/pb/PluginConfig$GetResourceRespInfo
+    //   469: invokestatic 535	com/tencent/mobileqq/leba/core/LebaHelper:a	(Lcom/tencent/mobileqq/leba/pb/PluginConfig$GetResourceRespInfo;)Lcom/tencent/mobileqq/leba/entity/LebaPluginInfo;
+    //   472: astore 16
+    //   474: aload 16
+    //   476: ifnonnull +6 -> 482
+    //   479: goto -30 -> 449
+    //   482: aload_2
+    //   483: aload 16
+    //   485: invokeinterface 340 2 0
+    //   490: pop
+    //   491: goto -42 -> 449
+    //   494: astore 16
+    //   496: aload_2
+    //   497: astore 15
+    //   499: aload 16
+    //   501: astore_2
+    //   502: iload_3
+    //   503: istore 4
+    //   505: iload 5
+    //   507: istore_3
+    //   508: goto +79 -> 587
+    //   511: aload_2
+    //   512: astore 15
+    //   514: goto +59 -> 573
+    //   517: astore_2
+    //   518: iload_3
+    //   519: istore 4
+    //   521: iload 5
+    //   523: istore_3
+    //   524: goto +63 -> 587
+    //   527: astore_2
+    //   528: iconst_m1
+    //   529: istore 6
+    //   531: iload_3
+    //   532: istore 4
+    //   534: iload 5
+    //   536: istore_3
+    //   537: goto +50 -> 587
+    //   540: astore_2
+    //   541: iconst_m1
+    //   542: istore 6
+    //   544: iconst_m1
+    //   545: istore 5
+    //   547: iload_3
+    //   548: istore 4
+    //   550: iload 5
+    //   552: istore_3
+    //   553: goto +34 -> 587
+    //   556: ldc 215
+    //   558: iconst_1
+    //   559: ldc_w 537
+    //   562: invokestatic 178	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   565: iconst_0
+    //   566: istore_1
+    //   567: iconst_m1
+    //   568: istore 6
+    //   570: iconst_m1
+    //   571: istore 5
+    //   573: aload 14
+    //   575: astore_2
+    //   576: iload 6
+    //   578: istore 4
+    //   580: aload 15
+    //   582: astore 14
+    //   584: goto +50 -> 634
+    //   587: ldc 215
+    //   589: iconst_1
+    //   590: ldc_w 539
+    //   593: aload_2
+    //   594: invokestatic 450	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   597: aload 14
+    //   599: astore_2
+    //   600: iload_3
+    //   601: istore 5
+    //   603: iconst_0
+    //   604: istore_1
+    //   605: iload 4
+    //   607: istore_3
+    //   608: aload 15
+    //   610: astore 14
+    //   612: iload 6
+    //   614: istore 4
+    //   616: goto +18 -> 634
+    //   619: aload 14
+    //   621: astore_2
+    //   622: iconst_m1
+    //   623: istore_3
+    //   624: iconst_m1
+    //   625: istore 4
+    //   627: iconst_m1
+    //   628: istore 5
+    //   630: aload 15
+    //   632: astore 14
+    //   634: iconst_0
+    //   635: istore 7
+    //   637: aload 14
+    //   639: ifnull +15 -> 654
+    //   642: aload 14
+    //   644: invokeinterface 238 1 0
+    //   649: istore 6
+    //   651: goto +6 -> 657
+    //   654: iconst_0
+    //   655: istore 6
+    //   657: aload_2
+    //   658: ifnull +11 -> 669
+    //   661: aload_2
+    //   662: invokeinterface 238 1 0
+    //   667: istore 7
+    //   669: ldc 215
+    //   671: iconst_1
+    //   672: bipush 6
+    //   674: anewarray 4	java/lang/Object
+    //   677: dup
+    //   678: iconst_0
+    //   679: ldc_w 541
+    //   682: aastore
+    //   683: dup
+    //   684: iconst_1
+    //   685: iload_1
+    //   686: invokestatic 457	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   689: aastore
+    //   690: dup
+    //   691: iconst_2
+    //   692: ldc_w 543
+    //   695: aastore
     //   696: dup
-    //   697: iconst_0
-    //   698: ldc_w 597
-    //   701: aastore
-    //   702: dup
-    //   703: iconst_1
-    //   704: iload_1
-    //   705: invokestatic 515	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   708: aastore
-    //   709: dup
-    //   710: iconst_2
-    //   711: ldc_w 599
-    //   714: aastore
-    //   715: dup
-    //   716: iconst_3
-    //   717: iload 5
-    //   719: invokestatic 438	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   722: aastore
-    //   723: dup
-    //   724: iconst_4
-    //   725: ldc_w 601
-    //   728: aastore
-    //   729: dup
-    //   730: iconst_5
-    //   731: iload 7
-    //   733: invokestatic 438	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   736: aastore
-    //   737: invokestatic 604	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   740: aload_0
-    //   741: iload_1
-    //   742: iload 4
-    //   744: aload 11
-    //   746: aload_2
-    //   747: iload 6
-    //   749: iload_3
-    //   750: invokevirtual 606	com/tencent/mobileqq/leba/core/LebaHelper:a	(ZILjava/util/List;Ljava/util/List;II)V
-    //   753: aload_0
-    //   754: aload_0
-    //   755: getfield 35	com/tencent/mobileqq/leba/core/LebaHelper:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   758: iload_1
-    //   759: iload_3
-    //   760: invokevirtual 609	com/tencent/mobileqq/leba/core/LebaHelper:a	(Lmqq/app/AppRuntime;ZI)Z
-    //   763: pop
-    //   764: return
-    //   765: aconst_null
-    //   766: astore 12
-    //   768: goto -706 -> 62
+    //   697: iconst_3
+    //   698: iload 6
+    //   700: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   703: aastore
+    //   704: dup
+    //   705: iconst_4
+    //   706: ldc_w 545
+    //   709: aastore
+    //   710: dup
+    //   711: iconst_5
+    //   712: iload 7
+    //   714: invokestatic 390	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   717: aastore
+    //   718: invokestatic 548	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   721: aload_0
+    //   722: iload_1
+    //   723: iload_3
+    //   724: aload_2
+    //   725: aload 14
+    //   727: iload 4
+    //   729: iload 5
+    //   731: invokevirtual 550	com/tencent/mobileqq/leba/core/LebaHelper:a	(ZILjava/util/List;Ljava/util/List;II)V
+    //   734: return
+    //   735: aconst_null
+    //   736: astore 16
+    //   738: goto -677 -> 61
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	771	0	this	LebaHelper
-    //   0	771	1	paramBoolean	boolean
-    //   0	771	2	paramGetResourceResp	com.tencent.mobileqq.leba.pb.PluginConfig.GetResourceResp
-    //   86	674	3	i	int
-    //   94	649	4	j	int
-    //   11	707	5	k	int
-    //   191	557	6	m	int
-    //   102	630	7	n	int
-    //   28	606	8	i1	int
-    //   105	442	9	i2	int
-    //   37	6	10	bool	boolean
-    //   8	475	11	localObject1	Object
-    //   517	6	11	localException	Exception
-    //   540	205	11	localObject2	Object
-    //   57	710	12	localObject3	Object
-    //   3	645	13	localObject4	Object
-    //   98	456	14	localObject5	Object
-    //   40	197	15	localList	List
+    //   0	741	0	this	LebaHelper
+    //   0	741	1	paramBoolean	boolean
+    //   0	741	2	paramGetResourceResp	com.tencent.mobileqq.leba.pb.PluginConfig.GetResourceResp
+    //   11	713	3	m	int
+    //   94	634	4	n	int
+    //   27	703	5	i1	int
+    //   85	614	6	i2	int
+    //   97	616	7	i3	int
+    //   180	209	8	i4	int
+    //   171	199	9	i5	int
+    //   301	3	10	i6	int
+    //   36	6	11	bool	boolean
+    //   306	5	12	l	long
+    //   8	718	14	localObject1	Object
+    //   3	628	15	localObject2	Object
+    //   56	428	16	localObject3	Object
+    //   494	6	16	localException	Exception
+    //   736	1	16	localObject4	Object
+    //   39	159	17	localList	List
+    //   281	57	18	localGroupInfo	GroupInfo
     // Exception table:
     //   from	to	target	type
-    //   224	250	402	java/lang/Exception
-    //   254	262	402	java/lang/Exception
-    //   266	287	402	java/lang/Exception
-    //   290	339	402	java/lang/Exception
-    //   345	362	402	java/lang/Exception
-    //   463	472	517	java/lang/Exception
-    //   472	497	517	java/lang/Exception
-    //   505	514	517	java/lang/Exception
-    //   107	118	545	java/lang/Exception
-    //   129	139	545	java/lang/Exception
-    //   150	161	545	java/lang/Exception
-    //   172	182	545	java/lang/Exception
-    //   209	218	545	java/lang/Exception
-    //   429	438	545	java/lang/Exception
-    //   450	458	545	java/lang/Exception
-    //   30	39	564	java/lang/Exception
-    //   47	59	564	java/lang/Exception
-    //   67	87	564	java/lang/Exception
-    //   21	30	568	java/lang/Exception
-    //   581	590	611	java/lang/Exception
+    //   308	322	354	java/lang/Exception
+    //   328	345	354	java/lang/Exception
+    //   182	194	387	java/lang/Exception
+    //   197	211	387	java/lang/Exception
+    //   214	222	387	java/lang/Exception
+    //   225	236	387	java/lang/Exception
+    //   239	249	387	java/lang/Exception
+    //   259	271	387	java/lang/Exception
+    //   274	283	387	java/lang/Exception
+    //   286	303	387	java/lang/Exception
+    //   99	110	404	java/lang/Exception
+    //   113	123	404	java/lang/Exception
+    //   127	138	404	java/lang/Exception
+    //   142	152	404	java/lang/Exception
+    //   161	170	404	java/lang/Exception
+    //   440	449	494	java/lang/Exception
+    //   449	474	494	java/lang/Exception
+    //   482	491	494	java/lang/Exception
+    //   418	435	517	java/lang/Exception
+    //   29	38	527	java/lang/Exception
+    //   46	58	527	java/lang/Exception
+    //   66	87	527	java/lang/Exception
+    //   20	29	540	java/lang/Exception
+    //   556	565	540	java/lang/Exception
   }
   
   public boolean a(AppRuntime paramAppRuntime)
   {
-    IStudyModeManager localIStudyModeManager = this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager;
-    int i;
-    if ((localIStudyModeManager != null) && (localIStudyModeManager.getStudyModeSwitch())) {
-      i = 4026;
-    } else {
-      i = 4000;
-    }
-    return i != LebaUtil.d(paramAppRuntime);
-  }
-  
-  public boolean a(AppRuntime paramAppRuntime, boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (LebaUtil.a(paramInt)))
-    {
-      if (LebaUtil.c(paramAppRuntime) == 2)
-      {
-        QLog.i("leba_study", 1, "tryClosePluginWhenLoadPlugin failed has Close");
-        return false;
-      }
-      QLog.i("leba_study", 1, "tryClosePluginWhenLoadPlugin");
-      CommPluginHandlerApi.b(paramAppRuntime);
-      return true;
-    }
-    paramAppRuntime = new StringBuilder();
-    paramAppRuntime.append("tryClosePluginWhenLoadPlugin failed isSuc = ");
-    paramAppRuntime.append(paramBoolean);
-    paramAppRuntime.append(",pluginType=");
-    paramAppRuntime.append(paramInt);
-    QLog.i("leba_study", 1, paramAppRuntime.toString());
-    return false;
+    return LebaPluginLogic.b() != LebaUtil.e(paramAppRuntime);
   }
   
   public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LebaHelper", 2, "LebaHelper  init");
+      QLog.d("Leba.Helper", 2, "LebaHelper  init");
     }
-    b(new LebaHelper.1(this));
+    a(new LebaHelper.1(this));
   }
   
   public void b(ResourcePluginListener paramResourcePluginListener)
   {
-    synchronized (this.jdField_c_of_type_JavaUtilList)
+    synchronized (this.e)
     {
-      this.jdField_c_of_type_JavaUtilList.remove(paramResourcePluginListener);
+      this.e.remove(paramResourcePluginListener);
       return;
     }
-  }
-  
-  protected void b(AppRuntime paramAppRuntime)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("closeShowAllPlugin->");
-    Object localObject4 = LebaShowListManager.a().b(paramAppRuntime);
-    Object localObject3 = LebaShowListManager.a().a();
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    localStringBuilder.append(l);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = "null;";
-    Object localObject2 = localObject1;
-    if (localObject4 != null)
-    {
-      localStringBuilder.append("close->");
-      localObject4 = ((List)localObject4).iterator();
-      for (;;)
-      {
-        localObject2 = localObject1;
-        if (!((Iterator)localObject4).hasNext()) {
-          break;
-        }
-        LebaViewItem localLebaViewItem = (LebaViewItem)((Iterator)localObject4).next();
-        if ((localLebaViewItem != null) && (localLebaViewItem.a != null))
-        {
-          localStringBuilder.append(localLebaViewItem.a.uiResId);
-          localStringBuilder.append(";");
-          localObject2 = localObject1;
-          if (4030L == localLebaViewItem.a.uiResId) {
-            break label271;
-          }
-          if (3504L == localLebaViewItem.a.uiResId) {
-            continue;
-          }
-          LebaShowListManager.a().a(paramAppRuntime, localLebaViewItem.a.uiResId, false, l, -9223372036854775808L, true);
-          localObject2 = new BusinessInfoCheckUpdate.AppSetting();
-          ((BusinessInfoCheckUpdate.AppSetting)localObject2).appid.set((int)localLebaViewItem.a.uiResId);
-          ((BusinessInfoCheckUpdate.AppSetting)localObject2).setting.set(false);
-          ((BusinessInfoCheckUpdate.AppSetting)localObject2).modify_ts.set(l);
-          localArrayList.add(localObject2);
-        }
-        else
-        {
-          localStringBuilder.append((String)localObject1);
-        }
-        localObject2 = localObject1;
-        label271:
-        localObject1 = localObject2;
-      }
-    }
-    if (localObject3 != null)
-    {
-      localStringBuilder.append("open->");
-      localObject1 = ((List)localObject3).iterator();
-      label459:
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject3 = (LebaViewItem)((Iterator)localObject1).next();
-        if ((localObject3 != null) && (((LebaViewItem)localObject3).a != null))
-        {
-          if ((4030L != ((LebaViewItem)localObject3).a.uiResId) && (3504L != ((LebaViewItem)localObject3).a.uiResId)) {
-            break label459;
-          }
-          LebaShowListManager.a().a(paramAppRuntime, ((LebaViewItem)localObject3).a.uiResId, true, l, -9223372036854775808L, true);
-          localObject4 = new BusinessInfoCheckUpdate.AppSetting();
-          ((BusinessInfoCheckUpdate.AppSetting)localObject4).appid.set((int)((LebaViewItem)localObject3).a.uiResId);
-          ((BusinessInfoCheckUpdate.AppSetting)localObject4).setting.set(true);
-          ((BusinessInfoCheckUpdate.AppSetting)localObject4).modify_ts.set(l);
-          localArrayList.add(localObject4);
-        }
-        else
-        {
-          localStringBuilder.append((String)localObject2);
-        }
-      }
-    }
-    QLog.i("leba_study", 1, localStringBuilder.toString());
-    if (localArrayList.isEmpty()) {
-      c(paramAppRuntime);
-    } else {
-      CommPluginHandlerApi.a(paramAppRuntime, localArrayList);
-    }
-    i();
   }
   
   public void b(boolean paramBoolean, int paramInt1, List<GroupInfo> paramList, List<LebaPluginInfo> paramList1, int paramInt2, int paramInt3)
@@ -1692,140 +1306,368 @@ public class LebaHelper
         }
       }
     }
-    QLog.i("LebaHelper", 1, localStringBuilder.toString());
+    QLog.i("Leba.Helper", 1, localStringBuilder.toString());
   }
   
-  public void c()
+  /* Error */
+  public PluginConfig.GetResourceReq c()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int < 3))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      CommPluginHandlerApi.c(this.jdField_a_of_type_MqqAppAppRuntime);
-      this.jdField_a_of_type_Int += 1;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("checkPluginConfig, mGetPluginConfigFail=");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
-      localStringBuilder.append(", mPluginRetryTime=");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      QLog.d("LebaHelper", 2, localStringBuilder.toString());
-    }
-  }
-  
-  public void c(AppRuntime paramAppRuntime)
-  {
-    QLog.i("leba_study", 1, "setHasClosePluginFlagYes");
-    LebaUtil.b(paramAppRuntime, 2);
-    LebaUtil.a(paramAppRuntime, true);
-    a(new LebaHelper.5(this, paramAppRuntime));
+    // Byte code:
+    //   0: invokestatic 161	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 215
+    //   8: iconst_2
+    //   9: ldc_w 586
+    //   12: invokestatic 178	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: aload_0
+    //   16: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   19: invokestatic 588	com/tencent/mobileqq/leba/core/LebaUtil:c	(Lmqq/app/AppRuntime;)Z
+    //   22: ifeq +27 -> 49
+    //   25: ldc 215
+    //   27: iconst_1
+    //   28: ldc_w 590
+    //   31: invokestatic 178	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   34: aload_0
+    //   35: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   38: iconst_0
+    //   39: invokestatic 399	com/tencent/mobileqq/leba/core/LebaUtil:a	(Lmqq/app/AppRuntime;I)V
+    //   42: aload_0
+    //   43: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   46: invokestatic 592	com/tencent/mobileqq/leba/core/LebaUtil:d	(Lmqq/app/AppRuntime;)V
+    //   49: aload_0
+    //   50: aload_0
+    //   51: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   54: invokevirtual 594	com/tencent/mobileqq/leba/core/LebaHelper:a	(Lmqq/app/AppRuntime;)Z
+    //   57: istore 4
+    //   59: aload_0
+    //   60: getfield 379	com/tencent/mobileqq/leba/core/LebaHelper:j	Lcom/tencent/mobileqq/leba/business/ILebaBasisApi;
+    //   63: astore 5
+    //   65: aload 5
+    //   67: ifnull +18 -> 85
+    //   70: aload 5
+    //   72: invokeinterface 597 1 0
+    //   77: ifeq +8 -> 85
+    //   80: iconst_1
+    //   81: istore_1
+    //   82: goto +5 -> 87
+    //   85: iconst_0
+    //   86: istore_1
+    //   87: iload_1
+    //   88: ifne +8 -> 96
+    //   91: iload 4
+    //   93: ifeq +79 -> 172
+    //   96: ldc 215
+    //   98: iconst_1
+    //   99: ldc_w 599
+    //   102: invokestatic 178	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   105: aload_0
+    //   106: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   109: iconst_0
+    //   110: invokestatic 399	com/tencent/mobileqq/leba/core/LebaUtil:a	(Lmqq/app/AppRuntime;I)V
+    //   113: aload_0
+    //   114: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   117: invokevirtual 223	mqq/app/AppRuntime:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   120: invokevirtual 229	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   123: astore 5
+    //   125: aload 5
+    //   127: ldc 55
+    //   129: invokevirtual 603	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
+    //   132: pop
+    //   133: aload 5
+    //   135: ifnull +37 -> 172
+    //   138: aload 5
+    //   140: invokevirtual 250	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   143: goto +29 -> 172
+    //   146: astore 6
+    //   148: goto +301 -> 449
+    //   151: astore 6
+    //   153: ldc 215
+    //   155: iconst_1
+    //   156: ldc_w 605
+    //   159: aload 6
+    //   161: invokestatic 607	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   164: aload 5
+    //   166: ifnull +6 -> 172
+    //   169: goto -31 -> 138
+    //   172: aload_0
+    //   173: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   176: invokestatic 383	com/tencent/mobileqq/leba/core/LebaUtil:a	(Lmqq/app/AppRuntime;)I
+    //   179: istore_3
+    //   180: aload_0
+    //   181: getfield 42	com/tencent/mobileqq/leba/core/LebaHelper:a	Lmqq/app/AppRuntime;
+    //   184: invokevirtual 223	mqq/app/AppRuntime:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   187: invokevirtual 229	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   190: invokestatic 233	com/tencent/mobileqq/leba/entity/LebaPluginInfo:getAll	(Lcom/tencent/mobileqq/persistence/EntityManager;)Ljava/util/List;
+    //   193: astore 5
+    //   195: new 44	java/util/ArrayList
+    //   198: dup
+    //   199: invokespecial 45	java/util/ArrayList:<init>	()V
+    //   202: astore 6
+    //   204: aload 5
+    //   206: ifnull +139 -> 345
+    //   209: iconst_0
+    //   210: istore_1
+    //   211: iload_1
+    //   212: aload 5
+    //   214: invokeinterface 238 1 0
+    //   219: if_icmpge +126 -> 345
+    //   222: aload 5
+    //   224: iload_1
+    //   225: invokeinterface 241 2 0
+    //   230: checkcast 55	com/tencent/mobileqq/leba/entity/LebaPluginInfo
+    //   233: astore 7
+    //   235: aload 7
+    //   237: ifnull +101 -> 338
+    //   240: aload 7
+    //   242: getfield 144	com/tencent/mobileqq/leba/entity/LebaPluginInfo:cDataType	B
+    //   245: ifne +93 -> 338
+    //   248: new 55	com/tencent/mobileqq/leba/entity/LebaPluginInfo
+    //   251: dup
+    //   252: invokespecial 56	com/tencent/mobileqq/leba/entity/LebaPluginInfo:<init>	()V
+    //   255: astore 8
+    //   257: iload_3
+    //   258: ifgt +8 -> 266
+    //   261: iconst_0
+    //   262: istore_2
+    //   263: goto +9 -> 272
+    //   266: aload 7
+    //   268: getfield 87	com/tencent/mobileqq/leba/entity/LebaPluginInfo:sResSeq	I
+    //   271: istore_2
+    //   272: aload 8
+    //   274: iload_2
+    //   275: putfield 87	com/tencent/mobileqq/leba/entity/LebaPluginInfo:sResSeq	I
+    //   278: aload 8
+    //   280: aload 7
+    //   282: getfield 76	com/tencent/mobileqq/leba/entity/LebaPluginInfo:uiResId	J
+    //   285: putfield 76	com/tencent/mobileqq/leba/entity/LebaPluginInfo:uiResId	J
+    //   288: aload 6
+    //   290: aload 8
+    //   292: invokevirtual 608	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   295: pop
+    //   296: invokestatic 161	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   299: ifeq +39 -> 338
+    //   302: new 163	java/lang/StringBuilder
+    //   305: dup
+    //   306: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   309: astore 8
+    //   311: aload 8
+    //   313: ldc 96
+    //   315: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   318: pop
+    //   319: aload 8
+    //   321: aload 7
+    //   323: invokevirtual 297	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   326: pop
+    //   327: ldc 215
+    //   329: iconst_2
+    //   330: aload 8
+    //   332: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   335: invokestatic 219	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   338: iload_1
+    //   339: iconst_1
+    //   340: iadd
+    //   341: istore_1
+    //   342: goto -131 -> 211
+    //   345: iload_3
+    //   346: istore_1
+    //   347: aload 6
+    //   349: invokevirtual 611	java/util/ArrayList:isEmpty	()Z
+    //   352: ifeq +5 -> 357
+    //   355: iconst_0
+    //   356: istore_1
+    //   357: invokestatic 161	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   360: ifeq +81 -> 441
+    //   363: new 163	java/lang/StringBuilder
+    //   366: dup
+    //   367: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   370: astore 7
+    //   372: aload 7
+    //   374: ldc_w 613
+    //   377: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   380: pop
+    //   381: aload 7
+    //   383: iload_1
+    //   384: invokevirtual 349	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   387: pop
+    //   388: aload 7
+    //   390: ldc_w 615
+    //   393: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   396: pop
+    //   397: aload 7
+    //   399: aload 6
+    //   401: invokevirtual 616	java/util/ArrayList:size	()I
+    //   404: invokevirtual 349	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   407: pop
+    //   408: aload 7
+    //   410: ldc_w 618
+    //   413: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   416: pop
+    //   417: aload 7
+    //   419: aload 5
+    //   421: invokeinterface 238 1 0
+    //   426: invokevirtual 349	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   429: pop
+    //   430: ldc 215
+    //   432: iconst_2
+    //   433: aload 7
+    //   435: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   438: invokestatic 219	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   441: aload_0
+    //   442: iload_1
+    //   443: aload 6
+    //   445: invokevirtual 620	com/tencent/mobileqq/leba/core/LebaHelper:a	(ILjava/util/List;)Lcom/tencent/mobileqq/leba/pb/PluginConfig$GetResourceReq;
+    //   448: areturn
+    //   449: aload 5
+    //   451: ifnull +8 -> 459
+    //   454: aload 5
+    //   456: invokevirtual 250	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   459: goto +6 -> 465
+    //   462: aload 6
+    //   464: athrow
+    //   465: goto -3 -> 462
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	468	0	this	LebaHelper
+    //   81	362	1	m	int
+    //   262	13	2	n	int
+    //   179	167	3	i1	int
+    //   57	35	4	bool	boolean
+    //   63	392	5	localObject1	Object
+    //   146	1	6	localObject2	Object
+    //   151	9	6	localThrowable	java.lang.Throwable
+    //   202	261	6	localArrayList	ArrayList
+    //   233	201	7	localObject3	Object
+    //   255	76	8	localObject4	Object
+    // Exception table:
+    //   from	to	target	type
+    //   125	133	146	finally
+    //   153	164	146	finally
+    //   125	133	151	java/lang/Throwable
   }
   
   public void d()
   {
-    if (a(this.jdField_a_of_type_MqqAppAppRuntime))
+    if (this.f)
     {
-      QLog.i("LebaHelper", 1, "checkModleAndRefesh getAllPluginList");
+      m = this.g;
+      if (m < 3)
+      {
+        this.f = false;
+        this.g = (m + 1);
+        m = 1;
+        break label36;
+      }
+    }
+    int m = 0;
+    label36:
+    int n = m;
+    if (this.h)
+    {
+      int i1 = this.i;
+      n = m;
+      if (i1 < 3)
+      {
+        this.h = false;
+        this.i = (i1 + 1);
+        n = 1;
+      }
+    }
+    if (n != 0)
+    {
+      QLog.i("Leba.Helper", 1, "checkModleAndRefesh getAllPluginList");
       ThreadManager.excute(new LebaHelper.2(this), 160, null, true);
     }
   }
   
   public void e()
   {
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
+    if (a(this.a))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      QLog.i("Leba.Helper", 1, "checkModleAndRefesh getAllPluginList");
+      ThreadManager.excute(new LebaHelper.3(this), 160, null, true);
+    }
+  }
+  
+  public List<LebaPluginInfo> f()
+  {
+    return this.c;
+  }
+  
+  public void g()
+  {
+    synchronized (this.b)
+    {
+      this.c.clear();
       return;
     }
   }
   
-  public void f()
-  {
-    if (this.jdField_c_of_type_Boolean)
-    {
-      int i = this.jdField_b_of_type_Int;
-      if (i < 3)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_b_of_type_Int = (i + 1);
-        ThreadManager.excute(new LebaHelper.3(this), 128, null, true);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("checkPluginSort, mGetUserSortFail=");
-        localStringBuilder.append(this.jdField_c_of_type_Boolean);
-        localStringBuilder.append(", mPluginRetryTime=");
-        localStringBuilder.append(this.jdField_b_of_type_Int);
-        QLog.i("leba_sort", 1, localStringBuilder.toString());
-      }
-    }
-  }
-  
-  protected void g()
+  protected void h()
   {
     LebaPluginInfo localLebaPluginInfo = new LebaPluginInfo();
     localLebaPluginInfo.strPkgName = "qzone_feedlist";
-    localLebaPluginInfo.strResName = HardCodeUtil.a(2131693595);
+    localLebaPluginInfo.strResName = HardCodeUtil.a(2131891170);
     localLebaPluginInfo.strResURL = "qq_leba_list_seek_feeds";
     localLebaPluginInfo.sResSubType = 2;
     localLebaPluginInfo.cCanChangeState = 0;
     localLebaPluginInfo.cDataType = 1;
     localLebaPluginInfo.uiResId = 0L;
-    localLebaPluginInfo.strGotoUrl = String.format("mqqapi://app/action?src_type=app&version=1&plg_sid=1&plg_ha3=1&plg_nickname=1&plg_newflag=1&plg_launchtime=1&pkg=com.tencent.mobileqq&cmp=com.qzone.feed.ui.activity.QZoneFriendFeedActivity&isFromQQ=true&qzone_uin=%s&page=%s", new Object[] { this.jdField_a_of_type_MqqAppAppRuntime.getAccount(), "tab_qzone" });
+    localLebaPluginInfo.strGotoUrl = String.format("mqqapi://app/action?src_type=app&version=1&plg_sid=1&plg_ha3=1&plg_nickname=1&plg_newflag=1&plg_launchtime=1&pkg=com.tencent.mobileqq&cmp=com.qzone.feed.ui.activity.QZoneFriendFeedActivity&isFromQQ=true&qzone_uin=%s&page=%s", new Object[] { this.a.getAccount(), "tab_qzone" });
     localLebaPluginInfo.showInSimpleMode = 1;
-    this.jdField_b_of_type_JavaUtilList.add(localLebaPluginInfo);
+    this.d.add(localLebaPluginInfo);
   }
   
-  public void h()
+  public void i()
   {
-    ??? = this.jdField_a_of_type_MqqAppAppRuntime;
+    ??? = this.a;
     if ((??? != null) && (((AppRuntime)???).isLogin()))
     {
       try
       {
-        synchronized (this.jdField_b_of_type_JavaUtilList)
+        synchronized (this.d)
         {
-          this.jdField_b_of_type_JavaUtilList.clear();
+          this.d.clear();
         }
       }
       catch (Exception localException2)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("LebaHelper", 2, localException2, new Object[0]);
+          QLog.e("Leba.Helper", 2, localException2, new Object[0]);
         }
         try
         {
-          g();
+          h();
         }
         catch (Exception localException1)
         {
           localException1.printStackTrace();
         }
-        k();
-        synchronized (this.jdField_a_of_type_ArrayOfByte)
+        l();
+        synchronized (this.b)
         {
-          this.jdField_a_of_type_JavaUtilList.clear();
-          this.jdField_a_of_type_JavaUtilList.addAll(this.jdField_b_of_type_JavaUtilList);
+          this.c.clear();
+          this.c.addAll(this.d);
           if (QLog.isColorLevel())
           {
             ??? = new StringBuilder();
             ((StringBuilder)???).append("loadAllPlugins，size=");
-            ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilList.size());
-            QLog.d("LebaHelper", 2, ((StringBuilder)???).toString());
+            ((StringBuilder)???).append(this.c.size());
+            QLog.d("Leba.Helper", 2, ((StringBuilder)???).toString());
           }
-          this.jdField_b_of_type_Boolean = true;
+          this.k = true;
           return;
         }
       }
       throw localObject4;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("LebaHelper", 2, "error happens: loadAllPlugins while app is null || app is not login");
+      QLog.d("Leba.Helper", 2, "error happens: loadAllPlugins while app is null || app is not login");
     }
   }
   
-  public void i()
+  public void j()
   {
-    Iterator localIterator = new ArrayList(this.jdField_c_of_type_JavaUtilList).iterator();
+    Iterator localIterator = new ArrayList(this.e).iterator();
     while (localIterator.hasNext()) {
       ResourcePluginListener.a((ResourcePluginListener)localIterator.next(), (byte)5, 1);
     }
@@ -1833,7 +1675,7 @@ public class LebaHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.core.LebaHelper
  * JD-Core Version:    0.7.0.1
  */

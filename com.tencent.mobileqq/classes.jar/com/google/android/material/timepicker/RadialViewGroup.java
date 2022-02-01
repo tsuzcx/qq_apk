@@ -25,9 +25,9 @@ import com.google.android.material.shape.RelativeCornerSize;
 class RadialViewGroup
   extends ConstraintLayout
 {
-  private int jdField_a_of_type_Int;
-  private MaterialShapeDrawable jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
-  private final Runnable jdField_a_of_type_JavaLangRunnable;
+  private final Runnable a;
+  private int b;
+  private MaterialShapeDrawable c;
   
   public RadialViewGroup(@NonNull Context paramContext)
   {
@@ -43,19 +43,11 @@ class RadialViewGroup
   {
     super(paramContext, paramAttributeSet, paramInt);
     LayoutInflater.from(paramContext).inflate(R.layout.o, this);
-    ViewCompat.setBackground(this, a());
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.al, paramInt, 0);
-    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(R.styleable.dO, 0);
-    this.jdField_a_of_type_JavaLangRunnable = new RadialViewGroup.1(this);
+    ViewCompat.setBackground(this, c());
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.fL, paramInt, 0);
+    this.b = paramContext.getDimensionPixelSize(R.styleable.fM, 0);
+    this.a = new RadialViewGroup.1(this);
     paramContext.recycle();
-  }
-  
-  private Drawable a()
-  {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = new MaterialShapeDrawable();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.a(new RelativeCornerSize(0.5F));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.g(ColorStateList.valueOf(-1));
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
   }
   
   private static boolean a(View paramView)
@@ -63,20 +55,22 @@ class RadialViewGroup
     return "skip".equals(paramView.getTag());
   }
   
-  private void b()
+  private Drawable c()
+  {
+    this.c = new MaterialShapeDrawable();
+    this.c.a(new RelativeCornerSize(0.5F));
+    this.c.g(ColorStateList.valueOf(-1));
+    return this.c;
+  }
+  
+  private void d()
   {
     Handler localHandler = getHandler();
     if (localHandler != null)
     {
-      localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      localHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+      localHandler.removeCallbacks(this.a);
+      localHandler.post(this.a);
     }
-  }
-  
-  @Dimension
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
   }
   
   protected void a()
@@ -108,7 +102,7 @@ class RadialViewGroup
         }
         else
         {
-          localConstraintSet.constrainCircle(localView.getId(), R.id.b, this.jdField_a_of_type_Int, f1);
+          localConstraintSet.constrainCircle(localView.getId(), R.id.b, this.b, f1);
           f2 = f1 + 360.0F / (n - i);
         }
       }
@@ -120,7 +114,7 @@ class RadialViewGroup
   
   public void a(@Dimension int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     a();
   }
   
@@ -130,7 +124,13 @@ class RadialViewGroup
     if (paramView.getId() == -1) {
       paramView.setId(ViewCompat.generateViewId());
     }
-    b();
+    d();
+  }
+  
+  @Dimension
+  public int b()
+  {
+    return this.b;
   }
   
   protected void onFinishInflate()
@@ -142,17 +142,17 @@ class RadialViewGroup
   public void onViewRemoved(View paramView)
   {
     super.onViewRemoved(paramView);
-    b();
+    d();
   }
   
   public void setBackgroundColor(@ColorInt int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.g(ColorStateList.valueOf(paramInt));
+    this.c.g(ColorStateList.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.timepicker.RadialViewGroup
  * JD-Core Version:    0.7.0.1
  */

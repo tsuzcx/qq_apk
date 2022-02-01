@@ -21,7 +21,7 @@ public final class ClickTrigger
     Intrinsics.checkParameterIsNotNull(paramViewData, "data");
     Intrinsics.checkParameterIsNotNull(paramIView, "iview");
     super.monitor(paramViewData, paramIView);
-    TouchEventHelper.a.a(paramIView.getDecor().getProxy(), (View.OnClickListener)new ClickTrigger.monitor.1(this));
+    TouchEventHelper.a.a(paramIView.getDecor().b(), (View.OnClickListener)new ClickTrigger.monitor.1(this));
   }
   
   public boolean notifyState(@NotNull String paramString, @NotNull Object paramObject)
@@ -34,7 +34,7 @@ public final class ClickTrigger
       if (paramString == null) {
         Intrinsics.throwNpe();
       }
-      paramString = paramString.getDecor().getProxy();
+      paramString = paramString.getDecor().b();
       if (paramString != null) {
         updateStatus(paramString, "click");
       }
@@ -44,7 +44,7 @@ public final class ClickTrigger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.ClickTrigger
  * JD-Core Version:    0.7.0.1
  */

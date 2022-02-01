@@ -4,10 +4,11 @@ import com.tencent.mobileqq.qroute.annotation.Service;
 import com.tencent.mobileqq.tianshu.data.RedPointHolder;
 import java.util.List;
 import mqq.app.AppRuntime;
+import mqq.app.api.IRuntimeService;
 
 @Service(needUin=false, process={""})
 public abstract interface IRedTouchServer
-  extends IRuntimeHandler
+  extends IRuntimeHandler, IRuntimeService
 {
   public abstract void forceSendReq(int paramInt);
   
@@ -19,7 +20,7 @@ public abstract interface IRedTouchServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.api.IRedTouchServer
  * JD-Core Version:    0.7.0.1
  */

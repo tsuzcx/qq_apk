@@ -1,93 +1,115 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.TXCRenderAndDec;
-import com.tencent.liteav.basic.module.Monitor;
+import android.view.Surface;
+import android.view.SurfaceView;
+import android.view.TextureView;
+import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
 import com.tencent.liteav.basic.module.TXCKeyPointReportProxy;
+import com.tencent.liteav.basic.util.e;
+import com.tencent.liteav.d;
+import com.tencent.liteav.g;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
 class TRTCCloudImpl$18
   implements Runnable
 {
-  TRTCCloudImpl$18(TRTCCloudImpl paramTRTCCloudImpl, String paramString, TXCloudVideoView paramTXCloudVideoView) {}
+  TRTCCloudImpl$18(TRTCCloudImpl paramTRTCCloudImpl, boolean paramBoolean, TXCloudVideoView paramTXCloudVideoView) {}
   
   public void run()
   {
-    Object localObject1 = this.this$0.mRoomInfo.getUser(this.val$userId);
-    if (localObject1 == null)
-    {
-      localObject1 = this.this$0;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("startRemoteSubStreamView user is not exist save view");
-      ((StringBuilder)localObject2).append(this.val$userId);
-      ((TRTCCloudImpl)localObject1).apiLog(((StringBuilder)localObject2).toString());
-      localObject1 = TRTCCloudImpl.access$2300(this.this$0, this.val$userId);
-      ((TRTCRoomInfo.UserInfo)localObject1).subRender.view = this.val$view;
-      this.this$0.mRoomInfo.addUserInfo(this.val$userId, (TRTCRoomInfo.UserInfo)localObject1);
-      return;
-    }
-    Object localObject2 = this.val$view;
-    if ((localObject2 != null) && (localObject2.equals(((TRTCRoomInfo.UserInfo)localObject1).subRender.view)))
-    {
-      localObject1 = this.this$0;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("startRemoteSubStreamView user view is the same, ignore ");
-      ((StringBuilder)localObject2).append(this.val$userId);
-      ((TRTCCloudImpl)localObject1).apiLog(((StringBuilder)localObject2).toString());
-      return;
-    }
     int i;
-    if (((TRTCRoomInfo.UserInfo)localObject1).subRender.view != null) {
+    if (TRTCCloudImpl.access$1600(this.this$0) != TRTCCloudImpl.VideoSourceType.NONE) {
       i = 1;
     } else {
       i = 0;
     }
-    ((TRTCRoomInfo.UserInfo)localObject1).subRender.view = this.val$view;
-    if (((TRTCRoomInfo.UserInfo)localObject1).subRender.tinyID == 0L)
-    {
-      localObject1 = this.this$0;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("startRemoteSubStreamView user tinyID is 0, ignore ");
-      ((StringBuilder)localObject2).append(this.val$userId);
-      ((TRTCCloudImpl)localObject1).apiLog(((StringBuilder)localObject2).toString());
-      return;
+    if (i != 0) {
+      this.this$0.apiLog("startLocalPreview just reset view when is started");
     }
-    this.this$0.setRenderView(this.val$userId, ((TRTCRoomInfo.UserInfo)localObject1).subRender, this.val$view, ((TRTCRoomInfo.UserInfo)localObject1).debugMargin);
-    localObject2 = this.this$0;
-    Object localObject3 = this.val$userId;
-    long l = ((TRTCRoomInfo.UserInfo)localObject1).tinyID;
-    TXCloudVideoView localTXCloudVideoView = this.val$view;
-    int j;
-    if (localTXCloudVideoView != null) {
-      j = localTXCloudVideoView.hashCode();
+    if (this.this$0.mCurrentRole == 21)
+    {
+      this.this$0.runOnListenerThread(new TRTCCloudImpl.18.1(this));
+      this.this$0.apiLog("ignore startLocalPreview for audience");
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("startLocalPreview front:");
+    ((StringBuilder)localObject2).append(this.val$frontCamera);
+    ((StringBuilder)localObject2).append(", view:");
+    Object localObject1 = this.val$view;
+    if (localObject1 != null) {
+      localObject1 = Integer.valueOf(localObject1.hashCode());
     } else {
-      j = 0;
+      localObject1 = "";
     }
-    ((TRTCCloudImpl)localObject2).apiLog(String.format("startRemoteSubStreamView userID:%s tinyID:%d streamType:%d view:%d", new Object[] { localObject3, Long.valueOf(l), Integer.valueOf(7), Integer.valueOf(j) }));
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(String.format("startRemoteSubStreamView userID:%s", new Object[] { this.val$userId }));
-    ((StringBuilder)localObject2).append(" self:");
+    ((StringBuilder)localObject2).append(localObject1);
+    ((StringBuilder)localObject2).append(" ");
     ((StringBuilder)localObject2).append(this.this$0.hashCode());
-    Monitor.a(1, ((StringBuilder)localObject2).toString(), "", 0);
-    localObject2 = this.this$0;
-    l = ((TRTCRoomInfo.UserInfo)localObject1).tinyID;
-    localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append("Start watching ");
-    ((StringBuilder)localObject3).append(this.val$userId);
-    TRTCCloudImpl.access$2400((TRTCCloudImpl)localObject2, String.valueOf(l), 7, 0, ((StringBuilder)localObject3).toString());
-    TXCKeyPointReportProxy.a(String.valueOf(((TRTCRoomInfo.UserInfo)localObject1).tinyID), 40021, 0L, 7);
-    if ((i == 0) || (!((TRTCRoomInfo.UserInfo)localObject1).subRender.render.isRendering())) {
-      TRTCCloudImpl.access$2500(this.this$0, ((TRTCRoomInfo.UserInfo)localObject1).subRender.render, 7);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    this.this$0.apiOnlineLog((String)localObject1);
+    TXCEventRecorderProxy.a("18446744073709551615", 4006, 2L, -1L, "", 2);
+    TRTCCloudImpl.access$1300(this.this$0);
+    this.this$0.mRoomInfo.localView = this.val$view;
+    this.this$0.mConfig.n = this.val$frontCamera;
+    localObject1 = this.this$0.mConfig;
+    boolean bool;
+    if (this.this$0.mPerformanceMode == 1) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    if (!((TRTCRoomInfo.UserInfo)localObject1).subRender.muteVideo)
+    ((g)localObject1).V = bool;
+    this.this$0.mCaptureAndEnc.a(this.this$0.mConfig);
+    TXCKeyPointReportProxy.a(40046, 1, 2);
+    TRTCCloudImpl.access$2102(this.this$0, true);
+    TRTCCloudImpl.access$2200(this.this$0).enable();
+    TRTCCloudImpl.access$100(this.this$0);
+    this.this$0.enableVideoStream(true);
+    localObject1 = this.val$view;
+    if (localObject1 != null) {
+      localObject1 = ((TXCloudVideoView)localObject1).getSurfaceView();
+    } else {
+      localObject1 = null;
+    }
+    localObject2 = this.val$view;
+    if (localObject2 != null) {
+      localObject2 = ((TXCloudVideoView)localObject2).getHWVideoView();
+    } else {
+      localObject2 = null;
+    }
+    if ((localObject1 == null) && (localObject2 == null))
     {
-      localObject2 = this.this$0;
-      TRTCCloudImpl.access$2600((TRTCCloudImpl)localObject2, ((TRTCCloudImpl)localObject2).mNativeRtcContext, ((TRTCRoomInfo.UserInfo)localObject1).tinyID, 7, true);
+      if ((i == 0) && (TRTCCloudImpl.access$1600(this.this$0) == TRTCCloudImpl.VideoSourceType.NONE))
+      {
+        TRTCCloudImpl.access$1602(this.this$0, TRTCCloudImpl.VideoSourceType.CAMERA);
+        this.this$0.mCaptureAndEnc.a(this.val$view);
+      }
+      else
+      {
+        this.this$0.apiLog("startLocalPreview with view view when is started");
+      }
+    }
+    else if ((i == 0) && (TRTCCloudImpl.access$1600(this.this$0) == TRTCCloudImpl.VideoSourceType.NONE))
+    {
+      TRTCCloudImpl.access$1602(this.this$0, TRTCCloudImpl.VideoSourceType.CAMERA);
+      this.this$0.mCaptureAndEnc.a(null);
+    }
+    else
+    {
+      this.this$0.apiLog("startLocalPreview with surface view when is started");
+    }
+    Surface[] arrayOfSurface = new Surface[1];
+    e locale = new e();
+    TRTCCloudImpl.access$2400(this.this$0, new TRTCCloudImpl.18.2(this, (SurfaceView)localObject1, arrayOfSurface, locale, (TextureView)localObject2));
+    if (arrayOfSurface[0] != null)
+    {
+      this.this$0.mCaptureAndEnc.a(arrayOfSurface[0]);
+      this.this$0.mCaptureAndEnc.a(locale.a, locale.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.18
  * JD-Core Version:    0.7.0.1
  */

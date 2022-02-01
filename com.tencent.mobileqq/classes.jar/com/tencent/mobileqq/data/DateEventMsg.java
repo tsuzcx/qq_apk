@@ -83,15 +83,15 @@ public class DateEventMsg
             if (i != 4)
             {
               if (i == 5) {
-                localDateEventMsg.str_event_tips = HardCodeUtil.a(2131702950);
+                localDateEventMsg.str_event_tips = HardCodeUtil.a(2131900925);
               }
             }
             else {
-              localDateEventMsg.str_event_tips = HardCodeUtil.a(2131702949);
+              localDateEventMsg.str_event_tips = HardCodeUtil.a(2131900924);
             }
           }
           else {
-            localDateEventMsg.str_event_tips = HardCodeUtil.a(2131702948);
+            localDateEventMsg.str_event_tips = HardCodeUtil.a(2131900923);
           }
         }
         DatingUtil.a("DateEventMsg.convertFrom", new Object[] { paramDateEvent.str_event_tips.get(), localDateEventMsg.str_event_tips });
@@ -249,7 +249,7 @@ public class DateEventMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.DateEventMsg
  * JD-Core Version:    0.7.0.1
  */

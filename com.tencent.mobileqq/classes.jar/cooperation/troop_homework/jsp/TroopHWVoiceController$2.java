@@ -23,12 +23,12 @@ class TroopHWVoiceController$2
         if (i != 3) {
           return;
         }
-        TroopHWVoiceController.a(this.a).c();
-        AudioUtil.b(2131230748, false);
-        if (this.a.a == null) {
+        TroopHWVoiceController.d(this.a).c();
+        AudioUtil.b(2131230816, false);
+        if (this.a.f == null) {
           return;
         }
-        paramMessage = (Context)this.a.a.get();
+        paramMessage = (Context)this.a.f.get();
         if (paramMessage == null) {
           return;
         }
@@ -37,13 +37,13 @@ class TroopHWVoiceController$2
     }
     else
     {
-      if (TroopHWVoiceController.a(this.a) != null) {
-        TroopHWVoiceController.a(this.a).a(1, TroopHWVoiceController.a(this.a));
+      if (TroopHWVoiceController.c(this.a) != null) {
+        TroopHWVoiceController.c(this.a).a(1, TroopHWVoiceController.a(this.a));
       }
       if ((paramMessage.obj instanceof String))
       {
         paramMessage = (String)paramMessage.obj;
-        this.a.c(paramMessage);
+        this.a.d(paramMessage);
         this.a.b(paramMessage);
       }
     }
@@ -51,7 +51,7 @@ class TroopHWVoiceController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWVoiceController.2
  * JD-Core Version:    0.7.0.1
  */

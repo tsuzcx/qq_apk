@@ -501,7 +501,7 @@ public final class a
           }
           if ((com.tencent.mobileqq.microapp.a.c.a(this.c)) && (paramString1.startsWith("page/QQ/forward.html")))
           {
-            bool = StringUtil.a(paramString2);
+            bool = StringUtil.isEmpty(paramString2);
             if (!bool)
             {
               try
@@ -611,7 +611,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.a
  * JD-Core Version:    0.7.0.1
  */

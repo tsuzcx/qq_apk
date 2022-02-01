@@ -29,13 +29,13 @@ public class CMTimeMapping
   
   public void setSource(@NonNull CMTimeRange paramCMTimeRange)
   {
-    Utils.a(paramCMTimeRange);
+    Utils.checkNotNull(paramCMTimeRange);
     this.source = paramCMTimeRange.clone();
   }
   
   public void setTarget(@NonNull CMTimeRange paramCMTimeRange)
   {
-    Utils.a(paramCMTimeRange);
+    Utils.checkNotNull(paramCMTimeRange);
     this.target = paramCMTimeRange.clone();
   }
   
@@ -52,7 +52,7 @@ public class CMTimeMapping
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMTimeMapping
  * JD-Core Version:    0.7.0.1
  */

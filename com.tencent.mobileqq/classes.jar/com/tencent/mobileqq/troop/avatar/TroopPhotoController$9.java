@@ -13,7 +13,7 @@ class TroopPhotoController$9
   
   protected void onCmdTroopAvatar(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
   {
-    if (!Utils.a(paramString1, this.a.jdField_a_of_type_JavaLangString)) {
+    if (!Utils.a(paramString1, this.a.n)) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -24,12 +24,12 @@ class TroopPhotoController$9
   
   protected void onGetTroopAvatar(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData == null) {
+    if (this.a.p == null) {
       return;
     }
     if (paramBoolean)
     {
-      if (!Utils.a(paramString1, this.a.jdField_a_of_type_JavaLangString)) {
+      if (!Utils.a(paramString1, this.a.n)) {
         return;
       }
       if (QLog.isColorLevel()) {
@@ -43,7 +43,7 @@ class TroopPhotoController$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.avatar.TroopPhotoController.9
  * JD-Core Version:    0.7.0.1
  */

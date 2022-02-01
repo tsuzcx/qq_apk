@@ -10,86 +10,85 @@ import java.util.Set;
 
 public class FilePreviewDataReporter
 {
-  public int a;
-  public long a;
-  public final String a;
-  public boolean a;
+  public final String a = "actFilePreview";
   public long b;
-  public String b;
-  public long c;
   public String c;
-  public long d;
   public String d;
-  public long e;
   public String e;
   public long f;
-  public String f;
   public String g;
   public String h;
-  public String i;
+  public int i;
   public String j;
   public String k;
-  String l = null;
+  public String l;
+  public String m;
+  public String n;
+  public long o;
+  public long p;
+  public boolean q;
+  String r = null;
+  public long s;
+  public long t;
   
   public FilePreviewDataReporter(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "actFilePreview";
-    this.l = paramString;
+    this.r = paramString;
   }
   
-  private HashMap<String, String> a()
+  private HashMap<String, String> b()
   {
     HashMap localHashMap = new HashMap();
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      this.jdField_d_of_type_JavaLangString = String.valueOf(9004);
+      this.e = String.valueOf(9004);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.h);
+      localStringBuilder.append(this.k);
       localStringBuilder.append("_NotNetWork");
-      this.h = localStringBuilder.toString();
+      this.k = localStringBuilder.toString();
     }
-    localHashMap.put("param_serverip", String.valueOf(this.jdField_b_of_type_JavaLangString));
-    localHashMap.put("param_uuid", String.valueOf(this.jdField_c_of_type_JavaLangString));
-    localHashMap.put("param_FailCode", String.valueOf(this.jdField_d_of_type_JavaLangString));
-    localHashMap.put("param_fsizeo", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_url", String.valueOf(this.jdField_e_of_type_JavaLangString));
-    localHashMap.put("param_key", String.valueOf(this.jdField_f_of_type_JavaLangString));
-    localHashMap.put("param_retry", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_errMsg", String.valueOf(this.h));
-    localHashMap.put("param_fileName", String.valueOf(this.g));
-    localHashMap.put("param_fileExt", String.valueOf(this.i));
-    localHashMap.put("param_source", String.valueOf(this.j));
-    localHashMap.put("param_stage", String.valueOf(this.k));
-    localHashMap.put("param_stagetimelen", String.valueOf(this.jdField_c_of_type_Long));
-    localHashMap.put("param_staytimelen", String.valueOf(this.jdField_d_of_type_Long));
-    this.h = "";
+    localHashMap.put("param_serverip", String.valueOf(this.c));
+    localHashMap.put("param_uuid", String.valueOf(this.d));
+    localHashMap.put("param_FailCode", String.valueOf(this.e));
+    localHashMap.put("param_fsizeo", String.valueOf(this.f));
+    localHashMap.put("param_url", String.valueOf(this.g));
+    localHashMap.put("param_key", String.valueOf(this.h));
+    localHashMap.put("param_retry", String.valueOf(this.i));
+    localHashMap.put("param_errMsg", String.valueOf(this.k));
+    localHashMap.put("param_fileName", String.valueOf(this.j));
+    localHashMap.put("param_fileExt", String.valueOf(this.l));
+    localHashMap.put("param_source", String.valueOf(this.m));
+    localHashMap.put("param_stage", String.valueOf(this.n));
+    localHashMap.put("param_stagetimelen", String.valueOf(this.o));
+    localHashMap.put("param_staytimelen", String.valueOf(this.p));
+    this.k = "";
     return localHashMap;
   }
   
   public void a()
   {
-    HashMap localHashMap = a();
+    HashMap localHashMap = b();
     if (QLog.isDevelopLevel())
     {
       StringBuilder localStringBuilder1 = new StringBuilder();
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("doReport:bSuccess[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.q);
       ((StringBuilder)localObject).append("],");
       localStringBuilder1.append(((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("strReportUin[");
-      ((StringBuilder)localObject).append(this.l);
+      ((StringBuilder)localObject).append(this.r);
       ((StringBuilder)localObject).append("],");
       localStringBuilder1.append(((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("startTime[");
-      ((StringBuilder)localObject).append(this.jdField_e_of_type_Long);
+      ((StringBuilder)localObject).append(this.s);
       ((StringBuilder)localObject).append("],");
       localStringBuilder1.append(((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("endTime[");
-      ((StringBuilder)localObject).append(this.jdField_f_of_type_Long);
+      ((StringBuilder)localObject).append(this.t);
       ((StringBuilder)localObject).append("],");
       localStringBuilder1.append(((StringBuilder)localObject).toString());
       localObject = localHashMap.keySet().iterator();
@@ -108,12 +107,12 @@ public class FilePreviewDataReporter
       ((StringBuilder)localObject).append(localStringBuilder1.toString());
       QLog.i("FilePreviewDataReporter<FileAssistant>", 4, ((StringBuilder)localObject).toString());
     }
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.l, "actFilePreview", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.r, "actFilePreview", this.q, 0L, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FilePreviewDataReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class AddContactViewPagerTroopFragment$3$1
   
   public void onClick(View paramView)
   {
-    ReportController.b(null, "dc00899", "Grp_find_new", "", "grptab", "seach_clk", 0, 0, this.a.a.c, this.a.a.a, "", "");
+    ReportController.b(null, "dc00899", "Grp_find_new", "", "grptab", "seach_clk", 0, 0, this.a.a.f, this.a.a.d, "", "");
     Intent localIntent = new Intent(this.a.a.getBaseActivity(), SearchContactsActivity.class);
     localIntent.putExtra("from_key", 1);
     localIntent.putExtra("fromType", 13);
@@ -26,7 +26,7 @@ class AddContactViewPagerTroopFragment$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

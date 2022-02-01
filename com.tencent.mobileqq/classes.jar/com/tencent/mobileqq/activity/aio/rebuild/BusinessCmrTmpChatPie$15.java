@@ -21,27 +21,27 @@ class BusinessCmrTmpChatPie$15
   {
     super.onGetAccountType(paramBoolean, paramBmqqAccountType);
     BusinessCmrTmpChatPie.a(this.a);
-    this.a.aq();
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (this.a.jdField_a_of_type_ComTencentQidianQidianManager.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!BusinessCmrTmpChatPie.a(this.a)))
+    this.a.bC();
+    if ((this.a.W != null) && (this.a.bR.m(this.a.ah.b)) && (!BusinessCmrTmpChatPie.b(this.a)))
     {
       BusinessCmrTmpChatPie.a(this.a, true);
-      BaseChatPie localBaseChatPie = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getChatFragment().a;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localBaseChatPie);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(localBaseChatPie);
+      BaseChatPie localBaseChatPie = this.a.f.getChatFragment().c;
+      this.a.W.a(this.a.d, this.a.ah, localBaseChatPie);
+      this.a.W.a(localBaseChatPie);
     }
-    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramBmqqAccountType.getAccountType() == 6)) {
-      BusinessCmrTmpChatPie.b(this.a);
+    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.ah != null) && (this.a.ah.b != null) && (paramBmqqAccountType.getUin().equals(this.a.ah.b)) && (paramBmqqAccountType.getAccountType() == 6)) {
+      BusinessCmrTmpChatPie.c(this.a);
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) && ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
+    if ((this.a.ah != null) && (this.a.ah.a == 1024) && ((TextUtils.isEmpty(this.a.ah.e)) || (this.a.ah.e.equals(this.a.ah.b))))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = CrmUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+      this.a.ah.e = CrmUtils.e(this.a.d, this.a.ah.b);
+      this.a.C.setText(this.a.ah.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.15
  * JD-Core Version:    0.7.0.1
  */

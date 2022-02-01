@@ -33,25 +33,25 @@ public class ComponentContentPgcShortContentGridImage
     if (getCount() == 1)
     {
       ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      PGCPicInfo localPGCPicInfo = (PGCPicInfo)((IReadInJoyModel)this.a).a().mSocialFeedInfo.a.a.get(0);
-      localLayoutParams.height = ((int)((DeviceInfoUtil.k() - DisplayUtil.a(getContext(), 54.0F)) / 2L));
+      PGCPicInfo localPGCPicInfo = (PGCPicInfo)((IReadInJoyModel)this.a).k().mSocialFeedInfo.t.a.get(0);
+      localLayoutParams.height = ((int)((DeviceInfoUtil.F() - DisplayUtil.a(getContext(), 54.0F)) / 2L));
       if (localPGCPicInfo.b > localPGCPicInfo.a * 1.5F) {
-        localLayoutParams.width = ((int)((DeviceInfoUtil.k() - DisplayUtil.a(getContext(), 54.0F)) / 3L));
+        localLayoutParams.width = ((int)((DeviceInfoUtil.F() - DisplayUtil.a(getContext(), 54.0F)) / 3L));
       } else if (localPGCPicInfo.b >= localPGCPicInfo.a * 1.0F) {
         localLayoutParams.width = (localPGCPicInfo.a * localLayoutParams.height / localPGCPicInfo.b);
       } else if (localPGCPicInfo.b > localPGCPicInfo.a * 0.6666667F) {
         localLayoutParams.width = (localPGCPicInfo.a * localLayoutParams.height / localPGCPicInfo.b);
       } else {
-        localLayoutParams.width = ((int)((DeviceInfoUtil.k() - DisplayUtil.a(getContext(), 54.0F)) / 2L * 3L / 2L));
+        localLayoutParams.width = ((int)((DeviceInfoUtil.F() - DisplayUtil.a(getContext(), 54.0F)) / 2L * 3L / 2L));
       }
       paramView.setLayoutParams(localLayoutParams);
-      ((SquareCornerTextImageView)paramView).a = false;
+      ((SquareCornerTextImageView)paramView).e = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentPgcShortContentGridImage
  * JD-Core Version:    0.7.0.1
  */

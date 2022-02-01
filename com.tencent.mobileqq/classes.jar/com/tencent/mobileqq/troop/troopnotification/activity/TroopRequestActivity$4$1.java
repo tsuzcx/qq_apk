@@ -9,14 +9,14 @@ class TroopRequestActivity$4$1
   
   public void run()
   {
-    this.a.this$0.o.setText(this.a.this$0.j);
-    this.a.this$0.o.setContentDescription(this.a.this$0.j);
-    this.a.this$0.o.setVisibility(0);
+    this.a.this$0.aj.setText(this.a.this$0.n);
+    this.a.this$0.aj.setContentDescription(this.a.this$0.n);
+    this.a.this$0.aj.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.4.1
  * JD-Core Version:    0.7.0.1
  */

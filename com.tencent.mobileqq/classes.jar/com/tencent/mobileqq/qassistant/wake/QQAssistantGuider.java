@@ -25,42 +25,42 @@ import mqq.app.MobileQQ;
 public class QQAssistantGuider
   extends ReportDialog
 {
-  static boolean jdField_a_of_type_Boolean = false;
-  public static volatile boolean b = false;
-  int jdField_a_of_type_Int = 2;
+  static boolean b = false;
+  public static volatile boolean c = false;
   protected Context a;
-  VoicePanelSlideContainer jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer;
-  AppActivity jdField_a_of_type_MqqAppAppActivity;
-  boolean c = false;
+  boolean d = false;
+  AppActivity e;
+  VoicePanelSlideContainer f;
+  int g = 2;
   
   public QQAssistantGuider(@NonNull AppActivity paramAppActivity)
   {
-    super(paramAppActivity, 2131755376);
-    this.jdField_a_of_type_AndroidContentContext = paramAppActivity;
+    super(paramAppActivity, 2131952084);
+    this.a = paramAppActivity;
     setCanceledOnTouchOutside(true);
-    this.jdField_a_of_type_MqqAppAppActivity = paramAppActivity;
+    this.e = paramAppActivity;
     WakeManager.a().b("QQAssistantGuider()");
     if (QQAssistantGuiderUtil.a()) {
-      jdField_a_of_type_Boolean = true;
+      b = true;
     }
-    this.c = true;
+    this.d = true;
   }
   
   public static void a()
   {
+    c = false;
     b = false;
-    jdField_a_of_type_Boolean = false;
     QQAssistantGuiderUtil.a(true);
   }
   
   public void dismiss()
   {
-    b = false;
-    int i = this.jdField_a_of_type_Int;
+    c = false;
+    int i = this.g;
     if (i > 0) {
       ReportController.b(null, "dc00898", "", "", "0X800B44B", "0X800B44B", i, 0, "", "", "", "");
     }
-    if (this.c) {
+    if (this.d) {
       WakeManager.a().a("QQAssistantGuider dismiss");
     }
     super.dismiss();
@@ -69,17 +69,17 @@ public class QQAssistantGuider
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560978, null);
+    paramBundle = LayoutInflater.from(this.a).inflate(2131627319, null);
     setContentView(paramBundle);
     Object localObject = paramBundle.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject).width = paramBundle.getResources().getDisplayMetrics().widthPixels;
     paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = getWindow();
-    ((Window)localObject).setWindowAnimations(2131755930);
+    ((Window)localObject).setWindowAnimations(2131953051);
     ((Window)localObject).setGravity(80);
-    this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer = ((VoicePanelSlideContainer)paramBundle.findViewById(2131377654));
-    this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer.setPanelSlideListener(new QQAssistantGuider.1(this));
-    ((ImageView)paramBundle.findViewById(2131362936)).setOnClickListener(new QQAssistantGuider.2(this));
+    this.f = ((VoicePanelSlideContainer)paramBundle.findViewById(2131446072));
+    this.f.setPanelSlideListener(new QQAssistantGuider.1(this));
+    ((ImageView)paramBundle.findViewById(2131428735)).setOnClickListener(new QQAssistantGuider.2(this));
     boolean bool1;
     if ((Build.VERSION.SDK_INT >= 23) && (MobileQQ.sMobileQQ.checkSelfPermission("android.permission.RECORD_AUDIO") != 0)) {
       bool1 = false;
@@ -87,9 +87,9 @@ public class QQAssistantGuider
       bool1 = true;
     }
     boolean bool2 = ((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).checkPermission(MobileQQ.sMobileQQ);
-    localObject = (TextView)paramBundle.findViewById(2131377678);
-    Button localButton = (Button)paramBundle.findViewById(2131363730);
-    ((Button)paramBundle.findViewById(2131363729)).setOnClickListener(new QQAssistantGuider.3(this));
+    localObject = (TextView)paramBundle.findViewById(2131446103);
+    Button localButton = (Button)paramBundle.findViewById(2131429653);
+    ((Button)paramBundle.findViewById(2131429652)).setOnClickListener(new QQAssistantGuider.3(this));
     if ((bool1) && (bool2))
     {
       ((TextView)localObject).setVisibility(8);
@@ -101,14 +101,14 @@ public class QQAssistantGuider
   
   public void show()
   {
-    b = true;
+    c = true;
     QQAssistantGuiderUtil.a(false);
     super.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.QQAssistantGuider
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#ffe6e9f2" android:paddingLeft="@dimen/c_" android:paddingRight="@dimen/ca" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="37.5dip"
+<LinearLayout android:orientation="vertical" android:background="@drawable/e1h" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/n33" android:layout_width="11.0dip" android:layout_height="11.0dip" android:layout_marginLeft="7.5dip" android:src="@drawable/cip" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="12.0sp" android:textColor="#ff03081a" android:id="@id/ogi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <com.tencent.widget.XListView android:id="@id/ebs" android:paddingBottom="10.0dip" android:clipToPadding="false" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:dividerHeight="0.0dip" />
+</LinearLayout>

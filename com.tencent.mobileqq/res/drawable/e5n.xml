@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:state_pressed="true">
-        <bitmap android:src="@drawable/gz6" android:alpha="0.5" />
-    </item>
-    <item android:state_enabled="false" android:drawable="@drawable/gz5" />
-    <item android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/gz6" />
-    <item android:state_selected="false" android:state_pressed="true">
-        <bitmap android:src="@drawable/gz5" android:alpha="0.5" />
-    </item>
-    <item android:state_selected="false" android:drawable="@drawable/gz5" />
-    <item android:drawable="@drawable/gz6" />
-</selector>
+    <stroke android:color="#80000000" />
+    <solid android:color="#80000000" />
+    <size android:height="10.0dip" android:width="10.0dip" />
+</shape>

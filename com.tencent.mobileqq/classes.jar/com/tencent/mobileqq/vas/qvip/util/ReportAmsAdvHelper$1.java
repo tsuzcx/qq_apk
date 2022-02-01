@@ -15,23 +15,23 @@ final class ReportAmsAdvHelper$1
     {
       paramEIPCResult = new StringBuilder();
       paramEIPCResult.append("reportAmsAdv success. reportType =");
-      paramEIPCResult.append(this.jdField_a_of_type_Int);
+      paramEIPCResult.append(this.a);
       paramEIPCResult.append(" reportUrl =");
-      paramEIPCResult.append(this.jdField_a_of_type_JavaLangString);
+      paramEIPCResult.append(this.b);
       QLog.d("ReportAmsAdvHelper", 2, paramEIPCResult.toString());
       return;
     }
     paramEIPCResult = new StringBuilder();
     paramEIPCResult.append("reportAmsAdv failed. reportType =");
-    paramEIPCResult.append(this.jdField_a_of_type_Int);
+    paramEIPCResult.append(this.a);
     paramEIPCResult.append(" reportUrl =");
-    paramEIPCResult.append(this.jdField_a_of_type_JavaLangString);
+    paramEIPCResult.append(this.b);
     QLog.e("ReportAmsAdvHelper", 2, paramEIPCResult.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.util.ReportAmsAdvHelper.1
  * JD-Core Version:    0.7.0.1
  */

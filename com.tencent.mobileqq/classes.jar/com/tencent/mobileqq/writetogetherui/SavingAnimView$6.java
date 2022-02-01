@@ -13,8 +13,8 @@ class SavingAnimView$6
   public void onAnimationEnd(Animator paramAnimator)
   {
     SavingAnimView.a(this.a, 0);
-    if (SavingAnimView.a(this.a) != null) {
-      SavingAnimView.a(this.a).a();
+    if (SavingAnimView.b(this.a) != null) {
+      SavingAnimView.b(this.a).a();
     }
   }
   
@@ -25,15 +25,15 @@ class SavingAnimView$6
     paramAnimator = this.a;
     SavingAnimView.c(paramAnimator, SavingAnimView.a(paramAnimator));
     paramAnimator = this.a;
-    SavingAnimView.d(paramAnimator, SavingAnimView.d(paramAnimator));
-    if (SavingAnimView.a(this.a) != null) {
-      SavingAnimView.a(this.a).d();
+    SavingAnimView.d(paramAnimator, SavingAnimView.e(paramAnimator));
+    if (SavingAnimView.b(this.a) != null) {
+      SavingAnimView.b(this.a).d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.SavingAnimView.6
  * JD-Core Version:    0.7.0.1
  */

@@ -8,27 +8,27 @@ import com.tencent.widget.RoundRectURLImageView;
 public class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter$ViewHoder
   extends RecyclerView.ViewHolder
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RoundRectURLImageView jdField_a_of_type_ComTencentWidgetRoundRectURLImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  RoundRectURLImageView jdField_b_of_type_ComTencentWidgetRoundRectURLImageView;
-  RoundRectURLImageView c;
+  RoundRectURLImageView a;
+  RoundRectURLImageView b;
+  TextView c;
+  TextView d;
+  View e;
+  RoundRectURLImageView f;
   
   public ApolloBattleGameViewBinder$ApolloBattleGameListAdapter$ViewHoder(ApolloBattleGameViewBinder.ApolloBattleGameListAdapter paramApolloBattleGameListAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetRoundRectURLImageView = ((RoundRectURLImageView)paramView.findViewById(2131363356));
-    this.jdField_b_of_type_ComTencentWidgetRoundRectURLImageView = ((RoundRectURLImageView)paramView.findViewById(2131367477));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367487));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372856));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131361962);
-    this.c = ((RoundRectURLImageView)paramView.findViewById(2131365262));
+    this.a = ((RoundRectURLImageView)paramView.findViewById(2131429246));
+    this.b = ((RoundRectURLImageView)paramView.findViewById(2131433985));
+    this.c = ((TextView)paramView.findViewById(2131434005));
+    this.d = ((TextView)paramView.findViewById(2131440418));
+    this.e = paramView.findViewById(2131427517);
+    this.f = ((RoundRectURLImageView)paramView.findViewById(2131431433));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.ViewHoder
  * JD-Core Version:    0.7.0.1
  */

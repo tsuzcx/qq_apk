@@ -14,7 +14,7 @@ class MessageForNearbyMarketGrayTips$HightlightClickableSpan$2
   public void run()
   {
     Object localObject1 = (INearbyCardManager)this.a.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
-    MessageForNearbyMarketGrayTips.HightlightClickableSpan.a(this.this$0, ((INearbyCardManager)localObject1).b());
+    MessageForNearbyMarketGrayTips.HightlightClickableSpan.a(this.this$0, ((INearbyCardManager)localObject1).c());
     localObject1 = this.this$0;
     Object localObject2 = ((MessageForNearbyMarketGrayTips.HightlightClickableSpan)localObject1).a(MessageForNearbyMarketGrayTips.HightlightClickableSpan.a((MessageForNearbyMarketGrayTips.HightlightClickableSpan)localObject1), false);
     localObject1 = localObject2;
@@ -35,7 +35,7 @@ class MessageForNearbyMarketGrayTips$HightlightClickableSpan$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.2
  * JD-Core Version:    0.7.0.1
  */

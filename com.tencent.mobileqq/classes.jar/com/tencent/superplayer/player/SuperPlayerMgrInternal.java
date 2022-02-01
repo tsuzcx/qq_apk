@@ -33,6 +33,7 @@ class SuperPlayerMgrInternal
   private static final int MSG_START = 12;
   private static final int MSG_STOP = 14;
   private static final int MSG_SWITCH_DEFINITION = 88;
+  private static final int MSG_SWITCH_DEFINITION_FOR_URL = 93;
   private static final int MSG_UPDATE_PLAYER_VIDEO_VIEW = 5;
   private SuperPlayerMgrInternal.EventHandler mEventHandler;
   private SuperPlayerMgrInternal.SPlayerManagerInternalListener mHandleListener;
@@ -305,9 +306,20 @@ class SuperPlayerMgrInternal
     internalMessage(14, null);
   }
   
-  void switchDefinition(String paramString)
+  void switchDefinition(String paramString, int paramInt)
   {
-    internalMessage(88, paramString);
+    SuperPlayerMgrCommons.SwitchDefnParams localSwitchDefnParams = new SuperPlayerMgrCommons.SwitchDefnParams();
+    localSwitchDefnParams.a = paramString;
+    localSwitchDefnParams.b = paramInt;
+    internalMessage(88, localSwitchDefnParams);
+  }
+  
+  void switchDefinitionForUrl(String paramString, int paramInt)
+  {
+    SuperPlayerMgrCommons.SwitchDefnForUrlParams localSwitchDefnForUrlParams = new SuperPlayerMgrCommons.SwitchDefnForUrlParams();
+    localSwitchDefnForUrlParams.a = paramString;
+    localSwitchDefnForUrlParams.b = paramInt;
+    internalMessage(93, localSwitchDefnForUrlParams);
   }
   
   void updatePlayerVideoView(ISPlayerVideoView paramISPlayerVideoView)
@@ -317,7 +329,7 @@ class SuperPlayerMgrInternal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerMgrInternal
  * JD-Core Version:    0.7.0.1
  */

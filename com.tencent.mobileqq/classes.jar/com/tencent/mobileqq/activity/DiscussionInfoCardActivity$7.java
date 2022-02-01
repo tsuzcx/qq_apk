@@ -20,24 +20,24 @@ class DiscussionInfoCardActivity$7
   
   public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    this.a.app.getMessageFacade().a(DiscussionInfoCardActivity.a(this.a), 3000);
-    this.a.app.getMessageFacade().c(DiscussionInfoCardActivity.a(this.a), 3000);
+    this.a.app.getMessageFacade().c(DiscussionInfoCardActivity.c(this.a), 3000);
+    this.a.app.getMessageFacade().g(DiscussionInfoCardActivity.c(this.a), 3000);
     ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.app, "chat_history_confirm_del_msg");
     paramDialog = this.a.app.getHandler(Conversation.class);
     paramView = paramDialog.obtainMessage(1017);
-    paramView.obj = DiscussionInfoCardActivity.a(this.a);
+    paramView.obj = DiscussionInfoCardActivity.c(this.a);
     paramView.arg1 = 3000;
     paramDialog.sendMessage(paramView);
     paramDialog = this.a;
-    QQToast.a(paramDialog, 2, paramDialog.getString(2131690865), 0).a();
-    if (this.a.a != null) {
-      ((TextView)this.a.a.findViewById(2131378784)).setTextColor(Color.parseColor("#cccccc"));
+    QQToast.makeText(paramDialog, 2, paramDialog.getString(2131887802), 0).show();
+    if (this.a.b != null) {
+      ((TextView)this.a.b.findViewById(2131447463)).setTextColor(Color.parseColor("#cccccc"));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.7
  * JD-Core Version:    0.7.0.1
  */

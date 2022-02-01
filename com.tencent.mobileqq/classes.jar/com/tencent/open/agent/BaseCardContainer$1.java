@@ -20,14 +20,14 @@ class BaseCardContainer$1
     {
       SSOLog.a("BaseCardContainer", new Object[] { "-->handleMessage MSG_UPDATE" });
       this.a.a();
-      this.a.a.setImageDrawable(BaseCardContainer.a(this.a));
+      this.a.h.setImageDrawable(BaseCardContainer.a(this.a));
     }
     super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BaseCardContainer.1
  * JD-Core Version:    0.7.0.1
  */

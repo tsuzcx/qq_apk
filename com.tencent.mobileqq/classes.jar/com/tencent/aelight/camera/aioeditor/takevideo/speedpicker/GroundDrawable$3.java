@@ -13,7 +13,7 @@ class GroundDrawable$3
   public Integer a(GroundDrawable paramGroundDrawable)
   {
     if (paramGroundDrawable != null) {
-      return Integer.valueOf(GroundDrawable.b(paramGroundDrawable));
+      return Integer.valueOf(GroundDrawable.c(paramGroundDrawable));
     }
     return Integer.valueOf(0);
   }
@@ -27,7 +27,7 @@ class GroundDrawable$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.speedpicker.GroundDrawable.3
  * JD-Core Version:    0.7.0.1
  */

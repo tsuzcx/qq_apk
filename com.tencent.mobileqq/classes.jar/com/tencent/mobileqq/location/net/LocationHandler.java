@@ -29,21 +29,21 @@ public class LocationHandler
   extends BusinessHandler
   implements IGuardInterface
 {
-  private static final Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private int jdField_a_of_type_Int = -1;
-  private final AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private FriendObserver jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver;
-  private final LocationDataHandler jdField_a_of_type_ComTencentMobileqqLocationNetLocationDataHandler;
-  private LocationObserver jdField_a_of_type_ComTencentMobileqqLocationNetLocationObserver;
-  private TroopMngObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private static final Handler f = new Handler(ThreadManager.getSubThreadLooper());
+  private int a = -1;
+  private final LocationDataHandler b;
+  private LocationObserver c;
+  private TroopMngObserver d;
+  private FriendObserver e;
+  private volatile boolean g = false;
+  private final AppInterface h;
   
   public LocationHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.h = paramAppInterface;
     d();
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationDataHandler = new LocationDataHandler(paramAppInterface.getAccount());
+    this.b = new LocationDataHandler(paramAppInterface.getAccount());
   }
   
   public static int a(int paramInt)
@@ -65,73 +65,28 @@ public class LocationHandler
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationObserver = new LocationObserver();
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver = new LocationHandler.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver = new LocationHandler.2(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver);
-  }
-  
-  public void G_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationHandler", 2, "[LocationManager] onAppForeground: invoked. ");
-    }
-    QQNotificationManager.getInstance().cancel("LocationHandler", 525);
-    this.jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-  }
-  
-  public void H_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationHandler", 2, "[LocationManager] onAppBackground: invoked. ");
-    }
-    this.jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_AndroidOsHandler.postDelayed(new LocationHandler.3(this), 60000L);
-    if (!LocationShareLocationManager.a().a()) {
-      return;
-    }
-    Object localObject = new NotificationCompat.Builder(BaseApplication.getContext());
-    ((NotificationCompat.Builder)localObject).setContentText(BaseApplication.getContext().getString(2131694520)).setWhen(System.currentTimeMillis()).setSmallIcon(2130841471).setAutoCancel(true);
-    localObject = ((NotificationCompat.Builder)localObject).build();
-    QQNotificationManager.addChannelIfNeed((Notification)localObject, "CHANNEL_ID_OTHER");
-    QQNotificationManager.getInstance().notify("LocationHandler", 525, (Notification)localObject);
-    jdField_a_of_type_AndroidOsHandler.postDelayed(new LocationHandler.4(this), 3000L);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public LocationRoom a(LocationRoom.RoomKey paramRoomKey)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationDataHandler.a(paramRoomKey);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = new LocationObserver();
+    this.d = new LocationHandler.1(this);
+    this.e = new LocationHandler.2(this);
+    this.h.addObserver(this.c);
+    this.h.addObserver(this.d);
+    this.h.addObserver(this.e);
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationDataHandler.a(paramInt, paramString);
+    this.b.a(paramInt, paramString);
   }
-  
-  public void a(long paramLong) {}
   
   public void a(OnUpdateUserLocationListener paramOnUpdateUserLocationListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationDataHandler.b(paramOnUpdateUserLocationListener);
+    this.b.b(paramOnUpdateUserLocationListener);
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey)
   {
     LocationShareRoomManager.a().a(paramRoomKey);
-    LocationRoom.RoomKey localRoomKey = new LocationRoom.RoomKey(LocationShareLocationManager.a().a.a(), LocationShareLocationManager.a().a.a());
+    LocationRoom.RoomKey localRoomKey = new LocationRoom.RoomKey(LocationShareLocationManager.a().a.d(), LocationShareLocationManager.a().a.e());
     if (!localRoomKey.equals(paramRoomKey))
     {
       if (QLog.isColorLevel())
@@ -143,7 +98,7 @@ public class LocationHandler
         localStringBuilder.append(localRoomKey);
         QLog.d("LocationHandler", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationDataHandler.a(localRoomKey);
+      this.b.b(localRoomKey);
     }
   }
   
@@ -159,26 +114,37 @@ public class LocationHandler
       QLog.d("LocationHandler", 2, localStringBuilder.toString());
     }
     LocationShareLocationManager.a().a(paramRoomKey, true);
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationDataHandler.b(paramRoomKey, paramInt);
+    this.b.b(paramRoomKey, paramInt);
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationDataHandler.a(paramRoomKey, paramInt1, paramInt2);
+    this.b.a(paramRoomKey, paramInt1, paramInt2);
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey, LocationRoom.Venue paramVenue, List<LocationItem> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationDataHandler.a(paramRoomKey, paramVenue, paramList);
+    this.b.a(paramRoomKey, paramVenue, paramList);
   }
   
-  public void a(boolean paramBoolean) {}
+  public int b()
+  {
+    return this.a;
+  }
   
-  public void b(long paramLong) {}
+  public LocationRoom b(LocationRoom.RoomKey paramRoomKey)
+  {
+    return this.b.a(paramRoomKey);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a = paramInt;
+  }
   
   public void b(OnUpdateUserLocationListener paramOnUpdateUserLocationListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationDataHandler.a(paramOnUpdateUserLocationListener);
+    this.b.a(paramOnUpdateUserLocationListener);
   }
   
   public void b(LocationRoom.RoomKey paramRoomKey, int paramInt)
@@ -193,20 +159,50 @@ public class LocationHandler
       QLog.d("LocationHandler", 2, localStringBuilder.toString());
     }
     LocationShareLocationManager.a().a(paramRoomKey, false);
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationDataHandler.a(paramRoomKey, paramInt);
+    this.b.a(paramRoomKey, paramInt);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Int = -1;
+    this.a = -1;
   }
-  
-  public void c(long paramLong) {}
   
   protected Class<? extends BusinessObserver> observerClass()
   {
     return LocationObserverBase.class;
   }
+  
+  public void onApplicationBackground()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "[LocationManager] onAppBackground: invoked. ");
+    }
+    this.g = false;
+    f.postDelayed(new LocationHandler.3(this), 60000L);
+    if (!LocationShareLocationManager.a().b()) {
+      return;
+    }
+    Object localObject = new NotificationCompat.Builder(BaseApplication.getContext());
+    ((NotificationCompat.Builder)localObject).setContentText(BaseApplication.getContext().getString(2131892203)).setWhen(System.currentTimeMillis()).setSmallIcon(2130842313).setAutoCancel(true);
+    localObject = ((NotificationCompat.Builder)localObject).build();
+    QQNotificationManager.addChannelIfNeed((Notification)localObject, "CHANNEL_ID_OTHER");
+    QQNotificationManager.getInstance().notify("LocationHandler", 525, (Notification)localObject);
+    f.postDelayed(new LocationHandler.4(this), 3000L);
+  }
+  
+  public void onApplicationForeground()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "[LocationManager] onAppForeground: invoked. ");
+    }
+    QQNotificationManager.getInstance().cancel("LocationHandler", 525);
+    this.g = true;
+    f.removeCallbacksAndMessages(null);
+  }
+  
+  public void onBackgroundTimeTick(long paramLong) {}
+  
+  public void onBackgroundUnguardTimeTick(long paramLong) {}
   
   public void onDestroy()
   {
@@ -214,40 +210,44 @@ public class LocationHandler
     if (QLog.isColorLevel()) {
       QLog.d("LocationHandler", 2, "onDestroy: invoked. ");
     }
-    LocationShareLocationManager.a().a(LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey, true);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationObserver);
-    LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomQueryHandler.b();
-    LocationShareLocationManager.a().a.a();
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationDataHandler.a();
+    LocationShareLocationManager.a().a(LocationShareRoomManager.a().a, true);
+    this.h.removeObserver(this.d);
+    this.h.removeObserver(this.e);
+    this.h.removeObserver(this.c);
+    LocationShareRoomManager.a().c.c();
+    LocationShareLocationManager.a().a.b();
+    this.b.a();
   }
+  
+  public void onLiteTimeTick(long paramLong) {}
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ("QQLBSShareSvc.room_operation".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomOperateHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      LocationShareRoomManager.a().b.b(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if ("QQLBSShareSvc.report_location".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      LocationShareLocationManager.a().a.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      LocationShareLocationManager.a().a.b(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if ("QQLBSShareSvc.room_query".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomQueryHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      LocationShareRoomManager.a().c.b(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if ("QQLBSShareSvc.assembly_point_operation".equals(paramFromServiceMsg.getServiceCmd())) {
       LocationShareVenueManager.a().a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
+  
+  public void onScreensStateChanged(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationHandler
  * JD-Core Version:    0.7.0.1
  */

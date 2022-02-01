@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/bgx" android:background="@color/az2" android:focusable="false" android:clickable="false" android:longClickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/az0" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <ImageView android:id="@id/ius" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/ivs" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="添加表情" />
+        <ImageView android:id="@id/q3i" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="25.0dip" android:src="@drawable/ivw" android:layout_toRightOf="@id/ius" android:layout_centerVertical="true" android:contentDescription="at好友" />
+        <ImageView android:id="@id/q3j" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/ivn" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

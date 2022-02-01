@@ -6,9 +6,9 @@ import com.tencent.mobileqq.easysync2.utils.Utils;
 public class MergingOpAssembler
   extends OpAssembler
 {
-  int jdField_a_of_type_Int = 0;
-  private OpAssembler jdField_a_of_type_ComTencentMobileqqEasysync2OpAssembler = new OpAssembler();
-  Operation jdField_a_of_type_ComTencentMobileqqEasysync2Operation = new Operation();
+  Operation a = new Operation();
+  int b = 0;
+  private OpAssembler c = new OpAssembler();
   
   public void a()
   {
@@ -17,52 +17,52 @@ public class MergingOpAssembler
   
   public void a(Operation paramOperation)
   {
-    if (paramOperation.jdField_a_of_type_Int > 0)
+    if (paramOperation.b > 0)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.jdField_a_of_type_Char == paramOperation.jdField_a_of_type_Char) && (Utils.a(this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.jdField_a_of_type_JavaLangString, paramOperation.jdField_a_of_type_JavaLangString)))
+      if ((this.a.a == paramOperation.a) && (Utils.a(this.a.d, paramOperation.d)))
       {
         Operation localOperation;
-        if (paramOperation.b > 0)
+        if (paramOperation.c > 0)
         {
-          localOperation = this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation;
-          localOperation.jdField_a_of_type_Int += this.jdField_a_of_type_Int + paramOperation.jdField_a_of_type_Int;
-          localOperation = this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation;
+          localOperation = this.a;
+          localOperation.b += this.b + paramOperation.b;
+          localOperation = this.a;
+          localOperation.c += paramOperation.c;
+          this.b = 0;
+          return;
+        }
+        if (this.a.c == 0)
+        {
+          localOperation = this.a;
           localOperation.b += paramOperation.b;
-          this.jdField_a_of_type_Int = 0;
           return;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.b == 0)
-        {
-          localOperation = this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation;
-          localOperation.jdField_a_of_type_Int += paramOperation.jdField_a_of_type_Int;
-          return;
-        }
-        this.jdField_a_of_type_Int += paramOperation.jdField_a_of_type_Int;
+        this.b += paramOperation.b;
         return;
       }
       a();
-      Changeset.a(paramOperation, this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation);
+      Changeset.a(paramOperation, this.a);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.jdField_a_of_type_Char != 0)
+    if (this.a.a != 0)
     {
-      if ((!paramBoolean) || (this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.jdField_a_of_type_Char != '=') || (!Utils.a(this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.jdField_a_of_type_JavaLangString)))
+      if ((!paramBoolean) || (this.a.a != '=') || (!Utils.a(this.a.d)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqEasysync2OpAssembler.a(this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation);
-        int i = this.jdField_a_of_type_Int;
+        this.c.a(this.a);
+        int i = this.b;
         if (i > 0)
         {
-          Operation localOperation = this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation;
-          localOperation.jdField_a_of_type_Int = i;
-          localOperation.b = 0;
-          this.jdField_a_of_type_ComTencentMobileqqEasysync2OpAssembler.a(localOperation);
-          this.jdField_a_of_type_Int = 0;
+          Operation localOperation = this.a;
+          localOperation.b = i;
+          localOperation.c = 0;
+          this.c.a(localOperation);
+          this.b = 0;
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.jdField_a_of_type_Char = '\000';
+      this.a.a = '\000';
     }
   }
   
@@ -73,20 +73,20 @@ public class MergingOpAssembler
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2OpAssembler.c();
-    Changeset.a(this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation);
+    this.c.c();
+    Changeset.a(this.a);
   }
   
   @NonNull
   public String toString()
   {
     a();
-    return this.jdField_a_of_type_ComTencentMobileqqEasysync2OpAssembler.toString();
+    return this.c.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.MergingOpAssembler
  * JD-Core Version:    0.7.0.1
  */

@@ -277,11 +277,13 @@ public class UploadTaskManager
     ((StringBuilder)localObject).append(this.mTaskList.size());
     ((StringBuilder)localObject).append(", Running:");
     ((StringBuilder)localObject).append(this.mRunningList.size());
-    ((StringBuilder)localObject).append(", network:");
+    ((StringBuilder)localObject).append(", networkAvailable:");
     ((StringBuilder)localObject).append(bool);
     UploadLog.i("UploadTaskManager", ((StringBuilder)localObject).toString());
     dumpAllTasksState();
-    if (!bool) {
+    if (!bool)
+    {
+      cancelAllTasks();
       return;
     }
     if (this.mRunningList.size() >= this.mMaxDispatchNum)
@@ -479,6 +481,59 @@ public class UploadTaskManager
     return null;
   }
   
+  public void onNetWorkConnectFail(SessionPool paramSessionPool, int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onNetWorkConnectFail:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" mTaskList:");
+    ((StringBuilder)localObject).append(this.mTaskList.size());
+    ((StringBuilder)localObject).append(" mRunningList:");
+    ((StringBuilder)localObject).append(this.mRunningList.size());
+    UploadLog.d("UploadTaskManager", ((StringBuilder)localObject).toString());
+    if (paramSessionPool.getPoolType() == Const.FileType.Log)
+    {
+      this.bStopAllLogTask = true;
+      clearAllLogTask();
+      return;
+    }
+    localObject = this.mTaskList.iterator();
+    AbstractUploadTask localAbstractUploadTask;
+    StringBuilder localStringBuilder;
+    while (((Iterator)localObject).hasNext())
+    {
+      localAbstractUploadTask = (AbstractUploadTask)((Iterator)localObject).next();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onNetWorkConnectFail getTaskType(task):");
+      localStringBuilder.append(getTaskType(localAbstractUploadTask));
+      localStringBuilder.append(" pool.getPoolType():");
+      localStringBuilder.append(paramSessionPool.getPoolType());
+      localStringBuilder.append(" task.getFileType():");
+      localStringBuilder.append(localAbstractUploadTask.getFileType());
+      UploadLog.d("UploadTaskManager", localStringBuilder.toString());
+      if ((getTaskType(localAbstractUploadTask) == paramSessionPool.getPoolType()) || ((localAbstractUploadTask instanceof BatchControlTask))) {
+        localAbstractUploadTask.onError(Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode(), Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getDesc());
+      }
+    }
+    localObject = this.mRunningList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      localAbstractUploadTask = (AbstractUploadTask)((Iterator)localObject).next();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onNetWorkConnectFail getTaskType(task):");
+      localStringBuilder.append(getTaskType(localAbstractUploadTask));
+      localStringBuilder.append(" pool.getPoolType():");
+      localStringBuilder.append(paramSessionPool.getPoolType());
+      localStringBuilder.append(" task.getFileType():");
+      localStringBuilder.append(localAbstractUploadTask.getFileType());
+      UploadLog.d("UploadTaskManager", localStringBuilder.toString());
+      if ((getTaskType(localAbstractUploadTask) == paramSessionPool.getPoolType()) || ((localAbstractUploadTask instanceof BatchControlTask))) {
+        localAbstractUploadTask.onError(Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode(), Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getDesc());
+      }
+    }
+    cancelAllTasks();
+  }
+  
   public void onSessionPoolError(SessionPool paramSessionPool, int paramInt)
   {
     UploadLog.d("UploadTaskManager", "no available sessions !");
@@ -611,6 +666,7 @@ public class UploadTaskManager
       {
         UploadLog.w("UploadTaskManager", "sendAsync network is not available");
         prepare(getTaskType(paramAbstractUploadTask));
+        paramAbstractUploadTask.onError(Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode(), Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getDesc());
         return false;
       }
       return this.mHandler.post(new UploadTaskManager.1(this));
@@ -619,7 +675,7 @@ public class UploadTaskManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.impl.UploadTaskManager
  * JD-Core Version:    0.7.0.1
  */

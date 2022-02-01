@@ -9,15 +9,15 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 
 final class GdtFeedbackModel$GdtFeedbackItemModel
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private String jdField_b_of_type_JavaLangString;
+  private String a;
+  private String b;
   private String c;
   private String d;
   private String e;
+  private int f;
+  private int g;
+  private Drawable h;
+  private Drawable i;
   
   private Drawable a(String paramString)
   {
@@ -30,7 +30,7 @@ final class GdtFeedbackModel$GdtFeedbackItemModel
     }
     catch (Exception localException)
     {
-      String str = GdtFeedbackModel.a();
+      String str = GdtFeedbackModel.e();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("gdtFeedbackItemDrawable url=");
       localStringBuilder.append(paramString);
@@ -43,7 +43,7 @@ final class GdtFeedbackModel$GdtFeedbackItemModel
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(this.jdField_a_of_type_JavaLangString);
+    this.h = a(this.a);
   }
   
   private void b()
@@ -54,18 +54,18 @@ final class GdtFeedbackModel$GdtFeedbackItemModel
     } else {
       localDrawable = null;
     }
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = localDrawable;
+    this.i = localDrawable;
   }
   
   private void c()
   {
     try
     {
-      GdtReporter.doCgiReport(this.e.replace("__ACT_TYPE__", String.valueOf(this.jdField_b_of_type_Int)));
+      GdtReporter.doCgiReport(this.e.replace("__ACT_TYPE__", String.valueOf(this.g)));
       label19:
-      String str = GdtFeedbackModel.a();
+      String str = GdtFeedbackModel.e();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.f);
       localStringBuilder.append(" is reported");
       AdLog.i(str, localStringBuilder.toString());
       return;
@@ -78,7 +78,7 @@ final class GdtFeedbackModel$GdtFeedbackItemModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.feedback.GdtFeedbackModel.GdtFeedbackItemModel
  * JD-Core Version:    0.7.0.1
  */

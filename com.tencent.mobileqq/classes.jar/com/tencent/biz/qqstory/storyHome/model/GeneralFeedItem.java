@@ -26,15 +26,15 @@ public class GeneralFeedItem
   public static GeneralFeedItem createFakeFeedItem(String paramString)
   {
     GeneralFeedItem localGeneralFeedItem = new GeneralFeedItem();
-    localGeneralFeedItem.feedId = makeFakeFeedId(QQStoryContext.a().b(), paramString);
+    localGeneralFeedItem.feedId = makeFakeFeedId(QQStoryContext.a().i(), paramString);
     localGeneralFeedItem.setDate(paramString);
-    localGeneralFeedItem.mUserUIItem = ((UserManager)SuperManager.a(2)).a();
+    localGeneralFeedItem.mUserUIItem = ((UserManager)SuperManager.a(2)).c();
     if (localGeneralFeedItem.mUserUIItem == null)
     {
       localGeneralFeedItem.mUserUIItem = new QQUserUIItem();
-      localGeneralFeedItem.mUserUIItem.uid = QQStoryContext.a().b();
-      localGeneralFeedItem.mUserUIItem.qq = PlayModeUtils.a().getCurrentAccountUin();
-      localGeneralFeedItem.mUserUIItem.nickName = PlayModeUtils.a().getCurrentNickname();
+      localGeneralFeedItem.mUserUIItem.uid = QQStoryContext.a().i();
+      localGeneralFeedItem.mUserUIItem.qq = PlayModeUtils.b().getCurrentAccountUin();
+      localGeneralFeedItem.mUserUIItem.nickName = PlayModeUtils.b().getCurrentNickname();
       paramString = localGeneralFeedItem.mUserUIItem;
       paramString.headUrl = "";
       SLog.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { paramString.toString() });
@@ -153,7 +153,7 @@ public class GeneralFeedItem
     if (this.mUserUIItem == null) {
       return false;
     }
-    return QQStoryContext.a().a(this.mUserUIItem.getUnionId());
+    return QQStoryContext.a().b(this.mUserUIItem.getUnionId());
   }
   
   protected void onCovertFromEntry()
@@ -163,9 +163,9 @@ public class GeneralFeedItem
     if (this.mUserUIItem == null)
     {
       this.mUserUIItem = new QQUserUIItem();
-      this.mUserUIItem.uid = QQStoryContext.a().b();
-      this.mUserUIItem.qq = PlayModeUtils.a().getCurrentAccountUin();
-      this.mUserUIItem.nickName = PlayModeUtils.a().getCurrentNickname();
+      this.mUserUIItem.uid = QQStoryContext.a().i();
+      this.mUserUIItem.qq = PlayModeUtils.b().getCurrentAccountUin();
+      this.mUserUIItem.nickName = PlayModeUtils.b().getCurrentNickname();
       QQUserUIItem localQQUserUIItem = this.mUserUIItem;
       localQQUserUIItem.headUrl = "";
       SLog.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { localQQUserUIItem.toString() });

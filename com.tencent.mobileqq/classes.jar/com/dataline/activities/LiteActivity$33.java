@@ -19,21 +19,21 @@ class LiteActivity$33
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    localDataLineHandler.b(113);
-    localDataLineHandler.a(116);
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.b.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    localDataLineHandler.e(113);
+    localDataLineHandler.d(116);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
       if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null)) {
-        DataLineReportUtil.f(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
+        DataLineReportUtil.f(this.b.app);
       }
       localArrayList.add(Long.valueOf(localDataLineMsgRecord.sessionid));
     }
-    localDataLineHandler.a(localArrayList);
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.notifyDataSetChanged();
+    localDataLineHandler.b(localArrayList);
+    this.b.m.notifyDataSetChanged();
     paramDialogInterface.dismiss();
   }
 }

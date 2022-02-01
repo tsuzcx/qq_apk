@@ -20,7 +20,7 @@ class BaseVideoView$TimeUpdateTimerTask
     {
       localObject = (BaseVideoView)((WeakReference)localObject).get();
       if (localObject != null) {
-        ((BaseVideoView)localObject).k();
+        ((BaseVideoView)localObject).l();
       }
     }
   }

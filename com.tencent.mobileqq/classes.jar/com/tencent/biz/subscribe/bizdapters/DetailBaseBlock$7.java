@@ -10,8 +10,8 @@ class DetailBaseBlock$7
   
   public void a(int paramInt)
   {
-    if (DetailBaseBlock.q(this.a) != null) {
-      DetailBaseBlock.r(this.a).runOnUiThread(new DetailBaseBlock.7.1(this));
+    if (DetailBaseBlock.t(this.a) != null) {
+      DetailBaseBlock.u(this.a).runOnUiThread(new DetailBaseBlock.7.1(this));
     }
   }
 }

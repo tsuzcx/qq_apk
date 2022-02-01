@@ -11,13 +11,13 @@ class QQProxyForQlink$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.a();
+    this.a.a();
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QQProxyForQlink.8
  * JD-Core Version:    0.7.0.1
  */

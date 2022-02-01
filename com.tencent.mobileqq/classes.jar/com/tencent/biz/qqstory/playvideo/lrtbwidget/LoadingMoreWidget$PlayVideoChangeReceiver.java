@@ -15,10 +15,10 @@ public class LoadingMoreWidget$PlayVideoChangeReceiver
   
   public void a(@NonNull LoadingMoreWidget paramLoadingMoreWidget, @NonNull PlayVideoChangeEvent paramPlayVideoChangeEvent)
   {
-    if (paramPlayVideoChangeEvent.a.isSuccess())
+    if (paramPlayVideoChangeEvent.g.isSuccess())
     {
       SLog.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramPlayVideoChangeEvent.toString());
-      paramLoadingMoreWidget.e();
+      paramLoadingMoreWidget.p();
     }
   }
   
@@ -29,7 +29,7 @@ public class LoadingMoreWidget$PlayVideoChangeReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.LoadingMoreWidget.PlayVideoChangeReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -67,7 +67,7 @@ public class CMShowSetPetStatusServlet
     Object localObject = new WebSSOAgent.UniSsoServerReqComm();
     ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
     ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.7.0");
+    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.8.17");
     paramIntent = new WebSSOAgent.UniSsoServerReq();
     paramIntent.comm.set((MessageMicro)localObject);
     localObject = new JSONObject();
@@ -91,7 +91,7 @@ public class CMShowSetPetStatusServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.CMShowSetPetStatusServlet
  * JD-Core Version:    0.7.0.1
  */

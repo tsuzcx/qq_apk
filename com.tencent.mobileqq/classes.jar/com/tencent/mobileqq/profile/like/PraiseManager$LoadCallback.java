@@ -10,27 +10,27 @@ public class PraiseManager$LoadCallback
   implements Runnable
 {
   public int a;
-  public String a;
   public int b;
+  public String c;
   
   public PraiseManager$LoadCallback(PraiseManager paramPraiseManager, int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public void run()
   {
     Object localObject2;
-    synchronized (this.this$0.jdField_a_of_type_JavaUtilList)
+    synchronized (this.this$0.d)
     {
-      boolean bool = this.this$0.jdField_a_of_type_JavaUtilList.isEmpty();
+      boolean bool = this.this$0.d.isEmpty();
       int i = 0;
       if (!bool)
       {
-        WeakReference[] arrayOfWeakReference = (WeakReference[])Array.newInstance(((WeakReference)this.this$0.jdField_a_of_type_JavaUtilList.get(0)).getClass(), this.this$0.jdField_a_of_type_JavaUtilList.size());
-        this.this$0.jdField_a_of_type_JavaUtilList.toArray(arrayOfWeakReference);
+        WeakReference[] arrayOfWeakReference = (WeakReference[])Array.newInstance(((WeakReference)this.this$0.d.get(0)).getClass(), this.this$0.d.size());
+        this.this$0.d.toArray(arrayOfWeakReference);
         if (arrayOfWeakReference != null) {
           try
           {
@@ -39,7 +39,7 @@ public class PraiseManager$LoadCallback
             {
               ??? = arrayOfWeakReference[i];
               if ((??? != null) && (???.get() != null)) {
-                ((PraiseManager.OnPraiseLoadListener)???.get()).a(this.jdField_a_of_type_Int, (PraiseInfo)this.this$0.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(this.jdField_a_of_type_Int)), this.b, this.jdField_a_of_type_JavaLangString);
+                ((PraiseManager.OnPraiseLoadListener)???.get()).a(this.a, (PraiseInfo)this.this$0.c.get(Integer.valueOf(this.a)), this.b, this.c);
               }
               i += 1;
             }
@@ -56,7 +56,7 @@ public class PraiseManager$LoadCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseManager.LoadCallback
  * JD-Core Version:    0.7.0.1
  */

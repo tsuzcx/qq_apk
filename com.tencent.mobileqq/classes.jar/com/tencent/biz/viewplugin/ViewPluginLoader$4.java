@@ -15,12 +15,12 @@ class ViewPluginLoader$4
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("downloadUpdate loaded json = ");
-      localStringBuilder.append(paramDownloadTask.c);
+      localStringBuilder.append(paramDownloadTask.h);
       localStringBuilder.append(" code = ");
-      localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Int);
+      localStringBuilder.append(paramDownloadTask.c);
       QLog.d("ViewPluginLoader", 2, localStringBuilder.toString());
     }
-    boolean bool = this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
+    boolean bool = this.d.a(this.a, this.b, this.c);
     if (QLog.isColorLevel())
     {
       paramDownloadTask = new StringBuilder();
@@ -28,12 +28,12 @@ class ViewPluginLoader$4
       paramDownloadTask.append(bool);
       QLog.d("ViewPluginLoader", 2, paramDownloadTask.toString());
     }
-    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
+    this.d.a();
   }
   
   public void onProgress(DownloadTask paramDownloadTask)
   {
-    int i = (int)(paramDownloadTask.jdField_a_of_type_Float * 100.0F);
+    int i = (int)(paramDownloadTask.l * 100.0F);
     if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel()))
     {
       paramDownloadTask = new StringBuilder();
@@ -45,7 +45,7 @@ class ViewPluginLoader$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.viewplugin.ViewPluginLoader.4
  * JD-Core Version:    0.7.0.1
  */

@@ -9,20 +9,11 @@ import mqq.app.AppRuntime;
 
 public abstract class RecordParams
 {
-  public static final int a;
-  private static RecordParams.RecorderParam jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam;
-  private static boolean jdField_a_of_type_Boolean;
-  public static final int b;
-  private static RecordParams.RecorderParam b;
-  
-  static
-  {
-    jdField_a_of_type_Int = QQAudioUtils.a[0];
-    jdField_b_of_type_Int = QQAudioUtils.a[2];
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam = new RecordParams.RecorderParam(jdField_b_of_type_Int, 16000, 1);
-    jdField_b_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam = new RecordParams.RecorderParam(jdField_b_of_type_Int, 16000, 1);
-  }
+  public static final int a = QQAudioUtils.a[0];
+  public static final int b = QQAudioUtils.a[2];
+  private static boolean c = false;
+  private static RecordParams.RecorderParam d = new RecordParams.RecorderParam(b, 16000, 1);
+  private static RecordParams.RecorderParam e = new RecordParams.RecorderParam(b, 16000, 1);
   
   public static byte a(int paramInt)
   {
@@ -33,11 +24,6 @@ public abstract class RecordParams
       }
     }
     return -1;
-  }
-  
-  public static int a()
-  {
-    return a().length;
   }
   
   /* Error */
@@ -60,15 +46,15 @@ public abstract class RecordParams
     //   16: astore 7
     //   18: aconst_null
     //   19: astore 9
-    //   21: new 45	java/io/FileInputStream
+    //   21: new 44	java/io/FileInputStream
     //   24: dup
     //   25: aload_0
-    //   26: invokespecial 48	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   26: invokespecial 47	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   29: astore_0
-    //   30: new 50	java/io/DataInputStream
+    //   30: new 49	java/io/DataInputStream
     //   33: dup
     //   34: aload_0
-    //   35: invokespecial 53	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   35: invokespecial 52	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   38: astore 6
     //   40: iload_3
     //   41: istore_2
@@ -79,25 +65,25 @@ public abstract class RecordParams
     //   49: istore_2
     //   50: aload 6
     //   52: aload 8
-    //   54: invokevirtual 57	java/io/DataInputStream:read	([B)I
+    //   54: invokevirtual 56	java/io/DataInputStream:read	([B)I
     //   57: aload 8
     //   59: arraylength
     //   60: if_icmpne +37 -> 97
     //   63: iload_3
     //   64: istore_2
     //   65: aload 8
-    //   67: invokestatic 60	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	([B)Z
+    //   67: invokestatic 59	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	([B)Z
     //   70: ifeq +5 -> 75
     //   73: iconst_1
     //   74: istore_1
     //   75: iload_1
     //   76: istore_2
     //   77: aload 6
-    //   79: invokevirtual 63	java/io/DataInputStream:close	()V
+    //   79: invokevirtual 62	java/io/DataInputStream:close	()V
     //   82: iload_1
     //   83: istore_2
     //   84: aload_0
-    //   85: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   85: invokevirtual 63	java/io/FileInputStream:close	()V
     //   88: aconst_null
     //   89: astore 6
     //   91: aload 9
@@ -108,11 +94,11 @@ public abstract class RecordParams
     //   100: aload_0
     //   101: ifnull +7 -> 108
     //   104: aload_0
-    //   105: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   105: invokevirtual 63	java/io/FileInputStream:close	()V
     //   108: aload 6
     //   110: ifnull +8 -> 118
     //   113: aload 6
-    //   115: invokevirtual 63	java/io/DataInputStream:close	()V
+    //   115: invokevirtual 62	java/io/DataInputStream:close	()V
     //   118: iload_1
     //   119: ireturn
     //   120: astore 8
@@ -157,15 +143,15 @@ public abstract class RecordParams
     //   192: iload 5
     //   194: istore_2
     //   195: aload 6
-    //   197: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   197: invokevirtual 66	java/lang/Exception:printStackTrace	()V
     //   200: aload 8
     //   202: ifnull +8 -> 210
     //   205: aload 8
-    //   207: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   207: invokevirtual 63	java/io/FileInputStream:close	()V
     //   210: aload_0
     //   211: ifnull +7 -> 218
     //   214: aload_0
-    //   215: invokevirtual 63	java/io/DataInputStream:close	()V
+    //   215: invokevirtual 62	java/io/DataInputStream:close	()V
     //   218: iload_2
     //   219: ireturn
     //   220: astore 9
@@ -178,11 +164,11 @@ public abstract class RecordParams
     //   232: aload 7
     //   234: ifnull +8 -> 242
     //   237: aload 7
-    //   239: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   239: invokevirtual 63	java/io/FileInputStream:close	()V
     //   242: aload 6
     //   244: ifnull +8 -> 252
     //   247: aload 6
-    //   249: invokevirtual 63	java/io/DataInputStream:close	()V
+    //   249: invokevirtual 62	java/io/DataInputStream:close	()V
     //   252: aload_0
     //   253: athrow
     //   254: astore_0
@@ -240,17 +226,6 @@ public abstract class RecordParams
     //   247	252	260	java/lang/Exception
   }
   
-  public static RecordParams.RecorderParam a(AppRuntime paramAppRuntime, boolean paramBoolean)
-  {
-    a(paramAppRuntime, false);
-    if (paramBoolean) {
-      paramAppRuntime = jdField_b_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam;
-    } else {
-      paramAppRuntime = jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam;
-    }
-    return new RecordParams.RecorderParam(paramAppRuntime.jdField_a_of_type_Int, paramAppRuntime.jdField_b_of_type_Int, paramAppRuntime.c);
-  }
-  
   private static String a(AppRuntime paramAppRuntime)
   {
     Object localObject = BaseApplication.getContext();
@@ -266,11 +241,6 @@ public abstract class RecordParams
       QLog.d("RecordParams", 2, ((StringBuilder)localObject).toString());
     }
     return paramAppRuntime;
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Boolean = false;
   }
   
   public static void a(AppRuntime paramAppRuntime, String paramString)
@@ -291,10 +261,10 @@ public abstract class RecordParams
   
   public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
-    if ((jdField_a_of_type_Boolean) && (!paramBoolean)) {
+    if ((c) && (!paramBoolean)) {
       return;
     }
-    jdField_a_of_type_Boolean = true;
+    c = true;
     if (QLog.isColorLevel()) {
       QLog.d("RecordParams", 2, "init: false");
     }
@@ -316,13 +286,13 @@ public abstract class RecordParams
           int i = Integer.valueOf(paramAppRuntime[0]).intValue();
           int j = Integer.valueOf(paramAppRuntime[1]).intValue();
           int k = Integer.valueOf(paramAppRuntime[2]).intValue();
-          jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam = new RecordParams.RecorderParam(QQAudioUtils.a[j], k, i);
+          d = new RecordParams.RecorderParam(QQAudioUtils.a[j], k, i);
           if (paramAppRuntime.length >= 6)
           {
             i = Integer.valueOf(paramAppRuntime[3]).intValue();
             j = Integer.valueOf(paramAppRuntime[4]).intValue();
             k = Integer.valueOf(paramAppRuntime[5]).intValue();
-            jdField_b_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam = new RecordParams.RecorderParam(QQAudioUtils.a[j], k, i);
+            e = new RecordParams.RecorderParam(QQAudioUtils.a[j], k, i);
           }
         }
       }
@@ -336,29 +306,53 @@ public abstract class RecordParams
     {
       paramAppRuntime = new StringBuilder();
       paramAppRuntime.append("init params: ");
-      paramAppRuntime.append(jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam.c);
+      paramAppRuntime.append(d.c);
       paramAppRuntime.append("-");
-      paramAppRuntime.append(jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam.jdField_a_of_type_Int);
+      paramAppRuntime.append(d.a);
       paramAppRuntime.append("-");
-      paramAppRuntime.append(jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam.jdField_b_of_type_Int);
+      paramAppRuntime.append(d.b);
       QLog.d("RecordParams", 2, paramAppRuntime.toString());
       paramAppRuntime = new StringBuilder();
       paramAppRuntime.append("init changer params: ");
-      paramAppRuntime.append(jdField_b_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam.c);
+      paramAppRuntime.append(e.c);
       paramAppRuntime.append("-");
-      paramAppRuntime.append(jdField_b_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam.jdField_a_of_type_Int);
+      paramAppRuntime.append(e.a);
       paramAppRuntime.append("-");
-      paramAppRuntime.append(jdField_b_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam.jdField_b_of_type_Int);
+      paramAppRuntime.append(e.b);
       QLog.d("RecordParams", 2, paramAppRuntime.toString());
     }
   }
   
   public static byte[] a()
   {
-    return a(0, jdField_a_of_type_Int);
+    return a(0, a);
   }
   
-  public static byte[] a(int paramInt)
+  public static byte[] a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 1) {
+      return b(paramInt2);
+    }
+    return "#!AMR\n".getBytes();
+  }
+  
+  public static int b()
+  {
+    return a().length;
+  }
+  
+  public static RecordParams.RecorderParam b(AppRuntime paramAppRuntime, boolean paramBoolean)
+  {
+    a(paramAppRuntime, false);
+    if (paramBoolean) {
+      paramAppRuntime = e;
+    } else {
+      paramAppRuntime = d;
+    }
+    return new RecordParams.RecorderParam(paramAppRuntime.a, paramAppRuntime.b, paramAppRuntime.c);
+  }
+  
+  public static byte[] b(int paramInt)
   {
     byte[] arrayOfByte = new byte[10];
     arrayOfByte[0] = a(paramInt);
@@ -366,17 +360,14 @@ public abstract class RecordParams
     return arrayOfByte;
   }
   
-  public static byte[] a(int paramInt1, int paramInt2)
+  public static void c()
   {
-    if (paramInt1 == 1) {
-      return a(paramInt2);
-    }
-    return "#!AMR\n".getBytes();
+    c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.RecordParams
  * JD-Core Version:    0.7.0.1
  */

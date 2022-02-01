@@ -3,6 +3,6 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:background="@drawable/bg_texture" android:layout_width="212.0dip" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
         <com.qqfav.widget.QfavSwipListView android:layout_gravity="center_horizontal" android:id="@id/gkk" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="16.0sp" android:textColor="@color/skin_dark_gray" android:gravity="center" android:id="@id/em7" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/ez_" android:layout_below="@id/gkk" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/skin_dark_gray" android:gravity="center" android:id="@id/em7" android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/ez_" android:layout_below="@id/gkk" />
     </RelativeLayout>
 </RelativeLayout>

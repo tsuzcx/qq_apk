@@ -16,12 +16,12 @@ class ArkAppQQModule$24
     if (localBaseApplication == null) {
       return;
     }
-    QQToast.a(localBaseApplication, localBaseApplication.getString(2131690170), 2000).a();
+    QQToast.makeText(localBaseApplication, localBaseApplication.getString(2131887069), 2000).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.24
  * JD-Core Version:    0.7.0.1
  */

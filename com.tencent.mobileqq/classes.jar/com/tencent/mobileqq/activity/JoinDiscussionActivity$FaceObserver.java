@@ -15,13 +15,13 @@ class JoinDiscussionActivity$FaceObserver
   
   protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_JavaUtilList != null))
+    if ((paramBoolean) && (this.a.j != null))
     {
       if (this.a.app.getCurrentAccountUin().equals(paramString)) {
         return;
       }
       int j = 0;
-      Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject = this.a.j.iterator();
       do
       {
         i = j;
@@ -30,16 +30,16 @@ class JoinDiscussionActivity$FaceObserver
         }
       } while (!String.valueOf(((DiscussMemberInfo)((Iterator)localObject).next()).Uin).equals(paramString));
       int i = 1;
-      if ((i != 0) && (!this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString)))
+      if ((i != 0) && (!this.a.p.contains(paramString)))
       {
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        this.a.p.add(paramString);
         localObject = new StringBuilder();
         JoinDiscussionActivity localJoinDiscussionActivity = this.a;
-        ((StringBuilder)localObject).append(localJoinDiscussionActivity.f);
+        ((StringBuilder)localObject).append(localJoinDiscussionActivity.o);
         ((StringBuilder)localObject).append(paramString);
         ((StringBuilder)localObject).append(";");
-        localJoinDiscussionActivity.f = ((StringBuilder)localObject).toString();
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() == this.a.b) {
+        localJoinDiscussionActivity.o = ((StringBuilder)localObject).toString();
+        if (this.a.p.size() == this.a.n) {
           ThreadManager.post(new JoinDiscussionActivity.FaceObserver.1(this), 8, null, true);
         }
       }
@@ -48,7 +48,7 @@ class JoinDiscussionActivity$FaceObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity.FaceObserver
  * JD-Core Version:    0.7.0.1
  */

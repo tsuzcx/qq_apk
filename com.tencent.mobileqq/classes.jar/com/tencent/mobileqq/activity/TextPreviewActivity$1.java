@@ -31,38 +31,38 @@ class TextPreviewActivity$1
         default: 
           return;
         case 20: 
-          this.a.a();
+          this.a.b();
           return;
         case 19: 
           if (!(paramMessage.obj instanceof Bitmap)) {
             break;
           }
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)paramMessage.obj);
+          this.a.t.setImageBitmap((Bitmap)paramMessage.obj);
           return;
         case 18: 
           if (!(paramMessage.obj instanceof Drawable)) {
             break;
           }
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
+          this.a.t.setImageDrawable((Drawable)paramMessage.obj);
           return;
         }
       }
       else
       {
-        if (this.a.jdField_a_of_type_JavaLangCharSequence != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(this.a.jdField_a_of_type_JavaLangCharSequence);
+        if (this.a.ad != null) {
+          this.a.o.setText(this.a.ad);
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a.setMovementMethod(ContainerView.NoSelLinkMovementMethod.a());
+        this.a.o.c.setMovementMethod(ContainerView.NoSelLinkMovementMethod.a());
       }
     }
     else {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqVasFontApiIFontManagerService.getFontNameDrawable(this.a.e));
+      this.a.t.setImageDrawable(this.a.D.getFontNameDrawable(this.a.F));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.1
  * JD-Core Version:    0.7.0.1
  */

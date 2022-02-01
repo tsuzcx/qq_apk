@@ -27,53 +27,14 @@ import mqq.app.AppRuntime;
 
 public class ArkAiDictUpdateMgr
 {
-  private static final char[] jdField_a_of_type_ArrayOfChar = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
-  private final AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private static final char[] d = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+  private final AppRuntime a;
   private volatile boolean b = false;
+  private volatile boolean c = false;
   
   public ArkAiDictUpdateMgr(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-  }
-  
-  private static int a()
-  {
-    Date localDate = new Date();
-    return Integer.parseInt(String.format(Locale.CHINA, "%04d%02d%02d%02d", new Object[] { Integer.valueOf(localDate.getYear() + 1900), Integer.valueOf(localDate.getMonth() + 1), Integer.valueOf(localDate.getDate()), Integer.valueOf(localDate.getHours()) }));
-  }
-  
-  public static String a()
-  {
-    Object localObject1 = c();
-    if (localObject1 == null) {
-      return null;
-    }
-    Iterator localIterator = ((DictConfig)localObject1).jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject2 = (ConditionalDict)localIterator.next();
-      if (localObject2 != null)
-      {
-        ConditionalDict.Condition localCondition = ((ConditionalDict)localObject2).jdField_a_of_type_ComTencentMobileqqArkDictConditionalDict$Condition;
-        if (localCondition != null)
-        {
-          localObject2 = ((ConditionalDict)localObject2).jdField_a_of_type_ComTencentMobileqqArkDictDictConfig;
-          if ((localObject2 != null) && (a(localCondition)))
-          {
-            localObject2 = b((DictConfig)localObject2);
-            if (localObject2 != null)
-            {
-              QLog.i("ArkDict.Update", 1, String.format("getEffectDictIdentifier, use condition dict, dict-id=%s, condition=%s", new Object[] { localObject2, localCondition.toString() }));
-              return localObject2;
-            }
-          }
-        }
-      }
-    }
-    localObject1 = b((DictConfig)localObject1);
-    QLog.i("ArkDict.Update", 1, String.format("getEffectDictIdentifier, use base dict, dict-id=%s", new Object[] { localObject1 }));
-    return localObject1;
+    this.a = paramAppRuntime;
   }
   
   private static String a(String paramString)
@@ -94,8 +55,8 @@ public class ArkAiDictUpdateMgr
       while (i < j)
       {
         int k = paramArrayOfByte[i];
-        localStringBuilder.append(jdField_a_of_type_ArrayOfChar[(k >> 4 & 0xF)]);
-        localStringBuilder.append(jdField_a_of_type_ArrayOfChar[(k & 0xF)]);
+        localStringBuilder.append(d[(k >> 4 & 0xF)]);
+        localStringBuilder.append(d[(k & 0xF)]);
         i += 1;
       }
     }
@@ -110,13 +71,13 @@ public class ArkAiDictUpdateMgr
       paramIUpdateDictCallback.a(false);
       return;
     }
-    if (!b(paramDictConfig2))
+    if (!k(paramDictConfig2))
     {
       QLog.i("ArkDict.Update", 1, "updateWordDict, canUpdateDictAtCurrentNetType is false");
       paramIUpdateDictCallback.a(false);
       return;
     }
-    String str1 = b(paramDictConfig2);
+    String str1 = h(paramDictConfig2);
     if (TextUtils.isEmpty(str1))
     {
       QLog.i("ArkDict.Update", 1, "updateWordDict, empty new dict id");
@@ -130,19 +91,19 @@ public class ArkAiDictUpdateMgr
       paramIUpdateDictCallback.a(false);
       return;
     }
-    Object localObject = b(paramDictConfig2);
+    Object localObject = g(paramDictConfig2);
     if ((localObject != null) && (((Map)localObject).size() != 0))
     {
-      String str3 = b(paramDictConfig1);
-      paramDictConfig2 = b(paramDictConfig1);
+      String str3 = h(paramDictConfig1);
+      paramDictConfig2 = g(paramDictConfig1);
       paramDictConfig1 = new ArkAiDictUpdateMgr.UpdateState(null);
-      paramDictConfig1.jdField_a_of_type_Int = ((Map)localObject).size();
-      paramDictConfig1.jdField_a_of_type_Boolean = true;
+      paramDictConfig1.a = ((Map)localObject).size();
+      paramDictConfig1.b = true;
       localObject = ((Map)localObject).values().iterator();
       while (((Iterator)localObject).hasNext())
       {
         DictInfo localDictInfo = (DictInfo)((Iterator)localObject).next();
-        a(str2, str3, (DictInfo)paramDictConfig2.get(localDictInfo.a), localDictInfo, new ArkAiDictUpdateMgr.2(this, paramDictConfig1, localDictInfo, str2, paramIUpdateDictCallback, str1));
+        a(str2, str3, (DictInfo)paramDictConfig2.get(localDictInfo.b), localDictInfo, new ArkAiDictUpdateMgr.2(this, paramDictConfig1, localDictInfo, str2, paramIUpdateDictCallback, str1));
       }
       return;
     }
@@ -152,12 +113,12 @@ public class ArkAiDictUpdateMgr
   
   private void a(String paramString, DictInfo paramDictInfo, ArkAiDictUpdateMgr.IUpdateDictCallback paramIUpdateDictCallback)
   {
-    a(paramDictInfo.a, paramDictInfo.jdField_b_of_type_JavaLangString, new ArkAiDictUpdateMgr.6(this, paramDictInfo, paramString, paramIUpdateDictCallback));
+    a(paramDictInfo.b, paramDictInfo.c, new ArkAiDictUpdateMgr.6(this, paramDictInfo, paramString, paramIUpdateDictCallback));
   }
   
   private void a(String paramString1, String paramString2, ArkAiDictUpdateMgr.IDownloadDictFileCallback paramIDownloadDictFileCallback)
   {
-    paramString1 = ArkPredownloader.a(this.jdField_a_of_type_MqqAppAppRuntime, paramString1, paramString2);
+    paramString1 = ArkPredownloader.a(this.a, paramString1, paramString2);
     paramString1.a(new ArkAiDictUpdateMgr.8(this, paramString2, paramIDownloadDictFileCallback, paramString1));
   }
   
@@ -170,15 +131,15 @@ public class ArkAiDictUpdateMgr
     boolean bool = false;
     if (localDictInfo == null)
     {
-      QLog.i("ArkDict.Update", 1, String.format("updateDict, local not exists, full update, name=%s", new Object[] { paramDictInfo2.a }));
+      QLog.i("ArkDict.Update", 1, String.format("updateDict, local not exists, full update, name=%s", new Object[] { paramDictInfo2.b }));
       a(paramString1, paramDictInfo2, new ArkAiDictUpdateMgr.3(this, paramDictInfo2, paramIUpdateDictCallback));
       return;
     }
-    if (localDictInfo.d.equals(paramDictInfo2.d))
+    if (localDictInfo.e.equals(paramDictInfo2.e))
     {
-      QLog.i("ArkDict.Update", 1, String.format("updateDict, file not change, copy from origin, name=%s", new Object[] { paramDictInfo2.a }));
-      paramString2 = b(paramString2, localDictInfo.a);
-      paramString1 = String.format("%s/%s", new Object[] { paramString1, paramDictInfo2.a });
+      QLog.i("ArkDict.Update", 1, String.format("updateDict, file not change, copy from origin, name=%s", new Object[] { paramDictInfo2.b }));
+      paramString2 = c(paramString2, localDictInfo.b);
+      paramString1 = String.format("%s/%s", new Object[] { paramString1, paramDictInfo2.b });
       if (!FileUtils.copyFile(paramString2, paramString1)) {
         QLog.i("ArkDict.Update", 1, String.format("updateDict, copy file fail, %s->%s", new Object[] { paramString2, paramString1 }));
       } else {
@@ -187,13 +148,13 @@ public class ArkAiDictUpdateMgr
       paramIUpdateDictCallback.a(bool);
       return;
     }
-    if ((paramDictInfo2.b()) && (localDictInfo.d.equals(paramDictInfo2.g)))
+    if ((paramDictInfo2.b()) && (localDictInfo.e.equals(paramDictInfo2.h)))
     {
-      QLog.i("ArkDict.Update", 1, String.format("updateDict, incremental update, name=%s", new Object[] { paramDictInfo2.a }));
+      QLog.i("ArkDict.Update", 1, String.format("updateDict, incremental update, name=%s", new Object[] { paramDictInfo2.b }));
       b(paramString1, paramString2, localDictInfo, paramDictInfo2, new ArkAiDictUpdateMgr.4(this, paramDictInfo2, paramIUpdateDictCallback, paramString1));
       return;
     }
-    QLog.i("ArkDict.Update", 1, String.format("updateDict, full update, name=%s", new Object[] { paramDictInfo2.a }));
+    QLog.i("ArkDict.Update", 1, String.format("updateDict, full update, name=%s", new Object[] { paramDictInfo2.b }));
     a(paramString1, paramDictInfo2, new ArkAiDictUpdateMgr.5(this, paramIUpdateDictCallback));
   }
   
@@ -209,7 +170,7 @@ public class ArkAiDictUpdateMgr
     {
       int i = Integer.parseInt(arrayOfString[0]);
       int j = Integer.parseInt(arrayOfString[1]);
-      int k = a();
+      int k = f();
       if ((i > k) || (k > j)) {
         break label82;
       }
@@ -225,45 +186,12 @@ public class ArkAiDictUpdateMgr
     return false;
   }
   
-  private boolean a(DictConfig paramDictConfig)
-  {
-    if (paramDictConfig == null)
-    {
-      QLog.i("ArkDict.Update", 1, "checkLocalDictIntegrity, config is empty, return");
-      return false;
-    }
-    String str = b(paramDictConfig);
-    paramDictConfig = b(paramDictConfig);
-    if (paramDictConfig == null)
-    {
-      QLog.i("ArkDict.Update", 1, "checkLocalDictIntegrity, local dict list is empty");
-      return true;
-    }
-    Iterator localIterator = paramDictConfig.values().iterator();
-    while (localIterator.hasNext()) {
-      if (!a(str, (DictInfo)localIterator.next()))
-      {
-        i = 1;
-        break label87;
-      }
-    }
-    int i = 0;
-    label87:
-    if (i == 0)
-    {
-      QLog.i("ArkDict.Update", 1, String.format("checkLocalDictIntegrity, all files check ok, no update, dict-id=%s", new Object[] { str }));
-      return true;
-    }
-    QLog.i("ArkDict.Update", 1, String.format(Locale.CHINA, "checkLocalDictIntegrity, %d of %d files need update", new Object[] { Integer.valueOf(i), Integer.valueOf(paramDictConfig.size()) }));
-    return false;
-  }
-  
   private static boolean a(String paramString, DictInfo paramDictInfo)
   {
     if (paramDictInfo == null) {
       return false;
     }
-    return b(b(paramString, paramDictInfo.a), paramDictInfo.d);
+    return d(c(paramString, paramDictInfo.b), paramDictInfo.e);
   }
   
   /* Error */
@@ -273,7 +201,7 @@ public class ArkAiDictUpdateMgr
     //   0: aload_0
     //   1: ifnull +220 -> 221
     //   4: aload_1
-    //   5: invokestatic 196	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   5: invokestatic 108	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   8: ifeq +5 -> 13
     //   11: iconst_0
     //   12: ireturn
@@ -281,36 +209,36 @@ public class ArkAiDictUpdateMgr
     //   14: astore 5
     //   16: aconst_null
     //   17: astore_2
-    //   18: new 355	java/io/FileOutputStream
+    //   18: new 300	java/io/FileOutputStream
     //   21: dup
     //   22: aload_1
-    //   23: invokespecial 358	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   23: invokespecial 303	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   26: astore_3
     //   27: aload_3
     //   28: aload_0
-    //   29: invokevirtual 362	java/io/FileOutputStream:write	([B)V
+    //   29: invokevirtual 307	java/io/FileOutputStream:write	([B)V
     //   32: aload_3
-    //   33: invokevirtual 365	java/io/FileOutputStream:close	()V
+    //   33: invokevirtual 310	java/io/FileOutputStream:close	()V
     //   36: iconst_1
     //   37: ireturn
     //   38: astore_0
-    //   39: ldc 125
+    //   39: ldc 79
     //   41: iconst_1
-    //   42: getstatic 50	java/util/Locale:CHINA	Ljava/util/Locale;
-    //   45: ldc_w 367
+    //   42: getstatic 286	java/util/Locale:CHINA	Ljava/util/Locale;
+    //   45: ldc_w 312
     //   48: iconst_2
     //   49: anewarray 4	java/lang/Object
     //   52: dup
     //   53: iconst_0
     //   54: aload_0
-    //   55: invokevirtual 370	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   55: invokevirtual 315	java/io/IOException:getMessage	()Ljava/lang/String;
     //   58: aastore
     //   59: dup
     //   60: iconst_1
     //   61: aload_1
     //   62: aastore
-    //   63: invokestatic 76	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   66: invokestatic 139	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   63: invokestatic 291	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   66: invokestatic 87	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   69: iconst_1
     //   70: ireturn
     //   71: astore_0
@@ -328,78 +256,78 @@ public class ArkAiDictUpdateMgr
     //   92: astore_3
     //   93: aload_3
     //   94: astore_2
-    //   95: ldc 125
+    //   95: ldc 79
     //   97: iconst_1
-    //   98: getstatic 50	java/util/Locale:CHINA	Ljava/util/Locale;
-    //   101: ldc_w 372
+    //   98: getstatic 286	java/util/Locale:CHINA	Ljava/util/Locale;
+    //   101: ldc_w 317
     //   104: iconst_3
     //   105: anewarray 4	java/lang/Object
     //   108: dup
     //   109: iconst_0
     //   110: aload 4
-    //   112: invokevirtual 370	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   112: invokevirtual 315	java/io/IOException:getMessage	()Ljava/lang/String;
     //   115: aastore
     //   116: dup
     //   117: iconst_1
     //   118: aload_0
     //   119: arraylength
-    //   120: invokestatic 61	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   120: invokestatic 321	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   123: aastore
     //   124: dup
     //   125: iconst_2
     //   126: aload_1
     //   127: aastore
-    //   128: invokestatic 76	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   131: invokestatic 139	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   128: invokestatic 291	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   131: invokestatic 87	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   134: aload_3
     //   135: ifnull +40 -> 175
     //   138: aload_3
-    //   139: invokevirtual 365	java/io/FileOutputStream:close	()V
+    //   139: invokevirtual 310	java/io/FileOutputStream:close	()V
     //   142: iconst_0
     //   143: ireturn
     //   144: astore_0
-    //   145: ldc 125
+    //   145: ldc 79
     //   147: iconst_1
-    //   148: getstatic 50	java/util/Locale:CHINA	Ljava/util/Locale;
-    //   151: ldc_w 367
+    //   148: getstatic 286	java/util/Locale:CHINA	Ljava/util/Locale;
+    //   151: ldc_w 312
     //   154: iconst_2
     //   155: anewarray 4	java/lang/Object
     //   158: dup
     //   159: iconst_0
     //   160: aload_0
-    //   161: invokevirtual 370	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   161: invokevirtual 315	java/io/IOException:getMessage	()Ljava/lang/String;
     //   164: aastore
     //   165: dup
     //   166: iconst_1
     //   167: aload_1
     //   168: aastore
-    //   169: invokestatic 76	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   172: invokestatic 139	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   169: invokestatic 291	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   172: invokestatic 87	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   175: iconst_0
     //   176: ireturn
     //   177: aload_2
     //   178: ifnull +41 -> 219
     //   181: aload_2
-    //   182: invokevirtual 365	java/io/FileOutputStream:close	()V
+    //   182: invokevirtual 310	java/io/FileOutputStream:close	()V
     //   185: goto +34 -> 219
     //   188: astore_2
-    //   189: ldc 125
+    //   189: ldc 79
     //   191: iconst_1
-    //   192: getstatic 50	java/util/Locale:CHINA	Ljava/util/Locale;
-    //   195: ldc_w 367
+    //   192: getstatic 286	java/util/Locale:CHINA	Ljava/util/Locale;
+    //   195: ldc_w 312
     //   198: iconst_2
     //   199: anewarray 4	java/lang/Object
     //   202: dup
     //   203: iconst_0
     //   204: aload_2
-    //   205: invokevirtual 370	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   205: invokevirtual 315	java/io/IOException:getMessage	()Ljava/lang/String;
     //   208: aastore
     //   209: dup
     //   210: iconst_1
     //   211: aload_1
     //   212: aastore
-    //   213: invokestatic 76	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   216: invokestatic 139	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   213: invokestatic 291	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   216: invokestatic 87	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   219: aload_0
     //   220: athrow
     //   221: iconst_0
@@ -428,21 +356,37 @@ public class ArkAiDictUpdateMgr
     //   181	185	188	java/io/IOException
   }
   
-  private static String b(DictConfig paramDictConfig)
+  public static String b()
   {
-    if (paramDictConfig == null) {
+    Object localObject1 = e();
+    if (localObject1 == null) {
       return null;
     }
-    String str = paramDictConfig.c;
-    paramDictConfig = paramDictConfig.jdField_b_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(str))
+    Iterator localIterator = ((DictConfig)localObject1).g.iterator();
+    while (localIterator.hasNext())
     {
-      if (TextUtils.isEmpty(paramDictConfig)) {
-        return null;
+      Object localObject2 = (ConditionalDict)localIterator.next();
+      if (localObject2 != null)
+      {
+        ConditionalDict.Condition localCondition = ((ConditionalDict)localObject2).b;
+        if (localCondition != null)
+        {
+          localObject2 = ((ConditionalDict)localObject2).a;
+          if ((localObject2 != null) && (a(localCondition)))
+          {
+            localObject2 = h((DictConfig)localObject2);
+            if (localObject2 != null)
+            {
+              QLog.i("ArkDict.Update", 1, String.format("getEffectDictIdentifier, use condition dict, dict-id=%s, condition=%s", new Object[] { localObject2, localCondition.toString() }));
+              return localObject2;
+            }
+          }
+        }
       }
-      return String.format("%s-%s", new Object[] { str, paramDictConfig });
     }
-    return null;
+    localObject1 = h((DictConfig)localObject1);
+    QLog.i("ArkDict.Update", 1, String.format("getEffectDictIdentifier, use base dict, dict-id=%s", new Object[] { localObject1 }));
+    return localObject1;
   }
   
   private static String b(String paramString)
@@ -459,78 +403,55 @@ public class ArkAiDictUpdateMgr
     return paramString;
   }
   
-  private static String b(String paramString1, String paramString2)
+  private void b(String paramString1, String paramString2, DictInfo paramDictInfo1, DictInfo paramDictInfo2, ArkAiDictUpdateMgr.IUpdateDictCallback paramIUpdateDictCallback)
+  {
+    a(paramDictInfo2.b, paramDictInfo2.f, new ArkAiDictUpdateMgr.7(this, paramDictInfo2, paramString2, paramDictInfo1, paramString1, paramIUpdateDictCallback));
+  }
+  
+  private static String c(String paramString1, String paramString2)
   {
     return String.format("%s/%s", new Object[] { a(paramString1), paramString2 });
   }
   
-  private static Map<String, DictInfo> b(DictConfig paramDictConfig)
+  private static boolean c(byte[] paramArrayOfByte, String paramString)
   {
-    if (paramDictConfig == null) {
-      return new HashMap();
-    }
-    Object localObject = paramDictConfig.a;
-    if (localObject == null)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      QLog.i("ArkDict.Update", 1, "getDictInfoFromConfig, 'word_dict_list' field not found");
-      return new HashMap();
-    }
-    paramDictConfig = new HashMap();
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      DictInfo localDictInfo = (DictInfo)((Iterator)localObject).next();
-      if (localDictInfo != null) {
-        paramDictConfig.put(localDictInfo.a, localDictInfo);
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      try
+      {
+        boolean bool = a(MessageDigest.getInstance("MD5").digest(paramArrayOfByte)).equalsIgnoreCase(paramString);
+        return bool;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        QLog.i("ArkDict.Update", 1, String.format("checkDictMd5, fail compute buffer md5, msg=%s", new Object[] { paramArrayOfByte.getMessage() }));
       }
     }
-    return paramDictConfig;
-  }
-  
-  private void b(String paramString1, String paramString2, DictInfo paramDictInfo1, DictInfo paramDictInfo2, ArkAiDictUpdateMgr.IUpdateDictCallback paramIUpdateDictCallback)
-  {
-    a(paramDictInfo2.a, paramDictInfo2.e, new ArkAiDictUpdateMgr.7(this, paramDictInfo2, paramString2, paramDictInfo1, paramString1, paramIUpdateDictCallback));
-  }
-  
-  private static boolean b(DictConfig paramDictConfig)
-  {
-    if (paramDictConfig == null) {
-      return false;
-    }
-    paramDictConfig = paramDictConfig.e;
-    if ((!TextUtils.isEmpty(paramDictConfig)) && (!paramDictConfig.equalsIgnoreCase("wifi")))
-    {
-      QLog.i("ArkDict.Update", 1, String.format("getNetType, netType in not WIFI.", new Object[0]));
-      return true;
-    }
-    if ((AppNetConnInfo.isNetSupport()) && (AppNetConnInfo.isWifiConn()))
-    {
-      QLog.i("ArkDict.Update", 1, String.format("getNetType, invalid dict info, netType=%s", new Object[] { paramDictConfig }));
-      return true;
-    }
-    QLog.i("ArkDict.Update", 1, String.format("getNetType, not judge net Type.", new Object[0]));
     return false;
   }
   
   /* Error */
-  private static boolean b(String paramString1, String paramString2)
+  private static boolean d(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 196	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 108	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifne +197 -> 201
     //   7: aload_1
-    //   8: invokestatic 196	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   8: invokestatic 108	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   11: ifeq +5 -> 16
     //   14: iconst_0
     //   15: ireturn
-    //   16: new 395	java/io/File
+    //   16: new 365	java/io/File
     //   19: dup
     //   20: aload_0
-    //   21: invokespecial 396	java/io/File:<init>	(Ljava/lang/String;)V
+    //   21: invokespecial 366	java/io/File:<init>	(Ljava/lang/String;)V
     //   24: astore 8
     //   26: aload 8
-    //   28: invokevirtual 453	java/io/File:isFile	()Z
+    //   28: invokevirtual 417	java/io/File:isFile	()Z
     //   31: ifne +5 -> 36
     //   34: iconst_0
     //   35: ireturn
@@ -543,43 +464,43 @@ public class ArkAiDictUpdateMgr
     //   47: astore 4
     //   49: aload 4
     //   51: astore_0
-    //   52: ldc_w 455
-    //   55: invokestatic 461	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   52: ldc_w 393
+    //   55: invokestatic 399	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   58: astore 7
     //   60: aload 4
     //   62: astore_0
-    //   63: new 463	java/io/FileInputStream
+    //   63: new 419	java/io/FileInputStream
     //   66: dup
     //   67: aload 8
-    //   69: invokespecial 466	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   69: invokespecial 422	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   72: astore 4
     //   74: aload 4
     //   76: aload 6
-    //   78: invokevirtual 470	java/io/FileInputStream:read	([B)I
+    //   78: invokevirtual 426	java/io/FileInputStream:read	([B)I
     //   81: istore_2
     //   82: iload_2
     //   83: ifgt +34 -> 117
     //   86: aload 7
-    //   88: invokevirtual 474	java/security/MessageDigest:digest	()[B
-    //   91: invokestatic 476	com/tencent/mobileqq/ark/dict/ArkAiDictUpdateMgr:a	([B)Ljava/lang/String;
+    //   88: invokevirtual 429	java/security/MessageDigest:digest	()[B
+    //   91: invokestatic 405	com/tencent/mobileqq/ark/dict/ArkAiDictUpdateMgr:a	([B)Ljava/lang/String;
     //   94: aload_1
-    //   95: invokevirtual 434	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   95: invokevirtual 409	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   98: istore_3
     //   99: iload_3
     //   100: ifeq +10 -> 110
     //   103: aload 4
-    //   105: invokevirtual 477	java/io/FileInputStream:close	()V
+    //   105: invokevirtual 430	java/io/FileInputStream:close	()V
     //   108: iconst_1
     //   109: ireturn
     //   110: aload 4
-    //   112: invokevirtual 477	java/io/FileInputStream:close	()V
+    //   112: invokevirtual 430	java/io/FileInputStream:close	()V
     //   115: iconst_0
     //   116: ireturn
     //   117: aload 7
     //   119: aload 6
     //   121: iconst_0
     //   122: iload_2
-    //   123: invokevirtual 481	java/security/MessageDigest:update	([BII)V
+    //   123: invokevirtual 434	java/security/MessageDigest:update	([BII)V
     //   126: goto -52 -> 74
     //   129: astore_1
     //   130: aload 4
@@ -598,28 +519,28 @@ public class ArkAiDictUpdateMgr
     //   154: astore_1
     //   155: aload_1
     //   156: astore_0
-    //   157: ldc 125
+    //   157: ldc 79
     //   159: iconst_1
-    //   160: ldc_w 483
+    //   160: ldc_w 436
     //   163: iconst_1
     //   164: anewarray 4	java/lang/Object
     //   167: dup
     //   168: iconst_0
     //   169: aload 4
-    //   171: invokevirtual 484	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   171: invokevirtual 412	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   174: aastore
-    //   175: invokestatic 133	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   178: invokestatic 139	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   175: invokestatic 120	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   178: invokestatic 87	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   181: aload_1
     //   182: ifnull +7 -> 189
     //   185: aload_1
-    //   186: invokevirtual 477	java/io/FileInputStream:close	()V
+    //   186: invokevirtual 430	java/io/FileInputStream:close	()V
     //   189: iconst_0
     //   190: ireturn
     //   191: aload_0
     //   192: ifnull +7 -> 199
     //   195: aload_0
-    //   196: invokevirtual 477	java/io/FileInputStream:close	()V
+    //   196: invokevirtual 430	java/io/FileInputStream:close	()V
     //   199: aload_1
     //   200: athrow
     //   201: iconst_0
@@ -666,7 +587,7 @@ public class ArkAiDictUpdateMgr
     //   195	199	212	java/io/IOException
   }
   
-  private static DictConfig c()
+  private static DictConfig e()
   {
     Object localObject = BaseApplication.getContext().getSharedPreferences("SP_DICT_INFO_KEY", 0).getString("ArkAILocalDictConfig", "");
     if (TextUtils.isEmpty((CharSequence)localObject))
@@ -686,39 +607,7 @@ public class ArkAiDictUpdateMgr
     return null;
   }
   
-  private static Map<String, DictConfig> c(DictConfig paramDictConfig)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramDictConfig == null)
-    {
-      QLog.i("ArkDict.Update", 1, "getDictGroupList,aIDictConfig is null");
-      return localHashMap;
-    }
-    Object localObject1 = b(paramDictConfig);
-    if (localObject1 != null) {
-      localHashMap.put(localObject1, paramDictConfig);
-    }
-    paramDictConfig = paramDictConfig.jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (paramDictConfig.hasNext())
-    {
-      Object localObject2 = (ConditionalDict)paramDictConfig.next();
-      if (localObject2 != null)
-      {
-        localObject1 = ((ConditionalDict)localObject2).jdField_a_of_type_ComTencentMobileqqArkDictConditionalDict$Condition;
-        localObject2 = ((ConditionalDict)localObject2).jdField_a_of_type_ComTencentMobileqqArkDictDictConfig;
-        if ((localObject1 != null) && (localObject2 != null))
-        {
-          localObject1 = b((DictConfig)localObject2);
-          if (localObject1 != null) {
-            localHashMap.put(localObject1, localObject2);
-          }
-        }
-      }
-    }
-    return localHashMap;
-  }
-  
-  private static void c(DictConfig paramDictConfig)
+  private static void e(DictConfig paramDictConfig)
   {
     if (paramDictConfig == null)
     {
@@ -731,7 +620,7 @@ public class ArkAiDictUpdateMgr
     localEditor.apply();
   }
   
-  private static boolean c(String paramString1, String paramString2)
+  private static boolean e(String paramString1, String paramString2)
   {
     String str = String.format(Locale.CHINA, "%s-%d", new Object[] { paramString1, Long.valueOf(System.currentTimeMillis()) });
     if (FileUtils.rename(paramString1, str)) {
@@ -746,45 +635,20 @@ public class ArkAiDictUpdateMgr
     return true;
   }
   
-  private static boolean c(byte[] paramArrayOfByte, String paramString)
+  private static int f()
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return false;
-      }
-      try
-      {
-        boolean bool = a(MessageDigest.getInstance("MD5").digest(paramArrayOfByte)).equalsIgnoreCase(paramString);
-        return bool;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        QLog.i("ArkDict.Update", 1, String.format("checkDictMd5, fail compute buffer md5, msg=%s", new Object[] { paramArrayOfByte.getMessage() }));
-      }
-    }
-    return false;
+    Date localDate = new Date();
+    return Integer.parseInt(String.format(Locale.CHINA, "%04d%02d%02d%02d", new Object[] { Integer.valueOf(localDate.getYear() + 1900), Integer.valueOf(localDate.getMonth() + 1), Integer.valueOf(localDate.getDate()), Integer.valueOf(localDate.getHours()) }));
   }
   
-  private static DictConfig d()
-  {
-    ArkAIDictConfBean localArkAIDictConfBean = (ArkAIDictConfBean)ArkConfProcessor.a(ArkAIDictConfBean.class);
-    if (localArkAIDictConfBean == null)
-    {
-      QLog.i("ArkDict.Update", 1, "getRemoteDictConfig, config string is empty");
-      return null;
-    }
-    return localArkAIDictConfBean.a();
-  }
-  
-  private static void d(DictConfig paramDictConfig)
+  private static void f(DictConfig paramDictConfig)
   {
     if (paramDictConfig == null)
     {
       QLog.i("ArkDict.Update", 1, "deleteUnusedDict, localDictConfig is null");
       return;
     }
-    paramDictConfig = c(paramDictConfig);
+    paramDictConfig = j(paramDictConfig);
     String str1 = ArkAiDictMgr.a();
     String[] arrayOfString = new File(str1).list();
     if (arrayOfString != null)
@@ -808,6 +672,142 @@ public class ArkAiDictUpdateMgr
     }
   }
   
+  private static DictConfig g()
+  {
+    ArkAIDictConfBean localArkAIDictConfBean = (ArkAIDictConfBean)ArkConfProcessor.a(ArkAIDictConfBean.class);
+    if (localArkAIDictConfBean == null)
+    {
+      QLog.i("ArkDict.Update", 1, "getRemoteDictConfig, config string is empty");
+      return null;
+    }
+    return localArkAIDictConfBean.b();
+  }
+  
+  private static Map<String, DictInfo> g(DictConfig paramDictConfig)
+  {
+    if (paramDictConfig == null) {
+      return new HashMap();
+    }
+    Object localObject = paramDictConfig.f;
+    if (localObject == null)
+    {
+      QLog.i("ArkDict.Update", 1, "getDictInfoFromConfig, 'word_dict_list' field not found");
+      return new HashMap();
+    }
+    paramDictConfig = new HashMap();
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      DictInfo localDictInfo = (DictInfo)((Iterator)localObject).next();
+      if (localDictInfo != null) {
+        paramDictConfig.put(localDictInfo.b, localDictInfo);
+      }
+    }
+    return paramDictConfig;
+  }
+  
+  private static String h(DictConfig paramDictConfig)
+  {
+    if (paramDictConfig == null) {
+      return null;
+    }
+    String str = paramDictConfig.c;
+    paramDictConfig = paramDictConfig.b;
+    if (!TextUtils.isEmpty(str))
+    {
+      if (TextUtils.isEmpty(paramDictConfig)) {
+        return null;
+      }
+      return String.format("%s-%s", new Object[] { str, paramDictConfig });
+    }
+    return null;
+  }
+  
+  private boolean i(DictConfig paramDictConfig)
+  {
+    if (paramDictConfig == null)
+    {
+      QLog.i("ArkDict.Update", 1, "checkLocalDictIntegrity, config is empty, return");
+      return false;
+    }
+    String str = h(paramDictConfig);
+    paramDictConfig = g(paramDictConfig);
+    if (paramDictConfig == null)
+    {
+      QLog.i("ArkDict.Update", 1, "checkLocalDictIntegrity, local dict list is empty");
+      return true;
+    }
+    Iterator localIterator = paramDictConfig.values().iterator();
+    while (localIterator.hasNext()) {
+      if (!a(str, (DictInfo)localIterator.next()))
+      {
+        i = 1;
+        break label87;
+      }
+    }
+    int i = 0;
+    label87:
+    if (i == 0)
+    {
+      QLog.i("ArkDict.Update", 1, String.format("checkLocalDictIntegrity, all files check ok, no update, dict-id=%s", new Object[] { str }));
+      return true;
+    }
+    QLog.i("ArkDict.Update", 1, String.format(Locale.CHINA, "checkLocalDictIntegrity, %d of %d files need update", new Object[] { Integer.valueOf(i), Integer.valueOf(paramDictConfig.size()) }));
+    return false;
+  }
+  
+  private static Map<String, DictConfig> j(DictConfig paramDictConfig)
+  {
+    HashMap localHashMap = new HashMap();
+    if (paramDictConfig == null)
+    {
+      QLog.i("ArkDict.Update", 1, "getDictGroupList,aIDictConfig is null");
+      return localHashMap;
+    }
+    Object localObject1 = h(paramDictConfig);
+    if (localObject1 != null) {
+      localHashMap.put(localObject1, paramDictConfig);
+    }
+    paramDictConfig = paramDictConfig.g.iterator();
+    while (paramDictConfig.hasNext())
+    {
+      Object localObject2 = (ConditionalDict)paramDictConfig.next();
+      if (localObject2 != null)
+      {
+        localObject1 = ((ConditionalDict)localObject2).b;
+        localObject2 = ((ConditionalDict)localObject2).a;
+        if ((localObject1 != null) && (localObject2 != null))
+        {
+          localObject1 = h((DictConfig)localObject2);
+          if (localObject1 != null) {
+            localHashMap.put(localObject1, localObject2);
+          }
+        }
+      }
+    }
+    return localHashMap;
+  }
+  
+  private static boolean k(DictConfig paramDictConfig)
+  {
+    if (paramDictConfig == null) {
+      return false;
+    }
+    paramDictConfig = paramDictConfig.e;
+    if ((!TextUtils.isEmpty(paramDictConfig)) && (!paramDictConfig.equalsIgnoreCase("wifi")))
+    {
+      QLog.i("ArkDict.Update", 1, String.format("getNetType, netType in not WIFI.", new Object[0]));
+      return true;
+    }
+    if ((AppNetConnInfo.isNetSupport()) && (AppNetConnInfo.isWifiConn()))
+    {
+      QLog.i("ArkDict.Update", 1, String.format("getNetType, invalid dict info, netType=%s", new Object[] { paramDictConfig }));
+      return true;
+    }
+    QLog.i("ArkDict.Update", 1, String.format("getNetType, not judge net Type.", new Object[0]));
+    return false;
+  }
+  
   public void a()
   {
     if (TestSupport.a())
@@ -821,7 +821,7 @@ public class ArkAiDictUpdateMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkAiDictUpdateMgr
  * JD-Core Version:    0.7.0.1
  */

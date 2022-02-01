@@ -22,13 +22,13 @@ class WSGridPageFragment$3
       WSMonitorUtil.a(this.a.getActivity(), "weishi_recommend_list");
     }
     if (RecyclerViewHelper.a(paramRecyclerView)) {
-      ((WSGridPageContract.Presenter)this.a.b()).i();
+      ((WSGridPageContract.Presenter)this.a.aO_()).i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridPageFragment.3
  * JD-Core Version:    0.7.0.1
  */

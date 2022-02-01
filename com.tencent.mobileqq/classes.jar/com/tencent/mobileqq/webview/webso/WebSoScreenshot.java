@@ -21,7 +21,7 @@ public class WebSoScreenshot
   
   static Drawable a(String paramString)
   {
-    String str = WebSoUtils.b(paramString);
+    String str = WebSoUtils.e(paramString);
     if (!TextUtils.isEmpty(str))
     {
       if (!new File(str).exists()) {
@@ -63,13 +63,13 @@ public class WebSoScreenshot
   
   public static void a(Activity paramActivity, String paramString)
   {
-    if (QVipSDKProcessor.c().c <= 0) {
+    if (QVipSDKProcessor.e().c <= 0) {
       return;
     }
     paramString = a(paramString);
     if (paramString != null)
     {
-      paramActivity = paramActivity.findViewById(2131370699);
+      paramActivity = paramActivity.findViewById(2131437976);
       if (paramActivity != null)
       {
         Drawable localDrawable = paramActivity.getBackground();
@@ -195,7 +195,7 @@ public class WebSoScreenshot
     //   206: astore 4
     //   208: aload_0
     //   209: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   212: invokestatic 207	com/tencent/mobileqq/webview/webso/WebSoUtils:a	(Ljava/lang/String;)V
+    //   212: invokestatic 208	com/tencent/mobileqq/webview/webso/WebSoUtils:m	(Ljava/lang/String;)V
     //   215: aload 7
     //   217: astore_0
     //   218: aload 5
@@ -203,8 +203,8 @@ public class WebSoScreenshot
     //   221: aload 6
     //   223: astore 4
     //   225: aload 9
-    //   227: ldc 209
-    //   229: invokevirtual 215	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   227: ldc 210
+    //   229: invokevirtual 216	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   232: ifne +65 -> 297
     //   235: aload 5
     //   237: astore_3
@@ -216,20 +216,20 @@ public class WebSoScreenshot
     //   249: astore_3
     //   250: aload 6
     //   252: astore 4
-    //   254: new 217	java/io/FileOutputStream
+    //   254: new 218	java/io/FileOutputStream
     //   257: dup
     //   258: aload_1
-    //   259: invokestatic 23	com/tencent/mobileqq/webview/webso/WebSoUtils:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   262: invokespecial 218	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   259: invokestatic 23	com/tencent/mobileqq/webview/webso/WebSoUtils:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   262: invokespecial 219	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   265: astore_0
     //   266: aload 8
-    //   268: getstatic 224	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   268: getstatic 225	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   271: bipush 70
     //   273: aload_0
-    //   274: invokevirtual 228	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   274: invokevirtual 229	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   277: pop
     //   278: aload_0
-    //   279: invokevirtual 231	java/io/FileOutputStream:close	()V
+    //   279: invokevirtual 232	java/io/FileOutputStream:close	()V
     //   282: goto +15 -> 297
     //   285: astore_1
     //   286: aload_0
@@ -244,17 +244,17 @@ public class WebSoScreenshot
     //   299: aload_0
     //   300: astore 4
     //   302: aload 8
-    //   304: invokevirtual 234	android/graphics/Bitmap:recycle	()V
+    //   304: invokevirtual 235	android/graphics/Bitmap:recycle	()V
     //   307: aload_0
     //   308: astore_3
     //   309: aload_0
     //   310: astore 4
-    //   312: ldc 236
-    //   314: invokestatic 207	com/tencent/mobileqq/webview/webso/WebSoUtils:a	(Ljava/lang/String;)V
+    //   312: ldc 237
+    //   314: invokestatic 208	com/tencent/mobileqq/webview/webso/WebSoUtils:m	(Ljava/lang/String;)V
     //   317: aload_0
     //   318: ifnull +35 -> 353
     //   321: aload_0
-    //   322: invokevirtual 231	java/io/FileOutputStream:close	()V
+    //   322: invokevirtual 232	java/io/FileOutputStream:close	()V
     //   325: return
     //   326: astore_0
     //   327: goto +27 -> 354
@@ -263,10 +263,10 @@ public class WebSoScreenshot
     //   333: astore_0
     //   334: aload_0
     //   335: astore_3
-    //   336: ldc 238
+    //   336: ldc 239
     //   338: iconst_1
     //   339: aload_1
-    //   340: invokevirtual 241	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   340: invokevirtual 242	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   343: invokestatic 247	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   346: aload_0
     //   347: ifnull +6 -> 353
@@ -275,7 +275,7 @@ public class WebSoScreenshot
     //   354: aload_3
     //   355: ifnull +7 -> 362
     //   358: aload_3
-    //   359: invokevirtual 231	java/io/FileOutputStream:close	()V
+    //   359: invokevirtual 232	java/io/FileOutputStream:close	()V
     //   362: goto +5 -> 367
     //   365: aload_0
     //   366: athrow
@@ -341,7 +341,7 @@ public class WebSoScreenshot
   
   public static void a(CustomWebView paramCustomWebView)
   {
-    if (QVipSDKProcessor.c().c <= 0) {
+    if (QVipSDKProcessor.e().c <= 0) {
       return;
     }
     paramCustomWebView.post(new WebSoScreenshot.2(paramCustomWebView));
@@ -349,7 +349,7 @@ public class WebSoScreenshot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoScreenshot
  * JD-Core Version:    0.7.0.1
  */

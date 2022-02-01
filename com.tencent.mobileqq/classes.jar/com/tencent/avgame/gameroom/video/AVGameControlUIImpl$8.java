@@ -9,7 +9,7 @@ class AVGameControlUIImpl$8
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvgameQavAudioAudioRouter.a(this.jdField_a_of_type_Int);
+    this.a.a(this.b);
   }
 }
 

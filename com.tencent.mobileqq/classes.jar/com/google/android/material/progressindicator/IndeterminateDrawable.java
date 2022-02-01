@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 public final class IndeterminateDrawable<S extends BaseProgressIndicatorSpec>
   extends DrawableWithAnimatedVisibilityChange
 {
-  private DrawingDelegate<S> jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate;
-  private IndeterminateAnimatorDelegate<ObjectAnimator> jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateAnimatorDelegate;
+  private DrawingDelegate<S> e;
+  private IndeterminateAnimatorDelegate<ObjectAnimator> f;
   
   IndeterminateDrawable(@NonNull Context paramContext, @NonNull BaseProgressIndicatorSpec paramBaseProgressIndicatorSpec, @NonNull DrawingDelegate<S> paramDrawingDelegate, @NonNull IndeterminateAnimatorDelegate<ObjectAnimator> paramIndeterminateAnimatorDelegate)
   {
@@ -32,7 +32,7 @@ public final class IndeterminateDrawable<S extends BaseProgressIndicatorSpec>
   {
     LinearDrawingDelegate localLinearDrawingDelegate = new LinearDrawingDelegate(paramLinearProgressIndicatorSpec);
     Object localObject;
-    if (paramLinearProgressIndicatorSpec.f == 0) {
+    if (paramLinearProgressIndicatorSpec.g == 0) {
       localObject = new LinearIndeterminateContiguousAnimatorDelegate(paramLinearProgressIndicatorSpec);
     } else {
       localObject = new LinearIndeterminateDisjointAnimatorDelegate(paramContext, paramLinearProgressIndicatorSpec);
@@ -41,26 +41,20 @@ public final class IndeterminateDrawable<S extends BaseProgressIndicatorSpec>
   }
   
   @NonNull
-  DrawingDelegate<S> a()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate;
-  }
-  
-  @NonNull
   IndeterminateAnimatorDelegate<ObjectAnimator> a()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateAnimatorDelegate;
+    return this.f;
   }
   
   void a(@NonNull DrawingDelegate<S> paramDrawingDelegate)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate = paramDrawingDelegate;
+    this.e = paramDrawingDelegate;
     paramDrawingDelegate.a(this);
   }
   
   void a(@NonNull IndeterminateAnimatorDelegate<ObjectAnimator> paramIndeterminateAnimatorDelegate)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateAnimatorDelegate = paramIndeterminateAnimatorDelegate;
+    this.f = paramIndeterminateAnimatorDelegate;
     paramIndeterminateAnimatorDelegate.a(this);
   }
   
@@ -68,11 +62,11 @@ public final class IndeterminateDrawable<S extends BaseProgressIndicatorSpec>
   {
     paramBoolean2 = super.a(paramBoolean1, paramBoolean2, paramBoolean3);
     if (!isRunning()) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateAnimatorDelegate.b();
+      this.f.b();
     }
-    float f = this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorAnimatorDurationScaleProvider.a(this.jdField_a_of_type_AndroidContentContext.getContentResolver());
-    if ((paramBoolean1) && ((paramBoolean3) || ((Build.VERSION.SDK_INT <= 21) && (f > 0.0F)))) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateAnimatorDelegate.a();
+    float f1 = this.c.a(this.a.getContentResolver());
+    if ((paramBoolean1) && ((paramBoolean3) || ((Build.VERSION.SDK_INT <= 21) && (f1 > 0.0F)))) {
+      this.f.a();
     }
     return paramBoolean2;
   }
@@ -86,35 +80,41 @@ public final class IndeterminateDrawable<S extends BaseProgressIndicatorSpec>
         return;
       }
       paramCanvas.save();
-      this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate.b(paramCanvas, a());
-      this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.e.b(paramCanvas, e());
+      this.e.a(paramCanvas, this.d);
       int i = 0;
-      while (i < this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateAnimatorDelegate.jdField_a_of_type_ArrayOfInt.length)
+      while (i < this.f.d.length)
       {
-        localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate;
-        Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-        float[] arrayOfFloat = this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateAnimatorDelegate.jdField_a_of_type_ArrayOfFloat;
+        localObject = this.e;
+        Paint localPaint = this.d;
+        float[] arrayOfFloat = this.f.c;
         int j = i * 2;
-        ((DrawingDelegate)localObject).a(paramCanvas, localPaint, arrayOfFloat[j], this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateAnimatorDelegate.jdField_a_of_type_ArrayOfFloat[(j + 1)], this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateAnimatorDelegate.jdField_a_of_type_ArrayOfInt[i]);
+        ((DrawingDelegate)localObject).a(paramCanvas, localPaint, arrayOfFloat[j], this.f.c[(j + 1)], this.f.d[i]);
         i += 1;
       }
       paramCanvas.restore();
     }
   }
   
+  @NonNull
+  DrawingDelegate<S> f()
+  {
+    return this.e;
+  }
+  
   public int getIntrinsicHeight()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate.b();
+    return this.e.b();
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate.a();
+    return this.e.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.IndeterminateDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -18,9 +18,9 @@ public class HongBaoPanelHelperImpl
   private HongBaoPanel getPanel()
   {
     if (this.panelManager == null) {
-      this.panelManager = this.chatPie.a();
+      this.panelManager = this.chatPie.c();
     }
-    return (HongBaoPanel)this.panelManager.b(10);
+    return (HongBaoPanel)this.panelManager.d(10);
   }
   
   private void onDestroy()
@@ -68,7 +68,7 @@ public class HongBaoPanelHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanelHelperImpl
  * JD-Core Version:    0.7.0.1
  */

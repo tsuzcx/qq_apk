@@ -75,12 +75,12 @@ public class QQNotifyIPCModule
   
   public void queryHasSetNotify(Bundle paramBundle1, Bundle paramBundle2)
   {
-    callbackResult(QQNotifyUtils.a(paramBundle2), EIPCResult.createResult(0, paramBundle1));
+    callbackResult(QQNotifyUtils.b(paramBundle2), EIPCResult.createResult(0, paramBundle1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifyIPCModule
  * JD-Core Version:    0.7.0.1
  */

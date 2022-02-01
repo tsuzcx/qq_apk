@@ -13,7 +13,7 @@ class RelativeFeedsAdapter$RelativeFeedVH$2$2
   
   public void a(boolean paramBoolean)
   {
-    String str2 = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+    String str2 = this.a.b.poster.id.get();
     String str1;
     if (paramBoolean) {
       str1 = "cancel";
@@ -21,9 +21,9 @@ class RelativeFeedsAdapter$RelativeFeedVH$2$2
       str1 = "dislike";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.a.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeFeedVH.getAdapterPosition());
+    localStringBuilder.append(this.a.c.getAdapterPosition());
     localStringBuilder.append("");
-    VSReporter.a(str2, "auth_feeds", str1, 0, 0, new String[] { "", localStringBuilder.toString(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+    VSReporter.a(str2, "auth_feeds", str1, 0, 0, new String[] { "", localStringBuilder.toString(), this.a.b.poster.nick.get(), this.a.b.title.get() });
   }
 }
 

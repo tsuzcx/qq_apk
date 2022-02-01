@@ -14,10 +14,10 @@ public class PrinterDefaultActivity
 {
   private void a()
   {
-    ((TextView)findViewById(2131369202)).setVisibility(8);
-    TextView localTextView = (TextView)findViewById(2131369233);
+    ((TextView)findViewById(2131436180)).setVisibility(8);
+    TextView localTextView = (TextView)findViewById(2131436211);
     localTextView.setVisibility(0);
-    localTextView.setText(HardCodeUtil.a(2131708414));
+    localTextView.setText(HardCodeUtil.a(2131906200));
     localTextView.setOnClickListener(new PrinterDefaultActivity.1(this));
   }
   
@@ -33,9 +33,9 @@ public class PrinterDefaultActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.getWindow().setBackgroundDrawableResource(2131165419);
-    setContentView(2131559020);
-    setTitle(2131691351);
+    super.getWindow().setBackgroundDrawableResource(2131165716);
+    setContentView(2131624654);
+    setTitle(2131888306);
     super.getWindow().setBackgroundDrawable(null);
     a();
     return true;

@@ -26,7 +26,7 @@ public class TroopDragonKingAnimEntryConfigProcessor
       QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "onParsed");
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return TroopDragonKingAnimEntryConfig.a(paramArrayOfQConfItem[0].a);
+      return TroopDragonKingAnimEntryConfig.a(paramArrayOfQConfItem[0].b);
     }
     return null;
   }
@@ -73,7 +73,7 @@ public class TroopDragonKingAnimEntryConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.config.TroopDragonKingAnimEntryConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

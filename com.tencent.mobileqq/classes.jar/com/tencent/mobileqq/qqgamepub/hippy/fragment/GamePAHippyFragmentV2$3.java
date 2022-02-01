@@ -1,29 +1,33 @@
 package com.tencent.mobileqq.qqgamepub.hippy.fragment;
 
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.qqgamepub.mvp.model.buisness.QQGameHippyModel;
+import com.tencent.mobileqq.qqgamepub.mvp.presenter.buisness.QQGameHippyPresenterV2;
 
 class GamePAHippyFragmentV2$3
-  implements View.OnClickListener
+  implements Runnable
 {
-  GamePAHippyFragmentV2$3(GamePAHippyFragmentV2 paramGamePAHippyFragmentV2) {}
+  GamePAHippyFragmentV2$3(GamePAHippyFragmentV2 paramGamePAHippyFragmentV2, int paramInt, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(this.a.getActivity(), "/pubaccount/detail");
-    localActivityURIRequest.extra().putString("uin", "2747277822");
-    localActivityURIRequest.extra().putBoolean("fromQGamePub", true);
-    QRoute.startUri(localActivityURIRequest, null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    try
+    {
+      QQGameHippyModel localQQGameHippyModel = (QQGameHippyModel)((QQGameHippyPresenterV2)this.this$0.a).b();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("");
+      localQQGameHippyModel.b(localStringBuilder.toString(), this.b);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.hippy.fragment.GamePAHippyFragmentV2.3
  * JD-Core Version:    0.7.0.1
  */

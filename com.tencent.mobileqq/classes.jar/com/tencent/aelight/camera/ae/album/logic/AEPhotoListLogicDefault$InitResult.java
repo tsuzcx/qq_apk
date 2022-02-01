@@ -2,16 +2,16 @@ package com.tencent.aelight.camera.ae.album.logic;
 
 class AEPhotoListLogicDefault$InitResult
 {
-  private int jdField_a_of_type_Int;
+  private int b;
   
   public AEPhotoListLogicDefault$InitResult(AEPhotoListLogicDefault paramAEPhotoListLogicDefault, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public String toString()
   {
-    switch (this.jdField_a_of_type_Int)
+    switch (this.b)
     {
     case -8: 
     default: 
@@ -38,7 +38,7 @@ class AEPhotoListLogicDefault$InitResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicDefault.InitResult
  * JD-Core Version:    0.7.0.1
  */

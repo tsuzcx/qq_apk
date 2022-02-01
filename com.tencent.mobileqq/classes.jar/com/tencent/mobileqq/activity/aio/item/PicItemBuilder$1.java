@@ -12,7 +12,7 @@ class PicItemBuilder$1
   
   public void a(int paramInt, PicResult paramPicResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
+    this.a.setProgressVisable(false);
     if (QLog.isColorLevel()) {
       QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
     }
@@ -27,7 +27,7 @@ class PicItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PicItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

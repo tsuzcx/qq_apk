@@ -13,6 +13,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,7 @@ import com.tencent.biz.pubaccount.weishi_new.WSRecommendAdapter.ItemViewExposeLi
 import com.tencent.biz.pubaccount.weishi_new.WSStaggeredGridLayoutManager;
 import com.tencent.biz.pubaccount.weishi_new.WSUserAuthDialog;
 import com.tencent.biz.pubaccount.weishi_new.WeishiActivityHelper;
+import com.tencent.biz.pubaccount.weishi_new.combo.WSComboExpHelper;
 import com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpABTestManager;
 import com.tencent.biz.pubaccount.weishi_new.download.wsapp.WSFallKeyPicMonitor;
 import com.tencent.biz.pubaccount.weishi_new.drama.WSDramaPageFragment;
@@ -37,8 +40,10 @@ import com.tencent.biz.pubaccount.weishi_new.drama.data.WSFollowDramaItemData;
 import com.tencent.biz.pubaccount.weishi_new.event.FollowEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.LikeRspEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSAddCommentEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSChangeItemViewVisibilityEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSDramaFollowEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSDramaWatchRecordEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSaveFirstItemLocationCoverEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleEventBus;
 import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleEventReceiver;
@@ -46,12 +51,14 @@ import com.tencent.biz.pubaccount.weishi_new.net.RspHeaderBean;
 import com.tencent.biz.pubaccount.weishi_new.recommend.adapter.WSFollowDramaListAdapter;
 import com.tencent.biz.pubaccount.weishi_new.recommend.adapter.WSFollowDramaListAdapter.ItemViewExposedListener;
 import com.tencent.biz.pubaccount.weishi_new.recommend.data.WSExposeDataManager;
+import com.tencent.biz.pubaccount.weishi_new.recommend.holder.AbsWSGridBaseHolder;
 import com.tencent.biz.pubaccount.weishi_new.recommend.presenter.WSGridPresenterFactory;
 import com.tencent.biz.pubaccount.weishi_new.recommend.utils.WSGridEventUtils;
 import com.tencent.biz.pubaccount.weishi_new.recommend.utils.WSGridPageUtils;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898;
 import com.tencent.biz.pubaccount.weishi_new.ui.OnTabSelectedListener;
+import com.tencent.biz.pubaccount.weishi_new.ui.videotransition.WSVideoTransitionAnimUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WSMonitorUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WSNoticeJumpUtils;
@@ -72,83 +79,120 @@ public class WSGridPageFragment
   extends WSBaseFragment<WSGridPageContract.View, WSGridPageContract.Presenter>
   implements WSSimpleEventReceiver, WSGridPageContract.View, OnTabSelectedListener
 {
-  private stNotificationRsp jdField_a_of_type_UserGrowthStNotificationRsp;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private final RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new WSGridPageFragment.3(this);
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RichBlockDialog jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog;
-  private final WSGuardInterfaceWrapper jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSGuardInterfaceWrapper = new WSGridPageFragment.6(this);
-  private final WSRecommendAdapter.ItemViewExposeListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter$ItemViewExposeListener = new WSGridPageFragment.4(this);
-  private WSRecommendAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
-  private WSGridItemExpose jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendWSGridItemExpose;
-  private WSFollowDramaListAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendAdapterWSFollowDramaListAdapter;
-  private WSXRecyclerView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView;
-  private WeiShiNoticeView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView;
-  private final XRecyclerView.RefreshCallback jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback = new WSGridPageFragment.2(this);
-  private String jdField_a_of_type_JavaLangString;
-  private View jdField_b_of_type_AndroidViewView;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean c;
-  private boolean d = false;
-  private boolean e = false;
-  private boolean f = false;
-  private boolean g;
-  private boolean h;
-  private boolean i;
-  private boolean j = false;
-  private boolean k;
+  private boolean A;
+  private String B;
+  private String C;
+  private final XRecyclerView.RefreshCallback D = new WSGridPageFragment.2(this);
+  private final RecyclerView.OnScrollListener E = new WSGridPageFragment.3(this);
+  private final WSRecommendAdapter.ItemViewExposeListener F = new WSGridPageFragment.4(this);
+  private final WSGuardInterfaceWrapper G = new WSGridPageFragment.6(this);
+  private ViewGroup f;
+  private WSXRecyclerView g;
+  private LinearLayout h;
+  private WeiShiNoticeView i;
+  private View j;
+  private WSGridItemExpose k;
+  private stNotificationRsp l;
+  private RichBlockDialog m;
+  private WSRecommendAdapter n;
+  private Context o;
+  private View p;
+  private WSFollowDramaListAdapter q;
+  private RecyclerView r;
+  private boolean s;
+  private boolean t = false;
+  private boolean u = false;
+  private boolean v = false;
+  private boolean w;
+  private boolean x;
+  private boolean y;
+  private boolean z = false;
   
-  private static Intent a(String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, boolean paramBoolean3)
+  private void C()
   {
-    Intent localIntent = new Intent();
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("key_is_multi_sub_tab_page", paramBoolean1);
-    localBundle.putBoolean("key_context_feed_show_musk", paramBoolean3);
-    localBundle.putString("key_sub_tab_id", paramString1);
-    localBundle.putBoolean("key_can_init_data", paramBoolean2);
-    localBundle.putString("key_context_feed_id", paramString2);
-    localIntent.putExtras(localBundle);
-    return localIntent;
+    this.i = ((WeiShiNoticeView)LayoutInflater.from(this.o).inflate(2131626068, null));
+    this.i.setOnClickListener(new WSGridPageFragment.1(this));
   }
   
-  private View a()
+  private void D()
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
-    if (localView != null) {
-      return localView;
+    if (this.l == null) {
+      return;
     }
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560002, null);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376872));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), 0, false));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendAdapterWSFollowDramaListAdapter = new WSFollowDramaListAdapter(getContext());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendAdapterWSFollowDramaListAdapter.setOnItemClickListener(new WSGridPageFragment.8(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendAdapterWSFollowDramaListAdapter.a(a());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendAdapterWSFollowDramaListAdapter);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new WSItemDecoration());
-    return this.jdField_b_of_type_AndroidViewView;
+    int i1 = this.i.getType();
+    WSNoticeJumpUtils.a(this.o, this.l, this.B);
+    WSReportDc00898.a(112, i1, this.l.cid);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSGridPageFragment.java][noticeViewClick] mSubTabId:");
+    localStringBuilder.append(this.B);
+    localStringBuilder.append(", jumpUrl");
+    localStringBuilder.append(this.l.jump_url);
+    WSLog.e("WSGridPageFragmentLog", localStringBuilder.toString());
+    o();
   }
   
-  private WSFollowDramaListAdapter.ItemViewExposedListener a()
+  private void E()
   {
-    return new WSGridPageFragment.9(this);
+    this.g = ((WSXRecyclerView)this.f.findViewById(2131444517));
+    a(WSExpABTestManager.a().o());
+    this.g.setRefreshCallback(this.D);
+    this.g.getRecyclerView().addOnScrollListener(this.E);
+    RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = this.g.getRecyclerView();
+    this.n = new WSRecommendAdapter(getActivity(), localRecyclerViewWithHeaderFooter, this.B, this.C);
+    this.n.a(this.A);
+    localRecyclerViewWithHeaderFooter.setAdapter(this.n);
+    this.n.a(this.F);
+    WSStaggeredGridLayoutManager localWSStaggeredGridLayoutManager = new WSStaggeredGridLayoutManager(2, 1);
+    localWSStaggeredGridLayoutManager.setGapStrategy(0);
+    localRecyclerViewWithHeaderFooter.setLayoutManager(localWSStaggeredGridLayoutManager);
+    localRecyclerViewWithHeaderFooter.setItemAnimator(null);
+    localRecyclerViewWithHeaderFooter.addItemDecoration(new WSItemDecoration());
   }
   
-  public static BaseFragment a(String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, boolean paramBoolean3)
+  private void F()
   {
-    WSGridPageFragment localWSGridPageFragment = new WSGridPageFragment();
-    localWSGridPageFragment.setArguments(a(paramString1, paramBoolean1, paramBoolean2, paramString2, paramBoolean3).getExtras());
-    return localWSGridPageFragment;
+    if (this.s)
+    {
+      this.s = false;
+      return;
+    }
+    if (!this.t) {
+      this.t = true;
+    }
+    ((WSGridPageContract.Presenter)aO_()).a(true, false);
+    if (!this.v) {
+      ((WSGridPageContract.Presenter)aO_()).a("");
+    }
+    if (((WSGridPageContract.Presenter)this.b).k()) {
+      ((WSGridPageContract.Presenter)this.b).b();
+    }
   }
   
-  private RecyclerViewHeaderViewAdapter a()
+  private void G()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView;
+    ((WSGridPageContract.Presenter)aO_()).b(this.t, this.u);
+  }
+  
+  private void H()
+  {
+    if (GuardManager.sInstance != null) {
+      GuardManager.sInstance.registerCallBack(this.G);
+    }
+  }
+  
+  private void I()
+  {
+    if (GuardManager.sInstance != null) {
+      GuardManager.sInstance.unregisterCallback(this.G);
+    }
+  }
+  
+  private RecyclerViewHeaderViewAdapter J()
+  {
+    Object localObject = this.g;
     if ((localObject != null) && (((WSXRecyclerView)localObject).getRecyclerView() != null))
     {
-      localObject = (RecyclerViewHeaderViewAdapter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getRecyclerView().getAdapter();
+      localObject = (RecyclerViewHeaderViewAdapter)this.g.getRecyclerView().getAdapter();
       if (localObject != null) {
         return localObject;
       }
@@ -156,9 +200,77 @@ public class WSGridPageFragment
     return null;
   }
   
+  private View K()
+  {
+    View localView = this.p;
+    if (localView != null) {
+      return localView;
+    }
+    this.p = LayoutInflater.from(getContext()).inflate(2131626045, null);
+    this.r = ((RecyclerView)this.p.findViewById(2131445207));
+    this.r.setLayoutManager(new LinearLayoutManager(getContext(), 0, false));
+    this.q = new WSFollowDramaListAdapter(getContext());
+    this.q.setOnItemClickListener(new WSGridPageFragment.8(this));
+    this.q.a(L());
+    this.r.setAdapter(this.q);
+    this.r.addItemDecoration(new WSItemDecoration());
+    return this.p;
+  }
+  
+  private WSFollowDramaListAdapter.ItemViewExposedListener L()
+  {
+    return new WSGridPageFragment.9(this);
+  }
+  
+  private void M()
+  {
+    if (!this.g.a()) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSGridPageFragment.java][tryToLoadMoreFeeds] mSubTabId:");
+    localStringBuilder.append(this.B);
+    WSLog.a("WSGridPageFragmentLog", localStringBuilder.toString());
+    a(WSExpABTestManager.a().p());
+  }
+  
+  private void N()
+  {
+    Object localObject = this.g;
+    if (localObject != null)
+    {
+      localObject = ((WSXRecyclerView)localObject).getRecyclerView();
+      if (localObject == null) {
+        return;
+      }
+      int i1 = 0;
+      while (i1 < ((RecyclerView)localObject).getChildCount())
+      {
+        RecyclerView.ViewHolder localViewHolder = ((RecyclerView)localObject).getChildViewHolder(((RecyclerView)localObject).getChildAt(i1));
+        if (!(localViewHolder instanceof AbsWSGridBaseHolder))
+        {
+          i1 += 1;
+        }
+        else
+        {
+          localObject = (AbsWSGridBaseHolder)localViewHolder;
+          WSVideoTransitionAnimUtil.a(((AbsWSGridBaseHolder)localObject).itemView);
+          WSVideoTransitionAnimUtil.a(WSVideoTransitionAnimUtil.c(((AbsWSGridBaseHolder)localObject).itemView));
+        }
+      }
+    }
+  }
+  
+  public static BaseFragment a(String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, boolean paramBoolean3)
+  {
+    WSGridPageFragment localWSGridPageFragment = new WSGridPageFragment();
+    localWSGridPageFragment.setArguments(b(paramString1, paramBoolean1, paramBoolean2, paramString2, paramBoolean3).getExtras());
+    return localWSGridPageFragment;
+  }
+  
   private void a(int paramInt)
   {
-    LoadingMoreHelper localLoadingMoreHelper = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getLoadMoreLayoutHelper();
+    LoadingMoreHelper localLoadingMoreHelper = this.g.getLoadMoreLayoutHelper();
     if (localLoadingMoreHelper != null) {
       localLoadingMoreHelper.setPreLoaderCount(paramInt);
     }
@@ -171,8 +283,67 @@ public class WSGridPageFragment
       WSLog.a("WSGridPageFragmentLog", "onFollowDramaItemClick() itemData is null.");
       return;
     }
-    WSGridBeaconReport.b(this.jdField_a_of_type_JavaLangString, paramInt, paramWSFollowDramaItemData.a(), paramWSFollowDramaItemData.a());
+    WSGridBeaconReport.b(this.B, paramInt, paramWSFollowDramaItemData.a(), paramWSFollowDramaItemData.c());
     WSDramaPageFragment.a(new WSDramaPageIntentParams("grid_drama_follow", getContext()).a(paramWSFollowDramaItemData.a()));
+  }
+  
+  private void a(@Nullable RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
+  {
+    if (paramViewHolder != null)
+    {
+      if (paramViewHolder.itemView == null) {
+        return;
+      }
+      paramViewHolder = paramViewHolder.itemView;
+      int i1;
+      if (paramBoolean) {
+        i1 = 0;
+      } else {
+        i1 = 4;
+      }
+      paramViewHolder.setVisibility(i1);
+    }
+  }
+  
+  private void a(@NonNull WSChangeItemViewVisibilityEvent paramWSChangeItemViewVisibilityEvent)
+  {
+    if (this.n != null)
+    {
+      Object localObject1 = this.g;
+      if (localObject1 != null)
+      {
+        localObject1 = ((WSXRecyclerView)localObject1).getRecyclerView();
+        if (localObject1 == null) {
+          return;
+        }
+        int i1 = 0;
+        int i2 = 1;
+        while (i1 < ((RecyclerView)localObject1).getChildCount())
+        {
+          RecyclerView.ViewHolder localViewHolder = ((RecyclerView)localObject1).getChildViewHolder(((RecyclerView)localObject1).getChildAt(i1));
+          if ((localViewHolder instanceof AbsWSGridBaseHolder))
+          {
+            Object localObject2 = (AbsWSGridBaseHolder)localViewHolder;
+            if ((((AbsWSGridBaseHolder)localObject2).b instanceof stSimpleMetaFeed))
+            {
+              localObject2 = (stSimpleMetaFeed)((AbsWSGridBaseHolder)localObject2).b;
+              if ((paramWSChangeItemViewVisibilityEvent.isChangeFirstItem()) && (i2 != 0) && (((WSGridPageContract.Presenter)this.b).m()))
+              {
+                a(localViewHolder, paramWSChangeItemViewVisibilityEvent.isShow());
+                return;
+              }
+              if ((!TextUtils.isEmpty(paramWSChangeItemViewVisibilityEvent.getFeedId())) && (paramWSChangeItemViewVisibilityEvent.getFeedId().equals(((stSimpleMetaFeed)localObject2).id)))
+              {
+                a(localViewHolder, paramWSChangeItemViewVisibilityEvent.isShow());
+                return;
+              }
+              i2 = 0;
+            }
+          }
+          i1 += 1;
+        }
+      }
+    }
   }
   
   private void a(@NonNull RecyclerViewHeaderViewAdapter paramRecyclerViewHeaderViewAdapter, @NonNull View paramView1, @Nullable View paramView2)
@@ -189,7 +360,7 @@ public class WSGridPageFragment
   
   private void a(@Nullable String paramString, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendAdapterWSFollowDramaListAdapter;
+    Object localObject = this.q;
     if (localObject == null) {
       return;
     }
@@ -198,212 +369,120 @@ public class WSGridPageFragment
     if (paramString == null) {
       return;
     }
-    if (paramString.a() >= paramInt) {
+    if (paramString.e() >= paramInt) {
       return;
     }
     paramString.a(paramInt);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendAdapterWSFollowDramaListAdapter.notifyItemChanged(((List)localObject).indexOf(paramString));
+    this.q.notifyItemChanged(((List)localObject).indexOf(paramString));
   }
   
-  private void n()
+  private static Intent b(String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, boolean paramBoolean3)
+  {
+    Intent localIntent = new Intent();
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_is_multi_sub_tab_page", paramBoolean1);
+    localBundle.putBoolean("key_context_feed_show_musk", paramBoolean3);
+    localBundle.putString("key_sub_tab_id", paramString1);
+    localBundle.putBoolean("key_can_init_data", paramBoolean2);
+    localBundle.putString("key_context_feed_id", paramString2);
+    localIntent.putExtras(localBundle);
+    return localIntent;
+  }
+  
+  private void t()
   {
     if (getArguments() != null)
     {
-      this.g = getArguments().getBoolean("key_is_multi_sub_tab_page");
-      this.jdField_a_of_type_JavaLangString = getArguments().getString("key_sub_tab_id");
-      this.i = getArguments().getBoolean("key_can_init_data");
-      this.jdField_b_of_type_JavaLangString = getArguments().getString("key_context_feed_id");
-      this.k = getArguments().getBoolean("key_context_feed_show_musk");
+      this.w = getArguments().getBoolean("key_is_multi_sub_tab_page");
+      this.B = getArguments().getString("key_sub_tab_id");
+      this.y = getArguments().getBoolean("key_can_init_data");
+      this.C = getArguments().getString("key_context_feed_id");
+      this.A = getArguments().getBoolean("key_context_feed_show_musk");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[WSGridPageFragment.java][handleIntent] mSubTabId:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.B);
       localStringBuilder.append(", mIsMultiSubTabPage:");
-      localStringBuilder.append(this.g);
+      localStringBuilder.append(this.w);
       localStringBuilder.append(", mCanInitData:");
-      localStringBuilder.append(this.i);
+      localStringBuilder.append(this.y);
       localStringBuilder.append(", this:");
       localStringBuilder.append(this);
       WSLog.e("WSGridPageFragmentLog", localStringBuilder.toString());
     }
   }
   
-  private void o()
-  {
-    p();
-    s();
-    u();
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372488);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370342));
-  }
-  
-  private void p()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165327));
-    }
-    View localView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380853);
-    if (this.g)
-    {
-      localView.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.setPadding(0, WeishiUIUtil.a(getActivity()), 0, 0);
-    localView.setVisibility(0);
-  }
-  
-  private void q()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[WSGridPageFragment.java] initData! mSubTabId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    WSLog.f("WSGridPageFragmentLog", localStringBuilder.toString());
-    this.h = true;
-    ((WSGridPageContract.Presenter)b()).c();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSGuardInterfaceWrapper.a(this.jdField_a_of_type_JavaLangString);
-    WSSimpleEventBus.a().a(this);
-    x();
-    if (((WSGridPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter).c()) {
-      ((WSGridPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter).d();
-    }
-  }
-  
-  private void r()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendWSGridItemExpose = new WSGridItemExpose(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  private void s()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView = ((WeiShiNoticeView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560025, null));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView.setOnClickListener(new WSGridPageFragment.1(this));
-  }
-  
-  private void t()
-  {
-    if (this.jdField_a_of_type_UserGrowthStNotificationRsp == null) {
-      return;
-    }
-    int m = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView.a();
-    WSNoticeJumpUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStNotificationRsp, this.jdField_a_of_type_JavaLangString);
-    WSReportDc00898.a(112, m, this.jdField_a_of_type_UserGrowthStNotificationRsp.cid);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[WSGridPageFragment.java][noticeViewClick] mSubTabId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", jumpUrl");
-    localStringBuilder.append(this.jdField_a_of_type_UserGrowthStNotificationRsp.jump_url);
-    WSLog.e("WSGridPageFragmentLog", localStringBuilder.toString());
-    k();
-  }
-  
-  private void u()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView = ((WSXRecyclerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376306));
-    a(WSExpABTestManager.a().c());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.setRefreshCallback(this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getRecyclerView().addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
-    RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getRecyclerView();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter = new WSRecommendAdapter(getActivity(), localRecyclerViewWithHeaderFooter, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.a(this.k);
-    localRecyclerViewWithHeaderFooter.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter$ItemViewExposeListener);
-    WSStaggeredGridLayoutManager localWSStaggeredGridLayoutManager = new WSStaggeredGridLayoutManager(2, 1);
-    localWSStaggeredGridLayoutManager.setGapStrategy(0);
-    localRecyclerViewWithHeaderFooter.setLayoutManager(localWSStaggeredGridLayoutManager);
-    localRecyclerViewWithHeaderFooter.setItemAnimator(null);
-    localRecyclerViewWithHeaderFooter.addItemDecoration(new WSItemDecoration());
-  }
-  
   private void v()
   {
-    if (this.c)
-    {
-      this.c = false;
-      return;
-    }
-    if (!this.d) {
-      this.d = true;
-    }
-    ((WSGridPageContract.Presenter)b()).a(true, false);
-    if (!this.f) {
-      ((WSGridPageContract.Presenter)b()).a("");
-    }
-    if (((WSGridPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter).c()) {
-      ((WSGridPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter).d();
-    }
+    w();
+    C();
+    E();
+    this.j = this.f.findViewById(2131440012);
+    this.h = ((LinearLayout)this.f.findViewById(2131437600));
   }
   
   private void w()
   {
-    ((WSGridPageContract.Presenter)b()).b(this.d, this.e);
+    if (this.e) {
+      this.f.setBackgroundColor(this.o.getResources().getColor(2131165564));
+    }
+    View localView = this.f.findViewById(2131449831);
+    if (this.w)
+    {
+      localView.setVisibility(8);
+      return;
+    }
+    this.f.setPadding(0, WeishiUIUtil.a(getActivity()), 0, 0);
+    localView.setVisibility(0);
   }
   
   private void x()
   {
-    if (GuardManager.a != null) {
-      GuardManager.a.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSGuardInterfaceWrapper);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSGridPageFragment.java] initData! mSubTabId:");
+    localStringBuilder.append(this.B);
+    WSLog.f("WSGridPageFragmentLog", localStringBuilder.toString());
+    this.x = true;
+    ((WSGridPageContract.Presenter)aO_()).a();
+    this.G.a(this.B);
+    WSSimpleEventBus.a().a(this);
+    H();
+    if (((WSGridPageContract.Presenter)this.b).k()) {
+      ((WSGridPageContract.Presenter)this.b).b();
     }
   }
   
   private void y()
   {
-    if (GuardManager.a != null) {
-      GuardManager.a.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSGuardInterfaceWrapper);
-    }
+    this.k = new WSGridItemExpose(this.B);
   }
   
-  private void z()
+  public void A()
   {
-    if (!this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.a()) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[WSGridPageFragment.java][tryToLoadMoreFeeds] mSubTabId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    WSLog.a("WSGridPageFragmentLog", localStringBuilder.toString());
-    a(WSExpABTestManager.a().d());
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendWSGridItemExpose.a();
-  }
-  
-  @NonNull
-  public WSGridPageContract.Presenter a()
-  {
-    return WSGridPresenterFactory.a(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(LikeRspEvent.class);
-    localArrayList.add(FollowEvent.class);
-    localArrayList.add(WSAddCommentEvent.class);
-    if (((WSGridPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter).c())
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[WSGridPageFragment.java][onTabSelected] mSubTabId:");
+    ((StringBuilder)localObject).append(this.B);
+    WSLog.e("WSGridPageFragmentLog", ((StringBuilder)localObject).toString());
+    localObject = f();
+    if ((this.x) && (this.n.getItemCount() > 1))
     {
-      localArrayList.add(WSDramaFollowEvent.class);
-      localArrayList.add(WSDramaWatchRecordEvent.class);
+      int i1 = WSGridPageUtils.a(this.g);
+      WSExposeDataManager.a().a(((List)localObject).subList(0, Math.min(i1, ((List)localObject).size())));
+      M();
     }
-    return localArrayList;
+    else
+    {
+      q();
+    }
+    a((List)localObject, false);
   }
   
-  public List<stSimpleMetaFeed> a()
+  public void B()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.getDataList();
-  }
-  
-  protected void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_Boolean) {
-      WeishiUtils.c("feeds");
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSGridPageFragment.java][onTabUnselected] mSubTabId:");
+    localStringBuilder.append(this.B);
+    WSLog.e("WSGridPageFragmentLog", localStringBuilder.toString());
+    ((WSGridPageContract.Presenter)aO_()).j();
   }
   
   public void a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -415,15 +494,15 @@ public class WSGridPageFragment
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSGridPageFragment.java][showError] mSubTabId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.B);
     localStringBuilder.append(", code:");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(", msg:");
     localStringBuilder.append(paramString);
     WSLog.d("WSGridPageFragmentLog", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.h.setVisibility(0);
     WSReportDc00898.b(false);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new WSGridPageFragment.5(this));
+    this.h.setOnClickListener(new WSGridPageFragment.5(this));
   }
   
   public void a(stGlobalConfig paramstGlobalConfig)
@@ -433,38 +512,38 @@ public class WSGridPageFragment
       if (paramstGlobalConfig.windows_config.size() == 0) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog == null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog = new RichBlockDialog(getActivity(), 0, 1, "feeds");
+      if (this.m == null) {
+        this.m = new RichBlockDialog(getActivity(), 0, 1, "feeds");
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog.a(paramstGlobalConfig);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog.a(getActivity());
+      this.m.a(paramstGlobalConfig);
+      this.m.a(getActivity());
     }
   }
   
   public void a(stNotificationRsp paramstNotificationRsp, RspHeaderBean paramRspHeaderBean)
   {
-    this.jdField_a_of_type_UserGrowthStNotificationRsp = paramstNotificationRsp;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView.a(paramstNotificationRsp, this.jdField_a_of_type_JavaLangString);
+    this.l = paramstNotificationRsp;
+    this.i.a(paramstNotificationRsp, this.B);
   }
   
   public void a(@NonNull WSFollowDramaData paramWSFollowDramaData, boolean paramBoolean)
   {
-    RecyclerViewHeaderViewAdapter localRecyclerViewHeaderViewAdapter = a();
+    RecyclerViewHeaderViewAdapter localRecyclerViewHeaderViewAdapter = J();
     if (localRecyclerViewHeaderViewAdapter == null) {
       return;
     }
-    View localView = a();
+    View localView = K();
     if (!localRecyclerViewHeaderViewAdapter.hasHeader(localView)) {
       localRecyclerViewHeaderViewAdapter.addHeader(localView);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendAdapterWSFollowDramaListAdapter.fillList(paramWSFollowDramaData.a());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(0);
-    this.j = paramBoolean;
+    this.q.fillList(paramWSFollowDramaData.a());
+    this.r.scrollToPosition(0);
+    this.z = paramBoolean;
   }
   
   public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
+    Object localObject = this.n;
     if (localObject != null)
     {
       localObject = ((WSRecommendAdapter)localObject).getDataList();
@@ -473,7 +552,7 @@ public class WSGridPageFragment
       }
       if ((paramWSSimpleBaseEvent instanceof LikeRspEvent))
       {
-        WSGridEventUtils.a((LikeRspEvent)paramWSSimpleBaseEvent, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter, (List)localObject);
+        WSGridEventUtils.a((LikeRspEvent)paramWSSimpleBaseEvent, this.n, (List)localObject);
         return;
       }
       if ((paramWSSimpleBaseEvent instanceof FollowEvent))
@@ -488,213 +567,211 @@ public class WSGridPageFragment
       }
       if ((paramWSSimpleBaseEvent instanceof WSDramaFollowEvent))
       {
-        ((WSGridPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter).d();
+        ((WSGridPageContract.Presenter)this.b).b();
         return;
       }
       if ((paramWSSimpleBaseEvent instanceof WSDramaWatchRecordEvent))
       {
         paramWSSimpleBaseEvent = (WSDramaWatchRecordEvent)paramWSSimpleBaseEvent;
         a(paramWSSimpleBaseEvent.getDramaId(), paramWSSimpleBaseEvent.getEpisodeNum());
+        return;
+      }
+      if ((paramWSSimpleBaseEvent instanceof WSChangeItemViewVisibilityEvent))
+      {
+        a((WSChangeItemViewVisibilityEvent)paramWSSimpleBaseEvent);
+        return;
+      }
+      if ((paramWSSimpleBaseEvent instanceof WSSaveFirstItemLocationCoverEvent)) {
+        N();
       }
     }
   }
   
   public void a(String paramString)
   {
-    WeishiActivityHelper.a(this.jdField_a_of_type_AndroidContentContext, paramString);
+    WeishiActivityHelper.a(this.o, paramString);
   }
   
   public void a(List<stSimpleMetaFeed> paramList)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.fillList(paramList);
+    this.n.fillList(paramList);
   }
   
   public void a(List<stSimpleMetaFeed> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendWSGridItemExpose.a(paramList, paramBoolean, WSGridPageUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    WSXRecyclerView localWSXRecyclerView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView;
-    if (localWSXRecyclerView != null)
-    {
-      this.c = paramBoolean;
-      localWSXRecyclerView.startMachineRefresh();
-    }
+    this.k.a(paramList, paramBoolean, WSGridPageUtils.a(this.g));
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("loadMoreComplete hasMore:");
-    localStringBuilder.append(paramBoolean2);
-    WSLog.a("WSGridPageFragmentLog", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.loadMoreComplete(true, paramBoolean2);
+    super.a(paramBoolean1, paramBoolean2);
+    if (paramBoolean1)
+    {
+      WSPublicAccReport.getInstance().reportPageVisitEnter("feeds");
+      return;
+    }
+    WSPublicAccReport.getInstance().reportPageVisitExit("feeds");
   }
   
-  public boolean a()
+  protected boolean aN_()
+  {
+    if (WSComboExpHelper.a.a()) {
+      return false;
+    }
+    return super.aN_();
+  }
+  
+  public boolean aR_()
   {
     FragmentActivity localFragmentActivity = getActivity();
     return (localFragmentActivity != null) && (localFragmentActivity.isFinishing());
   }
   
+  public boolean aS_()
+  {
+    return this.d;
+  }
+  
+  public String aT_()
+  {
+    return this.C;
+  }
+  
+  public void aU_()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSGridPageFragment.java][tryLoadMoreFeeds] mSubTabId:");
+    localStringBuilder.append(this.B);
+    WSLog.e("WSGridPageFragmentLog", localStringBuilder.toString());
+    this.g.getViewTreeObserver().addOnGlobalLayoutListener(new WSGridPageFragment.7(this));
+  }
+  
   public void b()
   {
-    this.f = true;
-    RecyclerViewHeaderViewAdapter localRecyclerViewHeaderViewAdapter = (RecyclerViewHeaderViewAdapter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getRecyclerView().getAdapter();
-    a(localRecyclerViewHeaderViewAdapter, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView, this.jdField_b_of_type_AndroidViewView);
+    this.v = true;
+    RecyclerViewHeaderViewAdapter localRecyclerViewHeaderViewAdapter = (RecyclerViewHeaderViewAdapter)this.g.getRecyclerView().getAdapter();
+    a(localRecyclerViewHeaderViewAdapter, this.i, this.p);
     localRecyclerViewHeaderViewAdapter.notifyDataSetChanged();
   }
   
   public void b(List<stSimpleMetaFeed> paramList)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.a(paramList);
+    this.n.a(paramList);
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.pullRefreshCompleted(paramBoolean);
+    this.g.pullRefreshCompleted(paramBoolean);
   }
   
-  public boolean b()
+  public void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return this.jdField_a_of_type_Boolean;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadMoreComplete hasMore:");
+    localStringBuilder.append(paramBoolean2);
+    WSLog.a("WSGridPageFragmentLog", localStringBuilder.toString());
+    this.g.loadMoreComplete(true, paramBoolean2);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.k.b();
   }
   
-  public void d()
+  public void c_(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendWSGridItemExpose.a();
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void g()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[WSGridPageFragment.java][onTabSelected] mSubTabId:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-    WSLog.e("WSGridPageFragmentLog", ((StringBuilder)localObject).toString());
-    localObject = a();
-    if ((this.h) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.getItemCount() > 1))
+    WSXRecyclerView localWSXRecyclerView = this.g;
+    if (localWSXRecyclerView != null)
     {
-      int m = WSGridPageUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView);
-      WSExposeDataManager.a().a(((List)localObject).subList(0, Math.min(m, ((List)localObject).size())));
-      z();
+      this.s = paramBoolean;
+      localWSXRecyclerView.startMachineRefresh();
     }
-    else
-    {
-      m();
-    }
-    a((List)localObject, false);
   }
   
-  public void h()
+  public int d()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[WSGridPageFragment.java][onTabUnselected] mSubTabId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    WSLog.e("WSGridPageFragmentLog", localStringBuilder.toString());
-    ((WSGridPageContract.Presenter)b()).j();
+    return this.k.a();
   }
   
-  public void i()
+  public List<stSimpleMetaFeed> f()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[WSGridPageFragment.java][tryLoadMoreFeeds] mSubTabId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    WSLog.e("WSGridPageFragmentLog", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new WSGridPageFragment.7(this));
+    return this.n.getDataList();
   }
   
-  public void j()
+  protected void i()
   {
-    RecyclerViewHeaderViewAdapter localRecyclerViewHeaderViewAdapter = a();
-    if (localRecyclerViewHeaderViewAdapter == null) {
-      return;
+    super.i();
+    if (this.d) {
+      WeishiUtils.m("feeds");
     }
-    if (!localRecyclerViewHeaderViewAdapter.hasHeader(this.jdField_b_of_type_AndroidViewView)) {
-      return;
-    }
-    localRecyclerViewHeaderViewAdapter.removeHeader(this.jdField_b_of_type_AndroidViewView);
-    localRecyclerViewHeaderViewAdapter.notifyDataSetChanged();
-  }
-  
-  public void k()
-  {
-    this.f = false;
-    RecyclerViewHeaderViewAdapter localRecyclerViewHeaderViewAdapter = (RecyclerViewHeaderViewAdapter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getRecyclerView().getAdapter();
-    localRecyclerViewHeaderViewAdapter.removeHeader(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWeiShiNoticeView);
-    localRecyclerViewHeaderViewAdapter.notifyDataSetChanged();
   }
   
   public void l()
   {
-    if (a()) {
+    RecyclerViewHeaderViewAdapter localRecyclerViewHeaderViewAdapter = J();
+    if (localRecyclerViewHeaderViewAdapter == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendWSGridItemExpose.c();
+    if (!localRecyclerViewHeaderViewAdapter.hasHeader(this.p)) {
+      return;
+    }
+    localRecyclerViewHeaderViewAdapter.removeHeader(this.p);
+    localRecyclerViewHeaderViewAdapter.notifyDataSetChanged();
   }
   
-  public void m()
+  @NonNull
+  public WSGridPageContract.Presenter n()
   {
-    if (!this.h) {
-      q();
-    }
+    return WSGridPresenterFactory.a(this.B);
+  }
+  
+  public void o()
+  {
+    this.v = false;
+    RecyclerViewHeaderViewAdapter localRecyclerViewHeaderViewAdapter = (RecyclerViewHeaderViewAdapter)this.g.getRecyclerView().getAdapter();
+    localRecyclerViewHeaderViewAdapter.removeHeader(this.i);
+    localRecyclerViewHeaderViewAdapter.notifyDataSetChanged();
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    n();
+    t();
     super.onCreate(paramBundle);
   }
   
   @Nullable
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = getActivity();
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560016, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater);
+    this.o = getActivity();
+    paramLayoutInflater = paramLayoutInflater.inflate(2131626059, paramViewGroup, false);
+    this.f = ((ViewGroup)paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroyView()
   {
-    ((WSGridPageContract.Presenter)b()).g();
+    ((WSGridPageContract.Presenter)aO_()).e();
     super.onDestroyView();
-    this.h = false;
-    w();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendWSGridItemExpose.c();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendWSGridItemExpose.b();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendWSGridItemExpose.a();
-    WSRecommendAdapter localWSRecommendAdapter = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
+    this.x = false;
+    G();
+    this.k.d();
+    this.k.c();
+    this.k.b();
+    WSRecommendAdapter localWSRecommendAdapter = this.n;
     if (localWSRecommendAdapter != null)
     {
-      if (localWSRecommendAdapter.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper = null;
+      if (localWSRecommendAdapter.b != null) {
+        this.n.b = null;
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper = null;
+      if (this.n.c != null) {
+        this.n.c = null;
       }
     }
     WSSimpleEventBus.a().b(this);
-    y();
-    WSRecommendAdapter.b = 0;
+    I();
+    WSRecommendAdapter.f = 0;
     WSMonitorUtil.a(getActivity());
-    this.jdField_b_of_type_AndroidViewView = null;
+    this.p = null;
   }
   
   public void onPause()
@@ -702,14 +779,11 @@ public class WSGridPageFragment
     super.onPause();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSGridPageFragment.java][onResume] onPause:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.B);
     localStringBuilder.append(", mIsUserVisibleHint:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d);
     WSLog.e("WSGridPageFragmentLog", localStringBuilder.toString());
-    if (this.jdField_a_of_type_Boolean) {
-      WSPublicAccReport.getInstance().reportPageVisitExit("feeds");
-    }
-    ((WSGridPageContract.Presenter)b()).f();
+    ((WSGridPageContract.Presenter)aO_()).d();
   }
   
   public void onResume()
@@ -717,14 +791,11 @@ public class WSGridPageFragment
     super.onResume();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSGridPageFragment.java][onResume] mSubTabId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.B);
     localStringBuilder.append(", mIsUserVisibleHint:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d);
     WSLog.e("WSGridPageFragmentLog", localStringBuilder.toString());
-    ((WSGridPageContract.Presenter)b()).e();
-    if (this.jdField_a_of_type_Boolean) {
-      WSPublicAccReport.getInstance().reportPageVisitEnter("feeds");
-    }
+    ((WSGridPageContract.Presenter)aO_()).c();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -732,20 +803,68 @@ public class WSGridPageFragment
     super.onViewCreated(paramView, paramBundle);
     paramView = new StringBuilder();
     paramView.append("[WSGridPageFragment.java][onViewCreated] mCanInitData:");
-    paramView.append(this.i);
+    paramView.append(this.y);
     paramView.append(", this:");
     paramView.append(this);
     WSLog.e("WSGridPageFragmentLog", paramView.toString());
-    o();
-    r();
-    if (this.i) {
-      q();
+    v();
+    y();
+    if (this.y) {
+      x();
     }
+  }
+  
+  public void p()
+  {
+    if (aR_()) {
+      return;
+    }
+    this.k.d();
+  }
+  
+  public void q()
+  {
+    if (!this.x) {
+      x();
+    }
+  }
+  
+  public void r()
+  {
+    this.j.setVisibility(0);
+  }
+  
+  public void s()
+  {
+    this.h.setVisibility(8);
+  }
+  
+  public void u()
+  {
+    this.j.setVisibility(8);
+  }
+  
+  public ArrayList<Class> z()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(LikeRspEvent.class);
+    localArrayList.add(FollowEvent.class);
+    localArrayList.add(WSAddCommentEvent.class);
+    localArrayList.add(WSChangeItemViewVisibilityEvent.class);
+    if (((WSGridPageContract.Presenter)this.b).k())
+    {
+      localArrayList.add(WSDramaFollowEvent.class);
+      localArrayList.add(WSDramaWatchRecordEvent.class);
+    }
+    if (((WSGridPageContract.Presenter)this.b).l()) {
+      localArrayList.add(WSSaveFirstItemLocationCoverEvent.class);
+    }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridPageFragment
  * JD-Core Version:    0.7.0.1
  */

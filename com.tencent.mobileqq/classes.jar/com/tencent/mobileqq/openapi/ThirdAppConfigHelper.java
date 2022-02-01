@@ -13,27 +13,27 @@ import java.util.Random;
 
 public class ThirdAppConfigHelper
 {
-  private static HashMap<String, ThirdAppConfigHelper.ThirdAppConfig> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "1234567890twstest", "123AppShadowQQ", "gwatchdm2016" };
+  static final String[] a = { "1234567890twstest", "123AppShadowQQ", "gwatchdm2016" };
   static final String[] b = { "com.tencent.tws.devicemanager", "com.tencent.shadowqq", "com.tencent.tws.gdevicemanager" };
   static final String[] c = { "E63D0E11EF7837C5A1BEB948742B0CB6", "CCD4AD38DC6669F875BC37E3F8840648", "E63D0E11EF7837C5A1BEB948742B0CB6" };
+  private static HashMap<String, ThirdAppConfigHelper.ThirdAppConfig> d = new HashMap();
   
   /* Error */
   public static final ThirdAppConfigHelper.ThirdAppConfig a(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: getstatic 19	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   0: getstatic 20	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:d	Ljava/util/HashMap;
     //   3: astore_3
     //   4: aload_3
     //   5: monitorenter
-    //   6: getstatic 19	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   6: getstatic 20	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:d	Ljava/util/HashMap;
     //   9: aload_1
-    //   10: invokevirtual 52	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   10: invokevirtual 53	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   13: ifeq +18 -> 31
-    //   16: getstatic 19	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   16: getstatic 20	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:d	Ljava/util/HashMap;
     //   19: aload_1
-    //   20: invokevirtual 56	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   23: checkcast 58	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig
+    //   20: invokevirtual 57	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   23: checkcast 59	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig
     //   26: astore_0
     //   27: aload_3
     //   28: monitorexit
@@ -42,54 +42,54 @@ public class ThirdAppConfigHelper
     //   31: aload_3
     //   32: monitorexit
     //   33: aload_0
-    //   34: invokevirtual 64	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   34: invokevirtual 65	android/content/Context:getFilesDir	()Ljava/io/File;
     //   37: astore_3
-    //   38: new 66	java/lang/StringBuilder
+    //   38: new 67	java/lang/StringBuilder
     //   41: dup
-    //   42: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   42: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   45: astore 4
     //   47: aload 4
     //   49: aload_1
-    //   50: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   53: pop
     //   54: aload 4
-    //   56: ldc 73
-    //   58: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: ldc 74
+    //   58: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: pop
-    //   62: new 75	java/io/File
+    //   62: new 76	java/io/File
     //   65: dup
     //   66: aload_3
     //   67: aload 4
-    //   69: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   72: invokespecial 82	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   69: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   72: invokespecial 83	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   75: astore 8
     //   77: aload 8
-    //   79: invokevirtual 86	java/io/File:exists	()Z
+    //   79: invokevirtual 87	java/io/File:exists	()Z
     //   82: istore_2
     //   83: aconst_null
     //   84: astore 7
     //   86: iload_2
     //   87: ifeq +658 -> 745
     //   90: aload 8
-    //   92: invokevirtual 90	java/io/File:length	()J
+    //   92: invokevirtual 91	java/io/File:length	()J
     //   95: lconst_0
     //   96: lcmp
     //   97: ifne +6 -> 103
     //   100: goto +645 -> 745
-    //   103: new 58	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig
+    //   103: new 59	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig
     //   106: dup
-    //   107: invokespecial 91	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:<init>	()V
+    //   107: invokespecial 92	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:<init>	()V
     //   110: astore 6
-    //   112: new 93	java/io/ByteArrayInputStream
+    //   112: new 94	java/io/ByteArrayInputStream
     //   115: dup
     //   116: aload 8
-    //   118: invokestatic 99	com/tencent/mobileqq/utils/FileUtils:fileToBytes	(Ljava/io/File;)[B
-    //   121: invokespecial 102	java/io/ByteArrayInputStream:<init>	([B)V
+    //   118: invokestatic 100	com/tencent/mobileqq/utils/FileUtils:fileToBytes	(Ljava/io/File;)[B
+    //   121: invokespecial 103	java/io/ByteArrayInputStream:<init>	([B)V
     //   124: astore_3
-    //   125: new 104	java/io/ObjectInputStream
+    //   125: new 105	java/io/ObjectInputStream
     //   128: dup
     //   129: aload_3
-    //   130: invokespecial 107	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   130: invokespecial 108	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   133: astore_0
     //   134: aload_0
     //   135: astore 4
@@ -97,23 +97,23 @@ public class ThirdAppConfigHelper
     //   138: astore 5
     //   140: aload 6
     //   142: aload_0
-    //   143: invokevirtual 111	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   146: checkcast 21	java/lang/String
-    //   149: putfield 114	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   143: invokevirtual 112	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   146: checkcast 22	java/lang/String
+    //   149: putfield 115	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:a	Ljava/lang/String;
     //   152: aload_0
     //   153: astore 4
     //   155: aload_3
     //   156: astore 5
     //   158: aload 6
     //   160: aload_0
-    //   161: invokevirtual 117	java/io/ObjectInputStream:readBoolean	()Z
-    //   164: putfield 120	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_a_of_type_Boolean	Z
+    //   161: invokevirtual 118	java/io/ObjectInputStream:readBoolean	()Z
+    //   164: putfield 121	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:b	Z
     //   167: aload_0
     //   168: astore 4
     //   170: aload_3
     //   171: astore 5
     //   173: aload 6
-    //   175: getfield 120	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_a_of_type_Boolean	Z
+    //   175: getfield 121	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:b	Z
     //   178: ifeq +429 -> 607
     //   181: aload_0
     //   182: astore 4
@@ -121,68 +121,68 @@ public class ThirdAppConfigHelper
     //   185: astore 5
     //   187: aload 6
     //   189: aload_0
-    //   190: invokevirtual 111	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   193: checkcast 21	java/lang/String
-    //   196: putfield 122	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   190: invokevirtual 112	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   193: checkcast 22	java/lang/String
+    //   196: putfield 123	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:c	Ljava/lang/String;
     //   199: aload_0
     //   200: astore 4
     //   202: aload_3
     //   203: astore 5
     //   205: aload 6
     //   207: aload_0
-    //   208: invokevirtual 111	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   211: checkcast 21	java/lang/String
-    //   214: putfield 124	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   208: invokevirtual 112	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   211: checkcast 22	java/lang/String
+    //   214: putfield 125	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:d	Ljava/lang/String;
     //   217: aload_0
     //   218: astore 4
     //   220: aload_3
     //   221: astore 5
     //   223: aload 6
     //   225: aload_0
-    //   226: invokevirtual 128	java/io/ObjectInputStream:readInt	()I
-    //   229: putfield 131	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_a_of_type_Int	I
+    //   226: invokevirtual 129	java/io/ObjectInputStream:readInt	()I
+    //   229: putfield 133	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:e	I
     //   232: aload_0
     //   233: astore 4
     //   235: aload_3
     //   236: astore 5
     //   238: aload 6
     //   240: aload_0
-    //   241: invokevirtual 128	java/io/ObjectInputStream:readInt	()I
-    //   244: putfield 133	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_b_of_type_Int	I
+    //   241: invokevirtual 129	java/io/ObjectInputStream:readInt	()I
+    //   244: putfield 136	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:f	I
     //   247: aload_0
     //   248: astore 4
     //   250: aload_3
     //   251: astore 5
     //   253: aload 6
     //   255: aload_0
-    //   256: invokevirtual 128	java/io/ObjectInputStream:readInt	()I
-    //   259: putfield 135	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_c_of_type_Int	I
+    //   256: invokevirtual 129	java/io/ObjectInputStream:readInt	()I
+    //   259: putfield 139	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:g	I
     //   262: aload_0
     //   263: astore 4
     //   265: aload_3
     //   266: astore 5
     //   268: aload 6
     //   270: aload_0
-    //   271: invokevirtual 138	java/io/ObjectInputStream:readLong	()J
-    //   274: putfield 141	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_b_of_type_Long	J
+    //   271: invokevirtual 142	java/io/ObjectInputStream:readLong	()J
+    //   274: putfield 146	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:i	J
     //   277: aload_0
     //   278: astore 4
     //   280: aload_3
     //   281: astore 5
     //   283: aload 6
     //   285: aload_0
-    //   286: invokevirtual 138	java/io/ObjectInputStream:readLong	()J
-    //   289: putfield 143	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_a_of_type_Long	J
+    //   286: invokevirtual 142	java/io/ObjectInputStream:readLong	()J
+    //   289: putfield 149	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:h	J
     //   292: aload_0
     //   293: astore 4
     //   295: aload_3
     //   296: astore 5
-    //   298: invokestatic 148	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
+    //   298: invokestatic 154	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
     //   301: aload 6
-    //   303: getfield 141	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_b_of_type_Long	J
+    //   303: getfield 146	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:i	J
     //   306: lsub
-    //   307: invokestatic 154	java/lang/Math:abs	(J)J
-    //   310: ldc2_w 155
+    //   307: invokestatic 160	java/lang/Math:abs	(J)J
+    //   310: ldc2_w 161
     //   313: lcmp
     //   314: ifle +156 -> 470
     //   317: aload_0
@@ -191,45 +191,45 @@ public class ThirdAppConfigHelper
     //   321: astore 5
     //   323: aload 6
     //   325: iconst_1
-    //   326: putfield 158	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_b_of_type_Boolean	Z
+    //   326: putfield 165	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:j	Z
     //   329: aload_0
     //   330: astore 4
     //   332: aload_3
     //   333: astore 5
     //   335: aload 6
-    //   337: invokestatic 148	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
-    //   340: putfield 161	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:d	J
+    //   337: invokestatic 154	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
+    //   340: putfield 168	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:l	J
     //   343: aload_0
     //   344: astore 4
     //   346: aload_3
     //   347: astore 5
     //   349: aload 6
-    //   351: new 163	java/util/Random
+    //   351: new 170	java/util/Random
     //   354: dup
-    //   355: invokespecial 164	java/util/Random:<init>	()V
-    //   358: invokevirtual 167	java/util/Random:nextLong	()J
-    //   361: putfield 169	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_c_of_type_Long	J
+    //   355: invokespecial 171	java/util/Random:<init>	()V
+    //   358: invokevirtual 174	java/util/Random:nextLong	()J
+    //   361: putfield 177	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:k	J
     //   364: aload_0
     //   365: astore 4
     //   367: aload_3
     //   368: astore 5
-    //   370: invokestatic 174	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   370: invokestatic 182	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   373: ifeq +97 -> 470
     //   376: aload_0
     //   377: astore 4
     //   379: aload_3
     //   380: astore 5
-    //   382: new 66	java/lang/StringBuilder
+    //   382: new 67	java/lang/StringBuilder
     //   385: dup
-    //   386: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   386: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   389: astore 9
     //   391: aload_0
     //   392: astore 4
     //   394: aload_3
     //   395: astore 5
     //   397: aload 9
-    //   399: ldc 176
-    //   401: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   399: ldc 184
+    //   401: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   404: pop
     //   405: aload_0
     //   406: astore 4
@@ -237,16 +237,16 @@ public class ThirdAppConfigHelper
     //   409: astore 5
     //   411: aload 9
     //   413: aload 6
-    //   415: getfield 141	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_b_of_type_Long	J
-    //   418: invokevirtual 179	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   415: getfield 146	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:i	J
+    //   418: invokevirtual 187	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   421: pop
     //   422: aload_0
     //   423: astore 4
     //   425: aload_3
     //   426: astore 5
     //   428: aload 9
-    //   430: ldc 181
-    //   432: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   430: ldc 189
+    //   432: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   435: pop
     //   436: aload_0
     //   437: astore 4
@@ -254,39 +254,39 @@ public class ThirdAppConfigHelper
     //   440: astore 5
     //   442: aload 9
     //   444: aload 6
-    //   446: getfield 161	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:d	J
-    //   449: invokevirtual 179	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   446: getfield 168	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:l	J
+    //   449: invokevirtual 187	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   452: pop
     //   453: aload_0
     //   454: astore 4
     //   456: aload_3
     //   457: astore 5
-    //   459: ldc 183
+    //   459: ldc 191
     //   461: iconst_2
     //   462: aload 9
-    //   464: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   467: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   464: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   467: invokestatic 194	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   470: aload_0
     //   471: astore 4
     //   473: aload_3
     //   474: astore 5
-    //   476: invokestatic 174	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   476: invokestatic 182	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   479: ifeq +128 -> 607
     //   482: aload_0
     //   483: astore 4
     //   485: aload_3
     //   486: astore 5
-    //   488: new 66	java/lang/StringBuilder
+    //   488: new 67	java/lang/StringBuilder
     //   491: dup
-    //   492: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   492: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   495: astore 9
     //   497: aload_0
     //   498: astore 4
     //   500: aload_3
     //   501: astore 5
     //   503: aload 9
-    //   505: ldc 188
-    //   507: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   505: ldc 196
+    //   507: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   510: pop
     //   511: aload_0
     //   512: astore 4
@@ -294,16 +294,16 @@ public class ThirdAppConfigHelper
     //   515: astore 5
     //   517: aload 9
     //   519: aload 6
-    //   521: getfield 122	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   524: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   521: getfield 123	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:c	Ljava/lang/String;
+    //   524: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   527: pop
     //   528: aload_0
     //   529: astore 4
     //   531: aload_3
     //   532: astore 5
     //   534: aload 9
-    //   536: ldc 190
-    //   538: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   536: ldc 198
+    //   538: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   541: pop
     //   542: aload_0
     //   543: astore 4
@@ -311,16 +311,16 @@ public class ThirdAppConfigHelper
     //   546: astore 5
     //   548: aload 9
     //   550: aload 6
-    //   552: getfield 133	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_b_of_type_Int	I
-    //   555: invokevirtual 193	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   552: getfield 136	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:f	I
+    //   555: invokevirtual 201	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   558: pop
     //   559: aload_0
     //   560: astore 4
     //   562: aload_3
     //   563: astore 5
     //   565: aload 9
-    //   567: ldc 190
-    //   569: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   567: ldc 198
+    //   569: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   572: pop
     //   573: aload_0
     //   574: astore 4
@@ -328,22 +328,22 @@ public class ThirdAppConfigHelper
     //   577: astore 5
     //   579: aload 9
     //   581: aload 6
-    //   583: getfield 135	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_c_of_type_Int	I
-    //   586: invokevirtual 193	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   583: getfield 139	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:g	I
+    //   586: invokevirtual 201	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   589: pop
     //   590: aload_0
     //   591: astore 4
     //   593: aload_3
     //   594: astore 5
-    //   596: ldc 183
+    //   596: ldc 191
     //   598: iconst_2
     //   599: aload 9
-    //   601: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   604: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   601: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   604: invokestatic 194	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   607: aload_0
-    //   608: invokevirtual 196	java/io/ObjectInputStream:close	()V
+    //   608: invokevirtual 204	java/io/ObjectInputStream:close	()V
     //   611: aload_3
-    //   612: invokevirtual 197	java/io/ByteArrayInputStream:close	()V
+    //   612: invokevirtual 205	java/io/ByteArrayInputStream:close	()V
     //   615: aload 6
     //   617: astore_0
     //   618: goto +133 -> 751
@@ -372,29 +372,29 @@ public class ThirdAppConfigHelper
     //   657: astore 4
     //   659: aload_3
     //   660: astore 5
-    //   662: ldc 183
+    //   662: ldc 191
     //   664: iconst_1
-    //   665: ldc 199
+    //   665: ldc 207
     //   667: aload 6
-    //   669: invokestatic 202	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   669: invokestatic 210	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   672: aload_0
     //   673: astore 4
     //   675: aload_3
     //   676: astore 5
     //   678: aload 8
-    //   680: invokevirtual 205	java/io/File:delete	()Z
+    //   680: invokevirtual 213	java/io/File:delete	()Z
     //   683: pop
     //   684: aload_0
     //   685: ifnull +10 -> 695
     //   688: aload_0
-    //   689: invokevirtual 196	java/io/ObjectInputStream:close	()V
+    //   689: invokevirtual 204	java/io/ObjectInputStream:close	()V
     //   692: goto +3 -> 695
     //   695: aload 7
     //   697: astore_0
     //   698: aload_3
     //   699: ifnull +52 -> 751
     //   702: aload_3
-    //   703: invokevirtual 197	java/io/ByteArrayInputStream:close	()V
+    //   703: invokevirtual 205	java/io/ByteArrayInputStream:close	()V
     //   706: aload 7
     //   708: astore_0
     //   709: goto +42 -> 751
@@ -407,28 +407,28 @@ public class ThirdAppConfigHelper
     //   722: aload 4
     //   724: ifnull +11 -> 735
     //   727: aload 4
-    //   729: invokevirtual 196	java/io/ObjectInputStream:close	()V
+    //   729: invokevirtual 204	java/io/ObjectInputStream:close	()V
     //   732: goto +3 -> 735
     //   735: aload_3
     //   736: ifnull +7 -> 743
     //   739: aload_3
-    //   740: invokevirtual 197	java/io/ByteArrayInputStream:close	()V
+    //   740: invokevirtual 205	java/io/ByteArrayInputStream:close	()V
     //   743: aload_0
     //   744: athrow
     //   745: aload_0
     //   746: aload_1
-    //   747: invokestatic 207	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:b	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig;
+    //   747: invokestatic 215	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:b	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig;
     //   750: astore_0
     //   751: aload_0
     //   752: ifnull +27 -> 779
-    //   755: getstatic 19	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   755: getstatic 20	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:d	Ljava/util/HashMap;
     //   758: astore_3
     //   759: aload_3
     //   760: monitorenter
-    //   761: getstatic 19	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   761: getstatic 20	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:d	Ljava/util/HashMap;
     //   764: aload_1
     //   765: aload_0
-    //   766: invokevirtual 211	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   766: invokevirtual 219	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   769: pop
     //   770: aload_3
     //   771: monitorexit
@@ -563,16 +563,16 @@ public class ThirdAppConfigHelper
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("saveNewKey, ");
-      localStringBuilder.append(paramThirdAppConfig.jdField_b_of_type_Long);
+      localStringBuilder.append(paramThirdAppConfig.i);
       localStringBuilder.append(" to ");
-      localStringBuilder.append(paramThirdAppConfig.d);
+      localStringBuilder.append(paramThirdAppConfig.l);
       QLog.d("OpenApi.Config", 2, localStringBuilder.toString());
     }
-    if (paramThirdAppConfig.jdField_b_of_type_Boolean)
+    if (paramThirdAppConfig.j)
     {
-      paramThirdAppConfig.jdField_b_of_type_Long = paramThirdAppConfig.d;
-      paramThirdAppConfig.jdField_a_of_type_Long = paramThirdAppConfig.jdField_c_of_type_Long;
-      paramThirdAppConfig.jdField_b_of_type_Boolean = false;
+      paramThirdAppConfig.i = paramThirdAppConfig.l;
+      paramThirdAppConfig.h = paramThirdAppConfig.k;
+      paramThirdAppConfig.j = false;
       b(paramContext, paramThirdAppConfig);
     }
   }
@@ -608,22 +608,22 @@ public class ThirdAppConfigHelper
   
   private static ThirdAppConfigHelper.ThirdAppConfig b(Context paramContext, String paramString)
   {
-    int j = jdField_a_of_type_ArrayOfJavaLangString.length;
+    int j = a.length;
     int i = 0;
     while (i < j)
     {
-      if (jdField_a_of_type_ArrayOfJavaLangString[i].equals(paramString))
+      if (a[i].equals(paramString))
       {
         ThirdAppConfigHelper.ThirdAppConfig localThirdAppConfig = new ThirdAppConfigHelper.ThirdAppConfig();
-        localThirdAppConfig.jdField_a_of_type_JavaLangString = paramString;
-        localThirdAppConfig.jdField_a_of_type_Boolean = true;
-        localThirdAppConfig.jdField_b_of_type_JavaLangString = b[i];
-        localThirdAppConfig.jdField_c_of_type_JavaLangString = c[i];
-        localThirdAppConfig.jdField_b_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-        localThirdAppConfig.jdField_a_of_type_Long = new Random().nextLong();
-        localThirdAppConfig.jdField_a_of_type_Int = 1073741823;
-        localThirdAppConfig.jdField_b_of_type_Int = 2147483647;
-        localThirdAppConfig.jdField_c_of_type_Int = 7;
+        localThirdAppConfig.a = paramString;
+        localThirdAppConfig.b = true;
+        localThirdAppConfig.c = b[i];
+        localThirdAppConfig.d = c[i];
+        localThirdAppConfig.i = NetConnInfoCenter.getServerTimeMillis();
+        localThirdAppConfig.h = new Random().nextLong();
+        localThirdAppConfig.e = 1073741823;
+        localThirdAppConfig.f = 2147483647;
+        localThirdAppConfig.g = 7;
         b(paramContext, localThirdAppConfig);
         return localThirdAppConfig;
       }
@@ -638,15 +638,15 @@ public class ThirdAppConfigHelper
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 19	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   3: getstatic 20	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:d	Ljava/util/HashMap;
     //   6: astore_2
     //   7: aload_2
     //   8: monitorenter
-    //   9: getstatic 19	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   9: getstatic 20	com/tencent/mobileqq/openapi/ThirdAppConfigHelper:d	Ljava/util/HashMap;
     //   12: aload_1
-    //   13: getfield 114	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   13: getfield 115	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:a	Ljava/lang/String;
     //   16: aload_1
-    //   17: invokevirtual 211	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   17: invokevirtual 219	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   20: pop
     //   21: aload_2
     //   22: monitorexit
@@ -656,88 +656,88 @@ public class ThirdAppConfigHelper
     //   27: astore_3
     //   28: aload_3
     //   29: astore_2
-    //   30: new 275	java/io/ByteArrayOutputStream
+    //   30: new 283	java/io/ByteArrayOutputStream
     //   33: dup
-    //   34: invokespecial 276	java/io/ByteArrayOutputStream:<init>	()V
+    //   34: invokespecial 284	java/io/ByteArrayOutputStream:<init>	()V
     //   37: astore 5
     //   39: aload_3
     //   40: astore_2
-    //   41: new 278	java/io/ObjectOutputStream
+    //   41: new 286	java/io/ObjectOutputStream
     //   44: dup
     //   45: aload 5
-    //   47: invokespecial 281	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   47: invokespecial 289	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   50: astore_3
     //   51: aload_3
     //   52: aload_1
-    //   53: getfield 114	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   56: invokevirtual 285	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   53: getfield 115	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:a	Ljava/lang/String;
+    //   56: invokevirtual 293	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   59: aload_3
     //   60: aload_1
-    //   61: getfield 120	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_a_of_type_Boolean	Z
-    //   64: invokevirtual 289	java/io/ObjectOutputStream:writeBoolean	(Z)V
+    //   61: getfield 121	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:b	Z
+    //   64: invokevirtual 297	java/io/ObjectOutputStream:writeBoolean	(Z)V
     //   67: aload_1
-    //   68: getfield 120	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_a_of_type_Boolean	Z
+    //   68: getfield 121	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:b	Z
     //   71: ifeq +59 -> 130
     //   74: aload_3
     //   75: aload_1
-    //   76: getfield 122	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   79: invokevirtual 285	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   76: getfield 123	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:c	Ljava/lang/String;
+    //   79: invokevirtual 293	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   82: aload_3
     //   83: aload_1
-    //   84: getfield 124	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   87: invokevirtual 285	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   84: getfield 125	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:d	Ljava/lang/String;
+    //   87: invokevirtual 293	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   90: aload_3
     //   91: aload_1
-    //   92: getfield 131	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_a_of_type_Int	I
-    //   95: invokevirtual 293	java/io/ObjectOutputStream:writeInt	(I)V
+    //   92: getfield 133	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:e	I
+    //   95: invokevirtual 301	java/io/ObjectOutputStream:writeInt	(I)V
     //   98: aload_3
     //   99: aload_1
-    //   100: getfield 133	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_b_of_type_Int	I
-    //   103: invokevirtual 293	java/io/ObjectOutputStream:writeInt	(I)V
+    //   100: getfield 136	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:f	I
+    //   103: invokevirtual 301	java/io/ObjectOutputStream:writeInt	(I)V
     //   106: aload_3
     //   107: aload_1
-    //   108: getfield 135	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_c_of_type_Int	I
-    //   111: invokevirtual 293	java/io/ObjectOutputStream:writeInt	(I)V
+    //   108: getfield 139	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:g	I
+    //   111: invokevirtual 301	java/io/ObjectOutputStream:writeInt	(I)V
     //   114: aload_3
     //   115: aload_1
-    //   116: getfield 141	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_b_of_type_Long	J
-    //   119: invokevirtual 297	java/io/ObjectOutputStream:writeLong	(J)V
+    //   116: getfield 146	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:i	J
+    //   119: invokevirtual 305	java/io/ObjectOutputStream:writeLong	(J)V
     //   122: aload_3
     //   123: aload_1
-    //   124: getfield 143	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_a_of_type_Long	J
-    //   127: invokevirtual 297	java/io/ObjectOutputStream:writeLong	(J)V
+    //   124: getfield 149	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:h	J
+    //   127: invokevirtual 305	java/io/ObjectOutputStream:writeLong	(J)V
     //   130: aload_3
-    //   131: invokevirtual 300	java/io/ObjectOutputStream:flush	()V
+    //   131: invokevirtual 308	java/io/ObjectOutputStream:flush	()V
     //   134: aload_0
-    //   135: invokevirtual 64	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   135: invokevirtual 65	android/content/Context:getFilesDir	()Ljava/io/File;
     //   138: astore_0
-    //   139: new 66	java/lang/StringBuilder
+    //   139: new 67	java/lang/StringBuilder
     //   142: dup
-    //   143: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   143: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   146: astore_2
     //   147: aload_2
     //   148: aload_1
-    //   149: getfield 114	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   152: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: getfield 115	com/tencent/mobileqq/openapi/ThirdAppConfigHelper$ThirdAppConfig:a	Ljava/lang/String;
+    //   152: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: pop
     //   156: aload_2
-    //   157: ldc 73
-    //   159: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: ldc 74
+    //   159: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   162: pop
-    //   163: new 75	java/io/File
+    //   163: new 76	java/io/File
     //   166: dup
     //   167: aload_0
     //   168: aload_2
-    //   169: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   172: invokespecial 82	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   175: invokevirtual 303	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   169: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   172: invokespecial 83	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   175: invokevirtual 311	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   178: aload 5
-    //   180: invokevirtual 304	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   180: invokevirtual 312	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   183: iconst_0
-    //   184: invokestatic 308	com/tencent/mobileqq/utils/FileUtils:pushData2File	(Ljava/lang/String;[BZ)Z
+    //   184: invokestatic 316	com/tencent/mobileqq/utils/FileUtils:pushData2File	(Ljava/lang/String;[BZ)Z
     //   187: pop
     //   188: aload_3
-    //   189: invokevirtual 309	java/io/ObjectOutputStream:close	()V
+    //   189: invokevirtual 317	java/io/ObjectOutputStream:close	()V
     //   192: goto +51 -> 243
     //   195: astore_0
     //   196: goto +51 -> 247
@@ -754,26 +754,26 @@ public class ThirdAppConfigHelper
     //   214: astore_0
     //   215: aload_0
     //   216: astore_2
-    //   217: invokestatic 174	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   217: invokestatic 182	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   220: ifeq +15 -> 235
     //   223: aload_0
     //   224: astore_2
-    //   225: ldc 183
+    //   225: ldc 191
     //   227: iconst_2
-    //   228: ldc_w 311
+    //   228: ldc_w 319
     //   231: aload_1
-    //   232: invokestatic 202	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   232: invokestatic 210	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   235: aload_0
     //   236: ifnull +7 -> 243
     //   239: aload_0
-    //   240: invokevirtual 309	java/io/ObjectOutputStream:close	()V
+    //   240: invokevirtual 317	java/io/ObjectOutputStream:close	()V
     //   243: ldc 2
     //   245: monitorexit
     //   246: return
     //   247: aload_3
     //   248: ifnull +7 -> 255
     //   251: aload_3
-    //   252: invokevirtual 309	java/io/ObjectOutputStream:close	()V
+    //   252: invokevirtual 317	java/io/ObjectOutputStream:close	()V
     //   255: aload_0
     //   256: athrow
     //   257: astore_0
@@ -825,7 +825,7 @@ public class ThirdAppConfigHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.openapi.ThirdAppConfigHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -8,25 +8,25 @@ import android.widget.LinearLayout.LayoutParams;
 public class StructMsgGroupItemElement$ReduceAnimation
   extends Animation
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ViewGroup a;
+  int b;
   
   public StructMsgGroupItemElement$ReduceAnimation(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+    this.a = paramViewGroup;
+    this.b = this.a.getHeight();
   }
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * (1.0F - paramFloat)));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+    paramTransformation = (LinearLayout.LayoutParams)this.a.getLayoutParams();
+    paramTransformation.height = ((int)(this.b * (1.0F - paramFloat)));
+    this.a.setLayoutParams(paramTransformation);
     if (paramFloat == 1.0F)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      paramTransformation.height = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+      this.a.setVisibility(8);
+      paramTransformation.height = this.b;
+      this.a.setLayoutParams(paramTransformation);
     }
   }
   
@@ -37,7 +37,7 @@ public class StructMsgGroupItemElement$ReduceAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgGroupItemElement.ReduceAnimation
  * JD-Core Version:    0.7.0.1
  */

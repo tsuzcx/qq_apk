@@ -21,67 +21,67 @@ class GrayTipsItemBuilder$24
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangString.compareToIgnoreCase("makePhoneCall") == 0)
+    if (this.a.compareToIgnoreCase("makePhoneCall") == 0)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Safe_SensMsg", this.jdField_b_of_type_JavaLangString, "Tips_Click", "makePhoneCall", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "", "", "");
+      ReportController.b(this.m.a, "P_CliOper", "Safe_SensMsg", this.b, "Tips_Click", "makePhoneCall", this.c, this.d, "", "", "", "");
       paramView = new StringBuilder();
       paramView.append("tel:");
-      paramView.append(this.jdField_c_of_type_JavaLangString);
+      paramView.append(this.e);
       paramView = new Intent("android.intent.action.DIAL", Uri.parse(paramView.toString()));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      this.m.c.startActivity(paramView);
       return;
     }
-    if (this.jdField_a_of_type_JavaLangString.compareToIgnoreCase("showAlert") == 0)
+    if (this.a.compareToIgnoreCase("showAlert") == 0)
     {
-      paramView = this.jdField_a_of_type_AndroidOsBundle.getString("AlertTitle");
-      String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("AlertText");
-      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("AlertOtherBtnText");
-      String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("AlertCancelBtnText");
-      MQPSensitiveMsgUtil.a(this.jdField_d_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_Long, paramView, str1, str2, str3);
+      paramView = this.f.getString("AlertTitle");
+      String str1 = this.f.getString("AlertText");
+      String str2 = this.f.getString("AlertOtherBtnText");
+      String str3 = this.f.getString("AlertCancelBtnText");
+      MQPSensitiveMsgUtil.a(this.g, this.h, this.i, paramView, str1, str2, str3);
       return;
     }
-    if (this.jdField_a_of_type_JavaLangString.compareToIgnoreCase("openURL") == 0)
+    if (this.a.compareToIgnoreCase("openURL") == 0)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Safe_SensMsg", this.jdField_b_of_type_JavaLangString, "Tips_Click", "openURL", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "", "", "");
-      GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, this.jdField_a_of_type_AndroidOsBundle);
+      ReportController.b(this.m.a, "P_CliOper", "Safe_SensMsg", this.b, "Tips_Click", "openURL", this.c, this.d, "", "", "", "");
+      GrayTipsItemBuilder.a(this.m, this.f);
       return;
     }
-    if (this.jdField_a_of_type_JavaLangString.compareToIgnoreCase("transfer") == 0)
+    if (this.a.compareToIgnoreCase("transfer") == 0)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Safe_SensMsg", this.jdField_b_of_type_JavaLangString, "Tips_Click", "transfer", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "", "", "");
-      GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, this.e, this.jdField_d_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString);
+      ReportController.b(this.m.a, "P_CliOper", "Safe_SensMsg", this.b, "Tips_Click", "transfer", this.c, this.d, "", "", "", "");
+      GrayTipsItemBuilder.a(this.m, this.j, this.k, this.b, this.g);
       return;
     }
-    if (this.jdField_a_of_type_JavaLangString.compareToIgnoreCase("openDeviceLock") == 0)
+    if (this.a.compareToIgnoreCase("openDeviceLock") == 0)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Safe_SensMsg", this.jdField_b_of_type_JavaLangString, "Tips_Click", "openDeviceLock", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "", "", "");
+      ReportController.b(this.m.a, "P_CliOper", "Safe_SensMsg", this.b, "Tips_Click", "openDeviceLock", this.c, this.d, "", "", "", "");
       paramView = new Intent();
       paramView.setFlags(268435456);
       paramView.setAction("android.intent.action.VIEW");
       paramView.putExtra("devlock_open_source", "Graytips");
       paramView.putExtra("enable_open_allowset_dev", true);
       paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      this.m.c.startActivity(paramView);
       return;
     }
-    if (this.jdField_a_of_type_JavaLangString.compareToIgnoreCase("tipOff") == 0)
+    if (this.a.compareToIgnoreCase("tipOff") == 0)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Safe_SensMsg", this.jdField_b_of_type_JavaLangString, "Tips_Click", "tipOff", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "", "", "");
-      NewReportPlugin.a((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ReportController.b(this.m.a, "P_CliOper", "Safe_SensMsg", this.b, "Tips_Click", "tipOff", this.c, this.d, "", "", "", "");
+      NewReportPlugin.a((BaseActivity)this.m.c, this.m.d.a, this.m.d.b, this.m.a.getCurrentAccountUin());
       return;
     }
-    if ((this.jdField_a_of_type_JavaLangString.compareToIgnoreCase("QQCall") != 0) && (this.jdField_a_of_type_JavaLangString.compareToIgnoreCase("videoCall") != 0))
+    if ((this.a.compareToIgnoreCase("QQCall") != 0) && (this.a.compareToIgnoreCase("videoCall") != 0))
     {
-      if (this.jdField_a_of_type_JavaLangString.compareToIgnoreCase("luckyMoney") == 0)
+      if (this.a.compareToIgnoreCase("luckyMoney") == 0)
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Safe_SensMsg", this.jdField_b_of_type_JavaLangString, "Tips_Click", "luckyMoney", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "", "", "");
-        GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, this.jdField_d_of_type_Int);
+        ReportController.b(this.m.a, "P_CliOper", "Safe_SensMsg", this.b, "Tips_Click", "luckyMoney", this.c, this.d, "", "", "", "");
+        GrayTipsItemBuilder.a(this.m, this.k);
       }
     }
     else
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Safe_SensMsg", this.jdField_b_of_type_JavaLangString, "Tips_Click", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "", "", "");
-      GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, this.e, this.jdField_d_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, this.f, this.jdField_a_of_type_JavaLangString);
+      ReportController.b(this.m.a, "P_CliOper", "Safe_SensMsg", this.b, "Tips_Click", this.a, this.c, this.d, "", "", "", "");
+      GrayTipsItemBuilder.a(this.m, this.j, this.k, this.b, this.g, this.l, this.a);
     }
   }
   
@@ -92,7 +92,7 @@ class GrayTipsItemBuilder$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.24
  * JD-Core Version:    0.7.0.1
  */

@@ -11,11 +11,11 @@ class QidianProfileCardActivity$9
   
   public void run()
   {
-    int k = this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int;
+    int k = this.a.c;
     int j = 1;
     int i = j;
     if (k != 1) {
-      if (this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int == 2) {
+      if (this.a.c == 2) {
         i = j;
       } else {
         i = 0;
@@ -23,17 +23,17 @@ class QidianProfileCardActivity$9
     }
     String str;
     if (i != 0) {
-      str = this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.c;
+      str = this.a.f;
     } else {
-      str = this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_JavaLangString;
+      str = this.a.a;
     }
-    this.this$0.a.put(this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_JavaLangString, new QidianProfileCardActivity.PaGroupStruct(this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int, str));
-    this.this$0.a(this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
+    this.this$0.h.put(this.a.a, new QidianProfileCardActivity.PaGroupStruct(this.b, this.a.c, str));
+    this.this$0.a(this.a.c, this.b, str, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.9
  * JD-Core Version:    0.7.0.1
  */

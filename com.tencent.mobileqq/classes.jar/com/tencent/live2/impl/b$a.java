@@ -1,0 +1,19 @@
+package com.tencent.live2.impl;
+
+public class b$a
+{
+  public int a;
+  public int b;
+  
+  public b$a(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.live2.impl.b.a
+ * JD-Core Version:    0.7.0.1
+ */

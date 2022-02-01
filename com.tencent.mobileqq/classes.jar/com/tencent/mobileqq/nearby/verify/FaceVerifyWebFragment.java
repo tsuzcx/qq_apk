@@ -18,8 +18,8 @@ public class FaceVerifyWebFragment
   extends WebViewFragment
   implements IWebViewFragmentInitor
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "android.permission.CAMERA", "android.permission.ACCESS_WIFI_STATE", "android.permission.ACCESS_NETWORK_STATE", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.RECORD_AUDIO" };
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+  private static final String[] a = { "android.permission.CAMERA", "android.permission.ACCESS_WIFI_STATE", "android.permission.ACCESS_NETWORK_STATE", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.RECORD_AUDIO" };
+  private QQCustomDialog b;
   
   public static FaceVerifyWebFragment a(Intent paramIntent)
   {
@@ -38,17 +38,17 @@ public class FaceVerifyWebFragment
     }
     AppActivity localAppActivity = (AppActivity)getActivity();
     if (localAppActivity != null) {
-      localAppActivity.requestPermissions(new FaceVerifyWebFragment.1(this), 111, jdField_a_of_type_ArrayOfJavaLangString);
+      localAppActivity.requestPermissions(new FaceVerifyWebFragment.1(this), 111, a);
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(getActivity(), 230, null, HardCodeUtil.a(2131707126), HardCodeUtil.a(2131707125), HardCodeUtil.a(2131707127), new FaceVerifyWebFragment.2(this), new FaceVerifyWebFragment.3(this));
+    if (this.b == null) {
+      this.b = DialogUtil.a(getActivity(), 230, null, HardCodeUtil.a(1946615847), HardCodeUtil.a(1946615846), HardCodeUtil.a(1946615848), new FaceVerifyWebFragment.2(this), new FaceVerifyWebFragment.3(this));
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    if (!this.b.isShowing()) {
+      this.b.show();
     }
   }
   
@@ -81,7 +81,7 @@ public class FaceVerifyWebFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.verify.FaceVerifyWebFragment
  * JD-Core Version:    0.7.0.1
  */

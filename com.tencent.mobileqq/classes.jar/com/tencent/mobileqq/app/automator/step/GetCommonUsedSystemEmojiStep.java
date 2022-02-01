@@ -18,18 +18,18 @@ public class GetCommonUsedSystemEmojiStep
 {
   protected int doStep()
   {
-    SharedPreferences localSharedPreferences = this.mAutomator.a.getApp().getSharedPreferences("commonUsedSystemEmoji_sp", 0);
+    SharedPreferences localSharedPreferences = this.mAutomator.k.getApp().getSharedPreferences("commonUsedSystemEmoji_sp", 0);
     long l = localSharedPreferences.getLong("lastRequestTime", 0L);
-    IEmoticonHandler localIEmoticonHandler = (IEmoticonHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM);
+    IEmoticonHandler localIEmoticonHandler = (IEmoticonHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM);
     File localFile = BaseApplicationImpl.sApplication.getFilesDir();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("commonusedSystemEmojiInfoFile_v2_");
-    ((StringBuilder)localObject).append(this.mAutomator.a.getCurrentAccountUin());
+    ((StringBuilder)localObject).append(this.mAutomator.k.getCurrentAccountUin());
     localFile = new File(localFile, ((StringBuilder)localObject).toString());
     localObject = BaseApplicationImpl.sApplication.getFilesDir();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("commonusedSystemEmojiInfoFile_v3_");
-    localStringBuilder.append(this.mAutomator.a.getCurrentAccountUin());
+    localStringBuilder.append(this.mAutomator.k.getCurrentAccountUin());
     localObject = new File((File)localObject, localStringBuilder.toString());
     if ((!localFile.exists()) && (!((File)localObject).exists()))
     {
@@ -39,14 +39,14 @@ public class GetCommonUsedSystemEmojiStep
       return 7;
     }
     if ((localFile.exists()) && (!((File)localObject).exists())) {
-      ((ICommonUsedSystemEmojiManagerService)this.mAutomator.a.getRuntimeService(ICommonUsedSystemEmojiManagerService.class)).copySystemEmojiFileToFileV2(localFile, (File)localObject);
+      ((ICommonUsedSystemEmojiManagerService)this.mAutomator.k.getRuntimeService(ICommonUsedSystemEmojiManagerService.class)).copySystemEmojiFileToFileV2(localFile, (File)localObject);
     }
     if ((System.currentTimeMillis() - l <= 43200000L) && (System.currentTimeMillis() - l >= 0L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "GetCommonUsedSystemEmojiStep updateCacheFromFile");
       }
-      ((ICommonUsedSystemEmojiManagerService)this.mAutomator.a.getRuntimeService(ICommonUsedSystemEmojiManagerService.class)).getLocalSystemEmojiInfoFromFile();
+      ((ICommonUsedSystemEmojiManagerService)this.mAutomator.k.getRuntimeService(ICommonUsedSystemEmojiManagerService.class)).getLocalSystemEmojiInfoFromFile();
       return 7;
     }
     if (QLog.isColorLevel()) {
@@ -59,7 +59,7 @@ public class GetCommonUsedSystemEmojiStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetCommonUsedSystemEmojiStep
  * JD-Core Version:    0.7.0.1
  */

@@ -16,9 +16,9 @@ class QCircleMsgProcessor$QCircleMsgTask$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      localObject = this.jdField_a_of_type_JavaLangObject;
+      localObject = this.b;
       if ((localObject instanceof QQCircleCountergroup.GetGroupCountRsp))
       {
         localObject = (QQCircleCountergroup.GetGroupCountRsp)localObject;
@@ -27,10 +27,10 @@ class QCircleMsgProcessor$QCircleMsgTask$1$1
         }
         if ((((QQCircleCountergroup.GetGroupCountRsp)localObject).count.get() >= 1) && (!TextUtils.isEmpty(((QQCircleCountergroup.GetGroupCountRsp)localObject).content.get())))
         {
-          QCircleMsgProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgQCircleMsgProcessor$QCircleMsgTask$1.a.this$0, (QQCircleCountergroup.GetGroupCountRsp)localObject);
-          QCircleMsgProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgQCircleMsgProcessor$QCircleMsgTask$1.a.this$0, NetConnInfoCenter.getServerTimeMillis() / 1000L);
-          QCircleMsgProcessor.b(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgQCircleMsgProcessor$QCircleMsgTask$1.a.this$0, ((QQCircleCountergroup.GetGroupCountRsp)localObject).timeInterval.get());
-          ReportController.b(null, "dc00898", "", String.valueOf(QCircleMsgProcessor.QCircleMsgTask.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgQCircleMsgProcessor$QCircleMsgTask$1.a)), "0X800B24E", "0X800B24E", 0, 0, "", "", "", "");
+          QCircleMsgProcessor.a(this.e.a.this$0, (QQCircleCountergroup.GetGroupCountRsp)localObject);
+          QCircleMsgProcessor.a(this.e.a.this$0, NetConnInfoCenter.getServerTimeMillis() / 1000L);
+          QCircleMsgProcessor.b(this.e.a.this$0, ((QQCircleCountergroup.GetGroupCountRsp)localObject).timeInterval.get());
+          ReportController.b(null, "dc00898", "", String.valueOf(QCircleMsgProcessor.QCircleMsgTask.a(this.e.a)), "0X800B24E", "0X800B24E", 0, 0, "", "", "", "");
           return;
         }
         QLog.d("QCircleMsgProcessor", 2, "rsp.count.get() < 1 || TextUtils.isEmpty(rsp.content.get())");
@@ -39,15 +39,15 @@ class QCircleMsgProcessor$QCircleMsgTask$1$1
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("retCode:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.c);
     ((StringBuilder)localObject).append(", errMsg:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.d);
     QLog.e("QCircleMsgProcessor", 2, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.QCircleMsgProcessor.QCircleMsgTask.1.1
  * JD-Core Version:    0.7.0.1
  */

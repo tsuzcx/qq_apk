@@ -21,28 +21,28 @@ final class PublicAccountEventReport$13
       localObject = "";
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localTianShuReportData.jdField_e_of_type_JavaLangString = "vab_push";
-    localTianShuReportData.jdField_f_of_type_JavaLangString = "vab_push";
+    localTianShuReportData.f = "vab_push";
+    localTianShuReportData.g = "vab_push";
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("_");
     localStringBuilder.append(l);
-    localTianShuReportData.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-    localTianShuReportData.jdField_a_of_type_Int = 1;
-    localTianShuReportData.g = this.jdField_a_of_type_JavaLangString;
-    localTianShuReportData.h = "";
-    localTianShuReportData.jdField_a_of_type_Long = l;
-    localTianShuReportData.d = this.jdField_a_of_type_Int;
-    localTianShuReportData.k = Integer.toString(this.jdField_b_of_type_Int);
-    localTianShuReportData.jdField_e_of_type_Int = 1;
-    localTianShuReportData.jdField_f_of_type_Int = this.c;
-    localTianShuReportData.l = this.jdField_b_of_type_JavaLangString;
+    localTianShuReportData.b = localStringBuilder.toString();
+    localTianShuReportData.c = 1;
+    localTianShuReportData.h = this.a;
+    localTianShuReportData.i = "";
+    localTianShuReportData.o = l;
+    localTianShuReportData.p = this.b;
+    localTianShuReportData.l = Integer.toString(this.c);
+    localTianShuReportData.q = 1;
+    localTianShuReportData.r = this.d;
+    localTianShuReportData.s = this.e;
     TianShuManager.getInstance().report(localTianShuReportData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport.13
  * JD-Core Version:    0.7.0.1
  */

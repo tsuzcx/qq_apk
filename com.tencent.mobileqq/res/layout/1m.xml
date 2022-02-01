@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/qd8" android:background="@color/fu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/qda" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <ImageView android:id="@id/qd9" android:clickable="true" android:layout_width="fill_parent" android:layout_height="420.0dip" android:scaleType="fitCenter" />
+        <ImageView android:id="@id/qd_" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/1y" android:layout_below="@id/qd9" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -19,7 +19,7 @@ class EffectConfigBase$1
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.a.obtainMessage(2, (int)(paramLong1 * 100L / paramLong2), 0, this.jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase).sendToTarget();
+    this.c.g.obtainMessage(2, (int)(paramLong1 * 100L / paramLong2), 0, this.b).sendToTarget();
   }
 }
 

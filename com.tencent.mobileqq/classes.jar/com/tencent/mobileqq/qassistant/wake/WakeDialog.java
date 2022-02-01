@@ -16,35 +16,35 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 public class WakeDialog
   extends ReportDialog
 {
-  public static boolean a = false;
+  public static boolean b = false;
   protected Context a;
   
   public WakeDialog(@NonNull Context paramContext, boolean paramBoolean)
   {
-    super(paramContext, 2131755376);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramContext, 2131952084);
+    this.a = paramContext;
     setCanceledOnTouchOutside(true);
-    jdField_a_of_type_Boolean = paramBoolean;
+    b = paramBoolean;
   }
   
   public void dismiss()
   {
-    jdField_a_of_type_Boolean = false;
+    b = false;
     super.dismiss();
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561579, null);
+    paramBundle = LayoutInflater.from(this.a).inflate(2131627940, null);
     setContentView(paramBundle);
     Object localObject = paramBundle.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject).width = paramBundle.getResources().getDisplayMetrics().widthPixels;
     paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = getWindow();
-    ((Window)localObject).setWindowAnimations(2131755930);
+    ((Window)localObject).setWindowAnimations(2131953051);
     ((Window)localObject).setGravity(80);
-    ((ImageView)paramBundle.findViewById(2131362936)).setOnClickListener(new WakeDialog.1(this));
+    ((ImageView)paramBundle.findViewById(2131428735)).setOnClickListener(new WakeDialog.1(this));
   }
   
   public void show()
@@ -54,7 +54,7 @@ public class WakeDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.WakeDialog
  * JD-Core Version:    0.7.0.1
  */

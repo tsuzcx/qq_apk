@@ -24,14 +24,14 @@ class NearbyProfileEditPanel$17
           return 0;
         }
         Calendar localCalendar = Calendar.getInstance();
-        localCalendar.set(1, this.a.f + 1896);
-        localCalendar.set(2, this.a.g);
+        localCalendar.set(1, this.a.P + 1896);
+        localCalendar.set(2, this.a.Q);
         localCalendar.set(5, 1);
         return localCalendar.getActualMaximum(5);
       }
       return 12;
     }
-    return this.a.c - 1896 + 1;
+    return this.a.M - 1896 + 1;
   }
   
   public String getText(int paramInt1, int paramInt2)
@@ -45,23 +45,23 @@ class NearbyProfileEditPanel$17
         }
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramInt2 + 1);
-        localStringBuilder.append(HardCodeUtil.a(2131707374));
+        localStringBuilder.append(HardCodeUtil.a(2131905194));
         return localStringBuilder.toString();
       }
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramInt2 + 1);
-      localStringBuilder.append(HardCodeUtil.a(2131707392));
+      localStringBuilder.append(HardCodeUtil.a(2131905210));
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt2 + 1896);
-    localStringBuilder.append(HardCodeUtil.a(2131707289));
+    localStringBuilder.append(HardCodeUtil.a(2131905114));
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.17
  * JD-Core Version:    0.7.0.1
  */

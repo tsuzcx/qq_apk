@@ -29,8 +29,8 @@ public class RecentManagerFor3rdPart
     Object localObject = this.a;
     if ((localObject != null) && (((QQAppInterface)localObject).isAccLoginSuccess()))
     {
-      localObject = this.a.getProxyManager().a();
-      RecentUser localRecentUser = ((RecentUserProxy)localObject).a(paramString1, paramInt);
+      localObject = this.a.getProxyManager().g();
+      RecentUser localRecentUser = ((RecentUserProxy)localObject).b(paramString1, paramInt);
       localRecentUser.uin = paramString1;
       localRecentUser.setType(paramInt);
       localRecentUser.displayName = paramString2;
@@ -48,7 +48,7 @@ public class RecentManagerFor3rdPart
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RecentManagerFor3rdPart
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ import java.util.List;
 public class DragRecyclerView
   extends RecyclerView
 {
-  int SCROLL_OFFSET = ViewUtils.a(20.0F);
+  int SCROLL_OFFSET = ViewUtils.dip2px(20.0F);
   boolean autoScrollEnable = false;
   int autoScrollOffsetX = 0;
   boolean autoScrollStatus = false;
@@ -129,7 +129,7 @@ public class DragRecyclerView
     if (!this.isDragging) {
       return;
     }
-    if ((Math.abs(this.lastDragX - paramInt1) < ViewUtils.b(3.0F)) && (Math.abs(this.lastDragY - paramInt2) < ViewUtils.b(3.0F))) {
+    if ((Math.abs(this.lastDragX - paramInt1) < ViewUtils.dpToPx(3.0F)) && (Math.abs(this.lastDragY - paramInt2) < ViewUtils.dpToPx(3.0F))) {
       return;
     }
     this.lastDragX = paramInt1;
@@ -138,7 +138,7 @@ public class DragRecyclerView
     if (localOnItemChangeListener != null) {
       localOnItemChangeListener.onDragMove(this.lastDragX, this.lastDragY);
     }
-    if (paramInt2 >= getHeight() - getResources().getDimensionPixelSize(2131296939)) {
+    if (paramInt2 >= getHeight() - getResources().getDimensionPixelSize(2131297319)) {
       this.mCanAutoScroll = true;
     } else {
       this.mCanAutoScroll = false;
@@ -384,7 +384,7 @@ public class DragRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,14 +6,8 @@ import java.util.List;
 
 public class OrientationCalculator
 {
-  private Matrix4 jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
-  private Vector3 jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector3 = new Vector3();
-  private Vector4 jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector4 = new Vector4();
-  private ArrayList<Vector3> jdField_a_of_type_JavaUtilArrayList = new ArrayList(793);
-  private List<Vector3> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Matrix4 jdField_b_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
-  private Vector3 jdField_b_of_type_ComTencentMobileqqArmapSensorRotationVector3 = new Vector3();
-  private ArrayList<Vector3> jdField_b_of_type_JavaUtilArrayList = null;
+  private ArrayList<Vector3> a = new ArrayList(793);
+  private Vector3 b = new Vector3();
   private Vector3 c = new Vector3();
   private Vector3 d = new Vector3();
   private Vector3 e = new Vector3();
@@ -23,62 +17,68 @@ public class OrientationCalculator
   private Vector3 i = new Vector3();
   private Vector3 j = new Vector3();
   private Vector3 k = new Vector3();
+  private Vector3 l = new Vector3();
+  private Matrix4 m = new Matrix4();
+  private Matrix4 n = new Matrix4();
+  private List<Vector3> o = new ArrayList();
+  private Vector4 p = new Vector4();
+  private ArrayList<Vector3> q = null;
   
   public OrientationCalculator()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4.setToOrtho2D(0.0F, 0.0F, 1.0F, -1.0F);
-    int m = 0;
-    while (m < 792)
+    this.m.setToOrtho2D(0.0F, 0.0F, 1.0F, -1.0F);
+    int i1 = 0;
+    while (i1 < 792)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(new Vector3());
-      m += 1;
+      this.a.add(new Vector3());
+      i1 += 1;
     }
-    this.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_JavaUtilList.add(this.e);
-    this.jdField_a_of_type_JavaUtilList.add(this.f);
-    this.jdField_a_of_type_JavaUtilList.add(this.g);
+    this.o.addAll(this.a);
+    this.o.add(this.f);
+    this.o.add(this.g);
+    this.o.add(this.h);
   }
   
   private void a()
   {
-    this.e.set(0.0F, 0.0F, 1.0F);
-    this.f.set(0.0F, 0.0F, -1.0F);
-    Object localObject = this.jdField_b_of_type_JavaUtilArrayList;
-    int m = 0;
+    this.f.set(0.0F, 0.0F, 1.0F);
+    this.g.set(0.0F, 0.0F, -1.0F);
+    Object localObject = this.q;
+    int i1 = 0;
     if (localObject == null)
     {
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(793);
-      m = 0;
-      while (m < 11)
+      this.q = new ArrayList(793);
+      i1 = 0;
+      while (i1 < 11)
       {
-        n = (m - 5) * 15;
-        float f1 = (float)Math.cos(n * 0.01745329F);
-        float f2 = (float)Math.cos((90 - n) * 0.01745329F);
-        n = 0;
-        while (n < 72)
+        i2 = (i1 - 5) * 15;
+        float f1 = (float)Math.cos(i2 * 0.01745329F);
+        float f2 = (float)Math.cos((90 - i2) * 0.01745329F);
+        i2 = 0;
+        while (i2 < 72)
         {
-          double d1 = n * 5 * 0.01745329F;
+          double d1 = i2 * 5 * 0.01745329F;
           localObject = new Vector3((float)Math.sin(d1) * f1 * 1.0F, -(float)Math.cos(d1) * f1 * 1.0F, f2 * 1.0F);
-          this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
-          ((Vector3)this.jdField_a_of_type_JavaUtilArrayList.get(m * 72 + n)).set((Vector3)localObject);
-          n += 1;
+          this.q.add(localObject);
+          ((Vector3)this.a.get(i1 * 72 + i2)).set((Vector3)localObject);
+          i2 += 1;
         }
-        m += 1;
+        i1 += 1;
       }
     }
-    int n = this.jdField_a_of_type_JavaUtilArrayList.size();
-    while (m < n)
+    int i2 = this.a.size();
+    while (i1 < i2)
     {
-      ((Vector3)this.jdField_a_of_type_JavaUtilArrayList.get(m)).set((Vector3)this.jdField_b_of_type_JavaUtilArrayList.get(m));
-      m += 1;
+      ((Vector3)this.a.get(i1)).set((Vector3)this.q.get(i1));
+      i1 += 1;
     }
-    this.g.set((Vector3)this.jdField_a_of_type_JavaUtilArrayList.get(360));
+    this.h.set((Vector3)this.a.get(360));
   }
   
   public void a(Matrix4 paramMatrix4, int paramInt)
   {
     a();
-    this.jdField_b_of_type_ComTencentMobileqqArmapSensorRotationMatrix4.idt().mul(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4).mul(paramMatrix4);
+    this.n.idt().mul(this.m).mul(paramMatrix4);
     Vector3 localVector3;
     if ((paramInt != 0) && (paramInt != 1)) {
       if (paramInt != 2)
@@ -87,41 +87,41 @@ public class OrientationCalculator
       }
       else
       {
-        paramMatrix4 = this.jdField_a_of_type_JavaUtilList.iterator();
+        paramMatrix4 = this.o.iterator();
         while (paramMatrix4.hasNext())
         {
           localVector3 = (Vector3)paramMatrix4.next();
-          this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector4.a(localVector3.x, -localVector3.y, -localVector3.z, 0.0F);
-          this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector4.a(this.jdField_b_of_type_ComTencentMobileqqArmapSensorRotationMatrix4);
-          localVector3.x = (-this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector4.a * 500.0F + 500.0F);
-          localVector3.y = (-this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector4.b * 500.0F + 500.0F + 0.0F);
-          localVector3.z = (this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector4.c * 500.0F);
+          this.p.a(localVector3.x, -localVector3.y, -localVector3.z, 0.0F);
+          this.p.a(this.n);
+          localVector3.x = (-this.p.a * 500.0F + 500.0F);
+          localVector3.y = (-this.p.b * 500.0F + 500.0F + 0.0F);
+          localVector3.z = (this.p.c * 500.0F);
         }
       }
     }
-    paramMatrix4 = this.jdField_a_of_type_JavaUtilList.iterator();
+    paramMatrix4 = this.o.iterator();
     while (paramMatrix4.hasNext())
     {
       localVector3 = (Vector3)paramMatrix4.next();
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector4.a(localVector3.x, -localVector3.y, -localVector3.z, 0.0F);
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector4.a(this.jdField_b_of_type_ComTencentMobileqqArmapSensorRotationMatrix4);
-      localVector3.x = (this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector4.a * 500.0F + 500.0F);
-      localVector3.y = (this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector4.b * 500.0F + 500.0F + 0.0F);
-      localVector3.z = (this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector4.c * 500.0F);
+      this.p.a(localVector3.x, -localVector3.y, -localVector3.z, 0.0F);
+      this.p.a(this.n);
+      localVector3.x = (this.p.a * 500.0F + 500.0F);
+      localVector3.y = (this.p.b * 500.0F + 500.0F + 0.0F);
+      localVector3.z = (this.p.c * 500.0F);
     }
   }
   
   public void a(Matrix4 paramMatrix4, int paramInt, float[] paramArrayOfFloat)
   {
     a(paramMatrix4, paramInt);
-    Vector3 localVector3 = this.f;
-    this.d.set(500.0F, 500.0F, -1000.0F);
-    this.c.set(500.0F, 500.0F, 0.0F);
-    float f2 = Util.a(this.d, this.f);
-    float f3 = Util.a(this.d, this.e);
-    float f5 = Util.a(this.c, this.f);
-    float f4 = Util.a(this.c, this.d);
-    float f1 = Util.a(this.f, this.d);
+    Vector3 localVector3 = this.g;
+    this.e.set(500.0F, 500.0F, -1000.0F);
+    this.d.set(500.0F, 500.0F, 0.0F);
+    float f2 = Util.a(this.e, this.g);
+    float f3 = Util.a(this.e, this.f);
+    float f5 = Util.a(this.d, this.g);
+    float f4 = Util.a(this.d, this.e);
+    float f1 = Util.a(this.g, this.e);
     f1 = Util.a(f1, Util.a(f5, f4, f1)) * 57.29578F - 90.0F;
     if (f2 > f3) {
       f1 = -f1;
@@ -130,74 +130,74 @@ public class OrientationCalculator
     if (Float.isNaN(f1)) {
       f3 = 0.0F;
     }
-    this.d.set(500.0F, 500.0F, -1000.0F);
+    this.e.set(500.0F, 500.0F, -1000.0F);
     float f6;
     label341:
     double d1;
     if (Math.abs(f3) < 75.0F)
     {
       paramInt = 0;
-      int m = 0;
+      int i1 = 0;
       for (f1 = 3.4028235E+38F; paramInt < 792; f1 = f2)
       {
-        paramMatrix4 = (Vector3)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        n = m;
+        paramMatrix4 = (Vector3)this.a.get(paramInt);
+        i2 = i1;
         f2 = f1;
         if (paramMatrix4.z < 0.0F)
         {
-          f6 = Util.a(this.d, paramMatrix4);
-          n = m;
+          f6 = Util.a(this.e, paramMatrix4);
+          i2 = i1;
           f2 = f1;
           if (f6 < f1)
           {
             f2 = f6;
-            n = paramInt;
+            i2 = paramInt;
           }
         }
         paramInt += 1;
-        m = n;
+        i1 = i2;
       }
-      int i1 = m % 72;
-      if (i1 == 0) {
-        paramInt = m + 1;
+      int i3 = i1 % 72;
+      if (i3 == 0) {
+        paramInt = i1 + 1;
       }
-      for (int n = m + 72;; n = m - 72)
+      for (int i2 = i1 + 72;; i2 = i1 - 72)
       {
-        n -= 1;
+        i2 -= 1;
         break label341;
-        paramInt = m + 1;
+        paramInt = i1 + 1;
         if (paramInt % 72 != 0) {
           break;
         }
-        paramInt = m - 1;
+        paramInt = i1 - 1;
       }
-      n = m - 1;
-      if ((paramInt >= 0) && (n >= 0) && (paramInt < 792) && (n < 792))
+      i2 = i1 - 1;
+      if ((paramInt >= 0) && (i2 >= 0) && (paramInt < 792) && (i2 < 792))
       {
-        f2 = Util.a(this.d, (Vector3)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-        f4 = Util.a(this.d, (Vector3)this.jdField_a_of_type_JavaUtilArrayList.get(n));
+        f2 = Util.a(this.e, (Vector3)this.a.get(paramInt));
+        f4 = Util.a(this.e, (Vector3)this.a.get(i2));
         if (f2 >= f4)
         {
-          paramInt = n;
+          paramInt = i2;
           f2 = f4;
         }
-        if (paramInt < m ? ((m + 1) % 72 != 0) && (paramInt != n) : (i1 == 0) && (paramInt == n))
+        if (paramInt < i1 ? ((i1 + 1) % 72 != 0) && (paramInt != i2) : (i3 == 0) && (paramInt == i2))
         {
-          n = paramInt;
+          i2 = paramInt;
           f4 = f1;
           f1 = f2;
           f2 = f4;
         }
         else
         {
-          n = m;
+          i2 = i1;
         }
       }
       else
       {
         f1 = f5;
         f2 = f4;
-        n = 0;
+        i2 = 0;
         paramInt = 0;
       }
       paramMatrix4 = localVector3;
@@ -205,11 +205,11 @@ public class OrientationCalculator
       {
         paramMatrix4 = localVector3;
         if (paramInt >= 0) {
-          paramMatrix4 = (Vector3)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+          paramMatrix4 = (Vector3)this.a.get(paramInt);
         }
       }
-      f4 = n % 72;
-      f5 = Util.a((Vector3)this.jdField_a_of_type_JavaUtilArrayList.get(m), paramMatrix4);
+      f4 = i2 % 72;
+      f5 = Util.a((Vector3)this.a.get(i1), paramMatrix4);
       d1 = f4 * 5.0F;
       double d2 = 5.0F;
       double d3 = Math.cos(Util.b(f2, Util.a(f1, f2, f5)));
@@ -224,17 +224,17 @@ public class OrientationCalculator
     }
     else
     {
-      this.h.set(500.0F, 200.0F, 0.0F);
-      this.i.set(500.0F, 800.0F, 0.0F);
-      this.j.set(200.0F, 500.0F, 0.0F);
-      this.k.set(800.0F, 500.0F, 0.0F);
-      f1 = Util.a(this.g, this.h);
-      f6 = Util.a(this.g, this.i);
-      f4 = Util.a(this.g, this.j);
-      f5 = Util.a(this.g, this.k);
-      f2 = Util.a(this.c, this.g);
-      float f7 = Util.a(this.c, this.h);
-      float f8 = Util.a(this.g, this.h);
+      this.i.set(500.0F, 200.0F, 0.0F);
+      this.j.set(500.0F, 800.0F, 0.0F);
+      this.k.set(200.0F, 500.0F, 0.0F);
+      this.l.set(800.0F, 500.0F, 0.0F);
+      f1 = Util.a(this.h, this.i);
+      f6 = Util.a(this.h, this.j);
+      f4 = Util.a(this.h, this.k);
+      f5 = Util.a(this.h, this.l);
+      f2 = Util.a(this.d, this.h);
+      float f7 = Util.a(this.d, this.i);
+      float f8 = Util.a(this.h, this.i);
       f2 = -Util.a(f8, Util.a(f2, f7, f8)) * 57.29578F;
       if (f1 < f6)
       {
@@ -263,23 +263,23 @@ public class OrientationCalculator
     }
     if (Math.abs(f3) < 75.0F)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector3.set(500.0F, 200.0F, 0.0F);
-      this.jdField_b_of_type_ComTencentMobileqqArmapSensorRotationVector3.set(500.0F, 800.0F, 0.0F);
+      this.b.set(500.0F, 200.0F, 0.0F);
+      this.c.set(500.0F, 800.0F, 0.0F);
       if (f3 < 0.0F)
       {
-        paramMatrix4 = this.jdField_b_of_type_ComTencentMobileqqArmapSensorRotationVector3;
-        localVector3 = this.e;
+        paramMatrix4 = this.c;
+        localVector3 = this.f;
         paramInt = 0;
       }
       else
       {
-        paramMatrix4 = this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector3;
-        localVector3 = this.f;
+        paramMatrix4 = this.b;
+        localVector3 = this.g;
         paramInt = 1;
       }
-      f1 = (float)Math.sqrt((paramMatrix4.x - this.c.x) * (paramMatrix4.x - this.c.x) + (paramMatrix4.y - this.c.y) * (paramMatrix4.y - this.c.y));
+      f1 = (float)Math.sqrt((paramMatrix4.x - this.d.x) * (paramMatrix4.x - this.d.x) + (paramMatrix4.y - this.d.y) * (paramMatrix4.y - this.d.y));
       f4 = (float)Math.sqrt((paramMatrix4.x - localVector3.x) * (paramMatrix4.x - localVector3.x) + (paramMatrix4.y - localVector3.y) * (paramMatrix4.y - localVector3.y));
-      f5 = (float)Math.sqrt((this.c.x - localVector3.x) * (this.c.x - localVector3.x) + (this.c.y - localVector3.y) * (this.c.y - localVector3.y));
+      f5 = (float)Math.sqrt((this.d.x - localVector3.x) * (this.d.x - localVector3.x) + (this.d.y - localVector3.y) * (this.d.y - localVector3.y));
       f1 = (f1 * f1 + f5 * f5 - f4 * f4) / (f1 * 2.0F * f5);
       if (f1 < 1.0F)
       {
@@ -323,7 +323,7 @@ public class OrientationCalculator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.rotation.OrientationCalculator
  * JD-Core Version:    0.7.0.1
  */

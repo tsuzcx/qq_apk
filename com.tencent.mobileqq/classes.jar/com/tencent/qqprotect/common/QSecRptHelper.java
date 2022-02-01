@@ -4,31 +4,31 @@ import com.tencent.mobileqq.utils.HexUtil;
 
 public class QSecRptHelper
 {
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private boolean jdField_a_of_type_Boolean;
+  private StringBuilder a;
+  private boolean b;
   
   public QSecRptHelper()
   {
     a();
   }
   
-  private void a()
+  private void b()
   {
-    a(",");
+    b(",");
   }
   
-  private void a(String paramString)
+  private void b(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaLangStringBuilder.append(paramString);
+    if (this.b) {
+      this.a.append(paramString);
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
   
   public QSecRptHelper a()
   {
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-    this.jdField_a_of_type_Boolean = false;
+    this.a = new StringBuilder();
+    this.b = false;
     return this;
   }
   
@@ -39,9 +39,9 @@ public class QSecRptHelper
   
   public QSecRptHelper a(String paramString)
   {
-    a();
+    b();
     paramString = paramString.replace(',', ';');
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramString);
+    this.a.append(paramString);
     return this;
   }
   
@@ -52,12 +52,12 @@ public class QSecRptHelper
   
   public String toString()
   {
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    return this.a.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.common.QSecRptHelper
  * JD-Core Version:    0.7.0.1
  */

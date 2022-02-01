@@ -10,10 +10,10 @@ class TroopShareUtility$3
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     paramDialogInterface = this.a;
-    paramDialogInterface.c = false;
-    if ((paramDialogInterface.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity instanceof TroopCreateLogicActivity))
+    paramDialogInterface.r = false;
+    if ((paramDialogInterface.h instanceof TroopCreateLogicActivity))
     {
-      if ((this.a.jdField_a_of_type_Int == 0) || (this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2) || (this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4))
+      if ((this.a.a == 0) || (this.a.a == 1) || (this.a.a == 2) || (this.a.a == 3) || (this.a.a == 4))
       {
         if (this.a.b == 1) {
           return;
@@ -22,13 +22,13 @@ class TroopShareUtility$3
           return;
         }
       }
-      ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity).finish();
+      ((TroopCreateLogicActivity)this.a.h).finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopshare.TroopShareUtility.3
  * JD-Core Version:    0.7.0.1
  */

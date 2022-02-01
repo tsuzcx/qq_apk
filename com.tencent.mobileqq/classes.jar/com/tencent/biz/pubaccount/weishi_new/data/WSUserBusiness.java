@@ -16,11 +16,6 @@ public class WSUserBusiness
     return new WSUserBusiness();
   }
   
-  private IWeishiServiceListener a(String paramString, int paramInt)
-  {
-    return new WSUserBusiness.2(this, paramInt, paramString);
-  }
-  
   private void b(String paramString, int paramInt)
   {
     FollowEvent localFollowEvent = new FollowEvent();
@@ -31,6 +26,11 @@ public class WSUserBusiness
       localFollowEvent.setIsFollow(2);
     }
     WSSimpleEventBus.a().a(localFollowEvent);
+  }
+  
+  private IWeishiServiceListener c(String paramString, int paramInt)
+  {
+    return new WSUserBusiness.2(this, paramInt, paramString);
   }
   
   public void a(String paramString)
@@ -52,13 +52,13 @@ public class WSUserBusiness
     localStringBuilder.append(paramInt);
     WSLog.b("WSUserBusiness", localStringBuilder.toString());
     b(paramString, paramInt);
-    paramString = new WeishiTask(new ChangeFollowRequest(paramString, paramInt), null, a(paramString, paramInt), 4005);
+    paramString = new WeishiTask(new ChangeFollowRequest(paramString, paramInt), null, c(paramString, paramInt), 4005);
     WeishiBusinessLooper.a().a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.data.WSUserBusiness
  * JD-Core Version:    0.7.0.1
  */

@@ -27,14 +27,14 @@ public class MaterialContainerTransformSharedElementCallback
   extends SharedElementCallback
 {
   @Nullable
-  private static WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  @Nullable
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  @Nullable
-  private MaterialContainerTransformSharedElementCallback.ShapeProvider jdField_a_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransformSharedElementCallback$ShapeProvider = new MaterialContainerTransformSharedElementCallback.ShapeableViewShapeProvider();
-  private boolean jdField_a_of_type_Boolean = true;
+  private static WeakReference<View> a;
   private boolean b = true;
-  private boolean c = false;
+  private boolean c = true;
+  private boolean d = false;
+  @Nullable
+  private Rect e;
+  @Nullable
+  private MaterialContainerTransformSharedElementCallback.ShapeProvider f = new MaterialContainerTransformSharedElementCallback.ShapeableViewShapeProvider();
   
   private void a(Activity paramActivity, Window paramWindow)
   {
@@ -44,7 +44,7 @@ public class MaterialContainerTransformSharedElementCallback
       localObject = (MaterialContainerTransform)localObject;
       ((MaterialContainerTransform)localObject).a(true);
       ((MaterialContainerTransform)localObject).addListener(new MaterialContainerTransformSharedElementCallback.2(this, paramActivity));
-      if (this.b)
+      if (this.c)
       {
         a(paramWindow, (MaterialContainerTransform)localObject);
         ((MaterialContainerTransform)localObject).addListener(new MaterialContainerTransformSharedElementCallback.3(this, paramWindow));
@@ -63,10 +63,10 @@ public class MaterialContainerTransformSharedElementCallback
     if ((localObject instanceof MaterialContainerTransform))
     {
       localObject = (MaterialContainerTransform)localObject;
-      if (!this.c) {
+      if (!this.d) {
         paramWindow.setSharedElementReenterTransition(null);
       }
-      if (this.b)
+      if (this.c)
       {
         a(paramWindow, (MaterialContainerTransform)localObject);
         ((MaterialContainerTransform)localObject).addListener(new MaterialContainerTransformSharedElementCallback.1(this, paramWindow));
@@ -87,7 +87,7 @@ public class MaterialContainerTransformSharedElementCallback
   @Nullable
   public Parcelable onCaptureSharedElementSnapshot(@NonNull View paramView, @NonNull Matrix paramMatrix, @NonNull RectF paramRectF)
   {
-    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    a = new WeakReference(paramView);
     return super.onCaptureSharedElementSnapshot(paramView, paramMatrix, paramRectF);
   }
   
@@ -97,13 +97,13 @@ public class MaterialContainerTransformSharedElementCallback
     paramContext = super.onCreateSnapshotView(paramContext, paramParcelable);
     if (paramContext != null)
     {
-      paramParcelable = jdField_a_of_type_JavaLangRefWeakReference;
-      if ((paramParcelable != null) && (this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransformSharedElementCallback$ShapeProvider != null))
+      paramParcelable = a;
+      if ((paramParcelable != null) && (this.f != null))
       {
         paramParcelable = (View)paramParcelable.get();
         if (paramParcelable != null)
         {
-          paramParcelable = this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransformSharedElementCallback$ShapeProvider.a(paramParcelable);
+          paramParcelable = this.f.a(paramParcelable);
           if (paramParcelable != null) {
             paramContext.setTag(R.id.R, paramParcelable);
           }
@@ -124,7 +124,7 @@ public class MaterialContainerTransformSharedElementCallback
         if (paramList != null)
         {
           paramMap = paramList.getWindow();
-          if (this.jdField_a_of_type_Boolean)
+          if (this.b)
           {
             c(paramMap);
             return;
@@ -140,10 +140,10 @@ public class MaterialContainerTransformSharedElementCallback
     if ((!paramList1.isEmpty()) && ((((View)paramList1.get(0)).getTag(R.id.R) instanceof View))) {
       ((View)paramList1.get(0)).setTag(R.id.R, null);
     }
-    if ((!this.jdField_a_of_type_Boolean) && (!paramList1.isEmpty())) {
-      this.jdField_a_of_type_AndroidGraphicsRect = TransitionUtils.a((View)paramList1.get(0));
+    if ((!this.b) && (!paramList1.isEmpty())) {
+      this.e = TransitionUtils.b((View)paramList1.get(0));
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
   
   public void onSharedElementStart(@NonNull List<String> paramList, @NonNull List<View> paramList1, @NonNull List<View> paramList2)
@@ -151,17 +151,17 @@ public class MaterialContainerTransformSharedElementCallback
     if ((!paramList1.isEmpty()) && (!paramList2.isEmpty())) {
       ((View)paramList1.get(0)).setTag(R.id.R, paramList2.get(0));
     }
-    if ((!this.jdField_a_of_type_Boolean) && (!paramList1.isEmpty()) && (this.jdField_a_of_type_AndroidGraphicsRect != null))
+    if ((!this.b) && (!paramList1.isEmpty()) && (this.e != null))
     {
       paramList = (View)paramList1.get(0);
-      paramList.measure(View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_AndroidGraphicsRect.width(), 1073741824), View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_AndroidGraphicsRect.height(), 1073741824));
-      paramList.layout(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
+      paramList.measure(View.MeasureSpec.makeMeasureSpec(this.e.width(), 1073741824), View.MeasureSpec.makeMeasureSpec(this.e.height(), 1073741824));
+      paramList.layout(this.e.left, this.e.top, this.e.right, this.e.bottom);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
  * JD-Core Version:    0.7.0.1
  */

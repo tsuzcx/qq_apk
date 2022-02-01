@@ -17,28 +17,64 @@ import java.util.Set;
 public class EmptySupportViewPager
   extends ViewPager
 {
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new EmptySupportViewPager.1(this);
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener = new EmptySupportViewPager.2(this);
-  public List<ViewPager.OnPageChangeListener> a;
-  public Set<Pair<View, Boolean>> a;
+  public Set<Pair<View, Boolean>> a = new HashSet();
+  public List<ViewPager.OnPageChangeListener> b;
+  private DataSetObserver c = new EmptySupportViewPager.1(this);
+  private ViewPager.OnPageChangeListener d = new EmptySupportViewPager.2(this);
   
   public EmptySupportViewPager(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    super.setOnPageChangeListener(this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener);
+    super.setOnPageChangeListener(this.d);
   }
   
   public EmptySupportViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    super.setOnPageChangeListener(this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener);
+    super.setOnPageChangeListener(this.d);
   }
   
-  protected void a(int paramInt)
+  public void addOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    if (this.b == null) {
+      this.b = new ArrayList();
+    }
+    this.b.add(paramOnPageChangeListener);
+  }
+  
+  public void clearOnPageChangeListeners()
+  {
+    List localList = this.b;
+    if (localList != null) {
+      localList.clear();
+    }
+  }
+  
+  public void removeOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
+  {
+    List localList = this.b;
+    if (localList != null) {
+      localList.remove(paramOnPageChangeListener);
+    }
+  }
+  
+  public void setAdapter(PagerAdapter paramPagerAdapter)
+  {
+    PagerAdapter localPagerAdapter = super.getAdapter();
+    if (localPagerAdapter != null) {
+      localPagerAdapter.unregisterDataSetObserver(this.c);
+    }
+    super.setAdapter(paramPagerAdapter);
+    if (paramPagerAdapter != null)
+    {
+      paramPagerAdapter.registerDataSetObserver(this.c);
+      this.c.onChanged();
+    }
+  }
+  
+  protected void setAllEmptyViewVisibility(int paramInt)
+  {
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       Pair localPair = (Pair)localIterator.next();
@@ -60,44 +96,6 @@ public class EmptySupportViewPager
       int i = paramInt;
       label75:
       ((View)localPair.first).setVisibility(i);
-    }
-  }
-  
-  public void addOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
-  }
-  
-  public void clearOnPageChangeListeners()
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (localList != null) {
-      localList.clear();
-    }
-  }
-  
-  public void removeOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (localList != null) {
-      localList.remove(paramOnPageChangeListener);
-    }
-  }
-  
-  public void setAdapter(PagerAdapter paramPagerAdapter)
-  {
-    PagerAdapter localPagerAdapter = super.getAdapter();
-    if (localPagerAdapter != null) {
-      localPagerAdapter.unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
-    }
-    super.setAdapter(paramPagerAdapter);
-    if (paramPagerAdapter != null)
-    {
-      paramPagerAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
-      this.jdField_a_of_type_AndroidDatabaseDataSetObserver.onChanged();
     }
   }
   

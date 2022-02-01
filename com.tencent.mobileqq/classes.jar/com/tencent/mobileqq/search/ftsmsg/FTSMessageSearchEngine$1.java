@@ -13,12 +13,12 @@ class FTSMessageSearchEngine$1
   public void run()
   {
     List localList;
-    if (SQLiteFTSUtils.b(FTSMessageSearchEngine.a(this.this$0)) == 1) {
-      localList = this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest, false);
+    if (SQLiteFTSUtils.e(FTSMessageSearchEngine.a(this.this$0)) == 1) {
+      localList = this.this$0.b(this.a, false);
     } else {
-      localList = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest, false);
+      localList = this.this$0.a(this.a, false);
     }
-    ISearchListener localISearchListener = this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener;
+    ISearchListener localISearchListener = this.b;
     if (localISearchListener != null) {
       localISearchListener.a(localList, 1);
     }
@@ -26,7 +26,7 @@ class FTSMessageSearchEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.1
  * JD-Core Version:    0.7.0.1
  */

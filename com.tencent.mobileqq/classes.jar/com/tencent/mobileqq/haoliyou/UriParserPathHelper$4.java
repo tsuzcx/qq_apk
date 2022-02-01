@@ -12,13 +12,13 @@ class UriParserPathHelper$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    UriParserPathHelper.a(this.a).set(0);
+    UriParserPathHelper.d(this.a).set(0);
     UriParserPathHelper.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.UriParserPathHelper.4
  * JD-Core Version:    0.7.0.1
  */

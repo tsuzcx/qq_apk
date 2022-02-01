@@ -21,21 +21,21 @@ import java.util.List;
 public class FeedCommentDataProvider$GetCommentListResponse
   extends LegoResponseBase
 {
-  qqstory_service.RspGetCommentList jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList;
+  qqstory_service.RspGetCommentList a;
   
   public FeedCommentDataProvider$GetCommentListResponse(FeedCommentDataProvider paramFeedCommentDataProvider) {}
   
   public FeedCommentDataProvider$GetCommentListResponse(FeedCommentDataProvider paramFeedCommentDataProvider, qqstory_service.RspGetCommentList paramRspGetCommentList)
   {
     super(paramRspGetCommentList.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList = paramRspGetCommentList;
+    this.a = paramRspGetCommentList;
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.comment_list.get();
+    Object localObject = this.a.comment_list.get();
     ArrayList localArrayList = new ArrayList();
-    FeedCommentDataProvider.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentDataProvider, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.cookie.get().toStringUtf8());
+    FeedCommentDataProvider.a(this.b, this.a.cookie.get().toStringUtf8());
     UserManager localUserManager = (UserManager)SuperManager.a(2);
     boolean bool = false;
     int i = 0;
@@ -60,18 +60,18 @@ public class FeedCommentDataProvider$GetCommentListResponse
       localArrayList.add(localCommentEntry);
       i += 1;
     }
-    localObject = this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentDataProvider;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.is_end.get() == 1) {
+    localObject = this.b;
+    if (this.a.is_end.get() == 1) {
       bool = true;
     }
-    ((FeedCommentDataProvider)localObject).jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentDataProvider.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.total_comment_num.get();
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentDataProvider.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a(localArrayList);
+    ((FeedCommentDataProvider)localObject).e = bool;
+    this.b.f = this.a.total_comment_num.get();
+    this.b.d.a(localArrayList);
   }
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentDataProvider.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.d();
+    this.b.d.f();
     if (QLog.isColorLevel()) {
       QLog.e("Q.qqstory:FeedCommentDataProvider", 2, new Object[] { "ReqGetCommentList NetWork ErrorCode:", Integer.valueOf(paramInt) });
     }
@@ -79,7 +79,7 @@ public class FeedCommentDataProvider$GetCommentListResponse
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentDataProvider.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.d();
+    this.b.d.f();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -93,7 +93,7 @@ public class FeedCommentDataProvider$GetCommentListResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentDataProvider.GetCommentListResponse
  * JD-Core Version:    0.7.0.1
  */

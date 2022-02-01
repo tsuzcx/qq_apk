@@ -16,7 +16,7 @@ class NativeAwesomeCommentView$1
   {
     if (NativeAwesomeCommentView.a(this.a) != null)
     {
-      long l = NativeAwesomeCommentView.a(this.a).a;
+      long l = NativeAwesomeCommentView.a(this.a).f;
       NativeAwesomeCommentView.a(this.a, true);
       paramView = new StringBuilder();
       paramView.append(l);
@@ -34,7 +34,7 @@ class NativeAwesomeCommentView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeAwesomeCommentView.1
  * JD-Core Version:    0.7.0.1
  */

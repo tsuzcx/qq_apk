@@ -14,12 +14,12 @@ public class CheckFriendsLastLoginInfo
   
   protected int doStep()
   {
-    if (((FriendListHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getLastLoginInfo())
+    if (((FriendListHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getLastLoginInfo())
     {
       if (this.a == null)
       {
         this.a = new CheckFriendsLastLoginInfo.MyFriendListObserver(this, null);
-        this.mAutomator.a.addObserver(this.a);
+        this.mAutomator.k.addObserver(this.a);
       }
       return 2;
     }
@@ -30,14 +30,14 @@ public class CheckFriendsLastLoginInfo
   {
     if (this.a != null)
     {
-      this.mAutomator.a.removeObserver(this.a);
+      this.mAutomator.k.removeObserver(this.a);
       this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo
  * JD-Core Version:    0.7.0.1
  */

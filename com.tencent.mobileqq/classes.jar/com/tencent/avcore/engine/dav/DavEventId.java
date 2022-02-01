@@ -17,7 +17,11 @@ public abstract interface DavEventId
   public static final int EM_SDK_EVENT_ID_NETWORK_CHECK_REQ = 118;
   public static final int EM_SDK_EVENT_ID_NETWORK_QUALITY_CHANGED = 124;
   public static final int EM_SDK_EVENT_ID_NOTIFY_AI_DENOISE_TIPS = 127;
+  public static final int EM_SDK_EVENT_ID_NOTIFY_ENABLE_AI_DENOISE = 128;
   public static final int EM_SDK_EVENT_ID_PSTN_CALL = 95;
+  public static final int EM_SDK_EVENT_ID_RECV_AVATAR2DMSG = 129;
+  public static final int EM_SDK_EVENT_ID_RECV_AVATAR2DSWITCH_PEER = 131;
+  public static final int EM_SDK_EVENT_ID_RECV_AVATAR2DSWITCH_RSP = 130;
   public static final int EM_SDK_EVENT_ID_RECV_AVFUNCHATRMSG = 111;
   public static final int EM_SDK_EVENT_ID_REOPEN_CAMERA_NFPS = 116;
   public static final int EM_SDK_EVENT_ID_SELF_SPEAKING = 125;
@@ -50,7 +54,6 @@ public abstract interface DavEventId
   public static final int EV_VOIP_MOBILE_VIDEO_REQ = 61;
   public static final int EV_VOIP_NETWORK_BAD = 11;
   public static final int EV_VOIP_NETWORK_GOOD = 12;
-  public static final int EV_VOIP_NETWORK_MONITOR_INFO = 16;
   public static final int EV_VOIP_NOT_RECV_AUDIO_DATA = 62;
   public static final int EV_VOIP_OTHER_TER_CHATING_STAUTS = 72;
   public static final int EV_VOIP_PAUSEAUDIO = 7;
@@ -64,6 +67,7 @@ public abstract interface DavEventId
   public static final int EV_VOIP_RESUMEAUDIO = 9;
   public static final int EV_VOIP_RESUMEVIDEO = 10;
   public static final int EV_VOIP_SEND_FIRST_AUDIO_DATA = 71;
+  public static final int EV_VOIP_STATE_INFO = 16;
   public static final int EV_VOIP_SWITCHAUDIO = 19;
   public static final int EV_VOIP_SWITCHVIDEO = 20;
   public static final int EV_VOIP_SWITCHVIDEOCANCEL = 22;

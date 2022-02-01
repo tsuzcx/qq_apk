@@ -11,11 +11,11 @@ class BaseGuessStarStageView$2
   
   public void run()
   {
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.c);
-    if ((this.this$0.b != null) && (this.this$0.b.getVisibility() == 8)) {
-      this.this$0.b.setVisibility(0);
+    ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.u);
+    if ((this.this$0.l != null) && (this.this$0.l.getVisibility() == 8)) {
+      this.this$0.l.setVisibility(0);
     }
-    ThreadManager.getUIHandlerV2().postDelayed(this.this$0.c, 1000L);
+    ThreadManager.getUIHandlerV2().postDelayed(this.this$0.u, 1000L);
   }
 }
 

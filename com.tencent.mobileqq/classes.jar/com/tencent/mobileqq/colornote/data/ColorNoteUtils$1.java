@@ -13,15 +13,15 @@ final class ColorNoteUtils$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
-    ColorNoteSmallScreenUtil.a(this.jdField_a_of_type_AndroidContentContext, true);
+    ColorNoteSmallScreenUtil.a(this.b, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.data.ColorNoteUtils.1
  * JD-Core Version:    0.7.0.1
  */

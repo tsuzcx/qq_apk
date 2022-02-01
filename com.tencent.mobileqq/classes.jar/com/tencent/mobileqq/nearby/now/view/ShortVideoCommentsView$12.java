@@ -20,12 +20,12 @@ class ShortVideoCommentsView$12
       return true;
     }
     paramLong = Long.parseLong(this.a.app.getCurrentAccountUin());
-    if (paramAdapterView.c == paramLong)
+    if (paramAdapterView.f == paramLong)
     {
       this.a.showDelSheet(paramAdapterView);
       return true;
     }
-    if (ShortVideoCommentsView.access$000(this.a).d == paramLong) {
+    if (ShortVideoCommentsView.access$000(this.a).u == paramLong) {
       this.a.showDelAndReportSheet(paramAdapterView);
     } else {
       this.a.showReportSheet(paramAdapterView);
@@ -35,7 +35,7 @@ class ShortVideoCommentsView$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.12
  * JD-Core Version:    0.7.0.1
  */

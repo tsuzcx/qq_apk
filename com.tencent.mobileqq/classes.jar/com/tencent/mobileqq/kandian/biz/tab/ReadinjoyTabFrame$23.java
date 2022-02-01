@@ -16,16 +16,16 @@ class ReadinjoyTabFrame$23
     if (QLog.isColorLevel()) {
       QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog remain cancel");
     }
-    paramDialogInterface = ReadInJoyLogicEngine.a().a();
+    paramDialogInterface = ReadInJoyLogicEngine.a().j();
     if (paramDialogInterface != null) {
-      paramDialogInterface.b();
+      paramDialogInterface.f();
     }
     ReadInJoyLogicEngine.a().b(41695);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.23
  * JD-Core Version:    0.7.0.1
  */

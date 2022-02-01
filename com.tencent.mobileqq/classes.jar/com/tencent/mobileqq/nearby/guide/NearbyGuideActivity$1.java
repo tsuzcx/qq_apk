@@ -32,7 +32,7 @@ class NearbyGuideActivity$1
           QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload fail.");
         }
         this.a.dismissProcessDialog();
-        this.a.showToast(HardCodeUtil.a(2131707222));
+        this.a.showToast(HardCodeUtil.a(2131905054));
         this.a.updateAvatar(true, null);
         return;
       }
@@ -65,7 +65,7 @@ class NearbyGuideActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.1
  * JD-Core Version:    0.7.0.1
  */

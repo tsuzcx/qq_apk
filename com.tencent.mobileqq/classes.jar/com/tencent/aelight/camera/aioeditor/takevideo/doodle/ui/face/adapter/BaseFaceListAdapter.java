@@ -10,36 +10,36 @@ import com.tencent.qphone.base.util.QLog;
 public abstract class BaseFaceListAdapter<PACKAGE extends FacePackage>
   extends BaseAdapter
 {
-  public int a;
   protected Context a;
-  protected IFaceSelectedListener a;
-  protected PACKAGE a;
-  protected FaceListPage a;
+  protected PACKAGE b;
+  protected IFaceSelectedListener c;
+  public int d;
+  protected FaceListPage e;
   
   public BaseFaceListAdapter(Context paramContext, FaceListPage paramFaceListPage)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage = paramFaceListPage;
+    this.a = paramContext;
+    this.e = paramFaceListPage;
   }
   
   public void a(IFaceSelectedListener paramIFaceSelectedListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener = paramIFaceSelectedListener;
+    this.c = paramIFaceSelectedListener;
   }
   
   public void a(PACKAGE paramPACKAGE)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage = paramPACKAGE;
+    this.b = paramPACKAGE;
   }
   
   protected boolean a()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage.a;
+    return this.e.b;
   }
   
   public int getCount()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage;
+    Object localObject = this.b;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -47,8 +47,8 @@ public abstract class BaseFaceListAdapter<PACKAGE extends FacePackage>
       }
       return 0;
     }
-    int i = ((FacePackage)localObject).b();
-    int j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage.a();
+    int i = ((FacePackage)localObject).d();
+    int j = this.b.a();
     if (j >= 1)
     {
       if ((QLog.isColorLevel()) && (i == 0)) {
@@ -77,7 +77,7 @@ public abstract class BaseFaceListAdapter<PACKAGE extends FacePackage>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter
  * JD-Core Version:    0.7.0.1
  */

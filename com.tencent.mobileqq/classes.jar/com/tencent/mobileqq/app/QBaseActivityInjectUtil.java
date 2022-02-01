@@ -10,24 +10,24 @@ import java.util.ArrayList;
 public class QBaseActivityInjectUtil
 {
   @ConfigInject(configPath="Foundation/QQActivity/src/main/resources/Inject_BaseActivityConfig.yml", version=1)
-  public static ArrayList<Class<? extends BaseActivityLifecycleCallbacks>> a = new ArrayList();
+  public static ArrayList<Class<? extends BaseActivityLifecycleCallbacks>> globalCallbacks = new ArrayList();
   @ConfigInject(configPath="Foundation/QQActivity/src/main/resources/Inject_BaseActivityConfig.yml", version=1)
-  public static ArrayList<Class<? extends BaseActivityLifecycleCallbacks>> b;
+  public static ArrayList<Class<? extends IBaseActivityInjectInterface>> injectInterfaceClzList;
   @ConfigInject(configPath="Foundation/QQActivity/src/main/resources/Inject_BaseActivityConfig.yml", version=1)
-  public static ArrayList<Class<? extends IBaseActivityInjectInterface>> c;
+  public static ArrayList<Class<? extends BaseActivityLifecycleCallbacks>> instanceCallbacks;
   
   static
   {
-    a.add(BaseActivityLifecycleCallbackImpl.class);
-    b = new ArrayList();
-    b.add(MiniAIOBaseActivityLifecycleCallback.class);
-    c = new ArrayList();
-    c.add(BaseActivityInjectImpl.class);
+    globalCallbacks.add(BaseActivityLifecycleCallbackImpl.class);
+    instanceCallbacks = new ArrayList();
+    instanceCallbacks.add(MiniAIOBaseActivityLifecycleCallback.class);
+    injectInterfaceClzList = new ArrayList();
+    injectInterfaceClzList.add(BaseActivityInjectImpl.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QBaseActivityInjectUtil
  * JD-Core Version:    0.7.0.1
  */

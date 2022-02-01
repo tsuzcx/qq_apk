@@ -10,21 +10,21 @@ import java.util.List;
 class QavBeautyMenuPanel$MyPagerAdapter
   extends PagerAdapter
 {
-  final List<BeautyBaseView> jdField_a_of_type_JavaUtilList = new ArrayList();
+  final List<BeautyBaseView> a = new ArrayList();
   
   public QavBeautyMenuPanel$MyPagerAdapter(List<BeautyBaseView> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.a.clear();
     Collection localCollection;
     if (localCollection != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(localCollection);
+      this.a.addAll(localCollection);
     }
   }
   
   public BeautyBaseView a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (BeautyBaseView)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (BeautyBaseView)this.a.get(paramInt);
     }
     return null;
   }
@@ -38,7 +38,7 @@ class QavBeautyMenuPanel$MyPagerAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)

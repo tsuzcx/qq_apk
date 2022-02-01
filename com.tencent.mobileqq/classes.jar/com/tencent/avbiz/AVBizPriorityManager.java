@@ -11,33 +11,20 @@ import java.util.TreeSet;
 
 class AVBizPriorityManager
 {
-  private static volatile AVBizPriorityManager jdField_a_of_type_ComTencentAvbizAVBizPriorityManager;
-  private final HashMap<Long, TreeSet<AVBusiness>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final HashMap<Long, AVBusiness> b = new HashMap();
-  private final HashMap<String, AVBusiness> c = new HashMap();
+  private static final String TAG = "AVBizPriorityManager";
+  private static volatile AVBizPriorityManager sInstance;
+  private final HashMap<String, AVBusiness> mBusinessMap = new HashMap();
+  private final HashMap<Long, AVBusiness> mFocusBusinessMap = new HashMap();
+  private final HashMap<Long, TreeSet<AVBusiness>> mPriorityPQMap = new HashMap();
   
   private AVBizPriorityManager()
   {
     AVBizPriorityManager.1 local1 = new AVBizPriorityManager.1(this);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(1L), new TreeSet(local1));
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(2L), new TreeSet(local1));
+    this.mPriorityPQMap.put(Long.valueOf(1L), new TreeSet(local1));
+    this.mPriorityPQMap.put(Long.valueOf(2L), new TreeSet(local1));
   }
   
-  public static AVBizPriorityManager a()
-  {
-    if (jdField_a_of_type_ComTencentAvbizAVBizPriorityManager == null) {
-      try
-      {
-        if (jdField_a_of_type_ComTencentAvbizAVBizPriorityManager == null) {
-          jdField_a_of_type_ComTencentAvbizAVBizPriorityManager = new AVBizPriorityManager();
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentAvbizAVBizPriorityManager;
-  }
-  
-  private HashMap<Long, AVBusiness> a(Set<AVBusiness> paramSet)
+  private HashMap<Long, AVBusiness> competeFocus(Set<AVBusiness> paramSet)
   {
     HashMap localHashMap = new HashMap();
     for (;;)
@@ -50,7 +37,7 @@ class AVBizPriorityManager
       {
         AVBusiness localAVBusiness1 = (AVBusiness)localIterator1.next();
         int i = 1;
-        Iterator localIterator2 = AVBizUtils.a(localAVBusiness1.a()).iterator();
+        Iterator localIterator2 = AVBizUtils.convertToList(localAVBusiness1.getRequestType()).iterator();
         int j;
         long l;
         do
@@ -60,7 +47,7 @@ class AVBizPriorityManager
             break;
           }
           l = ((Long)localIterator2.next()).longValue();
-          Iterator localIterator3 = ((TreeSet)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l))).iterator();
+          Iterator localIterator3 = ((TreeSet)this.mPriorityPQMap.get(Long.valueOf(l))).iterator();
           AVBusiness localAVBusiness2;
           do
           {
@@ -79,12 +66,12 @@ class AVBizPriorityManager
         if (j == 0) {
           break;
         }
-        localIterator1 = AVBizUtils.a(localAVBusiness1.a()).iterator();
+        localIterator1 = AVBizUtils.convertToList(localAVBusiness1.getRequestType()).iterator();
         while (localIterator1.hasNext())
         {
           l = ((Long)localIterator1.next()).longValue();
           localHashMap.put(Long.valueOf(l), localAVBusiness1);
-          paramSet.removeAll(new HashSet((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l))));
+          paramSet.removeAll(new HashSet((Collection)this.mPriorityPQMap.get(Long.valueOf(l))));
         }
       }
     }
@@ -92,22 +79,84 @@ class AVBizPriorityManager
     return localHashMap;
   }
   
-  private void a(long paramLong, Set<AVBusiness> paramSet1, Set<AVBusiness> paramSet2)
+  private void dequeue(AVBusiness paramAVBusiness)
   {
-    Object localObject1 = a(paramSet1);
+    Iterator localIterator = AVBizUtils.convertToList(paramAVBusiness.getRequestType()).iterator();
+    while (localIterator.hasNext())
+    {
+      long l = ((Long)localIterator.next()).longValue();
+      ((TreeSet)this.mPriorityPQMap.get(Long.valueOf(l))).remove(paramAVBusiness);
+    }
+  }
+  
+  private void enqueue(AVBusiness paramAVBusiness)
+  {
+    Iterator localIterator = AVBizUtils.convertToList(paramAVBusiness.getRequestType()).iterator();
+    while (localIterator.hasNext())
+    {
+      long l = ((Long)localIterator.next()).longValue();
+      ((TreeSet)this.mPriorityPQMap.get(Long.valueOf(l))).add(paramAVBusiness);
+    }
+  }
+  
+  public static AVBizPriorityManager getInstance()
+  {
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new AVBizPriorityManager();
+        }
+      }
+      finally {}
+    }
+    return sInstance;
+  }
+  
+  private void onFocusChange(AVBusiness paramAVBusiness, boolean paramBoolean)
+  {
+    HashSet localHashSet1 = new HashSet();
+    HashSet localHashSet2 = new HashSet(this.mBusinessMap.values());
+    Iterator localIterator = AVBizUtils.convertToList(paramAVBusiness.getRequestType()).iterator();
+    while (localIterator.hasNext())
+    {
+      l = ((Long)localIterator.next()).longValue();
+      if (paramBoolean)
+      {
+        this.mFocusBusinessMap.remove(Long.valueOf(l));
+      }
+      else
+      {
+        if (this.mFocusBusinessMap.containsKey(Long.valueOf(l))) {
+          localHashSet1.add(this.mFocusBusinessMap.get(Long.valueOf(l)));
+        }
+        this.mFocusBusinessMap.put(Long.valueOf(l), paramAVBusiness);
+        localHashSet2.removeAll(new HashSet((Collection)this.mPriorityPQMap.get(Long.valueOf(l))));
+      }
+    }
+    long l = 3L;
+    if (!paramBoolean) {
+      l = 0x3 ^ paramAVBusiness.getRequestType();
+    }
+    updateFocusMap(l, localHashSet2, localHashSet1);
+  }
+  
+  private void updateFocusMap(long paramLong, Set<AVBusiness> paramSet1, Set<AVBusiness> paramSet2)
+  {
+    Object localObject1 = competeFocus(paramSet1);
     paramSet1 = new HashSet();
-    Object localObject2 = AVBizUtils.a(paramLong).iterator();
+    Object localObject2 = AVBizUtils.convertToList(paramLong).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       paramLong = ((Long)((Iterator)localObject2).next()).longValue();
       AVBusiness localAVBusiness1 = (AVBusiness)((HashMap)localObject1).get(Long.valueOf(paramLong));
-      AVBusiness localAVBusiness2 = (AVBusiness)this.b.get(Long.valueOf(paramLong));
+      AVBusiness localAVBusiness2 = (AVBusiness)this.mFocusBusinessMap.get(Long.valueOf(paramLong));
       if (localAVBusiness1 == null)
       {
         if (localAVBusiness2 != null)
         {
           paramSet2.add(localAVBusiness2);
-          this.b.remove(Long.valueOf(paramLong));
+          this.mFocusBusinessMap.remove(Long.valueOf(paramLong));
         }
       }
       else
@@ -116,7 +165,7 @@ class AVBizPriorityManager
           paramSet2.add(localAVBusiness2);
         }
         paramSet1.add(localAVBusiness1);
-        this.b.put(Long.valueOf(paramLong), localAVBusiness1);
+        this.mFocusBusinessMap.put(Long.valueOf(paramLong), localAVBusiness1);
       }
     }
     paramSet2 = paramSet2.iterator();
@@ -127,11 +176,11 @@ class AVBizPriorityManager
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("loss focus[");
-        ((StringBuilder)localObject2).append(((AVBusiness)localObject1).a());
+        ((StringBuilder)localObject2).append(((AVBusiness)localObject1).getName());
         ((StringBuilder)localObject2).append("]");
         QLog.i("AVBizPriorityManager", 2, ((StringBuilder)localObject2).toString());
       }
-      ((AVBusiness)localObject1).a();
+      ((AVBusiness)localObject1).lossFocus();
     }
     paramSet1 = paramSet1.iterator();
     while (paramSet1.hasNext())
@@ -141,69 +190,93 @@ class AVBizPriorityManager
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("gain focus[");
-        ((StringBuilder)localObject1).append(paramSet2.a());
+        ((StringBuilder)localObject1).append(paramSet2.getName());
         ((StringBuilder)localObject1).append("]");
         QLog.i("AVBizPriorityManager", 2, ((StringBuilder)localObject1).toString());
       }
-      paramSet2.b();
+      paramSet2.gainFocus();
     }
   }
   
-  private void a(AVBusiness paramAVBusiness)
+  public void abandonAVFocus(String paramString)
   {
-    Iterator localIterator = AVBizUtils.a(paramAVBusiness.a()).iterator();
-    while (localIterator.hasNext())
+    try
     {
-      long l = ((Long)localIterator.next()).longValue();
-      ((TreeSet)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l))).add(paramAVBusiness);
-    }
-  }
-  
-  private void a(AVBusiness paramAVBusiness, boolean paramBoolean)
-  {
-    HashSet localHashSet1 = new HashSet();
-    HashSet localHashSet2 = new HashSet(this.c.values());
-    Iterator localIterator = AVBizUtils.a(paramAVBusiness.a()).iterator();
-    while (localIterator.hasNext())
-    {
-      l = ((Long)localIterator.next()).longValue();
-      if (paramBoolean)
+      Object localObject;
+      if (!AVBizUtils.isValid(paramString))
       {
-        this.b.remove(Long.valueOf(l));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("abandonAVFocus invalid business name[");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("]");
+        QLog.e("AVBizPriorityManager", 1, ((StringBuilder)localObject).toString());
+        return;
       }
-      else
+      if (!this.mBusinessMap.containsKey(paramString))
       {
-        if (this.b.containsKey(Long.valueOf(l))) {
-          localHashSet1.add(this.b.get(Long.valueOf(l)));
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("abandonAVFocus, business[");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("] never request, no need to abandon");
+          QLog.i("AVBizPriorityManager", 2, ((StringBuilder)localObject).toString());
         }
-        this.b.put(Long.valueOf(l), paramAVBusiness);
-        localHashSet2.removeAll(new HashSet((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l))));
+        return;
       }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("abandonAVFocus, name[");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("AVBizPriorityManager", 2, ((StringBuilder)localObject).toString());
+      }
+      AVBusiness localAVBusiness1 = (AVBusiness)this.mBusinessMap.get(paramString);
+      this.mBusinessMap.remove(paramString);
+      dequeue(localAVBusiness1);
+      Iterator localIterator = AVBizUtils.convertToList(localAVBusiness1.getRequestType()).iterator();
+      while (localIterator.hasNext())
+      {
+        long l = ((Long)localIterator.next()).longValue();
+        AVBusiness localAVBusiness2 = (AVBusiness)this.mFocusBusinessMap.get(Long.valueOf(l));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("abandonAVFocus name[");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("], focusBusiness[");
+          if (localAVBusiness2 == null) {
+            localObject = "null";
+          } else {
+            localObject = localAVBusiness2.getName();
+          }
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("], type[");
+          localStringBuilder.append(l);
+          localStringBuilder.append("]");
+          QLog.i("AVBizPriorityManager", 2, localStringBuilder.toString());
+        }
+        if (localAVBusiness1.equals(localAVBusiness2)) {
+          onFocusChange(localAVBusiness1, true);
+        }
+      }
+      return;
     }
-    long l = 3L;
-    if (!paramBoolean) {
-      l = 0x3 ^ paramAVBusiness.a();
-    }
-    a(l, localHashSet2, localHashSet1);
-  }
-  
-  private void b(AVBusiness paramAVBusiness)
-  {
-    Iterator localIterator = AVBizUtils.a(paramAVBusiness.a()).iterator();
-    while (localIterator.hasNext())
+    finally {}
+    for (;;)
     {
-      long l = ((Long)localIterator.next()).longValue();
-      ((TreeSet)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l))).remove(paramAVBusiness);
+      throw paramString;
     }
   }
   
-  public String a(String paramString)
+  public String checkAVFocus(String paramString)
   {
     for (;;)
     {
       try
       {
-        if (!AVBizUtils.a(paramString))
+        if (!AVBizUtils.isValid(paramString))
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("checkAVFocus invalid business name[");
@@ -212,7 +285,7 @@ class AVBizPriorityManager
           QLog.e("AVBizPriorityManager", 1, ((StringBuilder)localObject1).toString());
           return "未知的业务";
         }
-        if (this.c.containsKey(paramString))
+        if (this.mBusinessMap.containsKey(paramString))
         {
           if (QLog.isColorLevel())
           {
@@ -222,15 +295,15 @@ class AVBizPriorityManager
             ((StringBuilder)localObject1).append("]");
             QLog.i("AVBizPriorityManager", 2, ((StringBuilder)localObject1).toString());
           }
-          localObject1 = (AVBusiness)this.c.get(paramString);
-          localObject2 = AVBizUtils.a(((AVBusiness)localObject1).a()).iterator();
+          localObject1 = (AVBusiness)this.mBusinessMap.get(paramString);
+          localObject2 = AVBizUtils.convertToList(((AVBusiness)localObject1).getRequestType()).iterator();
           if (((Iterator)localObject2).hasNext())
           {
             l = ((Long)((Iterator)localObject2).next()).longValue();
-            paramString = (AVBusiness)this.b.get(Long.valueOf(l));
+            paramString = (AVBusiness)this.mFocusBusinessMap.get(Long.valueOf(l));
             if ((paramString != null) && (!paramString.equals(localObject1)))
             {
-              paramString = paramString.a();
+              paramString = paramString.getName();
               return paramString;
             }
             return "true";
@@ -245,13 +318,13 @@ class AVBizPriorityManager
           QLog.i("AVBizPriorityManager", 2, ((StringBuilder)localObject1).toString());
         }
         Object localObject2 = new AVBusiness(paramString, "");
-        Iterator localIterator = AVBizUtils.a(((AVBusiness)localObject2).a()).iterator();
+        Iterator localIterator = AVBizUtils.convertToList(((AVBusiness)localObject2).getRequestType()).iterator();
         if (!localIterator.hasNext()) {
           continue;
         }
         l = ((Long)localIterator.next()).longValue();
-        localObject1 = (AVBusiness)this.b.get(Long.valueOf(l));
-        if ((localObject1 != null) && (((AVBusiness)localObject1).a((AVBusiness)localObject2)))
+        localObject1 = (AVBusiness)this.mFocusBusinessMap.get(Long.valueOf(l));
+        if ((localObject1 != null) && (((AVBusiness)localObject1).comparePriority((AVBusiness)localObject2)))
         {
           if (QLog.isColorLevel())
           {
@@ -259,7 +332,7 @@ class AVBizPriorityManager
             ((StringBuilder)localObject2).append("name[");
             ((StringBuilder)localObject2).append(paramString);
             ((StringBuilder)localObject2).append("], focusBusiness[");
-            ((StringBuilder)localObject2).append(((AVBusiness)localObject1).a());
+            ((StringBuilder)localObject2).append(((AVBusiness)localObject1).getName());
             ((StringBuilder)localObject2).append("], checkAVFocus[");
             ((StringBuilder)localObject2).append(false);
             ((StringBuilder)localObject2).append("], type[");
@@ -267,7 +340,7 @@ class AVBizPriorityManager
             ((StringBuilder)localObject2).append("]");
             QLog.i("AVBizPriorityManager", 2, ((StringBuilder)localObject2).toString());
           }
-          paramString = ((AVBusiness)localObject1).a();
+          paramString = ((AVBusiness)localObject1).getName();
           return paramString;
         }
         if (!QLog.isColorLevel()) {
@@ -280,7 +353,7 @@ class AVBizPriorityManager
         if (localObject1 == null) {
           continue;
         }
-        localObject1 = ((AVBusiness)localObject1).a();
+        localObject1 = ((AVBusiness)localObject1).getName();
       }
       finally
       {
@@ -303,13 +376,47 @@ class AVBizPriorityManager
     return "true";
   }
   
-  public String a(String paramString1, String paramString2)
+  public HashMap<Long, String> getFocusBusiness()
+  {
+    try
+    {
+      HashMap localHashMap = new HashMap();
+      Iterator localIterator = this.mFocusBusinessMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        long l = ((Long)localIterator.next()).longValue();
+        localHashMap.put(Long.valueOf(l), ((AVBusiness)this.mFocusBusinessMap.get(Long.valueOf(l))).getName());
+      }
+      return localHashMap;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
+  }
+  
+  public HashSet<String> getInQueueBusiness()
+  {
+    try
+    {
+      HashSet localHashSet = new HashSet(this.mBusinessMap.keySet());
+      return localHashSet;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public String requestAVFocus(String paramString1, String paramString2)
   {
     for (;;)
     {
       try
       {
-        if (!AVBizUtils.a(paramString1))
+        if (!AVBizUtils.isValid(paramString1))
         {
           paramString2 = new StringBuilder();
           paramString2.append("requestAVFocus invalid business name[");
@@ -318,7 +425,7 @@ class AVBizPriorityManager
           QLog.e("AVBizPriorityManager", 1, paramString2.toString());
           return "未知的业务";
         }
-        if (this.c.containsKey(paramString1))
+        if (this.mBusinessMap.containsKey(paramString1))
         {
           if (QLog.isColorLevel())
           {
@@ -330,15 +437,15 @@ class AVBizPriorityManager
             ((StringBuilder)localObject).append("]");
             QLog.i("AVBizPriorityManager", 2, ((StringBuilder)localObject).toString());
           }
-          localObject = (AVBusiness)this.c.get(paramString1);
-          localIterator = AVBizUtils.a(((AVBusiness)localObject).a()).iterator();
+          localObject = (AVBusiness)this.mBusinessMap.get(paramString1);
+          localIterator = AVBizUtils.convertToList(((AVBusiness)localObject).getRequestType()).iterator();
           if (localIterator.hasNext())
           {
             l = ((Long)localIterator.next()).longValue();
-            paramString1 = (AVBusiness)this.b.get(Long.valueOf(l));
+            paramString1 = (AVBusiness)this.mFocusBusinessMap.get(Long.valueOf(l));
             if ((paramString1 != null) && (!paramString1.equals(localObject)))
             {
-              paramString1 = paramString1.a();
+              paramString1 = paramString1.getName();
               return paramString1;
             }
             return "true";
@@ -355,15 +462,15 @@ class AVBizPriorityManager
           QLog.i("AVBizPriorityManager", 2, ((StringBuilder)localObject).toString());
         }
         localObject = new AVBusiness(paramString1, paramString2);
-        this.c.put(paramString1, localObject);
-        a((AVBusiness)localObject);
-        Iterator localIterator = AVBizUtils.a(((AVBusiness)localObject).a()).iterator();
+        this.mBusinessMap.put(paramString1, localObject);
+        enqueue((AVBusiness)localObject);
+        Iterator localIterator = AVBizUtils.convertToList(((AVBusiness)localObject).getRequestType()).iterator();
         if (!localIterator.hasNext()) {
           continue;
         }
         l = ((Long)localIterator.next()).longValue();
-        paramString2 = (AVBusiness)this.b.get(Long.valueOf(l));
-        if ((paramString2 != null) && (paramString2.a((AVBusiness)localObject)))
+        paramString2 = (AVBusiness)this.mFocusBusinessMap.get(Long.valueOf(l));
+        if ((paramString2 != null) && (paramString2.comparePriority((AVBusiness)localObject)))
         {
           if (QLog.isColorLevel())
           {
@@ -371,7 +478,7 @@ class AVBizPriorityManager
             ((StringBuilder)localObject).append("name[");
             ((StringBuilder)localObject).append(paramString1);
             ((StringBuilder)localObject).append("], focusBusiness[");
-            ((StringBuilder)localObject).append(paramString2.a());
+            ((StringBuilder)localObject).append(paramString2.getName());
             ((StringBuilder)localObject).append("], requestAVFocus[");
             ((StringBuilder)localObject).append(false);
             ((StringBuilder)localObject).append("], type[");
@@ -379,7 +486,7 @@ class AVBizPriorityManager
             ((StringBuilder)localObject).append("]");
             QLog.i("AVBizPriorityManager", 2, ((StringBuilder)localObject).toString());
           }
-          paramString1 = paramString2.a();
+          paramString1 = paramString2.getName();
           return paramString1;
         }
         if (!QLog.isColorLevel()) {
@@ -392,7 +499,7 @@ class AVBizPriorityManager
         if (paramString2 == null) {
           continue;
         }
-        paramString2 = paramString2.a();
+        paramString2 = paramString2.getName();
       }
       finally
       {
@@ -413,114 +520,8 @@ class AVBizPriorityManager
       localStringBuilder.append("]");
       QLog.i("AVBizPriorityManager", 2, localStringBuilder.toString());
     }
-    a((AVBusiness)localObject, false);
+    onFocusChange((AVBusiness)localObject, false);
     return "true";
-  }
-  
-  public HashMap<Long, String> a()
-  {
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      Iterator localIterator = this.b.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        long l = ((Long)localIterator.next()).longValue();
-        localHashMap.put(Long.valueOf(l), ((AVBusiness)this.b.get(Long.valueOf(l))).a());
-      }
-      return localHashMap;
-    }
-    finally {}
-    for (;;)
-    {
-      throw localObject;
-    }
-  }
-  
-  public HashSet<String> a()
-  {
-    try
-    {
-      HashSet localHashSet = new HashSet(this.c.keySet());
-      return localHashSet;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      Object localObject;
-      if (!AVBizUtils.a(paramString))
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("abandonAVFocus invalid business name[");
-        ((StringBuilder)localObject).append(paramString);
-        ((StringBuilder)localObject).append("]");
-        QLog.e("AVBizPriorityManager", 1, ((StringBuilder)localObject).toString());
-        return;
-      }
-      if (!this.c.containsKey(paramString))
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("abandonAVFocus, business[");
-          ((StringBuilder)localObject).append(paramString);
-          ((StringBuilder)localObject).append("] never request, no need to abandon");
-          QLog.i("AVBizPriorityManager", 2, ((StringBuilder)localObject).toString());
-        }
-        return;
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("abandonAVFocus, name[");
-        ((StringBuilder)localObject).append(paramString);
-        ((StringBuilder)localObject).append("]");
-        QLog.i("AVBizPriorityManager", 2, ((StringBuilder)localObject).toString());
-      }
-      AVBusiness localAVBusiness1 = (AVBusiness)this.c.get(paramString);
-      this.c.remove(paramString);
-      b(localAVBusiness1);
-      Iterator localIterator = AVBizUtils.a(localAVBusiness1.a()).iterator();
-      while (localIterator.hasNext())
-      {
-        long l = ((Long)localIterator.next()).longValue();
-        AVBusiness localAVBusiness2 = (AVBusiness)this.b.get(Long.valueOf(l));
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("abandonAVFocus name[");
-          localStringBuilder.append(paramString);
-          localStringBuilder.append("], focusBusiness[");
-          if (localAVBusiness2 == null) {
-            localObject = "null";
-          } else {
-            localObject = localAVBusiness2.a();
-          }
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("], type[");
-          localStringBuilder.append(l);
-          localStringBuilder.append("]");
-          QLog.i("AVBizPriorityManager", 2, localStringBuilder.toString());
-        }
-        if (localAVBusiness1.equals(localAVBusiness2)) {
-          a(localAVBusiness1, true);
-        }
-      }
-      return;
-    }
-    finally {}
-    for (;;)
-    {
-      throw paramString;
-    }
   }
 }
 

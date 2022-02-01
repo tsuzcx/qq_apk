@@ -14,15 +14,15 @@ class FeedItemCellTypeUgcVideo$1
   
   public void onClick(View paramView)
   {
-    OnSubRegionClickListener localOnSubRegionClickListener = this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a().a();
+    OnSubRegionClickListener localOnSubRegionClickListener = this.a.g.y().c();
     if (localOnSubRegionClickListener != null) {
-      localOnSubRegionClickListener.a(paramView, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+      localOnSubRegionClickListener.a(paramView, ((IReadInJoyModel)this.a.b).k(), 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeUgcVideo.1
  * JD-Core Version:    0.7.0.1
  */

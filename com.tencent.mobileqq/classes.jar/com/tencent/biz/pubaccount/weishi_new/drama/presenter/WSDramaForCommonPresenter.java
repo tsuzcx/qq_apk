@@ -24,12 +24,12 @@ public class WSDramaForCommonPresenter
     ((StringBuilder)localObject).append("reportDramaWatchRecord() scene = ");
     ((StringBuilder)localObject).append(paramInt);
     WSLog.a("WSDramaForCommonPresenterLog", ((StringBuilder)localObject).toString());
-    localObject = a();
+    localObject = d();
     if (localObject != null)
     {
-      localObject = ((AbsWSDramaVideoHolder)localObject).a;
+      localObject = ((AbsWSDramaVideoHolder)localObject).c;
       if (localObject != null) {
-        WSDramaOperationRecordManager.a(((WSDramaItemData)localObject).a(), ((WSDramaItemData)localObject).b(), ((WSDramaItemData)localObject).a(), (int)(a().a().a() / 1000L));
+        WSDramaOperationRecordManager.a(((WSDramaItemData)localObject).b(), ((WSDramaItemData)localObject).d(), ((WSDramaItemData)localObject).c(), (int)(e().a().a() / 1000L));
       }
     }
   }
@@ -37,10 +37,10 @@ public class WSDramaForCommonPresenter
   private void a(WSDramaItemData paramWSDramaItemData)
   {
     WSDramaVideoPlayEvent localWSDramaVideoPlayEvent = new WSDramaVideoPlayEvent();
-    localWSDramaVideoPlayEvent.setDramaId(paramWSDramaItemData.a());
-    localWSDramaVideoPlayEvent.setEpisodeNum(paramWSDramaItemData.a());
-    localWSDramaVideoPlayEvent.setEpisodeId(paramWSDramaItemData.b());
-    localWSDramaVideoPlayEvent.setDramaInfo(paramWSDramaItemData.a());
+    localWSDramaVideoPlayEvent.setDramaId(paramWSDramaItemData.b());
+    localWSDramaVideoPlayEvent.setEpisodeNum(paramWSDramaItemData.c());
+    localWSDramaVideoPlayEvent.setEpisodeId(paramWSDramaItemData.d());
+    localWSDramaVideoPlayEvent.setDramaInfo(paramWSDramaItemData.f());
     localWSDramaVideoPlayEvent.setDramaPreviewPage(true);
     WSSimpleEventBus.a().a(localWSDramaVideoPlayEvent);
     paramWSDramaItemData = new StringBuilder();
@@ -52,9 +52,9 @@ public class WSDramaForCommonPresenter
   private void a(WSDramaVideoExposureEvent paramWSDramaVideoExposureEvent)
   {
     Object localObject = paramWSDramaVideoExposureEvent.getFeedInfo();
-    AbsWSDramaVideoHolder localAbsWSDramaVideoHolder = a();
-    if ((localAbsWSDramaVideoHolder != null) && (localAbsWSDramaVideoHolder.a != null)) {
-      localAbsWSDramaVideoHolder.a.a((stSimpleMetaFeed)localObject);
+    AbsWSDramaVideoHolder localAbsWSDramaVideoHolder = d();
+    if ((localAbsWSDramaVideoHolder != null) && (localAbsWSDramaVideoHolder.c != null)) {
+      localAbsWSDramaVideoHolder.c.a((stSimpleMetaFeed)localObject);
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[WSDramaForCommonPresenter.java][handleEventForDramaVideoExposure] event:");
@@ -64,10 +64,10 @@ public class WSDramaForCommonPresenter
   
   private void f()
   {
-    Object localObject = a();
+    Object localObject = d();
     if (localObject != null)
     {
-      localObject = ((AbsWSDramaVideoHolder)localObject).a;
+      localObject = ((AbsWSDramaVideoHolder)localObject).c;
       if (localObject != null) {
         a((WSDramaItemData)localObject);
       }
@@ -96,23 +96,23 @@ public class WSDramaForCommonPresenter
   
   public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    WSDramaPageContract.View localView = (WSDramaPageContract.View)a();
+    WSDramaPageContract.View localView = (WSDramaPageContract.View)getView();
     if (localView == null) {
       return false;
     }
-    WSDramaDataManager.a().a(localView.b(), paramBoolean1, paramBoolean2, paramString, this);
+    WSDramaDataManager.a().a(localView.c(), paramBoolean1, paramBoolean2, paramString, this);
     return true;
   }
   
-  public void e()
+  public void c()
   {
-    super.e();
+    super.c();
     a(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.presenter.WSDramaForCommonPresenter
  * JD-Core Version:    0.7.0.1
  */

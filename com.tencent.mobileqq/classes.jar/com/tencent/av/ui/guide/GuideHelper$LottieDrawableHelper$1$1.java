@@ -24,7 +24,7 @@ class GuideHelper$LottieDrawableHelper$1$1
     //   17: invokespecial 37	java/lang/StringBuilder:<init>	()V
     //   20: astore 4
     //   22: aload 4
-    //   24: getstatic 43	com/tencent/av/ui/guide/GuideHelper:b	Ljava/lang/String;
+    //   24: getstatic 43	com/tencent/av/ui/guide/GuideHelper:d	Ljava/lang/String;
     //   27: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: pop
     //   31: aload 4

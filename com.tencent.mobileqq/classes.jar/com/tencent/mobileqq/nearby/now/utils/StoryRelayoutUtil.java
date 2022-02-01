@@ -29,28 +29,28 @@ public class StoryRelayoutUtil
   
   public static boolean a(View paramView, Rect paramRect)
   {
-    return ((paramView.getTag(2131377914) instanceof Integer)) && (((Integer)paramView.getTag(2131377914)).intValue() == paramRect.height());
+    return ((paramView.getTag(2131446400) instanceof Integer)) && (((Integer)paramView.getTag(2131446400)).intValue() == paramRect.height());
   }
   
   public static boolean a(VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder)
   {
-    paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setVisibility(8);
-    ViewGroup.LayoutParams localLayoutParams = paramVideoViewHolder.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramVideoViewHolder.c.setVisibility(8);
+    paramVideoViewHolder.e.setVisibility(8);
+    ViewGroup.LayoutParams localLayoutParams = paramVideoViewHolder.b.getLayoutParams();
     localLayoutParams.width = -1;
     localLayoutParams.height = -2;
-    paramVideoViewHolder.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+    paramVideoViewHolder.b.setLayoutParams(localLayoutParams);
     return true;
   }
   
   public static boolean a(VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, float paramFloat1, float paramFloat2)
   {
-    if (paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView != null)
+    if (paramVideoViewHolder.e != null)
     {
-      if (paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView == null) {
+      if (paramVideoViewHolder.d == null) {
         return false;
       }
-      if (!(paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext() instanceof Activity)) {
+      if (!(paramVideoViewHolder.e.getContext() instanceof Activity)) {
         return false;
       }
       if (paramFloat2 != 0.0F)
@@ -58,18 +58,18 @@ public class StoryRelayoutUtil
         if (paramFloat1 == 0.0F) {
           return false;
         }
-        if ((paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.b == VideoData.a))
+        if ((paramVideoViewHolder.h != null) && (paramVideoViewHolder.h.b == VideoData.a))
         {
           a(paramVideoViewHolder);
           return false;
         }
-        Object localObject = paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-        ViewGroup.LayoutParams localLayoutParams = paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.getLayoutParams();
-        View localView = ((Activity)paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext()).getWindow().getDecorView();
+        Object localObject = paramVideoViewHolder.c.getLayoutParams();
+        ViewGroup.LayoutParams localLayoutParams = paramVideoViewHolder.d.getLayoutParams();
+        View localView = ((Activity)paramVideoViewHolder.e.getContext()).getWindow().getDecorView();
         Rect localRect = new Rect();
         localView.getWindowVisibleDisplayFrame(localRect);
         float f2 = localRect.height();
-        float f1 = UITools.a(paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext());
+        float f1 = UITools.a(paramVideoViewHolder.e.getContext());
         c = f2 / 2.0F;
         int i;
         if (f1 / f2 < paramFloat1 / paramFloat2)
@@ -85,18 +85,18 @@ public class StoryRelayoutUtil
             localLayoutParams.height = ((int)paramFloat2);
             ((ViewGroup.LayoutParams)localObject).width = i;
             ((ViewGroup.LayoutParams)localObject).height = ((int)paramFloat2);
-            paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-            paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams(localLayoutParams);
-            paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.getRootView().setBackgroundColor(Color.parseColor("#000000"));
-            paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
-            paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
+            paramVideoViewHolder.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+            paramVideoViewHolder.d.setLayoutParams(localLayoutParams);
+            paramVideoViewHolder.d.getRootView().setBackgroundColor(Color.parseColor("#000000"));
+            paramVideoViewHolder.d.requestLayout();
+            paramVideoViewHolder.c.requestLayout();
           }
           else
           {
-            paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-            paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-            paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
-            paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
+            paramVideoViewHolder.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
+            paramVideoViewHolder.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+            paramVideoViewHolder.d.requestLayout();
+            paramVideoViewHolder.c.requestLayout();
           }
         }
         else
@@ -105,15 +105,15 @@ public class StoryRelayoutUtil
           ((ViewGroup.LayoutParams)localObject).width = i;
           int j = (int)f2;
           ((ViewGroup.LayoutParams)localObject).height = j;
-          paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-          paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
+          paramVideoViewHolder.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          paramVideoViewHolder.c.requestLayout();
           localLayoutParams.width = i;
           localLayoutParams.height = j;
-          paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-          paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
+          paramVideoViewHolder.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          paramVideoViewHolder.d.requestLayout();
         }
-        localObject = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369331);
-        paramVideoViewHolder = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365808);
+        localObject = (ImageView)paramVideoViewHolder.c.findViewById(2131436334);
+        paramVideoViewHolder = (ImageView)paramVideoViewHolder.c.findViewById(2131432065);
         ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_CENTER);
         paramVideoViewHolder.setScaleType(ImageView.ScaleType.FIT_CENTER);
         return true;
@@ -124,26 +124,26 @@ public class StoryRelayoutUtil
   
   public static boolean a(VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, float paramFloat1, float paramFloat2, VideoData paramVideoData, IShortVideoCommentsView paramIShortVideoCommentsView)
   {
-    if ((paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView != null) && (paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null))
+    if ((paramVideoViewHolder.e != null) && (paramVideoViewHolder.d != null))
     {
       if (paramIShortVideoCommentsView == null) {
         return false;
       }
-      if (!(paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext() instanceof Activity)) {
+      if (!(paramVideoViewHolder.e.getContext() instanceof Activity)) {
         return false;
       }
-      if ((paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.b == VideoData.a))
+      if ((paramVideoViewHolder.h != null) && (paramVideoViewHolder.h.b == VideoData.a))
       {
         a(paramVideoViewHolder);
         return false;
       }
-      paramVideoData = paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getLayoutParams();
-      paramIShortVideoCommentsView = paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.getLayoutParams();
-      View localView = ((Activity)paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext()).getWindow().getDecorView();
+      paramVideoData = paramVideoViewHolder.e.getLayoutParams();
+      paramIShortVideoCommentsView = paramVideoViewHolder.d.getLayoutParams();
+      View localView = ((Activity)paramVideoViewHolder.e.getContext()).getWindow().getDecorView();
       Rect localRect = new Rect();
       localView.getWindowVisibleDisplayFrame(localRect);
       float f2 = localRect.height();
-      float f1 = UITools.a(paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext());
+      float f1 = UITools.a(paramVideoViewHolder.e.getContext());
       c = f2 / 2.0F;
       int i;
       if (f1 / f2 < paramFloat2 / paramFloat1)
@@ -159,18 +159,18 @@ public class StoryRelayoutUtil
           paramIShortVideoCommentsView.height = ((int)paramFloat2);
           paramVideoData.width = i;
           paramVideoData.height = ((int)paramFloat2);
-          paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setLayoutParams(paramVideoData);
-          paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams(paramIShortVideoCommentsView);
-          paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.getRootView().setBackgroundColor(Color.parseColor("#000000"));
-          paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
-          paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
+          paramVideoViewHolder.e.setLayoutParams(paramVideoData);
+          paramVideoViewHolder.d.setLayoutParams(paramIShortVideoCommentsView);
+          paramVideoViewHolder.d.getRootView().setBackgroundColor(Color.parseColor("#000000"));
+          paramVideoViewHolder.d.requestLayout();
+          paramVideoViewHolder.e.requestLayout();
         }
         else
         {
-          paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams(paramVideoData);
-          paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setLayoutParams(paramVideoData);
-          paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
-          paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
+          paramVideoViewHolder.d.setLayoutParams(paramVideoData);
+          paramVideoViewHolder.e.setLayoutParams(paramVideoData);
+          paramVideoViewHolder.d.requestLayout();
+          paramVideoViewHolder.e.requestLayout();
         }
       }
       else
@@ -179,15 +179,15 @@ public class StoryRelayoutUtil
         paramVideoData.width = i;
         int j = (int)f2;
         paramVideoData.height = j;
-        paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setLayoutParams(paramVideoData);
-        paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
+        paramVideoViewHolder.e.setLayoutParams(paramVideoData);
+        paramVideoViewHolder.e.requestLayout();
         paramIShortVideoCommentsView.width = i;
         paramIShortVideoCommentsView.height = j;
-        paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setLayoutParams(paramVideoData);
-        paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.requestLayout();
-        paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
+        paramVideoViewHolder.d.setLayoutParams(paramVideoData);
+        paramVideoViewHolder.d.requestLayout();
+        paramVideoViewHolder.e.requestLayout();
       }
-      paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(new ColorDrawable(-16777216));
+      paramVideoViewHolder.c.setBackgroundDrawable(new ColorDrawable(-16777216));
     }
     return false;
   }
@@ -198,7 +198,7 @@ public class StoryRelayoutUtil
       return false;
     }
     if ((paramFitXImageView.getContext() instanceof Activity)) {
-      i = ViewUtils.a((Activity)paramFitXImageView.getContext());
+      i = ViewUtils.getStatusBarHeight((Activity)paramFitXImageView.getContext());
     } else {
       i = 0;
     }
@@ -247,7 +247,7 @@ public class StoryRelayoutUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.utils.StoryRelayoutUtil
  * JD-Core Version:    0.7.0.1
  */

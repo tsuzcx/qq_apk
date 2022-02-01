@@ -17,47 +17,48 @@ import tencent.im.msg.im_msg_body.GeneralFlags;
 
 public class BaseMessageProcessorForTroopAndDisc$QTroopHotChatTopicHandler
 {
-  protected byte a;
-  protected int a;
-  protected long a;
-  protected TroopMemberInfo a;
-  protected PBDecodeContext a;
-  protected String a;
   protected ArrayList<MessageRecord> a;
-  protected List<im_msg_body.Elem> a;
-  protected msg_comm.MsgHead a;
-  protected boolean a;
-  protected int b;
-  protected long b;
-  protected boolean b;
-  protected int c;
-  protected long c;
-  protected int d;
-  protected long d;
-  protected int e;
-  protected int f;
-  protected int g;
-  protected int h;
-  protected int i;
+  protected PBDecodeContext b;
+  protected boolean c;
+  protected msg_comm.MsgHead d;
+  protected long e;
+  protected long f;
+  protected long g;
+  protected long h;
+  protected List<im_msg_body.Elem> i;
+  protected byte j;
+  protected String k;
+  protected boolean l;
+  protected int m;
+  protected int n;
+  protected int o;
+  protected int p;
+  protected int q;
+  protected int r;
+  protected TroopMemberInfo s;
+  protected int t;
+  protected int u;
+  protected int v;
+  protected int w;
   
   public BaseMessageProcessorForTroopAndDisc$QTroopHotChatTopicHandler(ArrayList<MessageRecord> paramArrayList, PBDecodeContext paramPBDecodeContext, boolean paramBoolean, msg_comm.MsgHead paramMsgHead, long paramLong1, long paramLong2, long paramLong3, long paramLong4, List<im_msg_body.Elem> paramList, byte paramByte, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqServiceMessagePBDecodeContext = paramPBDecodeContext;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_MsfMsgcommMsg_comm$MsgHead = paramMsgHead;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_c_of_type_Long = paramLong3;
-    this.jdField_d_of_type_Long = paramLong4;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Byte = paramByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramArrayList;
+    this.b = paramPBDecodeContext;
+    this.c = paramBoolean;
+    this.d = paramMsgHead;
+    this.e = paramLong1;
+    this.f = paramLong2;
+    this.g = paramLong3;
+    this.h = paramLong4;
+    this.i = paramList;
+    this.j = paramByte;
+    this.k = paramString;
   }
   
-  private void b()
+  private void l()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.i;
     if (localObject1 == null) {
       return;
     }
@@ -73,7 +74,7 @@ public class BaseMessageProcessorForTroopAndDisc$QTroopHotChatTopicHandler
         {
           localObject2 = new Dialogue();
           ((Dialogue)localObject2).mergeFrom(localResvAttr.bytes_user_vip_info.get().toByteArray());
-          this.i = ((Dialogue)localObject2).diyfontid.get();
+          this.w = ((Dialogue)localObject2).diyfontid.get();
         }
       }
     }
@@ -81,67 +82,73 @@ public class BaseMessageProcessorForTroopAndDisc$QTroopHotChatTopicHandler
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.m;
   }
-  
-  public QTroopHotChatTopicHandler a()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -100;
-    this.jdField_b_of_type_Int = -100;
-    this.jdField_c_of_type_Int = -100;
-    this.jdField_d_of_type_Int = -100;
-    this.e = -100;
-    this.f = -100;
-    this.i = -100;
-    this.g = 0;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo = null;
-    this.h = 0;
-    b();
-    a();
-    return this;
-  }
-  
-  public TroopMemberInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo;
-  }
-  
-  protected void a() {}
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
+    return this.n;
   }
   
   public int c()
   {
-    return this.jdField_c_of_type_Int;
+    return this.o;
   }
   
   public int d()
   {
-    return this.jdField_d_of_type_Int;
+    return this.p;
   }
   
   public int e()
   {
-    return this.e;
+    return this.q;
   }
   
   public int f()
   {
-    return this.f;
+    return this.r;
   }
   
   public int g()
   {
-    return this.i;
+    return this.v;
   }
+  
+  public int h()
+  {
+    return this.w;
+  }
+  
+  public TroopMemberInfo i()
+  {
+    return this.s;
+  }
+  
+  public QTroopHotChatTopicHandler j()
+  {
+    this.l = false;
+    this.m = -100;
+    this.n = -100;
+    this.o = -100;
+    this.p = -100;
+    this.q = -100;
+    this.r = -100;
+    this.w = -100;
+    this.v = -100;
+    this.t = 0;
+    this.s = null;
+    this.u = 0;
+    l();
+    k();
+    return this;
+  }
+  
+  protected void k() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageProcessorForTroopAndDisc.QTroopHotChatTopicHandler
  * JD-Core Version:    0.7.0.1
  */

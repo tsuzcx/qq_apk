@@ -28,14 +28,6 @@ import org.json.JSONObject;
 
 public class PBUtils
 {
-  public static <PB extends MessageMicro<PB>> String a(PB paramPB)
-  {
-    if (paramPB == null) {
-      return String.valueOf(paramPB);
-    }
-    return a(paramPB).toString();
-  }
-  
   private static <PB extends PBPrimitiveField<PB>> String a(PB paramPB)
   {
     if ((paramPB instanceof PBBytesField)) {
@@ -153,6 +145,14 @@ public class PBUtils
     {
       paramPB.printStackTrace();
     }
+  }
+  
+  public static <PB extends MessageMicro<PB>> String b(PB paramPB)
+  {
+    if (paramPB == null) {
+      return String.valueOf(paramPB);
+    }
+    return a(paramPB).toString();
   }
 }
 

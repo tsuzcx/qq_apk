@@ -28,14 +28,14 @@ import com.google.android.material.theme.overlay.MaterialThemeOverlay;
 public class BaseTransientBottomBar$SnackbarBaseLayout
   extends FrameLayout
 {
-  private static final View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new BaseTransientBottomBar.SnackbarBaseLayout.1();
-  private final float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private PorterDuff.Mode jdField_a_of_type_AndroidGraphicsPorterDuff$Mode;
-  private BaseTransientBottomBar.OnAttachStateChangeListener jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$OnAttachStateChangeListener;
-  private BaseTransientBottomBar.OnLayoutChangeListener jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$OnLayoutChangeListener;
-  private final float b;
+  private static final View.OnTouchListener a = new BaseTransientBottomBar.SnackbarBaseLayout.1();
+  private BaseTransientBottomBar.OnLayoutChangeListener b;
+  private BaseTransientBottomBar.OnAttachStateChangeListener c;
+  private int d;
+  private final float e;
+  private final float f;
+  private ColorStateList g;
+  private PorterDuff.Mode h;
   
   protected BaseTransientBottomBar$SnackbarBaseLayout(@NonNull Context paramContext)
   {
@@ -46,17 +46,17 @@ public class BaseTransientBottomBar$SnackbarBaseLayout
   {
     super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, 0, 0), paramAttributeSet);
     paramContext = getContext();
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.at);
-    if (paramAttributeSet.hasValue(R.styleable.eN)) {
-      ViewCompat.setElevation(this, paramAttributeSet.getDimensionPixelSize(R.styleable.eN, 0));
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.gP);
+    if (paramAttributeSet.hasValue(R.styleable.gW)) {
+      ViewCompat.setElevation(this, paramAttributeSet.getDimensionPixelSize(R.styleable.gW, 0));
     }
-    this.jdField_a_of_type_Int = paramAttributeSet.getInt(R.styleable.eJ, 0);
-    this.jdField_a_of_type_Float = paramAttributeSet.getFloat(R.styleable.eK, 1.0F);
-    setBackgroundTintList(MaterialResources.a(paramContext, paramAttributeSet, R.styleable.eL));
-    setBackgroundTintMode(ViewUtils.a(paramAttributeSet.getInt(R.styleable.eM, -1), PorterDuff.Mode.SRC_IN));
-    this.b = paramAttributeSet.getFloat(R.styleable.eI, 1.0F);
+    this.d = paramAttributeSet.getInt(R.styleable.gS, 0);
+    this.e = paramAttributeSet.getFloat(R.styleable.gT, 1.0F);
+    setBackgroundTintList(MaterialResources.a(paramContext, paramAttributeSet, R.styleable.gU));
+    setBackgroundTintMode(ViewUtils.a(paramAttributeSet.getInt(R.styleable.gV, -1), PorterDuff.Mode.SRC_IN));
+    this.f = paramAttributeSet.getFloat(R.styleable.gR, 1.0F);
     paramAttributeSet.recycle();
-    setOnTouchListener(jdField_a_of_type_AndroidViewView$OnTouchListener);
+    setOnTouchListener(a);
     setFocusable(true);
     if (getBackground() == null) {
       ViewCompat.setBackground(this, a());
@@ -66,44 +66,39 @@ public class BaseTransientBottomBar$SnackbarBaseLayout
   @NonNull
   private Drawable a()
   {
-    float f = getResources().getDimension(R.dimen.ap);
+    float f1 = getResources().getDimension(R.dimen.ap);
     Object localObject = new GradientDrawable();
     ((GradientDrawable)localObject).setShape(0);
-    ((GradientDrawable)localObject).setCornerRadius(f);
-    ((GradientDrawable)localObject).setColor(MaterialColors.a(this, R.attr.n, R.attr.l, a()));
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null)
+    ((GradientDrawable)localObject).setCornerRadius(f1);
+    ((GradientDrawable)localObject).setColor(MaterialColors.a(this, R.attr.t, R.attr.q, getBackgroundOverlayColorAlpha()));
+    if (this.g != null)
     {
       localObject = DrawableCompat.wrap((Drawable)localObject);
-      DrawableCompat.setTintList((Drawable)localObject, this.jdField_a_of_type_AndroidContentResColorStateList);
+      DrawableCompat.setTintList((Drawable)localObject, this.g);
       return localObject;
     }
     return DrawableCompat.wrap((Drawable)localObject);
   }
   
-  float a()
+  float getActionTextColorAlpha()
   {
-    return this.jdField_a_of_type_Float;
+    return this.f;
   }
   
-  int a()
+  int getAnimationMode()
   {
-    return this.jdField_a_of_type_Int;
+    return this.d;
   }
   
-  void a(BaseTransientBottomBar.OnAttachStateChangeListener paramOnAttachStateChangeListener)
+  float getBackgroundOverlayColorAlpha()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$OnAttachStateChangeListener = paramOnAttachStateChangeListener;
-  }
-  
-  void a(BaseTransientBottomBar.OnLayoutChangeListener paramOnLayoutChangeListener)
-  {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$OnLayoutChangeListener = paramOnLayoutChangeListener;
+    return this.e;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    BaseTransientBottomBar.OnAttachStateChangeListener localOnAttachStateChangeListener = this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$OnAttachStateChangeListener;
+    BaseTransientBottomBar.OnAttachStateChangeListener localOnAttachStateChangeListener = this.c;
     if (localOnAttachStateChangeListener != null) {
       localOnAttachStateChangeListener.a(this);
     }
@@ -113,7 +108,7 @@ public class BaseTransientBottomBar$SnackbarBaseLayout
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    BaseTransientBottomBar.OnAttachStateChangeListener localOnAttachStateChangeListener = this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$OnAttachStateChangeListener;
+    BaseTransientBottomBar.OnAttachStateChangeListener localOnAttachStateChangeListener = this.c;
     if (localOnAttachStateChangeListener != null) {
       localOnAttachStateChangeListener.b(this);
     }
@@ -122,10 +117,15 @@ public class BaseTransientBottomBar$SnackbarBaseLayout
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    BaseTransientBottomBar.OnLayoutChangeListener localOnLayoutChangeListener = this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$OnLayoutChangeListener;
+    BaseTransientBottomBar.OnLayoutChangeListener localOnLayoutChangeListener = this.b;
     if (localOnLayoutChangeListener != null) {
       localOnLayoutChangeListener.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
+  }
+  
+  void setAnimationMode(int paramInt)
+  {
+    this.d = paramInt;
   }
   
   public void setBackground(@Nullable Drawable paramDrawable)
@@ -139,11 +139,11 @@ public class BaseTransientBottomBar$SnackbarBaseLayout
     if (paramDrawable != null)
     {
       localDrawable = paramDrawable;
-      if (this.jdField_a_of_type_AndroidContentResColorStateList != null)
+      if (this.g != null)
       {
         localDrawable = DrawableCompat.wrap(paramDrawable.mutate());
-        DrawableCompat.setTintList(localDrawable, this.jdField_a_of_type_AndroidContentResColorStateList);
-        DrawableCompat.setTintMode(localDrawable, this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
+        DrawableCompat.setTintList(localDrawable, this.g);
+        DrawableCompat.setTintMode(localDrawable, this.h);
       }
     }
     super.setBackgroundDrawable(localDrawable);
@@ -151,12 +151,12 @@ public class BaseTransientBottomBar$SnackbarBaseLayout
   
   public void setBackgroundTintList(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.g = paramColorStateList;
     if (getBackground() != null)
     {
       Drawable localDrawable = DrawableCompat.wrap(getBackground().mutate());
       DrawableCompat.setTintList(localDrawable, paramColorStateList);
-      DrawableCompat.setTintMode(localDrawable, this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
+      DrawableCompat.setTintMode(localDrawable, this.h);
       if (localDrawable != getBackground()) {
         super.setBackgroundDrawable(localDrawable);
       }
@@ -165,7 +165,7 @@ public class BaseTransientBottomBar$SnackbarBaseLayout
   
   public void setBackgroundTintMode(@Nullable PorterDuff.Mode paramMode)
   {
-    this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode = paramMode;
+    this.h = paramMode;
     if (getBackground() != null)
     {
       Drawable localDrawable = DrawableCompat.wrap(getBackground().mutate());
@@ -176,21 +176,31 @@ public class BaseTransientBottomBar$SnackbarBaseLayout
     }
   }
   
+  void setOnAttachStateChangeListener(BaseTransientBottomBar.OnAttachStateChangeListener paramOnAttachStateChangeListener)
+  {
+    this.c = paramOnAttachStateChangeListener;
+  }
+  
   public void setOnClickListener(@Nullable View.OnClickListener paramOnClickListener)
   {
     View.OnTouchListener localOnTouchListener;
     if (paramOnClickListener != null) {
       localOnTouchListener = null;
     } else {
-      localOnTouchListener = jdField_a_of_type_AndroidViewView$OnTouchListener;
+      localOnTouchListener = a;
     }
     setOnTouchListener(localOnTouchListener);
     super.setOnClickListener(paramOnClickListener);
   }
+  
+  void setOnLayoutChangeListener(BaseTransientBottomBar.OnLayoutChangeListener paramOnLayoutChangeListener)
+  {
+    this.b = paramOnLayoutChangeListener;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.snackbar.BaseTransientBottomBar.SnackbarBaseLayout
  * JD-Core Version:    0.7.0.1
  */

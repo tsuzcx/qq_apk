@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.cmshow.crossengine;
 
 import android.content.Context;
+import android.graphics.SurfaceTexture;
 import android.util.Pair;
 import android.view.MotionEvent;
-import android.view.SurfaceHolder;
 import android.view.View;
 import com.tencent.crossengine.CEApplication;
-import com.tencent.crossengine.offscreen.CEOffscreenGLSurfaceView;
+import com.tencent.crossengine.offscreen.CEOffscreenRenderView;
 import com.tencent.mobileqq.apollo.listener.OnApolloViewListener;
 import com.tencent.mobileqq.apollo.touch.CMActionTouchManager;
 import com.tencent.mobileqq.apollo.touch.ICMTouchManager;
@@ -20,35 +20,27 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/crossengine/CECMShowOffscreenView;", "Lcom/tencent/crossengine/offscreen/CEOffscreenGLSurfaceView;", "Lcom/tencent/mobileqq/cmshow/engine/render/ICMShowView;", "context", "Landroid/content/Context;", "ceApplication", "Lcom/tencent/crossengine/CEApplication;", "worldName", "", "renderConfig", "Lcom/tencent/mobileqq/cmshow/engine/model/RenderConfig;", "viewListener", "Lcom/tencent/mobileqq/apollo/listener/OnApolloViewListener;", "(Landroid/content/Context;Lcom/tencent/crossengine/CEApplication;Ljava/lang/String;Lcom/tencent/mobileqq/cmshow/engine/model/RenderConfig;Lcom/tencent/mobileqq/apollo/listener/OnApolloViewListener;)V", "TAG", "actionTouchManager", "Lcom/tencent/mobileqq/apollo/touch/CMActionTouchManager;", "hasCallbackSurfaceReady", "", "getRenderConfig", "()Lcom/tencent/mobileqq/cmshow/engine/model/RenderConfig;", "getViewListener", "()Lcom/tencent/mobileqq/apollo/listener/OnApolloViewListener;", "getRenderHeight", "", "getRenderWidth", "getTouchManager", "Lcom/tencent/mobileqq/apollo/touch/ICMTouchManager;", "getView", "Landroid/view/View;", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "pause", "", "resume", "surfaceChanged", "holder", "Landroid/view/SurfaceHolder;", "format", "width", "height", "surfaceCreated", "surfaceDestroyed", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/crossengine/CECMShowOffscreenView;", "Lcom/tencent/crossengine/offscreen/CEOffscreenRenderView;", "Lcom/tencent/mobileqq/cmshow/engine/render/ICMShowView;", "context", "Landroid/content/Context;", "ceApplication", "Lcom/tencent/crossengine/CEApplication;", "worldName", "", "renderConfig", "Lcom/tencent/mobileqq/cmshow/engine/model/RenderConfig;", "viewListener", "Lcom/tencent/mobileqq/apollo/listener/OnApolloViewListener;", "(Landroid/content/Context;Lcom/tencent/crossengine/CEApplication;Ljava/lang/String;Lcom/tencent/mobileqq/cmshow/engine/model/RenderConfig;Lcom/tencent/mobileqq/apollo/listener/OnApolloViewListener;)V", "TAG", "TAG$1", "actionTouchManager", "Lcom/tencent/mobileqq/apollo/touch/CMActionTouchManager;", "hasCallbackSurfaceReady", "", "getRenderConfig", "()Lcom/tencent/mobileqq/cmshow/engine/model/RenderConfig;", "getViewListener", "()Lcom/tencent/mobileqq/apollo/listener/OnApolloViewListener;", "getRenderHeight", "", "getRenderWidth", "getTouchManager", "Lcom/tencent/mobileqq/apollo/touch/ICMTouchManager;", "getView", "Landroid/view/View;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "height", "onSurfaceTextureDestroyed", "onSurfaceTextureSizeChanged", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "pause", "resume", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class CECMShowOffscreenView
-  extends CEOffscreenGLSurfaceView
+  extends CEOffscreenRenderView
   implements ICMShowView
 {
-  @NotNull
-  private final OnApolloViewListener jdField_a_of_type_ComTencentMobileqqApolloListenerOnApolloViewListener;
-  private CMActionTouchManager jdField_a_of_type_ComTencentMobileqqApolloTouchCMActionTouchManager;
+  public static final CECMShowOffscreenView.Companion a = new CECMShowOffscreenView.Companion(null);
+  private final String b;
+  private boolean c;
+  private CMActionTouchManager d;
   @Nullable
-  private final RenderConfig jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
-  private final String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private final RenderConfig e;
+  @NotNull
+  private final OnApolloViewListener f;
   
   public CECMShowOffscreenView(@NotNull Context paramContext, @NotNull CEApplication paramCEApplication, @NotNull String paramString, @Nullable RenderConfig paramRenderConfig, @NotNull OnApolloViewListener paramOnApolloViewListener)
   {
     super(paramContext, paramCEApplication, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig = paramRenderConfig;
-    this.jdField_a_of_type_ComTencentMobileqqApolloListenerOnApolloViewListener = paramOnApolloViewListener;
-    this.jdField_a_of_type_JavaLangString = "[cmshow][CECMShowOffscreenEngine][CERenderService][CECMShowOffscreenView]";
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
-    boolean bool;
-    if (paramContext != null) {
-      bool = paramContext.e;
-    } else {
-      bool = true;
-    }
-    setZOrderOnTop(bool);
-    getHolder().setFormat(-3);
-    this.jdField_a_of_type_ComTencentMobileqqApolloTouchCMActionTouchManager = new CMActionTouchManager((View)this, this.jdField_a_of_type_ComTencentMobileqqApolloListenerOnApolloViewListener);
+    this.e = paramRenderConfig;
+    this.f = paramOnApolloViewListener;
+    this.b = "[cmshow][CECMShowOffscreenEngine][CERenderService][CECMShowOffscreenView]";
+    this.d = new CMActionTouchManager((View)this, this.f);
   }
   
   public int getInitHeight()
@@ -56,17 +48,23 @@ public final class CECMShowOffscreenView
     return ICMShowView.DefaultImpls.a(this);
   }
   
+  @Nullable
+  public final RenderConfig getRenderConfig()
+  {
+    return this.e;
+  }
+  
   public int getRenderHeight()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
+    Object localObject = this.e;
     if (localObject != null) {
-      localObject = ((RenderConfig)localObject).jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderRenderMode;
+      localObject = ((RenderConfig)localObject).f;
     } else {
       localObject = null;
     }
     if (localObject == RenderMode.OFF_SCREEN)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig.jdField_a_of_type_AndroidUtilPair.second;
+      localObject = this.e.g.second;
       Intrinsics.checkExpressionValueIsNotNull(localObject, "renderConfig.offScreenSize.second");
       return ((Number)localObject).intValue();
     }
@@ -75,15 +73,15 @@ public final class CECMShowOffscreenView
   
   public int getRenderWidth()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig;
+    Object localObject = this.e;
     if (localObject != null) {
-      localObject = ((RenderConfig)localObject).jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderRenderMode;
+      localObject = ((RenderConfig)localObject).f;
     } else {
       localObject = null;
     }
     if (localObject == RenderMode.OFF_SCREEN)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelRenderConfig.jdField_a_of_type_AndroidUtilPair.first;
+      localObject = this.e.g.first;
       Intrinsics.checkExpressionValueIsNotNull(localObject, "renderConfig.offScreenSize.first");
       return ((Number)localObject).intValue();
     }
@@ -93,7 +91,7 @@ public final class CECMShowOffscreenView
   @NotNull
   public ICMTouchManager getTouchManager()
   {
-    return (ICMTouchManager)this.jdField_a_of_type_ComTencentMobileqqApolloTouchCMActionTouchManager;
+    return (ICMTouchManager)this.d;
   }
   
   @NotNull
@@ -102,11 +100,56 @@ public final class CECMShowOffscreenView
     return (View)this;
   }
   
+  @NotNull
+  public final OnApolloViewListener getViewListener()
+  {
+    return this.f;
+  }
+  
+  public void onSurfaceTextureAvailable(@Nullable SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    long l = System.currentTimeMillis();
+    super.onSurfaceTextureAvailable(paramSurfaceTexture, paramInt1, paramInt2);
+    if (!this.c)
+    {
+      this.c = true;
+      this.f.a(paramInt1, paramInt2);
+    }
+    paramSurfaceTexture = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSurfaceTextureAvailable costTime:");
+    localStringBuilder.append(System.currentTimeMillis() - l);
+    QLog.i(paramSurfaceTexture, 1, localStringBuilder.toString());
+  }
+  
+  public boolean onSurfaceTextureDestroyed(@Nullable SurfaceTexture paramSurfaceTexture)
+  {
+    long l = System.currentTimeMillis();
+    boolean bool = super.onSurfaceTextureDestroyed(paramSurfaceTexture);
+    paramSurfaceTexture = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSurfaceTextureDestroyed costTime:");
+    localStringBuilder.append(System.currentTimeMillis() - l);
+    QLog.i(paramSurfaceTexture, 1, localStringBuilder.toString());
+    return bool;
+  }
+  
+  public void onSurfaceTextureSizeChanged(@Nullable SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    long l = System.currentTimeMillis();
+    super.onSurfaceTextureSizeChanged(paramSurfaceTexture, paramInt1, paramInt2);
+    paramSurfaceTexture = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSurfaceTextureSizeChanged costTime:");
+    localStringBuilder.append(System.currentTimeMillis() - l);
+    QLog.i(paramSurfaceTexture, 1, localStringBuilder.toString());
+  }
+  
   public boolean onTouchEvent(@NotNull MotionEvent paramMotionEvent)
   {
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqApolloTouchCMActionTouchManager.a(paramMotionEvent);
-    String str = this.jdField_a_of_type_JavaLangString;
+    boolean bool = this.d.a(paramMotionEvent);
+    String str = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onTouchEvent, event:");
     localStringBuilder.append(paramMotionEvent.getAction());
@@ -118,59 +161,21 @@ public final class CECMShowOffscreenView
   
   public void pause()
   {
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "pause");
+    QLog.d(this.b, 1, "pause");
+    super.b();
     setVisibility(8);
-    super.onPause();
   }
   
   public void resume()
   {
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "resume");
+    QLog.d(this.b, 1, "resume");
+    super.a();
     setVisibility(0);
-    super.onResume();
-  }
-  
-  public void surfaceChanged(@Nullable SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    long l = System.currentTimeMillis();
-    super.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqApolloListenerOnApolloViewListener.onSurfaceReady(paramInt2, paramInt3);
-    }
-    paramSurfaceHolder = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("surfaceChanged costTime:");
-    localStringBuilder.append(System.currentTimeMillis() - l);
-    QLog.i(paramSurfaceHolder, 1, localStringBuilder.toString());
-  }
-  
-  public void surfaceCreated(@Nullable SurfaceHolder paramSurfaceHolder)
-  {
-    long l = System.currentTimeMillis();
-    super.surfaceCreated(paramSurfaceHolder);
-    paramSurfaceHolder = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("surfaceCreated costTime:");
-    localStringBuilder.append(System.currentTimeMillis() - l);
-    QLog.i(paramSurfaceHolder, 1, localStringBuilder.toString());
-  }
-  
-  public void surfaceDestroyed(@Nullable SurfaceHolder paramSurfaceHolder)
-  {
-    long l = System.currentTimeMillis();
-    super.surfaceDestroyed(paramSurfaceHolder);
-    paramSurfaceHolder = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("surfaceDestroyed costTime:");
-    localStringBuilder.append(System.currentTimeMillis() - l);
-    QLog.i(paramSurfaceHolder, 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.CECMShowOffscreenView
  * JD-Core Version:    0.7.0.1
  */

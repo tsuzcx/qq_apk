@@ -45,11 +45,6 @@ public class KandianMsgTipsFilter
     return null;
   }
   
-  public CharSequence a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
-  {
-    return null;
-  }
-  
   public boolean a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
   {
     if (paramMessage.istroop == 7220) {
@@ -61,12 +56,20 @@ public class KandianMsgTipsFilter
     if ((paramMessage.istroop == 1008) && (AppConstants.KANDIAN_DAILY_UIN.equals(paramMessage.senderuin))) {
       return true;
     }
-    return (paramMessage.istroop != 7220) && (TextUtils.equals(paramMessage.frienduin, AppConstants.NEW_KANDIAN_UIN));
+    if ((paramMessage.istroop != 7220) && (TextUtils.equals(paramMessage.frienduin, AppConstants.NEW_KANDIAN_UIN))) {
+      return true;
+    }
+    return paramMessage.istroop == 10013;
+  }
+  
+  public CharSequence b(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.tips.KandianMsgTipsFilter
  * JD-Core Version:    0.7.0.1
  */

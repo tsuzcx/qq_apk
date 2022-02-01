@@ -25,6 +25,7 @@ import com.tencent.mobileqq.apollo.model.ApolloInfo;
 import com.tencent.mobileqq.apollo.script.ISpriteActionScript;
 import com.tencent.mobileqq.apollo.script.api.ISpriteUtil;
 import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
+import com.tencent.mobileqq.apollo.view.hippy.CmGameApiProvider;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.HotChatManager;
@@ -35,6 +36,7 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mtt.hippy.HippyAPIProvider;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
 import java.util.HashMap;
@@ -71,7 +73,7 @@ public class ApolloPanelProviderImpl
             paramMessage = this.mApolloPanel;
             if (paramMessage != null)
             {
-              paramMessage.k();
+              paramMessage.j();
               return true;
             }
           }
@@ -100,7 +102,7 @@ public class ApolloPanelProviderImpl
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("");
-          ((StringBuilder)localObject).append(AIOUtils.a(this.mChatPie.a()));
+          ((StringBuilder)localObject).append(AIOUtils.a(this.mChatPie.aX()));
           paramMessage.put("offset", ((StringBuilder)localObject).toString());
           this.mApolloPanel.a(paramMessage);
           return true;
@@ -128,12 +130,17 @@ public class ApolloPanelProviderImpl
     }
   }
   
+  public HippyAPIProvider createHippyProvider()
+  {
+    return new CmGameApiProvider();
+  }
+  
   public ApolloPanel createPanel(Context paramContext)
   {
     this.mApolloPanel = new ApolloPanel(paramContext);
     paramContext = this.mApolloPanel;
     BaseChatPie localBaseChatPie = this.mChatPie;
-    paramContext.a(localBaseChatPie, localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.mJumpActionId, this.mPkgId, this.mApolloPanelStatus);
+    paramContext.a(localBaseChatPie, localBaseChatPie.ah, this.mJumpActionId, this.mPkgId, this.mApolloPanelStatus);
     StartupTracker.a("apollo_panel_open", null);
     return this.mApolloPanel;
   }
@@ -172,7 +179,7 @@ public class ApolloPanelProviderImpl
     if ((paramObject instanceof BaseChatPie))
     {
       this.mChatPie = ((BaseChatPie)paramObject);
-      paramObject = this.mChatPie.b().a();
+      paramObject = this.mChatPie.bv().d();
       if (paramObject != null)
       {
         paramObject.a(this);
@@ -182,9 +189,14 @@ public class ApolloPanelProviderImpl
       {
         QLog.e("[cmshow]ApolloPanelProviderImpl", 2, "[init] error! helperProvider is null!");
       }
-      this.mLastScreenWidth = DeviceInfoUtil.i();
-      this.mLastScreenHeight = DeviceInfoUtil.j();
+      this.mLastScreenWidth = DeviceInfoUtil.D();
+      this.mLastScreenHeight = DeviceInfoUtil.E();
     }
+  }
+  
+  public boolean isCMModule(String paramString)
+  {
+    return "minigameEntry".equals(paramString);
   }
   
   public boolean isNeedRecreatePanel()
@@ -194,7 +206,7 @@ public class ApolloPanelProviderImpl
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    paramIntent = this.mChatPie.a();
+    paramIntent = this.mChatPie.i();
     if (paramInt1 == 14007)
     {
       if (paramIntent != null)
@@ -234,17 +246,17 @@ public class ApolloPanelProviderImpl
           paramInt = 0;
         }
         this.mLastScreenWidth = l1;
-        this.mLastScreenHeight = DeviceInfoUtil.j();
+        this.mLastScreenHeight = DeviceInfoUtil.E();
         if (paramInt != 0)
         {
           Object localObject = (ISpriteUtil)QRoute.api(ISpriteUtil.class);
-          ISpriteActionScript localISpriteActionScript = ((ISpriteUtil)localObject).getActionScript(this.mChatPie.a());
+          ISpriteActionScript localISpriteActionScript = ((ISpriteUtil)localObject).getActionScript(this.mChatPie.i());
           if (localISpriteActionScript != null) {
             localISpriteActionScript.a(this.mLastScreenWidth, this.mLastScreenHeight, ((ISpriteUtil)localObject).getAIOSurfaceInitWidth(), ((ISpriteUtil)localObject).getAIOSurfaceInitHeight());
           }
           localObject = this.mApolloPanel;
           if (localObject != null) {
-            ((ApolloPanel)localObject).a(this.mChatPie.a().getCurrentAccountUin());
+            ((ApolloPanel)localObject).a(this.mChatPie.i().getCurrentAccountUin());
           }
         }
       }
@@ -269,7 +281,7 @@ public class ApolloPanelProviderImpl
   public void onPanelIconClick(XPanelContainer paramXPanelContainer)
   {
     paramXPanelContainer.a(21);
-    paramXPanelContainer = this.mChatPie.a();
+    paramXPanelContainer = this.mChatPie.i();
     Object localObject = (IApolloManagerService)paramXPanelContainer.getRuntimeService(IApolloManagerService.class, "all");
     if ((((IApolloManagerService)localObject).getApolloStatus(paramXPanelContainer.getCurrentUin()) == 0) || (((IApolloManagerService)localObject).getApolloStatus(paramXPanelContainer.getCurrentUin()) == 2))
     {
@@ -277,7 +289,7 @@ public class ApolloPanelProviderImpl
       int j = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportUserResult(((IApolloManagerService)localObject).getApolloUserStatus());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(this.mChatPie.b()));
+      ((StringBuilder)localObject).append(((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(this.mChatPie.F()));
       VipUtils.a(paramXPanelContainer, "cmshow", "Apollo", "panel_close_show", i, j, new String[] { ((StringBuilder)localObject).toString() });
     }
   }
@@ -288,42 +300,42 @@ public class ApolloPanelProviderImpl
   {
     if (paramInt2 == 21)
     {
-      int i = this.mChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      int i = this.mChatPie.ah.a;
       paramInt2 = 0;
       paramInt1 = paramInt2;
       if (i == 1)
       {
-        HotChatManager localHotChatManager = (HotChatManager)this.mChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+        HotChatManager localHotChatManager = (HotChatManager)this.mChatPie.d.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
         paramInt1 = paramInt2;
         if (localHotChatManager != null)
         {
           paramInt1 = paramInt2;
-          if (localHotChatManager.b(this.mChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+          if (localHotChatManager.b(this.mChatPie.ah.b)) {
             paramInt1 = 1;
           }
         }
       }
       if (paramInt1 != 0)
       {
-        this.mChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setSelected(21);
+        this.mChatPie.W.setSelected(21);
         return;
       }
-      this.mChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setSelected(8);
+      this.mChatPie.W.setSelected(8);
     }
   }
   
   public void showApolloPanel()
   {
-    PanelManager localPanelManager = this.mChatPie.a();
+    PanelManager localPanelManager = this.mChatPie.bq();
     if (localPanelManager != null) {
-      localPanelManager.b(21);
+      localPanelManager.e(21);
     }
   }
   
   public void showApolloStatusPanel(int paramInt)
   {
     if (paramInt == 0) {
-      paramInt = ((IApolloManagerService)this.mChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).getApolloStatus(this.mChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      paramInt = ((IApolloManagerService)this.mChatPie.d.getRuntimeService(IApolloManagerService.class, "all")).getApolloStatus(this.mChatPie.d.getCurrentUin());
     } else {
       paramInt = -1;
     }
@@ -337,10 +349,10 @@ public class ApolloPanelProviderImpl
   
   public boolean showQuickApolloSendPanel()
   {
-    Object localObject = (IApolloAIOHelper)this.mChatPie.a(8);
+    Object localObject = (IApolloAIOHelper)this.mChatPie.q(8);
     if ((localObject != null) && (((IApolloAIOHelper)localObject).isApolloForward()))
     {
-      localObject = this.mChatPie.a().getIntent();
+      localObject = this.mChatPie.aX().getIntent();
       int i;
       if (((Intent)localObject).hasExtra("apollo_actionid_key"))
       {
@@ -367,7 +379,7 @@ public class ApolloPanelProviderImpl
       localObject = this.mApolloPanel;
       if (localObject != null)
       {
-        ((ApolloPanel)localObject).a(j, i);
+        ((ApolloPanel)localObject).b(j, i);
       }
       else
       {
@@ -384,7 +396,7 @@ public class ApolloPanelProviderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.api.impl.ApolloPanelProviderImpl
  * JD-Core Version:    0.7.0.1
  */

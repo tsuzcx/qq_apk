@@ -8,40 +8,42 @@ import java.util.List;
 public abstract class BasePagePlayingListSync
   extends DefaultPlayerVideoListSynchronizer
 {
-  public int a;
-  public String a;
-  protected List<StoryVideoItem> a;
-  protected String b;
-  protected boolean b;
-  protected boolean c;
-  public boolean d;
-  public boolean e;
+  protected List<StoryVideoItem> b;
+  public String c;
+  protected boolean d;
+  protected boolean e;
+  public int f;
+  public boolean g;
+  protected String h;
+  public boolean i;
   
   protected abstract void a();
   
   protected void a(int paramInt)
   {
-    if ((paramInt == -1) && (!this.jdField_a_of_type_Boolean)) {
+    if ((paramInt == -1) && (!this.a)) {
       a();
     }
-    if (a(paramInt)) {
+    if (b(paramInt)) {
       b();
     }
   }
   
-  protected boolean a(int paramInt)
+  protected abstract void b();
+  
+  protected boolean b(int paramInt)
   {
-    if (this.b)
+    if (this.d)
     {
       SLog.b("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "not preload for end");
       return false;
     }
-    if (this.c)
+    if (this.e)
     {
       SLog.b("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "can't preload for loading");
       return false;
     }
-    paramInt = this.jdField_a_of_type_Int - paramInt;
+    paramInt = this.f - paramInt;
     if (paramInt < 2)
     {
       SLog.a("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "can preload for left size:%d, preload size:%d", Integer.valueOf(paramInt), Integer.valueOf(2));
@@ -50,16 +52,14 @@ public abstract class BasePagePlayingListSync
     return false;
   }
   
-  protected abstract void b();
-  
   public boolean isValidate()
   {
-    return this.e;
+    return this.i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.BasePagePlayingListSync
  * JD-Core Version:    0.7.0.1
  */

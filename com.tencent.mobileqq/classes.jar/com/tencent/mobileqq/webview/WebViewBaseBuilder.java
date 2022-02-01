@@ -67,25 +67,25 @@ public class WebViewBaseBuilder
     if (QLog.isColorLevel()) {
       QLog.d("WebViewBaseBuilder", 2, "initLayout");
     }
-    Object localObject = LayoutInflater.from(this.mContext).inflate(2131563048, null);
+    Object localObject = LayoutInflater.from(this.mContext).inflate(2131629664, null);
     this.mInActivity.setContentView((View)localObject);
-    this.mViewRoot = ((View)localObject).findViewById(2131381061);
+    this.mViewRoot = ((View)localObject).findViewById(2131450072);
     if ((this.bNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1) && (Build.VERSION.SDK_INT >= 14)) {
       this.mViewRoot.setFitsSystemWindows(this.bFitSystemWindow);
     }
-    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131378823));
-    this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131363733));
-    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131381078));
-    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131376345));
-    this.maskView = this.mViewRoot.findViewById(2131381081);
-    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131365179));
+    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131447506));
+    this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131429656));
+    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131450091));
+    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131444560));
+    this.maskView = this.mViewRoot.findViewById(2131450095);
+    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131431340));
     localObject = this.mIntent;
     if ((localObject != null) && (!((Intent)localObject).getBooleanExtra("webview_hide_progress", false)))
     {
-      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131373133));
+      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131440738));
       this.mProgressBarController = new WebViewProgressBarController();
       this.mLoadingProgressBar.setController(this.mProgressBarController);
-      if ((isIsFirstOnPageStart()) && (this.mProgressBarController != null) && (this.mProgressBarController.b() != 0)) {
+      if ((isIsFirstOnPageStart()) && (this.mProgressBarController != null) && (this.mProgressBarController.d() != 0)) {
         this.mProgressBarController.a((byte)0);
       }
     }
@@ -177,7 +177,7 @@ public class WebViewBaseBuilder
     }
     initLayout();
     this.mWebview = new TouchWebView(this.mContext);
-    this.mWebview.setId(2131381075);
+    this.mWebview.setId(2131450088);
     this.webviewContainer.addView(this.mWebview);
   }
   
@@ -189,7 +189,7 @@ public class WebViewBaseBuilder
     }
     initLayout();
     this.mWebview = new TouchWebView(paramContext);
-    this.mWebview.setId(2131381075);
+    this.mWebview.setId(2131450088);
     this.webviewContainer.addView(this.mWebview, 0, new RelativeLayout.LayoutParams(-1, -1));
   }
   
@@ -199,7 +199,7 @@ public class WebViewBaseBuilder
       QLog.d("WebViewBaseBuilder", 2, "buildTitleBar");
     }
     this.mTitleBar = new WebViewTitlerBar(this.mInActivity, this.mWebview, this.titleContainer);
-    this.titleContainer.setBackgroundResource(2130850433);
+    this.titleContainer.setBackgroundResource(2130852228);
     Intent localIntent = this.mIntent;
     if (localIntent != null)
     {
@@ -247,7 +247,7 @@ public class WebViewBaseBuilder
     if ((this.bNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
       this.mInActivity.getWindow().addFlags(67108864);
-      int i = this.mInActivity.getResources().getColor(2131167114);
+      int i = this.mInActivity.getResources().getColor(2131168092);
       this.mSystemBarComp = new SystemBarCompact(this.mInActivity, true, i);
       this.mSystemBarComp.init();
     }
@@ -277,7 +277,7 @@ public class WebViewBaseBuilder
     if (localSystemBarCompact != null) {
       localSystemBarCompact.setgetStatusBarVisible(true, 0);
     }
-    paramImmersiveParam.b.setBackgroundResource(2130850433);
+    paramImmersiveParam.b.setBackgroundResource(2130852228);
     this.mTitleBar.a(255, 0);
   }
   
@@ -346,7 +346,7 @@ public class WebViewBaseBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebViewBaseBuilder
  * JD-Core Version:    0.7.0.1
  */

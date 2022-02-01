@@ -356,8 +356,8 @@ public class PublicAccountArticleHandlerImpl
       try
       {
         localGetPhotoCollectionInfoResponse.mergeFrom((byte[])paramObject);
-        localPhotoCollectionInfo.jdField_a_of_type_JavaLangString = ((String)paramToServiceMsg.extraData.get(this.IMAGE_COLLECTION_ARTICLE_ID));
-        paramFromServiceMsg = localPhotoCollectionInfo.jdField_a_of_type_JavaLangString;
+        localPhotoCollectionInfo.a = ((String)paramToServiceMsg.extraData.get(this.IMAGE_COLLECTION_ARTICLE_ID));
+        paramFromServiceMsg = localPhotoCollectionInfo.a;
         paramToServiceMsg = paramFromServiceMsg;
         if (!localGetPhotoCollectionInfoResponse.ret.has()) {
           break label679;
@@ -368,7 +368,7 @@ public class PublicAccountArticleHandlerImpl
           bool1 = true;
         }
         if (localGetPhotoCollectionInfoResponse.article_share_url.has()) {
-          localPhotoCollectionInfo.jdField_b_of_type_JavaLangString = localGetPhotoCollectionInfoResponse.article_share_url.get().toStringUtf8();
+          localPhotoCollectionInfo.b = localGetPhotoCollectionInfoResponse.article_share_url.get().toStringUtf8();
         }
         if (localGetPhotoCollectionInfoResponse.puin.has())
         {
@@ -384,32 +384,32 @@ public class PublicAccountArticleHandlerImpl
           localPhotoCollectionInfo.e = localGetPhotoCollectionInfoResponse.article_title.get().toStringUtf8();
         }
         if (localGetPhotoCollectionInfoResponse.enable_comment.has()) {
-          localPhotoCollectionInfo.jdField_a_of_type_Int = localGetPhotoCollectionInfoResponse.enable_comment.get();
+          localPhotoCollectionInfo.f = localGetPhotoCollectionInfoResponse.enable_comment.get();
         }
         if (localGetPhotoCollectionInfoResponse.comment_url.has()) {
-          localPhotoCollectionInfo.f = localGetPhotoCollectionInfoResponse.comment_url.get().toStringUtf8();
+          localPhotoCollectionInfo.g = localGetPhotoCollectionInfoResponse.comment_url.get().toStringUtf8();
         }
         if (localGetPhotoCollectionInfoResponse.firstItem.has())
         {
-          localPhotoCollectionInfo.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiIPublicAccountImageCollectionUtils$PhotoFirstItemInfo = new IPublicAccountImageCollectionUtils.PhotoFirstItemInfo();
-          localPhotoCollectionInfo.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiIPublicAccountImageCollectionUtils$PhotoFirstItemInfo.jdField_a_of_type_JavaLangString = localGetPhotoCollectionInfoResponse.firstItem.url.get().toStringUtf8();
-          localPhotoCollectionInfo.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiIPublicAccountImageCollectionUtils$PhotoFirstItemInfo.d = localGetPhotoCollectionInfoResponse.firstItem.photo_author_name.get().toStringUtf8();
-          localPhotoCollectionInfo.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiIPublicAccountImageCollectionUtils$PhotoFirstItemInfo.c = localGetPhotoCollectionInfoResponse.firstItem.photo_time.get().toStringUtf8();
-          localPhotoCollectionInfo.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiIPublicAccountImageCollectionUtils$PhotoFirstItemInfo.jdField_b_of_type_JavaLangString = localGetPhotoCollectionInfoResponse.firstItem.publicaccount_name.get().toStringUtf8();
+          localPhotoCollectionInfo.h = new IPublicAccountImageCollectionUtils.PhotoFirstItemInfo();
+          localPhotoCollectionInfo.h.a = localGetPhotoCollectionInfoResponse.firstItem.url.get().toStringUtf8();
+          localPhotoCollectionInfo.h.d = localGetPhotoCollectionInfoResponse.firstItem.photo_author_name.get().toStringUtf8();
+          localPhotoCollectionInfo.h.c = localGetPhotoCollectionInfoResponse.firstItem.photo_time.get().toStringUtf8();
+          localPhotoCollectionInfo.h.b = localGetPhotoCollectionInfoResponse.firstItem.publicaccount_name.get().toStringUtf8();
         }
         if ((localGetPhotoCollectionInfoResponse.item.has()) && (localGetPhotoCollectionInfoResponse.item.get().size() > 0))
         {
-          localPhotoCollectionInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          localPhotoCollectionInfo.i = new ArrayList();
           int j = localGetPhotoCollectionInfoResponse.item.get().size();
           while (i < j)
           {
             paramToServiceMsg = new IPublicAccountImageCollectionUtils.PhotoItemInfo();
-            paramToServiceMsg.jdField_a_of_type_JavaLangString = ((ArticleComment.PhotoItemInfo)localGetPhotoCollectionInfoResponse.item.get(i)).url.get().toStringUtf8();
-            paramToServiceMsg.jdField_b_of_type_JavaLangString = ((ArticleComment.PhotoItemInfo)localGetPhotoCollectionInfoResponse.item.get(i)).content.get().toStringUtf8();
+            paramToServiceMsg.a = ((ArticleComment.PhotoItemInfo)localGetPhotoCollectionInfoResponse.item.get(i)).url.get().toStringUtf8();
+            paramToServiceMsg.b = ((ArticleComment.PhotoItemInfo)localGetPhotoCollectionInfoResponse.item.get(i)).content.get().toStringUtf8();
             paramToServiceMsg.c = ((ArticleComment.PhotoItemInfo)localGetPhotoCollectionInfoResponse.item.get(i)).static_url.get().toStringUtf8();
-            paramToServiceMsg.jdField_a_of_type_Int = ((ArticleComment.PhotoItemInfo)localGetPhotoCollectionInfoResponse.item.get(i)).width.get();
-            paramToServiceMsg.jdField_b_of_type_Int = ((ArticleComment.PhotoItemInfo)localGetPhotoCollectionInfoResponse.item.get(i)).height.get();
-            localPhotoCollectionInfo.jdField_a_of_type_JavaUtilArrayList.add(paramToServiceMsg);
+            paramToServiceMsg.d = ((ArticleComment.PhotoItemInfo)localGetPhotoCollectionInfoResponse.item.get(i)).width.get();
+            paramToServiceMsg.e = ((ArticleComment.PhotoItemInfo)localGetPhotoCollectionInfoResponse.item.get(i)).height.get();
+            localPhotoCollectionInfo.i.add(paramToServiceMsg);
             i += 1;
           }
         }
@@ -472,8 +472,8 @@ public class PublicAccountArticleHandlerImpl
                 paramObject = new IPublicAccountImageCollectionUtils.RecommendItemInfo();
                 paramObject.d = ((ArticleComment.RecommendItemInfo)paramFromServiceMsg.item.get(i)).article_id.get().toStringUtf8();
                 paramObject.c = ((ArticleComment.RecommendItemInfo)paramFromServiceMsg.item.get(i)).recommend_source.get().toStringUtf8();
-                paramObject.jdField_b_of_type_JavaLangString = ((ArticleComment.RecommendItemInfo)paramFromServiceMsg.item.get(i)).title.get().toStringUtf8();
-                paramObject.jdField_a_of_type_JavaLangString = ((ArticleComment.RecommendItemInfo)paramFromServiceMsg.item.get(i)).url.get().toStringUtf8();
+                paramObject.b = ((ArticleComment.RecommendItemInfo)paramFromServiceMsg.item.get(i)).title.get().toStringUtf8();
+                paramObject.a = ((ArticleComment.RecommendItemInfo)paramFromServiceMsg.item.get(i)).url.get().toStringUtf8();
                 paramToServiceMsg.add(paramObject);
                 i += 1;
               }
@@ -773,7 +773,7 @@ public class PublicAccountArticleHandlerImpl
     ByteStringMicro localByteStringMicro = ByteStringMicro.copyFromUtf8(paramString1);
     ((ArticleComment.GetPhotoCollectionInfoRequest)localObject).article_id.set(localByteStringMicro);
     ((ArticleComment.GetPhotoCollectionInfoRequest)localObject).cuin.set(Long.valueOf(getCurrentAccountUin()).longValue());
-    ((ArticleComment.GetPhotoCollectionInfoRequest)localObject).versionInfo.set("8.7.0,3,5295");
+    ((ArticleComment.GetPhotoCollectionInfoRequest)localObject).versionInfo.set("8.8.17,3,5770");
     ((ArticleComment.GetPhotoCollectionInfoRequest)localObject).click_source.set(paramInt2);
     ((ArticleComment.GetPhotoCollectionInfoRequest)localObject).recommend_position.set(paramInt1);
     ((ArticleComment.GetPhotoCollectionInfoRequest)localObject).recommend_source.set(paramString2);
@@ -797,7 +797,7 @@ public class PublicAccountArticleHandlerImpl
     paramString = ByteStringMicro.copyFromUtf8(paramString);
     ((ArticleComment.GetRecommendInfoRequest)localObject).article_id.set(paramString);
     ((ArticleComment.GetRecommendInfoRequest)localObject).cuin.set(Long.valueOf(getCurrentAccountUin()).longValue());
-    ((ArticleComment.GetRecommendInfoRequest)localObject).versionInfo.set("8.7.0,3,5295");
+    ((ArticleComment.GetRecommendInfoRequest)localObject).versionInfo.set("8.8.17,3,5770");
     paramString = createToServiceMsg("PubAccountArticleCenter.GetRecommendInfo");
     paramString.putWupBuffer(((ArticleComment.GetRecommendInfoRequest)localObject).toByteArray());
     paramString.setTimeout(30000L);
@@ -940,9 +940,9 @@ public class PublicAccountArticleHandlerImpl
     paramString2 = ByteStringMicro.copyFromUtf8("Android");
     ((ArticleComment.ReportGalleryInfoRequest)localObject).os.set(paramString2);
     ((ArticleComment.ReportGalleryInfoRequest)localObject).is_qq.set(1);
-    paramString2 = ByteStringMicro.copyFromUtf8("8.7.0");
+    paramString2 = ByteStringMicro.copyFromUtf8("8.8.17");
     ((ArticleComment.ReportGalleryInfoRequest)localObject).mv.set(paramString2);
-    paramString2 = ByteStringMicro.copyFromUtf8("5295");
+    paramString2 = ByteStringMicro.copyFromUtf8("5770");
     ((ArticleComment.ReportGalleryInfoRequest)localObject).subv.set(paramString2);
     paramString2 = ByteStringMicro.copyFromUtf8(com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[com.tencent.mobileqq.utils.NetworkUtil.getSystemNetwork(this.appRuntime.getApplicationContext())]);
     ((ArticleComment.ReportGalleryInfoRequest)localObject).network.set(paramString2);
@@ -1006,7 +1006,7 @@ public class PublicAccountArticleHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountArticleHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

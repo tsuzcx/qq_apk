@@ -11,10 +11,10 @@ import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 public class AVGamePosterCoverView
   extends AsyncImageView
 {
-  private int jdField_a_of_type_Int = 16;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private int b = this.jdField_a_of_type_Int << 1;
+  private int a = 16;
+  private int b = this.a << 1;
+  private Paint c;
+  private Path d;
   
   public AVGamePosterCoverView(Context paramContext)
   {
@@ -30,56 +30,56 @@ public class AVGamePosterCoverView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.d = new Path();
+    this.c = new Paint();
+    this.c.setColor(-1);
+    this.c.setAntiAlias(true);
   }
   
   private void a(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_Int, 0.0F);
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    this.d.moveTo(0.0F, this.a);
+    this.d.lineTo(0.0F, 0.0F);
+    this.d.lineTo(this.a, 0.0F);
+    Path localPath = this.d;
     int i = this.b;
     localPath.arcTo(new RectF(0.0F, 0.0F, i, i), -90.0F, -90.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.d.close();
+    paramCanvas.drawPath(this.d, this.c);
   }
   
   private void b(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(getWidth(), this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(getWidth(), 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(getWidth() - this.jdField_a_of_type_Int, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(new RectF(getWidth() - this.b, 0.0F, getWidth(), this.b), -90.0F, 90.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.d.moveTo(getWidth(), this.a);
+    this.d.lineTo(getWidth(), 0.0F);
+    this.d.lineTo(getWidth() - this.a, 0.0F);
+    this.d.arcTo(new RectF(getWidth() - this.b, 0.0F, getWidth(), this.b), -90.0F, 90.0F);
+    this.d.close();
+    paramCanvas.drawPath(this.d, this.c);
   }
   
   private void c(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, getHeight() - this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, getHeight());
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_Int, getHeight());
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    this.d.moveTo(0.0F, getHeight() - this.a);
+    this.d.lineTo(0.0F, getHeight());
+    this.d.lineTo(this.a, getHeight());
+    Path localPath = this.d;
     int i = getHeight();
     int j = this.b;
     localPath.arcTo(new RectF(0.0F, i - j, j, getHeight()), 90.0F, 90.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.d.close();
+    paramCanvas.drawPath(this.d, this.c);
   }
   
   private void d(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(getWidth() - this.jdField_a_of_type_Int, getHeight());
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(getWidth(), getHeight());
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(getWidth(), getHeight() - this.jdField_a_of_type_Int);
+    this.d.moveTo(getWidth() - this.a, getHeight());
+    this.d.lineTo(getWidth(), getHeight());
+    this.d.lineTo(getWidth(), getHeight() - this.a);
     RectF localRectF = new RectF(getWidth() - this.b, getHeight() - this.b, getWidth(), getHeight());
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(localRectF, 0.0F, 90.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.d.arcTo(localRectF, 0.0F, 90.0F);
+    this.d.close();
+    paramCanvas.drawPath(this.d, this.c);
   }
   
   public void draw(Canvas paramCanvas)
@@ -93,7 +93,7 @@ public class AVGamePosterCoverView
   
   public void setRadius(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
 }
 

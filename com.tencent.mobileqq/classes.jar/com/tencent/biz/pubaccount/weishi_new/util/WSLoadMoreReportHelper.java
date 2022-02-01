@@ -5,19 +5,28 @@ import com.tencent.biz.pubaccount.weishi_new.report.WsBeaconReportPresenter;
 
 public class WSLoadMoreReportHelper
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private String a;
   private String b;
+  private int c;
+  private boolean d;
   
   public WSLoadMoreReportHelper(@Nullable String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.d) {
+      return;
+    }
+    this.d = true;
+    WsBeaconReportPresenter.a().b(this.a, this.b, paramInt);
   }
   
   public void a(@Nullable String paramString)
@@ -27,36 +36,27 @@ public class WSLoadMoreReportHelper
   
   public void b()
   {
-    this.jdField_a_of_type_Int += 1;
+    this.c += 1;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onLoadMore() sopName = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", loadMoreTriggerCnt = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     WSLog.b("LoadMoreReportHelper", localStringBuilder.toString());
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c <= 0) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    WsBeaconReportPresenter.a().a(this.jdField_a_of_type_JavaLangString, this.b);
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Int <= 0) {
-      return;
-    }
-    WsBeaconReportPresenter.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int = 0;
+    WsBeaconReportPresenter.a().a(this.a, this.b, this.c);
+    this.c = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSLoadMoreReportHelper
  * JD-Core Version:    0.7.0.1
  */

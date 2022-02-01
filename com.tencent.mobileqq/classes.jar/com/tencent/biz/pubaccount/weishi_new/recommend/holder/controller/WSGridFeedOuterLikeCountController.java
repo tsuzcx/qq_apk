@@ -12,24 +12,24 @@ public class WSGridFeedOuterLikeCountController
     super(paramContext);
   }
   
-  protected int c()
+  protected int l()
   {
-    return 2130851274;
+    return 2130853536;
   }
   
-  protected int d()
+  protected int m()
   {
-    return this.a.ding_count;
+    return this.g.ding_count;
   }
   
-  protected int e()
+  protected int n()
   {
-    return Color.parseColor("#7E7E7E");
+    return Color.parseColor("#99000000");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedOuterLikeCountController
  * JD-Core Version:    0.7.0.1
  */

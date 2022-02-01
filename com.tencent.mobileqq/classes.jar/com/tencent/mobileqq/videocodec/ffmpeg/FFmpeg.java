@@ -216,7 +216,7 @@ public class FFmpeg
     ((StringBuilder)localObject).append("\n duration:");
     ((StringBuilder)localObject).append(paramInt2);
     SLog.d("FFmpegCmd", ((StringBuilder)localObject).toString());
-    if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString1))
+    if (!com.tencent.biz.qqstory.utils.FileUtils.d(paramString1))
     {
       SLog.e("FFmpegCmd", "clipAudio but inAudio file is not exist");
       paramFFmpegExecuteResponseCallback.onFailure(String.valueOf(941001));
@@ -343,14 +343,14 @@ public class FFmpeg
     ((StringBuilder)localObject1).append("\n outMedia:");
     ((StringBuilder)localObject1).append(paramClip);
     SLog.d("FFmpegCmd", ((StringBuilder)localObject1).toString());
-    if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString1))
+    if (!com.tencent.biz.qqstory.utils.FileUtils.d(paramString1))
     {
       SLog.e("FFmpegCmd", "clipAudio but inVideo file is not exist");
       paramFFmpegExecuteResponseCallback.onFailure(String.valueOf(941002));
       paramFFmpegExecuteResponseCallback.onFinish(false);
       return paramClip;
     }
-    if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString2))
+    if (!com.tencent.biz.qqstory.utils.FileUtils.d(paramString2))
     {
       SLog.e("FFmpegCmd", "clipAudio but inAudio file is not exist");
       paramFFmpegExecuteResponseCallback.onFailure(String.valueOf(941002));
@@ -498,7 +498,7 @@ public class FFmpeg
   
   public void compressVideo(String paramString1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, String paramString2, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    Object localObject = com.tencent.biz.qqstory.utils.FileUtils.a(paramString1);
+    Object localObject = com.tencent.biz.qqstory.utils.FileUtils.o(paramString1);
     if (localObject == null)
     {
       paramFFmpegExecuteResponseCallback.onFailure("input path is null");
@@ -674,10 +674,10 @@ public class FFmpeg
     //   17: pop
     //   18: aload 6
     //   20: aload_1
-    //   21: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 453	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   24: pop
     //   25: aload 6
-    //   27: ldc_w 451
+    //   27: ldc_w 450
     //   30: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: pop
     //   34: aload 6
@@ -698,7 +698,7 @@ public class FFmpeg
     //   64: invokespecial 183	java/lang/StringBuilder:<init>	()V
     //   67: astore 6
     //   69: aload 6
-    //   71: getstatic 633	com/tencent/biz/qqstory/app/QQStoryConstant:l	Ljava/lang/String;
+    //   71: getstatic 633	com/tencent/biz/qqstory/app/QQStoryConstant:m	Ljava/lang/String;
     //   74: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   77: pop
     //   78: aload 6
@@ -748,7 +748,7 @@ public class FFmpeg
     //   178: invokespecial 183	java/lang/StringBuilder:<init>	()V
     //   181: astore 8
     //   183: aload 8
-    //   185: ldc_w 487
+    //   185: ldc_w 486
     //   188: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   191: pop
     //   192: aload 8
@@ -763,7 +763,7 @@ public class FFmpeg
     //   215: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   218: pop
     //   219: aload 8
-    //   221: ldc_w 489
+    //   221: ldc_w 488
     //   224: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   227: pop
     //   228: aload 6
@@ -794,7 +794,7 @@ public class FFmpeg
     //   280: invokevirtual 130	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   283: pop
     //   284: aload_1
-    //   285: ldc_w 497
+    //   285: ldc_w 496
     //   288: invokevirtual 130	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   291: pop
     //   292: aload_1
@@ -817,11 +817,11 @@ public class FFmpeg
     //   325: invokevirtual 130	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   328: pop
     //   329: aload_1
-    //   330: ldc_w 518
+    //   330: ldc_w 517
     //   333: invokevirtual 130	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   336: pop
     //   337: aload_1
-    //   338: ldc_w 520
+    //   338: ldc_w 519
     //   341: invokevirtual 130	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   344: pop
     //   345: goto +18 -> 363
@@ -903,7 +903,7 @@ public class FFmpeg
       localObject2 = (String)paramList.get(i);
       Object localObject3 = new File((String)localObject2).getName().split("\\.");
       Object localObject4 = new StringBuilder();
-      ((StringBuilder)localObject4).append(QQStoryConstant.l);
+      ((StringBuilder)localObject4).append(QQStoryConstant.m);
       ((StringBuilder)localObject4).append(localObject3[0]);
       ((StringBuilder)localObject4).append(".ts");
       localObject3 = ((StringBuilder)localObject4).toString();
@@ -1208,7 +1208,7 @@ public class FFmpeg
     ((StringBuilder)localObject).append(paramString2);
     SLog.d("FFmpegCmd", ((StringBuilder)localObject).toString());
     this.tsFileList.add(paramString2);
-    if (com.tencent.biz.qqstory.utils.FileUtils.c(paramString2))
+    if (com.tencent.biz.qqstory.utils.FileUtils.d(paramString2))
     {
       paramFFmpegExecuteResponseCallback.onSuccess("TS file exists");
       paramFFmpegExecuteResponseCallback.onFinish(true);
@@ -1252,13 +1252,13 @@ public class FFmpeg
     localArrayList.add(paramString1.toString());
     paramString1 = new StringBuilder();
     paramString1.append("dev=");
-    paramString1.append(DeviceInfoUtil.d());
+    paramString1.append(DeviceInfoUtil.f());
     paramString1.append("/");
     paramString1.append("os=");
-    paramString1.append(DeviceInfoUtil.e());
+    paramString1.append(DeviceInfoUtil.g());
     paramString1.append("/");
     paramString1.append("appVer=");
-    paramString1.append(AppSetting.a());
+    paramString1.append(AppSetting.b());
     localArrayList.add("-metadata");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("comment=");
@@ -1412,7 +1412,7 @@ public class FFmpeg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.ffmpeg.FFmpeg
  * JD-Core Version:    0.7.0.1
  */

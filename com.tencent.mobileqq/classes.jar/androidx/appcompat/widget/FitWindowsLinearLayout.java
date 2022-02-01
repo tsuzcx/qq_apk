@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
@@ -13,12 +15,12 @@ public class FitWindowsLinearLayout
 {
   private FitWindowsViewGroup.OnFitSystemWindowsListener mListener;
   
-  public FitWindowsLinearLayout(Context paramContext)
+  public FitWindowsLinearLayout(@NonNull Context paramContext)
   {
     super(paramContext);
   }
   
-  public FitWindowsLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
+  public FitWindowsLinearLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }

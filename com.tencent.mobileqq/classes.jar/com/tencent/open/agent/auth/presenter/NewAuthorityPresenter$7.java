@@ -13,19 +13,19 @@ class NewAuthorityPresenter$7
   public boolean a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
     SSOLog.a("NewAuthorityPresenter", new Object[] { "deleteVirtual result=", paramString1, ", success=", Boolean.valueOf(paramBoolean) });
-    AuthReporter.a("KEY_DELETE_VIRTUAL_D18", this.jdField_a_of_type_ComTencentOpenModelAccountInfo, paramBoolean);
+    AuthReporter.a("KEY_DELETE_VIRTUAL_D18", this.a, paramBoolean);
     if (paramBoolean)
     {
-      NewAuthorityPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterNewAuthorityPresenter, paramString1, paramInt);
+      NewAuthorityPresenter.a(this.b, paramString1, paramInt);
       return false;
     }
-    this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterNewAuthorityPresenter.a(paramInt);
+    this.b.a(paramInt);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.NewAuthorityPresenter.7
  * JD-Core Version:    0.7.0.1
  */

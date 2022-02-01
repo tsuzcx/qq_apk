@@ -41,11 +41,6 @@ class TavCompositionProxy
     c(ObjConvector.a(paramTAVComposition.getRenderSize()));
   }
   
-  private void a(List<? extends TAVClip> paramList)
-  {
-    c(ObjConvector.b(paramList));
-  }
-  
   private List<? extends TAVClip> b(List<? extends TAVVideo> paramList)
   {
     ArrayList localArrayList = new ArrayList();
@@ -63,12 +58,7 @@ class TavCompositionProxy
       c(paramSendMsgTavEvent, paramTAVComposition);
       return;
     }
-    b(d(paramTAVComposition.getVideoChannels()));
-  }
-  
-  private void b(List<List<? extends TAVClip>> paramList)
-  {
-    c(ObjConvector.a(paramList));
+    f(d(paramTAVComposition.getVideoChannels()));
   }
   
   private List<List<? extends TAVClip>> c(List<List<? extends TAVTransitionableAudio>> paramList)
@@ -88,7 +78,7 @@ class TavCompositionProxy
       d(paramSendMsgTavEvent, paramTAVComposition);
       return;
     }
-    b(c(paramTAVComposition.getAudioChannels()));
+    f(c(paramTAVComposition.getAudioChannels()));
   }
   
   private List<List<? extends TAVClip>> d(List<List<? extends TAVTransitionableVideo>> paramList)
@@ -108,7 +98,7 @@ class TavCompositionProxy
       e(paramSendMsgTavEvent, paramTAVComposition);
       return;
     }
-    a(b(paramTAVComposition.getOverlays()));
+    e(b(paramTAVComposition.getOverlays()));
   }
   
   private void e(SendMsgTavEvent paramSendMsgTavEvent, TAVComposition paramTAVComposition)
@@ -118,7 +108,12 @@ class TavCompositionProxy
       f(paramSendMsgTavEvent, paramTAVComposition);
       return;
     }
-    a(a(paramTAVComposition.getAudios()));
+    e(a(paramTAVComposition.getAudios()));
+  }
+  
+  private void e(List<? extends TAVClip> paramList)
+  {
+    c(ObjConvector.b(paramList));
   }
   
   private void f(SendMsgTavEvent paramSendMsgTavEvent, TAVComposition paramTAVComposition)
@@ -129,6 +124,11 @@ class TavCompositionProxy
       return;
     }
     b(paramTAVComposition.getVideoMixEffect());
+  }
+  
+  private void f(List<List<? extends TAVClip>> paramList)
+  {
+    c(ObjConvector.a(paramList));
   }
   
   private void g(SendMsgTavEvent paramSendMsgTavEvent, TAVComposition paramTAVComposition)
@@ -148,7 +148,7 @@ class TavCompositionProxy
       i(paramSendMsgTavEvent, paramTAVComposition);
       return;
     }
-    paramTAVComposition.setRenderSize(ObjConvector.a(paramSendMsgTavEvent.a().getJSONObject("renderSize")));
+    paramTAVComposition.setRenderSize(ObjConvector.d(paramSendMsgTavEvent.c().getJSONObject("renderSize")));
     a();
   }
   
@@ -159,7 +159,7 @@ class TavCompositionProxy
       j(paramSendMsgTavEvent, paramTAVComposition);
       return;
     }
-    paramTAVComposition.setVideoChannels(new ArrayList(ObjConvector.a(paramSendMsgTavEvent.a().getJSONArray("videoChannels"))));
+    paramTAVComposition.setVideoChannels(new ArrayList(ObjConvector.c(paramSendMsgTavEvent.c().getJSONArray("videoChannels"))));
     a();
   }
   
@@ -170,7 +170,7 @@ class TavCompositionProxy
       k(paramSendMsgTavEvent, paramTAVComposition);
       return;
     }
-    paramTAVComposition.setAudioChannels(new ArrayList(ObjConvector.a(paramSendMsgTavEvent.a().getJSONArray("audioChannels"))));
+    paramTAVComposition.setAudioChannels(new ArrayList(ObjConvector.c(paramSendMsgTavEvent.c().getJSONArray("audioChannels"))));
     a();
   }
   
@@ -181,7 +181,7 @@ class TavCompositionProxy
       l(paramSendMsgTavEvent, paramTAVComposition);
       return;
     }
-    paramTAVComposition.setOverlays(ObjConvector.b(paramSendMsgTavEvent.a().getJSONArray("videos")));
+    paramTAVComposition.setOverlays(ObjConvector.d(paramSendMsgTavEvent.c().getJSONArray("videos")));
     a();
   }
   
@@ -192,7 +192,7 @@ class TavCompositionProxy
       m(paramSendMsgTavEvent, paramTAVComposition);
       return;
     }
-    paramTAVComposition.setAudios(ObjConvector.b(paramSendMsgTavEvent.a().getJSONArray("audios")));
+    paramTAVComposition.setAudios(ObjConvector.d(paramSendMsgTavEvent.c().getJSONArray("audios")));
     a();
   }
   
@@ -203,7 +203,7 @@ class TavCompositionProxy
       n(paramSendMsgTavEvent, paramTAVComposition);
       return;
     }
-    paramSendMsgTavEvent = paramSendMsgTavEvent.a("effect");
+    paramSendMsgTavEvent = paramSendMsgTavEvent.b("effect");
     if ((paramSendMsgTavEvent instanceof TAVVideoEffect))
     {
       paramTAVComposition.setGlobalVideoEffect((TAVVideoEffect)paramSendMsgTavEvent);
@@ -220,7 +220,7 @@ class TavCompositionProxy
       c();
       return;
     }
-    paramSendMsgTavEvent = paramSendMsgTavEvent.a("mixerEffect");
+    paramSendMsgTavEvent = paramSendMsgTavEvent.b("mixerEffect");
     if ((paramSendMsgTavEvent instanceof TAVVideoMixEffect))
     {
       paramTAVComposition.setVideoMixEffect((TAVVideoMixEffect)paramSendMsgTavEvent);
@@ -241,15 +241,15 @@ class TavCompositionProxy
   void a(SendMsgTavEvent paramSendMsgTavEvent)
   {
     super.a(paramSendMsgTavEvent);
-    Object localObject = paramSendMsgTavEvent.a();
+    Object localObject = paramSendMsgTavEvent.d();
     if (!(localObject instanceof TAVComposition))
     {
-      paramSendMsgTavEvent = this.jdField_a_of_type_JavaLangString;
+      paramSendMsgTavEvent = this.a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("sendMsgInvoke: ");
       ((StringBuilder)localObject).append("object error");
       Log.e(paramSendMsgTavEvent, ((StringBuilder)localObject).toString());
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("object error");
+      this.b.fail("object error");
       return;
     }
     a(paramSendMsgTavEvent, (TAVComposition)localObject);
@@ -257,7 +257,7 @@ class TavCompositionProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavCompositionProxy
  * JD-Core Version:    0.7.0.1
  */

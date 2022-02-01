@@ -7,26 +7,18 @@ import com.tencent.mobileqq.intervideo.lite_now_biz.config.NowBizConfigManager;
 
 public class StrategyManager
 {
-  private NowBizConfigManager jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizConfigNowBizConfigManager;
-  private IEnterRoomStrategy jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy;
-  private KanDianStrategy jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyKanDianStrategy;
-  private NowDefaultStrategy jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyNowDefaultStrategy;
-  private NowLiteStrategy jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyNowLiteStrategy;
-  
-  private IEnterRoomStrategy a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyNowDefaultStrategy == null) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyNowDefaultStrategy = new NowDefaultStrategy();
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyNowDefaultStrategy;
-  }
+  private IEnterRoomStrategy a;
+  private KanDianStrategy b;
+  private NowLiteStrategy c;
+  private NowDefaultStrategy d;
+  private NowBizConfigManager e;
   
   private IEnterRoomStrategy a(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyKanDianStrategy == null) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyKanDianStrategy = new KanDianStrategy(paramQQAppInterface);
+    if (this.b == null) {
+      this.b = new KanDianStrategy(paramQQAppInterface);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyKanDianStrategy;
+    return this.b;
   }
   
   public static StrategyManager a()
@@ -56,43 +48,51 @@ public class StrategyManager
   
   private IEnterRoomStrategy b(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyNowLiteStrategy == null) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyNowLiteStrategy = new NowLiteStrategy(paramQQAppInterface);
+    if (this.c == null) {
+      this.c = new NowLiteStrategy(paramQQAppInterface);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyNowLiteStrategy;
+    return this.c;
   }
   
   private boolean b(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizConfigNowBizConfigManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizConfigNowBizConfigManager = NowBizConfigManager.a();
+    if (this.e == null) {
+      this.e = NowBizConfigManager.a();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizConfigNowBizConfigManager.a(paramBundle);
+    return this.e.a(paramBundle);
+  }
+  
+  private IEnterRoomStrategy c()
+  {
+    if (this.d == null) {
+      this.d = new NowDefaultStrategy();
+    }
+    return this.d;
   }
   
   public IEnterRoomStrategy a(Bundle paramBundle, QQAppInterface paramQQAppInterface)
   {
     if (a(paramBundle)) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy = a(paramQQAppInterface);
+      this.a = a(paramQQAppInterface);
     } else if (b(paramBundle)) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy = b(paramQQAppInterface);
+      this.a = b(paramQQAppInterface);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy = a();
+      this.a = c();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy;
+    return this.a;
   }
   
-  public void a()
+  public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyKanDianStrategy = null;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyNowLiteStrategy = null;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyNowDefaultStrategy = null;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizConfigNowBizConfigManager = null;
+    this.b = null;
+    this.c = null;
+    this.d = null;
+    this.e = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.strategy.StrategyManager
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ReadInJoyThreadFactory
   implements ThreadFactory
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+  private final ThreadGroup a;
+  private final AtomicInteger b = new AtomicInteger(1);
+  private final String c;
   
   ReadInJoyThreadFactory()
   {
@@ -18,16 +18,16 @@ public class ReadInJoyThreadFactory
     } else {
       localObject = Thread.currentThread().getThreadGroup();
     }
-    this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
-    this.jdField_a_of_type_JavaLangString = "readinjoy-common-";
+    this.a = ((ThreadGroup)localObject);
+    this.c = "readinjoy-common-";
   }
   
   public Thread newThread(Runnable paramRunnable)
   {
-    ThreadGroup localThreadGroup = this.jdField_a_of_type_JavaLangThreadGroup;
+    ThreadGroup localThreadGroup = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.b.getAndIncrement());
     paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
@@ -40,7 +40,7 @@ public class ReadInJoyThreadFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyThreadFactory
  * JD-Core Version:    0.7.0.1
  */

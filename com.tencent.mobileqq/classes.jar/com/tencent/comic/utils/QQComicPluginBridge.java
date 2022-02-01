@@ -35,26 +35,16 @@ import mqq.app.AppRuntime;
 
 public class QQComicPluginBridge
 {
-  public static QQComicDownloadObserverProxy a;
-  public static QQComicJsPluginBuilder a;
-  public static FirstInObservable a;
-  public static RuntimeCreateObservable a;
-  private static final Object a;
-  public static volatile boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_ComTencentComicJspQQComicJsPluginBuilder = null;
-    jdField_a_of_type_ComTencentComicJspQQComicDownloadObserverProxy = null;
-    jdField_a_of_type_ComTencentComicUtilsFirstInObservable = null;
-    jdField_a_of_type_ComTencentComicUtilsRuntimeCreateObservable = null;
-  }
+  public static volatile boolean a = false;
+  public static QQComicJsPluginBuilder b = null;
+  public static QQComicDownloadObserverProxy c = null;
+  public static FirstInObservable d = null;
+  public static RuntimeCreateObservable e = null;
+  private static final Object f = new Object();
   
   public static QQComicJsPluginProxy a(WebViewPlugin.PluginRuntime paramPluginRuntime, QQComicJsCallback paramQQComicJsCallback)
   {
-    QQComicJsPluginBuilder localQQComicJsPluginBuilder = jdField_a_of_type_ComTencentComicJspQQComicJsPluginBuilder;
+    QQComicJsPluginBuilder localQQComicJsPluginBuilder = b;
     if (localQQComicJsPluginBuilder == null) {
       return null;
     }
@@ -79,7 +69,7 @@ public class QQComicPluginBridge
     localIntent.putExtra("useSkinEngine", false);
     localIntent.putExtra("params_remote_connect_at_launch", true);
     localIntent.putExtra("sendTime", SystemClock.elapsedRealtime());
-    PreloadSuccessRateReporter.a(AppHelper.a(), 1, 1, 0L);
+    PreloadSuccessRateReporter.a(AppHelper.b(), 1, 1, 0L);
     a(localIntent);
     Map localMap = ((IIndividuationUrlApi)QRoute.api(IIndividuationUrlApi.class)).getUrlMap();
     if ((localMap instanceof Serializable)) {
@@ -102,35 +92,35 @@ public class QQComicPluginBridge
     //   0: aload_0
     //   1: ifnonnull +4 -> 5
     //   4: return
-    //   5: ldc 179
-    //   7: invokestatic 129	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   10: checkcast 179	com/tencent/mobileqq/dpc/api/IDPCApi
-    //   13: getstatic 185	com/tencent/mobileqq/dpc/enumname/DPCNames:comic_plugin_profile	Lcom/tencent/mobileqq/dpc/enumname/DPCNames;
-    //   16: invokevirtual 189	com/tencent/mobileqq/dpc/enumname/DPCNames:name	()Ljava/lang/String;
-    //   19: ldc 191
-    //   21: invokeinterface 195 3 0
+    //   5: ldc 183
+    //   7: invokestatic 133	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   10: checkcast 183	com/tencent/mobileqq/dpc/api/IDPCApi
+    //   13: getstatic 189	com/tencent/mobileqq/dpc/enumname/DPCNames:comic_plugin_profile	Lcom/tencent/mobileqq/dpc/enumname/DPCNames;
+    //   16: invokevirtual 193	com/tencent/mobileqq/dpc/enumname/DPCNames:name	()Ljava/lang/String;
+    //   19: ldc 195
+    //   21: invokeinterface 199 3 0
     //   26: astore 9
-    //   28: invokestatic 46	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   28: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   31: ifeq +39 -> 70
-    //   34: new 197	java/lang/StringBuilder
+    //   34: new 201	java/lang/StringBuilder
     //   37: dup
-    //   38: invokespecial 198	java/lang/StringBuilder:<init>	()V
+    //   38: invokespecial 202	java/lang/StringBuilder:<init>	()V
     //   41: astore 10
     //   43: aload 10
-    //   45: ldc 200
-    //   47: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: ldc 204
+    //   47: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: pop
     //   51: aload 10
     //   53: aload 9
-    //   55: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: pop
-    //   59: ldc 206
+    //   59: ldc 210
     //   61: iconst_2
     //   62: aload 10
-    //   64: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   67: invokestatic 54	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   64: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   70: aload 9
-    //   72: invokestatic 215	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   72: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   75: istore 4
     //   77: iconst_0
     //   78: istore 7
@@ -143,30 +133,30 @@ public class QQComicPluginBridge
     //   88: iload 4
     //   90: ifne +213 -> 303
     //   93: bipush 7
-    //   95: anewarray 217	java/lang/Integer
+    //   95: anewarray 221	java/lang/Integer
     //   98: astore 10
     //   100: aload 10
     //   102: iconst_0
-    //   103: invokestatic 221	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   106: invokestatic 227	java/util/Arrays:fill	([Ljava/lang/Object;Ljava/lang/Object;)V
+    //   103: invokestatic 225	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   106: invokestatic 231	java/util/Arrays:fill	([Ljava/lang/Object;Ljava/lang/Object;)V
     //   109: aload 10
     //   111: iconst_2
     //   112: iconst_1
-    //   113: invokestatic 221	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   113: invokestatic 225	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   116: aastore
-    //   117: ldc 179
-    //   119: invokestatic 129	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   122: checkcast 179	com/tencent/mobileqq/dpc/api/IDPCApi
+    //   117: ldc 183
+    //   119: invokestatic 133	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   122: checkcast 183	com/tencent/mobileqq/dpc/api/IDPCApi
     //   125: aload 9
     //   127: aload 10
-    //   129: invokeinterface 231 3 0
+    //   129: invokeinterface 235 3 0
     //   134: aload 10
     //   136: arraylength
     //   137: if_icmplt +166 -> 303
     //   140: aload 10
     //   142: iconst_0
     //   143: aaload
-    //   144: invokevirtual 235	java/lang/Integer:intValue	()I
+    //   144: invokevirtual 239	java/lang/Integer:intValue	()I
     //   147: istore_1
     //   148: iload_1
     //   149: iconst_1
@@ -179,7 +169,7 @@ public class QQComicPluginBridge
     //   160: aload 10
     //   162: iconst_1
     //   163: aaload
-    //   164: invokevirtual 235	java/lang/Integer:intValue	()I
+    //   164: invokevirtual 239	java/lang/Integer:intValue	()I
     //   167: istore_1
     //   168: iload_1
     //   169: iconst_1
@@ -192,7 +182,7 @@ public class QQComicPluginBridge
     //   182: aload 10
     //   184: iconst_2
     //   185: aaload
-    //   186: invokevirtual 235	java/lang/Integer:intValue	()I
+    //   186: invokevirtual 239	java/lang/Integer:intValue	()I
     //   189: istore_1
     //   190: iload_1
     //   191: iconst_1
@@ -205,7 +195,7 @@ public class QQComicPluginBridge
     //   204: aload 10
     //   206: iconst_3
     //   207: aaload
-    //   208: invokevirtual 235	java/lang/Integer:intValue	()I
+    //   208: invokevirtual 239	java/lang/Integer:intValue	()I
     //   211: istore_1
     //   212: iload_1
     //   213: iconst_1
@@ -218,12 +208,12 @@ public class QQComicPluginBridge
     //   226: aload 10
     //   228: iconst_5
     //   229: aaload
-    //   230: invokevirtual 235	java/lang/Integer:intValue	()I
+    //   230: invokevirtual 239	java/lang/Integer:intValue	()I
     //   233: istore_1
     //   234: aload 10
     //   236: bipush 6
     //   238: aaload
-    //   239: invokevirtual 235	java/lang/Integer:intValue	()I
+    //   239: invokevirtual 239	java/lang/Integer:intValue	()I
     //   242: istore_2
     //   243: iload 8
     //   245: istore 7
@@ -253,7 +243,7 @@ public class QQComicPluginBridge
     //   293: iconst_0
     //   294: istore_1
     //   295: aload 9
-    //   297: invokevirtual 238	java/lang/Exception:printStackTrace	()V
+    //   297: invokevirtual 242	java/lang/Exception:printStackTrace	()V
     //   300: goto +20 -> 320
     //   303: iconst_0
     //   304: istore 8
@@ -268,100 +258,100 @@ public class QQComicPluginBridge
     //   317: iload 8
     //   319: istore_3
     //   320: aload_0
-    //   321: ldc 240
+    //   321: ldc 244
     //   323: iload 4
-    //   325: invokevirtual 95	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   325: invokevirtual 99	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   328: pop
     //   329: aload_0
-    //   330: ldc 242
+    //   330: ldc 246
     //   332: iload 5
-    //   334: invokevirtual 95	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   334: invokevirtual 99	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   337: pop
     //   338: aload_0
-    //   339: ldc 244
+    //   339: ldc 248
     //   341: iload 6
-    //   343: invokevirtual 95	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   343: invokevirtual 99	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   346: pop
     //   347: aload_0
-    //   348: ldc 246
+    //   348: ldc 250
     //   350: iload_1
-    //   351: invokevirtual 90	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   351: invokevirtual 94	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   354: pop
     //   355: aload_0
-    //   356: ldc 248
+    //   356: ldc 252
     //   358: iload 7
-    //   360: invokevirtual 95	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   360: invokevirtual 99	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   363: pop
-    //   364: invokestatic 46	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   367: ifeq +107 -> 474
-    //   370: new 197	java/lang/StringBuilder
+    //   364: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   367: ifeq +108 -> 475
+    //   370: new 201	java/lang/StringBuilder
     //   373: dup
-    //   374: invokespecial 198	java/lang/StringBuilder:<init>	()V
+    //   374: invokespecial 202	java/lang/StringBuilder:<init>	()V
     //   377: astore_0
     //   378: aload_0
-    //   379: ldc 250
-    //   381: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   379: ldc 254
+    //   381: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   384: pop
     //   385: aload_0
     //   386: iload_3
-    //   387: invokevirtual 253	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   387: invokevirtual 257	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   390: pop
     //   391: aload_0
-    //   392: ldc 255
-    //   394: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   397: pop
-    //   398: aload_0
-    //   399: iload 4
-    //   401: invokevirtual 253	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   404: pop
-    //   405: aload_0
-    //   406: ldc_w 257
-    //   409: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   412: pop
-    //   413: aload_0
-    //   414: iload 5
-    //   416: invokevirtual 253	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   419: pop
-    //   420: aload_0
-    //   421: ldc_w 259
-    //   424: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   427: pop
-    //   428: aload_0
-    //   429: iload 6
-    //   431: invokevirtual 253	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   434: pop
-    //   435: aload_0
-    //   436: ldc_w 261
-    //   439: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   442: pop
-    //   443: aload_0
-    //   444: iload_1
-    //   445: invokevirtual 264	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   448: pop
-    //   449: aload_0
-    //   450: ldc_w 266
-    //   453: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   456: pop
-    //   457: aload_0
-    //   458: iload 7
-    //   460: invokevirtual 253	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   463: pop
-    //   464: ldc 48
-    //   466: iconst_2
-    //   467: aload_0
-    //   468: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   471: invokestatic 54	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   474: return
+    //   392: ldc_w 259
+    //   395: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   398: pop
+    //   399: aload_0
+    //   400: iload 4
+    //   402: invokevirtual 257	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   405: pop
+    //   406: aload_0
+    //   407: ldc_w 261
+    //   410: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   413: pop
+    //   414: aload_0
+    //   415: iload 5
+    //   417: invokevirtual 257	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   420: pop
+    //   421: aload_0
+    //   422: ldc_w 263
+    //   425: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   428: pop
+    //   429: aload_0
+    //   430: iload 6
+    //   432: invokevirtual 257	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   435: pop
+    //   436: aload_0
+    //   437: ldc_w 265
+    //   440: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   443: pop
+    //   444: aload_0
+    //   445: iload_1
+    //   446: invokevirtual 268	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   449: pop
+    //   450: aload_0
+    //   451: ldc_w 270
+    //   454: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   457: pop
+    //   458: aload_0
+    //   459: iload 7
+    //   461: invokevirtual 257	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   464: pop
+    //   465: ldc 53
+    //   467: iconst_2
+    //   468: aload_0
+    //   469: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   472: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   475: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	475	0	paramIntent	Intent
-    //   147	298	1	i	int
+    //   0	476	0	paramIntent	Intent
+    //   147	299	1	i	int
     //   242	8	2	j	int
     //   84	303	3	bool1	boolean
-    //   75	325	4	bool2	boolean
-    //   86	329	5	bool3	boolean
-    //   218	212	6	bool4	boolean
-    //   78	381	7	bool5	boolean
+    //   75	326	4	bool2	boolean
+    //   86	330	5	bool3	boolean
+    //   218	213	6	bool4	boolean
+    //   78	382	7	bool5	boolean
     //   81	237	8	bool6	boolean
     //   26	100	9	str	String
     //   258	1	9	localException1	Exception
@@ -419,18 +409,18 @@ public class QQComicPluginBridge
   
   public static void a(Observer paramObserver)
   {
-    FirstInObservable localFirstInObservable = jdField_a_of_type_ComTencentComicUtilsFirstInObservable;
+    FirstInObservable localFirstInObservable = d;
     if (localFirstInObservable == null) {
-      jdField_a_of_type_ComTencentComicUtilsFirstInObservable = new FirstInObservable();
+      d = new FirstInObservable();
     } else {
       localFirstInObservable.deleteObservers();
     }
-    jdField_a_of_type_ComTencentComicUtilsFirstInObservable.addObserver(paramObserver);
+    d.addObserver(paramObserver);
   }
   
   public static boolean a(Activity paramActivity, Intent paramIntent, String paramString, PreloadProcHitPluginSession paramPreloadProcHitPluginSession)
   {
-    if ((jdField_a_of_type_Boolean) && (paramActivity != null) && (paramIntent != null))
+    if ((a) && (paramActivity != null) && (paramIntent != null))
     {
       if (TextUtils.isEmpty(paramString)) {
         return false;
@@ -453,7 +443,7 @@ public class QQComicPluginBridge
   
   public static boolean a(AppRuntime paramAppRuntime)
   {
-    if (jdField_a_of_type_Boolean)
+    if (a)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQComicPluginBridge", 2, "QQComic is ready");
@@ -465,7 +455,7 @@ public class QQComicPluginBridge
       if (QLog.isColorLevel()) {
         QLog.d("QQComicPluginBridge", 2, "Not in main process, QQComic is NOT installed");
       }
-      return jdField_a_of_type_Boolean;
+      return a;
     }
     paramAppRuntime = QRoute.plugin("comic_plugin.apk");
     boolean bool = false;
@@ -487,8 +477,8 @@ public class QQComicPluginBridge
     if (paramAppRuntime.getState() == 4) {
       bool = true;
     }
-    jdField_a_of_type_Boolean = bool;
-    return jdField_a_of_type_Boolean;
+    a = bool;
+    return a;
   }
   
   public static boolean a(AppRuntime paramAppRuntime, boolean paramBoolean, QQComicPluginBridge.PluginInstallObserver arg2)
@@ -497,7 +487,7 @@ public class QQComicPluginBridge
     boolean bool1 = true;
     if (bool2)
     {
-      jdField_a_of_type_Boolean = true;
+      a = true;
       if (QLog.isColorLevel()) {
         QLog.d("QQComicPluginBridge", 2, "QQComic is ready");
       }
@@ -511,27 +501,27 @@ public class QQComicPluginBridge
       }
       return false;
     }
-    ThreadManager.executeOnNetWorkThread(new QQComicPluginBridge.1(paramAppRuntime, ???));
+    ThreadManager.executeOnNetWorkThread(new QQComicPluginBridge.1(paramAppRuntime, ???, paramBoolean));
     if (paramBoolean)
     {
       QRoutePluginInfo localQRoutePluginInfo = paramAppRuntime.queryPluginInfo();
       while ((localQRoutePluginInfo != null) && (localQRoutePluginInfo.getState() != 4)) {
-        synchronized (jdField_a_of_type_JavaLangObject)
+        synchronized (f)
         {
           if (QLog.isColorLevel()) {
             QLog.d("QQComicPluginBridge", 2, "QQComic is waiting for installation");
           }
           try
           {
-            jdField_a_of_type_JavaLangObject.wait();
+            f.wait();
             if (QLog.isColorLevel()) {
               QLog.d("QQComicPluginBridge", 2, "QQComic installation is finished");
             }
           }
           catch (InterruptedException localInterruptedException)
           {
-            label146:
-            break label146;
+            label147:
+            break label147;
           }
         }
       }
@@ -541,12 +531,12 @@ public class QQComicPluginBridge
       } else {
         paramBoolean = false;
       }
-      jdField_a_of_type_Boolean = paramBoolean;
+      a = paramBoolean;
       if (QLog.isColorLevel())
       {
         ??? = new StringBuilder();
         ???.append("QQComic is ");
-        if (jdField_a_of_type_Boolean) {
+        if (a) {
           paramAppRuntime = "installed";
         } else {
           paramAppRuntime = "NOT installed";
@@ -561,10 +551,10 @@ public class QQComicPluginBridge
         ???.append(paramAppRuntime);
         QLog.d("QQComicPluginBridge", 2, ???.toString());
       }
-      if (jdField_a_of_type_Boolean) {
+      if (a) {
         a("plugin_ready");
       }
-      return jdField_a_of_type_Boolean;
+      return a;
     }
     else
     {
@@ -574,18 +564,18 @@ public class QQComicPluginBridge
   
   public static void b(Observer paramObserver)
   {
-    RuntimeCreateObservable localRuntimeCreateObservable = jdField_a_of_type_ComTencentComicUtilsRuntimeCreateObservable;
+    RuntimeCreateObservable localRuntimeCreateObservable = e;
     if (localRuntimeCreateObservable == null) {
-      jdField_a_of_type_ComTencentComicUtilsRuntimeCreateObservable = new RuntimeCreateObservable();
+      e = new RuntimeCreateObservable();
     } else {
       localRuntimeCreateObservable.deleteObservers();
     }
-    jdField_a_of_type_ComTencentComicUtilsRuntimeCreateObservable.addObserver(paramObserver);
+    e.addObserver(paramObserver);
   }
   
   public static void c(Observer paramObserver)
   {
-    RuntimeCreateObservable localRuntimeCreateObservable = jdField_a_of_type_ComTencentComicUtilsRuntimeCreateObservable;
+    RuntimeCreateObservable localRuntimeCreateObservable = e;
     if ((localRuntimeCreateObservable != null) && (paramObserver != null)) {
       localRuntimeCreateObservable.deleteObserver(paramObserver);
     }
@@ -593,7 +583,7 @@ public class QQComicPluginBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.utils.QQComicPluginBridge
  * JD-Core Version:    0.7.0.1
  */

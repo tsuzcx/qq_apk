@@ -50,23 +50,21 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class StoryReportor
 {
-  public static final String a;
-  private static HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private static final List<String> jdField_a_of_type_JavaUtilList = Arrays.asList(new String[] { "time_openshoot", "time_waitshoot", "clk_mode", "start_shoot", "time_shoot", "time_openedit", "time_edit", "clk_function", "time_composite" });
-  public static ConcurrentHashMap<Class, Integer> a;
+  public static final String a = StoryApi.b(2131897955);
+  public static ConcurrentHashMap<Class, Integer> b;
+  private static HashMap<String, String> c = new HashMap();
+  private static final List<String> d = Arrays.asList(new String[] { "time_openshoot", "time_waitshoot", "clk_mode", "start_shoot", "time_shoot", "time_openedit", "time_edit", "clk_function", "time_composite" });
   
   static
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a(2131699902);
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(QQStoryMainActivity.class, Integer.valueOf(3));
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(StoryDetailActivity.class, Integer.valueOf(4));
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(QQStoryMemoriesActivity.class, Integer.valueOf(5));
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(StoryMessageListActivity.class, Integer.valueOf(6));
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(QQStoryShareGroupProfileActivity.class, Integer.valueOf(11));
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(TroopStoryMainActivity.class, Integer.valueOf(12));
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(QQStoryWatcherListActivity.class, Integer.valueOf(13));
+    b = new ConcurrentHashMap();
+    b.put(QQStoryMainActivity.class, Integer.valueOf(3));
+    b.put(StoryDetailActivity.class, Integer.valueOf(4));
+    b.put(QQStoryMemoriesActivity.class, Integer.valueOf(5));
+    b.put(StoryMessageListActivity.class, Integer.valueOf(6));
+    b.put(QQStoryShareGroupProfileActivity.class, Integer.valueOf(11));
+    b.put(TroopStoryMainActivity.class, Integer.valueOf(12));
+    b.put(QQStoryWatcherListActivity.class, Integer.valueOf(13));
   }
   
   public static int a(int paramInt)
@@ -157,7 +155,7 @@ public class StoryReportor
       }
       return i;
       paramFeedItem = (QQUserUIItem)paramFeedItem.getOwner();
-      boolean bool = TextUtils.equals(QQStoryContext.a().b(), paramFeedItem.uid);
+      boolean bool = TextUtils.equals(QQStoryContext.a().i(), paramFeedItem.uid);
       i = 4;
       if (bool) {
         return 4;
@@ -174,7 +172,7 @@ public class StoryReportor
   
   public static int a(Class<? extends QQStoryBaseActivity> paramClass, int paramInt)
   {
-    paramClass = (Integer)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramClass);
+    paramClass = (Integer)b.get(paramClass);
     if (paramClass == null) {
       return paramInt;
     }
@@ -184,59 +182,20 @@ public class StoryReportor
   public static int a(@Nullable String paramString, VideoListFeedItem paramVideoListFeedItem)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      paramString = MsgTabStoryManager.a(QQStoryContext.a()).a(paramString);
+      paramString = MsgTabStoryManager.a(QQStoryContext.j()).b(paramString);
     } else {
       paramString = null;
     }
     if (paramString != null)
     {
-      if (paramString.a == 12) {
+      if (paramString.b == 12) {
         return 12;
       }
-      if (paramString.a == 13) {
+      if (paramString.b == 13) {
         return 13;
       }
     }
     return a(paramVideoListFeedItem);
-  }
-  
-  public static String a(int paramInt)
-  {
-    String str2 = "4";
-    if (paramInt != 23) {
-      if (paramInt != 4444)
-      {
-        if (paramInt != 210)
-        {
-          str1 = str2;
-          if (paramInt == 211) {
-            return str1;
-          }
-        }
-      }
-      else
-      {
-        switch (paramInt)
-        {
-        default: 
-          str1 = str2;
-          switch (paramInt)
-          {
-          default: 
-            return "";
-          case 222: 
-            return "6";
-          }
-        case 12: 
-          return "5";
-        case 11: 
-          return "3";
-        }
-        return "1";
-      }
-    }
-    String str1 = "2";
-    return str1;
   }
   
   @NonNull
@@ -297,7 +256,7 @@ public class StoryReportor
   
   public static String a(String paramString)
   {
-    return (String)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    return (String)c.get(paramString);
   }
   
   public static void a(int paramInt, long paramLong)
@@ -364,7 +323,7 @@ public class StoryReportor
     if ((paramInt1 == 10002) || (paramInt1 == 10000) || (paramInt1 == 10001) || (!paramBoolean) || (paramInt1 == AECameraEntry.p.a()) || (paramInt1 == AECameraEntry.e.a()))
     {
       a("video_shoot_new", paramString, paramInt1, paramInt2, paramVarArgs);
-      if (jdField_a_of_type_JavaUtilList.contains(paramString))
+      if (d.contains(paramString))
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("op_type", "video_shoot_new");
@@ -390,7 +349,7 @@ public class StoryReportor
   
   public static void a(String paramString1, String paramString2)
   {
-    jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+    c.put(paramString1, paramString2);
   }
   
   public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
@@ -401,7 +360,7 @@ public class StoryReportor
         SLog.b("StoryReportor", "[op_type]%s;[op_name]%s;[op_in]%d;[op_result]%d;[d1]%s;[d2]%s;[d3]%s;[d4]%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs) });
       }
       label80:
-      ReportController.b(null, "dc00899", jdField_a_of_type_JavaLangString, "", paramString1, paramString2, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
+      ReportController.b(null, "dc00899", a, "", paramString1, paramString2, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
       return;
     }
     catch (Exception localException)
@@ -518,33 +477,6 @@ public class StoryReportor
     return (paramLong1 >= paramLong2) && (paramLong1 <= paramLong3);
   }
   
-  public static int b(int paramInt)
-  {
-    if (paramInt != 10005)
-    {
-      if (paramInt != 10017) {
-        if (paramInt != 10012) {
-          if (paramInt == 10013) {
-            break label64;
-          }
-        }
-      }
-      switch (paramInt)
-      {
-      default: 
-        return 0;
-      case 10001: 
-        return 4;
-      case 10000: 
-        return 5;
-        return 2;
-        label64:
-        return 3;
-      }
-    }
-    return 1;
-  }
-  
   public static int b(FeedItem paramFeedItem)
   {
     int j = 0;
@@ -590,26 +522,41 @@ public class StoryReportor
   
   public static String b(int paramInt)
   {
-    if (paramInt != 0)
-    {
-      if (paramInt != 1)
+    String str2 = "4";
+    if (paramInt != 23) {
+      if (paramInt != 4444)
       {
-        if (paramInt != 2)
+        if (paramInt != 210)
         {
-          if (paramInt != 4)
-          {
-            if (paramInt != 9) {
-              return "";
-            }
-            return "9";
+          str1 = str2;
+          if (paramInt == 211) {
+            return str1;
           }
-          return "4";
         }
-        return "2";
       }
-      return "1";
+      else
+      {
+        switch (paramInt)
+        {
+        default: 
+          str1 = str2;
+          switch (paramInt)
+          {
+          default: 
+            return "";
+          case 222: 
+            return "6";
+          }
+        case 12: 
+          return "5";
+        case 11: 
+          return "3";
+        }
+        return "1";
+      }
     }
-    return "0";
+    String str1 = "2";
+    return str1;
   }
   
   public static void b(String paramString, int paramInt1, int paramInt2, String... paramVarArgs)
@@ -617,7 +564,7 @@ public class StoryReportor
     if ((paramInt1 == 10000) || (paramInt1 == 10001)) {
       a("video_edit_new", paramString, paramInt1, paramInt2, paramVarArgs);
     }
-    if (jdField_a_of_type_JavaUtilList.contains(paramString))
+    if (d.contains(paramString))
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("op_type", "video_edit_new");
@@ -652,6 +599,33 @@ public class StoryReportor
     }
   }
   
+  public static int c(int paramInt)
+  {
+    if (paramInt != 10005)
+    {
+      if (paramInt != 10017) {
+        if (paramInt != 10012) {
+          if (paramInt == 10013) {
+            break label64;
+          }
+        }
+      }
+      switch (paramInt)
+      {
+      default: 
+        return 0;
+      case 10001: 
+        return 4;
+      case 10000: 
+        return 5;
+        return 2;
+        label64:
+        return 3;
+      }
+    }
+    return 1;
+  }
+  
   public static void c(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
   {
     try
@@ -667,6 +641,30 @@ public class StoryReportor
     {
       break label80;
     }
+  }
+  
+  public static String d(int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 9) {
+              return "";
+            }
+            return "9";
+          }
+          return "4";
+        }
+        return "2";
+      }
+      return "1";
+    }
+    return "0";
   }
 }
 

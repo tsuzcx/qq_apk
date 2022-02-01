@@ -19,23 +19,18 @@ import org.json.JSONObject;
 
 public class MiniAdAntiSpamReportUtil
 {
-  private static long jdField_a_of_type_Long;
-  private static HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static long jdField_b_of_type_Long;
-  private static HashMap<String, String> jdField_b_of_type_JavaUtilHashMap = new HashMap();
+  private static HashMap<String, Long> a = new HashMap();
+  private static HashMap<String, String> b = new HashMap();
   private static long c;
-  
-  private static long a()
-  {
-    return Math.max(jdField_b_of_type_Long, jdField_a_of_type_Long);
-  }
+  private static long d;
+  private static long e;
   
   private static Bundle a(String paramString1, int paramInt1, String paramString2, String paramString3, long paramLong, String paramString4, int paramInt2, String paramString5)
   {
     Bundle localBundle = new Bundle();
     try
     {
-      paramString1 = a(paramString1);
+      paramString1 = b(paramString1);
       localBundle.putString("viewid", paramString1);
       localBundle.putInt("lt", paramInt1);
       localBundle.putInt("ig", 1);
@@ -57,7 +52,7 @@ public class MiniAdAntiSpamReportUtil
         l1 = l2;
         if (!TextUtils.isEmpty(paramString1))
         {
-          jdField_a_of_type_JavaUtilHashMap.put(paramString1, Long.valueOf(l2));
+          a.put(paramString1, Long.valueOf(l2));
           l1 = l2;
         }
       }
@@ -66,7 +61,7 @@ public class MiniAdAntiSpamReportUtil
         l1 = l2;
         if (!TextUtils.isEmpty(paramString1))
         {
-          paramString1 = (Long)jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+          paramString1 = (Long)a.get(paramString1);
           l1 = l2;
           if (paramString1 != null) {
             l1 = paramString1.longValue();
@@ -74,10 +69,10 @@ public class MiniAdAntiSpamReportUtil
         }
       }
       localBundle.putLong("it", l1);
-      localBundle.putLong("st", jdField_a_of_type_Long);
-      localBundle.putLong("ent", a());
+      localBundle.putLong("st", c);
+      localBundle.putLong("ent", d());
       localBundle.putLong("et", paramLong);
-      localBundle.putLong("ud", b());
+      localBundle.putLong("ud", e());
       return localBundle;
     }
     catch (Exception paramString1)
@@ -85,26 +80,6 @@ public class MiniAdAntiSpamReportUtil
       QLog.e("MiniAdAntiSpamReportUtil", 1, "createReportString error.", paramString1);
     }
     return localBundle;
-  }
-  
-  public static String a(IMiniAppContext paramIMiniAppContext, String paramString1, String paramString2)
-  {
-    if ((paramIMiniAppContext != null) && (!TextUtils.isEmpty(paramString1))) {
-      try
-      {
-        paramIMiniAppContext = a(paramIMiniAppContext.getAdReportData(), paramString1, paramString2);
-        return paramIMiniAppContext;
-      }
-      catch (Throwable paramIMiniAppContext)
-      {
-        paramString1 = new StringBuilder();
-        paramString1.append("getRewardedVideoAdExposeReportParamForSDK get an Exception:");
-        paramString1.append(paramIMiniAppContext.toString());
-        QLog.e("MiniAdAntiSpamReportUtil", 1, paramString1.toString());
-        return new JSONObject().toString();
-      }
-    }
-    return new JSONObject().toString();
   }
   
   private static String a(AdReportData paramAdReportData, String paramString1, String paramString2)
@@ -123,8 +98,8 @@ public class MiniAdAntiSpamReportUtil
       localJSONObject.put("fh", 0);
       localJSONObject.put("ic", 0);
       localJSONObject.put("ig", paramAdReportData.isGame);
-      if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1)) {
-        localJSONObject.put("it", jdField_a_of_type_JavaUtilHashMap.get(paramString1));
+      if (a.containsKey(paramString1)) {
+        localJSONObject.put("it", a.get(paramString1));
       }
       localJSONObject.put("lc", paramAdReportData.lastClicks);
       localJSONObject.put("lt", 2);
@@ -132,16 +107,16 @@ public class MiniAdAntiSpamReportUtil
       localJSONObject.put("s", 0);
       localJSONObject.put("s_p", paramString2);
       localJSONObject.put("sc_s", paramAdReportData.scene);
-      if (TextUtils.isEmpty(paramAdReportData.scene_sn)) {
+      if (TextUtils.isEmpty(paramAdReportData.sceneSn)) {
         paramString2 = str;
       } else {
-        paramString2 = paramAdReportData.scene_sn;
+        paramString2 = paramAdReportData.sceneSn;
       }
       localJSONObject.put("sc_sn", paramString2);
       localJSONObject.put("st", paramAdReportData.startTime);
       localJSONObject.put("ud", paramAdReportData.stayTime);
-      if (jdField_b_of_type_JavaUtilHashMap.containsKey(paramString1)) {
-        localJSONObject.put("viewid", a((String)jdField_b_of_type_JavaUtilHashMap.get(paramString1)));
+      if (b.containsKey(paramString1)) {
+        localJSONObject.put("viewid", b((String)b.get(paramString1)));
       }
       localJSONObject.put("wlv", paramAdReportData.baseLibVersion);
       paramAdReportData = new StringBuilder();
@@ -154,45 +129,6 @@ public class MiniAdAntiSpamReportUtil
       QLog.e("MiniAdAntiSpamReportUtil", 1, "createRewardedVideoAdReportParams error.", paramAdReportData);
     }
     return localJSONObject.toString();
-  }
-  
-  private static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    String str = Uri.parse(paramString).getQueryParameter("viewid");
-    paramString = str;
-    if (str == null) {
-      paramString = "";
-    }
-    return paramString;
-  }
-  
-  private static JSONObject a(Bundle paramBundle)
-  {
-    localJSONObject = new JSONObject();
-    try
-    {
-      Iterator localIterator = paramBundle.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Object localObject = paramBundle.get(str);
-        if ((localObject instanceof String)) {
-          localJSONObject.put(str, paramBundle.getString(str));
-        } else if ((localObject instanceof Integer)) {
-          localJSONObject.put(str, paramBundle.getInt(str));
-        } else if ((localObject instanceof Long)) {
-          localJSONObject.put(str, paramBundle.getLong(str));
-        }
-      }
-      return localJSONObject;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.e("MiniAdAntiSpamReportUtil", 1, "paramsToJson error.", paramBundle);
-    }
   }
   
   public static JSONObject a(IMiniAppContext paramIMiniAppContext, long paramLong, String paramString)
@@ -233,7 +169,7 @@ public class MiniAdAntiSpamReportUtil
     try
     {
       localJSONObject.put("at", 0);
-      localJSONObject.put("ent", a());
+      localJSONObject.put("ent", d());
       localJSONObject.put("ig", 1);
       localJSONObject.put("it", paramLong);
       localJSONObject.put("lc", str2);
@@ -244,8 +180,8 @@ public class MiniAdAntiSpamReportUtil
         paramString = "";
       }
       localJSONObject.put("sc_sn", paramString);
-      localJSONObject.put("st", jdField_a_of_type_Long);
-      localJSONObject.put("ud", b());
+      localJSONObject.put("st", c);
+      localJSONObject.put("ud", e());
       localJSONObject.put("wlv", str1);
       return localJSONObject;
     }
@@ -256,57 +192,11 @@ public class MiniAdAntiSpamReportUtil
     return localJSONObject;
   }
   
-  public static JSONObject a(IMiniAppContext paramIMiniAppContext, String paramString1, String paramString2)
-  {
-    JSONObject localJSONObject = null;
-    if ((paramIMiniAppContext != null) && (paramIMiniAppContext.isMiniGame()))
-    {
-      if (TextUtils.isEmpty(paramString1)) {
-        return null;
-      }
-      String str2 = paramIMiniAppContext.getBaseLibVersion();
-      String str3 = (String)paramIMiniAppContext.performAction(ActionBridge.GetLastClicksActionBridge.obtain());
-      MiniAppInfo localMiniAppInfo = paramIMiniAppContext.getMiniAppInfo();
-      paramIMiniAppContext = "";
-      int i;
-      if ((localMiniAppInfo != null) && (localMiniAppInfo.launchParam != null))
-      {
-        i = localMiniAppInfo.launchParam.scene;
-        String str1 = localMiniAppInfo.launchParam.fromMiniAppId;
-        if (TextUtils.isEmpty(str1))
-        {
-          if (!TextUtils.isEmpty(localMiniAppInfo.launchParam.reportData)) {
-            localJSONObject = PathUtil.getJSONQueryString(localMiniAppInfo.launchParam.reportData);
-          }
-          if (localJSONObject != null) {
-            paramIMiniAppContext = localJSONObject.optString("groupid", "");
-          }
-        }
-        else
-        {
-          paramIMiniAppContext = str1;
-        }
-      }
-      else
-      {
-        paramIMiniAppContext = "";
-        i = 0;
-      }
-      return a(paramString1, 3, str2, str3, 0L, paramString2, i, paramIMiniAppContext);
-    }
-    return null;
-  }
-  
-  private static JSONObject a(String paramString1, int paramInt1, String paramString2, String paramString3, long paramLong, String paramString4, int paramInt2, String paramString5)
-  {
-    return a(a(paramString1, paramInt1, paramString2, paramString3, paramLong, paramString4, paramInt2, paramString5));
-  }
-  
   public static void a()
   {
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    jdField_b_of_type_Long = System.currentTimeMillis();
-    c = 0L;
+    c = System.currentTimeMillis();
+    d = System.currentTimeMillis();
+    e = 0L;
   }
   
   public static void a(Bundle paramBundle)
@@ -407,35 +297,145 @@ public class MiniAdAntiSpamReportUtil
   {
     long l = System.currentTimeMillis();
     if (!TextUtils.isEmpty(paramString)) {
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
+      a.put(paramString, Long.valueOf(l));
     }
   }
   
   public static void a(String paramString1, String paramString2)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      jdField_b_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+      b.put(paramString1, paramString2);
     }
   }
   
-  private static long b()
+  private static String b(String paramString)
   {
-    return c + System.currentTimeMillis() - a();
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    String str = Uri.parse(paramString).getQueryParameter("viewid");
+    paramString = str;
+    if (str == null) {
+      paramString = "";
+    }
+    return paramString;
+  }
+  
+  private static JSONObject b(Bundle paramBundle)
+  {
+    localJSONObject = new JSONObject();
+    try
+    {
+      Iterator localIterator = paramBundle.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Object localObject = paramBundle.get(str);
+        if ((localObject instanceof String)) {
+          localJSONObject.put(str, paramBundle.getString(str));
+        } else if ((localObject instanceof Integer)) {
+          localJSONObject.put(str, paramBundle.getInt(str));
+        } else if ((localObject instanceof Long)) {
+          localJSONObject.put(str, paramBundle.getLong(str));
+        }
+      }
+      return localJSONObject;
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.e("MiniAdAntiSpamReportUtil", 1, "paramsToJson error.", paramBundle);
+    }
+  }
+  
+  public static JSONObject b(IMiniAppContext paramIMiniAppContext, String paramString1, String paramString2)
+  {
+    JSONObject localJSONObject = null;
+    if ((paramIMiniAppContext != null) && (paramIMiniAppContext.isMiniGame()))
+    {
+      if (TextUtils.isEmpty(paramString1)) {
+        return null;
+      }
+      String str2 = paramIMiniAppContext.getBaseLibVersion();
+      String str3 = (String)paramIMiniAppContext.performAction(ActionBridge.GetLastClicksActionBridge.obtain());
+      MiniAppInfo localMiniAppInfo = paramIMiniAppContext.getMiniAppInfo();
+      paramIMiniAppContext = "";
+      int i;
+      if ((localMiniAppInfo != null) && (localMiniAppInfo.launchParam != null))
+      {
+        i = localMiniAppInfo.launchParam.scene;
+        String str1 = localMiniAppInfo.launchParam.fromMiniAppId;
+        if (TextUtils.isEmpty(str1))
+        {
+          if (!TextUtils.isEmpty(localMiniAppInfo.launchParam.reportData)) {
+            localJSONObject = PathUtil.getJSONQueryString(localMiniAppInfo.launchParam.reportData);
+          }
+          if (localJSONObject != null) {
+            paramIMiniAppContext = localJSONObject.optString("groupid", "");
+          }
+        }
+        else
+        {
+          paramIMiniAppContext = str1;
+        }
+      }
+      else
+      {
+        paramIMiniAppContext = "";
+        i = 0;
+      }
+      return b(paramString1, 3, str2, str3, 0L, paramString2, i, paramIMiniAppContext);
+    }
+    return null;
+  }
+  
+  private static JSONObject b(String paramString1, int paramInt1, String paramString2, String paramString3, long paramLong, String paramString4, int paramInt2, String paramString5)
+  {
+    return b(a(paramString1, paramInt1, paramString2, paramString3, paramLong, paramString4, paramInt2, paramString5));
   }
   
   public static void b()
   {
-    jdField_b_of_type_Long = System.currentTimeMillis();
+    d = System.currentTimeMillis();
+  }
+  
+  public static String c(IMiniAppContext paramIMiniAppContext, String paramString1, String paramString2)
+  {
+    if ((paramIMiniAppContext != null) && (!TextUtils.isEmpty(paramString1))) {
+      try
+      {
+        paramIMiniAppContext = a(paramIMiniAppContext.getAdReportData(), paramString1, paramString2);
+        return paramIMiniAppContext;
+      }
+      catch (Throwable paramIMiniAppContext)
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("getRewardedVideoAdExposeReportParamForSDK get an Exception:");
+        paramString1.append(paramIMiniAppContext.toString());
+        QLog.e("MiniAdAntiSpamReportUtil", 1, paramString1.toString());
+        return new JSONObject().toString();
+      }
+    }
+    return new JSONObject().toString();
   }
   
   public static void c()
   {
-    c += System.currentTimeMillis() - jdField_b_of_type_Long;
+    e += System.currentTimeMillis() - d;
+  }
+  
+  private static long d()
+  {
+    return Math.max(d, c);
+  }
+  
+  private static long e()
+  {
+    return e + System.currentTimeMillis() - d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAdAntiSpamReportUtil
  * JD-Core Version:    0.7.0.1
  */

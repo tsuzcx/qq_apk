@@ -8,54 +8,36 @@ public class SearchEmoticonWebBean
   implements Parcelable
 {
   public static final Parcelable.Creator<SearchEmoticonWebBean> CREATOR = new SearchEmoticonWebBean.1();
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public int d = 0;
+  public int e = 0;
+  public int f = 0;
+  public int g = 0;
   public String h = "";
   public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
   
-  public SearchEmoticonWebBean()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_d_of_type_JavaLangString = "";
-  }
+  public SearchEmoticonWebBean() {}
   
   protected SearchEmoticonWebBean(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.e = paramParcel.readString();
-    this.f = paramParcel.readString();
-    this.g = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readInt();
+    this.g = paramParcel.readInt();
     this.h = paramParcel.readString();
+    this.i = paramParcel.readString();
+    this.j = paramParcel.readString();
+    this.k = paramParcel.readString();
+    this.l = paramParcel.readString();
   }
   
   public int describeContents()
@@ -65,23 +47,23 @@ public class SearchEmoticonWebBean
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.e);
-    paramParcel.writeString(this.f);
-    paramParcel.writeString(this.g);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.c);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeInt(this.f);
+    paramParcel.writeInt(this.g);
     paramParcel.writeString(this.h);
+    paramParcel.writeString(this.i);
+    paramParcel.writeString(this.j);
+    paramParcel.writeString(this.k);
+    paramParcel.writeString(this.l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean
  * JD-Core Version:    0.7.0.1
  */

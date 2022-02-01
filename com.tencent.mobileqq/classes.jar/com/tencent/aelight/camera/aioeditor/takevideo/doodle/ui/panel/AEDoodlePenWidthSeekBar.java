@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -17,20 +18,23 @@ import androidx.annotation.Nullable;
 public class AEDoodlePenWidthSeekBar
   extends View
 {
-  private float jdField_a_of_type_Float = 0.5F;
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private AEDoodlePenWidthSeekBar.OnSeekBarChangeListener jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelAEDoodlePenWidthSeekBar$OnSeekBarChangeListener;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
+  private float a = 0.5F;
+  private Bitmap b;
+  private Bitmap c;
   private int d;
+  private int e;
+  private int f;
+  private int g;
+  private int h = 0;
+  private int i;
+  private RectF j = new RectF();
+  private RectF k = new RectF();
+  private Paint l;
+  private float m;
+  private float n;
+  private boolean o;
+  private AEDoodlePenWidthSeekBar.OnSeekBarChangeListener p;
+  private Runnable q = new AEDoodlePenWidthSeekBar.1(this);
   
   public AEDoodlePenWidthSeekBar(Context paramContext)
   {
@@ -60,45 +64,60 @@ public class AEDoodlePenWidthSeekBar
   private void a()
   {
     Resources localResources = getResources();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(localResources, 2130837741);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(localResources, 2130837742);
-    this.jdField_a_of_type_Int = a(getContext(), 21.25F);
-    this.jdField_b_of_type_Int = a(getContext(), 15.5F);
-    this.jdField_c_of_type_Int = a(getContext(), 270.0F);
-    this.d = a(getContext(), 3.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.b = BitmapFactory.decodeResource(localResources, 2130837905);
+    this.c = BitmapFactory.decodeResource(localResources, 2130837906);
+    this.d = a(getContext(), 21.25F);
+    this.e = a(getContext(), 15.5F);
+    this.f = a(getContext(), 270.0F);
+    this.g = a(getContext(), 3.0F);
+    this.i = (-a(getContext(), 18.0F));
+    this.h = this.i;
+    this.l = new Paint();
+    this.l.setAntiAlias(true);
+  }
+  
+  private void b()
+  {
+    getHandler().postDelayed(this.q, 3000L);
+  }
+  
+  private void c()
+  {
+    getHandler().removeCallbacks(this.q);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int i = getMeasuredHeight();
+    paramCanvas.save();
+    paramCanvas.translate(this.h, 0.0F);
+    int i1 = getMeasuredHeight();
     float f1 = getMeasuredWidth() / 2;
-    int j = this.jdField_b_of_type_Int / 2;
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    float f2 = j;
-    j = this.jdField_a_of_type_Int;
-    int k = this.d;
-    localRectF.set(f1 - f2, j - k, f1 + f2, i - j + k);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-    j = this.jdField_a_of_type_Int;
-    f1 = (i - j - j) * (1.0F - this.jdField_a_of_type_Float);
-    localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-    f2 = j;
-    float f3 = j;
+    int i2 = this.e / 2;
+    RectF localRectF = this.j;
+    float f2 = i2;
+    i2 = this.d;
+    int i3 = this.g;
+    localRectF.set(f1 - f2, i2 - i3, f1 + f2, i1 - i2 + i3);
+    paramCanvas.drawBitmap(this.b, null, this.j, this.l);
+    i2 = this.d;
+    f1 = (i1 - i2 - i2) * (1.0F - this.a);
+    localRectF = this.k;
+    f2 = i2;
+    float f3 = i2;
     float f4 = getMeasuredWidth();
-    i = this.jdField_a_of_type_Int;
-    localRectF.set(0.0F, f2 + f1 - f3, f4, i + f1 + i);
-    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, null, this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+    i1 = this.d;
+    localRectF.set(0.0F, f2 + f1 - f3, f4, i1 + f1 + i1);
+    paramCanvas.drawBitmap(this.c, null, this.k, this.l);
+    paramCanvas.restore();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    paramInt1 = this.jdField_a_of_type_Int;
+    paramInt1 = this.d;
     paramInt1 += paramInt1;
-    paramInt2 = this.jdField_c_of_type_Int;
-    int i = this.d;
-    setMeasuredDimension(paramInt1, paramInt2 - i - i + paramInt1);
+    paramInt2 = this.f;
+    int i1 = this.g;
+    setMeasuredDimension(paramInt1, paramInt2 - i1 - i1 + paramInt1);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -106,63 +125,70 @@ public class AEDoodlePenWidthSeekBar
     if (!isEnabled()) {
       return false;
     }
-    int i = paramMotionEvent.getAction();
-    if (i != 0)
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
-        if (i != 2) {
+        if (i1 != 2) {
           return true;
         }
-        if (this.jdField_a_of_type_Boolean)
+        if (this.o)
         {
-          float f1 = paramMotionEvent.getY() - this.jdField_c_of_type_Float;
-          float f2 = this.jdField_b_of_type_AndroidGraphicsRectF.centerY();
-          i = getMeasuredHeight();
+          float f1 = paramMotionEvent.getY() - this.n;
+          float f2 = this.k.centerY();
+          i1 = getMeasuredHeight();
           float f3 = f2 + f1;
-          int j = this.jdField_a_of_type_Int;
-          if (f3 < j) {}
-          for (f1 = j;; f1 = i - j)
+          int i2 = this.d;
+          if (f3 < i2) {}
+          for (f1 = i2;; f1 = i1 - i2)
           {
             f1 -= f2;
             break;
-            if (f3 <= i - j) {
+            if (f3 <= i1 - i2) {
               break;
             }
           }
           if (f1 != 0.0F)
           {
-            Object localObject = this.jdField_b_of_type_AndroidGraphicsRectF;
+            Object localObject = this.k;
             ((RectF)localObject).top += f1;
-            localObject = this.jdField_b_of_type_AndroidGraphicsRectF;
+            localObject = this.k;
             ((RectF)localObject).bottom += f1;
-            f1 = this.jdField_b_of_type_AndroidGraphicsRectF.centerY();
-            j = this.jdField_a_of_type_Int;
-            this.jdField_a_of_type_Float = (1.0F - (f1 - j) / (i - j - j));
-            localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelAEDoodlePenWidthSeekBar$OnSeekBarChangeListener;
+            f1 = this.k.centerY();
+            i2 = this.d;
+            this.a = (1.0F - (f1 - i2) / (i1 - i2 - i2));
+            localObject = this.p;
             if (localObject != null) {
-              ((AEDoodlePenWidthSeekBar.OnSeekBarChangeListener)localObject).a(this.jdField_a_of_type_Float);
+              ((AEDoodlePenWidthSeekBar.OnSeekBarChangeListener)localObject).a(this.a);
             }
             invalidate();
           }
         }
-        this.jdField_c_of_type_Float = paramMotionEvent.getY();
+        this.n = paramMotionEvent.getY();
         return true;
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.o = false;
+      b();
       return true;
     }
-    this.jdField_b_of_type_Float = paramMotionEvent.getX();
-    this.jdField_c_of_type_Float = paramMotionEvent.getY();
-    if (this.jdField_b_of_type_AndroidGraphicsRectF.contains(this.jdField_b_of_type_Float, this.jdField_c_of_type_Float)) {
-      this.jdField_a_of_type_Boolean = true;
+    this.m = paramMotionEvent.getX();
+    this.n = paramMotionEvent.getY();
+    if (this.k.contains(this.m, this.n)) {
+      this.o = true;
+    }
+    c();
+    if (this.h != 0)
+    {
+      this.h = 0;
+      invalidate();
     }
     return true;
   }
   
   public void setOnSeekBarChangeListener(AEDoodlePenWidthSeekBar.OnSeekBarChangeListener paramOnSeekBarChangeListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelAEDoodlePenWidthSeekBar$OnSeekBarChangeListener = paramOnSeekBarChangeListener;
+    this.p = paramOnSeekBarChangeListener;
   }
   
   public void setProgress(float paramFloat)
@@ -172,7 +198,7 @@ public class AEDoodlePenWidthSeekBar
       if (paramFloat > 1.0F) {
         return;
       }
-      this.jdField_a_of_type_Float = paramFloat;
+      this.a = paramFloat;
       if (Looper.getMainLooper() == Looper.myLooper())
       {
         invalidate();
@@ -184,7 +210,7 @@ public class AEDoodlePenWidthSeekBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.AEDoodlePenWidthSeekBar
  * JD-Core Version:    0.7.0.1
  */

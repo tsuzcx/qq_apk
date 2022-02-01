@@ -2,13 +2,13 @@ package com.tencent.mobileqq.kandian.biz.reward;
 
 import com.tencent.mobileqq.kandian.base.video.player.api.IVideoPlayerWrapper;
 import com.tencent.mobileqq.kandian.biz.account.RIJUserLevelTimeUtils;
-import com.tencent.mobileqq.kandian.biz.common.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsPlayManager;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsPlayManager.VideoStatusListener;
 import com.tencent.mobileqq.kandian.biz.reward.api.IRIJRewardTaskTimer;
 import com.tencent.mobileqq.kandian.biz.reward.mvp.RIJRewardTaskTimingPresenter;
 import com.tencent.mobileqq.kandian.biz.video.api.OnPlayStateListener;
 import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo;
+import com.tencent.mobileqq.kandian.biz.xtab.api.impl.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.glue.video.VideoPlayManager;
 import kotlin.Lazy;
 import kotlin.LazyKt;
@@ -22,52 +22,52 @@ import org.jetbrains.annotations.Nullable;
 public final class RIJRewardTaskVideoTimer
   implements VideoFeedsPlayManager.VideoStatusListener, IRIJRewardTaskTimer, OnPlayStateListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)RIJRewardTaskVideoTimer.presenter.2.INSTANCE);
-  private boolean jdField_a_of_type_Boolean;
+  private String a;
+  private boolean b;
+  private final Lazy c = LazyKt.lazy((Function0)RIJRewardTaskVideoTimer.presenter.2.INSTANCE);
   
-  private final RIJRewardTaskTimingPresenter a()
+  private final RIJRewardTaskTimingPresenter d()
   {
-    return (RIJRewardTaskTimingPresenter)this.jdField_a_of_type_KotlinLazy.getValue();
+    return (RIJRewardTaskTimingPresenter)this.c.getValue();
   }
   
   private final void h(com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoPlayParam paramVideoPlayParam)
   {
     Object localObject;
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (this.a != null)
     {
       if (paramVideoPlayParam != null)
       {
-        localObject = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
+        localObject = paramVideoPlayParam.c;
         if (localObject != null)
         {
-          localObject = ((VideoInfo)localObject).g;
+          localObject = ((VideoInfo)localObject).l;
           break label35;
         }
       }
       localObject = null;
       label35:
-      if ((Intrinsics.areEqual(localObject, this.jdField_a_of_type_JavaLangString) ^ true)) {
+      if ((Intrinsics.areEqual(localObject, this.a) ^ true)) {
         stopTiming();
       }
     }
     if (paramVideoPlayParam != null)
     {
-      localObject = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
-      if ((localObject != null) && (((VideoInfo)localObject).r == true)) {}
+      localObject = paramVideoPlayParam.c;
+      if ((localObject != null) && (((VideoInfo)localObject).aq == true)) {}
     }
     else if (paramVideoPlayParam != null)
     {
-      localObject = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
+      localObject = paramVideoPlayParam.c;
       if (localObject != null)
       {
-        localObject = ((VideoInfo)localObject).g;
+        localObject = ((VideoInfo)localObject).l;
         if (localObject != null)
         {
-          paramVideoPlayParam = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
+          paramVideoPlayParam = paramVideoPlayParam.h;
           long l;
           if (paramVideoPlayParam != null) {
-            l = paramVideoPlayParam.b();
+            l = paramVideoPlayParam.I();
           } else {
             l = 0L;
           }
@@ -79,20 +79,20 @@ public final class RIJRewardTaskVideoTimer
   
   private final void i(com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoPlayParam paramVideoPlayParam)
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (this.a != null)
     {
       if (paramVideoPlayParam != null)
       {
-        paramVideoPlayParam = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
+        paramVideoPlayParam = paramVideoPlayParam.c;
         if (paramVideoPlayParam != null)
         {
-          paramVideoPlayParam = paramVideoPlayParam.g;
+          paramVideoPlayParam = paramVideoPlayParam.l;
           break label30;
         }
       }
       paramVideoPlayParam = null;
       label30:
-      if (Intrinsics.areEqual(paramVideoPlayParam, this.jdField_a_of_type_JavaLangString)) {
+      if (Intrinsics.areEqual(paramVideoPlayParam, this.a)) {
         stopTiming();
       }
     }
@@ -100,7 +100,7 @@ public final class RIJRewardTaskVideoTimer
   
   public final void a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
   
   public final void a(@NotNull VideoFeedsPlayManager paramVideoFeedsPlayManager)
@@ -111,25 +111,25 @@ public final class RIJRewardTaskVideoTimer
   
   public void a(@Nullable com.tencent.mobileqq.kandian.biz.video.feeds.entity.VideoPlayParam paramVideoPlayParam, @Nullable IVideoPlayerWrapper paramIVideoPlayerWrapper, int paramInt1, int paramInt2, @Nullable Object paramObject)
   {
-    if ((paramVideoPlayParam != null) && (!paramVideoPlayParam.b))
+    if ((paramVideoPlayParam != null) && (!paramVideoPlayParam.M))
     {
       if (paramInt2 == 3)
       {
-        if ((this.jdField_a_of_type_JavaLangString != null) && ((Intrinsics.areEqual(paramVideoPlayParam.j, this.jdField_a_of_type_JavaLangString) ^ true))) {
+        if ((this.a != null) && ((Intrinsics.areEqual(paramVideoPlayParam.y, this.a) ^ true))) {
           stopTiming();
         }
-        paramVideoPlayParam = paramVideoPlayParam.j;
+        paramVideoPlayParam = paramVideoPlayParam.y;
         Intrinsics.checkExpressionValueIsNotNull(paramVideoPlayParam, "playParam.videoArticleID");
         long l;
         if (paramIVideoPlayerWrapper != null) {
-          l = paramIVideoPlayerWrapper.b();
+          l = paramIVideoPlayerWrapper.I();
         } else {
           l = 0L;
         }
         startTiming(paramVideoPlayParam, (int)l);
         return;
       }
-      if ((paramInt1 == 3) && (this.jdField_a_of_type_JavaLangString != null) && (Intrinsics.areEqual(paramVideoPlayParam.j, this.jdField_a_of_type_JavaLangString))) {
+      if ((paramInt1 == 3) && (this.a != null) && (Intrinsics.areEqual(paramVideoPlayParam.y, this.a))) {
         stopTiming();
       }
       return;
@@ -157,14 +157,9 @@ public final class RIJRewardTaskVideoTimer
     paramVideoPlayManager.a((OnPlayStateListener)this);
   }
   
-  public boolean a()
-  {
-    return ((RIJRewardTaskConfig.a()) || (RIJUserLevelTimeUtils.a())) && (RIJXTabFrameUtils.INSTANCE.isNowInKanDianTab());
-  }
-  
   public final void b()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
   
   public void b(@Nullable com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoPlayParam paramVideoPlayParam) {}
@@ -177,6 +172,11 @@ public final class RIJRewardTaskVideoTimer
   public void c(@Nullable com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoPlayParam paramVideoPlayParam)
   {
     h(paramVideoPlayParam);
+  }
+  
+  public boolean c()
+  {
+    return ((RIJRewardTaskConfig.a()) || (RIJUserLevelTimeUtils.a())) && (RIJXTabFrameUtils.INSTANCE.isNowInKanDianTab());
   }
   
   public void d(@Nullable com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoPlayParam paramVideoPlayParam)
@@ -202,22 +202,22 @@ public final class RIJRewardTaskVideoTimer
   public void startTiming(@NotNull String paramString, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
-    if ((a()) && (this.jdField_a_of_type_Boolean))
+    if ((c()) && (this.b))
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      a().a(paramString, paramInt, 2);
+      this.a = paramString;
+      d().a(paramString, paramInt, 2);
     }
   }
   
   public void stopTiming()
   {
-    this.jdField_a_of_type_JavaLangString = ((String)null);
-    a().a();
+    this.a = ((String)null);
+    d().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJRewardTaskVideoTimer
  * JD-Core Version:    0.7.0.1
  */

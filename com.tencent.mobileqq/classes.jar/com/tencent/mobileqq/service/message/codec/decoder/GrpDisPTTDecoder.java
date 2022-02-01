@@ -115,7 +115,7 @@ public class GrpDisPTTDecoder
       }
       i += 1;
     }
-    boolean bool = ((ITroopRobotService)paramBaseMessageHandler.a().getRuntimeService(ITroopRobotService.class, "all")).isRobotUin(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get());
+    boolean bool = ((ITroopRobotService)paramBaseMessageHandler.b().getRuntimeService(ITroopRobotService.class, "all")).isRobotUin(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get());
     if ((paramMessageRecord.mRobotFlag == 1) || (paramMessageRecord.mRobotFlag == 2) || (bool))
     {
       paramMsg = paramList.iterator();
@@ -334,7 +334,7 @@ public class GrpDisPTTDecoder
       }
       a(paramMsg, paramList, paramDecodeProtoPkgContext, (StringBuilder)localObject);
       a(paramBaseMessageHandler, paramMsg, paramList, paramDecodeProtoPkgContext);
-      ConfessMsgUtil.a(paramMsg, paramList, paramBaseMessageHandler.a());
+      ConfessMsgUtil.a(paramMsg, paramList, paramBaseMessageHandler.b());
       if (QLog.isColorLevel()) {
         QLog.d("GrpDisPTTDecoder", 2, ((StringBuilder)localObject).toString());
       }
@@ -349,7 +349,7 @@ public class GrpDisPTTDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.GrpDisPTTDecoder
  * JD-Core Version:    0.7.0.1
  */

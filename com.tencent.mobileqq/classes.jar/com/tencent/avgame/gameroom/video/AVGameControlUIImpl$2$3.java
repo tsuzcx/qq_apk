@@ -12,10 +12,10 @@ class AVGameControlUIImpl$2$3
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.a()) {
+    if (this.b.a.d()) {
       return;
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i == 0) {
       i = 3214;
     } else if (i == 100) {
@@ -23,22 +23,22 @@ class AVGameControlUIImpl$2$3
     } else {
       i = (int)(i * 6428.5718F / 100.0F + 3214.2856F);
     }
-    AVGameControlUIImpl.a(this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a, i);
-    if (!GameEngine.a().i()) {
+    AVGameControlUIImpl.a(this.b.a, i);
+    if (!GameEngine.a().D()) {
       return;
     }
     boolean bool;
-    if (this.jdField_a_of_type_Int > 0) {
+    if (this.a > 0) {
       bool = true;
     } else {
       bool = false;
     }
-    ISeatPresenter localISeatPresenter = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a();
+    ISeatPresenter localISeatPresenter = this.b.a.i.d();
     String str;
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin() == null) {
+    if (this.b.a.g.getCurrentAccountUin() == null) {
       str = "0";
     } else {
-      str = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin();
+      str = this.b.a.g.getCurrentAccountUin();
     }
     localISeatPresenter.a(Long.valueOf(str).longValue(), bool);
   }

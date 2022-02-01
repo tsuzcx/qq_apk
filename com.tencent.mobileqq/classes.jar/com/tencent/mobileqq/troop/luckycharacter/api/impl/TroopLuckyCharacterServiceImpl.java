@@ -25,7 +25,7 @@ public class TroopLuckyCharacterServiceImpl
       if (TextUtils.isEmpty(paramTroopInfo.troopuin)) {
         return false;
       }
-      if (QQTheme.f())
+      if (QQTheme.isNowSimpleUI())
       {
         if (QLog.isColorLevel()) {
           QLog.d("TroopLuckyCharacterServiceImpl", 2, "isSupportLuckyCharacter isNowSimpleUI");
@@ -35,7 +35,7 @@ public class TroopLuckyCharacterServiceImpl
       TroopLuckyCharacterConfig localTroopLuckyCharacterConfig = this.mConfig;
       boolean bool;
       if (localTroopLuckyCharacterConfig != null) {
-        bool = localTroopLuckyCharacterConfig.a(paramTroopInfo.troopuin);
+        bool = localTroopLuckyCharacterConfig.b(paramTroopInfo.troopuin);
       } else {
         bool = false;
       }
@@ -72,7 +72,7 @@ public class TroopLuckyCharacterServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.luckycharacter.api.impl.TroopLuckyCharacterServiceImpl
  * JD-Core Version:    0.7.0.1
  */

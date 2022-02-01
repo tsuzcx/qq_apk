@@ -12,20 +12,20 @@ class EditLocalVideoActivity$6
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    if (EditLocalVideoActivity.j(this.a) != null) {
+      EditLocalVideoActivity.j(this.a).setVisibility(0);
     }
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    if (EditLocalVideoActivity.k(this.a) != null) {
+      EditLocalVideoActivity.k(this.a).setVisibility(0);
     }
-    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
+    if ((EditLocalVideoActivity.l(this.a) != null) && (EditLocalVideoActivity.m(this.a) != 1)) {
       EditLocalVideoActivity.a(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.6
  * JD-Core Version:    0.7.0.1
  */

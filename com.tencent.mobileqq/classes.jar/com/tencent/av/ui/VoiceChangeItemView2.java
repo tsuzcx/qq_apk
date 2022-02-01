@@ -2,39 +2,36 @@ package com.tencent.av.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import com.tencent.av.funchat.AVListImageView;
+import com.tencent.av.ui.effect.view.EffectMaterialImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 
 public class VoiceChangeItemView2
   extends QavListItemBase
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  AVListImageView jdField_a_of_type_ComTencentAvFunchatAVListImageView = null;
-  Context b;
+  Context e;
+  EffectMaterialImageView f = null;
+  ImageView g = null;
   
   public VoiceChangeItemView2(Context paramContext)
   {
     super(paramContext);
-    this.b = paramContext;
+    this.e = paramContext;
   }
   
   public void a(int paramInt) {}
   
   public void a(int paramInt1, int paramInt2)
   {
-    ((LayoutInflater)this.b.getSystemService("layout_inflater")).inflate(2131559786, this);
-    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131373387));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380977));
-    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setOnClickListener(this);
+    ((LayoutInflater)this.e.getSystemService("layout_inflater")).inflate(2131625828, this);
+    this.f = ((EffectMaterialImageView)findViewById(2131441060));
+    this.g = ((ImageView)findViewById(2131449968));
+    this.f.setOnClickListener(this);
     setOnClickListener(this);
   }
   
@@ -43,71 +40,60 @@ public class VoiceChangeItemView2
     super.a(paramInt, paramIClickCallback);
     setId(paramInt);
     setTag(paramItemInfo);
-    if (!TextUtils.isEmpty(paramItemInfo.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramItemInfo.b))
     {
       paramIClickCallback = URLDrawable.URLDrawableOptions.obtain();
-      paramInt = AIOUtils.b(60.0F, getResources());
-      GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setColor(getResources().getColor(2131165886));
-      localGradientDrawable.setShape(1);
-      localGradientDrawable.setSize(paramInt, paramInt);
-      paramIClickCallback.mRequestWidth = paramInt;
-      paramIClickCallback.mRequestHeight = paramInt;
-      paramIClickCallback.mFailedDrawable = localGradientDrawable;
-      paramIClickCallback.mLoadingDrawable = localGradientDrawable;
-      paramIClickCallback = URLDrawable.getDrawable(paramItemInfo.jdField_b_of_type_JavaLangString, paramIClickCallback);
-      paramIClickCallback.setTag(URLDrawableDecodeHandler.a(paramInt, paramInt));
-      paramIClickCallback.setDecodeHandler(URLDrawableDecodeHandler.a);
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageDrawable(paramIClickCallback);
+      paramIClickCallback = URLDrawable.getDrawable(paramItemInfo.b, paramIClickCallback);
+      this.f.setImageDrawable(paramIClickCallback);
     }
-    paramInt = paramItemInfo.jdField_b_of_type_Int;
+    paramInt = paramItemInfo.g;
     if (paramInt != 1)
     {
       if (paramInt != 2)
       {
         if (paramInt != 3)
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          this.g.setVisibility(8);
         }
         else
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842383);
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.g.setImageResource(2130843330);
+          this.g.setVisibility(0);
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842383);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.g.setImageResource(2130843330);
+        this.g.setVisibility(0);
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842383);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.g.setImageResource(2130843330);
+      this.g.setVisibility(0);
     }
     setHighlight(paramBoolean1);
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    Object localObject = findViewById(2131380975);
+    Object localObject = findViewById(2131449966);
     ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
     localLayoutParams.width = paramInt1;
     localLayoutParams.height = paramInt2;
     ((View)localObject).setLayoutParams(localLayoutParams);
-    if ((this.jdField_a_of_type_ComTencentAvFunchatAVListImageView != null) && (paramInt1 < getResources().getDimensionPixelSize(2131297770)))
+    if ((this.f != null) && (paramInt1 < getResources().getDimensionPixelSize(2131298440)))
     {
-      localObject = this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.getLayoutParams();
+      localObject = this.f.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject).width = paramInt1;
       ((ViewGroup.LayoutParams)localObject).height = paramInt1;
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.f.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
   public void setHighlight(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setHighlight(paramBoolean);
+    this.f.setHighlight(paramBoolean);
   }
 }
 

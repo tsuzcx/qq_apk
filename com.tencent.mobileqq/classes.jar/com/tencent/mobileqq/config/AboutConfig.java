@@ -32,58 +32,18 @@ import protocol.KQQConfig.GetResourceReqInfoV2;
 
 public class AboutConfig
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Hashtable<String, ResourcePluginInfo> jdField_a_of_type_JavaUtilHashtable;
-  private List<ResourcePluginListener> jdField_a_of_type_JavaUtilList;
-  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new AboutConfig.2(this);
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b = false;
+  private QQAppInterface a;
+  private Hashtable<String, ResourcePluginInfo> b;
+  private List<ResourcePluginListener> c;
+  private boolean d = true;
+  private boolean e = false;
+  private ServerConfigObserver f = new AboutConfig.2(this);
   
   public AboutConfig(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  }
-  
-  private Hashtable<String, ResourcePluginInfo> a()
-  {
-    Hashtable localHashtable = new Hashtable();
-    ResourcePluginInfo localResourcePluginInfo = new ResourcePluginInfo();
-    localResourcePluginInfo.strPkgName = "com.tencent.help_5_8";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693138);
-    localResourcePluginInfo.strResDesc = "";
-    localResourcePluginInfo.strResURL = "";
-    localResourcePluginInfo.sResSubType = 2;
-    localResourcePluginInfo.cCanChangeState = 0;
-    localResourcePluginInfo.cDefaultState = 0;
-    localResourcePluginInfo.cLocalState = 1;
-    localResourcePluginInfo.cDataType = 1;
-    localResourcePluginInfo.isNew = 1;
-    localResourcePluginInfo.sLanType = 1;
-    localResourcePluginInfo.sPriority = 0;
-    localResourcePluginInfo.uiResId = 0L;
-    localResourcePluginInfo.strGotoUrl = "https://kf.qq.com/touch/scene_product.html?scene_id=kf180";
-    localResourcePluginInfo.iPluginType = 32;
-    localHashtable.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
-    localResourcePluginInfo = new ResourcePluginInfo();
-    localResourcePluginInfo.strPkgName = "com.tencent.Feedback_5_8";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692258);
-    localResourcePluginInfo.strResDesc = "";
-    localResourcePluginInfo.strResURL = "";
-    localResourcePluginInfo.sResSubType = 2;
-    localResourcePluginInfo.cCanChangeState = 0;
-    localResourcePluginInfo.cDefaultState = 0;
-    localResourcePluginInfo.cLocalState = 1;
-    localResourcePluginInfo.cDataType = 1;
-    localResourcePluginInfo.isNew = 1;
-    localResourcePluginInfo.sLanType = 1;
-    localResourcePluginInfo.sPriority = 0;
-    localResourcePluginInfo.uiResId = 0L;
-    localResourcePluginInfo.strGotoUrl = "https://mma.qq.com/feedback/index.html";
-    localResourcePluginInfo.iPluginType = 32;
-    localHashtable.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
-    return localHashtable;
+    this.a = paramQQAppInterface;
+    this.c = new ArrayList();
+    this.b = new Hashtable();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, ResourcePluginInfo paramResourcePluginInfo)
@@ -91,8 +51,8 @@ public class AboutConfig
     AboutConfig localAboutConfig = paramQQAppInterface.getAboutConfig();
     Object localObject2 = paramResourcePluginInfo.strGotoUrl;
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("version=8.7.0.5295&appid=");
-    ((StringBuilder)localObject1).append(AppSetting.a());
+    ((StringBuilder)localObject1).append("version=8.8.17.5770&appid=");
+    ((StringBuilder)localObject1).append(AppSetting.d());
     ((StringBuilder)localObject1).append("&QUA=");
     ((StringBuilder)localObject1).append(QZoneHelper.getQUA());
     localObject1 = ((StringBuilder)localObject1).toString();
@@ -105,7 +65,7 @@ public class AboutConfig
     {
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append((String)localObject1);
-      ((StringBuilder)localObject3).append("&adtag=5295");
+      ((StringBuilder)localObject3).append("&adtag=5770");
       localObject3 = ((StringBuilder)localObject3).toString();
     }
     if (paramResourcePluginInfo.strPkgName.equals("com.tencent.Feedback_5_8"))
@@ -183,17 +143,17 @@ public class AboutConfig
       localStringBuilder.append("&manufacture=");
       localStringBuilder.append((String)localObject1);
       localStringBuilder.append("&cpunum=");
-      localStringBuilder.append(DeviceInfoUtil.b());
+      localStringBuilder.append(DeviceInfoUtil.h());
       localStringBuilder.append("&cpurate=");
-      localStringBuilder.append(DeviceInfoUtil.b());
+      localStringBuilder.append(DeviceInfoUtil.k());
       localStringBuilder.append("&mem=");
       localStringBuilder.append(DeviceInfoUtil.a() / 1024L / 1024L);
       localStringBuilder.append("&amem=");
-      localStringBuilder.append(DeviceInfoUtil.e() / 1024L / 1024L);
+      localStringBuilder.append(DeviceInfoUtil.r() / 1024L / 1024L);
       localStringBuilder.append("&w=");
-      localStringBuilder.append(DeviceInfoUtil.g());
+      localStringBuilder.append(DeviceInfoUtil.B());
       localStringBuilder.append("&h=");
-      localStringBuilder.append(DeviceInfoUtil.h());
+      localStringBuilder.append(DeviceInfoUtil.C());
       localStringBuilder.append("&pss=");
       localStringBuilder.append(MemoryManager.a(Process.myPid()) / 1024L / 1024L);
       localStringBuilder.append("&heapmax=");
@@ -263,7 +223,7 @@ public class AboutConfig
     try
     {
       paramContext.startActivity((Intent)localObject1);
-      label1167:
+      label1159:
       if (paramResourcePluginInfo.isNew == 0)
       {
         paramResourcePluginInfo.isNew = 1;
@@ -273,26 +233,66 @@ public class AboutConfig
     }
     catch (SecurityException paramQQAppInterface)
     {
-      break label1167;
+      break label1159;
     }
   }
   
   private void a(List<ResourcePluginInfo> paramList)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashtable != null) && (paramList != null) && (paramList.size() > 0))
+    if ((this.b != null) && (paramList != null) && (paramList.size() > 0))
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         ResourcePluginInfo localResourcePluginInfo = (ResourcePluginInfo)paramList.next();
-        this.jdField_a_of_type_JavaUtilHashtable.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
+        this.b.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
       }
     }
   }
   
-  private void c()
+  private Hashtable<String, ResourcePluginInfo> c()
   {
-    Hashtable localHashtable = this.jdField_a_of_type_JavaUtilHashtable;
+    Hashtable localHashtable = new Hashtable();
+    ResourcePluginInfo localResourcePluginInfo = new ResourcePluginInfo();
+    localResourcePluginInfo.strPkgName = "com.tencent.help_5_8";
+    localResourcePluginInfo.strResName = this.a.getApp().getString(2131890677);
+    localResourcePluginInfo.strResDesc = "";
+    localResourcePluginInfo.strResURL = "";
+    localResourcePluginInfo.sResSubType = 2;
+    localResourcePluginInfo.cCanChangeState = 0;
+    localResourcePluginInfo.cDefaultState = 0;
+    localResourcePluginInfo.cLocalState = 1;
+    localResourcePluginInfo.cDataType = 1;
+    localResourcePluginInfo.isNew = 1;
+    localResourcePluginInfo.sLanType = 1;
+    localResourcePluginInfo.sPriority = 0;
+    localResourcePluginInfo.uiResId = 0L;
+    localResourcePluginInfo.strGotoUrl = "https://kf.qq.com/touch/scene_product.html?scene_id=kf180";
+    localResourcePluginInfo.iPluginType = 32;
+    localHashtable.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
+    localResourcePluginInfo = new ResourcePluginInfo();
+    localResourcePluginInfo.strPkgName = "com.tencent.Feedback_5_8";
+    localResourcePluginInfo.strResName = this.a.getApp().getString(2131889245);
+    localResourcePluginInfo.strResDesc = "";
+    localResourcePluginInfo.strResURL = "";
+    localResourcePluginInfo.sResSubType = 2;
+    localResourcePluginInfo.cCanChangeState = 0;
+    localResourcePluginInfo.cDefaultState = 0;
+    localResourcePluginInfo.cLocalState = 1;
+    localResourcePluginInfo.cDataType = 1;
+    localResourcePluginInfo.isNew = 1;
+    localResourcePluginInfo.sLanType = 1;
+    localResourcePluginInfo.sPriority = 0;
+    localResourcePluginInfo.uiResId = 0L;
+    localResourcePluginInfo.strGotoUrl = "https://mma.qq.com/feedback/index.html";
+    localResourcePluginInfo.iPluginType = 32;
+    localHashtable.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
+    return localHashtable;
+  }
+  
+  private void d()
+  {
+    Hashtable localHashtable = this.b;
     if (localHashtable != null) {
       localHashtable.clear();
     }
@@ -300,12 +300,12 @@ public class AboutConfig
   
   public ResourcePluginInfo a(String paramString)
   {
-    return (ResourcePluginInfo)this.jdField_a_of_type_JavaUtilHashtable.get(paramString);
+    return (ResourcePluginInfo)this.b.get(paramString);
   }
   
   public void a()
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDisplayMetrics().widthPixels;
+    int j = this.a.getApp().getResources().getDisplayMetrics().widthPixels;
     int i = 0;
     boolean bool;
     if (j >= 480) {
@@ -313,22 +313,22 @@ public class AboutConfig
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.d = bool;
     a(false, true);
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.c.size())
     {
-      ResourcePluginListener.a((ResourcePluginListener)this.jdField_a_of_type_JavaUtilList.get(i), (byte)1, 2);
+      ResourcePluginListener.a((ResourcePluginListener)this.c.get(i), (byte)1, 2);
       i += 1;
     }
   }
   
   public void a(PluginConfigProxy paramPluginConfigProxy)
   {
-    if (!this.b) {
+    if (!this.e) {
       a(true, false);
     }
     ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_a_of_type_JavaUtilHashtable;
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = ((Hashtable)((Hashtable)localObject).clone()).values().iterator();
@@ -353,10 +353,10 @@ public class AboutConfig
       ((StringBuilder)localObject).append("sendAboutConfig");
       ((StringBuilder)localObject).append(localArrayList.size());
       ((StringBuilder)localObject).append(",hasLoadFromDB=");
-      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(this.e);
       QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
     }
-    paramPluginConfigProxy.a(32, localArrayList, this.jdField_a_of_type_MqqObserverServerConfigObserver);
+    paramPluginConfigProxy.a(32, localArrayList, this.f);
   }
   
   /* Error */
@@ -364,7 +364,7 @@ public class AboutConfig
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 41	com/tencent/mobileqq/config/AboutConfig:jdField_a_of_type_JavaUtilHashtable	Ljava/util/Hashtable;
+    //   1: getfield 45	com/tencent/mobileqq/config/AboutConfig:b	Ljava/util/Hashtable;
     //   4: astore_2
     //   5: aload_2
     //   6: ifnull +92 -> 98
@@ -372,42 +372,42 @@ public class AboutConfig
     //   10: ifnull +88 -> 98
     //   13: aload_2
     //   14: aload_1
-    //   15: getfield 53	com/tencent/mobileqq/data/ResourcePluginInfo:strPkgName	Ljava/lang/String;
-    //   18: invokevirtual 503	java/util/Hashtable:containsKey	(Ljava/lang/Object;)Z
+    //   15: getfield 93	com/tencent/mobileqq/data/ResourcePluginInfo:strPkgName	Ljava/lang/String;
+    //   18: invokevirtual 506	java/util/Hashtable:containsKey	(Ljava/lang/Object;)Z
     //   21: ifeq +77 -> 98
     //   24: aload_0
-    //   25: getfield 41	com/tencent/mobileqq/config/AboutConfig:jdField_a_of_type_JavaUtilHashtable	Ljava/util/Hashtable;
+    //   25: getfield 45	com/tencent/mobileqq/config/AboutConfig:b	Ljava/util/Hashtable;
     //   28: aload_1
-    //   29: getfield 53	com/tencent/mobileqq/data/ResourcePluginInfo:strPkgName	Ljava/lang/String;
-    //   32: invokevirtual 426	java/util/Hashtable:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   35: checkcast 46	com/tencent/mobileqq/data/ResourcePluginInfo
+    //   29: getfield 93	com/tencent/mobileqq/data/ResourcePluginInfo:strPkgName	Ljava/lang/String;
+    //   32: invokevirtual 430	java/util/Hashtable:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   35: checkcast 58	com/tencent/mobileqq/data/ResourcePluginInfo
     //   38: astore_2
     //   39: aload_2
     //   40: aload_1
-    //   41: getfield 91	com/tencent/mobileqq/data/ResourcePluginInfo:cLocalState	B
-    //   44: putfield 91	com/tencent/mobileqq/data/ResourcePluginInfo:cLocalState	B
+    //   41: getfield 395	com/tencent/mobileqq/data/ResourcePluginInfo:cLocalState	B
+    //   44: putfield 395	com/tencent/mobileqq/data/ResourcePluginInfo:cLocalState	B
     //   47: aload_2
     //   48: aload_1
-    //   49: getfield 97	com/tencent/mobileqq/data/ResourcePluginInfo:isNew	B
-    //   52: putfield 97	com/tencent/mobileqq/data/ResourcePluginInfo:isNew	B
+    //   49: getfield 320	com/tencent/mobileqq/data/ResourcePluginInfo:isNew	B
+    //   52: putfield 320	com/tencent/mobileqq/data/ResourcePluginInfo:isNew	B
     //   55: aload_0
-    //   56: getfield 31	com/tencent/mobileqq/config/AboutConfig:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   59: invokevirtual 507	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   62: invokevirtual 513	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   56: getfield 35	com/tencent/mobileqq/config/AboutConfig:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   59: invokevirtual 510	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   62: invokevirtual 516	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   65: astore_1
     //   66: aload_1
     //   67: aload_2
-    //   68: invokestatic 517	com/tencent/mobileqq/data/ResourcePluginInfo:persistOrReplace	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/data/ResourcePluginInfo;)V
+    //   68: invokestatic 520	com/tencent/mobileqq/data/ResourcePluginInfo:persistOrReplace	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/data/ResourcePluginInfo;)V
     //   71: aload_1
     //   72: ifnull +26 -> 98
     //   75: aload_1
-    //   76: invokevirtual 522	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   76: invokevirtual 525	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   79: return
     //   80: astore_2
     //   81: aload_1
     //   82: ifnull +7 -> 89
     //   85: aload_1
-    //   86: invokevirtual 522	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   86: invokevirtual 525	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   89: aload_2
     //   90: athrow
     //   91: aload_1
@@ -431,8 +431,8 @@ public class AboutConfig
   
   public void a(ResourcePluginListener paramResourcePluginListener)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramResourcePluginListener)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramResourcePluginListener);
+    if (!this.c.contains(paramResourcePluginListener)) {
+      this.c.add(paramResourcePluginListener);
     }
   }
   
@@ -447,7 +447,7 @@ public class AboutConfig
       ((StringBuilder)localObject).append(paramBoolean2);
       QLog.d("AboutConfig", 2, ((StringBuilder)localObject).toString());
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin())
+    if (!this.a.isLogin())
     {
       if (QLog.isColorLevel()) {
         QLog.d("AboutConfig", 2, "error happens: loadAboutConfig while current account is null, which means there is no logined account now");
@@ -456,7 +456,7 @@ public class AboutConfig
     }
     if (!paramBoolean1)
     {
-      localObject = this.jdField_a_of_type_JavaUtilHashtable;
+      localObject = this.b;
       if ((localObject != null) && (((Hashtable)localObject).size() > 0))
       {
         if (QLog.isColorLevel()) {
@@ -465,7 +465,7 @@ public class AboutConfig
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilHashtable = a();
+    this.b = c();
     Object localObject = new AboutConfig.1(this, paramBoolean2);
     if (paramBoolean2)
     {
@@ -477,7 +477,7 @@ public class AboutConfig
   
   public void b()
   {
-    Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+    Iterator localIterator = new ArrayList(this.c).iterator();
     while (localIterator.hasNext()) {
       ResourcePluginListener.a((ResourcePluginListener)localIterator.next(), (byte)5, 2);
     }
@@ -485,12 +485,12 @@ public class AboutConfig
   
   public void b(ResourcePluginListener paramResourcePluginListener)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramResourcePluginListener);
+    this.c.remove(paramResourcePluginListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.AboutConfig
  * JD-Core Version:    0.7.0.1
  */

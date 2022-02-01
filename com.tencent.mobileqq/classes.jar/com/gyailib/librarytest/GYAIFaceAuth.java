@@ -8,8 +8,7 @@ public class GYAIFaceAuth
   {
     try
     {
-      System.loadLibrary("YTCommon");
-      System.loadLibrary("gy_test_all");
+      System.loadLibrary("all_in_one_so");
       return;
     }
     catch (Error localError)
@@ -30,8 +29,6 @@ public class GYAIFaceAuth
   
   public native int processAllJni(CrossTesterConfig paramCrossTesterConfig);
   
-  public native int registerFaceLicenseTest(String paramString);
-  
   public void setNativePtr(long paramLong)
   {
     this.nativePtr = paramLong;
@@ -39,7 +36,7 @@ public class GYAIFaceAuth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.gyailib.librarytest.GYAIFaceAuth
  * JD-Core Version:    0.7.0.1
  */

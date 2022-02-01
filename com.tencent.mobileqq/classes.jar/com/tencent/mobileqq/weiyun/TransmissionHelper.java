@@ -22,8 +22,8 @@ import mqq.app.MobileQQ;
 
 public final class TransmissionHelper
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static volatile boolean jdField_a_of_type_Boolean = false;
+  private static String a;
+  private static volatile boolean b = false;
   
   public static DownloadFile a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt, String paramString4, String paramString5)
   {
@@ -57,16 +57,16 @@ public final class TransmissionHelper
   
   private static String a()
   {
-    if (jdField_a_of_type_JavaLangString == null)
+    if (a == null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("V1_AND_WY_VersionName_");
       localStringBuilder.append(TransFileUtil.getVersionCode());
       localStringBuilder.append("_ChannelId_");
       localStringBuilder.append("B");
-      jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      a = localStringBuilder.toString();
     }
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
   public static void a(int paramInt)
@@ -76,7 +76,7 @@ public final class TransmissionHelper
   
   public static void a(Application paramApplication, boolean paramBoolean)
   {
-    if (jdField_a_of_type_Boolean) {
+    if (b) {
       return;
     }
     WeiyunTransmissionGlobal.AppInfo localAppInfo = new WeiyunTransmissionGlobal.AppInfo(a(), 1000269, "mobileqq", TransFileUtil.getVersionCode(), 0, "unknown");
@@ -95,7 +95,7 @@ public final class TransmissionHelper
     WyDownloader.a().a(new TransmissionHelper.2(), paramApplication);
     WyDownloader.a().a(new TransmissionHelper.3());
     WeiyunTransmissionGlobal.getInstance().getUploadManager().addGlobalObserver(new TransmissionHelper.4());
-    jdField_a_of_type_Boolean = true;
+    b = true;
   }
   
   public static void a(boolean paramBoolean, long paramLong)
@@ -121,7 +121,7 @@ public final class TransmissionHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.TransmissionHelper
  * JD-Core Version:    0.7.0.1
  */

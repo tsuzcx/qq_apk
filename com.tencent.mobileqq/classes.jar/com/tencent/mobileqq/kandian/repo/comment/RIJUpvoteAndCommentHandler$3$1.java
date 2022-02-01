@@ -10,13 +10,13 @@ class RIJUpvoteAndCommentHandler$3$1
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c(0, this.jdField_a_of_type_JavaUtilList);
+    ReadInJoyLogicEngineEventDispatcher.a().c(0, this.a);
     ReadInJoyLogicEngineEventDispatcher.a().c(70, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.comment.RIJUpvoteAndCommentHandler.3.1
  * JD-Core Version:    0.7.0.1
  */

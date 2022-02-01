@@ -28,16 +28,16 @@ class AudioSenorManager$AccelerationEventListener
         f1 = f5 * 10.0F;
         f3 = f4 * 10.0F;
       }
-      if ((this.a.jdField_a_of_type_Float != -999.0F) || (this.a.b != -999.0F) || (this.a.c != -999.0F))
+      if ((this.a.d != -999.0F) || (this.a.e != -999.0F) || (this.a.f != -999.0F))
       {
-        f4 = Math.abs(this.a.jdField_a_of_type_Float - f2);
-        f5 = Math.abs(this.a.b - f1);
-        f6 = Math.abs(this.a.c - f3);
-        if ((f4 < AudioSenorManager.a(this.a)) && (f5 < AudioSenorManager.a(this.a)) && (f6 < AudioSenorManager.a(this.a)))
+        f4 = Math.abs(this.a.d - f2);
+        f5 = Math.abs(this.a.e - f1);
+        f6 = Math.abs(this.a.f - f3);
+        if ((f4 < AudioSenorManager.f(this.a)) && (f5 < AudioSenorManager.f(this.a)) && (f6 < AudioSenorManager.f(this.a)))
         {
-          if ((f4 < AudioSenorManager.b(this.a)) && (f5 < AudioSenorManager.b(this.a)) && (f6 < AudioSenorManager.b(this.a)))
+          if ((f4 < AudioSenorManager.g(this.a)) && (f5 < AudioSenorManager.g(this.a)) && (f6 < AudioSenorManager.g(this.a)))
           {
-            if ((this.a.jdField_a_of_type_Boolean) && (QLog.isColorLevel()))
+            if ((this.a.a) && (QLog.isColorLevel()))
             {
               paramSensorEvent = new StringBuilder();
               paramSensorEvent.append("AccelerationListener$onSensorChanged stop moving | x=");
@@ -53,15 +53,15 @@ class AudioSenorManager$AccelerationEventListener
               paramSensorEvent.append(" | az = ");
               paramSensorEvent.append(f6);
               paramSensorEvent.append(" | value=");
-              paramSensorEvent.append(AudioSenorManager.a(this.a));
+              paramSensorEvent.append(AudioSenorManager.f(this.a));
               QLog.d("AudioPlayer_SenorManager", 2, paramSensorEvent.toString());
             }
-            this.a.jdField_a_of_type_Boolean = false;
+            this.a.a = false;
           }
         }
         else
         {
-          if ((!this.a.jdField_a_of_type_Boolean) && (QLog.isColorLevel()))
+          if ((!this.a.a) && (QLog.isColorLevel()))
           {
             paramSensorEvent = new StringBuilder();
             paramSensorEvent.append("AccelerationListener$onSensorChanged moving | x=");
@@ -77,22 +77,22 @@ class AudioSenorManager$AccelerationEventListener
             paramSensorEvent.append(" | az = ");
             paramSensorEvent.append(f6);
             paramSensorEvent.append(" | value=");
-            paramSensorEvent.append(AudioSenorManager.a(this.a));
+            paramSensorEvent.append(AudioSenorManager.f(this.a));
             QLog.d("AudioPlayer_SenorManager", 2, paramSensorEvent.toString());
           }
-          this.a.jdField_a_of_type_Boolean = true;
+          this.a.a = true;
         }
       }
       paramSensorEvent = this.a;
-      paramSensorEvent.jdField_a_of_type_Float = f2;
-      paramSensorEvent.b = f1;
-      paramSensorEvent.c = f3;
+      paramSensorEvent.d = f2;
+      paramSensorEvent.e = f1;
+      paramSensorEvent.f = f3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioSenorManager.AccelerationEventListener
  * JD-Core Version:    0.7.0.1
  */

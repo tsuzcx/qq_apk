@@ -27,7 +27,7 @@ class WeiYunLogicCenter$10
       paramDiskFileDocDownloadAbsMsgRsp.append("]");
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, paramDiskFileDocDownloadAbsMsgRsp.toString());
     }
-    WeiYunLogicCenter.a(this.a).getFileManagerNotifyCenter().a(false, 278, new Object[] { Integer.valueOf(paramInt), paramString, "", "", "", "", Integer.valueOf(0) });
+    WeiYunLogicCenter.c(this.a).getFileManagerNotifyCenter().a(false, 278, new Object[] { Integer.valueOf(paramInt), paramString, "", "", "", "", Integer.valueOf(0) });
   }
   
   public void a(WeiyunPB.DiskFileDocDownloadAbsMsgRsp paramDiskFileDocDownloadAbsMsgRsp)
@@ -36,12 +36,12 @@ class WeiYunLogicCenter$10
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "get weiyun file PreviewAddress onSucceed");
     }
     String str = StringUtils.a(paramDiskFileDocDownloadAbsMsgRsp.downloadkey.get());
-    WeiYunLogicCenter.a(this.a).getFileManagerNotifyCenter().a(true, 278, new Object[] { Integer.valueOf(0), "", str, paramDiskFileDocDownloadAbsMsgRsp.cookie.get(), paramDiskFileDocDownloadAbsMsgRsp.downloadip.get(), paramDiskFileDocDownloadAbsMsgRsp.downloaddns.get(), Integer.valueOf(paramDiskFileDocDownloadAbsMsgRsp.downloadport.get()) });
+    WeiYunLogicCenter.c(this.a).getFileManagerNotifyCenter().a(true, 278, new Object[] { Integer.valueOf(0), "", str, paramDiskFileDocDownloadAbsMsgRsp.cookie.get(), paramDiskFileDocDownloadAbsMsgRsp.downloadip.get(), paramDiskFileDocDownloadAbsMsgRsp.downloaddns.get(), Integer.valueOf(paramDiskFileDocDownloadAbsMsgRsp.downloadport.get()) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter.10
  * JD-Core Version:    0.7.0.1
  */

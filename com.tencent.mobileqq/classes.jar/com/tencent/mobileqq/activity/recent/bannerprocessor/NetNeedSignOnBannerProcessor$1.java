@@ -20,19 +20,19 @@ class NetNeedSignOnBannerProcessor$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("click move to url:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("Q.recent.banner", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = new Intent(NetNeedSignOnBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorNetNeedSignOnBannerProcessor), QQBrowserDelegationActivity.class);
+    Object localObject = new Intent(NetNeedSignOnBannerProcessor.a(this.b), QQBrowserDelegationActivity.class);
     ((Intent)localObject).putExtra("injectrecommend", true);
-    NetNeedSignOnBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorNetNeedSignOnBannerProcessor).startActivity(((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString));
-    ReportController.a(NetNeedSignOnBannerProcessor.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorNetNeedSignOnBannerProcessor).getAppRuntime(), "CliOper", "", "", "0X8004029", "0X8004029", 0, 0, "", "", "", "");
+    NetNeedSignOnBannerProcessor.b(this.b).startActivity(((Intent)localObject).putExtra("url", this.a));
+    ReportController.a(NetNeedSignOnBannerProcessor.c(this.b).getAppRuntime(), "CliOper", "", "", "0X8004029", "0X8004029", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.NetNeedSignOnBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

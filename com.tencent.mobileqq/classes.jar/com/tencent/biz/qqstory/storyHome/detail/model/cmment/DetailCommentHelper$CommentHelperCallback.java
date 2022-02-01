@@ -4,9 +4,9 @@ import com.tencent.biz.qqstory.database.CommentEntry;
 
 public abstract interface DetailCommentHelper$CommentHelperCallback
 {
-  public abstract void K_();
-  
   public abstract void a();
+  
+  public abstract void a(int paramInt);
   
   public abstract void a(CommentEntry paramCommentEntry);
   
@@ -14,11 +14,11 @@ public abstract interface DetailCommentHelper$CommentHelperCallback
   
   public abstract void b(CommentEntry paramCommentEntry);
   
+  public abstract void bq_();
+  
   public abstract void c();
   
   public abstract void d();
-  
-  public abstract void e_(int paramInt);
 }
 
 

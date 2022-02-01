@@ -1,10 +1,10 @@
 package com.tencent.rtmp;
 
 import android.graphics.Bitmap;
-import com.tencent.liteav.basic.c.o;
+import com.tencent.liteav.basic.opengl.p;
 
 class a$1
-  implements o
+  implements p
 {
   a$1(a parama, TXLivePlayer.ITXSnapshotListener paramITXSnapshotListener) {}
   
@@ -15,7 +15,7 @@ class a$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.a.1
  * JD-Core Version:    0.7.0.1
  */

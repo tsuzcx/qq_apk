@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 public class a
 {
-  public long a;
+  public long a = 0L;
   public long b = 0L;
   public long c = 0L;
   private long d = 0L;
@@ -25,15 +25,14 @@ public class a
   
   public a(CombinationInfo paramCombinationInfo)
   {
-    this.jdField_a_of_type_Long = 0L;
     this.e = paramCombinationInfo;
   }
   
   private GamePredownloader.CombinationError a(String paramString1, String paramString2, int paramInt, a.a parama, ArrayList<a.c> paramArrayList)
   {
-    long l = parama.jdField_a_of_type_Long;
-    int i = parama.jdField_a_of_type_Int;
-    parama = parama.jdField_a_of_type_JavaLangString;
+    long l = parama.a;
+    int i = parama.b;
+    parama = parama.c;
     if ((paramInt != 0) && (paramInt != 1))
     {
       f.a("current server forbid to combine apk. status: %d", new Object[] { Integer.valueOf(paramInt) });
@@ -41,7 +40,7 @@ public class a
     }
     try
     {
-      byte[] arrayOfByte1 = c.a(parama);
+      byte[] arrayOfByte1 = c.b(parama);
       if (arrayOfByte1.length != i)
       {
         f.b("cloud channel tag's content size is not matched, ple check it.");
@@ -251,7 +250,7 @@ public class a
   
   public void a()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.a = System.currentTimeMillis();
   }
   
   public ArrayList<a.c> b(JSONObject paramJSONObject)
@@ -319,12 +318,12 @@ public class a
     HashMap localHashMap = new HashMap();
     localHashMap.put("event_name", "CombineApk");
     localHashMap.put("game_name", this.e.gamePackageName);
-    localHashMap.put("begin_time", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("load_time", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("begin_time", String.valueOf(this.a));
+    localHashMap.put("load_time", String.valueOf(this.a));
     localHashMap.put("end_time", String.valueOf(this.d));
     localHashMap.put("md5_time", String.valueOf(this.c));
-    localHashMap.put("request_time", String.valueOf(this.b - this.jdField_a_of_type_Long));
-    localHashMap.put("run_time", String.valueOf(this.d - this.jdField_a_of_type_Long));
+    localHashMap.put("request_time", String.valueOf(this.b - this.a));
+    localHashMap.put("run_time", String.valueOf(this.d - this.a));
     localHashMap.put("report_time", String.valueOf(System.currentTimeMillis() / 1000L));
     localHashMap.put("predown_file", String.valueOf(this.e.predownFilePath));
     localHashMap.put("file_name", String.valueOf(this.e.cdnUrl));
@@ -335,7 +334,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tgpa.vendorpd.a.a
  * JD-Core Version:    0.7.0.1
  */

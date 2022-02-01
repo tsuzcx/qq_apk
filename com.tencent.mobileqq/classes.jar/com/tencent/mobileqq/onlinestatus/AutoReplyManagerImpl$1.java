@@ -15,17 +15,17 @@ class AutoReplyManagerImpl$1
   {
     synchronized (AutoReplyManagerImpl.a(this.this$0))
     {
-      if (AutoReplyManagerImpl.a(this.this$0) == null)
+      if (AutoReplyManagerImpl.b(this.this$0) == null)
       {
-        List localList = AutoReplyManagerImpl.a(this.this$0).query(AutoReplyText.class);
+        List localList = AutoReplyManagerImpl.c(this.this$0).query(AutoReplyText.class);
         if ((localList != null) && (localList.size() > 0))
         {
-          if (AutoReplyManagerImpl.a(this.this$0) == null) {
+          if (AutoReplyManagerImpl.b(this.this$0) == null) {
             AutoReplyManagerImpl.a(this.this$0, new ArrayList());
           } else {
-            AutoReplyManagerImpl.a(this.this$0).clear();
+            AutoReplyManagerImpl.b(this.this$0).clear();
           }
-          AutoReplyManagerImpl.a(this.this$0).addAll(localList);
+          AutoReplyManagerImpl.b(this.this$0).addAll(localList);
         }
         if (QLog.isColorLevel()) {
           QLog.d("AutoReplyManager", 2, String.format("initAutoReplyListCache, textList: %s", new Object[] { localList }));
@@ -41,7 +41,7 @@ class AutoReplyManagerImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

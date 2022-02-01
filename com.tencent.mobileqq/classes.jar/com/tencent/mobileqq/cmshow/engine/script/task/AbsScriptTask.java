@@ -1,97 +1,113 @@
 package com.tencent.mobileqq.cmshow.engine.script.task;
 
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.script.Script;
+
 public abstract class AbsScriptTask
 {
-  private int jdField_a_of_type_Int;
-  private AbsScriptTask.RoleInfo jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptTaskAbsScriptTask$RoleInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private int a;
+  private String b;
+  private String c;
+  private boolean d;
+  private int e;
+  private AbsScriptTask.RoleInfo f;
+  private boolean g;
+  private IApolloResManager h;
   
-  public int a()
+  public AbsScriptTask(@NonNull IApolloResManager paramIApolloResManager)
   {
-    return this.jdField_a_of_type_Int;
+    this.h = paramIApolloResManager;
   }
   
-  public AbsScriptTask.RoleInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptTaskAbsScriptTask$RoleInfo;
-  }
+  public abstract Script a();
   
   public AbsScriptTask a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     return this;
   }
   
   public AbsScriptTask a(AbsScriptTask.RoleInfo paramRoleInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptTaskAbsScriptTask$RoleInfo = paramRoleInfo;
+    this.f = paramRoleInfo;
     return this;
   }
   
   public AbsScriptTask a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
   public AbsScriptTask a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     return this;
-  }
-  
-  public abstract String a();
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
   }
   
   public AbsScriptTask b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.e = paramInt;
     return this;
   }
   
   public AbsScriptTask b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
     return this;
   }
   
   public AbsScriptTask b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
     return this;
   }
   
-  public boolean b()
+  @NonNull
+  public IApolloResManager d()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.h;
   }
   
-  public String c()
+  public int e()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
-  public String d()
+  public String f()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
+  }
+  
+  public String g()
+  {
+    return this.c;
+  }
+  
+  public boolean h()
+  {
+    return this.d;
+  }
+  
+  public int i()
+  {
+    return this.e;
+  }
+  
+  public AbsScriptTask.RoleInfo j()
+  {
+    return this.f;
+  }
+  
+  public boolean k()
+  {
+    return this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.task.AbsScriptTask
  * JD-Core Version:    0.7.0.1
  */

@@ -15,36 +15,36 @@ class MyAppApi$18
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     LogUtility.c("MyAppApi", "---onConfirm--onClick");
-    if (!MyAppApi.b())
+    if (!MyAppApi.m())
     {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi;
-      paramDialogInterface.a = new MyAppApi.InstallParams(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.b = true;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidOsBundle;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Int = 2;
-      if (this.jdField_a_of_type_Boolean)
+      paramDialogInterface = this.g;
+      paramDialogInterface.j = new MyAppApi.InstallParams(paramDialogInterface);
+      this.g.j.b = true;
+      this.g.j.c = true;
+      this.g.j.d = null;
+      this.g.j.a = this.a;
+      this.g.j.e = 2;
+      if (this.b)
       {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0, "", "");
+        this.g.a(this.c, this.d, 0, "", "");
       }
       else
       {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi;
-        new MyAppApi.CopyAndInstallTask(paramDialogInterface, this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface.a).execute(new Void[0]);
+        paramDialogInterface = this.g;
+        new MyAppApi.CopyAndInstallTask(paramDialogInterface, this.c, paramDialogInterface.j).execute(new Void[0]);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+      this.g.a(this.c, this.e);
     }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.c = true;
-    StaticAnalyz.a("201", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+    this.g.l = true;
+    StaticAnalyz.a("201", StaticAnalyz.a(this.d, "NEWYYB"), this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.18
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public class QQGameHeadLayout
   
   protected int getLayoutId()
   {
-    return 2131559146;
+    return 2131624901;
   }
   
   public boolean isPined()
@@ -39,7 +39,7 @@ public class QQGameHeadLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.web.view.QQGameHeadLayout
  * JD-Core Version:    0.7.0.1
  */

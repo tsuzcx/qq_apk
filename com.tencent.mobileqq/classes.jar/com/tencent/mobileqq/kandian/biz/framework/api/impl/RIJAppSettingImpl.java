@@ -13,7 +13,7 @@ public final class RIJAppSettingImpl
 {
   public int getKanDianMode()
   {
-    return RIJAppSetting.a();
+    return RIJAppSetting.b();
   }
   
   @Nullable
@@ -29,7 +29,7 @@ public final class RIJAppSettingImpl
   
   public boolean isInReadInJoyTabFrame()
   {
-    return RIJAppSetting.b();
+    return RIJAppSetting.e();
   }
   
   public void updateNewKandianDeleteFlag(boolean paramBoolean)
@@ -39,7 +39,7 @@ public final class RIJAppSettingImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.api.impl.RIJAppSettingImpl
  * JD-Core Version:    0.7.0.1
  */

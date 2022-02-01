@@ -7,7 +7,7 @@ public abstract interface IPageIndicator
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.widget.IPageIndicator
  * JD-Core Version:    0.7.0.1
  */

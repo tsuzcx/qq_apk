@@ -30,60 +30,49 @@ import java.util.List;
 public class GameListRecyclerViewAdapter
   extends RecyclerView.Adapter<GameListRecyclerViewAdapter.GameViewHolder>
 {
-  protected int a;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private LruCache<String, URLDrawable> jdField_a_of_type_AndroidUtilLruCache = new LruCache(20);
   protected LayoutInflater a;
-  private View jdField_a_of_type_AndroidViewView;
-  protected IGameRoomPresenter a;
-  protected GameGridItemView.GameGridClickListener a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new GameListRecyclerViewAdapter.1(this);
-  protected List<GameItem> a;
-  protected boolean a;
-  private int jdField_b_of_type_Int;
-  private LruCache<String, URLDrawable> jdField_b_of_type_AndroidUtilLruCache = new LruCache(20);
+  protected List<GameItem> b = new ArrayList();
+  protected boolean c = false;
+  protected int d = 0;
+  protected IGameRoomPresenter e;
+  protected GameGridItemView.GameGridClickListener f;
+  private RecyclerView g;
+  private Context h;
+  private int i;
+  private Drawable j;
+  private View k;
+  private AnimatorSet l;
+  private LruCache<String, URLDrawable> m = new LruCache(20);
+  private LruCache<String, URLDrawable> n = new LruCache(20);
+  private Runnable o = new GameListRecyclerViewAdapter.1(this);
   
   public GameListRecyclerViewAdapter(Context paramContext, RecyclerView paramRecyclerView, GameGridItemView.GameGridClickListener paramGameGridClickListener, IGameRoomPresenter paramIGameRoomPresenter)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter = paramIGameRoomPresenter;
-    this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener = paramGameGridClickListener;
+    this.g = paramRecyclerView;
+    this.h = paramContext;
+    this.a = LayoutInflater.from(paramContext);
+    this.e = paramIGameRoomPresenter;
+    this.f = paramGameGridClickListener;
   }
   
   private void b()
   {
-    AnimatorSet localAnimatorSet = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    AnimatorSet localAnimatorSet = this.l;
     if ((localAnimatorSet != null) && (localAnimatorSet.isRunning()))
     {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.removeAllListeners();
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
+      this.l.removeAllListeners();
+      this.l.end();
     }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public GameItem a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (GameItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
+    this.l = null;
+    this.k = null;
+    this.g.removeCallbacks(this.o);
   }
   
   public GameListRecyclerViewAdapter.GameViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558698, null);
-    GameGridItemView localGameGridItemView = (GameGridItemView)paramViewGroup.findViewById(2131367442);
-    localGameGridItemView.a(this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener);
+    paramViewGroup = this.a.inflate(2131624315, null);
+    GameGridItemView localGameGridItemView = (GameGridItemView)paramViewGroup.findViewById(2131433945);
+    localGameGridItemView.a(this.f);
     return new GameListRecyclerViewAdapter.GameViewHolder(paramViewGroup, localGameGridItemView);
   }
   
@@ -93,7 +82,7 @@ public class GameListRecyclerViewAdapter
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("pauseAnimation: ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.d);
       QLog.i("GameListRecyclerViewAdapter", 2, localStringBuilder.toString());
     }
     b();
@@ -101,13 +90,13 @@ public class GameListRecyclerViewAdapter
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    int i = GameRoomViewLayoutParamsDef.r;
-    int j = ViewUtils.a(4.0F);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setPadding(GameRoomViewLayoutParamsDef.r, GameRoomViewLayoutParamsDef.s, i - j, GameRoomViewLayoutParamsDef.t);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new GridLayoutManager(this.jdField_a_of_type_AndroidContentContext, paramInt));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this);
+    this.i = paramInt;
+    int i1 = GameRoomViewLayoutParamsDef.r;
+    int i2 = ViewUtils.dip2px(4.0F);
+    this.g.setPadding(GameRoomViewLayoutParamsDef.r, GameRoomViewLayoutParamsDef.s, i1 - i2, GameRoomViewLayoutParamsDef.t);
+    this.g.setLayoutManager(new GridLayoutManager(this.h, paramInt));
+    this.g.setHasFixedSize(true);
+    this.g.setAdapter(this);
   }
   
   public void a(GameListRecyclerViewAdapter.GameViewHolder paramGameViewHolder, int paramInt)
@@ -117,44 +106,44 @@ public class GameListRecyclerViewAdapter
     {
       ((ViewGroup.LayoutParams)localObject1).width = GameRoomViewLayoutParamsDef.p;
       ((ViewGroup.LayoutParams)localObject1).height = GameRoomViewLayoutParamsDef.q;
-      int i = this.jdField_b_of_type_Int;
-      if (paramInt % i == 0) {
-        i = 51;
-      } else if ((paramInt + 1) % i == 0) {
-        i = 53;
+      int i1 = this.i;
+      if (paramInt % i1 == 0) {
+        i1 = 51;
+      } else if ((paramInt + 1) % i1 == 0) {
+        i1 = 53;
       } else {
-        i = 49;
+        i1 = 49;
       }
-      ((FrameLayout.LayoutParams)localObject1).gravity = i;
+      ((FrameLayout.LayoutParams)localObject1).gravity = i1;
     }
     paramGameViewHolder.itemView.setPadding(0, 0, 0, GameRoomViewLayoutParamsDef.u);
-    GameItem localGameItem = (GameItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    GameItem localGameItem = (GameItem)this.b.get(paramInt);
     Object localObject2;
-    if (!TextUtils.isEmpty(localGameItem.l)) {
-      localObject2 = localGameItem.l;
+    if (!TextUtils.isEmpty(localGameItem.n)) {
+      localObject2 = localGameItem.n;
     } else {
-      localObject2 = localGameItem.c;
+      localObject2 = localGameItem.d;
     }
     URLDrawable localURLDrawable;
     if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      localURLDrawable = (URLDrawable)this.jdField_a_of_type_AndroidUtilLruCache.get(localObject2);
+      localURLDrawable = (URLDrawable)this.m.get(localObject2);
       localObject1 = localURLDrawable;
       if (localURLDrawable == null)
       {
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+        if (this.j == null)
         {
-          localObject1 = AVGameUtil.a("avgame_list_card_bg_small@2x.png");
+          localObject1 = AVGameUtil.c("avgame_list_card_bg_small@2x.png");
           if (localObject1 != null) {
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable((Bitmap)localObject1);
+            this.j = new BitmapDrawable((Bitmap)localObject1);
           } else {
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+            this.j = URLDrawableHelperConstants.a;
           }
         }
-        localObject1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        localObject1 = this.j;
         localObject1 = URLDrawable.getDrawable((String)localObject2, (Drawable)localObject1, (Drawable)localObject1);
         ((URLDrawable)localObject1).startDownload();
-        this.jdField_a_of_type_AndroidUtilLruCache.put(localObject2, localObject1);
+        this.m.put(localObject2, localObject1);
       }
       localObject2 = localObject1;
     }
@@ -162,31 +151,31 @@ public class GameListRecyclerViewAdapter
     {
       localObject2 = null;
     }
-    if (!TextUtils.isEmpty(localGameItem.m))
+    if (!TextUtils.isEmpty(localGameItem.s))
     {
-      localURLDrawable = (URLDrawable)this.jdField_b_of_type_AndroidUtilLruCache.get(localGameItem.m);
+      localURLDrawable = (URLDrawable)this.n.get(localGameItem.s);
       localObject1 = localURLDrawable;
       if (localURLDrawable == null)
       {
-        localObject1 = URLDrawable.getDrawable(localGameItem.m, URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable, URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        localObject1 = URLDrawable.getDrawable(localGameItem.s, URLDrawableHelperConstants.a, URLDrawableHelperConstants.a);
         ((URLDrawable)localObject1).startDownload();
-        this.jdField_b_of_type_AndroidUtilLruCache.put(localGameItem.m, localObject1);
+        this.n.put(localGameItem.s, localObject1);
       }
     }
     else
     {
       localObject1 = null;
     }
-    paramGameViewHolder.a.a(localGameItem, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, paramInt, (URLDrawable)localObject1, (URLDrawable)localObject2);
+    paramGameViewHolder.a.a(localGameItem, this.c, this.d, paramInt, (URLDrawable)localObject1, (URLDrawable)localObject2);
     paramGameViewHolder.itemView.setScaleX(1.0F);
     paramGameViewHolder.itemView.setScaleY(1.0F);
-    if (paramInt == this.jdField_a_of_type_Int)
+    if (paramInt == this.d)
     {
       b();
-      this.jdField_a_of_type_AndroidViewView = paramGameViewHolder.itemView;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+      this.k = paramGameViewHolder.itemView;
+      this.g.postDelayed(this.o, 500L);
     }
-    else if (this.jdField_a_of_type_AndroidViewView == paramGameViewHolder.itemView)
+    else if (this.k == paramGameViewHolder.itemView)
     {
       b();
     }
@@ -206,27 +195,35 @@ public class GameListRecyclerViewAdapter
       localStringBuilder.append(paramInt);
       QLog.i("GameListRecyclerViewAdapter", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.b.addAll(paramList);
     }
     a(paramBoolean, paramInt, true);
   }
   
   public void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramBoolean1;
+    this.d = paramInt;
     b();
     notifyDataSetChanged();
     if (paramBoolean2) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollToPosition(paramInt);
+      this.g.smoothScrollToPosition(paramInt);
     }
+  }
+  
+  public GameItem b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return (GameItem)this.b.get(paramInt);
+    }
+    return null;
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
 }
 

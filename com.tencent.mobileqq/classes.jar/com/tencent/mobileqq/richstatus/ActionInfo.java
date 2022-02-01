@@ -4,31 +4,30 @@ import java.util.ArrayList;
 
 public class ActionInfo
 {
-  public int a;
-  public String a;
-  public ArrayList<ActionInfo> a;
-  public boolean a;
-  public int b = 1;
-  public String b;
+  public boolean a = true;
+  public int b;
   public String c;
   public String d;
   public String e;
   public String f;
-  public String g;
+  public int g = 1;
   public String h;
   public String i;
   public String j;
-  public String k;
+  public ArrayList<ActionInfo> k;
+  public String l;
+  public String m;
+  public String n;
+  public String o;
   
   public ActionInfo(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.ActionInfo
  * JD-Core Version:    0.7.0.1
  */

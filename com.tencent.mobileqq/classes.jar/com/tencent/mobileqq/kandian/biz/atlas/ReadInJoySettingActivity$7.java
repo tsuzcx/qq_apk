@@ -13,23 +13,23 @@ class ReadInJoySettingActivity$7
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     ReadInJoySettingActivity.a(this.a, paramBoolean ^ true);
-    if ((ReadInJoySettingActivity.a(this.a).isPressed()) && (!this.a.c))
+    if ((ReadInJoySettingActivity.b(this.a).isPressed()) && (!this.a.i))
     {
       if (!paramBoolean)
       {
         paramCompoundButton = this.a;
-        ReadInJoySettingActivity.b(paramCompoundButton, ReadInJoySettingActivity.a(paramCompoundButton));
+        ReadInJoySettingActivity.e(paramCompoundButton, ReadInJoySettingActivity.a(paramCompoundButton));
         return;
       }
-      ReadInJoySettingActivity.a(this.a).show();
+      ReadInJoySettingActivity.f(this.a).show();
       return;
     }
-    this.a.c = false;
+    this.a.i = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.ReadInJoySettingActivity.7
  * JD-Core Version:    0.7.0.1
  */

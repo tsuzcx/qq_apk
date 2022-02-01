@@ -17,27 +17,27 @@ import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 final class AbsBaseWebViewActivity$DownloadQQBrowserExtension
   extends ProxyWebViewClientExtension
 {
-  private ArrayMap<String, Object> jdField_a_of_type_AndroidSupportV4UtilArrayMap;
-  private final TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
+  private final TouchWebView b;
+  private ArrayMap<String, Object> c;
   
   public AbsBaseWebViewActivity$DownloadQQBrowserExtension(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, TouchWebView paramTouchWebView)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
+    this.b = paramTouchWebView;
   }
   
   private void a(Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
+    WebViewPluginEngine localWebViewPluginEngine = this.b.getPluginEngine();
     if (localWebViewPluginEngine != null)
     {
-      if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap == null) {
-        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(4);
+      if (this.c == null) {
+        this.c = new ArrayMap(4);
       }
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("performanceData", paramObject1);
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("requestData", paramObject2);
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("responseData", paramObject3);
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("errorCode", paramObject4);
-      localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 64L, this.jdField_a_of_type_AndroidSupportV4UtilArrayMap);
+      this.c.put("performanceData", paramObject1);
+      this.c.put("requestData", paramObject2);
+      this.c.put("responseData", paramObject3);
+      this.c.put("errorCode", paramObject4);
+      localWebViewPluginEngine.a(this.b.getUrl(), 64L, this.c);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -47,22 +47,22 @@ final class AbsBaseWebViewActivity$DownloadQQBrowserExtension
   
   public void computeScroll(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.computeScroll(paramView);
+    this.b.computeScroll(paramView);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.dispatchTouchEvent(paramMotionEvent, paramView);
+    return this.b.dispatchTouchEvent(paramMotionEvent, paramView);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onInterceptTouchEvent(paramMotionEvent, paramView);
+    return this.b.onInterceptTouchEvent(paramMotionEvent, paramView);
   }
   
   public Object onMiscCallBack(String paramString, Bundle paramBundle)
   {
-    SwiftBrowserTBSHandler localSwiftBrowserTBSHandler = (SwiftBrowserTBSHandler)this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.mComponentsProvider.a(16);
+    SwiftBrowserTBSHandler localSwiftBrowserTBSHandler = (SwiftBrowserTBSHandler)this.a.mComponentsProvider.a(16);
     if (localSwiftBrowserTBSHandler != null) {
       return localSwiftBrowserTBSHandler.a(paramString, paramBundle);
     }
@@ -79,7 +79,7 @@ final class AbsBaseWebViewActivity$DownloadQQBrowserExtension
   
   public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
+    this.b.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
   }
   
   public void onPrefetchResourceHit(boolean paramBoolean)
@@ -97,28 +97,28 @@ final class AbsBaseWebViewActivity$DownloadQQBrowserExtension
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+    this.b.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onTouchEvent(paramMotionEvent, paramView);
+    return this.b.onTouchEvent(paramMotionEvent, paramView);
   }
   
   public void onUrlChange(String paramString1, String paramString2)
   {
     SwiftBrowserCookieMonster.d();
-    this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.onUrlChange(paramString1, paramString2);
+    this.a.onUrlChange(paramString1, paramString2);
   }
   
   public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
   {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
+    return this.b.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewbase.AbsBaseWebViewActivity.DownloadQQBrowserExtension
  * JD-Core Version:    0.7.0.1
  */

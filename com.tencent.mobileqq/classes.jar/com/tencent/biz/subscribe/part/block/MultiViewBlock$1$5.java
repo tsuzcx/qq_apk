@@ -7,8 +7,8 @@ class MultiViewBlock$1$5
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$1.a.a().notifyItemRangeRemoved(this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$1.a.c(this.jdField_a_of_type_Int), this.b);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$1.a.a().notifyItemRangeChanged(this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$1.a.c(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$1.a.a().getItemCount() - this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$1.a.c(this.jdField_a_of_type_Int));
+    this.c.a.B().notifyItemRangeRemoved(this.c.a.f(this.a), this.b);
+    this.c.a.B().notifyItemRangeChanged(this.c.a.f(this.a), this.c.a.B().getItemCount() - this.c.a.f(this.a));
   }
 }
 

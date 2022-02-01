@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameDelSessionRecord;
+import com.tencent.mobileqq.gamecenter.msginfo.GameDelSessionRecord;
 import com.tencent.mobileqq.gamecenter.protocols.GameCenterUnissoHandler;
 import com.tencent.mobileqq.gamecenter.utils.GameMsgUtil;
 import com.tencent.mobileqq.persistence.Entity;
@@ -24,21 +24,20 @@ public class GameDelSessionDataHelper
   extends BaseDataHelper
   implements IDataVisitor
 {
-  public static final String b;
-  private Map<String, GameDelSessionRecord> a;
+  public static final String c;
+  private Map<String, GameDelSessionRecord> d = Collections.synchronizedMap(new HashMap());
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(GameCenterUnissoHandler.b);
     localStringBuilder.append("DelGameSessionDataHelper");
-    b = localStringBuilder.toString();
+    c = localStringBuilder.toString();
   }
   
   public GameDelSessionDataHelper(EntityManager paramEntityManager)
   {
     super(paramEntityManager);
-    this.jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
   }
   
   public static void a(String paramString)
@@ -47,7 +46,7 @@ public class GameDelSessionDataHelper
     {
       if (QLog.isColorLevel())
       {
-        localObject = b;
+        localObject = c;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[delGameSession], json:");
         localStringBuilder.append(paramString);
@@ -71,7 +70,7 @@ public class GameDelSessionDataHelper
     }
     catch (Throwable paramString)
     {
-      QLog.e(b, 1, paramString, new Object[0]);
+      QLog.e(c, 1, paramString, new Object[0]);
     }
   }
   
@@ -82,7 +81,7 @@ public class GameDelSessionDataHelper
   
   private static void b(String paramString)
   {
-    String str = b;
+    String str = c;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[handleDelSession], sessionId:");
     localStringBuilder.append(paramString);
@@ -94,8 +93,8 @@ public class GameDelSessionDataHelper
   {
     try
     {
-      QLog.i(b, 1, "[initCache]");
-      Object localObject1 = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(GameDelSessionRecord.class);
+      QLog.i(c, 1, "[initCache]");
+      Object localObject1 = (ArrayList)this.b.query(GameDelSessionRecord.class);
       if (localObject1 != null)
       {
         if (((ArrayList)localObject1).size() == 0) {
@@ -109,14 +108,14 @@ public class GameDelSessionDataHelper
           {
             localObject2 = (GameDelSessionRecord)localObject2;
             if (!TextUtils.isEmpty(((GameDelSessionRecord)localObject2).mUin)) {
-              this.jdField_a_of_type_JavaUtilMap.put(((GameDelSessionRecord)localObject2).mUin, localObject2);
+              this.d.put(((GameDelSessionRecord)localObject2).mUin, localObject2);
             }
           }
         }
-        localObject1 = b;
+        localObject1 = c;
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("delSession.size:");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilMap.size());
+        ((StringBuilder)localObject2).append(this.d.size());
         QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
         return;
       }
@@ -124,13 +123,13 @@ public class GameDelSessionDataHelper
     }
     catch (Throwable localThrowable)
     {
-      QLog.e(b, 1, localThrowable.getMessage());
+      QLog.e(c, 1, localThrowable.getMessage());
     }
   }
   
   public boolean b(Entity paramEntity)
   {
-    QLog.i(b, 1, "[addDelItem]");
+    QLog.i(c, 1, "[addDelItem]");
     try
     {
       if (!(paramEntity instanceof GameDelSessionRecord)) {
@@ -140,22 +139,22 @@ public class GameDelSessionDataHelper
       if (TextUtils.isEmpty(localGameDelSessionRecord.mUin)) {
         return false;
       }
-      if ((GameDelSessionRecord)this.jdField_a_of_type_JavaUtilMap.get(localGameDelSessionRecord.mUin) != null)
+      if ((GameDelSessionRecord)this.d.get(localGameDelSessionRecord.mUin) != null)
       {
-        QLog.i(b, 1, "item already exists.");
+        QLog.i(c, 1, "item already exists.");
         return false;
       }
       if (super.a(paramEntity))
       {
-        this.jdField_a_of_type_JavaUtilMap.put(localGameDelSessionRecord.mUin, localGameDelSessionRecord);
-        QLog.i(b, 1, "Add succeeds.");
+        this.d.put(localGameDelSessionRecord.mUin, localGameDelSessionRecord);
+        QLog.i(c, 1, "Add succeeds.");
         return true;
       }
       return false;
     }
     catch (Throwable paramEntity)
     {
-      QLog.e(b, 1, paramEntity, new Object[0]);
+      QLog.e(c, 1, paramEntity, new Object[0]);
     }
     return false;
   }
@@ -171,22 +170,22 @@ public class GameDelSessionDataHelper
       if (TextUtils.isEmpty(((GameDelSessionRecord)localObject).mUin)) {
         return false;
       }
-      if ((GameDelSessionRecord)this.jdField_a_of_type_JavaUtilMap.get(((GameDelSessionRecord)localObject).mUin) == null) {
+      if ((GameDelSessionRecord)this.d.get(((GameDelSessionRecord)localObject).mUin) == null) {
         return false;
       }
       ((GameDelSessionRecord)localObject).setStatus(1001);
-      String str = b;
+      String str = c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[removeDelItem], start to remove. size:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap.size());
+      localStringBuilder.append(this.d.size());
       QLog.i(str, 1, localStringBuilder.toString());
       if (a(this, paramEntity, "mUin=?", new String[] { ((GameDelSessionRecord)localObject).mUin }))
       {
-        this.jdField_a_of_type_JavaUtilMap.remove(((GameDelSessionRecord)localObject).mUin);
-        paramEntity = b;
+        this.d.remove(((GameDelSessionRecord)localObject).mUin);
+        paramEntity = c;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Remove succeeds. size:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilMap.size());
+        ((StringBuilder)localObject).append(this.d.size());
         QLog.i(paramEntity, 1, ((StringBuilder)localObject).toString());
         return true;
       }
@@ -194,7 +193,7 @@ public class GameDelSessionDataHelper
     }
     catch (Throwable paramEntity)
     {
-      QLog.e(b, 1, paramEntity, new Object[0]);
+      QLog.e(c, 1, paramEntity, new Object[0]);
     }
     return false;
   }
@@ -205,12 +204,12 @@ public class GameDelSessionDataHelper
       return false;
     }
     paramEntity = (GameDelSessionRecord)paramEntity;
-    return (GameDelSessionRecord)this.jdField_a_of_type_JavaUtilMap.get(paramEntity.mUin) != null;
+    return (GameDelSessionRecord)this.d.get(paramEntity.mUin) != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.GameDelSessionDataHelper
  * JD-Core Version:    0.7.0.1
  */

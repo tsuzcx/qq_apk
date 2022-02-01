@@ -15,15 +15,15 @@ class ComboLockManager$2
   public void run()
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131720121);
-    String str2 = localBaseActivity.getString(2131720118);
-    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-    DialogUtil.a(localBaseActivity, 0, str1, str2, 2131720119, 2131720120, localOnClickListener, localOnClickListener).show();
+    String str1 = this.a.getString(2131917747);
+    String str2 = localBaseActivity.getString(2131917744);
+    DialogInterface.OnClickListener localOnClickListener = this.b;
+    DialogUtil.a(localBaseActivity, 0, str1, str2, 2131917745, 2131917746, localOnClickListener, localOnClickListener).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.ComboLockManager.2
  * JD-Core Version:    0.7.0.1
  */

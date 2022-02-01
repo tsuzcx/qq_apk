@@ -13,33 +13,33 @@ class WeiShiCacheManager$8
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= WeiShiCacheManager.b(this.this$0))
+    if (this.a.size() >= WeiShiCacheManager.e(this.this$0))
     {
-      int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int > WeiShiCacheManager.b(this.this$0)) {
-        i = this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int;
-      } else if (this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int > 0) {
-        i = WeiShiCacheManager.b(this.this$0);
+      int i = this.a.size();
+      if (this.a.size() - this.b > WeiShiCacheManager.e(this.this$0)) {
+        i = this.a.size() - this.b;
+      } else if (this.a.size() - this.b > 0) {
+        i = WeiShiCacheManager.e(this.this$0);
       }
-      int j = i - WeiShiCacheManager.b(this.this$0);
+      int j = i - WeiShiCacheManager.e(this.this$0);
       while (j < i)
       {
-        localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(j));
+        localArrayList.add(this.a.get(j));
         j += 1;
       }
     }
-    localArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    localArrayList.addAll(this.a);
     stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = new stSimpleGetFeedListRsp();
     localstSimpleGetFeedListRsp.feeds = localArrayList;
     WeiShiCacheManager localWeiShiCacheManager = this.this$0;
-    if (WeiShiCacheManager.a(localWeiShiCacheManager, localstSimpleGetFeedListRsp, WeiShiCacheManager.b(localWeiShiCacheManager), localArrayList.size())) {
-      WSSharePreferencesUtil.a("key_ws_cache_v", WeishiUtils.c());
+    if (WeiShiCacheManager.a(localWeiShiCacheManager, localstSimpleGetFeedListRsp, WeiShiCacheManager.d(localWeiShiCacheManager), localArrayList.size())) {
+      WSSharePreferencesUtil.a("key_ws_cache_v", WeishiUtils.l());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.8
  * JD-Core Version:    0.7.0.1
  */

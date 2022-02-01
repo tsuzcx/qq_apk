@@ -12,14 +12,14 @@ import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
 public class WheelPickerLayout
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int = 0;
-  private WheelPickerLayout.PickerViewAdapter jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$PickerViewAdapter;
-  private WheelPickerLayout.ViewStyle jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$ViewStyle;
-  private WheelPickerLayout.WheelPickListener jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$WheelPickListener;
-  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new WheelPickerLayout.1(this);
-  private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = new WheelPickerLayout.2(this);
-  private WheelView[] jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
-  private WheelPickerLayout.InnerAdapter[] jdField_a_of_type_ArrayOfComTencentMobileqqTroopWidgetWheelPickerLayout$InnerAdapter;
+  private WheelPickerLayout.ViewStyle a;
+  private int b = 0;
+  private WheelView[] c;
+  private WheelPickerLayout.InnerAdapter[] d;
+  private WheelPickerLayout.WheelPickListener e;
+  private WheelPickerLayout.PickerViewAdapter f;
+  private AdapterView.OnItemSelectedListener g = new WheelPickerLayout.1(this);
+  private VerticalGallery.OnSelectViewDataUpdateListener h = new WheelPickerLayout.2(this);
   
   public WheelPickerLayout(Context paramContext)
   {
@@ -38,13 +38,13 @@ public class WheelPickerLayout
       if (paramInt == 0)
       {
         paramView = (WheelTextView)paramView;
-        paramView.setTextSize(1, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$ViewStyle.b);
-        paramView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$ViewStyle.c);
+        paramView.setTextSize(1, this.a.b);
+        paramView.setTextColor(this.a.c);
         return;
       }
       paramView = (WheelTextView)paramView;
-      paramView.setTextSize(1, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$ViewStyle.e);
-      paramView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$ViewStyle.f);
+      paramView.setTextSize(1, this.a.e);
+      paramView.setTextColor(this.a.f);
     }
   }
   
@@ -60,35 +60,20 @@ public class WheelPickerLayout
   private void a(WheelView paramWheelView, int paramInt)
   {
     paramWheelView.setTag(Integer.valueOf(paramInt));
-    WheelPickerLayout.InnerAdapter localInnerAdapter = new WheelPickerLayout.InnerAdapter(this, paramInt, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$ViewStyle.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[paramInt] = paramWheelView;
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqTroopWidgetWheelPickerLayout$InnerAdapter[paramInt] = localInnerAdapter;
+    WheelPickerLayout.InnerAdapter localInnerAdapter = new WheelPickerLayout.InnerAdapter(this, paramInt, this.a.a);
+    this.c[paramInt] = paramWheelView;
+    this.d[paramInt] = localInnerAdapter;
     paramWheelView.setAdapter(localInnerAdapter);
-    paramWheelView.setOnItemSelectedListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener);
-    paramWheelView.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener);
+    paramWheelView.setOnItemSelectedListener(this.g);
+    paramWheelView.setOnSelectViewDataUpdateListener(this.h);
     paramWheelView.setOnEndMovementListener(new WheelPickerLayout.EndMovementListener(this, paramInt));
-  }
-  
-  public int a(int paramInt)
-  {
-    if (paramInt >= 0)
-    {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
-      if (paramInt < localObject.length) {
-        return localObject[paramInt].getSelectedItemPosition();
-      }
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("Error column index ");
-    ((StringBuilder)localObject).append(paramInt);
-    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   public void a(int paramInt)
   {
     if (paramInt >= 0)
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqTroopWidgetWheelPickerLayout$InnerAdapter;
+      localObject = this.d;
       if (paramInt < localObject.length)
       {
         localObject[paramInt].notifyDataSetChanged();
@@ -103,18 +88,18 @@ public class WheelPickerLayout
   
   public void a(WheelPickerLayout.PickerViewAdapter paramPickerViewAdapter, WheelPickerLayout.ViewStyle paramViewStyle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$ViewStyle = paramViewStyle;
+    this.a = paramViewStyle;
     if (paramViewStyle != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$PickerViewAdapter = paramPickerViewAdapter;
-      this.jdField_a_of_type_Int = getChildCount();
-      int i = this.jdField_a_of_type_Int;
+      this.f = paramPickerViewAdapter;
+      this.b = getChildCount();
+      int i = this.b;
       if (i > 0)
       {
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView = new WheelView[i];
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqTroopWidgetWheelPickerLayout$InnerAdapter = new WheelPickerLayout.InnerAdapter[i];
+        this.c = new WheelView[i];
+        this.d = new WheelPickerLayout.InnerAdapter[i];
         i = 0;
-        while (i < this.jdField_a_of_type_Int)
+        while (i < this.b)
         {
           a((WheelView)getChildAt(i), i);
           i += 1;
@@ -123,7 +108,7 @@ public class WheelPickerLayout
       }
       paramPickerViewAdapter = new StringBuilder();
       paramPickerViewAdapter.append("Unsupportted column count ");
-      paramPickerViewAdapter.append(this.jdField_a_of_type_Int);
+      paramPickerViewAdapter.append(this.b);
       throw new RuntimeException(paramPickerViewAdapter.toString());
     }
     paramPickerViewAdapter = new RuntimeException("ViewStyle can not be null!");
@@ -133,16 +118,31 @@ public class WheelPickerLayout
     }
   }
   
+  public int b(int paramInt)
+  {
+    if (paramInt >= 0)
+    {
+      localObject = this.c;
+      if (paramInt < localObject.length) {
+        return localObject[paramInt].getSelectedItemPosition();
+      }
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Error column index ");
+    ((StringBuilder)localObject).append(paramInt);
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+  }
+  
   public void setPickListener(WheelPickerLayout.WheelPickListener paramWheelPickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$WheelPickListener = paramWheelPickListener;
+    this.e = paramWheelPickListener;
   }
   
   public void setSelection(int paramInt1, int paramInt2)
   {
     if (paramInt1 >= 0)
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
+      localObject = this.c;
       if (paramInt1 < localObject.length)
       {
         localObject[paramInt1].setSelection(paramInt2, true);
@@ -157,7 +157,7 @@ public class WheelPickerLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.WheelPickerLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public class TkdAdModuleImpl
   implements ITKDAdModule
 {
   public static String a = "TkdAdModuleImpl";
-  protected SoftReference<HippyEngineContext> a;
+  protected SoftReference<HippyEngineContext> b;
   
   private int a(String paramString)
   {
@@ -71,7 +71,7 @@ public class TkdAdModuleImpl
   
   public void goBack(String paramString, Promise paramPromise)
   {
-    paramString = this.jdField_a_of_type_JavaLangRefSoftReference;
+    paramString = this.b;
     if (paramString == null) {
       return;
     }
@@ -86,7 +86,7 @@ public class TkdAdModuleImpl
   
   public void init(HippyEngineContext paramHippyEngineContext)
   {
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramHippyEngineContext);
+    this.b = new SoftReference(paramHippyEngineContext);
   }
   
   public void isSupportQQMiniGame(Promise paramPromise)
@@ -101,7 +101,7 @@ public class TkdAdModuleImpl
   
   public void loadUrl(String paramString, HippyMap paramHippyMap)
   {
-    paramHippyMap = this.jdField_a_of_type_JavaLangRefSoftReference;
+    paramHippyMap = this.b;
     if (paramHippyMap == null) {
       return;
     }
@@ -114,7 +114,7 @@ public class TkdAdModuleImpl
     } else {
       ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).jumpToUrl(paramHippyMap.getGlobalConfigs().getContext(), paramString);
     }
-    paramHippyMap = jdField_a_of_type_JavaLangString;
+    paramHippyMap = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("loadUrl url:");
     localStringBuilder.append(paramString);
@@ -125,7 +125,7 @@ public class TkdAdModuleImpl
   {
     if (paramPromise != null)
     {
-      paramPromise = this.jdField_a_of_type_JavaLangRefSoftReference;
+      paramPromise = this.b;
       if (paramPromise == null) {
         return;
       }
@@ -137,7 +137,7 @@ public class TkdAdModuleImpl
       {
         localObject = paramHippyMap.getString("link");
         int i = a(paramHippyMap.getString("refer"));
-        paramHippyMap = jdField_a_of_type_JavaLangString;
+        paramHippyMap = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("openQQMiniGameByLink link:");
         localStringBuilder.append((String)localObject);
@@ -149,7 +149,7 @@ public class TkdAdModuleImpl
       }
       catch (Exception paramHippyMap)
       {
-        paramPromise = jdField_a_of_type_JavaLangString;
+        paramPromise = a;
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append("openQQMiniGameByLink error : ");
         ((StringBuilder)localObject).append(paramHippyMap.getMessage());
@@ -160,12 +160,12 @@ public class TkdAdModuleImpl
   
   public void runApp(String paramString)
   {
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("run app params:");
     localStringBuilder.append(paramString);
     QLog.d((String)localObject, 2, localStringBuilder.toString());
-    localObject = this.jdField_a_of_type_JavaLangRefSoftReference;
+    localObject = this.b;
     if (localObject == null) {
       return;
     }
@@ -201,7 +201,7 @@ public class TkdAdModuleImpl
   
   public void setTitle(HippyMap paramHippyMap, Promise paramPromise)
   {
-    paramPromise = this.jdField_a_of_type_JavaLangRefSoftReference;
+    paramPromise = this.b;
     if (paramPromise == null) {
       return;
     }
@@ -219,7 +219,7 @@ public class TkdAdModuleImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.hippy.TkdAdModuleImpl
  * JD-Core Version:    0.7.0.1
  */

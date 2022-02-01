@@ -15,14 +15,26 @@ import mqq.app.MobileQQ;
 
 public class ProcessMonitor
 {
-  private static ProcessMonitor jdField_a_of_type_ComTencentAvgameIpcProcessMonitor;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "AVGameActivity_doOnCreate", "AVGameActivity_doOnNewIntent", "ACTION_MAIN_TO_AV_GAME_ENTERING" };
-  private long jdField_a_of_type_Long = 0L;
-  private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private long b = 0L;
+  private static ProcessMonitor a;
+  private static final String[] b = { "AVGameActivity_doOnCreate", "AVGameActivity_doOnNewIntent", "ACTION_MAIN_TO_AV_GAME_ENTERING" };
+  private long c = 0L;
+  private long d = 0L;
+  private boolean e = false;
+  private final List<String> f = new ArrayList();
   
-  static float a()
+  public static ProcessMonitor a()
+  {
+    if (a == null) {
+      try
+      {
+        a = new ProcessMonitor();
+      }
+      finally {}
+    }
+    return a;
+  }
+  
+  static float e()
   {
     Object localObject = MobileQQ.sMobileQQ.getApplicationContext().getSharedPreferences("AV_GAME_MONITOR", 4);
     float f2 = 1.0F;
@@ -64,29 +76,6 @@ public class ProcessMonitor
     return f1;
   }
   
-  public static ProcessMonitor a()
-  {
-    if (jdField_a_of_type_ComTencentAvgameIpcProcessMonitor == null) {
-      try
-      {
-        jdField_a_of_type_ComTencentAvgameIpcProcessMonitor = new ProcessMonitor();
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentAvgameIpcProcessMonitor;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ProcessMonitor", 2, "onProcessStart");
-    }
-    ProcessMonitor.SaveDataTask localSaveDataTask = new ProcessMonitor.SaveDataTask(null);
-    localSaveDataTask.jdField_a_of_type_Boolean = false;
-    localSaveDataTask.b = true;
-    ThreadManager.excute(localSaveDataTask, 64, null, true);
-  }
-  
   public void a(String paramString)
   {
     Object localObject;
@@ -98,11 +87,11 @@ public class ProcessMonitor
       ((StringBuilder)localObject).append("]");
       QLog.i("ProcessMonitor", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    if (!this.jdField_a_of_type_Boolean)
+    this.c = SystemClock.elapsedRealtime();
+    this.f.add(paramString);
+    if (!this.e)
     {
-      localObject = jdField_a_of_type_ArrayOfJavaLangString;
+      localObject = b;
       int j = localObject.length;
       int i = 0;
       while (i < j)
@@ -124,17 +113,17 @@ public class ProcessMonitor
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
+    this.e = true;
+    Object localObject1 = b;
     int j = localObject1.length;
     int i = 0;
     while (i < j)
     {
       Object localObject2 = localObject1[i];
-      if (this.jdField_a_of_type_JavaUtilList.contains(localObject2))
+      if (this.f.contains(localObject2))
       {
         bool = true;
         break label65;
@@ -144,7 +133,7 @@ public class ProcessMonitor
     boolean bool = false;
     label65:
     localObject1 = new ProcessMonitor.SaveDataTask(null);
-    ((ProcessMonitor.SaveDataTask)localObject1).jdField_a_of_type_Boolean = bool;
+    ((ProcessMonitor.SaveDataTask)localObject1).a = bool;
     ((ProcessMonitor.SaveDataTask)localObject1).b = false;
     if (paramBoolean)
     {
@@ -154,9 +143,38 @@ public class ProcessMonitor
     ThreadManager.excute((Runnable)localObject1, 16, null, true);
   }
   
-  boolean a()
+  public void b()
   {
-    Object localObject = IAVGameBusinessCtrl.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("ProcessMonitor", 2, "onProcessStart");
+    }
+    ProcessMonitor.SaveDataTask localSaveDataTask = new ProcessMonitor.SaveDataTask(null);
+    localSaveDataTask.a = false;
+    localSaveDataTask.b = true;
+    ThreadManager.excute(localSaveDataTask, 64, null, true);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateExitGameTime, from[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.i("ProcessMonitor", 2, localStringBuilder.toString());
+    }
+    this.d = SystemClock.elapsedRealtime();
+  }
+  
+  public void c()
+  {
+    a(true);
+  }
+  
+  boolean d()
+  {
+    Object localObject = IAVGameBusinessCtrl.p();
     boolean bool2 = false;
     if (localObject == null)
     {
@@ -165,8 +183,8 @@ public class ProcessMonitor
       }
       return false;
     }
-    localObject = ((IAVGameBusinessCtrl)localObject).a();
-    if ((localObject != null) && (!((AVGameSession)localObject).a()))
+    localObject = ((IAVGameBusinessCtrl)localObject).j();
+    if ((localObject != null) && (!((AVGameSession)localObject).d()))
     {
       if (QLog.isColorLevel()) {
         QLog.i("ProcessMonitor", 2, "checkAndExitAVGame, in game now.");
@@ -186,8 +204,8 @@ public class ProcessMonitor
       return false;
     }
     long l2 = SystemClock.elapsedRealtime();
-    long l1 = Math.abs(l2 - this.b);
-    l2 = Math.abs(l2 - this.jdField_a_of_type_Long);
+    long l1 = Math.abs(l2 - this.d);
+    l2 = Math.abs(l2 - this.c);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -207,24 +225,6 @@ public class ProcessMonitor
       }
     }
     return bool1;
-  }
-  
-  public void b()
-  {
-    a(true);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("updateExitGameTime, from[");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append("]");
-      QLog.i("ProcessMonitor", 2, localStringBuilder.toString());
-    }
-    this.b = SystemClock.elapsedRealtime();
   }
 }
 

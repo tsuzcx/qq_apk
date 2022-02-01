@@ -73,14 +73,14 @@ public class IntimateInfo$PrefetchMutualMarkInfo
     if ((localPrefetchMutualMarkInfo.gradeResourceInfo != null) && (localPrefetchMutualMarkInfo.gradeResourceInfo.bytes_static_url.has()) && (!TextUtils.isEmpty(localPrefetchMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8()))) {
       localPrefetchMutualMarkInfo.iconStaticUrl = localPrefetchMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8();
     }
-    localPrefetchMutualMarkInfo.iconStaticUrl = MutualMarkUtils.b(localPrefetchMutualMarkInfo.iconStaticUrl);
+    localPrefetchMutualMarkInfo.iconStaticUrl = MutualMarkUtils.g(localPrefetchMutualMarkInfo.iconStaticUrl);
     if ((paramPrefetchMutualMarkInfo.bytes_min_ver.has()) && (!TextUtils.isEmpty(paramPrefetchMutualMarkInfo.bytes_min_ver.get().toStringUtf8()))) {
       localPrefetchMutualMarkInfo.minVersion = paramPrefetchMutualMarkInfo.bytes_min_ver.get().toStringUtf8();
     }
     if ((paramPrefetchMutualMarkInfo.bytes_max_ver.has()) && (!TextUtils.isEmpty(paramPrefetchMutualMarkInfo.bytes_max_ver.get().toStringUtf8()))) {
       localPrefetchMutualMarkInfo.maxVersion = paramPrefetchMutualMarkInfo.bytes_max_ver.get().toStringUtf8();
     }
-    if (!MutualMarkUtils.a(localPrefetchMutualMarkInfo.minVersion, localPrefetchMutualMarkInfo.maxVersion))
+    if (!MutualMarkUtils.b(localPrefetchMutualMarkInfo.minVersion, localPrefetchMutualMarkInfo.maxVersion))
     {
       QLog.i("IntimateInfo", 1, "oidb_0xcf4.PrefetchMutualMarkInfo，isCurrentVersionShouldShow=false");
       return null;
@@ -149,7 +149,7 @@ public class IntimateInfo$PrefetchMutualMarkInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.IntimateInfo.PrefetchMutualMarkInfo
  * JD-Core Version:    0.7.0.1
  */

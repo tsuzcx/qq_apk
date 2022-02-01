@@ -12,16 +12,16 @@ class DownloaderGetCodeClient$1
   
   public void run()
   {
-    if (((Boolean)DownloaderGetCodeClient.a(this.this$0).get(DownloaderGetCodeClient.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))).booleanValue())
+    if (((Boolean)DownloaderGetCodeClient.a(this.this$0).get(DownloaderGetCodeClient.a(this.this$0, this.a, this.b))).booleanValue())
     {
       LogUtility.c("DownloaderGetCodeClient", "last request not back,retry ......");
-      QIPCClientHelper.getInstance().callServer("Module_DownloaderGetCodeServer", "DownloaderWriteCodeIPC_Action__GetCode", this.jdField_a_of_type_AndroidOsBundle, DownloaderGetCodeClient.a(this.this$0));
+      QIPCClientHelper.getInstance().callServer("Module_DownloaderGetCodeServer", "DownloaderWriteCodeIPC_Action__GetCode", this.c, DownloaderGetCodeClient.b(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloaderGetCodeClient.1
  * JD-Core Version:    0.7.0.1
  */

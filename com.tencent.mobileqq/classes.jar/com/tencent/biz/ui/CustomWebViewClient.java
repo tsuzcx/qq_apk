@@ -13,11 +13,11 @@ import com.tencent.smtt.sdk.WebViewClient;
 public class CustomWebViewClient
   extends WebViewClient
 {
-  protected WebViewPluginEngine a;
+  protected WebViewPluginEngine b;
   
   public CustomWebViewClient(WebViewPluginEngine paramWebViewPluginEngine)
   {
-    this.a = paramWebViewPluginEngine;
+    this.b = paramWebViewPluginEngine;
   }
   
   public void onLoadResource(WebView paramWebView, String paramString)
@@ -35,7 +35,7 @@ public class CustomWebViewClient
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    paramWebView = this.a;
+    paramWebView = this.b;
     if (paramWebView != null) {
       paramWebView.a(paramString, 8589934594L, null);
     }
@@ -45,7 +45,7 @@ public class CustomWebViewClient
   {
     JsInjector.getInstance().onPageStarted(paramWebView);
     super.onPageStarted(paramWebView, paramString, paramBitmap);
-    paramWebView = this.a;
+    paramWebView = this.b;
     if (paramWebView != null) {
       paramWebView.a(paramString, 8589934593L, null);
     }
@@ -64,7 +64,7 @@ public class CustomWebViewClient
       paramWebView.append(paramString2);
       QLog.d("WEBVIEWCHECK", 2, paramWebView.toString());
     }
-    paramWebView = this.a;
+    paramWebView = this.b;
     if (paramWebView != null) {
       paramWebView.a(paramString2, 8589934595L, paramInt);
     }
@@ -72,7 +72,7 @@ public class CustomWebViewClient
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
   {
-    paramWebView = this.a;
+    paramWebView = this.b;
     if (paramWebView != null) {
       try
       {
@@ -92,7 +92,7 @@ public class CustomWebViewClient
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    paramWebView = this.a;
+    paramWebView = this.b;
     if ((paramWebView != null) && (paramWebView.a(paramString))) {
       return true;
     }
@@ -104,7 +104,7 @@ public class CustomWebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.CustomWebViewClient
  * JD-Core Version:    0.7.0.1
  */

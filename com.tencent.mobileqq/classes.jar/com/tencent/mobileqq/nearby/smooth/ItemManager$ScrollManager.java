@@ -12,7 +12,7 @@ class ItemManager$ScrollManager
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AbsListView.OnScrollListener localOnScrollListener = this.a.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
+    AbsListView.OnScrollListener localOnScrollListener = this.a.a.c();
     if (localOnScrollListener != null) {
       localOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
@@ -20,7 +20,7 @@ class ItemManager$ScrollManager
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    int i = this.a.jdField_b_of_type_Int;
+    int i = this.a.g;
     int j = 0;
     if ((i == 2) && (paramInt != 2)) {
       i = 1;
@@ -29,25 +29,25 @@ class ItemManager$ScrollManager
     }
     if (i != 0)
     {
-      localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this.a);
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      if (this.a.c) {
+      localObject = this.a.c.obtainMessage(1, this.a);
+      this.a.c.removeMessages(1);
+      if (this.a.i) {
         i = j;
       } else {
         i = 550;
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, i);
-      this.a.jdField_b_of_type_Boolean = true;
+      this.a.c.sendMessageDelayed((Message)localObject, i);
+      this.a.h = true;
     }
     else if (paramInt == 2)
     {
       localObject = this.a;
-      ((ItemManager)localObject).jdField_b_of_type_Boolean = false;
-      ((ItemManager)localObject).jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      ((ItemManager)localObject).h = false;
+      ((ItemManager)localObject).c.removeMessages(1);
     }
     Object localObject = this.a;
-    ((ItemManager)localObject).jdField_b_of_type_Int = paramInt;
-    localObject = ((ItemManager)localObject).jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
+    ((ItemManager)localObject).g = paramInt;
+    localObject = ((ItemManager)localObject).a.c();
     if (localObject != null) {
       ((AbsListView.OnScrollListener)localObject).onScrollStateChanged(paramAbsListView, paramInt);
     }
@@ -55,7 +55,7 @@ class ItemManager$ScrollManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemManager.ScrollManager
  * JD-Core Version:    0.7.0.1
  */

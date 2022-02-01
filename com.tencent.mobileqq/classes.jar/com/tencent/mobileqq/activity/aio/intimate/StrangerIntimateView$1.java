@@ -16,9 +16,9 @@ class StrangerIntimateView$1
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_JavaLangString)))
+    if ((this.this$0.a != null) && (!TextUtils.isEmpty(this.this$0.d)))
     {
-      IntimateInfo localIntimateInfo = ((IntimateInfoManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.INTIMATE_INFO_MANAGER)).a(this.this$0.jdField_a_of_type_JavaLangString);
+      IntimateInfo localIntimateInfo = ((IntimateInfoManager)this.this$0.a.getManager(QQManagerFactory.INTIMATE_INFO_MANAGER)).a(this.this$0.d);
       if (localIntimateInfo != null)
       {
         StrangerIntimateView.a(this.this$0, localIntimateInfo);
@@ -28,14 +28,14 @@ class StrangerIntimateView$1
         StrangerIntimateView.a(this.this$0).sendMessage(localMessage);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, String.format("init cache friendUin: %s, intimateInfo: %s", new Object[] { this.this$0.jdField_a_of_type_JavaLangString, localIntimateInfo }));
+        QLog.d("intimate_relationship", 2, String.format("init cache friendUin: %s, intimateInfo: %s", new Object[] { this.this$0.d, localIntimateInfo }));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.StrangerIntimateView.1
  * JD-Core Version:    0.7.0.1
  */

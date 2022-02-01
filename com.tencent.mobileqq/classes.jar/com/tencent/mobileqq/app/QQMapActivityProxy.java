@@ -10,17 +10,17 @@ import mqq.app.AccountNotMatchException;
 
 public class QQMapActivityProxy
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new QQMapActivityProxy.1(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new QQMapActivityProxy.2(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Context a;
+  private QQAppInterface b;
+  private BroadcastReceiver c = new QQMapActivityProxy.1(this);
+  private LBSObserver d = new QQMapActivityProxy.2(this);
   
   public QQMapActivityProxy(String paramString)
   {
     try
     {
-      this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramString));
+      this.a = BaseApplication.getContext();
+      this.b = ((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramString));
     }
     catch (AccountNotMatchException paramString)
     {
@@ -40,14 +40,14 @@ public class QQMapActivityProxy
     paramString.addAction("com.tencent.mobileqq.getLbsShareSearch");
     paramString.addAction("com.tencent.mobileqq.getLbsShareShop");
     paramString.addAction("com.tencent.mobileqq.getShareShopDetail");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString);
+    this.a.registerReceiver(this.c, paramString);
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
       paramString.append("QQMapActivityProxy-create, registerReceiver:");
       paramString.append(hashCode());
       paramString.append(", ");
-      paramString.append(this.jdField_a_of_type_AndroidContentBroadcastReceiver.hashCode());
+      paramString.append(this.c.hashCode());
       QLog.d("QQMapActivityProxy", 2, paramString.toString());
     }
   }
@@ -61,13 +61,13 @@ public class QQMapActivityProxy
       ((StringBuilder)localObject).append(hashCode());
       QLog.d("QQMapActivityProxy", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject = this.b;
     if (localObject != null) {
-      ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
+      ((QQAppInterface)localObject).removeObserver(this.d);
     }
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.a.unregisterReceiver(this.c);
       return;
     }
     catch (Exception localException)
@@ -84,7 +84,7 @@ public class QQMapActivityProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQMapActivityProxy
  * JD-Core Version:    0.7.0.1
  */

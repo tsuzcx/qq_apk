@@ -15,7 +15,7 @@ public class TroopOneWayAction
     super(paramQQAppInterface, paramContext);
   }
   
-  private void a()
+  private void c()
   {
     String str = b("buddyuin");
     if (!str.isEmpty())
@@ -29,7 +29,7 @@ public class TroopOneWayAction
         QLog.d("TroopOneWayAction", 2, localStringBuilder.toString());
       }
       TroopWithCommonFriendsFragment.a(str);
-      TroopWithCommonFriendsFragment.a(this.a, 1);
+      TroopWithCommonFriendsFragment.a(this.b, 1);
       ReportController.b(null, "dc00898", "", "", "0X800AD20", "0X800AD20", 0, 0, "0", "0", "", "");
     }
   }
@@ -38,7 +38,7 @@ public class TroopOneWayAction
   {
     try
     {
-      a();
+      c();
       return true;
     }
     catch (Exception localException)
@@ -47,14 +47,14 @@ public class TroopOneWayAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("TroopOneWayAction", 1, localStringBuilder.toString());
-      b_("TroopOneWayAction");
+      h_("TroopOneWayAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.TroopOneWayAction
  * JD-Core Version:    0.7.0.1
  */

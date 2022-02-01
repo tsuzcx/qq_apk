@@ -11,12 +11,12 @@ class TroopFileItemBuilder$5$1
   
   public void run()
   {
-    this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    this.a.this$0.d.getMessageFacade().g(this.a.this$0.f.b, this.a.this$0.f.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder.5.1
  * JD-Core Version:    0.7.0.1
  */

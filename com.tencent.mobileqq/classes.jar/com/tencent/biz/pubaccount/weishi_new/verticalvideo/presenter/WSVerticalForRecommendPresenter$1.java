@@ -12,13 +12,13 @@ class WSVerticalForRecommendPresenter$1
   
   public void run()
   {
-    WSVerticalRequestParams localWSVerticalRequestParams = new WSVerticalRequestParams(2, this.jdField_a_of_type_Boolean, this.b).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageContract$View.c()).a(WSVerticalDataUtil.a(this.b, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageContract$View.a()));
+    WSVerticalRequestParams localWSVerticalRequestParams = new WSVerticalRequestParams(2, this.a, this.b).a(this.c.m()).a(WSVerticalDataUtil.a(this.b, this.c.g()));
     WSVerticalDataManager.a().a(localWSVerticalRequestParams, this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForRecommendPresenter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ public class ImageViewModel
     super(paramString, paramView);
   }
   
-  private ImageView.ScaleType a(String paramString)
+  private ImageView.ScaleType b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return ImageView.ScaleType.CENTER_CROP;
@@ -32,26 +32,26 @@ public class ImageViewModel
   
   protected void a(String paramString)
   {
-    if (!URLUtil.a(paramString)) {
+    if (!URLUtil.e(paramString)) {
       return;
     }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
+    if ((this.j > 0) && (this.k > 0))
     {
-      localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
-      localURLDrawableOptions.mRequestHeight = this.b;
+      localURLDrawableOptions.mRequestWidth = this.j;
+      localURLDrawableOptions.mRequestHeight = this.k;
     }
     localURLDrawableOptions.mPlayGifImage = false;
     paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
     if (paramString != null) {
-      ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(paramString);
+      ((ImageView)this.h).setImageDrawable(paramString);
     }
   }
   
   protected void a(String paramString1, String paramString2)
   {
     super.a(paramString1, paramString2);
-    if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {
+    if (!(this.h instanceof ImageView)) {
       return;
     }
     if ("content".equals(paramString1))
@@ -60,7 +60,7 @@ public class ImageViewModel
       return;
     }
     if ("scale_type".equals(paramString1)) {
-      ((ImageView)this.jdField_a_of_type_AndroidViewView).setScaleType(a(paramString2));
+      ((ImageView)this.h).setScaleType(b(paramString2));
     }
   }
   
@@ -71,7 +71,7 @@ public class ImageViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.jsoninflate.model.ImageViewModel
  * JD-Core Version:    0.7.0.1
  */

@@ -49,7 +49,34 @@ public class TroopFileInfo$FileStatus
     return -1;
   }
   
-  public static String a(int paramInt)
+  public static boolean a(int paramInt)
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramInt != 0)
+    {
+      bool1 = bool2;
+      if (paramInt != 1)
+      {
+        bool1 = bool2;
+        if (paramInt != 2)
+        {
+          if (paramInt == 3) {
+            return true;
+          }
+          bool1 = false;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 8) || (paramInt == 10) || (paramInt == 9);
+  }
+  
+  public static String c(int paramInt)
   {
     switch (paramInt)
     {
@@ -84,37 +111,10 @@ public class TroopFileInfo$FileStatus
     }
     return "SCANNING";
   }
-  
-  public static boolean a(int paramInt)
-  {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (paramInt != 0)
-    {
-      bool1 = bool2;
-      if (paramInt != 1)
-      {
-        bool1 = bool2;
-        if (paramInt != 2)
-        {
-          if (paramInt == 3) {
-            return true;
-          }
-          bool1 = false;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 8) || (paramInt == 10) || (paramInt == 9);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFileInfo.FileStatus
  * JD-Core Version:    0.7.0.1
  */

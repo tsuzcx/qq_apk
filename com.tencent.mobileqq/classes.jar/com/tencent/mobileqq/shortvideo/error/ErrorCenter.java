@@ -6,23 +6,23 @@ import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 public class ErrorCenter
   implements ErrorCode, ReportError
 {
-  private static ErrorCenter jdField_a_of_type_ComTencentMobileqqShortvideoErrorErrorCenter = new ErrorCenter();
-  private static String jdField_a_of_type_JavaLangString;
-  private ErrorCenter.ErrorHandleCallback jdField_a_of_type_ComTencentMobileqqShortvideoErrorErrorCenter$ErrorHandleCallback;
+  private static ErrorCenter a = new ErrorCenter();
+  private static String b;
+  private ErrorCenter.ErrorHandleCallback c;
   
   private ErrorCenter()
   {
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+    b = getClass().getSimpleName();
   }
   
   public static ErrorCenter a()
   {
-    return jdField_a_of_type_ComTencentMobileqqShortvideoErrorErrorCenter;
+    return a;
   }
   
   private void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2)
   {
-    ErrorCenter.ErrorHandleCallback localErrorHandleCallback = this.jdField_a_of_type_ComTencentMobileqqShortvideoErrorErrorCenter$ErrorHandleCallback;
+    ErrorCenter.ErrorHandleCallback localErrorHandleCallback = this.c;
     if (localErrorHandleCallback != null)
     {
       if (paramBoolean1)
@@ -34,14 +34,9 @@ public class ErrorCenter
     }
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoErrorErrorCenter$ErrorHandleCallback = null;
-  }
-  
   public void a(ErrorCenter.ErrorHandleCallback paramErrorHandleCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoErrorErrorCenter$ErrorHandleCallback = paramErrorHandleCallback;
+    this.c = paramErrorHandleCallback;
   }
   
   public boolean a(Object paramObject, int paramInt, String paramString)
@@ -54,7 +49,7 @@ public class ErrorCenter
         return true;
       }
       paramObject = new StringBuilder();
-      paramObject.append(HardCodeUtil.a(2131704316));
+      paramObject.append(HardCodeUtil.a(2131902230));
       paramObject.append(2001);
       paramObject.append("）");
       a(true, 2001, paramObject.toString(), true);
@@ -62,10 +57,15 @@ public class ErrorCenter
     }
     return bool1;
   }
+  
+  public void b()
+  {
+    this.c = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.error.ErrorCenter
  * JD-Core Version:    0.7.0.1
  */

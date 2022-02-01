@@ -13,14 +13,14 @@ class AddFriendVerifyActivity$35$1
   {
     if (paramInt == 1)
     {
-      this.a.this$0.a.cancel();
+      this.a.this$0.E.cancel();
       this.a.this$0.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.35.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,15 +16,15 @@ class TroopAssistantActivity$14
     if (!this.a.isFinishing())
     {
       TroopAssistantActivity localTroopAssistantActivity = this.a;
-      localTroopAssistantActivity.c = false;
-      if (localTroopAssistantActivity.a != null)
+      localTroopAssistantActivity.f = false;
+      if (localTroopAssistantActivity.k != null)
       {
-        this.a.a.a(4);
+        this.a.k.a(4);
         this.a.d();
         this.a.c();
       }
-      if (TroopAssistantManager.a().c()) {
-        TroopAssistantManager.a().f(this.a.app);
+      if (TroopAssistantManager.a().d()) {
+        TroopAssistantManager.a().i(this.a.app);
       }
       TroopAssistantActivity.b(this.a);
     }
@@ -33,7 +33,7 @@ class TroopAssistantActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.14
  * JD-Core Version:    0.7.0.1
  */

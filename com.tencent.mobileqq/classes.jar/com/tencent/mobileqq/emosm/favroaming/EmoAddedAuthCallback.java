@@ -37,22 +37,22 @@ import tencent.im.msg.im_msg_body.RichText;
 public class EmoAddedAuthCallback
   implements Handler.Callback, UpCallBack
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  CustomEmotionData jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
-  Object jdField_a_of_type_JavaLangObject;
-  private WeakReference<EmoAddedAuthCallback.UploadListener> jdField_a_of_type_JavaLangRefWeakReference;
+  BaseQQAppInterface a;
+  Context b;
+  CustomEmotionData c;
+  Object d;
+  int e;
+  Handler f;
+  private WeakReference<EmoAddedAuthCallback.UploadListener> g;
   
   public EmoAddedAuthCallback(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, CustomEmotionData paramCustomEmotionData, Object paramObject, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData = paramCustomEmotionData;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.a = paramBaseQQAppInterface;
+    this.b = paramContext;
+    this.c = paramCustomEmotionData;
+    this.d = paramObject;
+    this.e = paramInt;
+    this.f = new Handler(Looper.getMainLooper(), this);
   }
   
   public static void b(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, int paramInt)
@@ -64,21 +64,21 @@ public class EmoAddedAuthCallback
       {
         if (!((Activity)paramContext).isFinishing())
         {
-          paramBaseQQAppInterface = DialogUtil.a(paramContext, 0, "温馨提示", paramContext.getString(2131689647), "取消", "立即开通", paramBaseQQAppInterface, paramBaseQQAppInterface);
+          paramBaseQQAppInterface = DialogUtil.a(paramContext, 0, "温馨提示", paramContext.getString(2131886258), "取消", "立即开通", paramBaseQQAppInterface, paramBaseQQAppInterface);
           if (paramBaseQQAppInterface != null) {
             paramBaseQQAppInterface.show();
           }
         }
       }
       else {
-        QQToast.a(paramContext, paramContext.getString(2131689648), 0).b(2131299168);
+        QQToast.makeText(paramContext, paramContext.getString(2131886259), 0).show(2131299920);
       }
       EmoticonOperateReport.reportEmoticonOperateMonitorAddStatus("2007", 1);
       return;
     }
     if (paramInt == 2)
     {
-      QQToast.a(paramContext, paramContext.getString(2131689648), 0).b(2131299168);
+      QQToast.makeText(paramContext, paramContext.getString(2131886259), 0).show(2131299920);
       EmoticonOperateReport.reportEmoticonOperateMonitorAddStatus("2007", 1);
     }
   }
@@ -90,15 +90,15 @@ public class EmoAddedAuthCallback
   
   protected void a()
   {
-    ReportDialog localReportDialog = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131756189);
-    localReportDialog.setContentView(2131561586);
-    Button localButton1 = (Button)localReportDialog.findViewById(2131365605);
-    Button localButton2 = (Button)localReportDialog.findViewById(2131365609);
+    ReportDialog localReportDialog = new ReportDialog(this.b, 2131953338);
+    localReportDialog.setContentView(2131627949);
+    Button localButton1 = (Button)localReportDialog.findViewById(2131431836);
+    Button localButton2 = (Button)localReportDialog.findViewById(2131431840);
     localButton1.setOnClickListener(new EmoAddedAuthCallback.1(this, localReportDialog));
     localButton2.setOnClickListener(new EmoAddedAuthCallback.2(this, localReportDialog));
-    if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing())
+    if (!((Activity)this.b).isFinishing())
     {
-      EmotionSharedPreUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentUin(), false);
+      EmotionSharedPreUtils.a(this.b, this.a.getCurrentUin(), false);
       localReportDialog.show();
     }
   }
@@ -107,11 +107,11 @@ public class EmoAddedAuthCallback
   {
     if (400010 == paramInt)
     {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.f.sendEmptyMessage(1);
       return;
     }
     if (400011 == paramInt) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      this.f.sendEmptyMessage(2);
     }
   }
   
@@ -122,7 +122,7 @@ public class EmoAddedAuthCallback
   
   public void a(EmoAddedAuthCallback.UploadListener paramUploadListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramUploadListener);
+    this.g = new WeakReference(paramUploadListener);
   }
   
   public void a(UpCallBack.SendResult paramSendResult) {}
@@ -132,27 +132,27 @@ public class EmoAddedAuthCallback
     if (QLog.isColorLevel()) {
       QLog.e("EmoAddedAuthCallback", 2, "add custom emotion result success");
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.e;
     Object localObject;
     if (i == 0)
     {
-      if ((!this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.isMarkFace) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5)))
+      if ((!this.c.isMarkFace) && (TextUtils.isEmpty(this.c.md5)))
       {
-        localObject = MD5.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath);
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = HexUtil.bytes2HexStr((byte[])localObject);
-        localObject = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getEntityManagerFactory().createEntityManager();
+        localObject = MD5.getFileMd5(this.c.emoPath);
+        this.c.md5 = HexUtil.bytes2HexStr((byte[])localObject);
+        localObject = this.a.getEntityManagerFactory().createEntityManager();
         if (localObject != null)
         {
-          ((EntityManager)localObject).update(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+          ((EntityManager)localObject).update(this.c);
           ((EntityManager)localObject).close();
         }
       }
-      ((IFavroamingDBManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IFavroamingDBManagerService.class)).insertCustomEmotion(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      if (this.jdField_a_of_type_JavaLangObject != null) {
-        ((IEmosmService)QRoute.api(IEmosmService.class)).handleComicStructMsg(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      ((IFavroamingDBManagerService)this.a.getRuntimeService(IFavroamingDBManagerService.class)).insertCustomEmotion(this.c);
+      if (this.d != null) {
+        ((IEmosmService)QRoute.api(IEmosmService.class)).handleComicStructMsg(this.a, this.d, this.c);
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-      localObject = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getHandler(((IEmosmService)QRoute.api(IEmosmService.class)).getChatActivityClass());
+      this.f.sendEmptyMessage(3);
+      localObject = this.a.getHandler(((IEmosmService)QRoute.api(IEmosmService.class)).getChatActivityClass());
       if (localObject != null) {
         ((MqqHandler)localObject).obtainMessage(10).sendToTarget();
       }
@@ -164,30 +164,30 @@ public class EmoAddedAuthCallback
       }
       if (2 == i)
       {
-        ((IFavroamingDBManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IFavroamingDBManagerService.class)).insertCustomEmotion(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-        if (2 == this.jdField_a_of_type_Int)
+        ((IFavroamingDBManagerService)this.a.getRuntimeService(IFavroamingDBManagerService.class)).insertCustomEmotion(this.c);
+        if (2 == this.e)
         {
-          localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+          localObject = this.g;
           if (localObject != null)
           {
             localObject = (EmoAddedAuthCallback.UploadListener)((WeakReference)localObject).get();
             if (localObject != null) {
-              ((EmoAddedAuthCallback.UploadListener)localObject).a(0, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
+              ((EmoAddedAuthCallback.UploadListener)localObject).a(0, this.c.md5);
             }
           }
         }
       }
       else if (3 == i)
       {
-        ((IFavroamingDBManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IFavroamingDBManagerService.class)).insertCustomEmotion(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+        ((IFavroamingDBManagerService)this.a.getRuntimeService(IFavroamingDBManagerService.class)).insertCustomEmotion(this.c);
+        this.f.sendEmptyMessage(3);
       }
     }
   }
   
   protected void b(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.g;
     if (localObject != null)
     {
       localObject = (EmoAddedAuthCallback.UploadListener)((WeakReference)localObject).get();
@@ -195,22 +195,22 @@ public class EmoAddedAuthCallback
       {
         if (400010 == paramInt)
         {
-          ((EmoAddedAuthCallback.UploadListener)localObject).a(2, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
+          ((EmoAddedAuthCallback.UploadListener)localObject).a(2, this.c.md5);
           return;
         }
         if (400011 == paramInt)
         {
-          ((EmoAddedAuthCallback.UploadListener)localObject).a(3, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
+          ((EmoAddedAuthCallback.UploadListener)localObject).a(3, this.c.md5);
           return;
         }
-        ((EmoAddedAuthCallback.UploadListener)localObject).a(paramInt, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
+        ((EmoAddedAuthCallback.UploadListener)localObject).a(paramInt, this.c.md5);
       }
     }
   }
   
   public void b(UpCallBack.SendResult paramSendResult)
   {
-    int i = paramSendResult.jdField_a_of_type_Int;
+    int i = paramSendResult.a;
     if (i == 0)
     {
       b();
@@ -227,7 +227,7 @@ public class EmoAddedAuthCallback
         paramSendResult.append(i);
         QLog.e("EmoAddedAuthCallback", 2, paramSendResult.toString());
       }
-      int j = this.jdField_a_of_type_Int;
+      int j = this.e;
       if (j == 0)
       {
         a(i);
@@ -259,18 +259,18 @@ public class EmoAddedAuthCallback
       if (i != 3) {
         return true;
       }
-      paramMessage = this.jdField_a_of_type_AndroidContentContext;
+      paramMessage = this.b;
       if (paramMessage != null)
       {
-        QQToast.a(paramMessage, 2, 2131689645, 0).b(2131299168);
-        paramMessage = this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
+        QQToast.makeText(paramMessage, 2, 2131886256, 0).show(2131299920);
+        paramMessage = this.c;
         if ((paramMessage != null) && (paramMessage.isMarkFace)) {
-          StickerRecManagerImpl.get(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface).updateKeywordForFavEmotion();
+          StickerRecManagerImpl.get(this.a).updateKeywordForFavEmotion();
         }
-        if ((EmotionSharedPreUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentUin())) && ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)))
+        if ((EmotionSharedPreUtils.a(this.b, this.a.getCurrentUin())) && ((this.b instanceof Activity)))
         {
-          paramMessage = this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
-          if ((paramMessage != null) && (!paramMessage.isMarkFace) && (this.jdField_a_of_type_Int == 0)) {
+          paramMessage = this.c;
+          if ((paramMessage != null) && (!paramMessage.isMarkFace) && (this.e == 0)) {
             a();
           }
         }
@@ -278,13 +278,13 @@ public class EmoAddedAuthCallback
       EmoticonOperateReport.reportEmoticonOperateMonitorAddStatus("0", 1);
       return true;
     }
-    a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramMessage.what);
+    a(this.a, this.b, paramMessage.what);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoAddedAuthCallback
  * JD-Core Version:    0.7.0.1
  */

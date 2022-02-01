@@ -12,12 +12,12 @@ import java.util.Iterator;
 
 public class DebugWebSocket
 {
+  protected static String TAG = "[debugger].DebugWebSocket";
   private static final int maxMessageCount = 64;
   protected static Handler sDebuggerHandler;
   protected static HandlerThread sDebuggerHandlerThread;
   protected static Handler sHandler;
   protected static HandlerThread sHandlerThread;
-  protected String TAG = "[debugger].DebugWebSocket";
   private boolean canSendMsg = false;
   private int currentWebSocketId;
   private WebSocketProxy.WebSocketListener listener = new DebugWebSocket.1(this);
@@ -79,7 +79,7 @@ public class DebugWebSocket
           }
           catch (Exception localException)
           {
-            QMLog.e(this.TAG, "sendStringMessage", localException);
+            QMLog.e(TAG, "sendStringMessage", localException);
             handleSocketException(localException);
           }
         }
@@ -145,7 +145,7 @@ public class DebugWebSocket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.debug.DebugWebSocket
  * JD-Core Version:    0.7.0.1
  */

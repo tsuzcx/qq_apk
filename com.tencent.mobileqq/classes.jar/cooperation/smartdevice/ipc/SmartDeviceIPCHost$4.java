@@ -12,9 +12,9 @@ class SmartDeviceIPCHost$4
   
   public void run()
   {
-    while (!this.this$0.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    while (!this.this$0.d.isEmpty())
     {
-      Bundle localBundle = (Bundle)this.this$0.jdField_a_of_type_JavaUtilArrayList.remove(0);
+      Bundle localBundle = (Bundle)this.this$0.d.remove(0);
       if (localBundle == null) {
         return;
       }
@@ -31,7 +31,7 @@ class SmartDeviceIPCHost$4
           localStringBuilder2.append(Thread.currentThread());
           QLog.d("SmartDeviceIPCHost", 2, localStringBuilder2.toString());
         }
-        this.this$0.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService.a("com.qqsmartdevice.action.notify", localBundle);
+        this.this$0.b.b("com.qqsmartdevice.action.notify", localBundle);
       }
       catch (RemoteException localRemoteException)
       {
@@ -49,7 +49,7 @@ class SmartDeviceIPCHost$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.smartdevice.ipc.SmartDeviceIPCHost.4
  * JD-Core Version:    0.7.0.1
  */

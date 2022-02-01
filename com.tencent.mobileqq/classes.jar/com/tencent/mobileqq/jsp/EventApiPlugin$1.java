@@ -12,9 +12,9 @@ final class EventApiPlugin$1
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((EventApiPlugin.a != null) && (EventApiPlugin.a.size() > 0))
+    if ((EventApiPlugin.d != null) && (EventApiPlugin.d.size() > 0))
     {
-      Iterator localIterator = EventApiPlugin.a.iterator();
+      Iterator localIterator = EventApiPlugin.d.iterator();
       while (localIterator.hasNext())
       {
         EventApiPlugin localEventApiPlugin = (EventApiPlugin)((WeakReference)localIterator.next()).get();
@@ -27,7 +27,7 @@ final class EventApiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.EventApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,10 +17,10 @@ class TaskManager$30
       localStringBuilder.append("download scripts success: a new version: ");
       localStringBuilder.append(TaskManager.a);
       QLog.d("kandianreport.taskmanager", 1, localStringBuilder.toString());
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
         QLog.d("kandianreport.taskmanager", 1, "startAfterDownload");
-        TaskManager.a().b();
+        TaskManager.b().d();
       }
     }
     else
@@ -34,7 +34,7 @@ class TaskManager$30
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.task.TaskManager.30
  * JD-Core Version:    0.7.0.1
  */

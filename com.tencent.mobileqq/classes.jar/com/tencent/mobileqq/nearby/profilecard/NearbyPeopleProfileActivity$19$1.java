@@ -9,12 +9,12 @@ class NearbyPeopleProfileActivity$19$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity$19.a.mMode == 1) {
+    if (this.c.a.mMode == 1) {
       return;
     }
-    if (NearbyPeopleProfileActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity$19.a) != null)
+    if (NearbyPeopleProfileActivity.access$400(this.c.a) != null)
     {
-      NearbyPeopleProfileActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity$19.a).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      NearbyPeopleProfileActivity.access$400(this.c.a).a(this.a, this.b);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -24,7 +24,7 @@ class NearbyPeopleProfileActivity$19$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.19.1
  * JD-Core Version:    0.7.0.1
  */

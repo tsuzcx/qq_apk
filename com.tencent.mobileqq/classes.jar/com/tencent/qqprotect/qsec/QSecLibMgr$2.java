@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 class QSecLibMgr$2
   extends QSecLibMgr.SFUVisitor
 {
-  private boolean b = false;
+  private boolean d = false;
   
   QSecLibMgr$2(QSecLibMgr paramQSecLibMgr)
   {
@@ -16,11 +16,11 @@ class QSecLibMgr$2
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).a();
-    }
     if (this.b) {
-      QSecLibMgr.d(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr);
+      QSecLibMgr.e(this.a).a();
+    }
+    if (this.d) {
+      QSecLibMgr.h(this.a);
     }
   }
   
@@ -36,41 +36,41 @@ class QSecLibMgr$2
       }
       return;
     }
-    QSecDatabaseMgr.LibEntry localLibEntry = QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).a(paramInt1);
+    QSecDatabaseMgr.LibEntry localLibEntry = QSecLibMgr.e(this.a).a(paramInt1);
     if (localLibEntry != null) {
-      QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).a(localLibEntry.jdField_a_of_type_Int, false);
+      QSecLibMgr.e(this.a).a(localLibEntry.a, false);
     } else {
       localLibEntry = new QSecDatabaseMgr.LibEntry();
     }
-    localLibEntry.jdField_a_of_type_Int = paramInt1;
-    localLibEntry.jdField_b_of_type_Int = paramInt2;
+    localLibEntry.a = paramInt1;
+    localLibEntry.b = paramInt2;
     localLibEntry.c = paramInt3;
-    localLibEntry.jdField_b_of_type_JavaLangString = paramString1;
-    localLibEntry.jdField_a_of_type_JavaLangString = paramString2;
-    QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).a(localLibEntry, false);
-    this.jdField_a_of_type_Boolean = true;
-    if ((paramInt4 == 1) && (QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).a(paramInt1) == 1))
+    localLibEntry.e = paramString1;
+    localLibEntry.d = paramString2;
+    QSecLibMgr.e(this.a).a(localLibEntry, false);
+    this.b = true;
+    if ((paramInt4 == 1) && (QSecLibMgr.f(this.a).a(paramInt1) == 1))
     {
-      this.b = true;
-      QSecLibMgr.LoadedLibInfo localLoadedLibInfo = (QSecLibMgr.LoadedLibInfo)QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).get(Integer.valueOf(paramInt1));
+      this.d = true;
+      QSecLibMgr.LoadedLibInfo localLoadedLibInfo = (QSecLibMgr.LoadedLibInfo)QSecLibMgr.g(this.a).get(Integer.valueOf(paramInt1));
       if (localLoadedLibInfo != null)
       {
-        QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr, localLoadedLibInfo, paramString2, paramString1);
+        QSecLibMgr.a(this.a, localLoadedLibInfo, paramString2, paramString1);
         if (localLoadedLibInfo.d != 0) {
-          QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).remove(Integer.valueOf(localLoadedLibInfo.jdField_a_of_type_Int));
+          QSecLibMgr.g(this.a).remove(Integer.valueOf(localLoadedLibInfo.a));
         }
       }
       else
       {
-        paramString1 = QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr, localLibEntry);
-        QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr, paramString1);
+        paramString1 = QSecLibMgr.a(this.a, localLibEntry);
+        QSecLibMgr.a(this.a, paramString1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecLibMgr.2
  * JD-Core Version:    0.7.0.1
  */

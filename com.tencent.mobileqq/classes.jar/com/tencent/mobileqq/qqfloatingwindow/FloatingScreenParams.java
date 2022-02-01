@@ -37,7 +37,7 @@ public class FloatingScreenParams
   private int mInitialHeight = 500;
   private int mInitialWidth = 500;
   private int mOuterPadding = 2;
-  private int mRoundCorner = 12;
+  private int mRoundCorner = 24;
   private int mScreenLonger = 500;
   private float mScreenRatio = 0.5625F;
   private int mShapeType = 1;
@@ -224,10 +224,10 @@ public class FloatingScreenParams
     Object localObject = MobileQQ.getContext().getResources();
     if (localObject != null)
     {
-      this.mScreenLonger = ((Resources)localObject).getDimensionPixelSize(2131298572);
-      this.mSquareLength = ((Resources)localObject).getDimensionPixelSize(2131298574);
-      this.mRoundCorner = ((Resources)localObject).getDimensionPixelSize(2131298573);
-      this.mOuterPadding = ((Resources)localObject).getDimensionPixelSize(2131298575);
+      this.mScreenLonger = ((Resources)localObject).getDimensionPixelSize(2131299286);
+      this.mSquareLength = ((Resources)localObject).getDimensionPixelSize(2131299288);
+      this.mRoundCorner = ((Resources)localObject).getDimensionPixelSize(2131299287);
+      this.mOuterPadding = ((Resources)localObject).getDimensionPixelSize(2131299289);
     }
     this.mWidth = this.mScreenLonger;
     this.mHeight = ((int)(this.mWidth * this.mScreenRatio));
@@ -251,6 +251,17 @@ public class FloatingScreenParams
     }
   }
   
+  public boolean isHasZoomed()
+  {
+    return this.mHasZoomed;
+  }
+  
+  public void resetParams()
+  {
+    updateZoomRatio(1.0F);
+    this.mHasZoomed = false;
+  }
+  
   public void setCustomSize(int paramInt1, int paramInt2)
   {
     this.mCustomWidth = paramInt1;
@@ -270,6 +281,11 @@ public class FloatingScreenParams
   public void setHeight(int paramInt)
   {
     this.mHeight = paramInt;
+  }
+  
+  public void setScreenLonger(int paramInt)
+  {
+    this.mScreenLonger = paramInt;
   }
   
   public void setScreenRatio(float paramFloat)
@@ -363,7 +379,7 @@ public class FloatingScreenParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams
  * JD-Core Version:    0.7.0.1
  */

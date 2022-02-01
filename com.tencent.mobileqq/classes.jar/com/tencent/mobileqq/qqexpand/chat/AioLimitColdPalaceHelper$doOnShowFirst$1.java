@@ -13,35 +13,35 @@ final class AioLimitColdPalaceHelper$doOnShowFirst$1
   
   public final void run()
   {
-    this.this$0.g();
-    if (this.this$0.a().a != null)
+    this.this$0.q();
+    if (this.this$0.a().ah != null)
     {
-      Object localObject1 = this.this$0.a().a;
+      Object localObject1 = this.this$0.a().ah;
       if (localObject1 == null) {
         Intrinsics.throwNpe();
       }
-      if (((SessionInfo)localObject1).jdField_a_of_type_JavaLangString != null)
+      if (((SessionInfo)localObject1).b != null)
       {
         AioLimitColdPalaceHelper.a(this.this$0);
         localObject1 = this.this$0;
-        Object localObject2 = ((AioLimitColdPalaceHelper)localObject1).a().a;
+        Object localObject2 = ((AioLimitColdPalaceHelper)localObject1).a().ah;
         if (localObject2 == null) {
           Intrinsics.throwNpe();
         }
-        localObject2 = ((SessionInfo)localObject2).jdField_a_of_type_JavaLangString;
+        localObject2 = ((SessionInfo)localObject2).b;
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "mChatPie.sessionInfo!!.curFriendUin");
-        SessionInfo localSessionInfo = this.this$0.a().a;
+        SessionInfo localSessionInfo = this.this$0.a().ah;
         if (localSessionInfo == null) {
           Intrinsics.throwNpe();
         }
-        AioLimitColdPalaceHelper.a((AioLimitColdPalaceHelper)localObject1, (String)localObject2, localSessionInfo.jdField_a_of_type_Int);
+        AioLimitColdPalaceHelper.a((AioLimitColdPalaceHelper)localObject1, (String)localObject2, localSessionInfo.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.AioLimitColdPalaceHelper.doOnShowFirst.1
  * JD-Core Version:    0.7.0.1
  */

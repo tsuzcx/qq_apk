@@ -166,34 +166,12 @@ public class ExpandResourceUtil
   
   public static String a()
   {
-    return String.format("%s/res", new Object[] { c() });
+    return String.format("%s/res", new Object[] { d() });
   }
   
   public static String a(String paramString)
   {
     return String.format("%s/%s", new Object[] { a(), paramString });
-  }
-  
-  public static boolean a()
-  {
-    return a(a(a));
-  }
-  
-  public static boolean a(String[] paramArrayOfString)
-  {
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramArrayOfString[i];
-      if (!new File(str).exists())
-      {
-        QLog.e("ExtendFriendResourceUtil", 1, String.format("isFilesExist check fail. filePath=%s", new Object[] { str }));
-        return false;
-      }
-      i += 1;
-    }
-    return true;
   }
   
   public static String[] a(String[] paramArrayOfString)
@@ -218,15 +196,37 @@ public class ExpandResourceUtil
   
   public static String b()
   {
-    return String.format("%s/res", new Object[] { d() });
+    return String.format("%s/res", new Object[] { e() });
   }
   
   public static String b(String paramString)
   {
-    return String.format("%s/%s.zip", new Object[] { d(), paramString });
+    return String.format("%s/%s.zip", new Object[] { e(), paramString });
   }
   
-  private static String c()
+  public static boolean b(String[] paramArrayOfString)
+  {
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = paramArrayOfString[i];
+      if (!new File(str).exists())
+      {
+        QLog.e("ExtendFriendResourceUtil", 1, String.format("isFilesExist check fail. filePath=%s", new Object[] { str }));
+        return false;
+      }
+      i += 1;
+    }
+    return true;
+  }
+  
+  public static boolean c()
+  {
+    return b(a(a));
+  }
+  
+  private static String d()
   {
     Object localObject1 = MobileQQ.sMobileQQ.getFilesDir();
     if (localObject1 != null)
@@ -250,14 +250,14 @@ public class ExpandResourceUtil
     return localObject1;
   }
   
-  private static String d()
+  private static String e()
   {
     Object localObject1 = MobileQQ.sMobileQQ.getFilesDir();
     if (localObject1 != null)
     {
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
-      ((StringBuilder)localObject2).append("/pddata/prd/ef_flutter_res_v3");
+      ((StringBuilder)localObject2).append("/pddata/prd/ef_flutter_res_v5");
       localObject2 = ((StringBuilder)localObject2).toString();
       File localFile = new File((String)localObject2);
       localObject1 = localObject2;
@@ -276,7 +276,7 @@ public class ExpandResourceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.ExpandResourceUtil
  * JD-Core Version:    0.7.0.1
  */

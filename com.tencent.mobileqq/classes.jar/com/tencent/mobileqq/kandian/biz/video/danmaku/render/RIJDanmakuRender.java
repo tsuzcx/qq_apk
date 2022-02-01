@@ -9,11 +9,11 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
-import com.tencent.mobileqq.danmaku.data.BaseDanmaku;
-import com.tencent.mobileqq.danmaku.inject.DanmakuContext;
-import com.tencent.mobileqq.danmaku.render.BaseDanmakuRender;
-import com.tencent.mobileqq.danmaku.util.ContentSize;
-import com.tencent.mobileqq.danmaku.util.DrawUtils;
+import com.tencent.common.danmaku.data.BaseDanmaku;
+import com.tencent.common.danmaku.inject.DanmakuContext;
+import com.tencent.common.danmaku.render.BaseDanmakuRender;
+import com.tencent.common.danmaku.util.ContentSize;
+import com.tencent.common.danmaku.util.DrawUtils;
 import com.tencent.mobileqq.kandian.biz.video.danmaku.DanmakuDetail;
 import com.tencent.mobileqq.kandian.biz.video.danmaku.DanmakuInfo;
 import kotlin.Metadata;
@@ -22,46 +22,46 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJDanmakuRender;", "Lcom/tencent/mobileqq/danmaku/render/BaseDanmakuRender;", "Lcom/tencent/mobileqq/danmaku/data/BaseDanmaku;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "clickStateBgPaint", "Landroid/graphics/Paint;", "clickStateReportPaint", "Landroid/text/TextPaint;", "clickStateReportTextWidth", "", "getContext", "()Landroid/content/Context;", "mineDanmukuPaint", "strokePaint", "textPaint", "accept", "", "danmaku", "getText", "", "measure", "Lcom/tencent/mobileqq/danmaku/util/ContentSize;", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "danmakuContext", "Lcom/tencent/mobileqq/danmaku/inject/DanmakuContext;", "left", "top", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJDanmakuRender;", "Lcom/tencent/common/danmaku/render/BaseDanmakuRender;", "Lcom/tencent/common/danmaku/data/BaseDanmaku;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "clickStateBgPaint", "Landroid/graphics/Paint;", "clickStateReportPaint", "Landroid/text/TextPaint;", "clickStateReportTextWidth", "", "getContext", "()Landroid/content/Context;", "mineDanmukuPaint", "strokePaint", "textPaint", "accept", "", "danmaku", "getText", "", "measure", "Lcom/tencent/common/danmaku/util/ContentSize;", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "danmakuContext", "Lcom/tencent/common/danmaku/inject/DanmakuContext;", "left", "top", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJDanmakuRender
   extends BaseDanmakuRender<BaseDanmaku<?, ?>>
 {
-  private final float jdField_a_of_type_Float;
-  @NotNull
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private final Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private final TextPaint jdField_b_of_type_AndroidTextTextPaint;
+  private final TextPaint a;
+  private final TextPaint b;
   private final TextPaint c;
+  private final Paint d;
+  private final Paint e;
+  private final float f;
+  @NotNull
+  private final Context g;
   
   public RIJDanmakuRender(@NotNull Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
+    this.g = paramContext;
+    this.a = new TextPaint();
+    this.b = new TextPaint();
     this.c = new TextPaint();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.SANS_SERIF);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(RIJDanmakuUIConfig.a.a());
-    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(Typeface.SANS_SERIF);
-    this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(RIJDanmakuUIConfig.a.g());
-    this.c.setTextSize(RIJDanmakuUIConfig.a.e());
-    this.c.setColor(RIJDanmakuUIConfig.a.f());
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(RIJDanmakuUIConfig.a.c());
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(RIJDanmakuUIConfig.a.c());
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_Float = DrawUtils.a(RIJDanmakuUIConfig.a.e(), RIJDanmakuUIConfig.a.a());
+    this.d = new Paint();
+    this.e = new Paint();
+    this.a.setTypeface(Typeface.SANS_SERIF);
+    this.a.setAntiAlias(true);
+    this.b.setStyle(Paint.Style.STROKE);
+    this.b.setStrokeWidth(RIJDanmakuUIConfig.a.a());
+    this.b.setTypeface(Typeface.SANS_SERIF);
+    this.b.setAntiAlias(true);
+    this.d.setStyle(Paint.Style.FILL);
+    this.d.setColor(RIJDanmakuUIConfig.a.m());
+    this.c.setTextSize(RIJDanmakuUIConfig.a.k());
+    this.c.setColor(RIJDanmakuUIConfig.a.l());
+    this.e.setColor(RIJDanmakuUIConfig.a.e());
+    this.e.setStrokeWidth(RIJDanmakuUIConfig.a.f());
+    this.e.setStyle(Paint.Style.STROKE);
+    this.f = DrawUtils.a(RIJDanmakuUIConfig.a.k(), RIJDanmakuUIConfig.a.j());
   }
   
-  private final String a(BaseDanmaku<?, ?> paramBaseDanmaku)
+  private final String d(BaseDanmaku<?, ?> paramBaseDanmaku)
   {
-    Object localObject = paramBaseDanmaku.a();
+    Object localObject = paramBaseDanmaku.r();
     paramBaseDanmaku = localObject;
     if (!(localObject instanceof DanmakuDetail)) {
       paramBaseDanmaku = null;
@@ -72,7 +72,7 @@ public final class RIJDanmakuRender
       paramBaseDanmaku = paramBaseDanmaku.a();
       if (paramBaseDanmaku != null)
       {
-        paramBaseDanmaku = paramBaseDanmaku.b();
+        paramBaseDanmaku = paramBaseDanmaku.d();
         if (paramBaseDanmaku != null) {
           return paramBaseDanmaku;
         }
@@ -81,42 +81,47 @@ public final class RIJDanmakuRender
     return "";
   }
   
+  public boolean a(@Nullable BaseDanmaku<?, ?> paramBaseDanmaku)
+  {
+    return paramBaseDanmaku instanceof RIJBaseDanmaku;
+  }
+  
   @NotNull
-  public ContentSize a(@NotNull BaseDanmaku<?, ?> paramBaseDanmaku)
+  public ContentSize b(@NotNull BaseDanmaku<?, ?> paramBaseDanmaku)
   {
     Intrinsics.checkParameterIsNotNull(paramBaseDanmaku, "danmaku");
-    Object localObject = paramBaseDanmaku.a();
+    Object localObject = paramBaseDanmaku.c();
     if (localObject != null)
     {
       localObject = (RIJDanmakuUIConfig)localObject;
       RIJBaseDanmaku localRIJBaseDanmaku = (RIJBaseDanmaku)paramBaseDanmaku;
-      float f2 = DrawUtils.a(((RIJDanmakuUIConfig)localObject).a(), a(paramBaseDanmaku));
+      float f2 = DrawUtils.a(((RIJDanmakuUIConfig)localObject).a(), d(paramBaseDanmaku));
       float f1 = DrawUtils.a(((RIJDanmakuUIConfig)localObject).a());
-      if (localRIJBaseDanmaku.a() != 18)
+      if (localRIJBaseDanmaku.q() != 18)
       {
         f3 = f1;
         f4 = f2;
-        if (localRIJBaseDanmaku.a() != 20) {}
+        if (localRIJBaseDanmaku.q() != 20) {}
       }
       else
       {
-        f4 = f2 + RIJDanmakuUIConfig.a.a() * 2;
-        f3 = f1 + RIJDanmakuUIConfig.a.b() * 2;
+        f4 = f2 + RIJDanmakuUIConfig.a.b() * 2;
+        f3 = f1 + RIJDanmakuUIConfig.a.c() * 2;
       }
-      if (localRIJBaseDanmaku.a() != 19)
+      if (localRIJBaseDanmaku.q() != 19)
       {
         f1 = f3;
         f2 = f4;
-        if (localRIJBaseDanmaku.a() != 20) {}
+        if (localRIJBaseDanmaku.q() != 20) {}
       }
       else
       {
-        f4 += RIJDanmakuUIConfig.a.d() + RIJDanmakuUIConfig.a.e();
+        f4 += RIJDanmakuUIConfig.a.g() + RIJDanmakuUIConfig.a.i();
         f1 = f3;
         f2 = f4;
-        if (f3 < RIJDanmakuUIConfig.a.d())
+        if (f3 < RIJDanmakuUIConfig.a.h())
         {
-          f1 = RIJDanmakuUIConfig.a.d();
+          f1 = RIJDanmakuUIConfig.a.h();
           f2 = f4;
         }
       }
@@ -124,7 +129,7 @@ public final class RIJDanmakuRender
       localRIJBaseDanmaku.k(f1);
       float f4 = f1;
       float f3 = f2;
-      if (localRIJBaseDanmaku.a())
+      if (localRIJBaseDanmaku.g())
       {
         localObject = paramBaseDanmaku;
         if (!(paramBaseDanmaku instanceof RIJBaseDanmaku)) {
@@ -137,20 +142,20 @@ public final class RIJDanmakuRender
         {
           f4 = f1;
           f3 = f2;
-          if (paramBaseDanmaku.i() == true)
+          if (paramBaseDanmaku.U() == true)
           {
-            f3 = f2 + RIJDanmakuUIConfig.a.h() * 2;
-            f4 = RIJDanmakuUIConfig.a.j() + RIJDanmakuUIConfig.a.l() + this.jdField_a_of_type_Float;
-            localRIJBaseDanmaku.l(RIJDanmakuUIConfig.a.h() + f4 + RIJDanmakuUIConfig.a.k());
+            f3 = f2 + RIJDanmakuUIConfig.a.o() * 2;
+            f4 = RIJDanmakuUIConfig.a.q() + RIJDanmakuUIConfig.a.t() + this.f;
+            localRIJBaseDanmaku.l(RIJDanmakuUIConfig.a.o() + f4 + RIJDanmakuUIConfig.a.s());
             f2 = f3;
-            if (localRIJBaseDanmaku.a() != 18) {
-              f2 = f3 + (f4 + RIJDanmakuUIConfig.a.k());
+            if (localRIJBaseDanmaku.q() != 18) {
+              f2 = f3 + (f4 + RIJDanmakuUIConfig.a.s());
             }
             f3 = f1;
-            if (f1 < RIJDanmakuUIConfig.a.g()) {
-              f3 = RIJDanmakuUIConfig.a.g();
+            if (f1 < RIJDanmakuUIConfig.a.r()) {
+              f3 = RIJDanmakuUIConfig.a.r();
             }
-            f4 = f3 + RIJDanmakuUIConfig.a.i() * 2;
+            f4 = f3 + RIJDanmakuUIConfig.a.p() * 2;
             f3 = f2;
           }
         }
@@ -162,28 +167,23 @@ public final class RIJDanmakuRender
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.kandian.biz.video.danmaku.render.RIJDanmakuUIConfig");
   }
   
-  public boolean a(@Nullable BaseDanmaku<?, ?> paramBaseDanmaku)
-  {
-    return paramBaseDanmaku instanceof RIJBaseDanmaku;
-  }
-  
   public void b(@NotNull Canvas paramCanvas, @NotNull BaseDanmaku<?, ?> paramBaseDanmaku, @Nullable DanmakuContext paramDanmakuContext, float paramFloat1, float paramFloat2)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
     Intrinsics.checkParameterIsNotNull(paramBaseDanmaku, "danmaku");
-    paramDanmakuContext = paramBaseDanmaku.a();
+    paramDanmakuContext = paramBaseDanmaku.c();
     if (paramDanmakuContext != null)
     {
       paramDanmakuContext = (RIJDanmakuUIConfig)paramDanmakuContext;
       RIJBaseDanmaku localRIJBaseDanmaku = (RIJBaseDanmaku)paramBaseDanmaku;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramDanmakuContext.a());
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramDanmakuContext.a());
-      this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(paramDanmakuContext.a());
-      this.jdField_b_of_type_AndroidTextTextPaint.setColor(paramDanmakuContext.b());
-      float f2 = paramFloat2 - this.jdField_a_of_type_AndroidTextTextPaint.ascent();
+      this.a.setTextSize(paramDanmakuContext.a());
+      this.a.setColor(paramDanmakuContext.b());
+      this.b.setTextSize(paramDanmakuContext.a());
+      this.b.setColor(paramDanmakuContext.c());
+      float f2 = paramFloat2 - this.a.ascent();
       float f4;
       float f5;
-      if (localRIJBaseDanmaku.a())
+      if (localRIJBaseDanmaku.g())
       {
         if (!(paramBaseDanmaku instanceof RIJBaseDanmaku)) {
           paramDanmakuContext = null;
@@ -191,80 +191,80 @@ public final class RIJDanmakuRender
           paramDanmakuContext = paramBaseDanmaku;
         }
         paramDanmakuContext = (RIJBaseDanmaku)paramDanmakuContext;
-        if ((paramDanmakuContext != null) && (paramDanmakuContext.i() == true))
+        if ((paramDanmakuContext != null) && (paramDanmakuContext.U() == true))
         {
-          paramCanvas.drawRoundRect(new RectF(paramFloat1, paramFloat2, localRIJBaseDanmaku.b() + paramFloat1, localRIJBaseDanmaku.a() + paramFloat2), RIJDanmakuUIConfig.a.f(), RIJDanmakuUIConfig.a.f(), this.jdField_a_of_type_AndroidGraphicsPaint);
-          if (localRIJBaseDanmaku.a() != 18)
+          paramCanvas.drawRoundRect(new RectF(paramFloat1, paramFloat2, localRIJBaseDanmaku.e() + paramFloat1, localRIJBaseDanmaku.d() + paramFloat2), RIJDanmakuUIConfig.a.n(), RIJDanmakuUIConfig.a.n(), this.d);
+          if (localRIJBaseDanmaku.q() != 18)
           {
-            f1 = localRIJBaseDanmaku.b() + paramFloat1 - RIJDanmakuUIConfig.a.h();
-            f3 = (localRIJBaseDanmaku.a() - RIJDanmakuUIConfig.a.e()) / 2;
+            f1 = localRIJBaseDanmaku.e() + paramFloat1 - RIJDanmakuUIConfig.a.o();
+            f3 = (localRIJBaseDanmaku.d() - RIJDanmakuUIConfig.a.k()) / 2;
             f4 = this.c.ascent();
-            paramCanvas.drawText(RIJDanmakuUIConfig.a.a(), f1 - this.jdField_a_of_type_Float, f3 + paramFloat2 - f4, (Paint)this.c);
+            paramCanvas.drawText(RIJDanmakuUIConfig.a.j(), f1 - this.f, f3 + paramFloat2 - f4, (Paint)this.c);
           }
           else
           {
             f1 = paramFloat1;
           }
-          paramDanmakuContext = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841799);
-          f3 = this.jdField_a_of_type_Float;
-          f4 = RIJDanmakuUIConfig.a.l();
-          f5 = RIJDanmakuUIConfig.a.j();
-          float f6 = (localRIJBaseDanmaku.a() - RIJDanmakuUIConfig.a.g()) / 2;
+          paramDanmakuContext = this.g.getResources().getDrawable(2130842716);
+          f3 = this.f;
+          f4 = RIJDanmakuUIConfig.a.t();
+          f5 = RIJDanmakuUIConfig.a.q();
+          float f6 = (localRIJBaseDanmaku.d() - RIJDanmakuUIConfig.a.r()) / 2;
           int i = (int)(f1 - f3 - f4 - f5);
           int j = (int)(f6 + paramFloat2);
-          paramDanmakuContext.setBounds(i, j, RIJDanmakuUIConfig.a.j() + i, (int)RIJDanmakuUIConfig.a.g() + j);
+          paramDanmakuContext.setBounds(i, j, RIJDanmakuUIConfig.a.q() + i, (int)RIJDanmakuUIConfig.a.r() + j);
           paramDanmakuContext.draw(paramCanvas);
-          f3 = RIJDanmakuUIConfig.a.h();
-          f1 = f2 + RIJDanmakuUIConfig.a.i();
-          f2 = RIJDanmakuUIConfig.a.h();
-          f5 = RIJDanmakuUIConfig.a.i();
+          f3 = RIJDanmakuUIConfig.a.o();
+          f1 = f2 + RIJDanmakuUIConfig.a.p();
+          f2 = RIJDanmakuUIConfig.a.o();
+          f5 = RIJDanmakuUIConfig.a.p();
           f2 = paramFloat1 + f2;
           f4 = f3 + paramFloat1;
           f3 = paramFloat2 + f5;
           paramFloat1 = f1;
           f1 = f4;
           paramFloat2 = f2;
-          break label467;
+          break label468;
         }
       }
       float f3 = paramFloat2;
       paramFloat2 = paramFloat1;
       float f1 = paramFloat1;
       paramFloat1 = f2;
-      label467:
-      if (localRIJBaseDanmaku.a() != 18)
+      label468:
+      if (localRIJBaseDanmaku.q() != 18)
       {
         f5 = paramFloat1;
         f2 = f1;
         f4 = paramFloat2;
-        if (localRIJBaseDanmaku.a() != 20) {}
+        if (localRIJBaseDanmaku.q() != 20) {}
       }
       else
       {
-        paramCanvas.drawRoundRect(new RectF(paramFloat2, f3, localRIJBaseDanmaku.l() + paramFloat2, localRIJBaseDanmaku.m() + f3), RIJDanmakuUIConfig.a.b(), RIJDanmakuUIConfig.a.b(), this.jdField_b_of_type_AndroidGraphicsPaint);
-        f2 = f1 + RIJDanmakuUIConfig.a.a();
-        f5 = paramFloat1 + RIJDanmakuUIConfig.a.b();
-        f4 = paramFloat2 + RIJDanmakuUIConfig.a.a();
+        paramCanvas.drawRoundRect(new RectF(paramFloat2, f3, localRIJBaseDanmaku.S() + paramFloat2, localRIJBaseDanmaku.T() + f3), RIJDanmakuUIConfig.a.d(), RIJDanmakuUIConfig.a.d(), this.e);
+        f2 = f1 + RIJDanmakuUIConfig.a.b();
+        f5 = paramFloat1 + RIJDanmakuUIConfig.a.c();
+        f4 = paramFloat2 + RIJDanmakuUIConfig.a.b();
       }
-      if (localRIJBaseDanmaku.a() != 19)
+      if (localRIJBaseDanmaku.q() != 19)
       {
         paramFloat1 = f2;
-        if (localRIJBaseDanmaku.a() != 20) {}
+        if (localRIJBaseDanmaku.q() != 20) {}
       }
       else
       {
-        localRIJBaseDanmaku.m();
-        RIJDanmakuUIConfig.a.d();
-        paramDanmakuContext = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841798);
-        paramFloat1 = f3 + (localRIJBaseDanmaku.m() - RIJDanmakuUIConfig.a.d()) / 2;
-        paramDanmakuContext.setBounds((int)f4, (int)paramFloat1, (int)(f4 + RIJDanmakuUIConfig.a.d()), (int)(paramFloat1 + RIJDanmakuUIConfig.a.d()));
+        localRIJBaseDanmaku.T();
+        RIJDanmakuUIConfig.a.h();
+        paramDanmakuContext = this.g.getResources().getDrawable(2130842715);
+        paramFloat1 = f3 + (localRIJBaseDanmaku.T() - RIJDanmakuUIConfig.a.h()) / 2;
+        paramDanmakuContext.setBounds((int)f4, (int)paramFloat1, (int)(f4 + RIJDanmakuUIConfig.a.g()), (int)(paramFloat1 + RIJDanmakuUIConfig.a.h()));
         paramDanmakuContext.draw(paramCanvas);
-        paramFloat1 = f2 + (RIJDanmakuUIConfig.a.d() + RIJDanmakuUIConfig.a.e());
-        RIJDanmakuUIConfig.a.d();
-        RIJDanmakuUIConfig.a.e();
+        paramFloat1 = f2 + (RIJDanmakuUIConfig.a.g() + RIJDanmakuUIConfig.a.i());
+        RIJDanmakuUIConfig.a.g();
+        RIJDanmakuUIConfig.a.i();
       }
-      paramCanvas.drawText(a(paramBaseDanmaku), paramFloat1, f5, (Paint)this.jdField_b_of_type_AndroidTextTextPaint);
-      paramCanvas.drawText(a(paramBaseDanmaku), paramFloat1, f5, (Paint)this.jdField_a_of_type_AndroidTextTextPaint);
+      paramCanvas.drawText(d(paramBaseDanmaku), paramFloat1, f5, (Paint)this.b);
+      paramCanvas.drawText(d(paramBaseDanmaku), paramFloat1, f5, (Paint)this.a);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.kandian.biz.video.danmaku.render.RIJDanmakuUIConfig");
@@ -272,7 +272,7 @@ public final class RIJDanmakuRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.danmaku.render.RIJDanmakuRender
  * JD-Core Version:    0.7.0.1
  */

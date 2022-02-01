@@ -11,12 +11,12 @@ final class PublicAccountUtilImpl$2
   
   public void run()
   {
-    QQToast.a(this.a.getApplicationContext(), this.a.getResources().getString(2131695181), 0).a();
+    QQToast.makeText(this.a.getApplicationContext(), this.a.getResources().getString(2131892914), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.2
  * JD-Core Version:    0.7.0.1
  */

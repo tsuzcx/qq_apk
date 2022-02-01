@@ -15,14 +15,14 @@ import javax.net.ssl.SSLSocketFactory;
 class e
   extends SSLSocketFactory
 {
-  private String a;
   public boolean a;
+  private String b;
   
   public e(String paramString)
   {
     e.class.getSimpleName();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = false;
+    this.b = paramString;
   }
   
   public Socket createSocket()
@@ -52,28 +52,28 @@ class e
   
   public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.isEmpty(this.b)) {
       try
       {
         if (Build.VERSION.SDK_INT < 17)
         {
-          paramSocket = (SSLSocket)((SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(a.a()))).createSocket(paramSocket, this.jdField_a_of_type_JavaLangString, paramInt, paramBoolean);
+          paramSocket = (SSLSocket)((SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(a.a()))).createSocket(paramSocket, this.b, paramInt, paramBoolean);
           paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-          paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.jdField_a_of_type_JavaLangString });
+          paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.b });
           paramSocket.startHandshake();
           return paramSocket;
         }
         paramString = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(a.a()));
-        paramSocket = (SSLSocket)paramString.createSocket(paramSocket, this.jdField_a_of_type_JavaLangString, paramInt, paramBoolean);
+        paramSocket = (SSLSocket)paramString.createSocket(paramSocket, this.b, paramInt, paramBoolean);
         paramString.setUseSessionTickets(paramSocket, true);
         paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-        paramString.setHostname(paramSocket, this.jdField_a_of_type_JavaLangString);
+        paramString.setHostname(paramSocket, this.b);
         paramSocket.startHandshake();
         return paramSocket;
       }
       catch (Throwable paramSocket)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.a = true;
         if ((paramSocket instanceof IOException)) {
           throw ((IOException)paramSocket);
         }
@@ -87,16 +87,16 @@ class e
   
   public boolean equals(Object paramObject)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.b))
     {
       if (!(paramObject instanceof e)) {
         return false;
       }
-      paramObject = ((e)paramObject).jdField_a_of_type_JavaLangString;
+      paramObject = ((e)paramObject).b;
       if (TextUtils.isEmpty(paramObject)) {
         return false;
       }
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject);
+      return this.b.equals(paramObject);
     }
     return false;
   }
@@ -113,7 +113,7 @@ class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.b.a.e
  * JD-Core Version:    0.7.0.1
  */

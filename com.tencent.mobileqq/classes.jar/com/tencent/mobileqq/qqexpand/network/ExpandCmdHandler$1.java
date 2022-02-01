@@ -17,35 +17,35 @@ class ExpandCmdHandler$1
   public void run()
   {
     int i = ExpandCmdHandler.a.incrementAndGet();
-    ExpandCmdHandler.a(this.this$0).put(Integer.valueOf(i), new ExpandCmdHandler.RequestObject(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandReqInfo, this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkIExpandCmdCallback));
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", ExpandCmdHandler.a(this.this$0).getAccount(), this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandReqInfo.a());
-    localToServiceMsg.setTimeout(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandReqInfo.a());
+    ExpandCmdHandler.a(this.this$0).put(Integer.valueOf(i), new ExpandCmdHandler.RequestObject(this.a, this.b));
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", ExpandCmdHandler.b(this.this$0).getAccount(), this.a.e());
+    localToServiceMsg.setTimeout(this.a.b());
     localToServiceMsg.extraData.putLong("REQUEST_TIME", System.currentTimeMillis());
     localToServiceMsg.extraData.putInt("FLUTTER_REQUEST_SEQ", i);
-    if (!this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandReqInfo.a())
+    if (!this.a.c())
     {
-      long l = this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandReqInfo.a().length;
+      long l = this.a.a().length;
       int j = (int)l;
       localObject = new byte[j + 4];
       PkgTools.DWord2Byte((byte[])localObject, 0, l + 4L);
-      PkgTools.copyData((byte[])localObject, 4, this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandReqInfo.a(), j);
+      PkgTools.copyData((byte[])localObject, 4, this.a.a(), j);
       localToServiceMsg.putWupBuffer((byte[])localObject);
     }
     else
     {
-      localToServiceMsg.putWupBuffer(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandReqInfo.a());
+      localToServiceMsg.putWupBuffer(this.a.a());
     }
-    Object localObject = new NewIntent(ExpandCmdHandler.a(this.this$0).getApplication(), ExpandServlet.class);
+    Object localObject = new NewIntent(ExpandCmdHandler.b(this.this$0).getApplication(), ExpandServlet.class);
     ((NewIntent)localObject).putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
-    ExpandCmdHandler.a(this.this$0).startServlet((NewIntent)localObject);
+    ExpandCmdHandler.b(this.this$0).startServlet((NewIntent)localObject);
     if (QLog.isColorLevel()) {
-      QLog.d("expand.cmd.ExpandCmdHandler", 2, String.format("send request cmd: %s, request seq: %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandReqInfo.a(), Integer.valueOf(i) }));
+      QLog.d("expand.cmd.ExpandCmdHandler", 2, String.format("send request cmd: %s, request seq: %s", new Object[] { this.a.e(), Integer.valueOf(i) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.network.ExpandCmdHandler.1
  * JD-Core Version:    0.7.0.1
  */

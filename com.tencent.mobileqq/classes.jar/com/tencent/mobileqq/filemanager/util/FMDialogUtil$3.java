@@ -14,24 +14,24 @@ final class FMDialogUtil$3
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject = this.a;
     if (((localObject instanceof Activity)) && (((Activity)localObject).isFinishing())) {
       return;
     }
-    localObject = this.jdField_a_of_type_JavaLangCharSequence;
+    localObject = this.b;
     if ((localObject instanceof String))
     {
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_JavaLangString, (String)localObject, 2131692263, 2131692267, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b).show();
+      DialogUtil.a(this.a, 230, this.c, (String)localObject, 2131889250, 2131889254, this.d, this.e).show();
       return;
     }
     if ((localObject instanceof SpannableString)) {
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_JavaLangString, (CharSequence)localObject, 2131692263, 2131692267, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b).show();
+      DialogUtil.a(this.a, 230, this.c, (CharSequence)localObject, 2131889250, 2131889254, this.d, this.e).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FMDialogUtil.3
  * JD-Core Version:    0.7.0.1
  */

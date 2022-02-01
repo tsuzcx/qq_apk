@@ -1,34 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/nxv" android:layout_width="375.0dip" android:layout_height="667.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_gravity="center" android:paddingLeft="45.0dip" android:paddingTop="167.0dip" android:paddingRight="45.0dip" android:layout_width="375.0dip" android:layout_height="667.0dip">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nxk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
-            <ImageView android:id="@id/nxl" android:background="@drawable/eg8" android:padding="1.0dip" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/eu1" android:scaleType="fitCenter" />
-            <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/nxm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+<RelativeLayout android:id="@id/39" android:layout_width="220.0dip" android:layout_height="178.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/p6l" android:paddingTop="15.0dip" android:paddingRight="15.0dip" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <RelativeLayout android:id="@id/38" android:layout_width="fill_parent" android:layout_height="2.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/3c" android:paddingLeft="12.0dip" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/pow" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/h29" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="44.0dip" android:text="1.假如你是计都，还会和司 凤在一起吗？" android:maxLines="2" />
+            <TextView android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/9x" android:background="@drawable/ew_" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="196.0dip" android:layout_height="28.0dip" android:layout_marginTop="10.0dip" android:text="当然是专心搞事业" />
+            <TextView android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/9y" android:background="@drawable/ew_" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="196.0dip" android:layout_height="28.0dip" android:layout_marginTop="10.0dip" android:text="当然是专心搞事业" />
+            <TextView android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/9z" android:background="@drawable/ew_" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="196.0dip" android:layout_height="28.0dip" android:layout_marginTop="10.0dip" android:text="当然是专心搞事业" />
         </LinearLayout>
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/nxe" android:background="@drawable/i7u" android:paddingTop="36.0dip" android:layout_width="279.0dip" android:layout_height="285.0dip" android:layout_margin="4.0dip" android:layout_below="@id/nxk" android:layout_centerHorizontal="true">
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/nxu" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <FrameLayout android:background="@drawable/i7y" android:layout_width="72.0dip" android:layout_height="72.0dip">
-                    <ImageView android:layout_gravity="center" android:id="@id/nxs" android:background="@drawable/eg8" android:padding="1.0dip" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/eu1" android:scaleType="fitCenter" />
-                </FrameLayout>
-                <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#ffa58359" android:id="@id/nxt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxLength="9" />
-            </LinearLayout>
-            <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#ffa58359" android:id="@id/nxf" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/xs1" />
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:textSize="58.0sp" android:textStyle="bold" android:textColor="#fffa5929" android:id="@id/nxh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
-                <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#fffa5929" android:paddingTop="18.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xs0" />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/nxo" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_below="@id/nxe" android:layout_centerHorizontal="true">
-            <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/nxi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
-            <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/nxj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nxa" android:visibility="visible" android:layout_width="360.0dip" android:layout_height="wrap_content" android:layout_marginTop="28.0dip" android:layout_below="@id/nxo" android:layout_centerHorizontal="true">
-            <FrameLayout android:id="@id/nxc" android:padding="6.0dip" android:layout_width="62.0dip" android:layout_height="62.0dip">
-                <com.tencent.mobileqq.widget.RoundImageView android:id="@id/nxb" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" app:qwRadius="6.0dip" />
-            </FrameLayout>
-            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/nxd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:lineSpacingExtra="7.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-    <ImageView android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/i7s" android:scaleType="fitCenter" />
-</FrameLayout>
+        <RelativeLayout android:id="@id/ptv" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="44.0dip" android:text="答完题了，还差最后一步可解锁结果" android:maxLines="2" />
+            <RelativeLayout android:id="@id/ovu" android:layout_width="196.0dip" android:layout_height="33.0dip" android:layout_marginBottom="50.0dip" android:layout_alignParentBottom="true">
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/p6m" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="4.0dip" />
+                    <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="看视频解锁结果" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

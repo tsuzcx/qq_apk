@@ -21,18 +21,18 @@ public class MoreVideoInfoWidget$StoryVideoDeleteReceiver
   
   public void a(@NonNull MoreVideoInfoWidget paramMoreVideoInfoWidget, @NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
   {
-    paramMoreVideoInfoWidget.l();
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramMoreVideoInfoWidget.a()).a();
+    paramMoreVideoInfoWidget.E();
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramMoreVideoInfoWidget.d()).r();
     if (localVideoViewVideoHolder != null) {
       localVideoViewVideoHolder.c(false);
     }
     SLog.b(this.TAG, "delete onEvent");
-    if ((!paramDeleteStoryVideoEvent.jdField_a_of_type_Boolean) && (paramDeleteStoryVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
+    if ((!paramDeleteStoryVideoEvent.f) && (paramDeleteStoryVideoEvent.g.isFail()))
     {
       if (QLog.isColorLevel()) {
         SLog.d(this.TAG, "删除失败：%s", new Object[] { paramDeleteStoryVideoEvent.a() });
       }
-      QQToast.a(paramMoreVideoInfoWidget.b(), 1, HardCodeUtil.a(2131706912), 0).a();
+      QQToast.makeText(paramMoreVideoInfoWidget.y(), 1, HardCodeUtil.a(2131904757), 0).show();
     }
   }
   

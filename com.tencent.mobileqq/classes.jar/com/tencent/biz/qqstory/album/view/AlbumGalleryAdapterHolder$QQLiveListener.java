@@ -17,24 +17,24 @@ class AlbumGalleryAdapterHolder$QQLiveListener
   
   public void OnDownload(String paramString1, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, String paramString2)
   {
-    if ((this.a.get() != null) && (AlbumGalleryAdapterHolder.a((AlbumGalleryAdapterHolder)this.a.get()) == 2))
+    if ((this.a.get() != null) && (AlbumGalleryAdapterHolder.c((AlbumGalleryAdapterHolder)this.a.get()) == 2))
     {
       if (!TextUtils.isEmpty(paramString2))
       {
-        if ((paramString2.contains("\"callBackType\":\"4\"")) && (AlbumGalleryAdapterHolder.b((AlbumGalleryAdapterHolder)this.a.get()) != -1))
+        if ((paramString2.contains("\"callBackType\":\"4\"")) && (AlbumGalleryAdapterHolder.d((AlbumGalleryAdapterHolder)this.a.get()) != -1))
         {
           int i = -2;
           SLog.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 4");
           if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
           {
-            AlbumGalleryAdapterHolder.a((AlbumGalleryAdapterHolder)this.a.get());
+            AlbumGalleryAdapterHolder.e((AlbumGalleryAdapterHolder)this.a.get());
             i = -1;
           }
           AlbumGalleryAdapterHolder.a((AlbumGalleryAdapterHolder)this.a.get(), i);
           ((AlbumGalleryAdapterHolder)this.a.get()).a();
           return;
         }
-        if ((paramString2.contains("\"callBackType\":\"7\"")) && (AlbumGalleryAdapterHolder.b((AlbumGalleryAdapterHolder)this.a.get()) != 0))
+        if ((paramString2.contains("\"callBackType\":\"7\"")) && (AlbumGalleryAdapterHolder.d((AlbumGalleryAdapterHolder)this.a.get()) != 0))
         {
           SLog.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 7");
           AlbumGalleryAdapterHolder.a((AlbumGalleryAdapterHolder)this.a.get(), 0);
@@ -48,7 +48,7 @@ class AlbumGalleryAdapterHolder$QQLiveListener
   
   public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
   {
-    if ((this.a.get() != null) && (AlbumGalleryAdapterHolder.a((AlbumGalleryAdapterHolder)this.a.get()) == 2))
+    if ((this.a.get() != null) && (AlbumGalleryAdapterHolder.c((AlbumGalleryAdapterHolder)this.a.get()) == 2))
     {
       if (paramInt == 5)
       {
@@ -67,7 +67,7 @@ class AlbumGalleryAdapterHolder$QQLiveListener
           }
         }
         SLog.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "onStateChange state=STATE_ERROR , set play state = %d", new Object[] { Integer.valueOf(paramInt) });
-        AlbumGalleryAdapterHolder.a((AlbumGalleryAdapterHolder)this.a.get());
+        AlbumGalleryAdapterHolder.e((AlbumGalleryAdapterHolder)this.a.get());
         AlbumGalleryAdapterHolder.a((AlbumGalleryAdapterHolder)this.a.get(), paramInt);
         ((AlbumGalleryAdapterHolder)this.a.get()).a();
       }
@@ -78,7 +78,7 @@ class AlbumGalleryAdapterHolder$QQLiveListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.view.AlbumGalleryAdapterHolder.QQLiveListener
  * JD-Core Version:    0.7.0.1
  */

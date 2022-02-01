@@ -2,32 +2,22 @@ package com.tencent.mobileqq.msgbackup.data;
 
 public class MsgBackupConfirmQrRsp
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
+  private MsgBackupUserData c;
+  private int d;
   
   public MsgBackupConfirmQrRsp(String paramString1, String paramString2, MsgBackupUserData paramMsgBackupUserData, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public MsgBackupUserData a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+    this.c = paramMsgBackupUserData;
+    this.d = paramInt;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public String b()
@@ -35,23 +25,33 @@ public class MsgBackupConfirmQrRsp
     return this.b;
   }
   
+  public MsgBackupUserData c()
+  {
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("--MsgBackupConfirmQrRsp--");
     localStringBuilder.append(",token:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",encryptKey:");
     localStringBuilder.append(this.b);
     localStringBuilder.append(",userData:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(",bizType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupConfirmQrRsp
  * JD-Core Version:    0.7.0.1
  */

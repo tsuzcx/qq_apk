@@ -58,63 +58,47 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xfd.submsgtype0xfd.MsgBody;
 public class ImaxAdVideoPreloadManager
   implements Manager
 {
-  private static final String jdField_a_of_type_JavaLangString;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "mp4", "fhd", "shd", "hd", "sd", "msd" };
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private PAAdPreloadTask jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask;
-  private ImaxAdVideoPreloadManager.NetInfoHandler jdField_a_of_type_ComTencentMobileqqImaxadImaxAdVideoPreloadManager$NetInfoHandler;
-  private TVK_ICacheMgr jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-  private TVK_UserInfo jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private ArrayList<PAAdPreloadTask> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final String a;
+  private static final String[] b = { "mp4", "fhd", "shd", "hd", "sd", "msd" };
+  private final Object c = new Object();
+  private WeakReference<QQAppInterface> d;
+  private Context e;
+  private ArrayList<PAAdPreloadTask> f = new ArrayList();
+  private PAAdPreloadTask g;
+  private int h = 0;
+  private boolean i = false;
+  private TVK_ICacheMgr j;
+  private TVK_UserInfo k;
+  private ImaxAdVideoPreloadManager.NetInfoHandler l;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
     localStringBuilder.append("/Android/data/com.tencent.mobileqq/cache/public_account_ad_download/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public ImaxAdVideoPreloadManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidContentContext = paramQQAppInterface.getApplication().getApplicationContext();
-    if (!this.jdField_a_of_type_Boolean) {
-      a();
+    this.d = new WeakReference(paramQQAppInterface);
+    this.e = paramQQAppInterface.getApplication().getApplicationContext();
+    if (!this.i) {
+      b();
     }
-  }
-  
-  private static int a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    File localFile = new File(a(paramString));
-    if ((localFile.exists()) && (localFile.length() > 0L)) {
-      return 2;
-    }
-    paramString = new File(b(paramString));
-    if ((paramString.exists()) && (paramString.length() > 0L)) {
-      return 1;
-    }
-    return 0;
   }
   
   private static MessageRecord a(String paramString, AdvertisementItem paramAdvertisementItem)
   {
     MessageRecord localMessageRecord = new MessageRecord();
     localMessageRecord.selfuin = paramString;
-    localMessageRecord.frienduin = paramAdvertisementItem.jdField_a_of_type_JavaLangString;
-    localMessageRecord.senderuin = paramAdvertisementItem.jdField_a_of_type_JavaLangString;
+    localMessageRecord.frienduin = paramAdvertisementItem.a;
+    localMessageRecord.senderuin = paramAdvertisementItem.a;
     localMessageRecord.msgtype = -1000;
-    localMessageRecord.msg = paramAdvertisementItem.f;
-    localMessageRecord.time = paramAdvertisementItem.jdField_c_of_type_Long;
-    localMessageRecord.shmsgseq = paramAdvertisementItem.jdField_a_of_type_Short;
-    localMessageRecord.msgUid = paramAdvertisementItem.d;
+    localMessageRecord.msg = paramAdvertisementItem.j;
+    localMessageRecord.time = paramAdvertisementItem.m;
+    localMessageRecord.shmsgseq = paramAdvertisementItem.n;
+    localMessageRecord.msgUid = paramAdvertisementItem.o;
     localMessageRecord.istroop = 10005;
     localMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message", "1");
     return localMessageRecord;
@@ -122,121 +106,76 @@ public class ImaxAdVideoPreloadManager
   
   private String a()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.d;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      return ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentUin();
+      return ((QQAppInterface)this.d.get()).getCurrentUin();
     }
     return "";
-  }
-  
-  public static String a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      Object localObject = new File(jdField_a_of_type_JavaLangString);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdir();
-      }
-      if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject).append(String.valueOf(20170807));
-        ((StringBuilder)localObject).append("_");
-        ((StringBuilder)localObject).append(paramString);
-        return ((StringBuilder)localObject).toString();
-      }
-    }
-    return "";
-  }
-  
-  private void a()
-  {
-    ImaxAdUtil.b("installTVKSdk");
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo = new TVK_UserInfo(a(), "");
-    this.jdField_a_of_type_ComTencentMobileqqImaxadImaxAdVideoPreloadManager$NetInfoHandler = new ImaxAdVideoPreloadManager.NetInfoHandler(this, this);
-    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqImaxadImaxAdVideoPreloadManager$NetInfoHandler);
-    try
-    {
-      TVK_SDKMgr.setOnLogListener(new ImaxAdVideoPreloadManager.1(this));
-      TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", a());
-      if (!TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext))
-      {
-        TVK_SDKMgr.installPlugin(this.jdField_a_of_type_AndroidContentContext, new ImaxAdVideoPreloadManager.2(this));
-        return;
-      }
-      b();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.d("ImaxAdvertisement", 2, "installTVKSdk ", localThrowable);
-    }
   }
   
   private void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      a();
+    if (!this.i) {
+      b();
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.c)
       {
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("startVideoDownload queueType:");
         ((StringBuilder)localObject2).append(paramInt);
-        ImaxAdUtil.b(((StringBuilder)localObject2).toString());
-        if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null)
+        ImaxAdUtil.c(((StringBuilder)localObject2).toString());
+        if (this.j == null)
         {
-          ImaxAdUtil.b("startVideoDownload cache manager not init!");
-          c();
+          ImaxAdUtil.c("startVideoDownload cache manager not init!");
+          d();
           return;
         }
-        if (paramInt <= this.jdField_a_of_type_Int)
+        if (paramInt <= this.h)
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("startVideoDownload queue(");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(this.h);
           ((StringBuilder)localObject2).append(") already run!");
-          ImaxAdUtil.b(((StringBuilder)localObject2).toString());
+          ImaxAdUtil.c(((StringBuilder)localObject2).toString());
           return;
         }
-        if (this.jdField_a_of_type_Int != 0)
+        if (this.h != 0)
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("startVideoDownload break current queue(");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(this.h);
           ((StringBuilder)localObject2).append(")!");
-          ImaxAdUtil.b(((StringBuilder)localObject2).toString());
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.stopCacheData(20170807);
-          c();
-          break label843;
-          if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-            this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = ((PAAdPreloadTask)this.jdField_a_of_type_JavaUtilArrayList.remove(0));
+          ImaxAdUtil.c(((StringBuilder)localObject2).toString());
+          this.j.stopCacheData(20170807);
+          d();
+          break label831;
+          if (this.f.size() > 0) {
+            this.g = ((PAAdPreloadTask)this.f.remove(0));
           }
-          if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask == null)
+          if (this.g == null)
           {
-            ImaxAdUtil.b("startVideoDownload no task to download");
-            c();
+            ImaxAdUtil.c("startVideoDownload no task to download");
+            d();
             return;
           }
-          this.jdField_a_of_type_Int = paramInt;
-          localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mVideoVid;
+          this.h = paramInt;
+          localObject2 = this.g.mVideoVid;
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            if (!this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.isExpire())
+            if (!this.g.isExpire())
             {
-              i = a((String)localObject2);
+              m = f((String)localObject2);
               localObject4 = new StringBuilder();
               ((StringBuilder)localObject4).append("startVideoDownload vid:");
               ((StringBuilder)localObject4).append((String)localObject2);
               ((StringBuilder)localObject4).append(", cacheState:");
-              ((StringBuilder)localObject4).append(i);
-              ImaxAdUtil.b(((StringBuilder)localObject4).toString());
-              if (i != 2) {
-                if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.isNetworkValid())
+              ((StringBuilder)localObject4).append(m);
+              ImaxAdUtil.c(((StringBuilder)localObject4).toString());
+              if (m != 2) {
+                if (this.g.isNetworkValid())
                 {
-                  localObject4 = b((String)localObject2);
+                  localObject4 = e((String)localObject2);
                   localObject5 = new File((String)localObject4);
                   boolean bool = ((File)localObject5).exists();
                   if (bool) {}
@@ -256,7 +195,7 @@ public class ImaxAdVideoPreloadManager
           Object localObject5 = new StringBuilder();
           ((StringBuilder)localObject5).append("startVideoDownload create tmp file failed for vid:");
           ((StringBuilder)localObject5).append((String)localObject2);
-          ImaxAdUtil.b(((StringBuilder)localObject5).toString());
+          ImaxAdUtil.c(((StringBuilder)localObject5).toString());
           localObject5 = new TVK_PlayerVideoInfo(2, (String)localObject2, "");
           localHashMap = new HashMap();
           localHashMap.put("shouq_bus_type", "bus_type_pa_advertisement");
@@ -264,22 +203,22 @@ public class ImaxAdVideoPreloadManager
           ((TVK_PlayerVideoInfo)localObject5).setConfigMap("cache_duration", String.valueOf(-1));
           ((TVK_PlayerVideoInfo)localObject5).setConfigMap("cache_servers_type", String.valueOf(20170807));
           ((TVK_PlayerVideoInfo)localObject5).setConfigMap("file_dir", (String)localObject4);
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.preLoadVideoById(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo, (TVK_PlayerVideoInfo)localObject5, "");
+          this.j.preLoadVideoById(this.e, this.k, (TVK_PlayerVideoInfo)localObject5, "");
           Object localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("startVideoDownload vid:");
           ((StringBuilder)localObject4).append((String)localObject2);
-          ImaxAdUtil.b(((StringBuilder)localObject4).toString());
+          ImaxAdUtil.c(((StringBuilder)localObject4).toString());
           continue;
-          int i = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+          int m = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("startVideoDownload vid:");
           ((StringBuilder)localObject4).append((String)localObject2);
           ((StringBuilder)localObject4).append(", networkType:");
-          ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mNetworkType);
+          ((StringBuilder)localObject4).append(this.g.mNetworkType);
           ((StringBuilder)localObject4).append(", curNetType:");
-          ((StringBuilder)localObject4).append(i);
+          ((StringBuilder)localObject4).append(m);
           ((StringBuilder)localObject4).append(", no valid network, skip to next task");
-          ImaxAdUtil.b(((StringBuilder)localObject4).toString());
+          ImaxAdUtil.c(((StringBuilder)localObject4).toString());
           b(paramInt);
           continue;
           if (QLog.isColorLevel())
@@ -290,28 +229,28 @@ public class ImaxAdVideoPreloadManager
             ((StringBuilder)localObject4).append(", full cached, skip to next task");
             QLog.d("ImaxAdvertisement", 2, ((StringBuilder)localObject4).toString());
           }
-          c((String)localObject2);
+          g((String)localObject2);
           b(paramInt);
           continue;
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("startVideoDownload vid:");
           ((StringBuilder)localObject4).append((String)localObject2);
           ((StringBuilder)localObject4).append(", expireTime:");
-          ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mExpireTime);
+          ((StringBuilder)localObject4).append(this.g.mExpireTime);
           ((StringBuilder)localObject4).append(", task expired, clean cache and skip to next task");
-          ImaxAdUtil.b(((StringBuilder)localObject4).toString());
+          ImaxAdUtil.c(((StringBuilder)localObject4).toString());
           b(paramInt);
-          if (a((String)localObject2) != 0)
+          if (f((String)localObject2) != 0)
           {
             ThreadManager.executeOnFileThread(new ImaxAdVideoPreloadManager.7(this, (String)localObject2));
             continue;
-            ImaxAdUtil.b("startVideoDownload empty vid, skip to next task");
+            ImaxAdUtil.c("startVideoDownload empty vid, skip to next task");
             b(paramInt);
           }
           return;
         }
       }
-      label843:
+      label831:
       if (paramInt == 2) {}
     }
   }
@@ -321,17 +260,17 @@ public class ImaxAdVideoPreloadManager
     Object localObject1 = (AdvertisementItem)paramMessageRecord.advertisementItem;
     Object localObject2;
     Object localObject3;
-    if ((localObject1 != null) && (!TextUtils.isEmpty(((AdvertisementItem)localObject1).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString)))
+    if ((localObject1 != null) && (!TextUtils.isEmpty(((AdvertisementItem)localObject1).g.a)))
     {
-      ImaxAdRecentUserManager.a().a(((AdvertisementItem)localObject1).jdField_a_of_type_JavaLangString);
+      ImaxAdRecentUserManager.a().a(((AdvertisementItem)localObject1).a);
       ImaxAdRecentUserManager.a().a((AdvertisementItem)localObject1);
-      paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_uin", ((AdvertisementItem)localObject1).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString);
-      if (((AdvertisementItem)localObject1).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b != null) {
-        paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_name", ((AdvertisementItem)localObject1).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+      paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_uin", ((AdvertisementItem)localObject1).g.a);
+      if (((AdvertisementItem)localObject1).g.b != null) {
+        paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_name", ((AdvertisementItem)localObject1).g.b);
       }
       paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_first_report", "false");
       paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_first_click", "false");
-      paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_uin_head_url", ((AdvertisementItem)localObject1).e);
+      paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_uin_head_url", ((AdvertisementItem)localObject1).i);
       localObject2 = paramEntityManager.query(MessageRecord.class, paramMessageRecord.getTableName(), false, null, null, null, null, null, null);
       localObject1 = new ArrayList();
       if ((localObject2 != null) && (((List)localObject2).size() > 0))
@@ -354,7 +293,7 @@ public class ImaxAdVideoPreloadManager
         localObject2 = (MessageRecord)((Iterator)localObject1).next();
         paramEntityManager.remove((Entity)localObject2);
         RecentUtil.b(paramQQAppInterface, ((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop);
-        localObject3 = paramRecentUserProxy.a(paramMessageRecord.frienduin, paramMessageRecord.istroop);
+        localObject3 = paramRecentUserProxy.b(paramMessageRecord.frienduin, paramMessageRecord.istroop);
         if (localObject3 != null)
         {
           RecentDataListManager localRecentDataListManager = RecentDataListManager.a();
@@ -362,7 +301,7 @@ public class ImaxAdVideoPreloadManager
           localStringBuilder.append(paramMessageRecord.frienduin);
           localStringBuilder.append("-");
           localStringBuilder.append(paramMessageRecord.istroop);
-          localRecentDataListManager.a(localStringBuilder.toString());
+          localRecentDataListManager.b(localStringBuilder.toString());
           paramRecentUserProxy.a((RecentUser)localObject3);
         }
         paramQQAppInterface.getMessageFacade().a(((MessageRecord)localObject2).frienduin, 10005, true, true);
@@ -378,54 +317,46 @@ public class ImaxAdVideoPreloadManager
   private void a(List<PAAdPreloadTask> paramList, AdvertisementItem paramAdvertisementItem, VideoCoverItem paramVideoCoverItem)
   {
     PAAdPreloadTask localPAAdPreloadTask = new PAAdPreloadTask();
-    VideoDownloadItem localVideoDownloadItem = paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem;
+    VideoDownloadItem localVideoDownloadItem = paramAdvertisementItem.g;
     localPAAdPreloadTask.mUserUin = a();
-    localPAAdPreloadTask.mVideoVid = paramVideoCoverItem.b;
-    localPAAdPreloadTask.mMsgId = paramAdvertisementItem.jdField_c_of_type_JavaLangString;
+    localPAAdPreloadTask.mVideoVid = paramVideoCoverItem.c;
+    localPAAdPreloadTask.mMsgId = paramAdvertisementItem.d;
     localPAAdPreloadTask.mSource = 2;
-    long l;
-    if (paramAdvertisementItem.jdField_a_of_type_Long > 0L) {
-      l = paramAdvertisementItem.jdField_a_of_type_Long;
+    long l1;
+    if (paramAdvertisementItem.e > 0L) {
+      l1 = paramAdvertisementItem.e;
     } else {
-      l = NetConnInfoCenter.getServerTimeMillis();
+      l1 = NetConnInfoCenter.getServerTimeMillis();
     }
-    localPAAdPreloadTask.mReceiveTime = l;
-    localPAAdPreloadTask.mExpireTime = paramAdvertisementItem.b;
+    localPAAdPreloadTask.mReceiveTime = l1;
+    localPAAdPreloadTask.mExpireTime = paramAdvertisementItem.l;
     localPAAdPreloadTask.mPreloadState = 1;
-    localPAAdPreloadTask.mNetworkType = localVideoDownloadItem.e;
+    localPAAdPreloadTask.mNetworkType = localVideoDownloadItem.u;
     paramList.add(localPAAdPreloadTask);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return a(paramString) == 2;
-  }
-  
-  public static String b(String paramString)
-  {
-    String str = a(paramString);
-    paramString = str;
-    if (!TextUtils.isEmpty(str))
-    {
-      paramString = new StringBuilder();
-      paramString.append(str);
-      paramString.append(".tmp");
-      paramString = paramString.toString();
-    }
-    return paramString;
   }
   
   private void b()
   {
-    ImaxAdUtil.b("initCacheManager");
-    TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
-    if (localTVK_IProxyFactory != null)
+    ImaxAdUtil.c("installTVKSdk");
+    this.k = new TVK_UserInfo(a(), "");
+    this.l = new ImaxAdVideoPreloadManager.NetInfoHandler(this, this);
+    AppNetConnInfo.registerConnectionChangeReceiver(this.e, this.l);
+    try
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr = localTVK_IProxyFactory.getCacheMgr(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new ImaxAdVideoPreloadManager.PreloadCallback(this, null));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setOnPreLoadCompleteCallback(new ImaxAdVideoPreloadManager.PreloadCompleteCallback(this, null));
+      TVK_SDKMgr.setOnLogListener(new ImaxAdVideoPreloadManager.1(this));
+      TVK_SDKMgr.initSdk(this.e, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", a());
+      if (!TVK_SDKMgr.isInstalled(this.e))
+      {
+        TVK_SDKMgr.installPlugin(this.e, new ImaxAdVideoPreloadManager.2(this));
+        return;
+      }
+      c();
+      return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    catch (Throwable localThrowable)
+    {
+      QLog.d("ImaxAdvertisement", 2, "installTVKSdk ", localThrowable);
+    }
   }
   
   private void b(int paramInt)
@@ -433,9 +364,9 @@ public class ImaxAdVideoPreloadManager
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("continueDownload queueType:");
     localStringBuilder.append(paramInt);
-    ImaxAdUtil.b(localStringBuilder.toString());
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = null;
+    ImaxAdUtil.c(localStringBuilder.toString());
+    this.h = 0;
+    this.g = null;
     ThreadManager.executeOnNetWorkThread(new ImaxAdVideoPreloadManager.8(this, paramInt));
   }
   
@@ -450,10 +381,10 @@ public class ImaxAdVideoPreloadManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("insertToMsgSystem 0xf9 advertisementItem:");
-      ((StringBuilder)localObject).append(paramAdvertisementItem.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramAdvertisementItem.a);
       QLog.d("ImaxAdvertisement", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (QQAppInterface)this.d.get();
     if (localObject == null)
     {
       QLog.e("ImaxAdvertisement", 1, "insertToMsgSystem 0xf9 QQAppInterface == null");
@@ -465,62 +396,170 @@ public class ImaxAdVideoPreloadManager
     paramAdvertisementItem = new ArrayList();
     paramAdvertisementItem.add(localMessageRecord);
     ((QQAppInterface)localObject).getMessageFacade().a(paramAdvertisementItem, str, false, true, true);
-    ((QQAppInterface)localObject).getConversationFacade().a(localMessageRecord.frienduin, localMessageRecord.istroop).isImax = true;
+    ((QQAppInterface)localObject).getConversationFacade().p(localMessageRecord.frienduin, localMessageRecord.istroop).isImax = true;
     a((QQAppInterface)localObject);
   }
   
-  public static void b(String paramString)
+  public static boolean b(String paramString)
+  {
+    return f(paramString) == 2;
+  }
+  
+  private void c()
+  {
+    ImaxAdUtil.c("initCacheManager");
+    TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    if (localTVK_IProxyFactory != null)
+    {
+      this.j = localTVK_IProxyFactory.getCacheMgr(this.e);
+      this.j.setPreloadCallback(new ImaxAdVideoPreloadManager.PreloadCallback(this, null));
+      this.j.setOnPreLoadCompleteCallback(new ImaxAdVideoPreloadManager.PreloadCompleteCallback(this, null));
+    }
+    this.i = true;
+  }
+  
+  public static void c(String paramString)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("clearCacheVideo vid:");
     ((StringBuilder)localObject).append(paramString);
-    ImaxAdUtil.b(((StringBuilder)localObject).toString());
+    ImaxAdUtil.c(((StringBuilder)localObject).toString());
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject = new File(b(paramString));
+      localObject = new File(e(paramString));
       if (((File)localObject).exists()) {
         ((File)localObject).delete();
       }
-      paramString = new File(a(paramString));
+      paramString = new File(d(paramString));
       if (paramString.exists()) {
         paramString.delete();
       }
     }
   }
   
-  private void c()
+  public static String d(String paramString)
   {
-    ImaxAdUtil.b("resetDownload");
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = null;
-  }
-  
-  private void c(String paramString)
-  {
-    paramString = ImaxAdRecentUserManager.a().a(paramString).iterator();
-    while (paramString.hasNext())
+    if (!TextUtils.isEmpty(paramString))
     {
-      AdvertisementItem localAdvertisementItem = (AdvertisementItem)paramString.next();
-      b(localAdvertisementItem);
-      localAdvertisementItem.jdField_a_of_type_Int = 1;
-      ImaxAdUtil.b(a(), localAdvertisementItem.jdField_a_of_type_JavaLangString, localAdvertisementItem.a());
+      Object localObject = new File(a);
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdir();
+      }
+      if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(a);
+        ((StringBuilder)localObject).append(String.valueOf(20170807));
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(paramString);
+        return ((StringBuilder)localObject).toString();
+      }
     }
+    return "";
   }
   
   private void d()
   {
-    PAAdPreloadTask localPAAdPreloadTask = this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask;
+    ImaxAdUtil.c("resetDownload");
+    this.h = 0;
+    this.g = null;
+  }
+  
+  public static String e(String paramString)
+  {
+    String str = d(paramString);
+    paramString = str;
+    if (!TextUtils.isEmpty(str))
+    {
+      paramString = new StringBuilder();
+      paramString.append(str);
+      paramString.append(".tmp");
+      paramString = paramString.toString();
+    }
+    return paramString;
+  }
+  
+  private void e()
+  {
+    PAAdPreloadTask localPAAdPreloadTask = this.g;
     if (localPAAdPreloadTask != null)
     {
-      ReportController.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", localPAAdPreloadTask.mVideoVid, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mSource));
+      ReportController.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", localPAAdPreloadTask.mVideoVid, String.valueOf(this.g.mSource));
       return;
     }
     ReportController.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", "", "");
   }
   
-  private void d(String paramString)
+  private static int f(String paramString)
   {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    File localFile = new File(d(paramString));
+    if ((localFile.exists()) && (localFile.length() > 0L)) {
+      return 2;
+    }
+    paramString = new File(e(paramString));
+    if ((paramString.exists()) && (paramString.length() > 0L)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  private void f()
+  {
+    if (this.h == 0)
+    {
+      ImaxAdUtil.c("onNetworkChange, no queue is working");
+      return;
+    }
+    Object localObject = this.g;
+    if (localObject == null)
+    {
+      ImaxAdUtil.c("onNetworkChange, no valid task");
+      return;
+    }
+    if (((PAAdPreloadTask)localObject).isNetworkValid())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onNetworkChange, vid:");
+      ((StringBuilder)localObject).append(this.g.mVideoVid);
+      ((StringBuilder)localObject).append(", networkType:");
+      ((StringBuilder)localObject).append(this.g.mNetworkType);
+      ((StringBuilder)localObject).append(", valid network, going on");
+      ImaxAdUtil.c(((StringBuilder)localObject).toString());
+      return;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onNetworkChange, vid:");
+    ((StringBuilder)localObject).append(this.g.mVideoVid);
+    ((StringBuilder)localObject).append(", networkType:");
+    ((StringBuilder)localObject).append(this.g.mNetworkType);
+    ((StringBuilder)localObject).append(", invalid network, skip to next task");
+    ImaxAdUtil.c(((StringBuilder)localObject).toString());
+    localObject = this.j;
+    if (localObject != null)
+    {
+      ((TVK_ICacheMgr)localObject).stopCacheData(20170807);
+      b(this.h);
+    }
+  }
+  
+  private void g(String paramString)
+  {
+    paramString = ImaxAdRecentUserManager.a().c(paramString).iterator();
+    while (paramString.hasNext())
+    {
+      AdvertisementItem localAdvertisementItem = (AdvertisementItem)paramString.next();
+      b(localAdvertisementItem);
+      localAdvertisementItem.k = 1;
+      ImaxAdUtil.b(a(), localAdvertisementItem.a, localAdvertisementItem.c());
+    }
+  }
+  
+  private void h(String paramString)
+  {
+    Object localObject = (QQAppInterface)this.d.get();
     if (localObject != null) {
       localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
     } else {
@@ -529,102 +568,63 @@ public class ImaxAdVideoPreloadManager
     AdvertisementStatistics.b((String)localObject, paramString);
   }
   
-  private void e()
-  {
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      ImaxAdUtil.b("onNetworkChange, no queue is working");
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask;
-    if (localObject == null)
-    {
-      ImaxAdUtil.b("onNetworkChange, no valid task");
-      return;
-    }
-    if (((PAAdPreloadTask)localObject).isNetworkValid())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("onNetworkChange, vid:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mVideoVid);
-      ((StringBuilder)localObject).append(", networkType:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mNetworkType);
-      ((StringBuilder)localObject).append(", valid network, going on");
-      ImaxAdUtil.b(((StringBuilder)localObject).toString());
-      return;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("onNetworkChange, vid:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mVideoVid);
-    ((StringBuilder)localObject).append(", networkType:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mNetworkType);
-    ((StringBuilder)localObject).append(", invalid network, skip to next task");
-    ImaxAdUtil.b(((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-    if (localObject != null)
-    {
-      ((TVK_ICacheMgr)localObject).stopCacheData(20170807);
-      b(this.jdField_a_of_type_Int);
-    }
-  }
-  
   public void a(AdvertisementItem paramAdvertisementItem)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    Object localObject1 = this.c;
     if (paramAdvertisementItem != null) {}
     try
     {
-      if ((paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null) && (paramAdvertisementItem.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdvertisementItem.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      if ((paramAdvertisementItem.g != null) && (paramAdvertisementItem.c != null) && (paramAdvertisementItem.c.size() > 0))
       {
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("handlePreloadTaskFromMessage adItem ");
-        ((StringBuilder)localObject2).append(paramAdvertisementItem.jdField_a_of_type_JavaLangString);
-        ImaxAdUtil.b(((StringBuilder)localObject2).toString());
-        Object localObject3 = paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem;
-        localObject2 = (VideoCoverItem)paramAdvertisementItem.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if (!TextUtils.isEmpty(((VideoCoverItem)localObject2).b))
+        ((StringBuilder)localObject2).append(paramAdvertisementItem.a);
+        ImaxAdUtil.c(((StringBuilder)localObject2).toString());
+        Object localObject3 = paramAdvertisementItem.g;
+        localObject2 = (VideoCoverItem)paramAdvertisementItem.c.get(0);
+        if (!TextUtils.isEmpty(((VideoCoverItem)localObject2).c))
         {
           PAAdPreloadTask localPAAdPreloadTask = new PAAdPreloadTask();
           localPAAdPreloadTask.mUserUin = a();
-          localPAAdPreloadTask.mVideoVid = ((VideoCoverItem)localObject2).b;
-          if (!this.jdField_a_of_type_JavaUtilArrayList.contains(localPAAdPreloadTask))
+          localPAAdPreloadTask.mVideoVid = ((VideoCoverItem)localObject2).c;
+          if (!this.f.contains(localPAAdPreloadTask))
           {
-            localPAAdPreloadTask.mMsgId = paramAdvertisementItem.jdField_c_of_type_JavaLangString;
+            localPAAdPreloadTask.mMsgId = paramAdvertisementItem.d;
             localPAAdPreloadTask.mSource = 2;
-            long l;
-            if (paramAdvertisementItem.jdField_a_of_type_Long > 0L) {
-              l = paramAdvertisementItem.jdField_a_of_type_Long;
+            long l1;
+            if (paramAdvertisementItem.e > 0L) {
+              l1 = paramAdvertisementItem.e;
             } else {
-              l = NetConnInfoCenter.getServerTimeMillis();
+              l1 = NetConnInfoCenter.getServerTimeMillis();
             }
-            localPAAdPreloadTask.mReceiveTime = l;
-            localPAAdPreloadTask.mExpireTime = paramAdvertisementItem.b;
+            localPAAdPreloadTask.mReceiveTime = l1;
+            localPAAdPreloadTask.mExpireTime = paramAdvertisementItem.l;
             localPAAdPreloadTask.mPreloadState = 1;
-            localPAAdPreloadTask.mNetworkType = ((VideoDownloadItem)localObject3).e;
-            this.jdField_a_of_type_JavaUtilArrayList.add(localPAAdPreloadTask);
+            localPAAdPreloadTask.mNetworkType = ((VideoDownloadItem)localObject3).u;
+            this.f.add(localPAAdPreloadTask);
             ThreadManager.executeOnNetWorkThread(new ImaxAdVideoPreloadManager.5(this));
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("handlePreloadTaskFromMessage msgid:");
-            ((StringBuilder)localObject3).append(paramAdvertisementItem.jdField_c_of_type_JavaLangString);
+            ((StringBuilder)localObject3).append(paramAdvertisementItem.d);
             ((StringBuilder)localObject3).append(", vid:");
-            ((StringBuilder)localObject3).append(((VideoCoverItem)localObject2).b);
+            ((StringBuilder)localObject3).append(((VideoCoverItem)localObject2).c);
             ((StringBuilder)localObject3).append(", add to queue");
-            ImaxAdUtil.b(((StringBuilder)localObject3).toString());
+            ImaxAdUtil.c(((StringBuilder)localObject3).toString());
           }
           else
           {
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("handlePreloadTaskFromMessage msgid:");
-            ((StringBuilder)localObject3).append(paramAdvertisementItem.jdField_c_of_type_JavaLangString);
+            ((StringBuilder)localObject3).append(paramAdvertisementItem.d);
             ((StringBuilder)localObject3).append(", vid:");
-            ((StringBuilder)localObject3).append(((VideoCoverItem)localObject2).b);
+            ((StringBuilder)localObject3).append(((VideoCoverItem)localObject2).c);
             ((StringBuilder)localObject3).append(", exist in queue, ignore");
-            ImaxAdUtil.b(((StringBuilder)localObject3).toString());
+            ImaxAdUtil.c(((StringBuilder)localObject3).toString());
           }
         }
         return;
       }
-      ImaxAdUtil.b("handlePreloadTaskFromMessage invalid item");
+      ImaxAdUtil.c("handlePreloadTaskFromMessage invalid item");
       return;
     }
     finally {}
@@ -640,19 +640,19 @@ public class ImaxAdVideoPreloadManager
     ??? = new StringBuilder();
     ((StringBuilder)???).append("loadLocalConfigTaskForImax uin:");
     ((StringBuilder)???).append(paramString);
-    ImaxAdUtil.b(((StringBuilder)???).toString());
+    ImaxAdUtil.c(((StringBuilder)???).toString());
     Object localObject3 = ImaxAdUtil.a(paramString);
     ??? = new ArrayList();
     Object localObject2 = new ArrayList();
     paramString = a();
-    ImaxAdDeleteManager.a().b(ImaxAdUtil.a(paramString, "delete_uin_list"));
+    ImaxAdDeleteManager.a().c(ImaxAdUtil.b(paramString, "delete_uin_list"));
     Object localObject5;
     if (localObject3 != null)
     {
       localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("loadLocalConfigTaskForImax sp size:");
       ((StringBuilder)localObject4).append(((Map)localObject3).size());
-      ImaxAdUtil.b(((StringBuilder)localObject4).toString());
+      ImaxAdUtil.c(((StringBuilder)localObject4).toString());
       localObject4 = ((Map)localObject3).keySet().iterator();
       while (((Iterator)localObject4).hasNext())
       {
@@ -661,14 +661,14 @@ public class ImaxAdVideoPreloadManager
         {
           ImaxAdRecentUserManager.a().a((AdvertisementItem)localObject5);
           ((List)???).add(localObject5);
-          if ((((AdvertisementItem)localObject5).c()) || (ImaxAdDeleteManager.a().a(paramString, ((AdvertisementItem)localObject5).jdField_a_of_type_JavaLangString)))
+          if ((((AdvertisementItem)localObject5).e()) || (ImaxAdDeleteManager.a().a(paramString, ((AdvertisementItem)localObject5).a)))
           {
             ((List)localObject2).add(localObject5);
-            if ((((AdvertisementItem)localObject5).jdField_a_of_type_JavaUtilArrayList != null) && (((AdvertisementItem)localObject5).jdField_a_of_type_JavaUtilArrayList.size() > 0))
+            if ((((AdvertisementItem)localObject5).c != null) && (((AdvertisementItem)localObject5).c.size() > 0))
             {
-              localObject5 = ((AdvertisementItem)localObject5).jdField_a_of_type_JavaUtilArrayList.iterator();
+              localObject5 = ((AdvertisementItem)localObject5).c.iterator();
               while (((Iterator)localObject5).hasNext()) {
-                b(((VideoCoverItem)((Iterator)localObject5).next()).b);
+                c(((VideoCoverItem)((Iterator)localObject5).next()).c);
               }
             }
           }
@@ -676,46 +676,46 @@ public class ImaxAdVideoPreloadManager
       }
     }
     localObject3 = new ArrayList();
-    Object localObject4 = ((ProxyManager)paramQQAppInterface.getManager(QQManagerFactory.PROXY_MANAGER)).a();
+    Object localObject4 = ((ProxyManager)paramQQAppInterface.getManager(QQManagerFactory.PROXY_MANAGER)).g();
     if (localObject4 != null)
     {
       localObject5 = ((RecentUserProxy)localObject4).a(true);
-      int i = 0;
-      while (i < ((List)localObject5).size())
+      int m = 0;
+      while (m < ((List)localObject5).size())
       {
-        RecentUser localRecentUser = (RecentUser)((List)localObject5).get(i);
+        RecentUser localRecentUser = (RecentUser)((List)localObject5).get(m);
         Object localObject6 = ImaxAdRecentUserManager.a().b(localRecentUser.uin);
         if ((localRecentUser.getType() == 10005) && (localObject6 != null))
         {
           ((List)localObject3).add(localObject6);
-          if ((((AdvertisementItem)localObject6).c()) || (ImaxAdDeleteManager.a().a(paramString, ((AdvertisementItem)localObject6).jdField_a_of_type_JavaLangString)))
+          if ((((AdvertisementItem)localObject6).e()) || (ImaxAdDeleteManager.a().a(paramString, ((AdvertisementItem)localObject6).a)))
           {
             localObject6 = RecentDataListManager.a();
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append(localRecentUser.uin);
             localStringBuilder.append("-");
             localStringBuilder.append(localRecentUser.getType());
-            ((RecentDataListManager)localObject6).a(localStringBuilder.toString());
+            ((RecentDataListManager)localObject6).b(localStringBuilder.toString());
             ((RecentUserProxy)localObject4).a(localRecentUser);
             RecentUtil.b(paramQQAppInterface, localRecentUser.uin, 10005);
             paramQQAppInterface.getMessageFacade().a(localRecentUser.uin, 10005);
           }
         }
-        i += 1;
+        m += 1;
       }
     }
     if (((List)localObject3).size() > 0) {
       a(paramQQAppInterface);
     }
     ((List)???).removeAll((Collection)localObject2);
-    ImaxAdRecentUserManager.a().a();
-    ImaxAdUtil.a(paramString);
+    ImaxAdRecentUserManager.a().b();
+    ImaxAdUtil.b(paramString);
     paramQQAppInterface = ((List)???).iterator();
     while (paramQQAppInterface.hasNext())
     {
       localObject4 = (AdvertisementItem)paramQQAppInterface.next();
       ImaxAdRecentUserManager.a().a((AdvertisementItem)localObject4);
-      ImaxAdUtil.b(paramString, ((AdvertisementItem)localObject4).jdField_a_of_type_JavaLangString, ((AdvertisementItem)localObject4).a());
+      ImaxAdUtil.b(paramString, ((AdvertisementItem)localObject4).a, ((AdvertisementItem)localObject4).c());
     }
     paramQQAppInterface = new StringBuilder();
     paramQQAppInterface.append("loadLocalConfigTaskForImax recentImaxAdList:");
@@ -724,39 +724,39 @@ public class ImaxAdVideoPreloadManager
     paramQQAppInterface.append(((List)localObject2).size());
     paramQQAppInterface.append(" imaxAdList:");
     paramQQAppInterface.append(((List)???).size());
-    ImaxAdUtil.b(paramQQAppInterface.toString());
+    ImaxAdUtil.c(paramQQAppInterface.toString());
     paramQQAppInterface = new ArrayList();
     ??? = ((List)???).iterator();
     while (((Iterator)???).hasNext())
     {
       localObject2 = (AdvertisementItem)((Iterator)???).next();
-      if ((((AdvertisementItem)localObject2).jdField_a_of_type_JavaUtilArrayList != null) && (((AdvertisementItem)localObject2).jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      if ((((AdvertisementItem)localObject2).c != null) && (((AdvertisementItem)localObject2).c.size() > 0))
       {
-        localObject4 = (VideoCoverItem)((AdvertisementItem)localObject2).jdField_a_of_type_JavaUtilArrayList.get(0);
+        localObject4 = (VideoCoverItem)((AdvertisementItem)localObject2).c.get(0);
         if (!((List)localObject3).contains(localObject2)) {
           a(paramQQAppInterface, (AdvertisementItem)localObject2, (VideoCoverItem)localObject4);
-        } else if (a(((VideoCoverItem)localObject4).b) != 2) {
+        } else if (f(((VideoCoverItem)localObject4).c) != 2) {
           a(paramQQAppInterface, (AdvertisementItem)localObject2, (VideoCoverItem)localObject4);
         }
       }
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
       if (paramQQAppInterface.size() > 0)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramQQAppInterface);
+        this.f.clear();
+        this.f.addAll(paramQQAppInterface);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("loadLocalConfigTaskForImax taskSize:");
         ((StringBuilder)localObject2).append(paramQQAppInterface.size());
-        ImaxAdUtil.b(((StringBuilder)localObject2).toString());
+        ImaxAdUtil.c(((StringBuilder)localObject2).toString());
         ThreadManager.executeOnNetWorkThread(new ImaxAdVideoPreloadManager.3(this));
       }
       else
       {
-        ImaxAdUtil.b("loadLocalConfigTaskForImax tasklist null");
+        ImaxAdUtil.c("loadLocalConfigTaskForImax tasklist null");
       }
-      ImaxAdDeleteManager.a().c(paramString);
+      ImaxAdDeleteManager.a().d(paramString);
       return;
     }
     for (;;)
@@ -775,19 +775,19 @@ public class ImaxAdVideoPreloadManager
       ((StringBuilder)???).append("]");
       QLog.d("ImaxAdvertisement", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
       PAAdPreloadTask localPAAdPreloadTask = new PAAdPreloadTask();
       localPAAdPreloadTask.mUserUin = a();
       localPAAdPreloadTask.mVideoVid = paramString;
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(localPAAdPreloadTask))
+      if (!this.f.contains(localPAAdPreloadTask))
       {
         localPAAdPreloadTask.mMsgId = MD5Utils.toMD5(localPAAdPreloadTask.mVideoVid);
         localPAAdPreloadTask.mSource = 2;
         localPAAdPreloadTask.mReceiveTime = NetConnInfoCenter.getServerTimeMillis();
         localPAAdPreloadTask.mExpireTime = (localPAAdPreloadTask.mReceiveTime + 86400000L);
         localPAAdPreloadTask.mPreloadState = 1;
-        this.jdField_a_of_type_JavaUtilArrayList.add(localPAAdPreloadTask);
+        this.f.add(localPAAdPreloadTask);
         ThreadManager.executeOnNetWorkThread(new ImaxAdVideoPreloadManager.6(this));
         paramString = new StringBuilder();
         paramString.append("handlePreloadTaskFromMessage msgid:");
@@ -795,7 +795,7 @@ public class ImaxAdVideoPreloadManager
         paramString.append(", vid:");
         paramString.append(localPAAdPreloadTask.mVideoVid);
         paramString.append(", add to queue");
-        ImaxAdUtil.b(paramString.toString());
+        ImaxAdUtil.c(paramString.toString());
       }
       else
       {
@@ -805,7 +805,7 @@ public class ImaxAdVideoPreloadManager
         paramString.append(", vid:");
         paramString.append(localPAAdPreloadTask.mVideoVid);
         paramString.append(", exist in queue, ignore");
-        ImaxAdUtil.b(paramString.toString());
+        ImaxAdUtil.c(paramString.toString());
       }
       return;
     }
@@ -816,7 +816,7 @@ public class ImaxAdVideoPreloadManager
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("processMsg0x210Sub0xfd ");
     ((StringBuilder)localObject).append(paramInt);
-    ImaxAdUtil.b(((StringBuilder)localObject).toString());
+    ImaxAdUtil.c(((StringBuilder)localObject).toString());
     if (paramArrayOfByte == null)
     {
       paramArrayOfByte = new StringBuilder();
@@ -831,15 +831,15 @@ public class ImaxAdVideoPreloadManager
     {
       paramArrayOfByte = String.valueOf(((submsgtype0xfd.MsgBody)new submsgtype0xfd.MsgBody().mergeFrom(paramArrayOfByte)).msg_AdInfo.uint64_from_uin.get());
       ImaxAdDeleteManager.a().a(paramArrayOfByte);
-      ImaxAdUtil.a(a(), "delete_uin_list", ImaxAdDeleteManager.a().a());
+      ImaxAdUtil.a(a(), "delete_uin_list", ImaxAdDeleteManager.a().b());
       localObject = a();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("delete_st_");
       localStringBuilder.append(paramArrayOfByte);
       ImaxAdUtil.a((String)localObject, localStringBuilder.toString(), String.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      if (this.d.get() != null)
       {
-        ImaxAdDeleteManager.a().a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramArrayOfByte);
+        ImaxAdDeleteManager.a().a((QQAppInterface)this.d.get(), paramArrayOfByte);
         return;
       }
     }
@@ -854,7 +854,7 @@ public class ImaxAdVideoPreloadManager
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("processMsg0x210Sub0xf9 ");
     ((StringBuilder)localObject).append(paramInt);
-    ImaxAdUtil.b(((StringBuilder)localObject).toString());
+    ImaxAdUtil.c(((StringBuilder)localObject).toString());
     if (paramArrayOfByte == null)
     {
       paramArrayOfByte = new StringBuilder();
@@ -876,29 +876,29 @@ public class ImaxAdVideoPreloadManager
         localObject = new submsgtype0xf9.AdInfo();
         ((submsgtype0xf9.AdInfo)localObject).mergeFrom(paramArrayOfByte);
         paramArrayOfByte = AdvertisementItem.a((submsgtype0xf9.AdInfo)localObject, paramMsgInfo);
-        if (ImaxAdDeleteManager.a().a(a(), paramArrayOfByte.jdField_a_of_type_JavaLangString))
+        if (ImaxAdDeleteManager.a().a(a(), paramArrayOfByte.a))
         {
           paramMsgInfo = new StringBuilder();
           paramMsgInfo.append("processMsg0x210Sub0xf9 InDeleteFilter mSenderUin ");
-          paramMsgInfo.append(paramArrayOfByte.jdField_a_of_type_JavaLangString);
-          ImaxAdUtil.b(paramMsgInfo.toString());
+          paramMsgInfo.append(paramArrayOfByte.a);
+          ImaxAdUtil.c(paramMsgInfo.toString());
           return;
         }
-        ImaxAdRecentUserManager.a().a(paramArrayOfByte.jdField_a_of_type_JavaLangString);
+        ImaxAdRecentUserManager.a().a(paramArrayOfByte.a);
         ImaxAdRecentUserManager.a().a(paramArrayOfByte);
         paramMsgInfo = new StringBuilder();
         paramMsgInfo.append("processMsg0x210Sub0xf9 sp :advertisementItem ");
-        paramMsgInfo.append(paramArrayOfByte.jdField_a_of_type_JavaLangString);
-        ImaxAdUtil.b(paramMsgInfo.toString());
-        ImaxAdUtil.b(a(), paramArrayOfByte.jdField_a_of_type_JavaLangString, paramArrayOfByte.a());
-        if ((paramArrayOfByte.jdField_a_of_type_JavaUtilArrayList != null) && (paramArrayOfByte.jdField_a_of_type_JavaUtilArrayList.size() != 0))
+        paramMsgInfo.append(paramArrayOfByte.a);
+        ImaxAdUtil.c(paramMsgInfo.toString());
+        ImaxAdUtil.b(a(), paramArrayOfByte.a, paramArrayOfByte.c());
+        if ((paramArrayOfByte.c != null) && (paramArrayOfByte.c.size() != 0))
         {
           a(paramArrayOfByte);
           return;
         }
         paramMsgInfo = new StringBuilder();
         paramMsgInfo.append("no any video resources 0xf9 error");
-        paramMsgInfo.append(paramArrayOfByte.jdField_a_of_type_JavaLangString);
+        paramMsgInfo.append(paramArrayOfByte.a);
         QLog.e("ImaxAdvertisement", 1, paramMsgInfo.toString());
         b(paramArrayOfByte);
         return;
@@ -906,7 +906,7 @@ public class ImaxAdVideoPreloadManager
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("output == null ");
       paramArrayOfByte.append(paramInt);
-      ImaxAdUtil.b(paramArrayOfByte.toString());
+      ImaxAdUtil.c(paramArrayOfByte.toString());
       return;
     }
     catch (Exception paramArrayOfByte)
@@ -917,28 +917,28 @@ public class ImaxAdVideoPreloadManager
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+    this.f.clear();
+    Object localObject = this.j;
     if (localObject != null)
     {
       ((TVK_ICacheMgr)localObject).stopCacheData(20170807);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.removePreloadCallback();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setOnPreLoadCompleteCallback(null);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.releasePreload(20170807);
+      this.j.removePreloadCallback();
+      this.j.setOnPreLoadCompleteCallback(null);
+      this.j.releasePreload(20170807);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqImaxadImaxAdVideoPreloadManager$NetInfoHandler;
+    localObject = this.l;
     if (localObject != null)
     {
       ((ImaxAdVideoPreloadManager.NetInfoHandler)localObject).a();
-      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqImaxadImaxAdVideoPreloadManager$NetInfoHandler);
-      this.jdField_a_of_type_ComTencentMobileqqImaxadImaxAdVideoPreloadManager$NetInfoHandler = null;
+      AppNetConnInfo.unregisterNetInfoHandler(this.l);
+      this.l = null;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.i = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager
  * JD-Core Version:    0.7.0.1
  */

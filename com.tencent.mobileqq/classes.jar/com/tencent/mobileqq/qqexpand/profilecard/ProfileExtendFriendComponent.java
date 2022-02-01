@@ -67,21 +67,21 @@ public class ProfileExtendFriendComponent
   extends AbsQQProfileContentComponent
   implements View.OnClickListener
 {
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private PhotoWallObserver jdField_a_of_type_ComTencentMobileqqProfilecardBussinessPhotowallHandlerPhotoWallObserver = new ProfileExtendFriendComponent.1(this);
-  private ExpandObserver jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new ProfileExtendFriendComponent.3(this);
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean;
-  private Dialog jdField_b_of_type_AndroidAppDialog;
-  private final ExpandObserver jdField_b_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver = new ProfileExtendFriendComponent.2(this);
-  private final Runnable jdField_b_of_type_JavaLangRunnable = new ProfileExtendFriendComponent.4(this);
-  private boolean jdField_b_of_type_Boolean;
+  private Handler a;
+  private boolean b;
   private boolean c;
   private boolean d;
   private boolean e;
+  private final AtomicBoolean f = new AtomicBoolean(false);
+  private Dialog g;
+  private Dialog h;
+  private boolean i;
+  private QQProgressDialog j;
+  private ExpandObserver k;
+  private PhotoWallObserver l = new ProfileExtendFriendComponent.1(this);
+  private final ExpandObserver m = new ProfileExtendFriendComponent.2(this);
+  private final Runnable n = new ProfileExtendFriendComponent.3(this);
+  private final Runnable o = new ProfileExtendFriendComponent.4(this);
   
   public ProfileExtendFriendComponent(IComponentCenter paramIComponentCenter, ProfileCardInfo paramProfileCardInfo)
   {
@@ -93,15 +93,15 @@ public class ProfileExtendFriendComponent
     Object localObject;
     if (TextUtils.equals(((ProfileCardInfo)this.mData).card.uin, this.mApp.getCurrentAccountUin()))
     {
-      if (a())
+      if (b())
       {
-        int i;
-        if (this.jdField_b_of_type_Boolean) {
-          i = 2;
+        int i1;
+        if (this.c) {
+          i1 = 2;
         } else {
-          i = 1;
+          i1 = 1;
         }
-        ReportController.b(null, "dc00898", "", "", "kuolie", "0X80097DB", i, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "kuolie", "0X80097DB", i1, 0, "", "", "", "");
         return;
       }
       localObject = new ExtendFriendInfo(((ProfileCardInfo)this.mData).card);
@@ -110,7 +110,7 @@ public class ProfileExtendFriendComponent
       ((IExpandFragmentRouter)QRoute.api(IExpandFragmentRouter.class)).launchExpandEditFragmentForResult(this.mActivity, localIntent, 4097);
       return;
     }
-    boolean bool = ExpandChatUtil.a(this.mQQAppInterface);
+    boolean bool = ExpandChatUtil.b(this.mQQAppInterface);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -118,7 +118,7 @@ public class ProfileExtendFriendComponent
       ((StringBuilder)localObject).append(bool);
       QLog.d("ProfileExtendFriendComponent", 2, ((StringBuilder)localObject).toString());
     }
-    if ((!this.c) && (bool))
+    if ((!this.d) && (bool))
     {
       ((IExpandEntrance)QRoute.api(IExpandEntrance.class)).enterExpand(this.mActivity, this.mApp, 5);
       ((IExpandReportUtils)QRoute.api(IExpandReportUtils.class)).reportEnterExpandClick("6");
@@ -127,34 +127,34 @@ public class ProfileExtendFriendComponent
   
   private void a(long paramLong)
   {
-    if ((!this.jdField_a_of_type_Boolean) && ((!this.jdField_b_of_type_Boolean) || (this.d))) {
+    if ((!this.b) && ((!this.c) || (this.e))) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
+    if (this.a == null)
     {
       QLog.w("ProfileExtendFriendComponent", 1, "mHandler is null, can not scroll");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, paramLong);
+    if (this.f.compareAndSet(false, true)) {
+      this.a.postDelayed(this.o, paramLong);
     }
   }
   
   private void a(Card paramCard, ProfileContentTitleView paramProfileContentTitleView)
   {
     boolean bool2 = ThemeUtil.isInNightMode(this.mApp);
-    int j;
+    int i2;
     if (((ProfileCardInfo)this.mData).currentTemplate != null) {
-      j = 1;
+      i2 = 1;
     } else {
-      j = 0;
+      i2 = 0;
     }
     Object localObject = paramProfileContentTitleView.getContentView();
     if (localObject != null)
     {
-      if (j != 0)
+      if (i2 != 0)
       {
-        ProfileCardTemplate localProfileCardTemplate = (ProfileCardTemplate)((View)localObject).getTag(1912930347);
+        ProfileCardTemplate localProfileCardTemplate = (ProfileCardTemplate)((View)localObject).getTag(1912930399);
         if (localProfileCardTemplate != null) {
           if (localProfileCardTemplate.equals(((ProfileCardInfo)this.mData).currentTemplate)) {
             break label100;
@@ -163,17 +163,17 @@ public class ProfileExtendFriendComponent
       }
       else
       {
-        if (((View)localObject).getTag(1912930347) == null) {
+        if (((View)localObject).getTag(1912930399) == null) {
           break label100;
         }
       }
-      i = 1;
+      i1 = 1;
       break label102;
     }
     label100:
-    int i = 0;
+    int i1 = 0;
     label102:
-    if ((localObject != null) && (Boolean.FALSE.equals(((View)localObject).getTag(1912930348))) && (Boolean.valueOf(bool2).equals(((View)localObject).getTag(1912930349))) && (i == 0))
+    if ((localObject != null) && (Boolean.FALSE.equals(((View)localObject).getTag(1912930400))) && (Boolean.valueOf(bool2).equals(((View)localObject).getTag(1912930401))) && (i1 == 0))
     {
       localObject = (ProfileCardExtendFriendView)localObject;
     }
@@ -182,14 +182,14 @@ public class ProfileExtendFriendComponent
       paramProfileContentTitleView.removeContentViews();
       paramProfileContentTitleView.setFocusable(false);
       paramProfileContentTitleView.setClickable(false);
-      if (j != 0)
+      if (i2 != 0)
       {
         localObject = ((ProfileCardInfo)this.mData).currentTemplate.templateAttr.get("commonItemContentColor");
         if (localObject != null)
         {
           if ((localObject instanceof ColorStateList))
           {
-            i = ((ColorStateList)localObject).getDefaultColor();
+            i1 = ((ColorStateList)localObject).getDefaultColor();
             break label262;
           }
           if ((localObject instanceof String))
@@ -197,14 +197,14 @@ public class ProfileExtendFriendComponent
             localObject = (String)localObject;
             if (((String)localObject).startsWith("#"))
             {
-              i = Color.parseColor((String)localObject);
+              i1 = Color.parseColor((String)localObject);
               break label262;
             }
           }
         }
-        i = 0;
+        i1 = 0;
         localObject = new float[3];
-        Color.colorToHSV(i, (float[])localObject);
+        Color.colorToHSV(i1, (float[])localObject);
         if (localObject[2] > 0.5F)
         {
           bool1 = true;
@@ -218,21 +218,21 @@ public class ProfileExtendFriendComponent
       for (;;)
       {
         break;
-        if (j != 0) {
+        if (i2 != 0) {
           localObject = new ProfileCardExtendFriendView(this.mActivity, ((ProfileCardInfo)this.mData).currentTemplate, bool1);
         } else {
           localObject = new ProfileCardExtendFriendView(this.mActivity);
         }
       }
       ((ProfileCardExtendFriendView)localObject).a(ProfileTemplateApi.getTemplateUtils(this.mComponentCenter));
-      ((ProfileCardExtendFriendView)localObject).setFromExtendFriend(this.jdField_b_of_type_Boolean);
-      if ((((ProfileCardInfo)this.mData).allInOne.pa == 96) || (this.jdField_b_of_type_Boolean)) {
+      ((ProfileCardExtendFriendView)localObject).setFromExtendFriend(this.c);
+      if ((((ProfileCardInfo)this.mData).allInOne.pa == 96) || (this.c)) {
         ((ProfileCardExtendFriendView)localObject).setFold(false);
       }
       ((ProfileCardExtendFriendView)localObject).setClickable(true);
-      ((ProfileCardExtendFriendView)localObject).setTag(1912930348, Boolean.valueOf(false));
-      ((ProfileCardExtendFriendView)localObject).setTag(1912930349, Boolean.valueOf(bool2));
-      ((ProfileCardExtendFriendView)localObject).setTag(1912930347, ((ProfileCardInfo)this.mData).currentTemplate);
+      ((ProfileCardExtendFriendView)localObject).setTag(1912930400, Boolean.valueOf(false));
+      ((ProfileCardExtendFriendView)localObject).setTag(1912930401, Boolean.valueOf(bool2));
+      ((ProfileCardExtendFriendView)localObject).setTag(1912930399, ((ProfileCardInfo)this.mData).currentTemplate);
       paramProfileContentTitleView.addContentView((View)localObject);
     }
     label262:
@@ -246,7 +246,7 @@ public class ProfileExtendFriendComponent
     {
       ((ProfileCardExtendFriendView)localObject).setDiyCard(false);
     }
-    ((ProfileCardExtendFriendView)localObject).setIsFromLimitChat(this.c);
+    ((ProfileCardExtendFriendView)localObject).setIsFromLimitChat(this.d);
     ((ProfileCardExtendFriendView)localObject).a(paramCard, this.mQQAppInterface);
   }
   
@@ -260,28 +260,28 @@ public class ProfileExtendFriendComponent
       Object localObject4;
       if ((!paramBoolean1) && (!paramBoolean2))
       {
-        localObject2 = LayoutInflater.from(this.mActivity).inflate(1912995849, null);
-        localObject3 = ((View)localObject2).findViewById(1912930354);
+        localObject2 = LayoutInflater.from(this.mActivity).inflate(1912995853, null);
+        localObject3 = ((View)localObject2).findViewById(1912930413);
         localObject4 = ExpandResourceUtil.a("expand_summary_default_bg.png");
         localObject1 = localObject2;
-        if (FileUtil.b((String)localObject4))
+        if (FileUtil.d((String)localObject4))
         {
           localObject1 = ExpandResourceUtil.a((String)localObject4, null);
           localObject4 = new BitmapDrawable((Bitmap)localObject1);
-          float f = ((Bitmap)localObject1).getWidth() / ((Bitmap)localObject1).getHeight();
-          ((View)localObject3).setLayoutParams(new LinearLayout.LayoutParams(-1, (int)(this.mActivity.getResources().getDisplayMetrics().widthPixels / f)));
+          float f1 = ((Bitmap)localObject1).getWidth() / ((Bitmap)localObject1).getHeight();
+          ((View)localObject3).setLayoutParams(new LinearLayout.LayoutParams(-1, (int)(this.mActivity.getResources().getDisplayMetrics().widthPixels / f1)));
           ((View)localObject3).setBackgroundDrawable((Drawable)localObject4);
           localObject1 = localObject2;
         }
       }
       else
       {
-        localObject1 = LayoutInflater.from(this.mActivity).inflate(1912995850, null);
-        ((View)localObject1).setTag(1912930348, Boolean.valueOf(true));
-        ((View)localObject1).setTag(1912930349, Boolean.valueOf(paramBoolean1));
-        ((View)localObject1).setTag(1912930347, ((ProfileCardInfo)this.mData).currentTemplate);
-        localObject2 = (TextView)((View)localObject1).findViewById(1912930371);
-        localObject3 = (TextView)((View)localObject1).findViewById(1912930372);
+        localObject1 = LayoutInflater.from(this.mActivity).inflate(1912995854, null);
+        ((View)localObject1).setTag(1912930400, Boolean.valueOf(true));
+        ((View)localObject1).setTag(1912930401, Boolean.valueOf(paramBoolean1));
+        ((View)localObject1).setTag(1912930399, ((ProfileCardInfo)this.mData).currentTemplate);
+        localObject2 = (TextView)((View)localObject1).findViewById(1912930445);
+        localObject3 = (TextView)((View)localObject1).findViewById(1912930446);
         if (paramBoolean2)
         {
           localObject4 = ((ProfileCardInfo)this.mData).currentTemplate.templateAttr.get("commonItemContentColor");
@@ -305,29 +305,13 @@ public class ProfileExtendFriendComponent
         }
       }
       ((View)localObject1).setClickable(true);
-      Object localObject2 = ((View)localObject1).findViewById(1912930370);
+      Object localObject2 = ((View)localObject1).findViewById(1912930444);
       ((View)localObject2).setOnClickListener(new ProfileExtendFriendComponent.5(this, paramCard));
       paramProfileContentTitleView.addContentView((View)localObject1);
       if (paramBoolean1) {
         updateItemTheme(null, (View)localObject2, null);
       }
     }
-  }
-  
-  private boolean a()
-  {
-    if (((IExpandQuestionUtils)QRoute.api(IExpandQuestionUtils.class)).needAnswerQuestion(this.mApp.getCurrentAccountUin()))
-    {
-      if (this.jdField_b_of_type_AndroidAppDialog == null) {
-        this.jdField_b_of_type_AndroidAppDialog = ProfileGuideDialogUtils.a(this.mActivity);
-      }
-      if ((!this.jdField_b_of_type_AndroidAppDialog.isShowing()) && (!this.mActivity.isFinishing())) {
-        this.jdField_b_of_type_AndroidAppDialog.show();
-      }
-      ReportController.b(this.mApp, "dc00898", "", "", "kuolie", "0X80097DC", 0, 0, "", "", "", "");
-      return true;
-    }
-    return false;
   }
   
   private boolean a(Card paramCard)
@@ -353,18 +337,18 @@ public class ProfileExtendFriendComponent
       else
       {
         SharedPreferences localSharedPreferences = SharedPreUtils.a(this.mApp.getCurrentAccountUin(), "extend_friend_config_785");
-        int i;
+        int i1;
         if (localSharedPreferences.contains("sp_extend_friend_entry_add_friend")) {
-          i = localSharedPreferences.getInt("sp_extend_friend_entry_add_friend", 0);
+          i1 = localSharedPreferences.getInt("sp_extend_friend_entry_add_friend", 0);
         } else {
-          i = 1;
+          i1 = 1;
         }
         bool1 = bool2;
         if (localSharedPreferences.getInt("sp_extend_friend_entry_add_friend", 0) == 0) {
           break label146;
         }
         bool1 = bool2;
-        if (i != 1) {
+        if (i1 != 1) {
           break label146;
         }
         if (TextUtils.isEmpty(paramCard.declaration))
@@ -396,8 +380,8 @@ public class ProfileExtendFriendComponent
     if (this.mViewContainer == null)
     {
       localProfileContentTitleView = new ProfileContentTitleView(this.mActivity);
-      localProfileContentTitleView.setTitle(this.mActivity.getString(1913061377));
-      if (this.c) {
+      localProfileContentTitleView.setTitle(this.mActivity.getString(1913061378));
+      if (this.d) {
         localProfileContentTitleView.setArrowEnable(false);
       }
       this.mViewContainer = localProfileContentTitleView;
@@ -426,48 +410,57 @@ public class ProfileExtendFriendComponent
     paramCard = new DataTag(87, null);
     localProfileContentTitleView.mTitleContainer.setTag(paramCard);
     localProfileContentTitleView.mTitleContainer.setOnClickListener(this);
+    localProfileContentTitleView.setArrowEnable(ExpandChatUtil.b(this.mApp));
     updateItemTheme(localProfileContentTitleView, true);
     a(5000L);
     return paramBoolean;
   }
   
-  private void b()
-  {
-    IComponent localIComponent = getComponentCenter().getComponent(107);
-    if ((localIComponent instanceof IProfileBottomContainer)) {
-      ((IProfileBottomContainer)localIComponent).addFriend();
-    }
-  }
-  
   private boolean b()
   {
-    boolean bool3 = this.c;
+    if (((IExpandQuestionUtils)QRoute.api(IExpandQuestionUtils.class)).needAnswerQuestion(this.mApp.getCurrentAccountUin()))
+    {
+      if (this.h == null) {
+        this.h = ProfileGuideDialogUtils.a(this.mActivity);
+      }
+      if ((!this.h.isShowing()) && (!this.mActivity.isFinishing())) {
+        this.h.show();
+      }
+      ReportController.b(this.mApp, "dc00898", "", "", "kuolie", "0X80097DC", 0, 0, "", "", "", "");
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean c()
+  {
+    boolean bool3 = this.d;
     boolean bool1 = false;
     boolean bool2 = false;
     if (bool3) {
       return false;
     }
-    Card localCard = ((FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.mApp.getCurrentUin());
+    Card localCard = ((FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(this.mApp.getCurrentUin());
     if (localCard == null) {
       return false;
     }
     bool3 = QLog.isColorLevel();
-    int i = 2;
+    int i1 = 2;
     if (bool3) {
       QLog.d("ProfileExtendFriendComponent", 2, String.format("showExtendFriendProfileGuide declaration=%s isShowCard=%s", new Object[] { localCard.declaration, Boolean.valueOf(localCard.isShowCard) }));
     }
-    if ((TextUtils.isEmpty(localCard.declaration)) && (c())) {
+    if ((TextUtils.isEmpty(localCard.declaration)) && (d())) {
       return true;
     }
     if ((TextUtils.isEmpty(localCard.declaration)) || (!localCard.isShowCard))
     {
       if (TextUtils.isEmpty(localCard.declaration)) {
-        i = 1;
+        i1 = 1;
       }
-      this.jdField_a_of_type_AndroidAppDialog = ProfileGuideDialogUtils.a(this.mActivity, i, new ProfileExtendFriendComponent.6(this, localCard));
+      this.g = ProfileGuideDialogUtils.a(this.mActivity, i1, new ProfileExtendFriendComponent.6(this, localCard));
       try
       {
-        this.jdField_a_of_type_AndroidAppDialog.show();
+        this.g.show();
         bool1 = true;
       }
       catch (Exception localException)
@@ -485,29 +478,37 @@ public class ProfileExtendFriendComponent
     return bool1;
   }
   
-  private boolean c()
+  private boolean d()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileExtendFriendComponent", 2, String.format("checkUpdateExtendInfo mExtendRequested=%s", new Object[] { Boolean.valueOf(this.e) }));
+      QLog.d("ProfileExtendFriendComponent", 2, String.format("checkUpdateExtendInfo mExtendRequested=%s", new Object[] { Boolean.valueOf(this.i) }));
     }
-    if (!this.e)
+    if (!this.i)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver != null) {
+      if (this.k != null) {
         return false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver = new ProfileExtendFriendComponent.7(this);
-      this.mApp.addObserver(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.mActivity);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      this.k = new ProfileExtendFriendComponent.7(this);
+      this.mApp.addObserver(this.k);
+      this.j = new QQProgressDialog(this.mActivity);
+      this.j.c(true);
+      this.j.show();
       ((IExpandHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).a(this.mApp.getCurrentAccountUin(), false);
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      Handler localHandler = this.a;
       if (localHandler != null) {
-        localHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
+        localHandler.postDelayed(this.n, 10000L);
       }
       return true;
     }
     return false;
+  }
+  
+  private void e()
+  {
+    IComponent localIComponent = getComponentCenter().getComponent(107);
+    if ((localIComponent instanceof IProfileBottomContainer)) {
+      ((IProfileBottomContainer)localIComponent).addFriend();
+    }
   }
   
   public boolean a(ProfileCardInfo paramProfileCardInfo)
@@ -522,12 +523,12 @@ public class ProfileExtendFriendComponent
     localHashMap.put("to_uid", paramProfileCardInfo.allInOne.uin);
     localHashMap.put("session_id", LimitChatUtil.a(this.mApp.getCurrentAccountUin(), paramProfileCardInfo.allInOne.uin));
     ((IExpandReportUtils)QRoute.api(IExpandReportUtils.class)).onUserActionToTunnel("click#data_page#add_friends_all", true, -1L, -1L, localHashMap, true, true);
-    if (a())
+    if (b())
     {
       ReportController.b(null, "dc00898", "", "", "kuolie", "0X80097DA", 2, 0, "", "", "", "");
       return true;
     }
-    return b();
+    return c();
   }
   
   public String getComponentName()
@@ -550,7 +551,7 @@ public class ProfileExtendFriendComponent
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt1 == 4097) && (paramInt2 == 8193))
     {
-      this.jdField_b_of_type_Boolean = true;
+      this.c = true;
       this.mActivity.setResult(8193);
       if (this.mDelegate != null) {
         this.mDelegate.requestUpdateCard();
@@ -571,36 +572,36 @@ public class ProfileExtendFriendComponent
     paramQBaseActivity = this.mActivity.getIntent();
     if (paramQBaseActivity != null)
     {
-      this.jdField_b_of_type_Boolean = paramQBaseActivity.getBooleanExtra("key_from_extends_friend", false);
-      this.c = paramQBaseActivity.getBooleanExtra("key_from_extends_friend_limit_chat", false);
-      this.d = paramQBaseActivity.getBooleanExtra("key_from_limit_chat_plus", false);
-      this.jdField_a_of_type_Boolean = paramQBaseActivity.getBooleanExtra("profile_scroll_to_extend_friend", false);
+      this.c = paramQBaseActivity.getBooleanExtra("key_from_extends_friend", false);
+      this.d = paramQBaseActivity.getBooleanExtra("key_from_extends_friend_limit_chat", false);
+      this.e = paramQBaseActivity.getBooleanExtra("key_from_limit_chat_plus", false);
+      this.b = paramQBaseActivity.getBooleanExtra("profile_scroll_to_extend_friend", false);
     }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.mApp.addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessPhotowallHandlerPhotoWallObserver);
-    this.mApp.addObserver(this.jdField_b_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver);
+    this.a = new Handler(Looper.getMainLooper());
+    this.mApp.addObserver(this.l);
+    this.mApp.addObserver(this.m);
   }
   
   public void onDestroy()
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.a;
     if (localObject != null)
     {
       ((Handler)localObject).removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.a = null;
     }
-    this.mApp.removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessPhotowallHandlerPhotoWallObserver);
-    this.mApp.removeObserver(this.jdField_b_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver);
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver != null)
+    this.mApp.removeObserver(this.l);
+    this.mApp.removeObserver(this.m);
+    if (this.k != null)
     {
-      this.mApp.removeObserver(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver);
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver = null;
+      this.mApp.removeObserver(this.k);
+      this.k = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    localObject = this.j;
     if (localObject != null)
     {
       ((QQProgressDialog)localObject).dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.j = null;
     }
     super.onDestroy();
   }
@@ -619,7 +620,7 @@ public class ProfileExtendFriendComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.profilecard.ProfileExtendFriendComponent
  * JD-Core Version:    0.7.0.1
  */

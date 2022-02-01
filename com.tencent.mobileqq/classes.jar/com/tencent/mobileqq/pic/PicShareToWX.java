@@ -29,31 +29,17 @@ import mqq.os.MqqHandler;
 public class PicShareToWX
   implements IWXAPIEventHandler
 {
-  private static volatile PicShareToWX jdField_a_of_type_ComTencentMobileqqPicPicShareToWX;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private PicSTWXQIPCModule jdField_a_of_type_ComTencentMobileqqPicPicSTWXQIPCModule;
-  private PicShareToWX.TimeoutRunnable jdField_a_of_type_ComTencentMobileqqPicPicShareToWX$TimeoutRunnable;
-  private TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
+  private static volatile PicShareToWX h;
   public QQProgressDialog a;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  
-  public static PicShareToWX a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqPicPicShareToWX == null) {
-      try
-      {
-        if (jdField_a_of_type_ComTencentMobileqqPicPicShareToWX == null) {
-          jdField_a_of_type_ComTencentMobileqqPicPicShareToWX = new PicShareToWX();
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentMobileqqPicPicShareToWX;
-  }
+  protected TransferRequest b;
+  protected QQAppInterface c;
+  protected Context d;
+  protected int e;
+  protected PicSTWXQIPCModule f;
+  protected int g;
+  private PicShareToWX.TimeoutRunnable i;
+  private boolean j;
+  private long k;
   
   public static void a(int paramInt, boolean paramBoolean)
   {
@@ -95,7 +81,7 @@ public class PicShareToWX
     localBundle.putInt("param_from_type", paramInt);
     paramString = new PicShareToWX.2();
     QIPCClientHelper.getInstance().callServer("PicSTWXQIPCModule", "action_share_pic_to_wx", localBundle, paramString);
-    a().a(paramContext);
+    b().a(paramContext);
   }
   
   private void a(boolean paramBoolean, int paramInt1, int paramInt2)
@@ -106,72 +92,81 @@ public class PicShareToWX
     } else {
       localHashMap.put("param_succ_flag", "0");
     }
-    localHashMap.put("param_picSize", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("param_picSize", String.valueOf(this.k));
     localHashMap.put("param_errorStep", String.valueOf(paramInt2));
     localHashMap.put("param_FailCode", String.valueOf(paramInt1));
-    localHashMap.put("param_fromType", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_fromType", String.valueOf(this.e));
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actPicShareToWX", paramBoolean, 0L, 0L, localHashMap, null);
   }
   
-  public int a(Context paramContext)
+  public static PicShareToWX b()
   {
-    return paramContext.getResources().getDimensionPixelSize(2131299168);
+    if (h == null) {
+      try
+      {
+        if (h == null) {
+          h = new PicShareToWX();
+        }
+      }
+      finally {}
+    }
+    return h;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentMobileqqPicPicSTWXQIPCModule = null;
-    this.b = 0;
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    this.d = null;
+    this.f = null;
+    this.g = 0;
   }
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramContext, a(paramContext));
+    this.d = paramContext;
+    if (this.a == null) {
+      this.a = new QQProgressDialog(paramContext, b(paramContext));
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131698525);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.a.c(2131896471);
+    this.a.show();
   }
   
   public void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
     a(paramContext);
     a(paramQQAppInterface, paramString);
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.j = false;
     TransferRequest localTransferRequest = new TransferRequest();
     localTransferRequest.mFileType = 66;
     localTransferRequest.mLocalPath = paramString;
-    this.jdField_a_of_type_Long = new File(paramString).length();
+    this.k = new File(paramString).length();
     localTransferRequest.mUpCallBack = new PicShareToWX.ShareUpCallBack(this, paramString);
     localTransferRequest.mUniseq = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = localTransferRequest;
+    this.b = localTransferRequest;
     if (paramQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+      this.c = paramQQAppInterface;
       paramQQAppInterface = (ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class);
       if (paramQQAppInterface != null) {
         paramQQAppInterface.transferAsync(localTransferRequest);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX$TimeoutRunnable = new PicShareToWX.TimeoutRunnable(this, null);
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX$TimeoutRunnable, 5000L);
+    this.i = new PicShareToWX.TimeoutRunnable(this, null);
+    ThreadManager.getUIHandler().postDelayed(this.i, 5000L);
   }
   
   public void a(PicSTWXQIPCModule paramPicSTWXQIPCModule, int paramInt1, QQAppInterface paramQQAppInterface, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqPicPicSTWXQIPCModule = paramPicSTWXQIPCModule;
-    this.b = paramInt1;
+    this.e = paramInt2;
+    this.f = paramPicSTWXQIPCModule;
+    this.g = paramInt1;
     a(paramQQAppInterface, paramString);
   }
   
@@ -180,49 +175,54 @@ public class PicShareToWX
     if (QLog.isColorLevel()) {
       QLog.d("PicShareToWX", 1, "doShareToWX");
     }
-    PicShareToWXConfigProcessor.PicShareToWXConifgBean localPicShareToWXConifgBean = (PicShareToWXConfigProcessor.PicShareToWXConifgBean)QConfigManager.a().a(530);
+    PicShareToWXConfigProcessor.PicShareToWXConifgBean localPicShareToWXConifgBean = (PicShareToWXConfigProcessor.PicShareToWXConifgBean)QConfigManager.b().b(530);
     PicShareToWX.1 local1 = new PicShareToWX.1(this, paramInt);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(localPicShareToWXConifgBean.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(localPicShareToWXConifgBean.d);
     ((StringBuilder)localObject).append("url=");
-    ((StringBuilder)localObject).append(SearchUtils.b(paramString));
+    ((StringBuilder)localObject).append(SearchUtils.h(paramString));
     localObject = ((StringBuilder)localObject).toString();
     WXShareHelper.a().a(local1);
-    WXShareHelper.a().a((String)localObject, paramString, localPicShareToWXConifgBean.jdField_a_of_type_JavaLangString, paramBitmap, localPicShareToWXConifgBean.c, localPicShareToWXConifgBean.d, localPicShareToWXConifgBean.jdField_b_of_type_Boolean, localPicShareToWXConifgBean.jdField_a_of_type_Int);
-  }
-  
-  public boolean a()
-  {
-    return ((PicShareToWXConfigProcessor.PicShareToWXConifgBean)QConfigManager.a().a(530)).jdField_a_of_type_Boolean;
+    WXShareHelper.a().a((String)localObject, paramString, localPicShareToWXConifgBean.c, paramBitmap, localPicShareToWXConifgBean.g, localPicShareToWXConifgBean.h, localPicShareToWXConifgBean.e, localPicShareToWXConifgBean.f);
   }
   
   public boolean a(File paramFile)
   {
-    PicShareToWXConfigProcessor.PicShareToWXConifgBean localPicShareToWXConifgBean = (PicShareToWXConfigProcessor.PicShareToWXConifgBean)QConfigManager.a().a(530);
-    return paramFile.length() < localPicShareToWXConifgBean.jdField_a_of_type_Long;
+    PicShareToWXConfigProcessor.PicShareToWXConifgBean localPicShareToWXConifgBean = (PicShareToWXConfigProcessor.PicShareToWXConifgBean)QConfigManager.b().b(530);
+    return paramFile.length() < localPicShareToWXConifgBean.b;
   }
   
   public boolean a(String paramString)
   {
     paramString = new File(paramString);
-    PicShareToWXConfigProcessor.PicShareToWXConifgBean localPicShareToWXConifgBean = (PicShareToWXConfigProcessor.PicShareToWXConifgBean)QConfigManager.a().a(530);
-    return paramString.length() < localPicShareToWXConifgBean.jdField_a_of_type_Long;
+    PicShareToWXConfigProcessor.PicShareToWXConifgBean localPicShareToWXConifgBean = (PicShareToWXConfigProcessor.PicShareToWXConifgBean)QConfigManager.b().b(530);
+    return paramString.length() < localPicShareToWXConifgBean.b;
   }
   
-  public void b()
+  public int b(Context paramContext)
   {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
-    if (localContext != null) {
-      QQToast.a(localContext, 2131719010, 0).a();
-    }
+    return paramContext.getResources().getDimensionPixelSize(2131299920);
   }
   
   public void c()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    Context localContext = this.d;
+    if (localContext != null) {
+      QQToast.makeText(localContext, 2131916545, 0).show();
+    }
+  }
+  
+  public void d()
+  {
+    QQProgressDialog localQQProgressDialog = this.a;
     if (localQQProgressDialog != null) {
       localQQProgressDialog.dismiss();
     }
+  }
+  
+  public boolean e()
+  {
+    return ((PicShareToWXConfigProcessor.PicShareToWXConifgBean)QConfigManager.b().b(530)).a;
   }
   
   public void onReq(BaseReq paramBaseReq) {}
@@ -231,7 +231,7 @@ public class PicShareToWX
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicShareToWX
  * JD-Core Version:    0.7.0.1
  */

@@ -8,23 +8,23 @@ public final class WXPayInsurance$Resp
 {
   public String wxOrderId;
   
-  public final boolean checkArgs()
+  public boolean checkArgs()
   {
     return true;
   }
   
-  public final void fromBundle(Bundle paramBundle)
+  public void fromBundle(Bundle paramBundle)
   {
     super.fromBundle(paramBundle);
     this.wxOrderId = paramBundle.getString("_wxapi_pay_insourance_order_id");
   }
   
-  public final int getType()
+  public int getType()
   {
     return 22;
   }
   
-  public final void toBundle(Bundle paramBundle)
+  public void toBundle(Bundle paramBundle)
   {
     super.fromBundle(paramBundle);
     paramBundle.putString("_wxapi_pay_insourance_order_id", this.wxOrderId);
@@ -32,7 +32,7 @@ public final class WXPayInsurance$Resp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.WXPayInsurance.Resp
  * JD-Core Version:    0.7.0.1
  */

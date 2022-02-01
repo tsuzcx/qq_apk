@@ -31,7 +31,7 @@ class SystemMessageProcessor$2
     boolean bool2 = false;
     if (i != 1000)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageSystemMessageProcessor.a(4012, false, localToServiceMsg);
+      this.f.a(4012, false, localToServiceMsg);
       if (QLog.isColorLevel())
       {
         paramProtoReq = new StringBuilder();
@@ -81,17 +81,17 @@ class SystemMessageProcessor$2
         localToServiceMsg.extraData.putString("system_msg_action_resp_invalid_decided_key", localRspSystemMsgAction.msg_invalid_decided.get());
         localToServiceMsg.extraData.putInt("system_msg_action_resp_remark_result_key", i);
         boolean bool3 = localToServiceMsg.extraData.getBoolean("isUncommonlyUsedFrd");
-        if ((bool1) && (this.jdField_a_of_type_Int == 0))
+        if ((bool1) && (this.a == 0))
         {
-          paramProtoReq = (FriendListHandler)SystemMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageSystemMessageProcessor).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+          paramProtoReq = (FriendListHandler)SystemMessageProcessor.a(this.f).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
           if ((this.b != 3016) && (this.b != 2016))
           {
-            if (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsgActionInfo.group_id.has()) {
-              paramProtoReq.addFriendToFriendList(String.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsgActionInfo.group_id.get(), this.b, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_additional.get(), false, bool3, -1L);
+            if (this.c.group_id.has()) {
+              paramProtoReq.addFriendToFriendList(String.valueOf(this.e), this.c.group_id.get(), this.b, this.d.msg.msg_additional.get(), false, bool3, -1L);
             }
           }
-          else if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsgActionInfo.group_id.has()) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_source.has())) {
-            paramProtoReq.addFriendToFriendList(String.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsgActionInfo.group_id.get(), this.b, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_source.get(), false, bool3, -1L);
+          else if ((this.c.group_id.has()) && (this.d != null) && (this.d.msg.msg_source.has())) {
+            paramProtoReq.addFriendToFriendList(String.valueOf(this.e), this.c.group_id.get(), this.b, this.d.msg.msg_source.get(), false, bool3, -1L);
           }
         }
         if (QLog.isColorLevel())
@@ -113,14 +113,14 @@ class SystemMessageProcessor$2
           bool1 = bool2;
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageSystemMessageProcessor.a(4011, bool1, localToServiceMsg);
+      this.f.a(4011, bool1, localToServiceMsg);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.SystemMessageProcessor.2
  * JD-Core Version:    0.7.0.1
  */

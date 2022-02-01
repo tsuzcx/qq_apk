@@ -16,30 +16,30 @@ public class FileSaveDialog
   extends ReportDialog
   implements View.OnClickListener
 {
-  private DialogInterface.OnKeyListener jdField_a_of_type_AndroidContentDialogInterface$OnKeyListener = new FileSaveDialog.1(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
   public FileSaveDialog.IFileSaveCancelInterface a;
-  private FileSaveProgressView jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView;
+  private FileSaveProgressView b;
+  private TextView c;
+  private DialogInterface.OnKeyListener d = new FileSaveDialog.1(this);
   
   public FileSaveDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755356);
+    super(paramContext, 2131952060);
     a(paramContext);
   }
   
   private void a()
   {
     setCanceledOnTouchOutside(false);
-    setOnKeyListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnKeyListener);
+    setOnKeyListener(this.d);
   }
   
   private void a(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559117, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131624778, null);
     setContentView(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView = ((FileSaveProgressView)paramContext.findViewById(2131376893));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131364259));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.b = ((FileSaveProgressView)paramContext.findViewById(2131445241));
+    this.c = ((TextView)paramContext.findViewById(2131430272));
+    this.c.setOnClickListener(this);
     a();
   }
   
@@ -47,7 +47,7 @@ public class FileSaveDialog
   {
     if (isShowing())
     {
-      FileSaveDialog.IFileSaveCancelInterface localIFileSaveCancelInterface = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog$IFileSaveCancelInterface;
+      FileSaveDialog.IFileSaveCancelInterface localIFileSaveCancelInterface = this.a;
       if (localIFileSaveCancelInterface != null) {
         localIFileSaveCancelInterface.a();
       }
@@ -71,7 +71,7 @@ public class FileSaveDialog
   
   public void a(int paramInt)
   {
-    FileSaveProgressView localFileSaveProgressView = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveProgressView;
+    FileSaveProgressView localFileSaveProgressView = this.b;
     if (localFileSaveProgressView != null) {
       localFileSaveProgressView.setProgress(paramInt);
     }
@@ -79,12 +79,12 @@ public class FileSaveDialog
   
   public void a(FileSaveDialog.IFileSaveCancelInterface paramIFileSaveCancelInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog$IFileSaveCancelInterface = paramIFileSaveCancelInterface;
+    this.a = paramIFileSaveCancelInterface;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131364259) {
+    if (paramView.getId() == 2131430272) {
       b();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -113,7 +113,7 @@ public class FileSaveDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.FileSaveDialog
  * JD-Core Version:    0.7.0.1
  */

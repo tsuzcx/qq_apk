@@ -3,21 +3,21 @@ package com.tencent.avgame.qav;
 class AVGameVideoPreLoadMgr$PreLoadInfo
 {
   public int a;
-  public String a;
+  public String b;
   
   public AVGameVideoPreLoadMgr$PreLoadInfo(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mTaskId[");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], mUrl[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

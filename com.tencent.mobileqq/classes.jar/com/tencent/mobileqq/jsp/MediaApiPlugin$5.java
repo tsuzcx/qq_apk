@@ -23,12 +23,12 @@ class MediaApiPlugin$5
     Object localObject1 = localObject2;
     try
     {
-      if (this.jdField_a_of_type_JavaLangString.startsWith("data:"))
+      if (this.a.startsWith("data:"))
       {
-        int i = this.jdField_a_of_type_JavaLangString.indexOf(',');
+        int i = this.a.indexOf(',');
         localObject1 = localObject2;
         if (i > 0) {
-          localObject1 = Base64Util.decode(this.jdField_a_of_type_JavaLangString.substring(i), 0);
+          localObject1 = Base64Util.decode(this.a.substring(i), 0);
         }
       }
       if (localObject1 != null) {
@@ -52,7 +52,7 @@ class MediaApiPlugin$5
     try
     {
       localJSONObject.put("retCode", 0);
-      localJSONObject.put("msg", localBaseApplication.getString(2131718388));
+      localJSONObject.put("msg", localBaseApplication.getString(2131915880));
       localJSONObject.put("imageID", localObject1);
     }
     catch (JSONException localJSONException)
@@ -62,17 +62,17 @@ class MediaApiPlugin$5
     break label197;
     throw new IllegalArgumentException();
     localJSONObject.put("retCode", -1);
-    localJSONObject.put("msg", localBaseApplication.getString(2131718389));
+    localJSONObject.put("msg", localBaseApplication.getString(2131915881));
     break label197;
     label146:
     localJSONObject.put("retCode", 2);
-    localJSONObject.put("msg", localBaseApplication.getString(2131718385));
+    localJSONObject.put("msg", localBaseApplication.getString(2131915877));
     break label197;
     label173:
     localJSONObject.put("retCode", 1);
-    localJSONObject.put("msg", localBaseApplication.getString(2131718387));
+    localJSONObject.put("msg", localBaseApplication.getString(2131915879));
     label197:
-    if ((!TextUtils.isEmpty(this.b)) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)))
+    if ((!TextUtils.isEmpty(this.b)) && (this.c.compareAndSet(false, true)))
     {
       this.this$0.callJs(this.b, new String[] { localJSONObject.toString() });
       return;
@@ -82,7 +82,7 @@ class MediaApiPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.MediaApiPlugin.5
  * JD-Core Version:    0.7.0.1
  */

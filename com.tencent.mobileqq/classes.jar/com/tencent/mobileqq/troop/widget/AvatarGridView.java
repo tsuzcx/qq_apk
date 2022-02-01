@@ -11,9 +11,9 @@ import com.tencent.widget.GridView;
 public class AvatarGridView
   extends GridView
 {
-  protected int a;
-  protected WindowManager a;
-  protected boolean a;
+  protected WindowManager a = null;
+  protected boolean b = false;
+  protected int c = 4;
   
   public AvatarGridView(Context paramContext)
   {
@@ -28,9 +28,6 @@ public class AvatarGridView
   public AvatarGridView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidViewWindowManager = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 4;
     setChildrenDrawingOrderEnabled(true);
   }
   
@@ -49,7 +46,7 @@ public class AvatarGridView
     }
     Object localObject = null;
     label52:
-    if ((localObject != null) && (((AvatarInfo)localObject).b != 0) && (((AvatarInfo)localObject).b == 4)) {
+    if ((localObject != null) && (((AvatarInfo)localObject).e != 0) && (((AvatarInfo)localObject).e == 4)) {
       i = paramInt1 - 1;
     } else {
       i = paramInt1;
@@ -76,7 +73,7 @@ public class AvatarGridView
   
   public int getNumColumns()
   {
-    return this.jdField_a_of_type_Int;
+    return this.c;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -86,13 +83,13 @@ public class AvatarGridView
   
   public void setNumColumns(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     super.setNumColumns(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarGridView
  * JD-Core Version:    0.7.0.1
  */

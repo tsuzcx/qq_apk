@@ -12,11 +12,11 @@ public class OneDayAlbumFilter
   public OneDayAlbumFilter(SplitConfig.TimeSplitConfig paramTimeSplitConfig)
   {
     super(paramTimeSplitConfig.a);
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Q.qqstory.recommendAlbum.logic_OneDayAlbumFilter ");
-    ((StringBuilder)localObject).append(paramTimeSplitConfig.c);
-    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    ((StringBuilder)localObject).append(paramTimeSplitConfig.i);
+    this.c = ((StringBuilder)localObject).toString();
     localObject = new TimeSplitStrategy();
     ((TimeSplitStrategy)localObject).a(paramTimeSplitConfig);
     a((AbstractSplitStrategy)localObject);
@@ -26,7 +26,7 @@ public class OneDayAlbumFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.flter.OneDayAlbumFilter
  * JD-Core Version:    0.7.0.1
  */

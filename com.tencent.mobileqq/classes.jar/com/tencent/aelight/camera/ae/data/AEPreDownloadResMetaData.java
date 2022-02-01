@@ -8,7 +8,7 @@ public class AEPreDownloadResMetaData
   public String a;
   public String b;
   
-  public String a()
+  public String e()
   {
     Object localObject = new File(this.b);
     if (!((File)localObject).exists()) {
@@ -17,11 +17,11 @@ public class AEPreDownloadResMetaData
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append(File.separator);
-    ((StringBuilder)localObject).append(this.p);
+    ((StringBuilder)localObject).append(this.t);
     return ((StringBuilder)localObject).toString();
   }
   
-  public String b()
+  public String f()
   {
     Object localObject = new File(this.b);
     if (!((File)localObject).exists()) {
@@ -33,7 +33,7 @@ public class AEPreDownloadResMetaData
     return ((StringBuilder)localObject).toString();
   }
   
-  public String c()
+  public String g()
   {
     Object localObject = new File(this.a);
     if (!((File)localObject).exists()) {
@@ -42,13 +42,13 @@ public class AEPreDownloadResMetaData
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(File.separator);
-    ((StringBuilder)localObject).append(this.p);
+    ((StringBuilder)localObject).append(this.t);
     return ((StringBuilder)localObject).toString();
   }
   
-  public boolean d()
+  public boolean h()
   {
-    Object localObject = new File(a());
+    Object localObject = new File(e());
     if (!((File)localObject).exists()) {
       return false;
     }
@@ -58,7 +58,7 @@ public class AEPreDownloadResMetaData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.data.AEPreDownloadResMetaData
  * JD-Core Version:    0.7.0.1
  */

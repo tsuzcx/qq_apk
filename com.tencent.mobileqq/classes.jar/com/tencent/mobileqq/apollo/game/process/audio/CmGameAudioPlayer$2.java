@@ -12,15 +12,15 @@ class CmGameAudioPlayer$2
   
   public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    paramMediaPlayer = this.jdField_a_of_type_OrgJsonJSONObject;
+    paramMediaPlayer = this.a;
     if (paramMediaPlayer != null) {
-      CmGameAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameAudioPlayer, this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameNativeMethodHandler, paramMediaPlayer);
+      CmGameAudioPlayer.a(this.c, this.b, paramMediaPlayer);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.audio.CmGameAudioPlayer.2
  * JD-Core Version:    0.7.0.1
  */

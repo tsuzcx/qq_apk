@@ -4,13 +4,13 @@ import android.widget.ImageView;
 
 public class BaseSearchResultAdapter$ViewHolder
 {
-  public int a = 1;
-  public ImageView a;
   public String a;
+  public int b = 1;
+  public ImageView c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.BaseSearchResultAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

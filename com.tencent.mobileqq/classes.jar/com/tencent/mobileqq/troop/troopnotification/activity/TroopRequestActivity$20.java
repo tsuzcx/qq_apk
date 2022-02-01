@@ -24,21 +24,21 @@ class TroopRequestActivity$20
   public void onClick(View paramView)
   {
     Object localObject;
-    if ((!NetworkUtil.isNetSupport(this.a)) && ((paramView != this.a.jdField_b_of_type_AndroidWidgetButton) || ((this.a.jdField_b_of_type_Int != 1) && (this.a.jdField_b_of_type_Int != 22))))
+    if ((!NetworkUtil.isNetSupport(this.a)) && ((paramView != this.a.V) || ((this.a.b != 1) && (this.a.b != 22))))
     {
       localObject = this.a;
-      QQToast.a((Context)localObject, ((TroopRequestActivity)localObject).getString(2131719980), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText((Context)localObject, ((TroopRequestActivity)localObject).getString(2131917585), 0).show(this.a.getTitleBarHeight());
     }
     else
     {
       localObject = this.a;
-      ((TroopRequestActivity)localObject).jdField_a_of_type_Boolean = ((TroopRequestActivity)localObject).getIntent().getExtras().getBoolean("is_unread");
+      ((TroopRequestActivity)localObject).T = ((TroopRequestActivity)localObject).getIntent().getExtras().getBoolean("is_unread");
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get());
+      ((StringBuilder)localObject).append(this.a.W.msg.group_code.get());
       ((StringBuilder)localObject).append("");
       String str = ((StringBuilder)localObject).toString();
-      int i = this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get();
-      if (this.a.jdField_a_of_type_Boolean) {
+      int i = this.a.W.msg.group_msg_type.get();
+      if (this.a.T) {
         localObject = "1";
       } else {
         localObject = "0";
@@ -46,19 +46,19 @@ class TroopRequestActivity$20
       TroopInfo localTroopInfo = null;
       ITroopInfoService localITroopInfoService = (ITroopInfoService)TroopRequestActivity.a(this.a).getRuntimeService(ITroopInfoService.class, "");
       if (localITroopInfoService != null) {
-        localTroopInfo = localITroopInfoService.findTroopInfo(this.a.jdField_a_of_type_JavaLangString);
+        localTroopInfo = localITroopInfoService.findTroopInfo(this.a.c);
       }
       long l = 0L;
       if (localTroopInfo != null) {
         l = localTroopInfo.dwGroupClassExt;
       }
-      if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton) {
+      if (paramView == this.a.U) {
         TroopRequestActivity.a(this.a, i, str, (String)localObject, "", l, localTroopInfo);
-      } else if (paramView == this.a.jdField_b_of_type_AndroidWidgetButton) {
+      } else if (paramView == this.a.V) {
         TroopRequestActivity.a(this.a, i, str, (String)localObject, "", l);
       } else if (paramView == this.a.rightViewText) {
         TroopRequestActivity.b(this.a, i, str, (String)localObject, "", l);
-      } else if (paramView == this.a.d) {
+      } else if (paramView == this.a.E) {
         TroopRequestActivity.a(this.a, i, str, l, localTroopInfo);
       }
     }
@@ -67,7 +67,7 @@ class TroopRequestActivity$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.20
  * JD-Core Version:    0.7.0.1
  */

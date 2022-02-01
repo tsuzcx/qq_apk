@@ -18,23 +18,23 @@ final class SwiftBrowserTBSHandler$9
     {
       Object localObject2 = null;
       Object localObject1 = localObject2;
-      if (SwiftOfflineDataUtils.a(this.jdField_a_of_type_JavaLangString))
+      if (SwiftOfflineDataUtils.a(this.a))
       {
-        SwiftOfflineDataUtils.OfflineData localOfflineData = SwiftOfflineDataUtils.a(this.jdField_a_of_type_JavaLangString);
+        SwiftOfflineDataUtils.OfflineData localOfflineData = SwiftOfflineDataUtils.b(this.a);
         localObject1 = localObject2;
         if (localOfflineData != null) {
           localObject1 = localOfflineData.b;
         }
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        SwiftBrowserTBSHandler.a(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, (String)localObject1);
+      if (!TextUtils.isEmpty(this.a)) {
+        SwiftBrowserTBSHandler.a(this.b, this.a, (String)localObject1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.9
  * JD-Core Version:    0.7.0.1
  */

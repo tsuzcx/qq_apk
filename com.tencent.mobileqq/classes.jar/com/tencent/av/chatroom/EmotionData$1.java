@@ -16,7 +16,7 @@ final class EmotionData$1
     if (paramEmotionData2 == null) {
       return 1;
     }
-    return paramEmotionData1.a - paramEmotionData2.a;
+    return paramEmotionData1.b - paramEmotionData2.b;
   }
 }
 

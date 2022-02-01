@@ -12,7 +12,7 @@ class ImportantMsgManager$6
   public void run()
   {
     long l = System.currentTimeMillis();
-    ImportantMsgItem localImportantMsgItem = this.this$0.a(this.jdField_a_of_type_Long);
+    ImportantMsgItem localImportantMsgItem = this.this$0.b(this.a);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -27,7 +27,7 @@ class ImportantMsgManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgManager.6
  * JD-Core Version:    0.7.0.1
  */

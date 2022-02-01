@@ -15,8 +15,8 @@ public final class b
   extends a
   implements d
 {
-  private n jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAN = new n();
-  private List<ISettingsClient.ISettingUpdateListener> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private n a = new n();
+  private List<ISettingsClient.ISettingUpdateListener> b = new ArrayList();
   
   public b()
   {
@@ -27,7 +27,7 @@ public final class b
   {
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
@@ -42,7 +42,7 @@ public final class b
   
   public final String a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    return this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAN.a(paramString1, paramInt, paramString2, paramString3, paramString4, paramString5);
+    return this.a.a(paramString1, paramInt, paramString2, paramString3, paramString4, paramString5);
   }
   
   public final void a(String paramString1, String arg2)
@@ -51,11 +51,11 @@ public final class b
       com.tencent.featuretoggle.hltxkg.common.c.b.a.b.a().a(???, true);
     }
     if (!TextUtils.isEmpty(paramString1)) {
-      synchronized (this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAN)
+      synchronized (this.a)
       {
-        this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAN.b();
-        this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAN.a(paramString1);
-        j.a("settings_in_client", this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAN.a(), true);
+        this.a.b();
+        this.a.a(paramString1);
+        j.a("settings_in_client", this.a.a(), true);
         a();
         return;
       }
@@ -74,7 +74,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.c.a.b
  * JD-Core Version:    0.7.0.1
  */

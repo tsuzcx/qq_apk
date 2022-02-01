@@ -9,7 +9,7 @@ import org.json.JSONObject;
 class GdtWebReportFlyingStreamingHandler
   extends GdtMvWebJsCallHandler
 {
-  private final String a = "event_code";
+  private final String b = "event_code";
   
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
@@ -43,7 +43,7 @@ class GdtWebReportFlyingStreamingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtWebReportFlyingStreamingHandler
  * JD-Core Version:    0.7.0.1
  */

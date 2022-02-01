@@ -5,27 +5,27 @@ import com.tencent.qphone.base.util.QLog;
 class LoadDataJob$UnmarshallJob
   implements Runnable
 {
-  private int jdField_a_of_type_Int = -1;
-  private LoadDataJob.UnmarshallJobListener jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob$UnmarshallJobListener;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  private byte[] a;
+  private LoadDataJob.UnmarshallJobListener b;
+  private int c = -1;
   
   public LoadDataJob$UnmarshallJob(LoadDataJob paramLoadDataJob, int paramInt, byte[] paramArrayOfByte, LoadDataJob.UnmarshallJobListener paramUnmarshallJobListener)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob$UnmarshallJobListener = paramUnmarshallJobListener;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramArrayOfByte;
+    this.b = paramUnmarshallJobListener;
+    this.c = paramInt;
   }
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob$UnmarshallJobListener;
+    Object localObject = this.b;
     if (localObject == null) {
       return;
     }
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    byte[] arrayOfByte = this.a;
     if (arrayOfByte == null)
     {
-      ((LoadDataJob.UnmarshallJobListener)localObject).a(this.jdField_a_of_type_Int, null);
+      ((LoadDataJob.UnmarshallJobListener)localObject).a(this.c, null);
       return;
     }
     try
@@ -34,8 +34,8 @@ class LoadDataJob$UnmarshallJob
       if (localObject == null) {
         break label115;
       }
-      localObject = (PathDrawer)PathDrawer.a.a((MyParcel)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob$UnmarshallJobListener.a(this.jdField_a_of_type_Int, (PathDrawer)localObject);
+      localObject = (PathDrawer)PathDrawer.b.b((MyParcel)localObject);
+      this.b.a(this.c, (PathDrawer)localObject);
       return;
     }
     catch (Exception localException)
@@ -51,12 +51,12 @@ class LoadDataJob$UnmarshallJob
       QLog.d("UnmarshallJob", 2, ((StringBuilder)localObject).toString());
     }
     label115:
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob$UnmarshallJobListener.a(this.jdField_a_of_type_Int, null);
+    this.b.a(this.c, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.LoadDataJob.UnmarshallJob
  * JD-Core Version:    0.7.0.1
  */

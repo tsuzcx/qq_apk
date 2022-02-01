@@ -14,33 +14,33 @@ class AvatarPendantActivity$28$1
   
   public void run()
   {
-    AvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$28.a).setEnabled(true);
-    AvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$28.a).setVisibility(8);
+    AvatarPendantActivity.j(this.d.a).setEnabled(true);
+    AvatarPendantActivity.k(this.d.a).setVisibility(8);
     Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      localObject = this.jdField_a_of_type_JavaUtilList;
+      localObject = this.b;
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = new Intent();
-        ((Intent)localObject).putExtra("PhotoConst.SINGLE_PHOTO_PATH", (String)this.jdField_a_of_type_JavaUtilList.get(0));
-        AvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$28.a, (Intent)localObject);
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$28.a, 2, 2131720144, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$28.a.getTitleBarHeight());
+        ((Intent)localObject).putExtra("PhotoConst.SINGLE_PHOTO_PATH", (String)this.b.get(0));
+        AvatarPendantActivity.a(this.d.a, (Intent)localObject);
+        QQToast.makeText(this.d.a, 2, 2131917774, 0).show(this.d.a.getTitleBarHeight());
       }
     }
     else
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$28.a, 1, 2131718781, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$28.a.getTitleBarHeight());
+      QQToast.makeText(this.d.a, 1, 2131916287, 0).show(this.d.a.getTitleBarHeight());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("OnProcessFinishListener avatar video process error! actionId: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.c);
       QLog.e("AvatarPendantActivity", 1, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.28.1
  * JD-Core Version:    0.7.0.1
  */

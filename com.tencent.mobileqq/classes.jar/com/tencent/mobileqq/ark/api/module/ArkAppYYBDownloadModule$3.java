@@ -14,42 +14,42 @@ class ArkAppYYBDownloadModule$3
   
   public void installSucceed(String paramString1, String paramString2)
   {
-    if (ArkAppYYBDownloadModule.a(this.a) != null) {
-      ArkAppYYBDownloadModule.a(this.a).a(this.a.a(paramString1, 6, paramString2).toString());
+    if (ArkAppYYBDownloadModule.c(this.a) != null) {
+      ArkAppYYBDownloadModule.c(this.a).a(this.a.a(paramString1, 6, paramString2).toString());
     }
   }
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if ((paramDownloadInfo != null) && (ArkAppYYBDownloadModule.a(this.a) != null)) {
-      ArkAppYYBDownloadModule.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    if ((paramDownloadInfo != null) && (ArkAppYYBDownloadModule.c(this.a) != null)) {
+      ArkAppYYBDownloadModule.c(this.a).a(this.a.a(paramDownloadInfo).toString());
     }
   }
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    if ((paramDownloadInfo != null) && (ArkAppYYBDownloadModule.a(this.a) != null)) {
-      ArkAppYYBDownloadModule.a(this.a).a(this.a.a(paramDownloadInfo.k, paramDownloadInfo.a(), paramDownloadInfo.f, paramDownloadInfo.e, paramString, paramInt1, paramDownloadInfo.j).toString());
+    if ((paramDownloadInfo != null) && (ArkAppYYBDownloadModule.c(this.a) != null)) {
+      ArkAppYYBDownloadModule.c(this.a).a(this.a.a(paramDownloadInfo.m, paramDownloadInfo.a(), paramDownloadInfo.t, paramDownloadInfo.e, paramString, paramInt1, paramDownloadInfo.D).toString());
     }
   }
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    if ((paramDownloadInfo != null) && (ArkAppYYBDownloadModule.a(this.a) != null)) {
-      ArkAppYYBDownloadModule.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    if ((paramDownloadInfo != null) && (ArkAppYYBDownloadModule.c(this.a) != null)) {
+      ArkAppYYBDownloadModule.c(this.a).a(this.a.a(paramDownloadInfo).toString());
     }
   }
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    if ((paramDownloadInfo != null) && (ArkAppYYBDownloadModule.a(this.a) != null)) {
-      ArkAppYYBDownloadModule.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    if ((paramDownloadInfo != null) && (ArkAppYYBDownloadModule.c(this.a) != null)) {
+      ArkAppYYBDownloadModule.c(this.a).a(this.a.a(paramDownloadInfo).toString());
     }
   }
   
   public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
-    if ((paramList != null) && (ArkAppYYBDownloadModule.a(this.a) != null))
+    if ((paramList != null) && (ArkAppYYBDownloadModule.c(this.a) != null))
     {
       JSONArray localJSONArray = new JSONArray();
       paramList = paramList.iterator();
@@ -58,34 +58,34 @@ class ArkAppYYBDownloadModule$3
         DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
         localJSONArray.put(this.a.a(localDownloadInfo));
       }
-      ArkAppYYBDownloadModule.a(this.a).a(localJSONArray.toString());
+      ArkAppYYBDownloadModule.c(this.a).a(localJSONArray.toString());
     }
   }
   
   public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    if ((paramDownloadInfo != null) && (ArkAppYYBDownloadModule.a(this.a) != null)) {
-      ArkAppYYBDownloadModule.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    if ((paramDownloadInfo != null) && (ArkAppYYBDownloadModule.c(this.a) != null)) {
+      ArkAppYYBDownloadModule.c(this.a).a(this.a.a(paramDownloadInfo).toString());
     }
   }
   
   public void packageReplaced(String paramString1, String paramString2)
   {
-    if (ArkAppYYBDownloadModule.a(this.a) != null) {
-      ArkAppYYBDownloadModule.a(this.a).a(this.a.a(paramString1, 13, paramString2).toString());
+    if (ArkAppYYBDownloadModule.c(this.a) != null) {
+      ArkAppYYBDownloadModule.c(this.a).a(this.a.a(paramString1, 13, paramString2).toString());
     }
   }
   
   public void uninstallSucceed(String paramString1, String paramString2)
   {
-    if (ArkAppYYBDownloadModule.a(this.a) != null) {
-      ArkAppYYBDownloadModule.a(this.a).a(this.a.a(paramString1, 9, paramString2).toString());
+    if (ArkAppYYBDownloadModule.c(this.a) != null) {
+      ArkAppYYBDownloadModule.c(this.a).a(this.a.a(paramString1, 9, paramString2).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppYYBDownloadModule.3
  * JD-Core Version:    0.7.0.1
  */

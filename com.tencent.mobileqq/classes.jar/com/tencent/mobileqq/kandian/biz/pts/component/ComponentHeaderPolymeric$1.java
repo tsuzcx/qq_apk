@@ -24,21 +24,21 @@ class ComponentHeaderPolymeric$1
       localStringBuilder.append(", distUin : ");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" followStatus = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mPolymericInfo.e);
+      localStringBuilder.append(this.a.mPolymericInfo.p);
       QLog.d("ComponentHeaderPolymeric", 2, localStringBuilder.toString());
     }
-    if (!paramString.equals(ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric).getTag())) {
+    if (!paramString.equals(ComponentHeaderPolymeric.a(this.b).getTag())) {
       return;
     }
-    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric, true);
+    ComponentHeaderPolymeric.a(this.b, true);
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mPolymericInfo.e == 1) {
-        ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric, true);
-      } else if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mPolymericInfo.e == 2) {
-        ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric, false);
+      if (this.a.mPolymericInfo.p == 1) {
+        ComponentHeaderPolymeric.b(this.b, true);
+      } else if (this.a.mPolymericInfo.p == 2) {
+        ComponentHeaderPolymeric.b(this.b, false);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mPolymericInfo.e != 1) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mPolymericInfo.e != 2))
+      if ((this.a.mPolymericInfo.p != 1) && (this.a.mPolymericInfo.p != 2))
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("978 resp error, result : ");
@@ -50,31 +50,31 @@ class ComponentHeaderPolymeric$1
         QLog.e("ComponentHeaderPolymeric", 2, localStringBuilder.toString());
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mPolymericInfo.e == 1)
+      if (this.a.mPolymericInfo.p == 1)
       {
-        ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 2);
+        ComponentHeaderPolymeric.a(this.b, this.a, 2);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mPolymericInfo.e == 2) {
-        ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 1);
+      if (this.a.mPolymericInfo.p == 2) {
+        ComponentHeaderPolymeric.a(this.b, this.a, 1);
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mPolymericInfo.e == 1)
+      if (this.a.mPolymericInfo.p == 1)
       {
-        ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric, 1);
+        ComponentHeaderPolymeric.a(this.b, 1);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mPolymericInfo.e == 2) {
-        ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric, 2);
+      if (this.a.mPolymericInfo.p == 2) {
+        ComponentHeaderPolymeric.a(this.b, 2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderPolymeric.1
  * JD-Core Version:    0.7.0.1
  */

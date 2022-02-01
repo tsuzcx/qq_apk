@@ -15,53 +15,69 @@ import java.util.List;
 public class TAVAudioTapProcessor
   implements AudioTapProcessor
 {
-  @NonNull
-  private List<TAVAudioConfigurationSegment> audioConfigurationSegmentList;
-  @NonNull
-  private HashMap<String, AudioTapProcessor> audioTapProcessorHashMap = new HashMap();
+  private final List<TAVAudioConfigurationSegment> audioConfigurationSegmentList;
+  private final HashMap<String, AudioTapProcessor> audioTapProcessorHashMap = new HashMap();
   
   public TAVAudioTapProcessor(@NonNull List<TAVAudioConfigurationSegment> paramList)
   {
     this.audioConfigurationSegmentList = paramList;
   }
   
-  public ByteBuffer processAudioPCM(CMTime paramCMTime, ByteBuffer paramByteBuffer, AudioInfo paramAudioInfo)
+  public AudioTapProcessor getAudioTapProcessor(TAVAudioProcessorNode paramTAVAudioProcessorNode)
   {
-    Iterator localIterator1 = this.audioConfigurationSegmentList.iterator();
-    Object localObject = paramByteBuffer;
-    while (localIterator1.hasNext())
+    String str = paramTAVAudioProcessorNode.getIdentifier();
+    AudioTapProcessor localAudioTapProcessor = (AudioTapProcessor)this.audioTapProcessorHashMap.get(str);
+    Object localObject = localAudioTapProcessor;
+    if (localAudioTapProcessor == null)
     {
-      paramByteBuffer = (TAVAudioConfigurationSegment)localIterator1.next();
-      if ((paramByteBuffer != null) && (paramByteBuffer.compositionTimeRange.containsTime(paramCMTime)))
-      {
-        paramByteBuffer = paramByteBuffer.audioConfiguration;
-        if (paramByteBuffer.getNodes() != null)
-        {
-          Iterator localIterator2 = paramByteBuffer.getNodes().iterator();
-          paramByteBuffer = (ByteBuffer)localObject;
-          for (;;)
-          {
-            localObject = paramByteBuffer;
-            if (!localIterator2.hasNext()) {
-              break;
-            }
-            TAVAudioProcessorNode localTAVAudioProcessorNode = (TAVAudioProcessorNode)localIterator2.next();
-            String str = localTAVAudioProcessorNode.getIdentifier();
-            AudioTapProcessor localAudioTapProcessor = (AudioTapProcessor)this.audioTapProcessorHashMap.get(str);
-            localObject = localAudioTapProcessor;
-            if (localAudioTapProcessor == null)
-            {
-              localObject = localTAVAudioProcessorNode.createAudioProcessor();
-              this.audioTapProcessorHashMap.put(str, localObject);
-            }
-            if (localObject != null) {
-              paramByteBuffer = ((AudioTapProcessor)localObject).processAudioPCM(paramCMTime, paramByteBuffer, paramAudioInfo);
-            }
-          }
-        }
-      }
+      localObject = paramTAVAudioProcessorNode.createAudioProcessor();
+      this.audioTapProcessorHashMap.put(str, localObject);
     }
     return localObject;
+  }
+  
+  public ByteBuffer processAudioPCM(CMTime paramCMTime, ByteBuffer paramByteBuffer, AudioInfo paramAudioInfo)
+  {
+    Iterator localIterator = this.audioConfigurationSegmentList.iterator();
+    while (localIterator.hasNext()) {
+      paramByteBuffer = processAudioPCM(paramCMTime, paramByteBuffer, paramAudioInfo, (TAVAudioConfigurationSegment)localIterator.next());
+    }
+    return paramByteBuffer;
+  }
+  
+  public ByteBuffer processAudioPCM(CMTime paramCMTime, ByteBuffer paramByteBuffer, AudioInfo paramAudioInfo, TAVAudioConfigurationSegment paramTAVAudioConfigurationSegment)
+  {
+    ByteBuffer localByteBuffer = paramByteBuffer;
+    if (paramTAVAudioConfigurationSegment != null)
+    {
+      if (!paramTAVAudioConfigurationSegment.compositionTimeRange.containsTime(paramCMTime)) {
+        return paramByteBuffer;
+      }
+      paramTAVAudioConfigurationSegment = paramTAVAudioConfigurationSegment.audioConfiguration;
+      if (paramTAVAudioConfigurationSegment.getNodes() == null) {
+        return paramByteBuffer;
+      }
+      paramTAVAudioConfigurationSegment = paramTAVAudioConfigurationSegment.getNodes().iterator();
+      for (;;)
+      {
+        localByteBuffer = paramByteBuffer;
+        if (!paramTAVAudioConfigurationSegment.hasNext()) {
+          break;
+        }
+        paramByteBuffer = processAudioPcm(paramCMTime, paramByteBuffer, paramAudioInfo, (TAVAudioProcessorNode)paramTAVAudioConfigurationSegment.next());
+      }
+    }
+    return localByteBuffer;
+  }
+  
+  public ByteBuffer processAudioPcm(CMTime paramCMTime, ByteBuffer paramByteBuffer, AudioInfo paramAudioInfo, TAVAudioProcessorNode paramTAVAudioProcessorNode)
+  {
+    AudioTapProcessor localAudioTapProcessor = getAudioTapProcessor(paramTAVAudioProcessorNode);
+    paramTAVAudioProcessorNode = paramByteBuffer;
+    if (localAudioTapProcessor != null) {
+      paramTAVAudioProcessorNode = localAudioTapProcessor.processAudioPCM(paramCMTime, paramByteBuffer, paramAudioInfo);
+    }
+    return paramTAVAudioProcessorNode;
   }
   
   public void release()
@@ -85,7 +101,7 @@ public class TAVAudioTapProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.audio.TAVAudioTapProcessor
  * JD-Core Version:    0.7.0.1
  */

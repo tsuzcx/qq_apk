@@ -23,34 +23,23 @@ public abstract class BaseEmosmStrategy
   implements IEmosmStrategy
 {
   protected BaseQQAppInterface a;
-  FavEmosmViewPage jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage;
-  MultiEmotionSaveManager jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager = null;
-  List<FavoriteEmoticonInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
-  public boolean a;
-  public boolean b = false;
+  FavEmosmViewPage b;
+  AtomicBoolean c = new AtomicBoolean();
+  List<FavoriteEmoticonInfo> d = new ArrayList();
+  public boolean e = false;
+  public boolean f = false;
+  MultiEmotionSaveManager g = null;
   
   public BaseEmosmStrategy(BaseQQAppInterface paramBaseQQAppInterface, FavEmosmViewPage paramFavEmosmViewPage)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage = paramFavEmosmViewPage;
-    this.jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager = new MultiEmotionSaveManager(paramBaseQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 2131691910;
+    this.a = paramBaseQQAppInterface;
+    this.b = paramFavEmosmViewPage;
+    this.g = new MultiEmotionSaveManager(paramBaseQQAppInterface);
   }
   
   public View a(int paramInt, View paramView, FavEmosmViewPage.Holder paramHolder, EmoticonInfo paramEmoticonInfo)
   {
     return paramView;
-  }
-  
-  public MultiEmotionSaveManager a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager;
   }
   
   public String a(EmoticonInfo paramEmoticonInfo)
@@ -93,7 +82,7 @@ public abstract class BaseEmosmStrategy
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.c.set(false);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -124,13 +113,13 @@ public abstract class BaseEmosmStrategy
   
   public void a(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage == null) {
+    if (this.b == null) {
       return;
     }
     paramContext = paramIntent.getAction();
     if ("com.tencent.mobileqq.action.refresh.emotiom".equals(paramContext))
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.k();
+      this.b.k();
       return;
     }
     if ("com.tencent.mobileqq.action.upload.emotiom".equals(paramContext))
@@ -152,15 +141,10 @@ public abstract class BaseEmosmStrategy
   
   public void a(CustomEmotionRoamingDBManagerBase.CustomEmotionDataInPanelCallback paramCustomEmotionDataInPanelCallback)
   {
-    a().asyncGetFavEmotionInfoShowedInPanel(paramCustomEmotionDataInPanelCallback);
+    n().asyncGetFavEmotionInfoShowedInPanel(paramCustomEmotionDataInPanelCallback);
   }
   
   public void a(GridView paramGridView, int paramInt, ICustomEmotionInfo paramICustomEmotionInfo) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
   
   public boolean a(Activity paramActivity)
   {
@@ -172,13 +156,28 @@ public abstract class BaseEmosmStrategy
     return false;
   }
   
-  public void b()
+  public MultiEmotionSaveManager b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage;
+    return this.g;
+  }
+  
+  public boolean c()
+  {
+    return false;
+  }
+  
+  public boolean d()
+  {
+    return true;
+  }
+  
+  public void e()
+  {
+    Object localObject = this.b;
     if (localObject == null) {
       return;
     }
-    List localList = a(((FavEmosmViewPage)localObject).jdField_a_of_type_JavaUtilList);
+    List localList = a(((FavEmosmViewPage)localObject).l);
     localObject = localList;
     if (localList == null) {
       localObject = new ArrayList();
@@ -186,26 +185,21 @@ public abstract class BaseEmosmStrategy
     if ((((List)localObject).size() > 0) && (((EmoticonInfo)((List)localObject).get(0)).operateType == 1)) {
       ((List)localObject).remove(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.d((List)localObject);
+    this.b.d((List)localObject);
   }
   
-  public boolean b()
+  public void f()
   {
-    return true;
-  }
-  
-  public void c()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage;
+    Object localObject1 = this.b;
     if (localObject1 == null) {
       return;
     }
-    Object localObject2 = ((FavEmosmViewPage)localObject1).jdField_a_of_type_JavaUtilList;
+    Object localObject2 = ((FavEmosmViewPage)localObject1).l;
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new ArrayList();
     }
-    if (a()) {
+    if (c()) {
       if (((List)localObject1).size() > 0)
       {
         if (((EmoticonInfo)((List)localObject1).get(0)).operateType != 1)
@@ -222,24 +216,29 @@ public abstract class BaseEmosmStrategy
         ((List)localObject1).add(0, localObject2);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.d((List)localObject1);
+    this.b.d((List)localObject1);
   }
   
-  public void d()
+  public int g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage = null;
+    return 2131888877;
   }
   
-  public void e() {}
+  public void h()
+  {
+    this.g.onDestroy();
+    this.b = null;
+  }
   
-  public void f() {}
+  public void i() {}
   
-  public void g() {}
+  public void j() {}
+  
+  public void k() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.BaseEmosmStrategy
  * JD-Core Version:    0.7.0.1
  */

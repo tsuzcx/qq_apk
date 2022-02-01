@@ -12,81 +12,49 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class RIJThreadHandler
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler;
-  private static ReadInJoySSOHandlerThread jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsReadInJoySSOHandlerThread;
-  private static String jdField_a_of_type_JavaLangString = null;
-  private static Queue<Integer> jdField_a_of_type_JavaUtilQueue = new LinkedBlockingQueue(100);
+  private static Handler a;
   private static Handler b;
+  private static ReadInJoySSOHandlerThread c;
+  private static Queue<Integer> d = new LinkedBlockingQueue(100);
+  private static String e = null;
   
   public static Handler a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsReadInJoySSOHandlerThread == null)
+      if (c == null)
       {
-        jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsReadInJoySSOHandlerThread = new ReadInJoySSOHandlerThread("kandian_network_thread");
-        jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsReadInJoySSOHandlerThread.start();
-        jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsReadInJoySSOHandlerThread.getLooper());
+        c = new ReadInJoySSOHandlerThread("kandian_network_thread");
+        c.start();
+        a = new Handler(c.getLooper());
       }
-      Handler localHandler = jdField_a_of_type_AndroidOsHandler;
+      Handler localHandler = a;
       return localHandler;
     }
     finally {}
   }
   
-  public static String a()
-  {
-    String str2 = jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "0";
-    }
-    return str1;
-  }
-  
-  public static List<Integer> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = jdField_a_of_type_JavaUtilQueue;
-    if (localObject != null)
-    {
-      localObject = ((Queue)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localArrayList.add((Integer)((Iterator)localObject).next());
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static void a()
-  {
-    Queue localQueue = jdField_a_of_type_JavaUtilQueue;
-    if (localQueue != null) {
-      localQueue.clear();
-    }
-  }
-  
   public static void a(int paramInt)
   {
-    if (jdField_a_of_type_JavaUtilQueue == null) {
-      jdField_a_of_type_JavaUtilQueue = new LinkedBlockingQueue(100);
+    if (d == null) {
+      d = new LinkedBlockingQueue(100);
     }
-    if (!jdField_a_of_type_JavaUtilQueue.offer(Integer.valueOf(paramInt)))
+    if (!d.offer(Integer.valueOf(paramInt)))
     {
-      jdField_a_of_type_JavaUtilQueue.poll();
-      jdField_a_of_type_JavaUtilQueue.offer(Integer.valueOf(paramInt));
+      d.poll();
+      d.offer(Integer.valueOf(paramInt));
     }
   }
   
   public static void a(long paramLong)
   {
-    a();
+    c();
     long l = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramLong);
     localStringBuilder.append("_");
     localStringBuilder.append(l);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    e = localStringBuilder.toString();
   }
   
   public static void a(String paramString, Runnable paramRunnable, ExecutorService paramExecutorService)
@@ -97,11 +65,6 @@ public class RIJThreadHandler
       return;
     }
     QLog.d("RIJThreadHandler", 2, new Object[] { paramString, " runInSubThread failed, executorService is null or shutdown." });
-  }
-  
-  public static boolean a()
-  {
-    return Looper.myLooper() == Looper.getMainLooper();
   }
   
   public static Handler b()
@@ -117,10 +80,47 @@ public class RIJThreadHandler
     }
     return b;
   }
+  
+  public static void c()
+  {
+    Queue localQueue = d;
+    if (localQueue != null) {
+      localQueue.clear();
+    }
+  }
+  
+  public static List<Integer> d()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = d;
+    if (localObject != null)
+    {
+      localObject = ((Queue)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add((Integer)((Iterator)localObject).next());
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static String e()
+  {
+    String str2 = e;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "0";
+    }
+    return str1;
+  }
+  
+  public static boolean f()
+  {
+    return Looper.myLooper() == Looper.getMainLooper();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.RIJThreadHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class IdentificationIpcServer$2
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("usable", paramBoolean);
     localBundle.putString("msg", paramString);
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationIpcServer.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, localBundle));
+    this.b.callbackResult(this.a, EIPCResult.createResult(0, localBundle));
   }
   
   public void onFailedResponse(String paramString1, int paramInt, String paramString2)
@@ -23,12 +23,12 @@ class IdentificationIpcServer$2
     localBundle.putString("cmd", paramString1);
     localBundle.putInt("code", paramInt);
     localBundle.putString("msg", paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationIpcServer.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, localBundle));
+    this.b.callbackResult(this.a, EIPCResult.createResult(-102, localBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationIpcServer.2
  * JD-Core Version:    0.7.0.1
  */

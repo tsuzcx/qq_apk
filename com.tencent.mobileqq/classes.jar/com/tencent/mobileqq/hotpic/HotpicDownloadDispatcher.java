@@ -12,20 +12,20 @@ import java.util.Set;
 public class HotpicDownloadDispatcher
   implements URLDrawable.DownloadListener
 {
-  int jdField_a_of_type_Int = 1;
-  SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private HotPicPageView jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private LinkedList<URLDrawable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  boolean jdField_a_of_type_Boolean = false;
-  volatile int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
+  boolean a = false;
+  int b = 1;
+  SparseArray<URLDrawable> c = new SparseArray();
+  volatile int d = 0;
+  boolean e = false;
+  private Object f = new Object();
+  private LinkedList<URLDrawable> g = new LinkedList();
+  private Set<Integer> h = new HashSet();
+  private HotPicPageView i;
   
   public HotpicDownloadDispatcher(HotPicPageView paramHotPicPageView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView = paramHotPicPageView;
-    if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_b_of_type_Int == 0)
+    this.i = paramHotPicPageView;
+    if (this.i.m == 0)
     {
       b(true);
       return;
@@ -37,34 +37,34 @@ public class HotpicDownloadDispatcher
   {
     try
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.f)
       {
-        this.jdField_b_of_type_Int -= 1;
-        while ((this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0))
+        this.d -= 1;
+        while ((this.d < this.b) && (this.g.size() > 0))
         {
-          Object localObject3 = (URLDrawable)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+          Object localObject3 = (URLDrawable)this.g.removeFirst();
           if (((URLDrawable)localObject3).getStatus() != 1) {
             if (((URLDrawable)localObject3).getStatus() == 2)
             {
               ((URLDrawable)localObject3).restartDownload();
-              this.jdField_b_of_type_Int += 1;
+              this.d += 1;
               if (QLog.isColorLevel())
               {
                 localObject3 = new StringBuilder();
                 ((StringBuilder)localObject3).append("handlerNext,restartDownload, current ");
-                ((StringBuilder)localObject3).append(this.jdField_b_of_type_Int);
+                ((StringBuilder)localObject3).append(this.d);
                 QLog.i("HotPicManager.Panel.HotpicDownloadDispatcher", 2, ((StringBuilder)localObject3).toString());
               }
             }
             else
             {
               ((URLDrawable)localObject3).startDownload();
-              this.jdField_b_of_type_Int += 1;
+              this.d += 1;
             }
           }
         }
-        if ((this.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_JavaUtilLinkedList.size() == 0) && (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView != null) && (this.jdField_a_of_type_Boolean)) {
-          this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.m();
+        if ((this.d == 0) && (this.g.size() == 0) && (this.i != null) && (this.a)) {
+          this.i.n();
         }
         return;
       }
@@ -90,7 +90,7 @@ public class HotpicDownloadDispatcher
   
   public void a(int paramInt, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramURLDrawable);
+    this.c.put(paramInt, paramURLDrawable);
     paramURLDrawable.startDownload();
     a(paramURLDrawable, paramInt);
   }
@@ -102,27 +102,27 @@ public class HotpicDownloadDispatcher
     {
       try
       {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        synchronized (this.f)
         {
-          if (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
+          if (this.h.contains(Integer.valueOf(paramInt))) {
             return;
           }
-          this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
+          this.h.add(Integer.valueOf(paramInt));
           paramURLDrawable.setDownloadListener(this);
-          if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int)
+          if (this.d >= this.b)
           {
-            if (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramURLDrawable))
+            if (!this.g.contains(paramURLDrawable))
             {
               paramURLDrawable.setAutoDownload(false);
-              this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramURLDrawable);
-              int i = this.jdField_a_of_type_JavaUtilLinkedList.size();
-              if (!this.jdField_b_of_type_Boolean) {
+              this.g.addFirst(paramURLDrawable);
+              int j = this.g.size();
+              if (!this.e) {
                 break label176;
               }
               paramInt = 20;
-              if (i > paramInt)
+              if (j > paramInt)
               {
-                paramURLDrawable = (URLDrawable)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
+                paramURLDrawable = (URLDrawable)this.g.removeLast();
                 paramURLDrawable.setAutoDownload(true);
                 paramURLDrawable.setDownloadListener(null);
               }
@@ -133,7 +133,7 @@ public class HotpicDownloadDispatcher
             if (paramURLDrawable.getStatus() == 2) {
               paramURLDrawable.restartDownload();
             }
-            this.jdField_b_of_type_Int += 1;
+            this.d += 1;
           }
           return;
         }
@@ -145,23 +145,23 @@ public class HotpicDownloadDispatcher
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.f)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+      Iterator localIterator = this.g.iterator();
       while (localIterator.hasNext()) {
         ((URLDrawable)localIterator.next()).setDownloadListener(null);
       }
-      this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      int i = 0;
-      while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+      this.g.clear();
+      int j = 0;
+      while (j < this.c.size())
       {
-        ((URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(0)).setDownloadListener(null);
-        i += 1;
+        ((URLDrawable)this.c.valueAt(0)).setDownloadListener(null);
+        j += 1;
       }
       return;
     }
@@ -175,24 +175,24 @@ public class HotpicDownloadDispatcher
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = true;
-      int i;
-      if (this.jdField_a_of_type_Boolean) {
-        i = 3;
+      this.a = true;
+      int j;
+      if (this.a) {
+        j = 3;
       } else {
-        i = 4;
+        j = 4;
       }
-      this.jdField_a_of_type_Int = i;
+      this.b = j;
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 1;
+    this.a = false;
+    this.b = 1;
   }
   
   public void onFileDownloadFailed(int paramInt)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-    this.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
+    this.c.remove(paramInt);
+    this.h.remove(Integer.valueOf(paramInt));
     c();
   }
   
@@ -200,16 +200,16 @@ public class HotpicDownloadDispatcher
   
   public void onFileDownloadSucceed(long paramLong)
   {
-    int i = (int)paramLong;
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-    this.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(i));
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.b(i);
+    int j = (int)paramLong;
+    this.c.remove(j);
+    this.h.remove(Integer.valueOf(j));
+    this.i.b(j);
     c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotpicDownloadDispatcher
  * JD-Core Version:    0.7.0.1
  */

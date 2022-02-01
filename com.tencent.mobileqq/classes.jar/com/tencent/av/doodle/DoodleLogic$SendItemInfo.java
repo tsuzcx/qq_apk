@@ -5,12 +5,12 @@ import com.tencent.av.utils.AudioHelper;
 
 class DoodleLogic$SendItemInfo
 {
-  long jdField_a_of_type_Long = AudioHelper.a();
-  AVFunDrawing.MessageBody jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody;
+  AVFunDrawing.MessageBody a;
+  long b = AudioHelper.b();
   
   DoodleLogic$SendItemInfo(AVFunDrawing.MessageBody paramMessageBody)
   {
-    this.jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody = paramMessageBody;
+    this.a = paramMessageBody;
   }
 }
 

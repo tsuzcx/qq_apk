@@ -12,12 +12,11 @@ import com.tencent.mobileqq.nearby.api.INearbyFlowerUtil;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.troop.data.MessageNavInfo;
-import com.tencent.mobileqq.troop.data.TroopAioAgent.Message;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopAioMsgNavigateUpdateMsgInfoUtil
 {
-  private static int a(int paramInt, MessageRecord paramMessageRecord)
+  protected static int a(int paramInt, MessageRecord paramMessageRecord)
   {
     boolean bool = ((INearbyFlowerUtil)QRoute.api(INearbyFlowerUtil.class)).isNearbyFlowerMsg(paramMessageRecord);
     int j = -1;
@@ -69,7 +68,7 @@ public class TroopAioMsgNavigateUpdateMsgInfoUtil
   }
   
   @Nullable
-  private static Object a(QQAppInterface paramQQAppInterface, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, boolean paramBoolean)
+  protected static Object a(QQAppInterface paramQQAppInterface, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
     int i = paramMessageInfo.a(paramBoolean);
     if ((!paramBoolean) && (!MessageNavInfo.a(i))) {
@@ -85,11 +84,11 @@ public class TroopAioMsgNavigateUpdateMsgInfoUtil
   @Nullable
   public static Object a(QQAppInterface paramQQAppInterface, String paramString, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    a(paramQQAppInterface, paramString, paramMessageInfo, paramMessageRecord, paramBoolean);
+    c(paramQQAppInterface, paramString, paramMessageInfo, paramMessageRecord, paramBoolean);
     return a(paramQQAppInterface, paramMessageInfo, paramObject, paramMessageRecord, paramBoolean);
   }
   
-  private static String a(String paramString, boolean paramBoolean)
+  protected static String b(String paramString, boolean paramBoolean)
   {
     int i;
     if (paramBoolean) {
@@ -97,10 +96,10 @@ public class TroopAioMsgNavigateUpdateMsgInfoUtil
     } else {
       i = 3000;
     }
-    return TroopAioNavigateBarManager.a(paramString, i);
+    return TroopAioNavigateBarManager.d(paramString, i);
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, String paramString, MessageInfo paramMessageInfo, MessageRecord paramMessageRecord, boolean paramBoolean)
+  protected static void c(QQAppInterface paramQQAppInterface, String paramString, MessageInfo paramMessageInfo, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
     int j = paramMessageInfo.a(paramBoolean);
     int i = a(j, paramMessageRecord);
@@ -123,18 +122,18 @@ public class TroopAioMsgNavigateUpdateMsgInfoUtil
       }
       return;
     }
-    paramString = a(paramString, paramBoolean);
+    paramString = b(paramString, paramBoolean);
     j = NavConstants.b(j);
     if (j != 102) {
       paramMessageRecord = null;
     }
-    long l = TroopAioAgent.Message.a(j, paramMessageInfo.a.a, paramMessageInfo.a.b);
-    ((TroopAioNavigateBarManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_AIO_NAVIGATE_BAR)).a(paramString, j, paramMessageInfo.a.a, l, "", i, paramMessageRecord);
+    long l = AioAgent.Message.a(j, paramMessageInfo.c.b, paramMessageInfo.c.c);
+    ((TroopAioNavigateBarManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_AIO_NAVIGATE_BAR)).a(paramString, j, paramMessageInfo.c.b, l, "", i, paramMessageRecord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateUpdateMsgInfoUtil
  * JD-Core Version:    0.7.0.1
  */

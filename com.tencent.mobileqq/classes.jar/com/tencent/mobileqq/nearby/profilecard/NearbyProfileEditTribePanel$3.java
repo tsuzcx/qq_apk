@@ -11,12 +11,12 @@ class NearbyProfileEditTribePanel$3
   
   public void onConfirmBtClicked()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    Object localObject = this.b;
     if ((localObject != null) && (((ActionSheet)localObject).isShowing()))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel;
-      NearbyProfileEditTribePanel.a((NearbyProfileEditTribePanel)localObject, ((NearbyProfileEditTribePanel)localObject).c, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      localObject = this.c;
+      NearbyProfileEditTribePanel.a((NearbyProfileEditTribePanel)localObject, ((NearbyProfileEditTribePanel)localObject).p, false);
+      this.b.dismiss();
     }
   }
   
@@ -27,28 +27,28 @@ class NearbyProfileEditTribePanel$3
       if (paramInt1 != 1)
       {
         if (paramInt1 == 2) {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.g = paramInt2;
+          this.c.M = paramInt2;
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.f = paramInt2;
+        this.c.L = paramInt2;
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.e = paramInt2;
+      this.c.K = paramInt2;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
+    if (this.a != null)
     {
       if ((paramInt1 == 0) || (paramInt1 == 1)) {
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+        this.a.a(2);
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
+      this.c.a(this.a.b(0), this.a.b(1), this.a.b(2));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel.3
  * JD-Core Version:    0.7.0.1
  */

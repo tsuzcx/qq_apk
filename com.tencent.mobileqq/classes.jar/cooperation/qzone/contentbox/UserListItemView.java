@@ -54,22 +54,22 @@ public class UserListItemView
       ViewGroup.LayoutParams localLayoutParams = paramContext.getLayoutParams();
       if (paramInt == 0)
       {
-        localLayoutParams.height = ViewUtils.b(42.0F);
-        localLayoutParams.width = ViewUtils.b(42.0F);
+        localLayoutParams.height = ViewUtils.dpToPx(42.0F);
+        localLayoutParams.width = ViewUtils.dpToPx(42.0F);
       }
       else if (paramInt == 1)
       {
-        localLayoutParams.height = ViewUtils.b(34.0F);
-        localLayoutParams.width = ViewUtils.b(34.0F);
+        localLayoutParams.height = ViewUtils.dpToPx(34.0F);
+        localLayoutParams.width = ViewUtils.dpToPx(34.0F);
       }
       paramContext.setLayoutParams(localLayoutParams);
     }
     if (paramBoolean)
     {
       if (this.isNewStyle) {
-        ((GradientDrawable)getResources().getDrawable(2130848729)).setColor(Color.parseColor("#B2FFFFFF"));
+        ((GradientDrawable)getResources().getDrawable(2130850396)).setColor(Color.parseColor("#B2FFFFFF"));
       }
-      ((ImageView)findViewById(2080571398)).setImageDrawable(getResources().getDrawable(2130848729));
+      ((ImageView)findViewById(2080571398)).setImageDrawable(getResources().getDrawable(2130850396));
     }
   }
   
@@ -84,7 +84,7 @@ public class UserListItemView
     {
       if (this.isNewStyle)
       {
-        GradientDrawable localGradientDrawable = (GradientDrawable)getResources().getDrawable(2130848730);
+        GradientDrawable localGradientDrawable = (GradientDrawable)getResources().getDrawable(2130850397);
         localGradientDrawable.setColor(Color.parseColor("#B2FFFFFF"));
         this.mAvatarCover.setBackgroundDrawable(localGradientDrawable);
       }
@@ -96,7 +96,7 @@ public class UserListItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.UserListItemView
  * JD-Core Version:    0.7.0.1
  */

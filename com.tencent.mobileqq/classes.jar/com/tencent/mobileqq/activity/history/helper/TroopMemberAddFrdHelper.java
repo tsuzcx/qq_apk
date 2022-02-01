@@ -29,64 +29,61 @@ import java.util.List;
 public class TroopMemberAddFrdHelper
   implements View.OnClickListener
 {
-  public int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public ChatHistoryTroopMemberFragment.ATroopMember a;
-  private TroopMemberAddFrdHelper.AddFrdHelperListener jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperTroopMemberAddFrdHelper$AddFrdHelperListener;
-  private TroopMemberAddFrdHelper.TroopMemberListConfig jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperTroopMemberAddFrdHelper$TroopMemberListConfig = null;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new TroopMemberAddFrdHelper.2(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
-  private FriendObserver jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver = new TroopMemberAddFrdHelper.1(this);
-  public AddFrdStateMng a;
-  private ITroopRobotService jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService;
-  private String jdField_a_of_type_JavaLangString;
   public final ArrayList<String> a;
-  private List<ChatHistoryTroopMemberFragment.ATroopMember> jdField_a_of_type_JavaUtilList;
-  public boolean a;
+  public boolean b = false;
+  public int c = 0;
+  public ChatHistoryTroopMemberFragment.ATroopMember d = null;
+  public AddFrdStateMng e;
+  private TroopMemberAddFrdHelper.TroopMemberListConfig f = null;
+  private TroopMemberAddFrdHelper.AddFrdHelperListener g;
+  private ITroopRobotService h;
+  private TroopInfo i;
+  private String j;
+  private Context k;
+  private QQAppInterface l;
+  private List<ChatHistoryTroopMemberFragment.ATroopMember> m;
+  private FriendObserver n = new TroopMemberAddFrdHelper.1(this);
+  private FriendListObserver o = new TroopMemberAddFrdHelper.2(this);
   
   public TroopMemberAddFrdHelper(Context paramContext, TroopMemberAddFrdHelper.AddFrdHelperListener paramAddFrdHelperListener, QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo, List<ChatHistoryTroopMemberFragment.ATroopMember> paramList)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ATroopMember = null;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-    this.jdField_a_of_type_ComTencentMobileqqRelationxAddFrdAddFrdStateMng = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a();
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService = ((ITroopRobotService)paramQQAppInterface.getRuntimeService(ITroopRobotService.class, "all"));
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperTroopMemberAddFrdHelper$AddFrdHelperListener = paramAddFrdHelperListener;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = paramTroopInfo;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.k = paramContext;
+    this.a = new ArrayList(5);
+    this.e = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).z();
+    paramQQAppInterface.addObserver(this.o);
+    paramQQAppInterface.addObserver(this.n);
+    this.l = paramQQAppInterface;
+    this.h = ((ITroopRobotService)paramQQAppInterface.getRuntimeService(ITroopRobotService.class, "all"));
+    this.g = paramAddFrdHelperListener;
+    this.i = paramTroopInfo;
+    this.j = paramQQAppInterface.getCurrentAccountUin();
+    this.m = paramList;
   }
   
   public void a()
   {
-    ChatHistoryTroopMemberFragment.ATroopMember localATroopMember = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ATroopMember;
+    ChatHistoryTroopMemberFragment.ATroopMember localATroopMember = this.d;
     if (localATroopMember != null)
     {
       a(localATroopMember);
-      a(1, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ATroopMember.jdField_a_of_type_JavaLangString);
+      a(1, this.d.a);
     }
     else
     {
       b();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ATroopMember = null;
+    this.d = null;
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (paramInt > this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_Int = paramInt;
+    if (paramInt > this.c) {
+      this.c = paramInt;
     }
-    if ((this.jdField_a_of_type_Int < 2) && (!TextUtils.isEmpty(paramString))) {
+    if ((this.c < 2) && (!TextUtils.isEmpty(paramString))) {
       try
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        this.a.add(paramString);
       }
       catch (Throwable paramString)
       {
@@ -98,7 +95,7 @@ public class TroopMemberAddFrdHelper
       b();
       return;
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperTroopMemberAddFrdHelper$AddFrdHelperListener;
+    paramString = this.g;
     if (paramString != null) {
       paramString.a();
     }
@@ -106,26 +103,26 @@ public class TroopMemberAddFrdHelper
   
   public void a(ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember)
   {
-    AddFrdStateMng localAddFrdStateMng = this.jdField_a_of_type_ComTencentMobileqqRelationxAddFrdAddFrdStateMng;
+    AddFrdStateMng localAddFrdStateMng = this.e;
     if (paramATroopMember == null) {
       return;
     }
-    if (!a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo))
+    if (!a(this.i))
     {
-      paramATroopMember.o = 0;
+      paramATroopMember.W = 0;
       return;
     }
     if (localAddFrdStateMng != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService.isRobotUin(paramATroopMember.jdField_a_of_type_JavaLangString))
+      if (this.h.isRobotUin(paramATroopMember.a))
       {
-        paramATroopMember.o = 0;
+        paramATroopMember.W = 0;
         return;
       }
-      paramATroopMember.o = localAddFrdStateMng.a(paramATroopMember.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramATroopMember.W = localAddFrdStateMng.a(paramATroopMember.a, this.l);
       return;
     }
-    paramATroopMember.o = 0;
+    paramATroopMember.W = 0;
   }
   
   public void a(ChatHistoryTroopMemberFragment.TmViewHolder paramTmViewHolder, ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember)
@@ -133,41 +130,41 @@ public class TroopMemberAddFrdHelper
     if (paramTmViewHolder == null) {
       return;
     }
-    if (paramTmViewHolder.f != null)
+    if (paramTmViewHolder.u != null)
     {
-      TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
+      TroopInfo localTroopInfo = this.i;
       if (paramATroopMember == null) {}
-      while ((paramATroopMember.o != 3) && (paramATroopMember.o != 2))
+      while ((paramATroopMember.W != 3) && (paramATroopMember.W != 2))
       {
-        i = 0;
+        i1 = 0;
         break;
       }
-      int i = 1;
-      if (i != 0)
+      int i1 = 1;
+      if (i1 != 0)
       {
-        paramTmViewHolder.f.setVisibility(0);
-        Button localButton = (Button)paramTmViewHolder.f.findViewById(2131362212);
-        paramTmViewHolder = (TextView)paramTmViewHolder.f.findViewById(2131362214);
-        if (paramATroopMember.o == 2)
+        paramTmViewHolder.u.setVisibility(0);
+        Button localButton = (Button)paramTmViewHolder.u.findViewById(2131427793);
+        paramTmViewHolder = (TextView)paramTmViewHolder.u.findViewById(2131427795);
+        if (paramATroopMember.W == 2)
         {
           localButton.setVisibility(8);
           paramTmViewHolder.setVisibility(0);
           return;
         }
-        if (paramATroopMember.o == 3)
+        if (paramATroopMember.W == 3)
         {
           localButton.setTag(paramATroopMember);
           localButton.setOnClickListener(this);
-          localButton.setText(HardCodeUtil.a(2131715425));
+          localButton.setText(HardCodeUtil.a(2131912903));
           localButton.setVisibility(0);
           paramTmViewHolder.setVisibility(8);
-          if (!this.jdField_a_of_type_Boolean)
+          if (!this.b)
           {
-            this.jdField_a_of_type_Boolean = true;
+            this.b = true;
             if (localTroopInfo != null)
             {
               paramTmViewHolder = localTroopInfo.troopuin;
-              long l = localTroopInfo.dwGroupClassExt;
+              long l1 = localTroopInfo.dwGroupClassExt;
             }
           }
         }
@@ -179,7 +176,7 @@ public class TroopMemberAddFrdHelper
       }
       else
       {
-        paramTmViewHolder.f.setVisibility(8);
+        paramTmViewHolder.u.setVisibility(8);
       }
     }
   }
@@ -193,14 +190,14 @@ public class TroopMemberAddFrdHelper
       if (paramTroopInfo.isQidianPrivateTroop()) {
         return false;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperTroopMemberAddFrdHelper$TroopMemberListConfig == null) {
+      if (this.f == null) {
         d();
       }
       bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperTroopMemberAddFrdHelper$TroopMemberListConfig.jdField_a_of_type_JavaUtilList.contains(Long.valueOf(paramTroopInfo.dwGroupClassExt)))
+      if (this.f.a.contains(Long.valueOf(paramTroopInfo.dwGroupClassExt)))
       {
         bool1 = bool2;
-        if (paramTroopInfo.wMemberNum <= this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperTroopMemberAddFrdHelper$TroopMemberListConfig.jdField_a_of_type_Int) {
+        if (paramTroopInfo.wMemberNum <= this.f.b) {
           bool1 = true;
         }
       }
@@ -210,17 +207,17 @@ public class TroopMemberAddFrdHelper
   
   public void b()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i1 = this.c;
     ChatHistoryTroopMemberFragment.ATroopMember localATroopMember;
     Object localObject;
-    if (i == 1) {
+    if (i1 == 1) {
       try
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator = this.m.iterator();
         while (localIterator.hasNext())
         {
           localATroopMember = (ChatHistoryTroopMemberFragment.ATroopMember)localIterator.next();
-          if ((localATroopMember != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(localATroopMember.jdField_a_of_type_JavaLangString))) {
+          if ((localATroopMember != null) && (this.a.contains(localATroopMember.a))) {
             a(localATroopMember);
           }
         }
@@ -229,15 +226,15 @@ public class TroopMemberAddFrdHelper
       catch (Throwable localThrowable1)
       {
         localThrowable1.printStackTrace();
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperTroopMemberAddFrdHelper$AddFrdHelperListener;
+        localObject = this.g;
         if (localObject == null) {
           break label160;
         }
       }
-    } else if (i == 2) {
+    } else if (i1 == 2) {
       try
       {
-        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject = this.m.iterator();
         while (((Iterator)localObject).hasNext())
         {
           localATroopMember = (ChatHistoryTroopMemberFragment.ATroopMember)((Iterator)localObject).next();
@@ -246,12 +243,12 @@ public class TroopMemberAddFrdHelper
           }
         }
         TroopMemberAddFrdHelper.AddFrdHelperListener localAddFrdHelperListener;
-        this.jdField_a_of_type_Int = 0;
+        this.c = 0;
       }
       catch (Throwable localThrowable2)
       {
         localThrowable2.printStackTrace();
-        localAddFrdHelperListener = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperTroopMemberAddFrdHelper$AddFrdHelperListener;
+        localAddFrdHelperListener = this.g;
         if (localAddFrdHelperListener != null) {
           localAddFrdHelperListener.b();
         }
@@ -260,7 +257,7 @@ public class TroopMemberAddFrdHelper
     try
     {
       label160:
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.a.clear();
       return;
     }
     catch (Throwable localThrowable3)
@@ -271,32 +268,32 @@ public class TroopMemberAddFrdHelper
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver);
-    this.jdField_a_of_type_ComTencentMobileqqRelationxAddFrdAddFrdStateMng = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.l.removeObserver(this.o);
+    this.l.removeObserver(this.n);
+    this.e = null;
+    this.l = null;
   }
   
   protected void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperTroopMemberAddFrdHelper$TroopMemberListConfig == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperTroopMemberAddFrdHelper$TroopMemberListConfig = new TroopMemberAddFrdHelper.TroopMemberListConfig(this.jdField_a_of_type_JavaLangString);
+    if (this.f == null) {
+      this.f = new TroopMemberAddFrdHelper.TroopMemberListConfig(this.j);
     }
   }
   
   public void onClick(View paramView)
   {
     Object localObject = paramView.getTag();
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && ((localObject instanceof ChatHistoryTroopMemberFragment.ATroopMember)))
+    if ((this.k != null) && ((localObject instanceof ChatHistoryTroopMemberFragment.ATroopMember)))
     {
       localObject = (ChatHistoryTroopMemberFragment.ATroopMember)localObject;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ATroopMember = ((ChatHistoryTroopMemberFragment.ATroopMember)localObject);
-      String str = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopcode;
-      localObject = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(this.jdField_a_of_type_AndroidContentContext, 1, ((ChatHistoryTroopMemberFragment.ATroopMember)localObject).jdField_a_of_type_JavaLangString, str, 3004, 13, ((ChatHistoryTroopMemberFragment.ATroopMember)localObject).m, null, null, null, null);
-      ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(this.jdField_a_of_type_AndroidContentContext, (Intent)localObject);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
+      this.d = ((ChatHistoryTroopMemberFragment.ATroopMember)localObject);
+      String str = this.i.troopcode;
+      localObject = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(this.k, 1, ((ChatHistoryTroopMemberFragment.ATroopMember)localObject).a, str, 3004, 13, ((ChatHistoryTroopMemberFragment.ATroopMember)localObject).n, null, null, null, null);
+      ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(this.k, (Intent)localObject);
+      localObject = this.i;
       if (localObject != null) {
-        long l = ((TroopInfo)localObject).dwGroupClassExt;
+        long l1 = ((TroopInfo)localObject).dwGroupClassExt;
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -304,7 +301,7 @@ public class TroopMemberAddFrdHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.helper.TroopMemberAddFrdHelper
  * JD-Core Version:    0.7.0.1
  */

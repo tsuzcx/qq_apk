@@ -17,31 +17,31 @@ final class ChatActivityFacade$7
   
   public void run()
   {
-    if (ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false))
+    if (ChatActivityFacade.d(this.a, this.b, false))
     {
-      long l1 = this.jdField_a_of_type_OrgJsonJSONObject.optLong("fromuin");
-      if (String.valueOf(l1).equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
+      long l1 = this.c.optLong("fromuin");
+      if (String.valueOf(l1).equals(this.b.b))
       {
-        long l2 = this.jdField_a_of_type_OrgJsonJSONObject.optLong("time");
+        long l2 = this.c.optLong("time");
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append("add new feeds publishTime:");
         ((StringBuilder)localObject).append(l2);
         QLog.i("ChatActivityFacade.QZoneFeeds", 1, ((StringBuilder)localObject).toString());
-        if (this.jdField_a_of_type_Boolean)
+        if (this.d)
         {
-          ((INewFriendService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(INewFriendService.class)).insertFriendFeedForAIOShowNewsMsg(this.jdField_a_of_type_OrgJsonJSONObject.toString(), String.valueOf(l1));
+          ((INewFriendService)this.a.getRuntimeService(INewFriendService.class)).insertFriendFeedForAIOShowNewsMsg(this.c.toString(), String.valueOf(l1));
           return;
         }
-        localObject = (BeancurdManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
+        localObject = (BeancurdManager)this.a.getManager(QQManagerFactory.BEANCURD_MANAGER);
         BeancurdMsg localBeancurdMsg = new BeancurdMsg();
-        localBeancurdMsg.buffer = this.jdField_a_of_type_OrgJsonJSONObject.toString();
+        localBeancurdMsg.buffer = this.c.toString();
         localBeancurdMsg.busiid = 2;
         localBeancurdMsg.frienduin = String.valueOf(l1);
         localBeancurdMsg.isNeedDelHistory = true;
-        localBeancurdMsg.ispush = this.jdField_a_of_type_ArrayOfBoolean[0];
-        localBeancurdMsg.startTime = MessageCache.a();
+        localBeancurdMsg.ispush = this.e[0];
+        localBeancurdMsg.startTime = MessageCache.c();
         localBeancurdMsg.validTime = 604800L;
-        localBeancurdMsg.token = this.jdField_a_of_type_ArrayOfLong[0];
+        localBeancurdMsg.token = this.f[0];
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -58,7 +58,7 @@ final class ChatActivityFacade$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.7
  * JD-Core Version:    0.7.0.1
  */

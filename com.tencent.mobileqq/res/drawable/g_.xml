@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animated-selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:id="@id/mq7" android:drawable="@drawable/bld" />
-    <item android:id="@id/oj_" android:drawable="@drawable/blf" />
-    <transition android:drawable="@drawable/blg" android:toId="@id/mq7" android:fromId="@id/oj_" />
-    <transition android:drawable="@drawable/ble" android:toId="@id/oj_" android:fromId="@id/mq7" />
+    <item android:state_checked="true" android:id="@id/ovh" android:drawable="@drawable/54" />
+    <item android:id="@id/ovf" android:drawable="@drawable/52" />
+    <transition android:drawable="@drawable/55" android:toId="@id/ovf" android:fromId="@id/ovh" />
+    <transition android:drawable="@drawable/53" android:toId="@id/ovh" android:fromId="@id/ovf" />
 </animated-selector>

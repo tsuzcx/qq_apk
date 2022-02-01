@@ -29,12 +29,12 @@ class QzoneHbFragment$SendHbHandler
     {
     default: 
     case 101: 
-      if (!TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment)))
+      if (!TextUtils.isEmpty(QzoneHbFragment.c(localQzoneHbFragment)))
       {
-        QzoneHbFragment.a(localQzoneHbFragment).setText(QzoneHbFragment.a(localQzoneHbFragment));
-        QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
-        QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
-        QzoneHbFragment.b(localQzoneHbFragment).setEnabled(true);
+        QzoneHbFragment.d(localQzoneHbFragment).setText(QzoneHbFragment.c(localQzoneHbFragment));
+        QzoneHbFragment.e(localQzoneHbFragment).setVisibility(8);
+        QzoneHbFragment.d(localQzoneHbFragment).setVisibility(0);
+        QzoneHbFragment.f(localQzoneHbFragment).setEnabled(true);
         if (QLog.isColorLevel())
         {
           QLog.d("QzoneHbFragment", 2, "MSG_ROLL_STOP AmountBtn.setEnabled(true)---");
@@ -46,18 +46,18 @@ class QzoneHbFragment$SendHbHandler
       if (QLog.isColorLevel()) {
         QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----1");
       }
-      if ((QzoneHbFragment.a(localQzoneHbFragment) != null) && (!TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment)))) {
+      if ((QzoneHbFragment.e(localQzoneHbFragment) != null) && (!TextUtils.isEmpty(QzoneHbFragment.c(localQzoneHbFragment)))) {
         try
         {
           if (QLog.isColorLevel()) {
             QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----in mModifyAmountBtn.setEnabled(false)");
           }
-          double d = Double.parseDouble(QzoneHbFragment.a(localQzoneHbFragment));
-          QzoneHbFragment.a(localQzoneHbFragment).b(d);
-          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
-          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
-          QzoneHbFragment.a(localQzoneHbFragment).a();
-          QzoneHbFragment.b(localQzoneHbFragment).setEnabled(false);
+          double d = Double.parseDouble(QzoneHbFragment.c(localQzoneHbFragment));
+          QzoneHbFragment.e(localQzoneHbFragment).b(d);
+          QzoneHbFragment.e(localQzoneHbFragment).setVisibility(0);
+          QzoneHbFragment.d(localQzoneHbFragment).setVisibility(8);
+          QzoneHbFragment.e(localQzoneHbFragment).a();
+          QzoneHbFragment.f(localQzoneHbFragment).setEnabled(false);
           return;
         }
         catch (Exception paramMessage)
@@ -71,7 +71,7 @@ class QzoneHbFragment$SendHbHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.QzoneHbFragment.SendHbHandler
  * JD-Core Version:    0.7.0.1
  */

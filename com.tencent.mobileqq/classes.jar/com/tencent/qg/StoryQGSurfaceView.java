@@ -11,8 +11,8 @@ import com.tencent.qg.sdk.log.GLog;
 public class StoryQGSurfaceView
   extends QGGLSurfaceView
 {
-  private static String jdField_a_of_type_JavaLangString = "StoryQGSurfaceView";
-  private ModuleEngine jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine;
+  private static String a = "StoryQGSurfaceView";
+  private ModuleEngine b;
   
   public StoryQGSurfaceView(Context paramContext)
   {
@@ -25,14 +25,14 @@ public class StoryQGSurfaceView
     GLog.init(new QGLoger());
     QGBitmapLoader.setBitmapLoader(new MqqQGBitmapLoader());
     QGReporter.setReporter(new QGReporterImpl());
-    this.a = new ModuleEngine();
-    this.a.registerJsModule(new MqqModule());
-    setModuleEngin(this.a);
+    this.b = new ModuleEngine();
+    this.b.registerJsModule(new MqqModule());
+    setModuleEngin(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.StoryQGSurfaceView
  * JD-Core Version:    0.7.0.1
  */

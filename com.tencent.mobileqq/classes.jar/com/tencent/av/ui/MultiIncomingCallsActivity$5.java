@@ -30,7 +30,7 @@ class MultiIncomingCallsActivity$5
     long l1 = paramIntent.getLongExtra("groupId", 0L);
     long l2 = paramIntent.getLongExtra("roomId", 0L);
     boolean bool;
-    if ((this.a.jdField_a_of_type_Long == l1) && (MultiIncomingCallsActivity.a(this.a) == l2)) {
+    if ((this.a.b == l1) && (MultiIncomingCallsActivity.g(this.a) == l2)) {
       bool = true;
     } else {
       bool = false;
@@ -39,14 +39,14 @@ class MultiIncomingCallsActivity$5
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = this.a.jdField_b_of_type_JavaLangString;
+      localObject1 = this.a.l;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("handleMsgType0x210SuMsgType0x116 mMemberChangeEventReceiver fit=");
       ((StringBuilder)localObject2).append(bool);
       ((StringBuilder)localObject2).append(";current roomId=");
-      ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.a(this.a));
+      ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.g(this.a));
       ((StringBuilder)localObject2).append(";groupId=");
-      ((StringBuilder)localObject2).append(this.a.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append(this.a.b);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
     if ("tencent.video.q2v.GvideoMemInviteUpdate".equals(paramContext)) {
@@ -59,9 +59,9 @@ class MultiIncomingCallsActivity$5
       {
         ((submsgtype0x116.MsgBody)localObject1).mergeFrom(paramIntent.getByteArrayExtra("pushData"));
         paramIntent = new HashSet();
-        paramContext = MultiIncomingCallsActivity.a(this.a).iterator();
+        paramContext = MultiIncomingCallsActivity.b(this.a).iterator();
         while (paramContext.hasNext()) {
-          paramIntent.add(Long.valueOf(((Memberinfo)paramContext.next()).jdField_a_of_type_Long));
+          paramIntent.add(Long.valueOf(((Memberinfo)paramContext.next()).a));
         }
         int m = ((submsgtype0x116.MsgBody)localObject1).enum_event_type.get();
         bool = QLog.isColorLevel();
@@ -69,12 +69,12 @@ class MultiIncomingCallsActivity$5
         StringBuilder localStringBuilder;
         if (bool)
         {
-          localObject2 = this.a.jdField_b_of_type_JavaLangString;
+          localObject2 = this.a.l;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("mMemberChangeEventReceiver before totalCount:");
           localStringBuilder.append(((submsgtype0x116.MsgBody)localObject1).uint32_invite_list_total_count.get());
           localStringBuilder.append(";currentInviteMembers=");
-          localStringBuilder.append(MultiIncomingCallsActivity.a(this.a).size());
+          localStringBuilder.append(MultiIncomingCallsActivity.b(this.a).size());
           localStringBuilder.append(";eventType=");
           localStringBuilder.append(((submsgtype0x116.MsgBody)localObject1).enum_event_type.get());
           QLog.d((String)localObject2, 2, localStringBuilder.toString());
@@ -85,17 +85,17 @@ class MultiIncomingCallsActivity$5
         {
           localObject2 = (submsgtype0x116.MemberInfo)((submsgtype0x116.MsgBody)localObject1).rpt_msg_member_join.get(j);
           l1 = ((submsgtype0x116.MemberInfo)localObject2).uint64_member_uin.get();
-          if ((l1 != this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin()) && (l1 != this.a.jdField_b_of_type_Long)) {
+          if ((l1 != this.a.e.getLongAccountUin()) && (l1 != this.a.c)) {
             k = 1;
           } else {
             k = 0;
           }
           if ((!paramIntent.contains(Long.valueOf(l1))) && (k != 0))
           {
-            MultiIncomingCallsActivity.a(this.a).add(new Memberinfo(((submsgtype0x116.MemberInfo)localObject2).uint64_member_uin.get(), ((submsgtype0x116.MemberInfo)localObject2).uint32_invite_timestamp.get()));
+            MultiIncomingCallsActivity.b(this.a).add(new Memberinfo(((submsgtype0x116.MemberInfo)localObject2).uint64_member_uin.get(), ((submsgtype0x116.MemberInfo)localObject2).uint32_invite_timestamp.get()));
             if (QLog.isColorLevel())
             {
-              localObject2 = this.a.jdField_b_of_type_JavaLangString;
+              localObject2 = this.a.l;
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("mMemberChangeEventReceiver add member UIN:");
               localStringBuilder.append(l1);
@@ -111,7 +111,7 @@ class MultiIncomingCallsActivity$5
         while (i < ((submsgtype0x116.MsgBody)localObject1).rpt_msg_member_quit.size())
         {
           l1 = ((submsgtype0x116.MemberInfo)((submsgtype0x116.MsgBody)localObject1).rpt_msg_member_quit.get(i)).uint64_member_uin.get();
-          localObject2 = MultiIncomingCallsActivity.a(this.a).iterator();
+          localObject2 = MultiIncomingCallsActivity.b(this.a).iterator();
           do
           {
             k = j;
@@ -119,14 +119,14 @@ class MultiIncomingCallsActivity$5
               break;
             }
             paramIntent = (Memberinfo)((Iterator)localObject2).next();
-          } while (paramIntent.jdField_a_of_type_Long != l1);
-          MultiIncomingCallsActivity.a(this.a).remove(paramIntent);
+          } while (paramIntent.a != l1);
+          MultiIncomingCallsActivity.b(this.a).remove(paramIntent);
           if (QLog.isColorLevel())
           {
-            localObject2 = this.a.jdField_b_of_type_JavaLangString;
+            localObject2 = this.a.l;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("mMemberChangeEventReceiver remove member UIN:");
-            localStringBuilder.append(paramIntent.jdField_a_of_type_Long);
+            localStringBuilder.append(paramIntent.a);
             QLog.d((String)localObject2, 2, localStringBuilder.toString());
           }
           k = j;
@@ -138,19 +138,19 @@ class MultiIncomingCallsActivity$5
         }
         if (QLog.isColorLevel())
         {
-          paramIntent = this.a.jdField_b_of_type_JavaLangString;
+          paramIntent = this.a.l;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("mMemberChangeEventReceiver after totalCount:");
           ((StringBuilder)localObject2).append(((submsgtype0x116.MsgBody)localObject1).uint32_invite_list_total_count.get());
           ((StringBuilder)localObject2).append(";currentInviteMembers=");
-          ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.a(this.a).size());
+          ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.b(this.a).size());
           ((StringBuilder)localObject2).append(paramContext);
           ((StringBuilder)localObject2).append(((submsgtype0x116.MsgBody)localObject1).enum_event_type.get());
           QLog.d(paramIntent, 2, ((StringBuilder)localObject2).toString());
         }
         if (j != 0)
         {
-          MultiIncomingCallsActivity.a(this.a);
+          MultiIncomingCallsActivity.c(this.a);
           return;
         }
       }
@@ -158,7 +158,7 @@ class MultiIncomingCallsActivity$5
       {
         paramContext.printStackTrace();
         if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "mMemberChangeEventReceiver throw exception");
+          QLog.d(this.a.l, 2, "mMemberChangeEventReceiver throw exception");
         }
       }
     }

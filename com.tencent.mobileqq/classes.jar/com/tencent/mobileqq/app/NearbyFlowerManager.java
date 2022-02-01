@@ -40,45 +40,27 @@ import org.json.JSONObject;
 public class NearbyFlowerManager
   implements Manager
 {
-  public static int b;
-  public static int c;
-  public static final String e = HardCodeUtil.a(2131707182);
-  public static final String f = HardCodeUtil.a(2131707190);
-  public static final String g = HardCodeUtil.a(2131707185);
-  public int a;
-  public Handler a;
+  public static final String g = HardCodeUtil.a(2131905015);
+  public static final String h = HardCodeUtil.a(2131905023);
+  public static final String i = HardCodeUtil.a(2131905018);
+  public static int j = 0;
+  public static int k = 60;
   public QQAppInterface a;
-  public String a;
-  public HashMap<String, Long> a;
-  Map<String, Long> a;
   public String b;
-  Map<String, Long> b;
   public String c;
   public String d;
-  
-  static
-  {
-    jdField_b_of_type_Int = 0;
-    jdField_c_of_type_Int = 60;
-  }
+  public String e;
+  public int f = 0;
+  public HashMap<String, Long> l;
+  public Handler m;
+  Map<String, Long> n = new HashMap();
+  Map<String, Long> o = new HashMap();
   
   public NearbyFlowerManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.a = paramQQAppInterface;
+    this.m = new Handler(Looper.getMainLooper());
     a();
-  }
-  
-  private SharedPreferences a()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("nearby_flower_");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    return localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0);
   }
   
   public static final NearbyFlowerManager a(QQAppInterface paramQQAppInterface)
@@ -94,36 +76,36 @@ public class NearbyFlowerManager
     if (QLog.isColorLevel()) {
       QLog.i("NearbyFlowerManager", 2, "shouldShowTip start");
     }
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString1);
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    boolean bool = this.a.getCurrentAccountUin().equals(paramString1);
+    if (this.l == null) {
+      this.l = new HashMap();
     }
-    long l = MessageCache.a();
-    int i = 0;
+    long l1 = MessageCache.c();
+    int i1 = 0;
     Object localObject2;
     String str;
     if (!bool)
     {
-      if (((Boolean)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "sp_file_nearby_flower_tip", 0, "nearby_flower_tip_first_flag", Boolean.valueOf(true))).booleanValue())
+      if (((Boolean)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.getCurrentAccountUin(), "sp_file_nearby_flower_tip", 0, "nearby_flower_tip_first_flag", Boolean.valueOf(true))).booleanValue())
       {
         if (QLog.isColorLevel()) {
           QLog.i("NearbyFlowerManager", 2, "shouldShowTip first rec");
         }
-        localObject2 = this.jdField_c_of_type_JavaLangString;
-        str = this.d;
+        localObject2 = this.d;
+        str = this.e;
         if (Friends.isValidUin(paramString1)) {
-          localObject1 = String.format("https://imgcache.qq.com/club/client/flower/release/html/gift_mall.html?ADTAG=%s&_bid=2050&sourceType=%d&_handle=1&_wv=2147347&platId=1&qqVersion=%s", new Object[] { "aio.m.xiaohuitiao", Integer.valueOf(1), "8.7.0" });
+          localObject1 = String.format("https://imgcache.qq.com/club/client/flower/release/html/gift_mall.html?ADTAG=%s&_bid=2050&sourceType=%d&_handle=1&_wv=2147347&platId=1&qqVersion=%s", new Object[] { "aio.m.xiaohuitiao", Integer.valueOf(1), "8.8.17" });
         } else {
           localObject1 = null;
         }
-        ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "sp_file_nearby_flower_tip", 0, "nearby_flower_tip_first_flag", Boolean.valueOf(false));
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80060B6", "0X80060B6", 0, 0, "", "", "", "");
-        i = 1;
+        ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.a.getCurrentAccountUin(), "sp_file_nearby_flower_tip", 0, "nearby_flower_tip_first_flag", Boolean.valueOf(false));
+        ReportController.b(this.a, "CliOper", "", "", "0X80060B6", "0X80060B6", 0, 0, "", "", "", "");
+        i1 = 1;
       }
       else
       {
-        localObject1 = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-        if ((localObject1 != null) && (l - ((Long)localObject1).longValue() <= jdField_c_of_type_Int)) {
+        localObject1 = (Long)this.l.get(paramString1);
+        if ((localObject1 != null) && (l1 - ((Long)localObject1).longValue() <= k)) {
           localObject2 = null;
         }
         for (;;)
@@ -138,8 +120,8 @@ public class NearbyFlowerManager
           localObject2 = localObject1;
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80060B8", "0X80060B8", 0, 0, "", "", "", "");
-            i = 1;
+            ReportController.b(this.a, "CliOper", "", "", "0X80060B8", "0X80060B8", 0, 0, "", "", "", "");
+            i1 = 1;
             localObject2 = localObject1;
           }
         }
@@ -147,35 +129,35 @@ public class NearbyFlowerManager
     }
     else
     {
-      localObject1 = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2);
-      if ((localObject1 != null) && (l - ((Long)localObject1).longValue() <= jdField_c_of_type_Int))
+      localObject1 = (Long)this.l.get(paramString2);
+      if ((localObject1 != null) && (l1 - ((Long)localObject1).longValue() <= k))
       {
         localObject2 = null;
         localObject1 = null;
         str = null;
-        i = 0;
+        i1 = 0;
       }
       else
       {
         if (QLog.isColorLevel()) {
           QLog.i("NearbyFlowerManager", 2, "shouldShowTip send >60s");
         }
-        localObject2 = this.jdField_a_of_type_JavaLangString;
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80060B5", "0X80060B5", 0, 0, "", "", "", "");
+        localObject2 = this.b;
+        ReportController.b(this.a, "CliOper", "", "", "0X80060B5", "0X80060B5", 0, 0, "", "", "", "");
         localObject1 = null;
         str = null;
-        i = 1;
+        i1 = 1;
       }
     }
-    if (i != 0)
+    if (i1 != 0)
     {
       localObject2 = a(bool, (String)localObject2, paramAbsStructMsg);
       paramAbsStructMsg = new GrayTipsInfo();
       paramAbsStructMsg.text = ((String)localObject2);
       if ((!TextUtils.isEmpty(str)) && (((String)localObject2).contains(str)))
       {
-        i = ((String)localObject2).indexOf(str);
-        localObject1 = new GrayTipsSpan(i, str.length() + i, (String)localObject1);
+        i1 = ((String)localObject2).indexOf(str);
+        localObject1 = new GrayTipsSpan(i1, str.length() + i1, (String)localObject1);
         localObject2 = new ArrayList();
         ((ArrayList)localObject2).add(localObject1);
         paramAbsStructMsg.spans = ((ArrayList)localObject2);
@@ -185,11 +167,11 @@ public class NearbyFlowerManager
     {
       paramAbsStructMsg = null;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject1 = this.l;
     if (bool) {
       paramString1 = paramString2;
     }
-    ((HashMap)localObject1).put(paramString1, Long.valueOf(l));
+    ((HashMap)localObject1).put(paramString1, Long.valueOf(l1));
     return paramAbsStructMsg;
   }
   
@@ -210,19 +192,19 @@ public class NearbyFlowerManager
         paramAbsStructMsg = paramAbsStructMsg.getItemByIndex(0);
         if ((paramAbsStructMsg instanceof StructMsgItemLayout12))
         {
-          paramAbsStructMsg = ((StructMsgItemLayout12)paramAbsStructMsg).a.getString("cMean");
+          paramAbsStructMsg = ((StructMsgItemLayout12)paramAbsStructMsg).az.getString("cMean");
         }
         else
         {
           if ((paramAbsStructMsg instanceof StructMsgItemLayout7))
           {
-            paramAbsStructMsg = ((StructMsgItemLayout7)paramAbsStructMsg).a.iterator();
+            paramAbsStructMsg = ((StructMsgItemLayout7)paramAbsStructMsg).ax.iterator();
             while (paramAbsStructMsg.hasNext())
             {
               localObject = (AbsStructMsgElement)paramAbsStructMsg.next();
               if ((localObject instanceof StructMsgItemTitle))
               {
-                paramAbsStructMsg = ((StructMsgItemTitle)localObject).b();
+                paramAbsStructMsg = ((StructMsgItemTitle)localObject).e();
                 break label132;
               }
             }
@@ -230,9 +212,9 @@ public class NearbyFlowerManager
           paramAbsStructMsg = null;
         }
         label132:
-        if ((!TextUtils.isEmpty(paramAbsStructMsg)) && (this.jdField_b_of_type_JavaLangString.contains("XX朵YY")))
+        if ((!TextUtils.isEmpty(paramAbsStructMsg)) && (this.c.contains("XX朵YY")))
         {
-          str = this.jdField_b_of_type_JavaLangString.replace("XX朵YY", paramAbsStructMsg);
+          str = this.c.replace("XX朵YY", paramAbsStructMsg);
           localObject = str;
           if (QLog.isColorLevel())
           {
@@ -279,16 +261,16 @@ public class NearbyFlowerManager
           } else {
             paramAbsStructMsg = "sSex";
           }
-          paramAbsStructMsg = ((StructMsgItemLayout12)localAbsStructMsgElement).a.getString(paramAbsStructMsg);
+          paramAbsStructMsg = ((StructMsgItemLayout12)localAbsStructMsgElement).az.getString(paramAbsStructMsg);
           if (!TextUtils.isEmpty(paramAbsStructMsg))
           {
-            int i;
+            int i1;
             if (Integer.valueOf(paramAbsStructMsg).intValue() == 2) {
-              i = 2131707181;
+              i1 = 2131905014;
             } else {
-              i = 2131707191;
+              i1 = 2131905024;
             }
-            return paramString.replace("Ta", HardCodeUtil.a(i));
+            return paramString.replace("Ta", HardCodeUtil.a(i1));
           }
         }
       }
@@ -298,12 +280,12 @@ public class NearbyFlowerManager
   
   private void a()
   {
-    this.jdField_a_of_type_JavaLangString = ((String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "senderGrayTip", e));
-    this.jdField_b_of_type_JavaLangString = ((String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "receiverGrayTip", "Ta送了你XX朵YY，快和Ta说声谢谢吧。"));
-    this.jdField_c_of_type_JavaLangString = ((String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "exchangeGrayTip", f));
-    this.d = ((String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "exchangeHighLight", g));
-    jdField_b_of_type_Int = ((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "openFlag", Integer.valueOf(jdField_b_of_type_Int))).intValue();
-    this.jdField_a_of_type_Int = ((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "sp_file_nearby_flower_tip", 0, "scoreThreshold", Integer.valueOf(0))).intValue();
+    this.b = ((String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.getAccount(), "sp_file_nearby_flower_tip", 0, "senderGrayTip", g));
+    this.c = ((String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.getAccount(), "sp_file_nearby_flower_tip", 0, "receiverGrayTip", "Ta送了你XX朵YY，快和Ta说声谢谢吧。"));
+    this.d = ((String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.getAccount(), "sp_file_nearby_flower_tip", 0, "exchangeGrayTip", h));
+    this.e = ((String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.getAccount(), "sp_file_nearby_flower_tip", 0, "exchangeHighLight", i));
+    j = ((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.getAccount(), "sp_file_nearby_flower_tip", 0, "openFlag", Integer.valueOf(j))).intValue();
+    this.f = ((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.getAccount(), "sp_file_nearby_flower_tip", 0, "scoreThreshold", Integer.valueOf(0))).intValue();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -316,6 +298,15 @@ public class NearbyFlowerManager
     ReportController.b(null, "dc00899", "grp_lbs", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
   }
   
+  private SharedPreferences b()
+  {
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("nearby_flower_");
+    localStringBuilder.append(this.a.getCurrentAccountUin());
+    return localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0);
+  }
+  
   public MessageRecord a(String paramString1, String paramString2, int paramInt, AbsStructMsg paramAbsStructMsg)
   {
     if (QLog.isColorLevel()) {
@@ -324,10 +315,10 @@ public class NearbyFlowerManager
     paramString2 = a(paramString1, paramString2, paramAbsStructMsg);
     if (paramString2 != null)
     {
-      paramAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      long l = MessageCache.a();
+      paramAbsStructMsg = this.a.getCurrentAccountUin();
+      long l1 = MessageCache.c();
       MessageForNewGrayTips localMessageForNewGrayTips = (MessageForNewGrayTips)MessageRecordFactory.a(-2037);
-      localMessageForNewGrayTips.init(paramAbsStructMsg, paramString1, paramAbsStructMsg, paramString2.text, l, -2037, paramInt, l);
+      localMessageForNewGrayTips.init(paramAbsStructMsg, paramString1, paramAbsStructMsg, paramString2.text, l1, -2037, paramInt, l1);
       localMessageForNewGrayTips.isread = true;
       localMessageForNewGrayTips.spans = paramString2.spans;
       localMessageForNewGrayTips.updateMsgData();
@@ -339,19 +330,11 @@ public class NearbyFlowerManager
     return null;
   }
   
-  public String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("_key_time_joinhotchat");
-    return localStringBuilder.toString();
-  }
-  
   public void a(String paramString)
   {
-    long l = MessageCache.a();
-    a().edit().putLong(a(paramString), l);
-    this.jdField_b_of_type_JavaUtilMap.put(paramString, Long.valueOf(l));
+    long l1 = MessageCache.c();
+    b().edit().putLong(c(paramString), l1);
+    this.o.put(paramString, Long.valueOf(l1));
   }
   
   public void a(String paramString1, String paramString2)
@@ -389,47 +372,47 @@ public class NearbyFlowerManager
         if (localJSONObject.has("exchangeHighLight")) {
           str2 = localJSONObject.getString("exchangeHighLight");
         }
-        int i;
+        int i1;
         if (localJSONObject.has("openFlag")) {
-          i = localJSONObject.getInt("openFlag");
+          i1 = localJSONObject.getInt("openFlag");
         } else {
-          i = jdField_b_of_type_Int;
+          i1 = j;
         }
-        int j;
+        int i2;
         if (localJSONObject.has("groupAnimationScore")) {
-          j = localJSONObject.getInt("groupAnimationScore");
+          i2 = localJSONObject.getInt("groupAnimationScore");
         } else {
-          j = this.jdField_a_of_type_Int;
+          i2 = this.f;
         }
-        if ((!TextUtils.isEmpty(paramString2)) && (!paramString2.equals(this.jdField_a_of_type_JavaLangString)))
+        if ((!TextUtils.isEmpty(paramString2)) && (!paramString2.equals(this.b)))
         {
-          this.jdField_a_of_type_JavaLangString = paramString2;
-          ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString1, "sp_file_nearby_flower_tip", 0, "senderGrayTip", this.jdField_a_of_type_JavaLangString);
+          this.b = paramString2;
+          ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString1, "sp_file_nearby_flower_tip", 0, "senderGrayTip", this.b);
         }
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!paramString2.equals(this.jdField_b_of_type_JavaLangString)))
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!paramString2.equals(this.c)))
         {
-          this.jdField_b_of_type_JavaLangString = ((String)localObject);
-          ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString1, "sp_file_nearby_flower_tip", 0, "receiverGrayTip", this.jdField_b_of_type_JavaLangString);
+          this.c = ((String)localObject);
+          ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString1, "sp_file_nearby_flower_tip", 0, "receiverGrayTip", this.c);
         }
-        if ((!TextUtils.isEmpty(str1)) && (!paramString2.equals(this.jdField_c_of_type_JavaLangString)))
+        if ((!TextUtils.isEmpty(str1)) && (!paramString2.equals(this.d)))
         {
-          this.jdField_c_of_type_JavaLangString = str1;
-          ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString1, "sp_file_nearby_flower_tip", 0, "exchangeGrayTip", this.jdField_c_of_type_JavaLangString);
+          this.d = str1;
+          ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString1, "sp_file_nearby_flower_tip", 0, "exchangeGrayTip", this.d);
         }
-        if ((!TextUtils.isEmpty(str2)) && (!paramString2.equals(this.d)))
+        if ((!TextUtils.isEmpty(str2)) && (!paramString2.equals(this.e)))
         {
-          this.d = str2;
-          ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString1, "sp_file_nearby_flower_tip", 0, "exchangeHighLight", this.d);
+          this.e = str2;
+          ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString1, "sp_file_nearby_flower_tip", 0, "exchangeHighLight", this.e);
         }
-        if (i != jdField_b_of_type_Int)
+        if (i1 != j)
         {
-          jdField_b_of_type_Int = i;
-          ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString1, "sp_file_nearby_flower_tip", 0, "openFlag", Integer.valueOf(jdField_b_of_type_Int));
+          j = i1;
+          ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString1, "sp_file_nearby_flower_tip", 0, "openFlag", Integer.valueOf(j));
         }
-        if (j != this.jdField_a_of_type_Int)
+        if (i2 != this.f)
         {
-          this.jdField_a_of_type_Int = j;
-          ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString1, "sp_file_nearby_flower_tip", 0, "scoreThreshold", Integer.valueOf(this.jdField_a_of_type_Int));
+          this.f = i2;
+          ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString1, "sp_file_nearby_flower_tip", 0, "scoreThreshold", Integer.valueOf(this.f));
         }
         if (QLog.isColorLevel())
         {
@@ -469,7 +452,7 @@ public class NearbyFlowerManager
       ((StringBuilder)localObject1).append(paramList.size());
       QLog.i("NearbyFlowerManager", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject2 = a();
+    Object localObject2 = b();
     SharedPreferences.Editor localEditor = ((SharedPreferences)localObject2).edit();
     Object localObject1 = null;
     try
@@ -511,18 +494,26 @@ public class NearbyFlowerManager
   
   public void b(String paramString)
   {
-    a().edit().remove(a(paramString));
-    this.jdField_b_of_type_JavaUtilMap.put(paramString, Long.valueOf(0L));
+    b().edit().remove(c(paramString));
+    this.o.put(paramString, Long.valueOf(0L));
+  }
+  
+  public String c(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_key_time_joinhotchat");
+    return localStringBuilder.toString();
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.m.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyFlowerManager
  * JD-Core Version:    0.7.0.1
  */

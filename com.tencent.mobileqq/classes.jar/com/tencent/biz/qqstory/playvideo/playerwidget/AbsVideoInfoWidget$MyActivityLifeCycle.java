@@ -8,13 +8,13 @@ public class AbsVideoInfoWidget$MyActivityLifeCycle
 {
   public AbsVideoInfoWidget$MyActivityLifeCycle(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
   
-  public void g()
+  public void h()
   {
-    super.g();
-    if (this.a.c)
+    super.h();
+    if (this.a.m)
     {
       AbsVideoInfoWidget.a(this.a);
-      SLog.b(this.a.b, "destroy by activity");
+      SLog.b(this.a.i, "destroy by activity");
     }
   }
 }

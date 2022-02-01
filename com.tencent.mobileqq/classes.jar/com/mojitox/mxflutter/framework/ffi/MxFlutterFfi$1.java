@@ -18,22 +18,22 @@ class MxFlutterFfi$1
   {
     Object localObject = new HashMap();
     ((Map)localObject).put("method", "syncPropsCallback");
-    ((Map)localObject).put("arguments", this.jdField_a_of_type_JavaLangString);
+    ((Map)localObject).put("arguments", this.a);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("call js syncPropsCallback argument:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     MxLog.a("MxFlutterFfi", localStringBuilder.toString());
-    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = JsEngineLoader.a().a().b().a(JsObjectType.CURRENT_APP_OBJECT, "nativeCall", localObject);
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.c[0] = JsEngineLoader.a().d().b().a(JsObjectType.CURRENT_APP_OBJECT, "nativeCall", localObject);
+    this.b.countDown();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("call js syncPropsCallback result:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ArrayOfJavaLangObject[0]);
+    ((StringBuilder)localObject).append(this.c[0]);
     MxLog.a("MxFlutterFfi", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.ffi.MxFlutterFfi.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,11 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import com.tencent.qqmini.sdk.action.CheckLocationAction;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.ImageUtil;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.action.ServiceSubscribeEvent;
-import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.utils.ColorUtils;
 import com.tencent.qqmini.sdk.utils.ViewUtils;
@@ -76,6 +75,7 @@ public class MapContext
   private boolean curShowLocationMarkerStatus = false;
   private float curSkew = 0.0F;
   private float density;
+  private boolean isLocating;
   private Bitmap locationBitmap;
   private Marker locationMarker;
   private CoverMapView mCoverMapView = null;
@@ -122,7 +122,7 @@ public class MapContext
     this.markerMaxSize = ((int)(d + 0.5D));
     try
     {
-      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130841228);
+      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130842019);
     }
     catch (Throwable paramIMiniAppContext)
     {
@@ -242,7 +242,7 @@ public class MapContext
     }
     localObject = paramJSONObject;
     if (paramJSONObject == null) {
-      localObject = this.context.getResources().getDrawable(2130841290);
+      localObject = this.context.getResources().getDrawable(2130842081);
     }
     localImageView.setImageDrawable((Drawable)localObject);
     paramJSONObject = this.mTencentMap;
@@ -305,7 +305,7 @@ public class MapContext
     }
     localObject3 = localObject2;
     if (localObject2 == null) {
-      localObject3 = this.context.getResources().getDrawable(2130841290);
+      localObject3 = this.context.getResources().getDrawable(2130842081);
     }
     Object localObject2 = createMarkerView(k, m);
     ((ImageView)localObject2).setLayoutParams(new ViewGroup.LayoutParams(k, m));
@@ -440,7 +440,11 @@ public class MapContext
   
   private void location()
   {
-    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getLocation(this.mMiniAppContext.getAttachedActivity(), "wgs84", true, new MapContext.1(this));
+    if (this.isLocating) {
+      return;
+    }
+    this.isLocating = true;
+    this.mMiniAppContext.performAction(CheckLocationAction.a(new MapContext.1(this)));
   }
   
   private void setLocationStatus(JSONObject paramJSONObject, double paramDouble1, double paramDouble2)
@@ -1165,7 +1169,7 @@ public class MapContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.map.MapContext
  * JD-Core Version:    0.7.0.1
  */

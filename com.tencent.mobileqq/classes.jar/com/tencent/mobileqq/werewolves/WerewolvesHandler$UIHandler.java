@@ -21,7 +21,7 @@ public class WerewolvesHandler$UIHandler
     paramMessage = (String[])paramMessage.obj;
     Object localObject = paramMessage[0];
     CharSequence localCharSequence = paramMessage[1];
-    WeakReference localWeakReference = (WeakReference)WerewolvesHandler.a.remove(localObject);
+    WeakReference localWeakReference = (WeakReference)WerewolvesHandler.b.remove(localObject);
     if ((localWeakReference != null) && (localWeakReference.get() != null))
     {
       if ((((TextView)localWeakReference.get()).getTag() instanceof String[])) {
@@ -46,7 +46,7 @@ public class WerewolvesHandler$UIHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHandler.UIHandler
  * JD-Core Version:    0.7.0.1
  */

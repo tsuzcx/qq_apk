@@ -16,25 +16,25 @@ class ChatHistory$6
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.a.offsetTopAndBottom(-this.b);
+    this.c.setVisibility(0);
+    this.a.startAnimation(this.d);
     paramDialogInterface = (MessageSearchDialog)paramDialogInterface;
-    int i = paramDialogInterface.a();
-    boolean bool = paramDialogInterface.a();
-    ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory, i);
+    int i = paramDialogInterface.c();
+    boolean bool = paramDialogInterface.f();
+    ChatHistory.a(this.e, i);
     if (bool)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690706));
+      this.e.leftView.setText(this.e.getString(2131887625));
       return;
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getIntent().getExtras().getString("leftViewText");
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(paramDialogInterface);
+    paramDialogInterface = this.e.getIntent().getExtras().getString("leftViewText");
+    this.e.leftView.setText(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.6
  * JD-Core Version:    0.7.0.1
  */

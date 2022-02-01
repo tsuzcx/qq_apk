@@ -18,13 +18,13 @@ class AppSchemeHandler$1
       QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.get packagename failed.");
       return;
     }
-    AppSchemeHandler.a((AppSchemeHandler)paramObject, paramString2, this.jdField_a_of_type_JavaLangString, this.b, paramString1);
+    AppSchemeHandler.a((AppSchemeHandler)paramObject, paramString2, this.a, this.b, paramString1);
     BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).edit().putString(paramString2, paramString1).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.scheme.AppSchemeHandler.1
  * JD-Core Version:    0.7.0.1
  */

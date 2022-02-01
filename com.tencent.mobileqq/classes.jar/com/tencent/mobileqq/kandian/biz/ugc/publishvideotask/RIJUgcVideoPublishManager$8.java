@@ -19,7 +19,7 @@ class RIJUgcVideoPublishManager$8
     Iterator localIterator;
     try
     {
-      List localList = RIJUgcVideoPublishManager.a(this.this$0).query(UgcVideo.class, UgcVideo.class.getSimpleName(), true, "", null, null, null, "insertTime desc", null);
+      List localList = RIJUgcVideoPublishManager.g(this.this$0).query(UgcVideo.class, UgcVideo.class.getSimpleName(), true, "", null, null, null, "insertTime desc", null);
     }
     catch (Exception localException)
     {
@@ -55,7 +55,7 @@ class RIJUgcVideoPublishManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.publishvideotask.RIJUgcVideoPublishManager.8
  * JD-Core Version:    0.7.0.1
  */

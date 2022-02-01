@@ -30,7 +30,7 @@ class AVGameBusinessCtrl$2
   
   public void a()
   {
-    if (!AVGameBusinessCtrl.b()) {
+    if (!AVGameBusinessCtrl.e()) {
       return;
     }
     AVLog.d("AVGameBusinessCtrl", "onEnterRoom success.");
@@ -45,25 +45,25 @@ class AVGameBusinessCtrl$2
     ((AVGameSession)???).a(2);
     this.a.c(true);
     this.a.d(true);
-    AVGameHandler.a().a().post(new AVGameBusinessCtrl.2.1(this));
+    AVGameHandler.a().b().post(new AVGameBusinessCtrl.2.1(this));
     if (Build.VERSION.SDK_INT >= 16) {
-      AudioProcess.a(AVGameBusinessCtrl.a(this.a).a(), AVGameBusinessCtrl.a(this.a));
+      AudioProcess.a(AVGameBusinessCtrl.c(this.a).k(), AVGameBusinessCtrl.c(this.a));
     }
     ??? = new IntentFilter();
     ((IntentFilter)???).addAction("android.intent.action.HEADSET_PLUG");
     ((IntentFilter)???).addAction("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED");
     ((IntentFilter)???).addAction("android.bluetooth.headset.profile.action.AUDIO_STATE_CHANGED");
     ((IntentFilter)???).addAction("android.bluetooth.adapter.action.STATE_CHANGED");
-    BaseApplicationImpl.getContext().registerReceiver(AVGameBusinessCtrl.a(this.a), (IntentFilter)???);
-    if (AVGameBusinessCtrl.a(this.a) != null) {
-      AVGameBusinessCtrl.a(this.a).onEnterRoom(0);
+    BaseApplicationImpl.getContext().registerReceiver(AVGameBusinessCtrl.d(this.a), (IntentFilter)???);
+    if (AVGameBusinessCtrl.e(this.a) != null) {
+      AVGameBusinessCtrl.e(this.a).onEnterRoom(0);
     }
     AVGameBusinessCtrl.a(this.a, null);
-    AVGameBusinessCtrl.b(this.a);
+    AVGameBusinessCtrl.f(this.a);
     AVGamePerfReporter.a().a("param_QAVEnterRoom", 0);
-    synchronized (AVGameBusinessCtrl.a(this.a))
+    synchronized (AVGameBusinessCtrl.g(this.a))
     {
-      Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
+      Iterator localIterator = AVGameBusinessCtrl.g(this.a).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -98,17 +98,17 @@ class AVGameBusinessCtrl$2
       AVLog.a("AVGameBusinessCtrl", "onEnterRoom failed. session == null.");
       return;
     }
-    AVGameBusinessCtrl.a(this.a).b(AVGameBusinessCtrl.a(this.a).a().a);
+    AVGameBusinessCtrl.a(this.a).b(AVGameBusinessCtrl.a(this.a).a().b);
     ReportController.b(null, "dc00898", "", "", "0X800B041", "0X800B041", 0, 0, "", "", "", "");
-    if (AVGameBusinessCtrl.a(this.a) != null) {
-      AVGameBusinessCtrl.a(this.a).onEnterRoom(paramInt);
+    if (AVGameBusinessCtrl.e(this.a) != null) {
+      AVGameBusinessCtrl.e(this.a).onEnterRoom(paramInt);
     }
     AVGameBusinessCtrl.a(this.a, null);
     label184:
     AVGamePerfReporter.a().a("param_QAVEnterRoom", paramInt);
-    synchronized (AVGameBusinessCtrl.a(this.a))
+    synchronized (AVGameBusinessCtrl.g(this.a))
     {
-      Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
+      Iterator localIterator = AVGameBusinessCtrl.g(this.a).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -160,9 +160,9 @@ class AVGameBusinessCtrl$2
       ((StringBuilder)localObject2).append(((AVGameUserInfo)???).mEnterTime);
       AVLog.d("AVGameBusinessCtrl", ((StringBuilder)localObject2).toString());
     }
-    synchronized (AVGameBusinessCtrl.a(this.a))
+    synchronized (AVGameBusinessCtrl.g(this.a))
     {
-      localObject2 = AVGameBusinessCtrl.a(this.a).iterator();
+      localObject2 = AVGameBusinessCtrl.g(this.a).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         WeakReference localWeakReference = (WeakReference)((Iterator)localObject2).next();
@@ -193,9 +193,9 @@ class AVGameBusinessCtrl$2
       return;
     }
     ((AVGameSession)???).a(paramMultiUserInfo);
-    synchronized (AVGameBusinessCtrl.a(this.a))
+    synchronized (AVGameBusinessCtrl.g(this.a))
     {
-      Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
+      Iterator localIterator = AVGameBusinessCtrl.g(this.a).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -243,9 +243,9 @@ class AVGameBusinessCtrl$2
     if ((paramBoolean) && (paramInt < 10)) {
       return;
     }
-    synchronized (AVGameBusinessCtrl.a(this.a))
+    synchronized (AVGameBusinessCtrl.g(this.a))
     {
-      Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
+      Iterator localIterator = AVGameBusinessCtrl.g(this.a).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -284,9 +284,9 @@ class AVGameBusinessCtrl$2
       ((List)localObject2).add(Long.valueOf(localMultiUserInfo.mUin));
     }
     ((AVGameSession)???).a((List)localObject2);
-    synchronized (AVGameBusinessCtrl.a(this.a))
+    synchronized (AVGameBusinessCtrl.g(this.a))
     {
-      localObject2 = AVGameBusinessCtrl.a(this.a).iterator();
+      localObject2 = AVGameBusinessCtrl.g(this.a).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (WeakReference)((Iterator)localObject2).next();
@@ -310,18 +310,18 @@ class AVGameBusinessCtrl$2
       ((StringBuilder)???).append("onSystemCallStateChanged, isCalling[");
       ((StringBuilder)???).append(paramBoolean);
       ((StringBuilder)???).append("], enter[");
-      ((StringBuilder)???).append(AVGameBusinessCtrl.a(this.a));
+      ((StringBuilder)???).append(AVGameBusinessCtrl.h(this.a));
       ((StringBuilder)???).append("]");
       QLog.i("AVGameBusinessCtrl", 2, ((StringBuilder)???).toString());
     }
     if (paramBoolean) {
-      AVGameBusinessCtrl.c(this.a);
+      AVGameBusinessCtrl.i(this.a);
     } else {
-      AVGameBusinessCtrl.d(this.a);
+      AVGameBusinessCtrl.j(this.a);
     }
-    synchronized (AVGameBusinessCtrl.a(this.a))
+    synchronized (AVGameBusinessCtrl.g(this.a))
     {
-      Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
+      Iterator localIterator = AVGameBusinessCtrl.g(this.a).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -329,8 +329,8 @@ class AVGameBusinessCtrl$2
           ((AVGameUIEventCallback)localWeakReference.get()).a(paramBoolean);
         }
       }
-      if ((paramBoolean) && (AVGameBusinessCtrl.a(this.a))) {
-        CallingStateMonitor.a().c();
+      if ((paramBoolean) && (AVGameBusinessCtrl.h(this.a))) {
+        CallingStateMonitor.a().f();
       }
       return;
     }
@@ -360,22 +360,22 @@ class AVGameBusinessCtrl$2
     AVLog.d("AVGameBusinessCtrl", ((StringBuilder)localObject2).toString());
     if (paramBoolean)
     {
-      if (((AVGameSession)localObject1).d == 1)
+      if (((AVGameSession)localObject1).m == 1)
       {
-        localObject2 = this.a.a();
+        localObject2 = this.a.m();
         if (localObject2 != null) {
           ((AVGameCameraAssistant)localObject2).a((AVGameSession)localObject1);
         }
       }
     }
-    else if (((AVGameSession)localObject1).a(1))
+    else if (((AVGameSession)localObject1).c(1))
     {
-      localObject2 = this.a.a();
+      localObject2 = this.a.m();
       if (localObject2 != null) {
         ((AVGameCameraAssistant)localObject2).b((AVGameSession)localObject1);
       }
     }
-    else if (((AVGameSession)localObject1).d == 1)
+    else if (((AVGameSession)localObject1).m == 1)
     {
       ((AVGameSession)localObject1).b(0);
     }
@@ -398,9 +398,9 @@ class AVGameBusinessCtrl$2
     if (??? != null) {
       ((AVGameUserInfo)???).mVolumeValue = paramInt;
     }
-    synchronized (AVGameBusinessCtrl.a(this.a))
+    synchronized (AVGameBusinessCtrl.g(this.a))
     {
-      Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
+      Iterator localIterator = AVGameBusinessCtrl.g(this.a).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -428,10 +428,10 @@ class AVGameBusinessCtrl$2
       AVLog.a("AVGameBusinessCtrl", "onUserExit failed. session == null.");
       return;
     }
-    ((AVGameSession)???).a(paramMultiUserInfo.mUin);
-    synchronized (AVGameBusinessCtrl.a(this.a))
+    ((AVGameSession)???).b(paramMultiUserInfo.mUin);
+    synchronized (AVGameBusinessCtrl.g(this.a))
     {
-      Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
+      Iterator localIterator = AVGameBusinessCtrl.g(this.a).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -455,13 +455,13 @@ class AVGameBusinessCtrl$2
       ((StringBuilder)???).append("onVideoChatCallStateChanged, isCalling[");
       ((StringBuilder)???).append(paramBoolean);
       ((StringBuilder)???).append("], enter[");
-      ((StringBuilder)???).append(AVGameBusinessCtrl.a(this.a));
+      ((StringBuilder)???).append(AVGameBusinessCtrl.h(this.a));
       ((StringBuilder)???).append("]");
       QLog.i("AVGameBusinessCtrl", 2, ((StringBuilder)???).toString());
     }
-    synchronized (AVGameBusinessCtrl.a(this.a))
+    synchronized (AVGameBusinessCtrl.g(this.a))
     {
-      Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
+      Iterator localIterator = AVGameBusinessCtrl.g(this.a).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -495,9 +495,9 @@ class AVGameBusinessCtrl$2
     ((StringBuilder)localObject2).append(paramInt);
     ((StringBuilder)localObject2).append("]");
     AVLog.d("AVGameBusinessCtrl", ((StringBuilder)localObject2).toString());
-    if (((AVGameSession)localObject1).a(1))
+    if (((AVGameSession)localObject1).c(1))
     {
-      localObject2 = this.a.a();
+      localObject2 = this.a.m();
       if (localObject2 != null) {
         ((AVGameCameraAssistant)localObject2).b((AVGameSession)localObject1);
       }
@@ -520,9 +520,9 @@ class AVGameBusinessCtrl$2
     }
     ((StringBuilder)???).append(bool);
     AVLog.c("AVGameBusinessCtrl", ((StringBuilder)???).toString());
-    synchronized (AVGameBusinessCtrl.a(this.a))
+    synchronized (AVGameBusinessCtrl.g(this.a))
     {
-      Iterator localIterator = AVGameBusinessCtrl.a(this.a).iterator();
+      Iterator localIterator = AVGameBusinessCtrl.g(this.a).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();

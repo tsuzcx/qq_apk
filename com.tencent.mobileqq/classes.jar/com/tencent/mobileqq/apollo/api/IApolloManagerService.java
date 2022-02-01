@@ -8,7 +8,6 @@ import com.tencent.mobileqq.apollo.model.ApolloBaseInfo;
 import com.tencent.mobileqq.qroute.annotation.Service;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import mqq.app.api.IRuntimeService;
 import org.json.JSONObject;
 
@@ -35,10 +34,6 @@ public abstract interface IApolloManagerService
   @Deprecated
   public abstract ApolloBaseInfo getApolloBaseInfo(String paramString);
   
-  public abstract String getApolloGameLocalVersion(int paramInt);
-  
-  public abstract long getApolloResLocalTimestamp(int paramInt1, int paramInt2);
-  
   public abstract int getApolloStatus(String paramString);
   
   public abstract int getApolloUserStatus();
@@ -59,6 +54,8 @@ public abstract interface IApolloManagerService
   
   public abstract SharedPreferences getStandUpSp();
   
+  public abstract String getTabActionAvatar();
+  
   public abstract int getWhiteListStatus();
   
   public abstract void initApolloConfig();
@@ -66,12 +63,6 @@ public abstract interface IApolloManagerService
   public abstract void initCmShowBaseScript(boolean paramBoolean);
   
   public abstract boolean is3dAvailable();
-  
-  public abstract boolean is765GuideShowed();
-  
-  public abstract boolean is780GuideShowed();
-  
-  public abstract boolean isApolloGameWhiteUser(String paramString);
   
   public abstract boolean isApolloSupport(Context paramContext);
   
@@ -84,8 +75,6 @@ public abstract interface IApolloManagerService
   public abstract boolean isInActionPlayList(long paramLong);
   
   public abstract boolean isInitDone();
-  
-  public abstract boolean isPlusWhiteList();
   
   public abstract void notify3dFlagUpdate(int paramInt1, int paramInt2);
   
@@ -122,15 +111,13 @@ public abstract interface IApolloManagerService
   
   public abstract void updateLastShopTabInfo(String paramString);
   
-  public abstract void updateUserDress(List<ApolloBaseInfo> paramList);
-  
   public abstract void updateUserFlag(int paramInt1, int paramInt2);
   
   public abstract void updateWhiteList(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.IApolloManagerService
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ import java.lang.ref.WeakReference;
 class Share$8
   extends Handler
 {
-  boolean jdField_a_of_type_Boolean;
+  boolean a;
   
   Share$8(Share paramShare) {}
   
@@ -41,51 +41,51 @@ class Share$8
       if (i != 1002) {
         return;
       }
-      if (((paramMessage.obj instanceof Bitmap)) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse != null) && (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.androidInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.androidInfo.packName.get())))
+      if (((paramMessage.obj instanceof Bitmap)) && (!this.a) && (this.b.F != null) && (this.b.F.androidInfo != null) && (!TextUtils.isEmpty(this.b.F.androidInfo.packName.get())))
       {
-        localObject = this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.androidInfo;
-        if (PackageUtil.a(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidContentContext, ((GetAppInfoProto.AndroidInfo)localObject).packName.get())) {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginShare.b.setText(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690090));
+        localObject = this.b.F.androidInfo;
+        if (PackageUtil.a(this.b.R, ((GetAppInfoProto.AndroidInfo)localObject).packName.get())) {
+          this.b.Q.setText(this.b.R.getResources().getString(2131886909));
         } else {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginShare.b.setText(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690089));
+          this.b.Q.setText(this.b.R.getResources().getString(2131886908));
         }
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690091), new Object[] { ((GetAppInfoProto.AndroidInfo)localObject).messagetail.get() }));
+        this.b.P.setText(String.format(this.b.R.getResources().getString(2131886910), new Object[] { ((GetAppInfoProto.AndroidInfo)localObject).messagetail.get() }));
         paramMessage = (Bitmap)paramMessage.obj;
         if (paramMessage.isRecycled()) {
           return;
         }
-        paramMessage = ImageUtil.a(paramMessage, (int)(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_Float * 30.0F));
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShare.c.setImageBitmap(paramMessage);
-        OpenSdkStatic.a().a(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.n, String.valueOf(AppShareIDUtil.b(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_Long)), "ANDROIDQQ.SHAREBAR", "100", false);
+        paramMessage = ImageUtil.a(paramMessage, (int)(this.b.K * 30.0F));
+        this.b.L.setVisibility(0);
+        this.b.O.setImageBitmap(paramMessage);
+        OpenSdkStatic.a().a(this.b.H, String.valueOf(AppShareIDUtil.d(this.b.E)), "ANDROIDQQ.SHAREBAR", "100", false);
         if (QLog.isColorLevel()) {
-          QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "QQBrowserActivity APP_FLOATING_BAR VISIBLE -----------------------");
+          QLog.d(Share.a, 2, "QQBrowserActivity APP_FLOATING_BAR VISIBLE -----------------------");
         }
       }
     }
-    else if (((paramMessage.obj instanceof Bitmap)) && (!this.jdField_a_of_type_Boolean))
+    else if (((paramMessage.obj instanceof Bitmap)) && (!this.a))
     {
       paramMessage = (Bitmap)paramMessage.obj;
       if (paramMessage.isRecycled()) {
         return;
       }
-      paramMessage = ImageUtil.a(paramMessage, (int)(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_Float * 34.0F));
-      if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_JavaLangRefWeakReference != null)
+      paramMessage = ImageUtil.a(paramMessage, (int)(this.b.K * 34.0F));
+      if (this.b.af != null)
       {
-        localObject = (WebUiBaseInterface)this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_JavaLangRefWeakReference.get();
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
-        if ((this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidAppActivity instanceof SwiftWebViewFragmentSupporter))
+        localObject = (WebUiBaseInterface)this.b.af.get();
+        this.b.C.setVisibility(0);
+        this.b.D.setImageBitmap(paramMessage);
+        if ((this.b.y instanceof SwiftWebViewFragmentSupporter))
         {
-          paramMessage = ((SwiftWebViewFragmentSupporter)this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidAppActivity).getCurrentWebViewFragment();
-          if ((paramMessage != null) && (paramMessage.getUIStyleHandler().b != null))
+          paramMessage = ((SwiftWebViewFragmentSupporter)this.b.y).getCurrentWebViewFragment();
+          if ((paramMessage != null) && (paramMessage.getUIStyleHandler().s != null))
           {
-            paramMessage.getUIStyleHandler().b.findViewById(2131366489).setVisibility(8);
-            paramMessage.getUIStyleHandler().b.findViewById(2131366490).setVisibility(0);
+            paramMessage.getUIStyleHandler().s.findViewById(2131432808).setVisibility(8);
+            paramMessage.getUIStyleHandler().s.findViewById(2131432809).setVisibility(0);
           }
         }
         if (QLog.isColorLevel()) {
-          QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "QQBrowserActivity VISIBLE -----------------------");
+          QLog.d(Share.a, 2, "QQBrowserActivity VISIBLE -----------------------");
         }
       }
     }
@@ -93,7 +93,7 @@ class Share$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.Share.8
  * JD-Core Version:    0.7.0.1
  */

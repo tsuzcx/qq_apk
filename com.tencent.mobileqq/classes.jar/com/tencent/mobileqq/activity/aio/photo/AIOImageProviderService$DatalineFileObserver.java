@@ -20,7 +20,7 @@ class AIOImageProviderService$DatalineFileObserver
   
   private void a(long paramLong, DataLineMsgRecord paramDataLineMsgRecord, IAIOImageProviderCallBack paramIAIOImageProviderCallBack)
   {
-    int i = FileManagerUtil.a(paramDataLineMsgRecord.filename);
+    int i = FileManagerUtil.c(paramDataLineMsgRecord.filename);
     paramDataLineMsgRecord = AIOImageProviderService.a(this.a, paramLong);
     if (paramDataLineMsgRecord == null) {
       return;
@@ -39,7 +39,7 @@ class AIOImageProviderService$DatalineFileObserver
   private void b(long paramLong, DataLineMsgRecord paramDataLineMsgRecord, IAIOImageProviderCallBack paramIAIOImageProviderCallBack)
   {
     String str = paramDataLineMsgRecord.path;
-    int i = FileManagerUtil.a(paramDataLineMsgRecord.filename);
+    int i = FileManagerUtil.c(paramDataLineMsgRecord.filename);
     paramDataLineMsgRecord = AIOImageProviderService.a(this.a, paramLong);
     if (paramDataLineMsgRecord == null) {
       return;
@@ -52,7 +52,7 @@ class AIOImageProviderService$DatalineFileObserver
     }
     if (i == 2)
     {
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramDataLineMsgRecord.uniseq)))
+      if (this.a.x.contains(Long.valueOf(paramDataLineMsgRecord.uniseq)))
       {
         Context localContext = BaseApplicationImpl.sApplication.getBaseContext();
         if (localContext != null) {
@@ -60,33 +60,23 @@ class AIOImageProviderService$DatalineFileObserver
         } else {
           QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [dataline file save album].");
         }
-        this.a.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(paramDataLineMsgRecord.uniseq));
+        this.a.x.remove(Long.valueOf(paramDataLineMsgRecord.uniseq));
       }
       paramIAIOImageProviderCallBack.a(paramDataLineMsgRecord.uniseq, 0, 269484034, 1, str, false);
     }
   }
   
-  public DataLineMsgRecord a(long paramLong)
-  {
-    QQAppInterface localQQAppInterface = AIOImageProviderService.a(this.a);
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    return localQQAppInterface.getMessageFacade().a(i).a(paramLong);
-  }
-  
   protected void a(long paramLong)
   {
-    DataLineMsgRecord localDataLineMsgRecord = a(paramLong);
-    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+    DataLineMsgRecord localDataLineMsgRecord = b(paramLong);
+    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.a.y;
     if ((localDataLineMsgRecord != null) && (localIAIOImageProviderCallBack != null))
     {
       MessageForDLFile localMessageForDLFile = AIOImageProviderService.a(this.a, paramLong);
       if (localMessageForDLFile == null) {
         return;
       }
-      if (FileUtil.b(localDataLineMsgRecord.thumbPath))
+      if (FileUtil.d(localDataLineMsgRecord.thumbPath))
       {
         localIAIOImageProviderCallBack.a(localMessageForDLFile.uniseq, 0, 16, 1, localDataLineMsgRecord.thumbPath, false);
         this.a.a(paramLong, 0, 16, localDataLineMsgRecord.thumbPath);
@@ -100,15 +90,15 @@ class AIOImageProviderService$DatalineFileObserver
   
   protected void a(long paramLong, float paramFloat)
   {
-    DataLineMsgRecord localDataLineMsgRecord = a(paramLong);
-    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+    DataLineMsgRecord localDataLineMsgRecord = b(paramLong);
+    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.a.y;
     if ((localDataLineMsgRecord != null) && (localIAIOImageProviderCallBack != null))
     {
       MessageForDLFile localMessageForDLFile = AIOImageProviderService.a(this.a, paramLong);
       if (localMessageForDLFile == null) {
         return;
       }
-      if (FileManagerUtil.a(localDataLineMsgRecord.filename) == 0) {
+      if (FileManagerUtil.c(localDataLineMsgRecord.filename) == 0) {
         localIAIOImageProviderCallBack.a(localMessageForDLFile.uniseq, 0, 20, (int)(paramFloat * 10000.0F), localDataLineMsgRecord.filesize, false);
       }
       return;
@@ -118,11 +108,11 @@ class AIOImageProviderService$DatalineFileObserver
   
   protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    paramString = a(paramLong);
-    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+    paramString = b(paramLong);
+    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.a.y;
     if ((paramString != null) && (localIAIOImageProviderCallBack != null))
     {
-      FileManagerUtil.a(paramString.filename);
+      FileManagerUtil.c(paramString.filename);
       if (paramBoolean)
       {
         b(paramLong, paramString, localIAIOImageProviderCallBack);
@@ -133,10 +123,20 @@ class AIOImageProviderService$DatalineFileObserver
     }
     QLog.i("AIOImageProviderService", 2, "onDatalineProgress: error");
   }
+  
+  public DataLineMsgRecord b(long paramLong)
+  {
+    QQAppInterface localQQAppInterface = AIOImageProviderService.a(this.a);
+    if (localQQAppInterface == null) {
+      return null;
+    }
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    return localQQAppInterface.getMessageFacade().d(i).a(paramLong);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.DatalineFileObserver
  * JD-Core Version:    0.7.0.1
  */

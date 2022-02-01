@@ -10,7 +10,7 @@ class SubscribeDraftManager$3
 {
   public void run()
   {
-    Object localObject = SubscribeDraftManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject = SubscribeDraftManager.a(this.this$0, this.a, this.b);
     if (localObject != null)
     {
       localObject = SubscribeDraftManager.a(this.this$0, (String)((Pair)localObject).second);
@@ -19,7 +19,7 @@ class SubscribeDraftManager$3
         localObject = (SubscribeDraftBean)JsonBinder.a().a((String)localObject, SubscribeDraftBean.class);
         if (localObject != null)
         {
-          SubscribeDraftManager.SubDraftListener localSubDraftListener = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+          SubscribeDraftManager.SubDraftListener localSubDraftListener = this.c;
           if (localSubDraftListener != null) {
             localSubDraftListener.a(5, true, this.b, new Object[] { localObject });
           }
@@ -27,7 +27,7 @@ class SubscribeDraftManager$3
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+        localObject = this.c;
         if (localObject != null) {
           ((SubscribeDraftManager.SubDraftListener)localObject).a(5, false, this.b, null);
         }

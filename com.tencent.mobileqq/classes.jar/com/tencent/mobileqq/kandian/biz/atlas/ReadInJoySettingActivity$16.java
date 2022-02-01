@@ -9,20 +9,20 @@ class ReadInJoySettingActivity$16
 {
   ReadInJoySettingActivity$16(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      ReadInJoySettingActivity.e(this.a, false);
+      ReadInJoySettingActivity.i(this.a, false);
       paramView = this.a;
-      ReadInJoySettingActivity.e(paramView, ReadInJoySettingActivity.d(paramView));
+      ReadInJoySettingActivity.j(paramView, ReadInJoySettingActivity.i(paramView));
     }
-    ReadInJoySettingActivity.b(this.a).cancel();
+    ReadInJoySettingActivity.j(this.a).cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.ReadInJoySettingActivity.16
  * JD-Core Version:    0.7.0.1
  */

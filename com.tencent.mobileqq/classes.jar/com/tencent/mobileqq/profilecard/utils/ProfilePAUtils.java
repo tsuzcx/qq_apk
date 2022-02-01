@@ -21,6 +21,11 @@ public class ProfilePAUtils
     return bool;
   }
   
+  public static boolean isFromGuild(int paramInt)
+  {
+    return false;
+  }
+  
   public static boolean isFromTroopMemberCard(int paramInt)
   {
     return (paramInt == 20) || (paramInt == 21) || (paramInt == 22);
@@ -40,7 +45,7 @@ public class ProfilePAUtils
   
   public static boolean isNotShowPresent(AllInOne paramAllInOne)
   {
-    return (paramAllInOne.pa == 20) || (paramAllInOne.pa == 21) || (paramAllInOne.pa == 22) || (paramAllInOne.pa == 23) || (paramAllInOne.pa == 24) || (paramAllInOne.pa == 120);
+    return (paramAllInOne.pa == 22) || (paramAllInOne.pa == 23) || (paramAllInOne.pa == 24) || (paramAllInOne.pa == 120);
   }
   
   public static boolean isPaTypeCanAddAsFriend(AllInOne paramAllInOne)
@@ -227,7 +232,7 @@ public class ProfilePAUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.utils.ProfilePAUtils
  * JD-Core Version:    0.7.0.1
  */

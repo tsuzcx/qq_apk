@@ -34,9 +34,9 @@ public class ResizeURLImageView
   
   private void getResizeScale(AttributeSet paramAttributeSet)
   {
-    paramAttributeSet = this.mContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bk);
-    this.mWidthWeight = paramAttributeSet.getFloat(R.styleable.d, 1.0F);
-    this.mHeightWeight = paramAttributeSet.getFloat(R.styleable.c, 1.0F);
+    paramAttributeSet = this.mContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bu);
+    this.mWidthWeight = paramAttributeSet.getFloat(R.styleable.bw, 1.0F);
+    this.mHeightWeight = paramAttributeSet.getFloat(R.styleable.bv, 1.0F);
     paramAttributeSet.recycle();
   }
   
@@ -77,7 +77,7 @@ public class ResizeURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ResizeURLImageView
  * JD-Core Version:    0.7.0.1
  */

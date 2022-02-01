@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.data;
 
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
 import com.tencent.mobileqq.kandian.base.utils.api.IRIJR5JsonManager;
 import com.tencent.mobileqq.kandian.biz.pts.api.IReadInJoyProteusBindUtil;
@@ -23,6 +24,7 @@ public class ReadInjoyAdTripleImgCell
     ((IReadInJoyProteusBindUtil)QRoute.api(IReadInJoyProteusBindUtil.class)).bindCommentNumText(paramAbsBaseArticleInfo, localJSONObject);
     ((IReadInJoyProteusBindUtil)QRoute.api(IReadInJoyProteusBindUtil.class)).bindAdPositionInfoNew(paramAbsBaseArticleInfo, localJSONObject);
     ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).bindAdColorIcon(paramAbsBaseArticleInfo, localJSONObject);
+    ReadInJoyAdUtils.k(paramAbsBaseArticleInfo, localJSONObject);
     localJSONObject.put("style_ID", "ReadInjoy_ad_triple_img_cell");
     ((IReadInJoyProteusBindUtil)QRoute.api(IReadInJoyProteusBindUtil.class)).addProteusDynamicData(localJSONObject, paramAbsBaseArticleInfo);
     Object localObject2;
@@ -71,7 +73,7 @@ public class ReadInjoyAdTripleImgCell
     {
       localObject3 = ((IRIJR5JsonManager)QRoute.api(IRIJR5JsonManager.class)).getJSONArray(paramAbsBaseArticleInfo.mJsonPictureList, "pictures");
       if (localObject3 == null) {
-        break label587;
+        break label593;
       }
       if (((JSONArray)localObject3).length() < 3) {
         return localJSONObject;
@@ -108,13 +110,13 @@ public class ReadInjoyAdTripleImgCell
     localJSONObject.put("id_multi_img_3", localObject1);
     localJSONObject.put("id_info_operate_parent", new JSONObject());
     localJSONObject.put("id_ad_triple_container", new JSONObject());
-    label587:
+    label593:
     return localJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.data.ReadInjoyAdTripleImgCell
  * JD-Core Version:    0.7.0.1
  */

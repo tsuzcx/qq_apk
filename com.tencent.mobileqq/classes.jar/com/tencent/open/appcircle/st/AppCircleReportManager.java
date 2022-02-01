@@ -23,39 +23,39 @@ import java.util.concurrent.ConcurrentHashMap;
 public class AppCircleReportManager
   implements NetworkState.NetworkStateListener, StatReportHttpEngine.IStatReportListener
 {
-  private static AppCircleReportManager jdField_a_of_type_ComTencentOpenAppcircleStAppCircleReportManager;
-  private long jdField_a_of_type_Long = 1800000L;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private SparseArray<ArrayList<StatItem>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private StatReportHttpEngine jdField_a_of_type_ComTencentOpenAppcircleModuleStatReportHttpEngine = new StatReportHttpEngine();
-  private Map<Integer, ArrayList<String>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private SparseArray<ArrayList<StatItem>> b = new SparseArray();
+  private static AppCircleReportManager a;
+  private StatReportHttpEngine b = new StatReportHttpEngine();
+  private Handler c;
+  private SparseArray<ArrayList<StatItem>> d = new SparseArray();
+  private SparseArray<ArrayList<StatItem>> e = new SparseArray();
+  private Map<Integer, ArrayList<String>> f = new ConcurrentHashMap();
+  private long g = 1800000L;
   
   private AppCircleReportManager()
   {
-    this.jdField_a_of_type_ComTencentOpenAppcircleModuleStatReportHttpEngine.a(this);
-    a();
+    this.b.a(this);
+    b();
   }
   
   public static AppCircleReportManager a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentOpenAppcircleStAppCircleReportManager == null) {
-        jdField_a_of_type_ComTencentOpenAppcircleStAppCircleReportManager = new AppCircleReportManager();
+      if (a == null) {
+        a = new AppCircleReportManager();
       }
-      AppCircleReportManager localAppCircleReportManager = jdField_a_of_type_ComTencentOpenAppcircleStAppCircleReportManager;
+      AppCircleReportManager localAppCircleReportManager = a;
       return localAppCircleReportManager;
     }
     finally {}
   }
   
-  private void a()
+  private void b()
   {
     HandlerThread localHandlerThread = new HandlerThread("thread_report");
     localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new AppCircleReportManager.1(this, localHandlerThread.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    this.c = new AppCircleReportManager.1(this, localHandlerThread.getLooper());
+    this.c.sendEmptyMessage(2);
   }
   
   public void a(int paramInt, DownloadInfo paramDownloadInfo)
@@ -75,17 +75,17 @@ public class AppCircleReportManager
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(l);
       localStringBuilder.append("|");
-      localStringBuilder.append(paramDownloadInfo.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(paramDownloadInfo.c);
       localStringBuilder.append("|");
-      localStringBuilder.append(paramDownloadInfo.b);
+      localStringBuilder.append(paramDownloadInfo.n);
       localStringBuilder.append("|");
       localStringBuilder.append(paramDownloadInfo.e);
       localStringBuilder.append("|");
-      localStringBuilder.append(paramDownloadInfo.jdField_c_of_type_Int);
+      localStringBuilder.append(paramDownloadInfo.o);
       localStringBuilder.append("|");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("|");
-      localStringBuilder.append(paramDownloadInfo.jdField_c_of_type_Long);
+      localStringBuilder.append(paramDownloadInfo.E);
       localStringBuilder.append("|");
       localStringBuilder.append(paramDownloadInfo.h);
       a(9, localStringBuilder.toString());
@@ -98,12 +98,12 @@ public class AppCircleReportManager
     paramStatReportRequest.append("circleTest reportLog onReportFinish errorCode = ");
     paramStatReportRequest.append(paramInt2);
     Log.i("selfupdeReport", paramStatReportRequest.toString());
-    paramStatReportRequest = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+    paramStatReportRequest = (ArrayList)this.d.get(paramInt1);
     int j = 0;
     int i;
     if (paramStatReportRequest == null)
     {
-      paramStatReportRequest = (ArrayList)this.b.get(paramInt1);
+      paramStatReportRequest = (ArrayList)this.e.get(paramInt1);
       i = 1;
     }
     else
@@ -154,27 +154,27 @@ public class AppCircleReportManager
       while (paramStatReportRequest.hasNext())
       {
         paramStatReportResponse = (StatItem)paramStatReportRequest.next();
-        ReportDatabaseHelper.a().a(String.valueOf(paramStatReportResponse.type));
+        ReportDatabaseHelper.a().c(String.valueOf(paramStatReportResponse.type));
       }
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt1);
-    this.b.delete(paramInt1);
+    this.d.delete(paramInt1);
+    this.e.delete(paramInt1);
   }
   
   public void a(int paramInt, String paramString)
   {
     if ((paramInt >= 0) && (!TextUtils.isEmpty(paramString)))
     {
-      ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      ArrayList localArrayList2 = (ArrayList)this.f.get(Integer.valueOf(paramInt));
       ArrayList localArrayList1 = localArrayList2;
       if (localArrayList2 == null)
       {
         localArrayList1 = new ArrayList();
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList1);
+        this.f.put(Integer.valueOf(paramInt), localArrayList1);
       }
       localArrayList1.add(paramString);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 500L);
+      this.c.removeMessages(1);
+      this.c.sendEmptyMessageDelayed(1, 500L);
     }
   }
   
@@ -182,18 +182,18 @@ public class AppCircleReportManager
   {
     if (paramBoolean)
     {
-      if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      if (!this.c.hasMessages(2)) {
+        this.c.sendEmptyMessage(2);
       }
     }
-    else if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    else if (this.c.hasMessages(2)) {
+      this.c.removeMessages(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcircle.st.AppCircleReportManager
  * JD-Core Version:    0.7.0.1
  */

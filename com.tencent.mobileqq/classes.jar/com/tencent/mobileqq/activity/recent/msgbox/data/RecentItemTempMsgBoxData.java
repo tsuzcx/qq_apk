@@ -66,7 +66,7 @@ public class RecentItemTempMsgBoxData
           localObject = (ITempMsgBoxBusinessHandler)((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getBusinessHandlerMap().get(localObject);
           if (localObject != null)
           {
-            bool = ((ITempMsgBoxBusinessHandler)localObject).a(paramAppInterface, localRecentUser.uin);
+            bool = ((ITempMsgBoxBusinessHandler)localObject).b(paramAppInterface, localRecentUser.uin);
             break label135;
           }
         }
@@ -111,13 +111,13 @@ public class RecentItemTempMsgBoxData
     if (!TextUtils.equals(paramRecentUser.uin, AppConstants.FILTER_MSG_UIN)) {
       if (localObject != null)
       {
-        paramMessage.prefixOfNickname = ((AbstractTempChatPlugin)localObject).a(paramRecentUser.uin, TempChatSource.SOURCE_FROM_MAG_TAB);
+        paramMessage.prefixOfNickname = ((AbstractTempChatPlugin)localObject).b(paramRecentUser.uin, TempChatSource.SOURCE_FROM_MAG_TAB);
       }
       else
       {
         Integer localInteger = (Integer)((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getSummaryTextMap().get(Integer.valueOf(paramRecentUser.getType()));
         if (localInteger != null) {
-          paramMessage.prefixOfNickname = String.format(paramBaseQQAppInterface.getApplication().getString(2131699395), new Object[] { paramBaseQQAppInterface.getApplication().getString(localInteger.intValue()) });
+          paramMessage.prefixOfNickname = String.format(paramBaseQQAppInterface.getApplication().getString(2131897426), new Object[] { paramBaseQQAppInterface.getApplication().getString(localInteger.intValue()) });
         }
       }
     }
@@ -126,13 +126,13 @@ public class RecentItemTempMsgBoxData
       paramMessage.prefixOfNickname = "";
       if (localObject != null)
       {
-        paramMsgSummary.prefixOfContent = ((AbstractTempChatPlugin)localObject).a(paramRecentUser.uin, TempChatSource.SOURCE_FROM_MAG_TAB);
+        paramMsgSummary.prefixOfContent = ((AbstractTempChatPlugin)localObject).b(paramRecentUser.uin, TempChatSource.SOURCE_FROM_MAG_TAB);
       }
       else
       {
         localObject = (Integer)((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getSummaryTextMap().get(Integer.valueOf(paramRecentUser.getType()));
         if (localObject != null) {
-          paramMsgSummary.prefixOfContent = String.format(paramBaseQQAppInterface.getApplication().getString(2131699395), new Object[] { paramBaseQQAppInterface.getApplication().getString(((Integer)localObject).intValue()) });
+          paramMsgSummary.prefixOfContent = String.format(paramBaseQQAppInterface.getApplication().getString(2131897426), new Object[] { paramBaseQQAppInterface.getApplication().getString(((Integer)localObject).intValue()) });
         }
       }
     }
@@ -152,9 +152,9 @@ public class RecentItemTempMsgBoxData
       paramContext.increaseUnread(AppConstants.FILTER_MSG_UIN, 10012, 0);
       int i = paramContext.getUnreadCount(AppConstants.FILTER_MSG_UIN, 10012) + ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getAllFilterMsgUnreadNumOfQCall(paramBaseQQAppInterface, paramMessage);
       if (i != 0) {
-        paramMsgSummary.strContent = String.format(paramBaseQQAppInterface.getApplication().getString(2131699399), new Object[] { Integer.valueOf(i) });
+        paramMsgSummary.strContent = String.format(paramBaseQQAppInterface.getApplication().getString(2131897430), new Object[] { Integer.valueOf(i) });
       } else {
-        paramMsgSummary.strContent = paramBaseQQAppInterface.getApplication().getString(2131698937);
+        paramMsgSummary.strContent = paramBaseQQAppInterface.getApplication().getString(2131896911);
       }
     }
     paramMessage.prefixOfNickname = "";
@@ -163,10 +163,10 @@ public class RecentItemTempMsgBoxData
   
   private void a(BaseQQAppInterface paramBaseQQAppInterface, Message paramMessage, MsgSummary paramMsgSummary)
   {
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       paramMessage = new StringBuilder();
-      paramMessage.append(paramBaseQQAppInterface.getApplication().getString(2131699400));
+      paramMessage.append(paramBaseQQAppInterface.getApplication().getString(2131897431));
       paramMessage.append(this.mLastMsg.toString());
       this.mContentDesc = paramMessage.toString();
     }
@@ -198,14 +198,14 @@ public class RecentItemTempMsgBoxData
       Object localObject = ((ITempChatPluginManager)paramBaseQQAppInterface.getRuntimeService(ITempChatPluginManager.class, "")).getTempChatPlugin(paramRecentUser.type);
       if (localObject != null)
       {
-        paramRecentUser = ((AbstractTempChatPlugin)localObject).a(paramRecentUser.uin, TempChatSource.SOURCE_FROM_MAG_TAB);
+        paramRecentUser = ((AbstractTempChatPlugin)localObject).b(paramRecentUser.uin, TempChatSource.SOURCE_FROM_MAG_TAB);
       }
       else
       {
         localObject = (Integer)((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getSummaryTextMap().get(Integer.valueOf(paramRecentUser.getType()));
         paramRecentUser = paramDraftSummaryInfo;
         if (localObject != null) {
-          paramRecentUser = String.format(paramBaseQQAppInterface.getApplication().getString(2131699395), new Object[] { paramBaseQQAppInterface.getApplication().getString(((Integer)localObject).intValue()) });
+          paramRecentUser = String.format(paramBaseQQAppInterface.getApplication().getString(2131897426), new Object[] { paramBaseQQAppInterface.getApplication().getString(((Integer)localObject).intValue()) });
         }
       }
       paramBaseQQAppInterface = new StringBuilder();
@@ -277,7 +277,7 @@ public class RecentItemTempMsgBoxData
         return;
       }
       super.update(paramBaseQQAppInterface, paramContext);
-      this.mTitleName = paramContext.getString(2131699400);
+      this.mTitleName = paramContext.getString(2131897431);
       MsgSummary localMsgSummary = getMsgSummaryTemp();
       IMessageFacade localIMessageFacade = (IMessageFacade)paramBaseQQAppInterface.getRuntimeService(IMessageFacade.class, "");
       IConversationFacade localIConversationFacade = (IConversationFacade)paramBaseQQAppInterface.getRuntimeService(IConversationFacade.class, "");
@@ -310,7 +310,7 @@ public class RecentItemTempMsgBoxData
       a(paramBaseQQAppInterface, (RecentUser)localObject1);
       a(paramBaseQQAppInterface, localMsgSummary, (RecentUser)localObject1);
       extraUpdate(paramBaseQQAppInterface, paramContext, localMsgSummary);
-      b();
+      d();
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
@@ -337,7 +337,7 @@ public class RecentItemTempMsgBoxData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.data.RecentItemTempMsgBoxData
  * JD-Core Version:    0.7.0.1
  */

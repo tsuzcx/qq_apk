@@ -11,7 +11,7 @@
             <include android:id="@id/eb7" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" layout="@layout/ahr" />
         </LinearLayout>
         <ViewStub android:id="@id/ebb" android:layout="@layout/aht" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="31.0dip" android:layout_marginTop="25.0dip" android:baselineAligned="false">
+        <LinearLayout android:orientation="horizontal" android:id="@id/od5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="31.0dip" android:layout_marginTop="25.0dip" android:baselineAligned="false">
             <include android:id="@id/eb8" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" layout="@layout/ahr" />
             <include android:id="@id/eb9" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" layout="@layout/ahr" />
         </LinearLayout>

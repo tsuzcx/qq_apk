@@ -11,24 +11,24 @@ class ConfigServlet$2
   
   public int a()
   {
-    return ShortVideoMsgTailHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+    return ShortVideoMsgTailHelper.a(this.a.getApp());
   }
   
   public void a(int paramInt)
   {
-    ShortVideoMsgTailHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt);
+    ShortVideoMsgTailHelper.d(this.a.getApp(), paramInt);
   }
   
   public void a(List<String> paramList)
   {
     if ((paramList != null) && (paramList.size() > 0)) {
-      ShortVideoMsgTailHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramList);
+      ShortVideoMsgTailHelper.a(this.a.getApp(), paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.ConfigServlet.2
  * JD-Core Version:    0.7.0.1
  */

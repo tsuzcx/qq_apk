@@ -10,12 +10,12 @@ import java.util.List;
 
 public class VoiceDataUtils
 {
-  public static int[] a = { 2131720314, 2131720313 };
+  public static int[] a = { 2131917949, 2131917948 };
   
   public static String a(int paramInt)
   {
-    Resources localResources = AssistantUtils.a().getResources();
-    String str = localResources.getString(2131720340);
+    Resources localResources = AssistantUtils.d().getResources();
+    String str = localResources.getString(2131917975);
     if (paramInt != 1)
     {
       if (paramInt != 2)
@@ -23,34 +23,34 @@ public class VoiceDataUtils
         if (paramInt != 3) {
           return str;
         }
-        return localResources.getString(2131720323);
+        return localResources.getString(2131917958);
       }
-      return localResources.getString(2131720325);
+      return localResources.getString(2131917960);
     }
-    return localResources.getString(2131720340);
+    return localResources.getString(2131917975);
   }
   
   public static List<VoiceItemInfo> a(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     VoiceItemInfo localVoiceItemInfo = new VoiceItemInfo();
-    localVoiceItemInfo.jdField_a_of_type_Int = 7;
-    localVoiceItemInfo.b = 40;
+    localVoiceItemInfo.a = 7;
+    localVoiceItemInfo.c = 40;
     localArrayList.add(localVoiceItemInfo);
     localVoiceItemInfo = new VoiceItemInfo();
-    localVoiceItemInfo.jdField_a_of_type_Int = 0;
-    localVoiceItemInfo.jdField_a_of_type_JavaLangString = paramString;
+    localVoiceItemInfo.a = 0;
+    localVoiceItemInfo.b = paramString;
     localArrayList.add(localVoiceItemInfo);
     paramString = new VoiceItemInfo();
-    paramString.jdField_a_of_type_Int = 7;
-    paramString.b = 20;
+    paramString.a = 7;
+    paramString.c = 20;
     localArrayList.add(paramString);
     paramString = new VoiceItemInfo();
-    paramString.jdField_a_of_type_Int = 1;
+    paramString.a = 1;
     localArrayList.add(paramString);
     paramString = new VoiceItemInfo();
-    paramString.jdField_a_of_type_Int = 7;
-    paramString.b = 10;
+    paramString.a = 7;
+    paramString.c = 10;
     localArrayList.add(paramString);
     return localArrayList;
   }
@@ -59,31 +59,31 @@ public class VoiceDataUtils
   {
     ArrayList localArrayList = new ArrayList();
     VoiceItemInfo localVoiceItemInfo = new VoiceItemInfo();
-    localVoiceItemInfo.jdField_a_of_type_Int = 7;
-    localVoiceItemInfo.b = 40;
+    localVoiceItemInfo.a = 7;
+    localVoiceItemInfo.c = 40;
     localArrayList.add(localVoiceItemInfo);
     localVoiceItemInfo = new VoiceItemInfo();
-    localVoiceItemInfo.jdField_a_of_type_Int = 3;
-    localVoiceItemInfo.jdField_a_of_type_JavaLangString = paramString1;
+    localVoiceItemInfo.a = 3;
+    localVoiceItemInfo.b = paramString1;
     localArrayList.add(localVoiceItemInfo);
     paramString1 = new VoiceItemInfo();
-    paramString1.jdField_a_of_type_Int = 7;
-    paramString1.b = 12;
+    paramString1.a = 7;
+    paramString1.c = 12;
     localArrayList.add(paramString1);
     paramString1 = new VoiceItemInfo();
-    paramString1.jdField_a_of_type_Int = 4;
-    paramString1.jdField_a_of_type_JavaLangString = paramString2;
+    paramString1.a = 4;
+    paramString1.b = paramString2;
     localArrayList.add(paramString1);
     paramString1 = new VoiceItemInfo();
-    paramString1.jdField_a_of_type_Int = 7;
-    paramString1.b = 12;
+    paramString1.a = 7;
+    paramString1.c = 12;
     localArrayList.add(paramString1);
     paramString1 = new VoiceItemInfo();
-    paramString1.jdField_a_of_type_Int = 6;
+    paramString1.a = 6;
     localArrayList.add(paramString1);
     paramString1 = new VoiceItemInfo();
-    paramString1.jdField_a_of_type_Int = 7;
-    paramString1.b = 10;
+    paramString1.a = 7;
+    paramString1.c = 10;
     localArrayList.add(paramString1);
     return localArrayList;
   }
@@ -92,32 +92,32 @@ public class VoiceDataUtils
   {
     ArrayList localArrayList = new ArrayList();
     VoiceItemInfo localVoiceItemInfo = new VoiceItemInfo();
-    localVoiceItemInfo.jdField_a_of_type_Int = 7;
-    localVoiceItemInfo.b = 40;
+    localVoiceItemInfo.a = 7;
+    localVoiceItemInfo.c = 40;
     localArrayList.add(localVoiceItemInfo);
     localVoiceItemInfo = new VoiceItemInfo();
-    localVoiceItemInfo.jdField_a_of_type_Int = 3;
-    localVoiceItemInfo.jdField_a_of_type_JavaLangString = paramString1;
+    localVoiceItemInfo.a = 3;
+    localVoiceItemInfo.b = paramString1;
     localArrayList.add(localVoiceItemInfo);
     paramString1 = new VoiceItemInfo();
-    paramString1.jdField_a_of_type_Int = 7;
-    paramString1.b = 12;
+    paramString1.a = 7;
+    paramString1.c = 12;
     localArrayList.add(paramString1);
     paramString1 = new VoiceItemInfo();
-    paramString1.jdField_a_of_type_Int = 4;
-    paramString1.jdField_a_of_type_JavaLangString = paramString2;
+    paramString1.a = 4;
+    paramString1.b = paramString2;
     localArrayList.add(paramString1);
     paramString1 = new VoiceItemInfo();
-    paramString1.jdField_a_of_type_Int = 7;
-    paramString1.b = 12;
+    paramString1.a = 7;
+    paramString1.c = 12;
     localArrayList.add(paramString1);
     paramString1 = new VoiceItemInfo();
-    paramString1.jdField_a_of_type_Int = 5;
-    paramString1.jdField_a_of_type_JavaLangString = paramString3;
+    paramString1.a = 5;
+    paramString1.b = paramString3;
     localArrayList.add(paramString1);
     paramString1 = new VoiceItemInfo();
-    paramString1.jdField_a_of_type_Int = 7;
-    paramString1.b = 10;
+    paramString1.a = 7;
+    paramString1.c = 10;
     localArrayList.add(paramString1);
     return localArrayList;
   }
@@ -126,16 +126,16 @@ public class VoiceDataUtils
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = new VoiceItemInfo();
-    ((VoiceItemInfo)localObject).jdField_a_of_type_Int = 7;
-    ((VoiceItemInfo)localObject).b = 40;
+    ((VoiceItemInfo)localObject).a = 7;
+    ((VoiceItemInfo)localObject).c = 40;
     localArrayList.add(localObject);
     localObject = new VoiceItemInfo();
-    ((VoiceItemInfo)localObject).jdField_a_of_type_Int = 8;
-    ((VoiceItemInfo)localObject).jdField_a_of_type_JavaLangString = paramString;
+    ((VoiceItemInfo)localObject).a = 8;
+    ((VoiceItemInfo)localObject).b = paramString;
     localArrayList.add(localObject);
     paramString = new VoiceItemInfo();
-    paramString.jdField_a_of_type_Int = 7;
-    paramString.b = 12;
+    paramString.a = 7;
+    paramString.c = 12;
     localArrayList.add(paramString);
     if ((paramList != null) && (!paramList.isEmpty()))
     {
@@ -144,12 +144,12 @@ public class VoiceDataUtils
       while (i < j)
       {
         paramString = new VoiceItemInfo();
-        paramString.jdField_a_of_type_Int = 9;
+        paramString.a = 9;
         localObject = (FriendItemInfo)paramList.get(i);
         i += 1;
-        ((FriendItemInfo)localObject).b = i;
-        ((FriendItemInfo)localObject).c = FriendItemInfo.a(((FriendItemInfo)localObject).b);
-        paramString.jdField_a_of_type_ComTencentMobileqqQassistantDataFriendItemInfo = ((FriendItemInfo)localObject);
+        ((FriendItemInfo)localObject).e = i;
+        ((FriendItemInfo)localObject).f = FriendItemInfo.a(((FriendItemInfo)localObject).e);
+        paramString.d = ((FriendItemInfo)localObject);
         localArrayList.add(paramString);
       }
     }
@@ -158,36 +158,36 @@ public class VoiceDataUtils
   
   public static List<VoiceItemInfo> b(String paramString)
   {
-    Resources localResources = AssistantUtils.a().getResources();
+    Resources localResources = AssistantUtils.d().getResources();
     ArrayList localArrayList = new ArrayList();
     VoiceItemInfo localVoiceItemInfo = new VoiceItemInfo();
-    localVoiceItemInfo.jdField_a_of_type_Int = 7;
-    localVoiceItemInfo.b = 40;
+    localVoiceItemInfo.a = 7;
+    localVoiceItemInfo.c = 40;
     localArrayList.add(localVoiceItemInfo);
     localVoiceItemInfo = new VoiceItemInfo();
     int i = 0;
-    localVoiceItemInfo.jdField_a_of_type_Int = 0;
-    localVoiceItemInfo.jdField_a_of_type_JavaLangString = paramString;
+    localVoiceItemInfo.a = 0;
+    localVoiceItemInfo.b = paramString;
     localArrayList.add(localVoiceItemInfo);
     paramString = new VoiceItemInfo();
-    paramString.jdField_a_of_type_Int = 7;
-    paramString.b = 20;
+    paramString.a = 7;
+    paramString.c = 20;
     localArrayList.add(paramString);
     while (i < a.length)
     {
       paramString = new VoiceItemInfo();
-      paramString.jdField_a_of_type_Int = 2;
-      paramString.jdField_a_of_type_JavaLangString = localResources.getString(a[i]);
+      paramString.a = 2;
+      paramString.b = localResources.getString(a[i]);
       localArrayList.add(paramString);
       paramString = new VoiceItemInfo();
-      paramString.jdField_a_of_type_Int = 7;
-      paramString.b = 4;
+      paramString.a = 7;
+      paramString.c = 4;
       localArrayList.add(paramString);
       i += 1;
     }
     paramString = new VoiceItemInfo();
-    paramString.jdField_a_of_type_Int = 7;
-    paramString.b = 6;
+    paramString.a = 7;
+    paramString.c = 6;
     localArrayList.add(paramString);
     return localArrayList;
   }
@@ -196,16 +196,16 @@ public class VoiceDataUtils
   {
     ArrayList localArrayList = new ArrayList();
     VoiceItemInfo localVoiceItemInfo = new VoiceItemInfo();
-    localVoiceItemInfo.jdField_a_of_type_Int = 7;
-    localVoiceItemInfo.b = 40;
+    localVoiceItemInfo.a = 7;
+    localVoiceItemInfo.c = 40;
     localArrayList.add(localVoiceItemInfo);
     localVoiceItemInfo = new VoiceItemInfo();
-    localVoiceItemInfo.jdField_a_of_type_Int = 0;
-    localVoiceItemInfo.jdField_a_of_type_JavaLangString = paramString;
+    localVoiceItemInfo.a = 0;
+    localVoiceItemInfo.b = paramString;
     localArrayList.add(localVoiceItemInfo);
     paramString = new VoiceItemInfo();
-    paramString.jdField_a_of_type_Int = 7;
-    paramString.b = 30;
+    paramString.a = 7;
+    paramString.c = 30;
     localArrayList.add(paramString);
     return localArrayList;
   }
@@ -214,30 +214,30 @@ public class VoiceDataUtils
   {
     ArrayList localArrayList = new ArrayList();
     VoiceItemInfo localVoiceItemInfo = new VoiceItemInfo();
-    localVoiceItemInfo.jdField_a_of_type_Int = 7;
-    localVoiceItemInfo.b = 40;
+    localVoiceItemInfo.a = 7;
+    localVoiceItemInfo.c = 40;
     localArrayList.add(localVoiceItemInfo);
     localVoiceItemInfo = new VoiceItemInfo();
-    localVoiceItemInfo.jdField_a_of_type_Int = 0;
-    localVoiceItemInfo.jdField_a_of_type_JavaLangString = paramString;
+    localVoiceItemInfo.a = 0;
+    localVoiceItemInfo.b = paramString;
     localArrayList.add(localVoiceItemInfo);
     paramString = new VoiceItemInfo();
-    paramString.jdField_a_of_type_Int = 7;
-    paramString.b = 12;
+    paramString.a = 7;
+    paramString.c = 12;
     localArrayList.add(paramString);
     paramString = new VoiceItemInfo();
-    paramString.jdField_a_of_type_Int = 6;
+    paramString.a = 6;
     localArrayList.add(paramString);
     paramString = new VoiceItemInfo();
-    paramString.jdField_a_of_type_Int = 7;
-    paramString.b = 10;
+    paramString.a = 7;
+    paramString.c = 10;
     localArrayList.add(paramString);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.util.VoiceDataUtils
  * JD-Core Version:    0.7.0.1
  */

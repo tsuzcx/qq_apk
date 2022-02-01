@@ -21,26 +21,23 @@ public class ExtendFriendMultiLinesTagsView
   extends ViewGroup
   implements View.OnClickListener
 {
-  public int a;
-  public ExtendFriendMultiLinesTagsView.OnItemClickListener a;
+  public int a = 30;
   public int b = 30;
+  public ExtendFriendMultiLinesTagsView.OnItemClickListener c;
   
   public ExtendFriendMultiLinesTagsView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 30;
   }
   
   public ExtendFriendMultiLinesTagsView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 30;
   }
   
   public ExtendFriendMultiLinesTagsView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 30;
   }
   
   public void onClick(View paramView)
@@ -48,9 +45,9 @@ public class ExtendFriendMultiLinesTagsView
     if ((paramView.getTag() instanceof ExtendFriendMultiLinesTagsView.TagInfo))
     {
       paramView = (ExtendFriendMultiLinesTagsView.TagInfo)paramView.getTag();
-      ExtendFriendMultiLinesTagsView.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendMultiLinesTagsView$OnItemClickListener;
+      ExtendFriendMultiLinesTagsView.OnItemClickListener localOnItemClickListener = this.c;
       if (localOnItemClickListener != null) {
-        localOnItemClickListener.a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int);
+        localOnItemClickListener.a(paramView.b, paramView.a);
       }
     }
   }
@@ -92,10 +89,10 @@ public class ExtendFriendMultiLinesTagsView
       if (paramInt1 + m > j - getPaddingRight())
       {
         i = getPaddingLeft();
-        paramInt4 = paramInt3 + (this.jdField_a_of_type_Int + n);
+        paramInt4 = paramInt3 + (this.a + n);
       }
       ((View)localObject).layout(i, paramInt4, i + m, n + paramInt4);
-      paramInt1 = i + (this.jdField_a_of_type_Int + m);
+      paramInt1 = i + (this.a + m);
       paramInt2 += 1;
       paramInt3 = paramInt4;
     }
@@ -127,9 +124,9 @@ public class ExtendFriendMultiLinesTagsView
       if (paramInt1 + i2 > m - getPaddingRight())
       {
         k = getPaddingLeft();
-        j = i + (this.jdField_a_of_type_Int + i1);
+        j = i + (this.a + i1);
       }
-      paramInt1 = k + (this.jdField_a_of_type_Int + i2);
+      paramInt1 = k + (this.a + i2);
       k = i1 + j;
       paramInt2 += 1;
       i = j;
@@ -149,7 +146,7 @@ public class ExtendFriendMultiLinesTagsView
   
   public void setOnItemClickListener(ExtendFriendMultiLinesTagsView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendMultiLinesTagsView$OnItemClickListener = paramOnItemClickListener;
+    this.c = paramOnItemClickListener;
   }
   
   public void setSearchTags(ArrayList<String> paramArrayList)
@@ -181,8 +178,8 @@ public class ExtendFriendMultiLinesTagsView
           localTextView.setClickable(true);
           localTextView.setFocusable(true);
           localTextView.setPadding(j, 0, j, 0);
-          localTextView.setBackgroundResource(2130845183);
-          localTextView.setTextColor(getResources().getColorStateList(2131166387));
+          localTextView.setBackgroundResource(2130846625);
+          localTextView.setTextColor(getResources().getColorStateList(2131167223));
           localTextView.setEllipsize(TextUtils.TruncateAt.END);
           localTextView.setSingleLine();
           localTextView.setMaxLines(1);
@@ -196,13 +193,13 @@ public class ExtendFriendMultiLinesTagsView
   
   public void setViewMargin(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.ExtendFriendMultiLinesTagsView
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class AVGameLobbyOnClickListenerFactory$2
     if (paramIBaseData == null) {
       return;
     }
-    paramInt = ((AVGameLobbyFixedContentInfo)paramIBaseData).f();
+    paramInt = ((AVGameLobbyFixedContentInfo)paramIBaseData).i();
     if (paramInt != 1)
     {
       if (paramInt != 2)
@@ -26,10 +26,10 @@ class AVGameLobbyOnClickListenerFactory$2
         this.a.a.a(1);
         return;
       }
-      this.a.a.b();
+      this.a.a.c();
       return;
     }
-    this.a.a.c();
+    this.a.a.d();
   }
 }
 

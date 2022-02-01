@@ -11,14 +11,14 @@ class CommentsAdapter$1
   
   public void onClick(View paramView)
   {
-    if (CommentsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter) != null) {
-      CommentsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter).a(this.jdField_a_of_type_AndroidViewViewGroup);
+    if (CommentsAdapter.a(this.b) != null) {
+      CommentsAdapter.a(this.b).a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.CommentsAdapter.1
  * JD-Core Version:    0.7.0.1
  */

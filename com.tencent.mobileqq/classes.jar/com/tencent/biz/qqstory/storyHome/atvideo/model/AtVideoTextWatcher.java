@@ -20,27 +20,27 @@ import java.util.Map;
 public class AtVideoTextWatcher
   implements TextWatcher
 {
-  public int a;
-  public Context a;
-  public FeedManager a;
-  public BubbleTextView a;
   public String a;
-  public boolean a;
-  private int b;
   public String b;
-  private int c;
+  public int c;
+  public Context d;
+  public boolean e;
+  public FeedManager f;
+  public BubbleTextView g;
+  private int h;
+  private int i;
   
   public AtVideoTextWatcher(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
     if ((!"1_".equals(paramString2)) && (!"2_".equals(paramString2))) {
       throw new IllegalArgumentException("illegal textWatcher source");
     }
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager = ((FeedManager)SuperManager.a(11));
+    this.a = paramString2;
+    this.d = paramContext;
+    this.b = paramString1;
+    this.c = paramInt;
+    this.e = paramBoolean;
+    this.f = ((FeedManager)SuperManager.a(11));
   }
   
   public static void a(EditText paramEditText, Intent paramIntent)
@@ -63,9 +63,9 @@ public class AtVideoTextWatcher
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (this.c > 0)
+    if (this.i > 0)
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+      Object localObject1 = this.g;
       Object localObject2;
       if (localObject1 != null)
       {
@@ -79,26 +79,26 @@ public class AtVideoTextWatcher
           }
         }
         if ((localObject1 != null) && ((localObject1 instanceof RelativeLayout))) {
-          ((RelativeLayout)localObject1).removeView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView);
+          ((RelativeLayout)localObject1).removeView(this.g);
         }
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = null;
+        this.g = null;
       }
-      if (('@' == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)) || (65312 == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)))
+      if (('@' == paramEditable.charAt(this.h + this.i - 1)) || (65312 == paramEditable.charAt(this.h + this.i - 1)))
       {
         StoryReportor.a("home_page", "send_at", 0, 0, new String[0]);
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "trigger at video process");
         }
-        paramEditable = this.jdField_a_of_type_AndroidContentContext;
-        if (((paramEditable instanceof Activity)) && (this.jdField_a_of_type_Boolean))
+        paramEditable = this.d;
+        if (((paramEditable instanceof Activity)) && (this.e))
         {
           paramEditable = (Activity)paramEditable;
-          localObject1 = this.jdField_b_of_type_JavaLangString;
-          localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a;
+          localObject1 = this.b;
+          localObject2 = this.f.g;
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-          localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-          StoryAtVideoFragment.a(paramEditable, (String)localObject1, (String)((Map)localObject2).get(localStringBuilder.toString()), this.jdField_a_of_type_Int);
+          localStringBuilder.append(this.a);
+          localStringBuilder.append(this.b);
+          StoryAtVideoFragment.a(paramEditable, (String)localObject1, (String)((Map)localObject2).get(localStringBuilder.toString()), this.c);
         }
       }
     }
@@ -106,8 +106,8 @@ public class AtVideoTextWatcher
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt3;
+    this.h = paramInt1;
+    this.i = paramInt3;
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

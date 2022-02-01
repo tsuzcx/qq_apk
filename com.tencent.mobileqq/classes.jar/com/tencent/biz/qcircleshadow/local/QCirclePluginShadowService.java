@@ -11,18 +11,17 @@ public class QCirclePluginShadowService
     try
     {
       super.onCreate();
-      QLog.d("QCIRCLE_PLUGIN", 1, "QCirclePluginShadowService created");
       return;
     }
     catch (Exception localException)
     {
-      QLog.d("QCIRCLE_PLUGIN", 1, localException.getMessage());
+      QLog.d("ASDynamicEngine", 1, localException.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCirclePluginShadowService
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public class ZimuViewFactory
 {
   public static ZimuView a(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, String paramString)
   {
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("create, id[");

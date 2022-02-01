@@ -37,19 +37,9 @@ public class AEOldShortVideoArtResourceMgr
     return "artfilter000_0";
   }
   
-  private static void a()
-  {
-    ThreadManager.post(new AEOldShortVideoArtResourceMgr.1(), 5, null, false);
-  }
-  
-  static boolean a()
-  {
-    return PtvFilterSoLoad.d();
-  }
-  
   static boolean a(AppInterface paramAppInterface, AEOldShortVideoResManager.SVConfigItem paramSVConfigItem)
   {
-    if (!PtvFilterSoLoad.c()) {
+    if (!PtvFilterSoLoad.e()) {
       return false;
     }
     int i = QmcfDevicesStrategy.a();
@@ -139,7 +129,7 @@ public class AEOldShortVideoArtResourceMgr
             bool1 = true;
           }
         }
-        a();
+        d();
         return bool1;
       }
     }
@@ -166,10 +156,20 @@ public class AEOldShortVideoArtResourceMgr
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
   }
+  
+  static boolean c()
+  {
+    return PtvFilterSoLoad.f();
+  }
+  
+  private static void d()
+  {
+    ThreadManager.post(new AEOldShortVideoArtResourceMgr.1(), 5, null, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoArtResourceMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -5,19 +5,6 @@ import com.tencent.qphone.base.util.QLog;
 
 public class RIJKingCardConfigSp
 {
-  public static String a()
-  {
-    String str = (String)RIJSPUtils.a("readinjoy_kingcard_gudieurl", "");
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getKingCardGuideUrl result=");
-      localStringBuilder.append(str);
-      QLog.d("Q.readinjoy.tt_report", 1, localStringBuilder.toString());
-    }
-    return str;
-  }
-  
   public static void a(int paramInt)
   {
     if (QLog.isColorLevel())
@@ -45,7 +32,7 @@ public class RIJKingCardConfigSp
   public static boolean a()
   {
     boolean bool = false;
-    int i = ((Integer)RIJSPUtils.a("readinjoy_kingcard_switch", Integer.valueOf(0))).intValue();
+    int i = ((Integer)RIJSPUtils.b("readinjoy_kingcard_switch", Integer.valueOf(0))).intValue();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -61,11 +48,11 @@ public class RIJKingCardConfigSp
   
   public static String b()
   {
-    String str = (String)RIJSPUtils.a("readinjoy_kingcard_tiptext", "");
+    String str = (String)RIJSPUtils.b("readinjoy_kingcard_gudieurl", "");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getKingCardTipText result=");
+      localStringBuilder.append("getKingCardGuideUrl result=");
       localStringBuilder.append(str);
       QLog.d("Q.readinjoy.tt_report", 1, localStringBuilder.toString());
     }
@@ -86,11 +73,11 @@ public class RIJKingCardConfigSp
   
   public static String c()
   {
-    String str = (String)RIJSPUtils.a("readinjoy_kingcard_jumptext", "");
+    String str = (String)RIJSPUtils.b("readinjoy_kingcard_tiptext", "");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getKingCardJumpText result=");
+      localStringBuilder.append("getKingCardTipText result=");
       localStringBuilder.append(str);
       QLog.d("Q.readinjoy.tt_report", 1, localStringBuilder.toString());
     }
@@ -108,10 +95,23 @@ public class RIJKingCardConfigSp
     }
     RIJSPUtils.a("readinjoy_kingcard_jumptext", paramString);
   }
+  
+  public static String d()
+  {
+    String str = (String)RIJSPUtils.b("readinjoy_kingcard_jumptext", "");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getKingCardJumpText result=");
+      localStringBuilder.append(str);
+      QLog.d("Q.readinjoy.tt_report", 1, localStringBuilder.toString());
+    }
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.sp.RIJKingCardConfigSp
  * JD-Core Version:    0.7.0.1
  */

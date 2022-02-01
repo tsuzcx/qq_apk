@@ -16,21 +16,21 @@ class SlideInAndOutAnimator$1
   
   public void onAnimationEnd(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener(null);
+    this.b.setListener(null);
     ViewCompat.setAlpha(paramView, 1.0F);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListSlideInAndOutAnimator.dispatchRemoveFinished(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    SlideInAndOutAnimator.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListSlideInAndOutAnimator).remove(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    SlideInAndOutAnimator.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListSlideInAndOutAnimator);
+    this.c.dispatchRemoveFinished(this.a);
+    SlideInAndOutAnimator.a(this.c).remove(this.a);
+    SlideInAndOutAnimator.b(this.c);
   }
   
   public void onAnimationStart(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListSlideInAndOutAnimator.dispatchRemoveStarting(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    this.c.dispatchRemoveStarting(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.SlideInAndOutAnimator.1
  * JD-Core Version:    0.7.0.1
  */

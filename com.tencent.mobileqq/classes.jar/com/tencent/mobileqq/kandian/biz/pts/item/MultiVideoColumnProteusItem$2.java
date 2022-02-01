@@ -23,18 +23,18 @@ class MultiVideoColumnProteusItem$2
     paramViewBase.append("position : ");
     paramViewBase.append(paramInt);
     QLog.d("multiVideoColumnInfo", 1, paramViewBase.toString());
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.multiVideoColumnInfo.a;
-    if ((paramInt >= 0) && (paramInt < paramViewBase.size()) && (paramViewBase.get(paramInt) != null) && (((SubVideoInfo)paramViewBase.get(paramInt)).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo != null))
+    paramViewBase = this.a.multiVideoColumnInfo.p;
+    if ((paramInt >= 0) && (paramInt < paramViewBase.size()) && (paramViewBase.get(paramInt) != null) && (((SubVideoInfo)paramViewBase.get(paramInt)).e != null))
     {
-      paramTemplateBean = ((SubVideoInfo)paramViewBase.get(paramInt)).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo;
-      VideoFeedsHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramTemplateBean);
-      MultiVideoColumnProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemMultiVideoColumnProteusItem, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 2, paramTemplateBean.e, ((SubVideoInfo)paramViewBase.get(paramInt)).jdField_a_of_type_JavaLangString);
+      paramTemplateBean = ((SubVideoInfo)paramViewBase.get(paramInt)).e;
+      VideoFeedsHelper.a(this.b.getContext(), paramTemplateBean);
+      MultiVideoColumnProteusItem.a(this.c, this.a, 2, paramTemplateBean.f, ((SubVideoInfo)paramViewBase.get(paramInt)).b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.MultiVideoColumnProteusItem.2
  * JD-Core Version:    0.7.0.1
  */

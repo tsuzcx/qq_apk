@@ -182,7 +182,7 @@ public class NearbyGuideActivity
         return;
       }
       Object localObject = paramIntent.getStringExtra("key_cover_selected_img_path");
-      if (StringUtil.a((String)localObject)) {
+      if (StringUtil.isEmpty((String)localObject)) {
         return;
       }
       paramIntent = new Intent(this, PhotoCropActivity.class);
@@ -205,7 +205,7 @@ public class NearbyGuideActivity
       paramIntent.putExtra("PhotoConst.CLIP_HEIGHT", 640);
       paramIntent.putExtra("PhotoConst.TARGET_WIDTH", 640);
       paramIntent.putExtra("PhotoConst.TARGET_HEIGHT", 640);
-      paramIntent.putExtra("PhotoConst.QZONE_COVER_CROP_LEFT_TITLE", HardCodeUtil.a(2131707224));
+      paramIntent.putExtra("PhotoConst.QZONE_COVER_CROP_LEFT_TITLE", HardCodeUtil.a(2131901576));
       startActivity(paramIntent);
     }
   }
@@ -221,7 +221,7 @@ public class NearbyGuideActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    setContentView(2131561185);
+    setContentView(2131627537);
     initViews();
     getWindow().setBackgroundDrawable(null);
     try
@@ -358,7 +358,7 @@ public class NearbyGuideActivity
     localUserInfo.qzone_uin = this.app.getCurrentAccountUin();
     localUserInfo.nickname = this.app.getCurrentNickname();
     Bundle localBundle = new Bundle();
-    localBundle.putString("key_title", getString(2131717454));
+    localBundle.putString("key_title", getString(2131914927));
     localBundle.putInt("key_personal_album_enter_model", 2);
     localBundle.putBoolean("show_album", false);
     localBundle.putBoolean("key_need_change_to_jpg", true);
@@ -417,12 +417,12 @@ public class NearbyGuideActivity
         dismissProcessDialog();
         if (localArrayList.size() <= 0)
         {
-          showToast(HardCodeUtil.a(2131707215));
+          showToast(HardCodeUtil.a(2131905047));
           return;
         }
         this.mUploadPhotoIds.clear();
         this.mUploadPhotoIds.addAll(localArrayList);
-        showToast(2, HardCodeUtil.a(2131707213));
+        showToast(2, HardCodeUtil.a(2131905045));
         updateAvatar(false, null);
         paramArrayList = this.app.getCurrentNickname();
         this.mEtNikeName.setText(paramArrayList);
@@ -443,7 +443,7 @@ public class NearbyGuideActivity
     else
     {
       dismissProcessDialog();
-      showToast(HardCodeUtil.a(2131707211));
+      showToast(HardCodeUtil.a(2131905043));
     }
   }
   
@@ -511,8 +511,8 @@ public class NearbyGuideActivity
           i = (int)(this.mDensity * 5.0F + 0.5F);
           j = (int)(this.mDensity * 5.0F + 0.5F);
           this.mEditLine.setPadding(0, i, 0, j);
-          this.mBtnFinish.setText(2131695129);
-          this.mBtnFinish.setContentDescription(getString(2131695129));
+          this.mBtnFinish.setText(2131892857);
+          this.mBtnFinish.setContentDescription(getString(2131892857));
           updateFinishBtnStatus();
           if (QLog.isDevelopLevel())
           {
@@ -546,14 +546,14 @@ public class NearbyGuideActivity
     InputMethodUtil.b(this.mEtNikeName);
     if (this.mIsUseImportAvatar)
     {
-      showToast(2, HardCodeUtil.a(2131707206));
+      showToast(2, HardCodeUtil.a(2131905038));
       this.mEtNikeName.setText(this.app.getCurrentNickname());
       updateFinishBtnStatus();
       return;
     }
     if (!NetworkUtil.isNetSupport(this.app.getApp()))
     {
-      showToast(HardCodeUtil.a(2131707217));
+      showToast(HardCodeUtil.a(2131905049));
       return;
     }
     showPromptDialog();
@@ -581,9 +581,9 @@ public class NearbyGuideActivity
   
   void initTitle()
   {
-    int i = getResources().getColor(2131166454);
+    int i = getResources().getColor(2131167296);
     if (this.mTitleContainer == null) {
-      this.mTitleContainer = findViewById(2131376636);
+      this.mTitleContainer = findViewById(2131444897);
     }
     this.mTitleContainer.setBackgroundColor(i);
     if (this.mSystemBarComp != null) {
@@ -595,14 +595,14 @@ public class NearbyGuideActivity
     if ((this.leftView instanceof TextView))
     {
       this.leftView.setTextColor(-1);
-      this.leftView.setBackgroundResource(2130845719);
+      this.leftView.setBackgroundResource(2130847189);
       this.leftView.setOnClickListener(this);
     }
     if (this.mCurMode == 1)
     {
       this.rightViewImg.setVisibility(8);
       this.rightViewText.setVisibility(8);
-      setTitle(HardCodeUtil.a(2131707220));
+      setTitle(HardCodeUtil.a(2131905052));
       if ((this.leftView instanceof TextView))
       {
         String str1 = null;
@@ -611,20 +611,20 @@ public class NearbyGuideActivity
         }
         String str2 = str1;
         if (TextUtils.isEmpty(str1)) {
-          str2 = getString(2131690529);
+          str2 = getString(2131887440);
         }
         this.leftView.setText(str2);
       }
     }
     else
     {
-      setTitle(HardCodeUtil.a(2131707216));
+      setTitle(HardCodeUtil.a(2131905048));
       if ((this.leftView instanceof TextView)) {
-        this.leftView.setText(2131690529);
+        this.leftView.setText(2131887440);
       }
       this.rightViewText.setVisibility(0);
       this.rightViewImg.setVisibility(8);
-      this.rightViewText.setText(HardCodeUtil.a(2131707208));
+      this.rightViewText.setText(HardCodeUtil.a(2131905040));
       this.rightViewText.setTextColor(-1);
       this.rightViewText.setOnClickListener(this);
     }
@@ -632,7 +632,7 @@ public class NearbyGuideActivity
   
   public void initViews()
   {
-    this.mRootView = ((MonitorSizeChangeRelativeLayout)findViewById(2131376732));
+    this.mRootView = ((MonitorSizeChangeRelativeLayout)findViewById(2131445015));
     initData();
     this.app.addObserver(this.mNearbyCardObserver, true);
     this.app.addObserver(this.mCardObserver, true);
@@ -748,7 +748,7 @@ public class NearbyGuideActivity
           return;
         }
         paramView = ((Button)localObject2).getText().toString();
-        localObject1 = getString(2131699034);
+        localObject1 = getString(2131897043);
         if ((localObject1 != null) && (((String)localObject1).equals(paramView)))
         {
           showChangePhotoActionSheet();
@@ -756,10 +756,10 @@ public class NearbyGuideActivity
         }
         if (!NetworkUtil.isNetSupport(this.app.getApp()))
         {
-          showToast(HardCodeUtil.a(2131707210));
+          showToast(HardCodeUtil.a(2131905042));
           return;
         }
-        showProcessDialog(HardCodeUtil.a(2131707219));
+        showProcessDialog(HardCodeUtil.a(2131905051));
         if (((Integer)this.mUploadPhotoIds.get(0)).intValue() == -1) {
           uploadPhoto(this.mAvatarPhotoPath);
         } else {
@@ -786,10 +786,10 @@ public class NearbyGuideActivity
           showChangePhotoActionSheet();
           return;
         }
-        paramView = (ActionSheet)ActionSheetHelper.a(this, null);
-        paramView.addButton(HardCodeUtil.a(2131707207));
-        paramView.addButton(HardCodeUtil.a(2131707221));
-        paramView.addCancelButton(2131690728);
+        paramView = (ActionSheet)ActionSheetHelper.b(this, null);
+        paramView.addButton(HardCodeUtil.a(2131905039));
+        paramView.addButton(HardCodeUtil.a(2131905053));
+        paramView.addCancelButton(2131887648);
         paramView.setOnButtonClickListener(new NearbyGuideActivity.4(this, paramView));
         paramView.show();
         return;
@@ -808,7 +808,7 @@ public class NearbyGuideActivity
         doClickReport("0X8005902");
         return;
       }
-      if (paramView.getId() == 2131378987)
+      if (paramView.getId() == 2131447698)
       {
         paramView = this.mEtNikeName;
         if (paramView != null) {
@@ -827,7 +827,7 @@ public class NearbyGuideActivity
     {
       if (TextUtils.isEmpty(this.mEtNikeName.getText().toString()))
       {
-        showToast(HardCodeUtil.a(2131707212));
+        showToast(HardCodeUtil.a(2131905044));
         return true;
       }
       onClick(this.mBtnFinish);
@@ -897,10 +897,10 @@ public class NearbyGuideActivity
   
   void showChangePhotoActionSheet()
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.addButton(HardCodeUtil.a(2131707203));
-    localActionSheet.addButton(HardCodeUtil.a(2131707214));
-    localActionSheet.addCancelButton(2131690728);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this, null);
+    localActionSheet.addButton(HardCodeUtil.a(2131905035));
+    localActionSheet.addButton(HardCodeUtil.a(2131905046));
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new NearbyGuideActivity.6(this, localActionSheet));
     localActionSheet.show();
   }
@@ -912,11 +912,11 @@ public class NearbyGuideActivity
     initTitle();
     if (this.mClaimerLayout == null)
     {
-      this.mClaimerLayout = LayoutInflater.from(this).inflate(2131561174, null);
+      this.mClaimerLayout = LayoutInflater.from(this).inflate(2131627526, null);
       if (Build.VERSION.SDK_INT >= 9) {
         this.mClaimerLayout.setOverScrollMode(2);
       }
-      this.mClaimOk = ((Button)this.mClaimerLayout.findViewById(2131371730));
+      this.mClaimOk = ((Button)this.mClaimerLayout.findViewById(2131439159));
       this.mClaimOk.setOnClickListener(this);
       doClickReport("0X8005901");
     }
@@ -985,26 +985,26 @@ public class NearbyGuideActivity
     }
     if (this.mGuideLayout == null)
     {
-      this.mGuideLayout = ((ScrollView)LayoutInflater.from(this).inflate(2131561186, null));
+      this.mGuideLayout = ((ScrollView)LayoutInflater.from(this).inflate(2131627538, null));
       if (Build.VERSION.SDK_INT >= 9) {
         this.mGuideLayout.setOverScrollMode(2);
       }
-      this.mGuideLayout.findViewById(2131378987).setOnClickListener(this);
-      this.mHeadLine = this.mGuideLayout.findViewById(2131368069);
-      this.mEditLine = this.mGuideLayout.findViewById(2131366051);
-      this.mTips = ((TextView)this.mGuideLayout.findViewById(2131380093));
-      this.mImgvAvatar = ((CustomImgView)this.mGuideLayout.findViewById(2131368718));
-      this.mEtNikeName = ((EditText)this.mGuideLayout.findViewById(2131366325));
-      this.mBtnFinish = ((Button)this.mGuideLayout.findViewById(2131363935));
-      this.mTxvImport = ((TextView)this.mGuideLayout.findViewById(2131380071));
-      this.mImgvAvatar.setBackgroundDrawable(getResources().getDrawable(2130845060));
-      this.mImgvAvatar.setImageDrawable(getResources().getDrawable(2130845589));
-      this.mImgvCamera = ((ImageView)this.mGuideLayout.findViewById(2131368722));
+      this.mGuideLayout.findViewById(2131447698).setOnClickListener(this);
+      this.mHeadLine = this.mGuideLayout.findViewById(2131434919);
+      this.mEditLine = this.mGuideLayout.findViewById(2131432327);
+      this.mTips = ((TextView)this.mGuideLayout.findViewById(2131449006));
+      this.mImgvAvatar = ((CustomImgView)this.mGuideLayout.findViewById(2131435631));
+      this.mEtNikeName = ((EditText)this.mGuideLayout.findViewById(2131432627));
+      this.mBtnFinish = ((Button)this.mGuideLayout.findViewById(2131429891));
+      this.mTxvImport = ((TextView)this.mGuideLayout.findViewById(2131448984));
+      this.mImgvAvatar.setBackgroundDrawable(getResources().getDrawable(2130846497));
+      this.mImgvAvatar.setImageDrawable(getResources().getDrawable(2130847053));
+      this.mImgvCamera = ((ImageView)this.mGuideLayout.findViewById(2131435635));
       this.mEtNikeName.setSelection(0);
       this.mEtNikeName.setVisibility(4);
       this.mEtNikeName.setOnEditorActionListener(this);
-      this.mBtnFinish.setText(2131699034);
-      this.mBtnFinish.setContentDescription(getString(2131699034));
+      this.mBtnFinish.setText(2131897043);
+      this.mBtnFinish.setContentDescription(getString(2131897043));
       updateAvatar(this.mIsUseImportAvatar ^ true, this.mAvatarPhotoPath);
       updateFinishBtnStatus();
       doClickReport("0X8005903");
@@ -1058,7 +1058,7 @@ public class NearbyGuideActivity
   
   void showPromptDialog()
   {
-    this.mPromptDialog = DialogUtil.a(this, 2131699032, getString(2131699031), 2131699029, 2131699030, new NearbyGuideActivity.9(this), new NearbyGuideActivity.10(this), false, true);
+    this.mPromptDialog = DialogUtil.a(this, 2131897041, getString(2131897040), 2131897038, 2131897039, new NearbyGuideActivity.9(this), new NearbyGuideActivity.10(this), false, true);
     if ((this.mPromptDialog != null) && (!isFinishing())) {
       this.mPromptDialog.show();
     }
@@ -1066,12 +1066,12 @@ public class NearbyGuideActivity
   
   void showToast(int paramInt, String paramString)
   {
-    QQToast.a(BaseApplication.getContext(), paramInt, paramString, 0).b(this.mTitleBarHeight);
+    QQToast.makeText(BaseApplication.getContext(), paramInt, paramString, 0).show(this.mTitleBarHeight);
   }
   
   void showToast(String paramString)
   {
-    QQToast.a(BaseApplication.getContext(), paramString, 0).b(this.mTitleBarHeight);
+    QQToast.makeText(BaseApplication.getContext(), paramString, 0).show(this.mTitleBarHeight);
   }
   
   public void updateAvatar(Drawable paramDrawable)
@@ -1079,7 +1079,7 @@ public class NearbyGuideActivity
     Object localObject = this.mImgvAvatar;
     if (localObject != null)
     {
-      localObject = ((CustomImgView)localObject).a();
+      localObject = ((CustomImgView)localObject).getDrawable();
       this.mImgvAvatar.setImageDrawable(paramDrawable);
       if ((localObject != paramDrawable) && ((localObject instanceof FaceDrawable))) {
         ((FaceDrawable)localObject).cancel();
@@ -1097,7 +1097,7 @@ public class NearbyGuideActivity
     }
     if (TextUtils.isEmpty(paramString))
     {
-      updateAvatar(getResources().getDrawable(2130845589));
+      updateAvatar(getResources().getDrawable(2130847053));
       this.mImgvCamera.setVisibility(0);
       return;
     }
@@ -1107,7 +1107,7 @@ public class NearbyGuideActivity
   void updateFinishBtnStatus()
   {
     String str1 = this.mBtnFinish.getText().toString();
-    String str2 = getString(2131699034);
+    String str2 = getString(2131897043);
     if ((str2 != null) && (str2.equals(str1)))
     {
       this.mBtnFinish.setEnabled(true);
@@ -1143,33 +1143,33 @@ public class NearbyGuideActivity
       return;
     }
     paramString = new CompressInfo(paramString, 0);
-    paramString.f = 0;
+    paramString.o = 0;
     ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(paramString);
     Object localObject;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Q.nearby_people_card..uploadPhoto(), img_path = ");
-      ((StringBuilder)localObject).append(paramString.e);
+      ((StringBuilder)localObject).append(paramString.l);
       QLog.d("Q.nearby_people_card.upload_local_photo", 2, ((StringBuilder)localObject).toString());
     }
-    if (!StringUtil.a(paramString.e))
+    if (!StringUtil.isEmpty(paramString.l))
     {
       localObject = new TransferRequest();
       ((TransferRequest)localObject).mIsUp = true;
-      ((TransferRequest)localObject).mLocalPath = paramString.e;
+      ((TransferRequest)localObject).mLocalPath = paramString.l;
       ((TransferRequest)localObject).mFileType = 8;
       ((ITransFileController)this.app.getRuntimeService(ITransFileController.class)).transferAsync((TransferRequest)localObject);
       return;
     }
     dismissProcessDialog();
-    showToast(1, HardCodeUtil.a(2131707205));
+    showToast(1, HardCodeUtil.a(2131905037));
     updateAvatar(true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.guide.NearbyGuideActivity
  * JD-Core Version:    0.7.0.1
  */

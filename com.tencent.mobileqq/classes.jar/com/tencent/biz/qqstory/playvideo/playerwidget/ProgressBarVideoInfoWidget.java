@@ -25,23 +25,23 @@ import mqq.os.MqqHandler;
 public class ProgressBarVideoInfoWidget
   extends AbsVideoInfoWidget
 {
+  public SplitedProgressBar s;
   @NonNull
-  private NewProgressControler a;
-  public SplitedProgressBar a;
+  private NewProgressControler t;
   
   public ProgressBarVideoInfoWidget(@NonNull ViewGroup paramViewGroup)
   {
     super(paramViewGroup);
   }
   
-  private int d()
+  private int h()
   {
-    int i = ScreenUtil.getInstantScreenWidth(this.jdField_a_of_type_AndroidViewView.getContext());
-    int j = ScreenUtil.getInstantScreenHeight(this.jdField_a_of_type_AndroidViewView.getContext());
-    int k = ScreenUtil.getNavigationBarHeight(this.jdField_a_of_type_AndroidViewView.getContext());
-    boolean bool = ScreenUtil.checkDeviceHasNavigationBar(this.jdField_a_of_type_AndroidViewView.getContext());
-    int m = ScreenUtil.getRealWidth(this.jdField_a_of_type_AndroidViewView.getContext());
-    int n = ScreenUtil.getRealHeight(this.jdField_a_of_type_AndroidViewView.getContext());
+    int i = ScreenUtil.getInstantScreenWidth(this.b.getContext());
+    int j = ScreenUtil.getInstantScreenHeight(this.b.getContext());
+    int k = ScreenUtil.getNavigationBarHeight(this.b.getContext());
+    boolean bool = ScreenUtil.checkDeviceHasNavigationBar(this.b.getContext());
+    int m = ScreenUtil.getRealWidth(this.b.getContext());
+    int n = ScreenUtil.getRealHeight(this.b.getContext());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("hasNavi: ");
     localStringBuilder.append(bool);
@@ -70,21 +70,16 @@ public class ProgressBarVideoInfoWidget
     return (int)Math.min(ScreenUtil.SCREEN_HIGHT - ScreenUtil.SCREEN_WIDTH / 9.0F * 16.0F, 140.0F);
   }
   
-  public String a()
-  {
-    return "ProgressBarVideoInfoWidget";
-  }
-  
   protected void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = ((SplitedProgressBar)paramView.findViewById(2131380755));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoNewProgressControler = new NewProgressControler(this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar);
-    if (LiuHaiUtils.c(b()))
+    this.s = ((SplitedProgressBar)paramView.findViewById(2131449723));
+    this.t = new NewProgressControler(this.s);
+    if (LiuHaiUtils.c(y()))
     {
-      paramView = (LinearLayout)a().jdField_a_of_type_AndroidViewView.findViewById(2131363750);
+      paramView = (LinearLayout)d().b.findViewById(2131429674);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-      localLayoutParams.height = d();
-      if (!ScreenUtil.checkDeviceHasNavigationBar(this.jdField_a_of_type_AndroidViewView.getContext())) {
+      localLayoutParams.height = h();
+      if (!ScreenUtil.checkDeviceHasNavigationBar(this.b.getContext())) {
         paramView.setBackgroundColor(Color.parseColor("#181818"));
       }
       paramView.setLayoutParams(localLayoutParams);
@@ -92,19 +87,17 @@ public class ProgressBarVideoInfoWidget
     a(new ProgressBarVideoInfoWidget.1(this));
   }
   
-  protected void a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem) {}
-  
   public void a(IVideoView paramIVideoView)
   {
     if (Looper.myLooper() != Looper.getMainLooper()) {
       ThreadManager.getUIHandler().post(new ProgressBarVideoInfoWidget.2(this, paramIVideoView));
     }
-    if (!this.d)
+    if (!this.n)
     {
-      h();
-      j();
+      w();
+      z();
     }
-    NewProgressControler localNewProgressControler = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoNewProgressControler;
+    NewProgressControler localNewProgressControler = this.t;
     if (localNewProgressControler != null) {
       localNewProgressControler.a(paramIVideoView);
     }
@@ -114,19 +107,26 @@ public class ProgressBarVideoInfoWidget
   
   protected boolean a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
   {
-    return (paramStoryPlayerVideoData.a == null) || (paramStoryPlayerVideoData.a.a != 13);
+    return (paramStoryPlayerVideoData.a == null) || (paramStoryPlayerVideoData.a.b != 13);
   }
   
-  protected int b()
+  protected void b(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem) {}
+  
+  protected void q() {}
+  
+  public void r()
   {
-    return 2131561811;
+    this.t.b();
   }
   
-  protected void f() {}
-  
-  public void g()
+  protected int s()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoNewProgressControler.b();
+    return 2131628190;
+  }
+  
+  public String t()
+  {
+    return "ProgressBarVideoInfoWidget";
   }
 }
 

@@ -19,30 +19,29 @@ public class GetShareVideoListResponse
   extends BaseResponse
 {
   public String a;
-  public List<StoryVideoItem> a;
-  public boolean a;
-  public List<List<VideoUrlEntry>> b = new ArrayList();
-  public String c;
+  public String b;
+  public boolean e;
+  public List<StoryVideoItem> f = new ArrayList();
+  public List<List<VideoUrlEntry>> g = new ArrayList();
   
   public GetShareVideoListResponse(String paramString, qqstory_service.RspGetShareVideoList paramRspGetShareVideoList)
   {
     super(paramRspGetShareVideoList.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     int i = paramRspGetShareVideoList.is_end.get();
     boolean bool = true;
     if (i != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.c = paramRspGetShareVideoList.next_cookie.get().toStringUtf8();
+    this.e = bool;
+    this.b = paramRspGetShareVideoList.next_cookie.get().toStringUtf8();
     paramString = paramRspGetShareVideoList.full_video_info_list.get().iterator();
     while (paramString.hasNext())
     {
       Object localObject1 = (qqstory_struct.StoryVideoFullInfo)paramString.next();
       paramRspGetShareVideoList = new StoryVideoItem();
       paramRspGetShareVideoList.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject1);
-      this.jdField_a_of_type_JavaUtilList.add(paramRspGetShareVideoList);
+      this.f.add(paramRspGetShareVideoList);
       Object localObject2 = ((qqstory_struct.StoryVideoFullInfo)localObject1).compressed_video.get();
       if (localObject2 != null)
       {
@@ -57,7 +56,7 @@ public class GetShareVideoListResponse
           localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
           ((List)localObject1).add(localVideoUrlEntry);
         }
-        this.b.add(localObject1);
+        this.g.add(localObject1);
       }
     }
   }
@@ -66,21 +65,21 @@ public class GetShareVideoListResponse
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetShareVideoListResponse{unionId=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("isEnd=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", nextCookie='");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", videoItems=");
-    localStringBuilder.append(StoryVideoItem.dump(this.jdField_a_of_type_JavaUtilList));
+    localStringBuilder.append(StoryVideoItem.dump(this.f));
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetShareVideoListResponse
  * JD-Core Version:    0.7.0.1
  */

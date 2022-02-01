@@ -25,22 +25,22 @@ public class DetailCommentSegment$OnChildViewClickListener
       switch (paramView.getId())
       {
       default: 
-      case 2131370353: 
-        if (DetailCommentSegment.a(this.a) != null)
+      case 2131437615: 
+        if (DetailCommentSegment.b(this.a) != null)
         {
-          DetailCommentSegment.a(this.a).I_();
+          DetailCommentSegment.b(this.a).bo_();
           return;
         }
         break;
-      case 2131364943: 
-        if (DetailCommentSegment.a(this.a) != null)
+      case 2131431068: 
+        if (DetailCommentSegment.b(this.a) != null)
         {
-          DetailCommentSegment.a(this.a).a(paramObject, paramInt);
+          DetailCommentSegment.b(this.a).a(paramObject, paramInt);
           return;
         }
         break;
-      case 2131363135: 
-      case 2131371862: 
+      case 2131428988: 
+      case 2131439303: 
         if (paramObject.authorRole != 1002)
         {
           if (paramObject.authorRole == 1003) {
@@ -62,18 +62,18 @@ public class DetailCommentSegment$OnChildViewClickListener
       }
       paramObject = (CommentEntry)this.a.a.a(DetailCommentSegment.a(this.a)).get(paramInt);
       int i = paramView.getId();
-      if (i != 2131364943)
+      if (i != 2131431068)
       {
-        if (i != 2131370353) {
+        if (i != 2131437615) {
           return;
         }
-        if (DetailCommentSegment.a(this.a) != null) {
-          DetailCommentSegment.a(this.a).I_();
+        if (DetailCommentSegment.b(this.a) != null) {
+          DetailCommentSegment.b(this.a).bo_();
         }
       }
-      else if (DetailCommentSegment.a(this.a) != null)
+      else if (DetailCommentSegment.b(this.a) != null)
       {
-        DetailCommentSegment.a(this.a).b(paramObject, paramInt);
+        DetailCommentSegment.b(this.a).b(paramObject, paramInt);
       }
     }
   }

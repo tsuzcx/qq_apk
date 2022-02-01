@@ -31,8 +31,8 @@ class FileManagerEngine$MyRecv
     try
     {
       this.a.a.getFileManagerRSCenter().a(true);
-      this.a.a.getFileManagerEngine().a().b();
-      this.a.a.getFileManagerEngine().a().b();
+      this.a.a.getFileManagerEngine().j().b();
+      this.a.a.getFileManagerEngine().l().b();
     }
     catch (Exception paramIntent)
     {
@@ -47,7 +47,7 @@ class FileManagerEngine$MyRecv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileManagerEngine.MyRecv
  * JD-Core Version:    0.7.0.1
  */

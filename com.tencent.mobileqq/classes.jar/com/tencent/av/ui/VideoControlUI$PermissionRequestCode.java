@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-abstract interface VideoControlUI$PermissionRequestCode {}
+public abstract interface VideoControlUI$PermissionRequestCode {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

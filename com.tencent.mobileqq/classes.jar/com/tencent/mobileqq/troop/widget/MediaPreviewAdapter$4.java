@@ -9,13 +9,13 @@ class MediaPreviewAdapter$4
   
   public void run()
   {
-    this.this$0.a(this.a.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.this$0.a);
+    this.this$0.a(this.a.c);
+    this.a.b.setImageDrawable(this.this$0.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.4
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ public class VipRequestMessageRoamPassword
 {
   protected int doStep()
   {
-    this.mAutomator.a.getMsgHandler().p();
+    this.mAutomator.k.getMsgHandler().z();
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.VipRequestMessageRoamPassword
  * JD-Core Version:    0.7.0.1
  */

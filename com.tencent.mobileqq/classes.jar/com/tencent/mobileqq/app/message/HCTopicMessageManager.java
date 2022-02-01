@@ -44,7 +44,7 @@ public class HCTopicMessageManager
   protected String a(String paramString1, String paramString2)
   {
     if (this.a.getCurrentAccountUin().equals(paramString1)) {
-      paramString2 = HardCodeUtil.a(2131705535);
+      paramString2 = HardCodeUtil.a(2131903422);
     } else {
       paramString2 = ContactUtils.b((QQAppInterface)this.a, paramString2, paramString1);
     }
@@ -56,7 +56,7 @@ public class HCTopicMessageManager
     }
     else
     {
-      str = ((QQAppInterface)this.a).getHotChatMng(true).a(true).a(paramString1);
+      str = ((QQAppInterface)this.a).getHotChatMng(true).b(true).a(paramString1);
     }
     if (str == null) {
       return paramString1;
@@ -69,19 +69,19 @@ public class HCTopicMessageManager
     if (paramMessageRecord == null) {
       return;
     }
-    Map localMap2 = paramAddMessageContext.jdField_a_of_type_JavaUtilMap;
+    Map localMap2 = paramAddMessageContext.a;
     Map localMap1 = paramAddMessageContext.d;
-    Object localObject1 = paramAddMessageContext.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy;
+    Object localObject1 = paramAddMessageContext.k;
     String str = paramMessageRecord.frienduin;
     long l = paramMessageRecord.time;
     if (paramMessageRecord.time == 0L) {
-      paramMessageRecord.time = MessageCache.a();
+      paramMessageRecord.time = MessageCache.c();
     }
     if (paramMessageRecord.msgseq == 0L) {
       paramMessageRecord.msgseq = ((int)paramMessageRecord.time);
     }
     boolean bool3 = true;
-    Object localObject2 = ((RecentUserProxy)localObject1).a(str, 1);
+    Object localObject2 = ((RecentUserProxy)localObject1).b(str, 1);
     localObject1 = localObject2;
     if (localMap2.containsKey(UinTypeUtil.a(((RecentUser)localObject2).uin, ((RecentUser)localObject2).getType()))) {
       localObject1 = (RecentUser)localMap2.get(UinTypeUtil.a(((RecentUser)localObject2).uin, ((RecentUser)localObject2).getType()));
@@ -91,7 +91,7 @@ public class HCTopicMessageManager
     if (paramMessageRecord.isLongMsg())
     {
       bool1 = bool2;
-      if (((MessageCache)this.a.getMsgCache()).a(paramMessageRecord))
+      if (((MessageCache)this.a.getMsgCache()).b(paramMessageRecord))
       {
         if (QLog.isColorLevel()) {
           QLog.i("Q.msg.BaseMessageManager", 2, "addMessageRecord, long msg uncompleted");
@@ -105,7 +105,7 @@ public class HCTopicMessageManager
       ((RecentUser)localObject1).uin = str;
       ((RecentUser)localObject1).setType(1);
       if ((paramMessageRecord instanceof MessageForUniteGrayTip)) {
-        bool3 = ((MessageForUniteGrayTip)paramMessageRecord).tipParam.d;
+        bool3 = ((MessageForUniteGrayTip)paramMessageRecord).tipParam.l;
       }
       if ((l > ((RecentUser)localObject1).lastmsgtime) && (bool3)) {
         ((RecentUser)localObject1).lastmsgtime = l;
@@ -161,7 +161,7 @@ public class HCTopicMessageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.HCTopicMessageManager
  * JD-Core Version:    0.7.0.1
  */

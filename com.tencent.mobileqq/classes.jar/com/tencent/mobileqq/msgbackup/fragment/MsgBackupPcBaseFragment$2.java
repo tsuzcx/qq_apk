@@ -16,35 +16,35 @@ class MsgBackupPcBaseFragment$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MsgBackupUtil.a("MsgBackup_MsgBackupPcBaseFragment", "showStopMigrateDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.f) });
-    MsgBackupManager.a().a().c();
-    MsgBackupManager.a().a().a(null);
-    if (this.a.jdField_a_of_type_Boolean)
+    MsgBackupUtil.a("MsgBackup_MsgBackupPcBaseFragment", "showStopMigrateDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.ab)), Boolean.valueOf(this.a.ac) });
+    MsgBackupManager.a().d().m();
+    MsgBackupManager.a().d().a(null);
+    if (this.a.T)
     {
-      if ((!this.a.f) && (this.a.b == 1))
+      if ((!this.a.ac) && (this.a.K == 1))
       {
         paramDialogInterface = this.a;
         paramDialogInterface.a(paramDialogInterface.getActivity());
       }
       else
       {
-        this.a.n();
+        this.a.v();
       }
-      if (!this.a.g) {
-        if (this.a.b == 1)
+      if (!this.a.ad) {
+        if (this.a.K == 1)
         {
-          if (this.a.f) {
+          if (this.a.ac) {
             MsgBackupReporter.a("0X800A267", 2);
           }
         }
-        else if (this.a.b == 2) {
+        else if (this.a.K == 2) {
           MsgBackupReporter.a("0X800A289", 1);
         }
       }
     }
     else
     {
-      if (this.a.f)
+      if (this.a.ac)
       {
         if (this.a.getActivity() != null)
         {
@@ -57,18 +57,18 @@ class MsgBackupPcBaseFragment$2
         paramDialogInterface = this.a;
         paramDialogInterface.a(paramDialogInterface.getActivity());
       }
-      if ((!this.a.g) && (this.a.b == 1) && (this.a.f)) {
+      if ((!this.a.ad) && (this.a.K == 1) && (this.a.ac)) {
         MsgBackupReporter.a("0X800A267", 1);
       }
     }
-    if (this.a.g) {
-      if (this.a.b == 1)
+    if (this.a.ad) {
+      if (this.a.K == 1)
       {
-        if (this.a.f) {
+        if (this.a.ac) {
           MsgBackupReporter.a("0X800A267", 3);
         }
       }
-      else if (this.a.b == 2) {
+      else if (this.a.K == 2) {
         MsgBackupReporter.a("0X800A289", 2);
       }
     }
@@ -76,7 +76,7 @@ class MsgBackupPcBaseFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,6 +13,8 @@ public class ResultRecord
   public static final Parcelable.Creator<ResultRecord> CREATOR = new ResultRecord.1();
   public String gameLevelIcon;
   public String groupUin;
+  public String guildAvatarUrl;
+  public String guildId;
   public boolean isNewTroop;
   public long lastChooseTime;
   public String name;
@@ -39,6 +41,8 @@ public class ResultRecord
     }
     this.isNewTroop = bool;
     this.gameLevelIcon = paramParcel.readString();
+    this.guildId = paramParcel.readString();
+    this.guildAvatarUrl = paramParcel.readString();
   }
   
   public ResultRecord(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, long paramLong, boolean paramBoolean, String paramString5)
@@ -52,6 +56,20 @@ public class ResultRecord
     this.lastChooseTime = paramLong;
     this.isNewTroop = paramBoolean;
     this.gameLevelIcon = paramString5;
+  }
+  
+  public ResultRecord(String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    this.uin = paramString1;
+    this.name = paramString2;
+    this.uinType = paramInt;
+    this.guildId = paramString3;
+    this.groupUin = "";
+    this.phone = "";
+    this.lastChooseTime = 0L;
+    this.isNewTroop = false;
+    this.gameLevelIcon = "";
+    this.guildAvatarUrl = "";
   }
   
   public ResultRecord(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
@@ -72,6 +90,8 @@ public class ResultRecord
       localResultRecord.uinType = paramResultRecord.uinType;
       localResultRecord.isNewTroop = paramResultRecord.isNewTroop;
       localResultRecord.gameLevelIcon = paramResultRecord.gameLevelIcon;
+      localResultRecord.guildId = paramResultRecord.guildId;
+      localResultRecord.guildAvatarUrl = paramResultRecord.guildAvatarUrl;
       return localResultRecord;
     }
     return null;
@@ -114,6 +134,20 @@ public class ResultRecord
     this.gameLevelIcon = "";
   }
   
+  public void init(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
+  {
+    this.uin = paramString1;
+    this.name = paramString4;
+    this.uinType = paramInt;
+    this.guildId = paramString2;
+    this.guildAvatarUrl = paramString3;
+    this.groupUin = "";
+    this.phone = "";
+    this.lastChooseTime = 0L;
+    this.isNewTroop = false;
+    this.gameLevelIcon = "";
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -127,6 +161,10 @@ public class ResultRecord
     localStringBuilder.append(this.groupUin);
     localStringBuilder.append(", uinType:");
     localStringBuilder.append(this.uinType);
+    localStringBuilder.append(", guildId:");
+    localStringBuilder.append(this.guildId);
+    localStringBuilder.append(", guildAvatarUrl");
+    localStringBuilder.append(this.guildAvatarUrl);
     localStringBuilder.append(", phone:");
     localStringBuilder.append(this.phone);
     localStringBuilder.append("]");
@@ -140,7 +178,7 @@ public class ResultRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.ResultRecord
  * JD-Core Version:    0.7.0.1
  */

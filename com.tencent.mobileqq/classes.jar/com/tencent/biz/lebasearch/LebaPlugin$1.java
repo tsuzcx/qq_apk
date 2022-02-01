@@ -31,7 +31,7 @@ class LebaPlugin$1
         String str3 = paramObject.getString("msg");
         long l = paramObject.getLong("uiResId");
         paramObject = this.a;
-        paramObject.a = str2;
+        paramObject.d = str2;
         LebaPlugin.a(paramObject, 1, l, str1, str3);
         return;
       }
@@ -75,18 +75,18 @@ class LebaPlugin$1
         localJSONException1.printStackTrace();
       }
       paramObject.put("userOption", 0);
-      if (!TextUtils.isEmpty(this.a.a))
+      if (!TextUtils.isEmpty(this.a.d))
       {
         LebaPlugin localLebaPlugin = this.a;
-        localLebaPlugin.callJs(localLebaPlugin.a, new String[] { paramObject.toString() });
-        this.a.a = null;
+        localLebaPlugin.callJs(localLebaPlugin.d, new String[] { paramObject.toString() });
+        this.a.d = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,20 +6,20 @@ import java.lang.ref.WeakReference;
 public class HypeLinkAvTipsItem
   extends NormalAvTipsItem
 {
-  WeakReference<View.OnClickListener> a = null;
-  int f = 0;
   int g = 0;
-  int h = -1;
+  int h = 0;
   int i = -1;
   int j = -1;
+  int k = -1;
+  WeakReference<View.OnClickListener> l = null;
   
   public HypeLinkAvTipsItem(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, int paramInt6, View.OnClickListener paramOnClickListener)
   {
     super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
-    this.f = paramInt5;
-    this.g = paramInt6;
+    this.g = paramInt5;
+    this.h = paramInt6;
     if (paramOnClickListener != null) {
-      this.a = new WeakReference(paramOnClickListener);
+      this.l = new WeakReference(paramOnClickListener);
     }
   }
   
@@ -28,48 +28,48 @@ public class HypeLinkAvTipsItem
     return 3;
   }
   
-  public View.OnClickListener a()
-  {
-    WeakReference localWeakReference = this.a;
-    if ((localWeakReference != null) && (!localWeakReference.isEnqueued())) {
-      return (View.OnClickListener)this.a.get();
-    }
-    return null;
-  }
-  
   public void a(View.OnClickListener paramOnClickListener)
   {
     if (paramOnClickListener != null)
     {
-      this.a = new WeakReference(paramOnClickListener);
+      this.l = new WeakReference(paramOnClickListener);
       return;
     }
-    this.a = null;
-  }
-  
-  public int f()
-  {
-    return this.f;
-  }
-  
-  public int g()
-  {
-    return this.g;
+    this.l = null;
   }
   
   public int h()
   {
-    return this.h;
+    return this.g;
   }
   
   public int i()
   {
+    return this.h;
+  }
+  
+  public View.OnClickListener j()
+  {
+    WeakReference localWeakReference = this.l;
+    if ((localWeakReference != null) && (!localWeakReference.isEnqueued())) {
+      return (View.OnClickListener)this.l.get();
+    }
+    return null;
+  }
+  
+  public int k()
+  {
     return this.i;
   }
   
-  public int j()
+  public int l()
   {
     return this.j;
+  }
+  
+  public int m()
+  {
+    return this.k;
   }
 }
 

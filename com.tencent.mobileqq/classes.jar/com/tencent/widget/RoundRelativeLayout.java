@@ -17,9 +17,9 @@ import com.tencent.qphone.base.util.QLog;
 public class RoundRelativeLayout
   extends RelativeLayout
 {
-  private float jdField_a_of_type_Float = 16.0F;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private float a = 16.0F;
+  private Path b;
+  private RectF c;
   
   public RoundRelativeLayout(Context paramContext)
   {
@@ -35,47 +35,47 @@ public class RoundRelativeLayout
   
   private void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsPath;
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    float f = this.jdField_a_of_type_Float;
+    Object localObject = this.b;
+    RectF localRectF = this.c;
+    float f = this.a;
     ((Path)localObject).addRoundRect(localRectF, f, f, Path.Direction.CW);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("roundLayoutRadius ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Float);
+    ((StringBuilder)localObject).append(this.a);
     QLog.i("RoundRelativeLayout", 2, ((StringBuilder)localObject).toString());
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Float = ((IUIToolsTempApi)QRoute.api(IUIToolsTempApi.class)).dp2px(getContext(), paramInt);
+    this.a = ((IUIToolsTempApi)QRoute.api(IUIToolsTempApi.class)).dp2px(getContext(), paramInt);
     setWillNotDraw(false);
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.b = new Path();
+    this.c = new RectF();
   }
   
   public void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_a_of_type_Float = ((IUIToolsTempApi)QRoute.api(IUIToolsTempApi.class)).dp2px(getContext(), 16.0F);
+    this.a = ((IUIToolsTempApi)QRoute.api(IUIToolsTempApi.class)).dp2px(getContext(), 16.0F);
     setWillNotDraw(false);
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.round_rect_corner_image);
       if (paramContext != null)
       {
-        this.jdField_a_of_type_Float = paramContext.getDimensionPixelSize(0, 0);
+        this.a = paramContext.getDimensionPixelSize(0, 0);
         paramContext.recycle();
       }
     }
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.b = new Path();
+    this.c = new RectF();
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_Float > 0.0F) && (this.jdField_a_of_type_AndroidGraphicsPath != null))
+    if ((this.a > 0.0F) && (this.b != null))
     {
       paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      paramCanvas.clipPath(this.b);
     }
     super.draw(paramCanvas);
   }
@@ -83,7 +83,7 @@ public class RoundRelativeLayout
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    RectF localRectF = this.c;
     if (localRectF == null) {
       return;
     }
@@ -93,14 +93,14 @@ public class RoundRelativeLayout
   
   public void setRoundLayoutRadius(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.a = paramFloat;
     a();
     postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.RoundRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

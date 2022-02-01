@@ -7,26 +7,39 @@ import org.json.JSONObject;
 public class PayResponse
   extends BaseResponse
 {
-  public String c;
-  public String d;
-  public String e;
-  public String f;
   public String g;
   public String h;
   public String i;
   public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
   
-  public String a()
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    paramBundle.putString("_mqqpay_payresp_paychanneltype", this.g);
+    paramBundle.putString("_mqqpay_payresp_transactionid", this.h);
+    paramBundle.putString("_mqqpay_payresp_paytime", this.i);
+    paramBundle.putString("_mqqpay_payresp_totalfee", this.j);
+    paramBundle.putString("_mqqpay_payresp_callbackurl", this.k);
+    paramBundle.putString("_mqqpay_payresp_spdata", this.l);
+    paramBundle.putString("_mqqpay_payapi_serialnumber", this.m);
+    paramBundle.putString("_mqqpay_payapi_openid", this.n);
+  }
+  
+  public String b()
   {
     try
     {
       Object localObject = new JSONObject();
       JSONObject localJSONObject1 = new JSONObject();
       localJSONObject1.put("name", "pay");
-      localJSONObject1.put("identifier", this.i);
+      localJSONObject1.put("identifier", this.m);
       JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("code", this.jdField_c_of_type_Int);
-      localJSONObject2.put("message", this.a);
+      localJSONObject2.put("code", this.c);
+      localJSONObject2.put("message", this.d);
       ((JSONObject)localObject).put("action", localJSONObject1);
       ((JSONObject)localObject).put("params", localJSONObject2);
       localObject = ((JSONObject)localObject).toString();
@@ -38,23 +51,10 @@ public class PayResponse
     }
     return "";
   }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    paramBundle.putString("_mqqpay_payresp_paychanneltype", this.jdField_c_of_type_JavaLangString);
-    paramBundle.putString("_mqqpay_payresp_transactionid", this.d);
-    paramBundle.putString("_mqqpay_payresp_paytime", this.e);
-    paramBundle.putString("_mqqpay_payresp_totalfee", this.f);
-    paramBundle.putString("_mqqpay_payresp_callbackurl", this.g);
-    paramBundle.putString("_mqqpay_payresp_spdata", this.h);
-    paramBundle.putString("_mqqpay_payapi_serialnumber", this.i);
-    paramBundle.putString("_mqqpay_payapi_openid", this.j);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.open.openpay.PayResponse
  * JD-Core Version:    0.7.0.1
  */

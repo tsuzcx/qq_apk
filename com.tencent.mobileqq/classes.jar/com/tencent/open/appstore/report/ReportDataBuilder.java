@@ -5,7 +5,6 @@ import com.tencent.open.adapter.CommonDataAdapter;
 
 public class ReportDataBuilder
 {
-  protected int a;
   protected String a;
   protected String b;
   protected String c;
@@ -13,17 +12,13 @@ public class ReportDataBuilder
   protected String e;
   protected String f;
   protected String g;
-  protected String h;
+  protected int h;
   protected String i;
   protected String j;
   protected String k;
   protected String l;
   protected String m;
-  
-  public static ReportDataBuilder a()
-  {
-    return new ReportDataBuilder();
-  }
+  protected String n;
   
   private static String a(String paramString)
   {
@@ -33,77 +28,32 @@ public class ReportDataBuilder
     return paramString.replace("|", "");
   }
   
+  public static ReportDataBuilder c()
+  {
+    return new ReportDataBuilder();
+  }
+  
   public final ReportDataBuilder a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.h = paramInt;
     return this;
   }
   
-  public final ReportDataBuilder a(String paramString)
+  public final ReportDataBuilder b(String paramString)
   {
     this.f = paramString;
     return this;
   }
   
-  public String a()
+  public String b()
   {
     return "";
   }
   
-  public final ReportDataBuilder b(String paramString)
+  public final ReportDataBuilder c(String paramString)
   {
     this.g = paramString;
     return this;
-  }
-  
-  public final String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(this.jdField_a_of_type_JavaLangString));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.b));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.c));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.d));
-    localStringBuilder.append("|");
-    localStringBuilder.append(CommonDataAdapter.a().a());
-    localStringBuilder.append("|");
-    localStringBuilder.append(CommonDataAdapter.a().c());
-    localStringBuilder.append("|");
-    localStringBuilder.append(System.currentTimeMillis());
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.e));
-    return localStringBuilder.toString();
-  }
-  
-  public final ReportDataBuilder c(String paramString)
-  {
-    this.h = paramString;
-    return this;
-  }
-  
-  public final String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(this.f));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.g));
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.h));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.i));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.j));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.k));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.l));
-    localStringBuilder.append("|");
-    localStringBuilder.append(a(this.m));
-    return localStringBuilder.toString();
   }
   
   public final ReportDataBuilder d(String paramString)
@@ -115,6 +65,62 @@ public class ReportDataBuilder
   public final String d()
   {
     StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(this.a));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.b));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.c));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.d));
+    localStringBuilder.append("|");
+    localStringBuilder.append(CommonDataAdapter.a().c());
+    localStringBuilder.append("|");
+    localStringBuilder.append(CommonDataAdapter.a().g());
+    localStringBuilder.append("|");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.e));
+    return localStringBuilder.toString();
+  }
+  
+  public final ReportDataBuilder e(String paramString)
+  {
+    this.j = paramString;
+    return this;
+  }
+  
+  public final String e()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(this.f));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.g));
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.i));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.j));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.k));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.l));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.m));
+    localStringBuilder.append("|");
+    localStringBuilder.append(a(this.n));
+    return localStringBuilder.toString();
+  }
+  
+  public final ReportDataBuilder f(String paramString)
+  {
+    this.k = paramString;
+    return this;
+  }
+  
+  public final String f()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" ");
     localStringBuilder.append("|");
     localStringBuilder.append(" ");
@@ -133,18 +139,6 @@ public class ReportDataBuilder
     localStringBuilder.append("|");
     localStringBuilder.append(" ");
     return localStringBuilder.toString();
-  }
-  
-  public final ReportDataBuilder e(String paramString)
-  {
-    this.j = paramString;
-    return this;
-  }
-  
-  public final ReportDataBuilder f(String paramString)
-  {
-    this.k = paramString;
-    return this;
   }
   
   public final ReportDataBuilder g(String paramString)
@@ -161,29 +155,35 @@ public class ReportDataBuilder
   
   public final ReportDataBuilder i(String paramString)
   {
-    this.e = paramString;
+    this.n = paramString;
     return this;
   }
   
   public final ReportDataBuilder j(String paramString)
   {
-    this.b = paramString;
+    this.e = paramString;
     return this;
   }
   
   public final ReportDataBuilder k(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
   public final ReportDataBuilder l(String paramString)
   {
-    this.c = paramString;
+    this.a = paramString;
     return this;
   }
   
   public final ReportDataBuilder m(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public final ReportDataBuilder n(String paramString)
   {
     this.d = paramString;
     return this;
@@ -191,7 +191,7 @@ public class ReportDataBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.report.ReportDataBuilder
  * JD-Core Version:    0.7.0.1
  */

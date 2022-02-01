@@ -23,7 +23,7 @@ final class QQFileManagerUtilImpl$16
   
   public void run()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.a)) {
       return;
     }
     try
@@ -35,14 +35,14 @@ final class QQFileManagerUtilImpl$16
       localInterruptedException.printStackTrace();
     }
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject1).append(this.b.getCurrentAccountUin());
     ((StringBuilder)localObject1).append("BatProcessTips");
     localObject1 = ((StringBuilder)localObject1).toString();
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getApplication().getSharedPreferences((String)localObject1, 0);
+    SharedPreferences localSharedPreferences = this.b.getApplication().getSharedPreferences((String)localObject1, 0);
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(this.a);
     ((StringBuilder)localObject1).append("_");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append(this.c);
     ((StringBuilder)localObject1).append("_LastShowTime");
     String str = ((StringBuilder)localObject1).toString();
     long l1 = localSharedPreferences.getLong(str, 0L);
@@ -59,10 +59,10 @@ final class QQFileManagerUtilImpl$16
       }
       return;
     }
-    Object localObject2 = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getMsgList(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    Object localObject2 = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getMsgList(this.b, this.a, this.c);
     if ((localObject2 != null) && (((List)localObject2).size() != 0))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin();
+      localObject1 = this.b.getCurrentAccountUin();
       int i = ((List)localObject2).size() - 1;
       label468:
       label472:
@@ -87,7 +87,7 @@ final class QQFileManagerUtilImpl$16
         if (j >= 4)
         {
           localObject1 = (MessageRecord)((List)localObject2).get(((List)localObject2).size() - 1);
-          i = QQFileManagerUtilImpl.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (MessageForFile)localObject1).nFileType;
+          i = QQFileManagerUtilImpl.a(this.b, (MessageForFile)localObject1).nFileType;
           if (i != 0)
           {
             if (i != 9)
@@ -107,7 +107,7 @@ final class QQFileManagerUtilImpl$16
           localObject1 = "0";
           localObject2 = new HashMap();
           ((HashMap)localObject2).put("bat_process_tips_last_file_type", localObject1);
-          ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).insertAIOGrayTips(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, -3013, (Map)localObject2, BaseApplication.getContext().getString(2131692550), -1L, -1L, -1L);
+          ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).insertAIOGrayTips(this.b, this.a, this.d, this.c, -3013, (Map)localObject2, BaseApplication.getContext().getString(2131889573), -1L, -1L, -1L);
           localSharedPreferences.edit().putLong(str, l2);
           if (QLog.isColorLevel())
           {
@@ -115,7 +115,7 @@ final class QQFileManagerUtilImpl$16
             ((StringBuilder)localObject1).append("lastShowTime[");
             ((StringBuilder)localObject1).append(l1);
             ((StringBuilder)localObject1).append("],[");
-            ((StringBuilder)localObject1).append(QQFileManagerUtilImpl.e(this.jdField_a_of_type_JavaLangString));
+            ((StringBuilder)localObject1).append(QQFileManagerUtilImpl.t(this.a));
             ((StringBuilder)localObject1).append("]add new grayTips!");
             QLog.i("updateBatProcessTips<FileAssistant>", 4, ((StringBuilder)localObject1).toString());
           }
@@ -153,7 +153,7 @@ final class QQFileManagerUtilImpl$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl.16
  * JD-Core Version:    0.7.0.1
  */

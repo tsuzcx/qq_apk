@@ -32,13 +32,13 @@ public class AsyncListView
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.a.a();
+    this.a.f();
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
     super.setAdapter(this.a.a(paramListAdapter));
-    this.a.b();
+    this.a.h();
   }
   
   public void setItemManager(ItemManager paramItemManager)
@@ -72,7 +72,7 @@ public class AsyncListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.AsyncListView
  * JD-Core Version:    0.7.0.1
  */

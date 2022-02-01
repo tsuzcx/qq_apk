@@ -15,13 +15,13 @@ import cooperation.qzone.util.QZLog;
 
 public class BaseTranslucentController
 {
-  private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new BaseTranslucentController.1(this);
-  protected Handler a;
   protected QQBrowserActivity a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new BaseTranslucentController.2(this);
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private volatile boolean b = false;
+  protected Handler b;
+  private long c;
+  private volatile boolean d = false;
+  private volatile boolean e = false;
+  private BroadcastReceiver f = new BaseTranslucentController.1(this);
+  private Runnable g = new BaseTranslucentController.2(this);
   
   public BaseTranslucentController(QQBrowserActivity paramQQBrowserActivity)
   {
@@ -29,20 +29,20 @@ public class BaseTranslucentController
     localStringBuilder.append("current controller = ");
     localStringBuilder.append(getClass().getName());
     QZLog.i("BaseTranslucentControll", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.a = paramQQBrowserActivity;
+    this.b = new Handler(Looper.getMainLooper());
   }
   
-  private void f()
+  private void h()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
     try
     {
       QZLog.i("BaseTranslucentControll", "registerBroadcast");
       IntentFilter localIntentFilter = new IntentFilter();
-      String[] arrayOfString = a();
+      String[] arrayOfString = g();
       if (arrayOfString != null)
       {
         int j = arrayOfString.length;
@@ -53,12 +53,12 @@ public class BaseTranslucentController
           i += 1;
         }
       }
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.d;
       if (!bool) {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-          this.jdField_a_of_type_Boolean = true;
+          this.a.registerReceiver(this.f, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+          this.d = true;
           return;
         }
         catch (Exception localException1)
@@ -75,22 +75,22 @@ public class BaseTranslucentController
     }
   }
   
-  private void g()
+  private void i()
   {
     try
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.d)
       {
         QZLog.i("BaseTranslucentControll", "removeBroadcast");
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+          this.a.unregisterReceiver(this.f);
         }
         catch (Exception localException1)
         {
           QZLog.e("BaseTranslucentControll", "unregisterReceiver error ", localException1);
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.d = false;
         return;
       }
     }
@@ -102,10 +102,10 @@ public class BaseTranslucentController
   
   public void a()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.c = System.currentTimeMillis();
     a(false);
-    f();
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 6100L);
+    h();
+    this.b.postDelayed(this.g, 6100L);
   }
   
   public void a(Intent paramIntent) {}
@@ -113,10 +113,10 @@ public class BaseTranslucentController
   protected void a(View paramView)
   {
     int i;
-    if (!this.b)
+    if (!this.e)
     {
       i = 1;
-      this.b = true;
+      this.e = true;
       QZLog.i("BaseTranslucentControll", "setAlpha(1)");
       if (paramView != null) {
         paramView.setAlpha(1.0F);
@@ -126,16 +126,16 @@ public class BaseTranslucentController
     {
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getCurrentWebViewFragment() != null)
+        if (this.a.getCurrentWebViewFragment() != null)
         {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getCurrentWebViewFragment().getWebView();
+          paramView = this.a.getCurrentWebViewFragment().getWebView();
           if (paramView != null)
           {
-            Object localObject = paramView.getTag(2131375865);
+            Object localObject = paramView.getTag(2131444056);
             if ((localObject == null) || (!((Boolean)localObject).booleanValue())) {
               break label132;
             }
-            paramView.setTag(2131375862, Boolean.TRUE);
+            paramView.setTag(2131444053, Boolean.TRUE);
             if (i != 0)
             {
               QZLog.i("BaseTranslucentControll", "tiantai jsReady true,notify webview.");
@@ -159,16 +159,16 @@ public class BaseTranslucentController
   
   protected void a(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131365183);
+    View localView = this.a.findViewById(2131431345);
     if (localView == null) {
       return;
     }
     if (!paramBoolean)
     {
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 6000L)
+      if (System.currentTimeMillis() - this.c < 6000L)
       {
         localView.setAlpha(0.0F);
-        this.b = false;
+        this.e = false;
         QZLog.i("BaseTranslucentControll", "setAlpha(0)");
         return;
       }
@@ -180,34 +180,34 @@ public class BaseTranslucentController
     a(localView);
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String[] a()
-  {
-    return null;
-  }
-  
   public void b() {}
   
   public void c() {}
   
   public void d()
   {
-    g();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    i();
+    this.b.removeCallbacks(this.g);
   }
   
   public void e()
   {
     a(true);
   }
+  
+  public boolean f()
+  {
+    return true;
+  }
+  
+  public String[] g()
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.webview.controller.BaseTranslucentController
  * JD-Core Version:    0.7.0.1
  */

@@ -74,20 +74,20 @@ import org.json.JSONObject;
 public class ThemeHandler
   extends BusinessHandler
 {
-  private static String jdField_a_of_type_JavaLangString;
-  public Bundle a;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public ThemeDiyStyleLogic.StyleCallBack a;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static String f;
+  AtomicBoolean a = new AtomicBoolean(false);
   public AtomicBoolean b = new AtomicBoolean(true);
   AtomicBoolean c = new AtomicBoolean(false);
+  public ThemeDiyStyleLogic.StyleCallBack d;
+  public Bundle e;
+  private QQAppInterface g;
+  private AppInterface h;
   
   ThemeHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQQAppInterface;
+    this.g = paramQQAppInterface;
+    this.h = paramQQAppInterface;
   }
   
   private int a(ToServiceMsg paramToServiceMsg, int paramInt)
@@ -100,7 +100,7 @@ public class ThemeHandler
       i = localReqBody.uint32_sub_cmd.get();
     }
     if (1 == i) {
-      ThemeUtil.getUinThemePreferences(this.jdField_a_of_type_ComTencentCommonAppAppInterface).edit().putLong("authTime", 0L).commit();
+      ThemeUtil.getUinThemePreferences(this.h).edit().putLong("authTime", 0L).commit();
     }
     return i;
   }
@@ -187,14 +187,14 @@ public class ThemeHandler
       paramString.append((String)localObject1);
       QLog.d("Theme.ThemeHandler", 2, paramString.toString());
     }
-    VasWebviewUtil.b(paramBaseActivity, VasWebviewUtil.a((String)localObject1, 54), 32L, localIntent, true, -1);
+    VasWebviewUtil.b(paramBaseActivity, VasWebviewUtil.b((String)localObject1, 54), 32L, localIntent, true, -1);
   }
   
   private void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, ThemeAuth.DiyThemeDetail paramDiyThemeDetail)
   {
-    MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
-    Object localObject1 = ThemeBackground.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), 0);
-    if ((paramInt1 == 2) && (!ChatBackgroundUtil.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), null).equals("null"))) {
+    MobileQQ localMobileQQ = this.h.getApplication();
+    Object localObject1 = ThemeBackground.a(localMobileQQ, this.h.getAccount(), 0);
+    if ((paramInt1 == 2) && (!ChatBackgroundUtil.a(localMobileQQ, this.h.getAccount(), null).equals("null"))) {
       return;
     }
     if (android.text.TextUtils.isEmpty(paramString1)) {
@@ -281,7 +281,7 @@ public class ThemeHandler
       ((StringBuilder)localObject3).append("");
       ((StringBuilder)localObject3).append(paramInt2);
       localObject3 = ChatBackgroundUtil.a(true, ((StringBuilder)localObject3).toString());
-      Object localObject4 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
+      Object localObject4 = this.h.getAccount();
       Object localObject5 = new StringBuilder();
       ((StringBuilder)localObject5).append("");
       ((StringBuilder)localObject5).append(paramInt2);
@@ -293,14 +293,14 @@ public class ThemeHandler
         int j = paramInt2;
         ((StringBuilder)localObject4).append(j);
         localObject4 = ChatBackgroundUtil.a(true, ((StringBuilder)localObject4).toString());
-        localObject5 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
+        localObject5 = this.h.getAccount();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
         localStringBuilder.append(j);
         ThemeBackground.a(localMobileQQ, paramString2, (String)localObject5, (String)localObject4, paramString1, localStringBuilder.toString(), (String)localObject1, i, (String)localObject2, true);
       }
       if (paramInt1 == 2) {
-        ChatBackgroundUtil.a(localMobileQQ, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, (String)localObject3);
+        ChatBackgroundUtil.a(localMobileQQ, this.g.getAccount(), null, (String)localObject3);
       }
     }
     if (("100".equals(String.valueOf(paramInt2))) || ("0".equals(String.valueOf(paramInt2))))
@@ -310,7 +310,7 @@ public class ThemeHandler
       } else {
         paramInt1 = 1;
       }
-      ThemeBackground.a(localMobileQQ, paramString3, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), "", "", "", "", paramInt1, null, true);
+      ThemeBackground.a(localMobileQQ, paramString3, this.h.getAccount(), "", "", "", "", paramInt1, null, true);
     }
   }
   
@@ -325,7 +325,7 @@ public class ThemeHandler
     } else {
       bool1 = false;
     }
-    paramSubCmd0x1RspAuth = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramSubCmd0x1RspAuth = this.g;
     boolean bool2;
     if (k == 1) {
       bool2 = true;
@@ -342,18 +342,18 @@ public class ThemeHandler
     i = 3;
     if ((3 == paramInt) && (!"1000".equals(paramString1)))
     {
-      ThemeUtil.setErrorThemeId(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramString1, false);
-      ThemeUtil.getUserCurrentThemeVersion(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      bool1 = SkinEngine.getInstances().setSkinRootPath(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), null);
+      ThemeUtil.setErrorThemeId(this.h.getApplication(), paramString1, false);
+      ThemeUtil.getUserCurrentThemeVersion(this.h);
+      bool1 = SkinEngine.getInstances().setSkinRootPath(this.h.getApplication(), null);
       QLog.e("Theme.ThemeHandler", 1, "handleThemeAuth Error, set default theme");
       if (bool1 == true) {
         ThreadManager.getUIHandler().post(new ThemeHandler.1(this));
       }
-      paramString2 = ThemeUtil.getThemeInfo(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramString1);
+      paramString2 = ThemeUtil.getThemeInfo(this.h.getApplication(), paramString1);
       if (paramString2 != null)
       {
         paramString2.status = "1";
-        ThemeUtil.setThemeInfo(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramString2);
+        ThemeUtil.setThemeInfo(this.h.getApplication(), paramString2);
         if (QLog.isColorLevel())
         {
           paramString2 = new StringBuilder();
@@ -364,7 +364,7 @@ public class ThemeHandler
       }
       try
       {
-        paramString1 = new ThemeLocator().a(paramString1).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication());
+        paramString1 = new ThemeLocator().a(paramString1).a(this.h.getApplication());
         FileUtils.delete(paramString1, true);
         paramString2 = new StringBuilder();
         paramString2.append("handleThemeAuth no right, delete: ");
@@ -382,9 +382,9 @@ public class ThemeHandler
       }
     }
     if (paramInt != 4) {
-      ThemeUtil.setWeekLoopTheme(this.jdField_a_of_type_ComTencentCommonAppAppInterface, null, null, 0L);
+      ThemeUtil.setWeekLoopTheme(this.h, null, null, 0L);
     }
-    boolean bool1 = SkinEngine.getInstances().setSkinRootPath(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), null);
+    boolean bool1 = SkinEngine.getInstances().setSkinRootPath(this.h.getApplication(), null);
     QLog.e("Theme.ThemeHandler", 1, "handleThemeAuth vip Error, set default theme");
     if ((paramInt != 1) && (paramInt != 2))
     {
@@ -405,7 +405,7 @@ public class ThemeHandler
       ReportController.b(null, "CliOper", "", "", "theme", "0X8007234", 0, 0, String.valueOf(i), "", "", "");
     }
     if (android.text.TextUtils.isEmpty(paramString2)) {
-      paramString2 = HardCodeUtil.a(2131714718);
+      paramString2 = HardCodeUtil.a(2131912224);
     }
     if (bool1)
     {
@@ -423,20 +423,20 @@ public class ThemeHandler
         BannerManager.a().a(ThemeOverdueBannerProcessor.a, 2, paramSubCmd0x1RspAuth);
       }
     }
-    if (ThemeBackground.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), "theme_bg_aio_path", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()))
+    if (ThemeBackground.a(this.h.getApplication(), "theme_bg_aio_path", this.h.getAccount()))
     {
-      ChatBackgroundUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, "null");
-      ThemeBackground.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), "theme_bg_aio_path", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      ChatBackgroundUtil.a(this.h.getApplication(), this.g.getAccount(), null, "null");
+      ThemeBackground.b(this.h.getApplication(), "theme_bg_aio_path", this.g.getAccount());
     }
-    ThemeBackground.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), "theme_bg_setting_path_png", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    ThemeBackground.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), "theme_bg_message_path_png", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    ThemeBackground.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), "theme_bg_friend_path_png", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    ThemeBackground.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), "theme_bg_dynamic_path_png", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    ThemeBackground.b(this.h.getApplication(), "theme_bg_setting_path_png", this.g.getAccount());
+    ThemeBackground.b(this.h.getApplication(), "theme_bg_message_path_png", this.g.getAccount());
+    ThemeBackground.b(this.h.getApplication(), "theme_bg_friend_path_png", this.g.getAccount());
+    ThemeBackground.b(this.h.getApplication(), "theme_bg_dynamic_path_png", this.g.getAccount());
   }
   
   private void a(Bundle paramBundle)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    Object localObject1 = this.h;
     if (localObject1 == null)
     {
       QLog.e("Theme.ThemeHandler", 1, "sendThemeAuth mApp == null");
@@ -455,7 +455,7 @@ public class ThemeHandler
         ((ThemeAuth.SubCmd0x1ReqAuth)localObject1).uint32_theme_id.set(Integer.parseInt(str2));
         ((ThemeAuth.SubCmd0x1ReqAuth)localObject1).str_theme_version.set("20000000");
         ((ThemeAuth.SubCmd0x1ReqAuth)localObject1).str_theme_density_type.set(ThemeUtil.getThemeDensity(BaseApplication.getContext()));
-        SharedPreferences localSharedPreferences = ThemeUtil.getUinThemePreferences(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        SharedPreferences localSharedPreferences = ThemeUtil.getUinThemePreferences(this.h);
         String str3 = localSharedPreferences.getString("currentThemeId_6.3.5", null);
         long l1 = localSharedPreferences.getLong("themeSetTimeKey", 0L);
         localObject2 = new StringBuilder();
@@ -468,7 +468,7 @@ public class ThemeHandler
         ((StringBuilder)localObject2).append(",currentThemeResPath=");
         ((StringBuilder)localObject2).append(str1);
         ((StringBuilder)localObject2).append(", usr=");
-        ((StringBuilder)localObject2).append(com.tencent.mobileqq.text.TextUtils.hideUinInShowString(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), 2));
+        ((StringBuilder)localObject2).append(com.tencent.mobileqq.text.TextUtils.hideUinInShowString(this.h.getAccount(), 2));
         ((StringBuilder)localObject2).append(", oldTime=");
         ((StringBuilder)localObject2).append(l1);
         QLog.d("Theme.ThemeHandler", 1, ((StringBuilder)localObject2).toString());
@@ -518,7 +518,7 @@ public class ThemeHandler
         try
         {
           long l2 = System.currentTimeMillis();
-          if ((l2 <= l1 + 7200000L) && (!StudyModeManager.a()))
+          if ((l2 <= l1 + 7200000L) && (!StudyModeManager.h()))
           {
             if (QLog.isColorLevel()) {
               QLog.d("Theme.ThemeHandler", 2, "sendThemeAuth nowTime <= authTime + 2h");
@@ -530,11 +530,11 @@ public class ThemeHandler
           localObject2 = new ThemeAuth.ReqBody();
           ((ThemeAuth.ReqBody)localObject2).uint32_sub_cmd.set(1);
           ((ThemeAuth.ReqBody)localObject2).int32_plat_id.set(109);
-          ((ThemeAuth.ReqBody)localObject2).str_qq_version.set("8.7.0.5295");
-          ((ThemeAuth.ReqBody)localObject2).uint32_qq_version.set(Integer.parseInt("5295"));
+          ((ThemeAuth.ReqBody)localObject2).str_qq_version.set("8.8.17.5770");
+          ((ThemeAuth.ReqBody)localObject2).uint32_qq_version.set(Integer.parseInt("5770"));
           ((ThemeAuth.ReqBody)localObject2).msg_subcmd0x1_req_auth.set((MessageMicro)localObject1);
           ((ThemeAuth.ReqBody)localObject2).setHasFlag(true);
-          localObject1 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "AuthSvr.ThemeAuth");
+          localObject1 = new ToServiceMsg("mobileqq.service", this.h.getCurrentAccountUin(), "AuthSvr.ThemeAuth");
           ((ToServiceMsg)localObject1).putWupBuffer(((ThemeAuth.ReqBody)localObject2).toByteArray());
           ((ToServiceMsg)localObject1).extraData.putAll(paramBundle);
           if (QLog.isColorLevel())
@@ -609,10 +609,10 @@ public class ThemeHandler
       paramRspBody.append(i);
       QLog.i("Theme.ThemeHandler", 2, paramRspBody.toString());
     }
-    paramRspBody = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
+    paramRspBody = this.h.getAccount();
     if (!android.text.TextUtils.isEmpty(paramRspBody))
     {
-      paramRspBody = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getSharedPreferences(paramRspBody, 0);
+      paramRspBody = this.h.getApplication().getSharedPreferences(paramRspBody, 0);
       if (i == 6) {
         paramRspBody.edit().putBoolean("need_check_theme_ver", true).commit();
       }
@@ -623,16 +623,16 @@ public class ThemeHandler
     if (i == 0)
     {
       paramRspBody = Message.obtain();
-      paramRspBody.obj = jdField_a_of_type_JavaLangString;
+      paramRspBody.obj = f;
       BannerManager.a().a(ThemeVersionUpdateBannerProcessor.a, 2, paramRspBody);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B9E", "0X8005B9E", 0, 0, "", "", "", "");
+      ReportController.b(this.g, "CliOper", "", "", "0X8005B9E", "0X8005B9E", 0, 0, "", "", "", "");
       ThreadManagerV2.getUIHandlerV2().postDelayed(new ThemeHandler.3(this), 90000L);
     }
   }
   
   private boolean a(ToServiceMsg paramToServiceMsg, ThemeAuth.RspBody paramRspBody, boolean paramBoolean)
   {
-    Object localObject = HardCodeUtil.a(2131714721);
+    Object localObject = HardCodeUtil.a(2131912227);
     int j = 4;
     int i;
     if (paramBoolean)
@@ -659,14 +659,14 @@ public class ThemeHandler
       ((StringBuilder)localObject).append(paramToServiceMsg);
       QLog.d("Theme.ThemeHandler", 1, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyStyleLogic$StyleCallBack != null)
+    if (this.d != null)
     {
-      localObject = this.jdField_a_of_type_AndroidOsBundle;
+      localObject = this.e;
       if (localObject != null)
       {
         ((Bundle)localObject).putString("message", paramRspBody);
-        this.jdField_a_of_type_AndroidOsBundle.putInt("result_int", i);
-        if ((!android.text.TextUtils.isEmpty(paramToServiceMsg)) && (paramToServiceMsg.equals(this.jdField_a_of_type_AndroidOsBundle.getString("themeId"))))
+        this.e.putInt("result_int", i);
+        if ((!android.text.TextUtils.isEmpty(paramToServiceMsg)) && (paramToServiceMsg.equals(this.e.getString("themeId"))))
         {
           if (QLog.isColorLevel())
           {
@@ -677,15 +677,15 @@ public class ThemeHandler
             paramRspBody.append(i);
             QLog.d("Theme.ThemeHandler", 2, paramRspBody.toString());
           }
-          paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyStyleLogic$StyleCallBack;
+          paramToServiceMsg = this.d;
           if (i == 0) {
             i = j;
           } else {
             i = 8;
           }
-          paramToServiceMsg.a(16, i, this.jdField_a_of_type_AndroidOsBundle, null);
-          this.jdField_a_of_type_AndroidOsBundle = null;
-          this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyStyleLogic$StyleCallBack = null;
+          paramToServiceMsg.a(16, i, this.e, null);
+          this.e = null;
+          this.d = null;
           this.c.set(true);
         }
         else
@@ -694,7 +694,7 @@ public class ThemeHandler
           paramRspBody.append("handleThemeAuth Set result:themeId has changed themeId=");
           paramRspBody.append(paramToServiceMsg);
           paramRspBody.append(", rbThemeid=");
-          paramRspBody.append(this.jdField_a_of_type_AndroidOsBundle.getString("themeId"));
+          paramRspBody.append(this.e.getString("themeId"));
           QLog.e("Theme.ThemeHandler", 1, paramRspBody.toString());
         }
         return false;
@@ -704,8 +704,8 @@ public class ThemeHandler
     paramToServiceMsg.append("handleThemeAuth Set result:null == service || null == reqbundle, result:");
     paramToServiceMsg.append(i);
     QLog.e("Theme.ThemeHandler", 1, paramToServiceMsg.toString());
-    this.jdField_a_of_type_AndroidOsBundle = null;
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyStyleLogic$StyleCallBack = null;
+    this.e = null;
+    this.d = null;
     return true;
   }
   
@@ -746,7 +746,7 @@ public class ThemeHandler
     } else {
       bool1 = false;
     }
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramString1 = this.g;
     boolean bool2;
     if (k == 1) {
       bool2 = true;
@@ -792,11 +792,11 @@ public class ThemeHandler
       paramToServiceMsg.append("clear weekTheme because seriesId=");
       paramToServiceMsg.append(n);
       QLog.e("Theme.ThemeHandler", 1, paramToServiceMsg.toString());
-      ThemeUtil.setWeekLoopTheme(this.jdField_a_of_type_ComTencentCommonAppAppInterface, null, null, 0L);
+      ThemeUtil.setWeekLoopTheme(this.h, null, null, 0L);
     }
     if (n > 0)
     {
-      paramToServiceMsg = ThemeUtil.getWeekLoopTheme(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramToServiceMsg = ThemeUtil.getWeekLoopTheme(this.g);
       if (!android.text.TextUtils.isEmpty(paramToServiceMsg))
       {
         b(paramToServiceMsg, "203");
@@ -832,7 +832,7 @@ public class ThemeHandler
         return;
       }
       if (!ThemeUtil.isFixTheme(paramString1)) {
-        ThemeSwitchUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, "20000000");
+        ThemeSwitchUtil.a(this.g, paramString1, "20000000");
       }
     }
     else
@@ -843,7 +843,7 @@ public class ThemeHandler
   
   public void a()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    Object localObject1 = this.h;
     if (localObject1 == null)
     {
       QLog.e("Theme.ThemeHandler", 1, "sendThemeAuth mApp == null");
@@ -910,7 +910,7 @@ public class ThemeHandler
       ((StringBuilder)localObject2).append(", skVersion:");
       ((StringBuilder)localObject2).append(((Bundle)localObject4).getString("version"));
       ((StringBuilder)localObject2).append(", qqVersion:");
-      ((StringBuilder)localObject2).append("8.7.0");
+      ((StringBuilder)localObject2).append("8.8.17");
       QLog.d("Theme.ThemeHandler", 1, ((StringBuilder)localObject2).toString());
       localObject3 = ((Bundle)localObject4).getString("themeId");
       localObject2 = localObject3;
@@ -919,9 +919,9 @@ public class ThemeHandler
         ((Bundle)localObject4).putString("themeId", "1000");
         localObject2 = "1000";
       }
-      if (QQTheme.c((String)localObject2))
+      if (QQTheme.isThemeSimpleUI((String)localObject2))
       {
-        localObject3 = ThemeSwitchUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getString("themeID");
+        localObject3 = ThemeSwitchUtil.a(this.g).getString("themeID");
         localObject5 = new StringBuilder();
         ((StringBuilder)localObject5).append("sendThemeAuth isThemeSimpleUI:");
         ((StringBuilder)localObject5).append((String)localObject2);
@@ -940,12 +940,12 @@ public class ThemeHandler
         }
         else if ("999".equals(localObject3))
         {
-          ((Bundle)localObject4).putString("themePath", new ThemeLocator().a().d());
+          ((Bundle)localObject4).putString("themePath", new ThemeLocator().a().g());
         }
         else
         {
           localObject2 = new ThemeLocator().a((String)localObject3);
-          ((IVasQuickUpdateService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).queryItemVersion(3, ((ThemeLocator)localObject2).b(), true, false, 0L, new ThemeHandler.5(this, (ThemeLocator)localObject2, localMobileQQ, (Bundle)localObject4));
+          ((IVasQuickUpdateService)this.g.getRuntimeService(IVasQuickUpdateService.class, "")).queryItemVersion(3, ((ThemeLocator)localObject2).e(), true, false, 0L, new ThemeHandler.5(this, (ThemeLocator)localObject2, localMobileQQ, (Bundle)localObject4));
           return;
         }
       }
@@ -956,8 +956,8 @@ public class ThemeHandler
   
   public void a(String paramString1, String paramString2)
   {
-    boolean bool1 = ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null);
-    boolean bool2 = SimpleUIUtil.a();
+    boolean bool1 = ThemeUtil.isNowThemeIsNight(this.g, false, null);
+    boolean bool2 = SimpleUIUtil.e();
     if (!bool2) {
       if (bool1) {
         ThemeSwitcher.a("1103", paramString2, null);
@@ -976,7 +976,7 @@ public class ThemeHandler
     localStringBuilder.append(paramString2);
     QLog.e("Theme.ThemeHandler", 1, localStringBuilder.toString());
     if (!ThemeUtil.isFixTheme(paramString1)) {
-      ThemeSwitchUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, "20000000");
+      ThemeSwitchUtil.a(this.g, paramString1, "20000000");
     }
   }
   
@@ -999,8 +999,8 @@ public class ThemeHandler
       try
       {
         paramBundle.putString("themeId", paramString1);
-        this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyStyleLogic$StyleCallBack = paramStyleCallBack;
-        this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+        this.d = paramStyleCallBack;
+        this.e = paramBundle;
         paramString2 = new ThemeAuth.SubCmd0x3ReqSet();
         paramString2.uint32_theme_id.set(Integer.parseInt(paramString1));
         boolean bool = android.text.TextUtils.isEmpty(paramString3);
@@ -1039,11 +1039,11 @@ public class ThemeHandler
         paramString1 = new ThemeAuth.ReqBody();
         paramString1.uint32_sub_cmd.set(3);
         paramString1.int32_plat_id.set(109);
-        paramString1.str_qq_version.set("8.7.0.5295");
-        paramString1.uint32_qq_version.set(Integer.parseInt("5295"));
+        paramString1.str_qq_version.set("8.8.17.5770");
+        paramString1.uint32_qq_version.set(Integer.parseInt("5770"));
         paramString1.msg_subcmd0x3_req_set.set(paramString2);
         paramString1.setHasFlag(true);
-        paramString2 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "AuthSvr.ThemeAuth");
+        paramString2 = new ToServiceMsg("mobileqq.service", this.h.getCurrentAccountUin(), "AuthSvr.ThemeAuth");
         paramString2.putWupBuffer(paramString1.toByteArray());
         super.sendPbReq(paramString2);
         if (QLog.isColorLevel())
@@ -1071,13 +1071,13 @@ public class ThemeHandler
   {
     if (!paramBoolean)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.a.set(true);
       return;
     }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+    if (!this.a.get()) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.a.set(false);
     String str;
     if (!android.text.TextUtils.isEmpty(paramString1))
     {
@@ -1095,7 +1095,7 @@ public class ThemeHandler
       if (android.text.TextUtils.isEmpty(str)) {
         return;
       }
-      jdField_a_of_type_JavaLangString = paramString1;
+      f = paramString1;
     }
     for (;;)
     {
@@ -1103,7 +1103,7 @@ public class ThemeHandler
       try
       {
         i = Integer.parseInt(str) % 10000;
-        paramString2 = ThemeUtil.getThemeDensity(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp());
+        paramString2 = ThemeUtil.getThemeDensity(this.h.getApp());
         if ("m".equals(paramString2))
         {
           i -= 1000;
@@ -1128,11 +1128,11 @@ public class ThemeHandler
         paramString1 = new ThemeAuth.ReqBody();
         paramString1.uint32_sub_cmd.set(2);
         paramString1.int32_plat_id.set(109);
-        paramString1.str_qq_version.set("8.7.0.5295");
-        paramString1.uint32_qq_version.set(Integer.parseInt("5295"));
+        paramString1.str_qq_version.set("8.8.17.5770");
+        paramString1.uint32_qq_version.set(Integer.parseInt("5770"));
         paramString1.msg_subcmd0x2_req_check.set(paramString2);
         paramString1.setHasFlag(true);
-        paramString2 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "AuthSvr.ThemeAuth");
+        paramString2 = new ToServiceMsg("mobileqq.service", this.h.getCurrentAccountUin(), "AuthSvr.ThemeAuth");
         paramString2.putWupBuffer(paramString1.toByteArray());
         super.sendPbReq(paramString2);
         if (QLog.isColorLevel())
@@ -1230,7 +1230,7 @@ public class ThemeHandler
             paramFromServiceMsg.append(", reqVersion:");
             paramFromServiceMsg.append(str2);
             QLog.e("Theme.ThemeHandler", 1, paramFromServiceMsg.toString());
-            VasMonitorHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_theme_auth_fail", String.valueOf(i), String.valueOf(i), null, 0.0F);
+            VasMonitorHandler.a(this.g, "individual_v2_theme_auth_fail", String.valueOf(i), String.valueOf(i), null, 0.0F);
             paramFromServiceMsg = new HashMap();
             paramFromServiceMsg.put("authResult", String.valueOf(i));
             StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "individual_v2_theme_auth_fail", false, 0L, -1L, paramFromServiceMsg, "", true);
@@ -1242,7 +1242,7 @@ public class ThemeHandler
             paramFromServiceMsg.append(i);
             QLog.i("Theme.ThemeHandler", 2, paramFromServiceMsg.toString());
           }
-          ThemeReporter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "theme_detail", "204", 157, NetworkUtil.getSystemNetwork(null), 0 - i, str1, str2, "1", "");
+          ThemeReporter.a(this.g, "theme_detail", "204", 157, NetworkUtil.getSystemNetwork(null), 0 - i, str1, str2, "1", "");
           Object localObject2;
           try
           {
@@ -1252,8 +1252,8 @@ public class ThemeHandler
             {
               paramFromServiceMsg.put("param_themeVersion", str2);
               paramFromServiceMsg.put("param_FailCode", String.valueOf(i));
-              localObject2 = StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication());
-              String str3 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
+              localObject2 = StatisticCollector.getInstance(this.h.getApplication());
+              String str3 = this.h.getAccount();
               if (i != 0) {
                 break label999;
               }
@@ -1269,8 +1269,8 @@ public class ThemeHandler
           QLog.e("Theme.ThemeHandler", 1, ((StringBuilder)localObject2).toString());
           if ((i >= 1) && (i != 5) && (i != 14) && (i <= 20))
           {
-            ThemeUtil.getUinThemePreferences(this.jdField_a_of_type_ComTencentCommonAppAppInterface).edit().putInt("themeAuthResult", i).commit();
-            ThemeUtil.setCurrentThemeIdVersion(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "1000", "0");
+            ThemeUtil.getUinThemePreferences(this.h).edit().putInt("themeAuthResult", i).commit();
+            ThemeUtil.setCurrentThemeIdVersion(this.h, "1000", "0");
             paramToServiceMsg = ((ThemeAuth.RspBody)localObject1).msg_subcmd0x1_rsp_auth.str_err_msg.get();
             paramFromServiceMsg = new StringBuilder();
             paramFromServiceMsg.append("handleThemeAuth Error, authResult=");
@@ -1338,7 +1338,7 @@ public class ThemeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThemeHandler
  * JD-Core Version:    0.7.0.1
  */

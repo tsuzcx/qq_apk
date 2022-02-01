@@ -22,12 +22,17 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qcircle.tavcut.TAVCut;
+import com.tencent.qcircle.tavcut.player.MoviePlayer;
+import com.tencent.qcircle.tavcut.session.TAVCutVideoSession;
+import com.tencent.qcircle.tavcut.session.config.SessionConfig;
+import com.tencent.qcircle.tavcut.view.TAVCutVideoView;
+import com.tencent.qcircle.weseevideo.model.MediaModel;
+import com.tencent.qcircle.weseevideo.model.effect.MediaEffectModel;
+import com.tencent.qcircle.weseevideo.model.resource.MediaClipModel;
+import com.tencent.qcircle.weseevideo.model.resource.MediaResourceModel;
+import com.tencent.qcircle.weseevideo.model.resource.VideoResourceModel;
 import com.tencent.tav.core.composition.VideoComposition.RenderLayoutMode;
-import com.tencent.tavcut.TAVCut;
-import com.tencent.tavcut.player.MoviePlayer;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.tavcut.session.config.SessionConfig;
-import com.tencent.tavcut.view.TAVCutVideoView;
 import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
 import com.tencent.ttpic.openapi.initializer.ImageAlgoInitializer;
 import com.tencent.ttpic.openapi.initializer.LightSdkInitializer;
@@ -36,11 +41,6 @@ import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
 import com.tencent.ttpic.openapi.initializer.YTCommonInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.effect.MediaEffectModel;
-import com.tencent.weseevideo.model.resource.MediaClipModel;
-import com.tencent.weseevideo.model.resource.MediaResourceModel;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +53,7 @@ public abstract class AbsAEPublishVideoProcessFragment
   protected String missionId;
   protected TAVCutVideoSession tavCutVideoSession;
   protected TAVCutVideoView tavCutVideoView;
-  private VideoParamStrategy videoParam = ParamFactory.a();
+  private VideoParamStrategy videoParam = ParamFactory.b();
   
   private String getMissionId()
   {
@@ -66,7 +66,7 @@ public abstract class AbsAEPublishVideoProcessFragment
       str1 = "";
     }
     String str2 = str1;
-    if (StringUtil.a(str1))
+    if (StringUtil.isEmpty(str1))
     {
       str2 = str1;
       if (localBundle != null)
@@ -83,8 +83,8 @@ public abstract class AbsAEPublishVideoProcessFragment
   private void initTavCutAndPlayer()
   {
     Log.d("AbsAEPublishVideoProces", "initTavCutAndPlayer: 开始初始化tavcutsession、moviePlayer");
-    MediaModel localMediaModel = AEEditorProcessManager.a().a(this.missionId);
-    if ((!StringUtil.a(this.missionId)) && (!isMediaModelBroken(localMediaModel)))
+    MediaModel localMediaModel = AEEditorProcessManager.a().b(this.missionId);
+    if ((!StringUtil.isEmpty(this.missionId)) && (!isMediaModelBroken(localMediaModel)))
     {
       localObject = ((MediaClipModel)localMediaModel.getMediaResourceModel().getVideos().get(0)).getResource();
       this.mMoviePlayer = new MoviePlayer();
@@ -119,7 +119,7 @@ public abstract class AbsAEPublishVideoProcessFragment
     ((StringBuilder)localObject).append("missionId异常！合成model损坏：");
     ((StringBuilder)localObject).append(isMediaModelBroken(localMediaModel));
     Log.e("AbsAEPublishVideoProces", ((StringBuilder)localObject).toString());
-    QQToast.a(getBaseActivity(), "视频合成信息异常", 0).a();
+    QQToast.makeText(getBaseActivity(), "视频合成信息异常", 0).show();
   }
   
   private boolean isMediaModelBroken(MediaModel paramMediaModel)
@@ -193,7 +193,7 @@ public abstract class AbsAEPublishVideoProcessFragment
       str1 = "";
     }
     String str2 = str1;
-    if (StringUtil.a(str1))
+    if (StringUtil.isEmpty(str1))
     {
       str2 = str1;
       if (localBundle != null)
@@ -234,7 +234,7 @@ public abstract class AbsAEPublishVideoProcessFragment
   
   protected int getPlayerBackColor()
   {
-    return getResources().getColor(2063925309);
+    return getResources().getColor(2063794237);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -273,7 +273,7 @@ public abstract class AbsAEPublishVideoProcessFragment
     FeatureManager.Features.PTU_ALGO.init();
     FeatureManager.Features.LIGHT_SDK.init();
     FeatureManager.Features.IMAGE_ALGO.init();
-    TAVCut.initTAVCut(getBaseActivity(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), AEResUtil.g(), new AbsAEPublishVideoProcessFragment.1(this));
+    TAVCut.initTAVCut(getBaseActivity(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), AEResUtil.n(), new AbsAEPublishVideoProcessFragment.1(this));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -303,11 +303,11 @@ public abstract class AbsAEPublishVideoProcessFragment
       {
         if (this.mLoadingDialog == null)
         {
-          this.mLoadingDialog = new Dialog(getBaseActivity(), 2131756189);
+          this.mLoadingDialog = new Dialog(getBaseActivity(), 2131953338);
           this.mLoadingDialog.setCancelable(false);
           this.mLoadingDialog.setCanceledOnTouchOutside(false);
-          this.mLoadingDialog.setContentView(2131559561);
-          ((TextView)this.mLoadingDialog.findViewById(2131372646)).setText("正在保存封面...");
+          this.mLoadingDialog.setContentView(2131625585);
+          ((TextView)this.mLoadingDialog.findViewById(2131440191)).setText("正在保存封面...");
         }
         this.mLoadingDialog.show();
         return;
@@ -321,7 +321,7 @@ public abstract class AbsAEPublishVideoProcessFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AbsAEPublishVideoProcessFragment
  * JD-Core Version:    0.7.0.1
  */

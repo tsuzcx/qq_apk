@@ -20,7 +20,7 @@ class ImgPreviewAdapter$1
     if (localObject != null)
     {
       if (((EmoticonFromGroupEntity)localObject).msg != null) {
-        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), ((EmoticonFromGroupEntity)localObject).msg, paramView);
+        ImgPreviewAdapter.c(this.a).a(ImgPreviewAdapter.b(this.a), ((EmoticonFromGroupEntity)localObject).msg, paramView);
       } else {
         QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
       }
@@ -33,7 +33,7 @@ class ImgPreviewAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter.1
  * JD-Core Version:    0.7.0.1
  */

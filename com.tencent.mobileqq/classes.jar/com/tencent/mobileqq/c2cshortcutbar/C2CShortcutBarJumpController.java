@@ -39,7 +39,7 @@ public class C2CShortcutBarJumpController
   
   private static void a(Activity paramActivity, AIOShortcutBarContext paramAIOShortcutBarContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, C2CShortcutAppInfo paramC2CShortcutAppInfo)
   {
-    if ((!TextUtils.isEmpty(paramC2CShortcutAppInfo.jdField_d_of_type_JavaLangString)) && (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramC2CShortcutAppInfo.jdField_d_of_type_JavaLangString)))
+    if ((!TextUtils.isEmpty(paramC2CShortcutAppInfo.e)) && (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramC2CShortcutAppInfo.e)))
     {
       int i;
       if (paramAIOShortcutBarContext.a() == 5) {
@@ -52,31 +52,31 @@ public class C2CShortcutBarJumpController
       } else {
         i = 4016;
       }
-      paramAIOShortcutBarContext = new EntryModel(0, Long.valueOf(paramSessionInfo.jdField_a_of_type_JavaLangString).longValue(), ContactUtils.c(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString), false);
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramActivity, a(paramC2CShortcutAppInfo.jdField_d_of_type_JavaLangString, paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramC2CShortcutAppInfo.jdField_a_of_type_JavaLangString), i, paramAIOShortcutBarContext, null);
+      paramAIOShortcutBarContext = new EntryModel(0, Long.valueOf(paramSessionInfo.b).longValue(), ContactUtils.c(paramQQAppInterface, paramSessionInfo.b), false);
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramActivity, a(paramC2CShortcutAppInfo.e, paramQQAppInterface, paramSessionInfo.b, paramC2CShortcutAppInfo.a), i, paramAIOShortcutBarContext, null);
     }
   }
   
   private static void a(Activity paramActivity, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, C2CShortcutAppInfo paramC2CShortcutAppInfo)
   {
-    if (String.valueOf(101761547).equals(paramC2CShortcutAppInfo.jdField_a_of_type_JavaLangString))
+    if (String.valueOf(101761547).equals(paramC2CShortcutAppInfo.a))
     {
-      ListenTogetherUtils.b(paramQQAppInterface, paramActivity, 2, paramSessionInfo.jdField_a_of_type_JavaLangString, 0);
+      ListenTogetherUtils.b(paramQQAppInterface, paramActivity, 2, paramSessionInfo.b, 0);
       return;
     }
-    if (String.valueOf(101817424).equals(paramC2CShortcutAppInfo.jdField_a_of_type_JavaLangString))
+    if (String.valueOf(101817424).equals(paramC2CShortcutAppInfo.a))
     {
-      a(paramQQAppInterface, paramActivity, paramSessionInfo.jdField_a_of_type_JavaLangString);
+      a(paramQQAppInterface, paramActivity, paramSessionInfo.b);
       return;
     }
-    if (String.valueOf(101872203).equals(paramC2CShortcutAppInfo.jdField_a_of_type_JavaLangString))
+    if (String.valueOf(101872203).equals(paramC2CShortcutAppInfo.a))
     {
-      if (AvGameEntranceUtils.a((BaseActivity)paramActivity, paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+      if (AvGameEntranceUtils.a((BaseActivity)paramActivity, paramSessionInfo.b)) {
         return;
       }
       paramQQAppInterface = (IAvGameManager)paramQQAppInterface.getRuntimeService(IAvGameManager.class, "");
       if (paramQQAppInterface != null) {
-        paramQQAppInterface.createAvGameRoom(paramActivity, 2, paramSessionInfo.jdField_a_of_type_JavaLangString, 0);
+        paramQQAppInterface.createAvGameRoom(paramActivity, 2, paramSessionInfo.b, 0);
       }
     }
   }
@@ -84,7 +84,7 @@ public class C2CShortcutBarJumpController
   private static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
   {
     paramQQAppInterface = (TogetherControlManager)paramQQAppInterface.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER);
-    boolean bool = paramQQAppInterface.a(4, -1, paramString);
+    boolean bool = paramQQAppInterface.b(4, -1, paramString);
     Bundle localBundle = TogetherUtils.a(bool, 3);
     if (bool)
     {
@@ -97,8 +97,8 @@ public class C2CShortcutBarJumpController
   private boolean a(Activity paramActivity, AIOShortcutBarContext paramAIOShortcutBarContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     a();
-    List localList = C2CShortcutBarManager.a(paramQQAppInterface).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
-    String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    List localList = C2CShortcutBarManager.a(paramQQAppInterface).b(paramSessionInfo.b);
+    String str = paramSessionInfo.b;
     C2CShortcutBarJumpController.1 local1 = new C2CShortcutBarJumpController.1(this, paramActivity, paramAIOShortcutBarContext, paramQQAppInterface, paramSessionInfo);
     boolean bool;
     if (paramAIOShortcutBarContext.a() == 5) {
@@ -108,26 +108,37 @@ public class C2CShortcutBarJumpController
     }
     this.a = new C2CShortcutBarStoreController(paramActivity, paramQQAppInterface, str, localList, local1, bool);
     this.a.a();
-    ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800B32B", "0X800B32B", C2CShortcutBarManager.a(paramQQAppInterface).a(paramSessionInfo.jdField_a_of_type_JavaLangString), 0, "", "", "", "");
+    ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800B32B", "0X800B32B", C2CShortcutBarManager.a(paramQQAppInterface).a(paramSessionInfo.b), 0, "", "", "", "");
     return true;
   }
   
-  private boolean a(Activity paramActivity, AIOShortcutBarContext paramAIOShortcutBarContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, C2CShortcutAppInfo paramC2CShortcutAppInfo)
+  private static void b(Activity paramActivity, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, C2CShortcutAppInfo paramC2CShortcutAppInfo)
   {
-    if (paramC2CShortcutAppInfo.jdField_a_of_type_Boolean)
+    if ((!TextUtils.isEmpty(paramC2CShortcutAppInfo.e)) && (paramC2CShortcutAppInfo.e.startsWith("mqqapi")))
+    {
+      paramC2CShortcutAppInfo.e = a(paramC2CShortcutAppInfo.e, paramQQAppInterface, paramSessionInfo.b, paramC2CShortcutAppInfo.a);
+      paramQQAppInterface = new Intent(paramActivity, JumpActivity.class);
+      paramQQAppInterface.setData(Uri.parse(paramC2CShortcutAppInfo.e));
+      paramActivity.startActivity(paramQQAppInterface);
+    }
+  }
+  
+  private boolean b(Activity paramActivity, AIOShortcutBarContext paramAIOShortcutBarContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, C2CShortcutAppInfo paramC2CShortcutAppInfo)
+  {
+    if (paramC2CShortcutAppInfo.k)
     {
       int i;
       if (paramAIOShortcutBarContext.a() == 5)
       {
-        i = paramSessionInfo.jdField_a_of_type_Int;
+        i = paramSessionInfo.a;
         if (1044 == i)
         {
-          paramAIOShortcutBarContext = paramQQAppInterface.getMsgCache().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramQQAppInterface.getCurrentAccountUin(), true);
+          paramAIOShortcutBarContext = paramQQAppInterface.getMsgCache().a(paramSessionInfo.b, paramQQAppInterface.getCurrentAccountUin(), true);
           i = 163;
         }
         else if (1045 == i)
         {
-          paramAIOShortcutBarContext = paramQQAppInterface.getMsgCache().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramQQAppInterface.getCurrentAccountUin(), false);
+          paramAIOShortcutBarContext = paramQQAppInterface.getMsgCache().a(paramSessionInfo.b, paramQQAppInterface.getCurrentAccountUin(), false);
           i = 166;
         }
         else
@@ -149,29 +160,18 @@ public class C2CShortcutBarJumpController
         paramQQAppInterface.append(paramAIOShortcutBarContext);
         QLog.d("C2CShortcutBarJumpController", 2, paramQQAppInterface.toString());
       }
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).createUpdatableMsg(paramC2CShortcutAppInfo.jdField_a_of_type_JavaLangString, "657667B4D8C04B3F84E4AAA3D046A903", 1, 1, -1, paramSessionInfo.jdField_a_of_type_JavaLangString, i, paramAIOShortcutBarContext, new C2CShortcutBarJumpController.2(this, paramActivity));
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).createUpdatableMsg(paramC2CShortcutAppInfo.a, "657667B4D8C04B3F84E4AAA3D046A903", 1, 1, -1, paramSessionInfo.b, i, paramAIOShortcutBarContext, new C2CShortcutBarJumpController.2(this, paramActivity));
       return true;
     }
     return false;
   }
   
-  private static void b(Activity paramActivity, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, C2CShortcutAppInfo paramC2CShortcutAppInfo)
-  {
-    if ((!TextUtils.isEmpty(paramC2CShortcutAppInfo.jdField_d_of_type_JavaLangString)) && (paramC2CShortcutAppInfo.jdField_d_of_type_JavaLangString.startsWith("mqqapi")))
-    {
-      paramC2CShortcutAppInfo.jdField_d_of_type_JavaLangString = a(paramC2CShortcutAppInfo.jdField_d_of_type_JavaLangString, paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramC2CShortcutAppInfo.jdField_a_of_type_JavaLangString);
-      paramQQAppInterface = new Intent(paramActivity, JumpActivity.class);
-      paramQQAppInterface.setData(Uri.parse(paramC2CShortcutAppInfo.jdField_d_of_type_JavaLangString));
-      paramActivity.startActivity(paramQQAppInterface);
-    }
-  }
-  
   private static void c(Activity paramActivity, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, C2CShortcutAppInfo paramC2CShortcutAppInfo)
   {
-    if ((!TextUtils.isEmpty(paramC2CShortcutAppInfo.jdField_d_of_type_JavaLangString)) && ((paramC2CShortcutAppInfo.jdField_d_of_type_JavaLangString.startsWith("http")) || (paramC2CShortcutAppInfo.jdField_d_of_type_JavaLangString.startsWith("https"))))
+    if ((!TextUtils.isEmpty(paramC2CShortcutAppInfo.e)) && ((paramC2CShortcutAppInfo.e.startsWith("http")) || (paramC2CShortcutAppInfo.e.startsWith("https"))))
     {
       Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", a(paramC2CShortcutAppInfo.jdField_d_of_type_JavaLangString, paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramC2CShortcutAppInfo.jdField_a_of_type_JavaLangString));
+      localIntent.putExtra("url", a(paramC2CShortcutAppInfo.e, paramQQAppInterface, paramSessionInfo.b, paramC2CShortcutAppInfo.a));
       localIntent.putExtra("webStyle", "noBottomBar");
       localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
       paramActivity.startActivity(localIntent);
@@ -208,7 +208,7 @@ public class C2CShortcutBarJumpController
         a(paramActivity, paramAIOShortcutBarContext, paramQQAppInterface, paramSessionInfo);
         return;
       }
-      int i = paramC2CShortcutAppInfo.jdField_d_of_type_Int;
+      int i = paramC2CShortcutAppInfo.n;
       if (i != 1)
       {
         if (i != 2)
@@ -219,13 +219,13 @@ public class C2CShortcutBarJumpController
             {
               if (i != 5)
               {
-                QLog.d("C2CShortcutBarJumpController", 1, new Object[] { "handlerJumpAction() unknown type: ", Long.valueOf(paramC2CShortcutAppInfo.jdField_a_of_type_Long) });
+                QLog.d("C2CShortcutBarJumpController", 1, new Object[] { "handlerJumpAction() unknown type: ", Long.valueOf(paramC2CShortcutAppInfo.b) });
                 return;
               }
               a(paramActivity, paramQQAppInterface, paramSessionInfo, paramC2CShortcutAppInfo);
               return;
             }
-            a(paramActivity, paramAIOShortcutBarContext, paramQQAppInterface, paramSessionInfo, paramC2CShortcutAppInfo);
+            b(paramActivity, paramAIOShortcutBarContext, paramQQAppInterface, paramSessionInfo, paramC2CShortcutAppInfo);
             return;
           }
           a(paramActivity, paramAIOShortcutBarContext, paramQQAppInterface, paramSessionInfo, paramC2CShortcutAppInfo);
@@ -242,7 +242,7 @@ public class C2CShortcutBarJumpController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutBarJumpController
  * JD-Core Version:    0.7.0.1
  */

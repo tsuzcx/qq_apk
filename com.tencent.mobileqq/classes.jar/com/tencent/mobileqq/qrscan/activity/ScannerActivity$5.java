@@ -30,7 +30,7 @@ class ScannerActivity$5
       paramImageData.append(paramInt);
       QLog.d("IQRScanConst_ScannerActivity", 2, paramImageData.toString());
     }
-    ScannerActivity.access$400(this.a, 1, paramQBarResult.a, paramQBarResult.b, paramInt);
+    ScannerActivity.access$400(this.a, 1, paramQBarResult.b, paramQBarResult.c, paramInt);
   }
   
   public void a(QMiniResult paramQMiniResult, int paramInt, ScannerMultiResultSelectView.ImageData paramImageData)
@@ -44,12 +44,12 @@ class ScannerActivity$5
       paramImageData.append(paramInt);
       QLog.d("IQRScanConst_ScannerActivity", 2, paramImageData.toString());
     }
-    ScannerActivity.access$400(this.a, 2, "", paramQMiniResult.a, paramInt);
+    ScannerActivity.access$400(this.a, 2, paramQMiniResult.d, paramQMiniResult.b, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.ScannerActivity.5
  * JD-Core Version:    0.7.0.1
  */

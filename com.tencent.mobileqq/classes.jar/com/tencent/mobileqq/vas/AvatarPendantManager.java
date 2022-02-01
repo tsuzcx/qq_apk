@@ -15,32 +15,29 @@ import mqq.manager.Manager;
 public class AvatarPendantManager
   implements Manager
 {
-  public static int a;
-  public static volatile long b;
-  public static volatile boolean b;
-  public static volatile boolean c;
-  public long a;
+  public static volatile boolean d;
+  public static volatile boolean h;
+  public static int i;
+  public static volatile long j;
   protected AppInterface a;
-  protected AvatarPendantManager.PendantInfoLruCache a;
-  List<AvatarPendantShopSeriesInfo> a;
-  public boolean a;
-  List<AvatarInPendantHeadportraitInfo> b;
+  public boolean b;
+  public long c = -1L;
+  protected AvatarPendantManager.PendantInfoLruCache e = null;
+  List<AvatarPendantShopSeriesInfo> f = new ArrayList();
+  List<AvatarInPendantHeadportraitInfo> g;
   
   public AvatarPendantManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache = null;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache = new AvatarPendantManager.PendantInfoLruCache(this, 10);
-    this.jdField_a_of_type_Boolean = false;
+    this.a = paramAppInterface;
+    this.e = new AvatarPendantManager.PendantInfoLruCache(this, 10);
+    this.b = false;
   }
   
   public PendantInfo a(long paramLong)
   {
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache)
+    synchronized (this.e)
     {
-      PendantInfo localPendantInfo = (PendantInfo)this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.get(Long.valueOf(paramLong));
+      PendantInfo localPendantInfo = (PendantInfo)this.e.get(Long.valueOf(paramLong));
       Object localObject1;
       if (localPendantInfo != null)
       {
@@ -58,33 +55,19 @@ public class AvatarPendantManager
       else
       {
         localObject1 = new PendantInfo(paramLong);
-        this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.put(Long.valueOf(paramLong), localObject1);
+        this.e.put(Long.valueOf(paramLong), localObject1);
       }
-      ((PendantInfo)localObject1).a(this.jdField_a_of_type_Boolean);
+      ((PendantInfo)localObject1).a(this.b);
       return localObject1;
     }
   }
   
-  public File a()
-  {
-    File localFile = new File(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext().getFilesDir(), "pendant_info");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return localFile;
-  }
-  
-  public List<AvatarPendantShopSeriesInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache)
+    this.b = true;
+    synchronized (this.e)
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.values().iterator();
+      Iterator localIterator = this.e.values().iterator();
       while (localIterator.hasNext()) {
         ((PendantInfo)localIterator.next()).a(true);
       }
@@ -98,34 +81,15 @@ public class AvatarPendantManager
   
   public void a(List<AvatarInPendantHeadportraitInfo> paramList)
   {
-    this.b = paramList;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return this.jdField_a_of_type_Long != paramLong;
-  }
-  
-  public File b()
-  {
-    File localFile = new File(AppConstants.SDCARD_PENDANT_ROOT);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return localFile;
-  }
-  
-  public List<AvatarInPendantHeadportraitInfo> b()
-  {
-    return this.b;
+    this.g = paramList;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache)
+    this.b = false;
+    synchronized (this.e)
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.values().iterator();
+      Iterator localIterator = this.e.values().iterator();
       while (localIterator.hasNext()) {
         ((PendantInfo)localIterator.next()).a(false);
       }
@@ -137,15 +101,20 @@ public class AvatarPendantManager
     }
   }
   
+  public boolean b(long paramLong)
+  {
+    return this.c != paramLong;
+  }
+  
   public void c()
   {
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache)
+    synchronized (this.e)
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.values().iterator();
+      Iterator localIterator = this.e.values().iterator();
       while (localIterator.hasNext()) {
-        ((PendantInfo)localIterator.next()).c();
+        ((PendantInfo)localIterator.next()).d();
       }
-      this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.clear();
+      this.e.clear();
       return;
     }
     for (;;)
@@ -154,18 +123,46 @@ public class AvatarPendantManager
     }
   }
   
+  public File d()
+  {
+    File localFile = new File(this.a.getApp().getApplicationContext().getFilesDir(), "pendant_info");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localFile;
+  }
+  
+  public File e()
+  {
+    File localFile = new File(AppConstants.SDCARD_PENDANT_ROOT);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localFile;
+  }
+  
+  public List<AvatarPendantShopSeriesInfo> f()
+  {
+    return this.f;
+  }
+  
+  public List<AvatarInPendantHeadportraitInfo> g()
+  {
+    return this.g;
+  }
+  
   public void onDestroy()
   {
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache)
+    synchronized (this.e)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.clear();
+      this.e.clear();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.AvatarPendantManager
  * JD-Core Version:    0.7.0.1
  */

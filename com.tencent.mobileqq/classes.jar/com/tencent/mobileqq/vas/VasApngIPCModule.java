@@ -26,11 +26,11 @@ public class VasApngIPCModule
   extends QIPCModule
   implements ApngSoLoader
 {
-  private static VasApngIPCModule jdField_a_of_type_ComTencentMobileqqVasVasApngIPCModule;
   public static String a = "action_download_apng_so";
-  private CopyOnWriteArrayList<Integer> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private CopyOnWriteArrayList<URLDrawableHandler> b = new CopyOnWriteArrayList();
+  private static VasApngIPCModule e;
+  private boolean b;
+  private CopyOnWriteArrayList<Integer> c = new CopyOnWriteArrayList();
+  private CopyOnWriteArrayList<URLDrawableHandler> d = new CopyOnWriteArrayList();
   
   private VasApngIPCModule(String paramString)
   {
@@ -41,10 +41,10 @@ public class VasApngIPCModule
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqVasVasApngIPCModule == null) {
-        jdField_a_of_type_ComTencentMobileqqVasVasApngIPCModule = new VasApngIPCModule("VasApngIPCModule");
+      if (e == null) {
+        e = new VasApngIPCModule("VasApngIPCModule");
       }
-      VasApngIPCModule localVasApngIPCModule = jdField_a_of_type_ComTencentMobileqqVasVasApngIPCModule;
+      VasApngIPCModule localVasApngIPCModule = e;
       return localVasApngIPCModule;
     }
     finally {}
@@ -68,11 +68,6 @@ public class VasApngIPCModule
     callbackResult(paramInt, EIPCResult.createResult(0, null));
   }
   
-  public void a()
-  {
-    a(new URLDrawableHandler.Adapter(), true);
-  }
-  
   public void a(int paramInt)
   {
     Object localObject = new StringBuilder();
@@ -90,7 +85,7 @@ public class VasApngIPCModule
       if (VasSoUtils.a((String)localObject, str, "libAPNG_release_845.so"))
       {
         QLog.d("VasApngUtil.IPCModule", 1, "unzip apng zip success");
-        b();
+        e();
         VasUpdateUtil.a(new File((String)localObject));
       }
       else
@@ -112,12 +107,12 @@ public class VasApngIPCModule
       ((StringBuilder)localObject).append(paramInt);
       QLog.e("VasApngUtil.IPCModule", 1, ((StringBuilder)localObject).toString());
     }
-    b();
+    c();
   }
   
   public void a(URLDrawableHandler paramURLDrawableHandler, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       QLog.e("VasApngUtil.IPCModule", 1, "load by others");
       paramURLDrawableHandler.onFileDownloadSucceed(0L);
@@ -130,7 +125,7 @@ public class VasApngIPCModule
       paramURLDrawableHandler.onFileDownloadFailed(10000);
       return;
     }
-    if (b())
+    if (e())
     {
       QLog.e("VasApngUtil.IPCModule", 1, "load exists so success");
       paramURLDrawableHandler.onFileDownloadSucceed(0L);
@@ -142,7 +137,7 @@ public class VasApngIPCModule
       paramURLDrawableHandler.onFileDownloadFailed(10001);
       return;
     }
-    if (DeviceInfoUtil.e())
+    if (DeviceInfoUtil.N())
     {
       QLog.e("VasApngUtil.IPCModule", 1, "isX86 can't download apng.so");
       paramURLDrawableHandler.onFileDownloadFailed(10004);
@@ -157,21 +152,49 @@ public class VasApngIPCModule
     }
     if ((localObject instanceof QQAppInterface))
     {
-      this.b.add(paramURLDrawableHandler);
+      this.d.add(paramURLDrawableHandler);
       if (!a((QQAppInterface)localObject))
       {
-        this.b.remove(paramURLDrawableHandler);
+        this.d.remove(paramURLDrawableHandler);
         paramURLDrawableHandler.onFileDownloadFailed(10003);
       }
     }
     else
     {
       QLog.e("VasApngUtil.IPCModule", 1, "child progress callServer to load");
-      QIPCClientHelper.getInstance().callServer("VasApngIPCModule", jdField_a_of_type_JavaLangString, null, new VasApngIPCModule.1(this, paramURLDrawableHandler));
+      QIPCClientHelper.getInstance().callServer("VasApngIPCModule", a, null, new VasApngIPCModule.1(this, paramURLDrawableHandler));
     }
   }
   
-  public boolean a()
+  public void b()
+  {
+    a(new URLDrawableHandler.Adapter(), true);
+  }
+  
+  void c()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.d.iterator();
+    Object localObject;
+    while (localIterator.hasNext())
+    {
+      localObject = (URLDrawableHandler)localIterator.next();
+      a((URLDrawableHandler)localObject, false);
+      localArrayList.add(localObject);
+    }
+    this.d.removeAll(localArrayList);
+    localArrayList = new ArrayList();
+    localIterator = this.c.iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (Integer)localIterator.next();
+      b(((Integer)localObject).intValue());
+      localArrayList.add(localObject);
+    }
+    this.c.removeAll(localArrayList);
+  }
+  
+  public boolean d()
   {
     String str = VasSoUtils.a();
     if (!TextUtils.isEmpty(str))
@@ -186,34 +209,11 @@ public class VasApngIPCModule
     return false;
   }
   
-  void b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.b.iterator();
-    Object localObject;
-    while (localIterator.hasNext())
-    {
-      localObject = (URLDrawableHandler)localIterator.next();
-      a((URLDrawableHandler)localObject, false);
-      localArrayList.add(localObject);
-    }
-    this.b.removeAll(localArrayList);
-    localArrayList = new ArrayList();
-    localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      localObject = (Integer)localIterator.next();
-      b(((Integer)localObject).intValue());
-      localArrayList.add(localObject);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.removeAll(localArrayList);
-  }
-  
-  public boolean b()
+  public boolean e()
   {
     try
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
         if (QLog.isColorLevel()) {
           QLog.d("VasApngUtil.IPCModule", 2, "loadSoLib: already loaded");
@@ -233,7 +233,7 @@ public class VasApngIPCModule
           try
           {
             System.load(str);
-            this.jdField_a_of_type_Boolean = true;
+            this.b = true;
             QLog.d("VasApngUtil.IPCModule", 1, "libAPNG.so load success.");
             return true;
           }
@@ -259,7 +259,7 @@ public class VasApngIPCModule
   
   public boolean isLoaded()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public void load(URLDrawableHandler paramURLDrawableHandler)
@@ -276,9 +276,9 @@ public class VasApngIPCModule
       paramBundle.append(paramString);
       QLog.d("VasApngUtil.IPCModule", 2, paramBundle.toString());
     }
-    if (jdField_a_of_type_JavaLangString.equals(paramString))
+    if (a.equals(paramString))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(Integer.valueOf(paramInt));
+      this.c.add(Integer.valueOf(paramInt));
       paramBundle = BaseApplicationImpl.getApplication();
       if (paramBundle == null) {
         paramString = null;
@@ -297,7 +297,7 @@ public class VasApngIPCModule
       b(paramInt);
       try
       {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramInt);
+        this.c.remove(paramInt);
         return null;
       }
       catch (Exception paramString)
@@ -321,7 +321,7 @@ public class VasApngIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasApngIPCModule
  * JD-Core Version:    0.7.0.1
  */

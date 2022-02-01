@@ -13,24 +13,23 @@ import java.util.HashMap;
 public class TempMsgBoxBusinessInjectUtil
 {
   @ConfigInject(configPath="Business/qqtempmsgbox-impl/src/main/resources/Inject_TempMsgBoxBusinessHandlerConfig.yml", version=1)
-  public static ArrayList<Class<? extends ITempMsgBoxCallback>> a;
+  public static HashMap<String, Class<? extends ITempMsgBoxBusinessHandler>> a = new HashMap();
   @ConfigInject(configPath="Business/qqtempmsgbox-impl/src/main/resources/Inject_TempMsgBoxBusinessHandlerConfig.yml", version=1)
-  public static HashMap<String, Class<? extends ITempMsgBoxBusinessHandler>> a;
+  public static ArrayList<Class<? extends ITempMsgBoxCallback>> b;
   @ConfigInject(configPath="Business/qqtempmsgbox-impl/src/main/resources/Inject_TempMsgBoxBusinessHandlerConfig.yml", version=1)
-  public static HashMap<String, Class<? extends AbstractTempChatPlugin>> b = new HashMap();
+  public static HashMap<String, Class<? extends AbstractTempChatPlugin>> c = new HashMap();
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("publicAccount", PublicAccountMsgBoxHandler.class);
-    jdField_a_of_type_JavaUtilHashMap.put("tempGameMsg", GameMsgBoxHandler.class);
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(TempMsgBoxCallback.class);
+    a.put("publicAccount", PublicAccountMsgBoxHandler.class);
+    a.put("tempGameMsg", GameMsgBoxHandler.class);
+    b = new ArrayList();
+    b.add(TempMsgBoxCallback.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.inject.TempMsgBoxBusinessInjectUtil
  * JD-Core Version:    0.7.0.1
  */

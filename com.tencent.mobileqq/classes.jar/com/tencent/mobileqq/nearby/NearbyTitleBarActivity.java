@@ -19,6 +19,7 @@ public class NearbyTitleBarActivity
   public long mCreateObjTime = System.currentTimeMillis();
   public boolean mHasInitViews = false;
   public boolean mHasSetContentView = false;
+  public boolean mIsNew;
   public long mResumeTime;
   
   static void checkReport(INearbyAppInterface paramINearbyAppInterface, long paramLong1, long paramLong2, long paramLong3)
@@ -28,12 +29,12 @@ public class NearbyTitleBarActivity
     try
     {
       localReportRunnable = new NearbyTitleBarActivity.ReportRunnable();
-      localReportRunnable.jdField_a_of_type_JavaLangString = paramINearbyAppInterface.getCurrentAccountUin();
-      localReportRunnable.jdField_a_of_type_Int = paramINearbyAppInterface.getmPerfState();
-      localReportRunnable.jdField_b_of_type_Int = paramINearbyAppInterface.getmPreloadFrom();
-      localReportRunnable.jdField_a_of_type_Long = paramLong2;
-      localReportRunnable.c = paramLong1;
-      localReportRunnable.jdField_b_of_type_Long = paramLong3;
+      localReportRunnable.c = paramINearbyAppInterface.getCurrentAccountUin();
+      localReportRunnable.a = paramINearbyAppInterface.getmPerfState();
+      localReportRunnable.b = paramINearbyAppInterface.getmPreloadFrom();
+      localReportRunnable.d = paramLong2;
+      localReportRunnable.f = paramLong1;
+      localReportRunnable.e = paramLong3;
       paramINearbyAppInterface.updatePerfState(2, 0);
       ThreadManager.getUIHandler().post(localReportRunnable);
       return;
@@ -66,6 +67,9 @@ public class NearbyTitleBarActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
+    if (this.mIsNew) {
+      return bool;
+    }
     if (!this.mHasSetContentView)
     {
       if (needHardAccelerated()) {
@@ -102,6 +106,9 @@ public class NearbyTitleBarActivity
   protected void doOnResume()
   {
     super.doOnResume();
+    if (this.mIsNew) {
+      return;
+    }
     if (this.mResumeTime == 0L)
     {
       this.mResumeTime = System.currentTimeMillis();
@@ -184,7 +191,7 @@ public class NearbyTitleBarActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyTitleBarActivity
  * JD-Core Version:    0.7.0.1
  */

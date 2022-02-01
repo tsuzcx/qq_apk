@@ -14,35 +14,35 @@ final class WSCollectionJumpUtil$2
   
   public void a()
   {
-    WSGridBeaconReport.a(this.jdField_a_of_type_Int, this.b, 1000003, this.jdField_a_of_type_UserGrowthStCollection, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_a_of_type_JavaLangString);
+    WSGridBeaconReport.a(this.a, this.b, 1000003, this.c, this.d, this.e);
   }
   
   public void b()
   {
-    WSGridBeaconReport.a(this.jdField_a_of_type_Int, this.b, 1000007, this.jdField_a_of_type_UserGrowthStCollection, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_a_of_type_JavaLangString);
+    WSGridBeaconReport.a(this.a, this.b, 1000007, this.c, this.d, this.e);
   }
   
   public void c()
   {
-    WSGridBeaconReport.a(this.jdField_a_of_type_Int, this.b, 1000004, this.jdField_a_of_type_UserGrowthStCollection, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_a_of_type_JavaLangString);
+    WSGridBeaconReport.a(this.a, this.b, 1000004, this.c, this.d, this.e);
   }
   
   public void d()
   {
-    WSGridBeaconReport.a(this.jdField_a_of_type_Int, this.b, 1000002, this.jdField_a_of_type_UserGrowthStCollection, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_a_of_type_JavaLangString);
+    WSGridBeaconReport.a(this.a, this.b, 1000002, this.c, this.d, this.e);
   }
   
   public void e()
   {
     super.e();
-    WSGridBeaconReport.a(this.jdField_a_of_type_Int, this.b, 1000001, this.jdField_a_of_type_UserGrowthStCollection, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_a_of_type_JavaLangString);
-    WSReportUtils.b(String.valueOf(System.currentTimeMillis()));
-    WSVerticalBeaconReport.b(this.jdField_a_of_type_JavaLangString);
+    WSGridBeaconReport.a(this.a, this.b, 1000001, this.c, this.d, this.e);
+    WSReportUtils.c(String.valueOf(System.currentTimeMillis()));
+    WSVerticalBeaconReport.b(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSCollectionJumpUtil.2
  * JD-Core Version:    0.7.0.1
  */

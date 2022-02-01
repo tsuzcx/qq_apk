@@ -14,13 +14,13 @@ class GameCenterManagerImp$1
     paramString.append("on push code=");
     paramString.append(paramInt);
     paramString.append(" cmd=");
-    paramString.append(this.jdField_a_of_type_Int);
+    paramString.append(this.a);
     QLog.i("GameCenterManagerImp", 1, paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.GameCenterManagerImp.1
  * JD-Core Version:    0.7.0.1
  */

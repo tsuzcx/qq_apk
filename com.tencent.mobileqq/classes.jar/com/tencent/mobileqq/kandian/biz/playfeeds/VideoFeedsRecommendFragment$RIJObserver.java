@@ -53,14 +53,14 @@ class VideoFeedsRecommendFragment$RIJObserver
     }
     if (paramBoolean)
     {
-      paramString1 = VideoFeedsRecommendFragment.a(this.a).iterator();
+      paramString1 = VideoFeedsRecommendFragment.e(this.a).iterator();
       while (paramString1.hasNext())
       {
         localObject = (VideoInfo)paramString1.next();
-        if ((!TextUtils.isEmpty(((VideoInfo)localObject).g)) && (((VideoInfo)localObject).g.equals(paramString2)))
+        if ((!TextUtils.isEmpty(((VideoInfo)localObject).l)) && (((VideoInfo)localObject).l.equals(paramString2)))
         {
-          ((VideoInfo)localObject).jdField_o_of_type_Int = paramInt2;
-          VideoFeedsRecommendFragment.a(this.a).a((VideoInfo)localObject);
+          ((VideoInfo)localObject).ae = paramInt2;
+          VideoFeedsRecommendFragment.d(this.a).a((VideoInfo)localObject);
         }
       }
     }
@@ -86,18 +86,18 @@ class VideoFeedsRecommendFragment$RIJObserver
     }
     if (paramBoolean1)
     {
-      paramString1 = VideoFeedsRecommendFragment.a(this.a).iterator();
+      paramString1 = VideoFeedsRecommendFragment.e(this.a).iterator();
       while (paramString1.hasNext())
       {
         localObject = (VideoInfo)paramString1.next();
-        if ((!TextUtils.isEmpty(((VideoInfo)localObject).g)) && (((VideoInfo)localObject).g.equals(paramString2)))
+        if ((!TextUtils.isEmpty(((VideoInfo)localObject).l)) && (((VideoInfo)localObject).l.equals(paramString2)))
         {
-          ((VideoInfo)localObject).n = paramBoolean2;
-          ((VideoInfo)localObject).jdField_o_of_type_Boolean = true;
-          if (localObject == this.a.b()) {
-            VideoFeedsRecommendFragment.a(this.a).a((VideoInfo)localObject, "0X800B2EA");
+          ((VideoInfo)localObject).af = paramBoolean2;
+          ((VideoInfo)localObject).ag = true;
+          if (localObject == this.a.n()) {
+            VideoFeedsRecommendFragment.d(this.a).a((VideoInfo)localObject, "0X800B2EA");
           }
-          VideoFeedsRecommendFragment.a(this.a).a((VideoInfo)localObject);
+          VideoFeedsRecommendFragment.d(this.a).a((VideoInfo)localObject);
         }
       }
     }
@@ -105,7 +105,7 @@ class VideoFeedsRecommendFragment$RIJObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendFragment.RIJObserver
  * JD-Core Version:    0.7.0.1
  */

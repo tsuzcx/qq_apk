@@ -37,16 +37,16 @@ public class SmallScreenActivityPluginHelperApiImpl
       }
       if (!paramBoolean2)
       {
-        if (SmallScreenUtils.f())
+        if (SmallScreenUtils.g())
         {
-          localObject = localVideoAppInterface.a().a();
-          int i = ((SessionInfo)localObject).d;
+          localObject = localVideoAppInterface.b().k();
+          int i = ((SessionInfo)localObject).g;
           if ((i != 2) && (i != 4)) {
             paramBoolean2 = false;
           } else {
             paramBoolean2 = true;
           }
-          ThreadManager.excute(new SmallScreenActivityPluginHelperApiImpl.1(this, paramLong, paramBaseVideoAppInterface, paramBoolean1, bool, localVideoAppInterface.a().a().c(), paramBoolean2), 16, null, false);
+          ThreadManager.excute(new SmallScreenActivityPluginHelperApiImpl.1(this, paramLong, paramBaseVideoAppInterface, paramBoolean1, bool, localVideoAppInterface.b().aE().e(), paramBoolean2), 16, null, false);
           SmallScreenUtilsApiImpl.reportActionOn(paramBaseVideoAppInterface.getApp(), (SessionInfo)localObject);
           return;
         }
@@ -59,7 +59,7 @@ public class SmallScreenActivityPluginHelperApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.api.impl.SmallScreenActivityPluginHelperApiImpl
  * JD-Core Version:    0.7.0.1
  */

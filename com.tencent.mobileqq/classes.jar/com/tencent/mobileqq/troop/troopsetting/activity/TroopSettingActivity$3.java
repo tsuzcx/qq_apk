@@ -13,9 +13,9 @@ class TroopSettingActivity$3
   
   protected void a(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramString1 != null) && (this.a.a.troopUin != null))
+    if ((paramString1 != null) && (this.a.i.troopUin != null))
     {
-      if (!paramString1.equals(this.a.a.troopUin)) {
+      if (!paramString1.equals(this.a.i.troopUin)) {
         return;
       }
       TroopSettingActivity.a(this.a, true);
@@ -31,9 +31,9 @@ class TroopSettingActivity$3
     ((StringBuilder)localObject).append(paramLong1);
     ((StringBuilder)localObject).append("");
     localObject = ((StringBuilder)localObject).toString();
-    if (this.a.a.troopUin != null)
+    if (this.a.i.troopUin != null)
     {
-      if (!((String)localObject).equals(this.a.a.troopUin)) {
+      if (!((String)localObject).equals(this.a.i.troopUin)) {
         return;
       }
       TroopSettingActivity.a(this.a, true);
@@ -73,9 +73,9 @@ class TroopSettingActivity$3
     ((StringBuilder)localObject).append(paramLong1);
     ((StringBuilder)localObject).append("");
     localObject = ((StringBuilder)localObject).toString();
-    if (this.a.a.troopUin != null)
+    if (this.a.i.troopUin != null)
     {
-      if (!((String)localObject).equals(this.a.a.troopUin)) {
+      if (!((String)localObject).equals(this.a.i.troopUin)) {
         return;
       }
       TroopSettingActivity.a(this.a, true);
@@ -84,7 +84,7 @@ class TroopSettingActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.3
  * JD-Core Version:    0.7.0.1
  */

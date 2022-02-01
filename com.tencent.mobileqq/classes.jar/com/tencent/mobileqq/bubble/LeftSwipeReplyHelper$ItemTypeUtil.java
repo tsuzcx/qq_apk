@@ -19,7 +19,7 @@ final class LeftSwipeReplyHelper$ItemTypeUtil
     boolean bool1 = bool2;
     if (paramChatMessage != null)
     {
-      int i = a(this.a, paramChatMessage);
+      int i = a(this.b, paramChatMessage);
       if ((i != 81) && (i != 66) && (i != 42) && (i != 47))
       {
         bool1 = bool2;
@@ -37,7 +37,7 @@ final class LeftSwipeReplyHelper$ItemTypeUtil
   {
     if ((!paramMessageForArkApp.isMultiMsg) && (paramMessageForArkApp.istroop == 0))
     {
-      if ((!paramChatMessage.senderuin.equals(this.a.getCurrentUin())) && (paramChatMessage.isSupportReply())) {
+      if ((!paramChatMessage.senderuin.equals(this.b.getCurrentUin())) && (paramChatMessage.isSupportReply())) {
         return true;
       }
       if ((paramChatMessage.isSend()) && (paramChatMessage.isSupportReply()) && (paramChatMessage.extraflag != 32772) && (paramChatMessage.extraflag != 32768) && (paramChatMessage.istroop != 3000)) {
@@ -52,7 +52,7 @@ final class LeftSwipeReplyHelper$ItemTypeUtil
     boolean bool = true;
     if (paramChatMessage != null)
     {
-      int i = a(this.a, paramChatMessage);
+      int i = a(this.b, paramChatMessage);
       if (i == 81) {
         return c(paramChatMessage);
       }
@@ -86,7 +86,7 @@ final class LeftSwipeReplyHelper$ItemTypeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.LeftSwipeReplyHelper.ItemTypeUtil
  * JD-Core Version:    0.7.0.1
  */

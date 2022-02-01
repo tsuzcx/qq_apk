@@ -31,7 +31,7 @@ public class CheckLoveStateRequestManager
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("currentUin", paramLong);
-    a(localIntent);
+    b(localIntent);
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -72,7 +72,7 @@ public class CheckLoveStateRequestManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.CheckLoveStateRequestManager
  * JD-Core Version:    0.7.0.1
  */

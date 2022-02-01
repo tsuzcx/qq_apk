@@ -3,7 +3,7 @@ package com.tencent.mobileqq.msf.sdk.b;
 public class e$c
   extends e.a
 {
-  public static final String b = "msf.core.DeadObjectException";
+  public static final String b = "msf_core_DeadObjectException";
   
   public static c b()
   {
@@ -28,13 +28,13 @@ public class e$c
     a("msg", String.valueOf(localObject));
     a("exception", String.valueOf(paramString3));
     a("processName", String.valueOf(paramString4));
-    a("msf.core.DeadObjectException", true, 0L, 0L, true);
+    a("msf_core_DeadObjectException", true, 0L, 0L, true);
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.b.e.c
  * JD-Core Version:    0.7.0.1
  */

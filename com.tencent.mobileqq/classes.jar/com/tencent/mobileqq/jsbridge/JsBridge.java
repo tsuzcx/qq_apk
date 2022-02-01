@@ -13,22 +13,22 @@ import java.util.List;
 @Deprecated
 public class JsBridge
 {
-  AuthorizeConfig jdField_a_of_type_ComTencentBizAuthorizeConfig;
-  HashMap<String, JsBridge.JsHandler> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  HashMap<String, JsBridge.JsHandler> a = new HashMap();
+  AuthorizeConfig b;
   
   public void a(JsBridge.JsHandler paramJsHandler, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramJsHandler);
+    this.a.put(paramString, paramJsHandler);
   }
   
   public void a(String paramString)
   {
     if (paramString == null)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.a.clear();
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+    this.a.remove(paramString);
   }
   
   public void a(String paramString1, String paramString2, List<String> paramList, JsBridge.JsBridgeListener paramJsBridgeListener)
@@ -65,7 +65,7 @@ public class JsBridge
       }
       i += 1;
     }
-    paramString1 = (JsBridge.JsHandler)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+    paramString1 = (JsBridge.JsHandler)this.a.get(paramString1);
     if (paramString1 != null)
     {
       paramString1.call(paramString2, paramList, paramJsBridgeListener);
@@ -109,10 +109,10 @@ public class JsBridge
       }
       paramString = new JsBridge.JsBridgeListener(paramWebView, l, paramString);
       paramWebView = paramWebView.getUrl();
-      if (this.jdField_a_of_type_ComTencentBizAuthorizeConfig == null) {
-        this.jdField_a_of_type_ComTencentBizAuthorizeConfig = AuthorizeConfig.a();
+      if (this.b == null) {
+        this.b = AuthorizeConfig.a();
       }
-      localObject3 = this.jdField_a_of_type_ComTencentBizAuthorizeConfig;
+      localObject3 = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject1);
       localStringBuilder.append(".");
@@ -139,7 +139,7 @@ public class JsBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsbridge.JsBridge
  * JD-Core Version:    0.7.0.1
  */

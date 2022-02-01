@@ -50,6 +50,11 @@ public class VideoReport
     AudioDataManager.getInstance().bindAudioInfo(paramObject, paramAudioEntity);
   }
   
+  public static void bindSubmitTarget(View paramView1, View paramView2)
+  {
+    VideoReportInner.getInstance().bindSubmitTarget(paramView1, paramView2);
+  }
+  
   public static void bindVideoPlayerInfo(@NonNull Object paramObject, VideoEntity paramVideoEntity)
   {
     VideoReportInner.getInstance().bindVideoPlayerInfo(paramObject, paramVideoEntity);
@@ -68,6 +73,11 @@ public class VideoReport
   public static void doAppOutReport()
   {
     VideoReportInner.getInstance().doAppOutReport();
+  }
+  
+  public static void enableScrollExposureReport(Object paramObject, boolean paramBoolean)
+  {
+    VideoReportInner.getInstance().enableScrollExposureReport(paramObject, paramBoolean);
   }
   
   public static PageInfo findOwnerPage(View paramView)
@@ -100,6 +110,16 @@ public class VideoReport
   public static ReportPolicy getElementReportPolicy(Object paramObject)
   {
     return VideoReportInner.getInstance().getElementReportPolicy(paramObject);
+  }
+  
+  public static EndExposurePolicy getElementScrollEndExposePolicy(Object paramObject)
+  {
+    return VideoReportInner.getInstance().getElementScrollEndExposePolicy(paramObject);
+  }
+  
+  public static ExposurePolicy getElementScrollExposePolicy(Object paramObject)
+  {
+    return VideoReportInner.getInstance().getElementScrollExposePolicy(paramObject);
   }
   
   public static PageInfo getPageInfo(View paramView)
@@ -244,6 +264,11 @@ public class VideoReport
     VideoReportInner.getInstance().setClickReportInterval(paramView, paramLong);
   }
   
+  public static void setCollectProcessName(boolean paramBoolean)
+  {
+    VideoReportInner.getInstance().setCollectProcessName(paramBoolean);
+  }
+  
   public static void setDataCollectEnable(boolean paramBoolean)
   {
     VideoReportInner.getInstance().setDataCollectEnable(paramBoolean);
@@ -324,6 +349,16 @@ public class VideoReport
   public static void setElementReuseIdentifier(Object paramObject, String paramString)
   {
     VideoReportInner.getInstance().setElementReuseIdentifier(paramObject, paramString);
+  }
+  
+  public static void setElementScrollEndExposePolicy(Object paramObject, EndExposurePolicy paramEndExposurePolicy)
+  {
+    VideoReportInner.getInstance().setElementScrollEndExposePolicy(paramObject, paramEndExposurePolicy);
+  }
+  
+  public static void setElementScrollExposePolicy(Object paramObject, ExposurePolicy paramExposurePolicy)
+  {
+    VideoReportInner.getInstance().setElementScrollExposePolicy(paramObject, paramExposurePolicy);
   }
   
   public static void setElementVirtualParentParams(Object paramObject, int paramInt, String paramString, Map<String, Object> paramMap)
@@ -407,9 +442,24 @@ public class VideoReport
     VideoReportInner.getInstance().startWithConfiguration(paramApplication, paramConfiguration);
   }
   
+  public static void supportNewPlayType(boolean paramBoolean)
+  {
+    VideoReportInner.getInstance().supportNewPlayType(paramBoolean);
+  }
+  
   public static void supportPlayerReport(boolean paramBoolean)
   {
     VideoReportInner.getInstance().supportPlayerReport(paramBoolean);
+  }
+  
+  public static void supportSeekReport(boolean paramBoolean)
+  {
+    VideoReportInner.getInstance().supportSeekReport(paramBoolean);
+  }
+  
+  public static void supportSpeedRatioReport(boolean paramBoolean)
+  {
+    VideoReportInner.getInstance().supportSpeedRatioReport(paramBoolean);
   }
   
   public static void supportWebViewReport(boolean paramBoolean)
@@ -472,7 +522,7 @@ public class VideoReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.VideoReport
  * JD-Core Version:    0.7.0.1
  */

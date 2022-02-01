@@ -17,7 +17,7 @@ class CaptureQmcfSoDownloadFragment$7$1
     paramDialogInterface = this.a.this$0.getBaseActivity();
     if (paramInt == 1)
     {
-      CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
+      CaptureQmcfSoDownloadFragment.h(this.a.this$0).setCameraPermissionResult(false);
       Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
       localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
       paramDialogInterface.startActivity(localIntent);
@@ -28,7 +28,7 @@ class CaptureQmcfSoDownloadFragment$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.fragment.CaptureQmcfSoDownloadFragment.7.1
  * JD-Core Version:    0.7.0.1
  */

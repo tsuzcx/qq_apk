@@ -11,9 +11,9 @@ import org.json.JSONObject;
 
 public class KandianLiveCfgBean
 {
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private ArrayList<Integer> b = new ArrayList();
+  private boolean a = true;
+  private ArrayList<String> b = new ArrayList();
+  private ArrayList<Integer> c = new ArrayList();
   
   public static KandianLiveCfgBean a(String paramString)
   {
@@ -32,7 +32,7 @@ public class KandianLiveCfgBean
           break label223;
         }
         bool = true;
-        localKandianLiveCfgBean.jdField_a_of_type_Boolean = bool;
+        localKandianLiveCfgBean.a = bool;
         localObject = paramString.optJSONArray("blackList");
         if (localObject != null)
         {
@@ -44,7 +44,7 @@ public class KandianLiveCfgBean
             i += 1;
             continue;
           }
-          localKandianLiveCfgBean.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+          localKandianLiveCfgBean.b = localArrayList;
         }
         paramString = paramString.optJSONArray("black_version_list");
         if (paramString != null)
@@ -57,7 +57,7 @@ public class KandianLiveCfgBean
             i += 1;
             continue;
           }
-          localKandianLiveCfgBean.b = ((ArrayList)localObject);
+          localKandianLiveCfgBean.c = ((ArrayList)localObject);
           return localKandianLiveCfgBean;
         }
       }
@@ -78,15 +78,15 @@ public class KandianLiveCfgBean
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("useLiteSdk------mIsLite = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.a);
     QLog.i("KandianLiveCfgBean", 1, ((StringBuilder)localObject).toString());
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return false;
     }
-    localObject = this.b;
+    localObject = this.c;
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      localObject = this.b.iterator();
+      localObject = this.c.iterator();
       while (((Iterator)localObject).hasNext())
       {
         Integer localInteger = (Integer)((Iterator)localObject).next();
@@ -101,12 +101,12 @@ public class KandianLiveCfgBean
       ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
       QLog.e("KandianLiveCfgBean", 1, ((StringBuilder)localObject).toString());
     }
-    return ConfigUtil.a(this.jdField_a_of_type_JavaUtilArrayList) ^ true;
+    return ConfigUtil.a(this.b) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.config.KandianLiveCfgBean
  * JD-Core Version:    0.7.0.1
  */

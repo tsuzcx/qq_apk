@@ -30,16 +30,16 @@ public class TimeInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TimeInfo{begin=");
-    localStringBuilder.append(TimeFormatterUtils.b(this.begin));
+    localStringBuilder.append(TimeFormatterUtils.f(this.begin));
     localStringBuilder.append(", end=");
-    localStringBuilder.append(TimeFormatterUtils.b(this.end));
+    localStringBuilder.append(TimeFormatterUtils.f(this.end));
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.TimeInfo
  * JD-Core Version:    0.7.0.1
  */

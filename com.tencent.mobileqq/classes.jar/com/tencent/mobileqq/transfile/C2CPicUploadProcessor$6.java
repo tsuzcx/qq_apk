@@ -23,14 +23,14 @@ class C2CPicUploadProcessor$6
       return;
     }
     if (paramStatictisInfo != null) {
-      this.this$0.shouldMsgReportSucc = paramStatictisInfo.d;
+      this.this$0.shouldMsgReportSucc = paramStatictisInfo.f;
     }
     this.this$0.onError();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPicUploadProcessor.6
  * JD-Core Version:    0.7.0.1
  */

@@ -152,9 +152,9 @@ public class TroopRobotServiceImpl
         localJSONException2.printStackTrace();
       }
     }
-    TroopRobotConfBean localTroopRobotConfBean = TroopRobotConfBean.a();
+    TroopRobotConfBean localTroopRobotConfBean = TroopRobotConfBean.c();
     if (localTroopRobotConfBean != null) {
-      updateConfig(localTroopRobotConfBean.a(), localTroopRobotConfBean.a());
+      updateConfig(localTroopRobotConfBean.a(), localTroopRobotConfBean.b());
     }
   }
   
@@ -240,7 +240,7 @@ public class TroopRobotServiceImpl
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(paramMessageRecord);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131715537));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131913009));
         return ((StringBuilder)localObject).toString();
       }
     }
@@ -277,7 +277,7 @@ public class TroopRobotServiceImpl
           while (localIterator.hasNext())
           {
             TroopRobotInfo localTroopRobotInfo = (TroopRobotInfo)localIterator.next();
-            if (localTroopRobotInfo.a()) {
+            if (localTroopRobotInfo.d()) {
               localArrayList.add(localTroopRobotInfo);
             }
           }
@@ -319,7 +319,7 @@ public class TroopRobotServiceImpl
           while (localIterator.hasNext())
           {
             TroopRobotInfo localTroopRobotInfo = (TroopRobotInfo)localIterator.next();
-            if (!localTroopRobotInfo.a()) {
+            if (!localTroopRobotInfo.d()) {
               localArrayList.add(localTroopRobotInfo);
             }
           }
@@ -348,7 +348,7 @@ public class TroopRobotServiceImpl
   
   public String getRobotVoiceTail(String paramString)
   {
-    return this.mRobotTailFormat.replace(HardCodeUtil.a(2131715524), paramString);
+    return this.mRobotTailFormat.replace(HardCodeUtil.a(2131912997), paramString);
   }
   
   public String getRobotWarning()
@@ -369,9 +369,9 @@ public class TroopRobotServiceImpl
   public TroopRobotData getTroopRobotData(long paramLong)
   {
     TroopRobotData localTroopRobotData = new TroopRobotData();
-    localTroopRobotData.jdField_a_of_type_JavaUtilArrayList = getAllAddedRobots(paramLong);
+    localTroopRobotData.a = getAllAddedRobots(paramLong);
     localTroopRobotData.b = getAllUnAddedRobots(paramLong);
-    localTroopRobotData.jdField_a_of_type_Int = getTroopRobotMaxNum(paramLong);
+    localTroopRobotData.c = getTroopRobotMaxNum(paramLong);
     return localTroopRobotData;
   }
   
@@ -394,7 +394,7 @@ public class TroopRobotServiceImpl
   
   public String getUserVoiceTail(String paramString)
   {
-    return this.mUserTailFormat.replace(HardCodeUtil.a(2131715542), paramString);
+    return this.mUserTailFormat.replace(HardCodeUtil.a(2131913014), paramString);
   }
   
   public boolean hasNext(MessageRecord paramMessageRecord)
@@ -577,8 +577,8 @@ public class TroopRobotServiceImpl
   public void onCreate(AppRuntime paramAppRuntime)
   {
     this.mApp = paramAppRuntime;
-    this.mStartWords.add(HardCodeUtil.a(2131715541));
-    this.mEndWords.add(HardCodeUtil.a(2131715527));
+    this.mStartWords.add(HardCodeUtil.a(2131913013));
+    this.mEndWords.add(HardCodeUtil.a(2131913000));
     ThreadManager.post(new TroopRobotServiceImpl.1(this), 5, null, true);
   }
   
@@ -798,7 +798,7 @@ public class TroopRobotServiceImpl
             localTroopRobotInfo = (TroopRobotInfo)localIterator.next();
           } while (localTroopRobotInfo.a() != paramLong2);
           localObject1 = localStringBuilder;
-          if (!localTroopRobotInfo.a())
+          if (!localTroopRobotInfo.d())
           {
             localObject1 = localStringBuilder;
             if (paramInt == 1) {
@@ -1086,7 +1086,7 @@ public class TroopRobotServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.robot.api.impl.TroopRobotServiceImpl
  * JD-Core Version:    0.7.0.1
  */

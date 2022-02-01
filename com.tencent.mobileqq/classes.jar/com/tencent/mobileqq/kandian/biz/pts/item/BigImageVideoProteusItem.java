@@ -53,10 +53,10 @@ public class BigImageVideoProteusItem
       NativeText localNativeText = (NativeText)localViewBase.findViewBaseByName("id_video_paly_text");
       if (localNativeText != null)
       {
-        String str = HardCodeUtil.a(2131701320);
+        String str = HardCodeUtil.a(2131899330);
         if (CUKingCardUtils.a() == 1)
         {
-          localObject1 = HardCodeUtil.a(2131701321);
+          localObject1 = HardCodeUtil.a(2131899331);
         }
         else
         {
@@ -64,11 +64,11 @@ public class BigImageVideoProteusItem
           if (paramIReadInJoyModel != null)
           {
             localObject1 = str;
-            if (paramIReadInJoyModel.a().mXGFileSize > 0L)
+            if (paramIReadInJoyModel.k().mXGFileSize > 0L)
             {
               localObject1 = new StringBuilder();
-              ((StringBuilder)localObject1).append(VideoFeedsHelper.b(paramIReadInJoyModel.a().mXGFileSize));
-              ((StringBuilder)localObject1).append(HardCodeUtil.a(2131701319));
+              ((StringBuilder)localObject1).append(VideoFeedsHelper.c(paramIReadInJoyModel.k().mXGFileSize));
+              ((StringBuilder)localObject1).append(HardCodeUtil.a(2131899329));
               localObject1 = ((StringBuilder)localObject1).toString();
             }
           }
@@ -76,7 +76,7 @@ public class BigImageVideoProteusItem
         localNativeText.setText((CharSequence)localObject1);
       }
       if (paramIReadInJoyModel != null) {
-        localObject1 = paramIReadInJoyModel.a();
+        localObject1 = paramIReadInJoyModel.k();
       } else {
         localObject1 = null;
       }
@@ -96,21 +96,21 @@ public class BigImageVideoProteusItem
     }
     if (paramIReadInJoyModel != null)
     {
-      localObject1 = paramIReadInJoyModel.a();
+      localObject1 = paramIReadInJoyModel.k();
       if ((localObject1 != null) && (((AbsBaseArticleInfo)localObject1).isAccountShown)) {
         AccountShowUtils.a(paramContainer, paramIReadInJoyModel);
       }
     }
     paramContainer = localObject2;
     if (paramIReadInJoyModel != null) {
-      paramContainer = paramIReadInJoyModel.a();
+      paramContainer = paramIReadInJoyModel.k();
     }
     MultiVideoHelper.a(paramContainer, BaseActivity.sTopActivity);
   }
   
   public boolean a(int paramInt, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, ViewBase paramViewBase)
   {
-    paramContainer = paramIReadInJoyModel.a();
+    paramContainer = paramIReadInJoyModel.k();
     if (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()) != 1133) {
       return false;
     }
@@ -120,7 +120,7 @@ public class BigImageVideoProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.BigImageVideoProteusItem
  * JD-Core Version:    0.7.0.1
  */

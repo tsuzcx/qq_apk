@@ -22,39 +22,39 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class HomeFeedListPageLoader$FeedIdPullSegment
   extends JobSegment<Integer, FeedListPageLoaderBase.GetFeedIdListResult>
 {
-  private int jdField_a_of_type_Int;
-  private BasicLocation jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation;
-  private FeedListPageLoaderBase.FeedIdListCache jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache;
+  private FeedListPageLoaderBase.FeedIdListCache a;
+  private int b;
+  private BasicLocation c;
   
   public HomeFeedListPageLoader$FeedIdPullSegment(@NonNull FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache, BasicLocation paramBasicLocation)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache = paramFeedIdListCache;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation = paramBasicLocation;
+    this.a = paramFeedIdListCache;
+    this.c = paramBasicLocation;
   }
   
   public static boolean a(@Nullable GetStoryFeedIdListRequest.GetStoryFeedIdListResponse paramGetStoryFeedIdListResponse, AtomicBoolean paramAtomicBoolean)
   {
     List localList = ((StoryManager)SuperManager.a(5)).a(true);
-    Iterator localIterator = paramGetStoryFeedIdListResponse.a.iterator();
+    Iterator localIterator = paramGetStoryFeedIdListResponse.e.iterator();
     Object localObject1 = "";
     paramGetStoryFeedIdListResponse = null;
     while (localIterator.hasNext())
     {
       FeedIdListSeqInfo localFeedIdListSeqInfo = (FeedIdListSeqInfo)localIterator.next();
       Object localObject2 = localObject1;
-      if (!((String)localObject1).equals(localFeedIdListSeqInfo.c)) {
-        localObject2 = localFeedIdListSeqInfo.c;
+      if (!((String)localObject1).equals(localFeedIdListSeqInfo.d)) {
+        localObject2 = localFeedIdListSeqInfo.d;
       }
       localObject1 = localObject2;
       if (a(localFeedIdListSeqInfo, localList))
       {
-        localFeedIdListSeqInfo.jdField_b_of_type_Boolean = true;
+        localFeedIdListSeqInfo.g = true;
         paramAtomicBoolean.set(true);
         paramGetStoryFeedIdListResponse = localFeedIdListSeqInfo;
         localObject1 = localObject2;
       }
     }
-    return (paramGetStoryFeedIdListResponse != null) && (((String)localObject1).equals(paramGetStoryFeedIdListResponse.c));
+    return (paramGetStoryFeedIdListResponse != null) && (((String)localObject1).equals(paramGetStoryFeedIdListResponse.d));
   }
   
   private static boolean a(FeedIdListSeqInfo paramFeedIdListSeqInfo, List<StoryVideoItem> paramList)
@@ -74,30 +74,30 @@ public class HomeFeedListPageLoader$FeedIdPullSegment
               break;
             }
             localObject1 = (StoryVideoItem)paramList.next();
-          } while (!paramFeedIdListSeqInfo.c.equals(((StoryVideoItem)localObject1).mPublishDate));
-          if ((((StoryVideoItem)localObject1).isLocalAddShareGroupVideo()) && (paramFeedIdListSeqInfo.jdField_b_of_type_JavaLangString.equals(((StoryVideoItem)localObject1).shareGroupId)))
+          } while (!paramFeedIdListSeqInfo.d.equals(((StoryVideoItem)localObject1).mPublishDate));
+          if ((((StoryVideoItem)localObject1).isLocalAddShareGroupVideo()) && (paramFeedIdListSeqInfo.c.equals(((StoryVideoItem)localObject1).shareGroupId)))
           {
             SLog.d("Q.qqstory.home.data.HomeFeedListPageLoader", "this share group feed has *add* fail video:%s", new Object[] { paramFeedIdListSeqInfo });
             return true;
           }
-          localObject2 = StoryVideoTaskInfo.a(((StoryVideoItem)localObject1).mVid);
+          localObject2 = StoryVideoTaskInfo.b(((StoryVideoItem)localObject1).mVid);
           int i;
           if ((localObject2 != null) && (((PublishVideoEntry)localObject2).getBooleanExtra("ignorePersonalPublish", false))) {
             i = 1;
           } else {
             i = 0;
           }
-          if ((i == 0) && (paramFeedIdListSeqInfo.jdField_b_of_type_JavaLangString.equals(((StoryVideoItem)localObject1).mOwnerUid)))
+          if ((i == 0) && (paramFeedIdListSeqInfo.c.equals(((StoryVideoItem)localObject1).mOwnerUid)))
           {
             SLog.d("Q.qqstory.home.data.HomeFeedListPageLoader", "this personal feed  has fail video:%s", new Object[] { paramFeedIdListSeqInfo });
             return true;
           }
           localObject1 = ((StoryVideoItem)localObject1).mVideoSpreadGroupList;
-        } while ((localObject1 == null) || (((VideoSpreadGroupList)localObject1).b == null));
-        localObject1 = ((VideoSpreadGroupList)localObject1).b.iterator();
+        } while ((localObject1 == null) || (((VideoSpreadGroupList)localObject1).d == null));
+        localObject1 = ((VideoSpreadGroupList)localObject1).d.iterator();
       }
       localObject2 = (String)((Iterator)localObject1).next();
-    } while (!paramFeedIdListSeqInfo.jdField_b_of_type_JavaLangString.equals(localObject2));
+    } while (!paramFeedIdListSeqInfo.c.equals(localObject2));
     SLog.d("Q.qqstory.home.data.HomeFeedListPageLoader", "this share group feed has fail video:%s", new Object[] { paramFeedIdListSeqInfo });
     return true;
     return false;
@@ -105,13 +105,13 @@ public class HomeFeedListPageLoader$FeedIdPullSegment
   
   protected void a(JobContext paramJobContext, Integer paramInteger)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache.a(paramInteger.intValue(), 5);
-    if ((((FeedListPageLoaderBase.GetFeedIdListResult)localObject).a.size() <= 0) && (!((FeedListPageLoaderBase.GetFeedIdListResult)localObject).jdField_b_of_type_Boolean))
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((FeedListPageLoaderBase.GetFeedIdListResult)localObject).a.size() <= 0) && (!((FeedListPageLoaderBase.GetFeedIdListResult)localObject).c))
     {
       localObject = new AtomicBoolean(false);
       GetStoryFeedIdListRequest localGetStoryFeedIdListRequest = new GetStoryFeedIdListRequest();
-      localGetStoryFeedIdListRequest.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation = this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation;
-      localGetStoryFeedIdListRequest.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache.a();
+      localGetStoryFeedIdListRequest.g = this.c;
+      localGetStoryFeedIdListRequest.f = this.a.c();
       CmdTaskManger.a().a(localGetStoryFeedIdListRequest, new HomeFeedListPageLoader.FeedIdPullSegment.1(this, paramJobContext, (AtomicBoolean)localObject, paramInteger));
       return;
     }

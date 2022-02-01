@@ -106,13 +106,13 @@ import org.json.JSONObject;
 public class ProfileCardUtil
 {
   public static int a = 0;
-  private static long jdField_a_of_type_Long = 0L;
-  public static StringBuilder a;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "US" };
   public static int b = 1;
   public static int c = 2;
   public static int d = 3;
   public static int e = 4;
+  public static StringBuilder f;
+  private static long g;
+  private static final String[] h = { "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "US" };
   
   public static int a(Activity paramActivity)
   {
@@ -155,139 +155,11 @@ public class ProfileCardUtil
     return (int)(d1 + 0.5D);
   }
   
-  public static int a(AllInOne paramAllInOne)
-  {
-    int j = 1001;
-    if (paramAllInOne == null) {
-      return 1001;
-    }
-    if (ProfilePAUtils.isPaTypeFriend(paramAllInOne)) {}
-    int i;
-    do
-    {
-      return 0;
-      if ((paramAllInOne.pa == 22) || (paramAllInOne.pa == 21)) {
-        break label379;
-      }
-      i = j;
-      if (paramAllInOne.pa == 41) {
-        return i;
-      }
-      if (paramAllInOne.pa == 42) {
-        return 1001;
-      }
-      if (paramAllInOne.pa == 86) {
-        return 10002;
-      }
-      if (paramAllInOne.pa == 94) {
-        return 10004;
-      }
-      if (paramAllInOne.pa == 3) {}
-      while (paramAllInOne.pa == 2) {
-        return 1005;
-      }
-      if (paramAllInOne.pa == 74) {
-        return 1023;
-      }
-      if ((paramAllInOne.pa == 32) || (paramAllInOne.pa == 31) || (paramAllInOne.pa == 51) || (paramAllInOne.pa == 50) || (paramAllInOne.pa == 34) || (paramAllInOne.pa == 53)) {
-        break label375;
-      }
-      if ((paramAllInOne.pa == 46) || (paramAllInOne.pa == 47)) {
-        break label371;
-      }
-      if ((paramAllInOne.pa == 56) || (paramAllInOne.pa == 57)) {
-        break label367;
-      }
-      if (paramAllInOne.pa == 58) {
-        return 1020;
-      }
-      if ((paramAllInOne.pa == 71) || (paramAllInOne.pa == 72)) {
-        break;
-      }
-    } while (paramAllInOne.pa == 70);
-    if ((paramAllInOne.pa != 27) && (paramAllInOne.pa != 25))
-    {
-      if ((paramAllInOne.pa != 75) && (paramAllInOne.pa != 76))
-      {
-        if (paramAllInOne.pa == 80) {
-          return 25;
-        }
-        if (paramAllInOne.pa == 115) {
-          return 10008;
-        }
-        i = j;
-        if (paramAllInOne.pa == 117) {
-          return 10010;
-        }
-      }
-      else
-      {
-        return 1010;
-      }
-    }
-    else
-    {
-      return 1022;
-      return 1021;
-      label367:
-      return 1009;
-      label371:
-      return 1004;
-      label375:
-      return 1006;
-      label379:
-      i = 1000;
-    }
-    return i;
-  }
-  
-  public static int a(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    paramString = a(paramString, 100, 0.56338F);
-    int n = 0;
-    if (paramString == null) {
-      return 0;
-    }
-    int j = 0;
-    int i = 0;
-    int k = 0;
-    while (j < paramString.getHeight())
-    {
-      int m = 0;
-      while (m < paramString.getWidth())
-      {
-        int i1 = paramString.getPixel(m, j);
-        if ((Color.red(i1) + Color.green(i1) + Color.blue(i1)) / 3 > 127) {
-          i += 1;
-        } else {
-          k += 1;
-        }
-        m += 1;
-      }
-      j += 1;
-    }
-    j = n;
-    if (i >= k) {
-      j = 1;
-    }
-    paramString.recycle();
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder();
-      paramString.append("-->calculate background color cost:");
-      paramString.append(System.currentTimeMillis() - l);
-      paramString.append("(ms)");
-      QLog.d("ProfileCardUtil", 2, paramString.toString());
-    }
-    return j;
-  }
-  
   public static long a()
   {
     try
     {
-      if (Utils.a()) {
+      if (Utils.b()) {
         return Utils.a(new File(AppConstants.SDCARD_ROOT));
       }
       long l = Utils.a(new File(Environment.getRootDirectory().getPath()));
@@ -308,9 +180,9 @@ public class ProfileCardUtil
       if (paramAppInterface == null) {
         return paramIntent;
       }
-      Object localObject = String.format("https://ti.qq.com/qcard/profile?qq=%s&appid=%s&version=%s&_wv=1027", new Object[] { paramString, String.valueOf(paramAppInterface.getAppid()), "android-8.7.0" });
+      Object localObject = String.format("https://ti.qq.com/qcard/profile?qq=%s&appid=%s&version=%s&_wv=1027", new Object[] { paramString, String.valueOf(paramAppInterface.getAppid()), "android-8.8.17" });
       paramString = (String)localObject;
-      if (a())
+      if (c())
       {
         paramString = new StringBuilder();
         paramString.append((String)localObject);
@@ -338,46 +210,46 @@ public class ProfileCardUtil
   public static Bitmap a(String paramString, int paramInt, float paramFloat)
   {
     // Byte code:
-    //   0: new 272	java/io/File
+    //   0: new 197	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 281	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 206	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_0
     //   9: aload_0
-    //   10: invokevirtual 357	java/io/File:exists	()Z
+    //   10: invokevirtual 302	java/io/File:exists	()Z
     //   13: ifeq +198 -> 211
     //   16: aload_0
-    //   17: invokevirtual 360	java/io/File:length	()J
+    //   17: invokevirtual 305	java/io/File:length	()J
     //   20: lconst_0
     //   21: lcmp
     //   22: ifle +189 -> 211
     //   25: aload_0
-    //   26: invokevirtual 363	java/io/File:isDirectory	()Z
+    //   26: invokevirtual 308	java/io/File:isDirectory	()Z
     //   29: ifeq +5 -> 34
     //   32: aconst_null
     //   33: areturn
-    //   34: new 365	java/io/BufferedInputStream
+    //   34: new 310	java/io/BufferedInputStream
     //   37: dup
-    //   38: new 367	java/io/FileInputStream
+    //   38: new 312	java/io/FileInputStream
     //   41: dup
     //   42: aload_0
-    //   43: invokespecial 370	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   46: invokespecial 373	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   43: invokespecial 315	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   46: invokespecial 318	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   49: astore_0
     //   50: aload_0
-    //   51: invokestatic 379	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   51: invokestatic 324	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   54: astore 6
     //   56: aload 6
     //   58: ifnonnull +9 -> 67
     //   61: aload_0
-    //   62: invokevirtual 382	java/io/BufferedInputStream:close	()V
+    //   62: invokevirtual 327	java/io/BufferedInputStream:close	()V
     //   65: aconst_null
     //   66: areturn
     //   67: aload 6
-    //   69: invokevirtual 220	android/graphics/Bitmap:getWidth	()I
+    //   69: invokevirtual 332	android/graphics/Bitmap:getWidth	()I
     //   72: istore 4
     //   74: aload 6
-    //   76: invokevirtual 217	android/graphics/Bitmap:getHeight	()I
+    //   76: invokevirtual 335	android/graphics/Bitmap:getHeight	()I
     //   79: istore 5
     //   81: iload 4
     //   83: iload_1
@@ -390,9 +262,9 @@ public class ProfileCardUtil
     //   92: fdiv
     //   93: f2i
     //   94: istore_1
-    //   95: new 384	android/graphics/Matrix
+    //   95: new 337	android/graphics/Matrix
     //   98: dup
-    //   99: invokespecial 385	android/graphics/Matrix:<init>	()V
+    //   99: invokespecial 338	android/graphics/Matrix:<init>	()V
     //   102: astore 7
     //   104: aload 7
     //   106: fload_3
@@ -404,7 +276,7 @@ public class ProfileCardUtil
     //   113: iload 5
     //   115: i2f
     //   116: fdiv
-    //   117: invokevirtual 389	android/graphics/Matrix:postScale	(FF)Z
+    //   117: invokevirtual 342	android/graphics/Matrix:postScale	(FF)Z
     //   120: pop
     //   121: aload 6
     //   123: iconst_0
@@ -413,16 +285,16 @@ public class ProfileCardUtil
     //   127: iload 5
     //   129: aload 7
     //   131: iconst_1
-    //   132: invokestatic 393	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   132: invokestatic 346	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
     //   135: astore 7
     //   137: aload 6
-    //   139: invokevirtual 237	android/graphics/Bitmap:recycle	()V
+    //   139: invokevirtual 349	android/graphics/Bitmap:recycle	()V
     //   142: aload_0
-    //   143: invokevirtual 382	java/io/BufferedInputStream:close	()V
+    //   143: invokevirtual 327	java/io/BufferedInputStream:close	()V
     //   146: aload 7
     //   148: areturn
     //   149: aload_0
-    //   150: invokevirtual 382	java/io/BufferedInputStream:close	()V
+    //   150: invokevirtual 327	java/io/BufferedInputStream:close	()V
     //   153: aload 6
     //   155: areturn
     //   156: astore 7
@@ -439,7 +311,7 @@ public class ProfileCardUtil
     //   177: aload 6
     //   179: ifnull +8 -> 187
     //   182: aload 6
-    //   184: invokevirtual 382	java/io/BufferedInputStream:close	()V
+    //   184: invokevirtual 327	java/io/BufferedInputStream:close	()V
     //   187: aload_0
     //   188: athrow
     //   189: aconst_null
@@ -447,7 +319,7 @@ public class ProfileCardUtil
     //   191: aload_0
     //   192: ifnull +7 -> 199
     //   195: aload_0
-    //   196: invokevirtual 382	java/io/BufferedInputStream:close	()V
+    //   196: invokevirtual 327	java/io/BufferedInputStream:close	()V
     //   199: aconst_null
     //   200: areturn
     //   201: aconst_null
@@ -455,7 +327,7 @@ public class ProfileCardUtil
     //   203: aload_0
     //   204: ifnull +7 -> 211
     //   207: aload_0
-    //   208: invokevirtual 382	java/io/BufferedInputStream:close	()V
+    //   208: invokevirtual 327	java/io/BufferedInputStream:close	()V
     //   211: aconst_null
     //   212: areturn
     //   213: astore_0
@@ -488,7 +360,7 @@ public class ProfileCardUtil
     //   0	253	0	paramString	String
     //   0	253	1	paramInt	int
     //   0	253	2	paramFloat	float
-    //   89	18	3	f	float
+    //   89	18	3	f1	float
     //   72	54	4	i	int
     //   79	49	5	j	int
     //   54	129	6	localObject1	Object
@@ -624,13 +496,13 @@ public class ProfileCardUtil
     Object localObject;
     if (!paramString1.equals(""))
     {
-      FriendProfileCardBgInfo localFriendProfileCardBgInfo = a(FileUtils.readFileToStringEx(new File(paramString1, "config.json"), -1));
+      FriendProfileCardBgInfo localFriendProfileCardBgInfo = f(FileUtils.readFileToStringEx(new File(paramString1, "config.json"), -1));
       localObject = localFriendProfileCardBgInfo;
       if (localFriendProfileCardBgInfo != null)
       {
-        localObject = new String[localFriendProfileCardBgInfo.jdField_a_of_type_Int];
+        localObject = new String[localFriendProfileCardBgInfo.g];
         int j;
-        for (int i = 0; i < localFriendProfileCardBgInfo.jdField_a_of_type_Int; i = j)
+        for (int i = 0; i < localFriendProfileCardBgInfo.g; i = j)
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(paramString1);
@@ -640,7 +512,7 @@ public class ProfileCardUtil
           localStringBuilder.append(".png");
           localObject[i] = localStringBuilder.toString();
         }
-        localFriendProfileCardBgInfo.jdField_a_of_type_ArrayOfJavaLangString = ((String[])localObject);
+        localFriendProfileCardBgInfo.b = ((String[])localObject);
         localObject = localFriendProfileCardBgInfo;
       }
     }
@@ -653,7 +525,7 @@ public class ProfileCardUtil
       paramString1 = new FriendProfileCardBgInfo();
     }
     if (paramString1 != null) {
-      paramString1.jdField_a_of_type_JavaLangString = paramString2;
+      paramString1.a = paramString2;
     }
     return new FriendProfileCardBgDrawable(paramResources, paramString1);
   }
@@ -668,8 +540,8 @@ public class ProfileCardUtil
         paramAppRuntime = null;
         if (localFriendsManager != null)
         {
-          localFriends = localFriendsManager.e(paramString);
-          paramAppRuntime = localFriendsManager.a(paramString);
+          localFriends = localFriendsManager.m(paramString);
+          paramAppRuntime = localFriendsManager.f(paramString);
           int i = 0;
           byte b2 = 0;
           if (paramAppRuntime == null)
@@ -690,12 +562,12 @@ public class ProfileCardUtil
               paramAppRuntime.strReMark = localFriends.remark;
               paramAppRuntime.strShowName = localFriends.alias;
               if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
-                break label519;
+                break label528;
               }
               b1 = 1;
               paramAppRuntime.bQQVipOpen = b1;
               if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-                break label524;
+                break label533;
               }
               b1 = 1;
               paramAppRuntime.bSuperVipOpen = b1;
@@ -724,6 +596,7 @@ public class ProfileCardUtil
               paramAppRuntime.lUserFlag = localFriends.cSpecialFlag;
               paramAppRuntime.namePlateOfKingGameId = localFriends.namePlateOfKingGameId;
               paramAppRuntime.namePlateOfKingLoginTime = localFriends.namePlateOfKingLoginTime;
+              paramAppRuntime.gameCardId = localFriends.gameCardId;
             }
             else
             {
@@ -769,36 +642,12 @@ public class ProfileCardUtil
       finally {}
       Friends localFriends = null;
       continue;
-      label519:
+      label528:
       byte b1 = 0;
       continue;
-      label524:
+      label533:
       b1 = 0;
     }
-  }
-  
-  @NotNull
-  public static BusinessInfoCheckUpdate.RedTypeInfo a()
-  {
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-    localRedTypeInfo.red_type.set(-1);
-    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-    RedTouchItem localRedTouchItem = localLocalRedTouchManager.a(-4);
-    if ((localLocalRedTouchManager.a(localRedTouchItem, true)) && (localRedTouchItem.count > 0))
-    {
-      QLog.d("ProfileCardUtil", 1, "getProfileMsgListRedTouch");
-      localRedTypeInfo.red_type.set(0);
-      localRedTypeInfo.red_content.set("");
-      localRedTypeInfo.red_desc.set("");
-    }
-    return localRedTypeInfo;
-  }
-  
-  public static ProfileCardUtil.AvatarUploadResult a(QQAppInterface paramQQAppInterface, String paramString, Intent paramIntent)
-  {
-    String str = FaceUtil.a();
-    ImageUtil.a(paramString, str, 1080, 1080, 100);
-    return a(paramQQAppInterface, str, paramIntent, true);
   }
   
   private static ProfileCardUtil.AvatarUploadResult a(QQAppInterface paramQQAppInterface, String paramString, Intent paramIntent, boolean paramBoolean)
@@ -808,16 +657,16 @@ public class ProfileCardUtil
     ProfileCardUtil.AvatarUploadResult localAvatarUploadResult = new ProfileCardUtil.AvatarUploadResult();
     if (!((File)localObject).exists())
     {
-      localAvatarUploadResult.jdField_a_of_type_Int = -10000;
-      localAvatarUploadResult.jdField_a_of_type_JavaLangString = "file not exist";
-      a("onAvatarChanged", localAvatarUploadResult.jdField_a_of_type_Int, localAvatarUploadResult.jdField_a_of_type_JavaLangString);
+      localAvatarUploadResult.a = -10000;
+      localAvatarUploadResult.b = "file not exist";
+      a("onAvatarChanged", localAvatarUploadResult.a, localAvatarUploadResult.b);
       return localAvatarUploadResult;
     }
     if (!NetworkUtil.isNetSupport(paramQQAppInterface.getApp()))
     {
-      localAvatarUploadResult.jdField_a_of_type_Int = -10001;
-      localAvatarUploadResult.jdField_a_of_type_JavaLangString = "network error";
-      a("onAvatarChanged", localAvatarUploadResult.jdField_a_of_type_Int, localAvatarUploadResult.jdField_a_of_type_JavaLangString);
+      localAvatarUploadResult.a = -10001;
+      localAvatarUploadResult.b = "network error";
+      a("onAvatarChanged", localAvatarUploadResult.a, localAvatarUploadResult.b);
       return localAvatarUploadResult;
     }
     if ((l > 0L) && (l < 1749600L))
@@ -830,9 +679,9 @@ public class ProfileCardUtil
         int i = ((BitmapFactory.Options)localObject).outWidth;
         if ((i != ((BitmapFactory.Options)localObject).outHeight) || (i <= 0) || (i > 1080))
         {
-          localAvatarUploadResult.jdField_a_of_type_Int = -10000;
-          localAvatarUploadResult.jdField_a_of_type_JavaLangString = "image illegal, size must be square.";
-          a("onAvatarChanged", localAvatarUploadResult.jdField_a_of_type_Int, localAvatarUploadResult.jdField_a_of_type_JavaLangString);
+          localAvatarUploadResult.a = -10000;
+          localAvatarUploadResult.b = "image illegal, size must be square.";
+          a("onAvatarChanged", localAvatarUploadResult.a, localAvatarUploadResult.b);
           return localAvatarUploadResult;
         }
       }
@@ -843,58 +692,17 @@ public class ProfileCardUtil
         ((StringBuilder)localObject).append(l);
         QLog.d("Q.profilecard.Avatar", 2, ((StringBuilder)localObject).toString());
       }
-      localAvatarUploadResult.jdField_a_of_type_Int = 0;
-      localAvatarUploadResult.jdField_a_of_type_JavaLangString = "ok";
-      FaceUtil.a(paramString);
-      a(paramQQAppInterface, paramString, paramIntent);
+      localAvatarUploadResult.a = 0;
+      localAvatarUploadResult.b = "ok";
+      FaceUtil.e(paramString);
+      c(paramQQAppInterface, paramString, paramIntent);
       return localAvatarUploadResult;
     }
     a("onAvatarChanged", 0, String.valueOf(l));
-    localAvatarUploadResult.jdField_a_of_type_Int = -10000;
-    localAvatarUploadResult.jdField_a_of_type_JavaLangString = "image illegal, size must be square.";
-    a("onAvatarChanged", localAvatarUploadResult.jdField_a_of_type_Int, localAvatarUploadResult.jdField_a_of_type_JavaLangString);
+    localAvatarUploadResult.a = -10000;
+    localAvatarUploadResult.b = "image illegal, size must be square.";
+    a("onAvatarChanged", localAvatarUploadResult.a, localAvatarUploadResult.b);
     return localAvatarUploadResult;
-  }
-  
-  public static FriendProfileCardBgInfo a(String paramString)
-  {
-    if ((paramString != null) && (!paramString.equals("")))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ProfileCardUtil", 2, "do parse ProfileCardBgInfo");
-      }
-      Object localObject = new FriendProfileCardBgInfo();
-      try
-      {
-        paramString = new JSONObject(paramString);
-        ((FriendProfileCardBgInfo)localObject).jdField_b_of_type_Int = paramString.getInt("frameInterval");
-        ((FriendProfileCardBgInfo)localObject).jdField_a_of_type_Int = paramString.getInt("frameNumber");
-        ((FriendProfileCardBgInfo)localObject).jdField_a_of_type_Float = ((float)paramString.getDouble("positionX"));
-        ((FriendProfileCardBgInfo)localObject).jdField_b_of_type_Float = ((float)paramString.getDouble("positionY"));
-        ((FriendProfileCardBgInfo)localObject).c = ((float)paramString.getDouble("width"));
-        ((FriendProfileCardBgInfo)localObject).d = ((float)paramString.getDouble("height"));
-        return localObject;
-      }
-      catch (JSONException paramString)
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("parse, exception=");
-        ((StringBuilder)localObject).append(MsfSdkUtils.getStackTraceString(paramString));
-        QLog.e("ProfileCardUtil", 2, ((StringBuilder)localObject).toString());
-      }
-    }
-    return null;
-  }
-  
-  public static String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(CardHandler.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("temp");
-    localStringBuilder.append("/");
-    localStringBuilder.append(System.currentTimeMillis());
-    localStringBuilder.append("_cardbg.tmp");
-    return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
   public static String a(byte paramByte)
@@ -904,29 +712,29 @@ public class ProfileCardUtil
     default: 
       return null;
     case 12: 
-      return HardCodeUtil.a(2131708445);
+      return HardCodeUtil.a(2131906231);
     case 11: 
-      return HardCodeUtil.a(2131708453);
+      return HardCodeUtil.a(2131906239);
     case 10: 
-      return HardCodeUtil.a(2131708473);
+      return HardCodeUtil.a(2131906259);
     case 9: 
-      return HardCodeUtil.a(2131708465);
+      return HardCodeUtil.a(2131906251);
     case 8: 
-      return HardCodeUtil.a(2131708456);
+      return HardCodeUtil.a(2131906242);
     case 7: 
-      return HardCodeUtil.a(2131708443);
+      return HardCodeUtil.a(2131906229);
     case 6: 
-      return HardCodeUtil.a(2131708429);
+      return HardCodeUtil.a(2131906215);
     case 5: 
-      return HardCodeUtil.a(2131708430);
+      return HardCodeUtil.a(2131906216);
     case 4: 
-      return HardCodeUtil.a(2131708423);
+      return HardCodeUtil.a(2131906209);
     case 3: 
-      return HardCodeUtil.a(2131708451);
+      return HardCodeUtil.a(2131906237);
     case 2: 
-      return HardCodeUtil.a(2131708425);
+      return HardCodeUtil.a(2131906211);
     case 1: 
-      return HardCodeUtil.a(2131708433);
+      return HardCodeUtil.a(2131906219);
     }
     return null;
   }
@@ -953,18 +761,18 @@ public class ProfileCardUtil
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt1 == 0)
     {
-      localStringBuilder.append(paramContext.getString(2131693879));
+      localStringBuilder.append(paramContext.getString(2131891484));
       localStringBuilder.append("  ");
     }
     else if (paramInt1 == 1)
     {
-      localStringBuilder.append(paramContext.getString(2131692259));
+      localStringBuilder.append(paramContext.getString(2131889246));
       localStringBuilder.append("  ");
     }
     if (paramInt2 != 0)
     {
       localStringBuilder.append(paramInt2);
-      localStringBuilder.append(paramContext.getString(2131719391));
+      localStringBuilder.append(paramContext.getString(2131916946));
       localStringBuilder.append("  ");
     }
     String str = "";
@@ -972,7 +780,7 @@ public class ProfileCardUtil
     if (!TextUtils.isEmpty(paramString1))
     {
       paramContext = str;
-      if (!HardCodeUtil.a(2131708437).equals(paramString1))
+      if (!HardCodeUtil.a(2131906223).equals(paramString1))
       {
         paramContext = new StringBuilder();
         paramContext.append("");
@@ -1032,11 +840,11 @@ public class ProfileCardUtil
       } else {
         i = -1;
       }
-      if ((i > 0) && (!a()))
+      if ((i > 0) && (!c()))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(i);
-        ((StringBuilder)localObject).append(paramContext.getString(2131719391));
+        ((StringBuilder)localObject).append(paramContext.getString(2131916946));
         localObject = ((StringBuilder)localObject).toString();
         break label124;
       }
@@ -1047,7 +855,7 @@ public class ProfileCardUtil
     {
       if (localCard != null)
       {
-        if ((!TextUtils.isEmpty(localCard.strCountry)) && (!HardCodeUtil.a(2131708435).equals(localCard.strCountry)))
+        if ((!TextUtils.isEmpty(localCard.strCountry)) && (!HardCodeUtil.a(2131906221).equals(localCard.strCountry)))
         {
           paramContext = new StringBuilder();
           paramContext.append("");
@@ -1094,7 +902,7 @@ public class ProfileCardUtil
       }
       if (localContactCard != null)
       {
-        if ((!TextUtils.isEmpty(localContactCard.strCountry)) && (!HardCodeUtil.a(2131708448).equals(localContactCard.strCountry)))
+        if ((!TextUtils.isEmpty(localContactCard.strCountry)) && (!HardCodeUtil.a(2131906234).equals(localContactCard.strCountry)))
         {
           paramContext = new StringBuilder();
           paramContext.append("");
@@ -1276,10 +1084,10 @@ public class ProfileCardUtil
     {
       String str = paramProfileCardInfo.allInOne.uin;
       QidianManager localQidianManager = (QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
-      if (localQidianManager.a(str)) {
-        return String.format("https://datacard.qidian.qq.com/static/1_%s_more.htm?appid=%s&version=%s&_wv=1027", new Object[] { str, Integer.valueOf(paramQQAppInterface.getAppid()), "android-8.7.0" });
+      if (localQidianManager.e(str)) {
+        return String.format("https://datacard.qidian.qq.com/static/1_%s_more.htm?appid=%s&version=%s&_wv=1027", new Object[] { str, Integer.valueOf(paramQQAppInterface.getAppid()), "android-8.8.17" });
       }
-      if (localQidianManager.f(str)) {
+      if (localQidianManager.m(str)) {
         return paramActivity.getIntent().getStringExtra("key_qidian_detail_url");
       }
       return ProfileCardUtils.getProfileDetailUrl(paramQQAppInterface, paramProfileCardInfo);
@@ -1319,14 +1127,6 @@ public class ProfileCardUtil
       }
     }
     return localObject2;
-  }
-  
-  public static String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ProfileCardTemplateUtil.a());
-    localStringBuilder.append(b(paramString));
-    return localStringBuilder.toString();
   }
   
   public static String a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3)
@@ -1407,69 +1207,6 @@ public class ProfileCardUtil
     return "";
   }
   
-  public static List<Pair<String, String>> a(Context paramContext, ProfileCardInfo paramProfileCardInfo)
-  {
-    ArrayList localArrayList = new ArrayList(3);
-    if (paramContext != null)
-    {
-      if (paramProfileCardInfo.card == null) {
-        return localArrayList;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileCardUtil", 2, "makeAccountInfoForSelfProfile new rule");
-      }
-      int i = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getGenderWithPrivacy(paramProfileCardInfo);
-      if (i == 0) {
-        localArrayList.add(Pair.create(paramContext.getString(2131693879), ""));
-      } else if (i == 1) {
-        localArrayList.add(Pair.create(paramContext.getString(2131692259), ""));
-      }
-      paramContext = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getSchoolWithPrivacy(paramProfileCardInfo);
-      if (!TextUtils.isEmpty(paramContext)) {
-        localArrayList.add(Pair.create(paramContext, "school"));
-      }
-      paramContext = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getCompanyWithPrivacy(paramProfileCardInfo);
-      if (!TextUtils.isEmpty(paramContext)) {
-        localArrayList.add(Pair.create(paramContext, "company"));
-      }
-      if (localArrayList.size() >= 4) {
-        return localArrayList;
-      }
-      paramContext = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getLocationCountryWithPrivacy(paramProfileCardInfo);
-      String str1 = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getLocationProvinceWithPrivacy(paramProfileCardInfo);
-      String str2 = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getLocationCityWithPrivacy(paramProfileCardInfo);
-      StringBuilder localStringBuilder = new StringBuilder(50);
-      if ((!TextUtils.isEmpty(paramContext)) && (!HardCodeUtil.a(2131708444).equals(paramContext))) {
-        localStringBuilder.append(paramContext);
-      }
-      if (!TextUtils.isEmpty(str1))
-      {
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.append("-");
-        }
-        localStringBuilder.append(str1);
-      }
-      if (!TextUtils.isEmpty(str2))
-      {
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.append("-");
-        }
-        localStringBuilder.append(str2);
-      }
-      if (localStringBuilder.length() > 0) {
-        localArrayList.add(Pair.create(localStringBuilder.toString(), "location"));
-      }
-      if (localArrayList.size() >= 4) {
-        return localArrayList;
-      }
-      paramContext = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getConstellationWithPrivacy(paramProfileCardInfo);
-      if (!TextUtils.isEmpty(paramContext)) {
-        localArrayList.add(Pair.create(paramContext, ""));
-      }
-    }
-    return localArrayList;
-  }
-  
   public static List<SpannableString> a(QQAppInterface paramQQAppInterface, Context paramContext, ProfileCardInfo paramProfileCardInfo)
   {
     ArrayList localArrayList = new ArrayList();
@@ -1483,14 +1220,14 @@ public class ProfileCardUtil
       }
       int i = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getGenderWithPrivacy(paramProfileCardInfo);
       if (i == 0) {
-        localArrayList.add(new SpannableString(paramContext.getString(2131693879)));
+        localArrayList.add(new SpannableString(paramContext.getString(2131891484)));
       } else if (i == 1) {
-        localArrayList.add(new SpannableString(paramContext.getString(2131692259)));
+        localArrayList.add(new SpannableString(paramContext.getString(2131889246)));
       }
       String str = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getSchoolWithPrivacy(paramProfileCardInfo);
       if (!TextUtils.isEmpty(str)) {
         if (paramProfileCardInfo.card.schoolVerifiedFlag) {
-          localArrayList.add(a(str, true, 2130845178, 2131298260, 2131298259, paramContext, paramQQAppInterface));
+          localArrayList.add(a(str, true, 2130846620, 2131298961, 2131298960, paramContext, paramQQAppInterface));
         } else {
           localArrayList.add(new SpannableString(paramProfileCardInfo.card.strSchool));
         }
@@ -1506,7 +1243,7 @@ public class ProfileCardUtil
       paramContext = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getLocationProvinceWithPrivacy(paramProfileCardInfo);
       str = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getLocationCityWithPrivacy(paramProfileCardInfo);
       StringBuilder localStringBuilder = new StringBuilder(50);
-      if ((!TextUtils.isEmpty(paramQQAppInterface)) && (!HardCodeUtil.a(2131708444).equals(paramQQAppInterface))) {
+      if ((!TextUtils.isEmpty(paramQQAppInterface)) && (!HardCodeUtil.a(2131906230).equals(paramQQAppInterface))) {
         localStringBuilder.append(paramQQAppInterface);
       }
       if (!TextUtils.isEmpty(paramContext))
@@ -1631,7 +1368,7 @@ public class ProfileCardUtil
         paramString4.putExtra("individuation_url_type", 40204);
       }
     }
-    paramString1 = VasWebviewUtil.a(paramString1, paramInt4);
+    paramString1 = VasWebviewUtil.b(paramString1, paramInt4);
     paramString4.putExtra("url", paramString1);
     VasWebviewUtil.b(paramActivity, paramString1, -1L, paramString4, paramBoolean1, 0);
   }
@@ -1654,7 +1391,7 @@ public class ProfileCardUtil
       paramString2 = BusinessCardUtils.a((AppInterface)localObject, paramString2);
       if (paramString2.mobilesNum.size() >= 3)
       {
-        QQToast.a(paramActivity, 0, 2131694827, 0).a();
+        QQToast.makeText(paramActivity, 0, 2131892530, 0).show();
         return;
       }
       localObject = new Bundle();
@@ -1666,30 +1403,6 @@ public class ProfileCardUtil
     {
       QLog.e("openBusinessCardToAddingPhone", 1, paramActivity, new Object[0]);
     }
-  }
-  
-  public static void a(Context paramContext)
-  {
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < 1500L) {
-      return;
-    }
-    jdField_a_of_type_Long = l;
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://ti.qq.com/signature/msglist?_wv=3&_wwv=128");
-    paramContext.startActivity(localIntent);
-    paramContext = (LocalRedTouchManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-    paramContext.a(10019, false);
-    paramContext.a(10020, false);
-    paramContext.a(10022, false);
-    paramContext.a(10021, false);
-    paramContext.a(10023, false);
-    paramContext.a(10024, false);
-    paramContext.a(10025, false);
-    paramContext.a(10026, false);
-    paramContext.a(10027, false);
-    paramContext.a(10028, false);
-    QLog.d("ProfileCardUtil", 1, "jumpProfileBubbleMsgList");
   }
   
   public static void a(Context paramContext, long paramLong, String paramString)
@@ -1785,18 +1498,18 @@ public class ProfileCardUtil
       String str = paramTextView.getText().toString();
       if ((paramString1 != null) && (str.contains(paramString1)))
       {
-        localLongClickCopyData.addCopyItem(localResources.getString(2131699149), paramString1);
+        localLongClickCopyData.addCopyItem(localResources.getString(2131897165), paramString1);
         if ((!TextUtils.isEmpty(paramString2)) && (str.length() > paramString1.length() + 2)) {
-          localLongClickCopyData.addCopyItem(localResources.getString(2131699148), paramString2);
+          localLongClickCopyData.addCopyItem(localResources.getString(2131897164), paramString2);
         }
       }
       else if ((paramString2 != null) && (str.contains(paramString2)))
       {
-        localLongClickCopyData.addCopyItem(localResources.getString(2131699148), paramString2);
+        localLongClickCopyData.addCopyItem(localResources.getString(2131897164), paramString2);
       }
       else
       {
-        localLongClickCopyData.addCopyItem(localResources.getString(2131699147), str);
+        localLongClickCopyData.addCopyItem(localResources.getString(2131897163), str);
       }
       LongClickCopyAction.attachCopyAction(paramTextView, localLongClickCopyData);
     }
@@ -1812,11 +1525,6 @@ public class ProfileCardUtil
   public static void a(BaseActivity paramBaseActivity, long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, Bundle paramBundle)
   {
     NewReportPlugin.a(paramBaseActivity, paramLong, paramString1, paramString2, paramInt, paramString3, paramBundle);
-  }
-  
-  public static void a(@NonNull QQAppInterface paramQQAppInterface)
-  {
-    QVipConfigManager.a(paramQQAppInterface, "show_diy_template_guide_for_guest_time", QVipConfigManager.a(paramQQAppInterface, "show_diy_template_guide_for_guest_time", 0) + 1);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
@@ -1845,10 +1553,10 @@ public class ProfileCardUtil
     int i = 0;
     if (bool)
     {
-      DynamicFaceDrawable localDynamicFaceDrawable = ((DynamicAvatarView)paramView).a;
-      if ((localDynamicFaceDrawable != null) && (localDynamicFaceDrawable.a) && (!TextUtils.isEmpty(localDynamicFaceDrawable.c)))
+      DynamicFaceDrawable localDynamicFaceDrawable = ((DynamicAvatarView)paramView).c;
+      if ((localDynamicFaceDrawable != null) && (localDynamicFaceDrawable.e) && (!TextUtils.isEmpty(localDynamicFaceDrawable.o)))
       {
-        b(paramActivity, paramView, localDynamicFaceDrawable.c);
+        b(paramActivity, paramView, localDynamicFaceDrawable.o);
         paramInt1 = 1;
       }
       else if (paramInt2 == 1)
@@ -1880,34 +1588,6 @@ public class ProfileCardUtil
         paramActivity = "0";
       }
       ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X8007103", "0X8007103", 0, 0, paramActivity, "", "", "");
-    }
-  }
-  
-  public static void a(@NonNull QQAppInterface paramQQAppInterface, String paramString)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("diy_guest_tip_show_list", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramString);
-    paramQQAppInterface = localStringBuilder.toString();
-    localSharedPreferences.edit().putLong(paramQQAppInterface, System.currentTimeMillis()).apply();
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, String paramString, Intent paramIntent)
-  {
-    ThreadManager.postImmediately(new ProfileCardUtil.1(paramString, paramIntent, paramQQAppInterface), null, true);
-  }
-  
-  public static void a(Card paramCard, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramCard != null) && (paramQQAppInterface != null))
-    {
-      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("profile_card_new_school_guide", 0).edit();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("new_school_guide_init_");
-      localStringBuilder.append(paramCard.uin);
-      paramQQAppInterface.putBoolean(localStringBuilder.toString(), false).commit();
     }
   }
   
@@ -1945,20 +1625,20 @@ public class ProfileCardUtil
   
   public static final void a(String paramString1, int paramInt, String paramString2)
   {
-    StringBuilder localStringBuilder = jdField_a_of_type_JavaLangStringBuilder;
+    StringBuilder localStringBuilder = f;
     if (localStringBuilder == null) {
-      jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(120);
+      f = new StringBuilder(120);
     } else {
       localStringBuilder.setLength(0);
     }
-    localStringBuilder = jdField_a_of_type_JavaLangStringBuilder;
+    localStringBuilder = f;
     localStringBuilder.append(paramString1);
     localStringBuilder.append(", reason = [");
     localStringBuilder.append(paramString2);
     localStringBuilder.append("], code = [");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("]");
-    QLog.i("UPLOAD_AVATAR_FAIL", 1, jdField_a_of_type_JavaLangStringBuilder.toString());
+    QLog.i("UPLOAD_AVATAR_FAIL", 1, f.toString());
   }
   
   public static void a(String paramString, Activity paramActivity)
@@ -1994,8 +1674,8 @@ public class ProfileCardUtil
     {
       QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
       localUserInfo.qzone_uin = paramQQAppInterface.getCurrentAccountUin();
-      localUserInfo.nickname = ContactUtils.e(paramQQAppInterface, localUserInfo.qzone_uin);
-      QZoneHelper.forwardToPublishMood(paramActivity, localUserInfo, paramString, paramActivity.getString(2131692105), "", -1);
+      localUserInfo.nickname = ContactUtils.f(paramQQAppInterface, localUserInfo.qzone_uin);
+      QZoneHelper.forwardToPublishMood(paramActivity, localUserInfo, paramString, paramActivity.getString(2131889086), "", -1);
       return;
     }
     if (QLog.isColorLevel())
@@ -2034,22 +1714,6 @@ public class ProfileCardUtil
     paramActivity.startActivity(paramString);
   }
   
-  public static boolean a()
-  {
-    String str = Locale.getDefault().getCountry();
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (TextUtils.equals(str, arrayOfString[i])) {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
   public static boolean a(@NonNull QQAppInterface paramQQAppInterface, String paramString)
   {
     if (QVipConfigManager.a(paramQQAppInterface, "show_diy_template_guide_for_guest_time", 0) >= 3) {
@@ -2067,7 +1731,7 @@ public class ProfileCardUtil
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString, Intent paramIntent)
   {
     boolean bool = false;
-    if (a(paramQQAppInterface, paramString, paramIntent, false).jdField_a_of_type_Int == 0) {
+    if (a(paramQQAppInterface, paramString, paramIntent, false).a == 0) {
       bool = true;
     }
     return bool;
@@ -2109,41 +1773,7 @@ public class ProfileCardUtil
   
   public static boolean a(ProfileCardBackground paramProfileCardBackground)
   {
-    return paramProfileCardBackground.jdField_a_of_type_Int == 160;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    paramString = a(paramString);
-    try
-    {
-      paramString = new File(paramString);
-      if ((paramString.exists()) && (paramString.isFile()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "isExistBgResource is exists");
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "isExistBgResource is not exists");
-        }
-        return false;
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("isExistBgResource exception msg=");
-        localStringBuilder.append(paramString.getMessage());
-        QLog.d("Q.profilecard.FrdProfileCard", 2, localStringBuilder.toString());
-      }
-      return false;
-    }
-    return true;
+    return paramProfileCardBackground.a == 160;
   }
   
   public static boolean a(ArrayList<Integer> paramArrayList)
@@ -2171,28 +1801,132 @@ public class ProfileCardUtil
     return (int)Math.floor(TypedValue.applyDimension(1, paramInt, paramContext.getApplicationContext().getResources().getDisplayMetrics()));
   }
   
+  public static int b(AllInOne paramAllInOne)
+  {
+    int j = 1001;
+    if (paramAllInOne == null) {
+      return 1001;
+    }
+    if (ProfilePAUtils.isPaTypeFriend(paramAllInOne)) {}
+    int i;
+    do
+    {
+      return 0;
+      if ((paramAllInOne.pa == 22) || (paramAllInOne.pa == 21)) {
+        break label379;
+      }
+      i = j;
+      if (paramAllInOne.pa == 41) {
+        return i;
+      }
+      if (paramAllInOne.pa == 42) {
+        return 1001;
+      }
+      if (paramAllInOne.pa == 86) {
+        return 10002;
+      }
+      if (paramAllInOne.pa == 94) {
+        return 10004;
+      }
+      if (paramAllInOne.pa == 3) {}
+      while (paramAllInOne.pa == 2) {
+        return 1005;
+      }
+      if (paramAllInOne.pa == 74) {
+        return 1023;
+      }
+      if ((paramAllInOne.pa == 32) || (paramAllInOne.pa == 31) || (paramAllInOne.pa == 51) || (paramAllInOne.pa == 50) || (paramAllInOne.pa == 34) || (paramAllInOne.pa == 53)) {
+        break label375;
+      }
+      if ((paramAllInOne.pa == 46) || (paramAllInOne.pa == 47)) {
+        break label371;
+      }
+      if ((paramAllInOne.pa == 56) || (paramAllInOne.pa == 57)) {
+        break label367;
+      }
+      if (paramAllInOne.pa == 58) {
+        return 1020;
+      }
+      if ((paramAllInOne.pa == 71) || (paramAllInOne.pa == 72)) {
+        break;
+      }
+    } while (paramAllInOne.pa == 70);
+    if ((paramAllInOne.pa != 27) && (paramAllInOne.pa != 25))
+    {
+      if ((paramAllInOne.pa != 75) && (paramAllInOne.pa != 76))
+      {
+        if (paramAllInOne.pa == 80) {
+          return 25;
+        }
+        if (paramAllInOne.pa == 115) {
+          return 10008;
+        }
+        i = j;
+        if (paramAllInOne.pa == 117) {
+          return 10010;
+        }
+      }
+      else
+      {
+        return 1010;
+      }
+    }
+    else
+    {
+      return 1022;
+      return 1021;
+      label367:
+      return 1009;
+      label371:
+      return 1004;
+      label375:
+      return 1006;
+      label379:
+      i = 1000;
+    }
+    return i;
+  }
+  
+  public static ProfileCardUtil.AvatarUploadResult b(QQAppInterface paramQQAppInterface, String paramString, Intent paramIntent)
+  {
+    String str = FaceUtil.a();
+    ImageUtil.a(paramString, str, 1080, 1080, 100);
+    return a(paramQQAppInterface, str, paramIntent, true);
+  }
+  
+  public static String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(CardHandler.a);
+    localStringBuilder.append("temp");
+    localStringBuilder.append("/");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("_cardbg.tmp");
+    return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+  }
+  
   public static String b(Context paramContext, ProfileCardInfo paramProfileCardInfo)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int i = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getGenderWithPrivacy(paramProfileCardInfo);
     if (i == 0)
     {
-      localStringBuilder.append(paramContext.getString(2131693879));
+      localStringBuilder.append(paramContext.getString(2131891484));
       localStringBuilder.append("  ");
     }
     else if (i == 1)
     {
-      localStringBuilder.append(paramContext.getString(2131692259));
+      localStringBuilder.append(paramContext.getString(2131889246));
       localStringBuilder.append("  ");
     }
     i = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getAgeWithPrivacy(paramProfileCardInfo);
-    if (a()) {
+    if (c()) {
       i = 0;
     }
     if (i != 0)
     {
       localStringBuilder.append(i);
-      localStringBuilder.append(paramContext.getString(2131719391));
+      localStringBuilder.append(paramContext.getString(2131916946));
       localStringBuilder.append("  ");
     }
     paramContext = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getConstellationWithPrivacy(paramProfileCardInfo);
@@ -2209,7 +1943,7 @@ public class ProfileCardUtil
     if (!TextUtils.isEmpty(str3))
     {
       paramContext = paramProfileCardInfo;
-      if (!HardCodeUtil.a(2131708464).equals(str3))
+      if (!HardCodeUtil.a(2131906250).equals(str3))
       {
         paramContext = new StringBuilder();
         paramContext.append("");
@@ -2253,18 +1987,10 @@ public class ProfileCardUtil
     return localStringBuilder.toString();
   }
   
-  public static String b(String paramString)
-  {
-    if (paramString == null) {
-      return "";
-    }
-    return MD5.toMD5(paramString);
-  }
-  
   public static void b(Activity paramActivity, View paramView, String paramString)
   {
     Object localObject = new PicInfo();
-    ((PicInfo)localObject).d = paramString;
+    ((PicInfo)localObject).e = paramString;
     paramString = new ArrayList(1);
     paramString.add(localObject);
     localObject = new Intent();
@@ -2275,20 +2001,32 @@ public class ProfileCardUtil
     RouteUtils.a(paramActivity, (Intent)localObject, "/nearby/profile/pic/browser");
   }
   
-  @NotNull
-  public static void b(QQAppInterface paramQQAppInterface)
+  public static void b(@NonNull QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = (LocalRedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-    paramQQAppInterface.a(10019, false);
-    paramQQAppInterface.a(10020, false);
-    paramQQAppInterface.a(10022, false);
-    paramQQAppInterface.a(10021, false);
-    paramQQAppInterface.a(10023, false);
-    paramQQAppInterface.a(10024, false);
-    paramQQAppInterface.a(10025, false);
-    paramQQAppInterface.a(10026, false);
-    paramQQAppInterface.a(10027, false);
-    paramQQAppInterface.a(10028, false);
+    QVipConfigManager.b(paramQQAppInterface, "show_diy_template_guide_for_guest_time", QVipConfigManager.a(paramQQAppInterface, "show_diy_template_guide_for_guest_time", 0) + 1);
+  }
+  
+  public static void b(@NonNull QQAppInterface paramQQAppInterface, String paramString)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("diy_guest_tip_show_list", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    paramQQAppInterface = localStringBuilder.toString();
+    localSharedPreferences.edit().putLong(paramQQAppInterface, System.currentTimeMillis()).apply();
+  }
+  
+  public static void b(Card paramCard, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramCard != null) && (paramQQAppInterface != null))
+    {
+      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("profile_card_new_school_guide", 0).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("new_school_guide_init_");
+      localStringBuilder.append(paramCard.uin);
+      paramQQAppInterface.putBoolean(localStringBuilder.toString(), false).commit();
+    }
   }
   
   public static void b(String paramString, QQAppInterface paramQQAppInterface, Activity paramActivity)
@@ -2304,7 +2042,7 @@ public class ProfileCardUtil
         if (QLog.isColorLevel()) {
           QLog.e("forwardFavorite", 2, "", paramString);
         }
-        QQToast.a(paramActivity, paramActivity.getResources().getString(2131692762), 0).a();
+        QQToast.makeText(paramActivity, paramActivity.getResources().getString(2131889833), 0).show();
         return;
       }
     }
@@ -2331,6 +2069,40 @@ public class ProfileCardUtil
     }
   }
   
+  public static boolean b(String paramString)
+  {
+    paramString = c(paramString);
+    try
+    {
+      paramString = new File(paramString);
+      if ((paramString.exists()) && (paramString.isFile()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "isExistBgResource is exists");
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "isExistBgResource is not exists");
+        }
+        return false;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isExistBgResource exception msg=");
+        localStringBuilder.append(paramString.getMessage());
+        QLog.d("Q.profilecard.FrdProfileCard", 2, localStringBuilder.toString());
+      }
+      return false;
+    }
+    return true;
+  }
+  
   public static boolean b(ArrayList<Integer> paramArrayList)
   {
     if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
@@ -2351,7 +2123,169 @@ public class ProfileCardUtil
     return (int)TypedValue.applyDimension(1, paramInt, paramContext.getApplicationContext().getResources().getDisplayMetrics());
   }
   
-  public static String c(Context paramContext, ProfileCardInfo paramProfileCardInfo)
+  public static String c(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ProfileCardTemplateUtil.b());
+    localStringBuilder.append(d(paramString));
+    return localStringBuilder.toString();
+  }
+  
+  public static List<Pair<String, String>> c(Context paramContext, ProfileCardInfo paramProfileCardInfo)
+  {
+    ArrayList localArrayList = new ArrayList(3);
+    if (paramContext != null)
+    {
+      if (paramProfileCardInfo.card == null) {
+        return localArrayList;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileCardUtil", 2, "makeAccountInfoForSelfProfile new rule");
+      }
+      int i = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getGenderWithPrivacy(paramProfileCardInfo);
+      if (i == 0) {
+        localArrayList.add(Pair.create(paramContext.getString(2131891484), ""));
+      } else if (i == 1) {
+        localArrayList.add(Pair.create(paramContext.getString(2131889246), ""));
+      }
+      paramContext = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getSchoolWithPrivacy(paramProfileCardInfo);
+      if (!TextUtils.isEmpty(paramContext)) {
+        localArrayList.add(Pair.create(paramContext, "school"));
+      }
+      paramContext = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getCompanyWithPrivacy(paramProfileCardInfo);
+      if (!TextUtils.isEmpty(paramContext)) {
+        localArrayList.add(Pair.create(paramContext, "company"));
+      }
+      if (localArrayList.size() >= 4) {
+        return localArrayList;
+      }
+      paramContext = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getLocationCountryWithPrivacy(paramProfileCardInfo);
+      String str1 = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getLocationProvinceWithPrivacy(paramProfileCardInfo);
+      String str2 = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getLocationCityWithPrivacy(paramProfileCardInfo);
+      StringBuilder localStringBuilder = new StringBuilder(50);
+      if ((!TextUtils.isEmpty(paramContext)) && (!HardCodeUtil.a(2131906230).equals(paramContext))) {
+        localStringBuilder.append(paramContext);
+      }
+      if (!TextUtils.isEmpty(str1))
+      {
+        if (localStringBuilder.length() > 0) {
+          localStringBuilder.append("-");
+        }
+        localStringBuilder.append(str1);
+      }
+      if (!TextUtils.isEmpty(str2))
+      {
+        if (localStringBuilder.length() > 0) {
+          localStringBuilder.append("-");
+        }
+        localStringBuilder.append(str2);
+      }
+      if (localStringBuilder.length() > 0) {
+        localArrayList.add(Pair.create(localStringBuilder.toString(), "location"));
+      }
+      if (localArrayList.size() >= 4) {
+        return localArrayList;
+      }
+      paramContext = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getConstellationWithPrivacy(paramProfileCardInfo);
+      if (!TextUtils.isEmpty(paramContext)) {
+        localArrayList.add(Pair.create(paramContext, ""));
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static void c(Context paramContext)
+  {
+    long l = System.currentTimeMillis();
+    if (l - g < 1500L) {
+      return;
+    }
+    g = l;
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://ti.qq.com/signature/msglist?_wv=3&_wwv=128");
+    paramContext.startActivity(localIntent);
+    paramContext = (LocalRedTouchManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+    paramContext.a(10019, false);
+    paramContext.a(10020, false);
+    paramContext.a(10022, false);
+    paramContext.a(10021, false);
+    paramContext.a(10023, false);
+    paramContext.a(10024, false);
+    paramContext.a(10025, false);
+    paramContext.a(10026, false);
+    paramContext.a(10027, false);
+    paramContext.a(10028, false);
+    QLog.d("ProfileCardUtil", 1, "jumpProfileBubbleMsgList");
+  }
+  
+  @NotNull
+  public static void c(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = (LocalRedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+    paramQQAppInterface.b(10019, false);
+    paramQQAppInterface.b(10020, false);
+    paramQQAppInterface.b(10022, false);
+    paramQQAppInterface.b(10021, false);
+    paramQQAppInterface.b(10023, false);
+    paramQQAppInterface.b(10024, false);
+    paramQQAppInterface.b(10025, false);
+    paramQQAppInterface.b(10026, false);
+    paramQQAppInterface.b(10027, false);
+    paramQQAppInterface.b(10028, false);
+  }
+  
+  private static void c(QQAppInterface paramQQAppInterface, String paramString, Intent paramIntent)
+  {
+    ThreadManager.postImmediately(new ProfileCardUtil.1(paramString, paramIntent, paramQQAppInterface), null, true);
+  }
+  
+  public static boolean c()
+  {
+    String str = Locale.getDefault().getCountry();
+    String[] arrayOfString = h;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (TextUtils.equals(str, arrayOfString[i])) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public static boolean c(ArrayList<Integer> paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
+      return paramArrayList.contains(Integer.valueOf(3));
+    }
+    return false;
+  }
+  
+  public static int d(Activity paramActivity)
+  {
+    return c(paramActivity) * 3 / 4;
+  }
+  
+  @NotNull
+  public static BusinessInfoCheckUpdate.RedTypeInfo d()
+  {
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+    localRedTypeInfo.red_type.set(-1);
+    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+    RedTouchItem localRedTouchItem = localLocalRedTouchManager.a(-4);
+    if ((localLocalRedTouchManager.a(localRedTouchItem, true)) && (localRedTouchItem.count > 0))
+    {
+      QLog.d("ProfileCardUtil", 1, "getProfileMsgListRedTouch");
+      localRedTypeInfo.red_type.set(0);
+      localRedTypeInfo.red_content.set("");
+      localRedTypeInfo.red_desc.set("");
+    }
+    return localRedTypeInfo;
+  }
+  
+  public static String d(Context paramContext, ProfileCardInfo paramProfileCardInfo)
   {
     if (((IProfileCardApi)QRoute.api(IProfileCardApi.class)).isFieldVisible(41611, paramProfileCardInfo))
     {
@@ -2373,12 +2307,12 @@ public class ProfileCardUtil
       }
       if (i == 0)
       {
-        localObject1 = paramContext.getString(2131693879);
+        localObject1 = paramContext.getString(2131891484);
         break label162;
       }
       if (i == 1)
       {
-        localObject1 = paramContext.getString(2131692259);
+        localObject1 = paramContext.getString(2131889246);
         break label162;
       }
     }
@@ -2390,17 +2324,12 @@ public class ProfileCardUtil
     return ((StringBuilder)localObject2).toString();
   }
   
-  public static boolean c(ArrayList<Integer> paramArrayList)
+  public static String d(String paramString)
   {
-    if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
-      return paramArrayList.contains(Integer.valueOf(3));
+    if (paramString == null) {
+      return "";
     }
-    return false;
-  }
-  
-  public static int d(Activity paramActivity)
-  {
-    return c(paramActivity) * 3 / 4;
+    return MD5.toMD5(paramString);
   }
   
   public static boolean d(ArrayList<Integer> paramArrayList)
@@ -2425,6 +2354,48 @@ public class ProfileCardUtil
     return bool1;
   }
   
+  public static int e(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    paramString = a(paramString, 100, 0.56338F);
+    int n = 0;
+    if (paramString == null) {
+      return 0;
+    }
+    int j = 0;
+    int i = 0;
+    int k = 0;
+    while (j < paramString.getHeight())
+    {
+      int m = 0;
+      while (m < paramString.getWidth())
+      {
+        int i1 = paramString.getPixel(m, j);
+        if ((Color.red(i1) + Color.green(i1) + Color.blue(i1)) / 3 > 127) {
+          i += 1;
+        } else {
+          k += 1;
+        }
+        m += 1;
+      }
+      j += 1;
+    }
+    j = n;
+    if (i >= k) {
+      j = 1;
+    }
+    paramString.recycle();
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("-->calculate background color cost:");
+      paramString.append(System.currentTimeMillis() - l);
+      paramString.append("(ms)");
+      QLog.d("ProfileCardUtil", 2, paramString.toString());
+    }
+    return j;
+  }
+  
   public static boolean e(ArrayList<Integer> paramArrayList)
   {
     boolean bool2 = false;
@@ -2446,10 +2417,40 @@ public class ProfileCardUtil
     }
     return bool1;
   }
+  
+  public static FriendProfileCardBgInfo f(String paramString)
+  {
+    if ((paramString != null) && (!paramString.equals("")))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ProfileCardUtil", 2, "do parse ProfileCardBgInfo");
+      }
+      Object localObject = new FriendProfileCardBgInfo();
+      try
+      {
+        paramString = new JSONObject(paramString);
+        ((FriendProfileCardBgInfo)localObject).h = paramString.getInt("frameInterval");
+        ((FriendProfileCardBgInfo)localObject).g = paramString.getInt("frameNumber");
+        ((FriendProfileCardBgInfo)localObject).c = ((float)paramString.getDouble("positionX"));
+        ((FriendProfileCardBgInfo)localObject).d = ((float)paramString.getDouble("positionY"));
+        ((FriendProfileCardBgInfo)localObject).e = ((float)paramString.getDouble("width"));
+        ((FriendProfileCardBgInfo)localObject).f = ((float)paramString.getDouble("height"));
+        return localObject;
+      }
+      catch (JSONException paramString)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parse, exception=");
+        ((StringBuilder)localObject).append(MsfSdkUtils.getStackTraceString(paramString));
+        QLog.e("ProfileCardUtil", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.ProfileCardUtil
  * JD-Core Version:    0.7.0.1
  */

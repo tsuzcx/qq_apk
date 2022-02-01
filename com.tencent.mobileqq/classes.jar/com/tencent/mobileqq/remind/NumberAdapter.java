@@ -13,20 +13,20 @@ import com.tencent.widget.VerticalGallery.LayoutParams;
 public class NumberAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = 25;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = null;
-  private int b;
-  private int c;
+  private Context a;
+  private int b = 25;
+  private String[] c = null;
+  private int d;
+  private int e;
   
   public NumberAdapter(Context paramContext, String[] paramArrayOfString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.b = paramContext.getColor(2131167148);
-    this.c = paramContext.getColor(2131167116);
+    this.a = paramContext;
+    this.b = ((int)TypedValue.applyDimension(1, paramInt, this.a.getResources().getDisplayMetrics()));
+    this.c = paramArrayOfString;
+    paramContext = this.a.getResources();
+    this.d = paramContext.getColor(2131168129);
+    this.e = paramContext.getColor(2131168094);
   }
   
   public View a(int paramInt)
@@ -36,7 +36,7 @@ public class NumberAdapter
   
   public int getCount()
   {
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = this.c;
     if (arrayOfString != null) {
       return arrayOfString.length;
     }
@@ -53,8 +53,8 @@ public class NumberAdapter
     Object localObject1;
     if (paramView == null)
     {
-      localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
-      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      localObject1 = new WheelTextView(this.a);
+      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.b));
       paramView = (WheelTextView)localObject1;
     }
     else
@@ -63,23 +63,23 @@ public class NumberAdapter
       localObject1 = paramView;
       paramView = (View)localObject2;
     }
-    String str = this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    String str = this.c[paramInt];
     Object localObject2 = paramView;
     if (paramView == null) {
       localObject2 = (WheelTextView)localObject1;
     }
     ((WheelTextView)localObject2).setTextSize(20.0F);
-    ((WheelTextView)localObject2).setTextColor(this.b);
+    ((WheelTextView)localObject2).setTextColor(this.d);
     ((WheelTextView)localObject2).setGravity(17);
     ((WheelTextView)localObject2).setText(str);
-    ((WheelTextView)localObject2).setBackgroundColor(this.c);
+    ((WheelTextView)localObject2).setBackgroundColor(this.e);
     EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.remind.NumberAdapter
  * JD-Core Version:    0.7.0.1
  */

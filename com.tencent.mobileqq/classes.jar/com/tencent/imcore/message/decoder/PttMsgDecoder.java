@@ -19,7 +19,7 @@ public class PttMsgDecoder
   {
     if (a(paramMessage))
     {
-      paramMessage.msg = paramAppRuntime.getApp().getString(2131691287);
+      paramMessage.msg = paramAppRuntime.getApp().getString(2131888237);
       try
       {
         paramIMessageManager = (MessageForPtt)((IMessageFacade)paramAppRuntime.getRuntimeService(IMessageFacade.class, "")).getMsgItemByUniseq(paramMessage.frienduin, paramMessage.istroop, paramMessage.uniseq);
@@ -39,7 +39,7 @@ public class PttMsgDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.decoder.PttMsgDecoder
  * JD-Core Version:    0.7.0.1
  */

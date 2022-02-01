@@ -9,22 +9,22 @@ class TroopAssistantActivity$6
   
   protected void a(int paramInt, long paramLong)
   {
-    this.a.c();
+    this.b.c();
   }
   
   protected void a(int paramInt, long paramLong1, long paramLong2)
   {
-    this.a.c();
+    this.b.c();
   }
   
   protected void b(int paramInt, long paramLong)
   {
-    this.a.c();
+    this.b.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.6
  * JD-Core Version:    0.7.0.1
  */

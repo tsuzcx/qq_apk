@@ -12,7 +12,7 @@ final class QIMPtvTemplateManager$2
   public void run()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(QIMPtvTemplateManager.a().getPath());
+    localStringBuilder.append(QIMPtvTemplateManager.l().getPath());
     localStringBuilder.append(File.separator);
     FileUtils.writeFile(localStringBuilder.toString(), this.a, this.b);
     if (QLog.isColorLevel()) {
@@ -22,7 +22,7 @@ final class QIMPtvTemplateManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.QIMPtvTemplateManager.2
  * JD-Core Version:    0.7.0.1
  */

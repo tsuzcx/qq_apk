@@ -10,18 +10,18 @@ class AbstractGalleryScene$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.a().i();
-    this.a.a.a().a();
+    this.a.C.a().j();
+    this.a.C.a().d();
   }
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.a.a().h();
+    this.a.C.a().i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AbstractGalleryScene.3
  * JD-Core Version:    0.7.0.1
  */

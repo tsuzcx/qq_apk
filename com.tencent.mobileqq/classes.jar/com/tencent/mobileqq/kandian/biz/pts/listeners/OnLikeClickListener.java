@@ -4,9 +4,9 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsDynamicInsertController;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoyLikeButton;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.report.GalleryReportedUtils;
@@ -21,7 +21,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatch
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.SocializeFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.UGCFeedsInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,8 +35,8 @@ public class OnLikeClickListener
   
   private void a(ButtonBase paramButtonBase)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null) && (paramButtonBase != null) && (!paramButtonBase.isSelected())) {
-      RIJFeedsDynamicInsertController.INSTANCE.requestDynamicInsertInTL(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, new RIJFeedsInsertAction(ActionType.ACTION_LOVE, 0, 0, 0));
+    if ((this.a != null) && (paramButtonBase != null) && (!paramButtonBase.isSelected())) {
+      RIJFeedsDynamicInsertController.INSTANCE.requestDynamicInsertInTL(this.a, new RIJFeedsInsertAction(ActionType.ACTION_LOVE, 0, 0, 0));
     }
   }
   
@@ -67,22 +66,22 @@ public class OnLikeClickListener
     } else {
       i = 1;
     }
-    paramButtonBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo;
-    paramButtonBase.b += i;
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.b < 0) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.b = 0;
+    paramButtonBase = this.a.mSocialFeedInfo;
+    paramButtonBase.h += i;
+    if (this.a.mSocialFeedInfo.h < 0) {
+      this.a.mSocialFeedInfo.h = 0;
     }
-    paramButtonBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo;
+    paramButtonBase = this.a.mSocialFeedInfo;
     int j;
     if (i > 0) {
       j = 1;
     } else {
       j = 0;
     }
-    paramButtonBase.c = j;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.invalidateProteusTemplateBean();
-    com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-    if ((RIJFeedsType.T(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID)))
+    paramButtonBase.i = j;
+    this.a.invalidateProteusTemplateBean();
+    com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.a = this.a;
+    if ((RIJFeedsType.ab(this.a)) && (!TextUtils.isEmpty(this.a.innerUniqueID)))
     {
       if (QLog.isColorLevel()) {
         QLog.e("ATLAS", 2, "atlas native has undercarriage");
@@ -91,22 +90,22 @@ public class OnLikeClickListener
     else
     {
       paramButtonBase = ReadInJoyLogicEngine.a();
-      long l1 = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
-      long l2 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedId;
+      long l1 = RIJQQAppInterfaceUtil.c();
+      long l2 = this.a.mFeedId;
       boolean bool;
       if (i > 0) {
         bool = true;
       } else {
         bool = false;
       }
-      paramButtonBase.a(l1, l2, bool, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.clone());
+      paramButtonBase.a(l1, l2, bool, this.a.clone());
     }
     ReadInJoyLogicEngineEventDispatcher.a().c();
   }
   
   protected int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.c == 1) {
+    if (this.a.mSocialFeedInfo.i == 1) {
       return 2;
     }
     return 13;
@@ -121,8 +120,8 @@ public class OnLikeClickListener
   protected void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     String str2 = RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo);
-    Object localObject2 = paramAbsBaseArticleInfo.mSocialFeedInfo;
-    boolean bool = ReadinjoyReportUtils.a(paramAbsBaseArticleInfo.mChannelID);
+    Object localObject3 = paramAbsBaseArticleInfo.mSocialFeedInfo;
+    boolean bool = ReadinjoyReportUtils.d(paramAbsBaseArticleInfo.mChannelID);
     Object localObject1;
     if (bool) {
       localObject1 = "0X800935E";
@@ -135,15 +134,14 @@ public class OnLikeClickListener
     } else {
       str1 = "0X8007B66";
     }
-    String str3;
     long l1;
     long l2;
-    if (((SocializeFeedsInfo)localObject2).c == 1)
+    if (((SocializeFeedsInfo)localObject3).i == 1)
     {
-      IPublicAccountReportUtils localIPublicAccountReportUtils;
+      Object localObject2;
       if ((!RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.p(paramAbsBaseArticleInfo)))
       {
-        if (RIJFeedsType.T(paramAbsBaseArticleInfo))
+        if (RIJFeedsType.ab(paramAbsBaseArticleInfo))
         {
           localObject1 = new JSONObject();
           try
@@ -154,30 +152,28 @@ public class OnLikeClickListener
           {
             localJSONException1.printStackTrace();
           }
-          GalleryReportedUtils.a(this.jdField_a_of_type_AndroidContentContext, paramAbsBaseArticleInfo, "0X8009A74", (JSONObject)localObject1);
+          GalleryReportedUtils.a(this.b, paramAbsBaseArticleInfo, "0X8009A74", (JSONObject)localObject1);
           return;
         }
-        localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-        str3 = paramAbsBaseArticleInfo.mSubscribeID;
-        l1 = ((SocializeFeedsInfo)localObject2).jdField_a_of_type_Long;
+        localObject2 = paramAbsBaseArticleInfo.mSubscribeID;
+        l1 = ((SocializeFeedsInfo)localObject3).a;
         l2 = paramAbsBaseArticleInfo.mArticleID;
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("");
-        ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mStrategyId);
-        localIPublicAccountReportUtils.publicAccountReportClickEvent(null, str3, (String)localObject1, (String)localObject1, 0, 0, String.valueOf(l1), String.valueOf(l2), ((StringBuilder)localObject2).toString(), str2, false);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("");
+        ((StringBuilder)localObject3).append(paramAbsBaseArticleInfo.mStrategyId);
+        PublicAccountReportUtils.a(null, (String)localObject2, (String)localObject1, (String)localObject1, 0, 0, String.valueOf(l1), String.valueOf(l2), ((StringBuilder)localObject3).toString(), str2, false);
         return;
       }
       if (!RIJItemViewTypeUtils.v(paramAbsBaseArticleInfo))
       {
-        localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-        l1 = ((SocializeFeedsInfo)localObject2).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Long;
-        l2 = ((SocializeFeedsInfo)localObject2).jdField_a_of_type_Long;
+        l1 = ((SocializeFeedsInfo)localObject3).s.e;
+        l2 = ((SocializeFeedsInfo)localObject3).a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("");
         ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mStrategyId);
-        localIPublicAccountReportUtils.publicAccountReportClickEvent(null, String.valueOf(l1), (String)localObject1, (String)localObject1, 0, 0, String.valueOf(l2), "0", ((StringBuilder)localObject2).toString(), str2, false);
+        PublicAccountReportUtils.a(null, String.valueOf(l1), (String)localObject1, (String)localObject1, 0, 0, String.valueOf(l2), "0", ((StringBuilder)localObject2).toString(), str2, false);
       }
-      if ((!RIJFeedsType.s(paramAbsBaseArticleInfo)) && (!RIJFeedsType.t(paramAbsBaseArticleInfo))) {
+      if ((!RIJFeedsType.y(paramAbsBaseArticleInfo)) && (!RIJFeedsType.z(paramAbsBaseArticleInfo))) {
         RIJFrameworkReportManager.b(paramAbsBaseArticleInfo, (int)paramAbsBaseArticleInfo.mChannelID);
       }
     }
@@ -185,7 +181,7 @@ public class OnLikeClickListener
     {
       if ((!RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.p(paramAbsBaseArticleInfo)))
       {
-        if (RIJFeedsType.T(paramAbsBaseArticleInfo))
+        if (RIJFeedsType.ab(paramAbsBaseArticleInfo))
         {
           localObject1 = new JSONObject();
           try
@@ -196,30 +192,28 @@ public class OnLikeClickListener
           {
             localJSONException2.printStackTrace();
           }
-          GalleryReportedUtils.a(this.jdField_a_of_type_AndroidContentContext, paramAbsBaseArticleInfo, "0X8009A74", (JSONObject)localObject1);
+          GalleryReportedUtils.a(this.b, paramAbsBaseArticleInfo, "0X8009A74", (JSONObject)localObject1);
           return;
         }
-        localObject1 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-        str3 = paramAbsBaseArticleInfo.mSubscribeID;
-        l1 = ((SocializeFeedsInfo)localObject2).jdField_a_of_type_Long;
+        localObject1 = paramAbsBaseArticleInfo.mSubscribeID;
+        l1 = ((SocializeFeedsInfo)localObject3).a;
         l2 = paramAbsBaseArticleInfo.mArticleID;
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("");
-        ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mStrategyId);
-        ((IPublicAccountReportUtils)localObject1).publicAccountReportClickEvent(null, str3, localJSONException2, localJSONException2, 0, 0, String.valueOf(l1), String.valueOf(l2), ((StringBuilder)localObject2).toString(), str2, false);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("");
+        ((StringBuilder)localObject3).append(paramAbsBaseArticleInfo.mStrategyId);
+        PublicAccountReportUtils.a(null, (String)localObject1, localJSONException2, localJSONException2, 0, 0, String.valueOf(l1), String.valueOf(l2), ((StringBuilder)localObject3).toString(), str2, false);
         return;
       }
       if (!RIJItemViewTypeUtils.v(paramAbsBaseArticleInfo))
       {
-        localObject1 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-        l1 = ((SocializeFeedsInfo)localObject2).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Long;
-        l2 = ((SocializeFeedsInfo)localObject2).jdField_a_of_type_Long;
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("");
-        ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mStrategyId);
-        ((IPublicAccountReportUtils)localObject1).publicAccountReportClickEvent(null, String.valueOf(l1), localJSONException2, localJSONException2, 0, 0, String.valueOf(l2), "0", ((StringBuilder)localObject2).toString(), str2, false);
+        l1 = ((SocializeFeedsInfo)localObject3).s.e;
+        l2 = ((SocializeFeedsInfo)localObject3).a;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("");
+        ((StringBuilder)localObject1).append(paramAbsBaseArticleInfo.mStrategyId);
+        PublicAccountReportUtils.a(null, String.valueOf(l1), localJSONException2, localJSONException2, 0, 0, String.valueOf(l2), "0", ((StringBuilder)localObject1).toString(), str2, false);
       }
-      if ((!RIJFeedsType.s(paramAbsBaseArticleInfo)) && (!RIJFeedsType.t(paramAbsBaseArticleInfo))) {
+      if ((!RIJFeedsType.y(paramAbsBaseArticleInfo)) && (!RIJFeedsType.z(paramAbsBaseArticleInfo))) {
         RIJFrameworkReportManager.b(paramAbsBaseArticleInfo, (int)paramAbsBaseArticleInfo.mChannelID);
       }
     }
@@ -227,7 +221,7 @@ public class OnLikeClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnLikeClickListener
  * JD-Core Version:    0.7.0.1
  */

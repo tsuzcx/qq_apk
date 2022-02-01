@@ -14,12 +14,12 @@ class WSGridPageFragment$8
   public void onItemClick(View paramView, int paramInt)
   {
     paramView = this.a;
-    WSGridPageFragment.a(paramView, paramInt, (WSFollowDramaItemData)WSGridPageFragment.a(paramView).getDataList().get(paramInt));
+    WSGridPageFragment.a(paramView, paramInt, (WSFollowDramaItemData)WSGridPageFragment.i(paramView).getDataList().get(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridPageFragment.8
  * JD-Core Version:    0.7.0.1
  */

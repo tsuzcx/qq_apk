@@ -13,7 +13,7 @@ class GamePKResultHelper$1
   public void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(GamePKResultHelper.a(), 2, String.format(Locale.ENGLISH, "onSurvivalPoolEnter isSuc:%b errCode:%d msg:%s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(paramInt), paramString }));
+      QLog.i(GamePKResultHelper.e(), 2, String.format(Locale.ENGLISH, "onSurvivalPoolEnter isSuc:%b errCode:%d msg:%s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(paramInt), paramString }));
     }
     this.a.a.showRoom();
   }

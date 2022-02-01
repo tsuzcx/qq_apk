@@ -23,10 +23,10 @@ import mqq.app.MobileQQ;
 public class ReadInJoyNativeAdAppContentView
   extends FrameLayout
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ReadInJoyNativeAdAppVideoView jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView;
-  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  private GdtWebViewBuilder jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder;
+  private ReadInJoyNativeAdAppVideoView a;
+  private TouchWebView b;
+  private GdtWebViewBuilder c;
+  private Context d;
   
   public ReadInJoyNativeAdAppContentView(Context paramContext)
   {
@@ -46,26 +46,10 @@ public class ReadInJoyNativeAdAppContentView
     a(paramContext);
   }
   
-  private Activity a()
-  {
-    if ((getContext() instanceof Activity)) {
-      return (Activity)getContext();
-    }
-    return null;
-  }
-  
-  private Intent a()
-  {
-    if (a() == null) {
-      return null;
-    }
-    return a().getIntent();
-  }
-  
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(paramContext, 2131560053, this);
+    this.d = paramContext;
+    inflate(paramContext, 2131626098, this);
     d();
     b(paramContext);
   }
@@ -73,27 +57,43 @@ public class ReadInJoyNativeAdAppContentView
   private void b(Context paramContext)
   {
     AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = ((TouchWebView)findViewById(2131362826));
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder = new ReadInJoyNativeAdAppContentView.1(this, paramContext, a(), a(), localAppInterface);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    new WebViewDirector(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder).a(null, localAppInterface, a());
+    this.b = ((TouchWebView)findViewById(2131428513));
+    this.c = new ReadInJoyNativeAdAppContentView.1(this, paramContext, getActivity(), getIntent(), localAppInterface);
+    this.c.a(this.b);
+    new WebViewDirector(this.c).a(null, localAppInterface, getIntent());
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView = ((ReadInJoyNativeAdAppVideoView)findViewById(2131362825));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.getLayoutParams();
+    this.a = ((ReadInJoyNativeAdAppVideoView)findViewById(2131428512));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
     localLayoutParams.height = ((int)(getResources().getDisplayMetrics().widthPixels * 0.5626F));
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.setLayoutParams(localLayoutParams);
+    this.a.setLayoutParams(localLayoutParams);
+  }
+  
+  private Activity getActivity()
+  {
+    if ((getContext() instanceof Activity)) {
+      return (Activity)getContext();
+    }
+    return null;
+  }
+  
+  private Intent getIntent()
+  {
+    if (getActivity() == null) {
+      return null;
+    }
+    return getActivity().getIntent();
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView;
+    Object localObject = this.a;
     if (localObject != null) {
       ((ReadInJoyNativeAdAppVideoView)localObject).a();
     }
-    localObject = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder;
+    localObject = this.c;
     if (localObject != null) {
       ((GdtWebViewBuilder)localObject).c();
     }
@@ -101,7 +101,7 @@ public class ReadInJoyNativeAdAppContentView
   
   public void b()
   {
-    ReadInJoyNativeAdAppVideoView localReadInJoyNativeAdAppVideoView = this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView;
+    ReadInJoyNativeAdAppVideoView localReadInJoyNativeAdAppVideoView = this.a;
     if (localReadInJoyNativeAdAppVideoView != null) {
       localReadInJoyNativeAdAppVideoView.b();
     }
@@ -109,7 +109,7 @@ public class ReadInJoyNativeAdAppContentView
   
   public void c()
   {
-    ReadInJoyNativeAdAppVideoView localReadInJoyNativeAdAppVideoView = this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView;
+    ReadInJoyNativeAdAppVideoView localReadInJoyNativeAdAppVideoView = this.a;
     if (localReadInJoyNativeAdAppVideoView != null) {
       localReadInJoyNativeAdAppVideoView.b(getContext());
     }
@@ -119,25 +119,25 @@ public class ReadInJoyNativeAdAppContentView
   {
     NativeAdVideoSetting localNativeAdVideoSetting = new NativeAdVideoSetting();
     localNativeAdVideoSetting.a = true;
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.setAdSetting(localNativeAdVideoSetting);
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.setVideoData(paramAdModuleVideo, paramAdvertisementInfo, paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.a(this.jdField_a_of_type_AndroidContentContext);
-    if (paramAdModuleVideo.d == 0)
+    this.a.setAdSetting(localNativeAdVideoSetting);
+    this.a.setVideoData(paramAdModuleVideo, paramAdvertisementInfo, paramQQAppInterface);
+    this.a.a(this.d);
+    if (paramAdModuleVideo.s == 0)
     {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(paramAdModuleVideo.f);
+      this.b.loadUrl(paramAdModuleVideo.t);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(paramAdModuleVideo.a.d);
+    this.b.loadUrl(paramAdModuleVideo.u.d);
   }
   
   public void setVideoPlayPositon(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView.setVideoPlayPositon(paramLong);
+    this.a.setVideoPlayPositon(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView
  * JD-Core Version:    0.7.0.1
  */

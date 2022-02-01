@@ -23,7 +23,7 @@ class AvatarPendantJsPlugin$5
 {
   AvatarPendantJsPlugin$5(AvatarPendantJsPlugin paramAvatarPendantJsPlugin, String paramString, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
@@ -32,8 +32,8 @@ class AvatarPendantJsPlugin$5
         paramView = new Intent();
         paramView.putExtra("keyFromPendantPhoto", true);
         paramView.putExtra("Business_Origin", 100);
-        paramInt = Math.min(482, ProfileCardUtil.a(this.this$0.mRuntime.a()));
-        PhotoUtils.startPhotoListEdit(paramView, this.this$0.mRuntime.a(), QQBrowserActivity.class.getName(), paramInt, paramInt, 1080, 1080, FaceUtil.a());
+        paramInt = Math.min(482, ProfileCardUtil.a(this.this$0.mRuntime.d()));
+        PhotoUtils.startPhotoListEdit(paramView, this.this$0.mRuntime.d(), QQBrowserActivity.class.getName(), paramInt, paramInt, 1080, 1080, FaceUtil.a());
         AvatarPendantUiPlugin.sJsHandler = this.this$0;
         AvatarPendantUiPlugin.sCallbackId = this.val$callbackId;
       }
@@ -51,14 +51,14 @@ class AvatarPendantJsPlugin$5
         paramView.mkdirs();
       }
       paramView = new Intent();
-      Object localObject = this.this$0.mRuntime.a();
+      Object localObject = this.this$0.mRuntime.d();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(AppConstants.SDCARD_PATH);
       localStringBuilder.append("photo/");
       localStringBuilder.append(System.currentTimeMillis());
       localStringBuilder.append(".jpg");
       localObject = FileProvider7Helper.setSystemCapture((Context)localObject, new File(localStringBuilder.toString()), paramView);
-      this.this$0.mRuntime.a().startActivityForResult(paramView, 1);
+      this.this$0.mRuntime.d().startActivityForResult(paramView, 1);
       AvatarPendantUiPlugin.sJsHandler = this.this$0;
       AvatarPendantUiPlugin.sCallbackId = this.val$callbackId;
       AvatarPendantUiPlugin.sUploadPhotoUri = (Uri)localObject;
@@ -73,7 +73,7 @@ class AvatarPendantJsPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

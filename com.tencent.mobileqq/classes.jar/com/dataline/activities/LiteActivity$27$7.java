@@ -15,14 +15,14 @@ class LiteActivity$27$7
   
   public void run()
   {
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
+    this.c.a.m.notifyDataSetChanged();
     try
     {
-      ((ClipboardManager)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentWidgetXListView.getContext().getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+      ((ClipboardManager)this.c.a.f.getContext().getSystemService("clipboard")).setText(this.a);
       label41:
-      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentWidgetXListView);
-      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentWidgetXListView);
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.app.getMessageFacade().a(this.jdField_a_of_type_Int).e();
+      LiteActivity.a(this.c.a.g, this.c.a.f);
+      LiteActivity.a(this.c.a.f);
+      this.c.a.app.getMessageFacade().d(this.b).g();
       return;
     }
     catch (Exception localException)

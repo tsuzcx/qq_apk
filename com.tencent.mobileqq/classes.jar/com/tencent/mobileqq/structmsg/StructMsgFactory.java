@@ -26,23 +26,6 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class StructMsgFactory
 {
-  public static AbsStructMsg a()
-  {
-    StructMsgForGeneralShare localStructMsgForGeneralShare = new StructMsgForGeneralShare();
-    localStructMsgForGeneralShare.fwFlag = 0;
-    localStructMsgForGeneralShare.mMsgTemplateID = 1;
-    localStructMsgForGeneralShare.mMsgServiceID = 1;
-    localStructMsgForGeneralShare.mMsgBrief = HardCodeUtil.a(2131714396);
-    localStructMsgForGeneralShare.mMsgAction = "";
-    localStructMsgForGeneralShare.mMsgActionData = "";
-    localStructMsgForGeneralShare.mMsg_A_ActionData = "";
-    localStructMsgForGeneralShare.mMsg_I_ActionData = "";
-    localStructMsgForGeneralShare.mMsgUrl = "";
-    localStructMsgForGeneralShare.mFlag = 55;
-    StructMsgElementFactory.a(0).a(new StructMsgItemTitle(""));
-    return localStructMsgForGeneralShare;
-  }
-  
   public static AbsStructMsg a(Bundle paramBundle)
   {
     if (paramBundle == null) {
@@ -102,27 +85,27 @@ public class StructMsgFactory
     //   9: ifnonnull +5 -> 14
     //   12: aconst_null
     //   13: areturn
-    //   14: new 174	java/io/ObjectInputStream
+    //   14: new 124	java/io/ObjectInputStream
     //   17: dup
-    //   18: new 176	java/io/ByteArrayInputStream
+    //   18: new 126	java/io/ByteArrayInputStream
     //   21: dup
     //   22: aload_0
-    //   23: invokespecial 179	java/io/ByteArrayInputStream:<init>	([B)V
-    //   26: invokespecial 182	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   23: invokespecial 129	java/io/ByteArrayInputStream:<init>	([B)V
+    //   26: invokespecial 132	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   29: astore_3
     //   30: aload 4
     //   32: astore_0
     //   33: aload_3
-    //   34: invokevirtual 186	java/io/ObjectInputStream:readInt	()I
+    //   34: invokevirtual 136	java/io/ObjectInputStream:readInt	()I
     //   37: istore_1
     //   38: iload_1
     //   39: iconst_2
     //   40: if_icmpne +245 -> 285
     //   43: aload 4
     //   45: astore_0
-    //   46: new 89	com/tencent/mobileqq/structmsg/StructMsgForAudioShare
+    //   46: new 32	com/tencent/mobileqq/structmsg/StructMsgForAudioShare
     //   49: dup
-    //   50: invokespecial 187	com/tencent/mobileqq/structmsg/StructMsgForAudioShare:<init>	()V
+    //   50: invokespecial 137	com/tencent/mobileqq/structmsg/StructMsgForAudioShare:<init>	()V
     //   53: astore_2
     //   54: aload_2
     //   55: astore_0
@@ -132,36 +115,36 @@ public class StructMsgFactory
     //   63: if_icmpne +19 -> 82
     //   66: aload 4
     //   68: astore_0
-    //   69: new 189	com/tencent/mobileqq/structmsg/StructMsgSubImageVideo
+    //   69: new 139	com/tencent/mobileqq/structmsg/StructMsgSubImageVideo
     //   72: dup
-    //   73: invokespecial 190	com/tencent/mobileqq/structmsg/StructMsgSubImageVideo:<init>	()V
+    //   73: invokespecial 140	com/tencent/mobileqq/structmsg/StructMsgSubImageVideo:<init>	()V
     //   76: astore_2
     //   77: aload_2
     //   78: astore_0
     //   79: goto +201 -> 280
     //   82: aload 4
     //   84: astore_0
-    //   85: new 13	com/tencent/mobileqq/structmsg/StructMsgForGeneralShare
+    //   85: new 21	com/tencent/mobileqq/structmsg/StructMsgForGeneralShare
     //   88: dup
-    //   89: invokespecial 14	com/tencent/mobileqq/structmsg/StructMsgForGeneralShare:<init>	()V
+    //   89: invokespecial 141	com/tencent/mobileqq/structmsg/StructMsgForGeneralShare:<init>	()V
     //   92: astore_2
     //   93: aload_2
     //   94: astore_0
     //   95: goto +185 -> 280
     //   98: aload 4
     //   100: astore_0
-    //   101: new 83	com/tencent/mobileqq/structmsg/StructMsgForImageShare
+    //   101: new 26	com/tencent/mobileqq/structmsg/StructMsgForImageShare
     //   104: dup
-    //   105: invokespecial 191	com/tencent/mobileqq/structmsg/StructMsgForImageShare:<init>	()V
+    //   105: invokespecial 142	com/tencent/mobileqq/structmsg/StructMsgForImageShare:<init>	()V
     //   108: astore_2
     //   109: aload_2
     //   110: astore_0
     //   111: goto +169 -> 280
     //   114: aload 4
     //   116: astore_0
-    //   117: new 86	com/tencent/mobileqq/structmsg/StructMsgForHypertext
+    //   117: new 29	com/tencent/mobileqq/structmsg/StructMsgForHypertext
     //   120: dup
-    //   121: invokespecial 192	com/tencent/mobileqq/structmsg/StructMsgForHypertext:<init>	()V
+    //   121: invokespecial 143	com/tencent/mobileqq/structmsg/StructMsgForHypertext:<init>	()V
     //   124: astore_2
     //   125: aload_2
     //   126: astore_0
@@ -170,26 +153,26 @@ public class StructMsgFactory
     //   131: astore_0
     //   132: aload_2
     //   133: iload_1
-    //   134: putfield 99	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgServiceID	I
+    //   134: putfield 45	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgServiceID	I
     //   137: aload_2
     //   138: astore_0
     //   139: aload_2
     //   140: aload_3
-    //   141: invokevirtual 196	com/tencent/mobileqq/structmsg/AbsStructMsg:readExternal	(Ljava/io/ObjectInput;)V
+    //   141: invokevirtual 147	com/tencent/mobileqq/structmsg/AbsStructMsg:readExternal	(Ljava/io/ObjectInput;)V
     //   144: aload_3
-    //   145: invokevirtual 199	java/io/ObjectInputStream:close	()V
+    //   145: invokevirtual 150	java/io/ObjectInputStream:close	()V
     //   148: aload_2
     //   149: areturn
     //   150: astore_3
     //   151: aload_2
     //   152: astore_0
-    //   153: invokestatic 162	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   153: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   156: ifeq +86 -> 242
-    //   159: ldc 149
+    //   159: ldc 99
     //   161: iconst_2
     //   162: aload_3
-    //   163: invokevirtual 202	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   166: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   163: invokevirtual 153	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   166: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   169: aload_2
     //   170: areturn
     //   171: astore_0
@@ -207,43 +190,43 @@ public class StructMsgFactory
     //   192: astore_3
     //   193: aload_3
     //   194: astore_2
-    //   195: invokestatic 162	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   195: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   198: ifeq +16 -> 214
     //   201: aload_3
     //   202: astore_2
-    //   203: ldc 149
+    //   203: ldc 99
     //   205: iconst_2
     //   206: aload 4
-    //   208: invokevirtual 203	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   211: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   208: invokevirtual 154	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   211: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   214: aload_3
     //   215: ifnull +27 -> 242
     //   218: aload_3
-    //   219: invokevirtual 199	java/io/ObjectInputStream:close	()V
+    //   219: invokevirtual 150	java/io/ObjectInputStream:close	()V
     //   222: goto +20 -> 242
     //   225: astore_2
-    //   226: invokestatic 162	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   226: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   229: ifeq +13 -> 242
-    //   232: ldc 149
+    //   232: ldc 99
     //   234: iconst_2
     //   235: aload_2
-    //   236: invokevirtual 202	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   239: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   236: invokevirtual 153	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   239: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   242: aload_0
     //   243: areturn
     //   244: aload_3
     //   245: ifnull +27 -> 272
     //   248: aload_3
-    //   249: invokevirtual 199	java/io/ObjectInputStream:close	()V
+    //   249: invokevirtual 150	java/io/ObjectInputStream:close	()V
     //   252: goto +20 -> 272
     //   255: astore_2
-    //   256: invokestatic 162	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   256: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   259: ifeq +13 -> 272
-    //   262: ldc 149
+    //   262: ldc 99
     //   264: iconst_2
     //   265: aload_2
-    //   266: invokevirtual 202	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   269: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   266: invokevirtual 153	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   269: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   272: goto +5 -> 277
     //   275: aload_0
     //   276: athrow
@@ -325,7 +308,7 @@ public class StructMsgFactory
       try
       {
         localObject1 = new String((byte[])localObject1, "utf-8");
-        boolean bool = a((String)localObject1);
+        boolean bool = b((String)localObject1);
         localObject1 = a(EmotcationConstants.beforXml((String)localObject1, paramArrayOfByte, bool));
         if (QLog.isDevelopLevel())
         {
@@ -405,17 +388,11 @@ public class StructMsgFactory
     return new StructMsgForGeneralShare();
   }
   
-  public static StructMsgNode a(StructMsgNode paramStructMsgNode)
-  {
-    for (paramStructMsgNode = paramStructMsgNode.a(); (paramStructMsgNode != null) && (paramStructMsgNode.jdField_a_of_type_Int != 1); paramStructMsgNode = paramStructMsgNode.a()) {}
-    return paramStructMsgNode;
-  }
-  
   public static String a(StructMsgNode paramStructMsgNode)
   {
-    if (paramStructMsgNode.jdField_a_of_type_Int == 3)
+    if (paramStructMsgNode.f == 3)
     {
-      paramStructMsgNode = paramStructMsgNode.jdField_a_of_type_JavaLangString;
+      paramStructMsgNode = paramStructMsgNode.a;
     }
     else
     {
@@ -425,8 +402,8 @@ public class StructMsgFactory
       while (i < j)
       {
         StructMsgNode localStructMsgNode = paramStructMsgNode.a(i);
-        if ((localStructMsgNode != null) && (localStructMsgNode.jdField_a_of_type_Int == 3)) {
-          ((StringBuilder)localObject).append(localStructMsgNode.jdField_a_of_type_JavaLangString);
+        if ((localStructMsgNode != null) && (localStructMsgNode.f == 3)) {
+          ((StringBuilder)localObject).append(localStructMsgNode.a);
         }
         i += 1;
       }
@@ -560,11 +537,6 @@ public class StructMsgFactory
     return ((StringBuilder)localObject).toString();
   }
   
-  public static boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.contains("serviceID=\"83\""));
-  }
-  
   public static boolean a(String paramString1, String paramString2, String paramString3)
   {
     if (!TextUtils.isEmpty(paramString1)) {
@@ -609,10 +581,38 @@ public class StructMsgFactory
       int j = 0;
     }
   }
+  
+  public static AbsStructMsg b()
+  {
+    StructMsgForGeneralShare localStructMsgForGeneralShare = new StructMsgForGeneralShare();
+    localStructMsgForGeneralShare.fwFlag = 0;
+    localStructMsgForGeneralShare.mMsgTemplateID = 1;
+    localStructMsgForGeneralShare.mMsgServiceID = 1;
+    localStructMsgForGeneralShare.mMsgBrief = HardCodeUtil.a(2131911908);
+    localStructMsgForGeneralShare.mMsgAction = "";
+    localStructMsgForGeneralShare.mMsgActionData = "";
+    localStructMsgForGeneralShare.mMsg_A_ActionData = "";
+    localStructMsgForGeneralShare.mMsg_I_ActionData = "";
+    localStructMsgForGeneralShare.mMsgUrl = "";
+    localStructMsgForGeneralShare.mFlag = 55;
+    StructMsgElementFactory.a(0).a(new StructMsgItemTitle(""));
+    return localStructMsgForGeneralShare;
+  }
+  
+  public static StructMsgNode b(StructMsgNode paramStructMsgNode)
+  {
+    for (paramStructMsgNode = paramStructMsgNode.b(); (paramStructMsgNode != null) && (paramStructMsgNode.f != 1); paramStructMsgNode = paramStructMsgNode.b()) {}
+    return paramStructMsgNode;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (paramString.contains("serviceID=\"83\""));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgFactory
  * JD-Core Version:    0.7.0.1
  */

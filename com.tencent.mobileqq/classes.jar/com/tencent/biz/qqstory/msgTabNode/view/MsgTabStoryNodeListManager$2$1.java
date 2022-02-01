@@ -9,13 +9,13 @@ class MsgTabStoryNodeListManager$2$1
   
   public void run()
   {
-    SLog.a(MsgTabStoryNodeListManager.b(), "GetRedPointExObserver::freshRedPoint(%s)", String.valueOf(this.jdField_a_of_type_JavaLangObject));
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager$2.a.a();
+    SLog.a(MsgTabStoryNodeListManager.o(), "GetRedPointExObserver::freshRedPoint(%s)", String.valueOf(this.a));
+    this.b.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,15 +17,15 @@ final class SelectPopupController$InnerTextWatcher$afterTextChanged$2
   
   public final void invoke(int paramInt)
   {
-    SelectPopupView localSelectPopupView = SelectPopupController.a(this.this$0.a);
+    SelectPopupView localSelectPopupView = SelectPopupController.c(this.this$0.a);
     if (paramInt == 1) {
-      localSelectPopupView.a(SelectPopupController.a(this.this$0.a).a(this.this$0.a(), paramInt));
+      localSelectPopupView.a(SelectPopupController.d(this.this$0.a).a(this.this$0.a(), paramInt));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.selectPopup.SelectPopupController.InnerTextWatcher.afterTextChanged.2
  * JD-Core Version:    0.7.0.1
  */

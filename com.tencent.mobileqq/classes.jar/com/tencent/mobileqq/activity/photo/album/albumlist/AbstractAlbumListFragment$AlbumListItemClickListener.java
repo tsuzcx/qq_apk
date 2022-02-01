@@ -15,22 +15,22 @@ class AbstractAlbumListFragment$AlbumListItemClickListener
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListAdapter.a(paramInt);
+    paramAdapterView = this.a.b.a(paramInt);
     paramView = this.a.getActivity().getIntent();
     if ((paramAdapterView != null) && (paramAdapterView.mMediaFileCount > 0) && (!TextUtils.isEmpty(paramAdapterView.name)))
     {
-      boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListCustomization.a(paramAdapterView, paramInt, paramView);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistIAlbumListChoose != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistIAlbumListChoose.a(paramAdapterView, paramInt, bool);
+      boolean bool = this.a.c.a(paramAdapterView, paramInt, paramView);
+      if (this.a.a != null) {
+        this.a.a.a(paramAdapterView, paramInt, bool);
       }
       return;
     }
-    QQToast.a(this.a.getActivity(), 2131689974, 0).a();
+    QQToast.makeText(this.a.getActivity(), 2131886616, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.albumlist.AbstractAlbumListFragment.AlbumListItemClickListener
  * JD-Core Version:    0.7.0.1
  */

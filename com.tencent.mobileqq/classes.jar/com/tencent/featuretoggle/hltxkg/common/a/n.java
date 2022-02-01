@@ -51,7 +51,7 @@ public final class n
             return paramString1;
           }
           localObject = new n.a(this, (String)localObject, paramInt, paramString2, paramString3, paramString4, paramString5);
-          if (((n.a)localObject).jdField_a_of_type_Boolean) {
+          if (((n.a)localObject).b) {
             localArrayList.add(localObject);
           }
         }
@@ -61,7 +61,7 @@ public final class n
       }
       if (localArrayList.size() == 1)
       {
-        paramString1 = localJSONObject.optString(((n.a)localArrayList.get(0)).jdField_a_of_type_JavaLangString);
+        paramString1 = localJSONObject.optString(((n.a)localArrayList.get(0)).a);
         return paramString1;
       }
       paramString1 = (n.a)localArrayList.get(0);
@@ -89,13 +89,8 @@ public final class n
     if (paramInt < localArrayList.size())
     {
       paramString2 = (n.a)localArrayList.get(paramInt);
-      if (paramString1.jdField_a_of_type_Boolean)
+      if (paramString1.b)
       {
-        if (paramString2.b != paramString1.b)
-        {
-          bool = paramString2.b;
-          break label391;
-        }
         if (paramString2.c != paramString1.c)
         {
           bool = paramString2.c;
@@ -116,11 +111,16 @@ public final class n
           bool = paramString2.f;
           break label391;
         }
+        if (paramString2.g != paramString1.g)
+        {
+          bool = paramString2.g;
+          break label391;
+        }
       }
     }
     else
     {
-      paramString1 = localJSONObject.optString(paramString1.jdField_a_of_type_JavaLangString);
+      paramString1 = localJSONObject.optString(paramString1.a);
       return paramString1;
       return "";
     }
@@ -222,7 +222,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.a.n
  * JD-Core Version:    0.7.0.1
  */

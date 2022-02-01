@@ -23,14 +23,14 @@ class AddContactsView$8
     if ((paramInt == 2) && (paramBoolean))
     {
       localObject = this.a;
-      ((AddContactsView)localObject).d = true;
+      ((AddContactsView)localObject).y = true;
       ((AddContactsView)localObject).f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.8
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ class DefaultHeadMsgRefresher$1
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().runOnUiThread(new DefaultHeadMsgRefresher.1.1(this, localMessageRecord));
+    MessageRecord localMessageRecord = this.a.a().getMessageFacade().b(this.a.O().b, this.a.O().a, this.b);
+    this.a.b().runOnUiThread(new DefaultHeadMsgRefresher.1.1(this, localMessageRecord));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.DefaultHeadMsgRefresher.1
  * JD-Core Version:    0.7.0.1
  */

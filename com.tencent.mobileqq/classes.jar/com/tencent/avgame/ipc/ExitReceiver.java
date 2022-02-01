@@ -18,7 +18,7 @@ public class ExitReceiver
   
   protected void a(BaseAVGameAppInterface paramBaseAVGameAppInterface)
   {
-    boolean bool = ProcessMonitor.a().a();
+    boolean bool = ProcessMonitor.a().d();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();

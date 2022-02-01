@@ -13,45 +13,45 @@ public class ReadInJoyCommentPopUpWindow
   extends PopupWindow
   implements View.OnClickListener
 {
-  private static final int jdField_a_of_type_Int = Color.parseColor("#376099");
+  private static final int b = Color.parseColor("#376099");
   protected Activity a;
-  private View jdField_a_of_type_AndroidViewView;
-  private ReadinjoyCommentListBaseAdapter jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter;
-  private ReadInJoyCommentPopUpWindow.OnCommentTypeChangedListener jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiReadInJoyCommentPopUpWindow$OnCommentTypeChangedListener;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean c;
+  private ReadInJoyCommentPopUpWindow.OnCommentTypeChangedListener d;
+  private View e;
+  private ReadinjoyCommentListBaseAdapter f;
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (this.e != null)
     {
-      this.jdField_a_of_type_AndroidAppActivity.getWindowManager().removeView(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_AndroidViewView = null;
+      this.a.getWindowManager().removeView(this.e);
+      this.e = null;
     }
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
     dismiss();
     int i = paramView.getId();
-    if ((i != 2131364628) && (i == 2131364630)) {
+    if ((i != 2131430713) && (i == 2131430715)) {
       i = 2;
     } else {
       i = 3;
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiReadInJoyCommentPopUpWindow$OnCommentTypeChangedListener;
+    paramView = this.d;
     if (paramView != null) {
-      paramView.b(i);
+      paramView.c(i);
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter;
+    paramView = this.f;
     if (paramView != null)
     {
       paramView.c();
       if (i == 3)
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter;
+        paramView = this.f;
         if ((paramView instanceof ReadInJoyCommentListAdapter)) {
-          ((ReadInJoyCommentListAdapter)paramView).g();
+          ((ReadInJoyCommentListAdapter)paramView).k();
         }
       }
     }
@@ -59,7 +59,7 @@ public class ReadInJoyCommentPopUpWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.ReadInJoyCommentPopUpWindow
  * JD-Core Version:    0.7.0.1
  */

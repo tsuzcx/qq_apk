@@ -1,34 +1,25 @@
 package com.tencent.qqconnect.wtlogin;
 
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 class Login$4
-  implements View.OnFocusChangeListener
+  implements TextWatcher
 {
   Login$4(Login paramLogin) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramView == this.a.pswd)
-    {
-      if (paramBoolean) {
-        this.a.pswd.selectAll();
-      }
-      if (!paramBoolean) {
-        this.a.mDelPassBtn.setVisibility(4);
-      }
-    }
-    else if ((paramView == this.a.name) && (!paramBoolean))
-    {
-      this.a.mDelBtn.setVisibility(4);
-    }
+    this.a.autoFillInPasswd = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.4
  * JD-Core Version:    0.7.0.1
  */

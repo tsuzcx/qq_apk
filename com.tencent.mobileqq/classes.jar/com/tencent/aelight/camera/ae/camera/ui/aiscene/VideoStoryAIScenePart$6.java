@@ -11,14 +11,14 @@ class VideoStoryAIScenePart$6
   
   public void run()
   {
-    VideoStoryAIScenePart.a(this.this$0).setVisibility(4);
-    VideoStoryAIScenePart.a(this.this$0).setVisibility(4);
+    VideoStoryAIScenePart.c(this.this$0).setVisibility(4);
+    VideoStoryAIScenePart.d(this.this$0).setVisibility(4);
     AECameraPrefsUtil.a().a("ai_guide_shown", true, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.aiscene.VideoStoryAIScenePart.6
  * JD-Core Version:    0.7.0.1
  */

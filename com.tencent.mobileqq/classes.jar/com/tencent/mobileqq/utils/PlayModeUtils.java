@@ -36,36 +36,36 @@ public class PlayModeUtils
       if (paramBoolean3)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131708208));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131906003));
         ((StringBuilder)localObject).append(paramFloat);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131708194));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131905989));
         return ((StringBuilder)localObject).toString();
       }
       if (paramBoolean2)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131708220));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131906015));
         ((StringBuilder)localObject).append(paramFloat);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131708215));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131906010));
         return ((StringBuilder)localObject).toString();
       }
       if (paramBoolean1)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131708203));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131905998));
         ((StringBuilder)localObject).append(paramFloat);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131708202));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131905997));
         return ((StringBuilder)localObject).toString();
       }
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131708193));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131905988));
       ((StringBuilder)localObject).append(paramFloat);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131708200));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131905995));
       return ((StringBuilder)localObject).toString();
     }
     if (paramInt != 0)
     {
-      localObject = HardCodeUtil.a(2131708209);
+      localObject = HardCodeUtil.a(2131906004);
       if (bool2) {
         return "当前为1.5倍速播放";
       }
@@ -82,25 +82,25 @@ public class PlayModeUtils
   
   public static int b(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (!AppSetting.d)
+    if (!AppSetting.e)
     {
       if (paramBoolean3) {
-        return 2131719243;
+        return 2131916795;
       }
       if (paramBoolean2) {
-        return 2131719245;
+        return 2131916797;
       }
       if (paramBoolean1) {
-        return 2131719246;
+        return 2131916798;
       }
-      return 2131719244;
+      return 2131916796;
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.PlayModeUtils
  * JD-Core Version:    0.7.0.1
  */

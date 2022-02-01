@@ -21,28 +21,28 @@ public class TroopVidToVideoInfoPuller$StoryVidListReceiver
   
   public void a(@NonNull TroopVidToVideoInfoPuller paramTroopVidToVideoInfoPuller, @NonNull TroopUidToVidListHandler.GetTroopVidListEvent paramGetTroopVidListEvent)
   {
-    if (paramGetTroopVidListEvent.jdField_a_of_type_Int != paramTroopVidToVideoInfoPuller.jdField_a_of_type_Int) {
+    if (paramGetTroopVidListEvent.a != paramTroopVidToVideoInfoPuller.g) {
       return;
     }
-    if (!paramTroopVidToVideoInfoPuller.jdField_a_of_type_JavaLangString.equals(paramGetTroopVidListEvent.jdField_a_of_type_JavaLangString)) {
+    if (!paramTroopVidToVideoInfoPuller.h.equals(paramGetTroopVidListEvent.b)) {
       return;
     }
-    if (paramGetTroopVidListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    if (paramGetTroopVidListEvent.g.isFail())
     {
-      paramTroopVidToVideoInfoPuller.a(new ArrayList(), paramGetTroopVidListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage, true, false);
+      paramTroopVidToVideoInfoPuller.a(new ArrayList(), paramGetTroopVidListEvent.g, true, false);
       StoryDispatcher.a().unRegisterSubscriber(this);
-      paramTroopVidToVideoInfoPuller.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller$StoryVidListReceiver = null;
+      paramTroopVidToVideoInfoPuller.c = null;
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    paramGetTroopVidListEvent = paramGetTroopVidListEvent.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList;
-    if (paramGetTroopVidListEvent.jdField_a_of_type_JavaLangString.equals(paramTroopVidToVideoInfoPuller.jdField_a_of_type_JavaLangString)) {
-      localArrayList.addAll(paramGetTroopVidListEvent.jdField_a_of_type_JavaUtilList);
+    paramGetTroopVidListEvent = paramGetTroopVidListEvent.c;
+    if (paramGetTroopVidListEvent.a.equals(paramTroopVidToVideoInfoPuller.h)) {
+      localArrayList.addAll(paramGetTroopVidListEvent.b);
     }
-    SLog.d(this.TAG, String.format("Get %s vid list from net , %s", new Object[] { paramTroopVidToVideoInfoPuller.jdField_a_of_type_JavaLangString, localArrayList }));
+    SLog.d(this.TAG, String.format("Get %s vid list from net , %s", new Object[] { paramTroopVidToVideoInfoPuller.h, localArrayList }));
     paramTroopVidToVideoInfoPuller.a(localArrayList);
     StoryDispatcher.a().unRegisterSubscriber(this);
-    paramTroopVidToVideoInfoPuller.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller$StoryVidListReceiver = null;
+    paramTroopVidToVideoInfoPuller.c = null;
   }
   
   public Class acceptEventClass()
@@ -52,7 +52,7 @@ public class TroopVidToVideoInfoPuller$StoryVidListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopVidToVideoInfoPuller.StoryVidListReceiver
  * JD-Core Version:    0.7.0.1
  */

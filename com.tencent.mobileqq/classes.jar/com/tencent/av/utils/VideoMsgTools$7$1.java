@@ -16,19 +16,19 @@ class VideoMsgTools$7$1
   
   public void run()
   {
-    Context localContext = (Context)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Context localContext = (Context)this.this$0.b.get();
     if (localContext == null) {
       return;
     }
     Bundle localBundle = new Bundle();
     int i;
-    if (this.this$0.jdField_a_of_type_Int == 3000) {
+    if (this.this$0.c == 3000) {
       i = 1;
     } else {
       i = 10;
     }
     localBundle.putInt("MultiAVType", i);
-    if (this.this$0.jdField_a_of_type_Boolean) {
+    if (this.this$0.a) {
       localBundle.putBoolean("isVideo", true);
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
@@ -36,11 +36,11 @@ class VideoMsgTools$7$1
     if (localArrayList != null) {
       localBundle.putParcelableArrayList("invitelist", localArrayList);
     }
-    if (this.this$0.jdField_a_of_type_Int == 1) {
-      localBundle.putBoolean("enableInvite", QAVGroupConfig.a("selectMemberToStartGAudioChat", localQQAppInterface, this.this$0.jdField_a_of_type_JavaLangString));
+    if (this.this$0.c == 1) {
+      localBundle.putBoolean("enableInvite", QAVGroupConfig.a("selectMemberToStartGAudioChat", localQQAppInterface, this.this$0.d));
     }
-    localBundle.putString("Fromwhere", this.this$0.b);
-    ChatActivityUtils.a(localQQAppInterface, localContext, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_JavaLangString, true, true, null, localBundle);
+    localBundle.putString("Fromwhere", this.this$0.e);
+    ChatActivityUtils.a(localQQAppInterface, localContext, this.this$0.c, this.this$0.d, true, true, null, localBundle);
   }
 }
 

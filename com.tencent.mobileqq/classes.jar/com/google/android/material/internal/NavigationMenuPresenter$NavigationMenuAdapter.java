@@ -20,40 +20,40 @@ import java.util.ArrayList;
 class NavigationMenuPresenter$NavigationMenuAdapter
   extends RecyclerView.Adapter<NavigationMenuPresenter.ViewHolder>
 {
-  private MenuItemImpl jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl;
-  private final ArrayList<NavigationMenuPresenter.NavigationMenuItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private final ArrayList<NavigationMenuPresenter.NavigationMenuItem> b = new ArrayList();
+  private MenuItemImpl c;
+  private boolean d;
   
   NavigationMenuPresenter$NavigationMenuAdapter(NavigationMenuPresenter paramNavigationMenuPresenter)
   {
-    b();
+    e();
   }
   
   private void a(int paramInt1, int paramInt2)
   {
     while (paramInt1 < paramInt2)
     {
-      ((NavigationMenuPresenter.NavigationMenuTextItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).jdField_a_of_type_Boolean = true;
+      ((NavigationMenuPresenter.NavigationMenuTextItem)this.b.get(paramInt1)).a = true;
       paramInt1 += 1;
     }
   }
   
-  private void b()
+  private void e()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.add(new NavigationMenuPresenter.NavigationMenuHeaderItem());
-    int i2 = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getVisibleItems().size();
+    this.d = true;
+    this.b.clear();
+    this.b.add(new NavigationMenuPresenter.NavigationMenuHeaderItem());
+    int i2 = this.a.b.getVisibleItems().size();
     int m = 0;
     int n = -1;
     boolean bool2 = false;
     int k;
     for (int i = 0; m < i2; i = k)
     {
-      Object localObject = (MenuItemImpl)this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.getVisibleItems().get(m);
+      Object localObject = (MenuItemImpl)this.a.b.getVisibleItems().get(m);
       if (((MenuItemImpl)localObject).isChecked()) {
         a((MenuItemImpl)localObject);
       }
@@ -72,10 +72,10 @@ class NavigationMenuPresenter$NavigationMenuAdapter
         if (localSubMenu.hasVisibleItems())
         {
           if (m != 0) {
-            this.jdField_a_of_type_JavaUtilArrayList.add(new NavigationMenuPresenter.NavigationMenuSeparatorItem(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.e, 0));
+            this.b.add(new NavigationMenuPresenter.NavigationMenuSeparatorItem(this.a.o, 0));
           }
-          this.jdField_a_of_type_JavaUtilArrayList.add(new NavigationMenuPresenter.NavigationMenuTextItem((MenuItemImpl)localObject));
-          int i3 = this.jdField_a_of_type_JavaUtilArrayList.size();
+          this.b.add(new NavigationMenuPresenter.NavigationMenuTextItem((MenuItemImpl)localObject));
+          int i3 = this.b.size();
           int i4 = localSubMenu.size();
           i1 = 0;
           for (j = 0; i1 < i4; j = k)
@@ -98,7 +98,7 @@ class NavigationMenuPresenter$NavigationMenuAdapter
               if (((MenuItemImpl)localObject).isChecked()) {
                 a((MenuItemImpl)localObject);
               }
-              this.jdField_a_of_type_JavaUtilArrayList.add(new NavigationMenuPresenter.NavigationMenuTextItem(localMenuItemImpl));
+              this.b.add(new NavigationMenuPresenter.NavigationMenuTextItem(localMenuItemImpl));
             }
             i1 += 1;
           }
@@ -107,7 +107,7 @@ class NavigationMenuPresenter$NavigationMenuAdapter
           k = i;
           if (j != 0)
           {
-            a(i3, this.jdField_a_of_type_JavaUtilArrayList.size());
+            a(i3, this.b.size());
             i1 = n;
             bool1 = bool2;
             k = i;
@@ -119,7 +119,7 @@ class NavigationMenuPresenter$NavigationMenuAdapter
         i1 = ((MenuItemImpl)localObject).getGroupId();
         if (i1 != n)
         {
-          i = this.jdField_a_of_type_JavaUtilArrayList.size();
+          i = this.b.size();
           if (((MenuItemImpl)localObject).getIcon() != null) {
             bool1 = true;
           } else {
@@ -129,7 +129,7 @@ class NavigationMenuPresenter$NavigationMenuAdapter
           if (m != 0)
           {
             j = i + 1;
-            this.jdField_a_of_type_JavaUtilArrayList.add(new NavigationMenuPresenter.NavigationMenuSeparatorItem(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.e, this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.e));
+            this.b.add(new NavigationMenuPresenter.NavigationMenuSeparatorItem(this.a.o, this.a.o));
           }
         }
         else
@@ -142,76 +142,22 @@ class NavigationMenuPresenter$NavigationMenuAdapter
             j = i;
             if (((MenuItemImpl)localObject).getIcon() != null)
             {
-              a(i, this.jdField_a_of_type_JavaUtilArrayList.size());
+              a(i, this.b.size());
               bool1 = true;
               j = i;
             }
           }
         }
         localObject = new NavigationMenuPresenter.NavigationMenuTextItem((MenuItemImpl)localObject);
-        ((NavigationMenuPresenter.NavigationMenuTextItem)localObject).jdField_a_of_type_Boolean = bool1;
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        ((NavigationMenuPresenter.NavigationMenuTextItem)localObject).a = bool1;
+        this.b.add(localObject);
         k = j;
       }
       m += 1;
       n = i1;
       bool2 = bool1;
     }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  int a()
-  {
-    int i = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    int j = 0;
-    if (i == 0) {
-      i = 0;
-    }
-    int k;
-    for (i = 1; j < this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter$NavigationMenuAdapter.getItemCount(); i = k)
-    {
-      k = i;
-      if (this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter$NavigationMenuAdapter.getItemViewType(j) == 0) {
-        k = i + 1;
-      }
-      j += 1;
-    }
-    return i;
-  }
-  
-  @NonNull
-  public Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    Object localObject = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl;
-    if (localObject != null) {
-      localBundle.putInt("android:menu:checked", ((MenuItemImpl)localObject).getItemId());
-    }
-    SparseArray localSparseArray = new SparseArray();
-    int i = 0;
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    while (i < j)
-    {
-      localObject = (NavigationMenuPresenter.NavigationMenuItem)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if ((localObject instanceof NavigationMenuPresenter.NavigationMenuTextItem))
-      {
-        MenuItemImpl localMenuItemImpl = ((NavigationMenuPresenter.NavigationMenuTextItem)localObject).a();
-        if (localMenuItemImpl != null) {
-          localObject = localMenuItemImpl.getActionView();
-        } else {
-          localObject = null;
-        }
-        if (localObject != null)
-        {
-          ParcelableSparseArray localParcelableSparseArray = new ParcelableSparseArray();
-          ((View)localObject).saveHierarchyState(localParcelableSparseArray);
-          localSparseArray.put(localMenuItemImpl.getItemId(), localParcelableSparseArray);
-        }
-      }
-      i += 1;
-    }
-    localBundle.putSparseParcelableArray("android:menu:action_views", localSparseArray);
-    return localBundle;
+    this.d = false;
   }
   
   @Nullable
@@ -226,18 +172,18 @@ class NavigationMenuPresenter$NavigationMenuAdapter
           if (paramInt != 3) {
             return null;
           }
-          return new NavigationMenuPresenter.HeaderViewHolder(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_AndroidWidgetLinearLayout);
+          return new NavigationMenuPresenter.HeaderViewHolder(this.a.a);
         }
-        return new NavigationMenuPresenter.SeparatorViewHolder(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_AndroidViewLayoutInflater, paramViewGroup);
+        return new NavigationMenuPresenter.SeparatorViewHolder(this.a.d, paramViewGroup);
       }
-      return new NavigationMenuPresenter.SubheaderViewHolder(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_AndroidViewLayoutInflater, paramViewGroup);
+      return new NavigationMenuPresenter.SubheaderViewHolder(this.a.d, paramViewGroup);
     }
-    return new NavigationMenuPresenter.NormalViewHolder(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_AndroidViewLayoutInflater, paramViewGroup, this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_AndroidViewView$OnClickListener);
+    return new NavigationMenuPresenter.NormalViewHolder(this.a.d, paramViewGroup, this.a.p);
   }
   
   public void a()
   {
-    b();
+    e();
     notifyDataSetChanged();
   }
   
@@ -249,12 +195,12 @@ class NavigationMenuPresenter$NavigationMenuAdapter
     Object localObject1;
     if (k != 0)
     {
-      this.jdField_a_of_type_Boolean = true;
-      int m = this.jdField_a_of_type_JavaUtilArrayList.size();
+      this.d = true;
+      int m = this.b.size();
       i = 0;
       while (i < m)
       {
-        localObject1 = (NavigationMenuPresenter.NavigationMenuItem)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject1 = (NavigationMenuPresenter.NavigationMenuItem)this.b.get(i);
         if ((localObject1 instanceof NavigationMenuPresenter.NavigationMenuTextItem))
         {
           localObject1 = ((NavigationMenuPresenter.NavigationMenuTextItem)localObject1).a();
@@ -266,17 +212,17 @@ class NavigationMenuPresenter$NavigationMenuAdapter
         }
         i += 1;
       }
-      this.jdField_a_of_type_Boolean = false;
-      b();
+      this.d = false;
+      e();
     }
     paramBundle = paramBundle.getSparseParcelableArray("android:menu:action_views");
     if (paramBundle != null)
     {
-      k = this.jdField_a_of_type_JavaUtilArrayList.size();
+      k = this.b.size();
       i = j;
       while (i < k)
       {
-        localObject1 = (NavigationMenuPresenter.NavigationMenuItem)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject1 = (NavigationMenuPresenter.NavigationMenuItem)this.b.get(i);
         if ((localObject1 instanceof NavigationMenuPresenter.NavigationMenuTextItem))
         {
           Object localObject2 = ((NavigationMenuPresenter.NavigationMenuTextItem)localObject1).a();
@@ -299,16 +245,16 @@ class NavigationMenuPresenter$NavigationMenuAdapter
   
   public void a(@NonNull MenuItemImpl paramMenuItemImpl)
   {
-    if (this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl != paramMenuItemImpl)
+    if (this.c != paramMenuItemImpl)
     {
       if (!paramMenuItemImpl.isCheckable()) {
         return;
       }
-      MenuItemImpl localMenuItemImpl = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl;
+      MenuItemImpl localMenuItemImpl = this.c;
       if (localMenuItemImpl != null) {
         localMenuItemImpl.setChecked(false);
       }
-      this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl = paramMenuItemImpl;
+      this.c = paramMenuItemImpl;
       paramMenuItemImpl.setChecked(true);
     }
   }
@@ -330,46 +276,105 @@ class NavigationMenuPresenter$NavigationMenuAdapter
         if (i != 2) {
           return;
         }
-        localObject = (NavigationMenuPresenter.NavigationMenuSeparatorItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        localObject = (NavigationMenuPresenter.NavigationMenuSeparatorItem)this.b.get(paramInt);
         paramViewHolder.itemView.setPadding(0, ((NavigationMenuPresenter.NavigationMenuSeparatorItem)localObject).a(), 0, ((NavigationMenuPresenter.NavigationMenuSeparatorItem)localObject).b());
         return;
       }
-      ((TextView)paramViewHolder.itemView).setText(((NavigationMenuPresenter.NavigationMenuTextItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a().getTitle());
+      ((TextView)paramViewHolder.itemView).setText(((NavigationMenuPresenter.NavigationMenuTextItem)this.b.get(paramInt)).a().getTitle());
       return;
     }
     Object localObject = (NavigationMenuItemView)paramViewHolder.itemView;
-    ((NavigationMenuItemView)localObject).a(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_b_of_type_AndroidContentResColorStateList);
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_Boolean) {
-      ((NavigationMenuItemView)localObject).setTextAppearance(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_Int);
+    ((NavigationMenuItemView)localObject).setIconTintList(this.a.h);
+    if (this.a.f) {
+      ((NavigationMenuItemView)localObject).setTextAppearance(this.a.e);
     }
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      ((NavigationMenuItemView)localObject).setTextColor(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_AndroidContentResColorStateList);
+    if (this.a.g != null) {
+      ((NavigationMenuItemView)localObject).setTextColor(this.a.g);
     }
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      paramViewHolder = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
+    if (this.a.i != null) {
+      paramViewHolder = this.a.i.getConstantState().newDrawable();
     } else {
       paramViewHolder = null;
     }
     ViewCompat.setBackground((View)localObject, paramViewHolder);
-    paramViewHolder = (NavigationMenuPresenter.NavigationMenuTextItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    ((NavigationMenuItemView)localObject).setNeedsEmptyIcon(paramViewHolder.jdField_a_of_type_Boolean);
-    ((NavigationMenuItemView)localObject).setHorizontalPadding(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_b_of_type_Int);
-    ((NavigationMenuItemView)localObject).setIconPadding(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.c);
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.jdField_b_of_type_Boolean) {
-      ((NavigationMenuItemView)localObject).setIconSize(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter.d);
+    paramViewHolder = (NavigationMenuPresenter.NavigationMenuTextItem)this.b.get(paramInt);
+    ((NavigationMenuItemView)localObject).setNeedsEmptyIcon(paramViewHolder.a);
+    ((NavigationMenuItemView)localObject).setHorizontalPadding(this.a.j);
+    ((NavigationMenuItemView)localObject).setIconPadding(this.a.k);
+    if (this.a.m) {
+      ((NavigationMenuItemView)localObject).setIconSize(this.a.l);
     }
-    ((NavigationMenuItemView)localObject).setMaxLines(NavigationMenuPresenter.a(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter));
+    ((NavigationMenuItemView)localObject).setMaxLines(NavigationMenuPresenter.a(this.a));
     ((NavigationMenuItemView)localObject).initialize(paramViewHolder.a(), 0);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
+  }
+  
+  public MenuItemImpl b()
+  {
+    return this.c;
+  }
+  
+  @NonNull
+  public Bundle c()
+  {
+    Bundle localBundle = new Bundle();
+    Object localObject = this.c;
+    if (localObject != null) {
+      localBundle.putInt("android:menu:checked", ((MenuItemImpl)localObject).getItemId());
+    }
+    SparseArray localSparseArray = new SparseArray();
+    int i = 0;
+    int j = this.b.size();
+    while (i < j)
+    {
+      localObject = (NavigationMenuPresenter.NavigationMenuItem)this.b.get(i);
+      if ((localObject instanceof NavigationMenuPresenter.NavigationMenuTextItem))
+      {
+        MenuItemImpl localMenuItemImpl = ((NavigationMenuPresenter.NavigationMenuTextItem)localObject).a();
+        if (localMenuItemImpl != null) {
+          localObject = localMenuItemImpl.getActionView();
+        } else {
+          localObject = null;
+        }
+        if (localObject != null)
+        {
+          ParcelableSparseArray localParcelableSparseArray = new ParcelableSparseArray();
+          ((View)localObject).saveHierarchyState(localParcelableSparseArray);
+          localSparseArray.put(localMenuItemImpl.getItemId(), localParcelableSparseArray);
+        }
+      }
+      i += 1;
+    }
+    localBundle.putSparseParcelableArray("android:menu:action_views", localSparseArray);
+    return localBundle;
+  }
+  
+  int d()
+  {
+    int i = this.a.a.getChildCount();
+    int j = 0;
+    if (i == 0) {
+      i = 0;
+    }
+    int k;
+    for (i = 1; j < this.a.c.getItemCount(); i = k)
+    {
+      k = i;
+      if (this.a.c.getItemViewType(j) == 0) {
+        k = i + 1;
+      }
+      j += 1;
+    }
+    return i;
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.b.size();
   }
   
   public long getItemId(int paramInt)
@@ -379,7 +384,7 @@ class NavigationMenuPresenter$NavigationMenuAdapter
   
   public int getItemViewType(int paramInt)
   {
-    NavigationMenuPresenter.NavigationMenuItem localNavigationMenuItem = (NavigationMenuPresenter.NavigationMenuItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    NavigationMenuPresenter.NavigationMenuItem localNavigationMenuItem = (NavigationMenuPresenter.NavigationMenuItem)this.b.get(paramInt);
     if ((localNavigationMenuItem instanceof NavigationMenuPresenter.NavigationMenuSeparatorItem)) {
       return 2;
     }
@@ -398,7 +403,7 @@ class NavigationMenuPresenter$NavigationMenuAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.NavigationMenuPresenter.NavigationMenuAdapter
  * JD-Core Version:    0.7.0.1
  */

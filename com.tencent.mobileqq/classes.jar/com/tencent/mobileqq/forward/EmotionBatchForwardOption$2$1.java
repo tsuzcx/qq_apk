@@ -12,12 +12,12 @@ class EmotionBatchForwardOption$2$1
   
   public void a(Emoticon paramEmoticon)
   {
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqForwardEmotionBatchForwardOption$2.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqForwardEmotionBatchForwardOption$2.this$0.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramEmoticon, null);
+    ChatActivityFacade.a(this.b.this$0.q, this.b.this$0.I, this.a, paramEmoticon, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.EmotionBatchForwardOption.2.1
  * JD-Core Version:    0.7.0.1
  */

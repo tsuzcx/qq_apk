@@ -4,12 +4,12 @@ import android.content.Context;
 import com.tencent.aelight.camera.aeeditor.module.autotemplate.FrameExtractor;
 import com.tencent.aelight.camera.aeeditor.module.autotemplate.FrameExtractor.MediaWithType;
 import com.tencent.aelight.camera.log.AEQLog;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.tavcut.util.Logger;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.resource.MediaClipModel;
-import com.tencent.weseevideo.model.resource.MediaResourceModel;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
+import com.tencent.qcircle.tavcut.session.TAVCutVideoSession;
+import com.tencent.qcircle.tavcut.util.Logger;
+import com.tencent.qcircle.weseevideo.model.MediaModel;
+import com.tencent.qcircle.weseevideo.model.resource.MediaClipModel;
+import com.tencent.qcircle.weseevideo.model.resource.MediaResourceModel;
+import com.tencent.qcircle.weseevideo.model.resource.VideoResourceModel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,36 +20,36 @@ class MultiVideoAIFilterProxy$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null)
+    if (this.this$0.g != null)
     {
-      AEQLog.a(MultiVideoAIFilterProxy.a(), "getVideoFrame start");
+      AEQLog.a(MultiVideoAIFilterProxy.f(), "getVideoFrame start");
       Object localObject1 = new ArrayList();
       int i = 0;
-      while (i < this.this$0.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().getMediaResourceModel().getVideos().size())
+      while (i < this.this$0.g.getMediaModel().getMediaResourceModel().getVideos().size())
       {
-        localObject2 = (MediaClipModel)this.this$0.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().getMediaResourceModel().getVideos().get(i);
+        localObject2 = (MediaClipModel)this.this$0.g.getMediaModel().getMediaResourceModel().getVideos().get(i);
         if (((MediaClipModel)localObject2).getResource().getPath() != null) {
           ((List)localObject1).add(new FrameExtractor.MediaWithType(((MediaClipModel)localObject2).getResource().getPath(), ((MediaClipModel)localObject2).getResource().getType(), ((MediaClipModel)localObject2).getResource().getSourceTimeDuration()));
         }
         i += 1;
       }
       Object localObject2 = new FrameExtractor();
-      this.this$0.jdField_a_of_type_JavaUtilList = ((FrameExtractor)localObject2).a((List)localObject1, this.jdField_a_of_type_JavaUtilList, 250);
-      AEQLog.a(MultiVideoAIFilterProxy.a(), "getVideoFrame end");
+      this.this$0.b = ((FrameExtractor)localObject2).a((List)localObject1, this.a, 250);
+      AEQLog.a(MultiVideoAIFilterProxy.f(), "getVideoFrame end");
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("get covers num =");
-      ((StringBuilder)localObject1).append(this.this$0.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject1).append(this.this$0.b.size());
       Logger.i("Cover", ((StringBuilder)localObject1).toString());
       localObject1 = this.this$0;
-      ((MultiVideoAIFilterProxy)localObject1).jdField_a_of_type_Int = ((MultiVideoAIFilterProxy)localObject1).jdField_a_of_type_JavaUtilList.size();
+      ((MultiVideoAIFilterProxy)localObject1).a = ((MultiVideoAIFilterProxy)localObject1).b.size();
       localObject1 = this.this$0;
-      ((MultiVideoAIFilterProxy)localObject1).a(this.jdField_a_of_type_AndroidContentContext, ((MultiVideoAIFilterProxy)localObject1).jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterProxyBase$AIFilterProxyCallback);
+      ((MultiVideoAIFilterProxy)localObject1).a(this.b, ((MultiVideoAIFilterProxy)localObject1).b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.MultiVideoAIFilterProxy.1
  * JD-Core Version:    0.7.0.1
  */

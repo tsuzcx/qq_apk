@@ -12,13 +12,13 @@ class PhotoListPanel$PhotoPanelAdapter$1
   
   public void onClick(View paramView)
   {
-    ((PhotoListPanel)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter.a.get()).a(paramView, this.jdField_a_of_type_Int);
+    ((PhotoListPanel)this.b.a.get()).a(paramView, this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.PhotoPanelAdapter.1
  * JD-Core Version:    0.7.0.1
  */

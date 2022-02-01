@@ -11,7 +11,7 @@ class a$1
   
   public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    Log.d(a.j(), "on prepared");
+    Log.d("MediaPlayerWrapper", "on prepared");
     a.a(this.a, a.a.e);
     a.a(this.a).a(paramMediaPlayer);
     a.b(this.a).start();
@@ -20,7 +20,7 @@ class a$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.audio.a.1
  * JD-Core Version:    0.7.0.1
  */

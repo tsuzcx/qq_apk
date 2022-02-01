@@ -4,13 +4,13 @@ public abstract interface DoodleMsgViewListener
 {
   public abstract void a(int paramInt);
   
-  public abstract void f();
+  public abstract void h();
   
-  public abstract void g();
+  public abstract void i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgViewListener
  * JD-Core Version:    0.7.0.1
  */

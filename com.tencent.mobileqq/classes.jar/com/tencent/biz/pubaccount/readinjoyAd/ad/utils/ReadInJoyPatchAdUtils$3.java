@@ -36,7 +36,7 @@ final class ReadInJoyPatchAdUtils$3
       String str = ReadInJoyPatchAdUtils.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onStart: id = ");
-      localStringBuilder.append(paramVideoPlayParam.a.mArticleID);
+      localStringBuilder.append(paramVideoPlayParam.D.mArticleID);
       QLog.d(str, 2, localStringBuilder.toString());
     }
     ReadInJoyPatchAdUtils.a(paramVideoPlayParam, paramInt, 1);
@@ -48,14 +48,14 @@ final class ReadInJoyPatchAdUtils$3
     if (!ReadInJoyPatchAdUtils.a(paramVideoPlayParam)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.a.clickPos = paramInt2;
+    this.a.a.clickPos = paramInt2;
     if (paramInt1 == 1) {
-      paramVideoPlayParam.a.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      paramVideoPlayParam.D.patchStatus.b.set(true);
     } else {
-      paramVideoPlayParam.a.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      paramVideoPlayParam.D.patchStatus.d.set(true);
     }
-    paramVideoPlayParam = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.a, null, 3, true, null);
-    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidAppActivity).a(1).b(8).b(paramVideoPlayParam).c(paramInt2).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.a));
+    paramVideoPlayParam = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.b, this.a.a, null, 3, true, null);
+    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.b).a(1).b(8).b(paramVideoPlayParam).c(paramInt2).a(this.a.a));
   }
   
   public void b(VideoPlayParam paramVideoPlayParam, int paramInt)
@@ -64,14 +64,14 @@ final class ReadInJoyPatchAdUtils$3
       return;
     }
     int i = 1;
-    if ((paramInt == 1) && (!paramVideoPlayParam.a.patchStatus.c.get()))
+    if ((paramInt == 1) && (!paramVideoPlayParam.D.patchStatus.e.get()))
     {
-      paramVideoPlayParam.a.patchStatus.c.set(true);
+      paramVideoPlayParam.D.patchStatus.e.set(true);
       paramInt = i;
     }
-    else if ((paramInt == 2) && (!paramVideoPlayParam.a.patchStatus.d.get()))
+    else if ((paramInt == 2) && (!paramVideoPlayParam.D.patchStatus.f.get()))
     {
-      paramVideoPlayParam.a.patchStatus.d.set(true);
+      paramVideoPlayParam.D.patchStatus.f.set(true);
       paramInt = i;
     }
     else
@@ -79,7 +79,7 @@ final class ReadInJoyPatchAdUtils$3
       paramInt = 0;
     }
     if (paramInt != 0) {
-      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(BaseApplication.getContext()).a(2).b(4).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.a).e(new JSONObject()));
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(BaseApplication.getContext()).a(2).b(4).a(this.a.a).e(new JSONObject()));
     }
   }
   
@@ -94,31 +94,31 @@ final class ReadInJoyPatchAdUtils$3
       localObject = ReadInJoyPatchAdUtils.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onCompletion: id = ");
-      localStringBuilder.append(paramVideoPlayParam.a.mArticleID);
+      localStringBuilder.append(paramVideoPlayParam.D.mArticleID);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     ReadInJoyPatchAdUtils.a(paramVideoPlayParam, paramInt1, 3);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView.a();
+    this.a.setVisibility(8);
+    this.a.a();
     if (paramInt1 == 1)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiIVideoUIManager.a() == paramVideoPlayParam)
+      if (this.c.b() == paramVideoPlayParam)
       {
         if (paramInt2 != 1)
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsApiIVideoPlayManager.a(paramVideoPlayParam);
+          this.d.a(paramVideoPlayParam);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsApiIVideoPlayManager.a();
+        this.d.c();
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiCountDownCallback;
+      localObject = this.e;
       if ((localObject != null) && (paramInt2 == 0))
       {
         ((CountDownCallback)localObject).a(paramVideoPlayParam);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFullPlayController.a();
+        this.f.a();
       }
     }
   }
@@ -133,16 +133,16 @@ final class ReadInJoyPatchAdUtils$3
       String str = ReadInJoyPatchAdUtils.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onResume: id = ");
-      localStringBuilder.append(paramVideoPlayParam.a.mArticleID);
+      localStringBuilder.append(paramVideoPlayParam.D.mArticleID);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiIVideoUIManager.a().a.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2)
+    if (this.c.b().D.patchStatus.a.get() == 2)
     {
-      ((IRIJPatchAdUtilService)QRoute.api(IRIJPatchAdUtilService.class)).playPrePatchAd(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiIVideoUIManager.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiIVideoUIManager, true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdUtilsOnPatchPlayListener);
+      ((IRIJPatchAdUtilService)QRoute.api(IRIJPatchAdUtilService.class)).playPrePatchAd(this.c.b(), this.c, true, this.g);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiIVideoUIManager.a().a.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2) {
-      ((IRIJPatchAdUtilService)QRoute.api(IRIJPatchAdUtilService.class)).playPostPatchAd(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiIVideoUIManager.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiIVideoUIManager, false, true, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiCountDownCallback, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFullPlayController, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdUtilsOnPatchPlayListener);
+    if (this.c.b().D.patchStatus.c.get() == 2) {
+      ((IRIJPatchAdUtilService)QRoute.api(IRIJPatchAdUtilService.class)).playPostPatchAd(this.c.b(), this.c, false, true, this.e, this.f, this.g);
     }
   }
   
@@ -156,15 +156,15 @@ final class ReadInJoyPatchAdUtils$3
       String str = ReadInJoyPatchAdUtils.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onPause: id = ");
-      localStringBuilder.append(paramVideoPlayParam.a.mArticleID);
+      localStringBuilder.append(paramVideoPlayParam.D.mArticleID);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiIVideoUIManager.a().a.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiIVideoUIManager.a().a.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-    } else if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiIVideoUIManager.a().a.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiIVideoUIManager.a().a.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+    if (this.c.b().D.patchStatus.a.get() == 1) {
+      this.c.b().D.patchStatus.a.set(2);
+    } else if (this.c.b().D.patchStatus.c.get() == 1) {
+      this.c.b().D.patchStatus.c.set(2);
     }
-    paramVideoPlayParam = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView;
+    paramVideoPlayParam = this.a;
     if (paramVideoPlayParam != null) {
       paramVideoPlayParam.a();
     }
@@ -173,7 +173,7 @@ final class ReadInJoyPatchAdUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyPatchAdUtils.3
  * JD-Core Version:    0.7.0.1
  */

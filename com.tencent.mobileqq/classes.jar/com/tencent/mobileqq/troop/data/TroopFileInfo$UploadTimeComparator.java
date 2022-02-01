@@ -7,10 +7,10 @@ public class TroopFileInfo$UploadTimeComparator
 {
   public int a(TroopFileInfo paramTroopFileInfo1, TroopFileInfo paramTroopFileInfo2)
   {
-    if (paramTroopFileInfo1.b < paramTroopFileInfo2.b) {
+    if (paramTroopFileInfo1.i < paramTroopFileInfo2.i) {
       return 1;
     }
-    if (paramTroopFileInfo1.b == paramTroopFileInfo2.b) {
+    if (paramTroopFileInfo1.i == paramTroopFileInfo2.i) {
       return 0;
     }
     return -1;
@@ -18,7 +18,7 @@ public class TroopFileInfo$UploadTimeComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFileInfo.UploadTimeComparator
  * JD-Core Version:    0.7.0.1
  */

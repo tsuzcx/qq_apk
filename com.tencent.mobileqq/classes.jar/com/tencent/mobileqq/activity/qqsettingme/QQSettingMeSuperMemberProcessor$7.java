@@ -23,39 +23,39 @@ class QQSettingMeSuperMemberProcessor$7
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a != null)
+    if (this.a.d != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.clickHide == 1)
+      if (this.a.d.clickHide == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.enable = 0;
+        this.a.d.enable = 0;
         QLog.e("QQSettingRedesign", 1, "VipInfoHandler click clear enable");
-        VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeSuperMemberProcessor.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a);
+        VipInfoHandler.a(this.b.c.getCurrentUin(), this.a.d);
       }
-      ReportController.b(null, "dc00898", "", "", "", "0X800A633", VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a), 1, 0, "1", this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.advId, "", "");
-      VipInfoHandler.a(102, this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.advId);
+      ReportController.b(null, "dc00898", "", "", "", "0X800A633", VipInfoHandler.b(this.a.d), 1, 0, "1", this.a.d.advId, "", "");
+      VipInfoHandler.a(102, this.a.d.advId);
       Object localObject;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.iconJumpUrl))
+      if (!TextUtils.isEmpty(this.a.d.iconJumpUrl))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("VipInfoHandler click iconJumpUrl: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.iconJumpUrl);
+        ((StringBuilder)localObject).append(this.a.d.iconJumpUrl);
         QLog.e("QQSettingRedesign", 1, ((StringBuilder)localObject).toString());
-        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeSuperMemberProcessor.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, QQBrowserActivity.class);
+        localObject = new Intent(this.b.d, QQBrowserActivity.class);
         ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-        ((Intent)localObject).putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.iconJumpUrl);
+        ((Intent)localObject).putExtra("url", this.a.d.iconJumpUrl);
         ((Intent)localObject).putExtra("isShowAd", false);
-        this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeSuperMemberProcessor.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.startActivity((Intent)localObject);
+        this.b.d.startActivity((Intent)localObject);
       }
       else
       {
-        int i = this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.clubType;
+        int i = this.a.d.clubType;
         if ((i != 1) && (i != 2))
         {
           if (i != 3)
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("VipInfoHandler unknown clubType=");
-            ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.clubType);
+            ((StringBuilder)localObject).append(this.a.d.clubType);
             QLog.e("QQSettingRedesign", 1, ((StringBuilder)localObject).toString());
             break label429;
           }
@@ -67,14 +67,14 @@ class QQSettingMeSuperMemberProcessor$7
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("VipInfoHandler click type: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.clubType);
+        ((StringBuilder)localObject).append(this.a.d.clubType);
         QLog.e("QQSettingRedesign", 1, ((StringBuilder)localObject).toString());
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("jsbridge://vipclub/paySuccess?p={\"type\":");
         ((StringBuilder)localObject).append(i);
         ((StringBuilder)localObject).append("}");
         localObject = URLEncoder.encode(((StringBuilder)localObject).toString());
-        VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeSuperMemberProcessor.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.aid, "CJCLUBT", 3, false, false, "", (String)localObject, true, true);
+        VasH5PayUtil.a(this.b.d, this.a.d.aid, "CJCLUBT", 3, false, false, "", (String)localObject, true, true);
       }
     }
     label429:
@@ -83,7 +83,7 @@ class QQSettingMeSuperMemberProcessor$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeSuperMemberProcessor.7
  * JD-Core Version:    0.7.0.1
  */

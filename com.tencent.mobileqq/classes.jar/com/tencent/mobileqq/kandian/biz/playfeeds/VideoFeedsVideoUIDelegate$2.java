@@ -18,16 +18,16 @@ class VideoFeedsVideoUIDelegate$2
   {
     QLog.d("VideoFeedsVideoUIDelegate", 2, "onVideoError playButton setVisibility GONE");
     VideoFeedsVideoUIDelegate.a(this.this$0, false);
-    this.this$0.a.g.clearAnimation();
-    this.this$0.a.g.setVisibility(8);
-    this.this$0.a.c.setVisibility(0);
-    this.this$0.a.a.a(1, this.jdField_a_of_type_JavaLangString, "点击重试");
-    PlayFeedbackHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.g, 2);
+    this.this$0.a.ad.clearAnimation();
+    this.this$0.a.ad.setVisibility(8);
+    this.this$0.a.ae.setVisibility(0);
+    this.this$0.a.aC.a(1, this.a, "点击重试");
+    PlayFeedbackHelper.a(this.b.c.l, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsVideoUIDelegate.2
  * JD-Core Version:    0.7.0.1
  */

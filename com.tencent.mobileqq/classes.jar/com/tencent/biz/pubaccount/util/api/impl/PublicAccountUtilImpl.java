@@ -508,7 +508,7 @@ public class PublicAccountUtilImpl
           localObject = ((IPublicAccountConfigAttr)localObject).getConfigs().iterator();
         }
         localPaConfigInfo = (IPublicAccountConfigAttr.PaConfigInfo)((Iterator)localObject).next();
-      } while (localPaConfigInfo.c != paramInt2);
+      } while (localPaConfigInfo.e != paramInt2);
       return localPaConfigInfo;
     }
     return null;
@@ -520,7 +520,7 @@ public class PublicAccountUtilImpl
     if (localPaConfigInfo == null)
     {
       paramPublicAccountDetailImpl = getConfigInfo(paramPublicAccountDetailImpl, 0, 0);
-      if ((paramPublicAccountDetailImpl != null) && ("历史消息".equals(paramPublicAccountDetailImpl.a))) {
+      if ((paramPublicAccountDetailImpl != null) && ("历史消息".equals(paramPublicAccountDetailImpl.b))) {
         return paramPublicAccountDetailImpl;
       }
     }
@@ -533,7 +533,7 @@ public class PublicAccountUtilImpl
     if (paramPublicAccountDetailImpl == null) {
       return null;
     }
-    return Integer.valueOf(paramPublicAccountDetailImpl.d);
+    return Integer.valueOf(paramPublicAccountDetailImpl.f);
   }
   
   private static String getNonNullObejct(Object paramObject)
@@ -615,7 +615,7 @@ public class PublicAccountUtilImpl
       paramAppInterface.putExtra("uin", paramString);
       paramAppInterface.putExtra("uintype", paramInt);
       paramAppInterface.putExtra("uinname", (String)localObject2);
-      paramAppInterface.putExtra("leftViewText", paramContext.getString(2131690706));
+      paramAppInterface.putExtra("leftViewText", paramContext.getString(2131887625));
       paramContext.startActivity(paramAppInterface);
     }
   }
@@ -748,7 +748,7 @@ public class PublicAccountUtilImpl
     if (paramBoolean)
     {
       paramIntent = new StringBuilder();
-      paramIntent.append(ReadInJoyConstants.k);
+      paramIntent.append(ReadInJoyConstants.l);
       paramIntent.append(Base64Util.encodeToString(paramString.getBytes(), 0));
       paramAppInterface = paramIntent.toString();
       if ((!TextUtils.isEmpty(paramAppInterface)) && (((IViolaAccessHelper)QRoute.api(IViolaAccessHelper.class)).isViolaUrlFromWeb(paramAppInterface)))
@@ -779,7 +779,7 @@ public class PublicAccountUtilImpl
     if (paramPublicAccountDetailImpl == null) {
       return null;
     }
-    return paramPublicAccountDetailImpl.h;
+    return paramPublicAccountDetailImpl.n;
   }
   
   private static void removeMail(AppInterface paramAppInterface, Context paramContext, String paramString)
@@ -794,7 +794,7 @@ public class PublicAccountUtilImpl
       return;
     }
     localObject = (QQAppInterface)localObject;
-    MessageRecord localMessageRecord = ((QQAppInterface)localObject).getMessageFacade().b(paramString, 1008);
+    MessageRecord localMessageRecord = ((QQAppInterface)localObject).getMessageFacade().r(paramString, 1008);
     if (localMessageRecord != null)
     {
       if (localMessageRecord.isread) {
@@ -885,7 +885,7 @@ public class PublicAccountUtilImpl
       i = j;
       if (paramAppInterface.getStatusLine().getStatusCode() == 200)
       {
-        paramAppInterface = new JSONObject(HttpBaseUtil.a(paramAppInterface));
+        paramAppInterface = new JSONObject(HttpBaseUtil.b(paramAppInterface));
         i = j;
         if (paramAppInterface.has("ret"))
         {
@@ -917,7 +917,7 @@ public class PublicAccountUtilImpl
     NewIntent localNewIntent = new NewIntent(paramContext, PublicAccountServletImpl.class);
     localNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.7.0,3,5295");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.8.17,3,5770");
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     localGetPublicAccountDetailInfoRequest.version.set(1);
     try
@@ -944,7 +944,7 @@ public class PublicAccountUtilImpl
     if (paramPublicAccountDetailImpl == null) {
       return;
     }
-    paramPublicAccountDetailImpl.d = paramInt;
+    paramPublicAccountDetailImpl.f = paramInt;
   }
   
   public static byte[] stringToBytes(String paramString)
@@ -969,7 +969,7 @@ public class PublicAccountUtilImpl
     if (!TextUtils.isEmpty(paramString))
     {
       str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      localObject = SharedPreUtils.m(BaseApplicationImpl.getApplication(), str);
+      localObject = SharedPreUtils.br(BaseApplicationImpl.getApplication(), str);
       localSkinData = null;
       if (localObject == null) {}
     }
@@ -993,7 +993,7 @@ public class PublicAccountUtilImpl
       ((StringBuilder)localObject).append("_kdSkinID=");
       ((StringBuilder)localObject).append(localSkinData.id);
       paramString = HtmlOffline.a(paramString, ((StringBuilder)localObject).toString());
-      if (SharedPreUtils.p(BaseApplicationImpl.getApplication(), str)) {
+      if (SharedPreUtils.bz(BaseApplicationImpl.getApplication(), str)) {
         return HtmlOffline.a(paramString, "_kdSkinVoice=1");
       }
       localObject = HtmlOffline.a(paramString, "_kdSkinVoice=0");
@@ -1017,7 +1017,7 @@ public class PublicAccountUtilImpl
   
   public int caculateMsgTabRedPntExcludeSelf(String paramString)
   {
-    Object localObject1 = RecentDataListManager.a().a;
+    Object localObject1 = RecentDataListManager.a().c;
     int i = 0;
     if (localObject1 == null) {
       return 0;
@@ -1076,25 +1076,21 @@ public class PublicAccountUtilImpl
   public String constructAttributeL()
   {
     String str2 = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCityCode();
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new JSONObject();
     try
     {
       String str1 = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getIMEIForReport();
-      localObject = DeviceInfoUtil.d(BaseApplication.getContext());
       if (str1 == null) {
         str1 = "";
       }
-      if (localObject == null) {
-        localObject = "";
-      }
-      localJSONObject.put("adcode", str2);
-      localJSONObject.put("deviceCode", str1);
-      localJSONObject.put("macAddress", localObject);
-      String str3 = DeviceInfoUtil.f();
+      ((JSONObject)localObject).put("adcode", str2);
+      ((JSONObject)localObject).put("deviceCode", str1);
+      ((JSONObject)localObject).put("macAddress", "");
+      String str3 = DeviceInfoUtil.j();
       if ((!TextUtils.isEmpty(str3)) && (str3.length() == 16)) {
-        localJSONObject.put("android_id", str3);
+        ((JSONObject)localObject).put("android_id", str3);
       }
-      ((IReadInJoySpEventReportUtil)QRoute.api(IReadInJoySpEventReportUtil.class)).addLbsInfo(localJSONObject);
+      ((IReadInJoySpEventReportUtil)QRoute.api(IReadInJoySpEventReportUtil.class)).addLbsInfo((JSONObject)localObject);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -1103,7 +1099,7 @@ public class PublicAccountUtilImpl
         localStringBuilder.append(",deviceID:");
         localStringBuilder.append(str1);
         localStringBuilder.append(",macAddress:");
-        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("");
         localStringBuilder.append(",androidID : ");
         localStringBuilder.append(str3);
         QLog.d("PublicAccountUtil", 2, localStringBuilder.toString());
@@ -1113,8 +1109,8 @@ public class PublicAccountUtilImpl
     {
       localException.printStackTrace();
     }
-    byte[] arrayOfByte = localJSONObject.toString().getBytes();
-    Object localObject = new byte[arrayOfByte.length];
+    byte[] arrayOfByte = ((JSONObject)localObject).toString().getBytes();
+    localObject = new byte[arrayOfByte.length];
     int i = 0;
     while (i < arrayOfByte.length)
     {
@@ -1137,13 +1133,13 @@ public class PublicAccountUtilImpl
   public void deletePubAccountMsg(AppInterface paramAppInterface, Context paramContext, String paramString, int paramInt, long paramLong, boolean paramBoolean)
   {
     paramAppInterface = (QQAppInterface)paramAppInterface;
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null);
-    localActionSheet.setMainTitle(paramContext.getResources().getString(2131696093));
-    localActionSheet.addButton(2131691479, 3);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(paramContext, null);
+    localActionSheet.setMainTitle(paramContext.getResources().getString(2131893858));
+    localActionSheet.addButton(2131888438, 3);
     if (paramString.equals("2010741172")) {
-      localActionSheet.addButton(2131695180);
+      localActionSheet.addButton(2131892913);
     }
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new PublicAccountUtilImpl.3(this, paramAppInterface, paramString, paramInt, paramLong, paramBoolean, paramContext, localActionSheet));
     localActionSheet.show();
   }
@@ -1335,7 +1331,7 @@ public class PublicAccountUtilImpl
         {
           return -7;
           return getAccountType(((PublicAccountInfo)localObject).accountFlag);
-          localObject = ((TroopManager)paramAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
+          localObject = ((TroopManager)paramAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).f(paramString);
           int i = j;
           if (localObject != null)
           {
@@ -1398,7 +1394,7 @@ public class PublicAccountUtilImpl
   
   public int getPubAccountRecentUserPosInMessageList(String paramString)
   {
-    Object localObject1 = RecentDataListManager.a().a;
+    Object localObject1 = RecentDataListManager.a().c;
     if (localObject1 == null) {
       return 2147483647;
     }
@@ -1440,7 +1436,7 @@ public class PublicAccountUtilImpl
     //   10: invokespecial 279	java/lang/StringBuilder:<init>	()V
     //   13: astore 5
     //   15: aload 5
-    //   17: ldc_w 1520
+    //   17: ldc_w 1517
     //   20: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload 5
@@ -1451,70 +1447,70 @@ public class PublicAccountUtilImpl
     //   35: iconst_2
     //   36: aload 5
     //   38: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 682	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   41: invokestatic 684	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   44: ldc 2
     //   46: monitorenter
     //   47: aload_3
     //   48: ifnull +7 -> 55
     //   51: aload_3
-    //   52: putstatic 1196	com/tencent/biz/pubaccount/util/api/impl/PublicAccountUtilImpl:publicAccountAIOuiHandler	Lmqq/os/MqqHandler;
+    //   52: putstatic 1199	com/tencent/biz/pubaccount/util/api/impl/PublicAccountUtilImpl:publicAccountAIOuiHandler	Lmqq/os/MqqHandler;
     //   55: ldc 2
     //   57: monitorexit
-    //   58: new 1021	mqq/app/NewIntent
+    //   58: new 1023	mqq/app/NewIntent
     //   61: dup
     //   62: aload_2
-    //   63: ldc_w 1023
-    //   66: invokespecial 1024	mqq/app/NewIntent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   63: ldc_w 1025
+    //   66: invokespecial 1026	mqq/app/NewIntent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   69: astore_2
     //   70: aload_2
-    //   71: ldc_w 1026
-    //   74: ldc_w 1028
-    //   77: invokevirtual 1029	mqq/app/NewIntent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   71: ldc_w 1028
+    //   74: ldc_w 1030
+    //   77: invokevirtual 1031	mqq/app/NewIntent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   80: pop
-    //   81: new 1031	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest
+    //   81: new 1033	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest
     //   84: dup
-    //   85: invokespecial 1032	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest:<init>	()V
+    //   85: invokespecial 1034	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest:<init>	()V
     //   88: astore_3
     //   89: aload_3
-    //   90: getfield 1038	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest:seqno	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   90: getfield 1040	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest:seqno	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   93: iconst_0
     //   94: invokevirtual 334	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   97: aload_3
-    //   98: getfield 1041	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest:version	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   98: getfield 1043	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest:version	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   101: iconst_1
     //   102: invokevirtual 334	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   105: aload_3
-    //   106: getfield 1035	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest:versionInfo	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   109: ldc_w 1037
+    //   106: getfield 1037	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest:versionInfo	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   109: ldc_w 1039
     //   112: invokevirtual 345	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   115: aload_3
-    //   116: getfield 1042	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest:uin	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   116: getfield 1044	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest:uin	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   119: aload 4
     //   121: invokestatic 178	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   124: l2i
     //   125: invokevirtual 334	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   128: aload_2
-    //   129: ldc_w 1044
+    //   129: ldc_w 1046
     //   132: aload_3
-    //   133: invokevirtual 1045	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest:toByteArray	()[B
-    //   136: invokevirtual 1048	mqq/app/NewIntent:putExtra	(Ljava/lang/String;[B)Landroid/content/Intent;
+    //   133: invokevirtual 1047	com/tencent/mobileqq/mp/mobileqq_mp$GetPublicAccountDetailInfoRequest:toByteArray	()[B
+    //   136: invokevirtual 1050	mqq/app/NewIntent:putExtra	(Ljava/lang/String;[B)Landroid/content/Intent;
     //   139: pop
     //   140: aload_2
-    //   141: new 1522	com/tencent/biz/pubaccount/util/api/impl/PublicAccountUtilImpl$10
+    //   141: new 1519	com/tencent/biz/pubaccount/util/api/impl/PublicAccountUtilImpl$10
     //   144: dup
     //   145: aload_0
     //   146: aload_1
-    //   147: invokespecial 1525	com/tencent/biz/pubaccount/util/api/impl/PublicAccountUtilImpl$10:<init>	(Lcom/tencent/biz/pubaccount/util/api/impl/PublicAccountUtilImpl;Lcom/tencent/common/app/AppInterface;)V
-    //   150: invokevirtual 1057	mqq/app/NewIntent:setObserver	(Lmqq/observer/BusinessObserver;)V
+    //   147: invokespecial 1522	com/tencent/biz/pubaccount/util/api/impl/PublicAccountUtilImpl$10:<init>	(Lcom/tencent/biz/pubaccount/util/api/impl/PublicAccountUtilImpl;Lcom/tencent/common/app/AppInterface;)V
+    //   150: invokevirtual 1059	mqq/app/NewIntent:setObserver	(Lmqq/observer/BusinessObserver;)V
     //   153: aload_1
     //   154: aload_2
-    //   155: invokevirtual 1061	com/tencent/common/app/AppInterface:startServlet	(Lmqq/app/NewIntent;)V
+    //   155: invokevirtual 1063	com/tencent/common/app/AppInterface:startServlet	(Lmqq/app/NewIntent;)V
     //   158: invokestatic 276	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   161: ifeq +13 -> 174
     //   164: ldc_w 289
     //   167: iconst_2
-    //   168: ldc_w 1063
-    //   171: invokestatic 682	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   168: ldc_w 1065
+    //   171: invokestatic 684	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   174: aload_2
     //   175: areturn
     //   176: astore_1
@@ -1599,7 +1595,7 @@ public class PublicAccountUtilImpl
   
   public String getVersionInfo()
   {
-    return "8.7.0,3,5295";
+    return "8.8.17,3,5770";
   }
   
   public void gotoProfile(Intent paramIntent, AppInterface paramAppInterface, Context paramContext, String paramString, int paramInt)
@@ -1837,7 +1833,7 @@ public class PublicAccountUtilImpl
         bool1 = bool2;
         if (localObject != null)
         {
-          localObject = ((Conversation)localObject).a();
+          localObject = ((Conversation)localObject).M();
           bool1 = bool2;
           if (localObject != null)
           {
@@ -1873,8 +1869,8 @@ public class PublicAccountUtilImpl
     if ((paramObject instanceof SessionInfo))
     {
       paramObject = (SessionInfo)paramObject;
-      if (paramObject.a != null) {
-        return "2711679534".equals(paramObject.a);
+      if (paramObject.b != null) {
+        return "2711679534".equals(paramObject.b);
       }
     }
     return false;
@@ -1966,7 +1962,7 @@ public class PublicAccountUtilImpl
           Object localObject = (TroopManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.TROOP_MANAGER);
           if (localObject != null)
           {
-            localObject = ((TroopManager)localObject).b(paramMessageRecord.frienduin);
+            localObject = ((TroopManager)localObject).f(paramMessageRecord.frienduin);
             if (localObject != null) {
               paramIntent.putExtra("isAdmin", ((TroopInfo)localObject).isAdmin());
             }
@@ -2087,7 +2083,7 @@ public class PublicAccountUtilImpl
     paramIntent.addFlags(67108864);
     paramContext.startActivity(paramIntent);
     if ((paramContext instanceof Activity)) {
-      ((Activity)paramContext).overridePendingTransition(2130772006, 2130772007);
+      ((Activity)paramContext).overridePendingTransition(2130772009, 2130772010);
     }
   }
   
@@ -2366,10 +2362,10 @@ public class PublicAccountUtilImpl
           ((SharedPreferences.Editor)localObject2).putInt(localStringBuilder.toString(), DELETE_OLDKANDIAN_FLAG).commit();
           if ((bool) && (paramBoolean))
           {
-            ??? = ((QQAppInterface)paramAppInterface).getProxyManager().a();
+            ??? = ((QQAppInterface)paramAppInterface).getProxyManager().g();
             if (??? != null)
             {
-              localObject2 = ((RecentUserProxy)???).b(AppConstants.OLD_KANDIAN_UIN, 1008);
+              localObject2 = ((RecentUserProxy)???).c(AppConstants.OLD_KANDIAN_UIN, 1008);
               if (localObject2 != null)
               {
                 ((RecentUserProxy)???).a((RecentUser)localObject2);
@@ -2447,7 +2443,7 @@ public class PublicAccountUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl
  * JD-Core Version:    0.7.0.1
  */

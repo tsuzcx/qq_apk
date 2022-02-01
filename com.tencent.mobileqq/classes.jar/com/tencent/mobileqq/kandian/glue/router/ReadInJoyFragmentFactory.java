@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdHippyService;
-import com.tencent.mobileqq.kandian.biz.common.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.biz.common.fragment.ReadInJoyBaseFragment;
 import com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.basic.DynamicChannelConfig;
@@ -23,6 +22,7 @@ import com.tencent.mobileqq.kandian.biz.pts.factory.TemplateFactory;
 import com.tencent.mobileqq.kandian.biz.video.ReadInJoyVideoChannelFragment;
 import com.tencent.mobileqq.kandian.biz.viola.ReadInJoySelfCenterViolaFragment;
 import com.tencent.mobileqq.kandian.biz.viola.ReadInJoyViolaChannelFragment;
+import com.tencent.mobileqq.kandian.biz.xtab.api.impl.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
 import com.tencent.mobileqq.kandian.repo.feeds.ChannelCoverInfoModule;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.TabChannelCoverInfo;
@@ -32,12 +32,12 @@ import mqq.util.WeakReference;
 
 public class ReadInJoyFragmentFactory
 {
-  static ReadInJoyFragmentFactory jdField_a_of_type_ComTencentMobileqqKandianGlueRouterReadInJoyFragmentFactory;
-  WeakReference<ReadInJoyNewFeedsActivity> jdField_a_of_type_MqqUtilWeakReference = null;
+  static ReadInJoyFragmentFactory a;
+  WeakReference<ReadInJoyNewFeedsActivity> b = null;
   
   private QBaseFragment a(TemplateFactory paramTemplateFactory, TabChannelCoverInfo paramTabChannelCoverInfo)
   {
-    paramTemplateFactory = paramTemplateFactory.a();
+    paramTemplateFactory = paramTemplateFactory.f();
     if (paramTemplateFactory != null)
     {
       if (!TextUtils.isEmpty(paramTemplateFactory.b("cgi"))) {
@@ -64,7 +64,7 @@ public class ReadInJoyFragmentFactory
         return ReadInJoyFollowFragment.a();
       }
       ReadInJoyVideoChannelFragment localReadInJoyVideoChannelFragment = new ReadInJoyVideoChannelFragment();
-      localReadInJoyVideoChannelFragment.c(1002);
+      localReadInJoyVideoChannelFragment.d(1002);
       return localReadInJoyVideoChannelFragment;
     }
     return ReadInJoyRecommendFeedsFragment.a();
@@ -74,17 +74,17 @@ public class ReadInJoyFragmentFactory
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqKandianGlueRouterReadInJoyFragmentFactory == null) {
-        jdField_a_of_type_ComTencentMobileqqKandianGlueRouterReadInJoyFragmentFactory = new ReadInJoyFragmentFactory();
+      if (a == null) {
+        a = new ReadInJoyFragmentFactory();
       }
-      return jdField_a_of_type_ComTencentMobileqqKandianGlueRouterReadInJoyFragmentFactory;
+      return a;
     }
     finally {}
   }
   
   private QBaseFragment b(TabChannelCoverInfo paramTabChannelCoverInfo)
   {
-    if (paramTabChannelCoverInfo.mChannelCoverId == ChannelCoverInfoModule.a()) {
+    if (paramTabChannelCoverInfo.mChannelCoverId == ChannelCoverInfoModule.g()) {
       return c(paramTabChannelCoverInfo);
     }
     if (ViolaAccessHelper.a(paramTabChannelCoverInfo.mChannelCoverId)) {
@@ -93,7 +93,7 @@ public class ReadInJoyFragmentFactory
     if (ViolaAccessHelper.b(paramTabChannelCoverInfo.mChannelCoverId)) {
       return MultiVideoHelper.a(BaseApplicationImpl.getContext(), paramTabChannelCoverInfo);
     }
-    if (ViolaAccessHelper.a(paramTabChannelCoverInfo.mChannelJumpUrl)) {
+    if (ViolaAccessHelper.c(paramTabChannelCoverInfo.mChannelJumpUrl)) {
       return f(paramTabChannelCoverInfo);
     }
     return d(paramTabChannelCoverInfo);
@@ -101,7 +101,7 @@ public class ReadInJoyFragmentFactory
   
   private QBaseFragment c(TabChannelCoverInfo paramTabChannelCoverInfo)
   {
-    if (ViolaAccessHelper.a(paramTabChannelCoverInfo.mChannelJumpUrl)) {
+    if (ViolaAccessHelper.c(paramTabChannelCoverInfo.mChannelJumpUrl)) {
       return f(paramTabChannelCoverInfo);
     }
     return ReadInJoyRecommendFeedsFragment.a();
@@ -129,7 +129,7 @@ public class ReadInJoyFragmentFactory
       return new ReadInJoyBBCircleFragment();
     case 56: 
       paramTabChannelCoverInfo = new ReadInJoyVideoChannelFragment();
-      paramTabChannelCoverInfo.c(1003);
+      paramTabChannelCoverInfo.d(1003);
       return paramTabChannelCoverInfo;
     }
     return ReadInJoyRecommendFeedsFragment.a();
@@ -137,12 +137,12 @@ public class ReadInJoyFragmentFactory
   
   private QBaseFragment e(TabChannelCoverInfo paramTabChannelCoverInfo)
   {
-    if (ViolaAccessHelper.a(paramTabChannelCoverInfo.mChannelJumpUrl)) {
+    if (ViolaAccessHelper.c(paramTabChannelCoverInfo.mChannelJumpUrl)) {
       return f(paramTabChannelCoverInfo);
     }
     if (paramTabChannelCoverInfo.bid > 0L)
     {
-      Object localObject = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.a(paramTabChannelCoverInfo.mChannelCoverId));
+      Object localObject = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.d(paramTabChannelCoverInfo.mChannelCoverId));
       if (localObject != null)
       {
         localObject = a((TemplateFactory)localObject, paramTabChannelCoverInfo);
@@ -163,7 +163,7 @@ public class ReadInJoyFragmentFactory
       localBundle.putAll(localReadInJoyViolaChannelFragment.getArguments());
       localReadInJoyViolaChannelFragment.setArguments(localBundle);
     }
-    localReadInJoyViolaChannelFragment.a(paramTabChannelCoverInfo.mChannelJumpUrl);
+    localReadInJoyViolaChannelFragment.b(paramTabChannelCoverInfo.mChannelJumpUrl);
     return localReadInJoyViolaChannelFragment;
   }
   
@@ -183,24 +183,24 @@ public class ReadInJoyFragmentFactory
     return localQBaseFragment;
   }
   
-  public void a()
+  public void a(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
+    this.b = new WeakReference(paramReadInJoyNewFeedsActivity);
+  }
+  
+  public void b()
+  {
+    WeakReference localWeakReference = this.b;
     if (localWeakReference != null)
     {
       localWeakReference.clear();
-      this.jdField_a_of_type_MqqUtilWeakReference = null;
+      this.b = null;
     }
-  }
-  
-  public void a(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramReadInJoyNewFeedsActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.router.ReadInJoyFragmentFactory
  * JD-Core Version:    0.7.0.1
  */

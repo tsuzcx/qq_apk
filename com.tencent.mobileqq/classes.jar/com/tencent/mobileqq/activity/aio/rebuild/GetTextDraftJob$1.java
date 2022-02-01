@@ -20,7 +20,7 @@ class GetTextDraftJob$1
       QLog.i("GetTextDraftJob", 1, "base chat pie has been recycled");
       return;
     }
-    AIODraftHelper localAIODraftHelper = (AIODraftHelper)localBaseChatPie.a(111);
+    AIODraftHelper localAIODraftHelper = (AIODraftHelper)localBaseChatPie.q(111);
     if (localAIODraftHelper == null) {
       return;
     }
@@ -37,12 +37,12 @@ class GetTextDraftJob$1
         QLog.i("GetTextDraftJob", 2, "draft text info is null");
       }
     }
-    localBaseChatPie.a.post(new GetTextDraftJob.1.1(this, localAIODraftHelper));
+    localBaseChatPie.Y.post(new GetTextDraftJob.1.1(this, localAIODraftHelper));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GetTextDraftJob.1
  * JD-Core Version:    0.7.0.1
  */

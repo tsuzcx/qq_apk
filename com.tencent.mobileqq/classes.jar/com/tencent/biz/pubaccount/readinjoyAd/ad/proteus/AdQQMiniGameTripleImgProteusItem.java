@@ -19,19 +19,19 @@ import org.json.JSONObject;
 public class AdQQMiniGameTripleImgProteusItem
   implements IAdMiniGamePts, ProteusItem
 {
-  private int jdField_a_of_type_Int;
-  private ViewBase jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-  private IReadInJoyModel jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private ViewBase jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-  private String jdField_b_of_type_JavaLangString;
+  private ViewBase a;
+  private int b;
+  private IReadInJoyModel c;
+  private ViewBase d;
+  private boolean e;
+  private String f;
+  private String g;
   
   private void a(ViewBase paramViewBase, boolean paramBoolean)
   {
     if (paramViewBase != null)
     {
-      AdMiniGameGuideManager.a.a(paramViewBase, paramBoolean, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a(), this.jdField_a_of_type_Int);
+      AdMiniGameGuideManager.a.a(paramViewBase, paramBoolean, this.c.k(), this.b);
       if (!paramBoolean) {
         ThreadManager.getUIHandler().post(new AdQQMiniGameTripleImgProteusItem.1(this));
       }
@@ -42,9 +42,9 @@ public class AdQQMiniGameTripleImgProteusItem
   {
     if ((paramAbsBaseArticleInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.smallGameData)) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null))
     {
-      this.jdField_a_of_type_Boolean = (TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.t) ^ true);
-      this.jdField_a_of_type_JavaLangString = paramAbsBaseArticleInfo.mSmallMiniGameInfo.s;
-      this.jdField_b_of_type_JavaLangString = paramAbsBaseArticleInfo.mSmallMiniGameInfo.j;
+      this.e = (TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.w) ^ true);
+      this.f = paramAbsBaseArticleInfo.mSmallMiniGameInfo.v;
+      this.g = paramAbsBaseArticleInfo.mSmallMiniGameInfo.m;
     }
   }
   
@@ -60,13 +60,13 @@ public class AdQQMiniGameTripleImgProteusItem
   
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel = paramIReadInJoyModel;
-    this.jdField_a_of_type_Int = paramInt2;
-    a(paramIReadInJoyModel.a());
+    this.c = paramIReadInJoyModel;
+    this.b = paramInt2;
+    a(paramIReadInJoyModel.k());
     AdMiniGameGuideManager.a.a(this);
     paramContainer = paramContainer.getVirtualView();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = paramContainer.findViewBaseByName("id_img_container");
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = paramContainer.findViewBaseByName("id_game_follow_btn");
+    this.a = paramContainer.findViewBaseByName("id_img_container");
+    this.d = paramContainer.findViewBaseByName("id_game_follow_btn");
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -77,16 +77,16 @@ public class AdQQMiniGameTripleImgProteusItem
       localStringBuilder.append("anim move tripe::animMove::");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append("guide ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.e);
       localStringBuilder.append("gameId");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.g);
       QLog.d("minigame", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.e) {
       return;
     }
-    if ((paramString != null) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase, paramBoolean);
+    if ((paramString != null) && (paramString.equals(this.g))) {
+      a(this.a, paramBoolean);
     }
   }
   
@@ -97,7 +97,7 @@ public class AdQQMiniGameTripleImgProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdQQMiniGameTripleImgProteusItem
  * JD-Core Version:    0.7.0.1
  */

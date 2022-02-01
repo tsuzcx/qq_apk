@@ -4,7 +4,7 @@ public abstract interface VideoMerger$VideoMergeListener
 {
   public abstract void a(boolean paramBoolean);
   
-  public abstract void g();
+  public abstract void n();
 }
 
 

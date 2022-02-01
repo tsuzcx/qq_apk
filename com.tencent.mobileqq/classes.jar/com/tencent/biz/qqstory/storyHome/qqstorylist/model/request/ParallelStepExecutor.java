@@ -17,25 +17,17 @@ public class ParallelStepExecutor
   extends SimpleStepExector
   implements Handler.Callback
 {
-  public volatile int a;
-  protected Handler a;
-  protected ErrorMessage a;
-  private String a;
-  protected LinkedHashMap<String, Step> a;
-  protected Vector<Step> a;
-  protected boolean a;
-  private Handler b = new Handler(paramLooper, this);
-  private Handler c;
+  protected LinkedHashMap<String, Step> a = new LinkedHashMap();
+  protected Vector<Step> b = new Vector();
+  protected Handler c = new Handler(Looper.getMainLooper());
+  public volatile int d = 0;
+  protected boolean e = false;
+  protected ErrorMessage f;
+  private String i = "ParallelStepExecutor";
+  private Handler j = new Handler(paramLooper, this);
+  private Handler k;
   
-  public ParallelStepExecutor(Looper paramLooper)
-  {
-    this.jdField_a_of_type_JavaLangString = "ParallelStepExecutor";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Int = 0;
-  }
+  public ParallelStepExecutor(Looper paramLooper) {}
   
   private void b(String paramString)
   {
@@ -45,85 +37,49 @@ public class ParallelStepExecutor
       return;
     }
     SLog.e("Q.qqstory.home.ParallelStepExecutor", "%s have been finish", new Object[] { paramString });
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString);
-    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() == 0)
+    this.a.remove(paramString);
+    if (this.a.size() == 0)
     {
       SLog.b("Q.qqstory.home.ParallelStepExecutor", "all step have finish");
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler != null)
+      if (this.h != null)
       {
-        this.jdField_a_of_type_Int = 2;
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
-        if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$ErrorHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+        this.d = 2;
+        this.c.removeMessages(100);
+        if (this.e) {
+          this.g.a(this.f);
         } else {
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler.a();
+          this.h.a();
         }
       }
-      d();
+      h();
     }
   }
   
   public ParallelStepExecutor a(SimpleStepExector.CompletedHandler paramCompletedHandler)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler = paramCompletedHandler;
+    this.h = paramCompletedHandler;
     return this;
   }
   
   public ParallelStepExecutor a(SimpleStepExector.ErrorHandler paramErrorHandler)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$ErrorHandler = paramErrorHandler;
+    this.g = paramErrorHandler;
     return this;
   }
   
   public ParallelStepExecutor a(Step paramStep)
   {
-    SLog.a("Q.qqstory.home.ParallelStepExecutor", "add Step:%s", paramStep.a());
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramStep.a(), paramStep);
-    this.jdField_a_of_type_Int = 0;
+    SLog.a("Q.qqstory.home.ParallelStepExecutor", "add Step:%s", paramStep.c());
+    this.a.put(paramStep.c(), paramStep);
+    this.d = 0;
     return this;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      SLog.d("Q.qqstory.home.ParallelStepExecutor", "startAsyncStep count=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashMap.size()) });
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        SLog.e("Q.qqstory.home.ParallelStepExecutor", "startAsyncStep but state is done ,so ingore this start operate");
-        return;
-      }
-      this.jdField_a_of_type_Int = 1;
-      if (this.c == null) {
-        this.c = new Handler(Looper.myLooper(), this);
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Step localStep = (Step)((Map.Entry)localIterator.next()).getValue();
-        localStep.a(this);
-        localStep.a(this);
-        this.b.obtainMessage(2, localStep).sendToTarget();
-      }
-      return;
-    }
-    finally {}
-    for (;;)
-    {
-      throw localObject;
-    }
   }
   
   public void a(ErrorMessage paramErrorMessage)
   {
     SLog.e("Q.qqstory.home.ParallelStepExecutor", "occur error:%s", new Object[] { paramErrorMessage.getErrorMessage() });
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.e = true;
+    this.f = paramErrorMessage;
     a(paramErrorMessage.extraMsg);
   }
   
@@ -131,13 +87,13 @@ public class ParallelStepExecutor
   {
     try
     {
-      int i = this.jdField_a_of_type_Int;
-      if (i == 3) {
+      int m = this.d;
+      if (m == 3) {
         return;
       }
-      if (this.c != null)
+      if (this.k != null)
       {
-        this.c.obtainMessage(1, paramString).sendToTarget();
+        this.k.obtainMessage(1, paramString).sendToTarget();
       }
       else
       {
@@ -149,36 +105,72 @@ public class ParallelStepExecutor
     finally {}
   }
   
-  public void b() {}
-  
-  public void c()
+  public void b()
   {
     try
     {
-      this.jdField_a_of_type_Int = 3;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
-      if (this.c != null) {
-        this.c.removeMessages(1);
+      SLog.d("Q.qqstory.home.ParallelStepExecutor", "startAsyncStep count=%s", new Object[] { Integer.valueOf(this.a.size()) });
+      if (this.d == 2)
+      {
+        SLog.e("Q.qqstory.home.ParallelStepExecutor", "startAsyncStep but state is done ,so ingore this start operate");
+        return;
       }
-      if (this.b != null) {
-        this.b.removeMessages(2);
+      this.d = 1;
+      if (this.k == null) {
+        this.k = new Handler(Looper.myLooper(), this);
+      }
+      Iterator localIterator = this.a.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Step localStep = (Step)((Map.Entry)localIterator.next()).getValue();
+        localStep.a(this);
+        localStep.a(this);
+        this.j.obtainMessage(2, localStep).sendToTarget();
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
+  }
+  
+  public String c()
+  {
+    return this.i;
+  }
+  
+  public void e() {}
+  
+  public void f()
+  {
+    try
+    {
+      this.d = 3;
+      this.c.removeMessages(100);
+      if (this.k != null) {
+        this.k.removeMessages(1);
+      }
+      if (this.j != null) {
+        this.j.removeMessages(2);
       }
       SLog.b("Q.qqstory.home.ParallelStepExecutor", "reset!");
-      if (this.jdField_a_of_type_JavaUtilVector.size() > 0)
+      if (this.b.size() > 0)
       {
         SLog.b("Q.qqstory.home.ParallelStepExecutor", "reset premissSteps");
-        ((Step)this.jdField_a_of_type_JavaUtilVector.get(0)).c();
-        this.jdField_a_of_type_JavaUtilVector.clear();
+        ((Step)this.b.get(0)).f();
+        this.b.clear();
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+      Iterator localIterator = this.a.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Step localStep = (Step)((Map.Entry)localIterator.next()).getValue();
         if (localStep != null) {
-          localStep.c();
+          localStep.f();
         }
       }
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+      this.a.clear();
       return;
     }
     finally {}
@@ -190,13 +182,13 @@ public class ParallelStepExecutor
   
   public boolean handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
-    if (i != 1)
+    int m = paramMessage.what;
+    if (m != 1)
     {
-      if (i != 2) {
+      if (m != 2) {
         return true;
       }
-      ((Step)paramMessage.obj).a();
+      ((Step)paramMessage.obj).b();
       return true;
     }
     b((String)paramMessage.obj);

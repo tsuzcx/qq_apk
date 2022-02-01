@@ -17,13 +17,13 @@ class PublicAccountUtilImpl$3
 {
   PublicAccountUtilImpl$3(PublicAccountUtilImpl paramPublicAccountUtilImpl, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean, Context paramContext, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
-      if ((paramInt == 1) && (this.jdField_a_of_type_JavaLangString.equals("2010741172")))
+      if ((paramInt == 1) && (this.b.equals("2010741172")))
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+        paramView = this.a.getMessageFacade().a(this.b, this.c, this.d);
         if (paramView != null)
         {
           paramView = XMLMessageUtils.a(paramView);
@@ -31,35 +31,35 @@ class PublicAccountUtilImpl$3
           {
             paramView = (PAMessage.Item)paramView.items.get(0);
             if (paramView.url != null) {
-              PublicAccountUtilImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView.url);
+              PublicAccountUtilImpl.access$100(this.a, this.f, paramView.url);
             }
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        if (this.jdField_a_of_type_Boolean) {
-          PublicAccountHandlerImpl.reportClickPublicAccountEventInner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
+        this.a.getMessageFacade().h(this.b, this.c, this.d);
+        if (this.e) {
+          PublicAccountHandlerImpl.reportClickPublicAccountEventInner(this.a, this.b, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
         } else {
-          PublicAccountHandlerImpl.reportClickPublicAccountEventInner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+          PublicAccountHandlerImpl.reportClickPublicAccountEventInner(this.a, this.b, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        this.a.getMessageFacade().g(this.b, this.c);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_Boolean) {
-        PublicAccountHandlerImpl.reportClickPublicAccountEventInner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
+      this.a.getMessageFacade().h(this.b, this.c, this.d);
+      if (this.e) {
+        PublicAccountHandlerImpl.reportClickPublicAccountEventInner(this.a, this.b, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
       } else {
-        PublicAccountHandlerImpl.reportClickPublicAccountEventInner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+        PublicAccountHandlerImpl.reportClickPublicAccountEventInner(this.a, this.b, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.a.getMessageFacade().g(this.b, this.c);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.g.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.3
  * JD-Core Version:    0.7.0.1
  */

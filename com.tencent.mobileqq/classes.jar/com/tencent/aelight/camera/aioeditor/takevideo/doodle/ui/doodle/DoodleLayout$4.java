@@ -12,26 +12,26 @@ class DoodleLayout$4
   
   public void a()
   {
-    this.a.e();
+    this.a.f();
   }
   
   public void a(float paramFloat)
   {
-    if (this.a.a() != null)
+    if (this.a.getLineLayer() != null)
     {
       this.a.a(paramFloat);
-      this.a.s();
+      this.a.w();
     }
   }
   
   public void a(int paramInt)
   {
-    LineLayer localLineLayer = this.a.a();
+    LineLayer localLineLayer = this.a.getLineLayer();
     if (localLineLayer != null)
     {
-      this.a.a(paramInt);
-      this.a.s();
-      if (localLineLayer.e())
+      this.a.c(paramInt);
+      this.a.w();
+      if (localLineLayer.n())
       {
         AEQLog.b("DoodleLayout", "onSelectColor when in mosaic mode, change to the before mode: ");
         DoodleLayout.a(this.a, DoodlePanel.PenMode.FREE_DRAW);
@@ -47,14 +47,14 @@ class DoodleLayout$4
   public void b()
   {
     DoodleLayout.a(this.a, 0);
-    if (!this.a.a.b()) {
-      this.a.a.d();
+    if (!this.a.v.f()) {
+      this.a.v.e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLayout.4
  * JD-Core Version:    0.7.0.1
  */

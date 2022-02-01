@@ -9,8 +9,8 @@ import com.tencent.mtt.hippy.modules.javascriptmodules.EventDispatcher;
 
 public class HippyTextInput$ReactContentSizeWatcher
 {
-  private EditText mEditText;
-  HippyEngineContext mHippyContext;
+  private final EditText mEditText;
+  final HippyEngineContext mHippyContext;
   private int mPreviousContentHeight = 0;
   private int mPreviousContentWidth = 0;
   
@@ -53,7 +53,7 @@ public class HippyTextInput$ReactContentSizeWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.textinput.HippyTextInput.ReactContentSizeWatcher
  * JD-Core Version:    0.7.0.1
  */

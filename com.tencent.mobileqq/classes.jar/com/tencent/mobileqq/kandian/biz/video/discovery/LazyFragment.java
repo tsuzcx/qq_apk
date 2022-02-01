@@ -12,49 +12,42 @@ import com.tencent.mobileqq.app.BaseFragment;
 public abstract class LazyFragment
   extends BaseFragment
 {
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  protected LayoutInflater a;
   protected View a;
-  protected ViewGroup a;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  protected LayoutInflater b;
+  protected ViewGroup c;
+  private boolean d = false;
+  private Bundle e;
+  private FrameLayout f;
+  private boolean g = false;
   
   public abstract int a();
   
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  protected void a() {}
-  
   public void a(int paramInt)
   {
-    if ((a() != null) && (a().getParent() != null))
+    if ((h() != null) && (h().getParent() != null))
     {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+      Object localObject = this.f;
       if (localObject != null)
       {
-        localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, (ViewGroup)localObject, false);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.addView((View)localObject);
+        localObject = this.b.inflate(paramInt, (ViewGroup)localObject, false);
+        this.f.addView((View)localObject);
         return;
       }
     }
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, this.jdField_a_of_type_AndroidViewViewGroup, false);
+    this.a = this.b.inflate(paramInt, this.c, false);
   }
   
   protected void a(Bundle paramBundle)
   {
-    if ((getUserVisibleHint()) && (!this.jdField_a_of_type_Boolean))
+    if ((getUserVisibleHint()) && (!this.d))
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-      b(this.jdField_a_of_type_AndroidOsBundle);
+      this.d = true;
+      this.e = paramBundle;
+      b(this.e);
       return;
     }
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    f();
+    this.e = paramBundle;
+    g();
   }
   
   protected void b() {}
@@ -73,28 +66,35 @@ public abstract class LazyFragment
   
   protected void e() {}
   
-  protected void f()
+  protected void f() {}
+  
+  protected void g()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    this.f = new FrameLayout(this.c.getContext());
+    this.f.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    this.a = this.f;
   }
   
-  public void g()
+  public View h()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (a() != null))
+    return this.a;
+  }
+  
+  public void i()
+  {
+    if ((!this.d) && (h() != null))
     {
-      this.jdField_a_of_type_Boolean = true;
-      b(this.jdField_a_of_type_AndroidOsBundle);
+      this.d = true;
+      b(this.e);
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.b = paramLayoutInflater;
+    this.c = paramViewGroup;
     a(paramBundle);
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.a;
     if (localView == null) {
       return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     }
@@ -104,75 +104,75 @@ public abstract class LazyFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = null;
-    if (this.jdField_a_of_type_Boolean) {
-      e();
+    this.a = null;
+    this.c = null;
+    this.b = null;
+    if (this.d) {
+      f();
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Boolean) {
-      c();
+    if (this.d) {
+      d();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Boolean) {
-      b();
+    if (this.d) {
+      c();
     }
   }
   
   public void onStart()
   {
     super.onStart();
-    if ((this.jdField_a_of_type_Boolean) && (!this.b) && (getUserVisibleHint()))
+    if ((this.d) && (!this.g) && (getUserVisibleHint()))
     {
-      this.b = true;
-      a();
+      this.g = true;
+      b();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if ((this.jdField_a_of_type_Boolean) && (this.b) && (getUserVisibleHint()))
+    if ((this.d) && (this.g) && (getUserVisibleHint()))
     {
-      this.b = false;
-      d();
+      this.g = false;
+      e();
     }
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
-    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean)) {
-      g();
+    if ((paramBoolean) && (!this.d)) {
+      i();
     }
-    if ((this.jdField_a_of_type_Boolean) && (a() != null))
+    if ((this.d) && (h() != null))
     {
       if (paramBoolean)
       {
-        this.b = true;
-        a();
+        this.g = true;
         b();
+        c();
         return;
       }
-      this.b = false;
-      c();
+      this.g = false;
       d();
+      e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.discovery.LazyFragment
  * JD-Core Version:    0.7.0.1
  */

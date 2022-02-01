@@ -15,6 +15,7 @@ import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
 import com.tencent.mobileqq.activity.aio.tips.PubAccountTips;
 import com.tencent.mobileqq.activity.aio.tips.PubAccountTips.PubAccountTipsMsg;
 import com.tencent.mobileqq.activity.recent.RecentParcelUtil;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.api.IGameMsgBoxManager;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -28,6 +29,7 @@ import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.ecshop.api.IEcshopUtilApi;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
 import com.tencent.mobileqq.gamecenter.message.GameMsgUtil;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
 import com.tencent.mobileqq.kandian.biz.common.api.IWeiShiReportUtil;
 import com.tencent.mobileqq.kandian.biz.daily.api.IKandianDailyManager;
 import com.tencent.mobileqq.kandian.glue.report.api.IReadInJoyReportUtils;
@@ -143,7 +145,7 @@ public class RecentItemPublicAccountChatMsgData
       this.msgSummary.strContent = ((CharSequence)localObject);
     }
     localObject = PubAccountTips.a(paramQQAppInterface, this.mUser.uin);
-    if ((localObject != null) && (((PubAccountTips.PubAccountTipsMsg)localObject).d == paramMessage.uniseq) && (((PubAccountTips.PubAccountTipsMsg)localObject).b())) {
+    if ((localObject != null) && (((PubAccountTips.PubAccountTipsMsg)localObject).n == paramMessage.uniseq) && (((PubAccountTips.PubAccountTipsMsg)localObject).b())) {
       ThreadManager.post(new RecentItemPublicAccountChatMsgData.1(this, paramQQAppInterface, (PubAccountTips.PubAccountTipsMsg)localObject), 2, null, false);
     }
   }
@@ -176,9 +178,9 @@ public class RecentItemPublicAccountChatMsgData
   
   private void a(AbsStructMsg paramAbsStructMsg, Context paramContext)
   {
-    if ((!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131713108))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131713113))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131713105))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131713116))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131713119))))
+    if ((!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131910667))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131910672))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131910664))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131910675))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131910678))))
     {
-      if (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(String.format(paramContext.getString(2131696440), new Object[] { Integer.valueOf(this.mUnreadNum) }))) {}
+      if (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(String.format(paramContext.getString(2131894212), new Object[] { Integer.valueOf(this.mUnreadNum) }))) {}
     }
     else {
       this.mMsgExtroInfo = "";
@@ -251,7 +253,7 @@ public class RecentItemPublicAccountChatMsgData
   
   private boolean a(QQAppInterface paramQQAppInterface, Context paramContext, QQMessageFacade paramQQMessageFacade)
   {
-    paramQQAppInterface = paramQQMessageFacade.b(this.mUser.uin, this.mUser.getType());
+    paramQQAppInterface = paramQQMessageFacade.r(this.mUser.uin, this.mUser.getType());
     if ((paramQQAppInterface != null) && ((paramQQAppInterface instanceof MessageForStructing)))
     {
       paramQQAppInterface = (MessageForStructing)paramQQAppInterface;
@@ -277,7 +279,7 @@ public class RecentItemPublicAccountChatMsgData
           this.mMsgExtroInfo = paramQQMessageFacade.toString();
         }
         a(paramQQAppInterface.structingMsg, paramContext);
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
       }
       if ((paramQQAppInterface.extInt == 1) && (paramQQAppInterface.extLong == 1)) {
         return true;
@@ -300,7 +302,7 @@ public class RecentItemPublicAccountChatMsgData
   {
     if ((!this.isNewKandian) && (ServiceAccountFolderManager.a(paramQQAppInterface, this.mUser.uin)))
     {
-      int i = paramQQAppInterface.getConversationFacade().g(this.mUser.uin, this.mUser.getType());
+      int i = paramQQAppInterface.getConversationFacade().h(this.mUser.uin, this.mUser.getType());
       if (this.mUnreadNum > 0)
       {
         if (AppConstants.KANDIAN_SUBSCRIBE_UIN.equals(this.mUser.uin))
@@ -341,19 +343,19 @@ public class RecentItemPublicAccountChatMsgData
   private void b(QQAppInterface paramQQAppInterface, Message paramMessage)
   {
     IGameMsgManagerService localIGameMsgManagerService = (IGameMsgManagerService)paramQQAppInterface.getRuntimeService(IGameMsgManagerService.class, "");
+    IGameMsgBoxManager localIGameMsgBoxManager = (IGameMsgBoxManager)paramQQAppInterface.getRuntimeService(IGameMsgBoxManager.class, "");
     if (("2747277822".equals(this.mUser.uin)) && (localIGameMsgManagerService.isInited()))
     {
-      if ((localIGameMsgManagerService != null) && (localIGameMsgManagerService.isShowInMsgBox())) {
+      Object localObject = localIGameMsgManagerService.getLastSessionInfoExceptDelSession();
+      if (localObject != null) {
+        localObject = ((GameCenterSessionInfo)localObject).h();
+      } else {
+        localObject = "-1";
+      }
+      if ((localIGameMsgManagerService != null) && (GameMsgUtil.a(localIGameMsgManagerService, localIGameMsgBoxManager, (String)localObject, paramQQAppInterface, this.msgSummary, this))) {
         return;
       }
       GameMsgUtil.a(paramQQAppInterface, paramMessage, this.msgSummary, this);
-    }
-  }
-  
-  private void c()
-  {
-    if (AppConstants.WEISHI_UIN.equals(this.mUser.uin)) {
-      ((IWeiShiReportUtil)QRoute.api(IWeiShiReportUtil.class)).reportMsgExposure(this, 9);
     }
   }
   
@@ -377,12 +379,14 @@ public class RecentItemPublicAccountChatMsgData
     }
   }
   
-  private void d() {}
-  
-  public Message a()
+  private void h()
   {
-    return this.msg;
+    if (AppConstants.WEISHI_UIN.equals(this.mUser.uin)) {
+      ((IWeiShiReportUtil)QRoute.api(IWeiShiReportUtil.class)).reportMsgExposure(this, 9);
+    }
   }
+  
+  private void i() {}
   
   protected void a(QQAppInterface paramQQAppInterface, Context paramContext, Message paramMessage)
   {
@@ -396,16 +400,21 @@ public class RecentItemPublicAccountChatMsgData
     a(paramQQAppInterface);
     b(paramQQAppInterface);
     c(paramMessage);
-    c();
+    h();
     ((IWSManager)QRoute.api(IWSManager.class)).preloadData();
-    d();
+    i();
     ((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).reportMsgExposure(this);
     c(paramQQAppInterface, paramMessage);
+  }
+  
+  public Message c()
+  {
+    return this.msg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData
  * JD-Core Version:    0.7.0.1
  */

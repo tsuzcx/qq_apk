@@ -16,16 +16,16 @@ public class ShapePath$PathCubicOperation
   
   public void a(@NonNull Matrix paramMatrix, @NonNull Path paramPath)
   {
-    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    Matrix localMatrix = this.g;
     paramMatrix.invert(localMatrix);
     paramPath.transform(localMatrix);
-    paramPath.cubicTo(this.jdField_a_of_type_Float, this.b, this.c, this.d, this.e, this.f);
+    paramPath.cubicTo(this.a, this.b, this.c, this.d, this.e, this.f);
     paramPath.transform(paramMatrix);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.ShapePath.PathCubicOperation
  * JD-Core Version:    0.7.0.1
  */

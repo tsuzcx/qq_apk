@@ -19,15 +19,15 @@ import java.util.Set;
 public class AccountDetailTopGestureLayout
   extends TopGestureLayout
 {
-  private int jdField_a_of_type_Int;
-  private IPublicAccountDetailTopGestureLayoutProxy.OnFlingListener jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountDetailTopGestureLayoutProxy$OnFlingListener;
-  private HashMap<Integer, WeakReference<View>> jdField_a_of_type_JavaUtilHashMap;
+  private int a;
+  private HashMap<Integer, WeakReference<View>> b;
+  private IPublicAccountDetailTopGestureLayoutProxy.OnFlingListener c;
   
   public AccountDetailTopGestureLayout(Context paramContext)
   {
     super(paramContext);
     init(paramContext);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.b = new HashMap();
   }
   
   private boolean a(View paramView, float paramFloat1, float paramFloat2)
@@ -41,7 +41,7 @@ public class AccountDetailTopGestureLayout
     int n = localRect.width();
     int j = arrayOfInt[1] + localRect.top;
     int i1 = localRect.height();
-    int k = this.jdField_a_of_type_Int;
+    int k = this.a;
     int i = j;
     if (k > 0)
     {
@@ -75,14 +75,9 @@ public class AccountDetailTopGestureLayout
   
   public GestureDetector.OnGestureListener a(Context paramContext, IPublicAccountDetailTopGestureLayoutProxy.OnFlingListener paramOnFlingListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountDetailTopGestureLayoutProxy$OnFlingListener = paramOnFlingListener;
+    this.c = paramOnFlingListener;
     this.gestureListener = new AccountDetailTopGestureLayout.PublicAccountTopGestureDetector(this, paramContext);
     return this.gestureListener;
-  }
-  
-  public TopGestureLayout.OnGestureListener a()
-  {
-    return this.mOnFlingGesture;
   }
   
   public void a(View paramView)
@@ -90,14 +85,14 @@ public class AccountDetailTopGestureLayout
     if (paramView == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.size() > 0)
+    if (this.b.size() > 0)
     {
       Object localObject1 = new HashSet();
-      Object localObject2 = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      Object localObject2 = this.b.keySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         Integer localInteger = (Integer)((Iterator)localObject2).next();
-        if (((WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(localInteger)).get() == null) {
+        if (((WeakReference)this.b.get(localInteger)).get() == null) {
           ((HashSet)localObject1).add(localInteger);
         }
       }
@@ -107,11 +102,16 @@ public class AccountDetailTopGestureLayout
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (Integer)((Iterator)localObject1).next();
-          this.jdField_a_of_type_JavaUtilHashMap.remove(localObject2);
+          this.b.remove(localObject2);
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramView.hashCode()), new WeakReference(paramView));
+    this.b.put(Integer.valueOf(paramView.hashCode()), new WeakReference(paramView));
+  }
+  
+  public TopGestureLayout.OnGestureListener getOnFlingGesture()
+  {
+    return this.mOnFlingGesture;
   }
   
   public boolean isInTwoFingerMode()
@@ -121,12 +121,12 @@ public class AccountDetailTopGestureLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = this.b;
     if ((localObject != null) && (((HashMap)localObject).size() > 0))
     {
       float f1 = paramMotionEvent.getRawX();
       float f2 = paramMotionEvent.getRawY();
-      localObject = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      localObject = this.b.values().iterator();
       while (((Iterator)localObject).hasNext())
       {
         View localView = (View)((WeakReference)((Iterator)localObject).next()).get();
@@ -146,7 +146,7 @@ public class AccountDetailTopGestureLayout
   public void setTitleHeight(int paramInt)
   {
     if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
+      this.a = paramInt;
     }
   }
   
@@ -157,7 +157,7 @@ public class AccountDetailTopGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -9,27 +9,27 @@ import android.widget.LinearLayout.LayoutParams;
 public class StructMsgGroupItemElement$ExpandAnimation
   extends Animation
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ViewGroup a;
+  int b;
   
   public StructMsgGroupItemElement$ExpandAnimation(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.a = paramViewGroup;
     int i = View.MeasureSpec.makeMeasureSpec(0, 0);
     int j = View.MeasureSpec.makeMeasureSpec(0, 0);
-    this.jdField_a_of_type_AndroidViewViewGroup.measure(i, j);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getMeasuredHeight();
-    paramViewGroup = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    this.a.measure(i, j);
+    this.b = this.a.getMeasuredHeight();
+    paramViewGroup = (LinearLayout.LayoutParams)this.a.getLayoutParams();
     paramViewGroup.height = 0;
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+    this.a.setLayoutParams(paramViewGroup);
+    this.a.setVisibility(0);
   }
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+    paramTransformation = (LinearLayout.LayoutParams)this.a.getLayoutParams();
+    paramTransformation.height = ((int)(this.b * paramFloat));
+    this.a.setLayoutParams(paramTransformation);
   }
   
   public boolean willChangeBounds()
@@ -39,7 +39,7 @@ public class StructMsgGroupItemElement$ExpandAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgGroupItemElement.ExpandAnimation
  * JD-Core Version:    0.7.0.1
  */

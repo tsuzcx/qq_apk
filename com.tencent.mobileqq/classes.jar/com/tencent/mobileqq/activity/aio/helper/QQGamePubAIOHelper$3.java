@@ -16,10 +16,10 @@ class QQGamePubAIOHelper$3
       int i;
       try
       {
-        if (!QQGamePubAIOHelper.a(this.this$0)) {
+        if (!QQGamePubAIOHelper.b(this.this$0)) {
           return;
         }
-        if (!QQGamePubAIOHelper.a().isEmpty()) {
+        if (!QQGamePubAIOHelper.c().isEmpty()) {
           break label151;
         }
         return;
@@ -34,7 +34,7 @@ class QQGamePubAIOHelper$3
       }
       if (i < this.a.size())
       {
-        localObject = QQGamePubAIOHelper.a().iterator();
+        localObject = QQGamePubAIOHelper.c().iterator();
         if (((Iterator)localObject).hasNext())
         {
           if (((Iterator)localObject).next() != this.a.get(i)) {
@@ -63,7 +63,7 @@ class QQGamePubAIOHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.3
  * JD-Core Version:    0.7.0.1
  */

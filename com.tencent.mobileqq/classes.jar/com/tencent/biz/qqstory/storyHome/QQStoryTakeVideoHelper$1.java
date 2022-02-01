@@ -19,7 +19,7 @@ class QQStoryTakeVideoHelper$1
     localStringBuilder.append("get vip competed, vip:");
     localStringBuilder.append(paramInteger);
     SLog.b("QQStoryTakeVideoHelper", localStringBuilder.toString());
-    this.a.b("qqstory_i_am_vip", paramInteger);
+    this.a.d("qqstory_i_am_vip", paramInteger);
   }
 }
 

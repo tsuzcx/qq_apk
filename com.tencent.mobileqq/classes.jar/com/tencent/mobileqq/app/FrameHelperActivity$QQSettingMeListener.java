@@ -7,8 +7,6 @@ import com.tencent.widget.UpSideDownDrawable;
 
 public abstract interface FrameHelperActivity$QQSettingMeListener
 {
-  public abstract ViewGroup a();
-  
   public abstract UpSideDownDrawable a(String paramString);
   
   public abstract void a();
@@ -26,10 +24,12 @@ public abstract interface FrameHelperActivity$QQSettingMeListener
   public abstract void b();
   
   public abstract void c();
+  
+  public abstract ViewGroup d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.QQSettingMeListener
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ class ForwardQFavBatchOption$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidOsBundle.getInt("qfavType") != 3) {
+    if (this.a.getInt("qfavType") != 3) {
       return;
     }
-    ForwardQFavBatchOption.b(this.this$0, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
+    ForwardQFavBatchOption.b(this.this$0, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardQFavBatchOption.2
  * JD-Core Version:    0.7.0.1
  */

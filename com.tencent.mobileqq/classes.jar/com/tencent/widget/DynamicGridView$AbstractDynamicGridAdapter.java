@@ -7,12 +7,12 @@ public abstract class DynamicGridView$AbstractDynamicGridAdapter
   extends BaseAdapter
   implements DynamicGridView.DynamicGridAdapterInterface
 {
-  private int jdField_a_of_type_Int = 0;
-  private HashMap<Object, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private int a = 0;
+  private HashMap<Object, Integer> b = new HashMap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.DynamicGridView.AbstractDynamicGridAdapter
  * JD-Core Version:    0.7.0.1
  */

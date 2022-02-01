@@ -8,107 +8,107 @@ import com.tencent.qphone.base.util.QLog;
 class VideoLayerUI$MoveListener
   implements MoveGestureDetector.OnMoveGestureListener
 {
-  private int jdField_a_of_type_Int = 0;
   private int b = 0;
   private int c = 0;
   private int d = 0;
   private int e = 0;
+  private int f = 0;
   
   private VideoLayerUI$MoveListener(VideoLayerUI paramVideoLayerUI) {}
   
-  public void a(MoveGestureDetector paramMoveGestureDetector)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMoveEnd");
-    }
-    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiScreenLayout.a() == 2) {
-      return;
-    }
-    PointF localPointF = paramMoveGestureDetector.a();
-    int i = (int)localPointF.x;
-    int j = (int)localPointF.y;
-    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 0)
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(i, j, true);
-    }
-    else if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.d(i, j);
-      this.c = ((int)paramMoveGestureDetector.a());
-      this.d = ((int)paramMoveGestureDetector.b());
-      paramMoveGestureDetector = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI;
-      paramMoveGestureDetector.w = paramMoveGestureDetector.a(this.e, this.jdField_a_of_type_Int, this.b, this.c, this.d);
-      paramMoveGestureDetector = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI;
-      paramMoveGestureDetector.o(paramMoveGestureDetector.w);
-    }
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(Integer.valueOf(6503), Boolean.valueOf(false));
-  }
-  
   public boolean a(MoveGestureDetector paramMoveGestureDetector)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiScreenLayout.a() == 2) {
+    if (this.a.aj.b() == 2) {
       return false;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMove");
+      QLog.d(this.a.U, 2, "onMove");
     }
-    paramMoveGestureDetector = paramMoveGestureDetector.a();
+    paramMoveGestureDetector = paramMoveGestureDetector.e();
     int i = (int)paramMoveGestureDetector.x;
     int j = (int)paramMoveGestureDetector.y;
-    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 0)
+    if (this.a.ah == 0)
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(i, j, false);
+      this.a.ae[0].a(i, j, false);
       return true;
     }
-    if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
+    if ((this.a.ah == 1) && (this.a.N()))
     {
       if ((Math.abs(i) > 5) || (Math.abs(j) > 5)) {
-        VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, true);
+        VideoLayerUI.b(this.a, true);
       }
-      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.d(i, j);
+      this.a.e(i, j);
     }
     return true;
   }
   
   public boolean b(MoveGestureDetector paramMoveGestureDetector)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 0)
+    if (this.a.ah == 0)
     {
-      paramMoveGestureDetector = paramMoveGestureDetector.a();
+      paramMoveGestureDetector = paramMoveGestureDetector.e();
       int i = (int)paramMoveGestureDetector.x;
       int j = (int)paramMoveGestureDetector.y;
-      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(i, j, false);
+      this.a.ae[0].a(i, j, false);
     }
-    else if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
+    else if ((this.a.ah == 1) && (this.a.N()))
     {
-      this.jdField_a_of_type_Int = ((int)paramMoveGestureDetector.a());
-      this.b = ((int)paramMoveGestureDetector.b());
-      this.e = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.i();
+      this.b = ((int)paramMoveGestureDetector.c());
+      this.c = ((int)paramMoveGestureDetector.d());
+      this.f = this.a.ad();
     }
     if (QLog.isColorLevel())
     {
-      paramMoveGestureDetector = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString;
+      paramMoveGestureDetector = this.a.U;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onMoveBegin, mTargetIndex[");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t);
+      localStringBuilder.append(this.a.ah);
       localStringBuilder.append("], startX[");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      localStringBuilder.append("], startY[");
       localStringBuilder.append(this.b);
+      localStringBuilder.append("], startY[");
+      localStringBuilder.append(this.c);
       localStringBuilder.append("], startPosition[");
-      localStringBuilder.append(this.e);
+      localStringBuilder.append(this.f);
       localStringBuilder.append("], mTopOffset[");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q);
+      localStringBuilder.append(this.a.ab);
       localStringBuilder.append("], mBottomOffset[");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.r);
+      localStringBuilder.append(this.a.ac);
       localStringBuilder.append("], mRecordCtrlBottom[");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.k);
+      localStringBuilder.append(this.a.J);
       localStringBuilder.append("]");
       QLog.w(paramMoveGestureDetector, 1, localStringBuilder.toString());
-      QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMoveBegin");
+      QLog.d(this.a.U, 2, "onMoveBegin");
     }
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(Integer.valueOf(6503), Boolean.valueOf(true));
+    this.a.a(Integer.valueOf(6503), Boolean.valueOf(true));
     return true;
+  }
+  
+  public void c(MoveGestureDetector paramMoveGestureDetector)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.U, 2, "onMoveEnd");
+    }
+    if (this.a.aj.b() == 2) {
+      return;
+    }
+    PointF localPointF = paramMoveGestureDetector.e();
+    int i = (int)localPointF.x;
+    int j = (int)localPointF.y;
+    if (this.a.ah == 0)
+    {
+      this.a.ae[0].a(i, j, true);
+    }
+    else if ((this.a.ah == 1) && (this.a.N()))
+    {
+      this.a.e(i, j);
+      this.d = ((int)paramMoveGestureDetector.c());
+      this.e = ((int)paramMoveGestureDetector.d());
+      paramMoveGestureDetector = this.a;
+      paramMoveGestureDetector.at = paramMoveGestureDetector.a(this.f, this.b, this.c, this.d, this.e);
+      paramMoveGestureDetector = this.a;
+      paramMoveGestureDetector.s(paramMoveGestureDetector.at);
+    }
+    this.a.a(Integer.valueOf(6503), Boolean.valueOf(false));
   }
 }
 

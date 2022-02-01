@@ -98,7 +98,7 @@ public class MultiAudienceRoomActivity
     if (isFinishing())
     {
       d();
-      AudienceMultiRoomActivityLogic.a().a();
+      AudienceMultiRoomActivityLogic.a().c();
     }
   }
   
@@ -113,16 +113,16 @@ public class MultiAudienceRoomActivity
   protected void onStop()
   {
     super.onStop();
-    if (AudienceMultiRoomActivityLogic.a().a(this))
+    if (AudienceMultiRoomActivityLogic.a().c(this))
     {
-      AudienceMultiRoomActivityLogic.a().b();
+      AudienceMultiRoomActivityLogic.a().d();
       b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.MultiAudienceRoomActivity
  * JD-Core Version:    0.7.0.1
  */

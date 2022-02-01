@@ -14,7 +14,7 @@ class QQPlayerService$NetInfoHandler
       return;
     }
     this.a = System.currentTimeMillis();
-    QQPlayerService.d(MobileQQ.getContext());
+    QQPlayerService.f(MobileQQ.getContext());
   }
   
   public void onNetMobile2None()
@@ -49,7 +49,7 @@ class QQPlayerService$NetInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.QQPlayerService.NetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

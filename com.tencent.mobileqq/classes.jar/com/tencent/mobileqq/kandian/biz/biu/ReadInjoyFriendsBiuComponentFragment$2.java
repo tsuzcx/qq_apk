@@ -12,19 +12,19 @@ class ReadInjoyFriendsBiuComponentFragment$2
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.doOnBackPressed();
+    this.a.b.doOnBackPressed();
     paramAdapterView = paramView.getTag();
     if ((paramAdapterView instanceof ReadInjoyFriendsBiuComponentFragment.ViewHolder))
     {
       paramAdapterView = (ReadInjoyFriendsBiuComponentFragment.ViewHolder)paramAdapterView;
-      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_JavaLangString);
-      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_Long, paramAdapterView.b, "0X800953C", paramAdapterView.jdField_a_of_type_Int);
+      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.g);
+      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.h, paramAdapterView.i, "0X800953C", paramAdapterView.j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.biu.ReadInjoyFriendsBiuComponentFragment.2
  * JD-Core Version:    0.7.0.1
  */

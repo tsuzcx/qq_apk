@@ -12,7 +12,7 @@ class VideoShareHelper$ReportDislikeAction$2$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    VideoShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizShareVideoShareHelper$ReportDislikeAction$2.a.a).post(new VideoShareHelper.ReportDislikeAction.2.1.1(this));
+    VideoShareHelper.p(this.b.c.a).post(new VideoShareHelper.ReportDislikeAction.2.1.1(this));
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -21,7 +21,7 @@ class VideoShareHelper$ReportDislikeAction$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.VideoShareHelper.ReportDislikeAction.2.1
  * JD-Core Version:    0.7.0.1
  */

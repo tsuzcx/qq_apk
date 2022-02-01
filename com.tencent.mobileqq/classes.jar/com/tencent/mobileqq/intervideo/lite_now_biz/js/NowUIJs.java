@@ -247,7 +247,7 @@ public class NowUIJs
       return;
     }
     if (TextUtils.equals("0", (String)paramMap.get("from"))) {
-      DialogUtil.a(this.context, 231, HardCodeUtil.a(2131694537), HardCodeUtil.a(2131694535), HardCodeUtil.a(2131694536), null, null, new NowUIJs.2(this)).show();
+      DialogUtil.a(this.context, 231, HardCodeUtil.a(2131892221), HardCodeUtil.a(2131892219), HardCodeUtil.a(2131892220), null, null, new NowUIJs.2(this)).show();
     }
   }
   
@@ -308,7 +308,7 @@ public class NowUIJs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.NowUIJs
  * JD-Core Version:    0.7.0.1
  */

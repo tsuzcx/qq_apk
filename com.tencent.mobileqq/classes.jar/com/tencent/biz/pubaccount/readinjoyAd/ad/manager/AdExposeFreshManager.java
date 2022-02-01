@@ -29,23 +29,23 @@ import org.json.JSONObject;
 
 public class AdExposeFreshManager
 {
-  private static volatile AdExposeFreshManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdExposeFreshManager;
-  private static final Map<String, List<AdExposeFreshManager.CacheAd>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private static final Map<String, List<AdExposeFreshManager.CacheAd>> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private static final Map<Long, Long> jdField_c_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean jdField_c_of_type_Boolean;
+  private static volatile AdExposeFreshManager a;
+  private static final Map<String, List<AdExposeFreshManager.CacheAd>> i = new ConcurrentHashMap();
+  private static final Map<String, List<AdExposeFreshManager.CacheAd>> j = new ConcurrentHashMap();
+  private static final Map<Long, Long> k = new ConcurrentHashMap();
+  private long b;
+  private int c;
+  private boolean d;
+  private long e;
+  private int f;
+  private boolean g;
+  private boolean h;
   
   private AdExposeFreshManager()
   {
     AladdinConfig localAladdinConfig = Aladdin.getConfig(408);
-    this.jdField_a_of_type_Long = (localAladdinConfig.getIntegerFromString("cache_over_time", 300) * 1000L);
-    this.jdField_a_of_type_Int = localAladdinConfig.getIntegerFromString("cache_max_size", 5);
+    this.b = (localAladdinConfig.getIntegerFromString("cache_over_time", 300) * 1000L);
+    this.c = localAladdinConfig.getIntegerFromString("cache_max_size", 5);
     boolean bool2 = true;
     boolean bool1;
     if (localAladdinConfig.getIntegerFromString("cache_float_video", 1) == 1) {
@@ -53,226 +53,126 @@ public class AdExposeFreshManager
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
-    this.jdField_b_of_type_Long = (localAladdinConfig.getIntegerFromString("cache_fv_over_time", 300) * 1000L);
-    this.jdField_b_of_type_Int = localAladdinConfig.getIntegerFromString("cache_fv_max_size", 5);
+    this.d = bool1;
+    this.e = (localAladdinConfig.getIntegerFromString("cache_fv_over_time", 300) * 1000L);
+    this.f = localAladdinConfig.getIntegerFromString("cache_fv_max_size", 5);
     if (localAladdinConfig.getIntegerFromString("req_refresh_swith", 1) == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_b_of_type_Boolean = bool1;
+    this.g = bool1;
     if (localAladdinConfig.getIntegerFromString("expose_func_switch", 1) == 1) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    this.jdField_c_of_type_Boolean = bool1;
-  }
-  
-  private int a(String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if ("RIJAdRefreshSceneFloatVideo".equals(paramString)) {
-        return this.jdField_b_of_type_Int;
-      }
-      return this.jdField_a_of_type_Int;
-    }
-    return this.jdField_a_of_type_Int;
-  }
-  
-  private long a(String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if ("RIJAdRefreshSceneFloatVideo".equals(paramString)) {
-        return this.jdField_b_of_type_Long;
-      }
-      return this.jdField_a_of_type_Long;
-    }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  private AdExposeFreshManager.CacheAd a(String paramString, AdExposeFreshManager.CacheAd paramCacheAd)
-  {
-    if (!this.jdField_c_of_type_Boolean)
-    {
-      c("replace", "功能已关闭");
-      return null;
-    }
-    if ((!TextUtils.isEmpty(paramString)) && (paramCacheAd != null) && (paramCacheAd.a()))
-    {
-      if (!a(paramCacheAd))
-      {
-        paramString = new StringBuilder();
-        paramString.append("非AMS竞价广告 adId:");
-        paramString.append(paramCacheAd.jdField_b_of_type_Long);
-        c("replace", paramString.toString());
-        return null;
-      }
-      if (!a(paramString, paramCacheAd))
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("不存在于receiveQueue adId:");
-        ((StringBuilder)localObject).append(paramCacheAd.jdField_b_of_type_Long);
-        c("replace", ((StringBuilder)localObject).toString());
-        if (!b(paramString, paramCacheAd))
-        {
-          paramString = new StringBuilder();
-          paramString.append("广告未曝光，无需替换 adId:");
-          paramString.append(paramCacheAd.jdField_b_of_type_Long);
-          c("replace", paramString.toString());
-          return null;
-        }
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("广告已曝光，需要替换 adId:");
-        ((StringBuilder)localObject).append(paramCacheAd.jdField_b_of_type_Long);
-        c("replace", ((StringBuilder)localObject).toString());
-      }
-      else
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("存在于receiveQueue，需要替换 adId:");
-        ((StringBuilder)localObject).append(paramCacheAd.jdField_b_of_type_Long);
-        c("replace", ((StringBuilder)localObject).toString());
-      }
-      Object localObject = a(paramString, (List)jdField_b_of_type_JavaUtilMap.get(paramString));
-      b(paramString, "enter");
-      jdField_b_of_type_JavaUtilMap.put(paramString, localObject);
-      if (((List)localObject).isEmpty())
-      {
-        paramCacheAd = new StringBuilder();
-        paramCacheAd.append("unexposedQueue为空, scene:");
-        paramCacheAd.append(paramString);
-        c("replace", paramCacheAd.toString());
-        return null;
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("开始替换逻辑，adId：");
-      localStringBuilder.append(paramCacheAd.jdField_b_of_type_Long);
-      c("replace", localStringBuilder.toString());
-      localObject = a(paramString, paramCacheAd, (List)localObject);
-      if ((localObject != null) && (((AdExposeFreshManager.CacheAd)localObject).a()))
-      {
-        a(paramString, paramCacheAd, (AdExposeFreshManager.CacheAd)localObject);
-        paramCacheAd = new StringBuilder();
-        paramCacheAd.append("替换成功，adId：");
-        paramCacheAd.append(((AdExposeFreshManager.CacheAd)localObject).jdField_b_of_type_Long);
-        b(paramCacheAd.toString());
-        b(paramString, "success");
-        return localObject;
-      }
-      c("replace", "样式适配失败");
-      return null;
-    }
-    c("replace", "数据无效");
-    return null;
+    this.h = bool1;
   }
   
   /* Error */
   private static AdExposeFreshManager.CacheAd a(String paramString, AdExposeFreshManager.CacheAd paramCacheAd, List<AdExposeFreshManager.CacheAd> paramList)
   {
     // Byte code:
-    //   0: ldc 177
+    //   0: ldc 82
     //   2: aload_0
-    //   3: invokevirtual 80	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3: invokevirtual 88	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   6: ifne +97 -> 103
-    //   9: new 105	java/lang/StringBuilder
+    //   9: new 90	java/lang/StringBuilder
     //   12: dup
-    //   13: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   13: invokespecial 91	java/lang/StringBuilder:<init>	()V
     //   16: astore_1
     //   17: aload_1
-    //   18: ldc 179
-    //   20: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: ldc 93
+    //   20: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload_1
     //   25: aload_0
-    //   26: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: pop
-    //   30: ldc 181
+    //   30: ldc 99
     //   32: aload_1
-    //   33: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   36: invokestatic 89	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   33: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: invokestatic 106	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   39: aload_2
     //   40: iconst_0
-    //   41: invokeinterface 185 2 0
-    //   46: checkcast 97	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager$CacheAd
+    //   41: invokeinterface 112 2 0
+    //   46: checkcast 114	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager$CacheAd
     //   49: astore_0
-    //   50: new 105	java/lang/StringBuilder
+    //   50: new 90	java/lang/StringBuilder
     //   53: dup
-    //   54: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   54: invokespecial 91	java/lang/StringBuilder:<init>	()V
     //   57: astore_1
     //   58: aload_1
-    //   59: ldc 187
-    //   61: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: ldc 116
+    //   61: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: pop
     //   65: aload_1
     //   66: aload_0
-    //   67: getfield 113	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager$CacheAd:jdField_b_of_type_Long	J
-    //   70: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   67: getfield 117	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager$CacheAd:b	J
+    //   70: invokevirtual 120	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   73: pop
     //   74: aload_1
-    //   75: ldc 189
-    //   77: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: ldc 122
+    //   77: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   80: pop
     //   81: aload_1
     //   82: aload_2
-    //   83: invokeinterface 193 1 0
-    //   88: invokevirtual 196	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   83: invokeinterface 126 1 0
+    //   88: invokevirtual 129	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   91: pop
-    //   92: ldc 181
+    //   92: ldc 99
     //   94: aload_1
-    //   95: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   98: invokestatic 89	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   95: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokestatic 106	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   101: aload_0
     //   102: areturn
     //   103: aload_2
-    //   104: invokeinterface 200 1 0
+    //   104: invokeinterface 133 1 0
     //   109: astore 7
     //   111: aconst_null
     //   112: astore 6
     //   114: aload 6
     //   116: astore_0
     //   117: aload 7
-    //   119: invokeinterface 205 1 0
+    //   119: invokeinterface 139 1 0
     //   124: ifeq +158 -> 282
     //   127: aload 7
-    //   129: invokeinterface 209 1 0
-    //   134: checkcast 97	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager$CacheAd
+    //   129: invokeinterface 143 1 0
+    //   134: checkcast 114	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager$CacheAd
     //   137: astore_0
     //   138: aload_1
-    //   139: getfield 212	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager$CacheAd:jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo	Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;
-    //   142: getfield 217	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:adPosType	I
+    //   139: getfield 146	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager$CacheAd:d	Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;
+    //   142: getfield 151	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:adPosType	I
     //   145: istore_3
     //   146: aload_0
-    //   147: getfield 212	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager$CacheAd:jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo	Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;
-    //   150: getfield 220	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdMaterialId	I
+    //   147: getfield 146	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager$CacheAd:d	Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;
+    //   150: getfield 154	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdMaterialId	I
     //   153: istore 4
-    //   155: new 105	java/lang/StringBuilder
+    //   155: new 90	java/lang/StringBuilder
     //   158: dup
-    //   159: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   159: invokespecial 91	java/lang/StringBuilder:<init>	()V
     //   162: astore 8
     //   164: aload 8
-    //   166: ldc 222
-    //   168: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   166: ldc 156
+    //   168: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   171: pop
     //   172: aload 8
     //   174: iload_3
-    //   175: invokevirtual 196	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   175: invokevirtual 129	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   178: pop
     //   179: aload 8
-    //   181: ldc 224
-    //   183: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: ldc 158
+    //   183: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   186: pop
     //   187: aload 8
     //   189: iload 4
-    //   191: invokevirtual 196	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   191: invokevirtual 129	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   194: pop
-    //   195: ldc 181
+    //   195: ldc 99
     //   197: aload 8
-    //   199: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   202: invokestatic 89	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   199: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   202: invokestatic 106	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   205: iload_3
     //   206: iconst_1
     //   207: if_icmpne +21 -> 228
@@ -309,61 +209,61 @@ public class AdExposeFreshManager
     //   283: ifnull +43 -> 326
     //   286: aload_2
     //   287: aload_0
-    //   288: invokeinterface 226 2 0
+    //   288: invokeinterface 160 2 0
     //   293: istore 5
-    //   295: new 105	java/lang/StringBuilder
+    //   295: new 90	java/lang/StringBuilder
     //   298: dup
-    //   299: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   299: invokespecial 91	java/lang/StringBuilder:<init>	()V
     //   302: astore_1
     //   303: aload_1
-    //   304: ldc 228
-    //   306: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   304: ldc 162
+    //   306: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   309: pop
     //   310: aload_1
     //   311: iload 5
-    //   313: invokevirtual 231	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   313: invokevirtual 165	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   316: pop
-    //   317: ldc 181
+    //   317: ldc 99
     //   319: aload_1
-    //   320: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   323: invokestatic 89	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   326: new 105	java/lang/StringBuilder
+    //   320: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   323: invokestatic 106	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   326: new 90	java/lang/StringBuilder
     //   329: dup
-    //   330: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   330: invokespecial 91	java/lang/StringBuilder:<init>	()V
     //   333: astore_2
     //   334: aload_2
-    //   335: ldc 233
-    //   337: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   335: ldc 167
+    //   337: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   340: pop
     //   341: aload_0
     //   342: ifnonnull +9 -> 351
-    //   345: ldc 235
+    //   345: ldc 169
     //   347: astore_1
     //   348: goto +32 -> 380
-    //   351: new 105	java/lang/StringBuilder
+    //   351: new 90	java/lang/StringBuilder
     //   354: dup
-    //   355: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   355: invokespecial 91	java/lang/StringBuilder:<init>	()V
     //   358: astore_1
     //   359: aload_1
-    //   360: ldc 237
-    //   362: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   360: ldc 171
+    //   362: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   365: pop
     //   366: aload_1
     //   367: aload_0
-    //   368: getfield 113	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager$CacheAd:jdField_b_of_type_Long	J
-    //   371: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   368: getfield 117	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager$CacheAd:b	J
+    //   371: invokevirtual 120	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   374: pop
     //   375: aload_1
-    //   376: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   376: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   379: astore_1
     //   380: aload_2
     //   381: aload_1
-    //   382: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   382: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   385: pop
-    //   386: ldc 181
+    //   386: ldc 99
     //   388: aload_2
-    //   389: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   392: invokestatic 89	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   389: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   392: invokestatic 106	com/tencent/biz/pubaccount/readinjoyAd/ad/manager/AdExposeFreshManager:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   395: aload_0
     //   396: areturn
     // Local variable table:
@@ -371,8 +271,8 @@ public class AdExposeFreshManager
     //   0	397	0	paramString	String
     //   0	397	1	paramCacheAd	AdExposeFreshManager.CacheAd
     //   0	397	2	paramList	List<AdExposeFreshManager.CacheAd>
-    //   145	86	3	i	int
-    //   153	127	4	j	int
+    //   145	86	3	m	int
+    //   153	127	4	n	int
     //   293	19	5	bool	boolean
     //   112	3	6	localObject	Object
     //   109	19	7	localIterator	Iterator
@@ -381,16 +281,16 @@ public class AdExposeFreshManager
   
   public static AdExposeFreshManager a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdExposeFreshManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdExposeFreshManager == null) {
-          jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdExposeFreshManager = new AdExposeFreshManager();
+        if (a == null) {
+          a = new AdExposeFreshManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdExposeFreshManager;
+    return a;
   }
   
   private List<AdExposeFreshManager.CacheAd> a(String paramString, List<AdExposeFreshManager.CacheAd> paramList)
@@ -400,30 +300,30 @@ public class AdExposeFreshManager
       long l = System.currentTimeMillis();
       Object localObject1 = Collections.synchronizedList(new ArrayList());
       paramList = paramList.iterator();
-      int i = 0;
-      int j;
+      int m = 0;
+      int n;
       Object localObject3;
       while (paramList.hasNext())
       {
         localObject2 = (AdExposeFreshManager.CacheAd)paramList.next();
         if (((List)localObject1).contains(localObject2))
         {
-          j = ((List)localObject1).indexOf(localObject2);
-          if (((AdExposeFreshManager.CacheAd)((List)localObject1).get(j)).jdField_a_of_type_Long < ((AdExposeFreshManager.CacheAd)localObject2).jdField_a_of_type_Long) {
-            ((List)localObject1).set(j, localObject2);
+          n = ((List)localObject1).indexOf(localObject2);
+          if (((AdExposeFreshManager.CacheAd)((List)localObject1).get(n)).a < ((AdExposeFreshManager.CacheAd)localObject2).a) {
+            ((List)localObject1).set(n, localObject2);
           }
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("去重，adId：");
-          ((StringBuilder)localObject3).append(((AdExposeFreshManager.CacheAd)localObject2).jdField_b_of_type_Long);
+          ((StringBuilder)localObject3).append(((AdExposeFreshManager.CacheAd)localObject2).b);
           c("removeInvalidAd", ((StringBuilder)localObject3).toString());
         }
-        else if (l - ((AdExposeFreshManager.CacheAd)localObject2).jdField_a_of_type_Long > a(paramString))
+        else if (l - ((AdExposeFreshManager.CacheAd)localObject2).a > b(paramString))
         {
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("移除过期广告，adId：");
-          ((StringBuilder)localObject3).append(((AdExposeFreshManager.CacheAd)localObject2).jdField_b_of_type_Long);
+          ((StringBuilder)localObject3).append(((AdExposeFreshManager.CacheAd)localObject2).b);
           c("removeInvalidAd", ((StringBuilder)localObject3).toString());
-          i += 1;
+          m += 1;
         }
         else
         {
@@ -431,18 +331,18 @@ public class AdExposeFreshManager
         }
       }
       Collections.sort((List)localObject1, new AdExposeFreshManager.1(this));
-      if (((List)localObject1).size() > a(paramString))
+      if (((List)localObject1).size() > c(paramString))
       {
-        j = ((List)localObject1).size() - a(paramString);
+        n = ((List)localObject1).size() - c(paramString);
         paramList = new StringBuilder("removeInvalidAd，当前按时间排序后的列表：");
         localObject2 = ((List)localObject1).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (AdExposeFreshManager.CacheAd)((Iterator)localObject2).next();
           paramList.append("adId:");
-          paramList.append(((AdExposeFreshManager.CacheAd)localObject3).jdField_b_of_type_Long);
+          paramList.append(((AdExposeFreshManager.CacheAd)localObject3).b);
           paramList.append("，cacheTime:");
-          paramList.append(((AdExposeFreshManager.CacheAd)localObject3).jdField_a_of_type_Long);
+          paramList.append(((AdExposeFreshManager.CacheAd)localObject3).a);
           paramList.append("\n");
         }
         c("removeInvalidAd", paramList.toString());
@@ -450,22 +350,22 @@ public class AdExposeFreshManager
         paramList.append("按时间排序后移除超过最大size的广告，当前size：");
         paramList.append(((List)localObject1).size());
         paramList.append("，配置size：");
-        paramList.append(a(paramString));
+        paramList.append(c(paramString));
         c("removeInvalidAd", paramList.toString());
-        paramList = ((List)localObject1).subList(0, a(paramString));
+        paramList = ((List)localObject1).subList(0, c(paramString));
       }
       else
       {
-        j = 0;
+        n = 0;
         paramList = (List<AdExposeFreshManager.CacheAd>)localObject1;
       }
       localObject1 = new HashMap();
       Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(m);
       ((StringBuilder)localObject2).append("");
       ((Map)localObject1).put("ad_count_time", ((StringBuilder)localObject2).toString());
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(j);
+      ((StringBuilder)localObject2).append(n);
       ((StringBuilder)localObject2).append("");
       ((Map)localObject1).put("ad_count_size", ((StringBuilder)localObject2).toString());
       a(paramString, "filter", (Map)localObject1);
@@ -483,13 +383,13 @@ public class AdExposeFreshManager
       boolean bool = "RIJAdRefreshSceneFloatVideo".equals(paramString);
       if (bool)
       {
-        paramString = paramCacheAd1.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.a;
-        paramCacheAd2 = paramCacheAd2.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.a;
-        paramCacheAd2.jdField_b_of_type_Int = paramString.jdField_b_of_type_Int;
-        if (!TextUtils.isEmpty(paramString.v))
+        paramString = paramCacheAd1.e.as;
+        paramCacheAd2 = paramCacheAd2.e.as;
+        paramCacheAd2.e = paramString.e;
+        if (!TextUtils.isEmpty(paramString.R))
         {
-          JSONObject localJSONObject = new JSONObject(paramString.v);
-          paramCacheAd1 = paramCacheAd2.v;
+          JSONObject localJSONObject = new JSONObject(paramString.R);
+          paramCacheAd1 = paramCacheAd2.R;
           paramString = paramCacheAd1;
           if (TextUtils.isEmpty(paramCacheAd1)) {
             paramString = "{}";
@@ -503,24 +403,24 @@ public class AdExposeFreshManager
           paramString.putOpt("ad_pre_req", localJSONObject.opt("ad_pre_req"));
           paramString.putOpt("ad_protect_gap", localJSONObject.opt("ad_protect_gap"));
           paramString.putOpt("first_stay_time", localJSONObject.opt("first_stay_time"));
-          paramCacheAd2.v = paramString.toString();
+          paramCacheAd2.R = paramString.toString();
         }
         c("wrapData", "数据适配完成");
         return;
       }
-      paramString = paramCacheAd1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-      paramCacheAd1 = paramCacheAd2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+      paramString = paramCacheAd1.d;
+      paramCacheAd1 = paramCacheAd2.d;
       paramCacheAd1.mAdKdPos = paramString.mAdKdPos;
       if (paramString.mAdvertisementExtInfo != null)
       {
         if (paramCacheAd1.mAdvertisementExtInfo == null) {
           paramCacheAd1.mAdvertisementExtInfo = new AdvertisementExtInfo(null);
         }
-        paramCacheAd1.mAdvertisementExtInfo.f = paramString.mAdvertisementExtInfo.f;
         paramCacheAd1.mAdvertisementExtInfo.g = paramString.mAdvertisementExtInfo.g;
         paramCacheAd1.mAdvertisementExtInfo.h = paramString.mAdvertisementExtInfo.h;
-        paramCacheAd1.mAdvertisementExtInfo.e = paramString.mAdvertisementExtInfo.e;
-        paramCacheAd1.mAdvertisementExtInfo.c = paramString.mAdvertisementExtInfo.c;
+        paramCacheAd1.mAdvertisementExtInfo.i = paramString.mAdvertisementExtInfo.i;
+        paramCacheAd1.mAdvertisementExtInfo.f = paramString.mAdvertisementExtInfo.f;
+        paramCacheAd1.mAdvertisementExtInfo.d = paramString.mAdvertisementExtInfo.d;
       }
       c("wrapData", "数据适配完成");
       return;
@@ -540,25 +440,25 @@ public class AdExposeFreshManager
     {
       HashMap localHashMap = new HashMap();
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(a(paramString1) / 1000L);
+      ((StringBuilder)localObject).append(b(paramString1) / 1000L);
       ((StringBuilder)localObject).append("");
       localHashMap.put("cache_over_time", ((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(a(paramString1));
+      ((StringBuilder)localObject).append(c(paramString1));
       ((StringBuilder)localObject).append("");
       localHashMap.put("cache_max_size", ((StringBuilder)localObject).toString());
-      int j = 0;
-      localObject = (List)jdField_b_of_type_JavaUtilMap.get(paramString1);
-      int i = j;
+      int n = 0;
+      localObject = (List)j.get(paramString1);
+      int m = n;
       if (localObject != null)
       {
-        i = j;
+        m = n;
         if (!((List)localObject).isEmpty()) {
-          i = ((List)localObject).size();
+          m = ((List)localObject).size();
         }
       }
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(m);
       ((StringBuilder)localObject).append("");
       localHashMap.put("cache_ad_count", ((StringBuilder)localObject).toString());
       localHashMap.put("scene_str", paramString1);
@@ -589,77 +489,122 @@ public class AdExposeFreshManager
   
   private static boolean a(AdExposeFreshManager.CacheAd paramCacheAd)
   {
-    if (paramCacheAd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null)
+    if (paramCacheAd.d != null)
     {
-      if (paramCacheAd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo != null) {
-        return (paramCacheAd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.j == 32) && (paramCacheAd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.isContract != 1);
+      if (paramCacheAd.d.mAdvertisementExtInfo != null) {
+        return (paramCacheAd.d.mAdvertisementExtInfo.o == 32) && (paramCacheAd.d.isContract != 1);
       }
       return false;
     }
-    if (paramCacheAd.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo != null) {
-      return (paramCacheAd.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.a.o == 32) && (paramCacheAd.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.a.u != 1);
+    if (paramCacheAd.e != null) {
+      return (paramCacheAd.e.as.ae == 32) && (paramCacheAd.e.as.aA != 1);
     }
     return false;
   }
   
-  private boolean a(String paramString, AdExposeFreshManager.CacheAd paramCacheAd)
+  private long b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    if (paramCacheAd != null)
+    if (this.d)
     {
-      if (!paramCacheAd.a()) {
-        return false;
+      if ("RIJAdRefreshSceneFloatVideo".equals(paramString)) {
+        return this.e;
       }
-      paramString = (List)jdField_a_of_type_JavaUtilMap.get(paramString);
-      if (paramString != null)
-      {
-        if (paramString.isEmpty()) {
-          return false;
-        }
-        return paramString.contains(paramCacheAd);
-      }
+      return this.b;
     }
-    return false;
+    return this.b;
   }
   
-  private static void b(String paramString) {}
+  private AdExposeFreshManager.CacheAd b(String paramString, AdExposeFreshManager.CacheAd paramCacheAd)
+  {
+    if (!this.h)
+    {
+      c("replace", "功能已关闭");
+      return null;
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (paramCacheAd != null) && (paramCacheAd.a()))
+    {
+      if (!a(paramCacheAd))
+      {
+        paramString = new StringBuilder();
+        paramString.append("非AMS竞价广告 adId:");
+        paramString.append(paramCacheAd.b);
+        c("replace", paramString.toString());
+        return null;
+      }
+      if (!c(paramString, paramCacheAd))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("不存在于receiveQueue adId:");
+        ((StringBuilder)localObject).append(paramCacheAd.b);
+        c("replace", ((StringBuilder)localObject).toString());
+        if (!d(paramString, paramCacheAd))
+        {
+          paramString = new StringBuilder();
+          paramString.append("广告未曝光，无需替换 adId:");
+          paramString.append(paramCacheAd.b);
+          c("replace", paramString.toString());
+          return null;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("广告已曝光，需要替换 adId:");
+        ((StringBuilder)localObject).append(paramCacheAd.b);
+        c("replace", ((StringBuilder)localObject).toString());
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("存在于receiveQueue，需要替换 adId:");
+        ((StringBuilder)localObject).append(paramCacheAd.b);
+        c("replace", ((StringBuilder)localObject).toString());
+      }
+      Object localObject = a(paramString, (List)j.get(paramString));
+      b(paramString, "enter");
+      j.put(paramString, localObject);
+      if (((List)localObject).isEmpty())
+      {
+        paramCacheAd = new StringBuilder();
+        paramCacheAd.append("unexposedQueue为空, scene:");
+        paramCacheAd.append(paramString);
+        c("replace", paramCacheAd.toString());
+        return null;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("开始替换逻辑，adId：");
+      localStringBuilder.append(paramCacheAd.b);
+      c("replace", localStringBuilder.toString());
+      localObject = a(paramString, paramCacheAd, (List)localObject);
+      if ((localObject != null) && (((AdExposeFreshManager.CacheAd)localObject).a()))
+      {
+        a(paramString, paramCacheAd, (AdExposeFreshManager.CacheAd)localObject);
+        paramCacheAd = new StringBuilder();
+        paramCacheAd.append("替换成功，adId：");
+        paramCacheAd.append(((AdExposeFreshManager.CacheAd)localObject).b);
+        d(paramCacheAd.toString());
+        b(paramString, "success");
+        return localObject;
+      }
+      c("replace", "样式适配失败");
+      return null;
+    }
+    c("replace", "数据无效");
+    return null;
+  }
   
   private void b(String paramString1, String paramString2)
   {
     a(paramString1, paramString2, null);
   }
   
-  private boolean b(String paramString, AdExposeFreshManager.CacheAd paramCacheAd)
+  private int c(String paramString)
   {
-    if (TextUtils.isEmpty(paramString))
+    if (this.d)
     {
-      c("isExposed", "scene is empty");
-      return false;
+      if ("RIJAdRefreshSceneFloatVideo".equals(paramString)) {
+        return this.f;
+      }
+      return this.c;
     }
-    if (paramCacheAd == null)
-    {
-      c("isExposed", "cacheAd is null");
-      return false;
-    }
-    if (!jdField_c_of_type_JavaUtilMap.containsKey(Long.valueOf(paramCacheAd.jdField_b_of_type_Long)))
-    {
-      c("isExposed", "cacheAd no exposed cache");
-      return false;
-    }
-    paramCacheAd = (Long)jdField_c_of_type_JavaUtilMap.get(Long.valueOf(paramCacheAd.jdField_b_of_type_Long));
-    if (paramCacheAd == null)
-    {
-      c("isExposed", "cacheAd no exposed cache");
-      return false;
-    }
-    if (System.currentTimeMillis() - paramCacheAd.longValue() > a(paramString))
-    {
-      c("isExposed", "cacheAd exposed cache invalid");
-      return false;
-    }
-    return true;
+    return this.c;
   }
   
   private static void c(String paramString1, String paramString2)
@@ -673,6 +618,30 @@ public class AdExposeFreshManager
     QLog.d("AdExposeFreshManager", 1, localStringBuilder.toString());
   }
   
+  private boolean c(String paramString, AdExposeFreshManager.CacheAd paramCacheAd)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    if (paramCacheAd != null)
+    {
+      if (!paramCacheAd.a()) {
+        return false;
+      }
+      paramString = (List)i.get(paramString);
+      if (paramString != null)
+      {
+        if (paramString.isEmpty()) {
+          return false;
+        }
+        return paramString.contains(paramCacheAd);
+      }
+    }
+    return false;
+  }
+  
+  private static void d(String paramString) {}
+  
   private void d(String paramString, Set<AdExposeFreshManager.CacheAd> paramSet)
   {
     if (TextUtils.isEmpty(paramString))
@@ -682,12 +651,12 @@ public class AdExposeFreshManager
     }
     if ((paramSet != null) && (!paramSet.isEmpty()))
     {
-      List localList2 = (List)jdField_a_of_type_JavaUtilMap.get(paramString);
+      List localList2 = (List)i.get(paramString);
       List localList1 = localList2;
       if (localList2 == null) {
         localList1 = Collections.synchronizedList(new ArrayList());
       }
-      localList2 = (List)jdField_b_of_type_JavaUtilMap.get(paramString);
+      localList2 = (List)j.get(paramString);
       paramSet = paramSet.iterator();
       while (paramSet.hasNext())
       {
@@ -697,14 +666,14 @@ public class AdExposeFreshManager
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("not ams bidding ad:");
-          localStringBuilder.append(localCacheAd.jdField_b_of_type_Long);
+          localStringBuilder.append(localCacheAd.b);
           c("addReceiveAds", localStringBuilder.toString());
         }
         else
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("广告回包处理，添加到receiveQueue，adId：");
-          localStringBuilder.append(localCacheAd.jdField_b_of_type_Long);
+          localStringBuilder.append(localCacheAd.b);
           c("addReceiveAds", localStringBuilder.toString());
           localList1.add(localCacheAd);
           if ((localList2 != null) && (!localList2.isEmpty()) && (localList2.contains(localCacheAd)))
@@ -712,17 +681,48 @@ public class AdExposeFreshManager
             boolean bool = localList2.remove(localCacheAd);
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("广告回包处理，从该场景的unexposedCache也存在该广告，adId：");
-            localStringBuilder.append(localCacheAd.jdField_b_of_type_Long);
+            localStringBuilder.append(localCacheAd.b);
             localStringBuilder.append(", 移除结果:");
             localStringBuilder.append(bool);
             c("addReceiveAds", localStringBuilder.toString());
           }
         }
       }
-      jdField_a_of_type_JavaUtilMap.put(paramString, localList1);
+      i.put(paramString, localList1);
       return;
     }
     c("addReceiveAds", "advertisementInfos is empty");
+  }
+  
+  private boolean d(String paramString, AdExposeFreshManager.CacheAd paramCacheAd)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      c("isExposed", "scene is empty");
+      return false;
+    }
+    if (paramCacheAd == null)
+    {
+      c("isExposed", "cacheAd is null");
+      return false;
+    }
+    if (!k.containsKey(Long.valueOf(paramCacheAd.b)))
+    {
+      c("isExposed", "cacheAd no exposed cache");
+      return false;
+    }
+    paramCacheAd = (Long)k.get(Long.valueOf(paramCacheAd.b));
+    if (paramCacheAd == null)
+    {
+      c("isExposed", "cacheAd no exposed cache");
+      return false;
+    }
+    if (System.currentTimeMillis() - paramCacheAd.longValue() > b(paramString))
+    {
+      c("isExposed", "cacheAd exposed cache invalid");
+      return false;
+    }
+    return true;
   }
   
   public AdvertisementInfo a(String paramString, AdvertisementInfo paramAdvertisementInfo)
@@ -730,13 +730,13 @@ public class AdExposeFreshManager
     if (TextUtils.isEmpty(paramString)) {
       return paramAdvertisementInfo;
     }
-    paramString = a(paramString, new AdExposeFreshManager.CacheAd(paramAdvertisementInfo));
+    paramString = b(paramString, new AdExposeFreshManager.CacheAd(paramAdvertisementInfo));
     if (paramString != null)
     {
       if (!paramString.a()) {
         return paramAdvertisementInfo;
       }
-      return paramString.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+      return paramString.d;
     }
     return paramAdvertisementInfo;
   }
@@ -746,13 +746,13 @@ public class AdExposeFreshManager
     if (TextUtils.isEmpty(paramString)) {
       return paramAdData;
     }
-    paramString = a(paramString, new AdExposeFreshManager.CacheAd(paramAdData));
+    paramString = b(paramString, new AdExposeFreshManager.CacheAd(paramAdData));
     if (paramString != null)
     {
       if (!paramString.a()) {
         return paramAdData;
       }
-      return paramString.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData;
+      return paramString.f;
     }
     return paramAdData;
   }
@@ -762,20 +762,20 @@ public class AdExposeFreshManager
     if (TextUtils.isEmpty(paramString)) {
       return paramVideoInfo;
     }
-    paramString = a(paramString, new AdExposeFreshManager.CacheAd(paramVideoInfo));
+    paramString = b(paramString, new AdExposeFreshManager.CacheAd(paramVideoInfo));
     if (paramString != null)
     {
       if (!paramString.a()) {
         return paramVideoInfo;
       }
-      return paramString.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
+      return paramString.e;
     }
     return paramVideoInfo;
   }
   
   public void a(String paramString)
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.h) {
       return;
     }
     if (TextUtils.isEmpty(paramString))
@@ -787,52 +787,53 @@ public class AdExposeFreshManager
     ((StringBuilder)localObject1).append("scene:");
     ((StringBuilder)localObject1).append(paramString);
     c("exitScene", ((StringBuilder)localObject1).toString());
-    Object localObject2 = (List)jdField_a_of_type_JavaUtilMap.get(paramString);
-    jdField_a_of_type_JavaUtilMap.remove(paramString);
+    Object localObject2 = (List)i.get(paramString);
+    i.remove(paramString);
     if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
     {
-      localObject1 = (List)jdField_b_of_type_JavaUtilMap.get(paramString);
+      localObject1 = (List)j.get(paramString);
       if ((localObject1 == null) || (paramString.isEmpty())) {
         localObject1 = Collections.synchronizedList(new ArrayList());
       }
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
+      try
       {
-        localObject3 = (AdExposeFreshManager.CacheAd)((Iterator)localObject2).next();
-        if (((List)localObject1).contains(localObject3))
+        localObject2 = ((List)localObject2).iterator();
+        Object localObject3;
+        while (((Iterator)localObject2).hasNext())
         {
-          ((List)localObject1).set(((List)localObject1).indexOf(localObject3), localObject3);
+          localObject3 = (AdExposeFreshManager.CacheAd)((Iterator)localObject2).next();
+          if (((List)localObject1).contains(localObject3))
+          {
+            ((List)localObject1).set(((List)localObject1).indexOf(localObject3), localObject3);
+          }
+          else
+          {
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("添加到unexposedQueue，adId：");
+            localStringBuilder2.append(((AdExposeFreshManager.CacheAd)localObject3).b);
+            c("exitScene", localStringBuilder2.toString());
+            ((List)localObject1).add(localObject3);
+          }
         }
-        else
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("添加到unexposedQueue，adId：");
-          localStringBuilder.append(((AdExposeFreshManager.CacheAd)localObject3).jdField_b_of_type_Long);
-          c("exitScene", localStringBuilder.toString());
-          ((List)localObject1).add(localObject3);
-        }
+        StringBuilder localStringBuilder1;
+        c("exitScene", "receiveCache is empty");
       }
-      localObject1 = a(paramString, (List)localObject1);
-      localObject2 = new StringBuilder("当前unexposedCache：");
-      Object localObject3 = ((List)localObject1).iterator();
-      while (((Iterator)localObject3).hasNext())
+      catch (Exception localException)
       {
-        ((StringBuilder)localObject2).append(((AdExposeFreshManager.CacheAd)((Iterator)localObject3).next()).jdField_b_of_type_Long);
-        ((StringBuilder)localObject2).append(" , ");
+        c("exitScene", QLog.getStackTraceString(localException));
+        localObject1 = a(paramString, (List)localObject1);
+        localStringBuilder1 = new StringBuilder("当前unexposedCache：");
+        localObject3 = ((List)localObject1).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          localStringBuilder1.append(((AdExposeFreshManager.CacheAd)((Iterator)localObject3).next()).b);
+          localStringBuilder1.append(" , ");
+        }
+        d(localStringBuilder1.toString());
+        j.put(paramString, localObject1);
+        return;
       }
-      b(((StringBuilder)localObject2).toString());
-      jdField_b_of_type_JavaUtilMap.put(paramString, localObject1);
-      return;
     }
-    c("exitScene", "receiveCache is empty");
-  }
-  
-  public void a(String paramString, AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    a(paramString, new AdExposeFreshManager.CacheAd(paramAdvertisementInfo));
   }
   
   public void a(String paramString, AdExposeFreshManager.CacheAd paramCacheAd)
@@ -840,7 +841,7 @@ public class AdExposeFreshManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.h) {
       return;
     }
     if (paramCacheAd == null)
@@ -853,21 +854,21 @@ public class AdExposeFreshManager
       c("handleExposedAd", "not ams bidding Ad");
       return;
     }
-    paramString = (List)jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (List)i.get(paramString);
     Object localObject1;
     if ((paramString != null) && (!paramString.isEmpty()))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("已曝光，从receiveQueue移除：");
-      ((StringBuilder)localObject1).append(paramCacheAd.jdField_b_of_type_Long);
+      ((StringBuilder)localObject1).append(paramCacheAd.b);
       c("handleExposedAd", ((StringBuilder)localObject1).toString());
       paramString.remove(paramCacheAd);
     }
-    paramString = jdField_b_of_type_JavaUtilMap.keySet().iterator();
+    paramString = j.keySet().iterator();
     while (paramString.hasNext())
     {
       localObject1 = (String)paramString.next();
-      Object localObject2 = (List)jdField_b_of_type_JavaUtilMap.get(localObject1);
+      Object localObject2 = (List)j.get(localObject1);
       if (localObject2 == null)
       {
         localObject2 = new StringBuilder();
@@ -879,24 +880,16 @@ public class AdExposeFreshManager
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("已曝光，从unexposedeQueue移除：");
-        ((StringBuilder)localObject1).append(paramCacheAd.jdField_b_of_type_Long);
+        ((StringBuilder)localObject1).append(paramCacheAd.b);
         c("handleExposedAd", ((StringBuilder)localObject1).toString());
         ((List)localObject2).remove(paramCacheAd);
       }
     }
-    jdField_c_of_type_JavaUtilMap.put(Long.valueOf(paramCacheAd.jdField_b_of_type_Long), Long.valueOf(System.currentTimeMillis()));
+    k.put(Long.valueOf(paramCacheAd.b), Long.valueOf(System.currentTimeMillis()));
     paramString = new StringBuilder();
     paramString.append("添加到已曝光队列，adId：");
-    paramString.append(paramCacheAd.jdField_b_of_type_Long);
+    paramString.append(paramCacheAd.b);
     c("handleExposedAd", paramString.toString());
-  }
-  
-  public void a(String paramString, VideoInfo paramVideoInfo)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    a(paramString, new AdExposeFreshManager.CacheAd(paramVideoInfo));
   }
   
   public void a(String paramString, Set<VideoInfo> paramSet)
@@ -904,7 +897,7 @@ public class AdExposeFreshManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.h) {
       return;
     }
     HashSet localHashSet = new HashSet(paramSet.size());
@@ -915,21 +908,16 @@ public class AdExposeFreshManager
     d(paramString, localHashSet);
   }
   
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
   public boolean a(long paramLong)
   {
-    if (!jdField_c_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+    if (!k.containsKey(Long.valueOf(paramLong))) {
       return false;
     }
-    Object localObject = (Long)jdField_c_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+    Object localObject = (Long)k.get(Long.valueOf(paramLong));
     if (localObject == null) {
       return false;
     }
-    if (System.currentTimeMillis() - ((Long)localObject).longValue() > this.jdField_a_of_type_Long)
+    if (System.currentTimeMillis() - ((Long)localObject).longValue() > this.b)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("广告曝光记录已超时：");
@@ -940,12 +928,28 @@ public class AdExposeFreshManager
     return true;
   }
   
+  public void b(String paramString, AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    a(paramString, new AdExposeFreshManager.CacheAd(paramAdvertisementInfo));
+  }
+  
+  public void b(String paramString, VideoInfo paramVideoInfo)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    a(paramString, new AdExposeFreshManager.CacheAd(paramVideoInfo));
+  }
+  
   public void b(String paramString, Set<AdData> paramSet)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.h) {
       return;
     }
     HashSet localHashSet = new HashSet(paramSet.size());
@@ -956,12 +960,17 @@ public class AdExposeFreshManager
     d(paramString, localHashSet);
   }
   
+  public boolean b()
+  {
+    return this.g;
+  }
+  
   public void c(String paramString, Set<AdvertisementInfo> paramSet)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.h) {
       return;
     }
     HashSet localHashSet = new HashSet(paramSet.size());
@@ -974,7 +983,7 @@ public class AdExposeFreshManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.AdExposeFreshManager
  * JD-Core Version:    0.7.0.1
  */

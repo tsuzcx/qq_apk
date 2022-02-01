@@ -9,31 +9,31 @@ class GridListView$1
   
   public void onChanged()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter != null)
+    if (this.a.a != null)
     {
       GridListView localGridListView = this.a;
-      GridListView.a(localGridListView, localGridListView.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
+      GridListView.a(localGridListView, localGridListView.a.getCount());
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetChanged();
+    if (this.a.m != null) {
+      this.a.m.notifyDataSetChanged();
     }
   }
   
   public void onInvalidated()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter != null)
+    if (this.a.a != null)
     {
       GridListView localGridListView = this.a;
-      GridListView.a(localGridListView, localGridListView.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
+      GridListView.a(localGridListView, localGridListView.a.getCount());
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetInvalidated();
+    if (this.a.m != null) {
+      this.a.m.notifyDataSetInvalidated();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.GridListView.1
  * JD-Core Version:    0.7.0.1
  */

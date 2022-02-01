@@ -13,34 +13,34 @@ class DraftTextManager$1
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 17	com/tencent/mobileqq/managers/DraftTextManager$1:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 32	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   7: invokevirtual 38	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   1: getfield 18	com/tencent/mobileqq/managers/DraftTextManager$1:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4: invokevirtual 33	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   7: invokevirtual 39	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   10: astore_2
     //   11: aload_2
-    //   12: invokevirtual 44	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   12: invokevirtual 45	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   15: astore_1
     //   16: aload_1
-    //   17: invokevirtual 49	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   17: invokevirtual 50	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   20: aload_2
     //   21: aload_0
-    //   22: getfield 19	com/tencent/mobileqq/managers/DraftTextManager$1:jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo	Lcom/tencent/mobileqq/data/DraftTextInfo;
-    //   25: invokevirtual 53	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   22: getfield 20	com/tencent/mobileqq/managers/DraftTextManager$1:b	Lcom/tencent/mobileqq/data/DraftTextInfo;
+    //   25: invokevirtual 54	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   28: aload_1
-    //   29: invokevirtual 56	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   29: invokevirtual 57	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   32: goto +12 -> 44
     //   35: astore_2
     //   36: goto +17 -> 53
     //   39: astore_3
     //   40: aload_3
-    //   41: invokevirtual 59	java/lang/Exception:printStackTrace	()V
+    //   41: invokevirtual 60	java/lang/Exception:printStackTrace	()V
     //   44: aload_1
-    //   45: invokevirtual 62	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   45: invokevirtual 63	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   48: aload_2
-    //   49: invokevirtual 65	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   49: invokevirtual 66	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   52: return
     //   53: aload_1
-    //   54: invokevirtual 62	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   54: invokevirtual 63	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   57: aload_2
     //   58: athrow
     // Local variable table:

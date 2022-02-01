@@ -16,8 +16,8 @@ import mqq.app.AppRuntime;
 public class QzoneTiantaiTranslucentBrowserActivity
   extends QQTranslucentBrowserActivity
 {
-  private static volatile long jdField_a_of_type_Long;
-  private BaseTranslucentController jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController;
+  private static volatile long b;
+  private BaseTranslucentController a;
   
   private BaseTranslucentController a()
   {
@@ -35,15 +35,15 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public static void a(QQAppInterface paramQQAppInterface)
   {
     long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long > 60000L)
+    if (l - b > 60000L)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("  nowCallTime =");
       localStringBuilder.append(l);
       localStringBuilder.append("gLastLoadToolsProcessTime =");
-      localStringBuilder.append(jdField_a_of_type_Long);
+      localStringBuilder.append(b);
       QLog.e("WebLog_QQBrowserActivity", 1, localStringBuilder.toString());
-      jdField_a_of_type_Long = l;
+      b = l;
       b(paramQQAppInterface);
     }
   }
@@ -78,8 +78,8 @@ public class QzoneTiantaiTranslucentBrowserActivity
   
   public void doOnBackPressed()
   {
-    BaseTranslucentController localBaseTranslucentController = this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController;
-    if ((localBaseTranslucentController != null) && (localBaseTranslucentController.a())) {
+    BaseTranslucentController localBaseTranslucentController = this.a;
+    if ((localBaseTranslucentController != null) && (localBaseTranslucentController.f())) {
       super.doOnBackPressed();
     }
   }
@@ -87,7 +87,7 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    paramBundle = this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController;
+    paramBundle = this.a;
     if (paramBundle != null) {
       paramBundle.a();
     }
@@ -97,7 +97,7 @@ public class QzoneTiantaiTranslucentBrowserActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    BaseTranslucentController localBaseTranslucentController = this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController;
+    BaseTranslucentController localBaseTranslucentController = this.a;
     if (localBaseTranslucentController != null) {
       localBaseTranslucentController.d();
     }
@@ -106,7 +106,7 @@ public class QzoneTiantaiTranslucentBrowserActivity
   protected void doOnPause()
   {
     super.doOnPause();
-    BaseTranslucentController localBaseTranslucentController = this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController;
+    BaseTranslucentController localBaseTranslucentController = this.a;
     if (localBaseTranslucentController != null) {
       localBaseTranslucentController.b();
     }
@@ -115,7 +115,7 @@ public class QzoneTiantaiTranslucentBrowserActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    BaseTranslucentController localBaseTranslucentController = this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController;
+    BaseTranslucentController localBaseTranslucentController = this.a;
     if (localBaseTranslucentController != null) {
       localBaseTranslucentController.c();
     }
@@ -130,14 +130,14 @@ public class QzoneTiantaiTranslucentBrowserActivity
   
   protected void onCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController = a();
+    this.a = a();
     super.onCreate(paramBundle);
   }
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    paramWebView = this.jdField_a_of_type_CooperationVipWebviewControllerBaseTranslucentController;
+    paramWebView = this.a;
     if (paramWebView != null) {
       paramWebView.e();
     }
@@ -145,7 +145,7 @@ public class QzoneTiantaiTranslucentBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

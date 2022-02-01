@@ -19,11 +19,11 @@ import com.google.android.material.theme.overlay.MaterialThemeOverlay;
 public class MaterialRadioButton
   extends AppCompatRadioButton
 {
-  private static final int jdField_a_of_type_Int = R.style.z;
-  private static final int[][] jdField_a_of_type_Array2dOfInt = { { 16842910, 16842912 }, { 16842910, -16842912 }, { -16842910, 16842912 }, { -16842910, -16842912 } };
+  private static final int a = R.style.B;
+  private static final int[][] b = { { 16842910, 16842912 }, { 16842910, -16842912 }, { -16842910, 16842912 }, { -16842910, -16842912 } };
   @Nullable
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private boolean jdField_a_of_type_Boolean;
+  private ColorStateList c;
+  private boolean d;
   
   public MaterialRadioButton(@NonNull Context paramContext)
   {
@@ -32,52 +32,52 @@ public class MaterialRadioButton
   
   public MaterialRadioButton(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.radioButtonStyle);
+    this(paramContext, paramAttributeSet, R.attr.O);
   }
   
   public MaterialRadioButton(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, a), paramAttributeSet, paramInt);
     paramContext = getContext();
-    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.V, paramInt, jdField_a_of_type_Int, new int[0]);
-    if (paramAttributeSet.hasValue(R.styleable.dg)) {
-      CompoundButtonCompat.setButtonTintList(this, MaterialResources.a(paramContext, paramAttributeSet, R.styleable.dg));
+    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.eI, paramInt, a, new int[0]);
+    if (paramAttributeSet.hasValue(R.styleable.eJ)) {
+      CompoundButtonCompat.setButtonTintList(this, MaterialResources.a(paramContext, paramAttributeSet, R.styleable.eJ));
     }
-    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.dh, false);
+    this.d = paramAttributeSet.getBoolean(R.styleable.eK, false);
     paramAttributeSet.recycle();
   }
   
-  private ColorStateList a()
+  private ColorStateList getMaterialThemeColorsTintList()
   {
-    if (this.jdField_a_of_type_AndroidContentResColorStateList == null)
+    if (this.c == null)
     {
-      int i = MaterialColors.a(this, R.attr.colorControlActivated);
-      int j = MaterialColors.a(this, R.attr.l);
-      int k = MaterialColors.a(this, R.attr.n);
-      int[] arrayOfInt = new int[jdField_a_of_type_Array2dOfInt.length];
+      int i = MaterialColors.a(this, R.attr.n);
+      int j = MaterialColors.a(this, R.attr.q);
+      int k = MaterialColors.a(this, R.attr.t);
+      int[] arrayOfInt = new int[b.length];
       arrayOfInt[0] = MaterialColors.a(k, i, 1.0F);
       arrayOfInt[1] = MaterialColors.a(k, j, 0.54F);
       arrayOfInt[2] = MaterialColors.a(k, j, 0.38F);
       arrayOfInt[3] = MaterialColors.a(k, j, 0.38F);
-      this.jdField_a_of_type_AndroidContentResColorStateList = new ColorStateList(jdField_a_of_type_Array2dOfInt, arrayOfInt);
+      this.c = new ColorStateList(b, arrayOfInt);
     }
-    return this.jdField_a_of_type_AndroidContentResColorStateList;
+    return this.c;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if ((this.jdField_a_of_type_Boolean) && (CompoundButtonCompat.getButtonTintList(this) == null)) {
+    if ((this.d) && (CompoundButtonCompat.getButtonTintList(this) == null)) {
       setUseMaterialThemeColors(true);
     }
   }
   
   public void setUseMaterialThemeColors(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     if (paramBoolean)
     {
-      CompoundButtonCompat.setButtonTintList(this, a());
+      CompoundButtonCompat.setButtonTintList(this, getMaterialThemeColorsTintList());
       return;
     }
     CompoundButtonCompat.setButtonTintList(this, null);
@@ -85,7 +85,7 @@ public class MaterialRadioButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.radiobutton.MaterialRadioButton
  * JD-Core Version:    0.7.0.1
  */

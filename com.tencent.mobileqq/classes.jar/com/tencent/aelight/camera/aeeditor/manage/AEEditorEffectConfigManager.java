@@ -8,10 +8,10 @@ import mqq.os.MqqHandler;
 
 public class AEEditorEffectConfigManager
 {
-  private static volatile AEEditorEffectConfigManager jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorEffectConfigManager;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private AEEditorEffectConfigManager.IEffectGroupListBack jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorEffectConfigManager$IEffectGroupListBack;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private static volatile AEEditorEffectConfigManager a;
+  private static final byte[] c = new byte[0];
+  private AEEditorEffectConfigManager.IEffectGroupListBack b;
+  private Runnable d;
   
   private AEEditorEffectConfigManager()
   {
@@ -20,19 +20,19 @@ public class AEEditorEffectConfigManager
   
   public static AEEditorEffectConfigManager a()
   {
-    if (jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorEffectConfigManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorEffectConfigManager == null) {
-          jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorEffectConfigManager = new AEEditorEffectConfigManager();
+        if (a == null) {
+          a = new AEEditorEffectConfigManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorEffectConfigManager;
+    return a;
   }
   
-  public static String a()
+  public static String b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AEEditorPath.EDITOR.FILES.c);
@@ -41,16 +41,16 @@ public class AEEditorEffectConfigManager
     return localStringBuilder.toString();
   }
   
-  private void a()
+  private void d()
   {
-    this.jdField_a_of_type_JavaLangRunnable = new AEEditorEffectConfigManager.2(this);
-    ThreadManager.getFileThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
+    this.d = new AEEditorEffectConfigManager.2(this);
+    ThreadManager.getFileThreadHandler().post(this.d);
   }
   
   public void a(AEEditorEffectConfigManager.IEffectGroupListBack paramIEffectGroupListBack)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorEffectConfigManager$IEffectGroupListBack = paramIEffectGroupListBack;
-    a();
+    this.b = paramIEffectGroupListBack;
+    d();
   }
   
   public void a(AEEditorEffectGroupListBean paramAEEditorEffectGroupListBean)
@@ -60,7 +60,7 @@ public class AEEditorEffectConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.manage.AEEditorEffectConfigManager
  * JD-Core Version:    0.7.0.1
  */

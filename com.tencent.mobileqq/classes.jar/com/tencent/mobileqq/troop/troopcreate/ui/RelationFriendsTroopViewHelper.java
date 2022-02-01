@@ -29,43 +29,25 @@ import mqq.os.MqqHandler;
 
 public class RelationFriendsTroopViewHelper
 {
-  private int jdField_a_of_type_Int = -1;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  IRelationFriendsSearchHelper jdField_a_of_type_ComTencentMobileqqTroopApiTroopcreateIRelationFriendsSearchHelper;
-  private IRelationFriendsTroopViewHelper.CallBack jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiIRelationFriendsTroopViewHelper$CallBack;
-  PinnedFooterExpandableListView jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView;
-  private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<Entity> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private ArrayList<Entity> b = new ArrayList();
+  IRelationFriendsSearchHelper a;
+  AppInterface b;
+  PinnedFooterExpandableListView c;
+  private ArrayList<Entity> d = new ArrayList();
+  private ArrayList<Entity> e = new ArrayList();
+  private String f = "";
+  private HashMap<String, Long> g = new HashMap();
+  private IRelationFriendsTroopViewHelper.CallBack h;
+  private int i = -1;
   
   public RelationFriendsTroopViewHelper(AppInterface paramAppInterface, PinnedFooterExpandableListView paramPinnedFooterExpandableListView, IRelationFriendsTroopViewHelper.CallBack paramCallBack)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView = paramPinnedFooterExpandableListView;
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiIRelationFriendsTroopViewHelper$CallBack = paramCallBack;
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopcreateIRelationFriendsSearchHelper = ((IRelationFriendsSearchHelper)QRoute.api(IRelationFriendsSearchHelper.class));
+    this.b = paramAppInterface;
+    this.c = paramPinnedFooterExpandableListView;
+    this.h = paramCallBack;
+    this.a = ((IRelationFriendsSearchHelper)QRoute.api(IRelationFriendsSearchHelper.class));
   }
   
-  private int a()
-  {
-    int i = this.jdField_a_of_type_Int;
-    if (i == 3) {
-      return 3;
-    }
-    if (i == 2) {
-      return 2;
-    }
-    if (i == 1) {
-      return 1;
-    }
-    if (i == 4) {
-      return 4;
-    }
-    return 0;
-  }
-  
-  private void a(String paramString)
+  private void b(String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.i("RelationFriendsTroopViewHelper", 2, "updateRelationFriends");
@@ -81,9 +63,9 @@ public class RelationFriendsTroopViewHelper
     if (QLog.isColorLevel()) {
       QLog.i("RelationFriendsTroopViewHelper", 2, "updateRelationTroops");
     }
-    if ((ITroopCreateService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopCreateService.class, "") != null)
+    if ((ITroopCreateService)this.b.getRuntimeService(ITroopCreateService.class, "") != null)
     {
-      ArrayList localArrayList = this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiIRelationFriendsTroopViewHelper$CallBack.a();
+      ArrayList localArrayList = this.h.a();
       if (localArrayList != null)
       {
         if (QLog.isColorLevel())
@@ -95,20 +77,38 @@ public class RelationFriendsTroopViewHelper
         }
         Object localObject = new ArrayList(localArrayList.size());
         ((ArrayList)localObject).addAll(localArrayList);
-        ((ITroopSearchService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopSearchService.class, "")).search((ArrayList)localObject, true, new RelationFriendsTroopViewHelper.4(this));
+        ((ITroopSearchService)this.b.getRuntimeService(ITroopSearchService.class, "")).search((ArrayList)localObject, true, new RelationFriendsTroopViewHelper.4(this));
       }
     }
   }
   
+  private int f()
+  {
+    int j = this.i;
+    if (j == 3) {
+      return 3;
+    }
+    if (j == 2) {
+      return 2;
+    }
+    if (j == 1) {
+      return 1;
+    }
+    if (j == 4) {
+      return 4;
+    }
+    return 0;
+  }
+  
   public View a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, RelationTroopEntity paramRelationTroopEntity)
   {
-    return ((IFacePreloadBaseAdapterHelper)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IFacePreloadBaseAdapterHelper.class, "")).getContactListRelationTroopView(paramView, paramViewGroup, paramContext, paramOnClickListener, paramRelationTroopEntity);
+    return ((IFacePreloadBaseAdapterHelper)this.b.getRuntimeService(IFacePreloadBaseAdapterHelper.class, "")).getContactListRelationTroopView(paramView, paramViewGroup, paramContext, paramOnClickListener, paramRelationTroopEntity);
   }
   
   public Long a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      return (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      return (Long)this.g.get(paramString);
     }
     if (QLog.isColorLevel()) {
       QLog.i("RelationFriendsTroopViewHelper", 2, "getRelationTroopChildId troopUin empty");
@@ -118,29 +118,29 @@ public class RelationFriendsTroopViewHelper
   
   public void a()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00899", "Grp_create", "", "grptab", "friendlist_exp", a(), 0, "", "", "", "");
+    ReportController.b(this.b, "dc00899", "Grp_create", "", "grptab", "friendlist_exp", f(), 0, "", "", "", "");
   }
   
   public void a(ResultRecord paramResultRecord)
   {
-    this.jdField_a_of_type_Int = 1;
+    this.i = 1;
     if (paramResultRecord != null)
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onSearchResult:,currentRelationUin:");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.f);
         localStringBuilder.append(",lastrecordUIN:");
         localStringBuilder.append(paramResultRecord.uin);
         QLog.i("RelationFriendsTroopViewHelper", 2, localStringBuilder.toString());
       }
-      if (!this.jdField_a_of_type_JavaLangString.equals(paramResultRecord.uin))
+      if (!this.f.equals(paramResultRecord.uin))
       {
-        this.jdField_a_of_type_JavaLangString = paramResultRecord.uin;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        this.f = paramResultRecord.uin;
+        if (!TextUtils.isEmpty(this.f))
         {
-          a(this.jdField_a_of_type_JavaLangString);
+          b(this.f);
           e();
         }
       }
@@ -150,8 +150,8 @@ public class RelationFriendsTroopViewHelper
       if (QLog.isColorLevel()) {
         QLog.i("RelationFriendsTroopViewHelper", 2, "onSearchResult lastRecord null");
       }
-      this.jdField_a_of_type_JavaLangString = "";
-      paramResultRecord = this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView;
+      this.f = "";
+      paramResultRecord = this.c;
       if (paramResultRecord != null) {
         paramResultRecord.post(new RelationFriendsTroopViewHelper.2(this));
       }
@@ -171,11 +171,11 @@ public class RelationFriendsTroopViewHelper
     if ((paramInt == 38) || (paramInt == 29) || (paramInt == 39))
     {
       if (paramInt == 38) {
-        this.jdField_a_of_type_Int = 3;
+        this.i = 3;
       } else if (paramInt == 39) {
-        this.jdField_a_of_type_Int = 4;
+        this.i = 4;
       } else {
-        this.jdField_a_of_type_Int = 2;
+        this.i = 2;
       }
       if (paramResultRecord != null)
       {
@@ -183,17 +183,17 @@ public class RelationFriendsTroopViewHelper
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("onSearchResult:,currentRelationUin:");
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.f);
           localStringBuilder.append(",lastrecordUIN:");
           localStringBuilder.append(paramResultRecord.uin);
           QLog.i("RelationFriendsTroopViewHelper", 2, localStringBuilder.toString());
         }
-        if (!this.jdField_a_of_type_JavaLangString.equals(paramResultRecord.uin))
+        if (!this.f.equals(paramResultRecord.uin))
         {
-          this.jdField_a_of_type_JavaLangString = paramResultRecord.uin;
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+          this.f = paramResultRecord.uin;
+          if (!TextUtils.isEmpty(this.f))
           {
-            a(this.jdField_a_of_type_JavaLangString);
+            b(this.f);
             if ((paramInt == 29) || (paramInt == 39)) {
               e();
             }
@@ -202,7 +202,7 @@ public class RelationFriendsTroopViewHelper
       }
       else
       {
-        paramResultRecord = this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView;
+        paramResultRecord = this.c;
         if (paramResultRecord != null) {
           paramResultRecord.post(new RelationFriendsTroopViewHelper.1(this));
         }
@@ -216,46 +216,46 @@ public class RelationFriendsTroopViewHelper
       QLog.i("RelationFriendsTroopViewHelper", 2, "loadData");
     }
     Object localObject1;
-    int i;
+    int j;
     Object localObject2;
-    if (!this.b.isEmpty())
+    if (!this.e.isEmpty())
     {
       if (QLog.isColorLevel()) {
         QLog.i("RelationFriendsTroopViewHelper", 2, "loadData relationtroop");
       }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.g.clear();
       localObject1 = new ArrayList();
-      i = 0;
-      while (i < this.b.size())
+      j = 0;
+      while (j < this.e.size())
       {
-        localObject2 = (RelationTroopEntity)this.b.get(i);
+        localObject2 = (RelationTroopEntity)this.e.get(j);
         ((ArrayList)localObject1).add(localObject2);
-        this.jdField_a_of_type_JavaUtilHashMap.put(((RelationTroopEntity)localObject2).troopInfo.troopuin, Long.valueOf(i + 1L));
-        i += 1;
+        this.g.put(((RelationTroopEntity)localObject2).troopInfo.troopuin, Long.valueOf(j + 1L));
+        j += 1;
       }
       localObject2 = new Groups();
       ((Groups)localObject2).group_id = 1008;
-      ((Groups)localObject2).group_name = HardCodeUtil.a(2131718185);
+      ((Groups)localObject2).group_name = HardCodeUtil.a(2131915664);
       ((Groups)localObject2).group_friend_count = ((ArrayList)localObject1).size();
       ((Groups)localObject2).seqid = 0;
       paramArrayList.add(localObject2);
       paramSparseArray.put(((Groups)localObject2).group_id, localObject1);
     }
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    if (!this.d.isEmpty())
     {
       if (QLog.isColorLevel()) {
         QLog.i("RelationFriendsTroopViewHelper", 2, "loadData relationfriends");
       }
       localObject1 = new Groups();
       localObject2 = new ArrayList();
-      i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      j = 0;
+      while (j < this.d.size())
       {
-        ((ArrayList)localObject2).add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
-        i += 1;
+        ((ArrayList)localObject2).add(this.d.get(j));
+        j += 1;
       }
       ((Groups)localObject1).group_id = 1007;
-      ((Groups)localObject1).group_name = HardCodeUtil.a(2131718184);
+      ((Groups)localObject1).group_name = HardCodeUtil.a(2131915663);
       ((Groups)localObject1).group_friend_count = ((ArrayList)localObject2).size();
       ((Groups)localObject1).seqid = 0;
       paramArrayList.add(localObject1);
@@ -265,27 +265,27 @@ public class RelationFriendsTroopViewHelper
   
   public View b(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, RelationTroopEntity paramRelationTroopEntity)
   {
-    return ((IFacePreloadBaseAdapterHelper)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IFacePreloadBaseAdapterHelper.class, "")).getBuddyListRelationTroopView(paramView, paramViewGroup, paramContext, paramOnClickListener, paramRelationTroopEntity);
+    return ((IFacePreloadBaseAdapterHelper)this.b.getRuntimeService(IFacePreloadBaseAdapterHelper.class, "")).getBuddyListRelationTroopView(paramView, paramViewGroup, paramContext, paramOnClickListener, paramRelationTroopEntity);
   }
   
   public void b()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00899", "Grp_create", "", "grptab", "friendlist_clk", a(), 0, "", "", "", "");
+    ReportController.b(this.b, "dc00899", "Grp_create", "", "grptab", "friendlist_clk", f(), 0, "", "", "", "");
   }
   
   public void c()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00899", "Grp_create", "", "grptab", "grplist_exp", a(), 0, "", "", "", "");
+    ReportController.b(this.b, "dc00899", "Grp_create", "", "grptab", "grplist_exp", f(), 0, "", "", "", "");
   }
   
   public void d()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00899", "Grp_create", "", "grptab", "grplist_clk", a(), 0, "", "", "", "");
+    ReportController.b(this.b, "dc00899", "Grp_create", "", "grptab", "grplist_clk", f(), 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.RelationFriendsTroopViewHelper
  * JD-Core Version:    0.7.0.1
  */

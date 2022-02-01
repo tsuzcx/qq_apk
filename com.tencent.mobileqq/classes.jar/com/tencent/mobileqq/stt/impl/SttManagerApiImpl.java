@@ -82,13 +82,13 @@ public class SttManagerApiImpl
       return;
     }
     Object localObject1 = paramAppRuntime.getCurrentUin();
-    if (!TextUtils.equals(PttConstants.jdField_a_of_type_JavaLangString, (CharSequence)localObject1))
+    if (!TextUtils.equals(PttConstants.a, (CharSequence)localObject1))
     {
-      PttConstants.jdField_a_of_type_JavaLangString = (String)localObject1;
-      PttConstants.g = false;
+      PttConstants.a = (String)localObject1;
+      PttConstants.k = false;
       QLog.e("vip_ptt.SttManagerApiImpl.", 1, "it have change the account so init ptt state value");
     }
-    if (!PttConstants.g)
+    if (!PttConstants.k)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("businessinfo_ptt_auto_change_text_");
@@ -103,9 +103,9 @@ public class SttManagerApiImpl
       ((StringBuilder)localObject3).append(paramAppRuntime.getCurrentAccountUin());
       localObject3 = ((StringBuilder)localObject3).toString();
       SharedPreferences localSharedPreferences = paramAppRuntime.getApplication().getSharedPreferences("check_update_sp_key", 0);
-      PttAutoChangeBean localPttAutoChangeBean = (PttAutoChangeBean)QConfigManager.a().a(442);
-      QVipAutoPttConfig localQVipAutoPttConfig = QVipAutoPttProcessor.c();
-      boolean bool2 = VasUtil.a(paramAppRuntime).getVipStatus().isSVip();
+      PttAutoChangeBean localPttAutoChangeBean = (PttAutoChangeBean)QConfigManager.b().b(442);
+      QVipAutoPttConfig localQVipAutoPttConfig = QVipAutoPttProcessor.e();
+      boolean bool2 = VasUtil.b(paramAppRuntime).getVipStatus().isSVip();
       boolean bool1;
       if (localQVipAutoPttConfig.a > 1) {
         bool1 = bool2;
@@ -123,28 +123,28 @@ public class SttManagerApiImpl
         paramAppRuntime = localSharedPreferences.edit();
         paramAppRuntime.putBoolean((String)localObject1, false);
         paramAppRuntime.apply();
-        PttConstants.c = false;
+        PttConstants.f = false;
       }
       else
       {
-        PttConstants.c = localSharedPreferences.getBoolean((String)localObject1, false);
+        PttConstants.f = localSharedPreferences.getBoolean((String)localObject1, false);
         paramAppRuntime = new StringBuilder();
         paramAppRuntime.append("initAutoToTextSwitch enable=");
-        paramAppRuntime.append(PttConstants.c);
+        paramAppRuntime.append(PttConstants.f);
         QLog.e("vip_ptt.SttManagerApiImpl.", 1, paramAppRuntime.toString());
       }
-      PttConstants.jdField_a_of_type_Long = localSharedPreferences.getLong((String)localObject2, 9223372036854775807L);
-      PttConstants.d = localSharedPreferences.getBoolean((String)localObject3, false);
-      PttConstants.g = true;
+      PttConstants.g = localSharedPreferences.getLong((String)localObject2, 9223372036854775807L);
+      PttConstants.h = localSharedPreferences.getBoolean((String)localObject3, false);
+      PttConstants.k = true;
       if (QLog.isColorLevel())
       {
         paramAppRuntime = new StringBuilder();
         paramAppRuntime.append("initAutoToTextSwitch switch:");
-        paramAppRuntime.append(PttConstants.c);
+        paramAppRuntime.append(PttConstants.f);
         paramAppRuntime.append(", time:");
-        paramAppRuntime.append(PttConstants.jdField_a_of_type_Long);
+        paramAppRuntime.append(PttConstants.g);
         paramAppRuntime.append(", hasAddTips:");
-        paramAppRuntime.append(PttConstants.d);
+        paramAppRuntime.append(PttConstants.h);
         QLog.i("SttManagerApiImpl.", 2, paramAppRuntime.toString());
       }
     }
@@ -196,7 +196,7 @@ public class SttManagerApiImpl
       localObject = new HashMap();
       ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
       ((HashMap)localObject).put("param_FailCode", String.valueOf(paramInt));
-      ((HashMap)localObject).put("appversion", "8.7.0");
+      ((HashMap)localObject).put("appversion", "8.8.17");
       paramAppRuntime.collectPerformance("", "PttSttEntryChange", false, 0L, 0L, (HashMap)localObject, "");
       return;
     }
@@ -213,7 +213,7 @@ public class SttManagerApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.stt.impl.SttManagerApiImpl
  * JD-Core Version:    0.7.0.1
  */

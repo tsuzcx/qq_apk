@@ -15,7 +15,7 @@ class PhoneContactServiceImpl$11
     {
       Iterator localIterator = PhoneContactServiceImpl.access$3100(this.this$0).iterator();
       while (localIterator.hasNext()) {
-        ((IPhoneContactListener)localIterator.next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+        ((IPhoneContactListener)localIterator.next()).a(this.a, this.b);
       }
       return;
     }
@@ -27,7 +27,7 @@ class PhoneContactServiceImpl$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.api.impl.PhoneContactServiceImpl.11
  * JD-Core Version:    0.7.0.1
  */

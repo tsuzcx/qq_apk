@@ -14,10 +14,10 @@ class GuideHelper$1
   {
     paramView = new StringBuilder();
     paramView.append("onTouch to hide, seq[");
-    paramView.append(this.jdField_a_of_type_Long);
+    paramView.append(this.a);
     paramView.append("]");
     QLog.w("GuideHelper", 1, paramView.toString());
-    GuideHelper.a(this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper, this.jdField_a_of_type_Long);
+    GuideHelper.a(this.b, this.a);
     return false;
   }
 }

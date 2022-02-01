@@ -16,7 +16,7 @@ class HotchatPlugin$6
   
   public void onResponse(Bundle paramBundle)
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == HotchatPlugin.a(this.a).key))
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == HotchatPlugin.b(this.a).key))
     {
       String str1 = paramBundle.getString("cmd");
       String str2 = paramBundle.getString("callbackid");
@@ -31,7 +31,7 @@ class HotchatPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.HotchatPlugin.6
  * JD-Core Version:    0.7.0.1
  */

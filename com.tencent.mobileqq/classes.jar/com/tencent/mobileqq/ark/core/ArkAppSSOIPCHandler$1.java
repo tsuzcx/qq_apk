@@ -11,12 +11,12 @@ class ArkAppSSOIPCHandler$1
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    ArkAppSSOIPCHandler.a(paramInt, paramBoolean, (String)paramObject, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkIpcIPCMethodCallback);
+    ArkAppSSOIPCHandler.a(paramInt, paramBoolean, (String)paramObject, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkAppSSOIPCHandler.1
  * JD-Core Version:    0.7.0.1
  */

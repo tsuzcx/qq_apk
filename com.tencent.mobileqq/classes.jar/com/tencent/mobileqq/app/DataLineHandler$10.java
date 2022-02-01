@@ -10,12 +10,12 @@ class DataLineHandler$10
   
   public void run()
   {
-    this.this$0.a.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg, this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x9C2CType0x211_SubC2CType0x9$MsgBody);
+    this.this$0.e.a(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.10
  * JD-Core Version:    0.7.0.1
  */

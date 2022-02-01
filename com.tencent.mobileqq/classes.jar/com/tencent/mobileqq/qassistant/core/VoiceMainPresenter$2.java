@@ -12,10 +12,10 @@ class VoiceMainPresenter$2
   {
     try
     {
-      if (VoiceMainPresenter.a(this.this$0) == null) {
+      if (VoiceMainPresenter.c(this.this$0) == null) {
         VoiceMainPresenter.a(this.this$0, new Instrumentation());
       }
-      VoiceMainPresenter.a(this.this$0).sendKeyDownUpSync(4);
+      VoiceMainPresenter.c(this.this$0).sendKeyDownUpSync(4);
       return;
     }
     catch (Exception localException)
@@ -32,7 +32,7 @@ class VoiceMainPresenter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.VoiceMainPresenter.2
  * JD-Core Version:    0.7.0.1
  */

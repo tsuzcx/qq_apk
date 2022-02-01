@@ -2,74 +2,46 @@ package com.tencent.mobileqq.tianshu.data;
 
 public class TianShuReportData
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
+  public String a = "";
+  public String b = "";
+  public int c = -1;
+  public String d = "";
+  public String e = "";
+  public String f = "";
   public String g = "";
   public String h = "";
   public String i = "";
   public String j = "";
   public String k = "";
   public String l = "";
-  public String m = "";
-  public String n = "";
+  public int m = -1;
+  public int n = -1;
+  public long o = -1L;
+  public int p = -1;
+  public int q = -1;
+  public int r = -1;
+  public String s = "";
+  public String t = "";
+  public String u = "";
   
-  public TianShuReportData()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_f_of_type_Int = -1;
-  }
+  public TianShuReportData() {}
   
   public TianShuReportData(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt4)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt2;
-    this.jdField_e_of_type_Int = paramInt3;
-    this.jdField_e_of_type_JavaLangString = paramString2;
-    this.i = paramString3;
-    this.g = paramString4;
-    this.h = paramString5;
-    this.jdField_a_of_type_Long = paramInt4;
+    this.b = paramString1;
+    this.c = paramInt1;
+    this.p = paramInt2;
+    this.q = paramInt3;
+    this.f = paramString2;
+    this.j = paramString3;
+    this.h = paramString4;
+    this.i = paramString5;
+    this.o = paramInt4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.data.TianShuReportData
  * JD-Core Version:    0.7.0.1
  */

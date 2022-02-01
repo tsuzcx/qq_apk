@@ -7,14 +7,16 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.biz.AuthorizeConfig;
 import com.tencent.comic.api.IQQComicHippyUtil;
+import com.tencent.common.app.AppInterface;
 import com.tencent.hippy.qq.api.IHippySetting;
-import com.tencent.hippy.qq.api.IHippyUtils;
 import com.tencent.hippy.qq.api.OpenHippyInfo;
 import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
 import com.tencent.hippy.qq.app.HippyQQPreloadEngine;
 import com.tencent.hippy.qq.preload.TabPreloadManager;
 import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.apollo.game.api.ICmGameHelper;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.minigame.publicaccount.api.IMiniGamePublicAccountApi;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -93,7 +95,7 @@ public class HippyAccessHelper
         do
         {
           i = 1;
-          break label221;
+          break label211;
           if (!"main".equals(localObject)) {
             break;
           }
@@ -103,14 +105,14 @@ public class HippyAccessHelper
         QIPCClientHelper.getInstance().callServer("module_hippy", "action_preload_hippy", (Bundle)localObject, null);
         break;
         if (!"tool".equals(localObject)) {
-          break label238;
+          break label228;
         }
       } while (MobileQQ.sProcessId == 7);
       try
       {
         localObject = new Intent();
         ((Intent)localObject).putExtra("hippy_info", paramOpenHippyInfo.toBundle());
-        ((IHippyUtils)QRoute.api(IHippyUtils.class)).preloadHippyInToolProcess((Intent)localObject);
+        HippyUtils.preloadHippyInToolProcess((Intent)localObject);
       }
       catch (Throwable localThrowable)
       {
@@ -119,12 +121,12 @@ public class HippyAccessHelper
         localStringBuilder.append(localThrowable);
         QLog.e("HippyAccessHelper", 1, localStringBuilder.toString());
       }
-      label221:
+      label211:
       if (i != 0) {
         ThreadManager.executeOnSubThread(new HippyAccessHelper.1(paramOpenHippyInfo));
       }
       return true;
-      label238:
+      label228:
       paramOpenHippyInfo = new StringBuilder();
       paramOpenHippyInfo.append("checkAndPreloadHippyPage not support process name:");
       paramOpenHippyInfo.append(localThrowable);
@@ -149,12 +151,11 @@ public class HippyAccessHelper
     int i = 0;
     for (;;)
     {
-      Object localObject = DOMAIN_WHITE_LIST;
-      if (i >= localObject.length) {
+      String[] arrayOfString = DOMAIN_WHITE_LIST;
+      if (i >= arrayOfString.length) {
         break;
       }
-      localObject = localObject[i];
-      if (((IHippyUtils)QRoute.api(IHippyUtils.class)).isDomainMatch((String)localObject, paramString)) {
+      if (AuthorizeConfig.b(arrayOfString[i], paramString)) {
         return true;
       }
       i += 1;
@@ -187,10 +188,8 @@ public class HippyAccessHelper
     return false;
   }
   
-  public static void doAfterLogin()
+  public static void clearAllPreloads()
   {
-    MainStateManager.getInstance().doAfterLogin();
-    TabPreloadManager.getInstance().doAfterLogin();
     Object localObject2 = new HashMap();
     synchronized (sPreloadLock)
     {
@@ -205,7 +204,7 @@ public class HippyAccessHelper
         {
           Iterator localIterator = ((ArrayList)localObject2).iterator();
           while (localIterator.hasNext()) {
-            ((HippyQQPreloadEngine)localIterator.next()).destoryEngineImmediately();
+            ((HippyQQPreloadEngine)localIterator.next()).destroyEngineImmediately("logout");
           }
           ((ArrayList)localObject2).clear();
         }
@@ -216,6 +215,22 @@ public class HippyAccessHelper
     {
       throw localObject3;
     }
+  }
+  
+  public static void doAfterLogin()
+  {
+    MainStateManager.getInstance().doAfterLogin();
+    TabPreloadManager.getInstance().doAfterLogin();
+    clearAllPreloads();
+  }
+  
+  public static String getCurrentUin()
+  {
+    AppInterface localAppInterface = ((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface();
+    if (localAppInterface != null) {
+      return localAppInterface.getCurrentAccountUin();
+    }
+    return "";
   }
   
   public static JSONObject getJSInitData(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3)
@@ -231,15 +246,15 @@ public class HippyAccessHelper
         if (!TextUtils.isEmpty(paramString2)) {
           localJSONObject.put("url", paramString2);
         }
-        localJSONObject.put("QQVersion", DeviceInfoUtil.c());
+        localJSONObject.put("QQVersion", DeviceInfoUtil.e());
         if (ImmersiveUtils.isSupporImmersive() != 1) {
           break label385;
         }
         bool = true;
         localJSONObject.put("isSupporImmersive", bool);
         localJSONObject.put("statusBarHeight", ImmersiveUtils.getStatusBarHeight(MobileQQ.sMobileQQ.getApplicationContext()));
-        localJSONObject.put("notchHeight", LiuHaiUtils.a);
-        localJSONObject.put("_titleBarHeight", BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168) + ImmersiveUtils.getStatusBarHeight(MobileQQ.sMobileQQ.getApplicationContext()));
+        localJSONObject.put("notchHeight", LiuHaiUtils.d);
+        localJSONObject.put("_titleBarHeight", BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920) + ImmersiveUtils.getStatusBarHeight(MobileQQ.sMobileQQ.getApplicationContext()));
         paramString2 = paramString3;
         if (TextUtils.isEmpty(paramString3))
         {
@@ -258,8 +273,8 @@ public class HippyAccessHelper
         if ((!TextUtils.isEmpty(paramString2)) && (paramString3 != null))
         {
           paramAppRuntime = paramAppRuntime.getAccount();
-          localJSONObject.put("uin", HttpBaseUtil.b(paramAppRuntime));
-          localJSONObject.put("p_uin", HttpBaseUtil.b(paramAppRuntime));
+          localJSONObject.put("uin", HttpBaseUtil.c(paramAppRuntime));
+          localJSONObject.put("p_uin", HttpBaseUtil.c(paramAppRuntime));
           localJSONObject.put("skey", paramString3.getSkey(paramAppRuntime));
           localJSONObject.put("p_skey", paramString3.getPskey(paramAppRuntime, paramString2));
           if (paramString1.startsWith("QQBoodoComic")) {
@@ -294,7 +309,11 @@ public class HippyAccessHelper
       return null;
     }
     ??? = TabPreloadManager.getInstance().getPreloadedHippyQQEngine(paramString);
-    if (??? != null) {
+    if (??? != null)
+    {
+      paramString = new HashMap();
+      paramString.put("from", "tabBarPreload");
+      HippyReporter.getInstance().reportToDengTa(((HippyQQPreloadEngine)???).getModuleName(), ((HippyQQPreloadEngine)???).getPreloadModuleVersion(), "hippy_remove_preLoad", 0, paramString);
       return ???;
     }
     synchronized (sPreloadLock)
@@ -307,10 +326,14 @@ public class HippyAccessHelper
           if (localHippyQQPreloadEngine != null)
           {
             int i = ((IHippySetting)QRoute.api(IHippySetting.class)).getModuleVersion(paramString);
-            if (localHippyQQPreloadEngine.getPreloadModuleVersion() == i) {
+            if (localHippyQQPreloadEngine.getPreloadModuleVersion() == i)
+            {
+              paramString = new HashMap();
+              paramString.put("from", "busPreload");
+              HippyReporter.getInstance().reportToDengTa(localHippyQQPreloadEngine.getModuleName(), localHippyQQPreloadEngine.getPreloadModuleVersion(), "hippy_remove_preLoad", 0, paramString);
               return localHippyQQPreloadEngine;
             }
-            localHippyQQPreloadEngine.destoryEngineImmediately();
+            localHippyQQPreloadEngine.destroyEngineImmediately("oldVersion");
           }
         }
       }
@@ -362,7 +385,7 @@ public class HippyAccessHelper
       {
         QPublicFragmentActivity.Launcher.a(paramContext, (Intent)localObject1, (Class)localObject2, localClass);
         if ((paramOpenHippyInfo.isAnimated) && (bool)) {
-          ((Activity)paramContext).overridePendingTransition(2130772023, 2130772024);
+          ((Activity)paramContext).overridePendingTransition(2130772028, 2130772029);
         }
         return true;
       }
@@ -414,18 +437,18 @@ public class HippyAccessHelper
           {
             localObject3 = (HippyQQPreloadEngine)((ArrayList)localObject2).get(i);
             if (((HippyQQPreloadEngine)localObject3).getPreloadModuleVersion() == j) {
-              break label526;
+              break label541;
             }
-            ((HippyQQPreloadEngine)localObject3).destoryEngineImmediately();
+            ((HippyQQPreloadEngine)localObject3).destroyEngineImmediately("oldVersion");
             ((ArrayList)localObject2).remove(i);
             if (!QLog.isColorLevel()) {
-              break label526;
+              break label541;
             }
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("preloadHippyPage remove old version i:");
             ((StringBuilder)localObject3).append(i);
             QLog.d("HippyAccessHelper", 2, ((StringBuilder)localObject3).toString());
-            break label526;
+            break label541;
           }
           if (((ArrayList)localObject2).size() >= 1) {
             return true;
@@ -445,7 +468,7 @@ public class HippyAccessHelper
         }
         sPreloadingEngines.put(str, Long.valueOf(System.currentTimeMillis()));
         Object localObject3 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-        localObject2 = getJSInitData((AppRuntime)localObject3, str, null, paramOpenHippyInfo.domain);
+        localObject2 = getJSInitData((AppRuntime)localObject3, str, paramOpenHippyInfo.url, paramOpenHippyInfo.domain);
         ??? = localObject2;
         if (localObject2 == null) {
           ??? = new JSONObject();
@@ -458,6 +481,7 @@ public class HippyAccessHelper
         }
         localObject3 = new HippyQQPreloadEngine(null, str, paramOpenHippyInfo.url);
         ((HippyQQPreloadEngine)localObject3).setInitData((JSONObject)???, (JSONObject)???);
+        ((HippyQQPreloadEngine)localObject3).setPreloadFrom(paramOpenHippyInfo.from);
         ??? = new HippyAccessHelper.2(str, (HippyQQPreloadEngine)localObject3, (String)localObject2, paramOpenHippyInfo);
         if (paramOpenHippyInfo.isPredraw)
         {
@@ -469,7 +493,7 @@ public class HippyAccessHelper
       }
       QLog.d("HippyAccessHelper", 1, "preloadHippyPage parameters error");
       return false;
-      label526:
+      label541:
       i -= 1;
     }
   }
@@ -501,7 +525,7 @@ public class HippyAccessHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.utils.HippyAccessHelper
  * JD-Core Version:    0.7.0.1
  */

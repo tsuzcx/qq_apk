@@ -19,14 +19,14 @@ class MiniPie$7
   
   public void delete()
   {
-    if (this.a.a.getSelectionStart() == 0) {
+    if (this.a.t.getSelectionStart() == 0) {
       return;
     }
     try
     {
-      Editable localEditable = this.a.a.getText();
-      int i = this.a.a.getSelectionStart();
-      int j = android.text.TextUtils.getOffsetBefore(this.a.a.getText(), i);
+      Editable localEditable = this.a.t.getText();
+      int i = this.a.t.getSelectionStart();
+      int j = android.text.TextUtils.getOffsetBefore(this.a.t.getText(), i);
       if (i != j)
       {
         localEditable.delete(Math.min(i, j), Math.max(i, j));
@@ -58,17 +58,17 @@ class MiniPie$7
     int j;
     if ((paramEmoticonInfo instanceof SystemEmoticonInfo))
     {
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
+      i = this.a.t.getSelectionStart();
+      j = this.a.t.getSelectionEnd();
       if ((i >= 0) && (j >= 0) && (j >= i)) {
-        this.a.a.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
+        this.a.t.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
       }
     }
     else if ((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo))
     {
       SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
+      i = this.a.t.getSelectionStart();
+      j = this.a.t.getSelectionEnd();
       int k = localSystemAndEmojiEmoticonInfo.emotionType;
       int m = localSystemAndEmojiEmoticonInfo.code;
       if ((i >= 0) && (j >= 0) && (j >= i))
@@ -81,8 +81,8 @@ class MiniPie$7
         } else {
           paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m);
         }
-        this.a.a.getEditableText().replace(i, j, paramEmoticonInfo);
-        this.a.a.requestFocus();
+        this.a.t.getEditableText().replace(i, j, paramEmoticonInfo);
+        this.a.t.requestFocus();
       }
       localSystemAndEmojiEmoticonInfo.addToCommonUsed((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
       QQSysAndEmojiResMgr.getInstance().getResImpl(k).reportEmoClick(m, 2);
@@ -93,7 +93,7 @@ class MiniPie$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.7
  * JD-Core Version:    0.7.0.1
  */

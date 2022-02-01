@@ -22,14 +22,14 @@ class NearbyProfileDisplayPanel$11
     if ((paramURLDrawable instanceof RegionDrawable))
     {
       paramURLDrawable = ((RegionDrawable)paramURLDrawable).getBitmap();
-      NearbyProfileDisplayPanel.a(this.a).setImageBitmap(paramURLDrawable);
-      NearbyProfileDisplayPanel.a(this.a).setVisibility(0);
+      NearbyProfileDisplayPanel.f(this.a).setImageBitmap(paramURLDrawable);
+      NearbyProfileDisplayPanel.f(this.a).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.11
  * JD-Core Version:    0.7.0.1
  */

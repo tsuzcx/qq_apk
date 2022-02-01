@@ -16,53 +16,53 @@ class MyAppApi$12$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
+    this.c.a.a();
     for (;;)
     {
       try
       {
-        ThreadManager.excute(new MyAppApi.12.1.1(this, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_AndroidOsBundle)), 32, null, true);
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0))
+        ThreadManager.excute(new MyAppApi.12.1.1(this, this.c.h.a(this.c.b, this.c.c)), 32, null, true);
+        if ((this.a != null) && (this.a.length != 0))
         {
           localStringBuilder = new StringBuilder();
-          TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct;
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = this.c.b;
+          localStringBuilder.append(this.b);
           localStringBuilder.append("&identity=");
-          localStringBuilder.append(util.buf_to_string(this.jdField_a_of_type_ArrayOfByte));
+          localStringBuilder.append(util.buf_to_string(this.a));
           localTMAssistantCallYYBParamStruct.uin = localStringBuilder.toString();
-          this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_Long;
+          this.c.h.m = this.c.d;
         }
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("OpenSDK startToAppDetail param SNGAppId=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId);
+        localStringBuilder.append(this.c.b.SNGAppId);
         localStringBuilder.append(" apkId=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId);
+        localStringBuilder.append(this.c.b.taskApkId);
         localStringBuilder.append(" taskAppId=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId);
+        localStringBuilder.append(this.c.b.taskAppId);
         localStringBuilder.append(" packageName=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName);
+        localStringBuilder.append(this.c.b.taskPackageName);
         localStringBuilder.append(" version=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion);
+        localStringBuilder.append(this.c.b.taskVersion);
         localStringBuilder.append(" uin=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin);
+        localStringBuilder.append(this.c.b.uin);
         localStringBuilder.append(" via=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
+        localStringBuilder.append(this.c.b.via);
         LogUtility.a("MyAppApi", localStringBuilder.toString());
         LogUtility.c("TIME-STATISTIC", "mDownloadSdk.startToAppDetail");
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2)
+        if (this.c.h.a() <= 2)
         {
-          ((TMAssistantCallYYB_V1)this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAppDetail(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.b);
+          ((TMAssistantCallYYB_V1)this.c.h.d()).startToAppDetail(this.c.e, this.c.b, this.c.f, this.c.g);
           return;
         }
-        int i = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.k);
-        int j = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_AndroidOsBundle);
-        boolean bool1 = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_Boolean;
-        boolean bool2 = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.b;
+        int i = this.c.c.getInt(DownloadConstants.k);
+        int j = this.c.h.e(this.c.c);
+        boolean bool1 = this.c.f;
+        boolean bool2 = this.c.g;
         if (i == 3)
         {
           bool1 = false;
           bool2 = false;
-          ((TMAssistantCallYYB_V2)this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAppDetail(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$12.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, bool1, bool2, j);
+          ((TMAssistantCallYYB_V2)this.c.h.d()).startToAppDetail(this.c.e, this.c.b, bool1, bool2, j);
           return;
         }
       }
@@ -76,7 +76,7 @@ class MyAppApi$12$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.12.1
  * JD-Core Version:    0.7.0.1
  */

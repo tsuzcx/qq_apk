@@ -1,65 +1,62 @@
 package com.tencent.turingfd.sdk.xq;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-public final class UrsaMinor
-  extends case
+public class UrsaMinor
+  extends else
 {
-  public static ArrayList<String> Xb = new ArrayList();
-  public static ArrayList<String> Yb;
-  public int Zb = 0;
-  public int _b = 0;
-  public int ac = 0;
-  public ArrayList<String> bc = null;
-  public ArrayList<String> cc = null;
-  public String dc = "";
+  public int a = 0;
+  public int b = 0;
+  public String c = "";
+  public String d = "";
+  public int e = 0;
+  public String f = "";
   
-  static
+  public void a(case paramcase)
   {
-    Xb.add("");
-    Yb = new ArrayList();
-    Yb.add("");
-  }
-  
-  public void a(byte parambyte)
-  {
-    parambyte.b(this.Zb, 0);
-    int i = this._b;
-    if (i != 0) {
-      parambyte.b(i, 1);
+    paramcase.a(this.a, 0);
+    paramcase.a(this.b, 1);
+    String str = this.c;
+    if (str != null) {
+      paramcase.a(str, 2);
     }
-    i = this.ac;
-    if (i != 0) {
-      parambyte.b(i, 2);
+    str = this.d;
+    if (str != null) {
+      paramcase.a(str, 3);
     }
-    Object localObject = this.bc;
-    if (localObject != null) {
-      parambyte.a((Collection)localObject, 3);
-    }
-    localObject = this.cc;
-    if (localObject != null) {
-      parambyte.a((Collection)localObject, 4);
-    }
-    localObject = this.dc;
-    if (localObject != null) {
-      parambyte.b((String)localObject, 5);
+    paramcase.a(this.e, 4);
+    str = this.f;
+    if (str != null) {
+      paramcase.a(str, 5);
     }
   }
   
   public void a(try paramtry)
   {
-    this.Zb = paramtry.a(this.Zb, 0, false);
-    this._b = paramtry.a(this._b, 1, false);
-    this.ac = paramtry.a(this.ac, 2, false);
-    this.bc = ((ArrayList)paramtry.a(Xb, 3, false));
-    this.cc = ((ArrayList)paramtry.a(Yb, 4, false));
-    this.dc = paramtry.a(5, false);
+    this.a = paramtry.a(this.a, 0, true);
+    this.b = paramtry.a(this.b, 1, false);
+    this.c = paramtry.b(2, false);
+    this.d = paramtry.b(3, false);
+    this.e = paramtry.a(this.e, 4, false);
+    this.f = paramtry.b(5, false);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if (!(paramObject instanceof UrsaMinor)) {
+      return false;
+    }
+    paramObject = (UrsaMinor)paramObject;
+    return (goto.a(this.a, paramObject.a)) && (goto.a(this.b, paramObject.b)) && (this.c.equals(paramObject.c)) && (this.d.equals(paramObject.d)) && (goto.a(this.e, paramObject.e)) && (this.f.equals(paramObject.f));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.UrsaMinor
  * JD-Core Version:    0.7.0.1
  */

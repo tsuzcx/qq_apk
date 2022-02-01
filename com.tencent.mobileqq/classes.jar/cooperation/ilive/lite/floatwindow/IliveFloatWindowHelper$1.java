@@ -12,12 +12,12 @@ final class IliveFloatWindowHelper$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FWPermission.requestPermission(this.jdField_a_of_type_AndroidAppActivity, new IliveFloatWindowHelper.1.1(this));
+    FWPermission.requestPermission(this.a, new IliveFloatWindowHelper.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.floatwindow.IliveFloatWindowHelper.1
  * JD-Core Version:    0.7.0.1
  */

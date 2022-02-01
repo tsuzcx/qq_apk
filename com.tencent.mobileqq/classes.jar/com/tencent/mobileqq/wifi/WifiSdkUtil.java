@@ -359,245 +359,6 @@ public class WifiSdkUtil
     //   267	271	290	java/lang/Throwable
   }
   
-  public static boolean a(Context paramContext)
-  {
-    try
-    {
-      boolean bool = ((WifiManager)paramContext.getSystemService("wifi")).isWifiEnabled();
-      return bool;
-    }
-    catch (Throwable paramContext)
-    {
-      label15:
-      break label15;
-    }
-    return false;
-  }
-  
-  /* Error */
-  public static byte[] a(File paramFile)
-  {
-    // Byte code:
-    //   0: new 192	java/io/BufferedInputStream
-    //   3: dup
-    //   4: new 146	java/io/FileInputStream
-    //   7: dup
-    //   8: aload_0
-    //   9: invokespecial 149	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 193	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   15: astore_0
-    //   16: new 195	java/io/ByteArrayOutputStream
-    //   19: dup
-    //   20: invokespecial 196	java/io/ByteArrayOutputStream:<init>	()V
-    //   23: astore 6
-    //   25: aload_0
-    //   26: astore_2
-    //   27: aload 6
-    //   29: astore 4
-    //   31: sipush 1024
-    //   34: newarray byte
-    //   36: astore_3
-    //   37: aload_0
-    //   38: astore_2
-    //   39: aload 6
-    //   41: astore 4
-    //   43: aload_0
-    //   44: aload_3
-    //   45: invokevirtual 200	java/io/BufferedInputStream:read	([B)I
-    //   48: istore_1
-    //   49: iload_1
-    //   50: iconst_m1
-    //   51: if_icmpeq +20 -> 71
-    //   54: aload_0
-    //   55: astore_2
-    //   56: aload 6
-    //   58: astore 4
-    //   60: aload 6
-    //   62: aload_3
-    //   63: iconst_0
-    //   64: iload_1
-    //   65: invokevirtual 204	java/io/ByteArrayOutputStream:write	([BII)V
-    //   68: goto -31 -> 37
-    //   71: aload_0
-    //   72: astore_2
-    //   73: aload 6
-    //   75: astore 4
-    //   77: aload 6
-    //   79: invokevirtual 208	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   82: astore_3
-    //   83: aload 6
-    //   85: invokevirtual 209	java/io/ByteArrayOutputStream:close	()V
-    //   88: goto +8 -> 96
-    //   91: astore_2
-    //   92: aload_2
-    //   93: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   96: aload_0
-    //   97: invokevirtual 211	java/io/BufferedInputStream:close	()V
-    //   100: aload_3
-    //   101: areturn
-    //   102: astore_0
-    //   103: aload_0
-    //   104: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   107: aload_3
-    //   108: areturn
-    //   109: astore 5
-    //   111: aload_0
-    //   112: astore_3
-    //   113: aload 6
-    //   115: astore_0
-    //   116: goto +36 -> 152
-    //   119: astore_2
-    //   120: aconst_null
-    //   121: astore 4
-    //   123: goto +137 -> 260
-    //   126: astore 5
-    //   128: aconst_null
-    //   129: astore_2
-    //   130: aload_0
-    //   131: astore_3
-    //   132: aload_2
-    //   133: astore_0
-    //   134: goto +18 -> 152
-    //   137: astore_2
-    //   138: aconst_null
-    //   139: astore_0
-    //   140: aload_0
-    //   141: astore 4
-    //   143: goto +117 -> 260
-    //   146: astore 5
-    //   148: aconst_null
-    //   149: astore_0
-    //   150: aload_0
-    //   151: astore_3
-    //   152: aload_3
-    //   153: astore_2
-    //   154: aload_0
-    //   155: astore 4
-    //   157: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   160: ifeq +62 -> 222
-    //   163: aload_3
-    //   164: astore_2
-    //   165: aload_0
-    //   166: astore 4
-    //   168: new 85	java/lang/StringBuilder
-    //   171: dup
-    //   172: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   175: astore 6
-    //   177: aload_3
-    //   178: astore_2
-    //   179: aload_0
-    //   180: astore 4
-    //   182: aload 6
-    //   184: ldc 213
-    //   186: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: pop
-    //   190: aload_3
-    //   191: astore_2
-    //   192: aload_0
-    //   193: astore 4
-    //   195: aload 6
-    //   197: aload 5
-    //   199: invokevirtual 95	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   202: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   205: pop
-    //   206: aload_3
-    //   207: astore_2
-    //   208: aload_0
-    //   209: astore 4
-    //   211: ldc 97
-    //   213: iconst_2
-    //   214: aload 6
-    //   216: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   219: invokestatic 104	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   222: aload_0
-    //   223: ifnull +15 -> 238
-    //   226: aload_0
-    //   227: invokevirtual 209	java/io/ByteArrayOutputStream:close	()V
-    //   230: goto +8 -> 238
-    //   233: astore_0
-    //   234: aload_0
-    //   235: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   238: aload_3
-    //   239: ifnull +14 -> 253
-    //   242: aload_3
-    //   243: invokevirtual 211	java/io/BufferedInputStream:close	()V
-    //   246: aconst_null
-    //   247: areturn
-    //   248: astore_0
-    //   249: aload_0
-    //   250: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   253: aconst_null
-    //   254: areturn
-    //   255: astore_3
-    //   256: aload_2
-    //   257: astore_0
-    //   258: aload_3
-    //   259: astore_2
-    //   260: aload 4
-    //   262: ifnull +16 -> 278
-    //   265: aload 4
-    //   267: invokevirtual 209	java/io/ByteArrayOutputStream:close	()V
-    //   270: goto +8 -> 278
-    //   273: astore_3
-    //   274: aload_3
-    //   275: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   278: aload_0
-    //   279: ifnull +15 -> 294
-    //   282: aload_0
-    //   283: invokevirtual 211	java/io/BufferedInputStream:close	()V
-    //   286: goto +8 -> 294
-    //   289: astore_0
-    //   290: aload_0
-    //   291: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   294: goto +5 -> 299
-    //   297: aload_2
-    //   298: athrow
-    //   299: goto -2 -> 297
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	302	0	paramFile	File
-    //   48	17	1	i	int
-    //   26	47	2	localFile	File
-    //   91	2	2	localIOException1	java.io.IOException
-    //   119	1	2	localObject1	Object
-    //   129	4	2	localObject2	Object
-    //   137	1	2	localObject3	Object
-    //   153	145	2	localObject4	Object
-    //   36	207	3	localObject5	Object
-    //   255	4	3	localObject6	Object
-    //   273	2	3	localIOException2	java.io.IOException
-    //   29	237	4	localObject7	Object
-    //   109	1	5	localThrowable1	Throwable
-    //   126	1	5	localThrowable2	Throwable
-    //   146	52	5	localThrowable3	Throwable
-    //   23	192	6	localObject8	Object
-    // Exception table:
-    //   from	to	target	type
-    //   83	88	91	java/io/IOException
-    //   96	100	102	java/io/IOException
-    //   31	37	109	java/lang/Throwable
-    //   43	49	109	java/lang/Throwable
-    //   60	68	109	java/lang/Throwable
-    //   77	83	109	java/lang/Throwable
-    //   16	25	119	finally
-    //   16	25	126	java/lang/Throwable
-    //   0	16	137	finally
-    //   0	16	146	java/lang/Throwable
-    //   226	230	233	java/io/IOException
-    //   242	246	248	java/io/IOException
-    //   31	37	255	finally
-    //   43	49	255	finally
-    //   60	68	255	finally
-    //   77	83	255	finally
-    //   157	163	255	finally
-    //   168	177	255	finally
-    //   182	190	255	finally
-    //   195	206	255	finally
-    //   211	222	255	finally
-    //   265	270	273	java/io/IOException
-    //   282	286	289	java/io/IOException
-  }
-  
   public static int b(Context paramContext)
   {
     if (!NetworkUtil.isNetworkAvailable(paramContext)) {
@@ -633,7 +394,7 @@ public class WifiSdkUtil
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getAbsolutePath());
       ((StringBuilder)localObject).append("/DCIM/.tmfs/sk_v.dat");
-      localObject = a(new File(((StringBuilder)localObject).toString()));
+      localObject = b(new File(((StringBuilder)localObject).toString()));
       if (localObject != null)
       {
         localObject = b(new String((byte[])localObject));
@@ -680,23 +441,228 @@ public class WifiSdkUtil
     return null;
   }
   
-  public static boolean b(Context paramContext)
+  /* Error */
+  public static byte[] b(File paramFile)
   {
-    if (Build.VERSION.SDK_INT < 19) {
-      return true;
-    }
-    try
-    {
-      PackageManager localPackageManager = paramContext.getPackageManager();
-      if (localPackageManager.checkPermission("android.permission.ACCESS_COARSE_LOCATION", paramContext.getPackageName()) != 0)
-      {
-        int i = localPackageManager.checkPermission("android.permission.ACCESS_FINE_LOCATION", paramContext.getPackageName());
-        return i == 0;
-      }
-      return true;
-    }
-    catch (Throwable paramContext) {}
-    return false;
+    // Byte code:
+    //   0: new 243	java/io/BufferedInputStream
+    //   3: dup
+    //   4: new 146	java/io/FileInputStream
+    //   7: dup
+    //   8: aload_0
+    //   9: invokespecial 149	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 244	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   15: astore_0
+    //   16: new 246	java/io/ByteArrayOutputStream
+    //   19: dup
+    //   20: invokespecial 247	java/io/ByteArrayOutputStream:<init>	()V
+    //   23: astore 6
+    //   25: aload_0
+    //   26: astore_2
+    //   27: aload 6
+    //   29: astore 4
+    //   31: sipush 1024
+    //   34: newarray byte
+    //   36: astore_3
+    //   37: aload_0
+    //   38: astore_2
+    //   39: aload 6
+    //   41: astore 4
+    //   43: aload_0
+    //   44: aload_3
+    //   45: invokevirtual 251	java/io/BufferedInputStream:read	([B)I
+    //   48: istore_1
+    //   49: iload_1
+    //   50: iconst_m1
+    //   51: if_icmpeq +20 -> 71
+    //   54: aload_0
+    //   55: astore_2
+    //   56: aload 6
+    //   58: astore 4
+    //   60: aload 6
+    //   62: aload_3
+    //   63: iconst_0
+    //   64: iload_1
+    //   65: invokevirtual 255	java/io/ByteArrayOutputStream:write	([BII)V
+    //   68: goto -31 -> 37
+    //   71: aload_0
+    //   72: astore_2
+    //   73: aload 6
+    //   75: astore 4
+    //   77: aload 6
+    //   79: invokevirtual 258	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   82: astore_3
+    //   83: aload 6
+    //   85: invokevirtual 259	java/io/ByteArrayOutputStream:close	()V
+    //   88: goto +8 -> 96
+    //   91: astore_2
+    //   92: aload_2
+    //   93: invokevirtual 260	java/io/IOException:printStackTrace	()V
+    //   96: aload_0
+    //   97: invokevirtual 261	java/io/BufferedInputStream:close	()V
+    //   100: aload_3
+    //   101: areturn
+    //   102: astore_0
+    //   103: aload_0
+    //   104: invokevirtual 260	java/io/IOException:printStackTrace	()V
+    //   107: aload_3
+    //   108: areturn
+    //   109: astore 5
+    //   111: aload_0
+    //   112: astore_3
+    //   113: aload 6
+    //   115: astore_0
+    //   116: goto +36 -> 152
+    //   119: astore_2
+    //   120: aconst_null
+    //   121: astore 4
+    //   123: goto +138 -> 261
+    //   126: astore 5
+    //   128: aconst_null
+    //   129: astore_2
+    //   130: aload_0
+    //   131: astore_3
+    //   132: aload_2
+    //   133: astore_0
+    //   134: goto +18 -> 152
+    //   137: astore_2
+    //   138: aconst_null
+    //   139: astore_0
+    //   140: aload_0
+    //   141: astore 4
+    //   143: goto +118 -> 261
+    //   146: astore 5
+    //   148: aconst_null
+    //   149: astore_0
+    //   150: aload_0
+    //   151: astore_3
+    //   152: aload_3
+    //   153: astore_2
+    //   154: aload_0
+    //   155: astore 4
+    //   157: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   160: ifeq +63 -> 223
+    //   163: aload_3
+    //   164: astore_2
+    //   165: aload_0
+    //   166: astore 4
+    //   168: new 85	java/lang/StringBuilder
+    //   171: dup
+    //   172: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   175: astore 6
+    //   177: aload_3
+    //   178: astore_2
+    //   179: aload_0
+    //   180: astore 4
+    //   182: aload 6
+    //   184: ldc_w 263
+    //   187: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   190: pop
+    //   191: aload_3
+    //   192: astore_2
+    //   193: aload_0
+    //   194: astore 4
+    //   196: aload 6
+    //   198: aload 5
+    //   200: invokevirtual 95	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   203: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   206: pop
+    //   207: aload_3
+    //   208: astore_2
+    //   209: aload_0
+    //   210: astore 4
+    //   212: ldc 97
+    //   214: iconst_2
+    //   215: aload 6
+    //   217: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   220: invokestatic 104	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   223: aload_0
+    //   224: ifnull +15 -> 239
+    //   227: aload_0
+    //   228: invokevirtual 259	java/io/ByteArrayOutputStream:close	()V
+    //   231: goto +8 -> 239
+    //   234: astore_0
+    //   235: aload_0
+    //   236: invokevirtual 260	java/io/IOException:printStackTrace	()V
+    //   239: aload_3
+    //   240: ifnull +14 -> 254
+    //   243: aload_3
+    //   244: invokevirtual 261	java/io/BufferedInputStream:close	()V
+    //   247: aconst_null
+    //   248: areturn
+    //   249: astore_0
+    //   250: aload_0
+    //   251: invokevirtual 260	java/io/IOException:printStackTrace	()V
+    //   254: aconst_null
+    //   255: areturn
+    //   256: astore_3
+    //   257: aload_2
+    //   258: astore_0
+    //   259: aload_3
+    //   260: astore_2
+    //   261: aload 4
+    //   263: ifnull +16 -> 279
+    //   266: aload 4
+    //   268: invokevirtual 259	java/io/ByteArrayOutputStream:close	()V
+    //   271: goto +8 -> 279
+    //   274: astore_3
+    //   275: aload_3
+    //   276: invokevirtual 260	java/io/IOException:printStackTrace	()V
+    //   279: aload_0
+    //   280: ifnull +15 -> 295
+    //   283: aload_0
+    //   284: invokevirtual 261	java/io/BufferedInputStream:close	()V
+    //   287: goto +8 -> 295
+    //   290: astore_0
+    //   291: aload_0
+    //   292: invokevirtual 260	java/io/IOException:printStackTrace	()V
+    //   295: goto +5 -> 300
+    //   298: aload_2
+    //   299: athrow
+    //   300: goto -2 -> 298
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	303	0	paramFile	File
+    //   48	17	1	i	int
+    //   26	47	2	localFile	File
+    //   91	2	2	localIOException1	java.io.IOException
+    //   119	1	2	localObject1	Object
+    //   129	4	2	localObject2	Object
+    //   137	1	2	localObject3	Object
+    //   153	146	2	localObject4	Object
+    //   36	208	3	localObject5	Object
+    //   256	4	3	localObject6	Object
+    //   274	2	3	localIOException2	java.io.IOException
+    //   29	238	4	localObject7	Object
+    //   109	1	5	localThrowable1	Throwable
+    //   126	1	5	localThrowable2	Throwable
+    //   146	53	5	localThrowable3	Throwable
+    //   23	193	6	localObject8	Object
+    // Exception table:
+    //   from	to	target	type
+    //   83	88	91	java/io/IOException
+    //   96	100	102	java/io/IOException
+    //   31	37	109	java/lang/Throwable
+    //   43	49	109	java/lang/Throwable
+    //   60	68	109	java/lang/Throwable
+    //   77	83	109	java/lang/Throwable
+    //   16	25	119	finally
+    //   16	25	126	java/lang/Throwable
+    //   0	16	137	finally
+    //   0	16	146	java/lang/Throwable
+    //   227	231	234	java/io/IOException
+    //   243	247	249	java/io/IOException
+    //   31	37	256	finally
+    //   43	49	256	finally
+    //   60	68	256	finally
+    //   77	83	256	finally
+    //   157	163	256	finally
+    //   168	177	256	finally
+    //   182	191	256	finally
+    //   196	207	256	finally
+    //   212	223	256	finally
+    //   266	271	274	java/io/IOException
+    //   283	287	290	java/io/IOException
   }
   
   private static String c(String paramString)
@@ -735,22 +701,18 @@ public class WifiSdkUtil
     return "";
   }
   
-  @TargetApi(19)
   public static boolean c(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT < 23) {
-      return true;
-    }
-    boolean bool = false;
     try
     {
-      int i = Settings.Secure.getInt(paramContext.getContentResolver(), "location_mode");
-      if (i != 0) {
-        bool = true;
-      }
+      boolean bool = ((WifiManager)paramContext.getSystemService("wifi")).isWifiEnabled();
       return bool;
     }
-    catch (Exception paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label16:
+      break label16;
+    }
     return false;
   }
   
@@ -796,10 +758,48 @@ public class WifiSdkUtil
     }
     return localObject2;
   }
+  
+  public static boolean d(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT < 19) {
+      return true;
+    }
+    try
+    {
+      PackageManager localPackageManager = paramContext.getPackageManager();
+      if (localPackageManager.checkPermission("android.permission.ACCESS_COARSE_LOCATION", paramContext.getPackageName()) != 0)
+      {
+        int i = localPackageManager.checkPermission("android.permission.ACCESS_FINE_LOCATION", paramContext.getPackageName());
+        return i == 0;
+      }
+      return true;
+    }
+    catch (Throwable paramContext) {}
+    return false;
+  }
+  
+  @TargetApi(19)
+  public static boolean e(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT < 23) {
+      return true;
+    }
+    boolean bool = false;
+    try
+    {
+      int i = Settings.Secure.getInt(paramContext.getContentResolver(), "location_mode");
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    catch (Exception paramContext) {}
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.WifiSdkUtil
  * JD-Core Version:    0.7.0.1
  */

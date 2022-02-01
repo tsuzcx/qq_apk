@@ -11,14 +11,14 @@ class NavigationView$1
   
   public boolean onMenuItemSelected(MenuBuilder paramMenuBuilder, MenuItem paramMenuItem)
   {
-    return (this.a.a != null) && (this.a.a.a(paramMenuItem));
+    return (this.a.c != null) && (this.a.c.a(paramMenuItem));
   }
   
   public void onMenuModeChange(MenuBuilder paramMenuBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.navigation.NavigationView.1
  * JD-Core Version:    0.7.0.1
  */

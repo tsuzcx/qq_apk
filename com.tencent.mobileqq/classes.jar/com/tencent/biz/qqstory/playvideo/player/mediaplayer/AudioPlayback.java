@@ -10,51 +10,46 @@ import java.nio.ByteBuffer;
 class AudioPlayback
 {
   public static long a = -9223372036854775808L;
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = 8192;
-  private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private AudioPlayback.AudioThread jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$AudioThread;
-  protected AudioPlayback.BufferQueue a;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private float jdField_b_of_type_Float = 1.0F;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private int jdField_d_of_type_Int;
-  private long jdField_d_of_type_Long;
-  private int e = 0;
-  private int f = 3;
-  
-  public AudioPlayback()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$BufferQueue = new AudioPlayback.BufferQueue();
-  }
-  
-  @TargetApi(16)
-  private boolean a(MediaFormat paramMediaFormat)
-  {
-    return (this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("channel-count") != paramMediaFormat.getInteger("channel-count")) || (this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("sample-rate") != paramMediaFormat.getInteger("sample-rate")) || (!this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime").equals(paramMediaFormat.getString("mime")));
-  }
+  protected AudioPlayback.BufferQueue b = new AudioPlayback.BufferQueue();
+  private MediaFormat c;
+  private AudioTrack d;
+  private byte[] e;
+  private int f = 8192;
+  private int g;
+  private int h;
+  private int i;
+  private AudioPlayback.AudioThread j;
+  private long k;
+  private int l = 0;
+  private int m = 3;
+  private float n = 1.0F;
+  private float o = 1.0F;
+  private long p;
+  private long q;
   
   private void b(boolean paramBoolean)
   {
-    if (a())
+    if (c())
     {
       if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$AudioThread.interrupt();
+        this.j.interrupt();
       }
-      this.jdField_a_of_type_AndroidMediaAudioTrack.stop();
-      this.jdField_a_of_type_AndroidMediaAudioTrack.release();
+      this.d.stop();
+      this.d.release();
     }
-    this.jdField_a_of_type_AndroidMediaAudioTrack = null;
+    this.d = null;
   }
   
-  private long d()
+  @TargetApi(16)
+  private boolean b(MediaFormat paramMediaFormat)
   {
-    double d1 = this.jdField_a_of_type_AndroidMediaAudioTrack.getPlaybackHeadPosition() & 0xFFFFFFFF;
-    double d2 = this.jdField_c_of_type_Int;
+    return (this.c.getInteger("channel-count") != paramMediaFormat.getInteger("channel-count")) || (this.c.getInteger("sample-rate") != paramMediaFormat.getInteger("sample-rate")) || (!this.c.getString("mime").equals(paramMediaFormat.getString("mime")));
+  }
+  
+  private long l()
+  {
+    double d1 = this.d.getPlaybackHeadPosition() & 0xFFFFFFFF;
+    double d2 = this.h;
     Double.isNaN(d1);
     Double.isNaN(d2);
     return (d1 / d2 * 1000000.0D);
@@ -62,34 +57,14 @@ class AudioPlayback
   
   public int a()
   {
-    return this.e;
-  }
-  
-  public long a()
-  {
-    double d1 = AudioPlayback.BufferQueue.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$BufferQueue) / this.jdField_b_of_type_Int;
-    double d2 = this.jdField_c_of_type_Int;
-    Double.isNaN(d1);
-    Double.isNaN(d2);
-    return (d1 / d2 * 1000000.0D);
-  }
-  
-  public void a()
-  {
-    if (a())
-    {
-      this.jdField_a_of_type_AndroidMediaAudioTrack.play();
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$AudioThread.a(false);
-      return;
-    }
-    throw new IllegalStateException();
+    return this.l;
   }
   
   public void a(float paramFloat)
   {
-    if (a())
+    if (c())
     {
-      this.jdField_a_of_type_AndroidMediaAudioTrack.setPlaybackRate((int)(this.jdField_c_of_type_Int * paramFloat));
+      this.d.setPlaybackRate((int)(this.h * paramFloat));
       return;
     }
     throw new IllegalStateException();
@@ -97,9 +72,9 @@ class AudioPlayback
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    AudioTrack localAudioTrack = this.jdField_a_of_type_AndroidMediaAudioTrack;
+    this.n = paramFloat1;
+    this.o = paramFloat2;
+    AudioTrack localAudioTrack = this.d;
     if (localAudioTrack != null) {
       localAudioTrack.setStereoVolume(paramFloat1, paramFloat2);
     }
@@ -107,9 +82,9 @@ class AudioPlayback
   
   public void a(int paramInt)
   {
-    if (!a())
+    if (!c())
     {
-      this.e = paramInt;
+      this.l = paramInt;
       return;
     }
     throw new IllegalStateException("cannot set session id on an initialized audio track");
@@ -120,193 +95,213 @@ class AudioPlayback
   {
     Log.d("AudioPlayback", "init");
     boolean bool;
-    if (a())
+    if (c())
     {
-      if (!a(paramMediaFormat))
+      if (!b(paramMediaFormat))
       {
-        this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+        this.c = paramMediaFormat;
         return;
       }
-      bool = b();
-      b();
+      bool = k();
+      e();
       b(false);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$AudioThread = new AudioPlayback.AudioThread(this);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$AudioThread.a(true);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$AudioThread.start();
+      this.j = new AudioPlayback.AudioThread(this);
+      this.j.a(true);
+      this.j.start();
       bool = false;
     }
-    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-    int j = paramMediaFormat.getInteger("channel-count");
-    this.jdField_b_of_type_Int = (j * 2);
-    this.jdField_c_of_type_Int = paramMediaFormat.getInteger("sample-rate");
-    int i;
-    if (j != 1)
+    this.c = paramMediaFormat;
+    int i2 = paramMediaFormat.getInteger("channel-count");
+    this.g = (i2 * 2);
+    this.h = paramMediaFormat.getInteger("sample-rate");
+    int i1;
+    if (i2 != 1)
     {
-      if (j != 2)
+      if (i2 != 2)
       {
-        if (j != 4)
+        if (i2 != 4)
         {
-          if (j != 6)
+          if (i2 != 6)
           {
-            if (j != 8) {
-              i = 1;
+            if (i2 != 8) {
+              i1 = 1;
             } else {
-              i = 1020;
+              i1 = 1020;
             }
           }
           else {
-            i = 252;
+            i1 = 252;
           }
         }
         else {
-          i = 204;
+          i1 = 204;
         }
       }
       else {
-        i = 12;
+        i1 = 12;
       }
     }
     else {
-      i = 4;
+      i1 = 4;
     }
-    this.jdField_d_of_type_Int = (this.jdField_a_of_type_Int * j);
-    this.jdField_a_of_type_AndroidMediaAudioTrack = new ReportAudioTrack(this.f, this.jdField_c_of_type_Int, i, 2, this.jdField_d_of_type_Int, 1, this.e);
-    this.e = this.jdField_a_of_type_AndroidMediaAudioTrack.getAudioSessionId();
-    this.f = this.jdField_a_of_type_AndroidMediaAudioTrack.getStreamType();
-    a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
-    this.jdField_c_of_type_Long = jdField_a_of_type_Long;
+    this.i = (this.f * i2);
+    this.d = new ReportAudioTrack(this.m, this.h, i1, 2, this.i, 1, this.l);
+    this.l = this.d.getAudioSessionId();
+    this.m = this.d.getStreamType();
+    a(this.n, this.o);
+    this.p = a;
     if (bool) {
-      a();
+      d();
     }
   }
   
   public void a(ByteBuffer paramByteBuffer, long paramLong)
   {
-    int i = paramByteBuffer.remaining();
-    if (this.jdField_a_of_type_Int < i)
+    int i1 = paramByteBuffer.remaining();
+    if (this.f < i1)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("incoming frame chunk size increased to ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       Log.d("AudioPlayback", localStringBuilder.toString());
-      this.jdField_a_of_type_Int = i;
-      a(this.jdField_a_of_type_AndroidMediaMediaFormat);
+      this.f = i1;
+      a(this.c);
     }
-    if (this.jdField_c_of_type_Long == jdField_a_of_type_Long)
+    if (this.p == a)
     {
-      this.jdField_c_of_type_Long = paramLong;
-      this.jdField_d_of_type_Long = 0L;
-      long l = d();
-      if (l > 0L)
+      this.p = paramLong;
+      this.q = 0L;
+      long l1 = l();
+      if (l1 > 0L)
       {
-        this.jdField_c_of_type_Long -= l;
+        this.p -= l1;
         Log.d("AudioPlayback", "playback head not reset");
       }
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$BufferQueue.a(paramByteBuffer, paramLong);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$AudioThread.a();
+    this.b.a(paramByteBuffer, paramLong);
+    this.j.a();
   }
   
   public void a(boolean paramBoolean)
   {
-    if (a())
+    if (c())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$AudioThread.a(true);
-      this.jdField_a_of_type_AndroidMediaAudioTrack.pause();
+      this.j.a(true);
+      this.d.pause();
       if (paramBoolean) {
-        c();
+        f();
       }
       return;
     }
     throw new IllegalStateException();
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_AndroidMediaAudioTrack != null;
-  }
-  
   public int b()
   {
-    return this.f;
+    return this.m;
   }
   
-  public long b()
+  protected void b(ByteBuffer paramByteBuffer, long paramLong)
   {
-    double d1 = this.jdField_d_of_type_Int / this.jdField_b_of_type_Int;
-    double d2 = this.jdField_c_of_type_Int;
+    int i1 = paramByteBuffer.remaining();
+    byte[] arrayOfByte = this.e;
+    if ((arrayOfByte == null) || (arrayOfByte.length < i1)) {
+      this.e = new byte[i1];
+    }
+    paramByteBuffer.get(this.e, 0, i1);
+    this.k = paramLong;
+    this.d.write(this.e, 0, i1);
+  }
+  
+  public boolean c()
+  {
+    return this.d != null;
+  }
+  
+  public void d()
+  {
+    if (c())
+    {
+      this.d.play();
+      this.j.a(false);
+      return;
+    }
+    throw new IllegalStateException();
+  }
+  
+  public void e()
+  {
+    a(true);
+  }
+  
+  public void f()
+  {
+    if (c())
+    {
+      boolean bool = k();
+      if (bool) {
+        this.d.pause();
+      }
+      this.d.flush();
+      this.b.b();
+      this.p = a;
+      if (bool) {
+        this.d.play();
+      }
+      return;
+    }
+    throw new IllegalStateException();
+  }
+  
+  public void g()
+  {
+    b(true);
+  }
+  
+  public long h()
+  {
+    double d1 = AudioPlayback.BufferQueue.a(this.b) / this.g;
+    double d2 = this.h;
     Double.isNaN(d1);
     Double.isNaN(d2);
     return (d1 / d2 * 1000000.0D);
   }
   
-  public void b()
+  public long i()
   {
-    a(true);
+    double d1 = this.i / this.g;
+    double d2 = this.h;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    return (d1 / d2 * 1000000.0D);
   }
   
-  protected void b(ByteBuffer paramByteBuffer, long paramLong)
+  public long j()
   {
-    int i = paramByteBuffer.remaining();
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    if ((arrayOfByte == null) || (arrayOfByte.length < i)) {
-      this.jdField_a_of_type_ArrayOfByte = new byte[i];
-    }
-    paramByteBuffer.get(this.jdField_a_of_type_ArrayOfByte, 0, i);
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidMediaAudioTrack.write(this.jdField_a_of_type_ArrayOfByte, 0, i);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_AndroidMediaAudioTrack.getPlayState() == 3;
-  }
-  
-  public long c()
-  {
-    long l1 = this.jdField_c_of_type_Long;
-    long l2 = jdField_a_of_type_Long;
+    long l1 = this.p;
+    long l2 = a;
     if (l1 == l2) {
       return l2;
     }
-    l1 = d();
-    if (l1 < this.jdField_d_of_type_Long)
+    l1 = l();
+    if (l1 < this.q)
     {
       Log.d("AudioPlayback", "playback head has wrapped");
-      l2 = this.jdField_c_of_type_Long;
-      double d1 = this.jdField_c_of_type_Int;
+      l2 = this.p;
+      double d1 = this.h;
       Double.isNaN(d1);
-      this.jdField_c_of_type_Long = (l2 + (-1.0D / d1 * 1000000.0D));
+      this.p = (l2 + (-1.0D / d1 * 1000000.0D));
     }
-    this.jdField_d_of_type_Long = l1;
-    return this.jdField_c_of_type_Long + l1;
+    this.q = l1;
+    return this.p + l1;
   }
   
-  public void c()
+  public boolean k()
   {
-    if (a())
-    {
-      boolean bool = b();
-      if (bool) {
-        this.jdField_a_of_type_AndroidMediaAudioTrack.pause();
-      }
-      this.jdField_a_of_type_AndroidMediaAudioTrack.flush();
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$BufferQueue.a();
-      this.jdField_c_of_type_Long = jdField_a_of_type_Long;
-      if (bool) {
-        this.jdField_a_of_type_AndroidMediaAudioTrack.play();
-      }
-      return;
-    }
-    throw new IllegalStateException();
-  }
-  
-  public void d()
-  {
-    b(true);
+    return this.d.getPlayState() == 3;
   }
 }
 

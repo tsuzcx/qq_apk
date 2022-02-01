@@ -7,12 +7,12 @@ class HCPerfManager$1
   
   public void run()
   {
-    HCPerfManager.a(this.this$0);
+    HCPerfManager.access$200(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HCPerfManager.1
  * JD-Core Version:    0.7.0.1
  */

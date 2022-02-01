@@ -15,7 +15,7 @@ class LiveSdkPlayerHelper$3
     {
       if (LiveSdkPlayerHelper.access$300(this.this$0) != null)
       {
-        long l = (LiveSdkPlayerHelper.access$300(this.this$0).d() - LiveSdkPlayerHelper.access$300(this.this$0).i()) / 2L;
+        long l = (LiveSdkPlayerHelper.access$300(this.this$0).d() - LiveSdkPlayerHelper.access$300(this.this$0).k()) / 2L;
         if (l <= 0L)
         {
           LiveSdkPlayerHelper.access$100(this.this$0).sendEmptyMessageDelayed(100, 2000L);
@@ -36,7 +36,7 @@ class LiveSdkPlayerHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.LiveSdkPlayerHelper.3
  * JD-Core Version:    0.7.0.1
  */

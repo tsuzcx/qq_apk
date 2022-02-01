@@ -11,8 +11,8 @@ import com.tencent.qphone.base.util.QLog;
 public class UniformDownloadNfnReceiver
   extends BroadcastReceiver
 {
-  private static int a = 0;
   public static String a = "UniformDownloadNfnReceiver";
+  private static int b;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -35,7 +35,7 @@ public class UniformDownloadNfnReceiver
           ((StringBuilder)localObject2).append(" url:");
           ((StringBuilder)localObject2).append(paramIntent);
           QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-          UniformDownloadMgr.a().d(paramIntent, paramContext);
+          UniformDownloadMgr.a().e(paramIntent, paramContext);
           return;
         }
         QLog.e(a, 1, "[UniformDL] onReceive. PAUSE_DOWNLOAD: param = null");
@@ -54,7 +54,7 @@ public class UniformDownloadNfnReceiver
           ((StringBuilder)localObject2).append(" url:");
           ((StringBuilder)localObject2).append(paramIntent);
           QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-          UniformDownloadMgr.a().e(paramIntent, paramContext);
+          UniformDownloadMgr.a().f(paramIntent, paramContext);
           return;
         }
         QLog.e(a, 1, "[UniformDL] onReceive. DO_DOWNLOAD: param = null");
@@ -73,7 +73,7 @@ public class UniformDownloadNfnReceiver
           ((StringBuilder)localObject2).append(" url:");
           ((StringBuilder)localObject2).append(paramIntent);
           QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-          UniformDownloadMgr.a().f(paramIntent, paramContext);
+          UniformDownloadMgr.a().g(paramIntent, paramContext);
           return;
         }
         QLog.e(a, 1, "[UniformDL] onReceive. TRY_DOWNLOAD: param = null");
@@ -92,11 +92,11 @@ public class UniformDownloadNfnReceiver
         localStringBuilder.append("PKGN:");
         localStringBuilder.append((String)localObject1);
         QLog.i((String)localObject3, 1, localStringBuilder.toString());
-        UniformDownloadUtil.b(paramContext, (String)localObject2);
+        UniformDownloadUtil.c(paramContext, (String)localObject2);
         if (localObject1 != null)
         {
           i = paramIntent.getIntExtra("_PARAM_DL_SUC_NEW_NID", 0);
-          UniformDownloadMgr.a().a().a((String)localObject1, i);
+          UniformDownloadMgr.a().c().a((String)localObject1, i);
         }
       }
       else if (((String)localObject1).equals("com.tencent.mobileqq.UniformDownloadNfn.BEDEL"))
@@ -112,7 +112,7 @@ public class UniformDownloadNfnReceiver
           ((StringBuilder)localObject3).append(" url:");
           ((StringBuilder)localObject3).append((String)localObject1);
           QLog.i((String)localObject2, 1, ((StringBuilder)localObject3).toString());
-          UniformDownloadMgr.a().c((String)localObject1, paramContext);
+          UniformDownloadMgr.a().d((String)localObject1, paramContext);
         }
         else
         {
@@ -127,7 +127,7 @@ public class UniformDownloadNfnReceiver
           ((StringBuilder)localObject1).append("[UniformDL] onReceive. download suc. NOTIFICATION_BE_DEL: id:");
           ((StringBuilder)localObject1).append(i);
           QLog.i(paramIntent, 1, ((StringBuilder)localObject1).toString());
-          UniformDownloadMgr.a().a().a(paramContext, i);
+          UniformDownloadMgr.a().c().a(paramContext, i);
         }
       }
       else
@@ -143,7 +143,7 @@ public class UniformDownloadNfnReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.core.UniformDownloadNfnReceiver
  * JD-Core Version:    0.7.0.1
  */

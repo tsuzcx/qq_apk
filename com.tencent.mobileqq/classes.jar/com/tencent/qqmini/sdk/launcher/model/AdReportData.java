@@ -11,13 +11,13 @@ public class AdReportData
   public String path;
   public String referPath;
   public int scene;
-  public String scene_sn;
+  public String sceneSn;
   public long startTime;
   public long stayTime;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.AdReportData
  * JD-Core Version:    0.7.0.1
  */

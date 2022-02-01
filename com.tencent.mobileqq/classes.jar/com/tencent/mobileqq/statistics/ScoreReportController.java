@@ -7,24 +7,24 @@ public class ScoreReportController
 {
   private static String a(ScoreReportController.ReportData paramReportData)
   {
-    return paramReportData.a();
+    return paramReportData.b();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, String paramString1, String paramString2)
   {
     ScoreReportController.ReportData localReportData = new ScoreReportController.ReportData();
-    localReportData.jdField_a_of_type_Long = paramLong9;
+    localReportData.a = paramLong9;
     localReportData.b = paramLong1;
     localReportData.c = paramLong2;
-    localReportData.jdField_d_of_type_Long = paramLong3;
+    localReportData.d = paramLong3;
     localReportData.e = paramLong4;
-    localReportData.jdField_f_of_type_Long = paramLong5;
-    localReportData.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentUin();
-    localReportData.g = paramLong6;
-    localReportData.m = paramLong7;
-    localReportData.h = paramLong8;
-    localReportData.jdField_d_of_type_JavaLangString = paramString1;
-    localReportData.jdField_f_of_type_JavaLangString = paramString2;
+    localReportData.f = paramLong5;
+    localReportData.g = paramQQAppInterface.getCurrentUin();
+    localReportData.i = paramLong6;
+    localReportData.r = paramLong7;
+    localReportData.j = paramLong8;
+    localReportData.p = paramString1;
+    localReportData.w = paramString2;
     paramString1 = a(localReportData);
     if (QLog.isColorLevel())
     {
@@ -38,7 +38,7 @@ public class ScoreReportController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ScoreReportController
  * JD-Core Version:    0.7.0.1
  */

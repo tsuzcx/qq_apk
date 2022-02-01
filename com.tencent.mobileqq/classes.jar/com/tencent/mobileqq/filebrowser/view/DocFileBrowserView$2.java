@@ -12,18 +12,18 @@ class DocFileBrowserView$2
 {
   DocFileBrowserView$2(DocFileBrowserView paramDocFileBrowserView, AppInterface paramAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      TeamWorkConvertUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      TeamWorkConvertUtils.a(this.a, this.d.e, "FileBrowserViewBase", this.b);
+      this.c.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.view.DocFileBrowserView.2
  * JD-Core Version:    0.7.0.1
  */

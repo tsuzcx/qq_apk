@@ -5,17 +5,17 @@ import com.tencent.qphone.base.util.QLog;
 public class ARCloudPreOcrResult
   extends ARLocalRecogResultBase
 {
-  public float a;
   public int a;
-  public String a;
-  public int b;
   public String b;
-  public int c;
   public String c;
+  public int d;
+  public String e;
+  public int f;
+  public float g;
   
   public ARCloudPreOcrResult()
   {
-    this.jdField_b_of_type_Long = 64L;
+    this.j = 64L;
   }
   
   public static boolean a(ARCloudPreOcrResult paramARCloudPreOcrResult)
@@ -38,40 +38,40 @@ public class ARCloudPreOcrResult
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0);
+    return (this.a == 0) && (this.d == 0);
   }
   
   public boolean b()
   {
-    return this.jdField_c_of_type_Int == 1;
+    return this.f == 1;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ARCloudPreOcrResult{recogType = ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", recogSvrRetCode = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", recogSvrRetMsg = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", sessionId = ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", arWordDetectRetCode = ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", arWordDetectRetMsg = ");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", wordType = ");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", confidence = ");
-    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudPreOcrResult
  * JD-Core Version:    0.7.0.1
  */

@@ -2,34 +2,34 @@ package com.tencent.livesdk.liveengine;
 
 public class FloatRoomManager$RelateRoomControl
 {
-  FloatRoomManager.Room jdField_a_of_type_ComTencentLivesdkLiveengineFloatRoomManager$Room;
-  FloatRoomManager.RoomControl jdField_a_of_type_ComTencentLivesdkLiveengineFloatRoomManager$RoomControl;
+  FloatRoomManager.RoomControl a;
+  FloatRoomManager.Room b;
   
   public FloatRoomManager$RelateRoomControl(FloatRoomManager.RoomControl paramRoomControl, FloatRoomManager.Room paramRoom)
   {
-    this.jdField_a_of_type_ComTencentLivesdkLiveengineFloatRoomManager$RoomControl = paramRoomControl;
-    this.jdField_a_of_type_ComTencentLivesdkLiveengineFloatRoomManager$Room = paramRoom;
+    this.a = paramRoomControl;
+    this.b = paramRoom;
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentLivesdkLiveengineFloatRoomManager$Room;
+    Object localObject = this.b;
     if (localObject != null)
     {
       ((FloatRoomManager.Room)localObject).destroyRoomByHand();
-      this.jdField_a_of_type_ComTencentLivesdkLiveengineFloatRoomManager$Room = null;
+      this.b = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentLivesdkLiveengineFloatRoomManager$RoomControl;
+    localObject = this.a;
     if (localObject != null)
     {
       ((FloatRoomManager.RoomControl)localObject).exitFloatRoom();
-      this.jdField_a_of_type_ComTencentLivesdkLiveengineFloatRoomManager$RoomControl = null;
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.livesdk.liveengine.FloatRoomManager.RelateRoomControl
  * JD-Core Version:    0.7.0.1
  */

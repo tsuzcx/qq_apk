@@ -42,7 +42,7 @@ public class TroopMemberApiService$SayHiMessageHelper
   
   private static final JSONObject a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
-    Object localObject = paramQQAppInterface.getMessageProxy(1001).a(AppConstants.LBS_SAY_HELLO_LIST_UIN, 1001);
+    Object localObject = paramQQAppInterface.getMessageProxy(1001).b(AppConstants.LBS_SAY_HELLO_LIST_UIN, 1001);
     if (localObject == null)
     {
       QLog.i("SayHiMessageHelper", 1, "getSayHiBoxInnerMessages, no tribe say hi info");
@@ -149,7 +149,7 @@ public class TroopMemberApiService$SayHiMessageHelper
   
   private static final void a(QQAppInterface paramQQAppInterface)
   {
-    Object localObject1 = paramQQAppInterface.getMessageProxy(1001).a(AppConstants.LBS_SAY_HELLO_LIST_UIN, 1001);
+    Object localObject1 = paramQQAppInterface.getMessageProxy(1001).b(AppConstants.LBS_SAY_HELLO_LIST_UIN, 1001);
     if (localObject1 == null)
     {
       QLog.i("SayHiMessageHelper", 1, "deleteSayHiBox, no tribe say hi info");
@@ -238,7 +238,7 @@ public class TroopMemberApiService$SayHiMessageHelper
   
   private static void a(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject)
   {
-    Object localObject = paramQQAppInterface.getMessageProxy(1001).a(AppConstants.LBS_SAY_HELLO_LIST_UIN, 1001);
+    Object localObject = paramQQAppInterface.getMessageProxy(1001).b(AppConstants.LBS_SAY_HELLO_LIST_UIN, 1001);
     paramQQAppInterface = paramQQAppInterface.getConversationFacade();
     int k = 0;
     int j = 0;
@@ -283,7 +283,7 @@ public class TroopMemberApiService$SayHiMessageHelper
   
   private static final JSONObject b(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
-    Object localObject = paramQQAppInterface.getMessageProxy(1001).a(AppConstants.LBS_HELLO_UIN, 1001);
+    Object localObject = paramQQAppInterface.getMessageProxy(1001).b(AppConstants.LBS_HELLO_UIN, 1001);
     if (localObject == null)
     {
       QLog.i("SayHiMessageHelper", 1, "getNewSayHiMessages, no tribe say hi info");
@@ -386,7 +386,7 @@ public class TroopMemberApiService$SayHiMessageHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.SayHiMessageHelper
  * JD-Core Version:    0.7.0.1
  */

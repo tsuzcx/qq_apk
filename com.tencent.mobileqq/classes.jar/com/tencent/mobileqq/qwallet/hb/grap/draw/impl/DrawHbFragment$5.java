@@ -15,14 +15,14 @@ class DrawHbFragment$5
     if ((paramView instanceof TextView))
     {
       DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
-      DrawHbFragment.a(this.a).addHbUploadData("draw.wrappacket.choose");
-      this.a.a.a();
+      DrawHbFragment.b(this.a).addHbUploadData("draw.wrappacket.choose");
+      this.a.c.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawHbFragment.5
  * JD-Core Version:    0.7.0.1
  */

@@ -16,20 +16,20 @@ import mqq.util.WeakReference;
 public class UrlBottomImageSpan
   extends ImageSpan
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<Drawable.Callback> jdField_a_of_type_MqqUtilWeakReference;
+  private Context a;
+  private URLDrawable b;
+  private String c;
+  private int d = 0;
+  private WeakReference<Drawable.Callback> e;
   
   public UrlBottomImageSpan(Context paramContext, int paramInt1, String paramString, int paramInt2, Drawable.Callback paramCallback)
   {
     super(paramContext, paramInt1, 0);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.a = paramContext;
+    this.c = paramString;
+    this.d = paramInt2;
     if (paramCallback != null) {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramCallback);
+      this.e = new WeakReference(paramCallback);
     }
   }
   
@@ -52,7 +52,7 @@ public class UrlBottomImageSpan
       {
         int i = paramCharSequence.getIntrinsicWidth();
         int j = paramCharSequence.getIntrinsicHeight();
-        paramInt4 = this.jdField_a_of_type_Int;
+        paramInt4 = this.d;
         paramInt2 = i;
         paramInt1 = j;
         if (j > paramInt4)
@@ -65,7 +65,7 @@ public class UrlBottomImageSpan
             paramInt1 = paramInt4;
           }
         }
-        localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+        localObject = this.b;
         if (paramInt2 > 0) {
           paramInt4 = paramInt2;
         } else {
@@ -103,30 +103,30 @@ public class UrlBottomImageSpan
   
   public Drawable getDrawable()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    Object localObject1 = this.b;
     if (localObject1 != null) {
       return localObject1;
     }
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (this.c != null)
     {
       Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
       localObject1 = null;
       try
       {
-        this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
-        localObject2 = this.jdField_a_of_type_MqqUtilWeakReference;
+        this.b = URLDrawable.getDrawable(this.c, (URLDrawable.URLDrawableOptions)localObject2);
+        localObject2 = this.e;
         if (localObject2 != null) {
           localObject1 = (Drawable.Callback)((WeakReference)localObject2).get();
         }
         if (localObject1 != null) {
-          this.jdField_a_of_type_ComTencentImageURLDrawable.setCallback((Drawable.Callback)localObject1);
+          this.b.setCallback((Drawable.Callback)localObject1);
         }
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new UrlBottomImageSpan.1(this));
+        this.b.setURLDrawableListener(new UrlBottomImageSpan.1(this));
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("getDrawable. first get url:");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.c);
           ((StringBuilder)localObject2).append("  cb:");
           boolean bool;
           if (localObject1 != null) {
@@ -137,11 +137,11 @@ public class UrlBottomImageSpan
           ((StringBuilder)localObject2).append(bool);
           QLog.i("UrlBottomImageSpan", 2, ((StringBuilder)localObject2).toString());
         }
-        return this.jdField_a_of_type_ComTencentImageURLDrawable;
+        return this.b;
       }
       catch (Throwable localThrowable)
       {
-        this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+        this.b = null;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("getDrawable error: ");
         ((StringBuilder)localObject2).append(localThrowable.getMessage());
@@ -166,7 +166,7 @@ public class UrlBottomImageSpan
     {
       j = paramCharSequence.getIntrinsicWidth();
       k = paramCharSequence.getIntrinsicHeight();
-      i = this.jdField_a_of_type_Int;
+      i = this.d;
       paramInt1 = k;
       paramInt2 = j;
       if (k > i)
@@ -179,7 +179,7 @@ public class UrlBottomImageSpan
           paramInt1 = i;
         }
       }
-      URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+      URLDrawable localURLDrawable = this.b;
       if (paramInt2 > 0) {
         i = paramInt2;
       } else {
@@ -221,7 +221,7 @@ public class UrlBottomImageSpan
       paramPaint.append(" height:");
       paramPaint.append(paramInt1);
       paramPaint.append(" imageUrl:");
-      paramPaint.append(this.jdField_a_of_type_JavaLangString);
+      paramPaint.append(this.c);
       QLog.i("UrlBottomImageSpan", 2, paramPaint.toString());
     }
     return paramCharSequence.right;
@@ -229,7 +229,7 @@ public class UrlBottomImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.UrlBottomImageSpan
  * JD-Core Version:    0.7.0.1
  */

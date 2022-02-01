@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.core.view.ViewCompat;
+import androidx.recyclerview.R.dimen;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -379,8 +380,8 @@ public class ItemTouchHelper
     if (paramRecyclerView != null)
     {
       paramRecyclerView = paramRecyclerView.getResources();
-      this.mSwipeEscapeVelocity = paramRecyclerView.getDimension(2131297276);
-      this.mMaxSwipeVelocity = paramRecyclerView.getDimension(2131297275);
+      this.mSwipeEscapeVelocity = paramRecyclerView.getDimension(R.dimen.item_touch_helper_swipe_escape_velocity);
+      this.mMaxSwipeVelocity = paramRecyclerView.getDimension(R.dimen.item_touch_helper_swipe_escape_max_velocity);
       setupCallbacks();
     }
   }

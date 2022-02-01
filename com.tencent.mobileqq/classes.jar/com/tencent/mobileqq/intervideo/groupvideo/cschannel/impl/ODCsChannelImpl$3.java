@@ -58,25 +58,25 @@ class ODCsChannelImpl$3
       if (((CommProtocolProto.commResponse)localObject1).code.get() == 1008)
       {
         QLog.i("ODCsChannel", 2, "sendPBRequest: fail，token illegal, errorCode=1008");
-        ODCsChannelImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelImplODCsChannelImpl, this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelIODCsChannel$CsChannelObserver);
+        ODCsChannelImpl.access$000(this.f, this.b, this.c, this.d, this.a - 1, this.e);
         return;
       }
       if (((CommProtocolProto.commResponse)localObject1).code.get() == 1006)
       {
         QLog.i("ODCsChannel", 2, "sendPBRequest: fail，user sig illegal, errorCode=1006");
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelImplODCsChannelImpl.login(this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelIODCsChannel$CsChannelObserver);
+        this.f.login(this.b, this.c, this.a - 1, this.e);
         return;
       }
-      if ((((CommProtocolProto.commResponse)localObject1).code.get() != 0) && (this.jdField_a_of_type_Int > 0))
+      if ((((CommProtocolProto.commResponse)localObject1).code.get() != 0) && (this.a > 0))
       {
         paramArrayOfByte = new StringBuilder();
         paramArrayOfByte.append("sendPBRequest: fail，errorCode=");
         paramArrayOfByte.append(((CommProtocolProto.commResponse)localObject1).code.get());
         QLog.i("ODCsChannel", 2, paramArrayOfByte.toString());
-        ODCsChannelImpl.access$400(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelImplODCsChannelImpl, this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelIODCsChannel$CsChannelObserver);
+        ODCsChannelImpl.access$400(this.f, this.b, this.c, this.d, this.a - 1, this.e);
         return;
       }
-      ODCsChannelImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelImplODCsChannelImpl, paramInt, (CommProtocolProto.commResponse)localObject1, paramBundle, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelIODCsChannel$CsChannelObserver);
+      ODCsChannelImpl.access$100(this.f, paramInt, (CommProtocolProto.commResponse)localObject1, paramBundle, this.e);
       return;
     }
     Object localObject1 = new StringBuilder();
@@ -90,18 +90,18 @@ class ODCsChannelImpl$3
     }
     ((StringBuilder)localObject1).append(paramArrayOfByte);
     QLog.i("ODCsChannel", 2, ((StringBuilder)localObject1).toString());
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i > 0)
     {
-      ODCsChannelImpl.access$400(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelImplODCsChannelImpl, this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Boolean, i - 1, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelIODCsChannel$CsChannelObserver);
+      ODCsChannelImpl.access$400(this.f, this.b, this.c, this.d, i - 1, this.e);
       return;
     }
-    ODCsChannelImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelImplODCsChannelImpl, paramInt, null, paramBundle, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelIODCsChannel$CsChannelObserver);
+    ODCsChannelImpl.access$100(this.f, paramInt, null, paramBundle, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.cschannel.impl.ODCsChannelImpl.3
  * JD-Core Version:    0.7.0.1
  */

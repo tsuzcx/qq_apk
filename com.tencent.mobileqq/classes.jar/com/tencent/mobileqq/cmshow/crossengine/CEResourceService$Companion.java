@@ -31,7 +31,7 @@ public final class CEResourceService$Companion
   private final String c(int paramInt)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(ApolloConstant.j);
+    ((StringBuilder)localObject).append(ApolloConstant.k);
     ((StringBuilder)localObject).append(CEResourceService.a.b(paramInt));
     localObject = ((StringBuilder)localObject).toString();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "StringBuilder().apply(builderAction).toString()");
@@ -40,7 +40,7 @@ public final class CEResourceService$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.CEResourceService.Companion
  * JD-Core Version:    0.7.0.1
  */

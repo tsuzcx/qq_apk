@@ -89,7 +89,7 @@ public class FavEmosmManageActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561594);
+    super.setContentView(2131627957);
     this.app = ((BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null));
     int i = getIntent().getIntExtra("camera_emo_mode", 0);
     this.favEmosmView = new FavEmosmViewPage(this.app, this);
@@ -105,7 +105,7 @@ public class FavEmosmManageActivity
     }
     sdkSetEmotion();
     this.emosmStrategy.a();
-    this.emosmStrategy.g();
+    this.emosmStrategy.k();
     return true;
   }
   
@@ -117,14 +117,14 @@ public class FavEmosmManageActivity
       getApplicationContext().unregisterReceiver(this.mFunnyPicUpdateReceiver);
       this.mFunnyPicUpdateReceiver = null;
     }
-    if (this.emosmStrategy.b) {
+    if (this.emosmStrategy.f) {
       getApplicationContext().sendBroadcast(new Intent("com.tencent.mobileqq.action.update.emotiom"));
     }
     ISDKEmotionSettingManager localISDKEmotionSettingManager = this.sdkEmotionSettingManager;
     if (localISDKEmotionSettingManager != null) {
       localISDKEmotionSettingManager.b();
     }
-    this.emosmStrategy.d();
+    this.emosmStrategy.h();
   }
   
   protected void doOnNewIntent(Intent paramIntent)
@@ -180,7 +180,7 @@ public class FavEmosmManageActivity
     }
     localObject = this.favEmosmView;
     if (localObject != null) {
-      ((FavEmosmViewPage)localObject).m();
+      ((FavEmosmViewPage)localObject).n();
     }
     return super.onBackEvent();
   }
@@ -210,7 +210,7 @@ public class FavEmosmManageActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FavEmosmManageActivity
  * JD-Core Version:    0.7.0.1
  */

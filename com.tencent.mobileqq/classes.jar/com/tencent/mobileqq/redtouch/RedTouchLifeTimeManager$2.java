@@ -23,7 +23,7 @@ class RedTouchLifeTimeManager$2
     {
       RedTouchLifeTimeManager.a(this.a, paramActivity.getComponentName().getClassName());
       if ((!TextUtils.isEmpty(RedTouchLifeTimeManager.a(this.a))) && (RedTouchLifeTimeManager.a(this.a).equals(RedTouchLifeTimeManager.b(this.a)))) {
-        RedTouchLifeTimeManager.a(this.a);
+        RedTouchLifeTimeManager.c(this.a);
       }
     }
   }
@@ -40,7 +40,7 @@ class RedTouchLifeTimeManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchLifeTimeManager.2
  * JD-Core Version:    0.7.0.1
  */

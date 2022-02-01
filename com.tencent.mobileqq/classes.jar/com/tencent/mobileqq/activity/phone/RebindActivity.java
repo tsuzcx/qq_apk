@@ -22,16 +22,16 @@ public class RebindActivity
   extends DialogBaseActivity
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver;
-  String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
+  String a;
+  int b;
+  private TextView c;
+  private Button d;
+  private Button e;
+  private String f;
+  private int g = 0;
+  private ContactBindObserver h;
+  private boolean i = false;
+  private boolean j = false;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -55,61 +55,61 @@ public class RebindActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559549);
-    this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("cmd_param_is_from_uni", false);
-    this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("cmd_param_is_from_change_bind", false);
-    this.jdField_a_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
-    this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("k_country_code");
-    this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("k_number");
-    this.jdField_b_of_type_Int = getIntent().getIntExtra("kBindType", 0);
-    setTitle(HardCodeUtil.a(2131713071));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372497));
+    setContentView(2131625571);
+    this.i = getIntent().getBooleanExtra("cmd_param_is_from_uni", false);
+    this.j = getIntent().getBooleanExtra("cmd_param_is_from_change_bind", false);
+    this.b = getIntent().getIntExtra("kSrouce", -1);
+    this.f = getIntent().getStringExtra("k_country_code");
+    this.a = getIntent().getStringExtra("k_number");
+    this.g = getIntent().getIntExtra("kBindType", 0);
+    setTitle(HardCodeUtil.a(2131910632));
+    this.c = ((TextView)findViewById(2131440021));
     paramBundle = new StringBuilder();
-    paramBundle.append(this.jdField_b_of_type_JavaLangString);
+    paramBundle.append(this.f);
     paramBundle.append(" ");
-    paramBundle.append(this.jdField_a_of_type_JavaLangString);
+    paramBundle.append(this.a);
     paramBundle = paramBundle.toString();
     ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-31676);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(getResources().getString(2131694825, new Object[] { paramBundle, getIntent().getStringExtra("k_uin"), this.app.getCurrentAccountUin() }));
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(getResources().getString(2131892528, new Object[] { paramBundle, getIntent().getStringExtra("k_uin"), this.app.getCurrentAccountUin() }));
     localSpannableStringBuilder.setSpan(localForegroundColorSpan, 4, paramBundle.length() + 4, 33);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372496));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131372495));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.c.setText(localSpannableStringBuilder);
+    this.d = ((Button)findViewById(2131440020));
+    this.d.setOnClickListener(this);
+    this.e = ((Button)findViewById(2131440019));
+    this.e.setOnClickListener(this);
     return true;
   }
   
   protected void doOnDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver != null)
+    if (this.h != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver);
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver = null;
+      this.app.unRegistObserver(this.h);
+      this.h = null;
     }
     super.doOnDestroy();
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+    if (paramView == this.d)
     {
       if (!NetworkUtil.isNetSupport(this))
       {
-        showToast(2131694475);
+        showToast(2131892157);
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver == null)
+        if (this.h == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver = new RebindActivity.1(this);
-          this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver);
+          this.h = new RebindActivity.1(this);
+          this.app.registObserver(this.h);
         }
-        this.mPhoneContactService.sendRebindMobile(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
-        showProgressDialog(2131718766, 1000L, true);
+        this.mPhoneContactService.sendRebindMobile(this.f, this.a, this.g, this.i, this.j);
+        showProgressDialog(2131916272, 1000L, true);
       }
     }
-    else if (paramView == this.jdField_b_of_type_AndroidWidgetButton) {
+    else if (paramView == this.e) {
       finish();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -124,7 +124,7 @@ public class RebindActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.RebindActivity
  * JD-Core Version:    0.7.0.1
  */

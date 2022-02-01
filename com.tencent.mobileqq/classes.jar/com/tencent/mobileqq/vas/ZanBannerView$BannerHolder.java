@@ -6,24 +6,24 @@ import android.widget.TextView;
 
 public class ZanBannerView$BannerHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  RelativeLayout a;
+  TextView b;
+  TextView c;
+  ImageView d;
+  ImageView e;
   
   ZanBannerView$BannerHolder(RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131378784));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131378018));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramRelativeLayout.findViewById(2131369191));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramRelativeLayout.findViewById(2131369192));
+    this.a = paramRelativeLayout;
+    this.b = ((TextView)paramRelativeLayout.findViewById(2131447463));
+    this.c = ((TextView)paramRelativeLayout.findViewById(2131446515));
+    this.d = ((ImageView)paramRelativeLayout.findViewById(2131436169));
+    this.e = ((ImageView)paramRelativeLayout.findViewById(2131436170));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ZanBannerView.BannerHolder
  * JD-Core Version:    0.7.0.1
  */

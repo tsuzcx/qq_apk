@@ -9,12 +9,12 @@ class QzoneHbFragment$2
   
   public void run()
   {
-    QzoneHbFragment.a(this.this$0).startAnimation(QzoneHbFragment.a(this.this$0));
+    QzoneHbFragment.h(this.this$0).startAnimation(QzoneHbFragment.g(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.QzoneHbFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ import java.io.IOException;
 public final class FaceConfigDownloader$FaceDownloadCallback
   implements INetEngineListener
 {
-  private final ConfigItem jdField_a_of_type_ComTencentMobileqqIdentificationConfigItem;
-  private final FaceConfigDownloader.IDownloadCallback jdField_a_of_type_ComTencentMobileqqIdentificationFaceConfigDownloader$IDownloadCallback;
+  private final FaceConfigDownloader.IDownloadCallback a;
+  private final ConfigItem b;
   
   public FaceConfigDownloader$FaceDownloadCallback(ConfigItem paramConfigItem, FaceConfigDownloader.IDownloadCallback paramIDownloadCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceConfigDownloader$IDownloadCallback = paramIDownloadCallback;
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationConfigItem = paramConfigItem;
+    this.a = paramIDownloadCallback;
+    this.b = paramConfigItem;
   }
   
   public void onResp(NetResp paramNetResp)
@@ -37,7 +37,7 @@ public final class FaceConfigDownloader$FaceDownloadCallback
     {
       localObject1 = paramNetResp.mReq.mOutPath;
       localObject2 = FileUtils.calcMd5((String)localObject1);
-      if ((localObject2 == null) || (!((String)localObject2).equalsIgnoreCase(FaceConfigManager.b(this.jdField_a_of_type_ComTencentMobileqqIdentificationConfigItem)))) {}
+      if ((localObject2 == null) || (!((String)localObject2).equalsIgnoreCase(FaceConfigManager.b(this.b)))) {}
     }
     try
     {
@@ -80,7 +80,7 @@ public final class FaceConfigDownloader$FaceDownloadCallback
       localStringBuilder.append(",md5 = ");
       localStringBuilder.append((String)localObject2);
       localStringBuilder.append(",url = ");
-      localStringBuilder.append(FaceConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqIdentificationConfigItem));
+      localStringBuilder.append(FaceConfigManager.a(this.b));
       QLog.d("FaceConfigDownloader", 2, localStringBuilder.toString());
     }
     bool = false;
@@ -101,22 +101,22 @@ public final class FaceConfigDownloader$FaceDownloadCallback
     if (bool)
     {
       FaceSharedPreUtils.a(str);
-      FaceSharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqIdentificationConfigItem.a);
-      FaceSharedPreUtils.b(FaceConfigManager.a());
+      FaceSharedPreUtils.a(this.b.j);
+      FaceSharedPreUtils.b(FaceConfigManager.f());
     }
     if (bool)
     {
-      this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceConfigDownloader$IDownloadCallback.a();
+      this.a.a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceConfigDownloader$IDownloadCallback.a(String.valueOf(paramNetResp.mErrCode));
+    this.a.a(String.valueOf(paramNetResp.mErrCode));
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.FaceConfigDownloader.FaceDownloadCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -18,12 +18,12 @@ class AVPreloadEngine$1
     AVPreloadLog.b("AVPreloadEngine", ((StringBuilder)localObject).toString(), new Object[0]);
     localObject = new ArrayList();
     ((ArrayList)localObject).add(paramString);
-    AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine, this.jdField_a_of_type_ComTencentIlivesdkAvpreloadservice_interfaceAVPreloadTaskInterface, (ArrayList)localObject);
+    AVPreloadEngine.a(this.b, this.a, (ArrayList)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadEngine.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,50 +5,50 @@ import android.support.annotation.NonNull;
 
 public class TogetherEnterRoomParam
 {
-  final Context jdField_a_of_type_AndroidContentContext;
-  final String jdField_a_of_type_JavaLangString;
-  String b = "";
+  final Context a;
+  final String b;
   String c = "";
   String d = "";
-  String e;
+  String e = "";
   String f;
   String g;
   String h;
+  String i;
   
   public TogetherEnterRoomParam(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramContext;
+    this.b = paramString;
   }
   
   public void a(String paramString)
   {
-    this.b = paramString;
+    this.c = paramString;
   }
   
   public void b(String paramString)
   {
-    this.c = paramString;
+    this.d = paramString;
   }
   
   public void c(String paramString)
   {
-    this.d = paramString;
+    this.e = paramString;
   }
   
   public void d(String paramString)
   {
-    this.e = paramString;
+    this.f = paramString;
   }
   
   public void e(String paramString)
   {
-    this.g = paramString;
+    this.h = paramString;
   }
   
   public void f(String paramString)
   {
-    this.h = paramString;
+    this.i = paramString;
   }
   
   @NonNull
@@ -56,27 +56,27 @@ public class TogetherEnterRoomParam
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("uin: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" roomId: ");
     localStringBuilder.append(this.b);
-    localStringBuilder.append(" roomGroupCode: ");
+    localStringBuilder.append(" roomId: ");
     localStringBuilder.append(this.c);
-    localStringBuilder.append(" roomShowNumber: ");
+    localStringBuilder.append(" roomGroupCode: ");
     localStringBuilder.append(this.d);
-    localStringBuilder.append(" fromId: ");
+    localStringBuilder.append(" roomShowNumber: ");
     localStringBuilder.append(this.e);
-    localStringBuilder.append(" openType: ");
+    localStringBuilder.append(" fromId: ");
     localStringBuilder.append(this.f);
-    localStringBuilder.append(" fromGroupId: ");
+    localStringBuilder.append(" openType: ");
     localStringBuilder.append(this.g);
-    localStringBuilder.append(" fromGroupOwnerUin: ");
+    localStringBuilder.append(" fromGroupId: ");
     localStringBuilder.append(this.h);
+    localStringBuilder.append(" fromGroupOwnerUin: ");
+    localStringBuilder.append(this.i);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.TogetherEnterRoomParam
  * JD-Core Version:    0.7.0.1
  */

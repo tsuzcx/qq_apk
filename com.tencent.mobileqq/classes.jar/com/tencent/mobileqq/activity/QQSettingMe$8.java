@@ -28,28 +28,28 @@ class QQSettingMe$8
     {
       paramURLDrawable = new StringBuilder();
       paramURLDrawable.append("VipInfoHandler onLoadSuccessed: ");
-      paramURLDrawable.append(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.iconUrl);
+      paramURLDrawable.append(this.a.d.iconUrl);
       QLog.d("QQSettingRedesign", 2, paramURLDrawable.toString());
     }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.iconText);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.iconTextCol));
+      this.b.setText(this.a.d.iconText);
+      this.b.setTextColor(Color.parseColor(this.a.d.iconTextCol));
       return;
     }
     catch (Exception paramURLDrawable)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("VipInfoHandler setTextColor: ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeBeanQQSettingMeSuperMemberPayButtonBean.a.iconTextCol);
+      localStringBuilder.append(this.a.d.iconTextCol);
       QLog.e("QQSettingRedesign", 1, localStringBuilder.toString(), paramURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      this.b.setTextColor(-16777216);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.8
  * JD-Core Version:    0.7.0.1
  */

@@ -22,8 +22,8 @@ class GuessSongClickStageView$3
     if (paramLottieDrawable != null)
     {
       localObject = this.a;
-      ((GuessSongClickStageView)localObject).a = paramLottieDrawable;
-      ((GuessSongClickStageView)localObject).d();
+      ((GuessSongClickStageView)localObject).p = paramLottieDrawable;
+      ((GuessSongClickStageView)localObject).e();
     }
   }
 }

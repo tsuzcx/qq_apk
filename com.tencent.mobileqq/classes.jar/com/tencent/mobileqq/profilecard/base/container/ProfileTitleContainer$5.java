@@ -12,7 +12,7 @@ class ProfileTitleContainer$5
 {
   ProfileTitleContainer$5(ProfileTitleContainer paramProfileTitleContainer, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
@@ -24,7 +24,7 @@ class ProfileTitleContainer$5
       }
       else
       {
-        ProfileCardUtil.a(ProfileTitleContainer.access$1500(this.this$0));
+        ProfileCardUtil.c(ProfileTitleContainer.access$1500(this.this$0));
         ReportController.b(ProfileTitleContainer.access$1600(this.this$0), "dc00898", "", "", "0X800A97D", "0X800A97D", 2, 0, "0", "0", "", "");
       }
     }
@@ -47,7 +47,7 @@ class ProfileTitleContainer$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.container.ProfileTitleContainer.5
  * JD-Core Version:    0.7.0.1
  */

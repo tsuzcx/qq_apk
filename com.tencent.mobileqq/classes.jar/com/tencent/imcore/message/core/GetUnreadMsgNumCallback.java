@@ -13,7 +13,7 @@ public abstract interface GetUnreadMsgNumCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.core.GetUnreadMsgNumCallback
  * JD-Core Version:    0.7.0.1
  */

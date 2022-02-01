@@ -13,15 +13,15 @@ final class QQPlayerService$11
       if (paramInt != 1) {
         return;
       }
-      QQPlayerService.a(MobileQQ.getContext(), QQPlayerService.b());
+      QQPlayerService.a(MobileQQ.getContext(), QQPlayerService.y());
       return;
     }
-    QQPlayerService.c(MobileQQ.getContext());
+    QQPlayerService.e(MobileQQ.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.QQPlayerService.11
  * JD-Core Version:    0.7.0.1
  */

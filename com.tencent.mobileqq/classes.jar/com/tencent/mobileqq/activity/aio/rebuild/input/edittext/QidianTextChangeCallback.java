@@ -14,7 +14,7 @@ public class QidianTextChangeCallback
   
   public boolean a(AIOContext paramAIOContext, Editable paramEditable)
   {
-    if (((paramAIOContext instanceof BusinessCmrTmpContext)) && (!QidianManager.a(paramAIOContext.a(), paramAIOContext.a().a))) {
+    if (((paramAIOContext instanceof BusinessCmrTmpContext)) && (!QidianManager.a(paramAIOContext.a(), paramAIOContext.O().b))) {
       ((BusinessCmrTmpContext)paramAIOContext).a(paramEditable);
     }
     return false;
@@ -24,7 +24,7 @@ public class QidianTextChangeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.edittext.QidianTextChangeCallback
  * JD-Core Version:    0.7.0.1
  */

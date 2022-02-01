@@ -17,13 +17,12 @@ public class GetVideoFullInfoListResponse
   extends BaseResponse
 {
   public List<StoryVideoItem> a = new ArrayList();
-  public int b;
-  public List<List<VideoUrlEntry>> b;
+  public List<List<VideoUrlEntry>> b = new ArrayList();
+  public int e;
   
   public GetVideoFullInfoListResponse(qqstory_service.RspBatchGetVideoFullInfoList paramRspBatchGetVideoFullInfoList)
   {
     super(paramRspBatchGetVideoFullInfoList.result);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
     Object localObject1 = paramRspBatchGetVideoFullInfoList.video_list.get();
     if (localObject1 != null)
     {
@@ -48,11 +47,11 @@ public class GetVideoFullInfoListResponse
             localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
             ((List)localObject2).add(localVideoUrlEntry);
           }
-          this.jdField_b_of_type_JavaUtilList.add(localObject2);
+          this.b.add(localObject2);
         }
       }
     }
-    this.jdField_b_of_type_Int = paramRspBatchGetVideoFullInfoList.interact_status.get();
+    this.e = paramRspBatchGetVideoFullInfoList.interact_status.get();
   }
   
   public String toString()
@@ -66,7 +65,7 @@ public class GetVideoFullInfoListResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetVideoFullInfoListResponse
  * JD-Core Version:    0.7.0.1
  */

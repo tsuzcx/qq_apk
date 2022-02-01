@@ -508,7 +508,7 @@ public class WtloginHelper$HelperThread
     //   69: putfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
     //   72: aload_0
     //   73: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   76: ifnull +1490 -> 1566
+    //   76: ifnull +1468 -> 1544
     //   79: aload_0
     //   80: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
     //   83: ifne +73 -> 156
@@ -547,7 +547,7 @@ public class WtloginHelper$HelperThread
     //   146: invokespecial 383	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$2:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
     //   149: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   152: pop
-    //   153: goto +1323 -> 1476
+    //   153: goto +1301 -> 1454
     //   156: aload_0
     //   157: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
     //   160: iconst_1
@@ -571,7 +571,7 @@ public class WtloginHelper$HelperThread
     //   192: invokespecial 396	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$3:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
     //   195: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   198: pop
-    //   199: goto +1277 -> 1476
+    //   199: goto +1255 -> 1454
     //   202: aload_0
     //   203: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
     //   206: iconst_2
@@ -599,7 +599,7 @@ public class WtloginHelper$HelperThread
     //   246: invokespecial 403	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$4:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
     //   249: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   252: pop
-    //   253: goto +1223 -> 1476
+    //   253: goto +1201 -> 1454
     //   256: aload_0
     //   257: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
     //   260: iconst_3
@@ -627,7 +627,7 @@ public class WtloginHelper$HelperThread
     //   300: invokespecial 410	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$5:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
     //   303: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   306: pop
-    //   307: goto +1169 -> 1476
+    //   307: goto +1147 -> 1454
     //   310: aload_0
     //   311: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
     //   314: iconst_4
@@ -657,11 +657,11 @@ public class WtloginHelper$HelperThread
     //   358: invokespecial 417	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$6:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
     //   361: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   364: pop
-    //   365: goto +1111 -> 1476
+    //   365: goto +1089 -> 1454
     //   368: aload_0
     //   369: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
     //   372: iconst_5
-    //   373: if_icmpne +265 -> 638
+    //   373: if_icmpne +243 -> 616
     //   376: getstatic 420	oicq/wlogin_sdk/request/WtloginHelper:GET_ST_WITHOUT_PASSWORD_LOCK	Ljava/lang/Object;
     //   379: astore 16
     //   381: aload 16
@@ -713,7 +713,7 @@ public class WtloginHelper$HelperThread
     //   468: istore_2
     //   469: iload_2
     //   470: bipush 20
-    //   472: if_icmpne +1338 -> 1810
+    //   472: if_icmpne +1316 -> 1788
     //   475: ldc_w 426
     //   478: ldc 239
     //   480: invokestatic 276	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
@@ -746,852 +746,842 @@ public class WtloginHelper$HelperThread
     //   535: istore_2
     //   536: goto +3 -> 539
     //   539: iload_2
-    //   540: ifeq +25 -> 565
-    //   543: new 428	oicq/wlogin_sdk/report/event/a
-    //   546: dup
-    //   547: ldc_w 430
-    //   550: iload_2
-    //   551: invokestatic 436	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   554: ldc 239
-    //   556: invokespecial 439	oicq/wlogin_sdk/report/event/a:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   559: invokestatic 445	oicq/wlogin_sdk/report/event/b:a	(Loicq/wlogin_sdk/report/event/a;)V
-    //   562: goto +26 -> 588
-    //   565: iload_3
-    //   566: bipush 20
-    //   568: if_icmpne +20 -> 588
-    //   571: new 428	oicq/wlogin_sdk/report/event/a
-    //   574: dup
-    //   575: ldc_w 447
-    //   578: ldc 239
-    //   580: ldc 239
-    //   582: invokespecial 439	oicq/wlogin_sdk/report/event/a:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   585: invokestatic 445	oicq/wlogin_sdk/report/event/b:a	(Loicq/wlogin_sdk/report/event/a;)V
-    //   588: aload 16
-    //   590: monitorexit
-    //   591: aload_0
-    //   592: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   595: astore 15
-    //   597: iload_1
-    //   598: istore_3
-    //   599: iload_3
-    //   600: istore_1
-    //   601: aload 15
-    //   603: new 449	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$7
-    //   606: dup
-    //   607: aload_0
-    //   608: iload_3
-    //   609: iload_2
-    //   610: invokespecial 450	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$7:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-    //   613: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   616: pop
-    //   617: goto +859 -> 1476
-    //   620: astore 15
-    //   622: goto +967 -> 1589
-    //   625: astore 15
-    //   627: goto +5 -> 632
-    //   630: astore 15
-    //   632: aload 16
-    //   634: monitorexit
-    //   635: aload 15
-    //   637: athrow
-    //   638: iload_1
-    //   639: istore_2
-    //   640: iload_2
-    //   641: istore_1
-    //   642: aload_0
-    //   643: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   646: bipush 6
-    //   648: if_icmpne +139 -> 787
-    //   651: iload_2
-    //   652: istore_1
-    //   653: aload_0
-    //   654: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   657: astore 15
-    //   659: iload_2
-    //   660: istore_1
-    //   661: aload_0
-    //   662: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
-    //   665: astore 16
-    //   667: iload_2
-    //   668: istore_1
-    //   669: aload_0
-    //   670: getfield 122	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppid1	J
-    //   673: lstore 5
-    //   675: iload_2
-    //   676: istore_1
-    //   677: aload_0
-    //   678: getfield 124	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mSubAppid1	J
-    //   681: lstore 7
-    //   683: iload_2
-    //   684: istore_1
-    //   685: aload_0
-    //   686: getfield 126	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwMainSigMap	I
-    //   689: istore_3
-    //   690: iload_2
-    //   691: istore_1
-    //   692: aload_0
-    //   693: getfield 145	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppName2	[B
-    //   696: astore 17
-    //   698: iload_2
-    //   699: istore_1
-    //   700: aload_0
-    //   701: getfield 147	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mSsoVer2	J
-    //   704: lstore 9
-    //   706: iload_2
-    //   707: istore_1
-    //   708: aload_0
-    //   709: getfield 149	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppid2	J
-    //   712: lstore 11
-    //   714: iload_2
-    //   715: istore_1
-    //   716: aload_0
-    //   717: getfield 151	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mSubAppid2	J
-    //   720: lstore 13
-    //   722: aload 15
-    //   724: aload 16
-    //   726: lload 5
-    //   728: lload 7
-    //   730: iload_3
-    //   731: aload 17
-    //   733: lload 9
-    //   735: lload 11
-    //   737: lload 13
-    //   739: aload_0
-    //   740: getfield 153	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppVer2	[B
-    //   743: aload_0
-    //   744: getfield 155	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppSign2	[B
-    //   747: aload_0
-    //   748: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
-    //   751: aload_0
-    //   752: getfield 157	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mFastLoginInfo	Loicq/wlogin_sdk/request/WFastLoginInfo;
-    //   755: iconst_1
-    //   756: invokestatic 454	oicq/wlogin_sdk/request/WtloginHelper:access$1600	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JJI[BJJJ[B[BLoicq/wlogin_sdk/request/WUserSigInfo;Loicq/wlogin_sdk/request/WFastLoginInfo;I)I
-    //   759: istore_3
-    //   760: aload_0
-    //   761: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   764: astore 15
-    //   766: iload_2
-    //   767: istore_1
-    //   768: aload 15
-    //   770: new 456	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$8
-    //   773: dup
-    //   774: aload_0
-    //   775: iload_2
-    //   776: iload_3
-    //   777: invokespecial 457	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$8:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-    //   780: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   783: pop
-    //   784: goto +692 -> 1476
-    //   787: iload_2
-    //   788: istore_1
-    //   789: aload_0
-    //   790: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   793: bipush 7
-    //   795: if_icmpne +33 -> 828
-    //   798: iload_2
-    //   799: istore_1
-    //   800: aload_0
-    //   801: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   804: iconst_1
-    //   805: aload_0
-    //   806: getfield 200	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mST1	[B
-    //   809: aload_0
-    //   810: getfield 202	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mST1Key	[B
-    //   813: aload_0
-    //   814: getfield 130	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUIN	J
-    //   817: aload_0
-    //   818: getfield 99	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwAppid	J
-    //   821: invokestatic 461	oicq/wlogin_sdk/request/WtloginHelper:access$1700	(Loicq/wlogin_sdk/request/WtloginHelper;I[B[BJJ)I
-    //   824: pop
-    //   825: goto +651 -> 1476
-    //   828: iload_2
-    //   829: istore_1
-    //   830: aload_0
-    //   831: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   834: bipush 9
-    //   836: if_icmpne +61 -> 897
-    //   839: iload_2
-    //   840: istore_1
-    //   841: aload_0
-    //   842: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   845: iconst_1
-    //   846: aload_0
-    //   847: getfield 95	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mEncrypt	I
-    //   850: aload_0
-    //   851: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
+    //   540: ifne +26 -> 566
+    //   543: iload_3
+    //   544: bipush 20
+    //   546: if_icmpne +20 -> 566
+    //   549: new 428	oicq/wlogin_sdk/report/event/b
+    //   552: dup
+    //   553: ldc_w 430
+    //   556: ldc 239
+    //   558: ldc 239
+    //   560: invokespecial 433	oicq/wlogin_sdk/report/event/b:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   563: invokestatic 439	oicq/wlogin_sdk/report/event/c:a	(Loicq/wlogin_sdk/report/event/b;)V
+    //   566: aload 16
+    //   568: monitorexit
+    //   569: aload_0
+    //   570: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   573: astore 15
+    //   575: iload_1
+    //   576: istore_3
+    //   577: iload_3
+    //   578: istore_1
+    //   579: aload 15
+    //   581: new 441	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$7
+    //   584: dup
+    //   585: aload_0
+    //   586: iload_3
+    //   587: iload_2
+    //   588: invokespecial 442	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$7:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+    //   591: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   594: pop
+    //   595: goto +859 -> 1454
+    //   598: astore 15
+    //   600: goto +967 -> 1567
+    //   603: astore 15
+    //   605: goto +5 -> 610
+    //   608: astore 15
+    //   610: aload 16
+    //   612: monitorexit
+    //   613: aload 15
+    //   615: athrow
+    //   616: iload_1
+    //   617: istore_2
+    //   618: iload_2
+    //   619: istore_1
+    //   620: aload_0
+    //   621: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   624: bipush 6
+    //   626: if_icmpne +139 -> 765
+    //   629: iload_2
+    //   630: istore_1
+    //   631: aload_0
+    //   632: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   635: astore 15
+    //   637: iload_2
+    //   638: istore_1
+    //   639: aload_0
+    //   640: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
+    //   643: astore 16
+    //   645: iload_2
+    //   646: istore_1
+    //   647: aload_0
+    //   648: getfield 122	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppid1	J
+    //   651: lstore 5
+    //   653: iload_2
+    //   654: istore_1
+    //   655: aload_0
+    //   656: getfield 124	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mSubAppid1	J
+    //   659: lstore 7
+    //   661: iload_2
+    //   662: istore_1
+    //   663: aload_0
+    //   664: getfield 126	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwMainSigMap	I
+    //   667: istore_3
+    //   668: iload_2
+    //   669: istore_1
+    //   670: aload_0
+    //   671: getfield 145	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppName2	[B
+    //   674: astore 17
+    //   676: iload_2
+    //   677: istore_1
+    //   678: aload_0
+    //   679: getfield 147	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mSsoVer2	J
+    //   682: lstore 9
+    //   684: iload_2
+    //   685: istore_1
+    //   686: aload_0
+    //   687: getfield 149	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppid2	J
+    //   690: lstore 11
+    //   692: iload_2
+    //   693: istore_1
+    //   694: aload_0
+    //   695: getfield 151	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mSubAppid2	J
+    //   698: lstore 13
+    //   700: aload 15
+    //   702: aload 16
+    //   704: lload 5
+    //   706: lload 7
+    //   708: iload_3
+    //   709: aload 17
+    //   711: lload 9
+    //   713: lload 11
+    //   715: lload 13
+    //   717: aload_0
+    //   718: getfield 153	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppVer2	[B
+    //   721: aload_0
+    //   722: getfield 155	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppSign2	[B
+    //   725: aload_0
+    //   726: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
+    //   729: aload_0
+    //   730: getfield 157	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mFastLoginInfo	Loicq/wlogin_sdk/request/WFastLoginInfo;
+    //   733: iconst_1
+    //   734: invokestatic 446	oicq/wlogin_sdk/request/WtloginHelper:access$1600	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JJI[BJJJ[B[BLoicq/wlogin_sdk/request/WUserSigInfo;Loicq/wlogin_sdk/request/WFastLoginInfo;I)I
+    //   737: istore_3
+    //   738: aload_0
+    //   739: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   742: astore 15
+    //   744: iload_2
+    //   745: istore_1
+    //   746: aload 15
+    //   748: new 448	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$8
+    //   751: dup
+    //   752: aload_0
+    //   753: iload_2
+    //   754: iload_3
+    //   755: invokespecial 449	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$8:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+    //   758: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   761: pop
+    //   762: goto +692 -> 1454
+    //   765: iload_2
+    //   766: istore_1
+    //   767: aload_0
+    //   768: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   771: bipush 7
+    //   773: if_icmpne +33 -> 806
+    //   776: iload_2
+    //   777: istore_1
+    //   778: aload_0
+    //   779: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   782: iconst_1
+    //   783: aload_0
+    //   784: getfield 200	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mST1	[B
+    //   787: aload_0
+    //   788: getfield 202	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mST1Key	[B
+    //   791: aload_0
+    //   792: getfield 130	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUIN	J
+    //   795: aload_0
+    //   796: getfield 99	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwAppid	J
+    //   799: invokestatic 453	oicq/wlogin_sdk/request/WtloginHelper:access$1700	(Loicq/wlogin_sdk/request/WtloginHelper;I[B[BJJ)I
+    //   802: pop
+    //   803: goto +651 -> 1454
+    //   806: iload_2
+    //   807: istore_1
+    //   808: aload_0
+    //   809: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   812: bipush 9
+    //   814: if_icmpne +61 -> 875
+    //   817: iload_2
+    //   818: istore_1
+    //   819: aload_0
+    //   820: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   823: iconst_1
+    //   824: aload_0
+    //   825: getfield 95	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mEncrypt	I
+    //   828: aload_0
+    //   829: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
+    //   832: aload_0
+    //   833: getfield 99	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwAppid	J
+    //   836: aload_0
+    //   837: getfield 101	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mRole	J
+    //   840: aload_0
+    //   841: getfield 103	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqContext	Loicq/wlogin_sdk/request/TransReqContext;
+    //   844: aload_0
+    //   845: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
+    //   848: invokevirtual 457	oicq/wlogin_sdk/request/WtloginHelper:RequestTransport	(IILjava/lang/String;JJLoicq/wlogin_sdk/request/TransReqContext;Loicq/wlogin_sdk/request/WUserSigInfo;)I
+    //   851: istore_3
+    //   852: iload_2
+    //   853: istore_1
     //   854: aload_0
-    //   855: getfield 99	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwAppid	J
-    //   858: aload_0
-    //   859: getfield 101	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mRole	J
+    //   855: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   858: new 459	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$9
+    //   861: dup
     //   862: aload_0
-    //   863: getfield 103	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqContext	Loicq/wlogin_sdk/request/TransReqContext;
-    //   866: aload_0
-    //   867: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
-    //   870: invokevirtual 465	oicq/wlogin_sdk/request/WtloginHelper:RequestTransport	(IILjava/lang/String;JJLoicq/wlogin_sdk/request/TransReqContext;Loicq/wlogin_sdk/request/WUserSigInfo;)I
-    //   873: istore_3
-    //   874: iload_2
-    //   875: istore_1
-    //   876: aload_0
-    //   877: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   880: new 467	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$9
-    //   883: dup
-    //   884: aload_0
-    //   885: iload_3
+    //   863: iload_3
+    //   864: iload_2
+    //   865: invokespecial 460	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$9:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+    //   868: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   871: pop
+    //   872: goto +582 -> 1454
+    //   875: iload_2
+    //   876: istore_1
+    //   877: aload_0
+    //   878: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   881: bipush 10
+    //   883: if_icmpne +57 -> 940
     //   886: iload_2
-    //   887: invokespecial 468	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$9:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-    //   890: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   893: pop
-    //   894: goto +582 -> 1476
-    //   897: iload_2
-    //   898: istore_1
-    //   899: aload_0
-    //   900: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   903: bipush 10
-    //   905: if_icmpne +57 -> 962
-    //   908: iload_2
-    //   909: istore_1
-    //   910: aload_0
-    //   911: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   914: iconst_1
-    //   915: aload_0
-    //   916: getfield 95	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mEncrypt	I
+    //   887: istore_1
+    //   888: aload_0
+    //   889: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   892: iconst_1
+    //   893: aload_0
+    //   894: getfield 95	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mEncrypt	I
+    //   897: aload_0
+    //   898: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
+    //   901: aload_0
+    //   902: getfield 99	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwAppid	J
+    //   905: aload_0
+    //   906: getfield 101	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mRole	J
+    //   909: aload_0
+    //   910: getfield 103	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqContext	Loicq/wlogin_sdk/request/TransReqContext;
+    //   913: invokevirtual 464	oicq/wlogin_sdk/request/WtloginHelper:RequestTransportMsf	(IILjava/lang/String;JJLoicq/wlogin_sdk/request/TransReqContext;)I
+    //   916: istore_3
+    //   917: iload_2
+    //   918: istore_1
     //   919: aload_0
-    //   920: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
-    //   923: aload_0
-    //   924: getfield 99	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwAppid	J
+    //   920: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   923: new 466	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$10
+    //   926: dup
     //   927: aload_0
-    //   928: getfield 101	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mRole	J
-    //   931: aload_0
-    //   932: getfield 103	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqContext	Loicq/wlogin_sdk/request/TransReqContext;
-    //   935: invokevirtual 472	oicq/wlogin_sdk/request/WtloginHelper:RequestTransportMsf	(IILjava/lang/String;JJLoicq/wlogin_sdk/request/TransReqContext;)I
-    //   938: istore_3
-    //   939: iload_2
-    //   940: istore_1
-    //   941: aload_0
-    //   942: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   945: new 474	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$10
-    //   948: dup
-    //   949: aload_0
-    //   950: iload_2
-    //   951: iload_3
-    //   952: invokespecial 475	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$10:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-    //   955: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   958: pop
-    //   959: goto +517 -> 1476
-    //   962: iload_2
-    //   963: istore_1
-    //   964: aload_0
-    //   965: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   968: bipush 12
-    //   970: if_icmpne +61 -> 1031
-    //   973: iload_2
-    //   974: istore_1
-    //   975: aload_0
-    //   976: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   979: aload_0
-    //   980: getfield 122	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppid1	J
-    //   983: aload_0
-    //   984: getfield 124	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mSubAppid1	J
-    //   987: aload_0
-    //   988: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
-    //   991: aload_0
-    //   992: getfield 87	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mExtraFlag	I
-    //   995: aload_0
-    //   996: getfield 85	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mExtraUin	J
-    //   999: aload_0
-    //   1000: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
-    //   1003: iconst_1
-    //   1004: invokestatic 479	oicq/wlogin_sdk/request/WtloginHelper:access$2100	(Loicq/wlogin_sdk/request/WtloginHelper;JJLjava/lang/String;IJLoicq/wlogin_sdk/request/WUserSigInfo;I)I
-    //   1007: istore_3
-    //   1008: iload_2
-    //   1009: istore_1
-    //   1010: aload_0
-    //   1011: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   1014: new 481	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$11
-    //   1017: dup
-    //   1018: aload_0
-    //   1019: iload_2
-    //   1020: iload_3
-    //   1021: invokespecial 482	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$11:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-    //   1024: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   1027: pop
-    //   1028: goto +448 -> 1476
-    //   1031: iload_2
-    //   1032: istore_1
-    //   1033: aload_0
-    //   1034: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   1037: bipush 13
-    //   1039: if_icmpne +49 -> 1088
-    //   1042: iload_2
-    //   1043: istore_1
-    //   1044: aload_0
-    //   1045: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   1048: aload_0
-    //   1049: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
-    //   1052: aload_0
-    //   1053: getfield 165	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mMsgCode	Ljava/lang/String;
-    //   1056: aload_0
-    //   1057: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
-    //   1060: iconst_1
-    //   1061: invokestatic 486	oicq/wlogin_sdk/request/WtloginHelper:access$2200	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Ljava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;I)I
-    //   1064: istore_3
-    //   1065: iload_2
-    //   1066: istore_1
-    //   1067: aload_0
-    //   1068: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   1071: new 488	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$12
-    //   1074: dup
-    //   1075: aload_0
-    //   1076: iload_2
-    //   1077: iload_3
-    //   1078: invokespecial 489	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$12:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-    //   1081: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   1084: pop
-    //   1085: goto +391 -> 1476
-    //   1088: iload_2
-    //   1089: istore_1
-    //   1090: aload_0
-    //   1091: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   1094: bipush 14
-    //   1096: if_icmpne +45 -> 1141
-    //   1099: iload_2
-    //   1100: istore_1
-    //   1101: aload_0
-    //   1102: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   1105: aload_0
-    //   1106: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
-    //   1109: aload_0
-    //   1110: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
-    //   1113: iconst_1
-    //   1114: invokestatic 492	oicq/wlogin_sdk/request/WtloginHelper:access$2400	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;I)I
-    //   1117: istore_3
-    //   1118: iload_2
-    //   1119: istore_1
-    //   1120: aload_0
-    //   1121: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   1124: new 494	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$13
-    //   1127: dup
-    //   1128: aload_0
-    //   1129: iload_2
-    //   1130: iload_3
-    //   1131: invokespecial 495	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$13:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-    //   1134: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   1137: pop
-    //   1138: goto +338 -> 1476
-    //   1141: iload_2
-    //   1142: istore_1
-    //   1143: aload_0
-    //   1144: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   1147: bipush 8
-    //   1149: if_icmpne +37 -> 1186
-    //   1152: iload_2
-    //   1153: istore_1
-    //   1154: aload_0
-    //   1155: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   1158: iconst_1
-    //   1159: aload_0
-    //   1160: getfield 200	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mST1	[B
-    //   1163: aload_0
-    //   1164: getfield 202	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mST1Key	[B
-    //   1167: aload_0
-    //   1168: getfield 130	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUIN	J
-    //   1171: aload_0
-    //   1172: getfield 99	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwAppid	J
-    //   1175: aload_0
-    //   1176: getfield 204	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReportErrType	I
-    //   1179: invokestatic 499	oicq/wlogin_sdk/request/WtloginHelper:access$2500	(Loicq/wlogin_sdk/request/WtloginHelper;I[B[BJJI)I
-    //   1182: pop
-    //   1183: goto +293 -> 1476
-    //   1186: iload_2
-    //   1187: istore_1
-    //   1188: aload_0
-    //   1189: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   1192: bipush 15
-    //   1194: if_icmpne +45 -> 1239
-    //   1197: iload_2
-    //   1198: istore_1
-    //   1199: aload_0
-    //   1200: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   1203: aload_0
-    //   1204: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
-    //   1207: aload_0
-    //   1208: getfield 170	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:quickLoginParam	Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;
-    //   1211: iconst_1
-    //   1212: invokestatic 503	oicq/wlogin_sdk/request/WtloginHelper:access$2600	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;I)I
-    //   1215: istore_3
-    //   1216: iload_2
-    //   1217: istore_1
-    //   1218: aload_0
-    //   1219: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   1222: new 505	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$14
-    //   1225: dup
-    //   1226: aload_0
-    //   1227: iload_2
-    //   1228: iload_3
-    //   1229: invokespecial 506	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$14:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-    //   1232: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   1235: pop
-    //   1236: goto +240 -> 1476
-    //   1239: iload_2
-    //   1240: istore_1
-    //   1241: aload_0
-    //   1242: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   1245: bipush 16
-    //   1247: if_icmpne +49 -> 1296
-    //   1250: iload_2
-    //   1251: istore_1
-    //   1252: aload_0
-    //   1253: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   1256: aload_0
-    //   1257: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
-    //   1260: aload_0
-    //   1261: getfield 168	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:ptSig	Ljava/lang/String;
-    //   1264: aload_0
-    //   1265: getfield 170	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:quickLoginParam	Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;
-    //   1268: iconst_1
-    //   1269: invokestatic 510	oicq/wlogin_sdk/request/WtloginHelper:access$2700	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Ljava/lang/String;Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;I)I
-    //   1272: istore_3
-    //   1273: iload_2
-    //   1274: istore_1
-    //   1275: aload_0
-    //   1276: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   1279: new 512	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$15
-    //   1282: dup
-    //   1283: aload_0
-    //   1284: iload_2
-    //   1285: iload_3
-    //   1286: invokespecial 513	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$15:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-    //   1289: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   1292: pop
-    //   1293: goto +183 -> 1476
-    //   1296: iload_2
-    //   1297: istore_1
-    //   1298: aload_0
-    //   1299: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   1302: bipush 17
-    //   1304: if_icmpne +57 -> 1361
-    //   1307: iload_2
-    //   1308: istore_1
-    //   1309: aload_0
-    //   1310: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   1313: aload_0
-    //   1314: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
-    //   1317: aload_0
-    //   1318: getfield 99	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwAppid	J
-    //   1321: aload_0
-    //   1322: getfield 133	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwSubDstAppid	J
-    //   1325: aload_0
-    //   1326: getfield 126	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwMainSigMap	I
-    //   1329: aload_0
-    //   1330: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
-    //   1333: iconst_1
-    //   1334: invokestatic 517	oicq/wlogin_sdk/request/WtloginHelper:access$2800	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JJILoicq/wlogin_sdk/request/WUserSigInfo;I)I
-    //   1337: istore_3
-    //   1338: iload_2
-    //   1339: istore_1
-    //   1340: aload_0
-    //   1341: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   1344: new 519	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$16
-    //   1347: dup
-    //   1348: aload_0
-    //   1349: iload_2
-    //   1350: iload_3
-    //   1351: invokespecial 520	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$16:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-    //   1354: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   1357: pop
-    //   1358: goto +118 -> 1476
-    //   1361: iload_2
-    //   1362: istore_1
-    //   1363: aload_0
-    //   1364: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   1367: bipush 18
-    //   1369: if_icmpne +49 -> 1418
-    //   1372: iload_2
-    //   1373: istore_1
-    //   1374: aload_0
-    //   1375: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   1378: aload_0
-    //   1379: getfield 186	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mWxAppid	[B
-    //   1382: aload_0
-    //   1383: getfield 184	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:weChatCode	[B
-    //   1386: aload_0
-    //   1387: getfield 170	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:quickLoginParam	Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;
-    //   1390: iconst_1
-    //   1391: invokevirtual 524	oicq/wlogin_sdk/request/WtloginHelper:quickLoginByWeChat	([B[BLoicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;I)I
-    //   1394: istore_3
-    //   1395: iload_2
-    //   1396: istore_1
-    //   1397: aload_0
-    //   1398: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   1401: new 526	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$17
-    //   1404: dup
-    //   1405: aload_0
-    //   1406: iload_2
-    //   1407: iload_3
-    //   1408: invokespecial 527	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$17:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-    //   1411: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   1414: pop
-    //   1415: goto +61 -> 1476
-    //   1418: iload_2
-    //   1419: istore_1
-    //   1420: aload_0
-    //   1421: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   1424: bipush 19
-    //   1426: if_icmpne +50 -> 1476
-    //   1429: iload_2
-    //   1430: istore_1
-    //   1431: aload_0
-    //   1432: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-    //   1435: aload_0
-    //   1436: getfield 122	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppid1	J
-    //   1439: aload_0
-    //   1440: getfield 124	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mSubAppid1	J
-    //   1443: aload_0
-    //   1444: getfield 126	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwMainSigMap	I
-    //   1447: aload_0
-    //   1448: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
-    //   1451: iconst_1
-    //   1452: invokestatic 531	oicq/wlogin_sdk/request/WtloginHelper:access$2900	(Loicq/wlogin_sdk/request/WtloginHelper;JJILoicq/wlogin_sdk/request/WUserSigInfo;I)I
-    //   1455: istore_3
-    //   1456: iload_2
-    //   1457: istore_1
-    //   1458: aload_0
-    //   1459: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   1462: new 533	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$18
-    //   1465: dup
-    //   1466: aload_0
-    //   1467: iload_2
-    //   1468: iload_3
-    //   1469: invokespecial 534	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$18:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-    //   1472: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   1475: pop
-    //   1476: aload_0
-    //   1477: getfield 77	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:isSelfLooper	Z
-    //   1480: ifeq +6 -> 1486
-    //   1483: invokestatic 537	android/os/Looper:loop	()V
-    //   1486: aload_0
-    //   1487: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   1490: bipush 7
-    //   1492: if_icmpeq +211 -> 1703
-    //   1495: getstatic 337	oicq/wlogin_sdk/request/WtloginHelper:__sync_top	Ljava/lang/Object;
-    //   1498: astore 15
-    //   1500: aload 15
-    //   1502: monitorenter
-    //   1503: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-    //   1506: ifle +11 -> 1517
-    //   1509: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-    //   1512: iconst_1
-    //   1513: isub
-    //   1514: putstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-    //   1517: new 105	java/lang/StringBuilder
-    //   1520: dup
-    //   1521: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   1524: astore 16
-    //   1526: aload 16
-    //   1528: ldc_w 539
-    //   1531: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1534: pop
-    //   1535: aload 16
-    //   1537: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-    //   1540: invokevirtual 272	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1543: pop
-    //   1544: aload 16
-    //   1546: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1549: ldc 239
-    //   1551: invokestatic 276	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1554: aload 15
-    //   1556: monitorexit
-    //   1557: return
-    //   1558: astore 16
-    //   1560: aload 15
-    //   1562: monitorexit
-    //   1563: aload 16
-    //   1565: athrow
-    //   1566: new 228	java/lang/Exception
-    //   1569: dup
-    //   1570: ldc_w 541
-    //   1573: invokespecial 543	java/lang/Exception:<init>	(Ljava/lang/String;)V
-    //   1576: athrow
-    //   1577: astore 15
-    //   1579: goto +10 -> 1589
-    //   1582: astore 16
-    //   1584: goto +120 -> 1704
-    //   1587: astore 15
-    //   1589: aload 15
-    //   1591: ldc 239
-    //   1593: invokestatic 245	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   1596: aload_0
-    //   1597: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-    //   1600: new 545	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$19
-    //   1603: dup
-    //   1604: aload_0
-    //   1605: iload_1
-    //   1606: invokespecial 548	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$19:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;I)V
-    //   1609: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   1612: pop
-    //   1613: aload_0
-    //   1614: getfield 77	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:isSelfLooper	Z
-    //   1617: ifeq +6 -> 1623
-    //   1620: invokestatic 537	android/os/Looper:loop	()V
-    //   1623: aload_0
-    //   1624: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   1627: bipush 7
-    //   1629: if_icmpeq +74 -> 1703
-    //   1632: getstatic 337	oicq/wlogin_sdk/request/WtloginHelper:__sync_top	Ljava/lang/Object;
-    //   1635: astore 15
-    //   1637: aload 15
-    //   1639: monitorenter
-    //   1640: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-    //   1643: ifle +11 -> 1654
-    //   1646: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-    //   1649: iconst_1
-    //   1650: isub
-    //   1651: putstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-    //   1654: new 105	java/lang/StringBuilder
-    //   1657: dup
-    //   1658: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   1661: astore 16
-    //   1663: aload 16
-    //   1665: ldc_w 539
-    //   1668: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1671: pop
-    //   1672: aload 16
-    //   1674: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-    //   1677: invokevirtual 272	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1680: pop
-    //   1681: aload 16
-    //   1683: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1686: ldc 239
-    //   1688: invokestatic 276	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1691: aload 15
-    //   1693: monitorexit
-    //   1694: return
-    //   1695: astore 16
-    //   1697: aload 15
-    //   1699: monitorexit
-    //   1700: aload 16
-    //   1702: athrow
-    //   1703: return
-    //   1704: aload_0
-    //   1705: getfield 77	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:isSelfLooper	Z
-    //   1708: ifeq +6 -> 1714
-    //   1711: invokestatic 537	android/os/Looper:loop	()V
-    //   1714: aload_0
-    //   1715: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-    //   1718: bipush 7
-    //   1720: if_icmpeq +76 -> 1796
-    //   1723: getstatic 337	oicq/wlogin_sdk/request/WtloginHelper:__sync_top	Ljava/lang/Object;
-    //   1726: astore 15
-    //   1728: aload 15
-    //   1730: monitorenter
-    //   1731: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-    //   1734: ifle +11 -> 1745
-    //   1737: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-    //   1740: iconst_1
-    //   1741: isub
-    //   1742: putstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-    //   1745: new 105	java/lang/StringBuilder
-    //   1748: dup
-    //   1749: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   1752: astore 17
-    //   1754: aload 17
-    //   1756: ldc_w 539
-    //   1759: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1762: pop
-    //   1763: aload 17
-    //   1765: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-    //   1768: invokevirtual 272	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1771: pop
-    //   1772: aload 17
-    //   1774: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1777: ldc 239
-    //   1779: invokestatic 276	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1782: aload 15
-    //   1784: monitorexit
-    //   1785: goto +11 -> 1796
-    //   1788: astore 16
-    //   1790: aload 15
-    //   1792: monitorexit
-    //   1793: aload 16
-    //   1795: athrow
-    //   1796: goto +6 -> 1802
-    //   1799: aload 16
-    //   1801: athrow
-    //   1802: goto -3 -> 1799
-    //   1805: astore 15
-    //   1807: goto -1175 -> 632
-    //   1810: goto -1271 -> 539
-    //   1813: astore 15
-    //   1815: goto -1183 -> 632
-    //   1818: astore 15
-    //   1820: iload_2
-    //   1821: istore_1
-    //   1822: goto -233 -> 1589
+    //   928: iload_2
+    //   929: iload_3
+    //   930: invokespecial 467	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$10:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+    //   933: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   936: pop
+    //   937: goto +517 -> 1454
+    //   940: iload_2
+    //   941: istore_1
+    //   942: aload_0
+    //   943: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   946: bipush 12
+    //   948: if_icmpne +61 -> 1009
+    //   951: iload_2
+    //   952: istore_1
+    //   953: aload_0
+    //   954: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   957: aload_0
+    //   958: getfield 122	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppid1	J
+    //   961: aload_0
+    //   962: getfield 124	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mSubAppid1	J
+    //   965: aload_0
+    //   966: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
+    //   969: aload_0
+    //   970: getfield 87	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mExtraFlag	I
+    //   973: aload_0
+    //   974: getfield 85	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mExtraUin	J
+    //   977: aload_0
+    //   978: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
+    //   981: iconst_1
+    //   982: invokestatic 471	oicq/wlogin_sdk/request/WtloginHelper:access$2100	(Loicq/wlogin_sdk/request/WtloginHelper;JJLjava/lang/String;IJLoicq/wlogin_sdk/request/WUserSigInfo;I)I
+    //   985: istore_3
+    //   986: iload_2
+    //   987: istore_1
+    //   988: aload_0
+    //   989: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   992: new 473	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$11
+    //   995: dup
+    //   996: aload_0
+    //   997: iload_2
+    //   998: iload_3
+    //   999: invokespecial 474	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$11:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+    //   1002: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   1005: pop
+    //   1006: goto +448 -> 1454
+    //   1009: iload_2
+    //   1010: istore_1
+    //   1011: aload_0
+    //   1012: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   1015: bipush 13
+    //   1017: if_icmpne +49 -> 1066
+    //   1020: iload_2
+    //   1021: istore_1
+    //   1022: aload_0
+    //   1023: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   1026: aload_0
+    //   1027: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
+    //   1030: aload_0
+    //   1031: getfield 165	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mMsgCode	Ljava/lang/String;
+    //   1034: aload_0
+    //   1035: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
+    //   1038: iconst_1
+    //   1039: invokestatic 478	oicq/wlogin_sdk/request/WtloginHelper:access$2200	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Ljava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;I)I
+    //   1042: istore_3
+    //   1043: iload_2
+    //   1044: istore_1
+    //   1045: aload_0
+    //   1046: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   1049: new 480	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$12
+    //   1052: dup
+    //   1053: aload_0
+    //   1054: iload_2
+    //   1055: iload_3
+    //   1056: invokespecial 481	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$12:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+    //   1059: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   1062: pop
+    //   1063: goto +391 -> 1454
+    //   1066: iload_2
+    //   1067: istore_1
+    //   1068: aload_0
+    //   1069: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   1072: bipush 14
+    //   1074: if_icmpne +45 -> 1119
+    //   1077: iload_2
+    //   1078: istore_1
+    //   1079: aload_0
+    //   1080: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   1083: aload_0
+    //   1084: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
+    //   1087: aload_0
+    //   1088: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
+    //   1091: iconst_1
+    //   1092: invokestatic 484	oicq/wlogin_sdk/request/WtloginHelper:access$2400	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;I)I
+    //   1095: istore_3
+    //   1096: iload_2
+    //   1097: istore_1
+    //   1098: aload_0
+    //   1099: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   1102: new 486	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$13
+    //   1105: dup
+    //   1106: aload_0
+    //   1107: iload_2
+    //   1108: iload_3
+    //   1109: invokespecial 487	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$13:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+    //   1112: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   1115: pop
+    //   1116: goto +338 -> 1454
+    //   1119: iload_2
+    //   1120: istore_1
+    //   1121: aload_0
+    //   1122: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   1125: bipush 8
+    //   1127: if_icmpne +37 -> 1164
+    //   1130: iload_2
+    //   1131: istore_1
+    //   1132: aload_0
+    //   1133: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   1136: iconst_1
+    //   1137: aload_0
+    //   1138: getfield 200	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mST1	[B
+    //   1141: aload_0
+    //   1142: getfield 202	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mST1Key	[B
+    //   1145: aload_0
+    //   1146: getfield 130	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUIN	J
+    //   1149: aload_0
+    //   1150: getfield 99	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwAppid	J
+    //   1153: aload_0
+    //   1154: getfield 204	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReportErrType	I
+    //   1157: invokestatic 491	oicq/wlogin_sdk/request/WtloginHelper:access$2500	(Loicq/wlogin_sdk/request/WtloginHelper;I[B[BJJI)I
+    //   1160: pop
+    //   1161: goto +293 -> 1454
+    //   1164: iload_2
+    //   1165: istore_1
+    //   1166: aload_0
+    //   1167: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   1170: bipush 15
+    //   1172: if_icmpne +45 -> 1217
+    //   1175: iload_2
+    //   1176: istore_1
+    //   1177: aload_0
+    //   1178: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   1181: aload_0
+    //   1182: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
+    //   1185: aload_0
+    //   1186: getfield 170	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:quickLoginParam	Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;
+    //   1189: iconst_1
+    //   1190: invokestatic 495	oicq/wlogin_sdk/request/WtloginHelper:access$2600	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;I)I
+    //   1193: istore_3
+    //   1194: iload_2
+    //   1195: istore_1
+    //   1196: aload_0
+    //   1197: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   1200: new 497	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$14
+    //   1203: dup
+    //   1204: aload_0
+    //   1205: iload_2
+    //   1206: iload_3
+    //   1207: invokespecial 498	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$14:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+    //   1210: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   1213: pop
+    //   1214: goto +240 -> 1454
+    //   1217: iload_2
+    //   1218: istore_1
+    //   1219: aload_0
+    //   1220: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   1223: bipush 16
+    //   1225: if_icmpne +49 -> 1274
+    //   1228: iload_2
+    //   1229: istore_1
+    //   1230: aload_0
+    //   1231: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   1234: aload_0
+    //   1235: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
+    //   1238: aload_0
+    //   1239: getfield 168	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:ptSig	Ljava/lang/String;
+    //   1242: aload_0
+    //   1243: getfield 170	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:quickLoginParam	Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;
+    //   1246: iconst_1
+    //   1247: invokestatic 502	oicq/wlogin_sdk/request/WtloginHelper:access$2700	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Ljava/lang/String;Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;I)I
+    //   1250: istore_3
+    //   1251: iload_2
+    //   1252: istore_1
+    //   1253: aload_0
+    //   1254: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   1257: new 504	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$15
+    //   1260: dup
+    //   1261: aload_0
+    //   1262: iload_2
+    //   1263: iload_3
+    //   1264: invokespecial 505	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$15:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+    //   1267: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   1270: pop
+    //   1271: goto +183 -> 1454
+    //   1274: iload_2
+    //   1275: istore_1
+    //   1276: aload_0
+    //   1277: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   1280: bipush 17
+    //   1282: if_icmpne +57 -> 1339
+    //   1285: iload_2
+    //   1286: istore_1
+    //   1287: aload_0
+    //   1288: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   1291: aload_0
+    //   1292: getfield 97	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserAccount	Ljava/lang/String;
+    //   1295: aload_0
+    //   1296: getfield 99	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwAppid	J
+    //   1299: aload_0
+    //   1300: getfield 133	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwSubDstAppid	J
+    //   1303: aload_0
+    //   1304: getfield 126	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwMainSigMap	I
+    //   1307: aload_0
+    //   1308: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
+    //   1311: iconst_1
+    //   1312: invokestatic 509	oicq/wlogin_sdk/request/WtloginHelper:access$2800	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JJILoicq/wlogin_sdk/request/WUserSigInfo;I)I
+    //   1315: istore_3
+    //   1316: iload_2
+    //   1317: istore_1
+    //   1318: aload_0
+    //   1319: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   1322: new 511	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$16
+    //   1325: dup
+    //   1326: aload_0
+    //   1327: iload_2
+    //   1328: iload_3
+    //   1329: invokespecial 512	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$16:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+    //   1332: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   1335: pop
+    //   1336: goto +118 -> 1454
+    //   1339: iload_2
+    //   1340: istore_1
+    //   1341: aload_0
+    //   1342: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   1345: bipush 18
+    //   1347: if_icmpne +49 -> 1396
+    //   1350: iload_2
+    //   1351: istore_1
+    //   1352: aload_0
+    //   1353: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   1356: aload_0
+    //   1357: getfield 186	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mWxAppid	[B
+    //   1360: aload_0
+    //   1361: getfield 184	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:weChatCode	[B
+    //   1364: aload_0
+    //   1365: getfield 170	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:quickLoginParam	Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;
+    //   1368: iconst_1
+    //   1369: invokevirtual 516	oicq/wlogin_sdk/request/WtloginHelper:quickLoginByWeChat	([B[BLoicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;I)I
+    //   1372: istore_3
+    //   1373: iload_2
+    //   1374: istore_1
+    //   1375: aload_0
+    //   1376: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   1379: new 518	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$17
+    //   1382: dup
+    //   1383: aload_0
+    //   1384: iload_2
+    //   1385: iload_3
+    //   1386: invokespecial 519	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$17:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+    //   1389: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   1392: pop
+    //   1393: goto +61 -> 1454
+    //   1396: iload_2
+    //   1397: istore_1
+    //   1398: aload_0
+    //   1399: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   1402: bipush 19
+    //   1404: if_icmpne +50 -> 1454
+    //   1407: iload_2
+    //   1408: istore_1
+    //   1409: aload_0
+    //   1410: getfield 89	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
+    //   1413: aload_0
+    //   1414: getfield 122	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mAppid1	J
+    //   1417: aload_0
+    //   1418: getfield 124	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mSubAppid1	J
+    //   1421: aload_0
+    //   1422: getfield 126	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwMainSigMap	I
+    //   1425: aload_0
+    //   1426: getfield 79	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
+    //   1429: iconst_1
+    //   1430: invokestatic 523	oicq/wlogin_sdk/request/WtloginHelper:access$2900	(Loicq/wlogin_sdk/request/WtloginHelper;JJILoicq/wlogin_sdk/request/WUserSigInfo;I)I
+    //   1433: istore_3
+    //   1434: iload_2
+    //   1435: istore_1
+    //   1436: aload_0
+    //   1437: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   1440: new 525	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$18
+    //   1443: dup
+    //   1444: aload_0
+    //   1445: iload_2
+    //   1446: iload_3
+    //   1447: invokespecial 526	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$18:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+    //   1450: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   1453: pop
+    //   1454: aload_0
+    //   1455: getfield 77	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:isSelfLooper	Z
+    //   1458: ifeq +6 -> 1464
+    //   1461: invokestatic 529	android/os/Looper:loop	()V
+    //   1464: aload_0
+    //   1465: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   1468: bipush 7
+    //   1470: if_icmpeq +211 -> 1681
+    //   1473: getstatic 337	oicq/wlogin_sdk/request/WtloginHelper:__sync_top	Ljava/lang/Object;
+    //   1476: astore 15
+    //   1478: aload 15
+    //   1480: monitorenter
+    //   1481: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+    //   1484: ifle +11 -> 1495
+    //   1487: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+    //   1490: iconst_1
+    //   1491: isub
+    //   1492: putstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+    //   1495: new 105	java/lang/StringBuilder
+    //   1498: dup
+    //   1499: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   1502: astore 16
+    //   1504: aload 16
+    //   1506: ldc_w 531
+    //   1509: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1512: pop
+    //   1513: aload 16
+    //   1515: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+    //   1518: invokevirtual 272	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1521: pop
+    //   1522: aload 16
+    //   1524: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1527: ldc 239
+    //   1529: invokestatic 276	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1532: aload 15
+    //   1534: monitorexit
+    //   1535: return
+    //   1536: astore 16
+    //   1538: aload 15
+    //   1540: monitorexit
+    //   1541: aload 16
+    //   1543: athrow
+    //   1544: new 228	java/lang/Exception
+    //   1547: dup
+    //   1548: ldc_w 533
+    //   1551: invokespecial 535	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   1554: athrow
+    //   1555: astore 15
+    //   1557: goto +10 -> 1567
+    //   1560: astore 16
+    //   1562: goto +120 -> 1682
+    //   1565: astore 15
+    //   1567: aload 15
+    //   1569: ldc 239
+    //   1571: invokestatic 245	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   1574: aload_0
+    //   1575: getfield 91	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+    //   1578: new 537	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$19
+    //   1581: dup
+    //   1582: aload_0
+    //   1583: iload_1
+    //   1584: invokespecial 540	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$19:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;I)V
+    //   1587: invokevirtual 389	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   1590: pop
+    //   1591: aload_0
+    //   1592: getfield 77	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:isSelfLooper	Z
+    //   1595: ifeq +6 -> 1601
+    //   1598: invokestatic 529	android/os/Looper:loop	()V
+    //   1601: aload_0
+    //   1602: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   1605: bipush 7
+    //   1607: if_icmpeq +74 -> 1681
+    //   1610: getstatic 337	oicq/wlogin_sdk/request/WtloginHelper:__sync_top	Ljava/lang/Object;
+    //   1613: astore 15
+    //   1615: aload 15
+    //   1617: monitorenter
+    //   1618: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+    //   1621: ifle +11 -> 1632
+    //   1624: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+    //   1627: iconst_1
+    //   1628: isub
+    //   1629: putstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+    //   1632: new 105	java/lang/StringBuilder
+    //   1635: dup
+    //   1636: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   1639: astore 16
+    //   1641: aload 16
+    //   1643: ldc_w 531
+    //   1646: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1649: pop
+    //   1650: aload 16
+    //   1652: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+    //   1655: invokevirtual 272	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1658: pop
+    //   1659: aload 16
+    //   1661: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1664: ldc 239
+    //   1666: invokestatic 276	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1669: aload 15
+    //   1671: monitorexit
+    //   1672: return
+    //   1673: astore 16
+    //   1675: aload 15
+    //   1677: monitorexit
+    //   1678: aload 16
+    //   1680: athrow
+    //   1681: return
+    //   1682: aload_0
+    //   1683: getfield 77	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:isSelfLooper	Z
+    //   1686: ifeq +6 -> 1692
+    //   1689: invokestatic 529	android/os/Looper:loop	()V
+    //   1692: aload_0
+    //   1693: getfield 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+    //   1696: bipush 7
+    //   1698: if_icmpeq +76 -> 1774
+    //   1701: getstatic 337	oicq/wlogin_sdk/request/WtloginHelper:__sync_top	Ljava/lang/Object;
+    //   1704: astore 15
+    //   1706: aload 15
+    //   1708: monitorenter
+    //   1709: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+    //   1712: ifle +11 -> 1723
+    //   1715: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+    //   1718: iconst_1
+    //   1719: isub
+    //   1720: putstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+    //   1723: new 105	java/lang/StringBuilder
+    //   1726: dup
+    //   1727: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   1730: astore 17
+    //   1732: aload 17
+    //   1734: ldc_w 531
+    //   1737: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1740: pop
+    //   1741: aload 17
+    //   1743: getstatic 347	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+    //   1746: invokevirtual 272	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1749: pop
+    //   1750: aload 17
+    //   1752: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1755: ldc 239
+    //   1757: invokestatic 276	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1760: aload 15
+    //   1762: monitorexit
+    //   1763: goto +11 -> 1774
+    //   1766: astore 16
+    //   1768: aload 15
+    //   1770: monitorexit
+    //   1771: aload 16
+    //   1773: athrow
+    //   1774: goto +6 -> 1780
+    //   1777: aload 16
+    //   1779: athrow
+    //   1780: goto -3 -> 1777
+    //   1783: astore 15
+    //   1785: goto -1175 -> 610
+    //   1788: goto -1249 -> 539
+    //   1791: astore 15
+    //   1793: goto -1183 -> 610
+    //   1796: astore 15
+    //   1798: iload_2
+    //   1799: istore_1
+    //   1800: goto -233 -> 1567
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1825	0	this	HelperThread
-    //   28	1794	1	i	int
-    //   134	1687	2	j	int
-    //   466	1003	3	k	int
+    //   0	1803	0	this	HelperThread
+    //   28	1772	1	i	int
+    //   134	1665	2	j	int
+    //   466	981	3	k	int
     //   37	10	4	bool	boolean
-    //   400	327	5	l1	long
-    //   406	323	7	l2	long
-    //   412	322	9	l3	long
-    //   423	313	11	l4	long
-    //   720	18	13	l5	long
-    //   388	214	15	localObject1	Object
-    //   620	1	15	localException1	Exception
-    //   625	1	15	localObject2	Object
-    //   630	6	15	localObject3	Object
-    //   1577	1	15	localException2	Exception
-    //   1587	3	15	localException3	Exception
-    //   1805	1	15	localObject6	Object
-    //   1813	1	15	localObject7	Object
-    //   1818	1	15	localException4	Exception
-    //   379	1166	16	localObject8	Object
-    //   1558	6	16	localObject9	Object
-    //   1582	1	16	localObject10	Object
-    //   1661	21	16	localStringBuilder	StringBuilder
-    //   1695	6	16	localObject11	Object
-    //   1788	12	16	localObject12	Object
-    //   394	1379	17	localObject13	Object
+    //   400	305	5	l1	long
+    //   406	301	7	l2	long
+    //   412	300	9	l3	long
+    //   423	291	11	l4	long
+    //   698	18	13	l5	long
+    //   388	192	15	localObject1	Object
+    //   598	1	15	localException1	Exception
+    //   603	1	15	localObject2	Object
+    //   608	6	15	localObject3	Object
+    //   1555	1	15	localException2	Exception
+    //   1565	3	15	localException3	Exception
+    //   1783	1	15	localObject6	Object
+    //   1791	1	15	localObject7	Object
+    //   1796	1	15	localException4	Exception
+    //   379	1144	16	localObject8	Object
+    //   1536	6	16	localObject9	Object
+    //   1560	1	16	localObject10	Object
+    //   1639	21	16	localStringBuilder	StringBuilder
+    //   1673	6	16	localObject11	Object
+    //   1766	12	16	localObject12	Object
+    //   394	1357	17	localObject13	Object
     //   429	16	18	arrayOfLong	long[]
     // Exception table:
     //   from	to	target	type
-    //   591	597	620	java/lang/Exception
-    //   431	467	625	finally
-    //   588	591	625	finally
-    //   384	431	630	finally
-    //   1503	1517	1558	finally
-    //   1517	1557	1558	finally
-    //   1560	1563	1558	finally
-    //   601	617	1577	java/lang/Exception
-    //   635	638	1577	java/lang/Exception
-    //   642	651	1577	java/lang/Exception
-    //   653	659	1577	java/lang/Exception
-    //   661	667	1577	java/lang/Exception
-    //   669	675	1577	java/lang/Exception
-    //   677	683	1577	java/lang/Exception
-    //   685	690	1577	java/lang/Exception
-    //   692	698	1577	java/lang/Exception
-    //   700	706	1577	java/lang/Exception
-    //   708	714	1577	java/lang/Exception
-    //   716	722	1577	java/lang/Exception
-    //   768	784	1577	java/lang/Exception
-    //   789	798	1577	java/lang/Exception
-    //   800	825	1577	java/lang/Exception
-    //   830	839	1577	java/lang/Exception
-    //   841	874	1577	java/lang/Exception
-    //   876	894	1577	java/lang/Exception
-    //   899	908	1577	java/lang/Exception
-    //   910	939	1577	java/lang/Exception
-    //   941	959	1577	java/lang/Exception
-    //   964	973	1577	java/lang/Exception
-    //   975	1008	1577	java/lang/Exception
-    //   1010	1028	1577	java/lang/Exception
-    //   1033	1042	1577	java/lang/Exception
-    //   1044	1065	1577	java/lang/Exception
-    //   1067	1085	1577	java/lang/Exception
-    //   1090	1099	1577	java/lang/Exception
-    //   1101	1118	1577	java/lang/Exception
-    //   1120	1138	1577	java/lang/Exception
-    //   1143	1152	1577	java/lang/Exception
-    //   1154	1183	1577	java/lang/Exception
-    //   1188	1197	1577	java/lang/Exception
-    //   1199	1216	1577	java/lang/Exception
-    //   1218	1236	1577	java/lang/Exception
-    //   1241	1250	1577	java/lang/Exception
-    //   1252	1273	1577	java/lang/Exception
-    //   1275	1293	1577	java/lang/Exception
-    //   1298	1307	1577	java/lang/Exception
-    //   1309	1338	1577	java/lang/Exception
-    //   1340	1358	1577	java/lang/Exception
-    //   1363	1372	1577	java/lang/Exception
-    //   1374	1395	1577	java/lang/Exception
-    //   1397	1415	1577	java/lang/Exception
-    //   1420	1429	1577	java/lang/Exception
-    //   1431	1456	1577	java/lang/Exception
-    //   1458	1476	1577	java/lang/Exception
-    //   1566	1577	1577	java/lang/Exception
-    //   72	153	1582	finally
-    //   156	199	1582	finally
-    //   202	253	1582	finally
-    //   256	307	1582	finally
-    //   310	365	1582	finally
-    //   368	384	1582	finally
-    //   591	597	1582	finally
-    //   601	617	1582	finally
-    //   635	638	1582	finally
-    //   642	651	1582	finally
-    //   653	659	1582	finally
-    //   661	667	1582	finally
-    //   669	675	1582	finally
-    //   677	683	1582	finally
-    //   685	690	1582	finally
-    //   692	698	1582	finally
-    //   700	706	1582	finally
-    //   708	714	1582	finally
-    //   716	722	1582	finally
-    //   722	766	1582	finally
-    //   768	784	1582	finally
-    //   789	798	1582	finally
-    //   800	825	1582	finally
-    //   830	839	1582	finally
-    //   841	874	1582	finally
-    //   876	894	1582	finally
-    //   899	908	1582	finally
-    //   910	939	1582	finally
-    //   941	959	1582	finally
-    //   964	973	1582	finally
-    //   975	1008	1582	finally
-    //   1010	1028	1582	finally
-    //   1033	1042	1582	finally
-    //   1044	1065	1582	finally
-    //   1067	1085	1582	finally
-    //   1090	1099	1582	finally
-    //   1101	1118	1582	finally
-    //   1120	1138	1582	finally
-    //   1143	1152	1582	finally
-    //   1154	1183	1582	finally
-    //   1188	1197	1582	finally
-    //   1199	1216	1582	finally
-    //   1218	1236	1582	finally
-    //   1241	1250	1582	finally
-    //   1252	1273	1582	finally
-    //   1275	1293	1582	finally
-    //   1298	1307	1582	finally
-    //   1309	1338	1582	finally
-    //   1340	1358	1582	finally
-    //   1363	1372	1582	finally
-    //   1374	1395	1582	finally
-    //   1397	1415	1582	finally
-    //   1420	1429	1582	finally
-    //   1431	1456	1582	finally
-    //   1458	1476	1582	finally
-    //   1566	1577	1582	finally
-    //   1589	1613	1582	finally
-    //   72	153	1587	java/lang/Exception
-    //   156	199	1587	java/lang/Exception
-    //   202	253	1587	java/lang/Exception
-    //   256	307	1587	java/lang/Exception
-    //   310	365	1587	java/lang/Exception
-    //   368	384	1587	java/lang/Exception
-    //   1640	1654	1695	finally
-    //   1654	1694	1695	finally
-    //   1697	1700	1695	finally
-    //   1731	1745	1788	finally
-    //   1745	1785	1788	finally
-    //   1790	1793	1788	finally
-    //   475	536	1805	finally
-    //   543	562	1805	finally
-    //   571	588	1805	finally
-    //   632	635	1813	finally
-    //   722	766	1818	java/lang/Exception
+    //   569	575	598	java/lang/Exception
+    //   431	467	603	finally
+    //   566	569	603	finally
+    //   384	431	608	finally
+    //   1481	1495	1536	finally
+    //   1495	1535	1536	finally
+    //   1538	1541	1536	finally
+    //   579	595	1555	java/lang/Exception
+    //   613	616	1555	java/lang/Exception
+    //   620	629	1555	java/lang/Exception
+    //   631	637	1555	java/lang/Exception
+    //   639	645	1555	java/lang/Exception
+    //   647	653	1555	java/lang/Exception
+    //   655	661	1555	java/lang/Exception
+    //   663	668	1555	java/lang/Exception
+    //   670	676	1555	java/lang/Exception
+    //   678	684	1555	java/lang/Exception
+    //   686	692	1555	java/lang/Exception
+    //   694	700	1555	java/lang/Exception
+    //   746	762	1555	java/lang/Exception
+    //   767	776	1555	java/lang/Exception
+    //   778	803	1555	java/lang/Exception
+    //   808	817	1555	java/lang/Exception
+    //   819	852	1555	java/lang/Exception
+    //   854	872	1555	java/lang/Exception
+    //   877	886	1555	java/lang/Exception
+    //   888	917	1555	java/lang/Exception
+    //   919	937	1555	java/lang/Exception
+    //   942	951	1555	java/lang/Exception
+    //   953	986	1555	java/lang/Exception
+    //   988	1006	1555	java/lang/Exception
+    //   1011	1020	1555	java/lang/Exception
+    //   1022	1043	1555	java/lang/Exception
+    //   1045	1063	1555	java/lang/Exception
+    //   1068	1077	1555	java/lang/Exception
+    //   1079	1096	1555	java/lang/Exception
+    //   1098	1116	1555	java/lang/Exception
+    //   1121	1130	1555	java/lang/Exception
+    //   1132	1161	1555	java/lang/Exception
+    //   1166	1175	1555	java/lang/Exception
+    //   1177	1194	1555	java/lang/Exception
+    //   1196	1214	1555	java/lang/Exception
+    //   1219	1228	1555	java/lang/Exception
+    //   1230	1251	1555	java/lang/Exception
+    //   1253	1271	1555	java/lang/Exception
+    //   1276	1285	1555	java/lang/Exception
+    //   1287	1316	1555	java/lang/Exception
+    //   1318	1336	1555	java/lang/Exception
+    //   1341	1350	1555	java/lang/Exception
+    //   1352	1373	1555	java/lang/Exception
+    //   1375	1393	1555	java/lang/Exception
+    //   1398	1407	1555	java/lang/Exception
+    //   1409	1434	1555	java/lang/Exception
+    //   1436	1454	1555	java/lang/Exception
+    //   1544	1555	1555	java/lang/Exception
+    //   72	153	1560	finally
+    //   156	199	1560	finally
+    //   202	253	1560	finally
+    //   256	307	1560	finally
+    //   310	365	1560	finally
+    //   368	384	1560	finally
+    //   569	575	1560	finally
+    //   579	595	1560	finally
+    //   613	616	1560	finally
+    //   620	629	1560	finally
+    //   631	637	1560	finally
+    //   639	645	1560	finally
+    //   647	653	1560	finally
+    //   655	661	1560	finally
+    //   663	668	1560	finally
+    //   670	676	1560	finally
+    //   678	684	1560	finally
+    //   686	692	1560	finally
+    //   694	700	1560	finally
+    //   700	744	1560	finally
+    //   746	762	1560	finally
+    //   767	776	1560	finally
+    //   778	803	1560	finally
+    //   808	817	1560	finally
+    //   819	852	1560	finally
+    //   854	872	1560	finally
+    //   877	886	1560	finally
+    //   888	917	1560	finally
+    //   919	937	1560	finally
+    //   942	951	1560	finally
+    //   953	986	1560	finally
+    //   988	1006	1560	finally
+    //   1011	1020	1560	finally
+    //   1022	1043	1560	finally
+    //   1045	1063	1560	finally
+    //   1068	1077	1560	finally
+    //   1079	1096	1560	finally
+    //   1098	1116	1560	finally
+    //   1121	1130	1560	finally
+    //   1132	1161	1560	finally
+    //   1166	1175	1560	finally
+    //   1177	1194	1560	finally
+    //   1196	1214	1560	finally
+    //   1219	1228	1560	finally
+    //   1230	1251	1560	finally
+    //   1253	1271	1560	finally
+    //   1276	1285	1560	finally
+    //   1287	1316	1560	finally
+    //   1318	1336	1560	finally
+    //   1341	1350	1560	finally
+    //   1352	1373	1560	finally
+    //   1375	1393	1560	finally
+    //   1398	1407	1560	finally
+    //   1409	1434	1560	finally
+    //   1436	1454	1560	finally
+    //   1544	1555	1560	finally
+    //   1567	1591	1560	finally
+    //   72	153	1565	java/lang/Exception
+    //   156	199	1565	java/lang/Exception
+    //   202	253	1565	java/lang/Exception
+    //   256	307	1565	java/lang/Exception
+    //   310	365	1565	java/lang/Exception
+    //   368	384	1565	java/lang/Exception
+    //   1618	1632	1673	finally
+    //   1632	1672	1673	finally
+    //   1675	1678	1673	finally
+    //   1709	1723	1766	finally
+    //   1723	1763	1766	finally
+    //   1768	1771	1766	finally
+    //   475	536	1783	finally
+    //   549	566	1783	finally
+    //   610	613	1791	finally
+    //   700	744	1796	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.WtloginHelper.HelperThread
  * JD-Core Version:    0.7.0.1
  */

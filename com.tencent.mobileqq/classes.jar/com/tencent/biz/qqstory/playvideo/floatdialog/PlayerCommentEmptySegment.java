@@ -15,28 +15,28 @@ public class PlayerCommentEmptySegment
   extends SegmentView
 {
   public static final String KEY = "PlayerCommentEmptySegment";
-  private View jdField_a_of_type_AndroidViewView;
-  private CommentFloatDialogController jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController;
   public DetailFeedItem a;
-  private boolean b = true;
+  private CommentFloatDialogController b;
+  private View c;
+  private boolean d = true;
   
   public PlayerCommentEmptySegment(Context paramContext)
   {
     super(paramContext);
   }
   
-  private boolean b()
+  private boolean j()
   {
-    CommentFloatDialogController localCommentFloatDialogController = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController;
-    return (localCommentFloatDialogController == null) || (localCommentFloatDialogController.a());
+    CommentFloatDialogController localCommentFloatDialogController = this.b;
+    return (localCommentFloatDialogController == null) || (localCommentFloatDialogController.e());
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.m)
     {
-      DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
-      if ((localDetailFeedItem == null) || (localDetailFeedItem.a(b()).size() == 0)) {
+      DetailFeedItem localDetailFeedItem = this.a;
+      if ((localDetailFeedItem == null) || (localDetailFeedItem.a(j()).size() == 0)) {
         return 1;
       }
     }
@@ -45,47 +45,47 @@ public class PlayerCommentEmptySegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    if (this.b) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (this.d) {
+      this.c.setVisibility(0);
     } else {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.c.setVisibility(8);
     }
     return paramBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561739, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131370396);
-    if (QQStoryContext.a()) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166526));
+    paramViewGroup = LayoutInflater.from(this.l).inflate(2131628118, paramViewGroup, false);
+    this.c = paramViewGroup.findViewById(2131437664);
+    if (QQStoryContext.e()) {
+      this.c.setBackgroundColor(this.l.getResources().getColor(2131167383));
     }
     return new BaseViewHolder(paramViewGroup);
   }
   
-  public String a()
-  {
-    return "PlayerCommentEmptySegment";
-  }
-  
   public void a(CommentFloatDialogController paramCommentFloatDialogController)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController = paramCommentFloatDialogController;
+    this.b = paramCommentFloatDialogController;
   }
   
   public void a(DetailFeedItem paramDetailFeedItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem = paramDetailFeedItem;
+    this.a = paramDetailFeedItem;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.d = paramBoolean;
+  }
+  
+  public String b()
+  {
+    return "PlayerCommentEmptySegment";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.PlayerCommentEmptySegment
  * JD-Core Version:    0.7.0.1
  */

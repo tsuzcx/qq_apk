@@ -37,7 +37,7 @@ public class AIOPopOutEmoticonConfig
   {
     WeakReference localWeakReference = this.weakChatPie;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      return ((BaseChatPie)this.weakChatPie.get()).d;
+      return ((BaseChatPie)this.weakChatPie.get()).ba;
     }
     localWeakReference = this.weakRootView;
     if (localWeakReference != null) {
@@ -56,16 +56,16 @@ public class AIOPopOutEmoticonConfig
     }
     this.itemCountShowAppear = StickerBubbleAnimationHelper.a((QQAppInterface)localObject);
     this.itemCountRecShowAppear = StickerBubbleAnimationHelper.a((QQAppInterface)localObject);
-    this.supportFeedBack = PokeItemHelper.b(null);
+    this.supportFeedBack = PokeItemHelper.e(null);
     this.maxSendCount = PokeItemHelper.b((QQAppInterface)localObject, 10);
     this.apngSoLoaded = VasApngIPCModule.a().isLoaded();
     if (!this.apngSoLoaded) {
       ThreadManager.excute(new AIOPopOutEmoticonConfig.1(this), 64, null, false);
     }
-    if (PEPanelHelper.a == null) {
+    if (PEPanelHelper.k == null) {
       PEPanelHelper.b();
     }
-    this.typeface = PEPanelHelper.a;
+    this.typeface = PEPanelHelper.k;
   }
   
   public void sendPopEmoMsg(SystemAndEmojiEmoticonInfo paramSystemAndEmojiEmoticonInfo, int paramInt)
@@ -74,7 +74,7 @@ public class AIOPopOutEmoticonConfig
     if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
       localObject = (BaseChatPie)this.weakChatPie.get();
-      ChatActivityFacade.a(((BaseChatPie)localObject).a(), ((BaseChatPie)localObject).a(), paramInt, paramSystemAndEmojiEmoticonInfo);
+      ChatActivityFacade.a(((BaseChatPie)localObject).i(), ((BaseChatPie)localObject).aE(), paramInt, paramSystemAndEmojiEmoticonInfo);
     }
   }
   
@@ -96,7 +96,7 @@ public class AIOPopOutEmoticonConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.AIOPopOutEmoticonConfig
  * JD-Core Version:    0.7.0.1
  */

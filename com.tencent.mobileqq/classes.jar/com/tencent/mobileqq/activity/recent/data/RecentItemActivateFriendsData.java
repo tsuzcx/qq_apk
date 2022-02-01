@@ -37,7 +37,7 @@ public class RecentItemActivateFriendsData
       if (localQQMessageFacade != null)
       {
         localObject1 = localObject2;
-        if (localQQMessageFacade.a(AppConstants.ACTIVATE_FRIENDS_UIN, 9002).size() > 0) {
+        if (localQQMessageFacade.h(AppConstants.ACTIVATE_FRIENDS_UIN, 9002).size() > 0) {
           localObject1 = localQQMessageFacade.getLastMessage(this.mUser.uin, this.mUser.getType());
         }
       }
@@ -63,11 +63,11 @@ public class RecentItemActivateFriendsData
         this.mShowTime = "";
         this.mLastMsg = "";
       }
-      b();
+      d();
       if (TextUtils.isEmpty(this.mTitleName)) {
-        this.mTitleName = paramContext.getString(2131689565);
+        this.mTitleName = paramContext.getString(2131886175);
       }
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName);
@@ -105,7 +105,7 @@ public class RecentItemActivateFriendsData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemActivateFriendsData
  * JD-Core Version:    0.7.0.1
  */

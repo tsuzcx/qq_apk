@@ -17,20 +17,20 @@ class QCircleHippyFragment$1
   
   public void onClick(View paramView)
   {
-    QCircleHippyFragment.a(this.a).a().a();
-    QCircleHippyFragment.a(this.a);
+    QCircleHippyFragment.a(this.a).i().a();
+    QCircleHippyFragment.b(this.a);
     IQCircleReportApi localIQCircleReportApi = (IQCircleReportApi)QRoute.api(IQCircleReportApi.class);
     FeedCloudCommon.Entry localEntry = QCircleHippyFragment.a("ret_code", "-1");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("network error,module name:");
-    localStringBuilder.append(QCircleHippyFragment.a(this.a));
+    localStringBuilder.append(QCircleHippyFragment.c(this.a));
     localIQCircleReportApi.reportQualityEvent("key_open_hippy_page", Arrays.asList(new FeedCloudCommon.Entry[] { localEntry, QCircleHippyFragment.a("attach_info", localStringBuilder.toString()) }), false);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.QCircleHippyFragment.1
  * JD-Core Version:    0.7.0.1
  */

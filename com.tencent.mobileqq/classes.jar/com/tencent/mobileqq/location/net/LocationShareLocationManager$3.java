@@ -9,7 +9,7 @@ class LocationShareLocationManager$3
   
   public void onDirectionChanged(double paramDouble, int paramInt)
   {
-    if (LocationShareLocationManager.a(this.a) != null)
+    if (LocationShareLocationManager.b(this.a) != null)
     {
       LocationShareLocationManager.a(this.a, paramDouble + 180.0D);
       LocationShareLocationManager.a().a(false);
@@ -18,7 +18,7 @@ class LocationShareLocationManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationShareLocationManager.3
  * JD-Core Version:    0.7.0.1
  */

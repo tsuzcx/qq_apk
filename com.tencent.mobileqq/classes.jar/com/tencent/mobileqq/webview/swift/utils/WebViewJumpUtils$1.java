@@ -38,14 +38,14 @@ final class WebViewJumpUtils$1
       if (paramString.endsWith("\"")) {
         localObject = paramString.substring(0, paramString.length() - 1);
       }
-      localBundle.putString("banner_wording", String.format(HardCodeUtil.a(2131714496), new Object[] { localObject }));
+      localBundle.putString("banner_wording", String.format(HardCodeUtil.a(2131912005), new Object[] { localObject }));
     }
-    WebViewJumpUtils.a(localBundle, this.a);
+    WebViewJumpUtils.b(localBundle, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.WebViewJumpUtils.1
  * JD-Core Version:    0.7.0.1
  */

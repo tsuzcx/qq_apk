@@ -12,16 +12,16 @@ class QQProxyForQlink$11
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (QQProxyForQlink.a(this.a) != null))
+    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (QQProxyForQlink.g(this.a) != null))
     {
-      QQProxyForQlink.a(this.a).dismiss();
+      QQProxyForQlink.g(this.a).dismiss();
       QQProxyForQlink.a(this.a, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QQProxyForQlink.11
  * JD-Core Version:    0.7.0.1
  */

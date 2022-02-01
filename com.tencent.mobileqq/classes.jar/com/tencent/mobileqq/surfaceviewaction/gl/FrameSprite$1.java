@@ -20,9 +20,9 @@ class FrameSprite$1
         j = 0;
         i = 0;
         Object localObject;
-        if ((i < FrameSprite.a(this.this$0).length) && (!FrameSprite.a(this.this$0)))
+        if ((i < FrameSprite.a(this.this$0).length) && (!FrameSprite.b(this.this$0)))
         {
-          localObject = new Texture(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, FrameSprite.a(this.this$0)[i]);
+          localObject = new Texture(this.a, this.b, FrameSprite.a(this.this$0)[i]);
           FrameSprite.a(this.this$0, i, (Texture)localObject);
           i += 1;
           continue;
@@ -36,8 +36,8 @@ class FrameSprite$1
         }
         l = System.currentTimeMillis();
         i = j;
-        if ((i < FrameSprite.a(this.this$0).length) && (!FrameSprite.a(this.this$0))) {
-          if ((!FrameSprite.b(this.this$0)) || (i % 2 == 0))
+        if ((i < FrameSprite.a(this.this$0).length) && (!FrameSprite.b(this.this$0))) {
+          if ((!FrameSprite.c(this.this$0)) || (i % 2 == 0))
           {
             if (QLog.isColorLevel())
             {
@@ -47,28 +47,28 @@ class FrameSprite$1
               QLog.d("FrameSprite", 2, ((StringBuilder)localObject).toString());
             }
             localObject = this.this$0;
-            if (!FrameSprite.b(this.this$0)) {
+            if (!FrameSprite.c(this.this$0)) {
               break label464;
             }
             j = i / 2;
             FrameSprite.a((FrameSprite)localObject, j);
-            if ((!FrameSprite.c(this.this$0)) && ((i == this.this$0.g - 1) || (i == FrameSprite.a(this.this$0).length - 1)))
+            if ((!FrameSprite.d(this.this$0)) && ((i == this.this$0.s - 1) || (i == FrameSprite.a(this.this$0).length - 1)))
             {
-              if ((FrameSprite.a(this.this$0) == 20) && ((int)(System.currentTimeMillis() - l) / this.this$0.g > 50))
+              if ((FrameSprite.e(this.this$0) == 20) && ((int)(System.currentTimeMillis() - l) / this.this$0.s > 50))
               {
                 this.this$0.e(10);
                 FrameSprite.a(this.this$0, true);
                 if (QLog.isColorLevel()) {
                   QLog.d("FrameSprite", 2, "mIsHalf = true");
                 }
-                this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new FrameSprite.1.1(this));
+                this.b.b(new FrameSprite.1.1(this));
               }
-              this.this$0.aO_();
+              this.this$0.dp_();
             }
-            if (FrameSprite.a(this.this$0) != null)
+            if (FrameSprite.g(this.this$0) != null)
             {
-              j = FrameSprite.a(this.this$0).size();
-              int k = this.this$0.g;
+              j = FrameSprite.g(this.this$0).size();
+              int k = this.this$0.s;
               if (j < k) {}
             }
           }
@@ -100,7 +100,7 @@ class FrameSprite$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class AECropperImageView$6
   public void onAnimationEnd(Animator paramAnimator)
   {
     AECropperImageView.a(this.a, false);
-    AECropperImageView.c(this.a);
+    AECropperImageView.g(this.a);
   }
   
   public void onAnimationRepeat(Animator paramAnimator)
@@ -31,7 +31,7 @@ class AECropperImageView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.nocropper.AECropperImageView.6
  * JD-Core Version:    0.7.0.1
  */

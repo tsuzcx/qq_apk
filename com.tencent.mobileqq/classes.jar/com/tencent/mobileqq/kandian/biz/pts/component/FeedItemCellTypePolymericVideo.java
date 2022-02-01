@@ -17,28 +17,28 @@ public class FeedItemCellTypePolymericVideo
     super(paramContext, paramIFaceDecoder, paramReadInJoyBaseAdapter);
   }
   
-  public FeedItemCell a()
+  public FeedItemCell b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().h();
+    this.h = true;
+    return i().j();
   }
   
-  public FeedItemCell d()
+  public FeedItemCell e()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      LinearLayout localLinearLayout = new LinearLayout(this.e);
       localLinearLayout.setOrientation(1);
-      if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof ReadInJoyModelImpl)) && (RIJFeedsType.h(((ReadInJoyModelImpl)this.jdField_a_of_type_JavaLangObject).a()))) {
-        localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.b(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+      if ((this.b != null) && ((this.b instanceof ReadInJoyModelImpl)) && (RIJFeedsType.l(((ReadInJoyModelImpl)this.b).k()))) {
+        localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.b(250.0F, this.e.getResources()), -2));
       } else {
-        localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.b(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+        localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.b(220.0F, this.e.getResources()), -2));
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView != null) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView instanceof ComponentContentBig))) {
-        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView);
+      if ((this.l != null) && ((this.l instanceof ComponentContentBig))) {
+        localLinearLayout.addView((ComponentContentBig)this.l);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentTitle != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentTitle);
+      if (this.m != null) {
+        localLinearLayout.addView(this.m);
       }
       a(localLinearLayout);
       return this;
@@ -46,20 +46,20 @@ public class FeedItemCellTypePolymericVideo
     throw new Exception("buildComponent() must after buildComponent()!");
   }
   
-  public FeedItemCell e()
+  public FeedItemCell f()
   {
     return null;
   }
   
-  public FeedItemCell g()
+  public FeedItemCell i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    this.l = new ComponentContentBigImageVideo(this.e);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypePolymericVideo
  * JD-Core Version:    0.7.0.1
  */

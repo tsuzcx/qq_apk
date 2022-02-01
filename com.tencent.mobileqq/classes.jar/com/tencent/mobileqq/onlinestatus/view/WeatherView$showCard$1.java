@@ -20,7 +20,7 @@ public final class WeatherView$showCard$1
   @QQPermissionDenied(1)
   public final void denied()
   {
-    DialogUtil.a((Activity)this.a.a(), 2131698482, 2131698483).setOnDismissListener((DialogInterface.OnDismissListener)new WeatherView.showCard.1.denied.1(this));
+    DialogUtil.a((Activity)this.a.c(), 2131896422, 2131896423).setOnDismissListener((DialogInterface.OnDismissListener)new WeatherView.showCard.1.denied.1(this));
   }
   
   @QQPermissionGrant(1)
@@ -31,7 +31,7 @@ public final class WeatherView$showCard$1
     localObject = ((IOnlineStatusManagerService)localObject).getManager(IOnlineStatusDataManager.class);
     if (localObject != null)
     {
-      ((OnlineStatusDataManager)localObject).a(9);
+      ((OnlineStatusDataManager)localObject).b(9);
       this.a.show();
       return;
     }
@@ -40,7 +40,7 @@ public final class WeatherView$showCard$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.WeatherView.showCard.1
  * JD-Core Version:    0.7.0.1
  */

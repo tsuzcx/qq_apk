@@ -24,12 +24,12 @@ public final class PermissionUtils
   
   private final int a(Activity paramActivity, String paramString)
   {
-    return TopicSDK.a.a().a().a().a(paramActivity, paramString);
+    return TopicSDK.a.a().b().l().a(paramActivity, paramString);
   }
   
   private final void a(Activity paramActivity, String[] paramArrayOfString, int paramInt, IPermission.Callback paramCallback)
   {
-    TopicSDK.a.a().a().a().a(paramActivity, paramArrayOfString, paramInt, paramCallback);
+    TopicSDK.a.a().b().l().a(paramActivity, paramArrayOfString, paramInt, paramCallback);
   }
   
   private final boolean b(Activity paramActivity)
@@ -75,7 +75,7 @@ public final class PermissionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.PermissionUtils
  * JD-Core Version:    0.7.0.1
  */

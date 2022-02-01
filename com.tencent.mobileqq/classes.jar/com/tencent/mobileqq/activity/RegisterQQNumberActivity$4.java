@@ -11,10 +11,10 @@ class RegisterQQNumberActivity$4
   {
     try
     {
-      if ((RegisterQQNumberActivity.a(this.this$0) != null) && (RegisterQQNumberActivity.a(this.this$0).isShowing()))
+      if ((RegisterQQNumberActivity.c(this.this$0) != null) && (RegisterQQNumberActivity.c(this.this$0).isShowing()))
       {
-        RegisterQQNumberActivity.a(this.this$0).dismiss();
-        RegisterQQNumberActivity.a(this.this$0).cancel();
+        RegisterQQNumberActivity.c(this.this$0).dismiss();
+        RegisterQQNumberActivity.c(this.this$0).cancel();
       }
     }
     catch (Throwable localThrowable)
@@ -26,7 +26,7 @@ class RegisterQQNumberActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterQQNumberActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import com.tencent.falco.base.libapi.log.LogInterface;
 
 public class LogUtil
 {
-  private static LogInterface jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
-  private static String jdField_a_of_type_JavaLangString = "%s";
+  private static LogInterface a;
+  private static String b = "%s";
   
   public static void a()
   {
-    jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface = null;
+    a = null;
   }
   
   public static void a(String paramString, LogInterface paramLogInterface)
@@ -20,38 +20,38 @@ public class LogUtil
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
       localStringBuilder.append(" | %s");
-      jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      b = localStringBuilder.toString();
     }
-    jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface = paramLogInterface;
+    a = paramLogInterface;
   }
   
   public static void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    LogInterface localLogInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
+    LogInterface localLogInterface = a;
     if (localLogInterface != null) {
-      localLogInterface.d(String.format(jdField_a_of_type_JavaLangString, new Object[] { paramString1 }), paramString2, paramVarArgs);
+      localLogInterface.d(String.format(b, new Object[] { paramString1 }), paramString2, paramVarArgs);
     }
   }
   
   public static void b(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    LogInterface localLogInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
+    LogInterface localLogInterface = a;
     if (localLogInterface != null) {
-      localLogInterface.i(String.format(jdField_a_of_type_JavaLangString, new Object[] { paramString1 }), paramString2, paramVarArgs);
+      localLogInterface.i(String.format(b, new Object[] { paramString1 }), paramString2, paramVarArgs);
     }
   }
   
   public static void c(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    LogInterface localLogInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
+    LogInterface localLogInterface = a;
     if (localLogInterface != null) {
-      localLogInterface.e(String.format(jdField_a_of_type_JavaLangString, new Object[] { paramString1 }), paramString2, paramVarArgs);
+      localLogInterface.e(String.format(b, new Object[] { paramString1 }), paramString2, paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.utils.LogUtil
  * JD-Core Version:    0.7.0.1
  */

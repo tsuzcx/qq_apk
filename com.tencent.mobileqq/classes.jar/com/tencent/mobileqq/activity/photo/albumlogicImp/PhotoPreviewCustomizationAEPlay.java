@@ -25,29 +25,29 @@ public class PhotoPreviewCustomizationAEPlay
   private void a(String paramString)
   {
     long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.a >= 700L)
+    if (l - this.d.C >= 700L)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.a = l;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getResources().getDimensionPixelSize(2131299168));
+      this.d.C = l;
+      QQToast.makeText(this.c, paramString, 0).show(this.c.getResources().getDimensionPixelSize(2131299920));
     }
   }
   
-  private boolean e()
+  private boolean d()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size() < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.maxSelectNum;
+    return this.f.selectedPhotoList.size() < this.f.maxSelectNum;
   }
   
   public void a()
   {
     super.a();
-    a().a.setOnClickListener(new PhotoPreviewCustomizationAEPlay.1(this));
+    s().l.setOnClickListener(new PhotoPreviewCustomizationAEPlay.1(this));
   }
   
   public void a(View paramView)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedIndex.contains(Integer.valueOf(a().a()))) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size() >= this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.maxSelectNum))
+    if ((!this.f.selectedIndex.contains(Integer.valueOf(s().m()))) && (this.f.selectedPhotoList.size() >= this.f.maxSelectNum))
     {
-      a(String.format(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getString(2131689726), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.maxSelectNum) }));
+      a(String.format(this.c.getString(2131886357), new Object[] { Integer.valueOf(this.f.maxSelectNum) }));
       return;
     }
     super.a(paramView);
@@ -56,28 +56,28 @@ public class PhotoPreviewCustomizationAEPlay
   public void b()
   {
     super.b();
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getString(2131716583);
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size();
+    String str = this.c.getString(2131914046);
+    int i = this.f.selectedPhotoList.size();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append(" ");
     localStringBuilder.append(i);
     localStringBuilder.append("/");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.maxSelectNum);
+    localStringBuilder.append(this.f.maxSelectNum);
     str = localStringBuilder.toString();
-    a().a.setText(str);
-    a().a.setEnabled(true);
-    if (e())
+    s().l.setText(str);
+    s().l.setEnabled(true);
+    if (d())
     {
-      a().a.setBackgroundResource(2130850104);
+      s().l.setBackgroundResource(2130851880);
       return;
     }
-    a().a.setBackgroundResource(2130837911);
+    s().l.setBackgroundResource(2130837935);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationAEPlay
  * JD-Core Version:    0.7.0.1
  */

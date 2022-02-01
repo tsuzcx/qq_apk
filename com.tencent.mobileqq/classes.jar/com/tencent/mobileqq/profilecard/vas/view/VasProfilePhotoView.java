@@ -30,29 +30,29 @@ public class VasProfilePhotoView
   
   private View initMainView(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131562025, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131628451, this, true);
   }
   
   private void updateAvatarArea(ProfileCardInfo paramProfileCardInfo, Context paramContext, View paramView)
   {
-    AvatarLayout localAvatarLayout = (AvatarLayout)paramView.findViewById(2131368780);
+    AvatarLayout localAvatarLayout = (AvatarLayout)paramView.findViewById(2131435701);
     localAvatarLayout.setVisibility(0);
-    Object localObject = (ImageView)paramView.findViewById(2131368781);
+    Object localObject = (ImageView)paramView.findViewById(2131435702);
     this.templateUtils.updateViewAttr((View)localObject, "src", paramProfileCardInfo.currentTemplate, "commonFaceBackground");
     localObject = new DataTag(1, null);
     localAvatarLayout.setTag(localObject);
     localAvatarLayout.setOnClickListener(this.mOnClickListener);
     if (paramProfileCardInfo.allInOne.pa == 0) {
-      paramContext = paramContext.getString(2131691197);
+      paramContext = paramContext.getString(2131888143);
     } else {
-      paramContext = paramContext.getString(2131691196);
+      paramContext = paramContext.getString(2131888142);
     }
     localAvatarLayout.setContentDescription(paramContext);
-    localAvatarLayout.a(0, localAvatarLayout.findViewById(2131363438), false);
+    localAvatarLayout.a(0, localAvatarLayout.findViewById(2131429335), false);
     this.mHeaderChildMap.put("map_key_face", localAvatarLayout);
-    this.mHeaderChildMap.put("map_key_face_stoke", paramView.findViewById(2131368781));
+    this.mHeaderChildMap.put("map_key_face_stoke", paramView.findViewById(2131435702));
     super.updateAvatar(paramProfileCardInfo.allInOne);
-    paramContext = (ImageView)paramView.findViewById(2131368617);
+    paramContext = (ImageView)paramView.findViewById(2131435529);
     paramContext.setVisibility(4);
     paramContext.setOnClickListener(this.mOnClickListener);
     paramContext.setTag(localObject);
@@ -62,7 +62,7 @@ public class VasProfilePhotoView
   
   private void updateBaseInfoArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    paramView = (TextView)paramView.findViewById(2131368787);
+    paramView = (TextView)paramView.findViewById(2131435708);
     this.templateUtils.updateViewAttr(paramView, "color", paramProfileCardInfo.currentTemplate, "photoAddressColor");
     this.mHeaderChildMap.put("map_key_sex_age_area", paramView);
     super.updateSexAgeArea(paramProfileCardInfo);
@@ -70,7 +70,7 @@ public class VasProfilePhotoView
   
   private void updateHeadArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    paramView = (ProfileNameView)paramView.findViewById(2131368795);
+    paramView = (ProfileNameView)paramView.findViewById(2131435716);
     this.templateUtils.updateViewAttr(paramView, "color", paramProfileCardInfo.currentTemplate, "photoNickNameColor");
     paramView.setVisibility(0);
     paramView.setClickable(true);
@@ -81,8 +81,8 @@ public class VasProfilePhotoView
   
   private void updateLikeArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    VoteView localVoteView = (VoteView)findViewById(2131380996);
-    paramView = (HeartLayout)paramView.findViewById(2131368151);
+    VoteView localVoteView = (VoteView)findViewById(2131449991);
+    paramView = (HeartLayout)paramView.findViewById(2131435008);
     paramView.setEnabled(false);
     localVoteView.setHeartLayout(this.mApp, paramView);
     this.mHeaderChildMap.put("map_key_like", localVoteView);
@@ -91,7 +91,7 @@ public class VasProfilePhotoView
   
   private void updatePhotoWallArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    paramView = (QzonePhotoView)paramView.findViewById(2131374935);
+    paramView = (QzonePhotoView)paramView.findViewById(2131443120);
     paramView.setTemplateUtils(this.templateUtils);
     paramView.a(this.mActivity, paramProfileCardInfo);
     this.mHeaderChildMap.put("map_key_qzonecover", paramView);
@@ -100,7 +100,7 @@ public class VasProfilePhotoView
   
   private void updateTipsArea(View paramView)
   {
-    paramView = (LinearLayout)paramView.findViewById(2131368825);
+    paramView = (LinearLayout)paramView.findViewById(2131435746);
     this.mHeaderChildMap.put("map_key_tips", paramView);
   }
   
@@ -145,7 +145,7 @@ public class VasProfilePhotoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfilePhotoView
  * JD-Core Version:    0.7.0.1
  */

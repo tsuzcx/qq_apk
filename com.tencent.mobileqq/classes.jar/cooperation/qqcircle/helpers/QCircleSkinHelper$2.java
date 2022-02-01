@@ -1,9 +1,6 @@
 package cooperation.qqcircle.helpers;
 
 import com.tencent.biz.richframework.download.RFWDownloader.RFWDownloadListener;
-import com.tencent.mobileqq.util.SharePreferenceUtils;
-import java.io.File;
-import mqq.app.MobileQQ;
 
 class QCircleSkinHelper$2
   implements RFWDownloader.RFWDownloadListener
@@ -14,38 +11,12 @@ class QCircleSkinHelper$2
   
   public void onRspCallback(boolean paramBoolean, String paramString)
   {
-    QCircleSkinHelper localQCircleSkinHelper = this.this$0;
-    String str = this.val$url;
-    Object localObject;
-    if (paramBoolean) {
-      localObject = "0";
-    } else {
-      localObject = "-1";
-    }
-    QCircleSkinHelper.access$400(localQCircleSkinHelper, str, (String)localObject, (float)(System.currentTimeMillis() - QCircleSkinHelper.access$300(this.this$0)) / 1000.0F);
-    if (paramBoolean)
-    {
-      localObject = this.val$skinDownLoadLister;
-      if (localObject != null) {
-        ((QCircleSkinHelper.SkinDownLoadLister)localObject).onRspCallback(true, paramString);
-      }
-      localObject = new File(this.val$oldSkinPath);
-      if ((new File(paramString).exists()) && ((!((File)localObject).exists()) || (((File)localObject).delete()))) {
-        SharePreferenceUtils.a(MobileQQ.sMobileQQ.getApplicationContext(), "qcircle_skin_package_path", paramString);
-      }
-    }
-    else
-    {
-      localObject = this.val$skinDownLoadLister;
-      if (localObject != null) {
-        ((QCircleSkinHelper.SkinDownLoadLister)localObject).onRspCallback(false, paramString);
-      }
-    }
+    QCircleSkinHelper.access$300(this.this$0, paramBoolean, paramString, this.val$url, this.val$skinDownLoadLister, this.val$oldSkinPath);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.helpers.QCircleSkinHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -60,7 +60,7 @@ public class QzoneVipPaymentJsPlugin
   
   private int generateRequestCode(int paramInt)
   {
-    WebUiBaseInterface localWebUiBaseInterface = this.parentPlugin.mRuntime.a(this.parentPlugin.mRuntime.a());
+    WebUiBaseInterface localWebUiBaseInterface = this.parentPlugin.mRuntime.a(this.parentPlugin.mRuntime.d());
     int i = paramInt;
     if ((localWebUiBaseInterface instanceof WebViewPluginContainer)) {
       i = ((WebViewPluginContainer)localWebUiBaseInterface).switchRequestCode(this.parentPlugin, (byte)paramInt);
@@ -70,29 +70,29 @@ public class QzoneVipPaymentJsPlugin
   
   private void gotoVipPayment(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
   {
-    Object localObject1 = this.parentPlugin.mRuntime.a();
+    Object localObject1 = this.parentPlugin.mRuntime.d();
     if (localObject1 != null)
     {
       if (((Activity)localObject1).isFinishing()) {
         return;
       }
-      AppInterface localAppInterface = this.parentPlugin.mRuntime.a();
+      AppInterface localAppInterface = this.parentPlugin.mRuntime.b();
       if (localAppInterface == null) {
         return;
       }
       Intent localIntent = new Intent(BaseApplication.getContext(), PayBridgeActivity.class);
       String str1 = VipUtils.a(paramString4);
-      Object localObject2 = ((Activity)localObject1).getString(2131717691);
-      String str2 = ((Activity)localObject1).getString(2131717692);
+      Object localObject2 = ((Activity)localObject1).getString(2131915166);
+      String str2 = ((Activity)localObject1).getString(2131915167);
       if ("1".equals(paramString3))
       {
-        paramString3 = ((Activity)localObject1).getString(2131717691);
+        paramString3 = ((Activity)localObject1).getString(2131915166);
         localObject1 = "xxjzgw";
         paramString4 = "1450000153";
       }
       else if ("2".equals(paramString3))
       {
-        paramString3 = ((Activity)localObject1).getString(2131717311);
+        paramString3 = ((Activity)localObject1).getString(2131914784);
         localObject1 = "XXJZGHH";
         paramString4 = "1450001557";
       }
@@ -167,7 +167,7 @@ public class QzoneVipPaymentJsPlugin
   
   private void onPayClose()
   {
-    Activity localActivity = this.parentPlugin.mRuntime.a();
+    Activity localActivity = this.parentPlugin.mRuntime.d();
     if (localActivity != null)
     {
       if (localActivity.isFinishing()) {
@@ -179,7 +179,7 @@ public class QzoneVipPaymentJsPlugin
   
   private void payVipDirectly(String paramString1, String paramString2)
   {
-    Object localObject = this.parentPlugin.mRuntime.a();
+    Object localObject = this.parentPlugin.mRuntime.d();
     if (localObject != null)
     {
       if (((Activity)localObject).isFinishing()) {
@@ -200,10 +200,10 @@ public class QzoneVipPaymentJsPlugin
       localStringBuilder.append(paramString1);
       localMonitorManager.a(1, 2, "native 支付", localStringBuilder.toString());
       this.payCallback = paramString2;
-      if (this.parentPlugin.mRuntime.a() == null) {
+      if (this.parentPlugin.mRuntime.b() == null) {
         return;
       }
-      paramString1 = this.parentPlugin.mRuntime.a().getAccount();
+      paramString1 = this.parentPlugin.mRuntime.b().getAccount();
       paramString2 = new QZoneClickReport.ReportInfo();
       paramString2.setActionType("328");
       paramString2.setToUin(Long.parseLong(paramString1));
@@ -258,8 +258,8 @@ public class QzoneVipPaymentJsPlugin
             QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
             paramJsBridgeListener.putExtra("open_what", 7);
             paramJsBridgeListener.putExtra("navi_deco", paramVarArgs[0]);
-            if ((this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null) && (this.parentPlugin.mRuntime.a() != null)) {
-              QzonePluginProxyActivity.launchPluingActivityForResult(this.parentPlugin.mRuntime.a(), this.parentPlugin.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(9));
+            if ((this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.d() != null) && (this.parentPlugin.mRuntime.b() != null)) {
+              QzonePluginProxyActivity.launchPluingActivityForResult(this.parentPlugin.mRuntime.d(), this.parentPlugin.mRuntime.b().getAccount(), paramJsBridgeListener, generateRequestCode(9));
             }
           }
           return true;
@@ -282,7 +282,7 @@ public class QzoneVipPaymentJsPlugin
     super.onActivityResult(paramIntent, paramByte, paramInt);
     if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null))
     {
-      Activity localActivity = this.parentPlugin.mRuntime.a();
+      Activity localActivity = this.parentPlugin.mRuntime.d();
       if (localActivity != null)
       {
         if (localActivity.isFinishing()) {
@@ -341,7 +341,7 @@ public class QzoneVipPaymentJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneVipPaymentJsPlugin
  * JD-Core Version:    0.7.0.1
  */

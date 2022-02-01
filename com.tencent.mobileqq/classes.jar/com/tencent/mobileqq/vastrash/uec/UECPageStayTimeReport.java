@@ -61,30 +61,6 @@ public class UECPageStayTimeReport
     UECPageStayReportManager.a(paramReportItem);
   }
   
-  private void a(Object paramObject)
-  {
-    if (paramObject != null) {
-      this.a.remove(Integer.valueOf(paramObject.hashCode()));
-    }
-  }
-  
-  private boolean a(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      return false;
-    }
-    try
-    {
-      boolean bool = Class.forName("com.tencent.mobileqq.mini.appbrand.ui.MiniBaseActivity").isInstance(paramActivity);
-      return bool;
-    }
-    catch (ClassNotFoundException paramActivity)
-    {
-      paramActivity.printStackTrace();
-    }
-    return false;
-  }
-  
   private UECPageStayTimeReport.ReportItem b(Object paramObject)
   {
     Object localObject2 = null;
@@ -99,7 +75,7 @@ public class UECPageStayTimeReport
         localObject1 = (UECPageStayTimeReport.ReportItem)this.a.get(Integer.valueOf(paramObject.hashCode()));
       }
     }
-    a(paramObject);
+    c(paramObject);
     return localObject1;
   }
   
@@ -111,7 +87,7 @@ public class UECPageStayTimeReport
     if (QQBrowserActivity.class.isInstance(paramActivity)) {
       return b(a(paramActivity));
     }
-    if (a(paramActivity))
+    if (d(paramActivity))
     {
       paramActivity = (MiniAppInfo)paramActivity.getIntent().getParcelableExtra("KEY_APPINFO");
       if (paramActivity != null)
@@ -125,7 +101,7 @@ public class UECPageStayTimeReport
     }
     else if (AudienceRoomActivity.class.isInstance(paramActivity))
     {
-      paramActivity = LiteLiveSDKFactory.a().a();
+      paramActivity = LiteLiveSDKFactory.a().b();
       if (paramActivity != null) {
         return paramActivity.a;
       }
@@ -135,7 +111,7 @@ public class UECPageStayTimeReport
   
   private String b(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "null";
     }
     int i = paramString.indexOf("?");
@@ -161,10 +137,34 @@ public class UECPageStayTimeReport
       localStringBuilder.append(paramActivity);
       return localStringBuilder.toString();
     }
-    if (a(paramActivity)) {
+    if (d(paramActivity)) {
       return "MiniAppPage";
     }
     return str;
+  }
+  
+  private void c(Object paramObject)
+  {
+    if (paramObject != null) {
+      this.a.remove(Integer.valueOf(paramObject.hashCode()));
+    }
+  }
+  
+  private boolean d(Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      return false;
+    }
+    try
+    {
+      boolean bool = Class.forName("com.tencent.mobileqq.mini.appbrand.ui.MiniBaseActivity").isInstance(paramActivity);
+      return bool;
+    }
+    catch (ClassNotFoundException paramActivity)
+    {
+      paramActivity.printStackTrace();
+    }
+    return false;
   }
   
   protected String a(Activity paramActivity)
@@ -217,7 +217,7 @@ public class UECPageStayTimeReport
     }
     if (paramBoolean)
     {
-      paramString.b();
+      paramString.c();
       a(paramString);
       return;
     }
@@ -245,7 +245,7 @@ public class UECPageStayTimeReport
     paramActivity = b(paramActivity);
     if (paramActivity != null)
     {
-      paramActivity.b();
+      paramActivity.c();
       a(paramActivity);
     }
   }
@@ -277,7 +277,7 @@ public class UECPageStayTimeReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.uec.UECPageStayTimeReport
  * JD-Core Version:    0.7.0.1
  */

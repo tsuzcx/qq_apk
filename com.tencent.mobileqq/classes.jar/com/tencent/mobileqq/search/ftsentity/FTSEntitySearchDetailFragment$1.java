@@ -20,17 +20,17 @@ class FTSEntitySearchDetailFragment$1
   
   protected IPresenter a(int paramInt)
   {
-    return new FTSMessageSearchResultPresenter(FTSEntitySearchDetailFragment.a(this.a));
+    return new FTSMessageSearchResultPresenter(FTSEntitySearchDetailFragment.a(this.d));
   }
   
   protected IView a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new FTSMessageSearchResultView(paramViewGroup, 2131562794);
+    return new FTSMessageSearchResultView(paramViewGroup, 2131629239);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment.1
  * JD-Core Version:    0.7.0.1
  */

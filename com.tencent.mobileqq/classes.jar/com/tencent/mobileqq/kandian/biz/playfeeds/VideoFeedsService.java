@@ -10,18 +10,18 @@ import mqq.app.MSFServlet;
 public class VideoFeedsService
   extends MobileQQServiceBase
 {
-  VideoFeedsAppInterface jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  VideoFeedsAppInterface a;
+  Random b = new Random();
   
   VideoFeedsService(VideoFeedsAppInterface paramVideoFeedsAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsAppInterface = paramVideoFeedsAppInterface;
-    seq = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+    this.a = paramVideoFeedsAppInterface;
+    seq = Math.abs(this.b.nextInt());
   }
   
   public AppInterface getAppInterface()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsAppInterface;
+    return this.a;
   }
   
   protected Map<String, String[]> getCompatibleCmd2HandlerMap()
@@ -50,7 +50,7 @@ public class VideoFeedsService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsService
  * JD-Core Version:    0.7.0.1
  */

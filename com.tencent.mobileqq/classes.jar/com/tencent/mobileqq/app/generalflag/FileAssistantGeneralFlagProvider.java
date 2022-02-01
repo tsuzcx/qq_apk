@@ -15,7 +15,7 @@ public class FileAssistantGeneralFlagProvider
   {
     if (QFileAssistantUtils.a(paramMessageRecord.frienduin))
     {
-      int i = QFileAssistantUtils.a();
+      int i = QFileAssistantUtils.c();
       paramResvAttr.uint32_device_type.set(i);
       QFileAssistantUtils.a(paramMessageRecord, i);
       return true;
@@ -30,7 +30,7 @@ public class FileAssistantGeneralFlagProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.generalflag.FileAssistantGeneralFlagProvider
  * JD-Core Version:    0.7.0.1
  */

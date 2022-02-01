@@ -12,12 +12,12 @@ import java.util.List;
 public class QQGameImagePlayHelper
   implements Handler.Callback
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private WeakReference<ImageSwitcher> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private WeakReference<ImageSwitcher> jdField_b_of_type_JavaLangRefWeakReference;
+  private WeakReference<ImageSwitcher> a;
+  private WeakReference<ImageSwitcher> b;
+  private List<String> c;
+  private int d;
+  private int e;
+  private Handler f;
   
   public boolean handleMessage(Message paramMessage)
   {
@@ -30,28 +30,28 @@ public class QQGameImagePlayHelper
         QLog.d("QQGameImagePlayHelper", 0, "[handleMessage] set next image");
       }
       int i;
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+      if ((this.a != null) && (this.a.get() != null))
       {
-        paramMessage = (ImageSwitcher)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        i = this.jdField_a_of_type_Int + 1;
-        this.jdField_a_of_type_Int = i;
-        if (i == this.jdField_a_of_type_JavaUtilList.size()) {
-          this.jdField_a_of_type_Int = 0;
+        paramMessage = (ImageSwitcher)this.a.get();
+        i = this.d + 1;
+        this.d = i;
+        if (i == this.c.size()) {
+          this.d = 0;
         }
-        paramMessage.setImageDrawable(URLDrawable.getDrawable((String)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)));
+        paramMessage.setImageDrawable(URLDrawable.getDrawable((String)this.c.get(this.d)));
       }
-      if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null))
+      if ((this.b != null) && (this.b.get() != null))
       {
-        paramMessage = (ImageSwitcher)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-        i = this.jdField_b_of_type_Int + 1;
-        this.jdField_b_of_type_Int = i;
-        if (i == this.jdField_a_of_type_JavaUtilList.size()) {
-          this.jdField_b_of_type_Int = 0;
+        paramMessage = (ImageSwitcher)this.b.get();
+        i = this.e + 1;
+        this.e = i;
+        if (i == this.c.size()) {
+          this.e = 0;
         }
-        paramMessage.setImageDrawable(URLDrawable.getDrawable((String)this.jdField_a_of_type_JavaUtilList.get(this.jdField_b_of_type_Int)));
+        paramMessage.setImageDrawable(URLDrawable.getDrawable((String)this.c.get(this.e)));
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
+      this.f.removeMessages(1);
+      this.f.sendEmptyMessageDelayed(1, 5000L);
       return false;
     }
     catch (Exception paramMessage)
@@ -65,7 +65,7 @@ public class QQGameImagePlayHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.QQGameImagePlayHelper
  * JD-Core Version:    0.7.0.1
  */

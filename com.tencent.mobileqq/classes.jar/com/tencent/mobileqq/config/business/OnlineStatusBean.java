@@ -17,9 +17,9 @@ import org.json.JSONObject;
 
 public class OnlineStatusBean
 {
-  private ArrayList<OnlineStatusItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList(20);
-  private HashMap<String, OnlineStatusItem> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
-  private ArrayList<OnlineStatusItem> b = new ArrayList(9);
+  private HashMap<String, OnlineStatusItem> a = new HashMap(20);
+  private ArrayList<OnlineStatusItem> b = new ArrayList(20);
+  private ArrayList<OnlineStatusItem> c = new ArrayList(9);
   
   public OnlineStatusBean()
   {
@@ -28,8 +28,8 @@ public class OnlineStatusBean
     {
       AppRuntime.Status localStatus = OnlineStatusConstants.a[i];
       OnlineStatusItem localOnlineStatusItem = new OnlineStatusItem(localStatus);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localOnlineStatusItem);
-      this.jdField_a_of_type_JavaUtilHashMap.put(OnlineStatusItem.a(localStatus, localOnlineStatusItem.jdField_a_of_type_Long), localOnlineStatusItem);
+      this.b.add(localOnlineStatusItem);
+      this.a.put(OnlineStatusItem.b(localStatus, localOnlineStatusItem.b), localOnlineStatusItem);
       i += 1;
     }
   }
@@ -40,8 +40,8 @@ public class OnlineStatusBean
     try
     {
       paramString = new JSONObject(paramString);
-      a(paramString, "online_status", localOnlineStatusBean.jdField_a_of_type_JavaUtilHashMap, localOnlineStatusBean.jdField_a_of_type_JavaUtilArrayList);
-      a(paramString, "online_mood", localOnlineStatusBean.jdField_a_of_type_JavaUtilHashMap, localOnlineStatusBean.b);
+      a(paramString, "online_status", localOnlineStatusBean.a, localOnlineStatusBean.b);
+      a(paramString, "online_mood", localOnlineStatusBean.a, localOnlineStatusBean.c);
       paramString = new StringBuilder();
       paramString.append("confBean = ");
       paramString.append(localOnlineStatusBean.toString());
@@ -66,7 +66,7 @@ public class OnlineStatusBean
     while (i < paramList.size())
     {
       OnlineStatusItem localOnlineStatusItem = (OnlineStatusItem)paramList.get(i);
-      if ((localOnlineStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status == paramStatus) && (localOnlineStatusItem.jdField_a_of_type_Long == paramLong)) {
+      if ((localOnlineStatusItem.g == paramStatus) && (localOnlineStatusItem.b == paramLong)) {
         return localOnlineStatusItem;
       }
       i += 1;
@@ -85,7 +85,7 @@ public class OnlineStatusBean
     while (paramList.hasNext())
     {
       OnlineStatusItem localOnlineStatusItem = (OnlineStatusItem)paramList.next();
-      if ((!bool) || (localOnlineStatusItem.jdField_a_of_type_Boolean)) {
+      if ((!bool) || (localOnlineStatusItem.j)) {
         localArrayList.add(localOnlineStatusItem);
       }
     }
@@ -111,17 +111,19 @@ public class OnlineStatusBean
             String str2 = paramString.optString("big_icon");
             if ((l != 0L) && (!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str1)))
             {
-              if ((l == 1000L) && (a()))
+              if ((l == 1000L) && (d()))
               {
                 QLog.d("OnlineStatusConfProcessor", 1, "incompatible for battery status");
               }
               else
               {
                 localObject = new OnlineStatusItem(l, (String)localObject, str1, str2);
-                ((OnlineStatusItem)localObject).f = paramString.optString("resUrl");
-                ((OnlineStatusItem)localObject).g = paramString.optString("md5");
-                ((OnlineStatusItem)localObject).jdField_a_of_type_Boolean = paramString.optBoolean("showInStudyMode", true);
-                paramHashMap.put(OnlineStatusItem.a(AppRuntime.Status.online, ((OnlineStatusItem)localObject).jdField_a_of_type_Long), localObject);
+                ((OnlineStatusItem)localObject).k = paramString.optString("resUrl");
+                ((OnlineStatusItem)localObject).l = paramString.optString("md5");
+                ((OnlineStatusItem)localObject).j = paramString.optBoolean("showInStudyMode", true);
+                ((OnlineStatusItem)localObject).m = paramString.optString("animate_icon");
+                ((OnlineStatusItem)localObject).n = paramString.optString("jump_url");
+                paramHashMap.put(OnlineStatusItem.b(AppRuntime.Status.online, ((OnlineStatusItem)localObject).b), localObject);
                 paramArrayList.add(localObject);
               }
             }
@@ -142,31 +144,14 @@ public class OnlineStatusBean
     }
   }
   
-  public static boolean a()
+  public static boolean d()
   {
-    return OnLineStatusHelper.a() <= 0;
-  }
-  
-  public OnlineStatusItem a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    Object localObject = paramStatus;
-    if (paramStatus == null)
-    {
-      QLog.d("OnlineStatus", 1, new Object[] { "getOnlineStatusItem with null, id:", Long.valueOf(paramLong) });
-      localObject = AppRuntime.Status.online;
-    }
-    paramStatus = OnlineStatusItem.a((AppRuntime.Status)localObject, paramLong);
-    localObject = (OnlineStatusItem)this.jdField_a_of_type_JavaUtilHashMap.get(paramStatus);
-    paramStatus = (AppRuntime.Status)localObject;
-    if (localObject == null) {
-      paramStatus = new OnlineStatusItem(AppRuntime.Status.online);
-    }
-    return paramStatus;
+    return OnLineStatusHelper.g() <= 0;
   }
   
   public ArrayList<OnlineStatusItem> a()
   {
-    ArrayList localArrayList1 = a(this.jdField_a_of_type_JavaUtilArrayList);
+    ArrayList localArrayList1 = a(this.b);
     ArrayList localArrayList2 = c();
     if (localArrayList1 == null) {
       return localArrayList2;
@@ -177,21 +162,21 @@ public class OnlineStatusBean
   
   public ArrayList<OnlineStatusItem> a(AppRuntime.Status paramStatus, long paramLong)
   {
-    if (!a(paramStatus, paramLong)) {
-      return a(this.jdField_a_of_type_JavaUtilArrayList);
+    if (!c(paramStatus, paramLong)) {
+      return a(this.b);
     }
     paramStatus = a(paramStatus, paramLong, c());
     if (paramStatus == null) {
-      return a(this.jdField_a_of_type_JavaUtilArrayList);
+      return a(this.b);
     }
     ArrayList localArrayList = new ArrayList();
     boolean bool = ((IStudyModeManager)QRoute.api(IStudyModeManager.class)).getStudyModeSwitch();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       OnlineStatusItem localOnlineStatusItem = (OnlineStatusItem)localIterator.next();
-      if ((!bool) || (localOnlineStatusItem.jdField_a_of_type_Boolean)) {
-        if ((localOnlineStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status == AppRuntime.Status.online) && (localOnlineStatusItem.jdField_a_of_type_Long == 1055L)) {
+      if ((!bool) || (localOnlineStatusItem.j)) {
+        if ((localOnlineStatusItem.g == AppRuntime.Status.online) && (localOnlineStatusItem.b == 1055L)) {
           localArrayList.add(paramStatus);
         } else {
           localArrayList.add(localOnlineStatusItem);
@@ -201,47 +186,64 @@ public class OnlineStatusBean
     return localArrayList;
   }
   
-  public boolean a(AppRuntime.Status paramStatus, long paramLong)
+  public OnlineStatusItem b(AppRuntime.Status paramStatus, long paramLong)
+  {
+    Object localObject = paramStatus;
+    if (paramStatus == null)
+    {
+      QLog.d("OnlineStatus", 1, new Object[] { "getOnlineStatusItem with null, id:", Long.valueOf(paramLong) });
+      localObject = AppRuntime.Status.online;
+    }
+    paramStatus = OnlineStatusItem.b((AppRuntime.Status)localObject, paramLong);
+    localObject = (OnlineStatusItem)this.a.get(paramStatus);
+    paramStatus = (AppRuntime.Status)localObject;
+    if (localObject == null) {
+      paramStatus = new OnlineStatusItem(AppRuntime.Status.online);
+    }
+    return paramStatus;
+  }
+  
+  public ArrayList<OnlineStatusItem> b()
+  {
+    return a(this.b);
+  }
+  
+  public ArrayList<OnlineStatusItem> c()
+  {
+    return a(this.c);
+  }
+  
+  public boolean c(AppRuntime.Status paramStatus, long paramLong)
   {
     if ((paramLong == 1055L) && (paramStatus == AppRuntime.Status.online)) {
       return true;
     }
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       OnlineStatusItem localOnlineStatusItem = (OnlineStatusItem)localIterator.next();
-      if ((paramLong == localOnlineStatusItem.jdField_a_of_type_Long) && (paramStatus == localOnlineStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status)) {
+      if ((paramLong == localOnlineStatusItem.b) && (paramStatus == localOnlineStatusItem.g)) {
         return true;
       }
     }
     return false;
   }
   
-  public ArrayList<OnlineStatusItem> b()
-  {
-    return a(this.jdField_a_of_type_JavaUtilArrayList);
-  }
-  
-  public ArrayList<OnlineStatusItem> c()
-  {
-    return a(this.b);
-  }
-  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(50);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       OnlineStatusItem localOnlineStatusItem = (OnlineStatusItem)localIterator.next();
       localStringBuilder.append("id:");
-      localStringBuilder.append(localOnlineStatusItem.jdField_a_of_type_Long);
-      localStringBuilder.append(" ");
-      localStringBuilder.append("title:");
       localStringBuilder.append(localOnlineStatusItem.b);
       localStringBuilder.append(" ");
-      localStringBuilder.append("icon:");
+      localStringBuilder.append("title:");
       localStringBuilder.append(localOnlineStatusItem.c);
+      localStringBuilder.append(" ");
+      localStringBuilder.append("icon:");
+      localStringBuilder.append(localOnlineStatusItem.d);
       localStringBuilder.append("\n");
     }
     return localStringBuilder.toString();
@@ -249,7 +251,7 @@ public class OnlineStatusBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OnlineStatusBean
  * JD-Core Version:    0.7.0.1
  */

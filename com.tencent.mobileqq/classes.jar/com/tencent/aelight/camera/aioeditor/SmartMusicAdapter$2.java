@@ -30,29 +30,29 @@ class SmartMusicAdapter$2
         paramBaseRequest = (META.StMusic)paramStBatchGetMusicInfoRsp.vecMusic.get(i);
         if (paramBaseRequest != null)
         {
-          int j = ((Integer)SmartMusicAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter).get(paramBaseRequest.strSongMid.get())).intValue();
-          if ((j >= 0) && (j < SmartMusicAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter).size()))
+          int j = ((Integer)SmartMusicAdapter.b(this.b).get(paramBaseRequest.strSongMid.get())).intValue();
+          if ((j >= 0) && (j < SmartMusicAdapter.c(this.b).size()))
           {
-            VsMusicItemInfo localVsMusicItemInfo = (VsMusicItemInfo)SmartMusicAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter).get(j);
+            VsMusicItemInfo localVsMusicItemInfo = (VsMusicItemInfo)SmartMusicAdapter.c(this.b).get(j);
             if (localVsMusicItemInfo.mSongMid.equals(paramBaseRequest.strSongMid.get()))
             {
               localVsMusicItemInfo.a(paramBaseRequest);
-              localVsMusicItemInfo.jdField_a_of_type_Boolean = true;
-              if (!StringUtil.a(paramString)) {
-                localVsMusicItemInfo.c = paramString;
+              localVsMusicItemInfo.d = true;
+              if (!StringUtil.isEmpty(paramString)) {
+                localVsMusicItemInfo.e = paramString;
               }
             }
           }
         }
         i += 1;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter.a().post(new SmartMusicAdapter.2.1(this));
+      this.b.c().post(new SmartMusicAdapter.2.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.SmartMusicAdapter.2
  * JD-Core Version:    0.7.0.1
  */

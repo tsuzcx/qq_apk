@@ -16,21 +16,21 @@ class FriendClueCommonGroupHelper$2
     if (QLog.isColorLevel()) {
       QLog.d("intimate_relationship", 2, "onGetIntimateInfo");
     }
-    FriendClueCommonGroupHelper.a(this.a).removeObserver(this.a.a);
-    FriendClueCommonGroupHelper.a(this.a).removeMessages(1);
+    FriendClueCommonGroupHelper.b(this.a).removeObserver(this.a.a);
+    FriendClueCommonGroupHelper.c(this.a).removeMessages(1);
     if (paramBoolean)
     {
       FriendClueCommonGroupHelper.a(this.a, paramIntimateInfo);
       this.a.a();
       return;
     }
-    FriendClueCommonGroupHelper.a(this.a).post(new FriendClueCommonGroupHelper.2.1(this));
+    FriendClueCommonGroupHelper.c(this.a).post(new FriendClueCommonGroupHelper.2.1(this));
     QLog.e("FriendClueCommonGroupHelper", 1, "get intimateInfo failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueCommonGroupHelper.2
  * JD-Core Version:    0.7.0.1
  */

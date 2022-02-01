@@ -8,7 +8,7 @@ import com.tencent.widget.ARMapHongBaoListView;
 class MsgTabStoryNodeListManager$6
   extends RecyclerView.OnScrollListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
   
   MsgTabStoryNodeListManager$6(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
@@ -17,30 +17,30 @@ class MsgTabStoryNodeListManager$6
     paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
     if (paramInt == 0)
     {
-      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.d();
+      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.a)) {
+        this.b.k.d();
       }
     }
     else {
-      MsgTabStoryNodeListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager);
+      MsgTabStoryNodeListManager.b(this.b);
     }
   }
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     if (paramInt1 > 0) {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
     } else {
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
+    if (this.b.n.isDirty()) {
+      this.b.n.invalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.6
  * JD-Core Version:    0.7.0.1
  */

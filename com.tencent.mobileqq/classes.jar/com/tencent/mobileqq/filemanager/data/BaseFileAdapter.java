@@ -13,40 +13,40 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class BaseFileAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private MotionViewSetter jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter = null;
-  private Object jdField_a_of_type_JavaLangObject;
+  private Context a;
+  private View.OnClickListener b;
+  private Object c;
+  private MotionViewSetter d = null;
   
   public BaseFileAdapter(Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.a = paramContext;
+    this.b = paramOnClickListener;
   }
   
   public void a(MotionViewSetter paramMotionViewSetter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter = paramMotionViewSetter;
+    this.d = paramMotionViewSetter;
   }
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.c = paramObject;
   }
   
   public boolean a(int paramInt, View paramView, ShaderAnimLayout paramShaderAnimLayout, Button paramButton, Object paramObject)
   {
     if (paramShaderAnimLayout != null)
     {
-      Object localObject = this.jdField_a_of_type_JavaLangObject;
+      Object localObject = this.c;
       if ((localObject != null) && (localObject.equals(paramObject)))
       {
         paramShaderAnimLayout.a();
-        paramShaderAnimLayout = this.jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter;
+        paramShaderAnimLayout = this.d;
         if (paramShaderAnimLayout != null) {
           paramShaderAnimLayout.setMotionView(paramView, paramInt);
         }
-        paramButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        paramButton.setOnClickListener(this.b);
         paramButton.setTag(Integer.valueOf(paramInt));
         return true;
       }
@@ -80,7 +80,7 @@ public class BaseFileAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.BaseFileAdapter
  * JD-Core Version:    0.7.0.1
  */

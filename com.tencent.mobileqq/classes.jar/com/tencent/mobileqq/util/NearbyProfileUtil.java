@@ -15,32 +15,13 @@ import tencent.sso.accretion.flower_info.SFlowerInfoRsp;
 
 public class NearbyProfileUtil
 {
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static final String[] c;
-  public static final String[] d;
-  public static final String[] e;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "男", "女" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130845693, 2130845701 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "保密", "单身", "恋爱中", "已婚" };
-    c = new String[] { "", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
-    d = new String[] { "不限", "计算机/互联网/通信", "生产/工艺/制造", "医疗/护理/制药", "金融/银行/投资/保险", "商业/服务业/个体经营", "文化/广告/传媒", "娱乐/艺术/表演", "律师/法务", "教育/培训", "公务员/行政/事业单位", "模特", "空姐", "学生", "其他职业" };
-    e = new String[] { "", "IT", "制造", "医疗", "金融", "商业", "文化", "艺术", "法律", "教育", "行政", "模特", "空姐", "学生", "" };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130846082, 2130844925, 2130844925, 2130844925, 2130845809, 2130845809, 2130846100, 2130846100, 2130845593, 2130845593, 2130845593, 2130846082, 2130846082, 2130845873, 2130846082 };
-  }
-  
-  public static final int a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt <= 1)) {
-      return jdField_a_of_type_ArrayOfInt[paramInt];
-    }
-    return 0;
-  }
+  public static final String[] a = { "男", "女" };
+  public static final int[] b = { 2130847162, 2130847170 };
+  public static final String[] c = { "保密", "单身", "恋爱中", "已婚" };
+  public static final String[] d = { "", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
+  public static final String[] e = { "不限", "计算机/互联网/通信", "生产/工艺/制造", "医疗/护理/制药", "金融/银行/投资/保险", "商业/服务业/个体经营", "文化/广告/传媒", "娱乐/艺术/表演", "律师/法务", "教育/培训", "公务员/行政/事业单位", "模特", "空姐", "学生", "其他职业" };
+  public static final String[] f = { "", "IT", "制造", "医疗", "金融", "商业", "文化", "艺术", "法律", "教育", "行政", "模特", "空姐", "学生", "" };
+  public static final int[] g = { 2130847552, 2130846359, 2130846359, 2130846359, 2130847279, 2130847279, 2130847570, 2130847570, 2130847057, 2130847057, 2130847057, 2130847552, 2130847552, 2130847343, 2130847552 };
   
   public static final int a(byte[] paramArrayOfByte)
   {
@@ -68,18 +49,6 @@ public class NearbyProfileUtil
   private static final long a()
   {
     return 38916L;
-  }
-  
-  public static final String a(int paramInt)
-  {
-    if (paramInt >= 0)
-    {
-      String[] arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
-      if (paramInt < arrayOfString.length) {
-        return arrayOfString[paramInt];
-      }
-    }
-    return "";
   }
   
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -160,7 +129,7 @@ public class NearbyProfileUtil
   
   public static boolean a(int paramInt)
   {
-    return (paramInt == -1) || ((paramInt >= 0) && (paramInt < d.length));
+    return (paramInt == -1) || ((paramInt >= 0) && (paramInt < e.length));
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface)
@@ -176,7 +145,7 @@ public class NearbyProfileUtil
     if (localEntityManager != null)
     {
       paramQQAppInterface = localObject;
-      if (!StringUtil.a(str)) {
+      if (!StringUtil.isEmpty(str)) {
         paramQQAppInterface = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { str });
       }
       localEntityManager.close();
@@ -191,23 +160,67 @@ public class NearbyProfileUtil
     return bool;
   }
   
-  public static final int b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt <= 14)) {
-      return jdField_b_of_type_ArrayOfInt[paramInt];
-    }
-    return 0;
-  }
-  
   public static final String b(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt <= 1)) {
-      return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    if (paramInt >= 0)
+    {
+      String[] arrayOfString = c;
+      if (paramInt < arrayOfString.length) {
+        return arrayOfString[paramInt];
+      }
     }
     return "";
   }
   
-  public static int c(int paramInt)
+  public static final String c(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt <= 1)) {
+      return a[paramInt];
+    }
+    return "";
+  }
+  
+  public static final int d(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt <= 1)) {
+      return b[paramInt];
+    }
+    return 0;
+  }
+  
+  public static final String e(int paramInt)
+  {
+    if ((paramInt >= 1) && (paramInt <= 12)) {
+      return d[paramInt];
+    }
+    return "";
+  }
+  
+  public static final String f(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt <= 14)) {
+      return f[paramInt];
+    }
+    return "";
+  }
+  
+  public static final int g(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt <= 14)) {
+      return g[paramInt];
+    }
+    return 0;
+  }
+  
+  public static final String h(int paramInt)
+  {
+    if ((paramInt >= 1) && (paramInt <= 14)) {
+      return e[paramInt];
+    }
+    return "";
+  }
+  
+  public static int i(int paramInt)
   {
     if (paramInt == 1) {
       return 1;
@@ -226,34 +239,10 @@ public class NearbyProfileUtil
     }
     return 99;
   }
-  
-  public static final String c(int paramInt)
-  {
-    if ((paramInt >= 1) && (paramInt <= 12)) {
-      return c[paramInt];
-    }
-    return "";
-  }
-  
-  public static final String d(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt <= 14)) {
-      return e[paramInt];
-    }
-    return "";
-  }
-  
-  public static final String e(int paramInt)
-  {
-    if ((paramInt >= 1) && (paramInt <= 14)) {
-      return d[paramInt];
-    }
-    return "";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.NearbyProfileUtil
  * JD-Core Version:    0.7.0.1
  */

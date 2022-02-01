@@ -75,7 +75,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
   
   public boolean isMoveToDeleteArea(int paramInt1, int paramInt2)
   {
-    return paramInt2 + this.this$1.mRecycleView.getTop() >= MiniAppDesktopAdapter.access$3700(this.this$1.this$0).getBottom() - ViewUtils.a(125.0F);
+    return paramInt2 + this.this$1.mRecycleView.getTop() >= MiniAppDesktopAdapter.access$3700(this.this$1.this$0).getBottom() - ViewUtils.dip2px(125.0F);
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -85,7 +85,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
   
   public MiniAppDesktopAdapter.MicroAppViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(MiniAppDesktopAdapter.access$3500(this.this$1.this$0)).inflate(2131562378, paramViewGroup, false));
+    return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(MiniAppDesktopAdapter.access$3500(this.this$1.this$0)).inflate(2131628809, paramViewGroup, false));
   }
   
   public void onDragFinish(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -127,7 +127,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
       if (paramInt1 > 0) {
         i = paramInt1;
       } else {
-        i = ViewUtils.a(30.0F) + paramInt1;
+        i = ViewUtils.dip2px(30.0F) + paramInt1;
       }
       Object localObject2 = MiniAppDesktopAdapter.access$3800(this.this$1.this$0).findChildViewUnder(i, this.this$1.mRecycleView.getTop() + paramInt2);
       DesktopAppInfo localDesktopAppInfo = null;
@@ -204,7 +204,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.DesktopModuleListViewHolder.MiniAppAdapter
  * JD-Core Version:    0.7.0.1
  */

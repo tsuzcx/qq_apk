@@ -17,18 +17,18 @@ class TroopPluginManager$3
         ((StringBuilder)localObject).append((Long)paramObject[0]);
         ((StringBuilder)localObject).append("");
         localObject = ((StringBuilder)localObject).toString();
-        if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
+        if (!this.a.equals(localObject)) {
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-        this.jdField_a_of_type_CooperationTroopTroopPluginManager.a("com.tencent.mobileqq.memcard.plugin.TroopMemberCardMoreInfoActivity", new TroopPluginManager.3.1(this, paramObject));
+        this.b.removeObserver(this);
+        this.j.a("com.tencent.mobileqq.memcard.plugin.TroopMemberCardMoreInfoActivity", new TroopPluginManager.3.1(this, paramObject));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop.TroopPluginManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -8,37 +8,29 @@ public class BeaconConfig
   private final boolean b;
   private final boolean c;
   private final boolean d;
-  private final boolean e;
-  private final boolean f;
-  private final boolean g;
-  private final boolean h;
-  private final long i;
-  private final long j;
-  private final a k;
-  private String l;
-  private String m;
-  private boolean n;
-  private boolean o;
-  private boolean p;
+  private final long e;
+  private final long f;
+  private final a g;
+  private final String h;
+  private final String i;
+  private final boolean j;
+  private final boolean k;
+  private final boolean l;
   
-  private BeaconConfig(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, boolean paramBoolean7, long paramLong1, long paramLong2, a parama, String paramString1, String paramString2, boolean paramBoolean8, boolean paramBoolean9, boolean paramBoolean10)
+  private BeaconConfig(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong1, long paramLong2, a parama, String paramString1, String paramString2, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6)
   {
     this.a = paramInt;
     this.b = paramBoolean1;
     this.c = paramBoolean2;
     this.d = paramBoolean3;
-    this.e = paramBoolean4;
-    this.f = paramBoolean5;
-    this.g = paramBoolean6;
-    this.h = paramBoolean7;
-    this.i = paramLong1;
-    this.j = paramLong2;
-    this.k = parama;
-    this.l = paramString1;
-    this.m = paramString2;
-    this.n = paramBoolean8;
-    this.o = paramBoolean9;
-    this.p = paramBoolean10;
+    this.e = paramLong1;
+    this.f = paramLong2;
+    this.g = parama;
+    this.h = paramString1;
+    this.i = paramString2;
+    this.j = paramBoolean4;
+    this.k = paramBoolean5;
+    this.l = paramBoolean6;
   }
   
   public static BeaconConfig.Builder builder()
@@ -48,12 +40,12 @@ public class BeaconConfig
   
   public String getConfigHost()
   {
-    return this.m;
+    return this.i;
   }
   
   public a getHttpAdapter()
   {
-    return this.k;
+    return this.g;
   }
   
   public int getMaxDBCount()
@@ -63,17 +55,17 @@ public class BeaconConfig
   
   public long getNormalPollingTIme()
   {
-    return this.j;
+    return this.f;
   }
   
   public long getRealtimePollingTime()
   {
-    return this.i;
+    return this.e;
   }
   
   public String getUploadHost()
   {
-    return this.l;
+    return this.h;
   }
   
   public boolean isAuditEnable()
@@ -86,29 +78,9 @@ public class BeaconConfig
     return this.d;
   }
   
-  public boolean isCollectAndroidIdEnable()
-  {
-    return this.g;
-  }
-  
-  public boolean isCollectIMEIEnable()
-  {
-    return this.f;
-  }
-  
-  public boolean isCollectMACEnable()
-  {
-    return this.e;
-  }
-  
-  public boolean isCollectProcessInfoEnable()
-  {
-    return this.h;
-  }
-  
   public boolean isEnableQmsp()
   {
-    return this.o;
+    return this.k;
   }
   
   public boolean isEventReportEnable()
@@ -118,12 +90,12 @@ public class BeaconConfig
   
   public boolean isForceEnableAtta()
   {
-    return this.n;
+    return this.j;
   }
   
   public boolean isPagePathEnable()
   {
-    return this.p;
+    return this.l;
   }
   
   public String toString()
@@ -137,32 +109,24 @@ public class BeaconConfig
     localStringBuilder.append(this.c);
     localStringBuilder.append(", bidEnable=");
     localStringBuilder.append(this.d);
-    localStringBuilder.append(", collectMACEnable=");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(", collectIMEIEnable=");
-    localStringBuilder.append(this.f);
-    localStringBuilder.append(", collectAndroidIdEnable=");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(", collectProcessInfoEnable=");
-    localStringBuilder.append(this.h);
     localStringBuilder.append(", realtimePollingTime=");
-    localStringBuilder.append(this.i);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", normalPollingTIme=");
-    localStringBuilder.append(this.j);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", httpAdapter=");
-    localStringBuilder.append(this.k);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", uploadHost='");
-    localStringBuilder.append(this.l);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append(", configHost='");
-    localStringBuilder.append(this.m);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('\'');
     localStringBuilder.append(", forceEnableAtta=");
-    localStringBuilder.append(this.n);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", enableQmsp=");
-    localStringBuilder.append(this.o);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", pagePathEnable=");
-    localStringBuilder.append(this.p);
+    localStringBuilder.append(this.l);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

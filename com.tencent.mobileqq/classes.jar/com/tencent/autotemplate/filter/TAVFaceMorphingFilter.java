@@ -129,7 +129,7 @@ public class TAVFaceMorphingFilter
     Iterator localIterator = this.faceTransitions.iterator();
     while (localIterator.hasNext())
     {
-      CMTimeRange localCMTimeRange = ((FaceTransition)localIterator.next()).timeRange;
+      CMTimeRange localCMTimeRange = ((FaceTransition)localIterator.next()).getTimeRange();
       if (localCMTimeRange.containsTime(paramCMTime)) {
         return localCMTimeRange;
       }
@@ -141,7 +141,7 @@ public class TAVFaceMorphingFilter
   {
     Iterator localIterator = this.faceTransitions.iterator();
     while (localIterator.hasNext()) {
-      if (((FaceTransition)localIterator.next()).timeRange.containsTime(this.currentTime)) {
+      if (((FaceTransition)localIterator.next()).getTimeRange().containsTime(this.currentTime)) {
         return true;
       }
     }

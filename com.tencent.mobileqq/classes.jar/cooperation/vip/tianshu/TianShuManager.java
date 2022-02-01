@@ -43,6 +43,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -107,14 +108,19 @@ public class TianShuManager
     }
   }
   
+  private boolean checkRepEntryHasData(TianShuAccess.RspEntry paramRspEntry)
+  {
+    return (paramRspEntry == null) || (paramRspEntry.value == null) || (paramRspEntry.value.lst.size() == 0) || (paramRspEntry.value.lst.get(0) == null) || (((TianShuAccess.AdItem)paramRspEntry.value.lst.get(0)).argList == null) || (((TianShuAccess.AdItem)paramRspEntry.value.lst.get(0)).argList.get() == null);
+  }
+  
   private static TianShuAccess.AdPosItem convertAdItemToPb(TianShuAdPosItemData paramTianShuAdPosItemData)
   {
     TianShuAccess.AdPosItem localAdPosItem = new TianShuAccess.AdPosItem();
-    localAdPosItem.posId.set(paramTianShuAdPosItemData.jdField_a_of_type_Int);
+    localAdPosItem.posId.set(paramTianShuAdPosItemData.a);
     localAdPosItem.nNeedCnt.set(paramTianShuAdPosItemData.b);
-    if (paramTianShuAdPosItemData.jdField_a_of_type_JavaUtilHashMap != null)
+    if (paramTianShuAdPosItemData.c != null)
     {
-      paramTianShuAdPosItemData = paramTianShuAdPosItemData.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      paramTianShuAdPosItemData = paramTianShuAdPosItemData.c.entrySet().iterator();
       while (paramTianShuAdPosItemData.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)paramTianShuAdPosItemData.next();
@@ -169,11 +175,11 @@ public class TianShuManager
     localCommInfo.lUin.set(l);
     localCommInfo.strApp.set("sq");
     localCommInfo.strOs.set("and");
-    localCommInfo.strDeviceInfo.set(String.valueOf(Tools.b()));
-    localCommInfo.strVersion.set(AppSetting.f());
+    localCommInfo.strDeviceInfo.set(String.valueOf(Tools.c()));
+    localCommInfo.strVersion.set(AppSetting.h());
     String str = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCityCode();
     localCommInfo.strCityCode.set(String.valueOf(str));
-    localCommInfo.strQimei.set(String.valueOf(Tools.a()));
+    localCommInfo.strQimei.set(String.valueOf(Tools.b()));
     localCommInfo.strQua.set(String.valueOf(QUA.getQUA3()));
     return localCommInfo;
   }
@@ -190,6 +196,22 @@ public class TianShuManager
       finally {}
     }
     return mInstance;
+  }
+  
+  private TianShuAccess.RspEntry getRspEntry(TianShuAccess.GetAdsRsp paramGetAdsRsp, int paramInt)
+  {
+    if (!paramGetAdsRsp.mapAds.has()) {
+      return null;
+    }
+    paramGetAdsRsp = paramGetAdsRsp.mapAds.get().iterator();
+    while (paramGetAdsRsp.hasNext())
+    {
+      TianShuAccess.RspEntry localRspEntry = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
+      if ((localRspEntry != null) && (localRspEntry.key.has()) && (localRspEntry.key.get() == paramInt)) {
+        return localRspEntry;
+      }
+    }
+    return null;
   }
   
   public static boolean isRequestEnable(int paramInt)
@@ -265,14 +287,14 @@ public class TianShuManager
     if (paramTianShuReportData == null) {
       return;
     }
-    if ((paramTianShuReportData.d == 102) || (paramTianShuReportData.d == 118) || (paramTianShuReportData.d == 123) || (paramTianShuReportData.d == 124) || (paramTianShuReportData.d == 125) || (paramTianShuReportData.d == 134) || (paramTianShuReportData.d == 138) || (paramTianShuReportData.d == 140) || (paramTianShuReportData.d == 142))
+    if ((paramTianShuReportData.p == 102) || (paramTianShuReportData.p == 118) || (paramTianShuReportData.p == 123) || (paramTianShuReportData.p == 124) || (paramTianShuReportData.p == 125) || (paramTianShuReportData.p == 134) || (paramTianShuReportData.p == 138) || (paramTianShuReportData.p == 140) || (paramTianShuReportData.p == 142))
     {
-      String str2 = paramTianShuReportData.l;
+      String str2 = paramTianShuReportData.s;
       String str1 = str2;
       if (TextUtils.isEmpty(str2)) {
-        str1 = getInstance().getTraceInfoFromCache(paramTianShuReportData.g);
+        str1 = getInstance().getTraceInfoFromCache(paramTianShuReportData.h);
       }
-      setLastClickAdTraceInfo(paramTianShuReportData.g, str1);
+      setLastClickAdTraceInfo(paramTianShuReportData.h, str1);
     }
   }
   
@@ -336,7 +358,7 @@ public class TianShuManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    String str = PublicAccountEventReport.a(paramString);
+    String str = PublicAccountEventReport.b(paramString);
     if (!TextUtils.isEmpty(str))
     {
       this.mTianshuTraceInfoCache.put(str, paramString);
@@ -352,7 +374,7 @@ public class TianShuManager
   public void clearNecessaryDataCacheForReport()
   {
     this.mTianshuTraceInfoCache.clear();
-    VasC2SReporter.a().a();
+    VasC2SReporter.a().b();
     if (QLog.isColorLevel()) {
       QLog.i("TianShuManager", 1, "do clearNecessaryDataCacheForReport");
     }
@@ -513,6 +535,26 @@ public class TianShuManager
     QLog.e("TianShuManager", 2, paramIntent.toString());
   }
   
+  public Map parseGetAdsRsp(TianShuAccess.GetAdsRsp paramGetAdsRsp, int paramInt)
+  {
+    Object localObject1 = getRspEntry(paramGetAdsRsp, paramInt);
+    paramGetAdsRsp = new HashMap();
+    if (checkRepEntryHasData((TianShuAccess.RspEntry)localObject1)) {
+      return paramGetAdsRsp;
+    }
+    localObject1 = ((TianShuAccess.AdItem)((TianShuAccess.RspEntry)localObject1).value.lst.get(0)).argList.get().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (TianShuAccess.MapEntry)((Iterator)localObject1).next();
+      String str = ((TianShuAccess.MapEntry)localObject2).key.get();
+      localObject2 = ((TianShuAccess.MapEntry)localObject2).value.get();
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
+        paramGetAdsRsp.put(str, localObject2);
+      }
+    }
+    return paramGetAdsRsp;
+  }
+  
   public void report(TianShuReportData paramTianShuReportData)
   {
     if (paramTianShuReportData == null) {
@@ -562,7 +604,7 @@ public class TianShuManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.tianshu.TianShuManager
  * JD-Core Version:    0.7.0.1
  */

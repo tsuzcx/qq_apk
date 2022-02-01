@@ -27,7 +27,7 @@ class EmosmActivity$1
         EmosmActivity.access$000(this.a, (EmoticonResp)paramObject);
       }
       this.a.dismissDialog();
-      this.a.mListView.e();
+      this.a.mListView.h();
       return;
     }
     if (paramInt == 2)
@@ -64,7 +64,7 @@ class EmosmActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EmosmActivity.1
  * JD-Core Version:    0.7.0.1
  */

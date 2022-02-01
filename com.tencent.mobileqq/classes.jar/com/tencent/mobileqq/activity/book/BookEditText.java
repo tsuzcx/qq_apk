@@ -9,10 +9,10 @@ import java.io.UnsupportedEncodingException;
 public class BookEditText
   extends EditText
 {
-  private int jdField_a_of_type_Int = 80;
-  private BookEditText.BookEditTextInputListener jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText$BookEditTextInputListener;
-  private boolean jdField_a_of_type_Boolean = false;
-  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new BookEditText.1(this) };
+  private int a = 80;
+  private boolean b = false;
+  private InputFilter[] c = { new BookEditText.1(this) };
+  private BookEditText.BookEditTextInputListener d;
   
   public BookEditText(Context paramContext)
   {
@@ -25,7 +25,7 @@ public class BookEditText
     setInputType(131072);
     setSingleLine(false);
     setHorizontallyScrolling(false);
-    setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
+    setFilters(this.c);
   }
   
   public int a(String paramString)
@@ -47,22 +47,22 @@ public class BookEditText
   
   public void setCanInputWhenLenghtLimit(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public void setInputListener(BookEditText.BookEditTextInputListener paramBookEditTextInputListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText$BookEditTextInputListener = paramBookEditTextInputListener;
+    this.d = paramBookEditTextInputListener;
   }
   
   public void setTextLengthLimit(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.book.BookEditText
  * JD-Core Version:    0.7.0.1
  */

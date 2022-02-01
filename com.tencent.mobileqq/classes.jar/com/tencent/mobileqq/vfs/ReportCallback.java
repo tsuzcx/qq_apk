@@ -14,27 +14,27 @@ import mqq.app.AppRuntime;
 public class ReportCallback
   implements VFSReportCallback
 {
-  private static CopyOnWriteArrayList<Map<String, Object>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static CopyOnWriteArrayList<Throwable> b = new CopyOnWriteArrayList();
-  
-  public static ReportCallback a()
-  {
-    return ReportCallback.SHolder.a();
-  }
+  private static boolean a = false;
+  private static CopyOnWriteArrayList<Map<String, Object>> b = new CopyOnWriteArrayList();
+  private static CopyOnWriteArrayList<Throwable> c = new CopyOnWriteArrayList();
   
   private void a(Throwable paramThrowable)
   {
     CaughtExceptionReport.a(paramThrowable);
   }
   
+  public static ReportCallback b()
+  {
+    return ReportCallback.SHolder.a();
+  }
+  
   public void a()
   {
     try
     {
-      jdField_a_of_type_Boolean = true;
+      a = true;
       Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      Iterator localIterator = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = b.iterator();
       while (localIterator.hasNext())
       {
         Map localMap = (Map)localIterator.next();
@@ -47,12 +47,12 @@ public class ReportCallback
         }
         StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance((String)localObject, "vfs_statistics_tag", true, 0L, 0L, (HashMap)localMap, null);
       }
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      localObject = b.iterator();
+      b.clear();
+      localObject = c.iterator();
       while (((Iterator)localObject).hasNext()) {
         a((Throwable)((Iterator)localObject).next());
       }
-      b.clear();
+      c.clear();
       return;
     }
     catch (Exception localException)
@@ -66,12 +66,12 @@ public class ReportCallback
   public void reportError(Throwable paramThrowable)
   {
     QLog.e("VFSRegisterProxy", 1, paramThrowable, new Object[0]);
-    if (jdField_a_of_type_Boolean)
+    if (a)
     {
       a(paramThrowable);
       return;
     }
-    b.add(paramThrowable);
+    c.add(paramThrowable);
   }
   
   public void statistics(String paramString, int paramInt, Map<String, Object> paramMap)
@@ -81,14 +81,14 @@ public class ReportCallback
       {
         paramMap.put("id", paramString);
         paramMap.put("phase", String.valueOf(paramInt));
-        if (jdField_a_of_type_Boolean)
+        if (a)
         {
           paramString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
           StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString, "vfs_statistics_tag", true, 0L, 0L, (HashMap)paramMap, null);
         }
         else
         {
-          jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramMap);
+          b.add(paramMap);
         }
         if (QLog.isColorLevel())
         {
@@ -96,7 +96,7 @@ public class ReportCallback
           paramString.append("report params -> ");
           paramString.append(paramMap);
           paramString.append(", mCanAccurReport = ");
-          paramString.append(jdField_a_of_type_Boolean);
+          paramString.append(a);
           QLog.d("VFSRegisterProxy", 2, paramString.toString());
           return;
         }
@@ -110,7 +110,7 @@ public class ReportCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vfs.ReportCallback
  * JD-Core Version:    0.7.0.1
  */

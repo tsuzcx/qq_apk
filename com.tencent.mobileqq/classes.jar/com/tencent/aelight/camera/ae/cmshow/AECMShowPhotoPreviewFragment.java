@@ -49,28 +49,99 @@ public class AECMShowPhotoPreviewFragment
   extends PublicBaseFragment
   implements View.OnClickListener, AECMShowFaceScanView.ScanViewListener, PublicFragmentActivityCallBackInterface
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AECMShowLoadingView jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowLoadingView;
-  private AECMShowRequestController jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowRequestController;
-  private AECMShowFaceScanView jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView;
-  private CmShowDataWrapper jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowDataWrapper;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int c = 0;
-  private int d = 0;
+  private RelativeLayout a;
+  private ImageView b;
+  private ImageView c;
+  private TextView d;
+  private TextView e;
+  private AECMShowFaceScanView f;
+  private FrameLayout g;
+  private AECMShowLoadingView h;
+  private View i;
+  private Bitmap j;
+  private String k;
+  private int l;
+  private int m;
+  private AECMShowRequestController n;
+  private boolean o;
+  private CmShowDataWrapper p;
+  private int q = 0;
+  private boolean r = false;
+  private int s = 0;
+  private long t;
   
-  private AECMShowFaceScanView.FaceRectData a(@NonNull List<PointF> paramList)
+  @NonNull
+  private DynamicTextItem.Pair<Boolean, List<PointF>> a(@Nullable Bitmap paramBitmap, @Nullable String paramString)
+  {
+    boolean bool = TextUtils.isEmpty(paramString);
+    paramString = Boolean.valueOf(false);
+    if ((!bool) && (paramBitmap != null))
+    {
+      paramBitmap = FaceChangeUtils.detectBiggestFaceInGLThread(paramBitmap);
+      if ((paramBitmap != null) && (paramBitmap.a != null) && (((Integer)paramBitmap.a).intValue() == 1) && (!CollectionUtils.isEmpty((Collection)paramBitmap.b)))
+      {
+        AEQLog.b("AECMShowPhotoPreviewFragment", "[detectFaceLocally] face detected");
+        return new DynamicTextItem.Pair(Boolean.valueOf(true), FaceChangeUtils.transFromImageSpace2ContainerSpace(this.j.getWidth(), this.j.getHeight(), this.a.getWidth(), this.a.getHeight(), (List)paramBitmap.b));
+      }
+      AEQLog.b("AECMShowPhotoPreviewFragment", "[detectFaceLocally] no face detected");
+      return new DynamicTextItem.Pair(paramString, null);
+    }
+    AEQLog.a("AECMShowPhotoPreviewFragment", "[detectFaceLocally] invalid data");
+    return new DynamicTextItem.Pair(paramString, null);
+  }
+  
+  private void a()
+  {
+    this.l = DisplayUtil.a(getBaseActivity());
+    this.m = DisplayUtil.b(getBaseActivity());
+    Object localObject = getArguments().getStringArrayList("PhotoConst.SELECTED_PATHS");
+    if (!CollectionUtils.isEmpty((Collection)localObject)) {
+      this.k = ((String)((ArrayList)localObject).get(0));
+    }
+    if (!TextUtils.isEmpty(this.k))
+    {
+      this.j = BitmapUtils.decodeSampledBitmapFromFileCheckExif(this.k, this.l, this.m);
+      localObject = this.j;
+      if (localObject != null)
+      {
+        this.b.setImageBitmap((Bitmap)localObject);
+        localObject = this.b.getViewTreeObserver();
+        if (((ViewTreeObserver)localObject).isAlive()) {
+          ((ViewTreeObserver)localObject).addOnGlobalLayoutListener(new AECMShowPhotoPreviewFragment.2(this));
+        }
+      }
+    }
+  }
+  
+  public static void a(Activity paramActivity, Intent paramIntent)
+  {
+    PublicFragmentActivity.Launcher.a(paramActivity, paramIntent, PublicFragmentActivityForPeak.class, AECMShowPhotoPreviewFragment.class);
+  }
+  
+  private void a(View paramView)
+  {
+    this.a = ((RelativeLayout)paramView.findViewById(2063991391));
+    this.b = ((ImageView)paramView.findViewById(2063991203));
+    this.c = ((ImageView)paramView.findViewById(2063991178));
+    this.d = ((TextView)paramView.findViewById(2063991563));
+    this.e = ((TextView)paramView.findViewById(2063991555));
+    this.g = ((FrameLayout)paramView.findViewById(2063991088));
+    this.h = ((AECMShowLoadingView)paramView.findViewById(2063990970));
+    this.i = paramView.findViewById(2063991579);
+    this.f = ((AECMShowFaceScanView)paramView.findViewById(2063991063));
+    this.f.setListener(this);
+    this.c.setOnClickListener(this);
+    this.e.setOnClickListener(this);
+    this.e.setEnabled(false);
+  }
+  
+  private void a(List<PointF> paramList)
+  {
+    paramList = b(paramList);
+    this.f.a(1001, paramList);
+  }
+  
+  private AECMShowFaceScanView.FaceRectData b(@NonNull List<PointF> paramList)
   {
     PointF localPointF1 = (PointF)paramList.get(0);
     PointF localPointF2 = (PointF)paramList.get(1);
@@ -94,85 +165,14 @@ public class AECMShowPhotoPreviewFragment
     return localObject;
   }
   
-  @NonNull
-  private DynamicTextItem.Pair<Boolean, List<PointF>> a(@Nullable Bitmap paramBitmap, @Nullable String paramString)
-  {
-    boolean bool = TextUtils.isEmpty(paramString);
-    paramString = Boolean.valueOf(false);
-    if ((!bool) && (paramBitmap != null))
-    {
-      paramBitmap = FaceChangeUtils.detectBiggestFaceInGLThread(paramBitmap);
-      if ((paramBitmap != null) && (paramBitmap.a != null) && (((Integer)paramBitmap.a).intValue() == 1) && (!CollectionUtils.isEmpty((Collection)paramBitmap.b)))
-      {
-        AEQLog.b("AECMShowPhotoPreviewFragment", "[detectFaceLocally] face detected");
-        return new DynamicTextItem.Pair(Boolean.valueOf(true), FaceChangeUtils.transFromImageSpace2ContainerSpace(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), this.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth(), this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight(), (List)paramBitmap.b));
-      }
-      AEQLog.b("AECMShowPhotoPreviewFragment", "[detectFaceLocally] no face detected");
-      return new DynamicTextItem.Pair(paramString, null);
-    }
-    AEQLog.a("AECMShowPhotoPreviewFragment", "[detectFaceLocally] invalid data");
-    return new DynamicTextItem.Pair(paramString, null);
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Int = DisplayUtil.a(getBaseActivity());
-    this.jdField_b_of_type_Int = DisplayUtil.b(getBaseActivity());
-    Object localObject = getArguments().getStringArrayList("PhotoConst.SELECTED_PATHS");
-    if (!CollectionUtils.isEmpty((Collection)localObject)) {
-      this.jdField_a_of_type_JavaLangString = ((String)((ArrayList)localObject).get(0));
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapUtils.decodeSampledBitmapFromFileCheckExif(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      if (localObject != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
-        localObject = this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver();
-        if (((ViewTreeObserver)localObject).isAlive()) {
-          ((ViewTreeObserver)localObject).addOnGlobalLayoutListener(new AECMShowPhotoPreviewFragment.2(this));
-        }
-      }
-    }
-  }
-  
-  public static void a(Activity paramActivity, Intent paramIntent)
-  {
-    PublicFragmentActivity.Launcher.a(paramActivity, paramIntent, PublicFragmentActivityForPeak.class, AECMShowPhotoPreviewFragment.class);
-  }
-  
-  private void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2064122573));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122321));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122299));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122788));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122780));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2064122207));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowLoadingView = ((AECMShowLoadingView)paramView.findViewById(2064122050));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2064122805);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView = ((AECMShowFaceScanView)paramView.findViewById(2064122179));
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView.setListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setEnabled(false);
-  }
-  
-  private void a(List<PointF> paramList)
-  {
-    paramList = a(paramList);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView.a(1001, paramList);
-  }
-  
   private void b()
   {
     AEQLog.b("AECMShowPhotoPreviewFragment", "startCmShowRequest");
     ThreadManager.getSubThreadHandler().post(new AECMShowPhotoPreviewFragment.3(this));
-    this.d = 1;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowLoadingView.a(1, null);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.s = 1;
+    this.g.setVisibility(0);
+    this.h.a(1, null);
+    this.e.setVisibility(8);
   }
   
   private static void b(@NonNull Activity paramActivity, @NonNull CmShowDataWrapper paramCmShowDataWrapper)
@@ -182,11 +182,20 @@ public class AECMShowPhotoPreviewFragment
     localBundle.putInt("ability_flag", 2);
     localBundle.putInt("PeakConstants.ARG_FORCE_CAMERA", 1);
     localBundle.putSerializable("KEY_CMSHOW_DATA", paramCmShowDataWrapper);
-    paramCmShowDataWrapper = QIMCameraCaptureActivity.a(paramActivity, localBundle);
+    paramCmShowDataWrapper = QIMCameraCaptureActivity.b(paramActivity, localBundle);
     paramCmShowDataWrapper.addFlags(603979776);
     paramActivity.startActivity(paramCmShowDataWrapper);
     paramActivity.finish();
   }
+  
+  public void T()
+  {
+    this.f.a(1003, null);
+    this.c.setImageResource(2063925306);
+    b();
+  }
+  
+  public void U() {}
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
@@ -209,21 +218,21 @@ public class AECMShowPhotoPreviewFragment
   
   public void onBackPressed()
   {
-    if (this.d == 2) {
-      AEBaseDataReporter.a().a(1, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    if (this.s == 2) {
+      AEBaseDataReporter.a().a(1, System.currentTimeMillis() - this.t);
     }
     getBaseActivity().finish();
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i == 2064122780)
+    int i1 = paramView.getId();
+    if (i1 == 2063991555)
     {
       onBackPressed();
       return;
     }
-    if (i == 2064122299) {
+    if (i1 == 2063991178) {
       onBackPressed();
     }
   }
@@ -231,40 +240,40 @@ public class AECMShowPhotoPreviewFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowRequestController = new AECMShowRequestController(2, new AECMShowPhotoPreviewFragment.1(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowRequestController.a();
+    this.n = new AECMShowRequestController(2, new AECMShowPhotoPreviewFragment.1(this));
+    this.n.a();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2064318492, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2064056359, paramViewGroup, false);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.j;
     if (localBitmap != null) {
       BitmapUtils.recycle(localBitmap);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowRequestController.b();
-    this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowDataWrapper = null;
+    this.n.b();
+    this.p = null;
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Boolean = true;
+    this.o = true;
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowDataWrapper != null)
+    this.o = false;
+    if (this.p != null)
     {
-      b(getBaseActivity(), this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowDataWrapper);
-      this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowDataWrapper = null;
+      b(getBaseActivity(), this.p);
+      this.p = null;
     }
   }
   
@@ -273,19 +282,10 @@ public class AECMShowPhotoPreviewFragment
     a(paramView);
     a();
   }
-  
-  public void y()
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECMShowFaceScanView.a(1003, null);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2064056369);
-    b();
-  }
-  
-  public void z() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowPhotoPreviewFragment
  * JD-Core Version:    0.7.0.1
  */

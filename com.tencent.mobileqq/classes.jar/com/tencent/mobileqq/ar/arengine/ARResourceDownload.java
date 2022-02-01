@@ -8,35 +8,34 @@ import java.util.ArrayList;
 
 public class ARResourceDownload
 {
-  public AppInterface a;
-  private IHttpEngineService jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = null;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<ARResourceDownload.DownloadInfo> jdField_a_of_type_JavaUtilArrayList = null;
+  public AppInterface a = null;
+  private ArrayList<ARResourceDownload.DownloadInfo> b = null;
+  private Object c = new Object();
+  private IHttpEngineService d = null;
   
   public ARResourceDownload(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = ((IHttpEngineService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IHttpEngineService.class, "all"));
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.a = paramAppInterface;
+    this.d = ((IHttpEngineService)this.a.getRuntimeService(IHttpEngineService.class, "all"));
+    this.b = new ArrayList();
   }
   
   public void a()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    Object localObject1 = this.c;
     int i = 0;
     try
     {
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i < this.b.size())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("cancelDownloadTask. url = ");
-        localStringBuilder.append(((ARResourceDownload.DownloadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(((ARResourceDownload.DownloadInfo)this.b.get(i)).b);
         QLog.i("AREngine_ARResourceDownload", 1, localStringBuilder.toString());
-        this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.cancelReq(((ARResourceDownload.DownloadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+        this.d.cancelReq(((ARResourceDownload.DownloadInfo)this.b.get(i)).f);
         i += 1;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.b.clear();
       return;
     }
     finally {}
@@ -56,19 +55,19 @@ public class ARResourceDownload
       ??? = new ARResourceDownload.1(this, paramDownloadInfo, ???);
       HttpNetReq localHttpNetReq = new HttpNetReq();
       localHttpNetReq.mCallback = ???;
-      localHttpNetReq.mReqUrl = paramDownloadInfo.jdField_a_of_type_JavaLangString;
+      localHttpNetReq.mReqUrl = paramDownloadInfo.b;
       localHttpNetReq.mHttpMethod = 0;
-      localHttpNetReq.mOutPath = paramDownloadInfo.c;
+      localHttpNetReq.mOutPath = paramDownloadInfo.d;
       localHttpNetReq.mPrioty = 1;
       localHttpNetReq.mSupportBreakResume = true;
-      this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.sendReq(localHttpNetReq);
-      paramDownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      this.d.sendReq(localHttpNetReq);
+      paramDownloadInfo.f = localHttpNetReq;
+      synchronized (this.c)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramDownloadInfo);
+        this.b.add(paramDownloadInfo);
         ??? = new StringBuilder();
         ???.append("submitDownloadTask. url = ");
-        ???.append(paramDownloadInfo.jdField_a_of_type_JavaLangString);
+        ???.append(paramDownloadInfo.b);
         QLog.i("AREngine_ARResourceDownload", 1, ???.toString());
         return true;
       }
@@ -83,7 +82,7 @@ public class ARResourceDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARResourceDownload
  * JD-Core Version:    0.7.0.1
  */

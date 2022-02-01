@@ -10,12 +10,12 @@ public class TogetherUIData
   
   public String getCurUin()
   {
-    return this.mTogetherSession.e;
+    return this.mTogetherSession.n;
   }
   
   public int getSessionType()
   {
-    return this.mTogetherSession.f;
+    return this.mTogetherSession.m;
   }
   
   public String getSubTitleText(boolean paramBoolean, QQAppInterface paramQQAppInterface)
@@ -40,7 +40,7 @@ public class TogetherUIData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherUIData
  * JD-Core Version:    0.7.0.1
  */

@@ -12,27 +12,27 @@ import com.tencent.qphone.base.util.QLog;
 
 public class DeviceSharpController
 {
-  static String jdField_a_of_type_JavaLangString = "smartdevice::sharp";
-  DeviceSharpController.BroadcastHandler jdField_a_of_type_ComTencentAvCoreDeviceSharpController$BroadcastHandler;
-  AbstractNetChannel jdField_a_of_type_ComTencentAvcoreNetchannelAbstractNetChannel;
-  BaseVideoAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface;
+  static String a = "smartdevice::sharp";
+  BaseVideoAppInterface b;
+  AbstractNetChannel c;
+  DeviceSharpController.BroadcastHandler d;
   
   public DeviceSharpController(AbstractNetChannel paramAbstractNetChannel, BaseVideoAppInterface paramBaseVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvcoreNetchannelAbstractNetChannel = paramAbstractNetChannel;
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface = paramBaseVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvCoreDeviceSharpController$BroadcastHandler = new DeviceSharpController.BroadcastHandler(this);
+    this.c = paramAbstractNetChannel;
+    this.b = paramBaseVideoAppInterface;
+    this.d = new DeviceSharpController.BroadcastHandler(this);
     paramAbstractNetChannel = new IntentFilter();
     paramAbstractNetChannel.addAction(((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getSmartDeviceReceiveSharpMsg());
     paramAbstractNetChannel.addAction(((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getSmartDeviceReceiveSharpAckMsg());
     paramAbstractNetChannel.addAction(((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getDeviceUnBindRst());
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface.getApp().registerReceiver(this.jdField_a_of_type_ComTencentAvCoreDeviceSharpController$BroadcastHandler, paramAbstractNetChannel, ((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getBroadcastPermission(), null);
+    this.b.getApp().registerReceiver(this.d, paramAbstractNetChannel, ((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getBroadcastPermission(), null);
   }
   
   void a(byte[] paramArrayOfByte, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "send broadcast : smartdevice send sharp msg");
+      QLog.d(a, 2, "send broadcast : smartdevice send sharp msg");
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("size", paramArrayOfByte.length);
@@ -41,7 +41,7 @@ public class DeviceSharpController
     paramArrayOfByte = new Intent();
     paramArrayOfByte.putExtra("msgData", localBundle);
     paramArrayOfByte.setAction(((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getSmartDeviceSendSharpMsg());
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface.getApp().sendBroadcast(paramArrayOfByte, ((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getBroadcastPermission());
+    this.b.getApp().sendBroadcast(paramArrayOfByte, ((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getBroadcastPermission());
   }
   
   public void b(byte[] paramArrayOfByte, long paramLong)

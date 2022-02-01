@@ -14,11 +14,6 @@ public final class AdCardPageAdapter
 {
   private final List<View> a;
   
-  public AdCardPageAdapter(@NotNull List<? extends View> paramList)
-  {
-    this.a = paramList;
-  }
-  
   public void destroyItem(@NotNull ViewGroup paramViewGroup, int paramInt, @NotNull Object paramObject)
   {
     Intrinsics.checkParameterIsNotNull(paramViewGroup, "container");
@@ -55,7 +50,7 @@ public final class AdCardPageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.adcard.AdCardPageAdapter
  * JD-Core Version:    0.7.0.1
  */

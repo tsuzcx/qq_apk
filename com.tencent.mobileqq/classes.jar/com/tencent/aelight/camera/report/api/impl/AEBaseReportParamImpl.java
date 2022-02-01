@@ -9,12 +9,12 @@ public class AEBaseReportParamImpl
 {
   public void clearLatestPostMd5()
   {
-    AEBaseReportParam.a().f();
+    AEBaseReportParam.a().C();
   }
   
   public boolean getGifMode()
   {
-    return AEBaseReportParam.a().b();
+    return AEBaseReportParam.a().g();
   }
   
   public String getIntentUidKey()
@@ -24,7 +24,7 @@ public class AEBaseReportParamImpl
   
   public void resetEditInfo()
   {
-    AEBaseReportParam.a().c();
+    AEBaseReportParam.a().h();
   }
   
   public void setContentType(long paramLong)
@@ -41,7 +41,7 @@ public class AEBaseReportParamImpl
   
   public void setEditMusicId(String paramString)
   {
-    AEBaseReportParam.a().l(paramString);
+    AEBaseReportParam.a().o(paramString);
   }
   
   public void setEditSpeedChanged(boolean paramBoolean)
@@ -51,12 +51,12 @@ public class AEBaseReportParamImpl
   
   public void setEditStickerIds(String paramString)
   {
-    AEBaseReportParam.a().h(paramString);
+    AEBaseReportParam.a().k(paramString);
   }
   
   public void setEditTextIds(String paramString)
   {
-    AEBaseReportParam.a().i(paramString);
+    AEBaseReportParam.a().l(paramString);
   }
   
   public void setEntry(int paramInt, String paramString)
@@ -71,22 +71,22 @@ public class AEBaseReportParamImpl
   
   public void setFilterId(String paramString)
   {
-    AEBaseReportParam.a().g(paramString);
+    AEBaseReportParam.a().j(paramString);
   }
   
   public void setNetWork()
   {
-    AEBaseReportParam.a().b();
+    AEBaseReportParam.a().d();
   }
   
   public void setOprationTime()
   {
-    AEBaseReportParam.a().a();
+    AEBaseReportParam.a().b();
   }
   
   public void setShootTime()
   {
-    AEBaseReportParam.a().e();
+    AEBaseReportParam.a().m();
   }
   
   public void setUin(@Nullable String paramString)
@@ -101,7 +101,7 @@ public class AEBaseReportParamImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.report.api.impl.AEBaseReportParamImpl
  * JD-Core Version:    0.7.0.1
  */

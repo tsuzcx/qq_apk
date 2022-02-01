@@ -15,13 +15,13 @@ class TroopHWJsPlugin$6
   
   public void run()
   {
-    Object localObject2 = this.this$0.mRuntime.a();
+    Object localObject2 = this.this$0.mRuntime.b();
     Object localObject1 = (TicketManager)((AppRuntime)localObject2).getManager(2);
     localObject2 = ((AppRuntime)localObject2).getAccount();
     localObject1 = ((TicketManager)localObject1).getSkey((String)localObject2);
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.this$0.h)))
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.this$0.r)))
     {
-      localObject1 = TroopHomeworkHelper.a(this.this$0.h, this.a, (String)localObject2, (String)localObject1, 1234567L);
+      localObject1 = TroopHomeworkHelper.a(this.this$0.r, this.a, (String)localObject2, (String)localObject1, 1234567L);
       if (localObject1 != null) {
         try
         {
@@ -33,10 +33,10 @@ class TroopHWJsPlugin$6
             {
               localObject1 = ((JSONObject)localObject1).optString("url");
               localObject2 = new JSONObject();
-              ((JSONObject)localObject2).put("id", this.this$0.d - 1);
+              ((JSONObject)localObject2).put("id", this.this$0.k - 1);
               ((JSONObject)localObject2).put("state", "uploaded");
               ((JSONObject)localObject2).put("url", localObject1);
-              this.this$0.callJs(this.this$0.b, new String[] { ((JSONObject)localObject2).toString() });
+              this.this$0.callJs(this.this$0.d, new String[] { ((JSONObject)localObject2).toString() });
               return;
             }
           }
@@ -51,7 +51,7 @@ class TroopHWJsPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

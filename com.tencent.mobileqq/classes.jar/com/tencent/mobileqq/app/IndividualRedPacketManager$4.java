@@ -23,20 +23,20 @@ class IndividualRedPacketManager$4
   
   public void run()
   {
-    int i = IndividualRedPacketManager.l;
+    int i = IndividualRedPacketManager.I;
     Object localObject1 = this.this$0.a();
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
+    Object localObject2 = this.a;
     int j = 1;
     localObject1 = ((IndividualRedPacketResDownloader)localObject1).a((String)localObject2, true);
-    localObject2 = this.this$0.a(this.jdField_a_of_type_JavaLangString, this.b, 6);
-    boolean bool = this.this$0.c.get();
+    localObject2 = this.this$0.a(this.a, this.b, 6);
+    boolean bool = this.this$0.m.get();
     Object localObject5 = null;
     if (bool)
     {
-      localObject1 = IndividualRedPacketManager.b();
+      localObject1 = IndividualRedPacketManager.i();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("getBitmapForWebView error mIsSDCardError:");
-      ((StringBuilder)localObject2).append(this.this$0.c.get());
+      ((StringBuilder)localObject2).append(this.this$0.m.get());
       QLog.e((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       localObject1 = "";
     }
@@ -68,7 +68,7 @@ class IndividualRedPacketManager$4
         localObject1 = Base64Util.encodeToString((byte[])localObject1, 2);
         try
         {
-          j = IndividualRedPacketManager.k;
+          j = IndividualRedPacketManager.H;
           i = j;
           ((FileInputStream)localObject2).close();
           i = j;
@@ -88,7 +88,7 @@ class IndividualRedPacketManager$4
       i = j;
       if (QLog.isColorLevel())
       {
-        localObject1 = IndividualRedPacketManager.b();
+        localObject1 = IndividualRedPacketManager.i();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("getBitmapForWebView error:");
         localStringBuilder.append(localIOException2.getMessage());
@@ -97,10 +97,10 @@ class IndividualRedPacketManager$4
         i = j;
       }
     }
-    if ((localObject1 != null) && (new File(IndividualRedPacketManager.a(this.jdField_a_of_type_JavaLangString, "", 2, ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject1).d, ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject1).a)).exists()))
+    if ((localObject1 != null) && (new File(IndividualRedPacketManager.a(this.a, "", 2, ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject1).h, ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject1).e)).exists()))
     {
-      localObject1 = this.this$0.a(this.b, 6);
-      localObject2 = IndividualRedPacketManager.a(this.this$0, (IndividualRedPacketManager.FontBitmap)localObject1, this.jdField_a_of_type_JavaLangString, this.b, 6);
+      localObject1 = this.this$0.b(this.b, 6);
+      localObject2 = IndividualRedPacketManager.a(this.this$0, (IndividualRedPacketManager.FontBitmap)localObject1, this.a, this.b, 6);
       j = 0;
     }
     else
@@ -109,7 +109,7 @@ class IndividualRedPacketManager$4
       localObject2 = localObject1;
     }
     if (j != 0) {
-      this.this$0.a().a(16L, this.jdField_a_of_type_JavaLangString, null);
+      this.this$0.a().a(16L, this.a, null);
     }
     localObject5 = "";
     Object localObject4 = localObject2;
@@ -121,18 +121,18 @@ class IndividualRedPacketManager$4
       localObject1 = new ByteArrayOutputStream();
       localObject4.compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject1);
       localObject1 = Base64Util.encodeToString(((ByteArrayOutputStream)localObject1).toByteArray(), 2);
-      i = IndividualRedPacketManager.k;
+      i = IndividualRedPacketManager.H;
     }
     localObject5 = new Bundle();
-    ((Bundle)localObject5).putString("templateId", this.jdField_a_of_type_JavaLangString);
+    ((Bundle)localObject5).putString("templateId", this.a);
     ((Bundle)localObject5).putString("content", this.b);
     ((Bundle)localObject5).putInt("result", i);
     ((Bundle)localObject5).putString("bitmap", (String)localObject1);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject5);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.c.putBundle("response", (Bundle)localObject5);
+    this.d.a(this.c);
     if (QLog.isColorLevel())
     {
-      localObject5 = IndividualRedPacketManager.b();
+      localObject5 = IndividualRedPacketManager.i();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("getBitmapForWebView result = ");
       localStringBuilder.append(i);
@@ -140,23 +140,23 @@ class IndividualRedPacketManager$4
       localStringBuilder.append(((String)localObject1).length());
       QLog.d((String)localObject5, 2, localStringBuilder.toString());
     }
-    if ((localObject2 != null) && (((IndividualRedPacketManager.FontBitmap)localObject2).jdField_a_of_type_AndroidGraphicsBitmap != null) && (!((IndividualRedPacketManager.FontBitmap)localObject2).jdField_a_of_type_Boolean)) {
-      this.this$0.a(((IndividualRedPacketManager.FontBitmap)localObject2).jdField_a_of_type_AndroidGraphicsBitmap, "", this.b, 5);
+    if ((localObject2 != null) && (((IndividualRedPacketManager.FontBitmap)localObject2).a != null) && (!((IndividualRedPacketManager.FontBitmap)localObject2).b)) {
+      this.this$0.a(((IndividualRedPacketManager.FontBitmap)localObject2).a, "", this.b, 5);
     }
-    if ((localObject2 != null) && (((IndividualRedPacketManager.FontBitmap)localObject2).jdField_a_of_type_AndroidGraphicsBitmap != null) && (localObject4 != null))
+    if ((localObject2 != null) && (((IndividualRedPacketManager.FontBitmap)localObject2).a != null) && (localObject4 != null))
     {
-      if (((IndividualRedPacketManager.FontBitmap)localObject2).b)
+      if (((IndividualRedPacketManager.FontBitmap)localObject2).c)
       {
-        this.this$0.a(localObject4, this.jdField_a_of_type_JavaLangString, this.b, 12);
+        this.this$0.a(localObject4, this.a, this.b, 12);
         return;
       }
-      this.this$0.a(localObject4, this.jdField_a_of_type_JavaLangString, this.b, 6);
+      this.this$0.a(localObject4, this.a, this.b, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.IndividualRedPacketManager.4
  * JD-Core Version:    0.7.0.1
  */

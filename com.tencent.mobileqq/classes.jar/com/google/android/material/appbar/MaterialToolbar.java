@@ -24,9 +24,9 @@ import com.google.android.material.theme.overlay.MaterialThemeOverlay;
 public class MaterialToolbar
   extends Toolbar
 {
-  private static final int jdField_a_of_type_Int = R.style.K;
+  private static final int a = R.style.M;
   @Nullable
-  private Integer jdField_a_of_type_JavaLangInteger;
+  private Integer b;
   
   public MaterialToolbar(@NonNull Context paramContext)
   {
@@ -35,16 +35,16 @@ public class MaterialToolbar
   
   public MaterialToolbar(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.toolbarStyle);
+    this(paramContext, paramAttributeSet, R.attr.ad);
   }
   
   public MaterialToolbar(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, a), paramAttributeSet, paramInt);
     paramContext = getContext();
-    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.aa, paramInt, jdField_a_of_type_Int, new int[0]);
-    if (paramAttributeSet.hasValue(R.styleable.ds)) {
-      setNavigationIconTint(paramAttributeSet.getColor(R.styleable.ds, -1));
+    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.eZ, paramInt, a, new int[0]);
+    if (paramAttributeSet.hasValue(R.styleable.fa)) {
+      setNavigationIconTint(paramAttributeSet.getColor(R.styleable.fa, -1));
     }
     paramAttributeSet.recycle();
     a(paramContext);
@@ -57,10 +57,10 @@ public class MaterialToolbar
     if (paramDrawable != null)
     {
       localDrawable = paramDrawable;
-      if (this.jdField_a_of_type_JavaLangInteger != null)
+      if (this.b != null)
       {
         localDrawable = DrawableCompat.wrap(paramDrawable);
-        DrawableCompat.setTint(localDrawable, this.jdField_a_of_type_JavaLangInteger.intValue());
+        DrawableCompat.setTint(localDrawable, this.b.intValue());
       }
     }
     return localDrawable;
@@ -105,7 +105,7 @@ public class MaterialToolbar
   
   public void setNavigationIconTint(@ColorInt int paramInt)
   {
-    this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt);
+    this.b = Integer.valueOf(paramInt);
     Drawable localDrawable = getNavigationIcon();
     if (localDrawable != null) {
       setNavigationIcon(localDrawable);
@@ -114,7 +114,7 @@ public class MaterialToolbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.MaterialToolbar
  * JD-Core Version:    0.7.0.1
  */

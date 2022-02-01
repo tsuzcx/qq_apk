@@ -11,12 +11,12 @@ class SilkStreamPlayer$SilkStreamPlayerThread$1
   
   public void run()
   {
-    QQToast.a(MobileQQ.sMobileQQ, HardCodeUtil.a(2131714035), 0).a();
+    QQToast.makeText(MobileQQ.sMobileQQ, HardCodeUtil.a(2131911566), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tts.SilkStreamPlayer.SilkStreamPlayerThread.1
  * JD-Core Version:    0.7.0.1
  */

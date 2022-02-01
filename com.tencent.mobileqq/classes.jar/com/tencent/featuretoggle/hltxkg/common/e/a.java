@@ -5,6 +5,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import com.tencent.featuretoggle.hltxkg.common.a.i;
+import com.tencent.mobileqq.qmethodmonitor.monitor.LocationMonitor;
 
 public final class a
 {
@@ -30,7 +31,7 @@ public final class a
       if (localObject == null) {
         return false;
       }
-      paramContext = paramContext.getLastKnownLocation((String)localObject);
+      paramContext = LocationMonitor.getLastKnownLocation(paramContext, (String)localObject);
       if (paramContext != null)
       {
         localObject = new StringBuilder();
@@ -50,7 +51,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.e.a
  * JD-Core Version:    0.7.0.1
  */

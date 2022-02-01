@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="#b0000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/o8m" android:layout_width="260.0dip" android:layout_height="@dimen/nb" android:src="@drawable/j0k" android:scaleType="fitXY" android:layout_above="@id/o8n" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/o_7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/j1a" android:layout_above="@id/o8n" android:layout_alignLeft="@id/o8n" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/o8l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="-30.0dip" android:src="@drawable/j10" android:layout_alignTop="@id/o8n" android:layout_alignRight="@id/o8n" />
+    <ImageView android:id="@id/o8n" android:paddingBottom="@dimen/mw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/j1_" android:layout_above="@id/o8q" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/o8o" android:background="@drawable/ixv" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/o8q" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/ixu" android:layout_centerInParent="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/o8p" android:background="@drawable/ixo" android:clickable="true" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_margin="@dimen/ne" android:layout_below="@id/o8q" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/mpc" android:background="@color/ajr" android:layout_width="@dimen/mq" android:layout_height="@dimen/mq" android:layout_centerInParent="true" />
+</RelativeLayout>

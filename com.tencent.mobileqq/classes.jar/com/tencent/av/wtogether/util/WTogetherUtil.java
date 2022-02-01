@@ -64,11 +64,6 @@ public class WTogetherUtil
     a.put(Long.valueOf(107L), Integer.valueOf(107));
   }
   
-  public static int a()
-  {
-    return (int)(ImmersiveUtils.getScreenWidth() * 9.0F / 16.0F);
-  }
-  
   public static int a(Context paramContext)
   {
     if (ImmersiveUtils.isSupporImmersive() == 1) {
@@ -83,16 +78,16 @@ public class WTogetherUtil
     if (paramWTVideoInfo == null) {
       return null;
     }
-    int i = paramWTVideoInfo.jdField_a_of_type_Int;
-    String str4 = paramWTVideoInfo.jdField_b_of_type_JavaLangString;
-    String str1 = a();
-    String str2 = paramWTVideoInfo.d;
-    int j = paramWTVideoInfo.a();
-    String str3 = paramWTVideoInfo.g;
-    if (paramWTVideoInfo.jdField_a_of_type_Long == 0L) {
+    int i = paramWTVideoInfo.a;
+    String str4 = paramWTVideoInfo.c;
+    String str1 = d();
+    String str2 = paramWTVideoInfo.e;
+    int j = paramWTVideoInfo.d();
+    String str3 = paramWTVideoInfo.i;
+    if (paramWTVideoInfo.j == 0L) {
       paramWTVideoInfo = a.get(Long.valueOf(204L));
     } else {
-      paramWTVideoInfo = a.get(Long.valueOf(paramWTVideoInfo.jdField_a_of_type_Long));
+      paramWTVideoInfo = a.get(Long.valueOf(paramWTVideoInfo.j));
     }
     int k = ((Integer)paramWTVideoInfo).intValue();
     if (i == 0)
@@ -122,35 +117,13 @@ public class WTogetherUtil
     return paramWTVideoInfo;
   }
   
-  public static String a()
-  {
-    Object localObject = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localObject = ((TicketManager)((AppInterface)localObject).getManager(2)).getSkey(str);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin=");
-    localStringBuilder.append(SwiftBrowserCookieMonster.a(str));
-    localStringBuilder.append("; skey=");
-    localStringBuilder.append((String)localObject);
-    str = localStringBuilder.toString();
-    if (QLog.isDevelopLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getPlayerCookie, cookie[");
-      ((StringBuilder)localObject).append(str);
-      ((StringBuilder)localObject).append("]");
-      QLog.i("WTogether", 4, ((StringBuilder)localObject).toString());
-    }
-    return str;
-  }
-  
   public static String a(String paramString)
   {
-    Object localObject1 = VideoController.a();
+    Object localObject1 = VideoController.f();
     Object localObject3 = null;
     Object localObject2;
     if (localObject1 != null) {
-      localObject2 = ((VideoController)localObject1).a();
+      localObject2 = ((VideoController)localObject1).aG();
     } else {
       localObject2 = null;
     }
@@ -158,8 +131,8 @@ public class WTogetherUtil
     if (localObject2 != null)
     {
       localObject1 = localObject3;
-      if (((JniSimpleInfoMng)localObject2).a(AVUtil.a(paramString), false, true) == 1) {
-        localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131695962);
+      if (((JniSimpleInfoMng)localObject2).a(AVUtil.c(paramString), false, true) == 1) {
+        localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131893724);
       }
     }
     if (QLog.isDevelopLevel())
@@ -190,8 +163,8 @@ public class WTogetherUtil
       ((cmd0x346.RspBody)localObject).mergeFrom(paramArrayOfByte);
       if (!((cmd0x346.RspBody)localObject).msg_apply_download_rsp.has())
       {
-        paramWTReqUrlResult.jdField_c_of_type_Boolean = false;
-        break label243;
+        paramWTReqUrlResult.l = false;
+        break label242;
       }
       boolean bool1;
       if ((((cmd0x346.RspBody)localObject).uint32_flag_use_media_platform.has()) && (((cmd0x346.RspBody)localObject).uint32_flag_use_media_platform.get() == 1)) {
@@ -200,12 +173,12 @@ public class WTogetherUtil
         bool1 = false;
       }
       DownloadRespInfo.a(localDownloadRespInfo, (cmd0x346.ApplyDownloadRsp)((cmd0x346.RspBody)localObject).msg_apply_download_rsp.get(), bool1, paramString);
-      long l2 = localDownloadRespInfo.jdField_a_of_type_Long;
-      paramWTReqUrlResult.jdField_c_of_type_Boolean = true;
+      long l2 = localDownloadRespInfo.a;
+      paramWTReqUrlResult.l = true;
       l1 = l2;
       bool2 = bool1;
       if (!QLog.isDevelopLevel()) {
-        break label246;
+        break label245;
       }
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("decodeApplyDownloadRsp, retCode[");
@@ -220,25 +193,25 @@ public class WTogetherUtil
       boolean bool2;
       int i;
       String str;
-      break label222;
+      break label221;
     }
     catch (Throwable paramArrayOfByte)
     {
-      label214:
-      break label214;
+      label213:
+      break label213;
     }
-    paramWTReqUrlResult.jdField_c_of_type_Boolean = false;
-    break label243;
-    label222:
-    paramWTReqUrlResult.jdField_c_of_type_Boolean = false;
-    break label243;
-    paramWTReqUrlResult.jdField_c_of_type_Boolean = false;
-    break label243;
+    paramWTReqUrlResult.l = false;
+    break label242;
+    label221:
+    paramWTReqUrlResult.l = false;
+    break label242;
+    paramWTReqUrlResult.l = false;
+    break label242;
     l1 = -100001L;
-    label243:
+    label242:
     bool2 = false;
-    label246:
-    if ((l1 == 0L) && (localDownloadRespInfo.jdField_c_of_type_JavaLangString == null) && (localDownloadRespInfo.jdField_b_of_type_JavaLangString == null)) {
+    label245:
+    if ((l1 == 0L) && (localDownloadRespInfo.f == null) && (localDownloadRespInfo.d == null)) {
       paramInt = 1;
     } else {
       paramInt = 0;
@@ -248,16 +221,16 @@ public class WTogetherUtil
     } else {
       i = 1;
     }
-    if (((paramInt != 0) || (i != 0)) && (paramWTReqUrlResult.jdField_c_of_type_Int < 3) && (paramWTReqUrlResult.jdField_c_of_type_Int >= 0))
+    if (((paramInt != 0) || (i != 0)) && (paramWTReqUrlResult.f < 3) && (paramWTReqUrlResult.f >= 0))
     {
-      paramWTReqUrlResult.jdField_b_of_type_Boolean = true;
+      paramWTReqUrlResult.g = true;
       return;
     }
-    Object localObject = localDownloadRespInfo.d;
-    str = localDownloadRespInfo.jdField_b_of_type_JavaLangString;
-    paramInt = localDownloadRespInfo.jdField_a_of_type_Short;
-    paramInt = localDownloadRespInfo.jdField_b_of_type_Short;
-    paramString = localDownloadRespInfo.jdField_c_of_type_JavaLangString;
+    Object localObject = localDownloadRespInfo.g;
+    str = localDownloadRespInfo.d;
+    paramInt = localDownloadRespInfo.e;
+    paramInt = localDownloadRespInfo.n;
+    paramString = localDownloadRespInfo.f;
     paramArrayOfByte = paramString;
     if (bool2)
     {
@@ -268,18 +241,18 @@ public class WTogetherUtil
     }
     if (l1 == -100001L)
     {
-      paramWTReqUrlResult.d = -100001;
-      paramWTReqUrlResult.jdField_c_of_type_Boolean = false;
+      paramWTReqUrlResult.j = -100001;
+      paramWTReqUrlResult.l = false;
     }
     else
     {
       if ((l1 == -25081L) || (l1 == -6101L) || (l1 == -7003L)) {
-        break label613;
+        break label612;
       }
-      if (!paramWTReqUrlResult.jdField_c_of_type_Boolean)
+      if (!paramWTReqUrlResult.l)
       {
-        paramWTReqUrlResult.d = -100003;
-        paramWTReqUrlResult.jdField_c_of_type_JavaLangString = localResources.getString(2131690964);
+        paramWTReqUrlResult.j = -100003;
+        paramWTReqUrlResult.k = localResources.getString(2131887903);
         return;
       }
     }
@@ -291,24 +264,24 @@ public class WTogetherUtil
       paramString.append(":");
       paramString.append(paramInt);
       paramString.append(paramArrayOfByte);
-      paramWTReqUrlResult.a = paramString.toString();
-      paramWTReqUrlResult.jdField_b_of_type_JavaLangString = ((String)localObject);
-      paramWTReqUrlResult.d = ((int)l1);
-      paramWTReqUrlResult.jdField_c_of_type_JavaLangString = null;
-      paramWTReqUrlResult.jdField_c_of_type_Boolean = true;
+      paramWTReqUrlResult.h = paramString.toString();
+      paramWTReqUrlResult.i = ((String)localObject);
+      paramWTReqUrlResult.j = ((int)l1);
+      paramWTReqUrlResult.k = null;
+      paramWTReqUrlResult.l = true;
       return;
     }
-    paramWTReqUrlResult.d = -100004;
+    paramWTReqUrlResult.j = -100004;
     if (l1 == 0L) {
-      paramWTReqUrlResult.d = -100005;
+      paramWTReqUrlResult.j = -100005;
     }
-    paramWTReqUrlResult.jdField_c_of_type_JavaLangString = localResources.getString(2131690964);
-    paramWTReqUrlResult.jdField_c_of_type_Boolean = false;
+    paramWTReqUrlResult.k = localResources.getString(2131887903);
+    paramWTReqUrlResult.l = false;
     return;
-    label613:
-    paramWTReqUrlResult.jdField_c_of_type_Boolean = false;
-    paramWTReqUrlResult.d = ((int)l1);
-    paramWTReqUrlResult.jdField_c_of_type_JavaLangString = localResources.getString(2131692751);
+    label612:
+    paramWTReqUrlResult.l = false;
+    paramWTReqUrlResult.j = ((int)l1);
+    paramWTReqUrlResult.k = localResources.getString(2131889822);
   }
   
   public static void a(Activity paramActivity, String paramString)
@@ -318,7 +291,7 @@ public class WTogetherUtil
       if (paramActivity == null) {
         return;
       }
-      paramActivity = DialogUtil.a(paramActivity, 230).setTitle(null).setMessage(paramString).setNegativeButton(2131695995, new WTogetherUtil.1());
+      paramActivity = DialogUtil.a(paramActivity, 230).setTitle(null).setMessage(paramString).setNegativeButton(2131893757, new WTogetherUtil.1());
       paramActivity.setCancelable(false);
       paramActivity.show();
     }
@@ -344,17 +317,6 @@ public class WTogetherUtil
     }
   }
   
-  public static void a(Context paramContext)
-  {
-    if (!(paramContext instanceof AVActivity)) {
-      return;
-    }
-    paramContext = ((AVActivity)paramContext).a;
-    if (paramContext != null) {
-      paramContext.b();
-    }
-  }
-  
   public static void a(View paramView, int paramInt1, int paramInt2)
   {
     paramView = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
@@ -369,10 +331,10 @@ public class WTogetherUtil
   
   public static boolean a(VideoAppInterface paramVideoAppInterface)
   {
-    SessionInfo localSessionInfo = SessionMgr.a().a();
+    SessionInfo localSessionInfo = SessionMgr.a().b();
     Object localObject = null;
     if (paramVideoAppInterface != null) {
-      paramVideoAppInterface = (WTogetherMng)paramVideoAppInterface.a(16);
+      paramVideoAppInterface = (WTogetherMng)paramVideoAppInterface.c(17);
     } else {
       paramVideoAppInterface = null;
     }
@@ -384,22 +346,38 @@ public class WTogetherUtil
     if (paramVideoAppInterface == null) {
       paramVideoAppInterface = localObject;
     } else {
-      paramVideoAppInterface = paramVideoAppInterface.a;
+      paramVideoAppInterface = paramVideoAppInterface.g;
     }
-    return (paramVideoAppInterface != null) && (paramVideoAppInterface.a() != 0);
+    return (paramVideoAppInterface != null) && (paramVideoAppInterface.e() != 0);
   }
   
-  public static boolean a(String paramString)
+  public static int b()
   {
-    Object localObject = VideoController.a();
+    return (int)(ImmersiveUtils.getScreenWidth() * 9.0F / 16.0F);
+  }
+  
+  public static void b(Context paramContext)
+  {
+    if (!(paramContext instanceof AVActivity)) {
+      return;
+    }
+    paramContext = ((AVActivity)paramContext).L;
+    if (paramContext != null) {
+      paramContext.m();
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    Object localObject = VideoController.f();
     boolean bool1 = TextUtils.isEmpty(paramString);
     boolean bool2 = false;
     int j;
     int i;
     if ((!bool1) && (localObject != null))
     {
-      int k = ((VideoController)localObject).c(paramString);
-      int m = ((VideoController)localObject).b(paramString);
+      int k = ((VideoController)localObject).i(paramString);
+      int m = ((VideoController)localObject).g(paramString);
       j = m;
       i = k;
       bool1 = bool2;
@@ -442,7 +420,7 @@ public class WTogetherUtil
     return bool1;
   }
   
-  public static boolean b()
+  public static boolean c()
   {
     if (QLog.isDevelopLevel())
     {
@@ -459,17 +437,17 @@ public class WTogetherUtil
     return (AppNetConnInfo.isNetSupport()) && (!AppNetConnInfo.isWifiConn());
   }
   
-  public static boolean b(String paramString)
+  public static boolean c(String paramString)
   {
-    Object localObject = VideoController.a();
+    Object localObject = VideoController.f();
     boolean bool1 = TextUtils.isEmpty(paramString);
     boolean bool2 = false;
     int j;
     int i;
     if ((!bool1) && (localObject != null))
     {
-      int k = ((VideoController)localObject).c(paramString);
-      int m = ((VideoController)localObject).b(paramString);
+      int k = ((VideoController)localObject).i(paramString);
+      int m = ((VideoController)localObject).g(paramString);
       j = m;
       i = k;
       bool1 = bool2;
@@ -510,6 +488,28 @@ public class WTogetherUtil
       QLog.i("WTogether", 2, ((StringBuilder)localObject).toString());
     }
     return bool1;
+  }
+  
+  public static String d()
+  {
+    Object localObject = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    localObject = ((TicketManager)((AppInterface)localObject).getManager(2)).getSkey(str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=");
+    localStringBuilder.append(SwiftBrowserCookieMonster.a(str));
+    localStringBuilder.append("; skey=");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getPlayerCookie, cookie[");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WTogether", 4, ((StringBuilder)localObject).toString());
+    }
+    return str;
   }
 }
 

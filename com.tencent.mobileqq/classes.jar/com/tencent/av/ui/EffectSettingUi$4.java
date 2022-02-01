@@ -3,6 +3,7 @@ package com.tencent.av.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.av.ui.effect.toolbar.BaseToolbar;
 import com.tencent.qphone.base.util.QLog;
 
 class EffectSettingUi$4
@@ -12,8 +13,8 @@ class EffectSettingUi$4
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1008L);
-    paramView = this.a.jdField_a_of_type_JavaLangString;
+    BaseToolbar.keepInToolbar(this.a.h, -1008L);
+    paramView = this.a.g;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("m_qav_effect_bottom, onTouchEvent[");
     localStringBuilder.append(paramMotionEvent.getAction());

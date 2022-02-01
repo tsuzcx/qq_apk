@@ -14,23 +14,23 @@ import java.util.List;
 class CommonTroopListActivity$CommonTroopAdapter
   extends BaseAdapter
 {
-  private List<IntimateInfo.CommonTroopInfo> jdField_a_of_type_JavaUtilList;
+  private List<IntimateInfo.CommonTroopInfo> b;
   
   private CommonTroopListActivity$CommonTroopAdapter(CommonTroopListActivity paramCommonTroopListActivity) {}
   
   public IntimateInfo.CommonTroopInfo a(int paramInt)
   {
-    return (IntimateInfo.CommonTroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (IntimateInfo.CommonTroopInfo)this.b.get(paramInt);
   }
   
   public void a(List<IntimateInfo.CommonTroopInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList == null) {
       return 0;
     }
@@ -46,22 +46,22 @@ class CommonTroopListActivity$CommonTroopAdapter
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(CommonTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity)).inflate(2131559266, null);
+      localView = LayoutInflater.from(CommonTroopListActivity.a(this.a)).inflate(2131625187, null);
     }
     paramView = a(paramInt);
-    ImageView localImageView = (ImageView)localView.findViewById(2131365033);
-    TextView localTextView = (TextView)localView.findViewById(2131365036);
-    localImageView.setImageDrawable(FaceDrawable.getFaceDrawable(CommonTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity), 4, paramView.troopCode));
+    ImageView localImageView = (ImageView)localView.findViewById(2131431166);
+    TextView localTextView = (TextView)localView.findViewById(2131431169);
+    localImageView.setImageDrawable(FaceDrawable.getFaceDrawable(CommonTroopListActivity.c(this.a), 4, paramView.troopCode));
     localTextView.setText(paramView.troopName);
     localView.setTag(paramView);
-    localView.setOnClickListener(CommonTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity));
+    localView.setOnClickListener(CommonTroopListActivity.d(this.a));
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.CommonTroopListActivity.CommonTroopAdapter
  * JD-Core Version:    0.7.0.1
  */

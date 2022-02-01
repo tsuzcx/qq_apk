@@ -16,12 +16,12 @@ class StorySingleFileDownloader$1
     while (localIterator.hasNext())
     {
       DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
-      StorySingleFileDownloader.a(this.this$0).a(localDownloadTask);
-      Object localObject = localDownloadTask.jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
+      StorySingleFileDownloader.b(this.this$0).a(localDownloadTask);
+      Object localObject = localDownloadTask.l.get("DOWNLOAD_TASK_KEY_LISTENER");
       if ((localObject != null) && ((localObject instanceof StorySingleFileDownloader.FileDownloadListener)))
       {
-        StorySingleFileDownloader.a(this.this$0, localDownloadTask.b, localDownloadTask.jdField_a_of_type_Int, (StorySingleFileDownloader.FileDownloadListener)localObject);
-        SLog.d("Q.qqstory.download:StorySingleFileDownloader", "task :%s cancel!  because stop", new Object[] { localDownloadTask.jdField_a_of_type_JavaLangString });
+        StorySingleFileDownloader.a(this.this$0, localDownloadTask.b, localDownloadTask.c, (StorySingleFileDownloader.FileDownloadListener)localObject);
+        SLog.d("Q.qqstory.download:StorySingleFileDownloader", "task :%s cancel!  because stop", new Object[] { localDownloadTask.a });
       }
     }
     StorySingleFileDownloader.a(this.this$0).clear();
@@ -30,7 +30,7 @@ class StorySingleFileDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.StorySingleFileDownloader.1
  * JD-Core Version:    0.7.0.1
  */

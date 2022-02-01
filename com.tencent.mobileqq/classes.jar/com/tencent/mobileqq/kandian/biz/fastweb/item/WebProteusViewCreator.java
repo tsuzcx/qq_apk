@@ -30,14 +30,14 @@ import org.json.JSONObject;
 public class WebProteusViewCreator
   implements IStateChangeListener, ItemCreator
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private final Map<String, Integer> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private VafContext a;
+  private Context b;
+  private BaseAdapter c;
+  private final Map<String, Integer> d = new ConcurrentHashMap();
   
   public WebProteusViewCreator(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
+    this.a = paramVafContext;
     f();
   }
   
@@ -68,31 +68,10 @@ public class WebProteusViewCreator
     }
   }
   
-  public int a(BaseData paramBaseData)
-  {
-    if ((paramBaseData instanceof ProteusItemData))
-    {
-      paramBaseData = (ProteusItemData)paramBaseData;
-      if (paramBaseData.a != null)
-      {
-        paramBaseData = paramBaseData.a.getStyleName();
-        Object localObject = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramBaseData);
-        if (localObject != null) {
-          return ((Integer)localObject).intValue();
-        }
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("getViewType error,styleName:");
-        ((StringBuilder)localObject).append(paramBaseData);
-        QLog.d("WebProteusViewCreator", 1, ((StringBuilder)localObject).toString());
-      }
-    }
-    return -1;
-  }
-  
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (this.b == null) {
+      this.b = paramContext;
     }
     ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
     Object localObject1 = null;
@@ -100,19 +79,19 @@ public class WebProteusViewCreator
     String str;
     try
     {
-      if (localProteusItemData.a == null)
+      if (localProteusItemData.bd == null)
       {
         paramViewGroup = (ViewGroup)localObject1;
-        localProteusItemData.b(localProteusItemData.c);
+        localProteusItemData.b(localProteusItemData.bb);
         paramViewGroup = (ViewGroup)localObject1;
         localProteusItemData.a(TemplateFactory.a("native_article", true));
       }
       paramViewGroup = (ViewGroup)localObject1;
-      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
+      localObject1 = this.a.getViewFactory().inflate(this.a, localProteusItemData.bd);
       paramViewGroup = (ViewGroup)localObject1;
-      ProteusSupportUtil.a(((Container)localObject1).getVirtualView(), localProteusItemData.a.getViewBean());
+      ProteusSupportUtil.a(((Container)localObject1).getVirtualView(), localProteusItemData.bd.getViewBean());
       paramViewGroup = (ViewGroup)localObject1;
-      localObject2 = localProteusItemData.c.toString();
+      localObject2 = localProteusItemData.bb.toString();
       paramViewGroup = (ViewGroup)localObject1;
       localObject1 = localObject2;
     }
@@ -146,15 +125,36 @@ public class WebProteusViewCreator
   
   public void a(BaseAdapter paramBaseAdapter)
   {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
+    this.c = paramBaseAdapter;
   }
   
   public void a(AbsListView paramAbsListView, int paramInt) {}
   
   public boolean a(BaseData paramBaseData)
   {
-    int i = paramBaseData.u;
+    int i = paramBaseData.aP;
     return (i == 0) || (i == 6) || (i == 23) || (i == 25) || (i == 26);
+  }
+  
+  public int b(BaseData paramBaseData)
+  {
+    if ((paramBaseData instanceof ProteusItemData))
+    {
+      paramBaseData = (ProteusItemData)paramBaseData;
+      if (paramBaseData.bd != null)
+      {
+        paramBaseData = paramBaseData.bd.getStyleName();
+        Object localObject = (Integer)this.d.get(paramBaseData);
+        if (localObject != null) {
+          return ((Integer)localObject).intValue();
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getViewType error,styleName:");
+        ((StringBuilder)localObject).append(paramBaseData);
+        QLog.d("WebProteusViewCreator", 1, ((StringBuilder)localObject).toString());
+      }
+    }
+    return -1;
   }
   
   public void b() {}
@@ -169,29 +169,29 @@ public class WebProteusViewCreator
   {
     try
     {
-      ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
-      Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getTemplateFactory().getNameTemplateMap().keySet();
-      BaseItemViewHolder.a = 32;
-      int i = BaseItemViewHolder.a + 1;
+      ProteusSupportUtil.a(this.a, "native_article");
+      Object localObject1 = this.a.getTemplateFactory().getNameTemplateMap().keySet();
+      BaseItemViewHolder.e = 32;
+      int i = BaseItemViewHolder.e + 1;
       localObject1 = ((Set)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localObject2))
+        if (!this.d.containsKey(localObject2))
         {
-          this.jdField_a_of_type_JavaUtilMap.put(localObject2, Integer.valueOf(i));
+          this.d.put(localObject2, Integer.valueOf(i));
           i += 1;
         }
       }
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("VIEW_TYPE_COUNT=");
-      ((StringBuilder)localObject1).append(BaseItemViewHolder.a);
+      ((StringBuilder)localObject1).append(BaseItemViewHolder.e);
       ((StringBuilder)localObject1).append(",NAME_VIEWTYPE_MAP size=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilMap.size());
+      ((StringBuilder)localObject1).append(this.d.size());
       ((StringBuilder)localObject1).append("type=");
       ((StringBuilder)localObject1).append(i);
       QLog.d("WebProteusViewCreator", 1, ((StringBuilder)localObject1).toString());
-      BaseItemViewHolder.a += this.jdField_a_of_type_JavaUtilMap.size() + 1;
+      BaseItemViewHolder.e += this.d.size() + 1;
       return;
     }
     catch (Exception localException)
@@ -205,7 +205,7 @@ public class WebProteusViewCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebProteusViewCreator
  * JD-Core Version:    0.7.0.1
  */

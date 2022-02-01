@@ -12,8 +12,8 @@ class IliveGroupTipsBarHelper$1
   public void a()
   {
     IliveGroupTipsBarHelper.a(this.a, null);
-    if (!this.a.c()) {
-      IliveGroupTipsBarHelper.a(this.a);
+    if (!this.a.d()) {
+      IliveGroupTipsBarHelper.b(this.a);
     }
   }
   
@@ -44,21 +44,21 @@ class IliveGroupTipsBarHelper$1
     localStringBuilder.append(" source = ");
     localStringBuilder.append(paramString);
     QLog.i("IliveGroupTipsBarHelper", 1, localStringBuilder.toString());
-    if ((IliveGroupTipsBarHelper.a(this.a) == null) || (!IliveGroupTipsBarHelper.a(this.a).a)) {
+    if ((IliveGroupTipsBarHelper.a(this.a) == null) || (!IliveGroupTipsBarHelper.a(this.a).f)) {
       bool = false;
     }
     IliveGroupTipsBarHelper.a(this.a, bool);
     if (!bool)
     {
-      this.a.c();
+      this.a.d();
       return;
     }
-    this.a.b();
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.group.IliveGroupTipsBarHelper.1
  * JD-Core Version:    0.7.0.1
  */

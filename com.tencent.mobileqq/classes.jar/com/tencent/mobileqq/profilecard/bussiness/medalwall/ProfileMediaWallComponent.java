@@ -90,8 +90,8 @@ public class ProfileMediaWallComponent
   {
     if (this.mViewContainer != null)
     {
-      this.mActivity.getLayoutInflater().inflate(2131561317, (ViewGroup)this.mViewContainer);
-      this.mMedalTargetView = ((View)this.mViewContainer).findViewById(2131370830);
+      this.mActivity.getLayoutInflater().inflate(2131627673, (ViewGroup)this.mViewContainer);
+      this.mMedalTargetView = ((View)this.mViewContainer).findViewById(2131438159);
     }
   }
   
@@ -146,7 +146,7 @@ public class ProfileMediaWallComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.medalwall.ProfileMediaWallComponent
  * JD-Core Version:    0.7.0.1
  */

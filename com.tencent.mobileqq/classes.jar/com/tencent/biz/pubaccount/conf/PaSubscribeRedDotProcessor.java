@@ -22,8 +22,8 @@ public class PaSubscribeRedDotProcessor
       if ((localObject instanceof QQAppInterface))
       {
         localObject = (QQAppInterface)localObject;
-        boolean bool = SubscriptRecommendController.d((QQAppInterface)localObject);
-        return PaSubscribeRedDotBean.a(SubscriptRecommendController.a((QQAppInterface)localObject), SubscriptRecommendController.b((QQAppInterface)localObject), bool);
+        boolean bool = SubscriptRecommendController.h((QQAppInterface)localObject);
+        return PaSubscribeRedDotBean.a(SubscriptRecommendController.a((QQAppInterface)localObject), SubscriptRecommendController.i((QQAppInterface)localObject), bool);
       }
     }
     return new PaSubscribeRedDotBean();
@@ -72,7 +72,7 @@ public class PaSubscribeRedDotProcessor
     if ((localObject instanceof QQAppInterface))
     {
       localObject = (QQAppInterface)localObject;
-      return SharedPreUtils.x(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getAccount());
+      return SharedPreUtils.E(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getAccount());
     }
     return 0;
   }
@@ -86,7 +86,7 @@ public class PaSubscribeRedDotProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.PaSubscribeRedDotProcessor
  * JD-Core Version:    0.7.0.1
  */

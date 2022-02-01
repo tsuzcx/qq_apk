@@ -12,11 +12,11 @@ import mqq.util.WeakReference;
 final class WeiyunShareProcessController$GetShareLinkCallback
   implements WeiyunCallback
 {
-  private final int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<WeiyunShareProcessController> jdField_a_of_type_MqqUtilWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
-  private final String b;
+  private final WeakReference<WeiyunShareProcessController> a;
+  private final int b;
+  private final String c;
+  private final String d;
+  private final boolean e;
   
   private WeiyunShareProcessController$GetShareLinkCallback(WeiyunShareProcessController paramWeiyunShareProcessController, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
@@ -25,16 +25,16 @@ final class WeiyunShareProcessController$GetShareLinkCallback
     } else {
       paramWeiyunShareProcessController = new WeakReference(paramWeiyunShareProcessController);
     }
-    this.jdField_a_of_type_MqqUtilWeakReference = paramWeiyunShareProcessController;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramWeiyunShareProcessController;
+    this.b = paramInt;
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramBoolean;
   }
   
   public void a(int paramInt, String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_MqqUtilWeakReference;
+    Object localObject1 = this.a;
     if (localObject1 == null) {
       localObject1 = null;
     } else {
@@ -45,7 +45,7 @@ final class WeiyunShareProcessController$GetShareLinkCallback
       if (WeiyunShareProcessController.a((WeiyunShareProcessController)localObject1)) {
         return;
       }
-      if ((!((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).isSpaceOverErrorCode(paramInt)) && (!TextUtils.isEmpty(this.b)) && (WeiyunShareProcessController.a((WeiyunShareProcessController)localObject1) == null))
+      if ((!((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).isSpaceOverErrorCode(paramInt)) && (!TextUtils.isEmpty(this.d)) && (WeiyunShareProcessController.d((WeiyunShareProcessController)localObject1) == null))
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("GetShareLink errorCode=");
@@ -53,19 +53,19 @@ final class WeiyunShareProcessController$GetShareLinkCallback
         ((StringBuilder)localObject2).append(", errorMsg=");
         ((StringBuilder)localObject2).append(paramString);
         QLog.w("WeiyunShareProcessController<FileAssistant>", 2, ((StringBuilder)localObject2).toString());
-        WeiyunShareProcessController.a((WeiyunShareProcessController)localObject1, this.b);
+        WeiyunShareProcessController.a((WeiyunShareProcessController)localObject1, this.d);
         return;
       }
       Object localObject2 = new Message();
       ((Message)localObject2).what = 6;
       ((Message)localObject2).obj = new Object[] { Integer.valueOf(paramInt), paramString };
-      WeiyunShareProcessController.a((WeiyunShareProcessController)localObject1).sendMessage((Message)localObject2);
+      WeiyunShareProcessController.c((WeiyunShareProcessController)localObject1).sendMessage((Message)localObject2);
     }
   }
   
   public void a(Object paramObject)
   {
-    Object localObject1 = this.jdField_a_of_type_MqqUtilWeakReference;
+    Object localObject1 = this.a;
     if (localObject1 == null) {
       localObject1 = null;
     } else {
@@ -78,7 +78,7 @@ final class WeiyunShareProcessController$GetShareLinkCallback
       }
       Object localObject2 = (String)paramObject;
       paramObject = localObject2;
-      if (this.jdField_a_of_type_Boolean)
+      if (this.e)
       {
         paramObject = localObject2;
         if (!((String)localObject2).contains("?weiyun_qr_code=1"))
@@ -91,14 +91,14 @@ final class WeiyunShareProcessController$GetShareLinkCallback
       }
       localObject2 = new Message();
       ((Message)localObject2).what = 5;
-      ((Message)localObject2).obj = new Object[] { paramObject, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString };
-      WeiyunShareProcessController.a((WeiyunShareProcessController)localObject1).sendMessage((Message)localObject2);
+      ((Message)localObject2).obj = new Object[] { paramObject, Integer.valueOf(this.b), this.c };
+      WeiyunShareProcessController.c((WeiyunShareProcessController)localObject1).sendMessage((Message)localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.link.WeiyunShareProcessController.GetShareLinkCallback
  * JD-Core Version:    0.7.0.1
  */

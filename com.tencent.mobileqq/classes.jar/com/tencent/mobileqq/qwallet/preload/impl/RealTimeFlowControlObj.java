@@ -23,15 +23,15 @@ import mqq.app.AppRuntime;
 public class RealTimeFlowControlObj
   extends IPreloadService.FlowControlObj
 {
-  DownloadParam jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam;
-  private PreloadFlowControlConfig jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener;
-  private String jdField_a_of_type_JavaLangString;
+  DownloadParam a;
+  DownloadListener b;
+  private PreloadFlowControlConfig c;
+  private String d;
   
   public RealTimeFlowControlObj(DownloadParam paramDownloadParam, DownloadListener paramDownloadListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam = paramDownloadParam;
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = paramDownloadListener;
+    this.a = paramDownloadParam;
+    this.b = paramDownloadListener;
   }
   
   private void a(DownloadListener paramDownloadListener, String paramString)
@@ -39,8 +39,8 @@ public class RealTimeFlowControlObj
     if (paramDownloadListener == null) {
       return;
     }
-    paramString = new DownloadTask(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam.url, new File(paramString));
-    paramString.a = 0;
+    paramString = new DownloadTask(this.a.url, new File(paramString));
+    paramString.c = 0;
     paramDownloadListener.onDoneFile(paramString);
   }
   
@@ -55,7 +55,7 @@ public class RealTimeFlowControlObj
     ResInfo localResInfo = new ResInfo();
     try
     {
-      localResInfo.sResId = this.jdField_a_of_type_JavaLangString;
+      localResInfo.sResId = this.d;
       localResInfo.iSize = paramInt;
     }
     catch (Throwable localThrowable)
@@ -74,44 +74,44 @@ public class RealTimeFlowControlObj
   public void a(IPreloadService arg1)
   {
     PreloadServiceImpl localPreloadServiceImpl = (PreloadServiceImpl)???;
-    ??? = PreloadStaticApi.a(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam.url, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam.isForceUnzip, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam.filePos);
+    ??? = PreloadStaticApi.b(this.a.url, this.a.isForceUnzip, this.a.filePos);
     Object localObject1;
-    if (PreloadStaticApi.a(???, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam))
+    if (PreloadStaticApi.a(???, this.a))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener;
+      localObject1 = this.b;
       if (localObject1 != null) {
         a((DownloadListener)localObject1, ???.filePath);
       }
       localPreloadServiceImpl.notifyResFlowCheckNext();
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig == null)
+    if (this.c == null)
     {
-      this.jdField_a_of_type_JavaLangString = localPreloadServiceImpl.getResIdByUrl(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam.url);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = MD5.toMD5(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam.url);
+      this.d = localPreloadServiceImpl.getResIdByUrl(this.a.url);
+      if (TextUtils.isEmpty(this.d)) {
+        this.d = MD5.toMD5(this.a.url);
       }
-      this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig = PreloadFlowControlConfig.getFlowControlConfig(this.jdField_a_of_type_JavaLangString, localPreloadServiceImpl.mApp);
+      this.c = PreloadFlowControlConfig.getFlowControlConfig(this.d, localPreloadServiceImpl.mApp);
     }
     if (QLog.isColorLevel())
     {
       ??? = new StringBuilder();
-      ???.append(this.jdField_a_of_type_JavaLangString);
+      ???.append(this.d);
       ???.append("handleFlowConfig:");
-      ???.append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mDownloadStatus);
+      ???.append(this.c.mDownloadStatus);
       QLog.d("RealTimeFlowControlObj", 2, ???.toString());
     }
     long l1 = localPreloadServiceImpl.mApp.getLongAccountUin();
-    String str1 = DeviceInfoUtil.i();
-    String str2 = DeviceInfoUtil.c();
-    float f1 = (float)DeviceInfoUtil.b();
-    float f2 = (float)DeviceInfoUtil.c();
-    int i = DeviceInfoUtil.b();
+    String str1 = DeviceInfoUtil.u();
+    String str2 = DeviceInfoUtil.e();
+    float f1 = (float)DeviceInfoUtil.k();
+    float f2 = (float)DeviceInfoUtil.l();
+    int i = DeviceInfoUtil.h();
     long l2 = DeviceInfoUtil.a() / 1024L;
     Object localObject4;
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig)
+    synchronized (this.c)
     {
-      int j = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mDownloadStatus;
+      int j = this.c.mDownloadStatus;
       if (j != -1) {
         if (j != 0) {
           if (j != 1)
@@ -126,11 +126,11 @@ public class RealTimeFlowControlObj
               break label1001;
             }
             localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject1).append(this.d);
             ((StringBuilder)localObject1).append(" STATUS_NOT_DOWNLOAD|");
             ((StringBuilder)localObject1).append(l3);
             ((StringBuilder)localObject1).append("|");
-            localObject4 = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig;
+            localObject4 = this.c;
           }
         }
       }
@@ -138,15 +138,15 @@ public class RealTimeFlowControlObj
       {
         ((StringBuilder)localObject1).append(((PreloadFlowControlConfig)localObject4).mNextCanReqTime);
         QLog.d("RealTimeFlowControlObj", 2, ((StringBuilder)localObject1).toString());
-        if (l3 > this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mNextCanReqTime)
+        if (l3 > this.c.mNextCanReqTime)
         {
-          a(JudgeDownloadReq.createReq(a(0), l1, 0, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+          a(JudgeDownloadReq.createReq(a(0), l1, 0, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, this.b);
         }
         else
         {
           localPreloadServiceImpl.notifyResFlowCheckNext();
-          if (this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener != null) {
-            a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+          if (this.b != null) {
+            a(this.b);
           }
         }
       }
@@ -165,23 +165,23 @@ public class RealTimeFlowControlObj
       if (QLog.isColorLevel())
       {
         localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject4).append(this.d);
         ((StringBuilder)localObject4).append("STATUS_NOW_DOWNLOAD|");
         ((StringBuilder)localObject4).append(l3);
         ((StringBuilder)localObject4).append("|");
-        ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mValidDownloadTime);
+        ((StringBuilder)localObject4).append(this.c.mValidDownloadTime);
         QLog.d("RealTimeFlowControlObj", 2, ((StringBuilder)localObject4).toString());
-        if (l3 < this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mValidDownloadTime)
+        if (l3 < this.c.mValidDownloadTime)
         {
           if (QLog.isColorLevel())
           {
             localObject4 = new StringBuilder();
-            ((StringBuilder)localObject4).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject4).append(this.d);
             ((StringBuilder)localObject4).append("begin download");
             QLog.d("RealTimeFlowControlObj", 2, ((StringBuilder)localObject4).toString());
           }
-          localObject4 = this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener;
-          i = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mRetryDownloadTimes;
+          localObject4 = this.b;
+          i = this.c.mRetryDownloadTimes;
           ??? = (IPreloadService)localObject1;
           localObject1 = ???;
         }
@@ -191,24 +191,24 @@ public class RealTimeFlowControlObj
           {
             localObject4 = a(l1, (DownloadListener)localObject4, localPreloadServiceImpl, i);
             localObject1 = ???;
-            PreloadComDownloader.a().a(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam, (DownloadListener)localObject4, null);
+            PreloadComDownloader.a().a(this.a, (DownloadListener)localObject4, null);
             continue;
             ??? = (IPreloadService)localObject1;
             localObject1 = ???;
-            a(JudgeDownloadReq.createReq(a(0), l1, 0, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+            a(JudgeDownloadReq.createReq(a(0), l1, 0, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, this.b);
             continue;
             localObject4 = ???;
             localObject1 = localObject4;
             l3 = NetConnInfoCenter.getServerTimeMillis();
             localObject1 = localObject4;
-            long l4 = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mNextRetryReqTime - l3;
+            long l4 = this.c.mNextRetryReqTime - l3;
             localObject1 = localObject4;
             if (QLog.isColorLevel())
             {
               localObject1 = localObject4;
               ??? = new StringBuilder();
               localObject1 = localObject4;
-              ???.append(this.jdField_a_of_type_JavaLangString);
+              ???.append(this.d);
               localObject1 = localObject4;
               ???.append("STATUS_WAIT_TO_REQ|");
               localObject1 = localObject4;
@@ -216,7 +216,7 @@ public class RealTimeFlowControlObj
               localObject1 = localObject4;
               ???.append("|");
               localObject1 = localObject4;
-              ???.append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mNextRetryReqTime);
+              ???.append(this.c.mNextRetryReqTime);
               localObject1 = localObject4;
               ???.append("|");
               localObject1 = localObject4;
@@ -229,13 +229,13 @@ public class RealTimeFlowControlObj
               localObject1 = localObject4;
               ??? = a(0);
               localObject1 = localObject4;
-              PreloadFlowControlConfig localPreloadFlowControlConfig = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig;
+              PreloadFlowControlConfig localPreloadFlowControlConfig = this.c;
               localObject1 = localObject4;
               j = localPreloadFlowControlConfig.mRetryReqTimes + 1;
               localObject1 = localObject4;
               localPreloadFlowControlConfig.mRetryReqTimes = j;
               localObject1 = localObject4;
-              a(JudgeDownloadReq.createReq(???, l1, j, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+              a(JudgeDownloadReq.createReq(???, l1, j, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, this.b);
               ??? = (IPreloadService)localObject4;
             }
             else
@@ -244,14 +244,14 @@ public class RealTimeFlowControlObj
               localPreloadServiceImpl.notifyResFlowCheckNext();
               ??? = (IPreloadService)localObject4;
               localObject1 = localObject4;
-              if (this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener != null)
+              if (this.b != null)
               {
                 localObject1 = localObject4;
-                a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+                a(this.b);
                 ??? = (IPreloadService)localObject4;
                 continue;
                 localObject1 = ???;
-                a(JudgeDownloadReq.createReq(a(0), l1, 0, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+                a(JudgeDownloadReq.createReq(a(0), l1, 0, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, this.b);
               }
             }
             localObject1 = ???;
@@ -275,15 +275,15 @@ public class RealTimeFlowControlObj
     if (paramDownloadListener == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam.url;
-    localObject = new DownloadTask((String)localObject, new File(PreloadStaticApi.b((String)localObject, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam.filePos)));
-    ((DownloadTask)localObject).a = -5;
+    Object localObject = this.a.url;
+    localObject = new DownloadTask((String)localObject, new File(PreloadStaticApi.b((String)localObject, this.a.filePos)));
+    ((DownloadTask)localObject).c = -5;
     paramDownloadListener.onDoneFile((DownloadTask)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.RealTimeFlowControlObj
  * JD-Core Version:    0.7.0.1
  */

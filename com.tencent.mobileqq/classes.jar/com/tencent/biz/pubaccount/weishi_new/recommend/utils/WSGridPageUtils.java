@@ -111,7 +111,7 @@ public class WSGridPageUtils
     }
     int i;
     if (bool) {
-      i = WeiShiCacheManager.a().a();
+      i = WeiShiCacheManager.a().b();
     } else {
       i = 0;
     }
@@ -181,7 +181,7 @@ public class WSGridPageUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.utils.WSGridPageUtils
  * JD-Core Version:    0.7.0.1
  */

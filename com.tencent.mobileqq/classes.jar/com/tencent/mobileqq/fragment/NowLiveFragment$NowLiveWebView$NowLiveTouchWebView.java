@@ -17,8 +17,8 @@ public class NowLiveFragment$NowLiveWebView$NowLiveTouchWebView
     boolean bool = super.onTouchEvent(paramMotionEvent, paramView);
     int j = paramMotionEvent.getAction();
     float f = paramMotionEvent.getY();
-    f = this.a.jdField_a_of_type_Int + f;
-    paramMotionEvent = this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.a.iterator();
+    f = this.b.a + f;
+    paramMotionEvent = this.b.e.d.iterator();
     while (paramMotionEvent.hasNext())
     {
       paramView = (Rect)paramMotionEvent.next();
@@ -61,7 +61,7 @@ public class NowLiveFragment$NowLiveWebView$NowLiveTouchWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView.NowLiveTouchWebView
  * JD-Core Version:    0.7.0.1
  */

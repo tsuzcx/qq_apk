@@ -19,7 +19,7 @@ class WTogetherRealNameMainProcessHelper$1
       QLog.i("WTogetherRealNameMainProcessHelper", 2, localStringBuilder.toString());
     }
     WTogetherRealNameMainProcessHelper.a(this.a, paramBoolean);
-    WTogetherRealNameMainProcessHelper.a(this.a).removeObserver(WTogetherRealNameMainProcessHelper.a(this.a));
+    WTogetherRealNameMainProcessHelper.b(this.a).removeObserver(WTogetherRealNameMainProcessHelper.a(this.a));
   }
 }
 

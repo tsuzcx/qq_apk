@@ -18,28 +18,28 @@ class MessageForQQWalletTips$1
   
   public void run()
   {
-    Object localObject1 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject1 = (QQAppInterface)this.a.get();
     if (localObject1 == null) {
       return;
     }
     Object localObject2 = (TroopManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.TROOP_MANAGER);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     Object localObject3;
     while (localIterator.hasNext())
     {
       localObject3 = (String)localIterator.next();
-      localObject3 = ((TroopManager)localObject2).b(this.jdField_a_of_type_JavaLangString, (String)localObject3);
+      localObject3 = ((TroopManager)localObject2).g(this.c, (String)localObject3);
       if (localObject3 != null) {
         localLinkedList.add(localObject3);
       }
     }
-    if (localLinkedList.size() >= this.jdField_a_of_type_JavaUtilList.size())
+    if (localLinkedList.size() >= this.b.size())
     {
       this.this$0.updateMsg((QQAppInterface)localObject1);
       return;
     }
-    localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject1 = this.b.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
@@ -62,7 +62,7 @@ class MessageForQQWalletTips$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletTips.1
  * JD-Core Version:    0.7.0.1
  */

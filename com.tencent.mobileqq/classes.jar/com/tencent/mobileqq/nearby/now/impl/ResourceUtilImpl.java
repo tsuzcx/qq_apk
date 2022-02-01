@@ -8,12 +8,12 @@ public class ResourceUtilImpl
 {
   public int getAddDescribeDialogStyleNoFull()
   {
-    return 2131755016;
+    return 2131951626;
   }
   
   public int getAnimationPoint()
   {
-    return 2131362695;
+    return 2131428367;
   }
   
   public int[] getBallLoadingView()
@@ -28,7 +28,7 @@ public class ResourceUtilImpl
   
   public int getCloseIcon()
   {
-    return 2131364719;
+    return 2131430825;
   }
   
   public int[] getCustomFitMode()
@@ -43,117 +43,140 @@ public class ResourceUtilImpl
   
   public int getDisplayImageView()
   {
-    return 2131365745;
+    return 2131431988;
   }
   
   public int getDoodleView()
   {
-    return 2131365808;
+    return 2131432065;
   }
   
   public int getGuideTv()
   {
-    return 2131367929;
+    return 2131434517;
   }
   
   public int getIvCover()
   {
-    return 2131369331;
+    return 2131436334;
   }
   
   public int getNearbyNowViewHolderEmptyView()
   {
-    return 2131559491;
+    return 2131625512;
   }
   
   public int getNearbyNowViewHolderNetworkError()
   {
-    return 2131559492;
+    return 2131625513;
   }
   
   public int getNearbyNowliveShortvideoLike()
   {
-    return 2130841396;
+    return 2130842234;
+  }
+  
+  public int getNearbyTabColor(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return 1946288132;
+    }
+    return 1946288133;
+  }
+  
+  public int getNearbyTabIconId()
+  {
+    return 1946419229;
+  }
+  
+  public int getNearbyTabItem()
+  {
+    return 1946484756;
+  }
+  
+  public int getNearbyTabNameId()
+  {
+    return 1946419230;
   }
   
   public int getNearbyVideoPlayerErrorLayout()
   {
-    return 2131559496;
+    return 2131625517;
   }
   
   public int getOutsideErrorView()
   {
-    return 2131372227;
+    return 2131439731;
   }
   
   public int getQQNearbyImageDisplayView()
   {
-    return 2131561187;
+    return 2131627539;
   }
   
   public int getQQNearbyNowBgStartLiveGap()
   {
-    return 2130845663;
+    return 2130847132;
   }
   
   public int getQQNearbyNowBgStartLiveNormalGap()
   {
-    return 2130845664;
+    return 2130847133;
   }
   
   public int getQQNearbyNowLayoutVideoOperator()
   {
-    return 2131561203;
+    return 2131627555;
   }
   
   public int getQQNearbyNowVideoPlayerLayout()
   {
-    return 2131561208;
+    return 2131627560;
   }
   
   public int getQQNearbyTopicLabelBkg()
   {
-    return 2130845721;
+    return 2130847191;
   }
   
   public int getQQStoryNewGuideDialog()
   {
-    return 2131561721;
+    return 2131628100;
   }
   
   public int getQQStrQQStoryV88c3cc80()
   {
-    return 2131711040;
+    return 2131908705;
   }
   
   public int getQQStrStartlivBe188c1d()
   {
-    return 2131714155;
+    return 2131911683;
   }
   
   public int getRetry()
   {
-    return 2131376493;
+    return 2131444734;
   }
   
   public int getTips()
   {
-    return 2131378745;
+    return 2131447419;
   }
   
   public int getVideoSplitProgressBar()
   {
-    return 2131380755;
+    return 2131449723;
   }
   
   public int getVideoViewPager()
   {
-    return 2131380798;
+    return 2131449768;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.impl.ResourceUtilImpl
  * JD-Core Version:    0.7.0.1
  */

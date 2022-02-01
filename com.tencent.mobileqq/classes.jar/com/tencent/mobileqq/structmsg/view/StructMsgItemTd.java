@@ -13,12 +13,12 @@ import org.xmlpull.v1.XmlSerializer;
 public class StructMsgItemTd
   extends AbsStructMsgTextElement
 {
-  public boolean c = false;
-  public boolean d = true;
-  public int o = 0;
-  public int p = 48;
-  public int q = 1;
-  public int r = 1;
+  public int aM = 0;
+  public boolean aN = false;
+  public boolean aO = true;
+  public int aP = 48;
+  public int aQ = 1;
+  public int aR = 1;
   
   public StructMsgItemTd()
   {
@@ -35,31 +35,26 @@ public class StructMsgItemTd
     return new TextView(paramContext);
   }
   
-  public String a()
-  {
-    return "td";
-  }
-  
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.r = paramObjectInput.readInt();
-    this.p = paramObjectInput.readInt();
+    this.aR = paramObjectInput.readInt();
+    this.aP = paramObjectInput.readInt();
   }
   
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.r);
-    paramObjectOutput.writeInt(this.p);
+    paramObjectOutput.writeInt(this.aR);
+    paramObjectOutput.writeInt(this.aP);
   }
   
   public void a(XmlSerializer paramXmlSerializer)
   {
-    paramXmlSerializer.startTag(null, this.a);
-    paramXmlSerializer.attribute(null, "weight", String.valueOf(this.r));
-    paramXmlSerializer.attribute(null, "align", String.valueOf(this.p));
-    paramXmlSerializer.endTag(null, this.a);
+    paramXmlSerializer.startTag(null, this.b);
+    paramXmlSerializer.attribute(null, "weight", String.valueOf(this.aR));
+    paramXmlSerializer.attribute(null, "align", String.valueOf(this.aP));
+    paramXmlSerializer.endTag(null, this.b);
     super.a(paramXmlSerializer);
   }
   
@@ -86,7 +81,7 @@ public class StructMsgItemTd
         int i = 0;
       }
     }
-    this.r = i;
+    this.aR = i;
     localObject = paramStructMsgNode.a("align");
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -105,43 +100,48 @@ public class StructMsgItemTd
           String str = localObject[i].toLowerCase();
           if (localHashMap.containsKey(str))
           {
-            j = this.p;
-            this.p = (((Integer)localHashMap.get(str)).intValue() | j);
+            j = this.aP;
+            this.aP = (((Integer)localHashMap.get(str)).intValue() | j);
           }
         }
         i += 1;
       }
-      this.r = 1;
+      this.aR = 1;
     }
     return super.a(paramStructMsgNode);
   }
   
-  public int b()
+  public String b()
   {
-    return this.q;
+    return "td";
   }
   
-  protected int c()
+  public int d()
   {
-    return 2131379906;
+    return this.aQ;
   }
   
-  public int e()
+  protected int f()
   {
-    if ((this.c) && (this.o != 0)) {
+    return 2131448780;
+  }
+  
+  public int i()
+  {
+    if ((this.aN) && (this.aM != 0)) {
       return -1;
     }
     return -16777216;
   }
   
-  public int f()
+  public int j()
   {
     return 28;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTd
  * JD-Core Version:    0.7.0.1
  */

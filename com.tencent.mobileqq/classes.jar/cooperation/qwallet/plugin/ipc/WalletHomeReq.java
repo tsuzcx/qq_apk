@@ -114,10 +114,10 @@ public class WalletHomeReq
         if (localRedTypeInfo != null)
         {
           int m = localRedTypeInfo.red_type.get();
-          if ((m != 3) && (m != 4))
+          if ((m != 3) && (m != 4) && (m != 0))
           {
             k = i;
-            if (m != 0) {}
+            if (m != 15) {}
           }
           else if ((i != -1) && (m != 3))
           {
@@ -172,7 +172,7 @@ public class WalletHomeReq
         if ((localAppInfo.path.get().equals(paramAppRuntime)) && (localAppInfo.iNewFlag.get() != 0))
         {
           int j = getRedType(localAppInfo);
-          if ((j == 3) || (j == 5) || (j == 4))
+          if ((j == 3) || (j == 5) || (j == 4) || (j == 15))
           {
             paramAppRuntime = localAppInfo.red_display_info.red_type_info.get();
             if (paramAppRuntime.size() > 0)
@@ -181,19 +181,19 @@ public class WalletHomeReq
               while (i < paramAppRuntime.size())
               {
                 localObject = (BusinessInfoCheckUpdate.RedTypeInfo)paramAppRuntime.get(i);
-                if ((localObject != null) && ((((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.get() == 3) || (((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.get() == 5) || (((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.get() == 4)))
+                if ((localObject != null) && ((((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.get() == 3) || (((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.get() == 5) || (((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.get() == 4) || (j == 15)))
                 {
                   paramAppRuntime = ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_desc.get();
                   localObject = ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_content.get();
-                  break label273;
+                  break label285;
                 }
                 i += 1;
               }
             }
           }
           paramAppRuntime = null;
-          Object localObject = paramAppRuntime;
-          label273:
+          Object localObject = null;
+          label285:
           localArrayList.add(new QWalletRedTouchInfo(localAppInfo.path.get(), j, getContentByAppInfo(localAppInfo), paramAppRuntime, (String)localObject));
         }
       }
@@ -265,7 +265,7 @@ public class WalletHomeReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.WalletHomeReq
  * JD-Core Version:    0.7.0.1
  */

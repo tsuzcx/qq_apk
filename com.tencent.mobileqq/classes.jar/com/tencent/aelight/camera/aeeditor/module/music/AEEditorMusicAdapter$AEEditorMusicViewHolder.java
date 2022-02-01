@@ -24,159 +24,175 @@ class AEEditorMusicAdapter$AEEditorMusicViewHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AEDownLoadingView jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView;
-  private AEEditorMusicAdapter.AEEditorMusicInfo jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo;
-  private AEEditorMusicAdapter.ClickCallback jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$ClickCallback;
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  private ApolloLottieAnim jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim;
-  private final int jdField_b_of_type_Int;
-  private FrameLayout jdField_b_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private View a;
+  private FrameLayout b;
   private ImageView c;
+  private FrameLayout d;
+  private ImageView e;
+  private ImageView f;
+  private AEDownLoadingView g;
+  private TextView h;
+  private DiniFlyAnimationView i;
+  private ApolloLottieAnim j;
+  private AEEditorMusicAdapter.ClickCallback k;
+  private AEEditorMusicAdapter.AEEditorMusicInfo l;
+  private int m;
+  private final int n;
   
   public AEEditorMusicAdapter$AEEditorMusicViewHolder(@NonNull View paramView, @Nullable AEEditorMusicAdapter.ClickCallback paramClickCallback, int paramInt)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2064122538));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122317));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2064122208));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122318));
-    this.c = ((ImageView)paramView.findViewById(2064122313));
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView = ((AEDownLoadingView)paramView.findViewById(2064122512));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122773));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2064122107));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim = new ApolloLottieAnim(null, paramView.getContext());
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$ClickCallback = paramClickCallback;
-    this.jdField_b_of_type_Int = paramInt;
+    this.a = paramView;
+    this.b = ((FrameLayout)paramView.findViewById(2063991357));
+    this.c = ((ImageView)paramView.findViewById(2063991198));
+    this.d = ((FrameLayout)paramView.findViewById(2063991089));
+    this.e = ((ImageView)paramView.findViewById(2063991199));
+    this.f = ((ImageView)paramView.findViewById(2063991194));
+    this.g = ((AEDownLoadingView)paramView.findViewById(2063991328));
+    this.h = ((TextView)paramView.findViewById(2063991548));
+    this.i = ((DiniFlyAnimationView)paramView.findViewById(2063991012));
+    this.j = new ApolloLottieAnim(null, paramView.getContext());
+    this.b.setOnClickListener(this);
+    this.k = paramClickCallback;
+    this.n = paramInt;
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setBgCorner(paramInt3 / 2);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setMinimumHeight(paramInt3);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setMinimumWidth(paramInt3);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setProgressSizeAndMode(paramInt1, paramInt2, false);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setBgColor(0);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setProgressColor(-1);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.a(false);
+    this.g.setBgCorner(paramInt3 / 2);
+    this.g.setMinimumHeight(paramInt3);
+    this.g.setMinimumWidth(paramInt3);
+    this.g.setProgressSizeAndMode(paramInt1, paramInt2, false);
+    this.g.setBgColor(0);
+    this.g.setProgressColor(-1);
+    this.g.a(false);
   }
   
   void a()
   {
-    DiniFlyAnimationView localDiniFlyAnimationView = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-    if ((localDiniFlyAnimationView != null) && (localDiniFlyAnimationView.getVisibility() == 0) && (!this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating())) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+    DiniFlyAnimationView localDiniFlyAnimationView = this.i;
+    if ((localDiniFlyAnimationView != null) && (localDiniFlyAnimationView.getVisibility() == 0) && (!this.i.isAnimating())) {
+      this.i.playAnimation();
     }
   }
   
   public void a(@NonNull AEEditorMusicAdapter.AEEditorMusicInfo paramAEEditorMusicInfo, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo = paramAEEditorMusicInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    if ((paramAEEditorMusicInfo.c == 2) && (!TextUtils.isEmpty(paramAEEditorMusicInfo.c())))
+    this.l = paramAEEditorMusicInfo;
+    this.m = paramInt1;
+    if ((paramAEEditorMusicInfo.f == 2) && (!TextUtils.isEmpty(paramAEEditorMusicInfo.g())))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      UIUtils.a(this.jdField_a_of_type_AndroidWidgetImageView, paramAEEditorMusicInfo.c(), UIUtils.a(this.jdField_a_of_type_AndroidWidgetImageView.getContext(), this.jdField_b_of_type_Int), UIUtils.a(this.jdField_a_of_type_AndroidWidgetImageView.getContext(), this.jdField_b_of_type_Int), this.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources().getDrawable(2064056481), null);
+      this.c.setVisibility(0);
+      UIUtils.a(this.c, paramAEEditorMusicInfo.g(), UIUtils.a(this.c.getContext(), this.n), UIUtils.a(this.c.getContext(), this.n), this.c.getContext().getResources().getDrawable(2130853651), null);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      this.c.setVisibility(4);
     }
     Object localObject;
-    if (paramAEEditorMusicInfo.jdField_a_of_type_Boolean)
+    if (paramAEEditorMusicInfo.c)
     {
-      if (paramAEEditorMusicInfo.jdField_a_of_type_Int == 1)
+      if (paramAEEditorMusicInfo.d == 1)
       {
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.c.setVisibility(0);
-        this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setProgress(paramAEEditorMusicInfo.jdField_b_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+        this.d.setVisibility(0);
+        this.e.setVisibility(8);
+        if (paramAEEditorMusicInfo.e > 0)
+        {
+          this.f.setVisibility(0);
+          this.g.setVisibility(0);
+          this.g.setProgress(paramAEEditorMusicInfo.e);
+        }
+        else
+        {
+          this.f.setVisibility(8);
+          this.g.setVisibility(8);
+        }
+        this.i.setVisibility(8);
       }
       else
       {
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2064056483);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.c.setVisibility(8);
-        this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim.a(AEEditorConstants.b)) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim.a(this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, AEEditorConstants.b, true);
+        this.d.setVisibility(0);
+        this.d.setBackgroundResource(2130853652);
+        this.e.setVisibility(8);
+        this.f.setVisibility(8);
+        this.g.setVisibility(8);
+        this.i.setVisibility(0);
+        if (this.j.a(AEEditorConstants.DIR_MUSIC_PLAYING_LOTTIE)) {
+          this.j.a(this.a.getContext(), this.i, AEEditorConstants.DIR_MUSIC_PLAYING_LOTTIE, true);
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, "https://downv6.qq.com/shadow_qqcamera/Android/lottie/MusicWave_8e84b13bfc72dd3c86c70617db423aef.zip", AEEditorConstants.a, true);
+          this.j.a(this.i, "https://downv6.qq.com/shadow_qqcamera/Android/lottie/MusicWave_8e84b13bfc72dd3c86c70617db423aef.zip", AEEditorConstants.LOCAL_PATH_MUSIC_PLAYING_LOTTIE, true);
         }
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      this.h.setTextColor(-16777216);
+      localObject = this.h;
       ((TextView)localObject).setTypeface(((TextView)localObject).getTypeface(), 1);
     }
     else
     {
-      if (paramAEEditorMusicInfo.c == 0)
+      if (paramAEEditorMusicInfo.f == 0)
       {
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2064056481);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+        this.d.setVisibility(0);
+        this.d.setBackgroundResource(2130853651);
+        this.e.setVisibility(8);
+        this.i.setVisibility(8);
       }
-      else if (paramAEEditorMusicInfo.c == 1)
+      else if (paramAEEditorMusicInfo.f == 1)
       {
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2064056489);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2064056520);
-        this.c.setVisibility(8);
-        this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+        this.d.setVisibility(0);
+        this.d.setBackgroundResource(2130853655);
+        this.e.setVisibility(0);
+        this.e.setImageResource(2130853664);
+        this.f.setVisibility(8);
+        this.g.setVisibility(8);
+        this.i.setVisibility(8);
       }
-      else if (paramAEEditorMusicInfo.c == 3)
+      else if (paramAEEditorMusicInfo.f == 3)
       {
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2064056481);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.c.setVisibility(8);
-        this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2064056521);
+        this.d.setVisibility(4);
+        this.d.setBackgroundResource(2130853651);
+        this.e.setVisibility(8);
+        this.f.setVisibility(8);
+        this.g.setVisibility(8);
+        this.i.setVisibility(8);
+        this.c.setVisibility(0);
+        this.c.setImageResource(2130853665);
       }
       else
       {
-        if (paramAEEditorMusicInfo.jdField_a_of_type_Int == 1)
+        if (paramAEEditorMusicInfo.d == 1)
         {
-          this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-          this.c.setVisibility(0);
-          this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setVisibility(0);
-          this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setProgress(paramAEEditorMusicInfo.jdField_b_of_type_Int);
+          this.d.setVisibility(4);
+          if (paramAEEditorMusicInfo.e > 0)
+          {
+            this.f.setVisibility(0);
+            this.g.setVisibility(0);
+            this.g.setProgress(paramAEEditorMusicInfo.e);
+          }
+          else
+          {
+            this.f.setVisibility(8);
+            this.g.setVisibility(8);
+          }
         }
         else
         {
-          this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-          this.c.setVisibility(8);
-          this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setVisibility(8);
+          this.d.setVisibility(8);
+          this.f.setVisibility(8);
+          this.g.setVisibility(8);
         }
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+        this.e.setVisibility(8);
+        this.i.setVisibility(8);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(null, 0);
+      this.h.setTextColor(-16777216);
+      this.h.setTypeface(null, 0);
     }
-    if (paramAEEditorMusicInfo.c == 1)
+    if (paramAEEditorMusicInfo.f == 1)
     {
-      paramAEEditorMusicInfo = this.jdField_a_of_type_AndroidWidgetTextView.getContext().getString(2064515185);
+      paramAEEditorMusicInfo = this.h.getContext().getString(2064187531);
     }
-    else if (paramAEEditorMusicInfo.c == 3)
+    else if (paramAEEditorMusicInfo.f == 3)
     {
-      paramAEEditorMusicInfo = this.jdField_a_of_type_AndroidWidgetTextView.getContext().getString(2064515189);
+      paramAEEditorMusicInfo = this.h.getContext().getString(2064187535);
     }
     else if (TextUtils.isEmpty(AEEditorMusicAdapter.AEEditorMusicInfo.a(paramAEEditorMusicInfo)))
     {
@@ -193,40 +209,40 @@ class AEEditorMusicAdapter$AEEditorMusicViewHolder
     {
       paramAEEditorMusicInfo = AEEditorMusicAdapter.AEEditorMusicInfo.a(paramAEEditorMusicInfo);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramAEEditorMusicInfo);
-    paramAEEditorMusicInfo = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    this.h.setText(paramAEEditorMusicInfo);
+    paramAEEditorMusicInfo = (ViewGroup.MarginLayoutParams)this.a.getLayoutParams();
     if (paramInt1 == 0)
     {
-      paramAEEditorMusicInfo.leftMargin = ViewUtils.a(12.0F);
-      paramAEEditorMusicInfo.rightMargin = (-ViewUtils.a(4.0F));
+      paramAEEditorMusicInfo.leftMargin = ViewUtils.dip2px(12.0F);
+      paramAEEditorMusicInfo.rightMargin = (-ViewUtils.dip2px(4.0F));
     }
     else if (paramInt1 == paramInt2 - 1)
     {
-      paramAEEditorMusicInfo.leftMargin = (-ViewUtils.a(4.0F));
-      paramAEEditorMusicInfo.rightMargin = ViewUtils.a(12.0F);
+      paramAEEditorMusicInfo.leftMargin = (-ViewUtils.dip2px(4.0F));
+      paramAEEditorMusicInfo.rightMargin = ViewUtils.dip2px(12.0F);
     }
     else
     {
-      paramAEEditorMusicInfo.leftMargin = (-ViewUtils.a(4.0F));
-      paramAEEditorMusicInfo.rightMargin = (-ViewUtils.a(4.0F));
+      paramAEEditorMusicInfo.leftMargin = (-ViewUtils.dip2px(4.0F));
+      paramAEEditorMusicInfo.rightMargin = (-ViewUtils.dip2px(4.0F));
     }
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAEEditorMusicInfo);
+    this.a.setLayoutParams(paramAEEditorMusicInfo);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2064122538)
+    if (paramView.getId() == 2063991357)
     {
-      paramView = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo;
-      if ((paramView != null) && (paramView.c != 0) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$ClickCallback != null))
+      paramView = this.l;
+      if ((paramView != null) && (paramView.f != 0) && (this.k != null))
       {
-        if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo.c != 1)
+        if (this.l.f != 1)
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$ClickCallback.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo, getAdapterPosition(), true ^ this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo.c);
+          this.k.a(this.l, getAdapterPosition(), true ^ this.l.c, this.l.f);
           return;
         }
         if (!AEFastClickThrottle.a("tag_music_search_btn")) {
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$ClickCallback.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo, getAdapterPosition(), true ^ this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo.c);
+          this.k.a(this.l, getAdapterPosition(), true ^ this.l.c, this.l.f);
         }
       }
     }
@@ -234,7 +250,7 @@ class AEEditorMusicAdapter$AEEditorMusicViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorMusicAdapter.AEEditorMusicViewHolder
  * JD-Core Version:    0.7.0.1
  */

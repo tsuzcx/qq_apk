@@ -1,0 +1,63 @@
+package com.tencent.rmonitor.common.util;
+
+import com.tencent.rmonitor.common.logger.Logger;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/rmonitor/common/util/RecyclablePool$Recyclable;", "", "()V", "isInPool", "", "()Z", "setInPool", "(Z)V", "next", "getNext", "()Lcom/tencent/rmonitor/common/util/RecyclablePool$Recyclable;", "setNext", "(Lcom/tencent/rmonitor/common/util/RecyclablePool$Recyclable;)V", "changeNext", "", "nextObjext", "outPool", "reset", "Companion", "rmonitor-base_release"}, k=1, mv={1, 1, 15})
+public class RecyclablePool$Recyclable
+{
+  public static final RecyclablePool.Recyclable.Companion Companion = new RecyclablePool.Recyclable.Companion(null);
+  private static final String TAG = "RMonitor_common_RecyclablePool_Recyclable";
+  private boolean isInPool;
+  @Nullable
+  private Recyclable next;
+  
+  public final void changeNext(@Nullable Recyclable paramRecyclable, boolean paramBoolean)
+  {
+    if ((this.isInPool) && (paramBoolean))
+    {
+      Logger localLogger = Logger.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("changeNext ");
+      localStringBuilder.append(paramRecyclable);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramBoolean);
+      localLogger.d(new String[] { "RMonitor_common_RecyclablePool_Recyclable", localStringBuilder.toString() });
+      throw ((Throwable)new RuntimeException("conflict inPool and outPool"));
+    }
+    this.next = paramRecyclable;
+  }
+  
+  @Nullable
+  public final Recyclable getNext()
+  {
+    return this.next;
+  }
+  
+  public final boolean isInPool()
+  {
+    return this.isInPool;
+  }
+  
+  public void reset()
+  {
+    this.next = ((Recyclable)null);
+  }
+  
+  public final void setInPool(boolean paramBoolean)
+  {
+    this.isInPool = paramBoolean;
+  }
+  
+  public final void setNext(@Nullable Recyclable paramRecyclable)
+  {
+    this.next = paramRecyclable;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+ * Qualified Name:     com.tencent.rmonitor.common.util.RecyclablePool.Recyclable
+ * JD-Core Version:    0.7.0.1
+ */

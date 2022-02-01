@@ -23,17 +23,12 @@ public class SecurePhoneChangeNotifyBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.e;
-  }
+  public static final int a = BannerTypeCollections.e;
   
   public SecurePhoneChangeNotifyBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
+    this.g = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   public int a()
@@ -46,52 +41,52 @@ public class SecurePhoneChangeNotifyBannerProcessor
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, "initSecurePhoneBanner");
     }
-    return SecurePhoneBannerManager.a().a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
-    SecurePhoneBannerManager.a().a();
+    return SecurePhoneBannerManager.a().a((QQAppInterface)this.f.getAppRuntime(), this.f);
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    paramBanner.a.setVisibility(0);
+    paramBanner.c.setVisibility(0);
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.g.removeCallbacksAndMessages(null);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public void b()
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
+    SecurePhoneBannerManager.a().b();
+  }
+  
+  public void d()
   {
     QQAppInterface localQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) {
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
+    if (this.f != null) {
+      localQQAppInterface = (QQAppInterface)this.f.getAppRuntime();
     } else {
       localQQAppInterface = null;
     }
-    SecurePhoneBannerManager.a().a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+    SecurePhoneBannerManager.a().b(localQQAppInterface, this.f);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 3000) {
-      SecurePhoneBannerManager.a().a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+      SecurePhoneBannerManager.a().b((QQAppInterface)this.f.getAppRuntime(), this.f);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.SecurePhoneChangeNotifyBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

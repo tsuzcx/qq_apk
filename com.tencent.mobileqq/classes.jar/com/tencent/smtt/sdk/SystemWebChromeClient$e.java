@@ -1,28 +1,23 @@
 package com.tencent.smtt.sdk;
 
 class SystemWebChromeClient$e
-  implements com.tencent.smtt.export.external.interfaces.JsResult
+  implements WebStorage.QuotaUpdater
 {
-  android.webkit.JsResult a;
+  android.webkit.WebStorage.QuotaUpdater a;
   
-  SystemWebChromeClient$e(SystemWebChromeClient paramSystemWebChromeClient, android.webkit.JsResult paramJsResult)
+  SystemWebChromeClient$e(SystemWebChromeClient paramSystemWebChromeClient, android.webkit.WebStorage.QuotaUpdater paramQuotaUpdater)
   {
-    this.a = paramJsResult;
+    this.a = paramQuotaUpdater;
   }
   
-  public void cancel()
+  public void updateQuota(long paramLong)
   {
-    this.a.cancel();
-  }
-  
-  public void confirm()
-  {
-    this.a.confirm();
+    this.a.updateQuota(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebChromeClient.e
  * JD-Core Version:    0.7.0.1
  */

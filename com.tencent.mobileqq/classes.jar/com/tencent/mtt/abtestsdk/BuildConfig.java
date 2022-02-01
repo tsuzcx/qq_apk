@@ -6,12 +6,12 @@ public final class BuildConfig
   public static final String BUILD_TYPE = "release";
   public static final boolean DEBUG = false;
   public static final String FLAVOR = "";
-  public static final int VERSION_CODE = 314;
-  public static final String VERSION_NAME = "3.0.14";
+  public static final int VERSION_CODE = 311;
+  public static final String VERSION_NAME = "3.1.1";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.BuildConfig
  * JD-Core Version:    0.7.0.1
  */

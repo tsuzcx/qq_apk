@@ -18,62 +18,62 @@ class TroopDisbandActivity$7
     if (paramInt1 == 9)
     {
       Object localObject = this.a;
-      ((TroopDisbandActivity)localObject).b &= 0xFFFFFFFE;
+      ((TroopDisbandActivity)localObject).p &= 0xFFFFFFFE;
       if (paramInt2 == 8)
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
+        if (this.a.w != null) {
+          this.a.w.b();
         }
         localObject = DialogUtil.a(this.a, 230);
-        ((QQCustomDialog)localObject).setTitle(this.a.getString(2131696130));
-        ((QQCustomDialog)localObject).setMessage(this.a.getString(2131696131));
-        ((QQCustomDialog)localObject).setNegativeButton(this.a.getString(2131696162), new TroopDisbandActivity.7.1(this, (QQCustomDialog)localObject));
-        ((QQCustomDialog)localObject).setPositiveButton(this.a.getString(2131719065), new TroopDisbandActivity.7.2(this, (QQCustomDialog)localObject));
+        ((QQCustomDialog)localObject).setTitle(this.a.getString(2131893895));
+        ((QQCustomDialog)localObject).setMessage(this.a.getString(2131893896));
+        ((QQCustomDialog)localObject).setNegativeButton(this.a.getString(2131893928), new TroopDisbandActivity.7.1(this, (QQCustomDialog)localObject));
+        ((QQCustomDialog)localObject).setPositiveButton(this.a.getString(2131916601), new TroopDisbandActivity.7.2(this, (QQCustomDialog)localObject));
         ((QQCustomDialog)localObject).show();
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null)
+      if (this.a.w == null)
       {
         localObject = this.a;
-        ((TroopDisbandActivity)localObject).jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier((Activity)localObject);
+        ((TroopDisbandActivity)localObject).w = new QQProgressNotifier((Activity)localObject);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b(2, 2131692085, 1500);
+      this.a.w.b(2, 2131889057, 1500);
     }
   }
   
   protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (!Utils.a(paramString, this.a.jdField_a_of_type_JavaLangString)) {
+    if (!Utils.a(paramString, this.a.k)) {
       return;
     }
     if (paramInt1 == 9)
     {
       paramString = this.a;
-      paramString.b &= 0xFFFFFFFE;
+      paramString.p &= 0xFFFFFFFE;
       if (paramInt2 == 0)
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
+        if (this.a.w != null) {
+          this.a.w.b();
         }
         paramString = new Intent();
         paramString.putExtra("isNeedFinish", true);
-        paramString.putExtra("fin_tip_msg", this.a.getString(2131692089));
+        paramString.putExtra("fin_tip_msg", this.a.getString(2131889067));
         this.a.setResult(-1, paramString);
         this.a.finish();
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null)
+      if (this.a.w == null)
       {
         paramString = this.a;
-        paramString.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(paramString);
+        paramString.w = new QQProgressNotifier(paramString);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b(2, 2131692085, 1500);
+      this.a.w.b(2, 2131889057, 1500);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopDisbandActivity.7
  * JD-Core Version:    0.7.0.1
  */

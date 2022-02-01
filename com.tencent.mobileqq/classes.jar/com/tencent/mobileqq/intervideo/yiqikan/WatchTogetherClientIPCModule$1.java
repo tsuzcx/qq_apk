@@ -10,11 +10,11 @@ class WatchTogetherClientIPCModule$1
   
   public void run()
   {
-    boolean bool2 = "ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString);
+    boolean bool2 = "ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(this.a);
     boolean bool1 = true;
     if (bool2)
     {
-      if (WatchFloatingWindowController.a().a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData) != 0) {
+      if (WatchFloatingWindowController.c().a(BaseApplicationImpl.getContext(), this.b) != 0) {
         bool1 = false;
       }
       if (QLog.isColorLevel())
@@ -27,20 +27,20 @@ class WatchTogetherClientIPCModule$1
     }
     else
     {
-      if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
+      if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(this.a))
       {
-        WatchFloatingWindowController.a().a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurType(), true);
+        WatchFloatingWindowController.c().a(this.b.getCurUin(), this.b.getCurType(), true);
         return;
       }
-      if ("ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(this.jdField_a_of_type_JavaLangString)) {
-        WatchFloatingWindowController.a().b();
+      if ("ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(this.a)) {
+        WatchFloatingWindowController.c().b();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherClientIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

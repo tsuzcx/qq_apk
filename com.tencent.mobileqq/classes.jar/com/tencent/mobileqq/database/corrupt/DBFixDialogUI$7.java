@@ -11,12 +11,12 @@ class DBFixDialogUI$7
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.cancel();
-    DBFixDialogUI.a(this.a).d();
+    DBFixDialogUI.d(this.a).d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogUI.7
  * JD-Core Version:    0.7.0.1
  */

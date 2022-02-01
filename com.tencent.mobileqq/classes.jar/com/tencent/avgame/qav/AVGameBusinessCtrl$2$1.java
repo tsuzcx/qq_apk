@@ -7,7 +7,7 @@ class AVGameBusinessCtrl$2$1
   
   public void run()
   {
-    AVGameBusinessCtrl.a(this.a.a);
+    AVGameBusinessCtrl.b(this.a.a);
   }
 }
 

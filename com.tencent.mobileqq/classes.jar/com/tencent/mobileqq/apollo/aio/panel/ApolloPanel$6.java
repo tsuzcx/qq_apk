@@ -9,12 +9,12 @@ class ApolloPanel$6
   
   public void run()
   {
-    ApolloPanel.a(this.this$0).setVisibility(0);
+    ApolloPanel.l(this.this$0).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.6
  * JD-Core Version:    0.7.0.1
  */

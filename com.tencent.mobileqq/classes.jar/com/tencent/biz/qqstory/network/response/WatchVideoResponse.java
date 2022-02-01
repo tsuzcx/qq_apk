@@ -7,26 +7,26 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class WatchVideoResponse
   extends BaseResponse
 {
-  public int b = 0;
+  public int a = 0;
   
   public WatchVideoResponse(qqstory_service.RspWatchVideo paramRspWatchVideo)
   {
     super(paramRspWatchVideo.result);
-    this.b = paramRspWatchVideo.unread_count.get();
+    this.a = paramRspWatchVideo.unread_count.get();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WatchVideoResponse{unReadCount=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.WatchVideoResponse
  * JD-Core Version:    0.7.0.1
  */

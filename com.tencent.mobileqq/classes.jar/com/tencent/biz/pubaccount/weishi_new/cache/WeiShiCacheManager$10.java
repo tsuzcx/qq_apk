@@ -17,14 +17,14 @@ class WeiShiCacheManager$10
     stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = new stSimpleGetFeedListRsp();
     localstSimpleGetFeedListRsp.feeds = ((ArrayList)localObject);
     localObject = this.this$0;
-    if (WeiShiCacheManager.a((WeiShiCacheManager)localObject, localstSimpleGetFeedListRsp, WeiShiCacheManager.c((WeiShiCacheManager)localObject), this.a.size())) {
-      WSSharePreferencesUtil.a("key_ws_cache_v", WeishiUtils.c());
+    if (WeiShiCacheManager.a((WeiShiCacheManager)localObject, localstSimpleGetFeedListRsp, WeiShiCacheManager.f((WeiShiCacheManager)localObject), this.a.size())) {
+      WSSharePreferencesUtil.a("key_ws_cache_v", WeishiUtils.l());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.10
  * JD-Core Version:    0.7.0.1
  */

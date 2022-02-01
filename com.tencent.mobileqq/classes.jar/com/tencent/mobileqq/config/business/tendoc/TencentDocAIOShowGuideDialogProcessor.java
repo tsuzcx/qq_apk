@@ -12,7 +12,7 @@ public class TencentDocAIOShowGuideDialogProcessor
 {
   public static TencentDocAIOShowGuideDialogBean a()
   {
-    return (TencentDocAIOShowGuideDialogBean)QConfigManager.a().a(342);
+    return (TencentDocAIOShowGuideDialogBean)QConfigManager.b().b(342);
   }
   
   @NonNull
@@ -67,7 +67,7 @@ public class TencentDocAIOShowGuideDialogProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocAIOShowGuideDialogProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ final class PayLikeFloatViewBuilder$1
   public void onDone(DownloadTask paramDownloadTask)
   {
     PayLikeFloatViewBuilder.a(false);
-    if (paramDownloadTask.a == 0)
+    if (paramDownloadTask.c == 0)
     {
       paramDownloadTask = new StringBuilder();
       paramDownloadTask.append(this.a);
@@ -31,7 +31,7 @@ final class PayLikeFloatViewBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder.1
  * JD-Core Version:    0.7.0.1
  */

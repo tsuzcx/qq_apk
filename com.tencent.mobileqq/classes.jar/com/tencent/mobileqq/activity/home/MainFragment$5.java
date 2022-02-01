@@ -1,37 +1,23 @@
 package com.tencent.mobileqq.activity.home;
 
-import android.util.Pair;
-import android.view.View;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 class MainFragment$5
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  MainFragment$5(MainFragment paramMainFragment, List paramList, ActionSheet paramActionSheet) {}
+  MainFragment$5(MainFragment paramMainFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment.e();
-    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return;
-    }
-    try
-    {
-      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (MainFragment.OverallMenuInfo)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      paramView.printStackTrace();
+    if (BaseApplicationImpl.getContext() != null) {
+      SharedPreUtils.a(BaseApplicationImpl.getContext(), "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.MainFragment.5
  * JD-Core Version:    0.7.0.1
  */

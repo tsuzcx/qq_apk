@@ -13,24 +13,24 @@ class EmoView$4
   
   public boolean a()
   {
-    if (EmoView.a(this.a) == null) {
+    if (EmoView.e(this.a) == null) {
       return false;
     }
-    EmoView.a(this.a).dispatchKeyEvent(new KeyEvent(0L, 0L, 0, 67, 0, 0));
+    EmoView.e(this.a).dispatchKeyEvent(new KeyEvent(0L, 0L, 0, 67, 0, 0));
     return true;
   }
   
   public boolean a(String paramString)
   {
-    if (EmoView.a(this.a) == null) {
+    if (EmoView.e(this.a) == null) {
       return false;
     }
-    if ((EmoView.b(this.a) > 0) && (EmoView.a(this.a).getText().length() + paramString.length() > EmoView.b(this.a)))
+    if ((EmoView.f(this.a) > 0) && (EmoView.e(this.a).getText().length() + paramString.length() > EmoView.f(this.a)))
     {
-      QQToast.a(this.a.getContext(), 0, HardCodeUtil.a(2131704239), 0);
+      QQToast.makeText(this.a.getContext(), 0, HardCodeUtil.a(2131902157), 0);
       return false;
     }
-    EmoView.a(EmoView.a(this.a), paramString);
+    EmoView.a(EmoView.e(this.a), paramString);
     return true;
   }
 }

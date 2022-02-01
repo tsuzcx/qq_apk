@@ -21,30 +21,37 @@ import java.util.Set;
 
 public class StyleConfigHelper
 {
-  private static StyleConfigHelper jdField_a_of_type_ComTencentMobileqqKandianGluePtsStyleConfigHelper = new StyleConfigHelper();
-  private final Map<String, StyleConfigHelper.Config> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static StyleConfigHelper b = new StyleConfigHelper();
+  private final Map<String, StyleConfigHelper.Config> a = new HashMap();
   
   public StyleConfigHelper()
   {
-    c();
+    e();
   }
   
   public static StyleConfigHelper a()
   {
-    return jdField_a_of_type_ComTencentMobileqqKandianGluePtsStyleConfigHelper;
-  }
-  
-  public static String a(String paramString)
-  {
-    return (String)RIJSPUtils.a(b(paramString), "");
+    return b;
   }
   
   public static void a(String paramString1, String paramString2)
   {
-    RIJSPUtils.a(b(paramString1), paramString2);
+    RIJSPUtils.a(f(paramString1), paramString2);
   }
   
-  private static StyleConfigHelper.Config b(String paramString)
+  public static String c(String paramString)
+  {
+    return (String)RIJSPUtils.b(f(paramString), "");
+  }
+  
+  public static void d(String paramString)
+  {
+    StyleConfigHelper.Config localConfig = e(paramString);
+    QLog.d("StyleConfigHelper", 2, new Object[] { "checkStyleUpdate, serviceId = ", paramString, ", config.bid = ", localConfig.b, ", config.localPath = ", localConfig.c });
+    new StyleLoaderHelper(localConfig.b, localConfig.c).a();
+  }
+  
+  private static StyleConfigHelper.Config e(String paramString)
   {
     StyleConfigHelper.Config localConfig = new StyleConfigHelper.Config(paramString);
     localConfig.a("default_feeds");
@@ -53,7 +60,7 @@ public class StyleConfigHelper
     localStringBuilder.append(paramString);
     localStringBuilder.append("");
     localConfig.c = localStringBuilder.toString();
-    paramString = a(paramString);
+    paramString = c(paramString);
     if (!TextUtils.isEmpty(paramString))
     {
       if (paramString.endsWith(""))
@@ -66,22 +73,7 @@ public class StyleConfigHelper
     return localConfig;
   }
   
-  private static String b(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("kandian_");
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  public static void b(String paramString)
-  {
-    StyleConfigHelper.Config localConfig = b(paramString);
-    QLog.d("StyleConfigHelper", 2, new Object[] { "checkStyleUpdate, serviceId = ", paramString, ", config.bid = ", localConfig.b, ", config.localPath = ", localConfig.c });
-    new StyleLoaderHelper(localConfig.b, localConfig.c).a();
-  }
-  
-  private void c()
+  private void e()
   {
     Object localObject = new StyleConfigHelper.Config("default_feeds");
     ((StyleConfigHelper.Config)localObject).b = RIJProteusOfflineBidSp.a("default_feeds_proteus_offline_bid");
@@ -107,7 +99,7 @@ public class StyleConfigHelper
     ((StyleConfigHelper.Config)localObject).c = localStringBuilder.toString();
     ((StyleConfigHelper.Config)localObject).b = RIJProteusOfflineBidSp.a("native_proteus_offline_bid");
     a((StyleConfigHelper.Config)localObject);
-    d();
+    f();
     localObject = new StyleConfigHelper.Config("daily_dynamic_header");
     ((StyleConfigHelper.Config)localObject).b = RIJProteusOfflineBidSp.a("daily_header_proteus_bid");
     localStringBuilder = new StringBuilder();
@@ -126,21 +118,19 @@ public class StyleConfigHelper
     QLog.d("TemplateFactory", 2, ((StringBuilder)localObject).toString());
   }
   
-  private void d() {}
-  
-  public StyleConfigHelper.Config a(String paramString)
+  private static String f(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return (StyleConfigHelper.Config)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    }
-    StyleConfigHelper.Config localConfig = b(paramString);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, localConfig);
-    return localConfig;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("kandian_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
+  
+  private void f() {}
   
   public StyleConfigHelper.TemplateFactoryWrapper a(Context paramContext, String paramString)
   {
-    StyleConfigHelper.Config localConfig = a(paramString);
+    StyleConfigHelper.Config localConfig = b(paramString);
     StyleLoaderHelper localStyleLoaderHelper = new StyleLoaderHelper(localConfig.b, localConfig.c);
     StyleLoaderHelper.a(paramString);
     paramString = localStyleLoaderHelper.a(paramContext);
@@ -152,26 +142,11 @@ public class StyleConfigHelper
     return new StyleConfigHelper.TemplateFactoryWrapper(localConfig.b, paramString, false);
   }
   
-  public Map<String, StyleConfigHelper.Config> a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      StyleConfigHelper.Config localConfig = (StyleConfigHelper.Config)((Map.Entry)localIterator.next()).getValue();
-      new StyleLoaderHelper(localConfig.b, localConfig.c).a();
-    }
-  }
-  
   public void a(StyleConfigHelper.Config paramConfig)
   {
     if (paramConfig.a != null)
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramConfig.a, paramConfig);
+      this.a.put(paramConfig.a, paramConfig);
       return;
     }
     throw new IllegalArgumentException();
@@ -179,20 +154,40 @@ public class StyleConfigHelper
   
   public void a(String paramString)
   {
-    paramString = (StyleConfigHelper.Config)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (StyleConfigHelper.Config)this.a.get(paramString);
     if (paramString != null) {
       new StyleLoaderHelper(paramString.b, paramString.c).a();
     }
   }
   
+  public StyleConfigHelper.Config b(String paramString)
+  {
+    if (this.a.containsKey(paramString)) {
+      return (StyleConfigHelper.Config)this.a.get(paramString);
+    }
+    StyleConfigHelper.Config localConfig = e(paramString);
+    this.a.put(paramString, localConfig);
+    return localConfig;
+  }
+  
   public void b()
   {
-    if ((!RIJPushNotification.c()) && (Aladdin.getConfig(335).getIntegerFromString("pts_style_immediate_effect", 0) == 1) && (((Boolean)RIJSPUtils.a("kandian_pts_style_update", Boolean.valueOf(false))).booleanValue()))
+    Iterator localIterator = this.a.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      StyleConfigHelper.Config localConfig = (StyleConfigHelper.Config)((Map.Entry)localIterator.next()).getValue();
+      new StyleLoaderHelper(localConfig.b, localConfig.c).a();
+    }
+  }
+  
+  public void c()
+  {
+    if ((!RIJPushNotification.d()) && (Aladdin.getConfig(335).getIntegerFromString("pts_style_immediate_effect", 0) == 1) && (((Boolean)RIJSPUtils.b("kandian_pts_style_update", Boolean.valueOf(false))).booleanValue()))
     {
       QLog.d("StyleConfigHelper", 1, "invalidAllArticles");
       TemplateFactory.c("default_feeds");
       RIJSPUtils.a("kandian_pts_style_update", Boolean.valueOf(false));
-      ProteusPreloadManager.a.a();
+      ProteusPreloadManager.a.b();
       List localList = ProteusPreloadManager.a.a();
       ProteusPreloadManager.a.a(localList);
       StringBuilder localStringBuilder = new StringBuilder();
@@ -203,10 +198,15 @@ public class StyleConfigHelper
     }
   }
   
+  public Map<String, StyleConfigHelper.Config> d()
+  {
+    return this.a;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    Iterator localIterator = this.a.entrySet().iterator();
     while (localIterator.hasNext()) {
       localStringBuilder.append(((StyleConfigHelper.Config)((Map.Entry)localIterator.next()).getValue()).toString());
     }
@@ -215,7 +215,7 @@ public class StyleConfigHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.pts.StyleConfigHelper
  * JD-Core Version:    0.7.0.1
  */

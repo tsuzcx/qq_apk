@@ -14,10 +14,10 @@ final class BigVideoCoverLayout$onChangeCoverClickListener$1
   
   public final void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkAdapterWidgetBigVideoCoverLayout.a();
+    paramView = this.a.getDisplayItem();
     if ((paramView != null) && (paramView != null))
     {
-      Function1 localFunction1 = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+      Function1 localFunction1 = this.b;
       if (localFunction1 != null) {
         paramView = (Unit)localFunction1.invoke(paramView);
       }
@@ -26,7 +26,7 @@ final class BigVideoCoverLayout$onChangeCoverClickListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.widget.BigVideoCoverLayout.onChangeCoverClickListener.1
  * JD-Core Version:    0.7.0.1
  */

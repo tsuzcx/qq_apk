@@ -27,20 +27,20 @@ public final class CmGameHelperImpl
   @Nullable
   public AppInterface getAppInterface()
   {
-    return CmGameUtil.a();
+    return CmGameUtil.b();
   }
   
   @Nullable
   public Activity getGlobalActivity()
   {
-    return ApolloGameUtil.a();
+    return ApolloGameUtil.b();
   }
   
   public void onGameCrashed() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.api.impl.CmGameHelperImpl
  * JD-Core Version:    0.7.0.1
  */

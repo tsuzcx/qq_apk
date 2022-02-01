@@ -37,7 +37,7 @@ public class CrmApiImpl
   
   public String getCrmNameFromCache(String paramString)
   {
-    return CrmUtils.a(this.app, paramString);
+    return CrmUtils.c(this.app, paramString);
   }
   
   public void getCustomerTransferInfo(Context paramContext, String paramString1, String paramString2)
@@ -47,12 +47,12 @@ public class CrmApiImpl
   
   public String getNickName(String paramString)
   {
-    return CrmUtils.b(this.app, paramString);
+    return CrmUtils.e(this.app, paramString);
   }
   
   public int getQidianUinType(String paramString)
   {
-    return CrmUtils.b(this.app, paramString);
+    return CrmUtils.f(this.app, paramString);
   }
   
   public Intent gotoCrmMainProfile(Context paramContext, Intent paramIntent, String paramString, boolean paramBoolean1, int paramInt1, boolean paramBoolean2, int paramInt2)
@@ -67,7 +67,7 @@ public class CrmApiImpl
   
   public int isCertified(String paramString)
   {
-    return CrmUtils.a(this.app, paramString);
+    return CrmUtils.d(this.app, paramString);
   }
   
   public boolean isCrmMainUinAndGetSimpleInfoIfNeed(String paramString)
@@ -114,7 +114,7 @@ public class CrmApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.eqq.api.impl.CrmApiImpl
  * JD-Core Version:    0.7.0.1
  */

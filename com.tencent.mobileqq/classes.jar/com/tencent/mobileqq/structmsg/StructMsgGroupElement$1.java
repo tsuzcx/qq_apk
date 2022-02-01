@@ -18,24 +18,24 @@ class StructMsgGroupElement$1
       {
         int j = Integer.parseInt(String.valueOf(paramView.getTag()));
         int i = 0;
-        while (i < this.a.a.size())
+        while (i < this.a.au.size())
         {
-          Object localObject = (View)StructMsgGroupElement.a(this.a).get(i);
+          Object localObject = (View)StructMsgGroupElement.b(this.a).get(i);
           if (localObject != null) {
             if (i != j)
             {
-              AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)this.a.a.get(i);
+              AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)this.a.au.get(i);
               if ((localAbsStructMsgElement != null) && ((localAbsStructMsgElement instanceof StructMsgGroupItemElement))) {
-                ((StructMsgGroupItemElement)localAbsStructMsgElement).a();
+                ((StructMsgGroupItemElement)localAbsStructMsgElement).c();
               } else {
                 ((View)localObject).setVisibility(8);
               }
             }
             else
             {
-              localObject = (AbsStructMsgElement)this.a.a.get(i);
+              localObject = (AbsStructMsgElement)this.a.au.get(i);
               if ((localObject != null) && ((localObject instanceof StructMsgGroupItemElement))) {
-                ((StructMsgGroupItemElement)localObject).b();
+                ((StructMsgGroupItemElement)localObject).d();
               }
             }
           }
@@ -52,7 +52,7 @@ class StructMsgGroupElement$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgGroupElement.1
  * JD-Core Version:    0.7.0.1
  */

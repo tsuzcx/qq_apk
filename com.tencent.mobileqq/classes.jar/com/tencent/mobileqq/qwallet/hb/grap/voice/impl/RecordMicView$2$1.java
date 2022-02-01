@@ -8,14 +8,14 @@ class RecordMicView$2$1
   public void run()
   {
     this.a.this$0.c();
-    if (RecordMicView.a(this.a.this$0) != null) {
-      RecordMicView.a(this.a.this$0).e();
+    if (RecordMicView.b(this.a.this$0) != null) {
+      RecordMicView.b(this.a.this$0).h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.RecordMicView.2.1
  * JD-Core Version:    0.7.0.1
  */

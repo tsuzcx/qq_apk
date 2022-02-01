@@ -4,90 +4,102 @@ import android.content.Context;
 
 public class WSHomeLaunchParams
 {
-  private final int jdField_a_of_type_Int;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private String c;
-  private String d;
+  private final Context a;
+  private final int b;
+  private final String c;
+  private boolean d;
+  private boolean e;
+  private String f;
+  private String g;
+  private String h;
+  private WSOpenHomeThenVideoParams i;
   
   public WSHomeLaunchParams(Context paramContext, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramContext;
+    this.b = paramInt;
+    this.c = paramString;
   }
   
   public Context a()
   {
-    return this.jdField_a_of_type_AndroidContentContext;
+    return this.a;
+  }
+  
+  public WSHomeLaunchParams a(WSOpenHomeThenVideoParams paramWSOpenHomeThenVideoParams)
+  {
+    this.i = paramWSOpenHomeThenVideoParams;
+    return this;
   }
   
   public WSHomeLaunchParams a(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.f = paramString;
     return this;
   }
   
   public WSHomeLaunchParams a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     return this;
   }
   
-  public String a()
+  public int b()
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public WSHomeLaunchParams b(String paramString)
   {
-    this.c = paramString;
+    this.g = paramString;
     return this;
   }
   
   public WSHomeLaunchParams b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
     return this;
-  }
-  
-  public String b()
-  {
-    return this.c;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
   }
   
   public WSHomeLaunchParams c(String paramString)
   {
-    this.d = paramString;
+    this.h = paramString;
     return this;
   }
   
-  public String c()
+  public boolean c()
   {
     return this.d;
+  }
+  
+  public String d()
+  {
+    return this.f;
+  }
+  
+  public String e()
+  {
+    return this.g;
+  }
+  
+  public String f()
+  {
+    return this.h;
+  }
+  
+  public boolean g()
+  {
+    return this.e;
+  }
+  
+  public WSOpenHomeThenVideoParams h()
+  {
+    return this.i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSHomeLaunchParams
  * JD-Core Version:    0.7.0.1
  */

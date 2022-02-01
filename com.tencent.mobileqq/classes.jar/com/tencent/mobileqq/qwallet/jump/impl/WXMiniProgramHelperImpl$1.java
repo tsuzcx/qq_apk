@@ -10,12 +10,12 @@ class WXMiniProgramHelperImpl$1
   
   public void run()
   {
-    QQToast.a(MobileQQ.sMobileQQ, 0, this.a, 0).a();
+    QQToast.makeText(MobileQQ.sMobileQQ, 0, this.a, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.jump.impl.WXMiniProgramHelperImpl.1
  * JD-Core Version:    0.7.0.1
  */

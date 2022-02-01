@@ -27,12 +27,12 @@ class MessageSearchDetailFragment$1
   
   protected IView a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new SearchResultView(paramViewGroup, 2131562798);
+    return new SearchResultView(paramViewGroup, 2131629243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment.1
  * JD-Core Version:    0.7.0.1
  */

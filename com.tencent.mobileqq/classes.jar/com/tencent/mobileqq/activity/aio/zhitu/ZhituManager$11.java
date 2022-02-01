@@ -15,14 +15,14 @@ class ZhituManager$11
       if ((paramInt != 1) && (paramInt != 3)) {
         return;
       }
-      localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+      localMqqHandler = this.a;
       if (localMqqHandler != null) {
         localMqqHandler.sendEmptyMessageDelayed(84, 10000L);
       }
     }
     else
     {
-      localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+      localMqqHandler = this.a;
       if (localMqqHandler != null) {
         localMqqHandler.removeMessages(84);
       }
@@ -31,7 +31,7 @@ class ZhituManager$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituManager.11
  * JD-Core Version:    0.7.0.1
  */

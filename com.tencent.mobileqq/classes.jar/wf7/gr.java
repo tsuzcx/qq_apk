@@ -12,6 +12,7 @@ import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.Locale;
@@ -25,7 +26,7 @@ public final class gr
   {
     try
     {
-      paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
+      paramContext = PhoneInfoMonitor.getDeviceId((TelephonyManager)paramContext.getSystemService("phone"));
     }
     catch (Throwable paramContext)
     {
@@ -80,56 +81,56 @@ public final class gr
   public static String K(boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc 56
+    //   0: ldc 58
     //   2: astore_2
-    //   3: new 88	java/io/FileInputStream
+    //   3: new 90	java/io/FileInputStream
     //   6: dup
-    //   7: ldc 90
-    //   9: invokespecial 94	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   7: ldc 92
+    //   9: invokespecial 96	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   12: astore_3
-    //   13: new 96	java/io/BufferedReader
+    //   13: new 98	java/io/BufferedReader
     //   16: dup
-    //   17: new 98	java/io/InputStreamReader
+    //   17: new 100	java/io/InputStreamReader
     //   20: dup
     //   21: aload_3
-    //   22: invokespecial 101	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   22: invokespecial 103	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   25: sipush 8192
-    //   28: invokespecial 104	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   28: invokespecial 106	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   31: astore 4
-    //   33: new 106	java/lang/StringBuilder
+    //   33: new 108	java/lang/StringBuilder
     //   36: dup
-    //   37: ldc 56
-    //   39: invokespecial 107	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   37: ldc 58
+    //   39: invokespecial 109	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   42: astore_1
     //   43: aload 4
-    //   45: invokevirtual 110	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   45: invokevirtual 113	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   48: astore 5
     //   50: aload 5
     //   52: ifnull +13 -> 65
     //   55: aload_1
     //   56: aload 5
-    //   58: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: pop
     //   62: goto -19 -> 43
     //   65: aload 4
-    //   67: invokevirtual 117	java/io/BufferedReader:close	()V
+    //   67: invokevirtual 120	java/io/BufferedReader:close	()V
     //   70: goto +25 -> 95
     //   73: astore_2
     //   74: aload 4
-    //   76: invokevirtual 117	java/io/BufferedReader:close	()V
+    //   76: invokevirtual 120	java/io/BufferedReader:close	()V
     //   79: aload_3
-    //   80: invokevirtual 120	java/io/InputStream:close	()V
+    //   80: invokevirtual 123	java/io/InputStream:close	()V
     //   83: aload_1
-    //   84: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   84: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   87: pop
     //   88: aload_2
     //   89: athrow
     //   90: aload 4
-    //   92: invokevirtual 117	java/io/BufferedReader:close	()V
+    //   92: invokevirtual 120	java/io/BufferedReader:close	()V
     //   95: aload_3
-    //   96: invokevirtual 120	java/io/InputStream:close	()V
+    //   96: invokevirtual 123	java/io/InputStream:close	()V
     //   99: aload_1
-    //   100: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   100: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   103: astore_3
     //   104: iload_0
     //   105: ifne +5 -> 110
@@ -142,28 +143,28 @@ public final class gr
     //   116: aload_2
     //   117: astore_1
     //   118: aload_3
-    //   119: ldc 56
-    //   121: invokevirtual 129	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   119: ldc 58
+    //   121: invokevirtual 132	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   124: ifne +29 -> 153
     //   127: aload_3
     //   128: aload_3
-    //   129: ldc 131
-    //   131: invokevirtual 135	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   129: ldc 134
+    //   131: invokevirtual 138	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   134: bipush 8
     //   136: iadd
-    //   137: invokevirtual 139	java/lang/String:substring	(I)Ljava/lang/String;
+    //   137: invokevirtual 142	java/lang/String:substring	(I)Ljava/lang/String;
     //   140: astore_1
     //   141: aload_1
     //   142: iconst_0
     //   143: aload_1
-    //   144: ldc 141
-    //   146: invokevirtual 135	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   149: invokevirtual 144	java/lang/String:substring	(II)Ljava/lang/String;
+    //   144: ldc 144
+    //   146: invokevirtual 138	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   149: invokevirtual 147	java/lang/String:substring	(II)Ljava/lang/String;
     //   152: astore_1
     //   153: aload_1
     //   154: areturn
     //   155: astore_1
-    //   156: ldc 56
+    //   156: ldc 58
     //   158: areturn
     //   159: astore 5
     //   161: goto -71 -> 90
@@ -211,83 +212,83 @@ public final class gr
     // Byte code:
     //   0: iload_0
     //   1: ifeq +12 -> 13
-    //   4: ldc 149
+    //   4: ldc 152
     //   6: astore_1
-    //   7: ldc 151
+    //   7: ldc 154
     //   9: astore_2
     //   10: goto +9 -> 19
-    //   13: ldc 153
+    //   13: ldc 156
     //   15: astore_1
-    //   16: ldc 155
+    //   16: ldc 158
     //   18: astore_2
     //   19: aconst_null
     //   20: astore 4
-    //   22: new 106	java/lang/StringBuilder
+    //   22: new 108	java/lang/StringBuilder
     //   25: dup
-    //   26: invokespecial 157	java/lang/StringBuilder:<init>	()V
+    //   26: invokespecial 160	java/lang/StringBuilder:<init>	()V
     //   29: astore_3
     //   30: aload_3
     //   31: aload_1
-    //   32: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload_3
-    //   37: ldc 159
-    //   39: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: ldc 162
+    //   39: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: pop
-    //   43: new 96	java/io/BufferedReader
+    //   43: new 98	java/io/BufferedReader
     //   46: dup
-    //   47: new 161	java/io/FileReader
+    //   47: new 164	java/io/FileReader
     //   50: dup
     //   51: aload_3
-    //   52: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   55: invokespecial 162	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   58: invokespecial 165	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   52: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: invokespecial 165	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   58: invokespecial 168	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   61: astore_3
     //   62: aload_3
-    //   63: invokevirtual 110	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   63: invokevirtual 113	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   66: astore 5
     //   68: aload 5
     //   70: ifnull +97 -> 167
     //   73: aload 5
-    //   75: invokevirtual 168	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   75: invokevirtual 171	java/lang/String:toUpperCase	()Ljava/lang/String;
     //   78: aload_2
-    //   79: invokevirtual 129	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   79: invokevirtual 132	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   82: ifeq +85 -> 167
-    //   85: new 106	java/lang/StringBuilder
+    //   85: new 108	java/lang/StringBuilder
     //   88: dup
-    //   89: invokespecial 157	java/lang/StringBuilder:<init>	()V
+    //   89: invokespecial 160	java/lang/StringBuilder:<init>	()V
     //   92: astore_2
     //   93: aload_2
     //   94: aload_1
-    //   95: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   98: pop
     //   99: aload_2
-    //   100: ldc 170
-    //   102: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: ldc 173
+    //   102: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   105: pop
-    //   106: new 96	java/io/BufferedReader
+    //   106: new 98	java/io/BufferedReader
     //   109: dup
-    //   110: new 161	java/io/FileReader
+    //   110: new 164	java/io/FileReader
     //   113: dup
     //   114: aload_2
-    //   115: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   118: invokespecial 162	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   121: invokespecial 165	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   115: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   118: invokespecial 165	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   121: invokespecial 168	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   124: astore_1
     //   125: aload_1
-    //   126: invokevirtual 110	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   126: invokevirtual 113	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   129: astore 4
     //   131: aload_1
     //   132: astore_2
     //   133: aload 4
     //   135: ifnull +34 -> 169
     //   138: aload 4
-    //   140: invokevirtual 173	java/lang/String:trim	()Ljava/lang/String;
+    //   140: invokevirtual 176	java/lang/String:trim	()Ljava/lang/String;
     //   143: astore_2
     //   144: aload_3
-    //   145: invokevirtual 117	java/io/BufferedReader:close	()V
+    //   145: invokevirtual 120	java/io/BufferedReader:close	()V
     //   148: aload_1
-    //   149: invokevirtual 117	java/io/BufferedReader:close	()V
+    //   149: invokevirtual 120	java/io/BufferedReader:close	()V
     //   152: aload_2
     //   153: areturn
     //   154: astore 4
@@ -300,13 +301,13 @@ public final class gr
     //   167: aconst_null
     //   168: astore_2
     //   169: aload_3
-    //   170: invokevirtual 117	java/io/BufferedReader:close	()V
+    //   170: invokevirtual 120	java/io/BufferedReader:close	()V
     //   173: aload_2
     //   174: ifnull +72 -> 246
     //   177: aload_2
     //   178: astore_1
     //   179: aload_1
-    //   180: invokevirtual 117	java/io/BufferedReader:close	()V
+    //   180: invokevirtual 120	java/io/BufferedReader:close	()V
     //   183: aconst_null
     //   184: areturn
     //   185: astore_1
@@ -324,12 +325,12 @@ public final class gr
     //   203: aload_3
     //   204: ifnull +10 -> 214
     //   207: aload_3
-    //   208: invokevirtual 117	java/io/BufferedReader:close	()V
+    //   208: invokevirtual 120	java/io/BufferedReader:close	()V
     //   211: goto +3 -> 214
     //   214: aload_2
     //   215: ifnull +7 -> 222
     //   218: aload_2
-    //   219: invokevirtual 117	java/io/BufferedReader:close	()V
+    //   219: invokevirtual 120	java/io/BufferedReader:close	()V
     //   222: aload_1
     //   223: athrow
     //   224: aconst_null
@@ -339,7 +340,7 @@ public final class gr
     //   228: aload_3
     //   229: ifnull +10 -> 239
     //   232: aload_3
-    //   233: invokevirtual 117	java/io/BufferedReader:close	()V
+    //   233: invokevirtual 120	java/io/BufferedReader:close	()V
     //   236: goto +3 -> 239
     //   239: aload_1
     //   240: ifnull +6 -> 246
@@ -608,14 +609,14 @@ public final class gr
   public static long fh()
   {
     // Byte code:
-    //   0: getstatic 362	wf7/gr:sv	J
+    //   0: getstatic 365	wf7/gr:sv	J
     //   3: ldc2_w 7
     //   6: lcmp
     //   7: ifne +250 -> 257
-    //   10: new 207	java/io/File
+    //   10: new 210	java/io/File
     //   13: dup
-    //   14: ldc_w 364
-    //   17: invokespecial 365	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: ldc_w 367
+    //   17: invokespecial 368	java/io/File:<init>	(Ljava/lang/String;)V
     //   20: astore_3
     //   21: aconst_null
     //   22: astore 4
@@ -628,40 +629,40 @@ public final class gr
     //   33: aconst_null
     //   34: astore_2
     //   35: aload_3
-    //   36: invokevirtual 368	java/io/File:exists	()Z
+    //   36: invokevirtual 371	java/io/File:exists	()Z
     //   39: ifeq +218 -> 257
-    //   42: new 370	java/io/DataInputStream
+    //   42: new 373	java/io/DataInputStream
     //   45: dup
-    //   46: new 88	java/io/FileInputStream
+    //   46: new 90	java/io/FileInputStream
     //   49: dup
     //   50: aload_3
-    //   51: invokespecial 373	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   54: invokespecial 374	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   51: invokespecial 376	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   54: invokespecial 377	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   57: astore_3
     //   58: aload_3
-    //   59: invokevirtual 375	java/io/DataInputStream:readLine	()Ljava/lang/String;
+    //   59: invokevirtual 378	java/io/DataInputStream:readLine	()Ljava/lang/String;
     //   62: astore_2
     //   63: aload_2
     //   64: ifnull +36 -> 100
     //   67: aload_2
-    //   68: invokevirtual 173	java/lang/String:trim	()Ljava/lang/String;
-    //   71: ldc_w 377
-    //   74: invokevirtual 348	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   68: invokevirtual 176	java/lang/String:trim	()Ljava/lang/String;
+    //   71: ldc_w 380
+    //   74: invokevirtual 351	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   77: iconst_1
     //   78: aaload
-    //   79: invokestatic 383	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   82: putstatic 362	wf7/gr:sv	J
+    //   79: invokestatic 386	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   82: putstatic 365	wf7/gr:sv	J
     //   85: aload_3
-    //   86: invokevirtual 384	java/io/DataInputStream:close	()V
+    //   86: invokevirtual 387	java/io/DataInputStream:close	()V
     //   89: goto +168 -> 257
     //   92: astore_2
     //   93: aload_2
-    //   94: invokevirtual 387	java/io/IOException:printStackTrace	()V
+    //   94: invokevirtual 390	java/io/IOException:printStackTrace	()V
     //   97: goto +160 -> 257
-    //   100: new 147	java/io/IOException
+    //   100: new 150	java/io/IOException
     //   103: dup
-    //   104: ldc_w 389
-    //   107: invokespecial 390	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   104: ldc_w 392
+    //   107: invokespecial 393	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   110: athrow
     //   111: astore_2
     //   112: goto +127 -> 239
@@ -687,11 +688,11 @@ public final class gr
     //   152: aload_3
     //   153: astore_2
     //   154: aload 4
-    //   156: invokevirtual 391	java/lang/Throwable:printStackTrace	()V
+    //   156: invokevirtual 394	java/lang/Throwable:printStackTrace	()V
     //   159: aload_3
     //   160: ifnull +97 -> 257
     //   163: aload_3
-    //   164: invokevirtual 384	java/io/DataInputStream:close	()V
+    //   164: invokevirtual 387	java/io/DataInputStream:close	()V
     //   167: goto +90 -> 257
     //   170: astore 4
     //   172: aload 5
@@ -699,11 +700,11 @@ public final class gr
     //   175: aload_3
     //   176: astore_2
     //   177: aload 4
-    //   179: invokevirtual 392	java/lang/NumberFormatException:printStackTrace	()V
+    //   179: invokevirtual 395	java/lang/NumberFormatException:printStackTrace	()V
     //   182: aload_3
     //   183: ifnull +74 -> 257
     //   186: aload_3
-    //   187: invokevirtual 384	java/io/DataInputStream:close	()V
+    //   187: invokevirtual 387	java/io/DataInputStream:close	()V
     //   190: goto +67 -> 257
     //   193: astore 4
     //   195: aload 6
@@ -711,11 +712,11 @@ public final class gr
     //   198: aload_3
     //   199: astore_2
     //   200: aload 4
-    //   202: invokevirtual 387	java/io/IOException:printStackTrace	()V
+    //   202: invokevirtual 390	java/io/IOException:printStackTrace	()V
     //   205: aload_3
     //   206: ifnull +51 -> 257
     //   209: aload_3
-    //   210: invokevirtual 384	java/io/DataInputStream:close	()V
+    //   210: invokevirtual 387	java/io/DataInputStream:close	()V
     //   213: goto +44 -> 257
     //   216: astore 4
     //   218: aload 7
@@ -723,23 +724,23 @@ public final class gr
     //   221: aload_3
     //   222: astore_2
     //   223: aload 4
-    //   225: invokevirtual 393	java/io/FileNotFoundException:printStackTrace	()V
+    //   225: invokevirtual 396	java/io/FileNotFoundException:printStackTrace	()V
     //   228: aload_3
     //   229: ifnull +28 -> 257
     //   232: aload_3
-    //   233: invokevirtual 384	java/io/DataInputStream:close	()V
+    //   233: invokevirtual 387	java/io/DataInputStream:close	()V
     //   236: goto +21 -> 257
     //   239: aload_3
     //   240: ifnull +15 -> 255
     //   243: aload_3
-    //   244: invokevirtual 384	java/io/DataInputStream:close	()V
+    //   244: invokevirtual 387	java/io/DataInputStream:close	()V
     //   247: goto +8 -> 255
     //   250: astore_3
     //   251: aload_3
-    //   252: invokevirtual 387	java/io/IOException:printStackTrace	()V
+    //   252: invokevirtual 390	java/io/IOException:printStackTrace	()V
     //   255: aload_2
     //   256: athrow
-    //   257: getstatic 362	wf7/gr:sv	J
+    //   257: getstatic 365	wf7/gr:sv	J
     //   260: lstore_0
     //   261: lload_0
     //   262: lconst_0
@@ -829,7 +830,7 @@ public final class gr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.gr
  * JD-Core Version:    0.7.0.1
  */

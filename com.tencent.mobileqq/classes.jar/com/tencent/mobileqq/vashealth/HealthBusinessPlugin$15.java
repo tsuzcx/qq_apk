@@ -15,23 +15,23 @@ class HealthBusinessPlugin$15
     if (QLog.isColorLevel()) {
       QLog.d("HealthBusinessPlugin", 2, "onVideoPrepared video");
     }
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.a.g)
     {
       paramISuperPlayer.pause();
-      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.b);
+      this.a.z.post(this.a.y);
     }
     else
     {
       paramISuperPlayer.start();
     }
     paramISuperPlayer = this.a;
-    paramISuperPlayer.jdField_a_of_type_Boolean = false;
-    paramISuperPlayer.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+    paramISuperPlayer.g = false;
+    paramISuperPlayer.z.postDelayed(this.a.x, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.15
  * JD-Core Version:    0.7.0.1
  */

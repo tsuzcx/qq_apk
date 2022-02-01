@@ -20,37 +20,37 @@ public class StrangerFriendLoader
   
   protected void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.o);
+    this.a.add(AIOPanelUtiles.p);
     b();
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.A);
+    this.a.add(AIOPanelUtiles.B);
     d();
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
-  {
-    return paramSessionInfo.a == 1003;
   }
   
   protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().d();
-    paramBaseChatPie = this.jdField_a_of_type_JavaUtilList;
+    boolean bool = this.c.a().i();
+    paramBaseChatPie = this.a;
     if (bool) {
-      paramSessionInfo = AIOPanelUtiles.p;
+      paramSessionInfo = AIOPanelUtiles.q;
     } else {
-      paramSessionInfo = AIOPanelUtiles.l;
+      paramSessionInfo = AIOPanelUtiles.m;
     }
     paramBaseChatPie.add(paramSessionInfo);
     c();
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.z);
-    if (HotPicManager.a(paramQQAppInterface).b()) {
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.N);
+    this.a.add(AIOPanelUtiles.A);
+    if (HotPicManager.a(paramQQAppInterface).j()) {
+      this.a.add(AIOPanelUtiles.O);
     }
+  }
+  
+  public boolean f(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  {
+    return paramSessionInfo.a == 1003;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.loader.StrangerFriendLoader
  * JD-Core Version:    0.7.0.1
  */

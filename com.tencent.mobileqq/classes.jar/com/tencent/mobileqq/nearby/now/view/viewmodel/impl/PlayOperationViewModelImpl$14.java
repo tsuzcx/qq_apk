@@ -34,7 +34,7 @@ class PlayOperationViewModelImpl$14
           paramArrayOfByte.append("err_msg:   ");
           paramArrayOfByte.append(paramBundle.err_msg.get());
           paramArrayOfByte.append(" isLiked=");
-          paramArrayOfByte.append(PlayOperationViewModelImpl.access$500(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelImplPlayOperationViewModelImpl));
+          paramArrayOfByte.append(PlayOperationViewModelImpl.access$500(this.b));
           QLog.i("PlayOperationViewModel", 2, paramArrayOfByte.toString());
         }
         if (!paramBundle.busi_buf.has()) {
@@ -42,13 +42,13 @@ class PlayOperationViewModelImpl$14
         }
         paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
         paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelImplPlayOperationViewModelImpl.setLiked(true);
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelImplPlayOperationViewModelImpl.setLikes(paramArrayOfByte.total.get());
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.c = PlayOperationViewModelImpl.access$800(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelImplPlayOperationViewModelImpl);
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.b = true;
-        PlayOperationViewModelImpl.access$602(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelImplPlayOperationViewModelImpl, false);
-        PlayOperationViewModelImpl.access$602(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelImplPlayOperationViewModelImpl, false);
-        ((INearbyMomentManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelImplPlayOperationViewModelImpl.app.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).a(PlayOperationViewModelImpl.access$900(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelImplPlayOperationViewModelImpl), paramArrayOfByte.total.get());
+        this.b.setLiked(true);
+        this.b.setLikes(paramArrayOfByte.total.get());
+        this.a.h = PlayOperationViewModelImpl.access$800(this.b);
+        this.a.o = true;
+        PlayOperationViewModelImpl.access$602(this.b, false);
+        PlayOperationViewModelImpl.access$602(this.b, false);
+        ((INearbyMomentManager)this.b.app.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).a(PlayOperationViewModelImpl.access$900(this.b), paramArrayOfByte.total.get());
         if (!QLog.isColorLevel()) {
           return;
         }
@@ -66,7 +66,7 @@ class PlayOperationViewModelImpl$14
         localStringBuilder.append("err_msg:   ");
         localStringBuilder.append(paramBundle.err_msg.get());
         localStringBuilder.append(" isLiked=");
-        localStringBuilder.append(PlayOperationViewModelImpl.access$500(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelImplPlayOperationViewModelImpl));
+        localStringBuilder.append(PlayOperationViewModelImpl.access$500(this.b));
         localStringBuilder.append("  e:");
         localStringBuilder.append(paramArrayOfByte);
         QLog.w("PlayOperationViewModel", 1, localStringBuilder.toString());
@@ -79,15 +79,15 @@ class PlayOperationViewModelImpl$14
       paramArrayOfByte.append("errorCode:   ");
       paramArrayOfByte.append(paramInt);
       paramArrayOfByte.append(" isLiked=");
-      paramArrayOfByte.append(PlayOperationViewModelImpl.access$500(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelImplPlayOperationViewModelImpl));
+      paramArrayOfByte.append(PlayOperationViewModelImpl.access$500(this.b));
       QLog.w("PlayOperationViewModel", 1, paramArrayOfByte.toString());
-      PlayOperationViewModelImpl.access$602(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelImplPlayOperationViewModelImpl, false);
+      PlayOperationViewModelImpl.access$602(this.b, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.viewmodel.impl.PlayOperationViewModelImpl.14
  * JD-Core Version:    0.7.0.1
  */

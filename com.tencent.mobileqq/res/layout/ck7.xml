@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<RelativeLayout android:id="@id/py8" android:background="@color/avo" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:id="@id/mtf" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/mti">
-        <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/mti" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:text="@string/wuo" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/mth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginRight="4.0dip" android:text="@string/wun" android:layout_toLeftOf="@id/mtd" />
-        <ImageView android:id="@id/mtd" android:layout_width="10.0dip" android:layout_height="14.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/intimate_relationship_arrow" android:layout_alignParentRight="true" />
-        <androidx.recyclerview.widget.RecyclerView android:id="@id/mtg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/mti" />
-    </RelativeLayout>
-</merge>
+    <Button android:textSize="@dimen/bmn" android:textColor="@drawable/gt7" android:gravity="center|left" android:id="@id/mnt" android:background="@android:color/transparent" android:paddingLeft="@dimen/bmp" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/xn9" />
+    <TextView android:textSize="@dimen/bmq" android:textColor="@color/avr" android:gravity="center" android:id="@id/k4v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/mo2" android:layout_toRightOf="@id/mnt" android:layout_centerVertical="true" />
+    <Button android:textSize="@dimen/bmn" android:textColor="@drawable/gt7" android:gravity="center|right" android:id="@id/mo2" android:background="@android:color/transparent" android:paddingRight="@dimen/bmp" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/xne" android:layout_alignParentRight="true" />
+</RelativeLayout>

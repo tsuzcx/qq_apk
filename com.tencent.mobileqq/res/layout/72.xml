@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/e6w" android:background="@drawable/jm" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/jg"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/ifh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/ibc" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mobileqq.widget.RoundRelativeLayout>
+    <com.tencent.widget.ThemeImageView android:id="@id/letsIcon" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="20.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <include layout="@layout/6z" />
+    <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black_theme_version2" android:gravity="center_vertical" android:id="@id/pmt" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bp0" android:singleLine="true" android:layout_toRightOf="@id/letsIcon" android:layout_centerVertical="true" />
+    <TextView android:id="@id/pmv" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/rs" android:layout_marginBottom="@dimen/rq" android:layout_toRightOf="@id/pmt" android:layout_centerVertical="true" style="@style/hb" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center_vertical" android:id="@id/pmy" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="58.0dip" android:singleLine="true" android:layout_toLeftOf="@id/ibo" android:layout_centerVertical="true" />
+    <TextView android:id="@id/pmu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_marginBottom="@dimen/rq" android:layout_toLeftOf="@id/ibo" android:layout_centerVertical="true" style="@style/hb" />
+    <RelativeLayout android:paddingRight="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/ibo" android:layout_toRightOf="@id/pmt" android:layout_centerInParent="true">
+        <RelativeLayout android:id="@id/pmn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <ImageSwitcher android:id="@id/pmr" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginRight="36.0dip" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
+            <ImageSwitcher android:id="@id/pmq" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/pms" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginRight="7.0dip" android:src="@drawable/g0q" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/pmx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="120.0dip" android:maxLines="1" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:id="@id/pmw" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/rm" android:layout_above="@id/pmp" android:layout_alignParentRight="true" style="@style/cg" />
+        <View android:id="@id/pmp" android:layout_width="1.0px" android:layout_height="1.0px" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -10,12 +10,12 @@ class InputBarLayoutChangeCallback$1
   
   public void a()
   {
-    InputBarLayoutChangeCallback.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputInputbarlayoutInputBarLayoutChangeCallback, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, this.jdField_a_of_type_Int, this.b);
+    InputBarLayoutChangeCallback.a(this.d, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.inputbarlayout.InputBarLayoutChangeCallback.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,56 +14,56 @@ public class ContactSearchResultGroupView
   implements ISearchResultGroupView
 {
   protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ISearchResultView jdField_a_of_type_ComTencentMobileqqSearchBaseViewISearchResultView;
-  private List<ISearchResultView> jdField_a_of_type_JavaUtilList;
   private TextView b;
+  private TextView c;
+  private LinearLayout d;
+  private List<ISearchResultView> e;
+  private ISearchResultView f;
   
   public ContactSearchResultGroupView() {}
   
   public ContactSearchResultGroupView(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371472));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370212));
-    this.jdField_a_of_type_ComTencentMobileqqSearchBaseViewISearchResultView = new ContactSearchResultView(this.jdField_a_of_type_AndroidViewView.findViewById(2131368989));
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    this.a = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.c = ((TextView)this.a.findViewById(2131438844));
+    this.e = new ArrayList();
+    this.d = ((LinearLayout)this.a.findViewById(2131437396));
+    this.f = new ContactSearchResultView(this.a.findViewById(2131435942));
   }
   
   public TextView a()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public ISearchResultView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchBaseViewISearchResultView;
-  }
-  
-  public List<ISearchResultView> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.b;
   }
   
   public TextView b()
   {
-    return this.b;
+    return this.c;
+  }
+  
+  public List<ISearchResultView> c()
+  {
+    return this.e;
+  }
+  
+  public ISearchResultView d()
+  {
+    return this.f;
+  }
+  
+  public LinearLayout e()
+  {
+    return this.d;
+  }
+  
+  public View h()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.view.ContactSearchResultGroupView
  * JD-Core Version:    0.7.0.1
  */

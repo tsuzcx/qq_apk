@@ -4,29 +4,29 @@ import org.json.JSONObject;
 
 public abstract class EditItemInfoBase
 {
-  protected JSONObject a;
-  protected boolean b = true;
-  public int c;
+  public int g;
+  protected JSONObject h;
+  protected boolean i = true;
   
   public abstract int a();
-  
-  public JSONObject a()
-  {
-    return this.a;
-  }
-  
-  public boolean a()
-  {
-    return this.b;
-  }
   
   public abstract int b();
   
   public void c(String paramString) {}
   
+  public boolean c()
+  {
+    return this.i;
+  }
+  
+  public JSONObject d()
+  {
+    return this.h;
+  }
+  
   public String toString()
   {
-    JSONObject localJSONObject = this.a;
+    JSONObject localJSONObject = this.h;
     if (localJSONObject != null) {
       return localJSONObject.toString();
     }
@@ -35,7 +35,7 @@ public abstract class EditItemInfoBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoBase
  * JD-Core Version:    0.7.0.1
  */

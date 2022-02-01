@@ -9,16 +9,16 @@ import android.view.ViewGroup.LayoutParams;
 public class CircularRevealAnimator
   extends ValueAnimator
 {
-  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener;
-  private View jdField_a_of_type_AndroidViewView;
+  private ValueAnimator.AnimatorUpdateListener a;
+  private View b;
   
   private CircularRevealAnimator(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView;
     setObjectValues(new Object[] { new CircularRevealAnimator.RevealCircle(paramFloat1, paramFloat2, paramFloat3), new CircularRevealAnimator.RevealCircle(paramFloat4, paramFloat5, paramFloat6) });
     setEvaluator(new CircularRevealAnimator.RevealCircleEvaluator(null));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new CircularRevealAnimator.1(this, a(paramView));
-    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
+    this.a = new CircularRevealAnimator.1(this, a(paramView));
+    addUpdateListener(this.a);
   }
   
   public static CircularRevealAnimator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
@@ -48,28 +48,28 @@ public class CircularRevealAnimator
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getParent();
+    Object localObject = this.b.getParent();
     if ((localObject instanceof CircularRevealCompatLayout))
     {
       localObject = (CircularRevealCompatLayout)localObject;
-      ((CircularRevealCompatLayout)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
+      ((CircularRevealCompatLayout)localObject).removeView(this.b);
       ViewGroup localViewGroup = (ViewGroup)((CircularRevealCompatLayout)localObject).getParent();
       ViewGroup.LayoutParams localLayoutParams = ((CircularRevealCompatLayout)localObject).getLayoutParams();
       int i = localViewGroup.indexOfChild((View)localObject);
       localViewGroup.removeView((View)localObject);
-      localViewGroup.addView(this.jdField_a_of_type_AndroidViewView, i, localLayoutParams);
+      localViewGroup.addView(this.b, i, localLayoutParams);
     }
   }
   
   public void removeAllUpdateListeners()
   {
     super.removeAllUpdateListeners();
-    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
+    addUpdateListener(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.anim.CircularRevealAnimator
  * JD-Core Version:    0.7.0.1
  */

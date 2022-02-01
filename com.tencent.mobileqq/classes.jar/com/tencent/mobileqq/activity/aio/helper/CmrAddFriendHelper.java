@@ -18,24 +18,24 @@ public class CmrAddFriendHelper
     return true;
   }
   
-  public void d()
+  public void f()
   {
-    super.d();
-    if (((BusinessCmrTmpContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).a().f(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
-      ((BusinessCmrTmpContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).i();
+    super.f();
+    if (((BusinessCmrTmpContext)this.a).Q().m(this.e.b)) {
+      ((BusinessCmrTmpContext)this.a).S();
     }
   }
   
-  public void e()
+  public void g()
   {
-    if (((BusinessCmrTmpContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).a().f(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
-      ((BusinessCmrTmpContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).h();
+    if (((BusinessCmrTmpContext)this.a).Q().m(this.e.b)) {
+      ((BusinessCmrTmpContext)this.a).R();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.CmrAddFriendHelper
  * JD-Core Version:    0.7.0.1
  */

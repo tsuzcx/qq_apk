@@ -8,20 +8,20 @@ import com.tencent.mobileqq.newfriend.data.AddFriendBlockedInfo;
 
 public class NewFriendVerifyBlockedListFragment$CommonAdapter$NewFriendBlockedHolder
 {
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
   public AddFriendBlockedInfo a;
-  public TextView b;
-  public TextView c;
+  public View b;
+  public ImageView c;
   public TextView d;
+  public TextView e;
+  public TextView f;
+  public Button g;
+  public TextView h;
   
   public NewFriendVerifyBlockedListFragment$CommonAdapter$NewFriendBlockedHolder(NewFriendVerifyBlockedListFragment.CommonAdapter paramCommonAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.fragment.NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder
  * JD-Core Version:    0.7.0.1
  */

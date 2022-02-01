@@ -9,12 +9,12 @@ public final class RIJTabFrameBase$Companion
   @Deprecated(message="迁移旧逻辑。此接口不准确，不要再使用此接口！")
   public final boolean a()
   {
-    return RIJTabFrameBase.c();
+    return RIJTabFrameBase.u();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase.Companion
  * JD-Core Version:    0.7.0.1
  */

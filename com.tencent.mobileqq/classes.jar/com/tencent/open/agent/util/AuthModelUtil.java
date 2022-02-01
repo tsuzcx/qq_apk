@@ -37,15 +37,15 @@ public class AuthModelUtil
   {
     paramWtloginManager = OpenSdkVirtualUtil.a(paramWtloginManager, paramString);
     paramString = new AccountInfo();
-    paramString.jdField_a_of_type_JavaLangString = paramWtloginManager;
+    paramString.a = paramWtloginManager;
     if (paramInt == 4096) {
       paramWtloginManager = new String(paramArrayOfByte);
     } else {
       paramWtloginManager = null;
     }
-    paramString.jdField_b_of_type_JavaLangString = paramWtloginManager;
-    paramString.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp");
-    paramString.jdField_b_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp_key");
+    paramString.b = paramWtloginManager;
+    paramString.c = paramBundle.getByteArray("st_temp");
+    paramString.d = paramBundle.getByteArray("st_temp_key");
     return paramString;
   }
   
@@ -98,26 +98,26 @@ public class AuthModelUtil
   public static List<VirtualAccountInfo> a(GetVirtualListResult paramGetVirtualListResult, boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramGetVirtualListResult.jdField_a_of_type_JavaUtilArrayList != null) && (!paramGetVirtualListResult.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    if ((paramGetVirtualListResult.c != null) && (!paramGetVirtualListResult.c.isEmpty()))
     {
-      Iterator localIterator = paramGetVirtualListResult.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = paramGetVirtualListResult.c.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (VirtualInfo)localIterator.next();
-        if (((VirtualInfo)localObject).jdField_b_of_type_JavaLangString == null) {
+        if (((VirtualInfo)localObject).c == null) {
           break;
         }
-        if (((VirtualInfo)localObject).jdField_a_of_type_JavaLangString == null) {
+        if (((VirtualInfo)localObject).b == null) {
           return localArrayList;
         }
         localObject = new VirtualAccountInfo((VirtualInfo)localObject);
         boolean bool;
-        if ((((VirtualAccountInfo)localObject).jdField_a_of_type_Long == paramGetVirtualListResult.jdField_a_of_type_Long) && (paramBoolean)) {
+        if ((((VirtualAccountInfo)localObject).c == paramGetVirtualListResult.b) && (paramBoolean)) {
           bool = true;
         } else {
           bool = false;
         }
-        ((VirtualAccountInfo)localObject).jdField_a_of_type_Boolean = bool;
+        ((VirtualAccountInfo)localObject).d = bool;
         localArrayList.add(localObject);
       }
       return localArrayList;
@@ -148,7 +148,66 @@ public class AuthModelUtil
     QLog.d("AuthModelUtil", 1, paramIntent.toString());
   }
   
-  public static void a(Bundle paramBundle)
+  public static void a(String paramString1, String paramString2, String paramString3, SSOAccountObserver paramSSOAccountObserver)
+  {
+    QLog.d("AuthModelUtil", 1, new Object[] { "doWtLoginOnOpenSdk appId=", paramString1, ", uin=", AuthorityUtil.a(paramString2), ", observer=", paramSSOAccountObserver });
+    if (!b(paramString1, paramString2, paramString3, paramSSOAccountObserver)) {
+      return;
+    }
+    try
+    {
+      AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
+      QLog.d("AuthModelUtil", 1, new Object[] { "doWtLoginOnOpenSdk app = ", localAppRuntime });
+      if (localAppRuntime == null)
+      {
+        paramSSOAccountObserver.onFailed(paramString1, 1100, -1012, new Bundle());
+        return;
+      }
+      Bundle localBundle = new Bundle();
+      if (OpenSdkIFrameProcessor.a()) {
+        localBundle.putInt("puzzle_verify_code", 130);
+      }
+      localBundle.putByteArray("connect_data", AuthorityUtil.b(paramString1));
+      localAppRuntime.ssoLogin(paramString2, paramString3, 4096, paramSSOAccountObserver, localBundle);
+      return;
+    }
+    catch (Exception paramString2)
+    {
+      QLog.e("AuthModelUtil", 1, "Exception ", paramString2);
+      paramSSOAccountObserver.onFailed(paramString1, 1100, -1012, new Bundle());
+    }
+  }
+  
+  private static boolean a(Intent paramIntent, Bundle paramBundle)
+  {
+    if ((paramIntent != null) && (paramBundle != null)) {
+      return false;
+    }
+    QLog.e("AuthModelUtil", 1, "handleAgentAppId params empty");
+    return true;
+  }
+  
+  private static boolean a(WUserSigInfo paramWUserSigInfo)
+  {
+    if (paramWUserSigInfo == null) {
+      return true;
+    }
+    paramWUserSigInfo = paramWUserSigInfo.loginResultTLVMap;
+    if (paramWUserSigInfo == null) {
+      return true;
+    }
+    paramWUserSigInfo = (tlv_t)paramWUserSigInfo.get(Integer.valueOf(1347));
+    if (paramWUserSigInfo == null) {
+      return true;
+    }
+    if (paramWUserSigInfo.get_data() == null) {
+      return true;
+    }
+    QLog.d("AuthModelUtil", 1, "SigData is valid");
+    return false;
+  }
+  
+  public static void b(Bundle paramBundle)
   {
     if (paramBundle == null)
     {
@@ -183,49 +242,32 @@ public class AuthModelUtil
     paramBundle.putString("time", str2);
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, SSOAccountObserver paramSSOAccountObserver)
+  private static boolean b(String paramString1, String paramString2, String paramString3, SSOAccountObserver paramSSOAccountObserver)
   {
-    QLog.d("AuthModelUtil", 1, new Object[] { "doWtLoginOnOpenSdk appId=", paramString1, ", uin=", AuthorityUtil.a(paramString2), ", observer=", paramSSOAccountObserver });
-    if (!a(paramString1, paramString2, paramString3, paramSSOAccountObserver)) {
-      return;
-    }
-    try
+    if (paramSSOAccountObserver == null)
     {
-      AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
-      QLog.d("AuthModelUtil", 1, new Object[] { "doWtLoginOnOpenSdk app = ", localAppRuntime });
-      if (localAppRuntime == null)
-      {
-        paramSSOAccountObserver.onFailed(paramString1, 1100, -1012, new Bundle());
-        return;
-      }
-      Bundle localBundle = new Bundle();
-      if (OpenSdkIFrameProcessor.a()) {
-        localBundle.putInt("puzzle_verify_code", 130);
-      }
-      localBundle.putByteArray("connect_data", AuthorityUtil.a(paramString1));
-      localAppRuntime.ssoLogin(paramString2, paramString3, 4096, paramSSOAccountObserver, localBundle);
-      return;
-    }
-    catch (Exception paramString2)
-    {
-      QLog.e("AuthModelUtil", 1, "Exception ", paramString2);
-      paramSSOAccountObserver.onFailed(paramString1, 1100, -1012, new Bundle());
-    }
-  }
-  
-  private static boolean a(Intent paramIntent, Bundle paramBundle)
-  {
-    if ((paramIntent != null) && (paramBundle != null)) {
+      QLog.d("AuthModelUtil", 1, "checkParamsValid null == observer");
       return false;
     }
-    QLog.e("AuthModelUtil", 1, "handleAgentAppId params empty");
-    return true;
+    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString1)))
+    {
+      if (!"com.tencent.mobileqq:openSdk".equals(MobileQQ.sMobileQQ.getQQProcessName()))
+      {
+        QLog.d("AuthModelUtil", 1, new Object[] { "checkParamsValid process = ", MobileQQ.sMobileQQ.getQQProcessName() });
+        paramSSOAccountObserver.onFailed(paramString1, 1100, -1012, new Bundle());
+        return false;
+      }
+      return true;
+    }
+    QLog.d("AuthModelUtil", 1, "checkParamsValid invalid params");
+    paramSSOAccountObserver.onFailed(paramString1, 1100, -1012, new Bundle());
+    return false;
   }
   
-  public static boolean a(Bundle paramBundle)
+  public static boolean c(Bundle paramBundle)
   {
     QLog.d("AuthModelUtil", 1, "checkIMBlockByBundle");
-    if (b(paramBundle)) {
+    if (d(paramBundle)) {
       return false;
     }
     paramBundle = (WUserSigInfo)paramBundle.getParcelable("userSigInfo");
@@ -252,49 +294,7 @@ public class AuthModelUtil
     return false;
   }
   
-  private static boolean a(String paramString1, String paramString2, String paramString3, SSOAccountObserver paramSSOAccountObserver)
-  {
-    if (paramSSOAccountObserver == null)
-    {
-      QLog.d("AuthModelUtil", 1, "checkParamsValid null == observer");
-      return false;
-    }
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString1)))
-    {
-      if (!"com.tencent.mobileqq:openSdk".equals(MobileQQ.sMobileQQ.getQQProcessName()))
-      {
-        QLog.d("AuthModelUtil", 1, new Object[] { "checkParamsValid process = ", MobileQQ.sMobileQQ.getQQProcessName() });
-        paramSSOAccountObserver.onFailed(paramString1, 1100, -1012, new Bundle());
-        return false;
-      }
-      return true;
-    }
-    QLog.d("AuthModelUtil", 1, "checkParamsValid invalid params");
-    paramSSOAccountObserver.onFailed(paramString1, 1100, -1012, new Bundle());
-    return false;
-  }
-  
-  private static boolean a(WUserSigInfo paramWUserSigInfo)
-  {
-    if (paramWUserSigInfo == null) {
-      return true;
-    }
-    paramWUserSigInfo = paramWUserSigInfo.loginResultTLVMap;
-    if (paramWUserSigInfo == null) {
-      return true;
-    }
-    paramWUserSigInfo = (tlv_t)paramWUserSigInfo.get(Integer.valueOf(1347));
-    if (paramWUserSigInfo == null) {
-      return true;
-    }
-    if (paramWUserSigInfo.get_data() == null) {
-      return true;
-    }
-    QLog.d("AuthModelUtil", 1, "SigData is valid");
-    return false;
-  }
-  
-  private static boolean b(Bundle paramBundle)
+  private static boolean d(Bundle paramBundle)
   {
     if ((paramBundle != null) && (paramBundle.getParcelable("userSigInfo") != null)) {
       return false;
@@ -305,7 +305,7 @@ public class AuthModelUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.util.AuthModelUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -37,16 +37,16 @@ class SignatureAdapter$1
       if (paramObservable != null) {
         SignatureAdapter.b(this.a).copyFrom(paramObservable);
       }
-      SignatureAdapter.a(this.a).a().sendEmptyMessage(10003);
-      SignatureManagerForTool.a().deleteObserver(SignatureAdapter.a(this.a));
+      SignatureAdapter.c(this.a).a().sendEmptyMessage(10003);
+      SignatureManagerForTool.a().deleteObserver(SignatureAdapter.d(this.a));
       return;
     }
-    SignatureAdapter.a(this.a).a().sendEmptyMessage(10003);
+    SignatureAdapter.c(this.a).a().sendEmptyMessage(10003);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.SignatureAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,11 +14,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class PTSNodeScrollView
-  extends PTSNodeVirtual<PTSScrollView>
+  extends PTSNodeVirtual
 {
   public PTSNodeScrollView(PTSAppInstance paramPTSAppInstance)
   {
-    super(paramPTSAppInstance);
+    super(paramPTSAppInstance, "view", "scroll-view");
   }
   
   public void addChild(PTSNodeVirtual paramPTSNodeVirtual)
@@ -123,7 +123,7 @@ public class PTSNodeScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeScrollView
  * JD-Core Version:    0.7.0.1
  */

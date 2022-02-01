@@ -13,28 +13,28 @@ import java.io.File;
 
 class GestureMgrAppDownload$DownloadContrl
 {
-  int jdField_a_of_type_Int = 0;
-  DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
-  HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
+  boolean a = false;
+  DownloadInfo b = null;
   int c = 0;
+  int d = 0;
+  int e = 0;
+  HttpNetReq f;
   
   boolean a(DownloadInfo paramDownloadInfo)
   {
     boolean bool;
-    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == paramDownloadInfo) || (((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_model)) || (paramDownloadInfo.MD5_zip_model.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo.MD5_zip_model))) && ((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_so)) || (paramDownloadInfo.MD5_zip_so.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo.MD5_zip_so)))))) {
+    if ((this.a) && ((this.b == paramDownloadInfo) || (((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_model)) || (paramDownloadInfo.MD5_zip_model.equals(this.b.MD5_zip_model))) && ((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_so)) || (paramDownloadInfo.MD5_zip_so.equals(this.b.MD5_zip_so)))))) {
       bool = false;
     } else {
       bool = true;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QavGesture", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
+      QLog.d("QavGesture", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.a), Boolean.valueOf(bool) }));
     }
     if (!bool) {
-      return this.jdField_a_of_type_Boolean;
+      return this.a;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null)
+    if (this.f != null)
     {
       Object localObject = BaseApplicationImpl.sApplication.getRuntime();
       if ((localObject instanceof AppInterface))
@@ -42,37 +42,37 @@ class GestureMgrAppDownload$DownloadContrl
         localObject = (IHttpEngineService)((AppInterface)localObject).getRuntimeService(IHttpEngineService.class, "all");
         if (localObject != null)
         {
-          QLog.d("QavGesture", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.getUserData() }));
-          ((IHttpEngineService)localObject).cancelReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+          QLog.d("QavGesture", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.f.getUserData() }));
+          ((IHttpEngineService)localObject).cancelReq(this.f);
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = paramDownloadInfo;
+    this.b = paramDownloadInfo;
+    this.e = 0;
+    this.f = null;
     this.c = 0;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    if (!GestureUtil.d(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))
+    this.d = 0;
+    if (!GestureUtil.e(this.b))
     {
-      this.c |= 0x1;
-      this.jdField_a_of_type_Int += 1;
+      this.e |= 0x1;
+      this.c += 1;
     }
-    if (!GestureUtil.c(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))
+    if (!GestureUtil.d(this.b))
     {
-      this.c |= 0x2;
-      this.jdField_a_of_type_Int += 1;
+      this.e |= 0x2;
+      this.c += 1;
     }
-    if ((GestureUtil.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo)) && (!GestureUtil.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo)))
+    if ((GestureUtil.b(this.b)) && (!GestureUtil.c(this.b)))
     {
-      this.c |= 0x3;
-      this.jdField_a_of_type_Int += 1;
+      this.e |= 0x3;
+      this.c += 1;
     }
-    QLog.d("QavGesture", 1, String.format("DownloadContrl, mResFlag[%s], mInfo[%s]", new Object[] { Integer.valueOf(this.c), this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
-    if (this.jdField_a_of_type_Int == 0) {
-      return this.jdField_a_of_type_Boolean;
+    QLog.d("QavGesture", 1, String.format("DownloadContrl, mResFlag[%s], mInfo[%s]", new Object[] { Integer.valueOf(this.e), this.b }));
+    if (this.c == 0) {
+      return this.a;
     }
-    this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, 3);
-    return this.jdField_a_of_type_Boolean;
+    this.a = a(this.b, 3);
+    return this.a;
   }
   
   boolean a(DownloadInfo paramDownloadInfo, int paramInt)
@@ -80,13 +80,13 @@ class GestureMgrAppDownload$DownloadContrl
     String str2;
     String str1;
     int i;
-    if (!GestureUtil.d(paramDownloadInfo))
+    if (!GestureUtil.e(paramDownloadInfo))
     {
       str2 = paramDownloadInfo.url_zip_so;
       str1 = paramDownloadInfo.MD5_zip_so;
       i = 1;
     }
-    else if ((paramDownloadInfo.enable) && (!GestureUtil.c(paramDownloadInfo)))
+    else if ((paramDownloadInfo.enable) && (!GestureUtil.d(paramDownloadInfo)))
     {
       str2 = paramDownloadInfo.url_zip_model;
       str1 = paramDownloadInfo.MD5_zip_model;
@@ -94,7 +94,7 @@ class GestureMgrAppDownload$DownloadContrl
     }
     else
     {
-      if ((!GestureUtil.a(paramDownloadInfo)) || (GestureUtil.b(paramDownloadInfo))) {
+      if ((!GestureUtil.b(paramDownloadInfo)) || (GestureUtil.c(paramDownloadInfo))) {
         break label373;
       }
       str2 = paramDownloadInfo.url_zip_gamemodel;
@@ -128,8 +128,8 @@ class GestureMgrAppDownload$DownloadContrl
       paramDownloadInfo = (IHttpEngineService)((QQAppInterface)paramDownloadInfo).getRuntimeService(IHttpEngineService.class, "all");
       if (paramDownloadInfo != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = ((HttpNetReq)localObject);
-        paramDownloadInfo.sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+        this.f = ((HttpNetReq)localObject);
+        paramDownloadInfo.sendReq(this.f);
         bool = true;
         break label319;
       }
@@ -150,7 +150,7 @@ class GestureMgrAppDownload$DownloadContrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.gesture.GestureMgrAppDownload.DownloadContrl
  * JD-Core Version:    0.7.0.1
  */

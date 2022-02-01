@@ -11,7 +11,7 @@ class QFileAppStorePromoteManager$FetchAppInfoCallback$1
   
   public void run()
   {
-    QFileAppStorePromoteManager.IGetAppDetailCallback localIGetAppDetailCallback = (QFileAppStorePromoteManager.IGetAppDetailCallback)QFileAppStorePromoteManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$FetchAppInfoCallback.a).get(Integer.valueOf(this.jdField_a_of_type_Int));
+    QFileAppStorePromoteManager.IGetAppDetailCallback localIGetAppDetailCallback = (QFileAppStorePromoteManager.IGetAppDetailCallback)QFileAppStorePromoteManager.b(this.d.a).get(Integer.valueOf(this.a));
     if (localIGetAppDetailCallback != null)
     {
       boolean bool;
@@ -20,13 +20,13 @@ class QFileAppStorePromoteManager$FetchAppInfoCallback$1
       } else {
         bool = false;
       }
-      localIGetAppDetailCallback.a(bool, (AppDetail)this.jdField_a_of_type_JavaUtilList.get(0));
+      localIGetAppDetailCallback.a(bool, (AppDetail)this.c.get(0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager.FetchAppInfoCallback.1
  * JD-Core Version:    0.7.0.1
  */

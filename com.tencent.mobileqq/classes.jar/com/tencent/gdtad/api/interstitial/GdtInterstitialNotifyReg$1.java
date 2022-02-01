@@ -19,9 +19,9 @@ final class GdtInterstitialNotifyReg$1
     JSONObject localJSONObject1 = new JSONObject();
     try
     {
-      if ((this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams != null) && (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.b()))
+      if ((this.a != null) && (this.a.b()))
       {
-        Object localObject = GdtJsonPbUtil.a(this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.a.a.info);
+        Object localObject = GdtJsonPbUtil.a(this.a.d.a.info);
         if ((localObject != null) && (!JSONObject.NULL.equals(localObject)))
         {
           JSONObject localJSONObject2 = new JSONObject();
@@ -29,19 +29,19 @@ final class GdtInterstitialNotifyReg$1
           localJSONObject1.put("gdt", localJSONObject2);
         }
       }
-      ark.arkNotify(GdtInterstitialManager.a().a().jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, localJSONObject1.toString(), "json");
+      ark.arkNotify(GdtInterstitialManager.a().d().a, this.b, localJSONObject1.toString(), "json");
     }
     catch (Throwable localThrowable)
     {
       GdtLog.d("GdtInterstitialNotifyReg", "sendEvent", localThrowable);
     }
-    GdtLog.b("GdtInterstitialNotifyReg", String.format("sendEvent %s", new Object[] { this.jdField_a_of_type_JavaLangString }));
-    GdtAnalysisHelperForInterstitial.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialStatus, this.jdField_a_of_type_JavaLangString, GdtInterstitialManager.a().a().jdField_a_of_type_JavaLangString);
+    GdtLog.b("GdtInterstitialNotifyReg", String.format("sendEvent %s", new Object[] { this.b }));
+    GdtAnalysisHelperForInterstitial.b((Context)this.c.get(), this.a, this.d, this.b, GdtInterstitialManager.a().d().a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialNotifyReg.1
  * JD-Core Version:    0.7.0.1
  */

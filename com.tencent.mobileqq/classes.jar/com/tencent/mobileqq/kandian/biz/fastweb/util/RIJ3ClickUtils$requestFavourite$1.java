@@ -13,12 +13,12 @@ final class RIJ3ClickUtils$requestFavourite$1
   
   public final void a(ReadInJoyObserver paramReadInJoyObserver)
   {
-    paramReadInJoyObserver.a(this.a, RIJ3ClickUtils.a(RIJ3ClickUtils.a), 5);
+    paramReadInJoyObserver.a(this.a, RIJ3ClickUtils.b(RIJ3ClickUtils.a), 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.RIJ3ClickUtils.requestFavourite.1
  * JD-Core Version:    0.7.0.1
  */

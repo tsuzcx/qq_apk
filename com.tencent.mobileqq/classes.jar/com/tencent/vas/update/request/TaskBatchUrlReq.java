@@ -1,10 +1,10 @@
 package com.tencent.vas.update.request;
 
 import android.text.TextUtils;
-import com.tencent.vas.update.callback.IVasLog;
 import com.tencent.vas.update.entity.UpdateUrlInfoPtr;
 import com.tencent.vas.update.entity.db.ItemUpdateVerPtr;
-import com.tencent.vas.update.task.BaseItemTask;
+import com.tencent.vas.update.factory.api.IVasLog;
+import com.tencent.vas.update.task.DownloadItemTask;
 import com.tencent.vas.update.util.CommonUtil;
 import com.tencent.vas.update.wrapper.VasUpdateWrapper;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class TaskBatchUrlReq
 {
   private static final String TAG = "VasUpdate_TaskBatchUrlReq";
   private int mCurrentCookieId;
-  private HashMap<String, BaseItemTask> mTaskMaps = new HashMap();
+  private HashMap<String, DownloadItemTask> mTaskMaps = new HashMap();
   
   private String getRequestContent(ArrayList<ItemUpdateVerPtr> paramArrayList, String paramString)
   {
@@ -62,25 +62,25 @@ public class TaskBatchUrlReq
     {
       paramArrayList.printStackTrace();
     }
-    if (VasUpdateWrapper.getLog().isColorLevel())
+    if (VasUpdateWrapper.getLog().a())
     {
       paramArrayList = VasUpdateWrapper.getLog();
       paramString = new StringBuilder();
       paramString.append("batchGetUrl request content = ");
       paramString.append(localJSONObject1.toString());
-      paramArrayList.d("VasUpdate_TaskBatchUrlReq", paramString.toString());
+      paramArrayList.a("VasUpdate_TaskBatchUrlReq", paramString.toString());
     }
     return localJSONObject1.toString();
   }
   
-  public void addTask(String paramString, BaseItemTask paramBaseItemTask)
+  public void addTask(String paramString, DownloadItemTask paramDownloadItemTask)
   {
     IVasLog localIVasLog = VasUpdateWrapper.getLog();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("addTask itemId = ");
     localStringBuilder.append(paramString);
-    localIVasLog.i("VasUpdate_TaskBatchUrlReq", localStringBuilder.toString());
-    this.mTaskMaps.put(paramString, paramBaseItemTask);
+    localIVasLog.b("VasUpdate_TaskBatchUrlReq", localStringBuilder.toString());
+    this.mTaskMaps.put(paramString, paramDownloadItemTask);
   }
   
   public int getCookieId()
@@ -98,19 +98,19 @@ public class TaskBatchUrlReq
       Object localObject = (Map.Entry)localIterator.next();
       if ((localObject != null) && (((Map.Entry)localObject).getValue() != null))
       {
-        BaseItemTask localBaseItemTask = (BaseItemTask)((Map.Entry)localObject).getValue();
-        localObject = localBaseItemTask.getItemUpdateVer();
+        DownloadItemTask localDownloadItemTask = (DownloadItemTask)((Map.Entry)localObject).getValue();
+        localObject = localDownloadItemTask.a();
         if (localObject != null)
         {
           if (!TextUtils.isEmpty(((ItemUpdateVerPtr)localObject).mSrcMd5)) {
-            if (localBaseItemTask.checkSrcFileIsNeedReDownload(((ItemUpdateVerPtr)localObject).mSrcMd5))
+            if (localDownloadItemTask.a(((ItemUpdateVerPtr)localObject).mSrcMd5))
             {
               ((ItemUpdateVerPtr)localObject).mSrcMd5 = "";
-              VasUpdateWrapper.getLog().i("VasUpdate_TaskBatchUrlReq", "getRequest item need Redownload , reset md5");
+              VasUpdateWrapper.getLog().b("VasUpdate_TaskBatchUrlReq", "getRequest item need Redownload , reset md5");
             }
             else
             {
-              VasUpdateWrapper.getLog().i("VasUpdate_TaskBatchUrlReq", "getRequest item file has downloaded , check update status");
+              VasUpdateWrapper.getLog().b("VasUpdate_TaskBatchUrlReq", "getRequest item file has downloaded , check update status");
             }
           }
           str = ((ItemUpdateVerPtr)localObject).mFrom;
@@ -128,7 +128,7 @@ public class TaskBatchUrlReq
   
   public void handlePbResponse(int paramInt, TaskBatchUrlRsp paramTaskBatchUrlRsp)
   {
-    if ((paramTaskBatchUrlRsp != null) && (paramTaskBatchUrlRsp.mUpdateList != null) && (paramTaskBatchUrlRsp.mUpdateList.size() > 0)) {
+    if ((paramTaskBatchUrlRsp != null) && (paramTaskBatchUrlRsp.mUpdateList != null)) {
       paramTaskBatchUrlRsp = paramTaskBatchUrlRsp.mUpdateList.iterator();
     }
     while (paramTaskBatchUrlRsp.hasNext())
@@ -136,10 +136,10 @@ public class TaskBatchUrlReq
       Object localObject1 = (UpdateUrlInfoPtr)paramTaskBatchUrlRsp.next();
       if (localObject1 != null)
       {
-        Object localObject2 = (BaseItemTask)this.mTaskMaps.get(((UpdateUrlInfoPtr)localObject1).mItemId);
+        Object localObject2 = (DownloadItemTask)this.mTaskMaps.get(((UpdateUrlInfoPtr)localObject1).mItemId);
         if (localObject2 != null)
         {
-          ((BaseItemTask)localObject2).handleGetUrlRsp(paramInt, (UpdateUrlInfoPtr)localObject1);
+          ((DownloadItemTask)localObject2).a(paramInt, (UpdateUrlInfoPtr)localObject1);
         }
         else
         {
@@ -147,14 +147,14 @@ public class TaskBatchUrlReq
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("batch req handle pb response no match , itemId = ");
           localStringBuilder.append(((UpdateUrlInfoPtr)localObject1).mItemId);
-          ((IVasLog)localObject2).i("VasUpdate_TaskBatchUrlReq", localStringBuilder.toString());
+          ((IVasLog)localObject2).b("VasUpdate_TaskBatchUrlReq", localStringBuilder.toString());
           continue;
           paramTaskBatchUrlRsp = this.mTaskMaps.entrySet().iterator();
           while (paramTaskBatchUrlRsp.hasNext())
           {
             localObject1 = (Map.Entry)paramTaskBatchUrlRsp.next();
             if ((localObject1 != null) && (((Map.Entry)localObject1).getValue() != null)) {
-              ((BaseItemTask)((Map.Entry)localObject1).getValue()).handleGetUrlRsp(-1, null);
+              ((DownloadItemTask)((Map.Entry)localObject1).getValue()).a(-1, null);
             }
           }
         }
@@ -175,14 +175,14 @@ public class TaskBatchUrlReq
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       if ((localEntry != null) && (localEntry.getValue() != null)) {
-        ((BaseItemTask)localEntry.getValue()).onSendPbMsgError();
+        ((DownloadItemTask)localEntry.getValue()).b();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.vas.update.request.TaskBatchUrlReq
  * JD-Core Version:    0.7.0.1
  */

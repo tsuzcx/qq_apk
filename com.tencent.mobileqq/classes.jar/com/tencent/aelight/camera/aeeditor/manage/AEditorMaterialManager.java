@@ -17,24 +17,24 @@ import mqq.util.WeakReference;
 
 public class AEditorMaterialManager
 {
-  private static volatile AEditorMaterialManager jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEditorMaterialManager;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static volatile AEditorMaterialManager c;
   public ArrayList<MetaMaterial> a;
-  private WeakReference<AEditorMaterialManager.RecommendListener> jdField_a_of_type_MqqUtilWeakReference;
   public ArrayList<String> b;
+  private final Object d = new Object();
+  private WeakReference<AEditorMaterialManager.RecommendListener> e;
   
   public static AEditorMaterialManager a()
   {
-    if (jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEditorMaterialManager == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEditorMaterialManager == null) {
-          jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEditorMaterialManager = new AEditorMaterialManager();
+        if (c == null) {
+          c = new AEditorMaterialManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEditorMaterialManager;
+    return c;
   }
   
   /* Error */
@@ -45,29 +45,29 @@ public class AEditorMaterialManager
     //   1: astore_2
     //   2: aconst_null
     //   3: astore_1
-    //   4: invokestatic 35	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: invokevirtual 41	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
+    //   4: invokestatic 38	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   7: invokevirtual 44	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
     //   10: aload_0
-    //   11: invokevirtual 47	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   11: invokevirtual 50	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   14: astore_3
     //   15: aload_3
     //   16: astore_1
     //   17: aload_3
     //   18: astore_2
     //   19: aload_3
-    //   20: invokestatic 52	com/tencent/biz/common/util/Util:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   20: invokestatic 55	com/tencent/biz/common/util/Util:a	(Ljava/io/InputStream;)Ljava/lang/String;
     //   23: astore 4
     //   25: aload 4
     //   27: astore_0
     //   28: aload_3
     //   29: ifnull +91 -> 120
     //   32: aload_3
-    //   33: invokevirtual 57	java/io/InputStream:close	()V
+    //   33: invokevirtual 60	java/io/InputStream:close	()V
     //   36: aload 4
     //   38: areturn
     //   39: astore_0
     //   40: aload_0
-    //   41: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   41: invokevirtual 63	java/io/IOException:printStackTrace	()V
     //   44: aload 4
     //   46: areturn
     //   47: astore_0
@@ -75,53 +75,53 @@ public class AEditorMaterialManager
     //   51: astore_3
     //   52: aload_2
     //   53: astore_1
-    //   54: new 62	java/lang/StringBuilder
+    //   54: new 65	java/lang/StringBuilder
     //   57: dup
-    //   58: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   58: invokespecial 66	java/lang/StringBuilder:<init>	()V
     //   61: astore 4
     //   63: aload_2
     //   64: astore_1
     //   65: aload 4
-    //   67: ldc 65
-    //   69: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: ldc 68
+    //   69: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: pop
     //   73: aload_2
     //   74: astore_1
     //   75: aload 4
     //   77: aload_0
-    //   78: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   81: pop
     //   82: aload_2
     //   83: astore_1
-    //   84: ldc 71
+    //   84: ldc 74
     //   86: aload 4
-    //   88: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   88: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   91: aload_3
-    //   92: invokestatic 80	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   92: invokestatic 83	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   95: aload_2
     //   96: astore_1
     //   97: aload_3
-    //   98: invokevirtual 81	java/lang/Throwable:printStackTrace	()V
+    //   98: invokevirtual 84	java/lang/Throwable:printStackTrace	()V
     //   101: aload_2
     //   102: ifnull +15 -> 117
     //   105: aload_2
-    //   106: invokevirtual 57	java/io/InputStream:close	()V
+    //   106: invokevirtual 60	java/io/InputStream:close	()V
     //   109: goto +8 -> 117
     //   112: astore_0
     //   113: aload_0
-    //   114: invokevirtual 60	java/io/IOException:printStackTrace	()V
-    //   117: ldc 83
+    //   114: invokevirtual 63	java/io/IOException:printStackTrace	()V
+    //   117: ldc 86
     //   119: astore_0
     //   120: aload_0
     //   121: areturn
     //   122: aload_1
     //   123: ifnull +15 -> 138
     //   126: aload_1
-    //   127: invokevirtual 57	java/io/InputStream:close	()V
+    //   127: invokevirtual 60	java/io/InputStream:close	()V
     //   130: goto +8 -> 138
     //   133: astore_1
     //   134: aload_1
-    //   135: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   135: invokevirtual 63	java/io/IOException:printStackTrace	()V
     //   138: aload_0
     //   139: athrow
     // Local variable table:
@@ -168,7 +168,7 @@ public class AEditorMaterialManager
     return localArrayList;
   }
   
-  private static List<MetaCategory> a(String paramString)
+  private static List<MetaCategory> b(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     paramString = a(paramString);
@@ -187,7 +187,7 @@ public class AEditorMaterialManager
     return localArrayList;
   }
   
-  private static List<MetaCategory> b()
+  private static List<MetaCategory> d()
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = a("camera/ae_camera_editor_auto_template.json");
@@ -208,7 +208,7 @@ public class AEditorMaterialManager
   
   public String a(String paramString1, String paramString2)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
       paramString1 = new File(paramString1);
       if (!paramString1.exists()) {
@@ -216,85 +216,6 @@ public class AEditorMaterialManager
       }
       paramString1 = new File(paramString1.getPath(), paramString2).getPath();
       return paramString1;
-    }
-  }
-  
-  public List<MetaCategory> a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      new ArrayList();
-      File localFile = new File(AEPath.Editor.FILES.c, "editor_auto_template_update_template.json");
-      Object localObject3 = new File(AEPath.Editor.FILES.c, "editor_auto_template_default.json");
-      List localList2;
-      List localList3;
-      if (!localFile.exists())
-      {
-        List localList1;
-        if (!((File)localObject3).exists())
-        {
-          AEQLog.a("[AEEditor2]AEditorMaterialManager", "readAndParseTextStickerConfigFile -> oldJson not exist, newJson not exist ");
-          localList1 = b();
-        }
-        else
-        {
-          try
-          {
-            localList1 = a((File)localObject3);
-            AEQLog.a("[AEEditor2]AEditorMaterialManager", "readAndParseTextStickerConfigFile -> oldJson exists, newJson not exist, use oldJson");
-          }
-          catch (Exception localException1)
-          {
-            FileUtils.deleteFile(((File)localObject3).getPath());
-            AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCircleCatMatTreeMqCircleEditor", 4);
-            localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("readAndParseTextStickerConfigFile -> oldJson exists, newJson not exist, exception:");
-            ((StringBuilder)localObject3).append(localException1.toString());
-            AEQLog.d("[AEEditor2]AEditorMaterialManager", ((StringBuilder)localObject3).toString());
-            localList2 = b();
-          }
-        }
-      }
-      else
-      {
-        try
-        {
-          localList2 = a(localFile);
-          FileUtils.moveFile(localFile.getPath(), ((File)localObject3).getPath());
-          AEQLog.a("[AEEditor2]AEditorMaterialManager", "readAndParseTextStickerConfigFile -> oldJson not exist, use newJson ");
-        }
-        catch (Exception localException2)
-        {
-          FileUtils.deleteFile(localFile.getPath());
-          localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append("readAndParseTextStickerConfigFile -> oldJson not exists: exception:");
-          ((StringBuilder)localObject3).append(localException2.toString());
-          AEQLog.d("[AEEditor2]AEditorMaterialManager", ((StringBuilder)localObject3).toString());
-          AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCircleCatMatTreeMqCircleEditor", 4);
-          localList3 = b();
-        }
-      }
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-      {
-        int i = 0;
-        while (i < 5)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(new MetaMaterial());
-          i += 1;
-        }
-      }
-      localObject3 = new MetaCategory();
-      ((MetaCategory)localObject3).name = "推荐";
-      ((MetaCategory)localObject3).id = "recommend";
-      localList3.add(0, localObject3);
-      return localList3;
-    }
-    for (;;)
-    {
-      throw localObject1;
     }
   }
   
@@ -308,7 +229,7 @@ public class AEditorMaterialManager
     ((StringBuilder)localObject1).append(" oldjson:");
     ((StringBuilder)localObject1).append(paramString3);
     AEQLog.a("[AEEditor2]AEditorMaterialManager", ((StringBuilder)localObject1).toString());
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
       localObject1 = new ArrayList();
       File localFile1 = new File(paramString1, paramString2);
@@ -318,7 +239,7 @@ public class AEditorMaterialManager
         if (!localFile2.exists())
         {
           AEQLog.a("[AEEditor2]AEditorMaterialManager", "readAndParseConfigFile -> oldJson not exist, newJson not exist ");
-          paramString1 = a(paramString3);
+          paramString1 = b(paramString3);
         }
         else
         {
@@ -376,32 +297,111 @@ public class AEditorMaterialManager
     }
   }
   
-  public void a()
-  {
-    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
-    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((AEditorMaterialManager.RecommendListener)this.jdField_a_of_type_MqqUtilWeakReference.get()).b();
-    }
-  }
-  
   public void a(ArrayList<MetaMaterial> paramArrayList, ArrayList<String> paramArrayList1)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.a = paramArrayList;
     this.b = paramArrayList1;
-    paramArrayList = this.jdField_a_of_type_MqqUtilWeakReference;
+    paramArrayList = this.e;
     if ((paramArrayList != null) && (paramArrayList.get() != null)) {
-      ((AEditorMaterialManager.RecommendListener)this.jdField_a_of_type_MqqUtilWeakReference.get()).a();
+      ((AEditorMaterialManager.RecommendListener)this.e.get()).a();
     }
   }
   
   public void a(WeakReference<AEditorMaterialManager.RecommendListener> paramWeakReference)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
+    this.e = paramWeakReference;
+  }
+  
+  public List<MetaCategory> b()
+  {
+    synchronized (this.d)
+    {
+      new ArrayList();
+      File localFile = new File(AEPath.Editor.FILES.c, "editor_auto_template_update_template.json");
+      Object localObject3 = new File(AEPath.Editor.FILES.c, "editor_auto_template_default.json");
+      List localList2;
+      List localList3;
+      if (!localFile.exists())
+      {
+        List localList1;
+        if (!((File)localObject3).exists())
+        {
+          AEQLog.a("[AEEditor2]AEditorMaterialManager", "readAndParseTextStickerConfigFile -> oldJson not exist, newJson not exist ");
+          localList1 = d();
+        }
+        else
+        {
+          try
+          {
+            localList1 = a((File)localObject3);
+            AEQLog.a("[AEEditor2]AEditorMaterialManager", "readAndParseTextStickerConfigFile -> oldJson exists, newJson not exist, use oldJson");
+          }
+          catch (Exception localException1)
+          {
+            FileUtils.deleteFile(((File)localObject3).getPath());
+            AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCircleCatMatTreeMqCircleEditor", 4);
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("readAndParseTextStickerConfigFile -> oldJson exists, newJson not exist, exception:");
+            ((StringBuilder)localObject3).append(localException1.toString());
+            AEQLog.d("[AEEditor2]AEditorMaterialManager", ((StringBuilder)localObject3).toString());
+            localList2 = d();
+          }
+        }
+      }
+      else
+      {
+        try
+        {
+          localList2 = a(localFile);
+          FileUtils.moveFile(localFile.getPath(), ((File)localObject3).getPath());
+          AEQLog.a("[AEEditor2]AEditorMaterialManager", "readAndParseTextStickerConfigFile -> oldJson not exist, use newJson ");
+        }
+        catch (Exception localException2)
+        {
+          FileUtils.deleteFile(localFile.getPath());
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("readAndParseTextStickerConfigFile -> oldJson not exists: exception:");
+          ((StringBuilder)localObject3).append(localException2.toString());
+          AEQLog.d("[AEEditor2]AEditorMaterialManager", ((StringBuilder)localObject3).toString());
+          AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCircleCatMatTreeMqCircleEditor", 4);
+          localList3 = d();
+        }
+      }
+      if (this.a == null) {
+        this.a = new ArrayList();
+      }
+      if (this.a.isEmpty())
+      {
+        int i = 0;
+        while (i < 5)
+        {
+          this.a.add(new MetaMaterial());
+          i += 1;
+        }
+      }
+      localObject3 = new MetaCategory();
+      ((MetaCategory)localObject3).name = "推荐";
+      ((MetaCategory)localObject3).id = "recommend";
+      localList3.add(0, localObject3);
+      return localList3;
+    }
+    for (;;)
+    {
+      throw localObject1;
+    }
+  }
+  
+  public void c()
+  {
+    WeakReference localWeakReference = this.e;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((AEditorMaterialManager.RecommendListener)this.e.get()).b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.manage.AEditorMaterialManager
  * JD-Core Version:    0.7.0.1
  */

@@ -17,14 +17,14 @@ class GdtDownloaderAdapterV2$1
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((AdDownloaderV2.Listener)localWeakReference.get()).onStatusChanged(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        ((AdDownloaderV2.Listener)localWeakReference.get()).onStatusChanged(this.a, this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtDownloaderAdapterV2.1
  * JD-Core Version:    0.7.0.1
  */

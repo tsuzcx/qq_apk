@@ -11,34 +11,34 @@ class QfileCloudFileTabView$1
   
   public void a()
   {
-    this.a.a.a().a();
+    this.a.C.A().a();
   }
   
   public void b()
   {
-    this.a.a.a().h();
+    this.a.C.A().h();
   }
   
   public void c() {}
   
   public void d()
   {
-    this.a.a.a().i();
+    this.a.C.A().i();
   }
   
   public void e()
   {
-    this.a.a.a().j();
+    this.a.C.A().j();
   }
   
   public void f()
   {
-    this.a.a.a().C();
+    this.a.C.A().C();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView.1
  * JD-Core Version:    0.7.0.1
  */

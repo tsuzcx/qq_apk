@@ -10,30 +10,30 @@ class AECMShowPhotoPreviewFragment$1$2
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowDataWrapper != null))
+    if ((this.a == 1) && (this.b != null))
     {
-      if (!AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowPhotoPreviewFragment$1.a))
+      if (!AECMShowPhotoPreviewFragment.b(this.c.a))
       {
-        AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowPhotoPreviewFragment$1.a.getBaseActivity(), this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowDataWrapper);
+        AECMShowPhotoPreviewFragment.a(this.c.a.getBaseActivity(), this.b);
         return;
       }
-      AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowPhotoPreviewFragment$1.a, this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowDataWrapper);
+      AECMShowPhotoPreviewFragment.a(this.c.a, this.b);
       return;
     }
-    AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowPhotoPreviewFragment$1.a, 2);
-    AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowPhotoPreviewFragment$1.a, System.currentTimeMillis());
-    AEBaseDataReporter.a().d(1);
-    if (this.jdField_a_of_type_Int == 4)
+    AECMShowPhotoPreviewFragment.a(this.c.a, 2);
+    AECMShowPhotoPreviewFragment.a(this.c.a, System.currentTimeMillis());
+    AEBaseDataReporter.a().e(1);
+    if (this.a == 4)
     {
-      AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowPhotoPreviewFragment$1.a).a(2, this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowPhotoPreviewFragment$1.a.getString(2064515082));
+      AECMShowPhotoPreviewFragment.a(this.c.a).a(2, this.c.a.getString(2064187407));
       return;
     }
-    AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowPhotoPreviewFragment$1.a).a(2, this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowPhotoPreviewFragment$1.a.getString(2064515310));
+    AECMShowPhotoPreviewFragment.a(this.c.a).a(2, this.c.a.getString(2064187653));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowPhotoPreviewFragment.1.2
  * JD-Core Version:    0.7.0.1
  */

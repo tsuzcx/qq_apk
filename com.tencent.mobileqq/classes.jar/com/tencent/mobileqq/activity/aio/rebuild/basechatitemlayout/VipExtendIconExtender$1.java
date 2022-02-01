@@ -22,7 +22,7 @@ class VipExtendIconExtender$1
       localStringBuilder.append(str);
       QLog.d("VipExtendIconExtender", 2, localStringBuilder.toString());
     }
-    if (!StringUtil.a(str)) {
+    if (!StringUtil.isEmpty(str)) {
       VasWebviewUtil.a(VipExtendIconExtender.a(this.a), str, 256L, null, false, -1);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -30,7 +30,7 @@ class VipExtendIconExtender$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basechatitemlayout.VipExtendIconExtender.1
  * JD-Core Version:    0.7.0.1
  */

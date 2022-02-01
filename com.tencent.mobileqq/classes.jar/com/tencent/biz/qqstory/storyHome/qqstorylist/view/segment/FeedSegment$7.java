@@ -13,9 +13,9 @@ class FeedSegment$7
   
   public void a(String paramString)
   {
-    SLog.a("Q.qqstory.home:FeedSegment", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
-    StoryVideoUploadProgressManager.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
+    SLog.a("Q.qqstory.home:FeedSegment", "vid:%s, animation end", this.a);
+    this.b.getProgressView().a(4);
+    StoryVideoUploadProgressManager.a().a(this.b.getProgressView());
   }
 }
 

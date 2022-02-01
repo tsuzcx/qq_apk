@@ -20,10 +20,10 @@ final class BarrageController$startBarrageItemAnimation$1
     if (paramValueAnimator != null)
     {
       float f1 = ((Float)paramValueAnimator).floatValue();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView.setX(f1);
-      float f2 = this.jdField_a_of_type_Float;
-      float f3 = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView.getWidth();
-      BarrageController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageController, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView, (int)(f2 - (f3 + f1)));
+      this.b.setX(f1);
+      float f2 = this.c;
+      float f3 = this.b.getWidth();
+      BarrageController.a(this.a, this.b, (int)(f2 - (f3 + f1)));
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
@@ -31,7 +31,7 @@ final class BarrageController$startBarrageItemAnimation$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageController.startBarrageItemAnimation.1
  * JD-Core Version:    0.7.0.1
  */

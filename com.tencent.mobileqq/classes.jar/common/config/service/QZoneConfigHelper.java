@@ -9,16 +9,146 @@ import cooperation.qzone.util.QZLog;
 public class QZoneConfigHelper
 {
   public static int a = 180000;
-  public static String a = "qapp://detail?param=";
+  public static String b = "qapp://detail?param=";
+  
+  public static String A()
+  {
+    String str = QzoneConfig.getInstance().getConfig("H5Url", "CustomVipPreview", "https://h5.qzone.qq.com/personalVipStore/detail/{id}?_wv=2098179&qua={qua}&router=detail&id={id}&_proxy=1");
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPersonalizePreview:");
+      localStringBuilder.append(str);
+      QZLog.d("config", 2, localStringBuilder.toString());
+    }
+    return str;
+  }
+  
+  public static int B()
+  {
+    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "DetailMaxPicShowNum", 18);
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPersonalizeSettingPage:");
+      localStringBuilder.append(i);
+      QZLog.d("config", 2, localStringBuilder.toString());
+    }
+    return i;
+  }
+  
+  public static String C()
+  {
+    return QzoneConfig.getInstance().getConfig("H5Url", "DressUpGroupUrl", "https://h5.qzone.qq.com/show/record/{uin}/{type}?_wv=2&_proxy=1");
+  }
+  
+  public static boolean D()
+  {
+    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "use_new_command", 1);
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("use_new_command:");
+      localStringBuilder.append(i);
+      QZLog.d("config", 2, localStringBuilder.toString());
+    }
+    return i != 0;
+  }
+  
+  public static int E()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "max_pending_report_task_num", 1000);
+  }
+  
+  public static int F()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "max_report_task_pengding_day", 3);
+  }
+  
+  public static boolean G()
+  {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("QZoneSetting", "can_report_task_run_at_front", 0) != 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static int H()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "avatar_timeout", 1500);
+  }
+  
+  public static int I()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "FeedsShowPhotoBubble", 0);
+  }
+  
+  public static int J()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "FeedsShowMoodEntry", 0);
+  }
+  
+  public static boolean K()
+  {
+    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "passiveBannerSwitch", 1);
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getIsBubbleStyle:");
+      localStringBuilder.append(i);
+      QZLog.d("config", 2, localStringBuilder.toString());
+    }
+    return i == 1;
+  }
+  
+  public static String L()
+  {
+    String str = QzoneConfig.getInstance().getConfig("QZoneSetting", "passiveText", "消息");
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPassiveTabName:");
+      localStringBuilder.append(str);
+      QZLog.d("config", 2, localStringBuilder.toString());
+    }
+    return str;
+  }
+  
+  public static boolean M()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "enableExtendFeeds", 1) == 1;
+  }
+  
+  public static boolean N()
+  {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localQzoneConfig.getConfig("K_QZKuolieEnterance", "SK_QZKuoliePartyEnteranceConfig", 0) == 1)
+    {
+      bool1 = bool2;
+      if (Build.VERSION.SDK_INT > 20) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean O()
+  {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfigSync("QZoneSetting", "timecapsule_default_expand", 0) == 1) {
+      bool = true;
+    }
+    return bool;
+  }
   
   public static int a()
   {
     return QzoneConfig.getInstance().getConfig("WNSSettting", "AccReportSamples", 10);
-  }
-  
-  public static String a()
-  {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "GdtCgiReportHost", "ttc.gdt.qq.com#c.gdt.qq.com#xc.gdt.qq.com");
   }
   
   public static void a(QZoneConfigHelper.LoadIntConfigCallback paramLoadIntConfigCallback)
@@ -26,24 +156,6 @@ public class QZoneConfigHelper
     if (paramLoadIntConfigCallback != null) {
       QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QZoneConfigHelper.1(paramLoadIntConfigCallback));
     }
-  }
-  
-  public static boolean a()
-  {
-    Object localObject = QzoneConfig.getInstance();
-    boolean bool = false;
-    int i = ((QzoneConfig)localObject).getConfig("QZoneSetting", "ShowFeedOpLayer", 0);
-    if (QZLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("ShowFeedOpLayer :");
-      ((StringBuilder)localObject).append(Integer.toString(i));
-      QZLog.d("config", 2, ((StringBuilder)localObject).toString());
-    }
-    if (i == 1) {
-      bool = true;
-    }
-    return bool;
   }
   
   public static boolean a(String paramString)
@@ -65,32 +177,9 @@ public class QZoneConfigHelper
     return false;
   }
   
-  public static String[] a()
-  {
-    return QzoneConfig.getInstance().getConfig("QzoneCover", "UploadQuality", "70,70,70").split(",");
-  }
-  
   public static int b()
   {
     return QzoneConfig.getInstance().getConfig("WNSSettting", "ActivitySwitchAccReportSamples", 10);
-  }
-  
-  public static String b()
-  {
-    return QzoneConfig.getInstance().getConfig("WNSSettting", "YingyongbaoSwitchPrefix", a);
-  }
-  
-  public static boolean b()
-  {
-    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "use_new_command", 1);
-    if (QZLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("use_new_command:");
-      localStringBuilder.append(i);
-      QZLog.d("config", 2, localStringBuilder.toString());
-    }
-    return i != 0;
   }
   
   public static boolean b(String paramString)
@@ -115,37 +204,9 @@ public class QZoneConfigHelper
     return false;
   }
   
-  public static String[] b()
-  {
-    return QzoneConfig.getInstance().getConfig("QzoneCover", "UploadResolution", "640*640,640*640,640*640").replace("*", ",").split(",");
-  }
-  
   public static int c()
   {
     return QzoneConfig.getInstance().getConfig("WNSSettting", "AccReportCount", 50);
-  }
-  
-  public static String c()
-  {
-    String str = QzoneConfig.getInstance().getConfig("HomepageBar", "bar_schema", "https://h5.qzone.qq.com/giftv2/vuemall?_wv=131075&_fv=0&_wwv=128&uin={UIN}&_proxy=1");
-    if (QZLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getUserhomeBarSchema:");
-      localStringBuilder.append(str);
-      QZLog.d("config", 2, localStringBuilder.toString());
-    }
-    return str;
-  }
-  
-  public static boolean c()
-  {
-    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
-    boolean bool = false;
-    if (localQzoneConfig.getConfig("QZoneSetting", "can_report_task_run_at_front", 0) != 0) {
-      bool = true;
-    }
-    return bool;
   }
   
   public static boolean c(String paramString)
@@ -170,122 +231,37 @@ public class QZoneConfigHelper
     return false;
   }
   
-  public static int d()
-  {
-    return QzoneConfig.getInstance().getConfig("WNSSettting", "AccReportInterval", 600) * 1000;
-  }
-  
   public static String d()
   {
-    String str = QzoneConfig.getInstance().getConfig("H5Url", "FeedLoveDiamond", "https://h5.qzone.qq.com/lover/vipDialog?_wv=16777219&_proxy=1&qzUseTransparentNavBar=1&friendUin={friendUin}");
-    if (QZLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getFeedLoverIconUrl:");
-      localStringBuilder.append(str);
-      QZLog.d("config", 2, localStringBuilder.toString());
-    }
-    return str;
-  }
-  
-  public static boolean d()
-  {
-    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "passiveBannerSwitch", 1);
-    if (QZLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getIsBubbleStyle:");
-      localStringBuilder.append(i);
-      QZLog.d("config", 2, localStringBuilder.toString());
-    }
-    return i == 1;
-  }
-  
-  public static int e()
-  {
-    return QzoneConfig.getInstance().getConfig("PhotoView", "DelayShowLoading", 200);
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "GdtCgiReportHost", "ttc.gdt.qq.com#c.gdt.qq.com#xc.gdt.qq.com");
   }
   
   public static String e()
   {
-    String str = QzoneConfig.getInstance().getConfig("H5Url", "PersonalizeMainPage", "https://h5.qzone.qq.com/show/home?_wv=131072&_fv=0&_wwv=128&_proxy=1&reddot={reddot}");
-    if (QZLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getPersonalizeSettingPage:");
-      localStringBuilder.append(str);
-      QZLog.d("config", 2, localStringBuilder.toString());
-    }
-    return str;
-  }
-  
-  public static boolean e()
-  {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "enableExtendFeeds", 1) == 1;
+    return QzoneConfig.getInstance().getConfig("WNSSettting", "YingyongbaoSwitchPrefix", b);
   }
   
   public static int f()
   {
-    return QzoneConfig.getInstance().getConfig("PhotoView", "RestrictBeginTime", 1170) * 60000;
-  }
-  
-  public static String f()
-  {
-    String str = QzoneConfig.getInstance().getConfig("H5Url", "CustomVipMall", "https://h5.qzone.qq.com/personalVipStore/index?_wv=2098179&refresh=1&qua={qua}&_proxy=1");
-    if (QZLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getPersonalizeVipHomePage:");
-      localStringBuilder.append(str);
-      QZLog.d("config", 2, localStringBuilder.toString());
-    }
-    return str;
-  }
-  
-  public static boolean f()
-  {
-    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (localQzoneConfig.getConfig("K_QZKuolieEnterance", "SK_QZKuoliePartyEnteranceConfig", 0) == 1)
-    {
-      bool1 = bool2;
-      if (Build.VERSION.SDK_INT > 20) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return QzoneConfig.getInstance().getConfig("WNSSettting", "AccReportInterval", 600) * 1000;
   }
   
   public static int g()
   {
-    return QzoneConfig.getInstance().getConfig("PhotoView", "RestrictEndTime", 1440) * 60000;
-  }
-  
-  public static String g()
-  {
-    String str = QzoneConfig.getInstance().getConfig("H5Url", "CustomVipPreview", "https://h5.qzone.qq.com/personalVipStore/detail/{id}?_wv=2098179&qua={qua}&router=detail&id={id}&_proxy=1");
-    if (QZLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getPersonalizePreview:");
-      localStringBuilder.append(str);
-      QZLog.d("config", 2, localStringBuilder.toString());
-    }
-    return str;
-  }
-  
-  public static boolean g()
-  {
-    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
-    boolean bool = false;
-    if (localQzoneConfig.getConfigSync("QZoneSetting", "timecapsule_default_expand", 0) == 1) {
-      bool = true;
-    }
-    return bool;
+    return QzoneConfig.getInstance().getConfig("PhotoView", "DelayShowLoading", 200);
   }
   
   public static int h()
+  {
+    return QzoneConfig.getInstance().getConfig("PhotoView", "RestrictBeginTime", 1170) * 60000;
+  }
+  
+  public static int i()
+  {
+    return QzoneConfig.getInstance().getConfig("PhotoView", "RestrictEndTime", 1440) * 60000;
+  }
+  
+  public static int j()
   {
     try
     {
@@ -296,12 +272,7 @@ public class QZoneConfigHelper
     return 30;
   }
   
-  public static String h()
-  {
-    return QzoneConfig.getInstance().getConfig("H5Url", "DressUpGroupUrl", "https://h5.qzone.qq.com/show/record/{uin}/{type}?_wv=2&_proxy=1");
-  }
-  
-  public static int i()
+  public static int k()
   {
     try
     {
@@ -316,20 +287,7 @@ public class QZoneConfigHelper
     return 10000;
   }
   
-  public static String i()
-  {
-    String str = QzoneConfig.getInstance().getConfig("QZoneSetting", "passiveText", "消息");
-    if (QZLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getPassiveTabName:");
-      localStringBuilder.append(str);
-      QZLog.d("config", 2, localStringBuilder.toString());
-    }
-    return str;
-  }
-  
-  public static int j()
+  public static int l()
   {
     try
     {
@@ -340,7 +298,7 @@ public class QZoneConfigHelper
     return 5;
   }
   
-  public static int k()
+  public static int m()
   {
     try
     {
@@ -351,7 +309,7 @@ public class QZoneConfigHelper
     return 10;
   }
   
-  public static int l()
+  public static int n()
   {
     try
     {
@@ -362,12 +320,53 @@ public class QZoneConfigHelper
     return 10;
   }
   
-  public static int m()
+  public static int o()
   {
     return QzoneConfig.getInstance().getConfig("PhotoView", "RestrictFlag", 0);
   }
   
-  public static int n()
+  public static String[] p()
+  {
+    return QzoneConfig.getInstance().getConfig("QzoneCover", "UploadQuality", "70,70,70").split(",");
+  }
+  
+  public static String[] q()
+  {
+    return QzoneConfig.getInstance().getConfig("QzoneCover", "UploadResolution", "640*640,640*640,640*640").replace("*", ",").split(",");
+  }
+  
+  public static boolean r()
+  {
+    Object localObject = QzoneConfig.getInstance();
+    boolean bool = false;
+    int i = ((QzoneConfig)localObject).getConfig("QZoneSetting", "ShowFeedOpLayer", 0);
+    if (QZLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ShowFeedOpLayer :");
+      ((StringBuilder)localObject).append(Integer.toString(i));
+      QZLog.d("config", 2, ((StringBuilder)localObject).toString());
+    }
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static String s()
+  {
+    String str = QzoneConfig.getInstance().getConfig("HomepageBar", "bar_schema", "https://h5.qzone.qq.com/giftv2/vuemall?_wv=131075&_fv=0&_wwv=128&uin={UIN}&_proxy=1");
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getUserhomeBarSchema:");
+      localStringBuilder.append(str);
+      QZLog.d("config", 2, localStringBuilder.toString());
+    }
+    return str;
+  }
+  
+  public static int t()
   {
     int i = QzoneConfig.getInstance().getConfig("HomepageBar", "bar_music_visiable", 0);
     if (QZLog.isColorLevel())
@@ -380,62 +379,63 @@ public class QZoneConfigHelper
     return i;
   }
   
-  public static int o()
+  public static String u()
   {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "maxUgcTextCount", 2000);
-  }
-  
-  public static int p()
-  {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "maxCommentBubbleTextCount", 40);
-  }
-  
-  public static int q()
-  {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "maxUgcTextVisibleLineCount", 7);
-  }
-  
-  public static int r()
-  {
-    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "DetailMaxPicShowNum", 18);
+    String str = QzoneConfig.getInstance().getConfig("H5Url", "FeedLoveDiamond", "https://h5.vip.qq.com/p/pay/union?openType=webview&disableTitle=1&_wv=16781315&_wwv=13&sandbox=0&debug=0&type=!love&businessType=union&entranceId={entranceId}&disableAskFriend=0");
     if (QZLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getPersonalizeSettingPage:");
-      localStringBuilder.append(i);
+      localStringBuilder.append("getFeedLoverIconUrl:");
+      localStringBuilder.append(str);
       QZLog.d("config", 2, localStringBuilder.toString());
     }
-    return i;
-  }
-  
-  public static int s()
-  {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "max_pending_report_task_num", 1000);
-  }
-  
-  public static int t()
-  {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "max_report_task_pengding_day", 3);
-  }
-  
-  public static int u()
-  {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "avatar_timeout", 1500);
+    return str;
   }
   
   public static int v()
   {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "FeedsShowPhotoBubble", 0);
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "maxUgcTextCount", 2000);
   }
   
   public static int w()
   {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "FeedsShowMoodEntry", 0);
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "maxCommentBubbleTextCount", 40);
+  }
+  
+  public static int x()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "maxUgcTextVisibleLineCount", 7);
+  }
+  
+  public static String y()
+  {
+    String str = QzoneConfig.getInstance().getConfig("H5Url", "PersonalizeMainPage", "https://h5.qzone.qq.com/show/home?_wv=131072&_fv=0&_wwv=128&_proxy=1&reddot={reddot}");
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPersonalizeSettingPage:");
+      localStringBuilder.append(str);
+      QZLog.d("config", 2, localStringBuilder.toString());
+    }
+    return str;
+  }
+  
+  public static String z()
+  {
+    String str = QzoneConfig.getInstance().getConfig("H5Url", "CustomVipMall", "https://h5.qzone.qq.com/personalVipStore/index?_wv=2098179&refresh=1&qua={qua}&_proxy=1");
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPersonalizeVipHomePage:");
+      localStringBuilder.append(str);
+      QZLog.d("config", 2, localStringBuilder.toString());
+    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     common.config.service.QZoneConfigHelper
  * JD-Core Version:    0.7.0.1
  */

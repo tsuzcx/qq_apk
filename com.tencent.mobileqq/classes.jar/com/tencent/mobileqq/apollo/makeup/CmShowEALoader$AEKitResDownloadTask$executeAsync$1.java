@@ -17,17 +17,17 @@ final class CmShowEALoader$AEKitResDownloadTask$executeAsync$1
     Intrinsics.checkExpressionValueIsNotNull(paramEIPCResult, "eipcResult");
     if (paramEIPCResult.isSuccess())
     {
-      QLog.d(CmShowEALoader.a.a(), 1, "[CmShowAELoader][AEKitResDownloadTask] succeed 下载3d/基础资源包完成");
-      this.a.e();
+      QLog.d(CmShowEALoader.f.a(), 1, "[CmShowAELoader][AEKitResDownloadTask] succeed 下载3d/基础资源包完成");
+      this.a.j();
       return;
     }
-    QLog.e(CmShowEALoader.a.a(), 1, "[AEKit]AECMShowQipcModule initStepDownloadAEKitResource error");
+    QLog.e(CmShowEALoader.f.a(), 1, "[AEKit]AECMShowQipcModule initStepDownloadAEKitResource error");
     this.a.a(-5032, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowEALoader.AEKitResDownloadTask.executeAsync.1
  * JD-Core Version:    0.7.0.1
  */

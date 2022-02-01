@@ -9,16 +9,15 @@ import java.util.List;
 public class LevelEggsPosition
 {
   public int a;
-  public List<Point> a;
   public int b;
+  public List<Point> c = new ArrayList();
   
   public LevelEggsPosition(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     a(paramString);
   }
   
-  private Point a(String paramString)
+  private Point b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -42,17 +41,17 @@ public class LevelEggsPosition
     int i = 1;
     if (j > 1)
     {
-      Point localPoint = a(paramString[0]);
+      Point localPoint = b(paramString[0]);
       if (localPoint == null) {
         return;
       }
-      this.jdField_a_of_type_Int = localPoint.x;
+      this.a = localPoint.x;
       this.b = localPoint.y;
       while (i < paramString.length)
       {
-        localPoint = a(paramString[i]);
+        localPoint = b(paramString[i]);
         if (localPoint != null) {
-          this.jdField_a_of_type_JavaUtilList.add(localPoint);
+          this.c.add(localPoint);
         }
         i += 1;
       }
@@ -62,7 +61,7 @@ public class LevelEggsPosition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.LevelEggsPosition
  * JD-Core Version:    0.7.0.1
  */

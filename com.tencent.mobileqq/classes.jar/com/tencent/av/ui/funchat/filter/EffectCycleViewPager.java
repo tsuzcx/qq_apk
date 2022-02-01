@@ -13,9 +13,9 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 public class EffectCycleViewPager
   extends ViewPager
 {
-  SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private EffectCycleViewPager.InnerOnPageChangeListener jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager$InnerOnPageChangeListener;
   protected EffectCycleViewPager.InnerPagerAdapter a;
+  SparseArray<View> b = new SparseArray();
+  private EffectCycleViewPager.InnerOnPageChangeListener c;
   
   public EffectCycleViewPager(Context paramContext)
   {
@@ -27,23 +27,23 @@ public class EffectCycleViewPager
     super(paramContext, paramAttributeSet);
   }
   
-  View a()
+  View getCurrentView()
   {
     int i = getCurrentItem();
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    return (View)this.b.get(i);
   }
   
   public void setAdapter(PagerAdapter paramPagerAdapter)
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager$InnerPagerAdapter = new EffectCycleViewPager.InnerPagerAdapter(this, paramPagerAdapter);
-    super.setAdapter(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager$InnerPagerAdapter);
+    this.a = new EffectCycleViewPager.InnerPagerAdapter(this, paramPagerAdapter);
+    super.setAdapter(this.a);
     setCurrentItem(1);
   }
   
   public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager$InnerOnPageChangeListener = new EffectCycleViewPager.InnerOnPageChangeListener(this, paramOnPageChangeListener, getCurrentItem());
-    super.setOnPageChangeListener(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager$InnerOnPageChangeListener);
+    this.c = new EffectCycleViewPager.InnerOnPageChangeListener(this, paramOnPageChangeListener, getCurrentItem());
+    super.setOnPageChangeListener(this.c);
   }
 }
 

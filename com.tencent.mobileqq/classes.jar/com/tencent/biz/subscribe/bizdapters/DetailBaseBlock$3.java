@@ -16,7 +16,7 @@ class DetailBaseBlock$3
     {
       paramDrawable = (AnimationDrawable)paramDrawable;
       if (DetailBaseBlock.a(this.a) != null) {
-        DetailBaseBlock.f(this.a).runOnUiThread(new DetailBaseBlock.3.1(this, paramDrawable));
+        DetailBaseBlock.i(this.a).runOnUiThread(new DetailBaseBlock.3.1(this, paramDrawable));
       }
       return;
     }

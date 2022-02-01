@@ -15,7 +15,7 @@ class TroopHWVoiceController$1
     String str = TroopHomeworkHelper.a(TroopHWVoiceController.a(this.this$0));
     if (!TextUtils.isEmpty(str))
     {
-      Message localMessage = TroopHWVoiceController.a(this.this$0).obtainMessage();
+      Message localMessage = TroopHWVoiceController.b(this.this$0).obtainMessage();
       localMessage.what = 0;
       localMessage.obj = str;
       localMessage.sendToTarget();
@@ -24,7 +24,7 @@ class TroopHWVoiceController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWVoiceController.1
  * JD-Core Version:    0.7.0.1
  */

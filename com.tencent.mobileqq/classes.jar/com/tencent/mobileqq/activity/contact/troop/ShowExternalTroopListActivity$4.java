@@ -15,11 +15,11 @@ class ShowExternalTroopListActivity$4
   
   public void onClick(View paramView)
   {
-    ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_JavaLangString, 0);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.app;
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_JavaLangString;
+    ProfileCardUtil.a(this.b.k, this.a, this.b.n, 0);
+    QQAppInterface localQQAppInterface = this.b.app;
+    String str2 = this.b.n;
     String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_Boolean) {
+    if (this.b.l) {
       str1 = "0";
     } else {
       str1 = "1";
@@ -30,7 +30,7 @@ class ShowExternalTroopListActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.4
  * JD-Core Version:    0.7.0.1
  */

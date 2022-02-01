@@ -21,20 +21,20 @@ class PgcShortContentProteusItem$8
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView.setMute(bool);
-    paramIntent = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanViewBean;
+    this.a.setMute(bool);
+    paramIntent = this.b;
     if (bool) {
       paramContext = "video_audio_mute";
     } else {
       paramContext = "video_audio_speak";
     }
     paramIntent.putMapValue("pgc_video_content_audio_icon", paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.bindDynamicValue(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanViewBean);
+    this.c.bindDynamicValue(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem.8
  * JD-Core Version:    0.7.0.1
  */

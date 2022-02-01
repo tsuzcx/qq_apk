@@ -19,7 +19,7 @@ public class UpdatePluginVersion
     Object localObject2 = BaseApplicationImpl.sApplication.getApplicationContext();
     SharedPreferences localSharedPreferences = ((Context)localObject2).getSharedPreferences("update_plugin_version", 0);
     Object localObject1 = localSharedPreferences.getString("cur_version", "");
-    String str = AppSetting.g();
+    String str = AppSetting.i();
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append((String)localObject1);
     ((StringBuilder)localObject3).append(", ");
@@ -89,7 +89,7 @@ public class UpdatePluginVersion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.UpdatePluginVersion
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,14 @@ class RIJUgcUtils$RIJUGCAccountStatusCheckCallback$1
     if (i == 2) {
       RIJUgcUtils.a((Activity)RIJUgcUtils.RIJUGCAccountStatusCheckCallback.a(this.this$0).get());
     } else if (i == 1) {
-      RIJUgcUtils.b((Activity)RIJUgcUtils.RIJUGCAccountStatusCheckCallback.a(this.this$0).get(), RIJUgcUtils.RIJUGCAccountStatusCheckCallback.a(this.this$0));
+      RIJUgcUtils.b((Activity)RIJUgcUtils.RIJUGCAccountStatusCheckCallback.a(this.this$0).get(), RIJUgcUtils.RIJUGCAccountStatusCheckCallback.b(this.this$0));
     }
-    ReadInJoyHelper.i();
+    ReadInJoyHelper.W();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.RIJUgcUtils.RIJUGCAccountStatusCheckCallback.1
  * JD-Core Version:    0.7.0.1
  */

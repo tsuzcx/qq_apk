@@ -25,17 +25,19 @@ public class WXMediaMessage$Builder
       }
       try
       {
-        localWXMediaMessage.mediaObject = ((WXMediaMessage.IMediaObject)Class.forName(str).newInstance());
-        localWXMediaMessage.mediaObject.unserialize(paramBundle);
+        localObject = (WXMediaMessage.IMediaObject)Class.forName(str).newInstance();
+        localWXMediaMessage.mediaObject = ((WXMediaMessage.IMediaObject)localObject);
+        ((WXMediaMessage.IMediaObject)localObject).unserialize(paramBundle);
         return localWXMediaMessage;
       }
       catch (Exception paramBundle)
       {
-        StringBuilder localStringBuilder = new StringBuilder("get media object from bundle failed: unknown ident ");
-        localStringBuilder.append(str);
-        localStringBuilder.append(", ex = ");
-        localStringBuilder.append(paramBundle.getMessage());
-        Log.e("MicroMsg.SDK.WXMediaMessage", localStringBuilder.toString());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("get media object from bundle failed: unknown ident ");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(", ex = ");
+        ((StringBuilder)localObject).append(paramBundle.getMessage());
+        Log.e("MicroMsg.SDK.WXMediaMessage", ((StringBuilder)localObject).toString());
       }
     }
     return localWXMediaMessage;
@@ -52,7 +54,8 @@ public class WXMediaMessage$Builder
   
   private static String pathOldToNew(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder("pathOldToNew, oldPath = ");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pathOldToNew, oldPath = ");
     localStringBuilder.append(paramString);
     Log.i("MicroMsg.SDK.WXMediaMessage", localStringBuilder.toString());
     if ((paramString != null) && (paramString.length() != 0))
@@ -60,12 +63,14 @@ public class WXMediaMessage$Builder
       int i = paramString.lastIndexOf('.');
       if (i == -1)
       {
-        localStringBuilder = new StringBuilder("pathOldToNew fail, invalid pos, oldPath = ");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("pathOldToNew fail, invalid pos, oldPath = ");
         localStringBuilder.append(paramString);
         Log.e("MicroMsg.SDK.WXMediaMessage", localStringBuilder.toString());
         return paramString;
       }
-      localStringBuilder = new StringBuilder("com.tencent.mm.opensdk.modelmsg");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("com.tencent.mm.opensdk.modelmsg");
       localStringBuilder.append(paramString.substring(i));
       return localStringBuilder.toString();
     }
@@ -80,9 +85,10 @@ public class WXMediaMessage$Builder
     localBundle.putString("_wxobject_title", paramWXMediaMessage.title);
     localBundle.putString("_wxobject_description", paramWXMediaMessage.description);
     localBundle.putByteArray("_wxobject_thumbdata", paramWXMediaMessage.thumbData);
-    if (paramWXMediaMessage.mediaObject != null)
+    WXMediaMessage.IMediaObject localIMediaObject = paramWXMediaMessage.mediaObject;
+    if (localIMediaObject != null)
     {
-      localBundle.putString("_wxobject_identifier_", pathNewToOld(paramWXMediaMessage.mediaObject.getClass().getName()));
+      localBundle.putString("_wxobject_identifier_", pathNewToOld(localIMediaObject.getClass().getName()));
       paramWXMediaMessage.mediaObject.serialize(localBundle);
     }
     localBundle.putString("_wxobject_mediatagname", paramWXMediaMessage.mediaTagName);
@@ -93,7 +99,7 @@ public class WXMediaMessage$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXMediaMessage.Builder
  * JD-Core Version:    0.7.0.1
  */

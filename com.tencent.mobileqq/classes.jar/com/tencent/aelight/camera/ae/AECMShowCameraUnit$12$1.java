@@ -13,23 +13,23 @@ class AECMShowCameraUnit$12$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData;
-    if ((localObject != null) && (((CmShowAssetsData)localObject).a != null))
+    Object localObject = this.a;
+    if ((localObject != null) && (((CmShowAssetsData)localObject).b != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAeAECMShowCameraUnit$12.this$0.jdField_a_of_type_JavaLangString;
+      localObject = this.b.this$0.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[onComplete] kapuModel = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData.a.toString());
+      localStringBuilder.append(this.a.b.toString());
       AEQLog.a((String)localObject, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeAECMShowCameraUnit$12.this$0.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.cmShowSetKapuModel(this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData.a, this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData.b, new AECMShowCameraUnit.12.1.1(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeAECMShowCameraUnit$12.this$0.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.cmShowSetKapuDisplayType(CameraController.DisplayType.HEAD);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAECMShowCameraUnit$12.this$0.a("triggerState2", "1");
+    this.b.this$0.I.cmShowSetKapuModel(this.a.b, this.a.c, new AECMShowCameraUnit.12.1.1(this));
+    this.b.this$0.I.cmShowSetKapuDisplayType(CameraController.DisplayType.HEAD);
+    this.b.this$0.a("triggerState2", "1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AECMShowCameraUnit.12.1
  * JD-Core Version:    0.7.0.1
  */

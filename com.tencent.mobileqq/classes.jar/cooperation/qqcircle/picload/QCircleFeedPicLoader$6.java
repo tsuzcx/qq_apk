@@ -15,13 +15,13 @@ class QCircleFeedPicLoader$6
   {
     Iterator localIterator = QCircleFeedPicLoader.access$100(this.this$0).keySet().iterator();
     String str;
-    PicDownLoadTask localPicDownLoadTask;
+    RFWPicDownLoadTask localRFWPicDownLoadTask;
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      localPicDownLoadTask = (PicDownLoadTask)QCircleFeedPicLoader.access$100(this.this$0).get(str);
-      if (localPicDownLoadTask != null) {
-        localPicDownLoadTask.cancel();
+      localRFWPicDownLoadTask = (RFWPicDownLoadTask)QCircleFeedPicLoader.access$100(this.this$0).get(str);
+      if (localRFWPicDownLoadTask != null) {
+        localRFWPicDownLoadTask.cancel();
       }
       QCircleFeedPicLoader.access$100(this.this$0).remove(str);
     }
@@ -30,9 +30,9 @@ class QCircleFeedPicLoader$6
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      localPicDownLoadTask = (PicDownLoadTask)QCircleFeedPicLoader.access$300(this.this$0).get(str);
-      if (localPicDownLoadTask != null) {
-        localPicDownLoadTask.cancel();
+      localRFWPicDownLoadTask = (RFWPicDownLoadTask)QCircleFeedPicLoader.access$300(this.this$0).get(str);
+      if (localRFWPicDownLoadTask != null) {
+        localRFWPicDownLoadTask.cancel();
       }
       QCircleFeedPicLoader.access$300(this.this$0).remove(str);
     }
@@ -42,7 +42,7 @@ class QCircleFeedPicLoader$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.picload.QCircleFeedPicLoader.6
  * JD-Core Version:    0.7.0.1
  */

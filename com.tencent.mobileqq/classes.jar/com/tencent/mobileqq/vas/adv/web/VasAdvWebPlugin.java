@@ -42,7 +42,7 @@ public final class VasAdvWebPlugin
   {
     Object localObject = this.mRuntime;
     Intrinsics.checkExpressionValueIsNotNull(localObject, "mRuntime");
-    localObject = ((WebViewPlugin.PluginRuntime)localObject).a();
+    localObject = ((WebViewPlugin.PluginRuntime)localObject).d();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "mRuntime.activity");
     return localObject;
   }
@@ -50,20 +50,6 @@ public final class VasAdvWebPlugin
   private final VasRewardAdCallback a(String paramString)
   {
     return (VasRewardAdCallback)new VasAdvWebPlugin.getVasRewardAdCallback.1(this, paramString);
-  }
-  
-  private final JSONObject a(String paramString)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    if (!TextUtils.isEmpty((CharSequence)paramString))
-    {
-      localJSONObject.put("returnCode", 0);
-      localJSONObject.put("data", new JSONObject().put("preloadAd", paramString));
-      return localJSONObject;
-    }
-    localJSONObject.put("returnCode", -1);
-    localJSONObject.put("errorMsg", "preload ad is null");
-    return localJSONObject;
   }
   
   private final void a(String paramString1, String paramString2)
@@ -106,6 +92,20 @@ public final class VasAdvWebPlugin
       a(paramString, paramJSONObject);
       QLog.e("VasAdvWebPlugin", 1, "handleGetTraceInfo failed", localThrowable);
     }
+  }
+  
+  private final JSONObject b(String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (!TextUtils.isEmpty((CharSequence)paramString))
+    {
+      localJSONObject.put("returnCode", 0);
+      localJSONObject.put("data", new JSONObject().put("preloadAd", paramString));
+      return localJSONObject;
+    }
+    localJSONObject.put("returnCode", -1);
+    localJSONObject.put("errorMsg", "preload ad is null");
+    return localJSONObject;
   }
   
   private final void b(JSONObject paramJSONObject, String paramString)
@@ -228,7 +228,7 @@ public final class VasAdvWebPlugin
         i = 1;
       }
       if (i != 0) {
-        paramJSONObject = VasAdvSupport.a.a().a();
+        paramJSONObject = VasAdvSupport.a.a().f();
       }
       localBuilder.setGdtBizId((String)paramJSONObject);
       paramJSONObject = localBuilder.build();
@@ -261,7 +261,7 @@ public final class VasAdvWebPlugin
         {
           i = 1;
           if (i != 0) {
-            paramJSONObject = VasAdvSupport.a.a().a();
+            paramJSONObject = VasAdvSupport.a.a().f();
           }
           paramJSONObject = (String)paramJSONObject;
           VasAdvSupport.a.a().a(paramJSONObject);
@@ -289,7 +289,7 @@ public final class VasAdvWebPlugin
       paramJSONObject = paramJSONObject.getString("businessId");
       VasPreloadService.Companion localCompanion = VasPreloadService.a;
       Intrinsics.checkExpressionValueIsNotNull(paramJSONObject, "businessId");
-      callJs(paramString, new String[] { a(localCompanion.a(paramJSONObject)).toString(0) });
+      callJs(paramString, new String[] { b(localCompanion.c(paramJSONObject)).toString(0) });
       return;
     }
     catch (Throwable localThrowable)
@@ -390,7 +390,7 @@ public final class VasAdvWebPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.web.VasAdvWebPlugin
  * JD-Core Version:    0.7.0.1
  */

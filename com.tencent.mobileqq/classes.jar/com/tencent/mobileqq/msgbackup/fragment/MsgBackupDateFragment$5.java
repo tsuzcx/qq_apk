@@ -11,13 +11,13 @@ class MsgBackupDateFragment$5
   
   public void onConfirmBtClicked()
   {
-    if ((MsgBackupDateFragment.a(this.a) != null) && (MsgBackupDateFragment.a(this.a).isShowing()))
+    if ((MsgBackupDateFragment.k(this.a) != null) && (MsgBackupDateFragment.k(this.a).isShowing()))
     {
-      MsgBackupDateFragment.a(this.a).dismiss();
-      MsgBackupDateFragment.b(this.a);
-      MsgBackupDateFragment.a(this.a);
+      MsgBackupDateFragment.k(this.a).dismiss();
+      MsgBackupDateFragment.l(this.a);
+      MsgBackupDateFragment.i(this.a);
       MsgBackupDateFragment localMsgBackupDateFragment = this.a;
-      MsgBackupDateFragment.b(localMsgBackupDateFragment, MsgBackupDateFragment.b(localMsgBackupDateFragment));
+      MsgBackupDateFragment.i(localMsgBackupDateFragment, MsgBackupDateFragment.h(localMsgBackupDateFragment));
     }
   }
   
@@ -28,35 +28,35 @@ class MsgBackupDateFragment$5
       if (paramInt1 != 1)
       {
         if (paramInt1 == 2) {
-          if (MsgBackupDateFragment.b(this.a) == 1) {
+          if (MsgBackupDateFragment.h(this.a) == 1) {
             MsgBackupDateFragment.f(this.a, paramInt2);
-          } else if (MsgBackupDateFragment.b(this.a) == 2) {
+          } else if (MsgBackupDateFragment.h(this.a) == 2) {
             MsgBackupDateFragment.g(this.a, paramInt2);
           }
         }
       }
-      else if (MsgBackupDateFragment.b(this.a) == 1) {
+      else if (MsgBackupDateFragment.h(this.a) == 1) {
         MsgBackupDateFragment.d(this.a, paramInt2);
-      } else if (MsgBackupDateFragment.b(this.a) == 2) {
+      } else if (MsgBackupDateFragment.h(this.a) == 2) {
         MsgBackupDateFragment.e(this.a, paramInt2);
       }
     }
-    else if (MsgBackupDateFragment.b(this.a) == 1) {
+    else if (MsgBackupDateFragment.h(this.a) == 1) {
       MsgBackupDateFragment.b(this.a, paramInt2);
-    } else if (MsgBackupDateFragment.b(this.a) == 2) {
+    } else if (MsgBackupDateFragment.h(this.a) == 2) {
       MsgBackupDateFragment.c(this.a, paramInt2);
     }
     MsgBackupDateFragment localMsgBackupDateFragment = this.a;
-    MsgBackupDateFragment.a(localMsgBackupDateFragment, MsgBackupDateFragment.b(localMsgBackupDateFragment));
-    MsgBackupDateFragment.a(this.a);
-    if ((MsgBackupDateFragment.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-      MsgBackupDateFragment.a(this.a).a(2);
+    MsgBackupDateFragment.h(localMsgBackupDateFragment, MsgBackupDateFragment.h(localMsgBackupDateFragment));
+    MsgBackupDateFragment.i(this.a);
+    if ((MsgBackupDateFragment.j(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+      MsgBackupDateFragment.j(this.a).a(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment.5
  * JD-Core Version:    0.7.0.1
  */

@@ -12,15 +12,15 @@ class AutoReplyAdapter$5
   
   public void onClick(View paramView)
   {
-    if (AutoReplyAdapter.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter) != null) {
-      AutoReplyAdapter.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter).b(this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText, this.jdField_a_of_type_Boolean);
+    if (AutoReplyAdapter.c(this.c) != null) {
+      AutoReplyAdapter.c(this.c).b(this.a, this.b);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyAdapter.5
  * JD-Core Version:    0.7.0.1
  */

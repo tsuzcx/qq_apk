@@ -7,12 +7,7 @@ import com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLay
 public abstract interface EditDoodleExport
   extends EditVideoPart.EditExport
 {
-  public abstract Bitmap a();
-  
   public abstract Bitmap a(int paramInt, boolean paramBoolean);
-  
-  @NonNull
-  public abstract DoodleLayout a();
   
   public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
   
@@ -20,15 +15,20 @@ public abstract interface EditDoodleExport
   
   public abstract boolean a(int paramInt);
   
-  public abstract void b();
+  @NonNull
+  public abstract DoodleLayout b();
   
-  public abstract boolean e_();
+  public abstract boolean c();
   
-  public abstract boolean f_();
+  public abstract void d();
+  
+  public abstract boolean h();
+  
+  public abstract Bitmap i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditDoodleExport
  * JD-Core Version:    0.7.0.1
  */

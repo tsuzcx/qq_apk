@@ -17,62 +17,62 @@ public class ChatHistoryMenuItemView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ArrayList<ChatHistoryMenuItemView.CategoryItemColumnView> jdField_a_of_type_JavaUtilArrayList;
-  private int jdField_b_of_type_Int;
-  private ArrayList<ChatHistoryMenuItemView.SeparatorColumnView> jdField_b_of_type_JavaUtilArrayList;
-  private int jdField_c_of_type_Int;
-  private ArrayList<TextView> jdField_c_of_type_JavaUtilArrayList;
-  private int jdField_d_of_type_Int;
-  private ArrayList<ChatHistoryMenuItemView.OnCategoryClickListener> jdField_d_of_type_JavaUtilArrayList;
+  private int a;
+  private int b;
+  private int c;
+  private int d;
+  private TextView e;
+  private LinearLayout f;
+  private ArrayList<ChatHistoryMenuItemView.CategoryItemColumnView> g;
+  private ArrayList<ChatHistoryMenuItemView.SeparatorColumnView> h;
+  private ArrayList<TextView> i;
+  private ArrayList<ChatHistoryMenuItemView.OnCategoryClickListener> j;
   
   public ChatHistoryMenuItemView(Context paramContext, int paramInt, String paramString, int[] paramArrayOfInt)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = paramArrayOfInt.length;
+    this.a = paramInt;
+    this.b = paramArrayOfInt.length;
     a(paramContext, paramString, a(paramArrayOfInt));
   }
   
   private ArrayList<String> a(int[] paramArrayOfInt)
   {
     ArrayList localArrayList = new ArrayList();
-    int j = paramArrayOfInt.length;
-    int i = 0;
-    while (i < j)
+    int m = paramArrayOfInt.length;
+    int k = 0;
+    while (k < m)
     {
-      int k = paramArrayOfInt[i];
-      localArrayList.add(getResources().getString(k));
-      i += 1;
+      int n = paramArrayOfInt[k];
+      localArrayList.add(getResources().getString(n));
+      k += 1;
     }
     return localArrayList;
   }
   
   private void a()
   {
-    if (QQTheme.a())
+    if (QQTheme.isNowSimpleUI())
     {
-      this.jdField_c_of_type_Int = getResources().getColor(2131167291);
-      this.jdField_d_of_type_Int = getResources().getColor(2131167006);
+      this.c = getResources().getColor(2131168059);
+      this.d = 0;
       return;
     }
-    this.jdField_c_of_type_Int = getResources().getColor(2131165563);
-    this.jdField_d_of_type_Int = getResources().getColor(2131165605);
+    this.c = getResources().getColor(2131165905);
+    this.d = getResources().getColor(2131165997);
   }
   
   private void a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_c_of_type_Int);
+    this.e = new TextView(paramContext);
+    this.e.setText(paramString);
+    this.e.setGravity(17);
+    this.e.setTextSize(2, 14.0F);
+    this.e.setTextColor(this.c);
     paramContext = new LinearLayout.LayoutParams(-1, -2);
-    paramContext.setMargins(0, ViewUtils.a(28.0F), 0, ViewUtils.a(32.0F));
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramContext);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView);
+    paramContext.setMargins(0, ViewUtils.dip2px(28.0F), 0, ViewUtils.dip2px(32.0F));
+    this.e.setLayoutParams(paramContext);
+    addView(this.e);
   }
   
   private void a(Context paramContext, String paramString, ArrayList<String> paramArrayList)
@@ -80,53 +80,53 @@ public class ChatHistoryMenuItemView
     setOrientation(1);
     a();
     a(paramContext, paramString);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    paramString = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-    int j = 0;
+    this.f = new LinearLayout(paramContext);
+    paramString = this.f;
+    int m = 0;
     paramString.setOrientation(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(1);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    this.jdField_a_of_type_JavaUtilArrayList = ChatHistoryMenuItemView.CategoryItemColumnView.a(paramContext, this.jdField_a_of_type_Int);
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int);
-    int i = 0;
-    while (i < this.jdField_b_of_type_Int)
+    this.f.setGravity(1);
+    addView(this.f);
+    this.g = ChatHistoryMenuItemView.CategoryItemColumnView.a(paramContext, this.a);
+    this.i = new ArrayList(this.b);
+    int k = 0;
+    while (k < this.b)
     {
-      paramString = new ChatHistoryMenuItemView.CategoryItem(paramContext, (String)paramArrayList.get(i), this);
-      this.jdField_c_of_type_JavaUtilArrayList.add(paramString);
-      ((ChatHistoryMenuItemView.CategoryItemColumnView)this.jdField_a_of_type_JavaUtilArrayList.get(i % this.jdField_a_of_type_Int)).addView(paramString);
-      i += 1;
+      paramString = new ChatHistoryMenuItemView.CategoryItem(paramContext, (String)paramArrayList.get(k), this);
+      this.i.add(paramString);
+      ((ChatHistoryMenuItemView.CategoryItemColumnView)this.g.get(k % this.a)).addView(paramString);
+      k += 1;
     }
-    this.jdField_b_of_type_JavaUtilArrayList = ChatHistoryMenuItemView.SeparatorColumnView.a(paramContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_d_of_type_Int);
-    i = j;
+    this.h = ChatHistoryMenuItemView.SeparatorColumnView.a(paramContext, this.a, this.g, this.d);
+    k = m;
     for (;;)
     {
-      j = this.jdField_a_of_type_Int;
-      if (i >= j - 1) {
+      m = this.a;
+      if (k >= m - 1) {
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)this.jdField_a_of_type_JavaUtilArrayList.get(i));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)this.jdField_b_of_type_JavaUtilArrayList.get(i));
-      i += 1;
+      this.f.addView((View)this.g.get(k));
+      this.f.addView((View)this.h.get(k));
+      k += 1;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)this.jdField_a_of_type_JavaUtilArrayList.get(j - 1));
+    this.f.addView((View)this.g.get(m - 1));
   }
   
   public void a(ChatHistoryMenuItemView.OnCategoryClickListener paramOnCategoryClickListener)
   {
-    if (this.jdField_d_of_type_JavaUtilArrayList == null) {
-      this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.j == null) {
+      this.j = new ArrayList();
     }
-    this.jdField_d_of_type_JavaUtilArrayList.add(paramOnCategoryClickListener);
+    this.j.add(paramOnCategoryClickListener);
   }
   
   public void onClick(View paramView)
   {
-    Object localObject = this.jdField_d_of_type_JavaUtilArrayList;
+    Object localObject = this.j;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((ChatHistoryMenuItemView.OnCategoryClickListener)((Iterator)localObject).next()).a(this.jdField_c_of_type_JavaUtilArrayList.indexOf(paramView));
+        ((ChatHistoryMenuItemView.OnCategoryClickListener)((Iterator)localObject).next()).a(this.i.indexOf(paramView));
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -134,7 +134,7 @@ public class ChatHistoryMenuItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ChatHistoryMenuItemView
  * JD-Core Version:    0.7.0.1
  */

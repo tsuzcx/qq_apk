@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.avatarinfo.QQHeadUrl.QQHeadUrlRsp;
 import com.tencent.avatarinfo.QQHeadUrl.RspHeadInfo;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
@@ -52,7 +51,7 @@ public class QCircleHandler
       }
       if (paramString.equals(str))
       {
-        paramString = new QCircleHandler.HeadInfo(this);
+        paramString = new QCircleHandler.HeadInfo();
         QCircleHandler.HeadInfo.a(paramString, (byte)localRspHeadInfo.faceFlag.get());
         paramByte = AvatarDownloadUtil.getQQHeadImageSize(QCircleHandler.HeadInfo.a(paramString));
         paramQQHeadUrlRsp = new StringBuilder();
@@ -67,14 +66,6 @@ public class QCircleHandler
         QLog.d("QCircleHandler", 4, paramQQHeadUrlRsp.toString());
         return paramString;
       }
-    }
-    return null;
-  }
-  
-  public static QCircleHandler a()
-  {
-    if ((MobileQQ.sMobileQQ.waitAppRuntime(null) instanceof AppInterface)) {
-      return (QCircleHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(QCircleHandler.class.getName());
     }
     return null;
   }
@@ -155,6 +146,14 @@ public class QCircleHandler
     }
   }
   
+  public static QCircleHandler d()
+  {
+    if ((MobileQQ.sMobileQQ.waitAppRuntime(null) instanceof AppInterface)) {
+      return (QCircleHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(QCircleHandler.class.getName());
+    }
+    return null;
+  }
+  
   public void a()
   {
     this.a.clear();
@@ -168,17 +167,16 @@ public class QCircleHandler
   public void b()
   {
     int i = QCircleChatBoxHelper.getInstance().getUnReadChatNum();
-    int j = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("updateRedPoint:");
     localStringBuilder.append(i);
-    RFLog.d("QCircleHandler", j, localStringBuilder.toString());
+    QLog.d("QCircleHandler", 1, localStringBuilder.toString());
     notifyUI(1, true, Integer.valueOf(i));
   }
   
   public void c()
   {
-    RFLog.d("QCircleHandler", RFLog.USR, "clearRedPoint");
+    QLog.d("QCircleHandler", 1, "clearRedPoint");
     QCircleChatBoxHelper.getInstance().clearUnReadInfo();
     notifyUI(1, true, Integer.valueOf(0));
   }
@@ -207,7 +205,7 @@ public class QCircleHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.handler.QCircleHandler
  * JD-Core Version:    0.7.0.1
  */

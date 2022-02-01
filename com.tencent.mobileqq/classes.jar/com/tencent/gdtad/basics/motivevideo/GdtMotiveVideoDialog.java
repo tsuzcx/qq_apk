@@ -10,6 +10,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,43 +20,70 @@ import android.view.WindowManager.LayoutParams;
 import com.tencent.gdtad.basics.motivevideo.data.GdtMotiveVideoModel;
 import com.tencent.gdtad.basics.motivevideo.data.GdtMotiveVideoPageData;
 import com.tencent.gdtad.log.GdtLog;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import java.io.Serializable;
+import java.lang.ref.WeakReference;
 
 public class GdtMotiveVideoDialog
   extends ReportDialog
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks;
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
-  private GdtMvViewController jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController;
-  private GdtMotiveVideoModel jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel;
+  private Activity a;
   private Intent b;
+  private GdtMvViewController c;
+  private GdtMotiveVideoModel d;
+  private GdtMotiveVideoPageData e;
+  private Intent f;
+  private Application.ActivityLifecycleCallbacks g;
+  private GdtMvViewController.Listener h = new GdtMotiveVideoDialog.1(this);
+  private ResultReceiver i;
   
   public GdtMotiveVideoDialog(@NonNull Context paramContext)
   {
     super(paramContext, 16973834);
-    this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
+    this.a = ((Activity)paramContext);
+  }
+  
+  private static GdtMotiveVideoPageData a(@Nullable Serializable paramSerializable)
+  {
+    if (!(paramSerializable instanceof GdtMotiveVideoPageData)) {
+      return null;
+    }
+    return (GdtMotiveVideoPageData)paramSerializable;
   }
   
   private void a()
   {
-    this.b = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    this.jdField_a_of_type_AndroidAppActivity.setIntent(this.jdField_a_of_type_AndroidContentIntent);
-    Object localObject = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-    if (localObject == null) {
+    this.f = this.a.getIntent();
+    this.a.setIntent(this.b);
+    Bundle localBundle = this.b.getExtras();
+    if (localBundle == null) {
       return;
     }
-    localObject = ((Bundle)localObject).getSerializable("data");
-    if (!(localObject instanceof GdtMotiveVideoPageData)) {
+    GdtMotiveVideoPageData localGdtMotiveVideoPageData = a(localBundle.getSerializable("data"));
+    if (localGdtMotiveVideoPageData == null)
+    {
+      QLog.e("GdtMotiveVideoDialog", 4, "[initData] firstVideoData is null");
       return;
     }
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel = new GdtMotiveVideoModel((GdtMotiveVideoPageData)GdtMotiveVideoPageData.class.cast(localObject));
+    this.d = new GdtMotiveVideoModel(localGdtMotiveVideoPageData);
+    this.e = a(localBundle.getSerializable("second_data"));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController = new GdtMvViewController(new GdtMotiveVideoDialog.1(this), this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel, true);
+    this.c = new GdtMvViewController(new GdtMotiveVideoDialog.2(this), this.d, true);
+  }
+  
+  private void c()
+  {
+    b();
+    if (this.e != null)
+    {
+      this.c.d(true);
+      this.c.a(new WeakReference(this.h));
+    }
+    this.c.a(1);
     Object localObject1 = getWindow();
     if (Build.VERSION.SDK_INT >= 28)
     {
@@ -68,30 +96,30 @@ public class GdtMotiveVideoDialog
     localObject1 = (ViewGroup)((Window)localObject1).getDecorView();
     ((ViewGroup)localObject1).setSystemUiVisibility(7942);
     if (Build.VERSION.SDK_INT >= 19) {
-      ((ViewGroup)localObject1).setOnSystemUiVisibilityChangeListener(new GdtMotiveVideoDialog.2(this, (ViewGroup)localObject1));
+      ((ViewGroup)localObject1).setOnSystemUiVisibilityChangeListener(new GdtMotiveVideoDialog.3(this, (ViewGroup)localObject1));
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController.a(LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity), (ViewGroup)localObject1);
+    Object localObject2 = this.c.a(LayoutInflater.from(this.a), (ViewGroup)localObject1);
     setContentView((View)localObject2);
     setOnDismissListener(new GdtMotiveVideoDialog.MyDismissListener(this));
-    ((ViewGroup)localObject1).getViewTreeObserver().addOnGlobalLayoutListener(new GdtMotiveVideoDialog.3(this, (ViewGroup)localObject1, (View)localObject2));
-    this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new GdtMotiveVideoDialog.4(this);
-    this.jdField_a_of_type_AndroidAppActivity.getApplication().registerActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController.i();
+    ((ViewGroup)localObject1).getViewTreeObserver().addOnGlobalLayoutListener(new GdtMotiveVideoDialog.4(this, (ViewGroup)localObject1, (View)localObject2));
+    this.g = new GdtMotiveVideoDialog.5(this);
+    this.a.getApplication().registerActivityLifecycleCallbacks(this.g);
+    this.c.n();
   }
   
   public void a(Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.b = paramIntent;
   }
   
   public void a(ResultReceiver paramResultReceiver)
   {
-    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
+    this.i = paramResultReceiver;
   }
   
   public void onBackPressed()
   {
-    if (this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController.c()) {
+    if (this.c.f()) {
       return;
     }
     super.onBackPressed();
@@ -101,7 +129,7 @@ public class GdtMotiveVideoDialog
   {
     super.onCreate(paramBundle);
     a();
-    b();
+    c();
   }
   
   public void onDetachedFromWindow()
@@ -112,13 +140,13 @@ public class GdtMotiveVideoDialog
   protected void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController.g();
+    this.c.l();
   }
   
   protected void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController.f();
+    this.c.k();
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -136,7 +164,7 @@ public class GdtMotiveVideoDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.GdtMotiveVideoDialog
  * JD-Core Version:    0.7.0.1
  */

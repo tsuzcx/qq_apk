@@ -1,21 +1,23 @@
 package com.tencent.aelight.camera.ae.camera.core;
 
-import android.graphics.PointF;
-import com.tencent.aelight.camera.ae.camera.filter.AEFilterProcessTex;
+import com.tencent.aelight.camera.ae.camera.filter.FilterProcessBase;
 
 class AECameraGLSurfaceView$26
   implements Runnable
 {
-  AECameraGLSurfaceView$26(AECameraGLSurfaceView paramAECameraGLSurfaceView, AEFilterProcessTex paramAEFilterProcessTex, float paramFloat1, float paramFloat2, int paramInt) {}
+  AECameraGLSurfaceView$26(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
   public void run()
   {
-    this.val$aeFilterProcessTex.a(new PointF(this.val$x, this.val$y), this.val$screenWidth);
+    if (AECameraGLSurfaceView.access$000(this.this$0) != null) {
+      AECameraGLSurfaceView.access$000(this.this$0).a(true, AECameraGLSurfaceView.access$1000(this.this$0), this.this$0);
+    }
+    this.this$0.requestRender();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.core.AECameraGLSurfaceView.26
  * JD-Core Version:    0.7.0.1
  */

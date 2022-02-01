@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import com.tencent.pts.bridge.PTSJSBridge;
 import com.tencent.pts.bridge.PTSJSBridgeManager;
 import com.tencent.pts.utils.PTSLog;
-import com.tencent.pts.utils.PTSTimeCostUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PTSActivity
@@ -103,11 +102,8 @@ public class PTSActivity
   
   protected void onCreate(@Nullable Bundle paramBundle)
   {
-    PTSTimeCostUtil.start("PTSActivity-onCreate");
     super.onCreate(paramBundle);
-    if (!isParametersAvailable())
-    {
-      PTSTimeCostUtil.end("PTSActivity-onCreate");
+    if (!isParametersAvailable()) {
       return;
     }
     paramBundle = new LinearLayout(this);
@@ -117,7 +113,6 @@ public class PTSActivity
     PTSJSBridge localPTSJSBridge = PTSJSBridgeManager.getInstance().getJSBridge(this, getParameter("com.tencent.pts.core.BindDataJs"), getParameter("com.tencent.pts.core.AnimationJs"));
     this.mPTSAppInstance = new PTSAppInstance.Builder().withContext(this).withRootView(paramBundle).withRootNodeType(0).withPTSJSBridge(localPTSJSBridge).withPageName(getParameter("com.tencent.pts.core.PageName")).withFrameTreeJson(getParameter("com.tencent.pts.core.FrameTreeJson")).withPageJs(getParameter("com.tencent.pts.core.PageJs")).build();
     this.mPTSAppInstance.onCreate();
-    PTSTimeCostUtil.end("PTSActivity-onCreate");
   }
   
   protected void onDestroy()
@@ -141,7 +136,7 @@ public class PTSActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.PTSActivity
  * JD-Core Version:    0.7.0.1
  */

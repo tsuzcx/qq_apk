@@ -19,24 +19,23 @@ import mqq.os.MqqHandler;
 public class StrangerHdHeadUrlFetcher
   implements Handler.Callback
 {
-  protected long a;
   protected QQAppInterface a;
-  private AvatarObserver a;
-  protected EntityManager a;
-  protected Set<String> a;
-  protected ConcurrentHashMap<String, String> a;
-  protected MqqHandler a;
-  protected boolean a;
+  protected EntityManager b;
+  protected Set<String> c;
+  protected ConcurrentHashMap<String, String> d;
+  protected boolean e;
+  protected long f;
+  protected MqqHandler g;
+  private AvatarObserver h = new StrangerHdHeadUrlFetcher.2(this);
   
   public StrangerHdHeadUrlFetcher(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new StrangerHdHeadUrlFetcher.2(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
-    this.jdField_a_of_type_JavaUtilSet = new HashSet(20);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(ThreadManager.getSubThreadLooper(), this);
+    this.a = paramQQAppInterface;
+    this.b = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.d = new ConcurrentHashMap(20);
+    this.c = new HashSet(20);
+    this.e = false;
+    this.g = new CustomHandler(ThreadManager.getSubThreadLooper(), this);
   }
   
   public static String a(int paramInt1, int paramInt2, String paramString)
@@ -78,18 +77,18 @@ public class StrangerHdHeadUrlFetcher
   
   private void a(String paramString)
   {
-    Set localSet = this.jdField_a_of_type_JavaUtilSet;
+    Set localSet = this.c;
     if (paramString == null) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilSet.clear();
+      this.c.clear();
       break label34;
-      this.jdField_a_of_type_JavaUtilSet.remove(paramString);
+      this.c.remove(paramString);
       label34:
-      if (this.jdField_a_of_type_JavaUtilSet.isEmpty())
+      if (this.c.isEmpty())
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
-        this.jdField_a_of_type_Boolean = false;
+        this.a.removeObserver(this.h);
+        this.e = false;
       }
       return;
     }
@@ -101,11 +100,11 @@ public class StrangerHdHeadUrlFetcher
     if ((!TextUtils.isEmpty(paramString)) && ((paramInt == 200) || (paramInt == 202) || (paramInt == 204)))
     {
       String str = a(32, paramInt, paramString);
-      ??? = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      ??? = (String)this.d.get(str);
       Object localObject1 = ???;
       if (TextUtils.isEmpty((CharSequence)???))
       {
-        Setting localSetting = (Setting)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(Setting.class, str);
+        Setting localSetting = (Setting)this.b.find(Setting.class, str);
         localObject1 = ???;
         if (localSetting != null)
         {
@@ -113,10 +112,10 @@ public class StrangerHdHeadUrlFetcher
           if (!TextUtils.isEmpty(localSetting.url))
           {
             localObject1 = a(32, localSetting.url, localSetting.bHeadType, localSetting.bFaceFlags);
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject1);
-            synchronized (this.jdField_a_of_type_JavaUtilSet)
+            this.d.put(str, localObject1);
+            synchronized (this.c)
             {
-              this.jdField_a_of_type_JavaUtilSet.remove(str);
+              this.c.remove(str);
             }
           }
         }
@@ -130,12 +129,12 @@ public class StrangerHdHeadUrlFetcher
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilSet)
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilSet.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.a.removeObserver(this.h);
+      this.e = false;
+      this.c.clear();
+      this.d.clear();
       return;
     }
   }
@@ -144,11 +143,11 @@ public class StrangerHdHeadUrlFetcher
   {
     if (paramMessage.what == 1)
     {
-      long l = Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      long l = Math.abs(System.currentTimeMillis() - this.f);
       if ((l >= 0L) && (l <= 60000L))
       {
-        if (!this.jdField_a_of_type_JavaUtilSet.isEmpty()) {
-          this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageAtTime(1, 60000L);
+        if (!this.c.isEmpty()) {
+          this.g.sendEmptyMessageAtTime(1, 60000L);
         }
       }
       else {
@@ -160,7 +159,7 @@ public class StrangerHdHeadUrlFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.StrangerHdHeadUrlFetcher
  * JD-Core Version:    0.7.0.1
  */

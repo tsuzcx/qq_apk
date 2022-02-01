@@ -4,11 +4,11 @@ import android.widget.TextView;
 import com.tencent.aelight.camera.aeeditor.module.controlpanel.AEEditorMusicControlPanel;
 import com.tencent.aelight.camera.aeeditor.module.music.AEEditorLyricProgressCalculator;
 import com.tencent.aelight.camera.aeeditor.util.TimeUtils;
+import com.tencent.qcircle.tavcut.player.MoviePlayer;
+import com.tencent.qcircle.tavcut.session.TAVCutVideoSession;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.player.IPlayer.PlayerListener;
 import com.tencent.tav.player.IPlayer.PlayerStatus;
-import com.tencent.tavcut.player.MoviePlayer;
-import com.tencent.tavcut.session.TAVCutVideoSession;
 
 class AEEditorVideoEditFragment$10
   implements IPlayer.PlayerListener
@@ -17,23 +17,23 @@ class AEEditorVideoEditFragment$10
   
   public void onPositionChanged(CMTime paramCMTime)
   {
-    CMTime localCMTime = this.a.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.getDuration();
-    this.a.jdField_a_of_type_Long = (((float)(localCMTime.value * 1000L) / localCMTime.timeScale));
+    CMTime localCMTime = this.a.D.getDuration();
+    this.a.E = (((float)(localCMTime.value * 1000L) / localCMTime.timeScale));
     float f = (float)(paramCMTime.value * 1000L) / paramCMTime.timeScale;
     paramCMTime = new StringBuilder();
     long l1 = f;
     paramCMTime.append(TimeUtils.a(l1));
     paramCMTime.append("/");
-    paramCMTime.append(TimeUtils.a(this.a.jdField_a_of_type_Long));
+    paramCMTime.append(TimeUtils.a(this.a.E));
     paramCMTime = paramCMTime.toString();
-    AEEditorVideoEditFragment.a(this.a).setText(paramCMTime);
-    long l2 = TimeUtils.a(l1);
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo != null) {
-      AEEditorLyricProgressCalculator.a().a(l2, this.a.jdField_a_of_type_Long);
+    AEEditorVideoEditFragment.l(this.a).setText(paramCMTime);
+    long l2 = TimeUtils.b(l1);
+    if (this.a.L != null) {
+      AEEditorLyricProgressCalculator.a().a(l2, this.a.E);
     }
-    AEEditorVideoEditFragment.a(this.a).b((int)l2, (int)this.a.jdField_a_of_type_Long);
-    if ((this.a.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null) && (this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo != null)) {
-      this.a.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.updateVideoProgress(l1);
+    AEEditorVideoEditFragment.m(this.a).b((int)l2, (int)this.a.E);
+    if ((this.a.B != null) && (this.a.L != null)) {
+      this.a.B.updateVideoProgress(l1);
     }
   }
   
@@ -49,7 +49,7 @@ class AEEditorVideoEditFragment$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorVideoEditFragment.10
  * JD-Core Version:    0.7.0.1
  */

@@ -84,7 +84,7 @@ public class TroopFileProtocol
   {
     if ((paramLong != 0L) && (paramItem != null))
     {
-      int i = FileManagerUtil.a(FileUtil.a(paramItem.FileName));
+      int i = FileManagerUtil.c(FileUtil.a(paramItem.FileName));
       oidb_0x6d6.DownloadFileReqBody localDownloadFileReqBody = new oidb_0x6d6.DownloadFileReqBody();
       localDownloadFileReqBody.uint32_bus_id.set(paramItem.BusId);
       localDownloadFileReqBody.uint32_app_id.set(3);
@@ -215,7 +215,7 @@ public class TroopFileProtocol
     localOIDBSSOPkg.uint32_command.set(paramInt1);
     localOIDBSSOPkg.uint32_service_type.set(paramInt2);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    localOIDBSSOPkg.str_client_version.set(AppSetting.h());
     paramArrayOfByte = ((ITroopFileProtoReqMgr)paramQQAppInterface.getRuntimeService(ITroopFileProtoReqMgr.class, "")).createProtoReq();
     paramArrayOfByte.a(paramString);
     paramArrayOfByte.a(localOIDBSSOPkg.toByteArray());
@@ -229,7 +229,7 @@ public class TroopFileProtocol
   {
     try
     {
-      if (!ZhuoXusManager.a().i())
+      if (!ZhuoXusManager.a().l())
       {
         if (QLog.isColorLevel())
         {
@@ -243,14 +243,14 @@ public class TroopFileProtocol
           return paramItem.strQRUrl;
         }
         String str;
-        if (FileUtils.c(paramItem.middleThumbnailFile))
+        if (FileUtils.d(paramItem.middleThumbnailFile))
         {
           localObject = new File(paramItem.middleThumbnailFile);
           str = "mid";
         }
         else
         {
-          if (!FileUtils.c(paramItem.largeThumbnailFile)) {
+          if (!FileUtils.d(paramItem.largeThumbnailFile)) {
             break label185;
           }
           localObject = new File(paramItem.largeThumbnailFile);
@@ -530,11 +530,11 @@ public class TroopFileProtocol
       oidb_0x6d9.TransFileReqBody localTransFileReqBody = new oidb_0x6d9.TransFileReqBody();
       localTransFileReqBody.uint32_app_id.set(3);
       localTransFileReqBody.uint64_group_code.set(paramLong);
-      localTransFileReqBody.uint32_bus_id.set(paramTroopFileInfo.a);
-      localTransFileReqBody.str_file_id.set(paramTroopFileInfo.b);
+      localTransFileReqBody.uint32_bus_id.set(paramTroopFileInfo.f);
+      localTransFileReqBody.str_file_id.set(paramTroopFileInfo.c);
       Bundle localBundle = new Bundle();
       localBundle.putLong("troopUin", paramLong);
-      localBundle.putString("fileId", paramTroopFileInfo.b);
+      localBundle.putString("fileId", paramTroopFileInfo.c);
       paramTroopFileInfo = new oidb_0x6d9.ReqBody();
       paramTroopFileInfo.trans_file_req.set(localTransFileReqBody);
       ProtoUtils.b(paramQQAppInterface, paramTroopFileReqTransFileObserver, paramTroopFileInfo.toByteArray(), "OidbSvc.0x6d9_0", 1753, 0, localBundle);
@@ -652,11 +652,11 @@ public class TroopFileProtocol
     localStringBuilder.append("&filetype=");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("&path=");
-    localStringBuilder.append(URLUtil.a(paramString4));
+    localStringBuilder.append(URLUtil.c(paramString4));
     localStringBuilder.append("&");
     paramString1 = new HttpWebCgiAsyncTask2(localStringBuilder.toString(), "GET", new TroopFileProtocol.1(new ArrayList(), paramString4, paramFileManagerEntity, paramQQAppInterface, paramInt, paramOnGetZipFileList), 1000, null);
     paramString2 = new Bundle();
-    paramString2.putString("version", DeviceInfoUtil.c());
+    paramString2.putString("version", DeviceInfoUtil.e());
     paramString2.putString("Cookie", paramString5);
     paramString3 = new HashMap();
     paramString3.put("BUNDLE", paramString2);
@@ -699,7 +699,7 @@ public class TroopFileProtocol
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.file.TroopFileProtocol
  * JD-Core Version:    0.7.0.1
  */

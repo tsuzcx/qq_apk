@@ -76,10 +76,10 @@ public class TroopGagServiceImpl
   private String remainingTimeToStringCountDown(Context paramContext, long paramLong1, long paramLong2)
   {
     Object localObject = this.mApp.getApplication().getApplicationContext();
-    paramContext = ((Context)localObject).getString(2131697418);
-    String str1 = ((Context)localObject).getString(2131697417);
-    localObject = ((Context)localObject).getString(2131697416);
-    String str2 = HardCodeUtil.a(2131715170);
+    paramContext = ((Context)localObject).getString(2131895191);
+    String str1 = ((Context)localObject).getString(2131895190);
+    localObject = ((Context)localObject).getString(2131895189);
+    String str2 = HardCodeUtil.a(2131912658);
     if (paramLong1 < 60L) {
       return String.format(str2, new Object[] { Integer.valueOf(1), paramContext });
     }
@@ -108,7 +108,7 @@ public class TroopGagServiceImpl
       if (QLog.isDevelopLevel()) {
         QLog.d("TroopGagServiceImpl", 4, String.format("getTroopGagInfo:sUin=%s, Troop Gag", new Object[] { paramString }));
       }
-      return new SelfGagInfo(paramString, true, this.mApp.getApplication().getApplicationContext().getString(2131697231), 60L);
+      return new SelfGagInfo(paramString, true, this.mApp.getApplication().getApplicationContext().getString(2131895004), 60L);
     }
     if ((localTroopInfo.dwGagTimeStamp_me != 0L) && (l < localTroopInfo.dwGagTimeStamp_me + 3L))
     {
@@ -121,7 +121,7 @@ public class TroopGagServiceImpl
       ((StringBuilder)localObject).append(l);
       QLog.d("TroopGagServiceImpl", 1, ((StringBuilder)localObject).toString());
       localObject = this.mApp.getApplication().getApplicationContext();
-      String str = ((Context)localObject).getString(2131697748);
+      String str = ((Context)localObject).getString(2131895521);
       l = localTroopInfo.dwGagTimeStamp_me + 3L;
       if (paramBoolean) {
         l = localTroopInfo.dwGagTimeStamp_me - 30L;
@@ -257,7 +257,7 @@ public class TroopGagServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgag.api.impl.TroopGagServiceImpl
  * JD-Core Version:    0.7.0.1
  */

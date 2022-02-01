@@ -22,10 +22,10 @@ import java.util.HashMap;
 public class CaptureUtil
 {
   public static int a = -1;
-  public static boolean a = false;
   public static int b = -1;
-  public static boolean b = false;
   public static boolean c = false;
+  public static boolean d = false;
+  public static boolean e = false;
   
   public static int a(int paramInt)
   {
@@ -60,7 +60,7 @@ public class CaptureUtil
   public static void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     StringBuilder localStringBuilder;
-    if ((!paramBoolean2) && (b == paramBoolean1))
+    if ((!paramBoolean2) && (d == paramBoolean1))
     {
       if (QLog.isColorLevel())
       {
@@ -73,7 +73,7 @@ public class CaptureUtil
       }
       return;
     }
-    b = paramBoolean1;
+    d = paramBoolean1;
     SharedPreUtils.a(BaseApplicationImpl.getApplication().getSharedPreferences("CaptureUtil", 4).edit().putBoolean("capture_shared_gesture_recognize_result", paramBoolean1));
     if (QLog.isColorLevel())
     {
@@ -207,7 +207,7 @@ public class CaptureUtil
       boolean bool4;
       try
       {
-        if (!jdField_a_of_type_Boolean)
+        if (!c)
         {
           if (((IAEResUtil)QRoute.api(IAEResUtil.class)).isLightCameraBaseResNotAllExist()) {
             break label248;
@@ -226,20 +226,20 @@ public class CaptureUtil
               break label253;
             }
             i = 1;
-            jdField_a_of_type_Int = i;
+            a = i;
             break label258;
           }
-          jdField_a_of_type_Int = 2;
+          a = 2;
           bool2 = false;
           bool3 = false;
           break label258;
-          jdField_a_of_type_Boolean = bool4;
+          c = bool4;
           AEQLog.d("CaptureUtil", "[loadEffectSo] base so load end ");
           if (QLog.isColorLevel()) {
-            QLog.d("CaptureUtil", 2, new Object[] { "loadEffectSo, ", Boolean.valueOf(jdField_a_of_type_Boolean), "  ptuSo:", Boolean.valueOf(bool2), "  ptuSoVersion:", Boolean.valueOf(bool3), " result:", Boolean.valueOf(bool1), "  PTV_FILTER_SO_LOADED:", Integer.valueOf(jdField_a_of_type_Int) });
+            QLog.d("CaptureUtil", 2, new Object[] { "loadEffectSo, ", Boolean.valueOf(c), "  ptuSo:", Boolean.valueOf(bool2), "  ptuSoVersion:", Boolean.valueOf(bool3), " result:", Boolean.valueOf(bool1), "  PTV_FILTER_SO_LOADED:", Integer.valueOf(a) });
           }
         }
-        bool1 = jdField_a_of_type_Boolean;
+        bool1 = c;
         return bool1;
       }
       finally {}
@@ -301,7 +301,7 @@ public class CaptureUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.util.CaptureUtil
  * JD-Core Version:    0.7.0.1
  */

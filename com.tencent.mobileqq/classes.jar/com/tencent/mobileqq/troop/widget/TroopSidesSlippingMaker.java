@@ -17,46 +17,40 @@ import com.tencent.widget.ListView;
 public class TroopSidesSlippingMaker
   implements Handler.Callback
 {
-  private byte jdField_a_of_type_Byte;
-  private final int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private View jdField_a_of_type_AndroidViewView;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private TroopSidesSlippingMaker.SlidingListener jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
-  private TroopSidesSlippingMaker.SuperTouchListener jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private View jdField_c_of_type_AndroidViewView;
-  private boolean jdField_c_of_type_Boolean;
+  private final int a;
+  private int b;
+  private int c;
   private int d;
   private int e;
   private int f;
   private int g;
+  private boolean h = false;
+  private boolean i = true;
+  private boolean j;
+  private byte k;
+  private TroopSidesSlippingMaker.SlidingListener l;
+  private VelocityTracker m;
+  private Scroller n;
+  private Handler o;
+  private View p;
+  private View q;
+  private View r;
+  private ListView s;
+  private TroopSidesSlippingMaker.SuperTouchListener t;
   
   public TroopSidesSlippingMaker(Context paramContext, ListView paramListView, TroopSidesSlippingMaker.SuperTouchListener paramSuperTouchListener)
   {
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener = paramSuperTouchListener;
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new TroopSidesSlippingMaker.SmoothInterpolator());
+    this.s = paramListView;
+    this.t = paramSuperTouchListener;
+    this.n = new Scroller(paramContext, new TroopSidesSlippingMaker.SmoothInterpolator());
     paramContext = ViewConfiguration.get(paramContext);
-    this.jdField_a_of_type_Int = paramContext.getScaledTouchSlop();
-    this.jdField_b_of_type_Int = (paramContext.getScaledMinimumFlingVelocity() * 4);
+    this.a = paramContext.getScaledTouchSlop();
+    this.b = (paramContext.getScaledMinimumFlingVelocity() * 4);
     this.d = -1;
     this.f = -1;
     this.e = -1;
     this.g = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  }
-  
-  private int a()
-  {
-    this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-    return (int)this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity();
+    this.o = new Handler(Looper.getMainLooper(), this);
   }
   
   private int a(int paramInt1, int paramInt2)
@@ -82,110 +76,148 @@ public class TroopSidesSlippingMaker
         paramInt1 = 0;
       }
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.h)
     {
-      TroopSidesSlippingMaker.SlidingListener localSlidingListener = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
+      TroopSidesSlippingMaker.SlidingListener localSlidingListener = this.l;
       if (localSlidingListener != null) {
         localSlidingListener.a(true);
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.h = true;
     }
     paramView.scrollTo(paramInt1, 0);
   }
   
-  private void a(MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-    }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-  }
-  
-  private void a(View paramView)
-  {
-    int i;
-    if (paramView != null) {
-      i = paramView.getScrollX();
-    } else {
-      i = 0;
-    }
-    if (i != 0)
-    {
-      int j;
-      if ((paramView.getTag(-3) instanceof Integer)) {
-        j = ((Integer)paramView.getTag(-3)).intValue();
-      } else {
-        j = 0;
-      }
-      View localView = this.jdField_c_of_type_AndroidViewView;
-      if ((localView != paramView) && (localView != null)) {
-        localView.scrollTo(0, 0);
-      }
-      d();
-      this.jdField_c_of_type_AndroidViewView = paramView;
-      int k = -i;
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, k, 0, a(j, k));
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    }
-  }
-  
   private boolean a(float paramFloat)
   {
-    return paramFloat < this.jdField_a_of_type_ComTencentWidgetListView.getWidth() - this.jdField_c_of_type_Int;
+    return paramFloat < this.s.getWidth() - this.c;
   }
   
   private boolean a(float paramFloat1, float paramFloat2)
   {
-    int i = this.jdField_a_of_type_Int;
-    if ((paramFloat1 <= i) && (paramFloat2 <= i)) {
+    int i1 = this.a;
+    if ((paramFloat1 <= i1) && (paramFloat2 <= i1)) {
       return false;
     }
-    if ((paramFloat1 > this.jdField_a_of_type_Int) && (paramFloat2 / paramFloat1 < 0.6F))
+    if ((paramFloat1 > this.a) && (paramFloat2 / paramFloat1 < 0.6F))
     {
-      this.jdField_a_of_type_Byte = 1;
+      this.k = 1;
       return true;
     }
-    this.jdField_a_of_type_Byte = 2;
+    this.k = 2;
     return true;
   }
   
   private boolean a(View paramView)
   {
-    return (paramView != null) && (paramView.getScrollX() >= this.jdField_a_of_type_Int);
+    return (paramView != null) && (paramView.getScrollX() >= this.a);
   }
   
   private void b(View paramView)
   {
+    int i1;
+    if (paramView != null) {
+      i1 = paramView.getScrollX();
+    } else {
+      i1 = 0;
+    }
+    if (i1 != 0)
+    {
+      int i2;
+      if ((paramView.getTag(-3) instanceof Integer)) {
+        i2 = ((Integer)paramView.getTag(-3)).intValue();
+      } else {
+        i2 = 0;
+      }
+      View localView = this.r;
+      if ((localView != paramView) && (localView != null)) {
+        localView.scrollTo(0, 0);
+      }
+      d();
+      this.r = paramView;
+      int i3 = -i1;
+      this.n.startScroll(i1, 0, i3, 0, a(i2, i3));
+      this.o.sendEmptyMessage(1);
+    }
+  }
+  
+  private void c()
+  {
+    int i1 = f();
+    int i2 = this.q.getScrollX();
+    int i3 = this.b;
+    if (i1 > i3)
+    {
+      b(this.q);
+      return;
+    }
+    if (i1 < -i3)
+    {
+      c(this.q);
+      return;
+    }
+    if ((i1 > 0) && (i2 < this.c * 0.7F))
+    {
+      b(this.q);
+      return;
+    }
+    if ((i1 < 0) && (i2 > this.c * 0.3F))
+    {
+      c(this.q);
+      return;
+    }
+    if ((this.j) && (i2 < this.c * 0.7F))
+    {
+      b(this.q);
+      return;
+    }
+    if (i2 > this.c * 0.3F)
+    {
+      c(this.q);
+      return;
+    }
+    b(this.q);
+  }
+  
+  private void c(MotionEvent paramMotionEvent)
+  {
+    if (this.m == null) {
+      this.m = VelocityTracker.obtain();
+    }
+    this.m.addMovement(paramMotionEvent);
+  }
+  
+  private void c(View paramView)
+  {
     if (paramView == null) {
       return;
     }
-    int k = paramView.getScrollX();
-    int j = this.jdField_c_of_type_Int;
-    int i = j;
-    if (j == 0)
+    int i3 = paramView.getScrollX();
+    int i2 = this.c;
+    int i1 = i2;
+    if (i2 == 0)
     {
-      i = j;
+      i1 = i2;
       if ((paramView.getTag(-3) instanceof Integer)) {
-        i = ((Integer)paramView.getTag(-3)).intValue();
+        i1 = ((Integer)paramView.getTag(-3)).intValue();
       }
     }
-    if (k != i)
+    if (i3 != i1)
     {
-      localObject = this.jdField_c_of_type_AndroidViewView;
+      localObject = this.r;
       if ((localObject != paramView) && (localObject != null)) {
         ((View)localObject).scrollTo(0, 0);
       }
       d();
-      this.jdField_c_of_type_AndroidViewView = paramView;
-      j = i - k;
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(k, 0, j, 0, a(i, j));
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      this.r = paramView;
+      i2 = i1 - i3;
+      this.n.startScroll(i3, 0, i2, 0, a(i1, i2));
+      this.o.sendEmptyMessage(0);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
+    Object localObject = this.l;
     if (localObject != null) {
       ((TroopSidesSlippingMaker.SlidingListener)localObject).a(paramView);
     }
-    if ((AppSetting.d) && ((paramView instanceof LinearLayout)))
+    if ((AppSetting.e) && ((paramView instanceof LinearLayout)))
     {
       paramView = (LinearLayout)paramView;
       paramView = paramView.getChildAt(paramView.getChildCount() - 1);
@@ -195,108 +227,76 @@ public class TroopSidesSlippingMaker
     }
   }
   
-  private void c()
-  {
-    int i = a();
-    int j = this.jdField_b_of_type_AndroidViewView.getScrollX();
-    int k = this.jdField_b_of_type_Int;
-    if (i > k)
-    {
-      a(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if (i < -k)
-    {
-      b(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if ((i > 0) && (j < this.jdField_c_of_type_Int * 0.7F))
-    {
-      a(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if ((i < 0) && (j > this.jdField_c_of_type_Int * 0.3F))
-    {
-      b(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if ((this.jdField_c_of_type_Boolean) && (j < this.jdField_c_of_type_Int * 0.7F))
-    {
-      a(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if (j > this.jdField_c_of_type_Int * 0.3F)
-    {
-      b(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    a(this.jdField_b_of_type_AndroidViewView);
-  }
-  
   private void d()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    this.jdField_c_of_type_AndroidViewView = null;
+    this.o.removeMessages(1);
+    this.o.removeMessages(0);
+    this.r = null;
   }
   
   private void e()
   {
-    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    VelocityTracker localVelocityTracker = this.m;
     if (localVelocityTracker != null)
     {
       localVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+      this.m = null;
     }
+  }
+  
+  private int f()
+  {
+    this.m.computeCurrentVelocity(1000);
+    return (int)this.m.getXVelocity();
   }
   
   public void a()
   {
-    if (!a(this.jdField_b_of_type_AndroidViewView))
+    if (!a(this.q))
     {
-      int i = this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition() - this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount();
-      int j = this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition();
-      while (i <= j)
+      int i1 = this.s.getFirstVisiblePosition() - this.s.getHeaderViewsCount();
+      int i2 = this.s.getLastVisiblePosition();
+      while (i1 <= i2)
       {
-        View localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
+        View localView = this.s.getChildAt(i1);
         if (a(localView))
         {
-          this.jdField_b_of_type_AndroidViewView = localView;
+          this.q = localView;
           break;
         }
-        i += 1;
+        i1 += 1;
       }
     }
-    a(this.jdField_b_of_type_AndroidViewView);
+    b(this.q);
   }
   
   public void a(TroopSidesSlippingMaker.SlidingListener paramSlidingListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener = paramSlidingListener;
+    this.l = paramSlidingListener;
   }
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener.a(paramMotionEvent);
+    if (!this.i) {
+      return this.t.a(paramMotionEvent);
     }
-    int j = (int)(paramMotionEvent.getX() + 0.5F);
-    int i = (int)(paramMotionEvent.getY() + 0.5F);
-    int k = paramMotionEvent.getAction();
-    if (k != 0) {
-      if (k != 1) {
-        if (k != 2)
+    int i2 = (int)(paramMotionEvent.getX() + 0.5F);
+    int i1 = (int)(paramMotionEvent.getY() + 0.5F);
+    int i3 = paramMotionEvent.getAction();
+    if (i3 != 0) {
+      if (i3 != 1) {
+        if (i3 != 2)
         {
-          if (k != 3) {
+          if (i3 != 3) {
             break label164;
           }
         }
         else
         {
-          if ((this.jdField_c_of_type_Int > 0) && (this.jdField_a_of_type_Byte == 0)) {
-            a(Math.abs(j - this.d), Math.abs(i - this.e));
+          if ((this.c > 0) && (this.k == 0)) {
+            a(Math.abs(i2 - this.d), Math.abs(i1 - this.e));
           }
-          if ((this.jdField_a_of_type_Byte != 1) || (j >= this.d)) {
+          if ((this.k != 1) || (i2 >= this.d)) {
             break label164;
           }
         }
@@ -309,8 +309,8 @@ public class TroopSidesSlippingMaker
     {
       bool1 = true;
       break;
-      if (this.jdField_c_of_type_Boolean) {
-        a(this.jdField_a_of_type_AndroidViewView);
+      if (this.j) {
+        b(this.p);
       }
       this.d = -1;
       this.f = -1;
@@ -322,173 +322,173 @@ public class TroopSidesSlippingMaker
         {
           bool1 = false;
           break;
-          this.jdField_a_of_type_Byte = 0;
-          this.d = j;
-          this.f = j;
-          this.e = i;
-          this.g = i;
-          this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView;
-          this.jdField_c_of_type_Boolean = a(this.jdField_a_of_type_AndroidViewView);
-          if (!this.jdField_c_of_type_Boolean)
+          this.k = 0;
+          this.d = i2;
+          this.f = i2;
+          this.e = i1;
+          this.g = i1;
+          this.p = this.q;
+          this.j = a(this.p);
+          if (!this.j)
           {
-            int m = this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition();
-            int n = this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount();
-            i = this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition();
-            while (i >= m - n)
+            int i4 = this.s.getFirstVisiblePosition();
+            int i5 = this.s.getHeaderViewsCount();
+            i1 = this.s.getLastVisiblePosition();
+            while (i1 >= i4 - i5)
             {
-              localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
-              this.jdField_c_of_type_Boolean = a((View)localObject);
-              if (this.jdField_c_of_type_Boolean)
+              localObject = this.s.getChildAt(i1);
+              this.j = a((View)localObject);
+              if (this.j)
               {
-                this.jdField_a_of_type_AndroidViewView = ((View)localObject);
+                this.p = ((View)localObject);
                 break;
               }
-              i -= 1;
+              i1 -= 1;
             }
           }
-          this.jdField_c_of_type_Int = 0;
-          this.jdField_b_of_type_AndroidViewView = null;
-          i = this.e;
-          if (this.jdField_a_of_type_ComTencentWidgetListView.isOverscrollHeadVisiable()) {
-            i = this.e + this.jdField_a_of_type_ComTencentWidgetListView.getScrollY();
+          this.c = 0;
+          this.q = null;
+          i1 = this.e;
+          if (this.s.isOverscrollHeadVisiable()) {
+            i1 = this.e + this.s.getScrollY();
           }
-          i = this.jdField_a_of_type_ComTencentWidgetListView.pointToPosition(this.d, i);
-          if (i >= 0)
+          i1 = this.s.pointToPosition(this.d, i1);
+          if (i1 >= 0)
           {
-            localObject = this.jdField_a_of_type_ComTencentWidgetListView;
-            this.jdField_b_of_type_AndroidViewView = ((ListView)localObject).getChildAt(i - ((ListView)localObject).getFirstVisiblePosition());
-            localObject = this.jdField_b_of_type_AndroidViewView;
+            localObject = this.s;
+            this.q = ((ListView)localObject).getChildAt(i1 - ((ListView)localObject).getFirstVisiblePosition());
+            localObject = this.q;
             if ((localObject != null) && ((((View)localObject).getTag(-3) instanceof Integer))) {
-              this.jdField_c_of_type_Int = ((Integer)this.jdField_b_of_type_AndroidViewView.getTag(-3)).intValue();
+              this.c = ((Integer)this.q.getTag(-3)).intValue();
             }
           }
-        } while (!this.jdField_c_of_type_Boolean);
-        if (this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) {
+        } while (!this.j);
+        if (this.q != this.p) {
           break;
         }
-      } while (!a(j));
+      } while (!a(i2));
     }
-    if ((k == 0) && (this.jdField_c_of_type_Boolean))
+    if ((i3 == 0) && (this.j))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
+      localObject = this.l;
       if (localObject != null) {
         ((TroopSidesSlippingMaker.SlidingListener)localObject).a(true);
       }
       d();
     }
-    else if ((k == 1) || (k == 3))
+    else if ((i3 == 1) || (i3 == 3))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
+      localObject = this.l;
       if (localObject != null) {
         ((TroopSidesSlippingMaker.SlidingListener)localObject).a(false);
       }
     }
     boolean bool2 = bool1;
     if (!bool1) {
-      bool2 = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener.a(paramMotionEvent);
+      bool2 = this.t.a(paramMotionEvent);
     }
     return bool2;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentWidgetListView = null;
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener = null;
+    this.s = null;
+    this.l = null;
   }
   
   public boolean b(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener.b(paramMotionEvent);
+    if (!this.i) {
+      return this.t.b(paramMotionEvent);
     }
-    a(paramMotionEvent);
-    int i = (int)(paramMotionEvent.getX() + 0.5F);
-    int j = (int)(paramMotionEvent.getY() + 0.5F);
-    int k = paramMotionEvent.getAction();
+    c(paramMotionEvent);
+    int i1 = (int)(paramMotionEvent.getX() + 0.5F);
+    int i2 = (int)(paramMotionEvent.getY() + 0.5F);
+    int i3 = paramMotionEvent.getAction();
     boolean bool1;
     label268:
     label271:
     label285:
     label288:
     Object localObject;
-    if (k != 0)
+    if (i3 != 0)
     {
-      if (k != 1)
+      if (i3 != 1)
       {
-        if (k != 2)
+        if (i3 != 2)
         {
-          if (k == 3) {
+          if (i3 == 3) {
             break label288;
           }
         }
         else
         {
-          if (this.jdField_c_of_type_Boolean)
+          if (this.j)
           {
-            if ((this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView) && (!a(i))) {
+            if ((this.q == this.p) && (!a(i1))) {
               bool1 = false;
             } else {
               bool1 = true;
             }
             bool2 = bool1;
-            if (this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) {
+            if (this.q != this.p) {
               break label271;
             }
-            if ((this.jdField_a_of_type_Byte == 0) && (!a(Math.abs(i - this.d), Math.abs(j - this.e)))) {
+            if ((this.k == 0) && (!a(Math.abs(i1 - this.d), Math.abs(i2 - this.e)))) {
               break label285;
             }
             bool2 = bool1;
-            if (this.jdField_a_of_type_Byte != 1) {
+            if (this.k != 1) {
               break label271;
             }
-            a(i, j, this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int);
+            a(i1, i2, this.q, this.c);
             break label268;
           }
-          if (this.jdField_c_of_type_Int != 0) {}
+          if (this.c != 0) {}
         }
         do
         {
           bool2 = false;
           break;
-          if ((this.jdField_a_of_type_Byte == 0) && (!a(Math.abs(i - this.d), Math.abs(j - this.e))))
+          if ((this.k == 0) && (!a(Math.abs(i1 - this.d), Math.abs(i2 - this.e))))
           {
             bool1 = false;
             break label508;
           }
-        } while (this.jdField_a_of_type_Byte != 1);
-        a(i, j, this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int);
+        } while (this.k != 1);
+        a(i1, i2, this.q, this.c);
         bool2 = true;
-        this.f = i;
-        this.g = j;
+        this.f = i1;
+        this.g = i2;
         bool1 = bool2;
         break label508;
       }
-      if (this.jdField_c_of_type_Boolean)
+      if (this.j)
       {
-        if ((this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView) && (!a(i))) {
+        if ((this.q == this.p) && (!a(i1))) {
           bool2 = false;
         } else {
           bool2 = true;
         }
-        localObject = this.jdField_b_of_type_AndroidViewView;
+        localObject = this.q;
         bool1 = bool2;
-        if (localObject != this.jdField_a_of_type_AndroidViewView) {
+        if (localObject != this.p) {
           break label405;
         }
-        if (this.jdField_a_of_type_Byte == 1)
+        if (this.k == 1)
         {
           c();
         }
         else
         {
-          a((View)localObject);
+          b((View)localObject);
           bool1 = bool2;
           break label405;
         }
       }
       else
       {
-        if ((this.jdField_c_of_type_Int == 0) || (this.jdField_a_of_type_Byte != 1)) {
+        if ((this.c == 0) || (this.k != 1)) {
           break label402;
         }
         c();
@@ -506,108 +506,108 @@ public class TroopSidesSlippingMaker
     }
     else
     {
-      if ((this.jdField_c_of_type_Boolean) && ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) || (a(i)))) {
+      if ((this.j) && ((this.q != this.p) || (a(i1)))) {
         bool2 = true;
       } else {
         bool2 = false;
       }
       bool1 = bool2;
-      if (this.jdField_c_of_type_Boolean)
+      if (this.j)
       {
-        localObject = this.jdField_a_of_type_AndroidViewView;
+        localObject = this.p;
         bool1 = bool2;
-        if (localObject != this.jdField_b_of_type_AndroidViewView)
+        if (localObject != this.q)
         {
-          a((View)localObject);
+          b((View)localObject);
           bool1 = bool2;
         }
       }
     }
     label508:
-    if ((k == 0) && (this.jdField_c_of_type_Boolean))
+    if ((i3 == 0) && (this.j))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
+      localObject = this.l;
       if (localObject != null) {
         ((TroopSidesSlippingMaker.SlidingListener)localObject).a(true);
       }
     }
-    else if ((k == 1) || (k == 3))
+    else if ((i3 == 1) || (i3 == 3))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
+      localObject = this.l;
       if (localObject != null)
       {
         ((TroopSidesSlippingMaker.SlidingListener)localObject).a(false);
-        this.jdField_a_of_type_Boolean = false;
+        this.h = false;
       }
     }
     boolean bool2 = bool1;
     if (!bool1) {
-      bool2 = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener.b(paramMotionEvent);
+      bool2 = this.t.b(paramMotionEvent);
     }
     return bool2;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
+    int i1 = paramMessage.what;
     boolean bool;
     float f1;
-    if (i != 0)
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
-        if (i != 2) {
+        if (i1 != 2) {
           return false;
         }
       }
       else
       {
-        bool = this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
-        f1 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-        paramMessage = this.jdField_c_of_type_AndroidViewView;
+        bool = this.n.computeScrollOffset();
+        f1 = this.n.getCurrX();
+        paramMessage = this.r;
         if (paramMessage != null)
         {
           paramMessage.scrollTo((int)f1, 0);
-          paramMessage = this.jdField_a_of_type_ComTencentWidgetListView;
+          paramMessage = this.s;
           if (paramMessage != null) {
             paramMessage.invalidate();
           }
         }
         if (bool)
         {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+          this.o.sendEmptyMessage(1);
           return true;
         }
-        this.jdField_c_of_type_AndroidViewView = null;
+        this.r = null;
         return true;
       }
     }
     else
     {
-      bool = this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
-      f1 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-      paramMessage = this.jdField_c_of_type_AndroidViewView;
+      bool = this.n.computeScrollOffset();
+      f1 = this.n.getCurrX();
+      paramMessage = this.r;
       if (paramMessage != null)
       {
         paramMessage.scrollTo((int)f1, 0);
-        paramMessage = this.jdField_a_of_type_ComTencentWidgetListView;
+        paramMessage = this.s;
         if (paramMessage != null) {
           paramMessage.invalidate();
         }
       }
       if (bool)
       {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+        this.o.sendEmptyMessage(0);
         return true;
       }
-      this.jdField_c_of_type_AndroidViewView = null;
+      this.r = null;
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopSidesSlippingMaker
  * JD-Core Version:    0.7.0.1
  */

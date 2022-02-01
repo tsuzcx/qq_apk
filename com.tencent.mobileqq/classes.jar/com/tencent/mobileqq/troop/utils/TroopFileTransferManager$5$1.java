@@ -17,36 +17,36 @@ class TroopFileTransferManager$5$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b)) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b;
+    Object localObject = this.a;
+    if (!TextUtils.isEmpty(this.b.c)) {
+      localObject = this.b.c;
     }
-    MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)FileOperaterUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$5.a.a.getMessageFacade(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$5.a.e), 1, (String)localObject);
+    MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)FileOperaterUtils.a(this.c.a.j.getMessageFacade(), String.valueOf(this.c.a.k), 1, (String)localObject);
     if (localMessageForTroopFile != null) {
       localObject = localMessageForTroopFile.fileName;
     } else {
       localObject = "";
     }
-    long l = FileManagerUtil.b((String)localObject);
+    long l = FileManagerUtil.v((String)localObject);
     if ((localMessageForTroopFile != null) && (localMessageForTroopFile.fileSize <= l))
     {
-      ((AIOMessageSpreadManager)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$5.a.a.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a(localMessageForTroopFile);
+      ((AIOMessageSpreadManager)this.c.a.j.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a(localMessageForTroopFile);
       return;
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("can't find troopFile Msg, troop[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$5.a.e);
+      ((StringBuilder)localObject).append(this.c.a.k);
       ((StringBuilder)localObject).append("], id:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b);
+      ((StringBuilder)localObject).append(this.b.c);
       QLog.e("AIOMessageSpreadManager", 1, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.5.1
  * JD-Core Version:    0.7.0.1
  */

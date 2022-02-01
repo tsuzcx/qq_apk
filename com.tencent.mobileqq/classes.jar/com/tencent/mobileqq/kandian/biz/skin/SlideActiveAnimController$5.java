@@ -14,13 +14,13 @@ class SlideActiveAnimController$5
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInjoySlideAnimLayout.a.setTranslationY(this.jdField_a_of_type_Float - paramValueAnimator.floatValue());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView.setTranslationY(-paramValueAnimator.floatValue());
+    this.b.a.b.setTranslationY(this.a - paramValueAnimator.floatValue());
+    this.b.b.setTranslationY(-paramValueAnimator.floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.SlideActiveAnimController.5
  * JD-Core Version:    0.7.0.1
  */

@@ -289,7 +289,7 @@ public abstract class SimManager
     //   47: aload 7
     //   49: astore 6
     //   51: aload 8
-    //   53: invokeinterface 232 1 0
+    //   53: invokeinterface 233 1 0
     //   58: astore 7
     //   60: iload_3
     //   61: istore_2
@@ -311,7 +311,7 @@ public abstract class SimManager
     //   92: invokespecial 109	java/lang/StringBuilder:<init>	()V
     //   95: astore 9
     //   97: aload 9
-    //   99: ldc 234
+    //   99: ldc 235
     //   101: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: pop
     //   105: aload 9
@@ -328,44 +328,44 @@ public abstract class SimManager
     //   128: aload_0
     //   129: getfield 45	cooperation/qzone/sim/SimManager:mDeviceMoreInfo	Lcooperation/qzone/sim/SimManager$DeviceMoreInfo;
     //   132: iload_2
-    //   133: putfield 237	cooperation/qzone/sim/SimManager$DeviceMoreInfo:mSubCount	I
+    //   133: putfield 238	cooperation/qzone/sim/SimManager$DeviceMoreInfo:mSubCount	I
     //   136: iload_2
     //   137: iconst_1
     //   138: if_icmple +54 -> 192
     //   141: aload_0
     //   142: aload_1
-    //   143: invokevirtual 240	cooperation/qzone/sim/SimManager:isMultiSimEnabled	(Landroid/content/Context;)I
+    //   143: invokevirtual 241	cooperation/qzone/sim/SimManager:isMultiSimEnabled	(Landroid/content/Context;)I
     //   146: bipush 11
     //   148: if_icmpeq +44 -> 192
     //   151: aload_0
     //   152: getfield 45	cooperation/qzone/sim/SimManager:mDeviceMoreInfo	Lcooperation/qzone/sim/SimManager$DeviceMoreInfo;
     //   155: iconst_1
-    //   156: putfield 244	cooperation/qzone/sim/SimManager$DeviceMoreInfo:mIsMultiSimEnabled	Z
+    //   156: putfield 245	cooperation/qzone/sim/SimManager$DeviceMoreInfo:mIsMultiSimEnabled	Z
     //   159: aload_0
     //   160: aload_1
     //   161: aload 6
-    //   163: invokevirtual 246	cooperation/qzone/sim/SimManager:initAllIMSI	(Landroid/content/Context;[I)I
+    //   163: invokevirtual 247	cooperation/qzone/sim/SimManager:initAllIMSI	(Landroid/content/Context;[I)I
     //   166: pop
     //   167: aload_0
     //   168: aload_1
     //   169: aload 6
-    //   171: invokevirtual 249	cooperation/qzone/sim/SimManager:initAllPhoneNum	(Landroid/content/Context;[I)I
+    //   171: invokevirtual 250	cooperation/qzone/sim/SimManager:initAllPhoneNum	(Landroid/content/Context;[I)I
     //   174: pop
     //   175: aload_0
     //   176: aload 8
-    //   178: invokevirtual 251	cooperation/qzone/sim/SimManager:initAllDataByAIDL	(Lcom/android/internal/telephony/ISub;)I
+    //   178: invokevirtual 252	cooperation/qzone/sim/SimManager:initAllDataByAIDL	(Lcom/android/internal/telephony/ISub;)I
     //   181: ifeq +11 -> 192
     //   184: aload_0
     //   185: aload_1
     //   186: aload 6
-    //   188: invokevirtual 253	cooperation/qzone/sim/SimManager:initAllDataByAPI	(Landroid/content/Context;[I)I
+    //   188: invokevirtual 254	cooperation/qzone/sim/SimManager:initAllDataByAPI	(Landroid/content/Context;[I)I
     //   191: pop
     //   192: aload_0
     //   193: getfield 45	cooperation/qzone/sim/SimManager:mDeviceMoreInfo	Lcooperation/qzone/sim/SimManager$DeviceMoreInfo;
     //   196: invokestatic 220	java/lang/System:currentTimeMillis	()J
     //   199: lload 4
     //   201: lsub
-    //   202: putfield 257	cooperation/qzone/sim/SimManager$DeviceMoreInfo:mGetInfoCostTime	J
+    //   202: putfield 258	cooperation/qzone/sim/SimManager$DeviceMoreInfo:mGetInfoCostTime	J
     //   205: return
     //   206: astore_1
     //   207: goto +45 -> 252
@@ -375,7 +375,7 @@ public abstract class SimManager
     //   215: invokespecial 109	java/lang/StringBuilder:<init>	()V
     //   218: astore 6
     //   220: aload 6
-    //   222: ldc_w 259
+    //   222: ldc_w 260
     //   225: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   228: pop
     //   229: aload 6
@@ -393,7 +393,7 @@ public abstract class SimManager
     //   256: invokestatic 220	java/lang/System:currentTimeMillis	()J
     //   259: lload 4
     //   261: lsub
-    //   262: putfield 257	cooperation/qzone/sim/SimManager$DeviceMoreInfo:mGetInfoCostTime	J
+    //   262: putfield 258	cooperation/qzone/sim/SimManager$DeviceMoreInfo:mGetInfoCostTime	J
     //   265: goto +5 -> 270
     //   268: aload_1
     //   269: athrow
@@ -520,7 +520,7 @@ public abstract class SimManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.sim.SimManager
  * JD-Core Version:    0.7.0.1
  */

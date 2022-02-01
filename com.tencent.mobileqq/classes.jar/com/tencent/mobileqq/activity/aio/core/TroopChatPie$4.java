@@ -11,16 +11,16 @@ class TroopChatPie$4
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    if (this.this$0.ah != null)
     {
-      String str = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      ((IPicPreDownload)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPicPreDownload.class, "")).increaseTroopCountWhenEnterAIO(str);
+      String str = this.this$0.ah.b;
+      ((IPicPreDownload)this.this$0.d.getRuntimeService(IPicPreDownload.class, "")).increaseTroopCountWhenEnterAIO(str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.4
  * JD-Core Version:    0.7.0.1
  */

@@ -31,8 +31,8 @@ class QQIdentiferActivity$7
       QLog.d("qq_Identification.act", 1, paramContext.toString());
       if ((i == 2) || (i == 4))
       {
-        QQIdentiferActivity.access$000(this.a, 204, IdentificationConstant.a);
-        QQIdentiferActivity.access$000(this.a, 204, IdentificationConstant.a);
+        QQIdentiferActivity.access$000(this.a, 204, IdentificationConstant.f);
+        QQIdentiferActivity.access$000(this.a, 204, IdentificationConstant.f);
         this.a.finish();
       }
     }
@@ -40,7 +40,7 @@ class QQIdentiferActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity.7
  * JD-Core Version:    0.7.0.1
  */

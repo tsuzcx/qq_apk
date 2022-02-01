@@ -11,18 +11,18 @@ class ReLinkerInstance$1
   {
     try
     {
-      ReLinkerInstance.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b);
-      this.jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LoadListener.a();
+      ReLinkerInstance.a(this.this$0, this.a, this.b, this.c);
+      this.d.a();
       return;
     }
     catch (MissingLibraryException localMissingLibraryException)
     {
-      this.jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LoadListener.a(localMissingLibraryException);
+      this.d.a(localMissingLibraryException);
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      this.jdField_a_of_type_ComGetkeepsafeRelinkerReLinker$LoadListener.a(localUnsatisfiedLinkError);
+      this.d.a(localUnsatisfiedLinkError);
     }
   }
 }

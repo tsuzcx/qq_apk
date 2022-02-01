@@ -9,12 +9,12 @@ class ShengpiziHbFragment$3$1
   
   public void run()
   {
-    this.a.a.a.performClick();
+    this.a.b.a.performClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.ShengpiziHbFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

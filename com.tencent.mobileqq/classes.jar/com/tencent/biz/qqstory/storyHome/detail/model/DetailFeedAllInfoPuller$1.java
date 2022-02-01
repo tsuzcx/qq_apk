@@ -20,11 +20,11 @@ class DetailFeedAllInfoPuller$1
   
   public void run()
   {
-    Object localObject1 = (CommentLikeFeedItem)((FeedManager)SuperManager.a(11)).a(DetailFeedAllInfoPuller.a(this.this$0));
+    Object localObject1 = (CommentLikeFeedItem)((FeedManager)SuperManager.a(11)).b(DetailFeedAllInfoPuller.a(this.this$0));
     if (localObject1 == null)
     {
       localObject1 = this.this$0;
-      DetailFeedAllInfoPuller.a((DetailFeedAllInfoPuller)localObject1, DetailFeedAllInfoPuller.a((DetailFeedAllInfoPuller)localObject1), true, new ErrorMessage(-1, "no cache data found."));
+      DetailFeedAllInfoPuller.a((DetailFeedAllInfoPuller)localObject1, DetailFeedAllInfoPuller.b((DetailFeedAllInfoPuller)localObject1), true, new ErrorMessage(-1, "no cache data found."));
       return;
     }
     Object localObject2;
@@ -36,37 +36,37 @@ class DetailFeedAllInfoPuller$1
       if (localObject3 == null)
       {
         localObject1 = this.this$0;
-        DetailFeedAllInfoPuller.a((DetailFeedAllInfoPuller)localObject1, DetailFeedAllInfoPuller.a((DetailFeedAllInfoPuller)localObject1), true, new ErrorMessage(-1, "no cache data found."));
+        DetailFeedAllInfoPuller.a((DetailFeedAllInfoPuller)localObject1, DetailFeedAllInfoPuller.b((DetailFeedAllInfoPuller)localObject1), true, new ErrorMessage(-1, "no cache data found."));
         return;
       }
       ((VideoListFeedItem)localObject2).mVideoNextCookie = ((FeedVideoInfo)localObject3).mVideoNextCookie;
       ((VideoListFeedItem)localObject2).mIsVideoEnd = ((FeedVideoInfo)localObject3).mIsVideoEnd;
       ((VideoListFeedItem)localObject2).mVideoPullType = ((FeedVideoInfo)localObject3).mVideoPullType;
       ((VideoListFeedItem)localObject2).mVideoSeq = ((FeedVideoInfo)localObject3).mVideoSeq;
-      DetailFeedAllInfoPuller.a(this.this$0).a(((FeedVideoInfo)localObject3).mVideoItemList, true);
+      DetailFeedAllInfoPuller.b(this.this$0).a(((FeedVideoInfo)localObject3).mVideoItemList, true);
       localObject2 = ((TagManager)SuperManager.a(27)).a(DetailFeedAllInfoPuller.a(this.this$0), ((FeedVideoInfo)localObject3).mVideoItemList);
-      DetailFeedAllInfoPuller.a(this.this$0).b((List)localObject2, true);
+      DetailFeedAllInfoPuller.b(this.this$0).b((List)localObject2, true);
     }
-    DetailFeedAllInfoPuller.a(this.this$0).a = ((CommentLikeFeedItem)localObject1);
+    DetailFeedAllInfoPuller.b(this.this$0).a = ((CommentLikeFeedItem)localObject1);
     if (this.this$0.a)
     {
       localObject1 = (LikeManager)SuperManager.a(15);
-      localObject2 = ((LikeManager)localObject1).a(DetailFeedAllInfoPuller.a(this.this$0), DetailFeedAllInfoPuller.a(this.this$0));
-      DetailFeedAllInfoPuller.a(this.this$0).b((List)localObject2, true, DetailFeedAllInfoPuller.a(this.this$0));
+      localObject2 = ((LikeManager)localObject1).a(DetailFeedAllInfoPuller.a(this.this$0), DetailFeedAllInfoPuller.c(this.this$0));
+      DetailFeedAllInfoPuller.b(this.this$0).b((List)localObject2, true, DetailFeedAllInfoPuller.c(this.this$0));
       localObject2 = (CommentManager)SuperManager.a(17);
-      localObject3 = ((CommentManager)localObject2).a(DetailFeedAllInfoPuller.a(this.this$0), DetailFeedAllInfoPuller.a(this.this$0));
-      DetailFeedAllInfoPuller.a(this.this$0).a((List)localObject3, true, DetailFeedAllInfoPuller.a(this.this$0));
-      if (DetailFeedAllInfoPuller.a(this.this$0).a())
+      localObject3 = ((CommentManager)localObject2).a(DetailFeedAllInfoPuller.a(this.this$0), DetailFeedAllInfoPuller.c(this.this$0));
+      DetailFeedAllInfoPuller.b(this.this$0).a((List)localObject3, true, DetailFeedAllInfoPuller.c(this.this$0));
+      if (DetailFeedAllInfoPuller.b(this.this$0).b())
       {
-        localObject1 = ((LikeManager)localObject1).a(DetailFeedAllInfoPuller.a(this.this$0), DetailFeedAllInfoPuller.a(this.this$0) ^ true);
-        DetailFeedAllInfoPuller.a(this.this$0).b((List)localObject1, true, DetailFeedAllInfoPuller.a(this.this$0) ^ true);
-        localObject1 = ((CommentManager)localObject2).a(DetailFeedAllInfoPuller.a(this.this$0), DetailFeedAllInfoPuller.a(this.this$0) ^ true);
-        DetailFeedAllInfoPuller.a(this.this$0).a((List)localObject1, true, DetailFeedAllInfoPuller.a(this.this$0) ^ true);
+        localObject1 = ((LikeManager)localObject1).a(DetailFeedAllInfoPuller.a(this.this$0), DetailFeedAllInfoPuller.c(this.this$0) ^ true);
+        DetailFeedAllInfoPuller.b(this.this$0).b((List)localObject1, true, DetailFeedAllInfoPuller.c(this.this$0) ^ true);
+        localObject1 = ((CommentManager)localObject2).a(DetailFeedAllInfoPuller.a(this.this$0), DetailFeedAllInfoPuller.c(this.this$0) ^ true);
+        DetailFeedAllInfoPuller.b(this.this$0).a((List)localObject1, true, DetailFeedAllInfoPuller.c(this.this$0) ^ true);
       }
     }
-    SLog.a("Q.qqstory.detail.DetailFeedAllInfoPuller", "load feed data from cache: %s.", DetailFeedAllInfoPuller.a(this.this$0).toString());
+    SLog.a("Q.qqstory.detail.DetailFeedAllInfoPuller", "load feed data from cache: %s.", DetailFeedAllInfoPuller.b(this.this$0).toString());
     localObject1 = this.this$0;
-    DetailFeedAllInfoPuller.a((DetailFeedAllInfoPuller)localObject1, DetailFeedAllInfoPuller.a((DetailFeedAllInfoPuller)localObject1), true, new ErrorMessage());
+    DetailFeedAllInfoPuller.a((DetailFeedAllInfoPuller)localObject1, DetailFeedAllInfoPuller.b((DetailFeedAllInfoPuller)localObject1), true, new ErrorMessage());
   }
 }
 

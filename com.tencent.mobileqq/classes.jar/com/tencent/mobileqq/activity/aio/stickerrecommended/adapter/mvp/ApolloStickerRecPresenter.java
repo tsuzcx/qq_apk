@@ -19,23 +19,21 @@ import org.json.JSONObject;
 public class ApolloStickerRecPresenter
   extends CommonStickerRecPresenter
 {
-  private static CopyOnWriteArrayList<IApolloIceBreakShow> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  StickerRecData jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedStickerRecData;
-  ApolloStickerRecView jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpApolloStickerRecView;
+  private static CopyOnWriteArrayList<IApolloIceBreakShow> l = new CopyOnWriteArrayList();
+  ApolloStickerRecView a;
+  StickerRecData b;
   
   public ApolloStickerRecPresenter(AppInterface paramAppInterface, QBaseActivity paramQBaseActivity, BaseAIOContext paramBaseAIOContext, EditText paramEditText)
   {
     super(paramAppInterface, paramQBaseActivity, paramBaseAIOContext, paramEditText);
   }
   
-  public static void a() {}
-  
   private void a(IApolloIceBreakShow paramIApolloIceBreakShow)
   {
-    synchronized (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (l)
     {
-      if (!jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramIApolloIceBreakShow)) {
-        jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramIApolloIceBreakShow);
+      if (!l.contains(paramIApolloIceBreakShow)) {
+        l.add(paramIApolloIceBreakShow);
       }
       return;
     }
@@ -49,9 +47,9 @@ public class ApolloStickerRecPresenter
     StringBuilder localStringBuilder1 = new StringBuilder();
     boolean bool;
     label439:
-    synchronized (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (l)
     {
-      int j = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
+      int j = l.size();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("log apolloIceBreakShows list info count = ");
       ((StringBuilder)localObject2).append(j);
@@ -64,7 +62,7 @@ public class ApolloStickerRecPresenter
         if (i >= j) {
           break;
         }
-        localObject2 = (IApolloIceBreakShow)jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
+        localObject2 = (IApolloIceBreakShow)l.get(i);
         StringBuilder localStringBuilder2 = new StringBuilder();
         localStringBuilder2.append("log No.");
         localStringBuilder2.append(i);
@@ -120,32 +118,14 @@ public class ApolloStickerRecPresenter
     }
   }
   
-  public static void b()
-  {
-    synchronized (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0) {
-        return;
-      }
-      Iterator localIterator = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((IApolloIceBreakShow)localIterator.next()).stop();
-      }
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      return;
-    }
-    for (;;)
-    {
-      throw localObject;
-    }
-  }
+  public static void b() {}
   
   private void b(IApolloIceBreakShow paramIApolloIceBreakShow)
   {
-    synchronized (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (l)
     {
-      if (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramIApolloIceBreakShow)) {
-        jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramIApolloIceBreakShow);
+      if (l.contains(paramIApolloIceBreakShow)) {
+        l.remove(paramIApolloIceBreakShow);
       }
       if (paramIApolloIceBreakShow.isReady()) {
         paramIApolloIceBreakShow.stop();
@@ -154,17 +134,37 @@ public class ApolloStickerRecPresenter
     }
   }
   
-  private void d()
+  public static void d()
+  {
+    synchronized (l)
+    {
+      if (l.size() == 0) {
+        return;
+      }
+      Iterator localIterator = l.iterator();
+      while (localIterator.hasNext()) {
+        ((IApolloIceBreakShow)localIterator.next()).stop();
+      }
+      l.clear();
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
+    }
+  }
+  
+  private void m()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ApolloStickerRec", 2, "sendPic");
     }
-    ApolloStickerRecView localApolloStickerRecView = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpApolloStickerRecView;
+    ApolloStickerRecView localApolloStickerRecView = this.a;
     if ((localApolloStickerRecView != null) && (localApolloStickerRecView.a != null))
     {
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext != null))
+      if ((this.e != null) && (this.g != null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpApolloStickerRecView.a.onSend(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext);
+        this.a.a.onSend(this.e, this.g);
         return;
       }
       QLog.e("ApolloStickerRec", 1, "[sendApolloMsg] error, mBaseChatPie or mQQApp is null!");
@@ -177,7 +177,7 @@ public class ApolloStickerRecPresenter
   
   public IStickerModel a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedStickerRecData;
+    return this.b;
   }
   
   public void a(IStickerView paramIStickerView, IStickerModel paramIStickerModel)
@@ -190,11 +190,11 @@ public class ApolloStickerRecPresenter
     if (!a(paramIStickerModel))
     {
       QLog.e("ApolloStickerRec", 1, "binding model error!");
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpApolloStickerRecView.a(false);
-      b(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpApolloStickerRecView.a);
+      this.a.a(false);
+      b(this.a.a);
       return;
     }
-    paramIStickerModel = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedStickerRecData.e();
+    paramIStickerModel = this.b.n();
     if (QLog.isColorLevel())
     {
       paramIStickerView = new StringBuilder();
@@ -207,17 +207,17 @@ public class ApolloStickerRecPresenter
       }
       QLog.d("ApolloStickerRec", 2, paramIStickerView);
     }
-    if (StringUtil.a(paramIStickerModel)) {
+    if (StringUtil.isEmpty(paramIStickerModel)) {
       return;
     }
     try
     {
       paramIStickerView = new JSONObject(paramIStickerModel);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpApolloStickerRecView.a.setJson(paramIStickerView, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpApolloStickerRecView.a(true);
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpApolloStickerRecView.a);
-      if (StickerRecManagerImpl.isStickerRecFromRemote(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon)) {
-        ((StickerRecData)this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon).a(true);
+      this.a.a.setJson(paramIStickerView, this.i);
+      this.a.a(true);
+      a(this.a.a);
+      if (StickerRecManagerImpl.isStickerRecFromRemote(this.d)) {
+        ((StickerRecData)this.d).a(true);
       }
       return;
     }
@@ -227,22 +227,12 @@ public class ApolloStickerRecPresenter
     }
   }
   
-  public boolean a()
-  {
-    a(null);
-    d();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon != null) && (StickerRecManagerImpl.isStickerRecFromRemote(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon))) {
-      ((StickerRecData)this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon).b(true);
-    }
-    return true;
-  }
-  
   public boolean a(IStickerModel paramIStickerModel)
   {
     super.a(paramIStickerModel);
     if ((paramIStickerModel instanceof StickerRecData))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedStickerRecData = ((StickerRecData)paramIStickerModel);
+      this.b = ((StickerRecData)paramIStickerModel);
       return true;
     }
     return false;
@@ -253,15 +243,25 @@ public class ApolloStickerRecPresenter
     super.a(paramIStickerView);
     if ((paramIStickerView instanceof ApolloStickerRecView))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpApolloStickerRecView = ((ApolloStickerRecView)paramIStickerView);
+      this.a = ((ApolloStickerRecView)paramIStickerView);
       return true;
     }
     return false;
   }
+  
+  public boolean c()
+  {
+    a(null);
+    m();
+    if ((this.d != null) && (StickerRecManagerImpl.isStickerRecFromRemote(this.d))) {
+      ((StickerRecData)this.d).b(true);
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.adapter.mvp.ApolloStickerRecPresenter
  * JD-Core Version:    0.7.0.1
  */

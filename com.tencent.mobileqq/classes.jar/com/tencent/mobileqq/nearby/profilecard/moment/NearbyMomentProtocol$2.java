@@ -19,7 +19,7 @@ final class NearbyMomentProtocol$2
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     paramBundle = new ArrayList();
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     boolean bool1 = false;
     boolean bool2 = false;
     boolean bool4 = true;
@@ -108,7 +108,7 @@ final class NearbyMomentProtocol$2
       bool2 = bool4;
       paramInt = i;
     }
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$GetMomentListCallback;
+    paramArrayOfByte = this.b;
     if (paramArrayOfByte != null) {
       paramArrayOfByte.a(bool1, paramBundle, bool2, paramInt);
     }
@@ -116,7 +116,7 @@ final class NearbyMomentProtocol$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.2
  * JD-Core Version:    0.7.0.1
  */

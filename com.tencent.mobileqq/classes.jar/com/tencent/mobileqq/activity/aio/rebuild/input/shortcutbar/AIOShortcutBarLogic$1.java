@@ -10,15 +10,15 @@ class AIOShortcutBarLogic$1
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
-      ((AIOShortcutBarHelper.OnVisibilityChangedListener)localIterator.next()).a(this.jdField_a_of_type_Int);
+      ((AIOShortcutBarHelper.OnVisibilityChangedListener)localIterator.next()).a(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarLogic.1
  * JD-Core Version:    0.7.0.1
  */

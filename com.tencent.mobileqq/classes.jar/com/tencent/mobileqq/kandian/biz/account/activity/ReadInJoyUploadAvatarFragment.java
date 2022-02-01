@@ -30,20 +30,14 @@ public class ReadInJoyUploadAvatarFragment
   implements IReadInJoyUploadAvatarFragmentConst
 {
   protected static String a = "ReadInJoyUploadAvatarFragment";
-  protected ProgressDialog a;
-  protected Handler a;
-  FileUploadController.FileUploadListener a;
-  
-  public ReadInJoyUploadAvatarFragment()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController$FileUploadListener = new ReadInJoyUploadAvatarFragment.4(this);
-  }
+  protected ProgressDialog b;
+  protected Handler c = new Handler();
+  FileUploadController.FileUploadListener d = new ReadInJoyUploadAvatarFragment.4(this);
   
   private void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
-    new ImageUploadController(BaseApplicationImpl.getContext(), localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController$FileUploadListener).a(paramString, true, 2);
+    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.b();
+    new ImageUploadController(BaseApplicationImpl.getContext(), localQQAppInterface, this.d).a(paramString, true, 2);
   }
   
   private void a(String paramString, Handler paramHandler, int paramInt)
@@ -85,7 +79,7 @@ public class ReadInJoyUploadAvatarFragment
     } else {
       a(paramString);
     }
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("uploadFile: from:");
     localStringBuilder.append(paramInt1);
@@ -97,16 +91,16 @@ public class ReadInJoyUploadAvatarFragment
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(HardCodeUtil.a(2131712830), HardCodeUtil.a(2131712830));
-    setLeftViewName(2131694836);
+    setTitle(HardCodeUtil.a(2131910402), HardCodeUtil.a(2131910402));
+    setLeftViewName(2131892539);
     paramLayoutInflater = getBaseActivity();
     if (paramLayoutInflater == null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "doOnCreateView activity = null");
+      QLog.e(a, 1, "doOnCreateView activity = null");
       return;
     }
     RIJDtReportHelper.a.a(getBaseActivity());
-    this.jdField_a_of_type_AndroidOsHandler.post(new ReadInJoyUploadAvatarFragment.1(this, paramLayoutInflater));
+    this.c.post(new ReadInJoyUploadAvatarFragment.1(this, paramLayoutInflater));
     paramViewGroup = paramLayoutInflater.getIntent();
     paramBundle = paramViewGroup.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
     int i = paramViewGroup.getIntExtra("from", 0);
@@ -115,7 +109,7 @@ public class ReadInJoyUploadAvatarFragment
       Intent localIntent = paramLayoutInflater.getIntent();
       Bundle localBundle = new Bundle();
       localBundle.putInt("retCode", 2);
-      localBundle.putString("msg", HardCodeUtil.a(2131712811));
+      localBundle.putString("msg", HardCodeUtil.a(2131910384));
       localIntent.putExtra("Bundle", localBundle);
       paramLayoutInflater.setResult(-1, localIntent);
       paramLayoutInflater.finish();
@@ -128,7 +122,7 @@ public class ReadInJoyUploadAvatarFragment
   
   protected int getContentLayoutId()
   {
-    return 2131560311;
+    return 2131626357;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -145,7 +139,7 @@ public class ReadInJoyUploadAvatarFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    ProgressDialog localProgressDialog = this.jdField_a_of_type_AndroidAppProgressDialog;
+    ProgressDialog localProgressDialog = this.b;
     if (localProgressDialog != null) {
       localProgressDialog.dismiss();
     }
@@ -162,7 +156,7 @@ public class ReadInJoyUploadAvatarFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.account.activity.ReadInJoyUploadAvatarFragment
  * JD-Core Version:    0.7.0.1
  */

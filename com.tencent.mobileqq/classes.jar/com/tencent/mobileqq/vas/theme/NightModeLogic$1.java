@@ -16,7 +16,7 @@ class NightModeLogic$1
   
   public boolean beforeSwitch(ThemeLocator paramThemeLocator)
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqVasManagerApiIThemeSwitchManager.doScreenShot();
+    this.this$0.b.doScreenShot();
     return false;
   }
   
@@ -29,7 +29,7 @@ class NightModeLogic$1
       localActivity = (Activity)NightModeLogic.a(this.this$0).get();
     }
     if (localActivity != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqVasManagerApiIThemeSwitchManager.openSwitchDialog(localActivity);
+      this.this$0.b.openSwitchDialog(localActivity);
     }
   }
   
@@ -67,7 +67,7 @@ class NightModeLogic$1
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("percent", i);
     ((Bundle)localObject).putInt("start_status", 3);
-    this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.this$0.jdField_a_of_type_AndroidOsHandler, 4099, 1, 0, localObject));
+    this.this$0.e.sendMessage(Message.obtain(this.this$0.e, 4099, 1, 0, localObject));
   }
   
   public boolean postSwitch(int paramInt)
@@ -76,20 +76,20 @@ class NightModeLogic$1
     localBundle.putInt("start_status", 2);
     if (paramInt == 0)
     {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.this$0.jdField_a_of_type_AndroidOsHandler, 4099, 1, 0, localBundle));
+      this.this$0.e.sendMessage(Message.obtain(this.this$0.e, 4099, 1, 0, localBundle));
     }
     else
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqVasManagerApiIThemeSwitchManager.clearOnErr();
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4100);
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.this$0.jdField_a_of_type_AndroidOsHandler, 4099, -2, 0, localBundle));
+      this.this$0.b.clearOnErr();
+      this.this$0.e.sendEmptyMessage(4100);
+      this.this$0.e.sendMessage(Message.obtain(this.this$0.e, 4099, -2, 0, localBundle));
     }
     return super.postSwitch(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.NightModeLogic.1
  * JD-Core Version:    0.7.0.1
  */

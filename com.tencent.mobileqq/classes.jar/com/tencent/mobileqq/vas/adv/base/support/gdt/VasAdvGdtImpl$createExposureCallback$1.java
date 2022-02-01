@@ -21,7 +21,7 @@ final class VasAdvGdtImpl$createExposureCallback$1
     paramWeakReference = (VasExposureReference)localObject;
     if (paramWeakReference != null)
     {
-      this.a.a(paramWeakReference.a());
+      this.a.a(paramWeakReference.b());
       localObject = paramWeakReference.a();
       if (localObject != null)
       {
@@ -40,7 +40,7 @@ final class VasAdvGdtImpl$createExposureCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.support.gdt.VasAdvGdtImpl.createExposureCallback.1
  * JD-Core Version:    0.7.0.1
  */

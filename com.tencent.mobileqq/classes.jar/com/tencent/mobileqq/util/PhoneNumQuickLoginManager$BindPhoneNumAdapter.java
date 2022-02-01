@@ -50,12 +50,12 @@ class PhoneNumQuickLoginManager$BindPhoneNumAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(localContext).inflate(2131561160, null);
+      localView = LayoutInflater.from(localContext).inflate(2131627512, null);
       paramView = new PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder(null);
-      localView.setBackgroundResource(2130841969);
-      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView, (URLImageView)localView.findViewById(2131361872));
-      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView, (TextView)localView.findViewById(2131361909));
-      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.b(paramView, (TextView)localView.findViewById(2131361934));
+      localView.setBackgroundResource(2130842886);
+      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView, (URLImageView)localView.findViewById(2131427426));
+      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView, (TextView)localView.findViewById(2131427463));
+      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.b(paramView, (TextView)localView.findViewById(2131427488));
       PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
       localView.setTag(paramView);
     }
@@ -66,11 +66,11 @@ class PhoneNumQuickLoginManager$BindPhoneNumAdapter
       paramView = (View)localObject;
     }
     Object localObject = (PhoneNumQuickLoginManager.AccountInfo)getItem(paramInt);
-    PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView).setText(PhoneNumQuickLoginManager.AccountInfo.access$600((PhoneNumQuickLoginManager.AccountInfo)localObject));
-    PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.b(paramView).setText(PhoneNumQuickLoginManager.AccountInfo.access$700((PhoneNumQuickLoginManager.AccountInfo)localObject));
+    PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.b(paramView).setText(PhoneNumQuickLoginManager.AccountInfo.access$600((PhoneNumQuickLoginManager.AccountInfo)localObject));
+    PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.c(paramView).setText(PhoneNumQuickLoginManager.AccountInfo.access$700((PhoneNumQuickLoginManager.AccountInfo)localObject));
     if (TextUtils.isEmpty(PhoneNumQuickLoginManager.AccountInfo.access$800((PhoneNumQuickLoginManager.AccountInfo)localObject)))
     {
-      localObject = BitmapFactory.decodeResource(localContext.getResources(), 2130840667);
+      localObject = BitmapFactory.decodeResource(localContext.getResources(), 2130841444);
       PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView).setImageBitmap(AvatarUtil.a((Bitmap)localObject));
     }
     else
@@ -79,8 +79,8 @@ class PhoneNumQuickLoginManager$BindPhoneNumAdapter
       int i = Utils.a(48.0F, localContext.getResources());
       localURLDrawableOptions.mRequestWidth = i;
       localURLDrawableOptions.mRequestHeight = i;
-      localURLDrawableOptions.mLoadingDrawable = localContext.getResources().getDrawable(2131165694);
-      localURLDrawableOptions.mFailedDrawable = localContext.getResources().getDrawable(2131165694);
+      localURLDrawableOptions.mLoadingDrawable = localContext.getResources().getDrawable(2131166157);
+      localURLDrawableOptions.mFailedDrawable = localContext.getResources().getDrawable(2131166157);
       localObject = URLDrawable.getDrawable(PhoneNumQuickLoginManager.AccountInfo.access$800((PhoneNumQuickLoginManager.AccountInfo)localObject), localURLDrawableOptions);
       ((URLDrawable)localObject).setTag(new int[] { i, i });
       ((URLDrawable)localObject).setDecodeHandler(PhoneNumQuickLoginManager.a);
@@ -92,7 +92,7 @@ class PhoneNumQuickLoginManager$BindPhoneNumAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.BindPhoneNumAdapter
  * JD-Core Version:    0.7.0.1
  */

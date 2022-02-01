@@ -12,7 +12,7 @@ public class EncodeUtil
     }
     try
     {
-      String str = URLEncoder.encode(new String(paramString.getBytes(), "UTF-8"), "UTF-8");
+      String str = URLEncoder.encode(paramString);
       return str;
     }
     catch (Exception localException) {}
@@ -21,7 +21,7 @@ public class EncodeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.treasurecard.util.EncodeUtil
  * JD-Core Version:    0.7.0.1
  */

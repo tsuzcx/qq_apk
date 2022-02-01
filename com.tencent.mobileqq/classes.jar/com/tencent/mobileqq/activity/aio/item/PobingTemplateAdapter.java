@@ -30,25 +30,26 @@ public class PobingTemplateAdapter
   extends RecyclerView.Adapter<PobingTemplateAdapter.Holder>
   implements View.OnClickListener, PobingDecoder.DecodeCallBack
 {
-  private static final int[][] jdField_a_of_type_Array2dOfInt;
-  private int jdField_a_of_type_Int = 2000;
-  private PobingTemplateAdapter.Callback jdField_a_of_type_ComTencentMobileqqActivityAioItemPobingTemplateAdapter$Callback;
+  private static final int[][] a;
+  private int b = 2000;
+  private PobingTemplateAdapter.Callback c;
   
   static
   {
-    int[] arrayOfInt1 = { 2001, 2131694934, 2130847299, 1 };
-    int[] arrayOfInt2 = { 2002, 2131694933, 2130847298, 2 };
-    jdField_a_of_type_Array2dOfInt = new int[][] { { 2000, 2131694932, 0, 4 }, arrayOfInt1, arrayOfInt2, { 2003, 2131694931, 2130847297, 3 } };
+    int[] arrayOfInt1 = { 2001, 2131892661, 2130848950, 1 };
+    int[] arrayOfInt2 = { 2002, 2131892660, 2130848949, 2 };
+    int[] arrayOfInt3 = { 2003, 2131892658, 2130848948, 3 };
+    a = new int[][] { { 2000, 2131892659, 0, 4 }, arrayOfInt1, arrayOfInt2, arrayOfInt3 };
   }
   
   public PobingTemplateAdapter(PobingTemplateAdapter.Callback paramCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPobingTemplateAdapter$Callback = paramCallback;
+    this.c = paramCallback;
   }
   
   public static int a(int paramInt)
   {
-    int[][] arrayOfInt = jdField_a_of_type_Array2dOfInt;
+    int[][] arrayOfInt = a;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -64,48 +65,25 @@ public class PobingTemplateAdapter
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public PobingTemplateAdapter.Holder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new PobingTemplateAdapter.Holder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562001, paramViewGroup, false));
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = 0;
-    for (;;)
-    {
-      Object localObject = jdField_a_of_type_Array2dOfInt;
-      if (i >= localObject.length) {
-        break;
-      }
-      if (paramInt == localObject[i][0])
-      {
-        this.jdField_a_of_type_Int = paramInt;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPobingTemplateAdapter$Callback;
-        if (localObject != null) {
-          ((PobingTemplateAdapter.Callback)localObject).a(paramInt);
-        }
-        notifyDataSetChanged();
-        return;
-      }
-      i += 1;
-    }
+    return new PobingTemplateAdapter.Holder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131628427, paramViewGroup, false));
   }
   
   public void a(PobingTemplateAdapter.Holder paramHolder, int paramInt)
   {
-    Object localObject1 = jdField_a_of_type_Array2dOfInt[paramInt];
+    Object localObject1 = a[paramInt];
     int j = 0;
     int k = localObject1[0];
     int i = localObject1[2];
-    Object localObject2 = paramHolder.jdField_a_of_type_AndroidWidgetTextView;
+    Object localObject2 = paramHolder.b;
     boolean bool = true;
     ((TextView)localObject2).setText(localObject1[1]);
-    paramHolder.b.setImageResource(i);
-    localObject1 = paramHolder.b;
+    paramHolder.c.setImageResource(i);
+    localObject1 = paramHolder.c;
     if (i != 0) {
       i = 0;
     } else {
@@ -113,21 +91,21 @@ public class PobingTemplateAdapter
     }
     ((ImageView)localObject1).setVisibility(i);
     localObject1 = PobingDecoder.a(PobingManager.b(k));
-    paramHolder.jdField_a_of_type_AndroidWidgetImageView.setId(k);
-    paramHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    localObject2 = paramHolder.jdField_a_of_type_AndroidWidgetImageView;
+    paramHolder.a.setId(k);
+    paramHolder.a.setOnClickListener(this);
+    localObject2 = paramHolder.a;
     if (localObject1 == null) {
       bool = false;
     }
     ((ImageView)localObject2).setClickable(bool);
-    localObject2 = paramHolder.jdField_a_of_type_AndroidWidgetImageView;
-    if (k == this.jdField_a_of_type_Int) {
-      i = 2130840575;
+    localObject2 = paramHolder.a;
+    if (k == this.b) {
+      i = 2130841341;
     } else {
       i = 0;
     }
     ((ImageView)localObject2).setImageResource(i);
-    localObject2 = paramHolder.jdField_a_of_type_AndroidWidgetProgressBar;
+    localObject2 = paramHolder.d;
     if (localObject1 == null) {
       i = j;
     } else {
@@ -138,18 +116,18 @@ public class PobingTemplateAdapter
     {
       if (k == 2003)
       {
-        localObject1 = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", new ApngOptions(), ((PobingDecoder.BitmapsCache)localObject1).a(2131372888));
-        paramHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject1);
+        localObject1 = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", new ApngOptions(), ((PobingDecoder.BitmapsCache)localObject1).a(2131440451));
+        paramHolder.a.setBackgroundDrawable((Drawable)localObject1);
       }
       else
       {
-        localObject2 = paramHolder.jdField_a_of_type_AndroidWidgetImageView.getResources();
-        paramHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Resources)localObject2, (Bitmap)((PobingDecoder.BitmapsCache)localObject1).a.get(Integer.valueOf(2131372888))));
+        localObject2 = paramHolder.a.getResources();
+        paramHolder.a.setBackgroundDrawable(new BitmapDrawable((Resources)localObject2, (Bitmap)((PobingDecoder.BitmapsCache)localObject1).c.get(Integer.valueOf(2131440451))));
       }
     }
     else
     {
-      paramHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+      paramHolder.a.setBackgroundDrawable(null);
       new PobingDecoder(k, TroopPobingItemView.b, this);
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramHolder, paramInt, getItemId(paramInt));
@@ -164,12 +142,35 @@ public class PobingTemplateAdapter
     ThreadManagerV2.getUIHandlerV2().post(new PobingTemplateAdapter.1(this, paramDecodeData));
   }
   
-  void b(int paramInt)
+  public void b(int paramInt)
   {
     int i = 0;
     for (;;)
     {
-      int[][] arrayOfInt = jdField_a_of_type_Array2dOfInt;
+      Object localObject = a;
+      if (i >= localObject.length) {
+        break;
+      }
+      if (paramInt == localObject[i][0])
+      {
+        this.b = paramInt;
+        localObject = this.c;
+        if (localObject != null) {
+          ((PobingTemplateAdapter.Callback)localObject).a(paramInt);
+        }
+        notifyDataSetChanged();
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  void c(int paramInt)
+  {
+    int i = 0;
+    for (;;)
+    {
+      int[][] arrayOfInt = a;
       if (i >= arrayOfInt.length) {
         break;
       }
@@ -184,20 +185,20 @@ public class PobingTemplateAdapter
   
   public int getItemCount()
   {
-    return jdField_a_of_type_Array2dOfInt.length;
+    return a.length;
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    a(i);
+    b(i);
     ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A4F9", a(i), 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PobingTemplateAdapter
  * JD-Core Version:    0.7.0.1
  */

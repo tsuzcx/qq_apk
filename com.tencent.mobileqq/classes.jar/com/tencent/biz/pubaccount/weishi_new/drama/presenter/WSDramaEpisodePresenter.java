@@ -18,53 +18,53 @@ public class WSDramaEpisodePresenter
     this.a = new WeakReference(paramView);
   }
   
-  public WSDramaEpisodeContract.View a()
+  public void a()
   {
-    return (WSDramaEpisodeContract.View)this.a.get();
+    WSDramaEpisodeContract.View localView = b();
+    if (localView == null) {
+      return;
+    }
+    WSDramaDataManager.a().a(localView.l(), new WSDramaEpisodePresenter.1(this, localView));
   }
-  
-  public void a() {}
   
   public void a(@NonNull WSDramaEpisodeContract.View paramView) {}
   
   public void a(String paramString, int paramInt)
   {
-    WSDramaEpisodeContract.View localView = a();
+    WSDramaEpisodeContract.View localView = b();
     if (localView != null)
     {
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      paramString = new WSDramaFeedsParams(localView.b(), paramString, paramInt, -1);
+      paramString = new WSDramaFeedsParams(localView.l(), paramString, paramInt, -1);
       WSDramaDataManager.a().a(paramString, new WSDramaEpisodePresenter.3(this, localView));
     }
   }
   
   public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    WSDramaEpisodeContract.View localView = a();
+    WSDramaEpisodeContract.View localView = b();
     if (localView == null) {
       return;
     }
-    paramString = new WSDramaFeedsParams(localView.b(), paramString, paramInt, -1);
+    paramString = new WSDramaFeedsParams(localView.l(), paramString, paramInt, -1);
     paramString.b(true);
     WSDramaDataManager.a().a(paramString, new WSDramaEpisodePresenter.2(this, localView));
   }
   
-  public void b() {}
-  
-  public void c()
+  public WSDramaEpisodeContract.View b()
   {
-    WSDramaEpisodeContract.View localView = a();
-    if (localView == null) {
-      return;
-    }
-    WSDramaDataManager.a().a(localView.b(), new WSDramaEpisodePresenter.1(this, localView));
+    return (WSDramaEpisodeContract.View)this.a.get();
   }
+  
+  public void destroy() {}
+  
+  public void detachView() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.presenter.WSDramaEpisodePresenter
  * JD-Core Version:    0.7.0.1
  */

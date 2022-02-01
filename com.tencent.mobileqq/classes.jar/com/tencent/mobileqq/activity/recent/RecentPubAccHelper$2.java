@@ -25,12 +25,12 @@ class RecentPubAccHelper$2
       ((StringBuilder)localObject).append("unfollow isSuccess:");
       ((StringBuilder)localObject).append(String.valueOf(paramBoolean));
       ((StringBuilder)localObject).append(", uin: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
+      ((StringBuilder)localObject).append(this.a.getRecentUserUin());
       QLog.d("RecentPubAccHelper", 2, ((StringBuilder)localObject).toString());
     }
     if (!paramBoolean)
     {
-      RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, 2131695217);
+      RecentPubAccHelper.a(this.c, 2131892951);
       return;
     }
     try
@@ -45,14 +45,14 @@ class RecentPubAccHelper$2
           if (QLog.isColorLevel()) {
             QLog.d("RecentPubAccHelper", 2, "unfollow success");
           }
-          RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          StructLongMessageDownloadProcessor.deleteTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-          ((TroopBindPublicAccountMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-          RecentPubAccHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          RecentPubAccHelper.a(this.c, this.a, this.b);
+          StructLongMessageDownloadProcessor.deleteTask(this.b, this.a.getRecentUserUin());
+          ((TroopBindPublicAccountMgr)this.b.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(this.a.getRecentUserUin());
+          RecentPubAccHelper.b(this.c, this.a, this.b);
         }
         else
         {
-          RecentPubAccHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, 2131695217);
+          RecentPubAccHelper.b(this.c, 2131892951);
         }
       }
     }
@@ -61,12 +61,12 @@ class RecentPubAccHelper$2
       label219:
       break label219;
     }
-    RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper);
+    RecentPubAccHelper.a(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentPubAccHelper.2
  * JD-Core Version:    0.7.0.1
  */

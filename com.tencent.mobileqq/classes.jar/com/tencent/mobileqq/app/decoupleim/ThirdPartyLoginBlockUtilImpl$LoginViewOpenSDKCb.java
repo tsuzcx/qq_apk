@@ -23,7 +23,7 @@ public class ThirdPartyLoginBlockUtilImpl$LoginViewOpenSDKCb
     this.a = new WeakReference(paramQBaseActivity);
   }
   
-  private boolean a()
+  private boolean b()
   {
     if (this.a == null)
     {
@@ -36,7 +36,7 @@ public class ThirdPartyLoginBlockUtilImpl$LoginViewOpenSDKCb
   public void a()
   {
     QLog.d("ThirdPartyLoginUtilImpl", 1, "onLoginFailed");
-    if (a()) {
+    if (b()) {
       return;
     }
     QBaseActivity localQBaseActivity = (QBaseActivity)this.a.get();
@@ -45,14 +45,14 @@ public class ThirdPartyLoginBlockUtilImpl$LoginViewOpenSDKCb
       QLog.e("ThirdPartyLoginUtilImpl", 1, "onLoginFailed error: activity == null");
       return;
     }
-    QQToast.a(localQBaseActivity, 2131699704, 0).a();
+    QQToast.makeText(localQBaseActivity, 2131897737, 0).show();
   }
   
   public void a(String paramString)
   {
     QLog.d("ThirdPartyLoginUtilImpl", 1, "onLoginSuccess");
     ReportController.a(null, "dc00898", "", "", "0X800B18A", "0X800B18A", 0, 0, "", "", "", "");
-    if (a()) {
+    if (b()) {
       return;
     }
     QBaseActivity localQBaseActivity = (QBaseActivity)this.a.get();
@@ -66,7 +66,7 @@ public class ThirdPartyLoginBlockUtilImpl$LoginViewOpenSDKCb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.decoupleim.ThirdPartyLoginBlockUtilImpl.LoginViewOpenSDKCb
  * JD-Core Version:    0.7.0.1
  */

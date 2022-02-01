@@ -92,7 +92,7 @@ public class ProfileStickyNoteComponent
       if (this.mViewContainer == null)
       {
         localObject = new ProfileContentTitleView(this.mActivity);
-        ((ProfileContentTitleView)localObject).setTitle(this.mActivity.getString(2131691193));
+        ((ProfileContentTitleView)localObject).setTitle(this.mActivity.getString(2131888139));
         ((ProfileContentTitleView)localObject).setArrowEnable(false);
         ((ProfileContentTitleView)localObject).setMarginBottomEnable(false);
         ((ProfileContentTitleView)localObject).setVisibility(8);
@@ -182,7 +182,7 @@ public class ProfileStickyNoteComponent
     }
     if (paramButton != null) {
       if (ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData)) {
-        paramButton.setTextColor(paramButton.getResources().getColor(2131167089));
+        paramButton.setTextColor(paramButton.getResources().getColor(2131168041));
       } else {
         super.updateItemTheme(paramButton, null);
       }
@@ -192,7 +192,7 @@ public class ProfileStickyNoteComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.stickynote.ProfileStickyNoteComponent
  * JD-Core Version:    0.7.0.1
  */

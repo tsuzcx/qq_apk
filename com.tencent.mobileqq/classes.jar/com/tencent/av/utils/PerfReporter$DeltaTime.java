@@ -4,30 +4,23 @@ import java.util.Vector;
 
 class PerfReporter$DeltaTime
 {
-  public long a;
-  public PerfReporter.CalResult a;
-  public Vector<Integer> a;
-  
-  private PerfReporter$DeltaTime()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilVector = new Vector(10000);
-    this.jdField_a_of_type_ComTencentAvUtilsPerfReporter$CalResult = new PerfReporter.CalResult(null);
-  }
+  public long a = 0L;
+  public Vector<Integer> b = new Vector(10000);
+  public PerfReporter.CalResult c = new PerfReporter.CalResult(null);
   
   public void a()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilVector.clear();
+    this.a = 0L;
+    this.b.clear();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DeltaTime{start=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", deltas=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilVector);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

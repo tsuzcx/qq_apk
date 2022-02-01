@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rotate android:fromDegrees="270.0" android:toDegrees="270.0"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <shape android:shape="ring" android:innerRadiusRatio="2.5" android:useLevel="true" android:thickness="8.0dip">
-        <gradient android:startColor="#ff007dd6" android:endColor="#ff007dd6" android:useLevel="false" android:angle="0.0" android:type="sweep" />
-    </shape>
-</rotate>
+    <item android:state_pressed="false" android:drawable="@drawable/bj6" />
+    <item android:state_pressed="true" android:drawable="@drawable/bj7" />
+</selector>

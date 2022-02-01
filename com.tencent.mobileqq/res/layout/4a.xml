@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@drawable/3i" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/idz" android:background="@color/black" android:visibility="visible" layout="@layout/is" />
+    <TextView android:textSize="17.0sp" android:textColor="#ff8e8e93" android:gravity="center_horizontal" android:id="@id/qma" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="124.0dip" android:text="@string/wep" android:layout_below="@id/idz" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:gravity="center" android:id="@id/qjs" android:background="@drawable/42" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:visibility="invisible" android:layout_width="90.0dip" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/wc5" android:layout_below="@id/qma" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/o5x" android:visibility="invisible" android:layout_width="26.0dip" android:layout_height="26.0dip" android:src="@drawable/3h" android:layout_below="@id/qjs" android:layout_centerHorizontal="true" />
+    <androidx.recyclerview.widget.RecyclerView android:layout_gravity="center_horizontal" android:id="@id/psi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-26.0dip" android:layout_below="@id/o5x" android:layout_centerHorizontal="true" />
+    <include android:layout_width="fill_parent" android:layout_height="216.0dip" android:layout_alignParentBottom="true" layout="@layout/aoz" />
+</RelativeLayout>

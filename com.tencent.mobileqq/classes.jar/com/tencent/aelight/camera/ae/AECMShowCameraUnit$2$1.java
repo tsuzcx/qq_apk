@@ -17,20 +17,20 @@ class AECMShowCameraUnit$2$1
       AECMShowCameraUnit.a(this.a.this$0, (String)paramHashMap.get("video_limishow_base"));
       if (AECMShowCameraUnit.a(this.a.this$0))
       {
-        this.a.this$0.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.queueEvent(new AECMShowCameraUnit.2.1.1(this));
-        this.a.this$0.d = true;
-        AEQLog.a(this.a.this$0.jdField_a_of_type_JavaLangString, "[fetchMaterialPath] onComplete: 完成设置素材");
+        this.a.this$0.h.queueEvent(new AECMShowCameraUnit.2.1.1(this));
+        this.a.this$0.H = true;
+        AEQLog.a(this.a.this$0.a, "[fetchMaterialPath] onComplete: 完成设置素材");
       }
     }
     else
     {
-      AEQLog.d(this.a.this$0.jdField_a_of_type_JavaLangString, "[fetchMaterialPath] onComplete: 请求base资源失败");
+      AEQLog.d(this.a.this$0.a, "[fetchMaterialPath] onComplete: 请求base资源失败");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AECMShowCameraUnit.2.1
  * JD-Core Version:    0.7.0.1
  */

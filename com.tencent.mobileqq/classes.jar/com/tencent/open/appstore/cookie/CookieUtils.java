@@ -19,16 +19,16 @@ public class CookieUtils
       paramString = Uri.parse(paramString);
       if ((paramString != null) && (paramString.getHost() != null))
       {
-        bool = a(paramString.getHost().toLowerCase());
+        bool = b(paramString.getHost().toLowerCase());
         if (!bool) {
           return;
         }
-        paramString = new CookieSyncManagerImpl(CommonDataAdapter.a().a());
+        paramString = new CookieSyncManagerImpl(CommonDataAdapter.a().b());
         CookieManagerImpl localCookieManagerImpl = new CookieManagerImpl();
         localCookieManagerImpl.a(true);
-        long l = CommonDataAdapter.a().a();
+        long l = CommonDataAdapter.a().c();
         String str = MobileInfoUtil.getImei();
-        Object localObject = CommonDataAdapter.a().a();
+        Object localObject = CommonDataAdapter.a().e();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("uin=");
         localStringBuilder.append(l);
@@ -58,7 +58,7 @@ public class CookieUtils
     finally {}
   }
   
-  public static boolean a(String paramString)
+  public static boolean b(String paramString)
   {
     if ((!TextUtils.isEmpty(paramString)) && ((paramString.endsWith(".qq.com")) || (paramString.endsWith(".myapp.com")) || (paramString.endsWith(".3gqq.com")) || (paramString.endsWith(".qzone.com"))))
     {
@@ -79,7 +79,7 @@ public class CookieUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.cookie.CookieUtils
  * JD-Core Version:    0.7.0.1
  */

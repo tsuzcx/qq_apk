@@ -8,16 +8,16 @@ import android.widget.ImageView;
 class AEGIFTextEditFragment$14
   implements TextWatcher
 {
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
   
   AEGIFTextEditFragment$14(AEGIFTextEditFragment paramAEGIFTextEditFragment) {}
   
   public void afterTextChanged(Editable paramEditable)
   {
     if (paramEditable.length() > 0) {
-      AEGIFTextEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment).setVisibility(0);
+      AEGIFTextEditFragment.k(this.b).setVisibility(0);
     } else {
-      AEGIFTextEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment).setVisibility(4);
+      AEGIFTextEditFragment.k(this.b).setVisibility(4);
     }
     int i = 0;
     int k = 0;
@@ -42,25 +42,25 @@ class AEGIFTextEditFragment$14
           n = m;
         }
       }
-      k += AEGIFTextEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment, c);
-      if ((k > 16) && (!this.jdField_a_of_type_Boolean))
+      k += AEGIFTextEditFragment.a(this.b, c);
+      if ((k > 16) && (!this.a))
       {
-        AEGIFTextEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment).removeTextChangedListener(this);
+        AEGIFTextEditFragment.f(this.b).removeTextChangedListener(this);
         if (n == 0) {
-          AEGIFTextEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment).setText(paramEditable.insert(j, "\r\n"));
+          AEGIFTextEditFragment.f(this.b).setText(paramEditable.insert(j, "\r\n"));
         } else {
-          AEGIFTextEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment).setText(paramEditable.insert(i, "\r\n"));
+          AEGIFTextEditFragment.f(this.b).setText(paramEditable.insert(i, "\r\n"));
         }
-        AEGIFTextEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment).setSelection(paramEditable.length());
-        this.jdField_a_of_type_Boolean = true;
-        AEGIFTextEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment).addTextChangedListener(this);
+        AEGIFTextEditFragment.f(this.b).setSelection(paramEditable.length());
+        this.a = true;
+        AEGIFTextEditFragment.f(this.b).addTextChangedListener(this);
         return;
       }
       i += 1;
       m = n;
     }
     if (k <= 16) {
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
     }
   }
   
@@ -70,7 +70,7 @@ class AEGIFTextEditFragment$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFTextEditFragment.14
  * JD-Core Version:    0.7.0.1
  */

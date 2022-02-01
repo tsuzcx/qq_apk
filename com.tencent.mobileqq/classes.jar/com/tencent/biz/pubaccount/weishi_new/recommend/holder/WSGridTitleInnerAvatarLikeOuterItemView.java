@@ -17,32 +17,32 @@ public class WSGridTitleInnerAvatarLikeOuterItemView
     super(paramContext, paramView, paramWSRecommendAdapter);
   }
   
-  protected int a()
-  {
-    return 1;
-  }
-  
-  protected boolean a()
-  {
-    return TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.feed_desc) ^ true;
-  }
-  
   public void b()
   {
     super.b();
-    a(2131369028, new WSGridFeedInnerTitleController(this.jdField_a_of_type_AndroidContentContext));
-    a(2131369035, new WSGridFeedOuterAvatarController(this.jdField_a_of_type_AndroidContentContext));
-    a(2131369036, new WSGridFeedOuterLikeCountController(this.jdField_a_of_type_AndroidContentContext));
+    a(2131435991, new WSGridFeedInnerTitleController(this.b));
+    a(2131435998, new WSGridFeedOuterAvatarController(this.b));
+    a(2131435999, new WSGridFeedOuterLikeCountController(this.b));
   }
   
-  protected boolean b()
+  protected boolean e()
+  {
+    return TextUtils.isEmpty(this.d.feed_desc) ^ true;
+  }
+  
+  protected boolean f()
   {
     return true;
+  }
+  
+  protected int g()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridTitleInnerAvatarLikeOuterItemView
  * JD-Core Version:    0.7.0.1
  */

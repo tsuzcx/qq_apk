@@ -26,12 +26,12 @@ class VideoViewTextureImpl$3
         i = 3;
       }
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnInfoListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl, i, Integer.valueOf(paramInt2));
+    return this.a.a(this.b, i, Integer.valueOf(paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl.3
  * JD-Core Version:    0.7.0.1
  */

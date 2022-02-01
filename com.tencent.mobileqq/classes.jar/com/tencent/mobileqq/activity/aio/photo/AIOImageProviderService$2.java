@@ -11,67 +11,67 @@ class AIOImageProviderService$2
   
   public void a(int paramInt, PicResult paramPicResult)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+    Object localObject = this.f.y;
     long l;
     int i;
     StringBuilder localStringBuilder;
     if (localObject != null) {
-      if (paramPicResult.jdField_a_of_type_Int == 0)
+      if (paramPicResult.a == 0)
       {
-        ((IAIOImageProviderCallBack)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramPicResult.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        ((IAIOImageProviderCallBack)localObject).a(this.a, this.b, this.c, 1, this.e, paramPicResult.e);
+        this.f.a(this.a, this.b, this.c, this.e);
       }
       else
       {
-        l = this.jdField_a_of_type_Long;
-        paramInt = this.jdField_a_of_type_Int;
-        i = this.jdField_b_of_type_Int;
+        l = this.a;
+        paramInt = this.b;
+        i = this.c;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("step:");
-        localStringBuilder.append(paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramPicResult.b.a);
         localStringBuilder.append(", desc:");
-        localStringBuilder.append(paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b);
-        ((IAIOImageProviderCallBack)localObject).a(l, paramInt, i, 2, localStringBuilder.toString(), paramPicResult.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
+        localStringBuilder.append(paramPicResult.b.b);
+        ((IAIOImageProviderCallBack)localObject).a(l, paramInt, i, 2, localStringBuilder.toString(), paramPicResult.e);
+        this.f.a(this.a, this.b, this.c, "I:E");
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService$AIOImageProviderListener;
+    localObject = this.f.u;
     if (localObject != null)
     {
-      if (paramPicResult.jdField_a_of_type_Int == 0)
+      if (paramPicResult.a == 0)
       {
-        ((AIOImageProviderService.AIOImageProviderListener)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramPicResult.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        ((AIOImageProviderService.AIOImageProviderListener)localObject).a(this.a, this.b, this.c, 1, this.e, paramPicResult.e);
+        this.f.a(this.a, this.b, this.c, this.e);
         return;
       }
-      l = this.jdField_a_of_type_Long;
-      paramInt = this.jdField_a_of_type_Int;
-      i = this.jdField_b_of_type_Int;
+      l = this.a;
+      paramInt = this.b;
+      i = this.c;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("step:");
-      localStringBuilder.append(paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramPicResult.b.a);
       localStringBuilder.append(", desc:");
-      localStringBuilder.append(paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b);
-      ((AIOImageProviderService.AIOImageProviderListener)localObject).a(l, paramInt, i, 2, localStringBuilder.toString(), paramPicResult.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
+      localStringBuilder.append(paramPicResult.b.b);
+      ((AIOImageProviderService.AIOImageProviderListener)localObject).a(l, paramInt, i, 2, localStringBuilder.toString(), paramPicResult.e);
+      this.f.a(this.a, this.b, this.c, "I:E");
     }
   }
   
   public void a_(int paramInt, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+    Object localObject = this.f.y;
     if (localObject != null) {
-      ((IAIOImageProviderCallBack)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+      ((IAIOImageProviderCallBack)localObject).a(this.a, this.b, this.c, paramInt, this.d, paramBoolean);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService$AIOImageProviderListener;
+    localObject = this.f.u;
     if (localObject != null) {
-      ((AIOImageProviderService.AIOImageProviderListener)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+      ((AIOImageProviderService.AIOImageProviderListener)localObject).a(this.a, this.b, this.c, paramInt, this.d, paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.2
  * JD-Core Version:    0.7.0.1
  */

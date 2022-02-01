@@ -17,22 +17,25 @@ public class Log
   
   public static void ddf(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (!isReleaseMode()) {
+    if (!isReleaseMode())
+    {
       if (getLogger() == null) {
         return;
       }
+      try
+      {
+        paramVarArgs = String.format(paramString2, paramVarArgs);
+        paramString2 = paramVarArgs;
+      }
+      catch (Exception paramVarArgs)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("format exception");
+        localStringBuilder.append(paramVarArgs);
+        d(paramString1, localStringBuilder.toString());
+      }
+      d(paramString1, paramString2);
     }
-    try
-    {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-    }
-    catch (Exception paramVarArgs)
-    {
-      label21:
-      break label21;
-    }
-    d(paramString1, paramString2);
   }
   
   public static void e(String paramString1, String paramString2)
@@ -91,7 +94,7 @@ public class Log
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.Log
  * JD-Core Version:    0.7.0.1
  */

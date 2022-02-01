@@ -12,19 +12,19 @@ final class DrawerCoverUtil$4
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable(this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable);
-    if (this.jdField_a_of_type_Boolean)
+    this.a.getCoverView().setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.a.getCoverView().setImageDrawable(this.b);
+    if (this.c)
     {
-      this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable.resume();
+      this.b.resume();
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable.stop();
+    this.b.stop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.DrawerCoverUtil.4
  * JD-Core Version:    0.7.0.1
  */

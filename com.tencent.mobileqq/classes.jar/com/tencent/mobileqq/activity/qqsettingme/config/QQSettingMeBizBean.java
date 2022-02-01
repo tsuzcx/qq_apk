@@ -12,76 +12,36 @@ import org.json.JSONObject;
 public class QQSettingMeBizBean
   implements Comparable<QQSettingMeBizBean>
 {
-  private int jdField_a_of_type_Int;
-  private QQSettingMeItemData jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeItemData;
-  private QQSettingMeBizBean.Action jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean$Action;
-  private QQSettingMeBizBean.Title jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean$Title;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
+  private String a;
+  private QQSettingMeBizBean.Title b;
+  private String c;
+  private String d;
   private String e;
+  private String f;
+  private QQSettingMeBizBean.Action g;
+  private int h;
+  private boolean i;
+  private boolean j;
+  private boolean k;
+  private boolean l;
+  private QQSettingMeItemData m;
   
   public QQSettingMeBizBean() {}
   
   public QQSettingMeBizBean(String paramString1, int paramInt, QQSettingMeBizBean.Title paramTitle, String paramString2, String paramString3, QQSettingMeBizBean.Action paramAction, String paramString4, String paramString5, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean$Title = paramTitle;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean$Action = paramAction;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    this.jdField_d_of_type_Boolean = paramBoolean4;
-  }
-  
-  private static QQSettingMeBizBean.ActionType a(String paramString)
-  {
-    int i = paramString.hashCode();
-    if (i != -1052618729)
-    {
-      if (i != 117588)
-      {
-        if ((i == 1064526442) && (paramString.equals("miniapp")))
-        {
-          i = 2;
-          break label70;
-        }
-      }
-      else if (paramString.equals("web"))
-      {
-        i = 1;
-        break label70;
-      }
-    }
-    else if (paramString.equals("native"))
-    {
-      i = 0;
-      break label70;
-    }
-    i = -1;
-    label70:
-    if (i != 0)
-    {
-      if (i != 1)
-      {
-        if (i != 2) {
-          return QQSettingMeBizBean.ActionType.DEFAULT;
-        }
-        return QQSettingMeBizBean.ActionType.MINIAPP;
-      }
-      return QQSettingMeBizBean.ActionType.WEB;
-    }
-    return QQSettingMeBizBean.ActionType.SCHEMA;
+    this.a = paramString1;
+    this.h = paramInt;
+    this.b = paramTitle;
+    this.c = paramString2;
+    this.d = paramString3;
+    this.g = paramAction;
+    this.e = paramString4;
+    this.f = paramString5;
+    this.i = paramBoolean1;
+    this.j = paramBoolean2;
+    this.k = paramBoolean3;
+    this.l = paramBoolean4;
   }
   
   public static QQSettingMeBizBean a(JSONObject paramJSONObject)
@@ -120,83 +80,83 @@ public class QQSettingMeBizBean
       break;
     case 2098843321: 
       if (str.equals("d_lovespace")) {
-        i = 4;
+        n = 4;
       }
       break;
     case 1991551892: 
       if (str.equals("d_qqwallet")) {
-        i = 1;
+        n = 1;
       }
       break;
     case 945870491: 
       if (str.equals("d_vip_identity")) {
-        i = 0;
+        n = 0;
       }
       break;
     case 300984171: 
       if (str.equals("d_decoration")) {
-        i = 2;
+        n = 2;
       }
       break;
     case -891922579: 
       if (str.equals("d_vip_card")) {
-        i = 3;
+        n = 3;
       }
       break;
     case -1727290544: 
       if (str.equals("d_tencent_document")) {
-        i = 6;
+        n = 6;
       }
       break;
     case -2074746548: 
       if (str.equals("d_qq_shopping")) {
-        i = 5;
+        n = 5;
       }
       break;
     }
-    int i = -1;
-    switch (i)
+    int n = -1;
+    switch (n)
     {
     default: 
       paramJSONObject = paramJSONObject.getJSONObject("default");
-      localTitle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zh");
-      localTitle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("en");
+      localTitle.a = paramJSONObject.getString("zh");
+      localTitle.b = paramJSONObject.getString("en");
       paramJSONObject = localTitle;
       break;
     case 6: 
       paramJSONObject = paramJSONObject.getJSONObject("myTXDocs");
-      localTitle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zh");
-      localTitle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("en");
+      localTitle.a = paramJSONObject.getString("zh");
+      localTitle.b = paramJSONObject.getString("en");
       paramJSONObject = localTitle;
       break;
     case 5: 
       paramJSONObject = paramJSONObject.getJSONObject("myshopping");
-      localTitle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zh");
-      localTitle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("en");
+      localTitle.a = paramJSONObject.getString("zh");
+      localTitle.b = paramJSONObject.getString("en");
       paramJSONObject = localTitle;
       break;
     case 4: 
       paramJSONObject = paramJSONObject.getJSONObject("lovespace");
-      localTitle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zh");
-      localTitle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("en");
+      localTitle.a = paramJSONObject.getString("zh");
+      localTitle.b = paramJSONObject.getString("en");
       paramJSONObject = localTitle;
       break;
     case 3: 
       paramJSONObject = paramJSONObject.getJSONObject("freetraffic");
-      localTitle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zh");
-      localTitle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("en");
+      localTitle.a = paramJSONObject.getString("zh");
+      localTitle.b = paramJSONObject.getString("en");
       paramJSONObject = localTitle;
       break;
     case 2: 
       paramJSONObject = paramJSONObject.getJSONObject("decoration");
-      localTitle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zh");
-      localTitle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("en");
+      localTitle.a = paramJSONObject.getString("zh");
+      localTitle.b = paramJSONObject.getString("en");
       paramJSONObject = localTitle;
       break;
     case 1: 
       paramJSONObject = paramJSONObject.getJSONObject("wallet");
-      localTitle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zh");
-      localTitle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("en");
+      localTitle.a = paramJSONObject.getString("zh");
+      localTitle.b = paramJSONObject.getString("en");
       paramJSONObject = localTitle;
       break;
     case 0: 
@@ -207,160 +167,200 @@ public class QQSettingMeBizBean
   
   private static void b(QQSettingMeBizBean paramQQSettingMeBizBean, JSONObject paramJSONObject)
   {
-    paramQQSettingMeBizBean.a(new QQSettingMeBizBean.Action(a(paramJSONObject.getString("actionType")), paramJSONObject.optString("actionUrl")));
+    paramQQSettingMeBizBean.a(new QQSettingMeBizBean.Action(f(paramJSONObject.getString("actionType")), paramJSONObject.optString("actionUrl")));
+  }
+  
+  private static QQSettingMeBizBean.ActionType f(String paramString)
+  {
+    int n = paramString.hashCode();
+    if (n != -1052618729)
+    {
+      if (n != 117588)
+      {
+        if ((n == 1064526442) && (paramString.equals("miniapp")))
+        {
+          n = 2;
+          break label70;
+        }
+      }
+      else if (paramString.equals("web"))
+      {
+        n = 1;
+        break label70;
+      }
+    }
+    else if (paramString.equals("native"))
+    {
+      n = 0;
+      break label70;
+    }
+    n = -1;
+    label70:
+    if (n != 0)
+    {
+      if (n != 1)
+      {
+        if (n != 2) {
+          return QQSettingMeBizBean.ActionType.DEFAULT;
+        }
+        return QQSettingMeBizBean.ActionType.MINIAPP;
+      }
+      return QQSettingMeBizBean.ActionType.WEB;
+    }
+    return QQSettingMeBizBean.ActionType.SCHEMA;
   }
   
   public int a(QQSettingMeBizBean paramQQSettingMeBizBean)
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = paramQQSettingMeBizBean.jdField_a_of_type_Int;
-    if (i < j) {
+    int n = this.h;
+    int i1 = paramQQSettingMeBizBean.h;
+    if (n < i1) {
       return -1;
     }
-    if (i > j) {
+    if (n > i1) {
       return 1;
     }
     return 0;
   }
   
-  public View a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeItemData.a();
-  }
-  
-  public QQSettingMeItemData a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeItemData;
-  }
-  
-  public QQSettingMeBizBean.Action a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean$Action;
-  }
-  
-  public QQSettingMeBizBean.Title a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean$Title;
-  }
-  
-  public RedTouchTextView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeItemData.a();
-  }
-  
-  public RedTouch a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeItemData.a();
-  }
-  
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public void a(QQSettingMeItemData paramQQSettingMeItemData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeItemData = paramQQSettingMeItemData;
+    this.m = paramQQSettingMeItemData;
   }
   
   public void a(QQSettingMeBizBean.Action paramAction)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean$Action = paramAction;
+    this.g = paramAction;
   }
   
   public void a(QQSettingMeBizBean.Title paramTitle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean$Title = paramTitle;
+    this.b = paramTitle;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
   }
   
-  public boolean a()
+  public QQSettingMeBizBean.Title b()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.e;
+    return this.b;
   }
   
   public void b(String paramString)
   {
-    this.e = paramString;
+    this.f = paramString;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    this.j = paramBoolean;
   }
   
   public String c()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.f;
   }
   
   public void c(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_c_of_type_Boolean;
+    this.k = paramBoolean;
   }
   
   public String d()
   {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.c;
   }
   
   public void d(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void d(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.l = paramBoolean;
   }
   
   public String e()
   {
-    return this.jdField_d_of_type_JavaLangString;
+    return this.d;
   }
   
   public void e(String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    this.e = paramString;
+  }
+  
+  public String f()
+  {
+    return this.e;
+  }
+  
+  public QQSettingMeBizBean.Action g()
+  {
+    return this.g;
+  }
+  
+  public boolean h()
+  {
+    return this.i;
+  }
+  
+  public boolean i()
+  {
+    return this.j;
+  }
+  
+  public boolean j()
+  {
+    return this.k;
+  }
+  
+  public QQSettingMeItemData k()
+  {
+    return this.m;
+  }
+  
+  public View l()
+  {
+    return this.m.a();
+  }
+  
+  public RedTouch m()
+  {
+    return this.m.b();
+  }
+  
+  public RedTouchTextView n()
+  {
+    return this.m.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.config.QQSettingMeBizBean
  * JD-Core Version:    0.7.0.1
  */

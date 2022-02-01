@@ -5,8 +5,8 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 public class DiscVideoThumbDownloader$VideoSession
   extends BaseThumbDownloader.Session
 {
-  int a;
-  int b;
+  int c;
+  int d;
   
   public DiscVideoThumbDownloader$VideoSession(FileManagerEntity paramFileManagerEntity)
   {
@@ -15,7 +15,7 @@ public class DiscVideoThumbDownloader$VideoSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.DiscVideoThumbDownloader.VideoSession
  * JD-Core Version:    0.7.0.1
  */

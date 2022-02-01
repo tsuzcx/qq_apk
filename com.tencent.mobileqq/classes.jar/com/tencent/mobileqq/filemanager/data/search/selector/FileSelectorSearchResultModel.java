@@ -13,13 +13,13 @@ public abstract class FileSelectorSearchResultModel
   extends ISearchResultPositionModel
 {
   protected int a;
-  protected Bundle a;
-  protected String a;
+  protected String b;
+  protected Bundle c;
   
   public FileSelectorSearchResultModel(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString;
+    this.a = paramInt;
   }
   
   public List<ISearchResultModel> a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -29,15 +29,15 @@ public abstract class FileSelectorSearchResultModel
   
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.c = paramBundle;
   }
   
   public void a(View paramView)
   {
-    int i = e_();
+    int i = i();
     if (i == 1)
     {
-      if (paramView.getId() == 2131366781)
+      if (paramView.getId() == 2131433103)
       {
         b(paramView);
         return;
@@ -50,38 +50,38 @@ public abstract class FileSelectorSearchResultModel
     }
   }
   
-  public boolean a()
+  protected abstract void b(View paramView);
+  
+  protected abstract void c(View paramView);
+  
+  protected abstract void d(View paramView);
+  
+  public String g()
+  {
+    return this.b;
+  }
+  
+  public boolean h()
   {
     return false;
   }
   
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected abstract void b(View paramView);
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract String c();
-  
-  protected abstract void c(View paramView);
-  
-  public abstract String d();
-  
-  protected abstract void d(View paramView);
-  
-  public int e_()
+  public int i()
   {
     return 0;
   }
+  
+  public abstract String j();
+  
+  public abstract String k();
+  
+  public abstract int l();
+  
+  public abstract boolean m();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchResultModel
  * JD-Core Version:    0.7.0.1
  */

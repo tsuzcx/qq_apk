@@ -10,40 +10,40 @@ import com.tencent.qphone.base.util.QLog;
 class FastWebActivity$MyHippyCommentPageListener
   implements HippyCommentPageListener
 {
-  private final int jdField_a_of_type_Int;
+  private final int b;
   
   FastWebActivity$MyHippyCommentPageListener(FastWebActivity paramFastWebActivity, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(boolean paramBoolean)
   {
-    if (FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity) == null) {
+    if (FastWebActivity.ai(this.a) == null) {
       return;
     }
     if (paramBoolean)
     {
       QLog.d("FastWebActivity", 1, "hippy init success");
-      FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity).setTuWenHippyCallback(new FastWebActivity.TKDTuWenHippyCallback(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity, null));
-      FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity).setOnOpenCommentEditListener(new FastWebActivity.MyOpenCommentEditListener(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity, null));
-      FastWebActivity.s(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity);
-      FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity).a(null);
-      FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity).getTKDHippyEventDispatcher().register(FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity).getSubHippyEventReceiver());
-      FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity).getTKDHippyEventDispatcher().register(new FastWebActivity.MySubCommentHippyEventListener(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity, null));
+      FastWebActivity.ai(this.a).setTuWenHippyCallback(new FastWebActivity.TKDTuWenHippyCallback(this.a, null));
+      FastWebActivity.p(this.a).setOnOpenCommentEditListener(new FastWebActivity.MyOpenCommentEditListener(this.a, null));
+      FastWebActivity.aj(this.a);
+      FastWebActivity.ak(this.a).a(null);
+      FastWebActivity.ak(this.a).getTKDHippyEventDispatcher().register(FastWebActivity.ai(this.a).getSubHippyEventReceiver());
+      FastWebActivity.ak(this.a).getTKDHippyEventDispatcher().register(new FastWebActivity.MySubCommentHippyEventListener(this.a, null));
       return;
     }
     QLog.d("FastWebActivity", 1, "hippy init fail");
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity).b(FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity));
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity).destroy();
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity, null);
-    FastWebActivity.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity, this.jdField_a_of_type_Int);
-    FastWebActivity.e(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity);
+    FastWebActivity.l(this.a).b(FastWebActivity.ai(this.a));
+    FastWebActivity.ai(this.a).destroy();
+    FastWebActivity.a(this.a, null);
+    FastWebActivity.g(this.a, this.b);
+    FastWebActivity.n(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.MyHippyCommentPageListener
  * JD-Core Version:    0.7.0.1
  */

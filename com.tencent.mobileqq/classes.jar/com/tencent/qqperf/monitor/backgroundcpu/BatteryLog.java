@@ -8,23 +8,23 @@ import java.io.File;
 
 public class BatteryLog
 {
-  private static long jdField_a_of_type_Long;
-  private static Handler jdField_a_of_type_AndroidOsHandler = new BatteryLog.LogHandler(ThreadManager.getFileThreadLooper());
-  private static BufferedWriter jdField_a_of_type_JavaIoBufferedWriter;
-  private static String jdField_a_of_type_JavaLangString;
-  static ThreadLocal<StringBuilder> jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
-  private static BufferedWriter jdField_b_of_type_JavaIoBufferedWriter;
-  private static String jdField_b_of_type_JavaLangString;
+  static ThreadLocal<StringBuilder> a = new ThreadLocal();
+  private static Handler b = new BatteryLog.LogHandler(ThreadManager.getFileThreadLooper());
   private static String c;
   private static String d;
+  private static String e;
+  private static long f;
+  private static BufferedWriter g;
+  private static BufferedWriter h;
+  private static String i;
   
   static StringBuilder a()
   {
-    StringBuilder localStringBuilder = (StringBuilder)jdField_a_of_type_JavaLangThreadLocal.get();
+    StringBuilder localStringBuilder = (StringBuilder)a.get();
     if (localStringBuilder == null)
     {
       localStringBuilder = new StringBuilder(1024);
-      jdField_a_of_type_JavaLangThreadLocal.set(localStringBuilder);
+      a.set(localStringBuilder);
       return localStringBuilder;
     }
     localStringBuilder.delete(0, localStringBuilder.length());
@@ -33,8 +33,8 @@ public class BatteryLog
   
   static void a(Object... paramVarArgs)
   {
-    if (jdField_a_of_type_JavaIoBufferedWriter != null) {
-      jdField_a_of_type_AndroidOsHandler.obtainMessage(2, 0, 0, paramVarArgs).sendToTarget();
+    if (g != null) {
+      b.obtainMessage(2, 0, 0, paramVarArgs).sendToTarget();
     }
   }
   
@@ -60,7 +60,7 @@ public class BatteryLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.backgroundcpu.BatteryLog
  * JD-Core Version:    0.7.0.1
  */

@@ -28,7 +28,7 @@ public class EmoticonSearchTagsConfProcessor$EmoticonSearchTagConfBean
       boolean bool;
       QLog.d("EmoticonSearchTagsConfProcessor", 2, "parse S$EConfBean failed!", paramArrayOfQConfItem);
     }
-    Object localObject1 = ((QConfItem)localObject1).a;
+    Object localObject1 = ((QConfItem)localObject1).b;
     bool = TextUtils.isEmpty((CharSequence)localObject1);
     if (!bool) {
       try
@@ -87,7 +87,7 @@ public class EmoticonSearchTagsConfProcessor$EmoticonSearchTagConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.EmoticonSearchTagsConfProcessor.EmoticonSearchTagConfBean
  * JD-Core Version:    0.7.0.1
  */

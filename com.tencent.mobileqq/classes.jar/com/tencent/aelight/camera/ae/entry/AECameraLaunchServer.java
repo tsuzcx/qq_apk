@@ -27,7 +27,7 @@ public class AECameraLaunchServer
   {
     if (Build.VERSION.SDK_INT < 21)
     {
-      QQToast.a(MobileQQ.sMobileQQ, MobileQQ.sMobileQQ.getResources().getString(2131717180), 1).a();
+      QQToast.makeText(MobileQQ.sMobileQQ, MobileQQ.sMobileQQ.getResources().getString(2131914653), 1).show();
       return;
     }
     int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
@@ -44,7 +44,7 @@ public class AECameraLaunchServer
   {
     if (Build.VERSION.SDK_INT < 21)
     {
-      QQToast.a(MobileQQ.sMobileQQ, MobileQQ.sMobileQQ.getResources().getString(2131717180), 1).a();
+      QQToast.makeText(MobileQQ.sMobileQQ, MobileQQ.sMobileQQ.getResources().getString(2131914653), 1).show();
       return;
     }
     int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
@@ -63,7 +63,7 @@ public class AECameraLaunchServer
   {
     if (Build.VERSION.SDK_INT < 21)
     {
-      QQToast.a(MobileQQ.sMobileQQ, MobileQQ.sMobileQQ.getResources().getString(2131717180), 1).a();
+      QQToast.makeText(MobileQQ.sMobileQQ, MobileQQ.sMobileQQ.getResources().getString(2131914653), 1).show();
       return;
     }
     int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
@@ -101,7 +101,7 @@ public class AECameraLaunchServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.entry.AECameraLaunchServer
  * JD-Core Version:    0.7.0.1
  */

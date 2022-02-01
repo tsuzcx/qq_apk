@@ -4,12 +4,12 @@ import com.tencent.qphone.base.util.QLog;
 
 class ShareAppLogHelper$TimeLogger
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  private long a;
+  private String b;
   
   public ShareAppLogHelper$TimeLogger(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void a(int paramInt)
@@ -21,18 +21,18 @@ class ShareAppLogHelper$TimeLogger
       }
       long l = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        QLog.d("ShareAppLogHelper.TimeLogger", 4, new Object[] { this.jdField_a_of_type_JavaLangString, " costTime: ", Long.valueOf(l - this.jdField_a_of_type_Long) });
+        QLog.d("ShareAppLogHelper.TimeLogger", 4, new Object[] { this.b, " costTime: ", Long.valueOf(l - this.a) });
       }
     }
     else
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.a = System.currentTimeMillis();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.testassister.ShareAppLogHelper.TimeLogger
  * JD-Core Version:    0.7.0.1
  */

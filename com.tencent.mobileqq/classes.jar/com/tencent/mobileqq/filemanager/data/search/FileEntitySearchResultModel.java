@@ -40,57 +40,52 @@ import mqq.app.AppRuntime;
 public class FileEntitySearchResultModel
   extends ISearchResultPositionModel
 {
-  int jdField_a_of_type_Int = -1;
-  CharSequence jdField_a_of_type_JavaLangCharSequence;
-  String jdField_a_of_type_JavaLangString;
-  public List<FileManagerEntity> a;
-  CharSequence jdField_b_of_type_JavaLangCharSequence;
-  String jdField_b_of_type_JavaLangString;
+  public List<FileManagerEntity> a = new ArrayList();
+  String b;
+  CharSequence c;
+  CharSequence d;
+  int e = -1;
+  String f;
   
   public FileEntitySearchResultModel()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public int a()
-  {
-    return 1;
+    f(16);
   }
   
   public CharSequence a()
   {
-    if (this.jdField_a_of_type_JavaLangCharSequence == null)
+    if (this.c == null)
     {
       Object localObject1;
       Object localObject2;
-      if (this.jdField_a_of_type_JavaUtilList.size() == 1)
+      if (this.a.size() == 1)
       {
-        Object localObject3 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+        Object localObject3 = (FileManagerEntity)this.a.get(0);
         localObject1 = new SpannableStringBuilder();
-        ((SpannableStringBuilder)localObject1).append(d());
+        ((SpannableStringBuilder)localObject1).append(f());
         if (((FileManagerEntity)localObject3).nFileType != 13)
         {
-          ((SpannableStringBuilder)localObject1).append(" ").append(FileManagerUtil.c((FileManagerEntity)localObject3));
+          ((SpannableStringBuilder)localObject1).append(" ").append(FileManagerUtil.l((FileManagerEntity)localObject3));
         }
         else
         {
           localObject2 = QfileTimeUtils.b(((FileManagerEntity)localObject3).srvTime);
-          localObject3 = FileManagerUtil.b((FileManagerEntity)localObject3);
+          localObject3 = FileManagerUtil.k((FileManagerEntity)localObject3);
           ((SpannableStringBuilder)localObject1).clear();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append((String)localObject2);
           localStringBuilder.append(" ");
           localStringBuilder.append((String)localObject3);
           localStringBuilder.append(" ");
-          localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131692298));
+          localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131889286));
           ((SpannableStringBuilder)localObject1).append(localStringBuilder.toString());
         }
-        this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
+        this.c = ((CharSequence)localObject1);
       }
       else
       {
         long l = 0L;
-        localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject1 = this.a.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
@@ -98,15 +93,10 @@ public class FileEntitySearchResultModel
             l = ((FileManagerEntity)localObject2).srvTime;
           }
         }
-        this.jdField_a_of_type_JavaLangCharSequence = d();
+        this.c = f();
       }
     }
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String a()
-  {
-    return ((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).peerUin;
+    return this.c;
   }
   
   public void a(View paramView)
@@ -116,26 +106,26 @@ public class FileEntitySearchResultModel
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.b);
       SearchUtils.a("all_result", "clk_file", new String[] { ((StringBuilder)localObject1).toString() });
     }
-    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 100, 0, paramView);
-    if (this.jdField_a_of_type_JavaUtilList.size() == 1)
+    SearchUtils.a(this.b, 100, 0, paramView);
+    if (this.a.size() == 1)
     {
-      Object localObject2 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+      Object localObject2 = (FileManagerEntity)this.a.get(0);
       localObject1 = (QBaseActivity)paramView.getContext();
       Object localObject3 = new FileManagerReporter.FileAssistantReportData();
-      ((FileManagerReporter.FileAssistantReportData)localObject3).jdField_b_of_type_JavaLangString = "file_viewer_in";
-      ((FileManagerReporter.FileAssistantReportData)localObject3).jdField_a_of_type_Int = 73;
-      ((FileManagerReporter.FileAssistantReportData)localObject3).c = FileUtil.a(((FileManagerEntity)localObject2).fileName);
-      ((FileManagerReporter.FileAssistantReportData)localObject3).jdField_a_of_type_Long = ((FileManagerEntity)localObject2).fileSize;
+      ((FileManagerReporter.FileAssistantReportData)localObject3).b = "file_viewer_in";
+      ((FileManagerReporter.FileAssistantReportData)localObject3).c = 73;
+      ((FileManagerReporter.FileAssistantReportData)localObject3).d = FileUtil.a(((FileManagerEntity)localObject2).fileName);
+      ((FileManagerReporter.FileAssistantReportData)localObject3).e = ((FileManagerEntity)localObject2).fileSize;
       FileManagerReporter.a(((QBaseActivity)localObject1).getAppRuntime().getCurrentAccountUin(), (FileManagerReporter.FileAssistantReportData)localObject3);
       FileManagerReporter.a("0X8004AE4");
       int i;
       if (((FileManagerEntity)localObject2).nFileType == 13)
       {
-        ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).clickWebTDDocAndUpdateTitle(((FileManagerEntity)localObject2).Uuid, (Context)localObject1, this.jdField_a_of_type_Int, (FileManagerEntity)localObject2, (AppInterface)((QBaseActivity)localObject1).getAppRuntime());
-        i = this.jdField_a_of_type_Int;
+        ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).clickWebTDDocAndUpdateTitle(((FileManagerEntity)localObject2).Uuid, (Context)localObject1, this.e, (FileManagerEntity)localObject2, (AppInterface)((QBaseActivity)localObject1).getAppRuntime());
+        i = this.e;
         if (i == 8) {
           ReportController.b(null, "dc00898", "", "", "0X800A084", "0X800A084", 0, 0, "", "", "", "");
         } else if (i == 1) {
@@ -148,20 +138,20 @@ public class FileEntitySearchResultModel
         localObject3 = new Bundle();
         ((Bundle)localObject3).putBoolean("from_qlink_enter_recent", false);
         ((Bundle)localObject3).putString("c2c_discussion_recentfile", ((FileManagerEntity)localObject2).peerUin);
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-          ((Bundle)localObject3).putString("file_browser_extra_params_uin", this.jdField_b_of_type_JavaLangString);
+        if (!TextUtils.isEmpty(this.f)) {
+          ((Bundle)localObject3).putString("file_browser_extra_params_uin", this.f);
         }
         if ((((FileManagerEntity)localObject2).nFileType != 0) && (((FileManagerEntity)localObject2).nFileType != 2))
         {
           paramView = new FileModelAdapter((QQAppInterface)((QBaseActivity)localObject1).getAppRuntime(), (FileManagerEntity)localObject2);
           paramView.a((Bundle)localObject3);
-          i = this.jdField_a_of_type_Int;
+          i = this.e;
           if (i == -1) {
             i = 7;
           }
           localObject2 = new FileBrowserParam().a(i);
-          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-            ((FileBrowserParam)localObject2).a(this.jdField_b_of_type_JavaLangString);
+          if (!TextUtils.isEmpty(this.f)) {
+            ((FileBrowserParam)localObject2).a(this.f);
           }
           ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).browserFile((Context)localObject1, paramView, (IFileBrowserParam)localObject2);
         }
@@ -170,68 +160,68 @@ public class FileEntitySearchResultModel
           localCommonFileBrowserParams.a((Bundle)localObject3);
           localObject1 = new FileBrowserCreator((Context)localObject1, localCommonFileBrowserParams);
           ((FileBrowserCreator)localObject1).a(7);
-          i = this.jdField_a_of_type_Int;
+          i = this.e;
           if (i != -1) {
             ((FileBrowserCreator)localObject1).a(i);
           }
-          ((FileBrowserCreator)localObject1).a(QFileUtils.a(paramView.findViewById(2131366781), ((FileManagerEntity)localObject2).fileName));
+          ((FileBrowserCreator)localObject1).a(QFileUtils.a(paramView.findViewById(2131433103), ((FileManagerEntity)localObject2).fileName));
           ((FileBrowserCreator)localObject1).a();
         }
       }
       FileManagerReporter.a("0X8006062");
-      UniteSearchReportController.a(null, 0, this.jdField_a_of_type_Int, "0x8009D59", 0, 0, null, null);
+      UniteSearchReportController.a(null, 0, this.e, "0X8009D59", 0, 0, null, null);
       return;
     }
     FileManagerReporter.a("0X8006099");
-    UniteSearchReportController.a(null, 0, this.jdField_a_of_type_Int, "0x8009D5B", 0, 0, null, null);
-    FileSearchDetailActivity.a(paramView.getContext(), b(), this);
+    UniteSearchReportController.a(null, 0, this.e, "0X8009D5B", 0, 0, null, null);
+    FileSearchDetailActivity.a(paramView.getContext(), g(), this);
   }
   
-  public boolean a()
+  public int b()
   {
-    return false;
+    return 1;
   }
   
-  public CharSequence b()
+  public String c()
   {
-    CharSequence localCharSequence = SearchUtils.a(((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).fileName.toLowerCase(), this.jdField_a_of_type_JavaLangString);
-    localCharSequence.toString();
-    return localCharSequence;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public CharSequence c()
-  {
-    return null;
+    return ((FileManagerEntity)this.a.get(0)).peerUin;
   }
   
   public CharSequence d()
   {
-    Object localObject1 = this.jdField_b_of_type_JavaLangCharSequence;
+    CharSequence localCharSequence = SearchUtils.a(((FileManagerEntity)this.a.get(0)).fileName.toLowerCase(), this.b);
+    localCharSequence.toString();
+    return localCharSequence;
+  }
+  
+  public CharSequence e()
+  {
+    return null;
+  }
+  
+  public CharSequence f()
+  {
+    Object localObject1 = this.d;
     if (localObject1 != null) {
       return localObject1;
     }
-    int i = this.jdField_a_of_type_JavaUtilList.size();
+    int i = this.a.size();
     if (i > 1)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(i);
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131704617));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131902521));
       ((StringBuilder)localObject1).append("\"");
       localObject1 = new SpannableStringBuilder(((StringBuilder)localObject1).toString());
-      str = this.jdField_a_of_type_JavaLangString;
+      str = this.b;
       ((SpannableStringBuilder)localObject1).append(SearchUtils.a(str, str));
       ((SpannableStringBuilder)localObject1).append("\"").append("相关的同名文件记录");
-      this.jdField_b_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
-      return this.jdField_b_of_type_JavaLangCharSequence;
+      this.d = ((CharSequence)localObject1);
+      return this.d;
     }
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    String str = FileManagerUtil.b((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).trim();
-    int j = str.indexOf(HardCodeUtil.a(2131704616));
+    String str = FileManagerUtil.k((FileManagerEntity)this.a.get(0)).trim();
+    int j = str.indexOf(HardCodeUtil.a(2131902520));
     i = 2;
     if (j == 0) {
       localSpannableStringBuilder.append("来自多人聊天: ");
@@ -240,28 +230,28 @@ public class FileEntitySearchResultModel
     {
       i = 7;
       break label336;
-      if (str.indexOf(HardCodeUtil.a(2131704614)) != 0) {
+      if (str.indexOf(HardCodeUtil.a(2131902518)) != 0) {
         break;
       }
       localSpannableStringBuilder.append("发给多人聊天: ");
     }
-    if (str.indexOf(HardCodeUtil.a(2131704615)) == 0) {
+    if (str.indexOf(HardCodeUtil.a(2131902519)) == 0) {
       localSpannableStringBuilder.append("来自群: ");
     }
     for (;;)
     {
       i = 4;
       break label336;
-      if (str.indexOf(HardCodeUtil.a(2131704610)) != 0) {
+      if (str.indexOf(HardCodeUtil.a(2131902515)) != 0) {
         break;
       }
       localSpannableStringBuilder.append("发给群: ");
     }
-    if (str.indexOf(HardCodeUtil.a(2131704611)) == 0) {
+    if (str.indexOf(HardCodeUtil.a(2131902516)) == 0) {
       localSpannableStringBuilder.append("来自 ");
-    } else if (str.indexOf(HardCodeUtil.a(2131704612)) == 0) {
+    } else if (str.indexOf(HardCodeUtil.a(2131902517)) == 0) {
       localSpannableStringBuilder.append("发给  ");
-    } else if (str.indexOf(HardCodeUtil.a(2131704609)) == 0) {
+    } else if (str.indexOf(HardCodeUtil.a(2131902514)) == 0) {
       localSpannableStringBuilder.append("存到");
     } else {
       i = 0;
@@ -272,11 +262,11 @@ public class FileEntitySearchResultModel
     try
     {
       localObject1 = str.toLowerCase().substring(i);
-      localSpannableStringBuilder.append(SearchUtils.a((String)localObject1, this.jdField_a_of_type_JavaLangString));
-      if (this.jdField_b_of_type_JavaLangCharSequence == null) {
-        this.jdField_b_of_type_JavaLangCharSequence = localSpannableStringBuilder;
+      localSpannableStringBuilder.append(SearchUtils.a((String)localObject1, this.b));
+      if (this.d == null) {
+        this.d = localSpannableStringBuilder;
       }
-      return this.jdField_b_of_type_JavaLangCharSequence;
+      return this.d;
     }
     catch (Exception localException)
     {
@@ -286,10 +276,20 @@ public class FileEntitySearchResultModel
       }
     }
   }
+  
+  public String g()
+  {
+    return this.b;
+  }
+  
+  public boolean h()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileEntitySearchResultModel
  * JD-Core Version:    0.7.0.1
  */

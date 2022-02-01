@@ -7,22 +7,22 @@ import android.view.animation.Animation.AnimationListener;
 class Face2FaceFriendBubbleView$DetailViewAnimationListener
   implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView = null;
+  private int b = 0;
+  private View c = null;
   
   public Face2FaceFriendBubbleView$DetailViewAnimationListener(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramInt;
+    this.c = paramView;
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = this.jdField_a_of_type_AndroidViewView;
+    paramAnimation = this.c;
     if (paramAnimation == null) {
       return;
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i == 0)
     {
       paramAnimation.setVisibility(0);
@@ -39,7 +39,7 @@ class Face2FaceFriendBubbleView$DetailViewAnimationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView.DetailViewAnimationListener
  * JD-Core Version:    0.7.0.1
  */

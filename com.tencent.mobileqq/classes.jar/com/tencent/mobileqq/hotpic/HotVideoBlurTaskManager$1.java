@@ -10,12 +10,12 @@ class HotVideoBlurTaskManager$1
   
   public void run()
   {
-    HotVideoData localHotVideoData = (HotVideoData)this.this$0.jdField_a_of_type_AndroidSupportV4UtilArrayMap.keyAt(0);
-    HotPicPageView.MyVideoViewHolder localMyVideoViewHolder = (HotPicPageView.MyVideoViewHolder)this.this$0.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localHotVideoData);
-    if (localMyVideoViewHolder.a(localHotVideoData))
+    HotVideoData localHotVideoData = (HotVideoData)this.this$0.a.keyAt(0);
+    HotPicPageView.MyVideoViewHolder localMyVideoViewHolder = (HotPicPageView.MyVideoViewHolder)this.this$0.a.get(localHotVideoData);
+    if (localMyVideoViewHolder.b(localHotVideoData))
     {
-      Drawable localDrawable = HotVideoPreviewDownloader.a(this.this$0.jdField_a_of_type_AndroidContentContext, localHotVideoData);
-      if ((localDrawable != null) && (localMyVideoViewHolder.a(localHotVideoData))) {
+      Drawable localDrawable = HotVideoPreviewDownloader.a(this.this$0.b, localHotVideoData);
+      if ((localDrawable != null) && (localMyVideoViewHolder.b(localHotVideoData))) {
         localMyVideoViewHolder.b(localDrawable);
       }
       this.this$0.a(localHotVideoData);
@@ -29,7 +29,7 @@ class HotVideoBlurTaskManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoBlurTaskManager.1
  * JD-Core Version:    0.7.0.1
  */

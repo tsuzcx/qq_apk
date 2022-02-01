@@ -10,8 +10,6 @@ import msf.msgsvc.msg_svc.PbGetGroupMsgResp;
 
 public abstract interface TroopMessageProcessor$Callback
 {
-  public abstract BaseMessageManagerForTroopAndDisc a(TroopMessageProcessor paramTroopMessageProcessor);
-  
   public abstract void a(int paramInt, TroopMessageProcessor paramTroopMessageProcessor);
   
   public abstract void a(long paramLong1, long paramLong2, String paramString, ArrayList<MessageRecord> paramArrayList1, PBDecodeContext paramPBDecodeContext, MessageInfo paramMessageInfo, ArrayList<MessageRecord> paramArrayList2, TroopMessageProcessor paramTroopMessageProcessor);
@@ -38,19 +36,21 @@ public abstract interface TroopMessageProcessor$Callback
   
   public abstract boolean a(MessageRecord paramMessageRecord);
   
-  public abstract boolean a(MessageRecord paramMessageRecord, TroopMessageProcessor paramTroopMessageProcessor);
-  
   public abstract boolean a(TroopMessageProcessor paramTroopMessageProcessor);
   
   public abstract boolean a(ArrayList<MessageRecord> paramArrayList);
   
   public abstract void b(ArrayList<MessageRecord> paramArrayList, TroopMessageProcessor paramTroopMessageProcessor);
   
+  public abstract boolean b(MessageRecord paramMessageRecord, TroopMessageProcessor paramTroopMessageProcessor);
+  
   public abstract boolean b(TroopMessageProcessor paramTroopMessageProcessor);
+  
+  public abstract BaseMessageManagerForTroopAndDisc c(TroopMessageProcessor paramTroopMessageProcessor);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopMessageProcessor.Callback
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,7 @@ import com.tencent.mobileqq.app.messageobserver.SendErrorRsp;
 import com.tencent.mobileqq.app.messageobserver.SpecialMsgDevStatus;
 import com.tencent.mobileqq.app.messageobserver.SubaccountMsgStatus;
 import com.tencent.mobileqq.app.messageobserver.TransserviceRoamRefreshCommenMsg;
+import com.tencent.mobileqq.data.MessageForAniSticker;
 import com.tencent.mobileqq.data.MessageForDanceMachine;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.service.message.MessageFactoryReceiver.OffLineFileInfo;
@@ -97,6 +98,7 @@ public class MessageObserver
     sMap.put(Integer.valueOf(6005), localObject);
     sMap.put(Integer.valueOf(6004), localObject);
     sMap.put(Integer.valueOf(6006), localObject);
+    sMap.put(Integer.valueOf(6017), localObject);
     sMap.put(Integer.valueOf(6003), localObject);
     sMap.put(Integer.valueOf(6001), localObject);
     sMap.put(Integer.valueOf(6002), localObject);
@@ -317,18 +319,26 @@ public class MessageObserver
   
   public void msgRevokeRsp(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    boolean bool = true;
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 2))
+    boolean bool1 = true;
+    boolean bool2;
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 3))
     {
       List localList = (List)paramArrayOfObject[0];
-      bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
+      bool1 = ((Boolean)paramArrayOfObject[1]).booleanValue();
+      bool2 = ((Boolean)paramArrayOfObject[2]).booleanValue();
       paramArrayOfObject = localList;
     }
     else
     {
       paramArrayOfObject = null;
+      bool2 = false;
     }
-    onMsgRevokeNotice(paramBoolean, paramArrayOfObject, bool);
+    if (bool2)
+    {
+      onLocalMsgRevokeNotice(paramBoolean, paramArrayOfObject, bool1);
+      return;
+    }
+    onMsgRevokeNotice(paramBoolean, paramArrayOfObject, bool1);
   }
   
   public void msgStartSendingUI(Object[] paramArrayOfObject)
@@ -392,6 +402,8 @@ public class MessageObserver
   
   protected void onInsertIntoBlackList(boolean paramBoolean, Object[] paramArrayOfObject) {}
   
+  public void onLocalMsgRevokeNotice(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2) {}
+  
   public void onMessageRecordAdded(List<MessageRecord> paramList) {}
   
   public void onMsgForwardWXResult(int paramInt) {}
@@ -421,6 +433,8 @@ public class MessageObserver
   public void onReceiptMessageFetchReadStatusResult(long paramLong1, int paramInt, long paramLong2) {}
   
   public void onReceiptMessageReadReportResult(long paramLong, int paramInt) {}
+  
+  protected void onRecvEmoticonRandomResult(String paramString, long paramLong) {}
   
   protected void onRefleshRecentListFinished(boolean paramBoolean) {}
   
@@ -568,6 +582,17 @@ public class MessageObserver
       String str4 = (String)paramArrayOfObject[4];
       paramArrayOfObject = (ArrayList)paramArrayOfObject[5];
       onPushRecommandDevLock(paramBoolean, localBoolean.booleanValue(), str1, str2, str3, str4, paramArrayOfObject);
+    }
+  }
+  
+  public void recvEmoticonRandomResult(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && ((paramObject instanceof Object[])))
+    {
+      paramObject = (Object[])paramObject;
+      if (paramObject.length == 2) {
+        onRecvEmoticonRandomResult((String)paramObject[0], ((MessageForAniSticker)paramObject[1]).uniseq);
+      }
     }
   }
   
@@ -850,7 +875,7 @@ public class MessageObserver
     }
     String str = null;
     if (paramObject != null) {
-      str = ((SubAccountBackProtocData)paramObject).c;
+      str = ((SubAccountBackProtocData)paramObject).d;
     }
     onGetSubAccountMsg(paramBoolean, str, (SubAccountBackProtocData)paramObject);
   }
@@ -889,7 +914,7 @@ public class MessageObserver
     if (paramObject != null)
     {
       paramObject = (SubAccountBackProtocData)paramObject;
-      onPushSubAccountMsg(paramBoolean, paramObject.c, paramObject);
+      onPushSubAccountMsg(paramBoolean, paramObject.d, paramObject);
     }
   }
   
@@ -955,7 +980,7 @@ public class MessageObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageObserver
  * JD-Core Version:    0.7.0.1
  */

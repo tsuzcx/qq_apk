@@ -45,7 +45,7 @@ public class MiniAppBridgeActivity
     }
     if ((getActivity() != null) && (!getActivity().isFinishing()))
     {
-      QQToast.a(getActivity(), "网络异常，请稍后重试", 0).a();
+      QQToast.makeText(getActivity(), "网络异常，请稍后重试", 0).show();
       getActivity().finish();
     }
   }
@@ -108,7 +108,7 @@ public class MiniAppBridgeActivity
     if (isFromDebugConfig(this.launchParam)) {
       return;
     }
-    long l = ProcessInfoUtil.a("com.tencent.mobileqq:miniapp");
+    long l = ProcessInfoUtil.b("com.tencent.mobileqq:miniapp");
     WeakReference localWeakReference = new WeakReference(getActivity());
     MiniAppConfig localMiniAppConfig = ((ApkgConfigManager)localObject).getConfig(this.launchParam);
     if ((localMiniAppConfig != null) && (localMiniAppConfig.config != null) && (new File(g.a(localMiniAppConfig.config)).exists()))
@@ -132,15 +132,15 @@ public class MiniAppBridgeActivity
       MiniAppController.startApp(getActivity(), wrapConfig(localMiniAppConfig), null);
       getActivity().finish();
       if (!QLog.isColorLevel()) {
-        break label350;
+        break label351;
       }
       QLog.d("MiniAppBridgeActivity", 2, "miniapp process exist, launch directly");
       return;
     }
     catch (Throwable localThrowable)
     {
-      label285:
-      break label285;
+      label286:
+      break label286;
     }
     handleAbnormal("start miniapp error");
     return;
@@ -150,7 +150,7 @@ public class MiniAppBridgeActivity
       QLog.d("MiniAppBridgeActivity", 2, "miniConfig config is null or folder not exist");
     }
     ((ApkgConfigManager)localObject).getNewestConfig(this.launchParam, 0, new MiniAppBridgeActivity.2(this, localWeakReference, l));
-    label350:
+    label351:
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -180,7 +180,7 @@ public class MiniAppBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

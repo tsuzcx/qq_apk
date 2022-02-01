@@ -10,12 +10,12 @@ class TroopAvatarWallEditActivity$9
   public void run()
   {
     TroopAvatarWallEditActivity localTroopAvatarWallEditActivity = this.this$0;
-    QQToast.a(localTroopAvatarWallEditActivity, localTroopAvatarWallEditActivity.getString(2131694911), 0).a();
+    QQToast.makeText(localTroopAvatarWallEditActivity, localTroopAvatarWallEditActivity.getString(2131892637), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.9
  * JD-Core Version:    0.7.0.1
  */

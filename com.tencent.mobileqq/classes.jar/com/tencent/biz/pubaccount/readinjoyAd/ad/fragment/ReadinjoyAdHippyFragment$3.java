@@ -10,9 +10,9 @@ class ReadinjoyAdHippyFragment$3
   
   public void onError(int paramInt, String paramString)
   {
-    ReadinjoyAdHippyFragment.a(this.a);
+    ReadinjoyAdHippyFragment.b(this.a);
     if (paramInt != -11) {
-      ReadinjoyAdHippyFragment.c(this.a);
+      ReadinjoyAdHippyFragment.d(this.a);
     }
     if (QLog.isColorLevel())
     {
@@ -27,7 +27,7 @@ class ReadinjoyAdHippyFragment$3
   
   public void onSuccess()
   {
-    ReadinjoyAdHippyFragment.a(this.a);
+    ReadinjoyAdHippyFragment.b(this.a);
     if (QLog.isColorLevel()) {
       QLog.d("ReadinjoyAdMiniGameFragment", 2, "Hippy: initHippy success!");
     }
@@ -35,7 +35,7 @@ class ReadinjoyAdHippyFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.3
  * JD-Core Version:    0.7.0.1
  */

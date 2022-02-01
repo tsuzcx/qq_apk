@@ -14,13 +14,9 @@ import java.util.List;
 
 public class RenderInfo
 {
-  @NonNull
   private final CIContext ciContext;
-  @NonNull
   private final CGSize renderSize;
-  @NonNull
   private final CMTime time;
-  @NonNull
   private final List<TAVVideoCompositionTrack> tracks = new ArrayList();
   
   public RenderInfo(@NonNull CMTime paramCMTime, @NonNull CGSize paramCGSize, @NonNull CIContext paramCIContext)
@@ -105,7 +101,7 @@ public class RenderInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.video.RenderInfo
  * JD-Core Version:    0.7.0.1
  */

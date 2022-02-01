@@ -10,23 +10,23 @@ class ReadInJoyFeedbackPopupWindow$4
 {
   ReadInJoyFeedbackPopupWindow$4(ReadInJoyFeedbackPopupWindow paramReadInJoyFeedbackPopupWindow, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
     if (paramInt != 0) {
       return;
     }
-    if (!ReadInJoyFeedbackPopupWindow.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizDislikeReadInJoyFeedbackPopupWindow)) {
+    if (!ReadInJoyFeedbackPopupWindow.o(this.b)) {
       return;
     }
-    if (ReadInJoyFeedbackPopupWindow.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizDislikeReadInJoyFeedbackPopupWindow, "deleteFeeds")) {
-      FastWebRequestUtil.a(ReadInJoyFeedbackPopupWindow.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizDislikeReadInJoyFeedbackPopupWindow), ReadInJoyFeedbackPopupWindow.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizDislikeReadInJoyFeedbackPopupWindow));
+    if (ReadInJoyFeedbackPopupWindow.a(this.b, "deleteFeeds")) {
+      FastWebRequestUtil.a(ReadInJoyFeedbackPopupWindow.c(this.b), ReadInJoyFeedbackPopupWindow.p(this.b));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.dislike.ReadInJoyFeedbackPopupWindow.4
  * JD-Core Version:    0.7.0.1
  */

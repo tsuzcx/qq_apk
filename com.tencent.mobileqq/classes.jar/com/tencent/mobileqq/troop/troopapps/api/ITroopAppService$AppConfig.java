@@ -5,17 +5,12 @@ import org.json.JSONObject;
 
 public class ITroopAppService$AppConfig
 {
-  public static AppConfig[] a;
+  public static AppConfig[] b = { new AppConfig("BulkChatMessageConfig") };
   public String a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfComTencentMobileqqTroopTroopappsApiITroopAppService$AppConfig = new AppConfig[] { new AppConfig("BulkChatMessageConfig") };
-  }
   
   public ITroopAppService$AppConfig(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public final JSONObject a(String paramString)
@@ -40,7 +35,7 @@ public class ITroopAppService$AppConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.api.ITroopAppService.AppConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public class QQGameIndicator2
   implements ViewPager.OnPageChangeListener
 {
   public ViewPager a;
-  private IPageListener a;
+  private IPageListener b;
   
   public QQGameIndicator2(Context paramContext)
   {
@@ -41,7 +41,7 @@ public class QQGameIndicator2
     super.setGravity(17);
   }
   
-  private void a(int paramInt1, int paramInt2)
+  private void b(int paramInt1, int paramInt2)
   {
     int i = 0;
     while (i < paramInt2)
@@ -62,8 +62,8 @@ public class QQGameIndicator2
   {
     QQGameIndicator2.1 local1 = new QQGameIndicator2.1(this, super.getContext());
     local1.setButtonDrawable(null);
-    local1.setId(2131375962 + paramInt1);
-    local1.setBackgroundResource(2130846484);
+    local1.setId(2131444153 + paramInt1);
+    local1.setBackgroundResource(2130847957);
     local1.setGravity(17);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramInt1);
@@ -93,7 +93,7 @@ public class QQGameIndicator2
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -103,7 +103,7 @@ public class QQGameIndicator2
     }
     int k = ((PagerAdapter)localObject).getCount();
     super.removeAllViews();
-    int j = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.getCurrentItem();
+    int j = this.a.getCurrentItem();
     int i = 0;
     while (i < k)
     {
@@ -128,7 +128,7 @@ public class QQGameIndicator2
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = getChildAt(((ViewPager)localObject).getCurrentItem());
@@ -164,11 +164,16 @@ public class QQGameIndicator2
     }
   }
   
+  public ViewPager getViewPager()
+  {
+    return this.a;
+  }
+  
   public void onPageScrollStateChanged(int paramInt) {}
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    IPageListener localIPageListener = this.jdField_a_of_type_ComTencentMobileqqQqgamepubListenerIPageListener;
+    IPageListener localIPageListener = this.b;
     if (localIPageListener != null) {
       localIPageListener.a(paramInt1, paramFloat, paramInt2);
     }
@@ -176,7 +181,7 @@ public class QQGameIndicator2
   
   public void onPageSelected(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -197,8 +202,8 @@ public class QQGameIndicator2
     if (localRadioButton != null) {
       localRadioButton.setChecked(true);
     }
-    a(i, ((PagerAdapter)localObject).getCount());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQqgamepubListenerIPageListener;
+    b(i, ((PagerAdapter)localObject).getCount());
+    localObject = this.b;
     if (localObject != null) {
       ((IPageListener)localObject).a(paramInt);
     }
@@ -218,13 +223,13 @@ public class QQGameIndicator2
   
   public void setPageListener(IPageListener paramIPageListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubListenerIPageListener = paramIPageListener;
+    this.b = paramIPageListener;
   }
   
   public void setViewPager(ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = paramViewPager;
-    paramViewPager = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    this.a = paramViewPager;
+    paramViewPager = this.a;
     if (paramViewPager != null) {
       paramViewPager.setOnPageChangeListener(this);
     }
@@ -232,7 +237,7 @@ public class QQGameIndicator2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.web.view.QQGameIndicator2
  * JD-Core Version:    0.7.0.1
  */

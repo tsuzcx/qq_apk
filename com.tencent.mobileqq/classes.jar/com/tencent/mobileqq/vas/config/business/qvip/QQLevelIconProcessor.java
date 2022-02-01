@@ -12,9 +12,9 @@ import org.json.JSONObject;
 public class QQLevelIconProcessor
   extends BaseQVipConfigProcessor<QQLevelIconConfig>
 {
-  public static QQLevelIconConfig c()
+  public static QQLevelIconConfig e()
   {
-    QQLevelIconConfig localQQLevelIconConfig2 = (QQLevelIconConfig)QConfigManager.a().a(542);
+    QQLevelIconConfig localQQLevelIconConfig2 = (QQLevelIconConfig)QConfigManager.b().b(542);
     QQLevelIconConfig localQQLevelIconConfig1 = localQQLevelIconConfig2;
     if (localQQLevelIconConfig2 == null) {
       localQQLevelIconConfig1 = new QQLevelIconConfig();
@@ -34,10 +34,10 @@ public class QQLevelIconProcessor
     boolean bool1 = QLog.isColorLevel();
     boolean bool2 = false;
     if (bool1) {
-      QLog.d("QQLevelIconProcessor", 1, paramArrayOfQConfItem[0].a);
+      QLog.d("QQLevelIconProcessor", 1, paramArrayOfQConfItem[0].b);
     }
     QQLevelIconConfig localQQLevelIconConfig = new QQLevelIconConfig();
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+    paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
     for (;;)
     {
       try
@@ -97,7 +97,7 @@ public class QQLevelIconProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QQLevelIconProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -111,7 +111,7 @@ public class QQFileUtilsImpl
     if (!TextUtils.isEmpty(paramString2))
     {
       if (localStringBuilder.length() > 0) {
-        localStringBuilder.append(paramContext.getString(2131692346));
+        localStringBuilder.append(paramContext.getString(2131889334));
       }
       localStringBuilder.append("来自");
       localStringBuilder.append(paramString2);
@@ -119,14 +119,14 @@ public class QQFileUtilsImpl
     if (!TextUtils.isEmpty(paramString3))
     {
       if (localStringBuilder.length() > 0) {
-        localStringBuilder.append(paramContext.getString(2131692346));
+        localStringBuilder.append(paramContext.getString(2131889334));
       }
       localStringBuilder.append(paramString3);
     }
     if (!TextUtils.isEmpty(paramString4))
     {
       if (localStringBuilder.length() > 0) {
-        localStringBuilder.append(paramContext.getString(2131692346));
+        localStringBuilder.append(paramContext.getString(2131889334));
       }
       localStringBuilder.append(paramString4);
     }
@@ -206,10 +206,10 @@ public class QQFileUtilsImpl
   
   public static boolean a(Context paramContext, String paramString)
   {
-    if (QQFileManagerUtilImpl.a(paramString) <= 10485760L) {
+    if (QQFileManagerUtilImpl.j(paramString) <= 10485760L) {
       return true;
     }
-    FMDialogUtil.a(paramContext, "", 2131698225, new QQFileUtilsImpl.1(paramContext, paramString));
+    FMDialogUtil.a(paramContext, "", 2131896126, new QQFileUtilsImpl.1(paramContext, paramString));
     return false;
   }
   
@@ -218,7 +218,7 @@ public class QQFileUtilsImpl
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 243	com/tencent/mobileqq/utils/FileUtils:fileExistsAndNotEmpty	(Ljava/lang/String;)Z
+    //   1: invokestatic 244	com/tencent/mobileqq/utils/FileUtils:fileExistsAndNotEmpty	(Ljava/lang/String;)Z
     //   4: istore 7
     //   6: iconst_0
     //   7: istore 6
@@ -243,29 +243,29 @@ public class QQFileUtilsImpl
     //   37: aconst_null
     //   38: astore 11
     //   40: aload_0
-    //   41: invokevirtual 247	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   41: invokevirtual 248	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   44: aload_2
-    //   45: ldc 249
-    //   47: invokevirtual 255	android/content/ContentResolver:openFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   45: ldc 250
+    //   47: invokevirtual 256	android/content/ContentResolver:openFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     //   50: astore_0
     //   51: aload_0
     //   52: ifnonnull +20 -> 72
     //   55: aload_0
     //   56: ifnull +14 -> 70
     //   59: aload_0
-    //   60: invokevirtual 260	android/os/ParcelFileDescriptor:close	()V
+    //   60: invokevirtual 261	android/os/ParcelFileDescriptor:close	()V
     //   63: iconst_0
     //   64: ireturn
     //   65: astore_0
     //   66: aload_0
-    //   67: invokevirtual 263	java/io/IOException:printStackTrace	()V
+    //   67: invokevirtual 264	java/io/IOException:printStackTrace	()V
     //   70: iconst_0
     //   71: ireturn
-    //   72: new 265	java/io/FileOutputStream
+    //   72: new 266	java/io/FileOutputStream
     //   75: dup
     //   76: aload_0
-    //   77: invokevirtual 269	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-    //   80: invokespecial 272	java/io/FileOutputStream:<init>	(Ljava/io/FileDescriptor;)V
+    //   77: invokevirtual 270	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   80: invokespecial 273	java/io/FileOutputStream:<init>	(Ljava/io/FileDescriptor;)V
     //   83: astore_2
     //   84: aload 9
     //   86: astore 8
@@ -273,18 +273,18 @@ public class QQFileUtilsImpl
     //   89: astore 10
     //   91: aload_2
     //   92: astore 12
-    //   94: new 274	java/io/FileInputStream
+    //   94: new 275	java/io/FileInputStream
     //   97: dup
     //   98: aload_1
-    //   99: invokespecial 275	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   99: invokespecial 276	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   102: astore_1
-    //   103: invokestatic 281	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   103: invokestatic 282	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   106: sipush 4096
-    //   109: invokevirtual 285	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   109: invokevirtual 286	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
     //   112: astore 8
     //   114: aload_1
     //   115: aload 8
-    //   117: invokevirtual 289	java/io/FileInputStream:read	([B)I
+    //   117: invokevirtual 290	java/io/FileInputStream:read	([B)I
     //   120: istore_3
     //   121: iload_3
     //   122: iconst_m1
@@ -293,29 +293,29 @@ public class QQFileUtilsImpl
     //   127: aload 8
     //   129: iconst_0
     //   130: iload_3
-    //   131: invokevirtual 293	java/io/FileOutputStream:write	([BII)V
+    //   131: invokevirtual 294	java/io/FileOutputStream:write	([BII)V
     //   134: goto -20 -> 114
-    //   137: invokestatic 281	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   137: invokestatic 282	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   140: aload 8
-    //   142: invokevirtual 297	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   142: invokevirtual 298	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   145: aload_2
-    //   146: invokevirtual 300	java/io/FileOutputStream:flush	()V
+    //   146: invokevirtual 301	java/io/FileOutputStream:flush	()V
     //   149: aload_1
-    //   150: invokevirtual 301	java/io/FileInputStream:close	()V
+    //   150: invokevirtual 302	java/io/FileInputStream:close	()V
     //   153: iload 7
     //   155: istore 4
     //   157: goto +11 -> 168
     //   160: astore_1
     //   161: aload_1
-    //   162: invokevirtual 263	java/io/IOException:printStackTrace	()V
+    //   162: invokevirtual 264	java/io/IOException:printStackTrace	()V
     //   165: iconst_0
     //   166: istore 4
     //   168: aload_2
-    //   169: invokevirtual 302	java/io/FileOutputStream:close	()V
+    //   169: invokevirtual 303	java/io/FileOutputStream:close	()V
     //   172: goto +12 -> 184
     //   175: astore_1
     //   176: aload_1
-    //   177: invokevirtual 263	java/io/IOException:printStackTrace	()V
+    //   177: invokevirtual 264	java/io/IOException:printStackTrace	()V
     //   180: iload 5
     //   182: istore 4
     //   184: iload 4
@@ -325,12 +325,12 @@ public class QQFileUtilsImpl
     //   192: iload 4
     //   194: istore 5
     //   196: aload_0
-    //   197: invokevirtual 260	android/os/ParcelFileDescriptor:close	()V
+    //   197: invokevirtual 261	android/os/ParcelFileDescriptor:close	()V
     //   200: iload 4
     //   202: ireturn
     //   203: astore_0
     //   204: aload_0
-    //   205: invokevirtual 263	java/io/IOException:printStackTrace	()V
+    //   205: invokevirtual 264	java/io/IOException:printStackTrace	()V
     //   208: iload 5
     //   210: ireturn
     //   211: astore 9
@@ -395,23 +395,23 @@ public class QQFileUtilsImpl
     //   301: aload_1
     //   302: astore 12
     //   304: aload_0
-    //   305: invokevirtual 303	java/lang/Exception:printStackTrace	()V
+    //   305: invokevirtual 304	java/lang/Exception:printStackTrace	()V
     //   308: aload 11
     //   310: ifnull +16 -> 326
     //   313: aload 11
-    //   315: invokevirtual 301	java/io/FileInputStream:close	()V
+    //   315: invokevirtual 302	java/io/FileInputStream:close	()V
     //   318: goto +8 -> 326
     //   321: astore_0
     //   322: aload_0
-    //   323: invokevirtual 263	java/io/IOException:printStackTrace	()V
+    //   323: invokevirtual 264	java/io/IOException:printStackTrace	()V
     //   326: aload_1
     //   327: ifnull +15 -> 342
     //   330: aload_1
-    //   331: invokevirtual 302	java/io/FileOutputStream:close	()V
+    //   331: invokevirtual 303	java/io/FileOutputStream:close	()V
     //   334: goto +8 -> 342
     //   337: astore_0
     //   338: aload_0
-    //   339: invokevirtual 263	java/io/IOException:printStackTrace	()V
+    //   339: invokevirtual 264	java/io/IOException:printStackTrace	()V
     //   342: iload 4
     //   344: istore 5
     //   346: aload 9
@@ -419,7 +419,7 @@ public class QQFileUtilsImpl
     //   351: iload 6
     //   353: istore 5
     //   355: aload 9
-    //   357: invokevirtual 260	android/os/ParcelFileDescriptor:close	()V
+    //   357: invokevirtual 261	android/os/ParcelFileDescriptor:close	()V
     //   360: iload 4
     //   362: istore 5
     //   364: iload 5
@@ -430,27 +430,27 @@ public class QQFileUtilsImpl
     //   371: aload 8
     //   373: ifnull +16 -> 389
     //   376: aload 8
-    //   378: invokevirtual 301	java/io/FileInputStream:close	()V
+    //   378: invokevirtual 302	java/io/FileInputStream:close	()V
     //   381: goto +8 -> 389
     //   384: astore_2
     //   385: aload_2
-    //   386: invokevirtual 263	java/io/IOException:printStackTrace	()V
+    //   386: invokevirtual 264	java/io/IOException:printStackTrace	()V
     //   389: aload_1
     //   390: ifnull +15 -> 405
     //   393: aload_1
-    //   394: invokevirtual 302	java/io/FileOutputStream:close	()V
+    //   394: invokevirtual 303	java/io/FileOutputStream:close	()V
     //   397: goto +8 -> 405
     //   400: astore_1
     //   401: aload_1
-    //   402: invokevirtual 263	java/io/IOException:printStackTrace	()V
+    //   402: invokevirtual 264	java/io/IOException:printStackTrace	()V
     //   405: aload 10
     //   407: ifnull +16 -> 423
     //   410: aload 10
-    //   412: invokevirtual 260	android/os/ParcelFileDescriptor:close	()V
+    //   412: invokevirtual 261	android/os/ParcelFileDescriptor:close	()V
     //   415: goto +8 -> 423
     //   418: astore_1
     //   419: aload_1
-    //   420: invokevirtual 263	java/io/IOException:printStackTrace	()V
+    //   420: invokevirtual 264	java/io/IOException:printStackTrace	()V
     //   423: goto +5 -> 428
     //   426: aload_0
     //   427: athrow
@@ -570,7 +570,7 @@ public class QQFileUtilsImpl
       paramString1.append(paramString5);
       paramString1.append(paramContext);
       paramContext = QQFileManagerUtilImpl.a(paramTextView, paramString1.toString());
-      paramString1 = a(paramContext, paramString2, HardCodeUtil.a(2131709686));
+      paramString1 = a(paramContext, paramString2, HardCodeUtil.a(2131907412));
       if (paramBoolean) {
         paramContext = a(paramContext, paramString1, paramTipsClickedInterface);
       } else {
@@ -581,10 +581,10 @@ public class QQFileUtilsImpl
     {
       paramContext = null;
     }
-    if (QVipTroopFileProcessor.c().a())
+    if (QVipTroopFileProcessor.e().a())
     {
       paramString1 = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getVipType();
-      QVipTroopFileProcessor.c().a(paramContext, paramString4, paramString1);
+      QVipTroopFileProcessor.e().a(paramContext, paramString4, paramString1);
     }
     if ((paramContext != null) && (paramContext.length() > 0))
     {
@@ -598,7 +598,7 @@ public class QQFileUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

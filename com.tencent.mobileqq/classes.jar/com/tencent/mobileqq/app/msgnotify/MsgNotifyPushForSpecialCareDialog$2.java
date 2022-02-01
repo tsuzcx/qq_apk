@@ -18,24 +18,24 @@ class MsgNotifyPushForSpecialCareDialog$2
     try
     {
       ReportController.b(null, "dc00898", "", "", "0X8009ACC", "0X8009ACC", 0, 0, "", "", "", "");
-      if (MsgNotifyPushDialog.a != null)
+      if (MsgNotifyPushDialog.n != null)
       {
-        MsgNotifyPushForSpecialCareDialog.a(this.a).startActivity(MsgNotifyPushDialog.a);
+        MsgNotifyPushForSpecialCareDialog.b(this.a).startActivity(MsgNotifyPushDialog.n);
       }
-      else if (MsgNotifyPushForSpecialCareDialog.a(this.a) != null)
+      else if (MsgNotifyPushForSpecialCareDialog.c(this.a) != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(MsgNotifyPushForSpecialCareDialog.a(), 2, "init MsgNotifyPushDialog.initPushOpeNotifyConfig");
+          QLog.d(MsgNotifyPushForSpecialCareDialog.b(), 2, "init MsgNotifyPushDialog.initPushOpeNotifyConfig");
         }
-        MsgNotifyPushDialog.a(MsgNotifyPushForSpecialCareDialog.a(this.a));
-        MsgNotifyPushForSpecialCareDialog.a(this.a).startActivity(MsgNotifyPushDialog.a);
+        MsgNotifyPushDialog.a(MsgNotifyPushForSpecialCareDialog.c(this.a));
+        MsgNotifyPushForSpecialCareDialog.b(this.a).startActivity(MsgNotifyPushDialog.n);
       }
       else
       {
         if (QLog.isColorLevel()) {
-          QLog.d(MsgNotifyPushForSpecialCareDialog.a(), 2, "mAppInterface=null, use default intent");
+          QLog.d(MsgNotifyPushForSpecialCareDialog.b(), 2, "mAppInterface=null, use default intent");
         }
-        MsgNotifyPushForSpecialCareDialog.a(this.a).startActivity(JumpToNotificationSettingUtil.a(MsgNotifyPushForSpecialCareDialog.a(this.a)));
+        MsgNotifyPushForSpecialCareDialog.b(this.a).startActivity(JumpToNotificationSettingUtil.a(MsgNotifyPushForSpecialCareDialog.b(this.a)));
       }
     }
     catch (Exception localException)
@@ -45,8 +45,8 @@ class MsgNotifyPushForSpecialCareDialog$2
     }
     if (QLog.isColorLevel())
     {
-      QLog.d(MsgNotifyPushForSpecialCareDialog.a(), 2, "Start Activity Failed");
-      MsgNotifyPushForSpecialCareDialog.a(this.a).startActivity(JumpToNotificationSettingUtil.c(MsgNotifyPushForSpecialCareDialog.a(this.a)));
+      QLog.d(MsgNotifyPushForSpecialCareDialog.b(), 2, "Start Activity Failed");
+      MsgNotifyPushForSpecialCareDialog.b(this.a).startActivity(JumpToNotificationSettingUtil.c(MsgNotifyPushForSpecialCareDialog.b(this.a)));
     }
     this.a.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
@@ -54,7 +54,7 @@ class MsgNotifyPushForSpecialCareDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgnotify.MsgNotifyPushForSpecialCareDialog.2
  * JD-Core Version:    0.7.0.1
  */

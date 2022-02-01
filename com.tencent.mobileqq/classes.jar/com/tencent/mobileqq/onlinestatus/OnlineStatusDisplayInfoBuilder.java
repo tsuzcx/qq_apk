@@ -12,8 +12,8 @@ import java.util.Set;
 
 public class OnlineStatusDisplayInfoBuilder
 {
-  private BaseOnlineStatusDisplayInfo jdField_a_of_type_ComTencentMobileqqOnlinestatusBaseOnlineStatusDisplayInfo;
-  private HashMap<Long, BaseOnlineStatusDisplayInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<Long, BaseOnlineStatusDisplayInfo> a = new HashMap();
+  private BaseOnlineStatusDisplayInfo b;
   
   private BaseOnlineStatusDisplayInfo b(long paramLong, BaseOnlineStatusDisplayInfo.UpdateUIListener paramUpdateUIListener, AppInterface paramAppInterface, QBaseActivity paramQBaseActivity)
   {
@@ -36,11 +36,11 @@ public class OnlineStatusDisplayInfoBuilder
   
   public BaseOnlineStatusDisplayInfo a(long paramLong, BaseOnlineStatusDisplayInfo.UpdateUIListener paramUpdateUIListener, AppInterface paramAppInterface, QBaseActivity paramQBaseActivity)
   {
-    BaseOnlineStatusDisplayInfo localBaseOnlineStatusDisplayInfo = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusBaseOnlineStatusDisplayInfo;
-    if ((localBaseOnlineStatusDisplayInfo != null) && (localBaseOnlineStatusDisplayInfo.a != paramLong)) {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusBaseOnlineStatusDisplayInfo.a(false, paramLong);
+    BaseOnlineStatusDisplayInfo localBaseOnlineStatusDisplayInfo = this.b;
+    if ((localBaseOnlineStatusDisplayInfo != null) && (localBaseOnlineStatusDisplayInfo.g != paramLong)) {
+      this.b.a(false, paramLong);
     }
-    localBaseOnlineStatusDisplayInfo = (BaseOnlineStatusDisplayInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    localBaseOnlineStatusDisplayInfo = (BaseOnlineStatusDisplayInfo)this.a.get(Long.valueOf(paramLong));
     if (localBaseOnlineStatusDisplayInfo != null)
     {
       localBaseOnlineStatusDisplayInfo.a(true, paramLong);
@@ -50,29 +50,29 @@ public class OnlineStatusDisplayInfoBuilder
     }
     paramUpdateUIListener = b(paramLong, paramUpdateUIListener, paramAppInterface, paramQBaseActivity);
     if (paramUpdateUIListener != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramUpdateUIListener);
+      this.a.put(Long.valueOf(paramLong), paramUpdateUIListener);
     }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusBaseOnlineStatusDisplayInfo = paramUpdateUIListener;
+    this.b = paramUpdateUIListener;
     return paramUpdateUIListener;
   }
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.a.entrySet().iterator();
     while (localIterator.hasNext())
     {
       BaseOnlineStatusDisplayInfo localBaseOnlineStatusDisplayInfo = (BaseOnlineStatusDisplayInfo)((Map.Entry)localIterator.next()).getValue();
       if (localBaseOnlineStatusDisplayInfo != null) {
-        localBaseOnlineStatusDisplayInfo.e();
+        localBaseOnlineStatusDisplayInfo.f();
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusBaseOnlineStatusDisplayInfo = null;
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.b = null;
+    this.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusDisplayInfoBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -11,21 +11,21 @@ final class DeviceCapabilityExamination$2
   public void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2)
   {
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    paramString2 = DeviceCapabilityExamination.a(this.jdField_a_of_type_Int, paramInt1, paramInt3, this.jdField_a_of_type_ComTencentAvAppDeviceCapability$CodecPlayerCallback$CodecTestInfo.a, paramString1, paramInt2, l1 - l2);
-    paramString2.f = this.jdField_a_of_type_ComTencentAvManageConfigAVTestforEncDecConfig$Sample.jdField_a_of_type_Int;
-    paramString2.g = this.jdField_a_of_type_ComTencentAvManageConfigAVTestforEncDecConfig$Sample.b;
-    paramString2.h = this.jdField_a_of_type_ComTencentAvManageConfigAVTestforEncDecConfig$Sample.c;
-    paramString2.i = this.jdField_a_of_type_ComTencentAvManageConfigAVTestforEncDecConfig$Sample.d;
-    if ((paramInt1 == 1) && (this.jdField_a_of_type_ComTencentAvAppDeviceCapability$CodecPlayerCallback$CodecTestInfo.a()) && (this.jdField_a_of_type_ComTencentAvManageConfigAVTestforEncDecConfig$Sample.jdField_a_of_type_Boolean))
+    long l2 = this.a;
+    paramString2 = DeviceCapabilityExamination.a(this.b, paramInt1, paramInt3, this.c.b, paramString1, paramInt2, l1 - l2);
+    paramString2.o = this.d.d;
+    paramString2.p = this.d.e;
+    paramString2.q = this.d.g;
+    paramString2.r = this.d.h;
+    if ((paramInt1 == 1) && (this.c.c()) && (this.d.f))
     {
-      new EncFileUpload(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.b).a(this.jdField_a_of_type_ComTencentAvAppDeviceCapability$CodecPlayerCallback$CodecTestInfo.d, new DeviceCapabilityExamination.2.1(this, paramString2, paramInt1, paramString1, paramInt2, paramInt3));
+      new EncFileUpload(this.e, this.f).a(this.c.g, new DeviceCapabilityExamination.2.1(this, paramString2, paramInt1, paramString1, paramInt2, paramInt3));
     }
     else
     {
-      paramString2.j = -10000;
-      DeviceCapabilityExamination.a(paramString2, this.jdField_a_of_type_Int, paramInt1);
-      paramString2 = this.jdField_a_of_type_ComTencentAvAppDeviceCapability$CodecPlayerCallback;
+      paramString2.s = -10000;
+      DeviceCapabilityExamination.a(paramString2, this.b, paramInt1);
+      paramString2 = this.g;
       if (paramString2 != null) {
         paramString2.a(paramInt1, paramString1, paramInt2, paramInt3, null);
       }

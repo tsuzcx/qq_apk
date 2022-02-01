@@ -9,7 +9,7 @@ public final class GetMemberListRsp
   extends MessageNano
 {
   public UserList a;
-  public boolean a;
+  public boolean b;
   
   public GetMemberListRsp()
   {
@@ -18,8 +18,8 @@ public final class GetMemberListRsp
   
   public GetMemberListRsp a()
   {
-    this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList = null;
-    this.jdField_a_of_type_Boolean = false;
+    this.a = null;
+    this.b = false;
     this.cachedSize = -1;
     return this;
   }
@@ -41,15 +41,15 @@ public final class GetMemberListRsp
           }
         }
         else {
-          this.jdField_a_of_type_Boolean = paramCodedInputByteBufferNano.readBool();
+          this.b = paramCodedInputByteBufferNano.readBool();
         }
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList == null) {
-          this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList = new UserList();
+        if (this.a == null) {
+          this.a = new UserList();
         }
-        paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList);
+        paramCodedInputByteBufferNano.readMessage(this.a);
       }
     }
     return this;
@@ -58,12 +58,12 @@ public final class GetMemberListRsp
   protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
-    UserList localUserList = this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList;
+    UserList localUserList = this.a;
     int i = j;
     if (localUserList != null) {
       i = j + CodedOutputByteBufferNano.computeMessageSize(1, localUserList);
     }
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.b;
     j = i;
     if (bool) {
       j = i + CodedOutputByteBufferNano.computeBoolSize(2, bool);
@@ -73,11 +73,11 @@ public final class GetMemberListRsp
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    UserList localUserList = this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList;
+    UserList localUserList = this.a;
     if (localUserList != null) {
       paramCodedOutputByteBufferNano.writeMessage(1, localUserList);
     }
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.b;
     if (bool) {
       paramCodedOutputByteBufferNano.writeBool(2, bool);
     }
@@ -86,7 +86,7 @@ public final class GetMemberListRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.GetMemberListRsp
  * JD-Core Version:    0.7.0.1
  */

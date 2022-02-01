@@ -6,20 +6,12 @@ import java.util.List;
 
 public class PrinterEntity
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public boolean b = true;
-  public boolean c = false;
-  
-  public PrinterEntity()
-  {
-    this.jdField_a_of_type_JavaLangString = "Printer";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public String a = "Printer";
+  public int b = 1;
+  public long c = 0L;
+  public boolean d = true;
+  public boolean e = true;
+  public boolean f = false;
   
   public boolean a(List<FileInfo> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {

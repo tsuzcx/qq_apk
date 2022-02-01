@@ -13,13 +13,13 @@ class GaInviteLockActivity$5
   {
     if (paramBoolean)
     {
-      if (GaInviteLockActivity.b(this.a)) {
+      if (GaInviteLockActivity.f(this.a)) {
         return;
       }
-      if (this.a.a.d) {
-        this.a.e();
+      if (this.a.f.j) {
+        this.a.h();
       } else {
-        this.a.d();
+        this.a.g();
       }
       ReportController.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
     }

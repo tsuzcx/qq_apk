@@ -12,6 +12,7 @@ import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 import mqq.manager.TicketManager;
+import mqq.util.LogUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,7 +29,7 @@ public class AccountReleasePlugin
     }
     if ("onReleaseSuccess".equals(paramString3))
     {
-      paramJsBridgeListener = this.mRuntime.a();
+      paramJsBridgeListener = this.mRuntime.d();
       if (paramJsBridgeListener != null)
       {
         paramJsBridgeListener.setResult(-1, null);
@@ -40,8 +41,8 @@ public class AccountReleasePlugin
     }
     if ("getToken".equals(paramString3))
     {
-      paramJsBridgeListener = this.mRuntime.a();
-      paramString1 = this.mRuntime.a();
+      paramJsBridgeListener = this.mRuntime.b();
+      paramString1 = this.mRuntime.d();
       boolean bool;
       if (paramString1 != null)
       {
@@ -73,11 +74,11 @@ public class AccountReleasePlugin
             i += 1;
           }
           paramJsBridgeListener = MD5Utils.encodeHexStr(paramJsBridgeListener);
-          break label389;
+          break label392;
         }
         paramString2 = new StringBuilder();
         paramString2.append("uin or a2 is empty, uin:");
-        paramString2.append(paramJsBridgeListener);
+        paramString2.append(LogUtil.getSafePrintUin(paramJsBridgeListener));
         paramString2.append(",a2:");
         paramString2.append(paramString1);
         QLog.d("AccountRelease", 1, paramString2.toString());
@@ -90,7 +91,7 @@ public class AccountReleasePlugin
         QLog.d("AccountRelease", 1, paramJsBridgeListener.toString());
       }
       paramJsBridgeListener = "";
-      label389:
+      label392:
       if (QLog.isColorLevel()) {
         QLog.d("AccountRelease", 2, String.format("getToken: %s", new Object[] { paramJsBridgeListener }));
       }
@@ -116,7 +117,7 @@ public class AccountReleasePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.AccountReleasePlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -9,17 +9,17 @@ class PublicAccountChatPie$62
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.this$0.a.showPendant(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
+      this.this$0.bS.showPendant(this.b, this.c, this.d, this.e, this.f);
       return;
     }
-    this.this$0.a.hidePendant();
+    this.this$0.bS.hidePendant();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.62
  * JD-Core Version:    0.7.0.1
  */

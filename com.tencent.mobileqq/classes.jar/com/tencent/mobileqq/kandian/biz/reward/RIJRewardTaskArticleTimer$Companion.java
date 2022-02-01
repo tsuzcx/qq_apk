@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.kandian.biz.reward;
 
-import com.tencent.mobileqq.kandian.biz.common.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.biz.reward.aidl.RIJAidlClientRedPacketModule;
 import com.tencent.mobileqq.kandian.biz.reward.utils.Utils;
+import com.tencent.mobileqq.kandian.biz.xtab.api.impl.RIJXTabFrameUtils;
 import kotlin.Metadata;
 import kotlin.jvm.JvmStatic;
 
@@ -20,7 +20,7 @@ public final class RIJRewardTaskArticleTimer$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJRewardTaskArticleTimer.Companion
  * JD-Core Version:    0.7.0.1
  */

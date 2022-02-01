@@ -13,6 +13,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
+import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.URLSpan;
 import android.util.DisplayMetrics;
@@ -44,6 +45,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -59,6 +61,9 @@ import mqq.observer.WtloginObserver;
 import oicq.wlogin_sdk.request.WUserSigInfo;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.util;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import tencent.im.login.GatewayVerify.ReqBody;
 import tencent.im.login.GatewayVerify.ReqBodySelfPhone;
 import tencent.im.login.GatewayVerify.ReqBodySelfPhoneLogin;
@@ -71,31 +76,27 @@ import tencent.im.login.GatewayVerify.UinInfo;
 
 public class PhoneNumQuickLoginManager
 {
-  public static DownloadParams.DecodeHandler a;
-  private static LocalPhoneModule a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new PhoneNumQuickLoginManager.18();
-  }
+  public static DownloadParams.DecodeHandler a = new PhoneNumQuickLoginManager.18();
+  private static LocalPhoneModule b;
+  private static Dialog c;
   
   private static Dialog a(Context paramContext, int paramInt)
   {
-    Dialog localDialog = CustomDialogFactory.a(paramContext, 2131755400);
-    TouchControllerFrameLayout localTouchControllerFrameLayout = (TouchControllerFrameLayout)LayoutInflater.from(localDialog.getContext()).inflate(2131561157, null);
+    Dialog localDialog = CustomDialogFactory.a(paramContext, 2131952168);
+    TouchControllerFrameLayout localTouchControllerFrameLayout = (TouchControllerFrameLayout)LayoutInflater.from(localDialog.getContext()).inflate(2131627509, null);
     localTouchControllerFrameLayout.setOnClickListener(new PhoneNumQuickLoginManager.2(paramContext, localDialog));
     LayoutInflater.from(localDialog.getContext()).inflate(paramInt, localTouchControllerFrameLayout, true);
     localTouchControllerFrameLayout.getChildAt(0).setOnClickListener(new PhoneNumQuickLoginManager.3());
-    localTouchControllerFrameLayout.setHeadView(localTouchControllerFrameLayout.findViewById(2131372515));
+    localTouchControllerFrameLayout.setHeadView(localTouchControllerFrameLayout.findViewById(2131440039));
     localTouchControllerFrameLayout.setCustomTouchListener(new PhoneNumQuickLoginManager.4(localDialog));
-    localTouchControllerFrameLayout.findViewById(2131372522).setOnClickListener(new PhoneNumQuickLoginManager.5(paramContext, localDialog));
-    paramContext = localTouchControllerFrameLayout.findViewById(2131370340);
+    localTouchControllerFrameLayout.findViewById(2131440046).setOnClickListener(new PhoneNumQuickLoginManager.5(paramContext, localDialog));
+    paramContext = localTouchControllerFrameLayout.findViewById(2131437598);
     paramContext.getViewTreeObserver().addOnGlobalLayoutListener(new PhoneNumQuickLoginManager.6(paramContext, localTouchControllerFrameLayout, localDialog));
     localDialog.setContentView(localTouchControllerFrameLayout);
     return localDialog;
   }
   
-  private static CharSequence a(String paramString)
+  private static CharSequence a(String paramString, int paramInt)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -108,42 +109,71 @@ public class PhoneNumQuickLoginManager
       paramString = Html.fromHtml(paramString);
     }
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramString);
-    URLSpan[] arrayOfURLSpan = (URLSpan[])localSpannableStringBuilder.getSpans(0, paramString.length(), URLSpan.class);
-    int k = arrayOfURLSpan.length;
+    Object localObject1 = (URLSpan[])localSpannableStringBuilder.getSpans(0, paramString.length(), URLSpan.class);
+    int k = localObject1.length;
     i = 0;
     int m;
-    int n;
     while (i < k)
     {
-      URLSpan localURLSpan = arrayOfURLSpan[i];
-      m = localSpannableStringBuilder.getSpanStart(localURLSpan);
-      n = localSpannableStringBuilder.getSpanEnd(localURLSpan);
-      int i1 = localSpannableStringBuilder.getSpanFlags(localURLSpan);
-      PhoneNumQuickLoginManager.17 local17 = new PhoneNumQuickLoginManager.17(localURLSpan.getURL());
-      localSpannableStringBuilder.removeSpan(localURLSpan);
+      Object localObject2 = localObject1[i];
+      m = localSpannableStringBuilder.getSpanStart(localObject2);
+      int n = localSpannableStringBuilder.getSpanEnd(localObject2);
+      int i1 = localSpannableStringBuilder.getSpanFlags(localObject2);
+      PhoneNumQuickLoginManager.17 local17 = new PhoneNumQuickLoginManager.17(localObject2.getURL(), paramInt);
+      localSpannableStringBuilder.removeSpan(localObject2);
       localSpannableStringBuilder.setSpan(local17, m, n, i1);
       i += 1;
     }
     paramString = (ForegroundColorSpan[])localSpannableStringBuilder.getSpans(0, paramString.length(), ForegroundColorSpan.class);
-    k = paramString.length;
-    i = j;
-    while (i < k)
+    i = paramString.length;
+    paramInt = j;
+    while (paramInt < i)
     {
-      arrayOfURLSpan = paramString[i];
-      j = localSpannableStringBuilder.getSpanStart(arrayOfURLSpan);
-      m = localSpannableStringBuilder.getSpanEnd(arrayOfURLSpan);
-      n = localSpannableStringBuilder.getSpanFlags(arrayOfURLSpan);
-      localSpannableStringBuilder.removeSpan(arrayOfURLSpan);
-      localSpannableStringBuilder.setSpan(arrayOfURLSpan, j, m, n);
-      i += 1;
+      localObject1 = paramString[paramInt];
+      j = localSpannableStringBuilder.getSpanStart(localObject1);
+      k = localSpannableStringBuilder.getSpanEnd(localObject1);
+      m = localSpannableStringBuilder.getSpanFlags(localObject1);
+      localSpannableStringBuilder.removeSpan(localObject1);
+      localSpannableStringBuilder.setSpan(localObject1, j, k, m);
+      localObject1 = new BackgroundColorSpan(-1);
+      localSpannableStringBuilder.removeSpan(localObject1);
+      localSpannableStringBuilder.setSpan(localObject1, j, k, m);
+      paramInt += 1;
     }
     return localSpannableStringBuilder;
   }
   
   public static String a(AppRuntime paramAppRuntime)
   {
-    a(paramAppRuntime);
-    return jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule.a();
+    b(paramAppRuntime);
+    return b.a();
+  }
+  
+  private static String a(WUserSigInfo paramWUserSigInfo)
+  {
+    paramWUserSigInfo = (tlv_t)paramWUserSigInfo.loginResultTLVMap.get(Integer.valueOf(1347));
+    if (paramWUserSigInfo == null)
+    {
+      QLog.e("PhoneNumQuickLoginManager", 1, "getUnbindWording: 0x543 tlv is null");
+      return null;
+    }
+    paramWUserSigInfo = paramWUserSigInfo.get_data();
+    try
+    {
+      GatewayVerify.RspBody localRspBody = new GatewayVerify.RspBody();
+      localRspBody.mergeFrom(paramWUserSigInfo);
+      paramWUserSigInfo = localRspBody.msg_rsp_cmd_18.msg_rsp_phone_sms_extend_login;
+      if (QLog.isColorLevel()) {
+        QLog.d("PhoneNumQuickLoginManager", 2, new Object[] { "getUnbindWording unbind_wording : ", paramWUserSigInfo.str_unbind_wording.get() });
+      }
+      paramWUserSigInfo = paramWUserSigInfo.str_unbind_wording.get();
+      return paramWUserSigInfo;
+    }
+    catch (InvalidProtocolBufferMicroException paramWUserSigInfo)
+    {
+      QLog.d("PhoneNumQuickLoginManager", 1, "getUnbindWording error : ", paramWUserSigInfo);
+    }
+    return null;
   }
   
   public static List<PhoneNumQuickLoginManager.AccountInfo> a(WUserSigInfo paramWUserSigInfo, int paramInt)
@@ -164,7 +194,7 @@ public class PhoneNumQuickLoginManager
     else
     {
       if (paramInt != 2) {
-        break label187;
+        break label188;
       }
       paramWUserSigInfo = ((GatewayVerify.RspBody)localObject).msg_rsp_cmd_18.msg_rsp_phone_sms_extend_login.rpt_bind_uin_info.get();
     }
@@ -179,27 +209,24 @@ public class PhoneNumQuickLoginManager
       ((List)localObject).add(new PhoneNumQuickLoginManager.AccountInfo(localUinInfo.str_nick.get(), str1, arrayOfByte, str2));
     }
     return localObject;
-    label187:
+    label188:
     QLog.e("PhoneNumQuickLoginManager", 1, "getUinInfo: scene type is error!");
     return null;
   }
   
-  private static AppRuntime a()
-  {
-    return MobileQQ.sMobileQQ.waitAppRuntime(null);
-  }
-  
   public static void a()
   {
-    LocalPhoneModule localLocalPhoneModule = jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule;
+    LocalPhoneModule localLocalPhoneModule = b;
     if (localLocalPhoneModule != null) {
-      localLocalPhoneModule.a();
+      localLocalPhoneModule.b();
     }
   }
   
   public static void a(int paramInt)
   {
-    a("0X800B8CA", paramInt, "");
+    if (paramInt == 1) {
+      a("0X800BD17", 0, "");
+    }
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, PhoneNumQuickLoginManager.AccountInfo paramAccountInfo, Bundle paramBundle, byte[] paramArrayOfByte, int paramInt)
@@ -210,7 +237,7 @@ public class PhoneNumQuickLoginManager
   private static void a(Dialog paramDialog)
   {
     paramDialog.show();
-    ((LinearLayout)paramDialog.findViewById(2131370340)).startAnimation(AnimationUtils.loadAnimation(paramDialog.getContext(), 2130772011));
+    ((LinearLayout)paramDialog.findViewById(2131437598)).startAnimation(AnimationUtils.loadAnimation(paramDialog.getContext(), 2130772014));
   }
   
   private static void a(Dialog paramDialog, View.OnClickListener paramOnClickListener, Map<String, Object> paramMap)
@@ -220,12 +247,12 @@ public class PhoneNumQuickLoginManager
     String str2 = (String)paramMap.get("key_other_btn_text");
     String str1 = (String)paramMap.get("key_user_agreement");
     Boolean localBoolean = (Boolean)paramMap.get("key_from_user_click");
-    View localView = paramDialog.findViewById(2131363595);
-    ((TextView)localView.findViewById(2131372526)).setText((CharSequence)localObject);
-    localObject = (Button)localView.findViewById(2131372525);
+    View localView = paramDialog.findViewById(2131429500);
+    ((TextView)localView.findViewById(2131440050)).setText((CharSequence)localObject);
+    localObject = (Button)localView.findViewById(2131440049);
     ((Button)localObject).setText(str3);
     ((Button)localObject).setOnClickListener(new PhoneNumQuickLoginManager.7(paramOnClickListener, paramDialog));
-    paramOnClickListener = (Button)localView.findViewById(2131372524);
+    paramOnClickListener = (Button)localView.findViewById(2131440048);
     paramOnClickListener.setText(str2);
     paramOnClickListener.setOnClickListener(new PhoneNumQuickLoginManager.8(paramDialog, paramMap));
     paramDialog.setOnDismissListener(new PhoneNumQuickLoginManager.9(localBoolean));
@@ -234,7 +261,7 @@ public class PhoneNumQuickLoginManager
       QLog.d("PhoneNumQuickLoginManager", 1, "setQuickLoginView agreement is null");
       return;
     }
-    paramOnClickListener = (TextView)localView.findViewById(2131372523);
+    paramOnClickListener = (TextView)localView.findViewById(2131440047);
     paramOnClickListener.setMovementMethod(LinkMovementMethod.getInstance());
     paramDialog = str1;
     if (str1.contains("\\n"))
@@ -249,7 +276,7 @@ public class PhoneNumQuickLoginManager
       }
       paramDialog = paramDialog[(paramDialog.length - 1)];
     }
-    paramDialog = a(paramDialog);
+    paramDialog = a(paramDialog, 0);
     if (paramDialog != null) {
       paramOnClickListener.append(paramDialog);
     }
@@ -260,10 +287,10 @@ public class PhoneNumQuickLoginManager
     Object localObject = (String)paramMap.get("key_dialog_title");
     String str = (String)paramMap.get("key_dialog_msg");
     paramMap = (String)paramMap.get("key_dialog_ok_btn_text");
-    View localView = paramDialog.findViewById(2131363595);
-    ((TextView)localView.findViewById(2131363789)).setText((CharSequence)localObject);
-    ((TextView)localView.findViewById(2131363787)).setText(str);
-    localObject = (Button)localView.findViewById(2131363788);
+    View localView = paramDialog.findViewById(2131429500);
+    ((TextView)localView.findViewById(2131429722)).setText((CharSequence)localObject);
+    ((TextView)localView.findViewById(2131429720)).setText(str);
+    localObject = (Button)localView.findViewById(2131429721);
     ((Button)localObject).setText(paramMap);
     ((Button)localObject).setOnClickListener(new PhoneNumQuickLoginManager.15(paramDialog));
   }
@@ -271,14 +298,27 @@ public class PhoneNumQuickLoginManager
   private static void a(Dialog paramDialog, Map<String, Object> paramMap, PhoneNumQuickLoginManager.OnUinClickListener paramOnUinClickListener, DialogInterface.OnDismissListener paramOnDismissListener)
   {
     Object localObject = (String)paramMap.get("key_dialog_title");
-    String str = (String)paramMap.get("key_dialog_msg");
+    String str2 = (String)paramMap.get("key_dialog_msg");
+    String str1 = (String)paramMap.get("key_unbind_account_tip");
     List localList = Collections.unmodifiableList((List)paramMap.get("key_unbind_account_list"));
-    View localView = paramDialog.findViewById(2131363595);
-    ((TextView)localView.findViewById(2131363599)).setText((CharSequence)localObject);
-    ((TextView)localView.findViewById(2131363597)).setText(str);
-    localObject = (ListView)localView.findViewById(2131363598);
+    View localView = paramDialog.findViewById(2131429500);
+    ((TextView)localView.findViewById(2131429504)).setText((CharSequence)localObject);
+    ((TextView)localView.findViewById(2131429502)).setText(str2);
+    localObject = (ListView)localView.findViewById(2131429503);
     ((ListView)localObject).setAdapter(new PhoneNumQuickLoginManager.BindPhoneNumAdapter(localList, null));
     ((ListView)localObject).setOnItemClickListener(new PhoneNumQuickLoginManager.16(paramOnUinClickListener, localList, paramDialog, paramMap));
+    paramMap = a(str1, 1);
+    paramOnUinClickListener = (TextView)localView.findViewById(2131431645);
+    paramOnUinClickListener.setMovementMethod(LinkMovementMethod.getInstance());
+    if (TextUtils.isEmpty(paramMap))
+    {
+      paramOnUinClickListener.setVisibility(8);
+    }
+    else
+    {
+      paramOnUinClickListener.setClickable(true);
+      paramOnUinClickListener.setText(paramMap);
+    }
     paramDialog.setOnDismissListener(paramOnDismissListener);
     if (localList.size() > 7)
     {
@@ -297,9 +337,9 @@ public class PhoneNumQuickLoginManager
   public static void a(Context paramContext)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("key_dialog_msg", paramContext.getString(2131699189));
-    localHashMap.put("key_dialog_ok_btn_text", paramContext.getString(2131699188));
-    localHashMap.put("key_dialog_no_btn_text", paramContext.getString(2131706424));
+    localHashMap.put("key_dialog_msg", paramContext.getString(2131897205));
+    localHashMap.put("key_dialog_ok_btn_text", paramContext.getString(2131897204));
+    localHashMap.put("key_dialog_no_btn_text", paramContext.getString(2131904283));
     b(paramContext, localHashMap);
   }
   
@@ -311,7 +351,7 @@ public class PhoneNumQuickLoginManager
       if (paramMap.isEmpty()) {
         return;
       }
-      paramContext = a(paramContext, 2131561275);
+      paramContext = a(paramContext, 2131627631);
       a(paramContext, paramOnClickListener, paramMap);
       a(paramContext);
     }
@@ -323,7 +363,7 @@ public class PhoneNumQuickLoginManager
     QLog.d("PhoneNumQuickLoginManager", 1, "setQuickLoginView other btn click");
     Intent localIntent = new Intent(paramContext, LoginPhoneNumActivity.class);
     localIntent.putExtra("entrance", LoginView.class.getName());
-    localIntent.putExtra("title", paramContext.getResources().getString(2131693845));
+    localIntent.putExtra("title", paramContext.getResources().getString(2131891425));
     paramMap = paramMap.get("login_from_account_change");
     if ((!(paramMap instanceof Boolean)) || (!((Boolean)paramMap).booleanValue())) {
       bool = false;
@@ -337,7 +377,16 @@ public class PhoneNumQuickLoginManager
     QLog.d("PhoneNumQuickLoginManager", 1, new Object[] { "showSelectAccountDialog context=", paramContext, ", params=", paramMap });
     if ((paramContext != null) && (paramMap != null) && (!paramMap.isEmpty()))
     {
-      paramContext = a(paramContext, 2131561159);
+      Dialog localDialog = c;
+      if (localDialog != null)
+      {
+        if (localDialog.isShowing()) {
+          b(paramContext, c);
+        }
+        c = null;
+      }
+      paramContext = a(paramContext, 2131627511);
+      c = paramContext;
       a(paramContext, paramMap, paramOnUinClickListener, paramOnDismissListener);
       a(paramContext);
       return;
@@ -371,8 +420,8 @@ public class PhoneNumQuickLoginManager
   
   public static void a(Context paramContext, AppRuntime paramAppRuntime, Map<String, Object> paramMap, WtloginObserver paramWtloginObserver)
   {
-    a(paramAppRuntime);
-    jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule.a(new PhoneNumQuickLoginManager.1(paramContext, paramAppRuntime, paramMap, paramWtloginObserver));
+    b(paramAppRuntime);
+    b.a(new PhoneNumQuickLoginManager.1(paramContext, paramAppRuntime, paramMap, paramWtloginObserver));
   }
   
   public static void a(String paramString)
@@ -382,31 +431,13 @@ public class PhoneNumQuickLoginManager
   
   private static void a(String paramString1, int paramInt, String paramString2)
   {
-    ReportController.a(a(), "dc00898", "", "", paramString1, paramString1, paramInt, 0, paramString2, "", "", "");
-  }
-  
-  private static void a(AppRuntime paramAppRuntime)
-  {
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule == null)
-      {
-        WtloginManager localWtloginManager = (WtloginManager)paramAppRuntime.getManager(1);
-        paramAppRuntime = "";
-        if (localWtloginManager != null) {
-          paramAppRuntime = util.buf_to_string(localWtloginManager.getGUID());
-        }
-        jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule = new LocalPhoneModule(1600001558, "-WGQH1006", UserAction.getQIMEI(), paramAppRuntime);
-      }
-      return;
-    }
-    finally {}
+    ReportController.a(b(), "dc00898", "", "", paramString1, paramString1, paramInt, 0, paramString2, "", "", "");
   }
   
   public static void a(AppRuntime paramAppRuntime, LocalPhoneModule.MaskPhoneCallback paramMaskPhoneCallback)
   {
-    a(paramAppRuntime);
-    jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule.a(paramMaskPhoneCallback);
+    b(paramAppRuntime);
+    b.a(paramMaskPhoneCallback);
   }
   
   public static void a(WUserSigInfo paramWUserSigInfo, Context paramContext, Map<String, Object> paramMap, boolean paramBoolean)
@@ -424,8 +455,8 @@ public class PhoneNumQuickLoginManager
         {
           a("0X800B8D1", 0, String.valueOf(paramWUserSigInfo.size()));
           localObject2 = new HashMap();
-          ((Map)localObject2).put("key_dialog_title", paramContext.getString(2131699182));
-          ((Map)localObject2).put("key_dialog_msg", paramContext.getString(2131699181));
+          ((Map)localObject2).put("key_dialog_title", paramContext.getString(2131897198));
+          ((Map)localObject2).put("key_dialog_msg", paramContext.getString(2131897197));
           ((Map)localObject2).put("key_unbind_account_list", paramWUserSigInfo);
           ((Map)localObject2).put("login_tvl_value", ((tlv_t)localObject1).get_data());
           a(paramContext, (Map)localObject2, new PhoneNumQuickLoginManager.10(paramBoolean), new PhoneNumQuickLoginManager.11());
@@ -452,35 +483,41 @@ public class PhoneNumQuickLoginManager
   
   public static boolean a(WUserSigInfo paramWUserSigInfo, Context paramContext, PhoneNumQuickLoginManager.OnUinClickListener paramOnUinClickListener, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    Object localObject1 = paramWUserSigInfo.loginResultTLVMap;
-    Object localObject2 = (tlv_t)((HashMap)localObject1).get(Integer.valueOf(1347));
-    localObject1 = (tlv_t)((HashMap)localObject1).get(Integer.valueOf(260));
-    if ((localObject2 != null) && (localObject1 != null)) {
-      try
-      {
-        paramWUserSigInfo = a(paramWUserSigInfo, 2);
-        if ((paramWUserSigInfo != null) && (!paramWUserSigInfo.isEmpty()))
-        {
-          a("0X800B937", 0, String.valueOf(paramWUserSigInfo.size()));
-          localObject2 = new HashMap();
-          ((Map)localObject2).put("key_dialog_title", paramContext.getString(2131699182));
-          ((Map)localObject2).put("key_dialog_msg", paramContext.getString(2131699181));
-          ((Map)localObject2).put("key_unbind_account_list", paramWUserSigInfo);
-          ((Map)localObject2).put("login_tvl_value", ((tlv_t)localObject1).get_data());
-          a(paramContext, (Map)localObject2, paramOnUinClickListener, paramOnDismissListener);
-          return true;
-        }
-        QLog.e("PhoneNumQuickLoginManager", 1, "onSmsLoginSelectAccount: uinInfoList is null or empty");
-        return false;
+    try
+    {
+      List localList = a(paramWUserSigInfo, 2);
+      if ((localList != null) && (!localList.isEmpty())) {
+        return a(paramWUserSigInfo, paramContext, paramOnUinClickListener, paramOnDismissListener, localList);
       }
-      catch (Exception paramWUserSigInfo)
-      {
-        QLog.e("PhoneNumQuickLoginManager", 1, "onSmsLoginSelectAccount: 0x543 tlv illegal, merge error : InvalidProtocolBufferMicroException ", paramWUserSigInfo);
-        return false;
-      }
+      QLog.e("PhoneNumQuickLoginManager", 1, "onSmsLoginSelectAccount: uinInfoList is null or empty");
+      return false;
+    }
+    catch (Exception paramWUserSigInfo)
+    {
+      QLog.e("PhoneNumQuickLoginManager", 1, "onSmsLoginSelectAccount: 0x543 tlv illegal, merge error : InvalidProtocolBufferMicroException ", paramWUserSigInfo);
+    }
+    return false;
+  }
+  
+  public static boolean a(WUserSigInfo paramWUserSigInfo, Context paramContext, PhoneNumQuickLoginManager.OnUinClickListener paramOnUinClickListener, DialogInterface.OnDismissListener paramOnDismissListener, List<PhoneNumQuickLoginManager.AccountInfo> paramList)
+  {
+    Object localObject2 = paramWUserSigInfo.loginResultTLVMap;
+    Object localObject1 = (tlv_t)((HashMap)localObject2).get(Integer.valueOf(1347));
+    localObject2 = (tlv_t)((HashMap)localObject2).get(Integer.valueOf(260));
+    if ((localObject1 != null) && (localObject2 != null))
+    {
+      a("0X800B937", 0, String.valueOf(paramList.size()));
+      localObject1 = new HashMap();
+      ((Map)localObject1).put("key_dialog_title", paramContext.getString(2131897198));
+      ((Map)localObject1).put("key_dialog_msg", paramContext.getString(2131897197));
+      ((Map)localObject1).put("key_unbind_account_list", paramList);
+      ((Map)localObject1).put("key_unbind_account_tip", a(paramWUserSigInfo));
+      ((Map)localObject1).put("login_tvl_value", ((tlv_t)localObject2).get_data());
+      a(paramContext, (Map)localObject1, paramOnUinClickListener, paramOnDismissListener);
+      return true;
     }
     boolean bool;
-    if (localObject1 == null) {
+    if (localObject2 == null) {
       bool = true;
     } else {
       bool = false;
@@ -489,17 +526,22 @@ public class PhoneNumQuickLoginManager
     return false;
   }
   
+  private static AppRuntime b()
+  {
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
   public static void b(int paramInt)
   {
-    a("0X800B8CB", paramInt, "");
+    a("0X800B8CA", paramInt, "");
   }
   
   private static void b(Context paramContext, Dialog paramDialog)
   {
-    Object localObject = paramDialog.findViewById(2131363595);
+    Object localObject = paramDialog.findViewById(2131429500);
     ((View)localObject).setOnClickListener(null);
-    localObject = (LinearLayout)((View)localObject).findViewById(2131370340);
-    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772015);
+    localObject = (LinearLayout)((View)localObject).findViewById(2131437598);
+    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772018);
     paramContext.setAnimationListener(new PhoneNumQuickLoginManager.12(paramDialog));
     ((LinearLayout)localObject).startAnimation(paramContext);
   }
@@ -525,9 +567,56 @@ public class PhoneNumQuickLoginManager
     a(paramString, 0, "");
   }
   
+  private static void b(AppRuntime paramAppRuntime)
+  {
+    try
+    {
+      if (b == null)
+      {
+        WtloginManager localWtloginManager = (WtloginManager)paramAppRuntime.getManager(1);
+        paramAppRuntime = "";
+        if (localWtloginManager != null) {
+          paramAppRuntime = util.buf_to_string(localWtloginManager.getGUID());
+        }
+        b = new LocalPhoneModule(1600001558, "-WGQH1006", UserAction.getQIMEI(), paramAppRuntime);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public static List<PhoneNumQuickLoginManager.AccountInfo> c(String paramString)
+  {
+    localArrayList = new ArrayList();
+    if (TextUtils.isEmpty(paramString)) {
+      return localArrayList;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString).getJSONArray("remainAccountsInfo");
+      int i = 0;
+      while (i < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        Object localObject = localJSONObject.getString("bytesEncryptUin");
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = HexUtil.hexStr2Bytes((String)localObject);
+          localArrayList.add(new PhoneNumQuickLoginManager.AccountInfo(localJSONObject.getString("nick"), localJSONObject.getString("maskUin"), (byte[])localObject, localJSONObject.getString("avatarUrl")));
+        }
+        i += 1;
+      }
+      return localArrayList;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
   public static void c(int paramInt)
   {
-    a("0X800B8CC", paramInt, "");
+    a("0X800B8CB", paramInt, "");
   }
   
   public static void c(Context paramContext, Map<String, Object> paramMap)
@@ -535,17 +624,22 @@ public class PhoneNumQuickLoginManager
     QLog.d("PhoneNumQuickLoginManager", 1, new Object[] { "showBoundPhoneNumDialog context=", paramContext, ", params=", paramMap });
     if ((paramContext != null) && (paramMap != null) && (!paramMap.isEmpty()))
     {
-      paramContext = a(paramContext, 2131561161);
+      paramContext = a(paramContext, 2131627513);
       a(paramContext, paramMap);
       a(paramContext);
       return;
     }
     QLog.d("PhoneNumQuickLoginManager", 1, "showBoundPhoneNumDialog param invalid");
   }
+  
+  public static void d(int paramInt)
+  {
+    a("0X800B8CC", paramInt, "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager
  * JD-Core Version:    0.7.0.1
  */

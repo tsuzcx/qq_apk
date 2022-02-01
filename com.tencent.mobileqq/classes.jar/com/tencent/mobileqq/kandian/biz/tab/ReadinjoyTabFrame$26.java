@@ -19,7 +19,7 @@ class ReadinjoyTabFrame$26
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("selectedGrade", RIJStudyModeUtils.a());
+      localJSONObject.put("selectedGrade", RIJStudyModeUtils.b());
       paramView.putString("param", localJSONObject.toString());
     }
     catch (Exception localException)
@@ -29,13 +29,13 @@ class ReadinjoyTabFrame$26
       localStringBuilder.append(localException);
       QLog.d("ReadInJoyTabFrame", 1, localStringBuilder.toString());
     }
-    RIJJumpUtils.a(this.a.a(), "https://viola.qq.com/js/grade.js?_rij_violaUrl=1&hideNav=1&v_nav_immer=1&v_tid=6&v_bid=3740&v_bundleName=grade", paramView);
+    RIJJumpUtils.a(this.a.P(), "https://viola.qq.com/js/grade.js?_rij_violaUrl=1&hideNav=1&v_nav_immer=1&v_tid=6&v_bid=3740&v_bundleName=grade", paramView);
     ReadinjoyTabFrame.a("0X800AF06");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.26
  * JD-Core Version:    0.7.0.1
  */

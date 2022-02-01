@@ -10,12 +10,12 @@ final class ShortVideoResourceManager$2
   
   public void run()
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, new ShortVideoResourceManager.2.1(this), "msf_quic_lib");
+    ShortVideoResourceManager.a(this.a, this.b, new ShortVideoResourceManager.2.1(this), "msf_quic_lib");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.2
  * JD-Core Version:    0.7.0.1
  */

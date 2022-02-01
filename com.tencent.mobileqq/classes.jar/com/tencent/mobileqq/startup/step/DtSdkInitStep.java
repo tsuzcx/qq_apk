@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.data.dt.QQDtConfig;
@@ -24,36 +25,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class DtSdkInitStep
   extends AsyncStep
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long = 0L;
-  private static volatile AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  private static volatile AtomicBoolean a;
   private static volatile AtomicBoolean b;
   private static volatile AtomicBoolean c = new AtomicBoolean(false);
   private static volatile AtomicBoolean d = new AtomicBoolean(false);
   private static volatile AtomicBoolean e = new AtomicBoolean(false);
   private static AtomicBoolean f = new AtomicBoolean(false);
-  
-  public static void a()
-  {
-    if ((StartupDirector.d > 0L) && (f.compareAndSet(false, true)) && (BaseApplicationImpl.sProcessId == 1))
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("initDTFrom", String.valueOf(jdField_a_of_type_Int));
-      localHashMap.put("initDTCostTime", String.valueOf(jdField_a_of_type_Long));
-      localHashMap.put("showCostTime", String.valueOf(StartupDirector.d));
-      String str;
-      if (jdField_a_of_type_Int == 1) {
-        str = "evt_init_dt_at_boot_b";
-      } else {
-        str = "evt_init_dt_at_boot_a";
-      }
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", str, true, 0L, 0L, localHashMap, "", true);
-    }
-  }
+  private static int g = 0;
+  private static long h = 0L;
   
   public static void a(int paramInt)
   {
-    if ((a(paramInt)) && (BaseApplicationImpl.sProcessId == 1)) {
+    if ((c(paramInt)) && (BaseApplicationImpl.sProcessId == 1)) {
       return;
     }
     if (BaseApplicationImpl.sProcessId == 4) {
@@ -73,16 +56,11 @@ public class DtSdkInitStep
   
   public static boolean a()
   {
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    if (a != null) {
+      return a.get();
     }
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(BaseApplicationImpl.getContext().getSharedPreferences("dt_sdk_start", 4).getBoolean("is_init_dt_sdk_at_start_b", true));
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  private static boolean a(int paramInt)
-  {
-    return paramInt == 1;
+    a = new AtomicBoolean(BaseApplicationImpl.getContext().getSharedPreferences("dt_sdk_start", 4).getBoolean("is_init_dt_sdk_at_start_b", true));
+    return a.get();
   }
   
   private static void b(int paramInt)
@@ -95,7 +73,7 @@ public class DtSdkInitStep
     if (BaseApplicationImpl.sProcessId == 1) {
       QQDtReportHelper.a(1);
     }
-    jdField_a_of_type_Int = paramInt;
+    g = paramInt;
     long l = SystemClock.elapsedRealtime();
     Object localObject = BaseApplicationImpl.getApplication();
     if (localObject != null)
@@ -106,20 +84,24 @@ public class DtSdkInitStep
       } else {
         i = 0;
       }
-      VideoReport.startWithComponent((Application)localObject, DTReportComponent.builder(new QQDtConfig()).enableDebug(false).dtReport(QQDtReporter.b()).elementFormatMode(1).lazyInitType(i).independentPageOut(true).build());
+      VideoReport.startWithComponent((Application)localObject, DTReportComponent.builder(QQDtConfig.a()).enableDebug(false).dtReport(QQDtReporter.b()).elementFormatMode(1).lazyInitType(i).setVideoPageSwitch(3).independentPageOut(true).build());
       VideoReport.setDetectionMode(2);
       VideoReport.setDetectionInterceptor(new DtSdkInitStep.1());
-      a(c());
+      if (!PrivacyPolicyHelper.d()) {
+        VideoReport.setCollectProcessName(false);
+      }
+      a(d());
       if ((!a()) || (BaseApplicationImpl.sProcessId != 1))
       {
         LazyInitObserver.getInstance().markToProceed();
         QLog.d("DtSdkInitStep", 1, "markToProceed");
       }
-      jdField_a_of_type_Long = SystemClock.elapsedRealtime() - l;
+      VideoReport.supportPlayerReport(true);
+      h = SystemClock.elapsedRealtime() - l;
       d.set(true);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("848QQDT initDTCost : ");
-      ((StringBuilder)localObject).append(jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(h);
       ((StringBuilder)localObject).append(" ms， from = ");
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("DtSdkInitStep", 1, ((StringBuilder)localObject).toString());
@@ -136,7 +118,30 @@ public class DtSdkInitStep
     return d.get();
   }
   
-  private static boolean c()
+  public static void c()
+  {
+    if ((StartupDirector.k > 0L) && (f.compareAndSet(false, true)) && (BaseApplicationImpl.sProcessId == 1))
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("initDTFrom", String.valueOf(g));
+      localHashMap.put("initDTCostTime", String.valueOf(h));
+      localHashMap.put("showCostTime", String.valueOf(StartupDirector.k));
+      String str;
+      if (g == 1) {
+        str = "evt_init_dt_at_boot_b";
+      } else {
+        str = "evt_init_dt_at_boot_a";
+      }
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", str, true, 0L, 0L, localHashMap, "", true);
+    }
+  }
+  
+  private static boolean c(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  private static boolean d()
   {
     if (b != null) {
       return b.get();
@@ -147,7 +152,7 @@ public class DtSdkInitStep
   
   public static void initDTSDK(int paramInt)
   {
-    if (a(paramInt))
+    if (c(paramInt))
     {
       if (a()) {
         b(paramInt);
@@ -166,7 +171,7 @@ public class DtSdkInitStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.DtSdkInitStep
  * JD-Core Version:    0.7.0.1
  */

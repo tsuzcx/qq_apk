@@ -6,27 +6,27 @@ import java.lang.ref.WeakReference;
 class MultiVideoCtrlLayerUIBase$InviteUserNoticeRunnable
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = null;
+  int a = 0;
+  String b = null;
   
   MultiVideoCtrlLayerUIBase$InviteUserNoticeRunnable(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public void run()
   {
-    AVActivity localAVActivity = (AVActivity)this.this$0.a.get();
+    AVActivity localAVActivity = (AVActivity)this.this$0.ak.get();
     if (localAVActivity != null)
     {
       localAVActivity.runOnUiThread(new MultiVideoCtrlLayerUIBase.InviteUserNoticeRunnable.1(this));
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.e(this.this$0.d, 2, "onInviteUserNotice-->Can not get AVActivity");
+      QLog.e(this.this$0.X, 2, "onInviteUserNotice-->Can not get AVActivity");
     }
   }
 }

@@ -6,7 +6,7 @@ import com.tencent.widget.AbsListView.OnScrollListener;
 class TroopTeamWorkFileSearchDialog$2
   implements AbsListView.OnScrollListener
 {
-  int jdField_a_of_type_Int = 0;
+  int a = 0;
   int b = 0;
   
   TroopTeamWorkFileSearchDialog$2(TroopTeamWorkFileSearchDialog paramTroopTeamWorkFileSearchDialog) {}
@@ -14,26 +14,26 @@ class TroopTeamWorkFileSearchDialog$2
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     this.b = paramInt3;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    this.a = (paramInt1 + paramInt2 - 1 - 1);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     try
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.jdField_a_of_type_Int;
+      int i = this.c.u;
       if (i > 0) {
         return;
       }
-      if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Int == this.b - 2)) {
-        if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.e)
+      if ((paramInt == 0) && (this.c.B != null) && (this.a == this.b - 2)) {
+        if (this.c.v)
         {
-          this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.c(true);
+          this.c.c(true);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.c(false);
-          this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.c, 50, 0);
+          this.c.c(false);
+          this.c.a(this.c.x, this.c.t, this.c.A, 50, 0);
         }
       }
       return;
@@ -43,7 +43,7 @@ class TroopTeamWorkFileSearchDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.2
  * JD-Core Version:    0.7.0.1
  */

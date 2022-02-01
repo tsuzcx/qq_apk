@@ -58,22 +58,22 @@ import tencent.im.oidb.cmd0x990.oidb_0x990.TranslateRsp;
 public class OCRHandler
   extends BusinessHandler
 {
-  private static int jdField_a_of_type_Int = 0;
   public static final String a = "com.tencent.mobileqq.ocr.api.impl.OCRHandler";
-  public static boolean a = false;
   public static String b = "OidbSvc.0x990";
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  public static boolean c = false;
+  private static int e;
+  private AppInterface d;
   
   public OCRHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.d = paramAppInterface;
   }
   
   private static int a()
   {
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
+    int i = e;
+    e = i + 1;
     return i;
   }
   
@@ -92,13 +92,13 @@ public class OCRHandler
     //   12: aload_2
     //   13: ifnull +23 -> 36
     //   16: aload_2
-    //   17: ldc 32
-    //   19: invokevirtual 38	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   17: ldc 35
+    //   19: invokevirtual 41	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   22: astore 13
     //   24: aload_2
-    //   25: ldc 40
+    //   25: ldc 43
     //   27: lconst_0
-    //   28: invokevirtual 44	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   28: invokevirtual 47	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
     //   31: lstore 9
     //   33: goto +6 -> 39
     //   36: aconst_null
@@ -107,101 +107,101 @@ public class OCRHandler
     //   40: istore 8
     //   42: iload_1
     //   43: ifne +416 -> 459
-    //   46: new 46	tencent/im/cs/cmd0x6ff/subcmd0x533$RspBody
+    //   46: new 49	tencent/im/cs/cmd0x6ff/subcmd0x533$RspBody
     //   49: dup
-    //   50: invokespecial 48	tencent/im/cs/cmd0x6ff/subcmd0x533$RspBody:<init>	()V
+    //   50: invokespecial 51	tencent/im/cs/cmd0x6ff/subcmd0x533$RspBody:<init>	()V
     //   53: astore_2
     //   54: aload_2
     //   55: aload_3
-    //   56: invokevirtual 52	tencent/im/cs/cmd0x6ff/subcmd0x533$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   56: invokevirtual 55	tencent/im/cs/cmd0x6ff/subcmd0x533$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   59: pop
     //   60: aload_2
-    //   61: getfield 56	tencent/im/cs/cmd0x6ff/subcmd0x533$RspBody:msg_ocr_result	Ltencent/im/cs/cmd0x6ff/subcmd0x533$HttpAROcrResult;
-    //   64: invokevirtual 62	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpAROcrResult:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   67: checkcast 58	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpAROcrResult
-    //   70: getfield 66	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpAROcrResult:msg_sougou_rsp	Ltencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2;
-    //   73: invokevirtual 69	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   76: checkcast 68	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2
+    //   61: getfield 59	tencent/im/cs/cmd0x6ff/subcmd0x533$RspBody:msg_ocr_result	Ltencent/im/cs/cmd0x6ff/subcmd0x533$HttpAROcrResult;
+    //   64: invokevirtual 65	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpAROcrResult:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   67: checkcast 61	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpAROcrResult
+    //   70: getfield 69	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpAROcrResult:msg_sougou_rsp	Ltencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2;
+    //   73: invokevirtual 72	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   76: checkcast 71	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2
     //   79: astore_3
     //   80: aload_3
-    //   81: invokevirtual 73	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:has	()Z
+    //   81: invokevirtual 76	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:has	()Z
     //   84: istore 11
     //   86: iconst_m1
     //   87: istore 5
     //   89: iload 11
     //   91: ifeq +15 -> 106
     //   94: aload_3
-    //   95: getfield 77	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:int32_tencent_errorcode	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   98: invokevirtual 81	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   95: getfield 80	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:int32_tencent_errorcode	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   98: invokevirtual 84	com/tencent/mobileqq/pb/PBInt32Field:get	()I
     //   101: istore 4
     //   103: goto +6 -> 109
     //   106: iconst_m1
     //   107: istore 4
     //   109: aload_3
-    //   110: invokevirtual 73	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:has	()Z
+    //   110: invokevirtual 76	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:has	()Z
     //   113: ifeq +12 -> 125
     //   116: aload_3
-    //   117: getfield 84	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:int32_sougou_errorcode	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   120: invokevirtual 81	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   117: getfield 87	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:int32_sougou_errorcode	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   120: invokevirtual 84	com/tencent/mobileqq/pb/PBInt32Field:get	()I
     //   123: istore 5
     //   125: iload 4
     //   127: ifne +158 -> 285
     //   130: iload 5
     //   132: ifne +153 -> 285
-    //   135: new 86	java/util/ArrayList
+    //   135: new 89	java/util/ArrayList
     //   138: dup
-    //   139: invokespecial 87	java/util/ArrayList:<init>	()V
+    //   139: invokespecial 90	java/util/ArrayList:<init>	()V
     //   142: astore_2
     //   143: aload_3
-    //   144: getfield 91	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:rpt_msg_cards	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   147: invokevirtual 96	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   150: invokeinterface 102 1 0
+    //   144: getfield 94	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:rpt_msg_cards	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   147: invokevirtual 99	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   150: invokeinterface 105 1 0
     //   155: astore_3
     //   156: aload_3
-    //   157: invokeinterface 107 1 0
+    //   157: invokeinterface 110 1 0
     //   162: ifeq +102 -> 264
     //   165: aload_3
-    //   166: invokeinterface 111 1 0
-    //   171: checkcast 113	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpCardV2
-    //   174: getfield 116	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpCardV2:rpt_msg_card_properties	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   177: invokevirtual 96	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   180: invokestatic 121	com/tencent/mobileqq/ocr/OCRTextSearchInfo:a	(Ljava/util/List;)Lcom/tencent/mobileqq/ocr/OCRTextSearchInfo$SougouSearchInfo;
+    //   166: invokeinterface 114 1 0
+    //   171: checkcast 116	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpCardV2
+    //   174: getfield 119	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpCardV2:rpt_msg_card_properties	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   177: invokevirtual 99	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   180: invokestatic 124	com/tencent/mobileqq/ocr/OCRTextSearchInfo:a	(Ljava/util/List;)Lcom/tencent/mobileqq/ocr/OCRTextSearchInfo$SougouSearchInfo;
     //   183: astore 12
     //   185: aload 12
-    //   187: getfield 126	com/tencent/mobileqq/ocr/OCRTextSearchInfo$SougouSearchInfo:title	Ljava/lang/String;
-    //   190: invokestatic 132	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   187: getfield 129	com/tencent/mobileqq/ocr/OCRTextSearchInfo$SougouSearchInfo:title	Ljava/lang/String;
+    //   190: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   193: ifeq +17 -> 210
     //   196: aload 12
-    //   198: getfield 135	com/tencent/mobileqq/ocr/OCRTextSearchInfo$SougouSearchInfo:abstractStr	Ljava/lang/String;
-    //   201: invokestatic 132	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   198: getfield 138	com/tencent/mobileqq/ocr/OCRTextSearchInfo$SougouSearchInfo:abstractStr	Ljava/lang/String;
+    //   201: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   204: ifeq +6 -> 210
     //   207: goto -51 -> 156
     //   210: aload_2
     //   211: aload 12
-    //   213: invokeinterface 139 2 0
+    //   213: invokeinterface 142 2 0
     //   218: pop
-    //   219: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   219: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   222: ifeq -66 -> 156
-    //   225: new 146	java/lang/StringBuilder
+    //   225: new 149	java/lang/StringBuilder
     //   228: dup
-    //   229: invokespecial 147	java/lang/StringBuilder:<init>	()V
+    //   229: invokespecial 150	java/lang/StringBuilder:<init>	()V
     //   232: astore 14
     //   234: aload 14
-    //   236: ldc 149
-    //   238: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: ldc 152
+    //   238: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   241: pop
     //   242: aload 14
     //   244: aload 12
-    //   246: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   246: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   249: pop
-    //   250: ldc 158
+    //   250: ldc 161
     //   252: iconst_2
     //   253: aload 14
-    //   255: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   258: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   255: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   258: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   261: goto -105 -> 156
     //   264: aload_2
-    //   265: invokeinterface 169 1 0
+    //   265: invokeinterface 171 1 0
     //   270: istore 6
     //   272: iconst_1
     //   273: istore 11
@@ -216,53 +216,53 @@ public class OCRHandler
     //   290: istore 7
     //   292: iload 5
     //   294: istore 6
-    //   296: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   296: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   299: ifeq +153 -> 452
-    //   302: new 146	java/lang/StringBuilder
+    //   302: new 149	java/lang/StringBuilder
     //   305: dup
-    //   306: invokespecial 147	java/lang/StringBuilder:<init>	()V
+    //   306: invokespecial 150	java/lang/StringBuilder:<init>	()V
     //   309: astore_2
     //   310: aload_2
-    //   311: ldc 171
-    //   313: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   311: ldc 173
+    //   313: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   316: pop
     //   317: aload_2
     //   318: iload 4
-    //   320: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   320: invokevirtual 176	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   323: pop
     //   324: aload_2
-    //   325: ldc 176
-    //   327: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   325: ldc 178
+    //   327: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   330: pop
     //   331: aload_2
     //   332: iload 5
-    //   334: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   334: invokevirtual 176	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   337: pop
     //   338: aload_2
-    //   339: ldc 178
-    //   341: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   339: ldc 180
+    //   341: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   344: pop
     //   345: aload_2
     //   346: aload_3
-    //   347: getfield 182	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:string_tencent_errormsg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   350: invokevirtual 186	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   353: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   347: getfield 184	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:string_tencent_errormsg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   350: invokevirtual 188	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   353: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   356: pop
     //   357: aload_2
-    //   358: ldc 188
-    //   360: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   358: ldc 190
+    //   360: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   363: pop
     //   364: aload_2
     //   365: aload_3
-    //   366: getfield 191	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:string_sougou_errormsg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   369: invokevirtual 186	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   372: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   366: getfield 193	tencent/im/cs/cmd0x6ff/subcmd0x533$HttpServerResponseBodyV2:string_sougou_errormsg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   369: invokevirtual 188	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   372: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   375: pop
-    //   376: ldc 158
+    //   376: ldc 161
     //   378: iconst_2
     //   379: aload_2
-    //   380: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   383: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   380: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   383: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   386: aload 14
     //   388: astore_2
     //   389: iload 4
@@ -285,13 +285,13 @@ public class OCRHandler
     //   420: istore 7
     //   422: iload 5
     //   424: istore 6
-    //   426: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   426: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   429: ifeq +23 -> 452
-    //   432: ldc 158
+    //   432: ldc 161
     //   434: iconst_2
-    //   435: ldc 193
+    //   435: ldc 195
     //   437: aload_3
-    //   438: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   438: invokestatic 198	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   441: iload 5
     //   443: istore 6
     //   445: iload 4
@@ -317,7 +317,7 @@ public class OCRHandler
     //   479: iconst_1
     //   480: iload 11
     //   482: iconst_2
-    //   483: anewarray 199	java/lang/Object
+    //   483: anewarray 200	java/lang/Object
     //   486: dup
     //   487: iconst_0
     //   488: aload 13
@@ -326,7 +326,7 @@ public class OCRHandler
     //   492: iconst_1
     //   493: aload_2
     //   494: aastore
-    //   495: invokevirtual 203	com/tencent/mobileqq/ocr/api/impl/OCRHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   495: invokevirtual 204	com/tencent/mobileqq/ocr/api/impl/OCRHandler:notifyUI	(IZLjava/lang/Object;)V
     //   498: iload_1
     //   499: ifeq +13 -> 512
     //   502: iload_1
@@ -350,119 +350,119 @@ public class OCRHandler
     //   539: istore 4
     //   541: iconst_0
     //   542: istore 5
-    //   544: new 205	java/util/HashMap
+    //   544: new 206	java/util/HashMap
     //   547: dup
-    //   548: invokespecial 206	java/util/HashMap:<init>	()V
+    //   548: invokespecial 207	java/util/HashMap:<init>	()V
     //   551: astore_3
-    //   552: invokestatic 212	android/os/SystemClock:elapsedRealtime	()J
+    //   552: invokestatic 213	android/os/SystemClock:elapsedRealtime	()J
     //   555: lload 9
     //   557: lsub
     //   558: lstore 9
     //   560: aload_3
-    //   561: ldc 214
+    //   561: ldc 215
     //   563: lload 9
-    //   565: invokestatic 220	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   568: invokevirtual 224	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   565: invokestatic 221	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   568: invokevirtual 225	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   571: pop
     //   572: iload 5
     //   574: ifne +12 -> 586
     //   577: iload 5
-    //   579: invokestatic 229	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   579: invokestatic 230	java/lang/Integer:toString	(I)Ljava/lang/String;
     //   582: astore_2
     //   583: goto +37 -> 620
-    //   586: new 146	java/lang/StringBuilder
+    //   586: new 149	java/lang/StringBuilder
     //   589: dup
-    //   590: invokespecial 147	java/lang/StringBuilder:<init>	()V
+    //   590: invokespecial 150	java/lang/StringBuilder:<init>	()V
     //   593: astore_2
     //   594: aload_2
     //   595: iload 4
-    //   597: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   597: invokevirtual 176	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   600: pop
     //   601: aload_2
-    //   602: ldc 231
-    //   604: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   602: ldc 232
+    //   604: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   607: pop
     //   608: aload_2
     //   609: iload 5
-    //   611: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   611: invokevirtual 176	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   614: pop
     //   615: aload_2
-    //   616: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   616: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   619: astore_2
     //   620: aload_3
-    //   621: ldc 233
+    //   621: ldc 234
     //   623: aload_2
-    //   624: invokevirtual 224	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   624: invokevirtual 225	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   627: pop
     //   628: aload_3
-    //   629: ldc 235
+    //   629: ldc 236
     //   631: iload 5
-    //   633: invokestatic 229	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   636: invokevirtual 224	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   633: invokestatic 230	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   636: invokevirtual 225	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   639: pop
     //   640: aload_3
-    //   641: ldc 237
+    //   641: ldc 238
     //   643: iload 4
-    //   645: invokestatic 229	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   648: invokevirtual 224	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   645: invokestatic 230	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   648: invokevirtual 225	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   651: pop
     //   652: aload_0
-    //   653: getfield 24	com/tencent/mobileqq/ocr/api/impl/OCRHandler:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   656: invokevirtual 243	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   659: invokestatic 249	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   653: getfield 27	com/tencent/mobileqq/ocr/api/impl/OCRHandler:d	Lcom/tencent/common/app/AppInterface;
+    //   656: invokevirtual 244	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   659: invokestatic 250	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   662: aload_0
-    //   663: getfield 24	com/tencent/mobileqq/ocr/api/impl/OCRHandler:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   666: invokevirtual 252	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   669: ldc 254
+    //   663: getfield 27	com/tencent/mobileqq/ocr/api/impl/OCRHandler:d	Lcom/tencent/common/app/AppInterface;
+    //   666: invokevirtual 253	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   669: ldc 255
     //   671: iload 11
     //   673: lload 9
     //   675: lconst_0
     //   676: aload_3
-    //   677: ldc_w 256
-    //   680: invokevirtual 260	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
-    //   683: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   677: ldc_w 257
+    //   680: invokevirtual 261	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   683: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   686: ifeq +79 -> 765
-    //   689: new 146	java/lang/StringBuilder
+    //   689: new 149	java/lang/StringBuilder
     //   692: dup
-    //   693: invokespecial 147	java/lang/StringBuilder:<init>	()V
+    //   693: invokespecial 150	java/lang/StringBuilder:<init>	()V
     //   696: astore_3
     //   697: aload_3
-    //   698: ldc_w 262
-    //   701: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   698: ldc_w 263
+    //   701: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   704: pop
     //   705: aload_3
     //   706: iload_1
-    //   707: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   707: invokevirtual 176	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   710: pop
     //   711: aload_3
-    //   712: ldc_w 264
-    //   715: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   712: ldc_w 265
+    //   715: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   718: pop
     //   719: aload_3
     //   720: iload 11
-    //   722: invokevirtual 267	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   722: invokevirtual 268	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   725: pop
     //   726: aload_3
-    //   727: ldc_w 269
-    //   730: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   727: ldc_w 270
+    //   730: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   733: pop
     //   734: aload_3
     //   735: aload_2
-    //   736: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   736: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   739: pop
     //   740: aload_3
-    //   741: ldc_w 271
-    //   744: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   741: ldc_w 272
+    //   744: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   747: pop
     //   748: aload_3
     //   749: iload 6
-    //   751: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   751: invokevirtual 176	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   754: pop
-    //   755: ldc 158
+    //   755: ldc 161
     //   757: iconst_2
     //   758: aload_3
-    //   759: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   762: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   759: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   762: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   765: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -674,12 +674,12 @@ public class OCRHandler
     long l2 = paramIntent.getLongExtra("param_subtype", 0L);
     if ((l1 != 0L) && (localObject6 != null))
     {
-      Object localObject1 = ConfigManager.getInstance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine());
+      Object localObject1 = ConfigManager.getInstance(this.d.getApp().getBaseContext(), this.d.getHwEngine());
       boolean bool2 = false;
       Object localObject2;
       if (localObject1 != null)
       {
-        localObject1 = ((ConfigManager)localObject1).getOtherTypeIp(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getBaseContext(), 21, false);
+        localObject1 = ((ConfigManager)localObject1).getOtherTypeIp(this.d.getApp().getBaseContext(), 21, false);
         if ((localObject1 != null) && (((List)localObject1).size() > 0))
         {
           localObject1 = (EndPoint)((List)localObject1).get(0);
@@ -714,18 +714,18 @@ public class OCRHandler
       try
       {
         int i;
-        if (SessionInfo.getInstance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin()).getHttpconn_sig_session() != null)
+        if (SessionInfo.getInstance(this.d.getCurrentUin()).getHttpconn_sig_session() != null)
         {
-          i = SessionInfo.getInstance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin()).getHttpconn_sig_session().length;
+          i = SessionInfo.getInstance(this.d.getCurrentUin()).getHttpconn_sig_session().length;
           localObject1 = new byte[i];
-          System.arraycopy(SessionInfo.getInstance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin()).getHttpconn_sig_session(), 0, localObject1, 0, i);
+          System.arraycopy(SessionInfo.getInstance(this.d.getCurrentUin()).getHttpconn_sig_session(), 0, localObject1, 0, i);
         }
         localObject2 = arrayOfByte;
-        if (SessionInfo.getInstance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin()).getSessionKey() != null)
+        if (SessionInfo.getInstance(this.d.getCurrentUin()).getSessionKey() != null)
         {
-          i = SessionInfo.getInstance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin()).getSessionKey().length;
+          i = SessionInfo.getInstance(this.d.getCurrentUin()).getSessionKey().length;
           localObject2 = new byte[i];
-          System.arraycopy(SessionInfo.getInstance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin()).getSessionKey(), 0, localObject2, 0, i);
+          System.arraycopy(SessionInfo.getInstance(this.d.getCurrentUin()).getSessionKey(), 0, localObject2, 0, i);
         }
         Object localObject4;
         if ((localObject2 != null) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (localObject1 != null))
@@ -802,7 +802,7 @@ public class OCRHandler
             paramIntent.append(",url=");
             paramIntent.append((String)localObject4);
             paramIntent.append(",testserver=");
-            paramIntent.append(jdField_a_of_type_Boolean);
+            paramIntent.append(c);
             QLog.i("Q.ocr.OCRHandlerImpl", 2, paramIntent.toString());
           }
           return;
@@ -1018,10 +1018,10 @@ public class OCRHandler
     ((subcmd0x533.ReqBody)localObject1).string_session_id.set(paramString1);
     ((subcmd0x533.ReqBody)localObject1).uint64_req_recog_type.set(16L);
     ((subcmd0x533.ReqBody)localObject1).uint32_business_type.set(0);
-    ((subcmd0x533.ReqBody)localObject1).string_clt_version.set(String.valueOf(AppSetting.a()));
+    ((subcmd0x533.ReqBody)localObject1).string_clt_version.set(String.valueOf(AppSetting.d()));
     ((subcmd0x533.ReqBody)localObject1).msg_ocr_info.set(paramString2);
     paramString2 = new Intent();
-    paramString2.putExtra("param_uin", Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+    paramString2.putExtra("param_uin", Long.parseLong(this.d.getCurrentAccountUin()));
     paramString2.putExtra("param_reqbody", ((subcmd0x533.ReqBody)localObject1).toByteArray());
     paramString2.putExtra("param_subtype", 2L);
     paramString2.putExtra("param_sougou_sessionid", paramString1);
@@ -1134,7 +1134,7 @@ public class OCRHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.api.impl.OCRHandler
  * JD-Core Version:    0.7.0.1
  */

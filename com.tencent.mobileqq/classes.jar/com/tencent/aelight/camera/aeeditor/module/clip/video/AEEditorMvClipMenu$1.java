@@ -1,15 +1,15 @@
 package com.tencent.aelight.camera.aeeditor.module.clip.video;
 
+import com.tencent.qcircle.tavcut.timeline.SliderChangeListener;
+import com.tencent.qcircle.tavcut.util.Logger;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.player.IPlayer.PlayerStatus;
-import com.tencent.tavcut.timeline.SliderChangeListener;
-import com.tencent.tavcut.util.Logger;
 
 class AEEditorMvClipMenu$1
   implements SliderChangeListener
 {
-  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b = true;
   
   AEEditorMvClipMenu$1(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
   
@@ -22,24 +22,24 @@ class AEEditorMvClipMenu$1
   
   public void onIndicatorPress()
   {
-    AEEditorMvClipMenu localAEEditorMvClipMenu = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu;
+    AEEditorMvClipMenu localAEEditorMvClipMenu = this.a;
     AEEditorMvClipMenu.a(localAEEditorMvClipMenu, AEEditorMvClipMenu.b(localAEEditorMvClipMenu));
-    AEEditorMvClipMenu.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu, false);
-    AEEditorMvClipMenu.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu, true);
+    AEEditorMvClipMenu.a(this.a, false);
+    AEEditorMvClipMenu.b(this.a, true);
   }
   
   public void onIndicatorRelease()
   {
-    AEEditorMvClipMenu localAEEditorMvClipMenu = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu;
+    AEEditorMvClipMenu localAEEditorMvClipMenu = this.a;
     boolean bool;
-    if ((AEEditorMvClipMenu.a(localAEEditorMvClipMenu) != IPlayer.PlayerStatus.PLAYING) && (AEEditorMvClipMenu.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu) != IPlayer.PlayerStatus.REPLAY)) {
+    if ((AEEditorMvClipMenu.a(localAEEditorMvClipMenu) != IPlayer.PlayerStatus.PLAYING) && (AEEditorMvClipMenu.a(this.a) != IPlayer.PlayerStatus.REPLAY)) {
       bool = false;
     } else {
       bool = true;
     }
     AEEditorMvClipMenu.a(localAEEditorMvClipMenu, bool);
-    AEEditorMvClipMenu.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu, null);
-    AEEditorMvClipMenu.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu, false);
+    AEEditorMvClipMenu.a(this.a, null);
+    AEEditorMvClipMenu.b(this.a, false);
   }
   
   public void onSelectionChange(long paramLong1, long paramLong2, boolean paramBoolean)
@@ -50,51 +50,51 @@ class AEEditorMvClipMenu$1
     boolean bool = true;
     if (!paramBoolean)
     {
-      if (AEEditorMvClipMenu.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu) == null)
+      if (AEEditorMvClipMenu.a(this.a) == null)
       {
-        localObject3 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu;
+        localObject3 = this.a;
         AEEditorMvClipMenu.a((AEEditorMvClipMenu)localObject3, AEEditorMvClipMenu.b((AEEditorMvClipMenu)localObject3));
       }
-      AEEditorMvClipMenu.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu, false);
-      AEEditorMvClipMenu.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu, true);
+      AEEditorMvClipMenu.a(this.a, false);
+      AEEditorMvClipMenu.b(this.a, true);
     }
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("onSelectionChange: seek ");
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject3).append(this.b);
     ((StringBuilder)localObject3).append(localCMTime.getTimeSeconds());
     Logger.i("VideoDemoSlider", ((StringBuilder)localObject3).toString());
-    AEEditorMvClipMenu.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu, new CMTimeRange((CMTime)localObject1, (CMTime)localObject2));
-    localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu;
-    if (!this.jdField_a_of_type_Boolean) {
+    AEEditorMvClipMenu.a(this.a, new CMTimeRange((CMTime)localObject1, (CMTime)localObject2));
+    localObject2 = this.a;
+    if (!this.b) {
       localObject1 = localCMTime;
     }
     AEEditorMvClipMenu.a((AEEditorMvClipMenu)localObject2, (CMTime)localObject1);
     if (paramBoolean)
     {
-      AEEditorMvClipMenu.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu, false);
-      localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu;
+      AEEditorMvClipMenu.b(this.a, false);
+      localObject1 = this.a;
       paramBoolean = bool;
       if (AEEditorMvClipMenu.a((AEEditorMvClipMenu)localObject1) != IPlayer.PlayerStatus.PLAYING) {
-        if (AEEditorMvClipMenu.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu) == IPlayer.PlayerStatus.REPLAY) {
+        if (AEEditorMvClipMenu.a(this.a) == IPlayer.PlayerStatus.REPLAY) {
           paramBoolean = bool;
         } else {
           paramBoolean = false;
         }
       }
       AEEditorMvClipMenu.a((AEEditorMvClipMenu)localObject1, paramBoolean);
-      AEEditorMvClipMenu.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu, null);
+      AEEditorMvClipMenu.a(this.a, null);
     }
   }
   
   public void onSliderBarMove(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public void onSliderBarRelease(boolean paramBoolean)
   {
-    AEEditorMvClipMenu localAEEditorMvClipMenu = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu;
-    if ((AEEditorMvClipMenu.a(localAEEditorMvClipMenu) != IPlayer.PlayerStatus.PLAYING) && (AEEditorMvClipMenu.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoAEEditorMvClipMenu) != IPlayer.PlayerStatus.REPLAY)) {
+    AEEditorMvClipMenu localAEEditorMvClipMenu = this.a;
+    if ((AEEditorMvClipMenu.a(localAEEditorMvClipMenu) != IPlayer.PlayerStatus.PLAYING) && (AEEditorMvClipMenu.a(this.a) != IPlayer.PlayerStatus.REPLAY)) {
       paramBoolean = false;
     } else {
       paramBoolean = true;
@@ -104,7 +104,7 @@ class AEEditorMvClipMenu$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.clip.video.AEEditorMvClipMenu.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,12 @@
 package com.tencent.liteav.renderer;
 
-import com.tencent.liteav.basic.c.o;
+import com.tencent.liteav.basic.opengl.g;
+import com.tencent.liteav.basic.opengl.p;
 
 class e$2
   implements Runnable
 {
-  e$2(e parame, o paramo) {}
+  e$2(e parame, p paramp) {}
   
   public void run()
   {
@@ -16,7 +17,7 @@ class e$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.renderer.e.2
  * JD-Core Version:    0.7.0.1
  */

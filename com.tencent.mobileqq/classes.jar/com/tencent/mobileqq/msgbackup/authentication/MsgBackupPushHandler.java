@@ -80,14 +80,14 @@ public class MsgBackupPushHandler
     return localBuilder.a();
   }
   
-  private String a()
+  private String b()
   {
     Object localObject = new JSONArray();
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("cmd", "exit");
-      localJSONObject.put("sig", MsgBackupAuthProcessor.a().a());
+      localJSONObject.put("sig", MsgBackupAuthProcessor.a().d());
       ((JSONArray)localObject).put(localJSONObject);
     }
     catch (JSONException localJSONException)
@@ -115,7 +115,7 @@ public class MsgBackupPushHandler
       QLog.d("MsgBackup.MsgBackupPushHandler", 2, paramToServiceMsg.toString());
     }
     if (paramFromServiceMsg.getResultCode() != 1000) {
-      a(a());
+      a(b());
     }
   }
   
@@ -138,10 +138,10 @@ public class MsgBackupPushHandler
     ((SubMsgType0x7.MsgBody)localObject3).setHasFlag(true);
     localObject2 = new TransMsgContext();
     localObject3 = ((SubMsgType0x7.MsgBody)localObject3).toByteArray();
-    ((TransMsgContext)localObject2).jdField_a_of_type_Int = 7;
-    ((TransMsgContext)localObject2).jdField_a_of_type_ArrayOfByte = ((byte[])localObject3);
-    long l1 = QQFileManagerUtil.b();
-    long l2 = QQFileManagerUtil.a();
+    ((TransMsgContext)localObject2).a = 7;
+    ((TransMsgContext)localObject2).b = ((byte[])localObject3);
+    long l1 = QQFileManagerUtil.c();
+    long l2 = QQFileManagerUtil.b();
     localObject1 = ((IMsgBackupTempApi)localObject1).createPbSendMsgReq(paramString, 13, paramString.getCurrentUin(), (TransMsgContext)localObject2, l2, MessageUtils.b(l1));
     localObject2 = new im_msg_head.InstInfo();
     ((im_msg_head.InstInfo)localObject2).uint32_apppid.set(1);
@@ -151,7 +151,7 @@ public class MsgBackupPushHandler
     ((msg_svc.PbSendMsgReq)localObject1).routing_head.trans_0x211.inst_ctrl.rpt_msg_send_to_inst.add((MessageMicro)localObject2);
     localObject2 = new im_msg_head.InstInfo();
     ((im_msg_head.InstInfo)localObject2).uint32_apppid.set(1001);
-    ((im_msg_head.InstInfo)localObject2).uint32_instid.set(AppSetting.a());
+    ((im_msg_head.InstInfo)localObject2).uint32_instid.set(AppSetting.d());
     ((im_msg_head.InstInfo)localObject2).enum_device_type.set(2);
     ((im_msg_head.InstInfo)localObject2).setHasFlag(true);
     ((msg_svc.PbSendMsgReq)localObject1).routing_head.trans_0x211.inst_ctrl.msg_from_inst = ((im_msg_head.InstInfo)localObject2);
@@ -268,7 +268,7 @@ public class MsgBackupPushHandler
               if (QLog.isColorLevel()) {
                 QLog.d("MsgBackup.MsgBackupPushHandler", 2, "-------------------exit-------------------");
               }
-              if (TextUtils.equals(paramGenericSubCmd, MsgBackupAuthProcessor.a().a()))
+              if (TextUtils.equals(paramGenericSubCmd, MsgBackupAuthProcessor.a().d()))
               {
                 MsgBackupTransportProcessor.a().b(true);
                 return;
@@ -286,7 +286,7 @@ public class MsgBackupPushHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.authentication.MsgBackupPushHandler
  * JD-Core Version:    0.7.0.1
  */

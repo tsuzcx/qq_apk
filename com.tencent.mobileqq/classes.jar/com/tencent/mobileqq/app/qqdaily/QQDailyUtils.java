@@ -13,14 +13,8 @@ import org.json.JSONObject;
 
 public class QQDailyUtils
 {
-  public static final int a;
-  private static long a;
-  
-  static
-  {
-    jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
-    jdField_a_of_type_Long = 0L;
-  }
+  public static final int a = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
+  private static long b = 0L;
   
   public static int a(Context paramContext)
   {
@@ -35,7 +29,7 @@ public class QQDailyUtils
   private static long a()
   {
     long l1 = System.currentTimeMillis() / 1000L;
-    long l2 = jdField_a_of_type_Long;
+    long l2 = b;
     if ((l2 != 0L) && (86400L + l2 > l1)) {
       return l2;
     }
@@ -45,7 +39,7 @@ public class QQDailyUtils
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
     l1 = localCalendar.getTimeInMillis() / 1000L;
-    jdField_a_of_type_Long = l1;
+    b = l1;
     return l1;
   }
   
@@ -123,7 +117,7 @@ public class QQDailyUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.qqdaily.QQDailyUtils
  * JD-Core Version:    0.7.0.1
  */

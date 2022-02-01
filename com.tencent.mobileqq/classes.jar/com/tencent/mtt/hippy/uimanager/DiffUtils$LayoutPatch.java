@@ -3,13 +3,13 @@ package com.tencent.mtt.hippy.uimanager;
 public class DiffUtils$LayoutPatch
   extends DiffUtils.Patch
 {
-  String mClassName;
-  int mHeight;
-  int mId;
-  int mParentId;
-  int mWidth;
-  int mX;
-  int mY;
+  final String mClassName;
+  final int mHeight;
+  final int mId;
+  final int mParentId;
+  final int mWidth;
+  final int mX;
+  final int mY;
   
   public DiffUtils$LayoutPatch(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString)
   {
@@ -29,7 +29,7 @@ public class DiffUtils$LayoutPatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.DiffUtils.LayoutPatch
  * JD-Core Version:    0.7.0.1
  */

@@ -47,19 +47,13 @@ import tencent.im.oidb.cmd0xebb.oidb_cmd0xebb.RspRecommendParaArticle;
 public final class RIJFeedsInsertModule
   extends ReadInJoyEngineModule
 {
-  public static final RIJFeedsInsertModule.Companion a;
-  private final ConcurrentHashMap<Long, ConcurrentHashMap<String, ArrayList<AbsBaseArticleInfo>>> a;
-  private final ConcurrentHashMap<String, Long> b = new ConcurrentHashMap();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsRIJFeedsInsertModule$Companion = new RIJFeedsInsertModule.Companion(null);
-  }
+  public static final RIJFeedsInsertModule.Companion a = new RIJFeedsInsertModule.Companion(null);
+  private final ConcurrentHashMap<Long, ConcurrentHashMap<String, ArrayList<AbsBaseArticleInfo>>> b = new ConcurrentHashMap();
+  private final ConcurrentHashMap<String, Long> c = new ConcurrentHashMap();
   
   public RIJFeedsInsertModule(@Nullable AppInterface paramAppInterface, @Nullable EntityManager paramEntityManager, @Nullable ExecutorService paramExecutorService, @Nullable ReadInJoyMSFService paramReadInJoyMSFService, @Nullable Handler paramHandler)
   {
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
   private final String a(List<? extends AbsBaseArticleInfo> paramList)
@@ -118,7 +112,7 @@ public final class RIJFeedsInsertModule
     localObject = paramToServiceMsg.getAttributes();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "request.attributes");
     Map localMap = (Map)localObject;
-    localObject = paramReqParams.a();
+    localObject = paramReqParams.e();
     if (localObject != null)
     {
       localObject = ((AbsBaseArticleInfo)localObject).innerUniqueID;
@@ -131,7 +125,7 @@ public final class RIJFeedsInsertModule
     localMap.put("key_article_rowKey", localObject);
     localObject = paramToServiceMsg.getAttributes();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "request.attributes");
-    ((Map)localObject).put("key_subscribe_id", paramReqParams.a());
+    ((Map)localObject).put("key_subscribe_id", paramReqParams.b());
     paramToServiceMsg = paramToServiceMsg.getAttributes();
     Intrinsics.checkExpressionValueIsNotNull(paramToServiceMsg, "request.attributes");
     ((Map)paramToServiceMsg).put("key_service_type", Integer.valueOf(0));
@@ -216,12 +210,12 @@ public final class RIJFeedsInsertModule
             }
           }
         }
-        paramToServiceMsg = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(l));
+        paramToServiceMsg = (ConcurrentHashMap)this.b.get(Long.valueOf(l));
         localObject2 = paramToServiceMsg;
         if (paramToServiceMsg == null)
         {
           localObject2 = new ConcurrentHashMap();
-          ((Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Long.valueOf(l), localObject2);
+          ((Map)this.b).put(Long.valueOf(l), localObject2);
         }
         ArrayList localArrayList = (ArrayList)((ConcurrentHashMap)localObject2).get(paramRspBody);
         paramToServiceMsg = localArrayList;
@@ -281,7 +275,7 @@ public final class RIJFeedsInsertModule
   
   private final boolean a(String paramString)
   {
-    Object localObject = (Long)this.b.get(paramString);
+    Object localObject = (Long)this.c.get(paramString);
     if (localObject == null) {
       localObject = Long.valueOf(0L);
     }
@@ -380,7 +374,7 @@ public final class RIJFeedsInsertModule
                 if ((i == 1) || (i != 2)) {
                   j = 1;
                 }
-                paramRspBody.b = j;
+                paramRspBody.j = j;
               }
             }
             paramRspBody = new StringBuilder();
@@ -394,7 +388,7 @@ public final class RIJFeedsInsertModule
               i = k;
               if (localObject1 != null)
               {
-                localObject1 = ((RecommendFollowInfos)localObject1).a;
+                localObject1 = ((RecommendFollowInfos)localObject1).c;
                 i = k;
                 if (localObject1 != null) {
                   i = ((List)localObject1).size();
@@ -422,13 +416,13 @@ public final class RIJFeedsInsertModule
   @Nullable
   public final ConcurrentHashMap<String, ArrayList<AbsBaseArticleInfo>> a(long paramLong)
   {
-    return (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    return (ConcurrentHashMap)this.b.get(Long.valueOf(paramLong));
   }
   
   public final void a(long paramLong, @NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    Object localObject = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    Object localObject = (ConcurrentHashMap)this.b.get(Long.valueOf(paramLong));
     if (localObject != null)
     {
       localObject = ((Map)localObject).entrySet().iterator();
@@ -506,13 +500,13 @@ public final class RIJFeedsInsertModule
       if (paramList == null) {
         return;
       }
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-        ((Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Long.valueOf(paramLong), new ConcurrentHashMap());
+      if (!this.b.containsKey(Long.valueOf(paramLong))) {
+        ((Map)this.b).put(Long.valueOf(paramLong), new ConcurrentHashMap());
       }
-      Object localObject1 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+      Object localObject1 = (ConcurrentHashMap)this.b.get(Long.valueOf(paramLong));
       if ((localObject1 == null) || (((ConcurrentHashMap)localObject1).containsKey(paramString) != true))
       {
-        localObject1 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+        localObject1 = (ConcurrentHashMap)this.b.get(Long.valueOf(paramLong));
         if (localObject1 != null) {
           ((Map)localObject1).put(paramString, new ArrayList());
         }
@@ -521,7 +515,7 @@ public final class RIJFeedsInsertModule
       while (paramList.hasNext())
       {
         localObject1 = (AbsBaseArticleInfo)paramList.next();
-        Object localObject2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+        Object localObject2 = (ConcurrentHashMap)this.b.get(Long.valueOf(paramLong));
         if (localObject2 != null)
         {
           localObject2 = (ArrayList)((ConcurrentHashMap)localObject2).get(paramString);
@@ -544,10 +538,10 @@ public final class RIJFeedsInsertModule
       QLog.i("RIJFeedsInsertModule", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    if (!RIJFeedsInsertUtil.a.a()) {
+    if (!RIJFeedsInsertUtil.a.c()) {
       return;
     }
-    if (!a(paramReqParams.a()))
+    if (!a(paramReqParams.b()))
     {
       QLog.i("RIJFeedsInsertModule", 1, "[requestFeedsInsertInfo] do not request twice in a short period of time...");
       return;
@@ -555,7 +549,7 @@ public final class RIJFeedsInsertModule
     oidb_cmd0xebb.ReqRecommendPara localReqRecommendPara = new oidb_cmd0xebb.ReqRecommendPara();
     localReqRecommendPara.uint64_channel_id.set(paramReqParams.a());
     PBBytesField localPBBytesField = localReqRecommendPara.bytes_req_rowkey;
-    Object localObject = paramReqParams.a();
+    Object localObject = paramReqParams.e();
     if (localObject != null)
     {
       localObject = ((AbsBaseArticleInfo)localObject).innerUniqueID;
@@ -566,9 +560,9 @@ public final class RIJFeedsInsertModule
       localObject = "";
     }
     localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
-    localReqRecommendPara.bytes_subscribe_id.set(ByteStringMicro.copyFromUtf8(paramReqParams.a()));
-    localReqRecommendPara.uint32_update_times.set(paramReqParams.a());
-    localReqRecommendPara.uint32_req_recommend_flag.set(paramReqParams.b());
+    localReqRecommendPara.bytes_subscribe_id.set(ByteStringMicro.copyFromUtf8(paramReqParams.b()));
+    localReqRecommendPara.uint32_update_times.set(paramReqParams.c());
+    localReqRecommendPara.uint32_req_recommend_flag.set(paramReqParams.d());
     localObject = new oidb_cmd0xebb.ReqBody();
     ((oidb_cmd0xebb.ReqBody)localObject).uint32_network_type.set(ArticleInfoModuleUtils.a());
     ((oidb_cmd0xebb.ReqBody)localObject).uint32_os_type.set(2);
@@ -579,7 +573,7 @@ public final class RIJFeedsInsertModule
     a((ToServiceMsg)localObject, paramReqParams);
     sendPbReq((ToServiceMsg)localObject);
     long l = System.currentTimeMillis();
-    ((Map)this.b).put(paramReqParams.a(), Long.valueOf(l));
+    ((Map)this.c).put(paramReqParams.b(), Long.valueOf(l));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[requestFeedsInsertInfo], reqParams = ");
     ((StringBuilder)localObject).append(paramReqParams);
@@ -603,12 +597,12 @@ public final class RIJFeedsInsertModule
   
   public void unInitialize()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.b.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsInsertModule
  * JD-Core Version:    0.7.0.1
  */

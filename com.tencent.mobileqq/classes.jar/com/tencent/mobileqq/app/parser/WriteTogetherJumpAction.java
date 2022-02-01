@@ -21,13 +21,13 @@ public class WriteTogetherJumpAction
   {
     try
     {
-      if (((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) && (((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment() != null))
+      if (((this.b instanceof BaseActivity)) && (((BaseActivity)this.b).getChatFragment() != null))
       {
-        Object localObject = Uri.parse(this.jdField_a_of_type_JavaLangString);
+        Object localObject = Uri.parse(this.c);
         String str = ((Uri)localObject).getQueryParameter("docid");
         localObject = ((Uri)localObject).getQueryParameter("groupcode");
-        WriteTogetherHelper.a(this.jdField_a_of_type_AndroidContentContext, str, (String)localObject, 7);
-        ReportController.b(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "dc00898", "", "", "0X800AF36", "0X800AF36", 0, 0, "", "", "", "");
+        WriteTogetherHelper.a(this.b, str, (String)localObject, 7);
+        ReportController.b(this.a, "dc00898", "", "", "0X800AF36", "0X800AF36", 0, 0, "", "", "", "");
         return true;
       }
       if (QLog.isColorLevel()) {
@@ -44,7 +44,7 @@ public class WriteTogetherJumpAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.WriteTogetherJumpAction
  * JD-Core Version:    0.7.0.1
  */

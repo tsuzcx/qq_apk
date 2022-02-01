@@ -10,22 +10,22 @@ import java.util.List;
 class ApolloCmdChannel$RequestRunnable
   implements Runnable
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<ApolloCmdChannel> jdField_a_of_type_JavaLangRefWeakReference;
-  private String b;
+  private WeakReference<ApolloCmdChannel> a;
+  private long b;
+  private String c;
+  private String d;
   
   ApolloCmdChannel$RequestRunnable(ApolloCmdChannel paramApolloCmdChannel, long paramLong, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloCmdChannel);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.a = new WeakReference(paramApolloCmdChannel);
+    this.b = paramLong;
+    this.c = paramString1;
+    this.d = paramString2;
   }
   
   public void run()
   {
-    ??? = this.jdField_a_of_type_JavaLangRefWeakReference;
+    ??? = this.a;
     if (??? == null) {
       return;
     }
@@ -33,9 +33,9 @@ class ApolloCmdChannel$RequestRunnable
     if (localApolloCmdChannel == null) {
       return;
     }
-    if ((this.jdField_a_of_type_Long != -1L) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((this.b != -1L) && (!TextUtils.isEmpty(this.c)))
     {
-      if (TextUtils.isEmpty(this.b)) {
+      if (TextUtils.isEmpty(this.d)) {
         return;
       }
       synchronized (ApolloCmdChannel.access$000(localApolloCmdChannel))
@@ -43,14 +43,14 @@ class ApolloCmdChannel$RequestRunnable
         Iterator localIterator = ApolloCmdChannel.access$000(localApolloCmdChannel).iterator();
         while (localIterator.hasNext())
         {
-          HandleResult localHandleResult = ((IRequestHandler)localIterator.next()).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+          HandleResult localHandleResult = ((IRequestHandler)localIterator.next()).a(this.b, this.c, this.d);
           if (localHandleResult != null)
           {
-            if (localHandleResult.jdField_a_of_type_Boolean) {
+            if (localHandleResult.b) {
               localIterator.remove();
             }
-            if (localHandleResult.b) {
-              localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, localHandleResult.jdField_a_of_type_JavaLangString);
+            if (localHandleResult.c) {
+              localApolloCmdChannel.callbackFromRequest(this.b, 0, this.c, localHandleResult.a);
             }
           }
         }
@@ -61,7 +61,7 @@ class ApolloCmdChannel$RequestRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloCmdChannel.RequestRunnable
  * JD-Core Version:    0.7.0.1
  */

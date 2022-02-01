@@ -7,15 +7,15 @@ class DrawerBizFacade$1$1
   
   public void run()
   {
-    IQQSettingMeProcessor localIQQSettingMeProcessor = this.a.a.a("d_vip_card");
+    IQQSettingMeProcessor localIQQSettingMeProcessor = this.a.a.b("d_vip_card");
     if (localIQQSettingMeProcessor != null) {
-      localIQQSettingMeProcessor.g();
+      localIQQSettingMeProcessor.i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.DrawerBizFacade.1.1
  * JD-Core Version:    0.7.0.1
  */

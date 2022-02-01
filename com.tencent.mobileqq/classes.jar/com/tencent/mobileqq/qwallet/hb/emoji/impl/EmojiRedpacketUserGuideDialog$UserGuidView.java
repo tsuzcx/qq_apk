@@ -72,12 +72,12 @@ class EmojiRedpacketUserGuideDialog$UserGuidView
     paramEmojiRedpacketUserGuideDialog.gravity = 1;
     paramEmojiRedpacketUserGuideDialog.width = ScreenUtil.dip2px(37.0F);
     paramEmojiRedpacketUserGuideDialog.height = ScreenUtil.dip2px(37.0F);
-    AccessibilityUtil.a((View)localObject1, HardCodeUtil.a(R.string.aE), null);
+    AccessibilityUtil.a((View)localObject1, HardCodeUtil.a(R.string.aJ), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.emoji.impl.EmojiRedpacketUserGuideDialog.UserGuidView
  * JD-Core Version:    0.7.0.1
  */

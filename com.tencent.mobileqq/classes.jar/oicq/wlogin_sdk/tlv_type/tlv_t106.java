@@ -7,7 +7,7 @@ import oicq.wlogin_sdk.tools.util;
 public class tlv_t106
   extends tlv_t
 {
-  int _SSoVer = 17;
+  int _SSoVer = 18;
   int _TGTGTVer = 4;
   int _t106_body_len = 98;
   
@@ -102,7 +102,7 @@ public class tlv_t106
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t106
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ final class AllInOneFactory$8
   {
     paramString = new AllInOne(paramMessageRecord.senderuin, 21);
     paramString.subSourceId = 11;
-    paramString.nickname = ContactUtils.b(paramQQAppInterface, paramSessionInfo.b, paramMessageRecord.senderuin);
+    paramString.nickname = ContactUtils.b(paramQQAppInterface, paramSessionInfo.c, paramMessageRecord.senderuin);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AllInOneFactory.8
  * JD-Core Version:    0.7.0.1
  */

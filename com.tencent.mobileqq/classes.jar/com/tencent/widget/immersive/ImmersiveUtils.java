@@ -106,8 +106,8 @@ public class ImmersiveUtils
   
   public static void adjustThemeStatusBar(Window paramWindow)
   {
-    if ((QQTheme.a(getCurrentUin(), true)) && (isSupporImmersive() != 0) && (couldSetStatusTextColor())) {
-      setStatusTextColor(QQTheme.a(paramWindow.getDecorView().getResources().getColor(2131167114)) ^ true, paramWindow);
+    if ((QQTheme.isCustomTheme(getCurrentUin(), true)) && (isSupporImmersive() != 0) && (couldSetStatusTextColor())) {
+      setStatusTextColor(QQTheme.isColorDark(paramWindow.getDecorView().getResources().getColor(2131168092)) ^ true, paramWindow);
     }
   }
   
@@ -360,6 +360,24 @@ public class ImmersiveUtils
     }
   }
   
+  public static boolean isStatusTextUseDarkColor(Window paramWindow)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramWindow != null)
+    {
+      bool1 = bool2;
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        bool1 = bool2;
+        if ((paramWindow.getDecorView().getSystemUiVisibility() & 0x2000) != 0) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
   public static int isSupporImmersive()
   {
     int i = i_support_immersive;
@@ -444,10 +462,10 @@ public class ImmersiveUtils
     if (!bool2) {
       return false;
     }
-    if ((enableStatusBarDarkModeForMIUI) && (SystemUtil.b())) {
+    if ((enableStatusBarDarkModeForMIUI) && (SystemUtil.d())) {
       return setStatusBarDarkModeForMIUI(paramWindow, paramBoolean);
     }
-    if (SystemUtil.d()) {
+    if (SystemUtil.g()) {
       bool1 = setStatusBarDarkModeForFlyme(paramWindow, paramBoolean);
     }
     return bool1;
@@ -561,18 +579,40 @@ public class ImmersiveUtils
     if (OSUtils.isMIUI()) {
       return processMIUI(paramWindow, paramBoolean);
     }
+    String str;
+    StringBuilder localStringBuilder;
     if (paramBoolean)
     {
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        paramWindow.getDecorView().setSystemUiVisibility(9216);
-        return true;
+      if (Build.VERSION.SDK_INT >= 23) {
+        try
+        {
+          paramWindow.getDecorView().setSystemUiVisibility(9216);
+          return true;
+        }
+        catch (Exception paramWindow)
+        {
+          str = TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("useDark setSystemUiVisibility failed");
+          localStringBuilder.append(paramWindow.toString());
+          QLog.e(str, 1, localStringBuilder.toString());
+        }
       }
     }
-    else if (Build.VERSION.SDK_INT >= 23)
-    {
-      paramWindow.getDecorView().setSystemUiVisibility(1280);
-      return true;
+    else if (Build.VERSION.SDK_INT >= 23) {
+      try
+      {
+        paramWindow.getDecorView().setSystemUiVisibility(1280);
+        return true;
+      }
+      catch (Exception paramWindow)
+      {
+        str = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("useLight setSystemUiVisibility failed");
+        localStringBuilder.append(paramWindow.toString());
+        QLog.e(str, 1, localStringBuilder.toString());
+      }
     }
     return false;
   }
@@ -599,7 +639,7 @@ public class ImmersiveUtils
   
   public static boolean supportStatusBarDarkMode()
   {
-    return (VersionUtils.i()) && (((enableStatusBarDarkModeForMIUI) && (SystemUtil.b())) || (SystemUtil.d()));
+    return (VersionUtils.i()) && (((enableStatusBarDarkModeForMIUI) && (SystemUtil.d())) || (SystemUtil.g()));
   }
   
   public static void trySetImmersiveStatusBar(Window paramWindow)
@@ -619,7 +659,7 @@ public class ImmersiveUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.immersive.ImmersiveUtils
  * JD-Core Version:    0.7.0.1
  */

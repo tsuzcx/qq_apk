@@ -73,7 +73,7 @@ final class e
     localObject2 = new File(b.a().a("jpg"));
     ((File)localObject2).getParentFile().mkdirs();
     localObject1 = MiniAppCamera.a((Bitmap)localObject1, (File)localObject2, this.b.a);
-    if (StringUtil.a((String)localObject1))
+    if (StringUtil.isEmpty((String)localObject1))
     {
       localObject1 = c.b(this.b.b, null);
       if (localObject1 == null) {
@@ -112,7 +112,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.e
  * JD-Core Version:    0.7.0.1
  */

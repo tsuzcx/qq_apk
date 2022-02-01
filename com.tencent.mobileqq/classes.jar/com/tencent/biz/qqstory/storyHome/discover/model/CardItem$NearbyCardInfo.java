@@ -9,20 +9,20 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public class CardItem$NearbyCardInfo
 {
-  private qqstory_struct.NearbyCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo;
-  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+  private qqstory_struct.NearbyCardInfo a;
+  private CardItem.CardVideoInfo b;
   
   public CardItem$NearbyCardInfo(qqstory_struct.NearbyCardInfo paramNearbyCardInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = paramNearbyCardInfo;
+    this.a = paramNearbyCardInfo;
   }
   
   public CardItem$NearbyCardInfo(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = new qqstory_struct.NearbyCardInfo();
+    this.a = new qqstory_struct.NearbyCardInfo();
     try
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.mergeFrom(paramArrayOfByte);
+      this.a.mergeFrom(paramArrayOfByte);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -33,14 +33,14 @@ public class CardItem$NearbyCardInfo
   
   public CardItem.CardVideoInfo a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
+    if (this.b == null)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.size() == 0) {
+      if (this.a.card_info.story_video_info.size() == 0) {
         return null;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.get(0));
+      this.b = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.a.card_info.story_video_info.get(0));
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+    return this.b;
   }
 }
 

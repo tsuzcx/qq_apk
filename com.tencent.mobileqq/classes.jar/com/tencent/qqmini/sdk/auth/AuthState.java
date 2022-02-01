@@ -35,6 +35,7 @@ public class AuthState
   static
   {
     initDefaultAskEveryTimeMap();
+    initDefaultAskEveryTimeWhenRejectedMap();
   }
   
   public AuthState() {}
@@ -67,6 +68,11 @@ public class AuthState
     Integer localInteger = Integer.valueOf(1);
     localHashMap.put("scope.getPhoneNumber", localInteger);
     scopeAuthTypeMap.put("scope.uploadAvatar", localInteger);
+  }
+  
+  private static void initDefaultAskEveryTimeWhenRejectedMap()
+  {
+    scopeAuthTypeMap.put("scope.expandUserInfo", Integer.valueOf(2));
   }
   
   public static void setAllowPluginScopeName(String paramString)
@@ -222,6 +228,12 @@ public class AuthState
     return (paramString != null) && (paramString.intValue() == 1);
   }
   
+  public boolean shouldAskEveryTimeWhenRejected(String paramString)
+  {
+    paramString = (Integer)scopeAuthTypeMap.get(paramString);
+    return (paramString != null) && (paramString.intValue() == 2);
+  }
+  
   public void updateAuthStateList(List<UserAuthInfo> paramList, List<UserSettingInfo> paramList1)
   {
     int j = 0;
@@ -293,7 +305,7 @@ public class AuthState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.AuthState
  * JD-Core Version:    0.7.0.1
  */

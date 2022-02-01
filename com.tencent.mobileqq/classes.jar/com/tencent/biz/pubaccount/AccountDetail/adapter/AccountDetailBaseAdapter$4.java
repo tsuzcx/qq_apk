@@ -14,15 +14,15 @@ class AccountDetailBaseAdapter$4
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailAdapterAccountDetailBaseAdapter$ErrorItemHolder.jdField_a_of_type_AndroidWidgetTextView.setText(2131695235);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailAdapterAccountDetailBaseAdapter$ErrorItemHolder.b.setVisibility(4);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailAdapterAccountDetailBaseAdapter$ErrorItemHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    AccountDetailDynamicListModel.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailAdapterAccountDetailBaseAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailAdapterAccountDetailBaseAdapter.jdField_a_of_type_JavaLangString), ((PublicAccountDetailActivityImpl)this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailAdapterAccountDetailBaseAdapter.jdField_a_of_type_AndroidAppActivity).getPublicAccountObserver());
+    this.a.a.setText(2131892969);
+    this.a.c.setVisibility(4);
+    this.a.b.setVisibility(4);
+    AccountDetailDynamicListModel.a(this.b.v, Long.parseLong(this.b.o), ((PublicAccountDetailActivityImpl)this.b.x).getPublicAccountObserver());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.4
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ class MystoryListView$1
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0))
+    if ((this.a.b != null) && (MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0))
     {
-      if (-MystoryListView.b(this.a) > UIUtils.d(this.a.jdField_a_of_type_AndroidAppActivity) * 3) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.b(true);
+      if (-MystoryListView.c(this.a) > UIUtils.e(this.a.b) * 3) {
+        this.a.a.b(true);
       }
       if (paramInt3 != 0)
       {
-        if (!MystoryListView.a(this.a)) {
+        if (!MystoryListView.d(this.a)) {
           return;
         }
         Object localObject = paramAbsListView.getChildAt(0);
@@ -27,30 +27,30 @@ class MystoryListView$1
         int k = ((View)localObject).getBottom();
         int m = ((View)localObject).getHeight();
         int i;
-        if (paramInt1 > MystoryListView.c(this.a))
+        if (paramInt1 > MystoryListView.e(this.a))
         {
           localObject = this.a;
-          MystoryListView.b((MystoryListView)localObject, MystoryListView.d((MystoryListView)localObject) + MystoryListView.e(this.a));
-          i = j - MystoryListView.d(this.a);
+          MystoryListView.b((MystoryListView)localObject, MystoryListView.f((MystoryListView)localObject) + MystoryListView.g(this.a));
+          i = j - MystoryListView.f(this.a);
         }
         else
         {
-          if (paramInt1 < MystoryListView.c(this.a))
+          if (paramInt1 < MystoryListView.e(this.a))
           {
             localObject = this.a;
-            MystoryListView.c((MystoryListView)localObject, MystoryListView.f((MystoryListView)localObject) - MystoryListView.e(this.a));
-            i = MystoryListView.f(this.a);
+            MystoryListView.c((MystoryListView)localObject, MystoryListView.h((MystoryListView)localObject) - MystoryListView.g(this.a));
+            i = MystoryListView.h(this.a);
           }
           else
           {
-            i = MystoryListView.f(this.a);
+            i = MystoryListView.h(this.a);
           }
           i = k - i;
         }
         localObject = this.a;
-        MystoryListView.e((MystoryListView)localObject, MystoryListView.g((MystoryListView)localObject) + i);
+        MystoryListView.e((MystoryListView)localObject, MystoryListView.i((MystoryListView)localObject) + i);
         localObject = this.a;
-        MystoryListView.f((MystoryListView)localObject, MystoryListView.b((MystoryListView)localObject) + i);
+        MystoryListView.f((MystoryListView)localObject, MystoryListView.c((MystoryListView)localObject) + i);
         MystoryListView.b(this.a, j);
         MystoryListView.c(this.a, k);
         MystoryListView.d(this.a, m);
@@ -61,8 +61,8 @@ class MystoryListView$1
         return;
       }
     }
-    if (MystoryListView.a(this.a) != null) {
-      MystoryListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (MystoryListView.b(this.a) != null) {
+      MystoryListView.b(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
@@ -89,8 +89,8 @@ class MystoryListView$1
         MystoryListView.a(this.a, false);
       }
     }
-    if (MystoryListView.a(this.a) != null) {
-      MystoryListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+    if (MystoryListView.b(this.a) != null) {
+      MystoryListView.b(this.a).onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
 }

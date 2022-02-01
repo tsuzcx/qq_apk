@@ -4,17 +4,17 @@ import com.tencent.tgpa.vendorpd.GameCallback;
 
 public final class b$b
 {
-  private GameCallback jdField_a_of_type_ComTencentTgpaVendorpdGameCallback = null;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b = "default";
   private String c = "https://version.tgpa.qq.com";
   private String d = null;
   private String e = null;
   private String f;
+  private GameCallback g = null;
   
   public b a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
@@ -61,7 +61,7 @@ public final class b$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tgpa.vendorpd.a.b.b
  * JD-Core Version:    0.7.0.1
  */

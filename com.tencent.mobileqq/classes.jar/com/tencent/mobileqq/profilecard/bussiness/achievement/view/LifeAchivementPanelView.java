@@ -87,10 +87,10 @@ public class LifeAchivementPanelView
   protected void init()
   {
     super.init();
-    this.emptyView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561349, this, false));
-    this.addAchivementBtn = ((Button)this.emptyView.findViewById(2131369711));
+    this.emptyView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131627705, this, false));
+    this.addAchivementBtn = ((Button)this.emptyView.findViewById(2131436822));
     this.addAchivementBtn.setOnClickListener(new LifeAchivementPanelView.1(this));
-    URLImageView localURLImageView = (URLImageView)this.emptyView.findViewById(2131369710);
+    URLImageView localURLImageView = (URLImageView)this.emptyView.findViewById(2131436821);
     if (localURLImageView != null)
     {
       localURLImageView.setImageURL("https://downv6.qq.com/qq_relation/life_achivement/lifeachivement_empty_bg.png");
@@ -98,7 +98,7 @@ public class LifeAchivementPanelView
     }
     initAchivementList();
     this.mTitleContainer.setOnClickListener(new LifeAchivementPanelView.2(this));
-    this.mTitleContainer.setContentDescription(getResources().getString(2131691185));
+    this.mTitleContainer.setContentDescription(getResources().getString(2131888131));
   }
   
   public void setLifeAchievementHandler(LifeAchievementHandler paramLifeAchievementHandler)
@@ -160,7 +160,7 @@ public class LifeAchivementPanelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.achievement.view.LifeAchivementPanelView
  * JD-Core Version:    0.7.0.1
  */

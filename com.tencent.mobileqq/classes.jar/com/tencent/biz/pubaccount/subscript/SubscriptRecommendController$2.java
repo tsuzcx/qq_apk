@@ -10,20 +10,20 @@ class SubscriptRecommendController$2
   public void onFollowPublicAccount(int paramInt, Object paramObject)
   {
     if (paramInt == 0) {
-      this.a.h();
+      this.a.i();
     }
   }
   
   public void onUnfollowPublicAccount(int paramInt, Object paramObject)
   {
     if (paramInt == 0) {
-      this.a.h();
+      this.a.i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.2
  * JD-Core Version:    0.7.0.1
  */

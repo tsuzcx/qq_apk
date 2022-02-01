@@ -29,21 +29,21 @@ public final class GdtBannerAd
   private GdtBannerView a(GdtBannerParams paramGdtBannerParams)
   {
     Object localObject = null;
-    if ((paramGdtBannerParams != null) && (paramGdtBannerParams.a()) && (paramGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a()))
+    if ((paramGdtBannerParams != null) && (paramGdtBannerParams.a()) && (paramGdtBannerParams.b.a()))
     {
-      if (paramGdtBannerParams.jdField_a_of_type_Int == 0) {
-        if (paramGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd.isBannerWithRectangleStyle()) {
-          localObject = new GdtBannerViewWithRectangleStyle((Context)paramGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
-        } else if (paramGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd.isBannerWithRectangleNewStyle()) {
-          localObject = new GdtBannerViewWithRectangleNewStyle((Context)paramGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
+      if (paramGdtBannerParams.c == 0) {
+        if (paramGdtBannerParams.b.a.isBannerWithRectangleStyle()) {
+          localObject = new GdtBannerViewWithRectangleStyle((Context)paramGdtBannerParams.b.r.get(), paramGdtBannerParams.b);
+        } else if (paramGdtBannerParams.b.a.isBannerWithRectangleNewStyle()) {
+          localObject = new GdtBannerViewWithRectangleNewStyle((Context)paramGdtBannerParams.b.r.get(), paramGdtBannerParams.b);
         } else {
-          localObject = new GdtBannerViewWithLetterStyle((Context)paramGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+          localObject = new GdtBannerViewWithLetterStyle((Context)paramGdtBannerParams.b.r.get(), paramGdtBannerParams.b.a);
         }
       }
       if (localObject != null) {
-        ((GdtBannerView)localObject).setSize(paramGdtBannerParams.b, paramGdtBannerParams.c);
+        ((GdtBannerView)localObject).setSize(paramGdtBannerParams.d, paramGdtBannerParams.e);
       }
-      AdAnalysisHelperForUtil.reportForBanner((Context)paramGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+      AdAnalysisHelperForUtil.reportForBanner((Context)paramGdtBannerParams.b.r.get(), paramGdtBannerParams.b.a);
       return localObject;
     }
     GdtLog.d("GdtBannerAd", "build error");
@@ -52,13 +52,13 @@ public final class GdtBannerAd
   
   private boolean a()
   {
-    long l = this.params.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getMinIntervalMillisBetweenExposureAndClick();
+    long l = this.params.b.a.getMinIntervalMillisBetweenExposureAndClick();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getView().onClick exp time :");
     localStringBuilder.append(l);
     GdtLog.b("GdtBannerAd", localStringBuilder.toString());
     l = Math.min(Math.max(l, 0L), 1000L);
-    if (l > System.currentTimeMillis() - this.params.jdField_a_of_type_Long)
+    if (l > System.currentTimeMillis() - this.params.f)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("getView().onClick return cause click unless than exp time :");
@@ -66,36 +66,36 @@ public final class GdtBannerAd
       GdtLog.d("GdtBannerAd", localStringBuilder.toString());
       return false;
     }
-    int i = this.params.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getBannerInvalidClickXPercent();
+    int i = this.params.b.a.getBannerInvalidClickXPercent();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("getView().onClick exp leftRightPercent :");
     localStringBuilder.append(i);
     GdtLog.b("GdtBannerAd", localStringBuilder.toString());
     i = Math.min(Math.max(i, 0), 100);
     double d1 = this.touchUpX;
-    double d2 = this.params.b * i;
+    double d2 = this.params.d * i;
     Double.isNaN(d2);
     if (d1 >= d2 * 1.0D / 100.0D)
     {
       d1 = this.touchUpX;
-      d2 = this.params.b * (100 - i);
+      d2 = this.params.d * (100 - i);
       Double.isNaN(d2);
       if (d1 > d2 * 1.0D / 100.0D) {
         return false;
       }
-      i = this.params.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getBannerInvalidClickYPercent();
+      i = this.params.b.a.getBannerInvalidClickYPercent();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("getView().onClick exp upDownPercent :");
       localStringBuilder.append(i);
       GdtLog.b("GdtBannerAd", localStringBuilder.toString());
       i = Math.min(Math.max(i, 0), 100);
       d1 = this.touchUpY;
-      d2 = this.params.c * i;
+      d2 = this.params.e * i;
       Double.isNaN(d2);
       if (d1 >= d2 * 1.0D / 100.0D)
       {
         d1 = this.touchUpY;
-        d2 = this.params.c * (100 - i);
+        d2 = this.params.e * (100 - i);
         Double.isNaN(d2);
         return d1 <= d2 * 1.0D / 100.0D;
       }
@@ -109,10 +109,10 @@ public final class GdtBannerAd
     if (paramInt1 != 0) {
       return paramInt1;
     }
-    if ((paramGdtAd != null) && (isValid()) && (getParams().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet != null))
+    if ((paramGdtAd != null) && (isValid()) && (getParams().a != null))
     {
       paramInt1 = paramGdtAd.getCreativeSize();
-      if ((getParams().jdField_a_of_type_Int == 0) && ((paramInt1 == 65) || (paramInt1 == 184) || (paramInt1 == 194) || (paramInt1 == 285))) {
+      if ((getParams().c == 0) && ((paramInt1 == 65) || (paramInt1 == 184) || (paramInt1 == 194) || (paramInt1 == 285))) {
         return 0;
       }
       return 7;
@@ -129,8 +129,8 @@ public final class GdtBannerAd
   public void onDisplay()
   {
     GdtBannerParams localGdtBannerParams = this.params;
-    if ((localGdtBannerParams != null) && (localGdtBannerParams.jdField_a_of_type_Long == -2147483648L)) {
-      this.params.jdField_a_of_type_Long = System.currentTimeMillis();
+    if ((localGdtBannerParams != null) && (localGdtBannerParams.f == -2147483648L)) {
+      this.params.f = System.currentTimeMillis();
     }
   }
   
@@ -139,15 +139,15 @@ public final class GdtBannerAd
     if ((paramContext != null) && (paramInt1 >= 0) && (paramInt2 >= 0) && (isLoaded()) && (!this.rendered))
     {
       paramContext = this.params;
-      paramContext.b = paramInt1;
-      paramContext.c = paramInt2;
+      paramContext.d = paramInt1;
+      paramContext.e = paramInt2;
       paramContext = a(paramContext);
-      if ((paramContext != null) && (paramContext.a() != null) && (paramContext.a() != null))
+      if ((paramContext != null) && (paramContext.getView() != null) && (paramContext.getAntiSpamForClick() != null))
       {
-        paramContext.a().setOnTouchListener(new GdtBannerAd.1(this, paramContext));
-        paramContext.a().setOnClickListener(new GdtBannerAd.2(this, paramContext));
-        if (paramContext.b() != null) {
-          paramContext.b().setOnClickListener(new GdtBannerAd.3(this, paramContext));
+        paramContext.getView().setOnTouchListener(new GdtBannerAd.1(this, paramContext));
+        paramContext.getView().setOnClickListener(new GdtBannerAd.2(this, paramContext));
+        if (paramContext.getCloseView() != null) {
+          paramContext.getCloseView().setOnClickListener(new GdtBannerAd.3(this, paramContext));
         }
         this.rendered = true;
         return paramContext;
@@ -161,7 +161,7 @@ public final class GdtBannerAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.GdtBannerAd
  * JD-Core Version:    0.7.0.1
  */

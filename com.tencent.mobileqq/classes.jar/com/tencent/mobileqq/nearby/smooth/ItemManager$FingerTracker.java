@@ -22,11 +22,11 @@ class ItemManager$FingerTracker
         bool1 = false;
       }
     }
-    ((ItemManager)localObject).c = bool1;
-    if ((this.a.c) && (this.a.b != 2)) {
+    ((ItemManager)localObject).i = bool1;
+    if ((this.a.i) && (this.a.g != 2)) {
       this.a.b();
     }
-    localObject = this.a.a.a();
+    localObject = this.a.a.d();
     if (localObject != null) {
       return ((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent);
     }
@@ -35,7 +35,7 @@ class ItemManager$FingerTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemManager.FingerTracker
  * JD-Core Version:    0.7.0.1
  */

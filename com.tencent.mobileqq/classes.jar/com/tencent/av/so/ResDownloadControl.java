@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 public class ResDownloadControl
 {
-  private static volatile ResDownloadControl jdField_a_of_type_ComTencentAvSoResDownloadControl;
-  private ArrayList<ResDownloadControl.DownloadInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static volatile ResDownloadControl b;
+  private ArrayList<ResDownloadControl.DownloadInfo> a = new ArrayList();
   
   ResDownloadControl()
   {
@@ -31,19 +31,19 @@ public class ResDownloadControl
   
   public static ResDownloadControl a()
   {
-    if (jdField_a_of_type_ComTencentAvSoResDownloadControl == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvSoResDownloadControl == null) {
-          jdField_a_of_type_ComTencentAvSoResDownloadControl = new ResDownloadControl();
+        if (b == null) {
+          b = new ResDownloadControl();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvSoResDownloadControl;
+    return b;
   }
   
-  private static void a()
+  private static void b()
   {
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     Intent localIntent = new Intent("ACTION_QAV_RES_NEW_CONFIG_NOTIFY");
@@ -71,21 +71,21 @@ public class ResDownloadControl
     paramQQAppInterface.append("handleNewConfig. newConfig = ");
     paramQQAppInterface.append(paramString);
     QLog.i("AVResMgr", 1, paramQQAppInterface.toString());
-    ResMgr.a(paramString);
-    paramQQAppInterface = ResMgr.a();
+    ResMgr.e(paramString);
+    paramQQAppInterface = ResMgr.b();
     if (paramQQAppInterface == null) {
       return;
     }
-    a();
-    paramString = ResMgr.a().a("AVVoiceRecogSo");
-    paramConfigInfo = ResMgr.a().a("AVVoiceRecogModel");
-    ResInfo localResInfo1 = ResMgr.a().a("AVGameVoiceRecogSo");
-    ResInfo localResInfo2 = ResMgr.a().a("AVGameVoiceRecogModel");
-    ResInfo localResInfo3 = ResMgr.a().a("AVGameVoiceRecogAILabSo");
-    ResInfo localResInfo4 = ResMgr.a().a("AVGameVoiceRecogAILabModel");
-    ResInfo localResInfo5 = ResMgr.a().a("AVTraeSo");
-    ResInfo localResInfo6 = ResMgr.a().a("AVAINSMediaLabModel");
-    ResInfo localResInfo7 = ResMgr.a().a("AVSDKSo");
+    b();
+    paramString = ResMgr.a().f("AVVoiceRecogSo");
+    paramConfigInfo = ResMgr.a().f("AVVoiceRecogModel");
+    ResInfo localResInfo1 = ResMgr.a().f("AVGameVoiceRecogSo");
+    ResInfo localResInfo2 = ResMgr.a().f("AVGameVoiceRecogModel");
+    ResInfo localResInfo3 = ResMgr.a().f("AVGameVoiceRecogAILabSo");
+    ResInfo localResInfo4 = ResMgr.a().f("AVGameVoiceRecogAILabModel");
+    ResInfo localResInfo5 = ResMgr.a().f("AVTraeSo");
+    ResInfo localResInfo6 = ResMgr.a().f("AVAINSMediaLabGruModel");
+    ResInfo localResInfo7 = ResMgr.a().f("AVSDKSo");
     int i = 0;
     while (i < paramQQAppInterface.size())
     {
@@ -128,7 +128,7 @@ public class ResDownloadControl
   
   boolean a(ResDownloadControl.DownloadInfo paramDownloadInfo)
   {
-    if (paramDownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null)
+    if (paramDownloadInfo.d != null)
     {
       localObject1 = BaseApplicationImpl.sApplication.getRuntime();
       if ((localObject1 instanceof AppInterface))
@@ -136,30 +136,30 @@ public class ResDownloadControl
         localObject1 = (IHttpEngineService)((AppInterface)localObject1).getRuntimeService(IHttpEngineService.class, "all");
         if (localObject1 != null)
         {
-          localObject2 = (String)paramDownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.getUserData();
+          localObject2 = (String)paramDownloadInfo.d.getUserData();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("startDownload. cancel old download req. old res = ");
           localStringBuilder.append((String)localObject2);
           QLog.i("AVResMgr", 1, localStringBuilder.toString());
-          ((IHttpEngineService)localObject1).cancelReq(paramDownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+          ((IHttpEngineService)localObject1).cancelReq(paramDownloadInfo.d);
         }
       }
     }
     Object localObject1 = new HttpNetReq();
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(paramDownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resType);
+    ((StringBuilder)localObject2).append(paramDownloadInfo.a.resType);
     ((StringBuilder)localObject2).append("_");
-    ((StringBuilder)localObject2).append(paramDownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resId);
+    ((StringBuilder)localObject2).append(paramDownloadInfo.a.resId);
     ((StringBuilder)localObject2).append("_");
-    ((StringBuilder)localObject2).append(paramDownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resVersion);
+    ((StringBuilder)localObject2).append(paramDownloadInfo.a.resVersion);
     ((StringBuilder)localObject2).append("_");
-    ((StringBuilder)localObject2).append(paramDownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resZipMd5);
+    ((StringBuilder)localObject2).append(paramDownloadInfo.a.resZipMd5);
     ((HttpNetReq)localObject1).setUserData(((StringBuilder)localObject2).toString());
-    ((HttpNetReq)localObject1).mReqUrl = paramDownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resZipUrl;
+    ((HttpNetReq)localObject1).mReqUrl = paramDownloadInfo.a.resZipUrl;
     ((HttpNetReq)localObject1).mHttpMethod = 0;
     localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(ResMgr.a(paramDownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo));
-    ((StringBuilder)localObject2).append(paramDownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resZipMd5);
+    ((StringBuilder)localObject2).append(ResMgr.a(paramDownloadInfo.a));
+    ((StringBuilder)localObject2).append(paramDownloadInfo.a.resZipMd5);
     ((StringBuilder)localObject2).append(".zip");
     ((HttpNetReq)localObject1).mOutPath = new File(((StringBuilder)localObject2).toString()).getPath();
     ((HttpNetReq)localObject1).mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
@@ -170,7 +170,7 @@ public class ResDownloadControl
       localObject2 = (IHttpEngineService)((QQAppInterface)localObject2).getRuntimeService(IHttpEngineService.class, "all");
       if (localObject2 != null)
       {
-        paramDownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = ((HttpNetReq)localObject1);
+        paramDownloadInfo.d = ((HttpNetReq)localObject1);
         ((IHttpEngineService)localObject2).sendReq((NetReq)localObject1);
         bool = true;
         break label362;
@@ -182,16 +182,16 @@ public class ResDownloadControl
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("startDownload. failed. NETWORK_ERROR. ");
-      ((StringBuilder)localObject1).append(paramDownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+      ((StringBuilder)localObject1).append(paramDownloadInfo.a);
       QLog.e("AVResMgr", 1, ((StringBuilder)localObject1).toString());
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramDownloadInfo);
-      b(-2, 0, paramDownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+      this.a.remove(paramDownloadInfo);
+      b(-2, 0, paramDownloadInfo.a);
       return bool;
     }
-    paramDownloadInfo.jdField_a_of_type_Int = 2;
+    paramDownloadInfo.b = 2;
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("startDownload. ");
-    ((StringBuilder)localObject1).append(paramDownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+    ((StringBuilder)localObject1).append(paramDownloadInfo.a);
     QLog.i("AVResMgr", 1, ((StringBuilder)localObject1).toString());
     return bool;
   }
@@ -209,15 +209,15 @@ public class ResDownloadControl
         return false;
       }
       int j = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i < this.a.size())
       {
-        if (((ResDownloadControl.DownloadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentAvSoResInfo.resId.equalsIgnoreCase(paramResInfo.resId))
+        if (((ResDownloadControl.DownloadInfo)this.a.get(i)).a.resId.equalsIgnoreCase(paramResInfo.resId))
         {
-          if (((ResDownloadControl.DownloadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int == 2)
+          if (((ResDownloadControl.DownloadInfo)this.a.get(i)).b == 2)
           {
             paramResInfo = new StringBuilder();
             paramResInfo.append("download repeatedly. ResId = ");
-            paramResInfo.append(((ResDownloadControl.DownloadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentAvSoResInfo.resId);
+            paramResInfo.append(((ResDownloadControl.DownloadInfo)this.a.get(i)).a.resId);
             QLog.i("AVResMgr", 1, paramResInfo.toString());
             return true;
           }
@@ -228,8 +228,8 @@ public class ResDownloadControl
       if (j == 0)
       {
         localObject = new ResDownloadControl.DownloadInfo();
-        ((ResDownloadControl.DownloadInfo)localObject).jdField_a_of_type_ComTencentAvSoResInfo = paramResInfo;
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        ((ResDownloadControl.DownloadInfo)localObject).a = paramResInfo;
+        this.a.add(localObject);
         return a((ResDownloadControl.DownloadInfo)localObject);
       }
       return true;
@@ -240,7 +240,7 @@ public class ResDownloadControl
   
   public boolean a(String paramString)
   {
-    ArrayList localArrayList = ResMgr.a();
+    ArrayList localArrayList = ResMgr.b();
     if (localArrayList == null) {
       return false;
     }

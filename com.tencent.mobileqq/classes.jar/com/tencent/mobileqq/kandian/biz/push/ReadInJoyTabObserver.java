@@ -13,29 +13,29 @@ public class ReadInJoyTabObserver
   
   public void a(MessageRecord paramMessageRecord)
   {
-    j();
+    i();
   }
   
   public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
   {
-    j();
-  }
-  
-  public void aD_()
-  {
-    j();
+    i();
   }
   
   public void b(MessageRecord paramMessageRecord)
   {
-    j();
+    i();
   }
   
-  public void j() {}
+  public void da_()
+  {
+    i();
+  }
+  
+  public void i() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.ReadInJoyTabObserver
  * JD-Core Version:    0.7.0.1
  */

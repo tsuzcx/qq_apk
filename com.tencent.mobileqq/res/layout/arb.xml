@@ -3,9 +3,10 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <FrameLayout android:id="@id/igz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <TextView android:textSize="16.0dip" android:id="@id/xz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/ack" android:background="@drawable/aah" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:layout_width="210.0dip" android:layout_height="55.0dip" android:layout_marginBottom="15.0dip" android:layout_alignParentBottom="true" android:layout_centerInParent="true"
+    <LinearLayout android:orientation="horizontal" android:id="@id/ack" android:background="@drawable/aah" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="55.0dip" android:layout_marginBottom="15.0dip" android:layout_alignParentBottom="true" android:layout_centerInParent="true"
       xmlns:android="http://schemas.android.com/apk/res/android">
         <ImageView android:layout_gravity="center_vertical" android:id="@id/h0c" android:layout_width="45.0dip" android:layout_height="45.0dip" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/pzv" android:visibility="gone" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginLeft="7.5dip" />
         <ImageView android:layout_gravity="center_vertical" android:id="@id/fci" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginLeft="7.5dip" />
         <ImageView android:layout_gravity="center_vertical" android:id="@id/wo" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginLeft="7.5dip" />
     </LinearLayout>

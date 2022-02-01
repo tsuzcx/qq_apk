@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.image.URLImageView android:layout_gravity="center_horizontal" android:id="@id/bat" android:layout_width="85.0dip" android:layout_height="85.0dip" android:adjustViewBounds="true" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:layout_gravity="center_horizontal" android:id="@id/bd5" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:singleLine="true" />
-        <com.tencent.mobileqq.widget.ProgressButton android:textSize="13.0dip" android:textColor="#ff1cb8f0" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bd3" android:background="@drawable/il" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/y09" />
-    </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:id="@id/p3p" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/lqn" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ViewStub android:id="@id/p8r" android:layout="@layout/cx1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/p3w" android:layout="@layout/cwx" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="16.0dip" />
+            <ViewStub android:id="@id/p3u" android:layout="@layout/cwv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout android:id="@id/p3t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                <ViewStub android:id="@id/p3x" android:layout="@layout/cx0" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <ViewStub android:id="@id/p42" android:layout="@layout/cx6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <ViewStub android:id="@id/p3v" android:layout="@layout/cww" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ViewStub android:layout_gravity="bottom|center|right" android:id="@id/p41" android:layout="@layout/cx3" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginRight="12.0dip" />
+            </com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout>
+            <ViewStub android:id="@id/p8j" android:layout="@layout/cwz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/ncj" android:paddingBottom="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/lqn">
+            <ViewStub android:id="@id/p3r" android:layout="@layout/cws" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/p3q" android:layout="@layout/cwu" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ViewStub android:id="@id/p40" android:layout="@layout/cx2" android:inflatedId="@id/p4k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-10.0dip" android:layout_above="@id/ncj" android:layout_alignParentRight="true" />
+        <ViewStub android:id="@id/p3s" android:layout="@layout/cx5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_marginBottom="-8.0dip" android:layout_above="@id/ncj" android:layout_alignParentRight="true" />
+        <ImageView android:background="@drawable/qcircle_skin_feed_divider" android:layout_width="fill_parent" android:layout_height="8.0dip" android:layout_below="@id/ncj" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/p3o" android:layout="@layout/cwm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

@@ -9,17 +9,17 @@ import com.tencent.qphone.base.util.QLog;
 public class JpegSoDownloadHandler
   extends EarlyHandler
 {
-  long jdField_a_of_type_Long = 0L;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  boolean d = true;
+  QQAppInterface h = null;
+  long i = 0L;
+  boolean j = true;
   
   public JpegSoDownloadHandler(QQAppInterface paramQQAppInterface)
   {
-    super(e(), paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(w(), paramQQAppInterface);
+    this.h = paramQQAppInterface;
   }
   
-  public static String e()
+  public static String w()
   {
     if ("armeabi-v7a".equalsIgnoreCase(Build.CPU_ABI)) {
       return "qq.android.pic.jpeg.so_v7_820";
@@ -27,19 +27,9 @@ public class JpegSoDownloadHandler
     return "qq.android.pic.jpeg.so_v5_820";
   }
   
-  public int a()
-  {
-    return 10043;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return JpegSoData.class;
-  }
-  
-  public String a()
-  {
-    return "qjpegDownloadSoDuration";
   }
   
   public void a(XmlData paramXmlData)
@@ -77,7 +67,7 @@ public class JpegSoDownloadHandler
     //   44: istore 4
     //   46: iconst_0
     //   47: istore_3
-    //   48: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   48: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   51: ifeq +54 -> 105
     //   54: new 86	java/lang/StringBuilder
     //   57: dup
@@ -99,7 +89,7 @@ public class JpegSoDownloadHandler
     //   88: aload 5
     //   90: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: pop
-    //   94: ldc 60
+    //   94: ldc 59
     //   96: iconst_2
     //   97: aload 7
     //   99: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -109,27 +99,27 @@ public class JpegSoDownloadHandler
     //   108: iconst_0
     //   109: invokestatic 115	com/tencent/mobileqq/utils/FileUtils:uncompressZip	(Ljava/lang/String;Ljava/lang/String;Z)V
     //   112: aload 5
-    //   114: invokestatic 119	com/tencent/mobileqq/scribble/ScribbleUtils:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   114: invokestatic 120	com/tencent/mobileqq/scribble/ScribbleUtils:b	(Ljava/lang/String;)Ljava/lang/String;
     //   117: astore 6
     //   119: aload_0
-    //   120: invokevirtual 122	com/tencent/mobileqq/earlydownload/handler/JpegSoDownloadHandler:a	()Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;
+    //   120: invokevirtual 123	com/tencent/mobileqq/earlydownload/handler/JpegSoDownloadHandler:h	()Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;
     //   123: astore 7
     //   125: iload_3
     //   126: istore_2
     //   127: aload 7
-    //   129: instanceof 47
+    //   129: instanceof 48
     //   132: ifeq +91 -> 223
     //   135: aload 7
-    //   137: checkcast 47	com/tencent/mobileqq/earlydownload/xmldata/JpegSoData
+    //   137: checkcast 48	com/tencent/mobileqq/earlydownload/xmldata/JpegSoData
     //   140: astore 7
-    //   142: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   142: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   145: ifeq +58 -> 203
     //   148: new 86	java/lang/StringBuilder
     //   151: dup
     //   152: invokespecial 89	java/lang/StringBuilder:<init>	()V
     //   155: astore 8
     //   157: aload 8
-    //   159: ldc 124
+    //   159: ldc 125
     //   161: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: pop
     //   165: aload 8
@@ -137,15 +127,15 @@ public class JpegSoDownloadHandler
     //   169: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   172: pop
     //   173: aload 8
-    //   175: ldc 126
+    //   175: ldc 127
     //   177: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   180: pop
     //   181: aload 8
     //   183: aload 7
-    //   185: getfield 129	com/tencent/mobileqq/earlydownload/xmldata/JpegSoData:SO_MD5	Ljava/lang/String;
+    //   185: getfield 130	com/tencent/mobileqq/earlydownload/xmldata/JpegSoData:SO_MD5	Ljava/lang/String;
     //   188: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   191: pop
-    //   192: ldc 60
+    //   192: ldc 59
     //   194: iconst_2
     //   195: aload 8
     //   197: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -154,21 +144,21 @@ public class JpegSoDownloadHandler
     //   204: istore_2
     //   205: aload 6
     //   207: aload 7
-    //   209: getfield 129	com/tencent/mobileqq/earlydownload/xmldata/JpegSoData:SO_MD5	Ljava/lang/String;
-    //   212: invokevirtual 39	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   209: getfield 130	com/tencent/mobileqq/earlydownload/xmldata/JpegSoData:SO_MD5	Ljava/lang/String;
+    //   212: invokevirtual 40	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   215: ifeq +8 -> 223
-    //   218: invokestatic 134	com/tencent/mobileqq/pic/JpegCompressor:jpegcompressLoadSo	()V
+    //   218: invokestatic 135	com/tencent/mobileqq/pic/JpegCompressor:jpegcompressLoadSo	()V
     //   221: iconst_1
     //   222: istore_2
     //   223: iload_2
     //   224: ifne +14 -> 238
     //   227: aload 5
-    //   229: invokestatic 137	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   229: invokestatic 138	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
     //   232: pop
     //   233: aload_1
-    //   234: invokestatic 137	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   234: invokestatic 138	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
     //   237: pop
-    //   238: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   238: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   241: ifeq +100 -> 341
     //   244: new 86	java/lang/StringBuilder
     //   247: dup
@@ -179,22 +169,22 @@ public class JpegSoDownloadHandler
     //   258: goto +89 -> 347
     //   261: astore 6
     //   263: aload 6
-    //   265: invokevirtual 140	java/lang/Exception:printStackTrace	()V
-    //   268: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   265: invokevirtual 141	java/lang/Exception:printStackTrace	()V
+    //   268: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   271: ifeq +15 -> 286
-    //   274: ldc 60
+    //   274: ldc 59
     //   276: iconst_2
     //   277: aload 6
     //   279: iconst_0
-    //   280: anewarray 62	java/lang/Object
-    //   283: invokestatic 143	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   280: anewarray 61	java/lang/Object
+    //   283: invokestatic 145	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   286: aload 5
-    //   288: invokestatic 137	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   288: invokestatic 138	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
     //   291: pop
     //   292: aload_1
-    //   293: invokestatic 137	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   293: invokestatic 138	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
     //   296: pop
-    //   297: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   297: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   300: ifeq +41 -> 341
     //   303: new 86	java/lang/StringBuilder
     //   306: dup
@@ -203,43 +193,43 @@ public class JpegSoDownloadHandler
     //   312: iload 4
     //   314: istore_2
     //   315: aload 5
-    //   317: ldc 145
+    //   317: ldc 147
     //   319: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   322: pop
     //   323: aload 5
     //   325: iload_2
-    //   326: invokevirtual 148	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   326: invokevirtual 150	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   329: pop
-    //   330: ldc 60
+    //   330: ldc 59
     //   332: iconst_2
     //   333: aload 5
     //   335: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   338: invokestatic 109	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   341: aload_0
     //   342: aload_1
-    //   343: invokespecial 150	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:a	(Ljava/lang/String;)V
+    //   343: invokespecial 152	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:a	(Ljava/lang/String;)V
     //   346: return
     //   347: aload 5
-    //   349: invokestatic 137	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   349: invokestatic 138	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
     //   352: pop
     //   353: aload_1
-    //   354: invokestatic 137	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   354: invokestatic 138	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
     //   357: pop
-    //   358: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   358: invokestatic 57	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   361: ifeq +34 -> 395
     //   364: new 86	java/lang/StringBuilder
     //   367: dup
     //   368: invokespecial 89	java/lang/StringBuilder:<init>	()V
     //   371: astore_1
     //   372: aload_1
-    //   373: ldc 145
+    //   373: ldc 147
     //   375: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   378: pop
     //   379: aload_1
     //   380: iconst_0
-    //   381: invokevirtual 148	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   381: invokevirtual 150	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   384: pop
-    //   385: ldc 60
+    //   385: ldc 59
     //   387: iconst_2
     //   388: aload_1
     //   389: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -274,7 +264,7 @@ public class JpegSoDownloadHandler
   
   public void a(boolean paramBoolean)
   {
-    if (a().loadState == 2)
+    if (h().loadState == 2)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QJpegSoDownloadHandler", 2, "is in downloading");
@@ -285,19 +275,29 @@ public class JpegSoDownloadHandler
     }
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public String b()
   {
+    return "qjpegDownloadSoDuration";
+  }
+  
+  public int c()
+  {
+    return 10043;
+  }
+  
+  public String d()
+  {
     return null;
+  }
+  
+  public boolean e()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.JpegSoDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,16 @@ public class FooterViewHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final SquareItemClickListener jdField_a_of_type_ComTencentMobileqqQqexpandFragmentSquareItemClickListener;
+  private final SquareItemClickListener a;
+  private final TextView b;
   
   public FooterViewHolder(View paramView, SquareItemClickListener paramSquareItemClickListener)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentSquareItemClickListener = paramSquareItemClickListener;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380053));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(ProfileGuideDialogUtils.a);
+    this.a = paramSquareItemClickListener;
+    this.b = ((TextView)paramView.findViewById(2131448960));
+    this.b.setOnClickListener(this);
+    this.b.setOnTouchListener(ProfileGuideDialogUtils.a);
   }
   
   public void a(FooterViewHolder paramFooterViewHolder, StrangerInfo paramStrangerInfo)
@@ -36,33 +36,33 @@ public class FooterViewHolder
         if (i != 2) {
           paramStrangerInfo = "";
         } else {
-          paramStrangerInfo = HardCodeUtil.a(2131704811);
+          paramStrangerInfo = HardCodeUtil.a(2131902712);
         }
       }
       else
       {
-        paramStrangerInfo = HardCodeUtil.a(2131704812);
+        paramStrangerInfo = HardCodeUtil.a(2131902713);
         bool = true;
       }
     }
     else {
-      paramStrangerInfo = HardCodeUtil.a(2131704810);
+      paramStrangerInfo = HardCodeUtil.a(2131902711);
     }
-    paramFooterViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramStrangerInfo);
-    paramFooterViewHolder.jdField_a_of_type_AndroidWidgetTextView.setEnabled(bool);
+    paramFooterViewHolder.b.setText(paramStrangerInfo);
+    paramFooterViewHolder.b.setEnabled(bool);
   }
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentSquareItemClickListener;
+    paramView = this.a;
     if (paramView != null) {
-      paramView.d();
+      paramView.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.feed.FooterViewHolder
  * JD-Core Version:    0.7.0.1
  */

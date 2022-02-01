@@ -37,18 +37,18 @@ class NearbyProfileEditPanel$18
           if (paramInt2 != 3) {
             return "";
           }
-          return HardCodeUtil.a(2131707314);
+          return HardCodeUtil.a(2131905139);
         }
-        return HardCodeUtil.a(2131707282);
+        return HardCodeUtil.a(2131905108);
       }
-      return HardCodeUtil.a(2131707312);
+      return HardCodeUtil.a(2131905137);
     }
-    return HardCodeUtil.a(2131707341);
+    return HardCodeUtil.a(2131905164);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.18
  * JD-Core Version:    0.7.0.1
  */

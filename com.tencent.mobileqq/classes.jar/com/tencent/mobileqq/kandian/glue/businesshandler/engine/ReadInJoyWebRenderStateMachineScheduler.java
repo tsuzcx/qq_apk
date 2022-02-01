@@ -10,29 +10,29 @@ import com.tencent.util.WeakReferenceHandler;
 public class ReadInJoyWebRenderStateMachineScheduler
   implements Handler.Callback
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final ReadInJoyWebRenderStateMachineScheduler.StateMachine jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineReadInJoyWebRenderStateMachineScheduler$StateMachine;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b = false;
+  private final ReadInJoyWebRenderStateMachineScheduler.StateMachine a;
+  private final Handler b;
+  private boolean c = true;
+  private boolean d = false;
   
   public ReadInJoyWebRenderStateMachineScheduler(ReadInJoyWebRenderStateMachineScheduler.StateMachine paramStateMachine)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineReadInJoyWebRenderStateMachineScheduler$StateMachine = paramStateMachine;
-    this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
+    this.a = paramStateMachine;
+    this.b = new WeakReferenceHandler(Looper.getMainLooper(), this);
   }
   
   public void a(Bundle paramBundle)
   {
-    this.b = false;
-    while (!this.b)
+    this.d = false;
+    while (!this.d)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineReadInJoyWebRenderStateMachineScheduler$StateMachine.a(paramBundle);
+      int i = this.a.a(paramBundle);
       if (i != -1) {
-        if ((i == 1) && (this.jdField_a_of_type_Boolean))
+        if ((i == 1) && (this.c))
         {
-          Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+          Message localMessage = this.b.obtainMessage(1);
           localMessage.setData(paramBundle);
-          this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+          this.b.sendMessage(localMessage);
         }
       }
     }
@@ -43,7 +43,7 @@ public class ReadInJoyWebRenderStateMachineScheduler
     if (paramMessage.what != 1) {
       return false;
     }
-    if (!this.b) {
+    if (!this.d) {
       a(paramMessage.getData());
     }
     return true;
@@ -51,7 +51,7 @@ public class ReadInJoyWebRenderStateMachineScheduler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyWebRenderStateMachineScheduler
  * JD-Core Version:    0.7.0.1
  */

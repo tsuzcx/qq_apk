@@ -12,14 +12,14 @@ class TeamWorkSaveDialog$1
   
   public void onClick(View paramView)
   {
-    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    DialogInterface.OnClickListener localOnClickListener = this.a;
     if (localOnClickListener != null) {
-      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog, 1);
+      localOnClickListener.onClick(this.b, 1);
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog.dismiss();
+      if (this.b.isShowing()) {
+        this.b.dismiss();
       }
       label37:
       EventCollector.getInstance().onViewClicked(paramView);
@@ -33,7 +33,7 @@ class TeamWorkSaveDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkSaveDialog.1
  * JD-Core Version:    0.7.0.1
  */

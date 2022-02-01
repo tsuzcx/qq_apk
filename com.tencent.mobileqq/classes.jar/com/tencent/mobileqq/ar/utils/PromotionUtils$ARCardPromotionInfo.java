@@ -9,66 +9,56 @@ import com.tencent.qphone.base.util.QLog;
 public class PromotionUtils$ARCardPromotionInfo
   extends PromotionUtils.BasePromotionInfo
 {
-  private int a;
-  public String a;
+  public String a = "";
   public String b = "";
   public String c = "";
-  public String d;
-  private boolean d;
-  public String e;
-  private boolean e;
+  public String d = "";
+  public String e = "";
   public String f = "";
-  
-  public PromotionUtils$ARCardPromotionInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_e_of_type_Boolean = true;
-  }
+  private boolean m = false;
+  private int n = 0;
+  private boolean o = true;
   
   public void a(AppInterface paramAppInterface, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("PromotionID");
+    this.a = paramBundle.getString("PromotionID");
     this.b = paramBundle.getString("PromotionWords");
     this.c = paramBundle.getString("PromotionIconUrl");
-    this.jdField_d_of_type_JavaLangString = paramBundle.getString("PromotionUserFrom");
-    this.jdField_e_of_type_JavaLangString = paramBundle.getString("PromotionUserTo");
+    this.d = paramBundle.getString("PromotionUserFrom");
+    this.e = paramBundle.getString("PromotionUserTo");
     this.f = paramBundle.getString("PromotionUserShareId");
-    if ((!TextUtils.isEmpty(this.g)) && (TextUtils.equals(this.g, "1"))) {
-      this.jdField_d_of_type_Boolean = true;
+    if ((!TextUtils.isEmpty(this.h)) && (TextUtils.equals(this.h, "1"))) {
+      this.m = true;
     }
     try
     {
-      this.jdField_d_of_type_JavaLangString = NearbyURLSafeUtil.b(this.jdField_d_of_type_JavaLangString);
-      this.jdField_e_of_type_JavaLangString = NearbyURLSafeUtil.b(this.jdField_e_of_type_JavaLangString);
+      this.d = NearbyURLSafeUtil.c(this.d);
+      this.e = NearbyURLSafeUtil.c(this.e);
       label109:
-      if ((!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)))
+      if ((!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.e)))
       {
-        if (this.jdField_e_of_type_JavaLangString.equals(paramAppInterface.getCurrentAccountUin()))
+        if (this.e.equals(paramAppInterface.getCurrentAccountUin()))
         {
-          this.jdField_e_of_type_Boolean = false;
-          this.jdField_a_of_type_Int = 1;
+          this.o = false;
+          this.n = 1;
         }
-        if (this.jdField_d_of_type_JavaLangString.equals(paramAppInterface.getCurrentAccountUin()))
+        if (this.d.equals(paramAppInterface.getCurrentAccountUin()))
         {
-          this.jdField_e_of_type_Boolean = false;
-          this.jdField_a_of_type_Int = 2;
+          this.o = false;
+          this.n = 2;
         }
       }
       paramAppInterface = new StringBuilder();
       paramAppInterface.append("ARRelationShipPromotion, mPromotionId[");
-      paramAppInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramAppInterface.append(this.a);
       paramAppInterface.append("], mPromotionWords[");
       paramAppInterface.append(this.b);
       paramAppInterface.append("], mPromotionIconUrl[");
       paramAppInterface.append(this.c);
       paramAppInterface.append("], mRecoglizeMask[");
-      paramAppInterface.append(this.jdField_a_of_type_Long);
+      paramAppInterface.append(this.g);
       paramAppInterface.append("], isMasterState[");
-      paramAppInterface.append(this.jdField_e_of_type_Boolean);
+      paramAppInterface.append(this.o);
       paramAppInterface.append("]");
       QLog.w("ScanTorchActivity", 1, paramAppInterface.toString());
       return;
@@ -81,7 +71,7 @@ public class PromotionUtils$ARCardPromotionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.utils.PromotionUtils.ARCardPromotionInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -9,20 +9,20 @@ public class PluginClassLoader
   extends DexClassLoader
   implements IPluginClassLoader
 {
-  private final ClassLoader jdField_a_of_type_JavaLangClassLoader;
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private final ClassLoader a;
+  private final String[] b;
   
   public PluginClassLoader(IPlugin paramIPlugin, ClassLoader paramClassLoader, String[] paramArrayOfString, int paramInt)
   {
-    super(paramIPlugin.e(), paramIPlugin.f(), paramIPlugin.g(), paramClassLoader);
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    super(paramIPlugin.g(), paramIPlugin.h(), paramIPlugin.i(), paramClassLoader);
+    this.b = paramArrayOfString;
     int i = 0;
     while (i < paramInt)
     {
       paramClassLoader = paramClassLoader.getParent();
       i += 1;
     }
-    this.jdField_a_of_type_JavaLangClassLoader = paramClassLoader;
+    this.a = paramClassLoader;
   }
   
   public <T> T a(Class<T> paramClass, String paramString)
@@ -39,7 +39,7 @@ public class PluginClassLoader
     } else {
       localObject1 = "";
     }
-    localObject3 = this.jdField_a_of_type_ArrayOfJavaLangString;
+    localObject3 = this.b;
     int j = k;
     if (localObject3 != null)
     {
@@ -79,7 +79,7 @@ public class PluginClassLoader
     if (localObject1 == null) {
       try
       {
-        paramString = this.jdField_a_of_type_JavaLangClassLoader.loadClass(paramString);
+        paramString = this.a.loadClass(paramString);
         return paramString;
       }
       catch (ClassNotFoundException paramString)
@@ -93,7 +93,7 @@ public class PluginClassLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.loader.PluginClassLoader
  * JD-Core Version:    0.7.0.1
  */

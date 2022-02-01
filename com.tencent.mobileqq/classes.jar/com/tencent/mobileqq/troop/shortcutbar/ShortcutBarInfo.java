@@ -2,89 +2,89 @@ package com.tencent.mobileqq.troop.shortcutbar;
 
 public class ShortcutBarInfo
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private long a;
   private String b;
+  private String c;
+  private int d;
+  private boolean e;
   
   public ShortcutBarInfo()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
   }
   
   public ShortcutBarInfo(long paramLong, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public long a()
-  {
-    return 0L;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.a = paramLong;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramInt;
+    this.e = true;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramLong;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
+    return this.e;
   }
   
   public long b()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    return 0L;
   }
   
   public void b(String paramString)
   {
-    this.b = paramString;
+    this.c = paramString;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public long d()
+  {
+    return this.a;
+  }
+  
+  public String e()
+  {
+    return this.b;
+  }
+  
+  public String f()
+  {
+    return this.c;
+  }
+  
+  public int g()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.ShortcutBarInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -16,22 +16,22 @@ class ReadInJoySocializeRecommendFollowView$10$2
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onUpdateAfterAccountFollow articleInfo = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(" isFollow = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.b);
       QLog.d("ReadInJoySocializeRecommendFollowView", 2, ((StringBuilder)localObject).toString());
     }
-    long l = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.a.a;
-    Object localObject = ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a);
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-    if ((localObject == localAbsBaseArticleInfo) && (this.jdField_a_of_type_Boolean) && (localAbsBaseArticleInfo.mChannelID == 70L)) {
-      ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView$10.a, l);
+    long l = this.a.mSocialFeedInfo.c.a;
+    Object localObject = ReadInJoySocializeRecommendFollowView.g(this.c.a);
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.a;
+    if ((localObject == localAbsBaseArticleInfo) && (this.b) && (localAbsBaseArticleInfo.mChannelID == 70L)) {
+      ReadInJoySocializeRecommendFollowView.a(this.c.a, l);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoySocializeRecommendFollowView.10.2
  * JD-Core Version:    0.7.0.1
  */

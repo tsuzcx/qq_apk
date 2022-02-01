@@ -31,7 +31,7 @@ public class GetSubscribeFeedListRequest
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt.get());
     }
-    paramStCommonExt = SubscribeAdDeviceInfoHelper.a().a();
+    paramStCommonExt = SubscribeAdDeviceInfoHelper.a().c();
     if (paramStCommonExt != null)
     {
       vac_adv_get.VacFeedsAdvMetaReq localVacFeedsAdvMetaReq = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -54,7 +54,7 @@ public class GetSubscribeFeedListRequest
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt.get());
     }
-    paramStCommonExt = SubscribeAdDeviceInfoHelper.a().a();
+    paramStCommonExt = SubscribeAdDeviceInfoHelper.a().c();
     if (paramStCommonExt != null)
     {
       paramString2 = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -80,7 +80,7 @@ public class GetSubscribeFeedListRequest
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt.get());
     }
-    paramStFeed = SubscribeAdDeviceInfoHelper.a().a();
+    paramStFeed = SubscribeAdDeviceInfoHelper.a().c();
     if (paramStFeed != null)
     {
       paramStCommonExt = new vac_adv_get.VacFeedsAdvMetaReq();

@@ -12,9 +12,9 @@ public class QwalletToLaunchWXMiniAppParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new QwalletToLaunchWXMiniAppAction(paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "wxminiapp";
-    paramBaseQQAppInterface.c = "launch";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "wxminiapp";
+    paramBaseQQAppInterface.e = "launch";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -37,7 +37,7 @@ public class QwalletToLaunchWXMiniAppParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.jump.impl.QwalletToLaunchWXMiniAppParser
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,15 @@ final class IPluginManager$2
   
   public void run()
   {
-    LoadCompactDynamicFeature.a().a(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, (Application)this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
-    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a.putExtra("extra_is_plugin", true);
-    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a.putExtra("extra_plugin_id", this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b);
+    LoadCompactDynamicFeature.a().b(this.a.d, (Application)this.b.getApplicationContext());
+    this.a.j.putExtra("extra_is_plugin", true);
+    this.a.j.putExtra("extra_plugin_id", this.a.d);
     ThreadManager.getUIHandler().post(new IPluginManager.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.IPluginManager.2
  * JD-Core Version:    0.7.0.1
  */

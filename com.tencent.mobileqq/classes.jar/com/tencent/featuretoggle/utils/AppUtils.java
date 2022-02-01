@@ -14,6 +14,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Process;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -23,8 +24,8 @@ import java.util.List;
 
 public class AppUtils
 {
-  private static ApplicationInfo jdField_a_of_type_AndroidContentPmApplicationInfo;
-  private static volatile String jdField_a_of_type_JavaLangString = "";
+  private static ApplicationInfo a;
+  private static volatile String b = "";
   
   public static Context a(Context paramContext)
   {
@@ -38,24 +39,25 @@ public class AppUtils
     return localContext;
   }
   
-  private static ApplicationInfo a(Context paramContext)
+  public static String a(Context paramContext, String paramString)
   {
-    if (jdField_a_of_type_AndroidContentPmApplicationInfo == null) {
-      try
-      {
-        jdField_a_of_type_AndroidContentPmApplicationInfo = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
-      }
-      catch (PackageManager.NameNotFoundException paramContext)
-      {
-        if (!LogUtils.a(paramContext)) {
-          paramContext.printStackTrace();
-        }
-      }
+    paramContext = h(paramContext).metaData;
+    if (paramContext != null) {
+      return String.valueOf(paramContext.get(paramString));
     }
-    return jdField_a_of_type_AndroidContentPmApplicationInfo;
+    return null;
   }
   
-  public static String a(Context paramContext)
+  public static boolean a(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    paramContext = h(paramContext).metaData;
+    if (paramContext != null) {
+      return paramContext.getBoolean(paramString, paramBoolean);
+    }
+    return paramBoolean;
+  }
+  
+  public static String b(Context paramContext)
   {
     try
     {
@@ -71,29 +73,7 @@ public class AppUtils
     return "";
   }
   
-  public static String a(Context paramContext, String paramString)
-  {
-    paramContext = a(paramContext).metaData;
-    if (paramContext != null) {
-      return String.valueOf(paramContext.get(paramString));
-    }
-    return null;
-  }
-  
-  public static void a(Context paramContext)
-  {
-    jdField_a_of_type_JavaLangString = e(paramContext);
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    if ((paramContext != null) && (paramContext.getPackageName() != null)) {
-      return paramContext.getPackageName().equals(d(paramContext));
-    }
-    return true;
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
+  public static boolean b(Context paramContext, String paramString)
   {
     boolean bool = false;
     try
@@ -113,16 +93,7 @@ public class AppUtils
     return false;
   }
   
-  public static boolean a(Context paramContext, String paramString, boolean paramBoolean)
-  {
-    paramContext = a(paramContext).metaData;
-    if (paramContext != null) {
-      return paramContext.getBoolean(paramString, paramBoolean);
-    }
-    return paramBoolean;
-  }
-  
-  public static String b(Context paramContext)
+  public static String c(Context paramContext)
   {
     if (paramContext == null) {
       return "";
@@ -141,16 +112,29 @@ public class AppUtils
     return "fail";
   }
   
-  public static String c(Context paramContext)
+  public static String d(Context paramContext)
   {
-    if (!Utils.a(jdField_a_of_type_JavaLangString)) {
-      return jdField_a_of_type_JavaLangString;
+    if (!Utils.a(b)) {
+      return b;
     }
-    a(paramContext);
-    return jdField_a_of_type_JavaLangString;
+    e(paramContext);
+    return b;
   }
   
-  public static String d(Context paramContext)
+  public static void e(Context paramContext)
+  {
+    b = i(paramContext);
+  }
+  
+  public static boolean f(Context paramContext)
+  {
+    if ((paramContext != null) && (paramContext.getPackageName() != null)) {
+      return paramContext.getPackageName().equals(g(paramContext));
+    }
+    return true;
+  }
+  
+  public static String g(Context paramContext)
   {
     try
     {
@@ -175,12 +159,29 @@ public class AppUtils
     return null;
   }
   
+  private static ApplicationInfo h(Context paramContext)
+  {
+    if (a == null) {
+      try
+      {
+        a = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
+      }
+      catch (PackageManager.NameNotFoundException paramContext)
+      {
+        if (!LogUtils.a(paramContext)) {
+          paramContext.printStackTrace();
+        }
+      }
+    }
+    return a;
+  }
+  
   @SuppressLint({"MissingPermission"})
-  private static String e(Context paramContext)
+  private static String i(Context paramContext)
   {
     if (paramContext != null)
     {
-      if (!a(paramContext, "android.permission.ACCESS_NETWORK_STATE")) {
+      if (!b(paramContext, "android.permission.ACCESS_NETWORK_STATE")) {
         return "";
       }
       try
@@ -196,7 +197,7 @@ public class AppUtils
             InetAddress localInetAddress;
             do
             {
-              paramContext = NetworkInterface.getNetworkInterfaces();
+              paramContext = NetworkMonitor.getNetworkInterfaces();
               while (!((Enumeration)localObject).hasMoreElements())
               {
                 if (!paramContext.hasMoreElements()) {
@@ -208,12 +209,12 @@ public class AppUtils
             } while ((localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)) || ("null".equals(localInetAddress.getHostAddress())) || (localInetAddress.getHostAddress() == null));
             return localInetAddress.getHostAddress().trim();
           }
-          if ((((NetworkInfo)localObject).getType() == 1) && (a(paramContext, "android.permission.ACCESS_WIFI_STATE")))
+          if ((((NetworkInfo)localObject).getType() == 1) && (b(paramContext, "android.permission.ACCESS_WIFI_STATE")))
           {
             paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
             if (paramContext != null)
             {
-              int i = paramContext.getConnectionInfo().getIpAddress();
+              int i = NetworkMonitor.getConnectionInfo(paramContext).getIpAddress();
               paramContext = new StringBuilder();
               paramContext.append(i & 0xFF);
               paramContext.append(".");
@@ -234,7 +235,7 @@ public class AppUtils
       }
       catch (Throwable paramContext)
       {
-        LogUtils.a(paramContext);
+        LogUtils.b(paramContext);
       }
     }
     return "";
@@ -242,7 +243,7 @@ public class AppUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.utils.AppUtils
  * JD-Core Version:    0.7.0.1
  */

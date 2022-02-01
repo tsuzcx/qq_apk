@@ -32,8 +32,8 @@ public class PublicAccountSearchActivity
     localIntent.putExtra("fromLocalUrl", true);
     localIntent.putExtra("hide_operation_bar", true);
     localIntent.putExtra("hideRightButton", true);
-    localIntent.putExtra("leftViewText", paramActivity.getString(2131695165));
-    localIntent.putExtra("assignBackText", paramActivity.getString(2131695165));
+    localIntent.putExtra("leftViewText", paramActivity.getString(2131892898));
+    localIntent.putExtra("assignBackText", paramActivity.getString(2131892898));
     if (TextUtils.isEmpty(paramString))
     {
       localIntent.putExtra("url", ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getPublicAccountCategoryUrl());
@@ -84,14 +84,14 @@ public class PublicAccountSearchActivity
     Intent localIntent = new Intent();
     localIntent.putExtra("last_key_words", "");
     localIntent.putExtra("from_key", 2);
-    localIntent.putExtra(ClassificationSearchActivity.a, ClassificationSearchActivity.c);
+    localIntent.putExtra(ClassificationSearchActivity.p, ClassificationSearchActivity.m);
     localIntent.setClass(paramActivity, ClassificationSearchActivity.class);
     ClassificationSearchActivity.a(paramActivity, localIntent, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountSearchActivity
  * JD-Core Version:    0.7.0.1
  */

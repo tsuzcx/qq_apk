@@ -29,47 +29,47 @@ import com.tencent.qphone.base.util.QLog;
 public class AIOInputRightHelper
   implements ILifeCycleHelper
 {
-  private AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  private BaseChatPie a;
+  private AIOContext b;
+  private QQAppInterface c;
+  private boolean d;
   
   public AIOInputRightHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramBaseChatPie.b();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
+    this.a = paramBaseChatPie;
+    this.b = paramBaseChatPie.bv();
+    this.c = this.b.a();
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext instanceof RobotContext)) {
+    if ((this.b instanceof RobotContext)) {
       return;
     }
-    if (SimpleUIUtil.a()) {
+    if (SimpleUIUtil.e()) {
       return;
     }
-    EditTextUI localEditTextUI = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
-    if (!((HiBoomHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(18)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), localEditTextUI.a().toString(), localEditTextUI)) {
+    EditTextUI localEditTextUI = this.b.p().d().f();
+    if (!((HiBoomHelper)this.b.a(18)).a(this.b.b(), localEditTextUI.a().toString(), localEditTextUI)) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a();
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a();
-    AIOZhituHelper localAIOZhituHelper = (AIOZhituHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(116);
+    Object localObject = this.b.p().d().c().b();
+    View localView = this.b.p().d().c().a();
+    AIOZhituHelper localAIOZhituHelper = (AIOZhituHelper)this.b.a(116);
     if (localView != null)
     {
       if (localView.getVisibility() != 0)
       {
         localView.setVisibility(0);
-        ABTestController.a().a("exp_qq_msg_marketface_input_icon").a();
-        localAIOZhituHelper.jdField_a_of_type_Boolean = false;
+        ABTestController.a().a("exp_qq_msg_marketface_input_icon").h();
+        localAIOZhituHelper.a = false;
       }
-      AIOZhituHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ImageButton)localObject);
-      ((ImageButton)localObject).setContentDescription(HardCodeUtil.a(2131701190));
+      AIOZhituHelper.a(this.c, (ImageButton)localObject);
+      ((ImageButton)localObject).setContentDescription(HardCodeUtil.a(2131899205));
       int j = localView.getWidth();
       int i;
       if (j == 0) {
-        i = AIOUtils.b(37.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getResources());
+        i = AIOUtils.b(37.0F, this.b.b().getResources());
       } else {
         i = j;
       }
@@ -81,27 +81,27 @@ public class AIOInputRightHelper
         ((StringBuilder)localObject).append(" ,pr = ");
         ((StringBuilder)localObject).append(j);
         ((StringBuilder)localObject).append(",input.getPaddingRight() = ");
-        ((StringBuilder)localObject).append(localEditTextUI.a());
+        ((StringBuilder)localObject).append(localEditTextUI.d());
         QLog.d("ZhituManager", 4, ((StringBuilder)localObject).toString());
       }
-      if (localEditTextUI.a() < i) {
-        localEditTextUI.a(localEditTextUI.b(), localEditTextUI.c(), i, localEditTextUI.d());
+      if (localEditTextUI.d() < i) {
+        localEditTextUI.a(localEditTextUI.e(), localEditTextUI.f(), i, localEditTextUI.g());
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.d)
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800932B", "0X800932B", 0, 0, "", "", "", "");
-        this.jdField_a_of_type_Boolean = true;
+        ReportController.b(this.c, "dc00898", "", "", "0X800932B", "0X800932B", 0, 0, "", "", "", "");
+        this.d = true;
       }
     }
   }
   
   public void a(Editable paramEditable)
   {
-    EditTextUI localEditTextUI = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
+    EditTextUI localEditTextUI = this.b.p().d().f();
     int j = paramEditable.toString().trim().length();
     int i = 1;
     boolean bool;
-    if ((j > 0) && (((HiBoomHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(18)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), paramEditable.toString(), localEditTextUI))) {
+    if ((j > 0) && (((HiBoomHelper)this.b.a(18)).a(this.b.b(), paramEditable.toString(), localEditTextUI))) {
       bool = true;
     } else {
       bool = false;
@@ -112,13 +112,13 @@ public class AIOInputRightHelper
       ((StringBuilder)localObject).append("check valid input condition: ");
       ((StringBuilder)localObject).append(bool);
       ((StringBuilder)localObject).append(" / ");
-      ((StringBuilder)localObject).append(((ReceiptHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(118)).jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(((ReceiptHelper)this.b.a(118)).a);
       ((StringBuilder)localObject).append(" / ");
-      ((StringBuilder)localObject).append(ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a));
+      ((StringBuilder)localObject).append(ZhituManager.d(this.b.O().a));
       QLog.d("AIOInputRightHelper", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (ReplyHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(119);
-    if ((bool) && (!((ReceiptHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(118)).jdField_a_of_type_Boolean) && (ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a)) && (((ReplyHelper)localObject).a() == null) && (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof GameRoomChatPie))) {
+    Object localObject = (ReplyHelper)this.b.a(119);
+    if ((bool) && (!((ReceiptHelper)this.b.a(118)).a) && (ZhituManager.d(this.b.O().a)) && (((ReplyHelper)localObject).a() == null) && (!(this.a instanceof GameRoomChatPie))) {
       bool = true;
     } else {
       bool = false;
@@ -130,19 +130,19 @@ public class AIOInputRightHelper
       ((StringBuilder)localObject).append(bool);
       QLog.d("ZhituManager", 2, ((StringBuilder)localObject).toString());
     }
-    localObject = ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    localObject = ZhituManager.a(this.c);
     if ((!bool) || (!((ZhituManager)localObject).a(paramEditable))) {
       i = 0;
     }
     if (i == 0)
     {
-      ((AIOZhituHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(116)).a();
+      ((AIOZhituHelper)this.b.a(116)).a();
       b();
     }
-    ImageButton localImageButton = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a();
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a();
+    ImageButton localImageButton = this.b.p().d().c().b();
+    View localView = this.b.p().d().c().a();
     if (i != 0) {
-      if (RichTextChatManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      if (RichTextChatManager.a(this.c).c(this.c))
       {
         if (localView.getVisibility() == 0)
         {
@@ -152,36 +152,36 @@ public class AIOInputRightHelper
             return;
           }
           localImageButton.setSelected(false);
-          ((AIOZhituHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(116)).jdField_a_of_type_Boolean = false;
+          ((AIOZhituHelper)this.b.a(116)).a = false;
           a();
-          ((ZhituManager)localObject).c();
-          AIOZhituHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localImageButton);
+          ((ZhituManager)localObject).o();
+          AIOZhituHelper.a(this.c, localImageButton);
           return;
         }
         a();
-        if (!((AIODraftHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(111)).b) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D0", "0X80094D0", 0, 0, "", "", "", "");
+        if (!((AIODraftHelper)this.b.a(111)).f) {
+          ReportController.b(this.c, "CliOper", "", "", "0X80094D0", "0X80094D0", 0, 0, "", "", "", "");
         }
       }
       else
       {
         localView.setVisibility(8);
-        localEditTextUI.a(localEditTextUI.b(), localEditTextUI.c(), AIOUtils.b(11.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getResources()), localEditTextUI.d());
+        localEditTextUI.a(localEditTextUI.e(), localEditTextUI.f(), AIOUtils.b(11.0F, this.b.b().getResources()), localEditTextUI.g());
       }
     }
   }
   
   public void b()
   {
-    ImageButton localImageButton = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a();
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a();
-    EditTextUI localEditTextUI = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a() != null) && (localView != null) && (localView.getVisibility() == 0))
+    ImageButton localImageButton = this.b.p().d().c().b();
+    View localView = this.b.p().d().c().a();
+    EditTextUI localEditTextUI = this.b.p().d().f();
+    if ((this.b.b() != null) && (localView != null) && (localView.getVisibility() == 0))
     {
-      AIOZhituHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localImageButton);
+      AIOZhituHelper.a(this.c, localImageButton);
       localView.setVisibility(8);
-      ((AIOZhituHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(116)).jdField_a_of_type_Boolean = false;
-      localEditTextUI.a(localEditTextUI.b(), localEditTextUI.c(), AIOUtils.b(11.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getResources()), localEditTextUI.d());
+      ((AIOZhituHelper)this.b.a(116)).a = false;
+      localEditTextUI.a(localEditTextUI.e(), localEditTextUI.f(), AIOUtils.b(11.0F, this.b.b().getResources()), localEditTextUI.g());
     }
   }
   
@@ -200,14 +200,14 @@ public class AIOInputRightHelper
   {
     if (paramInt == 15)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOInputRightHelper
  * JD-Core Version:    0.7.0.1
  */

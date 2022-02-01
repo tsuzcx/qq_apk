@@ -26,6 +26,7 @@ import com.tencent.mtt.hippy.uimanager.HippyViewController;
 import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.mtt.hippy.views.audioview.AudioViewController;
 import com.tencent.mtt.hippy.views.custom.HippyCustomPropsController;
+import com.tencent.mtt.hippy.views.hippylist.HippyRecyclerViewController;
 import com.tencent.mtt.hippy.views.image.HippyImageViewController;
 import com.tencent.mtt.hippy.views.list.HippyListItemViewController;
 import com.tencent.mtt.hippy.views.list.HippyListViewController;
@@ -72,6 +73,7 @@ public class d
     localArrayList.add(HippyViewGroupController.class);
     localArrayList.add(HippyImageViewController.class);
     localArrayList.add(HippyListViewController.class);
+    localArrayList.add(HippyRecyclerViewController.class);
     localArrayList.add(HippyListItemViewController.class);
     localArrayList.add(HippyTextInputController.class);
     localArrayList.add(HippyScrollViewController.class);
@@ -121,7 +123,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.d
  * JD-Core Version:    0.7.0.1
  */

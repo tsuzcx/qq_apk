@@ -48,10 +48,10 @@ public class SingTogetherParser
       } else {
         str = String.valueOf(paramLong1);
       }
-      localSingTogetherSession.jdField_f_of_type_JavaLangString = str;
+      localSingTogetherSession.r = str;
     }
     if ((paramInt2 == 1) || (paramInt2 == 3) || (paramInt2 == 4)) {
-      localSingTogetherSession.jdField_a_of_type_Int = paramInt1;
+      localSingTogetherSession.a = paramInt1;
     }
     a(paramQQAppInterface, localSingTogetherSession, paramInt2, paramLong1, paramString, paramLong3, paramLong4, null);
     if (((paramInt2 == 5) || (paramInt2 == 2)) && (!TextUtils.isEmpty(paramString))) {
@@ -171,10 +171,10 @@ public class SingTogetherParser
         } else {
           localObject = String.valueOf(l3);
         }
-        localSingTogetherSession.jdField_f_of_type_JavaLangString = ((String)localObject);
+        localSingTogetherSession.r = ((String)localObject);
       }
       if ((i == 1) || (i == 3) || (i == 4)) {
-        localSingTogetherSession.g = j;
+        localSingTogetherSession.o = j;
       }
       if (QLog.isColorLevel())
       {
@@ -200,16 +200,16 @@ public class SingTogetherParser
       QLog.d("SingTogetherParser", 2, "handleSingTogetherPush");
     }
     TogetherControlManager localTogetherControlManager = (TogetherControlManager)paramQQAppInterface.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER);
-    localTogetherControlManager.a(4, paramSingTogetherSession.jdField_f_of_type_Int, paramSingTogetherSession.jdField_e_of_type_JavaLangString, paramLong2);
-    SingTogetherSession localSingTogetherSession2 = (SingTogetherSession)localTogetherControlManager.a(paramSingTogetherSession.jdField_e_of_type_Int, paramSingTogetherSession.jdField_f_of_type_Int, paramSingTogetherSession.jdField_e_of_type_JavaLangString);
+    localTogetherControlManager.a(4, paramSingTogetherSession.m, paramSingTogetherSession.n, paramLong2);
+    SingTogetherSession localSingTogetherSession2 = (SingTogetherSession)localTogetherControlManager.a(paramSingTogetherSession.l, paramSingTogetherSession.m, paramSingTogetherSession.n);
     SingTogetherSession localSingTogetherSession1;
     if (localSingTogetherSession2 != null)
     {
       if ((paramInt == 1) || (paramInt == 3) || (paramInt == 4)) {
-        localSingTogetherSession2.g = paramSingTogetherSession.g;
+        localSingTogetherSession2.o = paramSingTogetherSession.o;
       }
-      if ((paramInt == 1) && (!TextUtils.isEmpty(paramSingTogetherSession.jdField_f_of_type_JavaLangString))) {
-        localSingTogetherSession2.jdField_f_of_type_JavaLangString = paramSingTogetherSession.jdField_f_of_type_JavaLangString;
+      if ((paramInt == 1) && (!TextUtils.isEmpty(paramSingTogetherSession.r))) {
+        localSingTogetherSession2.r = paramSingTogetherSession.r;
       }
       if ((paramInt != 1) && (paramInt != 3))
       {
@@ -218,50 +218,50 @@ public class SingTogetherParser
       }
       else
       {
-        localSingTogetherSession2.jdField_a_of_type_Int = paramSingTogetherSession.jdField_a_of_type_Int;
+        localSingTogetherSession2.a = paramSingTogetherSession.a;
         localSingTogetherSession1 = localSingTogetherSession2;
       }
     }
     else
     {
-      localTogetherControlManager.a(paramSingTogetherSession.jdField_e_of_type_Int, paramSingTogetherSession.jdField_f_of_type_Int, paramSingTogetherSession.jdField_e_of_type_JavaLangString, paramSingTogetherSession);
+      localTogetherControlManager.a(paramSingTogetherSession.l, paramSingTogetherSession.m, paramSingTogetherSession.n, paramSingTogetherSession);
       localSingTogetherSession1 = paramSingTogetherSession;
     }
     if (paramInt == 1)
     {
-      TogetherUtils.a(paramQQAppInterface, localSingTogetherSession1.jdField_e_of_type_JavaLangString, true, localSingTogetherSession1.jdField_f_of_type_Int, 16777216);
+      TogetherUtils.a(paramQQAppInterface, localSingTogetherSession1.n, true, localSingTogetherSession1.m, 16777216);
     }
     else if (paramInt == 2)
     {
-      localSingTogetherSession1.h = 3;
-      localSingTogetherSession1.i = 3;
-      TogetherUtils.a(paramQQAppInterface, localSingTogetherSession1.jdField_e_of_type_JavaLangString, false, localSingTogetherSession1.jdField_f_of_type_Int, 16777216);
+      localSingTogetherSession1.p = 3;
+      localSingTogetherSession1.q = 3;
+      TogetherUtils.a(paramQQAppInterface, localSingTogetherSession1.n, false, localSingTogetherSession1.m, 16777216);
     }
     else if ((paramQQAppInterface.getCurrentAccountUin().equals(String.valueOf(paramLong1))) && ((paramInt == 3) || (paramInt == 4) || (paramInt == 5)))
     {
-      TogetherUtils.a(paramQQAppInterface, localSingTogetherSession1.jdField_e_of_type_JavaLangString, true, localSingTogetherSession1.jdField_f_of_type_Int, 16777216);
+      TogetherUtils.a(paramQQAppInterface, localSingTogetherSession1.n, true, localSingTogetherSession1.m, 16777216);
     }
-    if (localSingTogetherSession1.jdField_f_of_type_Int == 2)
+    if (localSingTogetherSession1.m == 2)
     {
-      paramSingTogetherSession = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(localSingTogetherSession1.jdField_e_of_type_JavaLangString);
+      paramSingTogetherSession = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(localSingTogetherSession1.n);
       if ((paramSingTogetherSession == null) || (!paramSingTogetherSession.isFriend())) {
         return;
       }
     }
-    if (!TextUtils.isEmpty(localSingTogetherSession1.jdField_e_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(localSingTogetherSession1.n))
     {
-      paramSingTogetherSession = localTogetherControlManager.a(4, localSingTogetherSession1.jdField_f_of_type_Int, localSingTogetherSession1.jdField_e_of_type_JavaLangString, 1003);
-      paramSingTogetherSession.jdField_a_of_type_AndroidOsBundle.putInt("action_type", paramInt);
-      paramSingTogetherSession.jdField_a_of_type_AndroidOsBundle.putString("tips", paramString);
-      paramSingTogetherSession.jdField_a_of_type_AndroidOsBundle.putLong("seq", paramLong2);
-      paramSingTogetherSession.jdField_a_of_type_AndroidOsBundle.putLong("msgSeq", paramLong3);
-      paramSingTogetherSession.jdField_a_of_type_JavaLangObject = paramSingChangePushInfo;
+      paramSingTogetherSession = localTogetherControlManager.b(4, localSingTogetherSession1.m, localSingTogetherSession1.n, 1003);
+      paramSingTogetherSession.a.putInt("action_type", paramInt);
+      paramSingTogetherSession.a.putString("tips", paramString);
+      paramSingTogetherSession.a.putLong("seq", paramLong2);
+      paramSingTogetherSession.a.putLong("msgSeq", paramLong3);
+      paramSingTogetherSession.b = paramSingChangePushInfo;
       if ((!paramQQAppInterface.getCurrentAccountUin().equals(String.valueOf(paramLong1))) && ((paramInt == 2) || (paramInt == 4) || (paramInt == 3)))
       {
         a(true, localSingTogetherSession1, 1003, "");
         return;
       }
-      localTogetherControlManager.a(4, localSingTogetherSession1.jdField_f_of_type_Int, localSingTogetherSession1.jdField_e_of_type_JavaLangString, 1003);
+      localTogetherControlManager.a(4, localSingTogetherSession1.m, localSingTogetherSession1.n, 1003);
       return;
     }
   }
@@ -271,7 +271,7 @@ public class SingTogetherParser
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 228	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   1: invokevirtual 230	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   4: astore 18
     //   6: invokestatic 90	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   9: ifeq +93 -> 102
@@ -280,7 +280,7 @@ public class SingTogetherParser
     //   16: invokespecial 144	java/lang/StringBuilder:<init>	()V
     //   19: astore 19
     //   21: aload 19
-    //   23: ldc_w 289
+    //   23: ldc_w 292
     //   26: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: pop
     //   30: aload 19
@@ -288,7 +288,7 @@ public class SingTogetherParser
     //   33: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   36: pop
     //   37: aload 19
-    //   39: ldc_w 291
+    //   39: ldc_w 294
     //   42: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   45: pop
     //   46: aload 19
@@ -296,7 +296,7 @@ public class SingTogetherParser
     //   50: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   53: pop
     //   54: aload 19
-    //   56: ldc_w 293
+    //   56: ldc_w 296
     //   59: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   62: pop
     //   63: aload 19
@@ -304,12 +304,12 @@ public class SingTogetherParser
     //   67: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   70: pop
     //   71: aload 19
-    //   73: ldc_w 295
+    //   73: ldc_w 298
     //   76: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: pop
     //   80: aload 19
     //   82: iload 7
-    //   84: invokevirtual 298	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 301	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   87: pop
     //   88: ldc 92
     //   90: iconst_2
@@ -324,100 +324,100 @@ public class SingTogetherParser
     //   111: ifne +680 -> 791
     //   114: iload 7
     //   116: ifne +126 -> 242
-    //   119: new 300	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody
+    //   119: new 303	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody
     //   122: dup
-    //   123: invokespecial 301	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:<init>	()V
+    //   123: invokespecial 304	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:<init>	()V
     //   126: astore 18
     //   128: aload 18
     //   130: aload_2
-    //   131: invokevirtual 302	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   131: invokevirtual 305	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   134: pop
     //   135: aload 18
-    //   137: getfield 306	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:join_state	Lcom/tencent/mobileqq/pb/PBEnumField;
-    //   140: invokevirtual 309	com/tencent/mobileqq/pb/PBEnumField:get	()I
+    //   137: getfield 309	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:join_state	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   140: invokevirtual 312	com/tencent/mobileqq/pb/PBEnumField:get	()I
     //   143: istore 8
     //   145: aload 18
-    //   147: getfield 310	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint32_action_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   147: getfield 313	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint32_action_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   150: invokevirtual 74	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   153: istore 9
     //   155: aload 18
-    //   157: getfield 311	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint64_oper_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   157: getfield 314	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint64_oper_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   160: invokevirtual 107	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
     //   163: ifeq +644 -> 807
     //   166: aload 18
-    //   168: getfield 311	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint64_oper_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   168: getfield 314	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint64_oper_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   171: invokevirtual 110	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   174: lstore 10
     //   176: goto +3 -> 179
     //   179: aload 18
-    //   181: getfield 314	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint64_friend_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   181: getfield 317	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint64_friend_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   184: invokevirtual 107	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
     //   187: ifeq +626 -> 813
     //   190: aload 18
-    //   192: getfield 314	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint64_friend_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   192: getfield 317	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint64_friend_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   195: invokevirtual 110	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   198: lstore 12
     //   200: goto +3 -> 203
     //   203: aload 18
-    //   205: getfield 315	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint64_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   205: getfield 318	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint64_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   208: invokevirtual 107	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
     //   211: ifeq +608 -> 819
     //   214: aload 18
-    //   216: getfield 315	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint64_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   216: getfield 318	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:uint64_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   219: invokevirtual 110	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   222: lstore 14
     //   224: goto +3 -> 227
     //   227: aload 18
-    //   229: getfield 316	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:bytes_gray_tips	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   229: getfield 319	tencent/im/s2c/msgtype0x210/submsgtype0x127/submsgtype0x127$MsgBody:bytes_gray_tips	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   232: invokevirtual 135	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   235: invokevirtual 141	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   238: astore_2
     //   239: goto +123 -> 362
-    //   242: new 318	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody
+    //   242: new 321	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody
     //   245: dup
-    //   246: invokespecial 319	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:<init>	()V
+    //   246: invokespecial 322	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:<init>	()V
     //   249: astore 18
     //   251: aload 18
     //   253: aload_2
-    //   254: invokevirtual 320	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   254: invokevirtual 323	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   257: pop
     //   258: aload 18
-    //   260: getfield 321	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:join_state	Lcom/tencent/mobileqq/pb/PBEnumField;
-    //   263: invokevirtual 309	com/tencent/mobileqq/pb/PBEnumField:get	()I
+    //   260: getfield 324	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:join_state	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   263: invokevirtual 312	com/tencent/mobileqq/pb/PBEnumField:get	()I
     //   266: istore 8
     //   268: aload 18
-    //   270: getfield 322	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint32_action_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   270: getfield 325	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint32_action_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   273: invokevirtual 74	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   276: istore 9
     //   278: aload 18
-    //   280: getfield 323	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint64_oper_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   280: getfield 326	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint64_oper_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   283: invokevirtual 107	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
     //   286: ifeq +539 -> 825
     //   289: aload 18
-    //   291: getfield 323	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint64_oper_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   291: getfield 326	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint64_oper_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   294: invokevirtual 110	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   297: lstore 10
     //   299: goto +3 -> 302
     //   302: aload 18
-    //   304: getfield 324	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint64_friend_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   304: getfield 327	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint64_friend_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   307: invokevirtual 107	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
     //   310: ifeq +521 -> 831
     //   313: aload 18
-    //   315: getfield 324	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint64_friend_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   315: getfield 327	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint64_friend_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   318: invokevirtual 110	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   321: lstore 12
     //   323: goto +3 -> 326
     //   326: aload 18
-    //   328: getfield 325	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint64_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   328: getfield 328	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint64_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   331: invokevirtual 107	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
     //   334: ifeq +503 -> 837
     //   337: aload 18
-    //   339: getfield 325	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint64_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   339: getfield 328	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:uint64_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   342: invokevirtual 110	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   345: lstore 14
     //   347: goto +3 -> 350
     //   350: aload 18
-    //   352: getfield 326	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:bytes_gray_tips	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   352: getfield 329	tencent/im/s2c/msgtype0x210/submsgtype0x129/submsgtype0x129$MsgBody:bytes_gray_tips	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   355: invokevirtual 135	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   358: invokevirtual 141	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   361: astore_2
@@ -428,7 +428,7 @@ public class SingTogetherParser
     //   372: invokespecial 144	java/lang/StringBuilder:<init>	()V
     //   375: astore 18
     //   377: aload 18
-    //   379: ldc_w 328
+    //   379: ldc_w 331
     //   382: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   385: pop
     //   386: aload 18
@@ -436,7 +436,7 @@ public class SingTogetherParser
     //   390: invokevirtual 158	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   393: pop
     //   394: aload 18
-    //   396: ldc_w 330
+    //   396: ldc_w 333
     //   399: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   402: pop
     //   403: aload 18
@@ -444,7 +444,7 @@ public class SingTogetherParser
     //   407: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   410: pop
     //   411: aload 18
-    //   413: ldc_w 332
+    //   413: ldc_w 335
     //   416: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   419: pop
     //   420: aload 18
@@ -452,7 +452,7 @@ public class SingTogetherParser
     //   424: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   427: pop
     //   428: aload 18
-    //   430: ldc_w 334
+    //   430: ldc_w 337
     //   433: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   436: pop
     //   437: aload 18
@@ -460,7 +460,7 @@ public class SingTogetherParser
     //   440: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   443: pop
     //   444: aload 18
-    //   446: ldc_w 336
+    //   446: ldc_w 339
     //   449: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   452: pop
     //   453: aload 18
@@ -468,7 +468,7 @@ public class SingTogetherParser
     //   457: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   460: pop
     //   461: aload 18
-    //   463: ldc_w 338
+    //   463: ldc_w 341
     //   466: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   469: pop
     //   470: aload 18
@@ -476,12 +476,12 @@ public class SingTogetherParser
     //   474: invokevirtual 158	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   477: pop
     //   478: aload 18
-    //   480: ldc_w 340
+    //   480: ldc_w 343
     //   483: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   486: pop
     //   487: aload 18
     //   489: iload 7
-    //   491: invokevirtual 298	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   491: invokevirtual 301	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   494: pop
     //   495: ldc 92
     //   497: iconst_2
@@ -497,7 +497,7 @@ public class SingTogetherParser
     //   517: invokespecial 144	java/lang/StringBuilder:<init>	()V
     //   520: astore_1
     //   521: aload_1
-    //   522: ldc_w 342
+    //   522: ldc_w 345
     //   525: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   528: pop
     //   529: aload_1
@@ -505,7 +505,7 @@ public class SingTogetherParser
     //   532: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   535: pop
     //   536: aload_1
-    //   537: ldc_w 344
+    //   537: ldc_w 347
     //   540: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   543: pop
     //   544: aload_1
@@ -531,7 +531,7 @@ public class SingTogetherParser
     //   583: invokespecial 144	java/lang/StringBuilder:<init>	()V
     //   586: astore_1
     //   587: aload_1
-    //   588: ldc_w 346
+    //   588: ldc_w 349
     //   591: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   594: pop
     //   595: aload_1
@@ -545,35 +545,35 @@ public class SingTogetherParser
     //   609: invokestatic 98	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   612: return
     //   613: aload_1
-    //   614: invokevirtual 350	com/tencent/mobileqq/app/QQAppInterface:getPreferences	()Landroid/content/SharedPreferences;
+    //   614: invokevirtual 353	com/tencent/mobileqq/app/QQAppInterface:getPreferences	()Landroid/content/SharedPreferences;
     //   617: astore 18
     //   619: aload 18
-    //   621: ldc_w 352
+    //   621: ldc_w 355
     //   624: lconst_0
-    //   625: invokeinterface 358 4 0
+    //   625: invokeinterface 361 4 0
     //   630: lstore 16
     //   632: lload 14
-    //   634: ldc2_w 359
+    //   634: ldc2_w 362
     //   637: ldiv
     //   638: lload 16
     //   640: lcmp
     //   641: ifge +202 -> 843
-    //   644: ldc_w 362
+    //   644: ldc_w 365
     //   647: iconst_2
     //   648: anewarray 4	java/lang/Object
     //   651: dup
     //   652: iconst_0
     //   653: lload 14
-    //   655: ldc2_w 359
+    //   655: ldc2_w 362
     //   658: ldiv
-    //   659: invokestatic 367	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   659: invokestatic 370	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   662: aastore
     //   663: dup
     //   664: iconst_1
     //   665: lload 16
-    //   667: invokestatic 367	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   667: invokestatic 370	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   670: aastore
-    //   671: invokestatic 371	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   671: invokestatic 374	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   674: astore_1
     //   675: ldc 92
     //   677: iconst_1
@@ -623,7 +623,7 @@ public class SingTogetherParser
     //   761: aload_2
     //   762: lload_3
     //   763: lload 5
-    //   765: invokespecial 373	com/tencent/mobileqq/intervideo/singtogether/SingTogetherParser:a	(Lcom/tencent/mobileqq/app/QQAppInterface;IIJJJLjava/lang/String;JJ)V
+    //   765: invokespecial 376	com/tencent/mobileqq/intervideo/singtogether/SingTogetherParser:a	(Lcom/tencent/mobileqq/app/QQAppInterface;IIJJJLjava/lang/String;JJ)V
     //   768: return
     //   769: astore_1
     //   770: goto +4 -> 774
@@ -632,15 +632,15 @@ public class SingTogetherParser
     //   777: ifeq +29 -> 806
     //   780: ldc 92
     //   782: iconst_2
-    //   783: ldc_w 375
+    //   783: ldc_w 378
     //   786: aload_1
-    //   787: invokestatic 378	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   787: invokestatic 381	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   790: return
     //   791: invokestatic 90	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   794: ifeq +12 -> 806
     //   797: ldc 92
     //   799: iconst_2
-    //   800: ldc_w 380
+    //   800: ldc_w 383
     //   803: invokestatic 98	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   806: return
     //   807: lconst_0
@@ -751,7 +751,7 @@ public class SingTogetherParser
       localObject3 = (SingTogetherSession)TogetherUtils.a(4, j, (String)localObject2);
       ((TogetherControlManager)localObject4).a(4, j, (String)localObject2, (TogetherSession)localObject3);
     }
-    boolean bool4 = ((SingTogetherSession)localObject3).a();
+    boolean bool4 = ((SingTogetherSession)localObject3).g();
     boolean bool2 = false;
     boolean bool1 = false;
     Object localObject2 = localObject1;
@@ -774,63 +774,63 @@ public class SingTogetherParser
           StringBuilder localStringBuilder = new StringBuilder("handleGetPlayingState seesion=");
           try
           {
-            ((SingTogetherSession)localObject3).h = paramRspLatestPlayingState.enum_aio_state.get();
-            ((SingTogetherSession)localObject3).i = paramRspLatestPlayingState.enum_user_state.get();
+            ((SingTogetherSession)localObject3).p = paramRspLatestPlayingState.enum_aio_state.get();
+            ((SingTogetherSession)localObject3).q = paramRspLatestPlayingState.enum_user_state.get();
             if (!paramRspLatestPlayingState.uint64_create_uin.has()) {
               break label1105;
             }
             paramToServiceMsg = Long.valueOf(paramRspLatestPlayingState.uint64_create_uin.get());
-            ((SingTogetherSession)localObject3).jdField_f_of_type_JavaLangString = String.valueOf(paramToServiceMsg);
-            ((SingTogetherSession)localObject3).jdField_c_of_type_Long = ((aio_media.ResultInfo)localObject4).uint64_svr_time.get();
-            ((SingTogetherSession)localObject3).jdField_d_of_type_Long = paramRspLatestPlayingState.uint64_aio_identification.get();
+            ((SingTogetherSession)localObject3).r = String.valueOf(paramToServiceMsg);
+            ((SingTogetherSession)localObject3).t = ((aio_media.ResultInfo)localObject4).uint64_svr_time.get();
+            ((SingTogetherSession)localObject3).x = paramRspLatestPlayingState.uint64_aio_identification.get();
             localStringBuilder.append(" status=");
-            localStringBuilder.append(((SingTogetherSession)localObject3).h);
+            localStringBuilder.append(((SingTogetherSession)localObject3).p);
             localStringBuilder.append(" userState=");
-            localStringBuilder.append(((SingTogetherSession)localObject3).i);
+            localStringBuilder.append(((SingTogetherSession)localObject3).q);
             localStringBuilder.append(" creator=");
-            localStringBuilder.append(((SingTogetherSession)localObject3).jdField_f_of_type_JavaLangString);
+            localStringBuilder.append(((SingTogetherSession)localObject3).r);
             localStringBuilder.append(" timeStamp=");
-            localStringBuilder.append(((SingTogetherSession)localObject3).jdField_c_of_type_Long);
+            localStringBuilder.append(((SingTogetherSession)localObject3).t);
             if (paramRspLatestPlayingState.msg_ksing_info.has())
             {
-              ((SingTogetherSession)localObject3).jdField_b_of_type_Int = paramRspLatestPlayingState.msg_ksing_info.uint32_type.get();
-              ((SingTogetherSession)localObject3).jdField_a_of_type_Long = paramRspLatestPlayingState.msg_ksing_info.uint64_id.get();
-              ((SingTogetherSession)localObject3).jdField_a_of_type_JavaLangString = paramRspLatestPlayingState.msg_ksing_info.bytes_name.get().toStringUtf8();
-              ((SingTogetherSession)localObject3).jdField_b_of_type_JavaLangString = paramRspLatestPlayingState.msg_ksing_info.bytes_jump.get().toStringUtf8();
-              ((SingTogetherSession)localObject3).jdField_c_of_type_JavaLangString = paramRspLatestPlayingState.msg_ksing_info.bytes_cover.get().toStringUtf8();
-              ((SingTogetherSession)localObject3).jdField_d_of_type_JavaLangString = paramRspLatestPlayingState.msg_ksing_info.bytes_song.get().toStringUtf8();
-              ((SingTogetherSession)localObject3).jdField_b_of_type_Long = paramRspLatestPlayingState.msg_ksing_info.uint64_singer.get();
+              ((SingTogetherSession)localObject3).d = paramRspLatestPlayingState.msg_ksing_info.uint32_type.get();
+              ((SingTogetherSession)localObject3).b = paramRspLatestPlayingState.msg_ksing_info.uint64_id.get();
+              ((SingTogetherSession)localObject3).c = paramRspLatestPlayingState.msg_ksing_info.bytes_name.get().toStringUtf8();
+              ((SingTogetherSession)localObject3).e = paramRspLatestPlayingState.msg_ksing_info.bytes_jump.get().toStringUtf8();
+              ((SingTogetherSession)localObject3).f = paramRspLatestPlayingState.msg_ksing_info.bytes_cover.get().toStringUtf8();
+              ((SingTogetherSession)localObject3).h = paramRspLatestPlayingState.msg_ksing_info.bytes_song.get().toStringUtf8();
+              ((SingTogetherSession)localObject3).g = paramRspLatestPlayingState.msg_ksing_info.uint64_singer.get();
               localStringBuilder.append(" roomType=");
-              localStringBuilder.append(((SingTogetherSession)localObject3).jdField_b_of_type_Int);
+              localStringBuilder.append(((SingTogetherSession)localObject3).d);
               localStringBuilder.append(" roomId=");
-              localStringBuilder.append(((SingTogetherSession)localObject3).jdField_a_of_type_Long);
+              localStringBuilder.append(((SingTogetherSession)localObject3).b);
               localStringBuilder.append(" roomName=");
-              localStringBuilder.append(((SingTogetherSession)localObject3).jdField_a_of_type_JavaLangString);
+              localStringBuilder.append(((SingTogetherSession)localObject3).c);
               localStringBuilder.append(" jumpUrl=");
-              localStringBuilder.append(((SingTogetherSession)localObject3).jdField_b_of_type_JavaLangString);
+              localStringBuilder.append(((SingTogetherSession)localObject3).e);
               localStringBuilder.append(" roomCover=");
-              localStringBuilder.append(((SingTogetherSession)localObject3).jdField_c_of_type_JavaLangString);
+              localStringBuilder.append(((SingTogetherSession)localObject3).f);
               localStringBuilder.append(" songName=");
-              localStringBuilder.append(((SingTogetherSession)localObject3).jdField_d_of_type_JavaLangString);
+              localStringBuilder.append(((SingTogetherSession)localObject3).h);
               localStringBuilder.append(" singerUin=");
-              localStringBuilder.append(((SingTogetherSession)localObject3).jdField_b_of_type_Long);
+              localStringBuilder.append(((SingTogetherSession)localObject3).g);
             }
             if (j == 1)
             {
-              ((SingTogetherSession)localObject3).g = paramRspLatestPlayingState.uint32_joined_num.get();
+              ((SingTogetherSession)localObject3).o = paramRspLatestPlayingState.uint32_joined_num.get();
               localStringBuilder.append(" joinNum=");
-              localStringBuilder.append(((SingTogetherSession)localObject3).g);
+              localStringBuilder.append(((SingTogetherSession)localObject3).o);
             }
             else
             {
               if (paramRspLatestPlayingState.enum_c2c_join_state.has()) {
                 j = paramRspLatestPlayingState.enum_c2c_join_state.get();
               } else {
-                j = ((SingTogetherSession)localObject3).jdField_a_of_type_Int;
+                j = ((SingTogetherSession)localObject3).a;
               }
-              ((SingTogetherSession)localObject3).jdField_a_of_type_Int = j;
+              ((SingTogetherSession)localObject3).a = j;
               localStringBuilder.append(" c2cStatus=");
-              localStringBuilder.append(((SingTogetherSession)localObject3).jdField_a_of_type_Int);
+              localStringBuilder.append(((SingTogetherSession)localObject3).a);
             }
             paramToServiceMsg = (ToServiceMsg)localObject1;
             bool1 = bool3;
@@ -873,16 +873,16 @@ public class SingTogetherParser
       }
       localObject2 = paramToServiceMsg;
       bool2 = bool1;
-      if (!TextUtils.isEmpty(((SingTogetherSession)localObject3).jdField_f_of_type_JavaLangString)) {
-        if (((SingTogetherSession)localObject3).jdField_f_of_type_Int == 2)
+      if (!TextUtils.isEmpty(((SingTogetherSession)localObject3).r)) {
+        if (((SingTogetherSession)localObject3).m == 2)
         {
-          ContactUtils.i(this.a, ((SingTogetherSession)localObject3).jdField_f_of_type_JavaLangString);
+          ContactUtils.j(this.a, ((SingTogetherSession)localObject3).r);
           localObject2 = paramToServiceMsg;
           bool2 = bool1;
         }
         else
         {
-          ContactUtils.b(this.a, ((SingTogetherSession)localObject3).jdField_e_of_type_JavaLangString, ((SingTogetherSession)localObject3).jdField_f_of_type_JavaLangString);
+          ContactUtils.b(this.a, ((SingTogetherSession)localObject3).n, ((SingTogetherSession)localObject3).r);
           bool2 = bool1;
           localObject2 = paramToServiceMsg;
         }
@@ -913,9 +913,9 @@ public class SingTogetherParser
     paramObject = ((TogetherControlManager)this.a.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER)).a(4, 2, String.valueOf(paramObject));
     if ((paramObject instanceof SingTogetherSession))
     {
-      paramObject.h = 3;
-      paramObject.i = 3;
-      TogetherUtils.a(this.a, paramObject.jdField_e_of_type_JavaLangString, false, paramObject.jdField_f_of_type_Int, 16777216);
+      paramObject.p = 3;
+      paramObject.q = 3;
+      TogetherUtils.a(this.a, paramObject.n, false, paramObject.m, 16777216);
       a(true, (SingTogetherSession)paramObject, 1007, "");
     }
   }
@@ -925,9 +925,9 @@ public class SingTogetherParser
     paramString = ((TogetherControlManager)this.a.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER)).a(4, 1, paramString);
     if ((paramString instanceof SingTogetherSession))
     {
-      paramString.h = 3;
-      paramString.i = 3;
-      TogetherUtils.a(this.a, paramString.jdField_e_of_type_JavaLangString, false, paramString.jdField_f_of_type_Int, 16777216);
+      paramString.p = 3;
+      paramString.q = 3;
+      TogetherUtils.a(this.a, paramString.n, false, paramString.m, 16777216);
       a(true, (SingTogetherSession)paramString, 1007, "");
     }
   }
@@ -935,28 +935,28 @@ public class SingTogetherParser
   public void a(boolean paramBoolean, SingTogetherSession paramSingTogetherSession, int paramInt, String paramString)
   {
     TogetherControlManager localTogetherControlManager = (TogetherControlManager)this.a.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER);
-    TogetherControlManager.CacheHolder localCacheHolder = localTogetherControlManager.a(4, paramSingTogetherSession.jdField_f_of_type_Int, paramSingTogetherSession.jdField_e_of_type_JavaLangString, paramInt);
+    TogetherControlManager.CacheHolder localCacheHolder = localTogetherControlManager.b(4, paramSingTogetherSession.m, paramSingTogetherSession.n, paramInt);
     if ((paramBoolean) && (paramInt == 1003))
     {
-      int i = localCacheHolder.jdField_a_of_type_AndroidOsBundle.getInt("action_type");
-      String str = localCacheHolder.jdField_a_of_type_AndroidOsBundle.getString("tips");
-      long l1 = localCacheHolder.jdField_a_of_type_AndroidOsBundle.getLong("seq");
-      long l2 = localCacheHolder.jdField_a_of_type_AndroidOsBundle.getLong("msgSeq");
-      localTogetherControlManager.a(paramSingTogetherSession, i, str, l1, l2, localCacheHolder.jdField_a_of_type_JavaLangObject);
-      localTogetherControlManager.b(paramSingTogetherSession, i, str, l1, l2, localCacheHolder.jdField_a_of_type_JavaLangObject);
+      int i = localCacheHolder.a.getInt("action_type");
+      String str = localCacheHolder.a.getString("tips");
+      long l1 = localCacheHolder.a.getLong("seq");
+      long l2 = localCacheHolder.a.getLong("msgSeq");
+      localTogetherControlManager.a(paramSingTogetherSession, i, str, l1, l2, localCacheHolder.b);
+      localTogetherControlManager.b(paramSingTogetherSession, i, str, l1, l2, localCacheHolder.b);
     }
-    if (paramSingTogetherSession.h == 3) {
-      TogetherUtils.a(this.a, paramSingTogetherSession.jdField_e_of_type_JavaLangString, false, paramSingTogetherSession.jdField_f_of_type_Int, 16777216);
+    if (paramSingTogetherSession.p == 3) {
+      TogetherUtils.a(this.a, paramSingTogetherSession.n, false, paramSingTogetherSession.m, 16777216);
     } else {
-      TogetherUtils.a(this.a, paramSingTogetherSession.jdField_e_of_type_JavaLangString, true, paramSingTogetherSession.jdField_f_of_type_Int, 16777216);
+      TogetherUtils.a(this.a, paramSingTogetherSession.n, true, paramSingTogetherSession.m, 16777216);
     }
     localTogetherControlManager.a(paramBoolean, paramSingTogetherSession, paramInt, paramString);
-    localTogetherControlManager.b(4, paramSingTogetherSession.jdField_f_of_type_Int, paramSingTogetherSession.jdField_e_of_type_JavaLangString, paramInt);
+    localTogetherControlManager.c(4, paramSingTogetherSession.m, paramSingTogetherSession.n, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.singtogether.SingTogetherParser
  * JD-Core Version:    0.7.0.1
  */

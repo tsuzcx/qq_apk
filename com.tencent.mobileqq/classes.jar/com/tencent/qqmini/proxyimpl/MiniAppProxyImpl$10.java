@@ -18,9 +18,9 @@ class MiniAppProxyImpl$10
     if (paramInt1 != 9527) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+    this.a.removeActivityResultListener(this);
     QLog.d("MiniAppProxyImpl", 1, "set isMiniMsgTabShow false");
-    MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl, false);
+    MiniAppProxyImpl.a(this.b, false);
     if (paramInt2 != -1)
     {
       paramIntent = new StringBuilder();
@@ -34,62 +34,62 @@ class MiniAppProxyImpl$10
     default: 
       break;
     case 17: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(18);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(18);
       break;
     case 16: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(17);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(17);
       break;
     case 15: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(16);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(16);
       break;
     case 14: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(15);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(15);
       break;
     case 13: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(14);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(14);
       break;
     case 12: 
       localObject = new Message();
       ((Message)localObject).what = 13;
       ((Message)localObject).setData(paramIntent.getExtras());
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendMessage((Message)localObject);
+      MiniAppProxyImpl.b(this.b).sendMessage((Message)localObject);
       break;
     case 11: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(12);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(12);
       break;
     case 10: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(11);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(11);
       break;
     case 9: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(10);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(10);
       paramIntent = "back_home";
       break;
     case 8: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(9);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(9);
       break;
     case 7: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(8);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(8);
       paramIntent = "share_Moments";
       break;
     case 6: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(7);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(7);
       paramIntent = "share_WX";
       break;
     case 5: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(6);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(6);
       break;
     case 4: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(4);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(4);
       paramIntent = "about";
       break;
     case 3: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(5);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(5);
       break;
     case 2: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(3);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(3);
       break;
     case 1: 
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).sendEmptyMessage(2);
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(2);
       break;
     case 0: 
       paramIntent = "cancel_system";
@@ -99,15 +99,15 @@ class MiniAppProxyImpl$10
       break;
     }
     paramIntent = "";
-    Object localObject = this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl;
+    Object localObject = this.b;
     MiniAppProxyImpl.a((MiniAppProxyImpl)localObject, MiniAppProxyImpl.a((MiniAppProxyImpl)localObject), paramIntent);
-    ActionBridge.UpdateUIActionBridge.updateRedDot(MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl));
+    ActionBridge.UpdateUIActionBridge.updateRedDot(MiniAppProxyImpl.a(this.b));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.10
  * JD-Core Version:    0.7.0.1
  */

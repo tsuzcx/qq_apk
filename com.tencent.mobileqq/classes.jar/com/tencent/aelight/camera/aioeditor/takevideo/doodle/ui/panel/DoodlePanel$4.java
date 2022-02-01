@@ -7,14 +7,16 @@ import com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.DoodleColorAndMo
 class DoodlePanel$4
   extends AnimatorListenerAdapter
 {
+  DoodlePanel$4(DoodlePanel paramDoodlePanel) {}
+  
   public void onAnimationEnd(Animator paramAnimator)
   {
-    DoodlePanel.a(this.a).setVisibility(8);
+    DoodlePanel.b(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.DoodlePanel.4
  * JD-Core Version:    0.7.0.1
  */

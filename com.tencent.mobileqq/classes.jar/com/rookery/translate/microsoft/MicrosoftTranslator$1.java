@@ -20,27 +20,27 @@ class MicrosoftTranslator$1
   {
     try
     {
-      MicrosoftTranslator.a(this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator).jdField_a_of_type_JavaLangString = paramJSONObject.getString("access_token");
-      MicrosoftTranslator.a(this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator).jdField_a_of_type_Long = (paramJSONObject.getLong("expires_in") * 1000L + this.jdField_a_of_type_JavaLangLong.longValue());
-      MicrosoftTranslator.a(this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, MicrosoftTranslator.a(this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback);
+      MicrosoftTranslator.a(this.f).a = paramJSONObject.getString("access_token");
+      MicrosoftTranslator.a(this.f).b = (paramJSONObject.getLong("expires_in") * 1000L + this.a.longValue());
+      MicrosoftTranslator.a(this.f, this.b, this.c, this.d, MicrosoftTranslator.a(this.f).a, this.a, this.e);
       return;
     }
     catch (JSONException paramArrayOfHeader)
     {
-      this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(new TranslateError(paramArrayOfHeader), this.jdField_a_of_type_JavaLangLong);
+      this.e.a(new TranslateError(paramArrayOfHeader), this.a);
     }
   }
   
   public void a(Throwable paramThrowable, String paramString)
   {
-    this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
+    this.e.a(new TranslateError(paramThrowable), this.a);
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
       paramString.append("error:");
       paramString.append(paramThrowable);
       paramString.append("\trequest_time:");
-      paramString.append(this.jdField_a_of_type_JavaLangLong);
+      paramString.append(this.a);
       QLog.e("Translator", 2, paramString.toString());
     }
   }

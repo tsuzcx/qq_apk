@@ -13,28 +13,36 @@ import java.util.Map;
 public class GdtWebReportPlugin
   extends WebViewPlugin
 {
-  private WeakReference<CustomWebView> jdField_a_of_type_JavaLangRefWeakReference;
-  private ArrayList<GdtWebReportInterface> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<GdtWebReportInterface> a = new ArrayList();
+  private WeakReference<CustomWebView> b;
   
   public GdtWebReportPlugin()
   {
     GdtLog.a("GdtWebReportPlugin", " GdtWebReportPlugin ");
     this.mPluginNameSpace = "GdtWebReportPlugin";
-    GdtWebReportNoco localGdtWebReportNoco = new GdtWebReportNoco(this);
+    Object localObject = new GdtWebReportNoco(this);
     GdtWebReportQQ localGdtWebReportQQ = new GdtWebReportQQ(this);
-    GdtLandingPageReport localGdtLandingPageReport = new GdtLandingPageReport(this);
     GdtWebReportAction localGdtWebReportAction = new GdtWebReportAction(this);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localGdtWebReportNoco);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localGdtWebReportQQ);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localGdtLandingPageReport);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localGdtWebReportAction);
+    this.a.add(localObject);
+    this.a.add(localGdtWebReportQQ);
+    this.a.add(localGdtWebReportAction);
+    if (GdtLandingPageConfig.a().b())
+    {
+      localObject = new GdtLandingPageReport(this);
+      this.a.add(localObject);
+    }
   }
   
-  protected Activity a()
+  protected WeakReference<CustomWebView> a()
+  {
+    return this.b;
+  }
+  
+  protected Activity b()
   {
     Activity localActivity1;
     if (this.mRuntime != null) {
-      localActivity1 = this.mRuntime.a();
+      localActivity1 = this.mRuntime.d();
     } else {
       localActivity1 = null;
     }
@@ -43,11 +51,6 @@ public class GdtWebReportPlugin
       localActivity2 = ((BasePluginActivity)BasePluginActivity.class.cast(localActivity1)).getOutActivity();
     }
     return localActivity2;
-  }
-  
-  protected WeakReference<CustomWebView> a()
-  {
-    return this.jdField_a_of_type_JavaLangRefWeakReference;
   }
   
   public void callJs(String paramString)
@@ -69,9 +72,9 @@ public class GdtWebReportPlugin
     localStringBuilder.append(paramLong);
     GdtLog.a("GdtWebReportPlugin", localStringBuilder.toString());
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.a.size())
     {
-      ((GdtWebReportInterface)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramString, paramLong, paramMap);
+      ((GdtWebReportInterface)this.a.get(i)).a(paramString, paramLong, paramMap);
       i += 1;
     }
     return false;
@@ -87,9 +90,9 @@ public class GdtWebReportPlugin
     super.onActivityReady();
     GdtLog.a("GdtWebReportPlugin", " onActivityReady ");
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.a.size())
     {
-      ((GdtWebReportInterface)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
+      ((GdtWebReportInterface)this.a.get(i)).b();
       i += 1;
     }
   }
@@ -105,9 +108,9 @@ public class GdtWebReportPlugin
     super.onDestroy();
     GdtLog.a("GdtWebReportPlugin", " onDestroy webviewGetPerformanceResult");
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.a.size())
     {
-      ((GdtWebReportInterface)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c();
+      ((GdtWebReportInterface)this.a.get(i)).c();
       i += 1;
     }
   }
@@ -115,19 +118,19 @@ public class GdtWebReportPlugin
   protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCustomWebView);
+    this.b = new WeakReference(paramCustomWebView);
     GdtLog.a("GdtWebReportPlugin", " onWebViewCreated ");
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.a.size())
     {
-      ((GdtWebReportInterface)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b(paramCustomWebView);
+      ((GdtWebReportInterface)this.a.get(i)).b(paramCustomWebView);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.web.GdtWebReportPlugin
  * JD-Core Version:    0.7.0.1
  */

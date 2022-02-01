@@ -11,13 +11,13 @@ class UiApiPlugin$8
   
   public void run()
   {
-    this.this$0.i = this.a.optString("callback");
+    this.this$0.l = this.a.optString("callback");
     ScreenShotUtil.a(this.this$0.mRuntime.a(), new UiApiPlugin.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.8
  * JD-Core Version:    0.7.0.1
  */

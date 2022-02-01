@@ -15,7 +15,7 @@ class AvAddFriendService$2
   {
     if (QLog.isColorLevel())
     {
-      String str = AvAddFriendService.jdField_a_of_type_JavaLangString;
+      String str = AvAddFriendService.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onGetAutoInfo  isSuccess= ");
       localStringBuilder.append(paramBoolean);
@@ -33,7 +33,7 @@ class AvAddFriendService$2
   {
     if (QLog.isColorLevel())
     {
-      String str = AvAddFriendService.jdField_a_of_type_JavaLangString;
+      String str = AvAddFriendService.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onQueryUinSafetyFlag isSuccess=");
       localStringBuilder.append(paramBoolean);
@@ -57,7 +57,7 @@ class AvAddFriendService$2
     int i = paramBundle.getInt("friend_setting");
     if (QLog.isColorLevel())
     {
-      paramBundle = AvAddFriendService.jdField_a_of_type_JavaLangString;
+      paramBundle = AvAddFriendService.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onUpdateAddFriend 请求加好友回调  isSuccess= ");
       localStringBuilder.append(paramBoolean1);
@@ -69,8 +69,8 @@ class AvAddFriendService$2
       localStringBuilder.append(i);
       QLog.d(paramBundle, 2, localStringBuilder.toString());
     }
-    if ((paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equals(paramString)) && (i == 0)) {
-      this.a.jdField_a_of_type_Boolean = true;
+    if ((paramBoolean2) && (this.a.c.getAccount().equals(paramString)) && (i == 0)) {
+      this.a.a = true;
     }
   }
   
@@ -80,7 +80,7 @@ class AvAddFriendService$2
     int i = paramBundle.getInt("friend_setting");
     if (QLog.isColorLevel())
     {
-      String str2 = AvAddFriendService.jdField_a_of_type_JavaLangString;
+      String str2 = AvAddFriendService.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onUpdateAddFriendSetting  isSuccess= ");
       localStringBuilder.append(paramBoolean);
@@ -90,22 +90,22 @@ class AvAddFriendService$2
       localStringBuilder.append(i);
       QLog.d(str2, 2, localStringBuilder.toString());
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equals(str1)) && (i == 0))
+    if ((this.a.c.getAccount().equals(str1)) && (i == 0))
     {
-      this.a.jdField_a_of_type_Boolean = true;
+      this.a.a = true;
       return;
     }
-    ((IFriendHandlerService)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFriendHandlerService.class)).requestAddFriend(str1, null, i, (byte)0, "", this.a.jdField_a_of_type_Int, 0, true, null, true, "", "");
+    ((IFriendHandlerService)this.a.c.getRuntimeService(IFriendHandlerService.class)).requestAddFriend(str1, null, i, (byte)0, "", this.a.d, 0, true, null, true, "", "");
     if (paramBoolean)
     {
       if (this.a.a(str1) == 2)
       {
-        this.a.c(str1);
+        this.a.d(str1);
       }
       else
       {
         AvAddFriendService.a(this.a, str1, 1);
-        this.a.a(str1);
+        this.a.b(str1);
       }
       paramBundle.getStringArrayList("user_question");
       paramBundle.getBoolean("contact_bothway");

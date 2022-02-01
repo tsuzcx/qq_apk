@@ -14,18 +14,18 @@ class KandianAdPandentMask$KandianAdPandentView$1
   {
     super.a(paramIVideoPlayerWrapper);
     QLog.d("ReadInJoySuperMaskAd", 2, "onCompletion");
-    KandianAdPandentMask.KandianAdPandentView.a(this.a).sendEmptyMessage(2);
+    KandianAdPandentMask.KandianAdPandentView.b(this.a).sendEmptyMessage(2);
   }
   
   public void a(IVideoPlayerWrapper paramIVideoPlayerWrapper, Object paramObject)
   {
     QLog.d("ReadInJoySuperMaskAd", 2, "onVideoPrepared");
-    KandianAdPandentMask.KandianAdPandentView.a(this.a).d();
+    KandianAdPandentMask.KandianAdPandentView.a(this.a).u();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.KandianAdPandentMask.KandianAdPandentView.1
  * JD-Core Version:    0.7.0.1
  */

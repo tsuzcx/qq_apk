@@ -30,7 +30,7 @@ class QueryAccount$2
       ((StringBuilder)localObject1).append(paramInt);
       QLog.d("queryMobile", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.isFinishing()) {
+    if (this.a.h.isFinishing()) {
       return;
     }
     if (paramArrayOfByte != null) {
@@ -45,7 +45,7 @@ class QueryAccount$2
     } else {
       paramArrayOfByte = null;
     }
-    AppRuntime localAppRuntime = this.a.jdField_a_of_type_MqqAppAppRuntime;
+    AppRuntime localAppRuntime = this.a.g;
     if (paramBoolean) {
       localObject1 = Integer.toString(paramInt);
     } else {
@@ -60,12 +60,12 @@ class QueryAccount$2
     ReportController.a(localAppRuntime, "new_reg", "reg_page", "next_clk", "", 1, "", (String)localObject1, "", (String)localObject2, "", "", "", "", "");
     if (!paramBoolean)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
+      this.a.h.closeDialog();
       localObject1 = paramArrayOfByte;
       if (TextUtils.isEmpty(paramArrayOfByte)) {
-        localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getString(2131716609);
+        localObject1 = this.a.h.getString(2131914072);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast((String)localObject1, 0);
+      this.a.h.notifyToast((String)localObject1, 0);
       return;
     }
     if (!TextUtils.isEmpty(paramArrayOfByte))
@@ -90,17 +90,17 @@ class QueryAccount$2
           {
             if (paramInt != 5)
             {
-              this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
+              this.a.h.closeDialog();
               localObject1 = paramArrayOfByte;
               if (TextUtils.isEmpty(paramArrayOfByte)) {
-                localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getResources().getString(2131716609);
+                localObject1 = this.a.h.getResources().getString(2131914072);
               }
-              this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast((String)localObject1, 0);
+              this.a.h.notifyToast((String)localObject1, 0);
               return;
             }
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mIsPhoneNumRegistered = true;
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mHasPwd = false;
+            this.a.h.closeDialog();
+            this.a.h.mIsPhoneNumRegistered = true;
+            this.a.h.mHasPwd = false;
             this.a.a(null);
             return;
           }
@@ -110,14 +110,14 @@ class QueryAccount$2
         QueryAccount.a(this.a);
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mIsPhoneNumRegistered = true;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mHasPwd = true;
+      this.a.h.closeDialog();
+      this.a.h.mIsPhoneNumRegistered = true;
+      this.a.h.mHasPwd = true;
       this.a.a(null);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mIsPhoneNumRegistered = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mHasPwd = true;
+    this.a.h.mIsPhoneNumRegistered = false;
+    this.a.h.mHasPwd = true;
     this.a.a(null);
   }
   
@@ -164,11 +164,11 @@ class QueryAccount$2
         localObject1 = localObject3;
       }
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.isFinishing()) {
+    if (this.a.h.isFinishing()) {
       return;
     }
     if ((paramInt != 3) && (paramInt != 59)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
+      this.a.h.closeDialog();
     }
     if (paramArrayOfByte2 != null) {
       try
@@ -184,7 +184,7 @@ class QueryAccount$2
         paramArrayOfByte2.printStackTrace();
       }
     }
-    paramArrayOfByte2 = this.a.jdField_a_of_type_MqqAppAppRuntime;
+    paramArrayOfByte2 = this.a.g;
     int i;
     if (TextUtils.isEmpty(paramString)) {
       i = 2;
@@ -198,7 +198,7 @@ class QueryAccount$2
       j = paramInt;
     }
     ReportController.a(paramArrayOfByte2, "dc00898", "", "", "0X8009844", "0X8009844", i, j, "", "", "", "");
-    localObject3 = this.a.jdField_a_of_type_MqqAppAppRuntime;
+    localObject3 = this.a.g;
     if (paramBoolean) {
       paramArrayOfByte2 = Integer.toString(paramInt);
     } else {
@@ -220,9 +220,9 @@ class QueryAccount$2
     {
       paramArrayOfByte1 = (byte[])localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        paramArrayOfByte1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getString(2131716609);
+        paramArrayOfByte1 = this.a.h.getString(2131914072);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(paramArrayOfByte1, 0);
+      this.a.h.notifyToast(paramArrayOfByte1, 0);
       return;
     }
     if (paramInt != 0)
@@ -243,27 +243,27 @@ class QueryAccount$2
                   {
                     if (paramInt != 59)
                     {
-                      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(2131716609, 0);
+                      this.a.h.notifyToast(2131914072, 0);
                       return;
                     }
-                    QueryAccount.c(this.a, (String)localObject1);
+                    QueryAccount.d(this.a, (String)localObject1);
                     return;
                   }
-                  RegisterOverseaHelper.a().a(this.a.jdField_a_of_type_MqqAppAppRuntime, this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, paramArrayOfByte1);
+                  RegisterOverseaHelper.a().a(this.a.g, this.a.h, paramArrayOfByte1);
                   return;
                 }
                 this.a.b((String)localObject1);
                 return;
               }
-              paramArrayOfByte1 = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, RegisterQQNumberActivity.class);
-              paramArrayOfByte1.putExtra("phonenum", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum);
-              paramArrayOfByte1.putExtra("invite_code", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.inviteCode);
-              paramArrayOfByte1.putExtra("key", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode);
-              paramArrayOfByte1.putExtra("key_register_is_phone_num_registered", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mIsPhoneNumRegistered);
-              paramArrayOfByte1.putExtra("key_register_has_pwd", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mHasPwd);
+              paramArrayOfByte1 = new Intent(this.a.h, RegisterQQNumberActivity.class);
+              paramArrayOfByte1.putExtra("phonenum", this.a.h.phoneNum);
+              paramArrayOfByte1.putExtra("invite_code", this.a.h.inviteCode);
+              paramArrayOfByte1.putExtra("key", this.a.h.countryCode);
+              paramArrayOfByte1.putExtra("key_register_is_phone_num_registered", this.a.h.mIsPhoneNumRegistered);
+              paramArrayOfByte1.putExtra("key_register_has_pwd", this.a.h.mHasPwd);
               paramArrayOfByte1.putExtra("key_register_result", false);
               this.a.b(paramArrayOfByte1);
-              this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(paramArrayOfByte1);
+              this.a.h.startActivity(paramArrayOfByte1);
               return;
             }
             if (paramArrayOfByte1 != null) {
@@ -272,7 +272,7 @@ class QueryAccount$2
                 paramArrayOfByte1 = new String(paramArrayOfByte1, "utf-8");
                 if (!TextUtils.isEmpty(paramArrayOfByte1))
                 {
-                  this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.handler.post(new QueryAccount.2.1(this, paramArrayOfByte1));
+                  this.a.h.handler.post(new QueryAccount.2.1(this, paramArrayOfByte1));
                   return;
                 }
                 if (!QLog.isColorLevel()) {
@@ -292,21 +292,21 @@ class QueryAccount$2
           {
             if (TextUtils.isEmpty((CharSequence)localObject1))
             {
-              this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(2131716609, 0);
+              this.a.h.notifyToast(2131914072, 0);
               return;
             }
-            QueryAccount.b(this.a, (String)localObject1);
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
+            QueryAccount.c(this.a, (String)localObject1);
+            this.a.h.closeDialog();
           }
         }
         else
         {
-          if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+          if (TextUtils.isEmpty((CharSequence)localObject1))
           {
-            QueryAccount.a(this.a, (String)localObject1);
+            this.a.h.notifyToast(2131914072, 0);
             return;
           }
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(2131716609, 0);
+          QueryAccount.b(this.a, (String)localObject1);
         }
       }
       else {
@@ -320,7 +320,7 @@ class QueryAccount$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.register.QueryAccount.2
  * JD-Core Version:    0.7.0.1
  */

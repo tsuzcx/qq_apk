@@ -16,12 +16,12 @@ class ReadInJoyDailyXListView$1
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.a.c);
+        localStringBuilder.append(this.a.f);
         localStringBuilder.append(" mNoMoreData : ");
-        localStringBuilder.append(this.a.b);
+        localStringBuilder.append(this.a.j);
         QLog.d("ReadInJoyDailyXListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", localStringBuilder.toString() });
       }
-      if ((this.a.c == 0) && ((!ReadinjoyReportUtils.a(ReadInJoyDailyXListView.a(this.a))) || (!this.a.b)))
+      if ((this.a.f == 0) && ((!ReadinjoyReportUtils.d(ReadInJoyDailyXListView.b(this.a))) || (!this.a.j)))
       {
         this.a.a(4);
         QLog.d("ReadInJoyDailyXListView", 2, "preloadOptimize switch ON, loadingMore()");
@@ -31,7 +31,7 @@ class ReadInJoyDailyXListView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailyXListView.1
  * JD-Core Version:    0.7.0.1
  */

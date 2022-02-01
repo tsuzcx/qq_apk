@@ -19,7 +19,7 @@ public class ArFeatureSwepNativeSoLoader
   {
     try
     {
-      int i = ArNativeSoLoaderBase.a("arfeature", "v8.0.0", ArNativeSoLoaderBase.b("arfeature", "v8.0.0", "arfeature"), paramString);
+      int i = ArNativeSoLoaderBase.b("arfeature", "v8.0.0", ArNativeSoLoaderBase.b("arfeature", "v8.0.0", "arfeature"), paramString);
       return i;
     }
     finally
@@ -71,7 +71,7 @@ public class ArFeatureSwepNativeSoLoader
     }
     try
     {
-      paramString2 = a(FileUtils.readFileToString((File)localObject1));
+      paramString2 = b(FileUtils.readFileToString((File)localObject1));
       if (paramString2.size() > 0)
       {
         paramString2 = paramString2.entrySet().iterator();
@@ -180,7 +180,17 @@ public class ArFeatureSwepNativeSoLoader
     return -6;
   }
   
-  private static HashMap<String, String> a(String paramString)
+  public static boolean a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ArNativeSoLoaderBase.a("arfeature", "v8.0.0", ArNativeSoLoaderBase.b("arfeature", "v8.0.0", "arfeature")));
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("libARFeature");
+    localStringBuilder.append(".so");
+    return new File(localStringBuilder.toString()).exists();
+  }
+  
+  private static HashMap<String, String> b(String paramString)
   {
     HashMap localHashMap = new HashMap();
     int i;
@@ -221,20 +231,10 @@ public class ArFeatureSwepNativeSoLoader
       }
     }
   }
-  
-  public static boolean a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ArNativeSoLoaderBase.a("arfeature", "v8.0.0", ArNativeSoLoaderBase.b("arfeature", "v8.0.0", "arfeature")));
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("libARFeature");
-    localStringBuilder.append(".so");
-    return new File(localStringBuilder.toString()).exists();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArFeatureSwepNativeSoLoader
  * JD-Core Version:    0.7.0.1
  */

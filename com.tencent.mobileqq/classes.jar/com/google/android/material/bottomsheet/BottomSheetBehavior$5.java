@@ -13,13 +13,13 @@ class BottomSheetBehavior$5
   
   public boolean perform(@NonNull View paramView, @Nullable AccessibilityViewCommand.CommandArguments paramCommandArguments)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior.d(this.jdField_a_of_type_Int);
+    this.b.d(this.a);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomsheet.BottomSheetBehavior.5
  * JD-Core Version:    0.7.0.1
  */

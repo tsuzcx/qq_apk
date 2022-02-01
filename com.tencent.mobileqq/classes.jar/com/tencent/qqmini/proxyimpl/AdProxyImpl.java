@@ -68,16 +68,17 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 public class AdProxyImpl
   extends AdProxy
 {
-  private static HashMap<String, AdProxyImpl.CallbackData> jdField_a_of_type_JavaUtilHashMap;
-  private GdtAppReceiver jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
-  private RewardedBrowsingCallbackReceiver jdField_a_of_type_ComTencentGdtadApiMotivebrowsingRewardedBrowsingCallbackReceiver;
+  private static HashMap<String, AdProxyImpl.CallbackData> c;
+  private GdtAppReceiver a;
+  private RewardedBrowsingCallbackReceiver b;
+  private AdProxyImpl.SDKRewardedVideoAdView d = null;
   
   public AdProxyImpl()
   {
     if (QLog.isColorLevel()) {
       QLog.d("AdProxyImpl", 2, "AdProxyImpl constructor");
     }
-    a();
+    b();
   }
   
   private MiniAppAd.StGetAdReq a(Bundle paramBundle)
@@ -121,76 +122,27 @@ public class AdProxyImpl
   {
     if ((paramActivity != null) && (paramAdInfo != null))
     {
-      if (this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver == null)
+      if (this.a == null)
       {
-        this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-        this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(paramActivity);
+        this.a = new GdtAppReceiver();
+        this.a.register(paramActivity);
       }
       GdtHandler.Params localParams = new GdtHandler.Params();
-      localParams.c = 11;
-      localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-      localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramAdInfo);
-      localParams.jdField_a_of_type_Boolean = true;
-      localParams.jdField_b_of_type_Boolean = true;
-      localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
+      localParams.q = 11;
+      localParams.r = new WeakReference(paramActivity);
+      localParams.a = new GdtAd(paramAdInfo);
+      localParams.b = true;
+      localParams.e = true;
+      localParams.s = new WeakReference(this.a);
       paramActivity = new Bundle();
       paramActivity.putString("big_brother_ref_source_key", "biz_src_miniapp");
-      localParams.jdField_a_of_type_AndroidOsBundle = paramActivity;
+      localParams.p = paramActivity;
       if (paramAdInfo.report_info != null) {
-        localParams.jdField_a_of_type_OrgJsonJSONObject = MiniAdAntiSpamReportUtil.a(paramIMiniAppContext, paramAdInfo.report_info.click_url.get(), paramString);
+        localParams.o = MiniAdAntiSpamReportUtil.b(paramIMiniAppContext, paramAdInfo.report_info.click_url.get(), paramString);
       }
       return localParams;
     }
     return null;
-  }
-  
-  private String a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      int i = paramString.optInt("ret", -1);
-      if ((i != 0) && (i == 102006))
-      {
-        QLog.e("AdProxyImpl", 1, "mockAdJson failed ret == 102006");
-        return null;
-      }
-      paramString = ((JSONObject)((JSONObject)paramString.getJSONArray("pos_ads_info").get(0)).getJSONArray("ads_info").get(0)).toString();
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("AdProxyImpl", 1, "mockAdJson failed e:", paramString);
-    }
-    return null;
-  }
-  
-  private qq_ad_get.QQAdGetRsp.AdInfo a(String paramString)
-  {
-    try
-    {
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
-      return localAdInfo;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("parseJson2AdInfo error");
-      localStringBuilder.append(paramString);
-      QLog.i("AdProxyImpl", 2, localStringBuilder.toString(), localException);
-    }
-    return null;
-  }
-  
-  private void a()
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("AD_PROXY_ACTION_MOTIVE_BROWSING_END");
-    if (QLog.isColorLevel()) {
-      QLog.d("AdProxyImpl", 2, "onCreate registerReceiver mRewardedBrowsingCallbackReceiver");
-    }
-    this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingRewardedBrowsingCallbackReceiver = new RewardedBrowsingCallbackReceiver(null, this);
-    BaseApplicationImpl.getApplication().registerReceiver(this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingRewardedBrowsingCallbackReceiver, localIntentFilter);
   }
   
   private void a(IMiniAppContext paramIMiniAppContext, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, String paramString)
@@ -262,12 +214,61 @@ public class AdProxyImpl
     }
   }
   
+  private qq_ad_get.QQAdGetRsp.AdInfo b(String paramString)
+  {
+    try
+    {
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
+      return localAdInfo;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseJson2AdInfo error");
+      localStringBuilder.append(paramString);
+      QLog.i("AdProxyImpl", 2, localStringBuilder.toString(), localException);
+    }
+    return null;
+  }
+  
+  private void b()
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("AD_PROXY_ACTION_MOTIVE_BROWSING_END");
+    if (QLog.isColorLevel()) {
+      QLog.d("AdProxyImpl", 2, "onCreate registerReceiver mRewardedBrowsingCallbackReceiver");
+    }
+    this.b = new RewardedBrowsingCallbackReceiver(null, this);
+    BaseApplicationImpl.getApplication().registerReceiver(this.b, localIntentFilter);
+  }
+  
+  private JSONArray c(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      int i = paramString.optInt("ret", -1);
+      if ((i != 0) && (i == 102006))
+      {
+        QLog.e("AdProxyImpl", 1, "mockAdJson failed ret == 102006");
+        return null;
+      }
+      paramString = ((JSONObject)paramString.getJSONArray("pos_ads_info").get(0)).getJSONArray("ads_info");
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("AdProxyImpl", 1, "mockAdJson failed e:", paramString);
+    }
+    return null;
+  }
+  
   public void a(Intent paramIntent)
   {
-    if ((paramIntent != null) && (jdField_a_of_type_JavaUtilHashMap != null))
+    if ((paramIntent != null) && (c != null))
     {
       String str = paramIntent.getStringExtra("KEY_MOTIVE_BROWSING");
-      Object localObject = (AdProxyImpl.CallbackData)jdField_a_of_type_JavaUtilHashMap.get(str);
+      Object localObject = (AdProxyImpl.CallbackData)c.get(str);
       if (localObject != null)
       {
         localObject = AdProxyImpl.CallbackData.a((AdProxyImpl.CallbackData)localObject);
@@ -277,7 +278,7 @@ public class AdProxyImpl
         localStringBuilder.append(", data =");
         localStringBuilder.append(localObject);
         QLog.i("AdProxyImpl", 1, localStringBuilder.toString());
-        jdField_a_of_type_JavaUtilHashMap.remove(str);
+        c.remove(str);
         if (localObject != null) {
           ((AdProxyImpl.SDKRewardedVideoAdView)localObject).a(-1, paramIntent.getExtras());
         }
@@ -307,7 +308,7 @@ public class AdProxyImpl
         paramString1 = localJSONObject1;
         paramContext = (Context)localObject1;
         if (!((JSONObject)localObject3).has("data")) {
-          break label597;
+          break label601;
         }
         JSONObject localJSONObject2 = ((JSONObject)localObject3).optJSONObject("data");
         if ((localJSONObject2 != null) && ((localJSONObject2.has("ads_info")) || (localJSONObject2.has("antiSpamParamsForClick")) || (localJSONObject2.has("antiSpamParams"))))
@@ -325,7 +326,7 @@ public class AdProxyImpl
           paramString1 = (String)localObject2;
           paramContext = (Context)localObject3;
           if (!localJSONObject2.has("appAutoDownload")) {
-            break label597;
+            break label601;
           }
           bool = localJSONObject2.getBoolean("appAutoDownload");
           paramString2 = (String)localObject1;
@@ -338,20 +339,20 @@ public class AdProxyImpl
           paramString1 = localJSONObject1;
           paramContext = (Context)localObject1;
           if (localJSONObject2 == null) {
-            break label597;
+            break label601;
           }
           paramString2 = (String)localObject2;
           paramString1 = localJSONObject1;
           paramContext = (Context)localObject1;
           if (!localJSONObject2.has("data")) {
-            break label597;
+            break label601;
           }
           localObject3 = localJSONObject2.optJSONObject("data");
           paramString2 = (String)localObject2;
           paramString1 = localJSONObject1;
           paramContext = (Context)localObject1;
           if (localObject3 == null) {
-            break label597;
+            break label601;
           }
           if (((JSONObject)localObject3).has("ads_info")) {
             localObject1 = ((JSONObject)localObject3).optString("ads_info");
@@ -366,7 +367,7 @@ public class AdProxyImpl
           paramString1 = localJSONObject1;
           paramContext = (Context)localObject1;
           if (!((JSONObject)localObject3).has("appAutoDownload")) {
-            break label597;
+            break label601;
           }
           bool = localJSONObject2.getBoolean("appAutoDownload");
           paramString2 = (String)localObject2;
@@ -379,23 +380,23 @@ public class AdProxyImpl
         QLog.i("AdProxyImpl", 1, ((StringBuilder)localObject1).toString());
         paramContext = new JSONObject(paramContext);
         localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramContext));
-        if (this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver == null)
+        if (this.a == null)
         {
-          this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-          this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(localActivity);
+          this.a = new GdtAppReceiver();
+          this.a.register(localActivity);
         }
         paramContext = new GdtHandler.Params();
-        paramContext.c = 11;
-        paramContext.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localActivity);
-        paramContext.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
-        paramContext.jdField_a_of_type_Boolean = true;
-        paramContext.jdField_b_of_type_Boolean = bool;
-        paramContext.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
+        paramContext.q = 11;
+        paramContext.r = new WeakReference(localActivity);
+        paramContext.a = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
+        paramContext.b = true;
+        paramContext.e = bool;
+        paramContext.s = new WeakReference(this.a);
         localObject1 = new Bundle();
         ((Bundle)localObject1).putString("big_brother_ref_source_key", "biz_src_miniappD");
-        paramContext.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject1);
-        paramContext.jdField_a_of_type_OrgJsonJSONObject = paramString2;
-        paramContext.jdField_a_of_type_JavaLangString = paramString1.toString();
+        paramContext.p = ((Bundle)localObject1);
+        paramContext.o = paramString2;
+        paramContext.n = paramString1.toString();
         GdtHandler.a(paramContext);
         return true;
       }
@@ -404,7 +405,7 @@ public class AdProxyImpl
         return false;
       }
       return false;
-      label597:
+      label601:
       boolean bool = false;
     }
   }
@@ -456,25 +457,26 @@ public class AdProxyImpl
   
   public void destroy(Activity paramActivity)
   {
-    GdtAppReceiver localGdtAppReceiver = this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
+    GdtAppReceiver localGdtAppReceiver = this.a;
     if (localGdtAppReceiver != null) {}
     try
     {
       localGdtAppReceiver.unregister(paramActivity);
       label14:
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = null;
-      if (this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingRewardedBrowsingCallbackReceiver != null)
+      this.a = null;
+      if (this.b != null)
       {
         try
         {
-          BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingRewardedBrowsingCallbackReceiver);
+          BaseApplicationImpl.getApplication().unregisterReceiver(this.b);
         }
         catch (Throwable paramActivity)
         {
           QLog.e("AdProxyImpl", 1, "unregisterReceiver exception.", paramActivity);
         }
-        this.jdField_a_of_type_ComTencentGdtadApiMotivebrowsingRewardedBrowsingCallbackReceiver = null;
+        this.b = null;
       }
+      this.d = null;
       return;
     }
     catch (Throwable paramActivity)
@@ -520,6 +522,33 @@ public class AdProxyImpl
         return;
       }
       ThreadPools.getNetworkIOThreadPool().execute(new AdProxyImpl.6(this, paramString2, paramString3));
+    }
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onActivityResult] requestCode=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" resultCode=");
+      localStringBuilder.append(paramInt2);
+      QLog.d("AdProxyImpl", 2, localStringBuilder.toString());
+    }
+    if ((paramInt1 == 4760) && (this.d != null))
+    {
+      if ((paramIntent != null) && (paramIntent.getExtras() != null))
+      {
+        paramIntent = paramIntent.getExtras();
+      }
+      else
+      {
+        paramIntent = new Bundle();
+        QLog.e("AdProxyImpl", 1, "[onActivityResult] resultData is empty!");
+      }
+      this.d.a(paramInt2, paramIntent);
+      this.d = null;
     }
   }
   
@@ -597,7 +626,7 @@ public class AdProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl
  * JD-Core Version:    0.7.0.1
  */

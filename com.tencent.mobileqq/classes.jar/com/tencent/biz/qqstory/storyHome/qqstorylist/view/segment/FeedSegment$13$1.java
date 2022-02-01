@@ -30,19 +30,19 @@ class FeedSegment$13$1
         if (paramInt == 0)
         {
           QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, dislike success");
-          paramArrayOfByte = (HotRecommendHomeFeed)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.a.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
+          paramArrayOfByte = (HotRecommendHomeFeed)this.a.e.b.a(this.a.d.feedId);
           if (paramArrayOfByte != null) {
-            paramArrayOfByte.a(this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+            paramArrayOfByte.a(this.a.c);
           }
           if ((paramArrayOfByte != null) && (paramArrayOfByte.a().isEmpty()))
           {
-            this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.a.a().remove(paramArrayOfByte);
-            paramArrayOfByte = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId;
+            this.a.e.b.i().remove(paramArrayOfByte);
+            paramArrayOfByte = this.a.d.feedId;
             Bosses.get().postJob(new FeedSegment.13.1.1(this, "Q.qqstory.home:FeedSegment", paramArrayOfByte));
-            FeedSegment.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment);
+            FeedSegment.p(this.a.e);
             return;
           }
-          FeedSegment.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
+          FeedSegment.a(this.a.e, this.a.d.feedId);
           return;
         }
         paramArrayOfByte = new StringBuilder();

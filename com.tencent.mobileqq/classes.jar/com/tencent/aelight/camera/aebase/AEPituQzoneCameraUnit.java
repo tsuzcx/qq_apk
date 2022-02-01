@@ -52,58 +52,106 @@ import mqq.os.MqqHandler;
 public class AEPituQzoneCameraUnit
   extends AEPituCameraUnit
 {
-  public static long a = -1L;
-  private static final String c = "AEPituQzoneCameraUnit";
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private FlowComponentInterface jdField_a_of_type_ComTencentAelightCameraStructEditorFlowComponentInterface = null;
-  private QzoneVerticalVideoTopicInfo jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
-  public long b;
-  public String b;
-  private String d;
-  public boolean d;
-  private int jdField_e_of_type_Int = 10001;
-  private String jdField_e_of_type_JavaLangString;
-  private int jdField_f_of_type_Int = -1;
-  private String jdField_f_of_type_JavaLangString;
-  private int jdField_g_of_type_Int;
-  private String jdField_g_of_type_JavaLangString;
-  private int jdField_h_of_type_Int;
-  private String jdField_h_of_type_JavaLangString;
-  private boolean jdField_h_of_type_Boolean;
-  private int jdField_i_of_type_Int = 0;
-  private boolean jdField_i_of_type_Boolean;
-  private boolean j;
-  private boolean k;
+  public static long F = -1L;
+  private static final String ap = "AEPituQzoneCameraUnit";
+  public boolean E = false;
+  public long G = System.currentTimeMillis();
+  public String H;
+  private boolean aA;
+  private boolean aB;
+  private QzoneVerticalVideoTopicInfo aC;
+  private String aD;
+  private String aE;
+  private int aF = 0;
+  private FlowComponentInterface aG = null;
+  private int aq = 10001;
+  private Bundle ar;
+  private String as;
+  private int at = -1;
+  private int au;
+  private String av;
+  private int aw;
+  private String ax;
+  private boolean ay;
+  private boolean az;
   
   public AEPituQzoneCameraUnit(IQIMCameraContainer paramIQIMCameraContainer, ICameraEntrance paramICameraEntrance)
   {
     super(paramIQIMCameraContainer, paramICameraEntrance);
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
     paramIQIMCameraContainer = new StringBuilder();
     paramIQIMCameraContainer.append(BaseApplicationImpl.getContext().getFilesDir().getPath());
     paramIQIMCameraContainer.append("/Android/data/com.tencent.mobileqq/qq/video/Source/");
-    paramIQIMCameraContainer.append(this.jdField_b_of_type_Long);
-    this.jdField_b_of_type_JavaLangString = paramIQIMCameraContainer.toString();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingCaptureEntranceParams = new CaptureEntranceParams(10001, 122, 3);
-    this.jdField_b_of_type_Int = 12;
+    paramIQIMCameraContainer.append(this.G);
+    this.H = paramIQIMCameraContainer.toString();
+    this.r = new CaptureEntranceParams(10001, 122, 3);
+    this.y = 12;
   }
   
-  private void a(int paramInt)
+  private int N()
   {
-    if (paramInt == 0) {
+    int j = this.ar.getInt("entrance_type", 99);
+    int i = j;
+    if (j == 100)
+    {
+      i = 0;
+      SessionInfo localSessionInfo = (SessionInfo)this.ar.getParcelable("PhotoConst.SEND_SESSION_INFO");
+      if (localSessionInfo != null) {
+        i = localSessionInfo.a;
+      }
+      i = AIOShortVideoUtil.a(i);
+    }
+    return i;
+  }
+  
+  private void O()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.H);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("videoThumb.jpg");
+    localObject = ((StringBuilder)localObject).toString();
+    try
+    {
+      FileUtils.createDirectory(this.H);
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(ap, 2, "createDirectory error", localException);
+      }
+    }
+    MediaUtil.a(this.o.videoMp4FilePath, (String)localObject);
+    if (this.q == null) {
+      this.q = new LocalMediaInfo();
+    }
+    this.q.thumbnailPath = ((String)localObject);
+  }
+  
+  private void P()
+  {
+    try
+    {
+      FileUtils.deleteDirectory(this.H);
       return;
     }
-    if (paramInt == -1)
+    catch (Exception localException)
     {
-      QLog.i(c, 2, "REQ_PREVIEW_EDIT_GIF_ACTIVITY result ok");
-      a().finish();
+      if (QLog.isColorLevel()) {
+        QLog.i(ap, 2, "Delete file error", localException);
+      }
+    }
+  }
+  
+  private void Q()
+  {
+    if ((this.o != null) && (this.q != null)) {
+      a(this.o.audioDataFilePath, 0, this.o.videoMp4FilePath, this.q.thumbnailPath, null, (int)this.q.mDuration, this.aG, null, -1, null, false, this.at, this.au, this.av, this.aw, this.ax, false, false, false, false);
     }
   }
   
   private void a(int paramInt, Intent paramIntent)
   {
-    if (this.jdField_i_of_type_Int == 3)
+    if (this.aF == 3)
     {
       super.a(1012, paramInt, paramIntent);
       return;
@@ -125,27 +173,27 @@ public class AEPituQzoneCameraUnit
         if (localArrayList == null) {
           localObject2 = new ArrayList();
         }
-        int m = paramIntent.getIntExtra("key_font_id", -1);
-        this.jdField_g_of_type_Int = paramIntent.getIntExtra("key_font_format_type", 0);
-        this.jdField_e_of_type_JavaLangString = paramIntent.getStringExtra("key_font_url");
-        this.jdField_h_of_type_Int = paramIntent.getIntExtra("key_super_font_id", -1);
-        this.jdField_f_of_type_JavaLangString = paramIntent.getStringExtra("key_super_font_info");
+        int i = paramIntent.getIntExtra("key_font_id", -1);
+        this.au = paramIntent.getIntExtra("key_font_format_type", 0);
+        this.av = paramIntent.getStringExtra("key_font_url");
+        this.aw = paramIntent.getIntExtra("key_super_font_id", -1);
+        this.ax = paramIntent.getStringExtra("key_super_font_info");
         localArrayList = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
         bool1 = paramIntent.getBooleanExtra("key_timer_delete", false);
         bool2 = paramIntent.getBooleanExtra("key_sync_to_qqstory", false);
-        paramIntent = c;
+        paramIntent = ap;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("get mSetTimerDelete: ");
         localStringBuilder.append(bool1);
         QLog.i(paramIntent, 2, localStringBuilder.toString());
-        QZoneHelper.publishPictureMoodSilently((String)localObject1, localArrayList, paramInt, (ArrayList)localObject2, m, this.jdField_g_of_type_Int, this.jdField_e_of_type_JavaLangString, bool1, bool2, m, this.jdField_f_of_type_JavaLangString);
-        a().finish();
+        QZoneHelper.publishPictureMoodSilently((String)localObject1, localArrayList, paramInt, (ArrayList)localObject2, i, this.au, this.av, bool1, bool2, i, this.ax);
+        s().finish();
         return;
       }
       if (bool2)
       {
-        a().setResult(-1, paramIntent);
-        a().finish();
+        s().setResult(-1, paramIntent);
+        s().finish();
       }
     }
   }
@@ -156,9 +204,9 @@ public class AEPituQzoneCameraUnit
     {
       try
       {
-        if (a() != null)
+        if (s() != null)
         {
-          if (a().isFinishing()) {
+          if (s().isFinishing()) {
             return;
           }
           if ((paramAEPhotoCaptureResult != null) && (!TextUtils.isEmpty(paramAEPhotoCaptureResult.filePath)))
@@ -167,44 +215,44 @@ public class AEPituQzoneCameraUnit
             Object localObject2;
             if (QLog.isColorLevel())
             {
-              localObject1 = c;
+              localObject1 = ap;
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("finishShotPhoto ");
               ((StringBuilder)localObject2).append(paramAEPhotoCaptureResult.filePath);
               QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
             }
-            if (this.jdField_a_of_type_AndroidOsBundle.getInt("edit_video_type", 0) != 10002)
+            if (this.ar.getInt("edit_video_type", 0) != 10002)
             {
               bool1 = true;
-              int m = this.jdField_a_of_type_AndroidOsBundle.getInt("extra.busi_type", 2);
-              boolean bool2 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("go_publish_activity", false);
-              if (a() == null) {
+              int i = this.ar.getInt("extra.busi_type", 2);
+              boolean bool2 = this.ar.getBoolean("go_publish_activity", false);
+              if (s() == null) {
                 return;
               }
-              if (m == 3)
+              if (i == 3)
               {
-                double d1 = this.jdField_a_of_type_AndroidOsBundle.getDouble("key_longtitude", 4.9E-324D);
-                double d2 = this.jdField_a_of_type_AndroidOsBundle.getDouble("key_latitude", 4.9E-324D);
+                double d1 = this.ar.getDouble("key_longtitude", 4.9E-324D);
+                double d2 = this.ar.getDouble("key_latitude", 4.9E-324D);
                 GpsComplementUtil.complementByLocal(paramAEPhotoCaptureResult.filePath, d1, d2);
               }
               if (bool2) {
-                localObject1 = QzoneEditPictureActivity.a(a(), paramAEPhotoCaptureResult.filePath, bool1, m, c(), 0);
+                localObject1 = QzoneEditPictureActivity.a(s(), paramAEPhotoCaptureResult.filePath, bool1, i, N(), 0);
               } else {
-                localObject1 = QzoneEditPictureActivity.a(a(), paramAEPhotoCaptureResult.filePath);
+                localObject1 = QzoneEditPictureActivity.a(s(), paramAEPhotoCaptureResult.filePath);
               }
               ((Intent)localObject1).putExtra("TEMP_PARAM", ((Intent)localObject1).getLongExtra("TEMP_PARAM", 0L) & 0xFFFFFFBF & 0xFFFFFF7F);
               ((Intent)localObject1).putExtra("go_publish_activity", bool2);
-              ((Intent)localObject1).putExtra("extra_directly_back", this.jdField_a_of_type_AndroidOsBundle.getBoolean("extra_directly_back", false));
+              ((Intent)localObject1).putExtra("extra_directly_back", this.ar.getBoolean("extra_directly_back", false));
               ((Intent)localObject1).putExtra("qcamera_photo_filepath", paramAEPhotoCaptureResult.filePath);
               ((Intent)localObject1).putExtra("qcamera_rotate", paramAEPhotoCaptureResult.orientation);
               ((Intent)localObject1).putExtra("PhotoConst.EDIT_COME_FROM_NEWFLOW", true);
               ((Intent)localObject1).putExtra("camera_type", 103);
-              ((Intent)localObject1).putExtra("babyq_ability", this.jdField_a_of_type_AndroidOsBundle.getLong("babyq_ability", 0L));
-              if (this.jdField_a_of_type_AndroidOsBundle.getInt("entry_source", 0) == 5) {
+              ((Intent)localObject1).putExtra("babyq_ability", this.ar.getLong("babyq_ability", 0L));
+              if (this.ar.getInt("entry_source", 0) == 5) {
                 ((Intent)localObject1).putExtra("pic_entrance_type", 13);
               }
               localObject2 = SplashActivity.class.getName();
-              String str = this.jdField_a_of_type_AndroidOsBundle.getString("f_a_a_n");
+              String str = this.ar.getString("f_a_a_n");
               paramAEPhotoCaptureResult = (AEPhotoCaptureResult)localObject2;
               if (str != null)
               {
@@ -221,18 +269,18 @@ public class AEPituQzoneCameraUnit
                 ((Intent)localObject1).putExtra("extra_publish_text", (String)localObject2);
               }
               if (bool2) {
-                ((Intent)localObject1).putExtra("extra_publish_text", this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().getString(2131695277));
+                ((Intent)localObject1).putExtra("extra_publish_text", this.b.getActivity().getString(2131893012));
               }
               ((Intent)localObject1).putExtra("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME", paramAEPhotoCaptureResult);
-              ((Intent)localObject1).putExtra("key_activity_code", this.jdField_a_of_type_AndroidOsBundle.getString("key_activity_code"));
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().startActivityForResult((Intent)localObject1, 1012);
+              ((Intent)localObject1).putExtra("key_activity_code", this.ar.getString("key_activity_code"));
+              this.b.getActivity().startActivityForResult((Intent)localObject1, 1012);
               FlowCameraMqqAction.a("", "0X80075C1", "", "", "", "");
             }
           }
           else
           {
-            ToastUtil.a().a(HardCodeUtil.a(2131709795));
-            a().finish();
+            ToastUtil.a().a(HardCodeUtil.a(2131907515));
+            s().finish();
           }
         }
         else
@@ -242,7 +290,7 @@ public class AEPituQzoneCameraUnit
       }
       catch (Exception paramAEPhotoCaptureResult)
       {
-        QLog.d(c, 2, "handlePic exception", paramAEPhotoCaptureResult);
+        QLog.d(ap, 2, "handlePic exception", paramAEPhotoCaptureResult);
         return;
       }
       boolean bool1 = false;
@@ -259,7 +307,7 @@ public class AEPituQzoneCameraUnit
       PtvFilterUtils.a(paramString1, paramString4);
     }
     VideoSendPublicParam localVideoSendPublicParam = new VideoSendPublicParam();
-    localVideoSendPublicParam.mContext = a();
+    localVideoSendPublicParam.mContext = s();
     localVideoSendPublicParam.mVideoCacheDir = paramString1;
     localVideoSendPublicParam.mEncodeMode = paramInt1;
     localVideoSendPublicParam.mVideoFilePath = paramString2;
@@ -272,8 +320,8 @@ public class AEPituQzoneCameraUnit
     localVideoSendPublicParam.mContent = paramString5;
     localVideoSendPublicParam.mPriv = paramInt3;
     localVideoSendPublicParam.mPrivUinList = paramArrayList;
-    localVideoSendPublicParam.mEnableEditVideo = this.k;
-    localVideoSendPublicParam.topicId = this.jdField_g_of_type_JavaLangString;
+    localVideoSendPublicParam.mEnableEditVideo = this.aB;
+    localVideoSendPublicParam.topicId = this.aD;
     localVideoSendPublicParam.topicSyncQzone = paramBoolean1;
     localVideoSendPublicParam.fontId = paramInt4;
     localVideoSendPublicParam.fontFormatType = paramInt5;
@@ -282,31 +330,20 @@ public class AEPituQzoneCameraUnit
     localVideoSendPublicParam.superFontInfo = paramString7;
     localVideoSendPublicParam.generateGif = paramBoolean2;
     localVideoSendPublicParam.timerDelete = paramBoolean3;
-    localVideoSendPublicParam.qzoneVerticalVideoTopicInfo = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
+    localVideoSendPublicParam.qzoneVerticalVideoTopicInfo = this.aC;
     localVideoSendPublicParam.isUploadOrigin = paramBoolean5;
-    localVideoSendPublicParam.entrySource = this.jdField_a_of_type_AndroidOsBundle.getInt("entry_source", 0);
+    localVideoSendPublicParam.entrySource = this.ar.getInt("entry_source", 0);
     localVideoSendPublicParam.mUin = "";
     localVideoSendPublicParam.mUinType = 0;
     localVideoSendPublicParam.mTroopUin = "";
     new MediaCodecSendTask(localVideoSendPublicParam).execute(new Void[0]);
   }
   
-  private void b(int paramInt)
-  {
-    if ((paramInt == -1) && (a() != null))
-    {
-      if (a().isFinishing()) {
-        return;
-      }
-      a().finish();
-    }
-  }
-  
   private void b(int paramInt, Intent paramIntent)
   {
     if (paramInt == 0)
     {
-      t();
+      P();
       return;
     }
     if ((paramInt == -1) && (paramIntent != null))
@@ -316,28 +353,28 @@ public class AEPituQzoneCameraUnit
       if (localObject2 == null) {
         localObject1 = "";
       }
-      int m = paramIntent.getIntExtra("key_priv", 1);
+      int i = paramIntent.getIntExtra("key_priv", 1);
       Object localObject3 = (ArrayList)paramIntent.getSerializableExtra("key_priv_uin_list");
       localObject2 = localObject3;
       if (localObject3 == null) {
         localObject2 = new ArrayList();
       }
-      int n = paramIntent.getIntExtra("key_font_id", -1);
-      this.jdField_g_of_type_Int = paramIntent.getIntExtra("key_font_format_type", 0);
-      this.jdField_e_of_type_JavaLangString = paramIntent.getStringExtra("key_font_url");
-      this.jdField_h_of_type_Int = paramIntent.getIntExtra("key_super_font_id", -1);
-      this.jdField_f_of_type_JavaLangString = paramIntent.getStringExtra("key_super_font_info");
+      int j = paramIntent.getIntExtra("key_font_id", -1);
+      this.au = paramIntent.getIntExtra("key_font_format_type", 0);
+      this.av = paramIntent.getStringExtra("key_font_url");
+      this.aw = paramIntent.getIntExtra("key_super_font_id", -1);
+      this.ax = paramIntent.getStringExtra("key_super_font_info");
       boolean bool1 = paramIntent.getBooleanExtra("key_generate_gif", false);
       boolean bool2 = paramIntent.getBooleanExtra("key_timer_delete", false);
-      localObject3 = (PublishParam)paramIntent.getParcelableExtra(PublishParam.jdField_a_of_type_JavaLangString);
-      if (((PublishParam)localObject3).jdField_f_of_type_Int <= 5) {
-        paramInt = ((PublishParam)localObject3).jdField_f_of_type_Int;
+      localObject3 = (PublishParam)paramIntent.getParcelableExtra(PublishParam.a);
+      if (((PublishParam)localObject3).n <= 5) {
+        paramInt = ((PublishParam)localObject3).n;
       } else {
         paramInt = 0;
       }
-      int i1 = (int)((PublishParam)localObject3).jdField_a_of_type_Long;
+      int k = (int)((PublishParam)localObject3).j;
       boolean bool3 = paramIntent.getBooleanExtra("param.isUploadOrigin", false);
-      a(((PublishParam)localObject3).k, paramInt, ((PublishParam)localObject3).j, ((PublishParam)localObject3).c, ((PublishParam)localObject3).jdField_b_of_type_JavaLangString, i1, this.jdField_a_of_type_ComTencentAelightCameraStructEditorFlowComponentInterface, (String)localObject1, m, (ArrayList)localObject2, false, n, this.jdField_g_of_type_Int, this.jdField_e_of_type_JavaLangString, this.jdField_h_of_type_Int, this.jdField_f_of_type_JavaLangString, bool1, bool2, false, bool3);
+      a(((PublishParam)localObject3).u, paramInt, ((PublishParam)localObject3).t, ((PublishParam)localObject3).c, ((PublishParam)localObject3).b, k, this.aG, (String)localObject1, i, (ArrayList)localObject2, false, j, this.au, this.av, this.aw, this.ax, bool1, bool2, false, bool3);
     }
   }
   
@@ -345,12 +382,12 @@ public class AEPituQzoneCameraUnit
   {
     if (paramIntent != null)
     {
-      int m = paramIntent.getIntExtra("key_font_id", -1);
-      int n = paramIntent.getIntExtra("key_font_format_type", 0);
+      int i = paramIntent.getIntExtra("key_font_id", -1);
+      int j = paramIntent.getIntExtra("key_font_format_type", 0);
       String str1 = paramIntent.getStringExtra("key_font_url");
-      int i1 = paramIntent.getIntExtra("key_super_font_id", -1);
+      int k = paramIntent.getIntExtra("key_super_font_id", -1);
       String str2 = paramIntent.getStringExtra("key_super_font_info");
-      paramIntent = (PublishParam)paramIntent.getParcelableExtra(PublishParam.jdField_a_of_type_JavaLangString);
+      paramIntent = (PublishParam)paramIntent.getParcelableExtra(PublishParam.a);
       if (paramIntent == null)
       {
         if (QLog.isColorLevel()) {
@@ -358,122 +395,118 @@ public class AEPituQzoneCameraUnit
         }
         return;
       }
-      a(this.jdField_a_of_type_ComTencentAelightCameraStructCameraAEVideoCaptureResult.audioDataFilePath, 0, this.jdField_a_of_type_ComTencentAelightCameraStructCameraAEVideoCaptureResult.videoMp4FilePath, paramIntent.c, null, (int)paramIntent.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAelightCameraStructEditorFlowComponentInterface, null, -1, null, false, m, n, str1, i1, str2, false, false, false, false);
+      a(this.o.audioDataFilePath, 0, this.o.videoMp4FilePath, paramIntent.c, null, (int)paramIntent.j, this.aG, null, -1, null, false, i, j, str1, k, str2, false, false, false, false);
     }
   }
   
   private void b(AEVideoCaptureResult paramAEVideoCaptureResult)
   {
-    s();
-    if (a() != null)
+    O();
+    if (s() != null)
     {
-      Intent localIntent = new Intent(a(), PreviewVideoActivity.class);
+      Intent localIntent = new Intent(s(), PreviewVideoActivity.class);
       localIntent.putExtra("from_qzone_camera", true);
       localIntent.putExtra("video_path", paramAEVideoCaptureResult.videoMp4FilePath);
       localIntent.putExtra("audio_path", paramAEVideoCaptureResult.audioDataFilePath);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().startActivityForResult(localIntent, 1016);
+      this.b.getActivity().startActivityForResult(localIntent, 1016);
     }
   }
   
-  private int c()
+  private void c(int paramInt)
   {
-    int n = this.jdField_a_of_type_AndroidOsBundle.getInt("entrance_type", 99);
-    int m = n;
-    if (n == 100)
-    {
-      m = 0;
-      SessionInfo localSessionInfo = (SessionInfo)this.jdField_a_of_type_AndroidOsBundle.getParcelable("PhotoConst.SEND_SESSION_INFO");
-      if (localSessionInfo != null) {
-        m = localSessionInfo.a;
-      }
-      m = AIOShortVideoUtil.a(m);
+    if (paramInt == 0) {
+      return;
     }
-    return m;
+    if (paramInt == -1)
+    {
+      QLog.i(ap, 2, "REQ_PREVIEW_EDIT_GIF_ACTIVITY result ok");
+      s().finish();
+    }
   }
   
   private void c(Bundle paramBundle)
   {
-    if (a() != null)
+    if (s() != null)
     {
-      if (a().isFinishing()) {
+      if (s().isFinishing()) {
         return;
       }
-      this.jdField_g_of_type_JavaLangString = paramBundle.getString("topic_id");
-      this.jdField_h_of_type_JavaLangString = paramBundle.getString("short_video_refer");
-      this.jdField_a_of_type_ComTencentAelightCameraStructEditorFlowComponentInterface = ((FlowComponentInterface)((IQzoneVideoHelper)QRoute.api(IQzoneVideoHelper.class)).getVideoComponentCallback());
-      this.jdField_a_of_type_ComTencentAelightCameraStructEditorFlowComponentInterface.setRefer(this.jdField_h_of_type_JavaLangString);
-      this.jdField_d_of_type_JavaLangString = paramBundle.getString("confirm_text");
-      this.jdField_h_of_type_Boolean = paramBundle.getBoolean("enable_priv_list", true);
-      this.jdField_i_of_type_Boolean = paramBundle.getBoolean("enable_input_text", true);
-      this.j = paramBundle.getBoolean("is_qzone_vip", false);
-      this.k = paramBundle.getBoolean("enable_edit_video", false);
-      this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo = ((QzoneVerticalVideoTopicInfo)paramBundle.getParcelable("key_qzone_topic"));
-      this.jdField_i_of_type_Int = paramBundle.getInt("entry_source", 0);
+      this.aD = paramBundle.getString("topic_id");
+      this.aE = paramBundle.getString("short_video_refer");
+      this.aG = ((FlowComponentInterface)((IQzoneVideoHelper)QRoute.api(IQzoneVideoHelper.class)).getVideoComponentCallback());
+      this.aG.setRefer(this.aE);
+      this.as = paramBundle.getString("confirm_text");
+      this.ay = paramBundle.getBoolean("enable_priv_list", true);
+      this.az = paramBundle.getBoolean("enable_input_text", true);
+      this.aA = paramBundle.getBoolean("is_qzone_vip", false);
+      this.aB = paramBundle.getBoolean("enable_edit_video", false);
+      this.aC = ((QzoneVerticalVideoTopicInfo)paramBundle.getParcelable("key_qzone_topic"));
+      this.aF = paramBundle.getInt("entry_source", 0);
     }
   }
   
   private void c(AEVideoCaptureResult paramAEVideoCaptureResult)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(c, 2, "intentToEditVideoActivityFromQzone start!");
+      QLog.d(ap, 2, "intentToEditVideoActivityFromQzone start!");
     }
     for (;;)
     {
       try
       {
         localObject = new Bundle();
-        ((Bundle)localObject).putInt("entrance_type", c());
-        ((Bundle)localObject).putString("extra_publish_text", this.jdField_d_of_type_JavaLangString);
+        ((Bundle)localObject).putInt("entrance_type", N());
+        ((Bundle)localObject).putString("extra_publish_text", this.as);
         ((Bundle)localObject).putBoolean("enable_hw_encode", true);
-        int n = 1123;
+        int j = 1123;
         ((Bundle)localObject).putBoolean("extra_enable_revert", true);
         ((Bundle)localObject).putBoolean("extra_enable_slow", true);
-        m = n;
-        if (this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo != null)
+        i = j;
+        if (this.aC != null)
         {
-          m = n;
-          if (this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo.hasMusic()) {
-            m = 1121;
+          i = j;
+          if (this.aC.hasMusic()) {
+            i = 1121;
           }
         }
-        boolean bool = this.jdField_a_of_type_AndroidOsBundle.getBoolean("enable_edit_button", true);
-        paramAEVideoCaptureResult = new EditTakeVideoSource(paramAEVideoCaptureResult.videoMp4FilePath, paramAEVideoCaptureResult.audioDataFilePath, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+        boolean bool = this.ar.getBoolean("enable_edit_button", true);
+        paramAEVideoCaptureResult = new EditTakeVideoSource(paramAEVideoCaptureResult.videoMp4FilePath, paramAEVideoCaptureResult.audioDataFilePath, this.q);
         if (!bool) {
-          break label520;
+          break label519;
         }
-        paramAEVideoCaptureResult = new EditVideoParams(3, m, paramAEVideoCaptureResult, (Bundle)localObject);
-        paramAEVideoCaptureResult.jdField_a_of_type_AndroidOsBundle.putBoolean("enable_hw_encode", true);
+        paramAEVideoCaptureResult = new EditVideoParams(3, i, paramAEVideoCaptureResult, (Bundle)localObject);
+        paramAEVideoCaptureResult.d.putBoolean("enable_hw_encode", true);
         if (QLog.isColorLevel())
         {
-          localObject = c;
+          localObject = ap;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("intentToEditVideoActivityFromQzone startActivityForResult---> EditVideoParams params:");
           localStringBuilder.append(paramAEVideoCaptureResult.toString());
           localStringBuilder.append(", recordFinish---startEdit");
           QLog.d((String)localObject, 2, localStringBuilder.toString());
         }
-        if (a() != null)
+        if (s() != null)
         {
-          if (a().isFinishing()) {
+          if (s().isFinishing()) {
             return;
           }
-          localObject = new Intent(a(), QzoneEditVideoActivity.class);
+          localObject = new Intent(s(), QzoneEditVideoActivity.class);
           ((Intent)localObject).putExtra(EditVideoParams.class.getName(), paramAEVideoCaptureResult);
-          ((Intent)localObject).putExtra("key_font_id", this.jdField_f_of_type_Int);
+          ((Intent)localObject).putExtra("key_font_id", this.at);
           ((Intent)localObject).putExtra("op_department", "grp_qzone");
           ((Intent)localObject).putExtra("op_type", "video_edit");
-          ((Intent)localObject).putExtra("topic_id", this.jdField_g_of_type_JavaLangString);
-          ((Intent)localObject).putExtra("enable_priv_list", this.jdField_h_of_type_Boolean);
-          ((Intent)localObject).putExtra("enable_input_text", this.jdField_i_of_type_Boolean);
+          ((Intent)localObject).putExtra("topic_id", this.aD);
+          ((Intent)localObject).putExtra("enable_priv_list", this.ay);
+          ((Intent)localObject).putExtra("enable_input_text", this.az);
           ((Intent)localObject).putExtra("stop_record_time", System.currentTimeMillis());
           ((Intent)localObject).putExtra("UseQQCameraCompression", QzoneConfig.getInstance().getConfig("PhotoAlbum", "UseQQCameraCompression", 2));
-          ((Intent)localObject).putExtra("entry_source", this.jdField_a_of_type_AndroidOsBundle.getInt("entry_source", 0));
+          ((Intent)localObject).putExtra("entry_source", this.ar.getInt("entry_source", 0));
           ((Intent)localObject).putExtra("TAKE_DANCING_VIDEO", false);
-          ((Intent)localObject).putExtra("key_qzone_topic", this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo);
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().startActivityForResult((Intent)localObject, 1011);
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().overridePendingTransition(0, 0);
+          ((Intent)localObject).putExtra("key_qzone_topic", this.aC);
+          this.b.getActivity().startActivityForResult((Intent)localObject, 1011);
+          this.b.getActivity().overridePendingTransition(0, 0);
           if (QLog.isColorLevel()) {
-            QLog.d(c, 2, "intentToEditVideoActivityFromQzone ---> finish startActivityForResult");
+            QLog.d(ap, 2, "intentToEditVideoActivityFromQzone ---> finish startActivityForResult");
           }
         }
         else
@@ -483,94 +516,44 @@ public class AEPituQzoneCameraUnit
       }
       catch (Exception paramAEVideoCaptureResult)
       {
-        Object localObject = c;
+        Object localObject = ap;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("intentToEditVideoActivityFromQzone exception:");
         localStringBuilder.append(paramAEVideoCaptureResult);
         QLog.e((String)localObject, 1, localStringBuilder.toString());
       }
       return;
-      label520:
-      int m = 0;
+      label519:
+      int i = 0;
     }
   }
   
-  private void f(int paramInt)
+  private void d(int paramInt)
+  {
+    if ((paramInt == -1) && (s() != null))
+    {
+      if (s().isFinishing()) {
+        return;
+      }
+      s().finish();
+    }
+  }
+  
+  private void h(int paramInt)
   {
     if (paramInt == 0)
     {
-      t();
+      P();
       return;
     }
     if (paramInt == -1) {
-      u();
+      Q();
     }
-  }
-  
-  private void s()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
-    ((StringBuilder)localObject).append(File.separator);
-    ((StringBuilder)localObject).append("videoThumb.jpg");
-    localObject = ((StringBuilder)localObject).toString();
-    try
-    {
-      FileUtils.createDirectory(this.jdField_b_of_type_JavaLangString);
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(c, 2, "createDirectory error", localException);
-      }
-    }
-    MediaUtil.a(this.jdField_a_of_type_ComTencentAelightCameraStructCameraAEVideoCaptureResult.videoMp4FilePath, (String)localObject);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbnailPath = ((String)localObject);
-  }
-  
-  private void t()
-  {
-    try
-    {
-      FileUtils.deleteDirectory(this.jdField_b_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(c, 2, "Delete file error", localException);
-      }
-    }
-  }
-  
-  private void u()
-  {
-    if ((this.jdField_a_of_type_ComTencentAelightCameraStructCameraAEVideoCaptureResult != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo != null)) {
-      a(this.jdField_a_of_type_ComTencentAelightCameraStructCameraAEVideoCaptureResult.audioDataFilePath, 0, this.jdField_a_of_type_ComTencentAelightCameraStructCameraAEVideoCaptureResult.videoMp4FilePath, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbnailPath, null, (int)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, this.jdField_a_of_type_ComTencentAelightCameraStructEditorFlowComponentInterface, null, -1, null, false, this.jdField_f_of_type_Int, this.jdField_g_of_type_Int, this.jdField_e_of_type_JavaLangString, this.jdField_h_of_type_Int, this.jdField_f_of_type_JavaLangString, false, false, false, false);
-    }
-  }
-  
-  public void W()
-  {
-    super.W();
-  }
-  
-  public View a()
-  {
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a() != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().getIntent() != null))
-    {
-      this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().getIntent().getExtras();
-      c(this.jdField_a_of_type_AndroidOsBundle);
-    }
-    return super.a();
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a();
+    Object localObject = this.b.getActivity();
     if (localObject != null)
     {
       if (((Activity)localObject).isFinishing()) {
@@ -586,13 +569,13 @@ public class AEPituQzoneCameraUnit
             default: 
               break;
             case 1016: 
-              f(paramInt2);
+              h(paramInt2);
               break;
             case 1015: 
-              b(paramInt2);
+              d(paramInt2);
               break;
             case 1014: 
-              a(paramInt2);
+              c(paramInt2);
               break;
             }
           } else {
@@ -606,9 +589,9 @@ public class AEPituQzoneCameraUnit
       else {
         b(paramInt2, paramIntent);
       }
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraStructEditorFlowComponentInterface;
+      localObject = this.aG;
       if (localObject != null) {
-        ((FlowComponentInterface)localObject).onActivityResult(a(), paramInt1, paramInt2, paramIntent);
+        ((FlowComponentInterface)localObject).onActivityResult(s(), paramInt1, paramInt2, paramIntent);
       }
     }
   }
@@ -621,26 +604,41 @@ public class AEPituQzoneCameraUnit
       Intent localIntent = new Intent(BaseApplicationImpl.getContext(), EditLocalVideoActivity.class);
       localIntent.putExtras(paramIntent);
       localIntent.putExtra("short_video_refer", getClass().getName());
-      localIntent.putExtra("is_qzone_vip", this.j);
-      localIntent.putExtra("param.topicId", this.jdField_g_of_type_JavaLangString);
+      localIntent.putExtra("is_qzone_vip", this.aA);
+      localIntent.putExtra("param.topicId", this.aD);
       localIntent.putExtra("param.topicSyncQzone", false);
-      localIntent.putExtra("extra_key_font_id", this.jdField_f_of_type_Int);
-      localIntent.putExtra("extra_key_font_format_type", this.jdField_g_of_type_Int);
-      localIntent.putExtra("extra_key_font_url", this.jdField_e_of_type_JavaLangString);
-      localIntent.putExtra("extra_key_super_font_id", this.jdField_h_of_type_Int);
-      localIntent.putExtra("extra_key_super_font_info", this.jdField_f_of_type_JavaLangString);
-      localIntent.putExtra("short_video_refer", this.jdField_h_of_type_JavaLangString);
-      localIntent.putExtra("set_user_callback", this.jdField_a_of_type_AndroidOsBundle.getString("set_user_callback"));
-      localIntent.putExtra("key_qzone_topic", this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo);
+      localIntent.putExtra("extra_key_font_id", this.at);
+      localIntent.putExtra("extra_key_font_format_type", this.au);
+      localIntent.putExtra("extra_key_font_url", this.av);
+      localIntent.putExtra("extra_key_super_font_id", this.aw);
+      localIntent.putExtra("extra_key_super_font_info", this.ax);
+      localIntent.putExtra("short_video_refer", this.aE);
+      localIntent.putExtra("set_user_callback", this.ar.getString("set_user_callback"));
+      localIntent.putExtra("key_qzone_topic", this.aC);
       ThreadManager.getUIHandler().postDelayed(new AEPituQzoneCameraUnit.1(this, localIntent), 0L);
       return;
     }
     catch (Exception paramIntent)
     {
       if (QLog.isColorLevel()) {
-        QLog.i(c, 2, "handleOnNewIntent error ", paramIntent);
+        QLog.i(ap, 2, "handleOnNewIntent error ", paramIntent);
       }
     }
+  }
+  
+  public void aB()
+  {
+    super.aB();
+  }
+  
+  public View j()
+  {
+    if ((this.b != null) && (this.b.getActivity() != null) && (this.b.getActivity().getIntent() != null))
+    {
+      this.ar = this.b.getActivity().getIntent().getExtras();
+      c(this.ar);
+    }
+    return super.j();
   }
   
   public void onClick(View paramView)
@@ -650,18 +648,18 @@ public class AEPituQzoneCameraUnit
   
   public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    if (this.k)
+    if (this.aB)
     {
-      c(this.jdField_a_of_type_ComTencentAelightCameraStructCameraAEVideoCaptureResult);
+      c(this.o);
       return;
     }
-    b(this.jdField_a_of_type_ComTencentAelightCameraStructCameraAEVideoCaptureResult);
+    b(this.o);
   }
   
   public void onPhotoCaptured(AEPhotoCaptureResult paramAEPhotoCaptureResult)
   {
     super.onPhotoCaptured(paramAEPhotoCaptureResult);
-    if (this.jdField_i_of_type_Int != 3) {
+    if (this.aF != 3) {
       a(paramAEPhotoCaptureResult);
     }
   }
@@ -673,28 +671,28 @@ public class AEPituQzoneCameraUnit
     {
       if (paramAEVideoCaptureResult.videoMp4FilePath != null)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraStructCameraAEVideoCaptureResult = paramAEVideoCaptureResult;
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path = paramAEVideoCaptureResult.videoMp4FilePath;
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mMimeType = "video";
-        MediaScanner.getInstance(BaseApplicationImpl.getContext()).queryMediaInfoAsync(this, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+        this.o = paramAEVideoCaptureResult;
+        this.q = new LocalMediaInfo();
+        this.q.path = paramAEVideoCaptureResult.videoMp4FilePath;
+        this.q.mMimeType = "video";
+        MediaScanner.getInstance(BaseApplicationImpl.getContext()).queryMediaInfoAsync(this, this.q);
         return;
       }
-      ToastUtil.a().a(HardCodeUtil.a(2131709793));
-      if (a() != null) {
-        a().finish();
+      ToastUtil.a().a(HardCodeUtil.a(2131907513));
+      if (s() != null) {
+        s().finish();
       }
       return;
     }
     catch (Exception paramAEVideoCaptureResult)
     {
-      QZLog.d(c, 2, "onVideoCaptured exception!", paramAEVideoCaptureResult);
+      QZLog.d(ap, 2, "onVideoCaptured exception!", paramAEVideoCaptureResult);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.AEPituQzoneCameraUnit
  * JD-Core Version:    0.7.0.1
  */

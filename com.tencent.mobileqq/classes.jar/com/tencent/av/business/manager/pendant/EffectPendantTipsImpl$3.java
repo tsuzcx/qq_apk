@@ -11,7 +11,7 @@ class EffectPendantTipsImpl$3
   {
     try
     {
-      TipsUtil.a(EffectPendantTipsImpl.a(this.this$0), 1016);
+      TipsUtil.b(EffectPendantTipsImpl.a(this.this$0), 1016);
       if (this.a != null)
       {
         this.a.a();

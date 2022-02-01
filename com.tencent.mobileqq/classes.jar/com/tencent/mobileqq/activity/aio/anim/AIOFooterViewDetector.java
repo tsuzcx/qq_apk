@@ -18,52 +18,52 @@ import mqq.util.WeakReference;
 public class AIOFooterViewDetector
   implements ValueAnimator.AnimatorUpdateListener
 {
-  int jdField_a_of_type_Int = -1;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private WeakReference<BaseChatPie> jdField_a_of_type_MqqUtilWeakReference;
-  private int b;
+  int a = -1;
+  private FrameLayout b;
+  private int c;
+  private Context d;
+  private ListView e;
+  private WeakReference<BaseChatPie> f;
+  private ValueAnimator g;
+  private SparseIntArray h = new SparseIntArray();
   
   public AIOFooterViewDetector(Context paramContext, ListView paramListView, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseChatPie);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
+    this.d = paramContext;
+    this.e = paramListView;
+    this.f = new WeakReference(paramBaseChatPie);
+    this.g = new ValueAnimator();
+    this.g.addUpdateListener(this);
+    this.g.setDuration(300L);
   }
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131362421);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new AbsListView.LayoutParams(-1, paramInt));
-      this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(this.jdField_a_of_type_AndroidWidgetFrameLayout, null, false);
+      this.b = new FrameLayout(this.d);
+      this.b.setId(2131428029);
+      this.b.setLayoutParams(new AbsListView.LayoutParams(-1, paramInt));
+      this.e.addFooterView(this.b, null, false);
     }
   }
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    return this.b;
   }
   
   public AIOFooterViewDetector a(int paramInt1, int paramInt2)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidUtilSparseIntArray;
+    Object localObject1 = this.h;
     if (paramInt2 < 1) {}
     try
     {
-      this.jdField_a_of_type_AndroidUtilSparseIntArray.delete(paramInt1);
+      this.h.delete(paramInt1);
       break label34;
-      this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramInt1, paramInt2);
+      this.h.put(paramInt1, paramInt2);
       label34:
-      int j = this.jdField_a_of_type_AndroidUtilSparseIntArray.size();
+      int j = this.h.size();
       paramInt1 = 0;
       int i = 0;
       if (j > 0)
@@ -71,18 +71,18 @@ public class AIOFooterViewDetector
         paramInt1 = 0;
         while (i < j)
         {
-          paramInt1 = Math.max(paramInt1, this.jdField_a_of_type_AndroidUtilSparseIntArray.valueAt(i));
+          paramInt1 = Math.max(paramInt1, this.h.valueAt(i));
           i += 1;
         }
       }
-      this.b = paramInt1;
+      this.c = paramInt1;
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("setMinHeight newMinHeight=");
         ((StringBuilder)localObject1).append(paramInt2);
         ((StringBuilder)localObject1).append(",minHeight=");
-        ((StringBuilder)localObject1).append(this.b);
+        ((StringBuilder)localObject1).append(this.c);
         QLog.d("AIOFooterViewDetector", 2, ((StringBuilder)localObject1).toString());
       }
       return this;
@@ -94,27 +94,9 @@ public class AIOFooterViewDetector
     }
   }
   
-  public void a()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("removeFooterView minHeight=");
-      localStringBuilder.append(this.b);
-      localStringBuilder.append(",listFooter=");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-      localStringBuilder.append(",listView=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentWidgetListView);
-      QLog.d("AIOFooterViewDetector", 2, localStringBuilder.toString());
-    }
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
-      a(Math.max(this.b, 0), false, "removeFooter", 0);
-    }
-  }
-  
   public void a(int paramInt1, boolean paramBoolean, String paramString, int paramInt2)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentWidgetListView;
+    Object localObject1 = this.e;
     if (localObject1 == null) {
       return;
     }
@@ -133,38 +115,38 @@ public class AIOFooterViewDetector
       ((StringBuilder)localObject2).append(",bAnim=");
       ((StringBuilder)localObject2).append(paramBoolean);
       ((StringBuilder)localObject2).append(",listFooter=");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append(",listAdapter=");
       ((StringBuilder)localObject2).append(localObject1);
       QLog.d("AIOFooterViewDetector", 2, ((StringBuilder)localObject2).toString());
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-    paramString = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    this.g.cancel();
+    paramString = this.b;
     int i = 1;
     if (paramString == null)
     {
-      this.jdField_a_of_type_Int = paramInt1;
+      this.a = paramInt1;
       if (localObject1 != null)
       {
-        if (this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition() == ((ListAdapter)localObject1).getCount() - 1 + this.jdField_a_of_type_ComTencentWidgetListView.getFooterViewsCount())
+        if (this.e.getLastVisiblePosition() == ((ListAdapter)localObject1).getCount() - 1 + this.e.getFooterViewsCount())
         {
-          this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(null);
+          this.e.setAdapter(null);
           a(paramInt1);
-          this.jdField_a_of_type_ComTencentWidgetListView.setAdapter((ListAdapter)localObject1);
+          this.e.setAdapter((ListAdapter)localObject1);
           paramInt1 = i;
           break label420;
         }
-        this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition();
-        if (this.jdField_a_of_type_ComTencentWidgetListView.getChildCount() > 0)
+        this.e.getFirstVisiblePosition();
+        if (this.e.getChildCount() > 0)
         {
-          paramString = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(0);
+          paramString = this.e.getChildAt(0);
           if (paramString != null) {
             paramString.getTop();
           }
         }
-        this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(null);
+        this.e.setAdapter(null);
         a(paramInt1);
-        this.jdField_a_of_type_ComTencentWidgetListView.setAdapter((ListAdapter)localObject1);
+        this.e.setAdapter((ListAdapter)localObject1);
         paramInt1 = i;
         break label420;
       }
@@ -172,13 +154,13 @@ public class AIOFooterViewDetector
     }
     else
     {
-      paramInt1 = Math.max(this.b, paramInt1);
-      this.jdField_a_of_type_Int = paramInt1;
-      paramString = (AbsListView.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+      paramInt1 = Math.max(this.c, paramInt1);
+      this.a = paramInt1;
+      paramString = (AbsListView.LayoutParams)this.b.getLayoutParams();
       if (paramString.height == paramInt1) {
         return;
       }
-      localObject1 = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+      localObject1 = this.g;
       long l;
       if (paramInt2 > 0) {
         l = paramInt2;
@@ -188,23 +170,23 @@ public class AIOFooterViewDetector
       ((ValueAnimator)localObject1).setDuration(l);
       if (paramBoolean)
       {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { paramString.height, paramInt1 });
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+        this.g.setIntValues(new int[] { paramString.height, paramInt1 });
+        this.g.start();
       }
       else
       {
         paramString.height = paramInt1;
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
+        this.b.requestLayout();
       }
     }
     paramInt1 = 0;
     label420:
     if (paramInt1 != 0)
     {
-      paramString = (BaseChatPie)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      paramString = (BaseChatPie)this.f.get();
       if (paramString != null)
       {
-        paramString.e(196608);
+        paramString.j(196608);
         if (QLog.isColorLevel()) {
           QLog.d("AIOFooterViewDetector", 2, "updateFooterView refresh");
         }
@@ -212,13 +194,13 @@ public class AIOFooterViewDetector
     }
     paramString = new StringBuilder();
     paramString.append("updateFooterView, footerHeight: ");
-    paramString.append(this.jdField_a_of_type_Int);
+    paramString.append(this.a);
     QLog.d("AIOFooterViewDetector", 2, paramString.toString());
   }
   
   public void a(View paramView, FrameLayout.LayoutParams paramLayoutParams)
   {
-    FrameLayout localFrameLayout = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    FrameLayout localFrameLayout = this.b;
     if (localFrameLayout != null) {
       localFrameLayout.addView(paramView, paramLayoutParams);
     }
@@ -226,27 +208,45 @@ public class AIOFooterViewDetector
   
   public void b()
   {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeFooterView minHeight=");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(",listFooter=");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(",listView=");
+      localStringBuilder.append(this.e);
+      QLog.d("AIOFooterViewDetector", 2, localStringBuilder.toString());
+    }
+    if (this.b != null) {
+      a(Math.max(this.c, 0), false, "removeFooter", 0);
+    }
+  }
+  
+  public void c()
+  {
     if (QLog.isColorLevel()) {
       QLog.d("AIOFooterViewDetector", 2, "onDestroy");
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-    this.b = 0;
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseIntArray)
+    this.g.cancel();
+    this.c = 0;
+    synchronized (this.h)
     {
-      this.jdField_a_of_type_AndroidUtilSparseIntArray.clear();
-      ??? = this.jdField_a_of_type_ComTencentWidgetListView;
+      this.h.clear();
+      ??? = this.e;
       if (??? != null)
       {
-        FrameLayout localFrameLayout = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+        FrameLayout localFrameLayout = this.b;
         if (localFrameLayout != null) {
           ((ListView)???).removeFooterView(localFrameLayout);
         }
       }
-      ??? = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+      ??? = this.b;
       if (??? != null)
       {
         ((FrameLayout)???).removeAllViews();
-        this.jdField_a_of_type_AndroidWidgetFrameLayout = null;
+        this.b = null;
       }
       return;
     }
@@ -254,7 +254,7 @@ public class AIOFooterViewDetector
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    Object localObject = this.b;
     if (localObject == null)
     {
       paramValueAnimator.cancel();
@@ -262,7 +262,7 @@ public class AIOFooterViewDetector
     }
     localObject = (AbsListView.LayoutParams)((FrameLayout)localObject).getLayoutParams();
     ((AbsListView.LayoutParams)localObject).height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
+    this.b.requestLayout();
     if (QLog.isColorLevel())
     {
       paramValueAnimator = new StringBuilder();
@@ -274,7 +274,7 @@ public class AIOFooterViewDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AIOFooterViewDetector
  * JD-Core Version:    0.7.0.1
  */

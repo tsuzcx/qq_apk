@@ -14,14 +14,14 @@ class ReceiptHelper$1
   {
     AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)ReceiptHelper.a(this.this$0).a(52);
     if (localAIOShortcutBarHelper != null) {
-      localAIOShortcutBarHelper.c(12);
+      localAIOShortcutBarHelper.d(12);
     }
     ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(ReceiptHelper.a(this.this$0).a(), "receipt_msg", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptHelper.1
  * JD-Core Version:    0.7.0.1
  */

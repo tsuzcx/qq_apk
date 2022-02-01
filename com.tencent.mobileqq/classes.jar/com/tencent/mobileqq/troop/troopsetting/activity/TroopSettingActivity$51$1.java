@@ -23,26 +23,26 @@ class TroopSettingActivity$51$1
     if (localObject1 != null)
     {
       Object localObject2;
-      if (this.a.this$0.c != null)
+      if (this.a.this$0.ag != null)
       {
-        localObject2 = this.a.this$0.c;
+        localObject2 = this.a.this$0.ag;
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.a.this$0.a.wMemberNum);
-        localStringBuilder.append(HardCodeUtil.a(2131701935));
+        localStringBuilder.append(this.a.this$0.i.wMemberNum);
+        localStringBuilder.append(HardCodeUtil.a(2131899950));
         ((TextView)localObject2).setText(localStringBuilder.toString());
       }
       i = ((ArrayList)localObject1).size() - 1;
       while (i >= 0)
       {
-        if (this.a.this$0.e != null)
+        if (this.a.this$0.N != null)
         {
-          int j = this.a.this$0.e.size() - 1;
+          int j = this.a.this$0.N.size() - 1;
           while (j >= 0)
           {
-            localObject2 = (oidb_0x899.memberlist)this.a.this$0.e.get(j);
+            localObject2 = (oidb_0x899.memberlist)this.a.this$0.N.get(j);
             if ((localObject2 != null) && (((oidb_0x899.memberlist)localObject2).uint64_member_uin.has()) && (String.valueOf(((oidb_0x899.memberlist)localObject2).uint64_member_uin.get()).equals(((ArrayList)localObject1).get(i))))
             {
-              this.a.this$0.e.remove(j);
+              this.a.this$0.N.remove(j);
               break;
             }
             j -= 1;
@@ -55,20 +55,20 @@ class TroopSettingActivity$51$1
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("resultForTroopManage,memberListForCard.size = ");
-      if (this.a.this$0.e != null) {
-        i = this.a.this$0.e.size();
+      if (this.a.this$0.N != null) {
+        i = this.a.this$0.N.size();
       } else {
         i = -1;
       }
       ((StringBuilder)localObject1).append(i);
       QLog.d("Q.chatopttroop", 2, ((StringBuilder)localObject1).toString());
     }
-    this.a.this$0.a(this.a.this$0.e);
+    this.a.this$0.a(this.a.this$0.N);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.51.1
  * JD-Core Version:    0.7.0.1
  */

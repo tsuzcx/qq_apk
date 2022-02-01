@@ -24,16 +24,11 @@ public class ExpandFlutterIPCClient
   extends QIPCModule
   implements EIPCResultCallback
 {
-  private static volatile ExpandFlutterIPCClient jdField_a_of_type_ComTencentMobileqqQqexpandIpcExpandFlutterIPCClient;
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  public static volatile boolean a;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private final ArrayList<IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
+  public static volatile boolean a = false;
+  private static final AtomicInteger b = new AtomicInteger(0);
+  private static volatile ExpandFlutterIPCClient c;
+  private final Handler d = new Handler(Looper.getMainLooper());
+  private final ArrayList<IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener> e = new ArrayList();
   
   private ExpandFlutterIPCClient(String paramString)
   {
@@ -42,19 +37,48 @@ public class ExpandFlutterIPCClient
   
   public static ExpandFlutterIPCClient a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQqexpandIpcExpandFlutterIPCClient == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQqexpandIpcExpandFlutterIPCClient == null) {
-          jdField_a_of_type_ComTencentMobileqqQqexpandIpcExpandFlutterIPCClient = new ExpandFlutterIPCClient("ExpandFlutterIPCClient");
+        if (c == null) {
+          c = new ExpandFlutterIPCClient("ExpandFlutterIPCClient");
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQqexpandIpcExpandFlutterIPCClient;
+    return c;
   }
   
-  private String a(Map<String, byte[]> paramMap)
+  @MainThread
+  private void a(int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleRedPointEvent redPointNumber=");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.d("expand.ExpandFlutterIPCClient", 4, ((StringBuilder)localObject).toString());
+    localObject = this.e.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener)((Iterator)localObject).next()).a(paramInt);
+    }
+  }
+  
+  @MainThread
+  private void a(long paramLong, byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handlePushEvent pushType=");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("expand.ExpandFlutterIPCClient", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.e.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener)((Iterator)localObject).next()).a(paramLong, paramArrayOfByte);
+    }
+  }
+  
+  private String b(Map<String, byte[]> paramMap)
   {
     try
     {
@@ -78,13 +102,13 @@ public class ExpandFlutterIPCClient
     return "";
   }
   
-  public static void a()
+  public static void b()
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!a) {
       try
       {
         QIPCClientHelper.getInstance().register(a());
-        jdField_a_of_type_Boolean = true;
+        a = true;
       }
       catch (Exception localException)
       {
@@ -92,45 +116,16 @@ public class ExpandFlutterIPCClient
       }
     }
     QLog.d("expand.ExpandFlutterIPCClient", 1, "register");
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+    b.addAndGet(1);
   }
   
-  @MainThread
-  private void a(int paramInt)
+  public static void c()
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("handleRedPointEvent redPointNumber=");
-    ((StringBuilder)localObject).append(paramInt);
-    QLog.d("expand.ExpandFlutterIPCClient", 4, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener)((Iterator)localObject).next()).a(paramInt);
-    }
-  }
-  
-  @MainThread
-  private void a(long paramLong, byte[] paramArrayOfByte)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("handlePushEvent pushType=");
-      ((StringBuilder)localObject).append(paramLong);
-      QLog.d("expand.ExpandFlutterIPCClient", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener)((Iterator)localObject).next()).a(paramLong, paramArrayOfByte);
-    }
-  }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet() > 0)
+    if (b.decrementAndGet() > 0)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("reference count: ");
-      localStringBuilder.append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      localStringBuilder.append(b.get());
       QLog.d("expand.ExpandFlutterIPCClient", 1, localStringBuilder.toString());
       return;
     }
@@ -139,26 +134,15 @@ public class ExpandFlutterIPCClient
       if (QIPCClientHelper.getInstance().getClient() != null)
       {
         QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-        jdField_a_of_type_Boolean = false;
+        a = false;
       }
-      a().jdField_a_of_type_JavaUtilArrayList.clear();
+      a().e.clear();
     }
     catch (Exception localException)
     {
       QLog.d("expand.ExpandFlutterIPCClient", 1, "unregister", localException);
     }
     QLog.d("expand.ExpandFlutterIPCClient", 1, "unregister");
-  }
-  
-  public int a()
-  {
-    EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("ExpandFlutterIPCServer", "getRedPoint", new Bundle());
-    if (localEIPCResult == null)
-    {
-      QLog.e("expand.ExpandFlutterIPCClient", 1, "callGetRedPoint: res is null!");
-      return 0;
-    }
-    return localEIPCResult.data.getInt("redPointNum", 0);
   }
   
   public Bundle a(String paramString, Bundle paramBundle)
@@ -171,7 +155,7 @@ public class ExpandFlutterIPCClient
     if (QLog.isColorLevel()) {
       QLog.d("expand.ExpandFlutterIPCClient", 1, "addUpdateListener");
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramExpandIpcFlutterNotifyListener);
+    this.e.add(paramExpandIpcFlutterNotifyListener);
   }
   
   public void a(EIPCResultCallback paramEIPCResultCallback)
@@ -201,19 +185,8 @@ public class ExpandFlutterIPCClient
   public void a(Map<String, byte[]> paramMap)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("matchInfoMap", a(paramMap));
+    localBundle.putString("matchInfoMap", b(paramMap));
     QIPCClientHelper.getInstance().getClient().callServer("ExpandFlutterIPCServer", "notifyBatchCreateMessageNodeIfNeed", localBundle);
-  }
-  
-  public boolean a()
-  {
-    EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("ExpandFlutterIPCServer", "clearRedPoint", new Bundle());
-    if (localEIPCResult == null)
-    {
-      QLog.e("expand.ExpandFlutterIPCClient", 1, "callClearPoint: res is null!");
-      return EIPCResult.UNKNOW_RESULT.isSuccess();
-    }
-    return localEIPCResult.isSuccess();
   }
   
   public boolean a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte)
@@ -241,7 +214,29 @@ public class ExpandFlutterIPCClient
     if (QLog.isColorLevel()) {
       QLog.d("expand.ExpandFlutterIPCClient", 1, "removeUpdateListener");
     }
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramExpandIpcFlutterNotifyListener);
+    this.e.remove(paramExpandIpcFlutterNotifyListener);
+  }
+  
+  public int d()
+  {
+    EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("ExpandFlutterIPCServer", "getRedPoint", new Bundle());
+    if (localEIPCResult == null)
+    {
+      QLog.e("expand.ExpandFlutterIPCClient", 1, "callGetRedPoint: res is null!");
+      return 0;
+    }
+    return localEIPCResult.data.getInt("redPointNum", 0);
+  }
+  
+  public boolean e()
+  {
+    EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("ExpandFlutterIPCServer", "clearRedPoint", new Bundle());
+    if (localEIPCResult == null)
+    {
+      QLog.e("expand.ExpandFlutterIPCClient", 1, "callClearPoint: res is null!");
+      return EIPCResult.UNKNOW_RESULT.isSuccess();
+    }
+    return localEIPCResult.isSuccess();
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -255,23 +250,23 @@ public class ExpandFlutterIPCClient
       QLog.i("expand.ExpandFlutterIPCClient", 4, localStringBuilder.toString());
     }
     if ("notifyPushEvent".equals(paramString)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ExpandFlutterIPCClient.1(this, paramBundle));
+      this.d.post(new ExpandFlutterIPCClient.1(this, paramBundle));
     }
     if ("notifyRedPointEvent".equals(paramString)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ExpandFlutterIPCClient.2(this, paramBundle));
+      this.d.post(new ExpandFlutterIPCClient.2(this, paramBundle));
     }
     if ("notifyGetExtendFriendInfoResponse".equals(paramString)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ExpandFlutterIPCClient.3(this, paramBundle));
+      this.d.post(new ExpandFlutterIPCClient.3(this, paramBundle));
     } else if ("notifyGetOnLineStateResponse".equals(paramString)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ExpandFlutterIPCClient.4(this, paramBundle));
+      this.d.post(new ExpandFlutterIPCClient.4(this, paramBundle));
     } else if ("notifyUpdateOnlineState".equals(paramString)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ExpandFlutterIPCClient.5(this, paramBundle));
+      this.d.post(new ExpandFlutterIPCClient.5(this, paramBundle));
     } else if ("notifyConversationUpdate".equals(paramString)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ExpandFlutterIPCClient.6(this, paramBundle));
+      this.d.post(new ExpandFlutterIPCClient.6(this, paramBundle));
     } else if ("notifyConversationDelete".equals(paramString)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ExpandFlutterIPCClient.7(this, paramBundle));
+      this.d.post(new ExpandFlutterIPCClient.7(this, paramBundle));
     } else if ("notifyConversationRefresh".equals(paramString)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ExpandFlutterIPCClient.8(this));
+      this.d.post(new ExpandFlutterIPCClient.8(this));
     }
     return null;
   }
@@ -283,7 +278,7 @@ public class ExpandFlutterIPCClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.ipc.ExpandFlutterIPCClient
  * JD-Core Version:    0.7.0.1
  */

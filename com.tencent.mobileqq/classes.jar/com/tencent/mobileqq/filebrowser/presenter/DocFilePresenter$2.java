@@ -11,12 +11,12 @@ class DocFilePresenter$2
   
   public void run()
   {
-    TeamWorkHandlerUtils.a(this.a.m, this.this$0.a.a());
+    TeamWorkHandlerUtils.b(this.a.F, this.this$0.c.f());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.DocFilePresenter.2
  * JD-Core Version:    0.7.0.1
  */

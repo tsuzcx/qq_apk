@@ -12,7 +12,7 @@ class FilePreviewActivity$9$1
   {
     try
     {
-      this.a.a.a.loadUrl("javascript:qpreview.onClientResponse('addMorePage',{})");
+      this.a.c.d.loadUrl("javascript:qpreview.onClientResponse('addMorePage',{})");
       return;
     }
     catch (Exception localException)
@@ -23,7 +23,7 @@ class FilePreviewActivity$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.9.1
  * JD-Core Version:    0.7.0.1
  */

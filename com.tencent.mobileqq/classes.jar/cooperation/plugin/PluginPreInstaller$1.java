@@ -50,19 +50,19 @@ class PluginPreInstaller$1
       QLog.i("PluginPreInstaller", 2, ((StringBuilder)localObject).toString());
     }
     if ("comic_plugin.apk".equals(paramString)) {
-      ((IQQComicPluginUtil)QRoute.api(IQQComicPluginUtil.class)).loadComicModule(PluginPreInstaller.a(this.a));
+      ((IQQComicPluginUtil)QRoute.api(IQQComicPluginUtil.class)).loadComicModule(PluginPreInstaller.b(this.a));
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("com.tencent.mobileqq.cooperation.plugin.");
     ((StringBuilder)localObject).append(paramString);
     localObject = new Intent(((StringBuilder)localObject).toString());
     ((Intent)localObject).putExtra("plugin", paramString);
-    PluginPreInstaller.a(this.a).sendBroadcast((Intent)localObject);
+    PluginPreInstaller.b(this.a).sendBroadcast((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginPreInstaller.1
  * JD-Core Version:    0.7.0.1
  */

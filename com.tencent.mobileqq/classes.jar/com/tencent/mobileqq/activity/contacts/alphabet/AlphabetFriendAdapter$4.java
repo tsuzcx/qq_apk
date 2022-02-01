@@ -15,17 +15,17 @@ class AlphabetFriendAdapter$4
     }
     AlphabetFriendAdapter localAlphabetFriendAdapter = this.this$0;
     Object[] arrayOfObject = this.a;
-    localAlphabetFriendAdapter.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)arrayOfObject[0]);
-    localAlphabetFriendAdapter.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject[1]);
-    localAlphabetFriendAdapter.jdField_a_of_type_ArrayOfJavaLangString = ((String[])arrayOfObject[2]);
+    localAlphabetFriendAdapter.a = ((LinkedHashMap)arrayOfObject[0]);
+    localAlphabetFriendAdapter.b = ((int[])arrayOfObject[1]);
+    localAlphabetFriendAdapter.c = ((String[])arrayOfObject[2]);
     AlphabetFriendAdapter.b(localAlphabetFriendAdapter);
-    this.this$0.c();
+    this.this$0.e();
     AlphabetFriendAdapter.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendAdapter.4
  * JD-Core Version:    0.7.0.1
  */

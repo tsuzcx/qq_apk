@@ -4,8 +4,8 @@ import UserGrowth.stSimpleMetaFeed;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.main.WSLauncher.VerticalPageLauncher;
 import com.tencent.biz.pubaccount.weishi_new.util.WSFeedParseUtils;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageOpenParams;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class WSVideoCollectionPageJumpAction
     return "vertical_layer_collection";
   }
   
-  private void a(Context paramContext, Map<String, String> paramMap, Object paramObject)
+  private void c(Context paramContext, Map<String, String> paramMap, Object paramObject)
   {
     String str2 = (String)paramMap.get("cid");
     String str3 = (String)paramMap.get("feed_id");
@@ -57,18 +57,18 @@ public class WSVideoCollectionPageJumpAction
     }
     paramObject = new Bundle();
     paramObject.putString("ext_data", this.a);
-    WSVerticalPageFragment.a(new WSVerticalPageOpenParams(paramContext, str4, this.c).a(0).d(str2).e(str3).a(localArrayList).a(paramMap).d(bool).a(TextUtils.equals(this.b, "miniapp")).a(paramObject));
+    WSLauncher.VerticalPageLauncher.a(new WSVerticalPageOpenParams(paramContext, str4, this.c).a(0).d(str2).e(str3).a(localArrayList).a(paramMap).d(bool).a(TextUtils.equals(this.b, "miniapp")).a(paramObject));
   }
   
   protected boolean a(Context paramContext, Map<String, String> paramMap, Object paramObject)
   {
-    a(paramContext, paramMap, paramObject);
+    c(paramContext, paramMap, paramObject);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.wsqqscheme.action.WSVideoCollectionPageJumpAction
  * JD-Core Version:    0.7.0.1
  */

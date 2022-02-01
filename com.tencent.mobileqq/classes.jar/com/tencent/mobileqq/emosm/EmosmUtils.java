@@ -7,6 +7,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.core.util.EmoticonPanelUtils;
 import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.data.MessageForAniSticker;
 import com.tencent.mobileqq.data.MessageForMarketFace;
 import com.tencent.mobileqq.emoticonview.EmotionPanelConstans;
 import com.tencent.mobileqq.magicface.model.MagicfaceResLoader;
@@ -29,17 +30,17 @@ public class EmosmUtils
   
   protected static int a()
   {
-    if (Utils.a())
+    if (Utils.b())
     {
-      if (Utils.b() < 1048576L)
+      if (Utils.c() < 1048576L)
       {
-        a(" RESULT_CODE_SDCARD less 1mb .");
+        e(" RESULT_CODE_SDCARD less 1mb .");
         return 11001;
       }
-      a(" RESULT_CODE_DOWNLOAD_OTHER_ERROR .");
+      e(" RESULT_CODE_DOWNLOAD_OTHER_ERROR .");
       return 11011;
     }
-    a(" RESULT_CODE_SDCARD_UNUSABLE .");
+    e(" RESULT_CODE_SDCARD_UNUSABLE .");
     return 11000;
   }
   
@@ -50,54 +51,42 @@ public class EmosmUtils
     case 5: 
     case 7: 
     default: 
-      a("default RESULT_CODE_OTHER_ERROR .");
+      e("default RESULT_CODE_OTHER_ERROR .");
       return 11011;
     case 15: 
-      a(" RESULT_CODE_IS_HTML .");
+      e(" RESULT_CODE_IS_HTML .");
       return 11021;
     case 14: 
-      a(" RESULT_CODE_HTTP_RESPONSE_NO_OK .");
+      e(" RESULT_CODE_HTTP_RESPONSE_NO_OK .");
       return 11016;
     case 13: 
-      a(" RESULT_CODE_URL_STRING_ILLEGAL .");
+      e(" RESULT_CODE_URL_STRING_ILLEGAL .");
       return 11014;
     case 12: 
       return b();
     case 11: 
-      a(" RESULT_CODE_SOCKET_EXCEPTION_ERROR .");
+      e(" RESULT_CODE_SOCKET_EXCEPTION_ERROR .");
       return 11012;
     case 10: 
-      a(" RESULT_CODE_NET_UNKNOWN_HOST ");
+      e(" RESULT_CODE_NET_UNKNOWN_HOST ");
       return 11002;
     case 9: 
-      a(" RESULT_CODE_NET_UNUSABLE .");
+      e(" RESULT_CODE_NET_UNUSABLE .");
       return 11003;
     case 8: 
-      a(" RESULT_CODE_CONTENT_LOSSY .");
+      e(" RESULT_CODE_CONTENT_LOSSY .");
       return 11006;
     case 6: 
-      a(" RESULT_CODE_USER_CANCEL .");
+      e(" RESULT_CODE_USER_CANCEL .");
       return 11007;
     case 4: 
       return a();
     case 3: 
-      a(" RESULT_CODE_NET_SO_TIMEOUT .");
+      e(" RESULT_CODE_NET_SO_TIMEOUT .");
       return 11005;
     }
-    a(" RESULT_CODE_NET_CONNECT_TIMEOUT .");
+    e(" RESULT_CODE_NET_CONNECT_TIMEOUT .");
     return 11004;
-  }
-  
-  public static int a(byte[] paramArrayOfByte, int paramInt)
-  {
-    int i = 0;
-    int j = 0;
-    while (i < paramInt)
-    {
-      j = j << 8 | paramArrayOfByte[i] & 0xFF;
-      i += 1;
-    }
-    return j;
   }
   
   public static int a(byte[] paramArrayOfByte, String paramString)
@@ -218,45 +207,11 @@ public class EmosmUtils
   
   public static Drawable a(int paramInt, String paramString)
   {
-    paramString = new File(a(paramInt, paramString));
+    paramString = new File(b(paramInt, paramString));
     if (paramString.exists()) {
       return URLDrawable.getDrawable(paramString, null);
     }
     return null;
-  }
-  
-  public static String a(int paramInt, String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(EmotionPanelConstans.emoticonPackageFolderPath.replace("[epId]", paramString));
-    if (paramInt != 2)
-    {
-      if (paramInt != 3)
-      {
-        if (paramInt != 4)
-        {
-          if (paramInt != 22)
-          {
-            if (paramInt == 23) {
-              localStringBuilder.append(a);
-            }
-          }
-          else {
-            localStringBuilder.append("drainage.png");
-          }
-        }
-        else {
-          localStringBuilder.append("gray.png");
-        }
-      }
-      else {
-        localStringBuilder.append("color.png");
-      }
-    }
-    else {
-      localStringBuilder.append("list.png");
-    }
-    return localStringBuilder.toString();
   }
   
   public static String a(int paramInt, String paramString1, String paramString2)
@@ -266,7 +221,7 @@ public class EmosmUtils
     localStringBuilder.append(paramString2);
     localStringBuilder.append(".png");
     a = localStringBuilder.toString();
-    return a(paramInt, paramString1);
+    return b(paramInt, paramString1);
   }
   
   public static String a(Context paramContext, Message paramMessage)
@@ -284,33 +239,14 @@ public class EmosmUtils
         paramContext.append("]");
         return paramContext.toString();
       }
-      return paramContext.getString(2131691922);
+      return paramContext.getString(2131888889);
     }
     return null;
   }
   
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    int i = EmoticonPanelUtils.a(paramString);
-    if (i == -1) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("https://i.gtimg.cn/club/item/parcel/");
-    localStringBuilder.append(i % 10);
-    localStringBuilder.append("/");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("/");
-    localStringBuilder.append("h5.zip");
-    return a("VIP_emosm", localStringBuilder.toString());
-  }
-  
   public static String a(String paramString, int paramInt)
   {
-    int i = EmoticonPanelUtils.a(paramString);
+    int i = EmoticonPanelUtils.b(paramString);
     if (i == -1) {
       return null;
     }
@@ -389,13 +325,6 @@ public class EmosmUtils
     return PkgTools.toHexStr(paramArrayOfByte).toLowerCase();
   }
   
-  protected static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.emoji.EmoDown", 2, paramString);
-    }
-  }
-  
   public static void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong)
   {
     SecurityUtile.xorInLimit(paramArrayOfByte, paramInt1, paramInt2, paramLong, 200);
@@ -405,48 +334,147 @@ public class EmosmUtils
   {
     boolean bool = NetworkUtil.isNetSupport(MobileQQ.getContext());
     if (!bool) {
-      QQToast.a(MobileQQ.getContext(), 2131699731, 0).a();
+      QQToast.makeText(MobileQQ.getContext(), 2131897764, 0).show();
     }
     return bool;
   }
   
   public static boolean a(String paramString)
   {
-    return EmoticonPanelUtils.a(paramString) != -1;
+    return EmoticonPanelUtils.b(paramString) != -1;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte)
+  {
+    return SecurityUtile.xorInLimit(paramArrayOfByte, 200);
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    if (!VersionUtils.b()) {
+      return new Cryptor().decrypt(paramArrayOfByte1, paramArrayOfByte2);
+    }
+    return new Cryptor().decrypt(paramArrayOfByte1, paramArrayOfByte2);
+  }
+  
+  public static char[] a(int paramInt1, int paramInt2)
+  {
+    return new char[] { 'ÿ', (char)(paramInt1 >> 8), (char)(paramInt1 & 0xFF), (char)paramInt2 };
+  }
+  
+  public static int[] a(char[] paramArrayOfChar)
+  {
+    return new int[] { b(new byte[] { (byte)paramArrayOfChar[0], (byte)paramArrayOfChar[1] }, 2), paramArrayOfChar[2] };
+  }
+  
+  protected static int b()
+  {
+    if (Utils.b())
+    {
+      if (Utils.c() < 1048576L)
+      {
+        e(" RESULT_CODE_SDCARD less 1mb .");
+        return 11001;
+      }
+      e(" RESULT_CODE_LOCAL_FILESYSTEM_FAIL .");
+      return 11013;
+    }
+    e(" RESULT_CODE_SDCARD_UNUSABLE .");
+    return 11000;
+  }
+  
+  public static int b(byte[] paramArrayOfByte, int paramInt)
+  {
+    int i = 0;
+    int j = 0;
+    while (i < paramInt)
+    {
+      j = j << 8 | paramArrayOfByte[i] & 0xFF;
+      i += 1;
+    }
+    return j;
+  }
+  
+  public static String b(int paramInt, String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(EmotionPanelConstans.emoticonPackageFolderPath.replace("[epId]", paramString));
+    if (paramInt != 2)
+    {
+      if (paramInt != 3)
+      {
+        if (paramInt != 4)
+        {
+          if (paramInt != 22)
+          {
+            if (paramInt == 23) {
+              localStringBuilder.append(a);
+            }
+          }
+          else {
+            localStringBuilder.append("drainage.png");
+          }
+        }
+        else {
+          localStringBuilder.append("gray.png");
+        }
+      }
+      else {
+        localStringBuilder.append("color.png");
+      }
+    }
+    else {
+      localStringBuilder.append("list.png");
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static String b(Context paramContext, Message paramMessage)
+  {
+    if ((paramMessage != null) && (paramMessage.msgData != null) && (paramMessage.msgData.length >= 1))
+    {
+      paramContext = new MessageForAniSticker();
+      paramContext.deserializeMsgData(paramMessage.msgData);
+      return paramContext.text;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageForAniSticker", 2, "Get Brief for notification when message null");
+    }
+    return "";
   }
   
   /* Error */
-  public static byte[] a(String paramString)
+  public static byte[] b(String paramString)
   {
     // Byte code:
-    //   0: new 138	java/io/File
+    //   0: new 139	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 143	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: invokevirtual 146	java/io/File:exists	()Z
+    //   5: invokespecial 144	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: invokevirtual 147	java/io/File:exists	()Z
     //   11: ifeq +102 -> 113
-    //   14: new 315	java/io/FileInputStream
+    //   14: new 347	java/io/FileInputStream
     //   17: dup
-    //   18: new 138	java/io/File
+    //   18: new 139	java/io/File
     //   21: dup
     //   22: aload_0
-    //   23: invokespecial 143	java/io/File:<init>	(Ljava/lang/String;)V
-    //   26: invokespecial 318	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   23: invokespecial 144	java/io/File:<init>	(Ljava/lang/String;)V
+    //   26: invokespecial 350	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   29: astore_1
     //   30: aload_1
     //   31: astore_0
     //   32: aload_1
-    //   33: invokevirtual 321	java/io/FileInputStream:available	()I
+    //   33: invokevirtual 353	java/io/FileInputStream:available	()I
     //   36: newarray byte
     //   38: astore_2
     //   39: aload_1
     //   40: astore_0
     //   41: aload_1
     //   42: aload_2
-    //   43: invokevirtual 325	java/io/FileInputStream:read	([B)I
+    //   43: invokevirtual 357	java/io/FileInputStream:read	([B)I
     //   46: pop
     //   47: aload_1
-    //   48: invokevirtual 328	java/io/FileInputStream:close	()V
+    //   48: invokevirtual 360	java/io/FileInputStream:close	()V
     //   51: aload_2
     //   52: areturn
     //   53: astore_2
@@ -463,11 +491,11 @@ public class EmosmUtils
     //   70: aload_1
     //   71: astore_0
     //   72: aload_2
-    //   73: invokevirtual 331	java/io/IOException:printStackTrace	()V
+    //   73: invokevirtual 363	java/io/IOException:printStackTrace	()V
     //   76: aload_1
     //   77: ifnull +36 -> 113
     //   80: aload_1
-    //   81: invokevirtual 328	java/io/FileInputStream:close	()V
+    //   81: invokevirtual 360	java/io/FileInputStream:close	()V
     //   84: aconst_null
     //   85: areturn
     //   86: astore_2
@@ -476,7 +504,7 @@ public class EmosmUtils
     //   89: aload_1
     //   90: astore_0
     //   91: aload_2
-    //   92: invokevirtual 332	java/io/FileNotFoundException:printStackTrace	()V
+    //   92: invokevirtual 364	java/io/FileNotFoundException:printStackTrace	()V
     //   95: aload_1
     //   96: ifnull +17 -> 113
     //   99: goto -19 -> 80
@@ -484,7 +512,7 @@ public class EmosmUtils
     //   103: aload_0
     //   104: ifnull +7 -> 111
     //   107: aload_0
-    //   108: invokevirtual 328	java/io/FileInputStream:close	()V
+    //   108: invokevirtual 360	java/io/FileInputStream:close	()V
     //   111: aload_1
     //   112: athrow
     //   113: aconst_null
@@ -527,7 +555,7 @@ public class EmosmUtils
     //   107	111	121	java/io/IOException
   }
   
-  public static byte[] a(String paramString, int paramInt)
+  public static byte[] b(String paramString, int paramInt)
   {
     if ((paramInt != 0) && (paramInt != 2) && (paramInt != 4))
     {
@@ -548,48 +576,20 @@ public class EmosmUtils
     return arrayOfByte;
   }
   
-  public static byte[] a(byte[] paramArrayOfByte)
+  public static byte[] b(byte[] paramArrayOfByte)
   {
-    return SecurityUtile.xorInLimit(paramArrayOfByte, 200);
+    SecurityUtile.xorInLimit(paramArrayOfByte, 0, paramArrayOfByte.length, 0L, 200);
+    return paramArrayOfByte;
   }
   
-  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static char[] b(int paramInt1, int paramInt2)
   {
-    if (!VersionUtils.b()) {
-      return new Cryptor().decrypt(paramArrayOfByte1, paramArrayOfByte2);
-    }
-    return new Cryptor().decrypt(paramArrayOfByte1, paramArrayOfByte2);
+    return new char[] { (char)(paramInt1 >> 8), (char)(paramInt1 & 0xFF), (char)paramInt2, 'ÿ' };
   }
   
-  public static char[] a(int paramInt1, int paramInt2)
+  public static String c(int paramInt, String paramString)
   {
-    return new char[] { 'ÿ', (char)(paramInt1 >> 8), (char)(paramInt1 & 0xFF), (char)paramInt2 };
-  }
-  
-  public static int[] a(char[] paramArrayOfChar)
-  {
-    return new int[] { a(new byte[] { (byte)paramArrayOfChar[0], (byte)paramArrayOfChar[1] }, 2), paramArrayOfChar[2] };
-  }
-  
-  protected static int b()
-  {
-    if (Utils.a())
-    {
-      if (Utils.b() < 1048576L)
-      {
-        a(" RESULT_CODE_SDCARD less 1mb .");
-        return 11001;
-      }
-      a(" RESULT_CODE_LOCAL_FILESYSTEM_FAIL .");
-      return 11013;
-    }
-    a(" RESULT_CODE_SDCARD_UNUSABLE .");
-    return 11000;
-  }
-  
-  public static String b(int paramInt, String paramString)
-  {
-    int i = EmoticonPanelUtils.a(paramString);
+    int i = EmoticonPanelUtils.b(paramString);
     if (i == -1) {
       return null;
     }
@@ -666,19 +666,17 @@ public class EmosmUtils
     return a("VIP_emosm", localStringBuilder1.toString());
   }
   
-  public static String b(String paramString)
+  public static byte[] c(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    paramString = b(paramString);
+    if (paramString != null) {
+      return b(paramString);
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(EmotionPanelConstans.emoticonPackageFolderPath.replace("[epId]", paramString));
-    localStringBuilder.append("h5.zip");
-    return localStringBuilder.toString();
+    return null;
   }
   
   /* Error */
-  public static boolean b(String paramString)
+  public static boolean d(String paramString)
   {
     // Byte code:
     //   0: iconst_0
@@ -691,18 +689,18 @@ public class EmosmUtils
     //   8: astore 7
     //   10: aconst_null
     //   11: astore 5
-    //   13: new 387	com/tencent/mobileqq/emosm/EmosmRandomAccessFile
+    //   13: new 404	com/tencent/mobileqq/emosm/EmosmRandomAccessFile
     //   16: dup
     //   17: aload_0
-    //   18: ldc_w 389
-    //   21: invokespecial 392	com/tencent/mobileqq/emosm/EmosmRandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   18: ldc_w 406
+    //   21: invokespecial 409	com/tencent/mobileqq/emosm/EmosmRandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   24: astore_0
     //   25: bipush 10
     //   27: newarray byte
     //   29: astore 5
     //   31: aload_0
     //   32: aload 5
-    //   34: invokevirtual 393	com/tencent/mobileqq/emosm/EmosmRandomAccessFile:read	([B)I
+    //   34: invokevirtual 410	com/tencent/mobileqq/emosm/EmosmRandomAccessFile:read	([B)I
     //   37: pop
     //   38: iload_3
     //   39: istore_2
@@ -730,21 +728,21 @@ public class EmosmUtils
     //   73: iconst_1
     //   74: istore_2
     //   75: aload_0
-    //   76: invokevirtual 394	com/tencent/mobileqq/emosm/EmosmRandomAccessFile:close	()V
+    //   76: invokevirtual 411	com/tencent/mobileqq/emosm/EmosmRandomAccessFile:close	()V
     //   79: iload_2
     //   80: ireturn
     //   81: astore_0
     //   82: aload_0
-    //   83: invokevirtual 331	java/io/IOException:printStackTrace	()V
+    //   83: invokevirtual 363	java/io/IOException:printStackTrace	()V
     //   86: iload_2
     //   87: istore_3
-    //   88: invokestatic 72	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   88: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   91: ifeq +103 -> 194
-    //   94: ldc_w 396
+    //   94: ldc_w 413
     //   97: iconst_2
-    //   98: ldc_w 398
+    //   98: ldc_w 415
     //   101: aload_0
-    //   102: invokestatic 402	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   102: invokestatic 418	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   105: iload_2
     //   106: ireturn
     //   107: astore 6
@@ -763,32 +761,32 @@ public class EmosmUtils
     //   132: aload_0
     //   133: astore 5
     //   135: aload 6
-    //   137: invokevirtual 331	java/io/IOException:printStackTrace	()V
+    //   137: invokevirtual 363	java/io/IOException:printStackTrace	()V
     //   140: aload_0
     //   141: astore 5
-    //   143: invokestatic 72	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   143: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   146: ifeq +18 -> 164
     //   149: aload_0
     //   150: astore 5
-    //   152: ldc_w 396
+    //   152: ldc_w 413
     //   155: iconst_2
-    //   156: ldc_w 404
+    //   156: ldc_w 420
     //   159: aload 6
-    //   161: invokestatic 402	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   161: invokestatic 418	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   164: iload 4
     //   166: istore_3
     //   167: aload_0
     //   168: ifnull +26 -> 194
     //   171: aload_0
-    //   172: invokevirtual 394	com/tencent/mobileqq/emosm/EmosmRandomAccessFile:close	()V
+    //   172: invokevirtual 411	com/tencent/mobileqq/emosm/EmosmRandomAccessFile:close	()V
     //   175: iconst_0
     //   176: ireturn
     //   177: astore_0
     //   178: aload_0
-    //   179: invokevirtual 331	java/io/IOException:printStackTrace	()V
+    //   179: invokevirtual 363	java/io/IOException:printStackTrace	()V
     //   182: iload 4
     //   184: istore_3
-    //   185: invokestatic 72	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   185: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   188: ifeq +6 -> 194
     //   191: goto -97 -> 94
     //   194: iload_3
@@ -796,18 +794,18 @@ public class EmosmUtils
     //   196: aload 5
     //   198: ifnull +36 -> 234
     //   201: aload 5
-    //   203: invokevirtual 394	com/tencent/mobileqq/emosm/EmosmRandomAccessFile:close	()V
+    //   203: invokevirtual 411	com/tencent/mobileqq/emosm/EmosmRandomAccessFile:close	()V
     //   206: goto +28 -> 234
     //   209: astore 5
     //   211: aload 5
-    //   213: invokevirtual 331	java/io/IOException:printStackTrace	()V
-    //   216: invokestatic 72	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   213: invokevirtual 363	java/io/IOException:printStackTrace	()V
+    //   216: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   219: ifeq +15 -> 234
-    //   222: ldc_w 396
+    //   222: ldc_w 413
     //   225: iconst_2
-    //   226: ldc_w 398
+    //   226: ldc_w 415
     //   229: aload 5
-    //   231: invokestatic 402	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   231: invokestatic 418	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   234: goto +5 -> 239
     //   237: aload_0
     //   238: athrow
@@ -839,29 +837,46 @@ public class EmosmUtils
     //   201	206	209	java/io/IOException
   }
   
-  public static byte[] b(String paramString)
+  protected static void e(String paramString)
   {
-    paramString = a(paramString);
-    if (paramString != null) {
-      return b(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.emoji.EmoDown", 2, paramString);
     }
-    return null;
   }
   
-  public static byte[] b(byte[] paramArrayOfByte)
+  public static String f(String paramString)
   {
-    SecurityUtile.xorInLimit(paramArrayOfByte, 0, paramArrayOfByte.length, 0L, 200);
-    return paramArrayOfByte;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    int i = EmoticonPanelUtils.b(paramString);
+    if (i == -1) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://i.gtimg.cn/club/item/parcel/");
+    localStringBuilder.append(i % 10);
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("/");
+    localStringBuilder.append("h5.zip");
+    return a("VIP_emosm", localStringBuilder.toString());
   }
   
-  public static char[] b(int paramInt1, int paramInt2)
+  public static String g(String paramString)
   {
-    return new char[] { (char)(paramInt1 >> 8), (char)(paramInt1 & 0xFF), (char)paramInt2, 'ÿ' };
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(EmotionPanelConstans.emoticonPackageFolderPath.replace("[epId]", paramString));
+    localStringBuilder.append("h5.zip");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.EmosmUtils
  * JD-Core Version:    0.7.0.1
  */

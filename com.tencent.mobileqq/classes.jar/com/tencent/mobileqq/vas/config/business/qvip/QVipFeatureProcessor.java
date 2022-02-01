@@ -15,7 +15,7 @@ public class QVipFeatureProcessor
     Object localObject1;
     try
     {
-      QVipFeatureConfig localQVipFeatureConfig = (QVipFeatureConfig)QConfigManager.a().a(690);
+      QVipFeatureConfig localQVipFeatureConfig = (QVipFeatureConfig)QConfigManager.b().b(690);
     }
     catch (Throwable localThrowable)
     {
@@ -33,11 +33,11 @@ public class QVipFeatureProcessor
   public QVipFeatureConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QVIP.SDK.QVipFeatureProcessor", 1, paramArrayOfQConfItem[0].a);
+      QLog.d("QVIP.SDK.QVipFeatureProcessor", 1, paramArrayOfQConfItem[0].b);
     }
     try
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (!TextUtils.isEmpty(paramArrayOfQConfItem))
       {
         paramArrayOfQConfItem = (QVipFeatureConfig)JSONConverter.a(paramArrayOfQConfItem, QVipFeatureConfig.class);
@@ -58,15 +58,15 @@ public class QVipFeatureProcessor
     return new QVipFeatureConfig();
   }
   
-  @NonNull
-  public QVipFeatureConfig c()
-  {
-    return new QVipFeatureConfig();
-  }
-  
   public Class<QVipFeatureConfig> clazz()
   {
     return QVipFeatureConfig.class;
+  }
+  
+  @NonNull
+  public QVipFeatureConfig e()
+  {
+    return new QVipFeatureConfig();
   }
   
   public int type()
@@ -76,7 +76,7 @@ public class QVipFeatureProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipFeatureProcessor
  * JD-Core Version:    0.7.0.1
  */

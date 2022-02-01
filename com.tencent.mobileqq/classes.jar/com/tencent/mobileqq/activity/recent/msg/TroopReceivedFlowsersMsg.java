@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class TroopReceivedFlowsersMsg
   extends AbstructRecentUserMsg
 {
-  public boolean a;
+  public boolean i = false;
   
   public TroopReceivedFlowsersMsg(Context paramContext)
   {
@@ -27,10 +27,9 @@ public class TroopReceivedFlowsersMsg
   
   public TroopReceivedFlowsersMsg(Context paramContext, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697687);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = HardCodeUtil.a(2131895460);
+    this.d = this.c;
+    this.i = paramBoolean;
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -47,51 +46,51 @@ public class TroopReceivedFlowsersMsg
       if ((paramObject instanceof TroopReceivedFlowsersMsg))
       {
         paramObject = (TroopReceivedFlowsersMsg)paramObject;
-        paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+        paramObject.h.b(paramMessageInfo.c);
         return paramObject;
       }
       paramObject = new TroopReceivedFlowsersMsg(BaseApplication.getContext());
-      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramObject.h = new MessageNavInfo(paramMessageInfo.c);
       return paramObject;
     }
     if ((paramMessageRecord instanceof MessageForDeliverGiftTips))
     {
       paramQQAppInterface = (MessageForDeliverGiftTips)paramMessageRecord;
       paramInt = 1;
-      int i = 1;
+      int j = 1;
       if ((paramObject instanceof TroopReceivedFlowsersMsg))
       {
         paramMessageRecord = (TroopReceivedFlowsersMsg)paramObject;
-        paramInt = i;
-        if (paramMessageRecord.jdField_a_of_type_Boolean)
+        paramInt = j;
+        if (paramMessageRecord.i)
         {
-          paramInt = i;
+          paramInt = j;
           if (!paramQQAppInterface.isToAll()) {
             paramInt = 0;
           }
         }
         paramObject = paramMessageRecord;
-        i = paramInt;
-        if (!paramMessageRecord.jdField_a_of_type_Boolean)
+        j = paramInt;
+        if (!paramMessageRecord.i)
         {
-          paramMessageRecord.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+          paramMessageRecord.h.b(paramMessageInfo.c);
           paramObject = paramMessageRecord;
-          i = paramInt;
+          j = paramInt;
         }
       }
       else
       {
         paramObject = new TroopReceivedFlowsersMsg(BaseApplication.getContext(), paramQQAppInterface.isToAll());
-        paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
-        i = paramInt;
+        paramObject.h = new MessageNavInfo(paramMessageInfo.c);
+        j = paramInt;
       }
-      if ((i != 0) && (!TextUtils.isEmpty(paramQQAppInterface.remindBrief)))
+      if ((j != 0) && (!TextUtils.isEmpty(paramQQAppInterface.remindBrief)))
       {
         paramMessageInfo = paramQQAppInterface.remindBrief.split("#");
         paramMessageRecord = new StringBuffer("[");
         paramMessageRecord.append(paramMessageInfo[0]);
         paramMessageRecord.append("]");
-        paramObject.jdField_a_of_type_JavaLangString = paramMessageRecord.toString();
+        paramObject.c = paramMessageRecord.toString();
       }
       return paramObject;
     }
@@ -105,15 +104,15 @@ public class TroopReceivedFlowsersMsg
     try
     {
       paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.optLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.optLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.optString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.optInt("color");
-      this.jdField_a_of_type_Boolean = paramArrayOfByte.optBoolean("isToAll");
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo == null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo();
+      this.a = paramArrayOfByte.optLong("uniseq");
+      this.b = paramArrayOfByte.optLong("shmsgseq");
+      this.c = paramArrayOfByte.optString("content");
+      this.f = paramArrayOfByte.optInt("color");
+      this.i = paramArrayOfByte.optBoolean("isToAll");
+      if (this.h == null) {
+        this.h = new MessageNavInfo();
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramArrayOfByte.getString("messageNavInfo"));
+      this.h.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
     }
     catch (JSONException paramArrayOfByte)
@@ -122,23 +121,23 @@ public class TroopReceivedFlowsersMsg
     }
   }
   
-  public byte[] a()
+  public byte[] b()
   {
-    return b();
+    return c();
   }
   
-  public byte[] b()
+  public byte[] c()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      localJSONObject.put("isToAll", this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a());
+      localJSONObject.put("uniseq", this.a);
+      localJSONObject.put("shmsgseq", this.b);
+      localJSONObject.put("content", this.c);
+      localJSONObject.put("color", this.f);
+      localJSONObject.put("isToAll", this.i);
+      if (this.h != null) {
+        localJSONObject.put("messageNavInfo", this.h.b());
       }
     }
     catch (JSONException localJSONException)
@@ -150,7 +149,7 @@ public class TroopReceivedFlowsersMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopReceivedFlowsersMsg
  * JD-Core Version:    0.7.0.1
  */

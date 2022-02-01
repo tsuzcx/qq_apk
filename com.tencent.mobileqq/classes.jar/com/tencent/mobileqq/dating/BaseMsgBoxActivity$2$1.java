@@ -12,16 +12,16 @@ class BaseMsgBoxActivity$2$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.mRecentAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.mRecentListData != null))
+    if ((this.a) && (this.d.a.mRecentAdapter != null) && (this.d.a.mRecentListData != null))
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.mRecentListData.iterator();
+      Iterator localIterator = this.d.a.mRecentListData.iterator();
       while (localIterator.hasNext())
       {
         RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-        if (localRecentBaseData.getRecentUserUin().equals(this.jdField_a_of_type_JavaLangString))
+        if (localRecentBaseData.getRecentUserUin().equals(this.b))
         {
-          localRecentBaseData.mTitleName = this.b;
-          this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.mRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.mBoxMsgType);
+          localRecentBaseData.mTitleName = this.c;
+          this.d.a.mRecentAdapter.a(this.b, this.d.a.mBoxMsgType);
         }
       }
     }
@@ -29,7 +29,7 @@ class BaseMsgBoxActivity$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class ComponentHeaderPolymeric$4$1
   
   public void run()
   {
-    ReadInJoyLogicEngine.a().d((int)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric$4.a.mPolymericInfo.f, this.jdField_a_of_type_Int - 1);
+    ReadInJoyLogicEngine.a().h((int)this.b.a.mPolymericInfo.m, this.a - 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderPolymeric.4.1
  * JD-Core Version:    0.7.0.1
  */

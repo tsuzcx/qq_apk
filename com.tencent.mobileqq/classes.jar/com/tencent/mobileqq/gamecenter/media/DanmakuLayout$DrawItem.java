@@ -7,22 +7,22 @@ import com.tencent.mobileqq.text.QQText;
 
 class DanmakuLayout$DrawItem
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = -1L;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DanmakuHost.Item jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item;
-  boolean jdField_a_of_type_Boolean = true;
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long;
-  float jdField_c_of_type_Float = 0.0F;
-  int jdField_c_of_type_Int = 0;
+  DanmakuHost.Item a;
+  long b = -1L;
+  boolean c = true;
+  float d;
+  int e;
+  float f;
+  long g;
+  int h = 0;
+  int i = 0;
+  float j = 0.0F;
+  TextView k;
   
   private DanmakuLayout$DrawItem(DanmakuLayout paramDanmakuLayout)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramDanmakuLayout.getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+    this.k = new TextView(paramDanmakuLayout.getContext());
+    this.k.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
   }
   
   private long a(float paramFloat)
@@ -41,84 +41,84 @@ class DanmakuLayout$DrawItem
   
   private void b()
   {
-    if (this.jdField_b_of_type_Float == 0.0F)
+    if (this.f == 0.0F)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(new QQText(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item.jdField_a_of_type_JavaLangString, 3, 16, -1));
-      this.jdField_a_of_type_AndroidWidgetTextView.measure(0, 0);
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredHeight();
-      this.jdField_c_of_type_Float = (this.jdField_b_of_type_Int + DanmakuLayout.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout));
-      if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item.jdField_b_of_type_Double == 0.0D) {
-        this.jdField_b_of_type_Long = a(this.jdField_b_of_type_Int);
+      this.k.setText(new QQText(this.a.a, 3, 16, -1));
+      this.k.measure(0, 0);
+      this.h = this.k.getMeasuredWidth();
+      this.i = this.k.getMeasuredHeight();
+      this.j = (this.h + DanmakuLayout.g(this.l));
+      if (this.a.d == 0.0D) {
+        this.g = a(this.h);
       } else {
-        this.jdField_b_of_type_Long = ((this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item.jdField_b_of_type_Double * 1000.0D));
+        this.g = ((this.a.d * 1000.0D));
       }
-      this.jdField_b_of_type_Float = (this.jdField_c_of_type_Float / (float)this.jdField_b_of_type_Long);
+      this.f = (this.j / (float)this.g);
     }
   }
   
   void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_Float = 0.0F;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
-    if (this.jdField_a_of_type_AndroidWidgetTextView.getParent() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout.removeView(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.a = null;
+    this.b = -1L;
+    this.c = false;
+    this.d = 0.0F;
+    this.e = 0;
+    this.f = 0.0F;
+    this.g = 0L;
+    this.h = 0;
+    this.i = 0;
+    this.j = 0.0F;
+    this.k.setText("");
+    this.k.setBackgroundDrawable(null);
+    if (this.k.getParent() != null) {
+      this.l.removeView(this.k);
     }
-    DanmakuLayout.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout).release(this);
+    DanmakuLayout.i(this.l).release(this);
   }
   
   void a(DanmakuHost.Item paramItem)
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item = paramItem;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, DanmakuLayout.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout));
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item.jdField_b_of_type_Int != 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item.jdField_b_of_type_Int);
+    this.a = paramItem;
+    this.k.setTextSize(0, DanmakuLayout.h(this.l));
+    if (this.a.f != 0) {
+      this.k.setBackgroundColor(this.a.f);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item.jdField_a_of_type_Int);
+    this.k.setTextColor(this.a.e);
   }
   
   boolean a(long paramLong, int paramInt)
   {
-    if (this.jdField_a_of_type_Long == -1L) {
-      this.jdField_a_of_type_Long = paramLong;
+    if (this.b == -1L) {
+      this.b = paramLong;
     }
     b();
-    long l = this.jdField_b_of_type_Long;
-    if (l != 0L) {
-      f = (float)(paramLong - this.jdField_a_of_type_Long) / (float)l;
-    } else if (paramLong < this.jdField_a_of_type_Long) {
-      f = 0.0F;
+    long l1 = this.g;
+    if (l1 != 0L) {
+      f1 = (float)(paramLong - this.b) / (float)l1;
+    } else if (paramLong < this.b) {
+      f1 = 0.0F;
     } else {
-      f = 1.0F;
+      f1 = 1.0F;
     }
-    if (f >= 1.0F) {
-      i = 1;
+    if (f1 >= 1.0F) {
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    this.jdField_a_of_type_Boolean = (0x1 ^ i);
-    float f = Math.max(Math.min(f, 1.0F), 0.0F);
-    this.jdField_a_of_type_Float = (this.jdField_c_of_type_Float * f);
-    this.jdField_a_of_type_Int = ((int)(DanmakuLayout.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout) - this.jdField_a_of_type_Float));
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    int i = this.jdField_a_of_type_Int;
-    localTextView.layout(i, paramInt, this.jdField_b_of_type_Int + i, this.jdField_c_of_type_Int + paramInt);
-    return this.jdField_a_of_type_Boolean;
+    this.c = (0x1 ^ m);
+    float f1 = Math.max(Math.min(f1, 1.0F), 0.0F);
+    this.d = (this.j * f1);
+    this.e = ((int)(DanmakuLayout.g(this.l) - this.d));
+    TextView localTextView = this.k;
+    int m = this.e;
+    localTextView.layout(m, paramInt, this.h + m, this.i + paramInt);
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.media.DanmakuLayout.DrawItem
  * JD-Core Version:    0.7.0.1
  */

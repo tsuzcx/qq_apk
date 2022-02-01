@@ -19,101 +19,100 @@ import java.util.Random;
 
 public class OcrControl
 {
-  public static final HashMap<String, String> b;
-  int jdField_a_of_type_Int;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  ARCloudFileUpload.ARCloudFileUploadCallback jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = new OcrControl.5(this);
-  ARCloudFileUpload jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload;
-  private OcrControl.OcrCallback jdField_a_of_type_ComTencentMobileqqOcrOcrControl$OcrCallback;
-  IOCRService jdField_a_of_type_ComTencentMobileqqOcrApiIOCRService;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  HashMap<String, ARCloudReqInfo> jdField_a_of_type_JavaUtilHashMap;
-  private Handler b;
+  public static final HashMap<String, String> h = new HashMap();
+  AppInterface a;
+  ARCloudFileUpload b;
+  HashMap<String, ARCloudReqInfo> c;
+  IOCRService d;
+  Handler e;
+  int f;
+  ARCloudFileUpload.ARCloudFileUploadCallback g = new OcrControl.5(this);
+  private HandlerThread i;
+  private Handler j;
+  private Object k = new Object();
+  private OcrControl.OcrCallback l;
   
   static
   {
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_JavaUtilHashMap.put("zh", HardCodeUtil.a(2131707794));
-    jdField_b_of_type_JavaUtilHashMap.put("en", HardCodeUtil.a(2131707813));
-    jdField_b_of_type_JavaUtilHashMap.put("af", HardCodeUtil.a(2131707817));
-    jdField_b_of_type_JavaUtilHashMap.put("ar", HardCodeUtil.a(2131707770));
-    jdField_b_of_type_JavaUtilHashMap.put("eu", HardCodeUtil.a(2131707805));
-    jdField_b_of_type_JavaUtilHashMap.put("be", HardCodeUtil.a(2131707768));
-    jdField_b_of_type_JavaUtilHashMap.put("hr", HardCodeUtil.a(2131707775));
-    jdField_b_of_type_JavaUtilHashMap.put("da", HardCodeUtil.a(2131707762));
-    jdField_b_of_type_JavaUtilHashMap.put("nl", HardCodeUtil.a(2131707798));
-    jdField_b_of_type_JavaUtilHashMap.put("fo", HardCodeUtil.a(2131707788));
-    jdField_b_of_type_JavaUtilHashMap.put("fi", HardCodeUtil.a(2131707779));
-    jdField_b_of_type_JavaUtilHashMap.put("fr", HardCodeUtil.a(2131707772));
-    jdField_b_of_type_JavaUtilHashMap.put("gd", HardCodeUtil.a(2131707811));
-    jdField_b_of_type_JavaUtilHashMap.put("de", HardCodeUtil.a(2131707763));
-    jdField_b_of_type_JavaUtilHashMap.put("he", HardCodeUtil.a(2131707793));
-    jdField_b_of_type_JavaUtilHashMap.put("hu", HardCodeUtil.a(2131707807));
-    jdField_b_of_type_JavaUtilHashMap.put("id", HardCodeUtil.a(2131707789));
-    jdField_b_of_type_JavaUtilHashMap.put("it", HardCodeUtil.a(2131707780));
-    jdField_b_of_type_JavaUtilHashMap.put("kr", HardCodeUtil.a(2131707803));
-    jdField_b_of_type_JavaUtilHashMap.put("lv", HardCodeUtil.a(2131707782));
-    jdField_b_of_type_JavaUtilHashMap.put("mk", HardCodeUtil.a(2131707815));
-    jdField_b_of_type_JavaUtilHashMap.put("mt", HardCodeUtil.a(2131707784));
-    jdField_b_of_type_JavaUtilHashMap.put("no", HardCodeUtil.a(2131707771));
-    jdField_b_of_type_JavaUtilHashMap.put("pt", HardCodeUtil.a(2131707795));
-    jdField_b_of_type_JavaUtilHashMap.put("rm", HardCodeUtil.a(2131707778));
-    jdField_b_of_type_JavaUtilHashMap.put("ro", HardCodeUtil.a(2131707776));
-    jdField_b_of_type_JavaUtilHashMap.put("sr", HardCodeUtil.a(2131707800));
-    jdField_b_of_type_JavaUtilHashMap.put("sk", HardCodeUtil.a(2131707802));
-    jdField_b_of_type_JavaUtilHashMap.put("sb", HardCodeUtil.a(2131707761));
-    jdField_b_of_type_JavaUtilHashMap.put("es", HardCodeUtil.a(2131707774));
-    jdField_b_of_type_JavaUtilHashMap.put("sx", HardCodeUtil.a(2131707783));
-    jdField_b_of_type_JavaUtilHashMap.put("sv", HardCodeUtil.a(2131707785));
-    jdField_b_of_type_JavaUtilHashMap.put("ts", HardCodeUtil.a(2131707767));
-    jdField_b_of_type_JavaUtilHashMap.put("tr", HardCodeUtil.a(2131707792));
-    jdField_b_of_type_JavaUtilHashMap.put("ur", HardCodeUtil.a(2131707816));
-    jdField_b_of_type_JavaUtilHashMap.put("vi", HardCodeUtil.a(2131707765));
-    jdField_b_of_type_JavaUtilHashMap.put("ji", HardCodeUtil.a(2131707758));
-    jdField_b_of_type_JavaUtilHashMap.put("sq", HardCodeUtil.a(2131707764));
-    jdField_b_of_type_JavaUtilHashMap.put("bg", HardCodeUtil.a(2131707773));
-    jdField_b_of_type_JavaUtilHashMap.put("ca", HardCodeUtil.a(2131707781));
-    jdField_b_of_type_JavaUtilHashMap.put("cs", HardCodeUtil.a(2131707808));
-    jdField_b_of_type_JavaUtilHashMap.put("et", HardCodeUtil.a(2131707806));
-    jdField_b_of_type_JavaUtilHashMap.put("fa", HardCodeUtil.a(2131707804));
-    jdField_b_of_type_JavaUtilHashMap.put("ga", HardCodeUtil.a(2131707801));
-    jdField_b_of_type_JavaUtilHashMap.put("el", HardCodeUtil.a(2131707810));
-    jdField_b_of_type_JavaUtilHashMap.put("hi", HardCodeUtil.a(2131707799));
-    jdField_b_of_type_JavaUtilHashMap.put("is", HardCodeUtil.a(2131707760));
-    jdField_b_of_type_JavaUtilHashMap.put("jp", HardCodeUtil.a(2131707814));
-    jdField_b_of_type_JavaUtilHashMap.put("lt", HardCodeUtil.a(2131707790));
-    jdField_b_of_type_JavaUtilHashMap.put("ms", HardCodeUtil.a(2131707759));
-    jdField_b_of_type_JavaUtilHashMap.put("pl", HardCodeUtil.a(2131707769));
-    jdField_b_of_type_JavaUtilHashMap.put("ru", HardCodeUtil.a(2131707766));
-    jdField_b_of_type_JavaUtilHashMap.put("sz", HardCodeUtil.a(2131707791));
-    jdField_b_of_type_JavaUtilHashMap.put("sl", HardCodeUtil.a(2131707797));
-    jdField_b_of_type_JavaUtilHashMap.put("th", HardCodeUtil.a(2131707787));
-    jdField_b_of_type_JavaUtilHashMap.put("tn", HardCodeUtil.a(2131707809));
-    jdField_b_of_type_JavaUtilHashMap.put("uk", HardCodeUtil.a(2131707786));
-    jdField_b_of_type_JavaUtilHashMap.put("ve", HardCodeUtil.a(2131707777));
-    jdField_b_of_type_JavaUtilHashMap.put("xh", HardCodeUtil.a(2131707812));
-    jdField_b_of_type_JavaUtilHashMap.put("zu", HardCodeUtil.a(2131707796));
+    h.put("zh", HardCodeUtil.a(2131905608));
+    h.put("en", HardCodeUtil.a(2131905627));
+    h.put("af", HardCodeUtil.a(2131905631));
+    h.put("ar", HardCodeUtil.a(2131905584));
+    h.put("eu", HardCodeUtil.a(2131905619));
+    h.put("be", HardCodeUtil.a(2131905582));
+    h.put("hr", HardCodeUtil.a(2131905589));
+    h.put("da", HardCodeUtil.a(2131905576));
+    h.put("nl", HardCodeUtil.a(2131905612));
+    h.put("fo", HardCodeUtil.a(2131905602));
+    h.put("fi", HardCodeUtil.a(2131905593));
+    h.put("fr", HardCodeUtil.a(2131905586));
+    h.put("gd", HardCodeUtil.a(2131905625));
+    h.put("de", HardCodeUtil.a(2131905577));
+    h.put("he", HardCodeUtil.a(2131905607));
+    h.put("hu", HardCodeUtil.a(2131905621));
+    h.put("id", HardCodeUtil.a(2131905603));
+    h.put("it", HardCodeUtil.a(2131905594));
+    h.put("kr", HardCodeUtil.a(2131905617));
+    h.put("lv", HardCodeUtil.a(2131905596));
+    h.put("mk", HardCodeUtil.a(2131905629));
+    h.put("mt", HardCodeUtil.a(2131905598));
+    h.put("no", HardCodeUtil.a(2131905585));
+    h.put("pt", HardCodeUtil.a(2131905609));
+    h.put("rm", HardCodeUtil.a(2131905592));
+    h.put("ro", HardCodeUtil.a(2131905590));
+    h.put("sr", HardCodeUtil.a(2131905614));
+    h.put("sk", HardCodeUtil.a(2131905616));
+    h.put("sb", HardCodeUtil.a(2131905575));
+    h.put("es", HardCodeUtil.a(2131905588));
+    h.put("sx", HardCodeUtil.a(2131905597));
+    h.put("sv", HardCodeUtil.a(2131905599));
+    h.put("ts", HardCodeUtil.a(2131905581));
+    h.put("tr", HardCodeUtil.a(2131905606));
+    h.put("ur", HardCodeUtil.a(2131905630));
+    h.put("vi", HardCodeUtil.a(2131905579));
+    h.put("ji", HardCodeUtil.a(2131905572));
+    h.put("sq", HardCodeUtil.a(2131905578));
+    h.put("bg", HardCodeUtil.a(2131905587));
+    h.put("ca", HardCodeUtil.a(2131905595));
+    h.put("cs", HardCodeUtil.a(2131905622));
+    h.put("et", HardCodeUtil.a(2131905620));
+    h.put("fa", HardCodeUtil.a(2131905618));
+    h.put("ga", HardCodeUtil.a(2131905615));
+    h.put("el", HardCodeUtil.a(2131905624));
+    h.put("hi", HardCodeUtil.a(2131905613));
+    h.put("is", HardCodeUtil.a(2131905574));
+    h.put("jp", HardCodeUtil.a(2131905628));
+    h.put("lt", HardCodeUtil.a(2131905604));
+    h.put("ms", HardCodeUtil.a(2131905573));
+    h.put("pl", HardCodeUtil.a(2131905583));
+    h.put("ru", HardCodeUtil.a(2131905580));
+    h.put("sz", HardCodeUtil.a(2131905605));
+    h.put("sl", HardCodeUtil.a(2131905611));
+    h.put("th", HardCodeUtil.a(2131905601));
+    h.put("tn", HardCodeUtil.a(2131905623));
+    h.put("uk", HardCodeUtil.a(2131905600));
+    h.put("ve", HardCodeUtil.a(2131905591));
+    h.put("xh", HardCodeUtil.a(2131905626));
+    h.put("zu", HardCodeUtil.a(2131905610));
   }
   
   public OcrControl(AppInterface paramAppInterface, OcrControl.OcrCallback paramOcrCallback, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl$OcrCallback = paramOcrCallback;
-    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload = new ARCloudFileUpload(paramAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqOcrApiIOCRService = ((IOCRService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOCRService.class, ""));
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramAppInterface;
+    this.l = paramOcrCallback;
+    this.b = new ARCloudFileUpload(paramAppInterface);
+    this.b.b();
+    this.c = new HashMap();
+    this.d = ((IOCRService)this.a.getRuntimeService(IOCRService.class, ""));
+    this.e = new Handler();
+    this.f = paramInt;
   }
   
   private ARCloudReqInfo a(String paramString)
   {
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      synchronized (this.c)
       {
         if (!TextUtils.isEmpty(paramString))
         {
@@ -124,7 +123,7 @@ public class OcrControl
             localStringBuilder.append(paramString);
             QLog.d("Q.ocr.control", 2, localStringBuilder.toString());
           }
-          paramString = (ARCloudReqInfo)this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+          paramString = (ARCloudReqInfo)this.c.remove(paramString);
           return paramString;
         }
       }
@@ -139,43 +138,43 @@ public class OcrControl
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 243	com/tencent/mobileqq/ocr/OcrControl:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   3: getfield 253	com/tencent/mobileqq/ocr/OcrControl:c	Ljava/util/HashMap;
     //   6: astore_2
     //   7: aload_2
     //   8: monitorenter
     //   9: aload_1
     //   10: ifnull +68 -> 78
     //   13: aload_1
-    //   14: getfield 308	com/tencent/mobileqq/ar/arengine/ARCloudReqInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   17: invokestatic 272	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   14: getfield 317	com/tencent/mobileqq/ar/arengine/ARCloudReqInfo:a	Ljava/lang/String;
+    //   17: invokestatic 282	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   20: ifne +58 -> 78
     //   23: aload_0
-    //   24: getfield 243	com/tencent/mobileqq/ocr/OcrControl:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   24: getfield 253	com/tencent/mobileqq/ocr/OcrControl:c	Ljava/util/HashMap;
     //   27: aload_1
-    //   28: getfield 308	com/tencent/mobileqq/ar/arengine/ARCloudReqInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   28: getfield 317	com/tencent/mobileqq/ar/arengine/ARCloudReqInfo:a	Ljava/lang/String;
     //   31: aload_1
-    //   32: invokevirtual 39	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   32: invokevirtual 49	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   35: pop
-    //   36: invokestatic 278	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   36: invokestatic 288	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   39: ifeq +39 -> 78
-    //   42: new 280	java/lang/StringBuilder
+    //   42: new 290	java/lang/StringBuilder
     //   45: dup
-    //   46: invokespecial 281	java/lang/StringBuilder:<init>	()V
+    //   46: invokespecial 291	java/lang/StringBuilder:<init>	()V
     //   49: astore_3
     //   50: aload_3
-    //   51: ldc_w 310
-    //   54: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: ldc_w 319
+    //   54: invokevirtual 297	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   57: pop
     //   58: aload_3
     //   59: aload_1
-    //   60: getfield 308	com/tencent/mobileqq/ar/arengine/ARCloudReqInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   63: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: getfield 317	com/tencent/mobileqq/ar/arengine/ARCloudReqInfo:a	Ljava/lang/String;
+    //   63: invokevirtual 297	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   66: pop
-    //   67: ldc_w 289
+    //   67: ldc_w 299
     //   70: iconst_2
     //   71: aload_3
-    //   72: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: invokestatic 297	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   72: invokevirtual 303	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   75: invokestatic 306	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   78: aload_2
     //   79: monitorexit
     //   80: aload_0
@@ -208,27 +207,22 @@ public class OcrControl
   
   private void a(Runnable paramRunnable)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.k)
     {
-      if (this.jdField_b_of_type_AndroidOsHandler != null) {
-        this.jdField_b_of_type_AndroidOsHandler.post(paramRunnable);
+      if (this.j != null) {
+        this.j.post(paramRunnable);
       }
       return;
     }
   }
   
-  public String a()
-  {
-    return String.format("%s_%s_%05d", new Object[] { this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(System.currentTimeMillis())), Integer.valueOf(new Random().nextInt(100000)) });
-  }
-  
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      if (this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a();
+      this.c.clear();
+      if (this.b != null) {
+        this.b.c();
       }
       if (QLog.isColorLevel()) {
         QLog.d("Q.ocr.control", 2, "stopRecog...");
@@ -242,27 +236,27 @@ public class OcrControl
     try
     {
       ARCloudReqInfo localARCloudReqInfo = new ARCloudReqInfo();
-      localARCloudReqInfo.jdField_a_of_type_JavaLangString = a();
-      localARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo = paramARCloudReqFileInfo;
-      localARCloudReqInfo.jdField_b_of_type_Int = 900000000;
-      localARCloudReqInfo.jdField_a_of_type_Int = 900000000;
-      localARCloudReqInfo.jdField_a_of_type_Long = 16L;
-      localARCloudReqInfo.jdField_c_of_type_Int = 0;
-      localARCloudReqInfo.jdField_b_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAppid());
-      localARCloudReqInfo.jdField_b_of_type_Long = Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-      localARCloudReqInfo.jdField_c_of_type_Long = System.currentTimeMillis();
+      localARCloudReqInfo.a = b();
+      localARCloudReqInfo.b = paramARCloudReqFileInfo;
+      localARCloudReqInfo.d = 900000000;
+      localARCloudReqInfo.c = 900000000;
+      localARCloudReqInfo.e = 16L;
+      localARCloudReqInfo.f = 0;
+      localARCloudReqInfo.o = String.valueOf(this.a.getAppid());
+      localARCloudReqInfo.p = Long.parseLong(this.a.getCurrentAccountUin());
+      localARCloudReqInfo.q = System.currentTimeMillis();
       ARCloudReqOcrInfo localARCloudReqOcrInfo = new ARCloudReqOcrInfo();
       if (!TextUtils.isEmpty(paramString)) {
-        localARCloudReqOcrInfo.jdField_a_of_type_JavaLangString = paramString;
+        localARCloudReqOcrInfo.a = paramString;
       }
-      localARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqOcrARCloudReqOcrInfo = localARCloudReqOcrInfo;
+      localARCloudReqInfo.m = localARCloudReqOcrInfo;
       a(localARCloudReqInfo);
-      paramString = localARCloudReqInfo.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new OcrControl.2(this, paramString), 3000L);
-      if (this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a(localARCloudReqInfo, this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback)) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new OcrControl.3(this, paramString, paramARCloudReqFileInfo), 30000L);
+      paramString = localARCloudReqInfo.a;
+      this.e.postDelayed(new OcrControl.2(this, paramString), 3000L);
+      if (this.b.a(localARCloudReqInfo, this.g)) {
+        this.e.postDelayed(new OcrControl.3(this, paramString, paramARCloudReqFileInfo), 30000L);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl$OcrCallback.a(3, null, paramARCloudReqFileInfo.jdField_b_of_type_JavaLangString, 0L);
+        this.l.a(3, null, paramARCloudReqFileInfo.e, 0L);
       }
       ThreadManager.post(new OcrControl.4(this, paramARCloudReqFileInfo), 5, null, false);
       return;
@@ -289,19 +283,24 @@ public class OcrControl
     a(new OcrControl.1(this, paramString1, paramBoolean, paramString2));
   }
   
-  public void b()
+  public String b()
+  {
+    return String.format("%s_%s_%05d", new Object[] { this.a.getCurrentAccountUin(), new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(System.currentTimeMillis())), Integer.valueOf(new Random().nextInt(100000)) });
+  }
+  
+  public void c()
   {
     try
     {
       QLog.i("Q.ocr.control", 1, "startUploadThread.");
-      if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+      if (this.i == null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("ocr_upload_thread");
         localStringBuilder.append(System.currentTimeMillis());
-        this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread(localStringBuilder.toString(), 0);
-        this.jdField_a_of_type_AndroidOsHandlerThread.start();
-        this.jdField_b_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+        this.i = ThreadManager.newFreeHandlerThread(localStringBuilder.toString(), 0);
+        this.i.start();
+        this.j = new Handler(this.i.getLooper());
       }
       return;
     }
@@ -312,46 +311,46 @@ public class OcrControl
     }
   }
   
-  public void c()
+  public void d()
   {
     try
     {
       QLog.i("Q.ocr.control", 1, "stopUploadThread.");
-      if (this.jdField_b_of_type_AndroidOsHandler != null) {
-        this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      if (this.j != null) {
+        this.j.removeCallbacksAndMessages(null);
       }
-      this.jdField_b_of_type_AndroidOsHandler = null;
-      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+      this.j = null;
+      if (this.i != null)
       {
-        this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-        this.jdField_a_of_type_AndroidOsHandlerThread.interrupt();
+        this.i.quit();
+        this.i.interrupt();
       }
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.i = null;
       return;
     }
     finally {}
   }
   
-  public void d()
+  public void e()
   {
-    b();
+    c();
     if (QLog.isColorLevel()) {
       QLog.d("Q.ocr.control", 2, "Ocr control start");
     }
   }
   
-  public void e()
+  public void f()
   {
-    c();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload;
+    d();
+    Object localObject = this.b;
     if (localObject != null) {
-      ((ARCloudFileUpload)localObject).a();
+      ((ARCloudFileUpload)localObject).c();
     }
-    localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    localObject = this.c;
     if (localObject != null) {
       ((HashMap)localObject).clear();
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.e.removeCallbacksAndMessages(null);
     if (QLog.isColorLevel()) {
       QLog.d("Q.ocr.control", 2, "Ocr control stop");
     }
@@ -359,7 +358,7 @@ public class OcrControl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrControl
  * JD-Core Version:    0.7.0.1
  */

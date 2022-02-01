@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
+import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
 import com.tencent.mobileqq.soload.biz.OnLoadListener;
 import com.tencent.mobileqq.soload.biz.entity.LoadExtResult;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +27,10 @@ final class CrossEngineResManager$2
       QLog.i("[cmshow]CrossEngineResManager", 1, localStringBuilder.toString());
       if ((CrossEngineResManager.a(paramLoadExtResult)) || (!CrossEngineResManager.b()))
       {
-        if (CrossEngineResManager.a(str2, ApolloConstant.j, false, true, true) != 0)
+        if (CmShowWnsUtils.Z()) {
+          CrossEngineResManager.c();
+        }
+        if (CrossEngineResManager.a(str2, ApolloConstant.k, false, true, true) != 0)
         {
           QLog.e("[cmshow]CrossEngineResManager", 1, "[CrossEngine] copy assets failed");
           paramLoadExtResult = this.a;
@@ -35,7 +39,7 @@ final class CrossEngineResManager$2
           }
           return;
         }
-        CrossEngineResManager.a(paramLoadExtResult);
+        CrossEngineResManager.b(paramLoadExtResult);
       }
       paramLoadExtResult = this.a;
       if (paramLoadExtResult != null) {
@@ -57,7 +61,7 @@ final class CrossEngineResManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.CrossEngineResManager.2
  * JD-Core Version:    0.7.0.1
  */

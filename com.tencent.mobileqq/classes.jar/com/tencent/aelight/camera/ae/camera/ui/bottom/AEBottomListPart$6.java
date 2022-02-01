@@ -14,14 +14,14 @@ class AEBottomListPart$6
   public void onClick(View paramView)
   {
     AEBottomListPart.a(this.a, true);
-    AEBottomListPart.a(this.a).countDown();
-    this.a.a.c();
-    AEBottomListPart.a(this.a).cancel();
+    AEBottomListPart.f(this.a).countDown();
+    this.a.e.g();
+    AEBottomListPart.g(this.a).cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart.6
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,18 @@ class ArkAppYYBDownloadModule$1$1
   
   public void run()
   {
-    if ((ArkAppYYBDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppYYBDownloadModule$1.a) != null) && (ArkAppYYBDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppYYBDownloadModule$1.a).size() > 0))
+    if ((ArkAppYYBDownloadModule.b(this.b.a) != null) && (ArkAppYYBDownloadModule.b(this.b.a).size() > 0))
     {
       int i = 0;
-      while (i < ArkAppYYBDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppYYBDownloadModule$1.a).size())
+      while (i < ArkAppYYBDownloadModule.b(this.b.a).size())
       {
-        Object localObject = ArkAppYYBDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppYYBDownloadModule$1.a, ((Long)ArkAppYYBDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppYYBDownloadModule$1.a).get(i)).longValue());
-        if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+        Object localObject = ArkAppYYBDownloadModule.a(this.b.a, ((Long)ArkAppYYBDownloadModule.b(this.b.a).get(i)).longValue());
+        if ((localObject != null) && (!TextUtils.isEmpty(this.a)))
         {
           ark.VariantWrapper localVariantWrapper1 = ((ark.VariantWrapper)localObject).Create();
           localVariantWrapper1.SetNull();
           ark.VariantWrapper localVariantWrapper2 = ((ark.VariantWrapper)localObject).Create();
-          localVariantWrapper1.SetTableAsJsonString(this.jdField_a_of_type_JavaLangString);
+          localVariantWrapper1.SetTableAsJsonString(this.a);
           ((ark.VariantWrapper)localObject).InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper1 }, localVariantWrapper2);
           localVariantWrapper2.Reset();
           localVariantWrapper1.Reset();
@@ -31,7 +31,7 @@ class ArkAppYYBDownloadModule$1$1
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("onDownloadState callback : ");
-            ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(this.a);
             QLog.i("ArkApp.downloadyyb.module", 1, ((StringBuilder)localObject).toString());
           }
           i += 1;
@@ -46,7 +46,7 @@ class ArkAppYYBDownloadModule$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppYYBDownloadModule.1.1
  * JD-Core Version:    0.7.0.1
  */

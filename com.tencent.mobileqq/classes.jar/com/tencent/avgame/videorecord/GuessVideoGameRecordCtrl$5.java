@@ -12,9 +12,9 @@ class GuessVideoGameRecordCtrl$5
   
   public void run()
   {
-    if (this.this$0.d())
+    if (this.this$0.k())
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       float f1 = (i >> 16 & 0xFF) / 255.0F;
       float f2 = (i >> 8 & 0xFF) / 255.0F;
       float f3 = (i & 0xFF) / 255.0F;
@@ -24,17 +24,17 @@ class GuessVideoGameRecordCtrl$5
       } else {
         this.this$0.a(false, 0.0F, 0.0F, 0.0F, 0.0F);
       }
-      this.jdField_a_of_type_AndroidViewView.destroyDrawingCache();
-      Bitmap localBitmap = this.jdField_a_of_type_AndroidViewView.getDrawingCache();
+      this.b.destroyDrawingCache();
+      Bitmap localBitmap = this.b.getDrawingCache();
       if (localBitmap != null)
       {
-        int k = this.jdField_a_of_type_AndroidViewView.getLeft();
-        int m = this.jdField_a_of_type_AndroidViewView.getTop();
+        int k = this.b.getLeft();
+        int m = this.b.getTop();
         int j = k;
         i = m;
-        if (GuessVideoGameRecordCtrl.a(this.this$0) != null)
+        if (GuessVideoGameRecordCtrl.h(this.this$0) != null)
         {
-          RectF localRectF = GuessVideoGameRecordCtrl.a(this.this$0).a();
+          RectF localRectF = GuessVideoGameRecordCtrl.h(this.this$0).b();
           j = k;
           i = m;
           if (localRectF != null)
@@ -43,11 +43,11 @@ class GuessVideoGameRecordCtrl$5
             f2 = localRectF.left;
             f3 = localRectF.bottom;
             f4 = localRectF.top;
-            j = (int)((f1 - f2 - this.jdField_a_of_type_AndroidViewView.getWidth()) / 2.0F);
-            i = (int)((f3 - f4 - this.jdField_a_of_type_AndroidViewView.getHeight()) / 2.0F);
+            j = (int)((f1 - f2 - this.b.getWidth()) / 2.0F);
+            i = (int)((f3 - f4 - this.b.getHeight()) / 2.0F);
           }
         }
-        this.this$0.b(localBitmap, this.jdField_a_of_type_AndroidViewView.getWidth(), this.jdField_a_of_type_AndroidViewView.getHeight(), j, i);
+        this.this$0.b(localBitmap, this.b.getWidth(), this.b.getHeight(), j, i);
       }
     }
   }

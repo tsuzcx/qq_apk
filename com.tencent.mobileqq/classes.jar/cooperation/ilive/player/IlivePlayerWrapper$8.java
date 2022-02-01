@@ -11,7 +11,7 @@ class IlivePlayerWrapper$8
   
   public void run()
   {
-    if (IlivePlayerWrapper.a(this.this$0) == null)
+    if (IlivePlayerWrapper.j(this.this$0) == null)
     {
       QLog.e("CachePlayer", 1, "set loadUrl mPlayer = null");
       return;
@@ -20,11 +20,11 @@ class IlivePlayerWrapper$8
     localStringBuilder.append("set loadUrl playUrl = ");
     localStringBuilder.append(this.a);
     QLog.i("CachePlayer", 1, localStringBuilder.toString());
-    IlivePlayerWrapper.b(this.this$0).set(true);
+    IlivePlayerWrapper.k(this.this$0).set(true);
     try
     {
-      IlivePlayerWrapper.a(this.this$0).setDataSource(this.a);
-      IlivePlayerWrapper.a(this.this$0).prepareAsync();
+      IlivePlayerWrapper.j(this.this$0).setDataSource(this.a);
+      IlivePlayerWrapper.j(this.this$0).prepareAsync();
     }
     catch (Throwable localThrowable)
     {
@@ -35,7 +35,7 @@ class IlivePlayerWrapper$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.player.IlivePlayerWrapper.8
  * JD-Core Version:    0.7.0.1
  */

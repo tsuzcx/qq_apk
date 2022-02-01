@@ -6,7 +6,7 @@ import java.util.HashMap;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.MD5;
 import oicq.wlogin_sdk.tools.cryptor;
-import oicq.wlogin_sdk.tools.f;
+import oicq.wlogin_sdk.tools.g;
 import oicq.wlogin_sdk.tools.util;
 
 public class c
@@ -76,7 +76,7 @@ public class c
         localStringBuilder.append(i);
         localStringBuilder.append(" tlv");
         util.LOGI(localStringBuilder.toString());
-        i = f.a(i, paramArrayOfByte, paramInt, paramArrayOfByte.length - paramInt, paramk.C);
+        i = g.a(i, paramArrayOfByte, paramInt, paramArrayOfByte.length - paramInt, paramk.C);
         if (i != 0)
         {
           paramArrayOfByte = new StringBuilder();
@@ -258,7 +258,7 @@ public class c
     if (i > paramArrayOfByte.length) {
       return 0;
     }
-    i = f.a(util.buf_to_int16(paramArrayOfByte, j), paramArrayOfByte, i, paramArrayOfByte.length - i, paramk.C);
+    i = g.a(util.buf_to_int16(paramArrayOfByte, j), paramArrayOfByte, i, paramArrayOfByte.length - i, paramk.C);
     if (i != 0)
     {
       paramArrayOfByte = new StringBuilder();
@@ -356,7 +356,7 @@ public class c
       if (i > localObject.length) {
         return -1009;
       }
-      j = f.a(util.buf_to_int16((byte[])localObject, j), (byte[])localObject, i, localObject.length - i, paramk.C);
+      j = g.a(util.buf_to_int16((byte[])localObject, j), (byte[])localObject, i, localObject.length - i, paramk.C);
       if (j != 0)
       {
         paramArrayOfByte = new StringBuilder();
@@ -473,7 +473,7 @@ public class c
           util.LOGI("no tlv in rsp", "");
           return -1;
         }
-        i = f.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, paramk.C);
+        i = g.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, paramk.C);
         if (i != 0)
         {
           paramArrayOfByte = new StringBuilder();
@@ -537,7 +537,7 @@ public class c
           util.LOGI("no tlv in rsp", "");
           return -1;
         }
-        i = f.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, paramk.C);
+        i = g.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, paramk.C);
         if (i != 0)
         {
           paramArrayOfByte = new StringBuilder();
@@ -606,7 +606,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.a.c
  * JD-Core Version:    0.7.0.1
  */

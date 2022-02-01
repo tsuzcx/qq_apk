@@ -16,12 +16,12 @@ import com.tencent.mobileqq.utils.ViewUtils;
 public class OperationTitleBarView
   extends FrameLayout
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean jdField_a_of_type_Boolean;
+  private RelativeLayout a;
   private ImageView b;
   private ImageView c;
+  private TextView d;
+  private ImageView e;
+  private boolean f;
   
   public OperationTitleBarView(Context paramContext)
   {
@@ -35,30 +35,30 @@ public class OperationTitleBarView
     a();
   }
   
-  private float a()
-  {
-    float f2 = Utils.a(ViewUtils.a(getContext()), getResources());
-    float f1 = f2;
-    if (f2 == 0.0F) {
-      f1 = 25.0F;
-    }
-    return f1 + 48.0F;
-  }
-  
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(1929641989, this, false));
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, Utils.a(a(), getResources()));
-    addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, localLayoutParams);
+    this.a = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(1929773085, this, false));
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, Utils.a(getTotalHeight(), getResources()));
+    addView(this.a, localLayoutParams);
     b();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(1929576459));
-    this.b = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(1929576461));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(1929576462));
-    this.c = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(1929576460));
+    this.b = ((ImageView)this.a.findViewById(1929707559));
+    this.c = ((ImageView)this.a.findViewById(1929707561));
+    this.d = ((TextView)this.a.findViewById(1929707562));
+    this.e = ((ImageView)this.a.findViewById(1929707560));
+  }
+  
+  private float getTotalHeight()
+  {
+    float f2 = Utils.a(ViewUtils.getStatusBarHeight(getContext()), getResources());
+    float f1 = f2;
+    if (f2 == 0.0F) {
+      f1 = 25.0F;
+    }
+    return f1 + 48.0F;
   }
   
   public void a(int paramInt)
@@ -67,36 +67,36 @@ public class OperationTitleBarView
     float f2 = paramInt;
     if (f2 < f1)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(f2 / f1);
-      if (!this.jdField_a_of_type_Boolean) {
+      this.b.setAlpha(f2 / f1);
+      if (!this.f) {
         return;
       }
-      this.b.setImageResource(1929510914);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(1929445377));
-      this.c.setImageResource(1929510912);
-      this.jdField_a_of_type_Boolean = false;
+      this.c.setImageResource(1929641993);
+      this.d.setTextColor(getResources().getColor(1929510918));
+      this.e.setImageResource(1929641984);
+      this.f = false;
       return;
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.f) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-    this.b.setImageResource(1929510915);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(1929445376));
-    this.c.setImageResource(1929510913);
-    this.jdField_a_of_type_Boolean = true;
+    this.b.setAlpha(1.0F);
+    this.c.setImageResource(1929641994);
+    this.d.setTextColor(getResources().getColor(1929510912));
+    this.e.setImageResource(1929641985);
+    this.f = true;
   }
   
   public void setOperationTitleClickListener(OperationTitleBarView.OperationTitleClickListener paramOperationTitleClickListener)
   {
-    this.b.setOnClickListener(new OperationTitleBarView.1(this, paramOperationTitleClickListener));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new OperationTitleBarView.2(this, paramOperationTitleClickListener));
-    this.c.setOnClickListener(new OperationTitleBarView.3(this, paramOperationTitleClickListener));
+    this.c.setOnClickListener(new OperationTitleBarView.1(this, paramOperationTitleClickListener));
+    this.d.setOnClickListener(new OperationTitleBarView.2(this, paramOperationTitleClickListener));
+    this.e.setOnClickListener(new OperationTitleBarView.3(this, paramOperationTitleClickListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.operationh5.OperationTitleBarView
  * JD-Core Version:    0.7.0.1
  */

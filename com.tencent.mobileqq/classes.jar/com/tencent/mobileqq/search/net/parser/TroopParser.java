@@ -15,7 +15,7 @@ public class TroopParser
 {
   ISearchResultGroupModel a(SearchResult paramSearchResult, List<ISearchResultModel> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    SearchStatisticsConstants.a(80);
+    SearchStatisticsConstants.b(80);
     return new GroupNetSearchModelTroop(paramSearchResult, paramList, paramString1, paramBoolean);
   }
   
@@ -31,7 +31,7 @@ public class TroopParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.net.parser.TroopParser
  * JD-Core Version:    0.7.0.1
  */

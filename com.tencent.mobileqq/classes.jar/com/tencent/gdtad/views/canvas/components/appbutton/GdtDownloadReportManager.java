@@ -22,62 +22,37 @@ import java.util.concurrent.ConcurrentHashMap;
 public class GdtDownloadReportManager
   implements AdRefreshCallback
 {
-  private static volatile GdtDownloadReportManager jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager;
-  private AdAppBtnData jdField_a_of_type_ComTencentAdTangramViewsCanvasComponentsAppbuttonAdAppBtnData;
-  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-  private DownloadListener jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new GdtDownloadReportManager.1(this);
-  private final String jdField_a_of_type_JavaLangString = "GdtDownloadReportManager";
-  private ConcurrentHashMap<String, GdtAd> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, GdtAd> b = new ConcurrentHashMap();
+  private static volatile GdtDownloadReportManager b;
+  private final String a = "GdtDownloadReportManager";
+  private GdtAd c;
+  private AdAppBtnData d;
+  private ConcurrentHashMap<String, GdtAd> e = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, GdtAd> f = new ConcurrentHashMap();
+  private DownloadListener g = new GdtDownloadReportManager.1(this);
   
   private GdtDownloadReportManager()
   {
-    a();
+    b();
   }
   
   public static GdtDownloadReportManager a()
   {
-    if (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager == null) {
-          jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager = new GdtDownloadReportManager();
+        if (b == null) {
+          b = new GdtDownloadReportManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager;
-  }
-  
-  private String a(String paramString)
-  {
-    Object localObject1 = null;
-    try
-    {
-      paramString = BaseApplicationImpl.getApplication().getApplicationContext().getPackageManager().getPackageInfo(paramString, 64).signatures;
-      Object localObject2 = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject2).update(paramString[0].toByteArray());
-      localObject2 = AdHexUtil.bytes2HexString(((MessageDigest)localObject2).digest());
-      paramString = localObject1;
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        paramString = ((String)localObject2).toUpperCase();
-      }
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return null;
-  }
-  
-  private void a()
-  {
-    GdtLog.a("GdtDownloadReportManager", "registerDownloadListener: ");
-    DownloadManagerV2.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
+    return b;
   }
   
   private void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    this.b.remove(paramString);
+    this.e.remove(paramString);
+    this.f.remove(paramString);
   }
   
   private boolean a(DownloadInfo paramDownloadInfo, GdtAd paramGdtAd)
@@ -117,6 +92,31 @@ public class GdtDownloadReportManager
     return bool1;
   }
   
+  private String b(String paramString)
+  {
+    Object localObject1 = null;
+    try
+    {
+      paramString = BaseApplicationImpl.getApplication().getApplicationContext().getPackageManager().getPackageInfo(paramString, 64).signatures;
+      Object localObject2 = MessageDigest.getInstance("MD5");
+      ((MessageDigest)localObject2).update(paramString[0].toByteArray());
+      localObject2 = AdHexUtil.bytes2HexString(((MessageDigest)localObject2).digest());
+      paramString = localObject1;
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        paramString = ((String)localObject2).toUpperCase();
+      }
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return null;
+  }
+  
+  private void b()
+  {
+    GdtLog.a("GdtDownloadReportManager", "registerDownloadListener: ");
+    DownloadManagerV2.a().a(this.g);
+  }
+  
   public void a(GdtAd paramGdtAd, int paramInt, boolean paramBoolean)
   {
     if (paramInt == 0)
@@ -137,22 +137,22 @@ public class GdtDownloadReportManager
       GdtLog.d("GdtDownloadReportManager", "appId isEmpty");
       return;
     }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramGdtAd);
+    if (!this.e.containsKey(paramString)) {
+      this.e.put(paramString, paramGdtAd);
     }
-    this.jdField_a_of_type_ComTencentAdTangramViewsCanvasComponentsAppbuttonAdAppBtnData = paramAdAppBtnData;
+    this.d = paramAdAppBtnData;
   }
   
   public void onAdRefresh(Ad paramAd)
   {
     if ((paramAd instanceof GdtAd)) {
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)paramAd);
+      this.c = ((GdtAd)paramAd);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.appbutton.GdtDownloadReportManager
  * JD-Core Version:    0.7.0.1
  */

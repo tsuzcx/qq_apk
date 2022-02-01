@@ -33,8 +33,8 @@ public final class GdtCanvasFragment
     if ((localObject != null) && (((AdCanvasView)localObject).getData() != null) && (this.a.getData().isValid()))
     {
       localObject = new GdtActionReporter.Params();
-      ((GdtActionReporter.Params)localObject).jdField_a_of_type_ComTencentAdTangramAd = this.a.getData().ad;
-      ((GdtActionReporter.Params)localObject).jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(102);
+      ((GdtActionReporter.Params)localObject).a = this.a.getData().ad;
+      ((GdtActionReporter.Params)localObject).b.landing_page_action_type.set(102);
       GdtActionReporter.a((GdtActionReporter.Params)localObject);
       return;
     }
@@ -71,8 +71,8 @@ public final class GdtCanvasFragment
     if ((localObject != null) && (((AdCanvasView)localObject).getData() != null) && (this.a.getData().isValid()))
     {
       localObject = new GdtActionReporter.Params();
-      ((GdtActionReporter.Params)localObject).jdField_a_of_type_ComTencentAdTangramAd = this.a.getData().ad;
-      ((GdtActionReporter.Params)localObject).jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(103);
+      ((GdtActionReporter.Params)localObject).a = this.a.getData().ad;
+      ((GdtActionReporter.Params)localObject).b.landing_page_action_type.set(103);
       GdtActionReporter.a((GdtActionReporter.Params)localObject);
       return;
     }
@@ -174,7 +174,7 @@ public final class GdtCanvasFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.GdtCanvasFragment
  * JD-Core Version:    0.7.0.1
  */

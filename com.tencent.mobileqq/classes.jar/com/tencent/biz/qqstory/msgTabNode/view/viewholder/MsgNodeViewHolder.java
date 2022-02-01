@@ -18,50 +18,49 @@ public class MsgNodeViewHolder
   extends BaseViewHolder<MsgTabNodeInfo>
 {
   private Drawable a;
-  public StoryMsgNodeFrameLayout a;
+  public StoryMsgNodeFrameLayout c = (StoryMsgNodeFrameLayout)this.itemView;
   
   public MsgNodeViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout = ((StoryMsgNodeFrameLayout)this.itemView);
   }
   
   @CallSuper
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     super.a(paramMsgTabNodeInfo);
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setTag(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
+    this.c.setTag(paramMsgTabNodeInfo.d);
     b(paramMsgTabNodeInfo);
   }
   
   protected void b(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setDisplayState(0);
-    if ((paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList != null) && (!paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.size(), paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.size() - paramMsgTabNodeInfo.b);
+    this.c.setDisplayState(0);
+    if ((paramMsgTabNodeInfo.e != null) && (!paramMsgTabNodeInfo.e.isEmpty())) {
+      this.c.a(paramMsgTabNodeInfo.e.size(), paramMsgTabNodeInfo.e.size() - paramMsgTabNodeInfo.i);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(paramMsgTabNodeInfo);
+    this.c.a(paramMsgTabNodeInfo);
   }
   
   protected void b(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a().getResources().getDrawable(2130846843);
+    if (this.a == null) {
+      this.a = a().getResources().getDrawable(2130848395);
     }
-    RoundBorderImageView localRoundBorderImageView = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    UIUtils.a(localRoundBorderImageView, paramString, localDrawable, localDrawable, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_Int, "msg_tab_thumb");
+    RoundBorderImageView localRoundBorderImageView = this.c.a;
+    Drawable localDrawable = this.a;
+    UIUtils.a(localRoundBorderImageView, paramString, localDrawable, localDrawable, this.c.c, this.c.b, "msg_tab_thumb");
   }
   
   protected void c(String paramString)
   {
-    Drawable localDrawable = a().getResources().getDrawable(2130846843);
+    Drawable localDrawable = a().getResources().getDrawable(2130848395);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mMemoryCacheKeySuffix = "msg_tab_thumb";
     localURLDrawableOptions.mPlayGifImage = true;
     localURLDrawableOptions.mGifRoundCorner = UIUtils.a(a(), 3.0F);
-    localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_Int;
-    localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b;
+    localURLDrawableOptions.mRequestHeight = this.c.b;
+    localURLDrawableOptions.mRequestWidth = this.c.c;
     localURLDrawableOptions.mLoadingDrawable = localDrawable;
     localURLDrawableOptions.mFailedDrawable = localDrawable;
     paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
@@ -73,12 +72,12 @@ public class MsgNodeViewHolder
         paramString.restartDownload();
       }
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageDrawable(paramString);
+    this.c.a.setImageDrawable(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeViewHolder
  * JD-Core Version:    0.7.0.1
  */

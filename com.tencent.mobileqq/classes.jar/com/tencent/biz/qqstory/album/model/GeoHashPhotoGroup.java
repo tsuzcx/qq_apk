@@ -7,14 +7,14 @@ import java.util.List;
 
 public class GeoHashPhotoGroup
 {
-  public GeoHashUtils.Gps a;
-  public AddressItem a;
   public String a;
-  public List<StoryAlbum.PicInfo> a;
+  public List<StoryAlbum.PicInfo> b;
+  public AddressItem c;
+  public GeoHashUtils.Gps d;
   
   public GeoHashPhotoGroup(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public boolean equals(Object paramObject)
@@ -26,7 +26,7 @@ public class GeoHashPhotoGroup
       return true;
     }
     if ((paramObject instanceof GeoHashPhotoGroup)) {
-      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((GeoHashPhotoGroup)paramObject).jdField_a_of_type_JavaLangString);
+      return TextUtils.equals(this.a, ((GeoHashPhotoGroup)paramObject).a);
     }
     return false;
   }
@@ -35,9 +35,9 @@ public class GeoHashPhotoGroup
   {
     StringBuilder localStringBuilder = new StringBuilder("GeoHashPhotoGroup=[");
     localStringBuilder.append("geohashString:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("picList size:");
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     int i;
     if (localList == null) {
       i = 0;
@@ -50,7 +50,7 @@ public class GeoHashPhotoGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.model.GeoHashPhotoGroup
  * JD-Core Version:    0.7.0.1
  */

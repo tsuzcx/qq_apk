@@ -42,7 +42,7 @@ class OpenApiManager$3
           i = -9;
         }
         ((Intent)localObject).putExtra("rs_code", i);
-        BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject, paramString.c);
+        BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject, paramString.f);
       }
     }
   }
@@ -54,7 +54,7 @@ class OpenApiManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.openapi.OpenApiManager.3
  * JD-Core Version:    0.7.0.1
  */

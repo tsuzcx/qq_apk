@@ -2,18 +2,18 @@ package com.tencent.av.share;
 
 class AVSchema$Info
 {
-  int jdField_a_of_type_Int = 99;
-  String jdField_a_of_type_JavaLangString = null;
+  String a = null;
   String b = null;
+  int c = 99;
   
   public String toString()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.AVSchema.Info
  * JD-Core Version:    0.7.0.1
  */

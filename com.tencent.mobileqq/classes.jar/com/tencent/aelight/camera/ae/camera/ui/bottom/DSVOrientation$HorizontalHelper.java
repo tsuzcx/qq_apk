@@ -25,7 +25,7 @@ public class DSVOrientation$HorizontalHelper
   
   public void a(int paramInt, RecyclerViewProxy paramRecyclerViewProxy)
   {
-    paramRecyclerViewProxy.a(paramInt);
+    paramRecyclerViewProxy.b(paramInt);
   }
   
   public void a(Point paramPoint1, int paramInt, Point paramPoint2)
@@ -52,11 +52,11 @@ public class DSVOrientation$HorizontalHelper
   
   public boolean a(AEBottomListScrollLayoutManager paramAEBottomListScrollLayoutManager)
   {
-    View localView1 = paramAEBottomListScrollLayoutManager.a();
-    View localView2 = paramAEBottomListScrollLayoutManager.b();
-    int i = -paramAEBottomListScrollLayoutManager.c();
+    View localView1 = paramAEBottomListScrollLayoutManager.f();
+    View localView2 = paramAEBottomListScrollLayoutManager.g();
+    int i = -paramAEBottomListScrollLayoutManager.h();
     int j = paramAEBottomListScrollLayoutManager.getWidth();
-    int k = paramAEBottomListScrollLayoutManager.c();
+    int k = paramAEBottomListScrollLayoutManager.h();
     int m = paramAEBottomListScrollLayoutManager.getDecoratedLeft(localView1);
     boolean bool = false;
     if ((m > i) && (paramAEBottomListScrollLayoutManager.getPosition(localView1) > 0)) {
@@ -97,7 +97,7 @@ public class DSVOrientation$HorizontalHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.DSVOrientation.HorizontalHelper
  * JD-Core Version:    0.7.0.1
  */

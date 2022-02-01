@@ -9,11 +9,11 @@ import com.tencent.qphone.base.util.QLog;
 public class UniformDownload
 {
   public static boolean a = true;
-  Activity a;
+  Activity b;
   
   private UniformDownload(Activity paramActivity)
   {
-    this.a = paramActivity;
+    this.b = paramActivity;
   }
   
   public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
@@ -40,7 +40,7 @@ public class UniformDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.app.UniformDownload
  * JD-Core Version:    0.7.0.1
  */

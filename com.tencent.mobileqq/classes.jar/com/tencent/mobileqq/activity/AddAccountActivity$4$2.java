@@ -12,15 +12,15 @@ class AddAccountActivity$4$2
   
   public void a(boolean paramBoolean)
   {
-    AddAccountActivity.access$202(this.a.a, paramBoolean);
+    AddAccountActivity.access$302(this.a.a, paramBoolean);
     if (paramBoolean) {
-      this.a.a.app.unRegistObserver(AddAccountActivity.access$300(this.a.a));
+      this.a.a.app.unRegistObserver(AddAccountActivity.access$400(this.a.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddAccountActivity.4.2
  * JD-Core Version:    0.7.0.1
  */

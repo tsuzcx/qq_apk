@@ -26,14 +26,14 @@ class ReadInJoyNewFeedsActivity$NaviMaskTouchListenerImpl
       }
       return;
     }
-    if ((ReadInJoyNewFeedsActivity.a(localReadInJoyNewFeedsActivity) == 0) && (localReadInJoyNewFeedsActivity.a != null)) {
-      localReadInJoyNewFeedsActivity.a.a(null);
+    if ((ReadInJoyNewFeedsActivity.c(localReadInJoyNewFeedsActivity) == 0) && (localReadInJoyNewFeedsActivity.e != null)) {
+      localReadInJoyNewFeedsActivity.e.a(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity.NaviMaskTouchListenerImpl
  * JD-Core Version:    0.7.0.1
  */

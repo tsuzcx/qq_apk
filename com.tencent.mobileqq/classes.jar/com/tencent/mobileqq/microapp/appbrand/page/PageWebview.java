@@ -76,7 +76,7 @@ public class PageWebview
   
   private void onWebViewReady$164d4c8c(com.tencent.mobileqq.microapp.a.c paramc)
   {
-    if (StringUtil.a(this.wxssJsStr))
+    if (StringUtil.isEmpty(this.wxssJsStr))
     {
       String str = paramc.g(this.mRouteUrl);
       if (!TextUtils.isEmpty(str)) {
@@ -178,7 +178,7 @@ public class PageWebview
   
   public void loadPageWebviewJs$164d4c8c(com.tencent.mobileqq.microapp.a.c paramc)
   {
-    if (StringUtil.a(this.mRouteUrl)) {
+    if (StringUtil.isEmpty(this.mRouteUrl)) {
       return;
     }
     if (!this.hasFLoad)
@@ -220,7 +220,7 @@ public class PageWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.PageWebview
  * JD-Core Version:    0.7.0.1
  */

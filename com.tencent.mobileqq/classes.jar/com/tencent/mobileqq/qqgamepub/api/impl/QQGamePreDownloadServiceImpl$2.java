@@ -21,26 +21,26 @@ class QQGamePreDownloadServiceImpl$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("realCancel...url:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataDownloadParam.url);
+      localStringBuilder.append(this.a.url);
       QLog.i("QQGamePub_QQGamePreDownloadServiceImpl", 2, localStringBuilder.toString());
     }
   }
   
   protected void realStart()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubApiImplQQGamePreDownloadServiceImpl.startDownload(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataDownloadParam, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.jdField_a_of_type_AndroidOsBundle);
+    this.d.startDownload(this.a, this.b, this.c);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("realStart...url:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataDownloadParam.url);
+      localStringBuilder.append(this.a.url);
       QLog.i("QQGamePub_QQGamePreDownloadServiceImpl", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGamePreDownloadServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

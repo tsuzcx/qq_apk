@@ -28,7 +28,7 @@ public class ProfileSignatureUtils
     {
       Intent localIntent = new Intent(paramQBaseActivity, PublicFragmentActivity.class);
       localIntent.putExtra("key_uin", paramProfileCardInfo.allInOne.uin);
-      localIntent.putExtra("key_uin_name", paramProfileCardInfo.profileName.a.a);
+      localIntent.putExtra("key_uin_name", paramProfileCardInfo.profileName.a.b);
       localIntent.putExtra("key_open_via", "history-kerentaiziliaoka");
       PublicFragmentActivity.Launcher.a(paramQBaseActivity, localIntent, PublicFragmentActivity.class, SignatureHistoryFragment.class);
     }
@@ -44,13 +44,13 @@ public class ProfileSignatureUtils
   {
     TopicUtil.a(paramQBaseActivity, TopicUtil.a(paramInt, paramString), -1);
     paramView.setVisibility(8);
-    SigTopicManager.a().b(paramQQAppInterface);
+    SigTopicManager.a().c(paramQQAppInterface);
     ReportController.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "1", "0", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.utils.ProfileSignatureUtils
  * JD-Core Version:    0.7.0.1
  */

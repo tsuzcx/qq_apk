@@ -31,7 +31,7 @@ public class IntimatePlugin
   {
     try
     {
-      Activity localActivity = this.mRuntime.a();
+      Activity localActivity = this.mRuntime.d();
       paramVarArgs = new JSONObject(paramVarArgs[0]).optString("frd_uin");
       if (!TextUtils.isEmpty(paramVarArgs))
       {
@@ -138,7 +138,7 @@ public class IntimatePlugin
     }
     try
     {
-      paramJsBridgeListener = this.mRuntime.a();
+      paramJsBridgeListener = this.mRuntime.b();
       bool1 = bool2;
       if (paramJsBridgeListener == null) {
         break label373;
@@ -166,7 +166,7 @@ public class IntimatePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intimate.IntimatePlugin
  * JD-Core Version:    0.7.0.1
  */

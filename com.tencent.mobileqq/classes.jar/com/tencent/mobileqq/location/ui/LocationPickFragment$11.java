@@ -18,14 +18,14 @@ class LocationPickFragment$11
   
   public void displayPanelFinish()
   {
-    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment) != null) {
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).setEnabled(false);
+    if (LocationPickFragment.f(this.f) != null) {
+      LocationPickFragment.f(this.f).setEnabled(false);
     }
-    ReportController.b(null, "CliOper", "", "", "0X800A95F", "0X800A95F", LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b(), 0, "", "0", "0", "");
+    ReportController.b(null, "CliOper", "", "", "0X800A95F", "0X800A95F", LocationPickFragment.d(this.f).getDisplayFromType(), 0, "", "0", "0", "");
     this.b.setVisibility(8);
-    this.c.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment.getString(2131693819));
-    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b())) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850002);
+    this.c.setContentDescription(this.f.getString(2131891395));
+    if ((this.d != null) && (LocationPickFragment.d(this.f).h())) {
+      this.d.setImageResource(2130851763);
     }
   }
   
@@ -41,31 +41,31 @@ class LocationPickFragment$11
       localStringBuilder.append(paramFloat);
       QLog.d("LocationPickFragment", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(Math.round(paramFloat * 0.7F * 255.0F), 0, 0, 0));
+    this.a.setBackgroundColor(Color.argb(Math.round(paramFloat * 0.7F * 255.0F), 0, 0, 0));
   }
   
   public void hidePanel()
   {
-    LocationPickFragment.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
+    LocationPickFragment.e(this.f);
   }
   
   public void hidePanelFinish()
   {
-    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment) != null) {
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).setEnabled(true);
+    if (LocationPickFragment.f(this.f) != null) {
+      LocationPickFragment.f(this.f).setEnabled(true);
     }
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).setDisplayFromType(2);
-    this.d.requestFocus();
+    LocationPickFragment.d(this.f).setDisplayFromType(2);
+    this.e.requestFocus();
     this.b.setVisibility(0);
-    this.c.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment.getString(2131693817));
-    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (!LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b())) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850001);
+    this.c.setContentDescription(this.f.getString(2131891393));
+    if ((this.d != null) && (!LocationPickFragment.d(this.f).h())) {
+      this.d.setImageResource(2130851762);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickFragment.11
  * JD-Core Version:    0.7.0.1
  */

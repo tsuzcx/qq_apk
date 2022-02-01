@@ -18,28 +18,28 @@ final class QidCardManager$1
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((Activity)localObject).isFinishing()) {
         return;
       }
       int i;
-      if ((paramDownloadTask.a() == 3) && (paramDownloadTask.a == 0)) {
+      if ((paramDownloadTask.e() == 3) && (paramDownloadTask.c == 0)) {
         i = 1;
       } else {
         i = 0;
       }
       if (i != 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView.a(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView$QidData);
+        this.b.a(this.c);
         return;
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("QID_QR,download,error:");
-      ((StringBuilder)localObject).append(paramDownloadTask.a);
+      ((StringBuilder)localObject).append(paramDownloadTask.c);
       ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append(paramDownloadTask.b);
+      ((StringBuilder)localObject).append(paramDownloadTask.d);
       QLog.d("QidCardManager", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -54,7 +54,7 @@ final class QidCardManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qid.QidCardManager.1
  * JD-Core Version:    0.7.0.1
  */

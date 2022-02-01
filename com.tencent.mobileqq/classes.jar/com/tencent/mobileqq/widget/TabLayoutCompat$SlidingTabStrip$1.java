@@ -16,12 +16,12 @@ class TabLayoutCompat$SlidingTabStrip$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = paramValueAnimator.getAnimatedFraction();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.a(a(this.jdField_a_of_type_Int, this.b, f), a(this.c, this.d, f));
+    this.e.a(a(this.a, this.b, f), a(this.c, this.d, f));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabLayoutCompat.SlidingTabStrip.1
  * JD-Core Version:    0.7.0.1
  */

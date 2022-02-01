@@ -8,13 +8,12 @@ import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjection.Callback;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.Display;
 import android.view.Surface;
-import android.view.WindowManager;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.e;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.liteav.basic.util.h;
-import com.tencent.liteav.basic.util.h.a;
+import com.tencent.liteav.basic.util.j;
+import com.tencent.liteav.basic.util.j.a;
 import com.tencent.rtmp.video.TXScreenCapture.TXScreenCaptureAssistantActivity;
 import java.util.Collection;
 import java.util.HashMap;
@@ -31,15 +30,15 @@ public class c
   private final Map<Surface, c.a> d = new HashMap();
   private boolean e = false;
   private MediaProjection f;
-  private h g;
+  private j g;
   private boolean h;
   private MediaProjection.Callback i = new c.1(this);
-  private h.a j = new c.2(this);
+  private j.a j = new c.2(this);
   
   public c(Context paramContext)
   {
     this.b = paramContext.getApplicationContext();
-    this.c = new e(Looper.getMainLooper());
+    this.c = new f(Looper.getMainLooper());
     this.h = b(paramContext);
   }
   
@@ -101,27 +100,15 @@ public class c
     localObject = this.g;
     if (localObject != null)
     {
-      ((h)localObject).a();
+      ((j)localObject).a();
       this.g = null;
     }
   }
   
   private boolean b(Context paramContext)
   {
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    boolean bool = true;
-    if (paramContext == null) {
-      return true;
-    }
-    int k = paramContext.getDefaultDisplay().getRotation();
-    if (k != 0)
-    {
-      if (k == 2) {
-        return true;
-      }
-      bool = false;
-    }
-    return bool;
+    int k = h.g(paramContext);
+    return (k == 0) || (k == 2);
   }
   
   public void a(MediaProjection paramMediaProjection)
@@ -148,7 +135,7 @@ public class c
     this.f = paramMediaProjection;
     this.f.registerCallback(this.i, this.c);
     a();
-    this.g = new h(Looper.getMainLooper(), this.j);
+    this.g = new j(Looper.getMainLooper(), this.j);
     this.g.a(50, 50);
     a(true);
   }
@@ -212,7 +199,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.screencapture.c
  * JD-Core Version:    0.7.0.1
  */

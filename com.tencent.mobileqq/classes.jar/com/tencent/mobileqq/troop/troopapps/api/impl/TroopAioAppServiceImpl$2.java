@@ -13,13 +13,13 @@ class TroopAioAppServiceImpl$2
   {
     TroopAioAppServiceImpl.access$000(this.this$0).a();
     if (!GroupUtil.a(this.this$0.getAppsFromCache(this.a))) {
-      GroupAppsServlet.a(TroopAioAppServiceImpl.access$300(this.this$0), this.a);
+      GroupAppsServlet.b(TroopAioAppServiceImpl.access$300(this.this$0), this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.api.impl.TroopAioAppServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

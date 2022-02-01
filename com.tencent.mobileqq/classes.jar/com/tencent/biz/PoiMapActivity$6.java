@@ -13,13 +13,13 @@ class PoiMapActivity$6
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
-    String str2 = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getText().toString();
+    this.a.cancel();
+    String str2 = this.b.z.getText().toString();
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_cancel", str1, "", "", "");
+    this.b.a("share_locate", "click_sch_cancel", str1, "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

@@ -29,16 +29,16 @@ import tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501Rspbody.SrvAddrs;
 public class BigDataGetIpHandler
   extends BusinessHandler
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = null;
-  private int jdField_b_of_type_Int = 0;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
-  private byte[] jdField_b_of_type_ArrayOfByte = null;
-  private int c = 0;
+  private byte[] a = null;
+  private byte[] b = null;
+  private String[] c = null;
+  private Object d = new Object();
+  private int e = 0;
+  private int f = 0;
+  private int g = 0;
+  private boolean h = false;
+  private Object i = new Object();
+  private long j = 0L;
   
   public BigDataGetIpHandler(AppInterface paramAppInterface)
   {
@@ -85,7 +85,7 @@ public class BigDataGetIpHandler
       boolean bool1;
       try
       {
-        localObject = this.jdField_a_of_type_JavaLangObject;
+        localObject = this.d;
         if (paramArrayOfByte1 == null) {
           break label160;
         }
@@ -96,7 +96,7 @@ public class BigDataGetIpHandler
         if (paramArrayOfByte1.length <= 0) {
           break label160;
         }
-        this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+        this.a = paramArrayOfByte1;
         bool2 = true;
         bool1 = bool2;
         if (paramArrayOfByte2 != null)
@@ -104,7 +104,7 @@ public class BigDataGetIpHandler
           bool1 = bool2;
           if (paramArrayOfByte2.length > 0)
           {
-            this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
+            this.b = paramArrayOfByte2;
             bool1 = true;
           }
         }
@@ -114,8 +114,8 @@ public class BigDataGetIpHandler
           bool2 = bool1;
           if (paramArrayOfString.length > 0)
           {
-            this.jdField_a_of_type_Int = 0;
-            this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+            this.e = 0;
+            this.c = paramArrayOfString;
             bool2 = true;
           }
         }
@@ -125,7 +125,7 @@ public class BigDataGetIpHandler
           paramArrayOfByte1.append("saveSrvParam | changed = ");
           paramArrayOfByte1.append(bool2);
           paramArrayOfByte1.append(" | usingIndex = ");
-          paramArrayOfByte1.append(this.jdField_a_of_type_Int);
+          paramArrayOfByte1.append(this.e);
           QLog.d("BigDataGetIpHandler", 2, paramArrayOfByte1.toString());
         }
         return;
@@ -140,61 +140,35 @@ public class BigDataGetIpHandler
     }
   }
   
-  public String a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      Object localObject2 = this.jdField_a_of_type_ArrayOfJavaLangString;
-      if ((localObject2 != null) && (localObject2.length != 0))
-      {
-        this.jdField_a_of_type_Int %= localObject2.length;
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("getSrvUrl | usingIndex = ");
-          localStringBuilder.append(this.jdField_a_of_type_Int);
-          localStringBuilder.append(" | count = ");
-          localStringBuilder.append(localObject2.length);
-          localStringBuilder.append(" | result = ");
-          localStringBuilder.append(localObject2[this.jdField_a_of_type_Int]);
-          QLog.d("BigDataGetIpHandler", 2, localStringBuilder.toString());
-        }
-        localObject2 = localObject2[this.jdField_a_of_type_Int];
-        return localObject2;
-      }
-      return null;
-    }
-  }
-  
   protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     label557:
     label562:
     label567:
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.i)
     {
-      this.jdField_a_of_type_Boolean = false;
-      int i;
+      this.h = false;
+      int k;
       if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000)) {
-        i = 1;
+        k = 1;
       } else {
-        i = 0;
+        k = 0;
       }
-      int j = paramToServiceMsg.extraData.getInt("big_data_cmd", -1);
+      int m = paramToServiceMsg.extraData.getInt("big_data_cmd", -1);
       paramToServiceMsg.extraData.getInt("big_data_sub_cmd", -1);
-      int k = paramToServiceMsg.extraData.getInt("big_data_cmd_seq", -1);
+      int n = paramToServiceMsg.extraData.getInt("big_data_cmd_seq", -1);
       if (QLog.isColorLevel())
       {
         paramToServiceMsg = new StringBuilder();
         paramToServiceMsg.append("handleGetIPList ");
-        paramToServiceMsg.append(j);
+        paramToServiceMsg.append(m);
         paramToServiceMsg.append(" handler: ");
         paramToServiceMsg.append(getClass().getSimpleName());
         paramToServiceMsg.append(" reqSeq = ");
-        paramToServiceMsg.append(k);
+        paramToServiceMsg.append(n);
         QLog.d("BigDataGetIpHandler", 1, paramToServiceMsg.toString());
       }
-      if (i != 0)
+      if (k != 0)
       {
         if (paramObject != null) {}
         try
@@ -229,16 +203,16 @@ public class BigDataGetIpHandler
             break label567;
           }
           ??? = new String[localList.size()];
-          i = 0;
+          k = 0;
           for (;;)
           {
             paramObject = ???;
-            if (i >= localList.size()) {
+            if (k >= localList.size()) {
               break;
             }
-            paramObject = (subcmd0x501.SubCmd0x501Rspbody.IpAddr)localList.get(i);
-            ???[i] = a(paramObject.uint32_ip.get(), paramObject.uint32_port.get());
-            i += 1;
+            paramObject = (subcmd0x501.SubCmd0x501Rspbody.IpAddr)localList.get(k);
+            ???[k] = a(paramObject.uint32_ip.get(), paramObject.uint32_port.get());
+            k += 1;
           }
           a(paramToServiceMsg, paramFromServiceMsg, paramObject);
           notifyUI(2001, true, null);
@@ -283,16 +257,16 @@ public class BigDataGetIpHandler
   
   public boolean a(int paramInt1, MessageMicro<?> arg2, int paramInt2, Object paramObject)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.i)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.h) {
         return true;
       }
       long l1 = System.currentTimeMillis();
-      if (l1 - this.jdField_a_of_type_Long > 30000L) {
-        this.c = 0;
+      if (l1 - this.j > 30000L) {
+        this.g = 0;
       }
-      if (this.c > 5)
+      if (this.g > 5)
       {
         if (QLog.isColorLevel()) {
           QLog.d("BigDataGetIpHandler", 2, "req get ip too frequently");
@@ -312,9 +286,9 @@ public class BigDataGetIpHandler
           }
           return false;
         }
-        this.jdField_a_of_type_Long = l1;
-        this.c += 1;
-        this.jdField_a_of_type_Boolean = true;
+        this.j = l1;
+        this.g += 1;
+        this.h = true;
         paramObject = new subcmd0x501.SubCmd0x501ReqBody();
         paramObject.uint64_uin.set(l2);
         paramObject.uint32_idc_id.set(0);
@@ -330,8 +304,8 @@ public class BigDataGetIpHandler
         paramObject.putWupBuffer(((subcmd0x501.ReqBody)localObject).toByteArray());
         paramObject.extraData.putInt("big_data_cmd", paramInt1);
         paramObject.extraData.putInt("big_data_sub_cmd", paramInt2);
-        paramInt2 = this.jdField_b_of_type_Int;
-        this.jdField_b_of_type_Int = (paramInt2 + 1);
+        paramInt2 = this.f;
+        this.f = (paramInt2 + 1);
         paramObject.extraData.putInt("big_data_cmd_seq", paramInt2);
         sendPbReq(paramObject);
         if (QLog.isColorLevel())
@@ -342,7 +316,7 @@ public class BigDataGetIpHandler
           paramObject.append(" handler: ");
           paramObject.append(getClass().getSimpleName());
           paramObject.append(" reqSeq = ");
-          paramObject.append(this.jdField_b_of_type_Int);
+          paramObject.append(this.f);
           paramObject.append(" curSeq = ");
           paramObject.append(paramInt2);
           QLog.d("BigDataGetIpHandler", 1, paramObject.toString());
@@ -363,18 +337,44 @@ public class BigDataGetIpHandler
   
   public byte[] a()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      byte[] arrayOfByte = this.a;
       return arrayOfByte;
     }
   }
   
-  public byte[] b()
+  public String b()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      byte[] arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+      Object localObject2 = this.c;
+      if ((localObject2 != null) && (localObject2.length != 0))
+      {
+        this.e %= localObject2.length;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getSrvUrl | usingIndex = ");
+          localStringBuilder.append(this.e);
+          localStringBuilder.append(" | count = ");
+          localStringBuilder.append(localObject2.length);
+          localStringBuilder.append(" | result = ");
+          localStringBuilder.append(localObject2[this.e]);
+          QLog.d("BigDataGetIpHandler", 2, localStringBuilder.toString());
+        }
+        localObject2 = localObject2[this.e];
+        return localObject2;
+      }
+      return null;
+    }
+  }
+  
+  public byte[] c()
+  {
+    synchronized (this.d)
+    {
+      byte[] arrayOfByte = this.b;
       return arrayOfByte;
     }
   }
@@ -397,7 +397,7 @@ public class BigDataGetIpHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.controller.BigDataGetIpHandler
  * JD-Core Version:    0.7.0.1
  */

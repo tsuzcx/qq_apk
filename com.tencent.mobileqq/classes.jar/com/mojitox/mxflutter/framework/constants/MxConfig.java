@@ -17,7 +17,7 @@ public class MxConfig
     if (!TextUtils.isEmpty(b)) {
       return b;
     }
-    Object localObject = JsEngineLoader.a().a().getCacheDir();
+    Object localObject = JsEngineLoader.a().c().getCacheDir();
     if (localObject == null) {
       return null;
     }
@@ -62,7 +62,7 @@ public class MxConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.constants.MxConfig
  * JD-Core Version:    0.7.0.1
  */

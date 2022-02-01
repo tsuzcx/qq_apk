@@ -10,37 +10,36 @@ import android.widget.PopupWindow.OnDismissListener;
 
 public class PopupWindows
 {
-  protected Context a;
-  protected Drawable a;
-  protected View a;
-  protected WindowManager a;
-  protected PopupWindow a;
+  protected Context b;
+  protected PopupWindow c;
+  protected View d;
+  protected Drawable e = null;
+  protected WindowManager f;
   
   public PopupWindows(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(paramContext);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchInterceptor(new PopupWindows.1(this));
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+    this.b = paramContext;
+    this.c = new PopupWindow(paramContext);
+    this.c.setTouchInterceptor(new PopupWindows.1(this));
+    this.f = ((WindowManager)paramContext.getSystemService("window"));
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (this.d != null)
     {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      Drawable localDrawable = this.e;
       if (localDrawable == null) {
-        this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+        this.c.setBackgroundDrawable(new BitmapDrawable());
       } else {
-        this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(localDrawable);
+        this.c.setBackgroundDrawable(localDrawable);
       }
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
+      this.c.setWidth(-2);
+      this.c.setHeight(-2);
+      this.c.setTouchable(true);
+      this.c.setFocusable(false);
+      this.c.setOutsideTouchable(true);
+      this.c.setContentView(this.d);
       return;
     }
     throw new IllegalStateException("setContentView was not called with a view to display.");
@@ -48,23 +47,23 @@ public class PopupWindows
   
   public void a(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(paramOnDismissListener);
+    this.c.setOnDismissListener(paramOnDismissListener);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    this.c.dismiss();
   }
   
   public void b(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(paramView);
+    this.d = paramView;
+    this.c.setContentView(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.PopupWindows
  * JD-Core Version:    0.7.0.1
  */

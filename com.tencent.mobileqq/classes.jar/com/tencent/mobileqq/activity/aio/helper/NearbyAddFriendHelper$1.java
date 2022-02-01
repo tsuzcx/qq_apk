@@ -15,9 +15,9 @@ class NearbyAddFriendHelper$1
     Object localObject = paramView.getTag();
     if ((localObject instanceof Integer))
     {
-      String str = this.a.a.jdField_a_of_type_JavaLangString;
-      if (this.a.a.jdField_a_of_type_Int == 1006) {
-        str = this.a.a.f;
+      String str = this.a.e.b;
+      if (this.a.e.a == 1006) {
+        str = this.a.e.g;
       }
       NearbyAddFriendHelper.a(this.a, (Integer)localObject, str);
     }
@@ -26,7 +26,7 @@ class NearbyAddFriendHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.NearbyAddFriendHelper.1
  * JD-Core Version:    0.7.0.1
  */

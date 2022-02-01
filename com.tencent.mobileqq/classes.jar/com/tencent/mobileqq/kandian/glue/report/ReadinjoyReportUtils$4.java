@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.kandian.glue.report;
 
 import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 
 final class ReadinjoyReportUtils$4
   implements Runnable
@@ -28,12 +27,12 @@ final class ReadinjoyReportUtils$4
       localObject = "0";
     }
     localReportR5Builder.addStringNotThrow("reddot_state", (String)localObject);
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800978E", "0X800978E", 0, 0, "", "", "", localReportR5Builder.build(), false);
+    PublicAccountReportUtils.a(null, null, "0X800978E", "0X800978E", 0, 0, "", "", "", localReportR5Builder.build(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils.4
  * JD-Core Version:    0.7.0.1
  */

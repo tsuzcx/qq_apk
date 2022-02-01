@@ -12,11 +12,11 @@ class SensorAPIJavaScript$8
   
   public void loaded(String paramString, int paramInt)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString))) {
+    if ((!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(paramString))) {
       try
       {
         paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+        this.b.callJs(this.a, new String[] { paramString.toString() });
         return;
       }
       catch (JSONException paramString)
@@ -30,7 +30,7 @@ class SensorAPIJavaScript$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.8
  * JD-Core Version:    0.7.0.1
  */

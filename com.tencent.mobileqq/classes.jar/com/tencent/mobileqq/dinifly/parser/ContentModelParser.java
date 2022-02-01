@@ -1,18 +1,21 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.support.annotation.Nullable;
-import android.util.JsonReader;
-import android.util.Log;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.content.ContentModel;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 
 class ContentModelParser
 {
+  private static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "ty", "d" });
+  
   @Nullable
   static ContentModel parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
     paramJsonReader.beginObject();
-    int k = 2;
+    int i = 2;
     int j = 2;
     Object localObject2;
     for (;;)
@@ -20,39 +23,27 @@ class ContentModelParser
       boolean bool = paramJsonReader.hasNext();
       localObject2 = null;
       if (!bool) {
-        break label116;
+        break label70;
       }
-      localObject1 = paramJsonReader.nextName();
-      i = ((String)localObject1).hashCode();
-      if (i != 100)
-      {
-        if ((i == 3717) && (((String)localObject1).equals("ty")))
-        {
-          i = 0;
-          break label83;
-        }
-      }
-      else if (((String)localObject1).equals("d"))
-      {
-        i = 1;
-        break label83;
-      }
-      i = -1;
-      label83:
-      if (i == 0) {
+      int k = paramJsonReader.selectName(NAMES);
+      if (k == 0) {
         break;
       }
-      if (i != 1) {
+      if (k != 1)
+      {
+        paramJsonReader.skipName();
         paramJsonReader.skipValue();
-      } else {
+      }
+      else
+      {
         j = paramJsonReader.nextInt();
       }
     }
     Object localObject1 = paramJsonReader.nextString();
-    break label119;
-    label116:
+    break label73;
+    label70:
     localObject1 = null;
-    label119:
+    label73:
     if (localObject1 == null) {
       return null;
     }
@@ -101,8 +92,8 @@ class ContentModelParser
       }
       break;
     case 3308: 
-      if (((String)localObject1).equals("gs")) {
-        i = k;
+      if (!((String)localObject1).equals("gs")) {
+        break;
       }
       break;
     case 3307: 
@@ -126,14 +117,14 @@ class ContentModelParser
       }
       break;
     }
-    int i = -1;
+    i = -1;
     switch (i)
     {
     default: 
       paramLottieComposition = new StringBuilder();
       paramLottieComposition.append("Unknown shape type ");
       paramLottieComposition.append((String)localObject1);
-      Log.w("LOTTIE", paramLottieComposition.toString());
+      Logger.warning(paramLottieComposition.toString());
       paramLottieComposition = localObject2;
       break;
     case 12: 
@@ -186,7 +177,7 @@ class ContentModelParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.ContentModelParser
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ class TagAdapter$TagViewHolder$1
   
   public void onClick(View paramView)
   {
-    TagAdapter.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener;
+    TagAdapter.OnItemClickListener localOnItemClickListener = this.a;
     if (localOnItemClickListener != null) {
-      localOnItemClickListener.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
+      localOnItemClickListener.a(this.b);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

@@ -17,6 +17,7 @@ import com.tencent.qqmini.sdk.core.Preloadable;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.qqmini.sdk.core.manager.PreCacheManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.core.utils.AppBrandUtil;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.IPage;
@@ -31,6 +32,7 @@ import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.model.ShareState;
 import com.tencent.qqmini.sdk.manager.BaseLibManager;
 import com.tencent.qqmini.sdk.plugins.engine.JsPluginEngine;
+import com.tencent.qqmini.sdk.plugins.engine.MiniAppJsPluginEngine;
 import com.tencent.qqmini.sdk.runtime.AppStateManager;
 
 public abstract class BaseAppBrandRuntime
@@ -169,6 +171,7 @@ public abstract class BaseAppBrandRuntime
     this.mMiniAppInfo = paramMiniAppInfo;
     this.mApkgInfo = ((ApkgInfo)paramMiniAppInfo.apkgInfo);
     ((MiniAppFileManager)getManager(MiniAppFileManager.class)).initFileManager(this.mApkgInfo, false);
+    AppBrandUtil.updateAppLaunchInfoForApkgInfo(paramMiniAppInfo);
     if (!this.mPrecacheFetched)
     {
       this.mPrecacheFetched = true;
@@ -239,7 +242,7 @@ public abstract class BaseAppBrandRuntime
   public void onRuntimeCreate()
   {
     QMLog.i("minisdk-start_BaseAppBrandRuntime", " [MiniLifecycle] onRuntimeCreate");
-    this.jsPluginEngine = new JsPluginEngine(this.mContext);
+    this.jsPluginEngine = new MiniAppJsPluginEngine(this.mContext);
   }
   
   public void onRuntimeDetachActivity(Activity paramActivity)
@@ -318,7 +321,7 @@ public abstract class BaseAppBrandRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.BaseAppBrandRuntime
  * JD-Core Version:    0.7.0.1
  */

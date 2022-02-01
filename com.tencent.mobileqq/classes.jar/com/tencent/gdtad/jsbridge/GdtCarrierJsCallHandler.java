@@ -22,7 +22,7 @@ class GdtCarrierJsCallHandler
       JSONObject localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("carrier", GdtDeviceUtil.a(paramVarArgs));
+        localJSONObject.put("carrier", GdtDeviceUtil.b(paramVarArgs));
       }
       catch (JSONException localJSONException)
       {
@@ -38,7 +38,7 @@ class GdtCarrierJsCallHandler
       }
       paramString = localObject;
       if (paramGdtAdWebPlugin != null) {
-        paramString = paramGdtAdWebPlugin.a();
+        paramString = paramGdtAdWebPlugin.b();
       }
       AdAnalysisHelperForUtil.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
       return true;
@@ -49,7 +49,7 @@ class GdtCarrierJsCallHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtCarrierJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

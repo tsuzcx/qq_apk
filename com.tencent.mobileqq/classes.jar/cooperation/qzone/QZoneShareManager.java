@@ -612,9 +612,9 @@ public class QZoneShareManager
     paramString3 = new QZoneShareData();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString2);
-    localStringBuilder.append(HardCodeUtil.a(2131712270));
+    localStringBuilder.append(HardCodeUtil.a(2131909871));
     paramString3.mTitle = localStringBuilder.toString();
-    paramString3.mSummary = HardCodeUtil.a(2131712262);
+    paramString3.mSummary = HardCodeUtil.a(2131909863);
     paramString3.mImageUrls = new ArrayList();
     paramString3.mImageUrls.add("https://qzonestyle.gtimg.cn/aoi/sola/20161111222053_4wlQcl1Eta.png");
     paramString2 = new StringBuilder();
@@ -638,7 +638,7 @@ public class QZoneShareManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.QZoneShareManager
  * JD-Core Version:    0.7.0.1
  */

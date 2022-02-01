@@ -17,7 +17,7 @@ class SwiftWebAccelerator$6
     long l = System.currentTimeMillis();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("doThreadedStep_FireOthers.run cost ");
-    ((StringBuilder)localObject).append(l - this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(l - this.a);
     ((StringBuilder)localObject).append("ms.");
     QLog.i("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)localObject).toString());
     l = System.currentTimeMillis();
@@ -39,8 +39,8 @@ class SwiftWebAccelerator$6
     ((StringBuilder)localObject).append("ms.");
     QLog.i("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)localObject).toString());
     l = System.currentTimeMillis();
-    if (SwiftWebAccelerator.a() != null) {
-      SwiftWebAccelerator.a().b(this.jdField_a_of_type_AndroidOsBundle);
+    if (SwiftWebAccelerator.d() != null) {
+      SwiftWebAccelerator.d().b(this.b);
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("doThreadedStep_FireOthers:load Individuation url config, cost ");
@@ -51,7 +51,7 @@ class SwiftWebAccelerator$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.6
  * JD-Core Version:    0.7.0.1
  */

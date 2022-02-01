@@ -14,15 +14,15 @@ import org.json.JSONObject;
 class CustomizeStrategyFactory$SkinRedPacketStrategy
   implements CustomizeStrategyFactory.HBCustomizeStrategy
 {
-  IQWalletConfigService jdField_a_of_type_ComTencentMobileqqQwalletConfigIQWalletConfigService = null;
-  IPreloadService jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService = null;
+  IPreloadService a = null;
+  IQWalletConfigService b = null;
   
   CustomizeStrategyFactory$SkinRedPacketStrategy(BaseQQAppInterface paramBaseQQAppInterface)
   {
     if (paramBaseQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService = ((IPreloadService)paramBaseQQAppInterface.getRuntimeService(IPreloadService.class, ""));
-      this.jdField_a_of_type_ComTencentMobileqqQwalletConfigIQWalletConfigService = ((IQWalletConfigService)paramBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, ""));
+      this.a = ((IPreloadService)paramBaseQQAppInterface.getRuntimeService(IPreloadService.class, ""));
+      this.b = ((IQWalletConfigService)paramBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, ""));
     }
   }
   
@@ -105,20 +105,20 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy
       if ((paramInterfaceRedPkgElem instanceof SkinRedPkgElem))
       {
         paramInterfaceRedPkgElem = (SkinRedPkgElem)paramInterfaceRedPkgElem;
-        paramRedPacketInfo.background = paramInterfaceRedPkgElem.b;
-        paramRedPacketInfo.corner = paramInterfaceRedPkgElem.jdField_a_of_type_AndroidGraphicsBitmap;
-        paramRedPacketInfo.animInfo = paramInterfaceRedPkgElem.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
-        paramRedPacketInfo.title = paramInterfaceRedPkgElem.c;
-        paramRedPacketInfo.icon = paramInterfaceRedPkgElem.a(paramRedPacketInfo);
-        paramRedPacketInfo.isHideTitle = paramInterfaceRedPkgElem.jdField_a_of_type_Int;
-        paramRedPacketInfo.resPath = paramInterfaceRedPkgElem.d;
+        paramRedPacketInfo.background = paramInterfaceRedPkgElem.c;
+        paramRedPacketInfo.corner = paramInterfaceRedPkgElem.d;
+        paramRedPacketInfo.animInfo = paramInterfaceRedPkgElem.i;
+        paramRedPacketInfo.title = paramInterfaceRedPkgElem.e;
+        paramRedPacketInfo.icon = paramInterfaceRedPkgElem.b(paramRedPacketInfo);
+        paramRedPacketInfo.isHideTitle = paramInterfaceRedPkgElem.f;
+        paramRedPacketInfo.resPath = paramInterfaceRedPkgElem.g;
         return;
       }
       if ((paramInterfaceRedPkgElem instanceof BigAnimRedPkgElem))
       {
         paramInterfaceRedPkgElem = (BigAnimRedPkgElem)paramInterfaceRedPkgElem;
-        paramRedPacketInfo.specailBackgroundAnimInfo = paramInterfaceRedPkgElem.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
-        paramRedPacketInfo.specialBackground = paramInterfaceRedPkgElem.jdField_a_of_type_AndroidGraphicsBitmap;
+        paramRedPacketInfo.specailBackgroundAnimInfo = paramInterfaceRedPkgElem.c;
+        paramRedPacketInfo.specialBackground = paramInterfaceRedPkgElem.b;
         return;
       }
       if ((paramInterfaceRedPkgElem instanceof ResPathRedPkgElem)) {
@@ -129,7 +129,7 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.SkinRedPacketStrategy
  * JD-Core Version:    0.7.0.1
  */

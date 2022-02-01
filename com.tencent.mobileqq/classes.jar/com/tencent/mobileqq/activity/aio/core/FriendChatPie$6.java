@@ -14,14 +14,14 @@ class FriendChatPie$6
     {
       paramBundle.getInt("gif_ui_show_bid");
       long l = paramBundle.getLong("gif_ui_show_seq");
-      this.a.e(65536);
+      this.a.j(65536);
       FriendChatPie.a(this.a, Long.valueOf(l).longValue());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.6
  * JD-Core Version:    0.7.0.1
  */

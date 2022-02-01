@@ -29,18 +29,18 @@ class RankingModule$1
     Object localObject;
     if (QLog.isColorLevel())
     {
-      paramBundle = RankingModule.a;
+      paramBundle = RankingModule.b;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onResult appid=");
-      ((StringBuilder)localObject).append(RankingModule.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleRankingModule).a);
+      ((StringBuilder)localObject).append(RankingModule.a(this.d).b);
       ((StringBuilder)localObject).append(", openid=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.a);
+      ((StringBuilder)localObject).append(this.a.a);
       ((StringBuilder)localObject).append(", openkey=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.b);
+      ((StringBuilder)localObject).append(this.a.b);
       ((StringBuilder)localObject).append(", code=");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(", req param=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_OrgJsonJSONObject);
+      ((StringBuilder)localObject).append(this.b);
       QLog.i(paramBundle, 2, ((StringBuilder)localObject).toString());
     }
     if ((paramInt == 0) && (paramArrayOfByte != null))
@@ -82,7 +82,7 @@ class RankingModule$1
             }
             catch (JSONException localJSONException) {}
             if (QLog.isColorLevel()) {
-              QLog.e(RankingModule.a, 2, localJSONException.getMessage(), localJSONException);
+              QLog.e(RankingModule.b, 2, localJSONException.getMessage(), localJSONException);
             }
           }
           paramBundle.put("rankingList", localObject);
@@ -97,29 +97,29 @@ class RankingModule$1
         catch (JSONException paramArrayOfByte)
         {
           if (QLog.isColorLevel()) {
-            QLog.e(RankingModule.a, 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
+            QLog.e(RankingModule.b, 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
           }
         }
         if (QLog.isDevelopLevel())
         {
-          paramArrayOfByte = RankingModule.a;
+          paramArrayOfByte = RankingModule.b;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("result is, ");
           ((StringBuilder)localObject).append(paramBundle.toString());
           QLog.i(paramArrayOfByte, 2, ((StringBuilder)localObject).toString());
         }
-        DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramBundle);
+        DoraemonUtil.a(this.c, paramBundle);
         return;
       }
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -1, "parse result error, try again");
+      DoraemonUtil.a(this.c, -1, "parse result error, try again");
       return;
     }
-    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, "getRankingList result error, try again");
+    DoraemonUtil.a(this.c, paramInt, "getRankingList result error, try again");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.RankingModule.1
  * JD-Core Version:    0.7.0.1
  */

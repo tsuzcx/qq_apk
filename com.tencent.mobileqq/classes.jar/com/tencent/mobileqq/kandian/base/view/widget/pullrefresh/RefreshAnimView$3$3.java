@@ -10,15 +10,15 @@ class RefreshAnimView$3$3
   
   public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    RefreshAnimView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView$3.a, paramLottieComposition);
+    RefreshAnimView.a(this.b.c, paramLottieComposition);
     if (paramLottieComposition != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+      this.a.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.pullrefresh.RefreshAnimView.3.3
  * JD-Core Version:    0.7.0.1
  */

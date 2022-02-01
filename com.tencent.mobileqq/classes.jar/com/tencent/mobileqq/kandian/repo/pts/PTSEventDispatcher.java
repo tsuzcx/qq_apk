@@ -7,37 +7,28 @@ import java.util.List;
 
 public class PTSEventDispatcher
 {
-  private static PTSEventDispatcher jdField_a_of_type_ComTencentMobileqqKandianRepoPtsPTSEventDispatcher;
-  private final List<PTSEventDispatcher.PTSObserver> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static PTSEventDispatcher a;
+  private final List<PTSEventDispatcher.PTSObserver> b = new ArrayList();
   
   public static PTSEventDispatcher a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianRepoPtsPTSEventDispatcher == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqKandianRepoPtsPTSEventDispatcher == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianRepoPtsPTSEventDispatcher = new PTSEventDispatcher();
+        if (a == null) {
+          a = new PTSEventDispatcher();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianRepoPtsPTSEventDispatcher;
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    }
+    return a;
   }
   
   public void a(int paramInt, List<Long> paramList, long paramLong)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext()) {
         ((PTSEventDispatcher.PTSObserver)localIterator.next()).a(paramInt, paramList, paramLong);
       }
@@ -51,9 +42,9 @@ public class PTSEventDispatcher
   
   public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext()) {
         ((PTSEventDispatcher.PTSObserver)localIterator.next()).a(paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
       }
@@ -70,18 +61,27 @@ public class PTSEventDispatcher
     if (paramPTSObserver == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramPTSObserver)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramPTSObserver);
+      if (!this.b.contains(paramPTSObserver)) {
+        this.b.add(paramPTSObserver);
       }
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    synchronized (this.b)
+    {
+      this.b.clear();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.pts.PTSEventDispatcher
  * JD-Core Version:    0.7.0.1
  */

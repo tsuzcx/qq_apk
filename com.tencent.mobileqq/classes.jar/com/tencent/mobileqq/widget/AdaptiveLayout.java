@@ -13,13 +13,13 @@ import java.util.Set;
 public class AdaptiveLayout
   extends ViewGroup
 {
-  private int jdField_a_of_type_Int;
-  private Map<Integer, AdaptiveLayout.Size> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private int a;
   private int b;
   private int c;
-  private int d;
+  private Map<Integer, AdaptiveLayout.Size> d = new HashMap();
   private int e;
   private int f;
+  private int g;
   
   public AdaptiveLayout(Context paramContext)
   {
@@ -45,7 +45,7 @@ public class AdaptiveLayout
     int i = getPaddingLeft();
     int j = getPaddingRight();
     int i9 = getChildCount();
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.d.clear();
     measureChildren(paramInt1, paramInt2);
     int n = i + j;
     int i3 = 0;
@@ -77,7 +77,7 @@ public class AdaptiveLayout
               n -= this.b;
               i1 = Math.max(j, n);
               m = i + (this.c + k);
-              this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i3), new AdaptiveLayout.Size(this, n, k));
+              this.d.put(Integer.valueOf(i3), new AdaptiveLayout.Size(this, n, k));
               i4 = getPaddingLeft() + getPaddingRight();
               i2 = 0;
             }
@@ -106,15 +106,15 @@ public class AdaptiveLayout
       m = n - this.b;
       j = Math.max(j, m);
       i += k;
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i3), new AdaptiveLayout.Size(this, m, k));
+      this.d.put(Integer.valueOf(i3), new AdaptiveLayout.Size(this, m, k));
       k = j;
     }
     else
     {
       k = j;
     }
-    this.e = k;
-    this.f = i;
+    this.f = k;
+    this.g = i;
     if (i8 != -2147483648)
     {
       j = i6;
@@ -144,7 +144,7 @@ public class AdaptiveLayout
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    Object[] arrayOfObject = this.jdField_a_of_type_JavaUtilMap.keySet().toArray();
+    Object[] arrayOfObject = this.d.keySet().toArray();
     Arrays.sort(arrayOfObject);
     int i = getChildCount();
     int n = getPaddingTop();
@@ -164,10 +164,10 @@ public class AdaptiveLayout
       if (j > i) {
         i1 = i;
       }
-      localObject2 = (AdaptiveLayout.Size)((AdaptiveLayout)localObject1).jdField_a_of_type_JavaUtilMap.get(localObject2);
+      localObject2 = (AdaptiveLayout.Size)((AdaptiveLayout)localObject1).d.get(localObject2);
       int i3 = ((AdaptiveLayout)localObject1).b;
       int i4 = ((AdaptiveLayout)localObject1).c;
-      j = ((AdaptiveLayout)localObject1).d & 0x7;
+      j = ((AdaptiveLayout)localObject1).e & 0x7;
       if (j != 1)
       {
         if (j != 5)
@@ -179,7 +179,7 @@ public class AdaptiveLayout
           else
           {
             j = i1 - i2;
-            j = (paramInt3 - paramInt1 - (((AdaptiveLayout.Size)localObject2).jdField_a_of_type_Int - ((AdaptiveLayout)localObject1).b * (j - 1))) / j;
+            j = (paramInt3 - paramInt1 - (((AdaptiveLayout.Size)localObject2).a - ((AdaptiveLayout)localObject1).b * (j - 1))) / j;
           }
           k = getPaddingLeft();
           i3 = j;
@@ -187,13 +187,13 @@ public class AdaptiveLayout
         }
         else
         {
-          j = getPaddingLeft() + paramInt3 - paramInt1 - ((AdaptiveLayout.Size)localObject2).jdField_a_of_type_Int;
+          j = getPaddingLeft() + paramInt3 - paramInt1 - ((AdaptiveLayout.Size)localObject2).a;
         }
       }
       else {
-        j = getPaddingLeft() + (paramInt3 - paramInt1 - ((AdaptiveLayout.Size)localObject2).jdField_a_of_type_Int) / 2;
+        j = getPaddingLeft() + (paramInt3 - paramInt1 - ((AdaptiveLayout.Size)localObject2).a) / 2;
       }
-      int k = ((AdaptiveLayout)localObject1).d & 0x70;
+      int k = ((AdaptiveLayout)localObject1).e & 0x70;
       if (k != 16)
       {
         if (k != 80)
@@ -201,7 +201,7 @@ public class AdaptiveLayout
           if (k != 112) {
             k = i4;
           } else {
-            k = (paramInt4 - paramInt2 - (((AdaptiveLayout)localObject1).f - ((AdaptiveLayout)localObject1).c * (i6 - 1))) / i6;
+            k = (paramInt4 - paramInt2 - (((AdaptiveLayout)localObject1).g - ((AdaptiveLayout)localObject1).c * (i6 - 1))) / i6;
           }
           i5 = getPaddingTop();
           i4 = k;
@@ -209,11 +209,11 @@ public class AdaptiveLayout
         }
         else
         {
-          k = getPaddingTop() + paramInt4 - paramInt2 - ((AdaptiveLayout)localObject1).f;
+          k = getPaddingTop() + paramInt4 - paramInt2 - ((AdaptiveLayout)localObject1).g;
         }
       }
       else {
-        k = getPaddingTop() + (paramInt4 - paramInt2 - ((AdaptiveLayout)localObject1).f) / 2;
+        k = getPaddingTop() + (paramInt4 - paramInt2 - ((AdaptiveLayout)localObject1).g) / 2;
       }
       int i5 = j;
       while (i2 < i1)
@@ -242,7 +242,7 @@ public class AdaptiveLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.a == 1)
     {
       b(paramInt1, paramInt2, paramInt3, paramInt4);
       return;
@@ -252,7 +252,7 @@ public class AdaptiveLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.a == 1)
     {
       b(paramInt1, paramInt2);
       return;
@@ -268,21 +268,21 @@ public class AdaptiveLayout
   
   public void setGravity(int paramInt)
   {
-    this.d = paramInt;
+    this.e = paramInt;
   }
   
   public void setOrientation(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.a != paramInt)
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.a = paramInt;
       requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AdaptiveLayout
  * JD-Core Version:    0.7.0.1
  */

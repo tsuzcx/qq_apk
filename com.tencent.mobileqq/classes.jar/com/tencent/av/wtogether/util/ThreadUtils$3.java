@@ -12,13 +12,13 @@ final class ThreadUtils$3
   {
     try
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherUtilThreadUtils$1Result.a = this.jdField_a_of_type_JavaUtilConcurrentCallable.call();
+      this.a.a = this.b.call();
     }
     catch (Exception localException)
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherUtilThreadUtils$1CaughtException.a = localException;
+      this.c.a = localException;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.d.countDown();
   }
 }
 

@@ -13,7 +13,7 @@ class ChannelTopBanner$PagerChangeTransformer
     if (paramView == null) {
       return;
     }
-    if ((this.a.a != null) && (this.a.a.getCount() == 1)) {
+    if ((this.a.d != null) && (this.a.d.getCount() == 1)) {
       return;
     }
     if ((paramFloat > -1.1F) && (paramFloat < 1.1F))
@@ -29,7 +29,7 @@ class ChannelTopBanner$PagerChangeTransformer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.channel.banner.ChannelTopBanner.PagerChangeTransformer
  * JD-Core Version:    0.7.0.1
  */

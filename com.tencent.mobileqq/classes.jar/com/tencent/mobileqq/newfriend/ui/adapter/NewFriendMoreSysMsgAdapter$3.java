@@ -19,20 +19,20 @@ class NewFriendMoreSysMsgAdapter$3
     if (QLog.isColorLevel()) {
       QLog.i("NewFriendMoreSysMsgAdapter", 2, "clear click");
     }
-    if (NetworkUtil.isNetSupport(NewFriendMoreSysMsgAdapter.a(this.a)))
+    if (NetworkUtil.isNetSupport(NewFriendMoreSysMsgAdapter.b(this.a)))
     {
       ReportController.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 2, 0, "", "", "", "");
-      NewFriendMoreSysMsgAdapter.b(this.a);
+      NewFriendMoreSysMsgAdapter.c(this.a);
       ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).clearAllSystemMsg(this.a.a);
       ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).deleteAllSuspiciousMsg(this.a.a);
       return;
     }
-    QQToast.a(NewFriendMoreSysMsgAdapter.a(this.a), 2131694433, 0).a();
+    QQToast.makeText(NewFriendMoreSysMsgAdapter.b(this.a), 2131892113, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.adapter.NewFriendMoreSysMsgAdapter.3
  * JD-Core Version:    0.7.0.1
  */

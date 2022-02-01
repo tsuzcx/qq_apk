@@ -32,37 +32,15 @@ import org.json.JSONObject;
 public class EventApiPlugin
   extends WebViewPlugin
 {
-  public static volatile BroadcastReceiver a;
-  public static CopyOnWriteArrayList<WeakReference<EventApiPlugin>> a;
-  public static AtomicBoolean a;
-  String jdField_a_of_type_JavaLangString = "";
-  WeakReference<EventApiPlugin> jdField_a_of_type_JavaLangRefWeakReference = null;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = null;
-  }
+  public static volatile BroadcastReceiver b;
+  public static AtomicBoolean c = new AtomicBoolean(false);
+  public static CopyOnWriteArrayList<WeakReference<EventApiPlugin>> d = null;
+  String a = "";
+  WeakReference<EventApiPlugin> e = null;
   
   public EventApiPlugin()
   {
     this.mPluginNameSpace = "event";
-  }
-  
-  public static void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EventApiPlugin", 2, "unRegisterEventReceiver");
-    }
-    CopyOnWriteArrayList localCopyOnWriteArrayList = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    if (localCopyOnWriteArrayList != null) {
-      localCopyOnWriteArrayList.clear();
-    }
-    if ((jdField_a_of_type_AndroidContentBroadcastReceiver != null) && (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)))
-    {
-      BaseApplicationImpl.getApplication().unregisterReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver);
-      jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-    }
   }
   
   public static void a(String paramString1, JSONObject paramJSONObject, ArrayList<String> paramArrayList, String paramString2)
@@ -88,31 +66,35 @@ public class EventApiPlugin
     }
   }
   
-  private static void b()
+  public static void b()
   {
-    jdField_a_of_type_AndroidContentBroadcastReceiver = new EventApiPlugin.1();
+    if (QLog.isColorLevel()) {
+      QLog.d("EventApiPlugin", 2, "unRegisterEventReceiver");
+    }
+    CopyOnWriteArrayList localCopyOnWriteArrayList = d;
+    if (localCopyOnWriteArrayList != null) {
+      localCopyOnWriteArrayList.clear();
+    }
+    if ((b != null) && (c.compareAndSet(true, false)))
+    {
+      BaseApplicationImpl.getApplication().unregisterReceiver(b);
+      b = null;
+    }
+  }
+  
+  private static void c()
+  {
+    b = new EventApiPlugin.1();
     if (QLog.isColorLevel()) {
       QLog.d("EventApiPlugin", 2, "init dispatch Event Receiver!");
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
     localIntentFilter.addAction("com.tencent.mobileqq.action.closewebview");
-    BaseApplicationImpl.getApplication().registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-    if (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) {
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+    BaseApplicationImpl.getApplication().registerReceiver(b, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+    if (d == null) {
+      d = new CopyOnWriteArrayList();
     }
-  }
-  
-  ComponentName a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split("/");
-      if ((paramString != null) && (paramString.length == 2)) {
-        return new ComponentName(paramString[0], paramString[1]);
-      }
-    }
-    return null;
   }
   
   Intent a(JSONObject paramJSONObject)
@@ -131,12 +113,12 @@ public class EventApiPlugin
     }
     str = paramJSONObject.optString("componentName", "");
     if (!TextUtils.isEmpty(str)) {
-      localIntent.setComponent(a(str));
+      localIntent.setComponent(b(str));
     }
     paramJSONObject = paramJSONObject.getJSONObject("intentExtras");
     if (paramJSONObject != null)
     {
-      paramJSONObject = a(paramJSONObject);
+      paramJSONObject = b(paramJSONObject);
       if (paramJSONObject != null) {
         localIntent.putExtras(paramJSONObject);
       }
@@ -144,45 +126,27 @@ public class EventApiPlugin
     return localIntent;
   }
   
-  Bundle a(JSONObject paramJSONObject)
-  {
-    Iterator localIterator = paramJSONObject.keys();
-    if (localIterator != null)
-    {
-      Bundle localBundle = new Bundle();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (!TextUtils.isEmpty(str)) {
-          localBundle.putCharSequence(str, paramJSONObject.getString(str));
-        }
-      }
-      return localBundle;
-    }
-    return null;
-  }
-  
   String a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(this.a)) {
+      return this.a;
     }
-    Object localObject = this.mRuntime.a();
+    Object localObject = this.mRuntime.d();
     if (localObject != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(String.valueOf(System.currentTimeMillis()));
       localStringBuilder.append(String.valueOf(localObject.hashCode()));
-      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      this.a = localStringBuilder.toString();
     }
     else
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(String.valueOf(System.currentTimeMillis()));
       ((StringBuilder)localObject).append(String.valueOf((int)(Math.random() * 1000000.0D)));
-      this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+      this.a = ((StringBuilder)localObject).toString();
     }
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(Context paramContext, Intent paramIntent)
@@ -191,7 +155,7 @@ public class EventApiPlugin
     Object localObject;
     if (paramIntent != null)
     {
-      paramContext = this.jdField_a_of_type_JavaLangRefWeakReference;
+      paramContext = this.e;
       if (paramContext != null)
       {
         if (paramContext.get() == null) {
@@ -210,7 +174,7 @@ public class EventApiPlugin
         }
         if (str1.equals("closeWebView"))
         {
-          this.mRuntime.a().finish();
+          this.mRuntime.d().finish();
           return;
         }
         paramContext = paramIntent.getStringExtra("data");
@@ -221,9 +185,9 @@ public class EventApiPlugin
     try
     {
       paramContext = new JSONObject(paramContext);
-      break label124;
+      break label122;
       paramContext = null;
-      label124:
+      label122:
       ArrayList localArrayList = paramIntent.getStringArrayListExtra("domains");
       if (localArrayList == null) {
         return;
@@ -256,7 +220,7 @@ public class EventApiPlugin
         i = 0;
         if (bool)
         {
-          str4 = this.jdField_a_of_type_JavaLangRefWeakReference.toString();
+          str4 = this.e.toString();
           if (paramContext != null) {
             localObject = paramContext.toString();
           } else {
@@ -309,7 +273,7 @@ public class EventApiPlugin
         paramString = a(new JSONObject(paramString));
         if ((paramString != null) && (this.mRuntime != null))
         {
-          localObject = this.mRuntime.a();
+          localObject = this.mRuntime.d();
           if (localObject != null)
           {
             ((Activity)localObject).startActivity(paramString);
@@ -347,6 +311,36 @@ public class EventApiPlugin
         }
       }
     }
+  }
+  
+  ComponentName b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split("/");
+      if ((paramString != null) && (paramString.length == 2)) {
+        return new ComponentName(paramString[0], paramString[1]);
+      }
+    }
+    return null;
+  }
+  
+  Bundle b(JSONObject paramJSONObject)
+  {
+    Iterator localIterator = paramJSONObject.keys();
+    if (localIterator != null)
+    {
+      Bundle localBundle = new Bundle();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (!TextUtils.isEmpty(str)) {
+          localBundle.putCharSequence(str, paramJSONObject.getString(str));
+        }
+      }
+      return localBundle;
+    }
+    return null;
   }
   
   protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -406,7 +400,7 @@ public class EventApiPlugin
     int i;
     int j;
     if ("event".equals(paramString2)) {
-      if (("dispatchEvent".equals(paramString3)) && (paramVarArgs.length == 1) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+      if (("dispatchEvent".equals(paramString3)) && (paramVarArgs.length == 1) && (this.e != null))
       {
         try
         {
@@ -419,14 +413,14 @@ public class EventApiPlugin
           if (TextUtils.isEmpty(paramString1))
           {
             if (!QLog.isColorLevel()) {
-              break label680;
+              break label677;
             }
             QLog.w("EventApiPlugin", 2, "param event is requested");
             return true;
           }
           paramString2 = paramString3.optJSONObject("data");
           if (paramString2 == null) {
-            break label682;
+            break label679;
           }
           paramJsBridgeListener = paramString2.toString();
           if ((!TextUtils.isEmpty(paramJsBridgeListener)) && (paramJsBridgeListener.length() >= 460800L))
@@ -442,40 +436,40 @@ public class EventApiPlugin
           paramJsBridgeListener = new ArrayList();
           localObject1 = ((WebView)localObject1).getUrl();
           if (paramVarArgs == null) {
-            break label712;
+            break label709;
           }
           bool2 = paramVarArgs.optBoolean("echo", true);
           bool1 = paramVarArgs.optBoolean("broadcast", true);
           localObject2 = paramVarArgs.optJSONArray("domains");
           if (localObject2 == null) {
-            break label697;
+            break label694;
           }
           i = ((JSONArray)localObject2).length();
           j = 0;
-          label256:
+          label255:
           if (j < i)
           {
             String str = ((JSONArray)localObject2).optString(j);
             if (TextUtils.isEmpty(str)) {
-              break label688;
+              break label685;
             }
             paramString3.add(str);
-            break label688;
+            break label685;
           }
-          label291:
+          label290:
           paramVarArgs = paramVarArgs.optJSONArray("platos");
           if (paramVarArgs == null) {
-            break label709;
+            break label706;
           }
           j = paramVarArgs.length();
           i = 0;
-          label316:
+          label315:
           if (i >= j) {
-            break label709;
+            break label706;
           }
           localObject2 = paramVarArgs.optString(i);
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label700;
+            break label697;
           }
           paramJsBridgeListener.add(localObject2);
         }
@@ -483,9 +477,9 @@ public class EventApiPlugin
         {
           Object localObject1;
           Object localObject2;
-          label350:
+          label349:
           paramJsBridgeListener.printStackTrace();
-          break label676;
+          break label673;
         }
         paramVarArgs = new JSONObject();
         paramVarArgs.put("url", localObject1);
@@ -508,9 +502,9 @@ public class EventApiPlugin
         ((Intent)localObject1).putExtra("source", paramVarArgs.toString());
         if (QLog.isColorLevel())
         {
-          localObject2 = this.jdField_a_of_type_JavaLangRefWeakReference.toString();
+          localObject2 = this.e.toString();
           if (paramString2 == null) {
-            break label721;
+            break label718;
           }
           paramJsBridgeListener = paramString2.toString();
         }
@@ -526,7 +520,7 @@ public class EventApiPlugin
       if ("cancelPayDialog".equals(paramString1))
       {
         MonitorManager.a().a(1, 6, "取消支付", "");
-        break label676;
+        break label673;
         if ("miuiInstallInterceptor".equals(paramString3))
         {
           if ((paramVarArgs.length < 1) && (QLog.isColorLevel()))
@@ -538,39 +532,39 @@ public class EventApiPlugin
           return true;
         }
       }
-      label676:
+      label673:
       return true;
       return false;
-      label680:
+      label677:
       return true;
-      label682:
+      label679:
       paramJsBridgeListener = "";
       break;
-      label688:
+      label685:
       j += 1;
-      break label256;
+      break label255;
+      label694:
+      break label290;
       label697:
-      break label291;
-      label700:
       i += 1;
-      break label316;
+      break label315;
+      label706:
+      break label349;
       label709:
-      break label350;
-      label712:
       bool1 = true;
       bool2 = true;
-      break label350;
-      label721:
+      break label349;
+      label718:
       paramJsBridgeListener = "NULL";
     }
   }
   
   public void onActivityReady()
   {
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+    if (c.compareAndSet(false, true)) {
       try
       {
-        b();
+        c();
       }
       catch (Exception localException)
       {
@@ -583,15 +577,15 @@ public class EventApiPlugin
         }
       }
     }
-    if ((jdField_a_of_type_AndroidContentBroadcastReceiver != null) && (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null))
+    if ((b != null) && (d != null))
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaLangRefWeakReference);
+      this.e = new WeakReference(this);
+      d.add(this.e);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder1 = new StringBuilder();
         localStringBuilder1.append("put current EventApiPlugin into sDispatchEventPlugins: ");
-        localStringBuilder1.append(this.jdField_a_of_type_JavaLangRefWeakReference.toString());
+        localStringBuilder1.append(this.e.toString());
         QLog.d("EventApiPlugin", 2, localStringBuilder1.toString());
       }
     }
@@ -605,23 +599,23 @@ public class EventApiPlugin
   protected void onDestroy()
   {
     super.onDestroy();
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null))
+    if ((this.e != null) && (d != null))
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("remove current EventApiPlugin from sDispatchEventPlugins: ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangRefWeakReference.toString());
+        localStringBuilder.append(this.e.toString());
         QLog.d("EventApiPlugin", 2, localStringBuilder.toString());
       }
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(this.jdField_a_of_type_JavaLangRefWeakReference);
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      d.remove(this.e);
+      this.e = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.EventApiPlugin
  * JD-Core Version:    0.7.0.1
  */

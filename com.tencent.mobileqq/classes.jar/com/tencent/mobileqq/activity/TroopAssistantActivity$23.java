@@ -19,8 +19,8 @@ class TroopAssistantActivity$23
       paramRecentBaseData1 = (RecentTroopAssistantItem)paramRecentBaseData1;
       paramRecentBaseData2 = (RecentTroopAssistantItem)paramRecentBaseData2;
       TroopManager localTroopManager = (TroopManager)this.a.app.getManager(QQManagerFactory.TROOP_MANAGER);
-      boolean bool1 = localTroopManager.a(paramRecentBaseData1.getRecentUserUin());
-      boolean bool2 = localTroopManager.a(paramRecentBaseData2.getRecentUserUin());
+      boolean bool1 = localTroopManager.o(paramRecentBaseData1.getRecentUserUin());
+      boolean bool2 = localTroopManager.o(paramRecentBaseData2.getRecentUserUin());
       if ((bool1) && (!bool2)) {
         return -1;
       }
@@ -59,7 +59,7 @@ class TroopAssistantActivity$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.23
  * JD-Core Version:    0.7.0.1
  */

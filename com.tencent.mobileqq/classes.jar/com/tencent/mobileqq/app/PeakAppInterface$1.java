@@ -23,13 +23,13 @@ class PeakAppInterface$1
       paramIntent.append("|");
       paramIntent.append(paramContext.length);
       QLog.d("PeakAppInterface", 2, paramIntent.toString());
-      ((PeakAudioTransHandler)this.a.getBusinessHandler(PeakAppInterface.a)).a(i, paramContext);
+      ((PeakAudioTransHandler)this.a.getBusinessHandler(PeakAppInterface.b)).a(i, paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PeakAppInterface.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,46 +9,68 @@ import java.util.List;
 
 public final class Palette$Builder
 {
-  private int jdField_a_of_type_Int = 16;
   @Nullable
-  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private final List<Palette.Swatch> a;
   @Nullable
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private final Bitmap b;
+  private final List<Target> c = new ArrayList();
+  private int d = 16;
+  private int e = 12544;
+  private int f = -1;
+  private final List<Palette.Filter> g = new ArrayList();
   @Nullable
-  private final List<Palette.Swatch> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int = 12544;
-  private final List<Target> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private int jdField_c_of_type_Int = -1;
-  private final List<Palette.Filter> jdField_c_of_type_JavaUtilList = new ArrayList();
+  private Rect h;
   
   public Palette$Builder(@NonNull Bitmap paramBitmap)
   {
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.jdField_c_of_type_JavaUtilList.add(Palette.a);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      this.jdField_a_of_type_JavaUtilList = null;
-      this.jdField_b_of_type_JavaUtilList.add(Target.a);
-      this.jdField_b_of_type_JavaUtilList.add(Target.b);
-      this.jdField_b_of_type_JavaUtilList.add(Target.c);
-      this.jdField_b_of_type_JavaUtilList.add(Target.d);
-      this.jdField_b_of_type_JavaUtilList.add(Target.e);
-      this.jdField_b_of_type_JavaUtilList.add(Target.f);
+      this.g.add(Palette.a);
+      this.b = paramBitmap;
+      this.a = null;
+      this.c.add(Target.a);
+      this.c.add(Target.b);
+      this.c.add(Target.c);
+      this.c.add(Target.d);
+      this.c.add(Target.e);
+      this.c.add(Target.f);
       return;
     }
     throw new IllegalArgumentException("Bitmap is not valid");
   }
   
-  private Bitmap a(Bitmap paramBitmap)
+  private int[] a(Bitmap paramBitmap)
   {
-    int i = this.jdField_b_of_type_Int;
+    int j = paramBitmap.getWidth();
+    int i = paramBitmap.getHeight();
+    int[] arrayOfInt = new int[j * i];
+    paramBitmap.getPixels(arrayOfInt, 0, j, 0, 0, j, i);
+    paramBitmap = this.h;
+    if (paramBitmap == null) {
+      return arrayOfInt;
+    }
+    int k = paramBitmap.width();
+    int m = this.h.height();
+    paramBitmap = new int[k * m];
+    i = 0;
+    while (i < m)
+    {
+      System.arraycopy(arrayOfInt, (this.h.top + i) * j + this.h.left, paramBitmap, i * k, k);
+      i += 1;
+    }
+    return paramBitmap;
+  }
+  
+  private Bitmap b(Bitmap paramBitmap)
+  {
+    int i = this.e;
     double d2 = -1.0D;
     int j;
     double d1;
     if (i > 0)
     {
       i = paramBitmap.getWidth() * paramBitmap.getHeight();
-      j = this.jdField_b_of_type_Int;
+      j = this.e;
       d1 = d2;
       if (i > j)
       {
@@ -62,10 +84,10 @@ public final class Palette$Builder
     else
     {
       d1 = d2;
-      if (this.jdField_c_of_type_Int > 0)
+      if (this.f > 0)
       {
         i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
-        j = this.jdField_c_of_type_Int;
+        j = this.f;
         d1 = d2;
         if (i > j)
         {
@@ -88,40 +110,18 @@ public final class Palette$Builder
     return Bitmap.createScaledBitmap(paramBitmap, i, (int)Math.ceil(d2 * d1), false);
   }
   
-  private int[] a(Bitmap paramBitmap)
-  {
-    int j = paramBitmap.getWidth();
-    int i = paramBitmap.getHeight();
-    int[] arrayOfInt = new int[j * i];
-    paramBitmap.getPixels(arrayOfInt, 0, j, 0, 0, j, i);
-    paramBitmap = this.jdField_a_of_type_AndroidGraphicsRect;
-    if (paramBitmap == null) {
-      return arrayOfInt;
-    }
-    int k = paramBitmap.width();
-    int m = this.jdField_a_of_type_AndroidGraphicsRect.height();
-    paramBitmap = new int[k * m];
-    i = 0;
-    while (i < m)
-    {
-      System.arraycopy(arrayOfInt, (this.jdField_a_of_type_AndroidGraphicsRect.top + i) * j + this.jdField_a_of_type_AndroidGraphicsRect.left, paramBitmap, i * k, k);
-      i += 1;
-    }
-    return paramBitmap;
-  }
-  
   @NonNull
   public Palette a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.b;
     if (localObject != null)
     {
-      Bitmap localBitmap = a((Bitmap)localObject);
-      localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-      if ((localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) && (localObject != null))
+      Bitmap localBitmap = b((Bitmap)localObject);
+      localObject = this.h;
+      if ((localBitmap != this.b) && (localObject != null))
       {
         double d1 = localBitmap.getWidth();
-        double d2 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+        double d2 = this.b.getWidth();
         Double.isNaN(d1);
         Double.isNaN(d2);
         d1 /= d2;
@@ -139,31 +139,31 @@ public final class Palette$Builder
         ((Rect)localObject).bottom = Math.min((int)Math.ceil(d2 * d1), localBitmap.getHeight());
       }
       int[] arrayOfInt = a(localBitmap);
-      int i = this.jdField_a_of_type_Int;
-      if (this.jdField_c_of_type_JavaUtilList.isEmpty())
+      int i = this.d;
+      if (this.g.isEmpty())
       {
         localObject = null;
       }
       else
       {
-        localObject = this.jdField_c_of_type_JavaUtilList;
+        localObject = this.g;
         localObject = (Palette.Filter[])((List)localObject).toArray(new Palette.Filter[((List)localObject).size()]);
       }
       localObject = new ColorCutQuantizer(arrayOfInt, i, (Palette.Filter[])localObject);
-      if (localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) {
+      if (localBitmap != this.b) {
         localBitmap.recycle();
       }
       localObject = ((ColorCutQuantizer)localObject).a();
     }
     else
     {
-      localObject = this.jdField_a_of_type_JavaUtilList;
+      localObject = this.a;
       if (localObject == null) {
         break label314;
       }
     }
-    localObject = new Palette((List)localObject, this.jdField_b_of_type_JavaUtilList);
-    ((Palette)localObject).a();
+    localObject = new Palette((List)localObject, this.c);
+    ((Palette)localObject).b();
     return localObject;
     label314:
     throw new AssertionError();
@@ -171,7 +171,7 @@ public final class Palette$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.Palette.Builder
  * JD-Core Version:    0.7.0.1
  */

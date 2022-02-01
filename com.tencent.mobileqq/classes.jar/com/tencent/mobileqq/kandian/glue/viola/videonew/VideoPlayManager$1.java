@@ -15,8 +15,8 @@ class VideoPlayManager$1
     VideoPlayManager.VideoPlayParam.a((VideoPlayManager.VideoPlayParam)localObject, VideoPlayManager.a(this.this$0, (VideoPlayManager.VideoPlayParam)localObject));
     if ((VideoPlayManager.VideoPlayParam.a(this.a) != null) && (VideoPlayManager.a(this.this$0) != null))
     {
-      VideoPlayManager.VideoPlayParam.a(this.a).a(this.a.a);
-      VideoPlayManager.a(this.this$0).add(VideoPlayManager.VideoPlayParam.a(this.a));
+      VideoPlayManager.VideoPlayParam.a(this.a).a(this.a.c);
+      VideoPlayManager.b(this.this$0).add(VideoPlayManager.VideoPlayParam.a(this.a));
       VideoPlayManager.a(this.this$0).post(new VideoPlayManager.1.1(this));
       return;
     }
@@ -33,7 +33,7 @@ class VideoPlayManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.VideoPlayManager.1
  * JD-Core Version:    0.7.0.1
  */

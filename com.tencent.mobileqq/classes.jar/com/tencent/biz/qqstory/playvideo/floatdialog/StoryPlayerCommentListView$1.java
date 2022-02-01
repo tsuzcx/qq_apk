@@ -9,13 +9,13 @@ class StoryPlayerCommentListView$1
   
   public boolean a(boolean paramBoolean)
   {
-    StoryPlayerCommentListView.a(this.a).a(StoryPlayerCommentListView.a(this.a).a());
+    StoryPlayerCommentListView.a(this.a).a(StoryPlayerCommentListView.a(this.a).e());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView.1
  * JD-Core Version:    0.7.0.1
  */

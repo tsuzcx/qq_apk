@@ -9,25 +9,13 @@ import tencent.im.login.GatewayVerify.SelfPhoneUrl;
 public class NetGatewayCallback
   implements GatewayCallback
 {
-  private Network jdField_a_of_type_AndroidNetNetwork;
-  private GatewayCallback jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback;
+  private GatewayCallback a;
+  private Network b;
   
   NetGatewayCallback(GatewayCallback paramGatewayCallback, Network paramNetwork)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback = paramGatewayCallback;
-    this.jdField_a_of_type_AndroidNetNetwork = paramNetwork;
-  }
-  
-  private void a()
-  {
-    try
-    {
-      if (!GateWayVerifyManager.a()) {
-        GateWayVerifyManager.a().a();
-      }
-      return;
-    }
-    finally {}
+    this.a = paramGatewayCallback;
+    this.b = paramNetwork;
   }
   
   private boolean a()
@@ -36,18 +24,30 @@ public class NetGatewayCallback
     {
       try
       {
-        boolean bool2 = GateWayVerifyManager.a();
+        boolean bool2 = GateWayVerifyManager.b();
         bool1 = true;
         if (bool2) {
           return true;
         }
-        if (!this.jdField_a_of_type_AndroidNetNetwork.equals(GateWayVerifyManager.a().a())) {
+        if (!this.b.equals(GateWayVerifyManager.a().c())) {
           return bool1;
         }
       }
       finally {}
       boolean bool1 = false;
     }
+  }
+  
+  private void b()
+  {
+    try
+    {
+      if (!GateWayVerifyManager.b()) {
+        GateWayVerifyManager.a().e();
+      }
+      return;
+    }
+    finally {}
   }
   
   public void a(Exception paramException)
@@ -57,8 +57,8 @@ public class NetGatewayCallback
       QLog.d("GatewayCallbackWrapper", 1, "GatewayCallbackWrapper onChangeNetworkError, but this request is expired");
       return;
     }
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback.a(paramException);
+    b();
+    this.a.a(paramException);
   }
   
   public void a(GatewayVerify.SelfPhoneUrl paramSelfPhoneUrl)
@@ -68,7 +68,7 @@ public class NetGatewayCallback
       QLog.d("GatewayCallbackWrapper", 1, "GatewayCallbackWrapper onRedirect, but this request is expired");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback.a(paramSelfPhoneUrl);
+    this.a.a(paramSelfPhoneUrl);
   }
   
   public void a(GatewayVerify.SelfPhoneUrl paramSelfPhoneUrl, String paramString)
@@ -78,7 +78,7 @@ public class NetGatewayCallback
       QLog.d("GatewayCallbackWrapper", 1, "GatewayCallbackWrapper onResponse, but this request is expired");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback.a(paramSelfPhoneUrl, paramString);
+    this.a.a(paramSelfPhoneUrl, paramString);
   }
   
   public void b(int paramInt, Exception paramException)
@@ -88,13 +88,13 @@ public class NetGatewayCallback
       QLog.d("GatewayCallbackWrapper", 1, "GatewayCallbackWrapper onGetTokenError, but this request is expired");
       return;
     }
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback.b(paramInt, paramException);
+    b();
+    this.a.b(paramInt, paramException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.NetGatewayCallback
  * JD-Core Version:    0.7.0.1
  */

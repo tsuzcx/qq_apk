@@ -22,14 +22,14 @@ class AECMShowPhotoPreviewFragment$1
     ThreadManager.getUIHandler().post(new AECMShowPhotoPreviewFragment.1.2(this, paramInt, paramCmShowDataWrapper));
   }
   
-  public void b(int paramInt)
+  public void d(int paramInt)
   {
     ThreadManager.getUIHandler().post(new AECMShowPhotoPreviewFragment.1.1(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowPhotoPreviewFragment.1
  * JD-Core Version:    0.7.0.1
  */

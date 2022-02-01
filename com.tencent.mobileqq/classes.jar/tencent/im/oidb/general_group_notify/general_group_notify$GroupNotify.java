@@ -16,7 +16,7 @@ public final class general_group_notify$GroupNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.general_group_notify.general_group_notify.GroupNotify
  * JD-Core Version:    0.7.0.1
  */

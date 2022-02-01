@@ -21,19 +21,19 @@ class AVGameShareUtil$6
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
       SessionInfo localSessionInfo = new SessionInfo();
-      localSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      paramBoolean = TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString);
+      localSessionInfo.a = this.e;
+      localSessionInfo.b = this.f;
+      paramBoolean = TextUtils.isEmpty(this.g);
       Object localObject = "邀请你加入派对";
       if (!paramBoolean)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.g);
         ((StringBuilder)localObject).append("邀请你加入派对");
         localObject = ((StringBuilder)localObject).toString();
       }
-      paramString = new ArkAppMessage((String)localObject, "com.tencent.avgame", null, "invite", "1.0.0.1", AVGameShareEntry.a(String.valueOf(this.jdField_b_of_type_Long), Long.valueOf(this.jdField_c_of_type_Long).longValue(), paramString), null, null);
-      ChatActivityFacade.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localSessionInfo, paramString);
+      paramString = new ArkAppMessage((String)localObject, "com.tencent.avgame", null, "invite", "1.0.0.1", AVGameShareEntry.a(String.valueOf(this.h), Long.valueOf(this.i).longValue(), paramString), null, null);
+      ChatActivityFacade.b((QQAppInterface)this.d, localSessionInfo, paramString);
       return;
     }
     QLog.e("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg error");
@@ -41,7 +41,7 @@ class AVGameShareUtil$6
   
   public void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if (paramLong != this.jdField_a_of_type_Long)
+    if (paramLong != this.a)
     {
       QLog.e("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg fail: observer not match");
       return;
@@ -54,13 +54,13 @@ class AVGameShareUtil$6
     ((StringBuilder)localObject).append(" mark: ");
     ((StringBuilder)localObject).append(paramLong);
     QLog.d("AvGameRoomListObserver", 1, ((StringBuilder)localObject).toString());
-    localObject = (AvGameRoomListObserver)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(this.jdField_a_of_type_Long));
+    localObject = (AvGameRoomListObserver)this.c.remove(Long.valueOf(this.a));
     if (localObject == null)
     {
       QLog.e("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg fail: observer not exist");
       return;
     }
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.removeObserver((BusinessObserver)localObject);
+    this.d.removeObserver((BusinessObserver)localObject);
     try
     {
       a(paramBoolean, paramString);
@@ -77,7 +77,7 @@ class AVGameShareUtil$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.avgameshare.AVGameShareUtil.6
  * JD-Core Version:    0.7.0.1
  */

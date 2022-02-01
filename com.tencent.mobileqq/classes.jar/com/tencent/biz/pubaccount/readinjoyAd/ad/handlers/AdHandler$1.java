@@ -21,7 +21,7 @@ class AdHandler$1
       localObject = (ReadInjoyADExposureManager)((QQAppInterface)localObject).getManager(QQManagerFactory.KANDIAN_AD_EXPOSURE_MANAGER);
       if (localObject != null)
       {
-        IReadInJoyBaseAdapter localIReadInJoyBaseAdapter = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter;
+        IReadInJoyBaseAdapter localIReadInJoyBaseAdapter = this.a;
         ((ReadInjoyADExposureManager)localObject).a(localIReadInJoyBaseAdapter, localIReadInJoyBaseAdapter.a(), true, paramInt1);
       }
     }
@@ -29,7 +29,7 @@ class AdHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.handlers.AdHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -50,40 +50,36 @@ public class FaceLayer
   extends BaseLayer
 {
   public static final String a = "FaceLayer";
-  public int a;
-  public Paint a;
-  public Drawable a;
-  public TextPaint a;
-  public FaceLayer.FaceItem a;
-  public FaceLayer.LayerEventListener a;
-  public GestureHelper a;
-  public List<FaceLayer.FaceItem> a;
-  public Map<String, List<String>> a;
-  public boolean a;
-  public Paint b;
-  public List<FaceLayer.FaceItem> b;
-  public Map<String, List<String>> b;
-  public Paint c;
+  public List<FaceLayer.FaceItem> b = new CopyOnWriteArrayList();
+  public FaceLayer.FaceItem c;
   public Paint d;
-  public Paint e;
+  public TextPaint e;
   public Paint f;
   public Paint g;
+  public Paint h;
+  public Paint i;
+  public Paint j;
+  public Paint k;
+  public Drawable l;
+  public GestureHelper m;
+  public int n;
+  public boolean o;
+  public FaceLayer.LayerEventListener p;
+  public Map<String, List<String>> q = new HashMap();
+  public List<FaceLayer.FaceItem> r = new ArrayList();
+  public Map<String, List<String>> s = new HashMap();
   
   public FaceLayer(DoodleView paramDoodleView)
   {
     super(paramDoodleView);
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    e();
+    l();
   }
   
   private int a(float paramFloat, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = (int)paramFloat;
+    int i1 = (int)paramFloat;
     if (paramInt3 == 0) {
-      return i;
+      return i1;
     }
     paramInt1 /= 2;
     float f2 = paramInt1;
@@ -98,50 +94,41 @@ public class FaceLayer
     return (int)paramFloat;
   }
   
-  private void a(MotionEvent paramMotionEvent)
-  {
-    if (a(paramMotionEvent.getX(0), paramMotionEvent.getY(0)))
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem);
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem);
-    }
-  }
-  
   private void a(FaceLayer.FaceItem paramFaceItem, Canvas paramCanvas)
   {
     if (paramFaceItem == null) {
       return;
     }
     paramCanvas.save();
-    paramCanvas.concat(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(paramFaceItem));
+    paramCanvas.concat(this.m.b(paramFaceItem));
     paramFaceItem.a(paramCanvas, true);
     paramCanvas.restore();
   }
   
   private void a(FaceLayer.FaceItem paramFaceItem, Map<String, List<String>> paramMap)
   {
-    List localList = (List)paramMap.get(paramFaceItem.d);
+    List localList = (List)paramMap.get(paramFaceItem.n);
     Object localObject = localList;
     if (localList == null)
     {
       localObject = new ArrayList();
-      paramMap.put(paramFaceItem.d, localObject);
+      paramMap.put(paramFaceItem.n, localObject);
     }
-    ((List)localObject).add(paramFaceItem.e);
+    ((List)localObject).add(paramFaceItem.o);
   }
   
   private boolean a(float paramFloat1, float paramFloat2)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    while (i >= 0)
+    int i1 = this.b.size() - 1;
+    while (i1 >= 0)
     {
-      FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(localFaceItem, paramFloat1, paramFloat2, false))
+      FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)this.b.get(i1);
+      if (this.m.a(localFaceItem, paramFloat1, paramFloat2, false))
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem = localFaceItem;
+        this.c = localFaceItem;
         return true;
       }
-      i -= 1;
+      i1 -= 1;
     }
     return false;
   }
@@ -157,122 +144,131 @@ public class FaceLayer
     return false;
   }
   
-  private void b(MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem = null;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a();
-    super.k();
-    super.d(false);
-  }
-  
   private void b(FaceLayer.FaceItem paramFaceItem, Map<String, List<String>> paramMap)
   {
-    List localList = (List)paramMap.get(paramFaceItem.d);
+    List localList = (List)paramMap.get(paramFaceItem.n);
     if (localList != null)
     {
-      localList.remove(paramFaceItem.e);
+      localList.remove(paramFaceItem.o);
       if (localList.isEmpty()) {
-        paramMap.remove(paramFaceItem.d);
+        paramMap.remove(paramFaceItem.n);
       }
+    }
+  }
+  
+  private void c(MotionEvent paramMotionEvent)
+  {
+    if (a(paramMotionEvent.getX(0), paramMotionEvent.getY(0)))
+    {
+      this.b.remove(this.c);
+      this.b.add(this.c);
     }
   }
   
   private void c(FaceLayer.FaceItem paramFaceItem)
   {
-    boolean bool1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(paramFaceItem, StoryGuideLineView.jdField_a_of_type_Int, true);
-    boolean bool2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(paramFaceItem, StoryGuideLineView.b, false);
-    boolean bool3 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.b(paramFaceItem, StoryGuideLineView.d, false);
-    FaceLayer.LayerEventListener localLayerEventListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$LayerEventListener;
+    boolean bool1 = this.m.a(paramFaceItem, StoryGuideLineView.a, true);
+    boolean bool2 = this.m.a(paramFaceItem, StoryGuideLineView.b, false);
+    boolean bool3 = this.m.b(paramFaceItem, StoryGuideLineView.d, false);
+    FaceLayer.LayerEventListener localLayerEventListener = this.p;
     if (localLayerEventListener != null) {
-      localLayerEventListener.a(bool1, bool2, false, bool3, paramFaceItem.jdField_g_of_type_Boolean);
+      localLayerEventListener.a(bool1, bool2, false, bool3, paramFaceItem.S);
     }
     if (paramFaceItem != null)
     {
-      if (paramFaceItem.f)
+      if (paramFaceItem.M)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.a(paramFaceItem.jdField_g_of_type_Boolean, paramFaceItem.jdField_k_of_type_Float, paramFaceItem.jdField_l_of_type_Float, paramFaceItem.m, paramFaceItem.jdField_a_of_type_AndroidGraphicsPointF, paramFaceItem.jdField_h_of_type_Boolean, 2);
+        this.z.a(paramFaceItem.S, paramFaceItem.C, paramFaceItem.D, paramFaceItem.E, paramFaceItem.A, paramFaceItem.T, 2);
         return;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.a(paramFaceItem.jdField_g_of_type_Boolean, paramFaceItem.jdField_k_of_type_Float, paramFaceItem.jdField_l_of_type_Float, paramFaceItem.m, paramFaceItem.jdField_a_of_type_AndroidGraphicsPointF, paramFaceItem.jdField_h_of_type_Boolean, 1);
+      this.z.a(paramFaceItem.S, paramFaceItem.C, paramFaceItem.D, paramFaceItem.E, paramFaceItem.A, paramFaceItem.T, 1);
     }
   }
   
-  private void e()
+  private void e(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846976);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-65536);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-    this.c = new Paint();
-    this.c.setAntiAlias(true);
-    this.c.setStyle(Paint.Style.STROKE);
-    this.c.setColor(-16711936);
-    this.c.setStrokeWidth(2.0F);
-    this.i.setStrokeWidth(2.0F);
-    this.d = new Paint();
-    this.d.setStrokeWidth(1.0F);
-    this.d.setColor(-1);
-    this.d.setStyle(Paint.Style.STROKE);
-    this.d.setPathEffect(new DashPathEffect(new float[] { 8.0F, 6.0F }, 0.0F));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper = new GestureHelper();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(true);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(18.0F);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.b(0.2F);
-    this.e = new Paint();
-    this.e.setAntiAlias(true);
-    this.e.setStyle(Paint.Style.STROKE);
-    this.e.setColor(-1);
-    this.e.setStrokeWidth(2.0F);
-    this.g = new Paint();
-    this.g.setAntiAlias(true);
-    this.g.setColor(-1);
-    this.g.setStyle(Paint.Style.FILL);
-    this.f = new Paint();
-    this.f.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    this.f.setStyle(Paint.Style.FILL);
+    this.c = null;
+    this.m.a();
+    super.u();
+    super.d(false);
   }
   
-  private void f()
+  private void l()
   {
-    FaceLayer.LayerEventListener localLayerEventListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$LayerEventListener;
+    this.d = new Paint();
+    this.l = this.y.getResources().getDrawable(2130848528);
+    this.e = new TextPaint();
+    this.e.setAntiAlias(true);
+    this.e.setTextAlign(Paint.Align.LEFT);
+    this.e.setStyle(Paint.Style.FILL);
+    this.e.setTypeface(Typeface.DEFAULT);
+    this.f = new Paint();
+    this.f.setAntiAlias(true);
+    this.f.setStyle(Paint.Style.STROKE);
+    this.f.setColor(-65536);
+    this.f.setStrokeWidth(2.0F);
+    this.g = new Paint();
+    this.g.setAntiAlias(true);
+    this.g.setStyle(Paint.Style.STROKE);
+    this.g.setColor(-16711936);
+    this.g.setStrokeWidth(2.0F);
+    this.C.setStrokeWidth(2.0F);
+    this.h = new Paint();
+    this.h.setStrokeWidth(1.0F);
+    this.h.setColor(-1);
+    this.h.setStyle(Paint.Style.STROKE);
+    this.h.setPathEffect(new DashPathEffect(new float[] { 8.0F, 6.0F }, 0.0F));
+    this.m = new GestureHelper();
+    this.m.a(true);
+    this.m.a(18.0F);
+    this.m.b(0.2F);
+    this.i = new Paint();
+    this.i.setAntiAlias(true);
+    this.i.setStyle(Paint.Style.STROKE);
+    this.i.setColor(-1);
+    this.i.setStrokeWidth(2.0F);
+    this.k = new Paint();
+    this.k.setAntiAlias(true);
+    this.k.setColor(-1);
+    this.k.setStyle(Paint.Style.FILL);
+    this.j = new Paint();
+    this.j.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    this.j.setStyle(Paint.Style.FILL);
+  }
+  
+  private void m()
+  {
+    FaceLayer.LayerEventListener localLayerEventListener = this.p;
     if (localLayerEventListener != null)
     {
-      FaceLayer.FaceItem localFaceItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem;
+      FaceLayer.FaceItem localFaceItem = this.c;
       if ((localFaceItem != null) && (localLayerEventListener.a(localFaceItem))) {
-        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem);
+        this.b.remove(this.c);
       }
     }
   }
   
-  private void g()
+  private void n()
   {
-    FaceLayer.FaceItem localFaceItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem;
+    FaceLayer.FaceItem localFaceItem = this.c;
     if (localFaceItem != null) {
       localFaceItem.c();
     }
   }
   
-  private void h()
+  private void o()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.a(false, 0.0F, 0.0F, 0.0F, null, false, 1);
+    this.z.a(false, 0.0F, 0.0F, 0.0F, null, false, 1);
   }
   
   public Rect a(Rect paramRect)
   {
     paramRect.setEmpty();
-    FaceLayer.FaceItem localFaceItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem;
+    FaceLayer.FaceItem localFaceItem = this.c;
     if (localFaceItem != null)
     {
-      int i = (int)(localFaceItem.n * this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem.j);
-      paramRect.set(0, 0, i, i);
+      int i1 = (int)(localFaceItem.G * this.c.B);
+      paramRect.set(0, 0, i1, i1);
     }
     return paramRect;
   }
@@ -281,32 +277,32 @@ public class FaceLayer
   {
     if (paramDrawable == null)
     {
-      SLog.e(jdField_a_of_type_JavaLangString, "Face drawable is null.");
+      SLog.e(a, "Face drawable is null.");
       return null;
     }
     if (paramLayerParams == null)
     {
-      SLog.e(jdField_a_of_type_JavaLangString, "ItemParams is null.");
+      SLog.e(a, "ItemParams is null.");
       return null;
     }
     FaceLayer.LayerParams localLayerParams = FaceLayer.LayerParams.a(paramZoomItem, paramLayerParams);
     if ((paramZoomItem instanceof FaceLayer.FaceItem))
     {
       paramZoomItem = (FaceLayer.FaceItem)paramZoomItem;
-      if (paramZoomItem.b) {
-        this.jdField_b_of_type_JavaUtilList.remove(paramZoomItem);
+      if (paramZoomItem.s) {
+        this.r.remove(paramZoomItem);
       } else {
-        b(paramZoomItem, this.jdField_a_of_type_JavaUtilMap);
+        b(paramZoomItem, this.q);
       }
-      b(paramZoomItem, this.jdField_b_of_type_JavaUtilMap);
+      b(paramZoomItem, this.s);
     }
-    if (TextUtils.isEmpty(paramLayerParams.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(paramLayerParams.h))
     {
-      SLog.b(jdField_a_of_type_JavaLangString, "Create Normal FaceItem.");
+      SLog.b(a, "Create Normal FaceItem.");
       paramString1 = new FaceLayer.FaceItem(this, paramDrawable, localLayerParams, paramString1, paramString2, paramString3, paramInt1, paramInt2);
       paramString1.a(paramBoolean);
       if ((paramDrawable instanceof InfoStickerDrawable)) {
-        paramString1.b(InformationFaceConstant.b(((InfoStickerDrawable)paramDrawable).a()));
+        paramString1.b(InformationFaceConstant.b(((InfoStickerDrawable)paramDrawable).f()));
       }
       if (!TextUtils.isEmpty(paramString5)) {
         paramInt1 = -1;
@@ -326,72 +322,59 @@ public class FaceLayer
     paramZoomItem = paramString1;
     if (!TextUtils.isEmpty(paramString4))
     {
-      paramString1.jdField_a_of_type_ComTencentMobileqqTribeDataTroopBarPOI = new TroopBarPOI("-1", "", paramString4, 0, "", 0, "");
-      paramString1.jdField_a_of_type_Long = System.currentTimeMillis();
+      paramString1.u = new TroopBarPOI("-1", "", paramString4, 0, "", 0, "");
+      paramString1.v = System.currentTimeMillis();
       paramZoomItem = paramString1;
       break label328;
-      paramZoomItem = jdField_a_of_type_JavaLangString;
+      paramZoomItem = a;
       paramLayerParams = new StringBuilder();
       paramLayerParams.append("Create FaceAndTextItem with text:");
-      paramLayerParams.append(localLayerParams.jdField_a_of_type_JavaLangString);
+      paramLayerParams.append(localLayerParams.h);
       SLog.b(paramZoomItem, paramLayerParams.toString());
       paramZoomItem = new FaceLayer.FaceAndTextItem(this, paramDrawable, localLayerParams, paramString1, paramString2, paramString3, paramInt1, paramInt2);
     }
     label328:
-    paramZoomItem.b = paramBoolean;
+    paramZoomItem.s = paramBoolean;
     if (!TextUtils.isEmpty(paramString5)) {
-      paramZoomItem.jdField_g_of_type_JavaLangString = paramString5;
+      paramZoomItem.w = paramString5;
     }
-    if (paramZoomItem.b) {
-      this.jdField_b_of_type_JavaUtilList.add(paramZoomItem);
+    if (paramZoomItem.s) {
+      this.r.add(paramZoomItem);
     } else {
-      b(paramZoomItem, this.jdField_a_of_type_JavaUtilMap);
+      b(paramZoomItem, this.q);
     }
-    b(paramZoomItem, this.jdField_b_of_type_JavaUtilMap);
+    b(paramZoomItem, this.s);
     return paramZoomItem;
   }
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public Map<String, List<String>> a()
-  {
-    return this.jdField_b_of_type_JavaUtilMap;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem = null;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a();
-    SLog.b(jdField_a_of_type_JavaLangString, "clear over.");
+    return a;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     super.a(paramInt1, paramInt2);
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.b;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.b.iterator();
       while (((Iterator)localObject).hasNext())
       {
         FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)((Iterator)localObject).next();
-        paramInt1 = (int)(localFaceItem.n * localFaceItem.j);
-        paramInt2 = (int)(localFaceItem.o * localFaceItem.j);
-        localFaceItem.jdField_a_of_type_AndroidGraphicsPointF.x = a(localFaceItem.jdField_a_of_type_AndroidGraphicsPointF.x, paramInt1, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.right);
-        localFaceItem.jdField_a_of_type_AndroidGraphicsPointF.y = a(localFaceItem.jdField_a_of_type_AndroidGraphicsPointF.y, paramInt2, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
+        paramInt1 = (int)(localFaceItem.G * localFaceItem.B);
+        paramInt2 = (int)(localFaceItem.H * localFaceItem.B);
+        localFaceItem.A.x = a(localFaceItem.A.x, paramInt1, this.B.left, this.B.right);
+        localFaceItem.A.y = a(localFaceItem.A.y, paramInt2, this.B.top, this.B.bottom);
       }
       return;
     }
-    SLog.b(jdField_a_of_type_JavaLangString, "mFaceItems = null or size<=0");
+    SLog.b(a, "mFaceItems = null or size<=0");
   }
   
   protected void a(Canvas paramCanvas)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       a((FaceLayer.FaceItem)localIterator.next(), paramCanvas);
     }
@@ -401,14 +384,14 @@ public class FaceLayer
   {
     paramCanvas.save();
     paramCanvas.scale(paramFloat, paramFloat);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)localIterator.next();
-      if (localFaceItem.jdField_h_of_type_Int == 0)
+      if (localFaceItem.y == 0)
       {
         paramCanvas.save();
-        paramCanvas.concat(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(localFaceItem, false));
+        paramCanvas.concat(this.m.a(localFaceItem, false));
         localFaceItem.a(paramCanvas, false);
         paramCanvas.restore();
       }
@@ -419,9 +402,9 @@ public class FaceLayer
   public void a(Matrix paramMatrix)
   {
     super.a(paramMatrix);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      ((FaceLayer.FaceItem)localIterator.next()).jdField_a_of_type_AndroidGraphicsMatrix.set(paramMatrix);
+      ((FaceLayer.FaceItem)localIterator.next()).F.set(paramMatrix);
     }
   }
   
@@ -436,24 +419,24 @@ public class FaceLayer
   
   public void a(FaceLayer.FaceItem paramFaceItem)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if ((localList != null) && (!localList.isEmpty()) && (this.jdField_a_of_type_JavaUtilList.remove(paramFaceItem)))
+    List localList = this.b;
+    if ((localList != null) && (!localList.isEmpty()) && (this.b.remove(paramFaceItem)))
     {
-      if (paramFaceItem.b)
+      if (paramFaceItem.s)
       {
         DoodleLayout.a("delete_poi");
         VideoEditReport.a("0X80076D2");
         VideoEditReport.b("0X80075E7");
-        this.jdField_b_of_type_JavaUtilList.remove(paramFaceItem);
+        this.r.remove(paramFaceItem);
       }
       else
       {
         DoodleLayout.a("delete_oneface");
         VideoEditReport.a("0X80076CB");
         VideoEditReport.b("0X80075E0");
-        b(paramFaceItem, this.jdField_a_of_type_JavaUtilMap);
+        b(paramFaceItem, this.q);
       }
-      b(paramFaceItem, this.jdField_b_of_type_JavaUtilMap);
+      b(paramFaceItem, this.s);
     }
   }
   
@@ -462,30 +445,14 @@ public class FaceLayer
     if (paramFaceItem != null)
     {
       paramFaceItem.a(paramTroopBarPOI);
-      paramFaceItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.a.a);
-      k();
+      paramFaceItem.l.setCallback(this.z.l.w);
+      u();
     }
   }
   
   public void a(FaceLayer.LayerEventListener paramLayerEventListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$LayerEventListener = paramLayerEventListener;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)((Iterator)localObject).next();
-        if ((a(localFaceItem.d, paramString1)) && (a(localFaceItem.e, paramString2))) {
-          a(localFaceItem);
-        }
-      }
-    }
+    this.p = paramLayerEventListener;
   }
   
   public void a(ArrayList<PasterParcelData> paramArrayList, boolean paramBoolean, JSONArray paramJSONArray)
@@ -495,17 +462,11 @@ public class FaceLayer
     }
   }
   
-  public boolean a()
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    return (localList == null) || (localList.isEmpty());
-  }
-  
   public boolean a(long paramLong)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      if (((FaceLayer.FaceItem)localIterator.next()).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isSegmentChanged(paramLong)) {
+      if (((FaceLayer.FaceItem)localIterator.next()).U.isSegmentChanged(paramLong)) {
         return false;
       }
     }
@@ -514,56 +475,56 @@ public class FaceLayer
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    int i = (int)paramMotionEvent.getY();
-    int j = Math.abs(i - this.jdField_a_of_type_Int);
-    int k = paramMotionEvent.getAction() & 0xFF;
-    if (k != 0)
+    int i1 = (int)paramMotionEvent.getY();
+    int i2 = Math.abs(i1 - this.n);
+    int i3 = paramMotionEvent.getAction() & 0xFF;
+    if (i3 != 0)
     {
-      if (k != 1)
+      if (i3 != 1)
       {
-        if (k != 2)
+        if (i3 != 2)
         {
-          if (k == 5) {
-            g();
+          if (i3 == 5) {
+            n();
           }
         }
-        else if (j > 5)
+        else if (i2 > 5)
         {
-          this.jdField_a_of_type_Boolean = true;
-          g();
+          this.o = true;
+          n();
         }
       }
       else
       {
-        g();
-        if (!this.jdField_a_of_type_Boolean) {
-          f();
+        n();
+        if (!this.o) {
+          m();
         }
-        b(paramMotionEvent);
+        e(paramMotionEvent);
       }
     }
     else
     {
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Boolean = false;
-      a(paramMotionEvent);
-      FaceLayer.FaceItem localFaceItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem;
+      this.n = i1;
+      this.o = false;
+      c(paramMotionEvent);
+      FaceLayer.FaceItem localFaceItem = this.c;
       if (localFaceItem != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(localFaceItem);
+        this.m.a(localFaceItem);
       }
-      localFaceItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem;
+      localFaceItem = this.c;
       if (localFaceItem != null) {
         localFaceItem.b();
       }
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(paramMotionEvent, false);
-    paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$FaceItem;
+    this.m.a(paramMotionEvent, false);
+    paramMotionEvent = this.c;
     if (paramMotionEvent != null)
     {
       c(paramMotionEvent);
       return true;
     }
-    h();
+    o();
     return true;
   }
   
@@ -576,79 +537,79 @@ public class FaceLayer
   {
     if (paramDrawable == null)
     {
-      SLog.e(jdField_a_of_type_JavaLangString, "Face drawable is null.");
+      SLog.e(a, "Face drawable is null.");
       return false;
     }
     if (paramLayerParams == null)
     {
-      SLog.e(jdField_a_of_type_JavaLangString, "ItemParams is null.");
+      SLog.e(a, "ItemParams is null.");
       return false;
     }
-    if (b())
+    if (d())
     {
-      SLog.e(jdField_a_of_type_JavaLangString, "has max face count. add face failed.");
-      paramString1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$LayerEventListener;
+      SLog.e(a, "has max face count. add face failed.");
+      paramString1 = this.p;
       if (paramString1 != null) {
         paramString1.a(40);
       }
       return false;
     }
     if ((paramInt1 == 1) || (paramInt1 == 3)) {
-      paramDrawable.setCallback(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView);
+      paramDrawable.setCallback(this.z);
     }
-    SLog.a(jdField_a_of_type_JavaLangString, "addFace before, category : %s , name : %s , LayerParams : %s", paramString1, paramString2, paramLayerParams);
+    SLog.a(a, "addFace before, category : %s , name : %s , LayerParams : %s", paramString1, paramString2, paramLayerParams);
     FaceLayer.LayerParams localLayerParams = FaceLayer.LayerParams.a(paramLayerParams);
-    int k = (int)(localLayerParams.jdField_a_of_type_Int * localLayerParams.jdField_a_of_type_Float);
-    int j = (int)(localLayerParams.b * localLayerParams.jdField_a_of_type_Float);
-    int i = j;
-    if (this.jdField_a_of_type_AndroidGraphicsRect.height() < j)
+    int i3 = (int)(localLayerParams.f * localLayerParams.b);
+    int i2 = (int)(localLayerParams.g * localLayerParams.b);
+    int i1 = i2;
+    if (this.B.height() < i2)
     {
-      localLayerParams.jdField_a_of_type_Float *= this.jdField_a_of_type_AndroidGraphicsRect.height() / j;
-      i = this.jdField_a_of_type_AndroidGraphicsRect.height();
+      localLayerParams.b *= this.B.height() / i2;
+      i1 = this.B.height();
     }
-    float f1 = localLayerParams.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f2 = localLayerParams.jdField_a_of_type_AndroidGraphicsPointF.y;
-    localLayerParams.jdField_a_of_type_AndroidGraphicsPointF.x = a(f1, k, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.right);
-    localLayerParams.jdField_a_of_type_AndroidGraphicsPointF.y = a(f2, i, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-    Object localObject = jdField_a_of_type_JavaLangString;
+    float f1 = localLayerParams.a.x;
+    float f2 = localLayerParams.a.y;
+    localLayerParams.a.x = a(f1, i3, this.B.left, this.B.right);
+    localLayerParams.a.y = a(f2, i1, this.B.top, this.B.bottom);
+    Object localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("addFace after drawRect:");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsRect);
+    localStringBuilder.append(this.B);
     SLog.b((String)localObject, localStringBuilder.toString());
-    SLog.a(jdField_a_of_type_JavaLangString, "addFace after, category : %s , name : %s , LayerParams : %s", paramString1, paramString2, paramLayerParams);
-    if (TextUtils.isEmpty(localLayerParams.jdField_a_of_type_JavaLangString))
+    SLog.a(a, "addFace after, category : %s , name : %s , LayerParams : %s", paramString1, paramString2, paramLayerParams);
+    if (TextUtils.isEmpty(localLayerParams.h))
     {
-      SLog.b(jdField_a_of_type_JavaLangString, "Create Normal FaceItem.");
+      SLog.b(a, "Create Normal FaceItem.");
       paramString2 = new FaceLayer.FaceItem(this, paramDrawable, localLayerParams, paramString1, paramString2, paramString3, paramInt1, paramInt2);
       paramString2.a(paramBoolean);
       paramString1 = paramString2;
       if ((paramDrawable instanceof InfoStickerDrawable))
       {
-        paramString2.b(InformationFaceConstant.b(((InfoStickerDrawable)paramDrawable).a()));
+        paramString2.b(InformationFaceConstant.b(((InfoStickerDrawable)paramDrawable).f()));
         paramString1 = paramString2;
       }
     }
     else
     {
-      paramLayerParams = jdField_a_of_type_JavaLangString;
+      paramLayerParams = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Create FaceAndTextItem with text:");
-      ((StringBuilder)localObject).append(localLayerParams.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(localLayerParams.h);
       SLog.b(paramLayerParams, ((StringBuilder)localObject).toString());
       paramString1 = new FaceLayer.FaceAndTextItem(this, paramDrawable, localLayerParams, paramString1, paramString2, paramString3, paramInt1, paramInt2);
       ((FaceLayer.FaceAndTextItem)paramString1).a();
     }
-    paramString1.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper(paramSegmentKeeper);
+    paramString1.U = new SegmentKeeper(paramSegmentKeeper);
     b(paramString1);
-    paramString1.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_JavaUtilList.add(paramString1);
-    super.k();
-    if (paramString1.b) {
-      this.jdField_b_of_type_JavaUtilList.add(paramString1);
+    paramString1.F.set(this.L);
+    this.b.add(paramString1);
+    super.u();
+    if (paramString1.s) {
+      this.r.add(paramString1);
     } else {
-      a(paramString1, this.jdField_a_of_type_JavaUtilMap);
+      a(paramString1, this.q);
     }
-    a(paramString1, this.jdField_b_of_type_JavaUtilMap);
+    a(paramString1, this.s);
     return true;
   }
   
@@ -656,52 +617,52 @@ public class FaceLayer
   {
     if (paramDrawable == null)
     {
-      SLog.e(jdField_a_of_type_JavaLangString, "Face drawable is null.");
+      SLog.e(a, "Face drawable is null.");
       return false;
     }
     if (paramLayerParams == null)
     {
-      SLog.e(jdField_a_of_type_JavaLangString, "ItemParams is null.");
+      SLog.e(a, "ItemParams is null.");
       return false;
     }
-    if (b())
+    if (d())
     {
-      SLog.e(jdField_a_of_type_JavaLangString, "has max face count. add face failed.");
-      paramString1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer$LayerEventListener;
+      SLog.e(a, "has max face count. add face failed.");
+      paramString1 = this.p;
       if (paramString1 != null) {
         paramString1.a(40);
       }
       return false;
     }
     if ((paramInt1 == 1) || (paramInt1 == 3)) {
-      paramDrawable.setCallback(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView);
+      paramDrawable.setCallback(this.z);
     }
-    SLog.a(jdField_a_of_type_JavaLangString, "addFace before, category : %s , name : %s , LayerParams : %s", paramString1, paramString2, paramLayerParams);
+    SLog.a(a, "addFace before, category : %s , name : %s , LayerParams : %s", paramString1, paramString2, paramLayerParams);
     FaceLayer.LayerParams localLayerParams = FaceLayer.LayerParams.a(paramLayerParams);
-    int k = (int)(localLayerParams.jdField_a_of_type_Int * localLayerParams.jdField_a_of_type_Float);
-    int j = (int)(localLayerParams.b * localLayerParams.jdField_a_of_type_Float);
-    int i = j;
-    if (this.jdField_a_of_type_AndroidGraphicsRect.height() < j)
+    int i3 = (int)(localLayerParams.f * localLayerParams.b);
+    int i2 = (int)(localLayerParams.g * localLayerParams.b);
+    int i1 = i2;
+    if (this.B.height() < i2)
     {
-      localLayerParams.jdField_a_of_type_Float *= this.jdField_a_of_type_AndroidGraphicsRect.height() / j;
-      i = this.jdField_a_of_type_AndroidGraphicsRect.height();
+      localLayerParams.b *= this.B.height() / i2;
+      i1 = this.B.height();
     }
-    float f1 = localLayerParams.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f2 = localLayerParams.jdField_a_of_type_AndroidGraphicsPointF.y;
-    localLayerParams.jdField_a_of_type_AndroidGraphicsPointF.x = a(f1, k, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.right);
-    localLayerParams.jdField_a_of_type_AndroidGraphicsPointF.y = a(f2, i, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-    String str = jdField_a_of_type_JavaLangString;
+    float f1 = localLayerParams.a.x;
+    float f2 = localLayerParams.a.y;
+    localLayerParams.a.x = a(f1, i3, this.B.left, this.B.right);
+    localLayerParams.a.y = a(f2, i1, this.B.top, this.B.bottom);
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("addFace after drawRect:");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsRect);
+    localStringBuilder.append(this.B);
     SLog.b(str, localStringBuilder.toString());
-    SLog.a(jdField_a_of_type_JavaLangString, "addFace after, category : %s , name : %s , LayerParams : %s", paramString1, paramString2, paramLayerParams);
-    i = -1;
-    if (TextUtils.isEmpty(localLayerParams.jdField_a_of_type_JavaLangString))
+    SLog.a(a, "addFace after, category : %s , name : %s , LayerParams : %s", paramString1, paramString2, paramLayerParams);
+    i1 = -1;
+    if (TextUtils.isEmpty(localLayerParams.h))
     {
-      SLog.b(jdField_a_of_type_JavaLangString, "Create Normal FaceItem.");
+      SLog.b(a, "Create Normal FaceItem.");
       paramString2 = new FaceLayer.FaceItem(this, paramDrawable, localLayerParams, paramString1, paramString2, paramString3, paramInt1, paramInt3);
-      paramString2.jdField_g_of_type_JavaLangString = paramString5;
+      paramString2.w = paramString5;
       paramString2.a(paramBoolean);
       if (!TextUtils.isEmpty(paramString4)) {
         if ((paramString2 instanceof FaceLayer.FaceAndTextItem))
@@ -710,18 +671,18 @@ public class FaceLayer
         }
         else
         {
-          paramString2.jdField_a_of_type_ComTencentMobileqqTribeDataTroopBarPOI = new TroopBarPOI("-1", "", paramString4, 0, "", 0, "");
-          paramString2.jdField_a_of_type_Long = System.currentTimeMillis();
+          paramString2.u = new TroopBarPOI("-1", "", paramString4, 0, "", 0, "");
+          paramString2.v = System.currentTimeMillis();
         }
       }
       if ((paramDrawable instanceof InfoStickerDrawable))
       {
-        paramInt1 = ((InfoStickerDrawable)paramDrawable).a();
+        paramInt1 = ((InfoStickerDrawable)paramDrawable).f();
         paramString2.b(InformationFaceConstant.b(paramInt1));
         paramString1 = paramString2;
         break label618;
       }
-      paramInt1 = i;
+      paramInt1 = i1;
       paramString1 = paramString2;
       if (TextUtils.isEmpty(paramString5)) {
         break label618;
@@ -733,170 +694,153 @@ public class FaceLayer
       paramString2.b(InformationFaceConstant.b(paramInt1));
       paramString1 = paramString2;
       break label618;
-      paramLayerParams = jdField_a_of_type_JavaLangString;
+      paramLayerParams = a;
       paramString4 = new StringBuilder();
       paramString4.append("Create FaceAndTextItem with text:");
-      paramString4.append(localLayerParams.jdField_a_of_type_JavaLangString);
+      paramString4.append(localLayerParams.h);
       SLog.b(paramLayerParams, paramString4.toString());
       paramString1 = new FaceLayer.FaceAndTextItem(this, paramDrawable, localLayerParams, paramString1, paramString2, paramString3, paramInt1);
       ((FaceLayer.FaceAndTextItem)paramString1).a();
-      paramInt1 = i;
+      paramInt1 = i1;
       label618:
       if (((paramDrawable instanceof FilmDigitInfoStickerDrawable)) || (12 == paramInt1)) {
-        paramString1.jdField_k_of_type_Float = 90.0F;
+        paramString1.C = 90.0F;
       }
-      paramString1.jdField_g_of_type_Int = paramInt2;
-      paramString1.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      this.jdField_a_of_type_JavaUtilList.add(paramString1);
-      super.k();
-      if (paramString1.b) {
-        this.jdField_b_of_type_JavaUtilList.add(paramString1);
+      paramString1.x = paramInt2;
+      paramString1.F.set(this.L);
+      this.b.add(paramString1);
+      super.u();
+      if (paramString1.s) {
+        this.r.add(paramString1);
       } else {
-        a(paramString1, this.jdField_a_of_type_JavaUtilMap);
+        a(paramString1, this.q);
       }
-      a(paramString1, this.jdField_b_of_type_JavaUtilMap);
+      a(paramString1, this.s);
       return true;
     }
     catch (Exception paramString1)
     {
       for (;;)
       {
-        paramInt1 = i;
+        paramInt1 = i1;
       }
     }
   }
   
-  public int[] a()
+  public void b()
   {
-    int[] arrayOfInt = new int[2];
-    int[] tmp5_4 = arrayOfInt;
-    tmp5_4[0] = 0;
-    int[] tmp9_5 = tmp5_4;
-    tmp9_5[1] = 0;
-    tmp9_5;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (((FaceLayer.FaceItem)localIterator.next() instanceof FaceLayer.FaceAndTextItem)) {
-        arrayOfInt[1] += 1;
-      } else {
-        arrayOfInt[0] += 1;
-      }
-    }
-    return arrayOfInt;
-  }
-  
-  public int b()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    int i;
-    if (localObject == null) {
-      i = 0;
-    } else {
-      i = ((List)localObject).size();
-    }
-    localObject = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("FaceLayer, DoodleCount:");
-    localStringBuilder.append(i);
-    SLog.b((String)localObject, localStringBuilder.toString());
-    return i;
+    this.b.clear();
+    this.c = null;
+    this.m.a();
+    SLog.b(a, "clear over.");
   }
   
   public void b(Canvas paramCanvas)
   {
-    a(paramCanvas, this.jdField_a_of_type_Float, false);
+    a(paramCanvas, this.J, false);
   }
   
   public void b(FaceLayer.FaceItem paramFaceItem)
   {
-    if (paramFaceItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (paramFaceItem.l != null)
     {
-      if (!(paramFaceItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable)) {
+      if (!(paramFaceItem.l instanceof BitmapDrawable)) {
         return;
       }
       long l1 = System.currentTimeMillis();
-      Object localObject = ((BitmapDrawable)paramFaceItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap();
-      int k = ((Bitmap)localObject).getWidth();
-      int m = ((Bitmap)localObject).getHeight();
-      int[] arrayOfInt = new int[k * m];
-      ((Bitmap)localObject).getPixels(arrayOfInt, 0, k, 0, 0, k, m);
-      localObject = new int[k * 2];
-      int i = 0;
-      while (i < k)
+      Object localObject = ((BitmapDrawable)paramFaceItem.l).getBitmap();
+      int i3 = ((Bitmap)localObject).getWidth();
+      int i4 = ((Bitmap)localObject).getHeight();
+      int[] arrayOfInt = new int[i3 * i4];
+      ((Bitmap)localObject).getPixels(arrayOfInt, 0, i3, 0, 0, i3, i4);
+      localObject = new int[i3 * 2];
+      int i1 = 0;
+      while (i1 < i3)
       {
-        j = 0;
-        while (j < m)
+        i2 = 0;
+        while (i2 < i4)
         {
-          if ((arrayOfInt[(j * k + i)] >> 24 & 0xFF) > 0)
+          if ((arrayOfInt[(i2 * i3 + i1)] >> 24 & 0xFF) > 0)
           {
-            localObject[(i * 2)] = j;
+            localObject[(i1 * 2)] = i2;
             break;
           }
-          j += 1;
+          i2 += 1;
         }
-        j = m - 1;
-        while (j >= 0)
+        i2 = i4 - 1;
+        while (i2 >= 0)
         {
-          if ((arrayOfInt[(j * k + i)] >> 24 & 0xFF) > 0)
+          if ((arrayOfInt[(i2 * i3 + i1)] >> 24 & 0xFF) > 0)
           {
-            localObject[(i * 2 + 1)] = j;
+            localObject[(i1 * 2 + 1)] = i2;
             break;
           }
-          j -= 1;
+          i2 -= 1;
         }
-        i += 1;
+        i1 += 1;
       }
-      int j = (int)paramFaceItem.n;
-      paramFaceItem.jdField_a_of_type_ArrayOfInt = new int[j * 2];
-      float f1 = k / paramFaceItem.n;
-      float f2 = paramFaceItem.o / m;
-      i = 0;
-      while (i < j)
+      int i2 = (int)paramFaceItem.G;
+      paramFaceItem.P = new int[i2 * 2];
+      float f1 = i3 / paramFaceItem.G;
+      float f2 = paramFaceItem.H / i4;
+      i1 = 0;
+      while (i1 < i2)
       {
-        m = (int)(i * f1);
-        arrayOfInt = paramFaceItem.jdField_a_of_type_ArrayOfInt;
-        k = i * 2;
-        m *= 2;
-        arrayOfInt[k] = ((int)(localObject[m] * f2));
-        arrayOfInt = paramFaceItem.jdField_a_of_type_ArrayOfInt;
-        m += 1;
-        arrayOfInt[(k + 1)] = ((int)(localObject[m] * f2));
-        if (localObject[m] > 0)
+        i4 = (int)(i1 * f1);
+        arrayOfInt = paramFaceItem.P;
+        i3 = i1 * 2;
+        i4 *= 2;
+        arrayOfInt[i3] = ((int)(localObject[i4] * f2));
+        arrayOfInt = paramFaceItem.P;
+        i4 += 1;
+        arrayOfInt[(i3 + 1)] = ((int)(localObject[i4] * f2));
+        if (localObject[i4] > 0)
         {
-          if (paramFaceItem.jdField_k_of_type_Int == -1) {
-            paramFaceItem.jdField_k_of_type_Int = i;
+          if (paramFaceItem.Q == -1) {
+            paramFaceItem.Q = i1;
           }
-          paramFaceItem.jdField_l_of_type_Int = Math.max(i, paramFaceItem.jdField_l_of_type_Int);
+          paramFaceItem.R = Math.max(i1, paramFaceItem.R);
         }
-        i += 1;
+        i1 += 1;
       }
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "computePixelScope cost: ", Long.valueOf(l2 - l1) });
+        QLog.d(a, 2, new Object[] { "computePixelScope cost: ", Long.valueOf(l2 - l1) });
       }
     }
   }
   
-  protected boolean b()
+  public void b(String paramString1, String paramString2)
   {
-    return b() >= 40;
+    Object localObject = this.b;
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      localObject = this.b.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)((Iterator)localObject).next();
+        if ((a(localFaceItem.n, paramString1)) && (a(localFaceItem.o, paramString2))) {
+          a(localFaceItem);
+        }
+      }
+    }
   }
   
   public boolean b(MotionEvent paramMotionEvent)
   {
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+    int i1 = this.b.size() - 1;
     Object localObject;
     StringBuilder localStringBuilder;
-    while (i >= 0)
+    while (i1 >= 0)
     {
-      localObject = (FaceLayer.FaceItem)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a((GestureHelper.ZoomItem)localObject, f1, f2, false))
+      localObject = (FaceLayer.FaceItem)this.b.get(i1);
+      if (this.m.a((GestureHelper.ZoomItem)localObject, f1, f2, false))
       {
         if (QLog.isColorLevel())
         {
-          localObject = jdField_a_of_type_JavaLangString;
+          localObject = a;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("accept inside x:");
           localStringBuilder.append(paramMotionEvent.getX());
@@ -906,11 +850,11 @@ public class FaceLayer
         }
         return true;
       }
-      i -= 1;
+      i1 -= 1;
     }
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("accept outside x:");
       localStringBuilder.append(paramMotionEvent.getX());
@@ -921,31 +865,83 @@ public class FaceLayer
     return false;
   }
   
-  public void d()
+  public boolean c()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
+    return (localList == null) || (localList.isEmpty());
+  }
+  
+  protected boolean d()
+  {
+    return g() >= 40;
+  }
+  
+  public int g()
+  {
+    Object localObject = this.b;
+    int i1;
+    if (localObject == null) {
+      i1 = 0;
+    } else {
+      i1 = ((List)localObject).size();
+    }
+    localObject = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FaceLayer, DoodleCount:");
+    localStringBuilder.append(i1);
+    SLog.b((String)localObject, localStringBuilder.toString());
+    return i1;
+  }
+  
+  public int[] h()
+  {
+    int[] arrayOfInt = new int[2];
+    int[] tmp5_4 = arrayOfInt;
+    tmp5_4[0] = 0;
+    int[] tmp9_5 = tmp5_4;
+    tmp9_5[1] = 0;
+    tmp9_5;
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      if (((FaceLayer.FaceItem)localIterator.next() instanceof FaceLayer.FaceAndTextItem)) {
+        arrayOfInt[1] += 1;
+      } else {
+        arrayOfInt[0] += 1;
+      }
+    }
+    return arrayOfInt;
+  }
+  
+  public void i()
+  {
+    List localList = this.b;
     if ((localList != null) && (!localList.isEmpty()))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      this.jdField_b_of_type_JavaUtilMap.clear();
+      localList = this.b;
+      a((FaceLayer.FaceItem)localList.get(localList.size() - 1));
     }
   }
   
-  public void x_()
+  public void j()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (!localList.isEmpty()))
     {
-      localList = this.jdField_a_of_type_JavaUtilList;
-      a((FaceLayer.FaceItem)localList.get(localList.size() - 1));
+      this.b.clear();
+      this.r.clear();
+      this.q.clear();
+      this.s.clear();
     }
+  }
+  
+  public Map<String, List<String>> k()
+  {
+    return this.s;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.FaceLayer
  * JD-Core Version:    0.7.0.1
  */

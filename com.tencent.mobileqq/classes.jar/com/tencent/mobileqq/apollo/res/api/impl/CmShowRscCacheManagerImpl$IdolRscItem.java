@@ -10,77 +10,77 @@ import java.io.File;
 public class CmShowRscCacheManagerImpl$IdolRscItem
 {
   public int a;
-  public String a;
-  public int b;
   public String b;
-  public String c;
+  public int c;
+  public String d;
+  public String e;
   
   public String a()
   {
-    if (this.jdField_a_of_type_Int == 6) {
-      return this.jdField_a_of_type_JavaLangString;
+    if (this.a == 6) {
+      return this.b;
     }
-    if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.b)))
     {
-      if (this.jdField_b_of_type_JavaLangString.endsWith("/"))
+      if (this.d.endsWith("/"))
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append(this.d);
+        localStringBuilder.append(this.c);
         localStringBuilder.append("/");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
         return localStringBuilder.toString();
       }
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       localStringBuilder.append("/");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.c);
       localStringBuilder.append("/");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       return localStringBuilder.toString();
     }
     return "";
   }
   
-  public boolean a()
-  {
-    return (new File(b()).exists()) && (b());
-  }
-  
   public String b()
   {
-    if (8 == this.jdField_a_of_type_Int)
+    if (8 == this.a)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/room/");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.c);
       localStringBuilder.append(File.separator);
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(File.separator);
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
   
-  public boolean b()
+  public boolean c()
   {
-    if ((CMResUtil.d(b())) && (this.jdField_a_of_type_Int == 8))
+    return (new File(b()).exists()) && (d());
+  }
+  
+  public boolean d()
+  {
+    if ((CMResUtil.a(b())) && (this.a == 8))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/room/");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.c);
       localStringBuilder.append(File.separator);
       localStringBuilder.append("room.bin");
-      return CMResUtil.d(localStringBuilder.toString());
+      return CMResUtil.a(localStringBuilder.toString());
     }
     return false;
   }
   
-  public String c()
+  public String e()
   {
     Object localObject1;
     if (QLog.isColorLevel())
@@ -91,9 +91,9 @@ public class CmShowRscCacheManagerImpl$IdolRscItem
       QLog.d("[cmshow]IdolRscItem", 2, ((StringBuilder)localObject1).toString());
     }
     StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_Int == 6)
+    if (this.a == 6)
     {
-      localObject1 = MD5Utils.toMD5(this.jdField_a_of_type_JavaLangString);
+      localObject1 = MD5Utils.toMD5(this.b);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/dress//face/");
       localStringBuilder.append((String)localObject1);
@@ -119,7 +119,7 @@ public class CmShowRscCacheManagerImpl$IdolRscItem
       {
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/dress/");
-        ((StringBuilder)localObject2).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject2).append(this.c);
         ((StringBuilder)localObject2).append(File.separator);
         ((StringBuilder)localObject2).append("blendshape.json");
         localObject2 = new File(((StringBuilder)localObject2).toString());
@@ -143,7 +143,7 @@ public class CmShowRscCacheManagerImpl$IdolRscItem
     {
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/dress/");
-      ((StringBuilder)localObject3).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject3).append(this.c);
       ((StringBuilder)localObject3).append(File.separator);
       ((StringBuilder)localObject3).append("face.json");
       localObject3 = new File(((StringBuilder)localObject3).toString());
@@ -166,7 +166,7 @@ public class CmShowRscCacheManagerImpl$IdolRscItem
       {
         Object localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/dress/");
-        ((StringBuilder)localObject4).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject4).append(this.c);
         ((StringBuilder)localObject4).append(File.separator);
         ((StringBuilder)localObject4).append("blendshape.json");
         localObject4 = new File(((StringBuilder)localObject4).toString());
@@ -193,17 +193,17 @@ public class CmShowRscCacheManagerImpl$IdolRscItem
   {
     StringBuffer localStringBuffer = new StringBuffer("IdolRscItem{");
     localStringBuffer.append("mResType=");
-    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(this.a);
     localStringBuffer.append(", mDownFileName='");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(this.b);
     localStringBuffer.append('\'');
     localStringBuffer.append(", mId=");
-    localStringBuffer.append(this.jdField_b_of_type_Int);
-    localStringBuffer.append(", mDownPrefixxUrl='");
-    localStringBuffer.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuffer.append(this.c);
+    localStringBuffer.append(", mDownPrefixUrl='");
+    localStringBuffer.append(this.d);
     localStringBuffer.append('\'');
     localStringBuffer.append(", mCacheJsonName='");
-    localStringBuffer.append(this.c);
+    localStringBuffer.append(this.e);
     localStringBuffer.append('\'');
     localStringBuffer.append('}');
     return localStringBuffer.toString();
@@ -211,7 +211,7 @@ public class CmShowRscCacheManagerImpl$IdolRscItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.res.api.impl.CmShowRscCacheManagerImpl.IdolRscItem
  * JD-Core Version:    0.7.0.1
  */

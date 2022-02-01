@@ -16,8 +16,8 @@ class LocalCrashCollector$3$2
   {
     try
     {
-      LocalCrashCollector.a(this.a.this$0).a().a().a().a("");
-      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
+      LocalCrashCollector.a(this.a.this$0).p().d().f().a("");
+      LocalCrashCollector.c(this.a.this$0).delete(0, LocalCrashCollector.c(this.a.this$0).length());
       paramDialogInterface.dismiss();
       return;
     }
@@ -29,7 +29,7 @@ class LocalCrashCollector$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.LocalCrashCollector.3.2
  * JD-Core Version:    0.7.0.1
  */

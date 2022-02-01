@@ -11,9 +11,9 @@ import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 public class TabThemeMaskView
   extends ImageView
 {
-  private int jdField_a_of_type_Int = ThemeUtil.NIGHTMODE_MASKCOLOR;
-  Paint jdField_a_of_type_AndroidGraphicsPaint;
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  Paint a;
+  RectF b = new RectF();
+  private int c = ThemeUtil.NIGHTMODE_MASKCOLOR;
   
   public TabThemeMaskView(Context paramContext)
   {
@@ -33,27 +33,27 @@ public class TabThemeMaskView
     a();
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     return ("1103".equals(ThemeUtil.curThemeId)) || ("2920".equals(ThemeUtil.curThemeId));
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
+    this.a = new Paint();
+    this.a.setAntiAlias(true);
+    this.a.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (a())
+    if (b())
     {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
+      this.b.set(0.0F, 0.0F, getWidth(), getHeight());
       super.onDraw(paramCanvas);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(null);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.a.setColorFilter(null);
+      this.a.setColor(this.c);
+      paramCanvas.drawRect(this.b, this.a);
       return;
     }
     super.onDraw(paramCanvas);
@@ -61,7 +61,7 @@ public class TabThemeMaskView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.TabThemeMaskView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,22 +8,28 @@ import com.tencent.qphone.base.util.QLog;
 
 public class PadOrientationRotateChecker
 {
-  private static final String[][] jdField_a_of_type_Array2dOfJavaLangString = { { "LENOVO", "Lenovo TB-J606F" }, { "LENOVO", "Lenovo TB-J706F" }, { "LENOVO", "Lenovo YT-K606F" }, { "LENOVO", "Lenovo TB-J716F" }, { "LENOVO", "Lenovo TB-J607F" } };
-  private Integer jdField_a_of_type_JavaLangInteger = null;
+  private static final String[][] a;
+  private Integer b = null;
   
-  private void a()
+  static
   {
-    if (this.jdField_a_of_type_JavaLangInteger == null)
+    String[] arrayOfString = { "LENOVO", "Lenovo TB-J607F" };
+    a = new String[][] { { "LENOVO", "Lenovo TB-J606F" }, { "LENOVO", "Lenovo TB-J706F" }, { "LENOVO", "Lenovo YT-K606F" }, { "LENOVO", "Lenovo TB-J716F" }, arrayOfString };
+  }
+  
+  private void b()
+  {
+    if (this.b == null)
     {
       String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.qavPadOrientationRotateFlag.name(), String.valueOf(0));
       if (String.valueOf(1).equals(str)) {
-        this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(1);
+        this.b = Integer.valueOf(1);
       } else if (String.valueOf(2).equals(str)) {
-        this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(2);
-      } else if (b()) {
-        this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(2);
+        this.b = Integer.valueOf(2);
+      } else if (c()) {
+        this.b = Integer.valueOf(2);
       } else {
-        this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(0);
+        this.b = Integer.valueOf(0);
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("initPadOrientationRotateFlag, value[");
@@ -33,11 +39,11 @@ public class PadOrientationRotateChecker
     }
   }
   
-  private boolean b()
+  private boolean c()
   {
     String str1 = Build.MANUFACTURER;
     String str2 = Build.MODEL;
-    Object localObject1 = jdField_a_of_type_Array2dOfJavaLangString;
+    Object localObject1 = a;
     int j = localObject1.length;
     boolean bool2 = false;
     int i = 0;
@@ -73,10 +79,10 @@ public class PadOrientationRotateChecker
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_JavaLangInteger == null) {
-      a();
+    if (this.b == null) {
+      b();
     }
-    return 2 != this.jdField_a_of_type_JavaLangInteger.intValue();
+    return 2 != this.b.intValue();
   }
 }
 

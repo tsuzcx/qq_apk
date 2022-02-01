@@ -2,6 +2,7 @@ package androidx.appcompat.widget;
 
 import android.content.Context;
 import android.view.View;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPopupHelper;
 
@@ -10,7 +11,7 @@ class ActionMenuPresenter$OverflowPopup
 {
   public ActionMenuPresenter$OverflowPopup(ActionMenuPresenter paramActionMenuPresenter, Context paramContext, MenuBuilder paramMenuBuilder, View paramView, boolean paramBoolean)
   {
-    super(paramContext, paramMenuBuilder, paramView, paramBoolean, 2131034147);
+    super(paramContext, paramMenuBuilder, paramView, paramBoolean, R.attr.actionOverflowMenuStyle);
     setGravity(8388613);
     setPresenterCallback(paramActionMenuPresenter.mPopupPresenterCallback);
   }

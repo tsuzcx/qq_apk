@@ -14,11 +14,11 @@ class TroopSettingActivity$22
   
   public void run()
   {
-    int j = this.this$0.b.size();
+    int j = this.this$0.w.size();
     int i = 0;
     while (i < j)
     {
-      ImageView localImageView = (ImageView)this.this$0.b.get(i);
+      ImageView localImageView = (ImageView)this.this$0.w.get(i);
       Object localObject = (String)localImageView.getTag();
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         try
@@ -26,7 +26,7 @@ class TroopSettingActivity$22
           long l = Long.valueOf((String)localObject).longValue();
           if (l == this.a)
           {
-            localObject = BaseImageUtil.f();
+            localObject = BaseImageUtil.m();
             localObject = FaceDrawable.getFaceDrawableFrom(TroopSettingActivity.a(this.this$0), 1, Long.toString(this.a), 3, (Drawable)localObject, (Drawable)localObject, 4);
             this.this$0.runOnUiThread(new TroopSettingActivity.22.1(this, localImageView, (FaceDrawable)localObject));
             return;
@@ -43,7 +43,7 @@ class TroopSettingActivity$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.22
  * JD-Core Version:    0.7.0.1
  */

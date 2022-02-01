@@ -22,7 +22,7 @@ class UFTPbProtoRequestor$2
   {
     UFTLog.b("[UFTTransfer] UFTPbProtoRequestor", 1, "=_= ^> [CS Replay] response V2 Hit");
     paramProtoReq = new Bundle();
-    boolean bool2 = UFTPbProtoRequestor.a(this.jdField_a_of_type_ComTencentMobileqqUftransferDependProtoUFTPbProtoRequestor, paramProtoResp, paramProtoReq);
+    boolean bool2 = UFTPbProtoRequestor.a(this.b, paramProtoResp, paramProtoReq);
     int i = 9045;
     boolean bool1 = false;
     UFTC2CUploadRsp localUFTC2CUploadRsp = null;
@@ -79,7 +79,7 @@ class UFTPbProtoRequestor$2
     paramProtoResp.append(" ");
     paramProtoResp.append(localUFTC2CUploadRsp.toString());
     UFTLog.b("[UFTTransfer] UFTPbProtoRequestor", 1, paramProtoResp.toString());
-    paramProtoResp = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTProtoRequestor$C2CReqUploadResponseCallback;
+    paramProtoResp = this.a;
     if (paramProtoResp != null) {
       paramProtoResp.a(bool1, localUFTC2CUploadRsp);
     }
@@ -87,7 +87,7 @@ class UFTPbProtoRequestor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.depend.proto.UFTPbProtoRequestor.2
  * JD-Core Version:    0.7.0.1
  */

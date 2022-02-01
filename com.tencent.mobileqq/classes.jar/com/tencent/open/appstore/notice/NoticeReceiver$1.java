@@ -16,7 +16,7 @@ class NoticeReceiver$1
   
   public void run()
   {
-    DownloadInfo localDownloadInfo = DownloadManagerV2.a().b(this.jdField_a_of_type_JavaLangString);
+    DownloadInfo localDownloadInfo = DownloadManagerV2.a().b(this.a);
     if (localDownloadInfo == null)
     {
       LogUtility.b("NoticeReceiver", "downloadInfo is null.");
@@ -28,11 +28,11 @@ class NoticeReceiver$1
     localStringBuilder.append(this.b);
     if (localStringBuilder.toString().equals(this.c))
     {
-      DownloadManagerV2.a().a(this.jdField_a_of_type_JavaLangString);
+      DownloadManagerV2.a().e(this.a);
       return;
     }
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(IntentFactory.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(IntentFactory.a);
     localStringBuilder.append(".");
     localStringBuilder.append(this.b);
     if (localStringBuilder.toString().equals(this.c))
@@ -55,16 +55,16 @@ class NoticeReceiver$1
     localStringBuilder.append(this.b);
     if (localStringBuilder.toString().equals(this.c))
     {
-      AppUtil.a(this.jdField_a_of_type_AndroidContentContext, DownloadManagerV2.a().a(localDownloadInfo.b), localDownloadInfo.m, localDownloadInfo.a("big_brother_ref_source_key"), localDownloadInfo.a("hideInstallSuccessPage"));
-      localDownloadInfo.w = BaseApplicationImpl.getApplication().getQQProcessName();
-      DownloadManagerV2.a().a(localDownloadInfo, true);
+      AppUtil.a(this.d, DownloadManagerV2.a().d(localDownloadInfo.b), localDownloadInfo.r, localDownloadInfo.a("big_brother_ref_source_key"), localDownloadInfo.a("hideInstallSuccessPage"));
+      localDownloadInfo.R = BaseApplicationImpl.getApplication().getQQProcessName();
+      DownloadManagerV2.a().b(localDownloadInfo, true);
       AppCenterReporter.c(localDownloadInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.notice.NoticeReceiver.1
  * JD-Core Version:    0.7.0.1
  */

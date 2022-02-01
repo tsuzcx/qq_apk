@@ -41,24 +41,12 @@ public final class a
     return (!TextUtils.isEmpty(getJSONKeyForXiJingOffline())) && (!TextUtils.isEmpty(getJSONUrlForXiJingOffline())) && (!TextUtils.isEmpty(getUrlForXiJingOffline()));
   }
   
-  public boolean canLaunchAppAfterInstalled()
+  public boolean disableAutoDownload()
   {
-    if (!isValid()) {
-      return false;
-    }
-    List localList = getExpMap();
-    int i = 0;
-    while (i < localList.size())
-    {
-      if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 101056) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.equals("1"))) {
-        return true;
-      }
-      i += 1;
-    }
     return false;
   }
   
-  public boolean disableAutoDownload()
+  public boolean disableLaunchApp()
   {
     return false;
   }
@@ -237,6 +225,16 @@ public final class a
   public List getExpMap()
   {
     return null;
+  }
+  
+  public List<?> getFeedbackItems()
+  {
+    return null;
+  }
+  
+  public int getInnerShowType()
+  {
+    return 0;
   }
   
   public String getJSONKeyForXiJingOffline()

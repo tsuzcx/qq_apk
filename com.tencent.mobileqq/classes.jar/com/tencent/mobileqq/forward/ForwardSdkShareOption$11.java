@@ -12,15 +12,15 @@ class ForwardSdkShareOption$11
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.c) {
-      ReportCenter.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false, true);
+    if (this.a.F) {
+      ReportCenter.a().a(this.a.q.getAccount(), "", String.valueOf(this.a.G), "1000", "51", "0", false, true);
     }
-    ForwardSdkBaseOption.a(this.a.jdField_a_of_type_AndroidAppActivity, true, "addToQQFavorites", this.a.b);
+    ForwardSdkBaseOption.a(this.a.s, true, "addToQQFavorites", this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkShareOption.11
  * JD-Core Version:    0.7.0.1
  */

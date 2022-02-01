@@ -20,14 +20,14 @@ class ProfileContentSignComponent$2
         return;
       }
       UiUtils.Companion.showProfileSignGuideAsDropDown(ProfileContentSignComponent.access$1500(this.this$0), -i, 0);
-      SigTopicManager.a().a(ProfileContentSignComponent.access$2100(this.this$0));
+      SigTopicManager.a().b(ProfileContentSignComponent.access$2100(this.this$0));
       ReportController.b(null, "dc00898", "", "", "0X800A4D1", "0X800A4D1", 0, 0, "0", "0", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.personalitysign.ProfileContentSignComponent.2
  * JD-Core Version:    0.7.0.1
  */

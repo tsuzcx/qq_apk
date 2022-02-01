@@ -19,26 +19,26 @@ import mqq.os.MqqHandler;
 public class TextItem
   extends EditItemBase<TextItem.TextViewHolder, TextInfo>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private LayoutInflater a;
+  private Context d;
   
   public TextItem(XMediaEditor paramXMediaEditor, Context paramContext)
   {
     super(paramXMediaEditor);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.d = paramContext;
+    this.a = LayoutInflater.from(paramContext);
   }
   
   public TextItem.TextViewHolder a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = new TextItem.TextViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561525, paramViewGroup, false));
+    paramViewGroup = new TextItem.TextViewHolder(this.a.inflate(2131627886, paramViewGroup, false));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onCreateViewHolder. vh hash=");
     localStringBuilder.append(paramViewGroup.hashCode());
     QLog.i("xmediaEditor", 1, localStringBuilder.toString());
-    paramViewGroup.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new TextItem.1(this));
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) {
-      paramViewGroup.itemView.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
+    paramViewGroup.b.setOnClickListener(new TextItem.1(this));
+    if (this.b.getLeftRightPadding() != 0) {
+      paramViewGroup.itemView.setPadding(this.b.getLeftRightPadding(), 0, this.b.getLeftRightPadding(), 0);
     }
     return paramViewGroup;
   }
@@ -84,121 +84,121 @@ public class TextItem
     localStringBuilder.append("Text onBindViewHolder. vh hash=");
     localStringBuilder.append(paramTextViewHolder.hashCode());
     localStringBuilder.append(", mData.position:");
-    localStringBuilder.append(paramTextInfo.jdField_c_of_type_Int);
+    localStringBuilder.append(paramTextInfo.g);
     localStringBuilder.append(", text:");
-    localStringBuilder.append(paramTextInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramTextInfo.a);
     QLog.i("xmediaEditor", 1, localStringBuilder.toString());
-    if (paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher != null)
+    if (paramTextViewHolder.c != null)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("removeTextChangedListener, mData.position:");
-      localStringBuilder.append(paramTextInfo.jdField_c_of_type_Int);
+      localStringBuilder.append(paramTextInfo.g);
       localStringBuilder.append(", text:");
-      localStringBuilder.append(paramTextInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramTextInfo.a);
       localStringBuilder.append(",Listener:");
-      localStringBuilder.append(paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher.toString());
+      localStringBuilder.append(paramTextViewHolder.c.toString());
       QLog.i("xmediaEditor", 1, localStringBuilder.toString());
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher);
-      paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher = null;
+      paramTextViewHolder.b.removeTextChangedListener(paramTextViewHolder.c);
+      paramTextViewHolder.c = null;
     }
     if (paramInt != 0)
     {
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setVisibility(8);
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramTextInfo.jdField_a_of_type_JavaLangString);
-      if (TextUtils.isEmpty(paramTextInfo.jdField_a_of_type_JavaLangString))
+      paramTextViewHolder.b.setVisibility(8);
+      paramTextViewHolder.a.setText(paramTextInfo.a);
+      if (TextUtils.isEmpty(paramTextInfo.a))
       {
         paramTextViewHolder.itemView.setVisibility(8);
-        paramTextViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramTextViewHolder.a.setVisibility(8);
         return;
       }
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramTextViewHolder.a.setVisibility(0);
       paramTextViewHolder.itemView.setVisibility(0);
       return;
     }
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setVisibility(0);
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setText(paramTextInfo.jdField_a_of_type_JavaLangString);
+    paramTextViewHolder.b.setVisibility(0);
+    paramTextViewHolder.a.setVisibility(8);
+    paramTextViewHolder.b.setText(paramTextInfo.a);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("mData.position:");
-    localStringBuilder.append(paramTextInfo.jdField_c_of_type_Int);
+    localStringBuilder.append(paramTextInfo.g);
     localStringBuilder.append(", text:");
-    localStringBuilder.append(paramTextInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramTextInfo.a);
     QLog.i("xmediaEditor", 1, localStringBuilder.toString());
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(null);
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new TextItem.2(this, paramTextViewHolder));
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new TextItem.3(this, paramTextViewHolder));
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new TextItem.4(this, paramTextInfo, paramTextViewHolder));
-    paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher = new TextItem.5(this, paramTextViewHolder, paramTextInfo);
+    paramTextViewHolder.b.setOnFocusChangeListener(null);
+    paramTextViewHolder.b.setOnKeyListener(new TextItem.2(this, paramTextViewHolder));
+    paramTextViewHolder.b.setOnEditorActionListener(new TextItem.3(this, paramTextViewHolder));
+    paramTextViewHolder.b.setOnFocusChangeListener(new TextItem.4(this, paramTextInfo, paramTextViewHolder));
+    paramTextViewHolder.c = new TextItem.5(this, paramTextViewHolder, paramTextInfo);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("addTextChangedListener, mData.position:");
-    localStringBuilder.append(paramTextInfo.jdField_c_of_type_Int);
+    localStringBuilder.append(paramTextInfo.g);
     localStringBuilder.append(", text:");
-    localStringBuilder.append(paramTextInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramTextInfo.a);
     localStringBuilder.append(",Listener:");
-    localStringBuilder.append(paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher.toString());
+    localStringBuilder.append(paramTextViewHolder.c.toString());
     QLog.i("xmediaEditor", 1, localStringBuilder.toString());
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher);
-    if (paramTextInfo.jdField_a_of_type_Boolean)
+    paramTextViewHolder.b.addTextChangedListener(paramTextViewHolder.c);
+    if (paramTextInfo.c)
     {
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
+      paramTextViewHolder.b.setFocusable(true);
+      paramTextViewHolder.b.setFocusableInTouchMode(true);
       ThreadManager.getUIHandler().post(new TextItem.6(this, paramTextViewHolder, paramTextInfo));
     }
     else
     {
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusable(false);
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
+      paramTextViewHolder.b.clearFocus();
+      paramTextViewHolder.b.setFocusable(false);
+      paramTextViewHolder.b.setFocusableInTouchMode(false);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a())
+    if (this.b.e())
     {
-      if ((((TextInfo)paramTextViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase).jdField_c_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().getItemCount() == 2))
+      if ((((TextInfo)paramTextViewHolder.f).g == 1) && (this.b.getAdapter().getItemCount() == 2))
       {
-        paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b());
+        paramTextViewHolder.b.setHint(this.b.getHint());
         return;
       }
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setHint("");
+      paramTextViewHolder.b.setHint("");
       return;
     }
-    if ((((TextInfo)paramTextViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase).jdField_c_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().getItemCount() == 1))
+    if ((((TextInfo)paramTextViewHolder.f).g == 0) && (this.b.getAdapter().getItemCount() == 1))
     {
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b());
+      paramTextViewHolder.b.setHint(this.b.getHint());
       return;
     }
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setHint("");
+    paramTextViewHolder.b.setHint("");
   }
   
   public void b(TextItem.TextViewHolder paramTextViewHolder)
   {
     super.a(paramTextViewHolder);
-    TextInfo localTextInfo = (TextInfo)paramTextViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase;
-    if (paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher != null)
+    TextInfo localTextInfo = (TextInfo)paramTextViewHolder.f;
+    if (paramTextViewHolder.c != null)
     {
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher);
+      paramTextViewHolder.b.removeTextChangedListener(paramTextViewHolder.c);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onViewRecycled, position:");
-      localStringBuilder.append(((TextInfo)paramTextViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase).jdField_c_of_type_Int);
+      localStringBuilder.append(((TextInfo)paramTextViewHolder.f).g);
       localStringBuilder.append(", text:");
-      localStringBuilder.append(localTextInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(localTextInfo.a);
       localStringBuilder.append(",Listener:");
-      localStringBuilder.append(paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher.toString());
+      localStringBuilder.append(paramTextViewHolder.c.toString());
       QLog.i("xmediaEditor", 2, localStringBuilder.toString());
-      paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher = null;
+      paramTextViewHolder.c = null;
     }
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(null);
-    if (!localTextInfo.jdField_c_of_type_Boolean) {
-      localTextInfo.jdField_a_of_type_Int = paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
+    paramTextViewHolder.b.setOnFocusChangeListener(null);
+    if (!localTextInfo.d) {
+      localTextInfo.b = paramTextViewHolder.b.getSelectionStart();
     } else {
-      localTextInfo.jdField_c_of_type_Boolean = true;
+      localTextInfo.d = true;
     }
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusable(false);
-    paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
+    paramTextViewHolder.b.clearFocus();
+    paramTextViewHolder.b.setFocusable(false);
+    paramTextViewHolder.b.setFocusableInTouchMode(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem
  * JD-Core Version:    0.7.0.1
  */

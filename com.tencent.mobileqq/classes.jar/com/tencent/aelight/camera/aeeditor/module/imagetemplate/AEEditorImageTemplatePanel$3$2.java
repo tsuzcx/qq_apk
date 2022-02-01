@@ -13,13 +13,13 @@ class AEEditorImageTemplatePanel$3$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AEEditorImageTemplatePanel.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateAEEditorImageTemplatePanel$3.a, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierApplyMaterialTask$MaterialStatusCallback.a(ApplyMaterialTask.Status.SUCCEEDED, 100);
+    AEEditorImageTemplatePanel.a(this.c.a, this.a);
+    this.b.a(ApplyMaterialTask.Status.SUCCEEDED, 100);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.imagetemplate.AEEditorImageTemplatePanel.3.2
  * JD-Core Version:    0.7.0.1
  */

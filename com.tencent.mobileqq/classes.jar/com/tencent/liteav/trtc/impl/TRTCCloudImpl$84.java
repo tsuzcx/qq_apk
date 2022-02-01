@@ -1,26 +1,52 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.audio.TXCAudioEngine;
-import com.tencent.liteav.basic.structs.a;
+import android.view.Surface;
+import com.tencent.liteav.TXCRenderAndDec;
+import com.tencent.liteav.renderer.e;
 
 class TRTCCloudImpl$84
   implements Runnable
 {
-  TRTCCloudImpl$84(TRTCCloudImpl paramTRTCCloudImpl, a parama) {}
+  TRTCCloudImpl$84(TRTCCloudImpl paramTRTCCloudImpl, String paramString, Surface paramSurface, int paramInt) {}
   
   public void run()
   {
-    if (!TRTCCloudImpl.access$1400(this.this$0))
+    Object localObject = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setRemoteSurface ");
+    localStringBuilder.append(this.val$userId);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.val$surface);
+    ((TRTCCloudImpl)localObject).apiLog(localStringBuilder.toString());
+    localObject = this.this$0.mRoomInfo.getUser(this.val$userId);
+    if (localObject != null)
     {
-      this.this$0.apiLog("sendCustomAudioData when mEnableCustomAudioCapture is false");
+      if (this.val$streamType == 2) {
+        localObject = ((TRTCRoomInfo.UserInfo)localObject).subRender;
+      } else {
+        localObject = ((TRTCRoomInfo.UserInfo)localObject).mainRender;
+      }
+      localObject = ((TRTCRoomInfo.RenderInfo)localObject).render;
+      if (localObject != null)
+      {
+        localObject = ((TXCRenderAndDec)localObject).getVideoRender();
+        if (localObject != null)
+        {
+          ((e)localObject).a(this.val$surface);
+          return;
+        }
+        this.this$0.apiLog("videoRender no exist");
+        return;
+      }
+      this.this$0.apiLog("render no exist");
       return;
     }
-    TXCAudioEngine.getInstance().sendCustomPCMData(this.val$packet);
+    this.this$0.apiLog("user no exist");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.84
  * JD-Core Version:    0.7.0.1
  */

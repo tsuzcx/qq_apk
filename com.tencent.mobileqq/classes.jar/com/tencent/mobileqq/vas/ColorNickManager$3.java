@@ -22,14 +22,14 @@ class ColorNickManager$3
       paramBundle.append(paramInt);
       QLog.d("ColorNick", 2, paramBundle.toString());
     }
-    if (this.a.a != null) {
-      this.a.a.sendEmptyMessage(257);
+    if (this.a.c != null) {
+      this.a.c.sendEmptyMessage(257);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickManager.3
  * JD-Core Version:    0.7.0.1
  */

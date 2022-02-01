@@ -8,7 +8,7 @@ class PollWidgetUtils$WidgetWrapper$3
     if (PollWidgetUtils.WidgetWrapper.a(this.this$0))
     {
       PollWidgetUtils.WidgetWrapper.a(this.this$0, false);
-      this.this$0.a.b_(false);
+      this.this$0.a.f_(false);
     }
   }
 }

@@ -28,7 +28,7 @@ class TroopListAdapter$1$1
     try
     {
       localObject1 = new oidb_0x88d.RspBody();
-      ((oidb_0x88d.RspBody)localObject1).mergeFrom(this.jdField_a_of_type_ArrayOfByte);
+      ((oidb_0x88d.RspBody)localObject1).mergeFrom(this.a);
       if (((oidb_0x88d.RspBody)localObject1).stzrspgroupinfo.has())
       {
         localObject1 = ((oidb_0x88d.RspBody)localObject1).stzrspgroupinfo.get();
@@ -40,13 +40,13 @@ class TroopListAdapter$1$1
             oidb_0x88d.RspGroupInfo localRspGroupInfo = (oidb_0x88d.RspGroupInfo)((List)localObject1).get(i);
             if (localRspGroupInfo.uint32_result.get() == 0)
             {
-              Object localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+              Object localObject2 = this.b;
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append(localRspGroupInfo.uint64_group_code.get());
               localStringBuilder.append("");
-              localObject2 = CommonUtils.a((AppInterface)localObject2, localStringBuilder.toString());
+              localObject2 = CommonUtils.d((AppInterface)localObject2, localStringBuilder.toString());
               ((TroopInfo)localObject2).troopPrivilegeFlag = ((oidb_0x88d.GroupInfo)localRspGroupInfo.stgroupinfo.get()).uint32_app_privilege_flag.get();
-              ((ITroopInfoService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopInfoService.class, "")).saveTroopInfo((TroopInfo)localObject2);
+              ((ITroopInfoService)this.b.getRuntimeService(ITroopInfoService.class, "")).saveTroopInfo((TroopInfo)localObject2);
             }
             i += 1;
           }
@@ -59,18 +59,18 @@ class TroopListAdapter$1$1
       label179:
       break label179;
     }
-    localObject1 = this.jdField_a_of_type_AndroidOsBundle.getStringArrayList("TroopList");
+    localObject1 = this.c.getStringArrayList("TroopList");
     if (localObject1 != null)
     {
-      TroopListAdapter.a((AppInterface)TroopListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopListAdapter$1.a).mApp.get(), TroopListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopListAdapter$1.a), (ArrayList)localObject1);
+      TroopListAdapter.a((AppInterface)TroopListAdapter.a(this.e.a).mApp.get(), TroopListAdapter.a(this.e.a), (ArrayList)localObject1);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new TroopListAdapter.1.1.1(this));
+    this.d.post(new TroopListAdapter.1.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopListAdapter.1.1
  * JD-Core Version:    0.7.0.1
  */

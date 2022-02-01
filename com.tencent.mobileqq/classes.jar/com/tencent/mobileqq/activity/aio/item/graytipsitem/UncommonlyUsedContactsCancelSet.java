@@ -12,12 +12,12 @@ public class UncommonlyUsedContactsCancelSet
 {
   public void a(GrayTipsItemBuilder paramGrayTipsItemBuilder, MessageRecord paramMessageRecord, GrayTipsItemBuilder.Holder paramHolder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    paramGrayTipsItemBuilder.b(paramHolder, paramContext.getString(2131720102));
+    paramGrayTipsItemBuilder.b(paramHolder, paramContext.getString(2131917727));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.graytipsitem.UncommonlyUsedContactsCancelSet
  * JD-Core Version:    0.7.0.1
  */

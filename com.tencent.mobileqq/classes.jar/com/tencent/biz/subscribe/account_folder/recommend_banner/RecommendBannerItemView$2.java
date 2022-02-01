@@ -13,10 +13,10 @@ class RecommendBannerItemView$2
   
   public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (RecommendBannerItemView.a(this.a))
+    if (RecommendBannerItemView.c(this.a))
     {
       if (RecommendBannerItemView.a(this.a) != null) {
-        VSReporter.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_follow_clk", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
+        VSReporter.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_follow_clk", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.b(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
       }
     }
     else
@@ -24,11 +24,11 @@ class RecommendBannerItemView$2
       if (paramBoolean)
       {
         paramStFeed = this.a;
-        RecommendBannerItemView.a(paramStFeed, "auth_page", "recom_follow", RecommendBannerItemView.a(paramStFeed).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
+        RecommendBannerItemView.a(paramStFeed, "auth_page", "recom_follow", RecommendBannerItemView.a(paramStFeed).id.get(), "", "", String.valueOf(RecommendBannerItemView.b(this.a)), RecommendBannerItemView.a(this.a).nick.get());
         return;
       }
       paramStFeed = this.a;
-      RecommendBannerItemView.a(paramStFeed, "auth_page", "recom_unfollow", RecommendBannerItemView.a(paramStFeed).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
+      RecommendBannerItemView.a(paramStFeed, "auth_page", "recom_unfollow", RecommendBannerItemView.a(paramStFeed).id.get(), "", "", String.valueOf(RecommendBannerItemView.b(this.a)), RecommendBannerItemView.a(this.a).nick.get());
     }
   }
 }

@@ -8,13 +8,13 @@ import java.util.Map;
 
 class ArkJSONPath
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<ArkJSONPathElement> jdField_a_of_type_JavaUtilArrayList;
+  private String a;
+  private ArrayList<ArkJSONPathElement> b;
   
   public ArkJSONPath(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = a(paramString);
+    this.a = paramString;
+    this.b = a(paramString);
   }
   
   public Object a(Map<String, Object> paramMap)
@@ -22,10 +22,10 @@ class ArkJSONPath
     if (paramMap == null) {
       return null;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+    if (this.b.size() == 0) {
       return null;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       paramMap = ((ArkJSONPathElement)localIterator.next()).a(paramMap);
     }
@@ -147,7 +147,7 @@ class ArkJSONPath
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.ArkJSONPath
  * JD-Core Version:    0.7.0.1
  */

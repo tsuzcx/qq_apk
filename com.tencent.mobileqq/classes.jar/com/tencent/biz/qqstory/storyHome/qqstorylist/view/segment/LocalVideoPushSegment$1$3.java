@@ -7,7 +7,7 @@ class LocalVideoPushSegment$1$3
   
   public void run()
   {
-    LocalVideoPushSegment.a(this.a.this$0);
+    LocalVideoPushSegment.c(this.a.this$0);
   }
 }
 

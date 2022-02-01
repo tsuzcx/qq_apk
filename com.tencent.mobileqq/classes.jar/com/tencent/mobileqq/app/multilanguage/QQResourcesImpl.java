@@ -6,26 +6,26 @@ import com.tencent.qphone.base.util.QLog;
 
 public class QQResourcesImpl
 {
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private String jdField_a_of_type_JavaLangString;
+  private Resources a;
   private Resources b;
+  private String c;
   
   public QQResourcesImpl(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentResResources = paramContext.getResources();
+    this.a = paramContext.getResources();
   }
   
   public int a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentResResources;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (this.b == null) {
-        return paramInt;
+        return 0;
       }
       localObject = ((Resources)localObject).getResourceEntryName(paramInt);
-      String str = this.jdField_a_of_type_AndroidContentResResources.getResourceTypeName(paramInt);
-      int i = this.b.getIdentifier((String)localObject, str, this.jdField_a_of_type_JavaLangString);
+      String str = this.a.getResourceTypeName(paramInt);
+      int i = this.b.getIdentifier((String)localObject, str, this.c);
       if (i > 0)
       {
         if (QLog.isColorLevel()) {
@@ -34,7 +34,7 @@ public class QQResourcesImpl
         return i;
       }
     }
-    return paramInt;
+    return 0;
   }
   
   public Resources a()
@@ -42,7 +42,7 @@ public class QQResourcesImpl
     Resources localResources2 = this.b;
     Resources localResources1 = localResources2;
     if (localResources2 == null) {
-      localResources1 = this.jdField_a_of_type_AndroidContentResResources;
+      localResources1 = this.a;
     }
     return localResources1;
   }
@@ -50,17 +50,17 @@ public class QQResourcesImpl
   public void a(Resources paramResources, String paramString)
   {
     this.b = paramResources;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public Resources b()
   {
-    return this.jdField_a_of_type_AndroidContentResResources;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.multilanguage.QQResourcesImpl
  * JD-Core Version:    0.7.0.1
  */

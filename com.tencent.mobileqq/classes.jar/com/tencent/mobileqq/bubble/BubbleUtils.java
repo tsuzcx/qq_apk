@@ -14,8 +14,8 @@ import mqq.app.AppRuntime;
 public class BubbleUtils
 {
   public static BubbleInfo a = new BubbleInfo(0);
-  public static BubbleInfo b = new BubbleInfo(100000, 2130847257, 2130847258);
-  public static BubbleInfo c = new BubbleInfo(100001, 2130847257, 2130847257);
+  public static BubbleInfo b = new BubbleInfo(100000, 2130848843, 2130848844);
+  public static BubbleInfo c = new BubbleInfo(100001, 2130848843, 2130848843);
   
   public static BubbleInfo a(int paramInt, AppRuntime paramAppRuntime, Resources paramResources, BaseAdapter paramBaseAdapter)
   {
@@ -44,7 +44,7 @@ public class BubbleUtils
     if (paramInt < 1) {
       return a;
     }
-    paramAppRuntime = ((BubbleManager)paramAppRuntime.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER)).a(paramInt, paramBoolean);
+    paramAppRuntime = ((BubbleManager)paramAppRuntime.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER)).c(paramInt, paramBoolean);
     if (paramAppRuntime != null)
     {
       if (QLog.isColorLevel())
@@ -73,7 +73,7 @@ public class BubbleUtils
   
   public static boolean a(View paramView)
   {
-    Object localObject = AIOUtils.a(paramView);
+    Object localObject = AIOUtils.b(paramView);
     boolean bool2 = false;
     if (localObject == null) {
       return false;
@@ -81,11 +81,11 @@ public class BubbleUtils
     boolean bool1 = bool2;
     if ((localObject instanceof BaseBubbleBuilder.ViewHolder))
     {
-      paramView = (BaseBubbleBuilder.ViewHolder)AIOUtils.a(paramView);
-      if (paramView.a != null)
+      paramView = (BaseBubbleBuilder.ViewHolder)AIOUtils.b(paramView);
+      if (paramView.i != null)
       {
         bool1 = bool2;
-        if (paramView.a.a > 0) {}
+        if (paramView.i.a > 0) {}
       }
       else
       {
@@ -97,7 +97,7 @@ public class BubbleUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleUtils
  * JD-Core Version:    0.7.0.1
  */

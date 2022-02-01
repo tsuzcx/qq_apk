@@ -9,8 +9,6 @@ public abstract interface IAVServiceForQQ
 {
   public abstract int a(long paramLong, int paramInt);
   
-  public abstract AVPbInfo a(byte[] paramArrayOfByte);
-  
   public abstract void a();
   
   public abstract void a(long paramLong);
@@ -36,6 +34,8 @@ public abstract interface IAVServiceForQQ
   public abstract void c();
   
   public abstract void c(byte[] paramArrayOfByte);
+  
+  public abstract AVPbInfo d(byte[] paramArrayOfByte);
 }
 
 

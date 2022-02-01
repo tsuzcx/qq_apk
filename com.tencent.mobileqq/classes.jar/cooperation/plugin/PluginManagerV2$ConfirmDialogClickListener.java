@@ -8,21 +8,21 @@ import com.tencent.qphone.base.util.QLog;
 class PluginManagerV2$ConfirmDialogClickListener
   implements DialogInterface.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  IPluginManager.OnPluginReadyListener jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener;
-  IPluginManager.PluginParams jdField_a_of_type_CooperationPluginIPluginManager$PluginParams;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  IPluginManager.OnPluginReadyListener a;
   boolean b;
+  Context c;
+  IPluginManager.PluginParams d;
+  boolean e;
+  String f;
   
   private PluginManagerV2$ConfirmDialogClickListener(PluginManagerV2 paramPluginManagerV2, IPluginManager.OnPluginReadyListener paramOnPluginReadyListener, boolean paramBoolean1, Context paramContext, IPluginManager.PluginParams paramPluginParams, boolean paramBoolean2, String paramString)
   {
-    this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramOnPluginReadyListener;
+    this.b = paramBoolean1;
+    this.c = paramContext;
+    this.d = paramPluginParams;
+    this.e = paramBoolean2;
+    this.f = paramString;
   }
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
@@ -32,15 +32,15 @@ class PluginManagerV2$ConfirmDialogClickListener
       if (paramInt != -1) {
         return;
       }
-      PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2, 1, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
+      PluginManagerV2.a(this.g, 1, this.c, this.d, this.a);
       return;
     }
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.b;
     int i = 0;
-    if ((!bool) && (this.b)) {
-      if (PluginManagerV2.a())
+    if ((!bool) && (this.e)) {
+      if (PluginManagerV2.e())
       {
-        bool = Dex2Oat.a(this.jdField_a_of_type_JavaLangString);
+        bool = Dex2Oat.a(this.f);
         if (bool) {
           paramInt = 4;
         } else {
@@ -61,12 +61,12 @@ class PluginManagerV2$ConfirmDialogClickListener
         i = 2;
       }
     }
-    PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2, i, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
+    PluginManagerV2.a(this.g, i, this.c, this.d, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginManagerV2.ConfirmDialogClickListener
  * JD-Core Version:    0.7.0.1
  */

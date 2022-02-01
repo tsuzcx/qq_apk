@@ -7,16 +7,16 @@ public class GetUserGroupMemberListHandler$GetUserGroupMemberListEvent
   extends BaseEvent
 {
   public String a;
-  public List<String> a;
+  public List<String> b;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetUserGroupMemberListEvent{troopUin='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", memberList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

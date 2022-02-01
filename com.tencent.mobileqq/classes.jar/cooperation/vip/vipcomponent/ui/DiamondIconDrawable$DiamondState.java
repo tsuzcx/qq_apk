@@ -6,26 +6,20 @@ import android.graphics.drawable.Drawable.ConstantState;
 final class DiamondIconDrawable$DiamondState
   extends Drawable.ConstantState
 {
-  int jdField_a_of_type_Int;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+  int a;
   Drawable b = null;
   Drawable c = null;
   Drawable d = null;
   Drawable e = null;
   Drawable f = null;
   Drawable g = null;
+  Drawable h = null;
   
   DiamondIconDrawable$DiamondState() {}
   
   DiamondIconDrawable$DiamondState(DiamondState paramDiamondState)
   {
-    Drawable localDrawable = paramDiamondState.b;
-    if ((localDrawable != null) && (localDrawable.getConstantState() != null))
-    {
-      this.b = paramDiamondState.b.getConstantState().newDrawable();
-      this.b.setBounds(paramDiamondState.b.getBounds());
-    }
-    localDrawable = paramDiamondState.c;
+    Drawable localDrawable = paramDiamondState.c;
     if ((localDrawable != null) && (localDrawable.getConstantState() != null))
     {
       this.c = paramDiamondState.c.getConstantState().newDrawable();
@@ -55,18 +49,24 @@ final class DiamondIconDrawable$DiamondState
       this.g = paramDiamondState.g.getConstantState().newDrawable();
       this.g.setBounds(paramDiamondState.g.getBounds());
     }
-    localDrawable = paramDiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localDrawable = paramDiamondState.h;
     if ((localDrawable != null) && (localDrawable.getConstantState() != null))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramDiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds());
+      this.h = paramDiamondState.h.getConstantState().newDrawable();
+      this.h.setBounds(paramDiamondState.h.getBounds());
     }
-    this.jdField_a_of_type_Int = paramDiamondState.jdField_a_of_type_Int;
+    localDrawable = paramDiamondState.b;
+    if ((localDrawable != null) && (localDrawable.getConstantState() != null))
+    {
+      this.b = paramDiamondState.b.getConstantState().newDrawable();
+      this.b.setBounds(paramDiamondState.b.getBounds());
+    }
+    this.a = paramDiamondState.a;
   }
   
   public int getChangingConfigurations()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public Drawable newDrawable()
@@ -76,7 +76,7 @@ final class DiamondIconDrawable$DiamondState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.vipcomponent.ui.DiamondIconDrawable.DiamondState
  * JD-Core Version:    0.7.0.1
  */

@@ -58,7 +58,7 @@ public class BitmapUtil
   
   public static Bitmap a(View paramView)
   {
-    a(paramView);
+    b(paramView);
     Object localObject2 = null;
     try
     {
@@ -101,7 +101,7 @@ public class BitmapUtil
     return null;
   }
   
-  private static void a(View paramView)
+  private static void b(View paramView)
   {
     if (paramView == null) {
       return;
@@ -117,7 +117,7 @@ public class BitmapUtil
         if (i >= localViewGroup.getChildCount()) {
           break;
         }
-        a(localViewGroup.getChildAt(i));
+        b(localViewGroup.getChildAt(i));
         i += 1;
       }
     }
@@ -127,7 +127,7 @@ public class BitmapUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.BitmapUtil
  * JD-Core Version:    0.7.0.1
  */

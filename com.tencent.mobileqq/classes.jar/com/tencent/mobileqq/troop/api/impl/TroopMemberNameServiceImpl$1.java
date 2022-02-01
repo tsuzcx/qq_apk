@@ -9,8 +9,8 @@ class TroopMemberNameServiceImpl$1
   
   public void run()
   {
-    String str = this.this$0.getTroopMemberName(this.jdField_a_of_type_JavaLangString, this.b, true, false);
-    ITroopMemberNameService.OnGetTroopMemberNameCallback localOnGetTroopMemberNameCallback = this.jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberNameService$OnGetTroopMemberNameCallback;
+    String str = this.this$0.getTroopMemberName(this.a, this.b, true, false);
+    ITroopMemberNameService.OnGetTroopMemberNameCallback localOnGetTroopMemberNameCallback = this.c;
     if (localOnGetTroopMemberNameCallback != null) {
       localOnGetTroopMemberNameCallback.a(str);
     }
@@ -18,7 +18,7 @@ class TroopMemberNameServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopMemberNameServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

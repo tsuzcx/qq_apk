@@ -10,6 +10,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.net.NetworkInterface;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -46,7 +47,7 @@ public final class fq
             return str1;
           }
           str2 = str1;
-          localEnumeration = NetworkInterface.getNetworkInterfaces();
+          localEnumeration = NetworkMonitor.getNetworkInterfaces();
           localObject1 = str1;
           str2 = str1;
           if (localEnumeration.hasMoreElements())
@@ -243,7 +244,7 @@ public final class fq
         if (localObject == null) {
           return "{}";
         }
-        paramea = paramea.getConnectionInfo();
+        paramea = NetworkMonitor.getConnectionInfo(paramea);
         localObject = ((ConnectivityManager)localObject).getNetworkInfo(1);
         if ((paramea != null) && (localObject != null) && (((NetworkInfo)localObject).isConnected()))
         {

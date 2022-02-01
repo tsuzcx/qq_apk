@@ -8,14 +8,14 @@ public class DataLinePCPlusPanelAppLoader
 {
   protected void b(BaseChatPie paramBaseChatPie)
   {
-    a(paramBaseChatPie.a.a, 202);
-    a(paramBaseChatPie.a.a, 206);
-    a(paramBaseChatPie.a.a, 208);
+    a(paramBaseChatPie.ah.a, 202);
+    a(paramBaseChatPie.ah.a, 206);
+    a(paramBaseChatPie.ah.a, 208);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.DataLinePCPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

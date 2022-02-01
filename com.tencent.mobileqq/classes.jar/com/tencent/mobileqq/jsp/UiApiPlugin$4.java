@@ -23,22 +23,22 @@ class UiApiPlugin$4
       if (paramBundle.getBoolean("isSuccess"))
       {
         paramBundle = new Intent();
-        paramBundle.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
+        paramBundle.putExtra("troop_uin", this.a);
         int i;
-        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a() != null) {
-          i = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().switchRequestCode(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin, (byte)12);
+        if (this.b.mRuntime.f() != null) {
+          i = this.b.mRuntime.f().switchRequestCode(this.b, (byte)12);
         } else {
           i = 12;
         }
-        TroopManageProxyActivity.a("troop_manage_plugin.apk", PluginInfo.j, TroopManageProxyActivity.class, this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), paramBundle, TroopManageProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a()), "com.tencent.mobileqq.activity.TroopSetJoinTypeActivity", this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().getAccount(), i);
+        TroopManageProxyActivity.a("troop_manage_plugin.apk", PluginInfo.j, TroopManageProxyActivity.class, this.b.mRuntime.d(), paramBundle, TroopManageProxyActivity.a(this.b.mRuntime.d()), "com.tencent.mobileqq.activity.TroopSetJoinTypeActivity", this.b.mRuntime.b().getAccount(), i);
         return;
       }
       paramBundle = new JSONObject();
       try
       {
-        paramBundle.put("gc", this.jdField_a_of_type_JavaLangString);
+        paramBundle.put("gc", this.a);
         paramBundle.put("ret", 1);
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.m, new String[] { paramBundle.toString() });
+        this.b.callJs(this.b.t, new String[] { paramBundle.toString() });
         return;
       }
       catch (JSONException paramBundle)
@@ -50,7 +50,7 @@ class UiApiPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.4
  * JD-Core Version:    0.7.0.1
  */

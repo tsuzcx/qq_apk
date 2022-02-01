@@ -114,7 +114,7 @@ public class IliveAuthManager
     if (IlivePluginManager.getInstance().getPluginCallback() != null) {
       IlivePluginManager.getInstance().getPluginCallback().onPluginLoginStart();
     }
-    TimeMonitorManager.a().a("AUTH_PROCESS").a();
+    TimeMonitorManager.a().d("AUTH_PROCESS").a();
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     QQALive.GetOpenInfoReq localGetOpenInfoReq = new QQALive.GetOpenInfoReq();
     NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), IliveAuthServlet.class);
@@ -183,7 +183,7 @@ public class IliveAuthManager
     l1 -= l2;
     ((StringBuilder)localObject).append(l1);
     QLog.e("IliveAuthManager", 1, ((StringBuilder)localObject).toString());
-    if ((paramBoolean) && (LiteLiveSDKFactory.a().a() == null)) {}
+    if ((paramBoolean) && (LiteLiveSDKFactory.a().d() == null)) {}
     while ((!paramBoolean) && (TextUtils.isEmpty(IlivePluginManager.getInstance().getLiveToken())))
     {
       i = 1;
@@ -248,7 +248,7 @@ public class IliveAuthManager
       localObject1 = "fail";
     }
     ((HashMap)localObject2).put("status", localObject1);
-    TimeMonitorManager.a().a("AUTH_PROCESS").a("auth_process", (HashMap)localObject2);
+    TimeMonitorManager.a().d("AUTH_PROCESS").a("auth_process", (HashMap)localObject2);
     if (paramBoolean)
     {
       if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
@@ -279,7 +279,7 @@ public class IliveAuthManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.manager.IliveAuthManager
  * JD-Core Version:    0.7.0.1
  */

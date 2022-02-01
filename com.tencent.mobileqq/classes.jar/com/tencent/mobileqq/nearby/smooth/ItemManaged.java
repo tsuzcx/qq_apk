@@ -13,48 +13,33 @@ import com.tencent.widget.ListView;
 
 class ItemManaged
 {
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener;
-  ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
-  ItemManager jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager;
-  AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
-  final AbsListView jdField_a_of_type_ComTencentWidgetAbsListView;
-  AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener;
-  boolean jdField_a_of_type_Boolean;
+  final AbsListView a;
+  ListAdapter b;
+  ItemManager c;
+  boolean d;
+  AbsListView.OnScrollListener e;
+  View.OnTouchListener f;
+  AdapterView.OnItemSelectedListener g;
   
   ItemManaged(AbsListView paramAbsListView)
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView = paramAbsListView;
-    this.jdField_a_of_type_AndroidWidgetListAdapter = null;
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = null;
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = null;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = null;
-  }
-  
-  View.OnTouchListener a()
-  {
-    return this.jdField_a_of_type_AndroidViewView$OnTouchListener;
-  }
-  
-  ListAdapter a()
-  {
-    ListAdapter localListAdapter2 = (ListAdapter)this.jdField_a_of_type_ComTencentWidgetAbsListView.getAdapter();
-    ListAdapter localListAdapter1 = localListAdapter2;
-    if ((localListAdapter2 instanceof WrapperListAdapter)) {
-      localListAdapter1 = ((WrapperListAdapter)localListAdapter2).getWrappedAdapter();
-    }
-    return localListAdapter1;
+    this.a = paramAbsListView;
+    this.b = null;
+    this.c = null;
+    this.d = false;
+    this.e = null;
+    this.f = null;
+    this.g = null;
   }
   
   ListAdapter a(ListAdapter paramListAdapter)
   {
-    return a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager, paramListAdapter);
+    return a(this.c, paramListAdapter);
   }
   
   ListAdapter a(ItemManager paramItemManager, ListAdapter paramListAdapter)
   {
-    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
+    this.b = paramListAdapter;
     Object localObject = paramListAdapter;
     if (paramItemManager != null)
     {
@@ -66,108 +51,123 @@ class ItemManaged
     return localObject;
   }
   
-  AbsListView.OnScrollListener a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
-  }
-  
-  AbsListView a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetAbsListView;
-  }
-  
-  AdapterView.OnItemSelectedListener a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener;
-  }
-  
-  void a()
-  {
-    ItemManager localItemManager = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager;
-    if (localItemManager != null) {
-      localItemManager.c();
-    }
-  }
-  
   void a(View.OnTouchListener paramOnTouchListener)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = paramOnTouchListener;
+    this.f = paramOnTouchListener;
+  }
+  
+  void a(ItemManager paramItemManager)
+  {
+    ItemManager localItemManager = this.c;
+    if (localItemManager != null)
+    {
+      localItemManager.a(null);
+      this.c = null;
+    }
+    this.d = true;
+    if (paramItemManager != null)
+    {
+      paramItemManager.a(this);
+      b(a(paramItemManager, this.b));
+    }
+    else
+    {
+      this.a.setOnScrollListener(this.e);
+      this.a.setOnTouchListener(this.f);
+      this.a.setOnItemSelectedListener(this.g);
+      b(this.b);
+    }
+    this.c = paramItemManager;
+    this.d = false;
+    h();
+  }
+  
+  void a(AbsListView.OnScrollListener paramOnScrollListener)
+  {
+    if (this.d) {
+      return;
+    }
+    this.e = paramOnScrollListener;
+  }
+  
+  void a(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
+  {
+    if (this.d) {
+      return;
+    }
+    this.g = paramOnItemSelectedListener;
+  }
+  
+  boolean a()
+  {
+    return this.c != null;
+  }
+  
+  AbsListView b()
+  {
+    return this.a;
   }
   
   @TargetApi(11)
-  void a(ListAdapter paramListAdapter)
+  void b(ListAdapter paramListAdapter)
   {
     if (Build.VERSION.SDK_INT >= 11)
     {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.setAdapter(paramListAdapter);
+      this.a.setAdapter(paramListAdapter);
       return;
     }
-    AbsListView localAbsListView = this.jdField_a_of_type_ComTencentWidgetAbsListView;
+    AbsListView localAbsListView = this.a;
     if ((localAbsListView instanceof ListView)) {
       ((ListView)localAbsListView).setAdapter(paramListAdapter);
     }
   }
   
-  void a(ItemManager paramItemManager)
+  AbsListView.OnScrollListener c()
   {
-    ItemManager localItemManager = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager;
-    if (localItemManager != null)
-    {
-      localItemManager.a(null);
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager = null;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    if (paramItemManager != null)
-    {
-      paramItemManager.a(this);
-      a(a(paramItemManager, this.jdField_a_of_type_AndroidWidgetListAdapter));
-    }
-    else
-    {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.setOnScrollListener(this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener);
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.setOnItemSelectedListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener);
-      a(this.jdField_a_of_type_AndroidWidgetListAdapter);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager = paramItemManager;
-    this.jdField_a_of_type_Boolean = false;
-    b();
+    return this.e;
   }
   
-  void a(AbsListView.OnScrollListener paramOnScrollListener)
+  View.OnTouchListener d()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    return this.f;
+  }
+  
+  AdapterView.OnItemSelectedListener e()
+  {
+    return this.g;
+  }
+  
+  void f()
+  {
+    ItemManager localItemManager = this.c;
+    if (localItemManager != null) {
+      localItemManager.c();
     }
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = paramOnScrollListener;
   }
   
-  void a(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
+  ListAdapter g()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    ListAdapter localListAdapter2 = (ListAdapter)this.a.getAdapter();
+    ListAdapter localListAdapter1 = localListAdapter2;
+    if ((localListAdapter2 instanceof WrapperListAdapter)) {
+      localListAdapter1 = ((WrapperListAdapter)localListAdapter2).getWrappedAdapter();
     }
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = paramOnItemSelectedListener;
+    return localListAdapter1;
   }
   
-  boolean a()
+  void h()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager != null;
-  }
-  
-  void b()
-  {
-    if ((a()) && (this.jdField_a_of_type_AndroidWidgetListAdapter != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager.b();
+    if ((a()) && (this.b != null)) {
+      this.c.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemManaged
  * JD-Core Version:    0.7.0.1
  */

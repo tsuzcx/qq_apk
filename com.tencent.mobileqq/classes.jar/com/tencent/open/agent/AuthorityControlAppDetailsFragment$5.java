@@ -25,38 +25,38 @@ class AuthorityControlAppDetailsFragment$5
   
   private void a(OpenAgentHandler.AuthItemResult paramAuthItemResult)
   {
-    QLog.d("AuthorityControlAppDetailsActivity", 1, new Object[] { "onAuthItemSuccess type=", Integer.valueOf(paramAuthItemResult.jdField_a_of_type_Int) });
-    if (paramAuthItemResult.jdField_a_of_type_Int == 1) {
-      AuthorityControlAppDetailsFragment.b(this.a, paramAuthItemResult.jdField_a_of_type_TencentImOidbCmd0xf26Oidb_0xf26$RspBody.query_rsp.auth_item.get());
+    QLog.d("AuthorityControlAppDetailsActivity", 1, new Object[] { "onAuthItemSuccess type=", Integer.valueOf(paramAuthItemResult.a) });
+    if (paramAuthItemResult.a == 1) {
+      AuthorityControlAppDetailsFragment.b(this.a, paramAuthItemResult.d.query_rsp.auth_item.get());
     }
   }
   
   private void b(OpenAgentHandler.AuthItemResult paramAuthItemResult)
   {
-    QLog.d("AuthorityControlAppDetailsActivity", 1, new Object[] { "onAuthItemError errorCode=", Integer.valueOf(paramAuthItemResult.b), ", errorMessage=", paramAuthItemResult.jdField_a_of_type_JavaLangString });
+    QLog.d("AuthorityControlAppDetailsActivity", 1, new Object[] { "onAuthItemError errorCode=", Integer.valueOf(paramAuthItemResult.b), ", errorMessage=", paramAuthItemResult.c });
     if (paramAuthItemResult.b == 36004)
     {
-      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 1, 2131690221, 0).a();
-      AuthorityControlAppDetailsFragment.a(this.a).finish();
-      int i = AuthorityControlAppDetailsFragment.a(this.a).a();
-      paramAuthItemResult = AuthorityControlAppDetailsFragment.a(this.a).b();
-      AuthorityUtil.a(AuthorityControlAppDetailsFragment.a(this.a), "0X800BAE2", 0, AuthorityControlAppDetailsFragment.a(this.a), new String[] { String.valueOf(i), "", paramAuthItemResult, "" });
+      QQToast.makeText(AuthorityControlAppDetailsFragment.c(this.a), 1, 2131887121, 0).show();
+      AuthorityControlAppDetailsFragment.c(this.a).finish();
+      int i = AuthorityControlAppDetailsFragment.h(this.a).a();
+      paramAuthItemResult = AuthorityControlAppDetailsFragment.h(this.a).c();
+      AuthorityUtil.a(AuthorityControlAppDetailsFragment.e(this.a), "0X800BAE2", 0, AuthorityControlAppDetailsFragment.g(this.a), new String[] { String.valueOf(i), "", paramAuthItemResult, "" });
       return;
     }
-    if ((paramAuthItemResult.b != 0) && (!TextUtils.isEmpty(paramAuthItemResult.jdField_a_of_type_JavaLangString)))
+    if ((paramAuthItemResult.b != 0) && (!TextUtils.isEmpty(paramAuthItemResult.c)))
     {
-      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), String.format(this.a.getString(2131696495), new Object[] { paramAuthItemResult.jdField_a_of_type_JavaLangString, Integer.valueOf(paramAuthItemResult.b) }), 0).a();
+      QQToast.makeText(AuthorityControlAppDetailsFragment.c(this.a), String.format(this.a.getString(2131894269), new Object[] { paramAuthItemResult.c, Integer.valueOf(paramAuthItemResult.b) }), 0).show();
       return;
     }
-    QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), HardCodeUtil.a(2131694647), 0).a();
+    QQToast.makeText(AuthorityControlAppDetailsFragment.c(this.a), HardCodeUtil.a(2131892333), 0).show();
   }
   
   protected void a(boolean paramBoolean, OpenAgentHandler.AuthItemResult paramAuthItemResult)
   {
-    QLog.d("AuthorityControlAppDetailsActivity", 1, new Object[] { "onAuthItemResult isSuccess=", Boolean.valueOf(paramBoolean), ", mStatus=", Integer.valueOf(AuthorityControlAppDetailsFragment.b(this.a)) });
-    if ((AuthorityControlAppDetailsFragment.a(this.a) != null) && (!AuthorityControlAppDetailsFragment.a(this.a).isFinishing()))
+    QLog.d("AuthorityControlAppDetailsActivity", 1, new Object[] { "onAuthItemResult isSuccess=", Boolean.valueOf(paramBoolean), ", mStatus=", Integer.valueOf(AuthorityControlAppDetailsFragment.i(this.a)) });
+    if ((AuthorityControlAppDetailsFragment.c(this.a) != null) && (!AuthorityControlAppDetailsFragment.c(this.a).isFinishing()))
     {
-      if (AuthorityControlAppDetailsFragment.a(this.a)) {
+      if (AuthorityControlAppDetailsFragment.d(this.a)) {
         return;
       }
       if (paramBoolean)
@@ -84,36 +84,36 @@ class AuthorityControlAppDetailsFragment$5
     if (paramBoolean)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131701027));
-      ((StringBuilder)localObject).append(AuthorityControlAppDetailsFragment.a(this.a).b());
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131701025));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131899048));
+      ((StringBuilder)localObject).append(AuthorityControlAppDetailsFragment.h(this.a).c());
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131899046));
       localObject = ((StringBuilder)localObject).toString();
-      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 2, (CharSequence)localObject, 0).a();
+      QQToast.makeText(AuthorityControlAppDetailsFragment.c(this.a), 2, (CharSequence)localObject, 0).show();
       localObject = new Intent();
       if ((paramList != null) && (paramList.size() == 1))
       {
         ((Intent)localObject).putExtra("KEY_DELETED_INFO", (Parcelable)paramList.get(0));
-        AuthorityControlAppDetailsFragment.a(this.a).setResult(-1, (Intent)localObject);
+        AuthorityControlAppDetailsFragment.c(this.a).setResult(-1, (Intent)localObject);
       }
       AuthorityControlAppDetailsFragment.a(this.a, paramList);
-      AuthorityControlAppDetailsFragment.a(this.a).finish();
+      AuthorityControlAppDetailsFragment.c(this.a).finish();
     }
     else
     {
-      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 1, HardCodeUtil.a(2131701026), 0).a();
+      QQToast.makeText(AuthorityControlAppDetailsFragment.c(this.a), 1, HardCodeUtil.a(2131899047), 0).show();
     }
-    Object localObject = AuthorityControlAppDetailsFragment.a(this.a);
+    Object localObject = AuthorityControlAppDetailsFragment.e(this.a);
     if (paramBoolean) {
       paramList = "0";
     } else {
       paramList = "1";
     }
-    ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X8009E1C", "0X8009E1C", 0, 0, paramList, "", String.valueOf(AuthorityControlAppDetailsFragment.a(this.a).a()), "");
+    ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X8009E1C", "0X8009E1C", 0, 0, paramList, "", String.valueOf(AuthorityControlAppDetailsFragment.h(this.a).a()), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlAppDetailsFragment.5
  * JD-Core Version:    0.7.0.1
  */

@@ -344,7 +344,7 @@ public class FeedsManager
       QLog.w("FeedsManager", 1, "wns  下发的最大请求个数是 大于100，取值100");
       i = 100;
     }
-    Object localObject = this.app.getProxyManager().a();
+    Object localObject = this.app.getProxyManager().g();
     j = 0;
     localObject = ((RecentUserProxy)localObject).a(true, false);
     if ((localObject != null) && (((List)localObject).size() > 0))
@@ -540,7 +540,7 @@ public class FeedsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.FeedsManager
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class FastWebPTSUtils$5$1
   
   public void a(ReadInJoyObserver paramReadInJoyObserver)
   {
-    paramReadInJoyObserver.a(FastWebPTSUtils.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase, this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo, this.a.jdField_a_of_type_Int);
+    paramReadInJoyObserver.a(FastWebPTSUtils.a(this.a.a, this.a.b), this.a.c, this.a.d, this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebPTSUtils.5.1
  * JD-Core Version:    0.7.0.1
  */

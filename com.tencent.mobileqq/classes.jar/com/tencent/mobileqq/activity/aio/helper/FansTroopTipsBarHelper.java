@@ -22,75 +22,75 @@ import com.tencent.qphone.base.util.QLog;
 public class FansTroopTipsBarHelper
   implements ILifeCycleHelper
 {
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private TroopChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
   public FansTroopTipsBar a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new FansTroopTipsBarHelper.1(this);
-  TroopPushObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver = new FansTroopTipsBarHelper.2(this);
+  TroopObserver b = new FansTroopTipsBarHelper.1(this);
+  TroopPushObserver c = new FansTroopTipsBarHelper.2(this);
+  private TroopChatPie d;
+  private QQAppInterface e;
+  private SessionInfo f;
   
   public FansTroopTipsBarHelper(TroopChatPie paramTroopChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie = paramTroopChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  private void b()
-  {
-    a();
-  }
-  
-  private void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FansTroopTipsBarHelper", 2, "onCreate()");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.d = paramTroopChatPie;
+    this.e = paramTroopChatPie.d;
+    this.f = paramTroopChatPie.ah;
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    a();
+  }
+  
+  private void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FansTroopTipsBarHelper", 2, "onCreate()");
+    }
+    this.e.addObserver(this.c);
+    this.e.addObserver(this.b);
+  }
+  
+  private void f()
+  {
+    this.e.removeObserver(this.c);
+    this.e.removeObserver(this.b);
   }
   
   public void a()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.b();
+    Object localObject1 = this.d.ca();
     Object localObject2;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (a()))
+    if ((this.f != null) && (b()))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFansTroopTipsBar == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFansTroopTipsBar = new FansTroopTipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
+      if (this.a == null) {
+        this.a = new FansTroopTipsBar(this.e, this.d.f, this.f, this.d);
       }
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFansTroopTipsBar.a((TipsManager)localObject1)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFansTroopTipsBar.a((TipsManager)localObject1, true)))
+      if ((!this.a.a((TipsManager)localObject1)) && (this.a.a((TipsManager)localObject1, true)))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+        localObject1 = this.e.getPreferences();
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("FansTroop_tip_show_times");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        ((StringBuilder)localObject2).append(this.f.b);
         int i = ((SharedPreferences)localObject1).getInt(((StringBuilder)localObject2).toString(), 0);
         localObject1 = ((SharedPreferences)localObject1).edit();
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("FansTroop_tip_show_times");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        ((StringBuilder)localObject2).append(this.f.b);
         ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), i + 1).apply();
       }
     }
     else
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFansTroopTipsBar;
+      localObject2 = this.a;
       if (localObject2 != null) {
         ((FansTroopTipsBar)localObject2).a((TipsManager)localObject1, false);
       }
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    Object localObject = (TroopFansEntryConfig)QConfigManager.a().a(701);
+    Object localObject = (TroopFansEntryConfig)QConfigManager.b().b(701);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localObject != null)
@@ -98,14 +98,14 @@ public class FansTroopTipsBarHelper
       if (!((TroopFansEntryConfig)localObject).isGuideSwitchOn()) {
         return false;
       }
-      if (((TroopListenTogetherPanel)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a(33)).c())
+      if (((TroopListenTogetherPanel)this.d.q(33)).e())
       {
         if (QLog.isColorLevel()) {
           QLog.d("FansTroopTipsBarHelper", 2, "showHomeworkTroopIdentityAIOTip. isListenTogetherTime");
         }
         return false;
       }
-      if (((StudyRoomTipBarHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a(75)).d())
+      if (((StudyRoomTipBarHelper)this.d.q(75)).e())
       {
         if (QLog.isColorLevel()) {
           QLog.d("FansTroopTipsBarHelper", 2, "showHomeworkTroopIdentityAIOTip. isStudyRoomTime");
@@ -113,15 +113,15 @@ public class FansTroopTipsBarHelper
         return false;
       }
       bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+      if (this.f != null)
       {
         bool1 = bool2;
-        if (b())
+        if (c())
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+          localObject = this.e.getPreferences();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("FansTroop_tip_show_times");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+          localStringBuilder.append(this.f.b);
           bool1 = bool2;
           if (((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0) < 3) {
             bool1 = true;
@@ -132,22 +132,22 @@ public class FansTroopTipsBarHelper
     return bool1;
   }
   
-  public boolean b()
+  public boolean c()
   {
-    boolean bool1 = StudyModeManager.a();
+    boolean bool1 = StudyModeManager.h();
     boolean bool2 = false;
     if (bool1) {
       return false;
     }
     Object localObject2 = null;
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    TroopManager localTroopManager = (TroopManager)this.e.getManager(QQManagerFactory.TROOP_MANAGER);
+    SessionInfo localSessionInfo = this.f;
     Object localObject1 = localObject2;
     if (localSessionInfo != null)
     {
       localObject1 = localObject2;
       if (localTroopManager != null) {
-        localObject1 = localTroopManager.b(localSessionInfo.a);
+        localObject1 = localTroopManager.f(localSessionInfo.b);
       }
     }
     if (localObject1 == null) {
@@ -156,7 +156,7 @@ public class FansTroopTipsBarHelper
     bool1 = bool2;
     if (((TroopInfo)localObject1).isFansTroop())
     {
-      if (!((TroopInfo)localObject1).isOwnerOrAdmin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+      if (!((TroopInfo)localObject1).isOwnerOrAdmin(this.e.getCurrentAccountUin())) {
         return false;
       }
       bool1 = bool2;
@@ -186,18 +186,18 @@ public class FansTroopTipsBarHelper
         if (paramInt != 15) {
           return;
         }
-        d();
+        f();
         return;
       }
-      b();
+      d();
       return;
     }
-    c();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FansTroopTipsBarHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -29,12 +29,12 @@ class AddContactFindTroopRTLW$1
       paramSosoLbsInfo.append(paramInt);
       QLog.i("ac_ft.AddContactFindTroopRTLW", 1, paramSosoLbsInfo.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopRecommendApiITroopRecommendHandler.a(1, this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopAddContactFindTroopRTLW.b, 25, this.jdField_a_of_type_Boolean, AddContactFindTroopRTLW.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopAddContactFindTroopRTLW));
+    this.a.a(1, this.c.d, 25, this.b, AddContactFindTroopRTLW.a(this.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactFindTroopRTLW.1
  * JD-Core Version:    0.7.0.1
  */

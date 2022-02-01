@@ -17,14 +17,14 @@ class AVGameClientQIPCModule$1
     if ((paramEIPCResult == null) || (!paramEIPCResult.isSuccess()))
     {
       paramEIPCResult = new Intent("action_notify_av_game_room_changed");
-      paramEIPCResult.putExtra("action_key_room_id", this.jdField_a_of_type_JavaLangString);
-      paramEIPCResult.putExtra("action_key_status", this.jdField_a_of_type_Int);
-      AVGameClientQIPCModule.a(this.jdField_a_of_type_ComTencentAvgameIpcAVGameClientQIPCModule).getApp().sendBroadcast(paramEIPCResult);
+      paramEIPCResult.putExtra("action_key_room_id", this.a);
+      paramEIPCResult.putExtra("action_key_status", this.b);
+      AVGameClientQIPCModule.a(this.c).getApp().sendBroadcast(paramEIPCResult);
       paramEIPCResult = new StringBuilder();
       paramEIPCResult.append("status change with broadcast ");
-      paramEIPCResult.append(this.jdField_a_of_type_Int);
+      paramEIPCResult.append(this.b);
       paramEIPCResult.append(" ");
-      paramEIPCResult.append(this.jdField_a_of_type_JavaLangString);
+      paramEIPCResult.append(this.a);
       QLog.d("AVGameClientQIPCModule", 2, paramEIPCResult.toString());
     }
   }

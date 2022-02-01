@@ -20,7 +20,6 @@ import com.tencent.mobileqq.kandian.biz.video.api.IVideoPluginInstallFactory;
 import com.tencent.mobileqq.kandian.repo.webarticle.api.IDataPreloadModule;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.weather.api.IWeatherCommApi;
 import com.tencent.mobileqq.webview.util.IWebProcessReceiverInjector;
 import com.tencent.mobileqq.webview.webso.WebSoService;
 import com.tencent.mobileqq.webview.webso.WebSoUtils;
@@ -77,7 +76,7 @@ public class WebProcessReceiverInjectorImpl
   
   public void a(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
   {
-    WebSoService.a().a();
+    WebSoService.a().b();
     WebSoUtils.a();
   }
   
@@ -86,7 +85,6 @@ public class WebProcessReceiverInjectorImpl
     if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded()) {
       ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doBindService(paramContext.getApplicationContext());
     }
-    ((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).asyncInitGdtDeviceInfo();
     ((IPatchBundleDataHandler)QRoute.api(IPatchBundleDataHandler.class)).checkDownloadConfigAsync(true, true);
     if (201 != paramInt)
     {
@@ -105,7 +103,7 @@ public class WebProcessReceiverInjectorImpl
         QLog.d("WebProcessReceiverInjectorImpl", 2, "onReceive AIOOpenWebMonitor.PRELOAD_FROM_READINJOY_HALF!");
       }
       WebCoreService.a();
-      com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.o = true;
+      com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.aC = true;
     }
     if (100 == paramInt)
     {
@@ -190,7 +188,7 @@ public class WebProcessReceiverInjectorImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebProcessReceiverInjectorImpl
  * JD-Core Version:    0.7.0.1
  */

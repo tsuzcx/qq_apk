@@ -13,14 +13,14 @@ class VoiceTextEditScrollerView$2
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView) != null)
+    if (VoiceTextEditScrollerView.a(this.b) != null)
     {
-      if (this.jdField_a_of_type_Int == 0)
+      if (this.a == 0)
       {
-        VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView).c();
+        VoiceTextEditScrollerView.a(this.b).c();
         return;
       }
-      VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView).b();
+      VoiceTextEditScrollerView.a(this.b).b();
     }
   }
   
@@ -30,7 +30,7 @@ class VoiceTextEditScrollerView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextEditScrollerView.2
  * JD-Core Version:    0.7.0.1
  */

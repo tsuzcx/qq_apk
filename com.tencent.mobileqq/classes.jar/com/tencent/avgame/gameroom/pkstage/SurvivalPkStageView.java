@@ -43,22 +43,22 @@ public class SurvivalPkStageView
   extends CoverRoundCornerRelativeLayout
   implements ISurvivalStageView
 {
-  public static String a = "https://static-res.qq.com/static-res/avgames/survival/avgame_room_survival_bg.png";
-  private static String jdField_b_of_type_JavaLangString = "https://static-res.qq.com/static-res/avgames/survival/avgame_pk_stage_win_bg.png";
-  private static String jdField_c_of_type_JavaLangString = "https://static-res.qq.com/static-res/avgames/survival/avgame_pk_stage_suc2.png";
-  private static String jdField_d_of_type_JavaLangString = "https://static-res.qq.com/static-res/avgames/survival/avgame_pk_stage_fail_bg.png";
-  private static String jdField_e_of_type_JavaLangString = "https://static-res.qq.com/static-res/avgames/survival/avgame_pk_stage_fail.png";
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ISurvivalStagePresenter jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStagePresenter;
-  private AVGameSplitNumberView jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
+  public static String j = "https://static-res.qq.com/static-res/avgames/survival/avgame_room_survival_bg.png";
+  private static String k = "https://static-res.qq.com/static-res/avgames/survival/avgame_pk_stage_win_bg.png";
+  private static String l = "https://static-res.qq.com/static-res/avgames/survival/avgame_pk_stage_suc2.png";
+  private static String m = "https://static-res.qq.com/static-res/avgames/survival/avgame_pk_stage_fail_bg.png";
+  private static String n = "https://static-res.qq.com/static-res/avgames/survival/avgame_pk_stage_fail.png";
+  private ISurvivalStagePresenter o;
+  private TextView p;
+  private TextView q;
+  private RelativeLayout r;
+  private AVGameSplitNumberView s;
+  private ImageView t;
+  private RelativeLayout u;
+  private TextView v;
+  private TextView w;
+  private TextView x;
+  private ImageView y;
   
   public SurvivalPkStageView(Context paramContext)
   {
@@ -78,23 +78,6 @@ public class SurvivalPkStageView
     g();
   }
   
-  private int a()
-  {
-    if (IGameEngine.a().i()) {
-      return getResources().getDimensionPixelOffset(2131296614);
-    }
-    return 0;
-  }
-  
-  private String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("file:///");
-    localStringBuilder.append(AvGameResDownloadUtil.c());
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
   private String a(String paramString1, String paramString2)
   {
     if (!TextUtils.isEmpty(paramString1))
@@ -110,18 +93,6 @@ public class SurvivalPkStageView
       }
     }
     return paramString2;
-  }
-  
-  private List<Bitmap> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < 10)
-    {
-      localArrayList.add(AVGameUtil.a(String.format("avgame_pk_match_num%d@2x.png", new Object[] { Integer.valueOf(i) })));
-      i += 1;
-    }
-    return localArrayList;
   }
   
   private void a(View paramView)
@@ -147,7 +118,7 @@ public class SurvivalPkStageView
       paramView.setBackgroundDrawable(URLDrawable.getDrawable(paramString1));
       return;
     }
-    paramString1 = AVGameUtil.a(paramString2);
+    paramString1 = AVGameUtil.c(paramString2);
     if (paramString1 != null)
     {
       paramView.setBackgroundDrawable(new BitmapDrawable(paramString1));
@@ -158,19 +129,28 @@ public class SurvivalPkStageView
   
   private void a(ImageView paramImageView, String paramString)
   {
-    paramString = AVGameUtil.a(paramString);
+    paramString = AVGameUtil.c(paramString);
     if (paramString != null) {
       paramImageView.setImageBitmap(paramString);
     }
   }
   
+  private String b(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file:///");
+    localStringBuilder.append(AvGameResDownloadUtil.c());
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
   private void b(int paramInt, boolean paramBoolean)
   {
-    if (((this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView != null) && (paramBoolean) && (IGameEngine.a().i())) || ((this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView != null) && (!IGameEngine.a().i()))) {
-      this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView.a(paramInt);
+    if (((this.s != null) && (paramBoolean) && (IGameEngine.I().D())) || ((this.s != null) && (!IGameEngine.I().D()))) {
+      this.s.a(paramInt);
     }
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!paramBoolean) && (IGameEngine.a().i())) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getContext().getResources().getString(2131690468), new Object[] { Integer.valueOf(paramInt) }));
+    if ((this.p != null) && (!paramBoolean) && (IGameEngine.I().D())) {
+      this.p.setText(String.format(getContext().getResources().getString(2131887379), new Object[] { Integer.valueOf(paramInt) }));
     }
   }
   
@@ -185,120 +165,135 @@ public class SurvivalPkStageView
     localURLDrawableOptions.mUseApngImage = true;
     String str = paramString;
     if (!paramString.startsWith("http")) {
-      str = a(paramString);
+      str = b(paramString);
     }
     paramImageView.setImageDrawable(URLDrawable.getDrawable(str, localURLDrawableOptions));
   }
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStagePresenter = new GameSurvivalPkPresenterImpl(this);
-    setRadius(getContext().getResources().getColor(2131165311), ViewUtils.b(16.0F));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131558710, null));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379909));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379910));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView = ((AVGameSplitNumberView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369519));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369518));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView.setDimension(ViewUtils.b(61.0F), ViewUtils.b(99.0F));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView.setNumDrawable(a());
+    this.o = new GameSurvivalPkPresenterImpl(this);
+    setRadius(getContext().getResources().getColor(2131165547), ViewUtils.dpToPx(16.0F));
+    this.r = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131624327, null));
+    this.p = ((TextView)this.r.findViewById(2131448783));
+    this.q = ((TextView)this.r.findViewById(2131448784));
+    this.s = ((AVGameSplitNumberView)this.r.findViewById(2131436606));
+    this.t = ((ImageView)this.r.findViewById(2131436605));
+    this.s.setDimension(ViewUtils.dpToPx(61.0F), ViewUtils.dpToPx(99.0F));
+    this.s.setNumDrawable(getConveneNumber());
     b(0, false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131558711, null));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131379913));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131379912));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131379911));
-    this.jdField_c_of_type_AndroidWidgetTextView.setTypeface(AVGameText.a());
-    this.jdField_d_of_type_AndroidWidgetTextView.setTypeface(AVGameText.a());
-    this.jdField_e_of_type_AndroidWidgetTextView.setTypeface(AVGameText.a());
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    a(this.jdField_b_of_type_AndroidWidgetImageView, "avgame_pk_stage_suc.png", jdField_c_of_type_JavaLangString);
-    a(this.jdField_b_of_type_AndroidWidgetImageView, "avgame_pk_stage_fail.png", jdField_e_of_type_JavaLangString);
-    a(this, "avgame_pk_stage_win_bg.png", jdField_b_of_type_JavaLangString);
-    a(this, "avgame_pk_stage_fail_bg.png", jdField_d_of_type_JavaLangString);
-    a(this, "avgame_room_survival_bg.png", jdField_a_of_type_JavaLangString);
+    this.r.setVisibility(8);
+    this.u = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131624328, null));
+    this.v = ((TextView)this.u.findViewById(2131448787));
+    this.w = ((TextView)this.u.findViewById(2131448786));
+    this.x = ((TextView)this.u.findViewById(2131448785));
+    this.v.setTypeface(AVGameText.getTypeface());
+    this.w.setTypeface(AVGameText.getTypeface());
+    this.x.setTypeface(AVGameText.getTypeface());
+    this.u.setVisibility(8);
+    this.y = new ImageView(getContext());
+    this.y.setVisibility(0);
+    a(this.y, "avgame_pk_stage_suc.png", l);
+    a(this.y, "avgame_pk_stage_fail.png", n);
+    a(this, "avgame_pk_stage_win_bg.png", k);
+    a(this, "avgame_pk_stage_fail_bg.png", m);
+    a(this, "avgame_room_survival_bg.png", j);
+  }
+  
+  private int getContentMarginForCJ()
+  {
+    if (IGameEngine.I().D()) {
+      return getResources().getDimensionPixelOffset(2131296916);
+    }
+    return 0;
+  }
+  
+  private List<Bitmap> getConveneNumber()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < 10)
+    {
+      localArrayList.add(AVGameUtil.c(String.format("avgame_pk_match_num%d@2x.png", new Object[] { Integer.valueOf(i) })));
+      i += 1;
+    }
+    return localArrayList;
   }
   
   private void h()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(getContext().getResources().getString(2131690467));
+    this.p.setVisibility(0);
+    this.q.setVisibility(0);
+    this.s.setVisibility(4);
+    this.t.setVisibility(4);
+    this.q.setText(getContext().getResources().getString(2131887378));
     b(0, false);
   }
   
   private void i()
   {
-    if (this.jdField_b_of_type_AndroidWidgetImageView.getParent() != null) {
-      removeView(this.jdField_b_of_type_AndroidWidgetImageView);
+    if (this.y.getParent() != null) {
+      removeView(this.y);
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    addView(this.jdField_b_of_type_AndroidWidgetImageView, -1, -1);
-    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0)
+    this.y.setVisibility(0);
+    addView(this.y, -1, -1);
+    if (this.u.getVisibility() != 0)
     {
-      if (this.jdField_b_of_type_AndroidWidgetRelativeLayout.getParent() != null) {
-        removeView(this.jdField_b_of_type_AndroidWidgetRelativeLayout);
+      if (this.u.getParent() != null) {
+        removeView(this.u);
       }
       Object localObject = new RelativeLayout.LayoutParams(-2, -2);
       ((RelativeLayout.LayoutParams)localObject).addRule(13, -1);
-      addView(this.jdField_b_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject);
-      localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
-      ((RelativeLayout)localObject).setPadding(((RelativeLayout)localObject).getPaddingLeft(), a(), this.jdField_b_of_type_AndroidWidgetRelativeLayout.getPaddingRight(), this.jdField_b_of_type_AndroidWidgetRelativeLayout.getPaddingBottom());
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      addView(this.u, (ViewGroup.LayoutParams)localObject);
+      localObject = this.u;
+      ((RelativeLayout)localObject).setPadding(((RelativeLayout)localObject).getPaddingLeft(), getContentMarginForCJ(), this.u.getPaddingRight(), this.u.getPaddingBottom());
+      this.u.setVisibility(0);
     }
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.bringToFront();
+    this.u.bringToFront();
   }
   
   private void j()
   {
-    if (this.jdField_b_of_type_AndroidWidgetImageView.getParent() != null) {
-      removeView(this.jdField_b_of_type_AndroidWidgetImageView);
+    if (this.y.getParent() != null) {
+      removeView(this.y);
     }
-    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
+    if (this.u.getVisibility() == 0)
     {
-      if (this.jdField_b_of_type_AndroidWidgetRelativeLayout.getParent() != null) {
-        removeView(this.jdField_b_of_type_AndroidWidgetRelativeLayout);
+      if (this.u.getParent() != null) {
+        removeView(this.u);
       }
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.u.setVisibility(8);
     }
   }
   
   private void k()
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0)
+    if (this.r.getVisibility() != 0)
     {
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent() != null) {
-        removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      if (this.r.getParent() != null) {
+        removeView(this.r);
       }
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.topMargin = a();
-      addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      localLayoutParams.topMargin = getContentMarginForCJ();
+      addView(this.r, localLayoutParams);
+      this.r.setVisibility(0);
     }
-    a(this, "avgame_room_survival_bg.png", jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    a(this, "avgame_room_survival_bg.png", j);
+    this.p.setVisibility(0);
+    this.q.setVisibility(0);
+    this.s.setVisibility(0);
+    this.t.setVisibility(0);
   }
   
   private void l()
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
+    if (this.r.getVisibility() == 0)
     {
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent() != null) {
-        removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      if (this.r.getParent() != null) {
+        removeView(this.r);
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.r.setVisibility(8);
     }
-  }
-  
-  public ISurvivalStagePresenter a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStagePresenter;
   }
   
   public void a()
@@ -307,41 +302,41 @@ public class SurvivalPkStageView
       QLog.i("SurvivalPkStageView", 2, "onShowLoseThisRun run");
     }
     ApngImage.resumeAll();
-    b(this.jdField_b_of_type_AndroidWidgetImageView, a("avgame_pk_stage_fail.png", jdField_e_of_type_JavaLangString));
+    b(this.y, a("avgame_pk_stage_fail.png", n));
     l();
     i();
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690475));
-    if (!IGameEngine.k()) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(IGameEngine.a().a().a.A));
+    this.v.setVisibility(0);
+    this.w.setVisibility(0);
+    this.v.setText(getResources().getString(2131887386));
+    if (!IGameEngine.J()) {
+      this.v.setTextColor(Color.parseColor(IGameEngine.I().s().x.I));
     }
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690474));
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690473));
-    this.jdField_e_of_type_AndroidWidgetTextView.setTextSize(1, 24.0F);
-    a(this, "avgame_pk_stage_fail_bg.png", jdField_d_of_type_JavaLangString);
-    a(this.jdField_a_of_type_AndroidWidgetImageView, "avgame_pk_left_user@2x.png");
-    a(this.jdField_b_of_type_AndroidWidgetRelativeLayout);
-    EngineData localEngineData = IGameEngine.a().a();
-    if (localEngineData.g())
+    this.w.setText(getResources().getString(2131887385));
+    this.x.setText(getResources().getString(2131887384));
+    this.x.setTextSize(1, 24.0F);
+    a(this, "avgame_pk_stage_fail_bg.png", m);
+    a(this.t, "avgame_pk_left_user@2x.png");
+    a(this.u);
+    EngineData localEngineData = IGameEngine.I().s();
+    if (localEngineData.N())
     {
       int i;
-      if (localEngineData.h()) {
+      if (localEngineData.O()) {
         i = 1;
       } else {
         i = 2;
       }
-      ReportController.b(null, "dc00898", "", "", "survival_term_result_lose", "survival_term_result_lose", i, 0, "", "", "", String.valueOf(localEngineData.k()));
+      ReportController.b(null, "dc00898", "", "", "survival_term_result_lose", "survival_term_result_lose", i, 0, "", "", "", String.valueOf(localEngineData.Q()));
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramInt);
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(paramInt);
-    this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(paramInt);
-    this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(paramInt);
+    this.p.setTextColor(paramInt);
+    this.q.setTextColor(paramInt);
+    this.v.setTextColor(paramInt);
+    this.w.setTextColor(paramInt);
+    this.x.setTextColor(paramInt);
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -349,28 +344,28 @@ public class SurvivalPkStageView
     if (paramBoolean)
     {
       int i;
-      if ((!IGameEngine.k()) && (IGameEngine.a().a().m() > paramInt)) {
-        i = IGameEngine.a().a().m() - paramInt;
+      if ((!IGameEngine.J()) && (IGameEngine.I().s().S() > paramInt)) {
+        i = IGameEngine.I().s().S() - paramInt;
       } else {
         i = 0;
       }
-      String str = String.format(getContext().getResources().getString(2131690472), new Object[] { Integer.valueOf(i) });
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
+      String str = String.format(getContext().getResources().getString(2131887383), new Object[] { Integer.valueOf(i) });
+      this.q.setText(str);
     }
-    else if (IGameEngine.a().i())
+    else if (IGameEngine.I().D())
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(getContext().getResources().getString(2131690467));
+      this.q.setText(getContext().getResources().getString(2131887378));
     }
     else
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("");
+      this.q.setText("");
     }
     b(paramInt, paramBoolean);
   }
   
   public void a(EngineData paramEngineData)
   {
-    if (paramEngineData.o() == 3)
+    if (paramEngineData.X() == 3)
     {
       setVisibility(8);
       return;
@@ -380,12 +375,12 @@ public class SurvivalPkStageView
   
   public void a(IGameRoomPresenter paramIGameRoomPresenter)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStagePresenter.a(paramIGameRoomPresenter);
+    this.o.a(paramIGameRoomPresenter);
   }
   
   public void a(String paramString)
   {
-    a(this, paramString, "avgame_room_survival_bg.png", jdField_a_of_type_JavaLangString);
+    a(this, paramString, "avgame_room_survival_bg.png", j);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -394,67 +389,67 @@ public class SurvivalPkStageView
       QLog.i("SurvivalPkStageView", 2, String.format("updatePKBgUrl() conveneBgUrl=%s pkWinBgUrl=%s pkWinTopUrl=%s pkLoseBgUrl=%s pkLoseTopUrl=%s", new Object[] { paramString1, paramString2, paramString3, paramString4, paramString5 }));
     }
     if (paramString1 != null) {
-      jdField_a_of_type_JavaLangString = paramString1;
+      j = paramString1;
     }
     if (paramString2 != null) {
-      jdField_b_of_type_JavaLangString = paramString2;
+      k = paramString2;
     }
     if (paramString3 != null) {
-      jdField_c_of_type_JavaLangString = paramString3;
+      l = paramString3;
     }
     if (paramString4 != null) {
-      jdField_d_of_type_JavaLangString = paramString4;
+      m = paramString4;
     }
     if (paramString5 != null) {
-      jdField_e_of_type_JavaLangString = paramString5;
+      n = paramString5;
     }
   }
   
   public void a(boolean paramBoolean)
   {
     int i;
-    if (!IGameEngine.k())
+    if (!IGameEngine.J())
     {
-      i = IGameEngine.a().a().a().winReason;
-      localObject = IGameEngine.a().a().a().winTips;
+      i = IGameEngine.I().s().Z().winReason;
+      localObject = IGameEngine.I().s().Z().winTips;
     }
     else
     {
       localObject = null;
       i = 0;
     }
-    b(this.jdField_b_of_type_AndroidWidgetImageView, a("avgame_pk_stage_suc.png", jdField_c_of_type_JavaLangString));
+    b(this.y, a("avgame_pk_stage_suc.png", l));
     l();
     i();
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690480));
-    if (!IGameEngine.k()) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(IGameEngine.a().a().a.z));
+    this.v.setVisibility(0);
+    this.w.setVisibility(0);
+    this.v.setText(getResources().getString(2131887391));
+    if (!IGameEngine.J()) {
+      this.v.setTextColor(Color.parseColor(IGameEngine.I().s().x.H));
     }
     if ((i == 1) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-      this.jdField_d_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      this.w.setText((CharSequence)localObject);
     } else {
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690479));
+      this.w.setText(getResources().getString(2131887390));
     }
     if (paramBoolean) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690471));
+      this.x.setText(getResources().getString(2131887382));
     } else {
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690478));
+      this.x.setText(getResources().getString(2131887389));
     }
-    this.jdField_e_of_type_AndroidWidgetTextView.setTextSize(1, 24.0F);
-    a(this, "avgame_pk_stage_win_bg.png", jdField_b_of_type_JavaLangString);
-    a(this.jdField_a_of_type_AndroidWidgetImageView, "avgame_pk_left_user@2x.png");
-    a(this.jdField_b_of_type_AndroidWidgetRelativeLayout);
-    Object localObject = IGameEngine.a().a();
-    if (((EngineData)localObject).g())
+    this.x.setTextSize(1, 24.0F);
+    a(this, "avgame_pk_stage_win_bg.png", k);
+    a(this.t, "avgame_pk_left_user@2x.png");
+    a(this.u);
+    Object localObject = IGameEngine.I().s();
+    if (((EngineData)localObject).N())
     {
-      if (((EngineData)localObject).h()) {
+      if (((EngineData)localObject).O()) {
         i = 1;
       } else {
         i = 2;
       }
-      ReportController.b(null, "dc00898", "", "", "survival_term_result_win", "survival_term_result_win", i, 0, "", "", String.valueOf(((EngineData)localObject).l()), String.valueOf(((EngineData)localObject).k()));
+      ReportController.b(null, "dc00898", "", "", "survival_term_result_win", "survival_term_result_win", i, 0, "", "", String.valueOf(((EngineData)localObject).R()), String.valueOf(((EngineData)localObject).Q()));
     }
   }
   
@@ -463,11 +458,11 @@ public class SurvivalPkStageView
     ApngImage.pauseAll();
     j();
     k();
-    if (!IGameEngine.a().i())
+    if (!IGameEngine.I().D())
     {
       f();
-      a(this.jdField_a_of_type_AndroidWidgetImageView, "avgame_pk_joined_user@2x.png");
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      a(this.t, "avgame_pk_joined_user@2x.png");
+      this.t.setVisibility(0);
       return;
     }
     h();
@@ -478,80 +473,85 @@ public class SurvivalPkStageView
     j();
     k();
     String str;
-    if (!IGameEngine.k()) {
-      str = IGameEngine.a().a().g();
+    if (!IGameEngine.J()) {
+      str = IGameEngine.I().s().af();
     } else {
       str = null;
     }
     AvGameConfBean localAvGameConfBean = AvGameConfigUtil.a();
     if (TextUtils.isEmpty(str)) {
-      if (!TextUtils.isEmpty(localAvGameConfBean.c())) {
-        str = localAvGameConfBean.c();
+      if (!TextUtils.isEmpty(localAvGameConfBean.n())) {
+        str = localAvGameConfBean.n();
       } else {
-        str = getContext().getResources().getString(2131690485);
+        str = getContext().getResources().getString(2131887396);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-    a(this.jdField_a_of_type_AndroidWidgetImageView, "avgame_pk_left_user@2x.png");
+    this.p.setText(str);
+    a(this.t, "avgame_pk_left_user@2x.png");
   }
   
   public void d()
   {
     l();
     i();
-    if (this.jdField_b_of_type_AndroidWidgetImageView.getParent() != null) {
-      removeView(this.jdField_b_of_type_AndroidWidgetImageView);
+    if (this.y.getParent() != null) {
+      removeView(this.y);
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690470));
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690469));
-    this.jdField_e_of_type_AndroidWidgetTextView.setTextSize(1, 24.0F);
-    a(this, null, "avgame_room_survival_bg.png", jdField_a_of_type_JavaLangString);
+    this.v.setVisibility(8);
+    this.w.setVisibility(0);
+    this.w.setText(getResources().getString(2131887381));
+    this.x.setText(getResources().getString(2131887380));
+    this.x.setTextSize(1, 24.0F);
+    a(this, null, "avgame_room_survival_bg.png", j);
   }
   
   public void e()
   {
     l();
     i();
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690480));
-    if (!IGameEngine.k()) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(IGameEngine.a().a().a.z));
+    this.v.setVisibility(0);
+    this.w.setVisibility(0);
+    this.x.setVisibility(0);
+    this.v.setText(getResources().getString(2131887391));
+    if (!IGameEngine.J()) {
+      this.v.setTextColor(Color.parseColor(IGameEngine.I().s().x.H));
     }
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690482));
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(getResources().getString(2131690481));
-    a(this, "avgame_room_survival_bg.png", jdField_a_of_type_JavaLangString);
-    EngineData localEngineData = IGameEngine.a().a();
-    if (localEngineData.g())
+    this.w.setText(getResources().getString(2131887393));
+    this.x.setText(getResources().getString(2131887392));
+    a(this, "avgame_room_survival_bg.png", j);
+    EngineData localEngineData = IGameEngine.I().s();
+    if (localEngineData.N())
     {
       int i;
-      if (localEngineData.h()) {
+      if (localEngineData.O()) {
         i = 1;
       } else {
         i = 2;
       }
-      ReportController.b(null, "dc00898", "", "", "survival_term_result_win", "survival_term_result_win", i, 0, "", "", String.valueOf(localEngineData.l()), String.valueOf(localEngineData.k()));
+      ReportController.b(null, "dc00898", "", "", "survival_term_result_win", "survival_term_result_win", i, 0, "", "", String.valueOf(localEngineData.R()), String.valueOf(localEngineData.Q()));
     }
   }
   
   public void f()
   {
     int i;
-    if (!IGameEngine.k()) {
-      i = IGameEngine.a().a().q();
+    if (!IGameEngine.J()) {
+      i = IGameEngine.I().s().aa();
     } else {
       i = 0;
     }
-    String str = getContext().getResources().getString(2131690477);
+    String str = getContext().getResources().getString(2131887388);
     if (i > 0) {
       str = String.format(str, new Object[] { Integer.valueOf(i) });
     } else {
       str = str.split("\n")[0];
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    this.p.setText(str);
+  }
+  
+  public ISurvivalStagePresenter getPresenter()
+  {
+    return this.o;
   }
 }
 

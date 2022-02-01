@@ -21,7 +21,7 @@ class TextItemBuilder$9
       paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
       ThreadManager.excute(new TextItemBuilder.9.1(this, paramChatMessage), 128, null, true);
     }
-    String str = this.a.a.getCurrentUin();
+    String str = this.a.d.getCurrentUin();
     if (paramBoolean) {
       paramChatMessage = (ChatMessage)localObject;
     } else {
@@ -35,7 +35,7 @@ class TextItemBuilder$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.9
  * JD-Core Version:    0.7.0.1
  */

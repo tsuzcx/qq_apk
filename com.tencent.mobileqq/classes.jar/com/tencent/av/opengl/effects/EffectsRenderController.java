@@ -7,6 +7,8 @@ import com.tencent.av.VideoCameraListener;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.avatar2d.EffectAvatar2dManager;
+import com.tencent.av.business.manager.avatar2d.EffectAvatar2dManager.Avatar2d;
 import com.tencent.av.business.manager.filter.EffectFilterTools;
 import com.tencent.av.business.manager.pendant.EffectPendantBase;
 import com.tencent.av.business.manager.pendant.EffectPendantBase.Pendant;
@@ -28,13 +30,13 @@ public class EffectsRenderController
   extends EffectCtrlBase
   implements EffectController
 {
-  static final int[] jdField_a_of_type_ArrayOfInt = { 2, 13, 14 };
-  private static boolean b = false;
-  private int jdField_a_of_type_Int;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private EffectPendantTipsImpl jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTipsImpl;
-  private String jdField_a_of_type_JavaLangString;
-  private BitSet jdField_a_of_type_JavaUtilBitSet;
+  static final int[] h = { 2, 13, 14 };
+  private static boolean j = false;
+  private EffectPendantTipsImpl k;
+  private BitSet l;
+  private VideoAppInterface m;
+  private String n;
+  private int o;
   
   public EffectsRenderController(VideoAppInterface paramVideoAppInterface)
   {
@@ -42,29 +44,29 @@ public class EffectsRenderController
     localStringBuilder.append("EffectsRenderController, constructor, app[");
     localStringBuilder.append(paramVideoAppInterface);
     localStringBuilder.append("], mContext[");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]");
     QLog.w("EffectsRenderController", 1, localStringBuilder.toString(), new Throwable("打印调用栈"));
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramVideoAppInterface.getApplication();
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTipsImpl = new EffectPendantTipsImpl(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTipsImpl.a(paramVideoAppInterface);
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender = new FilterProcessRender(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a());
-    this.jdField_a_of_type_JavaUtilBitSet = new BitSet();
+    this.m = paramVideoAppInterface;
+    this.a = paramVideoAppInterface.getApplication();
+    this.k = new EffectPendantTipsImpl(this.a);
+    this.k.a(paramVideoAppInterface);
+    this.b = new FilterProcessRender(this.a, this.m.x());
+    this.l = new BitSet();
     if (QLog.isColorLevel()) {
       com.tencent.av.video.effect.QavVideoEffect.DEBUG_MODE = true;
     }
-    EffectBeautyTools.a(this.jdField_a_of_type_AndroidContentContext);
+    EffectBeautyTools.a(this.a);
   }
   
-  public static boolean f()
+  public static boolean m()
   {
     Object localObject;
-    if (!b)
+    if (!j)
     {
-      localObject = VideoController.a().a();
-      b = PtuResChecker.a().a((VideoAppInterface)localObject);
-      if (!b)
+      localObject = VideoController.f().aj();
+      j = PtuResChecker.a().a((VideoAppInterface)localObject);
+      if (!j)
       {
         QLog.w("EffectsRenderController", 1, "isLoadedSO, 加载so失败");
         return false;
@@ -83,11 +85,11 @@ public class EffectsRenderController
       bool1 = bool2;
       if (GraphicRenderMgr.soloadedPTV)
       {
-        localObject = VideoController.a().a(true);
+        localObject = VideoController.f().m(true);
         if (localObject != null) {
-          ((EffectsRenderController)localObject).d();
+          ((EffectsRenderController)localObject).j();
         }
-        VideoController.a().g(GraphicRenderMgr.soloadedPTV);
+        VideoController.f().n(GraphicRenderMgr.soloadedPTV);
         return bool2;
       }
     }
@@ -100,140 +102,141 @@ public class EffectsRenderController
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.o = paramInt;
   }
   
   public void a(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTipsImpl.a(paramVideoAppInterface);
+    this.m = paramVideoAppInterface;
+    this.n = this.m.getCurrentAccountUin();
+    this.k.a(paramVideoAppInterface);
   }
   
   public void a(CameraFrame paramCameraFrame, RenderParams paramRenderParams)
   {
     paramRenderParams.a();
-    boolean bool = paramRenderParams.c;
+    boolean bool = paramRenderParams.g;
     int i = 0;
     if (!bool)
     {
-      if ((b()) && (PtuResChecker.a().a())) {
+      if ((c()) && (PtuResChecker.a().b())) {
         bool = true;
       } else {
         bool = false;
       }
-      paramRenderParams.c = bool;
+      paramRenderParams.g = bool;
     }
-    if ((!this.jdField_a_of_type_JavaUtilBitSet.get(0)) && (!this.jdField_a_of_type_JavaUtilBitSet.get(1))) {
+    if ((!this.l.get(0)) && (!this.l.get(1))) {
       bool = false;
     } else {
       bool = true;
     }
-    paramRenderParams.jdField_a_of_type_Boolean = bool;
+    paramRenderParams.e = bool;
+    Object localObject;
     for (;;)
     {
-      Object localObject = jdField_a_of_type_ArrayOfInt;
+      localObject = h;
       if (i >= localObject.length) {
         break;
       }
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localObject[i]))
+      if (this.m.d(localObject[i]))
       {
-        localObject = (EffectPendantBase)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(jdField_a_of_type_ArrayOfInt[i]);
+        localObject = (EffectPendantBase)this.m.c(h[i]);
         if (localObject != null)
         {
-          EffectPendantBase.Pendant localPendant = ((EffectPendantBase)localObject).a(paramCameraFrame.b, paramCameraFrame.jdField_a_of_type_Int);
+          EffectPendantBase.Pendant localPendant = ((EffectPendantBase)localObject).a(paramCameraFrame.c, paramCameraFrame.b);
           if (localPendant != null)
           {
-            paramRenderParams.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = localPendant.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial;
-            paramRenderParams.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = localPendant.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem;
+            paramRenderParams.b = localPendant.a;
+            paramRenderParams.c = localPendant.c;
+            paramRenderParams.d = null;
           }
-          if (paramRenderParams.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) {
-            ((EffectPendantBase)localObject).a(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTipsImpl);
+          if (paramRenderParams.c != null) {
+            ((EffectPendantBase)localObject).a(this.k);
           }
-          if ((paramRenderParams.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (paramRenderParams.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial != null)) {
+          if ((paramRenderParams.c != null) && (paramRenderParams.b != null)) {
             break;
           }
         }
       }
       i += 1;
     }
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)) {
-      paramRenderParams.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = ((EffectFilterTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a();
+    if (this.m.d(16))
+    {
+      localObject = (EffectAvatar2dManager)this.m.c(16);
+      if (localObject != null)
+      {
+        paramCameraFrame = ((EffectAvatar2dManager)localObject).a(paramCameraFrame.c, paramCameraFrame.b);
+        if (paramCameraFrame != null)
+        {
+          paramRenderParams.b = paramCameraFrame.a;
+          paramRenderParams.d = paramCameraFrame.c;
+          paramRenderParams.c = null;
+        }
+      }
+    }
+    if (this.m.d(1)) {
+      paramRenderParams.a = ((EffectFilterTools)this.m.c(1)).j();
     }
   }
   
   protected void a(String paramString, byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(130), paramString, paramArrayOfByte });
+    if (this.m != null) {
+      this.m.a(new Object[] { Integer.valueOf(130), paramString, paramArrayOfByte });
     }
-  }
-  
-  public boolean a()
-  {
-    if (!b()) {
-      return false;
-    }
-    SessionInfo localSessionInfo = SessionMgr.a().a();
-    int i;
-    if ((localSessionInfo.d != 2) && (localSessionInfo.d != 4)) {
-      i = 0;
-    } else {
-      i = 1;
-    }
-    return (i != 0) && ((!localSessionInfo.jdField_a_of_type_JavaUtilBitSet.isEmpty()) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.k()) || (localSessionInfo.an));
   }
   
   protected byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2, short paramShort3, short paramShort4)
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_a_of_type_JavaUtilBitSet;
+    Object localObject = this.l;
     short s = 0;
-    if ((!((BitSet)localObject).get(0)) && (!this.jdField_a_of_type_JavaUtilBitSet.get(1)) && (!this.jdField_a_of_type_JavaUtilBitSet.get(2)) && (!this.jdField_a_of_type_JavaUtilBitSet.get(3)))
+    if ((!((BitSet)localObject).get(0)) && (!this.l.get(1)) && (!this.l.get(2)) && (!this.l.get(3)))
     {
       paramShort1 = 0;
     }
     else
     {
-      if ((this.jdField_a_of_type_JavaUtilBitSet.get(2)) || (this.jdField_a_of_type_JavaUtilBitSet.get(3)))
+      if ((this.l.get(2)) || (this.l.get(3)))
       {
-        paramShort1 = VideoController.a().b(false);
+        paramShort1 = VideoController.f().j(false);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("buildExtInfo volume :");
         ((StringBuilder)localObject).append(paramShort1);
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilBitSet.get(1));
+        ((StringBuilder)localObject).append(this.l.get(1));
         ((StringBuilder)localObject).append("|");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilBitSet.get(0));
+        ((StringBuilder)localObject).append(this.l.get(0));
         AVLog.printColorLog("EffectsRenderController", ((StringBuilder)localObject).toString());
         if (paramShort1 < 100)
         {
           localObject = new byte[2];
           ByteUtils.Word2Byte((byte[])localObject, 0, (short)paramShort1);
           localObject = new Tlv((short)2, (short)2, (byte[])localObject);
-          if (this.jdField_a_of_type_JavaUtilBitSet.get(3))
+          if (this.l.get(3))
           {
             localArrayList.add(localObject);
-            paramShort1 = ((Tlv)localObject).a() + 0;
+            paramShort1 = ((Tlv)localObject).d() + 0;
             break label269;
           }
-          if (this.jdField_a_of_type_JavaUtilBitSet.get(2))
+          if (this.l.get(2))
           {
             localObject = TlvUtils.a((Tlv)localObject);
-            a(this.jdField_a_of_type_JavaLangString, (byte[])localObject);
+            a(this.n, (byte[])localObject);
           }
         }
       }
       paramShort1 = 0;
       label269:
-      if ((this.jdField_a_of_type_JavaUtilBitSet.get(0)) || (this.jdField_a_of_type_JavaUtilBitSet.get(1)))
+      if ((this.l.get(0)) || (this.l.get(1)))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("buildExtInfo face :");
         ((StringBuilder)localObject).append(paramArrayOfByte1);
         ((StringBuilder)localObject).append("|");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilBitSet.get(1));
+        ((StringBuilder)localObject).append(this.l.get(1));
         ((StringBuilder)localObject).append("|");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilBitSet.get(0));
+        ((StringBuilder)localObject).append(this.l.get(0));
         AVLog.printColorLog("EffectsRenderController", ((StringBuilder)localObject).toString());
         if (((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null)) || (paramArrayOfByte3 != null))
         {
@@ -251,32 +254,32 @@ public class EffectsRenderController
           } else {
             i = 0;
           }
-          if (this.jdField_a_of_type_JavaUtilBitSet.get(1))
+          if (this.l.get(1))
           {
             if (i != 0)
             {
               paramArrayOfByte1 = new Tlv((short)6, (short)paramArrayOfByte3.length, paramArrayOfByte3);
               localArrayList.add(paramArrayOfByte1);
             }
-            for (paramShort2 = paramArrayOfByte1.a();; paramShort2 = paramArrayOfByte1.a())
+            for (paramShort2 = paramArrayOfByte1.d();; paramShort2 = paramArrayOfByte1.d())
             {
               break;
               localArrayList.add(paramArrayOfByte1);
             }
             paramArrayOfByte1 = new byte[8];
-            int j;
+            int i1;
             if (i != 0) {
-              j = paramShort4;
+              i1 = paramShort4;
             } else {
-              j = 320;
+              i1 = 320;
             }
             if (i != 0) {
               i = paramShort3;
             } else {
               i = 240;
             }
-            paramArrayOfByte1[0] = ((byte)(j >> 8));
-            paramArrayOfByte1[1] = ((byte)(j >> 0));
+            paramArrayOfByte1[0] = ((byte)(i1 >> 8));
+            paramArrayOfByte1[1] = ((byte)(i1 >> 0));
             paramArrayOfByte1[2] = ((byte)(i >> 8));
             paramArrayOfByte1[3] = ((byte)(i >> 0));
             paramArrayOfByte1[4] = ((byte)(paramShort3 >> 8));
@@ -285,12 +288,12 @@ public class EffectsRenderController
             paramArrayOfByte1[7] = ((byte)(paramShort4 >> 0));
             paramArrayOfByte1 = new Tlv((short)3, (short)paramArrayOfByte1.length, paramArrayOfByte1);
             localArrayList.add(paramArrayOfByte1);
-            paramShort1 = paramArrayOfByte1.a() + (paramShort1 + paramShort2);
+            paramShort1 = paramArrayOfByte1.d() + (paramShort1 + paramShort2);
           }
-          else if (this.jdField_a_of_type_JavaUtilBitSet.get(0))
+          else if (this.l.get(0))
           {
             paramArrayOfByte1 = TlvUtils.a(paramArrayOfByte1);
-            a(this.jdField_a_of_type_JavaLangString, paramArrayOfByte1);
+            a(this.n, paramArrayOfByte1);
           }
         }
       }
@@ -310,22 +313,11 @@ public class EffectsRenderController
     return null;
   }
   
-  public float[] a()
-  {
-    return VideoController.a().a.a();
-  }
-  
-  public void b()
-  {
-    super.b();
-    TipsInfo.a().a(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTipsImpl);
-  }
-  
   public void b(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < 5))
     {
-      if (!this.jdField_a_of_type_JavaUtilBitSet.get(paramInt))
+      if (!this.l.get(paramInt))
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("setExtInfo, flag[");
@@ -333,7 +325,7 @@ public class EffectsRenderController
         localStringBuilder.append("]");
         QLog.w("EffectsRenderController", 1, localStringBuilder.toString(), new Throwable("打印调用栈"));
       }
-      this.jdField_a_of_type_JavaUtilBitSet.set(paramInt);
+      this.l.set(paramInt);
       return;
     }
     if (paramInt < 5) {
@@ -341,21 +333,30 @@ public class EffectsRenderController
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setExtInfo fail, EXP_BIT_MAX[5");
-    localStringBuilder.append(HardCodeUtil.a(2131704105));
+    localStringBuilder.append(HardCodeUtil.a(2131902028));
     throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
-  public void c()
+  public boolean b()
   {
-    TipsInfo.a().a(null);
-    super.c();
+    if (!c()) {
+      return false;
+    }
+    SessionInfo localSessionInfo = SessionMgr.a().b();
+    int i;
+    if ((localSessionInfo.g != 2) && (localSessionInfo.g != 4)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    return (i != 0) && ((!localSessionInfo.bG.isEmpty()) || (this.m.z()) || (localSessionInfo.bL));
   }
   
   public void c(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < 5))
     {
-      if (this.jdField_a_of_type_JavaUtilBitSet.get(paramInt))
+      if (this.l.get(paramInt))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("clearExtInfo, flag[");
@@ -363,24 +364,41 @@ public class EffectsRenderController
         localStringBuilder.append("]");
         QLog.w("EffectsRenderController", 1, localStringBuilder.toString(), new Throwable("打印调用栈"));
       }
-      this.jdField_a_of_type_JavaUtilBitSet.clear(paramInt);
+      this.l.clear(paramInt);
     }
   }
   
   protected void d(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2)) {
-      ((EffectPendantTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2)).d();
+    if (this.m.d(2)) {
+      ((EffectPendantTools)this.m.c(2)).l();
     }
     super.d(paramLong);
   }
   
-  protected void e()
+  public void g()
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2)) {
-      ((EffectPendantTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2)).d();
+    super.g();
+    TipsInfo.a().a(this.k);
+  }
+  
+  public void h()
+  {
+    TipsInfo.a().a(null);
+    super.h();
+  }
+  
+  public float[] i()
+  {
+    return VideoController.f().t.a();
+  }
+  
+  protected void k()
+  {
+    if (this.m.d(2)) {
+      ((EffectPendantTools)this.m.c(2)).l();
     }
-    super.e();
+    super.k();
   }
 }
 

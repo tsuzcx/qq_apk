@@ -10,7 +10,7 @@ class AVGameNetWorkQualityManager$NetWorkQulityCheckRunnable
   public void run()
   {
     AVGameNetWorkQualityManager.a(this.this$0);
-    AVGameNetWorkQualityManager.a(this.this$0).postDelayed(this, 2000L);
+    AVGameNetWorkQualityManager.b(this.this$0).postDelayed(this, 2000L);
   }
 }
 

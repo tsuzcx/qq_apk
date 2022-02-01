@@ -16,44 +16,43 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class ConnManager
   implements IConnectionListener
 {
-  private static String jdField_a_of_type_JavaLangString = "PeakAudioTransHandler ConnManager";
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private HostInfo jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo;
-  private IConnection jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnection = null;
-  private ChannelStateManager jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager;
-  private ArrayList<HostInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  protected ConcurrentLinkedQueue<byte[]> a;
+  private static String b = "PeakAudioTransHandler ConnManager";
+  protected ConcurrentLinkedQueue<byte[]> a = new ConcurrentLinkedQueue();
+  private IConnection c = null;
+  private AppInterface d;
+  private Handler e;
+  private HostInfo f;
+  private ArrayList<HostInfo> g = new ArrayList();
+  private ChannelStateManager h;
   
   public ConnManager(AppInterface paramAppInterface, ChannelStateManager paramChannelStateManager)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager = paramChannelStateManager;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.d = paramAppInterface;
+    this.h = paramChannelStateManager;
+    this.e = new Handler(Looper.getMainLooper());
   }
   
   private void b(long paramLong)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.4(this, paramLong));
+    this.e.post(new ConnManager.4(this, paramLong));
   }
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnection != null)
+    if (this.c != null)
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.d())
+      if (!this.h.g())
       {
-        String str = jdField_a_of_type_JavaLangString;
+        String str = b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("closeConnection : TCP not opened  mTCPstate =");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.b());
+        localStringBuilder.append(this.h.b());
         QLog.e(str, 1, localStringBuilder.toString());
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.b(13);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnection.b();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnection = null;
+      this.h.b(13);
+      this.c.b();
+      this.c = null;
     }
   }
   
@@ -61,106 +60,106 @@ public class ConnManager
   {
     if (QLog.isColorLevel())
     {
-      paramIConnection = jdField_a_of_type_JavaLangString;
+      paramIConnection = b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onDisConnect connId = ");
       localStringBuilder.append(paramLong);
       localStringBuilder.append(",sendDataQueue size =");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+      localStringBuilder.append(this.a.size());
       localStringBuilder.append(" mTCPstate =");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.b());
+      localStringBuilder.append(this.h.b());
       QLog.e(paramIConnection, 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.b(10);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo = null;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.a())
+    this.h.b(10);
+    this.f = null;
+    this.a.clear();
+    this.g.clear();
+    if (this.h.c())
     {
-      ((PeakAudioTransHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(PeakAppInterface.jdField_a_of_type_JavaLangString)).a(String.valueOf(paramLong), "TransInfo.ExitSession", null, 0, 0, false);
+      ((PeakAudioTransHandler)this.d.getBusinessHandler(PeakAppInterface.b)).a(String.valueOf(paramLong), "TransInfo.ExitSession", null, 0, 0, false);
       return;
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "onDisConnect : session not open need not sso exit");
+    QLog.e(b, 1, "onDisConnect : session not open need not sso exit");
   }
   
   public void a(HostInfo paramHostInfo, long paramLong)
   {
     if (paramHostInfo == null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : endPoint is null");
+      QLog.e(b, 1, "openNewConnection : endPoint is null");
       return;
     }
-    if ((!TextUtils.isEmpty(paramHostInfo.jdField_a_of_type_JavaLangString)) && (paramHostInfo.jdField_a_of_type_Int != 0))
+    if ((!TextUtils.isEmpty(paramHostInfo.a)) && (paramHostInfo.b != 0))
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.a())
+      if (!this.h.c())
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : Session not Open");
+        QLog.e(b, 1, "openNewConnection : Session not Open");
         return;
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.f())
+      if (!this.h.i())
       {
-        paramHostInfo = jdField_a_of_type_JavaLangString;
+        paramHostInfo = b;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("openNewConnection : TCP not Close mTCPstate =");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.b());
+        ((StringBuilder)localObject).append(this.h.b());
         QLog.e(paramHostInfo, 1, ((StringBuilder)localObject).toString());
         return;
       }
-      Object localObject = jdField_a_of_type_JavaLangString;
+      Object localObject = b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("openNewConnection : host:");
-      localStringBuilder.append(paramHostInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramHostInfo.a);
       localStringBuilder.append(",port=");
-      localStringBuilder.append(paramHostInfo.jdField_a_of_type_Int);
+      localStringBuilder.append(paramHostInfo.b);
       QLog.d((String)localObject, 1, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo = paramHostInfo;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnection;
+      this.f = paramHostInfo;
+      localObject = this.c;
       if (localObject != null) {
         ((IConnection)localObject).b();
       }
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnection = new LiteTcpConnection(this, paramLong, paramHostInfo, 3000, 10000);
-      paramHostInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnection;
+      this.c = new LiteTcpConnection(this, paramLong, paramHostInfo, 3000, 10000);
+      paramHostInfo = this.c;
       if (paramHostInfo != null)
       {
         paramHostInfo.a(this);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaConnIConnection.a();
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.b(11);
+        this.c.a();
+        this.h.b(11);
       }
       return;
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : endPoint is illegal");
+    QLog.e(b, 1, "openNewConnection : endPoint is illegal");
   }
   
   public void a(ArrayList<HostInfo> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    this.g.clear();
+    this.g.addAll(paramArrayList);
   }
   
   public void a(boolean paramBoolean, long paramLong, IConnection paramIConnection, HostInfo paramHostInfo, int paramInt)
   {
-    paramIConnection = (PeakAudioTransHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(PeakAppInterface.jdField_a_of_type_JavaLangString);
+    paramIConnection = (PeakAudioTransHandler)this.d.getBusinessHandler(PeakAppInterface.b);
     if (paramHostInfo == null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect failed ep = null return");
+      QLog.e(b, 2, "onConnect failed ep = null return");
       b(paramLong);
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.1(this, paramIConnection, paramLong, paramHostInfo));
+      this.e.post(new ConnManager.1(this, paramIConnection, paramLong, paramHostInfo));
       return;
     }
-    paramIConnection = paramHostInfo.jdField_a_of_type_JavaLangString;
-    int i = paramHostInfo.jdField_a_of_type_Int;
-    paramHostInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo;
-    if ((paramHostInfo != null) && (paramIConnection.equals(paramHostInfo.jdField_a_of_type_JavaLangString)) && (i == this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.jdField_a_of_type_Int))
+    paramIConnection = paramHostInfo.a;
+    int i = paramHostInfo.b;
+    paramHostInfo = this.f;
+    if ((paramHostInfo != null) && (paramIConnection.equals(paramHostInfo.a)) && (i == this.f.b))
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.g())
+      if (!this.h.k())
       {
         if (QLog.isColorLevel())
         {
-          paramIConnection = jdField_a_of_type_JavaLangString;
+          paramIConnection = b;
           paramHostInfo = new StringBuilder();
           paramHostInfo.append("onConnect reConnect state legal lSessionID = ");
           paramHostInfo.append(paramLong);
@@ -169,31 +168,31 @@ public class ConnManager
         b(paramLong);
         return;
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.e())
+      if (!this.h.h())
       {
-        paramIConnection = jdField_a_of_type_JavaLangString;
+        paramIConnection = b;
         paramHostInfo = new StringBuilder();
         paramHostInfo.append("onConnect : TCP not in Opening state = ");
-        paramHostInfo.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.b());
+        paramHostInfo.append(this.h.b());
         QLog.e(paramIConnection, 1, paramHostInfo.toString());
         a(paramLong);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.d >= 1)
+      if (this.f.f >= 1)
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "reConnect > 1 return");
+        QLog.d(b, 2, "reConnect > 1 return");
         int j = 0;
         paramInt = 0;
         for (;;)
         {
           i = j;
-          if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+          if (paramInt >= this.g.size()) {
             break;
           }
-          paramIConnection = (HostInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-          if ((paramIConnection != this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo) && (paramIConnection.d == 0))
+          paramIConnection = (HostInfo)this.g.get(paramInt);
+          if ((paramIConnection != this.f) && (paramIConnection.f == 0))
           {
-            this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo = paramIConnection;
+            this.f = paramIConnection;
             i = 1;
             break;
           }
@@ -203,62 +202,62 @@ public class ConnManager
         {
           if (QLog.isColorLevel())
           {
-            paramIConnection = jdField_a_of_type_JavaLangString;
+            paramIConnection = b;
             paramHostInfo = new StringBuilder();
             paramHostInfo.append("onConnect failed change ip new ip = ");
-            paramHostInfo.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.jdField_a_of_type_JavaLangString);
+            paramHostInfo.append(this.f.a);
             paramHostInfo.append(", port =");
-            paramHostInfo.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.jdField_a_of_type_Int);
+            paramHostInfo.append(this.f.b);
             QLog.d(paramIConnection, 2, paramHostInfo.toString());
           }
-          a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo, paramLong);
+          a(this.f, paramLong);
           return;
         }
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect  not ip notify  connect failed ");
+        QLog.e(b, 2, "onConnect  not ip notify  connect failed ");
         b(paramLong);
         return;
       }
       if (QLog.isColorLevel())
       {
-        paramIConnection = jdField_a_of_type_JavaLangString;
+        paramIConnection = b;
         paramHostInfo = new StringBuilder();
         paramHostInfo.append("onConnect failed reconnect ip = ");
-        paramHostInfo.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.jdField_a_of_type_JavaLangString);
+        paramHostInfo.append(this.f.a);
         paramHostInfo.append(", port =");
-        paramHostInfo.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.jdField_a_of_type_Int);
+        paramHostInfo.append(this.f.b);
         QLog.d(paramIConnection, 2, paramHostInfo.toString());
       }
       if (paramInt == 3) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ConnManager.2(this, paramLong), 2000L);
+        this.e.postDelayed(new ConnManager.2(this, paramLong), 2000L);
       } else {
-        this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.3(this, paramLong));
+        this.e.post(new ConnManager.3(this, paramLong));
       }
-      paramIConnection = this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo;
+      paramIConnection = this.f;
       if (paramIConnection != null) {
-        paramIConnection.d += 1;
+        paramIConnection.f += 1;
       }
       return;
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect ip or port changed ");
+    QLog.e(b, 2, "onConnect ip or port changed ");
     b(paramLong);
   }
   
   public boolean a()
   {
-    return NetworkUtil.isNetSupportHw(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext());
+    return NetworkUtil.isNetSupportHw(this.d.getApp().getApplicationContext());
   }
   
-  public byte[] a()
+  public byte[] b()
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
-      return (byte[])this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+    if (!this.a.isEmpty()) {
+      return (byte[])this.a.poll();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.ConnManager
  * JD-Core Version:    0.7.0.1
  */

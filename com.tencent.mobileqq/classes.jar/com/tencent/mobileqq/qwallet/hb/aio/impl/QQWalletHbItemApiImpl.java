@@ -48,18 +48,19 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
 
 public class QQWalletHbItemApiImpl
   implements IQQWalletHbItemApi
 {
-  protected static final int chat_icon_container = R.id.bB;
+  protected static final int chat_icon_container = R.id.bL;
   protected static final int chat_redpacket_anim_bg;
   protected static final int chat_redpacket_background;
   protected static final int chat_redpacket_customize_bg;
-  protected static final int chat_redpacket_specify_icon_container = R.id.bE;
-  protected static final int chat_redpacket_subtitle = R.id.bx;
-  protected static final int chat_redpacket_title = R.id.bw;
+  protected static final int chat_redpacket_specify_icon_container = R.id.bO;
+  protected static final int chat_redpacket_subtitle = R.id.bH;
+  protected static final int chat_redpacket_title = R.id.bG;
   protected static final int graybar_redpacket;
   static long mLastClickedTime;
   public static Map<String, MessageForQQWalletMsg> sMessageForQQWalletMsgMap = new HashMap();
@@ -75,9 +76,10 @@ public class QQWalletHbItemApiImpl
   protected int dip23;
   protected int dip240;
   protected int dip40;
+  protected int dip5;
   protected int dip8;
   protected int dip90;
-  protected boolean isInit = false;
+  protected AtomicBoolean isInit = new AtomicBoolean(false);
   BaseQQAppInterface mAppInterface;
   IBaseChatPieProxy mBaseChatPie;
   private View.OnClickListener mDrawClickListener = new QQWalletHbItemApiImpl.3(this);
@@ -95,10 +97,10 @@ public class QQWalletHbItemApiImpl
   
   static
   {
-    chat_redpacket_background = R.id.by;
-    graybar_redpacket = R.id.bz;
-    chat_redpacket_customize_bg = R.id.bA;
-    chat_redpacket_anim_bg = R.id.bv;
+    chat_redpacket_background = R.id.bI;
+    graybar_redpacket = R.id.bJ;
+    chat_redpacket_customize_bg = R.id.bK;
+    chat_redpacket_anim_bg = R.id.bF;
   }
   
   public static void cleanMessageForQQWalletMsgMap()
@@ -126,7 +128,7 @@ public class QQWalletHbItemApiImpl
     Object localObject3 = null;
     Object localObject1;
     if (paramQQWalletBaseMsgElem != null) {
-      localObject1 = paramQQWalletBaseMsgElem.i;
+      localObject1 = paramQQWalletBaseMsgElem.m;
     } else {
       localObject1 = null;
     }
@@ -178,18 +180,18 @@ public class QQWalletHbItemApiImpl
         if (paramQQWalletBaseMsgElem != null)
         {
           localObject1 = localObject3;
-          if (paramQQWalletBaseMsgElem.l > 1)
+          if (paramQQWalletBaseMsgElem.z > 1)
           {
-            localObject1 = ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).getThemeRedPkgConfById(paramQQWalletBaseMsgElem.l);
+            localObject1 = ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).getThemeRedPkgConfById(paramQQWalletBaseMsgElem.z);
             if (localObject1 != null)
             {
-              localObject1 = ((ThemeRedPkgConfig)localObject1).b;
+              localObject1 = ((ThemeRedPkgConfig)localObject1).e;
             }
             else
             {
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("https://i.gtimg.cn/channel/static/socialpay/paneltheme/socialpay_theme_v1_");
-              ((StringBuilder)localObject1).append(paramQQWalletBaseMsgElem.l);
+              ((StringBuilder)localObject1).append(paramQQWalletBaseMsgElem.z);
               ((StringBuilder)localObject1).append("_bg");
               localObject1 = ((StringBuilder)localObject1).toString();
             }
@@ -256,8 +258,8 @@ public class QQWalletHbItemApiImpl
     paramQQWalletBaseMsgElem = new Intent(paramContext, PayBridgeActivity.class);
     paramQQWalletBaseMsgElem.putExtras(paramString2);
     paramQQWalletBaseMsgElem.putExtra("pay_requestcode", 5);
-    break label905;
-    label781:
+    break label906;
+    label782:
     do
     {
       try
@@ -272,7 +274,7 @@ public class QQWalletHbItemApiImpl
         }
         catch (Exception paramString1) {}
         if (!QLog.isDevelopLevel()) {
-          break label781;
+          break label782;
         }
       }
       catch (Exception paramString1) {}
@@ -300,7 +302,7 @@ public class QQWalletHbItemApiImpl
     }
     try
     {
-      label905:
+      label906:
       if (!(paramContext instanceof Activity)) {
         paramQQWalletBaseMsgElem.addFlags(268435456);
       }
@@ -334,12 +336,12 @@ public class QQWalletHbItemApiImpl
       localStringBuilder.append(this.mAppInterface.getCurrentUin());
       localStringBuilder.append("");
       localHashMap.put("recv_uin", localStringBuilder.toString());
-      localHashMap.put("recv_nickname", ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getGrayBarShowName(this.sessionInfo.jdField_a_of_type_JavaLangString, this.mAppInterface.getCurrentUin()));
+      localHashMap.put("recv_nickname", ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getGrayBarShowName(this.sessionInfo.b, this.mAppInterface.getCurrentUin()));
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(getRecvType(this.mAppInterface, this.sessionInfo));
       localStringBuilder.append("");
       localHashMap.put("recv_group_type", localStringBuilder.toString());
-      localHashMap.put("recv_group_id", this.sessionInfo.jdField_a_of_type_JavaLangString);
+      localHashMap.put("recv_group_id", this.sessionInfo.b);
     }
     return localHashMap;
   }
@@ -351,22 +353,22 @@ public class QQWalletHbItemApiImpl
   
   private static int getRecvType(BaseQQAppInterface paramBaseQQAppInterface, BaseSessionInfo paramBaseSessionInfo)
   {
-    if (paramBaseSessionInfo.jdField_a_of_type_Int == 0) {
+    if (paramBaseSessionInfo.a == 0) {
       return 1;
     }
-    if (paramBaseSessionInfo.jdField_a_of_type_Int == 3000) {
+    if (paramBaseSessionInfo.a == 3000) {
       return 2;
     }
-    if (paramBaseSessionInfo.jdField_a_of_type_Int == 1) {
+    if (paramBaseSessionInfo.a == 1) {
       return 3;
     }
-    if (paramBaseSessionInfo.jdField_a_of_type_Int == 1000) {
+    if (paramBaseSessionInfo.a == 1000) {
       return 4;
     }
-    if (paramBaseSessionInfo.jdField_a_of_type_Int == 1004) {
+    if (paramBaseSessionInfo.a == 1004) {
       return 5;
     }
-    if ((paramBaseSessionInfo.jdField_a_of_type_Int != 1001) && (paramBaseSessionInfo.jdField_a_of_type_Int != 10002) && (paramBaseSessionInfo.jdField_a_of_type_Int != 10004)) {
+    if ((paramBaseSessionInfo.a != 1001) && (paramBaseSessionInfo.a != 10002) && (paramBaseSessionInfo.a != 10004)) {
       return 0;
     }
     return 7;
@@ -375,18 +377,18 @@ public class QQWalletHbItemApiImpl
   public static String getWordChainHbAioTips(int paramInt)
   {
     if (paramInt == 0) {
-      return HardCodeUtil.a(R.string.bB);
+      return HardCodeUtil.a(R.string.bF);
     }
     if (paramInt == 1) {
-      return HardCodeUtil.a(R.string.dw);
+      return HardCodeUtil.a(R.string.dz);
     }
     if (paramInt == 2) {
-      return HardCodeUtil.a(R.string.dx);
+      return HardCodeUtil.a(R.string.dA);
     }
     return "";
   }
   
-  public TextView createGrayBar(Context paramContext)
+  public TextView createAioGrayBar(Context paramContext)
   {
     init(paramContext);
     paramContext = new TextView(paramContext);
@@ -411,12 +413,37 @@ public class QQWalletHbItemApiImpl
     return paramContext;
   }
   
-  public RelativeLayout createRedPacketBubbleView(IQWalletMsgHolder paramIQWalletMsgHolder, Context paramContext)
+  public TextView createGuildAioGrayBar(Context paramContext)
+  {
+    init(paramContext);
+    paramContext = new TextView(paramContext);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.topMargin = this.dip5;
+    localLayoutParams.addRule(3, chat_redpacket_background);
+    localLayoutParams.addRule(5, chat_redpacket_background);
+    paramContext.setLayoutParams(localLayoutParams);
+    paramContext.setMaxWidth(this.dip160);
+    paramContext.setTextColor(-6710887);
+    paramContext.setBackgroundResource(R.drawable.Q);
+    paramContext.setClickable(false);
+    paramContext.setVisibility(8);
+    paramContext.setIncludeFontPadding(false);
+    paramContext.setSingleLine();
+    paramContext.setTextSize(1, 11.3F);
+    paramContext.setId(graybar_redpacket);
+    return paramContext;
+  }
+  
+  public RelativeLayout createRedPacketBubbleView(IQWalletMsgHolder paramIQWalletMsgHolder, Context paramContext, int paramInt)
   {
     if ((paramIQWalletMsgHolder != null) && (paramContext != null))
     {
       RelativeLayout localRelativeLayout = createRedPacketWithOutGrayBar(paramIQWalletMsgHolder, paramContext);
-      paramContext = createGrayBar(paramContext);
+      if (paramInt == 10014) {
+        paramContext = createGuildAioGrayBar(paramContext);
+      } else {
+        paramContext = createAioGrayBar(paramContext);
+      }
       localRelativeLayout.addView(paramContext);
       paramIQWalletMsgHolder.c(paramContext);
       return localRelativeLayout;
@@ -431,7 +458,7 @@ public class QQWalletHbItemApiImpl
       init(paramContext);
       RelativeLayout localRelativeLayout1 = new RelativeLayout(paramContext);
       localRelativeLayout1.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-      localRelativeLayout1.setId(R.id.bs);
+      localRelativeLayout1.setId(R.id.bC);
       paramIQWalletMsgHolder.b(localRelativeLayout1);
       RelativeLayout localRelativeLayout2 = new RelativeLayout(paramContext);
       Object localObject1 = new RelativeLayout.LayoutParams(this.dip160, this.dip240);
@@ -444,7 +471,7 @@ public class QQWalletHbItemApiImpl
       paramIQWalletMsgHolder.c(localRelativeLayout2);
       localObject1 = new RelativeLayout(paramContext);
       Object localObject2 = new RelativeLayout.LayoutParams(this.dip160, this.dip240);
-      ((RelativeLayout)localObject1).setBackgroundResource(R.drawable.V);
+      ((RelativeLayout)localObject1).setBackgroundResource(R.drawable.W);
       ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       ((RelativeLayout)localObject1).setVisibility(8);
       paramIQWalletMsgHolder.d((RelativeLayout)localObject1);
@@ -524,7 +551,7 @@ public class QQWalletHbItemApiImpl
       localRelativeLayout1.addView((View)localObject1);
       paramContext = new AnimationView(paramContext);
       paramContext.setPlayer(new ScrollPlayer((AnimationView)localObject3));
-      paramContext.setId(R.id.bC);
+      paramContext.setId(R.id.bM);
       paramContext.setVisibility(8);
       paramIQWalletMsgHolder.b(paramContext);
       return localRelativeLayout1;
@@ -534,28 +561,22 @@ public class QQWalletHbItemApiImpl
   
   public void init(Context paramContext)
   {
-    if (!this.isInit) {
-      try
-      {
-        if (!this.isInit)
-        {
-          float f = paramContext.getResources().getDisplayMetrics().density;
-          this.dip15 = ((int)(15.0F * f + 0.5F));
-          this.dip10 = ((int)(10.0F * f + 0.5F));
-          this.dip8 = ((int)(8.0F * f + 0.5F));
-          this.dip23 = ((int)(23.0F * f + 0.5F));
-          this.dip40 = ((int)(40.0F * f + 0.5F));
-          this.dip90 = ((int)(90.0F * f + 0.5F));
-          this.dip17 = ((int)(17.0F * f + 0.5F));
-          this.dip138 = ((int)(138.0F * f + 0.5F));
-          this.dip115 = ((int)(115.0F * f + 0.5F));
-          this.dip11 = ((int)(11.0F * f + 0.5F));
-          this.dip160 = ((int)(160.0F * f + 0.5F));
-          this.dip240 = ((int)(f * 240.0F + 0.5F));
-        }
-        return;
-      }
-      finally {}
+    if (this.isInit.compareAndSet(false, true))
+    {
+      float f = paramContext.getResources().getDisplayMetrics().density;
+      this.dip5 = ((int)(5.0F * f + 0.5F));
+      this.dip15 = ((int)(15.0F * f + 0.5F));
+      this.dip10 = ((int)(10.0F * f + 0.5F));
+      this.dip8 = ((int)(8.0F * f + 0.5F));
+      this.dip23 = ((int)(23.0F * f + 0.5F));
+      this.dip40 = ((int)(40.0F * f + 0.5F));
+      this.dip90 = ((int)(90.0F * f + 0.5F));
+      this.dip17 = ((int)(17.0F * f + 0.5F));
+      this.dip138 = ((int)(138.0F * f + 0.5F));
+      this.dip115 = ((int)(115.0F * f + 0.5F));
+      this.dip11 = ((int)(11.0F * f + 0.5F));
+      this.dip160 = ((int)(160.0F * f + 0.5F));
+      this.dip240 = ((int)(f * 240.0F + 0.5F));
     }
   }
   
@@ -590,13 +611,13 @@ public class QQWalletHbItemApiImpl
         i = 0;
       }
     }
-    paramRelativeLayout.setTag(R.id.cd, Integer.valueOf(i));
+    paramRelativeLayout.setTag(R.id.cr, Integer.valueOf(i));
     if (i == 1)
     {
       paramBaseQQAppInterface = new StringBuilder();
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bG));
-      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bF));
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bK));
+      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.c);
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bJ));
       paramRelativeLayout.setContentDescription(paramBaseQQAppInterface.toString());
       paramRelativeLayout.setOnClickListener(this.mPasswordClickListener);
       return true;
@@ -604,9 +625,9 @@ public class QQWalletHbItemApiImpl
     if (i == 2)
     {
       paramBaseQQAppInterface = new StringBuilder();
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bD));
-      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bL));
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bH));
+      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.c);
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bP));
       paramRelativeLayout.setContentDescription(paramBaseQQAppInterface.toString());
       paramRelativeLayout.setOnClickListener(this.mPwdVoiceClickListener);
       return true;
@@ -615,8 +636,8 @@ public class QQWalletHbItemApiImpl
     {
       paramBaseQQAppInterface = new StringBuilder();
       paramBaseQQAppInterface.append("K歌红包:");
-      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bJ));
+      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.c);
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bN));
       paramRelativeLayout.setContentDescription(paramBaseQQAppInterface.toString());
       paramRelativeLayout.setOnClickListener(this.mKSONGClickListener);
       return true;
@@ -624,9 +645,9 @@ public class QQWalletHbItemApiImpl
     if (i == 9)
     {
       paramBaseQQAppInterface = new StringBuilder();
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bz));
-      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bH));
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bD));
+      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.c);
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bL));
       paramRelativeLayout.setContentDescription(paramBaseQQAppInterface.toString());
       paramRelativeLayout.setOnClickListener(this.mEmojiClickListener);
       return true;
@@ -634,9 +655,9 @@ public class QQWalletHbItemApiImpl
     if (i == 10)
     {
       paramBaseQQAppInterface = new StringBuilder();
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bA));
-      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bC));
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bE));
+      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.c);
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bG));
       paramRelativeLayout.setContentDescription(paramBaseQQAppInterface.toString());
       paramRelativeLayout.setOnClickListener(this.mSolitaireClickListener);
       return true;
@@ -644,9 +665,9 @@ public class QQWalletHbItemApiImpl
     if (i == 11)
     {
       paramBaseQQAppInterface = new StringBuilder();
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bK));
-      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bE));
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bO));
+      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.c);
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bI));
       paramRelativeLayout.setContentDescription(paramBaseQQAppInterface.toString());
       paramRelativeLayout.setOnClickListener(this.mDrawClickListener);
       return true;
@@ -654,9 +675,9 @@ public class QQWalletHbItemApiImpl
     if (i == 14)
     {
       paramBaseQQAppInterface = new StringBuilder();
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bM));
-      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bN));
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bQ));
+      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.c);
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bR));
       paramRelativeLayout.setContentDescription(paramBaseQQAppInterface.toString());
       paramRelativeLayout.setOnClickListener(this.mKuaKuaClickListener);
       return true;
@@ -664,15 +685,15 @@ public class QQWalletHbItemApiImpl
     if (i == 15)
     {
       paramBaseQQAppInterface = new StringBuilder();
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.cK));
-      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bO));
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.cN));
+      paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.c);
+      paramBaseQQAppInterface.append(HardCodeUtil.a(R.string.bS));
       paramRelativeLayout.setContentDescription(paramBaseQQAppInterface.toString());
       paramRelativeLayout.setOnClickListener(this.mShengpiziClickListener);
       return true;
     }
     paramBaseQQAppInterface = new StringBuilder();
-    paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
+    paramBaseQQAppInterface.append(paramIBaseChatPieProxy.mQQWalletRedPacketMsg.elem.c);
     paramBaseQQAppInterface.append(paramString);
     paramRelativeLayout.setContentDescription(paramBaseQQAppInterface.toString());
     paramRelativeLayout.setOnClickListener(this.onClickListener);
@@ -690,7 +711,7 @@ public class QQWalletHbItemApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.QQWalletHbItemApiImpl
  * JD-Core Version:    0.7.0.1
  */

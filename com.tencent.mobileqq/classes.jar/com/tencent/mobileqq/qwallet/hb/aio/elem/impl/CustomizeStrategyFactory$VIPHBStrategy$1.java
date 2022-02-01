@@ -13,7 +13,7 @@ class CustomizeStrategyFactory$VIPHBStrategy$1
   {
     try
     {
-      this.jdField_a_of_type_ComQwalletTempIIndividualRedPacket.dealRedPacketToShow(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo);
+      this.a.dealRedPacketToShow(this.b);
       return;
     }
     catch (Exception localException)
@@ -24,7 +24,7 @@ class CustomizeStrategyFactory$VIPHBStrategy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.VIPHBStrategy.1
  * JD-Core Version:    0.7.0.1
  */

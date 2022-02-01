@@ -12,31 +12,31 @@ class VideoInviteUILock$1
   {
     if (paramBoolean)
     {
-      if (VideoInviteUILock.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock)) {
+      if (VideoInviteUILock.a(this.b)) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a("0X80051FE");
-      } else if (this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.b) {
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a("0X8004201");
+      if (this.b.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
+        this.b.a("0X80051FE");
+      } else if (this.b.a.g) {
+        this.b.a("0X8004201");
       } else {
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a("0X8004205");
+        this.b.a("0X8004205");
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("SlideAcceptListener, seq[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("]");
       QLog.w("VideoInviteUILock", 1, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.d = true;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.c(this.jdField_a_of_type_Long);
+      this.b.a.r = true;
+      this.b.a.c(this.a);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a.b)
+    if (this.b.a.g)
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a("0X800439E");
+      this.b.a("0X800439E");
       return;
     }
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteUILock.a("0X80043FD");
+    this.b.a("0X80043FD");
   }
 }
 

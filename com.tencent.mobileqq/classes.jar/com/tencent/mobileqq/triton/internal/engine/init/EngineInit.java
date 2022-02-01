@@ -34,7 +34,7 @@ import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/internal/engine/init/EngineInit;", "", "engine", "Lcom/tencent/mobileqq/triton/internal/engine/Engine;", "platformConfig", "Lcom/tencent/mobileqq/triton/internal/model/PlatformConfig;", "soLoadStatistics", "", "Lcom/tencent/mobileqq/triton/statistic/NativeLibraryLoadStatistic;", "(Lcom/tencent/mobileqq/triton/internal/engine/Engine;Lcom/tencent/mobileqq/triton/internal/model/PlatformConfig;Ljava/util/List;)V", "afterInitAction", "Lkotlin/Function0;", "", "engineContext", "Lcom/tencent/mobileqq/triton/internal/engine/EngineContext;", "getEngineContext", "()Lcom/tencent/mobileqq/triton/internal/engine/EngineContext;", "engineContextImpl", "Lcom/tencent/mobileqq/triton/internal/engine/init/EngineContextImpl;", "engineInitStatistics", "Lcom/tencent/mobileqq/triton/statistic/EngineInitStatistic;", "destroyEngineLocked", "doActionAfterInit", "action", "initEngine", "initTTApp", "launchGameLocked", "param", "Lcom/tencent/mobileqq/triton/engine/GameLaunchParam;", "gameLaunchCallback", "Lcom/tencent/mobileqq/triton/engine/GameLaunchCallback;", "notifyOnDestroy", "notifyOnStart", "notifyOnStop", "performLaunchGame", "Companion", "Triton_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/internal/engine/init/EngineInit;", "", "engine", "Lcom/tencent/mobileqq/triton/internal/engine/Engine;", "platformConfig", "Lcom/tencent/mobileqq/triton/internal/model/PlatformConfig;", "soLoadStatistics", "", "Lcom/tencent/mobileqq/triton/statistic/NativeLibraryLoadStatistic;", "(Lcom/tencent/mobileqq/triton/internal/engine/Engine;Lcom/tencent/mobileqq/triton/internal/model/PlatformConfig;Ljava/util/List;)V", "afterInitAction", "Lkotlin/Function0;", "", "engineContext", "Lcom/tencent/mobileqq/triton/internal/engine/EngineContext;", "getEngineContext", "()Lcom/tencent/mobileqq/triton/internal/engine/EngineContext;", "engineContextImpl", "Lcom/tencent/mobileqq/triton/internal/engine/init/EngineContextImpl;", "engineInitStatistics", "Lcom/tencent/mobileqq/triton/statistic/EngineInitStatistic;", "mCodeCacheSaver", "Lcom/tencent/mobileqq/triton/internal/script/CodeCacheSaver;", "destroyEngineLocked", "doActionAfterInit", "action", "initEngine", "initTTApp", "launchGameLocked", "param", "Lcom/tencent/mobileqq/triton/engine/GameLaunchParam;", "gameLaunchCallback", "Lcom/tencent/mobileqq/triton/engine/GameLaunchCallback;", "notifyOnDestroy", "notifyOnStart", "notifyOnStop", "performLaunchGame", "Companion", "Triton_release"}, k=1, mv={1, 1, 16})
 public final class EngineInit
 {
   public static final EngineInit.Companion Companion = new EngineInit.Companion(null);
@@ -43,6 +43,7 @@ public final class EngineInit
   private final Engine engine;
   private final EngineContextImpl engineContextImpl;
   private EngineInitStatistic engineInitStatistics;
+  private CodeCacheSaver mCodeCacheSaver;
   private final PlatformConfig platformConfig;
   private final List<NativeLibraryLoadStatistic> soLoadStatistics;
   
@@ -158,9 +159,19 @@ public final class EngineInit
     {
       this.engineContextImpl.setTtEngine(new TTEngine(this.platformConfig, getEngineContext(), this.soLoadStatistics));
       getEngineContext().getLifeCycleOwner().observeLifeCycle((LifeCycle)new EngineInit.initTTApp..inlined.withLock.lambda.1(this));
+      this.mCodeCacheSaver = new CodeCacheSaver(this.engineContextImpl.getScriptSystem(), this.engineContextImpl.getEnginePackage());
       if (getEngineContext().getEnableCodeCache())
       {
-        localObject1 = (LifeCycle)new CodeCacheSaver(this.engineContextImpl.getScriptSystem());
+        localObject1 = this.mCodeCacheSaver;
+        if (localObject1 == null) {
+          Intrinsics.throwUninitializedPropertyAccessException("mCodeCacheSaver");
+        }
+        ((CodeCacheSaver)localObject1).scheduleAutoSaving();
+        localObject1 = this.mCodeCacheSaver;
+        if (localObject1 == null) {
+          Intrinsics.throwUninitializedPropertyAccessException("mCodeCacheSaver");
+        }
+        localObject1 = (LifeCycle)localObject1;
         getEngineContext().getLifeCycleOwner().observeLifeCycle((LifeCycle)localObject1);
       }
       Object localObject1 = Unit.INSTANCE;
@@ -174,6 +185,11 @@ public final class EngineInit
   
   private final void performLaunchGame(GameLaunchParam paramGameLaunchParam, GameLaunchCallback paramGameLaunchCallback)
   {
+    CodeCacheSaver localCodeCacheSaver = this.mCodeCacheSaver;
+    if (localCodeCacheSaver == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mCodeCacheSaver");
+    }
+    localCodeCacheSaver.cancelAutoSaving();
     this.engineContextImpl.setGamePackage(Utils.decorate(paramGameLaunchParam.getGamePackage(), this.platformConfig.getEnableCodeCache()));
     this.engineContextImpl.setDataFileSystem(paramGameLaunchParam.getDataFileSystem());
     this.engineContextImpl.setGameView(paramGameLaunchParam.getGameView());
@@ -221,7 +237,7 @@ public final class EngineInit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.engine.init.EngineInit
  * JD-Core Version:    0.7.0.1
  */

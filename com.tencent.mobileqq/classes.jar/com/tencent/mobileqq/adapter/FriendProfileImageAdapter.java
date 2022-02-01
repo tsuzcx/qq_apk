@@ -29,26 +29,26 @@ public class FriendProfileImageAdapter
   extends BaseAdapter
   implements Handler.Callback
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  FriendProfileImageModel jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  boolean jdField_a_of_type_Boolean = false;
-  Drawable b;
+  Context a;
+  int b;
+  Drawable c;
+  Drawable d;
+  MqqHandler e;
+  FriendProfileImageModel f;
+  boolean g = false;
   
   public FriendProfileImageAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297550));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130851160);
-    this.b = paramContext.getResources().getDrawable(2130851161);
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
+    this.a = paramContext;
+    this.b = ((int)this.a.getResources().getDimension(2131298203));
+    this.c = paramContext.getResources().getDrawable(2130853414);
+    this.d = paramContext.getResources().getDrawable(2130853415);
+    this.e = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
+    this.e.removeMessages(1);
   }
   
   public void a(View paramView)
@@ -56,10 +56,10 @@ public class FriendProfileImageAdapter
     if (paramView == null) {
       return;
     }
-    paramView = (ImageProgressCircle)paramView.findViewById(2131368560);
+    paramView = (ImageProgressCircle)paramView.findViewById(2131435466);
     if (paramView != null)
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1, paramView);
+      this.e.removeMessages(1, paramView);
       if (paramView.getVisibility() != 4) {
         paramView.setVisibility(4);
       }
@@ -73,15 +73,15 @@ public class FriendProfileImageAdapter
     }
     a(paramView);
     paramView.setTag(paramProfileImageInfo.b);
-    paramProfileImageInfo = (ImageView)paramView.findViewById(2131368461);
+    paramProfileImageInfo = (ImageView)paramView.findViewById(2131435357);
     if (paramProfileImageInfo != null) {
-      paramProfileImageInfo.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      paramProfileImageInfo.setImageDrawable(this.c);
     }
   }
   
   public void a(FriendProfileImageModel paramFriendProfileImageModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel = paramFriendProfileImageModel;
+    this.f = paramFriendProfileImageModel;
   }
   
   public void a(ImageProgressCircle paramImageProgressCircle)
@@ -97,18 +97,18 @@ public class FriendProfileImageAdapter
     if (paramImageProgressCircle == null) {
       return;
     }
-    if (!this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1, paramImageProgressCircle))
+    if (!this.e.hasMessages(1, paramImageProgressCircle))
     {
       localObject = Message.obtain();
       ((Message)localObject).what = 1;
       ((Message)localObject).obj = paramImageProgressCircle;
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed((Message)localObject, 550L);
+      this.e.sendMessageDelayed((Message)localObject, 550L);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
   }
   
   public void b(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo, View paramView)
@@ -126,16 +126,16 @@ public class FriendProfileImageAdapter
       Object localObject2 = paramProfileImageInfo.b;
       localObject1 = null;
       URL localURL = new URL("profile_img_thumb", null, (String)localObject2);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel != null) {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a();
+      if (this.f != null) {
+        localObject1 = this.f.b();
       }
       localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = this.b;
+        localObject2 = this.d;
       }
-      localObject1 = URLDrawable.getDrawable(localURL, (Drawable)localObject2, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      localObject1 = URLDrawable.getDrawable(localURL, (Drawable)localObject2, this.c);
       paramView.setTag(paramProfileImageInfo.b);
-      ((ImageView)paramView.findViewById(2131368461)).setImageDrawable((Drawable)localObject1);
+      ((ImageView)paramView.findViewById(2131435357)).setImageDrawable((Drawable)localObject1);
       return;
     }
     catch (MalformedURLException paramProfileImageInfo)
@@ -173,22 +173,22 @@ public class FriendProfileImageAdapter
         }
         if (i != 0)
         {
-          localObject1 = URLDrawable.getDrawable(localURL, (Drawable)localObject1, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          localObject1 = URLDrawable.getDrawable(localURL, (Drawable)localObject1, this.c);
         }
         else
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel == null) {
+          if (this.f == null) {
             break label231;
           }
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a();
+          localObject1 = this.f.b();
           Object localObject2 = localObject1;
           if (localObject1 == null) {
-            localObject2 = this.b;
+            localObject2 = this.d;
           }
-          localObject1 = URLDrawable.getDrawable(localURL, (Drawable)localObject2, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          localObject1 = URLDrawable.getDrawable(localURL, (Drawable)localObject2, this.c);
         }
         paramView.setTag(paramProfileImageInfo.c);
-        paramProfileImageInfo = (ImageView)paramView.findViewById(2131368461);
+        paramProfileImageInfo = (ImageView)paramView.findViewById(2131435357);
         if (paramProfileImageInfo != null)
         {
           paramProfileImageInfo.setImageDrawable((Drawable)localObject1);
@@ -213,7 +213,7 @@ public class FriendProfileImageAdapter
   
   public int getCount()
   {
-    FriendProfileImageModel localFriendProfileImageModel = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel;
+    FriendProfileImageModel localFriendProfileImageModel = this.f;
     if (localFriendProfileImageModel != null) {
       return localFriendProfileImageModel.a();
     }
@@ -222,9 +222,9 @@ public class FriendProfileImageAdapter
   
   public Object getItem(int paramInt)
   {
-    FriendProfileImageModel localFriendProfileImageModel = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel;
+    FriendProfileImageModel localFriendProfileImageModel = this.f;
     if (localFriendProfileImageModel != null) {
-      return localFriendProfileImageModel.a(paramInt);
+      return localFriendProfileImageModel.b(paramInt);
     }
     return null;
   }
@@ -239,24 +239,24 @@ public class FriendProfileImageAdapter
     Object localObject = paramView;
     if (paramView == null)
     {
-      View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559248, null);
-      localObject = (ImageProgressCircle)localView.findViewById(2131368560);
+      View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131625168, null);
+      localObject = (ImageProgressCircle)localView.findViewById(2131435466);
       ((ImageProgressCircle)localObject).setVisibility(4);
-      ImageView localImageView = (ImageView)localView.findViewById(2131368461);
-      localImageView.setMinimumWidth(this.jdField_a_of_type_Int);
-      localImageView.setMinimumHeight(this.jdField_a_of_type_Int);
+      ImageView localImageView = (ImageView)localView.findViewById(2131435357);
+      localImageView.setMinimumWidth(this.b);
+      localImageView.setMinimumHeight(this.b);
       paramView = (FriendProfileImageModel.ProfileImageInfo)getItem(paramInt);
       if (paramView != null) {
-        if (this.jdField_a_of_type_Boolean)
+        if (this.g)
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a.getTroopFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b, (byte)1, false, false);
+          localObject = this.f.l.getTroopFaceDrawable(this.f.h, (byte)1, false, false);
           paramView = (View)localObject;
           if (localObject == null) {
-            paramView = ImageUtil.c();
+            paramView = ImageUtil.f();
           }
           localImageView.setImageDrawable(paramView);
         }
-        else if (paramView.jdField_a_of_type_Int == 6)
+        else if (paramView.d == 6)
         {
           c(paramView, localView);
           if (QLog.isColorLevel())
@@ -268,9 +268,9 @@ public class FriendProfileImageAdapter
             QLog.d("Q.profilecard.PhotoWall", 2, ((StringBuilder)localObject).toString());
           }
         }
-        else if ((paramView.jdField_a_of_type_Int != 3) && (paramView.jdField_a_of_type_Int != 4))
+        else if ((paramView.d != 3) && (paramView.d != 4))
         {
-          localImageView.setImageResource(2130851161);
+          localImageView.setImageResource(2130853415);
         }
         else
         {
@@ -284,15 +284,15 @@ public class FriendProfileImageAdapter
             localStringBuilder.append(paramView.b);
             QLog.d("Q.profilecard.PhotoWall", 2, localStringBuilder.toString());
           }
-          if (paramView.jdField_a_of_type_Boolean) {
+          if (paramView.f) {
             a((ImageProgressCircle)localObject);
           }
         }
       }
       localObject = localView;
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
-        localImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131691182));
+        localImageView.setContentDescription(this.a.getString(2131888128));
         localObject = localView;
       }
     }
@@ -314,7 +314,7 @@ public class FriendProfileImageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.FriendProfileImageAdapter
  * JD-Core Version:    0.7.0.1
  */

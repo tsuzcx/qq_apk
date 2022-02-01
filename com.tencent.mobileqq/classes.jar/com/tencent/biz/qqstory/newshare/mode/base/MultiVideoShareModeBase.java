@@ -14,25 +14,20 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 public abstract class MultiVideoShareModeBase
   extends ShareModeBase
 {
-  protected int a;
-  protected StoryVideoItem a;
-  protected int b = -1;
-  protected int c = -1;
   protected String c;
-  protected int d;
   protected String d;
   protected String e;
   protected String f;
   protected String g;
   protected String h;
-  protected String i;
-  protected String j;
+  protected StoryVideoItem i;
+  protected int j;
   protected String k;
-  
-  public MultiVideoShareModeBase()
-  {
-    this.jdField_d_of_type_Int = 1;
-  }
+  protected String l;
+  protected String m;
+  protected int n = -1;
+  protected int o = -1;
+  protected int p = 1;
   
   public final void a(ShareCopyLinkData paramShareCopyLinkData)
   {
@@ -43,77 +38,77 @@ public abstract class MultiVideoShareModeBase
   public final void a(ShareQQData paramShareQQData)
   {
     super.a(paramShareQQData);
-    paramShareQQData.b = 0;
-    paramShareQQData.jdField_d_of_type_JavaLangString = this.k;
-    paramShareQQData.a = this.a.mVideoThumbnailUrl;
-    paramShareQQData.jdField_e_of_type_JavaLangString = this.a.mVid;
-    paramShareQQData.h = a(1);
-    int m = this.b;
-    if (m != -1) {
-      paramShareQQData.jdField_d_of_type_Int = m;
+    paramShareQQData.a = 0;
+    paramShareQQData.h = this.m;
+    paramShareQQData.f = this.i.mVideoThumbnailUrl;
+    paramShareQQData.j = this.i.mVid;
+    paramShareQQData.m = a(1);
+    int i1 = this.n;
+    if (i1 != -1) {
+      paramShareQQData.p = i1;
     }
-    m = this.c;
-    if (m != -1) {
-      paramShareQQData.jdField_e_of_type_Int = m;
+    i1 = this.o;
+    if (i1 != -1) {
+      paramShareQQData.q = i1;
     }
   }
   
   public final void a(ShareQZoneData paramShareQZoneData)
   {
     super.a(paramShareQZoneData);
-    paramShareQZoneData.a = this.a.mVideoThumbnailUrl;
-    paramShareQZoneData.jdField_c_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    paramShareQZoneData.jdField_d_of_type_JavaLangString = this.i;
-    paramShareQZoneData.jdField_e_of_type_JavaLangString = a(2);
+    paramShareQZoneData.a = this.i.mVideoThumbnailUrl;
+    paramShareQZoneData.f = this.d;
+    paramShareQZoneData.g = this.k;
+    paramShareQZoneData.h = a(2);
   }
   
   public final void a(ShareSinaData paramShareSinaData)
   {
     super.a(paramShareSinaData);
-    paramShareSinaData.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
-    paramShareSinaData.jdField_d_of_type_JavaLangString = this.a.mVideoLocalThumbnailPath;
-    if (TextUtils.isEmpty(paramShareSinaData.jdField_d_of_type_JavaLangString)) {
-      paramShareSinaData.jdField_d_of_type_JavaLangString = ShareUtils.a(paramShareSinaData.jdField_e_of_type_JavaLangString);
+    paramShareSinaData.h = this.i.mVideoThumbnailUrl;
+    paramShareSinaData.g = this.i.mVideoLocalThumbnailPath;
+    if (TextUtils.isEmpty(paramShareSinaData.g)) {
+      paramShareSinaData.g = ShareUtils.a(paramShareSinaData.h);
     }
-    paramShareSinaData.jdField_c_of_type_JavaLangString = a(5);
-    paramShareSinaData.a = this.j;
+    paramShareSinaData.f = a(5);
+    paramShareSinaData.a = this.l;
   }
   
   public void a(ShareWeChatData paramShareWeChatData)
   {
     super.a(paramShareWeChatData);
-    paramShareWeChatData.jdField_c_of_type_JavaLangString = this.i;
-    paramShareWeChatData.a = this.jdField_e_of_type_JavaLangString;
-    paramShareWeChatData.jdField_d_of_type_JavaLangString = a(3);
-    paramShareWeChatData.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
-    paramShareWeChatData.jdField_c_of_type_Boolean = true;
+    paramShareWeChatData.g = this.k;
+    paramShareWeChatData.f = this.e;
+    paramShareWeChatData.h = a(3);
+    paramShareWeChatData.i = this.i.mVideoThumbnailUrl;
+    paramShareWeChatData.l = true;
   }
   
   protected void a_(ShareData paramShareData)
   {
     SLog.b("Q.qqstory.share.ShareModeBase", "prepareCommonShareData");
     super.a_(paramShareData);
-    if (this.a.isPollVideo()) {
+    if (this.i.isPollVideo()) {
       paramShareData.a("vote", "1");
-    } else if (this.a.isInteractVideo()) {
+    } else if (this.i.isInteractVideo()) {
       paramShareData.a("grade", "1");
     }
-    paramShareData.a = this.a;
+    paramShareData.e = this.i;
   }
   
   public void b(ShareWeChatData paramShareWeChatData)
   {
     super.b(paramShareWeChatData);
-    paramShareWeChatData.jdField_c_of_type_JavaLangString = this.i;
-    paramShareWeChatData.a = this.jdField_d_of_type_JavaLangString;
-    paramShareWeChatData.jdField_d_of_type_JavaLangString = a(4);
-    paramShareWeChatData.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
-    paramShareWeChatData.jdField_c_of_type_Boolean = true;
+    paramShareWeChatData.g = this.k;
+    paramShareWeChatData.f = this.d;
+    paramShareWeChatData.h = a(4);
+    paramShareWeChatData.i = this.i.mVideoThumbnailUrl;
+    paramShareWeChatData.l = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.MultiVideoShareModeBase
  * JD-Core Version:    0.7.0.1
  */

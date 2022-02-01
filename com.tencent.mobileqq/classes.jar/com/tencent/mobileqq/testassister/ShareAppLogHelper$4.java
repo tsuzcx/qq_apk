@@ -14,16 +14,16 @@ class ShareAppLogHelper$4
     if (!paramString.endsWith(".log")) {
       return false;
     }
-    paramFile = ShareAppLogHelper.a(this.a, paramString);
-    if ((paramFile != null) && (paramFile.toMillis(false) >= ShareAppLogHelper.a(this.a).toMillis(false))) {
-      return paramFile.toMillis(false) <= ShareAppLogHelper.b(this.a).toMillis(false);
+    paramFile = ShareAppLogHelper.b(this.a, paramString);
+    if ((paramFile != null) && (paramFile.toMillis(false) >= ShareAppLogHelper.h(this.a).toMillis(false))) {
+      return paramFile.toMillis(false) <= ShareAppLogHelper.i(this.a).toMillis(false);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.testassister.ShareAppLogHelper.4
  * JD-Core Version:    0.7.0.1
  */

@@ -24,69 +24,63 @@ import java.util.Stack;
 
 public abstract class DynamicTextItem
 {
-  private static final String jdField_a_of_type_JavaLangString = "DynamicTextItem";
-  protected int a;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private volatile DynamicTextItem.Pair<Integer, Boolean> jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$Pair = new DynamicTextItem.Pair(Integer.valueOf(-1), Boolean.valueOf(false));
-  private DynamicTextItem.TextMap jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap;
-  public Stack<Integer> a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  StaticLayout jdField_b_of_type_AndroidTextStaticLayout;
-  private volatile boolean jdField_b_of_type_Boolean = false;
-  private int c;
-  protected boolean c;
-  public boolean d;
-  private volatile boolean e = false;
+  private static final String a = "DynamicTextItem";
+  private int b;
+  private DynamicTextItem.TextMap c;
+  private boolean d = false;
+  private int e = 0;
+  private volatile boolean f = false;
+  private volatile boolean g = false;
+  private Handler h = null;
+  private Paint i;
+  private volatile DynamicTextItem.Pair<Integer, Boolean> j = new DynamicTextItem.Pair(Integer.valueOf(-1), Boolean.valueOf(false));
+  protected int k;
+  protected boolean l;
+  public Stack<Integer> m = new Stack();
+  StaticLayout n;
+  public boolean o;
   
   public DynamicTextItem(int paramInt, @NonNull List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilStack = new Stack();
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap = new DynamicTextItem.TextMap(paramList);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#12b7f5"));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setPathEffect(new DashPathEffect(new float[] { 6.0F, 7.0F }, 1.0F));
+    this.b = paramInt;
+    this.c = new DynamicTextItem.TextMap(paramList);
+    this.i = new Paint();
+    this.i.setAntiAlias(true);
+    this.i.setColor(Color.parseColor("#12b7f5"));
+    this.i.setStyle(Paint.Style.STROKE);
+    this.i.setStrokeWidth(2.0F);
+    this.i.setPathEffect(new DashPathEffect(new float[] { 6.0F, 7.0F }, 1.0F));
   }
   
   private int a(int paramInt)
   {
-    int i;
+    int i1;
     if (paramInt >= 0)
     {
-      i = paramInt;
-      if (paramInt < a()) {}
+      i1 = paramInt;
+      if (paramInt < b()) {}
     }
     else
     {
-      i = 0;
+      i1 = 0;
     }
-    return i;
+    return i1;
   }
-  
-  public abstract float a();
   
   public float a(StaticLayout paramStaticLayout)
   {
-    float f = 0.0F;
+    float f1 = 0.0F;
     if (paramStaticLayout == null) {
       return 0.0F;
     }
-    int i = 0;
-    while (i < paramStaticLayout.getLineCount())
+    int i1 = 0;
+    while (i1 < paramStaticLayout.getLineCount())
     {
-      f = Math.max(f, paramStaticLayout.getLineWidth(i));
-      i += 1;
+      f1 = Math.max(f1, paramStaticLayout.getLineWidth(i1));
+      i1 += 1;
     }
-    return f;
+    return f1;
   }
-  
-  public abstract int a();
   
   public int a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
@@ -97,142 +91,99 @@ public abstract class DynamicTextItem
   {
     if (QLog.isColorLevel())
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "=========================================");
-      Object localObject = jdField_a_of_type_JavaLangString;
+      QLog.d(a, 2, "=========================================");
+      Object localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Touch X: ");
       localStringBuilder.append(paramMotionEvent.getX());
       QLog.d((String)localObject, 2, localStringBuilder.toString());
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Touch Y: ");
       localStringBuilder.append(paramMotionEvent.getY());
       QLog.d((String)localObject, 2, localStringBuilder.toString());
-      paramMotionEvent = jdField_a_of_type_JavaLangString;
+      paramMotionEvent = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Container W: ");
       ((StringBuilder)localObject).append(paramFloat1);
       QLog.d(paramMotionEvent, 2, ((StringBuilder)localObject).toString());
-      paramMotionEvent = jdField_a_of_type_JavaLangString;
+      paramMotionEvent = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Container H: ");
       ((StringBuilder)localObject).append(paramFloat2);
       QLog.d(paramMotionEvent, 2, ((StringBuilder)localObject).toString());
       if (paramTextItem == null)
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Zoom info is null, use default info");
-        paramMotionEvent = jdField_a_of_type_JavaLangString;
+        QLog.d(a, 2, "Text Zoom info is null, use default info");
+        paramMotionEvent = a;
         paramTextItem = new StringBuilder();
         paramTextItem.append("Text W: ");
-        paramTextItem.append(a());
+        paramTextItem.append(c());
         QLog.d(paramMotionEvent, 2, paramTextItem.toString());
-        paramMotionEvent = jdField_a_of_type_JavaLangString;
+        paramMotionEvent = a;
         paramTextItem = new StringBuilder();
         paramTextItem.append("Text H: ");
-        paramTextItem.append(b());
+        paramTextItem.append(d());
         QLog.d(paramMotionEvent, 2, paramTextItem.toString());
       }
       else
       {
-        paramMotionEvent = jdField_a_of_type_JavaLangString;
+        paramMotionEvent = a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Text X: ");
-        ((StringBuilder)localObject).append(paramTextItem.jdField_a_of_type_AndroidGraphicsPointF.x);
+        ((StringBuilder)localObject).append(paramTextItem.A.x);
         QLog.d(paramMotionEvent, 2, ((StringBuilder)localObject).toString());
-        paramMotionEvent = jdField_a_of_type_JavaLangString;
+        paramMotionEvent = a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Text Y: ");
-        ((StringBuilder)localObject).append(paramTextItem.jdField_a_of_type_AndroidGraphicsPointF.y);
+        ((StringBuilder)localObject).append(paramTextItem.A.y);
         QLog.d(paramMotionEvent, 2, ((StringBuilder)localObject).toString());
-        paramMotionEvent = jdField_a_of_type_JavaLangString;
+        paramMotionEvent = a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Text W: ");
-        ((StringBuilder)localObject).append(paramTextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a());
+        ((StringBuilder)localObject).append(paramTextItem.c.c());
         QLog.d(paramMotionEvent, 2, ((StringBuilder)localObject).toString());
-        paramMotionEvent = jdField_a_of_type_JavaLangString;
+        paramMotionEvent = a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Text H: ");
-        ((StringBuilder)localObject).append(paramTextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.b());
+        ((StringBuilder)localObject).append(paramTextItem.c.d());
         QLog.d(paramMotionEvent, 2, ((StringBuilder)localObject).toString());
-        paramMotionEvent = jdField_a_of_type_JavaLangString;
+        paramMotionEvent = a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Text Scale: ");
-        ((StringBuilder)localObject).append(paramGestureHelper.a(paramTextItem));
+        ((StringBuilder)localObject).append(paramGestureHelper.d(paramTextItem));
         QLog.d(paramMotionEvent, 2, ((StringBuilder)localObject).toString());
-        paramMotionEvent = jdField_a_of_type_JavaLangString;
+        paramMotionEvent = a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Text Matrix: ");
-        ((StringBuilder)localObject).append(paramGestureHelper.a(paramTextItem));
+        ((StringBuilder)localObject).append(paramGestureHelper.b(paramTextItem));
         QLog.d(paramMotionEvent, 2, ((StringBuilder)localObject).toString());
-        paramMotionEvent = jdField_a_of_type_JavaLangString;
+        paramMotionEvent = a;
         paramGestureHelper = new StringBuilder();
         paramGestureHelper.append("Text translateX: ");
-        paramGestureHelper.append(paramTextItem.l);
+        paramGestureHelper.append(paramTextItem.D);
         QLog.d(paramMotionEvent, 2, paramGestureHelper.toString());
-        paramMotionEvent = jdField_a_of_type_JavaLangString;
+        paramMotionEvent = a;
         paramGestureHelper = new StringBuilder();
         paramGestureHelper.append("Text translateY: ");
-        paramGestureHelper.append(paramTextItem.m);
+        paramGestureHelper.append(paramTextItem.E);
         QLog.d(paramMotionEvent, 2, paramGestureHelper.toString());
-        paramMotionEvent = jdField_a_of_type_JavaLangString;
+        paramMotionEvent = a;
         paramGestureHelper = new StringBuilder();
         paramGestureHelper.append("Text rotate: ");
-        paramGestureHelper.append(paramTextItem.k);
+        paramGestureHelper.append(paramTextItem.C);
         QLog.d(paramMotionEvent, 2, paramGestureHelper.toString());
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "=========================================");
+      QLog.d(a, 2, "=========================================");
     }
     return -1;
-  }
-  
-  @NonNull
-  public Paint a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPaint;
-  }
-  
-  public InputFilter a()
-  {
-    return null;
-  }
-  
-  @NonNull
-  public DynamicTextItem.TextMap a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap.a(b());
-  }
-  
-  @NonNull
-  public String a(int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt != a(paramInt))
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getText index out of bound, support size is ");
-      ((StringBuilder)localObject).append(a());
-      ((StringBuilder)localObject).append(", current index is ");
-      ((StringBuilder)localObject).append(paramInt);
-      localObject = ((StringBuilder)localObject).toString();
-      IndexOutOfBoundsException localIndexOutOfBoundsException = new IndexOutOfBoundsException((String)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, localIndexOutOfBoundsException, new Object[] { localObject });
-      }
-      i = 0;
-    }
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap.a(i);
   }
   
   @NonNull
   protected final String a(int paramInt, @Nullable DynamicTextItem.PreHandleTextHandler paramPreHandleTextHandler)
   {
     paramInt = a(paramInt);
-    String str2 = a(paramInt);
+    String str2 = b(paramInt);
     String str1 = str2;
     if (paramPreHandleTextHandler != null) {
       str1 = paramPreHandleTextHandler.a(paramInt, str2);
@@ -240,122 +191,70 @@ public abstract class DynamicTextItem
     return a(str1);
   }
   
-  public String a(int paramInt, String paramString)
-  {
-    if (paramString.length() <= paramInt) {
-      return paramString;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int k = 0;
-    int i = 0;
-    while (k < paramString.length())
-    {
-      int j;
-      if (paramString.charAt(k) == ' ') {
-        j = i + 1;
-      } else {
-        j = 0;
-      }
-      localStringBuilder.append(paramString.charAt(k));
-      i = j;
-      if (j == paramInt)
-      {
-        int m = k + 1;
-        i = j;
-        if (m <= paramString.length() - 1)
-        {
-          i = j;
-          if (paramString.charAt(m) == ' ')
-          {
-            localStringBuilder.append("\r\n");
-            i = 0;
-          }
-        }
-      }
-      k += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
   protected String a(String paramString)
   {
     Object localObject = paramString;
-    if (EditTextDialog.b(c()))
+    if (EditTextDialog.e(k()))
     {
       localObject = paramString;
       if (paramString.length() > 20)
       {
         localObject = new StringBuilder();
-        int i = 0;
-        int k;
-        for (int j = 0; (i < paramString.length()) && (j < 20); j = k)
+        int i1 = 0;
+        int i3;
+        for (int i2 = 0; (i1 < paramString.length()) && (i2 < 20); i2 = i3)
         {
-          ((StringBuilder)localObject).append(paramString.charAt(i));
-          k = j;
-          if (paramString.charAt(i) != '\n')
+          ((StringBuilder)localObject).append(paramString.charAt(i1));
+          i3 = i2;
+          if (paramString.charAt(i1) != '\n')
           {
-            k = j;
-            if (paramString.charAt(i) != '\r') {
-              k = j + 1;
+            i3 = i2;
+            if (paramString.charAt(i1) != '\r') {
+              i3 = i2 + 1;
             }
           }
-          i += 1;
+          i1 += 1;
         }
         paramString = ((StringBuilder)localObject).toString();
         localObject = paramString;
         if (!paramString.isEmpty())
         {
           if (Character.isHighSurrogate(paramString.charAt(paramString.length() - 1))) {
-            i = paramString.length() - 1;
+            i1 = paramString.length() - 1;
           } else {
-            i = paramString.length();
+            i1 = paramString.length();
           }
-          localObject = paramString.substring(0, i);
+          localObject = paramString.substring(0, i1);
         }
       }
     }
     return localObject;
   }
   
-  @NonNull
-  public ArrayList<String> a()
-  {
-    return new ArrayList(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap.a());
-  }
-  
-  public void a()
-  {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-    if (localHandler != null) {
-      localHandler.removeCallbacksAndMessages(null);
-    }
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
   public void a(int paramInt1, View paramView, boolean paramBoolean, int paramInt2, int paramInt3, Runnable paramRunnable)
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.f)
     {
       if (!a()) {
         return;
       }
-      this.jdField_b_of_type_Boolean = true;
-      this.e = true;
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      this.f = true;
+      this.g = true;
+      Handler localHandler = this.h;
       if (localHandler == null) {
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+        this.h = new Handler(Looper.getMainLooper());
       } else {
         localHandler.removeCallbacksAndMessages(null);
       }
-      int i = 0;
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$Pair.a = Integer.valueOf(paramInt1);
-      paramInt1 = i;
+      int i1 = 0;
+      this.j.a = Integer.valueOf(paramInt1);
+      paramInt1 = i1;
       while (paramInt1 < paramInt2 - paramInt3)
       {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new DynamicTextItem.1(this, paramView), paramInt1);
+        this.h.postDelayed(new DynamicTextItem.1(this, paramView), paramInt1);
         paramInt1 += paramInt3;
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new DynamicTextItem.2(this, paramBoolean, paramView, paramRunnable), paramInt1);
+      this.h.postDelayed(new DynamicTextItem.2(this, paramBoolean, paramView, paramRunnable), paramInt1);
     }
   }
   
@@ -365,162 +264,140 @@ public abstract class DynamicTextItem
     if (paramString == null) {
       str = "";
     }
-    int i = paramInt;
+    int i1 = paramInt;
     if (paramInt != a(paramInt))
     {
       paramString = new StringBuilder();
       paramString.append("setText index out of bound, support size is ");
-      paramString.append(a());
+      paramString.append(b());
       paramString.append(", current index is ");
       paramString.append(paramInt);
       paramString = paramString.toString();
       IndexOutOfBoundsException localIndexOutOfBoundsException = new IndexOutOfBoundsException(paramString);
       if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, localIndexOutOfBoundsException, new Object[] { paramString });
+        QLog.e(a, 2, localIndexOutOfBoundsException, new Object[] { paramString });
       }
-      i = 0;
+      i1 = 0;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap.a(i, str);
+    this.c.a(i1, str);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$Pair.a = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$Pair.b = Boolean.valueOf(paramBoolean);
+    o();
+    this.j.a = Integer.valueOf(paramInt);
+    this.j.b = Boolean.valueOf(paramBoolean);
   }
   
   protected abstract void a(Canvas paramCanvas);
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public abstract boolean a();
   
-  public boolean a(int paramInt)
-  {
-    return a(paramInt).equals(DynamicTextBuilder.a(this.jdField_b_of_type_Int, paramInt));
-  }
-  
-  public abstract float b();
-  
-  public int b()
-  {
-    if (this.jdField_c_of_type_Int < 0) {
-      this.jdField_c_of_type_Int = 0;
-    }
-    if (this.jdField_c_of_type_Int >= this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap.a()) {
-      return 0;
-    }
-    return this.jdField_c_of_type_Int;
-  }
+  public abstract int b();
   
   @NonNull
-  protected final String b(int paramInt)
+  public String b(int paramInt)
   {
-    return a(paramInt, null);
-  }
-  
-  public void b()
-  {
-    a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$Pair.b = Boolean.valueOf(false);
-  }
-  
-  public void b(int paramInt)
-  {
-    if (c())
+    int i1 = paramInt;
+    if (paramInt != a(paramInt))
     {
-      int i = paramInt;
-      if (paramInt < 0) {
-        i = 0;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getText index out of bound, support size is ");
+      ((StringBuilder)localObject).append(b());
+      ((StringBuilder)localObject).append(", current index is ");
+      ((StringBuilder)localObject).append(paramInt);
+      localObject = ((StringBuilder)localObject).toString();
+      IndexOutOfBoundsException localIndexOutOfBoundsException = new IndexOutOfBoundsException((String)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.e(a, 2, localIndexOutOfBoundsException, new Object[] { localObject });
       }
-      this.jdField_c_of_type_Int = i;
-      return;
+      i1 = 0;
     }
-    this.jdField_c_of_type_Int = 0;
+    return this.c.a(i1);
+  }
+  
+  public String b(int paramInt, String paramString)
+  {
+    if (paramString.length() <= paramInt) {
+      return paramString;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i3 = 0;
+    int i1 = 0;
+    while (i3 < paramString.length())
+    {
+      int i2;
+      if (paramString.charAt(i3) == ' ') {
+        i2 = i1 + 1;
+      } else {
+        i2 = 0;
+      }
+      localStringBuilder.append(paramString.charAt(i3));
+      i1 = i2;
+      if (i2 == paramInt)
+      {
+        int i4 = i3 + 1;
+        i1 = i2;
+        if (i4 <= paramString.length() - 1)
+        {
+          i1 = i2;
+          if (paramString.charAt(i4) == ' ')
+          {
+            localStringBuilder.append("\r\n");
+            i1 = 0;
+          }
+        }
+      }
+      i3 += 1;
+    }
+    return localStringBuilder.toString();
   }
   
   public final void b(Canvas paramCanvas)
   {
     paramCanvas.save();
-    paramCanvas.translate(-a() / 2.0F, -b() / 2.0F);
+    paramCanvas.translate(-c() / 2.0F, -d() / 2.0F);
     a(paramCanvas);
     paramCanvas.restore();
   }
   
-  public boolean b()
+  public abstract float c();
+  
+  @NonNull
+  protected final String c(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap.a(0, a());
+    return a(paramInt, null);
   }
   
-  public boolean b(int paramInt)
+  public abstract float d();
+  
+  public boolean d(int paramInt)
   {
-    if ((((Integer)this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$Pair.a).intValue() != paramInt) && (((Integer)this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$Pair.a).intValue() != -1)) {
-      return false;
-    }
-    return ((Boolean)this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$Pair.b).booleanValue();
+    return b(paramInt).equals(DynamicTextBuilder.a(this.b, paramInt));
   }
   
-  public int c()
+  public void e(int paramInt)
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void c()
-  {
-    this.e = false;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public final boolean c()
-  {
-    return a() > 1;
-  }
-  
-  public int d()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public boolean d()
-  {
-    ArrayList localArrayList = a();
-    List localList = DynamicTextBuilder.a(this.jdField_b_of_type_Int);
-    if (localList == null) {
-      return false;
-    }
-    if (localArrayList.size() < localList.size()) {
-      return false;
-    }
-    int i = 0;
-    while (i < localList.size())
+    if (h())
     {
-      String str = (String)localList.get(i);
-      if (str == null)
-      {
-        if (localArrayList.get(i) != null) {
-          return false;
-        }
+      int i1 = paramInt;
+      if (paramInt < 0) {
+        i1 = 0;
       }
-      else if (!str.equals(localArrayList.get(i))) {
-        return false;
-      }
-      i += 1;
+      this.e = i1;
+      return;
     }
-    return true;
+    this.e = 0;
   }
   
   public boolean e()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c.a(0, b());
   }
   
   public boolean equals(Object paramObject)
@@ -534,39 +411,160 @@ public abstract class DynamicTextItem
         return false;
       }
       paramObject = (DynamicTextItem)paramObject;
-      if (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) {
+      if (this.b != paramObject.b) {
         return false;
       }
-      DynamicTextItem.TextMap localTextMap = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap;
+      DynamicTextItem.TextMap localTextMap = this.c;
       if (localTextMap != null) {
-        return localTextMap.equals(paramObject.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap);
+        return localTextMap.equals(paramObject.c);
       }
-      return paramObject.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap == null;
+      return paramObject.c == null;
     }
     return false;
   }
   
-  public boolean f()
+  public InputFilter f()
   {
+    return null;
+  }
+  
+  public boolean f(int paramInt)
+  {
+    if ((((Integer)this.j.a).intValue() != paramInt) && (((Integer)this.j.a).intValue() != -1)) {
+      return false;
+    }
+    return ((Boolean)this.j.b).booleanValue();
+  }
+  
+  public int g()
+  {
+    if (this.e < 0) {
+      this.e = 0;
+    }
+    if (this.e >= this.c.b()) {
+      return 0;
+    }
     return this.e;
+  }
+  
+  public void g(int paramInt)
+  {
+    this.l = true;
+    this.k = paramInt;
+  }
+  
+  public final boolean h()
+  {
+    return b() > 1;
   }
   
   public int hashCode()
   {
-    int j = this.jdField_b_of_type_Int;
-    DynamicTextItem.TextMap localTextMap = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap;
-    int i;
+    int i2 = this.b;
+    DynamicTextItem.TextMap localTextMap = this.c;
+    int i1;
     if (localTextMap != null) {
-      i = localTextMap.hashCode();
+      i1 = localTextMap.hashCode();
     } else {
-      i = 0;
+      i1 = 0;
     }
-    return j * 31 + i;
+    return i2 * 31 + i1;
+  }
+  
+  @NonNull
+  public DynamicTextItem.TextMap i()
+  {
+    return this.c;
+  }
+  
+  @NonNull
+  public ArrayList<String> j()
+  {
+    return new ArrayList(this.c.a());
+  }
+  
+  public int k()
+  {
+    return this.b;
+  }
+  
+  public boolean l()
+  {
+    ArrayList localArrayList = j();
+    List localList = DynamicTextBuilder.a(this.b);
+    if (localList == null) {
+      return false;
+    }
+    if (localArrayList.size() < localList.size()) {
+      return false;
+    }
+    int i1 = 0;
+    while (i1 < localList.size())
+    {
+      String str = (String)localList.get(i1);
+      if (str == null)
+      {
+        if (localArrayList.get(i1) != null) {
+          return false;
+        }
+      }
+      else if (!str.equals(localArrayList.get(i1))) {
+        return false;
+      }
+      i1 += 1;
+    }
+    return true;
+  }
+  
+  public boolean m()
+  {
+    return this.d;
+  }
+  
+  public String n()
+  {
+    return this.c.a(g());
+  }
+  
+  public void o()
+  {
+    Handler localHandler = this.h;
+    if (localHandler != null) {
+      localHandler.removeCallbacksAndMessages(null);
+    }
+    this.f = false;
+  }
+  
+  public void p()
+  {
+    o();
+    this.j.b = Boolean.valueOf(false);
+  }
+  
+  public boolean q()
+  {
+    return this.g;
+  }
+  
+  public void r()
+  {
+    this.g = false;
+  }
+  
+  @NonNull
+  public Paint s()
+  {
+    return this.i;
+  }
+  
+  public int t()
+  {
+    return this.k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.DynamicTextItem
  * JD-Core Version:    0.7.0.1
  */

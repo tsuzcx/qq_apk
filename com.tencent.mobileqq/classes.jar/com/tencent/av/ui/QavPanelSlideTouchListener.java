@@ -13,120 +13,119 @@ import com.tencent.av.widget.shimmer.ShimmerTextView;
 public class QavPanelSlideTouchListener
   implements View.OnTouchListener
 {
-  final int jdField_a_of_type_Int;
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  public QavPanel.SlideAcceptListener a;
-  ShimmerTextView jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = -1;
-  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  ImageView jdField_b_of_type_AndroidWidgetImageView = null;
-  int jdField_c_of_type_Int = 0;
-  Rect jdField_c_of_type_AndroidGraphicsRect = new Rect();
-  ImageView jdField_c_of_type_AndroidWidgetImageView = null;
+  public QavPanel.SlideAcceptListener a = null;
+  boolean b = false;
+  final int c;
+  int d = -1;
+  Rect e = new Rect();
+  Rect f = new Rect();
+  Rect g = new Rect();
+  ImageView h = null;
+  ImageView i = null;
+  ShimmerTextView j = null;
+  ImageView k = null;
+  int l = 0;
   
   public QavPanelSlideTouchListener(Context paramContext, ImageView paramImageView1, ImageView paramImageView2, ShimmerTextView paramShimmerTextView, ImageView paramImageView3)
   {
-    this.jdField_a_of_type_ComTencentAvUiQavPanel$SlideAcceptListener = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView1;
-    this.jdField_b_of_type_AndroidWidgetImageView = paramImageView2;
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = paramShimmerTextView;
-    this.jdField_c_of_type_AndroidWidgetImageView = paramImageView3;
-    this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297854);
-    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.h = paramImageView1;
+    this.i = paramImageView2;
+    this.j = paramShimmerTextView;
+    this.k = paramImageView3;
+    this.l = paramContext.getResources().getDimensionPixelSize(2131298524);
+    this.c = ViewConfiguration.get(paramContext).getScaledTouchSlop();
   }
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.left = (this.jdField_b_of_type_AndroidGraphicsRect.left + paramInt - this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsRect.right = (this.jdField_b_of_type_AndroidGraphicsRect.right + paramInt - this.jdField_b_of_type_Int);
-    paramInt = this.jdField_a_of_type_AndroidGraphicsRect.right;
-    int i = this.jdField_c_of_type_Int;
+    this.e.left = (this.f.left + paramInt - this.d);
+    this.e.right = (this.f.right + paramInt - this.d);
+    paramInt = this.e.right;
+    int m = this.l;
     Rect localRect;
-    if (paramInt >= i)
+    if (paramInt >= m)
     {
-      localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-      localRect.right = i;
-      localRect.left = (localRect.right - this.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+      localRect = this.e;
+      localRect.right = m;
+      localRect.left = (localRect.right - this.h.getWidth());
     }
-    if (this.jdField_a_of_type_AndroidGraphicsRect.left <= 0)
+    if (this.e.left <= 0)
     {
-      localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      localRect = this.e;
       localRect.left = 0;
-      localRect.right = (localRect.left + this.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+      localRect.right = (localRect.left + this.h.getWidth());
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.layout(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_AndroidGraphicsRect.bottom);
-    this.jdField_c_of_type_AndroidWidgetImageView.layout(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_c_of_type_AndroidGraphicsRect.bottom);
+    this.h.layout(this.e.left, this.f.top, this.e.right, this.f.bottom);
+    this.k.layout(this.e.left, this.g.top, this.g.right, this.g.bottom);
   }
   
   void a()
   {
-    this.jdField_b_of_type_AndroidGraphicsRect.top = this.jdField_a_of_type_AndroidWidgetImageView.getTop();
-    this.jdField_b_of_type_AndroidGraphicsRect.bottom = this.jdField_a_of_type_AndroidWidgetImageView.getBottom();
-    this.jdField_b_of_type_AndroidGraphicsRect.left = this.jdField_a_of_type_AndroidWidgetImageView.getLeft();
-    this.jdField_b_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidWidgetImageView.getRight();
-    this.jdField_a_of_type_AndroidGraphicsRect.left = this.jdField_a_of_type_AndroidWidgetImageView.getLeft();
-    this.jdField_a_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidWidgetImageView.getRight();
-    this.jdField_c_of_type_AndroidGraphicsRect.top = this.jdField_c_of_type_AndroidWidgetImageView.getTop();
-    this.jdField_c_of_type_AndroidGraphicsRect.bottom = this.jdField_c_of_type_AndroidWidgetImageView.getBottom();
-    this.jdField_c_of_type_AndroidGraphicsRect.left = this.jdField_c_of_type_AndroidWidgetImageView.getLeft();
-    this.jdField_c_of_type_AndroidGraphicsRect.right = this.jdField_c_of_type_AndroidWidgetImageView.getRight();
-    this.jdField_a_of_type_Boolean = false;
+    this.f.top = this.h.getTop();
+    this.f.bottom = this.h.getBottom();
+    this.f.left = this.h.getLeft();
+    this.f.right = this.h.getRight();
+    this.e.left = this.h.getLeft();
+    this.e.right = this.h.getRight();
+    this.g.top = this.k.getTop();
+    this.g.bottom = this.k.getBottom();
+    this.g.left = this.k.getLeft();
+    this.g.right = this.k.getRight();
+    this.b = false;
   }
   
   public void a(QavPanel.SlideAcceptListener paramSlideAcceptListener)
   {
-    this.jdField_a_of_type_ComTencentAvUiQavPanel$SlideAcceptListener = paramSlideAcceptListener;
+    this.a = paramSlideAcceptListener;
   }
   
   public void b()
   {
-    a(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    a(this.d);
+    this.j.setVisibility(0);
+    this.i.setVisibility(0);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = (int)paramMotionEvent.getRawX();
-    int j = paramMotionEvent.getAction();
-    if (j != 0)
+    int m = (int)paramMotionEvent.getRawX();
+    int n = paramMotionEvent.getAction();
+    if (n != 0)
     {
-      if (j != 1)
+      if (n != 1)
       {
-        if (j != 2) {
+        if (n != 2) {
           return true;
         }
-        if (this.jdField_a_of_type_Boolean)
+        if (this.b)
         {
-          a(i);
+          a(m);
           return true;
         }
-        if (Math.abs(i - this.jdField_b_of_type_Int) > this.jdField_a_of_type_Int)
+        if (Math.abs(m - this.d) > this.c)
         {
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(4);
-          this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+          this.b = true;
+          this.j.setVisibility(4);
+          this.i.setVisibility(4);
           return true;
         }
       }
-      else if (this.jdField_a_of_type_AndroidGraphicsRect.right == this.jdField_c_of_type_Int)
+      else if (this.e.right == this.l)
       {
-        paramView = this.jdField_a_of_type_ComTencentAvUiQavPanel$SlideAcceptListener;
+        paramView = this.a;
         if (paramView != null)
         {
           paramView.a(true);
           return true;
         }
       }
-      else if (this.jdField_a_of_type_AndroidGraphicsRect.right < this.jdField_c_of_type_Int)
+      else if (this.e.right < this.l)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.layout(this.jdField_b_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_AndroidGraphicsRect.top, this.jdField_b_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_AndroidGraphicsRect.bottom);
-        this.jdField_c_of_type_AndroidWidgetImageView.layout(this.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_c_of_type_AndroidGraphicsRect.bottom);
-        this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramView = this.jdField_a_of_type_ComTencentAvUiQavPanel$SlideAcceptListener;
+        this.h.layout(this.f.left, this.f.top, this.f.right, this.f.bottom);
+        this.k.layout(this.g.left, this.g.top, this.g.right, this.g.bottom);
+        this.j.setVisibility(0);
+        this.i.setVisibility(0);
+        paramView = this.a;
         if (paramView != null)
         {
           paramView.a(false);
@@ -136,7 +135,7 @@ public class QavPanelSlideTouchListener
     }
     else
     {
-      this.jdField_b_of_type_Int = i;
+      this.d = m;
       a();
     }
     return true;

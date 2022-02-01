@@ -16,7 +16,7 @@ class RedTouchManager$5
   
   public void run()
   {
-    Object localObject = this.this$0.b(this.a).iterator();
+    Object localObject = this.this$0.d(this.a).iterator();
     for (;;)
     {
       if (((Iterator)localObject).hasNext())
@@ -49,7 +49,7 @@ class RedTouchManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchManager.5
  * JD-Core Version:    0.7.0.1
  */

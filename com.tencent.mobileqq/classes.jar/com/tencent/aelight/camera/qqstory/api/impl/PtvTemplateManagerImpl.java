@@ -17,7 +17,7 @@ public class PtvTemplateManagerImpl
   
   public boolean hasDownloadFailed()
   {
-    return PtvTemplateManager.a().b();
+    return PtvTemplateManager.a().c();
   }
   
   public void initLocalDoodleInfo(AppInterface paramAppInterface, DoodleInfoLoadObserver paramDoodleInfoLoadObserver)
@@ -27,12 +27,12 @@ public class PtvTemplateManagerImpl
   
   public boolean isDoodleConfigFileExist()
   {
-    return PtvTemplateManager.a();
+    return PtvTemplateManager.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.qqstory.api.impl.PtvTemplateManagerImpl
  * JD-Core Version:    0.7.0.1
  */

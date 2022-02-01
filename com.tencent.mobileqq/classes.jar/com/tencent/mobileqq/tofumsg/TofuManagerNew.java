@@ -11,6 +11,7 @@ import com.tencent.mobileqq.activity.aio.BeancurdManager;
 import com.tencent.mobileqq.activity.aio.BeancurdMsg;
 import com.tencent.mobileqq.app.MessageHandlerUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.beancurd.IBeancurdUpdater;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -27,75 +28,45 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class TofuManagerNew
   implements IBeancurdUpdater, ITofuManagerNew
 {
-  private BeancurdHandler jdField_a_of_type_ComTencentMobileqqBeancurdHandler;
+  private final QQAppInterface a;
+  private BeancurdHandler b;
+  private final TofuConfigNew c;
+  private final ConcurrentHashMap<String, CopyOnWriteArrayList<TofuLimitMsg>> d;
+  private final CopyOnWriteArrayList<NewBeancurdMsg> e;
+  private volatile boolean f = false;
+  private volatile boolean g = false;
   @Nullable
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final TofuConfigNew jdField_a_of_type_ComTencentMobileqqTofumsgTofuConfigNew;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final ConcurrentHashMap<String, CopyOnWriteArrayList<TofuLimitMsg>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private final CopyOnWriteArrayList<NewBeancurdMsg> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private volatile boolean b = false;
+  private BaseSessionInfo h;
+  private final Object i;
   
   public TofuManagerNew()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqTofumsgTofuConfigNew = null;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.a = null;
+    this.c = null;
+    this.d = new ConcurrentHashMap();
+    this.e = new CopyOnWriteArrayList();
+    this.i = new Object();
   }
   
   public TofuManagerNew(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqBeancurdHandler = ((BeancurdHandler)paramQQAppInterface.getBusinessHandler(BeancurdHandler.class.getName()));
-    this.jdField_a_of_type_ComTencentMobileqqBeancurdHandler.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqTofumsgTofuConfigNew = new TofuConfigNew();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  private MessageRecord a(@NonNull NewBeancurdMsg paramNewBeancurdMsg)
-  {
-    String str = paramNewBeancurdMsg.frienduin;
-    MessageRecord localMessageRecord = MessageRecordFactory.a(-7016);
-    localMessageRecord.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), str, str, paramNewBeancurdMsg.extensionInfoStr, -1L, -7016, 0, -1L);
-    localMessageRecord.isread = true;
-    return localMessageRecord;
-  }
-  
-  @NonNull
-  private CopyOnWriteArrayList<TofuLimitMsg> a(String paramString)
-  {
-    Object localObject1 = (CopyOnWriteArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localObject1 == null) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        localObject1 = localCopyOnWriteArrayList;
-        if (localCopyOnWriteArrayList == null)
-        {
-          localObject1 = TofuProxy.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
-        }
-        return localObject1;
-      }
-    }
-    return localObject1;
+    this.a = paramQQAppInterface;
+    this.b = ((BeancurdHandler)paramQQAppInterface.getBusinessHandler(BeancurdHandler.class.getName()));
+    this.b.a(this);
+    this.c = new TofuConfigNew();
+    this.d = new ConcurrentHashMap();
+    this.e = new CopyOnWriteArrayList();
+    this.i = new Object();
   }
   
   private CopyOnWriteArrayList<TofuLimitMsg> a(CopyOnWriteArrayList<TofuLimitMsg> paramCopyOnWriteArrayList)
   {
     CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    String str = TofuManagerNewUtil.a();
     paramCopyOnWriteArrayList = paramCopyOnWriteArrayList.iterator();
     while (paramCopyOnWriteArrayList.hasNext())
     {
       TofuLimitMsg localTofuLimitMsg = (TofuLimitMsg)paramCopyOnWriteArrayList.next();
-      if (!a(localTofuLimitMsg, str)) {
+      if (b(localTofuLimitMsg)) {
         localCopyOnWriteArrayList.add(localTofuLimitMsg);
       }
     }
@@ -104,22 +75,13 @@ public class TofuManagerNew
   
   private void a(@NonNull NewBeancurdMsg paramNewBeancurdMsg, TofuLimitMsg paramTofuLimitMsg)
   {
-    MessageRecord localMessageRecord = a(paramNewBeancurdMsg);
-    if (!MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, false))
+    MessageRecord localMessageRecord = c(paramNewBeancurdMsg);
+    if (!MessageHandlerUtils.a(this.a, localMessageRecord, false))
     {
       a(paramNewBeancurdMsg.frienduin, (int)paramTofuLimitMsg.businessId);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageRecord, localMessageRecord.selfuin);
-      a(paramTofuLimitMsg);
+      this.a.getMessageFacade().a(localMessageRecord, localMessageRecord.selfuin);
+      c(paramTofuLimitMsg);
     }
-  }
-  
-  private void a(@NonNull TofuLimitMsg paramTofuLimitMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TofuNew.TofuManagerNew", 2, new Object[] { "realInsertTofuMsg, msg = ", paramTofuLimitMsg.toString() });
-    }
-    a(paramTofuLimitMsg.friendUin).add(paramTofuLimitMsg);
-    a(new TofuManagerNew.1(this, paramTofuLimitMsg));
   }
   
   private void a(Runnable paramRunnable)
@@ -130,7 +92,7 @@ public class TofuManagerNew
   private void a(String paramString, int paramInt)
   {
     Object localObject = a(paramInt);
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString, 0, (int[])localObject);
+    paramString = this.a.getMessageFacade().a(paramString, 0, (int[])localObject);
     if (!ListUtils.a(paramString))
     {
       paramString = paramString.iterator();
@@ -139,8 +101,8 @@ public class TofuManagerNew
         localObject = (MessageRecord)paramString.next();
         if (localObject != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).msgtype, ((MessageRecord)localObject).uniseq);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq);
+          this.a.getMessageFacade().a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).msgtype, ((MessageRecord)localObject).uniseq);
+          this.a.getMessageFacade().h(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq);
         }
       }
     }
@@ -148,17 +110,7 @@ public class TofuManagerNew
   
   private boolean a(TofuLimitMsg paramTofuLimitMsg)
   {
-    return a(a(paramTofuLimitMsg.friendUin), paramTofuLimitMsg);
-  }
-  
-  private boolean a(TofuLimitMsg paramTofuLimitMsg, String paramString)
-  {
-    return TextUtils.equals(TofuManagerNewUtil.a(paramTofuLimitMsg.insertMsgTime), paramString) ^ true;
-  }
-  
-  private boolean a(String paramString)
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo == null) || (!this.jdField_a_of_type_Boolean) || (!TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a, paramString)) || (!this.b);
+    return a(b(paramTofuLimitMsg.friendUin), paramTofuLimitMsg);
   }
   
   private boolean a(CopyOnWriteArrayList<TofuLimitMsg> paramCopyOnWriteArrayList, TofuLimitMsg paramTofuLimitMsg)
@@ -170,14 +122,14 @@ public class TofuManagerNew
       while (localIterator.hasNext()) {
         if (TextUtils.equals(((TofuLimitMsg)localIterator.next()).businessMsgId, paramTofuLimitMsg.businessMsgId))
         {
-          i = 1;
+          j = 1;
           break label56;
         }
       }
     }
-    int i = 0;
+    int j = 0;
     label56:
-    if (i != 0) {
+    if (j != 0) {
       if (QLog.isColorLevel()) {
         QLog.d("TofuNew.TofuManagerNew", 2, "isRepeat = true");
       }
@@ -185,52 +137,100 @@ public class TofuManagerNew
     for (;;)
     {
       bool = false;
-      break label266;
+      break label261;
       paramCopyOnWriteArrayList = a(paramCopyOnWriteArrayList);
       localIterator = paramCopyOnWriteArrayList.iterator();
-      i = 0;
+      j = 0;
       while (localIterator.hasNext()) {
         if (((TofuLimitMsg)localIterator.next()).businessId == paramTofuLimitMsg.businessId) {
-          i += 1;
+          j += 1;
         }
       }
-      if (i >= this.jdField_a_of_type_ComTencentMobileqqTofumsgTofuConfigNew.jdField_a_of_type_Int)
+      if (j >= this.c.a)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("TofuNew.TofuManagerNew", 2, new Object[] { "businessMsgCount = ", Integer.valueOf(i), ", config = ", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTofumsgTofuConfigNew.jdField_a_of_type_Int) });
+          QLog.d("TofuNew.TofuManagerNew", 2, new Object[] { "businessMsgCount = ", Integer.valueOf(j), ", config = ", Integer.valueOf(this.c.a) });
         }
       }
       else
       {
-        if (ListUtils.a(paramCopyOnWriteArrayList) < this.jdField_a_of_type_ComTencentMobileqqTofumsgTofuConfigNew.b) {
+        if (ListUtils.b(paramCopyOnWriteArrayList) < this.c.b) {
           break;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("TofuNew.TofuManagerNew", 2, new Object[] { "ListUtils.size(filterMsgList) = ", Integer.valueOf(ListUtils.a(paramCopyOnWriteArrayList)), ", config = ", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTofumsgTofuConfigNew.b) });
+          QLog.d("TofuNew.TofuManagerNew", 2, new Object[] { "ListUtils.size(filterMsgList) = ", Integer.valueOf(ListUtils.b(paramCopyOnWriteArrayList)), ", config = ", Integer.valueOf(this.c.b) });
         }
       }
     }
     boolean bool = true;
-    label266:
+    label261:
     QLog.d("TofuNew.TofuManagerNew", 1, new Object[] { "realCheckCanInsert tofuMsg = ", paramTofuLimitMsg.toString(), ", canInsert = ", Boolean.valueOf(bool) });
     return bool;
   }
   
+  @NonNull
+  private CopyOnWriteArrayList<TofuLimitMsg> b(String paramString)
+  {
+    Object localObject1 = (CopyOnWriteArrayList)this.d.get(paramString);
+    if (localObject1 == null) {
+      synchronized (this.i)
+      {
+        CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.d.get(paramString);
+        localObject1 = localCopyOnWriteArrayList;
+        if (localCopyOnWriteArrayList == null)
+        {
+          localObject1 = TofuProxy.a().a(this.a, paramString);
+          this.d.put(paramString, localObject1);
+        }
+        return localObject1;
+      }
+    }
+    return localObject1;
+  }
+  
   private void b()
   {
-    CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList(this.e);
+    this.e.clear();
     a(new TofuManagerNew.3(this, localCopyOnWriteArrayList));
   }
   
-  private void b(String paramString)
+  private boolean b(TofuLimitMsg paramTofuLimitMsg)
   {
-    a(new TofuManagerNew.2(this, paramString));
+    return NetConnInfoCenter.getServerTime() * 1000L - paramTofuLimitMsg.insertMsgTime < this.c.c;
   }
   
-  private void c(@NonNull NewBeancurdMsg paramNewBeancurdMsg)
+  private MessageRecord c(@NonNull NewBeancurdMsg paramNewBeancurdMsg)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramNewBeancurdMsg);
+    String str = paramNewBeancurdMsg.frienduin;
+    MessageRecord localMessageRecord = MessageRecordFactory.a(-7016);
+    localMessageRecord.init(this.a.getAccount(), str, str, paramNewBeancurdMsg.extensionInfoStr, -1L, -7016, 0, -1L);
+    localMessageRecord.isread = true;
+    return localMessageRecord;
+  }
+  
+  private void c(@NonNull TofuLimitMsg paramTofuLimitMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TofuNew.TofuManagerNew", 2, new Object[] { "realInsertTofuMsg, msg = ", paramTofuLimitMsg.toString() });
+    }
+    b(paramTofuLimitMsg.friendUin).add(paramTofuLimitMsg);
+    a(new TofuManagerNew.1(this, paramTofuLimitMsg));
+  }
+  
+  private boolean c(String paramString)
+  {
+    return (this.h == null) || (!this.f) || (!TextUtils.equals(this.h.b, paramString)) || (!this.g);
+  }
+  
+  private void d(@NonNull NewBeancurdMsg paramNewBeancurdMsg)
+  {
+    this.e.add(paramNewBeancurdMsg);
+  }
+  
+  private void d(String paramString)
+  {
+    a(new TofuManagerNew.2(this, paramString));
   }
   
   public void a()
@@ -239,21 +239,21 @@ public class TofuManagerNew
       QLog.d("TofuNew.TofuManagerNew", 2, "onAIODestroy");
     }
     b();
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = null;
+    this.f = false;
+    this.g = false;
+    this.h = null;
   }
   
   public void a(Context paramContext, String paramString1, String paramString2)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.f)
     {
       if (QLog.isColorLevel()) {
         QLog.i("TofuNew.TofuManagerNew", 1, "requestTofuMsg err: not has AIO");
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqBeancurdHandler.a(paramContext, paramString1, paramString2);
+    this.b.a(paramContext, paramString1, paramString2);
   }
   
   public void a(BaseSessionInfo paramBaseSessionInfo)
@@ -262,34 +262,36 @@ public class TofuManagerNew
     {
       String str;
       if (paramBaseSessionInfo != null) {
-        str = paramBaseSessionInfo.a;
+        str = paramBaseSessionInfo.b;
       } else {
         str = "null";
       }
       QLog.d("TofuNew.TofuManagerNew", 2, new Object[] { "onAIOCreate: curFriendUin = ", str });
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.b = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
-    paramBaseSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-    if ((paramBaseSessionInfo != null) && (!TextUtils.isEmpty(paramBaseSessionInfo.a))) {
-      b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a);
+    this.f = true;
+    this.g = false;
+    this.h = paramBaseSessionInfo;
+    paramBaseSessionInfo = this.h;
+    if ((paramBaseSessionInfo != null) && (!TextUtils.isEmpty(paramBaseSessionInfo.b))) {
+      d(this.h.b);
     }
-  }
-  
-  public void a(@NonNull BeancurdMsg paramBeancurdMsg)
-  {
-    a(TofuLimitMsg.create(paramBeancurdMsg));
   }
   
   public void a(NewBeancurdMsg paramNewBeancurdMsg)
   {
-    b(paramNewBeancurdMsg);
+    BeancurdManager localBeancurdManager = (BeancurdManager)this.a.getManager(QQManagerFactory.BEANCURD_MANAGER);
+    if (BeancurdManager.c((int)paramNewBeancurdMsg.busiid))
+    {
+      if (!BeancurdManager.d((int)paramNewBeancurdMsg.busiid)) {
+        return;
+      }
+      b(paramNewBeancurdMsg);
+    }
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTofumsgTofuConfigNew.a(paramString);
+    this.c.a(paramString);
   }
   
   public boolean a(BeancurdMsg paramBeancurdMsg)
@@ -304,7 +306,7 @@ public class TofuManagerNew
     if (paramMessageRecord != null)
     {
       bool1 = bool2;
-      if ((NetConnInfoCenter.getServerTime() - paramMessageRecord.time) * 1000L < this.jdField_a_of_type_ComTencentMobileqqTofumsgTofuConfigNew.jdField_a_of_type_Long) {
+      if ((NetConnInfoCenter.getServerTime() - paramMessageRecord.time) * 1000L < this.c.c) {
         bool1 = true;
       }
     }
@@ -313,14 +315,14 @@ public class TofuManagerNew
   
   protected int[] a(int paramInt)
   {
-    int j = BeancurdManager.a(paramInt);
+    int k = BeancurdManager.a(paramInt);
     int[] arrayOfInt = BeancurdManager.a;
-    int k = arrayOfInt.length;
-    int i = 0;
+    int m = arrayOfInt.length;
+    int j = 0;
     paramInt = 0;
-    while (paramInt < k)
+    while (paramInt < m)
     {
-      if (arrayOfInt[paramInt] == j)
+      if (arrayOfInt[paramInt] == k)
       {
         paramInt = 1;
         break label47;
@@ -332,15 +334,15 @@ public class TofuManagerNew
     if (paramInt != 0) {
       return BeancurdManager.a;
     }
-    k = BeancurdManager.a.length + 1;
-    arrayOfInt = new int[k];
-    paramInt = i;
-    while (paramInt < k - 1)
+    m = BeancurdManager.a.length + 1;
+    arrayOfInt = new int[m];
+    paramInt = j;
+    while (paramInt < m - 1)
     {
       arrayOfInt[paramInt] = BeancurdManager.a[paramInt];
       paramInt += 1;
     }
-    arrayOfInt[paramInt] = j;
+    arrayOfInt[paramInt] = k;
     return arrayOfInt;
   }
   
@@ -349,16 +351,21 @@ public class TofuManagerNew
     if (QLog.isColorLevel())
     {
       if (paramBaseSessionInfo != null) {
-        localObject = paramBaseSessionInfo.a;
+        localObject = paramBaseSessionInfo.b;
       } else {
         localObject = "null";
       }
       QLog.d("TofuNew.TofuManagerNew", 2, new Object[] { "onSendMsg: friendUin = ", localObject });
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-    if ((localObject != null) && (paramBaseSessionInfo != null) && (TextUtils.equals(((BaseSessionInfo)localObject).a, paramBaseSessionInfo.a))) {
-      this.b = true;
+    Object localObject = this.h;
+    if ((localObject != null) && (paramBaseSessionInfo != null) && (TextUtils.equals(((BaseSessionInfo)localObject).b, paramBaseSessionInfo.b))) {
+      this.g = true;
     }
+  }
+  
+  public void b(@NonNull BeancurdMsg paramBeancurdMsg)
+  {
+    c(TofuLimitMsg.create(paramBeancurdMsg));
   }
   
   public void b(@NonNull NewBeancurdMsg paramNewBeancurdMsg)
@@ -369,22 +376,22 @@ public class TofuManagerNew
       QLog.d("TofuNew.TofuManagerNew", 1, "insertNewTofuMsg: but can not insert!");
       return;
     }
-    if (a(paramNewBeancurdMsg.frienduin))
+    if (c(paramNewBeancurdMsg.frienduin))
     {
       a(paramNewBeancurdMsg, localTofuLimitMsg);
       return;
     }
-    c(paramNewBeancurdMsg);
+    d(paramNewBeancurdMsg);
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.d.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuManagerNew
  * JD-Core Version:    0.7.0.1
  */

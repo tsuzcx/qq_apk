@@ -19,21 +19,21 @@ class AvatarWallViewPager$1
       if (!AvatarWallViewPager.b(this.a)) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount() > 1)
+      if (this.a.e.getCount() > 1)
       {
         paramMessage = this.a;
-        paramMessage.b += 1;
+        paramMessage.p += 1;
         paramMessage = this.a;
-        paramMessage.b %= this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.b, true);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
+        paramMessage.p %= this.a.e.getCount();
+        this.a.c.setCurrentItem(this.a.p, true);
+        this.a.r.sendMessageDelayed(this.a.r.obtainMessage(), 4000L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallViewPager.1
  * JD-Core Version:    0.7.0.1
  */

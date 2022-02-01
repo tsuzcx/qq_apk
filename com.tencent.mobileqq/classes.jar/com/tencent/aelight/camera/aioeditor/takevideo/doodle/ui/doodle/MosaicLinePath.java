@@ -9,42 +9,42 @@ import java.util.List;
 public class MosaicLinePath
   extends DoodleLinePath
 {
-  public Path a;
-  ArrayList<PointAction> jdField_a_of_type_JavaUtilArrayList;
-  List<Integer> jdField_a_of_type_JavaUtilList;
-  public int b;
-  List<Integer> b;
+  public Path b;
   public int c;
+  public int d;
+  List<Integer> e;
+  List<Integer> f;
+  ArrayList<PointAction> g;
   
   public MosaicLinePath(int paramInt1, int paramInt2)
   {
     super(paramInt1);
-    this.c = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.jdField_b_of_type_JavaUtilList = new LinkedList();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.d = paramInt2;
+    this.b = new Path();
+    this.e = new LinkedList();
+    this.f = new LinkedList();
+    this.g = new ArrayList();
   }
   
   public MosaicLinePath(DoodleLinePath paramDoodleLinePath, float paramFloat)
   {
-    super(paramDoodleLinePath.jdField_a_of_type_Int);
+    super(paramDoodleLinePath.a);
     if ((paramDoodleLinePath instanceof MosaicLinePath))
     {
       paramDoodleLinePath = (MosaicLinePath)paramDoodleLinePath;
       Matrix localMatrix = new Matrix();
       localMatrix.postScale(paramFloat, paramFloat);
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramDoodleLinePath.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-      this.jdField_a_of_type_Int = paramDoodleLinePath.jdField_a_of_type_Int;
-      this.jdField_b_of_type_Int = paramDoodleLinePath.jdField_b_of_type_Int;
-      this.c = ((int)(paramDoodleLinePath.c * paramFloat));
+      this.b = new Path();
+      this.b.addPath(paramDoodleLinePath.b, localMatrix);
+      this.a = paramDoodleLinePath.a;
+      this.c = paramDoodleLinePath.c;
+      this.d = ((int)(paramDoodleLinePath.d * paramFloat));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.MosaicLinePath
  * JD-Core Version:    0.7.0.1
  */

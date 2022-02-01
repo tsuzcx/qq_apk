@@ -5,12 +5,12 @@ import android.os.SystemClock;
 public class LineDoodleItem$DistanceItem
 {
   public float a;
-  public long a;
+  public long b;
   
   public LineDoodleItem$DistanceItem(LineDoodleItem paramLineDoodleItem, float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.a = paramFloat;
+    this.b = SystemClock.elapsedRealtime();
   }
 }
 

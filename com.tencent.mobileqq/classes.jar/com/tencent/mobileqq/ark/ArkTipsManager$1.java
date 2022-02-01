@@ -18,7 +18,7 @@ class ArkTipsManager$1
       while (paramList.hasNext())
       {
         MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        if ((localMessageRecord != null) && (localMessageRecord.uniseq == ArkTipsManager.a(this.a).b)) {
+        if ((localMessageRecord != null) && (localMessageRecord.uniseq == ArkTipsManager.a(this.a).g)) {
           this.a.a(localMessageRecord.uniseq);
         }
       }
@@ -27,7 +27,7 @@ class ArkTipsManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkTipsManager.1
  * JD-Core Version:    0.7.0.1
  */

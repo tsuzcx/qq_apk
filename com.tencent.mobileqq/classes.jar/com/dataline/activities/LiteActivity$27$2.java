@@ -16,35 +16,35 @@ class LiteActivity$27$2
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.a(1048576L);
+    if (!this.a) {
+      this.e.a.a(1048576L);
     }
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.app.getMessageFacade().a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
-    DataLineMsgSet localDataLineMsgSet = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.app.getDataLineMsgProxy(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
+    DataLineMsgRecord localDataLineMsgRecord = this.e.a.app.getMessageFacade().d(this.b).a(this.c);
+    DataLineMsgSet localDataLineMsgSet = this.e.a.app.getDataLineMsgProxy(this.b).c(this.c);
     if ((localDataLineMsgSet != null) && (!localDataLineMsgSet.isSingle()))
     {
-      if (!this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentWidgetXListView)) {
-        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
+      if (!this.e.a.m.a(this.c, this.e.a.f)) {
+        this.e.a.m.notifyDataSetChanged();
       }
     }
     else
     {
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
+      this.e.a.m.notifyDataSetChanged();
       if ((localDataLineMsgRecord != null) && (!localDataLineMsgRecord.bIsResendOrRecvFile))
       {
-        LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentWidgetXListView);
-        LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentWidgetXListView);
+        LiteActivity.a(this.e.a.g, this.e.a.f);
+        LiteActivity.a(this.e.a.f);
       }
     }
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.app.getMessageFacade().a(this.jdField_a_of_type_Int).e();
+    this.e.a.app.getMessageFacade().d(this.b).g();
     if (QLog.isColorLevel())
     {
-      String str = LiteActivity.jdField_a_of_type_JavaLangString;
+      String str = LiteActivity.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("LiteActivity.onRecvFile, msgId[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.c);
       localStringBuilder.append("], sPath = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       localStringBuilder.append("], set[");
       localStringBuilder.append(localDataLineMsgSet);
       localStringBuilder.append("], msgItem[");

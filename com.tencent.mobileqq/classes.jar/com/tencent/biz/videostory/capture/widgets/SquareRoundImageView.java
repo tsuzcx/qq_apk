@@ -31,22 +31,22 @@ import com.tencent.qphone.base.util.QLog;
 public class SquareRoundImageView
   extends ImageView
 {
-  private static int jdField_a_of_type_Int = ScreenUtil.dip2px(2.0F);
-  private BitmapShader jdField_a_of_type_AndroidGraphicsBitmapShader;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private PaintFlagsDrawFilter jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter;
+  private static int b = ScreenUtil.dip2px(2.0F);
   protected Path a;
-  private SquareRoundImageView.ShaderHandler jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = jdField_a_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 0;
-  private Paint jdField_c_of_type_AndroidGraphicsPaint;
-  private int d = 0;
-  private int e = 0;
-  private int f = 0;
+  private int c = b;
+  private Paint d;
+  private Paint e;
+  private Paint f;
+  private Matrix g;
+  private PaintFlagsDrawFilter h;
+  private BitmapShader i;
+  private SquareRoundImageView.ShaderHandler j;
+  private int k = 0;
+  private int l = 0;
+  private int m = 0;
+  private int n = 0;
+  private boolean o;
+  private boolean p = false;
   
   public SquareRoundImageView(Context paramContext)
   {
@@ -57,16 +57,16 @@ public class SquareRoundImageView
   {
     super(paramContext, paramAttributeSet, 0);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SquareRoundImageView);
-    int i = paramContext.getColor(0, Color.parseColor("#74000000"));
-    this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(1, 2);
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(i);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter = new PaintFlagsDrawFilter(0, 3);
+    int i1 = paramContext.getColor(0, Color.parseColor("#74000000"));
+    this.c = paramContext.getDimensionPixelSize(1, 2);
+    this.a = new Path();
+    this.d = new Paint();
+    this.d.setAntiAlias(true);
+    this.f = new Paint();
+    this.f.setAntiAlias(true);
+    this.f.setColor(i1);
+    this.f.setStyle(Paint.Style.FILL);
+    this.h = new PaintFlagsDrawFilter(0, 3);
     paramContext.recycle();
     if (Build.VERSION.SDK_INT <= 19) {
       setLayerType(1, null);
@@ -75,8 +75,8 @@ public class SquareRoundImageView
   
   private Bitmap a(Drawable paramDrawable)
   {
-    int i;
-    int j;
+    int i1;
+    int i2;
     if (paramDrawable != null)
     {
       if (Build.BRAND.contains("Meitu")) {
@@ -85,19 +85,19 @@ public class SquareRoundImageView
       if ((paramDrawable instanceof BitmapDrawable)) {
         return ((BitmapDrawable)paramDrawable).getBitmap();
       }
-      i = paramDrawable.getIntrinsicWidth();
-      j = paramDrawable.getIntrinsicHeight();
-      if (i > 0) {
-        if (j <= 0) {
+      i1 = paramDrawable.getIntrinsicWidth();
+      i2 = paramDrawable.getIntrinsicHeight();
+      if (i1 > 0) {
+        if (i2 <= 0) {
           return null;
         }
       }
     }
     try
     {
-      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      Bitmap localBitmap = Bitmap.createBitmap(i1, i2, Bitmap.Config.ARGB_8888);
       Canvas localCanvas = new Canvas(localBitmap);
-      paramDrawable.setBounds(0, 0, i, j);
+      paramDrawable.setBounds(0, 0, i1, i2);
       paramDrawable.draw(localCanvas);
       return localBitmap;
     }
@@ -108,7 +108,7 @@ public class SquareRoundImageView
   
   private void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.a.reset();
     if (paramInt1 > 0)
     {
       if (paramInt2 <= 0) {
@@ -119,32 +119,32 @@ public class SquareRoundImageView
       float f1 = Math.min(f5 * 0.0618F, 0.0618F * f4);
       float f2 = f5 / 2.0F;
       float f3 = f4 / 2.0F;
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(jdField_a_of_type_Int, f3);
-      Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      int i = jdField_a_of_type_Int;
-      localPath.cubicTo(i, f1, f1, i, f2, i);
-      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      this.a.moveTo(b, f3);
+      Path localPath = this.a;
+      int i1 = b;
+      localPath.cubicTo(i1, f1, f1, i1, f2, i1);
+      localPath = this.a;
       f5 -= f1;
-      i = jdField_a_of_type_Int;
-      localPath.cubicTo(f5, i, paramInt1 - i, f1, paramInt1 - i, f3);
-      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      i = jdField_a_of_type_Int;
-      float f6 = paramInt1 - i;
+      i1 = b;
+      localPath.cubicTo(f5, i1, paramInt1 - i1, f1, paramInt1 - i1, f3);
+      localPath = this.a;
+      i1 = b;
+      float f6 = paramInt1 - i1;
       f4 -= f1;
-      localPath.cubicTo(f6, f4, f5, paramInt2 - i, f2, paramInt2 - i);
-      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      paramInt1 = jdField_a_of_type_Int;
+      localPath.cubicTo(f6, f4, f5, paramInt2 - i1, f2, paramInt2 - i1);
+      localPath = this.a;
+      paramInt1 = b;
       localPath.cubicTo(f1, paramInt2 - paramInt1, paramInt1, f4, paramInt1, f3);
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler == null) {
+    if (this.j == null) {
       try
       {
-        if (this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler == null) {
-          this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler = new SquareRoundImageView.ShaderHandler(Looper.getMainLooper(), this, null);
+        if (this.j == null) {
+          this.j = new SquareRoundImageView.ShaderHandler(Looper.getMainLooper(), this, null);
         }
         return;
       }
@@ -154,14 +154,14 @@ public class SquareRoundImageView
   
   private void c()
   {
-    int i = getWidth() - getPaddingLeft() - getPaddingRight();
-    int j = getHeight() - getPaddingTop() - getPaddingBottom();
-    if ((i != this.e) || (j != this.f))
+    int i1 = getWidth() - getPaddingLeft() - getPaddingRight();
+    int i2 = getHeight() - getPaddingTop() - getPaddingBottom();
+    if ((i1 != this.m) || (i2 != this.n))
     {
-      this.e = i;
-      this.f = j;
-      a(this.e, this.f);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmapShader != null) {
+      this.m = i1;
+      this.n = i2;
+      a(this.m, this.n);
+      if (this.i != null) {
         e();
       }
     }
@@ -172,64 +172,64 @@ public class SquareRoundImageView
     Bitmap localBitmap = a(getDrawable());
     if (localBitmap != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-      this.jdField_c_of_type_Int = localBitmap.getWidth();
-      this.d = localBitmap.getHeight();
+      this.i = new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+      this.k = localBitmap.getWidth();
+      this.l = localBitmap.getHeight();
       e();
     }
     else
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmapShader = null;
-      this.jdField_c_of_type_Int = 0;
-      this.d = 0;
+      this.i = null;
+      this.k = 0;
+      this.l = 0;
     }
     invalidate();
   }
   
   private void e()
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    Object localObject = this.g;
     if (localObject == null) {
-      this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+      this.g = new Matrix();
     } else {
       ((Matrix)localObject).reset();
     }
-    if ((this.jdField_c_of_type_Int > 0) && (this.d > 0) && (this.e > 0) && (this.f > 0))
+    if ((this.k > 0) && (this.l > 0) && (this.m > 0) && (this.n > 0))
     {
       localObject = getScaleType();
       if (ImageView.ScaleType.FIT_XY == localObject)
       {
-        this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(this.e / this.jdField_c_of_type_Int, this.f / this.d);
+        this.g.setScale(this.m / this.k, this.n / this.l);
         return;
       }
-      int i = this.jdField_c_of_type_Int;
-      int j = this.f;
-      int k = this.e;
-      int m = this.d;
+      int i1 = this.k;
+      int i2 = this.n;
+      int i3 = this.m;
+      int i4 = this.l;
       float f3 = 0.0F;
       float f1;
       float f2;
-      if (i * j > k * m)
+      if (i1 * i2 > i3 * i4)
       {
-        f1 = j / m;
-        f3 = (k - i * f1) * 0.5F;
+        f1 = i2 / i4;
+        f3 = (i3 - i1 * f1) * 0.5F;
         f2 = 0.0F;
       }
       else
       {
-        f1 = k / i;
-        f2 = (j - m * f1) * 0.5F;
+        f1 = i3 / i1;
+        f2 = (i2 - i4 * f1) * 0.5F;
       }
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(Math.round(f3), Math.round(f2));
+      this.g.setScale(f1, f1);
+      this.g.postTranslate(Math.round(f3), Math.round(f2));
     }
   }
   
   public void a()
   {
     b();
-    if (!this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler.hasMessages(1)) {
-      this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler.sendEmptyMessage(1);
+    if (!this.j.hasMessages(1)) {
+      this.j.sendEmptyMessage(1);
     }
   }
   
@@ -241,29 +241,29 @@ public class SquareRoundImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+    Object localObject = this.a;
     if (localObject != null)
     {
-      if (this.jdField_b_of_type_Boolean) {
-        paramCanvas.drawPath((Path)localObject, this.jdField_c_of_type_AndroidGraphicsPaint);
+      if (this.p) {
+        paramCanvas.drawPath((Path)localObject, this.f);
       }
-      localObject = this.jdField_a_of_type_AndroidGraphicsBitmapShader;
+      localObject = this.i;
       if (localObject != null)
       {
-        ((BitmapShader)localObject).setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
+        ((BitmapShader)localObject).setLocalMatrix(this.g);
+        this.d.setShader(this.i);
         paramCanvas.translate(getPaddingLeft(), getPaddingTop());
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawPath(this.a, this.d);
       }
     }
     try
     {
-      paramCanvas.setDrawFilter(this.jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter);
+      paramCanvas.setDrawFilter(this.h);
       paramCanvas.save();
-      this.jdField_a_of_type_AndroidGraphicsPath.offset(getPaddingLeft(), getPaddingRight());
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      this.a.offset(getPaddingLeft(), getPaddingRight());
+      paramCanvas.clipPath(this.a);
       super.onDraw(paramCanvas);
-      this.jdField_a_of_type_AndroidGraphicsPath.offset(0 - getPaddingLeft(), 0 - getPaddingRight());
+      this.a.offset(0 - getPaddingLeft(), 0 - getPaddingRight());
       paramCanvas.restore();
     }
     catch (Exception localException)
@@ -272,11 +272,11 @@ public class SquareRoundImageView
       break label155;
     }
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.o)
     {
-      localObject = this.jdField_b_of_type_AndroidGraphicsPaint;
+      localObject = this.e;
       if (localObject != null) {
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, (Paint)localObject);
+        paramCanvas.drawPath(this.a, (Paint)localObject);
       }
     }
   }
@@ -291,27 +291,27 @@ public class SquareRoundImageView
   
   public void setDrawBack(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.p = paramBoolean;
     invalidate();
   }
   
   public void setDrawChecked(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsPaint == null))
+    this.o = paramBoolean;
+    if ((this.o) && (this.e == null))
     {
-      this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#FFFFFF"));
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Int);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+      this.e = new Paint();
+      this.e.setAntiAlias(true);
+      this.e.setColor(Color.parseColor("#FFFFFF"));
+      this.e.setStrokeWidth(this.c);
+      this.e.setStyle(Paint.Style.STROKE);
     }
     invalidate();
   }
   
   public void setDrawShadowLayer()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(10.0F, 15.0F, 15.0F, -7829368);
+    this.d.setShadowLayer(10.0F, 15.0F, 15.0F, -7829368);
   }
   
   public void setImageDrawable(@Nullable Drawable paramDrawable)
@@ -320,12 +320,12 @@ public class SquareRoundImageView
     if (paramDrawable == null)
     {
       b();
-      if (this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler.hasMessages(1)) {
-        this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsSquareRoundImageView$ShaderHandler.removeMessages(1);
+      if (this.j.hasMessages(1)) {
+        this.j.removeMessages(1);
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmapShader = null;
-      this.d = 0;
-      this.jdField_c_of_type_Int = 0;
+      this.i = null;
+      this.l = 0;
+      this.k = 0;
       return;
     }
     a();
@@ -355,7 +355,7 @@ public class SquareRoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.capture.widgets.SquareRoundImageView
  * JD-Core Version:    0.7.0.1
  */

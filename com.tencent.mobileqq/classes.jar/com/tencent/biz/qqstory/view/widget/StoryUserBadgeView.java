@@ -27,12 +27,12 @@ public class StoryUserBadgeView
   extends ImageView
   implements View.OnClickListener, IEventReceiver
 {
-  private int jdField_a_of_type_Int = 10003;
-  private UserManager jdField_a_of_type_ComTencentBizQqstoryModelUserManager;
-  private StoryUserBadgeView.UserIconUpdateReceiver jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView$UserIconUpdateReceiver;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private int a = 10003;
+  private boolean b;
+  private int c;
+  private String d;
+  private UserManager e;
+  private StoryUserBadgeView.UserIconUpdateReceiver f;
   
   public StoryUserBadgeView(Context paramContext)
   {
@@ -54,23 +54,23 @@ public class StoryUserBadgeView
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager = ((UserManager)SuperManager.a(2));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView$UserIconUpdateReceiver = new StoryUserBadgeView.UserIconUpdateReceiver(this);
+    this.e = ((UserManager)SuperManager.a(2));
+    this.f = new StoryUserBadgeView.UserIconUpdateReceiver(this);
     super.setVisibility(8);
   }
   
   private void c()
   {
-    if ("-1".equals(this.jdField_a_of_type_JavaLangString))
+    if ("-1".equals(this.d))
     {
       SLog.e("Q.qqstory.StoryUserBadge", "union id = -1, so ignore update");
       return;
     }
-    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(this.jdField_a_of_type_JavaLangString);
+    QQUserUIItem localQQUserUIItem = this.e.b(this.d);
     UIUtils.a(this);
     if (localQQUserUIItem == null)
     {
-      this.jdField_a_of_type_Int = 10003;
+      this.a = 10003;
       super.setVisibility(8);
       super.setOnClickListener(null);
       return;
@@ -78,15 +78,15 @@ public class StoryUserBadgeView
     String str = localQQUserUIItem.getUserIconUrl();
     if ((TextUtils.isEmpty(str)) && (!localQQUserUIItem.isVipButNoFriend()))
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.a(localQQUserUIItem.qq))
+      if (this.e.d(localQQUserUIItem.qq))
       {
-        this.jdField_a_of_type_Int = 10002;
+        this.a = 10002;
         super.setVisibility(0);
         super.setOnClickListener(this);
-        super.setImageResource(2130847060);
+        super.setImageResource(2130848612);
         return;
       }
-      this.jdField_a_of_type_Int = 10003;
+      this.a = 10003;
       super.setVisibility(8);
       super.setOnClickListener(null);
       return;
@@ -99,7 +99,7 @@ public class StoryUserBadgeView
       } else {
         i = 10001;
       }
-      this.jdField_a_of_type_Int = i;
+      this.a = i;
       super.setVisibility(0);
       super.setOnClickListener(this);
       if (!TextUtils.isEmpty(str))
@@ -107,20 +107,15 @@ public class StoryUserBadgeView
         UIUtils.a(this, str, 50, 50, null, null);
         return;
       }
-      super.setImageResource(2130847062);
+      super.setImageResource(2130848614);
       return;
     }
     super.setVisibility(8);
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(this.jdField_a_of_type_JavaLangString);
+    Object localObject = this.e.b(this.d);
     if (localObject == null)
     {
       SLog.e("Q.qqstory.StoryUserBadge", "reportExposure the null user item");
@@ -133,40 +128,40 @@ public class StoryUserBadgeView
       str = "2";
     }
     localObject = ((QQUserUIItem)localObject).getUserIconUrlKey();
-    StoryReportor.a("home_page", "exp_medal", this.b, 0, new String[] { str, localObject });
+    StoryReportor.a("home_page", "exp_medal", this.c, 0, new String[] { str, localObject });
   }
   
-  protected void a(@NonNull String paramString)
+  public String getUnionID()
   {
-    setUnionID(paramString, this.b);
+    return this.d;
   }
   
   public boolean isValidate()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_a_of_type_Boolean = true;
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView$UserIconUpdateReceiver);
+    this.b = true;
+    StoryDispatcher.a().registerSubscriber(this.f);
   }
   
   public void onClick(View paramView)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(this.jdField_a_of_type_JavaLangString);
+    Object localObject2 = this.e.b(this.d);
     Object localObject1;
     if (localObject2 == null)
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.d);
       ((StringBuilder)localObject1).append(",userItem is null ! plz fix it!");
       SLog.e("Q.qqstory.StoryUserBadge", ((StringBuilder)localObject1).toString());
     }
     else
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       if ((i != 10000) && (i != 10001))
       {
         if (i == 10002)
@@ -195,7 +190,7 @@ public class StoryUserBadgeView
         localObject1 = "2";
       }
       localObject2 = ((QQUserUIItem)localObject2).getIconJumpUrlKey();
-      StoryReportor.a("home_page", "clk_medal", this.b, 0, new String[] { localObject1, localObject2 });
+      StoryReportor.a("home_page", "clk_medal", this.c, 0, new String[] { localObject1, localObject2 });
     }
     label239:
     EventCollector.getInstance().onViewClicked(paramView);
@@ -204,13 +199,18 @@ public class StoryUserBadgeView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_Boolean = false;
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView$UserIconUpdateReceiver);
+    this.b = false;
+    StoryDispatcher.a().unRegisterSubscriber(this.f);
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
+  }
+  
+  protected void setUnionID(@NonNull String paramString)
+  {
+    setUnionID(paramString, this.c);
   }
   
   public void setUnionID(@NonNull String paramString, int paramInt)
@@ -220,8 +220,8 @@ public class StoryUserBadgeView
       AssertUtils.assertTrue(false, "It is not allow to set the null union id!!!!!!");
       return;
     }
-    this.b = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt;
+    this.d = paramString;
     c();
   }
 }

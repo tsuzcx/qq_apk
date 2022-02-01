@@ -13,14 +13,14 @@ final class OfflineUtils$1
     if (this.a) {
       return;
     }
-    TemplateFactory.a();
+    TemplateFactory.d();
     TemplateFactory.a("default_feeds", true);
-    new StyleConfigHelper().a();
+    new StyleConfigHelper().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.OfflineUtils.1
  * JD-Core Version:    0.7.0.1
  */

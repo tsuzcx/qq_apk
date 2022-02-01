@@ -14,33 +14,33 @@ final class PublicAccountUtilImpl$15
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b(AppConstants.NEW_KANDIAN_UIN, -3006);
+    MessageRecord localMessageRecord = this.a.r(AppConstants.NEW_KANDIAN_UIN, -3006);
     Object localObject;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.b))
     {
-      localObject = this.b;
+      localObject = this.c;
     }
     else
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(": ");
       ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(": ");
+      ((StringBuilder)localObject).append(this.c);
       localObject = ((StringBuilder)localObject).toString();
     }
     if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForStructing))) {
-      localObject = PublicAccountUtilImpl.access$500((MessageForStructing)localMessageRecord, (String)localObject, null, null, this.c);
+      localObject = PublicAccountUtilImpl.access$500((MessageForStructing)localMessageRecord, (String)localObject, null, null, this.d);
     } else {
-      localObject = PublicAccountUtilImpl.access$600(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject, null, null, this.c);
+      localObject = PublicAccountUtilImpl.access$600(this.e, (String)localObject, null, null, this.d);
     }
     if (localObject != null) {
-      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a((MessageRecord)localObject, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin());
+      this.a.a((MessageRecord)localObject, this.e.getCurrentUin());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.15
  * JD-Core Version:    0.7.0.1
  */

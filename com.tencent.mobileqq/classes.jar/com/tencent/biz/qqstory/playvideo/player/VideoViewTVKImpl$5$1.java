@@ -14,7 +14,7 @@ class VideoViewTVKImpl$5$1
   
   public void run()
   {
-    String str = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getStreamDumpInfo();
+    String str = this.a.getStreamDumpInfo();
     if (!TextUtils.isEmpty(str))
     {
       Properties localProperties = new Properties();
@@ -30,20 +30,20 @@ class VideoViewTVKImpl$5$1
       }
       if (localObject != null)
       {
-        VideoViewTVKImpl.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl$5.a).jdField_b_of_type_JavaLangString = localObject.getProperty("VideoCodec");
-        VideoViewTVKImpl.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl$5.a).jdField_b_of_type_Long = Long.valueOf(localObject.getProperty("VideoBitRate")).longValue();
-        VideoViewTVKImpl.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl$5.a).a = Integer.valueOf(localObject.getProperty("Width")).intValue();
-        VideoViewTVKImpl.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl$5.a).jdField_b_of_type_Int = Integer.valueOf(localObject.getProperty("Height")).intValue();
-        VideoViewTVKImpl.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl$5.a).jdField_c_of_type_JavaLangString = localObject.getProperty("AudioCodec");
-        VideoViewTVKImpl.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl$5.a).jdField_c_of_type_Long = Long.valueOf(localObject.getProperty("AudioBitRate")).longValue();
+        VideoViewTVKImpl.a(this.b.a).e = localObject.getProperty("VideoCodec");
+        VideoViewTVKImpl.a(this.b.a).h = Long.valueOf(localObject.getProperty("VideoBitRate")).longValue();
+        VideoViewTVKImpl.a(this.b.a).f = Integer.valueOf(localObject.getProperty("Width")).intValue();
+        VideoViewTVKImpl.a(this.b.a).g = Integer.valueOf(localObject.getProperty("Height")).intValue();
+        VideoViewTVKImpl.a(this.b.a).i = localObject.getProperty("AudioCodec");
+        VideoViewTVKImpl.a(this.b.a).j = Long.valueOf(localObject.getProperty("AudioBitRate")).longValue();
       }
     }
-    SLog.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl$5.a.a, "Video Info : %s", VideoViewTVKImpl.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl$5.a));
+    SLog.a(this.b.a.a, "Video Info : %s", VideoViewTVKImpl.a(this.b.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,37 +13,32 @@ import org.jetbrains.annotations.Nullable;
 public final class CmShowEALoader
   extends TaskFlowEngine
 {
-  public static final CmShowEALoader.Companion a;
+  public static final CmShowEALoader.Companion f = new CmShowEALoader.Companion(null);
   @NotNull
-  private static final String b = "CmShowEALoader";
-  @NotNull
-  public CmShowEALoader.AEKitEssentialResDownloadTask a;
-  @NotNull
-  public CmShowEALoader.AEKitResDownloadTask a;
-  @NotNull
-  public CmShowEALoader.CmShowResDownloadTask a;
-  @NotNull
-  public CmShowEALoader.InitAEEngineTask a;
+  private static final String i = "CmShowEALoader";
   @NotNull
   public CmShowEALoader.InitListener a;
   @NotNull
-  private CmShowEALoader.InitResult jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult = new CmShowEALoader.InitResult();
-  private final String jdField_a_of_type_JavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$Companion = new CmShowEALoader.Companion(null);
-  }
+  public CmShowEALoader.AEKitResDownloadTask b;
+  @NotNull
+  public CmShowEALoader.AEKitEssentialResDownloadTask c;
+  @NotNull
+  public CmShowEALoader.InitAEEngineTask d;
+  @NotNull
+  public CmShowEALoader.CmShowResDownloadTask e;
+  private final String g;
+  @NotNull
+  private CmShowEALoader.InitResult h = new CmShowEALoader.InitResult();
   
   public CmShowEALoader(@NotNull String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.g = paramString;
   }
   
   @NotNull
   public final CmShowEALoader.InitListener a()
   {
-    CmShowEALoader.InitListener localInitListener = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitListener;
+    CmShowEALoader.InitListener localInitListener = this.a;
     if (localInitListener == null) {
       Intrinsics.throwUninitializedPropertyAccessException("initListener");
     }
@@ -53,117 +48,117 @@ public final class CmShowEALoader
   public final void a(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$AEKitResDownloadTask = new CmShowEALoader.AEKitResDownloadTask(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$AEKitEssentialResDownloadTask = new CmShowEALoader.AEKitEssentialResDownloadTask(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitAEEngineTask = new CmShowEALoader.InitAEEngineTask(paramContext);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitAEEngineTask;
+    this.b = new CmShowEALoader.AEKitResDownloadTask(paramContext);
+    this.c = new CmShowEALoader.AEKitEssentialResDownloadTask(paramContext);
+    this.d = new CmShowEALoader.InitAEEngineTask(paramContext);
+    Object localObject1 = this.d;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("initAEEngineTask");
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$AEKitResDownloadTask;
+    Object localObject2 = this.b;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("aEKitResDownloadTask");
     }
     ((CmShowEALoader.InitAEEngineTask)localObject1).a((BaseTask)localObject2);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitAEEngineTask;
+    localObject1 = this.d;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("initAEEngineTask");
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$AEKitEssentialResDownloadTask;
+    localObject2 = this.c;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("aEKitEssentialResDownloadTask");
     }
     ((CmShowEALoader.InitAEEngineTask)localObject1).a((BaseTask)localObject2);
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$CmShowResDownloadTask = new CmShowEALoader.CmShowResDownloadTask(paramContext, this.jdField_a_of_type_JavaLangString);
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitAEEngineTask;
+    this.e = new CmShowEALoader.CmShowResDownloadTask(paramContext, this.g);
+    paramContext = this.d;
     if (paramContext == null) {
       Intrinsics.throwUninitializedPropertyAccessException("initAEEngineTask");
     }
     paramContext = (BaseTask)paramContext;
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$CmShowResDownloadTask;
+    localObject1 = this.e;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("cmShowResDownloadTask");
     }
     a(new BaseTask[] { paramContext, (BaseTask)localObject1 });
-    a();
+    c();
   }
   
   public final void a(@NotNull CmShowEALoader.InitListener paramInitListener)
   {
     Intrinsics.checkParameterIsNotNull(paramInitListener, "<set-?>");
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitListener = paramInitListener;
+    this.a = paramInitListener;
   }
   
   public void a(@Nullable BaseTask paramBaseTask)
   {
     super.a(paramBaseTask);
     Object localObject;
-    int i;
+    int j;
     if ((paramBaseTask instanceof CmShowEALoader.CmShowResDownloadTask))
     {
       localObject = (CmShowEALoader.CmShowResDownloadTask)paramBaseTask;
-      if (((CmShowEALoader.CmShowResDownloadTask)localObject).b())
+      if (((CmShowEALoader.CmShowResDownloadTask)localObject).h())
       {
-        paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult;
-        localObject = ((CmShowEALoader.CmShowResDownloadTask)localObject).a();
+        paramBaseTask = this.h;
+        localObject = ((CmShowEALoader.CmShowResDownloadTask)localObject).b();
         if (localObject == null) {
           Intrinsics.throwNpe();
         }
         paramBaseTask.a((CmShowAssetsData)localObject);
-        paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitListener;
+        paramBaseTask = this.a;
         if (paramBaseTask == null) {
           Intrinsics.throwUninitializedPropertyAccessException("initListener");
         }
-        paramBaseTask.a(2, 0, this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult);
+        paramBaseTask.a(2, 0, this.h);
         return;
       }
-      i = paramBaseTask.a;
+      j = paramBaseTask.e;
       if (a() != null) {
-        a().a(2, i, null);
+        a().a(2, j, null);
       }
     }
     else if ((paramBaseTask instanceof CmShowEALoader.InitAEEngineTask))
     {
-      if (((CmShowEALoader.InitAEEngineTask)paramBaseTask).b())
+      if (((CmShowEALoader.InitAEEngineTask)paramBaseTask).h())
       {
-        paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult;
+        paramBaseTask = this.h;
         if (a() != null) {
           a().a(1, 0, paramBaseTask);
         }
       }
       else
       {
-        i = paramBaseTask.a;
+        j = paramBaseTask.e;
         if (a() != null) {
-          a().a(1, i, null);
+          a().a(1, j, null);
         }
       }
     }
     else if ((paramBaseTask instanceof CmShowEALoader.AEKitEssentialResDownloadTask))
     {
       localObject = (CmShowEALoader.AEKitEssentialResDownloadTask)paramBaseTask;
-      if (((CmShowEALoader.AEKitEssentialResDownloadTask)localObject).b())
+      if (((CmShowEALoader.AEKitEssentialResDownloadTask)localObject).h())
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult.a(((CmShowEALoader.AEKitEssentialResDownloadTask)localObject).a());
+        this.h.a(((CmShowEALoader.AEKitEssentialResDownloadTask)localObject).b());
         return;
       }
-      i = paramBaseTask.a;
+      j = paramBaseTask.e;
       if (a() != null) {
-        a().a(1, i, null);
+        a().a(1, j, null);
       }
     }
     else if ((paramBaseTask instanceof CmShowEALoader.AEKitResDownloadTask))
     {
-      if (((CmShowEALoader.AEKitResDownloadTask)paramBaseTask).b())
+      if (((CmShowEALoader.AEKitResDownloadTask)paramBaseTask).h())
       {
-        paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult;
+        paramBaseTask = this.h;
         if (a() != null) {
           a().a(3, 0, paramBaseTask);
         }
       }
       else
       {
-        paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult;
+        paramBaseTask = this.h;
         if (a() != null) {
           a().a(3, -5032, paramBaseTask);
         }
@@ -173,7 +168,7 @@ public final class CmShowEALoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowEALoader
  * JD-Core Version:    0.7.0.1
  */

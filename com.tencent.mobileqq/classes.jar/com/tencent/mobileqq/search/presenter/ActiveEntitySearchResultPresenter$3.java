@@ -17,14 +17,14 @@ class ActiveEntitySearchResultPresenter$3
   {
     if ("ActiveEntitySearchResultPresenter_add_troop".equals(paramView.getTag()))
     {
-      ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter, paramView);
-      ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter, this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem);
-      if (ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter) != null)
+      ActiveEntitySearchResultPresenter.a(this.b, paramView);
+      ActiveEntitySearchResultPresenter.a(this.b, this.a);
+      if (ActiveEntitySearchResultPresenter.b(this.b) != null)
       {
-        ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).addObserver(ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter));
+        ActiveEntitySearchResultPresenter.c(this.b).addObserver(ActiveEntitySearchResultPresenter.b(this.b));
         try
         {
-          ((ITroopMngHandler)ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER)).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b), Long.valueOf(ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter).getCurrentUin()).longValue(), null);
+          ((ITroopMngHandler)ActiveEntitySearchResultPresenter.c(this.b).getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER)).a(Long.parseLong(this.a.b), Long.valueOf(ActiveEntitySearchResultPresenter.c(this.b).getCurrentUin()).longValue(), null);
         }
         catch (Exception localException)
         {
@@ -33,8 +33,8 @@ class ActiveEntitySearchResultPresenter$3
       }
       else
       {
-        ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter, paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem);
-        ActiveEntitySearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter);
+        ActiveEntitySearchResultPresenter.a(this.b, paramView.getContext(), this.a);
+        ActiveEntitySearchResultPresenter.f(this.b);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -42,7 +42,7 @@ class ActiveEntitySearchResultPresenter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter.3
  * JD-Core Version:    0.7.0.1
  */

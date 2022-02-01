@@ -17,14 +17,14 @@ class SimpleFilePresenter$6
   
   public void onClick(View paramView)
   {
-    QVipUtils.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter.a);
-    KingCardProcessor.c().c.a();
+    QVipUtils.a(this.a, BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.b.d);
+    KingCardProcessor.e().c.b();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,30 @@
 package com.tencent.mobileqq.app;
 
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.report.QCirclePublishQualityReporter;
+import cooperation.qqcircle.report.QCircleReportHelper;
+import feedcloud.FeedCloudCommon.Entry;
+import java.util.Arrays;
 
 class PeakAppCrashReporter$1
-  implements Application.ActivityLifecycleCallbacks
+  implements Runnable
 {
-  PeakAppCrashReporter$1(PeakAppCrashReporter paramPeakAppCrashReporter) {}
+  PeakAppCrashReporter$1(PeakAppCrashReporter paramPeakAppCrashReporter, long paramLong, String paramString) {}
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  public void run()
   {
-    PeakAppCrashReporter.a(this.a).append(paramActivity.getClass().getSimpleName());
-    PeakAppCrashReporter.a(this.a).append(", ");
-    paramActivity = this.a;
-    paramActivity.a(PeakAppCrashReporter.a(paramActivity).toString());
-    QLog.d("PeakAppCrashReporter", 2, PeakAppCrashReporter.a(this.a).toString());
+    QCirclePublishQualityReporter.report(QCirclePublishQualityReporter.E_PEAK_CRASH_PATHINFO, Arrays.asList(new FeedCloudCommon.Entry[] { QCircleReportHelper.newEntry("ext1", String.valueOf(this.a)), QCircleReportHelper.newEntry("ext2", this.b) }));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPeakAppCreated, reportCrashReportInfo, reportEntry = ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", reportExtraInfo = ");
+    localStringBuilder.append(this.b);
+    QLog.d("PeakAppCrashReporter", 2, localStringBuilder.toString());
   }
-  
-  public void onActivityDestroyed(Activity paramActivity) {}
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity) {}
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PeakAppCrashReporter.1
  * JD-Core Version:    0.7.0.1
  */

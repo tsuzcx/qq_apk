@@ -10,19 +10,19 @@ class FloatWindowController$4
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!FloatWindowController.b(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowController))
+    if (!FloatWindowController.b(this.e))
     {
       paramValueAnimator.cancel();
-      FloatWindowController.a(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowController, null);
+      FloatWindowController.a(this.e, null);
       return;
     }
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     i = (int)(i + (this.b - i) * f + 0.5F);
     int j = this.c;
     j = (int)(j + (this.d - j) * f + 0.5F);
-    FloatWindowController.a(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowController).a(i, j);
-    FloatWindowController.a(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowController).d();
+    FloatWindowController.c(this.e).a(i, j);
+    FloatWindowController.c(this.e).e();
   }
 }
 

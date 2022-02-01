@@ -10,12 +10,12 @@ class C2CPicUploadProcessor$1
   
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), 2131689888, 1).a();
+    QQToast.makeText(BaseApplication.getContext(), 2131886529, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPicUploadProcessor.1
  * JD-Core Version:    0.7.0.1
  */

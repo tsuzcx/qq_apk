@@ -15,15 +15,15 @@ class EmoticonManagerServiceImpl$25
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend == null)
+    if (this.a == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonManager", 2, "recommendresp is null");
       }
       return;
     }
-    this.this$0.recommendRspMap.put(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend);
-    int i = this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend.int32_exposure_num.get();
+    this.this$0.recommendRspMap.put(this.b, this.a);
+    int i = this.a.int32_exposure_num.get();
     if (i > 0) {
       EmoticonManagerConstants.RECOMMEND_EXPOSE_MAX = i;
     }
@@ -34,7 +34,7 @@ class EmoticonManagerServiceImpl$25
       ((StringBuilder)localObject).append(EmoticonManagerConstants.RECOMMEND_EXPOSE_MAX);
       QLog.d("EmoticonManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend.st_new_tab_info.get();
+    Object localObject = this.a.st_new_tab_info.get();
     if ((localObject != null) && (QLog.isColorLevel()))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -47,7 +47,7 @@ class EmoticonManagerServiceImpl$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.EmoticonManagerServiceImpl.25
  * JD-Core Version:    0.7.0.1
  */

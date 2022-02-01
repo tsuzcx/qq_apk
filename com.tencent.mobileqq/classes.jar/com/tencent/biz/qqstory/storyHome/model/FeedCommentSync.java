@@ -4,38 +4,36 @@ import android.support.annotation.Nullable;
 
 public class FeedCommentSync
 {
-  public int a;
   public String a;
-  public int b;
   public String b;
+  public int c;
+  public int d = -1;
   
   public FeedCommentSync(String paramString1, int paramInt, @Nullable String paramString2)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramInt;
   }
   
   public FeedCommentSync(String paramString1, int paramInt1, @Nullable String paramString2, int paramInt2)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramInt1;
+    this.d = paramInt2;
   }
   
   public boolean a()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.c;
     boolean bool = true;
     if (i != 1)
     {
       if (i != 2) {
         return bool;
       }
-      if (this.jdField_b_of_type_Int != 0) {
+      if (this.d != 0) {
         return true;
       }
     }
@@ -47,13 +45,13 @@ public class FeedCommentSync
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("FeedCommentSync{feedId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mNextCookie='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mSource=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

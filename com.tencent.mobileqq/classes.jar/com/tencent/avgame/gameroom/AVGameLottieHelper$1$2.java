@@ -9,8 +9,8 @@ class AVGameLottieHelper$1$2
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.a(this.a);
+    if (this.this$0.d != null) {
+      this.this$0.d.a(this.a);
     }
   }
 }

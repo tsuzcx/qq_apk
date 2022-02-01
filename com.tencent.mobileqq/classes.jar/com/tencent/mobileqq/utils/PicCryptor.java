@@ -16,20 +16,20 @@ import java.util.HashMap;
 public class PicCryptor
   implements HttpNetReq.IFlowDecoder
 {
-  private int jdField_a_of_type_Int;
-  public long a;
   public HttpNetReq a;
-  private boolean jdField_a_of_type_Boolean = true;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private int jdField_c_of_type_Int;
-  private byte[] jdField_c_of_type_ArrayOfByte;
-  private int jdField_d_of_type_Int;
-  private byte[] jdField_d_of_type_ArrayOfByte;
-  private int jdField_e_of_type_Int;
-  private byte[] jdField_e_of_type_ArrayOfByte;
-  private int f;
+  public long b = 0L;
+  private int c;
+  private int d;
+  private int e;
+  private byte[] f;
+  private int g;
+  private byte[] h;
+  private byte[] i;
+  private byte[] j;
+  private int k;
+  private int l;
+  private boolean m = true;
+  private byte[] n;
   
   static
   {
@@ -38,36 +38,26 @@ public class PicCryptor
   
   public PicCryptor(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_c_of_type_ArrayOfByte = paramArrayOfByte;
-    this.f = 0;
+    this.i = paramArrayOfByte;
+    this.l = 0;
   }
   
   private int a()
   {
-    String str = (String)this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.mReqProperties.get("Range");
+    String str = (String)this.a.mReqProperties.get("Range");
     boolean bool = TextUtils.isEmpty(str);
-    int j = 0;
-    int i = j;
+    int i2 = 0;
+    int i1 = i2;
     if (!bool)
     {
       str = str.replace("bytes=", "");
-      int k = str.indexOf("-");
-      i = j;
-      if (k != -1) {
-        i = Integer.valueOf(str.substring(0, k)).intValue();
+      int i3 = str.indexOf("-");
+      i1 = i2;
+      if (i3 != -1) {
+        i1 = Integer.valueOf(str.substring(0, i3)).intValue();
       }
     }
-    return i;
-  }
-  
-  public static String a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = PkgTools.toHexStr(paramArrayOfByte);
-    if (paramArrayOfByte != null) {
-      return paramArrayOfByte.toLowerCase();
-    }
-    throw new IllegalArgumentException("byte2Hex error, byte not null");
+    return i1;
   }
   
   public static void a(boolean paramBoolean, String paramString)
@@ -96,58 +86,67 @@ public class PicCryptor
     throw new Exception("Tea Decrypt Error ! ");
   }
   
-  private byte[] b(byte[] paramArrayOfByte)
+  public static String b(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = PkgTools.toHexStr(paramArrayOfByte);
+    if (paramArrayOfByte != null) {
+      return paramArrayOfByte.toLowerCase();
+    }
+    throw new IllegalArgumentException("byte2Hex error, byte not null");
+  }
+  
+  private byte[] c(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
       return null;
     }
-    int j = paramArrayOfByte.length;
-    byte[] arrayOfByte2 = new byte[j];
-    int i = 0;
+    int i2 = paramArrayOfByte.length;
+    byte[] arrayOfByte2 = new byte[i2];
+    int i1 = 0;
     byte[] arrayOfByte1;
     for (;;)
     {
       arrayOfByte1 = arrayOfByte2;
-      if (i >= j) {
+      if (i1 >= i2) {
         break label213;
       }
-      int k = this.jdField_e_of_type_Int;
-      arrayOfByte1 = this.jdField_d_of_type_ArrayOfByte;
-      if (k >= arrayOfByte1.length) {
+      int i3 = this.k;
+      arrayOfByte1 = this.j;
+      if (i3 >= arrayOfByte1.length) {
         break;
       }
-      int m = paramArrayOfByte[i];
-      this.jdField_e_of_type_Int = (k + 1);
-      arrayOfByte2[i] = ((byte)(arrayOfByte1[k] ^ m));
-      if (this.jdField_e_of_type_Int == this.jdField_b_of_type_Int)
+      int i4 = paramArrayOfByte[i1];
+      this.k = (i3 + 1);
+      arrayOfByte2[i1] = ((byte)(arrayOfByte1[i3] ^ i4));
+      if (this.k == this.d)
       {
-        this.f = 2;
-        k = i + 1;
-        m = j - k;
-        if ((m == 1) && (paramArrayOfByte[k] == 41))
+        this.l = 2;
+        i3 = i1 + 1;
+        i4 = i2 - i3;
+        if ((i4 == 1) && (paramArrayOfByte[i3] == 41))
         {
-          i = j - 1;
-          arrayOfByte1 = new byte[i];
-          System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 0, i);
+          i1 = i2 - 1;
+          arrayOfByte1 = new byte[i1];
+          System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 0, i1);
           break label213;
         }
-        if (m != 0) {
+        if (i4 != 0) {
           throw new IllegalArgumentException("Invalid encrypt data end format");
         }
       }
-      i += 1;
+      i1 += 1;
     }
     paramArrayOfByte = new StringBuilder();
     paramArrayOfByte.append("decryptKey len overflow! bodyLen:");
-    paramArrayOfByte.append(this.jdField_b_of_type_Int);
+    paramArrayOfByte.append(this.d);
     paramArrayOfByte.append(",encryptLen:");
-    paramArrayOfByte.append(this.jdField_d_of_type_ArrayOfByte.length);
+    paramArrayOfByte.append(this.j.length);
     throw new Exception(paramArrayOfByte.toString());
     label213:
-    if (this.jdField_a_of_type_Boolean)
+    if (this.m)
     {
-      this.jdField_a_of_type_Boolean = false;
-      paramArrayOfByte = new byte[Math.min(20, j)];
+      this.m = false;
+      paramArrayOfByte = new byte[Math.min(20, i2)];
       System.arraycopy(arrayOfByte1, 0, paramArrayOfByte, 0, paramArrayOfByte.length);
     }
     return arrayOfByte1;
@@ -165,32 +164,32 @@ public class PicCryptor
       bool = false;
     }
     a(bool, "Invalid encrypt data start format");
-    this.jdField_a_of_type_Int = ((ByteBuffer)localObject).getInt();
-    this.jdField_b_of_type_Int = ((ByteBuffer)localObject).getInt();
-    if ((this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0)) {
+    this.c = ((ByteBuffer)localObject).getInt();
+    this.d = ((ByteBuffer)localObject).getInt();
+    if ((this.c > 0) && (this.d > 0)) {
       bool = true;
     } else {
       bool = false;
     }
     a(bool, "head or body length is not negative");
-    if (this.jdField_a_of_type_Int + 1 + 8 > paramArrayOfByte.length) {
+    if (this.c + 1 + 8 > paramArrayOfByte.length) {
       return null;
     }
-    this.jdField_c_of_type_Int = ((ByteBuffer)localObject).getShort();
-    if (this.jdField_c_of_type_Int == 1) {
+    this.e = ((ByteBuffer)localObject).getShort();
+    if (this.e == 1) {
       bool = true;
     } else {
       bool = false;
     }
     a(bool, "magic num not equal 1!");
-    this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int - 2];
-    ((ByteBuffer)localObject).get(this.jdField_a_of_type_ArrayOfByte);
-    paramArrayOfByte = a(this.jdField_a_of_type_ArrayOfByte, this.jdField_c_of_type_ArrayOfByte);
+    this.f = new byte[this.c - 2];
+    ((ByteBuffer)localObject).get(this.f);
+    paramArrayOfByte = a(this.f, this.i);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(paramArrayOfByte.length);
     localByteBuffer.put(paramArrayOfByte);
     localByteBuffer.rewind();
-    this.jdField_d_of_type_Int = localByteBuffer.getShort();
-    if (this.jdField_d_of_type_Int > 0) {
+    this.g = localByteBuffer.getShort();
+    if (this.g > 0) {
       bool = true;
     } else {
       bool = false;
@@ -198,33 +197,33 @@ public class PicCryptor
     a(bool, "seed len is no allow negative");
     try
     {
-      this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_d_of_type_Int];
-      localByteBuffer.get(this.jdField_b_of_type_ArrayOfByte);
-      paramArrayOfByte = getISSACSequence(a(this.jdField_b_of_type_ArrayOfByte), this.jdField_b_of_type_Int + a()).substring(a() * 2);
+      this.h = new byte[this.g];
+      localByteBuffer.get(this.h);
+      paramArrayOfByte = getISSACSequence(b(this.h), this.d + a()).substring(a() * 2);
       if (paramArrayOfByte == null) {
         return null;
       }
-      long l = Runtime.getRuntime().totalMemory();
-      l = Runtime.getRuntime().maxMemory() - (l - Runtime.getRuntime().freeMemory());
-      if (l >= paramArrayOfByte.length() * 3)
+      long l1 = Runtime.getRuntime().totalMemory();
+      l1 = Runtime.getRuntime().maxMemory() - (l1 - Runtime.getRuntime().freeMemory());
+      if (l1 >= paramArrayOfByte.length() * 3)
       {
-        this.jdField_d_of_type_ArrayOfByte = a(paramArrayOfByte);
-        this.f = 1;
-        this.jdField_e_of_type_Int = 0;
+        this.j = a(paramArrayOfByte);
+        this.l = 1;
+        this.k = 0;
         try
         {
           paramArrayOfByte = MessageDigest.getInstance("MD5");
-          paramArrayOfByte.update(this.jdField_d_of_type_ArrayOfByte);
-          a(paramArrayOfByte.digest());
+          paramArrayOfByte.update(this.j);
+          b(paramArrayOfByte.digest());
         }
         catch (Exception paramArrayOfByte)
         {
           paramArrayOfByte.printStackTrace();
         }
-        int i = ((ByteBuffer)localObject).capacity() - ((ByteBuffer)localObject).position();
-        if (i > 0)
+        int i1 = ((ByteBuffer)localObject).capacity() - ((ByteBuffer)localObject).position();
+        if (i1 > 0)
         {
-          paramArrayOfByte = new byte[i];
+          paramArrayOfByte = new byte[i1];
           ((ByteBuffer)localObject).get(paramArrayOfByte);
           return paramArrayOfByte;
         }
@@ -232,7 +231,7 @@ public class PicCryptor
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("checkMemoryForEncrypt : memory is not enough ! remainMemory = ");
-      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append(l1);
       ((StringBuilder)localObject).append(", flowKeyHexStr.length() = ");
       ((StringBuilder)localObject).append(paramArrayOfByte.length());
       QLog.e("PicCryptor", 1, ((StringBuilder)localObject).toString());
@@ -247,36 +246,36 @@ public class PicCryptor
   
   public byte[] decode(byte[] paramArrayOfByte)
   {
-    long l = SystemClock.uptimeMillis();
-    int i = this.f;
+    long l1 = SystemClock.uptimeMillis();
+    int i1 = this.l;
     Object localObject = null;
-    if (i == 0)
+    if (i1 == 0)
     {
-      byte[] arrayOfByte1 = this.jdField_e_of_type_ArrayOfByte;
+      byte[] arrayOfByte1 = this.n;
       if (arrayOfByte1 != null)
       {
         byte[] arrayOfByte2 = new byte[arrayOfByte1.length + paramArrayOfByte.length];
         System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte1.length);
         System.arraycopy(paramArrayOfByte, 0, arrayOfByte2, 0, paramArrayOfByte.length);
-        this.jdField_e_of_type_ArrayOfByte = arrayOfByte2;
+        this.n = arrayOfByte2;
       }
       else
       {
-        this.jdField_e_of_type_ArrayOfByte = paramArrayOfByte;
+        this.n = paramArrayOfByte;
       }
-      arrayOfByte1 = a(this.jdField_e_of_type_ArrayOfByte);
+      arrayOfByte1 = a(this.n);
       paramArrayOfByte = localObject;
-      if (this.f == 1)
+      if (this.l == 1)
       {
         paramArrayOfByte = localObject;
         if (arrayOfByte1 != null) {
-          paramArrayOfByte = b(arrayOfByte1);
+          paramArrayOfByte = c(arrayOfByte1);
         }
       }
     }
-    else if (i == 1)
+    else if (i1 == 1)
     {
-      paramArrayOfByte = b(paramArrayOfByte);
+      paramArrayOfByte = c(paramArrayOfByte);
     }
     else
     {
@@ -285,7 +284,7 @@ public class PicCryptor
       }
       paramArrayOfByte = localObject;
     }
-    this.jdField_a_of_type_Long += SystemClock.uptimeMillis() - l;
+    this.b += SystemClock.uptimeMillis() - l1;
     return paramArrayOfByte;
     label159:
     throw new Exception("pic data len is error!");
@@ -295,21 +294,21 @@ public class PicCryptor
   
   public boolean isFinish()
   {
-    return this.f == 2;
+    return this.l == 2;
   }
   
   public void reset()
   {
-    this.f = 0;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_e_of_type_ArrayOfByte = null;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
+    this.l = 0;
+    this.m = true;
+    this.n = null;
+    this.k = 0;
+    this.b = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.PicCryptor
  * JD-Core Version:    0.7.0.1
  */

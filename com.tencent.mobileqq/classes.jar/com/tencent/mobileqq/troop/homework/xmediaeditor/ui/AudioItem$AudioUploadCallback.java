@@ -7,32 +7,32 @@ import cooperation.troop_homework.TroopHomeworkHelper.UploadCallback;
 class AudioItem$AudioUploadCallback
   implements TroopHomeworkHelper.UploadCallback
 {
-  AudioInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo;
+  AudioInfo a;
   
   public AudioItem$AudioUploadCallback(AudioItem paramAudioItem, AudioInfo paramAudioInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo = paramAudioInfo;
+    this.a = paramAudioInfo;
   }
   
   public void a(int paramInt) {}
   
   public void a(String paramString)
   {
-    AudioInfo localAudioInfo = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo;
-    localAudioInfo.f = 3;
+    AudioInfo localAudioInfo = this.a;
+    localAudioInfo.o = 3;
     localAudioInfo.b(paramString);
-    ((Activity)AudioItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem)).runOnUiThread(new AudioItem.AudioUploadCallback.1(this));
+    ((Activity)AudioItem.a(this.b)).runOnUiThread(new AudioItem.AudioUploadCallback.1(this));
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.f = 2;
-    ((Activity)AudioItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem)).runOnUiThread(new AudioItem.AudioUploadCallback.2(this));
+    this.a.o = 2;
+    ((Activity)AudioItem.a(this.b)).runOnUiThread(new AudioItem.AudioUploadCallback.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback
  * JD-Core Version:    0.7.0.1
  */

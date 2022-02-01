@@ -45,8 +45,8 @@ public class PhoneNumberManagementFragment
   {
     if ((getBaseActivity() != null) && (!getBaseActivity().isFinishing()))
     {
-      QQCustomDialog localQQCustomDialog = new QQCustomDialog(getBaseActivity(), 2131756189);
-      localQQCustomDialog.setContentView(2131558958);
+      QQCustomDialog localQQCustomDialog = new QQCustomDialog(getBaseActivity(), 2131953338);
+      localQQCustomDialog.setContentView(2131624591);
       localQQCustomDialog.setTitle("确认删除此号码？").setMessage("").setPositiveButton("确定", new PhoneNumberManagementFragment.3(this, paramInt)).setNegativeButton("取消", new PhoneNumberManagementFragment.2(this));
       localQQCustomDialog.show();
     }
@@ -129,7 +129,7 @@ public class PhoneNumberManagementFragment
     switch (paramView.getId())
     {
     default: 
-    case 2131371168: 
+    case 2131438510: 
       if ((getBaseActivity() != null) && (!getBaseActivity().isFinishing()))
       {
         paramView = new Intent();
@@ -142,15 +142,15 @@ public class PhoneNumberManagementFragment
         return;
       }
       break;
-    case 2131371165: 
+    case 2131438507: 
       paramView = new Intent();
       paramView.putExtra("appId", this.mAppId);
       PublicFragmentActivity.Launcher.a(getBaseActivity(), paramView, PublicFragmentActivityForMini.class, AddPhoneNumberFragment.class, 1090);
       return;
-    case 2131371159: 
+    case 2131438501: 
       sendDelRequest(2);
       return;
-    case 2131371158: 
+    case 2131438500: 
       sendDelRequest(1);
     }
   }
@@ -176,7 +176,7 @@ public class PhoneNumberManagementFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getBaseActivity()).inflate(2131559389, null);
+    paramLayoutInflater = LayoutInflater.from(getBaseActivity()).inflate(2131625355, null);
     if (Build.VERSION.SDK_INT >= 23)
     {
       getBaseActivity().getWindow().clearFlags(67108864);
@@ -195,27 +195,27 @@ public class PhoneNumberManagementFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.mLeftBtnView = ((ImageView)paramView.findViewById(2131371168));
+    this.mLeftBtnView = ((ImageView)paramView.findViewById(2131438510));
     this.mLeftBtnView.setOnClickListener(this);
-    this.mPhoneNumberLayout1 = ((RelativeLayout)paramView.findViewById(2131371155));
-    this.mPhoneNumberText1 = ((TextView)paramView.findViewById(2131371162));
-    this.mPhoneNumberLayout2 = ((RelativeLayout)paramView.findViewById(2131371156));
-    this.mPhoneNumberText2 = ((TextView)paramView.findViewById(2131371163));
-    this.mDelPhoneNmber2 = ((TextView)paramView.findViewById(2131371158));
+    this.mPhoneNumberLayout1 = ((RelativeLayout)paramView.findViewById(2131438497));
+    this.mPhoneNumberText1 = ((TextView)paramView.findViewById(2131438504));
+    this.mPhoneNumberLayout2 = ((RelativeLayout)paramView.findViewById(2131438498));
+    this.mPhoneNumberText2 = ((TextView)paramView.findViewById(2131438505));
+    this.mDelPhoneNmber2 = ((TextView)paramView.findViewById(2131438500));
     this.mDelPhoneNmber2.setOnClickListener(this);
-    this.mPhoneNumberLayout3 = ((RelativeLayout)paramView.findViewById(2131371157));
-    this.mPhoneNumberText3 = ((TextView)paramView.findViewById(2131371164));
-    this.mDelPhoneNmber3 = ((TextView)paramView.findViewById(2131371159));
+    this.mPhoneNumberLayout3 = ((RelativeLayout)paramView.findViewById(2131438499));
+    this.mPhoneNumberText3 = ((TextView)paramView.findViewById(2131438506));
+    this.mDelPhoneNmber3 = ((TextView)paramView.findViewById(2131438501));
     this.mDelPhoneNmber3.setOnClickListener(this);
-    this.mOperatePhoneNumberLayout = ((RelativeLayout)paramView.findViewById(2131371165));
+    this.mOperatePhoneNumberLayout = ((RelativeLayout)paramView.findViewById(2131438507));
     this.mOperatePhoneNumberLayout.setOnClickListener(this);
-    this.mPhoneNumberMaxInfo = ((TextView)paramView.findViewById(2131371154));
+    this.mPhoneNumberMaxInfo = ((TextView)paramView.findViewById(2131438496));
     updateView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.PhoneNumberManagementFragment
  * JD-Core Version:    0.7.0.1
  */

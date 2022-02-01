@@ -1,16 +1,17 @@
 package com.tencent.aelight.camera.aeeditor.module.imagetemplate;
 
-import com.tencent.tavcut.bean.CropConfig;
+import android.graphics.Matrix;
+import com.tencent.qcircle.tavcut.bean.CropConfig;
 
 public abstract interface ImageTemplateControlListener
 {
-  public abstract void E();
+  public abstract void V();
   
-  public abstract void F();
+  public abstract void W();
   
-  public abstract void G();
+  public abstract void X();
   
-  public abstract void a(CropConfig paramCropConfig, int paramInt);
+  public abstract void a(CropConfig paramCropConfig, int paramInt, Matrix paramMatrix);
   
   public abstract void a(String paramString);
   
@@ -24,7 +25,7 @@ public abstract interface ImageTemplateControlListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.imagetemplate.ImageTemplateControlListener
  * JD-Core Version:    0.7.0.1
  */

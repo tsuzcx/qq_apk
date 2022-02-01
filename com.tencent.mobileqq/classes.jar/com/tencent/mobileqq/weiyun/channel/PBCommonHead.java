@@ -4,66 +4,66 @@ import com.tencent.mobileqq.util.EndianUtil;
 
 final class PBCommonHead
 {
-  public static int d = 16;
-  int jdField_a_of_type_Int = 538116905;
-  short jdField_a_of_type_Short = 1;
-  int jdField_b_of_type_Int;
-  short jdField_b_of_type_Short = 0;
+  public static int f = 16;
+  int a = 538116905;
+  short b = 1;
   int c;
+  int d;
+  short e = 0;
   
   public int a()
   {
-    return this.jdField_b_of_type_Int;
+    return this.c;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
     byte[] arrayOfByte = new byte[4];
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, 4);
-    this.jdField_a_of_type_Int = EndianUtil.a(arrayOfByte);
+    this.a = EndianUtil.a(arrayOfByte);
     arrayOfByte = new byte[2];
     System.arraycopy(paramArrayOfByte, 4, arrayOfByte, 0, 2);
-    this.jdField_a_of_type_Short = EndianUtil.a(arrayOfByte);
+    this.b = EndianUtil.b(arrayOfByte);
     arrayOfByte = new byte[4];
     System.arraycopy(paramArrayOfByte, 6, arrayOfByte, 0, 4);
-    this.jdField_b_of_type_Int = EndianUtil.a(arrayOfByte);
+    this.c = EndianUtil.a(arrayOfByte);
     arrayOfByte = new byte[4];
     System.arraycopy(paramArrayOfByte, 10, arrayOfByte, 0, 4);
-    this.c = EndianUtil.a(arrayOfByte);
+    this.d = EndianUtil.a(arrayOfByte);
     arrayOfByte = new byte[2];
     System.arraycopy(paramArrayOfByte, 14, arrayOfByte, 0, 2);
-    this.jdField_b_of_type_Short = EndianUtil.a(arrayOfByte);
-  }
-  
-  public byte[] a()
-  {
-    byte[] arrayOfByte = new byte[16];
-    System.arraycopy(EndianUtil.a(this.jdField_a_of_type_Int), 0, arrayOfByte, 0, 4);
-    System.arraycopy(EndianUtil.a(this.jdField_a_of_type_Short), 0, arrayOfByte, 4, 2);
-    System.arraycopy(EndianUtil.a(this.jdField_b_of_type_Int), 0, arrayOfByte, 6, 4);
-    System.arraycopy(EndianUtil.a(this.c), 0, arrayOfByte, 10, 4);
-    System.arraycopy(EndianUtil.a(this.jdField_b_of_type_Short), 0, arrayOfByte, 14, 2);
-    return arrayOfByte;
+    this.e = EndianUtil.b(arrayOfByte);
   }
   
   public int b()
   {
-    return this.c;
+    return this.d;
   }
   
   public void b(int paramInt)
   {
-    this.c = paramInt;
+    this.d = paramInt;
+  }
+  
+  public byte[] c()
+  {
+    byte[] arrayOfByte = new byte[16];
+    System.arraycopy(EndianUtil.a(this.a), 0, arrayOfByte, 0, 4);
+    System.arraycopy(EndianUtil.a(this.b), 0, arrayOfByte, 4, 2);
+    System.arraycopy(EndianUtil.a(this.c), 0, arrayOfByte, 6, 4);
+    System.arraycopy(EndianUtil.a(this.d), 0, arrayOfByte, 10, 4);
+    System.arraycopy(EndianUtil.a(this.e), 0, arrayOfByte, 14, 2);
+    return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.channel.PBCommonHead
  * JD-Core Version:    0.7.0.1
  */

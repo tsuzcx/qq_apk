@@ -20,7 +20,7 @@ final class ToPayManagerImpl$5
     if (paramInt == 99999) {
       return;
     }
-    AppActivity localAppActivity = (AppActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    AppActivity localAppActivity = (AppActivity)this.a.get();
     if (localAppActivity != null)
     {
       if (localAppActivity.isFinishing()) {
@@ -32,7 +32,7 @@ final class ToPayManagerImpl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.ToPayManagerImpl.5
  * JD-Core Version:    0.7.0.1
  */

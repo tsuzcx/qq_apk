@@ -8,13 +8,13 @@ class DoubleVideoMeetingCtrlUI$2
   public void a()
   {
     DoubleVideoMeetingCtrlUI localDoubleVideoMeetingCtrlUI = this.a;
-    localDoubleVideoMeetingCtrlUI.j = true;
-    localDoubleVideoMeetingCtrlUI.O();
+    localDoubleVideoMeetingCtrlUI.aU = true;
+    localDoubleVideoMeetingCtrlUI.aj();
   }
   
   public void b()
   {
-    this.a.j = false;
+    this.a.aU = false;
   }
 }
 

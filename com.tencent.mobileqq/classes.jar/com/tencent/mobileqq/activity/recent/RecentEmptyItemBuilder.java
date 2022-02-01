@@ -17,24 +17,24 @@ public class RecentEmptyItemBuilder
 {
   private int a = 0;
   private int b = 0;
-  private int c = 0;
+  private int h = 0;
   
   public View a(int paramInt, Object paramObject, RecentFaceDecoder paramRecentFaceDecoder, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, DragFrameLayout.OnDragModeChangedListener paramOnDragModeChangedListener)
   {
     if (paramView != null)
     {
       paramRecentFaceDecoder = paramView;
-      if ("R.layout.conversation_no_chat".equals(paramView.getTag(2131558942))) {}
+      if ("R.layout.conversation_no_chat".equals(paramView.getTag(2131624573))) {}
     }
     else
     {
-      paramRecentFaceDecoder = View.inflate(paramContext, 2131558942, null);
-      this.b = paramContext.getResources().getDimensionPixelSize(2131298888);
-      this.a = paramContext.getResources().getDimensionPixelSize(2131298891);
-      this.c = paramContext.getResources().getDimensionPixelSize(2131298895);
+      paramRecentFaceDecoder = View.inflate(paramContext, 2131624573, null);
+      this.b = paramContext.getResources().getDimensionPixelSize(2131299610);
+      this.a = paramContext.getResources().getDimensionPixelSize(2131299613);
+      this.h = paramContext.getResources().getDimensionPixelSize(2131299617);
     }
     int i = paramViewGroup.getHeight() - this.a * 2 - this.b;
-    int j = this.c;
+    int j = this.h;
     if (i <= j) {
       i = j;
     }
@@ -43,17 +43,17 @@ public class RecentEmptyItemBuilder
     paramView.height = i;
     paramRecentFaceDecoder.setLayoutParams(paramView);
     paramRecentFaceDecoder.setTag(Boolean.valueOf(true));
-    paramView = (TextView)paramRecentFaceDecoder.findViewById(2131371897);
-    paramViewGroup = (Button)paramRecentFaceDecoder.findViewById(2131363840);
+    paramView = (TextView)paramRecentFaceDecoder.findViewById(2131439341);
+    paramViewGroup = (Button)paramRecentFaceDecoder.findViewById(2131429786);
     if ((paramObject instanceof Integer))
     {
       i = ((Integer)paramObject).intValue();
       if (i == 1)
       {
-        paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130841446, 0, 0);
+        paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130842288, 0, 0);
         paramView.setVisibility(0);
-        paramView.setText(2131694879);
-        paramView.setTextColor(paramContext.getResources().getColorStateList(2131167144));
+        paramView.setText(2131892582);
+        paramView.setTextColor(paramContext.getResources().getColorStateList(2131168125));
         paramViewGroup.setVisibility(8);
         paramViewGroup.setOnClickListener(null);
       }
@@ -70,10 +70,10 @@ public class RecentEmptyItemBuilder
         }
         else
         {
-          paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130841446, 0, 0);
+          paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130842288, 0, 0);
           paramView.setVisibility(0);
-          paramView.setText(2131694466);
-          paramView.setTextColor(paramContext.getResources().getColorStateList(2131167144));
+          paramView.setText(2131892146);
+          paramView.setTextColor(paramContext.getResources().getColorStateList(2131168125));
           paramViewGroup.setVisibility(8);
           paramViewGroup.setOnClickListener(null);
         }
@@ -91,13 +91,13 @@ public class RecentEmptyItemBuilder
       paramViewGroup.setVisibility(8);
     }
     paramRecentFaceDecoder.setTag(-1, Integer.valueOf(paramInt));
-    paramRecentFaceDecoder.setTag(2131558942, "R.layout.conversation_no_chat");
+    paramRecentFaceDecoder.setTag(2131624573, "R.layout.conversation_no_chat");
     return paramRecentFaceDecoder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentEmptyItemBuilder
  * JD-Core Version:    0.7.0.1
  */

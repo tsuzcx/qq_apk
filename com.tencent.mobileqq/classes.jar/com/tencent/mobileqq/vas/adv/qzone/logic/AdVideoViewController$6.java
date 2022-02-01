@@ -18,8 +18,8 @@ class AdVideoViewController$6
   
   public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
   {
-    if ((paramDrawable != null) && (AdVideoViewController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController) != null)) {
-      AdVideoViewController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdVideoViewController).post(new AdVideoViewController.6.1(this, paramDrawable));
+    if ((paramDrawable != null) && (AdVideoViewController.j(this.d) != null)) {
+      AdVideoViewController.j(this.d).post(new AdVideoViewController.6.1(this, paramDrawable));
     }
   }
   
@@ -27,7 +27,7 @@ class AdVideoViewController$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.qzone.logic.AdVideoViewController.6
  * JD-Core Version:    0.7.0.1
  */

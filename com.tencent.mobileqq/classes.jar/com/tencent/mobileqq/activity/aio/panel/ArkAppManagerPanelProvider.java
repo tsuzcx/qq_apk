@@ -9,26 +9,26 @@ import com.tencent.widget.XPanelContainer;
 public class ArkAppManagerPanelProvider
   implements PanelProvider<ArkAppManagerPanel>
 {
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private ArkAppManagerPanel jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
+  private final BaseChatPie a;
+  private ArkAppManagerPanel b;
   
   public ArkAppManagerPanelProvider(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.a = paramBaseChatPie;
   }
   
   public ArkAppManagerPanel a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
+    return this.b;
   }
   
   public ArkAppManagerPanel a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel = ((ArkAppManagerPanel)View.inflate(paramContext, 2131558636, null));
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    paramContext.a(localBaseChatPie, localBaseChatPie.a);
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
+    this.b = ((ArkAppManagerPanel)View.inflate(paramContext, 2131624251, null));
+    paramContext = this.b;
+    BaseChatPie localBaseChatPie = this.a;
+    paramContext.a(localBaseChatPie, localBaseChatPie.ah);
+    return this.b;
   }
   
   public int getPanelId()
@@ -53,7 +53,7 @@ public class ArkAppManagerPanelProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.ArkAppManagerPanelProvider
  * JD-Core Version:    0.7.0.1
  */

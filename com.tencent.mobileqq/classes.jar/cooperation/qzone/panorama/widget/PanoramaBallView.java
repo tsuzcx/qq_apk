@@ -107,7 +107,7 @@ public class PanoramaBallView
   {
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
-    this.colorBackground = paramContext.getResources().getColor(2131165338);
+    this.colorBackground = paramContext.getResources().getColor(2131165580);
   }
   
   private int measureHeight(int paramInt)
@@ -193,7 +193,7 @@ public class PanoramaBallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaBallView
  * JD-Core Version:    0.7.0.1
  */

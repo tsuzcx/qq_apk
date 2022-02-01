@@ -28,50 +28,50 @@ class CsTask$1
         QLog.i("QQ_NOW_TASK", 2, localStringBuilder.toString());
         if (localRspBody.busi_buf.has())
         {
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$Callback != null) && (paramInt == 0))
+          if ((this.b.d != null) && (paramInt == 0))
           {
-            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$Callback.a(paramInt, localRspBody.busi_buf.get().toByteArray(), paramBundle);
+            this.b.d.a(paramInt, localRspBody.busi_buf.get().toByteArray(), paramBundle);
             return;
           }
           paramBundle = new StringBuilder();
           paramBundle.append("err_msg1:   ");
           paramBundle.append(localRspBody.err_msg.get());
           QLog.i("QQ_NOW_TASK", 1, paramBundle.toString());
-          if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError == null) {
+          if (this.b.e == null) {
             return;
           }
-          this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, paramArrayOfByte);
+          this.b.e.a(paramInt, paramArrayOfByte);
           return;
         }
         QLog.i("QQ_NOW_TASK", 1, "err_msg2:   ");
-        if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError == null) {
+        if (this.b.e == null) {
           return;
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, null);
+        this.b.e.a(paramInt, null);
         return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
         paramArrayOfByte.printStackTrace();
         QLog.i("QQ_NOW_TASK", 1, "err_msg3:   ");
-        if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError == null) {
+        if (this.b.e == null) {
           return;
         }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, null);
+      this.b.e.a(paramInt, null);
     }
     else
     {
       QLog.i("QQ_NOW_TASK", 1, "err_msg4:   ");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, null);
+      if (this.b.e != null) {
+        this.b.e.a(paramInt, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.protocol.CsTask.1
  * JD-Core Version:    0.7.0.1
  */

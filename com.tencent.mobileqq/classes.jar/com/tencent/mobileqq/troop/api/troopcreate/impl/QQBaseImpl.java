@@ -12,7 +12,7 @@ public class QQBaseImpl
   public String getAccountNickName(AppInterface paramAppInterface, String paramString)
   {
     if ((paramAppInterface instanceof QQAppInterface)) {
-      return ContactUtils.e((QQAppInterface)paramAppInterface, paramString);
+      return ContactUtils.f((QQAppInterface)paramAppInterface, paramString);
     }
     return null;
   }
@@ -29,7 +29,7 @@ public class QQBaseImpl
   
   public String getHeaderText(String paramString)
   {
-    return ContactUtils.a(paramString);
+    return ContactUtils.b(paramString);
   }
   
   public void onCreate(AppRuntime paramAppRuntime) {}
@@ -38,7 +38,7 @@ public class QQBaseImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.troopcreate.impl.QQBaseImpl
  * JD-Core Version:    0.7.0.1
  */

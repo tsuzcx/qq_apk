@@ -11,24 +11,24 @@ class FriendChatPie$3
   
   public void run()
   {
-    AVNotifyCenter localAVNotifyCenter = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter();
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+    AVNotifyCenter localAVNotifyCenter = this.this$0.d.getAVNotifyCenter();
+    if (this.this$0.ah == null) {
       return;
     }
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) {
+    if (this.this$0.ah.a != 0) {
       return;
     }
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString == null) {
+    if (this.this$0.ah.b == null) {
       return;
     }
     try
     {
-      long l = Long.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-      if (localAVNotifyCenter.a(l))
+      long l = Long.valueOf(this.this$0.ah.b).longValue();
+      if (localAVNotifyCenter.b(l))
       {
         FriendChatPie localFriendChatPie = this.this$0;
-        localFriendChatPie.a(localFriendChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, localAVNotifyCenter.a(Long.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue()));
-        localAVNotifyCenter.a(Long.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue(), false, -1);
+        localFriendChatPie.a(localFriendChatPie.ah.a, this.this$0.ah.b, this.this$0.ah.e, this.this$0.ah.f, localAVNotifyCenter.a(Long.valueOf(this.this$0.ah.b).longValue()));
+        localAVNotifyCenter.a(Long.valueOf(this.this$0.ah.b).longValue(), false, -1);
       }
       return;
     }
@@ -37,7 +37,7 @@ class FriendChatPie$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.3
  * JD-Core Version:    0.7.0.1
  */

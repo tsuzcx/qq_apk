@@ -16,15 +16,15 @@ class GuideHelper$1
   {
     paramView = new StringBuilder();
     paramView.append("getBottomGuideView : ");
-    paramView.append(GuideHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuideHelper));
+    paramView.append(GuideHelper.a(this.c));
     QLog.d("GuideHelper", 1, paramView.toString());
-    GuideHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuideHelper, "0X8009FEA", this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem.a);
-    ReadInJoyUtils.a(this.jdField_a_of_type_AndroidContentContext, GuideHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuideHelper));
+    GuideHelper.a(this.c, "0X8009FEA", this.a.d);
+    ReadInJoyUtils.a(this.b, GuideHelper.a(this.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.guide.GuideHelper.1
  * JD-Core Version:    0.7.0.1
  */

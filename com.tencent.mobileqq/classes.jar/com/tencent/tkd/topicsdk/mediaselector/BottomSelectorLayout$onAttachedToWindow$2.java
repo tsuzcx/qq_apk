@@ -30,7 +30,7 @@ final class BottomSelectorLayout$onAttachedToWindow$2
     }
     else if ((paramPanelType == PanelType.PHOTO) || (paramPanelType == PanelType.VIDEO))
     {
-      if (this.this$0.getTranslationY() >= BottomSelectorLayout.a(this.this$0) - this.this$0.a())
+      if (this.this$0.getTranslationY() >= BottomSelectorLayout.b(this.this$0) - this.this$0.getSelectorBarHeight())
       {
         localObject = this.this$0;
         BottomSelectorLayout.a((BottomSelectorLayout)localObject, ((BottomSelectorLayout)localObject).getTranslationY(), BottomSelectorLayout.a(this.this$0, paramPanelType), false, 4, null);
@@ -51,7 +51,7 @@ final class BottomSelectorLayout$onAttachedToWindow$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.onAttachedToWindow.2
  * JD-Core Version:    0.7.0.1
  */

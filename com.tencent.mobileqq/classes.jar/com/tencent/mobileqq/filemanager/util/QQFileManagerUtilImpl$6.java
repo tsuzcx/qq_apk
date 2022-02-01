@@ -14,7 +14,7 @@ final class QQFileManagerUtilImpl$6
   
   public void a(String paramString)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.a.get();
     if (localActivity != null)
     {
       if (paramString == null) {
@@ -25,29 +25,29 @@ final class QQFileManagerUtilImpl$6
       {
         paramString = localObject[0];
         localObject = localObject[1];
-        String str = QQFileManagerUtilImpl.i(paramString);
-        int i = QQFileManagerUtilImpl.f((String)localObject);
+        String str = QQFileManagerUtilImpl.C(paramString);
+        int i = QQFileManagerUtilImpl.D((String)localObject);
         if (str != null) {
           ReportController.b(null, "dc00898", "", "", str, str, i, 0, "", "", "", "");
         }
-        if (((paramString.startsWith("userClick")) || (paramString.startsWith("extraMenuEvent"))) && (((String)localObject).equalsIgnoreCase("send_to_wx")) && (QQFileUtilsImpl.a(localActivity, this.jdField_a_of_type_JavaLangString)))
+        if (((paramString.startsWith("userClick")) || (paramString.startsWith("extraMenuEvent"))) && (((String)localObject).equalsIgnoreCase("send_to_wx")) && (QQFileUtilsImpl.a(localActivity, this.b)))
         {
-          i = QQFileManagerUtilImpl.c(this.jdField_a_of_type_JavaLangString);
+          i = QQFileManagerUtilImpl.f(this.b);
           paramString = BitmapFactory.decodeResource(localActivity.getResources(), i);
-          this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper.a(this.jdField_a_of_type_JavaLangString, paramString);
+          this.c.a(this.b, paramString);
         }
       }
       else if (paramString.startsWith("http"))
       {
         ReportController.b(null, "dc00898", "", "", "0X800AE47", "0X800AE47", 0, 0, "", "", "", "");
-        FMDialogUtil.a(localActivity, null, 2131698190, new QQFileManagerUtilImpl.6.1(this, localActivity));
+        FMDialogUtil.a(localActivity, null, 2131896091, new QQFileManagerUtilImpl.6.1(this, localActivity));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl.6
  * JD-Core Version:    0.7.0.1
  */

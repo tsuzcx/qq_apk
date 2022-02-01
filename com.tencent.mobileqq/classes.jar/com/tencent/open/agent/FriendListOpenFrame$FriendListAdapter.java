@@ -25,31 +25,28 @@ import java.util.Set;
 public class FriendListOpenFrame$FriendListAdapter
   extends PinnedDividerListView.DividerAdapter
 {
-  protected LinkedHashMap<String, List<Friend>> a;
-  protected int[] a;
-  protected String[] a;
+  protected LinkedHashMap<String, List<Friend>> a = new LinkedHashMap();
+  protected String[] b = new String[0];
+  protected int[] c = new int[0];
   
   public FriendListOpenFrame$FriendListAdapter(FriendListOpenFrame paramFriendListOpenFrame)
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-    this.jdField_a_of_type_ArrayOfInt = new int[0];
-    a();
+    b();
   }
   
   public int a()
   {
-    return 2131559309;
+    return 2131625258;
   }
   
   public int a(String paramString)
   {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    if (this.b != null)
     {
       int i = 0;
       for (;;)
       {
-        String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+        String[] arrayOfString = this.b;
         if (i >= arrayOfString.length) {
           break;
         }
@@ -61,32 +58,54 @@ public class FriendListOpenFrame$FriendListAdapter
       i = -1;
       label42:
       if (i >= 0) {
-        return this.jdField_a_of_type_ArrayOfInt[i];
+        return this.c[i];
       }
     }
     return -1;
   }
   
-  protected void a()
+  public void a(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    Object localObject1 = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_Int);
+    int i = Arrays.binarySearch(this.c, paramInt);
+    paramInt = i;
+    if (i < 0) {
+      paramInt = -(i + 1) - 1;
+    }
+    if (paramInt >= 0)
+    {
+      String[] arrayOfString = this.b;
+      if (paramInt >= arrayOfString.length) {
+        return;
+      }
+      ((TextView)paramView).setText(arrayOfString[paramInt]);
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return Arrays.binarySearch(this.c, paramInt) >= 0;
+  }
+  
+  protected void b()
+  {
+    this.a.clear();
+    Object localObject1 = this.d.i.d(this.d.f);
     LogUtility.c("FriendListOpenFrame", "-->start constructHashStruct()");
     Iterator localIterator = ((List)localObject1).iterator();
-    char c;
+    char c1;
     int j;
     for (;;)
     {
       boolean bool = localIterator.hasNext();
-      c = 'A';
+      c1 = 'A';
       j = 0;
       String str = "#";
       if (!bool) {
         break;
       }
       Friend localFriend = (Friend)localIterator.next();
-      if ((localFriend.f != null) && (localFriend.f.length() != 0)) {
-        localObject1 = localFriend.f.substring(0, 1);
+      if ((localFriend.i != null) && (localFriend.i.length() != 0)) {
+        localObject1 = localFriend.i.substring(0, 1);
       } else {
         localObject1 = "#";
       }
@@ -104,28 +123,28 @@ public class FriendListOpenFrame$FriendListAdapter
       {
         localObject2 = ((String)localObject1).toUpperCase();
       }
-      if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject2) == null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject2, new ArrayList());
+      if (this.a.get(localObject2) == null) {
+        this.a.put(localObject2, new ArrayList());
       }
-      ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject2)).add(localFriend);
+      ((List)this.a.get(localObject2)).add(localFriend);
     }
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    while (c <= 'Z')
+    localObject1 = this.a;
+    this.a = new LinkedHashMap();
+    while (c1 <= 'Z')
     {
-      if (((LinkedHashMap)localObject1).get(String.valueOf(c)) != null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c), ((LinkedHashMap)localObject1).get(String.valueOf(c)));
+      if (((LinkedHashMap)localObject1).get(String.valueOf(c1)) != null) {
+        this.a.put(String.valueOf(c1), ((LinkedHashMap)localObject1).get(String.valueOf(c1)));
       }
-      c = (char)(c + '\001');
+      c1 = (char)(c1 + '\001');
     }
     if (((LinkedHashMap)localObject1).get("#") != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", ((LinkedHashMap)localObject1).get("#"));
+      this.a.put("#", ((LinkedHashMap)localObject1).get("#"));
     }
     ((LinkedHashMap)localObject1).clear();
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_ArrayOfInt.length];
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    Object localObject2 = this.jdField_a_of_type_ArrayOfInt;
+    this.c = new int[this.a.keySet().size()];
+    this.b = new String[this.c.length];
+    localObject1 = this.a.keySet().iterator();
+    Object localObject2 = this.c;
     if (localObject2.length == 0) {
       return;
     }
@@ -133,72 +152,50 @@ public class FriendListOpenFrame$FriendListAdapter
     int i = 1;
     for (;;)
     {
-      localObject2 = this.jdField_a_of_type_ArrayOfInt;
+      localObject2 = this.c;
       if (i >= localObject2.length) {
         break;
       }
-      localObject2[i] += localObject2[(i - 1)] + ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((Iterator)localObject1).next())).size() + 1;
+      localObject2[i] += localObject2[(i - 1)] + ((List)this.a.get(((Iterator)localObject1).next())).size() + 1;
       i += 1;
     }
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    localObject1 = this.a.keySet().iterator();
     i = j;
     while (((Iterator)localObject1).hasNext())
     {
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)((Iterator)localObject1).next());
+      this.b[i] = ((String)((Iterator)localObject1).next());
       i += 1;
     }
     LogUtility.c("FriendListOpenFrame", "-->end constructHashStruct()");
   }
   
-  public void a(View paramView, int paramInt)
+  public void c()
   {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    paramInt = i;
-    if (i < 0) {
-      paramInt = -(i + 1) - 1;
-    }
-    if (paramInt >= 0)
-    {
-      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-      if (paramInt >= arrayOfString.length) {
-        return;
-      }
-      ((TextView)paramView).setText(arrayOfString[paramInt]);
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt) >= 0;
-  }
-  
-  public void b()
-  {
-    a();
+    b();
     super.notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    Object localObject = this.c;
     if (localObject.length == 0) {
       return 0;
     }
     int i = localObject[(localObject.length - 1)];
-    localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    localObject = this.a;
+    String[] arrayOfString = this.b;
     return i + ((List)((LinkedHashMap)localObject).get(arrayOfString[(arrayOfString.length - 1)])).size() + 1;
   }
   
   public Object getItem(int paramInt)
   {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+    int i = Arrays.binarySearch(this.c, paramInt);
     if (i >= 0) {
       return null;
     }
     i = -(i + 1) - 1;
-    List localList = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-    paramInt = paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1;
+    List localList = (List)this.a.get(this.b[i]);
+    paramInt = paramInt - this.c[i] - 1;
     if ((paramInt >= 0) && (paramInt < localList.size())) {
       return localList.get(paramInt);
     }
@@ -212,18 +209,18 @@ public class FriendListOpenFrame$FriendListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+    int i = Arrays.binarySearch(this.c, paramInt);
     View localView;
     Object localObject;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562820, paramViewGroup, false);
+      localView = this.d.m.inflate(2131629265, paramViewGroup, false);
       paramView = new FriendListOpenFrame.ViewHolder();
-      paramView.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131376702));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379732));
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131364613));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368343));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371697));
+      paramView.e = ((RelativeLayout)localView.findViewById(2131444983));
+      paramView.b = ((TextView)localView.findViewById(2131448537));
+      paramView.a = ((CheckBox)localView.findViewById(2131430688));
+      paramView.c = ((ImageView)localView.findViewById(2131435219));
+      paramView.d = ((TextView)localView.findViewById(2131439121));
       localView.setTag(paramView);
     }
     else
@@ -235,44 +232,44 @@ public class FriendListOpenFrame$FriendListAdapter
     if (i < 0)
     {
       i = -(i + 1) - 1;
-      localObject = (Friend)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
-      if (this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(((Friend)localObject).a)) {
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+      localObject = (Friend)((List)this.a.get(this.b[i])).get(paramInt - this.c[i] - 1);
+      if (this.d.i.b(((Friend)localObject).a)) {
+        paramView.a.setChecked(true);
       } else {
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+        paramView.a.setChecked(false);
       }
-      if (this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(((Friend)localObject).a)) {
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+      if (this.d.i.b(((Friend)localObject).a)) {
+        paramView.a.setChecked(true);
       } else {
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+        paramView.a.setChecked(false);
       }
       if ((((Friend)localObject).d == null) || ("".equals(((Friend)localObject).d))) {
-        ((Friend)localObject).d = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), ((Friend)localObject).a);
+        ((Friend)localObject).d = QZonePortraitData.a(this.d.j.i(), ((Friend)localObject).a);
       }
-      paramView.jdField_b_of_type_JavaLangString = ((Friend)localObject).d;
-      paramView.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramView.f = ((Friend)localObject).d;
+      paramView.e.setVisibility(0);
+      paramView.b.setVisibility(8);
       Bitmap localBitmap = ImageLoader.a().a(((Friend)localObject).d);
       if (localBitmap == null)
       {
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840321);
-        ImageLoader.a().a(((Friend)localObject).d, this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame);
+        paramView.c.setImageResource(2130841060);
+        ImageLoader.a().a(((Friend)localObject).d, this.d);
       }
       else
       {
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+        paramView.c.setImageBitmap(localBitmap);
       }
       if ((((Friend)localObject).c != null) && (!"".equals(((Friend)localObject).c))) {
-        paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((Friend)localObject).c);
+        paramView.d.setText(((Friend)localObject).c);
       } else {
-        paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((Friend)localObject).jdField_b_of_type_JavaLangString);
+        paramView.d.setText(((Friend)localObject).b);
       }
     }
     else
     {
-      paramView.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]));
+      paramView.e.setVisibility(8);
+      paramView.b.setVisibility(0);
+      paramView.b.setText(String.valueOf(this.b[i]));
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -280,7 +277,7 @@ public class FriendListOpenFrame$FriendListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.FriendListOpenFrame.FriendListAdapter
  * JD-Core Version:    0.7.0.1
  */

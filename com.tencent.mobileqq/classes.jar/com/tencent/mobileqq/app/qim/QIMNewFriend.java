@@ -8,14 +8,14 @@ import java.util.ArrayList;
 
 public class QIMNewFriend
 {
-  private static DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new QIMNewFriend.1();
-  private static QIMUndecideNotifyDialog jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog;
+  private static QIMUndecideNotifyDialog a;
+  private static DialogInterface.OnDismissListener b = new QIMNewFriend.1();
   
   public static void a()
   {
-    QIMUndecideNotifyDialog localQIMUndecideNotifyDialog = jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog;
+    QIMUndecideNotifyDialog localQIMUndecideNotifyDialog = a;
     if ((localQIMUndecideNotifyDialog != null) && (localQIMUndecideNotifyDialog.isShowing())) {
-      jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog.dismiss();
+      a.dismiss();
     }
   }
   
@@ -23,9 +23,9 @@ public class QIMNewFriend
   {
     try
     {
-      if ((jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog != null) && (jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog.isShowing()))
+      if ((a != null) && (a.isShowing()))
       {
-        bool1 = jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog.a(paramArrayList);
+        bool1 = a.a(paramArrayList);
         return bool1;
       }
       boolean bool2 = false;
@@ -35,9 +35,9 @@ public class QIMNewFriend
         bool1 = bool2;
         if (paramArrayList.size() > 0)
         {
-          jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog = new QIMUndecideNotifyDialog(paramQBaseActivity, paramArrayList);
-          jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog.setOnDismissListener(jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-          jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog.show();
+          a = new QIMUndecideNotifyDialog(paramQBaseActivity, paramArrayList);
+          a.setOnDismissListener(b);
+          a.show();
           bool1 = true;
         }
       }
@@ -55,7 +55,7 @@ public class QIMNewFriend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.qim.QIMNewFriend
  * JD-Core Version:    0.7.0.1
  */

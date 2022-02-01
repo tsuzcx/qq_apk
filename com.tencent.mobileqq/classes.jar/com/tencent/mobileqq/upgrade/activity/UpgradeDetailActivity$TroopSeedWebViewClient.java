@@ -22,7 +22,7 @@ class UpgradeDetailActivity$TroopSeedWebViewClient
       localStringBuilder.append(paramString);
       QLog.d("UpgradeDetailActivity", 2, localStringBuilder.toString());
     }
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    this.a.b.setVisibility(8);
     super.onPageFinished(paramWebView, paramString);
   }
   
@@ -37,15 +37,15 @@ class UpgradeDetailActivity$TroopSeedWebViewClient
       QLog.d("UpgradeDetailActivity", 2, paramWebView.toString());
     }
     if (this.a.a(paramString)) {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.a.b.setVisibility(8);
     }
     try
     {
-      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
+      this.a.a.stopLoading();
       return;
     }
     catch (Exception paramWebView) {}
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    this.a.b.setVisibility(0);
     return;
   }
   
@@ -63,15 +63,15 @@ class UpgradeDetailActivity$TroopSeedWebViewClient
       localStringBuilder.append(paramString);
       QLog.d("UpgradeDetailActivity", 2, localStringBuilder.toString());
     }
-    if ((paramString != null) && (!"".equals(paramString)) && (!"about:blank;".equals(paramString)) && (!"about:blank".equals(paramString)) && (!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
-      this.a.a(paramString);
+    if ((paramString != null) && (!"".equals(paramString)) && (!"about:blank;".equals(paramString)) && (!"about:blank".equals(paramString)) && (!UpgradeDetailActivity.e(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
+      this.a.b(paramString);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity.TroopSeedWebViewClient
  * JD-Core Version:    0.7.0.1
  */

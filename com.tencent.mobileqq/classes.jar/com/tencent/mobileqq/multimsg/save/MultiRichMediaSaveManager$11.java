@@ -17,70 +17,70 @@ class MultiRichMediaSaveManager$11
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("downloadRawImage id = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(", result = ");
       ((StringBuilder)localObject).append(paramInt);
       QLog.i("MultiRichMediaSaveManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.jdField_a_of_type_JavaLangString);
-    if ((localObject != null) && (!((FileSaveResult)localObject).jdField_a_of_type_Boolean))
+    Object localObject = this.g.a(this.e);
+    if ((localObject != null) && (!((FileSaveResult)localObject).a))
     {
-      ((FileSaveResult)localObject).jdField_a_of_type_Int = paramInt;
+      ((FileSaveResult)localObject).b = paramInt;
       if (paramInt == 0) {
         paramInt = 1;
       } else {
         paramInt = 2;
       }
-      ((FileSaveResult)localObject).jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_Int = 1;
+      ((FileSaveResult)localObject).g.a = 1;
       boolean bool;
       if (paramPicResult != null)
       {
-        ((FileSaveResult)localObject).jdField_a_of_type_Int = paramPicResult.jdField_a_of_type_Int;
-        if ((paramPicResult.jdField_a_of_type_Int != 0) && (paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo != null))
+        ((FileSaveResult)localObject).b = paramPicResult.a;
+        if ((paramPicResult.a != 0) && (paramPicResult.b != null))
         {
-          ((FileSaveResult)localObject).jdField_b_of_type_Int = paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.jdField_a_of_type_Int;
-          ((FileSaveResult)localObject).jdField_a_of_type_JavaLangString = paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.jdField_b_of_type_JavaLangString;
+          ((FileSaveResult)localObject).c = paramPicResult.b.c;
+          ((FileSaveResult)localObject).d = paramPicResult.b.b;
         }
-        if (paramPicResult.jdField_a_of_type_Int == 0) {
+        if (paramPicResult.a == 0) {
           paramInt = 1;
         } else {
           paramInt = 2;
         }
-        bool = paramPicResult.jdField_a_of_type_Boolean;
+        bool = paramPicResult.e;
       }
       else
       {
         bool = false;
       }
-      ((FileSaveResult)localObject).jdField_a_of_type_ComTencentMobileqqMultimsgSavePeakDownloadCallBackInfo = new PeakDownloadCallBackInfo(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_JavaLangString, bool);
-      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.jdField_a_of_type_JavaLangString, (FileSaveResult)localObject);
-      MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager, ((FileSaveResult)localObject).jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq, 0, ((FileSaveResult)localObject).jdField_b_of_type_Int, ((FileSaveResult)localObject).jdField_a_of_type_JavaLangString);
+      ((FileSaveResult)localObject).h = new PeakDownloadCallBackInfo(this.a, this.b, this.c, paramInt, this.f, bool);
+      this.g.a(this.e, (FileSaveResult)localObject);
+      MultiRichMediaSaveManager.a(this.g, ((FileSaveResult)localObject).g, 0, ((FileSaveResult)localObject).c, ((FileSaveResult)localObject).d);
     }
   }
   
   public void a_(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+    if (this.g.a != null) {
+      this.g.a.a(this.a, this.b, this.c, paramInt, this.d, paramBoolean);
     }
-    FileSaveResult localFileSaveResult = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.jdField_a_of_type_JavaLangString);
-    if ((localFileSaveResult != null) && (!localFileSaveResult.jdField_a_of_type_Boolean))
+    FileSaveResult localFileSaveResult = this.g.a(this.e);
+    if ((localFileSaveResult != null) && (!localFileSaveResult.a))
     {
-      if (MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager))
+      if (MultiRichMediaSaveManager.c(this.g))
       {
-        MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager, localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq, paramInt);
+        MultiRichMediaSaveManager.a(this.g, localFileSaveResult.g, paramInt);
         return;
       }
       paramInt /= 100;
-      localFileSaveResult.c = paramInt;
-      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.jdField_a_of_type_JavaLangString, localFileSaveResult);
-      MultiRichMediaSaveManager.b(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager, localFileSaveResult, paramInt);
+      localFileSaveResult.e = paramInt;
+      this.g.a(this.e, localFileSaveResult);
+      MultiRichMediaSaveManager.b(this.g, localFileSaveResult, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.MultiRichMediaSaveManager.11
  * JD-Core Version:    0.7.0.1
  */

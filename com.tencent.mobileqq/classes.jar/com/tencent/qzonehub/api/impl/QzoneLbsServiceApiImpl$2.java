@@ -22,7 +22,7 @@ class QzoneLbsServiceApiImpl$2
   {
     QLog.i("QcircleLbsService.NewLbsInterface", 1, "[QZ_LBS_MODULE]----refreshPoiList2");
     System.currentTimeMillis();
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     if (paramSosoLbsInfo == null)
     {
       QLog.e("QcircleLbsService", 1, "refreshPoiList error, info == null");
@@ -32,12 +32,12 @@ class QzoneLbsServiceApiImpl$2
     ArrayList localArrayList = Soso.b(paramSosoLbsInfo.mCells);
     paramSosoLbsInfo = Soso.a(paramSosoLbsInfo.mWifis);
     LbsDataV2.GeoInfo localGeoInfo = QzoneLbsServiceApiImpl.access$100(localArrayList);
-    QzoneLbsServiceApiImpl.access$200(this.jdField_a_of_type_ComTencentQzonehubApiImplQzoneLbsServiceApiImpl, localGpsInfo, localGeoInfo, localArrayList, paramSosoLbsInfo, 0, this.jdField_a_of_type_Int, this.b, 3, this.jdField_a_of_type_JavaUtilArrayList);
+    QzoneLbsServiceApiImpl.access$200(this.e, localGpsInfo, localGeoInfo, localArrayList, paramSosoLbsInfo, 0, this.b, this.c, 3, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QzoneLbsServiceApiImpl.2
  * JD-Core Version:    0.7.0.1
  */

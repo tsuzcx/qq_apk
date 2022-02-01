@@ -18,17 +18,17 @@ public class RIJDataManager$OnDrawCompleteListener
   
   public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
   {
-    if (!this.b.a().c()) {
+    if (!this.b.a().i()) {
       return;
     }
     this.b.a().e(false);
-    this.b.a().a().a(paramReadInJoyBaseListView);
-    this.b.a().a().a(this.b.a().a().a().getLastVisiblePosition() + 1, this.b.a().a().a(), this.a);
+    this.b.a().v().a(paramReadInJoyBaseListView);
+    this.b.a().h().a(this.b.a().v().d().getLastVisiblePosition() + 1, this.b.a().h().a(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataManager.OnDrawCompleteListener
  * JD-Core Version:    0.7.0.1
  */

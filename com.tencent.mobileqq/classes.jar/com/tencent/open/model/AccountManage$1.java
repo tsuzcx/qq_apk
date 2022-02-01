@@ -23,7 +23,7 @@ class AccountManage$1
       localObject = Integer.valueOf(paramBundle.getInt("code"));
     }
     SSOLog.a("SSOAccountObserver", new Object[] { "-->getTicketNoPasswd onFailed", ", action", Integer.valueOf(paramInt1), ", code=", localObject });
-    this.jdField_a_of_type_ComTencentOpenModelAccountManage$GetTicketCallback.a(paramString, paramBundle);
+    this.a.a(paramString, paramBundle);
   }
   
   public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
@@ -34,16 +34,16 @@ class AccountManage$1
     }
     WtloginManager localWtloginManager = (WtloginManager)MobileQQ.sMobileQQ.waitAppRuntime(null).getManager(1);
     AccountInfo localAccountInfo = new AccountInfo();
-    localAccountInfo.jdField_b_of_type_JavaLangString = new String(paramArrayOfByte);
-    localAccountInfo.jdField_a_of_type_JavaLangString = OpenSdkVirtualUtil.a(localWtloginManager, paramString);
-    localAccountInfo.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp");
-    localAccountInfo.jdField_b_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp_key");
-    this.jdField_a_of_type_ComTencentOpenModelAccountManage$GetTicketCallback.a(localAccountInfo);
+    localAccountInfo.b = new String(paramArrayOfByte);
+    localAccountInfo.a = OpenSdkVirtualUtil.a(localWtloginManager, paramString);
+    localAccountInfo.c = paramBundle.getByteArray("st_temp");
+    localAccountInfo.d = paramBundle.getByteArray("st_temp_key");
+    this.a.a(localAccountInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.model.AccountManage.1
  * JD-Core Version:    0.7.0.1
  */

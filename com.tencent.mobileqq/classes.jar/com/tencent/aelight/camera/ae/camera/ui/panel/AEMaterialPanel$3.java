@@ -1,25 +1,28 @@
 package com.tencent.aelight.camera.ae.camera.ui.panel;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.aelight.camera.ae.part.VideoStoryCapturePartManager;
+import android.animation.Animator;
+import com.tencent.aelight.camera.log.AEQLog;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class AEMaterialPanel$3
-  implements ValueAnimator.AnimatorUpdateListener
+  extends D8SafeAnimatorListener
 {
   AEMaterialPanel$3(AEMaterialPanel paramAEMaterialPanel) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    if (AEMaterialPanel.a(this.a) != null) {
-      AEMaterialPanel.a(this.a).a(851969, new Object[] { paramValueAnimator });
-    }
+    AEQLog.d("AEMaterialPanel", "[openWithAnimation] translationY - onAnimationCancel");
   }
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEMaterialPanel.3
  * JD-Core Version:    0.7.0.1
  */

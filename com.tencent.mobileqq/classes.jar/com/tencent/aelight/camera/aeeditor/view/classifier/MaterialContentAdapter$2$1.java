@@ -12,7 +12,7 @@ class MaterialContentAdapter$2$1
   
   public void a(@NonNull ApplyMaterialTask.Status paramStatus, int paramInt)
   {
-    ApplyMaterialTaskHelper.a("onDownloadMaterial", this.a.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, String.format("callback: %s-%s", new Object[] { paramStatus, Integer.valueOf(paramInt) }));
+    ApplyMaterialTaskHelper.a("onDownloadMaterial", this.a.a, String.format("callback: %s-%s", new Object[] { paramStatus, Integer.valueOf(paramInt) }));
     int i = MaterialContentAdapter.5.a[paramStatus.ordinal()];
     if (i != 1)
     {
@@ -21,23 +21,23 @@ class MaterialContentAdapter$2$1
         if (i != 3) {
           return;
         }
-        MaterialContentAdapter.b(this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
-        MaterialContentAdapter.a(this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter, ApplyMaterialTask.Status.FAILED, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
-        MaterialContentAdapter.a(this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter, this.a.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, "-90000000");
+        MaterialContentAdapter.b(this.a.c, this.a.b, this.a.a);
+        MaterialContentAdapter.a(this.a.c, ApplyMaterialTask.Status.FAILED, this.a.b, this.a.a);
+        MaterialContentAdapter.a(this.a.c, this.a.a, "-90000000");
         return;
       }
-      MetaMaterialKt.a(this.a.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, 100);
-      MaterialContentAdapter.a(this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter, ApplyMaterialTask.Status.SUCCEEDED, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
-      MaterialContentAdapter.a(this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter, this.a.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, "0");
+      MetaMaterialKt.a(this.a.a, 100);
+      MaterialContentAdapter.a(this.a.c, ApplyMaterialTask.Status.SUCCEEDED, this.a.b, this.a.a);
+      MaterialContentAdapter.a(this.a.c, this.a.a, "0");
       return;
     }
-    MetaMaterialKt.a(this.a.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, paramInt);
+    MetaMaterialKt.a(this.a.a, paramInt);
     ThreadManager.getUIHandler().post(new MaterialContentAdapter.2.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.classifier.MaterialContentAdapter.2.1
  * JD-Core Version:    0.7.0.1
  */

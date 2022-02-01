@@ -9,16 +9,16 @@ public class TroopFileItemBuilder$Holder
 {
   public TextView a;
   public TextView b;
-  public View c;
   public TextView c;
   public View d;
-  public TextView d;
+  public TextView e;
+  public View f;
   
   public TroopFileItemBuilder$Holder(TroopFileItemBuilder paramTroopFileItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

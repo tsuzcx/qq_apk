@@ -12,12 +12,12 @@ class PopupWindowWithMask$2
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    PopupWindowWithMask.a(this.a).setAlpha(f);
+    PopupWindowWithMask.b(this.a).setAlpha(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PopupWindowWithMask.2
  * JD-Core Version:    0.7.0.1
  */

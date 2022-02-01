@@ -11,15 +11,15 @@ import java.util.List;
 public class ReadSdcardFile
   implements ReadFile
 {
-  private File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private File b;
   
   public ReadSdcardFile(String paramString)
   {
     if (paramString != null)
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_JavaIoFile = new File(paramString);
+      this.a = paramString;
+      this.b = new File(paramString);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -31,7 +31,7 @@ public class ReadSdcardFile
   public InputStream a(String paramString)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append("/");
     ((StringBuilder)localObject).append(paramString);
     localObject = new File(((StringBuilder)localObject).toString());
@@ -55,7 +55,7 @@ public class ReadSdcardFile
   public List<String> a()
   {
     ArrayList localArrayList = new ArrayList();
-    String[] arrayOfString = this.jdField_a_of_type_JavaIoFile.list();
+    String[] arrayOfString = this.b.list();
     if (arrayOfString != null)
     {
       int j = arrayOfString.length;
@@ -71,7 +71,7 @@ public class ReadSdcardFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.file.ReadSdcardFile
  * JD-Core Version:    0.7.0.1
  */

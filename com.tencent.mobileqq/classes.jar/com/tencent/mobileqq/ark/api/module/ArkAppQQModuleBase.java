@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.ark.api.module;
 
 import android.app.Activity;
-import androidx.fragment.app.FragmentManager;
 import com.tencent.ark.ark.Application;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -26,39 +25,28 @@ public abstract class ArkAppQQModuleBase
     super(paramApplication, paramInt);
   }
   
-  public static Activity a()
+  public static String a(SessionInfo paramSessionInfo)
   {
-    Object localObject = ArkAppModuleBase.b();
-    if (localObject != null) {
-      return localObject;
-    }
-    if (MobileQQ.sProcessId == 2)
-    {
-      localObject = BaseApplicationImpl.getApplication().getResumeActivity();
-      if (localObject != null) {
-        return (Activity)((WeakReference)localObject).get();
-      }
-    }
-    return null;
+    return ArkCommonUtil.a(paramSessionInfo);
   }
   
-  public static SessionInfo a()
+  public static SessionInfo d()
   {
-    Object localObject2 = a();
+    Object localObject2 = f();
     boolean bool = localObject2 instanceof BaseActivity;
     SessionInfo localSessionInfo = null;
     Object localObject1 = localSessionInfo;
     if (bool)
     {
       localObject2 = (BaseActivity)localObject2;
-      localObject1 = (ChatFragment)((BaseActivity)localObject2).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      localObject1 = ((BaseActivity)localObject2).getChatFragment();
       if (localObject1 != null)
       {
-        localObject2 = ((ChatFragment)localObject1).a();
+        localObject2 = ((ChatFragment)localObject1).k();
         localObject1 = localSessionInfo;
         if (localObject2 != null)
         {
-          localSessionInfo = ((BaseChatPie)localObject2).a();
+          localSessionInfo = ((BaseChatPie)localObject2).aE();
           localObject1 = localSessionInfo;
           if (QLog.isColorLevel())
           {
@@ -76,7 +64,7 @@ public abstract class ArkAppQQModuleBase
           localObject1 = localSessionInfo;
           if ((localObject2 instanceof MiniChatFragment))
           {
-            localSessionInfo = ((MiniChatFragment)localObject2).a();
+            localSessionInfo = ((MiniChatFragment)localObject2).b();
             localObject1 = localSessionInfo;
             if (QLog.isColorLevel())
             {
@@ -90,7 +78,7 @@ public abstract class ArkAppQQModuleBase
     return localObject1;
   }
   
-  protected static QQAppInterface a()
+  protected static QQAppInterface e()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
@@ -99,14 +87,25 @@ public abstract class ArkAppQQModuleBase
     return null;
   }
   
-  public static String a(SessionInfo paramSessionInfo)
+  public static Activity f()
   {
-    return ArkCommonUtil.a(paramSessionInfo);
+    Object localObject = ArkAppModuleBase.h();
+    if (localObject != null) {
+      return localObject;
+    }
+    if (MobileQQ.sProcessId == 2)
+    {
+      localObject = BaseApplicationImpl.getApplication().getResumeActivity();
+      if (localObject != null) {
+        return (Activity)((WeakReference)localObject).get();
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModuleBase
  * JD-Core Version:    0.7.0.1
  */

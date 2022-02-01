@@ -19,10 +19,10 @@ public class QQNotifyJumpAction
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("msgid"))
+      if (this.f.containsKey("msgid"))
       {
-        String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("msgid");
-        QQReminderJumpFragment.a(this.jdField_a_of_type_AndroidContentContext, str);
+        String str = (String)this.f.get("msgid");
+        QQReminderJumpFragment.a(this.b, str);
       }
       return false;
     }
@@ -32,14 +32,14 @@ public class QQNotifyJumpAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QQNotifyJumpAction", 1, localStringBuilder.toString());
-      b_("QQNotifyJumpAction");
+      h_("QQNotifyJumpAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QQNotifyJumpAction
  * JD-Core Version:    0.7.0.1
  */

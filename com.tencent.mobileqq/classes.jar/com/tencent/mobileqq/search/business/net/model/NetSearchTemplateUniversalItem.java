@@ -2,6 +2,7 @@ package com.tencent.mobileqq.search.business.net.model;
 
 import android.text.TextUtils;
 import android.view.View;
+import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
@@ -19,21 +20,19 @@ public class NetSearchTemplateUniversalItem
   extends NetSearchTemplateBaseItem
 {
   public NetSearchTemplateUniversalItem.ActionInfo a;
-  public NetSearchTemplateUniversalItem.HeadIconInfo a;
-  public ArrayList<NetSearchTemplateUniversalItem.NormalWord> a;
-  public boolean b;
-  public boolean c;
+  public NetSearchTemplateUniversalItem.HeadIconInfo b;
+  public ArrayList<NetSearchTemplateUniversalItem.NormalWord> c;
+  public boolean d;
+  protected boolean e = false;
   
   public NetSearchTemplateUniversalItem(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_c_of_type_Boolean = false;
   }
   
   public NetSearchTemplateUniversalItem(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_c_of_type_Boolean = false;
   }
   
   public int a(int paramInt)
@@ -54,22 +53,44 @@ public class NetSearchTemplateUniversalItem
   public void a(View paramView)
   {
     super.a(paramView);
-    if (this.jdField_a_of_type_Long == 1003L)
+    if (this.i == 1003L)
     {
       AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
-      if (a() != null) {
-        paramView = a();
+      if (c() != null) {
+        paramView = c();
       } else {
         paramView = "";
       }
       ReportController.b(localAppRuntime, "dc00898", "", paramView, "auth_search", "clk_content", 0, 0, "", "", "", "");
-      if (this.jdField_c_of_type_Boolean) {
-        ReportController.b(null, "dc00898", "", "", "0X800AC12", "0X800AC12", 0, 0, "", "", "", "");
+      if (q()) {
+        UniteSearchReportController.a(null, 0, this.p, "0X800AC12", 0, 0, "", "");
       }
+      UniteSearchReportController.a(null, 0, this.p, "0X8009D51", 0, 0, null, null);
+      return;
+    }
+    if (r()) {
+      UniteSearchReportController.a(null, 0, this.p, "0X800BDC3", 0, 0, null, null);
     }
   }
   
-  public void a(String paramString)
+  public CharSequence d()
+  {
+    if (this.i == 1003L)
+    {
+      ArrayList localArrayList = this.c;
+      if ((localArrayList != null) && (localArrayList.size() > 0)) {
+        return ((NetSearchTemplateUniversalItem.NormalWord)this.c.get(0)).a;
+      }
+    }
+    return super.d();
+  }
+  
+  public boolean i()
+  {
+    return true;
+  }
+  
+  public void o_(String paramString)
   {
     for (;;)
     {
@@ -79,7 +100,7 @@ public class NetSearchTemplateUniversalItem
         if (paramString.optInt("needRightCenter") == 1)
         {
           bool = true;
-          this.b = bool;
+          this.d = bool;
           JSONObject localJSONObject = paramString.optJSONObject("imageInfo");
           if (localJSONObject != null) {
             a(localJSONObject);
@@ -87,21 +108,21 @@ public class NetSearchTemplateUniversalItem
           localJSONObject = paramString.optJSONObject("actionInfo");
           if (localJSONObject != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo = new NetSearchTemplateUniversalItem.ActionInfo(this);
-            this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_Int = localJSONObject.optInt("type");
-            this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("word");
-            this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_JavaLangString = localJSONObject.optString("jumpUrl");
+            this.a = new NetSearchTemplateUniversalItem.ActionInfo(this);
+            this.a.a = localJSONObject.optInt("type");
+            this.a.b = localJSONObject.optString("word");
+            this.a.c = localJSONObject.optString("jumpUrl");
           }
           localJSONObject = paramString.optJSONObject("headIconInfo");
           if (localJSONObject != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo = new NetSearchTemplateUniversalItem.HeadIconInfo(this);
-            this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_Int = localJSONObject.optInt("type");
-            this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_JavaLangString = localJSONObject.optString("iconUrl");
-            this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_b_of_type_Int = localJSONObject.optInt("iconWidth");
-            this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.c = localJSONObject.optInt("iconHeight");
-            this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("tagText");
-            this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_b_of_type_JavaLangString = localJSONObject.optString("tagBgColor");
+            this.b = new NetSearchTemplateUniversalItem.HeadIconInfo(this);
+            this.b.a = localJSONObject.optInt("type");
+            this.b.b = localJSONObject.optString("iconUrl");
+            this.b.c = localJSONObject.optInt("iconWidth");
+            this.b.d = localJSONObject.optInt("iconHeight");
+            this.b.e = localJSONObject.optString("tagText");
+            this.b.f = localJSONObject.optString("tagBgColor");
           }
           paramString = paramString.optJSONArray("lineList");
           if ((paramString != null) && (paramString.length() > 0))
@@ -114,35 +135,35 @@ public class NetSearchTemplateUniversalItem
               NetSearchTemplateUniversalItem.NormalWord localNormalWord;
               if (!bool)
               {
-                if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-                  this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+                if (this.c == null) {
+                  this.c = new ArrayList();
                 }
                 localNormalWord = new NetSearchTemplateUniversalItem.NormalWord(this);
-                localNormalWord.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("word");
-                localNormalWord.jdField_a_of_type_JavaLangString = localJSONObject.optString("fontType", "A");
-                localNormalWord.jdField_a_of_type_Int = localJSONObject.optInt("maxLines");
+                localNormalWord.a = localJSONObject.optString("word");
+                localNormalWord.b = localJSONObject.optString("fontType", "A");
+                localNormalWord.c = localJSONObject.optInt("maxLines");
                 if (localJSONObject.optInt("needHighlight") != 1) {
                   break label517;
                 }
                 bool = true;
-                localNormalWord.jdField_a_of_type_Boolean = bool;
-                this.jdField_a_of_type_JavaUtilArrayList.add(localNormalWord);
+                localNormalWord.d = bool;
+                this.c.add(localNormalWord);
               }
               else if (localJSONObject.optJSONArray("words") != null)
               {
-                if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-                  this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+                if (this.c == null) {
+                  this.c = new ArrayList();
                 }
                 localNormalWord = new NetSearchTemplateUniversalItem.NormalWord(this);
-                localNormalWord.jdField_a_of_type_JavaLangCharSequence = SearchUtils.a(localJSONObject.optJSONArray("words"));
-                localNormalWord.jdField_a_of_type_JavaLangString = localJSONObject.optString("fontType", "A");
-                localNormalWord.jdField_a_of_type_Int = localJSONObject.optInt("maxLines");
+                localNormalWord.a = SearchUtils.a(localJSONObject.optJSONArray("words"));
+                localNormalWord.b = localJSONObject.optString("fontType", "A");
+                localNormalWord.c = localJSONObject.optInt("maxLines");
                 if (localJSONObject.optInt("needHighlight") != 1) {
                   break label522;
                 }
                 bool = true;
-                localNormalWord.jdField_a_of_type_Boolean = bool;
-                this.jdField_a_of_type_JavaUtilArrayList.add(localNormalWord);
+                localNormalWord.d = bool;
+                this.c.add(localNormalWord);
               }
               i += 1;
               continue;
@@ -154,7 +175,7 @@ public class NetSearchTemplateUniversalItem
       catch (JSONException paramString)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_c_of_type_JavaLangString, 2, paramString.toString());
+          QLog.d(g, 2, paramString.toString());
         }
       }
       boolean bool = false;
@@ -167,14 +188,32 @@ public class NetSearchTemplateUniversalItem
     }
   }
   
-  public boolean b()
+  public void p()
   {
-    return true;
+    super.p();
+    if (r())
+    {
+      UniteSearchReportController.a(null, 0, this.p, "0X800BDC2", 0, 0, null, null);
+      return;
+    }
+    if (this.i == 1003L) {
+      UniteSearchReportController.a(null, 0, this.p, "0X8009D50", 0, 0, null, null);
+    }
+  }
+  
+  public boolean r()
+  {
+    return ("自杀".equals(this.m)) && (this.i == 1000000L);
+  }
+  
+  public boolean s()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.NetSearchTemplateUniversalItem
  * JD-Core Version:    0.7.0.1
  */

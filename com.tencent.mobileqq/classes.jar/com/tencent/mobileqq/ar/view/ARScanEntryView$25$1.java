@@ -13,18 +13,18 @@ class ARScanEntryView$25$1
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
+    if (this.a.a != null) {
+      this.a.a.a(this.a.b);
     }
-    ARScanEntryView.g(this.a.this$0);
-    ARScanEntryView.d(this.a.this$0);
-    this.a.this$0.a.setOnClickListener(this.a.this$0);
+    ARScanEntryView.t(this.a.this$0);
+    ARScanEntryView.n(this.a.this$0);
+    this.a.this$0.e.setOnClickListener(this.a.this$0);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.25.1
  * JD-Core Version:    0.7.0.1
  */

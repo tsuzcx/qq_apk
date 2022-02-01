@@ -4,6 +4,7 @@ public class CommentInfoConstants
 {
   public static final String ARG_COMMENT_IS_FROM_VIOLA = "is_from_viola";
   public static final String ARG_COMMENT_IS_SHOW_EDIT = "directComment";
+  public static final int AUTHOR_LIKE_STATUS_LIKED = 1;
   public static final int AUTHOR_TOP_STATUS_TYPE_BOTTOM = 3;
   public static final int AUTHOR_TOP_STATUS_TYPE_TOP = 1;
   public static final int AUTHOR_TOP_STATUS_TYPE_UNSET = 2;
@@ -11,6 +12,8 @@ public class CommentInfoConstants
   public static final int COMMENTTYPE_SUB = 2;
   public static final int COMMENT_EDIT = 1;
   public static final int FETCH_COMMENT_COUNT = 10;
+  public static final int FOLLOW_STATUS_FOLLOWD = 1;
+  public static final int FOLLOW_STATUS_UNFOLLOWD = 0;
   public static final String JSON_NODE_ARTICLE_COMMENTTYPE = "type";
   public static final String JSON_NODE_ARTICLE_COMMENTVAL = "comment_val";
   public static final String JSON_NODE_ARTICLE_COMMENT_ARTICLEINFO = "articleInfo";
@@ -81,10 +84,11 @@ public class CommentInfoConstants
   public static final String READINJOY_OPEN_COMMENT_FROM_VIDEO = "readinjoy_open_comment_from_video";
   public static final String READINJOY_OPEN_COMMENT_WITH_EDIT_PANEL = "readinjoy_open_comment_with_edit_panel";
   public static String READINJOY_UGC_LBS = "ugc_upload_lbs_switch";
+  public static final int SHOW_FOLLOW_BUTTON = 1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.comment.constants.CommentInfoConstants
  * JD-Core Version:    0.7.0.1
  */

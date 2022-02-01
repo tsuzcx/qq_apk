@@ -5,19 +5,19 @@ import androidx.annotation.NonNull;
 
 public class RoundEmptyRectRelativeLayout$ClipRoundRect
 {
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private float[] jdField_a_of_type_ArrayOfFloat;
+  private RectF a;
+  private float[] b;
   
   public RoundEmptyRectRelativeLayout$ClipRoundRect(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramFloat1, paramFloat2, paramFloat3 + paramFloat1, paramFloat4 + paramFloat2);
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { paramFloat5, paramFloat5, paramFloat5, paramFloat5, paramFloat5, paramFloat5, paramFloat5, paramFloat5 };
+    this.a = new RectF(paramFloat1, paramFloat2, paramFloat3 + paramFloat1, paramFloat4 + paramFloat2);
+    this.b = new float[] { paramFloat5, paramFloat5, paramFloat5, paramFloat5, paramFloat5, paramFloat5, paramFloat5, paramFloat5 };
   }
   
   @NonNull
   public String toString()
   {
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    RectF localRectF = this.a;
     if (localRectF != null) {
       return localRectF.toString();
     }

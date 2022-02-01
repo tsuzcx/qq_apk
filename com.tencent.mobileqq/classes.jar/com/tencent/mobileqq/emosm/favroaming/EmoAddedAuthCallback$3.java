@@ -18,13 +18,13 @@ final class EmoAddedAuthCallback$3
       paramDialogInterface.dismiss();
     }
     if (paramInt == 1) {
-      VasH5PayUtil.a(this.jdField_a_of_type_AndroidContentContext, "mvip.n.a.bqsc_aio", 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getApp().getString(2131699767), "");
+      VasH5PayUtil.a(this.a, "mvip.n.a.bqsc_aio", 3, "1450000516", "CJCLUBT", this.b.getApp().getString(2131897800), "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoAddedAuthCallback.3
  * JD-Core Version:    0.7.0.1
  */

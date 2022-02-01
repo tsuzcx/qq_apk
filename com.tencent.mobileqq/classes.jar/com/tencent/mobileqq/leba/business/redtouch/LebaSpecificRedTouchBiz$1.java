@@ -16,8 +16,8 @@ class LebaSpecificRedTouchBiz$1
   public void run()
   {
     long l = System.currentTimeMillis();
-    Object localObject = (TroopRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
-    localObject = ((TroopRedTouchManager)localObject).a(((TroopRedTouchManager)localObject).a(), false);
+    Object localObject = (TroopRedTouchManager)this.a.getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
+    localObject = ((TroopRedTouchManager)localObject).a(((TroopRedTouchManager)localObject).p(), false);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -25,12 +25,12 @@ class LebaSpecificRedTouchBiz$1
       localStringBuilder.append(System.currentTimeMillis() - l);
       QLog.d("LebaSpecificRedTouchBiz", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new LebaSpecificRedTouchBiz.1.1(this, (INearbyRedInfo)localObject));
+    this.b.post(new LebaSpecificRedTouchBiz.1.1(this, (INearbyRedInfo)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.redtouch.LebaSpecificRedTouchBiz.1
  * JD-Core Version:    0.7.0.1
  */

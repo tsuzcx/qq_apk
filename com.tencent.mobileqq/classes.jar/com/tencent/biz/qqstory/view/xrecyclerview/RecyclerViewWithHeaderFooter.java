@@ -14,37 +14,39 @@ import java.util.List;
 public class RecyclerViewWithHeaderFooter
   extends RecyclerView
 {
-  private RecyclerViewHeaderViewAdapter.ContentDataObserver jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver;
-  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public boolean a;
+  public boolean a = false;
   private final List<View> b = new ArrayList();
+  private final List<View> c = new ArrayList();
+  private RecyclerViewHeaderViewAdapter.ContentDataObserver d;
   
   public RecyclerViewWithHeaderFooter(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public RecyclerViewWithHeaderFooter(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public RecyclerViewWithHeaderFooter(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public void a(View paramView)
   {
-    this.b.add(paramView);
+    this.c.add(paramView);
+  }
+  
+  public RecyclerViewHeaderViewAdapter.ContentDataObserver getContentDataObserver()
+  {
+    return this.d;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       super.onInterceptTouchEvent(paramMotionEvent);
       return true;
@@ -54,10 +56,10 @@ public class RecyclerViewWithHeaderFooter
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       if (paramMotionEvent.getAction() == 1) {
-        this.jdField_a_of_type_Boolean = false;
+        this.a = false;
       }
       return true;
     }
@@ -67,23 +69,23 @@ public class RecyclerViewWithHeaderFooter
   public void setAdapter(RecyclerView.Adapter paramAdapter)
   {
     Object localObject;
-    if (this.jdField_a_of_type_JavaUtilList.size() <= 0)
+    if (this.b.size() <= 0)
     {
       localObject = paramAdapter;
-      if (this.b.size() <= 0) {}
+      if (this.c.size() <= 0) {}
     }
     else
     {
       localObject = new RecyclerViewHeaderViewAdapter(paramAdapter);
-      paramAdapter = this.jdField_a_of_type_JavaUtilList.iterator();
+      paramAdapter = this.b.iterator();
       while (paramAdapter.hasNext()) {
         ((RecyclerViewHeaderViewAdapter)localObject).a((View)paramAdapter.next());
       }
-      paramAdapter = this.b.iterator();
+      paramAdapter = this.c.iterator();
       while (paramAdapter.hasNext()) {
         ((RecyclerViewHeaderViewAdapter)localObject).b((View)paramAdapter.next());
       }
-      paramAdapter = this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver;
+      paramAdapter = this.d;
       if (paramAdapter != null) {
         ((RecyclerViewHeaderViewAdapter)localObject).a(paramAdapter);
       }

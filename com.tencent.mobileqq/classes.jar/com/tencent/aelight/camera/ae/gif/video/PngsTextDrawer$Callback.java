@@ -8,7 +8,7 @@ public abstract interface PngsTextDrawer$Callback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.PngsTextDrawer.Callback
  * JD-Core Version:    0.7.0.1
  */

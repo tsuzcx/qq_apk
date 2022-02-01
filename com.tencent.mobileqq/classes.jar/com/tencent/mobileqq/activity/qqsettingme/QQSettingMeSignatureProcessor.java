@@ -29,145 +29,138 @@ import mqq.os.MqqHandler;
 public class QQSettingMeSignatureProcessor
   extends QQSettingMeBaseProcessor
 {
-  public final MutableLiveData<BusinessInfoCheckUpdate.AppInfo> a;
-  private IActionListener jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener;
-  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener;
-  private IStatusListener jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener;
-  private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
-  public MutableLiveData<QQSettingMeSignatureBean> b;
-  private boolean b;
-  public MutableLiveData<QQSettingMeRichStatusBean> c;
-  private boolean c;
-  
-  public QQSettingMeSignatureProcessor()
-  {
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-    this.jdField_c_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  }
+  public final MutableLiveData<BusinessInfoCheckUpdate.AppInfo> a = new MutableLiveData();
+  public MutableLiveData<QQSettingMeSignatureBean> b = new MutableLiveData();
+  public MutableLiveData<QQSettingMeRichStatusBean> i = new MutableLiveData();
+  private StatusManager j;
+  private IStatusListener k;
+  private IIconListener l;
+  private IActionListener m;
+  private boolean n;
+  private boolean o;
   
   @NonNull
   private QQSettingMeRichStatusBean a()
   {
-    if (this.jdField_c_of_type_AndroidxLifecycleMutableLiveData.getValue() == null) {
+    if (this.i.getValue() == null) {
       return new QQSettingMeRichStatusBean();
     }
-    return (QQSettingMeRichStatusBean)this.jdField_c_of_type_AndroidxLifecycleMutableLiveData.getValue();
+    return (QQSettingMeRichStatusBean)this.i.getValue();
   }
   
-  private void j()
+  private void l()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.STATUS_MANAGER));
+    this.j = ((StatusManager)this.c.getManager(QQManagerFactory.STATUS_MANAGER));
     QQSettingMeSignatureBean localQQSettingMeSignatureBean = new QQSettingMeSignatureBean();
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+    Object localObject = this.c.getApp();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("qqsettingme_signature");
-    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
+    localStringBuilder.append(this.c.getAccount());
     localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
-    localQQSettingMeSignatureBean.jdField_a_of_type_JavaLangString = ((SharedPreferences)localObject).getString("actionText", "");
-    localQQSettingMeSignatureBean.jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt("actionId", 0);
-    localQQSettingMeSignatureBean.b = ((SharedPreferences)localObject).getString("dataText", "");
-    localQQSettingMeSignatureBean.d = ((SharedPreferences)localObject).getString("plainText", "");
-    localQQSettingMeSignatureBean.c = ((SharedPreferences)localObject).getString("topics", "");
-    localQQSettingMeSignatureBean.e = ((SharedPreferences)localObject).getString("plainMixTopic", "");
-    localQQSettingMeSignatureBean.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(localQQSettingMeSignatureBean.jdField_a_of_type_Int, 200);
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.setValue(localQQSettingMeSignatureBean);
+    localQQSettingMeSignatureBean.b = ((SharedPreferences)localObject).getString("actionText", "");
+    localQQSettingMeSignatureBean.a = ((SharedPreferences)localObject).getInt("actionId", 0);
+    localQQSettingMeSignatureBean.c = ((SharedPreferences)localObject).getString("dataText", "");
+    localQQSettingMeSignatureBean.e = ((SharedPreferences)localObject).getString("plainText", "");
+    localQQSettingMeSignatureBean.d = ((SharedPreferences)localObject).getString("topics", "");
+    localQQSettingMeSignatureBean.f = ((SharedPreferences)localObject).getString("plainMixTopic", "");
+    localQQSettingMeSignatureBean.g = this.j.a(localQQSettingMeSignatureBean.a, 200);
+    this.b.setValue(localQQSettingMeSignatureBean);
   }
   
-  private void k()
+  private void m()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new QQSettingMeSignatureProcessor.6(this);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new QQSettingMeSignatureProcessor.7(this);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener = new QQSettingMeSignatureProcessor.8(this);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener);
-  }
-  
-  public String a()
-  {
-    return "d_signature";
-  }
-  
-  public void a()
-  {
-    j();
+    this.k = new QQSettingMeSignatureProcessor.6(this);
+    this.j.a(this.k);
+    this.l = new QQSettingMeSignatureProcessor.7(this);
+    this.j.a(this.l);
+    this.m = new QQSettingMeSignatureProcessor.8(this);
+    this.j.a(this.m);
   }
   
   public void a(QQSettingMe paramQQSettingMe)
   {
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeSignatureProcessor.1(this, paramQQSettingMe));
-    this.jdField_c_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeSignatureProcessor.2(this, paramQQSettingMe));
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeSignatureProcessor.3(this, paramQQSettingMe));
+    this.b.observe(this.e, new QQSettingMeSignatureProcessor.1(this, paramQQSettingMe));
+    this.i.observe(this.e, new QQSettingMeSignatureProcessor.2(this, paramQQSettingMe));
+    this.a.observe(this.e, new QQSettingMeSignatureProcessor.3(this, paramQQSettingMe));
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.o)
     {
-      StatusManager localStatusManager = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
+      StatusManager localStatusManager = this.j;
       if (localStatusManager != null)
       {
-        localStatusManager.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener);
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener);
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener);
+        localStatusManager.b(this.k);
+        this.j.b(this.l);
+        this.j.b(this.m);
       }
-      this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-      g();
+      this.c = paramAppRuntime;
+      i();
       return;
     }
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.c = paramAppRuntime;
   }
   
   public void a(boolean paramBoolean)
   {
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath(String.valueOf(100450));
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath(String.valueOf(100450));
     QQSettingMeRedTouchUtil.a(localAppInfo);
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.n) {
       ThreadManagerV2.getUIHandlerV2().post(new QQSettingMeSignatureProcessor.5(this, localAppInfo));
     }
   }
   
-  public void b()
+  public String b()
   {
-    super.b();
-    g();
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
+    return "d_signature";
   }
   
   public void c()
   {
-    super.c();
-    this.jdField_b_of_type_Boolean = false;
+    l();
   }
   
   public void d()
   {
-    StatusManager localStatusManager = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
+    super.d();
+    i();
+    this.n = true;
+    this.o = true;
+  }
+  
+  public void e()
+  {
+    super.e();
+    this.n = false;
+  }
+  
+  public void f()
+  {
+    StatusManager localStatusManager = this.j;
     if (localStatusManager != null)
     {
-      localStatusManager.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener);
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener);
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener);
+      localStatusManager.b(this.k);
+      this.j.b(this.l);
+      this.j.b(this.m);
     }
   }
   
-  public void g()
+  public void i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.STATUS_MANAGER));
-    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager == null) {
+    this.j = ((StatusManager)this.c.getManager(QQManagerFactory.STATUS_MANAGER));
+    if (this.j == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener == null) {
-      k();
+    if (this.k == null) {
+      m();
     }
     QQSettingMeRichStatusBean localQQSettingMeRichStatusBean = new QQSettingMeRichStatusBean();
-    localQQSettingMeRichStatusBean.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(false);
-    if ((localQQSettingMeRichStatusBean.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus != null) && (!localQQSettingMeRichStatusBean.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.isEmpty()))
+    localQQSettingMeRichStatusBean.a = this.j.b(false);
+    if ((localQQSettingMeRichStatusBean.a != null) && (!localQQSettingMeRichStatusBean.a.isEmpty()))
     {
-      localQQSettingMeRichStatusBean.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(localQQSettingMeRichStatusBean.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionId, 200);
-      this.jdField_c_of_type_AndroidxLifecycleMutableLiveData.setValue(localQQSettingMeRichStatusBean);
+      localQQSettingMeRichStatusBean.b = this.j.a(localQQSettingMeRichStatusBean.a.actionId, 200);
+      this.i.setValue(localQQSettingMeRichStatusBean);
       return;
     }
     ThreadManager.getFileThreadHandler().post(new QQSettingMeSignatureProcessor.4(this, localQQSettingMeRichStatusBean));
@@ -175,30 +168,30 @@ public class QQSettingMeSignatureProcessor
   
   public void onClick(View paramView)
   {
-    Object localObject = (IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "");
+    Object localObject = (IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "");
     BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)localObject).getAppInfoByPath(String.valueOf(100450));
     if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() != 0)) {
       ((IRedTouchManager)localObject).reportLevelOneRedInfo(100450, 31);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
-    if ((localObject != null) && (!((StatusManager)localObject).a()))
+    localObject = this.j;
+    if ((localObject != null) && (!((StatusManager)localObject).b()))
     {
       if (((Boolean)paramView.getTag()).booleanValue())
       {
         paramView = new Bundle();
         paramView.putInt("from_type", 3);
-        SignTextEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, a().jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus, "", paramView, -1);
+        SignTextEditFragment.a(this.d, a().a, "", paramView, -1);
       }
-      com.tencent.mobileqq.activity.recent.DrawerFrame.jdField_a_of_type_Int = 0;
+      com.tencent.mobileqq.activity.recent.DrawerFrame.b = 0;
     }
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "signiture", "set_enter", 0, 0, "", "", "", "");
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "0X80072D8", "0X80072D8", 0, 0, "", "", "", "");
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "0X800A669", "0X800A669", 0, 0, "", "", "", "");
+    ReportController.b(this.c, "CliOper", "", "", "signiture", "set_enter", 0, 0, "", "", "", "");
+    ReportController.b(this.c, "CliOper", "", "", "0X80072D8", "0X80072D8", 0, 0, "", "", "", "");
+    ReportController.b(this.c, "CliOper", "", "", "0X800A669", "0X800A669", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeSignatureProcessor
  * JD-Core Version:    0.7.0.1
  */

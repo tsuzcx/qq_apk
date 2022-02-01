@@ -11,12 +11,12 @@ final class Shadow$1
   
   public IVPluginManager a()
   {
-    return Shadow.b(this.jdField_a_of_type_AndroidContentContext, "Now", this.jdField_a_of_type_JavaLangString);
+    return Shadow.b(this.a, "Now", this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.impl.Shadow.1
  * JD-Core Version:    0.7.0.1
  */

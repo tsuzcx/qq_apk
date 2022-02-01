@@ -8,7 +8,7 @@ class TimerModule$a
   final boolean b;
   final int c;
   long d;
-  Promise e;
+  final Promise e;
   
   TimerModule$a(String paramString, long paramLong, int paramInt, boolean paramBoolean, Promise paramPromise)
   {
@@ -21,7 +21,7 @@ class TimerModule$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.timer.TimerModule.a
  * JD-Core Version:    0.7.0.1
  */

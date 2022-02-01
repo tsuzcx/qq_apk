@@ -92,7 +92,7 @@ public class VideoPlaySDKManager
     try
     {
       addSDKInstalledListener(paramSDKInitListener);
-      if ((this.mState.get() != 1) && (this.mState.get() != 2))
+      if ((this.mState.get() != 1) && ((this.mState.get() != 2) || (!isSoLoadSuc())))
       {
         this.mState.set(1);
         LoadSoUtil.loadSo(new VideoPlaySDKManager.1(this, paramContext, paramSuperPlayerSdkOption));
@@ -103,7 +103,7 @@ public class VideoPlaySDKManager
         paramContext = new StringBuilder();
         paramContext.append("initSDKAsync, mState.get() = ");
         paramContext.append(this.mState.get());
-        paramContext.append(" , sdk is initing or done ,return.");
+        paramContext.append(" , sdk is initing or has succeed ,return.");
         LogUtil.d("[VideoPlatForm]VideoPlaySDKManager", 2, paramContext.toString());
       }
       return;
@@ -143,7 +143,7 @@ public class VideoPlaySDKManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.VideoPlaySDKManager
  * JD-Core Version:    0.7.0.1
  */

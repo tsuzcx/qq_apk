@@ -18,15 +18,15 @@ class LoadDataJob$2
       ((StringBuilder)???).append(paramInt);
       QLog.d("LoadDataJob", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-      this.jdField_a_of_type_JavaUtilMap.notifyAll();
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      this.a.remove(Integer.valueOf(paramInt));
+      this.a.notifyAll();
+      synchronized (this.b)
       {
-        this.jdField_a_of_type_JavaUtilList.add(paramPathDrawer);
-        if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
-          this.jdField_a_of_type_JavaUtilList.notifyAll();
+        this.b.add(paramPathDrawer);
+        if (this.b.size() == LoadDataJob.a(this.c)) {
+          this.b.notifyAll();
         }
         return;
       }
@@ -35,7 +35,7 @@ class LoadDataJob$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.LoadDataJob.2
  * JD-Core Version:    0.7.0.1
  */

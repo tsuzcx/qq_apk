@@ -33,15 +33,15 @@ public class RecommendBannerViewNew
   extends LinearLayout
   implements View.OnClickListener, SimpleEventReceiver
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TopRecommendBannerAdapter jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter;
-  private TopPanelContract.Presenter jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$Presenter;
-  private boolean jdField_a_of_type_Boolean = false;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private RecyclerView a;
+  private ImageView b;
+  private ImageView c;
+  private TextView d;
+  private TextView e;
+  private TopPanelContract.Presenter f;
+  private TopRecommendBannerAdapter g;
+  private View h;
+  private boolean i = false;
   
   public RecommendBannerViewNew(Context paramContext)
   {
@@ -57,12 +57,12 @@ public class RecommendBannerViewNew
   
   private void a(int paramInt)
   {
-    if (paramInt < this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.getItemCount())
+    if (paramInt < this.g.getItemCount())
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.a(paramInt);
-      if ((!this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.c()) && (!this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.b()))
+      this.g.a(paramInt);
+      if ((!this.g.e()) && (!this.g.d()))
       {
-        TopPanelContract.Presenter localPresenter = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$Presenter;
+        TopPanelContract.Presenter localPresenter = this.f;
         if (localPresenter != null) {
           localPresenter.a();
         }
@@ -73,53 +73,53 @@ public class RecommendBannerViewNew
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.b()) && (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    if ((this.g.d()) && (this.d.getVisibility() == 0))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.b.setVisibility(8);
+      this.d.setVisibility(8);
     }
   }
   
   public void a(CertifiedAccountMeta.StEntry paramStEntry, List<RecommendInfoItem> paramList, boolean paramBoolean)
   {
-    TopRecommendBannerAdapter localTopRecommendBannerAdapter = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter;
+    TopRecommendBannerAdapter localTopRecommendBannerAdapter = this.g;
     if (localTopRecommendBannerAdapter != null)
     {
       localTopRecommendBannerAdapter.d(paramBoolean);
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.a(paramStEntry, paramList);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollToPosition(0);
+      this.g.a(paramStEntry, paramList);
+      this.a.smoothScrollToPosition(0);
     }
   }
   
   protected void a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = SubscribeUtils.a();
+    this.i = SubscribeUtils.a();
     setOrientation(1);
-    inflate(paramContext, 2131558766, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363391));
+    inflate(paramContext, 2131624386, this);
+    this.a = ((RecyclerView)findViewById(2131429281));
     paramContext = new LinearLayoutManager(paramContext);
     paramContext.setOrientation(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new RecommendBannerItemDecoration());
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter = new TopRecommendBannerAdapter(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.b(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.c(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter);
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.a(new RecommendBannerViewNew.1(this));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369319));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365768);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376258));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376215));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376216));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    if (this.jdField_a_of_type_Boolean)
+    this.a.setLayoutManager(paramContext);
+    this.a.addItemDecoration(new RecommendBannerItemDecoration());
+    this.g = new TopRecommendBannerAdapter(this.a);
+    this.g.b(this.i);
+    this.g.c(true);
+    this.a.setAdapter(this.g);
+    this.g.a(new RecommendBannerViewNew.1(this));
+    this.c = ((ImageView)findViewById(2131436318));
+    this.h = findViewById(2131432025);
+    this.e = ((TextView)findViewById(2131444466));
+    this.b = ((ImageView)findViewById(2131444423));
+    this.d = ((TextView)findViewById(2131444424));
+    this.d.setOnClickListener(this);
+    this.b.setOnClickListener(this);
+    if (this.i)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130839013));
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838958));
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-9211021);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-10132123);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-10132123);
+      this.b.setImageDrawable(getResources().getDrawable(2130839167));
+      this.c.setImageDrawable(getResources().getDrawable(2130839112));
+      this.h.setBackgroundColor(-9211021);
+      this.e.setTextColor(-10132123);
+      this.d.setTextColor(-10132123);
     }
   }
   
@@ -142,15 +142,15 @@ public class RecommendBannerViewNew
     {
     default: 
       break;
-    case 2131376215: 
-    case 2131376216: 
-      TopRecommendBannerAdapter localTopRecommendBannerAdapter = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter;
-      if ((localTopRecommendBannerAdapter != null) && (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$Presenter != null))
+    case 2131444423: 
+    case 2131444424: 
+      TopRecommendBannerAdapter localTopRecommendBannerAdapter = this.g;
+      if ((localTopRecommendBannerAdapter != null) && (this.f != null))
       {
-        if ((!localTopRecommendBannerAdapter.a()) && (!this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.b())) {
-          this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$Presenter.a();
+        if ((!localTopRecommendBannerAdapter.c()) && (!this.g.d())) {
+          this.f.a();
         } else {
-          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollToPosition(0);
+          this.a.smoothScrollToPosition(0);
         }
         a();
       }
@@ -169,29 +169,29 @@ public class RecommendBannerViewNew
   {
     if ((paramSimpleBaseEvent instanceof RecommendFeedbackEvent))
     {
-      if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter == null) {
+      if (this.g == null) {
         return;
       }
-      int i = 0;
-      while (i < this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.a().size())
+      int j = 0;
+      while (j < this.g.a().size())
       {
         RecommendFeedbackEvent localRecommendFeedbackEvent = (RecommendFeedbackEvent)paramSimpleBaseEvent;
-        if (((localRecommendFeedbackEvent.type == 1) && (localRecommendFeedbackEvent.user != null) && (TextUtils.equals(((RecommendInfoItem)this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), localRecommendFeedbackEvent.user.id.get()))) || ((localRecommendFeedbackEvent.type == 2) && (localRecommendFeedbackEvent.feed != null) && (TextUtils.equals(((RecommendInfoItem)this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerTopRecommendBannerAdapter.a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), localRecommendFeedbackEvent.feed.id.get())))) {
+        if (((localRecommendFeedbackEvent.type == 1) && (localRecommendFeedbackEvent.user != null) && (TextUtils.equals(((RecommendInfoItem)this.g.a().get(j)).b.id.get(), localRecommendFeedbackEvent.user.id.get()))) || ((localRecommendFeedbackEvent.type == 2) && (localRecommendFeedbackEvent.feed != null) && (TextUtils.equals(((RecommendInfoItem)this.g.a().get(j)).c.id.get(), localRecommendFeedbackEvent.feed.id.get())))) {
           break label165;
         }
-        i += 1;
+        j += 1;
       }
-      i = -1;
+      j = -1;
       label165:
-      if (i != -1) {
-        a(i);
+      if (j != -1) {
+        a(j);
       }
     }
   }
   
   public void setPresenter(TopPanelContract.Presenter paramPresenter)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$Presenter = paramPresenter;
+    this.f = paramPresenter;
   }
 }
 

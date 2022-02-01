@@ -16,7 +16,7 @@ final class OldMutualMarkLogicHelper$3
     FriendsManager localFriendsManager = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localFriendsManager != null)
     {
-      HashSet localHashSet = HotReactiveHelper.a();
+      HashSet localHashSet = HotReactiveHelper.f();
       if ((localHashSet != null) && (localHashSet.size() > 0))
       {
         localFriendsManager.b(new ArrayList(localHashSet));
@@ -27,7 +27,7 @@ final class OldMutualMarkLogicHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.oldlogic.OldMutualMarkLogicHelper.3
  * JD-Core Version:    0.7.0.1
  */

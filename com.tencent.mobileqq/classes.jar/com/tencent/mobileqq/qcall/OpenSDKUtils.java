@@ -19,64 +19,6 @@ import com.tencent.widget.ActionSheet;
 
 public class OpenSDKUtils
 {
-  public static Bitmap a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("getOpenSDKUserFaceBitmap phoneNumber = ");
-    ((StringBuilder)localObject1).append(paramString);
-    QLog.d("OpenSDKUtils", 2, ((StringBuilder)localObject1).toString());
-    Object localObject2 = null;
-    Bitmap localBitmap = null;
-    localObject1 = localObject2;
-    if (paramQQAppInterface != null)
-    {
-      localObject1 = localObject2;
-      if (paramString != null)
-      {
-        if (!paramString.startsWith("+")) {
-          return null;
-        }
-        if (a(paramQQAppInterface, paramString)) {
-          localBitmap = paramQQAppInterface.getFaceBitmap(11, paramString, (byte)3, true, 0);
-        }
-        localObject1 = localBitmap;
-        if (localBitmap == null) {
-          localObject1 = ImageUtil.f();
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static Drawable a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("getOpenSDKUserFaceBitmap phoneNumber = ");
-    ((StringBuilder)localObject1).append(paramString);
-    QLog.d("OpenSDKUtils", 2, ((StringBuilder)localObject1).toString());
-    Object localObject2 = null;
-    FaceDrawable localFaceDrawable = null;
-    localObject1 = localObject2;
-    if (paramQQAppInterface != null)
-    {
-      localObject1 = localObject2;
-      if (paramString != null)
-      {
-        if (!paramString.startsWith("+")) {
-          return null;
-        }
-        if (a(paramQQAppInterface, paramString)) {
-          localFaceDrawable = FaceDrawable.getMobileFaceDrawable(paramQQAppInterface, paramString, (byte)3);
-        }
-        localObject1 = localFaceDrawable;
-        if (localFaceDrawable == null) {
-          localObject1 = ImageUtil.e();
-        }
-      }
-    }
-    return localObject1;
-  }
-  
   public static PhoneContact a(QQAppInterface paramQQAppInterface, String paramString)
   {
     IPhoneContactService localIPhoneContactService = (IPhoneContactService)paramQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
@@ -131,7 +73,36 @@ public class OpenSDKUtils
     return paramQQAppInterface;
   }
   
-  public static String a(QQAppInterface paramQQAppInterface, String paramString)
+  public static String a(String paramString)
+  {
+    PhoneNumberInfo localPhoneNumberInfo = PhoneNumberUtil.a(paramString);
+    if (localPhoneNumberInfo.a.equals("86")) {
+      paramString = localPhoneNumberInfo.c;
+    }
+    return paramString;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("enterActionSheet phoneNumber = ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.d("OpenSDKUtils", 2, ((StringBuilder)localObject).toString());
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    localObject = new int[1];
+    localObject[0] = 1;
+    ActionSheet localActionSheet = ActionSheet.create(paramContext);
+    localObject[0] = 1;
+    localActionSheet.addButton(2131887641);
+    localActionSheet.addCancelButton(2131887648);
+    localActionSheet.setOnDismissListener(new OpenSDKUtils.1());
+    localActionSheet.setOnButtonClickListener(new OpenSDKUtils.2(localActionSheet, (int[])localObject, paramString, paramContext, paramQQAppInterface));
+    localActionSheet.show();
+  }
+  
+  public static String b(QQAppInterface paramQQAppInterface, String paramString)
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("getOpenSDKUserDisplayName phoneNumber = ");
@@ -165,7 +136,7 @@ public class OpenSDKUtils
         localObject2 = localObject4;
         if (!str.equals("0"))
         {
-          paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(str);
+          paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(str);
           localObject2 = localObject3;
           if (paramQQAppInterface != null)
           {
@@ -202,37 +173,65 @@ public class OpenSDKUtils
     return "";
   }
   
-  public static String a(String paramString)
+  public static Bitmap c(QQAppInterface paramQQAppInterface, String paramString)
   {
-    PhoneNumberInfo localPhoneNumberInfo = PhoneNumberUtil.a(paramString);
-    if (localPhoneNumberInfo.a.equals("86")) {
-      paramString = localPhoneNumberInfo.c;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getOpenSDKUserFaceBitmap phoneNumber = ");
+    ((StringBuilder)localObject1).append(paramString);
+    QLog.d("OpenSDKUtils", 2, ((StringBuilder)localObject1).toString());
+    Object localObject2 = null;
+    Bitmap localBitmap = null;
+    localObject1 = localObject2;
+    if (paramQQAppInterface != null)
+    {
+      localObject1 = localObject2;
+      if (paramString != null)
+      {
+        if (!paramString.startsWith("+")) {
+          return null;
+        }
+        if (e(paramQQAppInterface, paramString)) {
+          localBitmap = paramQQAppInterface.getFaceBitmap(11, paramString, (byte)3, true, 0);
+        }
+        localObject1 = localBitmap;
+        if (localBitmap == null) {
+          localObject1 = ImageUtil.k();
+        }
+      }
     }
-    return paramString;
+    return localObject1;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  public static Drawable d(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("enterActionSheet phoneNumber = ");
-    ((StringBuilder)localObject).append(paramString);
-    QLog.d("OpenSDKUtils", 2, ((StringBuilder)localObject).toString());
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getOpenSDKUserFaceBitmap phoneNumber = ");
+    ((StringBuilder)localObject1).append(paramString);
+    QLog.d("OpenSDKUtils", 2, ((StringBuilder)localObject1).toString());
+    Object localObject2 = null;
+    FaceDrawable localFaceDrawable = null;
+    localObject1 = localObject2;
+    if (paramQQAppInterface != null)
+    {
+      localObject1 = localObject2;
+      if (paramString != null)
+      {
+        if (!paramString.startsWith("+")) {
+          return null;
+        }
+        if (e(paramQQAppInterface, paramString)) {
+          localFaceDrawable = FaceDrawable.getMobileFaceDrawable(paramQQAppInterface, paramString, (byte)3);
+        }
+        localObject1 = localFaceDrawable;
+        if (localFaceDrawable == null) {
+          localObject1 = ImageUtil.j();
+        }
+      }
     }
-    localObject = new int[1];
-    localObject[0] = 1;
-    ActionSheet localActionSheet = ActionSheet.create(paramContext);
-    localActionSheet.setMainTitle(2131689542);
-    localObject[0] = 1;
-    localActionSheet.addButton(2131690721);
-    localActionSheet.addCancelButton(2131690728);
-    localActionSheet.setOnDismissListener(new OpenSDKUtils.1());
-    localActionSheet.setOnButtonClickListener(new OpenSDKUtils.2(localActionSheet, (int[])localObject, paramString, paramContext, paramQQAppInterface));
-    localActionSheet.show();
+    return localObject1;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  public static boolean e(QQAppInterface paramQQAppInterface, String paramString)
   {
     paramQQAppInterface = (IPhoneContactService)paramQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
     if (paramQQAppInterface != null) {
@@ -245,7 +244,7 @@ public class OpenSDKUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.OpenSDKUtils
  * JD-Core Version:    0.7.0.1
  */

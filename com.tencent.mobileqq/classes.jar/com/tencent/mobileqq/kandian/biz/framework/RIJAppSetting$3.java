@@ -25,36 +25,36 @@ final class RIJAppSetting$3
       }
       if (NetworkUtil.isWifiEnabled(this.a.getApp()))
       {
-        RIJAppSetting.b(this.a);
+        RIJAppSetting.c(this.a);
         if (QLog.isColorLevel()) {
           QLog.d("RIJAppSetting", 2, "handConversationToShow is wifi");
         }
       }
-      if (!ReadInJoyHelper.E(this.a))
+      if (!ReadInJoyHelper.aq(this.a))
       {
         RIJUserDeviceInfoReport.a(this.a);
-        ReadInJoyHelper.d(this.a);
+        ReadInJoyHelper.ar(this.a);
       }
       localObject = (KandianMergeManager)this.a.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
-      if (ReadInJoyHelper.B(this.a))
+      if (ReadInJoyHelper.ak(this.a))
       {
-        ReadInJoyHelper.u(this.a, false);
+        ReadInJoyHelper.v(this.a, false);
         if (localObject != null) {
-          ((KandianMergeManager)localObject).k();
+          ((KandianMergeManager)localObject).D();
         }
       }
       else if (localObject != null)
       {
-        ((KandianMergeManager)localObject).j();
+        ((KandianMergeManager)localObject).B();
       }
-      ((KandianSubscribeManager)this.a.getManager(QQManagerFactory.KANDIAN_SUBSCRIBE_MANAGER)).a();
+      ((KandianSubscribeManager)this.a.getManager(QQManagerFactory.KANDIAN_SUBSCRIBE_MANAGER)).d();
       ((KandianDailyManager)this.a.getManager(QQManagerFactory.KANDIAN_DAILY_MANAGER)).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting.3
  * JD-Core Version:    0.7.0.1
  */

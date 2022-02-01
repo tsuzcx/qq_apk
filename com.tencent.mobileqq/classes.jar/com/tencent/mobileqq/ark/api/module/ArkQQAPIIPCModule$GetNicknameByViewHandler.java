@@ -14,7 +14,7 @@ public class ArkQQAPIIPCModule$GetNicknameByViewHandler
 {
   private String a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    SessionInfo localSessionInfo = ArkAppQQModuleBase.a();
+    SessionInfo localSessionInfo = ArkAppQQModuleBase.d();
     boolean bool = TextUtils.isEmpty(paramString);
     Object localObject = null;
     String str = null;
@@ -30,7 +30,7 @@ public class ArkQQAPIIPCModule$GetNicknameByViewHandler
       }
       else
       {
-        str = ContactUtils.g(paramQQAppInterface, paramString);
+        str = ContactUtils.h(paramQQAppInterface, paramString);
         localObject = str;
         if (TextUtils.isEmpty(str)) {
           localObject = ContactUtils.a(paramQQAppInterface, paramString, 0);
@@ -42,7 +42,7 @@ public class ArkQQAPIIPCModule$GetNicknameByViewHandler
   
   public EIPCResult a(Bundle paramBundle)
   {
-    Object localObject = ArkQQAPIIPCModule.a();
+    Object localObject = ArkQQAPIIPCModule.d();
     if (localObject == null)
     {
       QLog.e("ArkApp.GetNicknameByViewHandler", 1, "Handler_GetNickName.onCall, qq app is null");
@@ -69,7 +69,7 @@ public class ArkQQAPIIPCModule$GetNicknameByViewHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.GetNicknameByViewHandler
  * JD-Core Version:    0.7.0.1
  */

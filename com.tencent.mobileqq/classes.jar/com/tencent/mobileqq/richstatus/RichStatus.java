@@ -48,7 +48,7 @@ public class RichStatus
   public static final int TOPIC_COLOR = -11692801;
   public static final int TOPIC_COLOR_PRESSED = -2142399233;
   private static RichStatus a;
-  public static final ColorStateList sActionColor;
+  public static final ColorStateList sActionColor = new ColorStateList(new int[][] { { 16842919 }, new int[0] }, new int[] { -2039584, -8947849 });
   private static final long serialVersionUID = 1L;
   public int actId;
   public int actionId = 0;
@@ -79,12 +79,6 @@ public class RichStatus
   public int tplId;
   public int tplType;
   
-  static
-  {
-    int[] arrayOfInt = new int[0];
-    sActionColor = new ColorStateList(new int[][] { { 16842919 }, arrayOfInt }, new int[] { -2039584, -8947849 });
-  }
-  
   public RichStatus(String paramString)
   {
     if (paramString != null)
@@ -94,15 +88,9 @@ public class RichStatus
     }
   }
   
-  private static int a(String paramString)
-  {
-    return paramString.getBytes().length;
-  }
-  
   private ColorStateList a(int paramInt1, int paramInt2)
   {
-    int[] arrayOfInt = { 0 };
-    return new ColorStateList(new int[][] { { 16842919 }, arrayOfInt }, new int[] { paramInt2, paramInt1 });
+    return new ColorStateList(new int[][] { { 16842919 }, { 0 } }, new int[] { paramInt2, paramInt1 });
   }
   
   private void a(SpannableStringBuilder paramSpannableStringBuilder, String paramString)
@@ -134,6 +122,11 @@ public class RichStatus
       paramString = paramString.getBytes();
       paramByteBuffer.put((byte)paramInt).put((byte)paramString.length).put(paramString, 0, paramString.length);
     }
+  }
+  
+  private static int b(String paramString)
+  {
+    return paramString.getBytes().length;
   }
   
   public static RichStatus getEmptyStatus()
@@ -535,24 +528,24 @@ public class RichStatus
     boolean bool = TextUtils.isEmpty(this.actionText);
     int k = 0;
     if (!bool) {
-      j = a(this.actionText) + 12 + 0;
+      j = b(this.actionText) + 12 + 0;
     } else {
       j = 0;
     }
     int i = j;
     if (!TextUtils.isEmpty(this.dataText)) {
-      i = j + (a(this.dataText) + 2);
+      i = j + (b(this.dataText) + 2);
     }
     int j = i;
     if (!TextUtils.isEmpty(this.locationText)) {
-      j = i + (a(this.locationText) + 12);
+      j = i + (b(this.locationText) + 12);
     }
     i = 0;
     while (i < this.topics.size())
     {
       localObject1 = (String)((Pair)this.topics.get(i)).second;
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        j += a((String)localObject1) + 6;
+        j += b((String)localObject1) + 6;
       }
       i += 1;
     }
@@ -579,7 +572,7 @@ public class RichStatus
         }
         localObject2 = (String)((Iterator)localObject1).next();
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          i += a((String)localObject2) + 2;
+          i += b((String)localObject2) + 2;
         }
       }
     }
@@ -626,7 +619,7 @@ public class RichStatus
       localObject1 = (String)((Pair)this.topics.get(i)).second;
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        m = a((String)localObject1);
+        m = b((String)localObject1);
         localObject1 = ((String)localObject1).getBytes();
         localByteBuffer.put((byte)-108).put((byte)(m + 4)).putInt(j).put((byte[])localObject1, 0, localObject1.length);
       }
@@ -770,7 +763,7 @@ public class RichStatus
     Object localObject1 = new SpannableString(((StringBuilder)localObject2).toString());
     try
     {
-      localObject2 = BitmapFactory.decodeResource(paramResources, 2130849886);
+      localObject2 = BitmapFactory.decodeResource(paramResources, 2130851614);
       if (localObject2 == null) {
         return paramCharSequence;
       }
@@ -1425,7 +1418,7 @@ public class RichStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.RichStatus
  * JD-Core Version:    0.7.0.1
  */

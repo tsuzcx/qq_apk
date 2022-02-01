@@ -28,6 +28,7 @@ import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import mqq.app.AppRuntime;
@@ -50,7 +51,11 @@ public abstract interface IMiniAppService
   
   public abstract boolean asyncShareMiniProgram(Object paramObject);
   
+  public abstract void batchGetFollowingCount(ArrayList<String> paramArrayList, MiniAppCmdInterface paramMiniAppCmdInterface);
+  
   public abstract void checkPreloadMiniApp();
+  
+  public abstract boolean checkPreloadMiniGame();
   
   public abstract BaseContactsMiniAppEntryManager createContactsMiniAppEntryManager(Context paramContext, AppRuntime paramAppRuntime, RelativeLayout paramRelativeLayout, int paramInt);
   
@@ -136,6 +141,8 @@ public abstract interface IMiniAppService
   
   public abstract String getTmpPathFromOut(String paramString1, String paramString2);
   
+  public abstract void getWeixinSDKAppInfo(String paramString, MiniAppCmdInterface paramMiniAppCmdInterface);
+  
   public abstract void guessYouLike(COMM.StCommonExt paramStCommonExt, int paramInt, MiniAppCmdInterface paramMiniAppCmdInterface);
   
   public abstract void handleMiniAppMoreClick(Activity paramActivity);
@@ -184,6 +191,8 @@ public abstract interface IMiniAppService
   
   public abstract void performUploadArkShareImage(String paramString, IMiniCallback paramIMiniCallback);
   
+  public abstract void preDownloadPkg(String paramString1, String paramString2, IMiniCallback paramIMiniCallback);
+  
   public abstract void preLaunchMiniAppCheckinFromLeba();
   
   public abstract void prePullAppinfoByLink(String paramString, int paramInt, boolean paramBoolean, IPrePullListener paramIPrePullListener);
@@ -207,6 +216,8 @@ public abstract interface IMiniAppService
   public abstract void reportByQQ(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8);
   
   public abstract void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4);
+  
+  public abstract void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7);
   
   public abstract void reportColorNoteExpoForMiniApp(String paramString, boolean paramBoolean);
   
@@ -256,13 +267,15 @@ public abstract interface IMiniAppService
   
   public abstract void updateMiniHBBanner(Object paramObject);
   
+  public abstract void updateRecentPlay(String paramString, int paramInt);
+  
   public abstract Object validMoodInfo(Object paramObject);
   
   public abstract boolean verifyArkScene(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.api.IMiniAppService
  * JD-Core Version:    0.7.0.1
  */

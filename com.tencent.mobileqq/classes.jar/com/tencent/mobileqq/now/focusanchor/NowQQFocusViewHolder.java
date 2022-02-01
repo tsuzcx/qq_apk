@@ -14,25 +14,25 @@ import com.tencent.mobileqq.now.widget.SpacesItemDecoration;
 public class NowQQFocusViewHolder
   extends RecyclerHolder
 {
-  private final int jdField_a_of_type_Int = 1000;
-  private long jdField_a_of_type_Long;
-  public RecyclerView a;
-  public View a;
-  public TextView a;
   public CircleImageView a;
   public TextView b;
+  public TextView c;
+  public RecyclerView d;
+  public View e;
+  private long f;
+  private final int g = 1000;
   
   public NowQQFocusViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131363154));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379778));
-    this.b = ((TextView)paramView.findViewById(2131379683));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131367051));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370219);
+    this.a = ((CircleImageView)paramView.findViewById(2131429019));
+    this.b = ((TextView)paramView.findViewById(2131448598));
+    this.c = ((TextView)paramView.findViewById(2131448465));
+    this.d = ((RecyclerView)paramView.findViewById(2131433500));
+    this.e = paramView.findViewById(2131437404);
     int i;
     if (paramView.getContext() != null) {
-      i = paramView.getContext().getResources().getDimensionPixelSize(2131298908);
+      i = paramView.getContext().getResources().getDimensionPixelSize(2131299630);
     } else {
       i = -1;
     }
@@ -40,18 +40,18 @@ public class NowQQFocusViewHolder
       i = 25;
     }
     SpacesItemDecoration localSpacesItemDecoration = new SpacesItemDecoration(i);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(localSpacesItemDecoration);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new NowQQFocusViewHolder.1(this));
+    this.d.addItemDecoration(localSpacesItemDecoration);
+    this.e.setOnClickListener(new NowQQFocusViewHolder.1(this));
     if ((paramView.getContext() instanceof Activity))
     {
       paramView = (Activity)paramView.getContext();
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(paramView, new NowQQFocusViewHolder.2(this, paramView)));
+      this.d.addOnItemTouchListener(new RecyclerItemClickListener(paramView, new NowQQFocusViewHolder.2(this, paramView)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.NowQQFocusViewHolder
  * JD-Core Version:    0.7.0.1
  */

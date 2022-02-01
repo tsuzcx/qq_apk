@@ -36,18 +36,18 @@ class RedPacketKSongFragment$10
       localStringBuilder.append("config.cfg");
       localSongInfo.d = localStringBuilder.toString();
       RedPacketKSongFragment.a(this.a, localSongInfo);
-      if (this.a.d()) {
+      if (this.a.p()) {
         return;
       }
       this.a.getQBaseActivity().runOnUiThread(new RedPacketKSongFragment.10.1(this));
       return;
     }
-    this.a.g();
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKSongFragment.10
  * JD-Core Version:    0.7.0.1
  */

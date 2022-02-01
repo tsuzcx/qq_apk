@@ -13,14 +13,14 @@ class SelectTroopMemberFragment$2
   
   public void onClick(View paramView)
   {
-    new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_mber").c("del_mber").d("del_return").a(this.a.jdField_a_of_type_Int).a(new String[] { this.a.jdField_a_of_type_JavaLangString }).a();
+    new ReportTask(this.a.a).a("dc00899").b("Grp_mber").c("del_mber").d("del_return").a(this.a.c).a(new String[] { this.a.d }).a();
     this.a.getBaseActivity().doOnBackPressed();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.selecttroopmember.SelectTroopMemberFragment.2
  * JD-Core Version:    0.7.0.1
  */

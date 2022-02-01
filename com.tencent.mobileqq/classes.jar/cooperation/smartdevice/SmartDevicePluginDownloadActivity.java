@@ -27,29 +27,29 @@ public class SmartDevicePluginDownloadActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener, Observer
 {
-  private static String jdField_a_of_type_JavaLangString = "SmartDevicePluginDownloadActivity";
+  private static String e = "SmartDevicePluginDownloadActivity";
   protected Button a;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+  QQProgressDialog b = null;
+  LinearLayout c = null;
+  TextView d = null;
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getResources().getDimensionPixelSize(2131299168));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131691844);
+      this.b = new QQProgressDialog(this, super.getResources().getDimensionPixelSize(2131299920));
+      this.b.c(2131888809);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.b.show();
   }
   
   private void b()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.b;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.b.cancel();
+      this.b = null;
     }
   }
   
@@ -72,16 +72,16 @@ public class SmartDevicePluginDownloadActivity
       finish();
       return false;
     }
-    super.setContentView(2131559046);
-    super.setTitle(2131691370);
+    super.setContentView(2131624698);
+    super.setTitle(2131888325);
     SmartDevicePluginLoader.a().addObserver(this);
-    this.leftView.setText(2131690529);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365593));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365590));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371534));
+    this.leftView.setText(2131887440);
+    this.a = ((Button)super.findViewById(2131431820));
+    this.a.setOnClickListener(this);
+    this.c = ((LinearLayout)super.findViewById(2131431817));
+    this.d = ((TextView)super.findViewById(2131438913));
     if (!NetworkUtil.isWifiConnected(this.app.getApp())) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.c.setVisibility(0);
     }
     return true;
   }
@@ -94,11 +94,11 @@ public class SmartDevicePluginDownloadActivity
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
+    this.c.setVisibility(4);
     if (!SmartDevicePluginLoader.a().a(this.app))
     {
       a();
-      SmartDevicePluginLoader.a().a();
+      SmartDevicePluginLoader.a().b();
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("nickname", this.app.getCurrentNickname());
@@ -180,7 +180,7 @@ public class SmartDevicePluginDownloadActivity
       paramObservable = (Integer)paramObject;
       if (QLog.isColorLevel())
       {
-        paramObject = jdField_a_of_type_JavaLangString;
+        paramObject = e;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("recv notify : plugin install finished with code ");
         localStringBuilder.append(paramObservable);
@@ -189,15 +189,15 @@ public class SmartDevicePluginDownloadActivity
       b();
       if (paramObservable.intValue() != 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131691836);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.d.setText(2131888799);
+        this.c.setVisibility(0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.smartdevice.SmartDevicePluginDownloadActivity
  * JD-Core Version:    0.7.0.1
  */

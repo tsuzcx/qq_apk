@@ -13,14 +13,14 @@ class IntimateInfoChatDrawer$1
     super(paramQQAppInterface, paramBaseActivity, paramContext, paramString);
   }
   
-  public void j()
+  public void o()
   {
-    this.a.a(true);
+    this.l.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.drawer.IntimateInfoChatDrawer.1
  * JD-Core Version:    0.7.0.1
  */

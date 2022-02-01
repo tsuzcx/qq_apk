@@ -22,10 +22,10 @@ class BlankRecommendFeedsAdapter$2
   public void onClick(View paramView)
   {
     StringBuilder localStringBuilder = new StringBuilder(SubscribeConstants.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-    if (this.a.a() != null) {
+    if (this.a.d() != null) {
       try
       {
-        localStringBuilder.append(URLEncoder.encode(this.a.a().attachInfo.get(), "UTF-8"));
+        localStringBuilder.append(URLEncoder.encode(this.a.d().attachInfo.get(), "UTF-8"));
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {

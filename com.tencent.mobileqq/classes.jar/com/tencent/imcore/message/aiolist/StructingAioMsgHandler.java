@@ -23,7 +23,7 @@ public class StructingAioMsgHandler
       {
         paramList2 = new TroopTipsEntity();
         paramList2.optContent = paramList3;
-        ((TroopTipsMsgMgr)paramAppRuntime.getManager(QQManagerFactory.TROOP_TIPS_MSG_MANAGER)).a(paramList2);
+        ((TroopTipsMsgMgr)paramAppRuntime.getManager(QQManagerFactory.TROOP_TIPS_MSG_MANAGER)).c(paramList2);
         paramList3 = new MessageForGrayTips();
         long l = paramMessageRecord.time;
         paramAppRuntime = paramAppRuntime.getAccount();
@@ -38,7 +38,7 @@ public class StructingAioMsgHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.aiolist.StructingAioMsgHandler
  * JD-Core Version:    0.7.0.1
  */

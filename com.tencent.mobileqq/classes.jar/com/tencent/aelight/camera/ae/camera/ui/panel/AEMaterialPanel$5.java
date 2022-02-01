@@ -1,43 +1,37 @@
 package com.tencent.aelight.camera.ae.camera.ui.panel;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.aelight.camera.log.AEQLog;
+import android.animation.Animator;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class AEMaterialPanel$5
-  implements Animation.AnimationListener
+  extends D8SafeAnimatorListener
 {
   AEMaterialPanel$5(AEMaterialPanel paramAEMaterialPanel, Runnable paramRunnable) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    AEMaterialPanel.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel, false);
-    if (AEMaterialPanel.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel) != null) {
-      AEMaterialPanel.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel).b();
+    AEMaterialPanel.b(this.b, false);
+    if (AEMaterialPanel.d(this.b) != null) {
+      AEMaterialPanel.d(this.b).c();
     }
-    paramAnimation = this.jdField_a_of_type_JavaLangRunnable;
-    if (paramAnimation != null) {
-      paramAnimation.run();
+    paramAnimator = this.a;
+    if (paramAnimator != null) {
+      paramAnimator.run();
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    AEMaterialPanel.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel, true);
-    if (AEMaterialPanel.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel) != null)
-    {
-      AEMaterialPanel.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel).setAlpha(1.0F);
-      AEMaterialPanel.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel).setVisibility(0);
-      return;
-    }
-    AEQLog.d("AEMaterialPanel", "[openWithAnimation] alpha - onAnimationStart, mContentView == null");
+    AEMaterialPanel.b(this.b, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEMaterialPanel.5
  * JD-Core Version:    0.7.0.1
  */

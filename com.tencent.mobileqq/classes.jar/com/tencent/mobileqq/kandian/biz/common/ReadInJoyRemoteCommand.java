@@ -7,15 +7,14 @@ import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.follow.PublicAccountUnfollowTask;
-import com.tencent.mobileqq.kandian.biz.framework.api.IRIJAppSetting;
+import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
 import com.tencent.mobileqq.kandian.repo.follow.FollowListInfoModule;
 import com.tencent.mobileqq.leba.entity.LebaViewItem;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
 import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
 import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -54,15 +53,15 @@ public class ReadInJoyRemoteCommand
       paramOnInvokeFinishLinstener.putBoolean("result_key", true);
       return paramOnInvokeFinishLinstener;
     case 7: 
-      paramOnInvokeFinishLinstener.putString("result_key", ((IRIJAppSetting)QRoute.api(IRIJAppSetting.class)).getVideoAutoPlaySetting());
+      paramOnInvokeFinishLinstener.putString("result_key", RIJAppSetting.a());
       return paramOnInvokeFinishLinstener;
     case 6: 
-      paramBundle = (LebaViewItem)((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getKandianLebaViewItem();
+      paramBundle = ReadInJoyHelper.f((QQAppInterface)RIJQQAppInterfaceUtil.e());
       boolean bool1 = bool2;
       if (paramBundle != null)
       {
         bool1 = bool2;
-        if (paramBundle.a == 0) {
+        if (paramBundle.f == 0) {
           bool1 = true;
         }
       }
@@ -81,7 +80,7 @@ public class ReadInJoyRemoteCommand
       localObject = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if ((localObject != null) && (!TextUtils.isEmpty(paramBundle)))
       {
-        paramBundle = ((FriendsManager)localObject).a(paramBundle);
+        paramBundle = ((FriendsManager)localObject).f(paramBundle);
         if (paramBundle != null)
         {
           paramOnInvokeFinishLinstener.putString("result_key", Short.toString(paramBundle.shGender));
@@ -95,13 +94,13 @@ public class ReadInJoyRemoteCommand
       return paramOnInvokeFinishLinstener;
     case 2: 
       paramBundle = paramBundle.getString("param_uin");
-      ContactUtils.e(this.a, paramBundle);
+      ContactUtils.f(this.a, paramBundle);
       paramOnInvokeFinishLinstener.putString("result_key", ContactUtils.d(this.a, paramBundle));
       return paramOnInvokeFinishLinstener;
     case 1: 
       localObject = paramBundle.getString("param_sp_key");
       paramBundle = paramBundle.getString("param_sp_value_type");
-      SharedPreferences localSharedPreferences = ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getReadInJoySharedPreferences(1);
+      SharedPreferences localSharedPreferences = ReadInJoyHelper.a((QQAppInterface)RIJQQAppInterfaceUtil.e(), 1);
       if (localSharedPreferences != null) {
         try
         {
@@ -138,7 +137,7 @@ public class ReadInJoyRemoteCommand
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyRemoteCommand
  * JD-Core Version:    0.7.0.1
  */

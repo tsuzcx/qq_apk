@@ -10,20 +10,20 @@ class ViewAnimator$2
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    if (ViewAnimator.a(this.a) != null) {
-      ViewAnimator.a(this.a).a();
+    if (ViewAnimator.e(this.a) != null) {
+      ViewAnimator.e(this.a).a();
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (ViewAnimator.a(this.a) != null) {
-      ViewAnimator.a(this.a).a();
+    if (ViewAnimator.c(this.a) != null) {
+      ViewAnimator.c(this.a).a();
     }
-    if (ViewAnimator.a(this.a) != null)
+    if (ViewAnimator.d(this.a) != null)
     {
-      ViewAnimator.a(ViewAnimator.a(this.a), null);
-      ViewAnimator.a(this.a).a();
+      ViewAnimator.a(ViewAnimator.d(this.a), null);
+      ViewAnimator.d(this.a).b();
     }
   }
   
@@ -31,14 +31,14 @@ class ViewAnimator$2
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (ViewAnimator.a(this.a) != null) {
-      ViewAnimator.a(this.a).a();
+    if (ViewAnimator.b(this.a) != null) {
+      ViewAnimator.b(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.animator.ViewAnimator.2
  * JD-Core Version:    0.7.0.1
  */

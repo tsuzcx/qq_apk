@@ -15,6 +15,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
@@ -89,6 +90,13 @@ public abstract class AppInterface
     {
       throw localObject5;
     }
+  }
+  
+  private void invokeSkin()
+  {
+    Class localClass = Class.forName("com.tencent.mobileqq.vas.theme.SimpleTintManager");
+    Object localObject = localClass.getMethod("instance", new Class[0]).invoke(localClass, new Object[0]);
+    localClass.getMethod("checkSkinEngineInit", new Class[0]).invoke(localObject, new Object[0]);
   }
   
   private void removeOriginObserver(List<BusinessObserver> paramList, QQLifecycleBusinessObserver paramQQLifecycleBusinessObserver)
@@ -298,6 +306,17 @@ public abstract class AppInterface
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    if (MobileQQ.sProcessId != 1) {
+      try
+      {
+        invokeSkin();
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.d("mqq", 1, "appinterface on create error : ", paramBundle);
+      }
+    }
   }
   
   protected void onDestroy()
@@ -352,7 +371,7 @@ public abstract class AppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.AppInterface
  * JD-Core Version:    0.7.0.1
  */

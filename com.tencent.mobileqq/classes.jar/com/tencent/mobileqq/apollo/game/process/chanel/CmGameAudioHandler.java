@@ -15,11 +15,6 @@ public class CmGameAudioHandler
     this.a = i;
   }
   
-  public String a()
-  {
-    return null;
-  }
-  
   public JSONObject b(CmGameNativeMethodHandler paramCmGameNativeMethodHandler, JSONObject paramJSONObject)
   {
     if ("cs.audio_create.local".equals(paramJSONObject.optString("N_R_CMD")))
@@ -36,10 +31,15 @@ public class CmGameAudioHandler
   {
     return this.a;
   }
+  
+  public String d()
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.chanel.CmGameAudioHandler
  * JD-Core Version:    0.7.0.1
  */

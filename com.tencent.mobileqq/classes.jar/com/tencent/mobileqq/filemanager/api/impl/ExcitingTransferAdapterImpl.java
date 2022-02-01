@@ -20,57 +20,57 @@ public class ExcitingTransferAdapterImpl
   
   public ExcitingTransferDownloadConfig getC2CDownloadConfig()
   {
-    return this.adapter.a();
+    return this.adapter.f();
   }
   
   public long getC2CDownloadLimitedSize()
   {
-    return this.adapter.b();
+    return this.adapter.e();
   }
   
   public ExcitingTransferUploadChnConfigInfo getC2CUploadChnConfig()
   {
-    return this.adapter.a();
+    return this.adapter.c();
   }
   
   public long getC2CUploadLimitedSize()
   {
-    return this.adapter.a();
+    return this.adapter.b();
   }
   
   public boolean getConfigFromServer()
   {
-    return this.adapter.e();
+    return this.adapter.m();
   }
   
   public ExcitingTransferDownloadConfig getGroupDownloadConfig()
   {
-    return this.adapter.b();
+    return this.adapter.l();
   }
   
   public long getGroupDownloadLimitedSize()
   {
-    return this.adapter.d();
+    return this.adapter.k();
   }
   
   public ExcitingTransferUploadChnConfigInfo getGroupUploadChnConfig()
   {
-    return this.adapter.b();
+    return this.adapter.i();
   }
   
   public long getGroupUploadLimitedSize()
   {
-    return this.adapter.c();
+    return this.adapter.h();
   }
   
   public long getSelfUin()
   {
-    return this.adapter.e();
+    return this.adapter.o();
   }
   
   public boolean isEnableC2CDownload()
   {
-    return this.adapter.b();
+    return this.adapter.d();
   }
   
   public boolean isEnableC2CUpload()
@@ -80,12 +80,12 @@ public class ExcitingTransferAdapterImpl
   
   public boolean isEnableGroupDownload()
   {
-    return this.adapter.d();
+    return this.adapter.j();
   }
   
   public boolean isEnableGroupUpload()
   {
-    return this.adapter.c();
+    return this.adapter.g();
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -95,12 +95,12 @@ public class ExcitingTransferAdapterImpl
   
   public void onDestroy()
   {
-    this.adapter.a();
+    this.adapter.n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.ExcitingTransferAdapterImpl
  * JD-Core Version:    0.7.0.1
  */

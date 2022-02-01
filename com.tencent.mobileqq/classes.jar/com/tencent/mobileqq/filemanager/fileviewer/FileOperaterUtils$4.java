@@ -23,31 +23,31 @@ final class FileOperaterUtils$4
     try
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      int i = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      int i = FileManagerUtil.h(this.a);
       if ((i != 1) && (i != 2) && (i != 4))
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0) && (FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())))
+        if ((this.a.nFileType == 0) && (FileUtil.b(this.a.getFilePath())))
         {
-          QfavBuilder.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath()).a(localQQAppInterface).a(QBaseActivity.sTopActivity, localQQAppInterface.getAccount());
+          QfavBuilder.b(this.a.getFilePath()).a(localQQAppInterface).a(QBaseActivity.sTopActivity, localQQAppInterface.getAccount());
           QfavReport.a(localQQAppInterface, 7, 3);
         }
         else if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("FileVideoMediaPlayHelperthis is a local file, but favorite fail. [Uuid] = ");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
+          localStringBuilder.append(this.a.Uuid);
           localStringBuilder.append(" [status] = ");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status);
+          localStringBuilder.append(this.a.status);
           localStringBuilder.append(" [fileType] = ");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType);
+          localStringBuilder.append(this.a.nFileType);
           QLog.i("FileOperaterUtils", 2, localStringBuilder.toString());
         }
       }
       else {
-        new QfavBuilder(3).a(localQQAppInterface, QBaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, null, false);
+        new QfavBuilder(3).a(localQQAppInterface, QBaseActivity.sTopActivity, this.a, null, false);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.c())) {
-        FileManagerUtil.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      if ((this.b != null) && (this.b.g())) {
+        FileManagerUtil.a(localQQAppInterface, this.a.nSessionId);
       }
     }
     catch (Exception localException)
@@ -60,7 +60,7 @@ final class FileOperaterUtils$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils.4
  * JD-Core Version:    0.7.0.1
  */

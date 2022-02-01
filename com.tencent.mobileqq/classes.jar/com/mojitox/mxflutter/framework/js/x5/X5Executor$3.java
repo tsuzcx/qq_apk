@@ -4,7 +4,7 @@ import com.mojitox.mxflutter.framework.callback.ExecuteScriptCallback;
 import com.mojitox.mxflutter.framework.executor.JsTask;
 import com.tencent.smtt.sdk.JsContext;
 import com.tencent.smtt.sdk.JsVirtualMachine;
-import java.util.ArrayList;
+import java.util.List;
 
 class X5Executor$3
   extends JsTask
@@ -13,18 +13,19 @@ class X5Executor$3
   
   public void a()
   {
-    if ((X5Executor.a(this.this$0)) && (this.jdField_a_of_type_Boolean))
+    if ((X5Executor.a(this.this$0)) && (this.b))
     {
       X5Executor.a(this.this$0, false);
-      X5Executor.a(this.this$0).destroy();
-      this.this$0.a().destroy();
+      X5Executor.b(this.this$0).destroy();
+      this.this$0.e().destroy();
+      X5Executor.a(this.this$0, null);
       X5Executor.a(this.this$0, null);
       X5Executor.a(this.this$0, null);
     }
-    if (X5Executor.a(this.this$0) != null) {
-      X5Executor.a(this.this$0).clear();
+    if (X5Executor.c(this.this$0) != null) {
+      X5Executor.c(this.this$0).clear();
     }
-    ExecuteScriptCallback localExecuteScriptCallback = this.jdField_a_of_type_ComMojitoxMxflutterFrameworkCallbackExecuteScriptCallback;
+    ExecuteScriptCallback localExecuteScriptCallback = this.a;
     if (localExecuteScriptCallback != null) {
       localExecuteScriptCallback.a(null);
     }
@@ -32,7 +33,7 @@ class X5Executor$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.js.x5.X5Executor.3
  * JD-Core Version:    0.7.0.1
  */

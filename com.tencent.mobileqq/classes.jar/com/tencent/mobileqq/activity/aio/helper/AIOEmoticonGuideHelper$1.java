@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.config.business.QQSysAndEmojiConfProcessor;
 import com.tencent.mobileqq.config.business.QQSysAndEmojiConfProcessor.EmoticonGuideConfBean;
 import com.tencent.mobileqq.config.business.QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean;
 import com.tencent.mobileqq.emoticon.QQEmojiUtil;
@@ -25,7 +25,7 @@ class AIOEmoticonGuideHelper$1
     if (QLog.isColorLevel()) {
       QLog.d("aio_emoticon_guide.helper", 2, "showGuideBubble start loadConObj.");
     }
-    QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean localSystemAndEmojiConfBean = (QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)QConfigManager.a().a(545);
+    QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean localSystemAndEmojiConfBean = QQSysAndEmojiConfProcessor.a();
     if (localSystemAndEmojiConfBean == null)
     {
       if (QLog.isColorLevel()) {
@@ -43,11 +43,11 @@ class AIOEmoticonGuideHelper$1
     if (!AIOEmoticonGuideHelper.a(this.this$0, localSystemAndEmojiConfBean)) {
       return;
     }
-    Object localObject = localSystemAndEmojiConfBean.a.a;
-    QQAppInterface localQQAppInterface = AIOEmoticonGuideHelper.a(this.this$0).a;
+    Object localObject = localSystemAndEmojiConfBean.n.c;
+    QQAppInterface localQQAppInterface = AIOEmoticonGuideHelper.a(this.this$0).d;
     boolean bool = false;
     if (ThemeUtil.isNowThemeIsNight(localQQAppInterface, false, null)) {
-      localObject = localSystemAndEmojiConfBean.a.b;
+      localObject = localSystemAndEmojiConfBean.n.d;
     }
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return;
@@ -60,8 +60,8 @@ class AIOEmoticonGuideHelper$1
       URLDrawable.getDrawable((String)localObject).startDownload(false);
       return;
     }
-    int i = localSystemAndEmojiConfBean.a.c;
-    int j = localSystemAndEmojiConfBean.a.d;
+    int i = localSystemAndEmojiConfBean.n.e;
+    int j = localSystemAndEmojiConfBean.n.f;
     if (j == 1) {
       bool = QQSysFaceUtil.isEmoReady(i);
     } else if (j == 2) {
@@ -73,12 +73,12 @@ class AIOEmoticonGuideHelper$1
     localObject = Message.obtain();
     ((Message)localObject).what = 2;
     ((Message)localObject).obj = localSystemAndEmojiConfBean;
-    AIOEmoticonGuideHelper.a(this.this$0).sendMessage((Message)localObject);
+    AIOEmoticonGuideHelper.b(this.this$0).sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOEmoticonGuideHelper.1
  * JD-Core Version:    0.7.0.1
  */

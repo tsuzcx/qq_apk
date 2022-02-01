@@ -14,18 +14,18 @@ class MessengerService$IncomingHandler$8
   {
     if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a != null)
+      if (this.a.l != null)
       {
         paramString1 = new Bundle();
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a.putString("cmd", "card_download_wzry_template");
+        this.a.l.putString("cmd", "card_download_wzry_template");
         paramString1.putInt("result", paramInt1);
         paramString1.putString("message", paramString3);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a.putBundle("response", paramString1);
-        paramString1 = this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService;
-        paramString1.a(paramString1.a);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a = null;
+        this.a.l.putBundle("response", paramString1);
+        paramString1 = this.a;
+        paramString1.a(paramString1.l);
+        this.a.l = null;
       }
-      paramString1 = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
+      paramString1 = (IVasQuickUpdateService)this.b.getRuntimeService(IVasQuickUpdateService.class, "");
       if (paramString1 != null) {
         paramString1.removeCallBacker(this);
       }
@@ -34,7 +34,7 @@ class MessengerService$IncomingHandler$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.8
  * JD-Core Version:    0.7.0.1
  */

@@ -11,21 +11,21 @@ class RvPolymericContainer$8
   
   public void a()
   {
-    if (RvPolymericContainer.a(this.a) != null)
+    if (RvPolymericContainer.h(this.a) != null)
     {
-      RvPolymericContainer.a(this.a).a();
+      RvPolymericContainer.h(this.a).a();
       return;
     }
-    ReadInJoyUtils.a(RvPolymericContainer.b(this.a).getContext(), RvPolymericContainer.a(this.a));
+    ReadInJoyUtils.a(RvPolymericContainer.i(this.a).getContext(), RvPolymericContainer.j(this.a));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mScrollJumpUrl : ");
-    localStringBuilder.append(RvPolymericContainer.a(this.a));
+    localStringBuilder.append(RvPolymericContainer.j(this.a));
     QLog.d("RvPolymericContainer", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.RvPolymericContainer.8
  * JD-Core Version:    0.7.0.1
  */

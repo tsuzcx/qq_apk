@@ -12,14 +12,14 @@ class QQSettingMeSignatureProcessor$4
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = QQSettingMeSignatureProcessor.a(this.this$0).a(true);
-    this.a.jdField_a_of_type_AndroidGraphicsBitmap = QQSettingMeSignatureProcessor.a(this.this$0).a(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionId, 200);
-    this.this$0.c.postValue(this.a);
+    this.a.a = QQSettingMeSignatureProcessor.a(this.this$0).b(true);
+    this.a.b = QQSettingMeSignatureProcessor.a(this.this$0).a(this.a.a.actionId, 200);
+    this.this$0.i.postValue(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeSignatureProcessor.4
  * JD-Core Version:    0.7.0.1
  */

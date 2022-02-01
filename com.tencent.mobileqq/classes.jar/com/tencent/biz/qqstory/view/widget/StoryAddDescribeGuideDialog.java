@@ -8,21 +8,21 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 public class StoryAddDescribeGuideDialog
   extends ReportDialog
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private boolean jdField_a_of_type_Boolean;
+  private LinearLayout a;
+  private ImageView b;
+  private boolean c;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.c = true;
+    this.b.clearAnimation();
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(300L);
     localAlphaAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localAlphaAnimation);
+    this.a.startAnimation(localAlphaAnimation);
     localAlphaAnimation.setAnimationListener(new StoryAddDescribeGuideDialog.2(this));
   }
 }

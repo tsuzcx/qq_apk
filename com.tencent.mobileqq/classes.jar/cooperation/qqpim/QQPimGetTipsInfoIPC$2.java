@@ -24,45 +24,45 @@ class QQPimGetTipsInfoIPC$2
       localStringBuilder.append(paramString);
       QLog.i(paramBundle, 2, localStringBuilder.toString());
     }
-    if (QQPimDefineList.g.equals(paramString))
+    if (QQPimDefineList.h.equals(paramString))
     {
-      if (QQPimGetTipsInfoIPC.a() == -1) {
+      if (QQPimGetTipsInfoIPC.e() == -1) {
         return null;
       }
-      if (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L) {
+      if (System.currentTimeMillis() - QQPimGetTipsInfoIPC.b(this.a) < 500L) {
         return null;
       }
       QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
-      if (QQPimGetTipsInfoIPC.a() == 0)
+      if (QQPimGetTipsInfoIPC.e() == 0)
       {
         QQPimGetTipsInfoIPC.a(-1);
         paramString = this.a;
-        ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.GetContactTipsRunnable(paramString, QQPimGetTipsInfoIPC.a(paramString), QQPimGetTipsInfoIPC.b(this.a)), null, true);
+        ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.GetContactTipsRunnable(paramString, QQPimGetTipsInfoIPC.c(paramString), QQPimGetTipsInfoIPC.d(this.a)), null, true);
         return null;
       }
-      if (QQPimGetTipsInfoIPC.a() == 1)
+      if (QQPimGetTipsInfoIPC.e() == 1)
       {
         QQPimGetTipsInfoIPC.a(-1);
         ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.NoticeClickTipsRunnable(this.a, null), null, true);
         return null;
       }
     }
-    else if (QQPimDefineList.h.equals(paramString))
+    else if (QQPimDefineList.i.equals(paramString))
     {
-      if (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L) {
+      if (System.currentTimeMillis() - QQPimGetTipsInfoIPC.b(this.a) < 500L) {
         return null;
       }
       QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
       paramString = new QQPimTipsInfo();
       paramString.a = 0;
-      QQPimGetTipsInfoIPC.a(this.a).a(paramString);
+      QQPimGetTipsInfoIPC.e(this.a).a(paramString);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimGetTipsInfoIPC.2
  * JD-Core Version:    0.7.0.1
  */

@@ -26,15 +26,15 @@ import mqq.app.MobileQQ;
 public class HeadSetViewModule
   implements View.OnClickListener
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QPublicFragmentActivity jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity;
-  private LocationRoom.RoomKey jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
-  private HeadAdapter jdField_a_of_type_ComTencentMobileqqLocationUiHeadsetHeadAdapter;
+  private QPublicFragmentActivity a;
+  private HeadAdapter b;
+  private TextView c;
+  private LocationRoom.RoomKey d;
   
   HeadSetViewModule(Context paramContext)
   {
     if ((paramContext instanceof QPublicFragmentActivity)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity = ((QPublicFragmentActivity)paramContext);
+      this.a = ((QPublicFragmentActivity)paramContext);
     }
     a();
     b();
@@ -56,9 +56,9 @@ public class HeadSetViewModule
         localStringBuilder.append(", ");
         localStringBuilder.append(str2);
       }
-      QLog.d("HeadSetViewModule", 2, new Object[] { "refreshHeadSet: invoked. ", " uins: ", str1, " headAdapter.count: ", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadsetHeadAdapter.getCount()) });
+      QLog.d("HeadSetViewModule", 2, new Object[] { "refreshHeadSet: invoked. ", " uins: ", str1, " headAdapter.count: ", Integer.valueOf(this.b.getCount()) });
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadsetHeadAdapter == null) {
+    if (this.b == null) {
       return;
     }
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
@@ -72,38 +72,38 @@ public class HeadSetViewModule
   
   private void b()
   {
-    ImmersiveUtils.setStatusTextColor(true, this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity.getWindow());
-    ImmersiveUtils.setStatusBarDarkMode(this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity.getWindow(), true);
+    ImmersiveUtils.setStatusTextColor(true, this.a.getWindow());
+    ImmersiveUtils.setStatusBarDarkMode(this.a.getWindow(), true);
   }
   
   private void b(ArrayList<String> paramArrayList)
   {
     if (paramArrayList.size() == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity.getResources().getString(2131693806));
+      this.c.setText(this.a.getResources().getString(2131891382));
     }
     else
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramArrayList.size());
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity.getString(2131693826));
+      localStringBuilder.append(this.a.getString(2131891402));
       paramArrayList = localStringBuilder.toString();
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramArrayList);
+      this.c.setText(paramArrayList);
     }
-    paramArrayList = this.jdField_a_of_type_AndroidWidgetTextView;
+    paramArrayList = this.c;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidWidgetTextView.getText());
+    localStringBuilder.append(this.c.getText());
     MapUtils.a(paramArrayList, localStringBuilder.toString());
   }
   
   private void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("HeadSetViewModule", 2, new Object[] { "onClickMinimizeShare: invoked. ", " textSharingCount: ", this.jdField_a_of_type_AndroidWidgetTextView });
+      QLog.d("HeadSetViewModule", 2, new Object[] { "onClickMinimizeShare: invoked. ", " textSharingCount: ", this.c });
     }
-    if (((IFloatMapService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IFloatMapService.class, "")).enterFloat(this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity.finish();
+    if (((IFloatMapService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IFloatMapService.class, "")).enterFloat(this.a, this.d)) {
+      this.a.finish();
     }
     ReportController.b(null, "CliOper", "", "", "0X800A76F", "0X800A76F", 0, 0, "", "0", "0", "");
   }
@@ -113,10 +113,10 @@ public class HeadSetViewModule
     if (QLog.isColorLevel()) {
       QLog.d("HeadSetViewModule", 2, "onClickCancelShare: invoked. ");
     }
-    ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity);
-    localActionSheet.addButton(2131691952, 3);
-    localActionSheet.setMainTitle(2131694420);
-    localActionSheet.addCancelButton(2131690728);
+    ActionSheet localActionSheet = ActionSheet.create(this.a);
+    localActionSheet.addButton(2131888919, 3);
+    localActionSheet.setMainTitle(2131892099);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new HeadSetViewModule.2(this, localActionSheet));
     localActionSheet.show();
     ReportController.b(null, "CliOper", "", "", "0X800A76D", "0X800A76D", 0, 0, "", "0", "0", "");
@@ -124,17 +124,17 @@ public class HeadSetViewModule
   
   void a(TextView paramTextView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.c = paramTextView;
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey = paramRoomKey;
+    this.d = paramRoomKey;
   }
   
   void a(HeadAdapter paramHeadAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadsetHeadAdapter = paramHeadAdapter;
+    this.b = paramHeadAdapter;
   }
   
   void a(List<LocationItem> paramList)
@@ -142,7 +142,7 @@ public class HeadSetViewModule
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      localArrayList.add(String.valueOf(((LocationItem)paramList.next()).a()));
+      localArrayList.add(String.valueOf(((LocationItem)paramList.next()).c()));
     }
     a(localArrayList);
   }
@@ -150,9 +150,9 @@ public class HeadSetViewModule
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131364272) {
+    if (i == 2131430289) {
       d();
-    } else if (i == 2131371038) {
+    } else if (i == 2131438378) {
       c();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -160,7 +160,7 @@ public class HeadSetViewModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.HeadSetViewModule
  * JD-Core Version:    0.7.0.1
  */

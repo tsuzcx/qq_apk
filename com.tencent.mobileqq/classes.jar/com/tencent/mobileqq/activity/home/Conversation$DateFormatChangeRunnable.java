@@ -16,14 +16,14 @@ class Conversation$DateFormatChangeRunnable
   
   public void run()
   {
-    Object localObject = Settings.System.getString(this.this$0.a().getContentResolver(), "date_format");
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (TimeManager.a().a((String)localObject)) && (this.this$0.e)) {
+    Object localObject = Settings.System.getString(this.this$0.P().getContentResolver(), "date_format");
+    if ((this.this$0.t != null) && (TimeManager.a().a((String)localObject)) && (this.this$0.C)) {
       this.this$0.a(1014, 0L, false);
     }
-    ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).onTimeFormatChange(this.this$0.a(), (String)localObject);
-    if (this.this$0.jdField_a_of_type_MqqAppAppRuntime != null)
+    ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).onTimeFormatChange(this.this$0.s(), (String)localObject);
+    if (this.this$0.aF != null)
     {
-      localObject = this.this$0.a().getHandler(TroopAssistantActivity.class);
+      localObject = this.this$0.s().getHandler(TroopAssistantActivity.class);
       if (localObject != null) {
         ((MqqHandler)localObject).sendEmptyMessage(2);
       }
@@ -32,7 +32,7 @@ class Conversation$DateFormatChangeRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.DateFormatChangeRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -37,18 +37,13 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public final class CardSettingHandler
   extends BusinessHandler
 {
-  public static final CardSettingHandler.Companion a;
-  private final QQAppInterface a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqProfilesettingCardSettingHandler$Companion = new CardSettingHandler.Companion(null);
-  }
+  public static final CardSettingHandler.Companion a = new CardSettingHandler.Companion(null);
+  private final QQAppInterface b;
   
   public CardSettingHandler(@NotNull QQAppInterface paramQQAppInterface)
   {
     super((AppInterface)paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   private final void a(int paramInt1, int paramInt2, oidb_0x587.ReqBody paramReqBody)
@@ -251,15 +246,15 @@ public final class CardSettingHandler
       localObject1 = (CharSequence)paramToServiceMsg;
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        if (!TextUtils.equals((CharSequence)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (CharSequence)localObject1)) {
+        if (!TextUtils.equals((CharSequence)this.b.getCurrentAccountUin(), (CharSequence)localObject1)) {
           return;
         }
         k = paramFromServiceMsg.getResultCode();
-        paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        paramFromServiceMsg = this.b.getManager(QQManagerFactory.FRIENDS_MANAGER);
         if (paramFromServiceMsg != null)
         {
           localObject1 = (FriendsManager)paramFromServiceMsg;
-          paramFromServiceMsg = ((FriendsManager)localObject1).b(paramToServiceMsg);
+          paramFromServiceMsg = ((FriendsManager)localObject1).g(paramToServiceMsg);
           bool3 = bool1;
           j = k;
           if (bool1)
@@ -417,37 +412,37 @@ public final class CardSettingHandler
   private final void a(oidb_0x5eb.UdcUinData paramUdcUinData, Card paramCard)
   {
     if (paramUdcUinData.uint32_profile_sex_visible.has()) {
-      ProfileSettingUtils.a.a(41611, paramUdcUinData.uint32_profile_sex_visible.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(41611, paramUdcUinData.uint32_profile_sex_visible.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_age_visible.has()) {
-      ProfileSettingUtils.a.a(41610, paramUdcUinData.uint32_profile_age_visible.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(41610, paramUdcUinData.uint32_profile_age_visible.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_birthday_visible.has()) {
-      ProfileSettingUtils.a.a(41607, paramUdcUinData.uint32_profile_birthday_visible.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(41607, paramUdcUinData.uint32_profile_birthday_visible.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_constellation_visible.has()) {
-      ProfileSettingUtils.a.a(41609, paramUdcUinData.uint32_profile_constellation_visible.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(41609, paramUdcUinData.uint32_profile_constellation_visible.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_profession_visible.has()) {
-      ProfileSettingUtils.a.a(41618, paramUdcUinData.uint32_profile_profession_visible.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(41618, paramUdcUinData.uint32_profile_profession_visible.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_college_visible.has()) {
-      ProfileSettingUtils.a.a(41619, paramUdcUinData.uint32_profile_college_visible.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(41619, paramUdcUinData.uint32_profile_college_visible.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_location_visible.has()) {
-      ProfileSettingUtils.a.a(41614, paramUdcUinData.uint32_profile_location_visible.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(41614, paramUdcUinData.uint32_profile_location_visible.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_hometown_visible.has()) {
-      ProfileSettingUtils.a.a(41613, paramUdcUinData.uint32_profile_hometown_visible.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(41613, paramUdcUinData.uint32_profile_hometown_visible.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_email_visible.has()) {
-      ProfileSettingUtils.a.a(41622, paramUdcUinData.uint32_profile_email_visible.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(41622, paramUdcUinData.uint32_profile_email_visible.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_personal_note_visible.has()) {
-      ProfileSettingUtils.a.a(41623, paramUdcUinData.uint32_profile_personal_note_visible.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(41623, paramUdcUinData.uint32_profile_personal_note_visible.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_company_visible.has()) {
-      ProfileSettingUtils.a.a(40272, paramUdcUinData.uint32_profile_company_visible.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(40272, paramUdcUinData.uint32_profile_company_visible.get(), paramCard, this.b);
     }
   }
   
@@ -479,15 +474,15 @@ public final class CardSettingHandler
       localObject2 = (CharSequence)localObject1;
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        if (!TextUtils.equals((CharSequence)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (CharSequence)localObject2)) {
+        if (!TextUtils.equals((CharSequence)this.b.getCurrentAccountUin(), (CharSequence)localObject2)) {
           return;
         }
         j = paramFromServiceMsg.getResultCode();
-        paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        paramFromServiceMsg = this.b.getManager(QQManagerFactory.FRIENDS_MANAGER);
         if (paramFromServiceMsg != null)
         {
           localObject2 = (FriendsManager)paramFromServiceMsg;
-          paramFromServiceMsg = ((FriendsManager)localObject2).b((String)localObject1);
+          paramFromServiceMsg = ((FriendsManager)localObject2).g((String)localObject1);
           paramToServiceMsg = paramToServiceMsg.getAttribute("req_items");
           if (paramToServiceMsg != null)
           {
@@ -556,7 +551,7 @@ public final class CardSettingHandler
               Intrinsics.checkExpressionValueIsNotNull(paramFromServiceMsg, "card");
               bool2 = bool1;
               i = j;
-              localCompanion.a(k, m, paramFromServiceMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+              localCompanion.a(k, m, paramFromServiceMsg, this.b);
               continue;
             }
             bool2 = bool1;
@@ -610,56 +605,56 @@ public final class CardSettingHandler
   private final void b(oidb_0x5eb.UdcUinData paramUdcUinData, Card paramCard)
   {
     if (paramUdcUinData.uint32_req_medalwall_flag.has()) {
-      ProfileSettingUtils.a.a(42075, paramUdcUinData.uint32_req_medalwall_flag.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42075, paramUdcUinData.uint32_req_medalwall_flag.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_personality_label_switch.has()) {
-      ProfileSettingUtils.a.a(42128, paramUdcUinData.uint32_profile_personality_label_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42128, paramUdcUinData.uint32_profile_personality_label_switch.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_life_achievement_switch.has()) {
-      ProfileSettingUtils.a.a(42367, paramUdcUinData.uint32_profile_life_achievement_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42367, paramUdcUinData.uint32_profile_life_achievement_switch.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_interest_switch.has()) {
-      ProfileSettingUtils.a.a(40313, paramUdcUinData.uint32_profile_interest_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(40313, paramUdcUinData.uint32_profile_interest_switch.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_music_switch.has()) {
-      ProfileSettingUtils.a.a(40314, paramUdcUinData.uint32_profile_music_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(40314, paramUdcUinData.uint32_profile_music_switch.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_present_switch.has()) {
-      ProfileSettingUtils.a.a(42289, paramUdcUinData.uint32_profile_present_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42289, paramUdcUinData.uint32_profile_present_switch.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_miniapp_switch.has()) {
-      ProfileSettingUtils.a.a(42323, paramUdcUinData.uint32_profile_miniapp_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42323, paramUdcUinData.uint32_profile_miniapp_switch.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_musicbox_switch.has()) {
-      ProfileSettingUtils.a.a(42340, paramUdcUinData.uint32_profile_musicbox_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42340, paramUdcUinData.uint32_profile_musicbox_switch.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_sticky_note_switch.has()) {
-      ProfileSettingUtils.a.a(42356, paramUdcUinData.uint32_profile_sticky_note_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42356, paramUdcUinData.uint32_profile_sticky_note_switch.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_qqcircle_switch.has()) {
-      ProfileSettingUtils.a.a(42361, paramUdcUinData.uint32_profile_qqcircle_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42361, paramUdcUinData.uint32_profile_qqcircle_switch.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_weishi_switch.has()) {
-      ProfileSettingUtils.a.a(42377, paramUdcUinData.uint32_profile_weishi_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42377, paramUdcUinData.uint32_profile_weishi_switch.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_extend_friend_card_shown.has()) {
-      ProfileSettingUtils.a.a(42172, paramUdcUinData.uint32_extend_friend_card_shown.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42172, paramUdcUinData.uint32_extend_friend_card_shown.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_anonymous_answer_switch.has()) {
-      ProfileSettingUtils.a.a(42425, paramUdcUinData.uint32_profile_anonymous_answer_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42425, paramUdcUinData.uint32_profile_anonymous_answer_switch.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_wz_game_card_switch.has()) {
-      ProfileSettingUtils.a.a(42505, paramUdcUinData.uint32_profile_wz_game_card_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42505, paramUdcUinData.uint32_profile_wz_game_card_switch.get(), paramCard, this.b);
     }
     if (paramUdcUinData.uint32_profile_show_idol_switch.has()) {
-      ProfileSettingUtils.a.a(42488, paramUdcUinData.uint32_profile_show_idol_switch.get(), paramCard, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ProfileSettingUtils.a.a(42488, paramUdcUinData.uint32_profile_show_idol_switch.get(), paramCard, this.b);
     }
   }
   
   public final void a(@NotNull ArrayList<Integer> paramArrayList)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "fieldIds");
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str = this.b.getCurrentAccountUin();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -698,7 +693,7 @@ public final class CardSettingHandler
   public final void b(@NotNull ArrayList<ReqSetSettingItem> paramArrayList)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "items");
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str = this.b.getCurrentAccountUin();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -786,7 +781,7 @@ public final class CardSettingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.CardSettingHandler
  * JD-Core Version:    0.7.0.1
  */

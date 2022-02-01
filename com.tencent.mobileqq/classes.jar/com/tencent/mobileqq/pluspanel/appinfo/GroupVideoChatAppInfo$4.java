@@ -13,12 +13,12 @@ final class GroupVideoChatAppInfo$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GroupVideoChatAppInfo.enterNewGroupVideo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilMap);
+    GroupVideoChatAppInfo.enterNewGroupVideo(this.a, this.b, this.c, this.d, false, this.e, this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.GroupVideoChatAppInfo.4
  * JD-Core Version:    0.7.0.1
  */

@@ -21,12 +21,12 @@ import oicq.wlogin_sdk.request.WtTicketPromise;
 
 public class QwUtils
 {
-  private static long jdField_a_of_type_Long;
-  private static DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
+  private static long a;
+  private static DecimalFormat b = new DecimalFormat("#0.00");
   
   static
   {
-    jdField_a_of_type_JavaTextDecimalFormat.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.US));
+    b.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.US));
   }
   
   public static float a(String paramString)
@@ -63,20 +63,6 @@ public class QwUtils
     return paramInt;
   }
   
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = Long.toString(Double.valueOf(a(paramString, "100")).doubleValue());
-      return paramString;
-    }
-    catch (NumberFormatException paramString) {}
-    return null;
-  }
-  
   public static String a(String paramString, int paramInt, boolean paramBoolean)
   {
     if (paramInt == 0) {
@@ -92,7 +78,7 @@ public class QwUtils
       localException.printStackTrace();
       try
       {
-        paramString = b(paramString);
+        paramString = c(paramString);
         return paramString;
       }
       catch (Exception paramString)
@@ -118,7 +104,7 @@ public class QwUtils
     {
       paramString1 = new BigDecimal(paramString1);
       paramString2 = new BigDecimal(paramString2);
-      paramString1 = jdField_a_of_type_JavaTextDecimalFormat.format(paramString1.multiply(paramString2).doubleValue());
+      paramString1 = b.format(paramString1.multiply(paramString2).doubleValue());
       return paramString1;
     }
     catch (Exception paramString1)
@@ -228,7 +214,7 @@ public class QwUtils
   public static void a(AppRuntime paramAppRuntime, String paramString, QwUtils.AnsyListener paramAnsyListener)
   {
     paramAppRuntime = a(paramAppRuntime, paramString, new QwUtils.1(paramAnsyListener, paramString));
-    if (!StringUtil.a(paramAppRuntime))
+    if (!StringUtil.isEmpty(paramAppRuntime))
     {
       if (paramAnsyListener != null)
       {
@@ -246,14 +232,28 @@ public class QwUtils
   public static boolean a()
   {
     long l = System.currentTimeMillis();
-    if (jdField_a_of_type_Long + 1000L > l) {
+    if (a + 1000L > l) {
       return true;
     }
-    jdField_a_of_type_Long = l;
+    a = l;
     return false;
   }
   
   public static String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = Long.toString(Double.valueOf(a(paramString, "100")).doubleValue());
+      return paramString;
+    }
+    catch (NumberFormatException paramString) {}
+    return null;
+  }
+  
+  public static String c(String paramString)
   {
     if ((paramString != null) && (paramString.matches("\\-?[0-9]+")))
     {
@@ -305,7 +305,7 @@ public class QwUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.QwUtils
  * JD-Core Version:    0.7.0.1
  */

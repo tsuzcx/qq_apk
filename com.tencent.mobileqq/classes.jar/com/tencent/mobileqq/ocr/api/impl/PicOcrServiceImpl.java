@@ -50,20 +50,20 @@ public class PicOcrServiceImpl
   {
     Object localObject1 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramOCRReqContext.jdField_b_of_type_JavaLangString, (BitmapFactory.Options)localObject1);
+    BitmapFactory.decodeFile(paramOCRReqContext.c, (BitmapFactory.Options)localObject1);
     int k = ((BitmapFactory.Options)localObject1).outWidth;
     int m = ((BitmapFactory.Options)localObject1).outHeight;
-    paramPicOcrObserver = new File(paramOCRReqContext.jdField_b_of_type_JavaLangString);
+    paramPicOcrObserver = new File(paramOCRReqContext.c);
     long l = paramPicOcrObserver.length();
     int j = 0;
     int i;
     if (l < 6750000L)
     {
-      paramOCRReqContext.a = paramPicOcrObserver.length();
-      paramOCRReqContext.jdField_b_of_type_Int = ((BitmapFactory.Options)localObject1).outWidth;
-      paramOCRReqContext.jdField_c_of_type_Int = ((BitmapFactory.Options)localObject1).outHeight;
-      paramOCRReqContext.e = paramOCRReqContext.d;
-      paramOCRReqContext.jdField_c_of_type_JavaLangString = paramOCRReqContext.jdField_b_of_type_JavaLangString;
+      paramOCRReqContext.e = paramPicOcrObserver.length();
+      paramOCRReqContext.i = ((BitmapFactory.Options)localObject1).outWidth;
+      paramOCRReqContext.j = ((BitmapFactory.Options)localObject1).outHeight;
+      paramOCRReqContext.g = paramOCRReqContext.f;
+      paramOCRReqContext.d = paramOCRReqContext.c;
       i = j;
     }
     else
@@ -75,19 +75,19 @@ public class PicOcrServiceImpl
       }
       ((BitmapFactory.Options)localObject1).inSampleSize = i;
       ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
-      localObject1 = PicOrcUtils.a(paramOCRReqContext.jdField_b_of_type_JavaLangString, (BitmapFactory.Options)localObject1, 1, 4);
+      localObject1 = PicOrcUtils.a(paramOCRReqContext.c, (BitmapFactory.Options)localObject1, 1, 4);
       i = j;
       if (localObject1 != null)
       {
         Object localObject2 = new int[2];
-        paramOCRReqContext.jdField_c_of_type_JavaLangString = PicOrcUtils.a((Bitmap)localObject1, paramOCRReqContext.jdField_b_of_type_JavaLangString, (int[])localObject2);
+        paramOCRReqContext.d = PicOrcUtils.a((Bitmap)localObject1, paramOCRReqContext.c, (int[])localObject2);
         i = j;
-        if (FileUtils.fileExistsAndNotEmpty(paramOCRReqContext.jdField_c_of_type_JavaLangString))
+        if (FileUtils.fileExistsAndNotEmpty(paramOCRReqContext.d))
         {
-          paramOCRReqContext.jdField_b_of_type_Int = localObject2[0];
-          paramOCRReqContext.jdField_c_of_type_Int = localObject2[1];
-          paramOCRReqContext.a = new File(paramOCRReqContext.jdField_c_of_type_JavaLangString).length();
-          paramOCRReqContext.e = PicOrcUtils.a(paramOCRReqContext.jdField_c_of_type_JavaLangString);
+          paramOCRReqContext.i = localObject2[0];
+          paramOCRReqContext.j = localObject2[1];
+          paramOCRReqContext.e = new File(paramOCRReqContext.d).length();
+          paramOCRReqContext.g = PicOrcUtils.a(paramOCRReqContext.d);
           localObject1 = new HashMap();
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append(paramPicOcrObserver.length() / 1024L);
@@ -100,13 +100,13 @@ public class PicOcrServiceImpl
           ((StringBuilder)localObject2).append("");
           ((HashMap)localObject1).put("param_size", ((StringBuilder)localObject2).toString());
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(paramOCRReqContext.a / 1024L);
+          ((StringBuilder)localObject2).append(paramOCRReqContext.e / 1024L);
           ((StringBuilder)localObject2).append("");
           ((HashMap)localObject1).put("param_complength", ((StringBuilder)localObject2).toString());
-          ((HashMap)localObject1).put("param_compwidth", String.valueOf(paramOCRReqContext.jdField_b_of_type_Int));
-          ((HashMap)localObject1).put("param_compheight", String.valueOf(paramOCRReqContext.jdField_c_of_type_Int));
+          ((HashMap)localObject1).put("param_compwidth", String.valueOf(paramOCRReqContext.i));
+          ((HashMap)localObject1).put("param_compheight", String.valueOf(paramOCRReqContext.j));
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(paramOCRReqContext.jdField_b_of_type_Int * paramOCRReqContext.jdField_c_of_type_Int);
+          ((StringBuilder)localObject2).append(paramOCRReqContext.i * paramOCRReqContext.j);
           ((StringBuilder)localObject2).append("");
           ((HashMap)localObject1).put("param_compsize", ((StringBuilder)localObject2).toString());
           StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actPicOcrCompressInfo", true, 0L, 0L, (HashMap)localObject1, "");
@@ -118,7 +118,7 @@ public class PicOcrServiceImpl
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("tryCompressIfNeeded:");
-      ((StringBuilder)localObject1).append(paramOCRReqContext.a());
+      ((StringBuilder)localObject1).append(paramOCRReqContext.b());
       ((StringBuilder)localObject1).append(", oriLength:");
       ((StringBuilder)localObject1).append(paramPicOcrObserver.length() / 1024L);
       ((StringBuilder)localObject1).append(", oriSize:[");
@@ -223,12 +223,12 @@ public class PicOcrServiceImpl
         this.addHandler = true;
       }
     }
-    paramOCRReqContext.jdField_b_of_type_Long = System.currentTimeMillis();
+    paramOCRReqContext.k = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("uploadOcrPic:");
-      ((StringBuilder)localObject).append(paramOCRReqContext.a());
+      ((StringBuilder)localObject).append(paramOCRReqContext.b());
       QLog.i("PicOcrServiceImpl", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new PicOcrServiceImpl.2(this, paramPicOcrObserver, paramOCRReqContext);
@@ -237,11 +237,11 @@ public class PicOcrServiceImpl
     paramPicOcrObserver.mCommandId = 76;
     paramPicOcrObserver.mRichTag = "picorcupload";
     paramPicOcrObserver.mUpCallBack = ((UpCallBack)localObject);
-    paramPicOcrObserver.mLocalPath = paramOCRReqContext.jdField_c_of_type_JavaLangString;
+    paramPicOcrObserver.mLocalPath = paramOCRReqContext.d;
     localObject = this.uin;
     paramPicOcrObserver.mSelfUin = ((String)localObject);
     paramPicOcrObserver.mPeerUin = ((String)localObject);
-    paramPicOcrObserver.mUniseq = paramOCRReqContext.jdField_b_of_type_Long;
+    paramPicOcrObserver.mUniseq = paramOCRReqContext.k;
     paramPicOcrObserver.mIsUp = true;
     paramOCRReqContext = new Bdh_extinfo.CommFileExtReq();
     paramOCRReqContext.uint32_action_type.set(0);
@@ -255,7 +255,7 @@ public class PicOcrServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.api.impl.PicOcrServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -9,28 +9,28 @@ import org.json.JSONObject;
 
 public class AIOTopRightButtonConfig
 {
-  private static AIOTopRightButtonConfig jdField_a_of_type_ComTencentAvUiAIOTopRightButtonConfig;
   public static String a = "AIOTopRightButtonConfig";
-  private int jdField_a_of_type_Int = -1;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private static AIOTopRightButtonConfig c;
+  private int b = -1;
+  private Object d = new Object();
   
   public static AIOTopRightButtonConfig a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentAvUiAIOTopRightButtonConfig == null) {
-        jdField_a_of_type_ComTencentAvUiAIOTopRightButtonConfig = new AIOTopRightButtonConfig();
+      if (c == null) {
+        c = new AIOTopRightButtonConfig();
       }
-      return jdField_a_of_type_ComTencentAvUiAIOTopRightButtonConfig;
+      return c;
     }
     finally {}
   }
   
   public void a(String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      this.jdField_a_of_type_Int = 1;
+      this.b = 1;
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
@@ -38,23 +38,23 @@ public class AIOTopRightButtonConfig
       {
         paramString = new JSONObject(paramString);
         if ((paramString.has("AVFromRightCornerEnable")) && (!paramString.getBoolean("AVFromRightCornerEnable"))) {
-          this.jdField_a_of_type_Int = 0;
+          this.b = 0;
         }
       }
       catch (JSONException paramString)
       {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "updateConfig, JSONException", paramString);
+        QLog.w(a, 1, "updateConfig, JSONException", paramString);
       }
       return;
     }
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
-    if (this.jdField_a_of_type_Int == -1) {
-      a(QAVConfig.b(192).jdField_a_of_type_JavaLangString);
+    if (this.b == -1) {
+      a(QAVConfig.b(192).b);
     }
-    return this.jdField_a_of_type_Int == 1;
+    return this.b == 1;
   }
 }
 

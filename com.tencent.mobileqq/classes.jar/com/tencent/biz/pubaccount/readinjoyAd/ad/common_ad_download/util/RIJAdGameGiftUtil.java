@@ -24,9 +24,9 @@ public final class RIJAdGameGiftUtil
   {
     if (paramAdvertisementInfo != null)
     {
-      Object localObject1 = paramRIJDownloadView.a();
+      Object localObject1 = paramRIJDownloadView.getDownloadData();
       if (localObject1 != null) {
-        ((ADVideoAppDownloadData)localObject1).b = true;
+        ((ADVideoAppDownloadData)localObject1).r = true;
       }
       RIJAdDownloadUtil localRIJAdDownloadUtil = RIJAdDownloadUtil.a;
       Object localObject2 = null;
@@ -62,7 +62,7 @@ public final class RIJAdGameGiftUtil
         localObject1 = WadlProxyServiceUtil.a();
         paramRIJDownloadView = localObject2;
         if (paramADVideoAppDownloadData != null) {
-          paramRIJDownloadView = paramADVideoAppDownloadData.a;
+          paramRIJDownloadView = paramADVideoAppDownloadData.m;
         }
         ((WadlProxyServiceWrap)localObject1).c(paramRIJDownloadView);
         RIJAdDownloadReport.a(RIJAdDownloadReport.a, paramContext, DownloadClickState.INSTALL_APP, paramAdvertisementInfo, null, 8, null);
@@ -82,7 +82,7 @@ public final class RIJAdGameGiftUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdGameGiftUtil
  * JD-Core Version:    0.7.0.1
  */

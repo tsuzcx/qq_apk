@@ -13,15 +13,15 @@ class NearbyProfileFragment$4
   {
     if (paramLong > 0L)
     {
-      NearbyProfileFragment.a(this.a).setText(String.format(HardCodeUtil.a(2131707359), new Object[] { Long.valueOf(paramLong) }));
+      NearbyProfileFragment.a(this.a).setText(String.format(HardCodeUtil.a(2131905180), new Object[] { Long.valueOf(paramLong) }));
       return;
     }
-    NearbyProfileFragment.a(this.a).setText(HardCodeUtil.a(2131707321));
+    NearbyProfileFragment.a(this.a).setText(HardCodeUtil.a(2131905145));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.4
  * JD-Core Version:    0.7.0.1
  */

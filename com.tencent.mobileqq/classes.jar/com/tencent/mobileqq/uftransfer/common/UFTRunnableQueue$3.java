@@ -8,12 +8,12 @@ class UFTRunnableQueue$3
   public void run()
   {
     UFTRunnableQueue.a(this.this$0, this.a);
-    UFTRunnableQueue.a(this.this$0);
+    UFTRunnableQueue.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.UFTRunnableQueue.3
  * JD-Core Version:    0.7.0.1
  */

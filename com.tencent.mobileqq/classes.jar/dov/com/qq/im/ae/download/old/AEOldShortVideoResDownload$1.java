@@ -14,10 +14,10 @@ class AEOldShortVideoResDownload$1
     ((StringBuilder)localObject).append(paramInt1);
     ((StringBuilder)localObject).append("serverError=");
     ((StringBuilder)localObject).append(paramInt2);
-    VideoEnvironment.LogDownLoad(AEOldShortVideoResDownload.a(), ((StringBuilder)localObject).toString(), null);
+    VideoEnvironment.LogDownLoad(AEOldShortVideoResDownload.b(), ((StringBuilder)localObject).toString(), null);
     if ((paramInt1 != 1) && (paramInt1 != 0))
     {
-      localObject = AEOldShortVideoResDownload.a();
+      localObject = AEOldShortVideoResDownload.b();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("startDownloadConfigNoLogin onConfigResult| result= RESULT_FAILED error=");
       localStringBuilder.append(paramInt2);
@@ -27,7 +27,7 @@ class AEOldShortVideoResDownload$1
     }
     if (paramInt2 != 0)
     {
-      localObject = AEOldShortVideoResDownload.a();
+      localObject = AEOldShortVideoResDownload.b();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("startDownloadConfigNoLogin onConfigResult| uncompress config error=");
       localStringBuilder.append(paramInt2);
@@ -36,14 +36,14 @@ class AEOldShortVideoResDownload$1
       return;
     }
     localObject = new ArrayList(1);
-    paramInt1 = AEOldShortVideoResManager.a(AEOldShortVideoResDownload.a(this.a), (List)localObject);
+    paramInt1 = AEOldShortVideoResManager.a(AEOldShortVideoResDownload.b(this.a), (List)localObject);
     if (paramInt1 == 0)
     {
-      VideoEnvironment.LogDownLoad(AEOldShortVideoResDownload.a(), "startDownloadConfigNoLogin onConfigResult| check config success...", null);
-      AEOldShortVideoResDownload.a(this.a).b();
+      VideoEnvironment.LogDownLoad(AEOldShortVideoResDownload.b(), "startDownloadConfigNoLogin onConfigResult| check config success...", null);
+      AEOldShortVideoResDownload.c(this.a).a();
       return;
     }
-    localObject = AEOldShortVideoResDownload.a();
+    localObject = AEOldShortVideoResDownload.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("startDownloadConfigNoLogin onConfigResult| check config error=");
     localStringBuilder.append(paramInt1);
@@ -53,7 +53,7 @@ class AEOldShortVideoResDownload$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoResDownload.1
  * JD-Core Version:    0.7.0.1
  */

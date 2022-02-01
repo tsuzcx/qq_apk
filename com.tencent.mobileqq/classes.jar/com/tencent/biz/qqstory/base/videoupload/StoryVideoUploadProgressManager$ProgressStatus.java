@@ -4,19 +4,19 @@ import android.os.Handler;
 
 class StoryVideoUploadProgressManager$ProgressStatus
 {
-  public int a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new StoryVideoUploadProgressManager.ProgressStatus.1(this);
   public String a;
-  public boolean a;
-  public int b;
   public String b;
-  private boolean b;
+  public boolean c;
+  public int d;
+  public int e;
+  private boolean g;
+  private Runnable h = new StoryVideoUploadProgressManager.ProgressStatus.1(this);
   
   private StoryVideoUploadProgressManager$ProgressStatus(StoryVideoUploadProgressManager paramStoryVideoUploadProgressManager) {}
   
   private void c()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.d;
     if (i != 0)
     {
       if (i != 1)
@@ -28,50 +28,50 @@ class StoryVideoUploadProgressManager$ProgressStatus
             if ((i != 4) && (i != 5)) {
               return;
             }
-            this.jdField_b_of_type_Int = 100;
+            this.e = 100;
             return;
           }
-          this.jdField_b_of_type_Int += 1;
-          if (this.jdField_b_of_type_Int >= 100) {
-            this.jdField_b_of_type_Int = 99;
+          this.e += 1;
+          if (this.e >= 100) {
+            this.e = 99;
           }
         }
         else
         {
-          this.jdField_b_of_type_Int += 1;
-          if (this.jdField_b_of_type_Int >= 95) {
-            this.jdField_b_of_type_Int = 94;
+          this.e += 1;
+          if (this.e >= 95) {
+            this.e = 94;
           }
         }
       }
       else
       {
-        this.jdField_b_of_type_Int += 1;
-        if (this.jdField_b_of_type_Int >= 60) {
-          this.jdField_b_of_type_Int = 59;
+        this.e += 1;
+        if (this.e >= 60) {
+          this.e = 59;
         }
       }
     }
     else {
-      this.jdField_b_of_type_Int = 0;
+      this.e = 0;
     }
   }
   
   public void a()
   {
-    this.jdField_b_of_type_Boolean = false;
-    StoryVideoUploadProgressManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadProgressManager).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
+    this.g = false;
+    StoryVideoUploadProgressManager.a(this.f).postDelayed(this.h, 200L);
   }
   
   public void b()
   {
-    this.jdField_b_of_type_Boolean = true;
-    StoryVideoUploadProgressManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadProgressManager).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.g = true;
+    StoryVideoUploadProgressManager.a(this.f).removeCallbacks(this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.ProgressStatus
  * JD-Core Version:    0.7.0.1
  */

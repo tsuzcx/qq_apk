@@ -49,16 +49,16 @@ public class OcrImageTextView
   extends ImageView
   implements OCRPerformUtil.TextWatcher
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new OcrImageTextView.1(this);
-  private List<OcrImageTextBean> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
-  private List<OcrImageSectBean> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private TextPaint a;
+  private Runnable b = new OcrImageTextView.1(this);
+  private Bitmap c;
+  private Paint d = new Paint();
+  private List<OcrImageTextBean> e = new CopyOnWriteArrayList();
+  private List<OcrImageSectBean> f = new CopyOnWriteArrayList();
+  private float g;
+  private float h;
+  private int i;
+  private boolean j = false;
   
   public OcrImageTextView(Context paramContext)
   {
@@ -73,39 +73,32 @@ public class OcrImageTextView
   public OcrImageTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-38294);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(30.0F);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-38294);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(30.0F);
+    this.d.setAntiAlias(true);
+    this.d.setColor(-38294);
+    this.d.setTextSize(30.0F);
+    this.a = new TextPaint();
+    this.a.setAntiAlias(true);
+    this.a.setStyle(Paint.Style.FILL);
+    this.a.setColor(-38294);
+    this.a.setTextSize(30.0F);
   }
   
   private float a(List<PicOcrResultBean> paramList)
   {
     paramList = paramList.iterator();
     float f1 = 0.0F;
-    int i = 0;
+    int k = 0;
     while (paramList.hasNext())
     {
       PicOcrResultBean localPicOcrResultBean = (PicOcrResultBean)paramList.next();
-      float f2 = OcrImageUtil.a(localPicOcrResultBean.a(this.jdField_a_of_type_Float), localPicOcrResultBean.b(this.jdField_b_of_type_Float), localPicOcrResultBean.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsPaint);
+      float f2 = OcrImageUtil.a(localPicOcrResultBean.a(this.g), localPicOcrResultBean.b(this.h), localPicOcrResultBean.a, this.d);
       if (f2 > 0.0F)
       {
         f1 += f2;
-        i += 1;
+        k += 1;
       }
     }
-    return f1 * 1.0F / i;
-  }
-  
-  private Bitmap a(Bitmap paramBitmap)
-  {
-    paramBitmap = new StackBlurManager(paramBitmap);
-    paramBitmap.setDbg(false);
-    return paramBitmap.process(64);
+    return f1 * 1.0F / k;
   }
   
   private Bitmap a(Bitmap paramBitmap, Point paramPoint, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, String paramString)
@@ -143,16 +136,16 @@ public class OcrImageTextView
   {
     Point localPoint;
     if (paramBoolean) {
-      localPoint = paramPicOcrResultBean.b();
+      localPoint = paramPicOcrResultBean.e();
     } else {
-      localPoint = paramPicOcrResultBean.a();
+      localPoint = paramPicOcrResultBean.d();
     }
-    paramPicOcrResultBean = a(this.jdField_a_of_type_AndroidGraphicsBitmap, localPoint, paramPicOcrResultBean.b(), paramPicOcrResultBean.c(), paramInt1, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, paramString);
+    paramPicOcrResultBean = a(this.c, localPoint, paramPicOcrResultBean.b(), paramPicOcrResultBean.c(), paramInt1, this.g, this.h, paramString);
     if (paramPicOcrResultBean == null) {
       return null;
     }
     OCRPerformUtil.a(1, paramString, "", "ocr_crop_back_img", "");
-    paramString = a(paramPicOcrResultBean);
+    paramString = c(paramPicOcrResultBean);
     if ((paramPicOcrResultBean.getHeight() != paramInt3) || (paramPicOcrResultBean.getWidth() != paramInt2)) {
       paramPicOcrResultBean.recycle();
     }
@@ -182,18 +175,18 @@ public class OcrImageTextView
   
   private PicOcrRspResult a(PicOcrRspResult paramPicOcrRspResult, int paramInt)
   {
-    Iterator localIterator = paramPicOcrRspResult.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = paramPicOcrRspResult.f.iterator();
     while (localIterator.hasNext())
     {
       PicOcrResultBean localPicOcrResultBean = (PicOcrResultBean)localIterator.next();
-      if (paramInt != paramPicOcrRspResult.jdField_a_of_type_Int)
+      if (paramInt != paramPicOcrRspResult.b)
       {
         float f2 = paramInt;
-        float f1 = f2 / paramPicOcrRspResult.jdField_a_of_type_Int;
-        if ((paramPicOcrRspResult.f == 90) || (paramPicOcrRspResult.f == 270)) {
-          f1 = f2 / paramPicOcrRspResult.b;
+        float f1 = f2 / paramPicOcrRspResult.b;
+        if ((paramPicOcrRspResult.m == 90) || (paramPicOcrRspResult.m == 270)) {
+          f1 = f2 / paramPicOcrRspResult.c;
         }
-        localPicOcrResultBean.a(f1);
+        localPicOcrResultBean.c(f1);
       }
     }
     return paramPicOcrRspResult;
@@ -220,17 +213,17 @@ public class OcrImageTextView
         }
       }
       if (!TextUtils.isEmpty(paramString)) {
-        ((OcrImageSectBean)localObject).jdField_a_of_type_JavaLangString = paramString;
+        ((OcrImageSectBean)localObject).h = paramString;
       }
-      ((OcrImageSectBean)localObject).jdField_b_of_type_Float = a(paramList);
-      ((OcrImageSectBean)localObject).jdField_c_of_type_Float = paramList.size();
+      ((OcrImageSectBean)localObject).l = a(paramList);
+      ((OcrImageSectBean)localObject).m = paramList.size();
     }
     return localObject;
   }
   
   private List<OcrImageSectBean> a(List<PicOcrResultBean> paramList, TranslateResult paramTranslateResult)
   {
-    if (paramTranslateResult.jdField_a_of_type_JavaUtilList == null) {
+    if (paramTranslateResult.d == null) {
       return null;
     }
     Object localObject1 = new HashMap();
@@ -240,25 +233,25 @@ public class OcrImageTextView
     while (paramList.hasNext())
     {
       localObject2 = (PicOcrResultBean)paramList.next();
-      if (((PicOcrResultBean)localObject2).b != -1) {
-        if (((Map)localObject1).containsKey(Integer.valueOf(((PicOcrResultBean)localObject2).b)))
+      if (((PicOcrResultBean)localObject2).d != -1) {
+        if (((Map)localObject1).containsKey(Integer.valueOf(((PicOcrResultBean)localObject2).d)))
         {
-          ((List)((Map)localObject1).get(Integer.valueOf(((PicOcrResultBean)localObject2).b))).add(localObject2);
+          ((List)((Map)localObject1).get(Integer.valueOf(((PicOcrResultBean)localObject2).d))).add(localObject2);
         }
         else
         {
           localObject3 = new ArrayList();
           ((List)localObject3).add(localObject2);
-          ((Map)localObject1).put(Integer.valueOf(((PicOcrResultBean)localObject2).b), localObject3);
+          ((Map)localObject1).put(Integer.valueOf(((PicOcrResultBean)localObject2).d), localObject3);
         }
       }
     }
     paramList = new HashMap();
-    paramTranslateResult = paramTranslateResult.jdField_a_of_type_JavaUtilList.iterator();
+    paramTranslateResult = paramTranslateResult.d.iterator();
     while (paramTranslateResult.hasNext())
     {
       localObject2 = (TranslateResult.Record)paramTranslateResult.next();
-      paramList.put(((TranslateResult.Record)localObject2).jdField_a_of_type_JavaLangString.replace(" ", ""), ((TranslateResult.Record)localObject2).b);
+      paramList.put(((TranslateResult.Record)localObject2).a.replace(" ", ""), ((TranslateResult.Record)localObject2).b);
     }
     paramTranslateResult = new ArrayList();
     localObject1 = ((Map)localObject1).entrySet().iterator();
@@ -279,7 +272,7 @@ public class OcrImageTextView
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (PicOcrResultBean)((Iterator)localObject2).next();
-          String str = (String)paramList.get(((PicOcrResultBean)localObject3).jdField_a_of_type_JavaLangString.replace(" ", ""));
+          String str = (String)paramList.get(((PicOcrResultBean)localObject3).a.replace(" ", ""));
           localObject3 = a(Collections.singletonList(localObject3), str);
           if (localObject3 != null) {
             paramTranslateResult.add(localObject3);
@@ -292,36 +285,36 @@ public class OcrImageTextView
   
   private void a(Bitmap paramBitmap)
   {
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    float f = ScreenUtil.getRealWidth(getContext()) / i;
-    i = (int)(j * f);
-    super.setMeasuredDimension(View.MeasureSpec.makeMeasureSpec(ScreenUtil.getRealWidth(getContext()), 1073741824), View.MeasureSpec.makeMeasureSpec(i, 1073741824));
+    int k = paramBitmap.getWidth();
+    int m = paramBitmap.getHeight();
+    float f1 = ScreenUtil.getRealWidth(getContext()) / k;
+    k = (int)(m * f1);
+    super.setMeasuredDimension(View.MeasureSpec.makeMeasureSpec(ScreenUtil.getRealWidth(getContext()), 1073741824), View.MeasureSpec.makeMeasureSpec(k, 1073741824));
   }
   
   private void a(Canvas paramCanvas)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.e;
     if (localObject1 != null)
     {
       if (((List)localObject1).isEmpty()) {
         return;
       }
-      localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject1 = this.e.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         OcrImageTextBean localOcrImageTextBean = (OcrImageTextBean)((Iterator)localObject1).next();
-        if ((localOcrImageTextBean.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!localOcrImageTextBean.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+        if ((localOcrImageTextBean.h != null) && (!localOcrImageTextBean.h.isRecycled()))
         {
-          a(localOcrImageTextBean, localOcrImageTextBean.f, localOcrImageTextBean.g);
-          localOcrImageTextBean.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localOcrImageTextBean.f, localOcrImageTextBean.g);
-          Object localObject2 = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt();
-          localOcrImageTextBean.j = (localOcrImageTextBean.g / 2 + (((Paint.FontMetricsInt)localObject2).bottom - ((Paint.FontMetricsInt)localObject2).top) / 2 - ((Paint.FontMetricsInt)localObject2).bottom);
+          a(localOcrImageTextBean, localOcrImageTextBean.j, localOcrImageTextBean.k);
+          localOcrImageTextBean.q.set(0, 0, localOcrImageTextBean.j, localOcrImageTextBean.k);
+          Object localObject2 = this.d.getFontMetricsInt();
+          localOcrImageTextBean.p = (localOcrImageTextBean.k / 2 + (((Paint.FontMetricsInt)localObject2).bottom - ((Paint.FontMetricsInt)localObject2).top) / 2 - ((Paint.FontMetricsInt)localObject2).bottom);
           localObject2 = localOcrImageTextBean.a();
           paramCanvas.save();
           paramCanvas.translate(((Point)localObject2).x, ((Point)localObject2).y);
-          paramCanvas.rotate(localOcrImageTextBean.jdField_a_of_type_Int);
-          if (localOcrImageTextBean.d) {
+          paramCanvas.rotate(localOcrImageTextBean.c);
+          if (localOcrImageTextBean.x) {
             b(paramCanvas, localOcrImageTextBean);
           } else {
             a(paramCanvas, localOcrImageTextBean);
@@ -334,39 +327,39 @@ public class OcrImageTextView
   
   private void a(Canvas paramCanvas, OcrImageTextBean paramOcrImageTextBean)
   {
-    if (paramOcrImageTextBean.jdField_a_of_type_Boolean)
+    if (paramOcrImageTextBean.b)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-15550475);
-      paramCanvas.drawRect(paramOcrImageTextBean.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.d.setColor(-15550475);
+      paramCanvas.drawRect(paramOcrImageTextBean.q, this.d);
     }
     else
     {
-      paramCanvas.drawBitmap(paramOcrImageTextBean.jdField_a_of_type_AndroidGraphicsBitmap, paramOcrImageTextBean.jdField_a_of_type_AndroidGraphicsRect, paramOcrImageTextBean.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap(paramOcrImageTextBean.h, paramOcrImageTextBean.q, paramOcrImageTextBean.q, this.d);
     }
-    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-    int i;
-    if (paramOcrImageTextBean.b) {
-      i = -1;
+    Paint localPaint = this.d;
+    int k;
+    if (paramOcrImageTextBean.m) {
+      k = -1;
     } else {
-      i = -16777216;
+      k = -16777216;
     }
-    localPaint.setColor(i);
-    paramCanvas.drawText(paramOcrImageTextBean.jdField_a_of_type_JavaLangString, 0.0F, paramOcrImageTextBean.j, this.jdField_a_of_type_AndroidGraphicsPaint);
+    localPaint.setColor(k);
+    paramCanvas.drawText(paramOcrImageTextBean.i, 0.0F, paramOcrImageTextBean.p, this.d);
   }
   
   private void a(OcrImageSectBean paramOcrImageSectBean)
   {
-    int i = 0;
+    int k = 0;
     Object localObject = null;
     try
     {
-      Palette localPalette = Palette.a(paramOcrImageSectBean.jdField_a_of_type_AndroidGraphicsBitmap).a();
+      Palette localPalette = Palette.a(paramOcrImageSectBean.w).a();
       localObject = localPalette;
       Palette.Swatch localSwatch = localPalette.a();
       localObject = localPalette;
       if (localSwatch != null)
       {
-        i = 1;
+        k = 1;
         localObject = localPalette;
       }
     }
@@ -374,34 +367,34 @@ public class OcrImageTextView
     {
       OCRPerformUtil.a(0, "ocr_palette_suc", localThrowable.getMessage());
     }
-    if (i != 0)
+    if (k != 0)
     {
       localObject = ((Palette)localObject).a();
-      paramOcrImageSectBean.g = (((Palette.Swatch)localObject).a() | 0xFF000000);
-      paramOcrImageSectBean.h = (((Palette.Swatch)localObject).d() | 0xFF000000);
-      paramOcrImageSectBean.d = true;
+      paramOcrImageSectBean.o = (((Palette.Swatch)localObject).a() | 0xFF000000);
+      paramOcrImageSectBean.p = (((Palette.Swatch)localObject).e() | 0xFF000000);
+      paramOcrImageSectBean.u = true;
       OCRPerformUtil.a(1, "ocr_palette_suc", "");
       return;
     }
-    paramOcrImageSectBean.jdField_c_of_type_Boolean = a(paramOcrImageSectBean.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramOcrImageSectBean.t = b(paramOcrImageSectBean.w);
   }
   
   private void a(OcrImageTextBean paramOcrImageTextBean)
   {
-    if (paramOcrImageTextBean.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+    if (paramOcrImageTextBean.h == null) {
       return;
     }
     Object localObject = null;
-    int i = 0;
+    int k = 0;
     try
     {
-      Palette localPalette = Palette.a(paramOcrImageTextBean.jdField_a_of_type_AndroidGraphicsBitmap).a();
+      Palette localPalette = Palette.a(paramOcrImageTextBean.h).a();
       localObject = localPalette;
       Palette.Swatch localSwatch = localPalette.a();
       localObject = localPalette;
       if (localSwatch != null)
       {
-        i = 1;
+        k = 1;
         localObject = localPalette;
       }
     }
@@ -409,75 +402,213 @@ public class OcrImageTextView
     {
       OCRPerformUtil.a(0, "ocr_palette_suc", localThrowable.getMessage());
     }
-    if (i != 0)
+    if (k != 0)
     {
       localObject = ((Palette)localObject).a();
-      paramOcrImageTextBean.n = (((Palette.Swatch)localObject).a() | 0xFF000000);
-      paramOcrImageTextBean.o = (((Palette.Swatch)localObject).d() | 0xFF000000);
-      paramOcrImageTextBean.d = true;
+      paramOcrImageTextBean.v = (((Palette.Swatch)localObject).a() | 0xFF000000);
+      paramOcrImageTextBean.w = (((Palette.Swatch)localObject).e() | 0xFF000000);
+      paramOcrImageTextBean.x = true;
       OCRPerformUtil.a(1, "ocr_palette_suc", "");
       return;
     }
-    paramOcrImageTextBean.b = a(paramOcrImageTextBean.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramOcrImageTextBean.m = b(paramOcrImageTextBean.h);
   }
   
   private void a(OcrImageTextBean paramOcrImageTextBean, int paramInt1, int paramInt2)
   {
-    if ((paramOcrImageTextBean != null) && (!TextUtils.isEmpty(paramOcrImageTextBean.jdField_a_of_type_JavaLangString)) && (paramInt1 > 0))
+    if ((paramOcrImageTextBean != null) && (!TextUtils.isEmpty(paramOcrImageTextBean.i)) && (paramInt1 > 0))
     {
-      if (paramOcrImageTextBean.jdField_a_of_type_Float > 0.0F)
+      if (paramOcrImageTextBean.l > 0.0F)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramOcrImageTextBean.jdField_a_of_type_Float);
+        this.d.setTextSize(paramOcrImageTextBean.l);
         return;
       }
-      paramOcrImageTextBean.jdField_a_of_type_Float = OcrImageUtil.a(paramInt1, paramInt2, paramOcrImageTextBean.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramOcrImageTextBean.l = OcrImageUtil.a(paramInt1, paramInt2, paramOcrImageTextBean.i, this.d);
       Rect localRect = new Rect();
-      this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(paramOcrImageTextBean.jdField_a_of_type_JavaLangString, 0, paramOcrImageTextBean.jdField_a_of_type_JavaLangString.length(), localRect);
-      paramOcrImageTextBean.k = ((paramInt1 - localRect.width()) / 2);
-      paramOcrImageTextBean.l = ((paramInt2 - localRect.height()) / 2);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramOcrImageTextBean.jdField_a_of_type_Float);
+      this.d.getTextBounds(paramOcrImageTextBean.i, 0, paramOcrImageTextBean.i.length(), localRect);
+      paramOcrImageTextBean.r = ((paramInt1 - localRect.width()) / 2);
+      paramOcrImageTextBean.s = ((paramInt2 - localRect.height()) / 2);
+      this.d.setTextSize(paramOcrImageTextBean.l);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(30.0F);
+    this.d.setTextSize(30.0F);
   }
   
-  private boolean a(Bitmap paramBitmap)
+  private void b(Canvas paramCanvas)
   {
-    int i = paramBitmap.getHeight() / 20;
-    int k = 5;
-    int j = i;
-    if (i <= 0) {
-      j = 5;
+    Object localObject1 = this.f;
+    if (localObject1 != null)
+    {
+      if (((List)localObject1).isEmpty()) {
+        return;
+      }
+      Iterator localIterator = this.f.iterator();
+      while (localIterator.hasNext())
+      {
+        OcrImageSectBean localOcrImageSectBean = (OcrImageSectBean)localIterator.next();
+        if ((localOcrImageSectBean.w != null) && (!localOcrImageSectBean.w.isRecycled()) && (!TextUtils.isEmpty(localOcrImageSectBean.h)) && (!localOcrImageSectBean.c()))
+        {
+          Rect localRect = localOcrImageSectBean.a();
+          localObject1 = localOcrImageSectBean.b();
+          Object localObject2;
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("rect:");
+            ((StringBuilder)localObject2).append(localRect.toShortString());
+            ((StringBuilder)localObject2).append(", point:");
+            ((StringBuilder)localObject2).append(((Point)localObject1).toString());
+            QLog.i("OcrImageTextView", 2, ((StringBuilder)localObject2).toString());
+          }
+          paramCanvas.save();
+          paramCanvas.translate(((Point)localObject1).x, ((Point)localObject1).y);
+          paramCanvas.rotate(localOcrImageSectBean.c);
+          boolean bool = localOcrImageSectBean.u;
+          int k = -15550475;
+          if (bool)
+          {
+            localObject1 = this.d;
+            if (!localOcrImageSectBean.b) {
+              k = localOcrImageSectBean.o;
+            }
+            ((Paint)localObject1).setColor(k);
+            paramCanvas.drawRect(localRect, this.d);
+          }
+          else if (localOcrImageSectBean.b)
+          {
+            this.d.setColor(-15550475);
+            paramCanvas.drawRect(localRect, this.d);
+          }
+          else
+          {
+            paramCanvas.drawBitmap(localOcrImageSectBean.w, localRect, localRect, this.d);
+          }
+          if (TextUtils.isEmpty(localOcrImageSectBean.h))
+          {
+            paramCanvas.restore();
+          }
+          else
+          {
+            int m = Math.round(localOcrImageSectBean.k);
+            int n = localRect.width() - localOcrImageSectBean.r * 2;
+            int i1 = localRect.height() - localOcrImageSectBean.q * 2;
+            this.a.setTextSize(m);
+            this.a.setColor(localOcrImageSectBean.p);
+            localObject2 = a(localOcrImageSectBean.h, this.a, n);
+            localObject1 = localObject2;
+            if (localObject2 == null)
+            {
+              paramCanvas.restore();
+            }
+            else
+            {
+              for (;;)
+              {
+                k = m;
+                localObject2 = localObject1;
+                if (((StaticLayout)localObject1).getHeight() >= i1) {
+                  break;
+                }
+                m += 1;
+                if (m > 30)
+                {
+                  k = m;
+                  localObject2 = localObject1;
+                  break;
+                }
+                this.a.setTextSize(m);
+                StaticLayout localStaticLayout = a(localOcrImageSectBean.h, this.a, n);
+                k = m;
+                localObject2 = localObject1;
+                if (localStaticLayout == null) {
+                  break;
+                }
+                if (localStaticLayout.getHeight() <= 0)
+                {
+                  k = m;
+                  localObject2 = localObject1;
+                  break;
+                }
+                localObject1 = localStaticLayout;
+              }
+              while (((StaticLayout)localObject2).getHeight() > i1)
+              {
+                k -= 1;
+                if (k < 5) {
+                  break;
+                }
+                this.a.setTextSize(k);
+                localObject1 = a(localOcrImageSectBean.h, this.a, n);
+                if ((localObject1 == null) || (((StaticLayout)localObject1).getHeight() <= 0)) {
+                  break;
+                }
+                localObject2 = localObject1;
+              }
+              k = localOcrImageSectBean.r;
+              m = localRect.height() / 2;
+              n = ((StaticLayout)localObject2).getHeight() / 2;
+              paramCanvas.translate(k, m - n);
+              ((StaticLayout)localObject2).draw(paramCanvas);
+              paramCanvas.restore();
+            }
+          }
+        }
+      }
     }
-    i = paramBitmap.getWidth() / 20;
-    if (i > 0) {
-      k = i;
+  }
+  
+  private void b(Canvas paramCanvas, OcrImageTextBean paramOcrImageTextBean)
+  {
+    Paint localPaint = this.d;
+    int k;
+    if (paramOcrImageTextBean.b) {
+      k = -15550475;
+    } else {
+      k = paramOcrImageTextBean.v;
+    }
+    localPaint.setColor(k);
+    paramCanvas.drawRect(paramOcrImageTextBean.q, this.d);
+    this.d.setColor(paramOcrImageTextBean.w);
+    paramCanvas.drawText(paramOcrImageTextBean.i, 0.0F, paramOcrImageTextBean.p, this.d);
+  }
+  
+  private boolean b(Bitmap paramBitmap)
+  {
+    int k = paramBitmap.getHeight() / 20;
+    int n = 5;
+    int m = k;
+    if (k <= 0) {
+      m = 5;
+    }
+    k = paramBitmap.getWidth() / 20;
+    if (k > 0) {
+      n = k;
     }
     long l6 = 0L;
     long l1 = l6;
     long l2 = l1;
     long l5 = l2;
-    i = 0;
+    k = 0;
     long l3 = l2;
     long l4 = l1;
     l2 = l6;
     l1 = l5;
-    while (i < paramBitmap.getHeight())
+    while (k < paramBitmap.getHeight())
     {
       l5 = l2;
       l2 = l1;
-      int m = 0;
+      int i1 = 0;
       l1 = l5;
-      while (m < paramBitmap.getWidth())
+      while (i1 < paramBitmap.getWidth())
       {
-        int n = paramBitmap.getPixel(m, i);
+        int i2 = paramBitmap.getPixel(i1, k);
         l1 += 1L;
-        l2 += Color.red(n);
-        l4 += Color.green(n);
-        l3 += Color.blue(n);
-        m += k;
+        l2 += Color.red(i2);
+        l4 += Color.green(i2);
+        l3 += Color.blue(i2);
+        i1 += n;
       }
-      i += j;
+      k += m;
       l5 = l1;
       l1 = l2;
       l2 = l5;
@@ -494,32 +625,75 @@ public class OcrImageTextView
     return d1 * 0.299D + d2 * 0.578D + d3 * 0.114D < 90.0D;
   }
   
-  private CharSequence b()
+  private Bitmap c(Bitmap paramBitmap)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    paramBitmap = new StackBlurManager(paramBitmap);
+    paramBitmap.setDbg(false);
+    return paramBitmap.process(64);
+  }
+  
+  private boolean f()
+  {
+    Object localObject = this.e;
+    if (localObject != null)
+    {
+      if (((List)localObject).isEmpty()) {
+        return false;
+      }
+      localObject = this.e.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((OcrImageTextBean)((Iterator)localObject).next()).b) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  private boolean g()
+  {
+    Object localObject = this.f;
+    if (localObject != null)
+    {
+      if (((List)localObject).isEmpty()) {
+        return false;
+      }
+      localObject = this.f.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((OcrImageSectBean)((Iterator)localObject).next()).b) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  private CharSequence h()
+  {
+    Object localObject = this.e;
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
       localObject = new StringBuilder();
-      int i = -2;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      int k = -2;
+      Iterator localIterator = this.e.iterator();
       while (localIterator.hasNext())
       {
         OcrImageTextBean localOcrImageTextBean = (OcrImageTextBean)localIterator.next();
-        if (localOcrImageTextBean.jdField_a_of_type_Boolean) {
-          if (i < 0)
+        if (localOcrImageTextBean.b) {
+          if (k < 0)
           {
-            ((StringBuilder)localObject).append(localOcrImageTextBean.jdField_a_of_type_JavaLangString.trim());
-            i = localOcrImageTextBean.h;
+            ((StringBuilder)localObject).append(localOcrImageTextBean.i.trim());
+            k = localOcrImageTextBean.n;
           }
-          else if (localOcrImageTextBean.h == i)
+          else if (localOcrImageTextBean.n == k)
           {
-            ((StringBuilder)localObject).append(localOcrImageTextBean.jdField_a_of_type_JavaLangString.trim());
+            ((StringBuilder)localObject).append(localOcrImageTextBean.i.trim());
           }
           else
           {
             ((StringBuilder)localObject).append("\n\n");
-            ((StringBuilder)localObject).append(localOcrImageTextBean.jdField_a_of_type_JavaLangString.trim());
-            i = localOcrImageTextBean.h;
+            ((StringBuilder)localObject).append(localOcrImageTextBean.i.trim());
+            k = localOcrImageTextBean.n;
           }
         }
       }
@@ -528,157 +702,19 @@ public class OcrImageTextView
     return "";
   }
   
-  private void b(Canvas paramCanvas)
+  private CharSequence i()
   {
-    Object localObject1 = this.jdField_b_of_type_JavaUtilList;
-    if (localObject1 != null)
-    {
-      if (((List)localObject1).isEmpty()) {
-        return;
-      }
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        OcrImageSectBean localOcrImageSectBean = (OcrImageSectBean)localIterator.next();
-        if ((localOcrImageSectBean.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!localOcrImageSectBean.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) && (!TextUtils.isEmpty(localOcrImageSectBean.jdField_a_of_type_JavaLangString)) && (!localOcrImageSectBean.a()))
-        {
-          Rect localRect = localOcrImageSectBean.a();
-          localObject1 = localOcrImageSectBean.a();
-          Object localObject2;
-          if (QLog.isColorLevel())
-          {
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("rect:");
-            ((StringBuilder)localObject2).append(localRect.toShortString());
-            ((StringBuilder)localObject2).append(", point:");
-            ((StringBuilder)localObject2).append(((Point)localObject1).toString());
-            QLog.i("OcrImageTextView", 2, ((StringBuilder)localObject2).toString());
-          }
-          paramCanvas.save();
-          paramCanvas.translate(((Point)localObject1).x, ((Point)localObject1).y);
-          paramCanvas.rotate(localOcrImageSectBean.jdField_a_of_type_Int);
-          boolean bool = localOcrImageSectBean.d;
-          int i = -15550475;
-          if (bool)
-          {
-            localObject1 = this.jdField_a_of_type_AndroidGraphicsPaint;
-            if (!localOcrImageSectBean.jdField_a_of_type_Boolean) {
-              i = localOcrImageSectBean.g;
-            }
-            ((Paint)localObject1).setColor(i);
-            paramCanvas.drawRect(localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-          }
-          else if (localOcrImageSectBean.jdField_a_of_type_Boolean)
-          {
-            this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-15550475);
-            paramCanvas.drawRect(localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-          }
-          else
-          {
-            paramCanvas.drawBitmap(localOcrImageSectBean.jdField_a_of_type_AndroidGraphicsBitmap, localRect, localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-          }
-          if (TextUtils.isEmpty(localOcrImageSectBean.jdField_a_of_type_JavaLangString))
-          {
-            paramCanvas.restore();
-          }
-          else
-          {
-            int j = Math.round(localOcrImageSectBean.jdField_a_of_type_Float);
-            int k = localRect.width() - localOcrImageSectBean.j * 2;
-            int m = localRect.height() - localOcrImageSectBean.i * 2;
-            this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(j);
-            this.jdField_a_of_type_AndroidTextTextPaint.setColor(localOcrImageSectBean.h);
-            localObject2 = a(localOcrImageSectBean.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidTextTextPaint, k);
-            localObject1 = localObject2;
-            if (localObject2 == null)
-            {
-              paramCanvas.restore();
-            }
-            else
-            {
-              for (;;)
-              {
-                i = j;
-                localObject2 = localObject1;
-                if (((StaticLayout)localObject1).getHeight() >= m) {
-                  break;
-                }
-                j += 1;
-                if (j > 30)
-                {
-                  i = j;
-                  localObject2 = localObject1;
-                  break;
-                }
-                this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(j);
-                StaticLayout localStaticLayout = a(localOcrImageSectBean.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidTextTextPaint, k);
-                i = j;
-                localObject2 = localObject1;
-                if (localStaticLayout == null) {
-                  break;
-                }
-                if (localStaticLayout.getHeight() <= 0)
-                {
-                  i = j;
-                  localObject2 = localObject1;
-                  break;
-                }
-                localObject1 = localStaticLayout;
-              }
-              while (((StaticLayout)localObject2).getHeight() > m)
-              {
-                i -= 1;
-                if (i < 5) {
-                  break;
-                }
-                this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(i);
-                localObject1 = a(localOcrImageSectBean.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidTextTextPaint, k);
-                if ((localObject1 == null) || (((StaticLayout)localObject1).getHeight() <= 0)) {
-                  break;
-                }
-                localObject2 = localObject1;
-              }
-              i = localOcrImageSectBean.j;
-              j = localRect.height() / 2;
-              k = ((StaticLayout)localObject2).getHeight() / 2;
-              paramCanvas.translate(i, j - k);
-              ((StaticLayout)localObject2).draw(paramCanvas);
-              paramCanvas.restore();
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  private void b(Canvas paramCanvas, OcrImageTextBean paramOcrImageTextBean)
-  {
-    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-    int i;
-    if (paramOcrImageTextBean.jdField_a_of_type_Boolean) {
-      i = -15550475;
-    } else {
-      i = paramOcrImageTextBean.n;
-    }
-    localPaint.setColor(i);
-    paramCanvas.drawRect(paramOcrImageTextBean.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramOcrImageTextBean.o);
-    paramCanvas.drawText(paramOcrImageTextBean.jdField_a_of_type_JavaLangString, 0.0F, paramOcrImageTextBean.j, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  private CharSequence c()
-  {
-    Object localObject = this.jdField_b_of_type_JavaUtilList;
+    Object localObject = this.f;
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
       localObject = new StringBuilder();
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.f.iterator();
       while (localIterator.hasNext())
       {
         OcrImageSectBean localOcrImageSectBean = (OcrImageSectBean)localIterator.next();
-        if (localOcrImageSectBean.jdField_a_of_type_Boolean)
+        if (localOcrImageSectBean.b)
         {
-          ((StringBuilder)localObject).append(localOcrImageSectBean.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(localOcrImageSectBean.h);
           ((StringBuilder)localObject).append("\n\n");
         }
       }
@@ -687,85 +723,65 @@ public class OcrImageTextView
     return "";
   }
   
-  private boolean c()
+  public boolean a()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if (localObject != null)
-    {
-      if (((List)localObject).isEmpty()) {
-        return false;
-      }
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (((OcrImageTextBean)((Iterator)localObject).next()).jdField_a_of_type_Boolean) {
-          return true;
-        }
-      }
+    return this.j;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (this.c == null) {
+      this.c = OCRPerformUtil.a(getDrawable());
     }
-    return false;
+    return this.c.getHeight() * this.h <= paramInt;
   }
   
-  private boolean d()
+  public boolean b()
   {
-    Object localObject = this.jdField_b_of_type_JavaUtilList;
-    if (localObject != null)
-    {
-      if (((List)localObject).isEmpty()) {
-        return false;
-      }
-      localObject = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (((OcrImageSectBean)((Iterator)localObject).next()).jdField_a_of_type_Boolean) {
-          return true;
-        }
-      }
+    if (OCRPerformUtil.a) {
+      return g();
     }
-    return false;
+    return f();
   }
   
-  public CharSequence a()
+  public CharSequence c()
   {
-    if (OCRPerformUtil.jdField_a_of_type_Boolean) {
-      return c();
+    if (OCRPerformUtil.a) {
+      return i();
     }
-    return b();
+    return h();
   }
   
-  public List<OcrImageTextBean> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
+  public void d()
   {
     try
     {
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      ThreadManager.getUIHandler().removeCallbacks(this.b);
+      Iterator localIterator = this.e.iterator();
       Object localObject2;
       while (localIterator.hasNext())
       {
         localObject2 = (OcrImageTextBean)localIterator.next();
-        if ((localObject2 != null) && (((OcrImageTextBean)localObject2).jdField_a_of_type_AndroidGraphicsBitmap != null))
+        if ((localObject2 != null) && (((OcrImageTextBean)localObject2).h != null))
         {
-          ((OcrImageTextBean)localObject2).jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-          ((OcrImageTextBean)localObject2).jdField_a_of_type_AndroidGraphicsBitmap = null;
+          ((OcrImageTextBean)localObject2).h.recycle();
+          ((OcrImageTextBean)localObject2).h = null;
         }
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      this.e.clear();
+      localIterator = this.f.iterator();
       while (localIterator.hasNext())
       {
         localObject2 = (OcrImageSectBean)localIterator.next();
-        if ((localObject2 != null) && (((OcrImageSectBean)localObject2).jdField_a_of_type_AndroidGraphicsBitmap != null))
+        if ((localObject2 != null) && (((OcrImageSectBean)localObject2).w != null))
         {
-          ((OcrImageSectBean)localObject2).jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-          ((OcrImageSectBean)localObject2).jdField_a_of_type_AndroidGraphicsBitmap = null;
+          ((OcrImageSectBean)localObject2).w.recycle();
+          ((OcrImageSectBean)localObject2).w = null;
         }
       }
-      this.jdField_b_of_type_JavaUtilList.clear();
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      this.f.clear();
+      if (this.c != null) {
+        this.c = null;
       }
       return;
     }
@@ -776,38 +792,22 @@ public class OcrImageTextView
     }
   }
   
-  public boolean a()
+  public void e()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = OCRPerformUtil.a(getDrawable());
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.jdField_b_of_type_Float <= paramInt;
-  }
-  
-  public List<OcrImageSectBean> b()
-  {
-    return this.jdField_b_of_type_JavaUtilList;
-  }
-  
-  public void b()
-  {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.c;
     if (localBitmap != null) {
       localBitmap.recycle();
     }
   }
   
-  public boolean b()
+  public List<OcrImageTextBean> getOcrImageTextList()
   {
-    if (OCRPerformUtil.jdField_a_of_type_Boolean) {
-      return d();
-    }
-    return c();
+    return this.e;
+  }
+  
+  public List<OcrImageSectBean> getOcrTransTextList()
+  {
+    return this.f;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -815,13 +815,13 @@ public class OcrImageTextView
     super.onDraw(paramCanvas);
     if (a())
     {
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      if (this.c == null) {
         return;
       }
       paramCanvas.save();
       paramCanvas.translate(0.0F, 0.0F);
       paramCanvas.restore();
-      if (OCRPerformUtil.jdField_a_of_type_Boolean)
+      if (OCRPerformUtil.a)
       {
         b(paramCanvas);
         return;
@@ -851,21 +851,21 @@ public class OcrImageTextView
     if (paramPicOcrRspResult != null) {
       try
       {
-        if ((paramPicOcrRspResult.jdField_a_of_type_JavaUtilArrayList != null) && (!paramPicOcrRspResult.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+        if ((paramPicOcrRspResult.f != null) && (!paramPicOcrRspResult.f.isEmpty()))
         {
           boolean bool = getDrawable() instanceof BitmapDrawable;
           if (!bool) {
             return;
           }
-          a();
-          if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+          d();
+          if (this.c == null)
           {
-            this.jdField_a_of_type_AndroidGraphicsBitmap = OCRPerformUtil.a(getDrawable());
-            float f = ScreenUtil.getRealWidth(getContext()) / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-            this.jdField_a_of_type_Float = f;
-            this.jdField_b_of_type_Float = f;
+            this.c = OCRPerformUtil.a(getDrawable());
+            float f1 = ScreenUtil.getRealWidth(getContext()) / this.c.getWidth();
+            this.g = f1;
+            this.h = f1;
           }
-          this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+          this.i = this.c.getWidth();
           ThreadManager.getSubThreadHandler().post(new OcrImageTextView.2(this, paramPicOcrRspResult));
           return;
         }
@@ -879,24 +879,24 @@ public class OcrImageTextView
     if (paramTranslateResult != null) {
       try
       {
-        if ((paramTranslateResult.jdField_a_of_type_JavaUtilList != null) && (!paramTranslateResult.jdField_a_of_type_JavaUtilList.isEmpty()))
+        if ((paramTranslateResult.d != null) && (!paramTranslateResult.d.isEmpty()))
         {
-          PicOcrRspResult localPicOcrRspResult = OCRPerformUtil.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrRspResult;
-          if ((localPicOcrRspResult != null) && (!localPicOcrRspResult.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+          PicOcrRspResult localPicOcrRspResult = OCRPerformUtil.g;
+          if ((localPicOcrRspResult != null) && (!localPicOcrRspResult.f.isEmpty()))
           {
             boolean bool = getDrawable() instanceof BitmapDrawable;
             if (!bool) {
               return;
             }
-            a();
-            if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+            d();
+            if (this.c == null)
             {
-              this.jdField_a_of_type_AndroidGraphicsBitmap = OCRPerformUtil.a(getDrawable());
-              float f = ScreenUtil.getRealWidth(getContext()) / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-              this.jdField_a_of_type_Float = f;
-              this.jdField_b_of_type_Float = f;
+              this.c = OCRPerformUtil.a(getDrawable());
+              float f1 = ScreenUtil.getRealWidth(getContext()) / this.c.getWidth();
+              this.g = f1;
+              this.h = f1;
             }
-            this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+            this.i = this.c.getWidth();
             ThreadManager.getSubThreadHandler().post(new OcrImageTextView.3(this, localPicOcrRspResult, paramTranslateResult));
             return;
           }
@@ -909,13 +909,13 @@ public class OcrImageTextView
   
   public void setShowTextMask(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.OcrImageTextView
  * JD-Core Version:    0.7.0.1
  */

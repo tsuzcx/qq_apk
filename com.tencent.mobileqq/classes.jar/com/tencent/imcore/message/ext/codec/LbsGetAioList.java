@@ -11,7 +11,7 @@ public class LbsGetAioList
 {
   public void a(String paramString, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean, List<MessageRecord> paramList, AppRuntime paramAppRuntime)
   {
-    if ((paramInt1 != 1001) && (paramInt1 != 10002) && (UinTypeUtil.a(paramInt1) != 1032)) {
+    if ((paramInt1 != 1001) && (paramInt1 != 10002) && (UinTypeUtil.e(paramInt1) != 1032)) {
       return;
     }
     if (paramList == null) {
@@ -32,7 +32,7 @@ public class LbsGetAioList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.LbsGetAioList
  * JD-Core Version:    0.7.0.1
  */

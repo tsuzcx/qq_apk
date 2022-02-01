@@ -12,63 +12,63 @@ class AVPlayerServiceBuilder$3$1
   
   public void a(String paramString, long paramLong, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfaceAVPlayerPreloadAdapter$AVPreloadListener.a(paramString, paramLong, paramAVPreloadTaskInterface);
+    if (paramString.equals(this.a.b)) {
+      this.a.a.a(paramString, paramLong, paramAVPreloadTaskInterface);
     }
   }
   
   public void a(String paramString, AVPreloadTaskInterface.TaskReportInfo paramTaskReportInfo, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfaceAVPlayerPreloadAdapter$AVPreloadListener.a(paramString, paramTaskReportInfo, paramAVPreloadTaskInterface);
+    if (paramString.equals(this.a.b)) {
+      this.a.a.a(paramString, paramTaskReportInfo, paramAVPreloadTaskInterface);
     }
   }
   
   public void a(String paramString, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfaceAVPlayerPreloadAdapter$AVPreloadListener.a(paramString, paramAVPreloadTaskInterface);
+    if (paramString.equals(this.a.b)) {
+      this.a.a.a(paramString, paramAVPreloadTaskInterface);
     }
   }
   
   public void b(String paramString, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfaceAVPlayerPreloadAdapter$AVPreloadListener.b(paramString, paramAVPreloadTaskInterface);
+    if (paramString.equals(this.a.b)) {
+      this.a.a.b(paramString, paramAVPreloadTaskInterface);
     }
   }
   
   public void c(String paramString, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfaceAVPlayerPreloadAdapter$AVPreloadListener.c(paramString, paramAVPreloadTaskInterface);
+    if (paramString.equals(this.a.b)) {
+      this.a.a.c(paramString, paramAVPreloadTaskInterface);
     }
   }
   
   public void d(String paramString, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfaceAVPlayerPreloadAdapter$AVPreloadListener.d(paramString, paramAVPreloadTaskInterface);
+    if (paramString.equals(this.a.b)) {
+      this.a.a.d(paramString, paramAVPreloadTaskInterface);
     }
   }
   
   public void e(String paramString, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfaceAVPlayerPreloadAdapter$AVPreloadListener.e(paramString, paramAVPreloadTaskInterface);
+    if (paramString.equals(this.a.b)) {
+      this.a.a.e(paramString, paramAVPreloadTaskInterface);
     }
   }
   
   public void f(String paramString, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfaceAVPlayerPreloadAdapter$AVPreloadListener.f(paramString, paramAVPreloadTaskInterface);
+    if (paramString.equals(this.a.b)) {
+      this.a.a.f(paramString, paramAVPreloadTaskInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.avplayer.AVPlayerServiceBuilder.3.1
  * JD-Core Version:    0.7.0.1
  */

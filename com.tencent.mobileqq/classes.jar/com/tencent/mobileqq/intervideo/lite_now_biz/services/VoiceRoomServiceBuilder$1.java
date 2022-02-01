@@ -16,37 +16,37 @@ class VoiceRoomServiceBuilder$1
   
   public AppGeneralInfoService getAppInfo()
   {
-    return (AppGeneralInfoService)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(AppGeneralInfoService.class);
+    return (AppGeneralInfoService)this.a.getService(AppGeneralInfoService.class);
   }
   
   public ChannelInterface getChannel()
   {
-    return (ChannelInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(ChannelInterface.class);
+    return (ChannelInterface)this.a.getService(ChannelInterface.class);
   }
   
   public DataReportInterface getDataReporter()
   {
-    return (DataReportInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(DataReportInterface.class);
+    return (DataReportInterface)this.a.getService(DataReportInterface.class);
   }
   
   public HostProxyInterface getHostProxyInterface()
   {
-    return (HostProxyInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(HostProxyInterface.class);
+    return (HostProxyInterface)this.a.getService(HostProxyInterface.class);
   }
   
   public HttpInterface getHttpInterface()
   {
-    return (HttpInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(HttpInterface.class);
+    return (HttpInterface)this.a.getService(HttpInterface.class);
   }
   
   public LogInterface getLogger()
   {
-    return (LogInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(LogInterface.class);
+    return (LogInterface)this.a.getService(LogInterface.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.VoiceRoomServiceBuilder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -55,7 +55,7 @@ class SignJsPlugin$1
               }
               break label330;
             }
-            i = localSignatureTemplateInfo.g;
+            i = localSignatureTemplateInfo.E;
             localJSONObject2.put("signType", i);
             localJSONObject1.put("result", 0);
             localJSONObject1.put("data", localJSONObject2);
@@ -88,7 +88,7 @@ class SignJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.SignJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

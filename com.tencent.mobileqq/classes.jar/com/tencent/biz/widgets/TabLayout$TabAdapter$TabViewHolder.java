@@ -5,37 +5,37 @@ import android.view.View;
 
 public class TabLayout$TabAdapter$TabViewHolder
 {
-  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
-  private View jdField_a_of_type_AndroidViewView;
+  private SparseArray<View> a;
+  private View b;
   
   private TabLayout$TabAdapter$TabViewHolder(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView;
   }
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.b;
   }
   
   public <T extends View> T a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    if (this.a == null) {
+      this.a = new SparseArray();
     }
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
+    if (this.a.get(paramInt) == null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      View localView = this.b;
       if (localView != null) {
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView.findViewById(paramInt));
+        this.a.put(paramInt, localView.findViewById(paramInt));
       }
     }
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    return (View)this.a.get(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.TabLayout.TabAdapter.TabViewHolder
  * JD-Core Version:    0.7.0.1
  */

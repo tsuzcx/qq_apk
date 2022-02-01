@@ -15,8 +15,8 @@ class ShareActionSheetV2$3
   {
     if (paramActivity == this.a.a)
     {
-      ShareActionSheetV2.a(this.a);
       ShareActionSheetV2.b(this.a);
+      ShareActionSheetV2.c(this.a);
     }
   }
   
@@ -32,7 +32,7 @@ class ShareActionSheetV2$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.3
  * JD-Core Version:    0.7.0.1
  */

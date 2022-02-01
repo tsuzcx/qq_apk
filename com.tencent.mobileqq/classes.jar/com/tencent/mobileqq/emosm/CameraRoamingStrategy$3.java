@@ -23,7 +23,7 @@ class CameraRoamingStrategy$3
       if (!TextUtils.isEmpty(localCameraEmotionData.resid))
       {
         localCameraEmotionData.RomaingType = "needDel";
-        this.this$0.a().updateCustomEmotion(localCameraEmotionData);
+        this.this$0.n().updateCustomEmotion(localCameraEmotionData);
         ReportController.b(this.this$0.a, "dc00898", "", "", "0X800A372", "0X800A372", 0, 0, "", "", localCameraEmotionData.resid, "");
       }
       else
@@ -35,7 +35,7 @@ class CameraRoamingStrategy$3
           localStringBuilder.append(localCameraEmotionData.RomaingType);
           QLog.d("CameraRoamingStrategy", 2, localStringBuilder.toString());
         }
-        this.this$0.a().deleteCustomEmotion(localCameraEmotionData);
+        this.this$0.n().deleteCustomEmotion(localCameraEmotionData);
       }
       i += 1;
     }
@@ -45,7 +45,7 @@ class CameraRoamingStrategy$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.CameraRoamingStrategy.3
  * JD-Core Version:    0.7.0.1
  */

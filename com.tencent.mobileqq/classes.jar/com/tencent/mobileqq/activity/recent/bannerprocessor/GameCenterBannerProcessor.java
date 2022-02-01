@@ -25,17 +25,12 @@ public class GameCenterBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.H;
-  }
+  public static final int a = BannerTypeCollections.I;
   
   public GameCenterBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
+    this.g = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   public int a()
@@ -48,42 +43,42 @@ public class GameCenterBannerProcessor
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, "initGameNoticeBar");
     }
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130838310));
+    paramBanner = new TipsBar(this.f);
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130838358));
     paramBanner.setVisibility(8);
     paramBanner.b(true);
     return paramBanner;
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
     IQQGameNoticeService localIQQGameNoticeService = (IQQGameNoticeService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IQQGameNoticeService.class, "");
     if (localIQQGameNoticeService != null) {
-      localIQQGameNoticeService.updateGameCenterBar(paramBanner.a, paramMessage);
+      localIQQGameNoticeService.updateGameCenterBar(paramBanner.c, paramMessage);
     }
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.g.removeCallbacksAndMessages(null);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public void b()
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
+  }
+  
+  public void d()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, "onDelayRefreshGameNotice");
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(3000, 3000L);
+    this.g.sendEmptyMessageDelayed(3000, 3000L);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -103,7 +98,7 @@ public class GameCenterBannerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.GameCenterBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

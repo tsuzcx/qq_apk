@@ -22,19 +22,19 @@ import java.util.List;
 class TroopSearchServiceImpl$TroopSearchTask
   implements Runnable
 {
-  ITroopSearchService.TroopSearchCallback jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiITroopSearchService$TroopSearchCallback;
-  ArrayList<ResultRecord> jdField_a_of_type_JavaUtilArrayList;
+  ITroopSearchService.TroopSearchCallback a;
+  ArrayList<ResultRecord> b;
   
   TroopSearchServiceImpl$TroopSearchTask(ITroopSearchService.TroopSearchCallback paramTroopSearchCallback, ArrayList<ResultRecord> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiITroopSearchService$TroopSearchCallback = paramArrayList;
+    this.a = paramArrayList;
     Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+    this.b = localObject;
   }
   
   private void a(ArrayList<ITroopSearchService.SearchResult> paramArrayList)
   {
-    ITroopSearchService.TroopSearchCallback localTroopSearchCallback = this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiITroopSearchService$TroopSearchCallback;
+    ITroopSearchService.TroopSearchCallback localTroopSearchCallback = this.a;
     if (localTroopSearchCallback != null) {
       localTroopSearchCallback.a(paramArrayList);
     }
@@ -74,20 +74,20 @@ class TroopSearchServiceImpl$TroopSearchTask
     while (i >= 0)
     {
       localTroopInfo = (TroopInfo)((List)localObject1).get(i);
-      if (!a(localTroopInfo.wMemberNum, this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      if (!a(localTroopInfo.wMemberNum, this.b.size())) {
         ((List)localObject1).remove(localTroopInfo);
       }
       i -= 1;
     }
-    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int k = this.b.size();
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localTroopInfo = (TroopInfo)((Iterator)localObject1).next();
       List localList = ((ITroopMemberInfoService)TroopSearchServiceImpl.access$000(this.this$0).getRuntimeService(ITroopMemberInfoService.class, "")).getAllTroopMembers(localTroopInfo.troopuin);
-      if ((localList != null) && (localList.size() > 0) && (a(localList.size(), this.jdField_a_of_type_JavaUtilArrayList.size())) && (this.jdField_a_of_type_JavaUtilArrayList.size() == localList.size()))
+      if ((localList != null) && (localList.size() > 0) && (a(localList.size(), this.b.size())) && (this.b.size() == localList.size()))
       {
-        Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Object localObject2 = this.b.iterator();
         i = 1;
         while (((Iterator)localObject2).hasNext())
         {
@@ -111,13 +111,13 @@ class TroopSearchServiceImpl$TroopSearchTask
         if (i != 0)
         {
           localObject2 = new ITroopSearchService.SearchResult();
-          ((ITroopSearchService.SearchResult)localObject2).jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = localTroopInfo;
-          ((ITroopSearchService.SearchResult)localObject2).jdField_a_of_type_Int = localList.size();
-          ((ITroopSearchService.SearchResult)localObject2).jdField_a_of_type_JavaLangString = ChnToSpell.a(localTroopInfo.getTroopDisplayName(), 1).jdField_a_of_type_JavaLangString;
-          localTroopInfo.lastMsgTime = ((IRecentUserProxyService)TroopSearchServiceImpl.access$000(this.this$0).getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache().a(localTroopInfo.troopuin, 1).lastmsgtime;
-          if (k == ((ITroopSearchService.SearchResult)localObject2).jdField_a_of_type_Int)
+          ((ITroopSearchService.SearchResult)localObject2).a = localTroopInfo;
+          ((ITroopSearchService.SearchResult)localObject2).b = localList.size();
+          ((ITroopSearchService.SearchResult)localObject2).c = ChnToSpell.a(localTroopInfo.getTroopDisplayName(), 1).b;
+          localTroopInfo.lastMsgTime = ((IRecentUserProxyService)TroopSearchServiceImpl.access$000(this.this$0).getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache().b(localTroopInfo.troopuin, 1).lastmsgtime;
+          if (k == ((ITroopSearchService.SearchResult)localObject2).b)
           {
-            ((ITroopSearchService.SearchResult)localObject2).b = 1;
+            ((ITroopSearchService.SearchResult)localObject2).d = 1;
             localArrayList.add(localObject2);
           }
         }
@@ -129,7 +129,7 @@ class TroopSearchServiceImpl$TroopSearchTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.api.impl.TroopSearchServiceImpl.TroopSearchTask
  * JD-Core Version:    0.7.0.1
  */

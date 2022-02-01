@@ -25,76 +25,46 @@ public final class JceRequestType
   public static final JceRequestType U = new JceRequestType(46, 46, "reportDownSoft");
   public static final JceRequestType V = new JceRequestType(47, 47, "reportAdData");
   public static final JceRequestType W = new JceRequestType(48, 48, "getConfig");
-  public static final JceRequestType a;
-  private static JceRequestType[] jdField_a_of_type_ArrayOfAcsJceRequestType = new JceRequestType[49];
-  public static final JceRequestType b;
-  public static final JceRequestType c;
-  public static final JceRequestType d;
-  public static final JceRequestType e;
-  public static final JceRequestType f;
-  public static final JceRequestType g;
-  public static final JceRequestType h;
-  public static final JceRequestType i;
-  public static final JceRequestType j;
-  public static final JceRequestType k;
-  public static final JceRequestType l;
-  public static final JceRequestType m;
-  public static final JceRequestType n;
-  public static final JceRequestType o;
-  public static final JceRequestType p;
-  public static final JceRequestType q;
-  public static final JceRequestType r;
-  public static final JceRequestType s;
-  public static final JceRequestType t;
-  public static final JceRequestType u;
-  public static final JceRequestType v;
-  public static final JceRequestType w;
-  public static final JceRequestType x;
-  public static final JceRequestType y;
-  public static final JceRequestType z;
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = new String();
-  
-  static
-  {
-    jdField_a_of_type_AcsJceRequestType = new JceRequestType(0, 0, "getCooperateCms");
-    b = new JceRequestType(1, 1, "delAllShare");
-    c = new JceRequestType(2, 2, "getSoftwaresOnTop");
-    d = new JceRequestType(3, 3, "getG_fByQua");
-    e = new JceRequestType(4, 4, "checkVerifyCode");
-    f = new JceRequestType(5, 5, "getLoadingText");
-    g = new JceRequestType(6, 6, "getSoftDetail");
-    h = new JceRequestType(7, 7, "getFlashScreen");
-    i = new JceRequestType(8, 8, "handshake");
-    j = new JceRequestType(9, 9, "checkUpdate");
-    k = new JceRequestType(10, 10, "reportStatData");
-    l = new JceRequestType(11, 11, "getDayRecommend");
-    m = new JceRequestType(12, 12, "randomFirstRelease");
-    n = new JceRequestType(13, 13, "getPicAdv");
-    o = new JceRequestType(14, 14, "hotSoftwares");
-    p = new JceRequestType(15, 15, "relatedSoftwares");
-    q = new JceRequestType(16, 16, "requiredSoftwares");
-    r = new JceRequestType(17, 17, "latestSoftwares");
-    s = new JceRequestType(18, 18, "listFriend");
-    t = new JceRequestType(19, 19, "addShare");
-    u = new JceRequestType(20, 20, "listComment");
-    v = new JceRequestType(21, 21, "editComment");
-    w = new JceRequestType(22, 22, "getStatus");
-    x = new JceRequestType(23, 23, "setStatus");
-    y = new JceRequestType(24, 24, "getUserCommends");
-    z = new JceRequestType(25, 25, "guessIt");
-  }
+  private static JceRequestType[] Y = new JceRequestType[49];
+  public static final JceRequestType a = new JceRequestType(0, 0, "getCooperateCms");
+  public static final JceRequestType b = new JceRequestType(1, 1, "delAllShare");
+  public static final JceRequestType c = new JceRequestType(2, 2, "getSoftwaresOnTop");
+  public static final JceRequestType d = new JceRequestType(3, 3, "getG_fByQua");
+  public static final JceRequestType e = new JceRequestType(4, 4, "checkVerifyCode");
+  public static final JceRequestType f = new JceRequestType(5, 5, "getLoadingText");
+  public static final JceRequestType g = new JceRequestType(6, 6, "getSoftDetail");
+  public static final JceRequestType h = new JceRequestType(7, 7, "getFlashScreen");
+  public static final JceRequestType i = new JceRequestType(8, 8, "handshake");
+  public static final JceRequestType j = new JceRequestType(9, 9, "checkUpdate");
+  public static final JceRequestType k = new JceRequestType(10, 10, "reportStatData");
+  public static final JceRequestType l = new JceRequestType(11, 11, "getDayRecommend");
+  public static final JceRequestType m = new JceRequestType(12, 12, "randomFirstRelease");
+  public static final JceRequestType n = new JceRequestType(13, 13, "getPicAdv");
+  public static final JceRequestType o = new JceRequestType(14, 14, "hotSoftwares");
+  public static final JceRequestType p = new JceRequestType(15, 15, "relatedSoftwares");
+  public static final JceRequestType q = new JceRequestType(16, 16, "requiredSoftwares");
+  public static final JceRequestType r = new JceRequestType(17, 17, "latestSoftwares");
+  public static final JceRequestType s = new JceRequestType(18, 18, "listFriend");
+  public static final JceRequestType t = new JceRequestType(19, 19, "addShare");
+  public static final JceRequestType u = new JceRequestType(20, 20, "listComment");
+  public static final JceRequestType v = new JceRequestType(21, 21, "editComment");
+  public static final JceRequestType w = new JceRequestType(22, 22, "getStatus");
+  public static final JceRequestType x = new JceRequestType(23, 23, "setStatus");
+  public static final JceRequestType y = new JceRequestType(24, 24, "getUserCommends");
+  public static final JceRequestType z = new JceRequestType(25, 25, "guessIt");
+  private int Z;
+  private String aa = new String();
   
   private JceRequestType(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt2;
-    jdField_a_of_type_ArrayOfAcsJceRequestType[paramInt1] = this;
+    this.aa = paramString;
+    this.Z = paramInt2;
+    Y[paramInt1] = this;
   }
   
   public String toString()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.aa;
   }
 }
 

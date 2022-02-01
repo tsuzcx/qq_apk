@@ -30,7 +30,7 @@ public class OpenSdkFriendService$GetFriendListCallback
   
   public OpenSdkFriendService$GetFriendListCallback(OpenSdkFriendService paramOpenSdkFriendService, OpenSdkFriendService.GetFriendInfoListener paramGetFriendInfoListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramGetFriendInfoListener);
+    this.a = new WeakReference(paramGetFriendInfoListener);
   }
   
   public void a(Exception paramException)
@@ -73,14 +73,14 @@ public class OpenSdkFriendService$GetFriendListCallback
     else if ((paramException instanceof IOException))
     {
       ((Intent)localObject).putExtra("key_error_code", -2);
-      ((Intent)localObject).putExtra("key_error_msg", Constants.jdField_a_of_type_JavaLangString);
+      ((Intent)localObject).putExtra("key_error_msg", Constants.a);
     }
     else
     {
       ((Intent)localObject).putExtra("key_error_code", -6);
       ((Intent)localObject).putExtra("key_error_msg", Constants.d);
     }
-    paramException = (OpenSdkFriendService.GetFriendInfoListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramException = (OpenSdkFriendService.GetFriendInfoListener)this.a.get();
     if (paramException != null) {
       paramException.a((Intent)localObject);
     }
@@ -93,77 +93,77 @@ public class OpenSdkFriendService$GetFriendListCallback
     {
       try
       {
-        localFriendResponseInfo.jdField_a_of_type_Int = paramJSONObject.getInt("ret");
-        localFriendResponseInfo.jdField_a_of_type_JavaLangString = paramJSONObject.getString("msg");
-        if (localFriendResponseInfo.jdField_a_of_type_Int == 0)
+        localFriendResponseInfo.a = paramJSONObject.getInt("ret");
+        localFriendResponseInfo.b = paramJSONObject.getString("msg");
+        if (localFriendResponseInfo.a == 0)
         {
           if (paramJSONObject.has("conc_max")) {
-            localFriendResponseInfo.d = paramJSONObject.getInt("conc_max");
+            localFriendResponseInfo.e = paramJSONObject.getInt("conc_max");
           }
           if ((paramJSONObject.has("inv_max")) && (paramJSONObject.has("inv_count")))
           {
-            localFriendResponseInfo.b = paramJSONObject.getInt("inv_max");
-            localFriendResponseInfo.c = paramJSONObject.getInt("inv_count");
+            localFriendResponseInfo.c = paramJSONObject.getInt("inv_max");
+            localFriendResponseInfo.d = paramJSONObject.getInt("inv_count");
           }
           if ((paramJSONObject.has("fgmax")) && (paramJSONObject.has("fgcur")))
           {
-            localFriendResponseInfo.b = paramJSONObject.getInt("fgmax");
-            localFriendResponseInfo.c = paramJSONObject.getInt("fgcur");
+            localFriendResponseInfo.c = paramJSONObject.getInt("fgmax");
+            localFriendResponseInfo.d = paramJSONObject.getInt("fgcur");
           }
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("-->result = ");
           ((StringBuilder)localObject).append(paramJSONObject);
           LogUtility.c("OpenSdkFriendService", ((StringBuilder)localObject).toString());
-          localFriendResponseInfo.e = paramJSONObject.optInt("app_rid", -1);
-          localFriendResponseInfo.f = paramJSONObject.optInt("app_tid", -1);
-          if ("action_invite".equals(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.d))
+          localFriendResponseInfo.h = paramJSONObject.optInt("app_rid", -1);
+          localFriendResponseInfo.i = paramJSONObject.optInt("app_tid", -1);
+          if ("action_invite".equals(this.b.j))
           {
             if (!paramJSONObject.has("md5str")) {
               break label572;
             }
             localObject = paramJSONObject.getString("md5str");
-            if (!OpensdkPreference.a(CommonDataAdapter.a().a(), "invite_friend_list_md5").getString(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.b, "").equals(localObject))
+            if (!OpensdkPreference.a(CommonDataAdapter.a().b(), "invite_friend_list_md5").getString(this.b.f, "").equals(localObject))
             {
               paramJSONObject = (ArrayList)FriendGroup.c(paramJSONObject);
-              localFriendResponseInfo.jdField_a_of_type_JavaUtilArrayList = paramJSONObject;
+              localFriendResponseInfo.f = paramJSONObject;
               ThreadManager.executeOnSubThread(new OpenSdkFriendService.GetFriendListCallback.1(this, paramJSONObject, (String)localObject));
             }
             else
             {
-              localFriendResponseInfo.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.a();
-              if (localFriendResponseInfo.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+              localFriendResponseInfo.f = this.b.b();
+              if (localFriendResponseInfo.f.size() == 0)
               {
-                this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.a.putString("md5str", "0");
-                this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.a("0");
-                paramJSONObject = (OpenSdkFriendService.GetFriendInfoListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+                this.b.h.putString("md5str", "0");
+                this.b.a("0");
+                paramJSONObject = (OpenSdkFriendService.GetFriendInfoListener)this.a.get();
                 if (paramJSONObject == null) {
                   break;
                 }
-                new HttpCgiAsyncTask(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.c, "GET", new GetFriendListCallback(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService, paramJSONObject), true).a(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.a);
+                new HttpCgiAsyncTask(this.b.i, "GET", new GetFriendListCallback(this.b, paramJSONObject), true).a(this.b.h);
               }
             }
           }
-          else if ((!"action_gift".equals(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.d)) && (!"action_ask".equals(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.d)) && (!"action_voice".equals(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.d)) && (!"action_reactive".equals(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.d)))
+          else if ((!"action_gift".equals(this.b.j)) && (!"action_ask".equals(this.b.j)) && (!"action_voice".equals(this.b.j)) && (!"action_reactive".equals(this.b.j)))
           {
-            localFriendResponseInfo.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)FriendGroup.a(paramJSONObject));
+            localFriendResponseInfo.f = ((ArrayList)FriendGroup.a(paramJSONObject));
           }
           else
           {
-            localFriendResponseInfo.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)FriendGroup.b(paramJSONObject));
+            localFriendResponseInfo.f = ((ArrayList)FriendGroup.b(paramJSONObject));
           }
-          paramJSONObject = (OpenSdkFriendService.GetFriendInfoListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          paramJSONObject = (OpenSdkFriendService.GetFriendInfoListener)this.a.get();
           if (paramJSONObject != null) {
             paramJSONObject.a(localFriendResponseInfo);
           }
         }
         else
         {
-          localFriendResponseInfo.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+          localFriendResponseInfo.g = paramJSONObject;
           paramJSONObject = new Intent();
-          paramJSONObject.putExtra("key_error_code", localFriendResponseInfo.jdField_a_of_type_Int);
-          paramJSONObject.putExtra("key_error_msg", localFriendResponseInfo.jdField_a_of_type_JavaLangString);
-          paramJSONObject.putExtra("key_error_detail", localFriendResponseInfo.jdField_a_of_type_OrgJsonJSONObject.toString());
-          localObject = (OpenSdkFriendService.GetFriendInfoListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          paramJSONObject.putExtra("key_error_code", localFriendResponseInfo.a);
+          paramJSONObject.putExtra("key_error_msg", localFriendResponseInfo.b);
+          paramJSONObject.putExtra("key_error_detail", localFriendResponseInfo.g.toString());
+          localObject = (OpenSdkFriendService.GetFriendInfoListener)this.a.get();
           if (localObject != null)
           {
             ((OpenSdkFriendService.GetFriendInfoListener)localObject).a(paramJSONObject);
@@ -183,7 +183,7 @@ public class OpenSdkFriendService$GetFriendListCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenSdkFriendService.GetFriendListCallback
  * JD-Core Version:    0.7.0.1
  */

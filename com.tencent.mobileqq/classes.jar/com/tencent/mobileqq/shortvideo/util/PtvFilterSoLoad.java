@@ -25,69 +25,37 @@ import java.io.File;
 
 public class PtvFilterSoLoad
 {
-  private static final Object jdField_a_of_type_JavaLangObject;
-  private static final String jdField_a_of_type_JavaLangString;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private static boolean jdField_b_of_type_Boolean = false;
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString;
-  private static boolean jdField_c_of_type_Boolean = false;
-  private static final String[] jdField_c_of_type_ArrayOfJavaLangString;
-  private static boolean d = false;
-  private static boolean e = false;
+  private static final Object a;
+  private static final String b;
+  private static final String[] c = { "qq.android.native.short.video.filter.const", "qq.android.native.short.video.filter.const.v1", "qq.android.native.short.video.filter.const.v2", "qq.android.native.short.video.filter.const.v3", "qq.android.native.short.video.filter.const.v4", "qq.android.native.short.video.filter.const.v665", "qq.android.native.short.video.filter.const.v700" };
+  private static final String[] d = { "qq.android.native.short.video.filter.var", "qq.android.native.short.video.filter.var.v1", "qq.android.native.short.video.filter.var.v2", "qq.android.native.short.video.filter.var.v3", "qq.android.native.short.video.filter.var.v665" };
+  private static final String[] e = { "qq.android.native.short.video.x86", "qq.android.native.short.video", "qq.android.native.short.video.v658", "qq.android.native.short.video.v660", "qq.android.native.short.video.v665", "qq.android.native.short.video.v670", "qq.android.native.short.video.v700" };
   private static boolean f = false;
+  private static boolean g = false;
+  private static boolean h = false;
+  private static boolean i = false;
+  private static boolean j = false;
+  private static boolean k = false;
   
   static
   {
     SvEffectSdkInitor.a();
-    jdField_a_of_type_JavaLangObject = new Object();
+    a = new Object();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append("early");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "qq.android.native.short.video.filter.const", "qq.android.native.short.video.filter.const.v1", "qq.android.native.short.video.filter.const.v2", "qq.android.native.short.video.filter.const.v3", "qq.android.native.short.video.filter.const.v4", "qq.android.native.short.video.filter.const.v665", "qq.android.native.short.video.filter.const.v700" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "qq.android.native.short.video.filter.var", "qq.android.native.short.video.filter.var.v1", "qq.android.native.short.video.filter.var.v2", "qq.android.native.short.video.filter.var.v3", "qq.android.native.short.video.filter.var.v665" };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "qq.android.native.short.video.x86", "qq.android.native.short.video", "qq.android.native.short.video.v658", "qq.android.native.short.video.v660", "qq.android.native.short.video.v665", "qq.android.native.short.video.v670", "qq.android.native.short.video.v700" };
-  }
-  
-  public static int a()
-  {
-    int i;
-    if (c())
-    {
-      if (d()) {
-        i = 1;
-      } else {
-        i = 2;
-      }
-    }
-    else {
-      i = 0;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getQmcfSoState:");
-      localStringBuilder.append(i);
-      QLog.d("PtvFilterSoLoad", 2, localStringBuilder.toString());
-    }
-    return i;
-  }
-  
-  public static String a()
-  {
-    return ((IAEPath)QRoute.api(IAEPath.class)).getPendantBasePath();
+    b = localStringBuilder.toString();
   }
   
   public static boolean a()
   {
-    int i;
+    int m;
     if ((!((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProductManufacturer(CameraCompatibleConstants.w)) && (!((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isNotSupportFilterBasedSdk())) {
-      i = 0;
+      m = 0;
     } else {
-      i = 1;
+      m = 1;
     }
-    if (i != 0) {
+    if (m != 0) {
       return false;
     }
     boolean bool = VcSystemInfo.isBeautySupported();
@@ -159,6 +127,11 @@ public class PtvFilterSoLoad
   
   public static String b()
   {
+    return ((IAEPath)QRoute.api(IAEPath.class)).getPendantBasePath();
+  }
+  
+  public static String c()
+  {
     String str = ShortVideoArtResourceMgr.a();
     if (str.equals("artfilter000_0"))
     {
@@ -172,67 +145,14 @@ public class PtvFilterSoLoad
     return localStringBuilder.toString();
   }
   
-  private static void b()
-  {
-    Object localObject1 = new File(jdField_a_of_type_JavaLangString);
-    if (!((File)localObject1).exists()) {
-      return;
-    }
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
-    ((StringBuilder)localObject2).append(File.separator);
-    localObject1 = ((StringBuilder)localObject2).toString();
-    int k = 0;
-    int i = 0;
-    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(jdField_a_of_type_ArrayOfJavaLangString[i]);
-      localObject2 = new File(((StringBuilder)localObject2).toString());
-      if (((File)localObject2).exists()) {
-        ((File)localObject2).delete();
-      }
-      i += 1;
-    }
-    i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= jdField_b_of_type_ArrayOfJavaLangString.length) {
-        break;
-      }
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(jdField_b_of_type_ArrayOfJavaLangString[i]);
-      localObject2 = new File(((StringBuilder)localObject2).toString());
-      if (((File)localObject2).exists()) {
-        ((File)localObject2).delete();
-      }
-      i += 1;
-    }
-    while (j < jdField_c_of_type_ArrayOfJavaLangString.length)
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(jdField_c_of_type_ArrayOfJavaLangString[j]);
-      localObject2 = new File(((StringBuilder)localObject2).toString());
-      if (((File)localObject2).exists()) {
-        ((File)localObject2).delete();
-      }
-      j += 1;
-    }
-  }
-  
-  public static boolean b()
+  public static boolean d()
   {
     boolean bool1 = ((IAEResUtil)QRoute.api(IAEResUtil.class)).isAEBaseSoReady();
     boolean bool2 = VideoEnvironment.isShortVideoSoLibLoaded();
     return (bool1) && (bool2);
   }
   
-  public static boolean c()
+  public static boolean e()
   {
     if (Build.VERSION.SDK_INT < 21) {
       return false;
@@ -240,25 +160,49 @@ public class PtvFilterSoLoad
     return QmcfManager.getInstance().isQmcfSupported();
   }
   
-  public static boolean d()
+  public static boolean f()
   {
     return PtvFilterSoLoad.SVFilterSoLoadStatus.a();
   }
   
-  public static boolean e()
+  public static int g()
   {
-    if (jdField_b_of_type_Boolean) {
-      return d;
+    int m;
+    if (e())
+    {
+      if (f()) {
+        m = 1;
+      } else {
+        m = 2;
+      }
     }
-    int i = Build.VERSION.SDK_INT;
+    else {
+      m = 0;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getQmcfSoState:");
+      localStringBuilder.append(m);
+      QLog.d("PtvFilterSoLoad", 2, localStringBuilder.toString());
+    }
+    return m;
+  }
+  
+  public static boolean h()
+  {
+    if (g) {
+      return i;
+    }
+    int m = Build.VERSION.SDK_INT;
     boolean bool3 = false;
     boolean bool1;
-    if (i >= 21) {
+    if (m >= 21) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    boolean bool4 = ShortVideoPortraitResourceManager.b() ^ true;
+    boolean bool4 = ShortVideoPortraitResourceManager.e() ^ true;
     boolean bool5 = ((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).isPortraitSwitchOpen();
     boolean bool2 = bool3;
     if (bool1)
@@ -272,8 +216,8 @@ public class PtvFilterSoLoad
         }
       }
     }
-    d = bool2;
-    jdField_b_of_type_Boolean = true;
+    i = bool2;
+    g = true;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -285,12 +229,65 @@ public class PtvFilterSoLoad
       localStringBuilder.append(bool5);
       QLog.i("PtvFilterSoLoad", 2, localStringBuilder.toString());
     }
-    return d;
+    return i;
+  }
+  
+  private static void k()
+  {
+    Object localObject1 = new File(b);
+    if (!((File)localObject1).exists()) {
+      return;
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+    ((StringBuilder)localObject2).append(File.separator);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    int i1 = 0;
+    int m = 0;
+    while (m < c.length)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(c[m]);
+      localObject2 = new File(((StringBuilder)localObject2).toString());
+      if (((File)localObject2).exists()) {
+        ((File)localObject2).delete();
+      }
+      m += 1;
+    }
+    m = 0;
+    int n;
+    for (;;)
+    {
+      n = i1;
+      if (m >= d.length) {
+        break;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(d[m]);
+      localObject2 = new File(((StringBuilder)localObject2).toString());
+      if (((File)localObject2).exists()) {
+        ((File)localObject2).delete();
+      }
+      m += 1;
+    }
+    while (n < e.length)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(e[n]);
+      localObject2 = new File(((StringBuilder)localObject2).toString());
+      if (((File)localObject2).exists()) {
+        ((File)localObject2).delete();
+      }
+      n += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad
  * JD-Core Version:    0.7.0.1
  */

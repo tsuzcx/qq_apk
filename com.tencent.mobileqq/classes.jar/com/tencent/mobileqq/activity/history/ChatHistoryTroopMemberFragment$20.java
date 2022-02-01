@@ -13,8 +13,8 @@ class ChatHistoryTroopMemberFragment$20
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      this.a.y();
-      paramView = this.a.o;
+      this.a.C();
+      paramView = this.a.aK;
       this.a.a("Clk_find", paramView, "");
     }
     return true;
@@ -22,7 +22,7 @@ class ChatHistoryTroopMemberFragment$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.20
  * JD-Core Version:    0.7.0.1
  */

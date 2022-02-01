@@ -25,21 +25,21 @@ public class PhotoPreviewCustomizationWeiyun
   public void a(int paramInt)
   {
     super.a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.isFinishing()) {
-      a().e.setText(HardCodeUtil.a(2131708146));
+    if (this.c.isFinishing()) {
+      s().p.setText(HardCodeUtil.a(2131905943));
     }
   }
   
-  protected void h()
+  protected void j()
   {
-    Object localObject = a().a();
-    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getIntent();
+    Object localObject = s().l();
+    Intent localIntent = this.c.getIntent();
     if (localObject != null)
     {
-      StatisticConstants.a(((ArrayList)localObject).size(), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.d);
-      StatisticConstants.a(localIntent, ((ArrayList)localObject).size(), ((PhotoOtherData)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumOtherCommonData).a);
+      StatisticConstants.a(((ArrayList)localObject).size(), this.d.D);
+      StatisticConstants.a(localIntent, ((ArrayList)localObject).size(), ((PhotoOtherData)this.g).d);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity;
+    localObject = this.c;
     if (localObject != null)
     {
       if (((NewPhotoPreviewActivity)localObject).isFinishing()) {
@@ -52,7 +52,7 @@ public class PhotoPreviewCustomizationWeiyun
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationWeiyun
  * JD-Core Version:    0.7.0.1
  */

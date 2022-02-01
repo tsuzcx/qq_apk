@@ -15,15 +15,15 @@ final class ReadInJoyUtils$1
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putString("iid", this.jdField_a_of_type_JavaLangString);
-    localEditor.putString(this.jdField_a_of_type_JavaLangString, paramString);
+    SharedPreferences.Editor localEditor = this.a.edit();
+    localEditor.putString("iid", this.b);
+    localEditor.putString(this.b, paramString);
     localEditor.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils.1
  * JD-Core Version:    0.7.0.1
  */

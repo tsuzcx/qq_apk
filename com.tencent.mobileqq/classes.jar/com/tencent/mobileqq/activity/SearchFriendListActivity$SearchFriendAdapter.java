@@ -37,11 +37,11 @@ class SearchFriendListActivity$SearchFriendAdapter
     View localView = paramView;
     if (paramView == null)
     {
-      localView = this.a.getLayoutInflater().inflate(2131562776, paramViewGroup, false);
+      localView = this.a.getLayoutInflater().inflate(2131629221, paramViewGroup, false);
       paramView = new SearchFriendListActivity.ViewHolder();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368066));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371876));
-      paramView.b = ((TextView)localView.findViewById(2131365459));
+      paramView.a = ((ImageView)localView.findViewById(2131434916));
+      paramView.b = ((TextView)localView.findViewById(2131439319));
+      paramView.c = ((TextView)localView.findViewById(2131431672));
       localView.setTag(paramView);
       localView.setOnClickListener(this.a);
     }
@@ -52,7 +52,7 @@ class SearchFriendListActivity$SearchFriendAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SearchFriendListActivity.SearchFriendAdapter
  * JD-Core Version:    0.7.0.1
  */

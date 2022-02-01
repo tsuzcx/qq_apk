@@ -58,7 +58,7 @@ class RIJSkinOperationPopupStep$1
     }
     if ((bool1) && (bool2))
     {
-      bool1 = RefreshRes.a(((RefreshData)localObject2).id);
+      bool1 = RefreshRes.b(((RefreshData)localObject2).id);
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -103,7 +103,7 @@ class RIJSkinOperationPopupStep$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feedspopup.RIJSkinOperationPopupStep.1
  * JD-Core Version:    0.7.0.1
  */

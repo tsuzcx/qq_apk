@@ -7,9 +7,9 @@ import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.DnaDetail;
 
 public class NewDnaInfo$DnaDetail
 {
-  public int a;
   public String a;
   public int b;
+  public int c;
   
   public static DnaDetail a(oidb_0xcf4.DnaDetail paramDnaDetail)
   {
@@ -17,13 +17,13 @@ public class NewDnaInfo$DnaDetail
     {
       DnaDetail localDnaDetail = new DnaDetail();
       if (paramDnaDetail.bytes_desc.has()) {
-        localDnaDetail.jdField_a_of_type_JavaLangString = paramDnaDetail.bytes_desc.get().toStringUtf8();
+        localDnaDetail.a = paramDnaDetail.bytes_desc.get().toStringUtf8();
       }
       if (paramDnaDetail.uint32_bold_index.has()) {
-        localDnaDetail.jdField_a_of_type_Int = paramDnaDetail.uint32_bold_index.get();
+        localDnaDetail.b = paramDnaDetail.uint32_bold_index.get();
       }
       if (paramDnaDetail.uint32_bold_len.has()) {
-        localDnaDetail.b = paramDnaDetail.uint32_bold_len.get();
+        localDnaDetail.c = paramDnaDetail.uint32_bold_len.get();
       }
       return localDnaDetail;
     }
@@ -34,18 +34,18 @@ public class NewDnaInfo$DnaDetail
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DnaDetail{description=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", boldIndex=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", boldLen=");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", boldLen=");
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.info.NewDnaInfo.DnaDetail
  * JD-Core Version:    0.7.0.1
  */

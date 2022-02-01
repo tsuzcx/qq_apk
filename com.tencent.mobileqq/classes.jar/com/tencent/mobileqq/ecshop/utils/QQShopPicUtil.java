@@ -82,7 +82,8 @@ public final class QQShopPicUtil
     return null;
   }
   
-  public final void a(@NotNull View paramView, float paramFloat)
+  @JvmStatic
+  public static final void a(@NotNull View paramView, float paramFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "layoutContent");
     if (Build.VERSION.SDK_INT >= 21)
@@ -94,7 +95,7 @@ public final class QQShopPicUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.utils.QQShopPicUtil
  * JD-Core Version:    0.7.0.1
  */

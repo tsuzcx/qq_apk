@@ -15,8 +15,8 @@ import java.util.Map;
 
 public class ReorderTransition
 {
-  private static final Property<View, Rect> jdField_a_of_type_AndroidUtilProperty = new ReorderTransition.1(Rect.class, "clipBounds");
-  private static int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  private static final Property<View, Rect> a = new ReorderTransition.1(Rect.class, "clipBounds");
+  private static int[] b = new int[2];
   
   @RequiresApi(api=19)
   private static Animator a(TransitionValues paramTransitionValues1, TransitionValues paramTransitionValues2)
@@ -25,7 +25,7 @@ public class ReorderTransition
     Object localObject = (Rect)paramTransitionValues1.values.get("android:clipBounds:bounds");
     Rect localRect = (Rect)paramTransitionValues2.values.get("android:clipBounds:bounds");
     RectEvaluator localRectEvaluator = new RectEvaluator(new Rect());
-    localObject = ObjectAnimator.ofObject(localView, jdField_a_of_type_AndroidUtilProperty, localRectEvaluator, new Rect[] { localObject, localRect });
+    localObject = ObjectAnimator.ofObject(localView, a, localRectEvaluator, new Rect[] { localObject, localRect });
     ((ObjectAnimator)localObject).addListener(new ReorderTransition.2(localView));
     paramTransitionValues1 = paramTransitionValues1.values.get("android:changeBounds:windowX");
     int i;
@@ -61,9 +61,9 @@ public class ReorderTransition
     while (i < paramViewGroup.getChildCount())
     {
       View localView = paramViewGroup.getChildAt(i);
-      localView.getLocationInWindow(jdField_a_of_type_ArrayOfInt);
+      localView.getLocationInWindow(b);
       TransitionValues localTransitionValues1 = new TransitionValues();
-      localTransitionValues1.values.put("android:changeBounds:windowX", Integer.valueOf(jdField_a_of_type_ArrayOfInt[0]));
+      localTransitionValues1.values.put("android:changeBounds:windowX", Integer.valueOf(b[0]));
       localTransitionValues1.values.put("android:clipBounds:bounds", new Rect(0, 0, localView.getWidth(), localView.getHeight()));
       localTransitionValues1.view = localView;
       TransitionValues localTransitionValues2 = new TransitionValues();
@@ -80,7 +80,7 @@ public class ReorderTransition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.reorder.ReorderTransition
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import java.util.List;
 public class FeedListPageLoaderBase$GetFeedIdListResult
 {
   public List<FeedIdListSeqInfo> a = new ArrayList(0);
-  public boolean a;
   public boolean b;
+  public boolean c;
 }
 
 

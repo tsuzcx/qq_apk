@@ -2,36 +2,25 @@ package com.tencent.tkd.topicsdk.mediaselector;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.ContextWrapper;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
-import com.tencent.tkd.R.id;
-import com.tencent.tkd.R.layout;
 import com.tencent.tkd.topicsdk.bean.Media;
 import com.tencent.tkd.topicsdk.common.PermissionUtils;
-import com.tencent.tkd.topicsdk.common.ViewExtensionsKt;
 import com.tencent.tkd.topicsdk.framework.TLog;
 import com.tencent.tkd.topicsdk.framework.ThreadManagerKt;
-import com.tencent.tkd.topicsdk.interfaces.IPermission.ISimpleCallback;
 import com.tencent.tkd.topicsdk.widget.AlbumPermissionView;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
-import kotlin.jvm.functions.Function4;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -42,248 +31,195 @@ public final class MediaSelectorPanel
   extends RelativeLayout
   implements IMediaContract.IView
 {
-  public static final MediaSelectorPanel.Companion a;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  public static final MediaSelectorPanel.Companion a = new MediaSelectorPanel.Companion(null);
+  private GridView b;
   @NotNull
-  private View jdField_a_of_type_AndroidViewView;
-  private GridView jdField_a_of_type_AndroidWidgetGridView;
-  private final IMediaContract.IPresenter jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorIMediaContract$IPresenter;
-  private final MediaSelectorPanel.photoAdapter.1 jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1;
-  private final PanelType jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorPanelType;
+  private View c;
   @NotNull
-  private AlbumPermissionView jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView;
+  private AlbumPermissionView d;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<Media> e;
   @NotNull
-  private ArrayList<Media> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<Media> f;
   @NotNull
-  private HashMap<String, ArrayList<Media>> jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<String, ArrayList<Media>> g;
+  @NotNull
+  private ArrayList<Media> h;
   @Nullable
-  private Function0<Unit> jdField_a_of_type_KotlinJvmFunctionsFunction0;
+  private Function1<? super List<Media>, Unit> i;
   @Nullable
-  private Function1<? super List<Media>, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  private boolean jdField_a_of_type_Boolean;
-  @NotNull
-  private ArrayList<Media> jdField_b_of_type_JavaUtilArrayList;
+  private Function1<? super Integer, Unit> j;
   @Nullable
-  private Function1<? super Integer, Unit> jdField_b_of_type_KotlinJvmFunctionsFunction1;
-  private boolean jdField_b_of_type_Boolean;
-  @NotNull
-  private ArrayList<Media> jdField_c_of_type_JavaUtilArrayList;
+  private Function0<Unit> k;
   @Nullable
-  private Function1<? super Media, Unit> jdField_c_of_type_KotlinJvmFunctionsFunction1;
+  private Function1<? super Media, Unit> l;
+  private int m;
+  private long n;
+  private boolean o;
+  private boolean p;
+  @NotNull
+  private String q;
   @Nullable
-  private Function1<? super PanelType, Unit> d;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$Companion = new MediaSelectorPanel.Companion(null);
-  }
-  
-  public MediaSelectorPanel(@NotNull Context paramContext, @NotNull IMediaContract.IPresenter paramIPresenter, @NotNull PanelType paramPanelType)
-  {
-    super(paramContext);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorIMediaContract$IPresenter = paramIPresenter;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorPanelType = paramPanelType;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = 9;
-    this.jdField_a_of_type_Long = 31457280L;
-    this.jdField_a_of_type_JavaLangString = "";
-    LayoutInflater.from(paramContext).inflate(R.layout.jdField_a_of_type_Int, (ViewGroup)this, true);
-    paramIPresenter = findViewById(R.id.al);
-    Intrinsics.checkExpressionValueIsNotNull(paramIPresenter, "findViewById(R.id.photo_grid)");
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)paramIPresenter);
-    this.jdField_a_of_type_AndroidWidgetGridView.setOnScrollListener((AbsListView.OnScrollListener)new MediaSelectorPanel.1(this));
-    ViewExtensionsKt.a((AbsListView)this.jdField_a_of_type_AndroidWidgetGridView, (Function4)new MediaSelectorPanel.2(this));
-    paramIPresenter = findViewById(R.id.jdField_a_of_type_Int);
-    Intrinsics.checkExpressionValueIsNotNull(paramIPresenter, "findViewById(R.id.album_empty_layout)");
-    this.jdField_a_of_type_AndroidViewView = paramIPresenter;
-    paramIPresenter = findViewById(R.id.b);
-    Intrinsics.checkExpressionValueIsNotNull(paramIPresenter, "findViewById(R.id.album_permission_view)");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView = ((AlbumPermissionView)paramIPresenter);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView.setOnPermissionCallback((IPermission.ISimpleCallback)new MediaSelectorPanel.3(this));
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1 = new MediaSelectorPanel.photoAdapter.1(this, paramContext, paramContext);
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public final long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  @NotNull
-  public final View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  @NotNull
-  public final AlbumPermissionView a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @NotNull
-  public final ArrayList<Media> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  @NotNull
-  public final HashMap<String, ArrayList<Media>> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  @Nullable
-  public final Function0<Unit> a()
-  {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction0;
-  }
-  
-  @Nullable
-  public final Function1<List<Media>, Unit> a()
-  {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  }
-  
-  public final void a()
-  {
-    if ((((Collection)this.jdField_c_of_type_JavaUtilArrayList).isEmpty() ^ true))
-    {
-      this.jdField_c_of_type_JavaUtilArrayList.clear();
-      Object localObject = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-      if (localObject != null) {
-        localObject = (Unit)((Function1)localObject).invoke(this.jdField_c_of_type_JavaUtilArrayList);
-      }
-      this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1.notifyDataSetChanged();
-    }
-  }
-  
-  public final void a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "path");
-    Object localObject1 = (Iterable)this.jdField_c_of_type_JavaUtilArrayList;
-    Collection localCollection = (Collection)new ArrayList();
-    localObject1 = ((Iterable)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = ((Iterator)localObject1).next();
-      if (Intrinsics.areEqual(((Media)localObject2).getFilePath(), paramString)) {
-        localCollection.add(localObject2);
-      }
-    }
-    paramString = (List)localCollection;
-    if ((((Collection)paramString).isEmpty() ^ true))
-    {
-      paramString = (Media)paramString.get(0);
-      this.jdField_c_of_type_JavaUtilArrayList.remove(paramString);
-      paramString = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-      if (paramString != null) {
-        paramString = (Unit)paramString.invoke(this.jdField_c_of_type_JavaUtilArrayList);
-      }
-      this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1.notifyDataSetChanged();
-    }
-  }
+  private Function1<? super PanelType, Unit> r;
+  private final MediaSelectorPanel.photoAdapter.1 s;
+  private final IMediaContract.IPresenter t;
+  private final PanelType u;
   
   public final void a(@NotNull String paramString, @NotNull ArrayList<Media> paramArrayList)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "dirPath");
     Intrinsics.checkParameterIsNotNull(paramArrayList, "mediaList");
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1.a((List)paramArrayList);
+    this.q = paramString;
+    this.e = paramArrayList;
+    this.s.a((List)paramArrayList);
   }
   
   public final void a(@NotNull ArrayList<String> paramArrayList)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "selectMediaList");
-    this.jdField_c_of_type_JavaUtilArrayList.clear();
+    this.h.clear();
     ThreadManagerKt.b((Function0)new MediaSelectorPanel.updateSelectMediaList.1(this, paramArrayList));
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1.notifyDataSetChanged();
+    this.s.notifyDataSetChanged();
   }
   
   public void a(@NotNull ArrayList<Media> paramArrayList, @NotNull HashMap<String, ArrayList<Media>> paramHashMap)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "mediaList");
     Intrinsics.checkParameterIsNotNull(paramHashMap, "mediaMap");
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1.a((List)paramArrayList);
+    this.q = "";
+    this.f = paramArrayList;
+    this.e = paramArrayList;
+    this.g = paramHashMap;
+    this.s.a((List)paramArrayList);
   }
   
   public void a(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    int i;
+    View localView = this.c;
+    int i1;
     if (paramBoolean) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 8;
+      i1 = 8;
     }
-    localView.setVisibility(i);
+    localView.setVisibility(i1);
   }
   
   public final boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  @NotNull
-  public final ArrayList<Media> b()
-  {
-    return this.jdField_b_of_type_JavaUtilArrayList;
-  }
-  
-  @Nullable
-  public final Function1<Integer, Unit> b()
-  {
-    return this.jdField_b_of_type_KotlinJvmFunctionsFunction1;
-  }
-  
-  public final void b()
-  {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorIMediaContract$IPresenter.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorPanelType, this.d);
+    return this.o;
   }
   
   public final boolean b()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.p;
+  }
+  
+  public final void c()
+  {
+    if ((((Collection)this.h).isEmpty() ^ true))
+    {
+      this.h.clear();
+      Object localObject = this.i;
+      if (localObject != null) {
+        localObject = (Unit)((Function1)localObject).invoke(this.h);
+      }
+      this.s.notifyDataSetChanged();
+    }
+  }
+  
+  public final void d()
+  {
+    this.t.a(this.u, this.r);
   }
   
   @NotNull
-  public final ArrayList<Media> c()
+  public final View getAlbumEmptyView()
   {
-    return this.jdField_c_of_type_JavaUtilArrayList;
+    return this.c;
+  }
+  
+  @NotNull
+  public final AlbumPermissionView getAlbumPermissionView()
+  {
+    return this.d;
+  }
+  
+  @NotNull
+  public final ArrayList<Media> getAllMediaList()
+  {
+    return this.f;
+  }
+  
+  @NotNull
+  public final String getDirPath()
+  {
+    return this.q;
+  }
+  
+  public final long getMaxMediaSize()
+  {
+    return this.n;
+  }
+  
+  public final int getMaxSelectCount()
+  {
+    return this.m;
+  }
+  
+  @NotNull
+  public final ArrayList<Media> getMediaList()
+  {
+    return this.e;
+  }
+  
+  @NotNull
+  public final HashMap<String, ArrayList<Media>> getMediaMap()
+  {
+    return this.g;
   }
   
   @Nullable
-  public final Function1<Media, Unit> c()
+  public final Function1<Integer, Unit> getOnItemClickListener()
   {
-    return this.jdField_c_of_type_KotlinJvmFunctionsFunction1;
+    return this.j;
+  }
+  
+  @Nullable
+  public final Function1<PanelType, Unit> getOnMediaLoadedListener()
+  {
+    return this.r;
+  }
+  
+  @Nullable
+  public final Function0<Unit> getOnOverSelectListener()
+  {
+    return this.k;
+  }
+  
+  @Nullable
+  public final Function1<List<Media>, Unit> getOnSelectChangeListener()
+  {
+    return this.i;
+  }
+  
+  @Nullable
+  public final Function1<Media, Unit> getOnSelectedOverSizeListener()
+  {
+    return this.l;
+  }
+  
+  @NotNull
+  public final ArrayList<Media> getSelectedMedias()
+  {
+    return this.h;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter((ListAdapter)this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel$photoAdapter$1);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorIMediaContract$IPresenter.a(this);
+    this.b.setAdapter((ListAdapter)this.s);
+    this.t.a(this);
     Object localObject;
     if ((getContext() instanceof Activity))
     {
@@ -319,11 +255,11 @@ public final class MediaSelectorPanel
     {
       if (PermissionUtils.a.a((Activity)localObject))
       {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView.setVisibility(8);
-        b();
+        this.d.setVisibility(8);
+        d();
         return;
       }
-      this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView.setVisibility(0);
+      this.d.setVisibility(0);
       return;
     }
     TLog.a("MediaSelectorView", "onAttachedToWindow, activity=null");
@@ -332,100 +268,100 @@ public final class MediaSelectorPanel
   
   protected void onDetachedFromWindow()
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorIMediaContract$IPresenter.a();
+    this.t.a();
     super.onDetachedFromWindow();
   }
   
   public final void setAlbumEmptyView(@NotNull View paramView)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "<set-?>");
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.c = paramView;
   }
   
   public final void setAlbumPermissionView(@NotNull AlbumPermissionView paramAlbumPermissionView)
   {
     Intrinsics.checkParameterIsNotNull(paramAlbumPermissionView, "<set-?>");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView = paramAlbumPermissionView;
+    this.d = paramAlbumPermissionView;
   }
   
   public final void setAllMediaList(@NotNull ArrayList<Media> paramArrayList)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "<set-?>");
-    this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
+    this.f = paramArrayList;
   }
   
   public final void setDirPath(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.q = paramString;
   }
   
   public final void setMaxMediaSize(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.n = paramLong;
   }
   
   public final void setMaxSelectCount(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.m = paramInt;
   }
   
   public final void setMediaList(@NotNull ArrayList<Media> paramArrayList)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "<set-?>");
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.e = paramArrayList;
   }
   
   public final void setMediaMap(@NotNull HashMap<String, ArrayList<Media>> paramHashMap)
   {
     Intrinsics.checkParameterIsNotNull(paramHashMap, "<set-?>");
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.g = paramHashMap;
   }
   
   public final void setOnItemClickListener(@Nullable Function1<? super Integer, Unit> paramFunction1)
   {
-    this.jdField_b_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.j = paramFunction1;
   }
   
   public final void setOnMediaLoadedListener(@Nullable Function1<? super PanelType, Unit> paramFunction1)
   {
-    this.d = paramFunction1;
+    this.r = paramFunction1;
   }
   
   public final void setOnOverSelectListener(@Nullable Function0<Unit> paramFunction0)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
+    this.k = paramFunction0;
   }
   
   public final void setOnSelectChangeListener(@Nullable Function1<? super List<Media>, Unit> paramFunction1)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.i = paramFunction1;
   }
   
   public final void setOnSelectedOverSizeListener(@Nullable Function1<? super Media, Unit> paramFunction1)
   {
-    this.jdField_c_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.l = paramFunction1;
   }
   
   public final void setScrollToBottom(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.o = paramBoolean;
   }
   
   public final void setScrollToTop(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.p = paramBoolean;
   }
   
   public final void setSelectedMedias(@NotNull ArrayList<Media> paramArrayList)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "<set-?>");
-    this.jdField_c_of_type_JavaUtilArrayList = paramArrayList;
+    this.h = paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel
  * JD-Core Version:    0.7.0.1
  */

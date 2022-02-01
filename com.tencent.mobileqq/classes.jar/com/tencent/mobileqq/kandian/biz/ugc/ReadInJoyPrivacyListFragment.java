@@ -28,14 +28,14 @@ public class ReadInJoyPrivacyListFragment
   extends IphoneTitleBarFragment
   implements ReadInJoyPrivacyListView.LoadMoreCallback
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private ReadInJoyPrivacyListAdapter jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyPrivacyListAdapter = null;
-  private ReadInJoyPrivacyListView jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyPrivacyListView = null;
-  private ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new ReadInJoyPrivacyListFragment.1(this);
-  private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b = 0;
+  private ReadInJoyPrivacyListView a = null;
+  private ReadInJoyPrivacyListAdapter b = null;
+  private long c = 0L;
+  private List<Long> d = new ArrayList();
+  private int e = 0;
+  private int f = 0;
+  private boolean g = true;
+  private ReadInJoyObserver h = new ReadInJoyPrivacyListFragment.1(this);
   
   public void a()
   {
@@ -53,7 +53,7 @@ public class ReadInJoyPrivacyListFragment
       localBaseActivity.mSystemBarComp.init();
       if (ThemeUtil.isInNightMode(localBaseActivity.app))
       {
-        if ((!SystemUtil.b()) && (!SystemUtil.d()))
+        if ((!SystemUtil.d()) && (!SystemUtil.g()))
         {
           localBaseActivity.mSystemBarComp.setStatusBarColor(-7829368);
         }
@@ -63,12 +63,12 @@ public class ReadInJoyPrivacyListFragment
           localBaseActivity.mSystemBarComp.setStatusBarDarkMode(true);
         }
       }
-      else if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
+      else if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.d()) && (!SystemUtil.g()))
       {
         localBaseActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
         localBaseActivity.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!SystemUtil.d())
+      else if (!SystemUtil.g())
       {
         localBaseActivity.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -81,7 +81,7 @@ public class ReadInJoyPrivacyListFragment
     if (this.leftView != null)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130849814);
+      this.leftView.setBackgroundResource(2130851519);
     }
     if (this.centerView != null) {
       this.centerView.setTextColor(-16777216);
@@ -91,46 +91,46 @@ public class ReadInJoyPrivacyListFragment
   
   public void b()
   {
-    ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_Long, this.b, 30);
+    ReadInJoyLogicEngine.a().a(this.c, this.f, 30);
   }
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyPrivacyListView = ((ReadInJoyPrivacyListView)this.mContentView.findViewById(2131370164));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyPrivacyListAdapter = new ReadInJoyPrivacyListAdapter(getBaseActivity(), this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyPrivacyListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyPrivacyListAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyPrivacyListView.setLoadMoreCallback(this);
-    setTitle(HardCodeUtil.a(2131712773));
+    this.a = ((ReadInJoyPrivacyListView)this.mContentView.findViewById(2131437330));
+    this.b = new ReadInJoyPrivacyListAdapter(getBaseActivity(), this.d);
+    this.a.setAdapter(this.b);
+    this.a.setLoadMoreCallback(this);
+    setTitle(HardCodeUtil.a(2131910346));
     if (this.leftView != null) {
-      this.leftView.setText(HardCodeUtil.a(2131712854));
+      this.leftView.setText(HardCodeUtil.a(2131901576));
     }
     a();
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.h);
   }
   
   protected int getContentLayoutId()
   {
-    return 2131560257;
+    return 2131626304;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Long = getBaseActivity().getIntent().getLongExtra("feeds_id", 0L);
-    ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_Long, this.b, 30);
+    this.c = getBaseActivity().getIntent().getLongExtra("feeds_id", 0L);
+    ReadInJoyLogicEngine.a().a(this.c, this.f, 30);
     RIJDtReportHelper.a.a(getBaseActivity());
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyPrivacyListFragment
  * JD-Core Version:    0.7.0.1
  */

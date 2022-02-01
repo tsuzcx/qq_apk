@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
@@ -13,12 +15,12 @@ public class FitWindowsFrameLayout
 {
   private FitWindowsViewGroup.OnFitSystemWindowsListener mListener;
   
-  public FitWindowsFrameLayout(Context paramContext)
+  public FitWindowsFrameLayout(@NonNull Context paramContext)
   {
     super(paramContext);
   }
   
-  public FitWindowsFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
+  public FitWindowsFrameLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }

@@ -19,8 +19,8 @@ public class IliveAppInterface
   extends BaseToolAppInterface
   implements IToolProcEventListener
 {
-  private static long jdField_a_of_type_Long = -1L;
-  private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
+  private static long b = -1L;
+  private EntityManagerFactory a;
   
   public IliveAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
@@ -119,7 +119,7 @@ public class IliveAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.IliveAppInterface
  * JD-Core Version:    0.7.0.1
  */

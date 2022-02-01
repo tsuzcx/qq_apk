@@ -3,40 +3,35 @@ package com.tencent.mobileqq.wifi;
 class Base64$Decoder
   extends Base64.Coder
 {
-  private static final int[] a;
-  private static final int[] jdField_b_of_type_ArrayOfInt = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -2, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, 63, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
-  private int jdField_b_of_type_Int;
-  private int jdField_c_of_type_Int;
-  private final int[] jdField_c_of_type_ArrayOfInt;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -2, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
-  }
+  private static final int[] c = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -2, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+  private static final int[] d = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -2, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, 63, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+  private int e;
+  private int f;
+  private final int[] g;
   
   public Base64$Decoder(int paramInt, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.a = paramArrayOfByte;
     if ((paramInt & 0x8) == 0) {
-      paramArrayOfByte = jdField_a_of_type_ArrayOfInt;
+      paramArrayOfByte = c;
     } else {
-      paramArrayOfByte = jdField_b_of_type_ArrayOfInt;
+      paramArrayOfByte = d;
     }
-    this.jdField_c_of_type_ArrayOfInt = paramArrayOfByte;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
+    this.g = paramArrayOfByte;
+    this.e = 0;
+    this.f = 0;
   }
   
   public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int m = this.jdField_b_of_type_Int;
+    int m = this.e;
     if (m == 6) {
       return false;
     }
     int i1 = paramInt2 + paramInt1;
-    int i = this.jdField_c_of_type_Int;
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    int[] arrayOfInt = this.jdField_c_of_type_ArrayOfInt;
+    int i = this.f;
+    byte[] arrayOfByte = this.a;
+    int[] arrayOfInt = this.g;
     paramInt2 = 0;
     int j = paramInt1;
     paramInt1 = i;
@@ -99,7 +94,7 @@ class Base64$Decoder
                 if (i == -1) {
                   break label605;
                 }
-                this.jdField_b_of_type_Int = 6;
+                this.e = 6;
                 label309:
                 return false;
               }
@@ -114,7 +109,7 @@ class Base64$Decoder
               if (i == -1) {
                 break label605;
               }
-              this.jdField_b_of_type_Int = 6;
+              this.e = 6;
               return false;
             }
             if (i >= 0)
@@ -140,7 +135,7 @@ class Base64$Decoder
             if (i == -1) {
               break label605;
             }
-            this.jdField_b_of_type_Int = 6;
+            this.e = 6;
           }
         }
       }
@@ -162,7 +157,7 @@ class Base64$Decoder
         if (i == -1) {
           break label605;
         }
-        this.jdField_b_of_type_Int = 6;
+        this.e = 6;
         break label309;
         if (i < 0) {
           break label541;
@@ -175,7 +170,7 @@ class Base64$Decoder
       paramInt2 = k;
       if (i != -1)
       {
-        this.jdField_b_of_type_Int = 6;
+        this.e = 6;
         return false;
         if (i >= 0)
         {
@@ -192,7 +187,7 @@ class Base64$Decoder
           paramInt2 = k;
           if (i != -1)
           {
-            this.jdField_b_of_type_Int = 6;
+            this.e = 6;
             return false;
           }
         }
@@ -205,9 +200,9 @@ class Base64$Decoder
       label620:
       if (!paramBoolean)
       {
-        this.jdField_b_of_type_Int = m;
-        this.jdField_c_of_type_Int = k;
-        this.jdField_a_of_type_Int = j;
+        this.e = m;
+        this.f = k;
+        this.b = j;
         return true;
       }
       paramInt1 = j;
@@ -225,7 +220,7 @@ class Base64$Decoder
               paramInt1 = j;
               break label751;
             }
-            this.jdField_b_of_type_Int = 6;
+            this.e = 6;
           }
           else
           {
@@ -244,18 +239,18 @@ class Base64$Decoder
         }
       }
       else {
-        this.jdField_b_of_type_Int = 6;
+        this.e = 6;
       }
     }
     label751:
-    this.jdField_b_of_type_Int = m;
-    this.jdField_a_of_type_Int = paramInt1;
+    this.e = m;
+    this.b = paramInt1;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.Base64.Decoder
  * JD-Core Version:    0.7.0.1
  */

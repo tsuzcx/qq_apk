@@ -18,7 +18,7 @@ class ProfileTroopMemInfoComponent$4
     if (localObject != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131708440));
+      localStringBuilder.append(HardCodeUtil.a(2131906226));
       localStringBuilder.append(TroopNewGuidePopWindow.a(((MessageRecord)localObject).time, true, false, true).toString());
       localObject = localStringBuilder.toString();
     }
@@ -40,7 +40,7 @@ class ProfileTroopMemInfoComponent$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.ProfileTroopMemInfoComponent.4
  * JD-Core Version:    0.7.0.1
  */

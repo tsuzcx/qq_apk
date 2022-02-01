@@ -5,30 +5,30 @@ import java.util.List;
 
 public class MomentFeedInfo
 {
-  public long a;
-  public TopicInfo a;
-  public List<CommentInfo> a;
-  public boolean a;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
   public String f;
   public int g;
-  public String g;
   public String h;
   public String i;
-  public String j;
+  public long j;
   public String k;
   public String l;
   public String m;
   public String n;
+  public String o;
+  public String p;
+  public String q;
+  public String r;
+  public String s;
+  public int t;
+  public boolean u;
+  public int v;
+  public int w;
+  public List<CommentInfo> x;
+  public TopicInfo y;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.data.MomentFeedInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ public class ConstraintLayout
   private static final boolean MEASURE = false;
   private static final String TAG = "ConstraintLayout";
   private static final boolean USE_CONSTRAINTS_HELPER = true;
-  public static final String VERSION = "ConstraintLayout-2.0.1";
+  public static final String VERSION = "ConstraintLayout-2.0.4";
   SparseArray<View> mChildrenByIds = new SparseArray();
   private ArrayList<ConstraintHelper> mConstraintHelpers = new ArrayList(4);
   protected ConstraintLayoutStates mConstraintLayoutSpec = null;
@@ -59,7 +59,7 @@ public class ConstraintLayout
   private int mMinWidth = 0;
   private int mOnMeasureHeightMeasureSpec = 0;
   private int mOnMeasureWidthMeasureSpec = 0;
-  private int mOptimizationLevel = 263;
+  private int mOptimizationLevel = 257;
   private SparseArray<ConstraintWidget> mTempMapIdToWidget = new SparseArray();
   
   public ConstraintLayout(@NonNull Context paramContext)
@@ -868,6 +868,35 @@ public class ConstraintLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    if (!this.mDirtyHierarchy)
+    {
+      int j = getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        if (getChildAt(i).isLayoutRequested())
+        {
+          this.mDirtyHierarchy = true;
+          break;
+        }
+        i += 1;
+      }
+    }
+    if (!this.mDirtyHierarchy)
+    {
+      if ((this.mOnMeasureWidthMeasureSpec == paramInt1) && (this.mOnMeasureHeightMeasureSpec == paramInt2))
+      {
+        resolveMeasuredDimension(paramInt1, paramInt2, this.mLayoutWidget.getWidth(), this.mLayoutWidget.getHeight(), this.mLayoutWidget.isWidthMeasuredTooSmall(), this.mLayoutWidget.isHeightMeasuredTooSmall());
+        return;
+      }
+      if ((this.mOnMeasureWidthMeasureSpec == paramInt1) && (View.MeasureSpec.getMode(paramInt1) == 1073741824) && (View.MeasureSpec.getMode(paramInt2) == -2147483648) && (View.MeasureSpec.getMode(this.mOnMeasureHeightMeasureSpec) == -2147483648) && (View.MeasureSpec.getSize(paramInt2) >= this.mLayoutWidget.getHeight()))
+      {
+        this.mOnMeasureWidthMeasureSpec = paramInt1;
+        this.mOnMeasureHeightMeasureSpec = paramInt2;
+        resolveMeasuredDimension(paramInt1, paramInt2, this.mLayoutWidget.getWidth(), this.mLayoutWidget.getHeight(), this.mLayoutWidget.isWidthMeasuredTooSmall(), this.mLayoutWidget.isHeightMeasuredTooSmall());
+        return;
+      }
+    }
     this.mOnMeasureWidthMeasureSpec = paramInt1;
     this.mOnMeasureHeightMeasureSpec = paramInt2;
     this.mLayoutWidget.setRtl(isRtl());
@@ -1174,7 +1203,7 @@ public class ConstraintLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.widget.ConstraintLayout
  * JD-Core Version:    0.7.0.1
  */

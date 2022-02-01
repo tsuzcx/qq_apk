@@ -20,6 +20,7 @@ public class Guideline
   protected int mRelativeBegin = -1;
   protected int mRelativeEnd = -1;
   protected float mRelativePercent = -1.0F;
+  private boolean resolved;
   
   public Guideline()
   {
@@ -36,7 +37,7 @@ public class Guideline
     }
   }
   
-  public void addToSolver(LinearSystem paramLinearSystem)
+  public void addToSolver(LinearSystem paramLinearSystem, boolean paramBoolean)
   {
     Object localObject2 = (ConstraintWidgetContainer)getParent();
     if (localObject2 == null) {
@@ -59,6 +60,25 @@ public class Guideline
       } else {
         i = 0;
       }
+    }
+    if ((this.resolved) && (this.mAnchor.hasFinalValue()))
+    {
+      localObject2 = paramLinearSystem.createObjectVariable(this.mAnchor);
+      paramLinearSystem.addEquality((SolverVariable)localObject2, this.mAnchor.getFinalValue());
+      if (this.mRelativeBegin != -1)
+      {
+        if (i != 0) {
+          paramLinearSystem.addGreaterThan(paramLinearSystem.createObjectVariable(localObject1), (SolverVariable)localObject2, 0, 5);
+        }
+      }
+      else if ((this.mRelativeEnd != -1) && (i != 0))
+      {
+        localObject1 = paramLinearSystem.createObjectVariable(localObject1);
+        paramLinearSystem.addGreaterThan((SolverVariable)localObject2, paramLinearSystem.createObjectVariable(localConstraintAnchor), 0, 5);
+        paramLinearSystem.addGreaterThan((SolverVariable)localObject1, (SolverVariable)localObject2, 0, 5);
+      }
+      this.resolved = false;
+      return;
     }
     if (this.mRelativeBegin != -1)
     {
@@ -221,6 +241,22 @@ public class Guideline
     return (this.mRelativePercent != -1.0F) && (this.mRelativeBegin == -1) && (this.mRelativeEnd == -1);
   }
   
+  public boolean isResolvedHorizontally()
+  {
+    return this.resolved;
+  }
+  
+  public boolean isResolvedVertically()
+  {
+    return this.resolved;
+  }
+  
+  public void setFinalValue(int paramInt)
+  {
+    this.mAnchor.setFinalValue(paramInt);
+    this.resolved = true;
+  }
+  
   public void setGuideBegin(int paramInt)
   {
     if (paramInt > -1)
@@ -283,7 +319,7 @@ public class Guideline
     }
   }
   
-  public void updateFromSolver(LinearSystem paramLinearSystem)
+  public void updateFromSolver(LinearSystem paramLinearSystem, boolean paramBoolean)
   {
     if (getParent() == null) {
       return;
@@ -305,7 +341,7 @@ public class Guideline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.widgets.Guideline
  * JD-Core Version:    0.7.0.1
  */

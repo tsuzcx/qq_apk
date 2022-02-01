@@ -12,13 +12,13 @@ class ConnectionsExplorationFragment$2
   
   public void run()
   {
-    ArrayList localArrayList = ConnectionsExplorationFragment.a(this.this$0).a();
+    ArrayList localArrayList = ConnectionsExplorationFragment.a(this.this$0).b();
     ThreadManager.getUIHandler().post(new ConnectionsExplorationFragment.2.1(this, localArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationFragment.2
  * JD-Core Version:    0.7.0.1
  */

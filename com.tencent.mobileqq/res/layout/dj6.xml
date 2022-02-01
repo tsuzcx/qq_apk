@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/r37" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <com.tencent.mobileqq.writetogetherui.SavingAnimView android:id="@id/r3c" android:visibility="gone" android:layout_width="@dimen/bto" android:layout_height="@dimen/bto" android:layout_marginRight="@dimen/btn" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:saving_stroke_width="@dimen/btp" app:saving_view_color="@color/skin_bar_text" />
+        <TextView android:textSize="@dimen/btx" android:textColor="@color/skin_bar_text" android:gravity="left" android:id="@id/r3_" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/r3c" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/btx" android:textColor="@color/skin_bar_text" android:gravity="left" android:id="@id/r3b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zm5" android:layout_toRightOf="@id/r3c" android:layout_centerVertical="true" android:alpha="0.0" />
+        <com.tencent.mobileqq.writetogetherui.SavingAnimView android:layout_width="@dimen/bto" android:layout_height="@dimen/bto" android:layout_marginLeft="@dimen/btn" android:layout_toRightOf="@id/r3b" android:layout_centerVertical="true" android:alpha="0.0" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/btx" android:textColor="@color/skin_bar_text" android:id="@id/r39" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/btx" android:textColor="@color/skin_bar_text" android:id="@id/r38" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+</RelativeLayout>

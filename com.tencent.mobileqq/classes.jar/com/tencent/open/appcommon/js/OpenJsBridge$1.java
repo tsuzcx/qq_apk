@@ -15,7 +15,7 @@ class OpenJsBridge$1
   public void run()
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(this.a);
     ((StringBuilder)localObject1).append("/#");
     localObject1 = ((StringBuilder)localObject1).toString().split("/");
     Object localObject4 = new ArrayList(Arrays.asList((Object[])localObject1));
@@ -88,13 +88,13 @@ class OpenJsBridge$1
       l1 = Long.parseLong((String)localObject3);
       long l2 = Long.parseLong((String)localObject5);
       i = Integer.parseInt((String)localObject4);
-      localObject3 = (JsBridge.JsHandler)this.this$0.b.get(str);
+      localObject3 = (JsBridge.JsHandler)this.this$0.c.get(str);
       if ((localObject3 != null) && ((localObject3 instanceof BaseInterface)))
       {
-        ((BaseInterface)localObject3).callBatch(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.this$0.b, l1, (String)localObject1, Long.valueOf(l2).longValue(), i);
+        ((BaseInterface)localObject3).callBatch(this.b, this.this$0.c, l1, (String)localObject1, Long.valueOf(l2).longValue(), i);
         return;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+      localObject1 = this.b;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.");
       ((StringBuilder)localObject3).append((String)localObject2);
@@ -112,9 +112,9 @@ class OpenJsBridge$1
         if (AsyncMethodMap.a.contains(localObject2)) {
           ((List)localObject1).add(localObject3);
         }
-        localObject3 = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+        localObject3 = this.b;
         if (localObject3 != null) {
-          this.this$0.a(str, (String)localObject2, (List)localObject1, new OpenJsBridge.OpenJsBridgeListener((WebView)localObject3, l1, this.jdField_a_of_type_JavaLangString));
+          this.this$0.a(str, (String)localObject2, (List)localObject1, new OpenJsBridge.OpenJsBridgeListener((WebView)localObject3, l1, this.a));
         }
         return;
       }
@@ -127,7 +127,7 @@ class OpenJsBridge$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.OpenJsBridge.1
  * JD-Core Version:    0.7.0.1
  */

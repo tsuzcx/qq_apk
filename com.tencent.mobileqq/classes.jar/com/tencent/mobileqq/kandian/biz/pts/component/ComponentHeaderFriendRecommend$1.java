@@ -11,12 +11,12 @@ class ComponentHeaderFriendRecommend$1
   
   public void onClick(View paramView)
   {
-    ComponentHeaderFriendRecommend.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderFriendRecommend, ((Long)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).longValue());
+    ComponentHeaderFriendRecommend.a(this.c, ((Long)this.a.get(this.b)).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderFriendRecommend.1
  * JD-Core Version:    0.7.0.1
  */

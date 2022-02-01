@@ -16,19 +16,19 @@ class EditorStateMachineController$ToastUneditableStateProcessor
   {
     super.a(paramInt);
     if (paramInt == 0) {
-      QQToast.a(EditorStateMachineController.a(this.b), this.a, 0).a();
+      QQToast.makeText(EditorStateMachineController.a(this.b), this.f, 0).show();
     }
   }
   
   public void a(EditorState paramEditorState)
   {
     super.a(paramEditorState);
-    EditorStateMachineController.a(this.b).c();
+    EditorStateMachineController.c(this.b).d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.EditorStateMachineController.ToastUneditableStateProcessor
  * JD-Core Version:    0.7.0.1
  */

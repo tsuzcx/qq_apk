@@ -17,9 +17,9 @@ public class RadioButtonIndicator
   extends RadioGroup
   implements View.OnClickListener, ViewPager.OnPageChangeListener, absMultiViewPager.OnPagerSizeChangeListener
 {
-  protected int a;
   protected ViewPager a;
-  public int b;
+  protected int b = 2130840106;
+  public int c;
   
   public RadioButtonIndicator(Context paramContext)
   {
@@ -29,16 +29,15 @@ public class RadioButtonIndicator
   public RadioButtonIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130839637;
   }
   
   public RadioButton a(int paramInt)
   {
     RadioButtonIndicator.1 local1 = new RadioButtonIndicator.1(this, getContext());
-    local1.setButtonDrawable(this.jdField_a_of_type_Int);
+    local1.setButtonDrawable(this.b);
     local1.setPadding(10, 0, 10, 0);
     local1.setClickable(true);
-    if ((AppSetting.d) && (Build.VERSION.SDK_INT > 16)) {
+    if ((AppSetting.e) && (Build.VERSION.SDK_INT > 16)) {
       ViewCompat.setImportantForAccessibility(local1, 2);
     }
     return local1;
@@ -52,7 +51,7 @@ public class RadioButtonIndicator
   public void onClick(View paramView)
   {
     int i = ((Integer)paramView.getTag()).intValue();
-    ViewPager localViewPager = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    ViewPager localViewPager = this.a;
     if (localViewPager != null) {
       localViewPager.setCurrentItem(i);
     }
@@ -73,7 +72,7 @@ public class RadioButtonIndicator
   
   public void setButtonResourceId(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void setButtons(int paramInt)
@@ -91,18 +90,18 @@ public class RadioButtonIndicator
       addView(localRadioButton);
       i += 1;
     }
-    this.b = paramInt;
+    this.c = paramInt;
     ((RadioButton)getChildAt(0)).setChecked(true);
   }
   
   public void setViewPager(ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = paramViewPager;
+    this.a = paramViewPager;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.RadioButtonIndicator
  * JD-Core Version:    0.7.0.1
  */

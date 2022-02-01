@@ -12,7 +12,7 @@ public class JubaoReloadFilter
   public List<ChatMessage> a(AIOContext paramAIOContext, List<ChatMessage> paramList)
   {
     Object localObject = paramList;
-    if (paramAIOContext.b()) {
+    if (paramAIOContext.l()) {
       localObject = JubaoHelper.a(paramList);
     }
     return localObject;
@@ -20,7 +20,7 @@ public class JubaoReloadFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.JubaoReloadFilter
  * JD-Core Version:    0.7.0.1
  */

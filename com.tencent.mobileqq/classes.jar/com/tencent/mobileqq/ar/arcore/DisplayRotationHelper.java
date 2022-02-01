@@ -10,38 +10,38 @@ import android.view.WindowManager;
 public class DisplayRotationHelper
   implements DisplayManager.DisplayListener
 {
-  private int jdField_a_of_type_Int;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final Display jdField_a_of_type_AndroidViewDisplay;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
   private int b;
+  private int c;
+  private final Context d;
+  private final Display e;
   
   @TargetApi(23)
   public DisplayRotationHelper(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService(WindowManager.class)).getDefaultDisplay();
+    this.d = paramContext;
+    this.e = ((WindowManager)paramContext.getSystemService(WindowManager.class)).getDefaultDisplay();
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = true;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.a = true;
   }
   
   public void onDisplayAdded(int paramInt) {}
   
   public void onDisplayChanged(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
   }
   
   public void onDisplayRemoved(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcore.DisplayRotationHelper
  * JD-Core Version:    0.7.0.1
  */

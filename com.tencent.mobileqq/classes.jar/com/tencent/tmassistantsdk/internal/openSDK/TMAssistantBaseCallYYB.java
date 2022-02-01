@@ -110,29 +110,27 @@ public abstract class TMAssistantBaseCallYYB
   public long addDownloadTaskFromTmast(Bundle paramBundle)
   {
     String str = paramBundle.getString("url");
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("addDownloadTaskFromTmast url = ");
-    ((StringBuilder)localObject).append(str);
-    ab.c("TMAssistantBaseCallYYB", ((StringBuilder)localObject).toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addDownloadTaskFromTmast url = ");
+    localStringBuilder.append(str);
+    ab.c("TMAssistantBaseCallYYB", localStringBuilder.toString());
     if (TextUtils.isEmpty(str))
     {
       ab.c("TMAssistantBaseCallYYB", "url is null !! result = -1");
       return -1L;
     }
-    localObject = formatEncryptUrl(str);
-    long l1 = System.currentTimeMillis();
+    str = formatEncryptUrl(str);
+    long l2 = System.currentTimeMillis();
     long l3 = paramBundle.getLong("startTime");
     long l4 = paramBundle.getLong("endTime");
-    long l2;
     if ((l3 != 0L) && (l4 != 0L))
     {
-      l1 = l4;
       l2 = l3;
+      l1 = l4;
     }
     else
     {
-      l2 = l1;
-      l1 = 300000L + l1;
+      l1 = 300000L + l2;
     }
     paramBundle = new StringBuilder();
     paramBundle.append("addDownloadTaskFromTmast ");
@@ -154,15 +152,14 @@ public abstract class TMAssistantBaseCallYYB
     paramBundle.append("; dataItemType=");
     paramBundle.append(0);
     paramBundle.append(";dataItemAction=");
-    paramBundle.append((String)localObject);
+    paramBundle.append(str);
     ab.c("TMAssistantBaseCallYYB", paramBundle.toString());
-    l3 = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, (String)localObject, l2, l1, 0, null);
+    long l1 = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, str, l2, l1, 0, null);
     paramBundle = new StringBuilder();
     paramBundle.append("result = ");
-    paramBundle.append(l3);
+    paramBundle.append(l1);
     ab.c("TMAssistantBaseCallYYB", paramBundle.toString());
-    GlobalUtil.setClipboardCMD(this.mContext, str, l2, l1);
-    return l3;
+    return l1;
   }
   
   public long addDownloadTaskFromWebview(Bundle paramBundle)
@@ -178,7 +175,6 @@ public abstract class TMAssistantBaseCallYYB
     long l2 = System.currentTimeMillis();
     long l3 = paramBundle.getLong("startTime");
     long l4 = paramBundle.getLong("endTime");
-    long l1;
     if ((l3 != 0L) && (l4 != 0L))
     {
       l2 = l3;
@@ -210,14 +206,12 @@ public abstract class TMAssistantBaseCallYYB
     paramBundle.append(";dataItemAction=");
     paramBundle.append(str);
     ab.c("TMAssistantBaseCallYYB", paramBundle.toString());
-    l3 = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, str, l2, l1, 0, null);
+    long l1 = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, str, l2, l1, 0, null);
     paramBundle = new StringBuilder();
     paramBundle.append("result = ");
-    paramBundle.append(l3);
+    paramBundle.append(l1);
     ab.c("TMAssistantBaseCallYYB", paramBundle.toString());
-    paramBundle = formatIntentUriPath(5, (Map)localObject, false);
-    GlobalUtil.setClipboardCMD(this.mContext, paramBundle, l2, l1);
-    return l3;
+    return l1;
   }
   
   public long buildAddDBData(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, int paramInt, String paramString3)
@@ -245,29 +239,26 @@ public abstract class TMAssistantBaseCallYYB
       paramTMAssistantCallYYBParamStruct = formatMapParams(paramTMAssistantCallYYBParamStruct, true, true, paramString3);
       paramTMAssistantCallYYBParamStruct.put("verifytype", paramString2);
     }
-    paramString1 = formatIntentUriPath(paramInt, paramTMAssistantCallYYBParamStruct);
-    long l1 = System.currentTimeMillis();
-    long l2 = 300000L + l1;
-    paramString2 = new StringBuilder();
-    paramString2.append("addDownloadTaskFromTaskList,hostPackageName=");
-    paramString2.append(this.hostPackageName);
-    paramString2.append("; hostVersionCode=");
-    paramString2.append(this.hostVersionCode);
-    paramString2.append("; hostUserIdentity=");
-    paramString2.append("");
-    paramString2.append("; dataItemType=");
-    paramString2.append(0);
-    paramString2.append(";dataItemAction=");
-    paramString2.append(paramString1);
-    ab.c("TMAssistantBaseCallYYB", paramString2.toString());
-    long l3 = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, paramString1, l1, l2, 0, null);
+    paramTMAssistantCallYYBParamStruct = formatIntentUriPath(paramInt, paramTMAssistantCallYYBParamStruct);
+    long l = System.currentTimeMillis();
     paramString1 = new StringBuilder();
-    paramString1.append("result = ");
-    paramString1.append(l3);
+    paramString1.append("addDownloadTaskFromTaskList,hostPackageName=");
+    paramString1.append(this.hostPackageName);
+    paramString1.append("; hostVersionCode=");
+    paramString1.append(this.hostVersionCode);
+    paramString1.append("; hostUserIdentity=");
+    paramString1.append("");
+    paramString1.append("; dataItemType=");
+    paramString1.append(0);
+    paramString1.append(";dataItemAction=");
+    paramString1.append(paramTMAssistantCallYYBParamStruct);
     ab.c("TMAssistantBaseCallYYB", paramString1.toString());
-    paramTMAssistantCallYYBParamStruct = formatIntentUriPath(paramInt, paramTMAssistantCallYYBParamStruct, false);
-    GlobalUtil.setClipboardCMD(this.mContext, paramTMAssistantCallYYBParamStruct, l1, l2);
-    return l3;
+    l = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, paramTMAssistantCallYYBParamStruct, l, l + 300000L, 0, null);
+    paramTMAssistantCallYYBParamStruct = new StringBuilder();
+    paramTMAssistantCallYYBParamStruct.append("result = ");
+    paramTMAssistantCallYYBParamStruct.append(l);
+    ab.c("TMAssistantBaseCallYYB", paramTMAssistantCallYYBParamStruct.toString());
+    return l;
   }
   
   protected long buildAddDBData(byte[] paramArrayOfByte)
@@ -751,7 +742,7 @@ public abstract class TMAssistantBaseCallYYB
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB
  * JD-Core Version:    0.7.0.1
  */

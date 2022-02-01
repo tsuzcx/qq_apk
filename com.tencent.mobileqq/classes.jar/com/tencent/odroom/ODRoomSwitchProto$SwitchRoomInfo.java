@@ -13,7 +13,7 @@ public final class ODRoomSwitchProto$SwitchRoomInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.odroom.ODRoomSwitchProto.SwitchRoomInfo
  * JD-Core Version:    0.7.0.1
  */

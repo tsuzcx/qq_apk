@@ -29,12 +29,12 @@ import java.util.List;
 public class AbsVideoPlayerImpl
   extends AbsVideoPlayer
 {
-  private static final String jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "MiniProgramVideoContentType", "application/octet-stream; charset=utf-8");
-  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
+  private static final String a = QzoneConfig.getInstance().getConfig("QZoneSetting", "MiniProgramVideoContentType", "application/octet-stream; charset=utf-8");
+  private TVK_IMediaPlayer b = null;
   
   public int captureImageInTime(int paramInt1, int paramInt2)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       try
       {
@@ -51,7 +51,7 @@ public class AbsVideoPlayerImpl
   
   public void createVideoView(Context paramContext, AbsVideoPlayer.OnVideoViewInitListener paramOnVideoViewInitListener)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null)
+    if (this.b == null)
     {
       Object localObject1 = new OskPlayerConfig();
       ((OskPlayerConfig)localObject1).setEnableHLSCache(true);
@@ -63,7 +63,7 @@ public class AbsVideoPlayerImpl
       if (localObject1 != null) {
         try
         {
-          ((List)localObject1).addAll(Arrays.asList(jdField_a_of_type_JavaLangString.split("|")));
+          ((List)localObject1).addAll(Arrays.asList(a.split("|")));
           PlayerConfig.g().setContentTypeList((List)localObject1);
         }
         catch (Exception localException)
@@ -92,7 +92,7 @@ public class AbsVideoPlayerImpl
       return;
     }
     Object localObject2 = localTVK_IProxyFactory.createVideoView_Scroll(paramContext);
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = localTVK_IProxyFactory.createMediaPlayer(paramContext, (IVideoViewBase)localObject2);
+    this.b = localTVK_IProxyFactory.createMediaPlayer(paramContext, (IVideoViewBase)localObject2);
     if (paramOnVideoViewInitListener != null) {
       paramOnVideoViewInitListener.onVideoViewInit((View)localObject2);
     }
@@ -100,7 +100,7 @@ public class AbsVideoPlayerImpl
   
   public long getCurrentPostion()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       return localTVK_IMediaPlayer.getCurrentPostion();
     }
@@ -109,7 +109,7 @@ public class AbsVideoPlayerImpl
   
   public long getDuration()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       return localTVK_IMediaPlayer.getDuration();
     }
@@ -118,7 +118,7 @@ public class AbsVideoPlayerImpl
   
   public boolean getOutputMute()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       return localTVK_IMediaPlayer.getOutputMute();
     }
@@ -127,7 +127,7 @@ public class AbsVideoPlayerImpl
   
   public int getVideoHeight()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       return localTVK_IMediaPlayer.getVideoHeight();
     }
@@ -136,7 +136,7 @@ public class AbsVideoPlayerImpl
   
   public int getVideoWidth()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       return localTVK_IMediaPlayer.getVideoWidth();
     }
@@ -145,7 +145,7 @@ public class AbsVideoPlayerImpl
   
   public boolean isPlaying()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       return localTVK_IMediaPlayer.isPlaying();
     }
@@ -154,7 +154,7 @@ public class AbsVideoPlayerImpl
   
   public void openMediaPlayerByUrl(Context paramContext, String paramString, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    if (this.b != null)
     {
       TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
       Object localObject;
@@ -184,13 +184,13 @@ public class AbsVideoPlayerImpl
         QLog.d("AbsVideoPlayerImpl", 1, paramString.toString());
         localTVK_PlayerVideoInfo.setPlayType(5);
       }
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(paramContext, (String)localObject, paramLong, 0L, localTVK_PlayerVideoInfo);
+      this.b.openMediaPlayerByUrl(paramContext, (String)localObject, paramLong, 0L, localTVK_PlayerVideoInfo);
     }
   }
   
   public void pause()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.pause();
     }
@@ -198,7 +198,7 @@ public class AbsVideoPlayerImpl
   
   public void release()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.release();
     }
@@ -206,7 +206,7 @@ public class AbsVideoPlayerImpl
   
   public void seekTo(int paramInt)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.seekTo(paramInt);
     }
@@ -214,7 +214,7 @@ public class AbsVideoPlayerImpl
   
   public void setLoopback(boolean paramBoolean)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.setLoopback(paramBoolean);
     }
@@ -222,7 +222,7 @@ public class AbsVideoPlayerImpl
   
   public void setOnCaptureImageListener(AbsVideoPlayer.OnCaptureImageListener paramOnCaptureImageListener)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.setOnCaptureImageListener(new AbsVideoPlayerImpl.8(this, paramOnCaptureImageListener));
     }
@@ -230,7 +230,7 @@ public class AbsVideoPlayerImpl
   
   public void setOnCompletionListener(AbsVideoPlayer.OnCompletionListener paramOnCompletionListener)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.setOnCompletionListener(new AbsVideoPlayerImpl.4(this, paramOnCompletionListener));
     }
@@ -238,7 +238,7 @@ public class AbsVideoPlayerImpl
   
   public void setOnControllerClickListener(AbsVideoPlayer.OnControllerClickListener paramOnControllerClickListener)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.setOnControllerClickListener(new AbsVideoPlayerImpl.2(this, paramOnControllerClickListener));
     }
@@ -246,7 +246,7 @@ public class AbsVideoPlayerImpl
   
   public void setOnErrorListener(AbsVideoPlayer.OnErrorListener paramOnErrorListener)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.setOnErrorListener(new AbsVideoPlayerImpl.5(this, paramOnErrorListener));
     }
@@ -254,7 +254,7 @@ public class AbsVideoPlayerImpl
   
   public void setOnInfoListener(AbsVideoPlayer.OnInfoListener paramOnInfoListener)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.setOnInfoListener(new AbsVideoPlayerImpl.6(this, paramOnInfoListener));
     }
@@ -262,7 +262,7 @@ public class AbsVideoPlayerImpl
   
   public void setOnSeekCompleteListener(AbsVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.setOnSeekCompleteListener(new AbsVideoPlayerImpl.7(this, paramOnSeekCompleteListener));
     }
@@ -270,7 +270,7 @@ public class AbsVideoPlayerImpl
   
   public void setOnVideoPreparedListener(AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.setOnVideoPreparedListener(new AbsVideoPlayerImpl.3(this, paramOnVideoPreparedListener));
     }
@@ -278,7 +278,7 @@ public class AbsVideoPlayerImpl
   
   public boolean setOutputMute(boolean paramBoolean)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       return localTVK_IMediaPlayer.setOutputMute(paramBoolean);
     }
@@ -287,7 +287,7 @@ public class AbsVideoPlayerImpl
   
   public void setXYaxis(int paramInt)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.setXYaxis(paramInt);
     }
@@ -295,7 +295,7 @@ public class AbsVideoPlayerImpl
   
   public void start()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.start();
     }
@@ -303,7 +303,7 @@ public class AbsVideoPlayerImpl
   
   public void startPlayDanmu()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.startPlayDanmu();
     }
@@ -311,7 +311,7 @@ public class AbsVideoPlayerImpl
   
   public void stop()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.stop();
     }
@@ -319,7 +319,7 @@ public class AbsVideoPlayerImpl
   
   public void stopPlayDanmu()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.b;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.stopPlayDanmu();
     }
@@ -327,7 +327,7 @@ public class AbsVideoPlayerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AbsVideoPlayerImpl
  * JD-Core Version:    0.7.0.1
  */

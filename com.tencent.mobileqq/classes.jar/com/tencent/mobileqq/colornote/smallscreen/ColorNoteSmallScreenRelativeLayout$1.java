@@ -17,13 +17,13 @@ class ColorNoteSmallScreenRelativeLayout$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    ColorNoteSmallScreenRelativeLayout.c(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, false);
-    paramAnimator = ColorNoteSmallScreenRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout).iterator();
+    ColorNoteSmallScreenRelativeLayout.c(this.b, false);
+    paramAnimator = ColorNoteSmallScreenRelativeLayout.d(this.b).iterator();
     while (paramAnimator.hasNext()) {
       ((ColorNote)paramAnimator.next()).animate = false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.f();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.animate().setListener(null).translationX(0.0F).setDuration(200L).start();
+    this.b.f();
+    this.a.animate().setListener(null).translationX(0.0F).setDuration(200L).start();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -32,7 +32,7 @@ class ColorNoteSmallScreenRelativeLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.1
  * JD-Core Version:    0.7.0.1
  */

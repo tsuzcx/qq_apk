@@ -24,7 +24,7 @@ public class KCWraperV2InOtherProcess
   void a(TMSManager.Callback paramCallback, boolean paramBoolean)
   {
     a("queryKingCard : from cache");
-    Pair localPair = a();
+    Pair localPair = d();
     if (paramCallback != null)
     {
       if (paramBoolean)
@@ -41,15 +41,9 @@ public class KCWraperV2InOtherProcess
     a("tryLoad : do nothing");
   }
   
-  boolean a()
-  {
-    a("isReady : do nothing");
-    return true;
-  }
-  
   boolean a(Activity paramActivity)
   {
-    if (c())
+    if (e())
     {
       ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).startKingCardActivationFragment();
       return true;
@@ -59,7 +53,13 @@ public class KCWraperV2InOtherProcess
   
   boolean b()
   {
-    boolean bool = c();
+    a("isReady : do nothing");
+    return true;
+  }
+  
+  boolean c()
+  {
+    boolean bool = e();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("supportActivationView = ");
     localStringBuilder.append(bool);
@@ -69,7 +69,7 @@ public class KCWraperV2InOtherProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraperV2InOtherProcess
  * JD-Core Version:    0.7.0.1
  */

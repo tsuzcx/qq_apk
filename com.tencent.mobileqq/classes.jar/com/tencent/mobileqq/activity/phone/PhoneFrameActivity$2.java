@@ -10,49 +10,49 @@ class PhoneFrameActivity$2
 {
   PhoneFrameActivity$2(PhoneFrameActivity paramPhoneFrameActivity) {}
   
-  public View a()
-  {
-    return this.a.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public ImageView a()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView a()
-  {
-    return this.a.leftView;
-  }
-  
   public QQAppInterface a()
   {
     return this.a.app;
   }
   
-  public View b()
-  {
-    return this.a.b;
-  }
-  
   public TextView b()
   {
-    return this.a.rightViewText;
+    return this.a.leftView;
   }
   
-  public TextView c()
+  public ImageView c()
   {
-    return this.a.centerView;
+    return this.a.e;
   }
   
   public TextView d()
   {
-    return this.a.jdField_a_of_type_AndroidWidgetTextView;
+    return this.a.rightViewText;
+  }
+  
+  public TextView e()
+  {
+    return this.a.centerView;
+  }
+  
+  public View f()
+  {
+    return this.a.b;
+  }
+  
+  public View g()
+  {
+    return this.a.c;
+  }
+  
+  public TextView h()
+  {
+    return this.a.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneFrameActivity.2
  * JD-Core Version:    0.7.0.1
  */

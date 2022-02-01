@@ -12,19 +12,19 @@ class ListenTogetherOverlayFragment$12
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.b(false);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.d = false;
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    this.a.b(false);
+    this.a.r = false;
+    if (!ListenTogetherOverlayFragment.a(this.b).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.b).finish();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.e) {
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.g();
+    if (this.a.s) {
+      this.a.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment.12
  * JD-Core Version:    0.7.0.1
  */

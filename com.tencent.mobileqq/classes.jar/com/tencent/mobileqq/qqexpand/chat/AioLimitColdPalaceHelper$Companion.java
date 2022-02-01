@@ -43,22 +43,22 @@ public final class AioLimitColdPalaceHelper$Companion
     {
       Object localObject1 = (BaseActivity)paramContext;
       Object localObject2 = ((BaseActivity)localObject1).getChatFragment();
-      if ((localObject2 != null) && (((ChatFragment)localObject2).a() != null))
+      if ((localObject2 != null) && (((ChatFragment)localObject2).k() != null))
       {
-        localObject2 = ((ChatFragment)localObject2).a();
+        localObject2 = ((ChatFragment)localObject2).k();
         if ((localObject2 instanceof LimitChatPie))
         {
           paramContext = (QBaseActivity)localObject1;
-          int i = ((BaseChatPie)localObject2).a.jdField_a_of_type_Int;
-          localObject2 = ((BaseChatPie)localObject2).a.jdField_a_of_type_JavaLangString;
+          int i = ((BaseChatPie)localObject2).ah.a;
+          localObject2 = ((BaseChatPie)localObject2).ah.b;
           localObject1 = ((BaseActivity)localObject1).app;
           Intrinsics.checkExpressionValueIsNotNull(localObject1, "context.app");
           NewReportPlugin.a(paramContext, i, (String)localObject2, ((QQAppInterface)localObject1).getCurrentAccountUin(), "");
           return;
         }
-        paramContext = QQToast.a(paramContext, (CharSequence)paramContext.getResources().getString(2131698831), 1);
+        paramContext = QQToast.makeText(paramContext, (CharSequence)paramContext.getResources().getString(2131896799), 1);
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "baseChatPie");
-        paramContext.b(((BaseChatPie)localObject2).a());
+        paramContext.show(((BaseChatPie)localObject2).A());
       }
     }
   }
@@ -70,7 +70,7 @@ public final class AioLimitColdPalaceHelper$Companion
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
     Intrinsics.checkParameterIsNotNull(paramString, "frdUin");
     Intrinsics.checkParameterIsNotNull(paramIColdPalaceBanish, "iBanish");
-    paramIColdPalaceBanish = paramIColdPalaceBanish.a();
+    paramIColdPalaceBanish = paramIColdPalaceBanish.c();
     if (paramIColdPalaceBanish != null) {
       paramIColdPalaceBanish.dismiss();
     }
@@ -88,17 +88,17 @@ public final class AioLimitColdPalaceHelper$Companion
       if (paramBaseQQAppInterface == null) {
         return;
       }
-      Object localObject = paramIColdPalaceBanish.a();
+      Object localObject = paramIColdPalaceBanish.c();
       if (localObject != null) {
         ((Dialog)localObject).dismiss();
       }
-      localObject = ColdPalaceHelper.a.a(paramBaseQQAppInterface);
-      paramIColdPalaceBanish.a((Dialog)new ColdPalaceTipDialog(paramContext, paramBaseQQAppInterface, paramString, paramInt, String.valueOf(paramIColdPalaceBanish.a())));
-      paramBaseQQAppInterface = paramIColdPalaceBanish.a();
+      localObject = ColdPalaceHelper.f.a(paramBaseQQAppInterface);
+      paramIColdPalaceBanish.a((Dialog)new ColdPalaceTipDialog(paramContext, paramBaseQQAppInterface, paramString, paramInt, String.valueOf(paramIColdPalaceBanish.f())));
+      paramBaseQQAppInterface = paramIColdPalaceBanish.c();
       if (paramBaseQQAppInterface != null)
       {
         ((ColdPalaceTipDialog)paramBaseQQAppInterface).a(((ColdPalaceHelper)localObject).a(0));
-        ReportController.b(null, "dc00898", "", "", "0X800B2C6", "0X800B2C6", paramIColdPalaceBanish.a(), 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800B2C6", "0X800B2C6", paramIColdPalaceBanish.f(), 0, "", "", "", "");
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.qqexpand.widget.ColdPalaceTipDialog");
@@ -114,25 +114,25 @@ public final class AioLimitColdPalaceHelper$Companion
       if (paramBaseQQAppInterface == null) {
         return;
       }
-      paramBaseQQAppInterface = ColdPalaceHelper.a.a(paramBaseQQAppInterface);
+      paramBaseQQAppInterface = ColdPalaceHelper.f.a(paramBaseQQAppInterface);
       String str = paramBaseQQAppInterface.a(1);
       if ((paramContext instanceof ChatSettingActivity))
       {
-        QQToast.a(paramContext, (CharSequence)str, 1).a();
+        QQToast.makeText(paramContext, (CharSequence)str, 1).show();
       }
       else
       {
-        Dialog localDialog = paramIColdPalaceBanish.a();
+        Dialog localDialog = paramIColdPalaceBanish.c();
         if (localDialog != null) {
           localDialog.dismiss();
         }
-        paramIColdPalaceBanish.a((Dialog)DialogUtil.a(paramContext, 230, str, paramBaseQQAppInterface.a(2), 2131690728, 2131698792, (DialogInterface.OnClickListener)new AioLimitColdPalaceHelper.Companion.doOnShowColdPalaceLimitTip.1(paramIColdPalaceBanish), (DialogInterface.OnClickListener)new AioLimitColdPalaceHelper.Companion.doOnShowColdPalaceLimitTip.2(paramIColdPalaceBanish)));
-        paramBaseQQAppInterface = paramIColdPalaceBanish.a();
+        paramIColdPalaceBanish.a((Dialog)DialogUtil.a(paramContext, 230, str, paramBaseQQAppInterface.a(2), 2131887648, 2131896754, (DialogInterface.OnClickListener)new AioLimitColdPalaceHelper.Companion.doOnShowColdPalaceLimitTip.1(paramIColdPalaceBanish), (DialogInterface.OnClickListener)new AioLimitColdPalaceHelper.Companion.doOnShowColdPalaceLimitTip.2(paramIColdPalaceBanish)));
+        paramBaseQQAppInterface = paramIColdPalaceBanish.c();
         if (paramBaseQQAppInterface != null) {
           paramBaseQQAppInterface.show();
         }
       }
-      ReportController.b(null, "dc00898", "", "", "0X800B2CA", "0X800B2CA", paramIColdPalaceBanish.a(), 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B2CA", "0X800B2CA", paramIColdPalaceBanish.f(), 0, "", "", "", "");
     }
   }
   
@@ -156,9 +156,9 @@ public final class AioLimitColdPalaceHelper$Companion
         paramBaseQQAppInterface = (Context)BaseApplicationImpl.getContext();
         paramIColdPalaceBanish = BaseApplicationImpl.getContext();
         Intrinsics.checkExpressionValueIsNotNull(paramIColdPalaceBanish, "BaseApplicationImpl.getContext()");
-        paramBaseQQAppInterface = QQToast.a(paramBaseQQAppInterface, 2, (CharSequence)paramIColdPalaceBanish.getResources().getString(2131698800), 1);
+        paramBaseQQAppInterface = QQToast.makeText(paramBaseQQAppInterface, 2, (CharSequence)paramIColdPalaceBanish.getResources().getString(2131896763), 1);
         paramContext = (BaseActivity)paramContext;
-        paramBaseQQAppInterface.b(paramContext.getTitleBarHeight());
+        paramBaseQQAppInterface.show(paramContext.getTitleBarHeight());
         paramContext.finish();
         ReportController.b(null, "dc00898", "", "", "0X800B2C8", "0X800B2C8", 1, 0, "", "", "", "");
       }
@@ -173,7 +173,7 @@ public final class AioLimitColdPalaceHelper$Companion
           paramBaseQQAppInterface = (Context)BaseApplicationImpl.getContext();
           paramIColdPalaceBanish = BaseApplicationImpl.getContext();
           Intrinsics.checkExpressionValueIsNotNull(paramIColdPalaceBanish, "BaseApplicationImpl.getContext()");
-          QQToast.a(paramBaseQQAppInterface, 1, (CharSequence)paramIColdPalaceBanish.getResources().getString(2131698799), 1).b(((BaseActivity)paramContext).getTitleBarHeight());
+          QQToast.makeText(paramBaseQQAppInterface, 1, (CharSequence)paramIColdPalaceBanish.getResources().getString(2131896762), 1).show(((BaseActivity)paramContext).getTitleBarHeight());
         }
         ReportController.b(null, "dc00898", "", "", "0X800B2C8", "0X800B2C8", 2, 0, "", "", "", "");
       }
@@ -192,7 +192,7 @@ public final class AioLimitColdPalaceHelper$Companion
   public final void a(@NotNull IColdPalaceBanish paramIColdPalaceBanish)
   {
     Intrinsics.checkParameterIsNotNull(paramIColdPalaceBanish, "iBanish");
-    paramIColdPalaceBanish = paramIColdPalaceBanish.a();
+    paramIColdPalaceBanish = paramIColdPalaceBanish.c();
     if (paramIColdPalaceBanish != null) {
       paramIColdPalaceBanish.dismiss();
     }
@@ -209,28 +209,28 @@ public final class AioLimitColdPalaceHelper$Companion
       if (paramBaseQQAppInterface == null) {
         return;
       }
-      ColdPalaceHelper localColdPalaceHelper = ColdPalaceHelper.a.a(paramBaseQQAppInterface);
+      ColdPalaceHelper localColdPalaceHelper = ColdPalaceHelper.f.a(paramBaseQQAppInterface);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("doOnBanishColdPalaceClick skillTimesLeft:");
-        localStringBuilder.append(localColdPalaceHelper.a());
+        localStringBuilder.append(localColdPalaceHelper.h());
         localStringBuilder.append(" from:");
-        localStringBuilder.append(paramIColdPalaceBanish.a());
+        localStringBuilder.append(paramIColdPalaceBanish.f());
         QLog.i("AioLimitColdPalaceHelper", 2, localStringBuilder.toString());
       }
-      if ((localColdPalaceHelper.a() <= 0) && (localColdPalaceHelper.a() != -2147483648)) {
+      if ((localColdPalaceHelper.h() <= 0) && (localColdPalaceHelper.h() != -2147483648)) {
         ((Companion)this).a(paramBaseQQAppInterface, paramContext, paramIColdPalaceBanish);
       } else {
         ((Companion)this).a(paramBaseQQAppInterface, paramContext, paramInt, paramString, paramIColdPalaceBanish);
       }
-      ReportController.b(null, "dc00898", "", "", "0X800B2C4", "0X800B2C4", paramIColdPalaceBanish.a(), 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B2C4", "0X800B2C4", paramIColdPalaceBanish.f(), 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.AioLimitColdPalaceHelper.Companion
  * JD-Core Version:    0.7.0.1
  */

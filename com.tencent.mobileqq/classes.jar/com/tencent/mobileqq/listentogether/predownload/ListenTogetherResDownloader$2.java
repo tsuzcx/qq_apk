@@ -37,15 +37,15 @@ class ListenTogetherResDownloader$2
     localObject2 = (ListenTogetherResDownloader.MusicReqInfo)localObject2[1];
     if (bool)
     {
-      ((ListenTogetherResDownloader.MusicReqInfo)localObject2).a = 2;
-      this.a.a(((MusicInfo)localObject1).a);
+      ((ListenTogetherResDownloader.MusicReqInfo)localObject2).d = 2;
+      this.a.c(((MusicInfo)localObject1).a);
     }
     else
     {
       if (localFile.exists()) {
         localFile.delete();
       }
-      ((ListenTogetherResDownloader.MusicReqInfo)localObject2).a = 3;
+      ((ListenTogetherResDownloader.MusicReqInfo)localObject2).d = 3;
       ListenTogetherResDownloader.a(this.a, (MusicInfo)localObject1);
     }
     ThreadManager.getSubThreadHandler().post(new ListenTogetherResDownloader.2.1(this, paramNetResp, bool, (MusicInfo)localObject1));
@@ -58,7 +58,7 @@ class ListenTogetherResDownloader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.predownload.ListenTogetherResDownloader.2
  * JD-Core Version:    0.7.0.1
  */

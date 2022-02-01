@@ -19,7 +19,7 @@ import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 import com.tencent.mobileqq.kandian.biz.account.RIJUserLevelDialog;
 import com.tencent.mobileqq.kandian.biz.account.RIJUserLevelDialog.DialogSettingInfo;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyBaseViewController;
 import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
 import com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoView;
@@ -30,7 +30,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsType;
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.handler.TopicInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.NetResp;
@@ -46,8 +45,8 @@ import mqq.app.AppRuntime;
 public class ReadInJoyUtils
 {
   public static String a;
-  public static HashMap<Integer, ReadInJoyBaseViewController> a = new HashMap();
-  public static volatile boolean a;
+  public static volatile boolean b;
+  public static HashMap<Integer, ReadInJoyBaseViewController> c = new HashMap();
   
   public static int a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
@@ -68,7 +67,7 @@ public class ReadInJoyUtils
   
   public static String a()
   {
-    SharedPreferences localSharedPreferences = RIJSPUtils.a(a(), true, true);
+    SharedPreferences localSharedPreferences = RIJSPUtils.a(b(), true, true);
     String str2 = localSharedPreferences.getString("iid", "");
     String str1 = Aladdin.getConfig(454).getString("key_for_iid", "");
     if (TextUtils.isEmpty(str2)) {
@@ -85,17 +84,12 @@ public class ReadInJoyUtils
     return a(localSharedPreferences, str1);
   }
   
-  public static String a(int paramInt)
-  {
-    return BaseApplication.getContext().getResources().getString(paramInt);
-  }
-  
   private static String a(SharedPreferences paramSharedPreferences, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
-    EncryptUinHandler localEncryptUinHandler = new EncryptUinHandler((AppInterface)RIJQQAppInterfaceUtil.a());
+    EncryptUinHandler localEncryptUinHandler = new EncryptUinHandler((AppInterface)RIJQQAppInterfaceUtil.e());
     localEncryptUinHandler.a(new ReadInJoyUtils.1(paramSharedPreferences, paramString));
     return localEncryptUinHandler.a();
   }
@@ -113,10 +107,10 @@ public class ReadInJoyUtils
     //   1: astore_3
     //   2: aload_0
     //   3: ifnull +166 -> 169
-    //   6: new 121	java/io/ByteArrayOutputStream
+    //   6: new 110	java/io/ByteArrayOutputStream
     //   9: dup
     //   10: sipush 1024
-    //   13: invokespecial 124	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   13: invokespecial 113	java/io/ByteArrayOutputStream:<init>	(I)V
     //   16: astore 4
     //   18: aload 4
     //   20: astore_3
@@ -124,14 +118,14 @@ public class ReadInJoyUtils
     //   22: aload_1
     //   23: iload_2
     //   24: aload 4
-    //   26: invokevirtual 130	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   26: invokevirtual 119	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   29: pop
     //   30: aload 4
     //   32: astore_3
     //   33: aload 4
-    //   35: invokevirtual 134	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   35: invokevirtual 123	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   38: iconst_2
-    //   39: invokestatic 140	com/tencent/mobileqq/utils/Base64Util:encodeToString	([BI)Ljava/lang/String;
+    //   39: invokestatic 129	com/tencent/mobileqq/utils/Base64Util:encodeToString	([BI)Ljava/lang/String;
     //   42: astore_0
     //   43: aload 4
     //   45: astore_1
@@ -148,55 +142,55 @@ public class ReadInJoyUtils
     //   63: aload 4
     //   65: astore_3
     //   66: aload_0
-    //   67: invokevirtual 143	java/lang/Exception:printStackTrace	()V
+    //   67: invokevirtual 132	java/lang/Exception:printStackTrace	()V
     //   70: aload 4
     //   72: astore_3
-    //   73: invokestatic 149	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   73: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   76: ifeq +15 -> 91
     //   79: aload 4
     //   81: astore_3
-    //   82: ldc 151
+    //   82: ldc 140
     //   84: iconst_2
-    //   85: ldc 153
+    //   85: ldc 142
     //   87: aload_0
-    //   88: invokestatic 157	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   88: invokestatic 145	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   91: aload 4
     //   93: ifnull +36 -> 129
     //   96: aload 4
-    //   98: invokevirtual 160	java/io/ByteArrayOutputStream:flush	()V
+    //   98: invokevirtual 148	java/io/ByteArrayOutputStream:flush	()V
     //   101: aload 4
-    //   103: invokevirtual 163	java/io/ByteArrayOutputStream:close	()V
+    //   103: invokevirtual 151	java/io/ByteArrayOutputStream:close	()V
     //   106: goto +23 -> 129
     //   109: astore_0
     //   110: aload_0
-    //   111: invokevirtual 164	java/io/IOException:printStackTrace	()V
-    //   114: invokestatic 149	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   111: invokevirtual 152	java/io/IOException:printStackTrace	()V
+    //   114: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   117: ifeq +12 -> 129
-    //   120: ldc 151
+    //   120: ldc 140
     //   122: iconst_2
-    //   123: ldc 153
+    //   123: ldc 142
     //   125: aload_0
-    //   126: invokestatic 157	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   126: invokestatic 145	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   129: aconst_null
     //   130: areturn
     //   131: astore_0
     //   132: aload_3
     //   133: ifnull +34 -> 167
     //   136: aload_3
-    //   137: invokevirtual 160	java/io/ByteArrayOutputStream:flush	()V
+    //   137: invokevirtual 148	java/io/ByteArrayOutputStream:flush	()V
     //   140: aload_3
-    //   141: invokevirtual 163	java/io/ByteArrayOutputStream:close	()V
+    //   141: invokevirtual 151	java/io/ByteArrayOutputStream:close	()V
     //   144: goto +23 -> 167
     //   147: astore_1
     //   148: aload_1
-    //   149: invokevirtual 164	java/io/IOException:printStackTrace	()V
-    //   152: invokestatic 149	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   149: invokevirtual 152	java/io/IOException:printStackTrace	()V
+    //   152: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   155: ifeq +12 -> 167
-    //   158: ldc 151
+    //   158: ldc 140
     //   160: iconst_2
-    //   161: ldc 153
+    //   161: ldc 142
     //   163: aload_1
-    //   164: invokestatic 157	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   164: invokestatic 145	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   167: aload_0
     //   168: athrow
     //   169: aconst_null
@@ -206,21 +200,21 @@ public class ReadInJoyUtils
     //   173: aload_1
     //   174: ifnull +33 -> 207
     //   177: aload_1
-    //   178: invokevirtual 160	java/io/ByteArrayOutputStream:flush	()V
+    //   178: invokevirtual 148	java/io/ByteArrayOutputStream:flush	()V
     //   181: aload_1
-    //   182: invokevirtual 163	java/io/ByteArrayOutputStream:close	()V
+    //   182: invokevirtual 151	java/io/ByteArrayOutputStream:close	()V
     //   185: aload_0
     //   186: areturn
     //   187: astore_1
     //   188: aload_1
-    //   189: invokevirtual 164	java/io/IOException:printStackTrace	()V
-    //   192: invokestatic 149	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   189: invokevirtual 152	java/io/IOException:printStackTrace	()V
+    //   192: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   195: ifeq +12 -> 207
-    //   198: ldc 151
+    //   198: ldc 140
     //   200: iconst_2
-    //   201: ldc 153
+    //   201: ldc 142
     //   203: aload_1
-    //   204: invokestatic 157	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   204: invokestatic 145	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   207: aload_0
     //   208: areturn
     // Local variable table:
@@ -248,18 +242,7 @@ public class ReadInJoyUtils
   
   public static String a(String paramString)
   {
-    return RIJAppSetting.a(paramString);
-  }
-  
-  @Deprecated
-  public static AppRuntime a()
-  {
-    return RIJQQAppInterfaceUtil.a();
-  }
-  
-  public static void a()
-  {
-    com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.a = -1;
+    return RIJAppSetting.b(paramString);
   }
   
   public static void a(int paramInt)
@@ -308,6 +291,7 @@ public class ReadInJoyUtils
   {
     float[] arrayOfFloat = new float[2];
     a(paramView, arrayOfFloat);
+    paramAbsBaseArticleInfo.invalidateProteusTemplateBean();
     ReadInJoyLogicEngineEventDispatcher.a().a(new ReadInJoyUtils.2(paramBoolean, paramAbsBaseArticleInfo, arrayOfFloat));
   }
   
@@ -333,7 +317,7 @@ public class ReadInJoyUtils
     if (!TextUtils.isEmpty(paramString1)) {
       try
       {
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramString1, paramString1, 0, 0, String.valueOf(paramLong), str, paramString2, "", false);
+        PublicAccountReportUtils.a(null, "", paramString1, paramString1, 0, 0, String.valueOf(paramLong), str, paramString2, "", false);
         return;
       }
       catch (Exception paramString1)
@@ -344,11 +328,6 @@ public class ReadInJoyUtils
         QLog.e("ReadInJoyUtils", 1, paramString2.toString());
       }
     }
-  }
-  
-  public static boolean a()
-  {
-    return (((Boolean)RIJSPUtils.a("preload_controller", Boolean.valueOf(true))).booleanValue()) && (ReadInJoyHelper.m());
   }
   
   public static boolean a(Context paramContext)
@@ -397,7 +376,7 @@ public class ReadInJoyUtils
     {
       try
       {
-        if (b()) {
+        if (h()) {
           return a(paramString, paramInt, paramBundle2);
         }
         BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
@@ -422,18 +401,45 @@ public class ReadInJoyUtils
   
   public static Integer b(Context paramContext, String paramString)
   {
-    return RIJJumpUtils.a(paramContext, paramString);
+    return RIJJumpUtils.c(paramContext, paramString);
+  }
+  
+  public static String b(int paramInt)
+  {
+    return BaseApplication.getContext().getResources().getString(paramInt);
   }
   
   @Deprecated
-  public static String b()
+  public static AppRuntime b()
+  {
+    return RIJQQAppInterfaceUtil.e();
+  }
+  
+  @Deprecated
+  public static String c()
   {
     return RIJDeviceUtil.a();
   }
   
-  public static void b() {}
+  @Deprecated
+  public static String d()
+  {
+    return RIJDeviceUtil.b();
+  }
   
-  private static boolean b()
+  public static void e()
+  {
+    com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.a = -1;
+  }
+  
+  public static void f() {}
+  
+  public static boolean g()
+  {
+    return (((Boolean)RIJSPUtils.b("preload_controller", Boolean.valueOf(true))).booleanValue()) && (ReadInJoyHelper.w());
+  }
+  
+  private static boolean h()
   {
     AladdinConfig localAladdinConfig = Aladdin.getConfig(424);
     boolean bool = false;
@@ -442,16 +448,10 @@ public class ReadInJoyUtils
     }
     return bool;
   }
-  
-  @Deprecated
-  public static String c()
-  {
-    return RIJDeviceUtil.b();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils
  * JD-Core Version:    0.7.0.1
  */

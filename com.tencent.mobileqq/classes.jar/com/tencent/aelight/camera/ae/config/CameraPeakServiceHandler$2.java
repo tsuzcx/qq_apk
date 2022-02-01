@@ -10,12 +10,12 @@ class CameraPeakServiceHandler$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), 2064515250, 1).a();
+    QQToast.makeText(BaseApplicationImpl.getApplication(), 2064187597, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.config.CameraPeakServiceHandler.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,40 +13,40 @@ import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
 public class ArticleBasicInfo
 {
   public String a;
-  public ArrayList<articlesummary.PGCPicInfo> a;
   public String b;
-  public String c;
+  public ArrayList<articlesummary.PGCPicInfo> c;
+  public String d;
   
   public ArticleBasicInfo(articlesummary.ArticleBasicInfo paramArticleBasicInfo)
   {
     if (paramArticleBasicInfo.rowkey.has()) {
-      this.jdField_a_of_type_JavaLangString = paramArticleBasicInfo.rowkey.get();
+      this.a = paramArticleBasicInfo.rowkey.get();
     }
     if (paramArticleBasicInfo.title.has()) {
       this.b = paramArticleBasicInfo.title.get();
     }
     if (paramArticleBasicInfo.jump_url.has()) {
-      this.c = paramArticleBasicInfo.jump_url.get();
+      this.d = paramArticleBasicInfo.jump_url.get();
     }
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.c = new ArrayList();
     if (paramArticleBasicInfo.msg_pgc_pic_info_list.has()) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArticleBasicInfo.msg_pgc_pic_info_list.get());
+      this.c.addAll(paramArticleBasicInfo.msg_pgc_pic_info_list.get());
     }
   }
   
   public articlesummary.ArticleBasicInfo a()
   {
     articlesummary.ArticleBasicInfo localArticleBasicInfo = new articlesummary.ArticleBasicInfo();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localArticleBasicInfo.rowkey.set(this.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.a)) {
+      localArticleBasicInfo.rowkey.set(this.a);
     }
     if (!TextUtils.isEmpty(this.b)) {
       localArticleBasicInfo.title.set(this.b);
     }
-    if (!TextUtils.isEmpty(this.c)) {
-      localArticleBasicInfo.jump_url.set(this.c);
+    if (!TextUtils.isEmpty(this.d)) {
+      localArticleBasicInfo.jump_url.set(this.d);
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.c;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -70,7 +70,7 @@ public class ArticleBasicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.ArticleBasicInfo
  * JD-Core Version:    0.7.0.1
  */

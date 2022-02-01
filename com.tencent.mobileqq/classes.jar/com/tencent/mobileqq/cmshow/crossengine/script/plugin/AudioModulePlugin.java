@@ -2,7 +2,10 @@ package com.tencent.mobileqq.cmshow.crossengine.script.plugin;
 
 import com.tencent.mobileqq.apollo.audio.ApolloMusicPlayer;
 import com.tencent.mobileqq.cmshow.crossengine.model.CEArgument;
+import com.tencent.mobileqq.cmshow.engine.EngineType;
 import com.tencent.mobileqq.cmshow.engine.model.Argument;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 import com.tencent.mobileqq.cmshow.engine.script.plugin.PluginCmdConstant.PlugPriority;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -18,26 +21,22 @@ import org.json.JSONObject;
 public final class AudioModulePlugin
   implements IModuleEventPlugin
 {
-  public static final AudioModulePlugin.Companion a;
-  private final ApolloMusicPlayer jdField_a_of_type_ComTencentMobileqqApolloAudioApolloMusicPlayer = new ApolloMusicPlayer();
+  public static final AudioModulePlugin.Companion a = new AudioModulePlugin.Companion(null);
   @NotNull
-  private final PluginCmdConstant.PlugPriority jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority = PluginCmdConstant.PlugPriority.GENERAL;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowCrossengineScriptPluginAudioModulePlugin$Companion = new AudioModulePlugin.Companion(null);
-  }
+  private final PluginCmdConstant.PlugPriority c = PluginCmdConstant.PlugPriority.GENERAL;
+  private final ApolloMusicPlayer d = new ApolloMusicPlayer();
   
   private final JSONObject b(CEArgument paramCEArgument)
   {
-    if (paramCEArgument.b() != null) {
+    if (paramCEArgument.e() != null) {
       try
       {
-        paramCEArgument = new JSONObject(paramCEArgument.b());
-        localObject = paramCEArgument.optString("path");
-        int i = paramCEArgument.optInt("type");
-        int j = paramCEArgument.optInt("loopCount");
-        this.jdField_a_of_type_ComTencentMobileqqApolloAudioApolloMusicPlayer.a(i, j, (String)localObject, -1, -1.0F);
+        localObject = new JSONObject(paramCEArgument.e());
+        paramCEArgument = ((JSONObject)localObject).optString("path");
+        int i = ((JSONObject)localObject).optInt("type");
+        int j = ((JSONObject)localObject).optInt("loopCount");
+        localObject = ApolloResManagerFacade.a.a(EngineType.CE);
+        this.d.a(i, j, paramCEArgument, -1, -1.0F, (IApolloResManager)localObject);
       }
       catch (Exception paramCEArgument)
       {
@@ -52,20 +51,14 @@ public final class AudioModulePlugin
   
   private final JSONObject c(CEArgument paramCEArgument)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloAudioApolloMusicPlayer.a();
+    this.d.a();
     return null;
   }
   
   @NotNull
   public PluginCmdConstant.PlugPriority a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
-  }
-  
-  @NotNull
-  public String a()
-  {
-    return "Audio";
+    return this.c;
   }
   
   @Deprecated(message="ModuleEventPlugin通过handleModuleEvent进行分发", replaceWith=@ReplaceWith(expression="null", imports={}))
@@ -76,18 +69,11 @@ public final class AudioModulePlugin
     return IModuleEventPlugin.DefaultImpls.a(this, paramArgument);
   }
   
-  @Deprecated(message="ModuleEventPlugin依赖moduleName进行分发", replaceWith=@ReplaceWith(expression="emptyList()", imports={}))
-  @NotNull
-  public List<String> a()
-  {
-    return IModuleEventPlugin.DefaultImpls.a(this);
-  }
-  
   @Nullable
   public JSONObject a(@NotNull CEArgument paramCEArgument)
   {
     Intrinsics.checkParameterIsNotNull(paramCEArgument, "argument");
-    String str = paramCEArgument.c();
+    String str = paramCEArgument.f();
     int i = str.hashCode();
     if (i != 3443508)
     {
@@ -101,20 +87,33 @@ public final class AudioModulePlugin
     return IModuleEventPlugin.DefaultImpls.a(this, paramCEArgument);
   }
   
-  public boolean a()
-  {
-    return IModuleEventPlugin.DefaultImpls.a(this);
-  }
-  
   public boolean a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "cmd");
     return IModuleEventPlugin.DefaultImpls.a(this, paramString);
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "Audio";
+  }
+  
+  @Deprecated(message="ModuleEventPlugin依赖moduleName进行分发", replaceWith=@ReplaceWith(expression="emptyList()", imports={}))
+  @NotNull
+  public List<String> c()
+  {
+    return IModuleEventPlugin.DefaultImpls.a(this);
+  }
+  
+  public boolean d()
+  {
+    return IModuleEventPlugin.DefaultImpls.b(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.script.plugin.AudioModulePlugin
  * JD-Core Version:    0.7.0.1
  */

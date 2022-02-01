@@ -17,16 +17,16 @@ class ApkForAppStoreFilePresenter$3
   
   public void a()
   {
-    int i = QFileUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.e());
+    int i = QFileUtils.b(this.a.c.z());
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(i);
     ((StringBuilder)localObject).append("");
     ReportController.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, ((StringBuilder)localObject).toString(), "", "", "");
-    localObject = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a();
+    localObject = this.a.c.f();
     if (localObject != null)
     {
       ((IDownloadController)localObject).a();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(false);
+      this.a.k.d(false);
     }
   }
   
@@ -36,8 +36,8 @@ class ApkForAppStoreFilePresenter$3
     if (localQFileAppStorePromoteManager == null) {
       return;
     }
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.j();
-    if (localQFileAppStorePromoteManager.a())
+    String str = this.a.c.aa();
+    if (localQFileAppStorePromoteManager.b())
     {
       if (!TextUtils.isEmpty(str))
       {
@@ -47,12 +47,12 @@ class ApkForAppStoreFilePresenter$3
       QLog.i("ApkForAppStoreFilePresenter", 1, "app store has installed, but apk package name is null!");
       return;
     }
-    localQFileAppStorePromoteManager.b(this.a.jdField_a_of_type_AndroidAppActivity, str);
+    localQFileAppStorePromoteManager.b(this.a.d, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.ApkForAppStoreFilePresenter.3
  * JD-Core Version:    0.7.0.1
  */

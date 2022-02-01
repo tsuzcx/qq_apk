@@ -12,14 +12,15 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.QQAudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.timi.game.jump.api.ITimiGameParserFactory;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class JumpParserUtil
 {
-  private static volatile JumpParserUtil jdField_a_of_type_ComTencentMobileqqAppParserJumpParserUtil;
-  private ArrayList<JumpParserBean> jdField_a_of_type_JavaUtilArrayList = null;
+  private static volatile JumpParserUtil a;
+  private ArrayList<JumpParserBean> b = null;
   
   private JumpParserUtil()
   {
@@ -44,7 +45,6 @@ public class JumpParserUtil
       {
         a("mqq://shop/apollo_store", localICMShowJumpParserFactory.getJumpParserClass("mqq://shop/apollo_store"));
         a("mqqapi://shop/apollo_store", localICMShowJumpParserFactory.getJumpParserClass("mqqapi://shop/apollo_store"));
-        a("mqqapi://cmshow/game_invite", localICMShowJumpParserFactory.getJumpParserClass("mqqapi://cmshow/game_invite"));
       }
     }
     catch (Throwable localThrowable)
@@ -52,6 +52,7 @@ public class JumpParserUtil
       QLog.e("JumpParserUtil", 1, "register CMShowJumpParser error!", localThrowable);
     }
     a("mqqapi://assistant_setting/ASSISTANT_SETTING", AssistantSettingParser.class);
+    a("mqqapi://gamemsgbox/open", GameMsgBoxParser.class);
     a("mqqapi://expand/openpage", ExtendOpenPageParser.class);
     a("mqqapi://qzone/to_publish_queue", QzonePublishQueueParser.class);
     a("mqqapi://qzone/to_friend_feeds", QzoneFriendFeedsV1AndV2Parser.class);
@@ -73,9 +74,9 @@ public class JumpParserUtil
         a("mqqapi://wxminiapp/launch", localIQWalletJumpParserFactory.getJumpParserClass("mqqapi://wxminiapp/launch"));
       }
     }
-    catch (Exception localException)
+    catch (Exception localException1)
     {
-      QLog.e("JumpParserUtil", 1, localException, new Object[0]);
+      QLog.e("JumpParserUtil", 1, localException1, new Object[0]);
     }
     a("mqqapi://qqnotify/subscribe", QQNotifySettingParser.class);
     a("mqqapi://qqnotify/open", QwalletToNotifyParser.class);
@@ -101,6 +102,7 @@ public class JumpParserUtil
     a("mqqapi://lightapp/open", LightAppOpenParser.class);
     a("mqqapi://qsubscribe", SubScribeParser.class);
     a("mqqapi://qcircle", QCircleParser.class);
+    a("mqqapi://qflash", QFlashShowParser.class);
     a("mqqapi://troop_homework/publish", HomeWorkTroopPublishParser.class);
     a("https://qm.qq.com/cgi-bin/qm/qr", QrCodeParser.class);
     a("mqqapi://avgame/join_room", AVGameShareJoinRoomParser.class);
@@ -112,6 +114,19 @@ public class JumpParserUtil
     a("mqqapi://setting", QQSettingJumpParser.class);
     a("mqqapi://opensdk", OpenSdkJumpParser.class);
     a("mqqapi://TempSessionMessageBox", TempMsgBoxOpenParser.class);
+    a("mqqguild://guild", GuildJumpParser.class);
+    a("mqqapi://qqfile/openmyfile", OpenMyFileParser.class);
+    try
+    {
+      a("mqqapi://esports/open", ((ITimiGameParserFactory)QRoute.api(ITimiGameParserFactory.class)).getJumpParserClass());
+      a("mqqapi://esports/team/create", ((ITimiGameParserFactory)QRoute.api(ITimiGameParserFactory.class)).getTeamCreateParserClass());
+      a("mqqapi://esports/team/join", ((ITimiGameParserFactory)QRoute.api(ITimiGameParserFactory.class)).getTeamJoinParserClass());
+      return;
+    }
+    catch (Exception localException2)
+    {
+      QLog.e("JumpParserUtil", 1, localException2, new Object[0]);
+    }
   }
   
   public static JumpParserResult a(String paramString)
@@ -196,16 +211,16 @@ public class JumpParserUtil
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqAppParserJumpParserUtil == null) {
+      if (a == null) {
         try
         {
-          if (jdField_a_of_type_ComTencentMobileqqAppParserJumpParserUtil == null) {
-            jdField_a_of_type_ComTencentMobileqqAppParserJumpParserUtil = new JumpParserUtil();
+          if (a == null) {
+            a = new JumpParserUtil();
           }
         }
         finally {}
       }
-      paramBaseQQAppInterface = jdField_a_of_type_ComTencentMobileqqAppParserJumpParserUtil.b(paramBaseQQAppInterface, paramContext, paramString);
+      paramBaseQQAppInterface = a.b(paramBaseQQAppInterface, paramContext, paramString);
       return paramBaseQQAppInterface;
     }
     catch (Exception paramBaseQQAppInterface)
@@ -222,7 +237,22 @@ public class JumpParserUtil
     return null;
   }
   
-  private String a(String paramString)
+  private void a(String paramString, Class paramClass)
+  {
+    if (paramClass == null)
+    {
+      QLog.e("JumpParserUtil", 1, "registerParser error: class is null");
+      return;
+    }
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("JumpParserUtil", 1, "registerParser error: urlStartStr is empty");
+      return;
+    }
+    this.b.add(new JumpParserBean(paramString, paramClass));
+  }
+  
+  private String b(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
@@ -278,23 +308,19 @@ public class JumpParserUtil
                                   if (!paramString.startsWith("mqqapi://shop/apollo_store"))
                                   {
                                     str = paramString;
-                                    if (!paramString.startsWith("mqqapi://cmshow/game_invite"))
+                                    if (!paramString.startsWith("mqqapi://assistant_setting/ASSISTANT_SETTING"))
                                     {
+                                      if (paramString.startsWith("mqqapi://trooptogether/open")) {
+                                        return paramString;
+                                      }
                                       str = paramString;
-                                      if (!paramString.startsWith("mqqapi://assistant_setting/ASSISTANT_SETTING"))
+                                      if (paramString.contains("videochat"))
                                       {
-                                        if (paramString.startsWith("mqqapi://trooptogether/open")) {
-                                          return paramString;
-                                        }
                                         str = paramString;
-                                        if (paramString.contains("videochat"))
+                                        if (paramString.contains("uinType=21"))
                                         {
-                                          str = paramString;
-                                          if (paramString.contains("uinType=21"))
-                                          {
-                                            QLog.d("JumpParserUtil", 1, "shouldPreDecodeUrl execute for containing videochat and uinType=21");
-                                            str = URLDecoder.decode(paramString);
-                                          }
+                                          QLog.d("JumpParserUtil", 1, "shouldPreDecodeUrl execute for containing videochat and uinType=21");
+                                          str = URLDecoder.decode(paramString);
                                         }
                                       }
                                     }
@@ -317,24 +343,9 @@ public class JumpParserUtil
     return str;
   }
   
-  private void a(String paramString, Class paramClass)
-  {
-    if (paramClass == null)
-    {
-      QLog.e("JumpParserUtil", 1, "registerParser error: class is null");
-      return;
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("JumpParserUtil", 1, "registerParser error: urlStartStr is empty");
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new JumpParserBean(paramString, paramClass));
-  }
-  
   public ArrayList<JumpParserBean> a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.b;
   }
   
   public JumpAction b(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString)
@@ -348,12 +359,12 @@ public class JumpParserUtil
       QLog.d("JumpParserUtil", 1, "doParse url is null, return");
       return null;
     }
-    localObject = a(paramString);
+    localObject = b(paramString);
     paramString = (String)localObject;
     if (QQAudioHelper.b())
     {
       paramString = (String)localObject;
-      if (QQAudioHelper.a(8) == 1)
+      if (QQAudioHelper.b(8) == 1)
       {
         paramString = (String)localObject;
         if (((String)localObject).startsWith("mqqconferenceflyticket://")) {
@@ -380,7 +391,7 @@ public class JumpParserUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.JumpParserUtil
  * JD-Core Version:    0.7.0.1
  */

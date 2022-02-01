@@ -7,6 +7,7 @@ import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.danmaku.QQDanmakuManager;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.video.danmaku.DanmakuDetail;
 import com.tencent.mobileqq.kandian.biz.video.danmaku.DanmakuEventCallback;
@@ -45,7 +46,7 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/glue/viola/components/VideoDanmakuComponent;", "Lcom/tencent/viola/ui/component/VDiv;", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuEventCallback;", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/IPlayer;", "Lcom/tencent/biz/richframework/eventbus/SimpleEventReceiver;", "Lcom/tencent/mobileqq/kandian/glue/viola/event/ViolaChannelVisibilityChangedEvent;", "instance", "Lcom/tencent/viola/core/ViolaInstance;", "dom", "Lcom/tencent/viola/ui/dom/DomObject;", "parent", "Lcom/tencent/viola/ui/baseComponent/VComponentContainer;", "(Lcom/tencent/viola/core/ViolaInstance;Lcom/tencent/viola/ui/dom/DomObject;Lcom/tencent/viola/ui/baseComponent/VComponentContainer;)V", "barrageLayoutHorizontal", "", "barrageMarginTop", "", "barrageVideoHeight", "currentTime", "", "danmakuManager", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/RIJDanmakuManager;", "duration", "hasDanmakuDestroy", "rate", "reportList", "", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/ReportInfo;", "addDanmaku", "", "param", "Lorg/json/JSONObject;", "changeParent", "ref", "", "destroy", "destroyDanmakuIfNeed", "doReport", "action", "data", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuDetail;", "getCurrentPosition", "", "getDuration", "getEventClass", "Ljava/util/ArrayList;", "Ljava/lang/Class;", "getReportInfos", "Lorg/json/JSONArray;", "getSrcAttr", "key", "hide", "initComponentHostView", "Lcom/tencent/viola/ui/view/VFrameLayout;", "context", "Landroid/content/Context;", "isReuse", "onActivityDestroy", "onClickReport", "danmakuDetail", "onDanmakuClicked", "onDanmakuExposure", "onGetDanmakuData", "sendDanmakuforbid", "reportInfoList", "onReceiveEvent", "event", "Lcom/tencent/biz/richframework/eventbus/SimpleBaseEvent;", "parseDanmakuConfig", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/RIJDanmakuConfig;", "pause", "recoveryArea", "removedByDiff", "removedByJs", "resume", "seekTo", "position", "setProperty", "", "setVideoBarrageConfig", "json", "show", "start", "stop", "updateAttrs", "attrs", "", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/glue/viola/components/VideoDanmakuComponent;", "Lcom/tencent/viola/ui/component/VDiv;", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuEventCallback;", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/IPlayer;", "Lcom/tencent/biz/richframework/eventbus/SimpleEventReceiver;", "Lcom/tencent/mobileqq/kandian/glue/viola/event/ViolaChannelVisibilityChangedEvent;", "instance", "Lcom/tencent/viola/core/ViolaInstance;", "dom", "Lcom/tencent/viola/ui/dom/DomObject;", "parent", "Lcom/tencent/viola/ui/baseComponent/VComponentContainer;", "(Lcom/tencent/viola/core/ViolaInstance;Lcom/tencent/viola/ui/dom/DomObject;Lcom/tencent/viola/ui/baseComponent/VComponentContainer;)V", "barrageLayoutHorizontal", "", "barrageMarginTop", "", "barrageVideoHeight", "currentTime", "", "danmakuManager", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/RIJDanmakuManager;", "duration", "hasDanmakuDestroy", "rate", "reportList", "", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/ReportInfo;", "addDanmaku", "", "param", "Lorg/json/JSONObject;", "changeParent", "ref", "", "destroy", "destroyDanmakuIfNeed", "doReport", "action", "data", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuDetail;", "getCurrentPosition", "", "getDuration", "getEventClass", "Ljava/util/ArrayList;", "Ljava/lang/Class;", "getReportInfos", "Lorg/json/JSONArray;", "getSrcAttr", "key", "hide", "initComponentHostView", "Lcom/tencent/viola/ui/view/VFrameLayout;", "context", "Landroid/content/Context;", "isReuse", "onActivityDestroy", "onClickReport", "danmakuDetail", "onDanmakuClicked", "onDanmakuExposure", "onGetDanmakuData", "sendDanmakuForbid", "reportInfoList", "onReceiveEvent", "event", "Lcom/tencent/biz/richframework/eventbus/SimpleBaseEvent;", "parseDanmakuConfig", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/RIJDanmakuConfig;", "pause", "recoveryArea", "removedByDiff", "removedByJs", "resume", "seekTo", "position", "setDisableSync", "forceVsync", "(Ljava/lang/Boolean;)V", "setProperty", "", "setUseUiTime", "useUiTime", "setVideoBarrageConfig", "json", "show", "start", "stop", "updateAttrs", "attrs", "", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class VideoDanmakuComponent
   extends VDiv
   implements SimpleEventReceiver<ViolaChannelVisibilityChangedEvent>, DanmakuEventCallback, IPlayer
@@ -107,15 +108,34 @@ public final class VideoDanmakuComponent
       this.hasDanmakuDestroy = true;
       RIJDanmakuManager localRIJDanmakuManager = this.danmakuManager;
       if (localRIJDanmakuManager != null) {
-        localRIJDanmakuManager.g();
+        localRIJDanmakuManager.j();
       }
+      this.danmakuManager = ((RIJDanmakuManager)null);
       SimpleEventBus.getInstance().unRegisterReceiver((SimpleEventReceiver)this);
     }
   }
   
   private final void doReport(String paramString, DanmakuDetail paramDanmakuDetail)
   {
-    ThreadManager.excute((Runnable)new VideoDanmakuComponent.doReport.1(this, paramDanmakuDetail, System.currentTimeMillis(), paramString), 16, null, true);
+    long l = System.currentTimeMillis();
+    String str = paramDanmakuDetail.a().f();
+    if (str != null)
+    {
+      int i;
+      if (((CharSequence)str).length() > 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i == 1)
+      {
+        str = paramDanmakuDetail.a().f();
+        break label64;
+      }
+    }
+    str = getSrcAttr("rowkey");
+    label64:
+    ThreadManager.excute((Runnable)new VideoDanmakuComponent.doReport.1(this, str, l, paramDanmakuDetail, paramString), 16, null, true);
   }
   
   private final JSONArray getReportInfos()
@@ -128,7 +148,7 @@ public final class VideoDanmakuComponent
       while (((Iterator)localObject).hasNext())
       {
         ReportInfo localReportInfo = (ReportInfo)((Iterator)localObject).next();
-        localJSONArray.put(new JSONObject().put("type", localReportInfo.a()).put("text", localReportInfo.a()));
+        localJSONArray.put(new JSONObject().put("type", localReportInfo.a()).put("text", localReportInfo.b()));
       }
     }
     return localJSONArray;
@@ -166,15 +186,15 @@ public final class VideoDanmakuComponent
     if (localObject1 != null)
     {
       if (((JSONObject)localObject1).length() == 0) {
-        return new RIJDanmakuConfig(0, 0.0F, 0.0F, 0L, 0, 0, 0, 0.0F, 0, 511, null);
+        return new RIJDanmakuConfig(0, 0.0F, 0.0F, 0L, 0, 0, 0, 0.0F, 0, 0, 0L, 0L, 4095, null);
       }
       int i = ViolaUtils.getInt(((JSONObject)localObject1).opt("lineCount"));
       float f1 = ViolaUtils.getFloat(((JSONObject)localObject1).opt("lineSpace"));
       float f2 = ViolaUtils.getFloat(((JSONObject)localObject1).opt("columnSpace"));
       long l = ViolaUtils.getLong(((JSONObject)localObject1).opt("slideDuration"));
-      return new RIJDanmakuConfig(i, f1, f2, 1000 * l, ViolaUtils.getInt(((JSONObject)localObject1).opt("maxWordCount")), ViolaUtils.getColor(ViolaUtils.getString(((JSONObject)localObject1).opt("textColor"), "")), ViolaUtils.getColor(ViolaUtils.getString(((JSONObject)localObject1).opt("textStrokeColor"), "")), ViolaUtils.getFloat(((JSONObject)localObject1).opt("textFontSize")), ViolaUtils.getInt(((JSONObject)localObject1).opt("clickDuration"), 6));
+      return new RIJDanmakuConfig(i, f1, f2, 1000 * l, ViolaUtils.getInt(((JSONObject)localObject1).opt("maxWordCount")), ViolaUtils.getColor(ViolaUtils.getString(((JSONObject)localObject1).opt("textColor"), "")), ViolaUtils.getColor(ViolaUtils.getString(((JSONObject)localObject1).opt("textStrokeColor"), "")), ViolaUtils.getFloat(((JSONObject)localObject1).opt("textFontSize")), ViolaUtils.getInt(((JSONObject)localObject1).opt("clickDuration"), 6), ViolaUtils.getInt(((JSONObject)localObject1).opt("numShowLike"), -1), (ViolaUtils.getFloat(((JSONObject)localObject1).opt("guideDuration"), Float.valueOf(1.0F)) * (float)1000L), (ViolaUtils.getFloat(((JSONObject)localObject1).opt("danmakuDelayTime"), Float.valueOf(0.5F)) * 1000));
     }
-    return new RIJDanmakuConfig(0, 0.0F, 0.0F, 0L, 0, 0, 0, 0.0F, 0, 511, null);
+    return new RIJDanmakuConfig(0, 0.0F, 0.0F, 0L, 0, 0, 0, 0.0F, 0, 0, 0L, 0L, 4095, null);
   }
   
   @JSMethod
@@ -276,6 +296,13 @@ public final class VideoDanmakuComponent
   public void destroy()
   {
     super.destroy();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("destroy: ");
+      localStringBuilder.append(hashCode());
+      QLog.d("VDiv", 2, localStringBuilder.toString());
+    }
     destroyDanmakuIfNeed();
   }
   
@@ -300,7 +327,7 @@ public final class VideoDanmakuComponent
   {
     RIJDanmakuManager localRIJDanmakuManager = this.danmakuManager;
     if (localRIJDanmakuManager != null) {
-      localRIJDanmakuManager.a();
+      localRIJDanmakuManager.d();
     }
   }
   
@@ -308,10 +335,11 @@ public final class VideoDanmakuComponent
   protected VFrameLayout initComponentHostView(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    QQDanmakuManager.a();
     Object localObject = getDomObject();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "domObject");
     boolean bool = ViolaUtils.getBoolean(((DomObject)localObject).getAttributes().get("useTextureView"));
-    localObject = ReadInJoyUtils.a();
+    localObject = ReadInJoyUtils.b();
     if (localObject != null)
     {
       this.danmakuManager = new RIJDanmakuManager(paramContext, (QQAppInterface)localObject, bool, parseDanmakuConfig(), (DanmakuEventCallback)this);
@@ -349,8 +377,8 @@ public final class VideoDanmakuComponent
   public void onClickReport(@NotNull DanmakuDetail paramDanmakuDetail)
   {
     Intrinsics.checkParameterIsNotNull(paramDanmakuDetail, "danmakuDetail");
-    JSONObject localJSONObject = new JSONObject().put("id", paramDanmakuDetail.a().a()).put("type", paramDanmakuDetail.a().a()).put("source", paramDanmakuDetail.a().b()).put("content", paramDanmakuDetail.a().b()).put("time", paramDanmakuDetail.a().a()).put("rowkey", paramDanmakuDetail.a().c());
-    paramDanmakuDetail = new JSONObject().put("uin", paramDanmakuDetail.a().a()).put("source", paramDanmakuDetail.a().a()).put("nickName", paramDanmakuDetail.a().b()).put("avatar", paramDanmakuDetail.a().c());
+    JSONObject localJSONObject = new JSONObject().put("id", paramDanmakuDetail.a().a()).put("type", paramDanmakuDetail.a().b()).put("source", paramDanmakuDetail.a().c()).put("content", paramDanmakuDetail.a().d()).put("time", paramDanmakuDetail.a().e()).put("rowkey", paramDanmakuDetail.a().f());
+    paramDanmakuDetail = new JSONObject().put("uin", paramDanmakuDetail.b().a()).put("source", paramDanmakuDetail.b().b()).put("nickName", paramDanmakuDetail.b().c()).put("avatar", paramDanmakuDetail.b().d());
     fireEvent("onInform", new JSONObject().put("danmakuInfo", localJSONObject).put("userInfo", paramDanmakuDetail).put("reportInfos", getReportInfos()));
   }
   
@@ -363,7 +391,16 @@ public final class VideoDanmakuComponent
   public void onDanmakuExposure(@NotNull DanmakuDetail paramDanmakuDetail)
   {
     Intrinsics.checkParameterIsNotNull(paramDanmakuDetail, "data");
-    doReport("0X800BABE", paramDanmakuDetail);
+    RIJDanmakuManager localRIJDanmakuManager = this.danmakuManager;
+    if ((localRIJDanmakuManager != null) && (localRIJDanmakuManager.f() == true))
+    {
+      if (Intrinsics.areEqual(paramDanmakuDetail.a().a(), "danmukaipin"))
+      {
+        doReport("0X800BE1C", paramDanmakuDetail);
+        return;
+      }
+      doReport("0X800BABE", paramDanmakuDetail);
+    }
   }
   
   public void onGetDanmakuData(boolean paramBoolean, @NotNull ArrayList<ReportInfo> paramArrayList)
@@ -384,14 +421,14 @@ public final class VideoDanmakuComponent
         {
           paramSimpleBaseEvent = this.danmakuManager;
           if (paramSimpleBaseEvent != null) {
-            paramSimpleBaseEvent.b();
+            paramSimpleBaseEvent.e();
           }
         }
         else
         {
           paramSimpleBaseEvent = this.danmakuManager;
           if (paramSimpleBaseEvent != null) {
-            paramSimpleBaseEvent.a();
+            paramSimpleBaseEvent.d();
           }
         }
       }
@@ -403,7 +440,7 @@ public final class VideoDanmakuComponent
   {
     RIJDanmakuManager localRIJDanmakuManager = this.danmakuManager;
     if (localRIJDanmakuManager != null) {
-      localRIJDanmakuManager.c();
+      localRIJDanmakuManager.g();
     }
   }
   
@@ -412,19 +449,33 @@ public final class VideoDanmakuComponent
   {
     RIJDanmakuManager localRIJDanmakuManager = this.danmakuManager;
     if (localRIJDanmakuManager != null) {
-      localRIJDanmakuManager.i();
+      localRIJDanmakuManager.l();
     }
   }
   
   public void removedByDiff()
   {
     super.removedByDiff();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removedByDiff: ");
+      localStringBuilder.append(hashCode());
+      QLog.d("VDiv", 2, localStringBuilder.toString());
+    }
     destroyDanmakuIfNeed();
   }
   
   public void removedByJs()
   {
     super.removedByJs();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removedByJs: ");
+      localStringBuilder.append(hashCode());
+      QLog.d("VDiv", 2, localStringBuilder.toString());
+    }
     destroyDanmakuIfNeed();
   }
   
@@ -433,7 +484,7 @@ public final class VideoDanmakuComponent
   {
     RIJDanmakuManager localRIJDanmakuManager = this.danmakuManager;
     if (localRIJDanmakuManager != null) {
-      localRIJDanmakuManager.d();
+      localRIJDanmakuManager.h();
     }
   }
   
@@ -443,6 +494,15 @@ public final class VideoDanmakuComponent
     RIJDanmakuManager localRIJDanmakuManager = this.danmakuManager;
     if (localRIJDanmakuManager != null) {
       localRIJDanmakuManager.a(paramInt);
+    }
+  }
+  
+  @VComponentProp(name="disableSync")
+  public final void setDisableSync(@Nullable Boolean paramBoolean)
+  {
+    RIJDanmakuManager localRIJDanmakuManager = this.danmakuManager;
+    if (localRIJDanmakuManager != null) {
+      localRIJDanmakuManager.b(paramBoolean);
     }
   }
   
@@ -502,10 +562,18 @@ public final class VideoDanmakuComponent
     return super.setProperty(paramString, paramObject);
   }
   
-  @VComponentProp(name="videoBarrageConfig")
-  public final void setVideoBarrageConfig(@NotNull String paramString)
+  @VComponentProp(name="useUiTime")
+  public final void setUseUiTime(@Nullable Boolean paramBoolean)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "json");
+    RIJDanmakuManager localRIJDanmakuManager = this.danmakuManager;
+    if (localRIJDanmakuManager != null) {
+      localRIJDanmakuManager.a(paramBoolean);
+    }
+  }
+  
+  @VComponentProp(name="videoBarrageConfig")
+  public final void setVideoBarrageConfig(@Nullable JSONObject paramJSONObject)
+  {
     Object localObject = this.danmakuManager;
     if (localObject != null) {
       ((RIJDanmakuManager)localObject).a(parseDanmakuConfig());
@@ -514,7 +582,7 @@ public final class VideoDanmakuComponent
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setVideoBarrageConfig: json=");
-      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(String.valueOf(paramJSONObject));
       QLog.d("VDiv", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -524,7 +592,7 @@ public final class VideoDanmakuComponent
   {
     RIJDanmakuManager localRIJDanmakuManager = this.danmakuManager;
     if (localRIJDanmakuManager != null) {
-      localRIJDanmakuManager.b();
+      localRIJDanmakuManager.e();
     }
   }
   
@@ -547,7 +615,7 @@ public final class VideoDanmakuComponent
   {
     RIJDanmakuManager localRIJDanmakuManager = this.danmakuManager;
     if (localRIJDanmakuManager != null) {
-      localRIJDanmakuManager.e();
+      localRIJDanmakuManager.i();
     }
   }
   
@@ -572,7 +640,7 @@ public final class VideoDanmakuComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.components.VideoDanmakuComponent
  * JD-Core Version:    0.7.0.1
  */

@@ -27,15 +27,15 @@ class ReadInJoyCommentListFragment$10
     QLog.d("ReadInJoyCommentListFragment", 1, localStringBuilder.toString());
     if ((paramRIJBiuAndCommentRespData != null) && (paramRIJBiuAndCommentRespData.a() == 0))
     {
-      RIJBiuAndCommentMixDataManager.a(paramRIJBiuAndCommentRespData.c(), paramRIJBiuAndCommentRespData.a(), paramRIJBiuAndCommentRespData.c(), paramRIJBiuAndCommentRespData.b(), paramRIJBiuAndCommentRespData.a(), paramRIJBiuAndCommentRespData.d(), paramRIJBiuAndCommentRespData.e(), paramRIJBiuAndCommentRespData.a());
+      RIJBiuAndCommentMixDataManager.a(paramRIJBiuAndCommentRespData.g(), paramRIJBiuAndCommentRespData.b(), paramRIJBiuAndCommentRespData.h(), paramRIJBiuAndCommentRespData.c(), paramRIJBiuAndCommentRespData.i(), paramRIJBiuAndCommentRespData.j(), paramRIJBiuAndCommentRespData.k(), paramRIJBiuAndCommentRespData.f());
       return;
     }
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131712831), 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131910403), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentListFragment.10
  * JD-Core Version:    0.7.0.1
  */

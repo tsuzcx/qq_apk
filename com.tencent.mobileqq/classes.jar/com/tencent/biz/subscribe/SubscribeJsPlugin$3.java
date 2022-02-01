@@ -12,7 +12,7 @@ class SubscribeJsPlugin$3
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -20,14 +20,14 @@ class SubscribeJsPlugin$3
     {
       localObject = SubscribeUtils.a((Bitmap)localObject);
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("uin", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("uin", this.b);
       localJSONObject.put("avatarData", localObject);
       this.this$0.dispatchJsEvent("getAvatarCallback", localJSONObject, null);
       return;
     }
     catch (JSONException localJSONException)
     {
-      QLog.d(this.this$0.TAG, 2, localJSONException, new Object[0]);
+      QLog.d(this.this$0.mTAG, 2, localJSONException, new Object[0]);
     }
   }
 }

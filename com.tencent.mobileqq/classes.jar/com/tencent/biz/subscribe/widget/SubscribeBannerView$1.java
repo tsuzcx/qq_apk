@@ -14,14 +14,14 @@ class SubscribeBannerView$1
   
   public void onPageSelected(int paramInt)
   {
-    if ((SubscribeBannerView.a(this.a) != null) && (SubscribeBannerView.a(this.a) != null)) {
-      SubscribeBannerView.a(this.a).setDotsSelected(paramInt % SubscribeBannerView.a(this.a).a().size());
+    if ((SubscribeBannerView.a(this.a) != null) && (SubscribeBannerView.b(this.a) != null)) {
+      SubscribeBannerView.a(this.a).setDotsSelected(paramInt % SubscribeBannerView.b(this.a).a().size());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeBannerView.1
  * JD-Core Version:    0.7.0.1
  */

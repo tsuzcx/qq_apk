@@ -1,0 +1,50 @@
+package com.tencent.mobileqq.wink.pick.album.data;
+
+import com.tencent.mobileqq.activity.photo.album.OtherCommonData;
+import java.io.Serializable;
+
+public class WinkAlbumLogicData
+  implements OtherCommonData, Serializable
+{
+  public boolean canMixPhotoAndVideo;
+  public boolean canPickImage;
+  public boolean canPickVideo;
+  public boolean canSwitchSelectionMode;
+  public int defaultSelectTab;
+  public int initialHasPickedNum;
+  public boolean isHideSelectTab;
+  public boolean isSinglePickMode;
+  public int maxSelectNumForMix;
+  public int maxSelectNumForNormal;
+  public int minSelectNumForMix;
+  public int minSelectNumForNormal;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WinkAlbumLogicData{canMixPhotoAndVideo=");
+    localStringBuilder.append(this.canMixPhotoAndVideo);
+    localStringBuilder.append(", minSelectNumForNormal=");
+    localStringBuilder.append(this.minSelectNumForNormal);
+    localStringBuilder.append(", maxSelectNumForNormal=");
+    localStringBuilder.append(this.maxSelectNumForNormal);
+    localStringBuilder.append(", minSelectNumForMix=");
+    localStringBuilder.append(this.minSelectNumForMix);
+    localStringBuilder.append(", maxSelectNumForMix=");
+    localStringBuilder.append(this.maxSelectNumForMix);
+    localStringBuilder.append(", canSwitchSelectionMode=");
+    localStringBuilder.append(this.canSwitchSelectionMode);
+    localStringBuilder.append(", initialHasPickedNum=");
+    localStringBuilder.append(this.initialHasPickedNum);
+    localStringBuilder.append(", canPickVideo=");
+    localStringBuilder.append(this.canPickVideo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+ * Qualified Name:     com.tencent.mobileqq.wink.pick.album.data.WinkAlbumLogicData
+ * JD-Core Version:    0.7.0.1
+ */

@@ -87,9 +87,9 @@ public class ShareApiPlugin
           paramString1.append("");
           paramString1.append(this.a);
           paramJsBridgeListener.putString("stringext_1", paramString1.toString());
-          ReportCenter.a().a(paramJsBridgeListener, "", this.mRuntime.a().getAccount(), false);
+          ReportCenter.a().a(paramJsBridgeListener, "", this.mRuntime.b().getAccount(), false);
         }
-        paramJsBridgeListener = this.mRuntime.a(this.mRuntime.a());
+        paramJsBridgeListener = this.mRuntime.a(this.mRuntime.d());
         paramString1 = (SwiftBrowserShareMenuHandler)getBrowserComponent(4);
         if ((paramString1 != null) && ((paramJsBridgeListener instanceof WebUiUtils.WebShareInterface)))
         {
@@ -97,12 +97,12 @@ public class ShareApiPlugin
           paramString2 = (Share)paramJsBridgeListener.getShare();
           if (paramString2 != null)
           {
-            if (paramString2.a == null)
+            if (paramString2.A == null)
             {
-              paramString2.a = this.mRuntime.a();
+              paramString2.A = this.mRuntime.a();
               QLog.w("ShareApiPlugin", 2, "webview from runtime is null");
             }
-            if (paramString1.a(paramString2.getShareUrl()))
+            if (paramString1.b(paramString2.getShareUrl()))
             {
               if (QLog.isColorLevel())
               {
@@ -122,12 +122,12 @@ public class ShareApiPlugin
               if (QLog.isColorLevel()) {
                 QLog.d("ShareApiPlugin", 2, "Share info imperfect, request from svr");
               }
-              paramString1 = new NewIntent(this.mRuntime.a().getApplication(), WebShareServlet.class);
+              paramString1 = new NewIntent(this.mRuntime.b().getApplication(), WebShareServlet.class);
               paramString1.putExtra("extra_cmd", "SQQzoneSvc.getUrlInfo");
-              paramString1.putExtra("extra_current_uin", this.mRuntime.a().getAccount());
+              paramString1.putExtra("extra_current_uin", this.mRuntime.b().getAccount());
               paramString1.putExtra("extra_url", paramString2.getShareUrl());
               paramString1.setObserver(new ShareApiPlugin.1(this, paramJsBridgeListener));
-              this.mRuntime.a().startServlet(paramString1);
+              this.mRuntime.b().startServlet(paramString1);
               return true;
             }
           }
@@ -155,7 +155,7 @@ public class ShareApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.ShareApiPlugin
  * JD-Core Version:    0.7.0.1
  */

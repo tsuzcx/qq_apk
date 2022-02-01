@@ -12,12 +12,12 @@ class VideoFeedsInterruptedAdManager$1
   
   public void a()
   {
-    RIJJumpUtils.a(VideoFeedsInterruptedAdManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsInterruptedAdManager), VideoFeedsInterruptedAdManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsInterruptedAdManager).a, this.jdField_a_of_type_AndroidOsBundle);
+    RIJJumpUtils.a(VideoFeedsInterruptedAdManager.a(this.b), VideoFeedsInterruptedAdManager.b(this.b).e, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsInterruptedAdManager.1
  * JD-Core Version:    0.7.0.1
  */

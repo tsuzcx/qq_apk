@@ -50,7 +50,7 @@ public class QQConnectPlugin
       return false;
     }
     if ("goShare".equals(paramString3)) {
-      LogUtility.c(this.TAG, "goshare");
+      LogUtility.c(this.mTAG, "goshare");
     }
     try
     {
@@ -63,10 +63,10 @@ public class QQConnectPlugin
       int i = paramJsBridgeListener.optInt("public_device", 0);
       if ((i != 0) && ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))))
       {
-        ToastUtil.a().a(this.mRuntime.a().getString(2131720191));
+        ToastUtil.a().a(this.mRuntime.d().getString(2131917821));
         return true;
       }
-      paramString2 = this.mRuntime.a();
+      paramString2 = this.mRuntime.d();
       paramJsBridgeListener = paramString2;
       if ((paramString2 instanceof BasePluginActivity)) {
         paramJsBridgeListener = ((BasePluginActivity)paramString2).getOutActivity();
@@ -86,8 +86,8 @@ public class QQConnectPlugin
         paramJsBridgeListener.putExtra("url", paramString1);
       }
       paramJsBridgeListener.putExtra("from", "share");
-      this.mRuntime.a().startActivity(paramJsBridgeListener);
-      this.mRuntime.a().finish();
+      this.mRuntime.d().startActivity(paramJsBridgeListener);
+      this.mRuntime.d().finish();
       return true;
     }
     catch (JSONException paramJsBridgeListener)
@@ -95,12 +95,12 @@ public class QQConnectPlugin
       label282:
       break label282;
     }
-    ToastUtil.a().a(this.mRuntime.a().getString(2131690227));
+    ToastUtil.a().a(this.mRuntime.d().getString(2131887127));
     return true;
     if ("doReport".equals(paramString3)) {}
     try
     {
-      LogUtility.c(this.TAG, "doReport");
+      LogUtility.c(this.mTAG, "doReport");
       paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
       SmartDeviceReport.a(null, paramJsBridgeListener.optString("actionName"), paramJsBridgeListener.optInt("fromType"), paramJsBridgeListener.optInt("actionResult"), paramJsBridgeListener.optInt("ext2"));
       return true;
@@ -112,7 +112,7 @@ public class QQConnectPlugin
     }
     if ("goBind".equals(paramString3))
     {
-      LogUtility.c(this.TAG, "qrUrl");
+      LogUtility.c(this.mTAG, "qrUrl");
       paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("url");
       bool = TextUtils.isEmpty(paramJsBridgeListener);
       if (bool) {}
@@ -129,7 +129,7 @@ public class QQConnectPlugin
     paramJsBridgeListener = null;
     if (!TextUtils.isEmpty(paramJsBridgeListener))
     {
-      paramString2 = this.mRuntime.a();
+      paramString2 = this.mRuntime.d();
       paramString1 = paramString2;
       if ((paramString2 instanceof BasePluginActivity)) {
         paramString1 = ((BasePluginActivity)paramString2).getOutActivity();
@@ -138,18 +138,18 @@ public class QQConnectPlugin
       paramString1.putExtra("qrurl", paramJsBridgeListener);
       paramString1.putExtra("entrance", 1);
       paramString1.putExtra("from", "connect");
-      this.mRuntime.a().startActivity(paramString1);
+      this.mRuntime.d().startActivity(paramString1);
     }
-    this.mRuntime.a().finish();
+    this.mRuntime.d().finish();
     return true;
     if ("jumpPublicDevice".equals(paramString3))
     {
-      LogUtility.c(this.TAG, "METHOD_JUMP_PUBLICDEVICE");
+      LogUtility.c(this.mTAG, "METHOD_JUMP_PUBLICDEVICE");
       paramString2 = new JSONObject(paramVarArgs[0]).optString("actionUrl");
       if (TextUtils.isEmpty(paramString2)) {
         return true;
       }
-      paramString1 = this.mRuntime.a();
+      paramString1 = this.mRuntime.d();
       paramJsBridgeListener = paramString1;
       if ((paramString1 instanceof BasePluginActivity)) {
         paramJsBridgeListener = ((BasePluginActivity)paramString1).getOutActivity();
@@ -158,8 +158,8 @@ public class QQConnectPlugin
       paramJsBridgeListener.putExtra("url", paramString2);
       paramJsBridgeListener.putExtra("jumpPublicDevice", true);
       paramJsBridgeListener.putExtra("from", "share");
-      this.mRuntime.a().startActivity(paramJsBridgeListener);
-      this.mRuntime.a().finish();
+      this.mRuntime.d().startActivity(paramJsBridgeListener);
+      this.mRuntime.d().finish();
       return true;
     }
     return false;
@@ -167,7 +167,7 @@ public class QQConnectPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.utils.QQConnectPlugin
  * JD-Core Version:    0.7.0.1
  */

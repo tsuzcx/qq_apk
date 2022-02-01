@@ -16,26 +16,26 @@ class VideoInfo$CompressVideoSegment$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo;
-    ((VideoInfo)localObject).e = 10;
-    ((VideoInfo)localObject).f = -2147483647;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(((VideoInfo)localObject).c);
+    Object localObject = this.a;
+    ((VideoInfo)localObject).l = 10;
+    ((VideoInfo)localObject).o = -2147483647;
+    localObject = this.b.findViewHolderForLayoutPosition(((VideoInfo)localObject).g);
     if ((localObject instanceof VideoItem.VideoViewHolder))
     {
       localObject = (VideoItem.VideoViewHolder)localObject;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(((VideoItem.VideoViewHolder)localObject).a.getTag()))
+      if (this.a.e.equals(((VideoItem.VideoViewHolder)localObject).g.getTag()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideo before notify. vh hash=", Integer.valueOf(localObject.hashCode()) });
         }
-        ((VideoItem)((XMediaEditorAdapter)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo, 0);
+        ((VideoItem)((XMediaEditorAdapter)this.b.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, this.a, 0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.CompressVideoSegment.1
  * JD-Core Version:    0.7.0.1
  */

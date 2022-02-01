@@ -15,28 +15,28 @@ import com.tencent.aelight.camera.aeeditor.lyric.widget.LyricWithBuoyView;
 import com.tencent.aelight.camera.aeeditor.lyric.widget.LyricWithBuoyView.OnLyricWithBuoyViewOperationListener;
 import com.tencent.aelight.camera.aeeditor.module.music.AEEditorMusicAdapter.AEEditorMusicInfo;
 import com.tencent.aelight.camera.log.AEQLog;
-import com.tencent.weseevideo.editor.sticker.music.LyricParseHelper;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
-import com.tencent.weseevideo.editor.sticker.music.lyric.parse.provider.WOEmptyLineProvider;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.LyricParseHelper;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.data.Lyric;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.parse.provider.WOEmptyLineProvider;
 
 public class MoreLyricLayout
   extends LinearLayout
   implements AESlidingUpPanelLayout.PanelSlideListener, IMoreLyricLayout, LyricWithBuoyView.OnLyricWithBuoyViewOperationListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  private AESlidingUpPanelLayout jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionAESlidingUpPanelLayout;
-  private IMoreLyricLayout.OnLayoutVisibleChangeListener jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionIMoreLyricLayout$OnLayoutVisibleChangeListener;
-  private IMoreLyricLayout.OnMoreLyricLayoutActionListener jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionIMoreLyricLayout$OnMoreLyricLayoutActionListener;
-  private IMoreLyricLayout.OnViewActionReportListener jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionIMoreLyricLayout$OnViewActionReportListener;
-  private MoreLyricLayout.LyricBackgroundEffect jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionMoreLyricLayout$LyricBackgroundEffect = null;
-  private MoreLyricLayout.LyricScrollListener jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionMoreLyricLayout$LyricScrollListener = new MoreLyricLayout.LyricScrollListener(this, null);
-  private LyricViewController jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewController = null;
-  private LyricViewSingleLine jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewSingleLine = null;
-  private LyricWithBuoyView jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricWithBuoyView;
-  private boolean jdField_a_of_type_Boolean = false;
+  private ImageView a = null;
+  private LyricViewSingleLine b = null;
+  private LyricViewController c = null;
+  private MoreLyricLayout.LyricScrollListener d = new MoreLyricLayout.LyricScrollListener(this, null);
+  private LyricWithBuoyView e;
+  private AESlidingUpPanelLayout f;
+  private long g;
+  private boolean h = false;
+  private IMoreLyricLayout.OnMoreLyricLayoutActionListener i;
+  private IMoreLyricLayout.OnViewActionReportListener j;
+  private IMoreLyricLayout.OnLayoutVisibleChangeListener k;
+  private LinearLayout l = null;
+  private MoreLyricLayout.LyricBackgroundEffect m = null;
+  private int n = 0;
   
   public MoreLyricLayout(Context paramContext)
   {
@@ -58,7 +58,7 @@ public class MoreLyricLayout
   
   private void b()
   {
-    IMoreLyricLayout.OnViewActionReportListener localOnViewActionReportListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionIMoreLyricLayout$OnViewActionReportListener;
+    IMoreLyricLayout.OnViewActionReportListener localOnViewActionReportListener = this.j;
     if (localOnViewActionReportListener != null) {
       localOnViewActionReportListener.a();
     }
@@ -66,7 +66,7 @@ public class MoreLyricLayout
   
   private void b(int paramInt)
   {
-    IMoreLyricLayout.OnMoreLyricLayoutActionListener localOnMoreLyricLayoutActionListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionIMoreLyricLayout$OnMoreLyricLayoutActionListener;
+    IMoreLyricLayout.OnMoreLyricLayoutActionListener localOnMoreLyricLayoutActionListener = this.i;
     if (localOnMoreLyricLayoutActionListener == null)
     {
       AEQLog.a("MoreLyricLayout", "notifyLyricSelection() mOnMoreLyricLayoutActionListener == null.");
@@ -77,7 +77,7 @@ public class MoreLyricLayout
   
   private void b(boolean paramBoolean)
   {
-    IMoreLyricLayout.OnViewActionReportListener localOnViewActionReportListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionIMoreLyricLayout$OnViewActionReportListener;
+    IMoreLyricLayout.OnViewActionReportListener localOnViewActionReportListener = this.j;
     if (localOnViewActionReportListener != null) {
       localOnViewActionReportListener.a(paramBoolean);
     }
@@ -85,7 +85,7 @@ public class MoreLyricLayout
   
   private void c()
   {
-    IMoreLyricLayout.OnViewActionReportListener localOnViewActionReportListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionIMoreLyricLayout$OnViewActionReportListener;
+    IMoreLyricLayout.OnViewActionReportListener localOnViewActionReportListener = this.j;
     if (localOnViewActionReportListener != null) {
       localOnViewActionReportListener.c();
     }
@@ -93,7 +93,7 @@ public class MoreLyricLayout
   
   private void c(boolean paramBoolean)
   {
-    IMoreLyricLayout.OnLayoutVisibleChangeListener localOnLayoutVisibleChangeListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionIMoreLyricLayout$OnLayoutVisibleChangeListener;
+    IMoreLyricLayout.OnLayoutVisibleChangeListener localOnLayoutVisibleChangeListener = this.k;
     if (localOnLayoutVisibleChangeListener != null) {
       localOnLayoutVisibleChangeListener.a(paramBoolean);
     }
@@ -101,7 +101,7 @@ public class MoreLyricLayout
   
   private void d()
   {
-    IMoreLyricLayout.OnViewActionReportListener localOnViewActionReportListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionIMoreLyricLayout$OnViewActionReportListener;
+    IMoreLyricLayout.OnViewActionReportListener localOnViewActionReportListener = this.j;
     if (localOnViewActionReportListener != null) {
       localOnViewActionReportListener.b();
     }
@@ -109,39 +109,39 @@ public class MoreLyricLayout
   
   private void d(boolean paramBoolean)
   {
-    LyricViewSingleLine localLyricViewSingleLine = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewSingleLine;
+    LyricViewSingleLine localLyricViewSingleLine = this.b;
     if (localLyricViewSingleLine == null)
     {
       AEQLog.a("MoreLyricLayout", "changeDragStyle() mLyricViewSingleLine == null.");
       return;
     }
-    int i;
+    int i1;
     if (paramBoolean) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 8;
+      i1 = 8;
     }
-    localLyricViewSingleLine.setVisibility(i);
+    localLyricViewSingleLine.setVisibility(i1);
   }
   
   private void e()
   {
-    LayoutInflater.from(getContext()).inflate(2064318578, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2064122441));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewSingleLine = ((LyricViewSingleLine)findViewById(2064122443));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewController = new LyricViewController(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewSingleLine);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricWithBuoyView = ((LyricWithBuoyView)findViewById(2064122442));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricWithBuoyView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionMoreLyricLayout$LyricScrollListener);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionAESlidingUpPanelLayout = ((AESlidingUpPanelLayout)findViewById(2064122412));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionAESlidingUpPanelLayout.a(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionAESlidingUpPanelLayout.setFadeOnClickListener(new MoreLyricLayout.1(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2064122440));
+    LayoutInflater.from(getContext()).inflate(2064056450, this, true);
+    this.a = ((ImageView)findViewById(2063991269));
+    this.b = ((LyricViewSingleLine)findViewById(2063991271));
+    this.c = new LyricViewController(this.b);
+    this.e = ((LyricWithBuoyView)findViewById(2063991270));
+    this.e.a(this.d);
+    this.f = ((AESlidingUpPanelLayout)findViewById(2063991263));
+    this.f.a(this);
+    this.f.setFadeOnClickListener(new MoreLyricLayout.1(this));
+    this.l = ((LinearLayout)findViewById(2063991268));
     a(true);
   }
   
   private void f()
   {
-    AESlidingUpPanelLayout localAESlidingUpPanelLayout = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionAESlidingUpPanelLayout;
+    AESlidingUpPanelLayout localAESlidingUpPanelLayout = this.f;
     if (localAESlidingUpPanelLayout == null) {
       AEQLog.a("MoreLyricLayout", "resetSlidingCollapsedState() mSlidingUpPanelLayout == null.");
     } else {
@@ -152,7 +152,7 @@ public class MoreLyricLayout
   
   private void g()
   {
-    LyricWithBuoyView localLyricWithBuoyView = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricWithBuoyView;
+    LyricWithBuoyView localLyricWithBuoyView = this.e;
     if (localLyricWithBuoyView == null)
     {
       AEQLog.a("MoreLyricLayout", "resetSlidingCollapsedState() mLyricWithBuoyView == null.");
@@ -163,28 +163,28 @@ public class MoreLyricLayout
   
   public void a()
   {
-    b((int)this.jdField_a_of_type_Long);
+    b((int)this.g);
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int == paramInt) {
+    if (this.n == paramInt) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewController;
+    this.n = paramInt;
+    Object localObject = this.c;
     if (localObject != null) {
       ((LyricViewController)localObject).a(paramInt);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricWithBuoyView;
+    localObject = this.e;
     if (localObject != null) {
-      ((LyricWithBuoyView)localObject).a(paramInt);
+      ((LyricWithBuoyView)localObject).b(paramInt);
     }
   }
   
   public void a(View paramView, float paramFloat)
   {
-    paramView = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionMoreLyricLayout$LyricBackgroundEffect;
+    paramView = this.m;
     if (paramView != null) {
       paramView.a(paramFloat);
     }
@@ -226,9 +226,9 @@ public class MoreLyricLayout
       return;
     }
     f();
-    Object localObject2 = paramAEEditorMusicInfo.d();
-    String str = paramAEEditorMusicInfo.e();
-    this.jdField_a_of_type_Boolean = false;
+    Object localObject2 = paramAEEditorMusicInfo.h();
+    String str = paramAEEditorMusicInfo.i();
+    this.h = false;
     Object localObject1;
     if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(((String)localObject2).trim())))
     {
@@ -242,7 +242,7 @@ public class MoreLyricLayout
     }
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)))
     {
-      paramAEEditorMusicInfo = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewController;
+      paramAEEditorMusicInfo = this.c;
       if (paramAEEditorMusicInfo != null) {
         paramAEEditorMusicInfo.a();
       }
@@ -250,7 +250,7 @@ public class MoreLyricLayout
       if (TextUtils.equals(str.toUpperCase(), "LRC"))
       {
         localObject2 = LyricParseHelper.parseTextToLyric(WOEmptyLineProvider.class, (String)localObject1, false);
-        localLyricViewController = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewController;
+        localLyricViewController = this.c;
         paramAEEditorMusicInfo = (AEEditorMusicAdapter.AEEditorMusicInfo)localObject2;
         if (localLyricViewController != null)
         {
@@ -261,7 +261,7 @@ public class MoreLyricLayout
       else if (TextUtils.equals(str.toUpperCase(), "QRC"))
       {
         localObject2 = LyricParseHelper.parseTextToLyric(WOEmptyLineProvider.class, (String)localObject1, true);
-        localLyricViewController = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewController;
+        localLyricViewController = this.c;
         paramAEEditorMusicInfo = (AEEditorMusicAdapter.AEEditorMusicInfo)localObject2;
         if (localLyricViewController != null)
         {
@@ -281,20 +281,20 @@ public class MoreLyricLayout
         paramAEEditorMusicInfo.append(",lyricFormat:");
         paramAEEditorMusicInfo.append(str);
         AEQLog.a("MoreLyricLayout", paramAEEditorMusicInfo.toString());
-        paramAEEditorMusicInfo = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewController;
+        paramAEEditorMusicInfo = this.c;
         if (paramAEEditorMusicInfo != null)
         {
           paramAEEditorMusicInfo.a(false);
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewController.a(paramInt, true);
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewController.a(null);
+          this.c.a(paramInt, true);
+          this.c.a(null);
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.h = true;
         a(paramBoolean1 ^ true);
-        paramAEEditorMusicInfo = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricWithBuoyView;
+        paramAEEditorMusicInfo = this.e;
         if (paramAEEditorMusicInfo != null)
         {
           paramAEEditorMusicInfo.a((String)localObject1, str, paramInt, null);
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricWithBuoyView.setOnLyricWithBuoyViewOperationListener(this);
+          this.e.setOnLyricWithBuoyViewOperationListener(this);
         }
         if (paramBoolean1) {
           b();
@@ -317,13 +317,13 @@ public class MoreLyricLayout
     localStringBuilder.append(paramBoolean);
     AEQLog.a("MoreLyricLayout", localStringBuilder.toString());
     boolean bool = false;
-    int i;
+    int i1;
     if (paramBoolean) {
-      i = 8;
+      i1 = 8;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    setVisibility(i);
+    setVisibility(i1);
     f();
     paramBoolean = bool;
     if (getVisibility() == 0) {
@@ -334,30 +334,30 @@ public class MoreLyricLayout
   
   public void setLyricBackgroundEffect(MoreLyricLayout.LyricBackgroundEffect paramLyricBackgroundEffect)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionMoreLyricLayout$LyricBackgroundEffect = paramLyricBackgroundEffect;
+    this.m = paramLyricBackgroundEffect;
   }
   
   public void setLyricSeek(int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.h)
     {
       AEQLog.c("MoreLyricLayout", "setLyricSeek() current not lyric.");
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewController;
+    Object localObject = this.c;
     if (localObject == null) {
       AEQLog.c("MoreLyricLayout", "setLyricSeek() mLyricViewController == null.");
     } else {
       ((LyricViewController)localObject).a(paramInt, false);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricWithBuoyView;
+    localObject = this.e;
     if (localObject == null)
     {
       AEQLog.c("MoreLyricLayout", "setLyricSeek() mLyricWithBuoyView == null.");
       return;
     }
     ((LyricWithBuoyView)localObject).setSelectedFlag(paramInt, false);
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricWithBuoyView.a();
+    localObject = this.e.getMusicCurrentTime();
     if (localObject != null) {
       ((TextView)localObject).setText(LyricWithBuoyView.a(paramInt));
     }
@@ -370,7 +370,7 @@ public class MoreLyricLayout
       AEQLog.c("MoreLyricLayout", "setMoreBackground() drawable == null.");
       return;
     }
-    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    LinearLayout localLinearLayout = this.l;
     if (localLinearLayout == null)
     {
       AEQLog.c("MoreLyricLayout", "setMoreBackground() mMusicBarLyricDragView == null.");
@@ -381,12 +381,12 @@ public class MoreLyricLayout
   
   public void setOnMoreLyricLayoutActionListener(IMoreLyricLayout.OnMoreLyricLayoutActionListener paramOnMoreLyricLayoutActionListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionIMoreLyricLayout$OnMoreLyricLayoutActionListener = paramOnMoreLyricLayoutActionListener;
+    this.i = paramOnMoreLyricLayoutActionListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.interaction.MoreLyricLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -32,84 +32,43 @@ import mqq.app.MobileQQ;
 
 public class MemoryManager
 {
-  private static long jdField_a_of_type_Long;
-  private static MemoryManager jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager;
-  private static List<String> jdField_a_of_type_JavaUtilList;
-  private static long jdField_b_of_type_Long;
-  private static List<Pattern> jdField_b_of_type_JavaUtilList;
-  private static List<String> jdField_c_of_type_JavaUtilList;
-  private int jdField_a_of_type_Int;
-  private MemoryManager.IReportListener jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager$IReportListener;
-  private MemoryManager.LowMemoryReport jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager$LowMemoryReport;
-  private Object jdField_a_of_type_JavaLangObject;
-  private ConcurrentHashMap<String, MemoryManager.StatMemory> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private int jdField_c_of_type_Int;
+  private static MemoryManager a;
+  private static long h;
+  private static long i;
+  private static List<String> l;
+  private static List<Pattern> m;
+  private static List<String> n;
+  private int b;
+  private int c;
+  private int d;
+  private ConcurrentHashMap<String, MemoryManager.StatMemory> e;
+  private MemoryManager.IReportListener f;
+  private boolean g;
+  private Object j;
+  private MemoryManager.LowMemoryReport k;
   
   private MemoryManager()
   {
     boolean bool = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(0);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager$LowMemoryReport = null;
+    this.b = 0;
+    this.c = 0;
+    this.d = 0;
+    this.e = new ConcurrentHashMap(0);
+    this.g = false;
+    this.j = new Object();
+    this.k = null;
     if (0.1000000014901161D >= Math.random()) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.g = bool;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("memory manager set need report = ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.g);
       QLog.d("Q.Memory.MemoryManager", 2, localStringBuilder.toString());
     }
-    a(MemoryClearManager.a());
-  }
-  
-  public static long a()
-  {
-    long l1 = jdField_a_of_type_Long;
-    if (l1 > 0L) {
-      return l1;
-    }
-    l1 = DeviceInfoUtil.a();
-    jdField_b_of_type_Long = l1;
-    long l2 = DeviceInfoUtil.e();
-    long l3 = (3L * l1 + 7L * l2) / 10L;
-    long l4 = DeviceInfoUtil.f();
-    if (l3 <= 157286400L) {
-      jdField_a_of_type_Long = Math.min(25165824L, l4);
-    } else if (l3 <= 262144000L) {
-      jdField_a_of_type_Long = Math.min(37748736L, l4);
-    } else if (l3 <= 419430400L) {
-      jdField_a_of_type_Long = Math.min(67108864L, l4);
-    } else if (l3 <= 524288000L) {
-      jdField_a_of_type_Long = Math.min(134217728L, l4);
-    } else {
-      jdField_a_of_type_Long = Math.min(268435456L, l4);
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getAvailClassSize, availClassSize=");
-      localStringBuilder.append(jdField_a_of_type_Long / 1048576L);
-      localStringBuilder.append("M, totalMemSize=");
-      localStringBuilder.append(l1 / 1048576L);
-      localStringBuilder.append("M, remainMemSize=");
-      localStringBuilder.append(l2 / 1048576L);
-      localStringBuilder.append("M, availMemSize=");
-      localStringBuilder.append(l3 / 1048576L);
-      localStringBuilder.append("M, classMemSize=");
-      localStringBuilder.append(l4 / 1048576L);
-      localStringBuilder.append("M");
-      QLog.d("Q.Memory.MemoryManager", 2, localStringBuilder.toString());
-    }
-    return jdField_a_of_type_Long;
+    a(MemoryClearManager.b());
   }
   
   public static long a(int paramInt)
@@ -119,8 +78,8 @@ public class MemoryManager
       Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getProcessMemoryInfo(new int[] { paramInt });
       if ((arrayOfMemoryInfo != null) && (arrayOfMemoryInfo.length > 0))
       {
-        int i = arrayOfMemoryInfo[0].getTotalPss();
-        return i * 1024L;
+        int i1 = arrayOfMemoryInfo[0].getTotalPss();
+        return i1 * 1024L;
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -142,28 +101,18 @@ public class MemoryManager
     return 62914560L;
   }
   
-  private MemoryManager.LowMemoryReport a()
-  {
-    if (this.jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager$LowMemoryReport == null)
-    {
-      this.jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager$LowMemoryReport = new MemoryManager.LowMemoryReport();
-      this.jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager$LowMemoryReport.a();
-    }
-    return this.jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager$LowMemoryReport;
-  }
-  
   public static MemoryManager a()
   {
-    if (jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager == null) {
-          jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager = new MemoryManager();
+        if (a == null) {
+          a = new MemoryManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager;
+    return a;
   }
   
   public static void a(int paramInt, MemoryManager.DebugMemoryInfo paramDebugMemoryInfo)
@@ -173,9 +122,9 @@ public class MemoryManager
       Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getProcessMemoryInfo(new int[] { paramInt });
       if ((arrayOfMemoryInfo != null) && (arrayOfMemoryInfo.length > 0))
       {
-        paramDebugMemoryInfo.jdField_a_of_type_Long = (arrayOfMemoryInfo[0].getTotalPss() * 1024L);
-        paramDebugMemoryInfo.jdField_b_of_type_Long = (arrayOfMemoryInfo[0].nativePss * 1024L);
-        paramDebugMemoryInfo.jdField_c_of_type_Long = (arrayOfMemoryInfo[0].dalvikPss * 1024L);
+        paramDebugMemoryInfo.a = (arrayOfMemoryInfo[0].getTotalPss() * 1024L);
+        paramDebugMemoryInfo.b = (arrayOfMemoryInfo[0].nativePss * 1024L);
+        paramDebugMemoryInfo.c = (arrayOfMemoryInfo[0].dalvikPss * 1024L);
         return;
       }
     }
@@ -195,9 +144,9 @@ public class MemoryManager
         QLog.d("Q.Memory.MemoryManager", 2, localStringBuilder.toString(), localException);
       }
     }
-    paramDebugMemoryInfo.jdField_a_of_type_Long = 62914560L;
-    paramDebugMemoryInfo.jdField_b_of_type_Long = 31457280L;
-    paramDebugMemoryInfo.jdField_c_of_type_Long = 31457280L;
+    paramDebugMemoryInfo.a = 62914560L;
+    paramDebugMemoryInfo.b = 31457280L;
+    paramDebugMemoryInfo.c = 31457280L;
   }
   
   private void a(long paramLong1, long paramLong2, SharedPreferences paramSharedPreferences)
@@ -205,19 +154,111 @@ public class MemoryManager
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public float a()
+  public static long d()
   {
-    long l1 = Runtime.getRuntime().totalMemory();
-    long l2 = Runtime.getRuntime().maxMemory();
-    return (float)l1 * 1.0F / (float)l2;
+    long l1 = h;
+    if (l1 > 0L) {
+      return l1;
+    }
+    l1 = DeviceInfoUtil.a();
+    i = l1;
+    long l2 = DeviceInfoUtil.r();
+    long l3 = (3L * l1 + 7L * l2) / 10L;
+    long l4 = DeviceInfoUtil.s();
+    if (l3 <= 157286400L) {
+      h = Math.min(25165824L, l4);
+    } else if (l3 <= 262144000L) {
+      h = Math.min(37748736L, l4);
+    } else if (l3 <= 419430400L) {
+      h = Math.min(67108864L, l4);
+    } else if (l3 <= 524288000L) {
+      h = Math.min(134217728L, l4);
+    } else {
+      h = Math.min(268435456L, l4);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getAvailClassSize, availClassSize=");
+      localStringBuilder.append(h / 1048576L);
+      localStringBuilder.append("M, totalMemSize=");
+      localStringBuilder.append(l1 / 1048576L);
+      localStringBuilder.append("M, remainMemSize=");
+      localStringBuilder.append(l2 / 1048576L);
+      localStringBuilder.append("M, availMemSize=");
+      localStringBuilder.append(l3 / 1048576L);
+      localStringBuilder.append("M, classMemSize=");
+      localStringBuilder.append(l4 / 1048576L);
+      localStringBuilder.append("M");
+      QLog.d("Q.Memory.MemoryManager", 2, localStringBuilder.toString());
+    }
+    return h;
   }
   
-  public int a()
+  private MemoryManager.LowMemoryReport m()
   {
-    return this.jdField_a_of_type_Int;
+    if (this.k == null)
+    {
+      this.k = new MemoryManager.LowMemoryReport();
+      this.k.a();
+    }
+    return this.k;
   }
   
-  public void a()
+  public void a(long paramLong)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  protected void a(long paramLong1, long paramLong2)
+  {
+    synchronized (this.j)
+    {
+      MemoryManager.LowMemoryReport localLowMemoryReport = m();
+      localLowMemoryReport.a += paramLong2;
+      localLowMemoryReport.b += paramLong1;
+      localLowMemoryReport.c += 1;
+      localLowMemoryReport.c();
+      return;
+    }
+  }
+  
+  public void a(Context paramContext, Class paramClass, int paramInt)
+  {
+    if (MagnifierSDK.b().j().c) {
+      ThreadManager.executeOnNetWorkThread(new MemoryManager.AlertMemoryRunner(paramContext, 2, paramClass, paramInt));
+    }
+  }
+  
+  public void a(MemoryManager.IReportListener paramIReportListener)
+  {
+    this.f = paramIReportListener;
+  }
+  
+  public void a(String paramString)
+  {
+    if ((this.f != null) && ("BG_GUARD".equals(paramString))) {
+      this.f.a();
+    }
+    if (!this.g)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.Memory.MemoryManager", 2, "Report memory do not need report");
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Report memory with action = ");
+      localStringBuilder.append(paramString);
+      QLog.d("Q.Memory.MemoryManager", 2, localStringBuilder.toString());
+    }
+    b(paramString);
+    i();
+  }
+  
+  public void b()
   {
     if (MobileQQ.sProcessId == 1) {}
     for (;;)
@@ -230,16 +271,16 @@ public class MemoryManager
         }
         localSharedPreferences.edit().putLong("heap_size", Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory());
         localSharedPreferences.edit().putLong("sys_pss", a(Process.myPid()));
-        localSharedPreferences.edit().putLong("sys_total", jdField_b_of_type_Long);
+        localSharedPreferences.edit().putLong("sys_total", i);
         localSharedPreferences.edit().putLong("heap_free", Runtime.getRuntime().freeMemory());
         localSharedPreferences.edit().putLong("heap_total", Runtime.getRuntime().totalMemory());
         localSharedPreferences.edit().putLong("heap_max", Runtime.getRuntime().maxMemory());
-        localSharedPreferences.edit().putLong("heap_org_max", HackVmImpl.jdField_a_of_type_Long);
-        localSharedPreferences.edit().putInt("leak_actvity_count", this.jdField_a_of_type_Int);
-        localSharedPreferences.edit().putInt("leak_qqapp_count", this.jdField_b_of_type_Int);
-        localSharedPreferences.edit().putInt("leak_other_count", this.jdField_c_of_type_Int);
+        localSharedPreferences.edit().putLong("heap_org_max", HackVmImpl.e);
+        localSharedPreferences.edit().putInt("leak_actvity_count", this.b);
+        localSharedPreferences.edit().putInt("leak_qqapp_count", this.c);
+        localSharedPreferences.edit().putInt("leak_other_count", this.d);
         SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-        boolean bool = MagnifierSDK.a().a().b;
+        boolean bool = MagnifierSDK.b().j().i;
         long l2 = 1L;
         if (!bool) {
           break label425;
@@ -247,13 +288,13 @@ public class MemoryManager
         l1 = 1L;
         localEditor.putLong("enable_sucide_heap_new", l1);
         localEditor = localSharedPreferences.edit();
-        if (!MagnifierSDK.a().a().d) {
+        if (!MagnifierSDK.b().j().k) {
           break label430;
         }
         l1 = l2;
         localEditor.putLong("en_sucide_ab", l1);
         localSharedPreferences.edit().putString("key_top_act", ((IPerfApi)QRoute.api(IPerfApi.class)).getTopActivityName());
-        localSharedPreferences.edit().putString("key_mem_usg", SceneTracker.a().a());
+        localSharedPreferences.edit().putString("key_mem_usg", SceneTracker.a().b());
         localSharedPreferences.edit().commit();
         return;
       }
@@ -270,116 +311,14 @@ public class MemoryManager
     }
   }
   
-  public void a(long paramLong)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  protected void a(long paramLong1, long paramLong2)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      MemoryManager.LowMemoryReport localLowMemoryReport = a();
-      localLowMemoryReport.jdField_a_of_type_Long += paramLong2;
-      localLowMemoryReport.jdField_b_of_type_Long += paramLong1;
-      localLowMemoryReport.jdField_a_of_type_Int += 1;
-      localLowMemoryReport.c();
-      return;
-    }
-  }
-  
-  public void a(Context paramContext, Class paramClass, int paramInt)
-  {
-    if (MagnifierSDK.a().a().jdField_a_of_type_Boolean) {
-      ThreadManager.executeOnNetWorkThread(new MemoryManager.AlertMemoryRunner(paramContext, 2, paramClass, paramInt));
-    }
-  }
-  
-  public void a(MemoryManager.IReportListener paramIReportListener)
-  {
-    this.jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager$IReportListener = paramIReportListener;
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager$IReportListener != null) && ("BG_GUARD".equals(paramString))) {
-      this.jdField_a_of_type_ComTencentQqperfMonitorMemoryMemoryManager$IReportListener.a();
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.Memory.MemoryManager", 2, "Report memory do not need report");
-      }
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Report memory with action = ");
-      localStringBuilder.append(paramString);
-      QLog.d("Q.Memory.MemoryManager", 2, localStringBuilder.toString());
-    }
-    b(paramString);
-    c();
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public final void b()
-  {
-    if (MobileQQ.sProcessId == 1)
-    {
-      SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("pref_oom", 0);
-      if (localSharedPreferences.contains("enable_sucide_heap")) {
-        localSharedPreferences.edit().remove("enable_sucide_heap");
-      }
-      if (localSharedPreferences.contains("leak_actvity_count"))
-      {
-        HashMap localHashMap = new HashMap(10);
-        localHashMap.put("maxHeap", String.valueOf(Runtime.getRuntime().maxMemory()));
-        localHashMap.put("osVersion", String.valueOf(Build.VERSION.SDK_INT));
-        localHashMap.put("hackResult", String.valueOf(HackVmImpl.jdField_c_of_type_Int));
-        localHashMap.put("hackArtResult", String.valueOf(HackVmImpl.d));
-        localHashMap.put("heap_size", String.valueOf(localSharedPreferences.getLong("heap_size", -1L)));
-        localHashMap.put("leak_actvity_count", String.valueOf(localSharedPreferences.getInt("leak_actvity_count", -1)));
-        localHashMap.put("leak_qqapp_count", String.valueOf(localSharedPreferences.getInt("leak_qqapp_count", -1)));
-        localHashMap.put("leak_other_count", String.valueOf(localSharedPreferences.getInt("leak_other_count", -1)));
-        localHashMap.put("sys_pss", String.valueOf(localSharedPreferences.getLong("sys_pss", -1L)));
-        localHashMap.put("sys_total", String.valueOf(localSharedPreferences.getLong("sys_total", -1L)));
-        localHashMap.put("heap_free", String.valueOf(localSharedPreferences.getLong("heap_free", -1L)));
-        localHashMap.put("heap_total", String.valueOf(localSharedPreferences.getLong("heap_total", -1L)));
-        localHashMap.put("heap_max", String.valueOf(localSharedPreferences.getLong("heap_max", -1L)));
-        localHashMap.put("heap_org_max", String.valueOf(localSharedPreferences.getLong("heap_org_max", -1L)));
-        localHashMap.put("oom_scid_count", String.valueOf(localSharedPreferences.getLong("oom_scid_count", -1L)));
-        localHashMap.put("enable_sucide_heap_new", String.valueOf(localSharedPreferences.getLong("enable_sucide_heap_new", -1L)));
-        localHashMap.put("en_sucide_ab", String.valueOf(localSharedPreferences.getLong("en_sucide_ab", -1L)));
-        String str1 = "";
-        localHashMap.put("key_top_act", localSharedPreferences.getString("key_top_act", ""));
-        localHashMap.put("key_mem_usg", localSharedPreferences.getString("key_mem_usg", ""));
-        String str2 = System.getProperty("java.vm.version");
-        if (!TextUtils.isEmpty(str2)) {
-          str1 = str2.substring(0, 1);
-        }
-        localHashMap.put("vmVersion", str1);
-        StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(null, "oomInfo", true, 0L, 0L, localHashMap, null);
-        localSharedPreferences.edit().putLong("oom_scid_count", 0L);
-        localSharedPreferences.edit().remove("leak_actvity_count").commit();
-      }
-      MemoryClearManager.a().d();
-    }
-  }
-  
   protected void b(long paramLong1, long paramLong2)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.j)
     {
-      MemoryManager.LowMemoryReport localLowMemoryReport = a();
-      localLowMemoryReport.jdField_c_of_type_Long += paramLong2;
-      localLowMemoryReport.d += paramLong1;
-      localLowMemoryReport.jdField_b_of_type_Int += 1;
+      MemoryManager.LowMemoryReport localLowMemoryReport = m();
+      localLowMemoryReport.d += paramLong2;
+      localLowMemoryReport.e += paramLong1;
+      localLowMemoryReport.f += 1;
       localLowMemoryReport.c();
       return;
     }
@@ -388,23 +327,23 @@ public class MemoryManager
   protected void b(String paramString)
   {
     Object localObject = (ActivityManager)MobileQQ.getContext().getSystemService("activity");
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("LITE_GUARD") == null)
+    if (this.e.get("LITE_GUARD") == null)
     {
       localStatMemory = new MemoryManager.StatMemory();
       localStatMemory.a("LITE_GUARD");
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("LITE_GUARD", localStatMemory);
+      this.e.put("LITE_GUARD", localStatMemory);
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("BG_GUARD") == null)
+    if (this.e.get("BG_GUARD") == null)
     {
       localStatMemory = new MemoryManager.StatMemory();
       localStatMemory.a("BG_GUARD");
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("BG_GUARD", localStatMemory);
+      this.e.put("BG_GUARD", localStatMemory);
     }
     MemoryManager.StatMemory localStatMemory = null;
     if ("LITE_GUARD".equals(paramString)) {
-      localStatMemory = (MemoryManager.StatMemory)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("LITE_GUARD");
+      localStatMemory = (MemoryManager.StatMemory)this.e.get("LITE_GUARD");
     } else if ("BG_GUARD".equals(paramString)) {
-      localStatMemory = (MemoryManager.StatMemory)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("BG_GUARD");
+      localStatMemory = (MemoryManager.StatMemory)this.e.get("BG_GUARD");
     }
     if (localStatMemory == null)
     {
@@ -413,10 +352,10 @@ public class MemoryManager
       }
       return;
     }
-    long l3 = DeviceInfoUtil.e();
+    long l3 = DeviceInfoUtil.r();
     MemoryManager.DebugMemoryInfo localDebugMemoryInfo = new MemoryManager.DebugMemoryInfo();
     a(Process.myPid(), localDebugMemoryInfo);
-    long l4 = localDebugMemoryInfo.jdField_a_of_type_Long;
+    long l4 = localDebugMemoryInfo.a;
     try
     {
       localObject = ((ActivityManager)localObject).getRunningAppProcesses();
@@ -458,18 +397,18 @@ public class MemoryManager
       localStatMemory.a();
       localStatMemory.b();
     }
-    localStatMemory.jdField_a_of_type_Long += l3;
-    localStatMemory.jdField_b_of_type_Long += l1;
-    localStatMemory.jdField_c_of_type_Long += l4;
-    localStatMemory.g += localDebugMemoryInfo.jdField_c_of_type_Long;
-    localStatMemory.f += localDebugMemoryInfo.jdField_b_of_type_Long;
-    localStatMemory.h += Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-    localStatMemory.jdField_a_of_type_Int += 1;
+    localStatMemory.b += l3;
+    localStatMemory.c += l1;
+    localStatMemory.d += l4;
+    localStatMemory.j += localDebugMemoryInfo.c;
+    localStatMemory.i += localDebugMemoryInfo.b;
+    localStatMemory.k += Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    localStatMemory.a += 1;
     localObject = GlobalImageCache.a;
-    localStatMemory.d += ((MQLruCache)localObject).maxSize();
-    localStatMemory.e += ((MQLruCache)localObject).size();
-    localStatMemory.jdField_c_of_type_Int += ((MQLruCache)localObject).hitCount();
-    localStatMemory.jdField_b_of_type_Int += ((MQLruCache)localObject).missCount();
+    localStatMemory.e += ((MQLruCache)localObject).maxSize();
+    localStatMemory.f += ((MQLruCache)localObject).size();
+    localStatMemory.h += ((MQLruCache)localObject).hitCount();
+    localStatMemory.g += ((MQLruCache)localObject).missCount();
     long l2 = System.currentTimeMillis();
     localObject = MobileQQ.getContext().getSharedPreferences("MemoryManagerMemoryStat", 0);
     long l1 = ((SharedPreferences)localObject).getLong("StateMemoryLastTime", 0L);
@@ -489,23 +428,23 @@ public class MemoryManager
         ((StringBuilder)localObject).append("sysTotalMemory=");
         ((StringBuilder)localObject).append(DeviceInfoUtil.a());
         ((StringBuilder)localObject).append(",statCount=");
-        ((StringBuilder)localObject).append(localStatMemory.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(localStatMemory.a);
         ((StringBuilder)localObject).append(",sysClassMemory=");
-        ((StringBuilder)localObject).append(DeviceInfoUtil.f());
+        ((StringBuilder)localObject).append(DeviceInfoUtil.s());
         ((StringBuilder)localObject).append(",sysAvailableMemory=");
-        ((StringBuilder)localObject).append(localStatMemory.jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append(localStatMemory.b);
         ((StringBuilder)localObject).append(",qqOtherUsedMemory=");
-        ((StringBuilder)localObject).append(localStatMemory.jdField_b_of_type_Long);
+        ((StringBuilder)localObject).append(localStatMemory.c);
         ((StringBuilder)localObject).append(",qqUsedMemory=");
-        ((StringBuilder)localObject).append(localStatMemory.jdField_c_of_type_Long);
-        ((StringBuilder)localObject).append(",imageCacheMax=");
         ((StringBuilder)localObject).append(localStatMemory.d);
-        ((StringBuilder)localObject).append(",imageCacheUsed=");
+        ((StringBuilder)localObject).append(",imageCacheMax=");
         ((StringBuilder)localObject).append(localStatMemory.e);
+        ((StringBuilder)localObject).append(",imageCacheUsed=");
+        ((StringBuilder)localObject).append(localStatMemory.f);
         ((StringBuilder)localObject).append(",imageHitCount=");
-        ((StringBuilder)localObject).append(localStatMemory.jdField_c_of_type_Int);
+        ((StringBuilder)localObject).append(localStatMemory.h);
         ((StringBuilder)localObject).append(",imageHitTotal=");
-        ((StringBuilder)localObject).append(localStatMemory.jdField_c_of_type_Int + localStatMemory.jdField_b_of_type_Int);
+        ((StringBuilder)localObject).append(localStatMemory.h + localStatMemory.g);
         ((StringBuilder)localObject).append("\n");
         paramString = ((StringBuilder)localObject).toString();
         try
@@ -541,252 +480,313 @@ public class MemoryManager
     }
   }
   
-  public int c()
+  public final void c()
   {
-    return this.jdField_c_of_type_Int;
+    if (MobileQQ.sProcessId == 1)
+    {
+      SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("pref_oom", 0);
+      if (localSharedPreferences.contains("enable_sucide_heap")) {
+        localSharedPreferences.edit().remove("enable_sucide_heap");
+      }
+      if (localSharedPreferences.contains("leak_actvity_count"))
+      {
+        HashMap localHashMap = new HashMap(10);
+        localHashMap.put("maxHeap", String.valueOf(Runtime.getRuntime().maxMemory()));
+        localHashMap.put("osVersion", String.valueOf(Build.VERSION.SDK_INT));
+        localHashMap.put("hackResult", String.valueOf(HackVmImpl.c));
+        localHashMap.put("hackArtResult", String.valueOf(HackVmImpl.d));
+        localHashMap.put("heap_size", String.valueOf(localSharedPreferences.getLong("heap_size", -1L)));
+        localHashMap.put("leak_actvity_count", String.valueOf(localSharedPreferences.getInt("leak_actvity_count", -1)));
+        localHashMap.put("leak_qqapp_count", String.valueOf(localSharedPreferences.getInt("leak_qqapp_count", -1)));
+        localHashMap.put("leak_other_count", String.valueOf(localSharedPreferences.getInt("leak_other_count", -1)));
+        localHashMap.put("sys_pss", String.valueOf(localSharedPreferences.getLong("sys_pss", -1L)));
+        localHashMap.put("sys_total", String.valueOf(localSharedPreferences.getLong("sys_total", -1L)));
+        localHashMap.put("heap_free", String.valueOf(localSharedPreferences.getLong("heap_free", -1L)));
+        localHashMap.put("heap_total", String.valueOf(localSharedPreferences.getLong("heap_total", -1L)));
+        localHashMap.put("heap_max", String.valueOf(localSharedPreferences.getLong("heap_max", -1L)));
+        localHashMap.put("heap_org_max", String.valueOf(localSharedPreferences.getLong("heap_org_max", -1L)));
+        localHashMap.put("oom_scid_count", String.valueOf(localSharedPreferences.getLong("oom_scid_count", -1L)));
+        localHashMap.put("enable_sucide_heap_new", String.valueOf(localSharedPreferences.getLong("enable_sucide_heap_new", -1L)));
+        localHashMap.put("en_sucide_ab", String.valueOf(localSharedPreferences.getLong("en_sucide_ab", -1L)));
+        String str1 = "";
+        localHashMap.put("key_top_act", localSharedPreferences.getString("key_top_act", ""));
+        localHashMap.put("key_mem_usg", localSharedPreferences.getString("key_mem_usg", ""));
+        String str2 = System.getProperty("java.vm.version");
+        if (!TextUtils.isEmpty(str2)) {
+          str1 = str2.substring(0, 1);
+        }
+        localHashMap.put("vmVersion", str1);
+        StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(null, "oomInfo", true, 0L, 0L, localHashMap, null);
+        localSharedPreferences.edit().putLong("oom_scid_count", 0L);
+        localSharedPreferences.edit().remove("leak_actvity_count").commit();
+      }
+      MemoryClearManager.b().f();
+    }
+  }
+  
+  public float e()
+  {
+    long l1 = Runtime.getRuntime().totalMemory();
+    long l2 = Runtime.getRuntime().maxMemory();
+    return (float)l1 * 1.0F / (float)l2;
+  }
+  
+  public int f()
+  {
+    return this.b;
+  }
+  
+  public int g()
+  {
+    return this.c;
+  }
+  
+  public int h()
+  {
+    return this.d;
   }
   
   /* Error */
-  protected void c()
+  protected void i()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 42	com/tencent/qqperf/monitor/memory/MemoryManager:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   1: getfield 53	com/tencent/qqperf/monitor/memory/MemoryManager:j	Ljava/lang/Object;
     //   4: astore 8
     //   6: aload 8
     //   8: monitorenter
     //   9: aload_0
-    //   10: invokespecial 379	com/tencent/qqperf/monitor/memory/MemoryManager:a	()Lcom/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport;
+    //   10: invokespecial 261	com/tencent/qqperf/monitor/memory/MemoryManager:m	()Lcom/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport;
     //   13: astore 9
-    //   15: invokestatic 592	java/lang/System:currentTimeMillis	()J
+    //   15: invokestatic 531	java/lang/System:currentTimeMillis	()J
     //   18: lstore_3
     //   19: aload 9
-    //   21: getfield 628	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:e	J
+    //   21: getfield 644	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:g	J
     //   24: lstore 5
     //   26: lload_3
     //   27: lload 5
     //   29: lsub
-    //   30: ldc2_w 629
+    //   30: ldc2_w 645
     //   33: lcmp
     //   34: ifle +471 -> 505
     //   37: aload 9
-    //   39: getfield 382	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:jdField_a_of_type_Int	I
+    //   39: getfield 264	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:c	I
     //   42: istore_1
     //   43: aload 9
-    //   45: getfield 502	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:jdField_b_of_type_Int	I
+    //   45: getfield 436	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:f	I
     //   48: istore_2
-    //   49: new 419	java/util/HashMap
+    //   49: new 572	java/util/HashMap
     //   52: dup
-    //   53: invokespecial 631	java/util/HashMap:<init>	()V
+    //   53: invokespecial 647	java/util/HashMap:<init>	()V
     //   56: astore 10
     //   58: aload 10
-    //   60: ldc_w 633
-    //   63: invokestatic 95	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()J
-    //   66: ldc2_w 180
+    //   60: ldc_w 649
+    //   63: invokestatic 197	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()J
+    //   66: ldc2_w 130
     //   69: ldiv
-    //   70: invokestatic 425	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   73: invokevirtual 429	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   70: invokestatic 578	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   73: invokevirtual 579	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   76: pop
     //   77: iload_1
     //   78: ifne +11 -> 89
-    //   81: ldc_w 635
+    //   81: ldc_w 651
     //   84: astore 7
     //   86: goto +20 -> 106
     //   89: aload 9
-    //   91: getfield 381	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:jdField_b_of_type_Long	J
+    //   91: getfield 263	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:b	J
     //   94: iload_1
     //   95: sipush 1024
     //   98: imul
     //   99: i2l
     //   100: ldiv
-    //   101: invokestatic 425	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   101: invokestatic 578	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   104: astore 7
     //   106: aload 10
-    //   108: ldc_w 637
+    //   108: ldc_w 653
     //   111: aload 7
-    //   113: invokevirtual 429	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   113: invokevirtual 579	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   116: pop
     //   117: iload_1
     //   118: ifne +11 -> 129
-    //   121: ldc_w 635
+    //   121: ldc_w 651
     //   124: astore 7
     //   126: goto +20 -> 146
     //   129: aload 9
-    //   131: getfield 380	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:jdField_a_of_type_Long	J
+    //   131: getfield 262	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:a	J
     //   134: iload_1
     //   135: sipush 1024
     //   138: imul
     //   139: i2l
     //   140: ldiv
-    //   141: invokestatic 425	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   141: invokestatic 578	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   144: astore 7
     //   146: aload 10
-    //   148: ldc_w 639
+    //   148: ldc_w 655
     //   151: aload 7
-    //   153: invokevirtual 429	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   153: invokevirtual 579	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   156: pop
     //   157: aload 10
-    //   159: ldc_w 641
+    //   159: ldc_w 657
     //   162: iload_1
-    //   163: invokestatic 439	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   166: invokevirtual 429	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   163: invokestatic 589	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   166: invokevirtual 579	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   169: pop
     //   170: iload_2
     //   171: ifne +11 -> 182
-    //   174: ldc_w 635
+    //   174: ldc_w 651
     //   177: astore 7
     //   179: goto +20 -> 199
     //   182: aload 9
-    //   184: getfield 501	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:d	J
+    //   184: getfield 434	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:e	J
     //   187: iload_2
     //   188: sipush 1024
     //   191: imul
     //   192: i2l
     //   193: ldiv
-    //   194: invokestatic 425	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   194: invokestatic 578	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   197: astore 7
     //   199: aload 10
-    //   201: ldc_w 643
+    //   201: ldc_w 659
     //   204: aload 7
-    //   206: invokevirtual 429	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   206: invokevirtual 579	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   209: pop
     //   210: iload_2
     //   211: ifne +11 -> 222
-    //   214: ldc_w 635
+    //   214: ldc_w 651
     //   217: astore 7
     //   219: goto +20 -> 239
     //   222: aload 9
-    //   224: getfield 499	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:jdField_c_of_type_Long	J
+    //   224: getfield 433	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:d	J
     //   227: iload_2
     //   228: sipush 1024
     //   231: imul
     //   232: i2l
     //   233: ldiv
-    //   234: invokestatic 425	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   234: invokestatic 578	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   237: astore 7
     //   239: aload 10
-    //   241: ldc_w 645
+    //   241: ldc_w 661
     //   244: aload 7
-    //   246: invokevirtual 429	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   246: invokevirtual 579	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   249: pop
     //   250: aload 10
-    //   252: ldc_w 647
+    //   252: ldc_w 663
     //   255: iload_2
-    //   256: invokestatic 439	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   259: invokevirtual 429	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   256: invokestatic 589	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   259: invokevirtual 579	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   262: pop
-    //   263: invokestatic 159	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   266: invokestatic 490	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   263: invokestatic 109	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   266: invokestatic 633	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   269: aconst_null
-    //   270: ldc_w 649
+    //   270: ldc_w 665
     //   273: iconst_1
     //   274: lconst_0
     //   275: lconst_0
     //   276: aload 10
     //   278: aconst_null
-    //   279: invokevirtual 496	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
-    //   282: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   279: invokevirtual 639	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   282: invokestatic 69	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   285: ifeq +160 -> 445
-    //   288: new 60	java/lang/StringBuilder
+    //   288: new 71	java/lang/StringBuilder
     //   291: dup
-    //   292: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   292: invokespecial 72	java/lang/StringBuilder:<init>	()V
     //   295: astore 7
     //   297: aload 7
-    //   299: ldc_w 651
-    //   302: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: ldc_w 667
+    //   302: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   305: pop
     //   306: aload 7
-    //   308: invokestatic 95	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()J
-    //   311: ldc2_w 180
+    //   308: invokestatic 197	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()J
+    //   311: ldc2_w 130
     //   314: ldiv
-    //   315: invokestatic 425	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   318: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   315: invokestatic 578	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   318: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   321: pop
     //   322: aload 7
-    //   324: ldc_w 653
-    //   327: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   324: ldc_w 669
+    //   327: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   330: pop
     //   331: aload 7
     //   333: aload 9
-    //   335: getfield 381	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:jdField_b_of_type_Long	J
-    //   338: invokevirtual 138	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   335: getfield 263	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:b	J
+    //   338: invokevirtual 240	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   341: pop
     //   342: aload 7
-    //   344: ldc_w 655
-    //   347: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   344: ldc_w 671
+    //   347: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   350: pop
     //   351: aload 7
     //   353: aload 9
-    //   355: getfield 380	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:jdField_a_of_type_Long	J
-    //   358: invokevirtual 138	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   355: getfield 262	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:a	J
+    //   358: invokevirtual 240	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   361: pop
     //   362: aload 7
-    //   364: ldc_w 657
-    //   367: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   364: ldc_w 673
+    //   367: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   370: pop
     //   371: aload 7
     //   373: iload_1
-    //   374: invokevirtual 197	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   374: invokevirtual 147	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   377: pop
     //   378: aload 7
-    //   380: ldc_w 659
-    //   383: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   380: ldc_w 675
+    //   383: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   386: pop
     //   387: aload 7
     //   389: aload 9
-    //   391: getfield 501	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:d	J
-    //   394: invokevirtual 138	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   391: getfield 434	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:e	J
+    //   394: invokevirtual 240	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   397: pop
     //   398: aload 7
-    //   400: ldc_w 661
-    //   403: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   400: ldc_w 677
+    //   403: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   406: pop
     //   407: aload 7
     //   409: aload 9
-    //   411: getfield 499	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:jdField_c_of_type_Long	J
-    //   414: invokevirtual 138	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   411: getfield 433	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:d	J
+    //   414: invokevirtual 240	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   417: pop
     //   418: aload 7
-    //   420: ldc_w 663
-    //   423: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   420: ldc_w 679
+    //   423: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   426: pop
     //   427: aload 7
     //   429: iload_2
-    //   430: invokevirtual 197	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   430: invokevirtual 147	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   433: pop
-    //   434: ldc 72
+    //   434: ldc 83
     //   436: iconst_2
     //   437: aload 7
-    //   439: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   442: invokestatic 80	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   439: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   442: invokestatic 90	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   445: aload 9
-    //   447: invokevirtual 664	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:b	()V
+    //   447: invokevirtual 680	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:b	()V
     //   450: aload 9
     //   452: lload_3
-    //   453: putfield 628	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:e	J
+    //   453: putfield 644	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:g	J
     //   456: goto +49 -> 505
     //   459: astore 7
     //   461: goto +30 -> 491
     //   464: astore 7
-    //   466: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   466: invokestatic 69	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   469: ifeq +14 -> 483
-    //   472: ldc 72
+    //   472: ldc 83
     //   474: iconst_2
-    //   475: ldc_w 626
+    //   475: ldc_w 569
     //   478: aload 7
-    //   480: invokestatic 200	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   480: invokestatic 150	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   483: aload 9
-    //   485: invokevirtual 664	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:b	()V
+    //   485: invokevirtual 680	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:b	()V
     //   488: goto -38 -> 450
     //   491: aload 9
-    //   493: invokevirtual 664	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:b	()V
+    //   493: invokevirtual 680	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:b	()V
     //   496: aload 9
     //   498: lload_3
-    //   499: putfield 628	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:e	J
+    //   499: putfield 644	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:g	J
     //   502: aload 7
     //   504: athrow
     //   505: aload 9
-    //   507: invokevirtual 384	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:c	()V
+    //   507: invokevirtual 266	com/tencent/qqperf/monitor/memory/MemoryManager$LowMemoryReport:c	()V
     //   510: aload 8
     //   512: monitorexit
     //   513: return
@@ -800,8 +800,8 @@ public class MemoryManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	528	0	this	MemoryManager
-    //   42	332	1	i	int
-    //   48	382	2	j	int
+    //   42	332	1	i1	int
+    //   48	382	2	i2	int
     //   18	481	3	l1	long
     //   24	4	5	l2	long
     //   84	354	7	localObject1	Object
@@ -843,7 +843,7 @@ public class MemoryManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.MemoryManager
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.os.Handler;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.kandian.base.msf.ReadInJoyMSFService;
 import com.tencent.mobileqq.kandian.base.msf.ReadInJoyOidbHelper;
+import com.tencent.mobileqq.kandian.base.utils.RIJLogUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJPBFieldUtils;
 import com.tencent.mobileqq.kandian.repo.common.ReadInJoyEngineModule;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -19,8 +20,8 @@ import tencent.im.oidb.cmd0xe71.oidb_cmd0xe71.RspBody;
 public class RIJUGCAccountCreateModule
   extends ReadInJoyEngineModule
 {
-  private RIJUGCAccountCreateModule.UGCAccountCreateCallback jdField_a_of_type_ComTencentMobileqqKandianRepoUgcRIJUGCAccountCreateModule$UGCAccountCreateCallback;
-  private RIJUGCAccountCreateModule.UGCAccountStatusCallback jdField_a_of_type_ComTencentMobileqqKandianRepoUgcRIJUGCAccountCreateModule$UGCAccountStatusCallback;
+  private RIJUGCAccountCreateModule.UGCAccountCreateCallback a;
+  private RIJUGCAccountCreateModule.UGCAccountStatusCallback b;
   
   public RIJUGCAccountCreateModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
@@ -68,7 +69,7 @@ public class RIJUGCAccountCreateModule
     QLog.d("RIJUGCAccountCreateModule", 1, paramFromServiceMsg.toString());
     if (i >= 0)
     {
-      paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqKandianRepoUgcRIJUGCAccountCreateModule$UGCAccountCreateCallback;
+      paramFromServiceMsg = this.a;
       if (paramFromServiceMsg != null) {
         paramFromServiceMsg.a(paramToServiceMsg.uint32_result.get());
       }
@@ -92,7 +93,7 @@ public class RIJUGCAccountCreateModule
     paramToServiceMsg.append("handleUGCAccountStatus status = ");
     paramToServiceMsg.append(i);
     QLog.d("RIJUGCAccountCreateModule", 1, paramToServiceMsg.toString());
-    paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqKandianRepoUgcRIJUGCAccountCreateModule$UGCAccountStatusCallback;
+    paramToServiceMsg = this.b;
     if (paramToServiceMsg != null) {
       paramToServiceMsg.a(i);
     }
@@ -105,7 +106,7 @@ public class RIJUGCAccountCreateModule
     localStringBuilder.append(paramLong);
     QLog.d("RIJUGCAccountCreateModule", 1, localStringBuilder.toString());
     if (paramUGCAccountCreateCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoUgcRIJUGCAccountCreateModule$UGCAccountCreateCallback = paramUGCAccountCreateCallback;
+      this.a = paramUGCAccountCreateCallback;
     }
     paramUGCAccountCreateCallback = a(paramLong, 1);
     paramUGCAccountCreateCallback.addAttribute("KEY_UGC_USER_ACCOUNT_UIN", Long.valueOf(paramLong));
@@ -117,10 +118,10 @@ public class RIJUGCAccountCreateModule
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("requestUgcAccountStatus uin: ");
-    localStringBuilder.append(paramLong);
+    localStringBuilder.append(RIJLogUtil.a.a(paramLong));
     QLog.d("RIJUGCAccountCreateModule", 1, localStringBuilder.toString());
     if (paramUGCAccountStatusCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoUgcRIJUGCAccountCreateModule$UGCAccountStatusCallback = paramUGCAccountStatusCallback;
+      this.b = paramUGCAccountStatusCallback;
     }
     paramUGCAccountStatusCallback = a(paramLong, 2);
     paramUGCAccountStatusCallback.addAttribute("KEY_UGC_USER_ACCOUNT_UIN", Long.valueOf(paramLong));
@@ -137,13 +138,13 @@ public class RIJUGCAccountCreateModule
   
   public void unInitialize()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoUgcRIJUGCAccountCreateModule$UGCAccountCreateCallback = null;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoUgcRIJUGCAccountCreateModule$UGCAccountStatusCallback = null;
+    this.a = null;
+    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.ugc.RIJUGCAccountCreateModule
  * JD-Core Version:    0.7.0.1
  */

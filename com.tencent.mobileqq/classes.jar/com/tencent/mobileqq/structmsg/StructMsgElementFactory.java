@@ -54,68 +54,68 @@ import java.util.HashMap;
 
 public class StructMsgElementFactory
 {
-  private static final SparseArray<Class<? extends AbsStructMsgItem>> jdField_a_of_type_AndroidUtilSparseArray;
-  private static HashMap<String, Class<? extends AbsStructMsgElement>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static HashMap<String, Class<? extends AbsStructMsgElement>> a = new HashMap();
+  private static final SparseArray<Class<? extends AbsStructMsgItem>> b;
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap.put("pavideo", StructMsgItemPAVideo.class);
-    jdField_a_of_type_JavaUtilHashMap.put("video", StructMsgItemVideo.class);
-    jdField_a_of_type_JavaUtilHashMap.put("picture", StructMsgItemCover.class);
-    jdField_a_of_type_JavaUtilHashMap.put("title", StructMsgItemTitle.class);
-    jdField_a_of_type_JavaUtilHashMap.put("summary", StructMsgItemSummary.class);
-    jdField_a_of_type_JavaUtilHashMap.put("timer", StructMsgItemTimer.class);
-    jdField_a_of_type_JavaUtilHashMap.put("hr", StructMsgItemHr.class);
-    jdField_a_of_type_JavaUtilHashMap.put("image", StructMsgItemImage.class);
-    jdField_a_of_type_JavaUtilHashMap.put("more", StructMsgItemMore.class);
-    jdField_a_of_type_JavaUtilHashMap.put("progress", StructMsgItemProgress.class);
-    jdField_a_of_type_JavaUtilHashMap.put("checklist", StructMsgItemVote.class);
-    jdField_a_of_type_JavaUtilHashMap.put("vote", StructMsgItemVoteCover.class);
-    jdField_a_of_type_JavaUtilHashMap.put("price", StructMsgItemPrice.class);
-    jdField_a_of_type_JavaUtilHashMap.put("button", StructMsgItemButton.class);
-    jdField_a_of_type_JavaUtilHashMap.put("remark", StructMsgItemRemark.class);
-    jdField_a_of_type_JavaUtilHashMap.put("paaudio", StructMsgItemPAAudio.class);
-    jdField_a_of_type_JavaUtilHashMap.put("textButton", StructMsgItemTextButton.class);
-    jdField_a_of_type_JavaUtilHashMap.put("content", StructMsgItemContent.class);
-    jdField_a_of_type_JavaUtilHashMap.put("tips", StructMsgItemTips.class);
-    jdField_a_of_type_JavaUtilHashMap.put("live", StructMsgItemLive.class);
-    jdField_a_of_type_JavaUtilHashMap.put("tr", StructMsgItemTr.class);
-    jdField_a_of_type_JavaUtilHashMap.put("td", StructMsgItemTd.class);
-    jdField_a_of_type_JavaUtilHashMap.put("head", StructMsgItemAvatar.class);
-    jdField_a_of_type_JavaUtilHashMap.put("type", StructMsgItemType.class);
-    jdField_a_of_type_JavaUtilHashMap.put("tag", StructMsgItemTag.class);
-    jdField_a_of_type_JavaUtilHashMap.put("taglist", StructMsgItemTagList.class);
-    jdField_a_of_type_JavaUtilHashMap.put("group", StructMsgGroupElement.class);
-    jdField_a_of_type_JavaUtilHashMap.put("groupitem", StructMsgGroupItemElement.class);
-    jdField_a_of_type_JavaUtilHashMap.put("voice", StructMsgItemVoice.class);
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    jdField_a_of_type_AndroidUtilSparseArray.append(0, StructMsgItemLayoutDefault.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(1, StructMsgItemLayout1.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(2, StructMsgItemLayout2.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(3, StructMsgItemLayout3.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(4, StructMsgItemLayout4.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(5, StructMsgItemLayout5.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(6, StructMsgItemLayout6.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(7, StructMsgItemLayout7.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(8, StructMsgItemLayout8.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(9, StructMsgItemLayout9.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(10, StructMsgItemLayout10.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(11, StructMsgItemLayout11.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(12, StructMsgItemLayout12.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(18, StructMsgItemLayout18.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(19, StructMsgItemLayout19.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(20, StructMsgItemLayout20.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(21, StructMsgItemLayout21.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(22, StructMsgItemLayout22.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(23, StructMsgItemLayout23.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(24, StructMsgItemLayout24.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(25, StructMsgItemLayout25.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(26, StructMsgItemLayout26.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(27, StructMsgItemLayout27.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(28, StructMsgItemLayout28.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(29, StructMsgItemLayout29.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(30, StructMsgItemLayout30.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(31, StructMsgItemLayout31.class);
+    a.put("pavideo", StructMsgItemPAVideo.class);
+    a.put("video", StructMsgItemVideo.class);
+    a.put("picture", StructMsgItemCover.class);
+    a.put("title", StructMsgItemTitle.class);
+    a.put("summary", StructMsgItemSummary.class);
+    a.put("timer", StructMsgItemTimer.class);
+    a.put("hr", StructMsgItemHr.class);
+    a.put("image", StructMsgItemImage.class);
+    a.put("more", StructMsgItemMore.class);
+    a.put("progress", StructMsgItemProgress.class);
+    a.put("checklist", StructMsgItemVote.class);
+    a.put("vote", StructMsgItemVoteCover.class);
+    a.put("price", StructMsgItemPrice.class);
+    a.put("button", StructMsgItemButton.class);
+    a.put("remark", StructMsgItemRemark.class);
+    a.put("paaudio", StructMsgItemPAAudio.class);
+    a.put("textButton", StructMsgItemTextButton.class);
+    a.put("content", StructMsgItemContent.class);
+    a.put("tips", StructMsgItemTips.class);
+    a.put("live", StructMsgItemLive.class);
+    a.put("tr", StructMsgItemTr.class);
+    a.put("td", StructMsgItemTd.class);
+    a.put("head", StructMsgItemAvatar.class);
+    a.put("type", StructMsgItemType.class);
+    a.put("tag", StructMsgItemTag.class);
+    a.put("taglist", StructMsgItemTagList.class);
+    a.put("group", StructMsgGroupElement.class);
+    a.put("groupitem", StructMsgGroupItemElement.class);
+    a.put("voice", StructMsgItemVoice.class);
+    b = new SparseArray();
+    b.append(0, StructMsgItemLayoutDefault.class);
+    b.append(1, StructMsgItemLayout1.class);
+    b.append(2, StructMsgItemLayout2.class);
+    b.append(3, StructMsgItemLayout3.class);
+    b.append(4, StructMsgItemLayout4.class);
+    b.append(5, StructMsgItemLayout5.class);
+    b.append(6, StructMsgItemLayout6.class);
+    b.append(7, StructMsgItemLayout7.class);
+    b.append(8, StructMsgItemLayout8.class);
+    b.append(9, StructMsgItemLayout9.class);
+    b.append(10, StructMsgItemLayout10.class);
+    b.append(11, StructMsgItemLayout11.class);
+    b.append(12, StructMsgItemLayout12.class);
+    b.append(18, StructMsgItemLayout18.class);
+    b.append(19, StructMsgItemLayout19.class);
+    b.append(20, StructMsgItemLayout20.class);
+    b.append(21, StructMsgItemLayout21.class);
+    b.append(22, StructMsgItemLayout22.class);
+    b.append(23, StructMsgItemLayout23.class);
+    b.append(24, StructMsgItemLayout24.class);
+    b.append(25, StructMsgItemLayout25.class);
+    b.append(26, StructMsgItemLayout26.class);
+    b.append(27, StructMsgItemLayout27.class);
+    b.append(28, StructMsgItemLayout28.class);
+    b.append(29, StructMsgItemLayout29.class);
+    b.append(30, StructMsgItemLayout30.class);
+    b.append(31, StructMsgItemLayout31.class);
   }
   
   public static AbsStructMsgElement a(String paramString)
@@ -137,21 +137,21 @@ public class StructMsgElementFactory
     //   10: astore 4
     //   12: aconst_null
     //   13: astore 8
-    //   15: ldc 213
+    //   15: ldc 214
     //   17: aload_0
-    //   18: invokevirtual 219	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   18: invokevirtual 220	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   21: ifne +19 -> 40
-    //   24: getstatic 18	com/tencent/mobileqq/structmsg/StructMsgElementFactory:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   24: getstatic 19	com/tencent/mobileqq/structmsg/StructMsgElementFactory:a	Ljava/util/HashMap;
     //   27: aload_0
-    //   28: invokevirtual 223	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   28: invokevirtual 224	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   31: astore_2
     //   32: aload_2
-    //   33: checkcast 225	java/lang/Class
+    //   33: checkcast 226	java/lang/Class
     //   36: astore_3
     //   37: goto +14 -> 51
-    //   40: getstatic 143	com/tencent/mobileqq/structmsg/StructMsgElementFactory:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
+    //   40: getstatic 144	com/tencent/mobileqq/structmsg/StructMsgElementFactory:b	Landroid/util/SparseArray;
     //   43: iload_1
-    //   44: invokevirtual 228	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   44: invokevirtual 229	android/util/SparseArray:get	(I)Ljava/lang/Object;
     //   47: astore_2
     //   48: goto -16 -> 32
     //   51: aload 8
@@ -159,239 +159,239 @@ public class StructMsgElementFactory
     //   54: aload_3
     //   55: ifnull +24 -> 79
     //   58: aload_3
-    //   59: invokevirtual 232	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   62: checkcast 234	com/tencent/mobileqq/structmsg/AbsStructMsgElement
+    //   59: invokevirtual 233	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   62: checkcast 235	com/tencent/mobileqq/structmsg/AbsStructMsgElement
     //   65: astore_2
     //   66: goto +13 -> 79
     //   69: astore_2
-    //   70: goto +139 -> 209
-    //   73: goto +246 -> 319
-    //   76: goto +289 -> 365
+    //   70: goto +141 -> 211
+    //   73: goto +250 -> 323
+    //   76: goto +293 -> 369
     //   79: aload_3
-    //   80: ifnonnull +64 -> 144
+    //   80: ifnonnull +65 -> 145
     //   83: aload_2
     //   84: astore 4
-    //   86: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   89: ifeq +320 -> 409
-    //   92: new 242	java/lang/StringBuilder
+    //   86: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   89: ifeq +324 -> 413
+    //   92: new 243	java/lang/StringBuilder
     //   95: dup
-    //   96: invokespecial 243	java/lang/StringBuilder:<init>	()V
+    //   96: invokespecial 244	java/lang/StringBuilder:<init>	()V
     //   99: astore 4
     //   101: aload_2
     //   102: astore_3
     //   103: aload 4
     //   105: astore_2
     //   106: aload_2
-    //   107: ldc 245
-    //   109: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: ldc 246
+    //   109: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: pop
     //   113: aload_2
     //   114: aload_0
-    //   115: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: pop
     //   119: aload_2
-    //   120: ldc 250
-    //   122: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: ldc 251
+    //   122: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: pop
     //   126: aload_2
     //   127: iload_1
-    //   128: invokevirtual 253	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   128: invokevirtual 254	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   131: pop
-    //   132: ldc 255
-    //   134: iconst_2
-    //   135: aload_2
-    //   136: invokevirtual 259	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   139: invokestatic 263	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   142: aload_3
-    //   143: areturn
-    //   144: aload_2
-    //   145: astore 4
-    //   147: aload_2
-    //   148: ifnonnull +261 -> 409
-    //   151: aload_2
-    //   152: astore 4
-    //   154: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   157: ifeq +252 -> 409
-    //   160: new 242	java/lang/StringBuilder
-    //   163: dup
-    //   164: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   167: astore_0
-    //   168: aload_0
-    //   169: ldc_w 265
-    //   172: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   175: pop
-    //   176: aload_0
-    //   177: aload_3
-    //   178: invokevirtual 268	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   181: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   184: pop
-    //   185: aload_0
-    //   186: ldc_w 270
-    //   189: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: pop
-    //   193: ldc 255
-    //   195: iconst_2
-    //   196: aload_0
-    //   197: invokevirtual 259	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   200: invokestatic 263	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   203: aload_2
-    //   204: areturn
-    //   205: astore_2
-    //   206: aload 7
-    //   208: astore_3
-    //   209: aload_3
-    //   210: ifnonnull +56 -> 266
-    //   213: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   216: ifeq +99 -> 315
-    //   219: new 242	java/lang/StringBuilder
-    //   222: dup
-    //   223: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   226: astore_3
-    //   227: aload_3
-    //   228: ldc 245
-    //   230: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: pop
-    //   234: aload_3
-    //   235: aload_0
-    //   236: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   239: pop
-    //   240: aload_3
-    //   241: ldc 250
-    //   243: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   246: pop
-    //   247: aload_3
-    //   248: iload_1
-    //   249: invokevirtual 253	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   252: pop
-    //   253: ldc 255
-    //   255: iconst_2
-    //   256: aload_3
-    //   257: invokevirtual 259	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   260: invokestatic 263	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   263: goto +52 -> 315
-    //   266: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   269: ifeq +46 -> 315
-    //   272: new 242	java/lang/StringBuilder
-    //   275: dup
-    //   276: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   279: astore_0
-    //   280: aload_0
-    //   281: ldc_w 265
-    //   284: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   287: pop
-    //   288: aload_0
-    //   289: aload_3
-    //   290: invokevirtual 268	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   293: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   296: pop
-    //   297: aload_0
-    //   298: ldc_w 270
-    //   301: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   304: pop
-    //   305: ldc 255
-    //   307: iconst_2
-    //   308: aload_0
-    //   309: invokevirtual 259	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   312: invokestatic 263	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   315: aload_2
-    //   316: athrow
-    //   317: aconst_null
-    //   318: astore_3
-    //   319: aload_3
-    //   320: ifnonnull +23 -> 343
-    //   323: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   326: ifeq +83 -> 409
-    //   329: new 242	java/lang/StringBuilder
-    //   332: dup
-    //   333: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   336: astore_2
-    //   337: aload 5
-    //   339: astore_3
-    //   340: goto -234 -> 106
-    //   343: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   346: ifeq +63 -> 409
-    //   349: new 242	java/lang/StringBuilder
-    //   352: dup
-    //   353: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   356: astore_0
-    //   357: aload 6
-    //   359: astore_2
-    //   360: goto -192 -> 168
-    //   363: aconst_null
-    //   364: astore_3
-    //   365: aload_3
-    //   366: ifnonnull +23 -> 389
-    //   369: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   372: ifeq +37 -> 409
-    //   375: new 242	java/lang/StringBuilder
-    //   378: dup
-    //   379: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   382: astore_2
-    //   383: aload 5
-    //   385: astore_3
-    //   386: goto -280 -> 106
-    //   389: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   392: ifeq +17 -> 409
-    //   395: new 242	java/lang/StringBuilder
-    //   398: dup
-    //   399: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   402: astore_0
-    //   403: aload 6
-    //   405: astore_2
-    //   406: goto -238 -> 168
-    //   409: aload 4
-    //   411: areturn
-    //   412: astore_2
-    //   413: goto -50 -> 363
+    //   132: ldc_w 256
+    //   135: iconst_2
+    //   136: aload_2
+    //   137: invokevirtual 260	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   140: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   143: aload_3
+    //   144: areturn
+    //   145: aload_2
+    //   146: astore 4
+    //   148: aload_2
+    //   149: ifnonnull +264 -> 413
+    //   152: aload_2
+    //   153: astore 4
+    //   155: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   158: ifeq +255 -> 413
+    //   161: new 243	java/lang/StringBuilder
+    //   164: dup
+    //   165: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   168: astore_0
+    //   169: aload_0
+    //   170: ldc_w 266
+    //   173: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: pop
+    //   177: aload_0
+    //   178: aload_3
+    //   179: invokevirtual 269	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   182: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: pop
+    //   186: aload_0
+    //   187: ldc_w 271
+    //   190: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   193: pop
+    //   194: ldc_w 256
+    //   197: iconst_2
+    //   198: aload_0
+    //   199: invokevirtual 260	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   202: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   205: aload_2
+    //   206: areturn
+    //   207: astore_2
+    //   208: aload 7
+    //   210: astore_3
+    //   211: aload_3
+    //   212: ifnonnull +57 -> 269
+    //   215: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   218: ifeq +101 -> 319
+    //   221: new 243	java/lang/StringBuilder
+    //   224: dup
+    //   225: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   228: astore_3
+    //   229: aload_3
+    //   230: ldc 246
+    //   232: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   235: pop
+    //   236: aload_3
+    //   237: aload_0
+    //   238: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   241: pop
+    //   242: aload_3
+    //   243: ldc 251
+    //   245: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: pop
+    //   249: aload_3
+    //   250: iload_1
+    //   251: invokevirtual 254	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   254: pop
+    //   255: ldc_w 256
+    //   258: iconst_2
+    //   259: aload_3
+    //   260: invokevirtual 260	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   263: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   266: goto +53 -> 319
+    //   269: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   272: ifeq +47 -> 319
+    //   275: new 243	java/lang/StringBuilder
+    //   278: dup
+    //   279: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   282: astore_0
+    //   283: aload_0
+    //   284: ldc_w 266
+    //   287: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   290: pop
+    //   291: aload_0
+    //   292: aload_3
+    //   293: invokevirtual 269	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   296: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: pop
+    //   300: aload_0
+    //   301: ldc_w 271
+    //   304: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   307: pop
+    //   308: ldc_w 256
+    //   311: iconst_2
+    //   312: aload_0
+    //   313: invokevirtual 260	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   316: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   319: aload_2
+    //   320: athrow
+    //   321: aconst_null
+    //   322: astore_3
+    //   323: aload_3
+    //   324: ifnonnull +23 -> 347
+    //   327: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   330: ifeq +83 -> 413
+    //   333: new 243	java/lang/StringBuilder
+    //   336: dup
+    //   337: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   340: astore_2
+    //   341: aload 5
+    //   343: astore_3
+    //   344: goto -238 -> 106
+    //   347: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   350: ifeq +63 -> 413
+    //   353: new 243	java/lang/StringBuilder
+    //   356: dup
+    //   357: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   360: astore_0
+    //   361: aload 6
+    //   363: astore_2
+    //   364: goto -195 -> 169
+    //   367: aconst_null
+    //   368: astore_3
+    //   369: aload_3
+    //   370: ifnonnull +23 -> 393
+    //   373: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   376: ifeq +37 -> 413
+    //   379: new 243	java/lang/StringBuilder
+    //   382: dup
+    //   383: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   386: astore_2
+    //   387: aload 5
+    //   389: astore_3
+    //   390: goto -284 -> 106
+    //   393: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   396: ifeq +17 -> 413
+    //   399: new 243	java/lang/StringBuilder
+    //   402: dup
+    //   403: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   406: astore_0
+    //   407: aload 6
+    //   409: astore_2
+    //   410: goto -241 -> 169
+    //   413: aload 4
+    //   415: areturn
     //   416: astore_2
-    //   417: goto -100 -> 317
+    //   417: goto -50 -> 367
     //   420: astore_2
-    //   421: goto -345 -> 76
+    //   421: goto -100 -> 321
     //   424: astore_2
-    //   425: goto -352 -> 73
+    //   425: goto -349 -> 76
+    //   428: astore_2
+    //   429: goto -356 -> 73
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	428	0	paramString	String
-    //   0	428	1	paramInt	int
+    //   0	432	0	paramString	String
+    //   0	432	1	paramInt	int
     //   31	35	2	localObject1	Object
     //   69	33	2	localObject2	Object
-    //   105	99	2	localObject3	Object
-    //   205	111	2	localObject4	Object
-    //   336	70	2	localObject5	Object
-    //   412	1	2	localIllegalAccessException1	java.lang.IllegalAccessException
-    //   416	1	2	localInstantiationException1	java.lang.InstantiationException
-    //   420	1	2	localIllegalAccessException2	java.lang.IllegalAccessException
-    //   424	1	2	localInstantiationException2	java.lang.InstantiationException
-    //   36	350	3	localObject6	Object
-    //   10	400	4	localObject7	Object
-    //   1	383	5	localObject8	Object
-    //   4	400	6	localObject9	Object
-    //   7	200	7	localObject10	Object
+    //   105	101	2	localObject3	Object
+    //   207	113	2	localObject4	Object
+    //   340	70	2	localObject5	Object
+    //   416	1	2	localIllegalAccessException1	java.lang.IllegalAccessException
+    //   420	1	2	localInstantiationException1	java.lang.InstantiationException
+    //   424	1	2	localIllegalAccessException2	java.lang.IllegalAccessException
+    //   428	1	2	localInstantiationException2	java.lang.InstantiationException
+    //   36	354	3	localObject6	Object
+    //   10	404	4	localObject7	Object
+    //   1	387	5	localObject8	Object
+    //   4	404	6	localObject9	Object
+    //   7	202	7	localObject10	Object
     //   13	39	8	localObject11	Object
     // Exception table:
     //   from	to	target	type
     //   58	66	69	finally
-    //   15	32	205	finally
-    //   32	37	205	finally
-    //   40	48	205	finally
-    //   15	32	412	java/lang/IllegalAccessException
-    //   32	37	412	java/lang/IllegalAccessException
-    //   40	48	412	java/lang/IllegalAccessException
-    //   15	32	416	java/lang/InstantiationException
-    //   32	37	416	java/lang/InstantiationException
-    //   40	48	416	java/lang/InstantiationException
-    //   58	66	420	java/lang/IllegalAccessException
-    //   58	66	424	java/lang/InstantiationException
+    //   15	32	207	finally
+    //   32	37	207	finally
+    //   40	48	207	finally
+    //   15	32	416	java/lang/IllegalAccessException
+    //   32	37	416	java/lang/IllegalAccessException
+    //   40	48	416	java/lang/IllegalAccessException
+    //   15	32	420	java/lang/InstantiationException
+    //   32	37	420	java/lang/InstantiationException
+    //   40	48	420	java/lang/InstantiationException
+    //   58	66	424	java/lang/IllegalAccessException
+    //   58	66	428	java/lang/InstantiationException
   }
   
   /* Error */
   public static AbsStructMsgItem a(int paramInt)
   {
     // Byte code:
-    //   0: getstatic 143	com/tencent/mobileqq/structmsg/StructMsgElementFactory:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
+    //   0: getstatic 144	com/tencent/mobileqq/structmsg/StructMsgElementFactory:b	Landroid/util/SparseArray;
     //   3: iload_0
-    //   4: invokevirtual 228	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   7: checkcast 225	java/lang/Class
+    //   4: invokevirtual 229	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   7: checkcast 226	java/lang/Class
     //   10: astore 5
     //   12: aconst_null
     //   13: astore 4
@@ -402,190 +402,190 @@ public class StructMsgElementFactory
     //   19: aconst_null
     //   20: astore_3
     //   21: aload 5
-    //   23: ifnull +260 -> 283
+    //   23: ifnull +264 -> 287
     //   26: aload 5
-    //   28: invokevirtual 232	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   31: checkcast 273	com/tencent/mobileqq/structmsg/AbsStructMsgItem
+    //   28: invokevirtual 233	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   31: checkcast 274	com/tencent/mobileqq/structmsg/AbsStructMsgItem
     //   34: astore_1
-    //   35: goto +248 -> 283
+    //   35: goto +252 -> 287
     //   38: astore_1
     //   39: aload 5
-    //   41: ifnonnull +44 -> 85
-    //   44: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   47: ifeq +88 -> 135
-    //   50: new 242	java/lang/StringBuilder
+    //   41: ifnonnull +45 -> 86
+    //   44: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   47: ifeq +90 -> 137
+    //   50: new 243	java/lang/StringBuilder
     //   53: dup
-    //   54: invokespecial 243	java/lang/StringBuilder:<init>	()V
+    //   54: invokespecial 244	java/lang/StringBuilder:<init>	()V
     //   57: astore_2
     //   58: aload_2
-    //   59: ldc_w 275
-    //   62: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: ldc_w 276
+    //   62: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: pop
     //   66: aload_2
     //   67: iload_0
-    //   68: invokevirtual 253	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   68: invokevirtual 254	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   71: pop
-    //   72: ldc 255
-    //   74: iconst_2
-    //   75: aload_2
-    //   76: invokevirtual 259	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   79: invokestatic 263	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   82: goto +53 -> 135
-    //   85: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   88: ifeq +47 -> 135
-    //   91: new 242	java/lang/StringBuilder
-    //   94: dup
-    //   95: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   98: astore_2
-    //   99: aload_2
-    //   100: ldc_w 265
-    //   103: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: pop
-    //   107: aload_2
-    //   108: aload 5
-    //   110: invokevirtual 268	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   113: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: pop
-    //   117: aload_2
-    //   118: ldc_w 270
-    //   121: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: pop
-    //   125: ldc 255
-    //   127: iconst_2
-    //   128: aload_2
-    //   129: invokevirtual 259	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 263	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   135: aload_1
-    //   136: athrow
-    //   137: aload 5
-    //   139: ifnonnull +22 -> 161
-    //   142: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   145: ifeq +191 -> 336
-    //   148: new 242	java/lang/StringBuilder
-    //   151: dup
-    //   152: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   155: astore_2
-    //   156: aload_3
-    //   157: astore_1
-    //   158: goto +44 -> 202
-    //   161: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   164: ifeq +172 -> 336
-    //   167: new 242	java/lang/StringBuilder
-    //   170: dup
-    //   171: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   174: astore_1
-    //   175: aload 4
-    //   177: astore_2
-    //   178: goto +67 -> 245
-    //   181: aload 5
-    //   183: ifnonnull +45 -> 228
-    //   186: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   189: ifeq +147 -> 336
-    //   192: new 242	java/lang/StringBuilder
-    //   195: dup
-    //   196: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   199: astore_2
-    //   200: aload_3
-    //   201: astore_1
-    //   202: aload_2
-    //   203: ldc_w 275
-    //   206: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: pop
-    //   210: aload_2
-    //   211: iload_0
-    //   212: invokevirtual 253	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   215: pop
-    //   216: ldc 255
-    //   218: iconst_2
-    //   219: aload_2
-    //   220: invokevirtual 259	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   223: invokestatic 263	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   226: aload_1
-    //   227: areturn
-    //   228: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   231: ifeq +105 -> 336
-    //   234: new 242	java/lang/StringBuilder
-    //   237: dup
-    //   238: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   241: astore_1
-    //   242: aload 4
-    //   244: astore_2
-    //   245: aload_1
-    //   246: ldc_w 265
-    //   249: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   252: pop
-    //   253: aload_1
-    //   254: aload 5
-    //   256: invokevirtual 268	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   259: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   262: pop
-    //   263: aload_1
-    //   264: ldc_w 270
-    //   267: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   270: pop
-    //   271: ldc 255
-    //   273: iconst_2
-    //   274: aload_1
-    //   275: invokevirtual 259	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   278: invokestatic 263	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   281: aload_2
-    //   282: areturn
-    //   283: aload 5
-    //   285: ifnonnull +22 -> 307
-    //   288: aload_1
-    //   289: astore_2
-    //   290: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   293: ifeq +43 -> 336
-    //   296: new 242	java/lang/StringBuilder
-    //   299: dup
-    //   300: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   303: astore_2
-    //   304: goto -102 -> 202
-    //   307: aload_1
-    //   308: astore_2
-    //   309: aload_1
-    //   310: ifnonnull +26 -> 336
+    //   72: ldc_w 256
+    //   75: iconst_2
+    //   76: aload_2
+    //   77: invokevirtual 260	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   83: goto +54 -> 137
+    //   86: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   89: ifeq +48 -> 137
+    //   92: new 243	java/lang/StringBuilder
+    //   95: dup
+    //   96: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   99: astore_2
+    //   100: aload_2
+    //   101: ldc_w 266
+    //   104: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: pop
+    //   108: aload_2
+    //   109: aload 5
+    //   111: invokevirtual 269	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   114: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: pop
+    //   118: aload_2
+    //   119: ldc_w 271
+    //   122: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: pop
+    //   126: ldc_w 256
+    //   129: iconst_2
+    //   130: aload_2
+    //   131: invokevirtual 260	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   134: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   137: aload_1
+    //   138: athrow
+    //   139: aload 5
+    //   141: ifnonnull +22 -> 163
+    //   144: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   147: ifeq +193 -> 340
+    //   150: new 243	java/lang/StringBuilder
+    //   153: dup
+    //   154: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   157: astore_2
+    //   158: aload_3
+    //   159: astore_1
+    //   160: goto +44 -> 204
+    //   163: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   166: ifeq +174 -> 340
+    //   169: new 243	java/lang/StringBuilder
+    //   172: dup
+    //   173: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   176: astore_1
+    //   177: aload 4
+    //   179: astore_2
+    //   180: goto +68 -> 248
+    //   183: aload 5
+    //   185: ifnonnull +46 -> 231
+    //   188: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   191: ifeq +149 -> 340
+    //   194: new 243	java/lang/StringBuilder
+    //   197: dup
+    //   198: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   201: astore_2
+    //   202: aload_3
+    //   203: astore_1
+    //   204: aload_2
+    //   205: ldc_w 276
+    //   208: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: pop
+    //   212: aload_2
+    //   213: iload_0
+    //   214: invokevirtual 254	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   217: pop
+    //   218: ldc_w 256
+    //   221: iconst_2
+    //   222: aload_2
+    //   223: invokevirtual 260	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   226: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   229: aload_1
+    //   230: areturn
+    //   231: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   234: ifeq +106 -> 340
+    //   237: new 243	java/lang/StringBuilder
+    //   240: dup
+    //   241: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   244: astore_1
+    //   245: aload 4
+    //   247: astore_2
+    //   248: aload_1
+    //   249: ldc_w 266
+    //   252: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: pop
+    //   256: aload_1
+    //   257: aload 5
+    //   259: invokevirtual 269	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   262: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   265: pop
+    //   266: aload_1
+    //   267: ldc_w 271
+    //   270: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   273: pop
+    //   274: ldc_w 256
+    //   277: iconst_2
+    //   278: aload_1
+    //   279: invokevirtual 260	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   282: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   285: aload_2
+    //   286: areturn
+    //   287: aload 5
+    //   289: ifnonnull +22 -> 311
+    //   292: aload_1
+    //   293: astore_2
+    //   294: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   297: ifeq +43 -> 340
+    //   300: new 243	java/lang/StringBuilder
+    //   303: dup
+    //   304: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   307: astore_2
+    //   308: goto -104 -> 204
+    //   311: aload_1
+    //   312: astore_2
     //   313: aload_1
-    //   314: astore_2
-    //   315: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   318: ifeq +18 -> 336
-    //   321: new 242	java/lang/StringBuilder
-    //   324: dup
-    //   325: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   328: astore_3
-    //   329: aload_1
-    //   330: astore_2
-    //   331: aload_3
-    //   332: astore_1
-    //   333: goto -88 -> 245
-    //   336: aload_2
-    //   337: areturn
-    //   338: astore_1
-    //   339: goto -158 -> 181
+    //   314: ifnonnull +26 -> 340
+    //   317: aload_1
+    //   318: astore_2
+    //   319: invokestatic 241	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   322: ifeq +18 -> 340
+    //   325: new 243	java/lang/StringBuilder
+    //   328: dup
+    //   329: invokespecial 244	java/lang/StringBuilder:<init>	()V
+    //   332: astore_3
+    //   333: aload_1
+    //   334: astore_2
+    //   335: aload_3
+    //   336: astore_1
+    //   337: goto -89 -> 248
+    //   340: aload_2
+    //   341: areturn
     //   342: astore_1
-    //   343: goto -206 -> 137
+    //   343: goto -160 -> 183
+    //   346: astore_1
+    //   347: goto -208 -> 139
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	346	0	paramInt	int
+    //   0	350	0	paramInt	int
     //   16	19	1	localAbsStructMsgItem	AbsStructMsgItem
-    //   38	98	1	localObject1	Object
-    //   157	176	1	localObject2	Object
-    //   338	1	1	localIllegalAccessException	java.lang.IllegalAccessException
-    //   342	1	1	localInstantiationException	java.lang.InstantiationException
-    //   18	319	2	localObject3	Object
-    //   20	312	3	localStringBuilder	java.lang.StringBuilder
-    //   13	230	4	localObject4	Object
-    //   10	274	5	localClass	Class
+    //   38	100	1	localObject1	Object
+    //   159	178	1	localObject2	Object
+    //   342	1	1	localIllegalAccessException	java.lang.IllegalAccessException
+    //   346	1	1	localInstantiationException	java.lang.InstantiationException
+    //   18	323	2	localObject3	Object
+    //   20	316	3	localStringBuilder	java.lang.StringBuilder
+    //   13	233	4	localObject4	Object
+    //   10	278	5	localClass	Class
     // Exception table:
     //   from	to	target	type
     //   26	35	38	finally
-    //   26	35	338	java/lang/IllegalAccessException
-    //   26	35	342	java/lang/InstantiationException
+    //   26	35	342	java/lang/IllegalAccessException
+    //   26	35	346	java/lang/InstantiationException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgElementFactory
  * JD-Core Version:    0.7.0.1
  */

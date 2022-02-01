@@ -16,47 +16,47 @@ class ShareMsgImpl$3
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = this.this$0.n;
     if (localObject != null)
     {
       if (((Activity)localObject).isFinishing()) {
         return;
       }
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
+      if (this.this$0.a == null) {
         this.this$0.a((Activity)localObject);
       }
-      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if ((this.this$0.a != null) && (this.this$0.a.isShowing())) {
+        this.this$0.a.dismiss();
       }
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
+      if (this.this$0.c == null)
       {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new ShareMsgImpl.3.1(this);
-        WXShareHelper.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+        this.this$0.c = new ShareMsgImpl.3.1(this);
+        WXShareHelper.a().a(this.this$0.c);
       }
-      if ((this.jdField_a_of_type_Int == 1) && (this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIWxShareHelperFromReadInjoy$WXShareHelperFromReadInjoyListener == null))
+      if ((this.c == 1) && (this.this$0.d == null))
       {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIWxShareHelperFromReadInjoy$WXShareHelperFromReadInjoyListener = new ShareMsgImpl.3.2(this);
-        ((IWxShareHelperFromReadInjoy)QRoute.api(IWxShareHelperFromReadInjoy.class)).addObserver(this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIWxShareHelperFromReadInjoy$WXShareHelperFromReadInjoyListener);
+        this.this$0.d = new ShareMsgImpl.3.2(this);
+        ((IWxShareHelperFromReadInjoy)QRoute.api(IWxShareHelperFromReadInjoy.class)).addObserver(this.this$0.d);
       }
-      this.this$0.b = String.valueOf(System.currentTimeMillis());
-      localObject = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
-      if ("audio".equals(this.c))
+      this.this$0.e = String.valueOf(System.currentTimeMillis());
+      localObject = (Bitmap)this.d.remove("image");
+      if ("audio".equals(this.e))
       {
-        WXShareHelper.a().a(this.this$0.b, this.d, (Bitmap)localObject, this.e, this.b, "2".equals(this.jdField_a_of_type_JavaLangString) ^ true, this.f);
+        WXShareHelper.a().a(this.this$0.e, this.f, (Bitmap)localObject, this.g, this.b, "2".equals(this.a) ^ true, this.h);
         return;
       }
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.c == 1)
       {
-        this.this$0.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.d(new ShareMsgImpl.3.3(this, (Bitmap)localObject));
+        this.this$0.k.d(new ShareMsgImpl.3.3(this, (Bitmap)localObject));
         return;
       }
-      WXShareHelper.a().a(this.this$0.b, this.d, (Bitmap)localObject, this.e, this.b, "2".equals(this.jdField_a_of_type_JavaLangString) ^ true);
+      WXShareHelper.a().a(this.this$0.e, this.f, (Bitmap)localObject, this.g, this.b, "2".equals(this.a) ^ true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.ShareMsgImpl.3
  * JD-Core Version:    0.7.0.1
  */

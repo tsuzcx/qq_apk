@@ -60,7 +60,7 @@ public class AIOShortVideoUtil
         QLog.d("AIOShortVideoUtil", 1, "camera result null");
         return;
       }
-      if (paramSessionInfo.jdField_a_of_type_Int == 9501)
+      if (paramSessionInfo.a == 9501)
       {
         ChatActivityUtils.a(paramQQAppInterface, paramActivity, paramSessionInfo, 1, paramIntent, 1);
         return;
@@ -77,8 +77,8 @@ public class AIOShortVideoUtil
       paramIntent.putExtra("qq_sub_business_id", 109);
       AIOUtils.a(paramIntent, null);
       paramIntent.putExtra("camera_type", paramInt1);
-      if (Utils.b(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
-        paramIntent.putExtra("babyq_ability", ((BabyQHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER)).a());
+      if (Utils.c(paramSessionInfo.b)) {
+        paramIntent.putExtra("babyq_ability", ((BabyQHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER)).c());
       }
       paramIntent.putExtra("key_activity_code", ChatActivityUtils.a(paramActivity));
       paramIntent.putExtra("editpic_cameratype", 3);
@@ -90,8 +90,8 @@ public class AIOShortVideoUtil
     paramQQAppInterface.putExtra("file_send_path", paramIntent);
     paramQQAppInterface.putExtra("file_send_size", new File(paramIntent).length());
     paramQQAppInterface.putExtra("file_send_duration", ShortVideoUtils.getDuration(paramIntent));
-    paramQQAppInterface.putExtra("uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
-    paramQQAppInterface.putExtra("uintype", paramSessionInfo.jdField_a_of_type_Int);
+    paramQQAppInterface.putExtra("uin", paramSessionInfo.b);
+    paramQQAppInterface.putExtra("uintype", paramSessionInfo.a);
     paramQQAppInterface.putExtra("file_source", "camera");
     paramQQAppInterface.putExtra("start_init_activity_after_sended", false);
     paramActivity.startActivity(paramQQAppInterface);
@@ -99,7 +99,7 @@ public class AIOShortVideoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.AIOShortVideoUtil
  * JD-Core Version:    0.7.0.1
  */

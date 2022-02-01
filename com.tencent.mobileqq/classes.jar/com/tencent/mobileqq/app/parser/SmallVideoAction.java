@@ -28,20 +28,20 @@ public class SmallVideoAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("IdentifierWebJumpAction", 1, localStringBuilder.toString());
-      b_("IdentifierWebJumpAction");
+      h_("IdentifierWebJumpAction");
     }
     return false;
   }
   
   public boolean c()
   {
-    ((ISmallVideoFragmentUtil)QRoute.api(ISmallVideoFragmentUtil.class)).launch(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    ((ISmallVideoFragmentUtil)QRoute.api(ISmallVideoFragmentUtil.class)).launch(this.b, this.c);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.SmallVideoAction
  * JD-Core Version:    0.7.0.1
  */

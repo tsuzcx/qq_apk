@@ -20,9 +20,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class VSEntranceWidgetDownLoadHelper
 {
-  private static VSEntranceWidgetDownLoadHelper jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetDownLoadHelper;
   public static String a;
-  private Map<String, VSEntranceWidgetDownLoadHelper.DownLoadStatus> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private static VSEntranceWidgetDownLoadHelper b;
+  private Map<String, VSEntranceWidgetDownLoadHelper.DownLoadStatus> c = new ConcurrentHashMap();
   
   private VSEntranceWidgetDownLoadHelper()
   {
@@ -33,10 +33,10 @@ public class VSEntranceWidgetDownLoadHelper
   {
     try
     {
-      if (jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetDownLoadHelper == null) {
-        jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetDownLoadHelper = new VSEntranceWidgetDownLoadHelper();
+      if (b == null) {
+        b = new VSEntranceWidgetDownLoadHelper();
       }
-      VSEntranceWidgetDownLoadHelper localVSEntranceWidgetDownLoadHelper = jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetDownLoadHelper;
+      VSEntranceWidgetDownLoadHelper localVSEntranceWidgetDownLoadHelper = b;
       return localVSEntranceWidgetDownLoadHelper;
     }
     finally {}
@@ -44,43 +44,27 @@ public class VSEntranceWidgetDownLoadHelper
   
   private String a(Context paramContext)
   {
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(a))
     {
       paramContext = paramContext.getExternalFilesDir("video_story");
       if (paramContext != null) {
-        jdField_a_of_type_JavaLangString = paramContext.getAbsolutePath();
+        a = paramContext.getAbsolutePath();
       }
     }
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(a))
     {
       paramContext = Environment.getExternalStorageDirectory().getAbsolutePath();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramContext);
       localStringBuilder.append("/Tencent/MobileQQ/");
       localStringBuilder.append("video_story");
-      jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      a = localStringBuilder.toString();
     }
     paramContext = new StringBuilder();
     paramContext.append("intDownLoadRoot");
-    paramContext.append(jdField_a_of_type_JavaLangString);
+    paramContext.append(a);
     QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, paramContext.toString());
     return null;
-  }
-  
-  public String a(String paramString)
-  {
-    try
-    {
-      paramString = paramString.split("/");
-      paramString = paramString[(paramString.length - 1)];
-      paramString = paramString.substring(0, paramString.indexOf(".zip"));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return "";
   }
   
   public void a(VSEntranceStyleBean paramVSEntranceStyleBean)
@@ -108,7 +92,7 @@ public class VSEntranceWidgetDownLoadHelper
       QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:url is empty" });
       return;
     }
-    localObject1 = a(paramString);
+    localObject1 = d(paramString);
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:prefixId is empty" });
@@ -128,13 +112,13 @@ public class VSEntranceWidgetDownLoadHelper
       QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource on download");
       return;
     }
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(a))
     {
       QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:mDownLoadRoot is empty" });
       return;
     }
     localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(a);
     ((StringBuilder)localObject2).append("/");
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append(".zip");
@@ -142,12 +126,12 @@ public class VSEntranceWidgetDownLoadHelper
     if (!TextUtils.isEmpty(paramString))
     {
       VSEntranceWidgetDownLoadHelper.DownLoadStatus localDownLoadStatus = new VSEntranceWidgetDownLoadHelper.DownLoadStatus(this, null);
-      this.jdField_a_of_type_JavaUtilMap.put(localObject1, localDownLoadStatus);
+      this.c.put(localObject1, localDownLoadStatus);
       DownloaderInterface localDownloaderInterface = ((DownloaderFactory)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
       if (localDownloaderInterface != null)
       {
         DownloadTask localDownloadTask = new DownloadTask(paramString, new File((String)localObject2));
-        localDownloadTask.b = 1;
+        localDownloadTask.e = 1;
         Bundle localBundle = new Bundle();
         if (localDownloaderInterface != null) {
           localDownloaderInterface.startDownload(localDownloadTask, new VSEntranceWidgetDownLoadHelper.1(this, paramDownloadListener, (String)localObject2, localDownLoadStatus, (String)localObject1, paramString), localBundle);
@@ -158,26 +142,17 @@ public class VSEntranceWidgetDownLoadHelper
   
   public boolean a(String paramString)
   {
-    paramString = a(paramString);
+    paramString = d(paramString);
     if (!TextUtils.isEmpty(paramString)) {
       return b(paramString);
     }
     return false;
   }
   
-  public String b(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("/");
-    localStringBuilder.append(a(paramString));
-    return localStringBuilder.toString();
-  }
-  
   public boolean b(String paramString)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(a);
     ((StringBuilder)localObject).append("/");
     ((StringBuilder)localObject).append(paramString);
     localObject = ((StringBuilder)localObject).toString();
@@ -201,7 +176,7 @@ public class VSEntranceWidgetDownLoadHelper
       {
         localObject = new VSEntranceWidgetDownLoadHelper.DownLoadStatus(this, null);
         VSEntranceWidgetDownLoadHelper.DownLoadStatus.a((VSEntranceWidgetDownLoadHelper.DownLoadStatus)localObject, 0);
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+        this.c.put(paramString, localObject);
         return bool2;
       }
     }
@@ -214,7 +189,7 @@ public class VSEntranceWidgetDownLoadHelper
   
   public boolean c(String paramString)
   {
-    paramString = (VSEntranceWidgetDownLoadHelper.DownLoadStatus)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (VSEntranceWidgetDownLoadHelper.DownLoadStatus)this.c.get(paramString);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramString != null) {
@@ -230,10 +205,35 @@ public class VSEntranceWidgetDownLoadHelper
     }
     return bool1;
   }
+  
+  public String d(String paramString)
+  {
+    try
+    {
+      paramString = paramString.split("/");
+      paramString = paramString[(paramString.length - 1)];
+      paramString = paramString.substring(0, paramString.indexOf(".zip"));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
+  public String e(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a);
+    localStringBuilder.append("/");
+    localStringBuilder.append(d(paramString));
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidgetDownLoadHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -74,32 +74,32 @@ class VideoJsProxyImpl$3
     //   113: astore_1
     //   114: aload_1
     //   115: aload_1
-    //   116: invokestatic 74	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:a	(Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;)I
-    //   119: ldc 76
+    //   116: invokestatic 75	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:b	(Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;)I
+    //   119: ldc 77
     //   121: aconst_null
-    //   122: invokestatic 79	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:a	(Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;ILjava/lang/String;Lorg/json/JSONObject;)V
+    //   122: invokestatic 80	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:a	(Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;ILjava/lang/String;Lorg/json/JSONObject;)V
     //   125: return
     //   126: iload 5
     //   128: istore_3
-    //   129: getstatic 85	android/os/Build$VERSION:SDK_INT	I
+    //   129: getstatic 86	android/os/Build$VERSION:SDK_INT	I
     //   132: bipush 15
     //   134: if_icmple +202 -> 336
-    //   137: new 87	java/io/FileInputStream
+    //   137: new 88	java/io/FileInputStream
     //   140: dup
     //   141: aload 12
-    //   143: getfield 91	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   146: invokespecial 94	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   143: getfield 92	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   146: invokespecial 95	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   149: astore 10
-    //   151: new 96	android/media/MediaExtractor
+    //   151: new 97	android/media/MediaExtractor
     //   154: dup
-    //   155: invokespecial 97	android/media/MediaExtractor:<init>	()V
+    //   155: invokespecial 98	android/media/MediaExtractor:<init>	()V
     //   158: astore_1
     //   159: aload_1
     //   160: aload 10
-    //   162: invokevirtual 101	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   165: invokevirtual 105	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   162: invokevirtual 102	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   165: invokevirtual 106	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
     //   168: aload_1
-    //   169: invokestatic 108	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:a	(Landroid/media/MediaExtractor;)I
+    //   169: invokestatic 109	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:a	(Landroid/media/MediaExtractor;)I
     //   172: istore 7
     //   174: iload 6
     //   176: istore_3
@@ -108,22 +108,22 @@ class VideoJsProxyImpl$3
     //   180: if_icmple +32 -> 212
     //   183: aload_1
     //   184: iload 7
-    //   186: invokevirtual 112	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   186: invokevirtual 113	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   189: astore 9
     //   191: iload 6
     //   193: istore_3
     //   194: aload 9
-    //   196: ldc 114
-    //   198: invokevirtual 120	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   196: ldc 115
+    //   198: invokevirtual 121	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   201: ifeq +11 -> 212
     //   204: aload 9
-    //   206: ldc 114
-    //   208: invokevirtual 124	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   206: ldc 115
+    //   208: invokevirtual 125	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   211: istore_3
     //   212: aload 10
-    //   214: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   214: invokevirtual 128	java/io/FileInputStream:close	()V
     //   217: aload_1
-    //   218: invokevirtual 130	android/media/MediaExtractor:release	()V
+    //   218: invokevirtual 131	android/media/MediaExtractor:release	()V
     //   221: goto +115 -> 336
     //   224: astore_2
     //   225: aload 10
@@ -154,13 +154,13 @@ class VideoJsProxyImpl$3
     //   270: astore 10
     //   272: ldc 40
     //   274: iconst_1
-    //   275: ldc 132
+    //   275: ldc 133
     //   277: aload 9
-    //   279: invokestatic 136	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   279: invokestatic 137	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   282: aload 10
     //   284: ifnull +11 -> 295
     //   287: aload 10
-    //   289: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   289: invokevirtual 128	java/io/FileInputStream:close	()V
     //   292: goto +3 -> 295
     //   295: iload 5
     //   297: istore_3
@@ -175,31 +175,31 @@ class VideoJsProxyImpl$3
     //   313: aload 9
     //   315: ifnull +11 -> 326
     //   318: aload 9
-    //   320: invokevirtual 127	java/io/FileInputStream:close	()V
+    //   320: invokevirtual 128	java/io/FileInputStream:close	()V
     //   323: goto +3 -> 326
     //   326: aload_1
     //   327: ifnull +7 -> 334
     //   330: aload_1
-    //   331: invokevirtual 130	android/media/MediaExtractor:release	()V
+    //   331: invokevirtual 131	android/media/MediaExtractor:release	()V
     //   334: aload_2
     //   335: athrow
-    //   336: new 138	java/lang/StringBuilder
+    //   336: new 139	java/lang/StringBuilder
     //   339: dup
-    //   340: invokespecial 139	java/lang/StringBuilder:<init>	()V
+    //   340: invokespecial 140	java/lang/StringBuilder:<init>	()V
     //   343: astore_1
     //   344: aload_1
-    //   345: ldc 141
-    //   347: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   345: ldc 142
+    //   347: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   350: pop
     //   351: aload_1
     //   352: iload_3
-    //   353: invokevirtual 148	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   353: invokevirtual 149	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   356: pop
     //   357: ldc 40
     //   359: iconst_2
     //   360: aload_1
-    //   361: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   364: invokestatic 154	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   361: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   364: invokestatic 155	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   367: iload_3
     //   368: bipush 90
     //   370: if_icmpeq +10 -> 380
@@ -207,39 +207,39 @@ class VideoJsProxyImpl$3
     //   374: sipush 270
     //   377: if_icmpne +25 -> 402
     //   380: aload 12
-    //   382: getfield 157	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
+    //   382: getfield 158	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
     //   385: istore_3
     //   386: aload 12
     //   388: aload 12
-    //   390: getfield 160	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
-    //   393: putfield 157	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
+    //   390: getfield 161	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
+    //   393: putfield 158	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
     //   396: aload 12
     //   398: iload_3
-    //   399: putfield 160	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
-    //   402: ldc 162
+    //   399: putfield 161	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
+    //   402: ldc 163
     //   404: aload_2
-    //   405: ldc 164
-    //   407: invokevirtual 168	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   405: ldc 165
+    //   407: invokevirtual 169	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   410: invokevirtual 60	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   413: istore 8
     //   415: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   418: ifeq +35 -> 453
-    //   421: new 138	java/lang/StringBuilder
+    //   421: new 139	java/lang/StringBuilder
     //   424: dup
-    //   425: invokespecial 139	java/lang/StringBuilder:<init>	()V
+    //   425: invokespecial 140	java/lang/StringBuilder:<init>	()V
     //   428: astore_1
     //   429: aload_1
-    //   430: ldc 170
-    //   432: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   430: ldc 171
+    //   432: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   435: pop
     //   436: aload_1
     //   437: iload 8
-    //   439: invokevirtual 173	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   439: invokevirtual 174	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   442: pop
     //   443: ldc 40
     //   445: iconst_2
     //   446: aload_1
-    //   447: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   447: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   450: invokestatic 54	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   453: iload 8
     //   455: ifeq +14 -> 469
@@ -247,27 +247,27 @@ class VideoJsProxyImpl$3
     //   459: getfield 10	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl$3:a	Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;
     //   462: aload 12
     //   464: iconst_1
-    //   465: invokestatic 176	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:a	(Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;Z)V
+    //   465: invokestatic 177	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:a	(Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;Z)V
     //   468: return
     //   469: aload 12
-    //   471: getfield 91	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   471: getfield 92	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
     //   474: astore_1
     //   475: aload_0
     //   476: getfield 10	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl$3:a	Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;
-    //   479: invokestatic 179	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:a	(Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   482: ldc 181
-    //   484: invokeinterface 187 2 0
-    //   489: checkcast 181	com/tencent/qqmini/sdk/launcher/shell/IMiniAppFileManager
+    //   479: invokestatic 181	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:c	(Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   482: ldc 183
+    //   484: invokeinterface 189 2 0
+    //   489: checkcast 183	com/tencent/qqmini/sdk/launcher/shell/IMiniAppFileManager
     //   492: aload_1
-    //   493: invokeinterface 190 2 0
+    //   493: invokeinterface 192 2 0
     //   498: astore_1
     //   499: aload_0
     //   500: getfield 10	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl$3:a	Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;
     //   503: aload_1
     //   504: aload 12
-    //   506: getfield 194	com/tencent/mobileqq/activity/photo/LocalMediaInfo:fileSize	J
+    //   506: getfield 196	com/tencent/mobileqq/activity/photo/LocalMediaInfo:fileSize	J
     //   509: aload 12
-    //   511: invokestatic 197	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:a	(Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;Ljava/lang/String;JLcom/tencent/mobileqq/activity/photo/LocalMediaInfo;)V
+    //   511: invokestatic 199	com/tencent/qqmini/proxyimpl/VideoJsProxyImpl:a	(Lcom/tencent/qqmini/proxyimpl/VideoJsProxyImpl;Ljava/lang/String;JLcom/tencent/mobileqq/activity/photo/LocalMediaInfo;)V
     //   514: return
     //   515: astore 9
     //   517: goto -300 -> 217
@@ -319,7 +319,7 @@ class VideoJsProxyImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.3
  * JD-Core Version:    0.7.0.1
  */

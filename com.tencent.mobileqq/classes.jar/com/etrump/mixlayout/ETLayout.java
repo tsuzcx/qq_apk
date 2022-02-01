@@ -20,35 +20,26 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ETLayout
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  public ETFont a;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private ArrayList<ETParagraph> jdField_a_of_type_JavaUtilArrayList = new ArrayList(16);
-  public AtomicBoolean a;
-  public boolean a;
-  private ETTextLine[] jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
-  public int b;
-  public ETFont b;
-  private ArrayList<CharacterStyle> b;
-  public boolean b;
-  public int c;
-  private ArrayList<ETTextRange> jdField_c_of_type_JavaUtilArrayList = new ArrayList(16);
-  private boolean jdField_c_of_type_Boolean;
-  int d = -1;
-  private int e;
-  private int f;
-  private int g;
-  
-  ETLayout()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(4);
-    this.jdField_b_of_type_ComEtrumpMixlayoutETFont = new ETFont(0, "", 24.0F);
-  }
+  int a;
+  public long b = 0L;
+  public ETFont c;
+  public ETFont d = new ETFont(0, "", 24.0F);
+  public int e;
+  public int f;
+  public boolean g = false;
+  public boolean h;
+  int i = -1;
+  Paint j = new Paint(1);
+  public AtomicBoolean k = new AtomicBoolean(false);
+  private CharSequence l;
+  private int m;
+  private ArrayList<ETParagraph> n = new ArrayList(16);
+  private ETTextLine[] o;
+  private ArrayList<CharacterStyle> p = new ArrayList(4);
+  private boolean q;
+  private int r;
+  private int s;
+  private ArrayList<ETTextRange> t = new ArrayList(16);
   
   private int a(char paramChar1, char paramChar2)
   {
@@ -60,46 +51,246 @@ public class ETLayout
     if (paramCharSequence == null) {
       return "";
     }
-    int j = 0;
-    int i = paramInt1;
+    int i2 = 0;
+    int i1 = paramInt1;
     if (paramInt1 < 0) {
-      i = 0;
+      i1 = 0;
     }
     paramInt1 = paramInt2;
     if (paramInt2 > paramCharSequence.length()) {
       paramInt1 = paramCharSequence.length();
     }
-    paramInt2 = paramInt1 - i;
+    paramInt2 = paramInt1 - i1;
     if (paramInt2 <= 0) {
       return "";
     }
     char[] arrayOfChar = new char[paramInt2];
-    paramInt1 = j;
+    paramInt1 = i2;
     while (paramInt1 < paramInt2)
     {
-      arrayOfChar[paramInt1] = paramCharSequence.charAt(paramInt1 + i);
+      arrayOfChar[paramInt1] = paramCharSequence.charAt(paramInt1 + i1);
       paramInt1 += 1;
     }
     return String.valueOf(arrayOfChar);
   }
   
-  private String a()
+  private void a(int paramInt1, int paramInt2, CharacterStyle paramCharacterStyle)
+  {
+    ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).setSignatureActionSpanData(paramInt1, paramInt2, paramCharacterStyle);
+  }
+  
+  private void a(Canvas paramCanvas)
+  {
+    ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).drawSignatureSpan(this.p, this.c, this.j, this.i, paramCanvas);
+  }
+  
+  private void a(CharacterStyle paramCharacterStyle, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    if (this.n == null) {
+      return;
+    }
+    paramCharacterStyle = new ETParagraph(paramCharacterStyle, paramInt1, paramInt2, paramInt3, paramBoolean);
+    paramCharacterStyle.a(this.s);
+    this.n.add(paramCharacterStyle);
+  }
+  
+  private void a(ETEngine paramETEngine, int paramInt)
+  {
+    if (this.o != null) {
+      this.o = null;
+    }
+    int i4 = this.n.size();
+    int i1 = 0;
+    int i2 = 0;
+    int i3 = 0;
+    Object localObject1;
+    while (i1 < i4)
+    {
+      localObject1 = (ETParagraph)this.n.get(i1);
+      i2 = ((ETParagraph)localObject1).a(paramETEngine, paramInt, i3, i2);
+      i3 = ((ETParagraph)localObject1).b();
+      i1 += 1;
+    }
+    i3 = i2 + 1;
+    this.o = new ETTextLine[i3];
+    paramInt = 0;
+    while (paramInt < i3)
+    {
+      this.o[paramInt] = new ETTextLine();
+      paramInt += 1;
+    }
+    paramInt = 0;
+    Object localObject2;
+    while (paramInt < i4)
+    {
+      localObject1 = ((ETParagraph)this.n.get(paramInt)).a();
+      i1 = 0;
+      while (i1 < ((ArrayList)localObject1).size())
+      {
+        localObject2 = (ETFragment)((ArrayList)localObject1).get(i1);
+        i2 = ((ETFragment)localObject2).g();
+        if ((i2 >= 0) && (i2 < i3)) {
+          this.o[i2].a((ETFragment)localObject2);
+        }
+        i1 += 1;
+      }
+      paramInt += 1;
+    }
+    paramInt = 0;
+    i1 = 0;
+    while (paramInt < i3)
+    {
+      localObject1 = this.o[paramInt];
+      ((ETTextLine)localObject1).a(paramETEngine, 0, i1, this.a);
+      localObject2 = ((ETTextLine)localObject1).f().iterator();
+      i2 = 0;
+      while (((Iterator)localObject2).hasNext())
+      {
+        ETFragment localETFragment = (ETFragment)((Iterator)localObject2).next();
+        ETTextRange[] arrayOfETTextRange = localETFragment.a(paramETEngine, i2, i1, ((ETTextLine)localObject1).a(), paramInt);
+        if ((arrayOfETTextRange != null) && (arrayOfETTextRange.length > 0)) {
+          Collections.addAll(this.t, arrayOfETTextRange);
+        }
+        i2 += localETFragment.e();
+      }
+      i1 += ((ETTextLine)localObject1).a();
+      paramInt += 1;
+    }
+  }
+  
+  private void a(String paramString, int paramInt1, int paramInt2, ETFont paramETFont, boolean paramBoolean)
+  {
+    if (this.n == null) {
+      return;
+    }
+    paramString = new ETParagraph(paramString, paramInt1, paramInt2, paramETFont, paramBoolean);
+    paramString.a(this.s);
+    this.n.add(paramString);
+    this.g = false;
+  }
+  
+  private void a(String paramString, int paramInt1, int paramInt2, ETFont paramETFont, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (this.n == null) {
+      return;
+    }
+    paramString = new ETParagraph(paramString, paramInt1, paramInt2, paramETFont, paramBoolean1);
+    paramString.a(this.s);
+    paramString.a = paramBoolean2;
+    this.n.add(paramString);
+    this.g = false;
+  }
+  
+  private void b()
+  {
+    Object localObject = this.n;
+    if (localObject != null) {
+      ((ArrayList)localObject).clear();
+    }
+    localObject = this.l;
+    if ((localObject != null) && (this.c != null))
+    {
+      if ((localObject instanceof Spanned))
+      {
+        c();
+        return;
+      }
+      a(((CharSequence)localObject).toString(), 0, this.l.length(), this.c, false);
+    }
+  }
+  
+  private void c()
+  {
+    this.p.clear();
+    Object localObject = (Spanned)this.l;
+    CharacterStyle[] arrayOfCharacterStyle = (CharacterStyle[])((Spanned)localObject).getSpans(0, ((Spanned)localObject).length(), CharacterStyle.class);
+    ETLayout.ETRange[] arrayOfETRange = new ETLayout.ETRange[arrayOfCharacterStyle.length];
+    if (arrayOfETRange.length == 0)
+    {
+      a(this.l.toString(), 0, this.l.length(), this.c, false);
+      return;
+    }
+    int i1 = 0;
+    while (i1 < arrayOfCharacterStyle.length)
+    {
+      arrayOfETRange[i1] = new ETLayout.ETRange();
+      arrayOfETRange[i1].a = ((Spanned)localObject).getSpanStart(arrayOfCharacterStyle[i1]);
+      arrayOfETRange[i1].b = ((Spanned)localObject).getSpanEnd(arrayOfCharacterStyle[i1]);
+      arrayOfETRange[i1].c = arrayOfCharacterStyle[i1];
+      i1 += 1;
+    }
+    Arrays.sort(arrayOfETRange, new ETLayout.ETComparator());
+    int i2 = 0;
+    i1 = 0;
+    while (i1 < arrayOfCharacterStyle.length)
+    {
+      int i4 = arrayOfETRange[i1].a;
+      int i3 = arrayOfETRange[i1].b;
+      if (i4 - i2 > 0) {
+        a(a(this.l, i2, i4).toString(), i2, i4, this.c, false);
+      }
+      if (i3 - i4 > 0) {
+        if ((arrayOfETRange[i1].c instanceof ClickableSpan))
+        {
+          i2 = i4;
+          if (i4 > 0)
+          {
+            i2 = i4;
+            if (this.l.charAt(i4 - 1) == ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).getSysEmotcationHead()) {
+              i2 = i4 + 1;
+            }
+          }
+          a(a(this.l, i2, i3).toString(), i2, i3, this.d, true);
+        }
+        else if (((IETFontAdapter)QRoute.api(IETFontAdapter.class)).isInstanceOfEmoticonSpan(arrayOfETRange[i1].c))
+        {
+          localObject = arrayOfETRange[i1].c;
+          this.p.add(localObject);
+          a((CharacterStyle)localObject, this.p.indexOf(localObject), i4, i3, false);
+        }
+        else if ((arrayOfETRange[i1].c instanceof RelativeSizeSpan))
+        {
+          localObject = a(this.l, i4, i3);
+          RelativeSizeSpan localRelativeSizeSpan = (RelativeSizeSpan)arrayOfETRange[i1].c;
+          ETFont localETFont = new ETFont(this.c.mFontId, this.c.mFontPath, this.c.getSize());
+          localETFont.copy(this.c);
+          localETFont.setSize(localRelativeSizeSpan.getSizeChange() * this.c.getSize());
+          a(((CharSequence)localObject).toString(), i4, i3, localETFont, false, true);
+        }
+        else if (((IETFontAdapter)QRoute.api(IETFontAdapter.class)).isInstanceOfSignatureActionSpan(arrayOfETRange[i1].c))
+        {
+          localObject = arrayOfETRange[i1].c;
+          this.p.add(localObject);
+          a((CharacterStyle)localObject, this.p.indexOf(localObject), i4, i3, false);
+        }
+      }
+      if ((i1 == arrayOfCharacterStyle.length - 1) && (i3 < this.l.length()))
+      {
+        localObject = this.l;
+        a(a((CharSequence)localObject, i3, ((CharSequence)localObject).length()).toString(), i3, this.l.length(), this.c, false);
+      }
+      i1 += 1;
+      i2 = i3;
+    }
+  }
+  
+  private String d()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject1 = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    Object localObject1 = this.o;
     if (localObject1 != null)
     {
       if (localObject1.length == 0) {
         return null;
       }
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject1 = this.n;
       if (localObject1 != null)
       {
         if (((ArrayList)localObject1).size() == 0) {
           return null;
         }
-        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        int i = 0;
+        localObject1 = this.n.iterator();
+        int i1 = 0;
         if (((Iterator)localObject1).hasNext())
         {
           Object localObject2 = ((ETParagraph)((Iterator)localObject1).next()).a();
@@ -107,10 +298,10 @@ public class ETLayout
             return null;
           }
           localObject2 = ((ArrayList)localObject2).iterator();
-          int j = i;
+          int i2 = i1;
           for (;;)
           {
-            i = j;
+            i1 = i2;
             if (!((Iterator)localObject2).hasNext()) {
               break;
             }
@@ -121,8 +312,8 @@ public class ETLayout
             String str = localETFragment.a();
             if (str != null)
             {
-              localETFragment.a(j);
-              j += str.length();
+              localETFragment.a(i2);
+              i2 += str.length();
               localStringBuilder.append(str);
             }
           }
@@ -133,317 +324,61 @@ public class ETLayout
     return null;
   }
   
-  private void a()
+  private int e()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localObject != null) {
-      ((ArrayList)localObject).clear();
-    }
-    localObject = this.jdField_a_of_type_JavaLangCharSequence;
-    if ((localObject != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null))
-    {
-      if ((localObject instanceof Spanned))
-      {
-        b();
-        return;
-      }
-      a(((CharSequence)localObject).toString(), 0, this.jdField_a_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_ComEtrumpMixlayoutETFont, false);
-    }
-  }
-  
-  private void a(int paramInt1, int paramInt2, CharacterStyle paramCharacterStyle)
-  {
-    ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).setSignatureActionSpanData(paramInt1, paramInt2, paramCharacterStyle);
-  }
-  
-  private void a(Canvas paramCanvas)
-  {
-    ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).drawSignatureSpan(this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComEtrumpMixlayoutETFont, this.jdField_a_of_type_AndroidGraphicsPaint, this.d, paramCanvas);
-  }
-  
-  private void a(CharacterStyle paramCharacterStyle, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return;
-    }
-    paramCharacterStyle = new ETParagraph(paramCharacterStyle, paramInt1, paramInt2, paramInt3, paramBoolean);
-    paramCharacterStyle.a(this.g);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramCharacterStyle);
-  }
-  
-  private void a(ETEngine paramETEngine, int paramInt)
-  {
-    if (this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine != null) {
-      this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine = null;
-    }
-    int m = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    int j = 0;
-    int k = 0;
-    Object localObject1;
-    while (i < m)
-    {
-      localObject1 = (ETParagraph)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      j = ((ETParagraph)localObject1).a(paramETEngine, paramInt, k, j);
-      k = ((ETParagraph)localObject1).a();
-      i += 1;
-    }
-    k = j + 1;
-    this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine = new ETTextLine[k];
-    paramInt = 0;
-    while (paramInt < k)
-    {
-      this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[paramInt] = new ETTextLine();
-      paramInt += 1;
-    }
-    paramInt = 0;
-    Object localObject2;
-    while (paramInt < m)
-    {
-      localObject1 = ((ETParagraph)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
-      i = 0;
-      while (i < ((ArrayList)localObject1).size())
-      {
-        localObject2 = (ETFragment)((ArrayList)localObject1).get(i);
-        j = ((ETFragment)localObject2).e();
-        if ((j >= 0) && (j < k)) {
-          this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[j].a((ETFragment)localObject2);
-        }
-        i += 1;
-      }
-      paramInt += 1;
-    }
-    paramInt = 0;
-    i = 0;
-    while (paramInt < k)
-    {
-      localObject1 = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[paramInt];
-      ((ETTextLine)localObject1).a(paramETEngine, 0, i, this.jdField_a_of_type_Int);
-      localObject2 = ((ETTextLine)localObject1).a().iterator();
-      j = 0;
-      while (((Iterator)localObject2).hasNext())
-      {
-        ETFragment localETFragment = (ETFragment)((Iterator)localObject2).next();
-        ETTextRange[] arrayOfETTextRange = localETFragment.a(paramETEngine, j, i, ((ETTextLine)localObject1).a(), paramInt);
-        if ((arrayOfETTextRange != null) && (arrayOfETTextRange.length > 0)) {
-          Collections.addAll(this.jdField_c_of_type_JavaUtilArrayList, arrayOfETTextRange);
-        }
-        j += localETFragment.c();
-      }
-      i += ((ETTextLine)localObject1).a();
-      paramInt += 1;
-    }
-  }
-  
-  private void a(String paramString, int paramInt1, int paramInt2, ETFont paramETFont, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return;
-    }
-    paramString = new ETParagraph(paramString, paramInt1, paramInt2, paramETFont, paramBoolean);
-    paramString.a(this.g);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private void a(String paramString, int paramInt1, int paramInt2, ETFont paramETFont, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return;
-    }
-    paramString = new ETParagraph(paramString, paramInt1, paramInt2, paramETFont, paramBoolean1);
-    paramString.a(this.g);
-    paramString.jdField_a_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private Object[] a()
-  {
-    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
-    if ((localArrayList != null) && (localArrayList.size() > 0)) {
-      return this.jdField_b_of_type_JavaUtilArrayList.toArray();
-    }
-    return null;
-  }
-  
-  private int b()
-  {
-    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    ETTextLine[] arrayOfETTextLine = this.o;
     if ((arrayOfETTextLine != null) && (arrayOfETTextLine.length != 0)) {
       return arrayOfETTextLine[(arrayOfETTextLine.length - 1)].b();
     }
     return 0;
   }
   
-  private void b()
+  private Object[] f()
   {
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    Object localObject = (Spanned)this.jdField_a_of_type_JavaLangCharSequence;
-    CharacterStyle[] arrayOfCharacterStyle = (CharacterStyle[])((Spanned)localObject).getSpans(0, ((Spanned)localObject).length(), CharacterStyle.class);
-    ETLayout.ETRange[] arrayOfETRange = new ETLayout.ETRange[arrayOfCharacterStyle.length];
-    if (arrayOfETRange.length == 0)
-    {
-      a(this.jdField_a_of_type_JavaLangCharSequence.toString(), 0, this.jdField_a_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_ComEtrumpMixlayoutETFont, false);
-      return;
+    ArrayList localArrayList = this.p;
+    if ((localArrayList != null) && (localArrayList.size() > 0)) {
+      return this.p.toArray();
     }
-    int i = 0;
-    while (i < arrayOfCharacterStyle.length)
-    {
-      arrayOfETRange[i] = new ETLayout.ETRange();
-      arrayOfETRange[i].jdField_a_of_type_Int = ((Spanned)localObject).getSpanStart(arrayOfCharacterStyle[i]);
-      arrayOfETRange[i].jdField_b_of_type_Int = ((Spanned)localObject).getSpanEnd(arrayOfCharacterStyle[i]);
-      arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle = arrayOfCharacterStyle[i];
-      i += 1;
-    }
-    Arrays.sort(arrayOfETRange, new ETLayout.ETComparator());
-    int j = 0;
-    i = 0;
-    while (i < arrayOfCharacterStyle.length)
-    {
-      int m = arrayOfETRange[i].jdField_a_of_type_Int;
-      int k = arrayOfETRange[i].jdField_b_of_type_Int;
-      if (m - j > 0) {
-        a(a(this.jdField_a_of_type_JavaLangCharSequence, j, m).toString(), j, m, this.jdField_a_of_type_ComEtrumpMixlayoutETFont, false);
-      }
-      if (k - m > 0) {
-        if ((arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof ClickableSpan))
-        {
-          j = m;
-          if (m > 0)
-          {
-            j = m;
-            if (this.jdField_a_of_type_JavaLangCharSequence.charAt(m - 1) == ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).getSysEmotcationHead()) {
-              j = m + 1;
-            }
-          }
-          a(a(this.jdField_a_of_type_JavaLangCharSequence, j, k).toString(), j, k, this.jdField_b_of_type_ComEtrumpMixlayoutETFont, true);
-        }
-        else if (((IETFontAdapter)QRoute.api(IETFontAdapter.class)).isInstanceOfEmoticonSpan(arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle))
-        {
-          localObject = arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle;
-          this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
-          a((CharacterStyle)localObject, this.jdField_b_of_type_JavaUtilArrayList.indexOf(localObject), m, k, false);
-        }
-        else if ((arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof RelativeSizeSpan))
-        {
-          localObject = a(this.jdField_a_of_type_JavaLangCharSequence, m, k);
-          RelativeSizeSpan localRelativeSizeSpan = (RelativeSizeSpan)arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle;
-          ETFont localETFont = new ETFont(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.getSize());
-          localETFont.copy(this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-          localETFont.setSize(localRelativeSizeSpan.getSizeChange() * this.jdField_a_of_type_ComEtrumpMixlayoutETFont.getSize());
-          a(((CharSequence)localObject).toString(), m, k, localETFont, false, true);
-        }
-        else if (((IETFontAdapter)QRoute.api(IETFontAdapter.class)).isInstanceOfSignatureActionSpan(arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle))
-        {
-          localObject = arrayOfETRange[i].jdField_a_of_type_AndroidTextStyleCharacterStyle;
-          this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
-          a((CharacterStyle)localObject, this.jdField_b_of_type_JavaUtilArrayList.indexOf(localObject), m, k, false);
-        }
-      }
-      if ((i == arrayOfCharacterStyle.length - 1) && (k < this.jdField_a_of_type_JavaLangCharSequence.length()))
-      {
-        localObject = this.jdField_a_of_type_JavaLangCharSequence;
-        a(a((CharSequence)localObject, k, ((CharSequence)localObject).length()).toString(), k, this.jdField_a_of_type_JavaLangCharSequence.length(), this.jdField_a_of_type_ComEtrumpMixlayoutETFont, false);
-      }
-      i += 1;
-      j = k;
-    }
+    return null;
   }
   
   public int a()
   {
-    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    ETTextLine[] arrayOfETTextLine = this.o;
     if (arrayOfETTextLine != null) {
       return arrayOfETTextLine.length;
     }
     return 0;
   }
   
-  int a(int paramInt)
-  {
-    int j = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine.length;
-    int i = 0;
-    while (i < j)
-    {
-      ETTextLine localETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[i];
-      if (paramInt < localETTextLine.d() + localETTextLine.a()) {
-        return i;
-      }
-      i += 1;
-    }
-    return j - 1;
-  }
-  
   int a(int paramInt1, int paramInt2)
   {
-    int k = a(paramInt2);
-    int m = this.jdField_c_of_type_JavaUtilArrayList.size();
-    int i = m - 1;
+    int i3 = e(paramInt2);
+    int i4 = this.t.size();
+    int i1 = i4 - 1;
     paramInt2 = 0;
-    while (paramInt2 < m)
+    while (paramInt2 < i4)
     {
-      ETTextRange localETTextRange = (ETTextRange)this.jdField_c_of_type_JavaUtilArrayList.get(paramInt2);
-      int j;
-      if (localETTextRange.jdField_a_of_type_Int == k)
+      ETTextRange localETTextRange = (ETTextRange)this.t.get(paramInt2);
+      int i2;
+      if (localETTextRange.b == i3)
       {
-        if (paramInt1 <= localETTextRange.jdField_a_of_type_AndroidGraphicsRect.right) {
+        if (paramInt1 <= localETTextRange.c.right) {
           return paramInt2;
         }
-        j = paramInt2;
+        i2 = paramInt2;
       }
       else
       {
-        j = i;
-        if (localETTextRange.jdField_a_of_type_Int > k) {
+        i2 = i1;
+        if (localETTextRange.b > i3) {
           break;
         }
       }
       paramInt2 += 1;
-      i = j;
+      i1 = i2;
     }
-    return i + 1;
-  }
-  
-  Rect a(int paramInt)
-  {
-    if (paramInt >= 0)
-    {
-      Object localObject = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
-      if (paramInt < localObject.length)
-      {
-        localObject = localObject[paramInt];
-        paramInt = ((ETTextLine)localObject).c();
-        int i = ((ETTextLine)localObject).d();
-        return new Rect(paramInt, i, this.jdField_b_of_type_Int + paramInt, ((ETTextLine)localObject).a() + i);
-      }
-    }
-    return null;
-  }
-  
-  public CharacterStyle a(int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    Rect localRect = new Rect(0, 0, 0, 0);
-    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
-    int j = arrayOfETTextLine.length;
-    while (i < j)
-    {
-      Object localObject = arrayOfETTextLine[i];
-      localRect.left = ((ETTextLine)localObject).c();
-      localRect.top = ((ETTextLine)localObject).d();
-      localRect.right = (localRect.left + ((ETTextLine)localObject).b());
-      localRect.bottom = (localRect.top + ((ETTextLine)localObject).a());
-      if (localRect.contains(paramInt1, paramInt2))
-      {
-        localObject = ((ETTextLine)localObject).a(paramInt1);
-        if (localObject != null) {
-          return ((ETFragment)localObject).a();
-        }
-      }
-      i += 1;
-    }
-    return null;
+    return i1 + 1;
   }
   
   public ETDecoration a(ETEngine paramETEngine, boolean paramBoolean)
@@ -451,60 +386,52 @@ public class ETLayout
     if (paramETEngine == null) {
       return null;
     }
-    String str = a();
-    int j = b();
-    int k = a();
+    String str = d();
+    int i2 = e();
+    int i3 = a();
     ETSegment[] arrayOfETSegment = a(paramETEngine);
-    Object[] arrayOfObject = a();
+    Object[] arrayOfObject = f();
     if (!paramBoolean)
     {
-      this.d = -1;
-      if (this.jdField_b_of_type_JavaUtilArrayList != null)
+      this.i = -1;
+      if (this.p != null)
       {
-        int i = 0;
-        while (i < this.jdField_b_of_type_JavaUtilArrayList.size())
+        int i1 = 0;
+        while (i1 < this.p.size())
         {
-          CharacterStyle localCharacterStyle = (CharacterStyle)this.jdField_b_of_type_JavaUtilArrayList.get(i);
+          CharacterStyle localCharacterStyle = (CharacterStyle)this.p.get(i1);
           if (((IETFontAdapter)QRoute.api(IETFontAdapter.class)).isInstanceOfSignatureActionSpan(localCharacterStyle))
           {
-            this.d = i;
+            this.i = i1;
             break;
           }
-          i += 1;
+          i1 += 1;
         }
       }
     }
-    return (ETDecoration)ETDecoration.createDecoration(paramETEngine, str, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, j, k, arrayOfETSegment, arrayOfObject, this.jdField_c_of_type_Boolean, this.f, this.jdField_a_of_type_ComEtrumpMixlayoutETFont, paramBoolean);
-  }
-  
-  ETTextRange a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_c_of_type_JavaUtilArrayList.size())) {
-      return (ETTextRange)this.jdField_c_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
+    return (ETDecoration)ETDecoration.createDecoration(paramETEngine, str, this.e, this.f, i2, i3, arrayOfETSegment, arrayOfObject, this.q, this.r, this.c, paramBoolean);
   }
   
   public void a(int paramInt)
   {
-    this.g = paramInt;
+    this.s = paramInt;
   }
   
   public final void a(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    ETTextLine[] arrayOfETTextLine = this.o;
     if (arrayOfETTextLine == null) {
       return;
     }
-    int k = arrayOfETTextLine.length;
-    int j = 0;
-    int i = paramInt2;
-    paramInt2 = j;
-    while (paramInt2 < k)
+    int i3 = arrayOfETTextLine.length;
+    int i2 = 0;
+    int i1 = paramInt2;
+    paramInt2 = i2;
+    while (paramInt2 < i3)
     {
       ETTextLine localETTextLine = arrayOfETTextLine[paramInt2];
-      localETTextLine.a(paramCanvas, paramInt1, i);
-      i += localETTextLine.a();
+      localETTextLine.a(paramCanvas, paramInt1, i1);
+      i1 += localETTextLine.a();
       paramInt2 += 1;
     }
   }
@@ -518,8 +445,8 @@ public class ETLayout
     paramCanvas.translate(paramInt1, paramInt2);
     if (paramBitmap != null)
     {
-      int m = paramBitmap.getWidth();
-      int i = paramBitmap.getHeight();
+      int i4 = paramBitmap.getWidth();
+      int i1 = paramBitmap.getHeight();
       paramInt1 = Build.VERSION.SDK_INT;
       paramInt2 = 2048;
       if (paramInt1 >= 14)
@@ -531,40 +458,40 @@ public class ETLayout
       {
         paramInt1 = 2048;
       }
-      if ((m <= paramInt1) && (i <= paramInt2))
+      if ((i4 <= paramInt1) && (i1 <= paramInt2))
       {
         paramCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
       }
       else
       {
         Rect localRect = new Rect(0, 0, 0, 0);
-        while (i > 0)
+        while (i1 > 0)
         {
-          int j;
-          if (i >= paramInt2) {
-            j = paramInt2;
+          int i2;
+          if (i1 >= paramInt2) {
+            i2 = paramInt2;
           } else {
-            j = i;
+            i2 = i1;
           }
-          int n = i - j;
+          int i5 = i1 - i2;
           localRect.left = 0;
-          localRect.bottom += j;
-          i = m;
-          while (i > 0)
+          localRect.bottom += i2;
+          i1 = i4;
+          while (i1 > 0)
           {
-            int k;
-            if (i >= paramInt1) {
-              k = paramInt1;
+            int i3;
+            if (i1 >= paramInt1) {
+              i3 = paramInt1;
             } else {
-              k = i;
+              i3 = i1;
             }
-            i -= k;
-            localRect.right += k;
+            i1 -= i3;
+            localRect.right += i3;
             paramCanvas.drawBitmap(paramBitmap, localRect, localRect, null);
-            localRect.left += k;
+            localRect.left += i3;
           }
-          localRect.top += j;
-          i = n;
+          localRect.top += i2;
+          i1 = i5;
         }
       }
     }
@@ -580,78 +507,78 @@ public class ETLayout
       if (paramBitmap == null) {
         return;
       }
-      if ((this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0))
+      if ((this.e > 0) && (this.f > 0))
       {
-        int n = paramBitmap.getHeight();
-        int j;
-        int i;
+        int i5 = paramBitmap.getHeight();
+        int i2;
         int i1;
-        int k;
+        int i6;
+        int i3;
         if ((localETDecoration != null) && (2 == paramETDecoration.getDecorationType()))
         {
           if (paramBoolean)
           {
-            localETDecoration.drawScene(paramBitmap, 0, 0, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+            localETDecoration.drawScene(paramBitmap, 0, 0, this.c);
             return;
           }
           paramETDecoration = localETDecoration.mMargins;
           if (paramETDecoration != null)
           {
-            j = paramETDecoration.left;
-            i = paramETDecoration.top;
+            i2 = paramETDecoration.left;
+            i1 = paramETDecoration.top;
           }
           else
           {
-            i = 0;
-            j = 0;
+            i1 = 0;
+            i2 = 0;
           }
-          localETDecoration.drawBackground(paramBitmap, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-          paramETDecoration = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+          localETDecoration.drawBackground(paramBitmap, this.c);
+          paramETDecoration = this.o;
           if (paramETDecoration != null)
           {
-            i1 = paramETDecoration.length;
-            int m = 0;
-            k = i;
-            i = m;
+            i6 = paramETDecoration.length;
+            int i4 = 0;
+            i3 = i1;
+            i1 = i4;
           }
         }
         else
         {
-          while (i < i1)
+          while (i1 < i6)
           {
-            localETDecoration = paramETDecoration[i];
-            localETDecoration.a(paramETEngine, paramBitmap, null, j, k);
-            k += localETDecoration.a();
-            if (k >= n) {
+            localETDecoration = paramETDecoration[i1];
+            localETDecoration.a(paramETEngine, paramBitmap, null, i2, i3);
+            i3 += localETDecoration.a();
+            if (i3 >= i5) {
               return;
             }
-            i += 1;
+            i1 += 1;
             continue;
             if (!paramBoolean) {
               localETDecoration = null;
             }
             if ((localETDecoration != null) && (1 == localETDecoration.getDecorationType())) {
-              localETDecoration.drawBackground(paramBitmap, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+              localETDecoration.drawBackground(paramBitmap, this.c);
             }
-            paramETDecoration = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+            paramETDecoration = this.o;
             if (paramETDecoration != null)
             {
-              k = paramETDecoration.length;
-              i = 0;
-              j = 0;
-              while (i < k)
+              i3 = paramETDecoration.length;
+              i1 = 0;
+              i2 = 0;
+              while (i1 < i3)
               {
-                Object localObject = paramETDecoration[i];
-                localObject.a(paramETEngine, paramBitmap, localETDecoration, 0, j);
-                j += localObject.a();
-                if (j >= n) {
+                Object localObject = paramETDecoration[i1];
+                localObject.a(paramETEngine, paramBitmap, localETDecoration, 0, i2);
+                i2 += localObject.a();
+                if (i2 >= i5) {
                   break;
                 }
-                i += 1;
+                i1 += 1;
               }
             }
             if ((localETDecoration != null) && (1 == localETDecoration.getDecorationType())) {
-              localETDecoration.drawForeground(paramBitmap, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+              localETDecoration.drawForeground(paramBitmap, this.c);
             }
           }
         }
@@ -661,61 +588,61 @@ public class ETLayout
   
   public boolean a(ETEngine paramETEngine, int paramInt1, CharSequence paramCharSequence, ETFont paramETFont, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    this.e = paramInt1;
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    this.f = paramInt3;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_ComEtrumpMixlayoutETFont = paramETFont;
-    this.jdField_a_of_type_Boolean = true;
-    paramCharSequence = this.jdField_b_of_type_ComEtrumpMixlayoutETFont;
+    this.m = paramInt1;
+    this.q = paramBoolean;
+    this.r = paramInt3;
+    this.l = paramCharSequence;
+    this.c = paramETFont;
+    this.g = true;
+    paramCharSequence = this.d;
     if (paramCharSequence != null)
     {
-      paramETFont = this.jdField_a_of_type_ComEtrumpMixlayoutETFont;
+      paramETFont = this.c;
       if (paramETFont != null)
       {
         paramCharSequence.copy(paramETFont);
-        this.jdField_b_of_type_ComEtrumpMixlayoutETFont.setColor(paramInt2);
+        this.d.setColor(paramInt2);
       }
     }
-    a();
-    paramBoolean = this.jdField_a_of_type_Boolean;
+    b();
+    paramBoolean = this.g;
     paramInt2 = 0;
     if (paramBoolean) {
       return false;
     }
     a(paramETEngine, paramInt1);
-    paramETEngine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    paramETEngine = this.o;
     if (paramETEngine != null)
     {
-      int k = paramETEngine.length;
+      int i3 = paramETEngine.length;
       paramInt3 = 0;
-      int i = 0;
+      int i1 = 0;
       paramInt1 = paramInt2;
-      paramInt2 = i;
-      while (paramInt1 < k)
+      paramInt2 = i1;
+      while (paramInt1 < i3)
       {
-        int j = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[paramInt1].b();
-        int m = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine[paramInt1].a();
-        i = paramInt3;
-        if (j > paramInt3) {
-          i = j;
+        int i2 = this.o[paramInt1].b();
+        int i4 = this.o[paramInt1].a();
+        i1 = paramInt3;
+        if (i2 > paramInt3) {
+          i1 = i2;
         }
-        paramInt2 += m;
+        paramInt2 += i4;
         paramInt1 += 1;
-        paramInt3 = i;
+        paramInt3 = i1;
       }
-      this.jdField_b_of_type_Int = paramInt3;
-      this.jdField_c_of_type_Int = paramInt2;
-      if ((this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0))
+      this.e = paramInt3;
+      this.f = paramInt2;
+      if ((this.e > 0) && (this.f > 0))
       {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        this.k.set(true);
         return true;
       }
       paramETEngine = new StringBuilder();
       paramETEngine.append("mesure fail mWidth=");
-      paramETEngine.append(this.jdField_b_of_type_Int);
+      paramETEngine.append(this.e);
       paramETEngine.append(",mHeight");
-      paramETEngine.append(this.jdField_c_of_type_Int);
+      paramETEngine.append(this.f);
       throw new Exception(paramETEngine.toString());
     }
     paramETEngine = new Exception("measure textLines fail");
@@ -728,23 +655,23 @@ public class ETLayout
   public ETSegment[] a(ETEngine paramETEngine)
   {
     ArrayList localArrayList = new ArrayList();
-    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    ETTextLine[] arrayOfETTextLine = this.o;
     if (arrayOfETTextLine == null) {
       return null;
     }
-    int n = arrayOfETTextLine.length;
-    int j = 0;
-    int m = 0;
-    int i = 0;
-    while (j < n)
+    int i5 = arrayOfETTextLine.length;
+    int i2 = 0;
+    int i4 = 0;
+    int i1 = 0;
+    while (i2 < i5)
     {
-      ETTextLine localETTextLine = arrayOfETTextLine[j];
-      Object localObject1 = localETTextLine.a();
+      ETTextLine localETTextLine = arrayOfETTextLine[i2];
+      Object localObject1 = localETTextLine.f();
       if (localObject1 == null) {
         return null;
       }
       localObject1 = ((ArrayList)localObject1).iterator();
-      int k = 0;
+      int i3 = 0;
       while (((Iterator)localObject1).hasNext())
       {
         ETFragment localETFragment = (ETFragment)((Iterator)localObject1).next();
@@ -761,19 +688,19 @@ public class ETLayout
         localETSegment.x = 0;
         localETSegment.y = 0;
         Object localObject2 = localETFragment.a();
-        int i2;
+        int i7;
         if (localObject2 != null)
         {
           localETSegment.textLength = ((String)localObject2).length();
-          localETSegment.textOffset = m;
+          localETSegment.textOffset = i4;
           localETSegment.type = 0;
-          m += ((String)localObject2).length();
-          i1 = localETTextLine.a();
-          i2 = localETFragment.d();
-          int i3 = localETTextLine.e();
-          int i4 = localETFragment.a(paramETEngine);
-          localETSegment.x = k;
-          localETSegment.y = (i1 - i2 + i - (i3 - i4));
+          i4 += ((String)localObject2).length();
+          i6 = localETTextLine.a();
+          i7 = localETFragment.f();
+          int i8 = localETTextLine.e();
+          int i9 = localETFragment.a(paramETEngine);
+          localETSegment.x = i3;
+          localETSegment.y = (i6 - i7 + i1 - (i8 - i9));
         }
         localObject2 = localETFragment.b();
         if (localObject2 != null)
@@ -781,62 +708,43 @@ public class ETLayout
           localETSegment.textLength = 1;
           localETSegment.type = 1;
           localETSegment.codePoint = a(((String)localObject2).charAt(0), ((String)localObject2).charAt(1));
-          i1 = localETTextLine.a();
-          i2 = localETFragment.d();
-          localETSegment.x = k;
-          localETSegment.y = (i1 - i2 + i);
+          i6 = localETTextLine.a();
+          i7 = localETFragment.f();
+          localETSegment.x = i3;
+          localETSegment.y = (i6 - i7 + i1);
         }
-        int i1 = localETFragment.b();
-        if (i1 > -1)
+        int i6 = localETFragment.d();
+        if (i6 > -1)
         {
           localETSegment.type = 2;
-          localETSegment.codePoint = i1;
-          i1 = localETTextLine.a();
-          i2 = localETFragment.d();
-          localETSegment.x = k;
-          localETSegment.y = (i1 - i2 + i);
-          localObject2 = localETFragment.b();
-          a(k, localETSegment.y, (CharacterStyle)localObject2);
+          localETSegment.codePoint = i6;
+          i6 = localETTextLine.a();
+          i7 = localETFragment.f();
+          localETSegment.x = i3;
+          localETSegment.y = (i6 - i7 + i1);
+          localObject2 = localETFragment.j();
+          a(i3, localETSegment.y, (CharacterStyle)localObject2);
         }
-        localETSegment.textSize = localETFragment.a();
-        localETSegment.lineNum = localETFragment.e();
+        localETSegment.textSize = localETFragment.c();
+        localETSegment.lineNum = localETFragment.g();
         localArrayList.add(localETSegment);
-        k += localETFragment.c();
+        i3 += localETFragment.e();
       }
-      i += localETTextLine.a();
-      j += 1;
+      i1 += localETTextLine.a();
+      i2 += 1;
     }
     return (ETSegment[])localArrayList.toArray(new ETSegment[localArrayList.size()]);
   }
   
-  public ETTextRange[] a(int paramInt)
-  {
-    Object localObject = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
-    if ((localObject != null) && (paramInt < localObject.length))
-    {
-      localObject = new ArrayList();
-      Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        ETTextRange localETTextRange = (ETTextRange)localIterator.next();
-        if (localETTextRange.jdField_a_of_type_Int == paramInt) {
-          ((ArrayList)localObject).add(localETTextRange);
-        }
-      }
-      return (ETTextRange[])((ArrayList)localObject).toArray(new ETTextRange[0]);
-    }
-    return null;
-  }
-  
   public int b(int paramInt1, int paramInt2)
   {
-    int i = 0;
+    int i1 = 0;
     Rect localRect = new Rect(0, 0, 0, 0);
-    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
-    int j = arrayOfETTextLine.length;
-    while (i < j)
+    ETTextLine[] arrayOfETTextLine = this.o;
+    int i2 = arrayOfETTextLine.length;
+    while (i1 < i2)
     {
-      Object localObject = arrayOfETTextLine[i];
+      Object localObject = arrayOfETTextLine[i1];
       localRect.left = ((ETTextLine)localObject).c();
       localRect.top = ((ETTextLine)localObject).d();
       localRect.right = (localRect.left + ((ETTextLine)localObject).b());
@@ -845,35 +753,118 @@ public class ETLayout
       {
         localObject = ((ETTextLine)localObject).a(paramInt1);
         if (localObject != null) {
-          return ((ETFragment)localObject).a().b();
+          return ((ETFragment)localObject).h().c();
         }
       }
-      i += 1;
+      i1 += 1;
     }
     return -1;
   }
   
+  ETTextRange b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.t.size())) {
+      return (ETTextRange)this.t.get(paramInt);
+    }
+    return null;
+  }
+  
   public void b(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    int i = this.d;
-    if ((i > -1) && (i < this.jdField_b_of_type_JavaUtilArrayList.size())) {
+    int i1 = this.i;
+    if ((i1 > -1) && (i1 < this.p.size())) {
       a(paramCanvas);
     }
-    ETTextLine[] arrayOfETTextLine = this.jdField_a_of_type_ArrayOfComEtrumpMixlayoutETTextLine;
+    ETTextLine[] arrayOfETTextLine = this.o;
     if (arrayOfETTextLine == null) {
       return;
     }
-    int k = arrayOfETTextLine.length;
-    int j = 0;
-    i = paramInt2;
-    paramInt2 = j;
-    while (paramInt2 < k)
+    int i3 = arrayOfETTextLine.length;
+    int i2 = 0;
+    i1 = paramInt2;
+    paramInt2 = i2;
+    while (paramInt2 < i3)
     {
       ETTextLine localETTextLine = arrayOfETTextLine[paramInt2];
-      localETTextLine.b(paramCanvas, paramInt1, i);
-      i += localETTextLine.a();
+      localETTextLine.b(paramCanvas, paramInt1, i1);
+      i1 += localETTextLine.a();
       paramInt2 += 1;
     }
+  }
+  
+  Rect c(int paramInt)
+  {
+    if (paramInt >= 0)
+    {
+      Object localObject = this.o;
+      if (paramInt < localObject.length)
+      {
+        localObject = localObject[paramInt];
+        paramInt = ((ETTextLine)localObject).c();
+        int i1 = ((ETTextLine)localObject).d();
+        return new Rect(paramInt, i1, this.e + paramInt, ((ETTextLine)localObject).a() + i1);
+      }
+    }
+    return null;
+  }
+  
+  public CharacterStyle c(int paramInt1, int paramInt2)
+  {
+    int i1 = 0;
+    Rect localRect = new Rect(0, 0, 0, 0);
+    ETTextLine[] arrayOfETTextLine = this.o;
+    int i2 = arrayOfETTextLine.length;
+    while (i1 < i2)
+    {
+      Object localObject = arrayOfETTextLine[i1];
+      localRect.left = ((ETTextLine)localObject).c();
+      localRect.top = ((ETTextLine)localObject).d();
+      localRect.right = (localRect.left + ((ETTextLine)localObject).b());
+      localRect.bottom = (localRect.top + ((ETTextLine)localObject).a());
+      if (localRect.contains(paramInt1, paramInt2))
+      {
+        localObject = ((ETTextLine)localObject).a(paramInt1);
+        if (localObject != null) {
+          return ((ETFragment)localObject).i();
+        }
+      }
+      i1 += 1;
+    }
+    return null;
+  }
+  
+  public ETTextRange[] d(int paramInt)
+  {
+    Object localObject = this.o;
+    if ((localObject != null) && (paramInt < localObject.length))
+    {
+      localObject = new ArrayList();
+      Iterator localIterator = this.t.iterator();
+      while (localIterator.hasNext())
+      {
+        ETTextRange localETTextRange = (ETTextRange)localIterator.next();
+        if (localETTextRange.b == paramInt) {
+          ((ArrayList)localObject).add(localETTextRange);
+        }
+      }
+      return (ETTextRange[])((ArrayList)localObject).toArray(new ETTextRange[0]);
+    }
+    return null;
+  }
+  
+  int e(int paramInt)
+  {
+    int i2 = this.o.length;
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      ETTextLine localETTextLine = this.o[i1];
+      if (paramInt < localETTextLine.d() + localETTextLine.a()) {
+        return i1;
+      }
+      i1 += 1;
+    }
+    return i2 - 1;
   }
 }
 

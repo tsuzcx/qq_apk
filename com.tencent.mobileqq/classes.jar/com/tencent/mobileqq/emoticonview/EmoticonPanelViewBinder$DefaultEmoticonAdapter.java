@@ -24,7 +24,7 @@ class EmoticonPanelViewBinder$DefaultEmoticonAdapter
   
   public void bindView(int paramInt, RelativeLayout paramRelativeLayout, ViewGroup paramViewGroup)
   {
-    ImageView localImageView = (ImageView)paramRelativeLayout.findViewById(2131378202);
+    ImageView localImageView = (ImageView)paramRelativeLayout.findViewById(2131446720);
     localImageView.setVisibility(0);
     localImageView.setTag(Boolean.valueOf(false));
     EmoticonInfo localEmoticonInfo = getItem(paramInt);
@@ -82,8 +82,8 @@ class EmoticonPanelViewBinder$DefaultEmoticonAdapter
       }
       if ("delete".equals(localEmoticonInfo.action))
       {
-        localImageView.setImageResource(2130850873);
-        paramRelativeLayout.setContentDescription(this.this$0.context.getString(2131719424));
+        localImageView.setImageResource(2130852725);
+        paramRelativeLayout.setContentDescription(this.this$0.context.getString(2131916984));
       }
     }
     else
@@ -95,7 +95,7 @@ class EmoticonPanelViewBinder$DefaultEmoticonAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelViewBinder.DefaultEmoticonAdapter
  * JD-Core Version:    0.7.0.1
  */

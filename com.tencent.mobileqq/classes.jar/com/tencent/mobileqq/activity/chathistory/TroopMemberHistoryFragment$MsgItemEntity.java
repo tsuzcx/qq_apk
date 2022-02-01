@@ -7,37 +7,37 @@ import java.util.Calendar;
 
 class TroopMemberHistoryFragment$MsgItemEntity
 {
-  long jdField_a_of_type_Long;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  CharSequence jdField_a_of_type_JavaLangCharSequence;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  long jdField_b_of_type_Long;
-  CharSequence jdField_b_of_type_JavaLangCharSequence;
+  String a;
+  long b;
+  CharSequence c;
+  long d;
+  CharSequence e;
+  MessageRecord f;
+  boolean g;
   
   public TroopMemberHistoryFragment$MsgItemEntity(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, String paramString, long paramLong1, CharSequence paramCharSequence, long paramLong2, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Boolean = false;
+    this.a = paramString;
+    this.b = paramLong1;
+    this.c = paramCharSequence;
+    this.d = paramLong2;
+    this.f = paramMessageRecord;
+    this.g = false;
   }
   
   public CharSequence a()
   {
-    if (this.jdField_b_of_type_JavaLangCharSequence == null)
+    if (this.e == null)
     {
-      Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
-      this.jdField_b_of_type_JavaLangCharSequence = TimeFormatterUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), 3, this.jdField_a_of_type_Long * 1000L);
+      Calendar.getInstance().setTimeInMillis(this.b * 1000L);
+      this.e = TimeFormatterUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), 3, this.b * 1000L);
     }
-    return this.jdField_b_of_type_JavaLangCharSequence;
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment.MsgItemEntity
  * JD-Core Version:    0.7.0.1
  */

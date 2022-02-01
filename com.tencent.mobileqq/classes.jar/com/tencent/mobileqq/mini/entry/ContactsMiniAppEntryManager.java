@@ -7,10 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
 import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout.MiniAppScrollListener;
 import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
@@ -22,6 +19,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.api.entry.BaseContactsMiniAppEntryManager;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.widget.IPullRefreshHeaderControl;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.app.AppRuntime;
@@ -33,11 +31,11 @@ public class ContactsMiniAppEntryManager
   public static final int MODE_IDLE = 1;
   public static final int MODE_REFRESH = 2;
   public static final int MODE_SHOW_NODE = 3;
-  private static final int OFFSET_NODE_OPEN = ViewUtils.a(-50.0F);
-  private static final int OFFSET_NODE_SCROLL = ViewUtils.a(-50.0F);
-  private static final int OFFSET_NODE_SCROLL_FAST = ViewUtils.a(-100.0F);
+  private static final int OFFSET_NODE_OPEN = ViewUtils.dip2px(-50.0F);
+  private static final int OFFSET_NODE_SCROLL = ViewUtils.dip2px(-50.0F);
+  private static final int OFFSET_NODE_SCROLL_FAST = ViewUtils.dip2px(-100.0F);
   private static final float SPEED_2 = 1.5F;
-  private static final int STORY_TRANSLATE = ViewUtils.a(-70.0F);
+  private static final int STORY_TRANSLATE = ViewUtils.dip2px(-70.0F);
   public static final String TAG = "ContactsMiniAppEntryManager";
   public static long sScrollTimestamp;
   private int OFFSET_SCROLL_OVER;
@@ -47,14 +45,14 @@ public class ContactsMiniAppEntryManager
   private Context mContext;
   private int mCurrentTab = -1;
   private ViewGroup mMiniAppListLayout;
-  private RelativeLayout mPullRefreshHeader;
+  private IPullRefreshHeaderControl mPullRefreshHeader;
   private int mode = 1;
   private int preMode = 1;
   
   public ContactsMiniAppEntryManager(Context paramContext, QQAppInterface paramQQAppInterface, RelativeLayout paramRelativeLayout, int paramInt)
   {
     this.mContext = paramContext;
-    this.mPullRefreshHeader = paramRelativeLayout;
+    this.mPullRefreshHeader = ((IPullRefreshHeaderControl)paramRelativeLayout);
     this.mApp = paramQQAppInterface;
     this.mContentView = new MiniAppEntryLayout(paramContext, null, paramInt);
     this.mMiniAppListLayout = this.mContentView.getContainerView();
@@ -114,7 +112,7 @@ public class ContactsMiniAppEntryManager
       }
     }
     label294:
-    if (paramFloat > ViewUtils.b(-70.0F))
+    if (paramFloat > ViewUtils.dpToPx(-70.0F))
     {
       localMiniAppEntryLayout = this.mContentView;
       localMiniAppEntryLayout.setDotViewTranslationY((paramFloat + localMiniAppEntryLayout.getDotViewHeight()) / 2.0F);
@@ -131,7 +129,7 @@ public class ContactsMiniAppEntryManager
   
   private void removeDrawerFrameEvent(int paramInt)
   {
-    Object localObject = FrameHelperActivity.a;
+    Object localObject = FrameHelperActivity.aq;
     if (localObject != null)
     {
       localObject = (DrawerFrame)((WeakReference)localObject).get();
@@ -179,14 +177,14 @@ public class ContactsMiniAppEntryManager
   
   private void setRefreshLayoutVisible(boolean paramBoolean)
   {
-    View localView = this.mPullRefreshHeader.findViewById(2131376339);
+    IPullRefreshHeaderControl localIPullRefreshHeaderControl = this.mPullRefreshHeader;
     int i;
     if (paramBoolean) {
       i = 0;
     } else {
       i = 8;
     }
-    localView.setVisibility(i);
+    localIPullRefreshHeaderControl.a(4, Integer.valueOf(i));
   }
   
   public boolean interceptDrawer(View paramView, MotionEvent paramMotionEvent)
@@ -286,12 +284,12 @@ public class ContactsMiniAppEntryManager
         this.mode = 1;
         paramCommonRefreshLayout.setShowMiniAppPanel(false);
       }
-      else if (paramCommonRefreshLayout.c())
+      else if (paramCommonRefreshLayout.g())
       {
-        if (paramInt <= -paramCommonRefreshLayout.a())
+        if (paramInt <= -paramCommonRefreshLayout.getHeaderViewHeight())
         {
-          paramMotionEvent = (TextView)this.mPullRefreshHeader.findViewById(2131376344);
-          if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(HardCodeUtil.a(2131702746))))
+          paramMotionEvent = (String)this.mPullRefreshHeader.b(11, null);
+          if ((paramMotionEvent != null) && (paramMotionEvent.contains(HardCodeUtil.a(2131900736))))
           {
             this.mode = 3;
           }
@@ -340,7 +338,7 @@ public class ContactsMiniAppEntryManager
         this.mode = 1;
         paramCommonRefreshLayout.setShowMiniAppPanel(false);
       }
-      setRefreshLayoutVisible(paramCommonRefreshLayout.c());
+      setRefreshLayoutVisible(paramCommonRefreshLayout.g());
       if ((this.preMode == 1) && (this.mode == 3))
       {
         this.mContentView.recordExposureItem();
@@ -394,7 +392,7 @@ public class ContactsMiniAppEntryManager
   
   public void setDrawerFrameEvent(int paramInt)
   {
-    Object localObject = FrameHelperActivity.a;
+    Object localObject = FrameHelperActivity.aq;
     if (localObject != null)
     {
       localObject = (DrawerFrame)((WeakReference)localObject).get();
@@ -412,12 +410,10 @@ public class ContactsMiniAppEntryManager
   {
     this.mContentView.updateMicroAppItemData();
     this.mCurrentTab = paramInt;
-    Object localObject = this.mPullRefreshHeader;
-    if ((localObject != null) && (((RelativeLayout)localObject).indexOfChild(this.mContentView) < 0))
+    IPullRefreshHeaderControl localIPullRefreshHeaderControl = this.mPullRefreshHeader;
+    if ((localIPullRefreshHeaderControl != null) && (((Integer)localIPullRefreshHeaderControl.b(8, this.mContentView)).intValue() < 0))
     {
-      localObject = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131376339);
-      this.mPullRefreshHeader.addView(this.mContentView, (ViewGroup.LayoutParams)localObject);
+      this.mPullRefreshHeader.a(9, this.mContentView);
       this.mode = 1;
       this.mContentView.setVisibility(8);
       setDrawerFrameEvent(paramInt);
@@ -437,10 +433,10 @@ public class ContactsMiniAppEntryManager
     {
       setMicroAppEntryCompleteVisible(false);
       paramCommonRefreshLayout.setShowMiniAppPanel(false);
-      paramCommonRefreshLayout.e();
-      if (this.mPullRefreshHeader.indexOfChild(this.mContentView) >= 0)
+      paramCommonRefreshLayout.h();
+      if (((Integer)this.mPullRefreshHeader.b(8, this.mContentView)).intValue() >= 0)
       {
-        this.mPullRefreshHeader.removeView(this.mContentView);
+        this.mPullRefreshHeader.a(10, this.mContentView);
         setRefreshLayoutVisible(true);
         this.mode = 1;
         removeDrawerFrameEvent(paramInt);
@@ -459,7 +455,7 @@ public class ContactsMiniAppEntryManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.ContactsMiniAppEntryManager
  * JD-Core Version:    0.7.0.1
  */

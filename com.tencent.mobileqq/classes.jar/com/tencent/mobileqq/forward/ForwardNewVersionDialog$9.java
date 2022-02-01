@@ -16,20 +16,20 @@ class ForwardNewVersionDialog$9
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.hideSoftInputFromWindow();
-    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    this.b.hideSoftInputFromWindow();
+    DialogInterface.OnClickListener localOnClickListener = this.a;
     if (localOnClickListener != null) {
-      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog, 0);
+      localOnClickListener.onClick(this.b, 0);
     }
-    if (ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog))
+    if (ForwardNewVersionDialog.d(this.b))
     {
-      ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog).removeView(ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog).getView());
-      ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog, false);
+      ForwardNewVersionDialog.g(this.b).removeView(ForwardNewVersionDialog.f(this.b).getView());
+      ForwardNewVersionDialog.a(this.b, false);
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.dismiss();
+      if (this.b.isShowing()) {
+        this.b.dismiss();
       }
     }
     catch (Exception localException)
@@ -43,7 +43,7 @@ class ForwardNewVersionDialog$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardNewVersionDialog.9
  * JD-Core Version:    0.7.0.1
  */

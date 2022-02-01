@@ -17,33 +17,33 @@ import com.tencent.qphone.base.util.QLog;
 
 public class UserStateBar
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private SavingAnimView jdField_a_of_type_ComTencentMobileqqWritetogetheruiSavingAnimView;
-  private boolean jdField_a_of_type_Boolean;
+  private Context a;
   private TextView b;
   private TextView c;
   private TextView d;
   private TextView e;
+  private TextView f;
+  private SavingAnimView g;
+  private View h;
+  private boolean i;
+  private int j;
   
   public UserStateBar(Context paramContext, View paramView, TextView paramTextView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.e = paramTextView;
+    this.a = paramContext;
+    this.h = paramView;
+    this.f = paramTextView;
     a(paramView);
-    k();
+    s();
   }
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381263));
-    this.b = ((TextView)paramView.findViewById(2131381265));
-    this.c = ((TextView)paramView.findViewById(2131381267));
-    this.d = ((TextView)paramView.findViewById(2131381264));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiSavingAnimView = ((SavingAnimView)paramView.findViewById(2131381268));
+    this.b = ((TextView)paramView.findViewById(2131450311));
+    this.c = ((TextView)paramView.findViewById(2131450313));
+    this.d = ((TextView)paramView.findViewById(2131450315));
+    this.e = ((TextView)paramView.findViewById(2131450312));
+    this.g = ((SavingAnimView)paramView.findViewById(2131450316));
     paramView = paramView.getParent();
     if ((paramView instanceof RelativeLayout))
     {
@@ -53,55 +53,55 @@ public class UserStateBar
       localLayoutParams.rightMargin = 0;
       paramView.setLayoutParams(localLayoutParams);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiSavingAnimView.setOnAnimationStateListener(new UserStateBar.1(this));
+    this.g.setOnAnimationStateListener(new UserStateBar.1(this));
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6)
   {
-    Object localObject = this.d;
-    int j = 0;
-    int i;
+    Object localObject = this.e;
+    int m = 0;
+    int k;
     if (paramBoolean1) {
-      i = 0;
+      k = 0;
     } else {
-      i = 8;
+      k = 8;
     }
-    ((TextView)localObject).setVisibility(i);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiSavingAnimView;
+    ((TextView)localObject).setVisibility(k);
+    localObject = this.g;
     if (paramBoolean2) {
-      i = 0;
+      k = 0;
     } else {
-      i = 8;
+      k = 8;
     }
-    ((SavingAnimView)localObject).setVisibility(i);
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (paramBoolean3) {
-      i = 0;
-    } else {
-      i = 8;
-    }
-    ((TextView)localObject).setVisibility(i);
+    ((SavingAnimView)localObject).setVisibility(k);
     localObject = this.b;
-    if (paramBoolean4) {
-      i = 0;
+    if (paramBoolean3) {
+      k = 0;
     } else {
-      i = 8;
+      k = 8;
     }
-    ((TextView)localObject).setVisibility(i);
+    ((TextView)localObject).setVisibility(k);
     localObject = this.c;
+    if (paramBoolean4) {
+      k = 0;
+    } else {
+      k = 8;
+    }
+    ((TextView)localObject).setVisibility(k);
+    localObject = this.d;
     if (paramBoolean5) {
-      i = 0;
+      k = 0;
     } else {
-      i = 8;
+      k = 8;
     }
-    ((TextView)localObject).setVisibility(i);
-    localObject = this.e;
+    ((TextView)localObject).setVisibility(k);
+    localObject = this.f;
     if (paramBoolean6) {
-      i = j;
+      k = m;
     } else {
-      i = 8;
+      k = 8;
     }
-    ((TextView)localObject).setVisibility(i);
+    ((TextView)localObject).setVisibility(k);
   }
   
   private void b(boolean paramBoolean)
@@ -114,56 +114,41 @@ public class UserStateBar
     a(paramBoolean ^ true, paramBoolean, false, true, paramBoolean, true);
   }
   
-  private void k()
+  private void s()
   {
-    this.jdField_a_of_type_Int = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext).jdField_a_of_type_Int;
+    this.j = DisplayUtil.a(this.a).a;
   }
   
-  private void l()
+  private void t()
   {
-    float f = this.b.getTextSize();
-    this.b.setTranslationY(f);
+    float f1 = this.c.getTextSize();
+    this.c.setTranslationY(f1);
+    ViewPropertyAnimator localViewPropertyAnimator = this.d.animate().alpha(0.0F);
+    f1 = -f1;
+    localViewPropertyAnimator.translationY(f1).setDuration(500L).start();
+    this.c.animate().alpha(1.0F).translationYBy(f1).setDuration(500L).setStartDelay(100L).setListener(new UserStateBar.2(this)).start();
+  }
+  
+  private void u()
+  {
+    float f1 = this.c.getTextSize();
+    this.c.animate().setListener(null);
+    this.c.setAlpha(1.0F);
     ViewPropertyAnimator localViewPropertyAnimator = this.c.animate().alpha(0.0F);
-    f = -f;
-    localViewPropertyAnimator.translationY(f).setDuration(500L).start();
-    this.b.animate().alpha(1.0F).translationYBy(f).setDuration(500L).setStartDelay(100L).setListener(new UserStateBar.2(this)).start();
-  }
-  
-  private void m()
-  {
-    float f1 = this.b.getTextSize();
-    this.b.animate().setListener(null);
-    this.b.setAlpha(1.0F);
-    ViewPropertyAnimator localViewPropertyAnimator = this.b.animate().alpha(0.0F);
     float f2 = -f1;
     localViewPropertyAnimator.translationY(f2).setDuration(500L).start();
-    this.c.setTranslationY(f1);
-    this.c.animate().alpha(1.0F).translationYBy(f2).setDuration(500L).setStartDelay(100L).start();
+    this.d.setTranslationY(f1);
+    this.d.animate().alpha(1.0F).translationYBy(f2).setDuration(500L).setStartDelay(100L).start();
   }
   
-  private void n()
+  private void v()
   {
     a(false, false, true, false, false, false);
   }
   
-  private void o()
+  private void w()
   {
     a(false, true, false, true, true, true);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299308);
-  }
-  
-  public TextPaint a()
-  {
-    return this.b.getPaint();
-  }
-  
-  public TextView a()
-  {
-    return this.e;
   }
   
   public void a()
@@ -171,19 +156,19 @@ public class UserStateBar
     if (QLog.isColorLevel()) {
       QLog.d("UserStateBar", 1, "[onChangesetCommitting]");
     }
-    o();
+    w();
   }
   
   public void a(String paramString)
   {
-    this.e.setText(paramString);
-    if (this.e.getCompoundDrawables()[3] == null)
+    this.f.setText(paramString);
+    if (this.f.getCompoundDrawables()[3] == null)
     {
-      paramString = this.jdField_a_of_type_AndroidContentContext.getResources();
-      Drawable localDrawable = paramString.getDrawable(2130850795);
-      int i = paramString.getDimensionPixelSize(2131299316);
-      localDrawable.setBounds(0, 0, i, i);
-      this.e.setCompoundDrawables(null, null, localDrawable, null);
+      paramString = this.a.getResources();
+      Drawable localDrawable = paramString.getDrawable(2130852617);
+      int k = paramString.getDimensionPixelSize(2131300111);
+      localDrawable.setBounds(0, 0, k, k);
+      this.f.setCompoundDrawables(null, null, localDrawable, null);
     }
   }
   
@@ -191,47 +176,26 @@ public class UserStateBar
   {
     if (paramInt != 1)
     {
-      this.b.setText(paramString);
-      this.b.getParent().requestLayout();
-      this.d.setVisibility(8);
+      this.c.setText(paramString);
+      this.c.getParent().requestLayout();
+      this.e.setVisibility(8);
       return;
     }
-    this.d.setText(paramString);
+    this.e.setText(paramString);
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
     a(false, false, true, false, false, paramBoolean ^ true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167053));
+    this.b.setText(paramString);
+    this.b.setTextColor(this.a.getResources().getColor(2131167990));
   }
   
   public void a(boolean paramBoolean)
   {
     b(paramBoolean);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720164);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167053));
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = this.jdField_a_of_type_Int - localResources.getDimensionPixelSize(2131299313) * 2 - localResources.getDimensionPixelSize(2131299315);
-    int j = localResources.getDimensionPixelSize(2131299314);
-    if (i < j) {
-      return j;
-    }
-    return i;
-  }
-  
-  public TextPaint b()
-  {
-    return this.e.getPaint();
+    this.b.setText(2131917794);
+    this.b.setTextColor(this.a.getResources().getColor(2131167990));
   }
   
   public void b()
@@ -239,7 +203,7 @@ public class UserStateBar
     if (QLog.isColorLevel()) {
       QLog.d("UserStateBar", 1, "[onChangesetCommitted]");
     }
-    j();
+    k();
   }
   
   public void b(String paramString)
@@ -248,79 +212,115 @@ public class UserStateBar
       return;
     }
     b(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167053));
+    this.b.setText(paramString);
+    this.b.setTextColor(this.a.getResources().getColor(2131167990));
   }
   
-  public int c()
+  public boolean c()
   {
-    return this.jdField_a_of_type_Int - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299309) * 2;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("UserStateBar", 2, "[startAnimation]");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiSavingAnimView.a();
-    m();
-  }
-  
-  public int d()
-  {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299307);
+    return this.i;
   }
   
   public void d()
   {
+    this.i = true;
     if (QLog.isColorLevel()) {
-      QLog.d("UserStateBar", 2, "[stopAnimation]");
+      QLog.d("UserStateBar", 2, "[startAnimation]");
     }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiSavingAnimView.b();
+    this.g.a();
+    u();
   }
   
   public void e()
   {
-    b(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720180);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167053));
+    if (QLog.isColorLevel()) {
+      QLog.d("UserStateBar", 2, "[stopAnimation]");
+    }
+    this.g.b();
   }
   
   public void f()
   {
     b(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720181);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167053));
+    this.b.setText(2131917810);
+    this.b.setTextColor(this.a.getResources().getColor(2131167990));
   }
   
   public void g()
   {
-    n();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720165);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167053));
+    b(true);
+    this.b.setText(2131917811);
+    this.b.setTextColor(this.a.getResources().getColor(2131167990));
   }
   
   public void h()
   {
-    b(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720472);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167053));
+    v();
+    this.b.setText(2131917795);
+    this.b.setTextColor(this.a.getResources().getColor(2131167990));
   }
   
   public void i()
   {
-    c(false);
+    b(true);
+    this.b.setText(2131918148);
+    this.b.setTextColor(this.a.getResources().getColor(2131167990));
   }
   
   public void j()
   {
+    c(false);
+  }
+  
+  public void k()
+  {
     c(true);
+  }
+  
+  public TextView l()
+  {
+    return this.f;
+  }
+  
+  public TextPaint m()
+  {
+    return this.c.getPaint();
+  }
+  
+  public TextPaint n()
+  {
+    return this.f.getPaint();
+  }
+  
+  public int o()
+  {
+    return this.a.getResources().getDimensionPixelSize(2131300103);
+  }
+  
+  public int p()
+  {
+    Resources localResources = this.a.getResources();
+    int k = this.j - localResources.getDimensionPixelSize(2131300108) * 2 - localResources.getDimensionPixelSize(2131300110);
+    int m = localResources.getDimensionPixelSize(2131300109);
+    if (k < m) {
+      return m;
+    }
+    return k;
+  }
+  
+  public int q()
+  {
+    return this.j - this.a.getResources().getDimensionPixelSize(2131300104) * 2;
+  }
+  
+  public int r()
+  {
+    return this.a.getResources().getDimensionPixelSize(2131300102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.UserStateBar
  * JD-Core Version:    0.7.0.1
  */

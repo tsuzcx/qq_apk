@@ -17,25 +17,25 @@ class PublicAccountChatPie$43
   
   public void a(boolean paramBoolean)
   {
-    this.a.ao();
+    this.a.bz();
     if (!paramBoolean)
     {
-      this.a.m(2131695217);
+      this.a.t(2131892951);
       return;
     }
-    EntityManager localEntityManager = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    IPublicAccountDetail localIPublicAccountDetail = (IPublicAccountDetail)localEntityManager.find(((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountDetail.class), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    EntityManager localEntityManager = this.a.d.getEntityManagerFactory().createEntityManager();
+    IPublicAccountDetail localIPublicAccountDetail = (IPublicAccountDetail)localEntityManager.find(((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountDetail.class), this.a.ah.b);
     if (localIPublicAccountDetail != null) {
       localEntityManager.remove(localIPublicAccountDetail.getEntity());
     }
     localEntityManager.close();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
-    this.a.q();
+    this.a.d.getMessageFacade().c(this.a.ah.b, 1008);
+    this.a.L();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.43
  * JD-Core Version:    0.7.0.1
  */

@@ -8,23 +8,23 @@ import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.HippyModuleManager;
 import com.tencent.mtt.hippy.modules.javascriptmodules.EventDispatcher;
 import com.tencent.mtt.hippy.uimanager.HippyViewBase;
+import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.mtt.hippy.views.view.HippyViewGroup;
 
 public class AudioView
   extends HippyViewGroup
   implements HippyViewBase, AudioPlayManager.AudioManagerListener
 {
-  private AudioPlayManager mAudioPlayerManager = null;
-  private boolean mAutoPlay = false;
+  private AudioPlayManager mAudioPlayerManager = AudioPlayManager.getInstance();
   private String mCurrentPlayAudio = "";
-  HippyEngineContext mHippyContext;
+  final HippyEngineContext mHippyContext;
   private boolean mOnPlayCompleteCallBack = false;
   private boolean mOnPlayErrorCallBack = false;
   private boolean mOnPlayPauseCallBack = false;
   private boolean mOnPlayProgressCallBack = false;
   private boolean mOnPlayResumeCallBack = false;
   private boolean mOnPlayStartCallBack = false;
-  private int mUniqPlayId = 0;
+  private int mUniqPlayId = AudioPlayManager.globalUiqPlayId();
   
   public AudioView(Context paramContext)
   {
@@ -32,7 +32,10 @@ public class AudioView
     this.mHippyContext = ((HippyInstanceContext)paramContext).getEngineContext();
   }
   
-  public void onPlayBuffering(String paramString) {}
+  public void onPlayBuffering(String paramString)
+  {
+    LogUtils.d("AudioView", "onPlayBuffering");
+  }
   
   public void onPlayComplete(String paramString)
   {
@@ -107,39 +110,37 @@ public class AudioView
     }
   }
   
-  public boolean pauseAudio()
+  public void pauseAudio()
   {
-    return this.mAudioPlayerManager.pauseAudio(this.mUniqPlayId);
+    this.mAudioPlayerManager.pauseAudio(this.mUniqPlayId);
   }
   
-  public boolean playAudio()
+  public void playAudio()
   {
-    return this.mAudioPlayerManager.playAudio(this.mUniqPlayId);
+    this.mAudioPlayerManager.playAudio(this.mUniqPlayId);
   }
   
-  public boolean releaseAudio()
+  public void releaseAudio()
   {
-    return this.mAudioPlayerManager.releaseAudio(this.mUniqPlayId);
+    this.mAudioPlayerManager.releaseAudio(this.mUniqPlayId);
   }
   
-  public boolean seekTo(int paramInt)
+  public void seekTo(int paramInt)
   {
-    return this.mAudioPlayerManager.seekTo(this.mUniqPlayId, paramInt);
+    this.mAudioPlayerManager.seekTo(this.mUniqPlayId, paramInt);
   }
   
-  public boolean setAudioAutoPlay(boolean paramBoolean)
+  public void setAudioAutoPlay(boolean paramBoolean)
   {
-    this.mAutoPlay = paramBoolean;
-    if ((this.mAutoPlay) && (!TextUtils.isEmpty(this.mCurrentPlayAudio))) {
+    if ((paramBoolean) && (!TextUtils.isEmpty(this.mCurrentPlayAudio))) {
       this.mAudioPlayerManager.playAudio(this.mUniqPlayId);
     }
-    return true;
   }
   
-  public boolean setAudioPlayUrl(String paramString)
+  public void setAudioPlayUrl(String paramString)
   {
     this.mCurrentPlayAudio = paramString;
-    return this.mAudioPlayerManager.setAudioPlayUrl(this.mUniqPlayId, paramString, this);
+    this.mAudioPlayerManager.setAudioPlayUrl(this.mUniqPlayId, paramString, this);
   }
   
   public void setOnPlayComplete(boolean paramBoolean)
@@ -172,14 +173,14 @@ public class AudioView
     this.mOnPlayStartCallBack = paramBoolean;
   }
   
-  public boolean stopAudio()
+  public void stopAudio()
   {
-    return this.mAudioPlayerManager.stopAudio(this.mUniqPlayId);
+    this.mAudioPlayerManager.stopAudio(this.mUniqPlayId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.audioview.AudioView
  * JD-Core Version:    0.7.0.1
  */

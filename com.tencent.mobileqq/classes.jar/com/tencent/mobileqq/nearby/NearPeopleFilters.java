@@ -11,44 +11,23 @@ import com.tencent.mobileqq.util.NearbyProfileUtil;
 public class NearPeopleFilters
   implements INearPeopleFilters
 {
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static final String[] c;
-  private int a;
-  public String a;
-  public boolean a;
-  private int b;
-  public String b;
-  private int c;
-  public String c;
-  private int jdField_d_of_type_Int = 0;
-  public String d;
-  private String[] jdField_d_of_type_ArrayOfJavaLangString = { "0", "0", "0", "0" };
-  private int e = 0;
-  private int f = 0;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131707440), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131707448), HardCodeUtil.a(2131707435), HardCodeUtil.a(2131707444), HardCodeUtil.a(2131707446), HardCodeUtil.a(2131707451), HardCodeUtil.a(2131707437), HardCodeUtil.a(2131707455), HardCodeUtil.a(2131707439) };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131707452), HardCodeUtil.a(2131707457), HardCodeUtil.a(2131707454), HardCodeUtil.a(2131707441), HardCodeUtil.a(2131707442), HardCodeUtil.a(2131707447), HardCodeUtil.a(2131707456), HardCodeUtil.a(2131707445), HardCodeUtil.a(2131707438), HardCodeUtil.a(2131707443), HardCodeUtil.a(2131707453), HardCodeUtil.a(2131707436), HardCodeUtil.a(2131707450) };
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 2130845736, 2130845732, 2130845731, 2130845737, 2130845734, 2130845735, 2130845733 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 0, 1, 2, 3 };
-  }
-  
-  public NearPeopleFilters()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 4;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "不限";
-    this.jdField_b_of_type_JavaLangString = "不限";
-    this.jdField_c_of_type_JavaLangString = "不限";
-    this.jdField_d_of_type_JavaLangString = "不限";
-  }
+  public static final String[] a = { HardCodeUtil.a(2131905258), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
+  public static final String[] b = { HardCodeUtil.a(2131905266), HardCodeUtil.a(2131905253), HardCodeUtil.a(2131905262), HardCodeUtil.a(2131905264), HardCodeUtil.a(2131905269), HardCodeUtil.a(2131905255), HardCodeUtil.a(2131905273), HardCodeUtil.a(2131905257) };
+  public static final String[] c = { HardCodeUtil.a(2131905270), HardCodeUtil.a(2131905275), HardCodeUtil.a(2131905272), HardCodeUtil.a(2131905259), HardCodeUtil.a(2131905260), HardCodeUtil.a(2131905265), HardCodeUtil.a(2131905274), HardCodeUtil.a(2131905263), HardCodeUtil.a(2131905256), HardCodeUtil.a(2131905261), HardCodeUtil.a(2131905271), HardCodeUtil.a(2131905254), HardCodeUtil.a(2131905268) };
+  public static final int[] d = { 0, 2130847206, 2130847202, 2130847201, 2130847207, 2130847204, 2130847205, 2130847203 };
+  public static final int[] e = { 0, 1, 2, 3 };
+  public boolean f = false;
+  public String g = "不限";
+  public String h = "不限";
+  public String i = "不限";
+  public String j = "不限";
+  private int k = 0;
+  private int l = 4;
+  private int m = 0;
+  private int n = 0;
+  private int o = 0;
+  private int p = 0;
+  private String[] q = { "0", "0", "0", "0" };
   
   public static NearPeopleFilters a(String paramString)
   {
@@ -72,27 +51,27 @@ public class NearPeopleFilters
       if (paramString2.a() == -1) {
         return null;
       }
-      paramString2.jdField_a_of_type_Boolean = paramString1.getBoolean("byuser", false);
+      paramString2.f = paramString1.getBoolean("byuser", false);
       paramString2.c(paramString1.getInt("age", 0));
       paramString2.d(paramString1.getInt("interest", 0));
       paramString2.b(paramString1.getInt("time", 3));
       paramString2.e(paramString1.getInt("xingzuo", 0));
       paramString2.f(paramString1.getInt("key_career", 0));
-      paramString2.a()[0] = paramString1.getString("key_hometown_country", "0");
-      paramString2.a()[1] = paramString1.getString("key_hometown_province", "0");
-      paramString2.a()[2] = paramString1.getString("key_hometown_city", "0");
-      paramString2.jdField_a_of_type_JavaLangString = paramString1.getString("key_hometown_string", "不限");
-      paramString2.jdField_b_of_type_JavaLangString = paramString1.getString("str_country", "不限");
-      paramString2.jdField_c_of_type_JavaLangString = paramString1.getString("str_province", "不限");
-      paramString2.jdField_d_of_type_JavaLangString = paramString1.getString("str_city", "不限");
-      if ("-1".equals(paramString2.a()[0])) {
-        paramString2.a()[0] = "0";
+      paramString2.g()[0] = paramString1.getString("key_hometown_country", "0");
+      paramString2.g()[1] = paramString1.getString("key_hometown_province", "0");
+      paramString2.g()[2] = paramString1.getString("key_hometown_city", "0");
+      paramString2.g = paramString1.getString("key_hometown_string", "不限");
+      paramString2.h = paramString1.getString("str_country", "不限");
+      paramString2.i = paramString1.getString("str_province", "不限");
+      paramString2.j = paramString1.getString("str_city", "不限");
+      if ("-1".equals(paramString2.g()[0])) {
+        paramString2.g()[0] = "0";
       }
-      if ("-1".equals(paramString2.a()[1])) {
-        paramString2.a()[1] = "0";
+      if ("-1".equals(paramString2.g()[1])) {
+        paramString2.g()[1] = "0";
       }
-      if ("-1".equals(paramString2.a()[2])) {
-        paramString2.a()[2] = "0";
+      if ("-1".equals(paramString2.g()[2])) {
+        paramString2.g()[2] = "0";
       }
       return paramString2;
     }
@@ -117,69 +96,64 @@ public class NearPeopleFilters
       localStringBuilder.append(paramString1);
       paramString1 = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 4);
       if (paramString1 != null) {
-        paramString1.edit().putBoolean("byuser", paramNearPeopleFilters.jdField_a_of_type_Boolean).putInt("gender", paramNearPeopleFilters.a()).putInt("time", paramNearPeopleFilters.b()).putInt("age", paramNearPeopleFilters.c()).putInt("xingzuo", paramNearPeopleFilters.e()).putInt("key_career", paramNearPeopleFilters.f()).putString("key_hometown_country", paramNearPeopleFilters.a()[0]).putString("key_hometown_province", paramNearPeopleFilters.a()[1]).putString("key_hometown_city", paramNearPeopleFilters.a()[2]).putString("key_hometown_string", paramNearPeopleFilters.jdField_a_of_type_JavaLangString).putString("str_country", paramNearPeopleFilters.jdField_b_of_type_JavaLangString).putString("str_province", paramNearPeopleFilters.jdField_c_of_type_JavaLangString).putString("str_city", paramNearPeopleFilters.jdField_d_of_type_JavaLangString).putInt("interest", paramNearPeopleFilters.d()).commit();
+        paramString1.edit().putBoolean("byuser", paramNearPeopleFilters.f).putInt("gender", paramNearPeopleFilters.a()).putInt("time", paramNearPeopleFilters.b()).putInt("age", paramNearPeopleFilters.c()).putInt("xingzuo", paramNearPeopleFilters.e()).putInt("key_career", paramNearPeopleFilters.f()).putString("key_hometown_country", paramNearPeopleFilters.g()[0]).putString("key_hometown_province", paramNearPeopleFilters.g()[1]).putString("key_hometown_city", paramNearPeopleFilters.g()[2]).putString("key_hometown_string", paramNearPeopleFilters.g).putString("str_country", paramNearPeopleFilters.h).putString("str_province", paramNearPeopleFilters.i).putString("str_city", paramNearPeopleFilters.j).putInt("interest", paramNearPeopleFilters.d()).commit();
       }
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.k;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String[] a()
-  {
-    return this.jdField_d_of_type_ArrayOfJavaLangString;
+    this.k = paramInt;
   }
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
+    return this.l;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.l = paramInt;
   }
   
   public int c()
   {
-    return this.jdField_c_of_type_Int;
+    return this.m;
   }
   
   public void c(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.m = paramInt;
   }
   
   public int d()
   {
-    return this.jdField_d_of_type_Int;
+    return this.n;
   }
   
   public void d(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.n = paramInt;
   }
   
   public int e()
   {
-    return this.e;
+    return this.o;
   }
   
   public void e(int paramInt)
   {
-    this.e = paramInt;
+    this.o = paramInt;
   }
   
   public boolean equals(Object paramObject)
   {
-    int i = 0;
+    int i1 = 0;
     boolean bool2;
     if ((paramObject != null) && ((paramObject instanceof NearPeopleFilters)))
     {
@@ -195,14 +169,14 @@ public class NearPeopleFilters
         for (;;)
         {
           bool2 = bool1;
-          if (i >= 3) {
+          if (i1 >= 3) {
             break;
           }
-          bool1 &= a()[i].equalsIgnoreCase(paramObject.a()[i]);
+          bool1 &= g()[i1].equalsIgnoreCase(paramObject.g()[i1]);
           if (!bool1) {
             return bool1;
           }
-          i += 1;
+          i1 += 1;
         }
       }
     }
@@ -215,23 +189,28 @@ public class NearPeopleFilters
   
   public int f()
   {
-    return this.f;
+    return this.p;
   }
   
   public void f(int paramInt)
   {
-    this.f = paramInt;
+    this.p = paramInt;
+  }
+  
+  public String[] g()
+  {
+    return this.q;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("筛选：");
-    int i = a();
-    if (i != 0) {
-      if (i != 1)
+    int i1 = a();
+    if (i1 != 0) {
+      if (i1 != 1)
       {
-        if (i == 2) {
+        if (i1 == 2) {
           localStringBuilder.append("女,");
         }
       }
@@ -241,9 +220,9 @@ public class NearPeopleFilters
     }
     if (c() != 0)
     {
-      i = c();
-      localObject = jdField_a_of_type_ArrayOfJavaLangString;
-      if (i < localObject.length)
+      i1 = c();
+      localObject = a;
+      if (i1 < localObject.length)
       {
         localStringBuilder.append(localObject[c()]);
         localStringBuilder.append(',');
@@ -251,53 +230,53 @@ public class NearPeopleFilters
     }
     if (d() != 0)
     {
-      i = d();
-      localObject = jdField_b_of_type_ArrayOfJavaLangString;
-      if (i < localObject.length)
+      i1 = d();
+      localObject = b;
+      if (i1 < localObject.length)
       {
         localStringBuilder.append(localObject[d()]);
         localStringBuilder.append(',');
       }
     }
-    if ((f() != 0) && (f() < NearbyProfileUtil.e.length))
+    if ((f() != 0) && (f() < NearbyProfileUtil.f.length))
     {
-      String str = NearbyProfileUtil.e[f()];
+      String str = NearbyProfileUtil.f[f()];
       localObject = str;
       if (TextUtils.isEmpty(str)) {
-        localObject = HardCodeUtil.a(2131707449);
+        localObject = HardCodeUtil.a(2131905267);
       }
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(',');
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals("不限")))
+    if ((!TextUtils.isEmpty(this.g)) && (!this.g.equals("不限")))
     {
-      i = this.jdField_a_of_type_JavaLangString.lastIndexOf("-");
-      if (i > 0) {
-        localObject = this.jdField_a_of_type_JavaLangString.substring(i + 1);
+      i1 = this.g.lastIndexOf("-");
+      if (i1 > 0) {
+        localObject = this.g.substring(i1 + 1);
       } else {
-        localObject = this.jdField_a_of_type_JavaLangString;
+        localObject = this.g;
       }
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(',');
     }
     if (e() != 0)
     {
-      i = e();
-      localObject = jdField_c_of_type_ArrayOfJavaLangString;
-      if (i < localObject.length)
+      i1 = e();
+      localObject = c;
+      if (i1 < localObject.length)
       {
         localStringBuilder.append(localObject[e()]);
         localStringBuilder.append(',');
       }
     }
-    i = b();
-    if (i != 0)
+    i1 = b();
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
-        if (i != 2)
+        if (i1 != 2)
         {
-          if ((i != 3) && (i == 4)) {
+          if ((i1 != 3) && (i1 == 4)) {
             localStringBuilder.append("8小时内,");
           }
         }
@@ -315,9 +294,9 @@ public class NearPeopleFilters
     Object localObject = localStringBuilder.toString();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      i = localStringBuilder.lastIndexOf(",");
-      if (i > 0) {
-        return ((String)localObject).substring(0, i);
+      i1 = localStringBuilder.lastIndexOf(",");
+      if (i1 > 0) {
+        return ((String)localObject).substring(0, i1);
       }
     }
     localStringBuilder.append("全部");
@@ -326,7 +305,7 @@ public class NearPeopleFilters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearPeopleFilters
  * JD-Core Version:    0.7.0.1
  */

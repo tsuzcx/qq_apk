@@ -30,7 +30,7 @@ public class MsgTabHaloEntity
   
   public static String[] getSelectionArgs(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    return new String[] { String.valueOf(paramMsgTabNodeInfo.b) };
+    return new String[] { String.valueOf(paramMsgTabNodeInfo.c) };
   }
   
   public String toString()
@@ -78,7 +78,7 @@ public class MsgTabHaloEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabHaloEntity
  * JD-Core Version:    0.7.0.1
  */

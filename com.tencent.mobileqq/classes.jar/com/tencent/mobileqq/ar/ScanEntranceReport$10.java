@@ -10,14 +10,14 @@ class ScanEntranceReport$10
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("device_name", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("memory_size", String.valueOf(this.jdField_a_of_type_Int));
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "scanner_average_fps", true, this.b, 0L, localHashMap, "");
+    localHashMap.put("device_name", this.a);
+    localHashMap.put("memory_size", String.valueOf(this.b));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "scanner_average_fps", true, this.c, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanEntranceReport.10
  * JD-Core Version:    0.7.0.1
  */

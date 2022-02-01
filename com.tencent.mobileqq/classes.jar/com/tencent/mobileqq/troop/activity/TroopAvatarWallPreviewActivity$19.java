@@ -1,31 +1,27 @@
 package com.tencent.mobileqq.troop.activity;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.ImageAnimationView;
-import com.tencent.widget.Gallery;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.utils.DialogUtil;
+import mqq.app.QQPermissionCallback;
 
 class TroopAvatarWallPreviewActivity$19
-  implements Animation.AnimationListener
+  implements QQPermissionCallback
 {
-  TroopAvatarWallPreviewActivity$19(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  TroopAvatarWallPreviewActivity$19(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.mAnimationView.setVisibility(4);
-    this.a.finish();
+    DialogUtil.a(this.b, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.mGallery.setVisibility(4);
+    this.b.savePicWithOverwrite(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.19
  * JD-Core Version:    0.7.0.1
  */

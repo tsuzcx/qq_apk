@@ -9,14 +9,14 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class ApolloUpdateCallback
   implements IMsgUpdateCallback
 {
-  public void a(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
-  
   public boolean a(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
     return false;
   }
   
-  public void b(AIOContext paramAIOContext, ChatMessage paramChatMessage)
+  public void b(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
+  
+  public void c(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
     if ((!paramChatMessage.isSend()) && (paramChatMessage.msgtype == -2039))
     {
@@ -27,16 +27,16 @@ public class ApolloUpdateCallback
     }
   }
   
-  public boolean b(AIOContext paramAIOContext, ChatMessage paramChatMessage)
+  public boolean d(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
     return false;
   }
   
-  public void c(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
+  public void e(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.ApolloUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

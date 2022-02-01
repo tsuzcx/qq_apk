@@ -18,11 +18,11 @@ class DynamicAvatarRecordActivity$4
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!this.a.jdField_c_of_type_Boolean) {
+    if (!this.a.i) {
       return false;
     }
     int i;
-    if ((paramView == this.a.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress))
+    if ((paramView == this.a.I) || (paramView == this.a.K))
     {
       i = paramMotionEvent.getAction();
       if (i == 0) {
@@ -34,41 +34,41 @@ class DynamicAvatarRecordActivity$4
     {
       return false;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a())
+    if (this.a.e.b())
     {
       if (QLog.isColorLevel()) {
         QLog.i("DynamicAvatarRecordActivity", 2, "ACTION_UP, current state is already preview!");
       }
       return true;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.c();
+    if (this.a.e != null) {
+      this.a.e.m();
     }
-    if (System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a < 500L)
+    if (System.currentTimeMillis() - this.a.e.c < 500L)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.d();
+      this.a.e.b(false);
+      this.a.e.h();
       DynamicAvatarRecordActivity.a(this.a);
       return true;
     }
     DynamicAvatarRecordActivity.b(this.a);
     return true;
     label165:
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-    this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.a.d.setVisibility(4);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
-    this.a.e.setVisibility(4);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a = System.currentTimeMillis();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
-    if (this.a.jdField_b_of_type_Int == 1) {
+    this.a.n.setVisibility(4);
+    this.a.B.setVisibility(4);
+    this.a.C.setText("0\"");
+    this.a.C.setVisibility(0);
+    this.a.D.setVisibility(4);
+    this.a.F.setVisibility(4);
+    this.a.G.setVisibility(4);
+    this.a.I.setVisibility(4);
+    this.a.J.setVisibility(0);
+    this.a.K.setVisibility(0);
+    this.a.H.setVisibility(4);
+    this.a.K.setProgress(0.0F);
+    this.a.e.c = System.currentTimeMillis();
+    this.a.e.i();
+    if (this.a.d == 1) {
       i = 0;
     } else {
       i = 1;
@@ -79,7 +79,7 @@ class DynamicAvatarRecordActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.4
  * JD-Core Version:    0.7.0.1
  */

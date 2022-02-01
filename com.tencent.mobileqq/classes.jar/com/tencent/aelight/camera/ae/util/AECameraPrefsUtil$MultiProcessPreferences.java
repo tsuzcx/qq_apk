@@ -10,27 +10,6 @@ class AECameraPrefsUtil$MultiProcessPreferences
 {
   private static final SharedPreferences a = BaseApplicationImpl.getApplication().getSharedPreferences("ae_camera_multi_process_sp", 4);
   
-  static float a(@NonNull String paramString, float paramFloat)
-  {
-    return a.getFloat(paramString, paramFloat);
-  }
-  
-  static int a(@NonNull String paramString, int paramInt)
-  {
-    return a.getInt(paramString, paramInt);
-  }
-  
-  static long a(@NonNull String paramString, long paramLong)
-  {
-    return a.getLong(paramString, paramLong);
-  }
-  
-  @Nullable
-  static String a(@NonNull String paramString1, String paramString2)
-  {
-    return a.getString(paramString1, paramString2);
-  }
-  
   static void a(@NonNull String paramString)
   {
     SharedPreferences.Editor localEditor = a.edit();
@@ -73,19 +52,40 @@ class AECameraPrefsUtil$MultiProcessPreferences
     localEditor.apply();
   }
   
-  static boolean a(@NonNull String paramString)
+  static float b(@NonNull String paramString, float paramFloat)
+  {
+    return a.getFloat(paramString, paramFloat);
+  }
+  
+  static int b(@NonNull String paramString, int paramInt)
+  {
+    return a.getInt(paramString, paramInt);
+  }
+  
+  static long b(@NonNull String paramString, long paramLong)
+  {
+    return a.getLong(paramString, paramLong);
+  }
+  
+  @Nullable
+  static String b(@NonNull String paramString1, String paramString2)
+  {
+    return a.getString(paramString1, paramString2);
+  }
+  
+  static boolean b(@NonNull String paramString)
   {
     return a.contains(paramString);
   }
   
-  static boolean a(@NonNull String paramString, boolean paramBoolean)
+  static boolean b(@NonNull String paramString, boolean paramBoolean)
   {
     return a.getBoolean(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.util.AECameraPrefsUtil.MultiProcessPreferences
  * JD-Core Version:    0.7.0.1
  */

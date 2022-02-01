@@ -14,7 +14,7 @@ public class ArkSilkAudioPlayerHelper
     while (localIterator.hasNext())
     {
       ArkSilkAudioPlayerWrapper localArkSilkAudioPlayerWrapper = (ArkSilkAudioPlayerWrapper)((WeakReference)localIterator.next()).get();
-      if ((localArkSilkAudioPlayerWrapper != null) && (localArkSilkAudioPlayerWrapper.a()))
+      if ((localArkSilkAudioPlayerWrapper != null) && (localArkSilkAudioPlayerWrapper.b()))
       {
         localArkSilkAudioPlayerWrapper.a(5);
         localArkSilkAudioPlayerWrapper.a();
@@ -39,7 +39,7 @@ public class ArkSilkAudioPlayerHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.silk.ArkSilkAudioPlayerHelper
  * JD-Core Version:    0.7.0.1
  */

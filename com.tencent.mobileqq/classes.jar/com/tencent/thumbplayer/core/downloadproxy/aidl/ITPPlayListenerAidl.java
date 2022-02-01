@@ -39,6 +39,8 @@ public abstract interface ITPPlayListenerAidl
   
   public abstract void onDownloadStatusUpdate(int paramInt);
   
+  public abstract void onPcdnDownloadFailed(String paramString);
+  
   public abstract int onPlayCallback(int paramInt, List paramList);
   
   public abstract void onQuicDownloadStatusUpdate(String paramString);
@@ -51,7 +53,7 @@ public abstract interface ITPPlayListenerAidl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl
  * JD-Core Version:    0.7.0.1
  */

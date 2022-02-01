@@ -23,26 +23,26 @@ final class ChatHistoryEmotionBaseFragment$3
     if (QLog.isColorLevel()) {
       QLog.d("EmoBatchAdded", 1, "addEmotions execute");
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.a;
     int i;
     if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
-      ReportController.b(null, "dc00898", "", "", "0X800B724", "0X800B724", this.jdField_a_of_type_JavaUtilList.size(), 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoBatchAddedHandler.b(100);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoBatchAddedHandler.a(this.jdField_a_of_type_JavaUtilList.size());
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoBatchAddedHandler.a() + this.jdField_a_of_type_JavaUtilList.size() > FavEmoConstant.a)
+      ReportController.b(null, "dc00898", "", "", "0X800B724", "0X800B724", this.a.size(), 0, "", "", "", "");
+      this.b.b(100);
+      this.b.a(this.a.size());
+      if (this.b.a() + this.a.size() > FavEmoConstant.a)
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoBatchAddedHandler.b(1);
+        this.b.b(1);
         return;
       }
       i = 0;
     }
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.a.size())
     {
-      localObject1 = (EmotionPreviewData)this.jdField_a_of_type_JavaUtilList.get(i);
+      localObject1 = (EmotionPreviewData)this.a.get(i);
       Object localObject2 = (IEmoBatchAddedHandlerApi)QRoute.api(IEmoBatchAddedHandlerApi.class);
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      IEmoBatchAddedHandler localIEmoBatchAddedHandler = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoBatchAddedHandler;
+      QQAppInterface localQQAppInterface = this.c;
+      IEmoBatchAddedHandler localIEmoBatchAddedHandler = this.b;
       localObject2 = ((IEmoBatchAddedHandlerApi)localObject2).createEmoBatchAddedCallback(localQQAppInterface, localIEmoBatchAddedHandler, localIEmoBatchAddedHandler.a(Integer.valueOf(i)));
       int j;
       if ((((EmotionPreviewData)localObject1).a instanceof MessageForMarketFace)) {
@@ -51,19 +51,19 @@ final class ChatHistoryEmotionBaseFragment$3
         j = 1;
       }
       if (j == 0) {
-        ChatHistoryEmotionBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoBatchAddedHandler, (EmotionPreviewData)localObject1, i, (IEmoBatchAddedCallback)localObject2);
+        ChatHistoryEmotionBaseFragment.a(this.c, this.b, (EmotionPreviewData)localObject1, i, (IEmoBatchAddedCallback)localObject2);
       } else {
-        ChatHistoryEmotionBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoBatchAddedHandler, (EmotionPreviewData)localObject1, i, (IEmoBatchAddedCallback)localObject2, this.b);
+        ChatHistoryEmotionBaseFragment.a(this.c, this.b, (EmotionPreviewData)localObject1, i, (IEmoBatchAddedCallback)localObject2, this.d);
       }
       i += 1;
       continue;
-      FMToastUtil.c(2131692435);
+      FMToastUtil.c(2131889423);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment.3
  * JD-Core Version:    0.7.0.1
  */

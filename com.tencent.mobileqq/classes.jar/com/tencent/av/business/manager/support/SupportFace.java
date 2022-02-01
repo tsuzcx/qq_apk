@@ -12,40 +12,28 @@ import com.tencent.qphone.base.util.QLog;
 public class SupportFace
   extends SupportBase
 {
-  private boolean a;
-  private int c = -1;
-  private int d = -1;
+  private int g = -1;
+  private int h = -1;
+  private boolean i = false;
   
   public SupportFace(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_Boolean = false;
   }
   
-  private boolean a()
-  {
-    return EffectsRenderController.c();
-  }
-  
-  private boolean b()
+  private boolean d()
   {
     return EffectsRenderController.d();
   }
   
-  public int a(String paramString)
+  private boolean e()
   {
-    if ("normal".equalsIgnoreCase(paramString)) {
-      return this.c;
-    }
-    if ("interact".equalsIgnoreCase(paramString)) {
-      return this.d;
-    }
-    return -1;
+    return EffectsRenderController.e();
   }
   
   public boolean a(int paramInt, String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.i) {
       ThreadManager.a().postDelayed(new SupportFace.1(this), 1100L);
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -60,29 +48,29 @@ public class SupportFace
       {
         if (paramInt == 1)
         {
-          this.c = 1;
+          this.g = 1;
         }
         else
         {
           if (paramInt != 3) {
             return bool;
           }
-          this.c = 1;
-          this.d = 1;
+          this.g = 1;
+          this.h = 1;
         }
       }
       else if (paramString.equals("SUPPORT_FALSE"))
       {
         if (paramInt == 1)
         {
-          this.c = 0;
-          this.d = 0;
+          this.g = 0;
+          this.h = 0;
           return true;
         }
         if (paramInt != 3) {
           return bool;
         }
-        this.d = 0;
+        this.h = 0;
         return true;
       }
     }
@@ -92,27 +80,38 @@ public class SupportFace
   
   public boolean a(String paramString)
   {
-    AVLog.printAllUserLog("SupportFace", String.format("isSelfSupport| device info:mode=%s,sdkVersion=%d,cpuFreq=%d,cpuCount=%d,memCapacity=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_b_of_type_Long) }));
+    AVLog.printAllUserLog("SupportFace", String.format("isSelfSupport| device info:mode=%s,sdkVersion=%d,cpuFreq=%d,cpuCount=%d,memCapacity=%d", new Object[] { this.a, Integer.valueOf(this.b), Long.valueOf(this.c), Integer.valueOf(this.d), Long.valueOf(this.e) }));
     if ("normal".equalsIgnoreCase(paramString)) {
-      return a();
+      return d();
     }
     if ("interact".equalsIgnoreCase(paramString)) {
-      return b();
+      return e();
     }
     return false;
   }
   
+  public int b(String paramString)
+  {
+    if ("normal".equalsIgnoreCase(paramString)) {
+      return this.g;
+    }
+    if ("interact".equalsIgnoreCase(paramString)) {
+      return this.h;
+    }
+    return -1;
+  }
+  
   public void b()
   {
-    boolean bool1 = PtuResChecker.b();
-    Object localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    boolean bool2 = a();
+    boolean bool1 = PtuResChecker.c();
+    Object localObject = this.f.b();
+    boolean bool2 = d();
     if ((bool2) && (bool1)) {
-      ((VideoController)localObject).a(1, "SUPPORT_TRUE");
+      ((VideoController)localObject).e(1, "SUPPORT_TRUE");
     }
-    boolean bool3 = b();
+    boolean bool3 = e();
     if ((bool3) && (bool1)) {
-      ((VideoController)localObject).a(3, "SUPPORT_TRUE");
+      ((VideoController)localObject).e(3, "SUPPORT_TRUE");
     }
     if ((bool2) && (bool3)) {
       return;
@@ -130,9 +129,9 @@ public class SupportFace
   
   public void c()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.c = -1;
-    this.d = -1;
+    this.i = false;
+    this.g = -1;
+    this.h = -1;
     AVLog.printColorLog("SupportFace", "SupportFace restore:");
   }
 }

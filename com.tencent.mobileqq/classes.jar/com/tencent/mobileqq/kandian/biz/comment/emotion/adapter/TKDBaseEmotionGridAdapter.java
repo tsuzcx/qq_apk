@@ -112,15 +112,15 @@ public abstract class TKDBaseEmotionGridAdapter
   
   protected final void a(RIJCommonEmotionAdapterParams paramRIJCommonEmotionAdapterParams)
   {
-    this.a = paramRIJCommonEmotionAdapterParams.e;
-    this.b = paramRIJCommonEmotionAdapterParams.d;
-    this.c = paramRIJCommonEmotionAdapterParams.f;
-    this.d = paramRIJCommonEmotionAdapterParams.g;
-    this.e = paramRIJCommonEmotionAdapterParams.h;
-    this.f = paramRIJCommonEmotionAdapterParams.i;
+    this.a = paramRIJCommonEmotionAdapterParams.h;
+    this.b = paramRIJCommonEmotionAdapterParams.g;
+    this.c = paramRIJCommonEmotionAdapterParams.i;
+    this.d = paramRIJCommonEmotionAdapterParams.j;
+    this.e = paramRIJCommonEmotionAdapterParams.k;
+    this.f = paramRIJCommonEmotionAdapterParams.l;
     if (this.columnNum > 0)
     {
-      int i = ViewUtils.a() - this.e - this.f - this.a * this.columnNum;
+      int i = ViewUtils.getScreenWidth() - this.e - this.f - this.a * this.columnNum;
       if ((i > 0) && (this.columnNum > 1)) {
         this.g = (i / (this.columnNum - 1));
       }
@@ -149,7 +149,7 @@ public abstract class TKDBaseEmotionGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.emotion.adapter.TKDBaseEmotionGridAdapter
  * JD-Core Version:    0.7.0.1
  */

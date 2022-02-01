@@ -10,17 +10,17 @@ class QIMCameraSegmentCaptureButtonLayoutNew$3
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraSegmentCaptureButtonLayoutNew.a.forceNextSegmentAnimatorStart();
+      this.c.h.forceNextSegmentAnimatorStart();
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraSegmentCaptureButtonLayoutNew.a.startBlinkAnimation(this.jdField_a_of_type_Float);
+    this.c.h.startBlinkAnimation(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.view.QIMCameraSegmentCaptureButtonLayoutNew.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,30 +10,24 @@ import java.util.UUID;
 public class PicReq
   implements Comparable<PicReq>
 {
-  public int a;
-  public ICompressionCallBack a;
-  public MessageForPic a;
-  public PicMessageExtraData a;
-  public CompressInfo a;
-  public PicDownloadInfo a;
-  public PicFowardInfo a;
-  public PicUploadInfo a;
-  public UiCallBack a;
-  public Object a;
-  public String a;
-  public ArrayList<PicFowardInfo> a;
+  public int a = -1;
   public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e = 1;
-  public int f = this.e;
-  
-  public PicReq()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = a();
-  }
+  public String c = a();
+  public String d;
+  public CompressInfo e;
+  public PicDownloadInfo f;
+  public PicUploadInfo g;
+  public PicFowardInfo h;
+  public PicMessageExtraData i;
+  public ArrayList<PicFowardInfo> j;
+  public UiCallBack k;
+  public MessageForPic l;
+  public int m;
+  public int n;
+  public int o = 1;
+  public int p = this.o;
+  public ICompressionCallBack q;
+  public Object r;
   
   public static String a()
   {
@@ -45,12 +39,12 @@ public class PicReq
   
   public int a(PicReq paramPicReq)
   {
-    int i = this.e;
-    int j = paramPicReq.e;
-    if (i < j) {
+    int i1 = this.o;
+    int i2 = paramPicReq.o;
+    if (i1 < i2) {
       return -1;
     }
-    if (i > j) {
+    if (i1 > i2) {
       return 1;
     }
     return 0;
@@ -58,23 +52,23 @@ public class PicReq
   
   public void a(UiCallBack paramUiCallBack)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPicUiCallBack = paramUiCallBack;
+    this.k = paramUiCallBack;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    paramString = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
+    this.c = paramString;
+    paramString = this.e;
     if (paramString != null) {
-      paramString.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      paramString.a = this.c;
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo;
+    paramString = this.g;
     if (paramString != null) {
-      paramString.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      paramString.a = this.c;
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo;
+    paramString = this.f;
     if (paramString != null) {
-      paramString.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      paramString.a = this.c;
     }
   }
   
@@ -88,57 +82,57 @@ public class PicReq
         PicFowardInfo localPicFowardInfo = (PicFowardInfo)localIterator.next();
         if (localPicFowardInfo != null)
         {
-          if (localPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo != null)
+          if (localPicFowardInfo.b != null)
           {
-            localPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-            localPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+            localPicFowardInfo.b.a = this.c;
+            localPicFowardInfo.b.b = this.b;
           }
-          if (localPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo != null)
+          if (localPicFowardInfo.c != null)
           {
-            localPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-            localPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+            localPicFowardInfo.c.a = this.c;
+            localPicFowardInfo.c.b = this.b;
           }
         }
       }
-      this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-      this.jdField_b_of_type_JavaLangString = Logger.a(((PicFowardInfo)paramArrayList.get(0)).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_b_of_type_Int, 2, 1);
+      this.j = paramArrayList;
+      this.d = Logger.a(((PicFowardInfo)paramArrayList.get(0)).b.c, 2, 1);
       return;
     }
-    Logger.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "fwInfoList is empty");
+    Logger.a("PIC_TAG_ERROR", this.c, "bindReqObj", "fwInfoList is empty");
   }
   
   public boolean a(MessageForPic paramMessageForPic, PicDownloadInfo paramPicDownloadInfo)
   {
     if (paramPicDownloadInfo == null)
     {
-      Logger.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "downInfo == null");
+      Logger.a("PIC_TAG_ERROR", this.c, "bindReqObj", "downInfo == null");
       return false;
     }
-    paramPicDownloadInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramPicDownloadInfo.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    paramPicDownloadInfo.c = paramMessageForPic.time;
-    paramPicDownloadInfo.d = paramMessageForPic.bEnableEnc;
-    this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo = paramPicDownloadInfo;
-    int i = this.jdField_a_of_type_Int;
-    if (i == 5)
+    paramPicDownloadInfo.a = this.c;
+    paramPicDownloadInfo.b = this.b;
+    paramPicDownloadInfo.u = paramMessageForPic.time;
+    paramPicDownloadInfo.G = paramMessageForPic.bEnableEnc;
+    this.f = paramPicDownloadInfo;
+    int i1 = this.a;
+    if (i1 == 5)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.e = "chatthumb";
-      i = 65537;
+      this.f.l = "chatthumb";
+      i1 = 65537;
     }
-    else if (i == 7)
+    else if (i1 == 7)
     {
-      i = 131075;
-      this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.e = "chatraw";
+      i1 = 131075;
+      this.f.l = "chatraw";
     }
     else
     {
-      if (i == 6) {
-        this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.e = "chatimg";
+      if (i1 == 6) {
+        this.f.l = "chatimg";
       }
-      i = 1;
+      i1 = 1;
     }
-    this.jdField_b_of_type_JavaLangString = Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_b_of_type_Int, 0, i);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
+    this.d = Logger.a(this.f.c, 0, i1);
+    this.l = paramMessageForPic;
     return true;
   }
   
@@ -147,11 +141,11 @@ public class PicReq
     if (paramCompressInfo == null) {
       return false;
     }
-    paramCompressInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    if (paramCompressInfo.c == null) {
+    paramCompressInfo.a = this.c;
+    if (paramCompressInfo.h == null) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo = paramCompressInfo;
+    this.e = paramCompressInfo;
     return true;
   }
   
@@ -159,25 +153,25 @@ public class PicReq
   {
     if (paramPicFowardInfo == null)
     {
-      Logger.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "forwardInfo == null");
+      Logger.a("PIC_TAG_ERROR", this.c, "bindReqObj", "forwardInfo == null");
       return false;
     }
-    if (paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo != null)
+    if (paramPicFowardInfo.b != null)
     {
-      paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+      paramPicFowardInfo.b.a = this.c;
+      paramPicFowardInfo.b.b = this.b;
     }
-    if (paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo != null)
+    if (paramPicFowardInfo.c != null)
     {
-      paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+      paramPicFowardInfo.c.a = this.c;
+      paramPicFowardInfo.c.b = this.b;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo = paramPicFowardInfo;
-    int i = -1;
-    if (paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo != null) {
-      i = paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_b_of_type_Int;
+    this.h = paramPicFowardInfo;
+    int i1 = -1;
+    if (paramPicFowardInfo.b != null) {
+      i1 = paramPicFowardInfo.b.c;
     }
-    this.jdField_b_of_type_JavaLangString = Logger.a(i, 2, 1);
+    this.d = Logger.a(i1, 2, 1);
     return true;
   }
   
@@ -185,19 +179,19 @@ public class PicReq
   {
     if (paramPicUploadInfo == null)
     {
-      Logger.a("PIC_TAG_ERROR", this.jdField_a_of_type_JavaLangString, "bindReqObj", "upInfo == null");
+      Logger.a("PIC_TAG_ERROR", this.c, "bindReqObj", "upInfo == null");
       return false;
     }
-    paramPicUploadInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramPicUploadInfo.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo = paramPicUploadInfo;
-    this.jdField_b_of_type_JavaLangString = Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_b_of_type_Int, 1, 1);
+    paramPicUploadInfo.a = this.c;
+    paramPicUploadInfo.b = this.b;
+    this.g = paramPicUploadInfo;
+    this.d = Logger.a(this.g.c, 1, 1);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicReq
  * JD-Core Version:    0.7.0.1
  */

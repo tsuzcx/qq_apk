@@ -32,7 +32,7 @@ public class MessageForArkFlashChat
     if (localArkFlashChatMessage != null) {
       return localArkFlashChatMessage.getSummery();
     }
-    return HardCodeUtil.a(2131706651);
+    return HardCodeUtil.a(2131904502);
   }
   
   public boolean isSupportReply()
@@ -123,7 +123,7 @@ public class MessageForArkFlashChat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForArkFlashChat
  * JD-Core Version:    0.7.0.1
  */

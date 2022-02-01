@@ -21,9 +21,9 @@ class NearbyActivity$6
   public void onClick(View paramView)
   {
     Object localObject;
-    if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+    if (paramView == this.a)
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString())) {
+      if (TextUtils.isEmpty(this.b.getText().toString())) {
         return;
       }
       localObject = new AllInOne("0", 41);
@@ -34,32 +34,32 @@ class NearbyActivity$6
     }
     try
     {
-      paramView.putExtra("param_tiny_id", Long.valueOf(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString()));
+      paramView.putExtra("param_tiny_id", Long.valueOf(this.b.getText().toString()));
       label86:
       RouteUtils.a(BaseApplicationImpl.getContext(), paramView, "/nearby/people/profile");
       return;
-      if (paramView == this.jdField_b_of_type_AndroidWidgetButton)
+      if (paramView == this.c)
       {
-        if (TextUtils.isEmpty(this.jdField_b_of_type_AndroidWidgetEditText.getText().toString())) {
+        if (TextUtils.isEmpty(this.d.getText().toString())) {
           return;
         }
         paramView = new StringBuilder();
         paramView.append("mqq://card/show_pslcard/?uin=");
-        paramView.append(this.jdField_b_of_type_AndroidWidgetEditText.getText().toString());
+        paramView.append(this.d.getText().toString());
         paramView.append("&card_type=nearby&from=1&mode=3");
         paramView = paramView.toString();
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity;
+        localObject = this.g;
         ((NearbyActivity)localObject).startActivity(new Intent((Context)localObject, JumpActivity.class).setData(Uri.parse(paramView)));
         return;
       }
-      if (paramView == this.c)
+      if (paramView == this.e)
       {
         paramView = new Intent();
         paramView.putExtra("roomNum", 10);
         RouteUtils.a(BaseApplicationImpl.getContext(), paramView, "/nearby/gameroom/invite");
         return;
       }
-      if (paramView == this.d)
+      if (paramView == this.f)
       {
         paramView = new Intent();
         paramView.putExtra("roomNum", 12);
@@ -75,7 +75,7 @@ class NearbyActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NearbyActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ class MemoriesVideoListSegment$1
   
   public boolean a(boolean paramBoolean)
   {
-    this.a.b();
+    this.a.j();
     return true;
   }
 }

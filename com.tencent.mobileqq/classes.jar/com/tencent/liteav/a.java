@@ -73,12 +73,36 @@ public class a
       TXCStatus.a(paramArrayList, 18010, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10208)));
       TXCStatus.a(paramArrayList, 18012, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10209)));
       TXCStatus.a(paramArrayList, 2021, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10109)));
+      TXCStatus.a(paramArrayList, 2036, Long.valueOf(localStatusBucket.getLongStatus(paramArrayList, 10410)));
+      TXCStatus.a(paramArrayList, 2037, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10411)));
+      TXCStatus.a(paramArrayList, 2038, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10412)));
+      TXCStatus.a(paramArrayList, 2039, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10413)));
+      TXCStatus.a(paramArrayList, 2040, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10414)));
+      TXCStatus.a(paramArrayList, 2041, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10415)));
+      TXCStatus.a(paramArrayList, 2042, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10416)));
+      TXCStatus.a(paramArrayList, 2043, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10417)));
+      TXCStatus.a(paramArrayList, 2044, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10418)));
+      TXCStatus.a(paramArrayList, 2045, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10419)));
+      TXCStatus.a(paramArrayList, 2046, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10420)));
+      TXCStatus.a(paramArrayList, 2047, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10421)));
+      TXCStatus.a(paramArrayList, 2048, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10422)));
+      TXCStatus.a(paramArrayList, 2049, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10423)));
+      TXCStatus.a(paramArrayList, 2050, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10424)));
+      TXCStatus.a(paramArrayList, 2051, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10425)));
+      TXCStatus.a(paramArrayList, 2052, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10426)));
+      TXCStatus.a(paramArrayList, 2053, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10427)));
+      TXCStatus.a(paramArrayList, 2054, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10428)));
+      TXCStatus.a(paramArrayList, 2055, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10429)));
+      TXCStatus.a(paramArrayList, 2056, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10430)));
+      TXCStatus.a(paramArrayList, 2057, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10431)));
+      TXCStatus.a(paramArrayList, 2058, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10432)));
+      TXCStatus.a(paramArrayList, 2059, Integer.valueOf(localStatusBucket.getIntStatus(paramArrayList, 10433)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.a
  * JD-Core Version:    0.7.0.1
  */

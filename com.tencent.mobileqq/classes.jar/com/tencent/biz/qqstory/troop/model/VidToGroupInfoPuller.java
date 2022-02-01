@@ -22,25 +22,23 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class VidToGroupInfoPuller
   implements IEventReceiver
 {
-  public int a;
-  IVidToVideoInfoPuller.OnFinishCallBack a;
-  protected StoryManager a;
-  protected BatchHandlerListPuller a;
-  protected String a;
-  protected List<String> a;
-  protected AtomicBoolean a;
+  public int a = 0;
+  protected AtomicBoolean b = new AtomicBoolean(false);
+  protected String c;
+  protected BatchHandlerListPuller d;
+  protected StoryManager e;
+  protected List<String> f;
+  IVidToVideoInfoPuller.OnFinishCallBack g;
   
   public VidToGroupInfoPuller(String paramString, List<String> paramList)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager = ((StoryManager)SuperManager.a(5));
+    this.c = paramString;
+    this.e = ((StoryManager)SuperManager.a(5));
     paramString = paramList;
     if (paramList == null) {
       paramString = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList = paramString;
+    this.f = paramString;
   }
   
   protected BatchHandlerListPuller a(List<String> paramList)
@@ -52,7 +50,7 @@ public class VidToGroupInfoPuller
       String str = (String)paramList.next();
       if (!StoryVideoItem.isFakeVid(str))
       {
-        StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(str);
+        StoryVideoItem localStoryVideoItem = this.e.a(str);
         if ((localStoryVideoItem == null) || (localStoryVideoItem.mBasicInfoState != 1) || (TextUtils.isEmpty(localStoryVideoItem.getVideoUrl())) || (TextUtils.isEmpty(localStoryVideoItem.getThumbUrl()))) {
           localArrayList.add(str);
         }
@@ -73,25 +71,11 @@ public class VidToGroupInfoPuller
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) {
+    if (this.b.getAndSet(true)) {
       return;
     }
-    this.jdField_a_of_type_Int = 1;
+    this.a = 1;
     Bosses.get().postJob(new VidToGroupInfoPuller.1(this, "Q.qqstory.net:VidToGroupInfoPuller"));
-  }
-  
-  public boolean a()
-  {
-    int i = this.jdField_a_of_type_Int;
-    boolean bool = true;
-    if (i != 1)
-    {
-      if (i == 3) {
-        return true;
-      }
-      bool = false;
-    }
-    return bool;
   }
   
   protected boolean a(List<String> paramList, ErrorMessage paramErrorMessage, boolean paramBoolean1, boolean paramBoolean2)
@@ -101,7 +85,7 @@ public class VidToGroupInfoPuller
     while (((Iterator)localObject).hasNext())
     {
       paramList = (String)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(paramList);
+      StoryVideoItem localStoryVideoItem = this.e.a(paramList);
       if (localStoryVideoItem == null)
       {
         localObject = new StoryVideoItem();
@@ -120,25 +104,25 @@ public class VidToGroupInfoPuller
       localArrayList.clear();
     }
     paramList = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-    paramList.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    paramList.jdField_a_of_type_Boolean = (paramBoolean1 ^ true);
-    paramList.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramList.b = (bool ^ true);
-    paramList.jdField_a_of_type_JavaUtilList = localArrayList;
-    paramList.jdField_a_of_type_Int = localArrayList.size();
+    paramList.g = paramErrorMessage;
+    paramList.i = (paramBoolean1 ^ true);
+    paramList.a = this.c;
+    paramList.j = (bool ^ true);
+    paramList.e = localArrayList;
+    paramList.h = localArrayList.size();
     StoryDispatcher.a().dispatch(paramList);
     if (paramBoolean1)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       if (i == 1)
       {
-        this.jdField_a_of_type_Int = 2;
+        this.a = 2;
         return bool;
       }
       if (i == 3)
       {
-        this.jdField_a_of_type_Int = 4;
-        paramList = this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack;
+        this.a = 4;
+        paramList = this.g;
         if (paramList != null) {
           paramList.a(localArrayList, paramBoolean2);
         }
@@ -149,15 +133,29 @@ public class VidToGroupInfoPuller
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller = a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a("Q.qqstory.net:VidToGroupInfoPuller");
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a(new VidToGroupInfoPuller.2(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.b();
+    this.d = a(this.f);
+    this.d.a("Q.qqstory.net:VidToGroupInfoPuller");
+    this.d.a(new VidToGroupInfoPuller.2(this));
+    this.d.b();
+  }
+  
+  public boolean c()
+  {
+    int i = this.a;
+    boolean bool = true;
+    if (i != 1)
+    {
+      if (i == 3) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public boolean isValidate()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return this.b.get();
   }
 }
 

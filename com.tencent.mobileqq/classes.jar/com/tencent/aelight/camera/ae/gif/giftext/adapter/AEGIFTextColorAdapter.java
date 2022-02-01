@@ -16,63 +16,58 @@ import javax.annotation.Nonnull;
 public class AEGIFTextColorAdapter
   extends RecyclerView.Adapter<AEGIFTextColorAdapter.TextEditColorViewHolder>
 {
-  private static List<AEGIFTextColorConfig.SmartTextColor> jdField_a_of_type_JavaUtilList;
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private static List<AEGIFTextColorConfig.SmartTextColor> d;
+  private Context a;
+  private int b = 0;
+  private RecyclerView c;
+  private TextView e;
+  private String f;
+  private String g;
   
   public AEGIFTextColorAdapter(Context paramContext, RecyclerView paramRecyclerView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    a();
-    this.jdField_a_of_type_JavaLangString = ((AEGIFTextColorConfig.SmartTextColor)jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).jdField_a_of_type_JavaLangString;
-    this.b = ((AEGIFTextColorConfig.SmartTextColor)jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).b;
+    this.a = paramContext;
+    this.c = paramRecyclerView;
+    d();
+    this.f = ((AEGIFTextColorConfig.SmartTextColor)d.get(this.b)).a;
+    this.g = ((AEGIFTextColorConfig.SmartTextColor)d.get(this.b)).b;
   }
   
-  private void a()
+  private void d()
   {
-    jdField_a_of_type_JavaUtilList = AEGIFTextColorConfig.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    d = AEGIFTextColorConfig.b;
   }
   
   @NonNull
   public AEGIFTextColorAdapter.TextEditColorViewHolder a(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
+    if (this.a == null) {
+      this.a = paramViewGroup.getContext();
     }
-    return new AEGIFTextColorAdapter.TextEditColorViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2064318602, paramViewGroup, false));
+    return new AEGIFTextColorAdapter.TextEditColorViewHolder(LayoutInflater.from(this.a).inflate(2064056480, paramViewGroup, false));
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.f;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = ((AEGIFTextColorConfig.SmartTextColor)jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
-    this.b = ((AEGIFTextColorConfig.SmartTextColor)jdField_a_of_type_JavaUtilList.get(paramInt)).b;
+    this.b = paramInt;
+    this.f = ((AEGIFTextColorConfig.SmartTextColor)d.get(paramInt)).a;
+    this.g = ((AEGIFTextColorConfig.SmartTextColor)d.get(paramInt)).b;
   }
   
   public void a(TextView paramTextView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.e = paramTextView;
   }
   
   public void a(@NonNull AEGIFTextColorAdapter.TextEditColorViewHolder paramTextEditColorViewHolder, int paramInt)
   {
-    paramTextEditColorViewHolder.a(((AEGIFTextColorConfig.SmartTextColor)jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString);
-    if (paramInt == this.jdField_a_of_type_Int) {
+    paramTextEditColorViewHolder.a(((AEGIFTextColorConfig.SmartTextColor)d.get(paramInt)).a);
+    if (paramInt == this.b) {
       paramTextEditColorViewHolder.a(true);
     } else {
       paramTextEditColorViewHolder.a(false);
@@ -80,20 +75,25 @@ public class AEGIFTextColorAdapter
     paramTextEditColorViewHolder.itemView.setOnClickListener(new AEGIFTextColorAdapter.1(this, paramInt, paramTextEditColorViewHolder));
   }
   
-  @Nonnull
-  public String b()
+  public int b()
   {
     return this.b;
   }
   
+  @Nonnull
+  public String c()
+  {
+    return this.g;
+  }
+  
   public int getItemCount()
   {
-    return jdField_a_of_type_JavaUtilList.size();
+    return d.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.adapter.AEGIFTextColorAdapter
  * JD-Core Version:    0.7.0.1
  */

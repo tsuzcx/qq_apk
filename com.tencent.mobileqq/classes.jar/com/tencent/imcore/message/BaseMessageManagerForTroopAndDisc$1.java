@@ -11,25 +11,25 @@ class BaseMessageManagerForTroopAndDisc$1
   
   public void run()
   {
-    long l = Math.min(this.jdField_a_of_type_Long, this.b);
+    long l = Math.min(this.a, this.b);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("--->>pkgIndex : ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      localStringBuilder.append(" beginSeq:");
       localStringBuilder.append(this.c);
+      localStringBuilder.append(" beginSeq:");
+      localStringBuilder.append(this.d);
       localStringBuilder.append(" fixEndSeq:");
       localStringBuilder.append(l);
       QLog.d("Q.msg.BaseMessageManager.trooptroop_pull_msg.troop_parallel_pull_msg.trooptroop_pull_msg", 2, localStringBuilder.toString());
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.putAioInParallelPullMsgMark(this.jdField_a_of_type_JavaLangString, this.c, l);
-    BaseMessageManagerForTroopAndDisc.jdField_a_of_type_ComTencentImcoreMessageBaseMessageManagerForTroopAndDisc$Callback.a(this.this$0.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaLangString, this.c, l, true, this.jdField_a_of_type_AndroidOsBundle, 0);
+    this.this$0.b.putAioInParallelPullMsgMark(this.e, this.d, l);
+    BaseMessageManagerForTroopAndDisc.g.a(this.this$0.a, this.e, this.d, l, true, this.f, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManagerForTroopAndDisc.1
  * JD-Core Version:    0.7.0.1
  */

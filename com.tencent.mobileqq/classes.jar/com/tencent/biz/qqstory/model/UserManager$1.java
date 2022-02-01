@@ -15,22 +15,22 @@ class UserManager$1
   
   public void run()
   {
-    Object localObject = this.this$0.a(this.jdField_a_of_type_JavaLangString, true);
+    Object localObject = this.this$0.c(this.a, true);
     if (localObject != null)
     {
-      GetUserInfoHandler.UpdateUserInfoEvent localUpdateUserInfoEvent = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent;
+      GetUserInfoHandler.UpdateUserInfoEvent localUpdateUserInfoEvent = this.b;
       localUpdateUserInfoEvent.a = ((QQUserUIItem)localObject);
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$OnGetUserInfoCallback.a(localUpdateUserInfoEvent);
+      this.c.a(localUpdateUserInfoEvent);
       return;
     }
     localObject = new ArrayList();
-    ((ArrayList)localObject).add(new QQUserUIItem.UserID("", this.jdField_a_of_type_JavaLangString));
-    new GetUserInfoHandler(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$OnGetUserInfoCallback).a(1, (List)localObject);
+    ((ArrayList)localObject).add(new QQUserUIItem.UserID("", this.a));
+    new GetUserInfoHandler(this.c).a(1, (List)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.UserManager.1
  * JD-Core Version:    0.7.0.1
  */

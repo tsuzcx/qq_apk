@@ -15,15 +15,15 @@ class UserInfoModule$1
   {
     if (paramBundle != null)
     {
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, APIParam.a(paramBundle));
+      DoraemonUtil.a(this.a, APIParam.a(paramBundle));
       return;
     }
-    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, 1, "get user info error, try again");
+    DoraemonUtil.a(this.a, 1, "get user info error, try again");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,16 +17,16 @@ class TroopFileDetailBrowserActivity$1
     if (!paramBoolean)
     {
       if ((paramString != null) && (paramString.length() > 0)) {
-        FileManagerUtil.a(paramString);
+        FileManagerUtil.l(paramString);
       }
       return;
     }
-    if (this.a.b != null)
+    if (this.a.g != null)
     {
       if (this.a.app == null) {
         return;
       }
-      if (this.a.b.b() != paramLong)
+      if (this.a.g.e() != paramLong)
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("FileBrowserActivity<FileAssistant>", 4, "difference nSessionId");
@@ -46,7 +46,7 @@ class TroopFileDetailBrowserActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity.1
  * JD-Core Version:    0.7.0.1
  */

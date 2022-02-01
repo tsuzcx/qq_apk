@@ -125,7 +125,7 @@ class b
     }
     else
     {
-      if (!i.a().b())
+      if (!i.a().d())
       {
         if (QLog.isColorLevel()) {
           QLog.d("MSF.S.AppProcessManager", 2, "transportToAppProcess, enableIPCDivideToTransport is false, so trans directly");
@@ -694,7 +694,7 @@ class b
     //   977: iload 7
     //   979: invokevirtual 383	com/tencent/mobileqq/msf/service/c:a	(Ljava/lang/Exception;Z)V
     //   982: invokestatic 186	com/tencent/mobileqq/msf/core/i:a	()Lcom/tencent/mobileqq/msf/core/i;
-    //   985: invokevirtual 385	com/tencent/mobileqq/msf/core/i:g	()Z
+    //   985: invokevirtual 385	com/tencent/mobileqq/msf/core/i:i	()Z
     //   988: istore 6
     //   990: iload 6
     //   992: ifne +10 -> 1002
@@ -847,10 +847,10 @@ class b
     //   1321: invokevirtual 340	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1324: ifeq +48 -> 1372
     //   1327: getstatic 420	com/tencent/mobileqq/msf/service/e:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1330: invokevirtual 426	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   1330: invokevirtual 426	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   1333: ifnull +39 -> 1372
     //   1336: getstatic 420	com/tencent/mobileqq/msf/service/e:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1339: invokevirtual 426	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   1339: invokevirtual 426	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   1342: ldc_w 428
     //   1345: iconst_1
     //   1346: lconst_0
@@ -858,7 +858,7 @@ class b
     //   1348: aconst_null
     //   1349: iconst_1
     //   1350: iconst_0
-    //   1351: invokevirtual 433	com/tencent/mobileqq/msf/core/c/j:a	(Ljava/lang/String;ZJJLjava/util/Map;ZZ)V
+    //   1351: invokevirtual 433	com/tencent/mobileqq/msf/core/d/j:a	(Ljava/lang/String;ZJJLjava/util/Map;ZZ)V
     //   1354: goto +18 -> 1372
     //   1357: invokestatic 128	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1360: ifeq +12 -> 1372
@@ -992,10 +992,10 @@ class b
     //   1654: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1657: invokestatic 168	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1660: getstatic 420	com/tencent/mobileqq/msf/service/e:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1663: invokevirtual 426	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   1663: invokevirtual 426	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   1666: ifnull +41 -> 1707
     //   1669: getstatic 420	com/tencent/mobileqq/msf/service/e:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1672: invokevirtual 426	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   1672: invokevirtual 426	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   1675: ldc_w 504
     //   1678: iconst_0
     //   1679: lconst_0
@@ -1003,9 +1003,9 @@ class b
     //   1681: aload 17
     //   1683: iconst_1
     //   1684: iconst_0
-    //   1685: invokevirtual 433	com/tencent/mobileqq/msf/core/c/j:a	(Ljava/lang/String;ZJJLjava/util/Map;ZZ)V
+    //   1685: invokevirtual 433	com/tencent/mobileqq/msf/core/d/j:a	(Ljava/lang/String;ZJJLjava/util/Map;ZZ)V
     //   1688: getstatic 420	com/tencent/mobileqq/msf/service/e:e	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1691: invokevirtual 426	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   1691: invokevirtual 426	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   1694: ldc_w 506
     //   1697: iconst_0
     //   1698: lconst_0
@@ -1013,7 +1013,7 @@ class b
     //   1700: aload 17
     //   1702: iconst_1
     //   1703: iconst_0
-    //   1704: invokevirtual 433	com/tencent/mobileqq/msf/core/c/j:a	(Ljava/lang/String;ZJJLjava/util/Map;ZZ)V
+    //   1704: invokevirtual 433	com/tencent/mobileqq/msf/core/d/j:a	(Ljava/lang/String;ZJJLjava/util/Map;ZZ)V
     //   1707: aload 13
     //   1709: lconst_0
     //   1710: putfield 437	com/tencent/mobileqq/msf/service/c:d	J
@@ -1030,13 +1030,13 @@ class b
     //   1740: ldc_w 337
     //   1743: invokevirtual 340	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1746: ifeq +22 -> 1768
-    //   1749: invokestatic 511	com/tencent/mobileqq/msf/core/c/e:a	()Lcom/tencent/mobileqq/msf/core/c/e;
-    //   1752: getstatic 516	com/tencent/mobileqq/msf/core/c/e$a:c	Lcom/tencent/mobileqq/msf/core/c/e$a;
+    //   1749: invokestatic 511	com/tencent/mobileqq/msf/core/d/e:a	()Lcom/tencent/mobileqq/msf/core/d/e;
+    //   1752: getstatic 516	com/tencent/mobileqq/msf/core/d/e$a:c	Lcom/tencent/mobileqq/msf/core/d/e$a;
     //   1755: aload 16
     //   1757: getfield 68	com/tencent/mobileqq/msf/sdk/MsfMessagePair:fromServiceMsg	Lcom/tencent/qphone/base/remote/FromServiceMsg;
     //   1760: invokevirtual 84	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
     //   1763: bipush 14
-    //   1765: invokevirtual 519	com/tencent/mobileqq/msf/core/c/e:a	(Lcom/tencent/mobileqq/msf/core/c/e$a;[BI)V
+    //   1765: invokevirtual 519	com/tencent/mobileqq/msf/core/d/e:a	(Lcom/tencent/mobileqq/msf/core/d/e$a;[BI)V
     //   1768: iconst_0
     //   1769: ireturn
     //   1770: astore 14
@@ -1168,7 +1168,7 @@ class b
   
   private void b(MsfMessagePair paramMsfMessagePair)
   {
-    if (i.a().c())
+    if (i.a().e())
     {
       if (a(paramMsfMessagePair.fromServiceMsg.getServiceCmd())) {
         return;
@@ -1339,7 +1339,7 @@ class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.avgame.gameroom.festivalstage.questionoption.QuestionOptionItemView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="45.0dip"
+<RelativeLayout android:id="@id/nqd" android:background="@drawable/dsa" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="56.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="center|top" android:id="@id/nqd" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="5.0dip">
-        <TextView android:textSize="@dimen/aym" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/nqe" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true" />
-    </FrameLayout>
-    <com.tencent.avgame.gameroom.festivalstage.questionoption.OverlappingImgLayout android:layout_gravity="center|right|top" android:id="@id/nqf" android:layout_width="fill_parent" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" />
-</com.tencent.avgame.gameroom.festivalstage.questionoption.QuestionOptionItemView>
+    <TextView android:textSize="17.0dip" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/noq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/nop" android:background="@drawable/iaf" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="18.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

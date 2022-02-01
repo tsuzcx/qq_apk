@@ -73,7 +73,7 @@ public class LastModifySupportDownloader
   public static String getCacheFilePath(String paramString)
   {
     paramString = Utils.Crc64String(paramString);
-    paramString = InitUrlDrawable.a.getCleanFile(paramString);
+    paramString = InitUrlDrawable.b.getCleanFile(paramString);
     if (paramString.exists()) {
       return paramString.getAbsolutePath();
     }
@@ -82,12 +82,12 @@ public class LastModifySupportDownloader
   
   private String getLastModified(String paramString)
   {
-    return CommonDataAdapter.a().a().getSharedPreferences("http_lastmodify", 0).getString(paramString, "");
+    return CommonDataAdapter.a().b().getSharedPreferences("http_lastmodify", 0).getString(paramString, "");
   }
   
   private void saveLastModified(String paramString1, String paramString2)
   {
-    SharedPreferences.Editor localEditor = CommonDataAdapter.a().a().getSharedPreferences("http_lastmodify", 0).edit();
+    SharedPreferences.Editor localEditor = CommonDataAdapter.a().b().getSharedPreferences("http_lastmodify", 0).edit();
     localEditor.putString(paramString1, paramString2);
     localEditor.commit();
   }
@@ -96,7 +96,7 @@ public class LastModifySupportDownloader
   {
     localObject1 = paramDownloadParams.urlStr;
     String str = Utils.Crc64String((String)localObject1);
-    Object localObject3 = InitUrlDrawable.a.getCleanFile(str);
+    Object localObject3 = InitUrlDrawable.b.getCleanFile(str);
     int i;
     if ((localObject3 != null) && (((File)localObject3).exists())) {
       i = 1;
@@ -207,35 +207,35 @@ public class LastModifySupportDownloader
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 164	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   1: getfield 165	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
     //   4: invokestatic 97	com/tencent/image/Utils:Crc64String	(Ljava/lang/String;)Ljava/lang/String;
     //   7: astore_3
-    //   8: getstatic 103	com/tencent/mobileqq/startup/step/InitUrlDrawable:a	Lcom/tencent/mobileqq/transfile/DiskCache;
+    //   8: getstatic 103	com/tencent/mobileqq/startup/step/InitUrlDrawable:b	Lcom/tencent/mobileqq/transfile/DiskCache;
     //   11: aload_3
-    //   12: invokevirtual 367	com/tencent/mobileqq/transfile/DiskCache:edit	(Ljava/lang/String;)Lcom/tencent/mobileqq/transfile/DiskCache$Editor;
+    //   12: invokevirtual 368	com/tencent/mobileqq/transfile/DiskCache:edit	(Ljava/lang/String;)Lcom/tencent/mobileqq/transfile/DiskCache$Editor;
     //   15: astore 6
     //   17: aconst_null
     //   18: astore 5
     //   20: aconst_null
     //   21: astore_3
-    //   22: new 369	java/io/FileOutputStream
+    //   22: new 370	java/io/FileOutputStream
     //   25: dup
     //   26: aload 6
-    //   28: getfield 375	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
+    //   28: getfield 376	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
     //   31: iconst_0
-    //   32: invokespecial 378	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   32: invokespecial 379	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   35: astore 4
     //   37: aload_0
     //   38: aload 4
     //   40: aload_1
     //   41: aload_2
-    //   42: invokevirtual 380	com/tencent/mobileqq/transfile/LastModifySupportDownloader:downloadImage	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
+    //   42: invokevirtual 381	com/tencent/mobileqq/transfile/LastModifySupportDownloader:downloadImage	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
     //   45: pop
     //   46: aload 6
-    //   48: invokevirtual 383	com/tencent/mobileqq/transfile/DiskCache$Editor:commit	()Ljava/io/File;
+    //   48: invokevirtual 384	com/tencent/mobileqq/transfile/DiskCache$Editor:commit	()Ljava/io/File;
     //   51: astore_1
     //   52: aload 4
-    //   54: invokevirtual 384	java/io/OutputStream:close	()V
+    //   54: invokevirtual 385	java/io/OutputStream:close	()V
     //   57: aload_1
     //   58: areturn
     //   59: astore_1
@@ -257,18 +257,18 @@ public class LastModifySupportDownloader
     //   87: astore_3
     //   88: aload 6
     //   90: iconst_0
-    //   91: invokevirtual 387	com/tencent/mobileqq/transfile/DiskCache$Editor:abort	(Z)V
+    //   91: invokevirtual 388	com/tencent/mobileqq/transfile/DiskCache$Editor:abort	(Z)V
     //   94: aload_1
     //   95: astore_3
-    //   96: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   96: invokestatic 258	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   99: ifeq +15 -> 114
     //   102: aload_1
     //   103: astore_3
     //   104: ldc 14
     //   106: iconst_2
-    //   107: ldc_w 389
+    //   107: ldc_w 390
     //   110: aload_2
-    //   111: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   111: invokestatic 393	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   114: aload_1
     //   115: astore_3
     //   116: aload_2
@@ -276,7 +276,7 @@ public class LastModifySupportDownloader
     //   118: aload_3
     //   119: ifnull +7 -> 126
     //   122: aload_3
-    //   123: invokevirtual 384	java/io/OutputStream:close	()V
+    //   123: invokevirtual 385	java/io/OutputStream:close	()V
     //   126: aload_1
     //   127: athrow
     //   128: astore_2
@@ -309,7 +309,7 @@ public class LastModifySupportDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.LastModifySupportDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -12,74 +12,74 @@ public class FilterCategoryItem
   implements Parcelable, Cloneable
 {
   public static final Parcelable.Creator<FilterCategoryItem> CREATOR = new FilterCategoryItem.1();
-  public int a;
   public String a;
-  public ArrayList<String> a;
-  public boolean a;
-  public int b;
   public String b;
-  public boolean b;
-  int c;
   public String c;
   public String d;
-  public String e;
-  public String f;
+  public int e;
+  public int f;
   public String g;
   public String h;
-  public String i;
+  public boolean i;
   public String j;
   public String k;
   public String l;
-  public String m;
+  public boolean m;
   public String n;
   public String o;
   public String p;
+  public String q;
+  public String r;
+  public String s;
+  public String t;
+  int u;
+  public ArrayList<String> v;
   
   public FilterCategoryItem()
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.m = true;
+    this.u = -1;
+    this.v = new ArrayList();
   }
   
   protected FilterCategoryItem(Parcel paramParcel)
   {
     boolean bool2 = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    this.m = true;
+    this.u = -1;
+    this.v = new ArrayList();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readString();
     this.d = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaUtilArrayList = paramParcel.createStringArrayList();
-    this.e = paramParcel.readString();
-    this.f = paramParcel.readString();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readInt();
+    this.v = paramParcel.createStringArrayList();
+    this.g = paramParcel.readString();
+    this.h = paramParcel.readString();
     boolean bool1;
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
-    this.g = paramParcel.readString();
-    this.h = paramParcel.readString();
-    this.i = paramParcel.readString();
+    this.i = bool1;
+    this.j = paramParcel.readString();
+    this.k = paramParcel.readString();
+    this.l = paramParcel.readString();
     if (paramParcel.readInt() == 1) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    this.jdField_b_of_type_Boolean = bool1;
-    this.j = paramParcel.readString();
-    this.k = paramParcel.readString();
-    this.l = paramParcel.readString();
-    this.m = paramParcel.readString();
+    this.m = bool1;
     this.n = paramParcel.readString();
     this.o = paramParcel.readString();
     this.p = paramParcel.readString();
+    this.q = paramParcel.readString();
+    this.r = paramParcel.readString();
+    this.s = paramParcel.readString();
+    this.t = paramParcel.readString();
     paramParcel.readInt();
   }
   
@@ -97,19 +97,19 @@ public class FilterCategoryItem
     return null;
   }
   
-  public FilterDesc a()
+  public boolean b()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localArrayList != null) && (localArrayList.size() > 0)) {
-      return ((ICaptureVideoFilterManager)QRoute.api(ICaptureVideoFilterManager.class)).getFilterDesc((String)this.jdField_a_of_type_JavaUtilArrayList.get(0));
-    }
-    return null;
+    ArrayList localArrayList = this.v;
+    return (localArrayList != null) && (localArrayList.contains("EMPTY"));
   }
   
-  public boolean a()
+  public FilterDesc c()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    return (localArrayList != null) && (localArrayList.contains("EMPTY"));
+    ArrayList localArrayList = this.v;
+    if ((localArrayList != null) && (localArrayList.size() > 0)) {
+      return ((ICaptureVideoFilterManager)QRoute.api(ICaptureVideoFilterManager.class)).getFilterDesc((String)this.v.get(0));
+    }
+    return null;
   }
   
   public int describeContents()
@@ -131,17 +131,17 @@ public class FilterCategoryItem
   
   public int hashCode()
   {
-    return this.jdField_a_of_type_JavaLangString.intern().hashCode();
+    return this.a.intern().hashCode();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("FilterCategoryItem{id='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", name='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();

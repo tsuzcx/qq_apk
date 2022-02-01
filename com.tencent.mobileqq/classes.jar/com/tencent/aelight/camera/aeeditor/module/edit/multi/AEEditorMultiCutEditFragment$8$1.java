@@ -11,12 +11,12 @@ class AEEditorMultiCutEditFragment$8$1
   
   public void onDismiss()
   {
-    ThreadManager.getUIHandler().removeCallbacks(AEEditorMultiCutEditFragment.a(this.a.this$0));
+    ThreadManager.getUIHandler().removeCallbacks(AEEditorMultiCutEditFragment.q(this.a.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.8.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,13 +18,13 @@ class FrameControllerInjectImpl$3
   
   public boolean onLongClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.a() == FrameControllerUtil.a)
+    if (this.a.w() == FrameControllerUtil.a)
     {
       if (QLog.isColorLevel()) {
         QLog.d("FrameControllerInjectImpl", 2, "Mainfragment onLongClick");
       }
-      long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.b;
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.b > 0L) && (l < 1000L))
+      long l = SystemClock.uptimeMillis() - this.a.S;
+      if ((this.a.S > 0L) && (l < 1000L))
       {
         paramView = new StringBuilder();
         paramView.append("Mainfragment onLongClick interval = [");
@@ -33,12 +33,12 @@ class FrameControllerInjectImpl$3
         QLog.d("FrameControllerInjectImpl", 1, paramView.toString());
         return false;
       }
-      paramView = (Conversation)this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.a(Conversation.class);
+      paramView = (Conversation)this.a.a(Conversation.class);
       if (paramView != null)
       {
-        paramView = paramView.a().a();
+        paramView = paramView.K().k();
         if (paramView != null) {
-          MultiAIOStarter.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.a(), paramView.getRecentUserUin(), paramView.getRecentUserType(), paramView.getTitleName(), "conversation_tab_bottom");
+          MultiAIOStarter.a(this.a.C(), paramView.getRecentUserUin(), paramView.getRecentUserType(), paramView.getTitleName(), "conversation_tab_bottom");
         }
       }
     }
@@ -47,7 +47,7 @@ class FrameControllerInjectImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.controllerinject.FrameControllerInjectImpl.3
  * JD-Core Version:    0.7.0.1
  */

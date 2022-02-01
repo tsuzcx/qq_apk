@@ -22,6 +22,8 @@ public abstract interface IQQFloatingWindow
   
   public abstract int enterWatchTogetherFloatingScreen(Context paramContext, View paramView, FloatingScreenParams paramFloatingScreenParams, String paramString);
   
+  public abstract FloatingBaseProxyWrapper getFloatingProxyWrapper(Context paramContext, String paramString);
+  
   public abstract void quitFloatingScreen();
   
   public abstract void quitFloatingScreen(String paramString);
@@ -39,13 +41,17 @@ public abstract interface IQQFloatingWindow
   
   public abstract void setWindowClickListener(String paramString, IWindowClickListener paramIWindowClickListener);
   
+  public abstract void updateFloatingWindowLocation(int paramInt1, int paramInt2, String paramString);
+  
   public abstract void updateFloatingWindowRatio(float paramFloat, String paramString);
   
   public abstract void updateFloatingWindowShape(int paramInt, String paramString);
+  
+  public abstract void updateFloatingWindowSize(int paramInt1, int paramInt2, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindow
  * JD-Core Version:    0.7.0.1
  */

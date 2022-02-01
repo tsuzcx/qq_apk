@@ -27,10 +27,10 @@ class CreateFaceToFaceDiscussionActivity$6
       {
         this.a.digits.delete(0, this.a.digits.length());
         this.a.mNumberViewLayout.setContentDescription(this.a.getDescription());
-        this.a.mDigitViewOne.setImageResource(2130845242);
-        this.a.mDigitViewTwo.setImageResource(2130845242);
-        this.a.mDigitViewThree.setImageResource(2130845242);
-        this.a.mDigitViewFour.setImageResource(2130845242);
+        this.a.mDigitViewOne.setImageResource(2130846684);
+        this.a.mDigitViewTwo.setImageResource(2130846684);
+        this.a.mDigitViewThree.setImageResource(2130846684);
+        this.a.mDigitViewFour.setImageResource(2130846684);
         this.a.mDigitOne.setEnabled(true);
         this.a.mDigitTwo.setEnabled(true);
         this.a.mDigitThree.setEnabled(true);
@@ -45,13 +45,13 @@ class CreateFaceToFaceDiscussionActivity$6
       }
     }
     else if (2 == paramMessage.what) {
-      QQToast.a(BaseApplicationImpl.getContext(), paramMessage.arg1, paramMessage.arg2, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), paramMessage.arg1, paramMessage.arg2, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.6
  * JD-Core Version:    0.7.0.1
  */

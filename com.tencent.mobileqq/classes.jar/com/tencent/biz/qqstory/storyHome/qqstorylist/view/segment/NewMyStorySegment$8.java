@@ -15,15 +15,15 @@ class NewMyStorySegment$8
   
   public void run()
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.a;
     NewMyStorySegment localNewMyStorySegment = this.this$0;
-    localTextView.setText(NewMyStorySegment.a(localNewMyStorySegment, NewMyStorySegment.a(localNewMyStorySegment), this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - UIUtils.a(NewMyStorySegment.a(this.this$0), 70.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaint()));
-    if (NewMyStorySegment.a(this.this$0).f > 0)
+    localTextView.setText(NewMyStorySegment.a(localNewMyStorySegment, NewMyStorySegment.b(localNewMyStorySegment), this.b.getWidth() - this.c.getWidth() - UIUtils.a(NewMyStorySegment.c(this.this$0), 70.0F), this.a.getPaint()));
+    if (NewMyStorySegment.b(this.this$0).q > 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-65536);
+      this.a.setTextColor(-65536);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(NewMyStorySegment.b(this.this$0).getResources().getColor(2131167152));
+    this.a.setTextColor(NewMyStorySegment.d(this.this$0).getResources().getColor(2131168133));
   }
 }
 

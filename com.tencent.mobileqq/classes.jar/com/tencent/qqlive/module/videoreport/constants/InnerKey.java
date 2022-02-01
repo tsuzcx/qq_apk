@@ -13,6 +13,8 @@ public class InnerKey
   public static final String ELEMENT_IDENTIFIER = "element_identifier";
   @Deprecated
   public static final String ELEMENT_REPORT_POLICY = "element_report_policy";
+  public static final String ELEMENT_SCROLL_END_EXPOSE_POLICY = "element_scroll_end_expose_policy";
+  public static final String ELEMENT_SCROLL_EXPOSE_POLICY = "element_scroll_expose_policy";
   public static final String LAST_CLICK_ELEMENT = "last_click_element";
   public static final String LOGIC_PARENT = "logic_parent";
   public static final String PAGE_BODY_INFO = "page_body_info";
@@ -23,7 +25,7 @@ public class InnerKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.constants.InnerKey
  * JD-Core Version:    0.7.0.1
  */

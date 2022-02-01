@@ -12,27 +12,27 @@ class ObserverCenter$1
   public void run()
   {
     long l;
-    if ((UnifiedMonitor.a().whetherReportDuringThisStartup(1)) && (this.jdField_a_of_type_ComTencentAvgameBusinessObserverWrapperHandler == ObserverCenter.a(this.this$0))) {
+    if ((UnifiedMonitor.a().whetherReportDuringThisStartup(1)) && (this.c == ObserverCenter.a(this.this$0))) {
       l = SystemClock.uptimeMillis();
     } else {
       l = 0L;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.onUpdate(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
-    if ((UnifiedMonitor.a().whetherReportDuringThisStartup(1)) && (this.jdField_a_of_type_ComTencentAvgameBusinessObserverWrapperHandler == ObserverCenter.a(this.this$0)))
+    this.a.onUpdate(this.b, this.d, this.e);
+    if ((UnifiedMonitor.a().whetherReportDuringThisStartup(1)) && (this.c == ObserverCenter.a(this.this$0)))
     {
       l = SystemClock.uptimeMillis() - l;
-      if (ObserverCenter.a() == -1) {
-        ObserverCenter.a(UnifiedMonitor.a().getThreshold(1));
+      if (ObserverCenter.c() == -1) {
+        ObserverCenter.b(UnifiedMonitor.a().getThreshold(1));
       }
-      if (l > ObserverCenter.a())
+      if (l > ObserverCenter.c())
       {
         if (UnifiedMonitor.a().whetherReportThisTime(1)) {
-          UnifiedMonitor.a().addEvent(1, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.getClass().getName(), (int)l, ObserverCenter.b(), null);
+          UnifiedMonitor.a().addEvent(1, this.a.getClass().getName(), (int)l, ObserverCenter.d(), null);
         }
-        ObserverCenter.b(0);
+        ObserverCenter.c(0);
         return;
       }
-      ObserverCenter.c();
+      ObserverCenter.e();
     }
   }
 }

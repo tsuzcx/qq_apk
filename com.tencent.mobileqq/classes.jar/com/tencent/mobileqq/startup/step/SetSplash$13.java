@@ -14,7 +14,7 @@ final class SetSplash$13
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i > 0) {
       i = (int)(i * f);
     } else {
@@ -22,18 +22,18 @@ final class SetSplash$13
     }
     int j = this.b;
     int k = (int)((j - this.c) * f);
-    paramValueAnimator = new Rect(0, i, this.jdField_a_of_type_AndroidViewView.getRight(), j - k + i);
-    ViewCompat.setClipBounds(this.jdField_a_of_type_AndroidViewView, paramValueAnimator);
-    if ((f > 0.6D) && (!SetSplash.d()))
+    paramValueAnimator = new Rect(0, i, this.d.getRight(), j - k + i);
+    ViewCompat.setClipBounds(this.d, paramValueAnimator);
+    if ((f > 0.6D) && (!SetSplash.g()))
     {
       SetSplash.a(true);
-      SetSplash.b(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqStartupStepSetSplash$SplashAnimListener);
+      SetSplash.b(this.d, this.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.SetSplash.13
  * JD-Core Version:    0.7.0.1
  */

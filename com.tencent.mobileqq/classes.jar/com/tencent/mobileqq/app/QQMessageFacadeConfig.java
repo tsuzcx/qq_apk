@@ -68,6 +68,7 @@ import com.tencent.imcore.message.decoder.PokeMsgDecoder;
 import com.tencent.imcore.message.decoder.PttMsgDecoder;
 import com.tencent.imcore.message.decoder.PublicAccountMsgDecoder;
 import com.tencent.imcore.message.decoder.QQStoryMsgDecoder;
+import com.tencent.imcore.message.decoder.ReminderMsgDecoder;
 import com.tencent.imcore.message.decoder.SecretaryMsgDecoder;
 import com.tencent.imcore.message.decoder.ShakeWindowMsgDecoder;
 import com.tencent.imcore.message.decoder.StickerMsgDecoder;
@@ -86,6 +87,7 @@ import com.tencent.imcore.message.ext.codec.LbsGetAioList;
 import com.tencent.imcore.message.ext.codec.PaiYiPaiGetAioList;
 import com.tencent.imcore.message.ext.codec.PublicAccountGetAioList;
 import com.tencent.imcore.message.ext.codec.UinType4UnreadMsgNumCallback;
+import com.tencent.imcore.message.ext.codec.decoder.pbelement.AniStickerElemDecoder;
 import com.tencent.imcore.message.ext.codec.decoder.pbelement.ArkAppElemDecoder;
 import com.tencent.imcore.message.ext.codec.decoder.pbelement.ArkBabyQReplyElemDecoder;
 import com.tencent.imcore.message.ext.codec.decoder.pbelement.ArkSdkElemDecoder;
@@ -101,6 +103,7 @@ import com.tencent.imcore.message.ext.codec.decoder.pbelement.GameInterCommElemD
 import com.tencent.imcore.message.ext.codec.decoder.pbelement.GeneralFlagsElemDecoder;
 import com.tencent.imcore.message.ext.codec.decoder.pbelement.GoldMsgElemDecoder;
 import com.tencent.imcore.message.ext.codec.decoder.pbelement.GroupFileElemDecoder;
+import com.tencent.imcore.message.ext.codec.decoder.pbelement.GuildSysMsgElemDecoder;
 import com.tencent.imcore.message.ext.codec.decoder.pbelement.LifeOnlineElemDecoder;
 import com.tencent.imcore.message.ext.codec.decoder.pbelement.LimitChatConfirmElemDecoder;
 import com.tencent.imcore.message.ext.codec.decoder.pbelement.MarketFaceElemDecoder;
@@ -137,10 +140,10 @@ import com.tencent.imcore.message.ext.codec.routingtype.ContactRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.DisRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.DisTmpRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.FriendValidationRoutingType;
-import com.tencent.imcore.message.ext.codec.routingtype.GameBuddyRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.GrpRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.GrpTmpRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.HotchatTopicRoutingType;
+import com.tencent.imcore.message.ext.codec.routingtype.KanDianMsgTmpRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.LBSFriendRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.MatchCampusChatTmpRoutingType;
 import com.tencent.imcore.message.ext.codec.routingtype.MatchChatTmpRoutingType;
@@ -210,6 +213,7 @@ import com.tencent.mobileqq.app.richtext.BabyQReplyRichTextAndMsgViaProvider;
 import com.tencent.mobileqq.app.richtext.FlashChatRichTextAndMsgViaProvider;
 import com.tencent.mobileqq.app.richtext.HiboomRichTextAndMsgViaProvider;
 import com.tencent.mobileqq.app.richtext.LimitChatConfirmRichTextAndMsgViaProvider;
+import com.tencent.mobileqq.app.richtext.MediaAniStickerRichTextAndMsgViaProvider;
 import com.tencent.mobileqq.app.richtext.MediaMarkfaceRichTextAndMsgViaProvider;
 import com.tencent.mobileqq.app.richtext.MediaPicRichTextAndMsgViaProvider;
 import com.tencent.mobileqq.app.richtext.MediaPttRichTextAndMsgViaProvider;
@@ -242,6 +246,10 @@ import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtilCallback;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
 import com.tencent.mobileqq.graytip.UniteGrayTipParamCallback;
+import com.tencent.mobileqq.guild.message.api.IGuildMessageCallbackApi;
+import com.tencent.mobileqq.guild.message.base.IGuildMessageCallback;
+import com.tencent.mobileqq.guild.temp.api.GuildManagerProvider;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageCacheCallback;
@@ -336,11 +344,19 @@ public class QQMessageFacadeConfig
     MessageHandlerUtils.a(new MessageHandlerUtilsCallback());
     TroopMessageProcessor.a(new TroopMessageProcessorCallback());
     C2CMessageManager.a(new C2CMessageManagerCallback());
+    ((IGuildMessageCallbackApi)QRoute.api(IGuildMessageCallbackApi.class)).setMsgProxyCallback(new MsgProxyUtilsCallback());
+    ((IGuildMessageCallbackApi)QRoute.api(IGuildMessageCallbackApi.class)).setGuildRoamMessageProcessorCallback((IGuildMessageCallback)GuildManagerProvider.c());
+    ((IGuildMessageCallbackApi)QRoute.api(IGuildMessageCallbackApi.class)).setGuildOfflineMessageProcessorCallback((IGuildMessageCallback)GuildManagerProvider.d());
+    ((IGuildMessageCallbackApi)QRoute.api(IGuildMessageCallbackApi.class)).setGuildPushMessageProcessorCallback((IGuildMessageCallback)GuildManagerProvider.e());
+    ((IGuildMessageCallbackApi)QRoute.api(IGuildMessageCallbackApi.class)).setGuildMessageManagerCallback((IGuildMessageCallback)GuildManagerProvider.f());
+    ((IGuildMessageCallbackApi)QRoute.api(IGuildMessageCallbackApi.class)).setGuildSystemMessageProcessorCallback((IGuildMessageCallback)GuildManagerProvider.g());
+    ((IGuildMessageCallbackApi)QRoute.api(IGuildMessageCallbackApi.class)).setGuildGuestMessageProcessorCallback((IGuildMessageCallback)GuildManagerProvider.h());
+    ((IGuildMessageCallbackApi)QRoute.api(IGuildMessageCallbackApi.class)).setGuildRoamMessageEventFlowProcessorCallback((IGuildMessageCallback)GuildManagerProvider.i());
   }
   
   private void registerAddMessageHandler(Registry paramRegistry)
   {
-    paramRegistry = paramRegistry.a();
+    paramRegistry = paramRegistry.q();
     paramRegistry.a(UniteGrayTipAddMessageHandler.class);
     paramRegistry.a(StructingAddMessageHandler.class);
     paramRegistry.a(CommonAddMessageHandler.class);
@@ -350,7 +366,7 @@ public class QQMessageFacadeConfig
   
   private void registerAioMsgHandler(Registry paramRegistry)
   {
-    paramRegistry = paramRegistry.a();
+    paramRegistry = paramRegistry.s();
     paramRegistry.a(ArkAioMsgHandler.class);
     paramRegistry.a(TofuMsgHandler.class);
     paramRegistry.a(ChatAioMsgHandler.class);
@@ -377,7 +393,7 @@ public class QQMessageFacadeConfig
   
   private void registerC2CAddMessageHandler(Registry paramRegistry)
   {
-    paramRegistry = paramRegistry.a();
+    paramRegistry = paramRegistry.u();
     paramRegistry.a(C2CTroopVideoAddMessageHandler.class);
     paramRegistry.a(C2CPaAdAddMessageHandler.class);
     paramRegistry.a(C2CIMaxAdAccountAddMessageHandler.class);
@@ -415,7 +431,7 @@ public class QQMessageFacadeConfig
   
   private void registerGeneralFlagProvider(Registry paramRegistry)
   {
-    paramRegistry = paramRegistry.a();
+    paramRegistry = paramRegistry.y();
     paramRegistry.a(BubbleMsgGeneralFlagProvider.class);
     paramRegistry.a(RedBagGeneralFlagProvider.class);
     paramRegistry.a(StickerMsgGeneralFlagProvider.class);
@@ -438,7 +454,7 @@ public class QQMessageFacadeConfig
   
   private void registerGetAioListCallback(Registry paramRegistry)
   {
-    paramRegistry = paramRegistry.a();
+    paramRegistry = paramRegistry.l();
     paramRegistry.a(LbsGetAioList.class);
     paramRegistry.a(PublicAccountGetAioList.class);
     paramRegistry.a(PaiYiPaiGetAioList.class);
@@ -446,11 +462,12 @@ public class QQMessageFacadeConfig
   
   private void registerMessageDecoder(Registry paramRegistry)
   {
-    paramRegistry = paramRegistry.a();
+    paramRegistry = paramRegistry.o();
     paramRegistry.a(SecretaryMsgDecoder.class);
     paramRegistry.a(SystemStructMsgDecoder.class);
     paramRegistry.a(StructMsgDecoder.class);
     paramRegistry.a(ActiveFriendsMsgDecoder.class);
+    paramRegistry.a(ReminderMsgDecoder.class);
     paramRegistry.a(TextMsgDecoder.class);
     paramRegistry.a(PokeMsgDecoder.class);
     paramRegistry.a(PokeEmoMsgDecoder.class);
@@ -518,12 +535,12 @@ public class QQMessageFacadeConfig
   
   private void registerMessageSummary(Registry paramRegistry)
   {
-    paramRegistry.a().a(WriteTogetherMessageSummaryCallback.class);
+    paramRegistry.g().a(WriteTogetherMessageSummaryCallback.class);
   }
   
   private void registerMsgBoxAppender(Registry paramRegistry)
   {
-    paramRegistry = paramRegistry.a();
+    paramRegistry = paramRegistry.w();
     paramRegistry.a(SameStateMsgBoxAppender.class);
     paramRegistry.a(LbsHelloMsgBoxAppender.class);
     paramRegistry.a(LbsFriendMsgBoxAppender.class);
@@ -538,7 +555,7 @@ public class QQMessageFacadeConfig
   
   private void registerPbSendReqHandler(Registry paramRegistry)
   {
-    paramRegistry = paramRegistry.a();
+    paramRegistry = paramRegistry.A();
     paramRegistry.a(RedBagPbSendReqHandler.class);
     paramRegistry.a(AnonymousMsgPbSendReqHandler.class);
     paramRegistry.a(ClearingMsgPbSendReqHandler.class);
@@ -552,7 +569,7 @@ public class QQMessageFacadeConfig
   
   private void registerRichTextAndMsgViaProvider(Registry paramRegistry)
   {
-    paramRegistry = paramRegistry.a();
+    paramRegistry = paramRegistry.C();
     paramRegistry.a(TextMsgRichTextAndMsgViaProvider.class);
     paramRegistry.a(ReplyTextMsgRichTextAndMsgViaProvider.class);
     paramRegistry.a(TroopWantGiftMsgRichTextAndMsgViaProvider.class);
@@ -577,6 +594,7 @@ public class QQMessageFacadeConfig
     paramRegistry.a(BabyQReplyRichTextAndMsgViaProvider.class);
     paramRegistry.a(ArkSDKShakeRichTextAndMsgViaProvider.class);
     paramRegistry.a(LimitChatConfirmRichTextAndMsgViaProvider.class);
+    paramRegistry.a(MediaAniStickerRichTextAndMsgViaProvider.class);
   }
   
   private void registerRoutingType(Registry paramRegistry)
@@ -610,13 +628,13 @@ public class QQMessageFacadeConfig
     paramRegistry.a(Integer.valueOf(30), MatchCampusChatTmpRoutingType.class);
     paramRegistry.a(Integer.valueOf(31), QQGameMsgTmpRoutingType.class);
     paramRegistry.a(Integer.valueOf(32), QQCircleMsgTmpRoutingType.class);
-    paramRegistry.a(Integer.valueOf(33), GameBuddyRoutingType.class);
-    paramRegistry.a(Integer.valueOf(34), AudioRoomMsgTmpRoutingType.class);
+    paramRegistry.a(Integer.valueOf(33), AudioRoomMsgTmpRoutingType.class);
+    paramRegistry.a(Integer.valueOf(34), KanDianMsgTmpRoutingType.class);
   }
   
   private void registerUnreadMsgNumCallback(Registry paramRegistry)
   {
-    paramRegistry = paramRegistry.a();
+    paramRegistry = paramRegistry.k();
     paramRegistry.a(TroopUnreadMsgNumCallback.class);
     paramRegistry.a(MsgBoxGetUnreadMsgNumCallback.class);
     paramRegistry.a(UinType4UnreadMsgNumCallback.class);
@@ -665,11 +683,13 @@ public class QQMessageFacadeConfig
     paramRegistry.a(GameInterCommElemDecoder.class);
     paramRegistry.a(WriteTogetherElemDecoder.class);
     paramRegistry.a(DavBubbleElemDecoder.class);
+    paramRegistry.a(GuildSysMsgElemDecoder.class);
+    paramRegistry.a(AniStickerElemDecoder.class);
   }
   
   protected void registerUinTypeRoutingType(Registry paramRegistry)
   {
-    paramRegistry = paramRegistry.a();
+    paramRegistry = paramRegistry.b();
     paramRegistry.a(0, 1);
     paramRegistry.a(1000, 3);
     paramRegistry.a(10004, 24);
@@ -698,14 +718,14 @@ public class QQMessageFacadeConfig
     paramRegistry.a(1045, 30);
     paramRegistry.a(10007, 31);
     paramRegistry.a(10008, 32);
-    paramRegistry.a(10009, 33);
-    paramRegistry.a(10010, 34);
+    paramRegistry.a(10010, 33);
+    paramRegistry.a(10013, 34);
   }
   
   public void start()
   {
-    Registry localRegistry = this.mFacade.a();
-    C2CMessageDecoderGenerator localC2CMessageDecoderGenerator = localRegistry.a();
+    Registry localRegistry = this.mFacade.c();
+    C2CMessageDecoderGenerator localC2CMessageDecoderGenerator = localRegistry.i();
     localC2CMessageDecoderGenerator.a(Integer.valueOf(734), SharpVideoDecoder.class);
     localC2CMessageDecoderGenerator.a(Integer.valueOf(193), VideoDecoder.class);
     localC2CMessageDecoderGenerator.a(Integer.valueOf(562), VideoQCallDecoder.class);
@@ -763,7 +783,7 @@ public class QQMessageFacadeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQMessageFacadeConfig
  * JD-Core Version:    0.7.0.1
  */

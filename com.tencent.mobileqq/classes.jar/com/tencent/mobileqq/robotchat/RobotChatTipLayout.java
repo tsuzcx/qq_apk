@@ -24,9 +24,9 @@ public class RobotChatTipLayout
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WeakReference<RobotChatTipLayout.RobotChatTipLayoutListener> jdField_a_of_type_JavaLangRefWeakReference;
+  private TextView a;
+  private ImageView b;
+  private WeakReference<RobotChatTipLayout.RobotChatTipLayoutListener> c;
   
   public RobotChatTipLayout(Context paramContext)
   {
@@ -35,18 +35,18 @@ public class RobotChatTipLayout
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.a = null;
+    this.c = null;
   }
   
   public void a(RobotChatTipLayout.RobotChatTipLayoutListener paramRobotChatTipLayoutListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramRobotChatTipLayoutListener);
-    LayoutInflater.from(getContext()).inflate(2131561529, this);
+    this.c = new WeakReference(paramRobotChatTipLayoutListener);
+    LayoutInflater.from(getContext()).inflate(2131627890, this);
     setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379920));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369319));
-    paramRobotChatTipLayoutListener = this.jdField_a_of_type_AndroidWidgetImageView;
+    this.a = ((TextView)findViewById(2131448801));
+    this.b = ((ImageView)findViewById(2131436318));
+    paramRobotChatTipLayoutListener = this.b;
     if (paramRobotChatTipLayoutListener != null) {
       paramRobotChatTipLayoutListener.setOnClickListener(this);
     }
@@ -58,14 +58,14 @@ public class RobotChatTipLayout
     else
     {
       setBackgroundColor(-5066062);
-      findViewById(2131369343).setBackgroundColor(-10197916);
+      findViewById(2131436349).setBackgroundColor(-10197916);
     }
     setVisibility(8);
   }
   
   public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.c;
     if (localObject != null)
     {
       localObject = (RobotChatTipLayout.RobotChatTipLayoutListener)((WeakReference)localObject).get();
@@ -80,7 +80,7 @@ public class RobotChatTipLayout
   {
     Object localObject1 = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      localObject1 = getResources().getString(2131718358);
+      localObject1 = getResources().getString(2131915850);
     }
     Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
     String str = null;
@@ -109,7 +109,7 @@ public class RobotChatTipLayout
     }
     str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = getResources().getString(2131718356);
+      str = getResources().getString(2131915848);
     }
     paramString = String.format(str, new Object[] { localObject1 });
     if (!TextUtils.isEmpty((CharSequence)localObject1))
@@ -123,7 +123,7 @@ public class RobotChatTipLayout
       }
       paramString = new SpannableString(paramString);
       paramString.setSpan(new ForegroundColorSpan(-11692801), i, ((String)localObject1).length() + i, 33);
-      localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject1 = this.a;
       if (localObject1 != null) {
         ((TextView)localObject1).setText(paramString);
       }
@@ -133,7 +133,7 @@ public class RobotChatTipLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.robotchat.RobotChatTipLayout
  * JD-Core Version:    0.7.0.1
  */

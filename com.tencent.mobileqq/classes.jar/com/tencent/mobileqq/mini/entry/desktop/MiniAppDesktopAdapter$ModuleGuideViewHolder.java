@@ -15,8 +15,8 @@ public class MiniAppDesktopAdapter$ModuleGuideViewHolder
   public MiniAppDesktopAdapter$ModuleGuideViewHolder(View paramView)
   {
     super(paramView);
-    this.emptyGuideLayout = ((RelativeLayout)paramView.findViewById(2131371084));
-    this.emptyGuideTextView = ((TextView)paramView.findViewById(2131371085));
+    this.emptyGuideLayout = ((RelativeLayout)paramView.findViewById(2131438425));
+    this.emptyGuideTextView = ((TextView)paramView.findViewById(2131438426));
   }
   
   public void update()
@@ -25,14 +25,14 @@ public class MiniAppDesktopAdapter$ModuleGuideViewHolder
     {
       RelativeLayout localRelativeLayout = this.emptyGuideLayout;
       if (localRelativeLayout != null) {
-        localRelativeLayout.setBackgroundResource(2130841022);
+        localRelativeLayout.setBackgroundResource(2130841813);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.ModuleGuideViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ public class VideoChannelProxy
   implements VideoChannelCallback
 {
   protected Context a;
-  protected VideoChannelInterface a;
+  protected VideoChannelInterface b;
   
   public VideoChannelProxy(Context paramContext, VideoChannelInterface paramVideoChannelInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface = paramVideoChannelInterface;
-    this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface.a(this);
+    this.a = paramContext;
+    this.b = paramVideoChannelInterface;
+    this.b.a(this);
   }
   
   private byte[] a(Bundle paramBundle)
@@ -50,12 +50,12 @@ public class VideoChannelProxy
   
   public void receiveVideoConfig(Bundle paramBundle)
   {
-    ConfigSystemImpl.a(String.valueOf(AppSetting.a()), this.jdField_a_of_type_AndroidContentContext, a(paramBundle));
+    ConfigSystemImpl.a(String.valueOf(AppSetting.d()), this.a, a(paramBundle));
   }
   
   public void sendGetGatewayMsg()
   {
-    VideoChannelInterface localVideoChannelInterface = this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface;
+    VideoChannelInterface localVideoChannelInterface = this.b;
     if (localVideoChannelInterface != null) {
       localVideoChannelInterface.sendGetGatewayMsg();
     }
@@ -65,7 +65,7 @@ public class VideoChannelProxy
   
   public void sendMultiVideoMsg(long paramLong1, long paramLong2, byte[] paramArrayOfByte)
   {
-    VideoChannelInterface localVideoChannelInterface = this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface;
+    VideoChannelInterface localVideoChannelInterface = this.b;
     if (localVideoChannelInterface != null) {
       localVideoChannelInterface.sendMultiVideoMsg(paramLong1, paramLong2, paramArrayOfByte);
     }
@@ -75,7 +75,7 @@ public class VideoChannelProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.channel.VideoChannelProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,17 @@ final class ViolaUiDelegate$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_AndroidContentContext;
+    paramDialogInterface = this.a;
     if (paramDialogInterface != null)
     {
-      ((ClipboardManager)paramDialogInterface.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, this.jdField_a_of_type_JavaLangString));
+      ((ClipboardManager)paramDialogInterface.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, this.b));
       com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModule.ssoTimeOutRecordStr = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.delegate.ViolaUiDelegate.3
  * JD-Core Version:    0.7.0.1
  */

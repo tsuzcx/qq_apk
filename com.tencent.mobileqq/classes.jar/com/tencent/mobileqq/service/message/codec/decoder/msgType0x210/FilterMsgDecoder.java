@@ -54,12 +54,12 @@ public class FilterMsgDecoder
   
   public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext, MessageHandler paramMessageHandler)
   {
-    a(paramMessageHandler.a, paramMsgType0x210.msg_content.get().toByteArray());
+    a(paramMessageHandler.n, paramMsgType0x210.msg_content.get().toByteArray());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.FilterMsgDecoder
  * JD-Core Version:    0.7.0.1
  */

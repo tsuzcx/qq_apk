@@ -26,10 +26,10 @@ public class ForwardH5HongBaoOption
   extends ForwardBaseOption
 {
   private JSONObject a;
-  private List<Integer> b;
-  private String h;
-  private String i;
-  private String j;
+  private List<Integer> ad;
+  private String ae;
+  private String af;
+  private String ag;
   
   /* Error */
   public ForwardH5HongBaoOption(Intent paramIntent)
@@ -42,10 +42,10 @@ public class ForwardH5HongBaoOption
     //   6: new 23	java/util/ArrayList
     //   9: dup
     //   10: invokespecial 26	java/util/ArrayList:<init>	()V
-    //   13: putfield 28	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   13: putfield 28	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:ad	Ljava/util/List;
     //   16: aload_0
     //   17: aconst_null
-    //   18: putfield 30	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:i	Ljava/lang/String;
+    //   18: putfield 30	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:af	Ljava/lang/String;
     //   21: aload_0
     //   22: new 32	org/json/JSONObject
     //   25: dup
@@ -53,9 +53,9 @@ public class ForwardH5HongBaoOption
     //   27: ldc 34
     //   29: invokevirtual 40	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   32: invokespecial 43	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   35: putfield 45	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   35: putfield 45	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:a	Lorg/json/JSONObject;
     //   38: aload_0
-    //   39: getfield 45	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   39: getfield 45	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:a	Lorg/json/JSONObject;
     //   42: ldc 47
     //   44: invokevirtual 50	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   47: astore_1
@@ -63,99 +63,99 @@ public class ForwardH5HongBaoOption
     //   49: invokestatic 56	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   52: ifne +90 -> 142
     //   55: aload_0
-    //   56: getfield 59	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   56: getfield 60	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:q	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   59: ifnull +83 -> 142
     //   62: aload_1
     //   63: aload_0
-    //   64: getfield 59	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   67: invokevirtual 65	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   70: invokevirtual 71	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   64: getfield 60	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:q	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   67: invokevirtual 66	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   70: invokevirtual 72	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   73: ifne +69 -> 142
     //   76: new 36	android/content/Intent
     //   79: dup
-    //   80: invokespecial 72	android/content/Intent:<init>	()V
+    //   80: invokespecial 73	android/content/Intent:<init>	()V
     //   83: astore_1
     //   84: new 32	org/json/JSONObject
     //   87: dup
-    //   88: invokespecial 73	org/json/JSONObject:<init>	()V
+    //   88: invokespecial 74	org/json/JSONObject:<init>	()V
     //   91: astore 5
     //   93: aload 5
-    //   95: ldc 75
-    //   97: ldc 77
-    //   99: invokevirtual 81	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   95: ldc 76
+    //   97: ldc 78
+    //   99: invokevirtual 82	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   102: pop
     //   103: aload 5
-    //   105: ldc 83
-    //   107: ldc 85
-    //   109: invokevirtual 81	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   105: ldc 84
+    //   107: ldc 86
+    //   109: invokevirtual 82	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   112: pop
     //   113: aload_1
-    //   114: ldc 87
+    //   114: ldc 88
     //   116: aload 5
-    //   118: invokevirtual 90	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   121: invokevirtual 94	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   118: invokevirtual 91	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   121: invokevirtual 95	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   124: pop
     //   125: aload_0
-    //   126: getfield 97	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   126: getfield 99	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:s	Landroid/app/Activity;
     //   129: iconst_m1
     //   130: aload_1
-    //   131: invokevirtual 103	android/app/Activity:setResult	(ILandroid/content/Intent;)V
+    //   131: invokevirtual 105	android/app/Activity:setResult	(ILandroid/content/Intent;)V
     //   134: aload_0
-    //   135: getfield 97	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   138: invokevirtual 106	android/app/Activity:finish	()V
+    //   135: getfield 99	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:s	Landroid/app/Activity;
+    //   138: invokevirtual 108	android/app/Activity:finish	()V
     //   141: return
-    //   142: ldc 108
+    //   142: ldc 110
     //   144: astore_1
     //   145: aload_0
-    //   146: getfield 45	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   149: ldc 110
+    //   146: getfield 45	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:a	Lorg/json/JSONObject;
+    //   149: ldc 112
     //   151: invokevirtual 50	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   154: astore 6
     //   156: aload_0
-    //   157: getfield 45	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   160: ldc 112
-    //   162: invokevirtual 116	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   157: getfield 45	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:a	Lorg/json/JSONObject;
+    //   160: ldc 114
+    //   162: invokevirtual 118	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   165: astore 5
     //   167: aload 6
-    //   169: ldc 118
-    //   171: invokevirtual 71	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   169: ldc 120
+    //   171: invokevirtual 72	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   174: istore 4
     //   176: iload 4
     //   178: ifeq +30 -> 208
     //   181: aload 5
     //   183: ifnull +60 -> 243
     //   186: aload 5
-    //   188: ldc 120
+    //   188: ldc 122
     //   190: invokevirtual 50	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   193: astore_1
     //   194: aload_0
     //   195: aload 5
-    //   197: ldc 122
+    //   197: ldc 124
     //   199: invokevirtual 50	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   202: putfield 30	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:i	Ljava/lang/String;
+    //   202: putfield 30	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:af	Ljava/lang/String;
     //   205: goto +38 -> 243
     //   208: aload_0
-    //   209: getfield 45	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   212: ldc 124
-    //   214: invokevirtual 116	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   209: getfield 45	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:a	Lorg/json/JSONObject;
+    //   212: ldc 126
+    //   214: invokevirtual 118	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   217: astore 5
     //   219: aload 5
     //   221: ifnull +22 -> 243
     //   224: aload 5
-    //   226: ldc 120
+    //   226: ldc 122
     //   228: invokevirtual 50	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   231: astore_1
     //   232: aload_0
     //   233: aload 5
-    //   235: ldc 122
+    //   235: ldc 124
     //   237: invokevirtual 50	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   240: putfield 30	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:i	Ljava/lang/String;
+    //   240: putfield 30	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:af	Ljava/lang/String;
     //   243: aload_1
     //   244: invokestatic 56	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   247: ifne +51 -> 298
     //   250: aload_1
-    //   251: ldc 126
-    //   253: invokevirtual 130	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   251: ldc 128
+    //   253: invokevirtual 132	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   256: astore_1
     //   257: iconst_0
     //   258: istore_2
@@ -166,13 +166,13 @@ public class ForwardH5HongBaoOption
     //   263: iload_3
     //   264: if_icmpge +34 -> 298
     //   267: aload_0
-    //   268: getfield 28	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   268: getfield 28	com/tencent/mobileqq/forward/ForwardH5HongBaoOption:ad	Ljava/util/List;
     //   271: aload_1
     //   272: iload_2
     //   273: aaload
-    //   274: invokestatic 136	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   277: invokestatic 140	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   280: invokeinterface 145 2 0
+    //   274: invokestatic 138	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   277: invokestatic 142	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   280: invokeinterface 147 2 0
     //   285: pop
     //   286: iload_2
     //   287: iconst_1
@@ -181,7 +181,7 @@ public class ForwardH5HongBaoOption
     //   290: goto -31 -> 259
     //   293: astore_1
     //   294: aload_1
-    //   295: invokevirtual 148	org/json/JSONException:printStackTrace	()V
+    //   295: invokevirtual 150	org/json/JSONException:printStackTrace	()V
     //   298: return
     //   299: astore 5
     //   301: goto -15 -> 286
@@ -189,8 +189,8 @@ public class ForwardH5HongBaoOption
     //   start	length	slot	name	signature
     //   0	304	0	this	ForwardH5HongBaoOption
     //   0	304	1	paramIntent	Intent
-    //   258	32	2	k	int
-    //   261	4	3	m	int
+    //   258	32	2	i	int
+    //   261	4	3	j	int
     //   174	3	4	bool	boolean
     //   91	143	5	localJSONObject	JSONObject
     //   299	1	5	localNumberFormatException	java.lang.NumberFormatException
@@ -217,13 +217,13 @@ public class ForwardH5HongBaoOption
       RecentUser localRecentUser = (RecentUser)paramList.next();
       if (localRecentUser != null)
       {
-        if ((this.jdField_b_of_type_JavaUtilList.contains(jdField_b_of_type_JavaLangInteger)) && (localRecentUser.getType() == 0)) {
+        if ((this.ad.contains(c)) && (localRecentUser.getType() == 0)) {
           localArrayList.add(localRecentUser);
         }
-        if ((this.jdField_b_of_type_JavaUtilList.contains(c)) && (localRecentUser.getType() == 1)) {
+        if ((this.ad.contains(d)) && (localRecentUser.getType() == 1)) {
           localArrayList.add(localRecentUser);
         }
-        if ((this.jdField_b_of_type_JavaUtilList.contains(d)) && (localRecentUser.getType() == 3000)) {
+        if ((this.ad.contains(e)) && (localRecentUser.getType() == 3000)) {
           localArrayList.add(localRecentUser);
         }
       }
@@ -247,7 +247,7 @@ public class ForwardH5HongBaoOption
       JSONObject localJSONObject = new JSONObject((String)localObject1);
       if (localJSONObject.optInt("resultCode", -1) != 0)
       {
-        this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramIntent);
+        this.s.setResult(-1, paramIntent);
         return;
       }
       localObject2 = localJSONObject.optJSONObject("data");
@@ -255,12 +255,12 @@ public class ForwardH5HongBaoOption
       if (localObject2 == null) {
         localObject1 = new JSONObject();
       }
-      ((JSONObject)localObject1).put("chat_type", this.h);
-      ((JSONObject)localObject1).put("uin", this.j);
+      ((JSONObject)localObject1).put("chat_type", this.ae);
+      ((JSONObject)localObject1).put("uin", this.ag);
       localJSONObject.put("data", localObject1);
       paramIntent.putExtra("result", localJSONObject.toString());
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.s.setResult(-1, paramIntent);
+      this.s.finish();
       return;
     }
     catch (JSONException paramIntent)
@@ -274,66 +274,58 @@ public class ForwardH5HongBaoOption
     return false;
   }
   
-  public String b()
+  protected void c()
   {
-    if (TextUtils.isEmpty(this.i)) {
-      return super.b();
-    }
-    return this.i;
-  }
-  
-  protected void b()
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.ad.iterator();
     while (localIterator.hasNext())
     {
-      int k = ((Integer)localIterator.next()).intValue();
-      if (p()) {
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(k));
+      int i = ((Integer)localIterator.next()).intValue();
+      if (ag()) {
+        this.C.add(Integer.valueOf(i));
       }
     }
   }
   
-  protected boolean c()
+  protected boolean f()
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131694422, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(BaseApplicationImpl.sApplication, 2131892102, 0).show(this.s.getResources().getDimensionPixelSize(2131299920));
       return true;
     }
     try
     {
-      int k = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-      if (k != 0)
+      int i = this.t.getInt("uintype");
+      if (i != 0)
       {
-        if (k != 1)
+        if (i != 1)
         {
-          if (k == 3000)
+          if (i == 3000)
           {
-            this.h = "discuss";
-            this.jdField_a_of_type_OrgJsonJSONObject.put("group_id", this.jdField_a_of_type_AndroidOsBundle.getString("uin"));
-            this.jdField_a_of_type_OrgJsonJSONObject.put("recv_type", 2);
+            this.ae = "discuss";
+            this.a.put("group_id", this.t.getString("uin"));
+            this.a.put("recv_type", 2);
           }
         }
         else
         {
-          this.h = "group";
-          this.jdField_a_of_type_OrgJsonJSONObject.put("group_id", this.jdField_a_of_type_AndroidOsBundle.getString("uin"));
-          this.jdField_a_of_type_OrgJsonJSONObject.put("recv_type", 3);
+          this.ae = "group";
+          this.a.put("group_id", this.t.getString("uin"));
+          this.a.put("recv_type", 3);
         }
       }
       else
       {
-        this.h = "c2c";
-        this.jdField_a_of_type_OrgJsonJSONObject.put("recv_type", 1);
+        this.ae = "c2c";
+        this.a.put("recv_type", 1);
       }
-      localObject = this.jdField_a_of_type_OrgJsonJSONObject;
-      String str = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      this.j = str;
+      localObject = this.a;
+      String str = this.t.getString("uin");
+      this.ag = str;
       ((JSONObject)localObject).put("recv_uin", str);
-      this.jdField_a_of_type_OrgJsonJSONObject.put("appid", String.valueOf(AppSetting.a()));
-      this.jdField_a_of_type_OrgJsonJSONObject.put("from_memo", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-      this.jdField_a_of_type_OrgJsonJSONObject.put("userId", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      this.a.put("appid", String.valueOf(AppSetting.d()));
+      this.a.put("from_memo", this.q.getCurrentNickname());
+      this.a.put("userId", this.q.getCurrentAccountUin());
     }
     catch (Exception localException)
     {
@@ -345,20 +337,28 @@ public class ForwardH5HongBaoOption
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("extra_data = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_OrgJsonJSONObject);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("ForwardOption.ForwardH5HongBaoOption", 4, ((StringBuilder)localObject).toString());
     }
     localObject = new Intent();
     ((Intent)localObject).putExtra("come_from", 2);
-    ((Intent)localObject).putExtra("extra_data", this.jdField_a_of_type_OrgJsonJSONObject.toString());
+    ((Intent)localObject).putExtra("extra_data", this.a.toString());
     ((Intent)localObject).putExtra("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "makeHongbao", "click", "groupType=0", 0, null));
-    RouteUtils.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject, "/qwallet/redpacket/sendhb", 20002);
+    RouteUtils.a(this.s, (Intent)localObject, "/qwallet/redpacket/sendhb", 20002);
     return true;
+  }
+  
+  public String u()
+  {
+    if (TextUtils.isEmpty(this.af)) {
+      return super.u();
+    }
+    return this.af;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardH5HongBaoOption
  * JD-Core Version:    0.7.0.1
  */

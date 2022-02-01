@@ -13,15 +13,10 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class DeviceMsgHeadIconController
   extends BaseDefaultHeadIconController
 {
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop == 9501) && (!this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend());
-  }
-  
   protected void b()
   {
-    Object localObject = BaseBubbleBuilderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    DeviceInfo localDeviceInfo = ((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong((String)localObject));
+    Object localObject = BaseBubbleBuilderUtil.a(this.b, this.a);
+    DeviceInfo localDeviceInfo = ((SmartDeviceProxyMgr)this.b.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).g(Long.parseLong((String)localObject));
     if ((localDeviceInfo != null) && (((String)localObject).equals(String.valueOf(localDeviceInfo.din)))) {
       localObject = new BitmapDrawable(BaseApplication.getContext().getResources(), DeviceHeadMgr.getInstance().getDeviceHeadByDin((String)localObject));
     } else {
@@ -29,10 +24,15 @@ public class DeviceMsgHeadIconController
     }
     b(localObject);
   }
+  
+  public boolean h()
+  {
+    return (this.a.istroop == 9501) && (!this.a.isSend());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.DeviceMsgHeadIconController
  * JD-Core Version:    0.7.0.1
  */

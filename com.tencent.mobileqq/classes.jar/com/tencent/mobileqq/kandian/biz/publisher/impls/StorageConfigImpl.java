@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.publisher.impls;
 
 import android.content.Context;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.kandian.biz.publisher.TKDPublisherUtils;
 import com.tencent.tkd.topicsdk.framework.AppContext;
 import com.tencent.tkd.topicsdk.interfaces.IAccount;
@@ -18,12 +17,6 @@ public final class StorageConfigImpl
   @NotNull
   public String a()
   {
-    return "com.tencent.mobileqq.fileProvider";
-  }
-  
-  @NotNull
-  public String b()
-  {
     StringBuilder localStringBuilder = new StringBuilder();
     File localFile = AppContext.a.a().getFilesDir();
     Intrinsics.checkExpressionValueIsNotNull(localFile, "AppContext.instance.filesDir");
@@ -35,7 +28,7 @@ public final class StorageConfigImpl
   }
   
   @NotNull
-  public String c()
+  public String b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     File localFile = AppContext.a.a().getFilesDir();
@@ -46,21 +39,10 @@ public final class StorageConfigImpl
     localStringBuilder.append('/');
     return localStringBuilder.toString();
   }
-  
-  @NotNull
-  public String d()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.SDCARD_PATH);
-    localStringBuilder.append("/TKDPublisher/");
-    localStringBuilder.append(TKDPublisherUtils.a.a().a());
-    localStringBuilder.append('/');
-    return localStringBuilder.toString();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.StorageConfigImpl
  * JD-Core Version:    0.7.0.1
  */

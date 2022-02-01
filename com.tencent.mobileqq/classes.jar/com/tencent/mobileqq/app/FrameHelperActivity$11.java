@@ -22,34 +22,34 @@ class FrameHelperActivity$11
       if ((i != 1) && (i != 3)) {
         return false;
       }
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(13))
+      if (this.a.q.hasMessages(13))
       {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.clearAnimation();
+        this.a.q.removeMessages(13);
+        if (this.a.ad != null) {
+          this.a.ad.clearAnimation();
         }
-        if (this.a.jdField_a_of_type_AndroidWidgetImageView != null)
+        if (this.a.ab != null)
         {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+          this.a.ab.clearAnimation();
           return false;
         }
       }
       else
       {
-        FrameHelperActivity.b(this.a);
+        FrameHelperActivity.h(this.a);
         return false;
       }
     }
-    else if (((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).isHeadIconLongClickFunc((QQAppInterface)this.a.a().getAppRuntime(), false))
+    else if (((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).isHeadIconLongClickFunc((QQAppInterface)this.a.C().getAppRuntime(), false))
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(13, 200L);
+      this.a.q.sendEmptyMessageDelayed(13, 200L);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.11
  * JD-Core Version:    0.7.0.1
  */

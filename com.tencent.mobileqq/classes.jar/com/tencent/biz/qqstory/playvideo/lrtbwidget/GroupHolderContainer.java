@@ -15,7 +15,7 @@ import java.util.Map;
 public class GroupHolderContainer
   extends GroupHolderBase
 {
-  protected Map<String, GroupHolderBase> a = new HashMap();
+  protected Map<String, GroupHolderBase> i = new HashMap();
   
   public GroupHolderContainer(@NonNull ViewGroup paramViewGroup)
   {
@@ -24,13 +24,13 @@ public class GroupHolderContainer
   
   protected View a(ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561798, paramViewGroup, false);
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131628177, paramViewGroup, false);
   }
   
   public void a(int paramInt, IDataProvider.GroupInfo paramGroupInfo, @NonNull ArrayList<StoryPlayerVideoData> paramArrayList)
   {
     super.a(paramInt, paramGroupInfo, paramArrayList);
-    Iterator localIterator = this.a.values().iterator();
+    Iterator localIterator = this.i.values().iterator();
     while (localIterator.hasNext()) {
       ((GroupHolderBase)localIterator.next()).a(paramInt, paramGroupInfo, paramArrayList);
     }
@@ -38,13 +38,13 @@ public class GroupHolderContainer
   
   public void a(@NonNull GroupHolderBase paramGroupHolderBase)
   {
-    this.a.put(paramGroupHolderBase.getClass().getName(), paramGroupHolderBase);
+    this.i.put(paramGroupHolderBase.getClass().getName(), paramGroupHolderBase);
   }
   
   void a(GroupHolderContainer paramGroupHolderContainer)
   {
     super.a(paramGroupHolderContainer);
-    paramGroupHolderContainer = this.a.values().iterator();
+    paramGroupHolderContainer = this.i.values().iterator();
     while (paramGroupHolderContainer.hasNext()) {
       ((GroupHolderBase)paramGroupHolderContainer.next()).a(this);
     }
@@ -53,7 +53,7 @@ public class GroupHolderContainer
   public void a(StoryPlayerContext paramStoryPlayerContext)
   {
     super.a(paramStoryPlayerContext);
-    Iterator localIterator = this.a.values().iterator();
+    Iterator localIterator = this.i.values().iterator();
     while (localIterator.hasNext()) {
       ((GroupHolderBase)localIterator.next()).a(paramStoryPlayerContext);
     }
@@ -62,30 +62,30 @@ public class GroupHolderContainer
   @Nullable
   public GroupHolderBase b(Class<? extends GroupHolderBase> paramClass)
   {
-    return (GroupHolderBase)this.a.get(paramClass.getName());
+    return (GroupHolderBase)this.i.get(paramClass.getName());
   }
   
-  protected void b()
+  protected void e()
   {
-    super.b();
-    Iterator localIterator = this.a.values().iterator();
+    super.e();
+    Iterator localIterator = this.i.values().iterator();
     while (localIterator.hasNext()) {
-      ((GroupHolderBase)localIterator.next()).b();
+      ((GroupHolderBase)localIterator.next()).e();
     }
   }
   
-  public void c()
+  public void f()
   {
-    super.c();
-    Iterator localIterator = this.a.values().iterator();
+    super.f();
+    Iterator localIterator = this.i.values().iterator();
     while (localIterator.hasNext()) {
-      ((GroupHolderBase)localIterator.next()).c();
+      ((GroupHolderBase)localIterator.next()).f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.GroupHolderContainer
  * JD-Core Version:    0.7.0.1
  */

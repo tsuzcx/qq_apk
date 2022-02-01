@@ -9,23 +9,23 @@ import mqq.os.MqqHandler;
 
 public class LimitChatDamon
 {
-  private static volatile LimitChatDamon jdField_a_of_type_ComTencentMobileqqQqexpandChatLimitChatDamon;
-  private long jdField_a_of_type_Long = -1L;
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private Runnable jdField_a_of_type_JavaLangRunnable = null;
+  private static volatile LimitChatDamon a;
+  private Runnable b = null;
+  private Handler c = null;
+  private long d = -1L;
   
   public static LimitChatDamon a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQqexpandChatLimitChatDamon == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQqexpandChatLimitChatDamon == null) {
-          jdField_a_of_type_ComTencentMobileqqQqexpandChatLimitChatDamon = new LimitChatDamon();
+        if (a == null) {
+          a = new LimitChatDamon();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQqexpandChatLimitChatDamon;
+    return a;
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -44,16 +44,16 @@ public class LimitChatDamon
       }
       try
       {
-        if (this.jdField_a_of_type_JavaLangRunnable != null)
+        if (this.b != null)
         {
           if (QLog.isColorLevel()) {
             QLog.d("LimitChatDamon", 2, "sendMessageReadConfirm last request do not finish");
           }
           return;
         }
-        this.jdField_a_of_type_JavaLangRunnable = new LimitChatDamon.1(this, paramString, paramQQAppInterface);
-        if (this.jdField_a_of_type_JavaLangRunnable != null) {
-          ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
+        this.b = new LimitChatDamon.1(this, paramString, paramQQAppInterface);
+        if (this.b != null) {
+          ThreadManager.getSubThreadHandler().postDelayed(this.b, 60000L);
         }
         return;
       }
@@ -63,7 +63,7 @@ public class LimitChatDamon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.LimitChatDamon
  * JD-Core Version:    0.7.0.1
  */

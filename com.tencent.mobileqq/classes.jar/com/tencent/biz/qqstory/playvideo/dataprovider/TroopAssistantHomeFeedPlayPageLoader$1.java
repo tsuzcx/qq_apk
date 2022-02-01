@@ -18,17 +18,17 @@ class TroopAssistantHomeFeedPlayPageLoader$1
   {
     if ((!paramErrorMessage.isFail()) && (paramGetTroopAssistantFeedIdListResponse != null))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderTroopAssistantHomeFeedPlayPageLoader.a.a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$CallBack.a(paramErrorMessage, FeedIdBasePlayPageLoader.b(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList), paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_Boolean);
+      this.b.b.a(paramGetTroopAssistantFeedIdListResponse.e, paramGetTroopAssistantFeedIdListResponse.b, paramGetTroopAssistantFeedIdListResponse.a);
+      this.a.a(paramErrorMessage, FeedIdBasePlayPageLoader.b(paramGetTroopAssistantFeedIdListResponse.e), paramGetTroopAssistantFeedIdListResponse.a);
       return;
     }
     SLog.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$CallBack.a(paramErrorMessage, null, false);
+    this.a.a(paramErrorMessage, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.TroopAssistantHomeFeedPlayPageLoader.1
  * JD-Core Version:    0.7.0.1
  */

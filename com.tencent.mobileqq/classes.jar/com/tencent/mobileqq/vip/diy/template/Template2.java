@@ -22,31 +22,31 @@ public class Template2
   public Template2(Activity paramActivity, JSONObject paramJSONObject, ProfileCardInfo paramProfileCardInfo)
   {
     super(paramActivity, paramJSONObject, paramProfileCardInfo);
-    this.d = UIUtils.a(paramActivity, 3.0F);
+    this.n = UIUtils.a(paramActivity, 3.0F);
   }
   
   public ProfileCardFavorShowView a(Activity paramActivity)
   {
-    return new ProfileCardFavorShowView(paramActivity, null, 2131562006);
+    return new ProfileCardFavorShowView(paramActivity, null, 2131628432);
   }
   
   public void a(HashMap<String, View> paramHashMap)
   {
-    paramHashMap.put("map_key_qzone", this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562015, null));
+    paramHashMap.put("map_key_qzone", this.i.inflate(2131628441, null));
   }
   
   protected void a(JSONObject paramJSONObject, View paramView, TextView paramTextView, ImageView paramImageView)
   {
     if ((paramView != null) && (paramTextView != null))
     {
-      paramTextView.setTextColor(this.c);
-      String str = b(paramJSONObject);
+      paramTextView.setTextColor(this.l);
+      String str = d(paramJSONObject);
       if (!TextUtils.isEmpty(str))
       {
-        int i = UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 300.0F);
+        int i = UIUtils.a(this.j, 300.0F);
         int j = (int)paramTextView.getPaint().measureText(paramTextView.getText().toString());
-        int k = UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 23.0F);
-        int m = UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 40.0F);
+        int k = UIUtils.a(this.j, 23.0F);
+        int m = UIUtils.a(this.j, 40.0F);
         paramView.setBackgroundDrawable(a(str, new Template2.TitleDrawableDecoderHandler(Math.min(j + k, i), m)));
       }
       else
@@ -63,10 +63,10 @@ public class Template2
     }
     if (paramImageView != null)
     {
-      paramView = c(paramJSONObject);
+      paramView = e(paramJSONObject);
       if (!TextUtils.isEmpty(paramView))
       {
-        paramImageView.setImageDrawable(a(paramView));
+        paramImageView.setImageDrawable(b(paramView));
         return;
       }
       if (paramJSONObject != null)
@@ -83,12 +83,12 @@ public class Template2
   public void a(JSONObject paramJSONObject, TextView paramTextView, View paramView1, ImageView paramImageView, View paramView2, View paramView3)
   {
     if (paramTextView != null) {
-      paramTextView.setTextColor(this.c);
+      paramTextView.setTextColor(this.l);
     }
     if ((paramView1 instanceof TextView)) {
-      ((TextView)paramView1).setTextColor(this.c);
+      ((TextView)paramView1).setTextColor(this.l);
     } else if ((paramView1 instanceof SingleLineTextView)) {
-      ((SingleLineTextView)paramView1).setTextColor(this.c);
+      ((SingleLineTextView)paramView1).setTextColor(this.l);
     }
     int i;
     if (paramImageView != null)
@@ -98,31 +98,31 @@ public class Template2
       paramView1.width = i;
       paramView1.height = i;
       paramImageView.setLayoutParams(paramView1);
-      paramView1 = c(paramJSONObject);
+      paramView1 = e(paramJSONObject);
       if (!TextUtils.isEmpty(paramView1)) {
-        paramImageView.setImageDrawable(a(paramView1));
+        paramImageView.setImageDrawable(b(paramView1));
       } else {
         paramImageView.setImageDrawable(null);
       }
     }
     if ((paramTextView != null) && (paramView2 != null))
     {
-      i = UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 6.0F);
-      int j = UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 12.0F);
-      int k = UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 12.0F);
+      i = UIUtils.a(this.j, 6.0F);
+      int j = UIUtils.a(this.j, 12.0F);
+      int k = UIUtils.a(this.j, 12.0F);
       paramView1 = (LinearLayout.LayoutParams)paramTextView.getLayoutParams();
       paramView1.bottomMargin = i;
       paramView1.leftMargin = j;
       paramView1.rightMargin = k;
       paramTextView.setLayoutParams(paramView1);
       paramTextView.setTextSize(1, 15.0F);
-      paramView1 = b(paramJSONObject);
+      paramView1 = d(paramJSONObject);
       if (!TextUtils.isEmpty(paramView1))
       {
-        i = UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 300.0F);
+        i = UIUtils.a(this.j, 300.0F);
         j = (int)paramTextView.getPaint().measureText(paramTextView.getText().toString());
-        k = UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 23.0F);
-        int m = UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 40.0F);
+        k = UIUtils.a(this.j, 23.0F);
+        int m = UIUtils.a(this.j, 40.0F);
         paramView2.setBackgroundDrawable(a(paramView1, new Template2.TitleDrawableDecoderHandler(Math.min(j + k, i), m)));
         paramView2.setVisibility(0);
       }
@@ -136,13 +136,13 @@ public class Template2
     {
       i = a(10.0F);
       paramView3.setPadding(i, i, i, i);
-      a(paramJSONObject, paramView3);
+      c(paramJSONObject, paramView3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.Template2
  * JD-Core Version:    0.7.0.1
  */

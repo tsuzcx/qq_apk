@@ -11,9 +11,9 @@ class HotChatFlashPicActivity$4$1
   
   public void onClick(View paramView)
   {
-    if ((HotChatFlashPicActivity.a(this.a.a) != null) && (!this.a.a.isFinishing()))
+    if ((HotChatFlashPicActivity.x(this.a.a) != null) && (!this.a.a.isFinishing()))
     {
-      HotChatFlashPicActivity.a(this.a.a).dismiss();
+      HotChatFlashPicActivity.x(this.a.a).dismiss();
       HotChatFlashPicActivity.a(this.a.a, null);
       this.a.a.finish();
     }
@@ -21,7 +21,7 @@ class HotChatFlashPicActivity$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.dating.HotChatFlashPicActivity.4.1
  * JD-Core Version:    0.7.0.1
  */

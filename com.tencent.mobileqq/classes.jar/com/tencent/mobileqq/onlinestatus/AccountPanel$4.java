@@ -16,10 +16,10 @@ class AccountPanel$4
   {
     try
     {
-      if ((AccountPanel.a(this.a) != null) && (AccountPanel.a(this.a).isShowing()))
+      if ((AccountPanel.b(this.a) != null) && (AccountPanel.b(this.a).isShowing()))
       {
-        AccountPanel.a(this.a).i().setValue(Boolean.valueOf(true));
-        AccountPanel.a(this.a).dismiss();
+        AccountPanel.d(this.a).i().setValue(Boolean.valueOf(true));
+        AccountPanel.b(this.a).dismiss();
         AccountPanel.a(this.a, null);
       }
       label59:
@@ -36,7 +36,7 @@ class AccountPanel$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountPanel.4
  * JD-Core Version:    0.7.0.1
  */

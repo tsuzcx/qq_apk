@@ -6,11 +6,11 @@ import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMedia
 
 public class AVGameMusic
 {
-  private float jdField_a_of_type_Float;
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private float a;
   private float b;
+  private MediaPlayer c;
+  private boolean d;
+  private String e;
   
   public AVGameMusic()
   {
@@ -24,7 +24,7 @@ public class AVGameMusic
     {
       localReportMediaPlayer.setDataSource(paramString);
       localReportMediaPlayer.prepare();
-      localReportMediaPlayer.setVolume(this.jdField_a_of_type_Float, this.b);
+      localReportMediaPlayer.setVolume(this.a, this.b);
       return localReportMediaPlayer;
     }
     catch (Exception paramString)
@@ -39,54 +39,54 @@ public class AVGameMusic
   
   private void e()
   {
-    this.jdField_a_of_type_Float = 0.5F;
+    this.a = 0.5F;
     this.b = 0.5F;
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
+    this.c = null;
+    this.d = false;
+    this.e = null;
   }
   
   public void a()
   {
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    MediaPlayer localMediaPlayer = this.c;
     if (localMediaPlayer != null)
     {
       localMediaPlayer.stop();
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
     }
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.e;
     if (localObject == null)
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = a(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.c = a(paramString);
+      this.e = paramString;
     }
     else if (!((String)localObject).equals(paramString))
     {
-      localObject = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+      localObject = this.c;
       if (localObject != null) {
         ((MediaPlayer)localObject).release();
       }
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = a(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.c = a(paramString);
+      this.e = paramString;
     }
-    paramString = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    paramString = this.c;
     if (paramString == null)
     {
       QLog.e("AVGameMusic", 1, "[playBackgroundMusic] background media player is null");
       return;
     }
     paramString.stop();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
+    this.c.setLooping(paramBoolean);
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(0);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.jdField_a_of_type_Boolean = false;
+      this.c.prepare();
+      this.c.seekTo(0);
+      this.c.start();
+      this.d = false;
       return;
     }
     catch (Exception paramString)
@@ -99,27 +99,27 @@ public class AVGameMusic
   
   public void b()
   {
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    MediaPlayer localMediaPlayer = this.c;
     if ((localMediaPlayer != null) && (localMediaPlayer.isPlaying()))
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
-      this.jdField_a_of_type_Boolean = true;
+      this.c.pause();
+      this.d = true;
     }
   }
   
   public void c()
   {
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
-    if ((localMediaPlayer != null) && (this.jdField_a_of_type_Boolean))
+    MediaPlayer localMediaPlayer = this.c;
+    if ((localMediaPlayer != null) && (this.d))
     {
       localMediaPlayer.start();
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
     }
   }
   
   public void d()
   {
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    MediaPlayer localMediaPlayer = this.c;
     if (localMediaPlayer != null) {
       localMediaPlayer.release();
     }

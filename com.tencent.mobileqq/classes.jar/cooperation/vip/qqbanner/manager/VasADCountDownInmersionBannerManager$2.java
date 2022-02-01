@@ -16,7 +16,7 @@ class VasADCountDownInmersionBannerManager$2
   {
     paramURLDrawable = new StringBuilder();
     paramURLDrawable.append("getLocalDrawable urlDrawable onLoadFialed , url = ");
-    paramURLDrawable.append(this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerConfigInfo$ResourceInfo.a);
+    paramURLDrawable.append(this.a.a);
     QLog.i("QbossADCountDownInmersi", 1, paramURLDrawable.toString());
   }
   
@@ -26,13 +26,13 @@ class VasADCountDownInmersionBannerManager$2
   {
     paramURLDrawable = new StringBuilder();
     paramURLDrawable.append("getLocalDrawable urlDrawable onLoadSuccessed , url = ");
-    paramURLDrawable.append(this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerConfigInfo$ResourceInfo.a);
+    paramURLDrawable.append(this.a.a);
     QLog.i("QbossADCountDownInmersi", 1, paramURLDrawable.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.manager.VasADCountDownInmersionBannerManager.2
  * JD-Core Version:    0.7.0.1
  */

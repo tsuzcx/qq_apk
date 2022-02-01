@@ -30,38 +30,20 @@ import mqq.os.MqqHandler;
 public class ApolloLottieAnim
   implements Handler.Callback
 {
-  protected int a;
-  private ApolloLottieAnim.DecoderRunnable jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim$DecoderRunnable = new ApolloLottieAnim.DecoderRunnable();
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(paramContext.getMainLooper(), this);
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString;
-  private WeakReference<DiniFlyAnimationView> jdField_b_of_type_JavaLangRefWeakReference;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c;
+  protected int a = 0;
+  private boolean b = false;
+  private boolean c = false;
+  private String d;
+  private String e;
+  private boolean f;
+  private WeakReferenceHandler g = new WeakReferenceHandler(paramContext.getMainLooper(), this);
+  private WeakReference<Context> h;
+  private WeakReference<DiniFlyAnimationView> i;
+  private ApolloLottieAnim.DecoderRunnable j = new ApolloLottieAnim.DecoderRunnable();
   
   public ApolloLottieAnim(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-  }
-  
-  private String a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      int i = paramString.lastIndexOf(".zip");
-      String str = paramString;
-      if (i > 0) {
-        str = paramString.substring(0, i);
-      }
-      paramString = new StringBuilder();
-      paramString.append(str);
-      paramString.append(File.separator);
-      return paramString.toString();
-    }
-    return "";
+    this.h = new WeakReference(paramContext);
   }
   
   private void a(File paramFile, String paramString)
@@ -71,49 +53,39 @@ public class ApolloLottieAnim
     }
   }
   
-  private void a(String paramString)
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("folder", paramString);
-    localMessage.setData(localBundle);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
-  }
-  
   private void a(String paramString1, String paramString2, boolean paramBoolean)
   {
     if (TextUtils.isEmpty(paramString2)) {
       return;
     }
-    this.c = paramBoolean;
-    if (!paramString2.equals(this.jdField_a_of_type_JavaLangString))
+    this.f = paramBoolean;
+    if (!paramString2.equals(this.d))
     {
-      this.jdField_a_of_type_JavaLangString = paramString2;
-      this.jdField_a_of_type_Int = 0;
+      this.d = paramString2;
+      this.a = 0;
     }
-    paramString2 = a(this.jdField_a_of_type_JavaLangString);
+    paramString2 = c(this.d);
     new File(paramString2).mkdirs();
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloLottieAnim", 2, new Object[] { "setZipData mState:", Integer.valueOf(this.jdField_a_of_type_Int), ",zipUrl:", paramString1, ",localZipPath:", this.jdField_a_of_type_JavaLangString });
+      QLog.d("ApolloLottieAnim", 2, new Object[] { "setZipData mState:", Integer.valueOf(this.a), ",zipUrl:", paramString1, ",localZipPath:", this.d });
     }
     paramBoolean = a(paramString2);
     if (!paramBoolean)
     {
       QLog.w("ApolloLottieAnim", 1, "setZipData Lottie Anim data.json not exit");
-      this.jdField_a_of_type_Int = 0;
+      this.a = 0;
     }
-    int i = this.jdField_a_of_type_Int;
-    if ((i != 2) && (i != 0))
+    int k = this.a;
+    if ((k != 2) && (k != 0))
     {
-      if (i == 3) {
+      if (k == 3) {
         a(false, null, paramString2);
       }
     }
     else
     {
-      this.jdField_a_of_type_Boolean = false;
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      this.b = false;
+      File localFile = new File(this.d);
       if (paramBoolean)
       {
         a(false, localFile, paramString2);
@@ -124,7 +96,7 @@ public class ApolloLottieAnim
         a(true, localFile, paramString2);
         return;
       }
-      a(paramString1, this.jdField_a_of_type_JavaLangString, paramString2);
+      a(paramString1, this.d, paramString2);
     }
   }
   
@@ -139,30 +111,48 @@ public class ApolloLottieAnim
         QLog.e("ApolloLottieAnim", 1, "Lottie Anim data.json not exit");
         return;
       }
-      this.jdField_a_of_type_Int = 3;
-      a();
-      a(paramString);
+      this.a = 3;
+      b();
+      b(paramString);
       return;
     }
     catch (Exception paramFile)
     {
       QLog.e("ApolloLottieAnim", 2, paramFile.getMessage());
-      this.jdField_a_of_type_Int = 2;
+      this.a = 2;
     }
+  }
+  
+  private void b(String paramString)
+  {
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("folder", paramString);
+    localMessage.setData(localBundle);
+    this.g.sendMessage(localMessage);
+  }
+  
+  private String c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      int k = paramString.lastIndexOf(".zip");
+      String str = paramString;
+      if (k > 0) {
+        str = paramString.substring(0, k);
+      }
+      paramString = new StringBuilder();
+      paramString.append(str);
+      paramString.append(File.separator);
+      return paramString.toString();
+    }
+    return "";
   }
   
   protected MQLruCache<String, Object> a()
   {
     return GlobalImageCache.a;
-  }
-  
-  public void a()
-  {
-    ThreadManager.getUIHandler().post(new ApolloLottieAnim.4(this));
-    WeakReferenceHandler localWeakReferenceHandler = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-    if (localWeakReferenceHandler != null) {
-      localWeakReferenceHandler.removeCallbacksAndMessages(null);
-    }
   }
   
   public void a(Context paramContext, @NonNull DiniFlyAnimationView paramDiniFlyAnimationView, String paramString, InputStream paramInputStream, boolean paramBoolean)
@@ -178,7 +168,7 @@ public class ApolloLottieAnim
       if (paramDiniFlyAnimationView.isAnimating()) {
         return;
       }
-      if ((this.jdField_a_of_type_Boolean) && (paramBoolean))
+      if ((this.b) && (paramBoolean))
       {
         paramDiniFlyAnimationView.playAnimation();
         return;
@@ -189,10 +179,10 @@ public class ApolloLottieAnim
         Bundle localBundle = new Bundle();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("apollo://lottie_");
-        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        if (TextUtils.isEmpty(this.e)) {
           localObject = paramString;
         } else {
-          localObject = this.jdField_b_of_type_JavaLangString;
+          localObject = this.e;
         }
         localStringBuilder.append(Utils.Crc64String((String)localObject));
         localBundle.putString("key", localStringBuilder.toString());
@@ -217,8 +207,8 @@ public class ApolloLottieAnim
   {
     try
     {
-      if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
-        this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramDiniFlyAnimationView);
+      if (this.i == null) {
+        this.i = new WeakReference(paramDiniFlyAnimationView);
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
@@ -240,24 +230,24 @@ public class ApolloLottieAnim
     if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramDiniFlyAnimationView);
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim$DecoderRunnable.a(this, paramString1, paramString2, paramBoolean);
-    ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim$DecoderRunnable, 16);
-    ThreadManager.excute(this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim$DecoderRunnable, 16, null, true);
+    this.i = new WeakReference(paramDiniFlyAnimationView);
+    this.e = paramString1;
+    this.j.a(this, paramString1, paramString2, paramBoolean);
+    ThreadManager.removeJobFromThreadPool(this.j, 16);
+    ThreadManager.excute(this.j, 16, null, true);
   }
   
   protected void a(String paramString1, String paramString2, String paramString3)
   {
-    int j = 1;
-    this.jdField_a_of_type_Int = 1;
+    int m = 1;
+    this.a = 1;
     DownloadTask localDownloadTask = new DownloadTask(paramString1, new File(paramString2));
-    localDownloadTask.p = true;
-    localDownloadTask.n = true;
-    localDownloadTask.f = "apollo_lottie";
-    localDownloadTask.b = 1;
-    localDownloadTask.q = true;
-    localDownloadTask.r = true;
+    localDownloadTask.N = true;
+    localDownloadTask.J = true;
+    localDownloadTask.L = "apollo_lottie";
+    localDownloadTask.e = 1;
+    localDownloadTask.P = true;
+    localDownloadTask.Q = true;
     localDownloadTask.a(new ApolloLottieAnim.2(this, paramString1, paramString2, paramString3));
     paramString1 = BaseApplicationImpl.getApplication();
     if (paramString1 != null)
@@ -271,23 +261,23 @@ public class ApolloLottieAnim
     }
     paramString1 = null;
     label110:
-    int i = j;
+    int k = m;
     if (paramString1 != null)
     {
       paramString1 = (DownloaderFactory)paramString1.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
-      i = j;
+      k = m;
       if (paramString1 != null)
       {
         paramString1 = paramString1.a(3);
-        i = j;
+        k = m;
         if (paramString1 != null)
         {
           paramString1.startDownload(localDownloadTask, localDownloadTask.a(), null);
-          i = 0;
+          k = 0;
         }
       }
     }
-    if (i != 0) {
+    if (k != 0) {
       ThreadManager.executeOnNetWorkThread(new ApolloLottieAnim.3(this, localDownloadTask));
     }
   }
@@ -307,14 +297,14 @@ public class ApolloLottieAnim
       localStringBuilder.append(paramString3);
       QLog.d("ApolloLottieAnim", 2, localStringBuilder.toString());
     }
-    paramString1 = this.jdField_a_of_type_JavaLangString;
+    paramString1 = this.d;
     if ((paramString1 != null) && (!paramString1.equals(paramString2)))
     {
       if (QLog.isColorLevel())
       {
         paramString1 = new StringBuilder();
         paramString1.append("onDownloadFinish，zipFile unEqual mLocalZipPath:");
-        paramString1.append(this.jdField_a_of_type_JavaLangString);
+        paramString1.append(this.d);
         QLog.d("ApolloLottieAnim", 2, paramString1.toString());
       }
       return;
@@ -327,10 +317,10 @@ public class ApolloLottieAnim
         a(true, paramString1, paramString3);
         return;
       }
-      this.jdField_a_of_type_Int = 2;
+      this.a = 2;
       return;
     }
-    this.jdField_a_of_type_Int = 2;
+    this.a = 2;
   }
   
   public boolean a(String paramString)
@@ -341,18 +331,27 @@ public class ApolloLottieAnim
     return new File(localStringBuilder.toString()).exists();
   }
   
+  public void b()
+  {
+    ThreadManager.getUIHandler().post(new ApolloLottieAnim.4(this));
+    WeakReferenceHandler localWeakReferenceHandler = this.g;
+    if (localWeakReferenceHandler != null) {
+      localWeakReferenceHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1)
     {
-      WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      WeakReference localWeakReference = this.h;
       if ((localWeakReference != null) && (localWeakReference.get() != null))
       {
-        localWeakReference = this.jdField_b_of_type_JavaLangRefWeakReference;
+        localWeakReference = this.i;
         if ((localWeakReference != null) && (localWeakReference.get() != null))
         {
           paramMessage = paramMessage.getData().getString("folder");
-          a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (DiniFlyAnimationView)this.jdField_b_of_type_JavaLangRefWeakReference.get(), paramMessage, this.c);
+          a((Context)this.h.get(), (DiniFlyAnimationView)this.i.get(), paramMessage, this.f);
         }
       }
     }
@@ -361,7 +360,7 @@ public class ApolloLottieAnim
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ApolloLottieAnim
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.part.block.base;
 
 public abstract interface RefreshHeaderView$OnRefreshListener
 {
-  public abstract void b();
+  public abstract void a();
 }
 
 

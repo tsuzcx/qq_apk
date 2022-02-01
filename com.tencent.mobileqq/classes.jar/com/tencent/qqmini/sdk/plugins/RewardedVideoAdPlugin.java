@@ -1,6 +1,5 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -174,8 +173,20 @@ public class RewardedVideoAdPlugin
     if (!this.mIsRequestingAd)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("operateRewardedAd load 拉取广告信息 是否因为广告过期：");
-      localStringBuilder.append(this.mRewardedVideoAd.needToLoadNewAd());
+      localStringBuilder.append("operateRewardedAd load 拉取广告信息,");
+      Object localObject;
+      if (this.mRewardedVideoAd == null)
+      {
+        localObject = "AdView is null";
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("是否因为广告过期：");
+        ((StringBuilder)localObject).append(this.mRewardedVideoAd.needToLoadNewAd());
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      localStringBuilder.append((String)localObject);
       QMLog.i("RealTimeRewardedVideoAdPlugin", localStringBuilder.toString());
       initAdParam(paramRequestEvent, this.mPosID, paramString, false);
     }
@@ -244,20 +255,20 @@ public class RewardedVideoAdPlugin
     if (isRewardedAdValid(this.mRewardedVideoAd))
     {
       QMLog.i("RealTimeRewardedVideoAdPlugin", "operateRewardedAd show 立即展示");
-      Activity localActivity;
       if (this.mMiniAppContext != null) {
-        localActivity = this.mMiniAppContext.getAttachedActivity();
+        localObject = this.mMiniAppContext.getAttachedActivity();
       } else {
-        localActivity = null;
+        localObject = null;
       }
-      this.mRewardedVideoAd.showAD(localActivity, paramString);
+      this.mRewardedVideoAd.showAD((Context)localObject, paramString);
       handleShowAndInformJs(paramRequestEvent, true, paramString);
       this.mRewardedVideoAd = null;
       this.mHasClosedAd = false;
       AdFrequencyLimit.setRewardVideoAdShowing(true);
       return;
     }
-    if (this.mRewardedVideoAd.needToLoadNewAd())
+    Object localObject = this.mRewardedVideoAd;
+    if ((localObject != null) && (((AdProxy.AbsRewardVideoAdView)localObject).needToLoadNewAd()))
     {
       QMLog.i("RealTimeRewardedVideoAdPlugin", "operateRewardedAd show 拉取广告信息 是否因为广告过期：true 期望拉取后立即展示");
       initAdParam(paramRequestEvent, this.mPosID, paramString, true);
@@ -491,7 +502,7 @@ public class RewardedVideoAdPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RewardedVideoAdPlugin
  * JD-Core Version:    0.7.0.1
  */

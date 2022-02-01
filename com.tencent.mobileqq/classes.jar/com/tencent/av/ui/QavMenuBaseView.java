@@ -9,9 +9,9 @@ import com.tencent.qphone.base.util.QLog;
 public class QavMenuBaseView
   extends RelativeLayout
 {
-  protected VideoAppInterface a;
-  protected QavPanel a;
-  protected String a;
+  protected String g;
+  protected VideoAppInterface h = null;
+  protected QavPanel i = null;
   
   public QavMenuBaseView(Context paramContext)
   {
@@ -26,15 +26,13 @@ public class QavMenuBaseView
   public QavMenuBaseView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-    this.jdField_a_of_type_ComTencentAvUiQavPanel = null;
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
     if (QLog.isDevelopLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.g;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onShow, seq[");
       localStringBuilder.append(paramLong);
@@ -49,16 +47,23 @@ public class QavMenuBaseView
   {
     if (QLog.isDevelopLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.g;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onCreate, panel[");
       localStringBuilder.append(paramQavPanel);
       localStringBuilder.append("]");
       QLog.i(str, 4, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvUiQavPanel = paramQavPanel;
+    this.i = paramQavPanel;
     if (paramQavPanel != null) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramQavPanel.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+      this.h = paramQavPanel.U;
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.g, 4, "refreshUI");
     }
   }
   
@@ -66,22 +71,22 @@ public class QavMenuBaseView
   {
     if (QLog.isDevelopLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.g;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onDestroy, seq[");
       localStringBuilder.append(paramLong);
       localStringBuilder.append("]");
       QLog.i(str, 4, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvUiQavPanel = null;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+    this.i = null;
+    this.h = null;
   }
   
-  public void c(long paramLong, boolean paramBoolean)
+  public void b(long paramLong, boolean paramBoolean)
   {
     if (QLog.isDevelopLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.g;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onHide, seq[");
       localStringBuilder.append(paramLong);
@@ -89,13 +94,6 @@ public class QavMenuBaseView
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append("]");
       QLog.i(str, 4, localStringBuilder.toString());
-    }
-  }
-  
-  public void d()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 4, "refreshUI");
     }
   }
 }

@@ -38,7 +38,7 @@ class StartLiveTopicLabelListView$1
     if (paramView == null)
     {
       localViewHolder = new StartLiveTopicLabelListView.ViewHolder(this.a, null);
-      paramView = new TopicViewItem(StartLiveTopicLabelListView.a(this.a));
+      paramView = new TopicViewItem(StartLiveTopicLabelListView.b(this.a));
       paramView.setTag(localViewHolder);
     }
     else
@@ -48,13 +48,13 @@ class StartLiveTopicLabelListView$1
     localViewHolder.a = ((String)StartLiveTopicLabelListView.a(this.a).get(paramInt));
     if (HardCodeUtil.a(((IResourceUtil)QRoute.api(IResourceUtil.class)).getQQStrStartlivBe188c1d()).equals(localViewHolder.a))
     {
-      paramView.setBackgroundResource(StartLiveTopicLabelListView.a(this.a));
-      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.b(this.a));
+      paramView.setBackgroundResource(StartLiveTopicLabelListView.c(this.a));
+      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.d(this.a));
     }
     else
     {
-      paramView.setBackgroundResource(StartLiveTopicLabelListView.c(this.a));
-      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.d(this.a));
+      paramView.setBackgroundResource(StartLiveTopicLabelListView.e(this.a));
+      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.f(this.a));
     }
     paramView.setOnClickListener(new StartLiveTopicLabelListView.1.1(this));
     ((TopicViewItem)paramView).setText(localViewHolder.a);
@@ -64,7 +64,7 @@ class StartLiveTopicLabelListView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView.1
  * JD-Core Version:    0.7.0.1
  */

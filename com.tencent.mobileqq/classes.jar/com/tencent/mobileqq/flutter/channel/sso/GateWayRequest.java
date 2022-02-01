@@ -10,17 +10,17 @@ import expand.network.gateway.SSOUpStreamHead;
 public class GateWayRequest
   extends NetworkRequest
 {
-  public BaseResponse a(byte[] paramArrayOfByte)
-  {
-    return null;
-  }
-  
   public String a()
   {
     return "QQExpand.Test.Debug";
   }
   
-  protected byte[] a()
+  public BaseResponse b(byte[] paramArrayOfByte)
+  {
+    return null;
+  }
+  
+  protected byte[] c()
   {
     gateway.SSOUpStream localSSOUpStream = new gateway.SSOUpStream();
     localSSOUpStream.head = new gateway.SSOUpStreamHead();
@@ -30,7 +30,7 @@ public class GateWayRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.sso.GateWayRequest
  * JD-Core Version:    0.7.0.1
  */

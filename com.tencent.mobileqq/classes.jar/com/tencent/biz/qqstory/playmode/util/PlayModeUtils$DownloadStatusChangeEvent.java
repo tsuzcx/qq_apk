@@ -6,21 +6,21 @@ import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 public final class PlayModeUtils$DownloadStatusChangeEvent
   extends BaseEvent
 {
-  public int a;
-  public StoryVideoItem a;
   public String a;
-  public String b;
+  public int b;
+  public StoryVideoItem c;
+  public String d;
   
   public PlayModeUtils$DownloadStatusChangeEvent(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    this.a = paramString;
+    this.b = paramInt;
+    this.c = paramStoryVideoItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.DownloadStatusChangeEvent
  * JD-Core Version:    0.7.0.1
  */

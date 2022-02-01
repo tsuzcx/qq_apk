@@ -22,12 +22,14 @@ class AbsListView$FlingRunnable
   {
     this.this$0.invalidate();
     this.mLastFlingY = paramInt;
-    if (Build.VERSION.SDK_INT >= 16)
-    {
+    if (Build.VERSION.SDK_INT >= 16) {
       this.this$0.postOnAnimation(this);
-      return;
+    } else {
+      this.this$0.post(this);
     }
-    this.this$0.post(this);
+    if (AbsListView.access$1800(this.this$0) != null) {
+      AbsListView.access$1800(this.this$0).onOverScroll(paramInt);
+    }
   }
   
   @TargetApi(9)
@@ -47,15 +49,15 @@ class AbsListView$FlingRunnable
     }
     ((OverScroller)localObject).notifyVerticalEdgeReached(paramInt, i, j);
     int i = this.this$0.getOverScrollMode();
-    if ((i != 0) && ((i != 1) || (AbsListView.access$1800(this.this$0))))
+    if ((i != 0) && ((i != 1) || (AbsListView.access$1900(this.this$0))))
     {
       localObject = this.this$0;
       ((AbsListView)localObject).mTouchMode = -1;
       if (((AbsListView)localObject).mPositionScroller != null) {
         this.this$0.mPositionScroller.stop();
       }
-      if (AbsListView.access$1900(this.this$0) != null) {
-        AbsListView.access$1900(this.this$0).stop();
+      if (AbsListView.access$2000(this.this$0) != null) {
+        AbsListView.access$2000(this.this$0).stop();
       }
     }
     else
@@ -86,12 +88,15 @@ class AbsListView$FlingRunnable
     localAbsListView.removeCallbacks(this);
     this.this$0.removeCallbacks(this.mCheckFlywheel);
     this.this$0.reportScrollStateChange(0);
-    AbsListView.access$2000(this.this$0);
+    AbsListView.access$2100(this.this$0);
     this.mScroller.abortAnimation();
     if (AbsListView.access$1600(this.this$0) != null)
     {
       localAbsListView = this.this$0;
-      AbsListView.access$1602(localAbsListView, AbsListView.access$2100(localAbsListView, AbsListView.access$1600(localAbsListView)));
+      AbsListView.access$1602(localAbsListView, AbsListView.access$2200(localAbsListView, AbsListView.access$1600(localAbsListView)));
+    }
+    if (AbsListView.access$1800(this.this$0) != null) {
+      AbsListView.access$1800(this.this$0).onOverScroll(0);
     }
   }
   
@@ -126,10 +131,10 @@ class AbsListView$FlingRunnable
             if (this.this$0.overScrollBy(0, m - k, 0, k, 0, 0, 0, this.this$0.mOverscrollDistance, false))
             {
               if ((k > 0) || (m <= 0)) {
-                break label644;
+                break label670;
               }
               i = 1;
-              break label646;
+              break label672;
               startSpringback(0);
               return;
               label110:
@@ -143,12 +148,15 @@ class AbsListView$FlingRunnable
               return;
             }
             this.this$0.invalidate();
-            if (Build.VERSION.SDK_INT >= 16)
-            {
+            if (Build.VERSION.SDK_INT >= 16) {
               this.this$0.postOnAnimation(this);
+            } else {
+              this.this$0.post(this);
+            }
+            if (AbsListView.access$1800(this.this$0) == null) {
               return;
             }
-            this.this$0.post(this);
+            AbsListView.access$1800(this.this$0).onOverScroll(m);
             return;
           }
           endFling();
@@ -191,16 +199,16 @@ class AbsListView$FlingRunnable
           }
           localObject2 = this.this$0.getChildAt(this.this$0.mMotionPosition - this.this$0.mFirstPosition);
           if (localObject2 == null) {
-            break label671;
+            break label697;
           }
           j = ((View)localObject2).getTop();
           if ((!this.this$0.trackMotionScroll(i, i)) || (i == 0)) {
-            break label676;
+            break label702;
           }
           if (k != 0)
           {
             if (localObject2 != null) {
-              if ((AbsListView.access$2200(this.this$0) != null) && (AbsListView.access$2200(this.this$0).onNestedScrolling(i) == i))
+              if ((AbsListView.access$2300(this.this$0) != null) && (AbsListView.access$2300(this.this$0).onNestedScrolling(i) == i))
               {
                 preceedFling(m);
               }
@@ -242,9 +250,9 @@ class AbsListView$FlingRunnable
       {
         throw localObject3;
       }
-      label644:
+      label670:
       i = 0;
-      label646:
+      label672:
       if ((k < 0) || (m >= 0)) {
         j = 0;
       }
@@ -255,10 +263,10 @@ class AbsListView$FlingRunnable
         break;
       }
       break label110;
-      label671:
+      label697:
       j = 0;
       continue;
-      label676:
+      label702:
       k = 0;
     }
   }
@@ -365,27 +373,32 @@ class AbsListView$FlingRunnable
   
   void startSpringback(int paramInt)
   {
+    AbsListView localAbsListView;
     if (this.mScroller.springBack(0, this.this$0.getScrollY(), paramInt, paramInt, paramInt, paramInt))
     {
       localAbsListView = this.this$0;
       localAbsListView.mTouchMode = 6;
       localAbsListView.invalidate();
-      if (Build.VERSION.SDK_INT >= 16)
-      {
+      if (Build.VERSION.SDK_INT >= 16) {
         this.this$0.postOnAnimation(this);
-        return;
+      } else {
+        this.this$0.post(this);
       }
-      this.this$0.post(this);
-      return;
     }
-    AbsListView localAbsListView = this.this$0;
-    localAbsListView.mTouchMode = -1;
-    localAbsListView.reportScrollStateChange(0);
+    else
+    {
+      localAbsListView = this.this$0;
+      localAbsListView.mTouchMode = -1;
+      localAbsListView.reportScrollStateChange(0);
+    }
+    if (AbsListView.access$1800(this.this$0) != null) {
+      AbsListView.access$1800(this.this$0).onOverScroll(this.this$0.getScrollY());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AbsListView.FlingRunnable
  * JD-Core Version:    0.7.0.1
  */

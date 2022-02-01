@@ -22,7 +22,7 @@ public class LoginUserGuideHelper
   private static String a(boolean paramBoolean, LoginWelcomeManager.ContactsGuideInfo paramContactsGuideInfo, LoginUserGuideHelper.LocationListener paramLocationListener)
   {
     StringBuilder localStringBuilder = new StringBuilder(200);
-    localStringBuilder.append(paramContactsGuideInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramContactsGuideInfo.c);
     localStringBuilder.append("&ab_auth=");
     String str;
     if (paramBoolean) {
@@ -31,23 +31,23 @@ public class LoginUserGuideHelper
       str = "0";
     }
     localStringBuilder.append(str);
-    if (paramContactsGuideInfo.jdField_a_of_type_Int != -1)
+    if (paramContactsGuideInfo.d != -1)
     {
       localStringBuilder.append("&friends_recommend_flag=");
-      localStringBuilder.append(paramContactsGuideInfo.jdField_a_of_type_Int);
+      localStringBuilder.append(paramContactsGuideInfo.d);
     }
-    if (paramContactsGuideInfo.b != -1)
+    if (paramContactsGuideInfo.e != -1)
     {
       localStringBuilder.append("&groups_recommend_flag=");
-      localStringBuilder.append(paramContactsGuideInfo.b);
+      localStringBuilder.append(paramContactsGuideInfo.e);
     }
     int k = 1;
     int i = 0;
     int j;
-    if ((paramLocationListener != null) && (paramLocationListener.jdField_a_of_type_Boolean))
+    if ((paramLocationListener != null) && (paramLocationListener.c))
     {
       i = paramLocationListener.b;
-      j = paramLocationListener.jdField_a_of_type_Int;
+      j = paramLocationListener.a;
     }
     else
     {
@@ -110,7 +110,7 @@ public class LoginUserGuideHelper
         localStringBuilder.append(paramBoolean);
         QLog.i("LoginUserGuideHelper", 2, localStringBuilder.toString());
       }
-      paramQQAppInterface = a(paramBoolean, LoginWelcomeManager.a(paramQQAppInterface).a(), paramLocationListener);
+      paramQQAppInterface = a(paramBoolean, LoginWelcomeManager.a(paramQQAppInterface).f(), paramLocationListener);
       paramLocationListener = new Intent(paramActivity, QQBrowserActivity.class);
       paramLocationListener.putExtra("is_wrap_content", true);
       paramLocationListener.putExtra("url", paramQQAppInterface);
@@ -143,7 +143,7 @@ public class LoginUserGuideHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper
  * JD-Core Version:    0.7.0.1
  */

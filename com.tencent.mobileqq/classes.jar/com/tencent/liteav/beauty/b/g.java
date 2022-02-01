@@ -1,18 +1,18 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
+import com.tencent.liteav.basic.opengl.j;
 import java.util.Iterator;
 import java.util.List;
 
 public class g
-  extends h
+  extends j
 {
-  protected List<h> r;
-  protected List<h> s;
+  protected List<j> r;
+  protected List<j> s;
   private int[] t;
   private int[] u;
-  private h v;
+  private j v;
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -22,11 +22,11 @@ public class g
     int j = 0;
     while (i < k)
     {
-      h localh = (h)this.s.get(i);
+      j localj = (j)this.s.get(i);
       if (j != 0) {
-        paramInt1 = localh.a(paramInt1, paramInt2, paramInt3);
+        paramInt1 = localj.a(paramInt1, paramInt2, paramInt3);
       } else {
-        paramInt1 = localh.a(paramInt1, this.t[0], this.u[0]);
+        paramInt1 = localj.a(paramInt1, this.t[0], this.u[0]);
       }
       j ^= 0x1;
       i += 1;
@@ -50,7 +50,7 @@ public class g
     int i = 0;
     while (i < j)
     {
-      ((h)this.s.get(i)).a(paramInt1, paramInt2);
+      ((j)this.s.get(i)).a(paramInt1, paramInt2);
       i += 1;
     }
     this.v.a(paramInt1, paramInt2);
@@ -87,15 +87,15 @@ public class g
     if (bool2)
     {
       Iterator localIterator = this.r.iterator();
-      h localh;
+      j localj;
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-        localh = (h)localIterator.next();
-        localh.a();
-      } while (localh.m());
+        localj = (j)localIterator.next();
+        localj.a();
+      } while (localj.n());
       bool1 = this.v.a();
     }
     return (bool1) && (GLES20.glGetError() == 0);
@@ -106,7 +106,7 @@ public class g
     super.e();
     Iterator localIterator = this.r.iterator();
     while (localIterator.hasNext()) {
-      ((h)localIterator.next()).d();
+      ((j)localIterator.next()).d();
     }
   }
   
@@ -129,7 +129,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.g
  * JD-Core Version:    0.7.0.1
  */

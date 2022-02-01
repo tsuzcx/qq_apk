@@ -28,52 +28,37 @@ import org.jetbrains.annotations.NotNull;
 public final class CardFlipTrigger
   extends BaseTrigger
 {
-  public static final CardFlipTrigger.Companion a;
-  private static final float e;
-  private float jdField_a_of_type_Float = e;
-  private int jdField_a_of_type_Int;
-  private transient Animator jdField_a_of_type_AndroidAnimationAnimator;
-  private transient View jdField_a_of_type_AndroidViewView;
-  private transient VelocityTrackerHelper jdField_a_of_type_ComTencentXactionTriggerTouchVelocityTrackerHelper;
+  public static final CardFlipTrigger.Companion a = new CardFlipTrigger.Companion(null);
+  private static final float n;
   @NotNull
-  private String jdField_a_of_type_JavaLangString = "x";
-  private transient boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float = -1.0F;
-  private int jdField_b_of_type_Int;
-  private transient View jdField_b_of_type_AndroidViewView;
-  private transient float c;
-  private transient float d;
+  private String b = "x";
+  private int c;
+  private int d;
+  private float e = n;
+  private float f = -1.0F;
+  private transient float g;
+  private transient float h;
+  private transient View i;
+  private transient View j;
+  private transient VelocityTrackerHelper k;
+  private transient Animator l;
+  private transient boolean m;
   
   static
   {
-    jdField_a_of_type_ComTencentXactionTriggerCardFlipTrigger$Companion = new CardFlipTrigger.Companion(null);
-    float f = 16000;
+    float f1 = 16000;
     Resources localResources = Resources.getSystem();
     Intrinsics.checkExpressionValueIsNotNull(localResources, "Resources.getSystem()");
-    e = f * localResources.getDisplayMetrics().density;
-  }
-  
-  private final void a()
-  {
-    if (this.jdField_b_of_type_Float > 0)
-    {
-      VelocityTrackerHelper localVelocityTrackerHelper = this.jdField_a_of_type_ComTencentXactionTriggerTouchVelocityTrackerHelper;
-      if (localVelocityTrackerHelper == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("velocityTrackerHelper");
-      }
-      VelocityTrackerHelper.a(localVelocityTrackerHelper, (VelocityTrackerHelper.ScrollCallback)new CardFlipTrigger.actionUp.1(this), 0, 0, this.jdField_b_of_type_Float, 6, null);
-      return;
-    }
-    b();
+    n = f1 * localResources.getDisplayMetrics().density;
   }
   
   private final void a(boolean paramBoolean, float paramFloat)
   {
-    View localView1 = this.jdField_a_of_type_AndroidViewView;
+    View localView1 = this.i;
     if (localView1 == null) {
       Intrinsics.throwNpe();
     }
-    View localView2 = this.jdField_b_of_type_AndroidViewView;
+    View localView2 = this.j;
     if (localView2 == null) {
       Intrinsics.throwNpe();
     }
@@ -108,55 +93,55 @@ public final class CardFlipTrigger
   
   private final boolean a(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_b_of_type_AndroidViewView == null))
+    if ((this.i == null) || (this.j == null))
     {
       paramView = getEngine();
       localView = null;
       if (paramView != null)
       {
-        paramView = paramView.findById(this.jdField_a_of_type_Int);
+        paramView = paramView.findById(this.c);
         if (paramView != null)
         {
           paramView = paramView.getDecor();
           if (paramView != null)
           {
-            paramView = paramView.getProxy();
+            paramView = paramView.b();
             break label62;
           }
         }
       }
       paramView = null;
       label62:
-      this.jdField_a_of_type_AndroidViewView = paramView;
+      this.i = paramView;
       Object localObject = getEngine();
       paramView = localView;
       if (localObject != null)
       {
-        localObject = ((XAEngine)localObject).findById(this.jdField_b_of_type_Int);
+        localObject = ((XAEngine)localObject).findById(this.d);
         paramView = localView;
         if (localObject != null)
         {
           localObject = ((IView)localObject).getDecor();
           paramView = localView;
           if (localObject != null) {
-            paramView = ((IDecorView)localObject).getProxy();
+            paramView = ((IDecorView)localObject).b();
           }
         }
       }
-      this.jdField_b_of_type_AndroidViewView = paramView;
+      this.j = paramView;
     }
-    paramView = this.jdField_a_of_type_AndroidViewView;
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    paramView = this.i;
+    View localView = this.j;
     if (paramView != null)
     {
       if (localView == null) {
         return false;
       }
-      paramView.setCameraDistance(this.jdField_a_of_type_Float);
-      localView.setCameraDistance(this.jdField_a_of_type_Float);
-      if (this.jdField_b_of_type_Float > 0.0F)
+      paramView.setCameraDistance(this.e);
+      localView.setCameraDistance(this.e);
+      if (this.f > 0.0F)
       {
-        paramView = this.jdField_a_of_type_ComTencentXactionTriggerTouchVelocityTrackerHelper;
+        paramView = this.k;
         if (paramView == null) {
           Intrinsics.throwUninitializedPropertyAccessException("velocityTrackerHelper");
         }
@@ -164,43 +149,43 @@ public final class CardFlipTrigger
       }
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      int i = paramMotionEvent.getAction();
-      if (i != 0)
+      int i1 = paramMotionEvent.getAction();
+      if (i1 != 0)
       {
-        if (i != 1)
+        if (i1 != 1)
         {
-          if (i != 2) {
+          if (i1 != 2) {
             return true;
           }
           f1 = paramMotionEvent.getX();
-          f2 = this.c;
+          f2 = this.g;
           float f3 = paramMotionEvent.getY();
-          float f4 = this.d;
-          if (Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, "x")) {
+          float f4 = this.h;
+          if (Intrinsics.areEqual(this.b, "x")) {
             a(true, f3 - f4);
-          } else if (Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, "y")) {
+          } else if (Intrinsics.areEqual(this.b, "y")) {
             a(false, f1 - f2);
           }
-          this.c = paramMotionEvent.getX();
-          this.d = paramMotionEvent.getY();
+          this.g = paramMotionEvent.getX();
+          this.h = paramMotionEvent.getY();
           return true;
         }
-        a();
+        b();
         return true;
       }
-      this.c = f1;
-      this.d = f2;
-      paramView = this.jdField_a_of_type_AndroidAnimationAnimator;
+      this.g = f1;
+      this.h = f2;
+      paramView = this.l;
       if (paramView != null) {
         paramView.cancel();
       }
-      if (this.jdField_b_of_type_Float > 0.0F)
+      if (this.f > 0.0F)
       {
-        paramView = this.jdField_a_of_type_ComTencentXactionTriggerTouchVelocityTrackerHelper;
+        paramView = this.k;
         if (paramView == null) {
           Intrinsics.throwUninitializedPropertyAccessException("velocityTrackerHelper");
         }
-        paramView.a();
+        paramView.b();
       }
       return true;
     }
@@ -209,17 +194,31 @@ public final class CardFlipTrigger
   
   private final void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (this.f > 0)
+    {
+      VelocityTrackerHelper localVelocityTrackerHelper = this.k;
+      if (localVelocityTrackerHelper == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("velocityTrackerHelper");
+      }
+      VelocityTrackerHelper.a(localVelocityTrackerHelper, (VelocityTrackerHelper.ScrollCallback)new CardFlipTrigger.actionUp.1(this), 0, 0, this.f, 6, null);
+      return;
+    }
+    c();
+  }
+  
+  private final void c()
+  {
+    Object localObject = this.i;
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
     float f2 = ((View)localObject).getRotationX();
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    localObject = this.i;
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
     float f1 = ((View)localObject).getRotationY();
-    boolean bool = Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, "x");
+    boolean bool = Intrinsics.areEqual(this.b, "x");
     if (!bool) {
       f2 = f1;
     }
@@ -248,13 +247,13 @@ public final class CardFlipTrigger
     ((ValueAnimator)localObject).setInterpolator((TimeInterpolator)localSpringInterpolator);
     ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new CardFlipTrigger.springFlip.2(this, bool));
     ((ValueAnimator)localObject).start();
-    this.jdField_a_of_type_AndroidAnimationAnimator = ((Animator)localObject);
+    this.l = ((Animator)localObject);
   }
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
@@ -263,19 +262,19 @@ public final class CardFlipTrigger
     Intrinsics.checkParameterIsNotNull(paramViewData, "data");
     Intrinsics.checkParameterIsNotNull(paramIView, "iview");
     super.monitor(paramViewData, paramIView);
-    paramViewData = paramIView.getDecor().getProxy();
-    if (paramViewData == null) {
-      Intrinsics.throwNpe();
+    paramViewData = paramIView.getDecor().b();
+    if (paramViewData != null)
+    {
+      paramIView = paramViewData.getContext();
+      Intrinsics.checkExpressionValueIsNotNull(paramIView, "view.context");
+      this.k = new VelocityTrackerHelper(paramIView, (Interpolator)new DecelerateInterpolator());
+      TouchEventHelper.a.a(paramViewData, (View.OnTouchListener)new CardFlipTrigger.monitor.1(this));
     }
-    paramIView = paramViewData.getContext();
-    Intrinsics.checkExpressionValueIsNotNull(paramIView, "view.context");
-    this.jdField_a_of_type_ComTencentXactionTriggerTouchVelocityTrackerHelper = new VelocityTrackerHelper(paramIView, (Interpolator)new DecelerateInterpolator());
-    TouchEventHelper.a.a(paramViewData, (View.OnTouchListener)new CardFlipTrigger.monitor.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.CardFlipTrigger
  * JD-Core Version:    0.7.0.1
  */

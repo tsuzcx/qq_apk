@@ -17,22 +17,21 @@ import java.util.ArrayList;
 
 public class SubCateListView
 {
-  protected final Context a;
-  protected final View.OnClickListener a;
-  protected View a;
   protected final ViewStub a;
-  protected SingleItemViewHolder a;
-  protected SubCateListAdapter a;
-  protected final SubCateListView.OnToggleSubListListener a;
-  protected boolean a;
+  protected final Context b;
+  protected final View.OnClickListener c;
+  protected final SubCateListView.OnToggleSubListListener d;
+  protected boolean e = false;
+  protected View f;
+  protected SubCateListAdapter g;
+  protected SingleItemViewHolder h;
   
   public SubCateListView(ViewStub paramViewStub, Context paramContext, View.OnClickListener paramOnClickListener, SubCateListView.OnToggleSubListListener paramOnToggleSubListListener)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSubCateListView$OnToggleSubListListener = paramOnToggleSubListListener;
+    this.a = paramViewStub;
+    this.b = paramContext;
+    this.c = paramOnClickListener;
+    this.d = paramOnToggleSubListListener;
   }
   
   private void a(View paramView, int paramInt1, int paramInt2, Interpolator paramInterpolator, boolean paramBoolean)
@@ -61,21 +60,21 @@ public class SubCateListView
   
   private void b()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-    GridView localGridView = (GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378025);
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSubCateListAdapter = new SubCateListAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    localGridView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSubCateListAdapter);
+    this.e = true;
+    this.f = this.a.inflate();
+    GridView localGridView = (GridView)this.f.findViewById(2131446523);
+    this.g = new SubCateListAdapter(this.b, this.c);
+    localGridView.setAdapter(this.g);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSingleItemViewHolder = null;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.h = null;
+    if (this.e) {
+      this.f.setVisibility(8);
     }
   }
   
@@ -83,15 +82,15 @@ public class SubCateListView
   {
     b();
     int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSingleItemViewHolder != null)
+    if (this.h != null)
     {
-      i = ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams()).height;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSingleItemViewHolder;
+      i = ((LinearLayout.LayoutParams)this.f.getLayoutParams()).height;
+      localObject = this.h;
       if (localObject == paramSingleItemViewHolder)
       {
         a(paramSingleItemViewHolder, false);
-        a(this.jdField_a_of_type_AndroidViewView, i, 0, new DecelerateInterpolator(), true);
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSingleItemViewHolder = null;
+        a(this.f, i, 0, new DecelerateInterpolator(), true);
+        this.h = null;
         return false;
       }
       a((SingleItemViewHolder)localObject, false);
@@ -100,21 +99,21 @@ public class SubCateListView
     {
       i = 0;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSubCateListAdapter.a(paramTroopCateInfo);
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSingleItemViewHolder = paramSingleItemViewHolder;
+    this.g.a(paramTroopCateInfo);
+    this.h = paramSingleItemViewHolder;
     Object localObject = new int[2];
-    paramSingleItemViewHolder.a.getLocationInWindow((int[])localObject);
-    int j = (int)Math.ceil(paramTroopCateInfo.a.size() / 3.0F);
-    j = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, j * 56 - 13 + 30);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    paramSingleItemViewHolder.d.getLocationInWindow((int[])localObject);
+    int j = (int)Math.ceil(paramTroopCateInfo.g.size() / 3.0F);
+    j = DisplayUtil.a(this.b, j * 56 - 13 + 30);
+    this.f.setVisibility(0);
     a(paramSingleItemViewHolder, true);
-    a(this.jdField_a_of_type_AndroidViewView, i, j, new AccelerateInterpolator(), false);
+    a(this.f, i, j, new AccelerateInterpolator(), false);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.SubCateListView
  * JD-Core Version:    0.7.0.1
  */

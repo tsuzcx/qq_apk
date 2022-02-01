@@ -25,7 +25,7 @@ public class ExtendFriendSafeTipArkDialog
   public ExtendFriendSafeTipArkDialog(@NonNull Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-    super.getWindow().setWindowAnimations(2131755294);
+    super.getWindow().setWindowAnimations(2131951986);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
@@ -33,7 +33,7 @@ public class ExtendFriendSafeTipArkDialog
   
   public static View a(ArkView paramArkView, ArkViewImplement.LoadCallback paramLoadCallback, int paramInt)
   {
-    int i = ViewUtils.a();
+    int i = ViewUtils.getScreenWidth();
     Object localObject1 = new ArkAppInfo.Size(i, (int)(i / 0.641921F));
     paramArkView.setSize((ArkAppInfo.Size)localObject1, (ArkAppInfo.Size)localObject1, (ArkAppInfo.Size)localObject1);
     paramArkView.setBorderType(1);
@@ -75,8 +75,8 @@ public class ExtendFriendSafeTipArkDialog
     {
       QLog.e("ExtendFriendArkDialog", 1, localException.getMessage());
     }
-    super.setContentView(2131561072);
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131362967);
+    super.setContentView(2131627415);
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131428766);
     if (this.a == null)
     {
       QLog.w("ExtendFriendArkDialog", 1, "arkView is null!");
@@ -142,7 +142,7 @@ public class ExtendFriendSafeTipArkDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.ExtendFriendSafeTipArkDialog
  * JD-Core Version:    0.7.0.1
  */

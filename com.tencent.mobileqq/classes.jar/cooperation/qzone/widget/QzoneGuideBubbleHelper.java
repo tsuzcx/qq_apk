@@ -61,11 +61,11 @@ public class QzoneGuideBubbleHelper
         return null;
       }
       localObject = new TextView((Context)this.mContext.get());
-      ((TextView)localObject).setId(2131375495);
+      ((TextView)localObject).setId(2131443686);
       ((TextView)localObject).setTextColor(-1);
       ((TextView)localObject).setTextSize(paramFloat);
       ((TextView)localObject).setText(paramString);
-      int n = ((Context)this.mContext.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298719);
+      int n = ((Context)this.mContext.get()).getApplicationContext().getResources().getDimensionPixelSize(2131299436);
       if (paramCompoundDrawableInfo != null)
       {
         paramString = ((Context)this.mContext.get()).getResources().getDrawable(paramCompoundDrawableInfo.drawableId);
@@ -76,8 +76,8 @@ public class QzoneGuideBubbleHelper
           ((TextView)localObject).setCompoundDrawablePadding(paramCompoundDrawableInfo.drawableMarginRight);
         }
       }
-      int i = ((Context)this.mContext.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298721);
-      int j = ((Context)this.mContext.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298720);
+      int i = ((Context)this.mContext.get()).getApplicationContext().getResources().getDimensionPixelSize(2131299438);
+      int j = ((Context)this.mContext.get()).getApplicationContext().getResources().getDimensionPixelSize(2131299437);
       ((TextView)localObject).setPadding(j, i, j, i);
       ((TextView)localObject).setGravity(17);
       if (paramInt4 > 0)
@@ -85,21 +85,21 @@ public class QzoneGuideBubbleHelper
         ((TextView)localObject).setMaxLines(paramInt4);
         ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.valueOf("END"));
       }
-      i = ((Context)this.mContext.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298722);
+      i = ((Context)this.mContext.get()).getApplicationContext().getResources().getDimensionPixelSize(2131299439);
       setViewBackground((View)localObject, createRoundCornerShapeDrawable(i, 0.0F, paramInt2));
       paramString = new TriangleView((Context)this.mContext.get(), paramInt1, paramInt2);
-      paramString.setId(2131375493);
+      paramString.setId(2131443684);
       paramCompoundDrawableInfo = new RelativeLayout.LayoutParams(-2, -2);
-      int k = ((Context)this.mContext.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298718);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(k, ((Context)this.mContext.get()).getApplicationContext().getResources().getDimensionPixelSize(2131298717));
+      int k = ((Context)this.mContext.get()).getApplicationContext().getResources().getDimensionPixelSize(2131299435);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(k, ((Context)this.mContext.get()).getApplicationContext().getResources().getDimensionPixelSize(2131299434));
       if (paramInt1 == 0)
       {
         paramCompoundDrawableInfo.addRule(10);
-        localLayoutParams.addRule(3, 2131375495);
+        localLayoutParams.addRule(3, 2131443686);
       }
       else if (paramInt1 == 1)
       {
-        paramCompoundDrawableInfo.addRule(3, 2131375493);
+        paramCompoundDrawableInfo.addRule(3, 2131443684);
       }
       paramCompoundDrawableInfo.addRule(14);
       localLayoutParams.leftMargin = paramInt3;
@@ -201,7 +201,7 @@ public class QzoneGuideBubbleHelper
     if ((paramContext != null) && ((paramContext instanceof Activity)))
     {
       ViewGroup localViewGroup = (ViewGroup)((Activity)paramContext).getWindow().getDecorView();
-      FrameLayout localFrameLayout = (FrameLayout)localViewGroup.findViewById(2131375494);
+      FrameLayout localFrameLayout = (FrameLayout)localViewGroup.findViewById(2131443685);
       paramContext = localFrameLayout;
       if (localFrameLayout == null) {
         paramContext = (FrameLayout)localViewGroup.findViewById(16908290);
@@ -249,7 +249,7 @@ public class QzoneGuideBubbleHelper
         localObject = getBubbleParentView((Context)((WeakReference)localObject).get());
         if (localObject != null)
         {
-          View localView = ((FrameLayout)localObject).findViewById(2131375496);
+          View localView = ((FrameLayout)localObject).findViewById(2131443687);
           if (localView != null) {
             ((FrameLayout)localObject).removeViewInLayout(localView);
           }
@@ -363,11 +363,11 @@ public class QzoneGuideBubbleHelper
         if (paramView == null) {
           break label303;
         }
-        paramActivity.setId(2131375496);
+        paramActivity.setId(2131443687);
         paramString = (FrameLayout.LayoutParams)paramActivity.getLayoutParams();
-        paramString.leftMargin = Math.max(paramInt2, ViewUtils.a(12.0F));
+        paramString.leftMargin = Math.max(paramInt2, ViewUtils.dip2px(12.0F));
         paramString.topMargin = paramInt1;
-        paramString.rightMargin = ViewUtils.a(12.0F);
+        paramString.rightMargin = ViewUtils.dip2px(12.0F);
         paramView.addView(paramActivity);
       }
     }
@@ -387,7 +387,7 @@ public class QzoneGuideBubbleHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneGuideBubbleHelper
  * JD-Core Version:    0.7.0.1
  */

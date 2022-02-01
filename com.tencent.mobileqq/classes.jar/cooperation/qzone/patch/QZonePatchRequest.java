@@ -22,7 +22,7 @@ public class QZonePatchRequest
     super.setLoginUserId(paramLong);
     SQ_CLIENT_UPDATE_REQ localSQ_CLIENT_UPDATE_REQ = new SQ_CLIENT_UPDATE_REQ();
     localSQ_CLIENT_UPDATE_REQ.qua = QUA.getQUA3();
-    localSQ_CLIENT_UPDATE_REQ.version = AppSetting.f();
+    localSQ_CLIENT_UPDATE_REQ.version = AppSetting.h();
     localSQ_CLIENT_UPDATE_REQ.apiLevel = Build.VERSION.SDK_INT;
     localSQ_CLIENT_UPDATE_REQ.triggerType = 1;
     localSQ_CLIENT_UPDATE_REQ.vPlugin = paramArrayList1;
@@ -59,7 +59,7 @@ public class QZonePatchRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.patch.QZonePatchRequest
  * JD-Core Version:    0.7.0.1
  */

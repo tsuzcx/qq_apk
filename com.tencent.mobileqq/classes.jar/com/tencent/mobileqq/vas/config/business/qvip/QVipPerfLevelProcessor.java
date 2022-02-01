@@ -17,9 +17,9 @@ public class QVipPerfLevelProcessor
   public QVipPerfLevelConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QVIP.PERF.ConfigProcessor", 1, paramArrayOfQConfItem[0].a);
+      QLog.d("QVIP.PERF.ConfigProcessor", 1, paramArrayOfQConfItem[0].b);
     }
-    return QVipPerfLevelConfig.a(paramArrayOfQConfItem[0].a);
+    return QVipPerfLevelConfig.a(paramArrayOfQConfItem[0].b);
   }
   
   @NonNull
@@ -45,7 +45,7 @@ public class QVipPerfLevelProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipPerfLevelProcessor
  * JD-Core Version:    0.7.0.1
  */

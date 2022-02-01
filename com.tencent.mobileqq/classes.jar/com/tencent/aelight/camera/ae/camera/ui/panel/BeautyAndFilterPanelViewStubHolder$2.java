@@ -10,12 +10,13 @@ class BeautyAndFilterPanelViewStubHolder$2
   
   public void run()
   {
-    BeautyAndFilterPanelViewStubHolder.a(this.this$0).setControllerAndManager(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAECaptureController, this.jdField_a_of_type_ComTencentAelightCameraAePartVideoStoryCapturePartManager);
+    BeautyAndFilterPanelViewStubHolder.a(this.this$0).setCaptureMode(BeautyAndFilterPanelViewStubHolder.b(this.this$0));
+    BeautyAndFilterPanelViewStubHolder.a(this.this$0).setControllerAndManager(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder.2
  * JD-Core Version:    0.7.0.1
  */

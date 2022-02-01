@@ -22,14 +22,14 @@ public class TeamWorkListAction
   {
     try
     {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      Intent localIntent = new Intent(this.b, QQBrowserActivity.class);
       String str;
-      if (TextUtils.isEmpty(TencentDocConvertConfigProcessor.a().h())) {
+      if (TextUtils.isEmpty(TencentDocConvertConfigProcessor.a().q())) {
         str = "https://docs.qq.com/desktop/m/index.html?_from=1";
       } else {
-        str = TencentDocConvertConfigProcessor.a().h();
+        str = TencentDocConvertConfigProcessor.a().q();
       }
-      this.a.startActivity(localIntent.putExtra("url", str));
+      this.b.startActivity(localIntent.putExtra("url", str));
     }
     catch (Exception localException)
     {
@@ -51,14 +51,14 @@ public class TeamWorkListAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("TeamWorkListAction", 1, localStringBuilder.toString());
-      b_("TeamWorkListAction");
+      h_("TeamWorkListAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.TeamWorkListAction
  * JD-Core Version:    0.7.0.1
  */

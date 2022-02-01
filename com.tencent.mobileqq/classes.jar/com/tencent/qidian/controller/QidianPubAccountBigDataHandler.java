@@ -13,7 +13,6 @@ import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qidian.data.PubAccountNavigationMenu;
 import com.tencent.qidian.util.LoginUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -28,19 +27,12 @@ import tencent.im.cs.cmd0x6ff.subcmd0x519.RspBody;
 public class QidianPubAccountBigDataHandler
   extends BigDataHandler
 {
-  public static final AtomicBoolean a;
-  public Map<Long, PubAccountNavigationMenu> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  public static final AtomicBoolean d = new AtomicBoolean(false);
+  public Map<Long, PubAccountNavigationMenu> c = null;
   
   public QidianPubAccountBigDataHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_JavaUtilMap = null;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
     ThreadManager.post(new QidianPubAccountBigDataHandler.1(this), 8, null, true);
   }
   
@@ -48,53 +40,53 @@ public class QidianPubAccountBigDataHandler
   private void a()
   {
     // Byte code:
-    //   0: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +11 -> 14
-    //   6: ldc 49
+    //   6: ldc 51
     //   8: iconst_4
-    //   9: ldc 51
-    //   11: invokestatic 55	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   9: ldc 53
+    //   11: invokestatic 56	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   14: aload_0
-    //   15: getfield 58	com/tencent/qidian/controller/QidianPubAccountBigDataHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   18: invokevirtual 64	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   21: invokevirtual 70	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   15: getfield 59	com/tencent/qidian/controller/QidianPubAccountBigDataHandler:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   18: invokevirtual 65	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   21: invokevirtual 71	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   24: astore_1
     //   25: aload_0
     //   26: aload_1
-    //   27: invokespecial 73	com/tencent/qidian/controller/QidianPubAccountBigDataHandler:a	(Lcom/tencent/mobileqq/persistence/EntityManager;)V
+    //   27: invokespecial 74	com/tencent/qidian/controller/QidianPubAccountBigDataHandler:a	(Lcom/tencent/mobileqq/persistence/EntityManager;)V
     //   30: aload_1
-    //   31: invokevirtual 78	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   31: invokevirtual 79	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   34: goto +51 -> 85
     //   37: astore_2
     //   38: goto +55 -> 93
     //   41: astore_2
-    //   42: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   42: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   45: ifeq -15 -> 30
-    //   48: new 80	java/lang/StringBuilder
+    //   48: new 81	java/lang/StringBuilder
     //   51: dup
-    //   52: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   52: invokespecial 82	java/lang/StringBuilder:<init>	()V
     //   55: astore_3
     //   56: aload_3
-    //   57: ldc 83
-    //   59: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: ldc 84
+    //   59: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   62: pop
     //   63: aload_3
     //   64: aload_2
-    //   65: invokevirtual 91	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   68: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 92	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   68: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   71: pop
-    //   72: ldc 49
+    //   72: ldc 51
     //   74: iconst_2
     //   75: aload_3
-    //   76: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   79: invokestatic 97	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   76: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   79: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   82: goto -52 -> 30
-    //   85: getstatic 18	com/tencent/qidian/controller/QidianPubAccountBigDataHandler:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   85: getstatic 19	com/tencent/qidian/controller/QidianPubAccountBigDataHandler:d	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   88: iconst_1
-    //   89: invokevirtual 100	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   89: invokevirtual 101	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   92: return
     //   93: aload_1
-    //   94: invokevirtual 78	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   94: invokevirtual 79	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   97: goto +5 -> 102
     //   100: aload_2
     //   101: athrow
@@ -115,7 +107,7 @@ public class QidianPubAccountBigDataHandler
   
   private void a(long paramLong1, PubAccountNavigationMenu paramPubAccountNavigationMenu, long paramLong2)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    Object localObject1 = this.a.getCurrentAccountUin();
     try
     {
       paramLong2 = Long.parseLong((String)localObject1);
@@ -134,7 +126,7 @@ public class QidianPubAccountBigDataHandler
       ((subcmd0x519.ReqBody)localObject2).uint32_sub_cmd.set(36);
       ((subcmd0x519.ReqBody)localObject2).msg_get_navigation_menu_req.set((MessageMicro)localObject1);
       localObject1 = new subcmd0x519.CRMMsgHead();
-      ((subcmd0x519.CRMMsgHead)localObject1).uint32_ver_no.set(LoginUtils.a("8.7.0"));
+      ((subcmd0x519.CRMMsgHead)localObject1).uint32_ver_no.set(LoginUtils.a("8.8.17"));
       ((subcmd0x519.CRMMsgHead)localObject1).uint32_crm_sub_cmd.set(36);
       ((subcmd0x519.CRMMsgHead)localObject1).uint32_clienttype.set(2);
       ((subcmd0x519.CRMMsgHead)localObject1).uint64_kf_uin.set(paramLong1);
@@ -164,8 +156,8 @@ public class QidianPubAccountBigDataHandler
             localStringBuilder.append(localPubAccountNavigationMenu);
             QLog.d("QidianPubAccountBigDataHandler", 4, localStringBuilder.toString());
           }
-          if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(localPubAccountNavigationMenu.puin))) {
-            this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(localPubAccountNavigationMenu.puin), localPubAccountNavigationMenu);
+          if (!this.c.containsKey(Long.valueOf(localPubAccountNavigationMenu.puin))) {
+            this.c.put(Long.valueOf(localPubAccountNavigationMenu.puin), localPubAccountNavigationMenu);
           }
         }
       }
@@ -174,7 +166,7 @@ public class QidianPubAccountBigDataHandler
   
   private void a(PubAccountNavigationMenu paramPubAccountNavigationMenu)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramPubAccountNavigationMenu.puin), paramPubAccountNavigationMenu);
+    this.c.put(Long.valueOf(paramPubAccountNavigationMenu.puin), paramPubAccountNavigationMenu);
     ThreadManager.post(new QidianPubAccountBigDataHandler.3(this, paramPubAccountNavigationMenu), 5, null, true);
   }
   
@@ -293,15 +285,15 @@ public class QidianPubAccountBigDataHandler
     try
     {
       long l = Long.parseLong(paramString);
-      paramString = (PubAccountNavigationMenu)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l));
+      paramString = (PubAccountNavigationMenu)this.c.get(Long.valueOf(l));
       if (paramString != null) {
         return paramString;
       }
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      if (d.get()) {
         return null;
       }
       a(l);
-      paramString = (PubAccountNavigationMenu)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l));
+      paramString = (PubAccountNavigationMenu)this.c.get(Long.valueOf(l));
       return paramString;
     }
     catch (Exception paramString) {}
@@ -328,14 +320,14 @@ public class QidianPubAccountBigDataHandler
   
   public void a(long paramLong)
   {
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (!d.get())
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      Object localObject = this.a.getEntityManagerFactory().createEntityManager();
       if (localObject != null)
       {
         localObject = (PubAccountNavigationMenu)((EntityManager)localObject).find(PubAccountNavigationMenu.class, new String[] { String.valueOf(paramLong) });
         if (localObject != null) {
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(((PubAccountNavigationMenu)localObject).puin), localObject);
+          this.c.put(Long.valueOf(((PubAccountNavigationMenu)localObject).puin), localObject);
         }
       }
     }
@@ -349,12 +341,12 @@ public class QidianPubAccountBigDataHandler
     try
     {
       long l = Long.parseLong(paramString);
-      paramString = (PubAccountNavigationMenu)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l));
+      paramString = (PubAccountNavigationMenu)this.c.get(Long.valueOf(l));
       if (paramString != null)
       {
         a(l, paramString, paramLong);
       }
-      else if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+      else if (d.get())
       {
         paramString = new PubAccountNavigationMenu();
         paramString.version = 0;
@@ -390,13 +382,13 @@ public class QidianPubAccountBigDataHandler
   public void onDestroy()
   {
     super.onDestroy();
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    d.set(false);
+    this.c.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianPubAccountBigDataHandler
  * JD-Core Version:    0.7.0.1
  */

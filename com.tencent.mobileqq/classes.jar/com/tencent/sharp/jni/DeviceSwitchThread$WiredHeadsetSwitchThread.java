@@ -17,7 +17,7 @@ class DeviceSwitchThread$WiredHeadsetSwitchThread
     b(true);
     d();
     int i = 0;
-    while (this.b)
+    while (this.g)
     {
       if (TraeUtils.a()) {
         a(false);
@@ -36,7 +36,7 @@ class DeviceSwitchThread$WiredHeadsetSwitchThread
       {
         if (QLog.isColorLevel())
         {
-          String str = DeviceSwitchThread.a();
+          String str = DeviceSwitchThread.f();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("WiredHeadsetSwitchThread InterruptedException[");
           localStringBuilder.append(localInterruptedException.getMessage());
@@ -50,7 +50,7 @@ class DeviceSwitchThread$WiredHeadsetSwitchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.sharp.jni.DeviceSwitchThread.WiredHeadsetSwitchThread
  * JD-Core Version:    0.7.0.1
  */

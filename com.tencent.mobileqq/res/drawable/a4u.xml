@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="20.0dip" android:width="20.0dip" android:viewportWidth="40.0" android:viewportHeight="40.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/ftn" />
-    <item android:state_focused="true" android:state_enabled="false" android:drawable="@drawable/ftn" />
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/abt" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/abt" />
-    <item android:state_focused="true" android:drawable="@drawable/frz" />
-    <item android:drawable="@android:color/transparent" />
-</selector>
+    <group>
+        <clip-path android:pathData="M0,0h40v40h-40z" />
+        <path android:fillColor="#00000000" android:pathData="M7,23h10v10h-10z" android:strokeColor="#ff222222" android:strokeWidth="3.0" android:fillType="evenOdd" />
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h40v40h-40z" />
+        <path android:fillColor="#00000000" android:pathData="M7,7h10v10h-10z" android:strokeColor="#ff222222" android:strokeWidth="3.0" android:fillType="evenOdd" />
+    </group>
+    <group>
+        <clip-path android:pathData="M16.6863,-16.2843l28.2843,28.2843l-28.2843,28.2843l-28.2843,-28.2843z" />
+        <path android:fillColor="#00000000" android:pathData="M28,4.9289l7.0711,7.0711l-7.0711,7.0711l-7.0711,-7.0711z" android:strokeColor="#ff222222" android:strokeWidth="3.0" android:strokeLineJoin="round" android:fillType="evenOdd" />
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h40v40h-40z" />
+        <path android:fillColor="#00000000" android:pathData="M23,23h10v10h-10z" android:strokeColor="#ff222222" android:strokeWidth="3.0" android:fillType="evenOdd" />
+    </group>
+</vector>

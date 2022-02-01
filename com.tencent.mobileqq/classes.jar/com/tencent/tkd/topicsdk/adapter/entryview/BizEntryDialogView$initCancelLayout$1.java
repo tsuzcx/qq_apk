@@ -14,7 +14,7 @@ final class BizEntryDialogView$initCancelLayout$1
   
   public final void onClick(View paramView)
   {
-    paramView = this.a.e();
+    paramView = this.a.getCancelClickListener();
     if (paramView != null) {
       paramView = (Unit)paramView.invoke();
     }
@@ -22,7 +22,7 @@ final class BizEntryDialogView$initCancelLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.entryview.BizEntryDialogView.initCancelLayout.1
  * JD-Core Version:    0.7.0.1
  */

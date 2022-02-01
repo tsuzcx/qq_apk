@@ -42,7 +42,7 @@ public abstract class ItemTouchHelper$SimpleCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.itemtouchhelper.ItemTouchHelper.SimpleCallback
  * JD-Core Version:    0.7.0.1
  */

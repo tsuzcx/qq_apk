@@ -11,8 +11,8 @@ class SlideShowAdapter$2
   
   public void onClick(View paramView)
   {
-    if (SlideShowAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowAdapter) != null) {
-      SlideShowAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowAdapter).a(this.jdField_a_of_type_Int);
+    if (SlideShowAdapter.b(this.b) != null) {
+      SlideShowAdapter.b(this.b).a(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

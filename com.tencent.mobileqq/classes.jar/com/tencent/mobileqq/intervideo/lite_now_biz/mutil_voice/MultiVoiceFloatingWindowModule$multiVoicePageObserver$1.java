@@ -21,13 +21,13 @@ final class MultiVoiceFloatingWindowModule$multiVoicePageObserver$1<T>
     if ((paramMultiVoicePageEvent != null) && (paramMultiVoicePageEvent.a == 0))
     {
       MultiVoiceFloatingWindowModule.c(this.a, true);
-      MultiVoiceFloatingWindowModule.a(this.a);
+      MultiVoiceFloatingWindowModule.p(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.MultiVoiceFloatingWindowModule.multiVoicePageObserver.1
  * JD-Core Version:    0.7.0.1
  */

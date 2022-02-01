@@ -14,12 +14,12 @@ class VideoCoverListBar$VideoCoverListBarAdapter
   
   public String a(int paramInt)
   {
-    return (String)VideoCoverListBar.a(this.a).get(paramInt);
+    return (String)VideoCoverListBar.d(this.a).get(paramInt);
   }
   
   public int getCount()
   {
-    return VideoCoverListBar.a(this.a).size();
+    return VideoCoverListBar.d(this.a).size();
   }
   
   public long getItemId(int paramInt)
@@ -37,7 +37,7 @@ class VideoCoverListBar$VideoCoverListBarAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2131561741, null);
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2131628120, null);
       paramView = new VideoCoverListBar.VideoCoverListBarAdapter.ViewHolder(this, localView);
       localView.setTag(paramView);
     }
@@ -59,7 +59,7 @@ class VideoCoverListBar$VideoCoverListBarAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.VideoCoverListBar.VideoCoverListBarAdapter
  * JD-Core Version:    0.7.0.1
  */

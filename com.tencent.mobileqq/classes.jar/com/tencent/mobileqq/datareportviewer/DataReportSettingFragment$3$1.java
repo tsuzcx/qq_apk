@@ -16,24 +16,24 @@ class DataReportSettingFragment$3$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     Object localObject = (QQCustomDialog)paramDialogInterface;
-    paramDialogInterface = (EditText)((QQCustomDialog)localObject).findViewById(2131371704);
-    localObject = (EditText)((QQCustomDialog)localObject).findViewById(2131361968);
+    paramDialogInterface = (EditText)((QQCustomDialog)localObject).findViewById(2131439130);
+    localObject = (EditText)((QQCustomDialog)localObject).findViewById(2131427523);
     if ((!TextUtils.isEmpty(paramDialogInterface.getText().toString())) && (!TextUtils.isEmpty(((EditText)localObject).getText().toString())))
     {
       ReportDataConfig localReportDataConfig = new ReportDataConfig();
       localReportDataConfig.a = paramDialogInterface.getText().toString();
-      localReportDataConfig.jdField_b_of_type_JavaLangString = ((EditText)localObject).getText().toString();
-      localReportDataConfig.jdField_b_of_type_Boolean = true;
+      localReportDataConfig.c = ((EditText)localObject).getText().toString();
+      localReportDataConfig.e = true;
       DataReportViewerFloatViewHelper.a().a(localReportDataConfig);
-      this.a.a.a.notifyDataSetChanged();
+      this.a.a.e.notifyDataSetChanged();
       return;
     }
-    QQToast.a(this.a.a.getBaseActivity(), 1, HardCodeUtil.a(2131702941), 0).a();
+    QQToast.makeText(this.a.a.getBaseActivity(), 1, HardCodeUtil.a(2131900917), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportSettingFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

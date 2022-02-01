@@ -14,9 +14,9 @@ final class QCircleInjectImpl$4
   
   public void onClick(View paramView)
   {
-    Frame localFrame = this.a.a();
+    Frame localFrame = this.a.v();
     if ((localFrame instanceof QCircleFrame)) {
-      ((QCircleFrame)localFrame).j();
+      ((QCircleFrame)localFrame).m();
     }
     super.onClick(paramView);
     EventCollector.getInstance().onViewClicked(paramView);
@@ -24,7 +24,7 @@ final class QCircleInjectImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.QCircleInjectImpl.4
  * JD-Core Version:    0.7.0.1
  */

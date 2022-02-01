@@ -25,7 +25,7 @@ class StoryPickerFragment$6
   
   protected Object a(@NonNull JobContext paramJobContext, Void... paramVarArgs)
   {
-    paramJobContext = QQStoryContext.a().b();
+    paramJobContext = QQStoryContext.a().i();
     Object localObject = (MemoryManager)SuperManager.a(19);
     paramVarArgs = new ArrayList();
     ArrayList localArrayList1 = ((MemoryManager)localObject).a(paramJobContext, paramVarArgs);
@@ -35,12 +35,12 @@ class StoryPickerFragment$6
         return null;
       }
       ArrayList localArrayList2 = new ArrayList();
-      localArrayList2.add(this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerFragment.a != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerFragment.a.b(localArrayList2, true);
+      localArrayList2.add(this.a);
+      if (this.e.e != null) {
+        this.e.e.b(localArrayList2, true);
       }
-      int i = localArrayList1.indexOf(this.jdField_a_of_type_JavaLangString);
-      localObject = ((MemoryManager)localObject).a(paramJobContext);
+      int i = localArrayList1.indexOf(this.a);
+      localObject = ((MemoryManager)localObject).c(paramJobContext);
       boolean bool;
       if ((localObject != null) && (((MemoryInfoEntry)localObject).isEnd == 1)) {
         bool = true;

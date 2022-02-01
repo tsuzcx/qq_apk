@@ -11,24 +11,24 @@ class ReadInJoyDeliverUGCActivity$18
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (ReadInJoyDeliverUGCActivity.e(this.a))
+    if (ReadInJoyDeliverUGCActivity.z(this.a))
     {
       ReadInJoyDeliverUGCActivity.d(this.a, false);
-      ReadInJoyDeliverUGCActivity.f(this.a);
-      if (!ReadInJoyDeliverUGCActivity.f(this.a))
+      ReadInJoyDeliverUGCActivity.A(this.a);
+      if (!ReadInJoyDeliverUGCActivity.B(this.a))
       {
         paramDialogInterface = this.a;
-        paramDialogInterface.a(1, paramDialogInterface.getString(2131717875));
+        paramDialogInterface.a(1, paramDialogInterface.getString(2131915348));
       }
-      if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
-        ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);
+      if (ReadInJoyDeliverUGCActivity.r(this.a) != null) {
+        ReadInJoyDeliverUGCActivity.r(this.a).removeCallbacksAndMessages(null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverUGCActivity.18
  * JD-Core Version:    0.7.0.1
  */

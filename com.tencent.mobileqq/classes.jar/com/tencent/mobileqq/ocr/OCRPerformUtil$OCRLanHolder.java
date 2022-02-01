@@ -11,24 +11,17 @@ import java.util.Set;
 
 public class OCRPerformUtil$OCRLanHolder
 {
-  public String a;
-  public HashMap<String, String> a;
-  public List<String> a;
-  public String b;
+  public String a = "";
   public List<String> b;
-  public String c;
-  public List<String> c;
-  
-  public OCRPerformUtil$OCRLanHolder()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
+  public HashMap<String, String> c;
+  public String d = "";
+  public String e = "";
+  public List<String> f;
+  public List<String> g;
   
   public Pair<String, String> a(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.c.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -43,21 +36,21 @@ public class OCRPerformUtil$OCRLanHolder
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("ocrLan:");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(this.a);
     ((StringBuilder)localObject1).append(", ocrLanOptions:");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.toString());
+    ((StringBuilder)localObject1).append(this.b.toString());
     localObject1 = ((StringBuilder)localObject1).toString();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("srcLan:");
-    ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(this.d);
     ((StringBuilder)localObject2).append(", srcLanOptions:");
-    ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaUtilList.toString());
+    ((StringBuilder)localObject2).append(this.f.toString());
     localObject2 = ((StringBuilder)localObject2).toString();
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("dstLan:");
-    ((StringBuilder)localObject3).append(this.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject3).append(this.e);
     ((StringBuilder)localObject3).append(", dstLanOptions:");
-    ((StringBuilder)localObject3).append(this.jdField_c_of_type_JavaUtilList.toString());
+    ((StringBuilder)localObject3).append(this.g.toString());
     localObject3 = ((StringBuilder)localObject3).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject1);
@@ -68,36 +61,17 @@ public class OCRPerformUtil$OCRLanHolder
     return localStringBuilder.toString();
   }
   
-  public String a(String paramString)
-  {
-    return OcrConfig.getDefaultLanguageName(paramString);
-  }
-  
   public void a(OCRLanHolder paramOCRLanHolder)
   {
-    this.jdField_a_of_type_JavaLangString = paramOCRLanHolder.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_JavaUtilList = paramOCRLanHolder.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_JavaUtilHashMap = paramOCRLanHolder.jdField_a_of_type_JavaUtilHashMap;
-    this.jdField_b_of_type_JavaLangString = paramOCRLanHolder.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_JavaLangString = paramOCRLanHolder.jdField_c_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_c_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.addAll(paramOCRLanHolder.jdField_b_of_type_JavaUtilList);
-    this.jdField_c_of_type_JavaUtilList.addAll(paramOCRLanHolder.jdField_c_of_type_JavaUtilList);
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_JavaLangString = "zh";
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_c_of_type_JavaUtilList.clear();
-    this.jdField_c_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaLangString);
-    this.jdField_b_of_type_JavaUtilList.add(this.jdField_b_of_type_JavaLangString);
+    this.a = paramOCRLanHolder.a;
+    this.b = paramOCRLanHolder.b;
+    this.c = paramOCRLanHolder.c;
+    this.d = paramOCRLanHolder.d;
+    this.e = paramOCRLanHolder.e;
+    this.f.clear();
+    this.g.clear();
+    this.f.addAll(paramOCRLanHolder.f);
+    this.g.addAll(paramOCRLanHolder.g);
   }
   
   public boolean a(List<String> paramList, String paramString)
@@ -113,32 +87,51 @@ public class OCRPerformUtil$OCRLanHolder
   
   public String b(String paramString)
   {
+    return OcrConfig.getDefaultLanguageName(paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    this.a = paramString;
+    this.d = paramString;
+    this.e = "zh";
+    this.f.clear();
+    this.g.clear();
+    this.g.add(this.e);
+    this.f.add(this.d);
+  }
+  
+  public void d(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.d = paramString;
+      this.g = OCRPerformUtil.b(this.d);
+      this.e = ((String)this.g.get(0));
+    }
+  }
+  
+  public void e(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.e = paramString;
+    }
+  }
+  
+  public String f(String paramString)
+  {
     if (paramString.equalsIgnoreCase("zh")) {
       return "en/ja/ko/fr/es/it/de/tr/ru/pt/vi/id/ms/th".trim().split("/")[0];
     }
     return "zh";
   }
-  
-  public void b(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_c_of_type_JavaUtilList = OCRPerformUtil.a(this.jdField_b_of_type_JavaLangString);
-      this.jdField_c_of_type_JavaLangString = ((String)this.jdField_c_of_type_JavaUtilList.get(0));
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_c_of_type_JavaLangString = paramString;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformUtil.OCRLanHolder
  * JD-Core Version:    0.7.0.1
  */

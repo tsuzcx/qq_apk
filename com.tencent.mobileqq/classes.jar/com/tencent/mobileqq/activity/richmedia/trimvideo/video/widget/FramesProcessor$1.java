@@ -11,7 +11,7 @@ class FramesProcessor$1
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
-    FramesProcessor.a(this.a).forceFinished(true);
+    FramesProcessor.l(this.a).forceFinished(true);
     return true;
   }
   
@@ -19,8 +19,8 @@ class FramesProcessor$1
   {
     synchronized (this.a)
     {
-      FramesProcessor.a(this.a).fling((int)FramesProcessor.a(this.a), 0, (int)-paramFloat1, 0, (int)FramesProcessor.b(this.a), (int)FramesProcessor.c(this.a), 0, 0);
-      FramesProcessor.b(this.a);
+      FramesProcessor.l(this.a).fling((int)FramesProcessor.a(this.a), 0, (int)-paramFloat1, 0, (int)FramesProcessor.b(this.a), (int)FramesProcessor.c(this.a), 0, 0);
+      FramesProcessor.m(this.a);
       return true;
     }
   }
@@ -49,15 +49,15 @@ class FramesProcessor$1
       if (FramesProcessor.a(this.a, paramFloat1 - paramFloat2, 0.0F)) {
         return true;
       }
-      FramesProcessor.a(this.a);
-      if (FramesProcessor.a(this.a) != null) {
-        FramesProcessor.a(this.a).a(FramesProcessor.a(this.a), FramesProcessor.b(this.a));
+      FramesProcessor.e(this.a);
+      if (FramesProcessor.f(this.a) != null) {
+        FramesProcessor.f(this.a).a(FramesProcessor.g(this.a), FramesProcessor.h(this.a));
       }
-      if (FramesProcessor.a(this.a) != null) {
-        FramesProcessor.a(this.a).invalidate();
+      if (FramesProcessor.i(this.a) != null) {
+        FramesProcessor.i(this.a).invalidate();
       }
-      if (FramesProcessor.a(this.a) != null) {
-        FramesProcessor.a(this.a).a(FramesProcessor.a(this.a), -FramesProcessor.a(this.a), FramesProcessor.e(this.a) - FramesProcessor.a(this.a));
+      if (FramesProcessor.j(this.a) != null) {
+        FramesProcessor.j(this.a).a(FramesProcessor.a(this.a), -FramesProcessor.a(this.a), FramesProcessor.k(this.a) - FramesProcessor.a(this.a));
       }
       return true;
     }
@@ -72,7 +72,7 @@ class FramesProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FramesProcessor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class VideoAppInterface$4
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    QLog.d(VideoAppInterface.c(), 2, String.format("onReceive action=%s", new Object[] { paramContext }));
+    QLog.d(VideoAppInterface.C(), 2, String.format("onReceive action=%s", new Object[] { paramContext }));
     System.exit(0);
   }
 }

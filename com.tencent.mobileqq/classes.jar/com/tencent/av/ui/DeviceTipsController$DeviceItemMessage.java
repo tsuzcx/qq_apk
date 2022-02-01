@@ -2,22 +2,17 @@ package com.tencent.av.ui;
 
 public class DeviceTipsController$DeviceItemMessage
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b = 0L;
-  
-  public DeviceTipsController$DeviceItemMessage()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public long a = 0L;
+  public boolean b = false;
+  public long c = 0L;
+  public String d = "";
+  public String e = "";
+  public DeviceTipsController.OnClickTipsListener f = null;
   
   public boolean a()
   {
     long l = System.currentTimeMillis();
-    return (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Long + this.b > l);
+    return (this.b) || (this.a + this.c > l);
   }
 }
 

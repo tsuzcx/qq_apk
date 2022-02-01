@@ -9,9 +9,9 @@ import com.tencent.qphone.base.util.QLog;
 class ChildLockCircle$1
   extends CountDownTimer
 {
-  int jdField_a_of_type_Int = 1;
-  Resources jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
+  int a = 1;
+  Bitmap b = null;
+  Resources c = this.d.getResources();
   
   ChildLockCircle$1(ChildLockCircle paramChildLockCircle, long paramLong1, long paramLong2, Context paramContext)
   {
@@ -20,21 +20,21 @@ class ChildLockCircle$1
   
   public void onFinish()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle;
-    ChildLockCircle.a((ChildLockCircle)localObject, ChildLockCircle.b((ChildLockCircle)localObject));
-    ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, 0);
-    this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.postInvalidate();
-    ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle);
-    localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.e;
+    ChildLockCircle.a((ChildLockCircle)localObject, ChildLockCircle.e((ChildLockCircle)localObject));
+    ChildLockCircle.a(this.e, 0);
+    this.e.postInvalidate();
+    ChildLockCircle.i(this.e);
+    localObject = this.b;
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      this.b.recycle();
+      this.b = null;
     }
-    if (ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle) != null)
+    if (ChildLockCircle.l(this.e) != null)
     {
-      ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle).cancel();
-      ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, null);
+      ChildLockCircle.l(this.e).cancel();
+      ChildLockCircle.a(this.e, null);
     }
     if (QLog.isColorLevel()) {
       QLog.d("ChildLockCircle", 2, "LockAnimation,CountDownTimer finish");
@@ -43,21 +43,21 @@ class ChildLockCircle$1
   
   public void onTick(long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    if (this.d != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, this.jdField_a_of_type_AndroidContentResResources, this.jdField_a_of_type_Int);
-      Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.b = ChildLockCircle.a(this.e, this.c, this.a);
+      Object localObject = this.b;
       if (localObject != null)
       {
-        ChildLockCircle.a(this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle, (Bitmap)localObject);
-        this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle.postInvalidate();
+        ChildLockCircle.a(this.e, (Bitmap)localObject);
+        this.e.postInvalidate();
       }
-      this.jdField_a_of_type_Int += 1;
+      this.a += 1;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("LockAnimation, i[");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.a);
         ((StringBuilder)localObject).append("]");
         QLog.d("ChildLockCircle", 2, ((StringBuilder)localObject).toString());
       }

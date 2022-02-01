@@ -6,130 +6,129 @@ import com.tencent.mobileqq.uftransfer.proto.UFTC2CUploadRsp;
 public class UFTUploadSrvBusiProp$C2CUploadSrvBusiProp
   extends UFTUploadSrvBusiProp.BaseUploadSrvBusiProp
 {
-  protected final UFTC2CUploadRsp a;
-  private String a;
-  protected boolean a;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
+  protected boolean a = false;
+  protected final UFTC2CUploadRsp b;
+  private boolean c = false;
+  private String d;
+  private String e;
   
   public UFTUploadSrvBusiProp$C2CUploadSrvBusiProp(UFTC2CUploadRsp paramUFTC2CUploadRsp)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp = paramUFTC2CUploadRsp;
-    paramUFTC2CUploadRsp = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp;
+    this.b = paramUFTC2CUploadRsp;
+    paramUFTC2CUploadRsp = this.b;
     if (paramUFTC2CUploadRsp != null)
     {
-      this.jdField_b_of_type_Boolean = paramUFTC2CUploadRsp.a();
-      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp.b();
-      if ((this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp.c() != null) && (this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp.c().length > 0)) {
-        this.jdField_b_of_type_JavaLangString = UFTDependFeatureApi.b(this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp.c());
+      this.c = paramUFTC2CUploadRsp.g();
+      this.a = this.b.n();
+      if ((this.b.h() != null) && (this.b.h().length > 0)) {
+        this.e = UFTDependFeatureApi.b(this.b.h());
       }
     }
   }
   
-  public int a()
-  {
-    UFTC2CUploadRsp localUFTC2CUploadRsp = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp;
-    if (localUFTC2CUploadRsp != null) {
-      return localUFTC2CUploadRsp.b();
-    }
-    return 0;
-  }
-  
-  public byte[] a()
-  {
-    UFTC2CUploadRsp localUFTC2CUploadRsp = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp;
-    if (localUFTC2CUploadRsp != null) {
-      return localUFTC2CUploadRsp.a();
-    }
-    return null;
-  }
-  
-  public byte[] b()
-  {
-    UFTC2CUploadRsp localUFTC2CUploadRsp = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp;
-    if (localUFTC2CUploadRsp != null) {
-      return localUFTC2CUploadRsp.c();
-    }
-    return null;
-  }
-  
-  public String c()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
   public void c(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public byte[] c()
-  {
-    UFTC2CUploadRsp localUFTC2CUploadRsp = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp;
-    if (localUFTC2CUploadRsp != null) {
-      return localUFTC2CUploadRsp.b();
-    }
-    return null;
-  }
-  
-  public String d()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.e = paramString;
   }
   
   public void d(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void d(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
-  public boolean d()
+  public boolean g()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.c;
   }
   
-  public byte[] d()
+  public byte[] h()
   {
-    UFTC2CUploadRsp localUFTC2CUploadRsp = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp;
+    UFTC2CUploadRsp localUFTC2CUploadRsp = this.b;
     if (localUFTC2CUploadRsp != null) {
       return localUFTC2CUploadRsp.e();
     }
     return null;
   }
   
-  public String e()
+  public byte[] i()
   {
-    UFTC2CUploadRsp localUFTC2CUploadRsp = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp;
+    UFTC2CUploadRsp localUFTC2CUploadRsp = this.b;
     if (localUFTC2CUploadRsp != null) {
-      return localUFTC2CUploadRsp.e();
+      return localUFTC2CUploadRsp.h();
+    }
+    return null;
+  }
+  
+  public String j()
+  {
+    return this.e;
+  }
+  
+  public String k()
+  {
+    return this.d;
+  }
+  
+  public int l()
+  {
+    UFTC2CUploadRsp localUFTC2CUploadRsp = this.b;
+    if (localUFTC2CUploadRsp != null) {
+      return localUFTC2CUploadRsp.i();
+    }
+    return 0;
+  }
+  
+  public byte[] m()
+  {
+    UFTC2CUploadRsp localUFTC2CUploadRsp = this.b;
+    if (localUFTC2CUploadRsp != null) {
+      return localUFTC2CUploadRsp.f();
+    }
+    return null;
+  }
+  
+  public boolean n()
+  {
+    return this.a;
+  }
+  
+  public String o()
+  {
+    UFTC2CUploadRsp localUFTC2CUploadRsp = this.b;
+    if (localUFTC2CUploadRsp != null) {
+      return localUFTC2CUploadRsp.p();
     }
     return "";
   }
   
-  public boolean e()
+  public byte[] p()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public byte[] e()
-  {
-    UFTC2CUploadRsp localUFTC2CUploadRsp = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp;
+    UFTC2CUploadRsp localUFTC2CUploadRsp = this.b;
     if (localUFTC2CUploadRsp != null) {
-      return localUFTC2CUploadRsp.d();
+      return localUFTC2CUploadRsp.o();
     }
     return null;
   }
   
-  public String f()
+  public byte[] q()
   {
-    UFTC2CUploadRsp localUFTC2CUploadRsp = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp;
+    UFTC2CUploadRsp localUFTC2CUploadRsp = this.b;
     if (localUFTC2CUploadRsp != null) {
-      return localUFTC2CUploadRsp.a();
+      return localUFTC2CUploadRsp.m();
+    }
+    return null;
+  }
+  
+  public String r()
+  {
+    UFTC2CUploadRsp localUFTC2CUploadRsp = this.b;
+    if (localUFTC2CUploadRsp != null) {
+      return localUFTC2CUploadRsp.b();
     }
     return null;
   }
@@ -140,17 +139,17 @@ public class UFTUploadSrvBusiProp$C2CUploadSrvBusiProp
     localStringBuilder.append("C2CUploadSrvBusiProp{");
     localStringBuilder.append(super.toString());
     localStringBuilder.append("fileExist=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", strCheckSum='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", strSHA='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", useMediaPlatform=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", uploadRsp=");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTC2CUploadRsp;
+    Object localObject = this.b;
     if (localObject != null) {
       localObject = ((UFTC2CUploadRsp)localObject).toString();
     } else {
@@ -163,7 +162,7 @@ public class UFTUploadSrvBusiProp$C2CUploadSrvBusiProp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.taskinfo.UFTUploadSrvBusiProp.C2CUploadSrvBusiProp
  * JD-Core Version:    0.7.0.1
  */

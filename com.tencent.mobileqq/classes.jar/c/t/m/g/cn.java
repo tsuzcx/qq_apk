@@ -10,6 +10,8 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.net.InetAddress;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -64,7 +66,7 @@ public final class cn
       localObject = (TelephonyManager)m.a().getSystemService("phone");
       if (localObject != null)
       {
-        str = ((TelephonyManager)localObject).getDeviceId();
+        str = PhoneInfoMonitor.getDeviceId((TelephonyManager)localObject);
         localObject = str;
         if (str == null) {
           localObject = "NOIMEI";
@@ -79,43 +81,43 @@ public final class cn
   public static String a(int paramInt)
   {
     // Byte code:
-    //   0: new 65	java/lang/StringBuilder
+    //   0: new 68	java/lang/StringBuilder
     //   3: dup
-    //   4: ldc 67
-    //   6: invokespecial 71	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   4: ldc 70
+    //   6: invokespecial 74	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   9: astore_1
     //   10: aload_1
     //   11: iload_0
-    //   12: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   12: invokevirtual 78	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   15: pop
     //   16: aload_1
-    //   17: ldc 77
-    //   19: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: ldc 80
+    //   19: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: pop
     //   23: aload_1
-    //   24: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   24: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   27: astore_2
     //   28: aconst_null
     //   29: astore_1
-    //   30: new 85	java/io/BufferedReader
+    //   30: new 88	java/io/BufferedReader
     //   33: dup
-    //   34: new 87	java/io/FileReader
+    //   34: new 90	java/io/FileReader
     //   37: dup
     //   38: aload_2
-    //   39: invokespecial 88	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   42: invokespecial 91	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   39: invokespecial 91	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   42: invokespecial 94	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   45: astore_2
     //   46: aload_2
     //   47: astore_1
     //   48: aload_2
-    //   49: invokevirtual 94	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   49: invokevirtual 97	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   52: astore 4
     //   54: aload 4
     //   56: astore_3
     //   57: aload_2
     //   58: astore_1
     //   59: aload 4
-    //   61: invokestatic 100	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   61: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   64: ifne +11 -> 75
     //   67: aload_2
     //   68: astore_1
@@ -123,7 +125,7 @@ public final class cn
     //   71: invokevirtual 34	java/lang/String:trim	()Ljava/lang/String;
     //   74: astore_3
     //   75: aload_2
-    //   76: invokevirtual 103	java/io/BufferedReader:close	()V
+    //   76: invokevirtual 106	java/io/BufferedReader:close	()V
     //   79: aload_3
     //   80: areturn
     //   81: astore_3
@@ -140,11 +142,11 @@ public final class cn
     //   96: aload_2
     //   97: astore_1
     //   98: aload_3
-    //   99: invokevirtual 106	java/lang/Exception:printStackTrace	()V
+    //   99: invokevirtual 109	java/lang/Exception:printStackTrace	()V
     //   102: aload_2
     //   103: ifnull +7 -> 110
     //   106: aload_2
-    //   107: invokevirtual 103	java/io/BufferedReader:close	()V
+    //   107: invokevirtual 106	java/io/BufferedReader:close	()V
     //   110: aconst_null
     //   111: areturn
     //   112: astore_3
@@ -155,7 +157,7 @@ public final class cn
     //   117: aload_2
     //   118: ifnull +7 -> 125
     //   121: aload_2
-    //   122: invokevirtual 103	java/io/BufferedReader:close	()V
+    //   122: invokevirtual 106	java/io/BufferedReader:close	()V
     //   125: aload_1
     //   126: athrow
     //   127: astore_1
@@ -345,7 +347,7 @@ public final class cn
       localObject = (TelephonyManager)m.a().getSystemService("phone");
       if (localObject != null)
       {
-        str = ((TelephonyManager)localObject).getSubscriberId();
+        str = PhoneInfoMonitor.getSubscriberId((TelephonyManager)localObject);
         localObject = str;
         if (str == null) {
           localObject = "NOIMSI";
@@ -422,7 +424,7 @@ public final class cn
       localObject = (WifiManager)m.a().getApplicationContext().getSystemService("wifi");
       if (localObject != null)
       {
-        localObject = ((WifiManager)localObject).getConnectionInfo();
+        localObject = NetworkMonitor.getConnectionInfo((WifiManager)localObject);
         if (localObject != null)
         {
           str = ((WifiInfo)localObject).getMacAddress();

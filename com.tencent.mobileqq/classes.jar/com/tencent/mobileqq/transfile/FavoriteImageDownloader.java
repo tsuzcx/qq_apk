@@ -87,7 +87,7 @@ public class FavoriteImageDownloader
     if (GifDrawable.isGifFile(paramFile)) {
       return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
     }
-    if (5 == FileManagerUtil.a(paramFile.getName()))
+    if (5 == FileManagerUtil.c(paramFile.getName()))
     {
       localObject4 = ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).getApkIcon(this.application, paramFile.getPath());
       if (localObject4 != null)
@@ -274,7 +274,7 @@ public class FavoriteImageDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FavoriteImageDownloader
  * JD-Core Version:    0.7.0.1
  */

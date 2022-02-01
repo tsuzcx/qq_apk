@@ -10,21 +10,21 @@ final class ConfessMsgUtil$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager;
-    String str = this.jdField_a_of_type_JavaLangString;
-    ConfessManager.GroupChatExtra localGroupChatExtra = this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager$GroupChatExtra;
-    long l = this.jdField_a_of_type_Long;
-    ((ConfessManager)localObject).a(str, localGroupChatExtra, l, l, this.b);
+    Object localObject = this.a;
+    String str = this.b;
+    ConfessManager.GroupChatExtra localGroupChatExtra = this.c;
+    long l = this.d;
+    ((ConfessManager)localObject).a(str, localGroupChatExtra, l, l, this.e);
     if (QLog.isColorLevel())
     {
-      l = MessageCache.a();
+      l = MessageCache.c();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("decodeConfessMsgElem 1 strConfessorDesc:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager$GroupChatExtra.f);
+      ((StringBuilder)localObject).append(this.c.j);
       ((StringBuilder)localObject).append(" msgTime:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(" msgSeq:");
-      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(this.e);
       ((StringBuilder)localObject).append(" nowTime");
       ((StringBuilder)localObject).append(l);
       QLog.i("ConfessMsgUtil", 2, ((StringBuilder)localObject).toString());
@@ -33,7 +33,7 @@ final class ConfessMsgUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessMsgUtil.1
  * JD-Core Version:    0.7.0.1
  */

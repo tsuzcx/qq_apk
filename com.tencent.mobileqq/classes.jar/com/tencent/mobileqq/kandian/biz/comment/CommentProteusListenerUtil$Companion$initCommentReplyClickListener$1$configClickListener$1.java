@@ -14,12 +14,12 @@ final class CommentProteusListenerUtil$Companion$initCommentReplyClickListener$1
   
   public final void onClick(ViewBase paramViewBase)
   {
-    CommentProteusListenerUtil.Companion.a(CommentProteusListenerUtil.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+    CommentProteusListenerUtil.Companion.a(CommentProteusListenerUtil.a, this.a, this.b, this.c, this.d, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion.initCommentReplyClickListener.1.configClickListener.1
  * JD-Core Version:    0.7.0.1
  */

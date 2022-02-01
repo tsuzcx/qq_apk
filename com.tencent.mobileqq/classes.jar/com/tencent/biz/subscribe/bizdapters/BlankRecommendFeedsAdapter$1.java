@@ -19,34 +19,34 @@ class BlankRecommendFeedsAdapter$1
     if ((paramBoolean) && (paramLong == 0L) && (paramStGetFollowRcmdRsp != null))
     {
       paramBaseRequest = paramStGetFollowRcmdRsp.rcmdList.get();
-      if ((!bool) || (BlankRecommendFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersBlankRecommendFeedsAdapter)))
+      if ((!bool) || (BlankRecommendFeedsAdapter.c(this.b)))
       {
         if ((paramBaseRequest != null) && (paramBaseRequest.size() > 0))
         {
-          if (BlankRecommendFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersBlankRecommendFeedsAdapter)) {
-            BlankRecommendFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersBlankRecommendFeedsAdapter, false);
+          if (BlankRecommendFeedsAdapter.c(this.b)) {
+            BlankRecommendFeedsAdapter.a(this.b, false);
           }
-          BlankRecommendFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersBlankRecommendFeedsAdapter, paramBaseRequest, paramStGetFollowRcmdRsp.extInfo, true);
+          BlankRecommendFeedsAdapter.a(this.b, paramBaseRequest, paramStGetFollowRcmdRsp.extInfo, true);
           VSReporter.b("auth_follow", "blank_exp", 0, 0, new String[0]);
           return;
         }
-        if ((!bool) && (this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersBlankRecommendFeedsAdapter.getItemCount() == 0))
+        if ((!bool) && (this.b.getItemCount() == 0))
         {
-          BlankRecommendFeedsAdapter.b(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersBlankRecommendFeedsAdapter, true);
-          this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersBlankRecommendFeedsAdapter.notifyDataSetChanged();
+          BlankRecommendFeedsAdapter.b(this.b, true);
+          this.b.notifyDataSetChanged();
         }
       }
       return;
     }
-    if ((!TextUtils.isEmpty(paramString)) && (BlankRecommendFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersBlankRecommendFeedsAdapter) != null)) {
-      QQToast.a(BlankRecommendFeedsAdapter.b(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersBlankRecommendFeedsAdapter), 1, paramString, 0).a();
+    if ((!TextUtils.isEmpty(paramString)) && (BlankRecommendFeedsAdapter.a(this.b) != null)) {
+      QQToast.makeText(BlankRecommendFeedsAdapter.b(this.b), 1, paramString, 0).show();
     }
     if (!bool)
     {
       BaseRequest.reMoveCache(paramBaseRequest);
-      if (this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersBlankRecommendFeedsAdapter.getItemCount() == 0)
+      if (this.b.getItemCount() == 0)
       {
-        paramBaseRequest = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersBlankRecommendFeedsAdapter$IGetFollowRspListener;
+        paramBaseRequest = this.a;
         if (paramBaseRequest != null) {
           paramBaseRequest.a();
         }

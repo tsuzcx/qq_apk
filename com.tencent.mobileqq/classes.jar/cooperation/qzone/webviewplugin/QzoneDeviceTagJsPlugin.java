@@ -20,12 +20,12 @@ public class QzoneDeviceTagJsPlugin
   
   private static void handleDeviceTag(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QzoneDeviceTagJsPlugin.2());
+    paramPluginRuntime.b().getHandler(QzoneDeviceTagJsPlugin.class).post(new QzoneDeviceTagJsPlugin.2());
   }
   
   private static void handleUserTail(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QzoneDeviceTagJsPlugin.1(paramArrayOfString));
+    paramPluginRuntime.b().getHandler(QzoneDeviceTagJsPlugin.class).post(new QzoneDeviceTagJsPlugin.1(paramArrayOfString));
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -92,7 +92,7 @@ public class QzoneDeviceTagJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneDeviceTagJsPlugin
  * JD-Core Version:    0.7.0.1
  */

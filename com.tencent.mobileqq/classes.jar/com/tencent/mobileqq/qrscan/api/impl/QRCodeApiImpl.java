@@ -31,7 +31,7 @@ public class QRCodeApiImpl
   
   public String getVersion()
   {
-    return QbarNativeImpl.a();
+    return QbarNativeImpl.c();
   }
   
   public int init(int paramInt, String paramString1, String paramString2)
@@ -51,12 +51,12 @@ public class QRCodeApiImpl
   
   public int release()
   {
-    return QbarNativeImpl.a();
+    return QbarNativeImpl.d();
   }
   
   public int releaseForCamera()
   {
-    return QbarNativeImpl.b();
+    return QbarNativeImpl.e();
   }
   
   public int scanImage(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -81,7 +81,7 @@ public class QRCodeApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.api.impl.QRCodeApiImpl
  * JD-Core Version:    0.7.0.1
  */

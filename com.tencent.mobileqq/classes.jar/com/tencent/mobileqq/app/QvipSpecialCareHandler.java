@@ -63,7 +63,7 @@ public class QvipSpecialCareHandler
       QLog.e("QVipSpeicalCareHandler", 2, localStringBuilder.toString());
     }
     if (!paramFromServiceMsg.isSuccess()) {
-      ReportCenter.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), this.a.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131711341), true);
+      ReportCenter.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), this.a.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131908994), true);
     }
   }
   
@@ -172,7 +172,7 @@ public class QvipSpecialCareHandler
       if (paramRspBody.uint32_svip_quota.has()) {
         QvipSpecialCareUtil.b(paramRspBody.uint32_svip_quota.get(), this.a);
       }
-      QvipSpecialCareUtil.b(this.a);
+      QvipSpecialCareUtil.e(this.a);
     }
   }
   
@@ -253,7 +253,7 @@ public class QvipSpecialCareHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QvipSpecialCareHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -21,17 +21,17 @@ class StoryPickerFragment$GetSimpleInfoListEventReceiver
   public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull VidToSimpleInfoHandler.GetSimpleInfoListEvent paramGetSimpleInfoListEvent)
   {
     SLog.b(this.TAG, "GetSimpleInfoListEventReceiver. event=%s", paramGetSimpleInfoListEvent.toString());
-    if ((paramGetSimpleInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList != null) && (!paramGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if ((paramGetSimpleInfoListEvent.g.isSuccess()) && (paramGetSimpleInfoListEvent.b != null) && (!paramGetSimpleInfoListEvent.b.isEmpty()))
     {
-      Iterator localIterator = paramGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = paramGetSimpleInfoListEvent.b.iterator();
       while (localIterator.hasNext())
       {
         VideoCollectionItem.FakeVideoUIItem localFakeVideoUIItem = (VideoCollectionItem.FakeVideoUIItem)localIterator.next();
-        if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localFakeVideoUIItem.jdField_a_of_type_JavaLangString)) {
-          localFakeVideoUIItem.jdField_a_of_type_Boolean = true;
+        if (paramStoryPickerFragment.f.contains(localFakeVideoUIItem.a)) {
+          localFakeVideoUIItem.c = true;
         }
       }
-      paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(paramGetSimpleInfoListEvent.jdField_a_of_type_JavaLangString, paramGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList);
+      paramStoryPickerFragment.b.a(paramGetSimpleInfoListEvent.a, paramGetSimpleInfoListEvent.b);
     }
   }
   

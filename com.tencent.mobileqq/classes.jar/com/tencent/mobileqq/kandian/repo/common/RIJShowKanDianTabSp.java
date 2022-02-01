@@ -6,11 +6,10 @@ import android.text.TextUtils;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.kandian.base.utils.RIJLogUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 import com.tencent.mobileqq.kandian.repo.aladdin.RIJMaybeInitializedAladdinConfig;
-import com.tencent.mobileqq.qcircle.api.IQCircleConfigApi;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -19,8 +18,8 @@ import mqq.app.AppRuntime;
 
 public class RIJShowKanDianTabSp
 {
-  private static Map<String, Integer> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private static ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static Map<String, Integer> a = new ConcurrentHashMap();
+  private static ConcurrentHashMap<String, Integer> b = new ConcurrentHashMap();
   
   public static int a(AppRuntime paramAppRuntime)
   {
@@ -32,18 +31,18 @@ public class RIJShowKanDianTabSp
     if (TextUtils.isEmpty(str)) {
       return -1;
     }
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str) == null)
+    if (b.get(str) == null)
     {
       int j = RIJSPUtils.a(paramAppRuntime, true, true).getInt("user_kandian_show_config", -1);
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Integer.valueOf(j));
+      b.put(str, Integer.valueOf(j));
       paramAppRuntime = new StringBuilder();
       paramAppRuntime.append("uin : ");
-      paramAppRuntime.append(str);
+      paramAppRuntime.append(RIJLogUtil.a.a(str));
       paramAppRuntime.append(" user kandiantab show config : ");
       paramAppRuntime.append(j);
       QLog.d("RIJShowKanDianTabSp", 2, paramAppRuntime.toString());
     }
-    paramAppRuntime = (Integer)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+    paramAppRuntime = (Integer)b.get(str);
     if (paramAppRuntime != null) {
       i = paramAppRuntime.intValue();
     }
@@ -52,8 +51,8 @@ public class RIJShowKanDianTabSp
   
   public static Integer a(String paramString)
   {
-    String str = RIJQQAppInterfaceUtil.a();
-    Map localMap = jdField_a_of_type_JavaUtilMap;
+    String str = RIJQQAppInterfaceUtil.d();
+    Map localMap = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     localStringBuilder.append("_");
@@ -75,8 +74,8 @@ public class RIJShowKanDianTabSp
   
   public static void a(String paramString, Integer paramInteger)
   {
-    String str = RIJQQAppInterfaceUtil.a();
-    Object localObject = jdField_a_of_type_JavaUtilMap;
+    String str = RIJQQAppInterfaceUtil.d();
+    Object localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     localStringBuilder.append("_");
@@ -88,13 +87,8 @@ public class RIJShowKanDianTabSp
     ((StringBuilder)localObject).append(", v: ");
     ((StringBuilder)localObject).append(paramInteger);
     ((StringBuilder)localObject).append(", account");
-    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(RIJLogUtil.a.a(str));
     QLog.d("RIJShowKanDianTabSp", 1, ((StringBuilder)localObject).toString());
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static boolean a()
@@ -125,7 +119,7 @@ public class RIJShowKanDianTabSp
       a(i);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("isShowKandianTabNew cache is null, read from sp, ");
-      ((StringBuilder)localObject2).append(((AppRuntime)localObject1).getAccount());
+      ((StringBuilder)localObject2).append(RIJLogUtil.a.a(((AppRuntime)localObject1).getAccount()));
       QLog.d("RIJShowKanDianTabSp", 1, ((StringBuilder)localObject2).toString());
     }
     else if (a("local_kd_tab_switch").intValue() == 1)
@@ -139,7 +133,7 @@ public class RIJShowKanDianTabSp
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(((AppRuntime)localObject1).getAccount());
+      ((StringBuilder)localObject2).append(RIJLogUtil.a.a(((AppRuntime)localObject1).getAccount()));
       ((StringBuilder)localObject2).append(" isShowKandianTab, isShowKandian = ");
       localObject1 = ((StringBuilder)localObject2).toString();
       i = j;
@@ -148,19 +142,7 @@ public class RIJShowKanDianTabSp
       }
       QLog.d("RIJShowKanDianTabSp", 1, new Object[] { localObject1, Integer.valueOf(i) });
     }
-    return b(bool);
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isReadinjoyVideoChannel() channelType=");
-      localStringBuilder.append(paramInt);
-      QLog.d("ReadInJoyHelper", 2, localStringBuilder.toString());
-    }
-    return paramInt == 3;
+    return c(bool);
   }
   
   public static boolean a(long paramLong)
@@ -168,7 +150,7 @@ public class RIJShowKanDianTabSp
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("readinjoy_daily_child_refresh_channelID");
     localStringBuilder.append(paramLong);
-    return ((Boolean)RIJSPUtils.a(localStringBuilder.toString(), Boolean.valueOf(false))).booleanValue();
+    return ((Boolean)RIJSPUtils.b(localStringBuilder.toString(), Boolean.valueOf(false))).booleanValue();
   }
   
   public static boolean a(AppRuntime paramAppRuntime, String paramString, Object paramObject)
@@ -207,6 +189,11 @@ public class RIJShowKanDianTabSp
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
+  public static void b(boolean paramBoolean)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
   public static boolean b()
   {
     boolean bool3 = false;
@@ -219,7 +206,7 @@ public class RIJShowKanDianTabSp
       bool1 = bool3;
       Object localObject = Aladdin.getConfig(394);
       bool1 = bool3;
-      if (StudyModeManager.a())
+      if (StudyModeManager.h())
       {
         bool2 = bool4;
         bool1 = bool3;
@@ -248,28 +235,33 @@ public class RIJShowKanDianTabSp
     return bool2;
   }
   
-  private static boolean b(boolean paramBoolean)
+  public static boolean b(int paramInt)
   {
-    return (paramBoolean) && (!b());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isReadinjoyVideoChannel() channelType=");
+      localStringBuilder.append(paramInt);
+      QLog.d("ReadInJoyHelper", 2, localStringBuilder.toString());
+    }
+    return paramInt == 3;
   }
   
   public static boolean c()
   {
-    boolean bool2 = ((IQCircleConfigApi)QRoute.api(IQCircleConfigApi.class)).isShowQQCircleMainTabEntrance(StudyModeManager.a());
-    boolean bool1 = false;
-    if (bool2) {
-      return false;
-    }
-    int i = a(RIJQQAppInterfaceUtil.a());
+    int i = a(RIJQQAppInterfaceUtil.e());
     if (i != -1)
     {
-      a(true);
+      b(true);
+      boolean bool;
       if (i == 1) {
-        bool1 = true;
+        bool = true;
+      } else {
+        bool = false;
       }
-      a(bool1);
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), true, true);
+      a(bool);
+      b.clear();
+      Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.e(), true, true);
       if (localObject != null)
       {
         localObject = ((SharedPreferences)localObject).edit();
@@ -280,6 +272,11 @@ public class RIJShowKanDianTabSp
     return a();
   }
   
+  private static boolean c(boolean paramBoolean)
+  {
+    return (paramBoolean) && (!b());
+  }
+  
   public static boolean d()
   {
     return true;
@@ -287,7 +284,7 @@ public class RIJShowKanDianTabSp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.RIJShowKanDianTabSp
  * JD-Core Version:    0.7.0.1
  */

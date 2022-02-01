@@ -24,14 +24,14 @@ class SearchResultActivity$1
             if (i != 5) {
               return true;
             }
-            this.a.a.springBackOverScrollHeaderView();
+            this.a.b.springBackOverScrollHeaderView();
             return true;
           }
-          this.a.a.springBackOverScrollHeaderView();
+          this.a.b.springBackOverScrollHeaderView();
           return true;
         }
-        this.a.a.springBackOverScrollHeaderView();
-        QQToast.a(this.a, 2131694424, 0).b(this.a.getTitleBarHeight());
+        this.a.b.springBackOverScrollHeaderView();
+        QQToast.makeText(this.a, 2131892104, 0).show(this.a.getTitleBarHeight());
         return true;
       }
       SearchResultActivity.b(this.a);
@@ -43,7 +43,7 @@ class SearchResultActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.SearchResultActivity.1
  * JD-Core Version:    0.7.0.1
  */

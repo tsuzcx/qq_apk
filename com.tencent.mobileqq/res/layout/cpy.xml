@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.kandian.biz.comment.ui.ConstraindWidthLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto">
-        <com.tencent.mobileqq.kandian.base.view.widget.NativeReadInjoyImageView android:id="@id/icon" android:layout_width="16.0dip" android:layout_height="16.0dip" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/ain" android:ellipsize="end" android:gravity="center|left" android:id="@id/bgt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginRight="8.0dip" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" app:layout_constrainedWidth="true" />
-        <ImageView android:id="@id/bfl" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/h0s" />
-    </com.tencent.mobileqq.kandian.biz.comment.ui.ConstraindWidthLayout>
-</FrameLayout>
+    <RelativeLayout android:id="@id/wh" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="56.0dip" android:minHeight="@dimen/j2">
+        <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black" android:gravity="center_vertical" android:id="@id/wc" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxWidth="184.0dip" android:text="@string/w__" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <com.tencent.widget.Switch android:id="@id/wb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray3" android:id="@id/wa" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/w_9" />
+</LinearLayout>

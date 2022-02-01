@@ -1,7 +1,8 @@
 package com.tencent.mm.opensdk.modelpay;
 
 import android.os.Bundle;
-import com.tencent.mm.opensdk.utils.a;
+import com.tencent.mm.opensdk.channel.a.a;
+import com.tencent.mm.opensdk.utils.Log;
 
 public class PayReq$Options
 {
@@ -11,8 +12,23 @@ public class PayReq$Options
   
   public void fromBundle(Bundle paramBundle)
   {
-    this.callbackClassName = a.b(paramBundle, "_wxapi_payoptions_callback_classname");
-    this.callbackFlags = a.a(paramBundle, "_wxapi_payoptions_callback_flags");
+    this.callbackClassName = a.a(paramBundle, "_wxapi_payoptions_callback_classname");
+    int i = -1;
+    if (paramBundle != null) {
+      try
+      {
+        int j = paramBundle.getInt("_wxapi_payoptions_callback_flags", -1);
+        i = j;
+      }
+      catch (Exception paramBundle)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getIntExtra exception:");
+        localStringBuilder.append(paramBundle.getMessage());
+        Log.e("MicroMsg.IntentUtil", localStringBuilder.toString());
+      }
+    }
+    this.callbackFlags = i;
   }
   
   public void toBundle(Bundle paramBundle)
@@ -23,7 +39,7 @@ public class PayReq$Options
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelpay.PayReq.Options
  * JD-Core Version:    0.7.0.1
  */

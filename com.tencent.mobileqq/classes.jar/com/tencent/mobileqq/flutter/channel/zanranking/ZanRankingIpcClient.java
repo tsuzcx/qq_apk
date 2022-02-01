@@ -17,8 +17,8 @@ public class ZanRankingIpcClient
   extends QIPCModule
   implements EIPCResultCallback
 {
-  WeakReference<ZanRankingIpcClient.ICallback> jdField_a_of_type_JavaLangRefWeakReference = null;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  WeakReference<ZanRankingIpcClient.ICallback> a = null;
+  private volatile boolean b = false;
   
   private ZanRankingIpcClient()
   {
@@ -54,32 +54,6 @@ public class ZanRankingIpcClient
     return localHashMap;
   }
   
-  public void a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      if (bool) {
-        return;
-      }
-      ZanRankingIpcClient localZanRankingIpcClient = a();
-      try
-      {
-        QIPCClientHelper.getInstance().register(localZanRankingIpcClient);
-        this.jdField_a_of_type_Boolean = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("ZanRankingIpcClient", 2, "init");
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("ZanRankingIpcClient", 1, "register ipc module error.", localException);
-      }
-      return;
-    }
-    finally {}
-  }
-  
   public void a(int paramInt, String paramString, boolean paramBoolean)
   {
     Bundle localBundle = new Bundle();
@@ -93,7 +67,7 @@ public class ZanRankingIpcClient
   public void a(ZanRankingIpcClient.ICallback paramICallback)
   {
     if (paramICallback != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramICallback);
+      this.a = new WeakReference(paramICallback);
     }
   }
   
@@ -101,14 +75,40 @@ public class ZanRankingIpcClient
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.b;
+      if (bool) {
+        return;
+      }
+      ZanRankingIpcClient localZanRankingIpcClient = a();
+      try
+      {
+        QIPCClientHelper.getInstance().register(localZanRankingIpcClient);
+        this.b = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("ZanRankingIpcClient", 2, "init");
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ZanRankingIpcClient", 1, "register ipc module error.", localException);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void c()
+  {
+    try
+    {
+      boolean bool = this.b;
       if (bool) {
         try
         {
           if (QIPCClientHelper.getInstance().getClient() != null)
           {
             QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-            this.jdField_a_of_type_Boolean = false;
+            this.b = false;
             if (QLog.isColorLevel()) {
               QLog.d("ZanRankingIpcClient", 2, "unInit");
             }
@@ -163,10 +163,10 @@ public class ZanRankingIpcClient
             str = paramEIPCResult.getString("uin");
             boolean bool = paramEIPCResult.getBoolean("fromCache");
             localObject = new CardCoverData(paramEIPCResult.getInt("type"), paramEIPCResult.getString("text"));
-            if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+            if (this.a == null) {
               break label163;
             }
-            paramEIPCResult = (ZanRankingIpcClient.ICallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+            paramEIPCResult = (ZanRankingIpcClient.ICallback)this.a.get();
             if (paramEIPCResult != null) {
               paramEIPCResult.a(i, str, bool, (CardCoverData)localObject);
             }
@@ -185,7 +185,7 @@ public class ZanRankingIpcClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.zanranking.ZanRankingIpcClient
  * JD-Core Version:    0.7.0.1
  */

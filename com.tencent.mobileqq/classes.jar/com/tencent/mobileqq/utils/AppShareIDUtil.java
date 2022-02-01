@@ -20,31 +20,6 @@ import protocol.KQQConfig.GetResourceRespInfo;
 
 public class AppShareIDUtil
 {
-  public static long a(long paramLong)
-  {
-    return a(b(paramLong));
-  }
-  
-  public static long a(String paramString)
-  {
-    long l = Long.parseLong(paramString.substring(2), 16);
-    Object localObject = ByteBuffer.allocate(8);
-    ((ByteBuffer)localObject).order(ByteOrder.LITTLE_ENDIAN);
-    ((ByteBuffer)localObject).putLong(l);
-    ((ByteBuffer)localObject).flip();
-    ((ByteBuffer)localObject).order(ByteOrder.BIG_ENDIAN);
-    l = ((ByteBuffer)localObject).getLong();
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append(" change to ShareID =");
-      ((StringBuilder)localObject).append(l >>> 32);
-      QLog.d("share_appid", 2, ((StringBuilder)localObject).toString());
-    }
-    return l >>> 32;
-  }
-  
   public static AppShareID a(msg_comm.PluginInfo paramPluginInfo)
   {
     AppShareID localAppShareID = new AppShareID();
@@ -140,8 +115,8 @@ public class AppShareIDUtil
     catch (Exception localException)
     {
       Object localObject1;
-      label287:
-      break label287;
+      label282:
+      break label282;
     }
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("parser from xml is error,xmlStr:");
@@ -169,19 +144,24 @@ public class AppShareIDUtil
     return ((StringBuffer)localObject).toString().toUpperCase();
   }
   
-  public static long b(long paramLong)
-  {
-    return b(a(paramLong));
-  }
-  
   public static long b(String paramString)
   {
-    long l1 = Long.parseLong(paramString.substring(2), 16);
-    long l2 = AppidConvert.b(l1);
-    if (l2 != 0L) {
-      l1 = l2;
+    long l = Long.parseLong(paramString.substring(2), 16);
+    Object localObject = ByteBuffer.allocate(8);
+    ((ByteBuffer)localObject).order(ByteOrder.LITTLE_ENDIAN);
+    ((ByteBuffer)localObject).putLong(l);
+    ((ByteBuffer)localObject).flip();
+    ((ByteBuffer)localObject).order(ByteOrder.BIG_ENDIAN);
+    l = ((ByteBuffer)localObject).getLong();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" change to ShareID =");
+      ((StringBuilder)localObject).append(l >>> 32);
+      QLog.d("share_appid", 2, ((StringBuilder)localObject).toString());
     }
-    return l1;
+    return l >>> 32;
   }
   
   public static String b(long paramLong)
@@ -201,10 +181,30 @@ public class AppShareIDUtil
     localStringBuffer.insert(0, "QQ");
     return localStringBuffer.toString().toUpperCase();
   }
+  
+  public static long c(long paramLong)
+  {
+    return b(b(paramLong));
+  }
+  
+  public static long c(String paramString)
+  {
+    long l1 = Long.parseLong(paramString.substring(2), 16);
+    long l2 = AppidConvert.b(l1);
+    if (l2 != 0L) {
+      l1 = l2;
+    }
+    return l1;
+  }
+  
+  public static long d(long paramLong)
+  {
+    return c(a(paramLong));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AppShareIDUtil
  * JD-Core Version:    0.7.0.1
  */

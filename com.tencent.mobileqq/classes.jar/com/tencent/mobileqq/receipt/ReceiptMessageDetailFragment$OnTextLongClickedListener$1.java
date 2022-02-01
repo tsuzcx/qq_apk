@@ -9,15 +9,15 @@ class ReceiptMessageDetailFragment$OnTextLongClickedListener$1
 {
   ReceiptMessageDetailFragment$OnTextLongClickedListener$1(ReceiptMessageDetailFragment.OnTextLongClickedListener paramOnTextLongClickedListener, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    ReceiptMessageDetailFragment.g(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    ReceiptMessageDetailFragment.t(this.a);
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.OnTextLongClickedListener.1
  * JD-Core Version:    0.7.0.1
  */

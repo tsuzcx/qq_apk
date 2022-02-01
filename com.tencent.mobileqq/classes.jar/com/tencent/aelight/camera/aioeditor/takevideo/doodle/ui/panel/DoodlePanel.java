@@ -8,6 +8,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -21,22 +22,17 @@ public class DoodlePanel
   extends RelativeLayout
   implements View.OnClickListener
 {
-  public static final int[] a;
-  private static final DoodlePanel.PenMode[] jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorTakevideoDoodleUiPanelDoodlePanel$PenMode = { DoodlePanel.PenMode.FREE_DRAW, DoodlePanel.PenMode.ERASER, DoodlePanel.PenMode.RECT, DoodlePanel.PenMode.OVAL, DoodlePanel.PenMode.ARROW, DoodlePanel.PenMode.LINE, DoodlePanel.PenMode.SEQUENCE_NUMBER };
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private DoodleColorAndModeView jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView;
-  private AEDoodlePenWidthSeekBar jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelAEDoodlePenWidthSeekBar;
-  private DoodlePanel.DoodlePanelListener jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelDoodlePanel$DoodlePanelListener;
-  private TextView b;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { -14079703, -1, -1027508, -1131223, -6038445, -12147713, -7768577, -496479 };
-  }
+  public static final int[] a = { -14079703, -1, -1027508, -1131223, -6038445, -12147713, -7768577, -496479 };
+  private static final DoodlePanel.PenMode[] b = { DoodlePanel.PenMode.FREE_DRAW, DoodlePanel.PenMode.ERASER, DoodlePanel.PenMode.RECT, DoodlePanel.PenMode.OVAL, DoodlePanel.PenMode.ARROW, DoodlePanel.PenMode.LINE, DoodlePanel.PenMode.SEQUENCE_NUMBER };
+  private int c = 0;
+  private DoodleColorAndModeView d;
+  private ImageView e;
+  private FrameLayout f;
+  private TextView g;
+  private TextView h;
+  private AEDoodlePenWidthSeekBar i;
+  private DoodlePanel.DoodlePanelListener j;
+  private float k;
   
   public DoodlePanel(Context paramContext)
   {
@@ -49,69 +45,88 @@ public class DoodlePanel
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.DoodleColorAndModeView);
-      this.jdField_a_of_type_Int = paramContext.getInt(2, 0);
+      this.c = paramContext.getInt(2, 0);
       paramContext.recycle();
     }
-    a();
+    b();
   }
   
-  private void a()
+  private void b()
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      LayoutInflater.from(getContext()).inflate(2131558514, this);
+    if (this.c == 1) {
+      LayoutInflater.from(getContext()).inflate(2131624067, this);
     } else {
-      LayoutInflater.from(getContext()).inflate(2131558512, this);
+      LayoutInflater.from(getContext()).inflate(2131624065, this);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView = ((DoodleColorAndModeView)findViewById(2131370051));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView.setColorSelectListener(new DoodlePanel.1(this));
-    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, 34.0F, getResources().getDisplayMetrics());
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369709));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369541));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379557));
-    this.b = ((TextView)findViewById(2131379594));
-    this.b.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelAEDoodlePenWidthSeekBar = ((AEDoodlePenWidthSeekBar)findViewById(2131377129));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelAEDoodlePenWidthSeekBar.setOnSeekBarChangeListener(new DoodlePanel.2(this));
+    this.d = ((DoodleColorAndModeView)findViewById(2131437212));
+    this.d.setColorSelectListener(new DoodlePanel.1(this));
+    this.k = TypedValue.applyDimension(1, 34.0F, getResources().getDisplayMetrics());
+    this.f = ((FrameLayout)findViewById(2131436820));
+    this.e = ((ImageView)findViewById(2131436642));
+    this.e.setOnClickListener(this);
+    this.g = ((TextView)findViewById(2131448309));
+    this.h = ((TextView)findViewById(2131448351));
+    this.h.setOnClickListener(this);
+    this.g.setOnClickListener(this);
+    this.i = ((AEDoodlePenWidthSeekBar)findViewById(2131445502));
+    this.i.setOnSeekBarChangeListener(new DoodlePanel.2(this));
+  }
+  
+  private void setColorLayoutVisibilityAnimated(boolean paramBoolean)
+  {
+    boolean bool;
+    if (this.d.getVisibility() == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (paramBoolean == bool) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.d.animate().setListener(new DoodlePanel.3(this)).setDuration(150L).alpha(1.0F).translationY(0.0F);
+      return;
+    }
+    this.d.animate().setListener(new DoodlePanel.4(this)).setDuration(150L).alpha(0.0F).translationY(this.k);
   }
   
   public void a(DoodlePanel.PenMode paramPenMode, int paramInt, float paramFloat)
   {
     paramPenMode = new ArrayList();
-    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
+    int[] arrayOfInt = a;
+    int n = arrayOfInt.length;
+    int m = 0;
+    while (m < n)
     {
-      paramPenMode.add(Integer.valueOf(arrayOfInt[i]));
-      i += 1;
+      paramPenMode.add(Integer.valueOf(arrayOfInt[m]));
+      m += 1;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView.a(paramPenMode, true, paramInt);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelAEDoodlePenWidthSeekBar.setProgress(paramFloat);
+    this.d.a(paramPenMode, true, paramInt);
+    this.i.setProgress(paramFloat);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView.a();
+    return this.d.a();
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131369541)
+    int m = paramView.getId();
+    if (m != 2131436642)
     {
-      if ((i != 2131379557) && (i != 2131379594)) {
+      if ((m != 2131448309) && (m != 2131448351)) {
         return;
       }
-      paramView = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelDoodlePanel$DoodlePanelListener;
+      paramView = this.j;
       if (paramView != null) {
         paramView.b();
       }
     }
     else
     {
-      paramView = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelDoodlePanel$DoodlePanelListener;
+      paramView = this.j;
       if (paramView != null) {
         paramView.a();
       }
@@ -120,25 +135,25 @@ public class DoodlePanel
   
   public void setPanelListener(DoodlePanel.DoodlePanelListener paramDoodlePanelListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelDoodlePanel$DoodlePanelListener = paramDoodlePanelListener;
+    this.j = paramDoodlePanelListener;
   }
   
   public void setUndoEnabled(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    int i;
+    this.e.setEnabled(paramBoolean);
+    ImageView localImageView = this.e;
+    int m;
     if (paramBoolean) {
-      i = 0;
+      m = 0;
     } else {
-      i = 4;
+      m = 4;
     }
-    localImageView.setVisibility(i);
+    localImageView.setVisibility(m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.DoodlePanel
  * JD-Core Version:    0.7.0.1
  */

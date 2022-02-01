@@ -20,21 +20,21 @@ class ChatHistoryC2CAllFragment$10$1
   
   protected Object a(MessageRecord... paramVarArgs)
   {
-    if (paramVarArgs[0].time <= this.a.a.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a())
+    if (paramVarArgs[0].time <= this.a.c.G.L())
     {
-      int i = ((QSlowTableManager)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SLOW_TABLE_MANAGER)).a(paramVarArgs[0], true);
+      int i = ((QSlowTableManager)this.a.c.a.getManager(QQManagerFactory.SLOW_TABLE_MANAGER)).a(paramVarArgs[0], true);
       if (i > 0) {
-        this.a.a.f = true;
-      } else if ((i == 0) && (paramVarArgs[0].time == this.a.a.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a())) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramVarArgs[0], true);
+        this.a.c.J = true;
+      } else if ((i == 0) && (paramVarArgs[0].time == this.a.c.G.L())) {
+        this.a.c.a.getMessageFacade().a(paramVarArgs[0], true);
       }
     }
     else
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramVarArgs[0], true);
+      this.a.c.a.getMessageFacade().a(paramVarArgs[0], true);
     }
     if ((paramVarArgs[0] instanceof IMessageForApollo)) {
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_c2c_del_all_msg");
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.c.a, "chat_history_c2c_del_all_msg");
     }
     return null;
   }
@@ -42,20 +42,20 @@ class ChatHistoryC2CAllFragment$10$1
   protected void onPostExecute(Object paramObject)
   {
     super.onPostExecute(paramObject);
-    this.a.a.b.removeMessages(1);
-    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    this.a.c.R.removeMessages(1);
+    if ((this.a.c.Q != null) && (this.a.c.Q.isShowing())) {
+      this.a.c.Q.dismiss();
     }
-    if ((this.a.a.f) && (this.a.a.e))
+    if ((this.a.c.J) && (this.a.c.z))
     {
-      this.a.a.e = false;
-      this.a.a.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.d();
+      this.a.c.z = false;
+      this.a.c.G.m();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.10.1
  * JD-Core Version:    0.7.0.1
  */

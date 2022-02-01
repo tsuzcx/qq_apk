@@ -26,12 +26,12 @@ public class OfficialRecommendListPageLoader
   extends INetPageLoader
   implements CmdTaskManger.CommandCallback<GetOfficialRecommendStoryListRequest, GetOfficialRecommendStoryListResponse>
 {
-  private LbsManager.LbsUpdateListener a = new OfficialRecommendListPageLoader.1(this);
+  private LbsManager.LbsUpdateListener g = new OfficialRecommendListPageLoader.1(this);
   
   public void a(BasicLocation paramBasicLocation)
   {
     GetOfficialRecommendStoryListRequest localGetOfficialRecommendStoryListRequest = new GetOfficialRecommendStoryListRequest();
-    localGetOfficialRecommendStoryListRequest.a = paramBasicLocation;
+    localGetOfficialRecommendStoryListRequest.g = paramBasicLocation;
     CmdTaskManger.a().a(localGetOfficialRecommendStoryListRequest, this);
   }
   
@@ -45,7 +45,7 @@ public class OfficialRecommendListPageLoader
     if ((paramGetOfficialRecommendStoryListResponse != null) && (!paramErrorMessage.isFail()))
     {
       paramErrorMessage = (StoryManager)SuperManager.a(5);
-      ArrayList localArrayList = paramErrorMessage.a();
+      ArrayList localArrayList = paramErrorMessage.e();
       Object localObject;
       if (QLog.isColorLevel())
       {
@@ -55,13 +55,13 @@ public class OfficialRecommendListPageLoader
         QLog.e(":OfficialRecommendListPageLoader", 2, ((StringBuilder)localObject).toString());
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("GetOfficialRecommendStoryListRequest: onCmdRespond response: ");
-        ((StringBuilder)localObject).append(paramGetOfficialRecommendStoryListResponse.a);
+        ((StringBuilder)localObject).append(paramGetOfficialRecommendStoryListResponse.f);
         QLog.e(":OfficialRecommendListPageLoader", 2, ((StringBuilder)localObject).toString());
       }
       int i = 0;
-      while (i < paramGetOfficialRecommendStoryListResponse.a.size())
+      while (i < paramGetOfficialRecommendStoryListResponse.f.size())
       {
-        localObject = (RecommendItem)paramGetOfficialRecommendStoryListResponse.a.get(i);
+        localObject = (RecommendItem)paramGetOfficialRecommendStoryListResponse.f.get(i);
         Iterator localIterator = localArrayList.iterator();
         while (localIterator.hasNext())
         {
@@ -72,9 +72,9 @@ public class OfficialRecommendListPageLoader
         }
         i += 1;
       }
-      paramErrorMessage.a(paramGetOfficialRecommendStoryListResponse.a);
-      paramGetOfficialRecommendStoryListRequest.jdField_a_of_type_JavaUtilList = paramGetOfficialRecommendStoryListResponse.a;
-      paramGetOfficialRecommendStoryListRequest.jdField_a_of_type_Boolean = true;
+      paramErrorMessage.a(paramGetOfficialRecommendStoryListResponse.f);
+      paramGetOfficialRecommendStoryListRequest.e = paramGetOfficialRecommendStoryListResponse.f;
+      paramGetOfficialRecommendStoryListRequest.a = true;
       StoryDispatcher.a().dispatch(paramGetOfficialRecommendStoryListRequest);
       paramGetOfficialRecommendStoryListResponse = new StringBuilder();
       paramGetOfficialRecommendStoryListResponse.append("dispatch OfficialRecommendListPageLoader onCmdRespond GetOfficialRecommendStoryListRequest result: ");
@@ -95,20 +95,20 @@ public class OfficialRecommendListPageLoader
   {
     GetOfficialRecommendStoryListRequest localGetOfficialRecommendStoryListRequest = new GetOfficialRecommendStoryListRequest();
     LbsManager localLbsManager = (LbsManager)SuperManager.a(9);
-    BasicLocation localBasicLocation = localLbsManager.b();
+    BasicLocation localBasicLocation = localLbsManager.d();
     if (localBasicLocation != null)
     {
-      localGetOfficialRecommendStoryListRequest.a = localBasicLocation;
+      localGetOfficialRecommendStoryListRequest.g = localBasicLocation;
       CmdTaskManger.a().a(localGetOfficialRecommendStoryListRequest, this);
       return;
     }
-    localLbsManager.a(this.a);
+    localLbsManager.a(this.g);
     localLbsManager.a(2000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.OfficialRecommendListPageLoader
  * JD-Core Version:    0.7.0.1
  */

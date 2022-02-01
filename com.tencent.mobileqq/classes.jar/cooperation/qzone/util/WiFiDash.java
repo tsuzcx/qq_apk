@@ -2,6 +2,7 @@ package cooperation.qzone.util;
 
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.qphone.base.util.BaseApplication;
 import mqq.app.MobileQQ;
 
@@ -45,7 +46,7 @@ public class WiFiDash
     }
     try
     {
-      localObject1 = ((WifiManager)localObject1).getConnectionInfo();
+      localObject1 = NetworkMonitor.getConnectionInfo((WifiManager)localObject1);
     }
     catch (Exception localException)
     {
@@ -85,7 +86,7 @@ public class WiFiDash
     }
     try
     {
-      localObject = ((WifiManager)localObject).getConnectionInfo();
+      localObject = NetworkMonitor.getConnectionInfo((WifiManager)localObject);
     }
     catch (Exception localException)
     {
@@ -121,7 +122,7 @@ public class WiFiDash
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.util.WiFiDash
  * JD-Core Version:    0.7.0.1
  */

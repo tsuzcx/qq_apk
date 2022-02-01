@@ -9,7 +9,7 @@ class LiteActivity$27$9
   
   public void run()
   {
-    this.a.a.a.notifyDataSetChanged();
+    this.a.a.m.notifyDataSetChanged();
   }
 }
 

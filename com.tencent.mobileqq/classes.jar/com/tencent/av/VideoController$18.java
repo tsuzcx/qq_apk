@@ -12,9 +12,9 @@ class VideoController$18
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "mDoubleVideoMeetingSwitchMulti timeOut ");
+      QLog.d(VideoController.a, 2, "mDoubleVideoMeetingSwitchMulti timeOut ");
     }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(this.this$0.a().f), Boolean.valueOf(true) });
+    this.this$0.e.a(new Object[] { Integer.valueOf(28), String.valueOf(this.this$0.k().aN), Boolean.valueOf(true) });
   }
 }
 

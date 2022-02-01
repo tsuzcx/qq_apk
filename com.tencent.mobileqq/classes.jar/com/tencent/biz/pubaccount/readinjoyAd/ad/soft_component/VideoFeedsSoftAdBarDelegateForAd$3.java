@@ -21,16 +21,16 @@ class VideoFeedsSoftAdBarDelegateForAd$3
     if (paramMessage.what != 1) {
       return;
     }
-    VideoFeedsSoftAdBarDelegateForAd.a(this.a).w.setAlpha(1.0F);
+    VideoFeedsSoftAdBarDelegateForAd.c(this.a).bF.setAlpha(1.0F);
     VideoFeedsSoftAdBarDelegateForAd.a(this.a, true);
-    VideoFeedsSoftAdBarDelegateForAd.b(this.a).setVisibility(8);
+    VideoFeedsSoftAdBarDelegateForAd.d(this.a).setVisibility(8);
     paramMessage = this.a;
-    VideoFeedsSoftAdBarDelegateForAd.a(paramMessage, VideoFeedsSoftAdBarDelegateForAd.a(paramMessage), true);
+    VideoFeedsSoftAdBarDelegateForAd.a(paramMessage, VideoFeedsSoftAdBarDelegateForAd.c(paramMessage), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.soft_component.VideoFeedsSoftAdBarDelegateForAd.3
  * JD-Core Version:    0.7.0.1
  */

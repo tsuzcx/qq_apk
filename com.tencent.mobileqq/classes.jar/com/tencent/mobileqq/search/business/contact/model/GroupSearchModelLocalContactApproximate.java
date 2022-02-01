@@ -10,48 +10,48 @@ import com.tencent.mobileqq.search.util.SearchUtils;
 import java.util.List;
 
 public class GroupSearchModelLocalContactApproximate
-  implements ISearchResultGroupModel
+  extends ISearchResultGroupModel
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
   public List<ISearchResultModel> a;
+  private String b;
+  private int c;
   
   public GroupSearchModelLocalContactApproximate(List<ISearchResultModel> paramList, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 3;
+    this.a = paramList;
+    this.b = paramString;
+    this.c = paramInt;
   }
   
   public String a()
   {
-    return HardCodeUtil.a(2131705473);
-  }
-  
-  public List<ISearchResultModel> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return HardCodeUtil.a(2131903361);
   }
   
   public void a(View paramView)
   {
-    ((ISearchActivityJumpFetcher)QRoute.api(ISearchActivityJumpFetcher.class)).jumpToContactSearchActivity(paramView.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
-    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 20, 0, paramView);
+    ((ISearchActivityJumpFetcher)QRoute.api(ISearchActivityJumpFetcher.class)).jumpToContactSearchActivity(paramView.getContext(), this.b, this.c, true);
+    SearchUtils.a(this.b, 20, 0, paramView);
   }
   
-  public String b()
+  public List<ISearchResultModel> b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
+  }
+  
+  public String c()
+  {
+    return this.b;
+  }
+  
+  public int d()
+  {
+    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.model.GroupSearchModelLocalContactApproximate
  * JD-Core Version:    0.7.0.1
  */

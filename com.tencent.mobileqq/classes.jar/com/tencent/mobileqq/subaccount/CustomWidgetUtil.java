@@ -33,7 +33,7 @@ public class CustomWidgetUtil
         if (paramInt3 > 0) {
           paramInt1 = paramInt3;
         } else {
-          paramInt1 = 2130850770;
+          paramInt1 = 2130852592;
         }
         if (paramInt2 > paramInt4)
         {
@@ -49,10 +49,10 @@ public class CustomWidgetUtil
           if (paramInt3 > 0) {
             break;
           }
-          paramInt3 = 2130850769;
+          paramInt3 = 2130852591;
           break;
           if (paramInt3 <= 0) {
-            paramInt3 = 2130850770;
+            paramInt3 = 2130852592;
           }
           paramInt1 = paramInt3;
           localObject = paramString;
@@ -63,7 +63,7 @@ public class CustomWidgetUtil
             if (paramInt3 > 0) {
               paramInt1 = paramInt3;
             } else {
-              paramInt1 = 2130850770;
+              paramInt1 = 2130852592;
             }
             if (paramInt2 > 99)
             {
@@ -77,7 +77,7 @@ public class CustomWidgetUtil
               if (paramInt3 > 0) {
                 paramInt1 = paramInt3;
               } else {
-                paramInt1 = 2130850770;
+                paramInt1 = 2130852592;
               }
               if (paramInt2 > paramInt4)
               {
@@ -93,7 +93,7 @@ public class CustomWidgetUtil
                 if (paramInt3 > 0) {
                   paramInt1 = paramInt3;
                 } else {
-                  paramInt1 = 2130850770;
+                  paramInt1 = 2130852592;
                 }
                 localObject = "NEW";
               }
@@ -103,7 +103,7 @@ public class CustomWidgetUtil
       }
     }
     if (paramInt3 <= 0) {
-      paramInt3 = 2130850766;
+      paramInt3 = 2130852588;
     }
     Object localObject = "";
     paramInt1 = 0;
@@ -117,11 +117,11 @@ public class CustomWidgetUtil
       paramTextView.setVisibility(8);
       return;
     }
-    localObject = paramTextView.getTag(2131380210);
+    localObject = paramTextView.getTag(2131449128);
     if (((localObject != null) || (paramInt3 != 0)) && ((!(localObject instanceof Integer)) || (((Integer)localObject).intValue() != paramInt3)))
     {
       paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt3, 0, 0, 0);
-      paramTextView.setTag(2131380210, Integer.valueOf(paramInt3));
+      paramTextView.setTag(2131449128, Integer.valueOf(paramInt3));
       paramTextView.setText(paramString);
       paramTextView.setPadding(0, 0, 0, 0);
     }
@@ -136,7 +136,7 @@ public class CustomWidgetUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.CustomWidgetUtil
  * JD-Core Version:    0.7.0.1
  */

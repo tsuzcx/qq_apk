@@ -40,14 +40,14 @@ import tencent.im.oidb.qqconnect.Appinfo;
 public final class OpenAgentHandler
   extends BusinessHandler
 {
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private final List<qqconnect.Appinfo> jdField_a_of_type_JavaUtilList = new ArrayList(10);
+  private final List<qqconnect.Appinfo> a = new ArrayList(10);
   private final List<AppInfo> b = new ArrayList(10);
+  private BaseQQAppInterface c;
   
   public OpenAgentHandler(BaseQQAppInterface paramBaseQQAppInterface)
   {
     super(paramBaseQQAppInterface);
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
+    this.c = paramBaseQQAppInterface;
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -134,7 +134,7 @@ public final class OpenAgentHandler
                 localObject1 = paramFromServiceMsg;
                 if (localObject2 != null)
                 {
-                  this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject2);
+                  this.a.addAll((Collection)localObject2);
                   int k = paramToServiceMsg.extraData.getInt("req_index");
                   int m = paramToServiceMsg.extraData.getInt("req_page_size");
                   i = paramObject.total_count.get();
@@ -145,12 +145,12 @@ public final class OpenAgentHandler
                     i = j;
                     break label420;
                   }
-                  paramToServiceMsg = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
-                  paramObject = this.jdField_a_of_type_JavaUtilList.iterator();
+                  paramToServiceMsg = new ArrayList(this.a.size());
+                  paramObject = this.a.iterator();
                   while (paramObject.hasNext()) {
                     paramToServiceMsg.add(new AppInfo((qqconnect.Appinfo)paramObject.next()));
                   }
-                  this.jdField_a_of_type_JavaUtilList.clear();
+                  this.a.clear();
                   notifyUI(0, true, paramToServiceMsg);
                   i = j;
                   break label420;
@@ -166,7 +166,7 @@ public final class OpenAgentHandler
     label420:
     if (i == 0)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.a.clear();
       notifyUI(0, false, paramFromServiceMsg);
     }
   }
@@ -262,7 +262,7 @@ public final class OpenAgentHandler
     } else {
       i = 0;
     }
-    localAuthItemResult.jdField_a_of_type_Int = i;
+    localAuthItemResult.a = i;
     if (!paramFromServiceMsg.isSuccess())
     {
       notifyUI(paramToServiceMsg, 2, false, localAuthItemResult);
@@ -280,7 +280,7 @@ public final class OpenAgentHandler
       if (paramFromServiceMsg.uint32_result.get() != 0)
       {
         localAuthItemResult.b = paramFromServiceMsg.uint32_result.get();
-        localAuthItemResult.jdField_a_of_type_JavaLangString = paramFromServiceMsg.str_error_msg.get();
+        localAuthItemResult.c = paramFromServiceMsg.str_error_msg.get();
         notifyUI(paramToServiceMsg, 2, false, localAuthItemResult);
         return;
       }
@@ -289,7 +289,7 @@ public final class OpenAgentHandler
         {
           paramObject = new oidb_0xf26.RspBody();
           paramObject.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-          localAuthItemResult.jdField_a_of_type_TencentImOidbCmd0xf26Oidb_0xf26$RspBody = paramObject;
+          localAuthItemResult.d = paramObject;
           notifyUI(paramToServiceMsg, 2, true, localAuthItemResult);
           return;
         }
@@ -442,7 +442,7 @@ public final class OpenAgentHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.manager.OpenAgentHandler
  * JD-Core Version:    0.7.0.1
  */

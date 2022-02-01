@@ -82,7 +82,7 @@ class ProfileCardNewPhotoWallView$1
       ((Bundle)localObject2).putIntegerArrayList("mPreviewPhotoLocation", this.this$0.mPreviewPhotoLocation);
       ((Intent)localObject1).putExtras((Bundle)localObject2);
       RouteUtils.a(this.this$0.mActivity, (Intent)localObject1, "/base/troop/activity/TroopAvatarWallPreviewActivity");
-      this.this$0.mActivity.overridePendingTransition(2130772168, 2130772167);
+      this.this$0.mActivity.overridePendingTransition(2130772234, 2130772233);
       if (this.this$0.mApp.getCurrentAccountUin().equals(this.this$0.mUin)) {
         ReportController.b(this.this$0.mApp, "CliOper", "", "", "0X8006A80", "0X8006A80", 0, 0, "", "", "", "");
       } else {
@@ -94,7 +94,7 @@ class ProfileCardNewPhotoWallView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.photowall.view.ProfileCardNewPhotoWallView.1
  * JD-Core Version:    0.7.0.1
  */

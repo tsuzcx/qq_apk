@@ -8,7 +8,7 @@ final class EditVideoDoodle$PoiComparator
 {
   public int a(FaceLayer.FaceItem paramFaceItem1, FaceLayer.FaceItem paramFaceItem2)
   {
-    long l = paramFaceItem1.a - paramFaceItem2.a;
+    long l = paramFaceItem1.v - paramFaceItem2.v;
     if (l < 0L) {
       return -1;
     }
@@ -25,7 +25,7 @@ final class EditVideoDoodle$PoiComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoDoodle.PoiComparator
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForBlessPTV;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.guild.message.api.IGuildMessageUtilsApi;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 import com.tencent.mobileqq.highway.config.HwNetSegConf;
@@ -33,6 +34,8 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.pic.Logger;
 import com.tencent.mobileqq.pic.UpCallBack;
 import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.qqguildsdk.api.IGPSService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmedia.ordersend.IOrderMediaMsgService;
 import com.tencent.mobileqq.shortvideo.SVBusiUtil;
 import com.tencent.mobileqq.shortvideo.SVUtils;
@@ -71,6 +74,8 @@ public class ShortVideoUploadProcessor
   extends BaseShortVideoUploadProcessor
   implements IShortVideoUploadProcessor
 {
+  public static final int GUILD_LONG_VIDEO_TRANS_HW_BUZ_TYPE = 89;
+  public static final int GUILD_SHORT_VIDEO_TRANS_HW_BUZ_TYPE = 87;
   public static final String TAG = "ShortVideoUploadProcessor";
   BaseQQAppInterface app = (BaseQQAppInterface)this.app;
   Boolean isBDHExistBeforeVideoUpload = Boolean.valueOf(false);
@@ -275,6 +280,9 @@ public class ShortVideoUploadProcessor
     } else {
       localPttShortVideoUploadReq.uint64_group_code.set(0L);
     }
+    if (paramShortVideoUpReq.uinType == 10014) {
+      localPttShortVideoUploadReq.uint32_sub_business_type.set(paramShortVideoUpReq.subBusiType);
+    }
     localPttShortVideoUploadReq.uint32_agent_type.set(paramShortVideoUpReq.agentType);
     localPttShortVideoUploadReq.uint32_business_type.set(paramShortVideoUpReq.busiType);
     localPttShortVideoUploadReq.uint32_flag_support_large_size.set(1);
@@ -297,78 +305,78 @@ public class ShortVideoUploadProcessor
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 181	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
+    //   1: getfield 185	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
     //   4: ifnonnull +195 -> 199
-    //   7: new 495	java/io/FileInputStream
+    //   7: new 508	java/io/FileInputStream
     //   10: dup
     //   11: aload_0
-    //   12: getfield 159	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
-    //   15: invokespecial 497	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   12: getfield 163	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
+    //   15: invokespecial 510	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   18: astore_2
     //   19: aload_2
     //   20: astore_1
     //   21: aload_0
     //   22: aload_2
     //   23: lconst_0
-    //   24: invokestatic 503	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   27: putfield 181	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
+    //   24: invokestatic 516	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   27: putfield 185	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
     //   30: aload_2
     //   31: astore_1
     //   32: aload_0
-    //   33: getfield 181	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
+    //   33: getfield 185	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
     //   36: ifnonnull +79 -> 115
     //   39: aload_2
     //   40: astore_1
     //   41: aload_0
-    //   42: getfield 143	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mProcessorReport	Lcom/tencent/mobileqq/transfile/report/ProcessorReport;
+    //   42: getfield 147	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mProcessorReport	Lcom/tencent/mobileqq/transfile/report/ProcessorReport;
     //   45: astore_3
     //   46: aload_2
     //   47: astore_1
-    //   48: new 124	java/lang/StringBuilder
+    //   48: new 128	java/lang/StringBuilder
     //   51: dup
-    //   52: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   52: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   55: astore 4
     //   57: aload_2
     //   58: astore_1
     //   59: aload 4
-    //   61: ldc_w 505
-    //   64: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: ldc_w 518
+    //   64: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   67: pop
     //   68: aload_2
     //   69: astore_1
     //   70: aload 4
     //   72: aload_0
-    //   73: getfield 159	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
-    //   76: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: getfield 163	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
+    //   76: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: pop
     //   80: aload_2
     //   81: astore_1
     //   82: aload_3
     //   83: sipush 9041
     //   86: aload 4
-    //   88: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   88: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   91: aconst_null
     //   92: aconst_null
-    //   93: invokevirtual 151	com/tencent/mobileqq/transfile/report/ProcessorReport:setError	(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/transfile/StepInfo;)V
+    //   93: invokevirtual 155	com/tencent/mobileqq/transfile/report/ProcessorReport:setError	(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/transfile/StepInfo;)V
     //   96: aload_2
     //   97: astore_1
     //   98: aload_0
-    //   99: invokevirtual 154	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:onError	()V
+    //   99: invokevirtual 158	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:onError	()V
     //   102: aload_2
-    //   103: invokevirtual 508	java/io/FileInputStream:close	()V
+    //   103: invokevirtual 521	java/io/FileInputStream:close	()V
     //   106: iconst_0
     //   107: ireturn
     //   108: astore_1
     //   109: aload_1
-    //   110: invokevirtual 511	java/io/IOException:printStackTrace	()V
+    //   110: invokevirtual 524	java/io/IOException:printStackTrace	()V
     //   113: iconst_0
     //   114: ireturn
     //   115: aload_2
-    //   116: invokevirtual 508	java/io/FileInputStream:close	()V
+    //   116: invokevirtual 521	java/io/FileInputStream:close	()V
     //   119: goto +80 -> 199
     //   122: astore_1
     //   123: aload_1
-    //   124: invokevirtual 511	java/io/IOException:printStackTrace	()V
+    //   124: invokevirtual 524	java/io/IOException:printStackTrace	()V
     //   127: goto +72 -> 199
     //   130: astore_3
     //   131: goto +12 -> 143
@@ -383,82 +391,82 @@ public class ShortVideoUploadProcessor
     //   144: astore_1
     //   145: aload_0
     //   146: aconst_null
-    //   147: putfield 181	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
+    //   147: putfield 185	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:thumbFileMd5	[B
     //   150: aload_2
     //   151: astore_1
     //   152: aload_0
     //   153: aload_3
-    //   154: invokevirtual 515	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:analysisIOProblem	(Ljava/io/IOException;)V
+    //   154: invokevirtual 528	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:analysisIOProblem	(Ljava/io/IOException;)V
     //   157: aload_2
     //   158: astore_1
     //   159: aload_0
-    //   160: invokevirtual 154	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:onError	()V
+    //   160: invokevirtual 158	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:onError	()V
     //   163: aload_2
     //   164: ifnull +14 -> 178
     //   167: aload_2
-    //   168: invokevirtual 508	java/io/FileInputStream:close	()V
+    //   168: invokevirtual 521	java/io/FileInputStream:close	()V
     //   171: iconst_0
     //   172: ireturn
     //   173: astore_1
     //   174: aload_1
-    //   175: invokevirtual 511	java/io/IOException:printStackTrace	()V
+    //   175: invokevirtual 524	java/io/IOException:printStackTrace	()V
     //   178: iconst_0
     //   179: ireturn
     //   180: astore_2
     //   181: aload_1
     //   182: ifnull +15 -> 197
     //   185: aload_1
-    //   186: invokevirtual 508	java/io/FileInputStream:close	()V
+    //   186: invokevirtual 521	java/io/FileInputStream:close	()V
     //   189: goto +8 -> 197
     //   192: astore_1
     //   193: aload_1
-    //   194: invokevirtual 511	java/io/IOException:printStackTrace	()V
+    //   194: invokevirtual 524	java/io/IOException:printStackTrace	()V
     //   197: aload_2
     //   198: athrow
     //   199: aload_0
-    //   200: getfield 519	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
+    //   200: getfield 532	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
     //   203: ifnonnull +62 -> 265
     //   206: aload_0
-    //   207: new 521	java/io/RandomAccessFile
+    //   207: new 534	java/io/RandomAccessFile
     //   210: dup
     //   211: aload_0
-    //   212: getfield 159	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
-    //   215: ldc_w 523
-    //   218: invokespecial 526	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   221: putfield 519	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
+    //   212: getfield 163	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
+    //   215: ldc_w 536
+    //   218: invokespecial 539	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   221: putfield 532	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
     //   224: goto +13 -> 237
     //   227: astore_1
     //   228: aload_1
-    //   229: invokevirtual 527	java/io/FileNotFoundException:printStackTrace	()V
+    //   229: invokevirtual 540	java/io/FileNotFoundException:printStackTrace	()V
     //   232: aload_0
     //   233: aconst_null
-    //   234: putfield 519	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
+    //   234: putfield 532	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
     //   237: aload_0
-    //   238: getfield 519	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
+    //   238: getfield 532	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbRaf	Ljava/io/RandomAccessFile;
     //   241: ifnonnull +24 -> 265
     //   244: aload_0
-    //   245: getfield 143	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mProcessorReport	Lcom/tencent/mobileqq/transfile/report/ProcessorReport;
+    //   245: getfield 147	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mProcessorReport	Lcom/tencent/mobileqq/transfile/report/ProcessorReport;
     //   248: sipush 9303
-    //   251: ldc_w 529
+    //   251: ldc_w 542
     //   254: aconst_null
     //   255: aconst_null
-    //   256: invokevirtual 151	com/tencent/mobileqq/transfile/report/ProcessorReport:setError	(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/transfile/StepInfo;)V
+    //   256: invokevirtual 155	com/tencent/mobileqq/transfile/report/ProcessorReport:setError	(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/transfile/StepInfo;)V
     //   259: aload_0
-    //   260: invokevirtual 154	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:onError	()V
+    //   260: invokevirtual 158	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:onError	()V
     //   263: iconst_0
     //   264: ireturn
     //   265: aload_0
-    //   266: new 531	java/io/File
+    //   266: new 544	java/io/File
     //   269: dup
     //   270: aload_0
-    //   271: getfield 159	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
-    //   274: invokespecial 532	java/io/File:<init>	(Ljava/lang/String;)V
-    //   277: invokevirtual 535	java/io/File:length	()J
-    //   280: putfield 308	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFileSize	J
+    //   271: getfield 163	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
+    //   274: invokespecial 545	java/io/File:<init>	(Ljava/lang/String;)V
+    //   277: invokevirtual 548	java/io/File:length	()J
+    //   280: putfield 312	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFileSize	J
     //   283: aload_0
     //   284: aload_0
-    //   285: getfield 159	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
-    //   288: invokevirtual 538	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:getThumbFileSize	(Ljava/lang/String;)V
+    //   285: getfield 163	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:mThumbFilePath	Ljava/lang/String;
+    //   288: invokevirtual 551	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:getThumbFileSize	(Ljava/lang/String;)V
     //   291: iconst_1
     //   292: ireturn
     // Local variable table:
@@ -634,7 +642,7 @@ public class ShortVideoUploadProcessor
           localVideoFile.uint32_to_chat_type.set(-1);
           localObject3 = new im_msg_body.Text();
           ((im_msg_body.Text)localObject3).setHasFlag(true);
-          ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131713969)));
+          ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131911500)));
           localObject1 = new im_msg_body.Elem();
           ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject3);
           localObject3 = new im_msg_body.Elem();
@@ -875,6 +883,14 @@ public class ShortVideoUploadProcessor
         onError();
         return;
       }
+      if (paramShortVideoUploadInfo.istroop == 10014)
+      {
+        ((IGuildMessageUtilsApi)QRoute.api(IGuildMessageUtilsApi.class)).saveGuildIdToMR(paramShortVideoUploadInfo, ((IGPSService)this.app.getRuntimeService(IGPSService.class, "")).getGuildIdOf(paramShortVideoUploadInfo.frienduin));
+        paramRichText = new StringBuilder();
+        paramRichText.append("doSendMsg seq:");
+        paramRichText.append(paramShortVideoUploadInfo.uniseq);
+        QLog.i("ShortVideoUploadProcessor<gld>.video", 1, paramRichText.toString());
+      }
       long l = this.mUiRequest.mUniseq;
       paramRichText = new StringBuilder();
       paramRichText.append("sendMsg() []. mr = ");
@@ -1080,6 +1096,12 @@ public class ShortVideoUploadProcessor
       localShortVideoUpReq.subBusiType = 0;
       localShortVideoUpReq.userCnt = 1;
     }
+    else if (((this.mUiRequest.mRec instanceof MessageForShortVideo)) && (10014 == this.mUiRequest.mUinType))
+    {
+      localShortVideoUpReq.peerUin = this.mUiRequest.mPeerUin;
+      localShortVideoUpReq.subBusiType = ((MessageForShortVideo)this.mUiRequest.mRec).subBusiType;
+      localShortVideoUpReq.userCnt = 1;
+    }
     else
     {
       localShortVideoUpReq.peerUin = this.mUiRequest.mPeerUin;
@@ -1088,9 +1110,15 @@ public class ShortVideoUploadProcessor
     }
     localShortVideoUpReq.uinType = this.mUiRequest.mUinType;
     localShortVideoUpReq.agentType = 0;
-    if ((localShortVideoUpReq.uinType != 0) && (1008 != localShortVideoUpReq.uinType)) {
-      localShortVideoUpReq.troopUin = this.mUiRequest.mPeerUin;
-    } else {
+    if ((localShortVideoUpReq.uinType != 0) && (1008 != localShortVideoUpReq.uinType))
+    {
+      if (((this.mUiRequest.mRec instanceof MessageForShortVideo)) && (10014 == this.mUiRequest.mUinType)) {
+        localShortVideoUpReq.troopUin = String.valueOf(((IGuildMessageUtilsApi)QRoute.api(IGuildMessageUtilsApi.class)).getGuildIdFromMR(this.mUiRequest.mRec));
+      } else {
+        localShortVideoUpReq.troopUin = this.mUiRequest.mPeerUin;
+      }
+    }
+    else {
       localShortVideoUpReq.troopUin = null;
     }
     if (localShortVideoUpReq.uinType == 0) {
@@ -1099,6 +1127,8 @@ public class ShortVideoUploadProcessor
       localShortVideoUpReq.chatType = 1;
     } else if (3000 == localShortVideoUpReq.uinType) {
       localShortVideoUpReq.chatType = 2;
+    } else if (10014 == localShortVideoUpReq.uinType) {
+      localShortVideoUpReq.chatType = 4;
     } else {
       localShortVideoUpReq.chatType = 3;
     }
@@ -1226,9 +1256,9 @@ public class ShortVideoUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       localObject = new UpCallBack.SendResult();
-      ((UpCallBack.SendResult)localObject).jdField_a_of_type_Int = -1;
+      ((UpCallBack.SendResult)localObject).a = -1;
       ((UpCallBack.SendResult)localObject).b = this.mProcessorReport.errCode;
-      ((UpCallBack.SendResult)localObject).jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
+      ((UpCallBack.SendResult)localObject).c = this.mProcessorReport.errDesc;
       this.mUiRequest.mUpCallBack.b((UpCallBack.SendResult)localObject);
     }
     if ((this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForBlessPTV)))
@@ -1244,25 +1274,25 @@ public class ShortVideoUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Int = 0;
-      localSendResult.jdField_a_of_type_Long = (this.mFileSize - this.mThumbFileSize);
-      localSendResult.jdField_d_of_type_JavaLangString = this.mMd5Str;
+      localSendResult.a = 0;
+      localSendResult.e = (this.mFileSize - this.mThumbFileSize);
+      localSendResult.g = this.mMd5Str;
       Object localObject;
       if (this.mResid == null) {
         localObject = this.mUuid;
       } else {
         localObject = this.mResid;
       }
-      localSendResult.jdField_c_of_type_JavaLangString = ((String)localObject);
-      localSendResult.jdField_c_of_type_Long = this.mThumbFileSize;
-      localSendResult.jdField_c_of_type_Int = this.mVideoAttr;
-      localSendResult.jdField_d_of_type_Int = this.mVideoKandianType;
+      localSendResult.f = ((String)localObject);
+      localSendResult.i = this.mThumbFileSize;
+      localSendResult.j = this.mVideoAttr;
+      localSendResult.k = this.mVideoKandianType;
       this.mUiRequest.mUpCallBack.b(localSendResult);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onSuccess uuid = ");
-        ((StringBuilder)localObject).append(localSendResult.jdField_c_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(localSendResult.f);
         QLog.d("ShortVideoUploadProcessor", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -1289,9 +1319,9 @@ public class ShortVideoUploadProcessor
       if ((this.mUiRequest.mBusiType == 1010) && (this.mUiRequest.mUpCallBack != null))
       {
         localObject = new UpCallBack.SendResult();
-        ((UpCallBack.SendResult)localObject).jdField_a_of_type_Int = -1;
+        ((UpCallBack.SendResult)localObject).a = -1;
         ((UpCallBack.SendResult)localObject).b = 9037;
-        ((UpCallBack.SendResult)localObject).jdField_a_of_type_JavaLangString = "cancel";
+        ((UpCallBack.SendResult)localObject).c = "cancel";
         this.mUiRequest.mUpCallBack.b((UpCallBack.SendResult)localObject);
       }
       if (this.mRichProtoReq != null)
@@ -1402,11 +1432,28 @@ public class ShortVideoUploadProcessor
     byte[] arrayOfByte = buildExtendInfo(localShortVideoUpReq);
     ShortVideoUploadProcessor.2 local2 = new ShortVideoUploadProcessor.2(this, (String)localObject, l);
     int i;
-    if (localShortVideoUpReq.busiType == 0) {
+    if (localShortVideoUpReq.busiType == 0)
+    {
       i = 25;
-    } else {
+    }
+    else
+    {
+      if (localShortVideoUpReq.busiType == 4601)
+      {
+        if (localShortVideoUpReq.subBusiType == 4601)
+        {
+          i = 89;
+          break label159;
+        }
+        if (localShortVideoUpReq.subBusiType == 4602)
+        {
+          i = 87;
+          break label159;
+        }
+      }
       i = 12;
     }
+    label159:
     this.mTrans = new Transaction(this.app.getCurrentAccountUin(), i, (String)localObject, (int)this.mStartOffset, this.mLocalMd5, local2, arrayOfByte, true);
     localObject = new ShortVideoUploadProcessor.3(this);
     this.mTrans.cbForReport = ((ITransCallbackForReport)localObject);
@@ -1471,7 +1518,7 @@ public class ShortVideoUploadProcessor
     if ((this.mUiRequest.mExtraObj != null) && ((this.mUiRequest.mExtraObj instanceof ShortVideoUploadInfo)))
     {
       localObject2 = (ShortVideoUploadInfo)this.mUiRequest.mExtraObj;
-      this.mNeedSyncStory = ((ShortVideoUploadInfo)localObject2).h;
+      this.mNeedSyncStory = ((ShortVideoUploadInfo)localObject2).M;
       localObject1 = localObject2;
       if (QLog.isColorLevel())
       {
@@ -1492,20 +1539,20 @@ public class ShortVideoUploadProcessor
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("sendMsg() start, isHotVideo = ");
-        ((StringBuilder)localObject2).append(((ShortVideoUploadInfo)localObject1).jdField_f_of_type_Boolean);
+        ((StringBuilder)localObject2).append(((ShortVideoUploadInfo)localObject1).C);
         QLog.d("ShortVideoUploadProcessor", 2, ((StringBuilder)localObject2).toString());
       }
-      if (((ShortVideoUploadInfo)localObject1).jdField_f_of_type_Boolean)
+      if (((ShortVideoUploadInfo)localObject1).C)
       {
-        this.mUuid = ((ShortVideoUploadInfo)localObject1).jdField_a_of_type_JavaLangString;
-        this.mMd5Str = ((ShortVideoUploadInfo)localObject1).jdField_e_of_type_JavaLangString;
-        this.mLocalMd5 = HexUtil.hexStr2Bytes(((ShortVideoUploadInfo)localObject1).jdField_e_of_type_JavaLangString);
-        this.mFileSize = (((ShortVideoUploadInfo)localObject1).jdField_e_of_type_Int + ((ShortVideoUploadInfo)localObject1).b);
-        this.videoTime = ((ShortVideoUploadInfo)localObject1).jdField_f_of_type_Int;
-        this.mThumbFileSize = ((ShortVideoUploadInfo)localObject1).b;
-        this.thumbFileMd5 = HexUtil.hexStr2Bytes(((ShortVideoUploadInfo)localObject1).g);
-        this.mThumbFileHeight = ((ShortVideoUploadInfo)localObject1).jdField_d_of_type_Int;
-        this.mThumbFileWidth = ((ShortVideoUploadInfo)localObject1).jdField_c_of_type_Int;
+        this.mUuid = ((ShortVideoUploadInfo)localObject1).a;
+        this.mMd5Str = ((ShortVideoUploadInfo)localObject1).i;
+        this.mLocalMd5 = HexUtil.hexStr2Bytes(((ShortVideoUploadInfo)localObject1).i);
+        this.mFileSize = (((ShortVideoUploadInfo)localObject1).q + ((ShortVideoUploadInfo)localObject1).K);
+        this.videoTime = ((ShortVideoUploadInfo)localObject1).r;
+        this.mThumbFileSize = ((ShortVideoUploadInfo)localObject1).K;
+        this.thumbFileMd5 = HexUtil.hexStr2Bytes(((ShortVideoUploadInfo)localObject1).k);
+        this.mThumbFileHeight = ((ShortVideoUploadInfo)localObject1).p;
+        this.mThumbFileWidth = ((ShortVideoUploadInfo)localObject1).o;
       }
     }
     if (!this.needSendMsg) {
@@ -1591,7 +1638,7 @@ public class ShortVideoUploadProcessor
       return;
     }
     if ((this.mUiRequest.mExtraObj != null) && ((this.mUiRequest.mExtraObj instanceof ShortVideoUploadInfo))) {
-      this.isFromFavorite = ((ShortVideoUploadInfo)this.mUiRequest.mExtraObj).j;
+      this.isFromFavorite = ((ShortVideoUploadInfo)this.mUiRequest.mExtraObj).Q;
     }
     sendMessageToUpdate(1001);
     this.file.closeInputStream();
@@ -1636,7 +1683,7 @@ public class ShortVideoUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

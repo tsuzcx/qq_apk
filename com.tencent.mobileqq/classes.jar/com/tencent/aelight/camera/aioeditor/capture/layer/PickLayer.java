@@ -18,16 +18,9 @@ public class PickLayer
     return "PickLayer";
   }
   
-  public void a() {}
-  
   protected void a(Canvas paramCanvas) {}
   
   public void a(Canvas paramCanvas, float paramFloat) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
   
   public boolean a(long paramLong)
   {
@@ -39,16 +32,23 @@ public class PickLayer
     return false;
   }
   
+  public void b() {}
+  
   public void b(Canvas paramCanvas) {}
   
   public boolean b(MotionEvent paramMotionEvent)
   {
     return false;
   }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.layer.PickLayer
  * JD-Core Version:    0.7.0.1
  */

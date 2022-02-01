@@ -3,7 +3,7 @@ package com.tencent.mm.opensdk.modelbiz;
 import android.os.Bundle;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public final class WXLaunchMiniProgram$Req
   extends BaseReq
@@ -17,9 +17,9 @@ public final class WXLaunchMiniProgram$Req
   public String path = "";
   public String userName;
   
-  public final boolean checkArgs()
+  public boolean checkArgs()
   {
-    if (d.b(this.userName)) {}
+    if (b.b(this.userName)) {}
     for (String str = "userName is null";; str = "miniprogram type should between MINIPTOGRAM_TYPE_RELEASE and MINIPROGRAM_TYPE_PREVIEW")
     {
       Log.e("MicroMsg.SDK.WXLaunchMiniProgram.Req", str);
@@ -31,12 +31,12 @@ public final class WXLaunchMiniProgram$Req
     }
   }
   
-  public final int getType()
+  public int getType()
   {
     return 19;
   }
   
-  public final void toBundle(Bundle paramBundle)
+  public void toBundle(Bundle paramBundle)
   {
     super.toBundle(paramBundle);
     paramBundle.putString("_launch_wxminiprogram_username", this.userName);
@@ -47,7 +47,7 @@ public final class WXLaunchMiniProgram$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram.Req
  * JD-Core Version:    0.7.0.1
  */

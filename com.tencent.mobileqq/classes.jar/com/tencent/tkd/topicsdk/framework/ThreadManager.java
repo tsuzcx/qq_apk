@@ -14,34 +14,28 @@ import org.jetbrains.annotations.NotNull;
 public final class ThreadManager
 {
   @NotNull
-  private static final Handler a;
-  public static final ThreadManager a;
-  @NotNull
   public static IThreadManager a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkFrameworkThreadManager = new ThreadManager();
-    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
+  public static final ThreadManager b = new ThreadManager();
+  @NotNull
+  private static final Handler c = new Handler(Looper.getMainLooper());
   
   @NotNull
   public final Handler a()
   {
-    return jdField_a_of_type_AndroidOsHandler;
+    return c;
   }
   
   public final void a(@NotNull IThreadManager paramIThreadManager)
   {
     Intrinsics.checkParameterIsNotNull(paramIThreadManager, "impl");
-    jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIThreadManager = paramIThreadManager;
+    a = paramIThreadManager;
   }
   
   public final void a(@NotNull ThreadType paramThreadType, @NotNull Function0<Unit> paramFunction0)
   {
     Intrinsics.checkParameterIsNotNull(paramThreadType, "threadType");
     Intrinsics.checkParameterIsNotNull(paramFunction0, "runnable");
-    IThreadManager localIThreadManager = jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIThreadManager;
+    IThreadManager localIThreadManager = a;
     if (localIThreadManager == null) {
       Intrinsics.throwUninitializedPropertyAccessException("impl");
     }
@@ -50,7 +44,7 @@ public final class ThreadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.ThreadManager
  * JD-Core Version:    0.7.0.1
  */

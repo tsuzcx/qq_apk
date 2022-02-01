@@ -42,7 +42,7 @@ public class TroopNickNameHelper
   
   private static void a(TextView paramTextView, int paramInt1, int paramInt2)
   {
-    Object localObject = TroopNickFontAdapter.a(paramInt1, paramInt2);
+    Object localObject = TroopNickFontAdapter.c(paramInt1, paramInt2);
     if (localObject != null)
     {
       paramTextView.setTypeface((Typeface)localObject);
@@ -67,7 +67,7 @@ public class TroopNickNameHelper
     {
       Object localObject = paramTextView.getBackground();
       int i;
-      if (((localObject instanceof TroopNickResDrawable)) && (((TroopNickResDrawable)localObject).a() == paramInt)) {
+      if (((localObject instanceof TroopNickResDrawable)) && (((TroopNickResDrawable)localObject).e() == paramInt)) {
         i = 1;
       } else {
         i = 0;
@@ -99,7 +99,7 @@ public class TroopNickNameHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickNameHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -15,10 +15,10 @@ public class GetJoinedHotChatListMessageStep
 {
   protected int doStep()
   {
-    if (HotChatManager.a(this.mAutomator.a))
+    if (HotChatManager.a(this.mAutomator.k))
     {
-      HotChatManager localHotChatManager = (HotChatManager)this.mAutomator.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-      Object localObject = localHotChatManager.b();
+      HotChatManager localHotChatManager = (HotChatManager)this.mAutomator.k.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+      Object localObject = localHotChatManager.d();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder(50);
@@ -45,7 +45,7 @@ public class GetJoinedHotChatListMessageStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListMessageStep
  * JD-Core Version:    0.7.0.1
  */

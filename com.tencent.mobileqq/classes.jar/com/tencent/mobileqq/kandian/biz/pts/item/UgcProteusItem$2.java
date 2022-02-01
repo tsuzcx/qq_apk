@@ -18,20 +18,20 @@ class UgcProteusItem$2
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Int == 120)
+    if (this.a == 120)
     {
-      LiveRoomProxyActivity.open(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.a.c, "kandian feed click");
+      LiveRoomProxyActivity.open(this.b.a(), this.c.k().mSocialFeedInfo.u.e, "kandian feed click");
       return;
     }
-    OnSubRegionClickListener localOnSubRegionClickListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a().a();
+    OnSubRegionClickListener localOnSubRegionClickListener = this.b.y().c();
     if (localOnSubRegionClickListener != null) {
-      localOnSubRegionClickListener.a(paramView, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a(), 2);
+      localOnSubRegionClickListener.a(paramView, this.c.k(), 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.UgcProteusItem.2
  * JD-Core Version:    0.7.0.1
  */

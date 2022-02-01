@@ -18,13 +18,13 @@ class WSDramaMiddlePart$3
   
   public void b(WSDramaItemData paramWSDramaItemData, int paramInt)
   {
-    WSDramaBeaconReport.a(paramWSDramaItemData, paramInt, 1, true, this.a.a());
+    WSDramaBeaconReport.a(paramWSDramaItemData, paramInt, 1, true, this.a.k());
     WSDramaMiddlePart.a(this.a, WSDramaUtils.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.WSDramaMiddlePart.3
  * JD-Core Version:    0.7.0.1
  */

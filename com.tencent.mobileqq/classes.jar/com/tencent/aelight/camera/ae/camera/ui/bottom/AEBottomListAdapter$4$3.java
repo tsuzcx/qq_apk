@@ -10,20 +10,20 @@ class AEBottomListAdapter$4$3
   
   public void run()
   {
-    if (AEBottomListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter$4.a).get(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k) != null)
+    if (AEBottomListAdapter.h(this.c.a).get(this.a.m) != null)
     {
-      if ((this.jdField_a_of_type_Int < 100) && (!this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.e) && (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.f))
+      if ((this.b < 100) && (!this.a.A) && (this.a.B))
       {
-        ((AEBottomListAdapter.ViewHolder)AEBottomListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter$4.a).get(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k)).a(1);
+        ((AEBottomListAdapter.ViewHolder)AEBottomListAdapter.h(this.c.a).get(this.a.m)).a(1);
         return;
       }
-      ((AEBottomListAdapter.ViewHolder)AEBottomListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter$4.a).get(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k)).a(2);
+      ((AEBottomListAdapter.ViewHolder)AEBottomListAdapter.h(this.c.a).get(this.a.m)).a(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListAdapter.4.3
  * JD-Core Version:    0.7.0.1
  */

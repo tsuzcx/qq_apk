@@ -15,18 +15,18 @@ class QIMUserManager$5$1
     while (localIterator.hasNext())
     {
       QIMUserManager.QIMUserIcon localQIMUserIcon = (QIMUserManager.QIMUserIcon)localIterator.next();
-      if (localQIMUserIcon.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView != null) {
-        localQIMUserIcon.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setImageDrawable(localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      if (localQIMUserIcon.a != null) {
+        localQIMUserIcon.a.setImageDrawable(localQIMUserIcon.c);
       }
-      localQIMUserIcon.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView = null;
-      localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+      localQIMUserIcon.a = null;
+      localQIMUserIcon.c = null;
     }
     this.a.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.qim.QIMUserManager.5.1
  * JD-Core Version:    0.7.0.1
  */

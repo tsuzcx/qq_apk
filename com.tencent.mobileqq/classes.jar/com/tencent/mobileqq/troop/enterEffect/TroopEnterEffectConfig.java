@@ -10,18 +10,11 @@ import org.json.JSONObject;
 
 public class TroopEnterEffectConfig
 {
-  public TroopEnterEffectConfig.EffectInfo a;
-  private Comparator<TroopEnterEffectConfig.GrayTipsConfig> a;
-  public Vector<TroopEnterEffectConfig.GrayTipsConfig> a;
-  public AtomicBoolean a;
   public boolean a;
-  
-  public TroopEnterEffectConfig()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_JavaUtilComparator = new TroopEnterEffectConfig.1(this);
-  }
+  public TroopEnterEffectConfig.EffectInfo b;
+  public AtomicBoolean c = new AtomicBoolean(false);
+  public Vector<TroopEnterEffectConfig.GrayTipsConfig> d = new Vector();
+  private Comparator<TroopEnterEffectConfig.GrayTipsConfig> e = new TroopEnterEffectConfig.1(this);
   
   public void a(String paramString)
   {
@@ -38,7 +31,7 @@ public class TroopEnterEffectConfig
             break label234;
           }
           bool = true;
-          this.jdField_a_of_type_Boolean = bool;
+          this.a = bool;
         }
         paramString = paramString.optJSONArray("grayMsgList");
         if ((paramString != null) && (paramString.length() > 0))
@@ -48,19 +41,19 @@ public class TroopEnterEffectConfig
             localObject = paramString.getJSONObject(i);
             TroopEnterEffectConfig.GrayTipsConfig localGrayTipsConfig = new TroopEnterEffectConfig.GrayTipsConfig();
             localGrayTipsConfig.a((JSONObject)localObject);
-            this.jdField_a_of_type_JavaUtilVector.add(localGrayTipsConfig);
+            this.d.add(localGrayTipsConfig);
             i += 1;
             continue;
           }
-          Collections.sort(this.jdField_a_of_type_JavaUtilVector, this.jdField_a_of_type_JavaUtilComparator);
+          Collections.sort(this.d, this.e);
         }
         if (QLog.isColorLevel())
         {
           paramString = new StringBuilder();
           paramString.append("config mergeFromJSON enable = ");
-          paramString.append(this.jdField_a_of_type_Boolean);
+          paramString.append(this.a);
           paramString.append(" graytips: ");
-          paramString.append(this.jdField_a_of_type_JavaUtilVector.size());
+          paramString.append(this.d.size());
           QLog.d("TroopEnterEffectConfig.Config", 2, paramString.toString());
           return;
         }
@@ -80,7 +73,7 @@ public class TroopEnterEffectConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
- * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     com.tencent.mobileqq.troop.entereffect.TroopEnterEffectConfig
  * JD-Core Version:    0.7.0.1
  */

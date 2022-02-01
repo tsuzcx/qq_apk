@@ -18,13 +18,13 @@ import org.json.JSONObject;
 public class MsgBackupFileProcessor
   implements IMsgBackupRichProcessor
 {
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private OfflineFileMsgBackupHandler jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
-  private TroopFileMsgBackupHandler jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler;
+  private BaseQQAppInterface a;
+  private OfflineFileMsgBackupHandler b;
+  private TroopFileMsgBackupHandler c;
   
   public MsgBackupFileProcessor(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
+    this.a = paramBaseQQAppInterface;
   }
   
   private FileMsgBackupHandler a(int paramInt)
@@ -36,24 +36,24 @@ public class MsgBackupFileProcessor
     QLog.i("MsgBackupFileProcessor<QFile>", 1, ((StringBuilder)localObject1).toString());
     if (paramInt == 1)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+      if (this.b == null) {
+        this.b = new OfflineFileMsgBackupHandler(this.a);
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
+      localObject1 = this.b;
     }
     else if (paramInt == 2)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+      if (this.b == null) {
+        this.b = new OfflineFileMsgBackupHandler(this.a);
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
+      localObject1 = this.b;
     }
     else if (paramInt == 3)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler = new TroopFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+      if (this.c == null) {
+        this.c = new TroopFileMsgBackupHandler(this.a);
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler;
+      localObject1 = this.c;
     }
     else
     {
@@ -63,58 +63,12 @@ public class MsgBackupFileProcessor
     if (localObject1 == null)
     {
       QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+      if (this.b == null) {
+        this.b = new OfflineFileMsgBackupHandler(this.a);
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
+      localObject2 = this.b;
     }
     return localObject2;
-  }
-  
-  private FileMsgBackupHandler a(MessageRecord paramMessageRecord)
-  {
-    boolean bool = paramMessageRecord.isMultiMsg;
-    Object localObject = null;
-    if (bool)
-    {
-      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType");
-      if (!TextUtils.isEmpty(paramMessageRecord))
-      {
-        if (Integer.parseInt(paramMessageRecord) == 3)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler == null) {
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler = new TroopFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
-          }
-          paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler;
-        }
-        else
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
-          }
-          paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
-        }
-        localObject = paramMessageRecord;
-      }
-    }
-    else if ((paramMessageRecord instanceof MessageForFile))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler = new OfflineFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupOfflineFileMsgBackupHandler;
-    }
-    else if ((paramMessageRecord instanceof MessageForTroopFile))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler = new TroopFileMsgBackupHandler(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMsgbackupTroopFileMsgBackupHandler;
-    }
-    if (localObject == null) {
-      QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
-    }
-    return localObject;
   }
   
   private HashMap<String, String> a(String paramString)
@@ -285,6 +239,52 @@ public class MsgBackupFileProcessor
     }
   }
   
+  private FileMsgBackupHandler b(MessageRecord paramMessageRecord)
+  {
+    boolean bool = paramMessageRecord.isMultiMsg;
+    Object localObject = null;
+    if (bool)
+    {
+      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType");
+      if (!TextUtils.isEmpty(paramMessageRecord))
+      {
+        if (Integer.parseInt(paramMessageRecord) == 3)
+        {
+          if (this.c == null) {
+            this.c = new TroopFileMsgBackupHandler(this.a);
+          }
+          paramMessageRecord = this.c;
+        }
+        else
+        {
+          if (this.b == null) {
+            this.b = new OfflineFileMsgBackupHandler(this.a);
+          }
+          paramMessageRecord = this.b;
+        }
+        localObject = paramMessageRecord;
+      }
+    }
+    else if ((paramMessageRecord instanceof MessageForFile))
+    {
+      if (this.b == null) {
+        this.b = new OfflineFileMsgBackupHandler(this.a);
+      }
+      localObject = this.b;
+    }
+    else if ((paramMessageRecord instanceof MessageForTroopFile))
+    {
+      if (this.c == null) {
+        this.c = new TroopFileMsgBackupHandler(this.a);
+      }
+      localObject = this.c;
+    }
+    if (localObject == null) {
+      QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
+    }
+    return localObject;
+  }
+  
   public ResDownloadObject a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
   {
     ResDownloadObject localResDownloadObject = new ResDownloadObject();
@@ -315,22 +315,9 @@ public class MsgBackupFileProcessor
     return localResDownloadObject;
   }
   
-  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    paramMessageRecord = new File(FileMsgBackupHandler.b);
-    if (!paramMessageRecord.exists()) {
-      paramMessageRecord.mkdirs();
-    }
-    paramMessageRecord = new File(FileMsgBackupHandler.a);
-    if (!paramMessageRecord.exists()) {
-      paramMessageRecord.mkdirs();
-    }
-    return a(Integer.parseInt((String)a(paramMsgBackupResEntity.extraDataStr).get("uint32_file_type"))).a(paramMsgBackupResEntity);
-  }
-  
   public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
   {
-    FileMsgBackupHandler localFileMsgBackupHandler = a(paramMessageRecord);
+    FileMsgBackupHandler localFileMsgBackupHandler = b(paramMessageRecord);
     if (localFileMsgBackupHandler != null) {
       localFileMsgBackupHandler.a(paramMessageRecord, paramList);
     }
@@ -349,9 +336,22 @@ public class MsgBackupFileProcessor
     return (paramMsgBackupResEntity != null) && (paramMsgBackupResEntity.msgType == 5);
   }
   
+  public String b(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    paramMessageRecord = new File(FileMsgBackupHandler.b);
+    if (!paramMessageRecord.exists()) {
+      paramMessageRecord.mkdirs();
+    }
+    paramMessageRecord = new File(FileMsgBackupHandler.a);
+    if (!paramMessageRecord.exists()) {
+      paramMessageRecord.mkdirs();
+    }
+    return a(Integer.parseInt((String)a(paramMsgBackupResEntity.extraDataStr).get("uint32_file_type"))).a(paramMsgBackupResEntity);
+  }
+  
   public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
   {
-    FileMsgBackupHandler localFileMsgBackupHandler = a(paramMessageRecord);
+    FileMsgBackupHandler localFileMsgBackupHandler = b(paramMessageRecord);
     if (localFileMsgBackupHandler != null) {
       localFileMsgBackupHandler.b(paramMessageRecord, paramList);
     }
@@ -359,7 +359,7 @@ public class MsgBackupFileProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupFileProcessor
  * JD-Core Version:    0.7.0.1
  */

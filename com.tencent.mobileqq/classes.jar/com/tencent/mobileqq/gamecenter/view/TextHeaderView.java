@@ -15,7 +15,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.qqgamepub.api.IQQGameHelper;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameHippyApi;
 import com.tencent.mobileqq.qqgamepub.data.GamePubAccountConstant;
 import com.tencent.mobileqq.qqgamepub.data.QQGameMsgInfo;
 import com.tencent.mobileqq.qqgamepub.utils.GamePubAccountHelper;
@@ -31,16 +31,16 @@ public class TextHeaderView
   extends RelativeLayout
   implements IHeaderView, HippyViewBase
 {
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private HippyMap jdField_a_of_type_ComTencentMttHippyCommonHippyMap;
-  private String jdField_a_of_type_JavaLangString;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private RelativeLayout a;
+  private TextView b;
   private TextView c;
   private TextView d;
+  private TextView e;
+  private ImageView f;
+  private Button g;
+  private ImageView h;
+  private String i;
+  private HippyMap j;
   
   public TextHeaderView(Context paramContext)
   {
@@ -53,78 +53,78 @@ public class TextHeaderView
   {
     try
     {
-      this.jdField_a_of_type_JavaLangString = paramQQGameMsgInfo.url;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(getContext());
+      this.i = paramQQGameMsgInfo.url;
+      this.a = new RelativeLayout(getContext());
       RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(AIOUtils.b(355.0F, getResources()), -1);
       localLayoutParams1.addRule(14);
-      this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getContext());
+      this.h = new ImageView(getContext());
       Object localObject = new RelativeLayout.LayoutParams(-1, AIOUtils.b(293.0F, getResources()));
       ((RelativeLayout.LayoutParams)localObject).topMargin = AIOUtils.b(46.0F, getResources());
-      this.jdField_b_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
+      this.h.setScaleType(ImageView.ScaleType.FIT_XY);
+      this.a.addView(this.h, (ViewGroup.LayoutParams)localObject);
       localObject = new RelativeLayout(getContext());
       RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, AIOUtils.b(283.0F, getResources()));
       localLayoutParams2.topMargin = AIOUtils.b(46.0F, getResources());
       ((RelativeLayout)localObject).setPadding(AIOUtils.b(20.0F, getResources()), 0, AIOUtils.b(20.0F, getResources()), 0);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject, localLayoutParams2);
-      this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
+      this.a.addView((View)localObject, localLayoutParams2);
+      this.b = new TextView(getContext());
       localLayoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams2.topMargin = AIOUtils.b(60.0F, getResources());
       localLayoutParams2.addRule(10);
       localLayoutParams2.addRule(14);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367467);
-      ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams2);
-      this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
+      this.b.setTextColor(-16777216);
+      this.b.setTextSize(18.0F);
+      this.b.setId(2131433973);
+      ((RelativeLayout)localObject).addView(this.b, localLayoutParams2);
+      this.c = new TextView(getContext());
       localLayoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams2.topMargin = AIOUtils.b(6.0F, getResources());
       localLayoutParams2.addRule(14);
-      localLayoutParams2.addRule(3, 2131367467);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(14.0F);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-7829368);
-      ((RelativeLayout)localObject).addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams2);
-      this.c = new TextView(getContext());
-      localLayoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams2.addRule(3, 2131367467);
-      localLayoutParams2.topMargin = AIOUtils.b(56.0F, getResources());
-      this.c.setTextColor(-16777216);
+      localLayoutParams2.addRule(3, 2131433973);
       this.c.setTextSize(14.0F);
+      this.c.setTextColor(-7829368);
       ((RelativeLayout)localObject).addView(this.c, localLayoutParams2);
       this.d = new TextView(getContext());
       localLayoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams2.topMargin = AIOUtils.b(106.0F, getResources());
-      localLayoutParams2.addRule(3, 2131367467);
+      localLayoutParams2.addRule(3, 2131433973);
+      localLayoutParams2.topMargin = AIOUtils.b(56.0F, getResources());
+      this.d.setTextColor(-16777216);
       this.d.setTextSize(14.0F);
-      this.d.setTextColor(-7829368);
       ((RelativeLayout)localObject).addView(this.d, localLayoutParams2);
-      this.jdField_a_of_type_AndroidWidgetButton = new Button(getContext());
+      this.e = new TextView(getContext());
+      localLayoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams2.topMargin = AIOUtils.b(106.0F, getResources());
+      localLayoutParams2.addRule(3, 2131433973);
+      this.e.setTextSize(14.0F);
+      this.e.setTextColor(-7829368);
+      ((RelativeLayout)localObject).addView(this.e, localLayoutParams2);
+      this.g = new Button(getContext());
       localObject = new RelativeLayout.LayoutParams(AIOUtils.b(188.0F, getResources()), AIOUtils.b(51.0F, getResources()));
       ((RelativeLayout.LayoutParams)localObject).topMargin = AIOUtils.b(296.0F, getResources());
       ((RelativeLayout.LayoutParams)localObject).addRule(10);
       ((RelativeLayout.LayoutParams)localObject).addRule(14);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131714662));
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839280);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetButton, (ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
+      this.g.setText(HardCodeUtil.a(2131912171));
+      this.g.setTextColor(-1);
+      this.g.setBackgroundResource(2130839460);
+      this.a.addView(this.g, (ViewGroup.LayoutParams)localObject);
+      this.f = new ImageView(getContext());
       localObject = new RelativeLayout.LayoutParams(AIOUtils.b(92.0F, getResources()), AIOUtils.b(92.0F, getResources()));
       ((RelativeLayout.LayoutParams)localObject).addRule(10);
       ((RelativeLayout.LayoutParams)localObject).addRule(14);
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(0);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
+      this.f.setBackgroundColor(0);
+      this.a.addView(this.f, (ViewGroup.LayoutParams)localObject);
       localObject = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20190412143112_EarvNaW2y5.png");
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramQQGameMsgInfo.title);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramQQGameMsgInfo.dateTitle);
-      this.c.setText(paramQQGameMsgInfo.contentText);
-      this.d.setText(paramQQGameMsgInfo.limitText);
+      this.h.setBackgroundDrawable((Drawable)localObject);
+      this.b.setText(paramQQGameMsgInfo.title);
+      this.c.setText(paramQQGameMsgInfo.dateTitle);
+      this.d.setText(paramQQGameMsgInfo.contentText);
+      this.e.setText(paramQQGameMsgInfo.limitText);
       localObject = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20190408192858_cRS59qwdjG.png");
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(GamePubAccountConstant.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new TextHeaderView.3(this, paramContext, paramQQGameMsgInfo, paramInt, paramString));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new TextHeaderView.4(this, paramContext, paramQQGameMsgInfo, paramInt, paramString));
-      addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, localLayoutParams1);
+      this.f.setImageDrawable((Drawable)localObject);
+      this.g.setBackgroundDrawable(GamePubAccountConstant.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
+      this.g.setOnClickListener(new TextHeaderView.3(this, paramContext, paramQQGameMsgInfo, paramInt, paramString));
+      this.a.setOnClickListener(new TextHeaderView.4(this, paramContext, paramQQGameMsgInfo, paramInt, paramString));
+      addView(this.a, localLayoutParams1);
       return;
     }
     catch (Throwable paramQQGameMsgInfo)
@@ -151,8 +151,8 @@ public class TextHeaderView
     localQQGameMsgInfo.uniseq = paramHippyArray.getLong(9);
     localQQGameMsgInfo.advId = paramHippyArray.getString(10);
     localQQGameMsgInfo.triggerInfo = paramHippyArray.getString(11);
-    int i = paramHippyArray.getInt(12);
-    a(localQQGameMsgInfo, BaseApplicationImpl.getContext(), i, GamePubAccountHelper.a());
+    int k = paramHippyArray.getInt(12);
+    a(localQQGameMsgInfo, BaseApplicationImpl.getContext(), k, GamePubAccountHelper.a());
   }
   
   public void b() {}
@@ -167,7 +167,12 @@ public class TextHeaderView
   
   public void e()
   {
-    a(((IQQGameHelper)QRoute.api(IQQGameHelper.class)).getMsgInfoByHippyMap(this.jdField_a_of_type_ComTencentMttHippyCommonHippyMap), BaseApplicationImpl.getContext(), ((IQQGameHelper)QRoute.api(IQQGameHelper.class)).getMsgPosByHippyMap(this.jdField_a_of_type_ComTencentMttHippyCommonHippyMap), GamePubAccountHelper.a());
+    a(((IQQGameHippyApi)QRoute.api(IQQGameHippyApi.class)).getMsgInfoByHippyMap(this.j), BaseApplicationImpl.getContext(), ((IQQGameHippyApi)QRoute.api(IQQGameHippyApi.class)).getMsgPosByHippyMap(this.j), GamePubAccountHelper.a());
+  }
+  
+  public String getAppName()
+  {
+    return "";
   }
   
   public NativeGestureDispatcher getGestureDispatcher()
@@ -194,12 +199,12 @@ public class TextHeaderView
   
   public void setSrc(HippyMap paramHippyMap)
   {
-    this.jdField_a_of_type_ComTencentMttHippyCommonHippyMap = paramHippyMap;
+    this.j = paramHippyMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.TextHeaderView
  * JD-Core Version:    0.7.0.1
  */

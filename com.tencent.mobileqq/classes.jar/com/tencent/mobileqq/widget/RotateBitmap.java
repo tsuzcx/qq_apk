@@ -5,79 +5,79 @@ import android.graphics.Matrix;
 
 public class RotateBitmap
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Bitmap a;
+  private int b;
   
   public RotateBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = 0;
+    this.a = paramBitmap;
+    this.b = 0;
   }
   
   public RotateBitmap(Bitmap paramBitmap, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = (paramInt % 360);
+    this.a = paramBitmap;
+    this.b = (paramInt % 360);
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public Matrix a()
-  {
-    Matrix localMatrix = new Matrix();
-    if (this.jdField_a_of_type_Int != 0)
-    {
-      int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      localMatrix.preTranslate(-i, -j);
-      localMatrix.postRotate(this.jdField_a_of_type_Int);
-      localMatrix.postTranslate(c() / 2, b() / 2);
-    }
-    return localMatrix;
+    return this.b;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.a = paramBitmap;
   }
   
-  public boolean a()
+  public Bitmap b()
   {
-    return this.jdField_a_of_type_Int / 90 % 2 != 0;
+    return this.a;
   }
   
-  public int b()
+  public Matrix c()
   {
-    if (a()) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    Matrix localMatrix = new Matrix();
+    if (this.b != 0)
+    {
+      int i = this.a.getWidth() / 2;
+      int j = this.a.getHeight() / 2;
+      localMatrix.preTranslate(-i, -j);
+      localMatrix.postRotate(this.b);
+      localMatrix.postTranslate(f() / 2, e() / 2);
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    return localMatrix;
   }
   
-  public int c()
+  public boolean d()
   {
-    if (a()) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    return this.b / 90 % 2 != 0;
+  }
+  
+  public int e()
+  {
+    if (d()) {
+      return this.a.getWidth();
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    return this.a.getHeight();
+  }
+  
+  public int f()
+  {
+    if (d()) {
+      return this.a.getHeight();
+    }
+    return this.a.getWidth();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RotateBitmap
  * JD-Core Version:    0.7.0.1
  */

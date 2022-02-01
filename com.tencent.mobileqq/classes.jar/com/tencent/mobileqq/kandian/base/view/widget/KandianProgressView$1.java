@@ -10,24 +10,24 @@ class KandianProgressView$1
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianProgressView$ClickCallBack == null) {
+    if (this.a.k == null) {
       return;
     }
     switch (paramView.getId())
     {
     default: 
       return;
-    case 2131376493: 
-    case 2131376500: 
-      this.a.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianProgressView$ClickCallBack.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle);
+    case 2131444734: 
+    case 2131444741: 
+      this.a.k.a(this.a.j, this.a.m);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianProgressView$ClickCallBack.a(this.a.jdField_a_of_type_AndroidOsBundle);
+    this.a.k.a(this.a.m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.KandianProgressView.1
  * JD-Core Version:    0.7.0.1
  */

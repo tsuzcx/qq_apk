@@ -26,7 +26,7 @@ class ProfileContentSignComponent$6
         SignTextEditFragment.a(ProfileContentSignComponent.access$2700(this.this$0), null, null, localBundle, -1);
       }
       this.val$root.setVisibility(8);
-      SigTopicManager.a().c(ProfileContentSignComponent.access$2800(this.this$0));
+      SigTopicManager.a().f(ProfileContentSignComponent.access$2800(this.this$0));
       ReportController.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "2", "0", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -34,7 +34,7 @@ class ProfileContentSignComponent$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.personalitysign.ProfileContentSignComponent.6
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class ReadInJoyListViewGroup$9
   
   public void run()
   {
-    if ((UserReadUnReadInfoManager.a().a()) && (!this.this$0.a.a().d()))
+    if ((UserReadUnReadInfoManager.a().b()) && (!this.this$0.r.a().h()))
     {
       this.this$0.a(false, 8);
       return;
@@ -24,7 +24,7 @@ class ReadInJoyListViewGroup$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyListViewGroup.9
  * JD-Core Version:    0.7.0.1
  */

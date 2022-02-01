@@ -31,13 +31,13 @@ public class TroopSettingActivity$ClearChatRecordTask
     }
     try
     {
-      if (((TroopSettingActivity)localObject1).c) {
+      if (((TroopSettingActivity)localObject1).l) {
         return;
       }
       AppInterface localAppInterface = TroopSettingActivity.a((TroopSettingActivity)localObject1);
-      localObject2 = ((TroopSettingActivity)localObject1).jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin;
+      localObject2 = ((TroopSettingActivity)localObject1).i.troopUin;
       new StringBuilder();
-      ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).clearChatRecordTaskRun(localAppInterface, (String)localObject2, "Q.chatopttroop", ((TroopSettingActivity)localObject1).jdField_a_of_type_AndroidOsHandler, 18);
+      ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).clearChatRecordTaskRun(localAppInterface, (String)localObject2, "Q.chatopttroop", ((TroopSettingActivity)localObject1).aD, 18);
     }
     catch (IllegalStateException localIllegalStateException)
     {
@@ -55,7 +55,7 @@ public class TroopSettingActivity$ClearChatRecordTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.ClearChatRecordTask
  * JD-Core Version:    0.7.0.1
  */

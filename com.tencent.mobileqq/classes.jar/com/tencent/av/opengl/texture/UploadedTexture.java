@@ -11,56 +11,45 @@ import com.tencent.qphone.base.util.QLog;
 public abstract class UploadedTexture
   extends BasicTexture
 {
-  private static int k;
-  boolean a;
-  protected Bitmap b;
-  private boolean b;
-  private boolean c = false;
-  private boolean d = true;
-  private boolean e;
+  private static int u;
+  private boolean o = true;
+  private boolean p = false;
+  protected Bitmap q;
+  boolean r = false;
+  private boolean s = true;
+  private boolean t = false;
   
   protected UploadedTexture()
   {
     super(null, 0);
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
   }
   
-  private Bitmap b()
+  public static void A()
   {
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap == null)
-    {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = a();
-      Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
-      if (localBitmap != null)
-      {
-        int i = localBitmap.getWidth();
-        int j = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
-        if (this.jdField_e_of_type_Int == -1) {
-          a(i, j);
-        }
-      }
-    }
-    return this.jdField_b_of_type_AndroidGraphicsBitmap;
+    u = 0;
   }
   
-  private void c(GLCanvas paramGLCanvas)
+  public static boolean B()
   {
-    Bitmap localBitmap = b();
+    return u > 100;
+  }
+  
+  private void e(GLCanvas paramGLCanvas)
+  {
+    Bitmap localBitmap = w();
     if (localBitmap != null) {
       try
       {
         int i = localBitmap.getWidth();
         int j = localBitmap.getHeight();
-        int m = e();
-        int n = f();
-        if (this.jdField_a_of_type_ArrayOfInt == null) {
-          this.jdField_a_of_type_ArrayOfInt = new int[1];
+        int k = i();
+        int m = j();
+        if (this.a == null) {
+          this.a = new int[1];
         }
-        this.jdField_a_of_type_ArrayOfInt[0] = paramGLCanvas.a().a();
-        paramGLCanvas.a(this);
-        if ((i == m) && (j == n))
+        this.a[0] = paramGLCanvas.a().a();
+        paramGLCanvas.b(this);
+        if ((i == k) && (j == m))
         {
           paramGLCanvas.a(this, localBitmap);
         }
@@ -71,100 +60,98 @@ public abstract class UploadedTexture
           paramGLCanvas.a(this, i, j);
           paramGLCanvas.a(this, 0, 0, localBitmap, i, j);
         }
-        e();
+        x();
         a(paramGLCanvas);
-        this.jdField_b_of_type_Int = 1;
-        this.jdField_b_of_type_Boolean = true;
+        this.d = 1;
+        this.o = true;
         return;
       }
       finally
       {
-        e();
+        x();
       }
     }
-    this.jdField_b_of_type_Int = -1;
+    this.d = -1;
     throw new RuntimeException("Texture load fail, no bitmap");
   }
   
-  private void e()
+  private Bitmap w()
   {
-    Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    if (this.q == null)
+    {
+      this.q = v();
+      Bitmap localBitmap = this.q;
+      if (localBitmap != null)
+      {
+        int i = localBitmap.getWidth();
+        int j = this.q.getHeight();
+        if (this.g == -1) {
+          a(i, j);
+        }
+      }
+    }
+    return this.q;
+  }
+  
+  private void x()
+  {
+    Bitmap localBitmap = this.q;
     if (localBitmap != null)
     {
       a(localBitmap);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-    }
-  }
-  
-  public static boolean e()
-  {
-    return k > 100;
-  }
-  
-  public static void f()
-  {
-    k = 0;
-  }
-  
-  protected abstract Bitmap a();
-  
-  public void a()
-  {
-    super.a();
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
-      e();
+      this.q = null;
     }
   }
   
   protected abstract void a(Bitmap paramBitmap);
   
-  public void a(boolean paramBoolean)
+  public void b(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.s = paramBoolean;
   }
   
-  public boolean a(GLCanvas paramGLCanvas)
+  public boolean b(GLCanvas paramGLCanvas)
   {
-    b(paramGLCanvas);
+    d(paramGLCanvas);
     return true;
   }
   
-  public ShaderParameter[] a(GLCanvas paramGLCanvas)
+  public ShaderParameter[] c(GLCanvas paramGLCanvas)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.r)
     {
       GLES20.glEnable(3042);
       GLES20.glBlendFunc(770, 771);
     }
-    return super.a(paramGLCanvas);
+    return super.c(paramGLCanvas);
   }
   
-  public void b(GLCanvas paramGLCanvas)
+  public void d(GLCanvas paramGLCanvas)
   {
-    if (!c())
+    if (!m())
     {
-      if (this.jdField_e_of_type_Boolean)
+      if (this.t)
       {
-        int i = k + 1;
-        k = i;
+        int i = u + 1;
+        u = i;
         if (i > 100) {
           return;
         }
       }
-      c(paramGLCanvas);
+      e(paramGLCanvas);
       return;
     }
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.o)
     {
-      Object localObject = b();
+      Object localObject = w();
       if (localObject != null) {
         try
         {
           if (!((Bitmap)localObject).isRecycled())
           {
             paramGLCanvas.a(this, 0, 0, (Bitmap)localObject, GLUtils.getInternalFormat((Bitmap)localObject), GLUtils.getType((Bitmap)localObject));
-            e();
-            this.jdField_b_of_type_Boolean = true;
+            x();
+            this.o = true;
             return;
           }
         }
@@ -182,31 +169,41 @@ public abstract class UploadedTexture
     }
   }
   
-  public boolean b()
+  public int f()
   {
-    return this.d;
-  }
-  
-  public int c()
-  {
-    if (this.jdField_e_of_type_Int == -1) {
-      b();
+    if (this.g == -1) {
+      w();
     }
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public int d()
-  {
-    if (this.jdField_e_of_type_Int == -1) {
-      b();
-    }
-    return this.f;
+    return this.g;
   }
   
   public int g()
   {
+    if (this.g == -1) {
+      w();
+    }
+    return this.h;
+  }
+  
+  public boolean k()
+  {
+    return this.s;
+  }
+  
+  public int l()
+  {
     return 3553;
   }
+  
+  public void n()
+  {
+    super.n();
+    if (this.q != null) {
+      x();
+    }
+  }
+  
+  protected abstract Bitmap v();
 }
 
 

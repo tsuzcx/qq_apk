@@ -17,17 +17,17 @@ final class ChatAVHelper$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = (INearbyRelevantHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.NEARBY_RELEVANT_HANDLER);
+    Object localObject = (INearbyRelevantHandler)this.a.getBusinessHandler(BusinessHandlerFactory.NEARBY_RELEVANT_HANDLER);
     if (localObject != null) {
       ((INearbyRelevantHandler)localObject).a((byte)0);
     }
-    NearbyManagerHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(true);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.a) {
+    NearbyManagerHelper.a(this.a).b(true);
+    if (this.b.e) {
       ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag;
-    ((ChatActivityUtils.VideoCheckFlag)localObject).e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, (ChatActivityUtils.VideoCheckFlag)localObject);
+    localObject = this.b;
+    ((ChatActivityUtils.VideoCheckFlag)localObject).l = false;
+    ChatActivityUtils.a(this.c, this.a, this.d, this.e, (ChatActivityUtils.VideoCheckFlag)localObject);
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
@@ -35,7 +35,7 @@ final class ChatAVHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatAVHelper.4
  * JD-Core Version:    0.7.0.1
  */

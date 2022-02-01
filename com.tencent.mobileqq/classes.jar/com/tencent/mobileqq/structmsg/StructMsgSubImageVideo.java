@@ -32,17 +32,17 @@ public class StructMsgSubImageVideo
   StructMsgSubImageVideo(StructMsgNode paramStructMsgNode)
   {
     super(paramStructMsgNode);
-    if (paramStructMsgNode.a == null) {
+    if (paramStructMsgNode.d == null) {
       return;
     }
-    Iterator localIterator = paramStructMsgNode.a.iterator();
+    Iterator localIterator = paramStructMsgNode.d.iterator();
     while (localIterator.hasNext())
     {
       paramStructMsgNode = (StructMsgNode)localIterator.next();
       Object localObject;
       if ((paramStructMsgNode != null) && ("item".equals(paramStructMsgNode.b)))
       {
-        if ((paramStructMsgNode.a != null) && (!paramStructMsgNode.a.isEmpty()))
+        if ((paramStructMsgNode.d != null) && (!paramStructMsgNode.d.isEmpty()))
         {
           localObject = paramStructMsgNode.a("apptype");
           if (!"10".equals(localObject))
@@ -128,7 +128,7 @@ public class StructMsgSubImageVideo
   
   public String getSourceName()
   {
-    return HardCodeUtil.a(2131714415);
+    return HardCodeUtil.a(2131911926);
   }
   
   public View getSourceView(Context paramContext, View paramView)
@@ -227,7 +227,7 @@ public class StructMsgSubImageVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgSubImageVideo
  * JD-Core Version:    0.7.0.1
  */

@@ -17,27 +17,25 @@ import com.tencent.mobileqq.R.styleable;
 public class FormMutiItem
   extends FormSimpleItem
 {
-  protected int a;
   protected LinearLayout a;
-  protected TextView a;
-  protected CharSequence a;
   protected TextView b;
-  protected CharSequence b;
-  protected int g = 2;
-  protected int h;
-  protected int i;
+  protected TextView c;
+  protected int d = 0;
+  protected int e = 2;
+  protected int f;
+  protected int l;
+  protected CharSequence m;
+  protected CharSequence n;
   
   public FormMutiItem(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
-    d();
+    b();
   }
   
   public FormMutiItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
     Context localContext1 = null;
     Context localContext2 = null;
     try
@@ -47,10 +45,10 @@ public class FormMutiItem
         paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.FormItem);
         localContext2 = paramContext;
         localContext1 = paramContext;
-        this.jdField_a_of_type_JavaLangCharSequence = paramContext.getString(5);
+        this.m = paramContext.getString(5);
         localContext2 = paramContext;
         localContext1 = paramContext;
-        this.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(18);
+        this.n = paramContext.getString(18);
         if (paramContext == null) {
           break label89;
         }
@@ -73,119 +71,119 @@ public class FormMutiItem
       paramContext.recycle();
     }
     label89:
-    d();
+    b();
   }
   
-  private void d()
+  private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(FormResHelper.a(getResources(), this.jdField_a_of_type_Int));
-    int j = getResources().getDimensionPixelSize(2131296764);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, j);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_a_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    this.a = new LinearLayout(getContext());
+    this.a.setOrientation(1);
+    this.b = new TextView(getContext());
+    this.b.setSingleLine(true);
+    this.b.setTextColor(FormResHelper.a(getResources(), this.d));
+    int i = getResources().getDimensionPixelSize(2131297095);
+    this.b.setTextSize(0, i);
+    this.b.setGravity(19);
+    this.b.setEllipsize(TextUtils.TruncateAt.END);
+    this.b.setDuplicateParentStateEnabled(true);
+    if (!TextUtils.isEmpty(this.m)) {
+      this.b.setText(this.m);
     }
     Object localObject = new LinearLayout.LayoutParams(-2, -2);
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-    if (this.c)
+    this.c = new TextView(getContext());
+    if (this.B)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
-      this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-      this.jdField_b_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
+      this.c.setSingleLine(true);
+      this.c.setEllipsize(TextUtils.TruncateAt.END);
+      this.c.setDuplicateParentStateEnabled(true);
     }
     else
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(false);
-      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelSize(2131296758);
+      this.c.setSingleLine(false);
+      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelSize(2131297089);
     }
-    j = getResources().getDimensionPixelSize(2131296773);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(FormResHelper.a(getResources(), this.g));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, j);
-    this.jdField_b_of_type_AndroidWidgetTextView.setGravity(19);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangCharSequence)) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangCharSequence);
+    i = getResources().getDimensionPixelSize(2131297104);
+    this.c.setTextColor(FormResHelper.a(getResources(), this.e));
+    this.c.setTextSize(0, i);
+    this.c.setGravity(19);
+    if (!TextUtils.isEmpty(this.n)) {
+      this.c.setText(this.n);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+    this.a.addView(this.b, (ViewGroup.LayoutParams)localObject);
     localObject = new LinearLayout.LayoutParams(-2, -2);
-    ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelOffset(2131296747);
-    if (!this.c) {
-      ((LinearLayout.LayoutParams)localObject).bottomMargin = getResources().getDimensionPixelOffset(2131296753);
+    ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelOffset(2131297078);
+    if (!this.B) {
+      ((LinearLayout.LayoutParams)localObject).bottomMargin = getResources().getDimensionPixelOffset(2131297084);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+    this.a.addView(this.c, (ViewGroup.LayoutParams)localObject);
     localObject = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131367173);
-    ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131367175);
+    ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131433629);
+    ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131433631);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
-    setCustomHeight(getResources().getDimensionPixelSize(2131298363));
+    addView(this.a, (ViewGroup.LayoutParams)localObject);
+    setCustomHeight(getResources().getDimensionPixelSize(2131299077));
   }
   
   public void setFirstLineRightDrawalbe(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, paramDrawable, null);
+    this.b.setCompoundDrawables(null, null, paramDrawable, null);
   }
   
   public void setFirstLineText(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = getResources().getString(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    this.m = getResources().getString(paramInt);
+    this.b.setText(this.m);
   }
   
   public void setFirstLineText(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    this.m = paramCharSequence;
+    this.b.setText(this.m);
   }
   
   public void setFirstLineTextColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Int);
+    this.d = paramInt;
+    this.b.setTextColor(this.d);
   }
   
   public void setFirstLineTextSize(int paramInt)
   {
-    this.h = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(this.h);
+    this.f = paramInt;
+    this.b.setTextSize(this.f);
   }
   
   public void setSecondLineText(int paramInt)
   {
-    this.jdField_b_of_type_JavaLangCharSequence = getResources().getString(paramInt);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangCharSequence);
+    this.n = getResources().getString(paramInt);
+    this.c.setText(this.n);
   }
   
   public void setSecondLineText(CharSequence paramCharSequence)
   {
-    this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangCharSequence);
+    this.n = paramCharSequence;
+    this.c.setText(this.n);
   }
   
   public void setSecondLineTextColor(int paramInt)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.g);
+    this.c.setTextColor(this.e);
   }
   
   public void setSecondLineTextSize(int paramInt)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(this.i);
+    this.c.setTextSize(this.l);
   }
   
   public void setSecondLineTextViewPaddingRight(int paramInt)
   {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    localTextView.setPadding(localTextView.getPaddingLeft(), this.jdField_b_of_type_AndroidWidgetTextView.getPaddingTop(), paramInt, this.jdField_b_of_type_AndroidWidgetTextView.getPaddingBottom());
+    TextView localTextView = this.c;
+    localTextView.setPadding(localTextView.getPaddingLeft(), this.c.getPaddingTop(), paramInt, this.c.getPaddingBottom());
   }
   
   public void setSecondLineVisible(boolean paramBoolean)
   {
-    boolean bool1 = this.jdField_b_of_type_AndroidWidgetTextView.getVisibility();
+    boolean bool1 = this.c.getVisibility();
     boolean bool2 = false;
     if (!bool1) {
       bool1 = true;
@@ -194,26 +192,26 @@ public class FormMutiItem
     }
     if ((bool1 ^ paramBoolean))
     {
-      TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-      int j;
+      TextView localTextView = this.c;
+      int i;
       if (paramBoolean) {
         bool1 = bool2;
       } else {
-        j = 8;
+        i = 8;
       }
-      localTextView.setVisibility(j);
+      localTextView.setVisibility(i);
       if (paramBoolean) {
-        j = getResources().getDimensionPixelSize(2131298363);
+        i = getResources().getDimensionPixelSize(2131299077);
       } else {
-        j = getResources().getDimensionPixelSize(2131298273);
+        i = getResources().getDimensionPixelSize(2131298974);
       }
-      setCustomHeight(j);
+      setCustomHeight(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormMutiItem
  * JD-Core Version:    0.7.0.1
  */

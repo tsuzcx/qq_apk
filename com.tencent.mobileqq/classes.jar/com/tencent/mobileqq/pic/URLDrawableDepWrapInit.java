@@ -25,28 +25,7 @@ public class URLDrawableDepWrapInit
     return localURLDrawableDepWrap;
   }
   
-  private static void a(URLDrawableDepWrap paramURLDrawableDepWrap)
-  {
-    paramURLDrawableDepWrap.mReport = new URLDrawableDepWrapInit.6();
-  }
-  
-  protected static void a(Long paramLong)
-  {
-    if (SystemClock.uptimeMillis() % 100L == 0L) {
-      StatisticCollector.getInstance(BaseApplicationImpl.sApplication).collectPerformance(null, "AioPicDispatchWait", true, paramLong.longValue(), 0L, null, null);
-    }
-  }
-  
-  protected static void a(Object[] paramArrayOfObject)
-  {
-    if (paramArrayOfObject.length == 2)
-    {
-      String str = (String)paramArrayOfObject[0];
-      paramArrayOfObject = (Exception)paramArrayOfObject[1];
-    }
-  }
-  
-  private static String b(Exception paramException, boolean paramBoolean)
+  public static String a(Exception paramException, boolean paramBoolean)
   {
     if (paramException == null) {
       return "";
@@ -101,6 +80,27 @@ public class URLDrawableDepWrapInit
     return localStringBuffer.toString();
   }
   
+  private static void a(URLDrawableDepWrap paramURLDrawableDepWrap)
+  {
+    paramURLDrawableDepWrap.mReport = new URLDrawableDepWrapInit.6();
+  }
+  
+  protected static void a(Long paramLong)
+  {
+    if (SystemClock.uptimeMillis() % 100L == 0L) {
+      StatisticCollector.getInstance(BaseApplicationImpl.sApplication).collectPerformance(null, "AioPicDispatchWait", true, paramLong.longValue(), 0L, null, null);
+    }
+  }
+  
+  protected static void a(Object[] paramArrayOfObject)
+  {
+    if (paramArrayOfObject.length == 2)
+    {
+      String str = (String)paramArrayOfObject[0];
+      paramArrayOfObject = (Exception)paramArrayOfObject[1];
+    }
+  }
+  
   private static String b(String paramString, int paramInt)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -139,7 +139,7 @@ public class URLDrawableDepWrapInit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.URLDrawableDepWrapInit
  * JD-Core Version:    0.7.0.1
  */

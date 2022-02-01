@@ -70,11 +70,6 @@ public class PhoneContactProcessor
     }
   }
   
-  public void a(boolean paramBoolean)
-  {
-    ((PhoneUnityManager)this.a.getManager(QQManagerFactory.PHONE_UNITY_MANAGER)).a = true;
-  }
-  
   public boolean a(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -84,18 +79,18 @@ public class PhoneContactProcessor
         QLog.d("IMCore.PhoneContact.PhoneContactProcessor", 1, "needShowBindPhonePage| showUserGuideThisTime");
         return false;
       }
-      if (PhoneNumLoginImpl.a().a())
+      if (PhoneNumLoginImpl.a().b())
       {
         QLog.d("IMCore.PhoneContact.PhoneContactProcessor", 1, "needShowBindPhonePage| isPhoneNumLogin");
         return false;
       }
-      if (PortalManager.b())
+      if (PortalManager.g())
       {
         QLog.d("IMCore.PhoneContact.PhoneContactProcessor", 1, "needShowBindPhonePage| forbid alert");
         return false;
       }
     }
-    boolean bool2 = ((LoginWelcomeManager)this.a.getManager(QQManagerFactory.LOGIN_WELCOME_MANAGER)).a;
+    boolean bool2 = ((LoginWelcomeManager)this.a.getManager(QQManagerFactory.LOGIN_WELCOME_MANAGER)).b;
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     boolean bool1;
     if ((localBaseActivity != null) && (localBaseActivity.isFinishing())) {
@@ -214,7 +209,7 @@ public class PhoneContactProcessor
         if ((localObject != null) && (!((AppActivity)localObject).isFinishing()) && (((AppActivity)localObject).getAppRuntime() == this.a))
         {
           ((AppActivity)localObject).startActivity(paramRespondQueryQQBindingStat);
-          ((AppActivity)localObject).overridePendingTransition(2130772342, 2130772004);
+          ((AppActivity)localObject).overridePendingTransition(2130772434, 2130772007);
           paramRespondQueryQQBindingStat = new StringBuilder();
           paramRespondQueryQQBindingStat.append("contact_bind_info");
           paramRespondQueryQQBindingStat.append(this.a.getAccount());
@@ -222,12 +217,12 @@ public class PhoneContactProcessor
           paramRespondQueryQQBindingStat = this.a.getApp().getSharedPreferences(paramRespondQueryQQBindingStat, 0);
           if ((paramBoolean1) && (paramBoolean4))
           {
-            paramRespondQueryQQBindingStat.edit().putString("last_phone_version_popped_notbind", "8.7.0").apply();
+            paramRespondQueryQQBindingStat.edit().putString("last_phone_version_popped_notbind", "8.8.17").apply();
             return true;
           }
           if ((!paramBoolean1) && (paramBoolean2))
           {
-            paramRespondQueryQQBindingStat.edit().putString("last_phone_version_popped", "8.7.0").apply();
+            paramRespondQueryQQBindingStat.edit().putString("last_phone_version_popped", "8.8.17").apply();
             return true;
           }
           paramRespondQueryQQBindingStat.edit().putLong("last_pop_time_for_switchphone", System.currentTimeMillis()).apply();
@@ -250,6 +245,11 @@ public class PhoneContactProcessor
   public void b()
   {
     BannerManager.a().a(MobileUnityBannerProcessor.a, 0, null);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    ((PhoneUnityManager)this.a.getManager(QQManagerFactory.PHONE_UNITY_MANAGER)).a = true;
   }
   
   public void c()
@@ -297,7 +297,7 @@ public class PhoneContactProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.processor.PhoneContactProcessor
  * JD-Core Version:    0.7.0.1
  */

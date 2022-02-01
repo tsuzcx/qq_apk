@@ -31,16 +31,16 @@ public class PlusPanelLoaderFactory
   
   PlusPanelAppLoader a(BaseChatPie paramBaseChatPie)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    paramBaseChatPie = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
+    paramBaseChatPie = paramBaseChatPie.ah;
     HotChatManager localHotChatManager = (HotChatManager)localQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-    if ((localHotChatManager != null) && (localHotChatManager.b(paramBaseChatPie.jdField_a_of_type_JavaLangString))) {
+    if ((localHotChatManager != null) && (localHotChatManager.b(paramBaseChatPie.b))) {
       return new HotChatPlusPanelAppLoader();
     }
-    if (AnonymousChatHelper.a().a(paramBaseChatPie.jdField_a_of_type_JavaLangString)) {
+    if (AnonymousChatHelper.a().a(paramBaseChatPie.b)) {
       return new AnonymousPlusPanelAppLoader();
     }
-    if (((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).m(paramBaseChatPie.jdField_a_of_type_JavaLangString)) {
+    if (((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).Z(paramBaseChatPie.b)) {
       return new QiDianPrivatePlusPanelAppLoader();
     }
     return new CommonTroopPlusPanelAppLoader();
@@ -48,13 +48,13 @@ public class PlusPanelLoaderFactory
   
   public PlusPanelAppLoader a(BaseChatPie paramBaseChatPie, boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int i = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
+    int i = paramBaseChatPie.ah.a;
     QLog.d("PlusPanelLoaderFactory", 1, new Object[] { "createPlusPanelAppLoader type = ", Integer.valueOf(i), ", oneWayFriend = ", Boolean.valueOf(paramBoolean) });
     if (i == 1) {
       return a(paramBaseChatPie);
     }
-    if ((i != 0) && (!ChatActivityUtils.a(localQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+    if ((i != 0) && (!ChatActivityUtils.a(localQQAppInterface, paramBaseChatPie.ah.b))) {
       try
       {
         paramBaseChatPie = (Class)this.a.get(i);
@@ -76,21 +76,21 @@ public class PlusPanelLoaderFactory
   
   PlusPanelAppLoader b(BaseChatPie paramBaseChatPie, boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    paramBaseChatPie = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    if (RobotUtils.a(localQQAppInterface, paramBaseChatPie.jdField_a_of_type_JavaLangString)) {
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
+    paramBaseChatPie = paramBaseChatPie.ah;
+    if (RobotUtils.a(localQQAppInterface, paramBaseChatPie.b)) {
       return new RobotPlusPanelAppLoader();
     }
-    if (BmqqSegmentUtil.c(paramBaseChatPie.jdField_a_of_type_JavaLangString)) {
+    if (BmqqSegmentUtil.c(paramBaseChatPie.b)) {
       return new BMQQPlusPanelAppLoader();
     }
     if (paramBoolean) {
       return new OneWayFriendPlusPanelAppLoader();
     }
-    if (localQQAppInterface.getCurrentUin().equals(paramBaseChatPie.jdField_a_of_type_JavaLangString)) {
+    if (localQQAppInterface.getCurrentUin().equals(paramBaseChatPie.b)) {
       return new SelfPlusPanelAppLoader();
     }
-    if (QFileAssistantUtils.a(paramBaseChatPie.jdField_a_of_type_JavaLangString)) {
+    if (QFileAssistantUtils.a(paramBaseChatPie.b)) {
       return new NewDataLinePlusPanelAppLoader();
     }
     return new CommonC2CPlusPanelAppLoader();
@@ -98,7 +98,7 @@ public class PlusPanelLoaderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.PlusPanelLoaderFactory
  * JD-Core Version:    0.7.0.1
  */

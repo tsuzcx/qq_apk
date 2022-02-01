@@ -12,13 +12,13 @@ public class VoiceTextUtils
 {
   public static FriendItemInfo a(CommandInfo paramCommandInfo)
   {
-    if ((paramCommandInfo != null) && (paramCommandInfo.a != null) && (!paramCommandInfo.a.isEmpty()))
+    if ((paramCommandInfo != null) && (paramCommandInfo.d != null) && (!paramCommandInfo.d.isEmpty()))
     {
-      paramCommandInfo = paramCommandInfo.a.iterator();
+      paramCommandInfo = paramCommandInfo.d.iterator();
       while (paramCommandInfo.hasNext())
       {
         FriendItemInfo localFriendItemInfo = (FriendItemInfo)paramCommandInfo.next();
-        if (!localFriendItemInfo.a) {
+        if (!localFriendItemInfo.d) {
           return localFriendItemInfo;
         }
       }
@@ -28,13 +28,13 @@ public class VoiceTextUtils
   
   public static boolean a(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131720327)));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131917962)));
   }
   
   public static boolean a(String paramString1, String paramString2)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      return paramString1.equals(String.format(MobileQQ.sMobileQQ.getString(2131720319), new Object[] { paramString2 }));
+      return paramString1.equals(String.format(MobileQQ.sMobileQQ.getString(2131917954), new Object[] { paramString2 }));
     }
     return false;
   }
@@ -47,7 +47,7 @@ public class VoiceTextUtils
       while (paramList.hasNext())
       {
         VoiceItemInfo localVoiceItemInfo = (VoiceItemInfo)paramList.next();
-        if ((localVoiceItemInfo.jdField_a_of_type_Int == 0) && (!TextUtils.isEmpty(localVoiceItemInfo.jdField_a_of_type_JavaLangString)) && (localVoiceItemInfo.jdField_a_of_type_JavaLangString.equals(MobileQQ.sMobileQQ.getString(2131718750)))) {
+        if ((localVoiceItemInfo.a == 0) && (!TextUtils.isEmpty(localVoiceItemInfo.b)) && (localVoiceItemInfo.b.equals(MobileQQ.sMobileQQ.getString(2131916256)))) {
           return true;
         }
       }
@@ -57,32 +57,32 @@ public class VoiceTextUtils
   
   public static boolean b(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131720328)));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131917963)));
   }
   
   public static boolean c(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131720331)));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131917966)));
   }
   
   public static boolean d(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131720325)));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131917960)));
   }
   
   public static boolean e(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131720324)));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131917959)));
   }
   
   public static boolean f(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131718750)));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(MobileQQ.sMobileQQ.getString(2131916256)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.util.VoiceTextUtils
  * JD-Core Version:    0.7.0.1
  */

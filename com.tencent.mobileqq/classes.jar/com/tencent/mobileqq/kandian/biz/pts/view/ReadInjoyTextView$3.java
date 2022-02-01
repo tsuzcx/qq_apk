@@ -12,21 +12,21 @@ class ReadInjoyTextView$3
   
   public void onLoadUserInfoFailed(String paramString1, String paramString2)
   {
-    if ((paramString1 != null) && (paramString1.equals(this.jdField_a_of_type_JavaLangString))) {
+    if ((paramString1 != null) && (paramString1.equals(this.a))) {
       ThreadManager.getUIHandler().post(new ReadInjoyTextView.3.2(this));
     }
   }
   
   public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
+    if ((paramString != null) && (paramString.equals(this.a))) {
       ThreadManager.getUIHandler().post(new ReadInjoyTextView.3.1(this, paramReadInJoyUserInfo));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyTextView.3
  * JD-Core Version:    0.7.0.1
  */

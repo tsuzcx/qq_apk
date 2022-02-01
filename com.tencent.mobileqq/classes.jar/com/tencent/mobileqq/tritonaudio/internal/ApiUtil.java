@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.tritonaudio.internal;
 
 import android.text.TextUtils;
+import android.util.Log;
 import org.json.JSONObject;
 
 public final class ApiUtil
@@ -55,7 +56,10 @@ public final class ApiUtil
       localJSONObject.put("errMsg", localStringBuilder.toString());
       return localJSONObject;
     }
-    catch (Exception paramString1) {}
+    catch (Exception paramString1)
+    {
+      Log.e("ApiUtil", "wrapCallbackFail: ", paramString1);
+    }
     return paramJSONObject;
   }
   
@@ -84,13 +88,16 @@ public final class ApiUtil
       localJSONObject.put("errMsg", localStringBuilder.toString());
       return localJSONObject;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      Log.e("ApiUtil", "wrapCallbackOk: ", paramString);
+    }
     return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.internal.ApiUtil
  * JD-Core Version:    0.7.0.1
  */

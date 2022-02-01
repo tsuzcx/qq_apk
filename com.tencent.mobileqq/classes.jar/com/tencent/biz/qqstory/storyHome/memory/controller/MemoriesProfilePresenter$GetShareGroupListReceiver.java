@@ -16,13 +16,13 @@ class MemoriesProfilePresenter$GetShareGroupListReceiver
   
   public void a(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter, @NonNull ShareGroupPageLoader.GetShareGroupListEvent paramGetShareGroupListEvent)
   {
-    if (paramGetShareGroupListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramGetShareGroupListEvent.g.isSuccess())
     {
-      SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramGetShareGroupListEvent.jdField_a_of_type_Int));
-      MemoriesProfilePresenter.b(paramMemoriesProfilePresenter, paramGetShareGroupListEvent.jdField_a_of_type_Int);
-      if (paramMemoriesProfilePresenter.a != null)
+      SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramGetShareGroupListEvent.f));
+      MemoriesProfilePresenter.b(paramMemoriesProfilePresenter, paramGetShareGroupListEvent.f);
+      if (paramMemoriesProfilePresenter.b != null)
       {
-        paramMemoriesProfilePresenter.a.shareGroupCount = MemoriesProfilePresenter.b(paramMemoriesProfilePresenter);
+        paramMemoriesProfilePresenter.b.shareGroupCount = MemoriesProfilePresenter.c(paramMemoriesProfilePresenter);
         ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramMemoriesProfilePresenter), 5, null, false);
       }
     }

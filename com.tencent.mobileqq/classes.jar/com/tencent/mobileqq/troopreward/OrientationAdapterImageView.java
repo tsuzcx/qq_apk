@@ -13,40 +13,30 @@ import com.tencent.qphone.base.util.QLog;
 public class OrientationAdapterImageView
   extends View
 {
-  protected int a;
-  protected Bitmap a;
-  protected Paint a;
-  protected RectF a;
-  protected Handler a;
+  protected int a = 1;
+  protected Paint b = null;
+  protected RectF c = new RectF();
+  protected Bitmap d = null;
+  protected Handler e = new OrientationAdapterImageView.1(this);
   
   public OrientationAdapterImageView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_AndroidOsHandler = new OrientationAdapterImageView.1(this);
     a(paramContext);
   }
   
   public OrientationAdapterImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_AndroidOsHandler = new OrientationAdapterImageView.1(this);
     a(paramContext);
   }
   
   protected void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
+    this.b = new Paint();
+    this.b.setFilterBitmap(true);
+    this.b.setAntiAlias(true);
+    this.b.setDither(true);
     setBackgroundColor(-16777216);
   }
   
@@ -72,10 +62,10 @@ public class OrientationAdapterImageView
       paramBitmap.append(", bmpRatio:");
       paramBitmap.append(f7);
       paramBitmap.append(", mOrientation:");
-      paramBitmap.append(this.jdField_a_of_type_Int);
+      paramBitmap.append(this.a);
       QLog.d("OrientationAdapterImageView", 2, paramBitmap.toString());
     }
-    i = this.jdField_a_of_type_Int;
+    i = this.a;
     int k;
     if ((i != 0) && (i != 180))
     {
@@ -122,26 +112,26 @@ public class OrientationAdapterImageView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.d;
     if (localBitmap != null)
     {
-      a(this.jdField_a_of_type_AndroidGraphicsRectF, localBitmap, this);
+      a(this.c, localBitmap, this);
       paramCanvas.save();
-      paramCanvas.rotate(this.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.rotate(this.a, getWidth() / 2, getHeight() / 2);
+      paramCanvas.drawBitmap(this.d, null, this.c, this.b);
       paramCanvas.restore();
     }
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.d = paramBitmap;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopreward.OrientationAdapterImageView
  * JD-Core Version:    0.7.0.1
  */

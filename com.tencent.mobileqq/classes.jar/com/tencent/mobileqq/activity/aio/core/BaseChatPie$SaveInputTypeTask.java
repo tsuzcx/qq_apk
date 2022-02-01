@@ -11,20 +11,20 @@ import java.lang.ref.WeakReference;
 public class BaseChatPie$SaveInputTypeTask
   implements Runnable
 {
-  private Entity jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private Entity a;
+  private WeakReference<QQAppInterface> b;
   
   public BaseChatPie$SaveInputTypeTask(Entity paramEntity, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
+    this.a = paramEntity;
     if (paramQQAppInterface != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+      this.b = new WeakReference(paramQQAppInterface);
     }
   }
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.b;
     if (localObject == null) {
       return;
     }
@@ -32,7 +32,7 @@ public class BaseChatPie$SaveInputTypeTask
     if (localObject != null)
     {
       localObject = (FriendsManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER);
-      Entity localEntity = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
+      Entity localEntity = this.a;
       if ((localEntity instanceof ExtensionInfo))
       {
         ((FriendsManager)localObject).a((ExtensionInfo)localEntity);
@@ -46,7 +46,7 @@ public class BaseChatPie$SaveInputTypeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.SaveInputTypeTask
  * JD-Core Version:    0.7.0.1
  */

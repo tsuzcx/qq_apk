@@ -44,7 +44,7 @@ public class PromotionPath
     if (paramPromotionItem == null) {
       return null;
     }
-    paramPromotionItem = (PromotionConfigInfo.ZipItem)paramPromotionItem.a().get(Integer.valueOf(0));
+    paramPromotionItem = (PromotionConfigInfo.ZipItem)paramPromotionItem.b().get(Integer.valueOf(0));
     if (paramPromotionItem == null) {
       return null;
     }
@@ -54,7 +54,7 @@ public class PromotionPath
   public static String a(PromotionConfigInfo.ZipItem paramZipItem)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramZipItem.d);
+    localStringBuilder.append(paramZipItem.e);
     localStringBuilder.append("entry");
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
@@ -82,7 +82,7 @@ public class PromotionPath
   
   public static String b(PromotionConfigInfo.PromotionItem paramPromotionItem)
   {
-    paramPromotionItem = (PromotionConfigInfo.ZipItem)paramPromotionItem.a().get(Integer.valueOf(0));
+    paramPromotionItem = (PromotionConfigInfo.ZipItem)paramPromotionItem.b().get(Integer.valueOf(0));
     if (paramPromotionItem == null) {
       return null;
     }
@@ -92,7 +92,7 @@ public class PromotionPath
   public static String b(PromotionConfigInfo.ZipItem paramZipItem)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramZipItem.d);
+    localStringBuilder.append(paramZipItem.e);
     localStringBuilder.append("guide");
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
@@ -109,7 +109,7 @@ public class PromotionPath
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionPath
  * JD-Core Version:    0.7.0.1
  */

@@ -23,18 +23,18 @@ class MPFileVerifyPwdView$3
   {
     if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
     {
-      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694422));
+      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131892102));
     }
     else
     {
-      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694232));
-      DataLineHandler localDataLineHandler = (DataLineHandler)MPFileVerifyPwdView.a(this.a).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131891870));
+      DataLineHandler localDataLineHandler = (DataLineHandler)MPFileVerifyPwdView.c(this.a).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       MPFileVerifyPwdView.a(this.a, localDataLineHandler.a().a(3));
       MPFileVerifyPwdView.b(this.a).setEnabled(false);
       MPFileVerifyPwdView.b(this.a).setTextColor(-7829368);
-      MPFileVerifyPwdView.a(this.a).schedule(new MPFileVerifyPwdView.3.1(this), 15000L);
-      if (MPFileVerifyPwdView.a(this.a) != null) {
-        MPFileVerifyPwdView.a(this.a).a(MPFileVerifyPwdView.a(this.a));
+      MPFileVerifyPwdView.e(this.a).schedule(new MPFileVerifyPwdView.3.1(this), 15000L);
+      if (MPFileVerifyPwdView.f(this.a) != null) {
+        MPFileVerifyPwdView.f(this.a).a(MPFileVerifyPwdView.g(this.a));
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -42,7 +42,7 @@ class MPFileVerifyPwdView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.3
  * JD-Core Version:    0.7.0.1
  */

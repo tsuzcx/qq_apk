@@ -13,12 +13,12 @@ class WordMatchManager$5
     if (i == 2)
     {
       WordMatchManager localWordMatchManager = this.this$0;
-      localWordMatchManager.a(localWordMatchManager.a, 1);
+      localWordMatchManager.a(localWordMatchManager.c, 1);
       return;
     }
     if (i == 1)
     {
-      if (this.this$0.e)
+      if (this.this$0.m)
       {
         ThreadManager.post(new WordMatchManager.TaskHttpDownload(this.this$0, 3), 8, null, true);
         return;
@@ -28,7 +28,7 @@ class WordMatchManager$5
     }
     if (i == 3)
     {
-      if (this.this$0.e)
+      if (this.this$0.m)
       {
         ThreadManager.post(new WordMatchManager.TaskHttpDownload(this.this$0, 4), 8, null, true);
         return;
@@ -43,7 +43,7 @@ class WordMatchManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.WordMatchManager.5
  * JD-Core Version:    0.7.0.1
  */

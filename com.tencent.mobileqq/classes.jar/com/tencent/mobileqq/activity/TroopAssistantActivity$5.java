@@ -35,13 +35,13 @@ class TroopAssistantActivity$5
               break label237;
             }
             paramArrayOfByte = new StringBuilder();
-            paramArrayOfByte.append(TroopAssistantActivity.jdField_a_of_type_JavaLangString);
+            paramArrayOfByte.append(TroopAssistantActivity.a);
             paramArrayOfByte.append(": picUrl is Empty");
             QLog.i("TroopAssistantActivity", 2, paramArrayOfByte.toString());
             return null;
           }
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          UIUtils.a(this.a.jdField_a_of_type_AndroidWidgetImageView, paramBundle, 68, 68, 4, UIUtils.b, "TroopStorySnap");
+          this.d.t.setVisibility(0);
+          UIUtils.a(this.d.t, paramBundle, 68, 68, 4, UIUtils.h, "TroopStorySnap");
         }
         return paramArrayOfByte;
       }
@@ -50,7 +50,7 @@ class TroopAssistantActivity$5
         if (QLog.isColorLevel())
         {
           paramBundle = new StringBuilder();
-          paramBundle.append(TroopAssistantActivity.jdField_a_of_type_JavaLangString);
+          paramBundle.append(TroopAssistantActivity.a);
           paramBundle.append(" get exception:");
           paramBundle.append(paramArrayOfByte.getMessage());
           QLog.i("TroopAssistantActivity", 2, paramBundle.toString());
@@ -63,7 +63,7 @@ class TroopAssistantActivity$5
       if (QLog.isColorLevel())
       {
         paramArrayOfByte = new StringBuilder();
-        paramArrayOfByte.append(TroopAssistantActivity.jdField_a_of_type_JavaLangString);
+        paramArrayOfByte.append(TroopAssistantActivity.a);
         paramArrayOfByte.append(" get error:");
         paramArrayOfByte.append(paramInt);
         QLog.i("TroopAssistantActivity", 2, paramArrayOfByte.toString());
@@ -76,7 +76,7 @@ class TroopAssistantActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ class TroopInviteStatusFragment$2
   
   public void run()
   {
-    ((ITroopMngHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER)).a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.c, this.this$0.jdField_a_of_type_Long);
-    TroopManager localTroopManager = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    ((ITroopMngHandler)this.this$0.m.getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER)).a(this.this$0.n, this.this$0.p, this.this$0.s);
+    TroopManager localTroopManager = (TroopManager)this.this$0.m.getManager(QQManagerFactory.TROOP_MANAGER);
     if (localTroopManager != null)
     {
       TroopInviteStatusFragment localTroopInviteStatusFragment = this.this$0;
-      localTroopInviteStatusFragment.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = localTroopManager.b(localTroopInviteStatusFragment.jdField_a_of_type_JavaLangString);
+      localTroopInviteStatusFragment.v = localTroopManager.f(localTroopInviteStatusFragment.n);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopInviteStatusFragment.2
  * JD-Core Version:    0.7.0.1
  */

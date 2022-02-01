@@ -7,12 +7,12 @@ class StoryVideoUploadProgressManager$1
   
   public void run()
   {
-    StoryVideoUploadProgressManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    StoryVideoUploadProgressManager.a(this.this$0, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.1
  * JD-Core Version:    0.7.0.1
  */

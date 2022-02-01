@@ -19,63 +19,63 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class JdTipHelper
   implements Handler.Callback, ILifeCycleHelper
 {
-  int jdField_a_of_type_Int = DisplayUtil.a(BaseApplicationImpl.getContext(), 50.0F);
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new JdTipHelper.1(this);
-  Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  int jdField_b_of_type_Int = DisplayUtil.a(BaseApplicationImpl.getContext(), 30.0F);
-  Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  Animation c;
+  RelativeLayout a;
+  URLImageView b;
+  RelativeLayout c;
+  Animation d;
+  Animation e;
+  Animation f;
+  ImageView g;
+  ImageView h;
+  int i = DisplayUtil.a(BaseApplicationImpl.getContext(), 50.0F);
+  int j = DisplayUtil.a(BaseApplicationImpl.getContext(), 30.0F);
+  Animation.AnimationListener k = new JdTipHelper.1(this);
+  private final AIOContext l;
   
   public JdTipHelper(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.l = paramAIOContext;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentImageURLImageView != null) && (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null))
+    if ((this.b != null) && (this.c != null))
     {
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+      if (this.a == null) {
         return;
       }
-      int i = this.jdField_a_of_type_Int;
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
+      int m = this.i;
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(m, m);
       localLayoutParams.addRule(11);
-      Object localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
-      i = 2131379149;
-      localObject = ((RelativeLayout)localObject).findViewById(2131379149);
-      View localView = this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131379143);
+      Object localObject = this.c;
+      m = 2131447885;
+      localObject = ((RelativeLayout)localObject).findViewById(2131447885);
+      View localView = this.c.findViewById(2131447879);
       if ((localObject == null) || (((View)localObject).getVisibility() != 0)) {
-        i = -1;
+        m = -1;
       }
-      int j = i;
+      int n = m;
       if (localView != null)
       {
-        j = i;
+        n = m;
         if (localView.getVisibility() == 0) {
-          j = 2131379143;
+          n = 2131447879;
         }
       }
-      i = this.jdField_b_of_type_Int;
-      int k = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299168);
-      if (j == -1)
+      m = this.j;
+      int i1 = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299920);
+      if (n == -1)
       {
         localLayoutParams.addRule(10);
-        i += k;
+        m += i1;
       }
       else
       {
-        localLayoutParams.addRule(3, j);
+        localLayoutParams.addRule(3, n);
       }
-      localLayoutParams.topMargin = i;
+      localLayoutParams.topMargin = m;
       localLayoutParams.rightMargin = DisplayUtil.a(BaseApplicationImpl.getContext(), 40.0F);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
+      this.a.setLayoutParams(localLayoutParams);
     }
   }
   
@@ -104,16 +104,16 @@ public class JdTipHelper
   {
     if (paramInt == 15)
     {
-      RelativeLayout localRelativeLayout1 = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
+      RelativeLayout localRelativeLayout1 = this.c;
       if (localRelativeLayout1 != null)
       {
-        RelativeLayout localRelativeLayout2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+        RelativeLayout localRelativeLayout2 = this.a;
         if ((localRelativeLayout2 != null) && (localRelativeLayout1.indexOfChild(localRelativeLayout2) != -1))
         {
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout = null;
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+          this.a.clearAnimation();
+          this.c.removeView(this.a);
+          this.c = null;
+          this.a = null;
         }
       }
     }
@@ -121,7 +121,7 @@ public class JdTipHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.JdTipHelper
  * JD-Core Version:    0.7.0.1
  */

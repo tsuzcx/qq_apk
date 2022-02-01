@@ -2,8 +2,8 @@ package com.tencent.mtt.hippy.uimanager;
 
 public class a
 {
-  public HippyViewController a;
-  public boolean b;
+  public final HippyViewController a;
+  public final boolean b;
   
   public a(HippyViewController paramHippyViewController, boolean paramBoolean)
   {
@@ -13,7 +13,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.a
  * JD-Core Version:    0.7.0.1
  */

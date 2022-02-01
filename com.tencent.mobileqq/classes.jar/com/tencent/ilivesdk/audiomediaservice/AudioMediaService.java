@@ -13,50 +13,50 @@ import com.tencent.ilivesdk.audiomediaservice.player.AudioRecordPlayer;
 public class AudioMediaService
   implements IAudioMediaService
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LogInterface jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
-  private IAudioMediaServiceAdapter jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter;
-  private IAudioRecordPlayer jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioRecordPlayer;
+  private Context a;
+  private LogInterface b;
+  private IAudioRecordPlayer c;
+  private IAudioMediaServiceAdapter d;
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioRecordPlayer.a();
+    this.c.a();
   }
   
   public void a(AudioEnterRoomParam paramAudioEnterRoomParam, IAudioMediaServiceListener paramIAudioMediaServiceListener)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioRecordPlayer.a(paramAudioEnterRoomParam, paramIAudioMediaServiceListener);
+    this.c.a(paramAudioEnterRoomParam, paramIAudioMediaServiceListener);
   }
   
   public void a(IAudioMediaServiceAdapter paramIAudioMediaServiceAdapter)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter = paramIAudioMediaServiceAdapter;
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a();
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioRecordPlayer = new AudioRecordPlayer(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter);
+    this.d = paramIAudioMediaServiceAdapter;
+    this.b = this.d.c();
+    this.c = new AudioRecordPlayer(this.a, this.d);
   }
   
   public void a(IAudioVolumeListener paramIAudioVolumeListener)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioRecordPlayer.a(paramIAudioVolumeListener);
+    this.c.a(paramIAudioVolumeListener);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioRecordPlayer.a(paramBoolean);
+    this.c.a(paramBoolean);
   }
   
   public void clearEventOutput() {}
   
   public void onCreate(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("AudioMediaService", "onDestroy", new Object[0]);
-    this.jdField_a_of_type_AndroidContentContext = null;
-    IAudioRecordPlayer localIAudioRecordPlayer = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioRecordPlayer;
+    this.b.i("AudioMediaService", "onDestroy", new Object[0]);
+    this.a = null;
+    IAudioRecordPlayer localIAudioRecordPlayer = this.c;
     if (localIAudioRecordPlayer != null) {
       localIAudioRecordPlayer.a();
     }
@@ -64,7 +64,7 @@ public class AudioMediaService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.AudioMediaService
  * JD-Core Version:    0.7.0.1
  */

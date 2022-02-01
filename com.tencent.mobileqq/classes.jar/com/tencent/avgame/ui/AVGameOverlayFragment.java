@@ -13,32 +13,32 @@ import com.tencent.qphone.base.util.QLog;
 public class AVGameOverlayFragment
   extends QPublicBaseFragment
 {
-  private int jdField_a_of_type_Int = -1;
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private String jdField_a_of_type_JavaLangString;
+  QQCustomDialog a;
+  private QBaseActivity b;
+  private int c = -1;
+  private String d;
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+    if (this.a != null) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("ListenTogetherOverlayFragment", 2, "showKickMeDialog");
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 230).setMessage(null).setNegativeButton(null, null).setPositiveButton(2131690280, new AVGameOverlayFragment.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(null);
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    this.a = DialogUtil.a(this.b, 230).setMessage(null).setNegativeButton(null, null).setPositiveButton(2131887191, new AVGameOverlayFragment.1(this));
+    this.a.setTitle(null);
+    QQCustomDialog localQQCustomDialog = this.a;
     String str;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      str = getString(2131690331);
+    if (TextUtils.isEmpty(this.d)) {
+      str = getString(2131887242);
     } else {
-      str = this.jdField_a_of_type_JavaLangString;
+      str = this.d;
     }
     localQQCustomDialog.setMessage(str);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    this.a.setCancelable(false);
+    this.a.setCanceledOnTouchOutside(false);
+    this.a.show();
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -60,12 +60,12 @@ public class AVGameOverlayFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = getQBaseActivity();
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getIntent();
+    this.b = getQBaseActivity();
+    paramBundle = this.b.getIntent();
     if (paramBundle != null)
     {
-      this.jdField_a_of_type_Int = paramBundle.getIntExtra("type", 0);
-      this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("tip");
+      this.c = paramBundle.getIntExtra("type", 0);
+      this.d = paramBundle.getStringExtra("tip");
     }
   }
   
@@ -98,12 +98,12 @@ public class AVGameOverlayFragment
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.c == 1)
     {
       a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.finish();
+    this.b.finish();
   }
 }
 

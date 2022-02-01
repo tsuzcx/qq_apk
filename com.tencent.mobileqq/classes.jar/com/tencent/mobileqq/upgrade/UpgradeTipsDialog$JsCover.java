@@ -15,9 +15,9 @@ public class UpgradeTipsDialog$JsCover
       QLog.d("UpgradeController", 2, "loadTipsComplete");
     }
     UpgradeTipsDialog.a(this.a, true);
-    ReportController.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, UpgradeConstants.b(), String.valueOf(1), UpgradeController.a(), "");
-    if (UpgradeTipsDialog.a(this.a) != null) {
-      UpgradeTipsDialog.a(this.a).a(this.a);
+    ReportController.b(UpgradeTipsDialog.b(this.a), "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, UpgradeConstants.b(), String.valueOf(1), UpgradeController.k(), "");
+    if (UpgradeTipsDialog.c(this.a) != null) {
+      UpgradeTipsDialog.c(this.a).a(this.a);
     }
     try
     {
@@ -33,7 +33,7 @@ public class UpgradeTipsDialog$JsCover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeTipsDialog.JsCover
  * JD-Core Version:    0.7.0.1
  */

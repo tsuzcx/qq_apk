@@ -4,14 +4,14 @@ import com.tencent.mobileqq.data.RecentUser;
 
 public class ForwardRecentListAdapter$DisplayData
 {
-  public int a;
-  public RecentUser a;
   public String a;
-  public String b;
+  public int b;
+  public String c;
+  public RecentUser d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ForwardRecentListAdapter.DisplayData
  * JD-Core Version:    0.7.0.1
  */

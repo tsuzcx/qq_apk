@@ -5,14 +5,14 @@ class LyricViewController$7
 {
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.c();
+    if (this.this$0.b != null) {
+      this.this$0.b.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewController.7
  * JD-Core Version:    0.7.0.1
  */

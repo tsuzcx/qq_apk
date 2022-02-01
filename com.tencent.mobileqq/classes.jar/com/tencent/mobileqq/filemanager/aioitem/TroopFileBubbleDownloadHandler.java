@@ -29,24 +29,13 @@ public class TroopFileBubbleDownloadHandler
     super(paramQQAppInterface, paramContext);
   }
   
-  protected TroopFileStatusInfo a(ChatMessage paramChatMessage)
-  {
-    if ((paramChatMessage instanceof MessageForTroopFile))
-    {
-      paramChatMessage = (MessageForTroopFile)paramChatMessage;
-      return TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-    }
-    QLog.i("TroopFileBubbleDownloadHandler", 1, "getTroopFileStatusInfoByMsg:  msg is not message for troop file.");
-    return null;
-  }
-  
   protected CircleFileStateView a(BaseBubbleBuilder.ViewHolder paramViewHolder)
   {
     if (paramViewHolder == null) {
       return null;
     }
     if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
-      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).v;
     }
     return null;
   }
@@ -65,47 +54,47 @@ public class TroopFileBubbleDownloadHandler
       return;
     }
     paramView = (MessageForTroopFile)paramChatMessage;
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(paramChatMessage.frienduin));
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.b, Long.parseLong(paramChatMessage.frienduin));
     if (localTroopFileTransferManager == null) {
       return;
     }
-    paramViewHolder = a(paramChatMessage);
+    paramViewHolder = c(paramChatMessage);
     if (paramViewHolder == null) {
       return;
     }
-    int i = NetworkUtil.getSystemNetwork((Activity)this.jdField_a_of_type_AndroidContentContext);
+    int i = NetworkUtil.getSystemNetwork((Activity)this.a);
     if (paramInt == 0)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A888", "0X800A888", 0, 0, "", "", "", "");
+      ReportController.b(this.b, "dc00898", "", "", "0X800A888", "0X800A888", 0, 0, "", "", "", "");
       if (i == 0)
       {
-        TroopFileError.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131697616));
+        TroopFileError.a(this.a, this.a.getString(2131895389));
         return;
       }
-      if (paramViewHolder.b != 8) {
+      if (paramViewHolder.e != 8) {
         return;
       }
-      localTroopFileTransferManager.d(paramViewHolder.jdField_a_of_type_JavaUtilUUID);
+      localTroopFileTransferManager.e(paramViewHolder.a);
       return;
     }
     if (paramInt == 1)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A887", "0X800A887", 0, 0, "", "", "", "");
-      paramChatMessage = new TroopFileItemOperation(Long.parseLong(paramChatMessage.frienduin), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext);
-      if ((paramViewHolder.b != 10) && (paramViewHolder.b != 9))
+      ReportController.b(this.b, "dc00898", "", "", "0X800A887", "0X800A887", 0, 0, "", "", "", "");
+      paramChatMessage = new TroopFileItemOperation(Long.parseLong(paramChatMessage.frienduin), this.b, (Activity)this.a);
+      if ((paramViewHolder.e != 10) && (paramViewHolder.e != 9))
       {
-        if (paramViewHolder.b == 7)
+        if (paramViewHolder.e == 7)
         {
-          paramChatMessage.a(paramView.url, paramViewHolder.g, paramViewHolder.c, paramViewHolder.h);
+          paramChatMessage.a(paramView.url, paramViewHolder.t, paramViewHolder.i, paramViewHolder.u);
           return;
         }
-        if ((paramViewHolder.b == 6) && (!FileUtils.fileExistsAndNotEmpty(paramViewHolder.jdField_a_of_type_JavaLangString))) {
-          paramChatMessage.a(paramView.url, paramViewHolder.g, paramViewHolder.c, paramViewHolder.h);
+        if ((paramViewHolder.e == 6) && (!FileUtils.fileExistsAndNotEmpty(paramViewHolder.k))) {
+          paramChatMessage.a(paramView.url, paramViewHolder.t, paramViewHolder.i, paramViewHolder.u);
         }
       }
-      else if (paramViewHolder.jdField_a_of_type_JavaUtilUUID != null)
+      else if (paramViewHolder.a != null)
       {
-        paramChatMessage.b(paramViewHolder.jdField_a_of_type_JavaUtilUUID);
+        paramChatMessage.b(paramViewHolder.a);
       }
     }
   }
@@ -116,7 +105,7 @@ public class TroopFileBubbleDownloadHandler
       return;
     }
     if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
-      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramCircleFileStateView;
+      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).v = paramCircleFileStateView;
     }
   }
   
@@ -128,14 +117,14 @@ public class TroopFileBubbleDownloadHandler
         return false;
       }
       Object localObject = (MessageForTroopFile)paramChatMessage;
-      paramChatMessage = a(paramChatMessage);
+      paramChatMessage = c(paramChatMessage);
       if (paramChatMessage == null) {
         return false;
       }
       if ((((MessageForTroopFile)localObject).lastTime != 0L) && (((MessageForTroopFile)localObject).lastTime <= NetConnInfoCenter.getServerTime())) {
         return false;
       }
-      int i = FileManagerUtil.a(paramChatMessage.g);
+      int i = FileManagerUtil.c(paramChatMessage.t);
       if (i != 0)
       {
         if (i == 2) {
@@ -145,14 +134,14 @@ public class TroopFileBubbleDownloadHandler
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("needShowDownloadIcon: current file status[");
-          ((StringBuilder)localObject).append(paramChatMessage.b);
+          ((StringBuilder)localObject).append(paramChatMessage.e);
           ((StringBuilder)localObject).append("]");
           QLog.i("TroopFileBubbleDownloadHandler", 1, ((StringBuilder)localObject).toString());
         }
-        if ((paramChatMessage.b != 10) && (paramChatMessage.b != 9) && (paramChatMessage.b != 7)) {
-          return (paramChatMessage.b == 6) && (!FileUtils.fileExistsAndNotEmpty(paramChatMessage.jdField_a_of_type_JavaLangString));
+        if ((paramChatMessage.e != 10) && (paramChatMessage.e != 9) && (paramChatMessage.e != 7)) {
+          return (paramChatMessage.e == 6) && (!FileUtils.fileExistsAndNotEmpty(paramChatMessage.k));
         }
-        return !FileUtils.fileExistsAndNotEmpty(paramChatMessage.jdField_a_of_type_JavaLangString);
+        return !FileUtils.fileExistsAndNotEmpty(paramChatMessage.k);
       }
     }
     return false;
@@ -164,11 +153,11 @@ public class TroopFileBubbleDownloadHandler
     if (paramChatMessage == null) {
       return false;
     }
-    paramChatMessage = a(paramChatMessage);
+    paramChatMessage = c(paramChatMessage);
     if (paramChatMessage == null) {
       return false;
     }
-    int i = FileManagerUtil.a(paramChatMessage.g);
+    int i = FileManagerUtil.c(paramChatMessage.t);
     boolean bool1 = bool2;
     if (i != 0)
     {
@@ -179,21 +168,32 @@ public class TroopFileBubbleDownloadHandler
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("needShowPauseIcon: current file status[");
-        localStringBuilder.append(paramChatMessage.b);
+        localStringBuilder.append(paramChatMessage.e);
         localStringBuilder.append("]");
         QLog.i("TroopFileBubbleDownloadHandler", 1, localStringBuilder.toString());
       }
       bool1 = bool2;
-      if (paramChatMessage.b == 8) {
+      if (paramChatMessage.e == 8) {
         bool1 = true;
       }
     }
     return bool1;
   }
+  
+  protected TroopFileStatusInfo c(ChatMessage paramChatMessage)
+  {
+    if ((paramChatMessage instanceof MessageForTroopFile))
+    {
+      paramChatMessage = (MessageForTroopFile)paramChatMessage;
+      return TroopFileUtils.a(this.b, paramChatMessage);
+    }
+    QLog.i("TroopFileBubbleDownloadHandler", 1, "getTroopFileStatusInfoByMsg:  msg is not message for troop file.");
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.TroopFileBubbleDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -29,7 +29,7 @@ public final class register_proxy$DiscussList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.registerproxy.register_proxy.DiscussList
  * JD-Core Version:    0.7.0.1
  */

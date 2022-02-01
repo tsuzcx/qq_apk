@@ -11,33 +11,21 @@ import mqq.os.MqqHandler;
 public class GetUserGuideInfoStep
   extends SimpleStep
 {
-  private GetUserGuideInfoStep.CompletedListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep$CompletedListener;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private GetUserGuideInfoStep.CompletedListener b;
   
   public GetUserGuideInfoStep(GetUserGuideInfoStep.CompletedListener paramCompletedListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep$CompletedListener = paramCompletedListener;
-  }
-  
-  public String a()
-  {
-    return "GetUserGuideInfoStep";
-  }
-  
-  public void a()
-  {
-    SLog.d("Q.qqstory.home.GetUserGuideInfoStep", "run");
-    GetUserGuideInfoStep.Request localRequest = new GetUserGuideInfoStep.Request();
-    CmdTaskManger.a().a(localRequest, new GetUserGuideInfoStep.CommandCallback(this));
+    this.b = paramCompletedListener;
   }
   
   public void a(@NonNull GetUserGuideInfoStep.Request paramRequest, @Nullable GetUserGuideInfoStep.Response paramResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     SLog.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
-    if (b())
+    if (g())
     {
       SLog.e("Q.qqstory.home.GetUserGuideInfoStep", "GetUserGuideInfoStep was reseted !");
-      d();
+      h();
       return;
     }
     if (paramErrorMessage.isFail())
@@ -47,17 +35,29 @@ public class GetUserGuideInfoStep
       return;
     }
     ThreadManager.getUIHandler().post(new GetUserGuideInfoStep.1(this, paramResponse));
-    d();
+    h();
   }
   
-  public void b() {}
+  public void b()
+  {
+    SLog.d("Q.qqstory.home.GetUserGuideInfoStep", "run");
+    GetUserGuideInfoStep.Request localRequest = new GetUserGuideInfoStep.Request();
+    CmdTaskManger.a().a(localRequest, new GetUserGuideInfoStep.CommandCallback(this));
+  }
   
-  public boolean b()
+  public String c()
+  {
+    return "GetUserGuideInfoStep";
+  }
+  
+  public void e() {}
+  
+  public void f()
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
+      this.a = true;
+      return;
     }
     finally
     {
@@ -66,12 +66,12 @@ public class GetUserGuideInfoStep
     }
   }
   
-  public void c()
+  public boolean g()
   {
     try
     {
-      this.jdField_a_of_type_Boolean = true;
-      return;
+      boolean bool = this.a;
+      return bool;
     }
     finally
     {

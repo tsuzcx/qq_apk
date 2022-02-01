@@ -15,28 +15,28 @@ class ThemeSwitchManagerImpl$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView == null)
+    if (this.a.f == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ThemeSwitchManager", 1, "onPostThemeChanged, remove view, tmpScreenShot==null");
       }
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      this.a.g.set(false);
       return;
     }
-    paramAnimation = (ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent();
+    paramAnimation = (ViewGroup)this.a.f.getParent();
     if (paramAnimation != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ThemeSwitchManager", 1, "onPostThemeChanged, execute remove view");
       }
-      paramAnimation.removeView(this.a.jdField_a_of_type_AndroidWidgetImageView);
+      paramAnimation.removeView(this.a.f);
       paramAnimation.clearDisappearingChildren();
     }
-    this.a.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    this.a.e.recycle();
     paramAnimation = this.a;
-    paramAnimation.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    paramAnimation.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.a.jdField_a_of_type_AndroidWidgetImageView = null;
+    paramAnimation.e = null;
+    paramAnimation.g.set(false);
+    this.a.f = null;
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -45,7 +45,7 @@ class ThemeSwitchManagerImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.manager.api.impl.ThemeSwitchManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

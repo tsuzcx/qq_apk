@@ -17,7 +17,7 @@ class MqqMessageQueue$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     mqq.os.MqqMessageQueue.2
  * JD-Core Version:    0.7.0.1
  */

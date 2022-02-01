@@ -226,7 +226,7 @@ public class MsgBackupEntityManagerFactory
       return new ArrayList();
     }
     localObject1 = ((SQLiteDatabase)localObject2).rawQuery((String)localObject1, null);
-    localObject2 = a(MsgBackupExtraEntity.class, "ex_info", (Cursor)localObject1, null);
+    localObject2 = b(MsgBackupExtraEntity.class, "ex_info", (Cursor)localObject1, null);
     ((Cursor)localObject1).close();
     return localObject2;
   }
@@ -241,7 +241,7 @@ public class MsgBackupEntityManagerFactory
       return new ArrayList();
     }
     localObject1 = ((SQLiteDatabase)localObject2).rawQuery((String)localObject1, null);
-    localObject2 = a(MsgBackupMsgEntity.class, "msg", (Cursor)localObject1, null);
+    localObject2 = b(MsgBackupMsgEntity.class, "msg", (Cursor)localObject1, null);
     ((Cursor)localObject1).close();
     return localObject2;
   }
@@ -256,73 +256,8 @@ public class MsgBackupEntityManagerFactory
       return new ArrayList();
     }
     localObject1 = ((SQLiteDatabase)localObject2).rawQuery((String)localObject1, null);
-    localObject2 = a(MsgBackupResEntity.class, "res", (Cursor)localObject1, null);
+    localObject2 = b(MsgBackupResEntity.class, "res", (Cursor)localObject1, null);
     ((Cursor)localObject1).close();
-    return localObject2;
-  }
-  
-  protected List<? extends Entity> a(Class<? extends Entity> paramClass, String paramString, Cursor paramCursor, NoColumnErrorHandler paramNoColumnErrorHandler)
-  {
-    Entity localEntity = null;
-    Object localObject4 = null;
-    localObject3 = null;
-    localObject2 = localObject4;
-    Object localObject1;
-    if (paramCursor != null)
-    {
-      localObject1 = localEntity;
-      localObject2 = localObject4;
-      for (;;)
-      {
-        try
-        {
-          if (paramCursor.moveToFirst())
-          {
-            localObject1 = localEntity;
-            i = paramCursor.getCount();
-            localObject2 = localObject3;
-            localObject1 = localObject2;
-            localEntity = a(paramClass, paramString, paramCursor, paramNoColumnErrorHandler);
-            localObject3 = localObject2;
-            if (localEntity != null)
-            {
-              localObject3 = localObject2;
-              if (localObject2 == null) {
-                localObject1 = localObject2;
-              }
-            }
-          }
-        }
-        catch (Exception paramClass)
-        {
-          int i;
-          boolean bool;
-          localObject2 = localObject1;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("MsgBackup_db", 2, MsfSdkUtils.getStackTraceString(paramClass));
-            localObject2 = localObject1;
-          }
-        }
-        try
-        {
-          localObject3 = new ArrayList(i);
-          localObject1 = localObject3;
-          ((List)localObject3).add(localEntity);
-        }
-        catch (Throwable localThrowable)
-        {
-          localObject3 = localObject2;
-          continue;
-        }
-        localObject1 = localObject3;
-        bool = paramCursor.moveToNext();
-        localObject2 = localObject3;
-        if (!bool) {
-          return localObject3;
-        }
-      }
-    }
     return localObject2;
   }
   
@@ -449,7 +384,7 @@ public class MsgBackupEntityManagerFactory
     //   19: aload 6
     //   21: ifnonnull +17 -> 38
     //   24: ldc 27
-    //   26: ldc_w 355
+    //   26: ldc_w 340
     //   29: iconst_0
     //   30: anewarray 31	java/lang/Object
     //   33: invokestatic 36	com/tencent/mobileqq/msgbackup/util/MsgBackupUtil:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
@@ -537,7 +472,7 @@ public class MsgBackupEntityManagerFactory
     //   191: invokespecial 41	java/lang/StringBuilder:<init>	()V
     //   194: astore 6
     //   196: aload 6
-    //   198: ldc_w 357
+    //   198: ldc_w 342
     //   201: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: pop
     //   205: aload 6
@@ -588,8 +523,73 @@ public class MsgBackupEntityManagerFactory
       return new ArrayList();
     }
     localObject1 = ((SQLiteDatabase)localObject2).rawQuery((String)localObject1, null);
-    localObject2 = a(MsgBackupResEntity.class, "res", (Cursor)localObject1, null);
+    localObject2 = b(MsgBackupResEntity.class, "res", (Cursor)localObject1, null);
     ((Cursor)localObject1).close();
+    return localObject2;
+  }
+  
+  protected List<? extends Entity> b(Class<? extends Entity> paramClass, String paramString, Cursor paramCursor, NoColumnErrorHandler paramNoColumnErrorHandler)
+  {
+    Entity localEntity = null;
+    Object localObject4 = null;
+    localObject3 = null;
+    localObject2 = localObject4;
+    Object localObject1;
+    if (paramCursor != null)
+    {
+      localObject1 = localEntity;
+      localObject2 = localObject4;
+      for (;;)
+      {
+        try
+        {
+          if (paramCursor.moveToFirst())
+          {
+            localObject1 = localEntity;
+            i = paramCursor.getCount();
+            localObject2 = localObject3;
+            localObject1 = localObject2;
+            localEntity = a(paramClass, paramString, paramCursor, paramNoColumnErrorHandler);
+            localObject3 = localObject2;
+            if (localEntity != null)
+            {
+              localObject3 = localObject2;
+              if (localObject2 == null) {
+                localObject1 = localObject2;
+              }
+            }
+          }
+        }
+        catch (Exception paramClass)
+        {
+          int i;
+          boolean bool;
+          localObject2 = localObject1;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("MsgBackup_db", 2, MsfSdkUtils.getStackTraceString(paramClass));
+            localObject2 = localObject1;
+          }
+        }
+        try
+        {
+          localObject3 = new ArrayList(i);
+          localObject1 = localObject3;
+          ((List)localObject3).add(localEntity);
+        }
+        catch (Throwable localThrowable)
+        {
+          localObject3 = localObject2;
+          continue;
+        }
+        localObject1 = localObject3;
+        bool = paramCursor.moveToNext();
+        localObject2 = localObject3;
+        if (!bool) {
+          return localObject3;
+        }
+      }
+    }
     return localObject2;
   }
   
@@ -627,7 +627,7 @@ public class MsgBackupEntityManagerFactory
   {
     if (this.mInnerDbHelper == null)
     {
-      this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, paramString, 1);
+      this.mInnerDbHelper = SQLiteOpenHelperFacade.getHelper(this, paramString, 1);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
       createDatabase(this.mInnerDbHelper.getWritableDatabase());
     }
@@ -689,7 +689,7 @@ public class MsgBackupEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

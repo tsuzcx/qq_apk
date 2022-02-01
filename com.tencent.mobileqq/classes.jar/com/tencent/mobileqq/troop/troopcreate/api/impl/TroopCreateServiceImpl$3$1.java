@@ -17,19 +17,19 @@ class TroopCreateServiceImpl$3$1
   
   public void run()
   {
-    ((ITroopInfoHandler)TroopCreateServiceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiImplTroopCreateServiceImpl$3.a).getBusinessHandler(TroopInfoHandler.class.getName())).a(this.jdField_a_of_type_JavaLangString, "TroopCreateLogic.create_new_troop");
-    ((ITroopMemberLevelHandler)TroopCreateServiceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiImplTroopCreateServiceImpl$3.a).getBusinessHandler(TroopMemberLevelHandler.class.getName())).a(this.jdField_a_of_type_JavaLangString);
-    ITroopInfoService localITroopInfoService = (ITroopInfoService)TroopCreateServiceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiImplTroopCreateServiceImpl$3.a).getRuntimeService(ITroopInfoService.class, "");
-    Object localObject2 = localITroopInfoService.findTroopInfo(this.jdField_a_of_type_JavaLangString);
+    ((ITroopInfoHandler)TroopCreateServiceImpl.access$100(this.d.a).getBusinessHandler(TroopInfoHandler.class.getName())).a(this.a, "TroopCreateLogic.create_new_troop");
+    ((ITroopMemberLevelHandler)TroopCreateServiceImpl.access$100(this.d.a).getBusinessHandler(TroopMemberLevelHandler.class.getName())).a(this.a);
+    ITroopInfoService localITroopInfoService = (ITroopInfoService)TroopCreateServiceImpl.access$100(this.d.a).getRuntimeService(ITroopInfoService.class, "");
+    Object localObject2 = localITroopInfoService.findTroopInfo(this.a);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
+      localObject1 = this.b;
     }
     if (localObject1 != null)
     {
-      ((TroopInfo)localObject1).dwGroupClassExt = TroopCreateServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiImplTroopCreateServiceImpl$3.a).classify;
-      ((TroopInfo)localObject1).mRichFingerMemo = TroopCreateServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiImplTroopCreateServiceImpl$3.a).introduction;
-      localObject2 = TroopCreateServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiImplTroopCreateServiceImpl$3.a).location.split("\\|");
+      ((TroopInfo)localObject1).dwGroupClassExt = TroopCreateServiceImpl.access$000(this.d.a).classify;
+      ((TroopInfo)localObject1).mRichFingerMemo = TroopCreateServiceImpl.access$000(this.d.a).introduction;
+      localObject2 = TroopCreateServiceImpl.access$000(this.d.a).location.split("\\|");
       int j;
       int i;
       if (localObject2.length == 4)
@@ -47,9 +47,9 @@ class TroopCreateServiceImpl$3$1
       ((TroopInfo)localObject1).isNewTroop = true;
       ((TroopInfo)localObject1).hasSetNewTroopHead = false;
       ((TroopInfo)localObject1).hasSetNewTroopName = false;
-      ((TroopInfo)localObject1).wMemberNum = this.jdField_a_of_type_Int;
+      ((TroopInfo)localObject1).wMemberNum = this.c;
       ((TroopInfo)localObject1).wMemberNumClient = ((TroopInfo)localObject1).wMemberNum;
-      ((TroopInfo)localObject1).troopowneruin = TroopCreateServiceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiImplTroopCreateServiceImpl$3.a).getCurrentAccountUin();
+      ((TroopInfo)localObject1).troopowneruin = TroopCreateServiceImpl.access$100(this.d.a).getCurrentAccountUin();
       ((TroopInfo)localObject1).troopCreateTime = (System.currentTimeMillis() / 1000L);
       if (QLog.isColorLevel())
       {
@@ -62,14 +62,14 @@ class TroopCreateServiceImpl$3$1
         ((StringBuilder)localObject2).append(((TroopInfo)localObject1).troopuin);
         QLog.d("TroopCreateServiceImpl", 2, ((StringBuilder)localObject2).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.dwAdditionalFlag = 1L;
+      this.b.dwAdditionalFlag = 1L;
       localITroopInfoService.saveTroopInfo((TroopInfo)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.api.impl.TroopCreateServiceImpl.3.1
  * JD-Core Version:    0.7.0.1
  */

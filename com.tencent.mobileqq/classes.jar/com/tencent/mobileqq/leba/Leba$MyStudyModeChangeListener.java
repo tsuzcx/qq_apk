@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.leba;
 
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.studymode.StudyModeChangeListener;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -32,18 +29,12 @@ class Leba$MyStudyModeChangeListener
     localStringBuilder.append("StudyModeChange onChange ");
     localStringBuilder.append(paramBoolean);
     QLog.i("LebaFrame", 1, localStringBuilder.toString());
-    ((ILebaHelperService)((Leba)localObject).a.getRuntimeService(ILebaHelperService.class, "multi")).checkModleAndRefesh();
-    if (Looper.myLooper() != Looper.getMainLooper())
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new Leba.MyStudyModeChangeListener.1(this, (Leba)localObject));
-      return;
-    }
-    ((Leba)localObject).m();
+    ((ILebaHelperService)((Leba)localObject).aF.getRuntimeService(ILebaHelperService.class, "multi")).checkModleAndRefesh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.Leba.MyStudyModeChangeListener
  * JD-Core Version:    0.7.0.1
  */

@@ -18,22 +18,20 @@ public class SeatViewAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  protected Context a;
-  protected LayoutInflater a;
-  protected UserInfoHandler a;
-  protected ISeatPresenter a;
-  protected SeatViewAdapter.OnItemClickListener a;
-  protected ArrayList<SeatMemberInfo> a;
-  protected boolean a;
+  protected ArrayList<SeatMemberInfo> a = new ArrayList();
+  protected Context b;
+  protected LayoutInflater c;
+  protected boolean d = false;
+  protected SeatViewAdapter.OnItemClickListener e;
+  protected UserInfoHandler f;
+  protected ISeatPresenter g;
   
   public SeatViewAdapter(Context paramContext, ISeatPresenter paramISeatPresenter)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter = paramISeatPresenter;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = ((UserInfoHandler)((AppInterface)IGameEngine.a()).getBusinessHandler(HandlerFactory.b));
+    this.b = paramContext;
+    this.g = paramISeatPresenter;
+    this.c = LayoutInflater.from(paramContext);
+    this.f = ((UserInfoHandler)((AppInterface)IGameEngine.K()).getBusinessHandler(HandlerFactory.b));
   }
   
   private View a(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -45,7 +43,7 @@ public class SeatViewAdapter
     }
     else
     {
-      paramViewGroup = (AddMemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558707, null);
+      paramViewGroup = (AddMemberItemView)this.c.inflate(2131624324, null);
       paramViewGroup.setOnClickListener(this);
       paramViewGroup.a();
     }
@@ -54,13 +52,13 @@ public class SeatViewAdapter
   
   private View b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramViewGroup = this.jdField_a_of_type_JavaUtilArrayList;
+    paramViewGroup = this.a;
     if (paramInt >= 0) {}
     try
     {
-      if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+      if (paramInt < this.a.size())
       {
-        SeatMemberInfo localSeatMemberInfo = (SeatMemberInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        SeatMemberInfo localSeatMemberInfo = (SeatMemberInfo)this.a.get(paramInt);
         View localView;
         if ((paramView != null) && ((paramView instanceof MemberItemView)))
         {
@@ -69,13 +67,13 @@ public class SeatViewAdapter
         }
         else
         {
-          paramView = (MemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558709, null);
+          paramView = (MemberItemView)this.c.inflate(2131624326, null);
           paramView.a();
           paramView.setOnClickListener(this);
           localView = paramView;
           paramViewGroup = paramView;
         }
-        paramViewGroup.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, localSeatMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter);
+        paramViewGroup.a(this.f, localSeatMemberInfo, this.g);
         return localView;
       }
       return paramView;
@@ -87,7 +85,7 @@ public class SeatViewAdapter
   {
     if (!(paramView instanceof EmptyMemberItemView))
     {
-      paramView = (EmptyMemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558708, null);
+      paramView = (EmptyMemberItemView)this.c.inflate(2131624325, null);
       paramView.a();
     }
     else
@@ -100,17 +98,17 @@ public class SeatViewAdapter
   
   public void a(SeatViewAdapter.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatViewAdapter$OnItemClickListener = paramOnItemClickListener;
+    this.e = paramOnItemClickListener;
   }
   
   public void a(List<SeatMemberInfo> paramList, boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.d = paramBoolean;
+      this.a.clear();
       if (paramList != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+        this.a.addAll(paramList);
       }
       return;
     }
@@ -123,17 +121,17 @@ public class SeatViewAdapter
   
   public Object getItem(int paramInt)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.a;
     if (paramInt >= 0) {}
     try
     {
       Object localObject1;
-      if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+      if (paramInt < this.a.size())
       {
-        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        localObject1 = this.a.get(paramInt);
         return localObject1;
       }
-      if ((this.jdField_a_of_type_Boolean) && (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size()))
+      if ((this.d) && (paramInt == this.a.size()))
       {
         localObject1 = new Object();
         return localObject1;
@@ -150,14 +148,14 @@ public class SeatViewAdapter
   
   public int getItemViewType(int paramInt)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.a;
     if (paramInt >= 0) {}
     try
     {
-      if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (paramInt < this.a.size()) {
         return 1;
       }
-      if ((paramInt == this.jdField_a_of_type_JavaUtilArrayList.size()) && (this.jdField_a_of_type_Boolean)) {
+      if ((paramInt == this.a.size()) && (this.d)) {
         return 0;
       }
       return 2;
@@ -196,14 +194,14 @@ public class SeatViewAdapter
     if ((paramView instanceof MemberItemView))
     {
       localObject = (MemberItemView)paramView;
-      SeatViewAdapter.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatViewAdapter$OnItemClickListener;
+      SeatViewAdapter.OnItemClickListener localOnItemClickListener = this.e;
       if (localOnItemClickListener != null) {
         localOnItemClickListener.a(((MemberItemView)localObject).a);
       }
     }
     else if ((paramView instanceof AddMemberItemView))
     {
-      localObject = this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatViewAdapter$OnItemClickListener;
+      localObject = this.e;
       if (localObject != null) {
         ((SeatViewAdapter.OnItemClickListener)localObject).a();
       }

@@ -25,18 +25,18 @@ public class ConfessMessageSender
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a().length() == 0) {
+    if (this.a.p().d().f().a().length() == 0) {
       return;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a().toString();
-    if ((str != null) && (str.length() > BaseChatPie.f))
+    String str = this.a.p().d().f().a().toString();
+    if ((str != null) && (str.length() > BaseChatPie.bh))
     {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), 2131718759, 1);
+      ChatActivityUtils.a(this.a.b(), 2131916265, 1);
       return;
     }
     Object localObject = new ChatActivityFacade.SendMsgParams();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a((ChatActivityFacade.SendMsgParams)localObject);
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), (SessionInfo)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, str, null, (ChatActivityFacade.SendMsgParams)localObject);
+    this.a.p().b().a((ChatActivityFacade.SendMsgParams)localObject);
+    ChatActivityFacade.a(this.b, this.a.b(), (SessionInfo)this.c, str, null, (ChatActivityFacade.SendMsgParams)localObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -44,13 +44,13 @@ public class ConfessMessageSender
       ((StringBuilder)localObject).append(System.currentTimeMillis());
       QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject).toString());
     }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(1002, new Object[] { str });
+    a(this.a);
+    this.a.c().a(1002, new Object[] { str });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.send.ConfessMessageSender
  * JD-Core Version:    0.7.0.1
  */

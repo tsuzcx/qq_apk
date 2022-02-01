@@ -5,12 +5,12 @@ import UserGrowth.stSimpleMetaPerson;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.WeishiActivityHelper;
+import com.tencent.biz.pubaccount.weishi_new.main.WSLauncher.VerticalPageLauncher;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.biz.pubaccount.weishi_new.util.WSFeedParseUtils;
 import com.tencent.biz.pubaccount.weishi_new.util.WSInitializeHelper;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageOpenParams;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,8 +56,8 @@ public class WSMiniAppHelper
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return null;
     }
-    if (TextUtils.isEmpty(paramHashMap)) {
-      WeishiUtils.c(paramHashMap);
+    if (!TextUtils.isEmpty(paramHashMap)) {
+      WeishiUtils.m(paramHashMap);
     }
     paramHashMap = new StringBuilder();
     paramHashMap.append("小程序传过来的feed： ");
@@ -69,11 +69,6 @@ public class WSMiniAppHelper
       paramHashMap.add(localObject);
     }
     return paramHashMap;
-  }
-  
-  public void a(Context paramContext, String paramString)
-  {
-    WeishiActivityHelper.a(paramContext, paramString, new WSMiniAppHelper.1(this));
   }
   
   public boolean a(Context paramContext, HashMap<String, String> paramHashMap)
@@ -88,7 +83,7 @@ public class WSMiniAppHelper
       if ((localArrayList != null) && (localArrayList.size() > 0))
       {
         localObject = (stSimpleMetaFeed)localArrayList.get(0);
-        if ((((stSimpleMetaFeed)localObject).poster != null) && (TextUtils.equals(((stSimpleMetaFeed)localObject).poster.id, WeishiUtils.d())))
+        if ((((stSimpleMetaFeed)localObject).poster != null) && (TextUtils.equals(((stSimpleMetaFeed)localObject).poster.id, WeishiUtils.n())))
         {
           str1 = "mini_app_personal_main";
           localObject = "homepage_main";
@@ -102,13 +97,19 @@ public class WSMiniAppHelper
       Bundle localBundle = new Bundle();
       if ("share".equals(str2))
       {
-        WSInitializeHelper.a().a();
-        WSInitializeHelper.a().c();
+        WSInitializeHelper.a().b();
+        WSInitializeHelper.a().d();
         localBundle.putString("spid", (String)paramHashMap.get("spid"));
         localBundle.putString("share_collection_id", (String)paramHashMap.get("collection_id"));
         localBundle.putString("share_active_id", (String)paramHashMap.get("active_id"));
         localBundle.putString("scenes_channel_from", (String)paramHashMap.get("share_scenes_from"));
         localBundle.putString("web_test_id", (String)paramHashMap.get("web_test_id"));
+        if ((localArrayList != null) && (localArrayList.size() > 0)) {
+          localObject = ((stSimpleMetaFeed)localArrayList.get(0)).id;
+        } else {
+          localObject = "";
+        }
+        localBundle.putString("share_feed_id", (String)localObject);
         str1 = "share";
         localObject = str1;
       }
@@ -116,14 +117,15 @@ public class WSMiniAppHelper
       paramContext = new WSVerticalPageOpenParams(paramContext, str1, (String)localObject).a(localArrayList);
       boolean bool2 = TextUtils.equals(paramHashMap, "web");
       bool1 = true;
-      WSVerticalPageFragment.a(paramContext.a(bool2 ^ true).a(localBundle));
+      WSLauncher.VerticalPageLauncher.a(paramContext.a(bool2 ^ true).a(localBundle));
+      WSPublicAccReport.getInstance().enterPublicAccReport(null, 2, "from_qq_scheme", localBundle);
     }
     return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.miniapp.WSMiniAppHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,13 @@ class PhotoListCustomizationAECamera$2
   
   public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    if (QQStoryFlowCallback.a(PhotoListCustomizationAECamera.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorPhotoListCustomizationAECamera), paramLocalMediaInfo))
+    if (QQStoryFlowCallback.a(PhotoListCustomizationAECamera.c(this.c), paramLocalMediaInfo))
     {
-      if ((PhotoListCustomizationAECamera.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorPhotoListCustomizationAECamera) != null) && (paramLocalMediaInfo.mDuration > this.jdField_a_of_type_ComTencentAelightCameraAioeditorPhotoListCustomizationAECamera.a.filter.videoMaxDuration))
+      if ((PhotoListCustomizationAECamera.d(this.c) != null) && (paramLocalMediaInfo.mDuration > this.c.e.filter.videoMaxDuration))
       {
-        PhotoListCustomizationAECamera.c(this.jdField_a_of_type_ComTencentAelightCameraAioeditorPhotoListCustomizationAECamera).a.b();
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-        PhotoUtils.sendPhoto(PhotoListCustomizationAECamera.c(this.jdField_a_of_type_ComTencentAelightCameraAioeditorPhotoListCustomizationAECamera), this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+        PhotoListCustomizationAECamera.e(this.c).u.b();
+        this.a.putExtra("media_info", paramLocalMediaInfo);
+        PhotoUtils.sendPhoto(PhotoListCustomizationAECamera.f(this.c), this.a, this.b, 2, true);
         return;
       }
       FrameVideoHelper localFrameVideoHelper = new FrameVideoHelper(paramLocalMediaInfo.path, paramLocalMediaInfo.mediaWidth, paramLocalMediaInfo.mediaHeight, paramLocalMediaInfo.mDuration);
@@ -34,12 +34,12 @@ class PhotoListCustomizationAECamera$2
       VSReporter.a("mystatus_localupload", "video_select", 0, 0, new String[0]);
       return;
     }
-    PhotoListCustomizationAECamera.e(this.jdField_a_of_type_ComTencentAelightCameraAioeditorPhotoListCustomizationAECamera).a.b();
+    PhotoListCustomizationAECamera.i(this.c).u.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.PhotoListCustomizationAECamera.2
  * JD-Core Version:    0.7.0.1
  */

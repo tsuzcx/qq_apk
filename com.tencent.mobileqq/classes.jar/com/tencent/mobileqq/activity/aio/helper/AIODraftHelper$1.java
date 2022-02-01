@@ -11,15 +11,15 @@ class AIODraftHelper$1
   
   public void run()
   {
-    if (ZhituManager.a(AIODraftHelper.a(this.this$0)).a(this.a.getText())) {
-      this.this$0.a();
+    if (ZhituManager.a(this.this$0.a).a(this.a.getText())) {
+      this.this$0.b();
     }
-    ((FullScreenInputHelper)AIODraftHelper.a(this.this$0).a(24)).b();
+    ((FullScreenInputHelper)this.this$0.b.a(24)).g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIODraftHelper.1
  * JD-Core Version:    0.7.0.1
  */

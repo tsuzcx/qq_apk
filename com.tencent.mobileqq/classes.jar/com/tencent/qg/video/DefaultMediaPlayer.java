@@ -14,71 +14,71 @@ import com.tencent.ttpic.openapi.filter.RenderBuffer;
 public class DefaultMediaPlayer
   implements IMediaPlayer
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private MediaDecoder.DecodeListener jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeListener = new DefaultMediaPlayer.1(this);
-  private MediaDecoder jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
-  private GPUOESBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter;
-  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int = -1;
-  private volatile boolean jdField_d_of_type_Boolean = false;
-  private int e = -1;
-  private volatile int f = 0;
+  private String a;
+  private String b;
+  private long c;
+  private MediaDecoder d;
+  private int e;
+  private int f;
+  private int g;
+  private RenderBuffer h;
+  private GPUOESBaseFilter i;
+  private SurfaceTexture j;
+  private boolean k = false;
+  private boolean l = false;
+  private boolean m = false;
+  private int n = -1;
+  private int o = -1;
+  private volatile boolean p = false;
+  private volatile int q = 0;
+  private MediaDecoder.DecodeListener r = new DefaultMediaPlayer.1(this);
   
   private void c()
   {
     SLog.b("DefaultMediaPlayer", "onVideoPlayEnded");
-    VideoPlayer.nativeEvent(this.jdField_a_of_type_Long, "ended");
-    this.jdField_d_of_type_Boolean = true;
+    VideoPlayer.nativeEvent(this.c, "ended");
+    this.p = true;
   }
   
   private void d()
   {
     SLog.b("DefaultMediaPlayer", "onVideoPlayRepeated");
-    this.jdField_d_of_type_Boolean = false;
+    this.p = false;
   }
   
   public void a()
   {
     SLog.b("DefaultMediaPlayer", "onPause");
-    MediaDecoder localMediaDecoder = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
+    MediaDecoder localMediaDecoder = this.d;
     if (localMediaDecoder != null) {
-      localMediaDecoder.b();
+      localMediaDecoder.c();
     }
   }
   
   public void b()
   {
     SLog.b("DefaultMediaPlayer", "onStop");
-    MediaDecoder localMediaDecoder = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
+    MediaDecoder localMediaDecoder = this.d;
     if (localMediaDecoder != null) {
-      localMediaDecoder.a();
+      localMediaDecoder.b();
     }
   }
   
   public void create(long paramLong)
   {
     SLog.b("DefaultMediaPlayer", "qg -> create");
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   public void destroy()
   {
     SLog.b("DefaultMediaPlayer", "qg -> destroy");
     b();
-    Object localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    Object localObject = this.h;
     if (localObject != null) {
       ((RenderBuffer)localObject).destroy();
     }
-    localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter;
+    localObject = this.i;
     if (localObject != null) {
       ((GPUOESBaseFilter)localObject).destroy();
     }
@@ -86,31 +86,31 @@ public class DefaultMediaPlayer
   
   public int getCurrentPosition()
   {
-    return (int)this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.a();
+    return (int)this.d.e();
   }
   
   public int getDuration()
   {
-    return (int)VideoCompositeHelper.a(this.jdField_a_of_type_JavaLangString);
+    return (int)VideoCompositeHelper.b(this.a);
   }
   
   public boolean isEnd()
   {
-    return this.jdField_d_of_type_Boolean;
+    return this.p;
   }
   
   public boolean isMuted()
   {
-    MediaDecoder localMediaDecoder = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
+    MediaDecoder localMediaDecoder = this.d;
     if (localMediaDecoder != null) {
-      return localMediaDecoder.c();
+      return localMediaDecoder.f();
     }
     return false;
   }
   
   public boolean isPlaying()
   {
-    MediaDecoder localMediaDecoder = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
+    MediaDecoder localMediaDecoder = this.d;
     if (localMediaDecoder != null) {
       return localMediaDecoder.a();
     }
@@ -127,29 +127,29 @@ public class DefaultMediaPlayer
   {
     SLog.a("DefaultMediaPlayer", "qg -> play , texture id = %d , width = %d , height = %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
     VideoPerformanceMonitor.a(hashCode(), "[Player] receive play cmd from qg");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    if ((!this.jdField_c_of_type_Boolean) && (isPlaying())) {
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.g = paramInt3;
+    if ((!this.m) && (isPlaying())) {
       return;
     }
-    if (!this.jdField_c_of_type_Boolean)
+    if (!this.m)
     {
-      MediaDecoder localMediaDecoder = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder;
-      if ((localMediaDecoder != null) && (localMediaDecoder.b()))
+      MediaDecoder localMediaDecoder = this.d;
+      if ((localMediaDecoder != null) && (localMediaDecoder.d()))
       {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Boolean = false;
+        this.l = true;
+        this.k = false;
         return;
       }
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = true;
+    this.l = false;
+    this.k = true;
   }
   
   public void seekTo(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder.a(paramInt);
+    this.d.a(paramInt);
   }
   
   public void setLooping(boolean paramBoolean)
@@ -165,20 +165,20 @@ public class DefaultMediaPlayer
   public void setSrc(String paramString)
   {
     Object localObject = paramString;
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.b))
     {
       localObject = paramString;
-      if (!paramString.startsWith(this.jdField_b_of_type_JavaLangString))
+      if (!paramString.startsWith(this.b))
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.b);
         ((StringBuilder)localObject).append(paramString);
         localObject = ((StringBuilder)localObject).toString();
       }
     }
-    this.jdField_c_of_type_Boolean = (TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString) ^ true);
-    this.jdField_a_of_type_JavaLangString = ((String)localObject);
-    SLog.a("DefaultMediaPlayer", "qg -> set Src , src = %s , isSrcChanged :%s", localObject, Boolean.valueOf(this.jdField_c_of_type_Boolean));
+    this.m = (TextUtils.equals((CharSequence)localObject, this.a) ^ true);
+    this.a = ((String)localObject);
+    SLog.a("DefaultMediaPlayer", "qg -> set Src , src = %s , isSrcChanged :%s", localObject, Boolean.valueOf(this.m));
   }
   
   public void setVolume(float paramFloat1, float paramFloat2)
@@ -194,7 +194,7 @@ public class DefaultMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.video.DefaultMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

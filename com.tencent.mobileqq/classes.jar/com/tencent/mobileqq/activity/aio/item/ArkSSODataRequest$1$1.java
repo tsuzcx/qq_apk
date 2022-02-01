@@ -9,16 +9,16 @@ class ArkSSODataRequest$1$1
   
   public void run()
   {
-    ArkSSODataRequest localArkSSODataRequest = (ArkSSODataRequest)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkSSODataRequest$1.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ArkSSODataRequest localArkSSODataRequest = (ArkSSODataRequest)this.c.a.get();
     if (localArkSSODataRequest == null) {
       return;
     }
-    localArkSSODataRequest.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkSSODataRequest$1.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkSSODataRequest$Request, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    localArkSSODataRequest.a(this.c.b, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkSSODataRequest.1.1
  * JD-Core Version:    0.7.0.1
  */

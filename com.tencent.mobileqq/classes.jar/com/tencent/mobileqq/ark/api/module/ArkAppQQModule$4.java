@@ -18,10 +18,10 @@ class ArkAppQQModule$4
   
   public void run()
   {
-    Activity localActivity = ArkAppQQModuleBase.a();
+    Activity localActivity = ArkAppQQModuleBase.f();
     if ((localActivity instanceof BaseActivity))
     {
-      Bundle localBundle = QQCustomArkDialog.AppInfo.a(this.a.appName, this.a.appView, this.a.appMinVersion, this.a.metaList, ArkAppCenterUtil.a(), null, null);
+      Bundle localBundle = QQCustomArkDialog.AppInfo.a(this.a.appName, this.a.appView, this.a.appMinVersion, this.a.metaList, ArkAppCenterUtil.d(), null, null);
       localBundle.putBoolean("forward_ark_app_direct", false);
       localBundle.putString("forward_ark_app_name", this.a.appName);
       localBundle.putString("forward_ark_app_view", this.a.appView);
@@ -48,7 +48,7 @@ class ArkAppQQModule$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.4
  * JD-Core Version:    0.7.0.1
  */

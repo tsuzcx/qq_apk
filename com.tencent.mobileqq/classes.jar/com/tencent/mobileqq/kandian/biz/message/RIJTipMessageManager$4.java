@@ -22,23 +22,23 @@ class RIJTipMessageManager$4
   
   public void onClick(View paramView)
   {
-    this.a.c();
-    paramView = ((KandianMergeManager)ReadInJoyUtils.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a();
+    this.a.d();
+    paramView = ((KandianMergeManager)ReadInJoyUtils.b().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).Q();
     if ((paramView != null) && (paramView.isFromNotification)) {
-      RIJMsgBoxUtils.a(RIJTipMessageManager.a(this.a).a(), 5, false, paramView.mMsgId);
+      RIJMsgBoxUtils.a(RIJTipMessageManager.a(this.a).b(), 5, false, paramView.mMsgId);
     } else {
-      RIJMsgBoxUtils.a(RIJTipMessageManager.a(this.a).a(), 3);
+      RIJMsgBoxUtils.a(RIJTipMessageManager.a(this.a).b(), 3);
     }
     if (Aladdin.getConfig(338).getIntegerFromString("allow_report_in_dau", 0) == 1)
     {
-      if ((RIJTipMessageManager.a(this.a).a() instanceof ReadInJoyNewFeedsActivity))
+      if ((RIJTipMessageManager.a(this.a).b() instanceof ReadInJoyNewFeedsActivity))
       {
-        ((ReadInJoyNewFeedsActivity)RIJTipMessageManager.a(this.a).a()).d(2);
+        ((ReadInJoyNewFeedsActivity)RIJTipMessageManager.a(this.a).b()).e(2);
         return;
       }
-      if ((RIJTipMessageManager.a(this.a).a() instanceof SplashActivity))
+      if ((RIJTipMessageManager.a(this.a).b() instanceof SplashActivity))
       {
-        paramView = (RIJTabFrameBase)RIJJumpUtils.a(RIJTipMessageManager.a(this.a).a());
+        paramView = (RIJTabFrameBase)RIJJumpUtils.a(RIJTipMessageManager.a(this.a).b());
         if (paramView != null) {
           paramView.b(2);
         }
@@ -48,7 +48,7 @@ class RIJTipMessageManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.message.RIJTipMessageManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class ReadinjoyTabbar$2
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadinjoyTabbar$Tab.a.a);
+    this.this$0.a(this.a, this.b.c.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabbar.2
  * JD-Core Version:    0.7.0.1
  */

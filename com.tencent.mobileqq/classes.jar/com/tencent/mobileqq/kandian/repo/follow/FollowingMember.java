@@ -2,45 +2,35 @@ package com.tencent.mobileqq.kandian.repo.follow;
 
 public class FollowingMember
 {
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private Long a;
   private String b;
+  private String c;
+  private Integer d;
+  private boolean e;
   
   public Long a()
   {
-    return this.jdField_a_of_type_JavaLangLong;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(Integer paramInteger)
   {
-    this.jdField_a_of_type_JavaLangInteger = paramInteger;
+    this.d = paramInteger;
   }
   
   public void a(Long paramLong)
   {
-    this.jdField_a_of_type_JavaLangLong = paramLong;
+    this.a = paramLong;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.e = paramBoolean;
   }
   
   public String b()
@@ -50,20 +40,30 @@ public class FollowingMember
   
   public void b(String paramString)
   {
-    this.b = paramString;
+    this.c = paramString;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public boolean d()
+  {
+    return this.e;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("FollowingMember{uin='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangLong);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", nickname='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", headUrl='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -71,7 +71,7 @@ public class FollowingMember
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.follow.FollowingMember
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.appcompat.R.styleable;
 import java.lang.ref.WeakReference;
@@ -23,12 +25,12 @@ public final class ViewStubCompat
   private LayoutInflater mInflater;
   private int mLayoutResource = 0;
   
-  public ViewStubCompat(Context paramContext, AttributeSet paramAttributeSet)
+  public ViewStubCompat(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
   }
   
-  public ViewStubCompat(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public ViewStubCompat(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ViewStubCompat, paramInt, 0);

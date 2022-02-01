@@ -23,7 +23,7 @@ public class TencentDocsAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839147;
+    return 2130839303;
   }
   
   public int getAppID()
@@ -52,33 +52,33 @@ public class TencentDocsAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698554);
+    return BaseApplicationImpl.getContext().getString(2131896500);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     paramPlusPanelViewModel.a("chat_tool_tencentdoc", localQQAppInterface.getCurrentAccountUin());
     paramPlusPanelViewModel.b(paramBaseChatPie);
-    ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).gotoAIOTencentDocListWebH5(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.d);
-    if (paramSessionInfo.jdField_a_of_type_Int == 0)
+    ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).gotoAIOTencentDocListWebH5(localQQAppInterface, paramBaseChatPie.aX(), paramSessionInfo.b, paramSessionInfo.a, paramSessionInfo.e);
+    if (paramSessionInfo.a == 0)
     {
-      AIOPanelUtiles.a(localQQAppInterface, "0X80093F4", paramSessionInfo.jdField_a_of_type_Int);
+      AIOPanelUtiles.a(localQQAppInterface, "0X80093F4", paramSessionInfo.a);
       return;
     }
-    if (paramSessionInfo.jdField_a_of_type_Int == 3000)
+    if (paramSessionInfo.a == 3000)
     {
-      AIOPanelUtiles.a(localQQAppInterface, "0X80093F6", paramSessionInfo.jdField_a_of_type_Int);
+      AIOPanelUtiles.a(localQQAppInterface, "0X80093F6", paramSessionInfo.a);
       return;
     }
-    if (paramSessionInfo.jdField_a_of_type_Int == 1) {
-      AIOPanelUtiles.a(localQQAppInterface, "0X80093F8", paramSessionInfo.jdField_a_of_type_Int);
+    if (paramSessionInfo.a == 1) {
+      AIOPanelUtiles.a(localQQAppInterface, "0X80093F8", paramSessionInfo.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.TencentDocsAppInfo
  * JD-Core Version:    0.7.0.1
  */

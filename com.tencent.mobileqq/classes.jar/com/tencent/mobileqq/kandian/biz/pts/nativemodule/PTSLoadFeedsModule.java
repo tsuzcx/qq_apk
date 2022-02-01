@@ -22,7 +22,7 @@ public class PTSLoadFeedsModule
   
   public void loadFeeds(long paramLong1, long paramLong2, int paramInt, long paramLong3)
   {
-    ReadInJoyLogicManager localReadInJoyLogicManager = (ReadInJoyLogicManager)((QQAppInterface)ReadInJoyUtils.a()).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
+    ReadInJoyLogicManager localReadInJoyLogicManager = (ReadInJoyLogicManager)((QQAppInterface)ReadInJoyUtils.b()).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[loadFeeds], channelID = ");
     localStringBuilder.append(paramLong1);
@@ -36,7 +36,7 @@ public class PTSLoadFeedsModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.nativemodule.PTSLoadFeedsModule
  * JD-Core Version:    0.7.0.1
  */

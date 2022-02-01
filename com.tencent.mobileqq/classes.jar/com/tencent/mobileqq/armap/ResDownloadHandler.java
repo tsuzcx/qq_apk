@@ -7,7 +7,7 @@ import com.tencent.mobileqq.troop.troopgame.TroopGameCardResHandler;
 public class ResDownloadHandler
 {
   public static final String a;
-  public ResDownloadHandler.RDHandler[] a;
+  public ResDownloadHandler.RDHandler[] b = new ResDownloadHandler.RDHandler[7];
   
   static
   {
@@ -15,12 +15,7 @@ public class ResDownloadHandler
     localStringBuilder.append(ResDownloadManager.class.getSimpleName());
     localStringBuilder.append(".");
     localStringBuilder.append(ResDownloadHandler.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-  }
-  
-  public ResDownloadHandler()
-  {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqArmapResDownloadHandler$RDHandler = new ResDownloadHandler.RDHandler[7];
+    a = localStringBuilder.toString();
   }
   
   public ResDownloadHandler.RDHandler a(AppInterface paramAppInterface, int paramInt)
@@ -35,7 +30,7 @@ public class ResDownloadHandler
     {
       i = 0;
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqArmapResDownloadHandler$RDHandler[i];
+    Object localObject = this.b[i];
     paramAppInterface = (AppInterface)localObject;
     if (localObject == null)
     {
@@ -62,13 +57,13 @@ public class ResDownloadHandler
     if (paramAppInterface == null) {
       localObject = new ResDownloadHandler.DefaultRDHandler();
     }
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqArmapResDownloadHandler$RDHandler[i] = localObject;
+    this.b[i] = localObject;
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ResDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

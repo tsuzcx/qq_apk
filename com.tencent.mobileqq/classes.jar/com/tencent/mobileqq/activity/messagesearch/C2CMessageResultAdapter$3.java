@@ -10,12 +10,12 @@ class C2CMessageResultAdapter$3
   
   public int a(MessageItem paramMessageItem1, MessageItem paramMessageItem2)
   {
-    return (int)(paramMessageItem2.a.time - paramMessageItem1.a.time);
+    return (int)(paramMessageItem2.b.time - paramMessageItem1.b.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter.3
  * JD-Core Version:    0.7.0.1
  */

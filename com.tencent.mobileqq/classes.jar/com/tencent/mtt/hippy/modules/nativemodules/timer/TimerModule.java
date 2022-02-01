@@ -23,7 +23,7 @@ public class TimerModule
   implements Handler.Callback, HippyEngineLifecycleEventListener
 {
   private boolean a = false;
-  private HashMap<String, TimerModule.a> b = new HashMap();
+  private final HashMap<String, TimerModule.a> b = new HashMap();
   private Handler c;
   private long d = 0L;
   
@@ -184,7 +184,7 @@ public class TimerModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.timer.TimerModule
  * JD-Core Version:    0.7.0.1
  */

@@ -33,12 +33,12 @@ public class AVGameShareJsApiPlugin
       try
       {
         paramVarArgs = new JSONObject(paramVarArgs[0]).optString("key");
-        localObject = new Intent(this.mRuntime.a(), JumpActivity.class);
+        localObject = new Intent(this.mRuntime.d(), JumpActivity.class);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("mqqapi://avgame/join_room?key=");
         localStringBuilder.append(paramVarArgs);
         ((Intent)localObject).setData(Uri.parse(localStringBuilder.toString()));
-        this.mRuntime.a().startActivity((Intent)localObject);
+        this.mRuntime.d().startActivity((Intent)localObject);
         return;
       }
       catch (Exception paramVarArgs)
@@ -58,7 +58,7 @@ public class AVGameShareJsApiPlugin
     try
     {
       QLog.d("AVGameShareJsApiPlugin", 1, "Call createRoom");
-      localObject = new Intent(this.mRuntime.a(), JumpActivity.class);
+      localObject = new Intent(this.mRuntime.d(), JumpActivity.class);
       StringBuilder localStringBuilder = new StringBuilder(50);
       localStringBuilder.append("mqqapi://avgame/create_room?gameType=");
       if ((paramVarArgs != null) && (paramVarArgs.length > 0))
@@ -72,7 +72,7 @@ public class AVGameShareJsApiPlugin
         }
       }
       ((Intent)localObject).setData(Uri.parse(localStringBuilder.toString()));
-      this.mRuntime.a().startActivity((Intent)localObject);
+      this.mRuntime.d().startActivity((Intent)localObject);
       return;
     }
     catch (Exception paramVarArgs)
@@ -89,7 +89,7 @@ public class AVGameShareJsApiPlugin
     try
     {
       QLog.d("AVGameShareJsApiPlugin", 1, "handlePKQQCJAction");
-      localObject = new Intent(this.mRuntime.a(), JumpActivity.class);
+      localObject = new Intent(this.mRuntime.d(), JumpActivity.class);
       StringBuilder localStringBuilder = new StringBuilder(100);
       localStringBuilder.append("mqqapi://avgame/pk_qqcj?");
       if ((paramVarArgs != null) && (paramVarArgs.length > 0))
@@ -110,7 +110,7 @@ public class AVGameShareJsApiPlugin
         }
       }
       ((Intent)localObject).setData(Uri.parse(localStringBuilder.toString()));
-      this.mRuntime.a().startActivity((Intent)localObject);
+      this.mRuntime.d().startActivity((Intent)localObject);
       return;
     }
     catch (Exception paramVarArgs)
@@ -132,7 +132,7 @@ public class AVGameShareJsApiPlugin
       QLog.d("AVGameShareJsApiPlugin", 1, ((StringBuilder)localObject1).toString());
       try
       {
-        Object localObject2 = this.mRuntime.a().getIntent();
+        Object localObject2 = this.mRuntime.d().getIntent();
         String str1 = ((Intent)localObject2).getStringExtra("avgame_share_link");
         localObject1 = str1;
         if (TextUtils.isEmpty(str1)) {
@@ -143,7 +143,7 @@ public class AVGameShareJsApiPlugin
         paramVarArgs = ((JSONObject)localObject3).optString("awardTitle");
         localObject2 = ((JSONObject)localObject3).optString("awardDesc");
         localObject3 = ((JSONObject)localObject3).optString("awardIconUrl");
-        String str2 = this.mRuntime.a().getCurrentAccountUin();
+        String str2 = this.mRuntime.b().getCurrentAccountUin();
         ThreadManager.getUIHandler().postDelayed(new AVGameShareJsApiPlugin.1(this, str2, (String)localObject1, str1, paramVarArgs, (String)localObject2, (String)localObject3), 200L);
         return;
       }
@@ -213,7 +213,7 @@ public class AVGameShareJsApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.AVGameShareJsApiPlugin
  * JD-Core Version:    0.7.0.1
  */

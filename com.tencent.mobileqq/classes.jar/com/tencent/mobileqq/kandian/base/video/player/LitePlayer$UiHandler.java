@@ -26,28 +26,28 @@ class LitePlayer$UiHandler
       if (this.a.get() != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(LitePlayer.a((LitePlayer)this.a.get()), 2, "prePlay timeout, try rePlay");
+          QLog.d(LitePlayer.f((LitePlayer)this.a.get()), 2, "prePlay timeout, try rePlay");
         }
-        if ((((LitePlayer)this.a.get()).f()) && (((LitePlayer)this.a.get()).a.a() == LitePlayer.a((LitePlayer)this.a.get())))
+        if ((((LitePlayer)this.a.get()).s()) && (((LitePlayer)this.a.get()).b.E() == LitePlayer.g((LitePlayer)this.a.get())))
         {
-          LitePlayer.b((LitePlayer)this.a.get());
+          LitePlayer.h((LitePlayer)this.a.get());
           return;
         }
         LitePlayer.a((LitePlayer)this.a.get(), false);
-        ((LitePlayer)this.a.get()).a(((LitePlayer)this.a.get()).a);
-        LitePlayer.a((LitePlayer)this.a.get(), LitePlayer.a((LitePlayer)this.a.get()));
+        ((LitePlayer)this.a.get()).a(((LitePlayer)this.a.get()).b);
+        LitePlayer.a((LitePlayer)this.a.get(), LitePlayer.g((LitePlayer)this.a.get()));
       }
     }
     else if (this.a.get() != null)
     {
-      LitePlayer.a((LitePlayer)this.a.get());
-      LitePlayer.a((LitePlayer)this.a.get()).sendEmptyMessageDelayed(0, LitePlayer.a((LitePlayer)this.a.get()));
+      LitePlayer.c((LitePlayer)this.a.get());
+      LitePlayer.e((LitePlayer)this.a.get()).sendEmptyMessageDelayed(0, LitePlayer.d((LitePlayer)this.a.get()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.LitePlayer.UiHandler
  * JD-Core Version:    0.7.0.1
  */

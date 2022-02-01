@@ -26,88 +26,14 @@ public class QAVGroupConfig
 {
   private static QAVGroupConfig.ConfigInfo a;
   
-  public static int a()
-  {
-    return a().d;
-  }
-  
-  public static int a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    Object localObject3 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    int j = a(((TroopManager)localObject3).c(paramString));
-    long l = System.currentTimeMillis();
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("getGroupMemberNum, groupUin[");
-    ((StringBuilder)localObject1).append(paramString);
-    ((StringBuilder)localObject1).append("], memberCount[");
-    ((StringBuilder)localObject1).append(j);
-    ((StringBuilder)localObject1).append("]");
-    localObject1 = ((StringBuilder)localObject1).toString();
-    int n = c();
-    int m = 0;
-    int k = 0;
-    Object localObject2 = localObject1;
-    int i = m;
-    if (j - 10 < n)
-    {
-      localObject3 = ((TroopManager)localObject3).b(String.valueOf(paramString));
-      localObject2 = localObject1;
-      i = m;
-      if (localObject3 != null)
-      {
-        paramString = (ITroopRobotService)paramQQAppInterface.getRuntimeService(ITroopRobotService.class, "all");
-        paramQQAppInterface = (QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
-        localObject2 = ((List)localObject3).iterator();
-        i = k;
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (TroopMemberInfo)((Iterator)localObject2).next();
-          if ((!paramString.isRobotUin(((TroopMemberInfo)localObject3).memberuin)) && (!paramQQAppInterface.f(((TroopMemberInfo)localObject3).memberuin)))
-          {
-            i += 1;
-          }
-          else
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append((String)localObject1);
-            localStringBuilder.append("\nisRobotUin[");
-            localStringBuilder.append(((TroopMemberInfo)localObject3).memberuin);
-            localStringBuilder.append("]");
-            localObject1 = localStringBuilder.toString();
-          }
-        }
-        paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append((String)localObject1);
-        paramQQAppInterface.append("\nCalcCount[");
-        paramQQAppInterface.append(i);
-        paramQQAppInterface.append("]");
-        localObject2 = paramQQAppInterface.toString();
-      }
-    }
-    if (i == 0) {
-      i = j;
-    }
-    if (QLog.isDevelopLevel())
-    {
-      paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append("");
-      paramQQAppInterface.append((String)localObject2);
-      paramQQAppInterface.append(", time[");
-      paramQQAppInterface.append(System.currentTimeMillis() - l);
-      paramQQAppInterface.append("]");
-      QLog.w("QAVGroupConfig", 1, paramQQAppInterface.toString());
-    }
-    return i;
-  }
-  
   public static int a(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString)
   {
     if (paramQQAppInterface != null)
     {
       if (paramBoolean) {
-        return a(paramQQAppInterface, paramString);
+        return c(paramQQAppInterface, paramString);
       }
-      return ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString);
+      return ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).c(paramString);
     }
     return 0;
   }
@@ -115,7 +41,7 @@ public class QAVGroupConfig
   static int a(TroopInfo paramTroopInfo)
   {
     int i = paramTroopInfo.wMemberNumClient;
-    if (QQAudioHelper.c())
+    if (QQAudioHelper.f())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getMemberNum, troopuin[");
@@ -134,77 +60,13 @@ public class QAVGroupConfig
     return i;
   }
   
-  public static Bundle a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    int j = a(paramQQAppInterface, true, paramString);
-    int k = paramQQAppInterface.getTroopMask(paramString);
-    Object localObject = (TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER);
-    boolean bool2 = ((TroopGagMgr)localObject).a(paramString, paramQQAppInterface.getCurrentAccountUin());
-    boolean bool4 = ((TroopGagMgr)localObject).a(paramString);
-    boolean bool5 = ((TroopGagMgr)localObject).b(paramString);
-    paramQQAppInterface = ((TroopGagMgr)localObject).a(paramString);
-    boolean bool3 = false;
-    boolean bool1;
-    int i;
-    if ((!bool5) && (bool2))
-    {
-      bool1 = true;
-      i = 2131695639;
-    }
-    else if ((!bool4) && (paramQQAppInterface != null) && (paramQQAppInterface.a != 0L))
-    {
-      bool1 = true;
-      i = 2131695638;
-    }
-    else
-    {
-      bool1 = false;
-      i = 0;
-    }
-    localObject = new Bundle();
-    ((Bundle)localObject).putInt("mask", k);
-    ((Bundle)localObject).putInt("num", j);
-    ((Bundle)localObject).putBoolean("isAdmin", bool4);
-    ((Bundle)localObject).putBoolean("isOwner", bool5);
-    ((Bundle)localObject).putBoolean("forceDisableInviteBox", bool1);
-    ((Bundle)localObject).putInt("errId", i);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getGroupMask, troopUin[");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("], mask[");
-    localStringBuilder.append(k);
-    localStringBuilder.append("], num[");
-    localStringBuilder.append(j);
-    localStringBuilder.append("], isOwner[");
-    localStringBuilder.append(bool5);
-    localStringBuilder.append("], isMemberGaged[");
-    localStringBuilder.append(bool2);
-    localStringBuilder.append("], isAdmin[");
-    localStringBuilder.append(bool4);
-    localStringBuilder.append("], gagTimeStamp[");
-    bool2 = bool3;
-    if (paramQQAppInterface != null)
-    {
-      bool2 = bool3;
-      if (paramQQAppInterface.a != 0L) {
-        bool2 = true;
-      }
-    }
-    localStringBuilder.append(bool2);
-    localStringBuilder.append("], forceDisableInviteBox[");
-    localStringBuilder.append(bool1);
-    localStringBuilder.append("]");
-    QLog.w("QAVGroupConfig", 1, localStringBuilder.toString());
-    return localObject;
-  }
-  
   public static QAVGroupConfig.ConfigInfo a()
   {
     if (a == null) {
       try
       {
         if (a == null) {
-          a = QAVGroupConfig.ConfigInfo.a(QAVConfig.b(276).a);
+          a = QAVGroupConfig.ConfigInfo.b(QAVConfig.b(276).b);
         }
       }
       finally {}
@@ -214,62 +76,13 @@ public class QAVGroupConfig
   
   public static void a(String paramString)
   {
-    paramString = QAVGroupConfig.ConfigInfo.a(paramString);
+    paramString = QAVGroupConfig.ConfigInfo.b(paramString);
     try
     {
       a = paramString;
       return;
     }
     finally {}
-  }
-  
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
-  {
-    ITroopManagerBizHandler localITroopManagerBizHandler = (ITroopManagerBizHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MANAGER_BIZ_HANDLER);
-    ITroopInfoHandler localITroopInfoHandler = (ITroopInfoHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER);
-    if (localITroopManagerBizHandler != null) {
-      if (localITroopInfoHandler == null) {
-        return;
-      }
-    }
-    try
-    {
-      l = Long.parseLong(paramString2);
-    }
-    catch (Exception localException)
-    {
-      long l;
-      label43:
-      Object localObject;
-      break label43;
-    }
-    l = 0L;
-    if (l == 0L) {
-      return;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramString1);
-    ((StringBuilder)localObject).append("_");
-    ((StringBuilder)localObject).append(QQAudioHelper.b());
-    paramString1 = ((StringBuilder)localObject).toString();
-    localObject = String.valueOf(l);
-    paramQQAppInterface.addObserver(new QAVGroupConfig.1(l, paramString1, paramQQAppInterface, (String)localObject));
-    localITroopManagerBizHandler.a(l, 480);
-    paramString2 = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString2);
-    if (paramString2.maxInviteMemNum == 0)
-    {
-      paramQQAppInterface.addObserver(new QAVGroupConfig.2((String)localObject, paramQQAppInterface, paramString1));
-      localITroopInfoHandler.a((String)localObject);
-    }
-    paramQQAppInterface = new StringBuilder();
-    paramQQAppInterface.append("getGroupInfo[");
-    paramQQAppInterface.append(paramString1);
-    paramQQAppInterface.append("], troopuin[");
-    paramQQAppInterface.append(l);
-    paramQQAppInterface.append("], maxInviteMemNum[");
-    paramQQAppInterface.append(paramString2.maxInviteMemNum);
-    paramQQAppInterface.append("]");
-    QLog.w("QAVGroupConfig", 1, paramQQAppInterface.toString());
   }
   
   public static boolean a(VideoAppInterface paramVideoAppInterface, long paramLong, boolean paramBoolean)
@@ -313,7 +126,7 @@ public class QAVGroupConfig
     {
       if (QQAudioHelper.b())
       {
-        j = QQAudioHelper.a(6);
+        j = QQAudioHelper.b(6);
         if (j == 1) {
           return true;
         }
@@ -322,13 +135,13 @@ public class QAVGroupConfig
         }
       }
       paramVideoAppInterface = a();
-      if (i > paramVideoAppInterface.e)
+      if (i > paramVideoAppInterface.f)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onGAudioInvite, 成员太多, relationId[");
         ((StringBuilder)localObject).append(paramLong);
         ((StringBuilder)localObject).append("], show_invite_box[");
-        ((StringBuilder)localObject).append(paramVideoAppInterface.e);
+        ((StringBuilder)localObject).append(paramVideoAppInterface.f);
         ((StringBuilder)localObject).append("], MemberNum[");
         ((StringBuilder)localObject).append(i);
         ((StringBuilder)localObject).append("]");
@@ -344,16 +157,16 @@ public class QAVGroupConfig
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
     paramQQAppInterface = (TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER);
-    boolean bool1 = paramQQAppInterface.a(paramString);
-    boolean bool2 = paramQQAppInterface.b(paramString);
+    boolean bool1 = paramQQAppInterface.c(paramString);
+    boolean bool2 = paramQQAppInterface.d(paramString);
     if ((!bool1) && (!bool2)) {
       bool1 = false;
     } else {
       bool1 = true;
     }
-    if (1 == QQAudioHelper.a(7))
+    if (1 == QQAudioHelper.b(7))
     {
-      QQAudioHelper.a(HardCodeUtil.a(2131708909));
+      QQAudioHelper.a(HardCodeUtil.a(2131906678));
       bool1 = true;
     }
     return bool1;
@@ -361,7 +174,7 @@ public class QAVGroupConfig
   
   public static boolean a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
   {
-    TroopInfo localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString2);
+    TroopInfo localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString2);
     boolean bool1 = false;
     boolean bool6 = false;
     if (localTroopInfo != null)
@@ -384,7 +197,7 @@ public class QAVGroupConfig
       Object localObject1;
       if ((l2 & 0x6100000) == 0L)
       {
-        localObject1 = HardCodeUtil.a(2131708906);
+        localObject1 = HardCodeUtil.a(2131906675);
         bool1 = true;
       }
       else if ((localTroopInfo.troopPrivilegeFlag & 0x2000000) == 33554432L)
@@ -394,7 +207,7 @@ public class QAVGroupConfig
         } else {
           bool1 = false;
         }
-        localObject1 = HardCodeUtil.a(2131708907);
+        localObject1 = HardCodeUtil.a(2131906676);
       }
       else if ((localTroopInfo.troopPrivilegeFlag & 0x4000000) == 67108864L)
       {
@@ -403,12 +216,12 @@ public class QAVGroupConfig
         } else {
           bool1 = false;
         }
-        localObject1 = HardCodeUtil.a(2131708908);
+        localObject1 = HardCodeUtil.a(2131906677);
       }
       else
       {
         if ((localTroopInfo.troopPrivilegeFlag & 0x100000) == 1048576L) {
-          localObject1 = HardCodeUtil.a(2131708912);
+          localObject1 = HardCodeUtil.a(2131906681);
         } else {
           localObject1 = "";
         }
@@ -424,7 +237,7 @@ public class QAVGroupConfig
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708911));
+          ((StringBuilder)localObject2).append(HardCodeUtil.a(2131906680));
           localObject2 = ((StringBuilder)localObject2).toString();
           bool4 = false;
         }
@@ -444,7 +257,7 @@ public class QAVGroupConfig
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append((String)localObject2);
-          ((StringBuilder)localObject1).append(HardCodeUtil.a(2131708910));
+          ((StringBuilder)localObject1).append(HardCodeUtil.a(2131906679));
           localObject1 = ((StringBuilder)localObject1).toString();
           bool5 = bool1;
         }
@@ -462,7 +275,7 @@ public class QAVGroupConfig
           bool1 = true;
         }
       }
-      paramQQAppInterface = ((TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramString2);
+      paramQQAppInterface = ((TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).b(paramString2);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("getCanAutoInviteMemIntoTroop[");
       ((StringBuilder)localObject2).append(paramString1);
@@ -474,7 +287,7 @@ public class QAVGroupConfig
       ((StringBuilder)localObject2).append(localTroopInfo.dwGagTimeStamp);
       ((StringBuilder)localObject2).append("], \n群禁言[");
       if (paramQQAppInterface != null) {
-        l1 = paramQQAppInterface.a;
+        l1 = paramQQAppInterface.b;
       }
       ((StringBuilder)localObject2).append(l1);
       ((StringBuilder)localObject2).append("], \n被禁言到期时间戳[");
@@ -488,9 +301,9 @@ public class QAVGroupConfig
       ((StringBuilder)localObject2).append("|");
       ((StringBuilder)localObject2).append(j);
       ((StringBuilder)localObject2).append("], \n后台配置_每次选人上限[");
-      ((StringBuilder)localObject2).append(b());
-      ((StringBuilder)localObject2).append("], \n后台配置_通话成员邀请上限[");
       ((StringBuilder)localObject2).append(c());
+      ((StringBuilder)localObject2).append("], \n后台配置_通话成员邀请上限[");
+      ((StringBuilder)localObject2).append(d());
       ((StringBuilder)localObject2).append("], \nmMemberInvitingFlag[");
       ((StringBuilder)localObject2).append(localTroopInfo.mMemberInvitingFlag);
       ((StringBuilder)localObject2).append("], \nisOnlyTroopMemberInviteOption[");
@@ -527,17 +340,204 @@ public class QAVGroupConfig
   
   public static int b()
   {
-    return a().c;
+    return a().e;
+  }
+  
+  public static Bundle b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    int j = a(paramQQAppInterface, true, paramString);
+    int k = paramQQAppInterface.getTroopMask(paramString);
+    Object localObject = (TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER);
+    boolean bool2 = ((TroopGagMgr)localObject).a(paramString, paramQQAppInterface.getCurrentAccountUin());
+    boolean bool4 = ((TroopGagMgr)localObject).c(paramString);
+    boolean bool5 = ((TroopGagMgr)localObject).d(paramString);
+    paramQQAppInterface = ((TroopGagMgr)localObject).b(paramString);
+    boolean bool3 = false;
+    boolean bool1;
+    int i;
+    if ((!bool5) && (bool2))
+    {
+      bool1 = true;
+      i = 2131893398;
+    }
+    else if ((!bool4) && (paramQQAppInterface != null) && (paramQQAppInterface.b != 0L))
+    {
+      bool1 = true;
+      i = 2131893397;
+    }
+    else
+    {
+      bool1 = false;
+      i = 0;
+    }
+    localObject = new Bundle();
+    ((Bundle)localObject).putInt("mask", k);
+    ((Bundle)localObject).putInt("num", j);
+    ((Bundle)localObject).putBoolean("isAdmin", bool4);
+    ((Bundle)localObject).putBoolean("isOwner", bool5);
+    ((Bundle)localObject).putBoolean("forceDisableInviteBox", bool1);
+    ((Bundle)localObject).putInt("errId", i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getGroupMask, troopUin[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], mask[");
+    localStringBuilder.append(k);
+    localStringBuilder.append("], num[");
+    localStringBuilder.append(j);
+    localStringBuilder.append("], isOwner[");
+    localStringBuilder.append(bool5);
+    localStringBuilder.append("], isMemberGaged[");
+    localStringBuilder.append(bool2);
+    localStringBuilder.append("], isAdmin[");
+    localStringBuilder.append(bool4);
+    localStringBuilder.append("], gagTimeStamp[");
+    bool2 = bool3;
+    if (paramQQAppInterface != null)
+    {
+      bool2 = bool3;
+      if (paramQQAppInterface.b != 0L) {
+        bool2 = true;
+      }
+    }
+    localStringBuilder.append(bool2);
+    localStringBuilder.append("], forceDisableInviteBox[");
+    localStringBuilder.append(bool1);
+    localStringBuilder.append("]");
+    QLog.w("QAVGroupConfig", 1, localStringBuilder.toString());
+    return localObject;
+  }
+  
+  public static void b(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
+  {
+    ITroopManagerBizHandler localITroopManagerBizHandler = (ITroopManagerBizHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MANAGER_BIZ_HANDLER);
+    ITroopInfoHandler localITroopInfoHandler = (ITroopInfoHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER);
+    if (localITroopManagerBizHandler != null) {
+      if (localITroopInfoHandler == null) {
+        return;
+      }
+    }
+    try
+    {
+      l = Long.parseLong(paramString2);
+    }
+    catch (Exception localException)
+    {
+      long l;
+      label43:
+      Object localObject;
+      break label43;
+    }
+    l = 0L;
+    if (l == 0L) {
+      return;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(QQAudioHelper.d());
+    paramString1 = ((StringBuilder)localObject).toString();
+    localObject = String.valueOf(l);
+    paramQQAppInterface.addObserver(new QAVGroupConfig.1(l, paramString1, paramQQAppInterface, (String)localObject));
+    localITroopManagerBizHandler.a(l, 480);
+    paramString2 = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString2);
+    if (paramString2.maxInviteMemNum == 0)
+    {
+      paramQQAppInterface.addObserver(new QAVGroupConfig.2((String)localObject, paramQQAppInterface, paramString1));
+      localITroopInfoHandler.a((String)localObject);
+    }
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("getGroupInfo[");
+    paramQQAppInterface.append(paramString1);
+    paramQQAppInterface.append("], troopuin[");
+    paramQQAppInterface.append(l);
+    paramQQAppInterface.append("], maxInviteMemNum[");
+    paramQQAppInterface.append(paramString2.maxInviteMemNum);
+    paramQQAppInterface.append("]");
+    QLog.w("QAVGroupConfig", 1, paramQQAppInterface.toString());
   }
   
   public static int c()
   {
-    return a().b;
+    return a().d;
+  }
+  
+  public static int c(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Object localObject3 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    int j = a(((TroopManager)localObject3).g(paramString));
+    long l = System.currentTimeMillis();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getGroupMemberNum, groupUin[");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append("], memberCount[");
+    ((StringBuilder)localObject1).append(j);
+    ((StringBuilder)localObject1).append("]");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    int n = d();
+    int m = 0;
+    int k = 0;
+    Object localObject2 = localObject1;
+    int i = m;
+    if (j - 10 < n)
+    {
+      localObject3 = ((TroopManager)localObject3).w(String.valueOf(paramString));
+      localObject2 = localObject1;
+      i = m;
+      if (localObject3 != null)
+      {
+        paramString = (ITroopRobotService)paramQQAppInterface.getRuntimeService(ITroopRobotService.class, "all");
+        paramQQAppInterface = (QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
+        localObject2 = ((List)localObject3).iterator();
+        i = k;
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (TroopMemberInfo)((Iterator)localObject2).next();
+          if ((!paramString.isRobotUin(((TroopMemberInfo)localObject3).memberuin)) && (!paramQQAppInterface.m(((TroopMemberInfo)localObject3).memberuin)))
+          {
+            i += 1;
+          }
+          else
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append((String)localObject1);
+            localStringBuilder.append("\nisRobotUin[");
+            localStringBuilder.append(((TroopMemberInfo)localObject3).memberuin);
+            localStringBuilder.append("]");
+            localObject1 = localStringBuilder.toString();
+          }
+        }
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append((String)localObject1);
+        paramQQAppInterface.append("\nCalcCount[");
+        paramQQAppInterface.append(i);
+        paramQQAppInterface.append("]");
+        localObject2 = paramQQAppInterface.toString();
+      }
+    }
+    if (i == 0) {
+      i = j;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("");
+      paramQQAppInterface.append((String)localObject2);
+      paramQQAppInterface.append(", time[");
+      paramQQAppInterface.append(System.currentTimeMillis() - l);
+      paramQQAppInterface.append("]");
+      QLog.w("QAVGroupConfig", 1, paramQQAppInterface.toString());
+    }
+    return i;
+  }
+  
+  public static int d()
+  {
+    return a().c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QAVGroupConfig
  * JD-Core Version:    0.7.0.1
  */

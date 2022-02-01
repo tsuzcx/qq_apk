@@ -5,21 +5,21 @@ import com.tencent.mobileqq.persistence.EntityManager;
 
 public class PushDialogDbUtil
 {
-  private static volatile PushDialogDbUtil jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogDbUtil;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private static volatile PushDialogDbUtil a;
+  private Object b = new Object();
   
   public static PushDialogDbUtil a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogDbUtil == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogDbUtil == null) {
-          jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogDbUtil = new PushDialogDbUtil();
+        if (a == null) {
+          a = new PushDialogDbUtil();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogDbUtil;
+    return a;
   }
   
   public void a(EntityManager paramEntityManager, long paramLong, PushDialogDbUtil.OnPushDialogDbAction paramOnPushDialogDbAction)
@@ -46,7 +46,7 @@ public class PushDialogDbUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.PushDialogDbUtil
  * JD-Core Version:    0.7.0.1
  */

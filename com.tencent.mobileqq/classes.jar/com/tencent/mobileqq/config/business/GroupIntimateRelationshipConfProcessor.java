@@ -12,7 +12,7 @@ public class GroupIntimateRelationshipConfProcessor
 {
   public static GroupIntimateRelationshipBean a()
   {
-    GroupIntimateRelationshipBean localGroupIntimateRelationshipBean2 = (GroupIntimateRelationshipBean)QConfigManager.a().a(492);
+    GroupIntimateRelationshipBean localGroupIntimateRelationshipBean2 = (GroupIntimateRelationshipBean)QConfigManager.b().b(492);
     GroupIntimateRelationshipBean localGroupIntimateRelationshipBean1 = localGroupIntimateRelationshipBean2;
     if (localGroupIntimateRelationshipBean2 == null) {
       localGroupIntimateRelationshipBean1 = new GroupIntimateRelationshipBean();
@@ -39,7 +39,7 @@ public class GroupIntimateRelationshipConfProcessor
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("GroupIntimateRelationshipConfProcessor", 2, localStringBuilder.toString());
       }
       return localGroupIntimateRelationshipBean;
@@ -96,7 +96,7 @@ public class GroupIntimateRelationshipConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.GroupIntimateRelationshipConfProcessor
  * JD-Core Version:    0.7.0.1
  */

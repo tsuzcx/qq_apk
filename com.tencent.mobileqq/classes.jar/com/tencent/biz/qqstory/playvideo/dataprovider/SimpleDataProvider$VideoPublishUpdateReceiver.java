@@ -18,8 +18,8 @@ public class SimpleDataProvider$VideoPublishUpdateReceiver
   
   protected void a(@NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    if ((paramStoryVideoPublishStatusEvent.b != null) && (paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
-      SimpleDataProvider.a(this.a, paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramStoryVideoPublishStatusEvent.b.mVid, paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
+    if ((paramStoryVideoPublishStatusEvent.d != null) && (paramStoryVideoPublishStatusEvent.c != null)) {
+      SimpleDataProvider.a(this.a, paramStoryVideoPublishStatusEvent.c.mVid, paramStoryVideoPublishStatusEvent.d.mVid, paramStoryVideoPublishStatusEvent.e.feedId);
     }
   }
   
@@ -30,7 +30,7 @@ public class SimpleDataProvider$VideoPublishUpdateReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.SimpleDataProvider.VideoPublishUpdateReceiver
  * JD-Core Version:    0.7.0.1
  */

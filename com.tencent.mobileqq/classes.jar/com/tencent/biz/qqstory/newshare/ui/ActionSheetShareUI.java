@@ -14,13 +14,13 @@ import java.util.List;
 public class ActionSheetShareUI
   extends ShareUI
 {
-  private ShareActionSheetBuilder a;
+  private ShareActionSheetBuilder g;
   
   public ActionSheetShareUI(Activity paramActivity)
   {
     super(paramActivity);
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList = Arrays.asList(new int[][] { { 1, 2, 3, 4, 5 }, { 6 } });
+    if ((this.d == null) || (this.d.isEmpty())) {
+      this.d = Arrays.asList(new int[][] { { 1, 2, 3, 4, 5 }, { 6 } });
     }
   }
   
@@ -45,53 +45,53 @@ public class ActionSheetShareUI
         default: 
           break;
         case 12: 
-          localActionSheetItem.label = paramContext.getString(2131718761);
-          localActionSheetItem.icon = 2130847133;
+          localActionSheetItem.label = paramContext.getString(2131916267);
+          localActionSheetItem.icon = 2130848685;
           StoryReportor.a("share", "exp_video", 0, 0, new String[0]);
           break;
         case 11: 
-          localActionSheetItem.label = HardCodeUtil.a(2131699985);
-          localActionSheetItem.icon = 2130846908;
+          localActionSheetItem.label = HardCodeUtil.a(2131898031);
+          localActionSheetItem.icon = 2130848460;
           break;
         case 10: 
-          localActionSheetItem.label = paramContext.getString(2131718760);
-          localActionSheetItem.icon = 2130847033;
+          localActionSheetItem.label = paramContext.getString(2131916266);
+          localActionSheetItem.icon = 2130848585;
           break;
         case 9: 
-          localActionSheetItem.label = HardCodeUtil.a(2131699987);
-          localActionSheetItem.icon = 2130846901;
+          localActionSheetItem.label = HardCodeUtil.a(2131898033);
+          localActionSheetItem.icon = 2130848453;
           break;
         case 8: 
-          localActionSheetItem.label = HardCodeUtil.a(2131699986);
-          localActionSheetItem.icon = 2130846900;
+          localActionSheetItem.label = HardCodeUtil.a(2131898032);
+          localActionSheetItem.icon = 2130848452;
           break;
         case 7: 
-          localActionSheetItem.label = HardCodeUtil.a(2131699984);
-          localActionSheetItem.icon = 2130846902;
+          localActionSheetItem.label = HardCodeUtil.a(2131898030);
+          localActionSheetItem.icon = 2130848454;
           break;
         case 6: 
-          localActionSheetItem.label = paramContext.getString(2131691293);
-          localActionSheetItem.icon = 2130839063;
+          localActionSheetItem.label = paramContext.getString(2131888243);
+          localActionSheetItem.icon = 2130839217;
           break;
         case 5: 
-          localActionSheetItem.label = paramContext.getString(2131696417);
-          localActionSheetItem.icon = 2130847035;
+          localActionSheetItem.label = paramContext.getString(2131894189);
+          localActionSheetItem.icon = 2130848587;
           break;
         case 4: 
-          localActionSheetItem.label = paramContext.getString(2131696402);
-          localActionSheetItem.icon = 2130839065;
+          localActionSheetItem.label = paramContext.getString(2131894174);
+          localActionSheetItem.icon = 2130839219;
           break;
         case 3: 
-          localActionSheetItem.label = paramContext.getString(2131696420);
-          localActionSheetItem.icon = 2130847036;
+          localActionSheetItem.label = paramContext.getString(2131894192);
+          localActionSheetItem.icon = 2130848588;
           break;
         case 2: 
-          localActionSheetItem.label = paramContext.getString(2131696413);
-          localActionSheetItem.icon = 2130846665;
+          localActionSheetItem.label = paramContext.getString(2131894185);
+          localActionSheetItem.icon = 2130848217;
           break;
         case 1: 
-          localActionSheetItem.label = paramContext.getString(2131696399);
-          localActionSheetItem.icon = 2130847033;
+          localActionSheetItem.label = paramContext.getString(2131894171);
+          localActionSheetItem.icon = 2130848585;
         }
         localArrayList.add(localActionSheetItem);
         j += 1;
@@ -136,37 +136,37 @@ public class ActionSheetShareUI
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
+    if (this.g == null)
     {
       ActionSheetShareUI.1 local1 = new ActionSheetShareUI.1(this);
       ActionSheetShareUI.2 local2 = new ActionSheetShareUI.2(this);
-      Activity localActivity = a();
+      Activity localActivity = g();
       if (localActivity == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(localActivity, true);
-      if (this.jdField_a_of_type_Boolean)
+      this.g = new ShareActionSheetBuilder(localActivity, true);
+      if (this.c)
       {
-        ShareActionSheetBuilder localShareActionSheetBuilder = this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder;
+        ShareActionSheetBuilder localShareActionSheetBuilder = this.g;
         String str;
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          str = localActivity.getString(2131719029);
+        if (TextUtils.isEmpty(this.b)) {
+          str = localActivity.getString(2131916565);
         } else {
-          str = this.jdField_a_of_type_JavaLangString;
+          str = this.b;
         }
         localShareActionSheetBuilder.setActionSheetTitle(str);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.hideTitle();
+        this.g.hideTitle();
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(localActivity, this.jdField_a_of_type_JavaUtilList));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(local1);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setOnDismissListener(local2);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setCancelListener(new ActionSheetShareUI.3(this));
+      this.g.setActionSheetItems(a(localActivity, this.d));
+      this.g.setItemClickListener(local1);
+      this.g.setOnDismissListener(local2);
+      this.g.setCancelListener(new ActionSheetShareUI.3(this));
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
+    if (!this.g.isShowing()) {
+      this.g.show();
     }
   }
   
@@ -215,7 +215,7 @@ public class ActionSheetShareUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.ui.ActionSheetShareUI
  * JD-Core Version:    0.7.0.1
  */

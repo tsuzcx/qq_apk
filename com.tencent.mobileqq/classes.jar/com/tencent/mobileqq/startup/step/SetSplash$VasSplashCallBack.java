@@ -19,31 +19,31 @@ import mqq.app.AppActivity;
 class SetSplash$VasSplashCallBack
   extends StartupDirector.SplashCallBack
 {
-  WeakReference<SplashADView> a;
-  WeakReference<ImageView> b;
-  WeakReference<ImageView> c;
-  WeakReference<AppActivity> d;
+  WeakReference<SplashADView> c;
+  WeakReference<ImageView> d;
+  WeakReference<ImageView> e;
+  WeakReference<AppActivity> f;
   
   protected SetSplash$VasSplashCallBack(Object paramObject, SplashADView paramSplashADView, ImageView paramImageView1, ImageView paramImageView2, AppActivity paramAppActivity)
   {
     super(paramObject);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramSplashADView);
-    this.b = new WeakReference(paramImageView1);
-    this.c = new WeakReference(paramImageView2);
-    this.d = new WeakReference(paramAppActivity);
+    this.c = new WeakReference(paramSplashADView);
+    this.d = new WeakReference(paramImageView1);
+    this.e = new WeakReference(paramImageView2);
+    this.f = new WeakReference(paramAppActivity);
   }
   
   protected void a()
   {
     try
     {
-      SplashItem localSplashItem = (SplashItem)this.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_Boolean = true;
-      SplashADView localSplashADView = (SplashADView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      SplashItem localSplashItem = (SplashItem)this.b;
+      this.a = true;
+      SplashADView localSplashADView = (SplashADView)this.c.get();
       if (localSplashADView != null) {
-        localSplashADView.b = false;
+        localSplashADView.l = false;
       }
-      if (localSplashItem.a != 2) {
+      if (localSplashItem.e != 2) {
         return;
       }
       localSplashADView.d();
@@ -59,42 +59,42 @@ class SetSplash$VasSplashCallBack
   {
     try
     {
-      if (this.jdField_a_of_type_JavaLangObject == null) {
+      if (this.b == null) {
         return;
       }
-      Object localObject = (SplashADView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      ImageView localImageView1 = (ImageView)this.b.get();
-      ImageView localImageView2 = (ImageView)this.c.get();
-      AppActivity localAppActivity = (AppActivity)this.d.get();
+      Object localObject = (SplashADView)this.c.get();
+      ImageView localImageView1 = (ImageView)this.d.get();
+      ImageView localImageView2 = (ImageView)this.e.get();
+      AppActivity localAppActivity = (AppActivity)this.f.get();
       if (localObject != null)
       {
         if (localAppActivity == null) {
           return;
         }
-        SplashItem localSplashItem = (SplashItem)this.jdField_a_of_type_JavaLangObject;
+        SplashItem localSplashItem = (SplashItem)this.b;
         QLog.i("QSplash@VasSplashUtil", 1, "bindView");
         SplashADUtil.a = System.currentTimeMillis();
-        if (!((SplashADView)localObject).jdField_a_of_type_Boolean)
+        if (!((SplashADView)localObject).k)
         {
-          paramStartupDirector.a = 0L;
+          paramStartupDirector.g = 0L;
           return;
         }
-        ViewGroup localViewGroup = (ViewGroup)localAppActivity.findViewById(2131377782);
+        ViewGroup localViewGroup = (ViewGroup)localAppActivity.findViewById(2131446243);
         if (localViewGroup == null)
         {
           QLog.i("QSplash@VasSplashUtil", 1, "bindView fail, root is null");
-          paramStartupDirector.a = 0L;
+          paramStartupDirector.g = 0L;
           return;
         }
         localViewGroup.addView((View)localObject, 0);
-        int i = localSplashItem.a;
+        int i = localSplashItem.e;
         if (i != 0)
         {
           if (i == 2)
           {
             QLog.i("QSplash@VasSplashUtil", 1, "show video");
             ((SplashADView)localObject).b();
-            paramStartupDirector.a = 10000L;
+            paramStartupDirector.g = 10000L;
           }
         }
         else
@@ -104,7 +104,7 @@ class SetSplash$VasSplashCallBack
             localImageView1.setVisibility(8);
             localImageView2.setVisibility(8);
           }
-          paramStartupDirector.a = 3000L;
+          paramStartupDirector.g = 3000L;
         }
         long l = SplashADUtil.a(BaseApplicationImpl.getApplication());
         ImmersiveUtils.clearCoverForStatus(localAppActivity.getWindow(), true);
@@ -117,11 +117,11 @@ class SetSplash$VasSplashCallBack
           ((StringBuilder)localObject).append(l);
           ((StringBuilder)localObject).append("");
           VasSplashUtil.a(paramStartupDirector, ((StringBuilder)localObject).toString());
-          TianshuReportUtils.b(localSplashItem.b, 101, localSplashItem.j);
+          TianshuReportUtils.b(localSplashItem.b, 101, localSplashItem.n);
         }
         else
         {
-          TianshuReportUtils.c(localSplashItem.b, 101, localSplashItem.j);
+          TianshuReportUtils.c(localSplashItem.b, 101, localSplashItem.n);
         }
         VasSplashUtil.a(localSplashItem.b, l, false);
         return;
@@ -136,7 +136,7 @@ class SetSplash$VasSplashCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.SetSplash.VasSplashCallBack
  * JD-Core Version:    0.7.0.1
  */

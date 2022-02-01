@@ -21,79 +21,35 @@ import org.json.JSONObject;
 
 public class IliveLiteDataReport
 {
-  public static int a;
-  public static long a;
-  private static IliveLiteDataReport jdField_a_of_type_CooperationIliveLiteReportIliveLiteDataReport;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  public static boolean a;
-  public static int b;
-  private RoomExtInfo jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private RoomExtInfo jdField_b_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = true;
-  private boolean d = true;
-  private boolean e = true;
-  private boolean f = true;
-  
-  static
-  {
-    jdField_a_of_type_Int = 1001;
-    jdField_b_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static int a()
-  {
-    String str = BusinessManager.a.b();
-    try
-    {
-      int i = Integer.parseInt(str);
-      return i;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      label14:
-      break label14;
-    }
-    return 0;
-  }
-  
-  private long a()
-  {
-    Object localObject = BusinessManager.a.a();
-    if ((localObject != null) && (((EnterRoomConfig)localObject).extData != null))
-    {
-      localObject = RoomManager.a(((EnterRoomConfig)localObject).extData.getString("mqqschema"));
-      try
-      {
-        long l = Long.parseLong((String)((Map)localObject).get("starttime"));
-        return l;
-      }
-      catch (Exception localException)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getStartTime error ");
-        localStringBuilder.append(localException);
-        QLog.e("IliveLiteDataReport", 1, localStringBuilder.toString());
-      }
-    }
-    return -1L;
-  }
+  public static int a = 1001;
+  public static long b;
+  public static int c = 0;
+  public static boolean d = false;
+  private static IliveLiteDataReport e;
+  private static final Object f = new Object();
+  private boolean g = true;
+  private boolean h = true;
+  private boolean i = true;
+  private boolean j = true;
+  private boolean k = true;
+  private boolean l = true;
+  private RoomExtInfo m;
+  private RoomExtInfo n;
+  private String o;
+  private String p;
+  private String q;
   
   public static IliveLiteDataReport a()
   {
-    if (jdField_a_of_type_CooperationIliveLiteReportIliveLiteDataReport == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (e == null) {
+      synchronized (f)
       {
-        if (jdField_a_of_type_CooperationIliveLiteReportIliveLiteDataReport == null) {
-          jdField_a_of_type_CooperationIliveLiteReportIliveLiteDataReport = new IliveLiteDataReport();
+        if (e == null) {
+          e = new IliveLiteDataReport();
         }
       }
     }
-    return jdField_a_of_type_CooperationIliveLiteReportIliveLiteDataReport;
+    return e;
   }
   
   public static String a(IliveLiteDataReport.ReportParams paramReportParams)
@@ -104,20 +60,20 @@ public class IliveLiteDataReport
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("zt_str1", paramReportParams.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("zt_str2", paramReportParams.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("zt_str3", paramReportParams.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("zt_str1", paramReportParams.a);
+      localJSONObject.put("zt_str2", paramReportParams.b);
+      localJSONObject.put("zt_str3", paramReportParams.c);
       localJSONObject.put("zt_str4", paramReportParams.d);
       localJSONObject.put("zt_str4", paramReportParams.d);
-      localJSONObject.put("zt_int1", String.valueOf(paramReportParams.jdField_a_of_type_Int));
-      localJSONObject.put("zt_int2", String.valueOf(paramReportParams.jdField_b_of_type_Int));
-      localJSONObject.put("zt_int3", String.valueOf(paramReportParams.jdField_c_of_type_Int));
-      localJSONObject.put("program_id", paramReportParams.f);
+      localJSONObject.put("zt_int1", String.valueOf(paramReportParams.f));
+      localJSONObject.put("zt_int2", String.valueOf(paramReportParams.g));
+      localJSONObject.put("zt_int3", String.valueOf(paramReportParams.h));
+      localJSONObject.put("program_id", paramReportParams.i);
       localJSONObject.put("roomid", paramReportParams.e);
-      localJSONObject.put("ab_token", paramReportParams.h);
-      localJSONObject.put("anchor", paramReportParams.g);
-      if (paramReportParams.jdField_a_of_type_Long > 0L) {
-        localJSONObject.put("timelong", String.valueOf(paramReportParams.jdField_a_of_type_Long));
+      localJSONObject.put("ab_token", paramReportParams.l);
+      localJSONObject.put("anchor", paramReportParams.j);
+      if (paramReportParams.k > 0L) {
+        localJSONObject.put("timelong", String.valueOf(paramReportParams.k));
       }
       localJSONObject.put("report_from", "2");
     }
@@ -188,68 +144,78 @@ public class IliveLiteDataReport
     MobileReportManager.getInstance().reportActionLive(paramString1, paramString2, paramString3);
   }
   
-  private String b()
+  public static int g()
   {
-    RoomExtInfo localRoomExtInfo = this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
+    String str = BusinessManager.a.g();
+    try
+    {
+      int i1 = Integer.parseInt(str);
+      return i1;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label14:
+      break label14;
+    }
+    return 0;
+  }
+  
+  private long h()
+  {
+    Object localObject = BusinessManager.a.c();
+    if ((localObject != null) && (((EnterRoomConfig)localObject).extData != null))
+    {
+      localObject = RoomManager.a(((EnterRoomConfig)localObject).extData.getString("mqqschema"));
+      try
+      {
+        long l1 = Long.parseLong((String)((Map)localObject).get("starttime"));
+        return l1;
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getStartTime error ");
+        localStringBuilder.append(localException);
+        QLog.e("IliveLiteDataReport", 1, localStringBuilder.toString());
+      }
+    }
+    return -1L;
+  }
+  
+  private String i()
+  {
+    RoomExtInfo localRoomExtInfo = this.m;
     if (localRoomExtInfo != null) {
       return localRoomExtInfo.programId;
     }
     return "";
   }
   
-  private String c()
+  private String j()
   {
-    RoomExtInfo localRoomExtInfo = this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
+    RoomExtInfo localRoomExtInfo = this.m;
     if (localRoomExtInfo != null) {
       return localRoomExtInfo.anchorUid;
     }
     return "";
   }
   
-  private String d()
+  private String k()
   {
-    RoomExtInfo localRoomExtInfo = this.jdField_b_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
+    RoomExtInfo localRoomExtInfo = this.n;
     if (localRoomExtInfo != null) {
       return localRoomExtInfo.programId;
     }
     return "";
   }
   
-  private String e()
+  private String l()
   {
-    RoomExtInfo localRoomExtInfo = this.jdField_b_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
+    RoomExtInfo localRoomExtInfo = this.n;
     if (localRoomExtInfo != null) {
       return localRoomExtInfo.anchorUid;
     }
     return "";
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = a();
-    if (l2 <= 0L) {
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    if (this.jdField_b_of_type_Boolean) {
-      localObject = "1";
-    } else {
-      localObject = "0";
-    }
-    localHashMap.put("is_first_enter", localObject);
-    this.jdField_b_of_type_Boolean = false;
-    l1 -= l2;
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("oncreate room ");
-    ((StringBuilder)localObject).append(l1);
-    QLog.e("IliveLiteDataReport", 1, ((StringBuilder)localObject).toString());
-    VasStatisticCollector.a("lite_oncreateroom", localHashMap, l1);
   }
   
   public void a(long paramLong)
@@ -265,8 +231,8 @@ public class IliveLiteDataReport
   {
     IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
     localReportParams.e = String.valueOf(paramLong);
-    localReportParams.jdField_a_of_type_Int = paramInt;
-    localReportParams.jdField_b_of_type_Int = 1;
+    localReportParams.f = paramInt;
+    localReportParams.g = 1;
     a("qq_live", "room_page", "", "open_page", "", 153, a(localReportParams));
   }
   
@@ -279,7 +245,7 @@ public class IliveLiteDataReport
   {
     IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
     localReportParams.e = String.valueOf(paramLong1);
-    localReportParams.jdField_a_of_type_Long = paramLong2;
+    localReportParams.k = paramLong2;
     a("qq_live", "room_page", "", "switch", "", 209, a(localReportParams));
   }
   
@@ -287,9 +253,9 @@ public class IliveLiteDataReport
   {
     IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
     localReportParams.e = String.valueOf(paramLong1);
-    localReportParams.jdField_a_of_type_Int = a();
-    localReportParams.jdField_b_of_type_Int = paramInt;
-    localReportParams.jdField_a_of_type_Long = paramLong2;
+    localReportParams.f = g();
+    localReportParams.g = paramInt;
+    localReportParams.k = paramLong2;
     a("qq_live", "room_page", "", "client_quit", "", 154, a(localReportParams));
   }
   
@@ -297,50 +263,150 @@ public class IliveLiteDataReport
   {
     IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
     localReportParams.e = String.valueOf(paramLong1);
-    localReportParams.jdField_a_of_type_Int = a();
-    localReportParams.jdField_b_of_type_Int = paramInt1;
-    localReportParams.jdField_c_of_type_Int = paramInt2;
-    localReportParams.jdField_a_of_type_Long = paramLong2;
+    localReportParams.f = g();
+    localReportParams.g = paramInt1;
+    localReportParams.h = paramInt2;
+    localReportParams.k = paramLong2;
     a("qq_live", "room_page", "", "video_layer", "", 133, a(localReportParams));
   }
   
   public void a(RoomExtInfo paramRoomExtInfo)
   {
-    this.jdField_b_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo = this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo = paramRoomExtInfo;
+    this.n = this.m;
+    this.m = paramRoomExtInfo;
   }
   
   public void a(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.p = this.o;
+    this.o = paramString;
   }
   
-  public void b()
+  public String b()
   {
-    if (this.f)
+    return this.o;
+  }
+  
+  public void b(long paramLong)
+  {
+    IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
+    localReportParams.e = String.valueOf(paramLong);
+    localReportParams.f = g();
+    localReportParams.j = l();
+    localReportParams.i = k();
+    String str;
+    if (d) {
+      str = "1";
+    } else {
+      str = "0";
+    }
+    localReportParams.b = str;
+    localReportParams.d = this.p;
+    a("qq_live", "room_page", "", "room", "", 206, a(localReportParams));
+  }
+  
+  public void b(long paramLong1, long paramLong2)
+  {
+    IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
+    localReportParams.e = String.valueOf(paramLong1);
+    localReportParams.k = paramLong2;
+    a("qq_live", "room_page", "", "switch", "", 208, a(localReportParams));
+  }
+  
+  public void b(long paramLong1, long paramLong2, int paramInt)
+  {
+    IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
+    localReportParams.e = String.valueOf(paramLong1);
+    localReportParams.f = g();
+    localReportParams.g = paramInt;
+    localReportParams.k = paramLong2;
+    a("qq_live", "room_page", "", "room", "cmd_success", "", 153, a(localReportParams), false);
+  }
+  
+  public void b(String paramString)
+  {
+    this.q = paramString;
+    if (this.q == null) {
+      this.q = "";
+    }
+  }
+  
+  public void c()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = h();
+    if (l2 <= 0L) {
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    if (this.g) {
+      localObject = "1";
+    } else {
+      localObject = "0";
+    }
+    localHashMap.put("is_first_enter", localObject);
+    this.g = false;
+    l1 -= l2;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("oncreate room ");
+    ((StringBuilder)localObject).append(l1);
+    QLog.e("IliveLiteDataReport", 1, ((StringBuilder)localObject).toString());
+    VasStatisticCollector.a("lite_oncreateroom", localHashMap, l1);
+  }
+  
+  public void c(long paramLong)
+  {
+    IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
+    localReportParams.e = String.valueOf(paramLong);
+    localReportParams.f = g();
+    localReportParams.j = l();
+    localReportParams.i = k();
+    String str;
+    if (d) {
+      str = "1";
+    } else {
+      str = "0";
+    }
+    localReportParams.b = str;
+    localReportParams.d = this.p;
+    a("qq_live", "room_page", "", "room", "", 207, a(localReportParams));
+  }
+  
+  public void c(long paramLong1, long paramLong2, int paramInt)
+  {
+    IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
+    localReportParams.e = String.valueOf(paramLong1);
+    localReportParams.f = g();
+    localReportParams.g = paramInt;
+    localReportParams.k = paramLong2;
+    a("qq_live", "room_page", "", "see_flow", "", 153, a(localReportParams));
+  }
+  
+  public void d()
+  {
+    if (this.k)
     {
-      this.f = false;
+      this.k = false;
       long l2 = System.currentTimeMillis();
-      long l1 = a();
+      long l1 = h();
       if (l1 <= 0L) {
         return;
       }
       l2 -= l1;
       HashMap localHashMap = new HashMap();
-      if (this.jdField_c_of_type_Boolean) {
+      if (this.h) {
         localObject1 = "1";
       } else {
         localObject1 = "0";
       }
       localHashMap.put("is_first_enter", localObject1);
-      Object localObject1 = BusinessManager.a.a();
+      Object localObject1 = BusinessManager.a.b();
       Object localObject4;
-      if ((BusinessManager.a.c()) && (localObject1 != null) && (((BusinessConfig)localObject1).a != null))
+      if ((BusinessManager.a.e()) && (localObject1 != null) && (((BusinessConfig)localObject1).m != null))
       {
-        localObject4 = (String)((BusinessConfig)localObject1).a.get("is_float_window_in");
-        localObject2 = (String)((BusinessConfig)localObject1).a.get("has_rtmp");
-        localObject1 = (String)((BusinessConfig)localObject1).a.get("is_process_launch");
+        localObject4 = (String)((BusinessConfig)localObject1).m.get("is_float_window_in");
+        localObject2 = (String)((BusinessConfig)localObject1).m.get("has_rtmp");
+        localObject1 = (String)((BusinessConfig)localObject1).m.get("is_process_launch");
       }
       else
       {
@@ -361,7 +427,8 @@ public class IliveLiteDataReport
         localObject2 = "0";
       }
       localHashMap.put("is_process_init", localObject2);
-      this.jdField_c_of_type_Boolean = false;
+      localHashMap.put("from", String.valueOf(g()));
+      this.h = false;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(" real report：onFirstFrame ");
       ((StringBuilder)localObject1).append(l2);
@@ -375,111 +442,6 @@ public class IliveLiteDataReport
     }
   }
   
-  public void b(long paramLong)
-  {
-    IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
-    localReportParams.e = String.valueOf(paramLong);
-    localReportParams.jdField_a_of_type_Int = a();
-    localReportParams.g = e();
-    localReportParams.f = d();
-    String str;
-    if (jdField_a_of_type_Boolean) {
-      str = "1";
-    } else {
-      str = "0";
-    }
-    localReportParams.jdField_b_of_type_JavaLangString = str;
-    localReportParams.d = this.jdField_b_of_type_JavaLangString;
-    a("qq_live", "room_page", "", "room", "", 206, a(localReportParams));
-  }
-  
-  public void b(long paramLong1, long paramLong2)
-  {
-    IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
-    localReportParams.e = String.valueOf(paramLong1);
-    localReportParams.jdField_a_of_type_Long = paramLong2;
-    a("qq_live", "room_page", "", "switch", "", 208, a(localReportParams));
-  }
-  
-  public void b(long paramLong1, long paramLong2, int paramInt)
-  {
-    IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
-    localReportParams.e = String.valueOf(paramLong1);
-    localReportParams.jdField_a_of_type_Int = a();
-    localReportParams.jdField_b_of_type_Int = paramInt;
-    localReportParams.jdField_a_of_type_Long = paramLong2;
-    a("qq_live", "room_page", "", "room", "cmd_success", "", 153, a(localReportParams), false);
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    if (this.jdField_c_of_type_JavaLangString == null) {
-      this.jdField_c_of_type_JavaLangString = "";
-    }
-  }
-  
-  public void c()
-  {
-    if (this.e)
-    {
-      this.e = false;
-      long l1 = System.currentTimeMillis();
-      long l2 = a();
-      if (l2 <= 0L) {
-        return;
-      }
-      l1 -= l2;
-      HashMap localHashMap = new HashMap();
-      if (this.d) {
-        localObject = "1";
-      } else {
-        localObject = "0";
-      }
-      localHashMap.put("is_first_enter", localObject);
-      this.d = false;
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(" onH5LoadFinish ");
-      ((StringBuilder)localObject).append(l1);
-      QLog.e("IliveLiteDataReport", 1, ((StringBuilder)localObject).toString());
-      VasStatisticCollector.a("lite_H5_load_finish", localHashMap, l1);
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
-    localReportParams.e = String.valueOf(paramLong);
-    localReportParams.jdField_a_of_type_Int = a();
-    localReportParams.g = e();
-    localReportParams.f = d();
-    String str;
-    if (jdField_a_of_type_Boolean) {
-      str = "1";
-    } else {
-      str = "0";
-    }
-    localReportParams.jdField_b_of_type_JavaLangString = str;
-    localReportParams.d = this.jdField_b_of_type_JavaLangString;
-    a("qq_live", "room_page", "", "room", "", 207, a(localReportParams));
-  }
-  
-  public void c(long paramLong1, long paramLong2, int paramInt)
-  {
-    IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
-    localReportParams.e = String.valueOf(paramLong1);
-    localReportParams.jdField_a_of_type_Int = a();
-    localReportParams.jdField_b_of_type_Int = paramInt;
-    localReportParams.jdField_a_of_type_Long = paramLong2;
-    a("qq_live", "room_page", "", "see_flow", "", 153, a(localReportParams));
-  }
-  
-  public void d()
-  {
-    this.e = true;
-    this.f = true;
-  }
-  
   public void d(long paramLong)
   {
     IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
@@ -491,18 +453,51 @@ public class IliveLiteDataReport
   {
     IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
     localReportParams.e = String.valueOf(paramLong1);
-    localReportParams.jdField_a_of_type_Long = paramLong2;
-    localReportParams.jdField_a_of_type_JavaLangString = String.valueOf(paramInt);
+    localReportParams.k = paramLong2;
+    localReportParams.a = String.valueOf(paramInt);
     a("qq_live", "room_page", "close", "small_window", "25", 102, a(localReportParams));
+  }
+  
+  public void e()
+  {
+    if (this.j)
+    {
+      this.j = false;
+      long l1 = System.currentTimeMillis();
+      long l2 = h();
+      if (l2 <= 0L) {
+        return;
+      }
+      l1 -= l2;
+      HashMap localHashMap = new HashMap();
+      if (this.i) {
+        localObject = "1";
+      } else {
+        localObject = "0";
+      }
+      localHashMap.put("is_first_enter", localObject);
+      this.i = false;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" onH5LoadFinish ");
+      ((StringBuilder)localObject).append(l1);
+      QLog.e("IliveLiteDataReport", 1, ((StringBuilder)localObject).toString());
+      VasStatisticCollector.a("lite_H5_load_finish", localHashMap, l1);
+    }
   }
   
   public void e(long paramLong)
   {
     IliveLiteDataReport.ReportParams localReportParams = new IliveLiteDataReport.ReportParams(this);
     localReportParams.e = String.valueOf(paramLong);
-    localReportParams.jdField_a_of_type_Int = a();
-    localReportParams.jdField_b_of_type_Int = 2;
+    localReportParams.f = g();
+    localReportParams.g = 2;
     a("qq_live", "room_page", "", "open_page", "", 153, a(localReportParams));
+  }
+  
+  public void f()
+  {
+    this.j = true;
+    this.k = true;
   }
   
   public void f(long paramLong)
@@ -521,10 +516,52 @@ public class IliveLiteDataReport
     localReportParams.e = String.valueOf(paramLong);
     a("qq_live", "room_page", "small_window", "small_window", "25", 102, a(localReportParams));
   }
+  
+  public void h(long paramLong)
+  {
+    if (paramLong <= 0L) {
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    if (this.l) {
+      localObject1 = "1";
+    } else {
+      localObject1 = "0";
+    }
+    localHashMap.put("is_first_enter", localObject1);
+    Object localObject1 = BusinessManager.a.b();
+    if ((BusinessManager.a.e()) && (localObject1 != null) && (((BusinessConfig)localObject1).m != null))
+    {
+      localObject2 = (String)((BusinessConfig)localObject1).m.get("has_rtmp");
+      localObject1 = (String)((BusinessConfig)localObject1).m.get("is_process_launch");
+    }
+    else
+    {
+      localObject1 = "0";
+      localObject2 = localObject1;
+    }
+    Object localObject3 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject3 = "0";
+    }
+    localHashMap.put("has_rtmp", localObject3);
+    Object localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = "0";
+    }
+    localHashMap.put("is_process_init", localObject2);
+    localHashMap.put("from", String.valueOf(g()));
+    this.l = false;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(" real report：reportPlayerFirstFrame ");
+    ((StringBuilder)localObject1).append(paramLong);
+    QLog.e("LiteMonitorTag", 1, ((StringBuilder)localObject1).toString());
+    VasStatisticCollector.a("live_player_first_frame", localHashMap, paramLong);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.report.IliveLiteDataReport
  * JD-Core Version:    0.7.0.1
  */

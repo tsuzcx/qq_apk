@@ -11,13 +11,13 @@ class ReadInJoyLottieView$1
   
   public void onGlobalLayout()
   {
-    if ((ReadInJoyLottieView.a(this.a).isShown()) && (!ReadInJoyLottieView.a(this.a)))
+    if ((ReadInJoyLottieView.a(this.a).isShown()) && (!ReadInJoyLottieView.b(this.a)))
     {
       QLog.d("ReadInJoyLottieView", 2, "resumeAnimation");
       this.a.a();
       ReadInJoyLottieView.a(this.a, true);
     }
-    if ((!ReadInJoyLottieView.a(this.a).isShown()) && (ReadInJoyLottieView.a(this.a)))
+    if ((!ReadInJoyLottieView.a(this.a).isShown()) && (ReadInJoyLottieView.b(this.a)))
     {
       QLog.d("ReadInJoyLottieView", 2, "pauseAnimation");
       this.a.b();
@@ -27,7 +27,7 @@ class ReadInJoyLottieView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoyLottieView.1
  * JD-Core Version:    0.7.0.1
  */

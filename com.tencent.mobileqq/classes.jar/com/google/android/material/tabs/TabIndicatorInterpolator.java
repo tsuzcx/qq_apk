@@ -15,8 +15,8 @@ class TabIndicatorInterpolator
 {
   static RectF a(@NonNull TabLayout.TabView paramTabView, @Dimension(unit=0) int paramInt)
   {
-    int i = paramTabView.a();
-    int j = paramTabView.b();
+    int i = paramTabView.getContentWidth();
+    int j = paramTabView.getContentHeight();
     paramInt = (int)ViewUtils.a(paramTabView.getContext(), paramInt);
     if (i >= paramInt) {
       paramInt = i;
@@ -34,7 +34,7 @@ class TabIndicatorInterpolator
     if (paramView == null) {
       return new RectF();
     }
-    if ((!paramTabLayout.a()) && ((paramView instanceof TabLayout.TabView))) {
+    if ((!paramTabLayout.d()) && ((paramView instanceof TabLayout.TabView))) {
       return a((TabLayout.TabView)paramView, 24);
     }
     return new RectF(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
@@ -55,7 +55,7 @@ class TabIndicatorInterpolator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.tabs.TabIndicatorInterpolator
  * JD-Core Version:    0.7.0.1
  */

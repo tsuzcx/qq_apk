@@ -22,7 +22,7 @@ class PtvTemplateManager$5
     if (bool2) {
       QLog.i("PtvTemplateManager", 2, String.format("双人挂件加载 start, rebuildTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
     }
-    Object localObject1 = QAVConfig.b(106).a;
+    Object localObject1 = QAVConfig.b(106).b;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
@@ -67,19 +67,19 @@ class PtvTemplateManager$5
         if (this.a != null) {
           bool1 = true;
         }
-        QLog.d("PtvTemplateManager", 2, String.format("双人挂件加载 size[%s], onInitFinishSink[%s], mVersion[%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), this.this$0.f }));
+        QLog.d("PtvTemplateManager", 2, String.format("双人挂件加载 size[%s], onInitFinishSink[%s], mVersion[%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), this.this$0.s }));
       }
-      synchronized (this.this$0.c)
+      synchronized (this.this$0.k)
       {
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("initLocalTemplateConfigInfoWithExtra, isEmpty[");
-        ((StringBuilder)localObject4).append(this.this$0.c.isEmpty());
+        ((StringBuilder)localObject4).append(this.this$0.k.isEmpty());
         ((StringBuilder)localObject4).append("], size[");
         ((StringBuilder)localObject4).append(((List)localObject1).size());
         ((StringBuilder)localObject4).append("]");
         QLog.w("PtvTemplateManager", 1, ((StringBuilder)localObject4).toString());
-        this.this$0.c.clear();
-        this.this$0.c.addAll((Collection)localObject1);
+        this.this$0.k.clear();
+        this.this$0.k.addAll((Collection)localObject1);
         localObject1 = this.a;
         if (localObject1 != null) {
           ((Runnable)localObject1).run();
@@ -91,7 +91,7 @@ class PtvTemplateManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.5
  * JD-Core Version:    0.7.0.1
  */

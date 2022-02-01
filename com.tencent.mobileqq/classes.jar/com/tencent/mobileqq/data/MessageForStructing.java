@@ -150,7 +150,7 @@ public class MessageForStructing
   
   public boolean isSupportFTS()
   {
-    return MsgProxyUtils.m(this.istroop);
+    return MsgProxyUtils.n(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -184,7 +184,7 @@ public class MessageForStructing
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForStructing
  * JD-Core Version:    0.7.0.1
  */

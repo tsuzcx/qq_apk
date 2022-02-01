@@ -15,18 +15,18 @@ class ReadInJoyFeedbackPopupWindow$1$1
   public void onAnimationEnd(Animation paramAnimation)
   {
     super.onAnimationEnd(paramAnimation);
-    if (ReadInJoyFeedbackPopupWindow.a(this.a.a) != null)
+    if (ReadInJoyFeedbackPopupWindow.b(this.a.a) != null)
     {
       paramAnimation = new ArrayList();
-      paramAnimation.add(ReadInJoyFeedbackPopupWindow.a(this.a.a));
-      ReadInJoyFeedbackPopupWindow.a(this.a.a).a(paramAnimation, ReadInJoyFeedbackPopupWindow.a(this.a.a));
-      QQToast.a(ReadInJoyFeedbackPopupWindow.a(this.a.a), 2, 2131717910, 0).a();
+      paramAnimation.add(ReadInJoyFeedbackPopupWindow.c(this.a.a));
+      ReadInJoyFeedbackPopupWindow.b(this.a.a).a(paramAnimation, ReadInJoyFeedbackPopupWindow.d(this.a.a));
+      QQToast.makeText(ReadInJoyFeedbackPopupWindow.e(this.a.a), 2, 2131915384, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.dislike.ReadInJoyFeedbackPopupWindow.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,10 +19,10 @@ class SubscriptFeedsActivity$3
   {
     if (paramInt != 0)
     {
-      DropFrameMonitor.a().a("list_subscript");
+      DropFrameMonitor.b().a("list_subscript");
       return;
     }
-    Object localObject1 = DropFrameMonitor.a();
+    Object localObject1 = DropFrameMonitor.b();
     paramInt = 0;
     ((DropFrameMonitor)localObject1).a("list_subscript", false);
     while (paramInt <= paramAbsListView.getChildCount())
@@ -31,7 +31,7 @@ class SubscriptFeedsActivity$3
       if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof SubscriptFeedsAdapter.FeedItemCellHolder)))
       {
         localObject1 = (SubscriptFeedsAdapter.FeedItemCellHolder)((View)localObject1).getTag();
-        Object localObject2 = ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject1).b.getDrawable();
+        Object localObject2 = ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject1).h.getDrawable();
         if ((localObject2 != null) && ((localObject2 instanceof URLDrawable)))
         {
           localObject2 = (URLDrawable)localObject2;
@@ -55,7 +55,7 @@ class SubscriptFeedsActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.3
  * JD-Core Version:    0.7.0.1
  */

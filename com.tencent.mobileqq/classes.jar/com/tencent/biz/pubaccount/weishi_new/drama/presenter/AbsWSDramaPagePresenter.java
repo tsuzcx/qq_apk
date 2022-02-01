@@ -19,19 +19,10 @@ public abstract class AbsWSDramaPagePresenter
 {
   private boolean a;
   
-  private String a()
-  {
-    WSDramaPageContract.View localView = (WSDramaPageContract.View)a();
-    if (localView != null) {
-      return localView.a();
-    }
-    return "";
-  }
-  
   private void a(int paramInt, String paramString)
   {
-    WSDramaPageContract.View localView = (WSDramaPageContract.View)a();
-    if ((localView != null) && (localView.a() != null) && (localView.a().isEmpty())) {
+    WSDramaPageContract.View localView = (WSDramaPageContract.View)getView();
+    if ((localView != null) && (localView.d() != null) && (localView.d().isEmpty())) {
       localView.a(paramInt, paramString);
     }
   }
@@ -46,18 +37,18 @@ public abstract class AbsWSDramaPagePresenter
     ((StringBuilder)localObject).append(", isFirst:");
     ((StringBuilder)localObject).append(paramBoolean);
     WSLog.d("AbsWSDramaPagePresenterLog", ((StringBuilder)localObject).toString());
-    localObject = (WSDramaPageContract.View)a();
+    localObject = (WSDramaPageContract.View)getView();
     if (localObject == null) {
       return;
     }
     this.a = false;
-    ((WSDramaPageContract.View)localObject).f();
+    ((WSDramaPageContract.View)localObject).u();
     a(paramInt, paramString);
   }
   
   private void a(List<WSDramaItemData> paramList, boolean paramBoolean)
   {
-    WSDramaPageContract.View localView = (WSDramaPageContract.View)a();
+    WSDramaPageContract.View localView = (WSDramaPageContract.View)getView();
     if (localView == null) {
       return;
     }
@@ -71,12 +62,12 @@ public abstract class AbsWSDramaPagePresenter
   
   private void b(List<WSDramaItemData> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
   {
-    WSDramaPageContract.View localView = (WSDramaPageContract.View)a();
+    WSDramaPageContract.View localView = (WSDramaPageContract.View)getView();
     if (localView == null) {
       return;
     }
     this.a = false;
-    localView.f();
+    localView.u();
     if (paramList.size() > 0)
     {
       a(paramList, a(paramBoolean1, paramBoolean2, paramList, paramObject));
@@ -85,22 +76,18 @@ public abstract class AbsWSDramaPagePresenter
     a(-1, "");
   }
   
-  protected WSDramaPageAdapter a()
+  private String f()
   {
-    WSDramaPageContract.View localView = (WSDramaPageContract.View)a();
+    WSDramaPageContract.View localView = (WSDramaPageContract.View)getView();
     if (localView != null) {
-      return localView.a();
+      return localView.b();
     }
-    return null;
+    return "";
   }
   
-  protected AbsWSDramaVideoHolder a()
+  public void a()
   {
-    WSDramaPageAdapter localWSDramaPageAdapter = a();
-    if (localWSDramaPageAdapter != null) {
-      return localWSDramaPageAdapter.a();
-    }
-    return null;
+    a(true, false);
   }
   
   public void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -126,7 +113,7 @@ public abstract class AbsWSDramaPagePresenter
     if (this.a) {
       return;
     }
-    this.a = a(paramBoolean1, paramBoolean2, a());
+    this.a = a(paramBoolean1, paramBoolean2, f());
   }
   
   public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
@@ -136,20 +123,33 @@ public abstract class AbsWSDramaPagePresenter
     return paramBoolean2;
   }
   
+  public void b() {}
+  
   public void b(WSPlayerParam paramWSPlayerParam) {}
   
-  public void c()
+  public void c() {}
+  
+  protected AbsWSDramaVideoHolder d()
   {
-    a(true, false);
+    WSDramaPageAdapter localWSDramaPageAdapter = e();
+    if (localWSDramaPageAdapter != null) {
+      return localWSDramaPageAdapter.c();
+    }
+    return null;
   }
   
-  public void d() {}
-  
-  public void e() {}
+  protected WSDramaPageAdapter e()
+  {
+    WSDramaPageContract.View localView = (WSDramaPageContract.View)getView();
+    if (localView != null) {
+      return localView.d();
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.presenter.AbsWSDramaPagePresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ public class ReportEvilToXinanHandler$ReportToXinanEvent
   
   public ReportEvilToXinanHandler$ReportToXinanEvent(ErrorMessage paramErrorMessage, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.g = paramErrorMessage;
     this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.c = paramString3;
   }
   
@@ -22,7 +22,7 @@ public class ReportEvilToXinanHandler$ReportToXinanEvent
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReportEvent{vid='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", uin='");
     localStringBuilder.append(this.b);
@@ -36,7 +36,7 @@ public class ReportEvilToXinanHandler$ReportToXinanEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler.ReportToXinanEvent
  * JD-Core Version:    0.7.0.1
  */

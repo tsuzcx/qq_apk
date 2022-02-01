@@ -126,27 +126,31 @@ public class WXLivePlayer
     this.mStreamType = "";
   }
   
-  public void apiLog(String paramString1, String paramString2)
+  public void apiOnlineLog(String paramString, boolean paramBoolean)
   {
-    Object localObject = paramString1;
-    if (paramString1 == null) {
-      localObject = "";
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
+    paramString = new StringBuilder();
+    paramString.append("[API] WXLivePlayer(");
+    paramString.append(hashCode());
+    paramString.append(") ");
+    paramString = paramString.toString();
+    if (paramBoolean)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str);
+      Monitor.a(1, localStringBuilder.toString(), "", 0, "");
+      return;
     }
-    paramString2 = new StringBuilder();
-    paramString2.append("wx_liveplayer(");
-    paramString2.append(hashCode());
-    paramString2.append(") ");
-    paramString2.append((String)localObject);
-    paramString2 = paramString2.toString();
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramString2);
-    ((StringBuilder)localObject).append(" ");
-    ((StringBuilder)localObject).append(paramString1);
-    TXCLog.i("WXLivePlayer", ((StringBuilder)localObject).toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(str);
+    TXCLog.i("WXLivePlayer", localStringBuilder.toString());
   }
   
   public void enableAudioVolumeEvaluation(int paramInt)
@@ -170,61 +174,43 @@ public class WXLivePlayer
   
   public void muteAudio(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mute: ");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append(", userId: ");
-    localStringBuilder.append(this.mUserId);
-    apiLog("[API] muteAudio", localStringBuilder.toString());
-    if (this.mIsRtmpProxy)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(" mute: ");
-      localStringBuilder.append(paramBoolean);
-      localStringBuilder.append(", userId: ");
-      localStringBuilder.append(this.mUserId);
-      Monitor.a(1, "[API] muteAudio", localStringBuilder.toString(), 0);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("muteAudio mute: ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(", userId: ");
+    ((StringBuilder)localObject).append(this.mUserId);
+    localObject = ((StringBuilder)localObject).toString();
+    boolean bool;
+    if ((!this.mIsTRTC) && (!this.mIsRtmpProxy)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    apiOnlineLog((String)localObject, bool);
     super.setMute(paramBoolean);
     this.mMuteAudio = paramBoolean;
-    if ((this.mIsTRTC) && (this.mTRTCPlaying))
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(" mute: ");
-      localStringBuilder.append(paramBoolean);
-      localStringBuilder.append(", userId: ");
-      localStringBuilder.append(this.mUserId);
-      Monitor.a(1, "[API] muteAudio", localStringBuilder.toString(), 0);
+    if ((this.mIsTRTC) && (this.mTRTCPlaying)) {
       this.mTRTCCloud.muteRemoteAudio(this.mUserId, paramBoolean);
     }
   }
   
   public void muteVideo(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mute: ");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append(", userId: ");
-    localStringBuilder.append(this.mUserId);
-    apiLog("[API] muteVideo", localStringBuilder.toString());
-    if (this.mIsRtmpProxy)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(" mute: ");
-      localStringBuilder.append(paramBoolean);
-      localStringBuilder.append(", userId: ");
-      localStringBuilder.append(this.mUserId);
-      Monitor.a(1, "[API] muteVideo", localStringBuilder.toString(), 0);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("muteVideo mute: ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(", userId: ");
+    ((StringBuilder)localObject).append(this.mUserId);
+    localObject = ((StringBuilder)localObject).toString();
+    boolean bool;
+    if ((!this.mIsTRTC) && (!this.mIsRtmpProxy)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    apiOnlineLog((String)localObject, bool);
     this.mMuteVideo = paramBoolean;
-    if ((this.mIsTRTC) && (this.mTRTCPlaying))
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(" mute: ");
-      localStringBuilder.append(paramBoolean);
-      localStringBuilder.append(", userId: ");
-      localStringBuilder.append(this.mUserId);
-      Monitor.a(1, "[API] muteVideo", localStringBuilder.toString(), 0);
+    if ((this.mIsTRTC) && (this.mTRTCPlaying)) {
       this.mTRTCCloud.muteRemoteVideoStream(this.mUserId, paramBoolean);
     }
   }
@@ -252,18 +238,16 @@ public class WXLivePlayer
   public void onPlayEvent(int paramInt, Bundle paramBundle)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("event: ");
+    ((StringBuilder)localObject).append("onPlayEvent event: ");
     ((StringBuilder)localObject).append(paramInt);
-    apiLog("[API] onPlayEvent", ((StringBuilder)localObject).toString());
-    if (this.mIsTRTC)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("event: ");
-      ((StringBuilder)localObject).append(paramInt);
-      ((StringBuilder)localObject).append(", userId: ");
-      ((StringBuilder)localObject).append(this.mUserId);
-      Monitor.a(1, "[API] onPlayEvent", ((StringBuilder)localObject).toString(), 0);
+    localObject = ((StringBuilder)localObject).toString();
+    boolean bool;
+    if ((!this.mIsTRTC) && (!this.mIsRtmpProxy)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    apiOnlineLog((String)localObject, bool);
     localObject = this.mPlayListener;
     if (localObject != null)
     {
@@ -276,14 +260,17 @@ public class WXLivePlayer
   
   public void setAudioRoute(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("audioRoute: ");
-    localStringBuilder.append(paramInt);
-    apiLog("[API] setAudioRoute", localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" audioRoute: ");
-    localStringBuilder.append(paramInt);
-    Monitor.a(1, "[API] setAudioRoute", localStringBuilder.toString(), 0);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setAudioRoute audioRoute: ");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = ((StringBuilder)localObject).toString();
+    boolean bool;
+    if ((!this.mIsTRTC) && (!this.mIsRtmpProxy)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    apiOnlineLog((String)localObject, bool);
     TXCAudioEngine.setAudioRoute(paramInt);
   }
   
@@ -296,32 +283,20 @@ public class WXLivePlayer
   public void setConfig(WXLivePlayConfig paramWXLivePlayConfig)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("config: ");
+    ((StringBuilder)localObject).append("setConfig config: ");
     ((StringBuilder)localObject).append(paramWXLivePlayConfig);
     if (((StringBuilder)localObject).toString() != null) {
       localObject = paramWXLivePlayConfig.toString();
     } else {
       localObject = "";
     }
-    apiLog("[API] setConfig", (String)localObject);
-    if (this.mIsTRTC)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(" config: ");
-      ((StringBuilder)localObject).append(paramWXLivePlayConfig);
-      if (((StringBuilder)localObject).toString() != null)
-      {
-        localObject = paramWXLivePlayConfig.toString();
-      }
-      else
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(", userId: ");
-        ((StringBuilder)localObject).append(this.mUserId);
-        localObject = ((StringBuilder)localObject).toString();
-      }
-      Monitor.a(1, "[API] setConfig", (String)localObject, 0);
+    boolean bool;
+    if ((!this.mIsTRTC) && (!this.mIsRtmpProxy)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    apiOnlineLog((String)localObject, bool);
     super.setConfig(paramWXLivePlayConfig);
     this.mPlayConfig = paramWXLivePlayConfig;
   }
@@ -341,11 +316,11 @@ public class WXLivePlayer
   public void setRenderMode(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mode: ");
+    localStringBuilder.append("setRenderMode mode: ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(", userId: ");
     localStringBuilder.append(this.mUserId);
-    apiLog("[API] setRenderMode", localStringBuilder.toString());
+    apiOnlineLog(localStringBuilder.toString(), false);
     super.setRenderMode(paramInt);
     if (paramInt == 0) {
       this.mRenderMode = 0;
@@ -366,11 +341,11 @@ public class WXLivePlayer
   public void setRenderRotation(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("rotation: ");
+    localStringBuilder.append("setRenderRotation rotation: ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(", userId: ");
     localStringBuilder.append(this.mUserId);
-    apiLog("[API] setRenderRotation", localStringBuilder.toString());
+    apiOnlineLog(localStringBuilder.toString(), false);
     super.setRenderRotation(paramInt);
     if (paramInt == 270) {
       this.mRenderRotation = 3;
@@ -393,11 +368,11 @@ public class WXLivePlayer
     super.setSurface(paramSurface);
     this.mSurface = paramSurface;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("userId: ");
+    localStringBuilder.append("setSurface userId: ");
     localStringBuilder.append(this.mUserId);
     localStringBuilder.append(", surface: ");
     localStringBuilder.append(paramSurface);
-    apiLog("[API] setSurface", localStringBuilder.toString());
+    apiOnlineLog(localStringBuilder.toString(), false);
     if ((this.mIsTRTC) && (this.mTRTCPlaying) && (!TextUtils.isEmpty(this.mUserId)) && (!TextUtils.isEmpty(this.mStreamType)))
     {
       if (this.mStreamType.equalsIgnoreCase("aux"))
@@ -415,13 +390,13 @@ public class WXLivePlayer
     this.mSurfaceWidth = paramInt1;
     this.mSurfaceHeight = paramInt2;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("width: ");
+    localStringBuilder.append("setSurfaceSize width: ");
     localStringBuilder.append(paramInt1);
     localStringBuilder.append(", height: ");
     localStringBuilder.append(paramInt2);
     localStringBuilder.append(", userId: ");
     localStringBuilder.append(this.mUserId);
-    apiLog("[API] setSurfaceSize", localStringBuilder.toString());
+    apiOnlineLog(localStringBuilder.toString(), false);
     if ((this.mIsTRTC) && (this.mTRTCPlaying) && (!TextUtils.isEmpty(this.mUserId)) && (!TextUtils.isEmpty(this.mStreamType)))
     {
       if (this.mStreamType.equalsIgnoreCase("aux"))
@@ -474,28 +449,24 @@ public class WXLivePlayer
       return -1;
     }
     this.mIsRtmpProxy = isRtmpProxyUrl(paramString);
-    if (this.mIsRtmpProxy)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("url:");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(" type:");
-      localStringBuilder.append(paramInt);
-      localStringBuilder.append(", userId: ");
-      localStringBuilder.append(this.mUserId);
-      Monitor.a(1, "[API] startPlay", localStringBuilder.toString(), 0);
-    }
     this.mIsTRTC = isTRTCPlayerUrl(paramString);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("url:");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" type:");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append(", isTRTC: ");
-    localStringBuilder.append(this.mIsTRTC);
-    localStringBuilder.append(", userId: ");
-    localStringBuilder.append(this.mUserId);
-    apiLog("[API] startPlay", localStringBuilder.toString());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startPlay url:");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" type:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(", isTRTC: ");
+    ((StringBuilder)localObject).append(this.mIsTRTC);
+    ((StringBuilder)localObject).append(", userId: ");
+    ((StringBuilder)localObject).append(this.mUserId);
+    localObject = ((StringBuilder)localObject).toString();
+    boolean bool;
+    if ((!this.mIsTRTC) && (!this.mIsRtmpProxy)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    apiOnlineLog((String)localObject, bool);
     if (this.mIsTRTC)
     {
       if (parseTRTCParams(paramString))
@@ -522,10 +493,10 @@ public class WXLivePlayer
           this.mTRTCCloud.setRemoteSubStreamSurface(this.mUserId, this.mSurface);
           this.mTRTCCloud.setRemoteSubStreamSurfaceSize(this.mUserId, this.mSurfaceWidth, this.mSurfaceHeight);
           bool = true;
-          break label465;
+          break label412;
         }
-        boolean bool = false;
-        label465:
+        bool = false;
+        label412:
         if (bool) {
           this.mTRTCCloud.setRemoteSubStreamViewFillMode(this.mUserId, this.mRenderMode);
         } else {
@@ -539,14 +510,6 @@ public class WXLivePlayer
         this.mTRTCCloud.registerAudioVolumeEvaluationListener(this.mUserId, bool, this);
         this.mTRTCCloud.registerPlayListener(this.mUserId, bool, this);
         this.mTRTCPlaying = true;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("url:");
-        localStringBuilder.append(paramString);
-        localStringBuilder.append(" type:");
-        localStringBuilder.append(paramInt);
-        localStringBuilder.append(", userId: ");
-        localStringBuilder.append(this.mUserId);
-        Monitor.a(1, "[API] startPlay", localStringBuilder.toString(), 0);
         return 0;
       }
       TXCLog.e("WXLivePlayer", "parse playUrl failed!!!");
@@ -559,26 +522,21 @@ public class WXLivePlayer
   public int stopPlay(boolean paramBoolean)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("isNeedClearLastImg: ");
+    ((StringBuilder)localObject).append("stopPlay isNeedClearLastImg: ");
     ((StringBuilder)localObject).append(paramBoolean);
     ((StringBuilder)localObject).append(", isTRTC: ");
     ((StringBuilder)localObject).append(this.mIsTRTC);
     ((StringBuilder)localObject).append(", userId: ");
     ((StringBuilder)localObject).append(this.mUserId);
-    apiLog("[API] stopPlay", ((StringBuilder)localObject).toString());
-    boolean bool2 = this.mIsRtmpProxy;
-    boolean bool1 = true;
-    if (bool2)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("isNeedClearLastImg: ");
-      ((StringBuilder)localObject).append(paramBoolean);
-      ((StringBuilder)localObject).append(", isTRTC: ");
-      ((StringBuilder)localObject).append(this.mIsTRTC);
-      ((StringBuilder)localObject).append(", userId: ");
-      ((StringBuilder)localObject).append(this.mUserId);
-      Monitor.a(1, "[API] stopPlay", ((StringBuilder)localObject).toString(), 0);
+    localObject = ((StringBuilder)localObject).toString();
+    boolean bool1 = this.mIsTRTC;
+    boolean bool2 = true;
+    if ((!bool1) && (!this.mIsRtmpProxy)) {
+      bool1 = false;
+    } else {
+      bool1 = true;
     }
+    apiOnlineLog((String)localObject, bool1);
     if (paramBoolean)
     {
       localObject = this.mVideoView;
@@ -588,14 +546,6 @@ public class WXLivePlayer
     }
     if (this.mIsTRTC)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("isNeedClearLastImg: ");
-      ((StringBuilder)localObject).append(paramBoolean);
-      ((StringBuilder)localObject).append(", isTRTC: ");
-      ((StringBuilder)localObject).append(this.mIsTRTC);
-      ((StringBuilder)localObject).append(", userId: ");
-      ((StringBuilder)localObject).append(this.mUserId);
-      Monitor.a(1, "[API] stopPlay", ((StringBuilder)localObject).toString(), 0);
       if (this.mStreamType.equalsIgnoreCase("main"))
       {
         this.mTRTCCloud.stopRemoteView(this.mUserId);
@@ -607,11 +557,11 @@ public class WXLivePlayer
       else if (this.mStreamType.equalsIgnoreCase("aux"))
       {
         this.mTRTCCloud.stopRemoteSubStreamView(this.mUserId);
-        paramBoolean = bool1;
-        break label348;
+        paramBoolean = bool2;
+        break label217;
       }
       paramBoolean = false;
-      label348:
+      label217:
       this.mTRTCCloud.unregisterAudioVolumeEvaluationListener(this.mUserId, paramBoolean);
       this.mTRTCCloud.unregisterPlayListener(this.mUserId, paramBoolean);
       resetParams();
@@ -623,7 +573,7 @@ public class WXLivePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.WXLivePlayer
  * JD-Core Version:    0.7.0.1
  */

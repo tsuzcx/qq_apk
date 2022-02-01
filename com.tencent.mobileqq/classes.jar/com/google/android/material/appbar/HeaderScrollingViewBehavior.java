@@ -19,10 +19,10 @@ import java.util.List;
 abstract class HeaderScrollingViewBehavior
   extends ViewOffsetBehavior<View>
 {
-  private int jdField_a_of_type_Int = 0;
-  final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private int jdField_b_of_type_Int;
-  final Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
+  final Rect a = new Rect();
+  final Rect b = new Rect();
+  private int c = 0;
+  private int d;
   
   public HeaderScrollingViewBehavior() {}
   
@@ -31,7 +31,7 @@ abstract class HeaderScrollingViewBehavior
     super(paramContext, paramAttributeSet);
   }
   
-  private static int a(int paramInt)
+  private static int c(int paramInt)
   {
     int i = paramInt;
     if (paramInt == 0) {
@@ -45,31 +45,13 @@ abstract class HeaderScrollingViewBehavior
     return 1.0F;
   }
   
-  final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  int a(@NonNull View paramView)
-  {
-    return paramView.getMeasuredHeight();
-  }
-  
-  @Nullable
-  abstract View a(List<View> paramList);
-  
-  public final void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
   protected void a(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull View paramView, int paramInt)
   {
-    View localView = a(paramCoordinatorLayout.getDependencies(paramView));
+    View localView = b(paramCoordinatorLayout.getDependencies(paramView));
     if (localView != null)
     {
       CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramView.getLayoutParams();
-      Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      Rect localRect = this.a;
       localRect.set(paramCoordinatorLayout.getPaddingLeft() + localLayoutParams.leftMargin, localView.getBottom() + localLayoutParams.topMargin, paramCoordinatorLayout.getWidth() - paramCoordinatorLayout.getPaddingRight() - localLayoutParams.rightMargin, paramCoordinatorLayout.getHeight() + localView.getBottom() - paramCoordinatorLayout.getPaddingBottom() - localLayoutParams.bottomMargin);
       WindowInsetsCompat localWindowInsetsCompat = paramCoordinatorLayout.getLastWindowInsets();
       if ((localWindowInsetsCompat != null) && (ViewCompat.getFitsSystemWindows(paramCoordinatorLayout)) && (!ViewCompat.getFitsSystemWindows(paramView)))
@@ -77,15 +59,15 @@ abstract class HeaderScrollingViewBehavior
         localRect.left += localWindowInsetsCompat.getSystemWindowInsetLeft();
         localRect.right -= localWindowInsetsCompat.getSystemWindowInsetRight();
       }
-      paramCoordinatorLayout = this.jdField_b_of_type_AndroidGraphicsRect;
-      GravityCompat.apply(a(localLayoutParams.gravity), paramView.getMeasuredWidth(), paramView.getMeasuredHeight(), localRect, paramCoordinatorLayout, paramInt);
-      paramInt = b(localView);
+      paramCoordinatorLayout = this.b;
+      GravityCompat.apply(c(localLayoutParams.gravity), paramView.getMeasuredWidth(), paramView.getMeasuredHeight(), localRect, paramCoordinatorLayout, paramInt);
+      paramInt = c(localView);
       paramView.layout(paramCoordinatorLayout.left, paramCoordinatorLayout.top - paramInt, paramCoordinatorLayout.right, paramCoordinatorLayout.bottom - paramInt);
-      this.jdField_a_of_type_Int = (paramCoordinatorLayout.top - localView.getBottom());
+      this.c = (paramCoordinatorLayout.top - localView.getBottom());
       return;
     }
     super.a(paramCoordinatorLayout, paramView, paramInt);
-    this.jdField_a_of_type_Int = 0;
+    this.c = 0;
   }
   
   protected boolean a()
@@ -93,19 +75,37 @@ abstract class HeaderScrollingViewBehavior
     return false;
   }
   
-  final int b(View paramView)
+  int b(@NonNull View paramView)
   {
-    if (this.jdField_b_of_type_Int == 0) {
+    return paramView.getMeasuredHeight();
+  }
+  
+  @Nullable
+  abstract View b(List<View> paramList);
+  
+  public final void b(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  final int c()
+  {
+    return this.c;
+  }
+  
+  final int c(View paramView)
+  {
+    if (this.d == 0) {
       return 0;
     }
     float f = a(paramView);
-    int i = this.jdField_b_of_type_Int;
+    int i = this.d;
     return MathUtils.clamp((int)(f * i), 0, i);
   }
   
-  public final int c()
+  public final int d()
   {
-    return this.jdField_b_of_type_Int;
+    return this.d;
   }
   
   public boolean onMeasureChild(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -113,7 +113,7 @@ abstract class HeaderScrollingViewBehavior
     int j = paramView.getLayoutParams().height;
     if ((j == -1) || (j == -2))
     {
-      View localView = a(paramCoordinatorLayout.getDependencies(paramView));
+      View localView = b(paramCoordinatorLayout.getDependencies(paramView));
       if (localView != null)
       {
         int i = View.MeasureSpec.getSize(paramInt3);
@@ -133,7 +133,7 @@ abstract class HeaderScrollingViewBehavior
         {
           paramInt3 = paramCoordinatorLayout.getHeight();
         }
-        paramInt3 += a(localView);
+        paramInt3 += b(localView);
         i = localView.getMeasuredHeight();
         if (a()) {
           paramView.setTranslationY(-i);
@@ -154,7 +154,7 @@ abstract class HeaderScrollingViewBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.HeaderScrollingViewBehavior
  * JD-Core Version:    0.7.0.1
  */

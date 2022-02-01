@@ -28,14 +28,6 @@ public final class SuperPlayerVideoView
     return (View)localISPlayerVideoView1;
   }
   
-  public void a()
-  {
-    ISPlayerVideoView localISPlayerVideoView = this.a;
-    if (localISPlayerVideoView != null) {
-      localISPlayerVideoView.disableViewCallback();
-    }
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
     ISPlayerVideoView localISPlayerVideoView = this.a;
@@ -48,13 +40,21 @@ public final class SuperPlayerVideoView
   {
     ISPlayerVideoView localISPlayerVideoView = this.a;
     if (localISPlayerVideoView != null) {
+      localISPlayerVideoView.disableViewCallback();
+    }
+  }
+  
+  public void c()
+  {
+    ISPlayerVideoView localISPlayerVideoView = this.a;
+    if (localISPlayerVideoView != null) {
       localISPlayerVideoView.enableViewCallback();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.wrapper.superplayer.SuperPlayerVideoView
  * JD-Core Version:    0.7.0.1
  */

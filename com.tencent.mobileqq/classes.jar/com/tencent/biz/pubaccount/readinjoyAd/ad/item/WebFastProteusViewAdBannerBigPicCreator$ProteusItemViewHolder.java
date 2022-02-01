@@ -19,7 +19,7 @@ public class WebFastProteusViewAdBannerBigPicCreator$ProteusItemViewHolder
   
   public void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
   {
-    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new WebFastProteusViewAdBannerBigPicCreator.ProteusItemViewHolder.1(this, paramBaseData, paramContext));
+    ViewFactory.findClickableViewListener(this.a.getVirtualView(), new WebFastProteusViewAdBannerBigPicCreator.ProteusItemViewHolder.1(this, paramBaseData, paramContext));
   }
   
   protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
@@ -29,7 +29,7 @@ public class WebFastProteusViewAdBannerBigPicCreator$ProteusItemViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.item.WebFastProteusViewAdBannerBigPicCreator.ProteusItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

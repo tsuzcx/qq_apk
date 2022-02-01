@@ -25,7 +25,7 @@ public class SVIPHandlerProxy
   
   public static EIPCResult onGetCurrentUserVipType(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    paramInt = ((ISVIPHandler)paramBaseQQAppInterface.getBusinessHandler(SVIP_HANDLER)).g();
+    paramInt = ((ISVIPHandler)paramBaseQQAppInterface.getBusinessHandler(SVIP_HANDLER)).j();
     paramBaseQQAppInterface = new Bundle();
     paramBaseQQAppInterface.putInt("vip_type", paramInt);
     return EIPCResult.createSuccessResult(paramBaseQQAppInterface);
@@ -35,7 +35,7 @@ public class SVIPHandlerProxy
   public int getCurrentUserVipType()
   {
     if (this.businessHandler != null) {
-      return ((ISVIPHandler)this.businessHandler).g();
+      return ((ISVIPHandler)this.businessHandler).j();
     }
     EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "svip_viptype", null);
     if ((localEIPCResult != null) && (localEIPCResult.isSuccess())) {
@@ -47,7 +47,7 @@ public class SVIPHandlerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ipc.proxy.SVIPHandlerProxy
  * JD-Core Version:    0.7.0.1
  */

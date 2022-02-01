@@ -8,8 +8,8 @@ public class VideoInfo$LocationInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<LocationInfo> CREATOR = new VideoInfo.LocationInfo.1();
-  public String a;
   public boolean a;
+  public String b;
   
   public VideoInfo$LocationInfo() {}
   
@@ -21,8 +21,8 @@ public class VideoInfo$LocationInfo
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = bool;
+    this.b = paramParcel.readString();
   }
   
   public int describeContents()
@@ -34,22 +34,22 @@ public class VideoInfo$LocationInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("LocationInfo{location=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", isCreatedByUser=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeByte((byte)this.a);
+    paramParcel.writeString(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo.LocationInfo
  * JD-Core Version:    0.7.0.1
  */

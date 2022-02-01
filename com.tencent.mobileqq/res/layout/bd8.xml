@@ -7,14 +7,14 @@
     <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/adr" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
         <LinearLayout android:orientation="vertical" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-            <RelativeLayout android:id="@id/ojc" android:background="@drawable/f4j" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:id="@id/qrv" android:background="@drawable/gta" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <TextView android:textSize="17.0dip" android:textColor="@android:color/black" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_margin="10.0dip" android:text="手势密码解锁" android:layout_alignParentLeft="true" />
-                <ImageView android:id="@id/nd0" android:background="@drawable/h62" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_alignParentRight="true" />
+                <ImageView android:id="@id/o8t" android:background="@drawable/h62" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_alignParentRight="true" />
             </RelativeLayout>
             <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
-            <RelativeLayout android:id="@id/mr3" android:background="@drawable/f4j" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:id="@id/mwo" android:background="@drawable/gta" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <TextView android:textSize="17.0dip" android:textColor="@android:color/black" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_margin="10.0dip" android:text="关闭" android:layout_alignParentLeft="true" />
-                <ImageView android:id="@id/nc3" android:background="@drawable/h62" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_alignParentRight="true" />
+                <ImageView android:id="@id/o60" android:background="@drawable/h62" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_alignParentRight="true" />
             </RelativeLayout>
             <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" />
             <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/h56" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:leftText="@string/bi9" formItem:showArrow="true" />

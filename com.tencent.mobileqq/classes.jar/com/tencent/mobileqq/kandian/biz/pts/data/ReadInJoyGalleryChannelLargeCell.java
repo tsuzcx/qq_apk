@@ -24,7 +24,7 @@ public class ReadInJoyGalleryChannelLargeCell
       localObject1 = new JSONObject();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mGalleryPicNumber);
-      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131712838));
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131910410));
       ((JSONObject)localObject1).put("gallery_cn_text", ((StringBuilder)localObject2).toString());
       localJSONObject.put("id_gallery_cnt", localObject1);
       localObject1 = new JSONObject();
@@ -33,8 +33,8 @@ public class ReadInJoyGalleryChannelLargeCell
       localJSONObject.put("id_gallery_bg", new JSONObject());
     }
     Util.a(paramAbsBaseArticleInfo, localJSONObject, true);
-    Util.n(paramAbsBaseArticleInfo, localJSONObject);
-    Util.k(paramAbsBaseArticleInfo, localJSONObject);
+    Util.o(paramAbsBaseArticleInfo, localJSONObject);
+    Util.l(paramAbsBaseArticleInfo, localJSONObject);
     Util.a(localJSONObject);
     localJSONObject.put("style_ID", "ReadInjoy_gallery_channel_large_cell");
     Util.a(localJSONObject, paramAbsBaseArticleInfo);
@@ -43,7 +43,7 @@ public class ReadInJoyGalleryChannelLargeCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.data.ReadInJoyGalleryChannelLargeCell
  * JD-Core Version:    0.7.0.1
  */

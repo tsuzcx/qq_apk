@@ -20,7 +20,7 @@ public class OfflineExpire$OfflinePreDownloadTask
     String str = OfflineExpire.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cancel predown bid=");
-    localStringBuilder.append(this.a.a);
+    localStringBuilder.append(this.a.b);
     QLog.i(str, 1, localStringBuilder.toString());
   }
   
@@ -29,14 +29,14 @@ public class OfflineExpire$OfflinePreDownloadTask
     String str = OfflineExpire.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("start predown bid=");
-    localStringBuilder.append(this.a.a);
+    localStringBuilder.append(this.a.b);
     QLog.i(str, 1, localStringBuilder.toString());
-    this.a.a();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.OfflineExpire.OfflinePreDownloadTask
  * JD-Core Version:    0.7.0.1
  */

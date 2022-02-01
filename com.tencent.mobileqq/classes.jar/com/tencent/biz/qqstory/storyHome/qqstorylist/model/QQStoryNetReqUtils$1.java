@@ -12,7 +12,7 @@ final class QQStoryNetReqUtils$1
   {
     paramString = (QQStoryNetReqUtils.RequestCallBack)this.a.get();
     if (paramString != null) {
-      paramString.a(Integer.valueOf(((Integer)((StoryConfigManager)SuperManager.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
+      paramString.a(Integer.valueOf(((Integer)((StoryConfigManager)SuperManager.a(10)).c("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
     }
   }
 }

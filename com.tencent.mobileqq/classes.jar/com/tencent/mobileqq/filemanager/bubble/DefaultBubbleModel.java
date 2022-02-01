@@ -19,38 +19,6 @@ public class DefaultBubbleModel
     QLog.e("DefaultBubbleModel", 1, "error, this is a default bubble model.");
   }
   
-  public int a()
-  {
-    return 0;
-  }
-  
-  public long a()
-  {
-    return 0L;
-  }
-  
-  public QFileBubbleDownloadHandler a()
-  {
-    return null;
-  }
-  
-  public QFileBubblePauseHandler a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public List<Integer> a(int paramInt)
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
   public void a(int paramInt) {}
   
   public void a(int paramInt, View paramView) {}
@@ -62,12 +30,7 @@ public class DefaultBubbleModel
     return false;
   }
   
-  public int b()
-  {
-    return 0;
-  }
-  
-  public String b()
+  public QFileBubblePauseHandler b()
   {
     return null;
   }
@@ -77,9 +40,14 @@ public class DefaultBubbleModel
     return null;
   }
   
-  public int c()
+  public QFileBubbleDownloadHandler c()
   {
-    return 0;
+    return null;
+  }
+  
+  public List<Integer> c(int paramInt)
+  {
+    return null;
   }
   
   public int d()
@@ -91,10 +59,42 @@ public class DefaultBubbleModel
   {
     return 0;
   }
+  
+  public String f()
+  {
+    return null;
+  }
+  
+  public long g()
+  {
+    return 0L;
+  }
+  
+  public String h()
+  {
+    return null;
+  }
+  
+  public int i()
+  {
+    return 0;
+  }
+  
+  public int j()
+  {
+    return 0;
+  }
+  
+  public int k()
+  {
+    return 0;
+  }
+  
+  public void l() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.DefaultBubbleModel
  * JD-Core Version:    0.7.0.1
  */

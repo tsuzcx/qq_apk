@@ -12,11 +12,10 @@ import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.kandian.base.utils.RIJDisplayStyleManager;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
-import com.tencent.mobileqq.kandian.base.utils.api.IRIJDisplayStyleManager;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.io.Serializable;
@@ -39,14 +38,14 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
   private Pair<Integer, Long> a(int paramInt)
   {
     Pair localPair = new Pair(Integer.valueOf(-1), Long.valueOf(-1L));
-    int k = ((IRIJDisplayStyleManager)QRoute.api(IRIJDisplayStyleManager.class)).getRecentListReportVisibleItemCount();
+    int k = RIJDisplayStyleManager.INSTANCE.getRecentListReportVisibleItemCount();
     ArrayList localArrayList = new ArrayList();
     for (;;)
     {
       int j;
       try
       {
-        localObject1 = RecentDataListManager.a().a;
+        localObject1 = RecentDataListManager.a().c;
         if (localObject1 == null) {
           return localPair;
         }
@@ -96,11 +95,11 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
                 return new Pair(Integer.valueOf(paramInt), Long.valueOf(((RecentBaseData)localObject1).mDisplayTime + 1L));
               }
               j = i;
-              if (((RecentUserBaseData)localObject2).a().showUpTime != 0L) {
-                break label351;
+              if (((RecentUserBaseData)localObject2).e().showUpTime != 0L) {
+                break label344;
               }
               j = i - 1;
-              break label351;
+              break label344;
             }
           }
         }
@@ -119,7 +118,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
         QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       }
       return localPair;
-      label351:
+      label344:
       paramInt += 1;
       int i = j;
     }
@@ -172,15 +171,15 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
       if (((Long)localPair.second).longValue() < 0L) {
         return;
       }
-      QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
-      Object localObject1 = localQQAppInterface.getMessageFacade().b(AppConstants.KANDIAN_SUBSCRIBE_UIN, 1008);
+      QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.b();
+      Object localObject1 = localQQAppInterface.getMessageFacade().r(AppConstants.KANDIAN_SUBSCRIBE_UIN, 1008);
       if (localObject1 != null)
       {
         if (((MessageRecord)localObject1).isread) {
           return;
         }
-        Object localObject2 = localQQAppInterface.getProxyManager().a();
-        RecentUser localRecentUser = ((RecentUserProxy)localObject2).b(AppConstants.KANDIAN_SUBSCRIBE_UIN, 1008);
+        Object localObject2 = localQQAppInterface.getProxyManager().g();
+        RecentUser localRecentUser = ((RecentUserProxy)localObject2).c(AppConstants.KANDIAN_SUBSCRIBE_UIN, 1008);
         if (localRecentUser == null) {
           return;
         }
@@ -201,14 +200,14 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
         ((StringBuilder)localObject2).append(", msgtime : ");
         ((StringBuilder)localObject2).append(localPair.second);
         QLog.d((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(localQQAppInterface, "CliOper", "", "", "0X80097D5", "0X80097D5", 0, 1, String.valueOf(localPair.first), null, null, null, false);
+        PublicAccountReportUtils.a(localQQAppInterface, "CliOper", "", "", "0X80097D5", "0X80097D5", 0, 1, String.valueOf(localPair.first), null, null, null, false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianSubscribeManager.MsgBoxSetTopInfo
  * JD-Core Version:    0.7.0.1
  */

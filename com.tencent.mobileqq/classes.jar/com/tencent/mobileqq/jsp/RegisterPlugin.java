@@ -23,10 +23,10 @@ public class RegisterPlugin
       if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject)))
       {
         Intent localIntent = new Intent("action_qq_register_face_recognize_assist");
-        localIntent.setPackage(this.mRuntime.a().getPackageName());
+        localIntent.setPackage(this.mRuntime.d().getPackageName());
         localIntent.putExtra("reg_sig", paramString);
         localIntent.putExtra("face_result", (String)localObject);
-        this.mRuntime.a().sendBroadcast(localIntent);
+        this.mRuntime.d().sendBroadcast(localIntent);
         QLog.d("RegisterPlugin", 1, "handleFaceRecogResult: sendBroadcast.");
         return true;
       }
@@ -46,7 +46,7 @@ public class RegisterPlugin
     paramJsBridgeListener.append("handleJsRequest: ");
     paramJsBridgeListener.append(paramString3);
     QLog.d("RegisterPlugin", 1, paramJsBridgeListener.toString());
-    if (("register".equals(paramString2)) && (this.mRuntime != null) && (this.mRuntime.a() != null))
+    if (("register".equals(paramString2)) && (this.mRuntime != null) && (this.mRuntime.d() != null))
     {
       if ("notifyFaceRecogResult".equals(paramString3))
       {
@@ -68,7 +68,7 @@ public class RegisterPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.RegisterPlugin
  * JD-Core Version:    0.7.0.1
  */

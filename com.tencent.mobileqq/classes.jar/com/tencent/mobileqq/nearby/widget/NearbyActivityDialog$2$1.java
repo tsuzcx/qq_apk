@@ -10,13 +10,13 @@ class NearbyActivityDialog$2$1
   
   public void run()
   {
-    this.a.a.c.setVisibility(8);
-    this.a.a.a.removeCallbacksAndMessages(null);
+    this.a.a.h.setVisibility(8);
+    this.a.a.m.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.1
  * JD-Core Version:    0.7.0.1
  */

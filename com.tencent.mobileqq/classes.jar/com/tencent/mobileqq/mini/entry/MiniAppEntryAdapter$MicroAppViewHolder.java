@@ -34,17 +34,17 @@ class MiniAppEntryAdapter$MicroAppViewHolder
   public MiniAppEntryAdapter$MicroAppViewHolder(View paramView)
   {
     super(paramView);
-    this.imageView = ((ImageView)paramView.findViewById(2131371377));
+    this.imageView = ((ImageView)paramView.findViewById(2131438721));
     ImageView localImageView = this.imageView;
     if ((localImageView instanceof ThemeImageView)) {
       ((ThemeImageView)localImageView).setMaskShape(ThemeImageWrapper.MODE_OTHER);
     }
-    this.textView = ((TextView)paramView.findViewById(2131371380));
-    this.versionTypeMark = ((TextView)paramView.findViewById(2131371381));
-    this.dividerLine = ((ViewGroup)paramView.findViewById(2131371364));
-    this.recommendBadge = ((ImageView)paramView.findViewById(2131371194));
-    this.viewFlipper = ((ViewFlipper)paramView.findViewById(2131371241));
-    this.redDot = ((TextView)paramView.findViewById(2131371199));
+    this.textView = ((TextView)paramView.findViewById(2131438724));
+    this.versionTypeMark = ((TextView)paramView.findViewById(2131438725));
+    this.dividerLine = ((ViewGroup)paramView.findViewById(2131438708));
+    this.recommendBadge = ((ImageView)paramView.findViewById(2131438536));
+    this.viewFlipper = ((ViewFlipper)paramView.findViewById(2131438583));
+    this.redDot = ((TextView)paramView.findViewById(2131438541));
   }
   
   private void startSwitchAnimation()
@@ -83,7 +83,7 @@ class MiniAppEntryAdapter$MicroAppViewHolder
   public void startAnimation()
   {
     this.isPlayAnim = true;
-    Drawable localDrawable = MiniAppUtils.getIcon(this.imageView.getContext(), this.miniAppInfo.appStoreAnimPicUrl, true, 2130841066, 48);
+    Drawable localDrawable = MiniAppUtils.getIcon(this.imageView.getContext(), this.miniAppInfo.appStoreAnimPicUrl, true, 2130841857, 48);
     this.imageView.setImageDrawable(localDrawable);
     this.imageView.invalidate();
     StringBuilder localStringBuilder = new StringBuilder();
@@ -112,7 +112,7 @@ class MiniAppEntryAdapter$MicroAppViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryAdapter.MicroAppViewHolder
  * JD-Core Version:    0.7.0.1
  */

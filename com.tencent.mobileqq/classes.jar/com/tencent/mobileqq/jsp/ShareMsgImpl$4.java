@@ -23,7 +23,7 @@ class ShareMsgImpl$4
     int i = 1;
     try
     {
-      localObject1 = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      localObject1 = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.a), "GET", null, null);
       if (localObject1 != null)
       {
         localObject2 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length);
@@ -48,7 +48,7 @@ class ShareMsgImpl$4
             localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, k, j, true);
             ((Bitmap)localObject2).recycle();
           }
-          this.jdField_a_of_type_JavaUtilMap.put("image", localObject1);
+          this.b.put("image", localObject1);
         }
       }
     }
@@ -59,17 +59,17 @@ class ShareMsgImpl$4
       label162:
       break label162;
     }
-    if (this.this$0.jdField_a_of_type_AndroidAppActivity.getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity")) {
-      this.this$0.jdField_a_of_type_AndroidAppActivity.runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+    if (this.this$0.n.getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity")) {
+      this.this$0.n.runOnUiThread(this.c);
     } else {
-      this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+      this.this$0.o.runOnUiThread(this.c);
     }
     localObject1 = new Bundle();
     ((Bundle)localObject1).putString("report_type", "102");
     ((Bundle)localObject1).putString("act_type", "96");
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("");
-    if (this.jdField_a_of_type_JavaUtilMap.get("image") != null) {
+    if (this.b.get("image") != null) {
       i = 0;
     }
     ((StringBuilder)localObject2).append(i);
@@ -77,20 +77,20 @@ class ShareMsgImpl$4
     ((Bundle)localObject1).putString("intext_4", "0");
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("");
-    if ("2".equals(this.b)) {
+    if ("2".equals(this.d)) {
       i = 3;
     } else {
       i = 4;
     }
     ((StringBuilder)localObject2).append(ReportDef.RepUtil.b(i));
     ((Bundle)localObject1).putString("intext_3", ((StringBuilder)localObject2).toString());
-    ((Bundle)localObject1).putString("stringext_1", this.c);
-    ReportCenter.a().a((Bundle)localObject1, "", this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), false);
+    ((Bundle)localObject1).putString("stringext_1", this.e);
+    ReportCenter.a().a((Bundle)localObject1, "", this.this$0.o.getAccount(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.ShareMsgImpl.4
  * JD-Core Version:    0.7.0.1
  */

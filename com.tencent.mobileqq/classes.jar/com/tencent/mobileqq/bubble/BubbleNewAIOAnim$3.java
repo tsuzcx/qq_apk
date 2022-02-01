@@ -16,37 +16,37 @@ class BubbleNewAIOAnim$3
   public void onAnimationEnd(Animator paramAnimator)
   {
     this.a.a("animator set end!");
-    if (this.a.c != null)
+    if (this.a.t != null)
     {
-      BubbleNewAIOAnim.a(this.a).removeView(this.a.c);
-      this.a.c = null;
+      BubbleNewAIOAnim.a(this.a).removeView(this.a.t);
+      this.a.t = null;
     }
     else
     {
       this.a.a("something wrong, bubble view is null!");
     }
-    if (this.a.d != null)
+    if (this.a.u != null)
     {
-      BubbleNewAIOAnim.b(this.a).removeView(this.a.d);
-      this.a.d = null;
+      BubbleNewAIOAnim.b(this.a).removeView(this.a.u);
+      this.a.u = null;
     }
     else
     {
       this.a.a("something wrong, pendview is null!");
     }
-    if (this.a.e != null)
+    if (this.a.v != null)
     {
-      this.a.e.setVisibility(0);
-      paramAnimator = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
-      paramAnimator.a = -1L;
+      this.a.v.setVisibility(0);
+      paramAnimator = (AvatarPendantManager)this.a.y.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
+      paramAnimator.c = -1L;
       paramAnimator.b();
     }
-    if (this.a.jdField_b_of_type_AndroidViewView != null) {
-      this.a.jdField_b_of_type_AndroidViewView.invalidate();
+    if (this.a.s != null) {
+      this.a.s.invalidate();
     }
     paramAnimator = this.a;
-    paramAnimator.jdField_a_of_type_JavaLangString = "";
-    paramAnimator.jdField_b_of_type_JavaLangString = "";
+    paramAnimator.A = "";
+    paramAnimator.B = "";
     paramAnimator.a(true);
   }
   
@@ -58,7 +58,7 @@ class BubbleNewAIOAnim$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleNewAIOAnim.3
  * JD-Core Version:    0.7.0.1
  */

@@ -17,23 +17,23 @@ class AIOFileVideoView$4
     while (localIterator.hasNext())
     {
       ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)localIterator.next();
-      this.this$0.c.add(this.this$0.c.size() - 1, localActionSheetItem);
+      this.this$0.w.add(this.this$0.w.size() - 1, localActionSheetItem);
     }
-    this.this$0.a.setActionSheetItems(this.this$0.b, this.this$0.c);
-    if (this.this$0.a.isShowing())
+    this.this$0.b.setActionSheetItems(this.this$0.v, this.this$0.w);
+    if (this.this$0.b.isShowing())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, "onVideoFrameCallBack, refresh share menu");
       }
-      this.this$0.a.refresh();
+      this.this$0.b.refresh();
       return;
     }
-    this.this$0.a.show();
+    this.this$0.b.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFileVideoView.4
  * JD-Core Version:    0.7.0.1
  */

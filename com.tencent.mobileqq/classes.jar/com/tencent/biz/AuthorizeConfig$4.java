@@ -1,27 +1,42 @@
 package com.tencent.biz;
 
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class AuthorizeConfig$4
-  implements Runnable
+  implements WtTicketPromise
 {
-  AuthorizeConfig$4(AuthorizeConfig paramAuthorizeConfig, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
+  AuthorizeConfig$4(AuthorizeConfig paramAuthorizeConfig) {}
   
-  public void run()
+  public void Done(Ticket paramTicket)
   {
-    try
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[preload] Done ticket:");
+    localStringBuilder.append(paramTicket._type);
+    QLog.i("AuthorizeConfig", 1, localStringBuilder.toString());
+    if (paramTicket._type == 1048576)
     {
-      if (this.jdField_a_of_type_MqqManagerTicketManager != null)
-      {
-        this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_JavaLangString, 16L, this.jdField_a_of_type_ArrayOfJavaLangString, this.this$0.a);
-        return;
-      }
+      AuthorizeConfig.a(this.a, false);
+      this.a.p();
     }
-    catch (Exception localException)
-    {
-      QLog.e("AuthorizeConfig", 1, new Object[] { "preloadPskey exception ", localException.toString() });
-    }
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[preload] Failed error:");
+    localStringBuilder.append(paramErrMsg.getMessage());
+    QLog.e("AuthorizeConfig", 1, localStringBuilder.toString());
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[preload] Timeout :");
+    localStringBuilder.append(paramErrMsg.getMessage());
+    QLog.e("AuthorizeConfig", 1, localStringBuilder.toString());
   }
 }
 

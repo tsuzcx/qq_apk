@@ -19,26 +19,26 @@ public class GVideoSmallScreenDialogImpl
   public void openPluginActivity(Activity paramActivity, Intent paramIntent, String paramString)
   {
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
-    localPluginParams.b = "group_video_plugin.apk";
-    localPluginParams.e = PluginInfo.k;
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString;
-    localPluginParams.f = "com.gvideo.com.tencent.av.smallscreen.SmallScreenDialogActivity";
-    localPluginParams.jdField_a_of_type_JavaLangClass = GVideoSmallScreenDialog.class;
+    localPluginParams.d = "group_video_plugin.apk";
+    localPluginParams.g = PluginInfo.k;
+    localPluginParams.c = paramString;
+    localPluginParams.h = "com.gvideo.com.tencent.av.smallscreen.SmallScreenDialogActivity";
+    localPluginParams.i = GVideoSmallScreenDialog.class;
     paramString = paramIntent;
     if (paramIntent == null) {
       paramString = new Intent();
     }
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramString;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
-    localPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
-    localPluginParams.d = 10000;
-    localPluginParams.g = null;
+    localPluginParams.j = paramString;
+    localPluginParams.j.putExtra("userQqResources", 2);
+    localPluginParams.j.putExtra("param_plugin_gesturelock", true);
+    localPluginParams.r = 10000;
+    localPluginParams.q = null;
     IPluginManager.a(paramActivity, localPluginParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.groupvideo.api.impl.GVideoSmallScreenDialogImpl
  * JD-Core Version:    0.7.0.1
  */

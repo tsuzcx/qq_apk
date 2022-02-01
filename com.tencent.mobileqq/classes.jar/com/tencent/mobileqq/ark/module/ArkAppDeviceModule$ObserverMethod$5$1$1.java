@@ -10,7 +10,7 @@ class ArkAppDeviceModule$ObserverMethod$5$1$1
   
   public void a(long paramLong)
   {
-    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_ComTencentMobileqqArkModuleArkAppDeviceModule$ObserverMethod.a.a(paramLong);
+    ark.VariantWrapper localVariantWrapper = this.a.a.b.a.a(paramLong);
     if (localVariantWrapper != null) {
       localVariantWrapper.Reset();
     }
@@ -18,12 +18,12 @@ class ArkAppDeviceModule$ObserverMethod$5$1$1
   
   public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
   {
-    ArkAppDeviceModule.a(this.a.a.jdField_a_of_type_ComTencentMobileqqArkModuleArkAppDeviceModule$ObserverMethod.a, this.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    ArkAppDeviceModule.a(this.a.a.b.a, this.a.a.a, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkAppDeviceModule.ObserverMethod.5.1.1
  * JD-Core Version:    0.7.0.1
  */

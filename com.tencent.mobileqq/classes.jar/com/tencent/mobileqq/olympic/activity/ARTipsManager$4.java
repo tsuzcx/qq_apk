@@ -13,15 +13,15 @@ class ARTipsManager$4
   
   public void onClick(View paramView)
   {
-    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
-    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$TipsInfo.a.a();
+    ARTipsManager.c(this.b).removeMessages(101);
+    ARTipsManager.c(this.b).obtainMessage(101).sendToTarget();
+    this.a.l.a();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.ARTipsManager.4
  * JD-Core Version:    0.7.0.1
  */

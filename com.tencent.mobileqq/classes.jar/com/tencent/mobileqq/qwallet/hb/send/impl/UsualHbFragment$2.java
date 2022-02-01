@@ -16,23 +16,23 @@ class UsualHbFragment$2
   
   public void a(HbSkinInfo paramHbSkinInfo)
   {
-    if ((paramHbSkinInfo.a.skin_id != 0) && (paramHbSkinInfo.a.skin_id != -2))
+    if ((paramHbSkinInfo.f.skin_id != 0) && (paramHbSkinInfo.f.skin_id != -2))
     {
-      if (TextUtils.isEmpty(paramHbSkinInfo.a.blessing))
+      if (TextUtils.isEmpty(paramHbSkinInfo.f.blessing))
       {
-        this.a.c.setHint(HardCodeUtil.a(R.string.L));
+        this.a.l.setHint(HardCodeUtil.a(R.string.L));
         return;
       }
-      this.a.c.setHint(paramHbSkinInfo.a.blessing);
+      this.a.l.setHint(paramHbSkinInfo.f.blessing);
       return;
     }
-    paramHbSkinInfo = HbBusiUtils.a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbHbInfo$BundleInfo, this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.getConfigLogic(), paramHbSkinInfo.a.blessing);
-    this.a.c.setHint(paramHbSkinInfo);
+    paramHbSkinInfo = HbBusiUtils.a(this.a.i, this.a.m, this.a.f.getConfigLogic(), paramHbSkinInfo.f.blessing);
+    this.a.l.setHint(paramHbSkinInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.UsualHbFragment.2
  * JD-Core Version:    0.7.0.1
  */

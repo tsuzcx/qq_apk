@@ -5,37 +5,37 @@ import java.util.HashMap;
 
 public class PrivacyInfoUtil
 {
-  private final byte jdField_a_of_type_Byte = 0;
-  private final int jdField_a_of_type_Int = 20;
-  private final String jdField_a_of_type_JavaLangString = "DESede/ECB/PKCS5Padding";
-  private final ArrayList<byte[]> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
-  private HashMap<Long, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final byte[] jdField_a_of_type_ArrayOfByte = "gavinhuangdaydayup_happy".getBytes();
-  private final byte jdField_b_of_type_Byte = 0;
-  private final String jdField_b_of_type_JavaLangString = "random";
-  private final byte[] jdField_b_of_type_ArrayOfByte = "doscarlettmarryrenzzhang".getBytes();
-  private final byte jdField_c_of_type_Byte = 1;
-  private final byte[] jdField_c_of_type_ArrayOfByte = "wangpeilin_georgewangson".getBytes();
-  private final byte jdField_d_of_type_Byte = 0;
-  private final byte[] jdField_d_of_type_ArrayOfByte = "georgebirthdayis19790526".getBytes();
-  private final byte[] e = "qlinkwillthebestfunction".getBytes();
-  private final byte[] f = "qqwillbebetterthanwechat".getBytes();
-  private final byte[] g = "whowillbethenextbigtiger".getBytes();
-  private final byte[] h = "whenwillwefindmahang_370".getBytes();
-  private final byte[] i = "whenwillchinagetworldcap".getBytes();
-  private byte[] j = null;
+  private final String a = "DESede/ECB/PKCS5Padding";
+  private final String b = "random";
+  private final ArrayList<byte[]> c = new ArrayList(10);
+  private final byte d = 0;
+  private final byte[] e = "gavinhuangdaydayup_happy".getBytes();
+  private final byte[] f = "doscarlettmarryrenzzhang".getBytes();
+  private final byte[] g = "wangpeilin_georgewangson".getBytes();
+  private final byte[] h = "georgebirthdayis19790526".getBytes();
+  private final byte[] i = "qlinkwillthebestfunction".getBytes();
+  private final byte[] j = "qqwillbebetterthanwechat".getBytes();
+  private final byte[] k = "whowillbethenextbigtiger".getBytes();
+  private final byte[] l = "whenwillwefindmahang_370".getBytes();
+  private final byte[] m = "whenwillchinagetworldcap".getBytes();
+  private final byte n = 0;
+  private final byte o = 1;
+  private final byte p = 0;
+  private final int q = 20;
+  private HashMap<Long, String> r = new HashMap();
+  private byte[] s = null;
   
   public PrivacyInfoUtil()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_d_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.e);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.f);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.g);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.h);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.i);
+    this.c.add(this.e);
+    this.c.add(this.f);
+    this.c.add(this.g);
+    this.c.add(this.h);
+    this.c.add(this.i);
+    this.c.add(this.j);
+    this.c.add(this.k);
+    this.c.add(this.l);
+    this.c.add(this.m);
   }
   
   public void a(String paramString)
@@ -45,12 +45,12 @@ public class PrivacyInfoUtil
     } else {
       paramString = null;
     }
-    this.j = paramString;
+    this.s = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.util.PrivacyInfoUtil
  * JD-Core Version:    0.7.0.1
  */

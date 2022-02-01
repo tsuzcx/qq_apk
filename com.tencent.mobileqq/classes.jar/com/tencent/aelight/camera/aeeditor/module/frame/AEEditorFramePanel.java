@@ -22,7 +22,7 @@ import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qcircle.api.constant.QCircleConstants;
 import com.tencent.mobileqq.widget.QQToast.IToastValidListener;
-import com.tencent.tavcut.session.TAVCutImageSession;
+import com.tencent.qcircle.tavcut.session.TAVCutImageSession;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -33,24 +33,24 @@ public class AEEditorFramePanel
   extends FrameLayout
 {
   public static final String a;
-  private final SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private MetaMaterial jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
-  private FrameMaterialContentAdapter jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameFrameMaterialContentAdapter;
-  private ImageTemplateControlListener jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener;
-  private MaterialClassifierView jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView;
-  private TAVCutImageSession jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession;
-  private final List<MetaCategory> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final SparseArray<String> jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-  private final List<MetaMaterial> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private List<String> c;
-  private final List<MetaMaterial> d = new ArrayList();
+  private MaterialClassifierView b;
+  private FrameMaterialContentAdapter c;
+  private TAVCutImageSession d;
+  private ImageTemplateControlListener e;
+  private final List<MetaCategory> f = new ArrayList();
+  private final List<MetaMaterial> g = new ArrayList();
+  private List<String> h;
+  private final List<MetaMaterial> i = new ArrayList();
+  private MetaMaterial j = null;
+  private final SparseArray<String> k = new SparseArray();
+  private final SparseArray<String> l = new SparseArray();
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[AEEditor2]");
     localStringBuilder.append(AEEditorFramePanel.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public AEEditorFramePanel(@NonNull Context paramContext)
@@ -69,37 +69,32 @@ public class AEEditorFramePanel
     a(paramContext);
   }
   
-  private ApplyMaterialTask a()
-  {
-    return new AEEditorFramePanel.4(this);
-  }
-  
   private void a(@NonNull Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView = ((MaterialClassifierView)View.inflate(paramContext, 2064318564, this).findViewById(2064122044));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.setOnClearButtonClickListener(new AEEditorFramePanel.1(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.setCategoryItemListener(new AEEditorFramePanel.2(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameFrameMaterialContentAdapter = new FrameMaterialContentAdapter(paramContext);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameFrameMaterialContentAdapter.a(a());
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.setup(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameFrameMaterialContentAdapter, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
+    this.b = ((MaterialClassifierView)View.inflate(paramContext, 2064056436, this).findViewById(2063990967));
+    this.b.setOnClearButtonClickListener(new AEEditorFramePanel.1(this));
+    this.b.setCategoryItemListener(new AEEditorFramePanel.2(this));
+    this.c = new FrameMaterialContentAdapter(paramContext);
+    this.c.a(c());
+    this.b.setup(this.c, this.f, this.g);
   }
   
   private void a(String paramString, int paramInt, MetaMaterial paramMetaMaterial)
   {
-    int i = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getCurrentIndex();
+    int m = this.d.getCurrentIndex();
     if ("frame".equals(FrameMetaMaterialKt.c(paramMetaMaterial)))
     {
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.addFrame(i, paramString, String.valueOf(Color.parseColor(FrameMetaMaterialKt.a(paramMetaMaterial))));
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramMetaMaterial.id);
-      this.jdField_b_of_type_AndroidUtilSparseArray.put(i, FrameMetaMaterialKt.a(paramMetaMaterial));
+      this.d.addFrame(m, paramString, String.valueOf(Color.parseColor(FrameMetaMaterialKt.a(paramMetaMaterial))));
+      this.k.put(m, paramMetaMaterial.id);
+      this.l.put(m, FrameMetaMaterialKt.a(paramMetaMaterial));
     }
     else
     {
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.addFrame(i, paramString);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramMetaMaterial.id);
-      this.jdField_b_of_type_AndroidUtilSparseArray.put(i, null);
+      this.d.addFrame(m, paramString);
+      this.k.put(m, paramMetaMaterial.id);
+      this.l.put(m, null);
     }
-    paramString = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView;
+    paramString = this.b;
     boolean bool;
     if (paramInt != -1) {
       bool = true;
@@ -113,125 +108,113 @@ public class AEEditorFramePanel
     } else {
       paramString = paramMetaMaterial.id;
     }
-    localAEQCircleReport.a(paramString, QCircleConstants.KEY_PIC, "0");
+    localAEQCircleReport.a(paramString, QCircleConstants.y, "0");
+  }
+  
+  private ApplyMaterialTask c()
+  {
+    return new AEEditorFramePanel.4(this);
   }
   
   public String a(int paramInt)
   {
-    return (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public List<MetaMaterial> a()
-  {
-    return this.jdField_b_of_type_JavaUtilList;
+    return (String)this.k.get(paramInt);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession != null)
+    if (this.d != null)
     {
       setSelectedIndex(-1);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getCurrentIndex(), null);
-      this.jdField_b_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getCurrentIndex(), null);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameFrameMaterialContentAdapter != null) {
-      setSelectedIndex((String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt), (String)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt));
+      this.k.put(this.d.getCurrentIndex(), null);
+      this.l.put(this.d.getCurrentIndex(), null);
     }
   }
   
   public void a(String paramString1, String paramString2)
   {
-    TAVCutImageSession localTAVCutImageSession = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession;
+    TAVCutImageSession localTAVCutImageSession = this.d;
     if (localTAVCutImageSession != null)
     {
-      int i = localTAVCutImageSession.getCurrentIndex();
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramString1);
-      this.jdField_b_of_type_AndroidUtilSparseArray.put(i, paramString2);
+      int m = localTAVCutImageSession.getCurrentIndex();
+      this.k.put(m, paramString1);
+      this.l.put(m, paramString2);
     }
   }
   
   public void a(List<String> paramList)
   {
-    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject1 = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("updateSolidFrame... colorList size:");
     localStringBuilder.append(paramList.size());
     AEQLog.a((String)localObject1, localStringBuilder.toString());
-    this.c = paramList;
-    localObject1 = this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial;
+    this.h = paramList;
+    localObject1 = this.j;
     if (localObject1 == null)
     {
-      AEQLog.a(jdField_a_of_type_JavaLangString, "updateSolidFrame... mSolidFrame == null");
+      AEQLog.a(a, "updateSolidFrame... mSolidFrame == null");
       return;
     }
     localObject1 = FrameMetaMaterialKt.b((MetaMaterial)localObject1);
     boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
-    int j = 0;
+    int n = 0;
     Object localObject3;
     if (!bool)
     {
       localObject1 = ((String)localObject1).split(";");
-      int k = localObject1.length;
-      i = 0;
-      while (i < k)
+      int i1 = localObject1.length;
+      m = 0;
+      while (m < i1)
       {
-        localStringBuilder = localObject1[i];
-        localObject2 = jdField_a_of_type_JavaLangString;
+        localStringBuilder = localObject1[m];
+        localObject2 = a;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("updateSolidFrame... solid frame default color:");
         ((StringBuilder)localObject3).append(localStringBuilder);
         AEQLog.a((String)localObject2, ((StringBuilder)localObject3).toString());
         paramList.add(localStringBuilder);
-        i += 1;
+        m += 1;
       }
     }
     localObject1 = new ArrayList();
     Object localObject2 = new Gson();
     localStringBuilder = new StringBuilder();
-    int i = j;
-    while (i < paramList.size())
+    int m = n;
+    while (m < paramList.size())
     {
-      localObject3 = (MetaMaterial)((Gson)localObject2).fromJson(((Gson)localObject2).toJson(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial), MetaMaterial.class);
-      FrameMetaMaterialKt.a((MetaMaterial)localObject3, (String)paramList.get(i));
-      localStringBuilder.append((String)paramList.get(i));
+      localObject3 = (MetaMaterial)((Gson)localObject2).fromJson(((Gson)localObject2).toJson(this.j), MetaMaterial.class);
+      FrameMetaMaterialKt.a((MetaMaterial)localObject3, (String)paramList.get(m));
+      localStringBuilder.append((String)paramList.get(m));
       localStringBuilder.append(" ");
       ((ArrayList)localObject1).add(localObject3);
-      i += 1;
+      m += 1;
     }
-    paramList = jdField_a_of_type_JavaLangString;
+    paramList = a;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("updateSolidFrame... add color list:");
     ((StringBuilder)localObject2).append(localStringBuilder.toString());
     AEQLog.a(paramList, ((StringBuilder)localObject2).toString());
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.addAll(this.d);
-    this.jdField_b_of_type_JavaUtilList.addAll((Collection)localObject1);
-    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.g.clear();
+    this.g.addAll(this.i);
+    this.g.addAll((Collection)localObject1);
+    paramList = this.f.iterator();
     while (paramList.hasNext())
     {
       localObject1 = (MetaCategory)paramList.next();
-      if (((MetaCategory)localObject1).id.equals(MetaMaterialKt.d(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial)))
+      if (((MetaCategory)localObject1).id.equals(MetaMaterialKt.g(this.j)))
       {
         ((MetaCategory)localObject1).materials.clear();
-        ((MetaCategory)localObject1).materials.addAll(this.jdField_b_of_type_JavaUtilList);
+        ((MetaCategory)localObject1).materials.addAll(this.g);
       }
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.a();
+    this.b.a();
     ThreadManager.getUIHandler().postDelayed(new AEEditorFramePanel.3(this), 100L);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)) ^ true;
   }
   
   public boolean a(String paramString)
   {
-    FrameMaterialContentAdapter localFrameMaterialContentAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameFrameMaterialContentAdapter;
+    FrameMaterialContentAdapter localFrameMaterialContentAdapter = this.c;
     if (localFrameMaterialContentAdapter != null) {
       return localFrameMaterialContentAdapter.a(paramString);
     }
@@ -240,19 +223,36 @@ public class AEEditorFramePanel
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.jdField_b_of_type_AndroidUtilSparseArray.clear();
+    this.k.clear();
+    this.l.clear();
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.c != null) {
+      setSelectedIndex((String)this.k.get(paramInt), (String)this.l.get(paramInt));
+    }
+  }
+  
+  public boolean c(int paramInt)
+  {
+    return TextUtils.isEmpty((CharSequence)this.k.get(paramInt)) ^ true;
+  }
+  
+  public List<MetaMaterial> getFrameMaterials()
+  {
+    return this.g;
   }
   
   public void setControlListener(ImageTemplateControlListener paramImageTemplateControlListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener = paramImageTemplateControlListener;
+    this.e = paramImageTemplateControlListener;
   }
   
   public void setSelectedIndex(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameFrameMaterialContentAdapter.b(paramInt);
-    MaterialClassifierView localMaterialClassifierView = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView;
+    this.c.b(paramInt);
+    MaterialClassifierView localMaterialClassifierView = this.b;
     boolean bool;
     if (paramInt != -1) {
       bool = true;
@@ -264,7 +264,7 @@ public class AEEditorFramePanel
   
   public void setSelectedIndex(String paramString1, String paramString2)
   {
-    List localList = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameFrameMaterialContentAdapter.a();
+    List localList = this.c.b();
     if (localList != null)
     {
       if (localList.size() == 0) {
@@ -277,36 +277,36 @@ public class AEEditorFramePanel
       else
       {
         boolean bool = TextUtils.isEmpty(paramString2);
-        int i = 0;
-        int j = 0;
+        int m = 0;
+        int n = 0;
         if (bool)
         {
-          i = j;
-          while (i < localList.size())
+          m = n;
+          while (m < localList.size())
           {
-            if (localList.get(i) == null) {
+            if (localList.get(m) == null) {
               return;
             }
-            if (paramString1.equals(((MetaMaterial)localList.get(i)).id))
+            if (paramString1.equals(((MetaMaterial)localList.get(m)).id))
             {
-              setSelectedIndex(i);
+              setSelectedIndex(m);
               return;
             }
-            i += 1;
+            m += 1;
           }
         }
-        while (i < localList.size())
+        while (m < localList.size())
         {
-          if (localList.get(i) == null) {
+          if (localList.get(m) == null) {
             return;
           }
-          String str = FrameMetaMaterialKt.a((MetaMaterial)localList.get(i));
-          if ((!TextUtils.isEmpty(str)) && (paramString1.equals(((MetaMaterial)localList.get(i)).id)) && (paramString2.equals(str)))
+          String str = FrameMetaMaterialKt.a((MetaMaterial)localList.get(m));
+          if ((!TextUtils.isEmpty(str)) && (paramString1.equals(((MetaMaterial)localList.get(m)).id)) && (paramString2.equals(str)))
           {
-            setSelectedIndex(i);
+            setSelectedIndex(m);
             return;
           }
-          i += 1;
+          m += 1;
         }
       }
       setSelectedIndex(-1);
@@ -315,15 +315,15 @@ public class AEEditorFramePanel
   
   public void setTavCutImageSession(TAVCutImageSession paramTAVCutImageSession)
   {
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession = paramTAVCutImageSession;
+    this.d = paramTAVCutImageSession;
   }
   
   public void setTemplateMaterials(List<MetaCategory> paramList, int paramInt, boolean paramBoolean)
   {
-    this.d.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_b_of_type_JavaUtilList.clear();
+    this.i.clear();
+    this.f.clear();
+    this.f.addAll(paramList);
+    this.g.clear();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
@@ -337,43 +337,43 @@ public class AEEditorFramePanel
           MetaMaterialKt.a(localMetaMaterial, localMetaCategory.id);
           if (paramBoolean)
           {
-            if ((FilterMetaMaterialKt.e(localMetaMaterial)) || (paramInt < FilterMetaMaterialKt.a(localMetaMaterial))) {
+            if ((FilterMetaMaterialKt.f(localMetaMaterial)) || (paramInt < FilterMetaMaterialKt.h(localMetaMaterial))) {
               localIterator.remove();
             }
           }
-          else if ((FilterMetaMaterialKt.f(localMetaMaterial)) || (paramInt < FilterMetaMaterialKt.b(localMetaMaterial))) {
+          else if ((FilterMetaMaterialKt.g(localMetaMaterial)) || (paramInt < FilterMetaMaterialKt.i(localMetaMaterial))) {
             localIterator.remove();
           }
           if ("frame".equals(FrameMetaMaterialKt.c(localMetaMaterial)))
           {
-            String str = jdField_a_of_type_JavaLangString;
+            String str = a;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("setTemplateMaterials... has solid frame remove material color:");
             localStringBuilder.append(FrameMetaMaterialKt.a(localMetaMaterial));
             AEQLog.a(str, localStringBuilder.toString());
-            this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = localMetaMaterial;
+            this.j = localMetaMaterial;
             localIterator.remove();
           }
         }
-        this.jdField_b_of_type_JavaUtilList.addAll(localMetaCategory.materials);
-        this.d.addAll(localMetaCategory.materials);
+        this.g.addAll(localMetaCategory.materials);
+        this.i.addAll(localMetaCategory.materials);
       }
     }
-    if (this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null)
+    if (this.j != null)
     {
-      paramList = this.c;
+      paramList = this.h;
       if ((paramList != null) && (paramList.size() != 0))
       {
-        a(this.c);
-        this.c.clear();
+        a(this.h);
+        this.h.clear();
       }
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.a();
+    this.b.a();
   }
   
   public void setToastValidListener(QQToast.IToastValidListener paramIToastValidListener)
   {
-    FrameMaterialContentAdapter localFrameMaterialContentAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFrameFrameMaterialContentAdapter;
+    FrameMaterialContentAdapter localFrameMaterialContentAdapter = this.c;
     if (localFrameMaterialContentAdapter != null) {
       localFrameMaterialContentAdapter.a(paramIToastValidListener);
     }
@@ -381,7 +381,7 @@ public class AEEditorFramePanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.frame.AEEditorFramePanel
  * JD-Core Version:    0.7.0.1
  */

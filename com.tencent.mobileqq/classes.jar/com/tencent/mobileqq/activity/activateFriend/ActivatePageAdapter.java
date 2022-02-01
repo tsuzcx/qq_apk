@@ -12,30 +12,22 @@ import mqq.util.WeakReference;
 public class ActivatePageAdapter
   extends PagerAdapter
 {
-  private ArrayList<ActivateBasePage> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private WeakReference<ViewPager> jdField_a_of_type_MqqUtilWeakReference = null;
+  private ArrayList<ActivateBasePage> a = new ArrayList();
+  private WeakReference<ViewPager> b = null;
   
   public ActivatePageAdapter(ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramViewPager);
+    this.b = new WeakReference(paramViewPager);
   }
   
   public ArrayList<ActivateBasePage> a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((ActivateBasePage)localIterator.next()).b();
-    }
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((ArrayList)localObject).isEmpty()) {
@@ -43,10 +35,10 @@ public class ActivatePageAdapter
       }
       if (paramInt >= 0)
       {
-        if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (paramInt >= this.a.size()) {
           return;
         }
-        localObject = (ActivateBasePage)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        localObject = (ActivateBasePage)this.a.get(paramInt);
         if (localObject != null) {
           ((ActivateBasePage)localObject).d();
         }
@@ -56,35 +48,43 @@ public class ActivatePageAdapter
   
   public void a(ActivateBasePage paramActivateBasePage)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramActivateBasePage);
+    this.a.add(paramActivateBasePage);
     notifyDataSetChanged();
   }
   
   public void a(ActivateBasePage paramActivateBasePage, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramActivateBasePage);
+    this.a.add(paramInt, paramActivateBasePage);
     notifyDataSetChanged();
   }
   
   public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
-      ((ActivateBasePage)localIterator.next()).c();
+      ((ActivateBasePage)localIterator.next()).b();
     }
   }
   
   public void c()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((ActivateBasePage)localIterator.next()).c();
+    }
+  }
+  
+  public void d()
+  {
+    WeakReference localWeakReference = this.b;
     if (localWeakReference != null)
     {
       if (localWeakReference.get() == null) {
         return;
       }
-      ((ViewPager)this.jdField_a_of_type_MqqUtilWeakReference.get()).setAdapter(null);
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      ((ViewPager)this.jdField_a_of_type_MqqUtilWeakReference.get()).setAdapter(this);
+      ((ViewPager)this.b.get()).setAdapter(null);
+      this.a.clear();
+      ((ViewPager)this.b.get()).setAdapter(this);
     }
   }
   
@@ -93,9 +93,9 @@ public class ActivatePageAdapter
     if (QLog.isColorLevel()) {
       QLog.d("ActivatePageAdapter", 4, "destroy item");
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)
+    if (this.a.size() > paramInt)
     {
-      ActivateBasePage localActivateBasePage = (ActivateBasePage)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      ActivateBasePage localActivateBasePage = (ActivateBasePage)this.a.get(paramInt);
       if ((localActivateBasePage instanceof ReminderCardItemPage)) {
         localActivateBasePage.b();
       }
@@ -105,7 +105,7 @@ public class ActivatePageAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public int getItemPosition(Object paramObject)
@@ -115,7 +115,7 @@ public class ActivatePageAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    ActivateBasePage localActivateBasePage = (ActivateBasePage)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    ActivateBasePage localActivateBasePage = (ActivateBasePage)this.a.get(paramInt);
     if (localActivateBasePage.getParent() != null)
     {
       ((ViewGroup)localActivateBasePage.getParent()).removeView(localActivateBasePage);
@@ -148,7 +148,7 @@ public class ActivatePageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter
  * JD-Core Version:    0.7.0.1
  */

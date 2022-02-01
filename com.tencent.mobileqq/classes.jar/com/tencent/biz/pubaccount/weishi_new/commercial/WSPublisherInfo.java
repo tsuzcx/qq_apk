@@ -23,7 +23,7 @@ public class WSPublisherInfo
     return localstFunctionalIconInfo.jump;
   }
   
-  public String a()
+  public String b()
   {
     stFunctionalIconInfo localstFunctionalIconInfo = this.a;
     if (localstFunctionalIconInfo == null) {
@@ -32,7 +32,7 @@ public class WSPublisherInfo
     return localstFunctionalIconInfo.imgUrl;
   }
   
-  public String b()
+  public String c()
   {
     stFunctionalIconInfo localstFunctionalIconInfo = this.a;
     if (localstFunctionalIconInfo == null) {
@@ -43,7 +43,7 @@ public class WSPublisherInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.commercial.WSPublisherInfo
  * JD-Core Version:    0.7.0.1
  */

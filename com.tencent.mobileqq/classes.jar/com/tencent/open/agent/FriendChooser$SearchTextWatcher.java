@@ -11,7 +11,7 @@ public class FriendChooser$SearchTextWatcher
   
   public void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = this.a.a.getText().toString().trim();
+    paramEditable = this.a.p.getText().toString().trim();
     this.a.a(paramEditable);
   }
   
@@ -21,7 +21,7 @@ public class FriendChooser$SearchTextWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.FriendChooser.SearchTextWatcher
  * JD-Core Version:    0.7.0.1
  */

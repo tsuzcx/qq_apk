@@ -20,33 +20,32 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class FontManagerForTool
   extends Observable
 {
-  private static FontManagerForTool jdField_a_of_type_ComEtrumpMixlayoutFontManagerForTool;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  public HandlerThread a;
-  private ETEngine jdField_a_of_type_ComEtrumpMixlayoutETEngine;
-  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new FontManagerForTool.1(this);
-  private ConcurrentHashMap<Integer, FontInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private ETEngine jdField_b_of_type_ComEtrumpMixlayoutETEngine;
-  private EIPCResultCallback jdField_b_of_type_EipcEIPCResultCallback = new FontManagerForTool.2(this);
-  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static FontManagerForTool b;
+  public HandlerThread a = ThreadManager.newFreeHandlerThread("VasFont", 0);
   private AtomicBoolean c = new AtomicBoolean(false);
   private AtomicBoolean d = new AtomicBoolean(false);
+  private AtomicBoolean e = new AtomicBoolean(false);
+  private AtomicBoolean f = new AtomicBoolean(false);
+  private ConcurrentHashMap<Integer, FontInfo> g = new ConcurrentHashMap();
+  private Handler h = new Handler(Looper.getMainLooper());
+  private ETEngine i;
+  private ETEngine j;
+  private EIPCResultCallback k = new FontManagerForTool.1(this);
+  private EIPCResultCallback l = new FontManagerForTool.2(this);
   
   private FontManagerForTool()
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("VasFont", 0);
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.a.start();
   }
   
   public static FontManagerForTool a()
   {
     try
     {
-      if (jdField_a_of_type_ComEtrumpMixlayoutFontManagerForTool == null) {
-        jdField_a_of_type_ComEtrumpMixlayoutFontManagerForTool = new FontManagerForTool();
+      if (b == null) {
+        b = new FontManagerForTool();
       }
-      FontManagerForTool localFontManagerForTool = jdField_a_of_type_ComEtrumpMixlayoutFontManagerForTool;
+      FontManagerForTool localFontManagerForTool = b;
       return localFontManagerForTool;
     }
     finally {}
@@ -78,7 +77,7 @@ public class FontManagerForTool
     if (paramInt != 0)
     {
       if (((paramInt == 1) || (paramInt == 2)) && (paramBoolean)) {
-        QIPCClientHelper.getInstance().callServer("VasFontIPCModule", str1, null, this.jdField_b_of_type_EipcEIPCResultCallback);
+        QIPCClientHelper.getInstance().callServer("VasFontIPCModule", str1, null, this.l);
       }
       bool = false;
     }
@@ -93,18 +92,18 @@ public class FontManagerForTool
     boolean bool2 = false;
     if (bool3)
     {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETEngine = ETEngine.getInstance();
-      this.jdField_b_of_type_ComEtrumpMixlayoutETEngine = ETEngine.getInstanceForAnimation();
+      this.i = ETEngine.getInstance();
+      this.j = ETEngine.getInstanceForAnimation();
       ETEngine.isSOLoaded.set(true);
       bool1 = paramBoolean;
       try
       {
-        bool3 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.initEngine(5, 2097152);
+        bool3 = this.i.initEngine(5, 2097152);
         paramBoolean = bool2;
         if (bool3) {
           try
           {
-            bool1 = this.jdField_b_of_type_ComEtrumpMixlayoutETEngine.initEngine(3, 1048576);
+            bool1 = this.j.initEngine(3, 1048576);
             paramBoolean = bool2;
             if (bool1) {
               paramBoolean = true;
@@ -117,7 +116,7 @@ public class FontManagerForTool
           }
         }
         bool1 = paramBoolean;
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+        this.c.set(paramBoolean);
         return paramBoolean;
       }
       catch (Exception localException2)
@@ -134,8 +133,8 @@ public class FontManagerForTool
     paramBoolean1 = a(4, paramBoolean1);
     if (paramBoolean1)
     {
-      FastColorFontHelper.a().a().a();
-      this.c.set(true);
+      FastColorFontHelper.a().b().a();
+      this.e.set(true);
       if (paramBoolean2)
       {
         setChanged();
@@ -149,7 +148,7 @@ public class FontManagerForTool
   {
     if (Thread.currentThread() != Looper.getMainLooper().getThread())
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new FontManagerForTool.3(this, paramBoolean));
+      this.h.post(new FontManagerForTool.3(this, paramBoolean));
       return false;
     }
     return a(paramBoolean, false);
@@ -157,7 +156,7 @@ public class FontManagerForTool
   
   public FontInfo a(int paramInt1, int paramInt2)
   {
-    FontInfo localFontInfo = (FontInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
+    FontInfo localFontInfo = (FontInfo)this.g.get(Integer.valueOf(paramInt1));
     Object localObject = localFontInfo;
     if (localFontInfo == null)
     {
@@ -168,9 +167,9 @@ public class FontManagerForTool
         localObject = new Bundle();
         ((Bundle)localObject).putInt("id", paramInt1);
         ((Bundle)localObject).putInt("font_type", paramInt2);
-        QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.c, (Bundle)localObject, this.jdField_a_of_type_EipcEIPCResultCallback);
+        QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.c, (Bundle)localObject, this.k);
       }
-      int j = 0;
+      int n = 0;
       if (paramInt2 != 1)
       {
         if (paramInt2 != 2)
@@ -178,18 +177,18 @@ public class FontManagerForTool
           if ((paramInt2 != 3) && (paramInt2 != 4)) {
             return localFontInfo;
           }
-          if (this.d.compareAndSet(false, true)) {
+          if (this.f.compareAndSet(false, true)) {
             b(true);
           }
           localObject = localFontInfo;
-          if (this.c.get())
+          if (this.e.get())
           {
             localObject = localFontInfo;
             if (bool)
             {
               FastColorFontHelper.a().a(paramInt1, str);
               localObject = new FontInfo(paramInt1, 4, str);
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), localObject);
+              this.g.put(Integer.valueOf(paramInt1), localObject);
               return localObject;
             }
           }
@@ -200,36 +199,36 @@ public class FontManagerForTool
           if (bool)
           {
             localObject = new FontInfo(paramInt1, paramInt2, str);
-            ((FontInfo)localObject).a = Typeface.createFromFile(str);
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), localObject);
+            ((FontInfo)localObject).d = Typeface.createFromFile(str);
+            this.g.put(Integer.valueOf(paramInt1), localObject);
             return localObject;
           }
         }
       }
       else
       {
-        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+        if (this.d.compareAndSet(false, true)) {
           a(true);
         }
         localObject = localFontInfo;
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+        if (this.c.get())
         {
           localObject = localFontInfo;
           if (bool)
           {
-            int i = j;
-            if (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_loadFont(str, paramInt1, false))
+            int m = n;
+            if (this.i.native_loadFont(str, paramInt1, false))
             {
-              i = j;
-              if (this.jdField_b_of_type_ComEtrumpMixlayoutETEngine.native_loadFont(str, paramInt1, false)) {
-                i = 1;
+              m = n;
+              if (this.j.native_loadFont(str, paramInt1, false)) {
+                m = 1;
               }
             }
             localObject = localFontInfo;
-            if (i != 0)
+            if (m != 0)
             {
               localObject = new FontInfo(paramInt1, paramInt2, str);
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), localObject);
+              this.g.put(Integer.valueOf(paramInt1), localObject);
             }
           }
         }

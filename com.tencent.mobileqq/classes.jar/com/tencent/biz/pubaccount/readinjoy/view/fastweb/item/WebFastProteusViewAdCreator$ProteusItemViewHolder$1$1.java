@@ -18,7 +18,7 @@ class WebFastProteusViewAdCreator$ProteusItemViewHolder$1$1
   
   public void onClick(ViewBase paramViewBase)
   {
-    if ((WebFastProteusViewAdCreator.ProteusItemViewHolder.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemWebFastProteusViewAdCreator$ProteusItemViewHolder) instanceof AdData))
+    if ((WebFastProteusViewAdCreator.ProteusItemViewHolder.a(this.a.b) instanceof AdData))
     {
       int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
       if (i != 1071)
@@ -50,8 +50,8 @@ class WebFastProteusViewAdCreator$ProteusItemViewHolder$1$1
           i = 4;
         }
         paramViewBase = (IRIJFastWebRecommendAdService)QRoute.api(IRIJFastWebRecommendAdService.class);
-        Context localContext = this.a.jdField_a_of_type_AndroidContentContext;
-        AdvertisementInfo localAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo((AdData)WebFastProteusViewAdCreator.ProteusItemViewHolder.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemWebFastProteusViewAdCreator$ProteusItemViewHolder));
+        Context localContext = this.a.a;
+        AdvertisementInfo localAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo((AdData)WebFastProteusViewAdCreator.ProteusItemViewHolder.a(this.a.b));
         boolean bool;
         if (i == 8) {
           bool = true;
@@ -61,13 +61,13 @@ class WebFastProteusViewAdCreator$ProteusItemViewHolder$1$1
         paramViewBase.onAdJump(localContext, localAdvertisementInfo, false, bool, i);
         return;
       }
-      JumpAdUtils.a(WebFastProteusViewAdCreator.ProteusItemViewHolder.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemWebFastProteusViewAdCreator$ProteusItemViewHolder), paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+      JumpAdUtils.a(WebFastProteusViewAdCreator.ProteusItemViewHolder.a(this.a.b), paramViewBase.getNativeView(), this.a.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastProteusViewAdCreator.ProteusItemViewHolder.1.1
  * JD-Core Version:    0.7.0.1
  */

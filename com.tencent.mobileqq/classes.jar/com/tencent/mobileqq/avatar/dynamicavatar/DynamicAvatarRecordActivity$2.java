@@ -25,19 +25,19 @@ class DynamicAvatarRecordActivity$2
     } else {
       this.a.b(false);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
+    if (this.a.m != null) {
+      this.a.m.onResume();
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+    this.a.e.e();
     DynamicAvatarRecordActivity.a(this.a);
     if (Build.VERSION.SDK_INT < 14)
     {
       DynamicAvatarRecordActivity localDynamicAvatarRecordActivity = this.a;
-      localDynamicAvatarRecordActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(localDynamicAvatarRecordActivity, 230).setMessage(HardCodeUtil.a(2131703729)).setPositiveButton(this.a.getString(2131693890), new DynamicAvatarRecordActivity.2.1(this));
+      localDynamicAvatarRecordActivity.S = DialogUtil.a(localDynamicAvatarRecordActivity, 230).setMessage(HardCodeUtil.a(2131901675)).setPositiveButton(this.a.getString(2131891511), new DynamicAvatarRecordActivity.2.1(this));
       try
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+        this.a.S.setCancelable(false);
+        this.a.S.show();
       }
       catch (WindowManager.BadTokenException localBadTokenException)
       {
@@ -54,7 +54,7 @@ class DynamicAvatarRecordActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -5,18 +5,18 @@ import android.view.View;
 public class SwipRightMenuBuilder$SwipRightMenuItem
 {
   public int a;
-  public View a;
   public int b;
   public int c;
   public int d;
+  public View e;
   
   public void a()
   {
-    this.jdField_a_of_type_Int = -1;
+    this.a = -1;
     this.b = -1;
     this.c = 0;
     this.d = 0;
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.e = null;
   }
   
   public String toString()
@@ -24,7 +24,7 @@ public class SwipRightMenuBuilder$SwipRightMenuItem
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
     localStringBuilder.append("menuType = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",");
     localStringBuilder.append("menuId = ");
     localStringBuilder.append(this.b);
@@ -36,14 +36,14 @@ public class SwipRightMenuBuilder$SwipRightMenuItem
     localStringBuilder.append(this.d);
     localStringBuilder.append(",");
     localStringBuilder.append("menuView = ");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidViewView);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.rely.SwipRightMenuBuilder.SwipRightMenuItem
  * JD-Core Version:    0.7.0.1
  */

@@ -32,10 +32,10 @@ class ReadInJoyChannelViewController$ReadInJoyChannelObserver
   
   public void a(Configuration paramConfiguration)
   {
-    if ((ReadInJoyChannelViewController.a(this.a) == 56) && (ReadInJoyChannelViewController.a(this.a) != null))
+    if ((ReadInJoyChannelViewController.b(this.a) == 56) && (ReadInJoyChannelViewController.c(this.a) != null))
     {
-      ReadInJoyChannelViewController.a(this.a).f();
-      ReadInJoyChannelViewController.a(this.a).g();
+      ReadInJoyChannelViewController.c(this.a).l();
+      ReadInJoyChannelViewController.c(this.a).m();
     }
     if ((ReadInJoyChannelViewController.a(this.a) != null) && ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
       ((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).a(paramConfiguration);
@@ -77,13 +77,6 @@ class ReadInJoyChannelViewController$ReadInJoyChannelObserver
     }
   }
   
-  public void c()
-  {
-    if ((ReadInJoyChannelViewController.a(this.a) != null) && ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).n();
-    }
-  }
-  
   public void c(int paramInt, List<Long> paramList)
   {
     if ((ReadInJoyChannelViewController.a(this.a) != null) && ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
@@ -91,18 +84,25 @@ class ReadInJoyChannelViewController$ReadInJoyChannelObserver
     }
   }
   
+  public void cE_()
+  {
+    if ((ReadInJoyChannelViewController.a(this.a) != null) && ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).n();
+    }
+  }
+  
   public void d(int paramInt, List<ChannelBannerInfo> paramList)
   {
     if ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))
     {
-      FrameworkHandler localFrameworkHandler = (FrameworkHandler)((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).a().a(2);
+      FrameworkHandler localFrameworkHandler = (FrameworkHandler)((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).getInvokeHandler().a(2);
       if (localFrameworkHandler != null) {
         localFrameworkHandler.b(paramInt, paramList);
       }
     }
   }
   
-  public void j_(int paramInt)
+  public void o_(int paramInt)
   {
     if ((ReadInJoyChannelViewController.a(this.a) != null) && ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
       ((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).a(paramInt);
@@ -111,7 +111,7 @@ class ReadInJoyChannelViewController$ReadInJoyChannelObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyChannelViewController.ReadInJoyChannelObserver
  * JD-Core Version:    0.7.0.1
  */

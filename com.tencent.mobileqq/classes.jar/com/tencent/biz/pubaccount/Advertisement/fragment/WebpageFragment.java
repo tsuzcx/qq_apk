@@ -39,7 +39,7 @@ public class WebpageFragment
   public void onDestroy()
   {
     super.onDestroy();
-    ReportController.a(null, "dc00898", "", this.a.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.a.a.c, "", "", this.a.a.b);
+    ReportController.a(null, "dc00898", "", this.a.g.a, "0X8008F6B", "0X8008F6B", 0, 0, this.a.g.c, "", "", this.a.g.b);
   }
   
   public void onResume()
@@ -55,7 +55,7 @@ public class WebpageFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment
  * JD-Core Version:    0.7.0.1
  */

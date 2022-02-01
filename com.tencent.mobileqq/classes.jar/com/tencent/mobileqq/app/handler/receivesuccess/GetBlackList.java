@@ -22,7 +22,7 @@ public class GetBlackList
         int j = paramToServiceMsg.vBlackListUin.size();
         if (j > 0)
         {
-          paramFromServiceMsg = (FriendsManager)paramMessageHandler.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+          paramFromServiceMsg = (FriendsManager)paramMessageHandler.n.getManager(QQManagerFactory.FRIENDS_MANAGER);
           int i = 0;
           while (i < j)
           {
@@ -30,8 +30,8 @@ public class GetBlackList
             paramObject.append(((Long)paramToServiceMsg.vBlackListUin.get(i)).longValue());
             paramObject.append("");
             paramObject = paramObject.toString();
-            if (!paramFromServiceMsg.b(paramObject)) {
-              paramFromServiceMsg.b(paramObject);
+            if (!paramFromServiceMsg.n(paramObject)) {
+              paramFromServiceMsg.j(paramObject);
             }
             i += 1;
           }
@@ -39,14 +39,14 @@ public class GetBlackList
         if (paramToServiceMsg.lNextMid == -1L) {
           return;
         }
-        paramMessageHandler.b(paramToServiceMsg.lNextMid);
+        paramMessageHandler.d(paramToServiceMsg.lNextMid);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.GetBlackList
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ class ChangesetClient$1
       int j = 0;
       int i = 0;
       NewChangesMsg.Data localData;
-      if ((k > 0) && (paramObject.changes[0].a.newRev > this.a.jdField_a_of_type_Int + 1))
+      if ((k > 0) && (paramObject.changes[0].a.newRev > this.a.b + 1))
       {
         QLog.w("ChangesetClient", 1, "get newer cs, store it");
         paramObject = paramObject.changes;
@@ -35,7 +35,7 @@ class ChangesetClient$1
         while (i < j)
         {
           localData = paramObject[i];
-          this.a.jdField_a_of_type_JavaUtilTreeSet.add(localData.a);
+          this.a.d.add(localData.a);
           i += 1;
         }
         return;
@@ -46,13 +46,13 @@ class ChangesetClient$1
       while (i < k)
       {
         localData = paramObject[i].a;
-        if (localData.newRev <= this.a.jdField_a_of_type_Int)
+        if (localData.newRev <= this.a.b)
         {
           QLog.w("ChangesetClient", 1, "get duplicate cs");
         }
         else
         {
-          if (localData.newRev > this.a.jdField_a_of_type_Int + 1)
+          if (localData.newRev > this.a.b + 1)
           {
             QLog.e("ChangesetClient", 1, "get broken cs");
             break;
@@ -61,13 +61,13 @@ class ChangesetClient$1
         }
         i += 1;
       }
-      this.a.b();
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.client.ChangesetClient.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ class CameraProxy$3
   
   public void run()
   {
-    if ((CameraProxy.a(this.this$0) == 3) && (CameraProxy.a(this.this$0) != null))
+    if ((CameraProxy.a(this.this$0) == 3) && (CameraProxy.b(this.this$0) != null))
     {
-      if (CameraProxy.a(this.this$0)) {
-        CameraProxy.a(this.this$0).a();
+      if (CameraProxy.f(this.this$0)) {
+        CameraProxy.b(this.this$0).f();
       }
       CameraProxy.a(this.this$0, false);
-      CameraProxy.a(this.this$0).a();
+      CameraProxy.b(this.this$0).g();
       if (CameraProxy.a(this.this$0) != 3)
       {
         localStringBuilder = new StringBuilder();
@@ -42,7 +42,7 @@ class CameraProxy$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.CameraProxy.3
  * JD-Core Version:    0.7.0.1
  */

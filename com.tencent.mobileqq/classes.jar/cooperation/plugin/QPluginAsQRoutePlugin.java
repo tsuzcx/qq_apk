@@ -27,7 +27,7 @@ public class QPluginAsQRoutePlugin
   
   public QPluginAsQRoutePlugin(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   private PluginBaseInfo a()
@@ -35,18 +35,13 @@ public class QPluginAsQRoutePlugin
     int i = MobileQQ.sProcessId;
     PluginBaseInfo localPluginBaseInfo = null;
     if (i == 1) {
-      return ((IPluginManager)MobileQQ.sMobileQQ.waitAppRuntime(null).getManager(QQManagerFactory.MGR_PLUGIN)).a(this.jdField_a_of_type_JavaLangString);
+      return ((IPluginManager)MobileQQ.sMobileQQ.waitAppRuntime(null).getManager(QQManagerFactory.MGR_PLUGIN)).d(this.a);
     }
-    PluginManagerClient localPluginManagerClient = a();
+    PluginManagerClient localPluginManagerClient = b();
     if (localPluginManagerClient.useful()) {
-      localPluginBaseInfo = localPluginManagerClient.queryPlugin(this.jdField_a_of_type_JavaLangString);
+      localPluginBaseInfo = localPluginManagerClient.queryPlugin(this.a);
     }
     return localPluginBaseInfo;
-  }
-  
-  private PluginManagerClient a()
-  {
-    return PluginManagerHelper.getPluginInterface(MobileQQ.sMobileQQ);
   }
   
   private IPluginManager.PluginParams a(QRoutePluginActivityParams paramQRoutePluginActivityParams)
@@ -57,24 +52,24 @@ public class QPluginAsQRoutePlugin
       return null;
     }
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(localPluginBaseInfo.mType, localPluginBaseInfo.mSubType);
-    localPluginParams.jdField_a_of_type_JavaLangString = ((AppRuntime)localObject).getCurrentUin();
-    localObject = this.jdField_a_of_type_JavaLangString;
-    localPluginParams.b = ((String)localObject);
-    localPluginParams.e = ((String)localObject);
+    localPluginParams.c = ((AppRuntime)localObject).getCurrentUin();
+    localObject = this.a;
+    localPluginParams.d = ((String)localObject);
+    localPluginParams.g = ((String)localObject);
     if (localPluginBaseInfo.mSubType == 1) {
-      localPluginParams.b = paramQRoutePluginActivityParams.subModule;
+      localPluginParams.d = paramQRoutePluginActivityParams.subModule;
     }
-    localPluginParams.f = paramQRoutePluginActivityParams.activityName;
-    localPluginParams.jdField_a_of_type_JavaLangClass = paramQRoutePluginActivityParams.activityProxy;
-    localPluginParams.c = paramQRoutePluginActivityParams.activityRequestCode;
-    localPluginParams.f = paramQRoutePluginActivityParams.activityName;
+    localPluginParams.h = paramQRoutePluginActivityParams.activityName;
+    localPluginParams.i = paramQRoutePluginActivityParams.activityProxy;
+    localPluginParams.k = paramQRoutePluginActivityParams.activityRequestCode;
+    localPluginParams.h = paramQRoutePluginActivityParams.activityName;
     if (paramQRoutePluginActivityParams.intent == null) {
       paramQRoutePluginActivityParams.intent = new Intent(paramQRoutePluginActivityParams.context, paramQRoutePluginActivityParams.activityProxy);
     }
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramQRoutePluginActivityParams.intent;
-    localPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession = ((PreloadProcHitPluginSession)paramQRoutePluginActivityParams.session);
-    localPluginParams.d = paramQRoutePluginActivityParams.timeoutMills;
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramQRoutePluginActivityParams.dialog;
+    localPluginParams.j = paramQRoutePluginActivityParams.intent;
+    localPluginParams.m = ((PreloadProcHitPluginSession)paramQRoutePluginActivityParams.session);
+    localPluginParams.r = paramQRoutePluginActivityParams.timeoutMills;
+    localPluginParams.l = paramQRoutePluginActivityParams.dialog;
     return localPluginParams;
   }
   
@@ -86,19 +81,19 @@ public class QPluginAsQRoutePlugin
       return null;
     }
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(localPluginBaseInfo.mType, localPluginBaseInfo.mSubType);
-    localPluginParams.jdField_a_of_type_JavaLangString = ((AppRuntime)localObject).getCurrentUin();
-    localObject = this.jdField_a_of_type_JavaLangString;
-    localPluginParams.b = ((String)localObject);
-    localPluginParams.e = ((String)localObject);
+    localPluginParams.c = ((AppRuntime)localObject).getCurrentUin();
+    localObject = this.a;
+    localPluginParams.d = ((String)localObject);
+    localPluginParams.g = ((String)localObject);
     if (localPluginBaseInfo.mSubType == 1) {
-      localPluginParams.b = paramQRoutePluginReceiverParams.subModule;
+      localPluginParams.d = paramQRoutePluginReceiverParams.subModule;
     }
-    localPluginParams.f = paramQRoutePluginReceiverParams.receiverName;
+    localPluginParams.h = paramQRoutePluginReceiverParams.receiverName;
     if (paramQRoutePluginReceiverParams.intent == null) {
       paramQRoutePluginReceiverParams.intent = new Intent(paramQRoutePluginReceiverParams.context, paramQRoutePluginReceiverParams.receiverProxy);
     }
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramQRoutePluginReceiverParams.intent;
-    localPluginParams.jdField_a_of_type_Boolean = paramQRoutePluginReceiverParams.isPreload;
+    localPluginParams.j = paramQRoutePluginReceiverParams.intent;
+    localPluginParams.n = paramQRoutePluginReceiverParams.isPreload;
     return localPluginParams;
   }
   
@@ -110,19 +105,19 @@ public class QPluginAsQRoutePlugin
       return null;
     }
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(localPluginBaseInfo.mType, localPluginBaseInfo.mSubType);
-    localPluginParams.jdField_a_of_type_JavaLangString = ((AppRuntime)localObject).getCurrentUin();
-    localObject = this.jdField_a_of_type_JavaLangString;
-    localPluginParams.b = ((String)localObject);
-    localPluginParams.e = ((String)localObject);
+    localPluginParams.c = ((AppRuntime)localObject).getCurrentUin();
+    localObject = this.a;
+    localPluginParams.d = ((String)localObject);
+    localPluginParams.g = ((String)localObject);
     if (localPluginBaseInfo.mSubType == 1) {
-      localPluginParams.b = paramQRoutePluginServiceParams.subModule;
+      localPluginParams.d = paramQRoutePluginServiceParams.subModule;
     }
-    localPluginParams.f = paramQRoutePluginServiceParams.serviceName;
+    localPluginParams.h = paramQRoutePluginServiceParams.serviceName;
     if (paramQRoutePluginServiceParams.intent == null) {
       paramQRoutePluginServiceParams.intent = new Intent(paramQRoutePluginServiceParams.context, paramQRoutePluginServiceParams.serviceProxy);
     }
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramQRoutePluginServiceParams.intent;
-    localPluginParams.jdField_a_of_type_Boolean = paramQRoutePluginServiceParams.isPreload;
+    localPluginParams.j = paramQRoutePluginServiceParams.intent;
+    localPluginParams.n = paramQRoutePluginServiceParams.isPreload;
     return localPluginParams;
   }
   
@@ -152,11 +147,16 @@ public class QPluginAsQRoutePlugin
     return bool;
   }
   
+  private PluginManagerClient b()
+  {
+    return PluginManagerHelper.getPluginInterface(MobileQQ.sMobileQQ);
+  }
+  
   public void bindService(QRoutePluginServiceParams paramQRoutePluginServiceParams, ServiceConnection paramServiceConnection)
   {
     IPluginManager.PluginParams localPluginParams = a(paramQRoutePluginServiceParams);
     if (localPluginParams != null) {
-      localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+      localPluginParams.o = paramServiceConnection;
     }
     IPluginManager.c(paramQRoutePluginServiceParams.context, localPluginParams);
   }
@@ -176,23 +176,23 @@ public class QPluginAsQRoutePlugin
     paramIQRoutePluginInstallListener = new QPluginAsQRoutePlugin.2(this, paramIQRoutePluginInstallListener);
     if (MobileQQ.sProcessId == 1)
     {
-      ((IPluginManager)MobileQQ.sMobileQQ.waitAppRuntime(null).getManager(QQManagerFactory.MGR_PLUGIN)).installPlugin(this.jdField_a_of_type_JavaLangString, paramIQRoutePluginInstallListener);
+      ((IPluginManager)MobileQQ.sMobileQQ.waitAppRuntime(null).getManager(QQManagerFactory.MGR_PLUGIN)).installPlugin(this.a, paramIQRoutePluginInstallListener);
       return;
     }
-    PluginManagerClient localPluginManagerClient = a();
+    PluginManagerClient localPluginManagerClient = b();
     if (localPluginManagerClient.useful()) {
-      localPluginManagerClient.installPlugin(this.jdField_a_of_type_JavaLangString, paramIQRoutePluginInstallListener);
+      localPluginManagerClient.installPlugin(this.a, paramIQRoutePluginInstallListener);
     }
   }
   
   public boolean isInstalled()
   {
     if (MobileQQ.sProcessId == 1) {
-      return ((IPluginManager)MobileQQ.sMobileQQ.waitAppRuntime(null).getManager(QQManagerFactory.MGR_PLUGIN)).isPlugininstalled(this.jdField_a_of_type_JavaLangString);
+      return ((IPluginManager)MobileQQ.sMobileQQ.waitAppRuntime(null).getManager(QQManagerFactory.MGR_PLUGIN)).isPlugininstalled(this.a);
     }
-    PluginManagerClient localPluginManagerClient = a();
+    PluginManagerClient localPluginManagerClient = b();
     if (localPluginManagerClient.useful()) {
-      return localPluginManagerClient.isPluginInstalled(this.jdField_a_of_type_JavaLangString);
+      return localPluginManagerClient.isPluginInstalled(this.a);
     }
     return false;
   }
@@ -204,9 +204,9 @@ public class QPluginAsQRoutePlugin
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("loadPlugin for DYNAMIC_FEATURE_PLUGIN ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("QRoute.Module.Plugin", 1, ((StringBuilder)localObject).toString());
-      LoadCompactDynamicFeature.a().a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.sApplication);
+      LoadCompactDynamicFeature.a().b(this.a, BaseApplicationImpl.sApplication);
     }
   }
   
@@ -220,7 +220,7 @@ public class QPluginAsQRoutePlugin
         if (((PluginBaseInfo)localObject).mSubType != 1) {
           try
           {
-            paramString = PluginStatic.getOrCreateClassLoader(MobileQQ.sMobileQQ, this.jdField_a_of_type_JavaLangString).loadClass(paramString);
+            paramString = PluginStatic.getOrCreateClassLoader(MobileQQ.sMobileQQ, this.a).loadClass(paramString);
             return paramString;
           }
           catch (Exception paramString)
@@ -233,7 +233,7 @@ public class QPluginAsQRoutePlugin
         ((StringBuilder)localObject).append(paramString);
         paramString = new StringBuilder();
         paramString.append(" not support shadow plugin: ");
-        paramString.append(this.jdField_a_of_type_JavaLangString);
+        paramString.append(this.a);
         ((StringBuilder)localObject).append(paramString.toString());
         throw new RuntimeException(((StringBuilder)localObject).toString());
       }
@@ -243,7 +243,7 @@ public class QPluginAsQRoutePlugin
     ((StringBuilder)localObject).append("loadPluginClass failed");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(" ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(" can't not run in current Process:");
     ((StringBuilder)localObject).append(MobileQQ.sMobileQQ);
     QLog.e("QRoute.Module.Plugin", 1, ((StringBuilder)localObject).toString());
@@ -252,7 +252,7 @@ public class QPluginAsQRoutePlugin
     ((StringBuilder)localObject).append(paramString);
     paramString = new StringBuilder();
     paramString.append(" in Plugin ");
-    paramString.append(this.jdField_a_of_type_JavaLangString);
+    paramString.append(this.a);
     ((StringBuilder)localObject).append(paramString.toString());
     ((StringBuilder)localObject).append(" can not run on this process: ");
     ((StringBuilder)localObject).append(MobileQQ.sMobileQQ.getQQProcessName());
@@ -262,7 +262,7 @@ public class QPluginAsQRoutePlugin
   
   public String pluginId()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public QRoutePluginInfo queryPluginInfo()
@@ -313,7 +313,7 @@ public class QPluginAsQRoutePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.QPluginAsQRoutePlugin
  * JD-Core Version:    0.7.0.1
  */

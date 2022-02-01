@@ -8,24 +8,24 @@ import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 public class NewVoteAnimHelper$NewVoteHolder
 {
   public View a;
-  public RelativeLayout a;
-  public TextView a;
-  public HeartLayout a;
-  public View b;
+  public TextView b;
+  public View c;
+  public RelativeLayout d;
+  public HeartLayout e;
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.b != null);
+    return (this.a != null) && (this.b != null) && (this.c != null);
   }
   
   public boolean a(View paramView1, TextView paramTextView, View paramView2, RelativeLayout paramRelativeLayout, HeartLayout paramHeartLayout)
   {
-    return (this.jdField_a_of_type_AndroidViewView == paramView1) && (this.jdField_a_of_type_AndroidWidgetTextView == paramTextView) && (this.b == paramView2) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == paramRelativeLayout) && (this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout == paramHeartLayout);
+    return (this.a == paramView1) && (this.b == paramTextView) && (this.c == paramView2) && (this.d == paramRelativeLayout) && (this.e == paramHeartLayout);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.NewVoteAnimHelper.NewVoteHolder
  * JD-Core Version:    0.7.0.1
  */

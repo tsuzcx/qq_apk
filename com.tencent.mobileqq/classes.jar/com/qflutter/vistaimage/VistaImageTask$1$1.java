@@ -18,9 +18,9 @@ class VistaImageTask$1$1
     localStringBuilder.append(", msg=");
     localStringBuilder.append(paramString2);
     VistaImageLog.e("VistaImageTask", localStringBuilder.toString());
-    paramString1 = new TextureRecord(this.jdField_a_of_type_ComQflutterVistaimageVistaImageTask$1.jdField_a_of_type_ComQflutterVistaimageVistaImageTask, "-5", "load bitmap error occurred");
-    this.jdField_a_of_type_RxSubscriber.onNext(paramString1);
-    this.jdField_a_of_type_RxSubscriber.onCompleted();
+    paramString1 = new TextureRecord(this.a.a, "-5", "load bitmap error occurred");
+    this.b.onNext(paramString1);
+    this.b.onCompleted();
   }
   
   public void onLoaded(String paramString, Drawable paramDrawable, boolean paramBoolean, IRenderer paramIRenderer)
@@ -35,17 +35,17 @@ class VistaImageTask$1$1
     if (paramDrawable == null) {
       VistaImageLog.e("VistaImageTask", "[loadImage] no bitmap");
     }
-    for (paramString = new TextureRecord(this.jdField_a_of_type_ComQflutterVistaimageVistaImageTask$1.jdField_a_of_type_ComQflutterVistaimageVistaImageTask, "-2", "no bitmap");; paramString = new TextureRecord(this.jdField_a_of_type_ComQflutterVistaimageVistaImageTask$1.jdField_a_of_type_ComQflutterVistaimageVistaImageTask, VistaImageTask.access$000(this.jdField_a_of_type_ComQflutterVistaimageVistaImageTask$1.jdField_a_of_type_ComQflutterVistaimageVistaImageTask), VistaImageTask.access$100(this.jdField_a_of_type_ComQflutterVistaimageVistaImageTask$1.jdField_a_of_type_ComQflutterVistaimageVistaImageTask), VistaImageTask.access$200(this.jdField_a_of_type_ComQflutterVistaimageVistaImageTask$1.jdField_a_of_type_ComQflutterVistaimageVistaImageTask), this.jdField_a_of_type_ComQflutterVistaimageVistaImageTask$1.jdField_a_of_type_Float, VistaImageTask.access$300(this.jdField_a_of_type_ComQflutterVistaimageVistaImageTask$1.jdField_a_of_type_ComQflutterVistaimageVistaImageTask), paramBoolean, paramDrawable, paramIRenderer))
+    for (paramString = new TextureRecord(this.a.a, "-2", "no bitmap");; paramString = new TextureRecord(this.a.a, this.a.b, paramBoolean, paramDrawable, paramIRenderer))
     {
-      this.jdField_a_of_type_RxSubscriber.onNext(paramString);
-      this.jdField_a_of_type_RxSubscriber.onCompleted();
+      this.b.onNext(paramString);
+      this.b.onCompleted();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.vistaimage.VistaImageTask.1.1
  * JD-Core Version:    0.7.0.1
  */

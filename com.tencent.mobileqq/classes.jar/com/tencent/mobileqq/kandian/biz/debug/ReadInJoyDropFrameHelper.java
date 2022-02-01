@@ -21,15 +21,15 @@ import org.json.JSONObject;
 public class ReadInJoyDropFrameHelper
   implements IForeBackGroundCallback
 {
-  private ReadInJoyDropFrameHelper.ReadInJoyFluencyObserver jdField_a_of_type_ComTencentMobileqqKandianBizDebugReadInJoyDropFrameHelper$ReadInJoyFluencyObserver = new ReadInJoyDropFrameHelper.ReadInJoyFluencyObserver();
-  private Map<Integer, Double> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<Integer, List<ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener>> b = new HashMap();
-  private Map<String, List<Double>> c = new HashMap();
+  private ReadInJoyDropFrameHelper.ReadInJoyFluencyObserver a = new ReadInJoyDropFrameHelper.ReadInJoyFluencyObserver();
+  private Map<Integer, Double> b = new HashMap();
+  private Map<Integer, List<ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener>> c = new HashMap();
+  private Map<String, List<Double>> d = new HashMap();
   
   private ReadInJoyDropFrameHelper()
   {
     ReadinjoySPEventReport.ForeBackGround.a(this);
-    ReadInJoyDataProviderObserver.getInstance().setFluencyObserver(this.jdField_a_of_type_ComTencentMobileqqKandianBizDebugReadInJoyDropFrameHelper$ReadInJoyFluencyObserver);
+    ReadInJoyDataProviderObserver.getInstance().setFluencyObserver(this.a);
   }
   
   private int a(String paramString)
@@ -62,39 +62,14 @@ public class ReadInJoyDropFrameHelper
     return -1;
   }
   
-  public static ReadInJoyDropFrameHelper a()
-  {
-    return ReadInJoyDropFrameHelper.DropFrameHelperHolder.a();
-  }
-  
-  private JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("proteus_bid", RIJProteusOfflineBidSp.a("default_feeds_proteus_offline_bid"));
-    localJSONObject.put("cpu_type", DeviceInfoUtil.g());
-    localJSONObject.put("cpu_frequency", DeviceInfoUtil.b());
-    localJSONObject.put("cache_memory", DeviceInfoUtil.a());
-    localJSONObject.put("device_model", DeviceInfoUtil.d());
-    localJSONObject.put("os_version", DeviceInfoUtil.e());
-    int i;
-    if (NetworkState.isWifiConn()) {
-      i = 1;
-    } else {
-      i = 2;
-    }
-    localJSONObject.put("network_type", i);
-    localJSONObject.put("package_name", "8.7.0.5295");
-    return localJSONObject;
-  }
-  
   private void a(String paramString, double paramDouble)
   {
     ThreadManager.executeOnSubThread(new ReadInJoyDropFrameHelper.2(this, paramString, paramDouble));
   }
   
-  public static boolean a()
+  public static boolean c()
   {
-    boolean bool = ((Boolean)RIJSPUtils.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(true))).booleanValue();
+    boolean bool = ((Boolean)RIJSPUtils.b("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(true))).booleanValue();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReadInJoyDropFrameHelper | Report enable :");
     localStringBuilder.append(bool);
@@ -102,28 +77,53 @@ public class ReadInJoyDropFrameHelper
     return bool;
   }
   
+  public static ReadInJoyDropFrameHelper d()
+  {
+    return ReadInJoyDropFrameHelper.DropFrameHelperHolder.a();
+  }
+  
+  private JSONObject e()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("proteus_bid", RIJProteusOfflineBidSp.a("default_feeds_proteus_offline_bid"));
+    localJSONObject.put("cpu_type", DeviceInfoUtil.m());
+    localJSONObject.put("cpu_frequency", DeviceInfoUtil.k());
+    localJSONObject.put("cache_memory", DeviceInfoUtil.a());
+    localJSONObject.put("device_model", DeviceInfoUtil.f());
+    localJSONObject.put("os_version", DeviceInfoUtil.g());
+    int i;
+    if (NetworkState.isWifiConn()) {
+      i = 1;
+    } else {
+      i = 2;
+    }
+    localJSONObject.put("network_type", i);
+    localJSONObject.put("package_name", "8.8.17.5770");
+    return localJSONObject;
+  }
+  
   public void a() {}
   
   public void a(int paramInt, ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener paramOnFeedsFluencyResultListener)
   {
-    Object localObject = this.b;
+    Object localObject = this.c;
     if (localObject != null)
     {
       if (((Map)localObject).containsKey(Integer.valueOf(paramInt))) {
-        localObject = (List)this.b.get(Integer.valueOf(paramInt));
+        localObject = (List)this.c.get(Integer.valueOf(paramInt));
       } else {
         localObject = new ArrayList();
       }
       if (!((List)localObject).contains(paramOnFeedsFluencyResultListener)) {
         ((List)localObject).add(paramOnFeedsFluencyResultListener);
       }
-      this.b.put(Integer.valueOf(paramInt), localObject);
+      this.c.put(Integer.valueOf(paramInt), localObject);
     }
   }
   
   public void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
   {
-    if (!a()) {
+    if (!c()) {
       return;
     }
     int i = a(paramString);
@@ -147,11 +147,11 @@ public class ReadInJoyDropFrameHelper
     paramString.append(" fluencyVal ");
     paramString.append(d1);
     QLog.d("ReadInJoyDropFrameHelper", 1, paramString.toString());
-    paramString = this.c;
+    paramString = this.d;
     if (paramString != null)
     {
       if (paramString.get(String.valueOf(i)) == null) {
-        this.c.put(String.valueOf(i), new ArrayList());
+        this.d.put(String.valueOf(i), new ArrayList());
       }
       paramString = new StringBuilder();
       paramString.append("addFluency into reportMap | channelId ");
@@ -159,22 +159,30 @@ public class ReadInJoyDropFrameHelper
       paramString.append(" fluencyVal ");
       paramString.append(d1);
       QLog.d("ReadInJoyDropFrameHelper", 1, paramString.toString());
-      ((List)this.c.get(String.valueOf(i))).add(Double.valueOf(d1));
+      ((List)this.d.get(String.valueOf(i))).add(Double.valueOf(d1));
     }
-    paramString = this.jdField_a_of_type_JavaUtilMap;
+    paramString = this.b;
   }
   
-  public void ax_()
+  public void b(int paramInt, ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener paramOnFeedsFluencyResultListener)
   {
-    Object localObject = this.c;
+    Map localMap = this.c;
+    if ((localMap != null) && (localMap.get(Integer.valueOf(paramInt)) != null)) {
+      ((List)this.c.get(Integer.valueOf(paramInt))).remove(paramOnFeedsFluencyResultListener);
+    }
+  }
+  
+  public void cU_()
+  {
+    Object localObject = this.d;
     if ((localObject != null) && (!((Map)localObject).isEmpty()))
     {
       QLog.d("ReadInJoyDropFrameHelper", 2, "background | reporFeeds Fluency");
-      localObject = this.c.keySet().iterator();
+      localObject = this.d.keySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
-        List localList = (List)this.c.get(str);
+        List localList = (List)this.d.get(str);
         if ((localList != null) && (localList.size() > 0))
         {
           Iterator localIterator = new ArrayList(localList).iterator();
@@ -197,18 +205,10 @@ public class ReadInJoyDropFrameHelper
     }
     QLog.d("ReadInJoyDropFrameHelper", 2, "background | reportMap is empty");
   }
-  
-  public void b(int paramInt, ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener paramOnFeedsFluencyResultListener)
-  {
-    Map localMap = this.b;
-    if ((localMap != null) && (localMap.get(Integer.valueOf(paramInt)) != null)) {
-      ((List)this.b.get(Integer.valueOf(paramInt))).remove(paramOnFeedsFluencyResultListener);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.debug.ReadInJoyDropFrameHelper
  * JD-Core Version:    0.7.0.1
  */

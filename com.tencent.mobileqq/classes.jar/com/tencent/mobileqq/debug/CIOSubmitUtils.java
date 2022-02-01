@@ -26,19 +26,19 @@ import org.json.JSONObject;
 public class CIOSubmitUtils
 {
   protected static final Handler a;
-  private static final HandlerThread jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("CIOSubmitThread", 1);
-  static String jdField_a_of_type_JavaLangString;
+  static String b;
+  private static final HandlerThread c = ThreadManager.newFreeHandlerThread("CIOSubmitThread", 1);
   
   static
   {
-    jdField_a_of_type_AndroidOsHandlerThread.start();
-    jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    c.start();
+    a = new Handler(c.getLooper());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("cio_mobile_qq");
     localStringBuilder.append(File.separator);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
   }
   
   static Pair<String, String> a(String paramString1, String paramString2)
@@ -56,7 +56,7 @@ public class CIOSubmitUtils
     localStringBuilder.append(paramString2);
     paramString2 = localStringBuilder.toString();
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(b);
     ((StringBuilder)localObject).append(paramString2);
     localObject = ((StringBuilder)localObject).toString();
     if (QLog.isColorLevel()) {
@@ -82,16 +82,16 @@ public class CIOSubmitUtils
   private static String a(int paramInt)
   {
     if (paramInt == 0) {
-      return HardCodeUtil.a(2131699631);
+      return HardCodeUtil.a(2131897664);
     }
     if (paramInt == 1) {
-      return HardCodeUtil.a(2131699620);
+      return HardCodeUtil.a(2131897653);
     }
     if (paramInt == 2) {
-      return HardCodeUtil.a(2131699626);
+      return HardCodeUtil.a(2131897659);
     }
     if (paramInt == 3) {
-      return HardCodeUtil.a(2131699621);
+      return HardCodeUtil.a(2131897654);
     }
     throw new IllegalStateException("Illegal priority.");
   }
@@ -111,14 +111,45 @@ public class CIOSubmitUtils
     localJSONObject.put("rdmuuid", "0");
     localJSONObject.put("os", Build.VERSION.RELEASE);
     localJSONObject.put("uin", paramString1);
-    localJSONObject.put("deviceid", UtilApi.a.b());
+    localJSONObject.put("deviceid", UtilApi.b.b());
     localJSONObject.put("fileObj", paramString2);
     return localJSONObject;
   }
   
-  static void a()
+  public static void a(String paramString)
   {
-    Object localObject = new File(jdField_a_of_type_JavaLangString);
+    FileUtils.delete(paramString, false);
+    new File(paramString).mkdir();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("touch folder:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" completed");
+      QLog.d("CIOSubmitUtils", 2, localStringBuilder.toString());
+    }
+  }
+  
+  private static String b(int paramInt)
+  {
+    if (paramInt == 0) {
+      return HardCodeUtil.a(2131897647);
+    }
+    if (paramInt == 1) {
+      return HardCodeUtil.a(2131897655);
+    }
+    if (paramInt == 2) {
+      return HardCodeUtil.a(2131897657);
+    }
+    if (paramInt == 3) {
+      return HardCodeUtil.a(2131897650);
+    }
+    throw new IllegalStateException("Illegal level.");
+  }
+  
+  static void b()
+  {
+    Object localObject = new File(b);
     if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
     {
       localObject = ((File)localObject).listFiles();
@@ -145,95 +176,6 @@ public class CIOSubmitUtils
     }
   }
   
-  public static void a(String paramString)
-  {
-    FileUtils.delete(paramString, false);
-    new File(paramString).mkdir();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("touch folder:");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(" completed");
-      QLog.d("CIOSubmitUtils", 2, localStringBuilder.toString());
-    }
-  }
-  
-  public static String b()
-  {
-    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localAppRuntime == null) {
-      return "0";
-    }
-    if (localAppRuntime.getAccount() == null) {
-      return "0";
-    }
-    return localAppRuntime.getAccount();
-  }
-  
-  private static String b(int paramInt)
-  {
-    if (paramInt == 0) {
-      return HardCodeUtil.a(2131699614);
-    }
-    if (paramInt == 1) {
-      return HardCodeUtil.a(2131699622);
-    }
-    if (paramInt == 2) {
-      return HardCodeUtil.a(2131699624);
-    }
-    if (paramInt == 3) {
-      return HardCodeUtil.a(2131699617);
-    }
-    throw new IllegalStateException("Illegal level.");
-  }
-  
-  private static String b(String paramString1, String paramString2)
-  {
-    CIOSubmitUtils.UploadFileUtil localUploadFileUtil = new CIOSubmitUtils.UploadFileUtil();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("deviceID:");
-      localStringBuilder.append(DeviceInfoUtil.a());
-      QLog.d("CIOSubmitUtils", 2, localStringBuilder.toString());
-      QLog.d("CIOSubmitUtils", 2, "versionName:8.7.0.5295");
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("firma");
-      localStringBuilder.append(Build.MODEL);
-      QLog.d("CIOSubmitUtils", 2, localStringBuilder.toString());
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("operationSysandroid ");
-      localStringBuilder.append(Build.VERSION.RELEASE);
-      QLog.d("CIOSubmitUtils", 2, localStringBuilder.toString());
-      QLog.d("CIOSubmitUtils", 2, "platformandroid");
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("mzipname:");
-      localStringBuilder.append(paramString1);
-      localStringBuilder.append(" allName:");
-      localStringBuilder.append(paramString2);
-      QLog.d("CIOSubmitUtils", 2, localStringBuilder.toString());
-    }
-    localUploadFileUtil.a("deviceId", DeviceInfoUtil.a());
-    localUploadFileUtil.a("versionName", "8.7.0.5295");
-    localUploadFileUtil.a("firma", Build.MODEL);
-    paramString1 = new StringBuilder();
-    paramString1.append("android ");
-    paramString1.append(Build.VERSION.RELEASE);
-    localUploadFileUtil.a("operationSys", paramString1.toString());
-    localUploadFileUtil.a("platform", "android");
-    localUploadFileUtil.a(paramString2);
-    paramString1 = localUploadFileUtil.a();
-    if (QLog.isColorLevel())
-    {
-      paramString2 = new StringBuilder();
-      paramString2.append("the result:");
-      paramString2.append(paramString1);
-      QLog.d("CIOSubmitUtils", 2, paramString2.toString());
-    }
-    return paramString1;
-  }
-  
   private static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     Object localObject1 = new Time();
@@ -258,25 +200,25 @@ public class CIOSubmitUtils
       localObject1 = LocalInfoUtils.b();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131699629));
-    localStringBuilder.append("8.7.0.5295");
+    localStringBuilder.append(HardCodeUtil.a(2131897662));
+    localStringBuilder.append("8.8.17.5770");
     localStringBuilder.append("\r\n");
-    localStringBuilder.append(HardCodeUtil.a(2131699630));
+    localStringBuilder.append(HardCodeUtil.a(2131897663));
     localStringBuilder.append(paramString2);
     localStringBuilder.append("\r\n【Android版本】: ");
     localStringBuilder.append(Build.VERSION.RELEASE);
     localStringBuilder.append("\r\n");
-    localStringBuilder.append(HardCodeUtil.a(2131699627));
+    localStringBuilder.append(HardCodeUtil.a(2131897660));
     localStringBuilder.append((String)localObject2);
     localStringBuilder.append("\r\n\r\n【title】: ");
     localStringBuilder.append(paramString3);
     localStringBuilder.append("\r\n");
-    localStringBuilder.append(HardCodeUtil.a(2131699619));
+    localStringBuilder.append(HardCodeUtil.a(2131897652));
     localStringBuilder.append(paramString4);
     localStringBuilder.append("\r\n【svn】: ");
-    localStringBuilder.append("01328a87");
+    localStringBuilder.append("846a9bfd");
     localStringBuilder.append(" \r\n");
-    localStringBuilder.append(HardCodeUtil.a(2131699632));
+    localStringBuilder.append(HardCodeUtil.a(2131897665));
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append("\r\n\r\ncio:");
     localStringBuilder.append(str);
@@ -312,27 +254,27 @@ public class CIOSubmitUtils
       localObject1 = LocalInfoUtils.b();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131699633));
-    localStringBuilder.append("8.7.0.5295");
+    localStringBuilder.append(HardCodeUtil.a(2131897666));
+    localStringBuilder.append("8.8.17.5770");
     localStringBuilder.append("\r\n");
-    localStringBuilder.append(HardCodeUtil.a(2131699625));
+    localStringBuilder.append(HardCodeUtil.a(2131897658));
     localStringBuilder.append(paramString2);
     localStringBuilder.append("\r\n【Android版本】: ");
     localStringBuilder.append(Build.VERSION.RELEASE);
     localStringBuilder.append("\r\n");
-    localStringBuilder.append(HardCodeUtil.a(2131699628));
+    localStringBuilder.append(HardCodeUtil.a(2131897661));
     localStringBuilder.append((String)localObject2);
     localStringBuilder.append("\r\n\r\n【title】: ");
     localStringBuilder.append(paramString3);
     localStringBuilder.append("\r\n【activityName】: ");
     localStringBuilder.append(paramString6);
     localStringBuilder.append("\r\n");
-    localStringBuilder.append(HardCodeUtil.a(2131699623));
+    localStringBuilder.append(HardCodeUtil.a(2131897656));
     localStringBuilder.append(paramString4);
     localStringBuilder.append("\r\n【svn】: ");
-    localStringBuilder.append("01328a87");
+    localStringBuilder.append("846a9bfd");
     localStringBuilder.append(" \r\n");
-    localStringBuilder.append(HardCodeUtil.a(2131699616));
+    localStringBuilder.append(HardCodeUtil.a(2131897649));
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append("\r\n");
     paramString4 = localStringBuilder.toString();
@@ -345,10 +287,10 @@ public class CIOSubmitUtils
     {
       paramString3 = new StringBuilder();
       paramString3.append(paramString4);
-      paramString3.append(HardCodeUtil.a(2131699615));
+      paramString3.append(HardCodeUtil.a(2131897648));
       paramString3.append(b(paramInt2));
       paramString3.append("\r\n");
-      paramString3.append(HardCodeUtil.a(2131699618));
+      paramString3.append(HardCodeUtil.a(2131897651));
       paramString3.append(a(paramInt1));
       paramString3.append("\r\n");
       paramString3 = paramString3.toString();
@@ -365,10 +307,68 @@ public class CIOSubmitUtils
     paramString3.append("/param.txt");
     FileUtils.writeFile(paramString3.toString(), paramString2);
   }
+  
+  public static String c()
+  {
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localAppRuntime == null) {
+      return "0";
+    }
+    if (localAppRuntime.getAccount() == null) {
+      return "0";
+    }
+    return localAppRuntime.getAccount();
+  }
+  
+  private static String c(String paramString1, String paramString2)
+  {
+    CIOSubmitUtils.UploadFileUtil localUploadFileUtil = new CIOSubmitUtils.UploadFileUtil();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("deviceID:");
+      localStringBuilder.append(DeviceInfoUtil.b());
+      QLog.d("CIOSubmitUtils", 2, localStringBuilder.toString());
+      QLog.d("CIOSubmitUtils", 2, "versionName:8.8.17.5770");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("firma");
+      localStringBuilder.append(Build.MODEL);
+      QLog.d("CIOSubmitUtils", 2, localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("operationSysandroid ");
+      localStringBuilder.append(Build.VERSION.RELEASE);
+      QLog.d("CIOSubmitUtils", 2, localStringBuilder.toString());
+      QLog.d("CIOSubmitUtils", 2, "platformandroid");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mzipname:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" allName:");
+      localStringBuilder.append(paramString2);
+      QLog.d("CIOSubmitUtils", 2, localStringBuilder.toString());
+    }
+    localUploadFileUtil.a("deviceId", DeviceInfoUtil.b());
+    localUploadFileUtil.a("versionName", "8.8.17.5770");
+    localUploadFileUtil.a("firma", Build.MODEL);
+    paramString1 = new StringBuilder();
+    paramString1.append("android ");
+    paramString1.append(Build.VERSION.RELEASE);
+    localUploadFileUtil.a("operationSys", paramString1.toString());
+    localUploadFileUtil.a("platform", "android");
+    localUploadFileUtil.a(paramString2);
+    paramString1 = localUploadFileUtil.a();
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("the result:");
+      paramString2.append(paramString1);
+      QLog.d("CIOSubmitUtils", 2, paramString2.toString());
+    }
+    return paramString1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.debug.CIOSubmitUtils
  * JD-Core Version:    0.7.0.1
  */

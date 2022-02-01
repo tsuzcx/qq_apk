@@ -1,23 +1,19 @@
 package com.tencent.mobileqq.msf.core.net.utils;
 
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.HashSet;
 
 class c
-  implements FilenameFilter
+  extends HashSet
 {
-  c(MsfCmdConfig.b paramb, String paramString) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  c(MsfCmdConfig.b paramb)
   {
-    return Pattern.compile(this.a).matcher(paramString).matches();
+    add("plain");
+    add("regex");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.utils.c
  * JD-Core Version:    0.7.0.1
  */

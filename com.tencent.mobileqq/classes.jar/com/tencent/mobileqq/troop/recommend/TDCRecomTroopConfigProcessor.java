@@ -12,7 +12,7 @@ public class TDCRecomTroopConfigProcessor
 {
   public static TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean a()
   {
-    TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean localTDCRecomTroopConfigBean = (TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean)QConfigManager.a().a(547);
+    TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean localTDCRecomTroopConfigBean = (TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean)QConfigManager.b().b(547);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -34,7 +34,7 @@ public class TDCRecomTroopConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -78,7 +78,7 @@ public class TDCRecomTroopConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.recommend.TDCRecomTroopConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

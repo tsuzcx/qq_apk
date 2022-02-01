@@ -16,31 +16,31 @@ public class HomeFeedPresenter$FeedVideoCookieRec
   
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull FeedVideoManager.FeedVideoInfoUpdate paramFeedVideoInfoUpdate)
   {
-    if (paramFeedVideoInfoUpdate.jdField_a_of_type_Int == 0) {
+    if (paramFeedVideoInfoUpdate.b == 0) {
       return;
     }
-    Object localObject = paramHomeFeedPresenter.a(paramFeedVideoInfoUpdate.jdField_a_of_type_JavaLangString);
+    Object localObject = paramHomeFeedPresenter.a(paramFeedVideoInfoUpdate.a);
     if (localObject == null)
     {
-      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramFeedVideoInfoUpdate.jdField_a_of_type_JavaLangString });
+      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramFeedVideoInfoUpdate.a });
       return;
     }
     if (!(localObject instanceof GeneralHomeFeed))
     {
-      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramFeedVideoInfoUpdate.jdField_a_of_type_JavaLangString });
+      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramFeedVideoInfoUpdate.a });
       return;
     }
     localObject = (GeneralHomeFeed)localObject;
-    FeedVideoInfo localFeedVideoInfo = ((FeedVideoManager)SuperManager.a(12)).a(paramFeedVideoInfoUpdate.jdField_a_of_type_JavaLangString, ((GeneralFeedItem)((GeneralHomeFeed)localObject).a).mVideoPullType);
+    FeedVideoInfo localFeedVideoInfo = ((FeedVideoManager)SuperManager.a(12)).a(paramFeedVideoInfoUpdate.a, ((GeneralFeedItem)((GeneralHomeFeed)localObject).f).mVideoPullType);
     if (localFeedVideoInfo == null)
     {
-      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find video info for feedId:%s, pullType:%d", new Object[] { paramFeedVideoInfoUpdate.jdField_a_of_type_JavaLangString, Integer.valueOf(((GeneralFeedItem)((GeneralHomeFeed)localObject).a).mVideoPullType) });
+      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find video info for feedId:%s, pullType:%d", new Object[] { paramFeedVideoInfoUpdate.a, Integer.valueOf(((GeneralFeedItem)((GeneralHomeFeed)localObject).f).mVideoPullType) });
       return;
     }
     ((GeneralHomeFeed)localObject).c(localFeedVideoInfo.mVideoItemList, true);
-    ((GeneralFeedItem)((GeneralHomeFeed)localObject).a).updateVideoInfo(localFeedVideoInfo);
-    SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video and cookie update after count:%d", paramFeedVideoInfoUpdate.jdField_a_of_type_JavaLangString, Integer.valueOf(((GeneralHomeFeed)localObject).a().size()));
-    HomeFeedPresenter.a(paramHomeFeedPresenter).a((VideoListHomeFeed)localObject);
+    ((GeneralFeedItem)((GeneralHomeFeed)localObject).f).updateVideoInfo(localFeedVideoInfo);
+    SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video and cookie update after count:%d", paramFeedVideoInfoUpdate.a, Integer.valueOf(((GeneralHomeFeed)localObject).a().size()));
+    HomeFeedPresenter.c(paramHomeFeedPresenter).a((VideoListHomeFeed)localObject);
   }
   
   public Class acceptEventClass()

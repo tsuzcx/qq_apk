@@ -363,7 +363,7 @@ public class FileUtils
   public static String c(String paramString)
   {
     if (paramString.startsWith("file:///android_asset/")) {
-      return a(JsEngineLoader.a().a(), paramString.replace("file:///android_asset/", ""));
+      return a(JsEngineLoader.a().c(), paramString.replace("file:///android_asset/", ""));
     }
     return b(paramString);
   }
@@ -386,7 +386,7 @@ public class FileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.utils.FileUtils
  * JD-Core Version:    0.7.0.1
  */

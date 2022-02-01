@@ -5,35 +5,59 @@ import android.os.Handler;
 
 public class PopViewAnimationDrawableHelper
 {
-  private int jdField_a_of_type_Int;
-  private AnimationDrawable jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private PopViewAnimationDrawableHelper.OnFrameAnimationListener jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnFrameAnimationListener;
-  private PopViewAnimationDrawableHelper.OnInnerFrameAnimationListener jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnInnerFrameAnimationListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private int b;
-  private int c;
+  private Handler a;
+  private Runnable b;
+  private PopViewAnimationDrawableHelper.OnFrameAnimationListener c;
+  private PopViewAnimationDrawableHelper.OnInnerFrameAnimationListener d;
+  private int e;
+  private int f;
+  private AnimationDrawable g;
+  private int h;
   
   public PopViewAnimationDrawableHelper(AnimationDrawable paramAnimationDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = paramAnimationDrawable;
-    this.c = paramAnimationDrawable.getNumberOfFrames();
-    this.jdField_a_of_type_AndroidOsHandler = new PopViewAnimationDrawableHelper.InnerHandler();
-    this.jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnInnerFrameAnimationListener = new PopViewAnimationDrawableHelper.1(this);
-    this.jdField_a_of_type_JavaLangRunnable = new PopViewAnimationDrawableHelper.LoopingRunnable(this);
+    this.g = paramAnimationDrawable;
+    this.h = paramAnimationDrawable.getNumberOfFrames();
+    this.a = new PopViewAnimationDrawableHelper.InnerHandler();
+    this.d = new PopViewAnimationDrawableHelper.1(this);
+    this.b = new PopViewAnimationDrawableHelper.LoopingRunnable(this);
   }
   
-  private int a()
+  private void c()
+  {
+    Runnable localRunnable = this.b;
+    if (localRunnable != null)
+    {
+      Handler localHandler = this.a;
+      if (localHandler != null)
+      {
+        int i = this.f;
+        if (i > 0)
+        {
+          localHandler.postDelayed(localRunnable, i);
+          return;
+        }
+        if (i == 0) {
+          i = d();
+        } else {
+          i = this.e;
+        }
+        localHandler.postDelayed(localRunnable, i);
+      }
+    }
+  }
+  
+  private int d()
   {
     int i = 0;
-    while (i < this.c)
+    while (i < this.h)
     {
-      if (this.jdField_a_of_type_Int < this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getDuration(i)) {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getDuration(i);
+      if (this.e < this.g.getDuration(i)) {
+        this.e = this.g.getDuration(i);
       }
       i += 1;
     }
-    int j = this.jdField_a_of_type_Int;
+    int j = this.e;
     i = j;
     if (j > 1000) {
       i = 1000;
@@ -41,39 +65,15 @@ public class PopViewAnimationDrawableHelper
     return i;
   }
   
-  private void c()
-  {
-    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
-    if (localRunnable != null)
-    {
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-      if (localHandler != null)
-      {
-        int i = this.b;
-        if (i > 0)
-        {
-          localHandler.postDelayed(localRunnable, i);
-          return;
-        }
-        if (i == 0) {
-          i = a();
-        } else {
-          i = this.jdField_a_of_type_Int;
-        }
-        localHandler.postDelayed(localRunnable, i);
-      }
-    }
-  }
-  
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
+    Object localObject = this.g;
     if (localObject == null) {
       return;
     }
     ((AnimationDrawable)localObject).start();
     c();
-    localObject = this.jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnFrameAnimationListener;
+    localObject = this.c;
     if (localObject != null) {
       ((PopViewAnimationDrawableHelper.OnFrameAnimationListener)localObject).a();
     }
@@ -81,16 +81,16 @@ public class PopViewAnimationDrawableHelper
   
   public void a(PopViewAnimationDrawableHelper.OnFrameAnimationListener paramOnFrameAnimationListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnFrameAnimationListener = paramOnFrameAnimationListener;
+    this.c = paramOnFrameAnimationListener;
   }
   
   public void b()
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.a;
     if (localHandler != null)
     {
       localHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.a = null;
     }
   }
 }

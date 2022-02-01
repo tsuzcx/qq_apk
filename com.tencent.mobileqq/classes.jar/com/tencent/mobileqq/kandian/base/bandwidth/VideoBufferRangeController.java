@@ -56,15 +56,10 @@ public class VideoBufferRangeController
     return a;
   }
   
-  private List<Integer[]> a()
-  {
-    return a("effective_time");
-  }
-  
   private List<Integer[]> a(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = BandWidthConfig.a.a(paramString);
+    Object localObject = BandWidthConfig.a.c(paramString);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -123,7 +118,7 @@ public class VideoBufferRangeController
     return bool1;
   }
   
-  private int[] a()
+  private int[] c()
   {
     Object localObject = a("uneffective_time_config");
     int i = ((List)localObject).size();
@@ -141,12 +136,17 @@ public class VideoBufferRangeController
     return new int[] { localObject[0].intValue(), localObject[1].intValue() };
   }
   
-  private List<Integer[]> b()
+  private List<Integer[]> d()
+  {
+    return a("effective_time");
+  }
+  
+  private List<Integer[]> e()
   {
     return a("emergency_time_config");
   }
   
-  private List<Integer[]> c()
+  private List<Integer[]> f()
   {
     return a("safe_play_time_config");
   }
@@ -166,19 +166,14 @@ public class VideoBufferRangeController
       QLog.d("VideoBufferRangeController", 2, localStringBuilder.toString());
     }
     if (paramInt > 60) {
-      return BandWidthConfig.a.c() + paramInt / 60;
+      return BandWidthConfig.a.d() + paramInt / 60;
     }
-    return BandWidthConfig.a.c();
+    return BandWidthConfig.a.d();
   }
   
   public int a(Integer[] paramArrayOfInteger1, Integer[] paramArrayOfInteger2)
   {
     return paramArrayOfInteger2[0].intValue() - paramArrayOfInteger1[0].intValue();
-  }
-  
-  public String a()
-  {
-    return BandWidthConfig.a.a();
   }
   
   public void a(VideoPlayerWrapper paramVideoPlayerWrapper, int paramInt, long paramLong)
@@ -217,9 +212,9 @@ public class VideoBufferRangeController
       ((StringBuilder)localObject1).append(paramLong1);
       QLog.d("VideoBufferRangeController", 2, ((StringBuilder)localObject1).toString());
     }
-    if (!a(a()))
+    if (!a(d()))
     {
-      localObject1 = a();
+      localObject1 = c();
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -231,8 +226,8 @@ public class VideoBufferRangeController
       }
       return localObject1;
     }
-    Object localObject1 = b();
-    Object localObject2 = c();
+    Object localObject1 = e();
+    Object localObject2 = f();
     int j = a((List)localObject1, l, i);
     int k = a((List)localObject2, l, i);
     if (QLog.isColorLevel())
@@ -250,10 +245,15 @@ public class VideoBufferRangeController
     }
     return new int[] { j, k };
   }
+  
+  public String b()
+  {
+    return BandWidthConfig.a.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.bandwidth.VideoBufferRangeController
  * JD-Core Version:    0.7.0.1
  */

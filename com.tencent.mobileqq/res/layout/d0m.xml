@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/p3l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="68.0dip" android:layout_marginRight="12.0dip" android:layout_centerHorizontal="true"
+      xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+        <com.tencent.biz.qqcircle.widgets.CornerURLImageView android:id="@id/a4j" android:layout_width="fill_parent" android:layout_height="60.0dip" android:scaleType="fitXY" />
+        <com.tencent.biz.qqcircle.widgets.CornerURLImageView android:id="@id/n11" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="11.0dip" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.5dip" android:layout_toLeftOf="@id/pub" android:layout_toRightOf="@id/n11" android:layout_centerVertical="true">
+            <com.tencent.biz.qqcircle.bizparts.danmaku.text.CellTextView android:textSize="14.0dip" android:textColor="@android:color/white" android:ellipsize="end" android:id="@id/qfa" android:paddingLeft="9.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <com.tencent.biz.qqcircle.bizparts.danmaku.text.CellTextView android:textSize="12.0dip" android:textColor="@android:color/white" android:ellipsize="end" android:id="@id/n05" android:paddingLeft="9.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" />
+        </LinearLayout>
+        <com.tencent.biz.qqcircle.widgets.QCircleLottileAnimView android:id="@id/pub" android:layout_width="90.0dip" android:layout_height="60.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <com.tencent.image.URLImageView android:id="@id/az7" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginRight="8.0dip" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.biz.qqcircle.widgets.QCircleLottileAnimView android:id="@id/n12" android:layout_width="fill_parent" android:layout_height="175.0dip" />
+</RelativeLayout>

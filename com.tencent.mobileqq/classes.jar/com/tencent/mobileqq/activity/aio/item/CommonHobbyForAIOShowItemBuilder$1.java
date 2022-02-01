@@ -20,7 +20,7 @@ import org.json.JSONObject;
 class CommonHobbyForAIOShowItemBuilder$1
   implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long = 0L;
+  private long b = 0L;
   
   CommonHobbyForAIOShowItemBuilder$1(CommonHobbyForAIOShowItemBuilder paramCommonHobbyForAIOShowItemBuilder) {}
   
@@ -28,9 +28,9 @@ class CommonHobbyForAIOShowItemBuilder$1
   {
     Resources localResources = paramView.getContext().getResources();
     long l = SystemClock.uptimeMillis();
-    if (l - this.jdField_a_of_type_Long >= 500L)
+    if (l - this.b >= 500L)
     {
-      this.jdField_a_of_type_Long = l;
+      this.b = l;
       if ((paramView.getTag() != null) && ((paramView.getTag() instanceof JSONObject)))
       {
         Object localObject2 = (JSONObject)paramView.getTag();
@@ -39,15 +39,15 @@ class CommonHobbyForAIOShowItemBuilder$1
           Object localObject1 = ((JSONObject)localObject2).getString("url");
           String str = ((JSONObject)localObject2).getString("name");
           Context localContext = paramView.getContext();
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCommonHobbyForAIOShowItemBuilder.a != null) {
-            MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCommonHobbyForAIOShowItemBuilder.a).a(true);
+          if (this.a.a != null) {
+            MediaPlayerManager.a(this.a.a).a(true);
           }
-          if (QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCommonHobbyForAIOShowItemBuilder))
+          if (QQPlayerService.d(this.a))
           {
-            QQPlayerService.c(localContext);
-            paramView.setContentDescription(localResources.getString(2131690212));
+            QQPlayerService.e(localContext);
+            paramView.setContentDescription(localResources.getString(2131887112));
           }
-          else if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCommonHobbyForAIOShowItemBuilder.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCommonHobbyForAIOShowItemBuilder.a.isVideoChatting()))
+          else if ((this.a.a != null) && (this.a.a.isVideoChatting()))
           {
             if (QLog.isColorLevel()) {
               QLog.i("CommonHobbyForAIOShowItemBuilder", 0, "Video Chatting is going on, don't play music.");
@@ -56,10 +56,10 @@ class CommonHobbyForAIOShowItemBuilder$1
           else
           {
             SongInfo localSongInfo = new SongInfo();
-            localSongInfo.jdField_b_of_type_JavaLangString = ((String)localObject1);
-            localSongInfo.jdField_b_of_type_Int = 4;
+            localSongInfo.d = ((String)localObject1);
+            localSongInfo.m = 4;
             QQPlayerService.a(new Intent(localContext, MusicPlayerActivity.class));
-            localObject2 = QQPlayerService.a();
+            localObject2 = QQPlayerService.n();
             localObject1 = localObject2;
             if (localObject2 == null)
             {
@@ -67,9 +67,9 @@ class CommonHobbyForAIOShowItemBuilder$1
               QQPlayerService.a((Bundle)localObject1);
             }
             ((Bundle)localObject1).putString("KEY_SOURCE_NAME", str);
-            QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCommonHobbyForAIOShowItemBuilder);
-            QQPlayerService.a(localContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCommonHobbyForAIOShowItemBuilder.getToken(), localSongInfo);
-            paramView.setContentDescription(localResources.getString(2131690210));
+            QQPlayerService.a(this.a);
+            QQPlayerService.a(localContext, this.a.getToken(), localSongInfo);
+            paramView.setContentDescription(localResources.getString(2131887110));
           }
         }
         catch (Exception localException)
@@ -85,7 +85,7 @@ class CommonHobbyForAIOShowItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

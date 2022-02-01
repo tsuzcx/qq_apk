@@ -11,16 +11,16 @@ class WSMultiImageManager$2
   
   public void a()
   {
-    URLDrawable localURLDrawable = WSMultiImageManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSMultiImageManager, this.jdField_a_of_type_JavaLangString, true);
+    URLDrawable localURLDrawable = WSMultiImageManager.a(this.c, this.a, true);
     if (localURLDrawable == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localURLDrawable);
+    this.b.setImageDrawable(localURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSMultiImageManager.2
  * JD-Core Version:    0.7.0.1
  */

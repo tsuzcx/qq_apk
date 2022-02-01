@@ -4,23 +4,18 @@ import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 
 public class WSGzipCompressInfo
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private long jdField_a_of_type_Long = -1L;
+  private long a = -1L;
   private long b = -1L;
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
+  private float c = -1.0F;
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
+    return this.a;
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.c = paramFloat;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSGzipCompressInfo.java][setRadio] radio:");
     localStringBuilder.append(paramFloat);
@@ -29,7 +24,7 @@ public class WSGzipCompressInfo
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramLong;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSGzipCompressInfo.java][setCompressSize] compressSize:");
     localStringBuilder.append(paramLong);
@@ -49,10 +44,15 @@ public class WSGzipCompressInfo
     localStringBuilder.append(paramLong);
     WSLog.e("[WSService][GzipCompressInfo]", localStringBuilder.toString());
   }
+  
+  public float c()
+  {
+    return this.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.common.WSGzipCompressInfo
  * JD-Core Version:    0.7.0.1
  */

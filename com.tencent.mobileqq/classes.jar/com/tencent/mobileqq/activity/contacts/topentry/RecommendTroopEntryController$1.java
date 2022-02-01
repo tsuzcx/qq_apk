@@ -12,21 +12,21 @@ class RecommendTroopEntryController$1
   
   public void a(String paramString, int paramInt)
   {
-    ((MayknowRecommendManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).c(paramString);
+    ((MayknowRecommendManager)this.a.b.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).e(paramString);
     if (paramInt == 0)
     {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      this.a.c.setVisibility(8);
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryController$OnCTEntryDataChangeListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryController$OnCTEntryDataChangeListener.a();
+    if (this.a.h != null) {
+      this.a.h.a();
     }
     RecommendTroopEntryController.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.RecommendTroopEntryController.1
  * JD-Core Version:    0.7.0.1
  */

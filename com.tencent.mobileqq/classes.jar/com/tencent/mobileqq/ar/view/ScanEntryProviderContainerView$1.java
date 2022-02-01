@@ -27,7 +27,7 @@ class ScanEntryProviderContainerView$1
       return false;
     }
     paramView = (Integer)paramView.getTag();
-    ScanEntryProviderContainerView.a(this.a).a(paramView.intValue(), new ScanEntryProviderContainerView.1.1(this, paramView));
+    ScanEntryProviderContainerView.d(this.a).a(paramView.intValue(), new ScanEntryProviderContainerView.1.1(this, paramView));
     if (paramView.intValue() == 2) {
       ReportController.b(null, "dc00898", "", "", "0X800A9CE", "0X800A9CE", 0, 0, "", "0", "0", "");
     }
@@ -36,7 +36,7 @@ class ScanEntryProviderContainerView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public class RecentUserInterceptor
 {
   public Class a(Interceptor.Chain<Class> paramChain)
   {
-    if ("recent".equals(a(paramChain))) {
+    if ("recent".equals(b(paramChain))) {
       return RecentUser.class;
     }
     return (Class)paramChain.proceed();
@@ -16,7 +16,7 @@ public class RecentUserInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.RecentUserInterceptor
  * JD-Core Version:    0.7.0.1
  */

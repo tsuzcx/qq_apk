@@ -8,6 +8,8 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.core.view.ViewCompat;
 
@@ -24,17 +26,17 @@ public class ContentFrameLayout
   private TypedValue mMinWidthMajor;
   private TypedValue mMinWidthMinor;
   
-  public ContentFrameLayout(Context paramContext)
+  public ContentFrameLayout(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public ContentFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
+  public ContentFrameLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
   }
   
-  public ContentFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public ContentFrameLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
   }

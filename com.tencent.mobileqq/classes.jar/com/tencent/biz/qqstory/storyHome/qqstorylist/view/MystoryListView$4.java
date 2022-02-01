@@ -7,11 +7,11 @@ class MystoryListView$4
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.d != null)
     {
       MystoryListView localMystoryListView = this.this$0;
-      localMystoryListView.postDelayed(localMystoryListView.a, 100L);
-      this.this$0.a = null;
+      localMystoryListView.postDelayed(localMystoryListView.d, 100L);
+      this.this$0.d = null;
     }
   }
 }

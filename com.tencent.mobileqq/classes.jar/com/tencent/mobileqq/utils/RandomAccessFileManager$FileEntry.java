@@ -4,25 +4,18 @@ import java.io.RandomAccessFile;
 
 class RandomAccessFileManager$FileEntry
 {
-  public volatile int a;
-  public long a;
-  public FileEntry a;
   public RandomAccessFile a;
-  public long b;
-  public FileEntry b;
+  public volatile int b = 0;
+  public long c = 0L;
+  public FileEntry d = null;
+  public FileEntry e = null;
+  public long f = 0L;
   
-  RandomAccessFileManager$FileEntry(RandomAccessFileManager paramRandomAccessFileManager)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsRandomAccessFileManager$FileEntry = null;
-    this.jdField_b_of_type_ComTencentMobileqqUtilsRandomAccessFileManager$FileEntry = null;
-    this.jdField_b_of_type_Long = 0L;
-  }
+  RandomAccessFileManager$FileEntry(RandomAccessFileManager paramRandomAccessFileManager) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.RandomAccessFileManager.FileEntry
  * JD-Core Version:    0.7.0.1
  */

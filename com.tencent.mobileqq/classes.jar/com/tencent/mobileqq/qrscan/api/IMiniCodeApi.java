@@ -19,9 +19,9 @@ public abstract interface IMiniCodeApi
   
   public abstract boolean bValidDecodeResult(String paramString);
   
-  public abstract String decode(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
+  public abstract String decode(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract String decode(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7);
+  public abstract String decode(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8);
   
   public abstract boolean detect(Bitmap paramBitmap, long paramLong);
   
@@ -47,7 +47,7 @@ public abstract interface IMiniCodeApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.api.IMiniCodeApi
  * JD-Core Version:    0.7.0.1
  */

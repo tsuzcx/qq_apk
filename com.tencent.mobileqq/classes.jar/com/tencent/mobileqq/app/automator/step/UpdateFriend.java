@@ -22,9 +22,9 @@ public class UpdateFriend
     if (this.a == null)
     {
       this.a = new UpdateFriend.MyFriendListObserver(this, null);
-      this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a);
+      this.mAutomator.k.addObserver(this.a);
     }
-    ((FriendListHandler)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getGatheredContactsList(0);
+    ((FriendListHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getGatheredContactsList(0);
   }
   
   private void b()
@@ -32,16 +32,16 @@ public class UpdateFriend
     if (this.a == null)
     {
       this.a = new UpdateFriend.MyFriendListObserver(this, null);
-      this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a);
+      this.mAutomator.k.addObserver(this.a);
     }
-    ((FriendListHandler)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendGroupList(true);
+    ((FriendListHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendGroupList(true);
   }
   
   protected int doStep()
   {
     if (this.mStepId == 3)
     {
-      boolean bool = this.mAutomator.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("isFriendlistok", false);
+      boolean bool = this.mAutomator.d.getBoolean("isFriendlistok", false);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -49,18 +49,18 @@ public class UpdateFriend
         ((StringBuilder)localObject).append(bool);
         QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = (FriendsManager)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      Object localObject = (FriendsManager)this.mAutomator.k.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (bool)
       {
-        FriendListHandler localFriendListHandler = (FriendListHandler)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+        FriendListHandler localFriendListHandler = (FriendListHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
         bool = ((FriendsManager)localObject).a();
-        ((FriendsManager)localObject).d();
+        ((FriendsManager)localObject).f();
         localFriendListHandler.notifyUI(1, bool, Boolean.valueOf(bool));
         this.mAutomator.notifyUI(3, true, Integer.valueOf(1));
         return 7;
       }
       ((FriendsManager)localObject).a();
-      ((FriendsManager)localObject).d();
+      ((FriendsManager)localObject).f();
       b();
       return 2;
     }
@@ -76,7 +76,7 @@ public class UpdateFriend
   public void onCreate()
   {
     if (this.mStepId == 3) {
-      ((IPhoneContactService)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).initContactCache();
+      ((IPhoneContactService)this.mAutomator.k.getRuntimeService(IPhoneContactService.class, "")).initContactCache();
     }
     int i;
     if (this.mStepId == 8) {
@@ -91,14 +91,14 @@ public class UpdateFriend
   {
     if (this.a != null)
     {
-      this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a);
+      this.mAutomator.k.removeObserver(this.a);
       this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.UpdateFriend
  * JD-Core Version:    0.7.0.1
  */

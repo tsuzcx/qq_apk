@@ -14,13 +14,13 @@ class SignTextEditFragment$3
   {
     paramDialogInterface.dismiss();
     paramDialogInterface = new RichStatus(null);
-    paramDialogInterface.copyFrom(this.a.a);
-    this.a.b.obtainMessage(6, paramDialogInterface).sendToTarget();
+    paramDialogInterface.copyFrom(this.a.p);
+    this.a.x.obtainMessage(6, paramDialogInterface).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment.3
  * JD-Core Version:    0.7.0.1
  */

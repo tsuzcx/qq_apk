@@ -21,6 +21,7 @@ import com.tencent.qqmini.sdk.plugins.FavoritesJsPlugin;
 import com.tencent.qqmini.sdk.report.MiniAppReportManager2;
 import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04902;
 import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 import org.json.JSONObject;
 
 public class MiniAppCmdServlet
@@ -92,32 +93,52 @@ public class MiniAppCmdServlet
   
   private void onUpdateV8rt(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
   {
-    paramString = WnsConfig.getConfig("qqminiapp", "mini_app_v8_rt_url", "{ \"url\":\"https://down.qq.com/miniapp/libtv8rt_202008101130.so\",\"size\":535136 }");
+    paramString = WnsConfig.getConfig("qqminiapp", "mini_app_v8_rt_url", "{ \"url\":\"https://down.qq.com/miniapp/libtv8rt_202008101130.so\",\"size\":535136, \"url64\":\"https://d3g.qq.com/sngapp/app/update/20210601154157_4983/VD1Vg6kzck5I0UmQ6W6dPA==_libtv8rt.so\",\"size64\":1733496}");
+    paramBundle = new StringBuilder();
+    paramBundle.append("urlJson:");
+    paramBundle.append(paramString);
+    QMLog.i("MiniAppCmdServlet", paramBundle.toString());
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    try
+    for (;;)
     {
-      paramBundle = new JSONObject(paramString);
-      paramString = paramBundle.getString("url");
-      int i = paramBundle.getInt("size");
-      if ((!TextUtils.isEmpty(paramString)) && (i != 0))
+      try
       {
-        paramBundle = MiniSDKConst.getMiniAppV8rtPath();
-        ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString, null, paramBundle, 60, new MiniAppCmdServlet.2(this, paramMiniCmdCallback));
+        paramBundle = new JSONObject(paramString);
+        if (QUAUtil.isAbi64())
+        {
+          paramString = "url64";
+          String str = paramBundle.getString(paramString);
+          if (!QUAUtil.isAbi64()) {
+            break label205;
+          }
+          paramString = "size64";
+          int i = paramBundle.getInt(paramString);
+          if ((!TextUtils.isEmpty(str)) && (i != 0))
+          {
+            paramString = MiniSDKConst.getMiniAppV8rtPath();
+            ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(str, null, paramString, 60, new MiniAppCmdServlet.2(this, paramMiniCmdCallback));
+            return;
+          }
+          paramString = new StringBuilder();
+          paramString.append("url is");
+          paramString.append(str);
+          paramString.append("  size:");
+          paramString.append(i);
+          QMLog.e("MiniAppCmdServlet", paramString.toString());
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        QMLog.e("MiniAppCmdServlet", "parse v8rt_url failed", paramString);
         return;
       }
-      paramBundle = new StringBuilder();
-      paramBundle.append("url is");
-      paramBundle.append(paramString);
-      paramBundle.append("  size:");
-      paramBundle.append(i);
-      QMLog.e("MiniAppCmdServlet", paramBundle.toString());
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QMLog.e("MiniAppCmdServlet", "parse v8rt_url failed", paramString);
+      paramString = "url";
+      continue;
+      label205:
+      paramString = "size";
     }
   }
   
@@ -353,7 +374,7 @@ public class MiniAppCmdServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.MiniAppCmdServlet
  * JD-Core Version:    0.7.0.1
  */

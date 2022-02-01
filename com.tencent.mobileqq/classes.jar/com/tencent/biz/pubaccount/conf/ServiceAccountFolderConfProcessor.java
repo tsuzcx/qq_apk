@@ -44,9 +44,9 @@ public class ServiceAccountFolderConfProcessor
   
   public void a(ServiceAccountFolderConfBean paramServiceAccountFolderConfBean)
   {
-    paramServiceAccountFolderConfBean.b();
-    paramServiceAccountFolderConfBean.a();
     paramServiceAccountFolderConfBean.c();
+    paramServiceAccountFolderConfBean.b();
+    paramServiceAccountFolderConfBean.d();
   }
   
   public Class<ServiceAccountFolderConfBean> clazz()
@@ -89,7 +89,7 @@ public class ServiceAccountFolderConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.ServiceAccountFolderConfProcessor
  * JD-Core Version:    0.7.0.1
  */

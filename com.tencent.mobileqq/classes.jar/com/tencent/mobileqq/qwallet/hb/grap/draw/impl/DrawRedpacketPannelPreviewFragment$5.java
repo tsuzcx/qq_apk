@@ -9,12 +9,12 @@ class DrawRedpacketPannelPreviewFragment$5
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.c != null)
     {
-      if (this.this$0.a.getVisibility() != 0) {
-        this.this$0.a.setVisibility(0);
+      if (this.this$0.c.getVisibility() != 0) {
+        this.this$0.c.setVisibility(0);
       }
-      TextView localTextView = this.this$0.a;
+      TextView localTextView = this.this$0.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("当前识别结果：---- 当前识别成功阈值：");
       localStringBuilder.append(DrawClassifier.a().a);
@@ -26,7 +26,7 @@ class DrawRedpacketPannelPreviewFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawRedpacketPannelPreviewFragment.5
  * JD-Core Version:    0.7.0.1
  */

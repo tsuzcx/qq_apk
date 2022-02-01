@@ -7,34 +7,34 @@ import android.view.ViewTreeObserver.OnPreDrawListener;
 class DynamicGridView$LSwitchCellAnimator$AnimateSwitchViewOnPreDrawListener
   implements ViewTreeObserver.OnPreDrawListener
 {
-  private final int jdField_a_of_type_Int;
   private final int b;
+  private final int c;
   
   DynamicGridView$LSwitchCellAnimator$AnimateSwitchViewOnPreDrawListener(DynamicGridView.LSwitchCellAnimator paramLSwitchCellAnimator, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
   public boolean onPreDraw()
   {
-    this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a) + DynamicGridView.LSwitchCellAnimator.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator));
-    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a) + DynamicGridView.LSwitchCellAnimator.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator));
-    if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a).setVisibility(0);
+    this.a.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    DynamicGridView.a(this.a.a, DynamicGridView.c(this.a.a) + DynamicGridView.LSwitchCellAnimator.a(this.a));
+    DynamicGridView.b(this.a.a, DynamicGridView.d(this.a.a) + DynamicGridView.LSwitchCellAnimator.b(this.a));
+    if (DynamicGridView.e(this.a.a) != null) {
+      DynamicGridView.e(this.a.a).setVisibility(0);
     }
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a, this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a.a(DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a)));
-    if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a).setVisibility(4);
+    DynamicGridView.b(this.a.a, this.a.a.b(DynamicGridView.f(this.a.a)));
+    if (DynamicGridView.e(this.a.a) != null) {
+      DynamicGridView.e(this.a.a).setVisibility(4);
     }
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView$LSwitchCellAnimator.a, this.jdField_a_of_type_Int, this.b);
+    DynamicGridView.a(this.a.a, this.b, this.c);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.DynamicGridView.LSwitchCellAnimator.AnimateSwitchViewOnPreDrawListener
  * JD-Core Version:    0.7.0.1
  */

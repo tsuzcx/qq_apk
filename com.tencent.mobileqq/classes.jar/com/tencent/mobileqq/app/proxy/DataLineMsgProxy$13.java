@@ -19,14 +19,14 @@ class DataLineMsgProxy$13
     if (DataLineMsgProxy.a(this.this$0.proxyManager, this.this$0.a)) {
       this.this$0.proxyManager.transSaveToDatabase(localEntityManager);
     }
-    List localList = localEntityManager.rawQuery(DataLineMsgRecord.class, DataLineMsgProxy.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int), new String[] { String.valueOf(this.jdField_a_of_type_Long) });
+    List localList = localEntityManager.rawQuery(DataLineMsgRecord.class, DataLineMsgProxy.a(this.this$0, this.a, this.b), new String[] { String.valueOf(this.a) });
     localEntityManager.close();
     new Handler(Looper.getMainLooper()).post(new DataLineMsgProxy.13.1(this, localList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.DataLineMsgProxy.13
  * JD-Core Version:    0.7.0.1
  */

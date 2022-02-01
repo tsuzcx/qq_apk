@@ -15,44 +15,40 @@ import com.tencent.qphone.base.util.QLog;
 public class ConversationActivePendantHolderBase
   extends BaseAnimHolder
 {
-  public long a;
-  public Context a;
-  public View a;
   private Interpolator a;
-  public boolean a;
-  public long b;
-  protected RectF b;
-  public int d = 0;
-  public int e = 2;
-  public int f = 0;
-  public int g = 0;
-  public int h = 0;
-  public int i = 0;
+  protected RectF k = new RectF();
+  public int l = 0;
+  public Context m;
+  public View n;
+  public int o = 2;
+  public int p = 0;
+  public long q = 0L;
+  public long r = 1L;
+  public int s = 0;
+  public boolean t = false;
+  public int u = 0;
+  public int v = 0;
   
   public ConversationActivePendantHolderBase(View paramView)
   {
-    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 1L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
+    this.n = paramView;
+    this.m = paramView.getContext();
   }
   
   private void a()
   {
-    a(this.d);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = 1L;
-    this.e = 2;
+    b(this.l);
+    this.t = false;
+    this.q = -1L;
+    this.r = 1L;
+    this.o = 2;
   }
   
   private void a(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_a_of_type_Boolean = true;
+    this.r = paramLong;
+    this.q = AnimationUtils.currentAnimationTimeMillis();
+    this.t = true;
   }
   
   public RectF a(int paramInt)
@@ -60,40 +56,29 @@ public class ConversationActivePendantHolderBase
     return null;
   }
   
-  public void a(int paramInt)
-  {
-    int j = paramInt;
-    if (this.jdField_a_of_type_Boolean) {
-      j = (int)(paramInt + this.d * (this.jdField_b_of_type_Float - 1.0F));
-    }
-    this.k = j;
-  }
-  
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     super.a(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
-    this.d = paramInt2;
+    this.l = paramInt2;
   }
   
   public void a(int paramInt, long paramLong)
   {
-    int j = this.d;
-    this.i = j;
-    this.h = (j + paramInt);
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
-    this.e = 1;
+    int i = this.l;
+    this.v = i;
+    this.u = (i + paramInt);
+    this.a = new DecelerateInterpolator();
+    this.o = 1;
     a(paramLong);
   }
   
-  protected void a(Canvas paramCanvas) {}
-  
   public boolean a(Canvas paramCanvas)
   {
-    d();
+    e();
     paramCanvas.save();
-    paramCanvas.translate(0.0F, this.g);
-    a(paramCanvas);
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramCanvas.translate(0.0F, this.s);
+    b(paramCanvas);
+    Drawable localDrawable = this.B;
     boolean bool2 = false;
     boolean bool1;
     if (localDrawable != null) {
@@ -101,82 +86,93 @@ public class ConversationActivePendantHolderBase
     } else {
       bool1 = false;
     }
-    b(paramCanvas);
+    c(paramCanvas);
     paramCanvas.restore();
-    if ((this.jdField_a_of_type_Boolean) || (bool1)) {
+    if ((this.t) || (bool1)) {
       bool2 = true;
     }
     return bool2;
   }
   
-  public RectF b(int paramInt)
+  public void b(int paramInt)
   {
-    RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-    float f1 = this.j;
-    float f2 = this.k;
-    float f3 = paramInt;
-    localRectF.set(f1 - 0.0F, f2 - 0.0F - f3, this.j + this.l + 0.0F, this.k + this.m + 0.0F - f3);
-    return this.jdField_b_of_type_AndroidGraphicsRectF;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConvActivePendantHolderBase", 2, "stopActiveSanHua stopAnimation");
+    int i = paramInt;
+    if (this.t) {
+      i = (int)(paramInt + this.l * (this.D - 1.0F));
     }
-    super.b();
-    a();
-    this.jdField_b_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Float = 1.0F;
+    this.y = i;
   }
   
   protected void b(Canvas paramCanvas) {}
   
-  public void c() {}
-  
-  public void d()
+  public RectF c(int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    RectF localRectF = this.k;
+    float f1 = this.x;
+    float f2 = this.y;
+    float f3 = paramInt;
+    localRectF.set(f1 - 0.0F, f2 - 0.0F - f3, this.x + this.z + 0.0F, this.y + this.A + 0.0F - f3);
+    return this.k;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConvActivePendantHolderBase", 2, "stopActiveSanHua stopAnimation");
+    }
+    super.c();
+    a();
+    this.D = 1.0F;
+    this.C = 1.0F;
+  }
+  
+  protected void c(Canvas paramCanvas) {}
+  
+  public void d() {}
+  
+  public void e()
+  {
+    if (!this.t) {
       return;
     }
-    float f2 = (float)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long) * 1.0F / (float)this.jdField_b_of_type_Long;
-    Interpolator localInterpolator = this.jdField_a_of_type_AndroidViewAnimationInterpolator;
+    float f2 = (float)(AnimationUtils.currentAnimationTimeMillis() - this.q) * 1.0F / (float)this.r;
+    Interpolator localInterpolator = this.a;
     float f1;
     if (localInterpolator != null) {
       f1 = localInterpolator.getInterpolation(f2);
     } else {
       f1 = f2;
     }
-    int j = this.i;
-    a((int)(j + (this.h - j) * f1));
+    int i = this.v;
+    b((int)(i + (this.u - i) * f1));
     if (f2 > 0.99D)
     {
-      j = this.e;
-      if (j != 1)
+      i = this.o;
+      if (i != 1)
       {
-        if (j != 3)
+        if (i != 3)
         {
           a();
           return;
         }
-        this.e = 2;
+        this.o = 2;
         return;
       }
-      this.e = 3;
-      e();
+      this.o = 3;
+      f();
     }
   }
   
-  public void e()
+  public void f()
   {
-    this.i = this.k;
-    this.h = this.d;
-    this.e = 3;
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new ConversationActivePendantHolderBase.BounceInterpolatorX(this);
+    this.v = this.y;
+    this.u = this.l;
+    this.o = 3;
+    this.a = new ConversationActivePendantHolderBase.BounceInterpolatorX(this);
     a(1500L);
   }
   
-  public void f()
+  public void g()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ConvActivePendantHolderBase", 2, "startActiveSanHua scale");
@@ -188,11 +184,11 @@ public class ConversationActivePendantHolderBase
     a(localValueAnimation);
   }
   
-  public void g() {}
+  public void h() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ConversationActivePendantHolderBase
  * JD-Core Version:    0.7.0.1
  */

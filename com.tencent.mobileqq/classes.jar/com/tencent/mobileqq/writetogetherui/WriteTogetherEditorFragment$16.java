@@ -11,20 +11,20 @@ class WriteTogetherEditorFragment$16
   
   public void run()
   {
-    if (WriteTogetherEditorFragment.a(this.this$0).a() == CreatingState.TEMPLATE_FIRST_USE)
+    if (WriteTogetherEditorFragment.q(this.this$0).a() == CreatingState.TEMPLATE_FIRST_USE)
     {
-      if (TextUtils.isEmpty(WriteTogetherEditorFragment.a(this.this$0).a()))
+      if (TextUtils.isEmpty(WriteTogetherEditorFragment.g(this.this$0).getEditorText()))
       {
-        WriteTogetherEditorFragment.a(this.this$0).a(CreatingState.TEMPLATE_SHOW_LAYER);
+        WriteTogetherEditorFragment.q(this.this$0).a(CreatingState.TEMPLATE_SHOW_LAYER);
         return;
       }
-      WriteTogetherEditorFragment.a(this.this$0).a(CreatingState.TEMPLATE_SHOW_ENTRANCE);
+      WriteTogetherEditorFragment.q(this.this$0).a(CreatingState.TEMPLATE_SHOW_ENTRANCE);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.16
  * JD-Core Version:    0.7.0.1
  */

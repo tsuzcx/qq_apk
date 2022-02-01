@@ -20,17 +20,17 @@ class VerifyCodeView$SingleDigitView$1
     String str = VerifyCodeView.a(getContext());
     if (str.length() == 0)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131694705, 0).a();
+      QQToast.makeText(this.a, 1, 2131892398, 0).show();
       return true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetVerifyCodeView$SingleDigitView.b.setText(str);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetVerifyCodeView$SingleDigitView.b.setSelection(this.jdField_a_of_type_ComTencentMobileqqWidgetVerifyCodeView$SingleDigitView.b.getText().length());
+    this.b.c.setText(str);
+    this.b.c.setSelection(this.b.c.getText().length());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.VerifyCodeView.SingleDigitView.1
  * JD-Core Version:    0.7.0.1
  */

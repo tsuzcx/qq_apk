@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
@@ -48,6 +48,10 @@ public class StrokeContent
     }
     if (paramT == LottieProperty.COLOR_FILTER)
     {
+      paramT = this.colorFilterAnimation;
+      if (paramT != null) {
+        this.layer.removeAnimation(paramT);
+      }
       if (paramLottieValueCallback == null)
       {
         this.colorFilterAnimation = null;
@@ -78,7 +82,7 @@ public class StrokeContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.StrokeContent
  * JD-Core Version:    0.7.0.1
  */

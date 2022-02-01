@@ -11,6 +11,7 @@ public class ScreenCapture
 {
   public static final String SNAP_CACHE_FILE = "snap_cache";
   public static final String SNAP_CACHE_FILE_SUCCESS_KEY = "snap_cache_file_success_key";
+  private static final String TAG = "ScreenCapture";
   
   public static void captureViewToFile(String paramString, View paramView)
   {
@@ -91,7 +92,7 @@ public class ScreenCapture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.ScreenCapture
  * JD-Core Version:    0.7.0.1
  */

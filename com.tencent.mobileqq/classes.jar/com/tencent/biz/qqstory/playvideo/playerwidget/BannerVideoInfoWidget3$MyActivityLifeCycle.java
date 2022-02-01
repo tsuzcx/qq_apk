@@ -16,7 +16,7 @@ public class BannerVideoInfoWidget3$MyActivityLifeCycle
     }
   }
   
-  public void f()
+  public void g()
   {
     BannerVideoInfoWidget3.LifeCycleCallback localLifeCycleCallback = this.a;
     if (localLifeCycleCallback != null) {
@@ -24,7 +24,7 @@ public class BannerVideoInfoWidget3$MyActivityLifeCycle
     }
   }
   
-  public void g()
+  public void h()
   {
     BannerVideoInfoWidget3.LifeCycleCallback localLifeCycleCallback = this.a;
     if (localLifeCycleCallback != null) {

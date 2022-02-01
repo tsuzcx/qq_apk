@@ -26,7 +26,7 @@ class TroopActivity$7
           if (i != 3) {
             return;
           }
-          TroopActivity.a(this.a);
+          TroopActivity.d(this.a);
           return;
         }
         ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_msgset", 0, 0, "", "", "", "");
@@ -50,7 +50,7 @@ class TroopActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopActivity.7
  * JD-Core Version:    0.7.0.1
  */

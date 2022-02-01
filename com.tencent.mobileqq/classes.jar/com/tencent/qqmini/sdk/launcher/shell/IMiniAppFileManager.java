@@ -6,11 +6,13 @@ public abstract interface IMiniAppFileManager
   
   public abstract String getTmpPath(String paramString);
   
+  public abstract String getTmpPathByWxFilePath(String paramString);
+  
   public abstract String getWxFilePath(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager
  * JD-Core Version:    0.7.0.1
  */

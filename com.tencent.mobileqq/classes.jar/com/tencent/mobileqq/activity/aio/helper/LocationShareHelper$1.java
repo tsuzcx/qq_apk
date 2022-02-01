@@ -21,8 +21,8 @@ class LocationShareHelper$1
   
   public void a(LocationRoom.RoomKey paramRoomKey, int paramInt)
   {
-    if ((LocationShareHelper.a(this.a) == LocationShareHelper.a(this.a).a().a()) && (LocationShareHelper.a(this.a, paramRoomKey.a(), paramRoomKey.a()))) {
-      LocationShareHelper.a(this.a).a().a();
+    if ((LocationShareHelper.a(this.a) == LocationShareHelper.b(this.a).J().a()) && (LocationShareHelper.a(this.a, paramRoomKey.a(), paramRoomKey.b()))) {
+      LocationShareHelper.b(this.a).J().c();
     }
   }
   
@@ -34,12 +34,12 @@ class LocationShareHelper$1
     {
       paramVenue = new StringBuilder();
       paramVenue.append("[queryLocationRoom] onUpdateUserLocations: invoked. sessionUin: ");
-      paramVenue.append(paramRoomKey.a());
+      paramVenue.append(paramRoomKey.b());
       paramVenue.append(" itemList: ");
       paramVenue.append(paramList.size());
       QLog.d("LocationShareHelper", 2, paramVenue.toString());
     }
-    paramVenue = LocationShareServiceHolder.a(LocationShareHelper.a(this.a).a).currentFloatWindowVisibleRoomKey();
+    paramVenue = LocationShareServiceHolder.b(LocationShareHelper.b(this.a).d).currentFloatWindowVisibleRoomKey();
     if ((paramVenue != null) && (paramVenue.equals(paramRoomKey)))
     {
       if (QLog.isColorLevel()) {
@@ -47,7 +47,7 @@ class LocationShareHelper$1
       }
       return;
     }
-    if (!LocationShareHelper.a(this.a, paramRoomKey.a(), paramRoomKey.a())) {
+    if (!LocationShareHelper.a(this.a, paramRoomKey.a(), paramRoomKey.b())) {
       return;
     }
     if ((paramList != null) && (!paramList.isEmpty()))
@@ -56,29 +56,29 @@ class LocationShareHelper$1
       int i = 0;
       while (i < paramList.size())
       {
-        paramVenue.add(((LocationItem)paramList.get(i)).a());
+        paramVenue.add(((LocationItem)paramList.get(i)).c());
         i += 1;
       }
-      boolean bool = paramVenue.contains(LocationShareHelper.a(this.a).a.getCurrentUin());
+      boolean bool = paramVenue.contains(LocationShareHelper.b(this.a).d.getCurrentUin());
       LocationShareHelper.a(this.a).a(bool, LocationShareHelper.a(this.a, paramRoomKey, (String)paramVenue.get(0)), paramList.size(), paramVenue);
-      LocationShareHelper.a(this.a).a().a(LocationShareHelper.a(this.a), new Object[0]);
+      LocationShareHelper.b(this.a).J().a(LocationShareHelper.a(this.a), new Object[0]);
       return;
     }
-    if (LocationShareHelper.a(this.a) == LocationShareHelper.a(this.a).a().a()) {
-      LocationShareHelper.a(this.a).a().a();
+    if (LocationShareHelper.a(this.a) == LocationShareHelper.b(this.a).J().a()) {
+      LocationShareHelper.b(this.a).J().c();
     }
   }
   
   public void b(LocationRoom.RoomKey paramRoomKey, int paramInt)
   {
-    if ((LocationShareHelper.a(this.a) == LocationShareHelper.a(this.a).a().a()) && (LocationShareHelper.a(this.a, paramRoomKey.a(), paramRoomKey.a()))) {
-      LocationShareHelper.a(this.a).a().a();
+    if ((LocationShareHelper.a(this.a) == LocationShareHelper.b(this.a).J().a()) && (LocationShareHelper.a(this.a, paramRoomKey.a(), paramRoomKey.b()))) {
+      LocationShareHelper.b(this.a).J().c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.LocationShareHelper.1
  * JD-Core Version:    0.7.0.1
  */

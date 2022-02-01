@@ -12,8 +12,8 @@ class CommentPresenter$OnFeedCommentElementClickListener$3
   
   public void onClick(View paramView)
   {
-    CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a, CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, null);
-    CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a).dismiss();
+    CommentPresenter.a(this.b.a, CommentPresenter.k(this.b.a), this.a, null);
+    CommentPresenter.r(this.b.a).dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

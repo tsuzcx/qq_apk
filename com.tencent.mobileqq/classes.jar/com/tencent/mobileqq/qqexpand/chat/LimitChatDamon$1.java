@@ -17,16 +17,16 @@ class LimitChatDamon$1
     {
       LimitChatDamon.a(this.this$0, null);
       ??? = new SessionInfo();
-      String str = this.jdField_a_of_type_JavaLangString;
-      ((SessionInfo)???).jdField_a_of_type_JavaLangString = str;
+      String str = this.a;
       ((SessionInfo)???).b = str;
-      ((SessionInfo)???).jdField_a_of_type_Int = 1044;
-      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseSessionInfo)???);
+      ((SessionInfo)???).c = str;
+      ((SessionInfo)???).a = 1044;
+      ChatActivityFacade.a(this.b, (BaseSessionInfo)???);
       if (QLog.isColorLevel())
       {
         ??? = new StringBuilder();
         ((StringBuilder)???).append("sendMessageReadConfirm , real send:");
-        ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)???).append(this.a);
         QLog.d("LimitChatDamon", 2, ((StringBuilder)???).toString());
       }
       return;
@@ -35,7 +35,7 @@ class LimitChatDamon$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.LimitChatDamon.1
  * JD-Core Version:    0.7.0.1
  */

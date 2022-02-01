@@ -14,27 +14,27 @@ class VideoStoryAIScenePart$7
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    VideoStoryAIScenePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAisceneVideoStoryAIScenePart, false);
-    VideoStoryAIScenePart.b(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAisceneVideoStoryAIScenePart).setVisibility(8);
-    VideoStoryAIScenePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAisceneVideoStoryAIScenePart).setVisibility(8);
-    if ((this.jdField_a_of_type_Boolean) && (!VideoStoryAIScenePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAisceneVideoStoryAIScenePart).get()))
+    VideoStoryAIScenePart.a(this.d, false);
+    VideoStoryAIScenePart.e(this.d).setVisibility(8);
+    VideoStoryAIScenePart.f(this.d).setVisibility(8);
+    if ((this.a) && (!VideoStoryAIScenePart.g(this.d).get()))
     {
-      VideoStoryAIScenePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAisceneVideoStoryAIScenePart, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      VideoStoryAIScenePart.a(this.d, this.b, this.c);
       return;
     }
-    VideoStoryAIScenePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAisceneVideoStoryAIScenePart).a(851971, new Object[0]);
+    VideoStoryAIScenePart.h(this.d).b(851971, new Object[0]);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    VideoStoryAIScenePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAisceneVideoStoryAIScenePart, true);
+    VideoStoryAIScenePart.a(this.d, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.aiscene.VideoStoryAIScenePart.7
  * JD-Core Version:    0.7.0.1
  */

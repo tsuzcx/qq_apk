@@ -7,13 +7,13 @@ class MultiAIOBaseViewPager$3
   
   public void run()
   {
-    this.this$0.a(0);
+    this.this$0.setScrollState(0);
     this.this$0.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.3
  * JD-Core Version:    0.7.0.1
  */

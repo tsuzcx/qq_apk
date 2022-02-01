@@ -15,69 +15,46 @@ public class SoInfo
   
   private static int compareVersion(String paramString1, String paramString2)
   {
-    for (;;)
+    try
     {
-      int j;
-      try
-      {
-        if (TextUtils.equals(paramString1, paramString2)) {
-          return 0;
-        }
-        paramString1 = paramString1.split("\\.");
-        paramString2 = paramString2.split("\\.");
-        int m = Math.min(paramString1.length, paramString2.length);
-        i = 0;
-        j = 0;
-        if (i >= m) {
-          break label143;
-        }
-        k = safeParseInt(paramString1[i]) - safeParseInt(paramString2[i]);
-        j = k;
-        if (k != 0) {
-          break label143;
-        }
-        i += 1;
-        j = k;
-        continue;
-        j = i;
-        if (k < paramString1.length)
-        {
-          if (safeParseInt(paramString1[k]) <= 0) {
-            break label156;
-          }
-          return 1;
-        }
-        if (j < paramString2.length)
-        {
-          i = safeParseInt(paramString2[j]);
-          if (i > 0) {
-            return -1;
-          }
-          j += 1;
-          continue;
-        }
+      if (TextUtils.equals(paramString1, paramString2)) {
         return 0;
       }
-      catch (Throwable paramString1)
-      {
-        paramString1.printStackTrace();
+      paramString1 = paramString1.split("\\.");
+      paramString2 = paramString2.split("\\.");
+      SoInfo.CompareModel localCompareModel = getIndex(paramString1, paramString2);
+      if (localCompareModel.diff == 0) {
+        return compareVersionInner(localCompareModel, paramString1, paramString2);
+      }
+      int i = localCompareModel.diff;
+      if (i > 0) {
         return 1;
       }
-      int i = k;
-      if (j > 0) {
-        i = 1;
-      }
-      return i;
-      label143:
-      int k = -1;
-      if (j == 0)
-      {
-        k = i;
-        continue;
-        label156:
-        k += 1;
-      }
+      return -1;
     }
+    catch (Throwable paramString1) {}
+    return 1;
+  }
+  
+  private static int compareVersionInner(SoInfo.CompareModel paramCompareModel, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    int i = paramCompareModel.index;
+    while (i < paramArrayOfString1.length)
+    {
+      if (safeParseInt(paramArrayOfString1[i]) > 0) {
+        return 1;
+      }
+      i += 1;
+    }
+    i = paramCompareModel.index;
+    while (i < paramArrayOfString2.length)
+    {
+      if (safeParseInt(paramArrayOfString2[i]) > 0) {
+        return -1;
+      }
+      i += 1;
+    }
+    return 0;
   }
   
   public static SoInfo create(JSONObject paramJSONObject)
@@ -112,12 +89,28 @@ public class SoInfo
     return paramJSONObject;
   }
   
+  private static SoInfo.CompareModel getIndex(String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    SoInfo.CompareModel localCompareModel = new SoInfo.CompareModel(null);
+    int i = Math.min(paramArrayOfString1.length, paramArrayOfString2.length);
+    while (localCompareModel.index < i)
+    {
+      int j = safeParseInt(paramArrayOfString1[localCompareModel.index]) - safeParseInt(paramArrayOfString2[localCompareModel.index]);
+      localCompareModel.diff = j;
+      if (j != 0) {
+        break;
+      }
+      localCompareModel.index += 1;
+    }
+    return localCompareModel;
+  }
+  
   public static int getReportCode(SoInfo paramSoInfo)
   {
     if (paramSoInfo == null) {
       return 1;
     }
-    if (SoDataUtil.a())
+    if (SoDataUtil.c())
     {
       if (paramSoInfo.arm64Info == null) {
         return 1;
@@ -128,6 +121,31 @@ public class SoInfo
       return 1;
     }
     return 0;
+  }
+  
+  private SoInfo mergeWhenVersionEqual(SoInfo paramSoInfo)
+  {
+    if ((this.arm32Info != null) && (this.arm64Info != null)) {
+      return this;
+    }
+    if ((paramSoInfo.arm32Info != null) && (paramSoInfo.arm64Info != null)) {
+      return paramSoInfo;
+    }
+    if (this.arm32Info == null)
+    {
+      SoDetailInfo localSoDetailInfo = paramSoInfo.arm32Info;
+      if (localSoDetailInfo != null) {
+        this.arm32Info = localSoDetailInfo;
+      }
+    }
+    if (this.arm64Info == null)
+    {
+      paramSoInfo = paramSoInfo.arm64Info;
+      if (paramSoInfo != null) {
+        this.arm64Info = paramSoInfo;
+      }
+    }
+    return this;
   }
   
   private static int safeParseInt(String paramString)
@@ -156,27 +174,7 @@ public class SoInfo
     if (i < 0) {
       return paramSoInfo;
     }
-    if ((this.arm32Info != null) && (this.arm64Info != null)) {
-      return this;
-    }
-    if ((paramSoInfo.arm32Info != null) && (paramSoInfo.arm64Info != null)) {
-      return paramSoInfo;
-    }
-    if (this.arm32Info == null)
-    {
-      SoDetailInfo localSoDetailInfo = paramSoInfo.arm32Info;
-      if (localSoDetailInfo != null) {
-        this.arm32Info = localSoDetailInfo;
-      }
-    }
-    if (this.arm64Info == null)
-    {
-      paramSoInfo = paramSoInfo.arm64Info;
-      if (paramSoInfo != null) {
-        this.arm64Info = paramSoInfo;
-      }
-    }
-    return this;
+    return mergeWhenVersionEqual(paramSoInfo);
   }
   
   public String toString()
@@ -195,7 +193,7 @@ public class SoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.biz.entity.SoInfo
  * JD-Core Version:    0.7.0.1
  */

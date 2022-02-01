@@ -34,8 +34,9 @@ public class JubaoApiPlugin
 {
   private String a;
   private String b;
-  private final String c = "0x800A851";
-  private String d = HardCodeUtil.a(2131705967);
+  private String c;
+  private final String d = "0x800A851";
+  private String e = HardCodeUtil.a(2131903845);
   
   public JubaoApiPlugin()
   {
@@ -55,6 +56,26 @@ public class JubaoApiPlugin
       QLog.e("jubaoApiPlugin", 1, paramString, new Object[0]);
     }
     return localJSONObject.toString();
+  }
+  
+  private String a(String paramString)
+  {
+    Object localObject1 = this.c;
+    if (localObject1 == null) {
+      return "";
+    }
+    localObject1 = ((String)localObject1).split("&");
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject2 = localObject1[i];
+      if (localObject2.startsWith(paramString)) {
+        return localObject2.split("=")[1];
+      }
+      i += 1;
+    }
+    return "";
   }
   
   public static String a(ArrayList<ChatMessage> paramArrayList)
@@ -108,48 +129,56 @@ public class JubaoApiPlugin
       Object localObject2;
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramVarArgs);
-        Object localObject1 = localJSONObject.optString("chatuin", "");
-        localObject2 = localJSONObject.optString("groupcode", "");
-        int j = localJSONObject.optInt("chattype", 0);
-        int k = localJSONObject.optInt("topicid", 0);
-        String str = localJSONObject.optString("uinname", "");
-        Object localObject3 = localJSONObject.optString("msgs");
+        Object localObject3 = new JSONObject(paramVarArgs);
+        Object localObject1 = ((JSONObject)localObject3).optString("chatuin", "");
+        localObject2 = ((JSONObject)localObject3).optString("groupcode", "");
+        int j = ((JSONObject)localObject3).optInt("chattype", 0);
+        int k = ((JSONObject)localObject3).optInt("topicid", 0);
+        String str = ((JSONObject)localObject3).optString("uinname", "");
+        Object localObject4 = ((JSONObject)localObject3).optString("msgs");
         paramVarArgs = (String[])localObject1;
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          paramVarArgs = NewReportPlugin.c((String)localObject1, NewReportPlugin.b(1));
+          paramVarArgs = NewReportPlugin.c((String)localObject1, NewReportPlugin.c(1));
         }
         if (TextUtils.isEmpty(str)) {
-          break label454;
+          break label531;
         }
         str = new String(Base64.decode(str, 0));
         if (QLog.isColorLevel()) {
           QLog.i("NewReportPlugin", 2, String.format("jumpChatMsg [%s, %s, %s, %s, %s]", new Object[] { paramVarArgs, Integer.valueOf(j), localObject2, Integer.valueOf(k), str }));
         }
+        this.c = new String(this.mRuntime.d().getIntent().getByteArrayExtra("SafeReportData"));
         localObject1 = null;
-        if (!TextUtils.isEmpty((CharSequence)localObject3))
+        if (!TextUtils.isEmpty((CharSequence)localObject4))
         {
-          localObject3 = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray((String)localObject3), JubaoMsgData.class);
+          localObject4 = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray((String)localObject4), JubaoMsgData.class);
           localObject1 = new ArrayList();
-          int m = localObject3.length;
+          int m = localObject4.length;
           int i = 0;
           if (i >= m) {
-            break label457;
+            break label534;
           }
-          ((ArrayList)localObject1).add(localObject3[i]);
+          ((ArrayList)localObject1).add(localObject4[i]);
           i += 1;
           continue;
         }
-        this.a = localJSONObject.optString("callback", "");
+        this.a = ((JSONObject)localObject3).optString("callback", "");
         if ((j == 1) || (j == 3000)) {
-          break label460;
+          break label537;
         }
         if (TextUtils.isEmpty(paramVarArgs))
         {
           QLog.d("jubaoApiPlugin", 1, "jumpChatMsg openChatUin is null");
           return;
         }
-        localObject2 = new Intent(this.mRuntime.a(), ChatActivity.class);
+        localObject2 = new Intent(this.mRuntime.d(), ChatActivity.class);
+        if (j == 10007)
+        {
+          localObject3 = a("friendroleid");
+          localObject4 = a("myroleid");
+          ((Intent)localObject2).putExtra("game_msg_friend_role_id", (String)localObject3);
+          ((Intent)localObject2).putExtra("game_msg_my_role_id", (String)localObject4);
+        }
         ((Intent)localObject2).putExtra("uin", paramVarArgs);
         ((Intent)localObject2).putExtra("uintype", j);
         if (!TextUtils.isEmpty(str)) {
@@ -179,18 +208,18 @@ public class JubaoApiPlugin
       }
       catch (JSONException paramVarArgs) {}
       return;
-      label454:
+      label531:
       continue;
-      label457:
+      label534:
       continue;
-      label460:
+      label537:
       paramVarArgs = (String[])localObject2;
     }
   }
   
   private void b(String... paramVarArgs)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.mRuntime.a()))
+    if (!NetworkUtil.isNetworkAvailable(this.mRuntime.d()))
     {
       paramVarArgs = a(5, "");
       callJs(this.b, new String[] { paramVarArgs });
@@ -207,12 +236,13 @@ public class JubaoApiPlugin
     try
     {
       Object localObject2 = new JSONObject(paramVarArgs);
+      String str1 = ((JSONObject)localObject2).optString("eviluin", "");
       localObject1 = ((JSONObject)localObject2).optString("chatuin", "");
-      String str = ((JSONObject)localObject2).optString("groupcode", "");
+      String str2 = ((JSONObject)localObject2).optString("groupcode", "");
       int j = ((JSONObject)localObject2).optInt("chattype", 0);
       paramVarArgs = (String[])localObject1;
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        paramVarArgs = NewReportPlugin.c((String)localObject1, NewReportPlugin.b(1));
+        paramVarArgs = NewReportPlugin.c((String)localObject1, NewReportPlugin.c(1));
       }
       JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray(((JSONObject)localObject2).optString("msgs")), JubaoMsgData.class);
       localObject1 = new ArrayList();
@@ -228,7 +258,8 @@ public class JubaoApiPlugin
       {
         QLog.e("jubaoApiPlugin", 2, "ipc upload  to msgServer msg size = 0 ");
         paramVarArgs = a(1, "");
-        callJs(this.b, new String[] { paramVarArgs });
+        localObject1 = this.b;
+        callJs((String)localObject1, new String[] { paramVarArgs });
         return;
       }
       if (QLog.isColorLevel())
@@ -239,10 +270,23 @@ public class JubaoApiPlugin
         QLog.d("jubaoApiPlugin", 2, ((StringBuilder)localObject2).toString());
       }
       localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("jubao_evil_uin", str1);
       ((Bundle)localObject2).putString("jubao_chat_uin", paramVarArgs);
-      ((Bundle)localObject2).putString("jubao_group_code", str);
+      ((Bundle)localObject2).putString("jubao_group_code", str2);
       ((Bundle)localObject2).putInt("jubao_chat_type", j);
       ((Bundle)localObject2).putSerializable("jubao_msg_list", (Serializable)localObject1);
+      if (j == 10007)
+      {
+        paramVarArgs = a("jubao_game_sig");
+        ((Bundle)localObject2).putString("jubao_game_sig", paramVarArgs);
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("gameSig = ");
+          ((StringBuilder)localObject1).append(paramVarArgs);
+          QLog.i("jubaoApiPlugin", 2, ((StringBuilder)localObject1).toString());
+        }
+      }
       QIPCClientHelper.getInstance().callServer("JubaoIPCServer", "", (Bundle)localObject2, new JubaoApiPlugin.1(this));
       ReportController.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "", "", "", "");
       return;
@@ -338,9 +382,9 @@ public class JubaoApiPlugin
       {
         if ((paramVarArgs != null) && (paramVarArgs.length > 0))
         {
-          paramJsBridgeListener = (InputMethodManager)this.mRuntime.a().getSystemService("input_method");
+          paramJsBridgeListener = (InputMethodManager)this.mRuntime.d().getSystemService("input_method");
           if (paramJsBridgeListener != null) {
-            paramJsBridgeListener.hideSoftInputFromWindow(this.mRuntime.a().getWindow().getDecorView().getWindowToken(), 0);
+            paramJsBridgeListener.hideSoftInputFromWindow(this.mRuntime.d().getWindow().getDecorView().getWindowToken(), 0);
           }
           a(paramVarArgs);
           paramJsBridgeListener = new StringBuilder();
@@ -400,7 +444,7 @@ public class JubaoApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jubao.JubaoApiPlugin
  * JD-Core Version:    0.7.0.1
  */

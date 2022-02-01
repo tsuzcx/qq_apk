@@ -12,11 +12,11 @@ class AIOGalleryActivity$2$3
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (AIOGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserAIOGalleryActivity$2.a) != null)) {
+    if ((this.a != null) && (AIOGalleryActivity.a(this.c.a) != null)) {
       try
       {
-        AIOBrowserBaseData[] arrayOfAIOBrowserBaseData = DataUtils.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData);
-        AIOGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserAIOGalleryActivity$2.a).notifyImageListChanged(arrayOfAIOBrowserBaseData, this.jdField_a_of_type_Int);
+        AIOBrowserBaseData[] arrayOfAIOBrowserBaseData = DataUtils.a(this.a);
+        AIOGalleryActivity.a(this.c.a).notifyImageListChanged(arrayOfAIOBrowserBaseData, this.b);
         return;
       }
       catch (Exception localException)
@@ -34,7 +34,7 @@ class AIOGalleryActivity$2$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.3
  * JD-Core Version:    0.7.0.1
  */

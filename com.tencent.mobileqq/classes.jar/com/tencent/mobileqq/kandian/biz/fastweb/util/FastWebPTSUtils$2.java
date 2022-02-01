@@ -11,13 +11,13 @@ final class FastWebPTSUtils$2
   public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
     if (paramProteusItemData != null) {
-      FastWebPTSUtils.a(paramViewBase, paramProteusItemData.b, paramProteusItemData.a, 2);
+      FastWebPTSUtils.a(paramViewBase, paramProteusItemData.aQ, paramProteusItemData.aR, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebPTSUtils.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,10 +14,10 @@ class ReadInJoyVideoCompositeManager$1
     long l1 = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
-      long l2 = (l1 - this.jdField_a_of_type_Long) / 1000L;
-      l1 = this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoDuration;
-      if (this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.isLocalPublish) {
-        l1 = this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoRangeEnd - this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.videoRangeStart;
+      long l2 = (l1 - this.a) / 1000L;
+      l1 = this.b.videoDuration;
+      if (this.b.isLocalPublish) {
+        l1 = this.b.videoRangeEnd - this.b.videoRangeStart;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("CameraCaptureMerge: duration: ");
@@ -29,18 +29,18 @@ class ReadInJoyVideoCompositeManager$1
     }
     if (paramInt == 0)
     {
-      ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry, paramString2);
+      ReadInJoyVideoCompositeManager.a(this.c, this.b, paramString2);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.e("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, new Object[] { "doCompositeCameraCaptureVideo: errorcode=%s, errorMsg=%s", Integer.valueOf(paramInt), paramString1 });
     }
-    ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry, paramInt, paramString1);
+    ReadInJoyVideoCompositeManager.a(this.c, this.b, paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.capture.ReadInJoyVideoCompositeManager.1
  * JD-Core Version:    0.7.0.1
  */

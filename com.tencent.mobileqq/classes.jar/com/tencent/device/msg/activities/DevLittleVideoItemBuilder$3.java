@@ -16,37 +16,37 @@ class DevLittleVideoItemBuilder$3
 {
   DevLittleVideoItemBuilder$3(DevLittleVideoItemBuilder paramDevLittleVideoItemBuilder, MessageForDevLittleVideo paramMessageForDevLittleVideo, ShortVideoRealItemBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      boolean bool = NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.a.getApplication().getApplicationContext());
-      paramView = this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo;
+      boolean bool = NetworkUtil.isNetworkAvailable(this.d.d.getApplication().getApplicationContext());
+      paramView = this.a;
       if (bool) {
         paramInt = 1002;
       } else {
         paramInt = 1005;
       }
       paramView.videoFileStatus = paramInt;
-      paramView = this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo;
+      paramView = this.a;
       paramView.videoFileProgress = 0;
       paramView.serial();
-      this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.a.getMessageFacade().a(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.frienduin, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.istroop, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.uniseq, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.msgData);
+      this.d.d.getMessageFacade().a(this.a.frienduin, this.a.istroop, this.a.uniseq, this.a.msgData);
       if (bool)
       {
-        this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.a(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder.a.setFailedIconVisable(false, this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder);
-        paramView = this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder;
-        MessageForDevLittleVideo localMessageForDevLittleVideo = this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo;
-        DevLittleVideoItemBuilder.a(paramView, localMessageForDevLittleVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder, localMessageForDevLittleVideo.videoFileProgress, false);
+        this.d.a(this.a);
+        this.b.j.setFailedIconVisable(false, this.d);
+        paramView = this.d;
+        MessageForDevLittleVideo localMessageForDevLittleVideo = this.a;
+        DevLittleVideoItemBuilder.a(paramView, localMessageForDevLittleVideo, this.b, localMessageForDevLittleVideo.videoFileProgress, false);
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevLittleVideoItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

@@ -30,19 +30,19 @@ public class ContactBindObserver
   protected String getBindErrorMessage(int paramInt)
   {
     if (paramInt == 217) {
-      return HardCodeUtil.a(2131702628);
+      return HardCodeUtil.a(2131900620);
     }
     if ((paramInt != 219) && (paramInt != 216))
     {
       if (paramInt == 224) {
-        return HardCodeUtil.a(2131702625);
+        return HardCodeUtil.a(2131900618);
       }
       if (paramInt == 223) {
-        return HardCodeUtil.a(2131702626);
+        return HardCodeUtil.a(2131900619);
       }
-      return HardCodeUtil.a(2131702629);
+      return HardCodeUtil.a(2131900621);
     }
-    return HardCodeUtil.a(2131702633);
+    return HardCodeUtil.a(2131900624);
   }
   
   protected void onBindMobile(boolean paramBoolean, Bundle paramBundle) {}
@@ -238,7 +238,7 @@ public class ContactBindObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.observer.ContactBindObserver
  * JD-Core Version:    0.7.0.1
  */

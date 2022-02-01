@@ -8,47 +8,47 @@ import com.tencent.qphone.base.util.QLog;
 
 public abstract class ToVideoConverter
 {
-  protected int a;
-  protected HWVideoRecorder a;
-  protected String a;
-  protected String b;
+  protected int d;
+  protected HWVideoRecorder e;
+  protected String f;
+  protected String g;
   
   protected void a(int paramInt, String paramString1, String paramString2, MediaFormat paramMediaFormat, SlideItemInfo paramSlideItemInfo, SlideShowProcessor.TaskContext paramTaskContext)
   {
     if (paramTaskContext != null)
     {
       ResultInfo localResultInfo = new ResultInfo();
-      localResultInfo.jdField_a_of_type_Long = paramTaskContext.b;
-      localResultInfo.jdField_a_of_type_Int = paramInt;
-      localResultInfo.jdField_b_of_type_JavaLangString = paramString2;
-      localResultInfo.jdField_a_of_type_JavaLangString = paramString1;
-      localResultInfo.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-      localResultInfo.c = this.jdField_b_of_type_JavaLangString;
-      localResultInfo.jdField_a_of_type_Boolean = false;
-      localResultInfo.jdField_b_of_type_Int = 1;
+      localResultInfo.a = paramTaskContext.k;
+      localResultInfo.b = paramInt;
+      localResultInfo.d = paramString2;
+      localResultInfo.c = paramString1;
+      localResultInfo.e = paramMediaFormat;
+      localResultInfo.f = this.g;
+      localResultInfo.i = false;
+      localResultInfo.j = 1;
       if (paramSlideItemInfo != null)
       {
-        localResultInfo.jdField_a_of_type_Boolean = paramSlideItemInfo.jdField_a_of_type_Boolean;
-        localResultInfo.jdField_b_of_type_Int = paramSlideItemInfo.c;
+        localResultInfo.i = paramSlideItemInfo.m;
+        localResultInfo.j = paramSlideItemInfo.n;
       }
-      if (paramTaskContext.a != null) {
-        paramTaskContext.a.a(localResultInfo);
+      if (paramTaskContext.l != null) {
+        paramTaskContext.l.a(localResultInfo);
       }
     }
   }
   
   protected boolean a(SlideShowProcessor.TaskContext paramTaskContext)
   {
-    if ((!paramTaskContext.d) && (QLog.isColorLevel()))
+    if ((!paramTaskContext.j) && (QLog.isColorLevel()))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("run exit:");
-      localStringBuilder.append(paramTaskContext.b);
+      localStringBuilder.append(paramTaskContext.k);
       localStringBuilder.append(" currContext.isRun:");
-      localStringBuilder.append(paramTaskContext.d);
+      localStringBuilder.append(paramTaskContext.j);
       QLog.d("ToVideoConverter", 2, localStringBuilder.toString());
     }
-    return paramTaskContext.d ^ true;
+    return paramTaskContext.j ^ true;
   }
 }
 

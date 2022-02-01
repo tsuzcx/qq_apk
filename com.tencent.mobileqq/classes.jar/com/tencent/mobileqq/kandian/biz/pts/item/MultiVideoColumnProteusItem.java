@@ -50,8 +50,8 @@ public class MultiVideoColumnProteusItem
     if ((paramInt == 2) && (!TextUtils.isEmpty(paramString2))) {
       localHashMap.put("click_rowkey", paramString2);
     }
-    if (ReadInJoySrtHandler.a().a(paramAbsBaseArticleInfo, false, ReadInJoySrtHandler.jdField_a_of_type_Int)) {
-      localHashMap.put("jump_src", Integer.valueOf(UGRuleManager.a(paramAbsBaseArticleInfo)));
+    if (ReadInJoySrtHandler.a().a(paramAbsBaseArticleInfo, false, ReadInJoySrtHandler.a)) {
+      localHashMap.put("jump_src", Integer.valueOf(UGRuleManager.g(paramAbsBaseArticleInfo)));
     }
     RIJFrameworkReportManager.a(paramAbsBaseArticleInfo, "0X8007625", "0X8007625", (int)paramAbsBaseArticleInfo.mChannelID, localHashMap);
   }
@@ -63,15 +63,15 @@ public class MultiVideoColumnProteusItem
   
   public JSONObject a(int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.multiVideoColumnInfo != null) && (paramAbsBaseArticleInfo.multiVideoColumnInfo.jdField_a_of_type_JavaUtilList.size() != 0))
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.multiVideoColumnInfo != null) && (paramAbsBaseArticleInfo.multiVideoColumnInfo.p.size() != 0))
     {
-      Object localObject1 = paramAbsBaseArticleInfo.multiVideoColumnInfo.jdField_a_of_type_JavaUtilList;
+      Object localObject1 = paramAbsBaseArticleInfo.multiVideoColumnInfo.p;
       paramInt = 0;
       if (((List)localObject1).get(0) != null)
       {
         localObject1 = BaseApplicationImpl.getContext();
         if (localObject1 != null) {
-          localObject1 = ((Context)localObject1).getResources().getString(2131717950);
+          localObject1 = ((Context)localObject1).getResources().getString(2131915430);
         } else {
           localObject1 = "";
         }
@@ -79,22 +79,22 @@ public class MultiVideoColumnProteusItem
         JSONArray localJSONArray = new JSONArray();
         paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.multiVideoColumnInfo;
         Object localObject2;
-        if (paramAbsBaseArticleInfo.jdField_a_of_type_Boolean)
+        if (paramAbsBaseArticleInfo.j)
         {
           localJSONObject.put("style_ID", "ReadInJoy_multi_video_subscribed_card_cell");
           paramInt = 0;
-          while (paramInt < paramAbsBaseArticleInfo.jdField_a_of_type_JavaUtilList.size())
+          while (paramInt < paramAbsBaseArticleInfo.p.size())
           {
             localObject2 = new JSONObject();
             ((JSONObject)localObject2).put("style_ID", "ReadInJoy_multi_video_subscribed_video_cell");
-            SubVideoInfo localSubVideoInfo = (SubVideoInfo)paramAbsBaseArticleInfo.jdField_a_of_type_JavaUtilList.get(paramInt);
-            ((JSONObject)localObject2).put("video_jump_url", localSubVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo.jdField_a_of_type_JavaLangString);
-            ((JSONObject)localObject2).put("video_cover_url", localSubVideoInfo.c);
-            ((JSONObject)localObject2).put("video_title_text", localSubVideoInfo.jdField_b_of_type_JavaLangString);
-            ((JSONObject)localObject2).put("rowkey", localSubVideoInfo.jdField_a_of_type_JavaLangString);
-            String str1 = ReadInJoyHelper.b(localSubVideoInfo.jdField_a_of_type_Int);
-            String str2 = ReadInJoyHelper.d(localSubVideoInfo.jdField_b_of_type_Int);
-            if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localSubVideoInfo.jdField_a_of_type_Int > 0)) {
+            SubVideoInfo localSubVideoInfo = (SubVideoInfo)paramAbsBaseArticleInfo.p.get(paramInt);
+            ((JSONObject)localObject2).put("video_jump_url", localSubVideoInfo.e.b);
+            ((JSONObject)localObject2).put("video_cover_url", localSubVideoInfo.d);
+            ((JSONObject)localObject2).put("video_title_text", localSubVideoInfo.c);
+            ((JSONObject)localObject2).put("rowkey", localSubVideoInfo.b);
+            String str1 = ReadInJoyHelper.d(localSubVideoInfo.f);
+            String str2 = ReadInJoyHelper.f(localSubVideoInfo.g);
+            if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localSubVideoInfo.f > 0)) {
               ((JSONObject)localObject2).put("video_info_text", String.format((String)localObject1, new Object[] { str1, str2 }));
             } else {
               ((JSONObject)localObject2).put("video_info_text", str2);
@@ -104,27 +104,27 @@ public class MultiVideoColumnProteusItem
           }
         }
         localJSONObject.put("style_ID", "ReadInJoy_multi_video_subscribe_card_cell");
-        localJSONObject.put("bottom_color", paramAbsBaseArticleInfo.f);
-        localJSONObject.put("topic_desc_text", paramAbsBaseArticleInfo.d);
-        localJSONObject.put("bg_cover_img_url", paramAbsBaseArticleInfo.e);
-        while (paramInt < paramAbsBaseArticleInfo.jdField_a_of_type_JavaUtilList.size())
+        localJSONObject.put("bottom_color", paramAbsBaseArticleInfo.l);
+        localJSONObject.put("topic_desc_text", paramAbsBaseArticleInfo.e);
+        localJSONObject.put("bg_cover_img_url", paramAbsBaseArticleInfo.k);
+        while (paramInt < paramAbsBaseArticleInfo.p.size())
         {
           localObject1 = new JSONObject();
           ((JSONObject)localObject1).put("style_ID", "ReadInJoy_multi_video_subscribe_video_cell");
-          localObject2 = (SubVideoInfo)paramAbsBaseArticleInfo.jdField_a_of_type_JavaUtilList.get(paramInt);
-          ((JSONObject)localObject1).put("video_jump_url", ((SubVideoInfo)localObject2).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo.jdField_a_of_type_JavaLangString);
-          ((JSONObject)localObject1).put("video_cover_url", ((SubVideoInfo)localObject2).c);
-          ((JSONObject)localObject1).put("video_title_text", ((SubVideoInfo)localObject2).jdField_b_of_type_JavaLangString);
-          ((JSONObject)localObject1).put("rowkey", ((SubVideoInfo)localObject2).jdField_a_of_type_JavaLangString);
-          ((JSONObject)localObject1).put("video_duration_text", ReadInJoyHelper.d(((SubVideoInfo)localObject2).jdField_b_of_type_Int));
+          localObject2 = (SubVideoInfo)paramAbsBaseArticleInfo.p.get(paramInt);
+          ((JSONObject)localObject1).put("video_jump_url", ((SubVideoInfo)localObject2).e.b);
+          ((JSONObject)localObject1).put("video_cover_url", ((SubVideoInfo)localObject2).d);
+          ((JSONObject)localObject1).put("video_title_text", ((SubVideoInfo)localObject2).c);
+          ((JSONObject)localObject1).put("rowkey", ((SubVideoInfo)localObject2).b);
+          ((JSONObject)localObject1).put("video_duration_text", ReadInJoyHelper.f(((SubVideoInfo)localObject2).g));
           localJSONArray.put(paramInt, localObject1);
           paramInt += 1;
         }
         localJSONObject.put("column_data", localJSONArray);
-        localJSONObject.put("topic_title_text", paramAbsBaseArticleInfo.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("from_text", a(paramAbsBaseArticleInfo.g, 20));
-        localJSONObject.put("from_icon_url", paramAbsBaseArticleInfo.h);
-        localJSONObject.put("title_icon_url", paramAbsBaseArticleInfo.c);
+        localJSONObject.put("topic_title_text", paramAbsBaseArticleInfo.b);
+        localJSONObject.put("from_text", a(paramAbsBaseArticleInfo.m, 20));
+        localJSONObject.put("from_icon_url", paramAbsBaseArticleInfo.n);
+        localJSONObject.put("title_icon_url", paramAbsBaseArticleInfo.d);
         QLog.d("multiVideoColumnInfo", 1, localJSONObject.toString());
         return localJSONObject;
       }
@@ -134,21 +134,21 @@ public class MultiVideoColumnProteusItem
   
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
     if (localAbsBaseArticleInfo != null)
     {
       if (localAbsBaseArticleInfo.multiVideoColumnInfo == null) {
         return;
       }
       ViewBase localViewBase = paramContainer.getVirtualView();
-      if (localAbsBaseArticleInfo.multiVideoColumnInfo.jdField_b_of_type_Int > 0)
+      if (localAbsBaseArticleInfo.multiVideoColumnInfo.f > 0)
       {
-        if (localAbsBaseArticleInfo.multiVideoColumnInfo.jdField_b_of_type_Int > 99) {
+        if (localAbsBaseArticleInfo.multiVideoColumnInfo.f > 99) {
           localObject = "99+";
         } else {
-          localObject = Integer.toString(localAbsBaseArticleInfo.multiVideoColumnInfo.jdField_b_of_type_Int);
+          localObject = Integer.toString(localAbsBaseArticleInfo.multiVideoColumnInfo.f);
         }
-        localObject = String.format(paramContainer.getContext().getResources().getString(2131717951), new Object[] { localObject });
+        localObject = String.format(paramContainer.getContext().getResources().getString(2131915431), new Object[] { localObject });
         TextBase localTextBase = (TextBase)localViewBase.findViewBaseByName("id_topic_bubble");
         if (localTextBase != null)
         {
@@ -171,7 +171,7 @@ public class MultiVideoColumnProteusItem
     String str = paramViewBase.getClickEvnet();
     if ((!TextUtils.isEmpty(str)) && (str.startsWith("multi_video_column_")))
     {
-      paramIReadInJoyModel = paramIReadInJoyModel.a();
+      paramIReadInJoyModel = paramIReadInJoyModel.k();
       if ("multi_video_column_card_click".equals(str))
       {
         paramViewBase.setOnClickListener(new MultiVideoColumnProteusItem.3(this, paramIReadInJoyModel, paramContainer));
@@ -188,7 +188,7 @@ public class MultiVideoColumnProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.MultiVideoColumnProteusItem
  * JD-Core Version:    0.7.0.1
  */

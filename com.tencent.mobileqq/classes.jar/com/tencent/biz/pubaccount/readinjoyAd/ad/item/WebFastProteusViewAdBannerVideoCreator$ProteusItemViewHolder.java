@@ -21,9 +21,9 @@ import org.json.JSONObject;
 public class WebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder
   extends WebFastBaseProteusItemHolder
 {
-  private ReadInJoyArticleBottomVideoView jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView = null;
-  private ReadInjoyImageView jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyImageView = null;
-  private ReadInjoyTextView jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyTextView = null;
+  private ReadInJoyArticleBottomVideoView n = null;
+  private ReadInjoyImageView o = null;
+  private ReadInjoyTextView p = null;
   
   public WebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
   {
@@ -33,23 +33,23 @@ public class WebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder
       paramView = (Container)paramBaseData;
       if (paramView.getVirtualView() != null)
       {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView == null)
+        if (this.n == null)
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView = ((ReadInJoyArticleBottomVideoView)paramView.getVirtualView().findViewBaseByName("id_ad_banner_bottom_video"));
+          this.n = ((ReadInJoyArticleBottomVideoView)paramView.getVirtualView().findViewBaseByName("id_ad_banner_bottom_video"));
           paramView = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
           paramWeakReference = new StringBuilder();
           paramWeakReference.append("bottomView create - item:");
-          paramWeakReference.append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView.hashCode());
+          paramWeakReference.append(this.n.hashCode());
           paramView.d("VideoPlayerWrapper_AD", paramWeakReference.toString());
         }
         try
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyImageView == null) {
-            this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyImageView = ((ReadInjoyImageView)((Container)paramBaseData).getVirtualView().findViewBaseByName("id_ad_title_mask"));
+          if (this.o == null) {
+            this.o = ((ReadInjoyImageView)((Container)paramBaseData).getVirtualView().findViewBaseByName("id_ad_title_mask"));
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyTextView == null)
+          if (this.p == null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyTextView = ((ReadInjoyTextView)((Container)paramBaseData).getVirtualView().findViewBaseByName("id_tv_title_inner"));
+            this.p = ((ReadInjoyTextView)((Container)paramBaseData).getVirtualView().findViewBaseByName("id_tv_title_inner"));
             return;
           }
         }
@@ -69,18 +69,18 @@ public class WebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder
   {
     if (paramProteusBannerVideoItemData1 != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView;
+      Object localObject = this.n;
       if (localObject == null) {
         return;
       }
       ((ReadInJoyArticleBottomVideoView)localObject).setVisibility(0);
       localObject = new AdModuleVideo();
       AdvertisementInfo localAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramProteusBannerVideoItemData1);
-      ((AdModuleVideo)localObject).e = paramProteusBannerVideoItemData1.l;
-      ((AdModuleVideo)localObject).d = paramProteusBannerVideoItemData1.w;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView.a((AdModuleVideo)localObject, localAdvertisementInfo, paramProteusBannerVideoItemData1, paramProteusBannerVideoItemData2);
+      ((AdModuleVideo)localObject).r = paramProteusBannerVideoItemData1.n;
+      ((AdModuleVideo)localObject).p = paramProteusBannerVideoItemData1.G;
+      this.n.a((AdModuleVideo)localObject, localAdvertisementInfo, paramProteusBannerVideoItemData1, paramProteusBannerVideoItemData2);
       if (paramProteusBannerVideoItemData1.a) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyArticleBottomVideoView.c();
+        this.n.e();
       }
     }
   }
@@ -89,15 +89,20 @@ public class WebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder
   
   protected void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
   {
-    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.1(this, paramBaseData, paramContext));
+    ViewFactory.findClickableViewListener(this.a.getVirtualView(), new WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder.1(this, paramBaseData, paramContext));
   }
   
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2)
+  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
+  {
+    return paramBaseData1 == paramBaseData2;
+  }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2)
   {
     if (!(paramBaseData1 instanceof ProteusBannerVideoItemData)) {
       return;
     }
-    if ((paramBaseData2 != null) && (paramBaseData2.u == 17))
+    if ((paramBaseData2 != null) && (paramBaseData2.aP == 17))
     {
       paramBaseData2 = (ProteusBannerVideoItemData)paramBaseData2;
       a((ProteusBannerVideoItemData)paramBaseData1, paramBaseData2);
@@ -105,15 +110,10 @@ public class WebFastProteusViewAdBannerVideoCreator$ProteusItemViewHolder
     }
     a((ProteusBannerVideoItemData)paramBaseData1, null);
   }
-  
-  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
-  {
-    return paramBaseData1 == paramBaseData2;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.item.WebFastProteusViewAdBannerVideoCreator.ProteusItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

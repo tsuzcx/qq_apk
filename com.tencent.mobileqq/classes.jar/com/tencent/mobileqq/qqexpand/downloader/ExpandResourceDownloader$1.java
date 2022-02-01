@@ -31,7 +31,7 @@ class ExpandResourceDownloader$1
       QLog.d("ExpandResourceDownloader", 2, String.format("onResp url=%s result=%s", new Object[] { localObject1, Integer.valueOf(paramNetResp.mResult) }));
     }
     ExpandResourceDownloader.a(this.a).set(paramNetResp.mResult);
-    long l = System.currentTimeMillis() - ExpandResourceDownloader.a(this.a);
+    long l = System.currentTimeMillis() - ExpandResourceDownloader.b(this.a);
     int i = paramNetResp.mResult;
     if (i != 0)
     {
@@ -45,30 +45,30 @@ class ExpandResourceDownloader$1
         ((StringBuilder)localObject2).append(paramNetResp.mErrDesc);
         QLog.e("ExpandResourceDownloader", 2, ((StringBuilder)localObject2).toString());
       }
-      ExpandResourceDownloader.a(this.a, paramNetResp.mErrCode, ExpandResourceDownloader.a(this.a), l, paramNetResp.mErrDesc);
-      ExpandResourceDownloader.a(this.a).preDownloadSuccess((String)localObject1, -1L);
+      ExpandResourceDownloader.a(this.a, paramNetResp.mErrCode, ExpandResourceDownloader.c(this.a), l, paramNetResp.mErrDesc);
+      ExpandResourceDownloader.d(this.a).preDownloadSuccess((String)localObject1, -1L);
       return;
     }
     Object localObject2 = this.a;
-    ExpandResourceDownloader.a((ExpandResourceDownloader)localObject2, 0, ExpandResourceDownloader.a((ExpandResourceDownloader)localObject2), l, "");
-    ExpandResourceDownloader.a(this.a).preDownloadSuccess((String)localObject1, paramNetResp.mTotalFileLen);
+    ExpandResourceDownloader.a((ExpandResourceDownloader)localObject2, 0, ExpandResourceDownloader.c((ExpandResourceDownloader)localObject2), l, "");
+    ExpandResourceDownloader.d(this.a).preDownloadSuccess((String)localObject1, paramNetResp.mTotalFileLen);
     paramNetResp = (HttpNetReq)paramNetResp.mReq;
-    boolean bool2 = ExpandResourceDownloader.a(this.a, paramNetResp.mOutPath, ExpandResourceDownloader.a(this.a));
+    boolean bool2 = ExpandResourceDownloader.a(this.a, paramNetResp.mOutPath, ExpandResourceDownloader.c(this.a));
     if (bool2)
     {
-      localObject1 = new File(ExpandResourceDownloader.b(this.a));
+      localObject1 = new File(ExpandResourceDownloader.e(this.a));
       if (!((File)localObject1).exists()) {
         ((File)localObject1).mkdirs();
       }
-      boolean bool4 = ExpandResourceDownloader.b(this.a, paramNetResp.mOutPath, ExpandResourceDownloader.b(this.a));
-      boolean bool3 = ExpandResourceDownloader.a(this.a);
+      boolean bool4 = ExpandResourceDownloader.b(this.a, paramNetResp.mOutPath, ExpandResourceDownloader.e(this.a));
+      boolean bool3 = ExpandResourceDownloader.f(this.a);
       if (QLog.isColorLevel()) {
         QLog.d("ExpandResourceDownloader", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool3) }));
       }
       boolean bool1;
-      if (ExpandResourceDownloader.a(this.a) != null)
+      if (ExpandResourceDownloader.g(this.a) != null)
       {
-        paramNetResp = ExpandResourceDownloader.a(this.a);
+        paramNetResp = ExpandResourceDownloader.g(this.a);
         if ((bool4) && (bool3)) {
           bool1 = true;
         } else {
@@ -90,8 +90,8 @@ class ExpandResourceDownloader$1
         QLog.e("ExpandResourceDownloader", 2, "onResp ResultOk file check invalid.");
       }
       ExpandResourceDownloader.a(this.a, paramNetResp.mOutPath);
-      if (ExpandResourceDownloader.a(this.a) != null) {
-        ExpandResourceDownloader.a(this.a).a(false);
+      if (ExpandResourceDownloader.g(this.a) != null) {
+        ExpandResourceDownloader.g(this.a).a(false);
       }
     }
     ExtendFriendReport.a().a(bool2, 0);
@@ -108,7 +108,7 @@ class ExpandResourceDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.downloader.ExpandResourceDownloader.1
  * JD-Core Version:    0.7.0.1
  */

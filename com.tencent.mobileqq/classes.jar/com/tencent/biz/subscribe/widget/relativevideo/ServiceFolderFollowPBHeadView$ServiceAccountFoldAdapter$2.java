@@ -9,10 +9,10 @@ class ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter$2
   
   public void run()
   {
-    if (ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.a(this.this$0) != null)
+    if (ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.b(this.this$0) != null)
     {
       ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.a(this.this$0, true);
-      if ((!ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.a(this.this$0).isComputingLayout()) && (ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.a(this.this$0).getScrollState() == 0))
+      if ((!ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.b(this.this$0).isComputingLayout()) && (ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.b(this.this$0).getScrollState() == 0))
       {
         ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.a(this.this$0, false);
         this.this$0.notifyDataSetChanged();
@@ -22,7 +22,7 @@ class ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.2
  * JD-Core Version:    0.7.0.1
  */

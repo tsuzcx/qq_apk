@@ -21,67 +21,105 @@ public class MusicFilePresenter
   extends FileBrowserPresenterBase
   implements FileViewMusicService.IFileViewMusicEvent, FileBrowserModelBase.OnTransEventListener
 {
-  protected FileViewMusicService a;
   protected MusicFileViewer a;
-  private MediaFocusManager.OnMediaFocusChangeListener jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager$OnMediaFocusChangeListener = new MusicFilePresenter.6(this);
-  private String jdField_a_of_type_JavaLangString;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean d = true;
+  protected FileViewMusicService b;
+  private String j;
+  private Timer k;
+  private boolean l = false;
+  private boolean m = true;
+  private MediaFocusManager.OnMediaFocusChangeListener n = new MusicFilePresenter.6(this);
   
   public MusicFilePresenter(FileBrowserModelBase paramFileBrowserModelBase, Activity paramActivity)
   {
     super(paramFileBrowserModelBase, paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer = new MusicFileViewer(paramActivity);
-    a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer);
+    this.a = new MusicFileViewer(paramActivity);
+    a(this.a);
   }
   
   private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean)
+    this.l = paramBoolean;
+    if (this.l)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.a();
+      int i = this.b.b();
       b(i);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.c(i);
-      s();
+      this.a.c(i);
+      x();
     }
     else
     {
-      t();
+      y();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.d(this.jdField_a_of_type_Boolean);
+    this.a.d(this.l);
   }
   
-  private void c()
+  private void j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.f(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c()));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.c();
+    this.a.e(this.c.v());
+    this.a.f(FileUtil.a(this.c.x()));
+    this.a.e();
     h();
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d();
-    b();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.c(true);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.b(this.jdField_a_of_type_JavaLangString))
+    this.j = this.c.y();
+    i();
+    this.a.c(true);
+    if (this.b.b(this.j))
     {
-      b(this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.a());
+      b(this.b.b());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.d(QFileUtils.a(0L));
+    this.a.d(QFileUtils.a(0L));
   }
   
-  private boolean c()
+  private void u()
   {
-    FileViewMusicService localFileViewMusicService = this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService;
+    FileManagerReporter.a("0X8004BE0");
+    FileViewMusicService localFileViewMusicService = this.b;
+    if (localFileViewMusicService == null)
+    {
+      QLog.e("FileBrowserPresenter<FileAssistant>", 1, "playMusic error. MusicService is null");
+      return;
+    }
+    if (!localFileViewMusicService.b(this.j))
+    {
+      this.b.a(this);
+      if (!this.b.a(this.j)) {
+        return;
+      }
+    }
+    this.b.e();
+    a(true);
+    MediaFocusManager.b().a(1, this.n);
+  }
+  
+  private void v()
+  {
+    FileManagerReporter.a("0X8004BE1");
+    FileViewMusicService localFileViewMusicService = this.b;
+    if (localFileViewMusicService == null)
+    {
+      QLog.e("FileBrowserPresenter<FileAssistant>", 1, "pauseMusic error. MusicService is null");
+      return;
+    }
+    if (localFileViewMusicService.b(this.j))
+    {
+      this.b.d();
+      a(false);
+      MediaFocusManager.b().a(this.n);
+    }
+  }
+  
+  private boolean w()
+  {
+    FileViewMusicService localFileViewMusicService = this.b;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localFileViewMusicService != null)
     {
       bool1 = bool2;
-      if (localFileViewMusicService.b(this.jdField_a_of_type_JavaLangString))
+      if (localFileViewMusicService.b(this.j))
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.a()) {
+        if (this.b.c()) {
           bool1 = true;
         }
       }
@@ -89,58 +127,20 @@ public class MusicFilePresenter
     return bool1;
   }
   
-  private void q()
+  private void x()
   {
-    FileManagerReporter.a("0X8004BE0");
-    FileViewMusicService localFileViewMusicService = this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService;
-    if (localFileViewMusicService == null)
-    {
-      QLog.e("FileBrowserPresenter<FileAssistant>", 1, "playMusic error. MusicService is null");
-      return;
-    }
-    if (!localFileViewMusicService.b(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.a(this);
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.a(this.jdField_a_of_type_JavaLangString)) {
-        return;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.b();
-    a(true);
-    MediaFocusManager.a().a(1, this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager$OnMediaFocusChangeListener);
+    y();
+    this.k = new Timer();
+    this.k.scheduleAtFixedRate(new MusicFilePresenter.5(this), 0L, 1000L);
   }
   
-  private void r()
+  private void y()
   {
-    FileManagerReporter.a("0X8004BE1");
-    FileViewMusicService localFileViewMusicService = this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService;
-    if (localFileViewMusicService == null)
-    {
-      QLog.e("FileBrowserPresenter<FileAssistant>", 1, "pauseMusic error. MusicService is null");
-      return;
-    }
-    if (localFileViewMusicService.b(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.a();
-      a(false);
-      MediaFocusManager.a().a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager$OnMediaFocusChangeListener);
-    }
-  }
-  
-  private void s()
-  {
-    t();
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new MusicFilePresenter.5(this), 0L, 1000L);
-  }
-  
-  private void t()
-  {
-    Timer localTimer = this.jdField_a_of_type_JavaUtilTimer;
+    Timer localTimer = this.k;
     if (localTimer != null)
     {
       localTimer.cancel();
-      this.jdField_a_of_type_JavaUtilTimer = null;
+      this.k = null;
     }
   }
   
@@ -150,11 +150,11 @@ public class MusicFilePresenter
     if (QLog.isColorLevel()) {
       QLog.i("FileBrowserPresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = music");
     }
-    c();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.c(0);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.a(new MusicFilePresenter.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(new MusicFilePresenter.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this);
+    j();
+    this.a.c(0);
+    this.a.a(new MusicFilePresenter.1(this));
+    this.a.b(new MusicFilePresenter.2(this));
+    this.c.a(this);
   }
   
   public void a(float paramFloat)
@@ -165,129 +165,129 @@ public class MusicFilePresenter
   public void a(int paramInt)
   {
     String str = QFileUtils.a(paramInt);
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new MusicFilePresenter.3(this, str, paramInt));
+    this.d.runOnUiThread(new MusicFilePresenter.3(this, str, paramInt));
   }
   
   public void a(String paramString)
   {
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 0, this.jdField_a_of_type_AndroidAppActivity.getString(2131692698), 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.d(QFileUtils.a(0L));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.c(0);
+    QQToast.makeText(this.d, 0, this.d.getString(2131889769), 1).show(this.d.getResources().getDimensionPixelSize(2131299920));
+    this.a.d(QFileUtils.a(0L));
+    this.a.c(0);
     a(false);
-  }
-  
-  public boolean a()
-  {
-    return this.d;
-  }
-  
-  public void ah_()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.d(QFileUtils.a(0L));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.c(0);
-    a(false);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService = FileViewMusicService.a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.a(this.jdField_a_of_type_JavaLangString, new MusicFilePresenter.4(this));
-    if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.b(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.a(this);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b()) {
-      q();
-    }
-    a(c());
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.d(QFileUtils.a(paramInt));
+    this.a.d(QFileUtils.a(paramInt));
   }
   
   public boolean b()
   {
-    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+    return this.m;
+  }
+  
+  public boolean c()
+  {
+    this.d.setRequestedOrientation(1);
     return false;
+  }
+  
+  public void cf_()
+  {
+    this.a.d(QFileUtils.a(0L));
+    this.a.c(0);
+    a(false);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(true);
-    b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a());
+    this.a.a(false);
+    this.a.b(true);
+    b(this.c.J());
   }
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(false);
+    this.a.a(true);
+    this.a.b(false);
     h();
   }
   
   public void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(false);
+    this.a.a(true);
+    this.a.b(false);
     h();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a();
+    if (this.e != null) {
+      this.e.b();
     }
   }
   
   public void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(false);
+    this.a.a(true);
+    this.a.b(false);
     h();
   }
   
   protected void h()
   {
     super.h();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.i() == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.a(false);
+    if (this.c.R() == 2) {
+      this.a.a(false);
     }
   }
   
   public void i()
   {
-    super.i();
-    FileViewMusicService localFileViewMusicService = this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService;
-    if (localFileViewMusicService != null) {
-      localFileViewMusicService.a(null);
+    this.j = this.c.y();
+    if (this.b == null) {
+      this.b = FileViewMusicService.a();
     }
-    t();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localFileViewMusicService = this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService;
-      if ((localFileViewMusicService != null) && (localFileViewMusicService.b(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.c();
-      }
+    this.b.a(this.j, new MusicFilePresenter.4(this));
+    if (this.b.b(this.j)) {
+      this.b.a(this);
     }
-    MediaFocusManager.a().b(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager$OnMediaFocusChangeListener);
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService = null;
-  }
-  
-  public void j()
-  {
-    super.j();
-    t();
+    if (this.c.q()) {
+      u();
+    }
+    a(w());
   }
   
   public void k()
   {
     super.k();
-    c();
+    FileViewMusicService localFileViewMusicService = this.b;
+    if (localFileViewMusicService != null) {
+      localFileViewMusicService.a(null);
+    }
+    y();
+    if (this.l)
+    {
+      localFileViewMusicService = this.b;
+      if ((localFileViewMusicService != null) && (localFileViewMusicService.b(this.j))) {
+        this.b.f();
+      }
+    }
+    MediaFocusManager.b().b(this.n);
+    this.b = null;
+  }
+  
+  public void l()
+  {
+    super.l();
+    y();
+  }
+  
+  public void m()
+  {
+    super.m();
+    j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -11,27 +11,27 @@ import com.tencent.widget.HorizontalListView;
 public class BubbleViewProcessor
   implements IBubbleViewProcessor
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private BaseChatItemLayout jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
-  private BaseChatItemLayoutViewBasicAbility jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBasechatItemlayoutBaseChatItemLayoutViewBasicAbility;
+  private BaseChatItemLayout a;
+  private Context b;
+  private View c;
+  private BaseChatItemLayoutViewBasicAbility d;
   
   public BubbleViewProcessor(BaseChatItemLayout paramBaseChatItemLayout, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramBaseChatItemLayout;
+    this.b = paramContext;
   }
   
   public BaseChatItemLayoutViewBasicAbility a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBasechatItemlayoutBaseChatItemLayoutViewBasicAbility == null)
+    if (this.d == null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      View localView = this.c;
       if (localView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBasechatItemlayoutBaseChatItemLayoutViewBasicAbility = new BaseChatItemLayoutViewBasicAbilityImpl(localView);
+        this.d = new BaseChatItemLayoutViewBasicAbilityImpl(localView);
       }
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBasechatItemlayoutBaseChatItemLayoutViewBasicAbility;
+    return this.d;
   }
   
   public BaseChatItemLayoutViewBasicAbility a(int paramInt)
@@ -41,60 +41,60 @@ public class BubbleViewProcessor
   
   public void a(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.c;
     if (localObject != paramView)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.removeView((View)localObject);
+      this.a.removeView((View)localObject);
       boolean bool = paramView instanceof HorizontalListView;
       if (!bool) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.addView(paramView);
+        this.a.addView(paramView);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.addView(paramView, 0);
+        this.a.addView(paramView, 0);
       }
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_AndroidViewView.setId(2131364521);
+      this.c = paramView;
+      this.c.setId(2131430578);
       if (!bool)
       {
-        localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-        int i = paramView.getContext().getResources().getDimensionPixelSize(2131296383);
+        localObject = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
+        int i = paramView.getContext().getResources().getDimensionPixelSize(2131296615);
         ((RelativeLayout.LayoutParams)localObject).leftMargin = i;
         ((RelativeLayout.LayoutParams)localObject).rightMargin = i;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.b() == 1)
+        if (this.a.getHeadIconPosition() == 1)
         {
-          ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131364530);
+          ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131430587);
           ((RelativeLayout.LayoutParams)localObject).addRule(1, 0);
         }
         else
         {
-          ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131364530);
+          ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131430587);
           ((RelativeLayout.LayoutParams)localObject).addRule(0, 0);
         }
       }
     }
-    paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a(NickNameChatItemLayoutProcessor.h);
+    paramView = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
+    localObject = this.a.a(NickNameChatItemLayoutProcessor.h);
     if ((localObject != null) && (((BaseChatItemLayoutViewBasicAbility)localObject).checkViewNonNull()) && (((BaseChatItemLayoutViewBasicAbility)localObject).getViewVisibility() == 0))
     {
-      paramView.addRule(3, 2131364539);
+      paramView.addRule(3, 2131430596);
       paramView.topMargin = 0;
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
         paramView.append(" setBubbleView mTopId = R.id.chat_item_nick_name_layout, bubbleView = ");
-        paramView.append(this.jdField_a_of_type_AndroidViewView.isPressed());
+        paramView.append(this.c.isPressed());
         QLog.d("BubbleView", 2, paramView.toString());
       }
     }
     else
     {
-      paramView.addRule(3, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a());
+      paramView.addRule(3, this.a.getTopId());
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
         paramView.append(" setBubbleView mTopId  = ");
-        paramView.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a());
+        paramView.append(this.a.getTopId());
         paramView.append(", bubbleView = ");
-        paramView.append(this.jdField_a_of_type_AndroidViewView.isPressed());
+        paramView.append(this.c.isPressed());
         QLog.d("BubbleView", 2, paramView.toString());
       }
     }
@@ -102,18 +102,18 @@ public class BubbleViewProcessor
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.c;
     if (localObject != null)
     {
       localObject = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
       if (paramBoolean)
       {
-        ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131364530);
+        ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131430587);
         ((RelativeLayout.LayoutParams)localObject).addRule(1, 0);
       }
       else
       {
-        ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131364530);
+        ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131430587);
         ((RelativeLayout.LayoutParams)localObject).addRule(0, 0);
       }
       ((RelativeLayout.LayoutParams)localObject).addRule(3, paramInt);
@@ -129,7 +129,7 @@ public class BubbleViewProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.BubbleViewProcessor
  * JD-Core Version:    0.7.0.1
  */

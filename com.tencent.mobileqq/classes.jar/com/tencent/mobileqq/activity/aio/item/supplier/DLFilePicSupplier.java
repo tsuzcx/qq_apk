@@ -11,12 +11,12 @@ public class DLFilePicSupplier
 {
   protected ChatItemBuilder b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    return QFileBubbleBuilderFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 121, paramChatMessage);
+    return QFileBubbleBuilderFactory.a(this.b, paramBaseAdapter, this.a, this.c, this.e, 121, paramChatMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.supplier.DLFilePicSupplier
  * JD-Core Version:    0.7.0.1
  */

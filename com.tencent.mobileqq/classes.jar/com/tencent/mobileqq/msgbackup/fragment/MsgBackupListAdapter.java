@@ -32,42 +32,42 @@ public class MsgBackupListAdapter
   extends RecyclerView.Adapter<MsgBackupListAdapter.BackupAndMigrateItemHolder>
   implements DecodeTaskCompletionListener
 {
-  private long jdField_a_of_type_Long = 0L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private SparseArray<Boolean> jdField_a_of_type_AndroidUtilSparseArray;
-  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private MsgBackupListAdapter.OnItemCheckedChangeListener jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter$OnItemCheckedChangeListener;
-  private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  private List<RecentBaseData> jdField_a_of_type_JavaUtilList;
+  private final LayoutInflater a;
+  private SparseArray<Boolean> b;
+  private List<RecentBaseData> c;
+  private long d = 0L;
+  private Hashtable<String, Bitmap> e = new Hashtable();
+  private Context f;
+  private BaseQQAppInterface g;
+  private RecyclerView h;
+  private MsgBackupListAdapter.OnItemCheckedChangeListener i;
   
   public MsgBackupListAdapter(Context paramContext, BaseQQAppInterface paramBaseQQAppInterface, RecyclerView paramRecyclerView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.f = paramContext;
+    this.g = paramBaseQQAppInterface;
+    this.h = paramRecyclerView;
+    this.c = new ArrayList();
+    this.b = new SparseArray();
+    this.a = LayoutInflater.from(paramContext);
   }
   
   private void a(MsgBackupListAdapter.BackupAndMigrateItemHolder paramBackupAndMigrateItemHolder, int paramInt, Drawable paramDrawable)
   {
-    RecentBaseData localRecentBaseData = (RecentBaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    RecentBaseData localRecentBaseData = (RecentBaseData)this.c.get(paramInt);
     IMsgBackupTempApi localIMsgBackupTempApi = (IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class);
     if ((localRecentBaseData instanceof MsgBackupMsgUserData))
     {
       MsgBackupMsgUserData localMsgBackupMsgUserData = (MsgBackupMsgUserData)localRecentBaseData;
       Drawable localDrawable = paramDrawable;
       if (paramDrawable == null) {
-        localDrawable = localIMsgBackupTempApi.getFaceDrawable(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this, localRecentBaseData);
+        localDrawable = localIMsgBackupTempApi.getFaceDrawable(this.g, this, localRecentBaseData);
       }
-      paramBackupAndMigrateItemHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
-      paramBackupAndMigrateItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localRecentBaseData.mTitleName);
-      MsgBackupListAdapter.BackupAndMigrateItemHolder.a(paramBackupAndMigrateItemHolder).setChecked(((Boolean)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(paramInt)).booleanValue());
-      if (AppSetting.d) {
-        paramBackupAndMigrateItemHolder.jdField_a_of_type_AndroidViewView.setContentDescription(localMsgBackupMsgUserData.name);
+      paramBackupAndMigrateItemHolder.b.setImageDrawable(localDrawable);
+      paramBackupAndMigrateItemHolder.c.setText(localRecentBaseData.mTitleName);
+      MsgBackupListAdapter.BackupAndMigrateItemHolder.a(paramBackupAndMigrateItemHolder).setChecked(((Boolean)this.b.valueAt(paramInt)).booleanValue());
+      if (AppSetting.e) {
+        paramBackupAndMigrateItemHolder.a.setContentDescription(localMsgBackupMsgUserData.name);
       }
     }
   }
@@ -76,10 +76,10 @@ public class MsgBackupListAdapter
   {
     if (paramInt >= 0)
     {
-      if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
+      if (paramInt >= this.c.size()) {
         return;
       }
-      RecentBaseData localRecentBaseData = (RecentBaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      RecentBaseData localRecentBaseData = (RecentBaseData)this.c.get(paramInt);
       if (paramBackupAndMigrateItemHolder != null)
       {
         if (localRecentBaseData == null) {
@@ -88,8 +88,8 @@ public class MsgBackupListAdapter
         Drawable localDrawable = paramDrawable;
         if (paramDrawable == null)
         {
-          int i = localRecentBaseData.getRecentUserType();
-          localDrawable = ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).getFaceDrawable(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this, i, localRecentBaseData.getRecentUserUin());
+          int j = localRecentBaseData.getRecentUserType();
+          localDrawable = ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).getFaceDrawable(this.g, this, j, localRecentBaseData.getRecentUserUin());
         }
         a(paramBackupAndMigrateItemHolder, paramInt, localDrawable);
       }
@@ -98,17 +98,17 @@ public class MsgBackupListAdapter
   
   public MsgBackupListAdapter.BackupAndMigrateItemHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new MsgBackupListAdapter.BackupAndMigrateItemHolder(this, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562728, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter$OnItemCheckedChangeListener);
+    return new MsgBackupListAdapter.BackupAndMigrateItemHolder(this, this.a.inflate(2131629162, paramViewGroup, false), this.i);
   }
   
   public void a()
   {
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < j)
+    int k = this.c.size();
+    int j = 0;
+    while (j < k)
     {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, Boolean.valueOf(false));
-      i += 1;
+      this.b.put(j, Boolean.valueOf(false));
+      j += 1;
     }
   }
   
@@ -120,42 +120,42 @@ public class MsgBackupListAdapter
   
   public void a(MsgBackupListAdapter.OnItemCheckedChangeListener paramOnItemCheckedChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter$OnItemCheckedChangeListener = paramOnItemCheckedChangeListener;
+    this.i = paramOnItemCheckedChangeListener;
   }
   
   public void a(List<RecentBaseData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.c.clear();
+    this.c.addAll(paramList);
   }
   
   public void b()
   {
-    int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-    int i = 0;
-    while (i < j)
+    int k = this.b.size();
+    int j = 0;
+    while (j < k)
     {
-      this.jdField_a_of_type_AndroidUtilSparseArray.setValueAt(i, Boolean.valueOf(true));
-      i += 1;
+      this.b.setValueAt(j, Boolean.valueOf(true));
+      j += 1;
     }
     notifyDataSetChanged();
   }
   
   public void c()
   {
-    int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-    int i = 0;
-    while (i < j)
+    int k = this.b.size();
+    int j = 0;
+    while (j < k)
     {
-      this.jdField_a_of_type_AndroidUtilSparseArray.setValueAt(i, Boolean.valueOf(false));
-      i += 1;
+      this.b.setValueAt(j, Boolean.valueOf(false));
+      j += 1;
     }
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.c.size();
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String arg3, Bitmap paramBitmap)
@@ -171,7 +171,7 @@ public class MsgBackupListAdapter
     if (paramBitmap != null) {
       try
       {
-        localObject = this.jdField_a_of_type_JavaUtilHashtable;
+        localObject = this.e;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramInt2);
         localStringBuilder.append(":");
@@ -189,8 +189,8 @@ public class MsgBackupListAdapter
       }
     }
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    int i = 0;
+    long l2 = this.d;
+    int j = 0;
     if ((l2 > 0L) && (l1 - l2 > 300L)) {
       paramInt2 = 1;
     } else {
@@ -201,46 +201,46 @@ public class MsgBackupListAdapter
     }
     boolean bool1;
     boolean bool2;
-    synchronized (this.jdField_a_of_type_JavaUtilHashtable)
+    synchronized (this.e)
     {
-      if (this.jdField_a_of_type_JavaUtilHashtable.size() == 0) {
+      if (this.e.size() == 0) {
         return;
       }
       if (paramInt1 == 0) {
-        this.jdField_a_of_type_Long = 0L;
+        this.d = 0L;
       } else {
-        this.jdField_a_of_type_Long = l1;
+        this.d = l1;
       }
-      paramInt2 = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount();
+      paramInt2 = this.h.getChildCount();
       bool1 = false;
-      paramInt1 = i;
+      paramInt1 = j;
       if (paramInt1 < paramInt2)
       {
-        paramBitmap = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(paramInt1);
-        paramBitmap = (MsgBackupListAdapter.BackupAndMigrateItemHolder)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder(paramBitmap);
-        i = paramBitmap.getAdapterPosition();
-        localObject = (RecentBaseData)this.jdField_a_of_type_JavaUtilList.get(i);
+        paramBitmap = this.h.getChildAt(paramInt1);
+        paramBitmap = (MsgBackupListAdapter.BackupAndMigrateItemHolder)this.h.getChildViewHolder(paramBitmap);
+        j = paramBitmap.getAdapterPosition();
+        localObject = (RecentBaseData)this.c.get(j);
         if (localObject == null)
         {
           bool2 = bool1;
         }
         else
         {
-          int j = ((RecentBaseData)localObject).getRecentUserType();
-          j = ((Integer)((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).getHeadIcon(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, j, ((RecentBaseData)localObject).getRecentUserUin()).first).intValue();
+          int k = ((RecentBaseData)localObject).getRecentUserType();
+          k = ((Integer)((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).getHeadIcon(this.g, k, ((RecentBaseData)localObject).getRecentUserUin()).first).intValue();
           bool2 = bool1;
-          if (j != -2147483648)
+          if (k != -2147483648)
           {
             localStringBuilder = new StringBuilder();
-            localStringBuilder.append(j);
+            localStringBuilder.append(k);
             localStringBuilder.append(":");
             localStringBuilder.append(((RecentBaseData)localObject).getRecentUserUin());
             localObject = localStringBuilder.toString();
-            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilHashtable.get(localObject);
+            localObject = (Bitmap)this.e.get(localObject);
             bool2 = bool1;
             if (localObject != null)
             {
-              b(paramBitmap, i, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject));
+              b(paramBitmap, j, new BitmapDrawable(this.f.getResources(), (Bitmap)localObject));
               bool2 = true;
             }
           }
@@ -252,12 +252,12 @@ public class MsgBackupListAdapter
         {
           paramBitmap = new StringBuilder();
           paramBitmap.append("decodecomplete|faceCache size = ");
-          paramBitmap.append(this.jdField_a_of_type_JavaUtilHashtable.size());
+          paramBitmap.append(this.e.size());
           paramBitmap.append(", isNeedUpdateAvatar=");
           paramBitmap.append(bool1);
           QLog.i("MsgBackup.BackupAndMigrateListAdapter", 4, paramBitmap.toString());
         }
-        this.jdField_a_of_type_JavaUtilHashtable.clear();
+        this.e.clear();
         return;
       }
     }
@@ -265,7 +265,7 @@ public class MsgBackupListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ class StoryMemoriesFragment$3
   
   public void run()
   {
-    this.this$0.d();
+    this.this$0.e();
   }
 }
 

@@ -28,11 +28,11 @@ public class NearbyOfficalReportHelper
   {
     Object localObject = new NearbyRedDotCustomInfo();
     ((NearbyRedDotCustomInfo)localObject).a(paramRedDotInfo);
-    if (((NearbyRedDotCustomInfo)localObject).jdField_b_of_type_Boolean)
+    if (((NearbyRedDotCustomInfo)localObject).c)
     {
       paramQQAppInterface = String.valueOf(((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
-      paramRedDotInfo = String.valueOf(((NearbyRedDotCustomInfo)localObject).c);
-      localObject = String.valueOf(((NearbyRedDotCustomInfo)localObject).jdField_b_of_type_Int);
+      paramRedDotInfo = String.valueOf(((NearbyRedDotCustomInfo)localObject).e);
+      localObject = String.valueOf(((NearbyRedDotCustomInfo)localObject).d);
       ReportController.b(null, "dc00899", "grp_lbs", "", "entry", "official_push_received", 0, 0, paramQQAppInterface, paramRedDotInfo, (String)localObject, "");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("reportLebaRedDotReceive op_name = official_push_receivedd1 = ");
@@ -47,7 +47,7 @@ public class NearbyOfficalReportHelper
   
   public void a(INearbyAppInterface paramINearbyAppInterface, String paramString1, String paramString2)
   {
-    Object localObject = paramINearbyAppInterface.getNearbyProcManager().a();
+    Object localObject = paramINearbyAppInterface.getNearbyProcManager().e();
     int i = ((NearbyRedNum)localObject).a;
     String str2 = "1";
     if (i > 1) {
@@ -81,7 +81,7 @@ public class NearbyOfficalReportHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.NearbyOfficalReportHelper
  * JD-Core Version:    0.7.0.1
  */

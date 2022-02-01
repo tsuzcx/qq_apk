@@ -20,26 +20,26 @@ public class StoryDetailPresenter$FeedVideoCookieUpdate
   
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull FeedVideoManager.FeedVideoInfoUpdate paramFeedVideoInfoUpdate)
   {
-    if ((paramFeedVideoInfoUpdate.jdField_a_of_type_Int != 2) && (paramFeedVideoInfoUpdate.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) && (StoryDetailPresenter.a(paramStoryDetailPresenter) != null))
+    if ((paramFeedVideoInfoUpdate.b != 2) && (paramFeedVideoInfoUpdate.a.equals(StoryDetailPresenter.f(paramStoryDetailPresenter))) && (StoryDetailPresenter.a(paramStoryDetailPresenter) != null))
     {
-      if (!StoryDetailPresenter.a(paramStoryDetailPresenter).c())
+      if (!StoryDetailPresenter.a(paramStoryDetailPresenter).e())
       {
         SLog.e(this.TAG, "this feed does not support video list. ignore this video cookie change event. %s.", new Object[] { paramFeedVideoInfoUpdate.toString() });
         return;
       }
-      paramFeedVideoInfoUpdate = StoryDetailPresenter.a(paramStoryDetailPresenter).a(StoryDetailPresenter.a(paramStoryDetailPresenter), StoryDetailPresenter.a(paramStoryDetailPresenter).a().mVideoPullType);
+      paramFeedVideoInfoUpdate = StoryDetailPresenter.h(paramStoryDetailPresenter).a(StoryDetailPresenter.f(paramStoryDetailPresenter), StoryDetailPresenter.a(paramStoryDetailPresenter).f().mVideoPullType);
       if (paramFeedVideoInfoUpdate == null)
       {
-        SLog.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { StoryDetailPresenter.a(paramStoryDetailPresenter), Integer.valueOf(StoryDetailPresenter.a(paramStoryDetailPresenter).a().mVideoPullType) });
+        SLog.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { StoryDetailPresenter.f(paramStoryDetailPresenter), Integer.valueOf(StoryDetailPresenter.a(paramStoryDetailPresenter).f().mVideoPullType) });
         return;
       }
       SLog.a(this.TAG, "receive video cookie change event. %s.", paramFeedVideoInfoUpdate.toString());
-      StoryDetailPresenter.a(paramStoryDetailPresenter).a().updateVideoInfo(paramFeedVideoInfoUpdate);
+      StoryDetailPresenter.a(paramStoryDetailPresenter).f().updateVideoInfo(paramFeedVideoInfoUpdate);
       StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramFeedVideoInfoUpdate.mVideoItemList, true);
-      if (StoryDetailPresenter.a(paramStoryDetailPresenter) != null) {
-        StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramFeedVideoInfoUpdate.mVideoPullType, paramFeedVideoInfoUpdate.mVideoNextCookie, paramFeedVideoInfoUpdate.mVideoSeq);
+      if (StoryDetailPresenter.i(paramStoryDetailPresenter) != null) {
+        StoryDetailPresenter.i(paramStoryDetailPresenter).a(paramFeedVideoInfoUpdate.mVideoPullType, paramFeedVideoInfoUpdate.mVideoNextCookie, paramFeedVideoInfoUpdate.mVideoSeq);
       }
-      StoryDetailPresenter.a(paramStoryDetailPresenter).c();
+      StoryDetailPresenter.e(paramStoryDetailPresenter).c();
       return;
     }
     SLog.b(this.TAG, "ignore this video cookie change event. %s.", paramFeedVideoInfoUpdate.toString());

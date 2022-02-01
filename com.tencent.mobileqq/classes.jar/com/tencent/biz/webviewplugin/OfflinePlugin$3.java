@@ -22,7 +22,7 @@ class OfflinePlugin$3
         paramString = new JSONObject();
         paramString.put("retcode", -1);
         paramString.put("msg", "error");
-        this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.callJs(this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+        this.b.callJs(this.b.k, new String[] { paramString.toString() });
         return;
       }
       catch (JSONException paramString)
@@ -39,15 +39,15 @@ class OfflinePlugin$3
     }
     Object localObject = Message.obtain();
     ((Message)localObject).what = 121;
-    ((Message)localObject).obj = new Object[] { this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener, paramString };
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    ((Message)localObject).obj = new Object[] { this.a, paramString };
+    this.b.u.sendMessage((Message)localObject);
   }
   
   public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.3
  * JD-Core Version:    0.7.0.1
  */

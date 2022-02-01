@@ -20,8 +20,8 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 
 public class GdtAdBoxPresenter
 {
-  private GdtAdBoxModel jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxModel;
-  private GdtAdBoxView jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxView;
+  private GdtAdBoxView a;
+  private GdtAdBoxModel b;
   
   public GdtAdBoxPresenter(GdtAdBoxView paramGdtAdBoxView, GdtAdBoxModel paramGdtAdBoxModel)
   {
@@ -32,24 +32,24 @@ public class GdtAdBoxPresenter
     localStringBuilder.append(paramGdtAdBoxModel);
     localStringBuilder.append("]");
     GdtLog.a("GdtAdBoxPresenter", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxView = paramGdtAdBoxView;
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxModel = paramGdtAdBoxModel;
+    this.a = paramGdtAdBoxView;
+    this.b = paramGdtAdBoxModel;
     paramGdtAdBoxModel.a(this);
   }
   
   public void a()
   {
     GdtLog.a("GdtAdBoxPresenter", "onCreate() called");
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxView.b(this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxModel);
+    this.a.b(this.b);
   }
   
   public void a(Activity paramActivity, View paramView, GdtMotiveVideoClickCoordinateReportHelper.AdBoxReportParams paramAdBoxReportParams, GdtMotiveVideoClickCoordinateReportHelper paramGdtMotiveVideoClickCoordinateReportHelper, GdtAdBoxData paramGdtAdBoxData)
   {
     GdtHandler.Params localParams = new GdtHandler.Params();
     GdtAppReceiver localGdtAppReceiver = new GdtAppReceiver();
-    localParams.c = 11;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    paramActivity = paramView.getTag(2131367538);
+    localParams.q = 11;
+    localParams.r = new WeakReference(paramActivity);
+    paramActivity = paramView.getTag(2131434080);
     if (paramActivity == null)
     {
       GdtLog.d("GdtAdBoxPresenter", "onClick() tag == null");
@@ -59,10 +59,10 @@ public class GdtAdBoxPresenter
     StringBuffer localStringBuffer = new StringBuffer("onClick()");
     localStringBuffer.append(",url =");
     localStringBuffer.append(paramActivity.info.dest_info.landing_page.get());
-    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramActivity;
-    localParams.jdField_a_of_type_Boolean = true;
-    localParams.jdField_b_of_type_Boolean = true;
-    localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(localGdtAppReceiver);
+    localParams.a = paramActivity;
+    localParams.b = true;
+    localParams.e = true;
+    localParams.s = new WeakReference(localGdtAppReceiver);
     paramActivity = new Bundle();
     if (paramGdtAdBoxData != null)
     {
@@ -70,29 +70,24 @@ public class GdtAdBoxPresenter
       localStringBuffer.append(paramGdtAdBoxData.getRefId());
       paramActivity.putString("big_brother_ref_source_key", paramGdtAdBoxData.getRefId());
     }
-    localParams.jdField_a_of_type_AndroidOsBundle = paramActivity;
+    localParams.p = paramActivity;
     paramView = null;
     paramActivity = paramView;
-    if (localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd.info != null)
+    if (localParams.a.info != null)
     {
       paramActivity = paramView;
-      if (localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd.info.report_info != null)
+      if (localParams.a.info.report_info != null)
       {
-        paramActivity = localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd.info.report_info.click_url.get();
+        paramActivity = localParams.a.info.report_info.click_url.get();
         paramView = paramGdtMotiveVideoClickCoordinateReportHelper.a(paramActivity, paramAdBoxReportParams);
-        localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd.info.report_info.click_url.set(paramView);
+        localParams.a.info.report_info.click_url.set(paramView);
       }
     }
     QLog.i("GdtAdBoxPresenter", 1, localStringBuffer.toString());
     GdtHandler.a(localParams);
     if (!TextUtils.isEmpty(paramActivity)) {
-      localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd.info.report_info.click_url.set(paramActivity);
+      localParams.a.info.report_info.click_url.set(paramActivity);
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
   }
   
   public void b()
@@ -103,10 +98,15 @@ public class GdtAdBoxPresenter
   public void c() {}
   
   public void d() {}
+  
+  public boolean e()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.adbox.GdtAdBoxPresenter
  * JD-Core Version:    0.7.0.1
  */

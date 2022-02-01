@@ -2,11 +2,10 @@
 <RelativeLayout android:id="@id/g6f" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include android:id="@id/a2f" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/zo" />
-    <ViewStub android:id="@id/nuq" android:layout="@layout/cn1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/nus" android:layout="@layout/cn2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/p67" android:layout="@layout/cqi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/p69" android:layout="@layout/cqj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <RelativeLayout android:id="@id/g7p" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <include android:id="@id/m1m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" layout="@layout/c9z" />
-    <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" layout="@layout/z_" />
     <RelativeLayout android:id="@id/ktg" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <View android:id="@id/i3z" android:background="@drawable/brh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="65.0dip" />
         <View android:id="@id/i3x" android:background="@drawable/brf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="180.0dip" android:layout_alignParentBottom="true" />
@@ -22,8 +21,8 @@
     <Button android:id="@id/akr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="120.0dip" android:text="@string/dkt" android:onClick="TestMenuBtnOnClick" />
     <ImageView android:id="@id/m12" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="100.0dip" android:layout_marginTop="10.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
     <ViewStub android:id="@id/cp4" android:layout="@layout/a69" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" layout="@layout/z_" />
     <ViewStub android:id="@id/m0w" android:layout="@layout/c9w" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ViewStub android:id="@id/m0y" android:visibility="gone" android:layout="@layout/c9y" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include android:visibility="gone" layout="@layout/cn0" />
     <View android:id="@id/m18" android:background="@color/aly" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

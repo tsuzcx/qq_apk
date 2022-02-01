@@ -5,28 +5,19 @@ import java.lang.ref.WeakReference;
 
 public abstract class GameActivityLifeCycleListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public Activity a()
-  {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localWeakReference != null) {
-      return (Activity)localWeakReference.get();
-    }
-    return null;
-  }
+  private int a = -1;
+  private WeakReference<Activity> b;
   
   public void a()
   {
-    this.jdField_a_of_type_Int = 5;
+    this.a = 5;
   }
   
   public void a(int paramInt, Activity paramActivity)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.b;
     if ((localWeakReference == null) || (localWeakReference.get() != paramActivity)) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+      this.b = new WeakReference(paramActivity);
     }
     if (paramInt != 0)
     {
@@ -46,50 +37,59 @@ public abstract class GameActivityLifeCycleListener
               a();
               return;
             }
-            f();
+            g();
             return;
           }
-          e();
+          f();
           return;
         }
-        d();
+        e();
         return;
       }
-      c();
+      d();
       return;
     }
-    b();
+    c();
   }
   
-  public boolean a()
+  public Activity b()
   {
-    int i = this.jdField_a_of_type_Int;
-    return (i == 5) || (i == -1);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
+    WeakReference localWeakReference = this.b;
+    if (localWeakReference != null) {
+      return (Activity)localWeakReference.get();
+    }
+    return null;
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Int = 1;
+    this.a = 0;
   }
   
   public void d()
   {
-    this.jdField_a_of_type_Int = 2;
+    this.a = 1;
   }
   
   public void e()
   {
-    this.jdField_a_of_type_Int = 3;
+    this.a = 2;
   }
   
   public void f()
   {
-    this.jdField_a_of_type_Int = 4;
+    this.a = 3;
+  }
+  
+  public void g()
+  {
+    this.a = 4;
+  }
+  
+  public boolean h()
+  {
+    int i = this.a;
+    return (i == 5) || (i == -1);
   }
 }
 

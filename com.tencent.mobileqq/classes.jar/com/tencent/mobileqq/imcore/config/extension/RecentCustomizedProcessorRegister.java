@@ -19,6 +19,7 @@ import com.tencent.mobileqq.activity.recent.config.recentlist.base.IRecentListBa
 import com.tencent.mobileqq.activity.recent.config.recentlist.recentcheckfilter.AdvertisementFilter;
 import com.tencent.mobileqq.activity.recent.config.recentlist.recentcheckfilter.DiscussHiddenFilter;
 import com.tencent.mobileqq.activity.recent.config.recentlist.recentcheckfilter.HotChatFilter;
+import com.tencent.mobileqq.activity.recent.config.recentlist.recentcheckfilter.KanDianPrivateChatFilter;
 import com.tencent.mobileqq.activity.recent.config.recentlist.recentcheckfilter.TempFilterBoxFilter;
 import com.tencent.mobileqq.activity.recent.config.recentlist.recentcheckfilter.TempMsgBoxFilter;
 import com.tencent.mobileqq.activity.recent.config.recentlist.recentconvert.BusinessConverter;
@@ -35,6 +36,7 @@ import com.tencent.mobileqq.activity.recent.config.statusIcon.ShareLocationStatu
 import com.tencent.mobileqq.activity.recent.config.statusIcon.StudyRoomStatus;
 import com.tencent.mobileqq.activity.recent.config.statusIcon.TogetherStatus;
 import com.tencent.mobileqq.activity.recent.config.statusIcon.VideoStatus;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.GameMsgBoxFilter;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import java.util.ArrayList;
 
@@ -79,15 +81,17 @@ public final class RecentCustomizedProcessorRegister
     c.add(AdvertisementFilter.class);
     c.add(TempMsgBoxFilter.class);
     c.add(TempFilterBoxFilter.class);
+    c.add(KanDianPrivateChatFilter.class);
     c.add(RecentSortTopProcessor.class);
     c.add(RecentSortValueProcessor.class);
     c.add(ReadInJoyFilter.class);
     c.add(SubAccountAssistantFilter.class);
+    c.add(GameMsgBoxFilter.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.config.extension.RecentCustomizedProcessorRegister
  * JD-Core Version:    0.7.0.1
  */

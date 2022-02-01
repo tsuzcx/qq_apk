@@ -9,11 +9,11 @@ public class MsgTabStoryNodeDelegate$ReadNodeEventReceiver
 {
   public void a(@NonNull MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, @NonNull MsgTabStoryNodeDelegate.ReadNodeEvent paramReadNodeEvent)
   {
-    paramMsgTabStoryNodeDelegate = paramMsgTabStoryNodeDelegate.a;
-    if ((paramMsgTabStoryNodeDelegate.jdField_a_of_type_Boolean) && (paramMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter != null))
+    paramMsgTabStoryNodeDelegate = paramMsgTabStoryNodeDelegate.b;
+    if ((paramMsgTabStoryNodeDelegate.r) && (paramMsgTabStoryNodeDelegate.i != null))
     {
       SLog.a(this.TAG, "ReadNodeEventReceiver onEvent, updateItem : %s", paramReadNodeEvent.a);
-      paramMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a(paramReadNodeEvent.a);
+      paramMsgTabStoryNodeDelegate.i.a(paramReadNodeEvent.a);
     }
   }
   
@@ -24,7 +24,7 @@ public class MsgTabStoryNodeDelegate$ReadNodeEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate.ReadNodeEventReceiver
  * JD-Core Version:    0.7.0.1
  */

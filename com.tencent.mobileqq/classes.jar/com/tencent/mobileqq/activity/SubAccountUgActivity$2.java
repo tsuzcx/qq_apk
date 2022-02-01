@@ -14,18 +14,18 @@ class SubAccountUgActivity$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountApiISubAccountControlService.cancelHintDialog((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!SubAccountControllUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app))
+    this.a.cancelHintDialog((String)this.b.first, ((Integer)this.b.second).intValue(), true);
+    if (!SubAccountControllUtil.b(this.c.app))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.setTitle("");
-      SubAccountAssistantForward.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity, null);
+      this.c.setTitle("");
+      SubAccountAssistantForward.a(this.c.app, this.c, null);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.finish();
+    this.c.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountUgActivity.2
  * JD-Core Version:    0.7.0.1
  */

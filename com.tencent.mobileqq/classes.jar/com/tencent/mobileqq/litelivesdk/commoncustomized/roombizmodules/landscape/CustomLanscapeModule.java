@@ -17,16 +17,16 @@ import com.tencent.ilive.pages.room.bizmodule.RoomBizModule;
 public class CustomLanscapeModule
   extends RoomBizModule
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView = null;
-  private Observer jdField_a_of_type_AndroidxLifecycleObserver = new CustomLanscapeModule.1(this);
+  private Activity a;
+  private View b = null;
+  private Observer c = new CustomLanscapeModule.1(this);
   
   @SuppressLint({"SourceLockedOrientationActivity"})
   public void a()
   {
     this.roomBizContext.getRoomState().isSwitchRoom = true;
     getAudienceRoomPager().getRoomPageAction().setRequestedOrientation(false);
-    this.jdField_a_of_type_AndroidAppActivity.getWindow().setSoftInputMode(16);
+    this.a.getWindow().setSoftInputMode(16);
   }
   
   public void onActivityPause(LifecycleOwner paramLifecycleOwner)
@@ -38,20 +38,20 @@ public class CustomLanscapeModule
   public void onCreate(Context paramContext)
   {
     super.onCreate(paramContext);
-    this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
-    getEvent().observe(TurnToPortraitEvent.class, this.jdField_a_of_type_AndroidxLifecycleObserver);
+    this.a = ((Activity)paramContext);
+    this.b = this.a.getWindow().getDecorView();
+    getEvent().observe(TurnToPortraitEvent.class, this.c);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    getEvent().removeObserver(TurnToPortraitEvent.class, this.jdField_a_of_type_AndroidxLifecycleObserver);
+    getEvent().removeObserver(TurnToPortraitEvent.class, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.landscape.CustomLanscapeModule
  * JD-Core Version:    0.7.0.1
  */

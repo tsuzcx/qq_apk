@@ -14,7 +14,7 @@ class MatchingView$2
   
   public void run()
   {
-    Object localObject = ExpandLimitChatResourceUtil.a("expend_match_ellipisis.json");
+    Object localObject = ExpandLimitChatResourceUtil.b("expend_match_ellipisis.json");
     try
     {
       localObject = new BufferedInputStream(new FileInputStream((String)localObject));
@@ -29,7 +29,7 @@ class MatchingView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.MatchingView.2
  * JD-Core Version:    0.7.0.1
  */

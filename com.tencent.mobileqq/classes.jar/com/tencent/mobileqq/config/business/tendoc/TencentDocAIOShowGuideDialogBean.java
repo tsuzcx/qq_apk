@@ -7,8 +7,8 @@ import org.json.JSONObject;
 
 public class TencentDocAIOShowGuideDialogBean
 {
-  private int jdField_a_of_type_Int = 1;
-  private boolean jdField_a_of_type_Boolean = false;
+  private int a = 1;
+  private boolean b = false;
   
   public static TencentDocAIOShowGuideDialogBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -17,7 +17,7 @@ public class TencentDocAIOShowGuideDialogBean
       TencentDocAIOShowGuideDialogBean localTencentDocAIOShowGuideDialogBean = new TencentDocAIOShowGuideDialogBean();
       try
       {
-        a(localTencentDocAIOShowGuideDialogBean, new JSONObject(paramArrayOfQConfItem[0].a));
+        a(localTencentDocAIOShowGuideDialogBean, new JSONObject(paramArrayOfQConfItem[0].b));
         return localTencentDocAIOShowGuideDialogBean;
       }
       catch (JSONException paramArrayOfQConfItem)
@@ -44,27 +44,27 @@ public class TencentDocAIOShowGuideDialogBean
         QLog.d("TencentDocAIOShowGuideDialogBean", 2, localStringBuilder.toString());
       }
       if (paramJSONObject.has("aioGuiderDialogEnable")) {
-        paramTencentDocAIOShowGuideDialogBean.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("aioGuiderDialogEnable");
+        paramTencentDocAIOShowGuideDialogBean.b = paramJSONObject.optBoolean("aioGuiderDialogEnable");
       }
       if (paramJSONObject.has("dialogShowMaxTimes")) {
-        paramTencentDocAIOShowGuideDialogBean.jdField_a_of_type_Int = paramJSONObject.optInt("dialogShowMaxTimes");
+        paramTencentDocAIOShowGuideDialogBean.a = paramJSONObject.optInt("dialogShowMaxTimes");
       }
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocAIOShowGuideDialogBean
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_gravity="bottom" android:background="#4d000000" android:layout_width="fill_parent" android:layout_height="160.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/js9" android:background="@drawable/b6n" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="6.0dip">
-        <LinearLayout android:gravity="center" android:layout_gravity="top" android:orientation="horizontal" android:id="@id/jse" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="3.0">
-            <ImageView android:id="@id/toast_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip" android:scaleType="fitXY" />
-            <TextView android:textSize="18.0sp" android:ellipsize="end" android:gravity="center" android:id="@id/jsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/ybh" android:maxLines="1" android:singleLine="true" />
+    <com.tencent.mobileqq.guild.widget.BlurBGImageView android:id="@id/ac8" android:layout_width="fill_parent" android:layout_height="160.0dip" />
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="47.0dip" android:paddingTop="28.0dip" android:paddingRight="47.0dip" android:paddingBottom="70.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:id="@id/o6z" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/brs" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/qly" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x2q" />
         </LinearLayout>
-        <TextView android:gravity="center" android:id="@id/mon" android:layout_width="20.0dip" android:layout_height="fill_parent" android:text="@string/ybi" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:id="@id/o70" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/brz" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/qlz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x2r" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>

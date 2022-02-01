@@ -40,16 +40,16 @@ class AccountDetailGroupListContainer$PublicAccountMoreInfoObserverCallback
     if ((paramBoolean) && (paramObject.result == 0))
     {
       paramObject = this.a;
-      AccountDetailGroupListContainer.b(paramObject, paramObject.jdField_a_of_type_Int);
-      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null)
+      AccountDetailGroupListContainer.b(paramObject, paramObject.j);
+      if (this.a.v != null)
       {
-        paramObject = this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        paramObject = this.a.v.edit();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("setting_status_");
-        localStringBuilder.append(this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.uin);
+        localStringBuilder.append(this.a.f.uin);
         localStringBuilder.append("_");
-        localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        paramObject.putInt(localStringBuilder.toString(), this.a.jdField_a_of_type_Int).commit();
+        localStringBuilder.append(this.a.b.getCurrentAccountUin());
+        paramObject.putInt(localStringBuilder.toString(), this.a.j).commit();
       }
     }
   }
@@ -58,25 +58,25 @@ class AccountDetailGroupListContainer$PublicAccountMoreInfoObserverCallback
   {
     if ((paramBoolean) && (paramPaConfigInfo != null))
     {
-      if ((paramPaConfigInfo.e != 3) && (paramPaConfigInfo.e == 6))
+      if ((paramPaConfigInfo.g != 3) && (paramPaConfigInfo.g == 6))
       {
         AccountDetailGroupListContainer localAccountDetailGroupListContainer = this.b;
         if (localAccountDetailGroupListContainer != null) {
           AccountDetailGroupListContainer.a(localAccountDetailGroupListContainer, paramPaConfigInfo);
         }
       }
-      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).sendDetailInfoRequest(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.jdField_a_of_type_JavaLangString);
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).sendDetailInfoRequest(this.a.b, this.a.b.getApplication(), this.a.g);
       return;
     }
     paramPaConfigInfo = this.b;
     if (paramPaConfigInfo != null) {
-      AccountDetailGroupListContainer.a(paramPaConfigInfo, 2131695217);
+      AccountDetailGroupListContainer.a(paramPaConfigInfo, 2131892951);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.PublicAccountMoreInfoObserverCallback
  * JD-Core Version:    0.7.0.1
  */

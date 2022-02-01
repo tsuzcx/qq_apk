@@ -11,12 +11,12 @@ class PagFileProxy$5
   
   public TAVStickerImageItem a(JSONObject paramJSONObject)
   {
-    return ObjConvector.a(paramJSONObject, this.jdField_a_of_type_ComTencentTavstickerModelTAVSticker.getStickerImageItems());
+    return ObjConvector.b(paramJSONObject, this.a.getStickerImageItems());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.PagFileProxy.5
  * JD-Core Version:    0.7.0.1
  */

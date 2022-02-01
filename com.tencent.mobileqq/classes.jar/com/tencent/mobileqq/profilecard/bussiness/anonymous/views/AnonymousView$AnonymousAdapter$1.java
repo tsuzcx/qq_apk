@@ -16,11 +16,11 @@ class AnonymousView$AnonymousAdapter$1
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i != 2131374151) && (i != 2131374166))
+    if ((i != 2131442246) && (i != 2131442261))
     {
-      if ((i != 2131374165) && (i != 2131374150))
+      if ((i != 2131442260) && (i != 2131442245))
       {
-        if (i == 2131374156)
+        if (i == 2131442251)
         {
           AnonymousView.access$400(this.this$1.this$0);
           ProfileUtils.setViewClickInterval(paramView);
@@ -55,7 +55,7 @@ class AnonymousView$AnonymousAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView.AnonymousAdapter.1
  * JD-Core Version:    0.7.0.1
  */

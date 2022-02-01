@@ -23,7 +23,7 @@ class WebView$b
   
   public WebView$b(WebView paramWebView, Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(WebView.a(paramWebView, paramContext), paramAttributeSet);
+    super(WebView.c(paramWebView, paramContext), paramAttributeSet);
     if ((QbSdk.getIsSysWebViewForcedByOuter()) && (TbsShareManager.isThirdPartyApp(paramContext))) {
       return;
     }
@@ -96,10 +96,10 @@ class WebView$b
     try
     {
       super.dispatchDraw(paramCanvas);
-      if ((!WebView.f()) && (WebView.g() != null))
+      if ((!WebView.e()) && (WebView.f() != null))
       {
         paramCanvas.save();
-        paramCanvas.drawPaint(WebView.g());
+        paramCanvas.drawPaint(WebView.f());
         paramCanvas.restore();
         return;
       }
@@ -217,7 +217,7 @@ class WebView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebView.b
  * JD-Core Version:    0.7.0.1
  */

@@ -11,44 +11,44 @@ class SlideDetectListView$1
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (!this.a.jdField_c_of_type_Boolean) {
+    if (!this.a.j) {
       return false;
     }
-    if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2) * 2.0F) && ((this.a.jdField_c_of_type_Int == 0) || (this.a.d)) && (!this.a.jdField_a_of_type_Boolean) && (Math.abs(paramFloat1) > this.a.f))
+    if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2) * 2.0F) && ((this.a.f == 0) || (this.a.k)) && (!this.a.b) && (Math.abs(paramFloat1) > this.a.i))
     {
       paramMotionEvent1 = this.a;
-      paramMotionEvent1.jdField_b_of_type_Int = paramMotionEvent1.a(paramMotionEvent1.jdField_a_of_type_Int);
+      paramMotionEvent1.e = paramMotionEvent1.a(paramMotionEvent1.a);
       paramMotionEvent1 = this.a;
-      paramMotionEvent1.jdField_a_of_type_AndroidViewView = paramMotionEvent1.a(paramMotionEvent1.jdField_b_of_type_Int);
-      if (this.a.jdField_a_of_type_AndroidViewView != null)
+      paramMotionEvent1.d = paramMotionEvent1.b(paramMotionEvent1.e);
+      if (this.a.d != null)
       {
         paramMotionEvent1 = this.a;
-        paramMotionEvent1.jdField_a_of_type_Boolean = true;
+        paramMotionEvent1.b = true;
         paramMotionEvent1.setPressed(false);
-        this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+        this.a.d.setPressed(false);
         if (SlideDetectListView.a(this.a) != null)
         {
-          int i = this.a.jdField_b_of_type_Int;
+          int i = this.a.e;
           int j = this.a.getHeaderViewsCount();
           paramMotionEvent1 = SlideDetectListView.a(this.a);
           paramMotionEvent2 = this.a;
-          paramMotionEvent1.a(paramMotionEvent2, paramMotionEvent2.jdField_a_of_type_AndroidViewView, i - j);
+          paramMotionEvent1.a(paramMotionEvent2, paramMotionEvent2.d, i - j);
         }
-        this.a.jdField_a_of_type_Int = 0;
+        this.a.a = 0;
         return true;
       }
-      this.a.jdField_b_of_type_Boolean = true;
+      this.a.c = true;
       return true;
     }
     if (Math.abs(paramFloat1) > Math.abs(paramFloat2) * 2.0F) {
-      this.a.jdField_b_of_type_Boolean = true;
+      this.a.c = true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideDetectListView.1
  * JD-Core Version:    0.7.0.1
  */

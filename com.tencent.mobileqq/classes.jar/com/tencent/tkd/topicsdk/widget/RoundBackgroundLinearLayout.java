@@ -22,19 +22,25 @@ public final class RoundBackgroundLinearLayout
     super(paramContext, paramAttributeSet);
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.h);
-      int i = paramContext.getColor(R.styleable.r, 0);
-      int j = paramContext.getColor(R.styleable.t, 0);
-      int k = paramContext.getInt(R.styleable.u, -1);
-      float f = paramContext.getDimension(R.styleable.s, 0.0F);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.x);
+      int i = paramContext.getColor(R.styleable.z, 0);
+      int j = paramContext.getColor(R.styleable.B, 0);
+      int k = paramContext.getInt(R.styleable.C, -1);
+      float f = paramContext.getDimension(R.styleable.A, 0.0F);
       this.a = new GradientDrawable();
       this.a.setColor(i);
       this.a.setCornerRadius(f);
       this.a.setStroke(k, j);
       setBackground((Drawable)this.a);
-      setEnablePressEffect(paramContext.getBoolean(R.styleable.q, false));
+      setEnablePressEffect(paramContext.getBoolean(R.styleable.y, false));
       paramContext.recycle();
     }
+  }
+  
+  @NotNull
+  public final GradientDrawable getBackgroundDrawable()
+  {
+    return this.a;
   }
   
   public final void setBackgroundDrawable(@NotNull GradientDrawable paramGradientDrawable)
@@ -51,7 +57,7 @@ public final class RoundBackgroundLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.RoundBackgroundLinearLayout
  * JD-Core Version:    0.7.0.1
  */

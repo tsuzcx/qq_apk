@@ -44,8 +44,8 @@ class SignatureManagerForTool$2
       }
       if (!TextUtils.isEmpty(paramEIPCResult))
       {
-        SignatureManagerForTool.b(this.a).put(Integer.valueOf(i), paramEIPCResult);
-        SignatureManagerForTool.b(this.a);
+        SignatureManagerForTool.d(this.a).put(Integer.valueOf(i), paramEIPCResult);
+        SignatureManagerForTool.e(this.a);
         this.a.notifyObservers(Integer.valueOf(4));
       }
     }
@@ -53,7 +53,7 @@ class SignatureManagerForTool$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureManagerForTool.2
  * JD-Core Version:    0.7.0.1
  */

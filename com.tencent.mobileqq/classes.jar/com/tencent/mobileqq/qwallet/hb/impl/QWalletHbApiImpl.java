@@ -20,6 +20,7 @@ import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.qqguildsdk.api.IGPSService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.mobileqq.qwallet.hb.IQWalletHbApi;
@@ -30,7 +31,6 @@ import com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory;
 import com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanel;
 import com.tencent.mobileqq.qwallet.hb.aio.impl.TroopUnclaimedHbList;
 import com.tencent.mobileqq.qwallet.hb.aio.passwd.IPasswdRedBagService;
-import com.tencent.mobileqq.qwallet.hb.aio.passwd.impl.QWalletHandler;
 import com.tencent.mobileqq.qwallet.hb.aio.specify.impl.RedPacketConfigManager;
 import com.tencent.mobileqq.qwallet.hb.aio.specify.impl.SpecifyRedPacketAnimMsg;
 import com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawClassifier;
@@ -66,25 +66,25 @@ public class QWalletHbApiImpl
   private void doReport(BaseQQAppInterface paramBaseQQAppInterface, int paramInt, BaseSessionInfo paramBaseSessionInfo, QWalletHbApiImpl.SendHbParamOfSession paramSendHbParamOfSession, QWalletHbApiImpl.SendHbParamOfPanel paramSendHbParamOfPanel)
   {
     if (paramInt == 0) {
-      ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).AIOPanelUtiles$panelReport(paramBaseQQAppInterface, "0X8005CAF", paramBaseSessionInfo.jdField_a_of_type_Int);
+      ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).AIOPanelUtiles$panelReport(paramBaseQQAppInterface, "0X8005CAF", paramBaseSessionInfo.a);
     } else if (paramInt == 1) {
-      ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).AIOPanelUtiles$panelReport(paramBaseQQAppInterface, "0X8005FC9", paramBaseSessionInfo.jdField_a_of_type_Int);
+      ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).AIOPanelUtiles$panelReport(paramBaseQQAppInterface, "0X8005FC9", paramBaseSessionInfo.a);
     }
     if (getPanelFrom() == 0)
     {
       paramBaseSessionInfo = new StringBuilder();
-      paramBaseSessionInfo.append(paramSendHbParamOfSession.jdField_b_of_type_JavaLangString);
+      paramBaseSessionInfo.append(paramSendHbParamOfSession.d);
       paramBaseSessionInfo.append(".plus");
-      paramSendHbParamOfSession.jdField_b_of_type_JavaLangString = paramBaseSessionInfo.toString();
+      paramSendHbParamOfSession.d = paramBaseSessionInfo.toString();
     }
     else if (getPanelFrom() == 1)
     {
       paramBaseSessionInfo = new StringBuilder();
-      paramBaseSessionInfo.append(paramSendHbParamOfSession.jdField_b_of_type_JavaLangString);
+      paramBaseSessionInfo.append(paramSendHbParamOfSession.d);
       paramBaseSessionInfo.append(".quick");
-      paramSendHbParamOfSession.jdField_b_of_type_JavaLangString = paramBaseSessionInfo.toString();
+      paramSendHbParamOfSession.d = paramBaseSessionInfo.toString();
     }
-    ReportController.b(paramBaseQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramSendHbParamOfSession.jdField_b_of_type_JavaLangString, 0, 0, paramSendHbParamOfPanel.jdField_b_of_type_JavaLangString, "", "", "");
+    ReportController.b(paramBaseQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramSendHbParamOfSession.d, 0, 0, paramSendHbParamOfPanel.c, "", "", "");
   }
   
   private void doSendHbJumpIntoSendHbActivity(Activity paramActivity, PanelData paramPanelData, QWalletHbApiImpl.SendHbParamOfSession paramSendHbParamOfSession, QWalletHbApiImpl.SendHbParamOfPanel paramSendHbParamOfPanel, BaseSessionInfo paramBaseSessionInfo)
@@ -96,36 +96,45 @@ public class QWalletHbApiImpl
     localActivityURIRequest.extra().putInt("come_from", 2);
     localActivityURIRequest.extra().putString("appInfo", "appid#1344242394|bargainor_id#1000030201|channel#aio");
     localActivityURIRequest.extra().putBoolean("isFromPanel", true);
-    if ((paramPanelData != null) && (paramPanelData.jdField_a_of_type_Int == 3))
+    if ((paramPanelData != null) && (paramPanelData.b == 3))
     {
-      JSONObject localJSONObject = paramPanelData.jdField_a_of_type_OrgJsonJSONObject;
+      JSONObject localJSONObject = paramPanelData.h;
       paramActivity = "";
       if (localJSONObject != null) {
-        paramActivity = paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("theme_id", "");
+        paramActivity = paramPanelData.h.optString("theme_id", "");
       }
       localActivityURIRequest.extra().putString("theme_type", paramActivity);
       localActivityURIRequest.extra().putBoolean("theme", true);
     }
     paramActivity = new StringBuilder();
     paramActivity.append("groupType=");
-    paramActivity.append(paramSendHbParamOfSession.jdField_b_of_type_Int);
+    paramActivity.append(paramSendHbParamOfSession.b);
     long l = VACDReportUtil.a(null, "qqwallet", "makeHongbao", "click", paramActivity.toString(), 0, null);
     localActivityURIRequest.extra().putLong("vacreport_key_seq", l);
     paramActivity = new JSONObject();
     try
     {
-      paramActivity.put("recv_type", paramSendHbParamOfSession.jdField_b_of_type_Int);
-      paramActivity.put("recv_uin", paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
-      paramActivity.put("channel", paramSendHbParamOfPanel.jdField_a_of_type_Int);
-      paramActivity.put("bus_type", paramSendHbParamOfPanel.jdField_a_of_type_JavaLangString);
-      if (paramSendHbParamOfSession.jdField_a_of_type_Int > 0) {
-        paramActivity.put("people_num", paramSendHbParamOfSession.jdField_a_of_type_Int);
-      }
-      if (!TextUtils.isEmpty(paramSendHbParamOfSession.jdField_a_of_type_JavaLangString)) {
-        paramActivity.put("session_token", paramSendHbParamOfSession.jdField_a_of_type_JavaLangString);
+      paramActivity.put("recv_type", paramSendHbParamOfSession.b);
+      paramActivity.put("recv_uin", paramBaseSessionInfo.b);
+      paramActivity.put("channel", paramSendHbParamOfPanel.a);
+      paramActivity.put("bus_type", paramSendHbParamOfPanel.b);
+      if (paramSendHbParamOfSession.a > 0) {
+        paramActivity.put("people_num", paramSendHbParamOfSession.a);
       }
       if (!TextUtils.isEmpty(paramSendHbParamOfSession.c)) {
-        paramActivity.put("placeholder", paramSendHbParamOfSession.c);
+        paramActivity.put("session_token", paramSendHbParamOfSession.c);
+      }
+      if (!TextUtils.isEmpty(paramSendHbParamOfSession.e)) {
+        paramActivity.put("placeholder", paramSendHbParamOfSession.e);
+      }
+      if (!TextUtils.isEmpty(paramSendHbParamOfSession.f)) {
+        paramActivity.put("tinyid", paramSendHbParamOfSession.f);
+      }
+      if (!TextUtils.isEmpty(paramSendHbParamOfSession.g)) {
+        paramActivity.put("guild_id", paramSendHbParamOfSession.g);
+      }
+      if (!TextUtils.isEmpty(paramSendHbParamOfSession.h)) {
+        paramActivity.put("sub_guild_id", paramSendHbParamOfSession.h);
       }
     }
     catch (JSONException paramPanelData)
@@ -145,7 +154,7 @@ public class QWalletHbApiImpl
   
   private boolean doSendHbJumpNoEnterSendHbActivity(BaseQQAppInterface paramBaseQQAppInterface, Activity paramActivity, PanelData paramPanelData, BaseSessionInfo paramBaseSessionInfo, QWalletHbApiImpl.SendHbParamOfSession paramSendHbParamOfSession)
   {
-    int i = paramPanelData.jdField_a_of_type_Int;
+    int i = paramPanelData.b;
     Object localObject;
     if (i != 4)
     {
@@ -156,17 +165,17 @@ public class QWalletHbApiImpl
           if (i != 13) {
             return false;
           }
-          paramPanelData = paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("schema", "");
+          paramPanelData = paramPanelData.h.optString("schema", "");
           QLog.i("QWalletHbApi", 2, paramPanelData);
           if (TextUtils.isEmpty(paramPanelData)) {
             return true;
           }
           localObject = new HashMap();
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramSendHbParamOfSession.jdField_b_of_type_Int);
+          localStringBuilder.append(paramSendHbParamOfSession.b);
           localStringBuilder.append("");
           ((Map)localObject).put("recv_group_type", localStringBuilder.toString());
-          ((Map)localObject).put("recv_group_id", paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+          ((Map)localObject).put("recv_group_id", paramBaseSessionInfo.b);
           ((Map)localObject).put("send_uin", paramBaseQQAppInterface.getCurrentUin());
           paramBaseQQAppInterface = QwUtils.a(paramPanelData, (Map)localObject, true);
           if (QLog.isColorLevel())
@@ -179,12 +188,12 @@ public class QWalletHbApiImpl
           ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doJumpAction(paramActivity, paramBaseQQAppInterface);
           return true;
         }
-        paramPanelData = paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("schema");
+        paramPanelData = paramPanelData.h.optString("schema");
         QLog.i("QWalletHbApi", 2, paramPanelData);
         if (TextUtils.isEmpty(paramPanelData)) {
           return true;
         }
-        gotoGoldHb(paramBaseQQAppInterface, paramActivity, paramBaseSessionInfo, paramSendHbParamOfSession.jdField_b_of_type_Int, paramSendHbParamOfSession.jdField_a_of_type_Int, paramPanelData);
+        gotoGoldHb(paramBaseQQAppInterface, paramActivity, paramBaseSessionInfo, paramSendHbParamOfSession.b, paramSendHbParamOfSession.a, paramPanelData);
         return true;
       }
       long l = VACDReportUtil.a(null, "qqwallet", "gotoF2fredpack", "click", null, 0, null);
@@ -195,23 +204,23 @@ public class QWalletHbApiImpl
       QRoute.startUri(paramBaseQQAppInterface, new QWalletHbApiImpl.2(this));
       return true;
     }
-    if (paramPanelData.jdField_a_of_type_OrgJsonJSONObject != null)
+    if (paramPanelData.h != null)
     {
-      localObject = paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("url", "");
+      localObject = paramPanelData.h.optString("url", "");
       QLog.i("QWalletHbApi", 2, (String)localObject);
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         return true;
       }
       paramBaseQQAppInterface = (BaseQQAppInterface)localObject;
-      if (paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optInt("subtype", 0) == 1) {
+      if (paramPanelData.h.optInt("subtype", 0) == 1) {
         if (((String)localObject).indexOf("?") == -1)
         {
           paramBaseQQAppInterface = new StringBuilder();
           paramBaseQQAppInterface.append((String)localObject);
           paramBaseQQAppInterface.append("?recv_uin=");
-          paramBaseQQAppInterface.append(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+          paramBaseQQAppInterface.append(paramBaseSessionInfo.b);
           paramBaseQQAppInterface.append("&recv_type=");
-          paramBaseQQAppInterface.append(paramSendHbParamOfSession.jdField_b_of_type_Int);
+          paramBaseQQAppInterface.append(paramSendHbParamOfSession.b);
           paramBaseQQAppInterface = paramBaseQQAppInterface.toString();
         }
         else
@@ -219,9 +228,9 @@ public class QWalletHbApiImpl
           paramBaseQQAppInterface = new StringBuilder();
           paramBaseQQAppInterface.append((String)localObject);
           paramBaseQQAppInterface.append("&recv_uin=");
-          paramBaseQQAppInterface.append(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+          paramBaseQQAppInterface.append(paramBaseSessionInfo.b);
           paramBaseQQAppInterface.append("&recv_type=");
-          paramBaseQQAppInterface.append(paramSendHbParamOfSession.jdField_b_of_type_Int);
+          paramBaseQQAppInterface.append(paramSendHbParamOfSession.b);
           paramBaseQQAppInterface = paramBaseQQAppInterface.toString();
         }
       }
@@ -233,13 +242,13 @@ public class QWalletHbApiImpl
   private QWalletHbApiImpl.SendHbParamOfPanel getSendHbModelByPanel(PanelData paramPanelData)
   {
     int i;
-    if (IRedPacketManager.TYPEHBINFOMAP.get(Integer.valueOf(paramPanelData.jdField_a_of_type_Int)) == null) {
+    if (IRedPacketManager.TYPEHBINFOMAP.get(Integer.valueOf(paramPanelData.b)) == null) {
       i = 1;
     } else {
-      i = ((Integer)IRedPacketManager.TYPEHBINFOMAP.get(Integer.valueOf(paramPanelData.jdField_a_of_type_Int))).intValue();
+      i = ((Integer)IRedPacketManager.TYPEHBINFOMAP.get(Integer.valueOf(paramPanelData.b))).intValue();
     }
     String str = String.valueOf(2);
-    int j = paramPanelData.jdField_a_of_type_Int;
+    int j = paramPanelData.b;
     paramPanelData = "";
     if (j != 0)
     {
@@ -279,55 +288,57 @@ public class QWalletHbApiImpl
       paramPanelData = "13140";
     }
     QWalletHbApiImpl.SendHbParamOfPanel localSendHbParamOfPanel = new QWalletHbApiImpl.SendHbParamOfPanel(null);
-    localSendHbParamOfPanel.jdField_a_of_type_JavaLangString = str;
-    localSendHbParamOfPanel.jdField_a_of_type_Int = i;
-    localSendHbParamOfPanel.jdField_b_of_type_JavaLangString = paramPanelData;
+    localSendHbParamOfPanel.b = str;
+    localSendHbParamOfPanel.a = i;
+    localSendHbParamOfPanel.c = paramPanelData;
     return localSendHbParamOfPanel;
   }
   
   private static QWalletHbApiImpl.SendHbParamOfSession getSendHbModelBySession(BaseQQAppInterface paramBaseQQAppInterface, BaseSessionInfo paramBaseSessionInfo)
   {
-    String str = ((IPasswdRedBagService)paramBaseQQAppInterface.getRuntimeService(IPasswdRedBagService.class)).getRandomPasswd();
-    int k = paramBaseSessionInfo.jdField_a_of_type_Int;
-    Object localObject2 = "";
+    ((IPasswdRedBagService)paramBaseQQAppInterface.getRuntimeService(IPasswdRedBagService.class)).getRandomPasswd();
+    QWalletHbApiImpl.SendHbParamOfSession localSendHbParamOfSession = new QWalletHbApiImpl.SendHbParamOfSession(null);
+    int k = paramBaseSessionInfo.a;
     int j = 1;
     int i = 1;
-    Object localObject1 = "entrance.click.c2c";
+    String str2 = "entrance.click.c2c";
+    String str1 = "";
+    Object localObject;
     if (k == 0)
     {
       i = 1;
-      paramBaseQQAppInterface = (BaseQQAppInterface)localObject2;
-      paramBaseSessionInfo = (BaseSessionInfo)localObject1;
+      paramBaseSessionInfo = str1;
+      paramBaseQQAppInterface = str2;
     }
-    else if (paramBaseSessionInfo.jdField_a_of_type_Int == 3000)
+    else if (paramBaseSessionInfo.a == 3000)
     {
-      j = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).DiscussionManager$getDiscussionMemberNum(paramBaseQQAppInterface, paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
-      paramBaseSessionInfo = "entrance.click.group";
+      j = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).DiscussionManager$getDiscussionMemberNum(paramBaseQQAppInterface, paramBaseSessionInfo.b);
+      paramBaseQQAppInterface = "entrance.click.group";
       i = 2;
-      paramBaseQQAppInterface = (BaseQQAppInterface)localObject2;
+      paramBaseSessionInfo = str1;
     }
-    else if (paramBaseSessionInfo.jdField_a_of_type_Int == 1)
+    else if (paramBaseSessionInfo.a == 1)
     {
-      localObject1 = ((ITroopInfoService)paramBaseQQAppInterface.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      localObject = ((ITroopInfoService)paramBaseQQAppInterface.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(paramBaseSessionInfo.b);
       j = i;
-      if (localObject1 != null)
+      if (localObject != null)
       {
-        j = ((TroopInfo)localObject1).wMemberNum;
+        j = ((TroopInfo)localObject).wMemberNum;
         if (QLog.isColorLevel())
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("troop uin：");
-          ((StringBuilder)localObject1).append(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
-          ((StringBuilder)localObject1).append(" people_num：");
-          ((StringBuilder)localObject1).append(j);
-          QLog.d("PlusPanelUtils", 2, ((StringBuilder)localObject1).toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("troop uin：");
+          ((StringBuilder)localObject).append(paramBaseSessionInfo.b);
+          ((StringBuilder)localObject).append(" people_num：");
+          ((StringBuilder)localObject).append(j);
+          QLog.d("PlusPanelUtils", 2, ((StringBuilder)localObject).toString());
         }
       }
-      if (!QWalletHelperImpl.isNeedUpdateTroopMemberNum(paramBaseSessionInfo.jdField_a_of_type_JavaLangString)) {}
+      if (!QWalletHelperImpl.isNeedUpdateTroopMemberNum(paramBaseSessionInfo.b)) {}
     }
     try
     {
-      long l = Long.parseLong(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      long l = Long.parseLong(paramBaseSessionInfo.b);
       if (sTroopBusinessObserver == null) {
         sTroopBusinessObserver = new QWalletHbApiImpl.1(paramBaseSessionInfo);
       }
@@ -336,65 +347,73 @@ public class QWalletHbApiImpl
     }
     catch (NumberFormatException paramBaseQQAppInterface)
     {
-      label275:
-      break label275;
+      label284:
+      break label284;
     }
     if (QLog.isColorLevel())
     {
       paramBaseQQAppInterface = new StringBuilder();
       paramBaseQQAppInterface.append("群uin：");
-      paramBaseQQAppInterface.append(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      paramBaseQQAppInterface.append(paramBaseSessionInfo.b);
       paramBaseQQAppInterface.append(" 解析失败");
       QLog.d("angelzhuang", 2, paramBaseQQAppInterface.toString());
     }
     i = 3;
-    paramBaseSessionInfo = "entrance.click.chatgroup";
-    paramBaseQQAppInterface = (BaseQQAppInterface)localObject2;
-    break label520;
-    if (paramBaseSessionInfo.jdField_a_of_type_Int == 1000)
+    paramBaseQQAppInterface = "entrance.click.chatgroup";
+    paramBaseSessionInfo = str1;
+    break label590;
+    if (paramBaseSessionInfo.a == 1000)
     {
       i = 4;
-      paramBaseQQAppInterface = paramBaseSessionInfo.jdField_b_of_type_JavaLangString;
-      paramBaseSessionInfo = (BaseSessionInfo)localObject1;
+      paramBaseSessionInfo = paramBaseSessionInfo.c;
+      paramBaseQQAppInterface = str2;
     }
-    else if (paramBaseSessionInfo.jdField_a_of_type_Int == 1004)
+    else if (paramBaseSessionInfo.a == 1004)
     {
       i = 5;
-      paramBaseQQAppInterface = paramBaseSessionInfo.jdField_b_of_type_JavaLangString;
-      paramBaseSessionInfo = (BaseSessionInfo)localObject1;
+      paramBaseSessionInfo = paramBaseSessionInfo.c;
+      paramBaseQQAppInterface = str2;
     }
-    else if ((paramBaseSessionInfo.jdField_a_of_type_Int != 1001) && (paramBaseSessionInfo.jdField_a_of_type_Int != 10002) && (paramBaseSessionInfo.jdField_a_of_type_Int != 10004))
+    else if ((paramBaseSessionInfo.a != 1001) && (paramBaseSessionInfo.a != 10002) && (paramBaseSessionInfo.a != 10004))
     {
-      i = 0;
-      paramBaseSessionInfo = "";
-      paramBaseQQAppInterface = (BaseQQAppInterface)localObject2;
+      if (paramBaseSessionInfo.a == 10014)
+      {
+        localSendHbParamOfSession.f = ((IGPSService)paramBaseQQAppInterface.getRuntimeService(IGPSService.class, "")).getSelfTinyId();
+        localSendHbParamOfSession.g = paramBaseSessionInfo.c;
+        localSendHbParamOfSession.h = paramBaseSessionInfo.b;
+        paramBaseQQAppInterface = "";
+        i = 11;
+        paramBaseSessionInfo = str1;
+      }
+      else
+      {
+        i = 0;
+        paramBaseQQAppInterface = "";
+        paramBaseSessionInfo = str1;
+      }
     }
     else
     {
-      localObject2 = (MessageCache)paramBaseQQAppInterface.getMsgCache();
-      if (paramBaseSessionInfo.jdField_a_of_type_Int == 10004) {
-        paramBaseSessionInfo = ((MessageCache)localObject2).l(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      localObject = (MessageCache)paramBaseQQAppInterface.getMsgCache();
+      if (paramBaseSessionInfo.a == 10004) {
+        localObject = ((MessageCache)localObject).q(paramBaseSessionInfo.b);
       } else {
-        paramBaseSessionInfo = ((MessageCache)localObject2).m(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+        localObject = ((MessageCache)localObject).r(paramBaseSessionInfo.b);
       }
-      if (paramBaseSessionInfo != null) {
-        paramBaseSessionInfo = Base64Util.encodeToString(paramBaseSessionInfo, 2);
-      } else {
-        paramBaseSessionInfo = "";
+      paramBaseSessionInfo = str1;
+      if (localObject != null) {
+        paramBaseSessionInfo = Base64Util.encodeToString((byte[])localObject, 2);
       }
       ReportController.b(paramBaseQQAppInterface, "CliOper", "", "", "0X8005B9D", "0X8005B9D", 0, 0, "", "", "", "");
-      paramBaseQQAppInterface = paramBaseSessionInfo;
       i = 7;
-      paramBaseSessionInfo = (BaseSessionInfo)localObject1;
+      paramBaseQQAppInterface = str2;
     }
-    label520:
-    localObject1 = new QWalletHbApiImpl.SendHbParamOfSession(null);
-    ((QWalletHbApiImpl.SendHbParamOfSession)localObject1).jdField_b_of_type_JavaLangString = paramBaseSessionInfo;
-    ((QWalletHbApiImpl.SendHbParamOfSession)localObject1).jdField_a_of_type_Int = j;
-    ((QWalletHbApiImpl.SendHbParamOfSession)localObject1).jdField_b_of_type_Int = i;
-    ((QWalletHbApiImpl.SendHbParamOfSession)localObject1).jdField_a_of_type_JavaLangString = paramBaseQQAppInterface;
-    ((QWalletHbApiImpl.SendHbParamOfSession)localObject1).c = str;
-    return localObject1;
+    label590:
+    localSendHbParamOfSession.d = paramBaseQQAppInterface;
+    localSendHbParamOfSession.a = j;
+    localSendHbParamOfSession.b = i;
+    localSendHbParamOfSession.c = paramBaseSessionInfo;
+    return localSendHbParamOfSession;
   }
   
   private void gotoGoldHb(BaseQQAppInterface paramBaseQQAppInterface, Activity paramActivity, BaseSessionInfo paramBaseSessionInfo, int paramInt1, int paramInt2, String paramString)
@@ -464,17 +483,12 @@ public class QWalletHbApiImpl
   
   public ICustomizeStrategyFactory getCustomizeStrategyFactory()
   {
-    return CustomizeStrategyFactory.a();
+    return CustomizeStrategyFactory.d();
   }
   
   public int getPanelFrom()
   {
     return this.panel_from;
-  }
-  
-  public String getQWalletHandlerClassName()
-  {
-    return QWalletHandler.class.getName();
   }
   
   public int getSpecifyHbAniMaxSize(BaseQQAppInterface paramBaseQQAppInterface)
@@ -585,12 +599,12 @@ public class QWalletHbApiImpl
   
   public void voiceRecognizerDestroy()
   {
-    VoiceRecognizer.a().c();
+    VoiceRecognizer.a().e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.QWalletHbApiImpl
  * JD-Core Version:    0.7.0.1
  */

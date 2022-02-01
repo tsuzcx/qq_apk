@@ -16,7 +16,7 @@ public abstract class BaseChatPanelBarConfProcessor
     if (QLog.isColorLevel()) {
       QLog.d("BaseChatPanelBarConfProcessor", 2, "[loadConfig] load C2C config.");
     }
-    return (ChatPanelBarConfBean)QConfigManager.a().a(707);
+    return (ChatPanelBarConfBean)QConfigManager.b().b(707);
   }
   
   public static ChatPanelBarConfBean b()
@@ -24,10 +24,8 @@ public abstract class BaseChatPanelBarConfProcessor
     if (QLog.isColorLevel()) {
       QLog.d("BaseChatPanelBarConfProcessor", 2, "[loadConfig] load Group config.");
     }
-    return (ChatPanelBarConfBean)QConfigManager.a().a(708);
+    return (ChatPanelBarConfBean)QConfigManager.b().b(708);
   }
-  
-  abstract int a();
   
   @NonNull
   public ChatPanelBarConfBean a(int paramInt)
@@ -40,21 +38,23 @@ public abstract class BaseChatPanelBarConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      ChatPanelBarConfBean localChatPanelBarConfBean = ChatPanelBarConfBean.a(paramArrayOfQConfItem[0].a);
+      ChatPanelBarConfBean localChatPanelBarConfBean = ChatPanelBarConfBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append("configId=");
+        localStringBuilder.append(c());
+        localStringBuilder.append(" onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("BaseChatPanelBarConfProcessor", 2, localStringBuilder.toString());
       }
-      if (a() == 707)
+      if (c() == 707)
       {
-        ChatPanelDisplayManager.a.put(Integer.valueOf(2131362340), Boolean.valueOf(localChatPanelBarConfBean.a()));
+        ChatPanelDisplayManager.a.put(Integer.valueOf(2131427940), Boolean.valueOf(localChatPanelBarConfBean.a()));
         return localChatPanelBarConfBean;
       }
-      if (a() == 708) {
-        ChatPanelDisplayManager.b.put(Integer.valueOf(2131362340), Boolean.valueOf(localChatPanelBarConfBean.a()));
+      if (c() == 708) {
+        ChatPanelDisplayManager.b.put(Integer.valueOf(2131427940), Boolean.valueOf(localChatPanelBarConfBean.a()));
       }
       return localChatPanelBarConfBean;
     }
@@ -62,6 +62,8 @@ public abstract class BaseChatPanelBarConfProcessor
   }
   
   public void a(ChatPanelBarConfBean paramChatPanelBarConfBean) {}
+  
+  abstract int c();
   
   public Class<ChatPanelBarConfBean> clazz()
   {
@@ -92,12 +94,12 @@ public abstract class BaseChatPanelBarConfProcessor
   
   public int type()
   {
-    return a();
+    return c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.config.BaseChatPanelBarConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -40,7 +40,7 @@ public final class msg_comm$C2CTmpMsgHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.msgcomm.msg_comm.C2CTmpMsgHead
  * JD-Core Version:    0.7.0.1
  */

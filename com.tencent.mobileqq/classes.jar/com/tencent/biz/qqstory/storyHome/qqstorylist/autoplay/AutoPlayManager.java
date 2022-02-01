@@ -32,46 +32,45 @@ import org.json.JSONArray;
 public class AutoPlayManager
   implements Handler.Callback, BatchHandlerListPuller.IPullResultCallback, FeedVideoPreloader.OnVideoDownloadListener, IEventReceiver
 {
-  private int jdField_a_of_type_Int = 1;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(paramLooper, this);
-  private StoryManager jdField_a_of_type_ComTencentBizQqstoryModelStoryManager = (StoryManager)SuperManager.a(5);
-  private BatchHandlerListPuller jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller;
-  private AutoPlayManager.GetStoryListReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager$GetStoryListReceiver;
-  private AutoPlayManager.GetVideoBasicInfoListReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager$GetVideoBasicInfoListReceiver;
-  protected FeedVideoPreloader a;
-  private ConcurrentHashMap<String, StoryVideoItem> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private BatchHandlerListPuller jdField_b_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller;
-  private ConcurrentHashMap<String, String> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  protected FeedVideoPreloader a = new FeedVideoPreloader();
+  private AutoPlayManager.GetVideoBasicInfoListReceiver b;
+  private AutoPlayManager.GetStoryListReceiver c;
+  private ConcurrentHashMap<String, StoryVideoItem> d = new ConcurrentHashMap();
+  private StoryManager e = (StoryManager)SuperManager.a(5);
+  private BatchHandlerListPuller f;
+  private BatchHandlerListPuller g;
+  private boolean h = false;
+  private int i = 1;
+  private Handler j = new Handler(paramLooper, this);
+  private ConcurrentHashMap<String, String> k = new ConcurrentHashMap();
+  private int l = 0;
   
   public AutoPlayManager(Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader = new FeedVideoPreloader();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.a(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager$GetVideoBasicInfoListReceiver = new AutoPlayManager.GetVideoBasicInfoListReceiver(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager$GetStoryListReceiver = new AutoPlayManager.GetStoryListReceiver(this, this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager$GetVideoBasicInfoListReceiver);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager$GetStoryListReceiver);
+    this.a.a(this);
+    this.b = new AutoPlayManager.GetVideoBasicInfoListReceiver(this);
+    this.c = new AutoPlayManager.GetStoryListReceiver(this, this);
+    StoryDispatcher.a().registerSubscriber(this.b);
+    StoryDispatcher.a().registerSubscriber(this.c);
   }
   
-  private boolean a(String paramString)
+  private boolean b(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null) {
+    if (this.d.get(paramString) != null) {
       return true;
     }
-    paramString = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(paramString);
+    paramString = this.e.a(paramString);
     return (paramString != null) && (a(paramString));
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.i;
   }
   
   public StoryVideoItem a(String paramString)
   {
-    StoryVideoItem localStoryVideoItem2 = (StoryVideoItem)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    StoryVideoItem localStoryVideoItem2 = (StoryVideoItem)this.d.get(paramString);
     StoryVideoItem localStoryVideoItem1;
     if ((localStoryVideoItem2 != null) && (!TextUtils.isEmpty(localStoryVideoItem2.mVideoUrl)) && (localStoryVideoItem2.mVideoDuration >= 0L))
     {
@@ -80,42 +79,25 @@ public class AutoPlayManager
     }
     else
     {
-      localStoryVideoItem1 = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(paramString);
+      localStoryVideoItem1 = this.e.a(paramString);
     }
     return localStoryVideoItem1;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager$GetVideoBasicInfoListReceiver);
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager$GetStoryListReceiver);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.a();
-    BatchHandlerListPuller localBatchHandlerListPuller = this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller;
-    if (localBatchHandlerListPuller != null) {
-      localBatchHandlerListPuller.a();
-    }
-    localBatchHandlerListPuller = this.jdField_b_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller;
-    if (localBatchHandlerListPuller != null) {
-      localBatchHandlerListPuller.a();
-    }
-  }
-  
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.i = paramInt;
   }
   
   public void a(QQStoryAutoPlayView paramQQStoryAutoPlayView, List<StoryHomeFeed> paramList)
   {
-    StoryVideoItem localStoryVideoItem = paramQQStoryAutoPlayView.a();
+    StoryVideoItem localStoryVideoItem = paramQQStoryAutoPlayView.getStoryVideoItem();
     if (localStoryVideoItem == null)
     {
       StoryReportor.b("story_home_dev", "feed_play_req", 0, 3, new String[0]);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(localStoryVideoItem.mVid), paramList);
+    this.a.a(this.e.a(localStoryVideoItem.mVid), paramList);
     boolean bool = StoryVideoItem.isPlayable(localStoryVideoItem.mVid, false);
     paramList = null;
     if (bool) {
@@ -124,7 +106,7 @@ public class AutoPlayManager
     if (!a(localStoryVideoItem))
     {
       SLog.a("Q.qqstory.home.AutoPlayManager", "AutoPlayManager that need to req the storyVideoItem vid=%s cover=%s", localStoryVideoItem.mVid, localStoryVideoItem.getThumbUrl());
-      if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(localStoryVideoItem.mVid) == null)
+      if (this.k.get(localStoryVideoItem.mVid) == null)
       {
         paramQQStoryAutoPlayView = new ArrayList();
         paramQQStoryAutoPlayView.add(localStoryVideoItem.mVid);
@@ -168,7 +150,7 @@ public class AutoPlayManager
     paramString2 = new FeedSegment.StoryVideoDownloadedEvent();
     paramString2.a = paramString1;
     StoryDispatcher.a().dispatch(paramString2);
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+    this.k.remove(paramString1);
     StoryReportor.b("auto_play", "rsp_down", 0, 0, new String[] { paramString1 });
   }
   
@@ -178,7 +160,7 @@ public class AutoPlayManager
     paramString2.append("AutoPlayManager onError = ");
     paramString2.append(paramString1);
     SLog.b("Q.qqstory.home.AutoPlayManager", paramString2.toString());
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+    this.k.remove(paramString1);
     StoryReportor.b("auto_play", "rsp_down", 1, 0, new String[] { paramString1 });
   }
   
@@ -189,17 +171,17 @@ public class AutoPlayManager
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (!a(str)) {
+      if (!b(str)) {
         localArrayList.add(str);
       }
     }
     SLog.a("Q.qqstory.home.AutoPlayManager", "fetchStoryVideoItemByVid, request=%s, original=%s", new JSONArray(localArrayList), new JSONArray(paramList));
     if (localArrayList.size() > 0)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller = BatchHandlerListPuller.a(localArrayList);
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a("Q.qqstory.home.AutoPlayManager");
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a(this);
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.b();
+      this.f = BatchHandlerListPuller.a(localArrayList);
+      this.f.a("Q.qqstory.home.AutoPlayManager");
+      this.f.a(this);
+      this.f.b();
     }
   }
   
@@ -215,20 +197,32 @@ public class AutoPlayManager
       if (paramStoryVideoItem.mVideoDuration < 0L) {
         return false;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
+      this.d.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
       return true;
     }
     return false;
   }
   
-  public int b()
+  public void b()
   {
-    return this.jdField_b_of_type_Int;
+    this.h = false;
+    this.d.clear();
+    StoryDispatcher.a().unRegisterSubscriber(this.b);
+    StoryDispatcher.a().unRegisterSubscriber(this.c);
+    this.a.a();
+    BatchHandlerListPuller localBatchHandlerListPuller = this.f;
+    if (localBatchHandlerListPuller != null) {
+      localBatchHandlerListPuller.a();
+    }
+    localBatchHandlerListPuller = this.g;
+    if (localBatchHandlerListPuller != null) {
+      localBatchHandlerListPuller.a();
+    }
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.l = paramInt;
   }
   
   public void b(String paramString1, String paramString2)
@@ -237,16 +231,21 @@ public class AutoPlayManager
     paramString2.append("AutoPlayManager onPause = ");
     paramString2.append(paramString1);
     SLog.b("Q.qqstory.home.AutoPlayManager", paramString2.toString());
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+    this.k.remove(paramString1);
     StoryReportor.b("auto_play", "rsp_down", 2, 0, new String[] { paramString1 });
   }
   
   public void b(List<StoryVideoItem> paramList)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.j;
     if (localHandler != null) {
       localHandler.sendMessage(localHandler.obtainMessage(1, paramList));
     }
+  }
+  
+  public int c()
+  {
+    return this.l;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -261,15 +260,15 @@ public class AutoPlayManager
       if ((localStoryVideoItem.mErrorCode == 0) && ((TextUtils.isEmpty(localStoryVideoItem.mVideoUrl)) || (localStoryVideoItem.mVideoDuration < 0L) || (localStoryVideoItem.mSourceType == -1))) {
         AssertUtils.fail("handleMessage is illegal debug info=%s", new Object[] { localStoryVideoItem });
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localStoryVideoItem.mVid, localStoryVideoItem);
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localStoryVideoItem.mVid);
+      this.d.put(localStoryVideoItem.mVid, localStoryVideoItem);
+      this.k.remove(localStoryVideoItem.mVid);
     }
     return true;
   }
   
   public boolean isValidate()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.h;
   }
 }
 

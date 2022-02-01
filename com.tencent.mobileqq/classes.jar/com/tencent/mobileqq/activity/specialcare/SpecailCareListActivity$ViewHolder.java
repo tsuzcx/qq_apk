@@ -9,25 +9,25 @@ import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
 
 public class SpecailCareListActivity$ViewHolder
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public Friends a;
-  public MutualMarkIconsView a;
-  public OnlineStatusView a;
   public String a;
   public ImageView b;
-  public TextView b;
-  public ImageView c;
   public TextView c;
-  public ImageView d;
+  public TextView d;
   public ImageView e;
-  public ImageView f;
-  public ImageView g;
+  public TextView f;
+  public OnlineStatusView g;
+  public ImageView h;
+  public ImageView i;
+  public ImageView j;
+  public ImageView k;
+  public ImageView l;
+  public View m;
+  public MutualMarkIconsView n;
+  public Friends o;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

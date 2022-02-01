@@ -28,10 +28,10 @@ public class AdBrandOptimizationProteusItem
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
     paramContainer = paramContainer.getVirtualView();
-    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.a() != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramIReadInJoyModel.a())))
+    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.k() != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramIReadInJoyModel.k())))
     {
       Object localObject = paramContainer.findViewBaseByName("id_article_brand_optimization");
-      TemplateBean localTemplateBean = paramIReadInJoyModel.a().mProteusTemplateBean;
+      TemplateBean localTemplateBean = paramIReadInJoyModel.k().mProteusTemplateBean;
       paramContainer = null;
       if (localTemplateBean != null) {
         paramContainer = localTemplateBean.findViewById("id_top_left_mask");
@@ -57,7 +57,7 @@ public class AdBrandOptimizationProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdBrandOptimizationProteusItem
  * JD-Core Version:    0.7.0.1
  */

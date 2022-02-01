@@ -32,23 +32,32 @@ public class AbstractPhotoListActivity
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AbstractPhotoListActivity,doOnActivityResult:requestCode = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",resultCode=");
+      localStringBuilder.append(paramInt2);
+      QLog.d("QQAlbum", 2, localStringBuilder.toString());
+    }
     this.mPhotoListCustomization.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void doOnBackPressed()
   {
     int i;
-    if ((this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a != null) && (!this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a.isHidden())) {
+    if ((this.mPhotoListCustomization.h.b != null) && (!this.mPhotoListCustomization.h.b.isHidden())) {
       i = 0;
     } else {
       i = 1;
     }
     if (i != 0)
     {
-      this.mPhotoListCustomization.c();
+      this.mPhotoListCustomization.e();
       return;
     }
-    this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a(false);
+    this.mPhotoListCustomization.h.a(false);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -69,16 +78,19 @@ public class AbstractPhotoListActivity
     super.adjustStatusBar();
     this.mPhotoListCustomization = generateCustomization();
     this.mPhotoListCustomization.a(paramBundle);
-    super.setContentView(this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.d());
+    super.setContentView(this.mPhotoListCustomization.h.a());
     getWindow().setBackgroundDrawable(null);
-    this.mPhotoListCustomization.h();
+    this.mPhotoListCustomization.k();
     return true;
   }
   
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    this.mPhotoListCustomization.g();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAlbum", 2, "AbstractPhotoListActivity,doOnDestroy");
+    }
+    this.mPhotoListCustomization.h();
   }
   
   protected void doOnNewIntent(Intent paramIntent)
@@ -98,9 +110,9 @@ public class AbstractPhotoListActivity
       QLog.d("QQAlbum", 2, "onNewIntent()");
     }
     processNewIntent(paramIntent);
-    if (this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName != null) {
-      paramIntent = this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName;
-    } else if (this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.showMediaType == 2) {
+    if (this.mPhotoListCustomization.e.albumName != null) {
+      paramIntent = this.mPhotoListCustomization.e.albumName;
+    } else if (this.mPhotoListCustomization.e.showMediaType == 2) {
       paramIntent = QAlbumCustomAlbumConstants.RECENT_ALBUM_NAME_VIDEO;
     } else {
       paramIntent = QAlbumCustomAlbumConstants.RECENT_ALBUM_NAME;
@@ -111,13 +123,19 @@ public class AbstractPhotoListActivity
   protected void doOnPause()
   {
     super.doOnPause();
-    this.mPhotoListCustomization.j();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAlbum", 2, "AbstractPhotoListActivity,doOnPause");
+    }
+    this.mPhotoListCustomization.v();
   }
   
   protected void doOnResume()
   {
     super.doOnResume();
-    this.mPhotoListCustomization.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAlbum", 2, "AbstractPhotoListActivity,doOnResume");
+    }
+    this.mPhotoListCustomization.g();
   }
   
   public void finish()
@@ -150,7 +168,7 @@ public class AbstractPhotoListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.photolist.AbstractPhotoListActivity
  * JD-Core Version:    0.7.0.1
  */

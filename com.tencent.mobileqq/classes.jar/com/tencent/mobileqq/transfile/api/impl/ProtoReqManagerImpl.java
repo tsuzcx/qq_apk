@@ -272,18 +272,18 @@ public class ProtoReqManagerImpl
         return;
       }
       if (paramProtoReq == null) {
-        break label506;
+        break label519;
       }
-      if ((paramProtoReq.ssoCmd != null) && ((paramProtoReq.ssoCmd.equals("ImgStore.GroupPicUp")) || (paramProtoReq.ssoCmd.equals("LongConn.OffPicUp")))) {
+      if ((paramProtoReq.ssoCmd != null) && ((paramProtoReq.ssoCmd.equals("ImgStore.GroupPicUp")) || (paramProtoReq.ssoCmd.equals("LongConn.OffPicUp")) || (paramProtoReq.ssoCmd.equals("ImgStore.QQMeetPicUp")))) {
         setConfigFromDpc(paramProtoReq);
       }
       localObject1 = paramProtoReq.ssoCmd;
       if (localObject1 == null) {
-        break label520;
+        break label533;
       }
       localObject1 = (Class)protoReqStrategy.get(localObject1);
       if (localObject1 == null) {
-        break label520;
+        break label533;
       }
       try
       {
@@ -292,12 +292,12 @@ public class ProtoReqManagerImpl
       catch (InstantiationException localInstantiationException)
       {
         localInstantiationException.printStackTrace();
-        break label520;
+        break label533;
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
         localIllegalAccessException.printStackTrace();
-        break label520;
+        break label533;
       }
     }
     finally
@@ -312,10 +312,10 @@ public class ProtoReqManagerImpl
         int j;
         for (;;)
         {
-          label506:
+          label519:
           throw paramProtoReq;
         }
-        label520:
+        label533:
         Object localObject2 = null;
         continue;
         i += 1;
@@ -378,7 +378,7 @@ public class ProtoReqManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl
  * JD-Core Version:    0.7.0.1
  */

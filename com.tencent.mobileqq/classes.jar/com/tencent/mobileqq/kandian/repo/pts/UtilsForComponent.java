@@ -32,35 +32,6 @@ import tencent.im.oidb.articlesummary.articlesummary.SubscribeInfo;
 
 public class UtilsForComponent
 {
-  public static int a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo == null) {
-      return 0;
-    }
-    if ((paramAbsBaseArticleInfo.mPackInfoObj != null) && (paramAbsBaseArticleInfo.mPackInfoObj.pack_type.has()))
-    {
-      if (paramAbsBaseArticleInfo.mPackInfoObj.pack_type.get() == 2)
-      {
-        if (paramAbsBaseArticleInfo.mPackInfoObj.msg_special_topic_info.has()) {
-          return 1;
-        }
-        return 0;
-      }
-      if (paramAbsBaseArticleInfo.mPackInfoObj.pack_type.get() == 3)
-      {
-        if (paramAbsBaseArticleInfo.mPackInfoObj.msg_friend_recommend_info.has()) {
-          return 2;
-        }
-        return 0;
-      }
-    }
-    else if ((paramAbsBaseArticleInfo.mSubscribeInfoObj != null) && (paramAbsBaseArticleInfo.mSubscribeInfoObj.uint32_is_subscribed.has()) && (paramAbsBaseArticleInfo.mSubscribeInfoObj.uint32_is_subscribed.get() == 1))
-    {
-      return 3;
-    }
-    return 0;
-  }
-  
   public static Pair<Integer, Integer> a()
   {
     int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
@@ -152,21 +123,21 @@ public class UtilsForComponent
   
   public static void a(Context paramContext, IReadInJoyModel paramIReadInJoyModel, ViewGroup.LayoutParams paramLayoutParams, View paramView)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
     if (localAbsBaseArticleInfo == null)
     {
       QLog.d("UtilsForComponent", 1, "configDividerHeight failed, articleInfo is null.");
       return;
     }
-    paramLayoutParams.height = paramContext.getResources().getDimensionPixelSize(2131298824);
-    int j = paramIReadInJoyModel.d();
-    int i = paramIReadInJoyModel.e();
+    paramLayoutParams.height = paramContext.getResources().getDimensionPixelSize(2131299541);
+    int j = paramIReadInJoyModel.o();
+    int i = paramIReadInJoyModel.p();
     if (localAbsBaseArticleInfo.mChannelID == 70L)
     {
       paramLayoutParams.height = Utils.dp2px(5.0D);
       return;
     }
-    if (paramIReadInJoyModel.c() == 56)
+    if (paramIReadInJoyModel.m() == 56)
     {
       paramLayoutParams.height = Utils.dp2px(5.0D);
       return;
@@ -199,7 +170,7 @@ public class UtilsForComponent
         paramView.setBackgroundColor(Color.parseColor("#e5e5e5"));
         return;
       }
-      if (ProteusSupportUtil.a(j, i, paramIReadInJoyModel.a()))
+      if (ProteusSupportUtil.a(j, i, paramIReadInJoyModel.k()))
       {
         paramLayoutParams.height = Utils.dp2px(5.0D);
         return;
@@ -217,10 +188,10 @@ public class UtilsForComponent
       if (paramIReadInJoyModel == null) {
         return;
       }
-      paramIReadInJoyModel = paramIReadInJoyModel.a();
-      if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.mSocialFeedInfo != null) && (paramIReadInJoyModel.mSocialFeedInfo.a != null))
+      paramIReadInJoyModel = paramIReadInJoyModel.k();
+      if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.mSocialFeedInfo != null) && (paramIReadInJoyModel.mSocialFeedInfo.c != null))
       {
-        if (paramIReadInJoyModel.mSocialFeedInfo.a.a())
+        if (paramIReadInJoyModel.mSocialFeedInfo.c.b())
         {
           paramRingAvatarView.showStarRing();
           paramImageView.setVisibility(0);
@@ -230,24 +201,6 @@ public class UtilsForComponent
         paramImageView.setVisibility(8);
       }
     }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (paramInt != 1)
-    {
-      bool1 = bool2;
-      if (paramInt != 5)
-      {
-        if (paramInt == 7) {
-          return true;
-        }
-        bool1 = false;
-      }
-    }
-    return bool1;
   }
   
   public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -274,22 +227,69 @@ public class UtilsForComponent
   public static Pair<Integer, Integer> b()
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
-    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - AIOUtils.b(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131298830)));
+    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - AIOUtils.b(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131299547)));
   }
   
   public static boolean b(int paramInt)
   {
-    return (paramInt == 22) || (paramInt == 21) || (paramInt == 23) || (paramInt == 107) || (paramInt == 108) || (paramInt == 54) || (paramInt == 55) || (paramInt == 56);
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramInt != 1)
+    {
+      bool1 = bool2;
+      if (paramInt != 5)
+      {
+        if (paramInt == 7) {
+          return true;
+        }
+        bool1 = false;
+      }
+    }
+    return bool1;
   }
   
   public static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo) == 23) || (RIJItemViewTypeUtils.b(paramAbsBaseArticleInfo) == 56);
+    return (RIJItemViewTypeUtils.A(paramAbsBaseArticleInfo) == 23) || (RIJItemViewTypeUtils.B(paramAbsBaseArticleInfo) == 56);
+  }
+  
+  public static int c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (paramAbsBaseArticleInfo == null) {
+      return 0;
+    }
+    if ((paramAbsBaseArticleInfo.mPackInfoObj != null) && (paramAbsBaseArticleInfo.mPackInfoObj.pack_type.has()))
+    {
+      if (paramAbsBaseArticleInfo.mPackInfoObj.pack_type.get() == 2)
+      {
+        if (paramAbsBaseArticleInfo.mPackInfoObj.msg_special_topic_info.has()) {
+          return 1;
+        }
+        return 0;
+      }
+      if (paramAbsBaseArticleInfo.mPackInfoObj.pack_type.get() == 3)
+      {
+        if (paramAbsBaseArticleInfo.mPackInfoObj.msg_friend_recommend_info.has()) {
+          return 2;
+        }
+        return 0;
+      }
+    }
+    else if ((paramAbsBaseArticleInfo.mSubscribeInfoObj != null) && (paramAbsBaseArticleInfo.mSubscribeInfoObj.uint32_is_subscribed.has()) && (paramAbsBaseArticleInfo.mSubscribeInfoObj.uint32_is_subscribed.get() == 1))
+    {
+      return 3;
+    }
+    return 0;
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt == 22) || (paramInt == 21) || (paramInt == 23) || (paramInt == 107) || (paramInt == 108) || (paramInt == 54) || (paramInt == 55) || (paramInt == 56);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.pts.UtilsForComponent
  * JD-Core Version:    0.7.0.1
  */

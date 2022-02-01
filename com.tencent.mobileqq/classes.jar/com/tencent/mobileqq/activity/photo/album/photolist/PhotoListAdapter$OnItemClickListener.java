@@ -16,29 +16,29 @@ class PhotoListAdapter$OnItemClickListener
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter.getItemViewType(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListCustomization != null) {
+    int i = this.b.getItemViewType(this.a);
+    if (this.b.g != null) {
       if (i != 0)
       {
         if (i != 1)
         {
           if (i == 2) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListCustomization.c(paramView, this.jdField_a_of_type_Int);
+            this.b.g.d(paramView, this.a);
           }
         }
         else {
-          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListCustomization.b(paramView, this.jdField_a_of_type_Int);
+          this.b.g.c(paramView, this.a);
         }
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter.a().isSingleMode)
+      else if (this.b.c().isSingleMode)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListCustomization.a(paramView, this.jdField_a_of_type_Int);
+        this.b.g.a(paramView, this.a);
       }
       else
       {
-        Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListCustomization.a(paramView, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListCustomization.b(localIntent);
-        QAlbumUtil.anim(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakFragmentActivity, true, true);
+        Intent localIntent = this.b.g.b(paramView, this.a);
+        this.b.g.b(localIntent);
+        QAlbumUtil.anim(this.b.f, true, true);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -46,7 +46,7 @@ class PhotoListAdapter$OnItemClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.photolist.PhotoListAdapter.OnItemClickListener
  * JD-Core Version:    0.7.0.1
  */

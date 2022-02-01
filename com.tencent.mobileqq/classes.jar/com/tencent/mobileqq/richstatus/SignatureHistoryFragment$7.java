@@ -12,29 +12,29 @@ class SignatureHistoryFragment$7
 {
   SignatureHistoryFragment$7(SignatureHistoryFragment paramSignatureHistoryFragment, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
       paramView = new StringBuilder();
       paramView.append("");
-      paramView.append(this.jdField_a_of_type_Int);
+      paramView.append(this.a);
       VasWebviewUtil.a("signature_history", "sheet", "", 0, 0, 0, "", "", paramView.toString(), "", "", "", "", 0, 0, 0, 0);
-      if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).equals(SignatureHistoryFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment))) {
+      if (SignatureHistoryFragment.c(this.d).equals(SignatureHistoryFragment.h(this.d))) {
         paramInt = 49;
       } else {
         paramInt = 50;
       }
-      SignatureEditManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getBaseActivity().app, 0, "signature_history", -1, this.b, this.c, null, paramInt);
+      SignatureEditManager.a(this.d.getBaseActivity(), this.d.getBaseActivity().app, 0, "signature_history", -1, this.b, this.c, null, paramInt);
     }
-    if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment) != null) {
-      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).dismiss();
+    if (SignatureHistoryFragment.i(this.d) != null) {
+      SignatureHistoryFragment.i(this.d).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.7
  * JD-Core Version:    0.7.0.1
  */

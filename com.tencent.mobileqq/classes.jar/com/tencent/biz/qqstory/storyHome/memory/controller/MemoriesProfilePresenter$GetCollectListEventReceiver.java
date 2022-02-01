@@ -18,18 +18,18 @@ class MemoriesProfilePresenter$GetCollectListEventReceiver
   
   public void a(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
   {
-    if (paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramGetCollectionListEvent.g.isSuccess())
     {
-      SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramGetCollectionListEvent.jdField_a_of_type_Int));
-      if ((!TextUtils.isEmpty(paramGetCollectionListEvent.b)) && (!paramGetCollectionListEvent.b.equals(paramMemoriesProfilePresenter.jdField_a_of_type_JavaLangString))) {
+      SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramGetCollectionListEvent.f));
+      if ((!TextUtils.isEmpty(paramGetCollectionListEvent.j)) && (!paramGetCollectionListEvent.j.equals(paramMemoriesProfilePresenter.a))) {
         return;
       }
-      if (paramGetCollectionListEvent.jdField_a_of_type_Int != -1) {
-        MemoriesProfilePresenter.a(paramMemoriesProfilePresenter, paramGetCollectionListEvent.jdField_a_of_type_Int);
+      if (paramGetCollectionListEvent.f != -1) {
+        MemoriesProfilePresenter.a(paramMemoriesProfilePresenter, paramGetCollectionListEvent.f);
       }
-      if (paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
+      if (paramMemoriesProfilePresenter.b != null)
       {
-        paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = MemoriesProfilePresenter.a(paramMemoriesProfilePresenter);
+        paramMemoriesProfilePresenter.b.videoCount = MemoriesProfilePresenter.b(paramMemoriesProfilePresenter);
         ThreadManager.post(new MemoriesProfilePresenter.GetCollectListEventReceiver.1(this, paramMemoriesProfilePresenter), 5, null, false);
       }
     }

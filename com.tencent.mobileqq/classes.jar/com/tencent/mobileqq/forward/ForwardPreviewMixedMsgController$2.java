@@ -13,14 +13,14 @@ class ForwardPreviewMixedMsgController$2
   public void onGlobalLayout()
   {
     if (Build.VERSION.SDK_INT >= 16) {
-      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      this.a.e.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
     ForwardPreviewMixedMsgController.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewMixedMsgController.2
  * JD-Core Version:    0.7.0.1
  */

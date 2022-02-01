@@ -1,39 +1,80 @@
 package com.tencent.mobileqq.kandian.glue.viola.modules;
 
-import com.tencent.mobileqq.kandian.biz.viola.view.ViolaFragment.ViolaGestureLayoutListener;
-import com.tencent.mobileqq.kandian.glue.viola.CommonSuspensionGestureLayout;
-import com.tencent.viola.bridge.ViolaBridgeManager;
-import com.tencent.viola.core.ViolaInstance;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class BridgeModule$4
-  implements ViolaFragment.ViolaGestureLayoutListener
+  implements INetInfoHandler
 {
   BridgeModule$4(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void a(int paramInt)
+  public void onNetMobile2None()
   {
-    if ((BridgeModule.access$000(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule) != paramInt) && (this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.getViolaInstance() != null)) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      int i = CommonSuspensionGestureLayout.c;
-      if ((paramInt != i) && (paramInt != CommonSuspensionGestureLayout.e)) {
-        localJSONObject.put("state", 0);
-      } else {
-        localJSONObject.put("state", 1);
-      }
-      BridgeModule.access$002(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule, paramInt);
-      ViolaBridgeManager.getInstance().callbackJavascript(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.getViolaInstance().getInstanceId(), this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.getModuleName(), "callback", this.jdField_a_of_type_JavaLangString, localJSONObject, true);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("BridgeModule", 2, "INetInfoHandler onNetNone2Wifi():NET_NONE");
     }
-    catch (JSONException localJSONException) {}
+    this.b.getNetType(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("INetInfoHandler onNetNone2Wifi():NET_WIFI,ssid=");
+      localStringBuilder.append(paramString);
+      QLog.i("BridgeModule", 2, localStringBuilder.toString());
+    }
+    this.b.getNetType(this.a);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("INetInfoHandler onNetNone2Wifi():NET_XG,ssid=");
+      localStringBuilder.append(paramString);
+      QLog.i("BridgeModule", 2, localStringBuilder.toString());
+    }
+    this.b.getNetType(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("INetInfoHandler onNetNone2Wifi():NET_WIFI,ssid=");
+      localStringBuilder.append(paramString);
+      QLog.i("BridgeModule", 2, localStringBuilder.toString());
+    }
+    this.b.getNetType(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("INetInfoHandler onNetNone2Wifi():NET_XG,ssid=");
+      localStringBuilder.append(paramString);
+      QLog.i("BridgeModule", 2, localStringBuilder.toString());
+    }
+    this.b.getNetType(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BridgeModule", 2, "INetInfoHandler onNetNone2Wifi():NET_NONE");
+    }
+    this.b.getNetType(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModule.4
  * JD-Core Version:    0.7.0.1
  */

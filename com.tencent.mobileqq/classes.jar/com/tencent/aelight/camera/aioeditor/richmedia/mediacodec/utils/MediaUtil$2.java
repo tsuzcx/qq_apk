@@ -11,14 +11,14 @@ final class MediaUtil$2
   
   public Void a(Boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailProgress paramThumbnailProgress)
   {
-    if (paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (paramThumbnailProgress.b != null)
     {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap;
-      this.a.jdField_a_of_type_Long = paramThumbnailProgress.jdField_a_of_type_Long;
+      this.a.a = paramThumbnailProgress.b;
+      this.a.b = paramThumbnailProgress.d;
       paramBoolean = MediaUtil.a();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("MediaCodecThumbnailGenerator progress ");
-      localStringBuilder.append(paramThumbnailProgress.jdField_a_of_type_Long);
+      localStringBuilder.append(paramThumbnailProgress.d);
       QLog.e(paramBoolean, 2, localStringBuilder.toString());
     }
     return null;
@@ -26,7 +26,7 @@ final class MediaUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.mediacodec.utils.MediaUtil.2
  * JD-Core Version:    0.7.0.1
  */

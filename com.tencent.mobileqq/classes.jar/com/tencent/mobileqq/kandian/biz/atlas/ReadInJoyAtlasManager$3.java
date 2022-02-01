@@ -29,11 +29,11 @@ class ReadInJoyAtlasManager$3
       {
         paramBundle = new oidb_cmd0x83e.RspBody();
         paramBundle.mergeFrom(paramArrayOfByte);
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl == null) {
+        if (this.b == null) {
           break label196;
         }
-        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl;
-        localObject = this.jdField_a_of_type_JavaLangString;
+        paramArrayOfByte = this.b;
+        localObject = this.c;
         if (paramBundle.uint32_is_like.get() != 1) {
           break label197;
         }
@@ -43,9 +43,9 @@ class ReadInJoyAtlasManager$3
       }
       catch (Exception paramArrayOfByte)
       {
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl;
+        paramBundle = this.b;
         if (paramBundle != null) {
-          paramBundle.a(false, this.jdField_a_of_type_JavaLangString, false, 0);
+          paramBundle.a(false, this.c, false, 0);
         }
         paramBundle = ReadInJoyAtlasManager.TAG;
         localObject = new StringBuilder();
@@ -54,9 +54,9 @@ class ReadInJoyAtlasManager$3
         QLog.e(paramBundle, 1, ((StringBuilder)localObject).toString());
         return;
       }
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl;
+      paramArrayOfByte = this.b;
       if (paramArrayOfByte != null) {
-        paramArrayOfByte.a(false, this.jdField_a_of_type_JavaLangString, false, paramInt);
+        paramArrayOfByte.a(false, this.c, false, paramInt);
       }
       label196:
       return;
@@ -67,7 +67,7 @@ class ReadInJoyAtlasManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.ReadInJoyAtlasManager.3
  * JD-Core Version:    0.7.0.1
  */

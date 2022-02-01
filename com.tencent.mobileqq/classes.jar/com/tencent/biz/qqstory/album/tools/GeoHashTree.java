@@ -39,7 +39,7 @@ public class GeoHashTree
     return this.a;
   }
   
-  public String a()
+  public String b()
   {
     StringBuilder localStringBuilder = new StringBuilder("AlbumTree=[\n");
     Object localObject1 = new LinkedList();
@@ -56,7 +56,7 @@ public class GeoHashTree
           localStringBuilder.append(" [");
           localStringBuilder.append(((GeoHashTree.TreeNode)localObject2).toString());
           localStringBuilder.append("];");
-          localObject2 = ((GeoHashTree.TreeNode)localObject2).a.iterator();
+          localObject2 = ((GeoHashTree.TreeNode)localObject2).b.iterator();
           while (((Iterator)localObject2).hasNext()) {
             ((Queue)localObject1).offer((GeoHashTree.TreeNode)((Iterator)localObject2).next());
           }
@@ -75,7 +75,7 @@ public class GeoHashTree
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.GeoHashTree
  * JD-Core Version:    0.7.0.1
  */

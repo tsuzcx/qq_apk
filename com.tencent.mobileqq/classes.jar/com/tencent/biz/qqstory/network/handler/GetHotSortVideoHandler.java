@@ -4,14 +4,14 @@ import com.tencent.biz.qqstory.comment.lego.LegoNetworkRequester;
 
 public class GetHotSortVideoHandler
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
   public boolean a;
   private String b;
+  private long c;
+  private String d;
   
   public GetHotSortVideoHandler(String paramString)
   {
-    this.b = paramString;
+    this.d = paramString;
   }
   
   public void a()
@@ -30,7 +30,7 @@ public class GetHotSortVideoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler
  * JD-Core Version:    0.7.0.1
  */

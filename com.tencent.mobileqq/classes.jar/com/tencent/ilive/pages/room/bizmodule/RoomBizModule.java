@@ -126,7 +126,7 @@ public class RoomBizModule
     try
     {
       FragmentActivity localFragmentActivity = (FragmentActivity)this.context;
-      DialogUtil.createOneBtnDialog(localFragmentActivity, null, paramString, localFragmentActivity.getString(2131693798), new RoomBizModule.1(this, localFragmentActivity)).setRightBtnColor(localFragmentActivity.getResources().getColor(2131165273)).show(localFragmentActivity.getSupportFragmentManager(), "");
+      DialogUtil.createOneBtnDialog(localFragmentActivity, null, paramString, localFragmentActivity.getString(2131891373), new RoomBizModule.1(this, localFragmentActivity)).setRightBtnColor(localFragmentActivity.getResources().getColor(2131165499)).show(localFragmentActivity.getSupportFragmentManager(), "");
       return;
     }
     catch (Exception paramString)
@@ -137,7 +137,7 @@ public class RoomBizModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.pages.room.bizmodule.RoomBizModule
  * JD-Core Version:    0.7.0.1
  */

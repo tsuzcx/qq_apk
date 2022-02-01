@@ -24,10 +24,10 @@ class VideoInfoListenerImpl$1
     }
     if (VideoInfoListenerImpl.access$100(this.this$0).a >= 0)
     {
-      if (VideoInfoListenerImpl.access$100(this.this$0).a >= ((VideoPlayerPagerAdapter)VideoInfoListenerImpl.access$000(this.this$0).getAdapter()).a.size()) {
+      if (VideoInfoListenerImpl.access$100(this.this$0).a >= ((VideoPlayerPagerAdapter)VideoInfoListenerImpl.access$000(this.this$0).getAdapter()).d.size()) {
         return;
       }
-      if (((StuffContainerView)VideoInfoListenerImpl.access$000(this.this$0).getStuffContainerView()).a != null)
+      if (((StuffContainerView)VideoInfoListenerImpl.access$000(this.this$0).getStuffContainerView()).c != null)
       {
         if (VideoInfoListenerImpl.access$000(this.this$0).isNeedRepeat())
         {
@@ -45,7 +45,7 @@ class VideoInfoListenerImpl$1
           }
           return;
         }
-        if (VideoInfoListenerImpl.access$100(this.this$0).a == ((VideoPlayerPagerAdapter)VideoInfoListenerImpl.access$000(this.this$0).getAdapter()).a.size() - 1)
+        if (VideoInfoListenerImpl.access$100(this.this$0).a == ((VideoPlayerPagerAdapter)VideoInfoListenerImpl.access$000(this.this$0).getAdapter()).d.size() - 1)
         {
           if ((VideoInfoListenerImpl.access$000(this.this$0).getContext() instanceof Activity)) {
             ((Activity)VideoInfoListenerImpl.access$000(this.this$0).getContext()).finish();
@@ -53,16 +53,16 @@ class VideoInfoListenerImpl$1
           return;
         }
       }
-      VideoData localVideoData = (VideoData)((VideoPlayerPagerAdapter)VideoInfoListenerImpl.access$000(this.this$0).getAdapter()).a.get(VideoInfoListenerImpl.access$100(this.this$0).a);
-      localVideoData.j = 0;
-      localVideoData.c = false;
+      VideoData localVideoData = (VideoData)((VideoPlayerPagerAdapter)VideoInfoListenerImpl.access$000(this.this$0).getAdapter()).d.get(VideoInfoListenerImpl.access$100(this.this$0).a);
+      localVideoData.F = 0;
+      localVideoData.K = false;
       VideoInfoListenerImpl.access$000(this.this$0).setCurrentIndex(VideoInfoListenerImpl.access$000(this.this$0).getCurrentIndex() + 1);
-      if (VideoInfoListenerImpl.access$000(this.this$0).getCurrentIndex() < ((VideoPlayerPagerAdapter)VideoInfoListenerImpl.access$000(this.this$0).getAdapter()).a.size())
+      if (VideoInfoListenerImpl.access$000(this.this$0).getCurrentIndex() < ((VideoPlayerPagerAdapter)VideoInfoListenerImpl.access$000(this.this$0).getAdapter()).d.size())
       {
         ((StuffContainerView)VideoInfoListenerImpl.access$000(this.this$0).getStuffContainerView()).setCurrentItem(VideoInfoListenerImpl.access$000(this.this$0).getCurrentIndex(), true);
         return;
       }
-      if (((BasePlayListDataModel)VideoInfoListenerImpl.access$000(this.this$0).getBasePlayListDataModel()).a()) {
+      if (((BasePlayListDataModel)VideoInfoListenerImpl.access$000(this.this$0).getBasePlayListDataModel()).e()) {
         ((StuffContainerView)VideoInfoListenerImpl.access$000(this.this$0).getStuffContainerView()).d();
       }
     }
@@ -70,7 +70,7 @@ class VideoInfoListenerImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.logic.impl.VideoInfoListenerImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,28 +11,28 @@ import java.util.StringTokenizer;
 
 public abstract class BaseTimAIOTipsProcessor
 {
-  protected int a;
   protected QQAppInterface a;
-  protected ChatMessage a;
-  protected ConfigSetting a;
-  protected String a;
+  protected String b;
+  protected int c;
+  protected ChatMessage d;
+  protected ConfigSetting e;
   
   public BaseTimAIOTipsProcessor(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, ConfigSetting paramConfigSetting)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_JavaLangString = paramChatMessage.frienduin;
-    this.jdField_a_of_type_Int = paramChatMessage.istroop;
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting = paramConfigSetting;
+    this.a = paramQQAppInterface;
+    this.d = paramChatMessage;
+    this.b = paramChatMessage.frienduin;
+    this.c = paramChatMessage.istroop;
+    this.e = paramConfigSetting;
   }
   
   protected abstract String a();
   
   protected abstract void a(BaseTimAIOTipsProcessor.ListResult paramListResult);
   
-  protected boolean a()
+  protected boolean b()
   {
-    Object localObject = TencentDocTipsConfigProcessor.a().c();
+    Object localObject = TencentDocTipsConfigProcessor.a().h();
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       if (QLog.isColorLevel()) {
@@ -59,7 +59,7 @@ public abstract class BaseTimAIOTipsProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.BaseTimAIOTipsProcessor
  * JD-Core Version:    0.7.0.1
  */

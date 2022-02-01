@@ -8,11 +8,6 @@ import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
 public class NearbyVideoUtils
 {
-  public static String a(String paramString)
-  {
-    return ((INearbyVideoUtilsDelegate)QRoute.api(INearbyVideoUtilsDelegate.class)).getVideoThumb(paramString);
-  }
-  
   public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
   {
     ((INearbyVideoUtilsDelegate)QRoute.api(INearbyVideoUtilsDelegate.class)).showPtvPanel(paramActivity, paramAppInterface, paramInt);
@@ -21,11 +16,6 @@ public class NearbyVideoUtils
   public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, boolean paramBoolean)
   {
     ((INearbyVideoUtilsDelegate)QRoute.api(INearbyVideoUtilsDelegate.class)).startPlayerActivity(paramActivity, paramString1, paramString2, paramString3, paramString4, paramInt, paramBoolean);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    ((INearbyVideoUtilsDelegate)QRoute.api(INearbyVideoUtilsDelegate.class)).disableShowGuideDialog(paramQQAppInterface);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -67,10 +57,20 @@ public class NearbyVideoUtils
   {
     return ((INearbyVideoUtilsDelegate)QRoute.api(INearbyVideoUtilsDelegate.class)).isNeedShowGuideDialog(paramQQAppInterface);
   }
+  
+  public static String b(String paramString)
+  {
+    return ((INearbyVideoUtilsDelegate)QRoute.api(INearbyVideoUtilsDelegate.class)).getVideoThumb(paramString);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    ((INearbyVideoUtilsDelegate)QRoute.api(INearbyVideoUtilsDelegate.class)).disableShowGuideDialog(paramQQAppInterface);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.NearbyVideoUtils
  * JD-Core Version:    0.7.0.1
  */

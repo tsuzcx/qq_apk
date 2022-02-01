@@ -64,16 +64,11 @@ import tencent.im.oidb.cmd0xf30.oidb_cmd0xf30.RspRecommendParaArticle;
 public final class RIJFeedsDynamicInsertModule
   extends ReadInJoyEngineModule
 {
-  public static final RIJFeedsDynamicInsertModule.Companion a;
+  public static final RIJFeedsDynamicInsertModule.Companion a = new RIJFeedsDynamicInsertModule.Companion(null);
   @NotNull
-  private final ConcurrentHashMap<Integer, ConcurrentHashMap<String, RIJFeedsInsertArticle>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  private final ConcurrentHashMap<Integer, RIJFeedsDynamicInsertModule.Companion.IFeedsDynamicInsertCallback> b = new ConcurrentHashMap();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsRIJFeedsDynamicInsertModule$Companion = new RIJFeedsDynamicInsertModule.Companion(null);
-  }
+  private final ConcurrentHashMap<Integer, ConcurrentHashMap<String, RIJFeedsInsertArticle>> b = new ConcurrentHashMap();
+  private final AtomicInteger c = new AtomicInteger();
+  private final ConcurrentHashMap<Integer, RIJFeedsDynamicInsertModule.Companion.IFeedsDynamicInsertCallback> d = new ConcurrentHashMap();
   
   public RIJFeedsDynamicInsertModule(@Nullable AppInterface paramAppInterface, @Nullable EntityManager paramEntityManager, @Nullable ExecutorService paramExecutorService, @Nullable ReadInJoyMSFService paramReadInJoyMSFService, @Nullable Handler paramHandler)
   {
@@ -86,7 +81,7 @@ public final class RIJFeedsDynamicInsertModule
     if ((paramRspBody.msg_rsp_channel_article.has()) && (paramRspBody.msg_rsp_channel_article.insert_list.has()))
     {
       PBRepeatMessageField localPBRepeatMessageField = paramRspBody.msg_rsp_channel_article.insert_list;
-      if (RIJPBFieldUtils.a(localPBRepeatMessageField))
+      if (RIJPBFieldUtils.c(localPBRepeatMessageField))
       {
         Intrinsics.checkExpressionValueIsNotNull(localPBRepeatMessageField, "insertArticleList");
         a(localPBRepeatMessageField, localRIJFeedsInsertArticle);
@@ -107,13 +102,6 @@ public final class RIJFeedsDynamicInsertModule
     return localRIJFeedsInsertArticle;
   }
   
-  private final List<Integer> a()
-  {
-    QRouteApi localQRouteApi = QRoute.api(IRIJFastWebRecommendAdService.class);
-    Intrinsics.checkExpressionValueIsNotNull(localQRouteApi, "QRoute.api(IRIJFastWebRe…endAdService::class.java)");
-    return ((IRIJFastWebRecommendAdService)localQRouteApi).getAdPos();
-  }
-  
   private final List<AbsBaseArticleInfo> a(oidb_cmd0xf30.InsertArticle paramInsertArticle)
   {
     boolean bool = paramInsertArticle.rpt_article_list.has();
@@ -128,13 +116,13 @@ public final class RIJFeedsDynamicInsertModule
   {
     if (paramInt != 1)
     {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt))) {
-        ((Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Integer.valueOf(paramInt), new ConcurrentHashMap());
+      if (!this.b.containsKey(Integer.valueOf(paramInt))) {
+        ((Map)this.b).put(Integer.valueOf(paramInt), new ConcurrentHashMap());
       }
-      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.b.get(Integer.valueOf(paramInt));
       if ((localConcurrentHashMap != null) && (!localConcurrentHashMap.containsKey(paramString)))
       {
-        localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+        localConcurrentHashMap = (ConcurrentHashMap)this.b.get(Integer.valueOf(paramInt));
         if (localConcurrentHashMap != null) {
           paramString = (RIJFeedsInsertArticle)localConcurrentHashMap.put(paramString, paramRIJFeedsInsertArticle);
         }
@@ -163,9 +151,9 @@ public final class RIJFeedsDynamicInsertModule
     while (paramList.hasNext())
     {
       paramInsertArticle = (AbsBaseArticleInfo)paramList.next();
-      paramInsertArticle.articleInsertInfo.jdField_a_of_type_Boolean = true;
+      paramInsertArticle.articleInsertInfo.a = true;
       paramInsertArticle.articleInsertInfo.b = bool;
-      paramInsertArticle.articleInsertInfo.jdField_a_of_type_Int = i;
+      paramInsertArticle.articleInsertInfo.c = i;
     }
     paramList = new StringBuilder();
     paramList.append("addCommonInfo! filterAd=");
@@ -222,7 +210,7 @@ public final class RIJFeedsDynamicInsertModule
   
   private final void a(oidb_cmd0xf30.InsertArticle paramInsertArticle, RIJFeedsInsertArticle paramRIJFeedsInsertArticle)
   {
-    if ((paramInsertArticle != null) && (RIJPBFieldUtils.a(paramInsertArticle.actions)))
+    if ((paramInsertArticle != null) && (RIJPBFieldUtils.c(paramInsertArticle.actions)))
     {
       Iterator localIterator = paramInsertArticle.actions.get().iterator();
       while (localIterator.hasNext())
@@ -240,7 +228,7 @@ public final class RIJFeedsDynamicInsertModule
     if (localObject != null) {
       paramReqRecommendPara.req_advertise_para.set((MessageMicro)localObject);
     }
-    localObject = a();
+    localObject = b();
     if (localObject != null) {
       paramReqRecommendPara.rpt_ads_pos.set((List)localObject);
     }
@@ -249,6 +237,13 @@ public final class RIJFeedsDynamicInsertModule
   private final boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     return false;
+  }
+  
+  private final List<Integer> b()
+  {
+    QRouteApi localQRouteApi = QRoute.api(IRIJFastWebRecommendAdService.class);
+    Intrinsics.checkExpressionValueIsNotNull(localQRouteApi, "QRoute.api(IRIJFastWebRe…endAdService::class.java)");
+    return ((IRIJFastWebRecommendAdService)localQRouteApi).getAdPos();
   }
   
   private final List<AbsBaseArticleInfo> b(oidb_cmd0xf30.InsertArticle paramInsertArticle)
@@ -261,7 +256,7 @@ public final class RIJFeedsDynamicInsertModule
   {
     Ref.ObjectRef localObjectRef = new Ref.ObjectRef();
     localObjectRef.element = ((RIJFeedsInsertArticle)null);
-    KotlinUtilKt.a(paramString, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt)), (Function2)new RIJFeedsDynamicInsertModule.getFeedsInsertInfo.1(localObjectRef));
+    KotlinUtilKt.a(paramString, this.b.get(Integer.valueOf(paramInt)), (Function2)new RIJFeedsDynamicInsertModule.getFeedsInsertInfo.1(localObjectRef));
     return (RIJFeedsInsertArticle)localObjectRef.element;
   }
   
@@ -281,7 +276,7 @@ public final class RIJFeedsDynamicInsertModule
     paramInteger.uint32_network_type.set(ArticleInfoModuleUtils.a());
     paramInteger.uint32_os_type.set(2);
     paramInteger.action_type.set(paramActionType.toPBInt());
-    paramInteger.uint32_card_pos.set(RIJFeedsInsertUtil.a.a());
+    paramInteger.uint32_card_pos.set(RIJFeedsInsertUtil.a.f());
     a(paramInteger);
     localReqBody.msg_req_recommend_para.set((MessageMicro)paramInteger);
     paramInteger = ReadInJoyOidbHelper.a("OidbSvc.0xf30", 3888, 0, localReqBody.toByteArray());
@@ -297,27 +292,6 @@ public final class RIJFeedsDynamicInsertModule
     return ((IRIJFastWebRecommendAdService)localQRouteApi).getAdRequestData();
   }
   
-  public final void a(int paramInt, @Nullable String paramString)
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("deleteFeedsDynamicInsertInfo, reqSource: ");
-    ((StringBuilder)localObject1).append(paramInt);
-    ((StringBuilder)localObject1).append(", rowKey:");
-    ((StringBuilder)localObject1).append(paramString);
-    QLog.d("RIJFeedsDynamicInsertModule", 1, ((StringBuilder)localObject1).toString());
-    if (paramString == null) {
-      return;
-    }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    localObject1 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    if (localObject1 != null) {
-      localObject1 = (RIJFeedsInsertArticle)((ConcurrentHashMap)localObject1).get(paramString);
-    } else {
-      localObject1 = null;
-    }
-    KotlinUtilKt.a(paramString, localObject2, localObject1, (Function3)RIJFeedsDynamicInsertModule.deleteFeedsDynamicInsertInfo.1.INSTANCE);
-  }
-  
   public final void a(@Nullable ExposureArticle paramExposureArticle)
   {
     Object localObject1 = new StringBuilder();
@@ -327,7 +301,7 @@ public final class RIJFeedsDynamicInsertModule
     if (paramExposureArticle == null) {
       return;
     }
-    localObject1 = ((Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).entrySet().iterator();
+    localObject1 = ((Map)this.b).entrySet().iterator();
     label55:
     if (((Iterator)localObject1).hasNext())
     {
@@ -408,10 +382,10 @@ public final class RIJFeedsDynamicInsertModule
       ((StringBuilder)localObject).append(", rowKey: ");
       ((StringBuilder)localObject).append(paramFromServiceMsg);
       ((StringBuilder)localObject).append(", handle0xf30, result: ");
-      ((StringBuilder)localObject).append(paramToServiceMsg.b());
+      ((StringBuilder)localObject).append(paramToServiceMsg.c());
       QLog.d("RIJFeedsDynamicInsertModule", 1, ((StringBuilder)localObject).toString());
       KotlinUtilKt.a(paramObject, paramFromServiceMsg, paramToServiceMsg, (Function3)new RIJFeedsDynamicInsertModule.handle0xf30.1(this));
-      paramFromServiceMsg = (RIJFeedsDynamicInsertModule.Companion.IFeedsDynamicInsertCallback)((Map)this.b).get(localInteger);
+      paramFromServiceMsg = (RIJFeedsDynamicInsertModule.Companion.IFeedsDynamicInsertCallback)((Map)this.d).get(localInteger);
       if (paramFromServiceMsg != null)
       {
         paramObject = new StringBuilder();
@@ -421,7 +395,7 @@ public final class RIJFeedsDynamicInsertModule
         paramFromServiceMsg.a(paramToServiceMsg);
       }
     }
-    paramToServiceMsg = (Map)this.b;
+    paramToServiceMsg = (Map)this.d;
     if (paramToServiceMsg != null)
     {
       TypeIntrinsics.asMutableMap(paramToServiceMsg).remove(localInteger);
@@ -445,18 +419,18 @@ public final class RIJFeedsDynamicInsertModule
     ((StringBuilder)localObject).append(", callback: ");
     ((StringBuilder)localObject).append(paramIFeedsDynamicInsertCallback);
     QLog.d("RIJFeedsDynamicInsertModule", 1, ((StringBuilder)localObject).toString());
-    localObject = (Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    localObject = (Map)this.b;
     if (localObject != null)
     {
       if ((((Map)localObject).containsKey(paramInteger)) && (paramString != null))
       {
-        localObject = (ConcurrentHashMap)((Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).get(paramInteger);
+        localObject = (ConcurrentHashMap)((Map)this.b).get(paramInteger);
         if ((localObject != null) && (((ConcurrentHashMap)localObject).containsKey(paramString) == true))
         {
           QLog.d("RIJFeedsDynamicInsertModule", 1, "hasCache, return");
           if (paramIFeedsDynamicInsertCallback != null)
           {
-            paramInteger = (ConcurrentHashMap)((Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).get(paramInteger);
+            paramInteger = (ConcurrentHashMap)((Map)this.b).get(paramInteger);
             if (paramInteger != null) {
               paramInteger = (RIJFeedsInsertArticle)paramInteger.get(paramString);
             } else {
@@ -480,10 +454,31 @@ public final class RIJFeedsDynamicInsertModule
     if (Intrinsics.areEqual(paramExposureArticle.a(), paramAbsBaseArticleInfo.innerUniqueID)) {
       return true;
     }
-    if (paramExposureArticle.a()) {
+    if (paramExposureArticle.b()) {
       return a(paramAbsBaseArticleInfo);
     }
     return false;
+  }
+  
+  public final void b(int paramInt, @Nullable String paramString)
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("deleteFeedsDynamicInsertInfo, reqSource: ");
+    ((StringBuilder)localObject1).append(paramInt);
+    ((StringBuilder)localObject1).append(", rowKey:");
+    ((StringBuilder)localObject1).append(paramString);
+    QLog.d("RIJFeedsDynamicInsertModule", 1, ((StringBuilder)localObject1).toString());
+    if (paramString == null) {
+      return;
+    }
+    Object localObject2 = this.b.get(Integer.valueOf(paramInt));
+    localObject1 = (ConcurrentHashMap)this.b.get(Integer.valueOf(paramInt));
+    if (localObject1 != null) {
+      localObject1 = (RIJFeedsInsertArticle)((ConcurrentHashMap)localObject1).get(paramString);
+    } else {
+      localObject1 = null;
+    }
+    KotlinUtilKt.a(paramString, localObject2, localObject1, (Function3)RIJFeedsDynamicInsertModule.deleteFeedsDynamicInsertInfo.1.INSTANCE);
   }
   
   public void onReceive(@Nullable ToServiceMsg paramToServiceMsg, @Nullable FromServiceMsg paramFromServiceMsg, @Nullable Object paramObject)
@@ -504,12 +499,12 @@ public final class RIJFeedsDynamicInsertModule
   public void unInitialize()
   {
     QLog.d("RIJFeedsDynamicInsertModule", 1, "unInitialize");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.b.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsDynamicInsertModule
  * JD-Core Version:    0.7.0.1
  */

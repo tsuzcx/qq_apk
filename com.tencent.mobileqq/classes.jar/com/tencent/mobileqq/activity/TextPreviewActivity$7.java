@@ -12,20 +12,20 @@ class TextPreviewActivity$7
   
   public void run()
   {
-    Drawable localDrawable = this.this$0.jdField_a_of_type_ComTencentMobileqqVasFontApiIFontManagerService.getFontNameDrawable(this.this$0.e);
+    Drawable localDrawable = this.this$0.D.getFontNameDrawable(this.this$0.F);
     if (localDrawable == null)
     {
-      TextPreviewActivity.a(this.this$0.e, this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+      TextPreviewActivity.a(this.this$0.F, this.this$0.app, this.this$0.ag);
       return;
     }
-    Message localMessage = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(18);
+    Message localMessage = this.this$0.E.obtainMessage(18);
     localMessage.obj = localDrawable;
-    this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.this$0.E.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.7
  * JD-Core Version:    0.7.0.1
  */

@@ -10,30 +10,30 @@ import com.tencent.widget.ListView;
 class DraggableGridView$MovoAnimationListener
   implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private boolean jdField_a_of_type_Boolean;
   private Point b;
+  private Point c;
+  private boolean d;
+  private int e = 0;
   
   public DraggableGridView$MovoAnimationListener(DraggableGridView paramDraggableGridView, Point paramPoint1, Point paramPoint2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramPoint1);
-    this.b = new Point(paramPoint2);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = 0;
+    this.b = new Point(paramPoint1);
+    this.c = new Point(paramPoint2);
+    this.d = paramBoolean;
+    this.e = 0;
     DraggableGridView.b(paramDraggableGridView, true);
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = this.jdField_a_of_type_Int - 1;
-    this.jdField_a_of_type_Int = i;
+    int i = this.e - 1;
+    this.e = i;
     if (i <= 0)
     {
       i = 0;
-      while (i < DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).getChildCount())
+      while (i < DraggableGridView.m(this.a).getChildCount())
       {
-        paramAnimation = DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).getChildAt(i);
+        paramAnimation = DraggableGridView.m(this.a).getChildAt(i);
         if ((paramAnimation instanceof MeasureGridView))
         {
           paramAnimation = (GridView)paramAnimation;
@@ -41,7 +41,7 @@ class DraggableGridView$MovoAnimationListener
           while (j < paramAnimation.getChildCount())
           {
             paramAnimation.getChildAt(j).clearAnimation();
-            if ((((Integer)paramAnimation.getTag()).intValue() == DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y) && (j == DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x) && (!this.jdField_a_of_type_Boolean)) {
+            if ((((Integer)paramAnimation.getTag()).intValue() == DraggableGridView.e(this.a).y) && (j == DraggableGridView.e(this.a).x) && (!this.d)) {
               paramAnimation.getChildAt(j).setVisibility(4);
             } else {
               paramAnimation.getChildAt(j).setVisibility(0);
@@ -51,17 +51,17 @@ class DraggableGridView$MovoAnimationListener
         }
         i += 1;
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.d)
       {
-        DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x);
-        DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).set(-1, -1);
+        DraggableGridView.a(this.a).b(this.b.y, this.b.x);
+        DraggableGridView.e(this.a).set(-1, -1);
       }
       else
       {
-        DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.b.y, this.b.x);
+        DraggableGridView.a(this.a).a(this.b.y, this.b.x, this.c.y, this.c.x);
       }
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
-      DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, false);
+      DraggableGridView.b(this.a).notifyDataSetChanged();
+      DraggableGridView.b(this.a, false);
     }
   }
   
@@ -71,7 +71,7 @@ class DraggableGridView$MovoAnimationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DraggableGridView.MovoAnimationListener
  * JD-Core Version:    0.7.0.1
  */

@@ -49,19 +49,19 @@ class MayknowRecommendManager$1
         QLog.d("MayknowRecommendManager", 2, ((StringBuilder)localObject1).toString());
       }
       this.a.a(???, true);
-      ((FriendListHandler)MayknowRecommendManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(105, true, null);
+      ((FriendListHandler)MayknowRecommendManager.c(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(105, true, null);
       return true;
     case 8: 
       ??? = (String)???.obj;
       this.a.a(???, true);
-      ((FriendListHandler)MayknowRecommendManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(105, true, null);
+      ((FriendListHandler)MayknowRecommendManager.c(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(105, true, null);
       return true;
     case 7: 
-      this.a.f();
+      this.a.j();
       return true;
     case 6: 
       ??? = (String)???.obj;
-      MayknowRecommendManager.a(this.a).delete(RecentRecommendTroopItem.class.getSimpleName(), "uin=?", new String[] { String.valueOf(???) });
+      MayknowRecommendManager.k(this.a).delete(RecentRecommendTroopItem.class.getSimpleName(), "uin=?", new String[] { String.valueOf(???) });
       return true;
     case 5: 
       i = ???.arg1;
@@ -70,17 +70,17 @@ class MayknowRecommendManager$1
       ((StringBuilder)localObject1).append("getMayKnowRecommendRemote, real start, entryType = ");
       ((StringBuilder)localObject1).append(i);
       QLog.i("MayknowRecommendManager", 1, String.format(((StringBuilder)localObject1).toString(), new Object[0]));
-      ((FriendListHandler)MayknowRecommendManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getMayKnowRecommend(null, null, i, ???);
+      ((FriendListHandler)MayknowRecommendManager.c(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getMayKnowRecommend(null, null, i, ???);
       return true;
     case 4: 
       i = ???.arg1;
       j = ???.arg2;
       ??? = (Bundle)???.obj;
       MayknowRecommendManager.b(this.a, j);
-      localObject1 = (byte[])MayknowRecommendManager.a(this.a).get(Integer.valueOf(j));
+      localObject1 = (byte[])MayknowRecommendManager.i(this.a).get(Integer.valueOf(j));
       if ((localObject1 != null) && (localObject1.length > 0))
       {
-        localObject4 = (Boolean)MayknowRecommendManager.b(this.a).get(Integer.valueOf(j));
+        localObject4 = (Boolean)MayknowRecommendManager.j(this.a).get(Integer.valueOf(j));
         if ((localObject4 != null) && (((Boolean)localObject4).booleanValue() == true))
         {
           if (QLog.isColorLevel())
@@ -94,8 +94,8 @@ class MayknowRecommendManager$1
         }
         else
         {
-          MayknowRecommendManager.b(this.a).put(Integer.valueOf(j), Boolean.valueOf(true));
-          ((FriendListHandler)MayknowRecommendManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getConnectionsPerson(i, j, (byte[])localObject1, false, ???);
+          MayknowRecommendManager.j(this.a).put(Integer.valueOf(j), Boolean.valueOf(true));
+          ((FriendListHandler)MayknowRecommendManager.c(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getConnectionsPerson(i, j, (byte[])localObject1, false, ???);
           return true;
         }
       }
@@ -110,34 +110,34 @@ class MayknowRecommendManager$1
       int k = ???.arg2;
       localObject1 = (Bundle)???.obj;
       MayknowRecommendManager.a(this.a, k);
-      synchronized (MayknowRecommendManager.b(this.a))
+      synchronized (MayknowRecommendManager.g(this.a))
       {
-        localObject4 = (ArrayList)MayknowRecommendManager.a(this.a).get(Integer.valueOf(k));
+        localObject4 = (ArrayList)MayknowRecommendManager.h(this.a).get(Integer.valueOf(k));
         if ((localObject4 == null) || (((ArrayList)localObject4).isEmpty())) {
           i = 1;
         }
         if (i == 0) {
-          bool = this.a.b(j);
+          bool = this.a.h(j);
         } else {
           bool = true;
         }
         if (bool)
         {
-          ((FriendListHandler)MayknowRecommendManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getConnectionsPerson(j, k, null, true, (Bundle)localObject1);
+          ((FriendListHandler)MayknowRecommendManager.c(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getConnectionsPerson(j, k, null, true, (Bundle)localObject1);
           return true;
         }
       }
     case 2: 
-      MayknowRecommendManager.a(this.a).removeMessages(2);
-      if (MayknowRecommendManager.a(this.a).mAutomator.a() == 1)
+      MayknowRecommendManager.b(this.a).removeMessages(2);
+      if (MayknowRecommendManager.c(this.a).mAutomator.f() == 1)
       {
-        MayknowRecommendManager.b(this.a);
+        MayknowRecommendManager.d(this.a);
         return true;
       }
-      synchronized (MayknowRecommendManager.a(this.a))
+      synchronized (MayknowRecommendManager.e(this.a))
       {
-        if (!MayknowRecommendManager.a(this.a)) {
-          MayknowRecommendManager.a(this.a).sendEmptyMessageDelayed(2, 5000L);
+        if (!MayknowRecommendManager.f(this.a)) {
+          MayknowRecommendManager.b(this.a).sendEmptyMessageDelayed(2, 5000L);
         }
         return true;
       }
@@ -149,7 +149,7 @@ class MayknowRecommendManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MayknowRecommendManager.1
  * JD-Core Version:    0.7.0.1
  */

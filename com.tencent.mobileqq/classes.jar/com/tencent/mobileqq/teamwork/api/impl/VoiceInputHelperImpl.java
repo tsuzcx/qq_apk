@@ -44,7 +44,7 @@ public final class VoiceInputHelperImpl
       paramWebViewPlugin = paramWebViewPlugin.mRuntime;
       if (paramWebViewPlugin != null)
       {
-        paramWebViewPlugin = paramWebViewPlugin.a();
+        paramWebViewPlugin = paramWebViewPlugin.d();
         if (paramWebViewPlugin != null)
         {
           paramWebViewPlugin = paramWebViewPlugin.getApplicationContext();
@@ -78,7 +78,7 @@ public final class VoiceInputHelperImpl
     if (localObject == null) {
       return null;
     }
-    return ((WebViewPlugin.PluginRuntime)localObject).a();
+    return ((WebViewPlugin.PluginRuntime)localObject).d();
   }
   
   private AppActivity getAppActivity()
@@ -432,7 +432,7 @@ public final class VoiceInputHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.VoiceInputHelperImpl
  * JD-Core Version:    0.7.0.1
  */

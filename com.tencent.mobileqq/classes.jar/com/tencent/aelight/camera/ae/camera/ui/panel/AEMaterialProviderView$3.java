@@ -11,12 +11,12 @@ class AEMaterialProviderView$3
   
   public void run()
   {
-    AEGridView localAEGridView = (AEGridView)AEMaterialProviderView.a(this.this$0).a.get(Integer.valueOf(this.jdField_a_of_type_Int));
+    AEGridView localAEGridView = (AEGridView)AEMaterialProviderView.c(this.this$0).a.get(Integer.valueOf(this.a));
     if (localAEGridView != null)
     {
       AEMaterialAdapter localAEMaterialAdapter = (AEMaterialAdapter)localAEGridView.getAdapter();
-      localAEGridView.a(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.c);
-      localAEMaterialAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData);
+      localAEGridView.a(this.b.p);
+      localAEMaterialAdapter.a(this.b);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -26,7 +26,7 @@ class AEMaterialProviderView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEMaterialProviderView.3
  * JD-Core Version:    0.7.0.1
  */

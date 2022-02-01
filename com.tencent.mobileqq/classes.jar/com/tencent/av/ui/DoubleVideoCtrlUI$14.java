@@ -9,7 +9,7 @@ class DoubleVideoCtrlUI$14
   
   public void run()
   {
-    TraeHelper.a().a(this.a, this.this$0.a, 2131230740, null, 0, null);
+    TraeHelper.a().a(this.a, this.this$0.al, 2131230808, null, 0, null);
   }
 }
 

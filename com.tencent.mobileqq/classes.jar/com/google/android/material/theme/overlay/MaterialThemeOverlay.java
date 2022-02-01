@@ -13,8 +13,8 @@ import com.google.android.material.R.attr;
 
 public class MaterialThemeOverlay
 {
-  private static final int[] a = { 16842752, R.attr.theme };
-  private static final int[] b = { R.attr.C };
+  private static final int[] a = { 16842752, R.attr.ac };
+  private static final int[] b = { R.attr.J };
   
   @StyleRes
   private static int a(@NonNull Context paramContext, AttributeSet paramAttributeSet)
@@ -29,19 +29,10 @@ public class MaterialThemeOverlay
     return i;
   }
   
-  @StyleRes
-  private static int a(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt1, @StyleRes int paramInt2)
-  {
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, b, paramInt1, paramInt2);
-    paramInt1 = paramContext.getResourceId(0, 0);
-    paramContext.recycle();
-    return paramInt1;
-  }
-  
   @NonNull
   public static Context a(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt1, @StyleRes int paramInt2)
   {
-    paramInt2 = a(paramContext, paramAttributeSet, paramInt1, paramInt2);
+    paramInt2 = b(paramContext, paramAttributeSet, paramInt1, paramInt2);
     if (((paramContext instanceof ContextThemeWrapper)) && (((ContextThemeWrapper)paramContext).getThemeResId() == paramInt2)) {
       paramInt1 = 1;
     } else {
@@ -61,10 +52,19 @@ public class MaterialThemeOverlay
     }
     return paramContext;
   }
+  
+  @StyleRes
+  private static int b(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt1, @StyleRes int paramInt2)
+  {
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, b, paramInt1, paramInt2);
+    paramInt1 = paramContext.getResourceId(0, 0);
+    paramContext.recycle();
+    return paramInt1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.theme.overlay.MaterialThemeOverlay
  * JD-Core Version:    0.7.0.1
  */

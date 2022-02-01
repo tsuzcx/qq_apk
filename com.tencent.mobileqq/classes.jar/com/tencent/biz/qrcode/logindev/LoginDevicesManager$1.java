@@ -9,7 +9,7 @@ class LoginDevicesManager$1
   
   public int a(LoginDevItem paramLoginDevItem1, LoginDevItem paramLoginDevItem2)
   {
-    if (paramLoginDevItem1.d > paramLoginDevItem2.d) {
+    if (paramLoginDevItem1.h > paramLoginDevItem2.h) {
       return 1;
     }
     return -1;

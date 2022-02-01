@@ -35,7 +35,7 @@ public class TextSelectableHelper
       return;
     }
     SelectableDelegate localSelectableDelegate = localSelectableComponent.delegate();
-    if ((localSelectableDelegate != null) && (localSelectableDelegate.b()) && (!localSelectableComponent.hasSelected()))
+    if ((localSelectableDelegate != null) && (localSelectableDelegate.k()) && (!localSelectableComponent.hasSelected()))
     {
       int i = this.a;
       if (i == 2)
@@ -51,8 +51,8 @@ public class TextSelectableHelper
       else
       {
         paramView = paramView.getResources();
-        i = paramView.getColorStateList(2131167031).getDefaultColor();
-        int j = paramView.getColorStateList(2131167033).getDefaultColor();
+        i = paramView.getColorStateList(2131167967).getDefaultColor();
+        int j = paramView.getColorStateList(2131167969).getDefaultColor();
         localSelectableDelegate.c(i);
         localSelectableDelegate.b(j);
         if (QLog.isColorLevel())
@@ -72,7 +72,7 @@ public class TextSelectableHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.TextSelectableHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 
 public class WifiManagerDelegate
 {
@@ -23,7 +24,7 @@ public class WifiManagerDelegate
   {
     try
     {
-      localWifiInfo = this.mWifiManager.getConnectionInfo();
+      localWifiInfo = NetworkMonitor.getConnectionInfo(this.mWifiManager);
       return localWifiInfo;
     }
     catch (NullPointerException localNullPointerException1)
@@ -35,7 +36,7 @@ public class WifiManagerDelegate
     }
     try
     {
-      localWifiInfo = this.mWifiManager.getConnectionInfo();
+      localWifiInfo = NetworkMonitor.getConnectionInfo(this.mWifiManager);
       return localWifiInfo;
     }
     catch (NullPointerException localNullPointerException2)
@@ -98,7 +99,7 @@ public class WifiManagerDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.net.WifiManagerDelegate
  * JD-Core Version:    0.7.0.1
  */

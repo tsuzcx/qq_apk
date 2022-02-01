@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.search.base.widget.RoundRelativeLayout android:gravity="center_horizontal" android:id="@id/o6k" android:background="@drawable/e74" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="7.0dip">
+    <com.tencent.mobileqq.search.base.widget.RoundRelativeLayout android:gravity="center_horizontal" android:id="@id/q04" android:background="@drawable/er5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="7.0dip">
         <include android:id="@id/ddu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" layout="@layout/a0k" />
         <TextView android:textSize="15.0dip" android:textColor="@color/skin_unite_search_text_black_000000_6991b8" android:ellipsize="end" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:maxLines="2" android:minLines="2" android:layout_below="@id/ddu" android:layout_alignLeft="@id/ddu" android:layout_alignRight="@id/ddu" />
         <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:layout_below="@id/title" android:layout_alignLeft="@id/ddu" android:layout_alignRight="@id/ddu">

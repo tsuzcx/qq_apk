@@ -29,11 +29,11 @@ public class MixSearchApiPlugin
       if (!"MixSearchWeb".equals(paramString2)) {
         return false;
       }
-      if (("setSearchBarWord".equals(paramString3)) && ((this.mRuntime.a() instanceof MixSearchWebFragment))) {
+      if (("setSearchBarWord".equals(paramString3)) && ((this.mRuntime.f() instanceof MixSearchWebFragment))) {
         try
         {
           paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          ((MixSearchWebFragment)this.mRuntime.a()).a(paramJsBridgeListener.optString("searchWord"), paramJsBridgeListener.optString("placeholder"));
+          ((MixSearchWebFragment)this.mRuntime.f()).a(paramJsBridgeListener.optString("searchWord"), paramJsBridgeListener.optString("placeholder"));
           return true;
         }
         catch (JSONException paramJsBridgeListener)
@@ -51,7 +51,7 @@ public class MixSearchApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.MixSearchApiPlugin
  * JD-Core Version:    0.7.0.1
  */

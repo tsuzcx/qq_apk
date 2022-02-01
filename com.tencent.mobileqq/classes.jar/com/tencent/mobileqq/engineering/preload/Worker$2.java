@@ -9,7 +9,7 @@ class Worker$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEngineeringPreloadInterOnTaskListener.onComplete(this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.a.onComplete(this.b);
     if (this.this$0.mBasePreLoadTask.mIsOnlyRunOnce) {
       PreLoader.remove(Worker.access$000(this.this$0));
     }
@@ -17,7 +17,7 @@ class Worker$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.engineering.preload.Worker.2
  * JD-Core Version:    0.7.0.1
  */

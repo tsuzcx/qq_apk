@@ -8,15 +8,15 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class GLThreadManager
 {
-  private static String jdField_a_of_type_JavaLangString = "[ApolloGL][GLThreadManager]";
-  private static volatile int jdField_b_of_type_Int = 0;
-  private static volatile boolean e = false;
-  private int jdField_a_of_type_Int;
-  private GLThread jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThread;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private static String a = "[ApolloGL][GLThreadManager]";
+  private static volatile int h = 0;
+  private static volatile boolean i = false;
+  private boolean b;
+  private int c;
   private boolean d;
+  private boolean e;
+  private boolean f;
+  private GLThread g;
   
   @SuppressLint({"UseValueOf"})
   private static Integer a(Context paramContext, String paramString, int paramInt)
@@ -39,34 +39,15 @@ public class GLThreadManager
     return Integer.valueOf(paramInt);
   }
   
-  private void a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Int = jdField_b_of_type_Int;
-      if (this.jdField_a_of_type_Int >= 131072) {
-        this.c = true;
-      }
-      String str = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("checkGLESVersion mGLESVersion = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      localStringBuilder.append(", mMultipleGLESContextsAllowed = ");
-      localStringBuilder.append(this.c);
-      QLog.w(str, 1, localStringBuilder.toString());
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
   public static void a(Context paramContext)
   {
     try
     {
-      boolean bool = e;
+      boolean bool = i;
       if (bool) {
         return;
       }
-      e = true;
+      i = true;
       new Thread(new GLThreadManager.1(paramContext)).start();
       return;
     }
@@ -77,13 +58,13 @@ public class GLThreadManager
   {
     try
     {
-      if (jdField_b_of_type_Int == 0)
+      if (h == 0)
       {
-        jdField_b_of_type_Int = a(paramContext, "ro.opengles.version", 0).intValue();
-        paramContext = jdField_a_of_type_JavaLangString;
+        h = a(paramContext, "ro.opengles.version", 0).intValue();
+        paramContext = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("checkGLVersion sGLESVersion:");
-        localStringBuilder.append(jdField_b_of_type_Int);
+        localStringBuilder.append(h);
         QLog.i(paramContext, 1, localStringBuilder.toString());
       }
       return;
@@ -95,13 +76,32 @@ public class GLThreadManager
     }
   }
   
+  private void c()
+  {
+    if (!this.b)
+    {
+      this.c = h;
+      if (this.c >= 131072) {
+        this.e = true;
+      }
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkGLESVersion mGLESVersion = ");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(", mMultipleGLESContextsAllowed = ");
+      localStringBuilder.append(this.e);
+      QLog.w(str, 1, localStringBuilder.toString());
+      this.b = true;
+    }
+  }
+  
   public void a(GLThread paramGLThread)
   {
     try
     {
-      paramGLThread.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThread == paramGLThread) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThread = null;
+      paramGLThread.a = true;
+      if (this.g == paramGLThread) {
+        this.g = null;
       }
       notifyAll();
       return;
@@ -115,38 +115,38 @@ public class GLThreadManager
     {
       try
       {
-        if (!this.jdField_b_of_type_Boolean)
+        if (!this.d)
         {
-          a();
+          c();
           paramGL10 = paramGL10.glGetString(7937);
-          int i = this.jdField_a_of_type_Int;
+          int j = this.c;
           boolean bool2 = false;
-          if (i < 131072)
+          if (j < 131072)
           {
             if (!paramGL10.startsWith("Q3Dimension MSM7500 "))
             {
               bool1 = true;
-              this.c = bool1;
+              this.e = bool1;
               notifyAll();
             }
           }
           else
           {
             bool1 = bool2;
-            if (!this.c) {
+            if (!this.e) {
               bool1 = true;
             }
-            this.d = bool1;
-            String str = jdField_a_of_type_JavaLangString;
+            this.f = bool1;
+            String str = a;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("checkGLDriver renderer = \"");
             localStringBuilder.append(paramGL10);
             localStringBuilder.append("\" multipleContextsAllowed = ");
-            localStringBuilder.append(this.c);
+            localStringBuilder.append(this.e);
             localStringBuilder.append(" mLimitedGLESContexts = ");
-            localStringBuilder.append(this.d);
+            localStringBuilder.append(this.f);
             QLog.w(str, 1, localStringBuilder.toString());
-            this.jdField_b_of_type_Boolean = true;
+            this.d = true;
           }
         }
         else
@@ -163,7 +163,7 @@ public class GLThreadManager
   {
     try
     {
-      boolean bool = this.d;
+      boolean bool = this.f;
       return bool;
     }
     finally
@@ -173,40 +173,12 @@ public class GLThreadManager
     }
   }
   
-  public boolean a(GLThread paramGLThread)
-  {
-    GLThread localGLThread = this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThread;
-    if ((localGLThread != paramGLThread) && (localGLThread != null))
-    {
-      a();
-      if (this.c) {
-        return true;
-      }
-      paramGLThread = this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThread;
-      if (paramGLThread != null) {
-        paramGLThread.g();
-      }
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThread = paramGLThread;
-    notifyAll();
-    return true;
-  }
-  
-  public void b(GLThread paramGLThread)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThread == paramGLThread) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThread = null;
-    }
-    notifyAll();
-  }
-  
   public boolean b()
   {
     try
     {
-      a();
-      boolean bool = this.c;
+      c();
+      boolean bool = this.e;
       return bool ^ true;
     }
     finally
@@ -215,10 +187,38 @@ public class GLThreadManager
       throw localObject;
     }
   }
+  
+  public boolean b(GLThread paramGLThread)
+  {
+    GLThread localGLThread = this.g;
+    if ((localGLThread != paramGLThread) && (localGLThread != null))
+    {
+      c();
+      if (this.e) {
+        return true;
+      }
+      paramGLThread = this.g;
+      if (paramGLThread != null) {
+        paramGLThread.i();
+      }
+      return false;
+    }
+    this.g = paramGLThread;
+    notifyAll();
+    return true;
+  }
+  
+  public void c(GLThread paramGLThread)
+  {
+    if (this.g == paramGLThread) {
+      this.g = null;
+    }
+    notifyAll();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.opengl.GLThreadManager
  * JD-Core Version:    0.7.0.1
  */

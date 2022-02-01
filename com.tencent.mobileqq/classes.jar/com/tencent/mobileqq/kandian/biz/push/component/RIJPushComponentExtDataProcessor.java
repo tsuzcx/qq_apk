@@ -27,7 +27,7 @@ public final class RIJPushComponentExtDataProcessor
     {
       str = paramMsgBody.articleIds.get();
       Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.articleIds.get()");
-      localRIJPushComponentExtData.jdField_a_of_type_JavaLangString = str;
+      localRIJPushComponentExtData.a = str;
     }
     if (paramMsgBody.foldStatus.has())
     {
@@ -57,7 +57,7 @@ public final class RIJPushComponentExtDataProcessor
     {
       paramMsgBody = paramMsgBody.pushExtData.get().toByteArray();
       Intrinsics.checkExpressionValueIsNotNull(paramMsgBody, "msgBody.pushExtData.get().toByteArray()");
-      localRIJPushComponentExtData.jdField_a_of_type_ArrayOfByte = paramMsgBody;
+      localRIJPushComponentExtData.f = paramMsgBody;
     }
     return localRIJPushComponentExtData;
   }
@@ -84,7 +84,21 @@ public final class RIJPushComponentExtDataProcessor
   }
   
   @NotNull
-  public final JSONObject a(@NotNull String paramString)
+  public final JSONObject a(@NotNull String paramString1, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "pushExtraData");
+    Intrinsics.checkParameterIsNotNull(paramString2, "brief");
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("brief", paramString2);
+    if (TextUtils.isEmpty((CharSequence)paramString1)) {
+      return localJSONObject;
+    }
+    localJSONObject.put("orangeWord", new JSONObject(paramString1).optString("orangeWord", ""));
+    return localJSONObject;
+  }
+  
+  @NotNull
+  public final JSONObject b(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "pushExtraData");
     JSONObject localJSONObject = new JSONObject();
@@ -99,24 +113,10 @@ public final class RIJPushComponentExtDataProcessor
     localJSONObject.put("article_id", paramString.optString("article_id", ""));
     return localJSONObject;
   }
-  
-  @NotNull
-  public final JSONObject a(@NotNull String paramString1, @NotNull String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "pushExtraData");
-    Intrinsics.checkParameterIsNotNull(paramString2, "brief");
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("brief", paramString2);
-    if (TextUtils.isEmpty((CharSequence)paramString1)) {
-      return localJSONObject;
-    }
-    localJSONObject.put("orangeWord", new JSONObject(paramString1).optString("orangeWord", ""));
-    return localJSONObject;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.component.RIJPushComponentExtDataProcessor
  * JD-Core Version:    0.7.0.1
  */

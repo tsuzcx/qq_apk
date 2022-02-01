@@ -25,18 +25,18 @@ public class MemoriesPlaceHolderSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramInt = UIUtils.d(this.a);
-    int i = UIUtils.e(this.a);
+    paramInt = UIUtils.e(this.l);
+    int i = UIUtils.f(this.l);
     paramBaseViewHolder.a().getLayoutParams().height = (paramInt - i);
     return paramBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2131561707, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.l).inflate(2131628086, paramViewGroup, false));
   }
   
-  public String a()
+  public String b()
   {
     return "MemoriesPlaceHolderSegment";
   }

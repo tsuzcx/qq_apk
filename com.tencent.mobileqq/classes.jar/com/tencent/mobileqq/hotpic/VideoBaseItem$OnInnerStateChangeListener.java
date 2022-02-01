@@ -10,11 +10,11 @@ public abstract interface VideoBaseItem$OnInnerStateChangeListener
   
   public abstract void d(boolean paramBoolean);
   
-  public abstract void j();
+  public abstract void l();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener
  * JD-Core Version:    0.7.0.1
  */

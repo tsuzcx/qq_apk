@@ -53,13 +53,13 @@ public final class RIJUGCPublisherChecker
     return false;
   }
   
-  public int a()
+  public int b()
   {
-    int i = super.a();
+    int i = super.b();
     if (i != 0) {
       return i;
     }
-    Object localObject = a().getVideoInfo();
+    Object localObject = d().getVideoInfo();
     int k = 1;
     if (localObject != null) {
       i = 1;
@@ -67,7 +67,7 @@ public final class RIJUGCPublisherChecker
       i = 0;
     }
     int j;
-    if (((CharSequence)a().getContent()).length() == 0) {
+    if (((CharSequence)d().getContent()).length() == 0) {
       j = 1;
     } else {
       j = 0;
@@ -78,10 +78,10 @@ public final class RIJUGCPublisherChecker
     if ((i == 0) && (j == 0)) {
       return 8;
     }
-    localObject = a();
-    if ((localObject != null) && (((GlobalPublisherConfig)localObject).getShowDeliverToKDCommunity() == true))
+    localObject = e();
+    if ((localObject != null) && (((GlobalPublisherConfig)localObject).getShowCommunitySelector() == true))
     {
-      if (((CharSequence)a().getCommunityId()).length() == 0) {
+      if (((CharSequence)d().getCommunityId()).length() == 0) {
         i = k;
       } else {
         i = 0;
@@ -93,14 +93,14 @@ public final class RIJUGCPublisherChecker
     return 0;
   }
   
-  public boolean a()
+  public boolean c()
   {
-    return (super.a()) && (!a(a()));
+    return (super.c()) && (!a(d()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.publishChecker.RIJUGCPublisherChecker
  * JD-Core Version:    0.7.0.1
  */

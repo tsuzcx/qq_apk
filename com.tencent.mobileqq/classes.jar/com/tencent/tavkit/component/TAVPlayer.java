@@ -5,7 +5,6 @@ import android.media.AudioManager;
 import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
@@ -23,14 +22,15 @@ import com.tencent.tav.player.PlayerLayer;
 import com.tencent.tavkit.composition.TAVComposition;
 import com.tencent.tavkit.composition.TAVSource;
 import com.tencent.tavkit.composition.builder.TAVCompositionBuilder;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class TAVPlayer
 {
-  public static final int VIDEO_PLAYER_HEIGHT = 960;
-  public static final int VIDEO_PLAYER_WIDTH = 540;
-  private final String TAG;
-  private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
+  public static final int MAX_CACHE_FRAME_SIZE = 20;
+  private final AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
   private AudioManager audioManager;
+  private boolean audioRevertMode;
   private boolean audioTracksMerge;
   private int bgColor;
   private OnCompositionUpdateListener compositionUpdateListener;
@@ -41,75 +41,91 @@ public class TAVPlayer
   private boolean loopPlay;
   @Nullable
   private FrameLayout mPlayerLayout;
+  private final String mTAG;
+  private int maxCacheFrameSize;
   private CMTimeRange playRange;
   private Player player;
   private IPlayer.PlayerListener playerListener;
   private CMTime position;
   private TAVPlayer.PostUpdateThread postUpdateThread;
   private float rate;
+  private final Queue<Runnable> runInPlayerTreadEvents;
   private Surface surface;
   private int surfaceHeight;
   private int surfaceWidth;
   private TAVComposition tavComposition;
+  private boolean videoRevertMode;
   private boolean videoTracksMerge;
   private float volume;
   
   public TAVPlayer()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("GameTemplatePlayer@");
+    localStringBuilder.append("TAVPlayer@");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    this.TAG = localStringBuilder.toString();
+    this.mTAG = localStringBuilder.toString();
     this.isAllowInterrupt = true;
     this.isAutoPlay = true;
+    this.audioFocusChangeListener = new TAVPlayer.1(this);
     this.loopPlay = false;
     this.volume = 1.0F;
     this.position = CMTime.CMTimeZero;
     this.videoTracksMerge = true;
     this.audioTracksMerge = true;
     this.rate = 1.0F;
+    this.audioRevertMode = false;
+    this.videoRevertMode = false;
     this.bgColor = -16777216;
     this.isResetting = false;
-    this.audioFocusChangeListener = new TAVPlayer.4(this);
+    this.maxCacheFrameSize = 20;
+    this.runInPlayerTreadEvents = new LinkedList();
   }
   
   public TAVPlayer(Surface paramSurface, int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("GameTemplatePlayer@");
+    localStringBuilder.append("TAVPlayer@");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    this.TAG = localStringBuilder.toString();
+    this.mTAG = localStringBuilder.toString();
     this.isAllowInterrupt = true;
     this.isAutoPlay = true;
+    this.audioFocusChangeListener = new TAVPlayer.1(this);
     this.loopPlay = false;
     this.volume = 1.0F;
     this.position = CMTime.CMTimeZero;
     this.videoTracksMerge = true;
     this.audioTracksMerge = true;
     this.rate = 1.0F;
+    this.audioRevertMode = false;
+    this.videoRevertMode = false;
     this.bgColor = -16777216;
     this.isResetting = false;
-    this.audioFocusChangeListener = new TAVPlayer.4(this);
+    this.maxCacheFrameSize = 20;
+    this.runInPlayerTreadEvents = new LinkedList();
     onSurfaceCreate(paramSurface, paramInt1, paramInt2);
   }
   
   public TAVPlayer(FrameLayout paramFrameLayout)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("GameTemplatePlayer@");
+    localStringBuilder.append("TAVPlayer@");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    this.TAG = localStringBuilder.toString();
+    this.mTAG = localStringBuilder.toString();
     this.isAllowInterrupt = true;
     this.isAutoPlay = true;
+    this.audioFocusChangeListener = new TAVPlayer.1(this);
     this.loopPlay = false;
     this.volume = 1.0F;
     this.position = CMTime.CMTimeZero;
     this.videoTracksMerge = true;
     this.audioTracksMerge = true;
     this.rate = 1.0F;
+    this.audioRevertMode = false;
+    this.videoRevertMode = false;
     this.bgColor = -16777216;
     this.isResetting = false;
-    this.audioFocusChangeListener = new TAVPlayer.4(this);
+    this.maxCacheFrameSize = 20;
+    this.runInPlayerTreadEvents = new LinkedList();
     this.context = paramFrameLayout.getContext();
     this.mPlayerLayout = paramFrameLayout;
     initContentView();
@@ -127,7 +143,7 @@ public class TAVPlayer
   @NonNull
   private PlayerItem buildPlayerItem(TAVComposition paramTAVComposition)
   {
-    Object localObject = this.TAG;
+    Object localObject = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("buildPlayerItem() called with: tavComposition = [");
     localStringBuilder.append(paramTAVComposition);
@@ -153,13 +169,13 @@ public class TAVPlayer
     localObject = new TextureView(this.context);
     ((TextureView)localObject).setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
     this.mPlayerLayout.addView((View)localObject);
-    ((TextureView)localObject).setSurfaceTextureListener(new TAVPlayer.1(this));
+    ((TextureView)localObject).setSurfaceTextureListener(new TAVPlayer.2(this));
   }
   
   @NonNull
   private Player newPlayer(PlayerItem paramPlayerItem, CMTime paramCMTime, boolean paramBoolean)
   {
-    String str = this.TAG;
+    String str = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("newPlayer() called with: playerItem = [");
     localStringBuilder.append(paramPlayerItem);
@@ -169,14 +185,13 @@ public class TAVPlayer
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append("]");
     Logger.d(str, localStringBuilder.toString());
-    Log.d(this.TAG, "newVersion, onSurfaceTextureAvailable: use surfaceTexture");
     paramPlayerItem = new Player(paramPlayerItem);
     paramPlayerItem.setPlayerListener(this.playerListener);
-    paramPlayerItem.setLoop(this.loopPlay);
-    paramPlayerItem.setRate(this.rate);
+    paramPlayerItem.setLoop(isLoopPlay());
+    paramPlayerItem.setRate(this.rate, this.maxCacheFrameSize);
     paramPlayerItem.setBgColor(this.bgColor);
     paramPlayerItem.setPlayRange(this.playRange);
-    paramPlayerItem.setVolume(this.volume);
+    paramPlayerItem.setVolume(getVolume());
     paramPlayerItem.seekToTime(paramCMTime);
     new PlayerLayer(this.surface, this.surfaceWidth, this.surfaceHeight).setPlayer(paramPlayerItem);
     if ((paramBoolean) && (requestAudioFocus())) {
@@ -202,9 +217,28 @@ public class TAVPlayer
     return this.audioManager.requestAudioFocus(this.audioFocusChangeListener, 3, 1) == 1;
   }
   
+  private void runEventsToPlayerThread()
+  {
+    try
+    {
+      while (!this.runInPlayerTreadEvents.isEmpty()) {
+        this.player.post((Runnable)this.runInPlayerTreadEvents.poll());
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+    }
+    for (;;)
+    {
+      throw localObject;
+    }
+  }
+  
   private void setPlayerListener(IPlayer.PlayerListener paramPlayerListener)
   {
-    Object localObject = this.TAG;
+    Object localObject = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setPlayerListener() called with: playerListener = [");
     localStringBuilder.append(paramPlayerListener);
@@ -216,6 +250,18 @@ public class TAVPlayer
     if (localObject != null) {
       ((Player)localObject).setPlayerListener(paramPlayerListener);
     }
+  }
+  
+  private void updateComposition(CMTime paramCMTime, boolean paramBoolean, OnCompositionUpdateListener paramOnCompositionUpdateListener, PlayerItem paramPlayerItem)
+  {
+    Player localPlayer = this.player;
+    if ((localPlayer != null) && (!localPlayer.isReleased()))
+    {
+      this.player.update(paramPlayerItem, paramCMTime, new TAVPlayer.4(this, paramCMTime, paramBoolean, paramOnCompositionUpdateListener));
+      return;
+    }
+    this.player = newPlayer(paramPlayerItem, paramCMTime, paramBoolean);
+    runEventsToPlayerThread();
   }
   
   public IPlayer.PlayerStatus getCurrentStatus()
@@ -248,6 +294,20 @@ public class TAVPlayer
     finally {}
   }
   
+  public CMTimeRange getPlayRange()
+  {
+    try
+    {
+      CMTimeRange localCMTimeRange = this.playRange;
+      return localCMTimeRange;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   public CMTime getPosition()
   {
     try
@@ -269,6 +329,20 @@ public class TAVPlayer
     {
       float f = this.volume;
       return f;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public boolean isLoopPlay()
+  {
+    try
+    {
+      boolean bool = this.loopPlay;
+      return bool;
     }
     finally
     {
@@ -331,7 +405,7 @@ public class TAVPlayer
   {
     try
     {
-      String str = this.TAG;
+      String str = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("pause: player = ");
       localStringBuilder.append(this.player);
@@ -354,7 +428,7 @@ public class TAVPlayer
   {
     try
     {
-      String str = this.TAG;
+      String str = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("play: player = ");
       localStringBuilder.append(this.player);
@@ -367,6 +441,20 @@ public class TAVPlayer
       }
       else {
         this.isAutoPlay = true;
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void post(Runnable paramRunnable)
+  {
+    try
+    {
+      if (this.player != null) {
+        this.player.post(paramRunnable);
+      } else {
+        this.runInPlayerTreadEvents.add(paramRunnable);
       }
       return;
     }
@@ -402,11 +490,25 @@ public class TAVPlayer
     }
   }
   
+  public void refresh()
+  {
+    try
+    {
+      Player localPlayer = this.player;
+      if (localPlayer == null) {
+        return;
+      }
+      this.player.refresh();
+      return;
+    }
+    finally {}
+  }
+  
   public void release()
   {
     try
     {
-      String str = this.TAG;
+      String str = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("release: player = ");
       localStringBuilder.append(this.player);
@@ -433,7 +535,7 @@ public class TAVPlayer
   {
     try
     {
-      Log.d(this.TAG, "reset() called");
+      Logger.d(this.mTAG, "reset() called");
       this.isResetting = true;
       initContentView();
       return;
@@ -447,7 +549,7 @@ public class TAVPlayer
   
   public void seekToTime(CMTime paramCMTime)
   {
-    Object localObject = this.TAG;
+    Object localObject = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("seekToTime() called with: cmTime = [");
     localStringBuilder.append(paramCMTime);
@@ -463,6 +565,15 @@ public class TAVPlayer
   public void setAllowInterrupt(boolean paramBoolean)
   {
     this.isAllowInterrupt = paramBoolean;
+  }
+  
+  public void setAudioRevertMode(boolean paramBoolean)
+  {
+    this.audioRevertMode = paramBoolean;
+    Player localPlayer = this.player;
+    if (localPlayer != null) {
+      localPlayer.setAudioRevertMode(paramBoolean);
+    }
   }
   
   public void setAudioTracksMerge(boolean paramBoolean)
@@ -497,7 +608,7 @@ public class TAVPlayer
   {
     try
     {
-      String str = this.TAG;
+      String str = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setLoopPlay() called with: loopPlay = [");
       localStringBuilder.append(paramBoolean);
@@ -521,7 +632,7 @@ public class TAVPlayer
   {
     try
     {
-      String str = this.TAG;
+      String str = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setPlayRange() called with: playRange = [");
       localStringBuilder.append(paramCMTimeRange);
@@ -543,37 +654,54 @@ public class TAVPlayer
   
   public void setPlayerListener(TAVPlayer.PlayerListener paramPlayerListener)
   {
-    String str = this.TAG;
+    String str = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setPlayerListener() called with: playerListener = [");
     localStringBuilder.append(paramPlayerListener);
     localStringBuilder.append("],player = ");
     localStringBuilder.append(this.player);
     Logger.d(str, localStringBuilder.toString());
-    setPlayerListener(new TAVPlayer.2(this, paramPlayerListener));
+    setPlayerListener(new TAVPlayer.3(this, paramPlayerListener));
   }
   
   public void setRate(float paramFloat)
   {
     try
     {
-      String str = this.TAG;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setLoopPlay() called with: loopPlay = [");
-      localStringBuilder.append(this.loopPlay);
-      localStringBuilder.append("],player = ");
-      localStringBuilder.append(this.player);
-      Logger.d(str, localStringBuilder.toString());
-      this.rate = paramFloat;
-      if (this.player != null) {
-        this.player.setRate(paramFloat);
-      }
+      setRate(paramFloat, 20);
       return;
     }
     finally
     {
       localObject = finally;
       throw localObject;
+    }
+  }
+  
+  public void setRate(float paramFloat, int paramInt)
+  {
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setRate() called with: rate = [");
+    localStringBuilder.append(paramFloat);
+    localStringBuilder.append("], maxCacheFrameSize = [");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    Logger.d((String)localObject, localStringBuilder.toString());
+    this.rate = paramFloat;
+    this.maxCacheFrameSize = paramInt;
+    localObject = this.player;
+    if (localObject != null) {
+      ((Player)localObject).setRate(paramFloat, paramInt);
+    }
+  }
+  
+  public void setVideoRevertMode(boolean paramBoolean)
+  {
+    this.videoRevertMode = paramBoolean;
+    Player localPlayer = this.player;
+    if (localPlayer != null) {
+      localPlayer.setVideoRevertMode(paramBoolean);
     }
   }
   
@@ -586,7 +714,7 @@ public class TAVPlayer
   {
     try
     {
-      String str = this.TAG;
+      String str = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setVolume() called with: volume = [");
       localStringBuilder.append(paramFloat);
@@ -610,7 +738,7 @@ public class TAVPlayer
   {
     try
     {
-      Logger.d(this.TAG, "stop() called");
+      Logger.d(this.mTAG, "stop() called");
       if (this.player != null)
       {
         abandonAudioFocus();
@@ -632,7 +760,7 @@ public class TAVPlayer
   
   public void updateComposition(TAVComposition paramTAVComposition, CMTime paramCMTime, boolean paramBoolean, OnCompositionUpdateListener paramOnCompositionUpdateListener)
   {
-    Object localObject = this.TAG;
+    String str = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("updateComposition() called with: tavComposition = [");
     localStringBuilder.append(paramTAVComposition);
@@ -641,7 +769,7 @@ public class TAVPlayer
     localStringBuilder.append("], autoPlay = [");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append("]");
-    Logger.d((String)localObject, localStringBuilder.toString());
+    Logger.d(str, localStringBuilder.toString());
     this.tavComposition = paramTAVComposition;
     this.position = paramCMTime;
     this.compositionUpdateListener = paramOnCompositionUpdateListener;
@@ -657,18 +785,10 @@ public class TAVPlayer
       return;
     }
     paramTAVComposition = buildPlayerItem(paramTAVComposition);
-    localObject = this.player;
-    if ((localObject != null) && (!((Player)localObject).isReleased()))
-    {
-      localObject = this.player;
-      if (paramOnCompositionUpdateListener == null) {
-        paramOnCompositionUpdateListener = new TAVPlayer.3(this, paramCMTime, paramBoolean);
-      }
-      ((Player)localObject).update(paramTAVComposition, paramCMTime, paramOnCompositionUpdateListener);
-      this.compositionUpdateListener = null;
-      return;
-    }
-    this.player = newPlayer(paramTAVComposition, paramCMTime, paramBoolean);
+    paramTAVComposition.setRate(this.rate, this.maxCacheFrameSize);
+    paramTAVComposition.setAudioRevertMode(this.audioRevertMode);
+    paramTAVComposition.setVideoRevertMode(this.videoRevertMode);
+    updateComposition(paramCMTime, paramBoolean, paramOnCompositionUpdateListener, paramTAVComposition);
   }
   
   public void updateComposition(TAVComposition paramTAVComposition, boolean paramBoolean)
@@ -678,7 +798,7 @@ public class TAVPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVPlayer
  * JD-Core Version:    0.7.0.1
  */

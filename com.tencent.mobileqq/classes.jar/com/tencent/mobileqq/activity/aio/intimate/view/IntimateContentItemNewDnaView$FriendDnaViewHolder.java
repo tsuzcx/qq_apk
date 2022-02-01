@@ -18,26 +18,26 @@ class IntimateContentItemNewDnaView$FriendDnaViewHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener, View.OnTouchListener
 {
-  public LinearLayout a;
   public RelativeLayout a;
-  public TextView a;
-  public RoundRectImageView a;
+  public TextView b;
+  public LinearLayout c;
+  public RoundRectImageView d;
   
   public IntimateContentItemNewDnaView$FriendDnaViewHolder(IntimateContentItemNewDnaView paramIntimateContentItemNewDnaView, @NonNull View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369011));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367306));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367303));
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView = ((RoundRectImageView)paramView.findViewById(2131369014));
+    this.a = ((RelativeLayout)paramView.findViewById(2131435971));
+    this.b = ((TextView)paramView.findViewById(2131433763));
+    this.c = ((LinearLayout)paramView.findViewById(2131433760));
+    this.d = ((RoundRectImageView)paramView.findViewById(2131435974));
     paramView.setOnClickListener(this);
     paramView.setOnTouchListener(this);
   }
   
   public void onClick(View paramView)
   {
-    if (IntimateContentItemNewDnaView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView) != null) {
-      IntimateContentItemNewDnaView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView).a(paramView, getLayoutPosition(), (NewDnaInfo)this.itemView.getTag());
+    if (IntimateContentItemNewDnaView.b(this.e) != null) {
+      IntimateContentItemNewDnaView.c(this.e).a(paramView, getLayoutPosition(), (NewDnaInfo)this.itemView.getTag());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -59,7 +59,7 @@ class IntimateContentItemNewDnaView$FriendDnaViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemNewDnaView.FriendDnaViewHolder
  * JD-Core Version:    0.7.0.1
  */

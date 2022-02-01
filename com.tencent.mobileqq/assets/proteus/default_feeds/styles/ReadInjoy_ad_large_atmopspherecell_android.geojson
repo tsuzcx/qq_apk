@@ -474,6 +474,9 @@
                 "$includeComponet": "componet/android/ad_info_bar.geojson"
               },
               {
+                "$includeComponet": "componet/android/ad_info_warning.geojson"
+              },
+              {
                 "$includeComponet": "componet/separator_atmosphere_bottom.geojson"
               }
             ]

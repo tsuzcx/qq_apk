@@ -25,20 +25,15 @@ import mqq.app.AppRuntime;
 public class ThemeFontAdapter
   extends SignatureFontAdapter
 {
-  static SimpleUIObserver jdField_a_of_type_ComTencentMobileqqSimpleuiSimpleUIObserver = new ThemeFontAdapter.1();
-  private static ThemeFontAdapter.FontBroadcastReceiver jdField_a_of_type_ComTencentMobileqqVasAdapterThemeFontAdapter$FontBroadcastReceiver = new ThemeFontAdapter.FontBroadcastReceiver();
-  private static int b;
-  private static int c = 10;
-  private static int d = 0;
+  static SimpleUIObserver e = new ThemeFontAdapter.1();
+  private static int f;
+  private static ThemeFontAdapter.FontBroadcastReceiver g = new ThemeFontAdapter.FontBroadcastReceiver();
+  private static int h = 10;
+  private static int i = 0;
   
   public ThemeFontAdapter(VasRes paramVasRes, AppRuntime paramAppRuntime, int paramInt)
   {
     super(paramVasRes, paramAppRuntime, paramInt);
-  }
-  
-  public static String a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("theme", 4).getString("theme_font_root_pre", null);
   }
   
   public static void a(Context paramContext)
@@ -66,8 +61,8 @@ public class ThemeFontAdapter
       TextHook.getInstance().switchDefault();
       TextHook.getInstance().update(BaseApplicationImpl.getApplication().getApplicationContext());
     }
-    b = 0;
-    d = 0;
+    f = 0;
+    i = 0;
   }
   
   public static boolean a(String paramString1, String paramString2)
@@ -118,13 +113,23 @@ public class ThemeFontAdapter
     return false;
   }
   
+  public static String b(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("theme", 4).getString("theme_font_root_pre", null);
+  }
+  
   public static void b(int paramInt)
   {
     long l = paramInt;
-    b((int)FontManagerConstants.parseFontId(l), FontManagerConstants.parseFontType(l));
+    c((int)FontManagerConstants.parseFontId(l), FontManagerConstants.parseFontType(l));
   }
   
-  public static void b(int paramInt1, int paramInt2)
+  public static void c()
+  {
+    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).addObserver(e);
+  }
+  
+  public static void c(int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("switchFont  fontId:");
@@ -132,7 +137,7 @@ public class ThemeFontAdapter
     localStringBuilder.append(" fontType:");
     localStringBuilder.append(paramInt2);
     QLog.d("ThemeFontAdapter", 1, localStringBuilder.toString());
-    if (b == paramInt1)
+    if (f == paramInt1)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("switchFont already set fontId:");
@@ -150,23 +155,18 @@ public class ThemeFontAdapter
     ThreadManagerV2.executeOnFileThread(new ThemeFontAdapter.2(paramInt1, paramInt2));
   }
   
-  public static void b(Context paramContext)
-  {
-    TextHook.setSupportProcess(true);
-    paramContext.registerReceiver(jdField_a_of_type_ComTencentMobileqqVasAdapterThemeFontAdapter$FontBroadcastReceiver, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
-  }
-  
-  public static void c()
-  {
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).addObserver(jdField_a_of_type_ComTencentMobileqqSimpleuiSimpleUIObserver);
-  }
-  
   public static void c(Context paramContext)
   {
-    paramContext.unregisterReceiver(jdField_a_of_type_ComTencentMobileqqVasAdapterThemeFontAdapter$FontBroadcastReceiver);
+    TextHook.setSupportProcess(true);
+    paramContext.registerReceiver(g, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
   }
   
-  private static void d(int paramInt1, int paramInt2)
+  public static void d(Context paramContext)
+  {
+    paramContext.unregisterReceiver(g);
+  }
+  
+  private static void e(int paramInt1, int paramInt2)
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     VasRes localVasRes = new VasRes(localAppRuntime, paramInt1);
@@ -177,26 +177,26 @@ public class ThemeFontAdapter
   {
     FontInfo localFontInfo;
     if (AppUtil.a()) {
-      localFontInfo = a(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a(), this.jdField_a_of_type_Int);
+      localFontInfo = b(this.a.b(), this.b);
     } else {
-      localFontInfo = FontManagerForTool.a().a(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a(), this.jdField_a_of_type_Int);
+      localFontInfo = FontManagerForTool.a().a(this.a.b(), this.b);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("load   fontInfo:");
     localStringBuilder.append(localFontInfo);
     localStringBuilder.append(" sCurrentTryNumber:");
-    localStringBuilder.append(d);
+    localStringBuilder.append(i);
     QLog.e("ThemeFontAdapter", 2, localStringBuilder.toString());
     if (localFontInfo != null)
     {
-      b(localFontInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+      c(localFontInfo.a, this.b);
       b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.ThemeFontAdapter
  * JD-Core Version:    0.7.0.1
  */

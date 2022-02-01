@@ -96,9 +96,9 @@ public class TroopCommonlyUsedHandler
           QLog.d("TroopCommonHandler", 4, paramToServiceMsg.toString());
         }
         if (bool) {
-          i = TroopCommonlyUsedObserver.b;
+          i = TroopCommonlyUsedObserver.c;
         } else {
-          i = TroopCommonlyUsedObserver.a;
+          i = TroopCommonlyUsedObserver.b;
         }
         notifyUI(i, false, localObject);
         return;
@@ -117,9 +117,9 @@ public class TroopCommonlyUsedHandler
         QLog.d("TroopCommonHandler", 4, "handleSetCommonlyUsedTroop sso empty");
       }
       if (bool) {
-        i = TroopCommonlyUsedObserver.b;
+        i = TroopCommonlyUsedObserver.c;
       } else {
-        i = TroopCommonlyUsedObserver.a;
+        i = TroopCommonlyUsedObserver.b;
       }
       notifyUI(i, false, localObject);
       return;
@@ -133,9 +133,9 @@ public class TroopCommonlyUsedHandler
       QLog.d("TroopCommonHandler", 4, "handleSetCommonlyUsedTroop decode package failed");
     }
     if (bool) {
-      i = TroopCommonlyUsedObserver.b;
+      i = TroopCommonlyUsedObserver.c;
     } else {
-      i = TroopCommonlyUsedObserver.a;
+      i = TroopCommonlyUsedObserver.b;
     }
     notifyUI(i, false, localObject);
   }
@@ -170,7 +170,7 @@ public class TroopCommonlyUsedHandler
             localStringBuilder.append(((oidb_0x5d6.SnsUpateResult)localObject).uint64_uin.get());
           }
         }
-        notifyUI(TroopCommonlyUsedObserver.b, true, new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt), paramToServiceMsg, str, paramString2 });
+        notifyUI(TroopCommonlyUsedObserver.c, true, new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt), paramToServiceMsg, str, paramString2 });
         break label456;
       }
       if ((j == 0) && (paramString1 != null))
@@ -217,16 +217,16 @@ public class TroopCommonlyUsedHandler
     }
     localStringBuilder.append(" troopUin=");
     localStringBuilder.append(paramString1);
-    notifyUI(TroopCommonlyUsedObserver.a, true, new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(i), str, paramString2 });
+    notifyUI(TroopCommonlyUsedObserver.b, true, new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(i), str, paramString2 });
     label456:
     if (QLog.isColorLevel())
     {
       QLog.d("TroopCommonHandler", 4, localStringBuilder.toString());
       return;
       if (paramBoolean) {
-        paramInt = TroopCommonlyUsedObserver.b;
+        paramInt = TroopCommonlyUsedObserver.c;
       } else {
-        paramInt = TroopCommonlyUsedObserver.a;
+        paramInt = TroopCommonlyUsedObserver.b;
       }
       notifyUI(paramInt, false, paramObject);
     }
@@ -273,7 +273,7 @@ public class TroopCommonlyUsedHandler
       } else {
         ((ITroopInfoService)localObject1).removeCommonlyUsedTroop(str);
       }
-      notifyUI(TroopCommonlyUsedObserver.a, true, new Object[] { str, Integer.valueOf(paramInt), Integer.valueOf(0), null });
+      notifyUI(TroopCommonlyUsedObserver.b, true, new Object[] { str, Integer.valueOf(paramInt), Integer.valueOf(0), null });
       return;
     }
     Object localObject2 = new oidb_0x5d6.SnsUpdateItem();
@@ -420,7 +420,7 @@ public class TroopCommonlyUsedHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopCommonlyUsedHandler
  * JD-Core Version:    0.7.0.1
  */

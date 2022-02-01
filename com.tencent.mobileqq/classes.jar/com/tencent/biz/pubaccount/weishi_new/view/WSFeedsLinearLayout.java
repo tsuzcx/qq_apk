@@ -10,13 +10,13 @@ import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 public class WSFeedsLinearLayout
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 0;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private WSFeedsLinearLayout.OnActionListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout$OnActionListener;
-  private float b = 0.0F;
+  private WSFeedsLinearLayout.OnActionListener a;
+  private GestureDetector b;
   private float c = 0.0F;
   private float d = 0.0F;
+  private float e = 0.0F;
+  private float f = 0.0F;
+  private int g = 0;
   
   public WSFeedsLinearLayout(Context paramContext)
   {
@@ -36,45 +36,31 @@ public class WSFeedsLinearLayout
     a();
   }
   
-  private int a()
-  {
-    int i = this.jdField_a_of_type_Int;
-    if (i == 1) {}
-    for (float f = this.jdField_a_of_type_Float;; f = this.b)
-    {
-      return (int)f;
-      if (i != 2) {
-        break;
-      }
-    }
-    return 0;
-  }
-  
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new WSFeedsLinearLayout.1(this));
+    this.b = new GestureDetector(new WSFeedsLinearLayout.1(this));
   }
   
   private void a(float paramFloat)
   {
-    this.d = 0.0F;
-    this.c += paramFloat;
+    this.f = 0.0F;
+    this.e += paramFloat;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[WSFeedsLinearLayout.java][handleGestureOnScrollDown] SCROLL_DOWN!! distanceY:");
     ((StringBuilder)localObject).append(paramFloat);
     ((StringBuilder)localObject).append(", mDistanceDown:");
-    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append(", mDistanceDownSlop:");
-    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(this.e);
     WSLog.e("WSFeedsLinearLayoutLog", ((StringBuilder)localObject).toString());
-    if (Math.abs(this.c) > 8.0F)
+    if (Math.abs(this.e) > 8.0F)
     {
-      this.jdField_a_of_type_Float = 0.0F;
-      this.b += paramFloat;
-      this.jdField_a_of_type_Int = 2;
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout$OnActionListener;
+      this.c = 0.0F;
+      this.d += paramFloat;
+      this.g = 2;
+      localObject = this.a;
       if (localObject != null) {
-        ((WSFeedsLinearLayout.OnActionListener)localObject).b((int)this.b);
+        ((WSFeedsLinearLayout.OnActionListener)localObject).b((int)this.d);
       }
     }
   }
@@ -94,37 +80,37 @@ public class WSFeedsLinearLayout
   
   private void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout$OnActionListener;
+    Object localObject = this.a;
     if (localObject != null) {
-      ((WSFeedsLinearLayout.OnActionListener)localObject).a(this.jdField_a_of_type_Int, a());
+      ((WSFeedsLinearLayout.OnActionListener)localObject).a(this.g, getMoveDistance());
     }
     d();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[WSFeedsLinearLayout.java][handleActionUp] ACTION_UP!! mMoveState:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.g);
     WSLog.b("WSFeedsLinearLayoutLog", ((StringBuilder)localObject).toString());
   }
   
   private void b(float paramFloat)
   {
-    this.c = 0.0F;
-    this.d += paramFloat;
+    this.e = 0.0F;
+    this.f += paramFloat;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[WSFeedsLinearLayout.java][handleGestureOnScrollUp] SCROLL_UP!! distanceY:");
     ((StringBuilder)localObject).append(paramFloat);
     ((StringBuilder)localObject).append(", mDistanceUp:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Float);
+    ((StringBuilder)localObject).append(this.c);
     ((StringBuilder)localObject).append(", mDistanceUpSlop:");
-    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(this.f);
     WSLog.e("WSFeedsLinearLayoutLog", ((StringBuilder)localObject).toString());
-    if (Math.abs(this.d) > 8.0F)
+    if (Math.abs(this.f) > 8.0F)
     {
-      this.b = 0.0F;
-      this.jdField_a_of_type_Float += paramFloat;
-      this.jdField_a_of_type_Int = 1;
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout$OnActionListener;
+      this.d = 0.0F;
+      this.c += paramFloat;
+      this.g = 1;
+      localObject = this.a;
       if (localObject != null) {
-        ((WSFeedsLinearLayout.OnActionListener)localObject).a((int)this.jdField_a_of_type_Float);
+        ((WSFeedsLinearLayout.OnActionListener)localObject).a((int)this.c);
       }
     }
   }
@@ -137,11 +123,25 @@ public class WSFeedsLinearLayout
   
   private void d()
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.d = 0.0F;
     this.c = 0.0F;
-    this.jdField_a_of_type_Int = 0;
+    this.d = 0.0F;
+    this.f = 0.0F;
+    this.e = 0.0F;
+    this.g = 0;
+  }
+  
+  private int getMoveDistance()
+  {
+    int i = this.g;
+    if (i == 1) {}
+    for (float f1 = this.c;; f1 = this.d)
+    {
+      return (int)f1;
+      if (i != 2) {
+        break;
+      }
+    }
+    return 0;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -156,18 +156,18 @@ public class WSFeedsLinearLayout
     else {
       c();
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    this.b.onTouchEvent(paramMotionEvent);
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public void setOnActionListener(WSFeedsLinearLayout.OnActionListener paramOnActionListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSFeedsLinearLayout$OnActionListener = paramOnActionListener;
+    this.a = paramOnActionListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.WSFeedsLinearLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -8,54 +8,54 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ApolloTicker$NativeDrawTask
   extends TimerTask
 {
-  private int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<View> a;
   private final long b;
-  private long c;
-  private long d;
+  private final long c;
+  private int d;
   private long e;
+  private long f;
+  private long g;
+  private StringBuilder h;
   
   ApolloTicker$NativeDrawTask(ApolloTicker paramApolloTicker, View paramView, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_Int = -1;
+    this.a = new WeakReference(paramView);
+    this.b = paramLong1;
+    this.c = paramLong2;
+    this.d = -1;
     paramLong1 = System.currentTimeMillis();
-    this.c = paramLong1;
-    this.d = paramLong1;
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+    this.e = paramLong1;
+    this.f = paramLong1;
+    this.h = new StringBuilder();
   }
   
   public String a()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.d;
     long l;
     if (i > 0) {
-      l = (this.e - this.c) / i;
+      l = (this.g - this.e) / i;
     } else {
       l = 0L;
     }
-    Object localObject = this.jdField_a_of_type_JavaLangStringBuilder;
+    Object localObject = this.h;
     ((StringBuilder)localObject).append("[mspf:");
     ((StringBuilder)localObject).append(l);
     ((StringBuilder)localObject).append("]");
-    localObject = this.jdField_a_of_type_JavaLangStringBuilder.toString();
-    StringBuilder localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+    localObject = this.h.toString();
+    StringBuilder localStringBuilder = this.h;
     localStringBuilder.delete(0, localStringBuilder.length());
     return localObject;
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.a = new WeakReference(paramView);
   }
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -94,16 +94,16 @@ public class ApolloTicker$NativeDrawTask
         System.currentTimeMillis();
         ((ApolloTextureView)localObject).requestRender();
         System.currentTimeMillis();
-        this.jdField_a_of_type_Int += 1;
-        this.e = System.currentTimeMillis();
-        this.d = this.e;
+        this.d += 1;
+        this.g = System.currentTimeMillis();
+        this.f = this.g;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTicker.NativeDrawTask
  * JD-Core Version:    0.7.0.1
  */

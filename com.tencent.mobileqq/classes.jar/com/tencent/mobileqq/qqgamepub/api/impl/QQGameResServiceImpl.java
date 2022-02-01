@@ -110,31 +110,16 @@ public class QQGameResServiceImpl
     }
   }
   
-  public boolean IsOnlySupportInnerFilePos()
-  {
-    boolean bool;
-    try
-    {
-      bool = "mounted".equals(Environment.getExternalStorageState());
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QQGamePub_QQGameResApiImpl", 1, localException, new Object[0]);
-      bool = false;
-    }
-    return !bool;
-  }
-  
   public void checkAndCleanExpireCache(int paramInt)
   {
     try
     {
       Object localObject1 = ((IQQGamePreDownloadService)QRoute.api(IQQGamePreDownloadService.class)).getConfig();
       long l1;
-      if (((QQGamePreDownloadConfigBean)localObject1).c < 0L) {
+      if (((QQGamePreDownloadConfigBean)localObject1).f < 0L) {
         l1 = 86400000L;
       } else {
-        l1 = ((QQGamePreDownloadConfigBean)localObject1).c;
+        l1 = ((QQGamePreDownloadConfigBean)localObject1).f;
       }
       long l3 = NetConnInfoCenter.getServerTimeMillis();
       if (l3 - getLastCheckSurplusTime(paramInt) < l1)
@@ -149,16 +134,16 @@ public class QQGameResServiceImpl
         return;
       }
       long l4 = FileUtils.getFileOrFolderSize(getResPathPrefix(paramInt));
-      if (((QQGamePreDownloadConfigBean)localObject1).jdField_a_of_type_Long < 0L) {
+      if (((QQGamePreDownloadConfigBean)localObject1).d < 0L) {
         l1 = 104857600L;
       } else {
-        l1 = ((QQGamePreDownloadConfigBean)localObject1).jdField_a_of_type_Long;
+        l1 = ((QQGamePreDownloadConfigBean)localObject1).d;
       }
       long l2;
-      if (((QQGamePreDownloadConfigBean)localObject1).b < 0L) {
+      if (((QQGamePreDownloadConfigBean)localObject1).e < 0L) {
         l2 = 1296000000L;
       } else {
-        l2 = ((QQGamePreDownloadConfigBean)localObject1).b;
+        l2 = ((QQGamePreDownloadConfigBean)localObject1).e;
       }
       if (l4 > l1)
       {
@@ -168,11 +153,11 @@ public class QQGameResServiceImpl
           Object localObject2 = (QQGameResServiceImpl.ResTimeInfo)((Iterator)localObject1).next();
           if (localObject2 != null)
           {
-            String str = ((QQGameResServiceImpl.ResTimeInfo)localObject2).jdField_a_of_type_JavaLangString;
-            if ((!TextUtils.isEmpty(str)) && (l3 - ((QQGameResServiceImpl.ResTimeInfo)localObject2).jdField_a_of_type_Long > l2))
+            String str = ((QQGameResServiceImpl.ResTimeInfo)localObject2).a;
+            if ((!TextUtils.isEmpty(str)) && (l3 - ((QQGameResServiceImpl.ResTimeInfo)localObject2).b > l2))
             {
-              QQGameResInfo localQQGameResInfo = getResInfoByUrl(str, ((QQGameResServiceImpl.ResTimeInfo)localObject2).jdField_a_of_type_Int);
-              removeResInfo(str, ((QQGameResServiceImpl.ResTimeInfo)localObject2).jdField_a_of_type_Int);
+              QQGameResInfo localQQGameResInfo = getResInfoByUrl(str, ((QQGameResServiceImpl.ResTimeInfo)localObject2).c);
+              removeResInfo(str, ((QQGameResServiceImpl.ResTimeInfo)localObject2).c);
               deleteFile(localQQGameResInfo.filePath);
               deleteFile(localQQGameResInfo.folderPath);
               deleteArkResRecordAndFile(str);
@@ -410,6 +395,21 @@ public class QQGameResServiceImpl
     return paramLong;
   }
   
+  public boolean isOnlySupportInnerFilePos()
+  {
+    boolean bool;
+    try
+    {
+      bool = "mounted".equals(Environment.getExternalStorageState());
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QQGamePub_QQGameResApiImpl", 1, localException, new Object[0]);
+      bool = false;
+    }
+    return !bool;
+  }
+  
   public void removeResInfo(String paramString, int paramInt)
   {
     Object localObject = getPreference(paramInt);
@@ -474,7 +474,7 @@ public class QQGameResServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGameResServiceImpl
  * JD-Core Version:    0.7.0.1
  */

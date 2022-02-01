@@ -14,14 +14,14 @@ final class AdDownloadCallbackImpl$callback$1<T>
 {
   public final void a(Integer paramInteger)
   {
-    this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(paramInteger);
-    WadlProxyServiceUtil.a().b((WadlProxyServiceCallBackInterface)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadEventAdDownloadCallbackImpl);
-    DownloadManagerV2.a().b((DownloadListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadEventAdDownloadCallbackImpl);
+    this.b.onReceiveValue(paramInteger);
+    WadlProxyServiceUtil.a().b((WadlProxyServiceCallBackInterface)this.a);
+    DownloadManagerV2.a().b((DownloadListener)this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadCallbackImpl.callback.1
  * JD-Core Version:    0.7.0.1
  */

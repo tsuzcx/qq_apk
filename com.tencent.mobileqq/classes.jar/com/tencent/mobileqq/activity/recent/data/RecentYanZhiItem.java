@@ -27,7 +27,7 @@ public class RecentYanZhiItem
       if (paramContext == null) {
         return;
       }
-      Object localObject = paramQQAppInterface.getMessageFacade().b(this.mData.senderuin, this.mData.istroop);
+      Object localObject = paramQQAppInterface.getMessageFacade().r(this.mData.senderuin, this.mData.istroop);
       MessageForYanZhi localMessageForYanZhi = null;
       if ((localObject instanceof MessageForYanZhi)) {
         localMessageForYanZhi = (MessageForYanZhi)localObject;
@@ -40,7 +40,7 @@ public class RecentYanZhiItem
         return;
       }
       localMessageForYanZhi.parse();
-      this.mTitleName = paramContext.getString(2131694302);
+      this.mTitleName = paramContext.getString(2131891940);
       localObject = paramQQAppInterface.getConversationFacade();
       if (localObject != null)
       {
@@ -58,10 +58,10 @@ public class RecentYanZhiItem
       localObject = getMsgSummaryTemp();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(localMessageForYanZhi.likeCount);
-      localStringBuilder.append(paramContext.getString(2131694303));
+      localStringBuilder.append(paramContext.getString(2131891941));
       ((MsgSummary)localObject).strContent = localStringBuilder.toString();
       extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject);
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder(24);
         paramQQAppInterface.append(this.mTitleName);
@@ -82,7 +82,7 @@ public class RecentYanZhiItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentYanZhiItem
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class ForwardArkMsgOption$1
   public void a(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      this.a.a.finish();
+      this.a.s.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardArkMsgOption.1
  * JD-Core Version:    0.7.0.1
  */

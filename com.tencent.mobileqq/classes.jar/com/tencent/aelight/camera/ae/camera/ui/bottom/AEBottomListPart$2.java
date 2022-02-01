@@ -16,26 +16,26 @@ class AEBottomListPart$2
     if (paramAECaptureModeChangingEvent == null) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.R();
+    this.a.a.au();
     AEBottomListPart.a(this.a, paramAECaptureModeChangingEvent.b);
-    if (AEBottomListPart.a(this.a) == AECaptureMode.NORMAL)
+    if (AEBottomListPart.b(this.a) == AECaptureMode.NORMAL)
     {
-      AEBottomListPart.a(this.a);
+      AEBottomListPart.c(this.a);
       return;
     }
-    if (AEBottomListPart.a(this.a) == AECaptureMode.GIF)
+    if (AEBottomListPart.b(this.a) == AECaptureMode.GIF)
     {
-      this.a.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setVisibility(8);
+      this.a.b.setVisibility(8);
       return;
     }
-    if (AEBottomListPart.a(this.a) == AECaptureMode.PLAY) {
-      this.a.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setVisibility(8);
+    if (AEBottomListPart.b(this.a) == AECaptureMode.PLAY) {
+      this.a.b.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart.2
  * JD-Core Version:    0.7.0.1
  */

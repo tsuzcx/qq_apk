@@ -13,22 +13,16 @@ public final class ViewKt
   public static final int a(@NotNull View paramView)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "$this$measuredHeightWithMargin");
-    return paramView.getMeasuredHeight() + d(paramView);
+    return paramView.getMeasuredHeight() + c(paramView);
   }
   
   public static final int b(@NotNull View paramView)
   {
-    Intrinsics.checkParameterIsNotNull(paramView, "$this$measuredHeightWithoutPadding");
-    return paramView.getMeasuredHeight() - e(paramView);
+    Intrinsics.checkParameterIsNotNull(paramView, "$this$measuredWidthWithoutPadding");
+    return paramView.getMeasuredWidth() - d(paramView);
   }
   
   public static final int c(@NotNull View paramView)
-  {
-    Intrinsics.checkParameterIsNotNull(paramView, "$this$measuredWidthWithoutPadding");
-    return paramView.getMeasuredWidth() - f(paramView);
-  }
-  
-  public static final int d(@NotNull View paramView)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "$this$verticalMargin");
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
@@ -56,13 +50,7 @@ public final class ViewKt
     return i + j;
   }
   
-  public static final int e(@NotNull View paramView)
-  {
-    Intrinsics.checkParameterIsNotNull(paramView, "$this$verticalPadding");
-    return paramView.getPaddingTop() + paramView.getPaddingBottom();
-  }
-  
-  public static final int f(@NotNull View paramView)
+  public static final int d(@NotNull View paramView)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "$this$horizontalPadding");
     return paramView.getPaddingLeft() + paramView.getPaddingRight();
@@ -70,7 +58,7 @@ public final class ViewKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.ViewKt
  * JD-Core Version:    0.7.0.1
  */

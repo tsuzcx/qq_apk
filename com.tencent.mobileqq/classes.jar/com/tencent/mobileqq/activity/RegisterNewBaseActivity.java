@@ -33,16 +33,17 @@ public class RegisterNewBaseActivity
   extends QBaseActivity
   implements DialogInterface.OnClickListener
 {
-  public static final int FROM_ADD_ACCOUNT = 1;
+  public static final int FROM_ADD_ACCOUNT = 2;
   public static final int FROM_CHOOSE_LOGIN = 6;
   public static final int FROM_LOGIN_BIND_PHONE_NUM = 9;
-  public static final int FROM_LOGIN_GUIDE = 2;
-  public static final int FROM_LOGIN_VIEW = 3;
+  public static final int FROM_LOGIN_GUIDE = 3;
+  public static final int FROM_LOGIN_VIEW = 1;
   public static final int FROM_NICKANDPWD = 8;
   public static final int FROM_PHOME_NUM = 7;
   public static final int FROM_UP_SMS = 4;
   public static final int FROM_VERIFY_CODE = 5;
   private static final String TAG = "RegisterNewBaseActivity";
+  public static int sEntrance;
   public String countryCode = "86";
   protected Dialog dialog;
   public Handler handler = new RegisterNewBaseActivity.1(this);
@@ -157,6 +158,15 @@ public class RegisterNewBaseActivity
   protected String getMaskedPhoneNumWithCountryCode()
   {
     String str = getMaskedPhoneNum();
+    if (this.countryCode.contains("+"))
+    {
+      localStringBuilder = new StringBuilder(" ");
+      localStringBuilder.append(this.countryCode);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str);
+      localStringBuilder.append(" ");
+      return localStringBuilder.toString();
+    }
     StringBuilder localStringBuilder = new StringBuilder(" +");
     localStringBuilder.append(this.countryCode);
     localStringBuilder.append(" ");
@@ -167,7 +177,7 @@ public class RegisterNewBaseActivity
   
   public void notifyToast(int paramInt1, int paramInt2)
   {
-    new QQToastNotifier(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
+    new QQToastNotifier(this).notifyUser(paramInt1, getTitleBarHeight(), 1, paramInt2);
   }
   
   public void notifyToast(String paramString, int paramInt)
@@ -181,7 +191,7 @@ public class RegisterNewBaseActivity
       if (paramString.endsWith("\n")) {
         str = paramString.substring(0, paramString.length() - 1);
       }
-      new QQToastNotifier(this).a(str, getTitleBarHeight(), 0, paramInt);
+      new QQToastNotifier(this).notifyUser(str, getTitleBarHeight(), 0, paramInt);
     }
   }
   
@@ -213,21 +223,21 @@ public class RegisterNewBaseActivity
   
   protected void setBackListener()
   {
-    TextView localTextView = (TextView)findViewById(2131364182);
+    TextView localTextView = (TextView)findViewById(2131430169);
     localTextView.setOnClickListener(this.onBackListeger);
-    if (AppSetting.d) {
-      localTextView.setContentDescription(getResources().getString(2131690706));
+    if (AppSetting.e) {
+      localTextView.setContentDescription(getResources().getString(2131887625));
     }
   }
   
   protected void setBarProgress(int paramInt)
   {
-    ((ProgressBar)findViewById(2131376378)).setProgress(paramInt);
+    ((ProgressBar)findViewById(2131444594)).setProgress(paramInt);
   }
   
   protected void setProgressBarVisible(boolean paramBoolean)
   {
-    ProgressBar localProgressBar = (ProgressBar)findViewById(2131376378);
+    ProgressBar localProgressBar = (ProgressBar)findViewById(2131444594);
     int i;
     if (paramBoolean) {
       i = 0;
@@ -244,9 +254,9 @@ public class RegisterNewBaseActivity
       QLog.e("RegisterNewBaseActivity", 1, "setTitleHint error: phoneNum is empty, set phone number before calling this method!");
       return;
     }
-    TextView localTextView = (TextView)findViewById(2131380055);
+    TextView localTextView = (TextView)findViewById(2131448962);
     String str1 = getMaskedPhoneNumWithCountryCode();
-    String str2 = getString(2131716653, new Object[] { str1 });
+    String str2 = getString(2131914116, new Object[] { str1 });
     SpannableString localSpannableString = new SpannableString(str2);
     localSpannableString.setSpan(new ForegroundColorSpan(-31933), str2.indexOf(str1), str2.indexOf(str1) + str1.length(), 33);
     localTextView.setText(localSpannableString);
@@ -254,19 +264,19 @@ public class RegisterNewBaseActivity
   
   protected void setTitleText(int paramInt)
   {
-    TextView localTextView = (TextView)findViewById(2131380038);
+    TextView localTextView = (TextView)findViewById(2131448944);
     String str = getResources().getString(paramInt);
     localTextView.setText(str);
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       localTextView.setContentDescription(str);
     }
   }
   
   protected void setTitleText(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131380038);
+    TextView localTextView = (TextView)findViewById(2131448944);
     localTextView.setText(paramString);
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       localTextView.setContentDescription(paramString);
     }
   }
@@ -286,7 +296,7 @@ public class RegisterNewBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterNewBaseActivity
  * JD-Core Version:    0.7.0.1
  */

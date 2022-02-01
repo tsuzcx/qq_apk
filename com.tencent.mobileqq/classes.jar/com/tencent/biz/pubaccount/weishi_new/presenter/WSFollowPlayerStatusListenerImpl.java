@@ -26,8 +26,8 @@ public class WSFollowPlayerStatusListenerImpl
   {
     paramString = new StringBuilder();
     paramString.append("[onVideoError] video: ");
-    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView != null)) {
-      paramWSPlayerParam = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.d;
+    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.b != null)) {
+      paramWSPlayerParam = paramWSPlayerParam.c.g;
     } else {
       paramWSPlayerParam = "";
     }
@@ -40,8 +40,8 @@ public class WSFollowPlayerStatusListenerImpl
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onVideoStop] video: ");
     String str;
-    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView != null)) {
-      str = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.d;
+    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.b != null)) {
+      str = paramWSPlayerParam.c.g;
     } else {
       str = "";
     }
@@ -55,8 +55,8 @@ public class WSFollowPlayerStatusListenerImpl
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onVideoStart] video: ");
     String str;
-    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo != null)) {
-      str = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.d;
+    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.c != null)) {
+      str = paramWSPlayerParam.c.g;
     } else {
       str = "";
     }
@@ -65,7 +65,7 @@ public class WSFollowPlayerStatusListenerImpl
     WSFollowBeaconReport.a(paramWSPlayerParam);
     paramWSPlayerParam = this.a;
     if (paramWSPlayerParam != null) {
-      paramWSPlayerParam.a();
+      paramWSPlayerParam.c();
     }
   }
   
@@ -78,15 +78,15 @@ public class WSFollowPlayerStatusListenerImpl
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[onCompletion] videoTitle: ");
-      if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo != null) {
-        localObject = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.d;
+      if (paramWSPlayerParam.c != null) {
+        localObject = paramWSPlayerParam.c.g;
       } else {
         localObject = "videoInfo is null!";
       }
       localStringBuilder.append((String)localObject);
       WSLog.e("WSFollowPlayerStatusListenerImpl", localStringBuilder.toString());
-      Object localObject = this.a.a();
-      if ((localObject != null) && (((WSPlayerManager)localObject).j()))
+      Object localObject = this.a.e();
+      if ((localObject != null) && (((WSPlayerManager)localObject).s()))
       {
         WSLog.e("WSFollowPlayerStatusListenerImpl", "[onCompletion] loopPlayMode: true");
         ((WSPlayerManager)localObject).b(paramWSPlayerParam, false);
@@ -98,8 +98,8 @@ public class WSFollowPlayerStatusListenerImpl
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onVideoPause] video: ");
-    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView != null)) {
-      paramWSPlayerParam = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.d;
+    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.b != null)) {
+      paramWSPlayerParam = paramWSPlayerParam.c.g;
     } else {
       paramWSPlayerParam = "";
     }
@@ -111,8 +111,8 @@ public class WSFollowPlayerStatusListenerImpl
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onVideoRestart] video: ");
-    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView != null)) {
-      paramWSPlayerParam = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.d;
+    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.b != null)) {
+      paramWSPlayerParam = paramWSPlayerParam.c.g;
     } else {
       paramWSPlayerParam = "";
     }
@@ -124,13 +124,13 @@ public class WSFollowPlayerStatusListenerImpl
   {
     paramWSPlayerParam = this.a;
     if (paramWSPlayerParam != null) {
-      paramWSPlayerParam.a();
+      paramWSPlayerParam.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.WSFollowPlayerStatusListenerImpl
  * JD-Core Version:    0.7.0.1
  */

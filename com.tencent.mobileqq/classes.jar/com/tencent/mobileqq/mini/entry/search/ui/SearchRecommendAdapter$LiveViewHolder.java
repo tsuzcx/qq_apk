@@ -25,8 +25,8 @@ class SearchRecommendAdapter$LiveViewHolder
   public SearchRecommendAdapter$LiveViewHolder(View paramView)
   {
     super(paramView);
-    this.title = ((TextView)paramView.findViewById(2131371214));
-    this.sequenceNumberTextView = ((TextView)paramView.findViewById(2131371213));
+    this.title = ((TextView)paramView.findViewById(2131438556));
+    this.sequenceNumberTextView = ((TextView)paramView.findViewById(2131438555));
   }
   
   public void update(LiveInfo paramLiveInfo, int paramInt)
@@ -36,24 +36,24 @@ class SearchRecommendAdapter$LiveViewHolder
     this.sequenceNumberTextView.setText(String.valueOf(paramInt + 1));
     if (paramInt == 0)
     {
-      this.sequenceNumberTextView.setBackgroundResource(2130841060);
+      this.sequenceNumberTextView.setBackgroundResource(2130841851);
       this.sequenceNumberTextView.setTextColor(-1);
     }
     else if (paramInt == 1)
     {
-      this.sequenceNumberTextView.setBackgroundResource(2130841058);
+      this.sequenceNumberTextView.setBackgroundResource(2130841849);
       this.sequenceNumberTextView.setTextColor(-1);
     }
     else if (paramInt == 2)
     {
-      this.sequenceNumberTextView.setBackgroundResource(2130841059);
+      this.sequenceNumberTextView.setBackgroundResource(2130841850);
       this.sequenceNumberTextView.setTextColor(-1);
     }
     else
     {
       this.sequenceNumberTextView.setBackgroundDrawable(null);
-      this.sequenceNumberTextView.setPadding(ViewUtils.b(5.0F), 0, 0, 0);
-      this.sequenceNumberTextView.setTextColor(this.itemView.getContext().getResources().getColor(2131167142));
+      this.sequenceNumberTextView.setPadding(ViewUtils.dpToPx(5.0F), 0, 0, 0);
+      this.sequenceNumberTextView.setTextColor(this.itemView.getContext().getResources().getColor(2131168122));
     }
     String str5 = paramLiveInfo.mJumpUrl;
     String str4 = "";
@@ -91,7 +91,7 @@ class SearchRecommendAdapter$LiveViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchRecommendAdapter.LiveViewHolder
  * JD-Core Version:    0.7.0.1
  */

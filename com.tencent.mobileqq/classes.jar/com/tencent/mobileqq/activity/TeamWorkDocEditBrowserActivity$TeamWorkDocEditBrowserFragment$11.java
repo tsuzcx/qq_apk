@@ -15,21 +15,21 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$11
   {
     if (this.a.getSwiftTitleUI() != null)
     {
-      this.a.getSwiftTitleUI().jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.d = false;
-      this.a.getSwiftTitleUI().jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.a = Boolean.valueOf(true);
+      this.a.getSwiftTitleUI().b.k = false;
+      this.a.getSwiftTitleUI().b.o = Boolean.valueOf(true);
       if (this.a.getUIStyleHandler() != null) {
         this.a.getUIStyleHandler().k();
       }
     }
     TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment localTeamWorkDocEditBrowserFragment = this.a;
-    localTeamWorkDocEditBrowserFragment.onClick(localTeamWorkDocEditBrowserFragment.getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView);
+    localTeamWorkDocEditBrowserFragment.onClick(localTeamWorkDocEditBrowserFragment.getSwiftTitleUI().h);
     this.a.a(0);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.11
  * JD-Core Version:    0.7.0.1
  */

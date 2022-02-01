@@ -11,13 +11,13 @@ public class TroopView$MyTroopModifyObserver
   protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
   {
     if (paramBoolean) {
-      this.a.j();
+      this.a.l();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopView.MyTroopModifyObserver
  * JD-Core Version:    0.7.0.1
  */

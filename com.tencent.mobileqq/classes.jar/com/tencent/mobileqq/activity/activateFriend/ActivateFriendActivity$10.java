@@ -12,8 +12,8 @@ class ActivateFriendActivity$10
   
   public void run()
   {
-    int i = this.this$0.app.getMessageFacade().b();
-    String str = this.this$0.app.getApp().getString(2131719442);
+    int i = this.this$0.app.getMessageFacade().w();
+    String str = this.this$0.app.getApp().getString(2131917002);
     Object localObject = str;
     if (i > 0)
     {
@@ -29,12 +29,12 @@ class ActivateFriendActivity$10
       localStringBuilder.append(")");
       localObject = localStringBuilder.toString();
     }
-    ActivateFriendActivity.a(this.this$0).setText((CharSequence)localObject);
+    ActivateFriendActivity.g(this.this$0).setText((CharSequence)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity.10
  * JD-Core Version:    0.7.0.1
  */

@@ -24,18 +24,18 @@ import java.util.ArrayList;
 public class PhoneFrameActivity
   extends IphoneTitleBarActivity
 {
-  private int jdField_a_of_type_Int = 0;
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  PhoneFrame jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = null;
+  PhoneFrame a = null;
   View b;
+  View c;
+  TextView d;
+  ImageView e;
+  Bundle f;
+  private int g = 0;
   
   private void a()
   {
     Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
-    Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
+    Object localObject = new Bundle(this.f);
     ((Bundle)localObject).putBoolean("PhotoConst.HANDLE_DEST_RESULT", false);
     ((Bundle)localObject).putBoolean("PhotoConst.IS_FORWARD", true);
     ((Bundle)localObject).putInt("PhotoConst.SEND_BUSINESS_TYPE", 1031);
@@ -59,29 +59,29 @@ public class PhoneFrameActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376636);
-    this.b = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369202));
-    this.leftView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369204));
-    this.rightViewText = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369233));
-    this.rightViewText.setText(2131694817);
+    this.b = findViewById(2131444897);
+    this.c = ((View)this.b.getParent());
+    this.d = ((TextView)this.b.findViewById(2131436180));
+    this.leftView = ((TextView)this.b.findViewById(2131436182));
+    this.rightViewText = ((TextView)this.b.findViewById(2131436211));
+    this.rightViewText.setText(2131892520);
     this.rightViewText.setOnClickListener(new PhoneFrameActivity.1(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369216));
-    if (AppSetting.d) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131708004));
+    this.e = ((ImageView)this.b.findViewById(2131436194));
+    if (AppSetting.e) {
+      this.e.setContentDescription(HardCodeUtil.a(2131905813));
     }
-    IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidViewView);
-    IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetTextView);
+    IphoneTitleBarActivity.setLayerType(this.b);
+    IphoneTitleBarActivity.setLayerType(this.d);
     IphoneTitleBarActivity.setLayerType(this.leftView);
     IphoneTitleBarActivity.setLayerType(this.rightViewText);
-    IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131372510));
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setActivity(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new PhoneFrameActivity.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a(null);
+    IphoneTitleBarActivity.setLayerType(this.e);
+    this.a = ((PhoneFrame)findViewById(2131440034));
+    this.a.setActivity(this);
+    this.a.setPhoneContext(new PhoneFrameActivity.2(this));
+    this.a.a(null);
     Bundle localBundle = new Bundle();
-    localBundle.putInt("key_req_type", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.b(localBundle);
+    localBundle.putInt("key_req_type", this.g);
+    this.a.b(localBundle);
   }
   
   @Override
@@ -104,7 +104,7 @@ public class PhoneFrameActivity
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a(paramInt1, paramInt2, paramIntent);
+      this.a.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
@@ -112,17 +112,17 @@ public class PhoneFrameActivity
   {
     super.doOnCreate(paramBundle);
     getWindow().setBackgroundDrawable(null);
-    setContentView(2131559547);
-    this.jdField_a_of_type_Int = getIntent().getIntExtra("key_req_type", 0);
+    setContentView(2131625569);
+    this.g = getIntent().getIntExtra("key_req_type", 0);
     b();
-    this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
+    this.f = getIntent().getExtras();
     return true;
   }
   
   protected void doOnDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.c();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.d();
+    this.a.c();
+    this.a.d();
     super.doOnDestroy();
   }
   
@@ -138,8 +138,8 @@ public class PhoneFrameActivity
           return;
         }
         paramIntent = (String)paramIntent.get(0);
-        this.jdField_a_of_type_AndroidOsBundle.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
-        this.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_EDITED", true);
+        this.f.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
+        this.f.putBoolean("FORWARD_IS_EDITED", true);
         a();
         ReportController.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
       }
@@ -148,19 +148,19 @@ public class PhoneFrameActivity
   
   protected void doOnPause()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.b();
+    this.a.b();
     super.doOnPause();
   }
   
   protected void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a();
+    this.a.a();
   }
   
   public void finish()
   {
-    if ((this.app.isLogin()) && (this.jdField_a_of_type_Int == 0))
+    if ((this.app.isLogin()) && (this.g == 0))
     {
       Intent localIntent = new Intent(this, SplashActivity.class);
       localIntent.setFlags(67108864);
@@ -168,7 +168,7 @@ public class PhoneFrameActivity
       startActivity(localIntent);
     }
     super.finish();
-    overridePendingTransition(2130772002, 2130772003);
+    overridePendingTransition(2130772005, 2130772006);
   }
   
   @Override
@@ -180,7 +180,7 @@ public class PhoneFrameActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneFrameActivity
  * JD-Core Version:    0.7.0.1
  */

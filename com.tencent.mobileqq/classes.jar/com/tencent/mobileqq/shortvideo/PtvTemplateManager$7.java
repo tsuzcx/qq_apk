@@ -14,21 +14,21 @@ class PtvTemplateManager$7
     if (QLog.isDevelopLevel()) {
       QLog.d("PtvTemplateManager", 4, String.format("rebuildWebTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
     }
-    List localList = this.this$0.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaIoFile, null);
+    List localList = this.this$0.a(this.a, this.b, null);
     if (localList != null) {
-      synchronized (this.this$0.jdField_c_of_type_JavaLangObject)
+      synchronized (this.this$0.o)
       {
-        if (this.this$0.jdField_c_of_type_Boolean) {
+        if (this.this$0.y) {
           return;
         }
-        this.this$0.b.clear();
-        this.this$0.b.addAll(localList);
-        this.this$0.d = true;
-        ??? = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+        this.this$0.j.clear();
+        this.this$0.j.addAll(localList);
+        this.this$0.z = true;
+        ??? = this.a;
         if ((??? != null) && ((??? instanceof QQAppInterface)) && (PtvFilterSoLoad.a()))
         {
           ??? = this.this$0;
-          ((PtvTemplateManager)???).a(((PtvTemplateManager)???).b);
+          ((PtvTemplateManager)???).a(((PtvTemplateManager)???).j);
         }
         PtvTemplateManager.a(this.this$0);
       }
@@ -40,7 +40,7 @@ class PtvTemplateManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.7
  * JD-Core Version:    0.7.0.1
  */

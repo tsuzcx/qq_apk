@@ -11,8 +11,8 @@ class SpecailCareListActivity$10
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(8);
+    this.a.g.clearAnimation();
+    this.a.g.setVisibility(8);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -21,7 +21,7 @@ class SpecailCareListActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.10
  * JD-Core Version:    0.7.0.1
  */

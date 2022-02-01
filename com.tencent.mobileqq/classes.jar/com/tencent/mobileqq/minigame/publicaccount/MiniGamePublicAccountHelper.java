@@ -18,7 +18,7 @@ import common.config.service.QzoneConfig;
 
 public class MiniGamePublicAccountHelper
 {
-  private static boolean isOpenHippy()
+  public static boolean isOpenHippy()
   {
     return MiniGamePAConfProcessor.loadConfig().getEnable() == 1;
   }
@@ -103,7 +103,7 @@ public class MiniGamePublicAccountHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHelper
  * JD-Core Version:    0.7.0.1
  */

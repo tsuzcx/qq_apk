@@ -15,9 +15,9 @@ import com.tencent.aelight.camera.util.api.IAECameraPrefsUtil;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.tavcut.session.TAVCutImageSession;
-import com.tencent.tavcut.util.Util;
-import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.qcircle.tavcut.session.TAVCutImageSession;
+import com.tencent.qcircle.tavcut.util.Util;
+import com.tencent.qcircle.weseevideo.model.MediaModel;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
@@ -29,8 +29,8 @@ class AEEditorImageTemplatePanel$3
   
   public void a(int paramInt, @NonNull MetaMaterial paramMetaMaterial, @NonNull ApplyMaterialTask.MaterialStatusCallback paramMaterialStatusCallback)
   {
-    AEReportUtils.h(paramMetaMaterial.id);
-    if (AEEditorImageTemplatePanel.a(this.a) == -1L) {
+    AEReportUtils.g(paramMetaMaterial.id);
+    if (AEEditorImageTemplatePanel.b(this.a) == -1L) {
       AEEditorImageTemplatePanel.a(this.a, ((IAECameraPrefsUtil)QRoute.api(IAECameraPrefsUtil.class)).getLong("showClearTemplateDialog", 1L, 4));
     }
     if ("TEMPLATE_NON_ID".equals(paramMetaMaterial.id))
@@ -38,21 +38,21 @@ class AEEditorImageTemplatePanel$3
       AEEditorImageTemplatePanel.a(this.a);
       return;
     }
-    AEEditorImageTemplatePanel.a(this.a).put(Integer.valueOf(AEEditorImageTemplatePanel.a(this.a).getCurrentIndex()), Boolean.valueOf(false));
+    AEEditorImageTemplatePanel.d(this.a).put(Integer.valueOf(AEEditorImageTemplatePanel.c(this.a).getCurrentIndex()), Boolean.valueOf(false));
     AEEditorImageTemplatePanel.b(this.a, System.currentTimeMillis());
-    if (AEEditorImageTemplatePanel.a(this.a) == 1L)
+    if (AEEditorImageTemplatePanel.b(this.a) == 1L)
     {
       String str1;
-      if (AEEditorImageTemplatePanel.b(this.a).size() > AEEditorImageTemplatePanel.a(this.a).getCurrentIndex()) {
-        str1 = (String)AEEditorImageTemplatePanel.b(this.a).get(Integer.valueOf(AEEditorImageTemplatePanel.a(this.a).getCurrentIndex()));
+      if (AEEditorImageTemplatePanel.e(this.a).size() > AEEditorImageTemplatePanel.c(this.a).getCurrentIndex()) {
+        str1 = (String)AEEditorImageTemplatePanel.e(this.a).get(Integer.valueOf(AEEditorImageTemplatePanel.c(this.a).getCurrentIndex()));
       } else {
         str1 = "";
       }
-      String str2 = Util.md5(((MediaModel)AEEditorImageTemplatePanel.a(this.a).getMediaModels().get(AEEditorImageTemplatePanel.a(this.a).getCurrentIndex())).toString());
-      String str3 = (String)AEEditorImageTemplatePanel.a(this.a).getMediaModelsMd5().get(AEEditorImageTemplatePanel.a(this.a).getCurrentIndex());
+      String str2 = Util.md5(((MediaModel)AEEditorImageTemplatePanel.c(this.a).getMediaModels().get(AEEditorImageTemplatePanel.c(this.a).getCurrentIndex())).toString());
+      String str3 = (String)AEEditorImageTemplatePanel.c(this.a).getMediaModelsMd5().get(AEEditorImageTemplatePanel.c(this.a).getCurrentIndex());
       if ((!str1.equals(str2)) && (!str3.equals(str2)))
       {
-        paramMetaMaterial = DialogUtil.a(this.a.getContext(), 230).setTitle(this.a.getContext().getResources().getString(2064515270)).setMessage(this.a.getContext().getResources().getString(2064515269)).setPositiveButton(this.a.getContext().getString(2064515119), new AEEditorImageTemplatePanel.3.2(this, paramMetaMaterial, paramMaterialStatusCallback)).setNegativeButton(this.a.getContext().getString(2064515117), new AEEditorImageTemplatePanel.3.1(this, paramMaterialStatusCallback));
+        paramMetaMaterial = DialogUtil.a(this.a.getContext(), 230).setTitle(this.a.getContext().getResources().getString(2064187620)).setMessage(this.a.getContext().getResources().getString(2064187619)).setPositiveButton(this.a.getContext().getString(2064187461), new AEEditorImageTemplatePanel.3.2(this, paramMetaMaterial, paramMaterialStatusCallback)).setNegativeButton(this.a.getContext().getString(2064187459), new AEEditorImageTemplatePanel.3.1(this, paramMaterialStatusCallback));
         AEEditorImageTemplatePanel.a(this.a, 0L);
         ((IAECameraPrefsUtil)QRoute.api(IAECameraPrefsUtil.class)).putLong("showClearTemplateDialog", 0L, 4);
         AEEditorImageTemplatePanel.a(false);
@@ -101,13 +101,13 @@ class AEEditorImageTemplatePanel$3
     AEEditorImageTemplatePanel.a(this.a, paramMetaMaterial, paramMaterialStatusCallback);
   }
   
-  public boolean b(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
+  public boolean c(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
-    String str = AEEditorResourceManager.a().j(paramMetaMaterial);
-    return (super.b(paramInt, paramMetaMaterial)) && (!TextUtils.isEmpty(str)) && (new File(str).exists());
+    String str = AEEditorResourceManager.a().k(paramMetaMaterial);
+    return (super.c(paramInt, paramMetaMaterial)) && (!TextUtils.isEmpty(str)) && (new File(str).exists());
   }
   
-  public void c(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
+  public void e(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
     String str = AEEditorImageTemplatePanel.a;
     Object localObject = new StringBuilder();
@@ -124,7 +124,7 @@ class AEEditorImageTemplatePanel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.imagetemplate.AEEditorImageTemplatePanel.3
  * JD-Core Version:    0.7.0.1
  */

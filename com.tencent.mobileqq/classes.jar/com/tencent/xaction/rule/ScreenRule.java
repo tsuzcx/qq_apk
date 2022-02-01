@@ -22,28 +22,28 @@ public final class ScreenRule
     Intrinsics.checkParameterIsNotNull(paramString2, "value");
     if (Intrinsics.areEqual(paramString2, "SCREEN_WIDTH"))
     {
-      setAnimValue(paramBaseAnim, paramString1, new float[] { ScreenUnit.a.b() });
+      setAnimValue(paramBaseAnim, paramString1, new float[] { ScreenUnit.a.c() });
       return true;
     }
     if (Intrinsics.areEqual(paramString2, "SCREEN_HEIGHT"))
     {
-      setAnimValue(paramBaseAnim, paramString1, new float[] { ScreenUnit.a.c() });
+      setAnimValue(paramBaseAnim, paramString1, new float[] { ScreenUnit.a.d() });
       return true;
     }
     if (Intrinsics.areEqual(paramString2, "SCREEN_CENTER"))
     {
-      float f1 = ScreenUnit.a.b();
+      float f1 = ScreenUnit.a.c();
       float f2 = 2;
-      setAnimValue(paramBaseAnim, paramString1, new float[] { f1 / f2, ScreenUnit.a.c() / f2 });
+      setAnimValue(paramBaseAnim, paramString1, new float[] { f1 / f2, ScreenUnit.a.d() / f2 });
       return true;
     }
     if (Intrinsics.areEqual(paramString2, "SCREEN_HEIGHT_CENTER"))
     {
-      setAnimValue(paramBaseAnim, paramString1, new float[] { ScreenUnit.a.c() / 2 });
+      setAnimValue(paramBaseAnim, paramString1, new float[] { ScreenUnit.a.d() / 2 });
       return false;
     }
     if (Intrinsics.areEqual(paramString2, "SCREEN_WIDTH_CENTER")) {
-      setAnimValue(paramBaseAnim, paramString1, new float[] { ScreenUnit.a.b() / 2 });
+      setAnimValue(paramBaseAnim, paramString1, new float[] { ScreenUnit.a.c() / 2 });
     }
     return false;
   }
@@ -58,7 +58,7 @@ public final class ScreenRule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.rule.ScreenRule
  * JD-Core Version:    0.7.0.1
  */

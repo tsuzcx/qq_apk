@@ -2,22 +2,22 @@ package com.tencent.util.notification;
 
 class NotificationReportControllerImpl$ReportEntry
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  int a;
   int b;
-  int c;
+  String c;
+  int d;
   
   public NotificationReportControllerImpl$ReportEntry(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt3;
+    this.c = paramString;
+    this.d = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.notification.NotificationReportControllerImpl.ReportEntry
  * JD-Core Version:    0.7.0.1
  */

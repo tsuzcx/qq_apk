@@ -1052,7 +1052,7 @@ public class ConfessShareHelper
   public static String a(String paramString, float paramFloat)
   {
     Object localObject = paramString;
-    if (TagUtils.a(paramString) > paramFloat)
+    if (TagUtils.b(paramString) > paramFloat)
     {
       int i = Math.max(0, (int)(paramFloat - 3.0F));
       int j = i;
@@ -1061,7 +1061,7 @@ public class ConfessShareHelper
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(paramString.substring(0, i));
         ((StringBuilder)localObject).append("…");
-        if (TagUtils.a(((StringBuilder)localObject).toString()) > paramFloat) {
+        if (TagUtils.b(((StringBuilder)localObject).toString()) > paramFloat) {
           break;
         }
         j = i;
@@ -1227,9 +1227,9 @@ public class ConfessShareHelper
       paramString1 = paramString1.optString("anonymous_name");
       paramContext = paramContext.getResources();
       if (paramInt1 == 0) {
-        paramInt1 = 2130844976;
+        paramInt1 = 2130846412;
       } else {
-        paramInt1 = 2130844977;
+        paramInt1 = 2130846413;
       }
       paramContext = paramContext.getDrawable(paramInt1);
       paramContext.setBounds(paramInt6, paramInt7, paramInt6 + 48, paramInt7 + 48);
@@ -1279,9 +1279,9 @@ public class ConfessShareHelper
     paramString2 = ((TagUtils.TagArrangementEngine)localObject1).a(paramString1, paramString3, (ArrayList)localObject2);
     paramString1 = paramString2;
     Object localObject3;
-    if (((TagUtils.TagArrangementEngine)localObject1).b.size() > 1)
+    if (((TagUtils.TagArrangementEngine)localObject1).c.size() > 1)
     {
-      paramString1 = ((TagUtils.TagArrangementEngine)localObject1).b.iterator();
+      paramString1 = ((TagUtils.TagArrangementEngine)localObject1).c.iterator();
       paramInt1 = 0;
       while (paramString1.hasNext())
       {
@@ -1306,7 +1306,7 @@ public class ConfessShareHelper
     if (paramJSONArray.hasNext())
     {
       localObject1 = (TagUtils.Tag)paramJSONArray.next();
-      localObject2 = ((TagUtils.Tag)localObject1).jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject2 = ((TagUtils.Tag)localObject1).h.iterator();
       for (paramInt1 = paramInt2;; paramInt1 = 1)
       {
         paramInt2 = paramInt1;
@@ -1314,25 +1314,25 @@ public class ConfessShareHelper
           break;
         }
         localObject3 = (TagUtils.Tag.Child)((Iterator)localObject2).next();
-        paramString3.left = (((TagUtils.Tag.Child)localObject3).jdField_a_of_type_AndroidGraphicsRect.left + paramString2.left + paramInt1);
-        paramString3.top = (((TagUtils.Tag.Child)localObject3).jdField_a_of_type_AndroidGraphicsRect.top + paramString2.top + paramInt1);
-        paramString3.right = (((TagUtils.Tag.Child)localObject3).jdField_a_of_type_AndroidGraphicsRect.right + paramString2.left - 2);
-        paramString3.bottom = (((TagUtils.Tag.Child)localObject3).jdField_a_of_type_AndroidGraphicsRect.bottom + paramString2.top - 2);
-        paramPaint.setColor(((TagUtils.Tag)localObject1).jdField_a_of_type_Int);
-        if (((TagUtils.Tag)localObject1).jdField_b_of_type_Boolean) {
+        paramString3.left = (((TagUtils.Tag.Child)localObject3).a.left + paramString2.left + paramInt1);
+        paramString3.top = (((TagUtils.Tag.Child)localObject3).a.top + paramString2.top + paramInt1);
+        paramString3.right = (((TagUtils.Tag.Child)localObject3).a.right + paramString2.left - 2);
+        paramString3.bottom = (((TagUtils.Tag.Child)localObject3).a.bottom + paramString2.top - 2);
+        paramPaint.setColor(((TagUtils.Tag)localObject1).b);
+        if (((TagUtils.Tag)localObject1).j) {
           paramInt2 = 178;
         } else {
           paramInt2 = 255;
         }
         paramPaint.setAlpha(paramInt2);
-        paramPaint.setFakeBoldText(((TagUtils.Tag)localObject1).jdField_a_of_type_Boolean);
+        paramPaint.setFakeBoldText(((TagUtils.Tag)localObject1).e);
         paramString1 = Paint.Align.CENTER;
-        if (((TagUtils.Tag)localObject1).c == -1) {
+        if (((TagUtils.Tag)localObject1).f == -1) {
           paramString1 = Paint.Align.LEFT;
-        } else if (((TagUtils.Tag)localObject1).c == paramInt1) {
+        } else if (((TagUtils.Tag)localObject1).f == paramInt1) {
           paramString1 = Paint.Align.RIGHT;
         }
-        a(paramCanvas, paramPaint, paramString3, ((TagUtils.Tag.Child)localObject3).jdField_a_of_type_JavaLangString, paramString1, ((TagUtils.Tag)localObject1).d, ((TagUtils.Tag)localObject1).jdField_b_of_type_Int);
+        a(paramCanvas, paramPaint, paramString3, ((TagUtils.Tag.Child)localObject3).b, paramString1, ((TagUtils.Tag)localObject1).g, ((TagUtils.Tag)localObject1).d);
       }
     }
     paramPaint.setFakeBoldText(false);
@@ -1351,7 +1351,7 @@ public class ConfessShareHelper
     }
     else
     {
-      paramAppInterface = paramContext.getResources().getDrawable(2130844994);
+      paramAppInterface = paramContext.getResources().getDrawable(2130846430);
     }
     paramAppInterface.setBounds(paramString2.centerX() - 50, paramString2.centerY() - 50, paramString2.centerX() + 50, paramString2.centerY() + 50);
     paramAppInterface.draw(paramCanvas);
@@ -1359,7 +1359,7 @@ public class ConfessShareHelper
     paramAppInterface = new Rect();
     paramContext = new StringBuilder();
     paramContext.append(a(paramString4, 8.0F));
-    paramContext.append(HardCodeUtil.a(2131702605));
+    paramContext.append(HardCodeUtil.a(2131900598));
     paramContext = paramContext.toString();
     paramPaint.getTextBounds(paramContext, 0, paramContext.length(), paramAppInterface);
     paramPaint.setStrokeWidth(1.0F);
@@ -1458,11 +1458,11 @@ public class ConfessShareHelper
     {
       try
       {
-        localObject2 = paramContext.getResources().getDrawable(localBgElement.jdField_a_of_type_Int);
-        if (localBgElement.jdField_a_of_type_Int == 2130845003) {
+        localObject2 = paramContext.getResources().getDrawable(localBgElement.a);
+        if (localBgElement.a == 2130846439) {
           break label335;
         }
-        if (localBgElement.jdField_a_of_type_Int != 2130844996) {
+        if (localBgElement.a != 2130846432) {
           break label328;
         }
       }
@@ -1481,13 +1481,13 @@ public class ConfessShareHelper
       }
       k = ((Drawable)localObject2).getIntrinsicWidth();
       j = ((Drawable)localObject2).getIntrinsicHeight();
-      f4 = localBgElement.jdField_b_of_type_Int;
+      f4 = localBgElement.b;
       f3 = k;
-      k = (int)(f4 - localBgElement.jdField_a_of_type_Float * f3 * f1 / 2.0F);
+      k = (int)(f4 - localBgElement.e * f3 * f1 / 2.0F);
       f4 = localBgElement.c;
       f5 = j;
-      ((Drawable)localObject2).setBounds(k, (int)(f4 * localObject1 - localBgElement.jdField_a_of_type_Float * f5 * f1 / 2.0F), (int)(localBgElement.jdField_b_of_type_Int + f3 * localBgElement.jdField_a_of_type_Float * f1 / 2.0F), (int)(localBgElement.c * localObject1 + f5 * localBgElement.jdField_a_of_type_Float * f1 / 2.0F));
-      if (localBgElement.jdField_a_of_type_Boolean)
+      ((Drawable)localObject2).setBounds(k, (int)(f4 * localObject1 - localBgElement.e * f5 * f1 / 2.0F), (int)(localBgElement.b + f3 * localBgElement.e * f1 / 2.0F), (int)(localBgElement.c * localObject1 + f5 * localBgElement.e * f1 / 2.0F));
+      if (localBgElement.d)
       {
         ((Drawable)localObject2).setAlpha(77);
         ((Drawable)localObject2).setColorFilter(i, PorterDuff.Mode.MULTIPLY);
@@ -1515,19 +1515,19 @@ public class ConfessShareHelper
           if (paramInt2 != 2)
           {
             if (paramInt2 == 3) {
-              return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130844974, 138, 88, true, 0.75F), new ConfessShareHelper.BgElement(2130844968, 68, 232, true, 0.75F), new ConfessShareHelper.BgElement(2130844972, 298, 206, true, 0.75F), new ConfessShareHelper.BgElement(2130844975, 480, 140, true, 0.75F), new ConfessShareHelper.BgElement(2130845004, 382, 140, true, 0.75F), new ConfessShareHelper.BgElement(2130844999, 60, 90, true, 0.75F), new ConfessShareHelper.BgElement(2130844997, 182, 64, true, 0.75F), new ConfessShareHelper.BgElement(2130844997, 440, 210, true, 0.75F), new ConfessShareHelper.BgElement(2130844999, 440, 30, true, 0.75F), new ConfessShareHelper.BgElement(2130844999, 190, 200, true, 0.75F), new ConfessShareHelper.BgElement(2130844996, 257, 82, false, 1.0F) };
+              return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130846410, 138, 88, true, 0.75F), new ConfessShareHelper.BgElement(2130846404, 68, 232, true, 0.75F), new ConfessShareHelper.BgElement(2130846408, 298, 206, true, 0.75F), new ConfessShareHelper.BgElement(2130846411, 480, 140, true, 0.75F), new ConfessShareHelper.BgElement(2130846440, 382, 140, true, 0.75F), new ConfessShareHelper.BgElement(2130846435, 60, 90, true, 0.75F), new ConfessShareHelper.BgElement(2130846433, 182, 64, true, 0.75F), new ConfessShareHelper.BgElement(2130846433, 440, 210, true, 0.75F), new ConfessShareHelper.BgElement(2130846435, 440, 30, true, 0.75F), new ConfessShareHelper.BgElement(2130846435, 190, 200, true, 0.75F), new ConfessShareHelper.BgElement(2130846432, 257, 82, false, 1.0F) };
             }
           }
           else {
-            return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130844968, 174, 58, true, 0.75F), new ConfessShareHelper.BgElement(2130844970, 70, 146, true, 0.75F), new ConfessShareHelper.BgElement(2130844972, 390, 106, true, 0.75F), new ConfessShareHelper.BgElement(2130844967, 206, 240, true, 0.75F), new ConfessShareHelper.BgElement(2130844969, 470, 225, true, 0.75F), new ConfessShareHelper.BgElement(2130845000, 120, 88, true, 0.75F), new ConfessShareHelper.BgElement(2130845000, 480, 70, true, 0.75F), new ConfessShareHelper.BgElement(2130844997, 110, 230, true, 0.75F), new ConfessShareHelper.BgElement(2130844999, 340, 210, true, 0.75F), new ConfessShareHelper.BgElement(2130844996, 257, 82, false, 1.0F) };
+            return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130846404, 174, 58, true, 0.75F), new ConfessShareHelper.BgElement(2130846406, 70, 146, true, 0.75F), new ConfessShareHelper.BgElement(2130846408, 390, 106, true, 0.75F), new ConfessShareHelper.BgElement(2130846403, 206, 240, true, 0.75F), new ConfessShareHelper.BgElement(2130846405, 470, 225, true, 0.75F), new ConfessShareHelper.BgElement(2130846436, 120, 88, true, 0.75F), new ConfessShareHelper.BgElement(2130846436, 480, 70, true, 0.75F), new ConfessShareHelper.BgElement(2130846433, 110, 230, true, 0.75F), new ConfessShareHelper.BgElement(2130846435, 340, 210, true, 0.75F), new ConfessShareHelper.BgElement(2130846432, 257, 82, false, 1.0F) };
           }
         }
         else {
-          return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130844975, 60, 88, true, 0.75F), new ConfessShareHelper.BgElement(2130844967, 226, 56, true, 0.75F), new ConfessShareHelper.BgElement(2130844974, 480, 140, true, 0.75F), new ConfessShareHelper.BgElement(2130844972, 330, 198, true, 0.75F), new ConfessShareHelper.BgElement(2130844973, 168, 244, true, 0.75F), new ConfessShareHelper.BgElement(2130844999, 300, 50, true, 0.75F), new ConfessShareHelper.BgElement(2130845000, 460, 50, true, 0.75F), new ConfessShareHelper.BgElement(2130844997, 60, 230, true, 0.75F), new ConfessShareHelper.BgElement(2130844999, 120, 120, true, 0.75F), new ConfessShareHelper.BgElement(2130844999, 440, 270, true, 0.75F), new ConfessShareHelper.BgElement(2130844996, 257, 82, false, 1.0F) };
+          return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130846411, 60, 88, true, 0.75F), new ConfessShareHelper.BgElement(2130846403, 226, 56, true, 0.75F), new ConfessShareHelper.BgElement(2130846410, 480, 140, true, 0.75F), new ConfessShareHelper.BgElement(2130846408, 330, 198, true, 0.75F), new ConfessShareHelper.BgElement(2130846409, 168, 244, true, 0.75F), new ConfessShareHelper.BgElement(2130846435, 300, 50, true, 0.75F), new ConfessShareHelper.BgElement(2130846436, 460, 50, true, 0.75F), new ConfessShareHelper.BgElement(2130846433, 60, 230, true, 0.75F), new ConfessShareHelper.BgElement(2130846435, 120, 120, true, 0.75F), new ConfessShareHelper.BgElement(2130846435, 440, 270, true, 0.75F), new ConfessShareHelper.BgElement(2130846432, 257, 82, false, 1.0F) };
         }
       }
       else {
-        return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130844968, 60, 60, true, 0.75F), new ConfessShareHelper.BgElement(2130844973, 458, 84, true, 0.75F), new ConfessShareHelper.BgElement(2130844974, 142, 250, true, 0.75F), new ConfessShareHelper.BgElement(2130844968, 368, 188, true, 0.75F), new ConfessShareHelper.BgElement(2130844966, 168, 120, true, 0.75F), new ConfessShareHelper.BgElement(2130844999, 120, 40, true, 0.75F), new ConfessShareHelper.BgElement(2130845000, 120, 110, true, 0.75F), new ConfessShareHelper.BgElement(2130844997, 30, 150, true, 0.75F), new ConfessShareHelper.BgElement(2130844997, 180, 200, true, 0.75F), new ConfessShareHelper.BgElement(2130844999, 420, 160, true, 0.75F), new ConfessShareHelper.BgElement(2130845000, 495, 150, true, 0.75F), new ConfessShareHelper.BgElement(2130844996, 257, 82, false, 1.0F) };
+        return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130846404, 60, 60, true, 0.75F), new ConfessShareHelper.BgElement(2130846409, 458, 84, true, 0.75F), new ConfessShareHelper.BgElement(2130846410, 142, 250, true, 0.75F), new ConfessShareHelper.BgElement(2130846404, 368, 188, true, 0.75F), new ConfessShareHelper.BgElement(2130846402, 168, 120, true, 0.75F), new ConfessShareHelper.BgElement(2130846435, 120, 40, true, 0.75F), new ConfessShareHelper.BgElement(2130846436, 120, 110, true, 0.75F), new ConfessShareHelper.BgElement(2130846433, 30, 150, true, 0.75F), new ConfessShareHelper.BgElement(2130846433, 180, 200, true, 0.75F), new ConfessShareHelper.BgElement(2130846435, 420, 160, true, 0.75F), new ConfessShareHelper.BgElement(2130846436, 495, 150, true, 0.75F), new ConfessShareHelper.BgElement(2130846432, 257, 82, false, 1.0F) };
       }
     }
     else if (paramInt1 == 1)
@@ -1539,23 +1539,23 @@ public class ConfessShareHelper
           if (paramInt2 != 2)
           {
             if (paramInt2 == 3) {
-              return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130844968, 104, 278, true, 1.0F), new ConfessShareHelper.BgElement(2130844971, 588, 200, true, 1.0F), new ConfessShareHelper.BgElement(2130844967, 690, 390, true, 1.0F), new ConfessShareHelper.BgElement(2130844970, 420, 534, true, 1.0F), new ConfessShareHelper.BgElement(2130844969, 92, 592, true, 1.0F), new ConfessShareHelper.BgElement(2130844973, 660, 624, true, 1.0F), new ConfessShareHelper.BgElement(2130844968, 475, 735, true, 1.0F), new ConfessShareHelper.BgElement(2130844974, 192, 818, true, 1.0F), new ConfessShareHelper.BgElement(2130844975, 696, 880, true, 1.0F), new ConfessShareHelper.BgElement(2130844972, 430, 990, true, 1.0F), new ConfessShareHelper.BgElement(2130844967, 64, 1034, true, 1.0F), new ConfessShareHelper.BgElement(2130844967, 272, 1250, true, 1.0F), new ConfessShareHelper.BgElement(2130844971, 584, 1205, true, 1.0F), new ConfessShareHelper.BgElement(2130844966, 254, 638, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 200, 320, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 260, 780, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 620, 1000, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 150, 1250, true, 1.0F), new ConfessShareHelper.BgElement(2130844998, 70, 420, true, 1.0F), new ConfessShareHelper.BgElement(2130844998, 460, 590, true, 1.0F), new ConfessShareHelper.BgElement(2130844998, 630, 450, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 70, 800, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 280, 980, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 610, 720, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 480, 1220, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 170, 590, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 330, 1160, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 700, 680, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 660, 290, true, 1.0F), new ConfessShareHelper.BgElement(2130845003, 375, 134, false, 1.0F) };
+              return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130846404, 104, 278, true, 1.0F), new ConfessShareHelper.BgElement(2130846407, 588, 200, true, 1.0F), new ConfessShareHelper.BgElement(2130846403, 690, 390, true, 1.0F), new ConfessShareHelper.BgElement(2130846406, 420, 534, true, 1.0F), new ConfessShareHelper.BgElement(2130846405, 92, 592, true, 1.0F), new ConfessShareHelper.BgElement(2130846409, 660, 624, true, 1.0F), new ConfessShareHelper.BgElement(2130846404, 475, 735, true, 1.0F), new ConfessShareHelper.BgElement(2130846410, 192, 818, true, 1.0F), new ConfessShareHelper.BgElement(2130846411, 696, 880, true, 1.0F), new ConfessShareHelper.BgElement(2130846408, 430, 990, true, 1.0F), new ConfessShareHelper.BgElement(2130846403, 64, 1034, true, 1.0F), new ConfessShareHelper.BgElement(2130846403, 272, 1250, true, 1.0F), new ConfessShareHelper.BgElement(2130846407, 584, 1205, true, 1.0F), new ConfessShareHelper.BgElement(2130846402, 254, 638, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 200, 320, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 260, 780, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 620, 1000, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 150, 1250, true, 1.0F), new ConfessShareHelper.BgElement(2130846434, 70, 420, true, 1.0F), new ConfessShareHelper.BgElement(2130846434, 460, 590, true, 1.0F), new ConfessShareHelper.BgElement(2130846434, 630, 450, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 70, 800, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 280, 980, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 610, 720, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 480, 1220, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 170, 590, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 330, 1160, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 700, 680, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 660, 290, true, 1.0F), new ConfessShareHelper.BgElement(2130846439, 375, 134, false, 1.0F) };
             }
           }
           else {
-            return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130844968, 110, 220, true, 1.0F), new ConfessShareHelper.BgElement(2130844974, 654, 240, true, 1.0F), new ConfessShareHelper.BgElement(2130844972, 562, 482, true, 1.0F), new ConfessShareHelper.BgElement(2130844970, 95, 537, true, 1.0F), new ConfessShareHelper.BgElement(2130844967, 295, 672, true, 1.0F), new ConfessShareHelper.BgElement(2130844969, 683, 660, true, 1.0F), new ConfessShareHelper.BgElement(2130844971, 60, 850, true, 1.0F), new ConfessShareHelper.BgElement(2130844973, 442, 872, true, 1.0F), new ConfessShareHelper.BgElement(2130844967, 114, 1046, true, 1.0F), new ConfessShareHelper.BgElement(2130844968, 680, 950, true, 1.0F), new ConfessShareHelper.BgElement(2130844973, 230, 1197, true, 1.0F), new ConfessShareHelper.BgElement(2130844975, 480, 1260, true, 1.0F), new ConfessShareHelper.BgElement(2130845004, 670, 1200, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 140, 630, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 500, 960, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 330, 1050, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 50, 1150, true, 1.0F), new ConfessShareHelper.BgElement(2130844998, 290, 430, true, 1.0F), new ConfessShareHelper.BgElement(2130844998, 330, 760, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 60, 310, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 480, 580, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 220, 820, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 600, 150, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 700, 410, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 25, 900, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 150, 430, true, 1.0F), new ConfessShareHelper.BgElement(2130845003, 375, 134, false, 1.0F) };
+            return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130846404, 110, 220, true, 1.0F), new ConfessShareHelper.BgElement(2130846410, 654, 240, true, 1.0F), new ConfessShareHelper.BgElement(2130846408, 562, 482, true, 1.0F), new ConfessShareHelper.BgElement(2130846406, 95, 537, true, 1.0F), new ConfessShareHelper.BgElement(2130846403, 295, 672, true, 1.0F), new ConfessShareHelper.BgElement(2130846405, 683, 660, true, 1.0F), new ConfessShareHelper.BgElement(2130846407, 60, 850, true, 1.0F), new ConfessShareHelper.BgElement(2130846409, 442, 872, true, 1.0F), new ConfessShareHelper.BgElement(2130846403, 114, 1046, true, 1.0F), new ConfessShareHelper.BgElement(2130846404, 680, 950, true, 1.0F), new ConfessShareHelper.BgElement(2130846409, 230, 1197, true, 1.0F), new ConfessShareHelper.BgElement(2130846411, 480, 1260, true, 1.0F), new ConfessShareHelper.BgElement(2130846440, 670, 1200, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 140, 630, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 500, 960, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 330, 1050, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 50, 1150, true, 1.0F), new ConfessShareHelper.BgElement(2130846434, 290, 430, true, 1.0F), new ConfessShareHelper.BgElement(2130846434, 330, 760, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 60, 310, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 480, 580, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 220, 820, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 600, 150, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 700, 410, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 25, 900, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 150, 430, true, 1.0F), new ConfessShareHelper.BgElement(2130846439, 375, 134, false, 1.0F) };
           }
         }
         else {
-          return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130844972, 110, 368, true, 1.0F), new ConfessShareHelper.BgElement(2130844973, 570, 256, true, 1.0F), new ConfessShareHelper.BgElement(2130844968, 655, 475, true, 1.0F), new ConfessShareHelper.BgElement(2130844975, 75, 740, true, 1.0F), new ConfessShareHelper.BgElement(2130844967, 320, 686, true, 1.0F), new ConfessShareHelper.BgElement(2130844974, 670, 832, true, 1.0F), new ConfessShareHelper.BgElement(2130844972, 505, 955, true, 1.0F), new ConfessShareHelper.BgElement(2130844973, 260, 1020, true, 1.0F), new ConfessShareHelper.BgElement(2130844971, 75, 1216, true, 1.0F), new ConfessShareHelper.BgElement(2130844967, 565, 1235, true, 1.0F), new ConfessShareHelper.BgElement(2130845004, 430, 355, true, 1.0F), new ConfessShareHelper.BgElement(2130844966, 110, 174, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 140, 250, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 640, 195, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 170, 450, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 490, 1220, true, 1.0F), new ConfessShareHelper.BgElement(2130844998, 350, 520, true, 1.0F), new ConfessShareHelper.BgElement(2130844998, 630, 410, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 60, 500, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 680, 655, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 310, 1110, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 470, 660, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 190, 780, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 680, 1060, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 180, 1230, true, 1.0F), new ConfessShareHelper.BgElement(2130845003, 375, 134, false, 1.0F) };
+          return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130846408, 110, 368, true, 1.0F), new ConfessShareHelper.BgElement(2130846409, 570, 256, true, 1.0F), new ConfessShareHelper.BgElement(2130846404, 655, 475, true, 1.0F), new ConfessShareHelper.BgElement(2130846411, 75, 740, true, 1.0F), new ConfessShareHelper.BgElement(2130846403, 320, 686, true, 1.0F), new ConfessShareHelper.BgElement(2130846410, 670, 832, true, 1.0F), new ConfessShareHelper.BgElement(2130846408, 505, 955, true, 1.0F), new ConfessShareHelper.BgElement(2130846409, 260, 1020, true, 1.0F), new ConfessShareHelper.BgElement(2130846407, 75, 1216, true, 1.0F), new ConfessShareHelper.BgElement(2130846403, 565, 1235, true, 1.0F), new ConfessShareHelper.BgElement(2130846440, 430, 355, true, 1.0F), new ConfessShareHelper.BgElement(2130846402, 110, 174, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 140, 250, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 640, 195, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 170, 450, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 490, 1220, true, 1.0F), new ConfessShareHelper.BgElement(2130846434, 350, 520, true, 1.0F), new ConfessShareHelper.BgElement(2130846434, 630, 410, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 60, 500, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 680, 655, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 310, 1110, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 470, 660, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 190, 780, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 680, 1060, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 180, 1230, true, 1.0F), new ConfessShareHelper.BgElement(2130846439, 375, 134, false, 1.0F) };
         }
       }
       else {
-        return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130844969, 110, 230, true, 1.0F), new ConfessShareHelper.BgElement(2130844972, 656, 170, true, 1.0F), new ConfessShareHelper.BgElement(2130844967, 516, 350, true, 1.0F), new ConfessShareHelper.BgElement(2130844968, 84, 550, true, 1.0F), new ConfessShareHelper.BgElement(2130844973, 656, 586, true, 1.0F), new ConfessShareHelper.BgElement(2130844968, 526, 735, true, 1.0F), new ConfessShareHelper.BgElement(2130844974, 198, 830, true, 1.0F), new ConfessShareHelper.BgElement(2130844970, 70, 1016, true, 1.0F), new ConfessShareHelper.BgElement(2130844972, 397, 952, true, 1.0F), new ConfessShareHelper.BgElement(2130844975, 670, 880, true, 1.0F), new ConfessShareHelper.BgElement(2130844967, 220, 1257, true, 1.0F), new ConfessShareHelper.BgElement(2130844971, 606, 1220, true, 1.0F), new ConfessShareHelper.BgElement(2130845004, 452, 475, true, 1.0F), new ConfessShareHelper.BgElement(2130844966, 240, 645, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 160, 300, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 660, 330, true, 1.0F), new ConfessShareHelper.BgElement(2130844998, 620, 450, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 175, 500, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 460, 570, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 180, 630, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 40, 690, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 260, 750, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 710, 600, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 600, 710, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 140, 970, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 85, 1200, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 600, 1050, true, 1.0F), new ConfessShareHelper.BgElement(2130845000, 420, 1100, true, 1.0F), new ConfessShareHelper.BgElement(2130844999, 540, 1250, true, 1.0F), new ConfessShareHelper.BgElement(2130845003, 375, 134, false, 1.0F) };
+        return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130846405, 110, 230, true, 1.0F), new ConfessShareHelper.BgElement(2130846408, 656, 170, true, 1.0F), new ConfessShareHelper.BgElement(2130846403, 516, 350, true, 1.0F), new ConfessShareHelper.BgElement(2130846404, 84, 550, true, 1.0F), new ConfessShareHelper.BgElement(2130846409, 656, 586, true, 1.0F), new ConfessShareHelper.BgElement(2130846404, 526, 735, true, 1.0F), new ConfessShareHelper.BgElement(2130846410, 198, 830, true, 1.0F), new ConfessShareHelper.BgElement(2130846406, 70, 1016, true, 1.0F), new ConfessShareHelper.BgElement(2130846408, 397, 952, true, 1.0F), new ConfessShareHelper.BgElement(2130846411, 670, 880, true, 1.0F), new ConfessShareHelper.BgElement(2130846403, 220, 1257, true, 1.0F), new ConfessShareHelper.BgElement(2130846407, 606, 1220, true, 1.0F), new ConfessShareHelper.BgElement(2130846440, 452, 475, true, 1.0F), new ConfessShareHelper.BgElement(2130846402, 240, 645, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 160, 300, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 660, 330, true, 1.0F), new ConfessShareHelper.BgElement(2130846434, 620, 450, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 175, 500, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 460, 570, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 180, 630, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 40, 690, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 260, 750, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 710, 600, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 600, 710, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 140, 970, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 85, 1200, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 600, 1050, true, 1.0F), new ConfessShareHelper.BgElement(2130846436, 420, 1100, true, 1.0F), new ConfessShareHelper.BgElement(2130846435, 540, 1250, true, 1.0F), new ConfessShareHelper.BgElement(2130846439, 375, 134, false, 1.0F) };
       }
     }
     else if (paramInt1 == 2) {
-      return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130844969, 110, 310, true, 1.0F), new ConfessShareHelper.BgElement(2130844972, 650, 216, true, 1.0F), new ConfessShareHelper.BgElement(2130844967, 516, 350, true, 1.0F), new ConfessShareHelper.BgElement(2130844969, 92, 592, true, 1.0F), new ConfessShareHelper.BgElement(2130844973, 656, 586, true, 1.0F), new ConfessShareHelper.BgElement(2130844968, 470, 716, true, 1.0F), new ConfessShareHelper.BgElement(2130844974, 198, 830, true, 1.0F), new ConfessShareHelper.BgElement(2130844975, 670, 980, true, 1.0F), new ConfessShareHelper.BgElement(2130844972, 397, 1060, true, 1.0F), new ConfessShareHelper.BgElement(2130844970, 70, 1016, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 200, 320, true, 1.0F), new ConfessShareHelper.BgElement(2130844966, 240, 438, true, 1.0F), new ConfessShareHelper.BgElement(2130845004, 452, 475, true, 0.75F), new ConfessShareHelper.BgElement(2130844997, 200, 600, true, 1.0F), new ConfessShareHelper.BgElement(2130844997, 1000, 620, true, 1.0F), new ConfessShareHelper.BgElement(2130844998, 70, 420, true, 1.0F) };
+      return new ConfessShareHelper.BgElement[] { new ConfessShareHelper.BgElement(2130846405, 110, 310, true, 1.0F), new ConfessShareHelper.BgElement(2130846408, 650, 216, true, 1.0F), new ConfessShareHelper.BgElement(2130846403, 516, 350, true, 1.0F), new ConfessShareHelper.BgElement(2130846405, 92, 592, true, 1.0F), new ConfessShareHelper.BgElement(2130846409, 656, 586, true, 1.0F), new ConfessShareHelper.BgElement(2130846404, 470, 716, true, 1.0F), new ConfessShareHelper.BgElement(2130846410, 198, 830, true, 1.0F), new ConfessShareHelper.BgElement(2130846411, 670, 980, true, 1.0F), new ConfessShareHelper.BgElement(2130846408, 397, 1060, true, 1.0F), new ConfessShareHelper.BgElement(2130846406, 70, 1016, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 200, 320, true, 1.0F), new ConfessShareHelper.BgElement(2130846402, 240, 438, true, 1.0F), new ConfessShareHelper.BgElement(2130846440, 452, 475, true, 0.75F), new ConfessShareHelper.BgElement(2130846433, 200, 600, true, 1.0F), new ConfessShareHelper.BgElement(2130846433, 1000, 620, true, 1.0F), new ConfessShareHelper.BgElement(2130846434, 70, 420, true, 1.0F) };
     }
     return new ConfessShareHelper.BgElement[0];
   }
@@ -1638,7 +1638,7 @@ public class ConfessShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessShareHelper
  * JD-Core Version:    0.7.0.1
  */

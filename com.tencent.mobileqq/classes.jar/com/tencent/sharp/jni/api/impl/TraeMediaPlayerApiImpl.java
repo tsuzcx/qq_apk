@@ -312,7 +312,7 @@ public class TraeMediaPlayerApiImpl
       ((StringBuilder)localObject).append("], callStreamType[");
       ((StringBuilder)localObject).append(paramInt4);
       ((StringBuilder)localObject).append("], devicesInfo[");
-      ((StringBuilder)localObject).append(AppSetting.c);
+      ((StringBuilder)localObject).append(AppSetting.u);
       ((StringBuilder)localObject).append("], seq[");
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append("]");
@@ -435,7 +435,7 @@ public class TraeMediaPlayerApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.sharp.jni.api.impl.TraeMediaPlayerApiImpl
  * JD-Core Version:    0.7.0.1
  */

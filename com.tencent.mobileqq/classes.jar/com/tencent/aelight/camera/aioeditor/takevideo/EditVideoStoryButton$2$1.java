@@ -7,14 +7,14 @@ class EditVideoStoryButton$2$1
   
   public void run()
   {
-    EditVideoStoryButton.a(this.a.a);
+    EditVideoStoryButton.b(this.a.a);
     EditVideoStoryButton.a(this.a.a, 100);
-    this.a.a.h();
+    this.a.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoStoryButton.2.1
  * JD-Core Version:    0.7.0.1
  */

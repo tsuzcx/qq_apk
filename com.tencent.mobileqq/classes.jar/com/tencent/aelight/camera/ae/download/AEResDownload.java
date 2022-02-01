@@ -67,7 +67,7 @@ public class AEResDownload
         }
         else
         {
-          if ((!TextUtils.isEmpty(AEResUtil.b(paramAEResInfo))) && (AEResUtil.b(paramAEResInfo)))
+          if ((!TextUtils.isEmpty(AEResUtil.b(paramAEResInfo))) && (AEResUtil.d(paramAEResInfo)))
           {
             AEQLog.d("AEResDownload", "[realDownloadResource info] local exist");
             paramList = paramList.name;
@@ -89,7 +89,7 @@ public class AEResDownload
       }
       ((HttpNetReq)localObject).mHttpMethod = 0;
       paramAEResInfo = new StringBuilder();
-      paramAEResInfo.append(AEResUtil.c());
+      paramAEResInfo.append(AEResUtil.d());
       paramAEResInfo.append(paramList.name);
       ((HttpNetReq)localObject).mOutPath = paramAEResInfo.toString();
       ((HttpNetReq)localObject).mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
@@ -121,7 +121,7 @@ public class AEResDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.AEResDownload
  * JD-Core Version:    0.7.0.1
  */

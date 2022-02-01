@@ -8,7 +8,6 @@ import android.content.SharedPreferences.Editor;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.location.Location;
-import android.location.LocationManager;
 import android.net.wifi.ScanResult;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -27,6 +26,7 @@ import com.tencent.map.geolocation.TencentLocationListener;
 import com.tencent.map.geolocation.TencentLocationManagerOptions;
 import com.tencent.map.geolocation.TencentLocationRequest;
 import com.tencent.map.geolocation.TencentPedestrianData;
+import com.tencent.mobileqq.qmethodmonitor.monitor.LocationMonitor;
 import com.tencent.tencentmap.lbssdk.service.e;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -884,12 +884,12 @@ public final class ek
                 {
                   long l1;
                   boolean bool2;
-                  paramTencentLocationListener.b.h.requestLocationUpdates("gps", 1000L, 0.0F, paramTencentLocationListener.j, paramTencentLocationListener.g.getLooper());
+                  LocationMonitor.requestLocationUpdates(paramTencentLocationListener.b.h, "gps", 1000L, 0.0F, paramTencentLocationListener.j, paramTencentLocationListener.g.getLooper());
                   label1201:
                   paramTencentLocationListener.i.post(paramTencentLocationListener.h);
                   paramTencentLocationListener.e = System.currentTimeMillis();
                   break label1249;
-                  ???.requestLocationUpdates("passive", 5000L, 0.0F, paramTencentLocationListener, paramTencentLocationListener.g.getLooper());
+                  LocationMonitor.requestLocationUpdates(???, "passive", 5000L, 0.0F, paramTencentLocationListener, paramTencentLocationListener.g.getLooper());
                   break label1249;
                   label1245:
                   fj.a = true;

@@ -16,45 +16,43 @@ import java.util.List;
 public class MemoriesInnerListView
   extends HorizontalListView
 {
-  protected int a;
-  public MemoriesInnerListView.OnInnerListRefreshListener a;
-  private MemoriesInnerListAdapter a;
+  public MemoriesInnerListView.OnInnerListRefreshListener a = null;
   protected int b;
+  protected int c;
+  private MemoriesInnerListAdapter d;
   
   public MemoriesInnerListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewMemoriesInnerListView$OnInnerListRefreshListener = null;
     a(paramContext);
   }
   
   public MemoriesInnerListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewMemoriesInnerListView$OnInnerListRefreshListener = null;
     a(paramContext);
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = DisplayUtil.a(paramContext, 82.0F);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter = new MemoriesInnerListAdapter(getContext());
-    super.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter);
-    super.setOnItemClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter);
+    this.b = paramContext.getResources().getDisplayMetrics().widthPixels;
+    this.c = DisplayUtil.a(paramContext, 82.0F);
+    this.d = new MemoriesInnerListAdapter(getContext());
+    super.setAdapter(this.d);
+    super.setOnItemClickListener(this.d);
     super.setOnScrollStateChangedListener(new MemoriesInnerListView.1(this));
     setOverScrollMode(1);
   }
   
-  public BaseAdapter a()
+  public BaseAdapter getAdapter()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter;
+    return this.d;
   }
   
   public void setDate(List<VideoCollectionItem.FakeVideoUIItem> paramList, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter.a(paramList, paramString);
-    int i = this.jdField_a_of_type_Int / this.b;
+    this.d.a(paramList, paramString);
+    int i = this.b / this.c;
     if (paramList.size() >= i)
     {
       setOverScrollMode(0);

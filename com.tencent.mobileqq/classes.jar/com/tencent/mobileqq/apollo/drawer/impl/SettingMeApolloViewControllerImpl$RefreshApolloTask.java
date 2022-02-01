@@ -11,9 +11,11 @@ import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
 import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
 import com.tencent.mobileqq.apollo.statistics.CmShowStatUtil;
 import com.tencent.mobileqq.apollo.statistics.trace.TraceReportUtil;
-import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.lang.ref.WeakReference;
@@ -42,7 +44,7 @@ class SettingMeApolloViewControllerImpl$RefreshApolloTask
       if (localObject1 == null) {
         return;
       }
-      Object localObject2 = (QQAppInterface)((QQSettingMe)localObject1).a();
+      Object localObject2 = (QQAppInterface)((QQSettingMe)localObject1).h();
       if (localObject2 == null) {
         return;
       }
@@ -51,7 +53,7 @@ class SettingMeApolloViewControllerImpl$RefreshApolloTask
         return;
       }
       CmShowStatUtil.b("drawer_pre");
-      int i = TraceReportUtil.a(1);
+      int i = TraceReportUtil.c(1);
       TraceReportUtil.a(i);
       TraceReportUtil.a(i, 1);
       TraceReportUtil.a(i, 10);
@@ -63,7 +65,7 @@ class SettingMeApolloViewControllerImpl$RefreshApolloTask
       localObject3 = ApolloDrawerInfoManager.a((QQAppInterface)localObject2, ((QQAppInterface)localObject2).getCurrentUin(), (ApolloBaseInfo)localObject3, 1);
       if ((localObject3 != null) && (!((CheckApolloInfoResult)localObject3).needStatic))
       {
-        if (!ApolloActionHelperImpl.checkBasicActionExit((QQAppInterface)localObject2))
+        if (!ApolloResManagerFacade.a.a(Scene.DRAWER).a((QQAppInterface)localObject2))
         {
           TraceReportUtil.a(((CheckApolloInfoResult)localObject3).traceFeatureId, 10, 110, new Object[] { "role 0 not ready" });
           if (QLog.isColorLevel()) {
@@ -73,10 +75,10 @@ class SettingMeApolloViewControllerImpl$RefreshApolloTask
         }
         TraceReportUtil.a(((CheckApolloInfoResult)localObject3).traceFeatureId, 10, 0, new Object[] { "switch done" });
         TraceReportUtil.a(i, 11);
-        localObject2 = ((SettingMeApolloViewControllerImpl)localObject1).mUIHandler.obtainMessage(65536);
+        localObject2 = SettingMeApolloViewControllerImpl.access$2100((SettingMeApolloViewControllerImpl)localObject1).obtainMessage(65536);
         ((Message)localObject2).obj = localObject3;
-        ((SettingMeApolloViewControllerImpl)localObject1).mApolloFeatureFlag = ((CheckApolloInfoResult)localObject3).apolloFeatureFlag;
-        ((SettingMeApolloViewControllerImpl)localObject1).mUIHandler.sendMessageAtFrontOfQueue((Message)localObject2);
+        SettingMeApolloViewControllerImpl.access$2202((SettingMeApolloViewControllerImpl)localObject1, ((CheckApolloInfoResult)localObject3).apolloFeatureFlag);
+        SettingMeApolloViewControllerImpl.access$2100((SettingMeApolloViewControllerImpl)localObject1).sendMessageAtFrontOfQueue((Message)localObject2);
         return;
       }
       QLog.w("[cmshow][SettingMeApolloViewController]", 1, "checkDrawerRoleDressInfo not ready");
@@ -85,7 +87,7 @@ class SettingMeApolloViewControllerImpl$RefreshApolloTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.drawer.impl.SettingMeApolloViewControllerImpl.RefreshApolloTask
  * JD-Core Version:    0.7.0.1
  */

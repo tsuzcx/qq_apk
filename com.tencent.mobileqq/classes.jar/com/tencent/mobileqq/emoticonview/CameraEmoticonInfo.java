@@ -55,7 +55,7 @@ public class CameraEmoticonInfo
       int i = (int)(paramFloat * 100.0F);
       localURLDrawableOptions.mRequestHeight = i;
       localURLDrawableOptions.mRequestWidth = i;
-      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130846453);
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130847926);
       localURLDrawableOptions.mLoadingDrawable = this.mEmptyDrawable;
       localURLDrawableOptions.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
@@ -89,7 +89,7 @@ public class CameraEmoticonInfo
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = paramInt1;
       localURLDrawableOptions.mRequestWidth = paramInt2;
-      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130846453);
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130847926);
       localURLDrawableOptions.mLoadingDrawable = this.mEmptyDrawable;
       localURLDrawableOptions.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
@@ -138,10 +138,10 @@ public class CameraEmoticonInfo
       try
       {
         localObject1 = paramContext.getResources();
-        paramContext = ((Resources)localObject1).getDrawable(2130846447);
+        paramContext = ((Resources)localObject1).getDrawable(2130847920);
         try
         {
-          localObject1 = ((Resources)localObject1).getDrawable(2130846453);
+          localObject1 = ((Resources)localObject1).getDrawable(2130847926);
         }
         catch (OutOfMemoryError localOutOfMemoryError1)
         {
@@ -260,7 +260,7 @@ public class CameraEmoticonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CameraEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

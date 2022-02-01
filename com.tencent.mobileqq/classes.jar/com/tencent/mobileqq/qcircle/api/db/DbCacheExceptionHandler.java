@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDiskIOException;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteFullException;
 import android.os.Build.VERSION;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class DbCacheExceptionHandler
 {
@@ -20,7 +20,7 @@ public class DbCacheExceptionHandler
     return DbCacheExceptionHandler.InstanceHolder.a;
   }
   
-  private void a() {}
+  private void b() {}
   
   public void a(Context paramContext)
   {
@@ -45,19 +45,18 @@ public class DbCacheExceptionHandler
       }
       throw new DbCacheExceptionHandler.DbCacheError(paramThrowable);
     }
-    DbCacheService.a().a(paramString);
+    DbCacheService.c().a(paramString);
     this.a.deleteDatabase(paramString);
-    int i = RFLog.USR;
     paramThrowable = new StringBuilder();
     paramThrowable.append("deleteDatabase:");
     paramThrowable.append(paramString);
-    RFLog.e("QCircleDbCacheDatabase.DbCacheExceptionHandler", i, paramThrowable.toString());
-    a();
+    QLog.e("QCircleDbCacheDatabase.DbCacheExceptionHandler", 1, paramThrowable.toString());
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.DbCacheExceptionHandler
  * JD-Core Version:    0.7.0.1
  */

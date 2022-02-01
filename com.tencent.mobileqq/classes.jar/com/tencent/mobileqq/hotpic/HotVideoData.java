@@ -38,7 +38,7 @@ public class HotVideoData
     try
     {
       HotVideoData.HotVideoGetUrlResult localHotVideoGetUrlResult = new HotVideoData.HotVideoGetUrlResult();
-      localHotVideoGetUrlResult.a = paramInt2;
+      localHotVideoGetUrlResult.f = paramInt2;
       String str1;
       if (paramInt2 == 1) {
         str1 = this.mPreviewUUID;
@@ -241,7 +241,7 @@ public class HotVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoData
  * JD-Core Version:    0.7.0.1
  */

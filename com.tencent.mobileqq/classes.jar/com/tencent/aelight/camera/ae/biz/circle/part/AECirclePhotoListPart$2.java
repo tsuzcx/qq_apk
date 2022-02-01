@@ -15,14 +15,14 @@ class AECirclePhotoListPart$2
   
   public void onPageSelected(int paramInt)
   {
-    if ((AECirclePhotoListPart.a(this.a) != null) && (AECirclePhotoListPart.a(this.a).getChildCount() > paramInt)) {
-      AECirclePhotoListPart.a(this.a).getChildAt(paramInt).performClick();
+    if ((AECirclePhotoListPart.e(this.a) != null) && (AECirclePhotoListPart.e(this.a).getChildCount() > paramInt)) {
+      AECirclePhotoListPart.e(this.a).getChildAt(paramInt).performClick();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.part.AECirclePhotoListPart.2
  * JD-Core Version:    0.7.0.1
  */

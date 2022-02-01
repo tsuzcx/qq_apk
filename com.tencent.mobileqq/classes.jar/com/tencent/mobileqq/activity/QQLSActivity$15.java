@@ -20,22 +20,22 @@ class QQLSActivity$15
       ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
       ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
       ((IntentFilter)localObject).addAction("android.intent.action.USER_PRESENT");
-      if (QQLSActivity.a(this.this$0) == 0)
+      if (QQLSActivity.z(this.this$0) == 0)
       {
-        BaseApplicationImpl.getContext().registerReceiver(this.this$0.a, (IntentFilter)localObject);
+        BaseApplicationImpl.getContext().registerReceiver(this.this$0.s, (IntentFilter)localObject);
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("registerScreenListener real mScreenReceiver:");
-          ((StringBuilder)localObject).append(this.this$0.a.hashCode());
+          ((StringBuilder)localObject).append(this.this$0.s.hashCode());
           ((StringBuilder)localObject).append("context :");
           ((StringBuilder)localObject).append(BaseApplicationImpl.getContext().hashCode());
           QLog.d("QQLSActivity", 2, ((StringBuilder)localObject).toString());
         }
         QQLSActivity.a(this.this$0, 1);
       }
-      QQLSActivity.a(this.this$0, AnimationUtils.loadAnimation(this.this$0, 2130772274));
-      QQLSActivity.a(this.this$0).setFillAfter(true);
+      QQLSActivity.a(this.this$0, AnimationUtils.loadAnimation(this.this$0, 2130772360));
+      QQLSActivity.A(this.this$0).setFillAfter(true);
       if (QLog.isColorLevel())
       {
         QLog.d("QQLSActivity", 2, "registerScreenListener");
@@ -57,7 +57,7 @@ class QQLSActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.15
  * JD-Core Version:    0.7.0.1
  */

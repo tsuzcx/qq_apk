@@ -28,7 +28,7 @@ class CardHandler$4
   {
     if (paramLong1 == paramLong2)
     {
-      this.a.b = null;
+      this.a.d = null;
       if (QLog.isColorLevel()) {
         QLog.d("Q.qzonephotowall", 2, "onUploadProgress is 100%");
       }
@@ -42,10 +42,10 @@ class CardHandler$4
     if (QLog.isColorLevel()) {
       QLog.d("Q.qzonephotowall", 2, "onUploadSucceed ");
     }
-    synchronized (CardHandler.a(this.a))
+    synchronized (CardHandler.c(this.a))
     {
-      if (CardHandler.a(this.a).size() != 0) {
-        CardHandler.a(this.a);
+      if (CardHandler.c(this.a).size() != 0) {
+        CardHandler.b(this.a);
       } else {
         this.a.notifyUI(69, true, new Object[0]);
       }
@@ -55,7 +55,7 @@ class CardHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.CardHandler.4
  * JD-Core Version:    0.7.0.1
  */

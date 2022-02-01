@@ -14,7 +14,7 @@ class MultiMembersAudioUI$1
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener != null)
+    if (this.a.j != null)
     {
       MultiMembersUI.Holder localHolder = (MultiMembersUI.Holder)paramView.getTag();
       if (localHolder == null)
@@ -26,15 +26,15 @@ class MultiMembersAudioUI$1
       else
       {
         int i;
-        if (localHolder.c) {
+        if (localHolder.n) {
           i = 7;
         } else {
-          i = this.a.a(localHolder.jdField_a_of_type_Long);
+          i = this.a.a(localHolder.a);
         }
-        if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2))) {
-          this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(localHolder.jdField_a_of_type_Long, localHolder.jdField_a_of_type_Int, i, true);
+        if ((this.a.k.size() > 8) && ((this.a.i == 1) || (this.a.i == 2))) {
+          this.a.j.a(localHolder.a, localHolder.b, i, true);
         } else {
-          this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(localHolder.jdField_a_of_type_Long, localHolder.jdField_a_of_type_Int, i, false);
+          this.a.j.a(localHolder.a, localHolder.b, i, false);
         }
       }
     }

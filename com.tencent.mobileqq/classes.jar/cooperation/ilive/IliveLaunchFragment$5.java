@@ -21,15 +21,15 @@ class IliveLaunchFragment$5
     if (paramBoolean)
     {
       ElapseStat.a("IliveLaunch initSDKAsync");
-      QQVideoPlaySDKManager.a(BaseApplicationImpl.getApplication(), new IliveLaunchFragment.5.1(this));
+      QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getApplication(), new IliveLaunchFragment.5.1(this));
       return;
     }
-    this.jdField_a_of_type_CooperationIliveIliveLaunchFragment.onFail(108, "media play so load fail");
+    this.b.onFail(108, "media play so load fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment.5
  * JD-Core Version:    0.7.0.1
  */

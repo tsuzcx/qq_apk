@@ -9,7 +9,7 @@ final class TranslateCache$1
   
   public void run()
   {
-    TranslateCache.a(this.a);
+    TranslateCache.b(this.a);
   }
 }
 

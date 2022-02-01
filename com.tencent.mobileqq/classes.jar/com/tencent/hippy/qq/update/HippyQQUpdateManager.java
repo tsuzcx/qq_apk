@@ -160,7 +160,7 @@ public class HippyQQUpdateManager
     JSONObject localJSONObject2 = new JSONObject();
     localJSONObject2.put("iPlatform", 0);
     localJSONObject2.put("sAppKey", "mqq");
-    localJSONObject2.put("sAppVer", "8.7.0.5295");
+    localJSONObject2.put("sAppVer", "8.8.17.5770");
     localJSONObject2.put("sSdkVer", "3.0");
     localJSONObject2.put("sChannel", "10001");
     localJSONObject2.put("sGuid", getGuid());
@@ -177,7 +177,7 @@ public class HippyQQUpdateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.update.HippyQQUpdateManager
  * JD-Core Version:    0.7.0.1
  */

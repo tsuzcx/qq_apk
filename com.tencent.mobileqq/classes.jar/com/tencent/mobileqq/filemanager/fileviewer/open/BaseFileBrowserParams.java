@@ -14,78 +14,70 @@ import com.tencent.mobileqq.utils.FileUtils;
 public abstract class BaseFileBrowserParams
   extends IFileBrowserParams
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface f;
+  private Context g;
   
   public BaseFileBrowserParams(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  protected abstract int a();
-  
-  protected abstract long a();
-  
-  public SessionInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.g = paramContext;
+    this.f = paramQQAppInterface;
   }
   
   public ChatMessage a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+    return this.a;
   }
-  
-  protected abstract String a();
   
   public void a(SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.b = paramSessionInfo;
   }
   
   public void a(ChatMessage paramChatMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.a = paramChatMessage;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
-  public boolean a()
+  public SessionInfo b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
-  
-  protected abstract String b();
   
   public void b(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.d = paramBoolean;
   }
   
-  public boolean b()
+  public boolean c()
   {
-    String str = a();
-    long l = a();
-    if (FileUtils.fileExistsAndNotEmpty(b())) {
+    return this.c;
+  }
+  
+  public boolean d()
+  {
+    String str = e();
+    long l = f();
+    if (FileUtils.fileExistsAndNotEmpty(h())) {
       return false;
     }
-    int i = a();
+    int i = g();
     if (i != 2)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) && (i == 8)) {
+      if ((this.b != null) && (this.b.a == 1) && (i == 8)) {
         return false;
       }
-      if (FileManagerUtil.a(str) != 2) {
+      if (FileManagerUtil.c(str) != 2) {
         return false;
       }
-      if (!FileManagerUtil.a()) {
+      if (!FileManagerUtil.b()) {
         return false;
       }
-      if ((!TextUtils.isEmpty(str)) && (l > 0L) && (l > ((IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig(HWTroopUtils.a(str)).b)) {
+      if ((!TextUtils.isEmpty(str)) && (l > 0L) && (l > ((IQFileConfigManager)this.f.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig(HWTroopUtils.a(str)).b)) {
         return true;
       }
       if (l > 1048576L) {
@@ -94,10 +86,18 @@ public abstract class BaseFileBrowserParams
     }
     return false;
   }
+  
+  protected abstract String e();
+  
+  protected abstract long f();
+  
+  protected abstract int g();
+  
+  protected abstract String h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.open.BaseFileBrowserParams
  * JD-Core Version:    0.7.0.1
  */

@@ -20,6 +20,9 @@ public class GammaEvaluator
   
   public static int evaluate(float paramFloat, int paramInt1, int paramInt2)
   {
+    if (paramInt1 == paramInt2) {
+      return paramInt1;
+    }
     float f1 = (paramInt1 >> 24 & 0xFF) / 255.0F;
     float f4 = (paramInt1 >> 16 & 0xFF) / 255.0F;
     float f5 = (paramInt1 >> 8 & 0xFF) / 255.0F;
@@ -43,7 +46,7 @@ public class GammaEvaluator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.utils.GammaEvaluator
  * JD-Core Version:    0.7.0.1
  */

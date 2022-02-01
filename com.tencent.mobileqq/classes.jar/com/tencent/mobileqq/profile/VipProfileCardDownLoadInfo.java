@@ -6,28 +6,28 @@ public class VipProfileCardDownLoadInfo
   public static Integer b = Integer.valueOf(2);
   public static Integer c = Integer.valueOf(3);
   public static Integer d = Integer.valueOf(4);
-  public Long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
-  public Integer e;
-  public Integer f;
-  public Integer g;
+  public Long e;
+  public String f;
+  public String g;
+  public String h;
+  public boolean i;
+  public boolean j;
+  public Integer k;
+  public String l;
+  public Integer m;
+  public Integer n;
   
   public VipProfileCardDownLoadInfo()
   {
     Integer localInteger = Integer.valueOf(0);
-    this.e = localInteger;
-    this.f = localInteger;
-    this.g = a;
+    this.k = localInteger;
+    this.m = localInteger;
+    this.n = a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardDownLoadInfo
  * JD-Core Version:    0.7.0.1
  */

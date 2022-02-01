@@ -7,12 +7,12 @@ final class g
   
   public final void run()
   {
-    f.a(this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonCF).a(this.jdField_a_of_type_Int);
+    f.a(this.b).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.c.g
  * JD-Core Version:    0.7.0.1
  */

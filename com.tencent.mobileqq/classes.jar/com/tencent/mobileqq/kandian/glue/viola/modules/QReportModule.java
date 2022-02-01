@@ -10,9 +10,8 @@ import com.dataline.util.DatalineMathUtil;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.viola.api.IQReportModule;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -35,7 +34,7 @@ public class QReportModule
   private HashMap getDTBase()
   {
     HashMap localHashMap = new HashMap();
-    Object localObject = (QQAppInterface)ReadInJoyUtils.a();
+    Object localObject = (QQAppInterface)ReadInJoyUtils.b();
     if (localObject != null)
     {
       localObject = ((QQAppInterface)localObject).getAccount();
@@ -44,8 +43,8 @@ public class QReportModule
       }
     }
     localHashMap.put("app", "qq");
-    localHashMap.put("av", "8.7.0");
-    localHashMap.put("imei", DeviceInfoUtil.a());
+    localHashMap.put("av", "8.8.17");
+    localHashMap.put("imei", DeviceInfoUtil.b());
     localHashMap.put("oper_time", Long.toString(System.currentTimeMillis()));
     localHashMap.put("domain", "1");
     localHashMap.put("md", Build.MODEL);
@@ -122,17 +121,17 @@ public class QReportModule
     String str3 = paramJSONObject.optString("r3", "");
     String str4 = paramJSONObject.optString("r4", "");
     JSONObject localJSONObject = paramJSONObject.optJSONObject("r5");
-    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+    String str5 = BridgeModuleHelper.a(paramJSONObject, localJSONObject);
     paramJSONObject = str1;
     if (localJSONObject != null) {
       paramJSONObject = localJSONObject.toString();
     }
-    localIPublicAccountReportUtils.publicAccountReportClickEvent(null, null, paramString, paramString, 0, 0, str2, str3, str4, paramJSONObject, false);
+    PublicAccountReportUtils.a(null, str5, paramString, paramString, 0, 0, str2, str3, str4, paramJSONObject, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.QReportModule
  * JD-Core Version:    0.7.0.1
  */

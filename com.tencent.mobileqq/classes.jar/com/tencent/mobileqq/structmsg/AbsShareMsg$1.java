@@ -46,7 +46,7 @@ import mqq.app.AppRuntime;
 class AbsShareMsg$1
   implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long = 0L;
+  private long b = 0L;
   
   AbsShareMsg$1(AbsShareMsg paramAbsShareMsg) {}
   
@@ -54,9 +54,9 @@ class AbsShareMsg$1
   {
     Object localObject4;
     Object localObject3;
-    if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long >= 1000L)
+    if (SystemClock.uptimeMillis() - this.b >= 1000L)
     {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      this.b = SystemClock.uptimeMillis();
       Object localObject1 = paramView.getTag();
       if ((localObject1 != null) && (AbsShareMsg.class.isInstance(localObject1)))
       {
@@ -77,15 +77,15 @@ class AbsShareMsg$1
             }
             else
             {
-              Object localObject5 = ((ChatFragment)localObject1).a();
+              Object localObject5 = ((ChatFragment)localObject1).j();
               if (localObject5 != null) {
-                if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData.startsWith("mqqapi://qsubscribe")))
+                if ((this.a.mSourceActionData != null) && (this.a.mSourceActionData.startsWith("mqqapi://qsubscribe")))
                 {
                   QLog.i("StructMsg", 2, "scheme jump to subscribe hybird");
                   try
                   {
                     localObject1 = new Intent(localContext, JumpActivity.class);
-                    ((Intent)localObject1).setData(Uri.parse(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData));
+                    ((Intent)localObject1).setData(Uri.parse(this.a.mSourceActionData));
                     ((Intent)localObject1).putExtra("from", "from_aio");
                     localContext.startActivity((Intent)localObject1);
                   }
@@ -96,15 +96,15 @@ class AbsShareMsg$1
                 }
                 else
                 {
-                  Object localObject7 = new AbsShareMsg.SourceClickHandler(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg, (QQAppInterface)localObject5, paramView);
-                  localObject4 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAction;
+                  Object localObject7 = new AbsShareMsg.SourceClickHandler(this.a, (QQAppInterface)localObject5, paramView);
+                  localObject4 = this.a.mSourceAction;
                   Object localObject2 = localObject4;
-                  if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAction.equals("web"))
+                  if (this.a.mSourceAction.equals("web"))
                   {
                     localObject2 = localObject4;
-                    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl.contains("webcard.mp.qq.com"))
+                    if (this.a.mSourceUrl.contains("webcard.mp.qq.com"))
                     {
-                      localObject2 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
+                      localObject2 = this.a;
                       ((AbsShareMsg)localObject2).mSourceAction = "plugin";
                       ((AbsShareMsg)localObject2).mSource_A_ActionData = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetail.activity.api.impl.AccountDetailActivity&uin=%s", new Object[] { ((AbsShareMsg)localObject2).source_puin });
                       localObject2 = "plugin";
@@ -121,15 +121,15 @@ class AbsShareMsg$1
                   localObject4 = "setup";
                   if (bool)
                   {
-                    if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData != null) && ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData.startsWith("comic_plugin.apk")) || (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsg_A_ActionData.startsWith("comic_plugin.apk"))))
+                    if ((this.a.mMsgActionData != null) && ((this.a.mMsgActionData.startsWith("comic_plugin.apk")) || (this.a.mMsg_A_ActionData.startsWith("comic_plugin.apk"))))
                     {
-                      AbsShareMsg.access$000(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg, localContext);
+                      AbsShareMsg.access$000(this.a, localContext);
                       localObject2 = "";
                     }
                     for (;;)
                     {
                       break;
-                      if (((AbsShareMsg.SourceClickHandler)localObject7).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_A_ActionData))
+                      if (((AbsShareMsg.SourceClickHandler)localObject7).a(this.a.mSourceUrl, this.a.mSourceActionData, this.a.mSource_A_ActionData))
                       {
                         if (localAbsShareMsg.mSourceAppid == -1L) {
                           localObject2 = "";
@@ -139,7 +139,7 @@ class AbsShareMsg$1
                         ReportController.b(null, "dc00898", "", "", "0X800A86D", "0X800A86D", 0, 0, (String)localObject2, "", "", "");
                         localObject2 = "run";
                       }
-                      else if (((AbsShareMsg.SourceClickHandler)localObject7).a(((BaseActivity)localObject6).getActivity(), this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid, localAbsShareMsg.mSourceName, localAbsShareMsg.mSourceActionData, localAbsShareMsg.mSource_A_ActionData))
+                      else if (((AbsShareMsg.SourceClickHandler)localObject7).a(((BaseActivity)localObject6).getActivity(), this.a.mSourceAppid, localAbsShareMsg.mSourceName, localAbsShareMsg.mSourceActionData, localAbsShareMsg.mSource_A_ActionData))
                       {
                         if (localAbsShareMsg.mSourceAppid == -1L) {
                           localObject2 = "";
@@ -151,34 +151,34 @@ class AbsShareMsg$1
                       }
                       else
                       {
-                        ((AbsShareMsg.SourceClickHandler)localObject7).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl);
+                        ((AbsShareMsg.SourceClickHandler)localObject7).a(this.a.mSourceUrl);
                         localObject2 = localObject4;
                       }
                     }
-                    ReportCenter.a().a(((QQAppInterface)localObject5).getAccount(), "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid), "1000", "80", "0", false);
+                    ReportCenter.a().a(((QQAppInterface)localObject5).getAccount(), "", String.valueOf(this.a.mSourceAppid), "1000", "80", "0", false);
                   }
                   for (;;)
                   {
                     break;
                     if ("web".equals(localObject2))
                     {
-                      localObject6 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl;
-                      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID == 114)
+                      localObject6 = this.a.mSourceUrl;
+                      if (this.a.mMsgServiceID == 114)
                       {
-                        localObject2 = ((MedalWallMng)((QQAppInterface)localObject5).getManager(QQManagerFactory.MEDAL_WALL_MNG)).a(true, ((QQAppInterface)localObject5).getCurrentAccountUin(), MedalWallMng.g);
+                        localObject2 = ((MedalWallMng)((QQAppInterface)localObject5).getManager(QQManagerFactory.MEDAL_WALL_MNG)).a(true, ((QQAppInterface)localObject5).getCurrentAccountUin(), MedalWallMng.i);
                       }
                       else
                       {
                         localObject2 = localObject6;
                         if (localAbsShareMsg.uinType == 1) {
-                          if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID != 116)
+                          if (this.a.mMsgServiceID != 116)
                           {
                             localObject2 = localObject6;
-                            if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID != 123) {}
+                            if (this.a.mMsgServiceID != 123) {}
                           }
                           else
                           {
-                            localObject6 = String.format("%s&gc=%s", new Object[] { localObject6, NearbyURLSafeUtil.a(localAbsShareMsg.uin) });
+                            localObject6 = String.format("%s&gc=%s", new Object[] { localObject6, NearbyURLSafeUtil.b(localAbsShareMsg.uin) });
                             localObject2 = localObject6;
                             if (QLog.isColorLevel())
                             {
@@ -215,21 +215,21 @@ class AbsShareMsg$1
                     }
                     else if ("plugin".equals(localObject2))
                     {
-                      if ((localAbsShareMsg.uinType == 1) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID == 123))
+                      if ((localAbsShareMsg.uinType == 1) && (this.a.mMsgServiceID == 123))
                       {
-                        localObject2 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
-                        ((AbsShareMsg)localObject2).mSourceActionData = TroopConfessUtil.a(((AbsShareMsg)localObject2).mSourceActionData, localAbsShareMsg.uin);
+                        localObject2 = this.a;
+                        ((AbsShareMsg)localObject2).mSourceActionData = TroopConfessUtil.b(((AbsShareMsg)localObject2).mSourceActionData, localAbsShareMsg.uin);
                         bool = TroopConfessUtil.a((QQAppInterface)localObject5, localAbsShareMsg.uin, false);
-                        localObject2 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl;
+                        localObject2 = this.a.mMsgUrl;
                         if ((bool) && (!TextUtils.isEmpty((CharSequence)localObject2)) && ((localContext instanceof BaseActivity)))
                         {
                           localObject6 = ((BaseActivity)localObject6).getChatFragment();
                           if (localObject6 != null)
                           {
-                            localObject2 = ((ChatFragment)localObject6).a();
+                            localObject2 = ((ChatFragment)localObject6).k();
                             if ((localObject2 != null) && ((localObject2 instanceof TroopChatPie)))
                             {
-                              localObject4 = "https://ti.qq.com/honest-say/group.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&gc=$GCODE$&src_type=share&from=appstore_aio&adtag=qq_to_qq".replace("$GCODE$", NearbyURLSafeUtil.a(localAbsShareMsg.uin));
+                              localObject4 = "https://ti.qq.com/honest-say/group.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&gc=$GCODE$&src_type=share&from=appstore_aio&adtag=qq_to_qq".replace("$GCODE$", NearbyURLSafeUtil.b(localAbsShareMsg.uin));
                               if (QLog.isColorLevel())
                               {
                                 localObject7 = new StringBuilder();
@@ -247,25 +247,25 @@ class AbsShareMsg$1
                           }
                         }
                         if (!bool) {
-                          QQToast.a(BaseApplicationImpl.getContext(), TroopConfessUtil.a, 0).a();
+                          QQToast.makeText(BaseApplicationImpl.getContext(), TroopConfessUtil.a, 0).show();
                         }
                         if (QLog.isColorLevel())
                         {
                           localObject2 = new StringBuilder();
                           ((StringBuilder)localObject2).append("GeneralClickHandler clickWebMsg source confess url:");
-                          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData);
+                          ((StringBuilder)localObject2).append(this.a.mSourceActionData);
                           QLog.i("StructMsg", 2, ((StringBuilder)localObject2).toString());
                         }
                       }
                       else
                       {
-                        ((AbsShareMsg.SourceClickHandler)localObject7).c(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_A_ActionData);
+                        ((AbsShareMsg.SourceClickHandler)localObject7).c(this.a.mSourceActionData, this.a.mSource_A_ActionData);
                       }
-                      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName.equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.readInjoy))
+                      if (this.a.mSourceName.equals(this.a.readInjoy))
                       {
                         try
                         {
-                          localObject2 = Uri.parse(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl).getQueryParameter("article_id");
+                          localObject2 = Uri.parse(this.a.mMsgUrl).getQueryParameter("article_id");
                         }
                         catch (Exception localException2)
                         {
@@ -273,40 +273,40 @@ class AbsShareMsg$1
                           localObject3 = null;
                         }
                         if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-                          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007756", "0X8007756", 0, 0, (String)localObject3, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl, "", "", false);
+                          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007756", "0X8007756", 0, 0, (String)localObject3, this.a.mMsgUrl, "", "", false);
                         } else {
-                          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007756", "0X8007756", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl, "", "", false);
+                          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007756", "0X8007756", 0, 0, "", this.a.mMsgUrl, "", "", false);
                         }
                       }
                       localObject3 = "plugin";
                     }
                     else
                     {
-                      ((AbsShareMsg.SourceClickHandler)localObject7).a((String)localObject3, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_A_ActionData);
+                      ((AbsShareMsg.SourceClickHandler)localObject7).a((String)localObject3, this.a.mSourceUrl, this.a.mSourceActionData, this.a.mSource_A_ActionData);
                     }
                   }
-                  Util.a((AppRuntime)localObject5, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uin, "sourceclick", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID, (String)localObject3);
+                  Util.a((AppRuntime)localObject5, this.a.uin, "sourceclick", this.a.mSourceAppid, this.a.mMsgServiceID, (String)localObject3);
                   localObject3 = new StringBuilder();
-                  ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID);
+                  ((StringBuilder)localObject3).append(this.a.mMsgServiceID);
                   ((StringBuilder)localObject3).append("");
                   ReportController.b((AppRuntime)localObject5, "CliOper", "", "", "0X800567C", "0X800567C", 0, 0, ((StringBuilder)localObject3).toString(), "", "", "");
                   localObject3 = new StringBuilder();
-                  ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID);
+                  ((StringBuilder)localObject3).append(this.a.mMsgServiceID);
                   ((StringBuilder)localObject3).append("");
                   ReportController.b((AppRuntime)localObject5, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, ((StringBuilder)localObject3).toString(), "", "", "");
                   localObject3 = new StringBuilder();
-                  ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID);
+                  ((StringBuilder)localObject3).append(this.a.mMsgServiceID);
                   ((StringBuilder)localObject3).append("");
-                  ReportController.b((AppRuntime)localObject5, "dc00898", "", "", "0X8007C39", "0X8007C39", 0, 0, ((StringBuilder)localObject3).toString(), "", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName, "");
-                  if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.adverSign == 1)
+                  ReportController.b((AppRuntime)localObject5, "dc00898", "", "", "0X8007C39", "0X8007C39", 0, 0, ((StringBuilder)localObject3).toString(), "", this.a.mSourceName, "");
+                  if (this.a.adverSign == 1)
                   {
-                    localObject3 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uin;
+                    localObject3 = this.a.uin;
                     localObject4 = new StringBuilder();
                     ((StringBuilder)localObject4).append("");
-                    ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.msgId);
+                    ((StringBuilder)localObject4).append(this.a.msgId);
                     ReportController.b((AppRuntime)localObject5, "P_CliOper", "Pb_account_lifeservice", (String)localObject3, "0X800631F", "0X800631F", 0, 0, ((StringBuilder)localObject4).toString(), "", "", "");
                   }
-                  if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID == 114) {
+                  if (this.a.mMsgServiceID == 114) {
                     ThreadManager.post(new AbsShareMsg.1.1(this, (QQAppInterface)localObject5), 0, null, false);
                   }
                   localObject3 = localObject5;
@@ -330,7 +330,7 @@ class AbsShareMsg$1
                         localObject6 = localObject3;
                         if ((localObject5 instanceof StructMsgItemLayout5))
                         {
-                          Iterator localIterator2 = ((StructMsgItemLayout5)localObject5).a.iterator();
+                          Iterator localIterator2 = ((StructMsgItemLayout5)localObject5).ax.iterator();
                           localObject5 = localObject3;
                           for (;;)
                           {
@@ -343,9 +343,9 @@ class AbsShareMsg$1
                             if ((localObject3 instanceof StructMsgItemVideo))
                             {
                               localObject7 = (StructMsgItemVideo)localObject3;
-                              if (((StructMsgItemVideo)localObject7).a())
+                              if (((StructMsgItemVideo)localObject7).c())
                               {
-                                localObject6 = ((IVideoR5BuilderFactory)QRoute.api(IVideoR5BuilderFactory.class)).create((String)localObject4, localStructMsgForGeneralShare.source_puin, ((StructMsgItemVideo)localObject7).ae, ((StructMsgItemVideo)localObject7).aj).a("aio_app_id", Long.valueOf(localStructMsgForGeneralShare.mSourceAppid)).a();
+                                localObject6 = ((IVideoR5BuilderFactory)QRoute.api(IVideoR5BuilderFactory.class)).create((String)localObject4, localStructMsgForGeneralShare.source_puin, ((StructMsgItemVideo)localObject7).az, ((StructMsgItemVideo)localObject7).aO).a("aio_app_id", Long.valueOf(localStructMsgForGeneralShare.mSourceAppid)).a();
                                 if (localStructMsgForGeneralShare.uinType == 1008) {
                                   localObject3 = "1";
                                 }
@@ -362,11 +362,11 @@ class AbsShareMsg$1
                                     localObject3 = "";
                                   }
                                 }
-                                ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X80065FE", "0X80065FE", 0, 0, (String)localObject3, Integer.toString(((IVideoReporter)QRoute.api(IVideoReporter.class)).getReportVideoType(((StructMsgItemVideo)localObject7).v, localStructMsgForGeneralShare.mSourceName)), "", (String)localObject6, false);
+                                ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X80065FE", "0X80065FE", 0, 0, (String)localObject3, Integer.toString(((IVideoReporter)QRoute.api(IVideoReporter.class)).getReportVideoType(((StructMsgItemVideo)localObject7).aR, localStructMsgForGeneralShare.mSourceName)), "", (String)localObject6, false);
                                 IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
                                 String str = localStructMsgForGeneralShare.source_puin;
-                                if (((StructMsgItemVideo)localObject7).aj != null) {
-                                  localObject3 = ((StructMsgItemVideo)localObject7).aj;
+                                if (((StructMsgItemVideo)localObject7).aO != null) {
+                                  localObject3 = ((StructMsgItemVideo)localObject7).aO;
                                 } else {
                                   localObject3 = "0";
                                 }
@@ -404,8 +404,8 @@ class AbsShareMsg$1
     catch (NumberFormatException localNumberFormatException)
     {
       int i;
-      label2438:
-      break label2438;
+      label2439:
+      break label2439;
     }
     i = 0;
     StoryReportor.a("share_uin_obj", "clk_tail", 0, i, new String[] { localObject4 });
@@ -414,7 +414,7 @@ class AbsShareMsg$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsShareMsg.1
  * JD-Core Version:    0.7.0.1
  */

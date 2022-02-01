@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import oicq.wlogin_sdk.listener.ReportListener;
 import oicq.wlogin_sdk.report.event.EventSaver;
+import oicq.wlogin_sdk.report.event.b;
 import oicq.wlogin_sdk.request.t;
 import oicq.wlogin_sdk.tools.util;
 
@@ -58,13 +59,13 @@ public class c
     c.a.a.a = paramReportListener;
   }
   
-  public static void a(oicq.wlogin_sdk.report.event.a parama)
+  public static void a(b paramb)
   {
     if (c.a.a.d != null)
     {
       Message localMessage = c.a.a.d.obtainMessage();
       localMessage.what = 3;
-      localMessage.obj = parama;
+      localMessage.obj = paramb;
       c.a.a.d.sendMessage(localMessage);
     }
   }
@@ -76,13 +77,13 @@ public class c
     }
   }
   
-  public static void b(oicq.wlogin_sdk.report.event.a parama)
+  public static void b(b paramb)
   {
     if (c.a.a.d != null)
     {
       Message localMessage = c.a.a.d.obtainMessage();
       localMessage.what = 4;
-      localMessage.obj = parama;
+      localMessage.obj = paramb;
       c.a.a.d.sendMessage(localMessage);
     }
   }
@@ -100,7 +101,7 @@ public class c
           if (i != 4) {
             return true;
           }
-          paramMessage = (oicq.wlogin_sdk.report.event.a)paramMessage.obj;
+          paramMessage = (b)paramMessage.obj;
           if (paramMessage != null) {
             try
             {
@@ -122,23 +123,21 @@ public class c
           util.LOGI(paramMessage.toString(), "");
           return true;
         }
-        paramMessage = (oicq.wlogin_sdk.report.event.a)paramMessage.obj;
-        localObject1 = this.a;
-        if ((localObject1 != null) && (paramMessage != null))
+        paramMessage = (b)paramMessage.obj;
+        if (paramMessage != null)
         {
-          ((ReportListener)localObject1).onReport(paramMessage.a(), paramMessage.c(), paramMessage.e(), paramMessage.f());
-          return true;
+          localObject1 = this.a;
+          if (localObject1 != null) {
+            ((ReportListener)localObject1).onReport(paramMessage.a(), paramMessage.c(), paramMessage.e(), paramMessage.f());
+          }
+          if (paramMessage.h())
+          {
+            oicq.wlogin_sdk.report.event.a.a(paramMessage);
+            return true;
+          }
         }
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(util.LOG_TAG_EVENT_REPORT);
-        ((StringBuilder)localObject1).append(" reportEvent error ,event = ");
-        ((StringBuilder)localObject1).append(paramMessage);
-        ((StringBuilder)localObject1).append(",reportListener");
-        ((StringBuilder)localObject1).append(this.a);
-        util.LOGI(((StringBuilder)localObject1).toString(), "");
-        return true;
       }
-      if (t.u != null)
+      else if (t.u != null)
       {
         a.a().a(t.u);
         return true;
@@ -187,7 +186,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.report.c
  * JD-Core Version:    0.7.0.1
  */

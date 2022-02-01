@@ -121,11 +121,6 @@ public class TroopSystemMsgUtils
     }
   }
   
-  public static boolean a(int paramInt)
-  {
-    return a.contains(Integer.valueOf(paramInt));
-  }
-  
   private static boolean a(int paramInt1, int paramInt2)
   {
     return (paramInt1 != 3) || ((paramInt2 != 10) && (paramInt2 != 11));
@@ -167,10 +162,15 @@ public class TroopSystemMsgUtils
     }
     return bool;
   }
+  
+  public static boolean b(int paramInt)
+  {
+    return a.contains(Integer.valueOf(paramInt));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.util.TroopSystemMsgUtils
  * JD-Core Version:    0.7.0.1
  */

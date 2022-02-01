@@ -31,7 +31,7 @@ public class OnlineStatusUtil$MyTouchViewOnTouchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusUtil.MyTouchViewOnTouchListener
  * JD-Core Version:    0.7.0.1
  */

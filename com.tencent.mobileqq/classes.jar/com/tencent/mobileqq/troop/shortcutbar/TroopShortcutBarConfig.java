@@ -12,19 +12,15 @@ public class TroopShortcutBarConfig
 {
   public static boolean a = false;
   public static boolean b = false;
-  public static int c = 1;
-  public int a;
-  public ArrayList<Integer> a;
-  public int b;
-  public ArrayList<Integer> b;
+  public static int g = 1;
+  public ArrayList<Integer> c = new ArrayList();
+  public ArrayList<Integer> d = new ArrayList();
+  public int e = 0;
+  public int f = 0;
   
   public TroopShortcutBarConfig()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
+    a = false;
   }
   
   public static TroopShortcutBarConfig a(QConfItem[] paramArrayOfQConfItem)
@@ -39,7 +35,7 @@ public class TroopShortcutBarConfig
     int i = 0;
     while (i4 < paramArrayOfQConfItem.length)
     {
-      Object localObject2 = paramArrayOfQConfItem[i4].a;
+      Object localObject2 = paramArrayOfQConfItem[i4].b;
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
         ((ArrayList)localObject1).clear();
@@ -165,16 +161,16 @@ public class TroopShortcutBarConfig
     } else {
       bool1 = false;
     }
-    jdField_a_of_type_Boolean = bool1;
+    a = bool1;
     boolean bool1 = bool2;
     if (i2 == 1) {
       bool1 = true;
     }
-    jdField_b_of_type_Boolean = bool1;
-    paramArrayOfQConfItem.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
-    paramArrayOfQConfItem.jdField_a_of_type_Int = i3;
-    paramArrayOfQConfItem.jdField_b_of_type_Int = i;
-    paramArrayOfQConfItem.jdField_b_of_type_JavaUtilArrayList = localArrayList;
+    b = bool1;
+    paramArrayOfQConfItem.c = ((ArrayList)localObject1);
+    paramArrayOfQConfItem.e = i3;
+    paramArrayOfQConfItem.f = i;
+    paramArrayOfQConfItem.d = localArrayList;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -187,21 +183,21 @@ public class TroopShortcutBarConfig
   
   public boolean a()
   {
-    return this.jdField_b_of_type_Int > 0;
+    return this.f > 0;
   }
   
   public boolean a(int paramInt)
   {
-    if (true != jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
+    if (true != a) {
+      return this.c.contains(Integer.valueOf(paramInt));
     }
     return true;
   }
   
   public boolean b(int paramInt)
   {
-    if (true != jdField_b_of_type_Boolean) {
-      return this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
+    if (true != b) {
+      return this.d.contains(Integer.valueOf(paramInt));
     }
     return true;
   }
@@ -210,29 +206,29 @@ public class TroopShortcutBarConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isGlobalOpen:");
-    localStringBuilder.append(jdField_a_of_type_Boolean);
+    localStringBuilder.append(a);
     localStringBuilder.append("\r\n");
     localStringBuilder.append("isGlobalStudyModeOpen:");
-    localStringBuilder.append(jdField_b_of_type_Boolean);
+    localStringBuilder.append(b);
     localStringBuilder.append("\r\n");
     localStringBuilder.append("mTroopShortCutBarSwitchList:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\r\n");
     localStringBuilder.append("mStudyModeTroopSwitchList:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("\r\n");
     localStringBuilder.append("groupShortcutBarSwitchWithoutAdmin:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("\r\n");
     localStringBuilder.append("groupAppHotRecommendSwitch:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("\r\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarConfig
  * JD-Core Version:    0.7.0.1
  */

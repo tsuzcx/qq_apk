@@ -1,7 +1,7 @@
 package com.tencent.biz.richframework.download;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.utils.SdCardUtil;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.FileUtils;
 import java.io.File;
 import java.util.Set;
@@ -17,7 +17,7 @@ class RFWDownloader$2
     Object localObject1 = new File((String)localObject2);
     if (SdCardUtil.getSdCardDirectory() == null)
     {
-      RFLog.i("RFWDownloader", RFLog.USR, "getFile error, SdCardUtil.getSdCardDirectory() == null");
+      QLog.i("RFWDownloader", 1, "getFile error, SdCardUtil.getSdCardDirectory() == null");
       RFWDownloader.RFWDownloadListener localRFWDownloadListener = this.val$downloadListener;
       if (localRFWDownloadListener != null) {
         localRFWDownloadListener.onRspCallback(false, "");

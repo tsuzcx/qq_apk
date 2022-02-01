@@ -60,7 +60,7 @@ public final class SquareRoundImageUtils
       if (paramInt2 <= 0) {
         return paramBitmap1;
       }
-      paramBitmap2.setDensity((int)ViewUtils.c());
+      paramBitmap2.setDensity((int)ViewUtils.getDensityDpi());
       Canvas localCanvas = new Canvas(paramBitmap2);
       Path localPath = a(paramInt1, paramInt2);
       BitmapShader localBitmapShader = new BitmapShader(paramBitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
@@ -127,7 +127,7 @@ public final class SquareRoundImageUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SquareRoundImageUtils
  * JD-Core Version:    0.7.0.1
  */

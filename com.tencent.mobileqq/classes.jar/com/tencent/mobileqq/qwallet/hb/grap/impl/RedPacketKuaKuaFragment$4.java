@@ -19,7 +19,7 @@ class RedPacketKuaKuaFragment$4
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if (this.a.b())
+    if (this.a.f())
     {
       if (QLog.isColorLevel()) {
         QLog.i("RedPacketKuaKuaFragment", 2, "handleMessage:getActivity() == null || getActivity().isFinishing()");
@@ -32,12 +32,12 @@ class RedPacketKuaKuaFragment$4
     if (QLog.isColorLevel()) {
       QLog.i("RedPacketKuaKuaFragment", 2, "handleMessage() returned:输入完成");
     }
-    if (NetConnInfoCenter.getServerTime() - RedPacketKuaKuaFragment.b(this.a) < RedPacketKuaKuaFragment.c(this.a)) {
+    if (NetConnInfoCenter.getServerTime() - RedPacketKuaKuaFragment.h(this.a) < RedPacketKuaKuaFragment.i(this.a)) {
       return;
     }
-    if (TextUtils.isEmpty(RedPacketKuaKuaFragment.a(this.a).getText().toString()))
+    if (TextUtils.isEmpty(RedPacketKuaKuaFragment.j(this.a).getText().toString()))
     {
-      this.a.a(HardCodeUtil.a(R.string.bm));
+      this.a.a(HardCodeUtil.a(R.string.bq));
       return;
     }
     QwUtils.a(this.a.getQBaseActivity().getAppRuntime(), "tenpay.com", new RedPacketKuaKuaFragment.4.1(this));
@@ -45,7 +45,7 @@ class RedPacketKuaKuaFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKuaKuaFragment.4
  * JD-Core Version:    0.7.0.1
  */

@@ -58,7 +58,7 @@ public class NotifyLoginAction
     super.a();
     if (this.a != null)
     {
-      ThirdPartyLoginBlockUtilImpl.a().a();
+      ThirdPartyLoginBlockUtilImpl.a().b();
       this.a = null;
     }
   }
@@ -69,23 +69,23 @@ public class NotifyLoginAction
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("type", 8);
-      if (paramLoginErrorInfo.jdField_a_of_type_Int == 40)
+      if (paramLoginErrorInfo.d == 40)
       {
         ReportController.a(paramAppRuntime, "dc00898", "", "", "0X800AC0B", "0X800AC0B", 0, 0, "", "", "", "");
         this.a = new ThirdPartyLoginBlockUtilImpl.LoginViewOpenSDKCb(paramQBaseActivity);
-        if (ThirdPartyLoginBlockUtilImpl.a().a(paramLoginErrorInfo.jdField_b_of_type_ArrayOfByte, paramQBaseActivity, paramLoginErrorInfo.e, paramLoginErrorInfo.f, this.a)) {
+        if (ThirdPartyLoginBlockUtilImpl.a().a(paramLoginErrorInfo.g, paramQBaseActivity, paramLoginErrorInfo.i, paramLoginErrorInfo.j, this.a)) {
           return;
         }
-        localIntent.putExtra("msg", paramLoginErrorInfo.jdField_b_of_type_JavaLangString);
-        localIntent.putExtra("errorver", paramLoginErrorInfo.jdField_b_of_type_Int);
-        localIntent.putExtra("tlverror", paramLoginErrorInfo.jdField_b_of_type_ArrayOfByte);
-        localIntent.putExtra("errortitle", paramLoginErrorInfo.d);
-        localIntent.putExtra("is_need_login_with_mask", paramLoginErrorInfo.jdField_a_of_type_Boolean);
-        localIntent.putExtra("title", paramLoginErrorInfo.d);
-        if (a(paramLoginErrorInfo.jdField_b_of_type_ArrayOfByte) == 1)
+        localIntent.putExtra("msg", paramLoginErrorInfo.b);
+        localIntent.putExtra("errorver", paramLoginErrorInfo.f);
+        localIntent.putExtra("tlverror", paramLoginErrorInfo.g);
+        localIntent.putExtra("errortitle", paramLoginErrorInfo.h);
+        localIntent.putExtra("is_need_login_with_mask", paramLoginErrorInfo.k);
+        localIntent.putExtra("title", paramLoginErrorInfo.h);
+        if (a(paramLoginErrorInfo.g) == 1)
         {
-          localIntent.putExtra("uin", paramLoginErrorInfo.e);
-          localIntent.putExtra("passwd", paramLoginErrorInfo.f);
+          localIntent.putExtra("uin", paramLoginErrorInfo.i);
+          localIntent.putExtra("passwd", paramLoginErrorInfo.j);
           localIntent.putExtra("is_from_login", true);
           localIntent.putExtra("keyTipsScenesId", 1);
         }
@@ -93,31 +93,31 @@ public class NotifyLoginAction
       else
       {
         paramAppRuntime = new StringBuilder();
-        paramAppRuntime.append(paramLoginErrorInfo.jdField_b_of_type_JavaLangString);
+        paramAppRuntime.append(paramLoginErrorInfo.b);
         paramAppRuntime.append(" ");
         paramAppRuntime.append(paramLoginErrorInfo.c);
         localIntent.putExtra("msg", paramAppRuntime.toString());
       }
-      localIntent.putExtra("loginalias", paramLoginErrorInfo.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("loginret", paramLoginErrorInfo.jdField_a_of_type_Int);
+      localIntent.putExtra("loginalias", paramLoginErrorInfo.a);
+      localIntent.putExtra("loginret", paramLoginErrorInfo.d);
       localIntent.putExtra("errorUrl", paramLoginErrorInfo.c);
-      localIntent.putExtra("expiredSig", paramLoginErrorInfo.jdField_a_of_type_ArrayOfByte);
+      localIntent.putExtra("expiredSig", paramLoginErrorInfo.e);
       localIntent.putExtra("keyFromLoginView", true);
       RouteUtils.a(paramQBaseActivity, localIntent, "/base/notification");
       return;
     }
-    if (paramLoginErrorInfo.jdField_a_of_type_Int == 2008)
+    if (paramLoginErrorInfo.d == 2008)
     {
-      DialogUtil.a(paramQBaseActivity, 230, HardCodeUtil.a(2131706426), HardCodeUtil.a(2131706422), "OK", null, new NotifyLoginAction.1(this), null).show();
-      QQToast.a(paramQBaseActivity, 2131692995, 0).a();
+      DialogUtil.a(paramQBaseActivity, 230, HardCodeUtil.a(2131904285), HardCodeUtil.a(2131904281), "OK", null, new NotifyLoginAction.1(this), null).show();
+      QQToast.makeText(paramQBaseActivity, 2131890109, 0).show();
       return;
     }
-    DialogUtil.a(paramQBaseActivity, 230, HardCodeUtil.a(2131706416), paramLoginErrorInfo.jdField_b_of_type_JavaLangString, new NotifyLoginAction.2(this), null).show();
+    DialogUtil.a(paramQBaseActivity, 230, HardCodeUtil.a(2131904275), paramLoginErrorInfo.b, new NotifyLoginAction.2(this), null).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.NotifyLoginAction
  * JD-Core Version:    0.7.0.1
  */

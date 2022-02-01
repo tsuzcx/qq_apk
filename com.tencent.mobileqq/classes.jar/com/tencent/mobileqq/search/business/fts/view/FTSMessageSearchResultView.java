@@ -11,7 +11,7 @@ public class FTSMessageSearchResultView
   private TextView a;
   private TextView b;
   private TextView c;
-  private TextView h;
+  private TextView d;
   
   public FTSMessageSearchResultView(View paramView)
   {
@@ -26,35 +26,35 @@ public class FTSMessageSearchResultView
   protected void a()
   {
     super.a();
-    this.a = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377245));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377244));
-    this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377243));
-    this.h = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377114));
+    this.a = ((TextView)this.e.findViewById(2131445632));
+    this.b = ((TextView)this.e.findViewById(2131445631));
+    this.c = ((TextView)this.e.findViewById(2131445630));
+    this.d = ((TextView)this.e.findViewById(2131445485));
   }
   
-  public TextView e()
+  public TextView j()
   {
     return this.a;
   }
   
-  public TextView f()
+  public TextView k()
   {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
+    return this.b;
   }
   
-  public TextView g()
+  public TextView l()
   {
     return this.c;
   }
   
-  public TextView h()
+  public TextView m()
   {
-    return this.h;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.fts.view.FTSMessageSearchResultView
  * JD-Core Version:    0.7.0.1
  */

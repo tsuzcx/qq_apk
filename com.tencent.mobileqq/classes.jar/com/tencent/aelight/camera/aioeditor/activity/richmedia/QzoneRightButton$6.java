@@ -12,13 +12,13 @@ class QzoneRightButton$6
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    QzoneRightButton.a(this.a).l = false;
-    QzoneRightButton.b(this.a).setSelected(false);
+    QzoneRightButton.a(this.a).z = false;
+    QzoneRightButton.e(this.a).setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.QzoneRightButton.6
  * JD-Core Version:    0.7.0.1
  */

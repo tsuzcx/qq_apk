@@ -13,12 +13,12 @@ class AccountIdentityManager$5
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     QLog.d("AccountIdentityManager", 1, "dialog dismiss");
-    AccountIdentityManager.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager, this.jdField_a_of_type_AndroidAppActivity);
+    AccountIdentityManager.a(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.AccountIdentityManager.5
  * JD-Core Version:    0.7.0.1
  */

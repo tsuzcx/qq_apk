@@ -20,7 +20,7 @@ class DetailFeedAllInfoPullSegment$RequestCommentListSegment$1
   
   public void a(@NonNull GetFeedCommentRequest paramGetFeedCommentRequest, @Nullable GetFeedCommentRequest.GetFeedCommentResponse paramGetFeedCommentResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    if (this.a.isJobCancelled())
     {
       SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
       return;
@@ -28,24 +28,24 @@ class DetailFeedAllInfoPullSegment$RequestCommentListSegment$1
     if ((paramGetFeedCommentResponse != null) && (!paramErrorMessage.isFail()))
     {
       boolean bool1;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.b == 0) {
+      if (this.b.d == 0) {
         bool1 = false;
       } else {
         bool1 = true;
       }
-      ((CommentManager)SuperManager.a(17)).a(paramGetFeedCommentResponse.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_a_of_type_JavaLangString, bool1, true);
-      boolean bool2 = paramGetFeedCommentResponse.jdField_a_of_type_Boolean;
-      if ((!paramGetFeedCommentResponse.jdField_a_of_type_Boolean) && (paramGetFeedCommentResponse.jdField_a_of_type_JavaUtilList.size() == 0))
+      ((CommentManager)SuperManager.a(17)).a(paramGetFeedCommentResponse.e, this.b.a, bool1, true);
+      boolean bool2 = paramGetFeedCommentResponse.a;
+      if ((!paramGetFeedCommentResponse.a) && (paramGetFeedCommentResponse.e.size() == 0))
       {
         SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "comment pull should be end!!!!!!!!!!!!");
         bool2 = true;
       }
-      paramGetFeedCommentRequest = new DetailFeedAllInfoPullSegment.CommentData(bool1, paramGetFeedCommentResponse.jdField_a_of_type_JavaUtilList, paramGetFeedCommentResponse.b, bool2, paramGetFeedCommentResponse.jdField_a_of_type_JavaLangString);
-      DetailFeedAllInfoPullSegment.RequestCommentListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$RequestCommentListSegment, paramGetFeedCommentRequest);
+      paramGetFeedCommentRequest = new DetailFeedAllInfoPullSegment.CommentData(bool1, paramGetFeedCommentResponse.e, paramGetFeedCommentResponse.f, bool2, paramGetFeedCommentResponse.b);
+      DetailFeedAllInfoPullSegment.RequestCommentListSegment.a(this.c, paramGetFeedCommentRequest);
       return;
     }
     SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for comment request");
-    DetailFeedAllInfoPullSegment.RequestCommentListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$RequestCommentListSegment, paramErrorMessage);
+    DetailFeedAllInfoPullSegment.RequestCommentListSegment.a(this.c, paramErrorMessage);
   }
 }
 

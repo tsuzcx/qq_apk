@@ -7,14 +7,14 @@ class LeftAppShortcutBarPanel$3$1
   
   public void run()
   {
-    if (LeftAppShortcutBarPanel.a(this.a.a) != null) {
-      LeftAppShortcutBarPanel.a(this.a.a).b();
+    if (LeftAppShortcutBarPanel.d(this.a.a) != null) {
+      LeftAppShortcutBarPanel.d(this.a.a).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.LeftAppShortcutBarPanel.3.1
  * JD-Core Version:    0.7.0.1
  */

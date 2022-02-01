@@ -20,49 +20,6 @@ public class NearbyConfigUtil
 {
   DatingConfig a;
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("clearRedDotInNearbyEnter: redDotType=");
-        localStringBuilder.append(paramInt);
-        QLog.d("nearby.redpoint", 1, localStringBuilder.toString());
-        paramQQAppInterface = (TroopRedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
-        if (paramInt != 56)
-        {
-          if (paramInt != 61) {
-            break label118;
-          }
-          continue;
-          paramQQAppInterface.b(paramInt);
-          return;
-        }
-        paramQQAppInterface.b(56);
-        paramQQAppInterface.b(61);
-        return;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        StringBuilder localStringBuilder;
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("clearRedDotInNearbyEnter, exp=");
-          localStringBuilder.append(paramQQAppInterface.toString());
-          QLog.d("nearby.redpoint", 2, localStringBuilder.toString());
-        }
-        return;
-      }
-      label118:
-      if (paramInt != 60) {
-        if (paramInt != 57) {}
-      }
-    }
-  }
-  
   public static boolean a(AppInterface paramAppInterface)
   {
     paramAppInterface = (String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(paramAppInterface.getAccount(), "key_tabs_array", "");
@@ -234,6 +191,49 @@ public class NearbyConfigUtil
     }
   }
   
+  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("clearRedDotInNearbyEnter: redDotType=");
+        localStringBuilder.append(paramInt);
+        QLog.d("nearby.redpoint", 1, localStringBuilder.toString());
+        paramQQAppInterface = (TroopRedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
+        if (paramInt != 56)
+        {
+          if (paramInt != 61) {
+            break label118;
+          }
+          continue;
+          paramQQAppInterface.d(paramInt);
+          return;
+        }
+        paramQQAppInterface.d(56);
+        paramQQAppInterface.d(61);
+        return;
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("clearRedDotInNearbyEnter, exp=");
+          localStringBuilder.append(paramQQAppInterface.toString());
+          QLog.d("nearby.redpoint", 2, localStringBuilder.toString());
+        }
+        return;
+      }
+      label118:
+      if (paramInt != 60) {
+        if (paramInt != 57) {}
+      }
+    }
+  }
+  
   public static boolean b(AppInterface paramAppInterface)
   {
     paramAppInterface = (String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(paramAppInterface.getAccount(), "key_tabs_array", "");
@@ -313,7 +313,7 @@ public class NearbyConfigUtil
     finally {}
   }
   
-  public void a()
+  public void b()
   {
     try
     {
@@ -329,7 +329,7 @@ public class NearbyConfigUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.NearbyConfigUtil
  * JD-Core Version:    0.7.0.1
  */

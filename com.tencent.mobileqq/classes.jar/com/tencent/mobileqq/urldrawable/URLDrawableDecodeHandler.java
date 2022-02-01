@@ -7,37 +7,32 @@ import com.tencent.image.DownloadParams.DecodeHandler;
 public abstract class URLDrawableDecodeHandler
   implements DownloadParams.DecodeHandler
 {
-  public static final DownloadParams.DecodeHandler a;
   private static String a = "URLDrawableDecodeHandler";
-  public static final DownloadParams.DecodeHandler b = new URLDrawableDecodeHandler.2();
-  public static final DownloadParams.DecodeHandler c = new URLDrawableDecodeHandler.3();
-  public static final DownloadParams.DecodeHandler d = new URLDrawableDecodeHandler.4();
-  public static final DownloadParams.DecodeHandler e = new URLDrawableDecodeHandler.5();
-  public static final DownloadParams.DecodeHandler f = new URLDrawableDecodeHandler.6();
-  public static final DownloadParams.DecodeHandler g = new URLDrawableDecodeHandler.7();
-  public static final DownloadParams.DecodeHandler h = new URLDrawableDecodeHandler.8();
-  public static final DownloadParams.DecodeHandler i = new URLDrawableDecodeHandler.9();
-  public static final DownloadParams.DecodeHandler j = new URLDrawableDecodeHandler.10();
-  public static final DownloadParams.DecodeHandler k = new URLDrawableDecodeHandler.11();
-  public static final DownloadParams.DecodeHandler l = new URLDrawableDecodeHandler.12();
-  public static final DownloadParams.DecodeHandler m = new URLDrawableDecodeHandler.13();
-  public static final DownloadParams.DecodeHandler n = new URLDrawableDecodeHandler.14();
-  public static final DownloadParams.DecodeHandler o = new URLDrawableDecodeHandler.15();
-  public static final DownloadParams.DecodeHandler p = new URLDrawableDecodeHandler.16();
-  public static final DownloadParams.DecodeHandler q = new URLDrawableDecodeHandler.17();
-  public static final DownloadParams.DecodeHandler r = new URLDrawableDecodeHandler.FastBlurDecoder(10);
-  public static final DownloadParams.DecodeHandler s = new URLDrawableDecodeHandler.FastBlurDecoder(20);
-  public static final DownloadParams.DecodeHandler t = new URLDrawableDecodeHandler.18();
-  public static final DownloadParams.DecodeHandler u = new URLDrawableDecodeHandler.19();
-  public static final DownloadParams.DecodeHandler v = new URLDrawableDecodeHandler.ReadInJoyVideoFeedsFastBlurDecoder();
-  public static final DownloadParams.DecodeHandler w = new URLDrawableDecodeHandler.20();
-  public static final DownloadParams.DecodeHandler x = new URLDrawableDecodeHandler.21();
-  public static final DownloadParams.DecodeHandler y = new URLDrawableDecodeHandler.22();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new URLDrawableDecodeHandler.1();
-  }
+  public static final DownloadParams.DecodeHandler b = new URLDrawableDecodeHandler.1();
+  public static final DownloadParams.DecodeHandler c = new URLDrawableDecodeHandler.2();
+  public static final DownloadParams.DecodeHandler d = new URLDrawableDecodeHandler.3();
+  public static final DownloadParams.DecodeHandler e = new URLDrawableDecodeHandler.4();
+  public static final DownloadParams.DecodeHandler f = new URLDrawableDecodeHandler.5();
+  public static final DownloadParams.DecodeHandler g = new URLDrawableDecodeHandler.6();
+  public static final DownloadParams.DecodeHandler h = new URLDrawableDecodeHandler.7();
+  public static final DownloadParams.DecodeHandler i = new URLDrawableDecodeHandler.8();
+  public static final DownloadParams.DecodeHandler j = new URLDrawableDecodeHandler.9();
+  public static final DownloadParams.DecodeHandler k = new URLDrawableDecodeHandler.10();
+  public static final DownloadParams.DecodeHandler l = new URLDrawableDecodeHandler.11();
+  public static final DownloadParams.DecodeHandler m = new URLDrawableDecodeHandler.12();
+  public static final DownloadParams.DecodeHandler n = new URLDrawableDecodeHandler.13();
+  public static final DownloadParams.DecodeHandler o = new URLDrawableDecodeHandler.14();
+  public static final DownloadParams.DecodeHandler p = new URLDrawableDecodeHandler.15();
+  public static final DownloadParams.DecodeHandler q = new URLDrawableDecodeHandler.16();
+  public static final DownloadParams.DecodeHandler r = new URLDrawableDecodeHandler.17();
+  public static final DownloadParams.DecodeHandler s = new URLDrawableDecodeHandler.FastBlurDecoder(10);
+  public static final DownloadParams.DecodeHandler t = new URLDrawableDecodeHandler.FastBlurDecoder(20);
+  public static final DownloadParams.DecodeHandler u = new URLDrawableDecodeHandler.18();
+  public static final DownloadParams.DecodeHandler v = new URLDrawableDecodeHandler.19();
+  public static final DownloadParams.DecodeHandler w = new URLDrawableDecodeHandler.ReadInJoyVideoFeedsFastBlurDecoder();
+  public static final DownloadParams.DecodeHandler x = new URLDrawableDecodeHandler.20();
+  public static final DownloadParams.DecodeHandler y = new URLDrawableDecodeHandler.21();
+  public static final DownloadParams.DecodeHandler z = new URLDrawableDecodeHandler.22();
   
   public static Bitmap a(Bitmap paramBitmap)
   {
@@ -124,7 +119,7 @@ public abstract class URLDrawableDecodeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler
  * JD-Core Version:    0.7.0.1
  */

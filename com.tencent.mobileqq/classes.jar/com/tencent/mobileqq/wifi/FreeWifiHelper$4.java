@@ -10,9 +10,9 @@ final class FreeWifiHelper$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWifiFreeWifiHelper$FreeWifiDialogListener.a(3);
+    this.a.a(3);
     paramDialogInterface.dismiss();
-    paramInt = this.jdField_a_of_type_Int;
+    paramInt = this.b;
     if (paramInt == 1)
     {
       FreeWifiHelper.a("0X80094FB");
@@ -31,7 +31,7 @@ final class FreeWifiHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.FreeWifiHelper.4
  * JD-Core Version:    0.7.0.1
  */

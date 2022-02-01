@@ -10,48 +10,48 @@ import java.util.List;
 class AndroidPermissionHandler$DialogPermissionCallback
   extends AndroidPermissionHandler.AndroidPermissionCallback
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  QQPermission.BasePermissionsListener jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener;
+  QQPermission.BasePermissionsListener b;
+  private Context c;
   
   public AndroidPermissionHandler$DialogPermissionCallback(AndroidPermissionHandler paramAndroidPermissionHandler, Context paramContext, QQPermission.BasePermissionsListener paramBasePermissionsListener)
   {
     super(paramAndroidPermissionHandler);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener = paramBasePermissionsListener;
+    this.c = paramContext;
+    this.b = paramBasePermissionsListener;
   }
   
   private void a(List<String> paramList)
   {
-    Object localObject = AndroidPermissionHandler.AndroidPermissionText.a(this.jdField_a_of_type_AndroidContentContext, paramList);
-    String str = AndroidPermissionHandler.AndroidPermissionText.b(this.jdField_a_of_type_AndroidContentContext, paramList);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerAndroidPermissionHandler.a((String)localObject, str);
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a((PermissionRequestDialog)localObject, paramList);
+    Object localObject = AndroidPermissionHandler.AndroidPermissionText.a(this.c, paramList);
+    String str = AndroidPermissionHandler.AndroidPermissionText.b(this.c, paramList);
+    localObject = this.a.a((String)localObject, str);
+    this.b.a((PermissionRequestDialog)localObject, paramList);
     ((PermissionRequestDialog)localObject).show();
   }
   
   void a()
   {
     super.a();
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a();
+    this.b.a();
   }
   
   void a(String paramString)
   {
     super.a(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a(paramString);
+    this.b.a(paramString);
   }
   
   @RequiresApi(api=23)
   void a(List<String> paramList, String paramString)
   {
     super.a(paramList, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerAndroidPermissionHandler.b(paramList, this);
+    this.a.b(paramList, this);
   }
   
   void a(List<String> paramList, List<Integer> paramList1)
   {
     super.a(paramList, paramList1);
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a(paramList, paramList1);
+    this.b.a(paramList, paramList1);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramList.size()) {
@@ -75,7 +75,7 @@ class AndroidPermissionHandler$DialogPermissionCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqpermission.permissionhandler.AndroidPermissionHandler.DialogPermissionCallback
  * JD-Core Version:    0.7.0.1
  */

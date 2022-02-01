@@ -4,19 +4,19 @@ import org.jetbrains.annotations.NotNull;
 
 class LitePlayer$PlayParams
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  String a;
+  String b;
+  int c;
+  long d;
+  int e;
   
   LitePlayer$PlayParams(LitePlayer paramLitePlayer, String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramInt1;
+    this.d = paramLong;
+    this.e = paramInt2;
   }
   
   @NotNull
@@ -24,14 +24,14 @@ class LitePlayer$PlayParams
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PlayParams{vid='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", url='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", playType=");
     String str;
-    if (this.jdField_a_of_type_Int == 101) {
+    if (this.c == 101) {
       str = "VOD";
     } else {
       str = "LIVE";
@@ -43,7 +43,7 @@ class LitePlayer$PlayParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.LitePlayer.PlayParams
  * JD-Core Version:    0.7.0.1
  */

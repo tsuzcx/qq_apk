@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/e1r" android:background="@drawable/qcircle_skin_publish_label_item_bg" android:paddingLeft="6.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="20.0dip">
+        <com.tencent.mobileqq.flashshow.view.SquareImageView android:id="@id/oad" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@drawable/qcircle_skin_icon_general_hashtag_primary" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/qcircle_skin_color_text_primary" android:gravity="center" android:id="@id/oag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="腾讯俱乐部" android:layout_toRightOf="@id/oad" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/oac" android:clickable="true" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/qcircle_skin_icon_nav_close" android:scaleType="centerInside" android:layout_toRightOf="@id/oag" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</FrameLayout>

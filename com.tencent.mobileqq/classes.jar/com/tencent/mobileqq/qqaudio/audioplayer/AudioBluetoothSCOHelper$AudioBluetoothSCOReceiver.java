@@ -10,16 +10,16 @@ import com.tencent.qphone.base.util.QLog;
 class AudioBluetoothSCOHelper$AudioBluetoothSCOReceiver
   extends BroadcastReceiver
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  long b = 0L;
+  String a;
+  int b;
+  boolean c = false;
+  long d = 0L;
+  long e = 0L;
   
   private AudioBluetoothSCOHelper$AudioBluetoothSCOReceiver(AudioBluetoothSCOHelper paramAudioBluetoothSCOHelper, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.b = paramInt;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -32,27 +32,27 @@ class AudioBluetoothSCOHelper$AudioBluetoothSCOReceiver
       paramContext.append("onReceive ACTION_SCO_AUDIO_STATE_UPDATED = ");
       paramContext.append(i);
       paramContext.append(" ");
-      paramContext.append(this.jdField_a_of_type_JavaLangString);
+      paramContext.append(this.a);
       paramContext.append(", time=");
       paramContext.append(l1);
       QLog.d("AudioPlayer_SCOHelper", 2, paramContext.toString());
     }
-    paramContext = AudioBluetoothSCOHelper.a(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioBluetoothSCOHelper);
+    paramContext = AudioBluetoothSCOHelper.a(this.f);
     if (1 == i)
     {
-      if (this.b == 0L)
+      if (this.e == 0L)
       {
-        this.b = l1;
+        this.e = l1;
         if (paramContext != null)
         {
-          paramIntent = paramContext.a();
+          paramIntent = paramContext.i();
           if (paramIntent != null)
           {
             paramIntent.setBluetoothScoOn(true);
-            AudioPlayerBase.jdField_a_of_type_Boolean = true;
+            AudioPlayerBase.c = true;
           }
-          paramContext.h();
-          if (!paramContext.a())
+          paramContext.n();
+          if (!paramContext.m())
           {
             if (QLog.isColorLevel())
             {
@@ -61,8 +61,8 @@ class AudioBluetoothSCOHelper$AudioBluetoothSCOReceiver
               paramIntent.append(l1);
               QLog.d("AudioPlayer_SCOHelper", 2, paramIntent.toString());
             }
-            paramContext.d(true);
-            paramContext.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+            paramContext.e(true);
+            paramContext.c(this.a, this.b);
           }
         }
       }
@@ -71,44 +71,44 @@ class AudioBluetoothSCOHelper$AudioBluetoothSCOReceiver
     {
       if (2 == i)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.c = true;
         return;
       }
       if (i == 0)
       {
-        if (this.jdField_a_of_type_Long == 0L)
+        if (this.d == 0L)
         {
-          this.jdField_a_of_type_Long = l1;
+          this.d = l1;
           return;
         }
-        if ((this.jdField_a_of_type_Boolean) && (paramContext != null)) {
-          paramContext.j();
+        if ((this.c) && (paramContext != null)) {
+          paramContext.p();
         }
         if (paramContext != null) {
-          paramContext.i();
+          paramContext.o();
         }
-        long l2 = this.b;
-        if (((l2 != 0L) && (l1 - l2 <= 2000L)) || (l1 - this.jdField_a_of_type_Long <= 1000L))
+        long l2 = this.e;
+        if (((l2 != 0L) && (l1 - l2 <= 2000L)) || (l1 - this.d <= 1000L))
         {
           if (QLog.isColorLevel()) {
             QLog.d("AudioPlayer_SCOHelper", 2, "sco disconnected quickly.");
           }
-          AudioDeviceHelper.b = true;
+          AudioDeviceHelper.d = true;
           if (paramContext != null)
           {
             paramContext.b();
-            if (paramContext.a())
+            if (paramContext.m())
             {
-              paramContext.d(false);
-              paramContext.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+              paramContext.e(false);
+              paramContext.c(this.a, this.b);
               return;
             }
             paramContext.d(0);
           }
         }
-        else if ((paramContext != null) && (paramContext.a()))
+        else if ((paramContext != null) && (paramContext.m()))
         {
-          paramContext.d(paramContext.b());
+          paramContext.d(paramContext.h());
         }
       }
     }
@@ -116,7 +116,7 @@ class AudioBluetoothSCOHelper$AudioBluetoothSCOReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioBluetoothSCOHelper.AudioBluetoothSCOReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class AIODtReportHelper$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean == null)
+    if (this.a == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("AIODtReportHelper", 1, "fillGroupClassExParams: catalogBean == null");
@@ -22,24 +22,24 @@ class AIODtReportHelper$1$1
     else
     {
       HashMap localHashMap = new HashMap();
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean.jdField_a_of_type_Int == 1)
+      if (this.a.a == 1)
       {
-        localHashMap.put("group_first_level", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean.b));
+        localHashMap.put("group_first_level", String.valueOf(this.a.c));
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean != null) {
-          localHashMap.put("group_first_level", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean.b));
+        if (this.a.e != null) {
+          localHashMap.put("group_first_level", String.valueOf(this.a.e.c));
         }
-        localHashMap.put("group_second_level", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean.b));
+        localHashMap.put("group_second_level", String.valueOf(this.a.c));
       }
-      VideoReport.setPageParams(AIODtReportHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIODtReportHelper$1.this$0), new PageParams(localHashMap));
+      VideoReport.setPageParams(this.b.this$0.d, new PageParams(localHashMap));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIODtReportHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

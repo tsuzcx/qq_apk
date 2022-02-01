@@ -29,22 +29,16 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x87.SubMsgType0x87.MsgNotify;
 @TargetApi(11)
 public class CloneFriendPushHelper
 {
-  public static final HashMap<String, Long> a;
-  public static final HashSet<String> a;
   public static boolean a = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public static final HashSet<String> b = new HashSet();
+  public static final HashMap<String, Long> c = new HashMap();
   
   public static void a()
   {
-    synchronized (jdField_a_of_type_JavaUtilHashSet)
+    synchronized (b)
     {
-      jdField_a_of_type_Boolean = false;
-      jdField_a_of_type_JavaUtilHashSet.clear();
+      a = false;
+      b.clear();
       return;
     }
   }
@@ -58,22 +52,22 @@ public class CloneFriendPushHelper
       ((StringBuilder)???).append(paramString);
       QLog.d("CloneFriendPushHelper", 2, ((StringBuilder)???).toString());
     }
-    synchronized (jdField_a_of_type_JavaUtilHashSet)
+    synchronized (b)
     {
-      if (!jdField_a_of_type_Boolean) {
+      if (!a) {
         a(paramQQAppInterface);
       }
-      if (jdField_a_of_type_JavaUtilHashSet.contains(paramString))
+      if (b.contains(paramString))
       {
         if (QLog.isColorLevel()) {
           QLog.d("CloneFriendPushHelper", 2, "addUin, contains, need remove");
         }
-        jdField_a_of_type_JavaUtilHashSet.remove(paramString);
+        b.remove(paramString);
         paramString = paramQQAppInterface.getPreferences().edit();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("cloneFriendPush_");
         localStringBuilder.append(paramQQAppInterface.getCurrentUin());
-        paramString.putStringSet(localStringBuilder.toString(), jdField_a_of_type_JavaUtilHashSet).commit();
+        paramString.putStringSet(localStringBuilder.toString(), b).commit();
       }
       return;
     }
@@ -86,8 +80,8 @@ public class CloneFriendPushHelper
     localMessageForText.frienduin = paramString2;
     localMessageForText.senderuin = paramString2;
     localMessageForText.isread = true;
-    localMessageForText.msg = String.format(HardCodeUtil.a(2131702147), new Object[] { paramString1, paramString3, paramString2 });
-    localMessageForText.time = MessageCache.a();
+    localMessageForText.msg = String.format(HardCodeUtil.a(2131900155), new Object[] { paramString1, paramString3, paramString2 });
+    localMessageForText.time = MessageCache.c();
     paramQQAppInterface.getMessageFacade().a(localMessageForText, paramQQAppInterface.getCurrentUin());
   }
   
@@ -95,7 +89,7 @@ public class CloneFriendPushHelper
   {
     b(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramInt);
     a(paramQQAppInterface, paramString2, paramString3, paramString4);
-    c(paramQQAppInterface, paramString3);
+    d(paramQQAppInterface, paramString3);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, SubMsgType0x87.MsgBody paramMsgBody)
@@ -158,13 +152,13 @@ public class CloneFriendPushHelper
               ((StringBuilder)localObject2).append(paramQQAppInterface.getCurrentUin());
               localObject2 = ((StringBuilder)localObject2).toString();
               long l1;
-              if (jdField_a_of_type_JavaUtilHashMap.get(localObject2) == null) {
+              if (c.get(localObject2) == null) {
                 l1 = 0L;
               } else {
-                l1 = ((Long)jdField_a_of_type_JavaUtilHashMap.get(localObject2)).longValue();
+                l1 = ((Long)c.get(localObject2)).longValue();
               }
               long l2 = System.currentTimeMillis();
-              jdField_a_of_type_JavaUtilHashMap.put(localObject2, Long.valueOf(l2));
+              c.put(localObject2, Long.valueOf(l2));
               if (Math.abs(l2 - l1) < 60000L)
               {
                 QLog.d("CloneFriendPushHelper", 1, "onReceivePush, gap < 60s");
@@ -172,7 +166,7 @@ public class CloneFriendPushHelper
               }
               a(paramQQAppInterface, (String)localObject1, str1, str2, str3, j);
               ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8008071", "0X8008071", 0, 0, "", "", "", "");
-              b(paramQQAppInterface, str2);
+              c(paramQQAppInterface, str2);
             }
           }
         }
@@ -189,94 +183,43 @@ public class CloneFriendPushHelper
       ((StringBuilder)???).append("initSet, uin=");
       ((StringBuilder)???).append(paramQQAppInterface.getCurrentUin());
       ((StringBuilder)???).append(", hasInit=");
-      ((StringBuilder)???).append(jdField_a_of_type_Boolean);
+      ((StringBuilder)???).append(a);
       QLog.d("CloneFriendPushHelper", 2, ((StringBuilder)???).toString());
     }
-    synchronized (jdField_a_of_type_JavaUtilHashSet)
+    synchronized (b)
     {
-      if (jdField_a_of_type_Boolean) {
+      if (a) {
         return false;
       }
-      jdField_a_of_type_JavaUtilHashSet.clear();
+      b.clear();
       SharedPreferences localSharedPreferences = paramQQAppInterface.getPreferences();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("cloneFriendPush_");
       localStringBuilder.append(paramQQAppInterface.getCurrentUin());
       paramQQAppInterface = localSharedPreferences.getStringSet(localStringBuilder.toString(), null);
       if (paramQQAppInterface != null) {
-        jdField_a_of_type_JavaUtilHashSet.addAll(paramQQAppInterface);
+        b.addAll(paramQQAppInterface);
       }
-      jdField_a_of_type_Boolean = true;
+      a = true;
       return true;
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    synchronized (jdField_a_of_type_JavaUtilHashSet)
-    {
-      if (!jdField_a_of_type_Boolean) {
-        a(paramQQAppInterface);
-      }
-      boolean bool = jdField_a_of_type_JavaUtilHashSet.contains(paramString);
-      if (QLog.isColorLevel())
-      {
-        paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append("hasUin, uin=");
-        paramQQAppInterface.append(paramString);
-        paramQQAppInterface.append(", has=");
-        paramQQAppInterface.append(bool);
-        QLog.d("CloneFriendPushHelper", 2, paramQQAppInterface.toString());
-      }
-      return bool;
-    }
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("addUin, uin=");
-      ((StringBuilder)???).append(paramString);
-      QLog.d("CloneFriendPushHelper", 2, ((StringBuilder)???).toString());
-    }
-    synchronized (jdField_a_of_type_JavaUtilHashSet)
-    {
-      if (!jdField_a_of_type_Boolean) {
-        a(paramQQAppInterface);
-      }
-      if (!jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CloneFriendPushHelper", 2, "addUin, not contains, need add");
-        }
-        jdField_a_of_type_JavaUtilHashSet.add(paramString);
-        paramString = paramQQAppInterface.getPreferences().edit();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("cloneFriendPush_");
-        localStringBuilder.append(paramQQAppInterface.getCurrentUin());
-        paramString.putStringSet(localStringBuilder.toString(), jdField_a_of_type_JavaUtilHashSet).commit();
-      }
-      return;
     }
   }
   
   private static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
     MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-    Object localObject1 = HardCodeUtil.a(2131702150);
+    Object localObject1 = HardCodeUtil.a(2131900158);
     paramString2 = String.format("%s(%s)", new Object[] { paramString2, paramString1 });
-    String str1 = HardCodeUtil.a(2131702148);
+    String str1 = HardCodeUtil.a(2131900156);
     if (paramInt == 1) {
-      paramInt = 2131702142;
+      paramInt = 2131900150;
     } else {
-      paramInt = 2131702145;
+      paramInt = 2131900153;
     }
     String str2 = String.format(str1, new Object[] { HardCodeUtil.a(paramInt) });
     String str3 = String.format("%s(%s)", new Object[] { paramString4, paramString3 });
-    paramString4 = HardCodeUtil.a(2131702146);
-    str1 = HardCodeUtil.a(2131702143);
+    paramString4 = HardCodeUtil.a(2131900154);
+    str1 = HardCodeUtil.a(2131900151);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append(paramString2);
@@ -287,7 +230,7 @@ public class CloneFriendPushHelper
     ((StringBuilder)localObject2).append("。\n不想再被其他好友克隆，可选择");
     ((StringBuilder)localObject2).append(str1);
     ((StringBuilder)localObject2).append("。");
-    localObject2 = new UniteGrayTipParam(paramString3, paramString3, ((StringBuilder)localObject2).toString(), 0, -5040, 2686977, MessageCache.a());
+    localObject2 = new UniteGrayTipParam(paramString3, paramString3, ((StringBuilder)localObject2).toString(), 0, -5040, 2686977, MessageCache.c());
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_action", 44);
     localBundle.putString("key_action_DATA", paramString1);
@@ -301,7 +244,7 @@ public class CloneFriendPushHelper
     paramString3 = new Bundle();
     paramString3.putInt("key_action", 45);
     paramString3.putString("key_action_DATA", paramString1);
-    paramString3.putString("key_a_action_DATA", String.format(HardCodeUtil.a(2131702149), new Object[] { paramString2, str3 }));
+    paramString3.putString("key_a_action_DATA", String.format(HardCodeUtil.a(2131900157), new Object[] { paramString2, str3 }));
     paramInt = paramInt + str3.length() + 22;
     ((UniteGrayTipParam)localObject2).a(paramInt, paramString4.length() + paramInt, paramString3);
     paramString1 = new Bundle();
@@ -313,16 +256,67 @@ public class CloneFriendPushHelper
     UniteGrayTipMsgUtil.a(paramQQAppInterface, localMessageForUniteGrayTip);
   }
   
+  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    synchronized (b)
+    {
+      if (!a) {
+        a(paramQQAppInterface);
+      }
+      boolean bool = b.contains(paramString);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("hasUin, uin=");
+        paramQQAppInterface.append(paramString);
+        paramQQAppInterface.append(", has=");
+        paramQQAppInterface.append(bool);
+        QLog.d("CloneFriendPushHelper", 2, paramQQAppInterface.toString());
+      }
+      return bool;
+    }
+  }
+  
   private static void c(QQAppInterface paramQQAppInterface, String paramString)
   {
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("addUin, uin=");
+      ((StringBuilder)???).append(paramString);
+      QLog.d("CloneFriendPushHelper", 2, ((StringBuilder)???).toString());
+    }
+    synchronized (b)
+    {
+      if (!a) {
+        a(paramQQAppInterface);
+      }
+      if (!b.contains(paramString))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CloneFriendPushHelper", 2, "addUin, not contains, need add");
+        }
+        b.add(paramString);
+        paramString = paramQQAppInterface.getPreferences().edit();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("cloneFriendPush_");
+        localStringBuilder.append(paramQQAppInterface.getCurrentUin());
+        paramString.putStringSet(localStringBuilder.toString(), b).commit();
+      }
+      return;
+    }
+  }
+  
+  private static void d(QQAppInterface paramQQAppInterface, String paramString)
+  {
     MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-    localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, new UniteGrayTipParam(paramString, paramString, HardCodeUtil.a(2131702144), 0, -5020, 2686977, MessageCache.a()));
+    localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, new UniteGrayTipParam(paramString, paramString, HardCodeUtil.a(2131900152), 0, -5020, 2686977, MessageCache.c()));
     UniteGrayTipMsgUtil.a(paramQQAppInterface, localMessageForUniteGrayTip);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.CloneFriendPushHelper
  * JD-Core Version:    0.7.0.1
  */

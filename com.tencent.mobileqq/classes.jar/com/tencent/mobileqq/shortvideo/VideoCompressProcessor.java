@@ -13,8 +13,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class VideoCompressProcessor
 {
-  private static VideoCompressProcessor jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor;
-  private static ConcurrentHashMap<Long, WeakReference<VideoCompressProcessor.CompressTask>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static ConcurrentHashMap<Long, WeakReference<VideoCompressProcessor.CompressTask>> a = new ConcurrentHashMap();
+  private static VideoCompressProcessor b;
   
   static
   {
@@ -23,10 +23,10 @@ public class VideoCompressProcessor
   
   public static VideoCompressProcessor a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor == null) {
-      jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor = new VideoCompressProcessor();
+    if (b == null) {
+      b = new VideoCompressProcessor();
     }
-    return jdField_a_of_type_ComTencentMobileqqShortvideoVideoCompressProcessor;
+    return b;
   }
   
   public static void a(VideoCompressConfig.VideoInfo paramVideoInfo)
@@ -41,22 +41,22 @@ public class VideoCompressProcessor
   
   private static void a(HashMap<String, String> paramHashMap, VideoCompressConfig.CompressInfo paramCompressInfo)
   {
-    paramHashMap.put("param_des_bps", String.valueOf(paramCompressInfo.jdField_a_of_type_Long));
-    paramHashMap.put("param_des_fps", String.valueOf(paramCompressInfo.jdField_b_of_type_Long));
-    paramHashMap.put("param_des_width", String.valueOf(paramCompressInfo.jdField_a_of_type_Int));
-    paramHashMap.put("param_des_height", String.valueOf(paramCompressInfo.jdField_b_of_type_Int));
-    paramHashMap.put("param_des_res", String.valueOf(paramCompressInfo.jdField_a_of_type_Int * paramCompressInfo.jdField_b_of_type_Int));
+    paramHashMap.put("param_des_bps", String.valueOf(paramCompressInfo.c));
+    paramHashMap.put("param_des_fps", String.valueOf(paramCompressInfo.d));
+    paramHashMap.put("param_des_width", String.valueOf(paramCompressInfo.a));
+    paramHashMap.put("param_des_height", String.valueOf(paramCompressInfo.b));
+    paramHashMap.put("param_des_res", String.valueOf(paramCompressInfo.a * paramCompressInfo.b));
   }
   
   private static void a(HashMap<String, String> paramHashMap, VideoCompressConfig.VideoInfo paramVideoInfo)
   {
-    paramHashMap.put("param_file_source_size", String.valueOf(paramVideoInfo.jdField_a_of_type_Long));
-    paramHashMap.put("param_video_duration", String.valueOf(paramVideoInfo.d));
-    paramHashMap.put("param_src_bps", String.valueOf(paramVideoInfo.jdField_b_of_type_Long));
-    paramHashMap.put("param_src_fps", String.valueOf(paramVideoInfo.e));
-    paramHashMap.put("param_src_width", String.valueOf(paramVideoInfo.jdField_a_of_type_Int));
-    paramHashMap.put("param_src_height", String.valueOf(paramVideoInfo.jdField_b_of_type_Int));
-    paramHashMap.put("param_src_res", String.valueOf(paramVideoInfo.jdField_a_of_type_Int * paramVideoInfo.jdField_b_of_type_Int));
+    paramHashMap.put("param_file_source_size", String.valueOf(paramVideoInfo.a));
+    paramHashMap.put("param_video_duration", String.valueOf(paramVideoInfo.e));
+    paramHashMap.put("param_src_bps", String.valueOf(paramVideoInfo.g));
+    paramHashMap.put("param_src_fps", String.valueOf(paramVideoInfo.f));
+    paramHashMap.put("param_src_width", String.valueOf(paramVideoInfo.b));
+    paramHashMap.put("param_src_height", String.valueOf(paramVideoInfo.c));
+    paramHashMap.put("param_src_res", String.valueOf(paramVideoInfo.b * paramVideoInfo.c));
   }
   
   public static void a(boolean paramBoolean, long paramLong1, VideoCompressConfig.VideoInfo paramVideoInfo, VideoCompressConfig.CompressInfo paramCompressInfo, long paramLong2)
@@ -78,11 +78,11 @@ public class VideoCompressProcessor
       paramCompressInfo.append("");
       localHashMap.put("param_compressTime", paramCompressInfo.toString());
       localHashMap.put("param_file_target_sze", String.valueOf(paramLong2));
-      if ((paramVideoInfo.jdField_a_of_type_Long > 0L) && (paramLong2 > 0L)) {
-        localHashMap.put("param_compress_rate", String.valueOf((float)paramLong2 / (float)paramVideoInfo.jdField_a_of_type_Long));
+      if ((paramVideoInfo.a > 0L) && (paramLong2 > 0L)) {
+        localHashMap.put("param_compress_rate", String.valueOf((float)paramLong2 / (float)paramVideoInfo.a));
       }
-      if ((paramLong1 > 0L) && (paramVideoInfo.d > 0)) {
-        localHashMap.put("param_compressSpeed", String.valueOf((float)paramLong1 / paramVideoInfo.d));
+      if ((paramLong1 > 0L) && (paramVideoInfo.e > 0)) {
+        localHashMap.put("param_compressSpeed", String.valueOf((float)paramLong1 / paramVideoInfo.e));
       }
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actVideoCompressTime", paramBoolean, 0L, 0L, localHashMap, "", false);
       if (QLog.isColorLevel())
@@ -97,25 +97,13 @@ public class VideoCompressProcessor
     }
   }
   
-  public VideoCompressProcessor.CompressTask a(long paramLong)
-  {
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)))
-    {
-      WeakReference localWeakReference = (WeakReference)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-      if (localWeakReference != null) {
-        return (VideoCompressProcessor.CompressTask)localWeakReference.get();
-      }
-    }
-    return null;
-  }
-  
   public void a(long paramLong)
   {
-    VideoCompressProcessor.CompressTask localCompressTask = a(paramLong);
+    VideoCompressProcessor.CompressTask localCompressTask = b(paramLong);
     if (localCompressTask != null) {
       localCompressTask.a();
     }
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
+    a.remove(Long.valueOf(paramLong));
   }
   
   public void a(long paramLong, VideoCompressProcessor.CompressTask paramCompressTask)
@@ -123,14 +111,26 @@ public class VideoCompressProcessor
     if (paramCompressTask != null)
     {
       paramCompressTask = new WeakReference(paramCompressTask);
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong), paramCompressTask);
+      a.put(Long.valueOf(paramLong), paramCompressTask);
       Utils.executeAsyncTaskOnSerialExcuter((AsyncTask)paramCompressTask.get(), new Void[0]);
     }
   }
   
-  public void b(long paramLong)
+  public VideoCompressProcessor.CompressTask b(long paramLong)
   {
-    VideoCompressProcessor.CompressTask localCompressTask = a(paramLong);
+    if (a.containsKey(Long.valueOf(paramLong)))
+    {
+      WeakReference localWeakReference = (WeakReference)a.get(Long.valueOf(paramLong));
+      if (localWeakReference != null) {
+        return (VideoCompressProcessor.CompressTask)localWeakReference.get();
+      }
+    }
+    return null;
+  }
+  
+  public void c(long paramLong)
+  {
+    VideoCompressProcessor.CompressTask localCompressTask = b(paramLong);
     if ((localCompressTask != null) && (localCompressTask.getStatus() != AsyncTask.Status.FINISHED) && (!localCompressTask.isCancelled())) {
       localCompressTask.cancel(true);
     }
@@ -138,7 +138,7 @@ public class VideoCompressProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.VideoCompressProcessor
  * JD-Core Version:    0.7.0.1
  */

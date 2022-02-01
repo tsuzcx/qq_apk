@@ -20,7 +20,7 @@ public class MiniAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839135;
+    return 2130839291;
   }
   
   public int getAppID()
@@ -49,18 +49,18 @@ public class MiniAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698542);
+    return BaseApplicationImpl.getContext().getString(2131896488);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    AioPanelMiniAppManager.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramBaseChatPie);
+    AioPanelMiniAppManager.a(paramBaseChatPie.d).a(paramBaseChatPie.f, paramBaseChatPie);
     paramPlusPanelViewModel.b(paramBaseChatPie);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.MiniAppInfo
  * JD-Core Version:    0.7.0.1
  */

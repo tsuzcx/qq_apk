@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.springfestival.entry;
 
 class PreloadResHandler$ZipResRef
 {
-  String jdField_a_of_type_JavaLangString;
+  String a;
   String b;
   String c;
   
@@ -12,7 +12,7 @@ class PreloadResHandler$ZipResRef
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ZipResRef{id='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", fileName='");
     localStringBuilder.append(this.b);
@@ -26,7 +26,7 @@ class PreloadResHandler$ZipResRef
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.PreloadResHandler.ZipResRef
  * JD-Core Version:    0.7.0.1
  */

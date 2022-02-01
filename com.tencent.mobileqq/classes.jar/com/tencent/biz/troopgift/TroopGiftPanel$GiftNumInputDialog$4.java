@@ -12,12 +12,12 @@ class TroopGiftPanel$GiftNumInputDialog$4
   
   public void onShow(DialogInterface paramDialogInterface)
   {
-    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
+    ((InputMethodManager)this.a.e.getContext().getSystemService("input_method")).showSoftInput(this.a.d, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog.4
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ class QQStoryItemBuilder$4
       paramString2.append(paramString1);
       QLog.i("QQStoryItemBuilder", 2, paramString2.toString());
     }
-    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {
+    if (!paramString1.equals(this.d)) {
       return;
     }
     paramString1 = ((StoryManager)SuperManager.a(5)).a(paramString1);
@@ -30,7 +30,7 @@ class QQStoryItemBuilder$4
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long, paramString1, false);
+      this.a.a(this.b, this.c, paramString1, false);
     }
   }
   
@@ -43,7 +43,7 @@ class QQStoryItemBuilder$4
       paramString2.append(paramString1);
       QLog.e("QQStoryItemBuilder", 2, paramString2.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long);
+    this.a.a(this.b, this.c);
   }
   
   public void b(String paramString1, String paramString2, int paramInt)
@@ -55,12 +55,12 @@ class QQStoryItemBuilder$4
       paramString2.append(paramString1);
       QLog.e("QQStoryItemBuilder", 2, paramString2.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long);
+    this.a.a(this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

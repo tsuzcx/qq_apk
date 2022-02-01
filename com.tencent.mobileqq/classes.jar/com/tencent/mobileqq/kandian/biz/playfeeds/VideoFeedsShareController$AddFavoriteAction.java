@@ -24,52 +24,52 @@ class VideoFeedsShareController$AddFavoriteAction
   
   public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if (!NetworkUtil.isNetworkAvailable(VideoFeedsShareController.a(this.a)))
+    if (!NetworkUtil.isNetworkAvailable(VideoFeedsShareController.f(this.a)))
     {
-      QQToast.a(VideoFeedsShareController.a(this.a), 0, HardCodeUtil.a(2131715949), 0).a();
+      QQToast.makeText(VideoFeedsShareController.f(this.a), 0, HardCodeUtil.a(2131913404), 0).show();
       return;
     }
-    VideoFeedsHelper.a(VideoFeedsShareController.a(this.a), VideoFeedsShareController.a(this.a));
-    paramVideoInfo.jdField_d_of_type_Boolean = true;
-    VideoFeedsShareController.a(this.a).b(VideoFeedsShareController.b(this.a));
-    if ((VideoFeedsShareController.a(this.a) instanceof VideoFeedsPlayActivity)) {
-      ((VideoFeedsPlayActivity)VideoFeedsShareController.a(this.a)).c(true);
+    VideoFeedsHelper.a(VideoFeedsShareController.m(this.a), VideoFeedsShareController.f(this.a));
+    paramVideoInfo.J = true;
+    VideoFeedsShareController.b(this.a).b(VideoFeedsShareController.c(this.a));
+    if ((VideoFeedsShareController.f(this.a) instanceof VideoFeedsPlayActivity)) {
+      ((VideoFeedsPlayActivity)VideoFeedsShareController.f(this.a)).c(true);
     }
-    paramString = paramVideoInfo.k;
+    paramString = paramVideoInfo.r;
     paramActionSheetItem = new Bundle();
-    paramActionSheetItem.putInt("videoDuration", paramVideoInfo.jdField_d_of_type_Int);
+    paramActionSheetItem.putInt("videoDuration", paramVideoInfo.e);
     long l;
-    if (TextUtils.isEmpty(paramVideoInfo.j)) {
+    if (TextUtils.isEmpty(paramVideoInfo.q)) {
       l = 0L;
     } else {
-      l = Long.valueOf(paramVideoInfo.j).longValue();
+      l = Long.valueOf(paramVideoInfo.q).longValue();
     }
     paramActionSheetItem.putLong("publishAccountUin", l);
     paramActionSheetItem.putString("publishAccountName", paramString);
-    paramActionSheetItem.putLong("feedsId", paramVideoInfo.jdField_d_of_type_Long);
-    paramActionSheetItem.putInt("feedsType", paramVideoInfo.h);
+    paramActionSheetItem.putLong("feedsId", paramVideoInfo.E);
+    paramActionSheetItem.putInt("feedsType", paramVideoInfo.F);
     if (paramVideoInfo.a == 6) {
       paramInt = 1;
     } else {
       paramInt = 2;
     }
     paramActionSheetItem.putInt("videoType", paramInt);
-    if (paramVideoInfo.g == null) {
+    if (paramVideoInfo.l == null) {
       paramString = "";
     } else {
-      paramString = paramVideoInfo.g;
+      paramString = paramVideoInfo.l;
     }
     ReadInJoyAtlasManager localReadInJoyAtlasManager = ReadInJoyAtlasManager.getInstance();
-    Activity localActivity = VideoFeedsShareController.a(this.a);
-    String str1 = VideoFeedsShareController.a(this.a).getCurrentUin();
-    String str2 = paramVideoInfo.jdField_c_of_type_JavaLangString;
-    String str3 = paramVideoInfo.jdField_d_of_type_JavaLangString;
-    String str4 = paramVideoInfo.b;
+    Activity localActivity = VideoFeedsShareController.f(this.a);
+    String str1 = VideoFeedsShareController.m(this.a).getCurrentUin();
+    String str2 = paramVideoInfo.g;
+    String str3 = paramVideoInfo.h;
+    String str4 = paramVideoInfo.f;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramVideoInfo.f);
+    localStringBuilder.append(paramVideoInfo.k);
     localStringBuilder.append("&sourcefrom=6");
     localReadInJoyAtlasManager.doFavorite(localActivity, str1, 2, paramString, str2, str3, str4, localStringBuilder.toString(), paramActionSheetItem);
-    paramVideoInfo.jdField_c_of_type_Boolean = true;
+    paramVideoInfo.H = true;
   }
   
   public int b()
@@ -79,7 +79,7 @@ class VideoFeedsShareController$AddFavoriteAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.AddFavoriteAction
  * JD-Core Version:    0.7.0.1
  */

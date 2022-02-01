@@ -38,28 +38,28 @@ class QQSettingChatOperationFragment$4
       }
       if (paramBoolean)
       {
-        QQToast.a(paramString.getApplicationContext(), 2, 2131695003, 0).b(this.a.getBaseActivity().getTitleBarHeight());
+        QQToast.makeText(paramString.getApplicationContext(), 2, 2131892731, 0).show(this.a.getBaseActivity().getTitleBarHeight());
         return;
       }
-      if (QQSettingChatOperationFragment.a(this.a) != null)
+      if (QQSettingChatOperationFragment.c(this.a) != null)
       {
-        QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(null);
-        paramMap = QQSettingChatOperationFragment.a(this.a);
+        QQSettingChatOperationFragment.c(this.a).setOnCheckedChangeListener(null);
+        paramMap = QQSettingChatOperationFragment.c(this.a);
         if (QQSettingChatOperationFragment.a(this.a).getC2CRoamingSetting() == 1) {
           paramBoolean = bool;
         } else {
           paramBoolean = false;
         }
         paramMap.setChecked(paramBoolean);
-        QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(this.a);
+        QQSettingChatOperationFragment.c(this.a).setOnCheckedChangeListener(this.a);
       }
-      QQToast.a(paramString.getApplicationContext(), 2131695002, 0).b(paramString.getTitleBarHeight());
+      QQToast.makeText(paramString.getApplicationContext(), 2131892730, 0).show(paramString.getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.4
  * JD-Core Version:    0.7.0.1
  */

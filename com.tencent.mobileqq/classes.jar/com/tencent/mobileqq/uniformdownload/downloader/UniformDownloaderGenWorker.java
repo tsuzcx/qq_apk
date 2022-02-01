@@ -24,97 +24,60 @@ import mqq.app.AppRuntime;
 public class UniformDownloaderGenWorker
   implements IHttpCommunicatorListener
 {
-  public static int a = 1;
   public static String a = "UniformDownloaderGenWorker";
-  public static int b = 2;
-  public static int c = 3;
-  long jdField_a_of_type_Long = 0L;
-  private HttpCommunicator jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator;
-  private UniformDownloaderGen.IUniformDownloaderGenListener jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloaderGen$IUniformDownloaderGenListener = null;
-  private HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
-  private OutputStream jdField_a_of_type_JavaIoOutputStream = null;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  long jdField_b_of_type_Long = 0L;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
-  private final String jdField_b_of_type_JavaLangString;
-  private final long jdField_c_of_type_Long;
-  private Object jdField_c_of_type_JavaLangObject = new Object();
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int = jdField_b_of_type_Int;
-  private long jdField_d_of_type_Long;
-  private Object jdField_d_of_type_JavaLangObject = new Object();
-  private String jdField_d_of_type_JavaLangString;
-  private int jdField_e_of_type_Int = 0;
-  private long jdField_e_of_type_Long = 0L;
-  private Object jdField_e_of_type_JavaLangObject = new Object();
-  private int f = 0;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 3;
+  long e = 0L;
+  long f = 0L;
+  private final long g;
+  private final String h;
+  private long i;
+  private String j;
+  private OutputStream k = null;
+  private Object l = new Object();
+  private long m = 0L;
+  private Object n = new Object();
+  private HttpMsg o;
+  private Object p = new Object();
+  private UniformDownloaderGen.IUniformDownloaderGenListener q = null;
+  private Object r = new Object();
+  private int s = c;
+  private Object t = new Object();
+  private HttpCommunicator u;
+  private int v = 0;
+  private int w = 0;
+  private String x;
   
   public UniformDownloaderGenWorker(long paramLong1, AppRuntime paramAppRuntime, String paramString1, long paramLong2, String paramString2, UniformDownloaderGen.IUniformDownloaderGenListener paramIUniformDownloaderGenListener)
   {
-    this.jdField_c_of_type_Long = paramLong1;
-    this.jdField_b_of_type_JavaLangString = new HttpUrlProcessor(paramAppRuntime, paramString1).a();
-    this.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloaderGen$IUniformDownloaderGenListener = paramIUniformDownloaderGenListener;
-    this.jdField_d_of_type_Long = paramLong2;
-    this.jdField_d_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator = ((HttpCommunicator)((IHttpEngineService)paramAppRuntime.getRuntimeService(IHttpEngineService.class, "")).getCommunicator());
-    paramAppRuntime = jdField_a_of_type_JavaLangString;
+    this.g = paramLong1;
+    this.h = new HttpUrlProcessor(paramAppRuntime, paramString1).b();
+    this.q = paramIUniformDownloaderGenListener;
+    this.i = paramLong2;
+    this.x = paramString2;
+    this.u = ((HttpCommunicator)((IHttpEngineService)paramAppRuntime.getRuntimeService(IHttpEngineService.class, "")).getCommunicator());
+    paramAppRuntime = a;
     paramString1 = new StringBuilder();
     paramString1.append("[UniformDL][HttpCommunicator]:");
-    paramString1.append(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator.toString());
+    paramString1.append(this.u.toString());
     QLog.w(paramAppRuntime, 1, paramString1.toString());
-  }
-  
-  private int a()
-  {
-    int i = jdField_b_of_type_Int;
-    synchronized (this.jdField_e_of_type_JavaLangObject)
-    {
-      i = this.jdField_d_of_type_Int;
-      return i;
-    }
-  }
-  
-  private long a()
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      long l = this.jdField_e_of_type_Long;
-      return l;
-    }
-  }
-  
-  private UniformDownloaderGen.IUniformDownloaderGenListener a()
-  {
-    synchronized (this.jdField_d_of_type_JavaLangObject)
-    {
-      UniformDownloaderGen.IUniformDownloaderGenListener localIUniformDownloaderGenListener = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloaderGen$IUniformDownloaderGenListener;
-      return localIUniformDownloaderGenListener;
-    }
-  }
-  
-  private HttpMsg a()
-  {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
-    {
-      HttpMsg localHttpMsg = this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
-      return localHttpMsg;
-    }
   }
   
   private void a(int paramInt)
   {
-    synchronized (this.jdField_e_of_type_JavaLangObject)
+    synchronized (this.t)
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_c_of_type_Long);
+      localStringBuilder.append(this.g);
       localStringBuilder.append("]. setStatus: ");
-      localStringBuilder.append(this.jdField_d_of_type_Int);
+      localStringBuilder.append(this.s);
       localStringBuilder.append(" -> ");
       localStringBuilder.append(paramInt);
       QLog.i(str, 1, localStringBuilder.toString());
-      this.jdField_d_of_type_Int = paramInt;
+      this.s = paramInt;
       return;
     }
   }
@@ -122,77 +85,63 @@ public class UniformDownloaderGenWorker
   private void a(int paramInt, String paramString1, String paramString2)
   {
     c();
-    Object localObject = UniformDownloadMgr.a().a();
+    Object localObject = UniformDownloadMgr.a().b();
     if (localObject != null)
     {
       localObject = (BaseQQAppInterface)localObject;
-      long l1 = this.jdField_c_of_type_Long;
-      long l2 = this.jdField_a_of_type_Long;
+      long l1 = this.g;
+      long l2 = this.e;
       long l3 = paramInt;
-      QQFileManagerUtil.a((BaseQQAppInterface)localObject, l1, "actFileUfGenDownload", l2, "", "", "", "", l3, paramString1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, this.jdField_b_of_type_JavaLangString, "", this.jdField_e_of_type_Int, paramString2, null);
-      QQFileManagerUtil.a((BaseQQAppInterface)localObject, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", l3, paramString1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, this.jdField_b_of_type_JavaLangString, "", this.jdField_e_of_type_Int, paramString2, null);
+      QQFileManagerUtil.a((BaseQQAppInterface)localObject, l1, "actFileUfGenDownload", l2, "", "", "", "", l3, paramString1, this.f, this.m, this.i, this.h, "", this.v, paramString2, null);
+      QQFileManagerUtil.a((BaseQQAppInterface)localObject, this.g, "actFileUfGenDownloadDetail", this.e, "", "", "", "", l3, paramString1, this.f, this.m, this.i, this.h, "", this.v, paramString2, null);
     }
     else
     {
-      paramString2 = jdField_a_of_type_JavaLangString;
+      paramString2 = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[UniformDL][");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Long);
+      ((StringBuilder)localObject).append(this.g);
       ((StringBuilder)localObject).append("].report failed - 3");
       QLog.w(paramString2, 1, ((StringBuilder)localObject).toString());
     }
-    paramString2 = a();
+    paramString2 = k();
     if (paramString2 != null) {
       paramString2.a(paramInt, paramString1, null);
     }
   }
   
-  private void a(long paramLong)
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      this.jdField_e_of_type_Long = paramLong;
-      return;
-    }
-  }
-  
   private void a(UniformDownloaderGen.IUniformDownloaderGenListener paramIUniformDownloaderGenListener)
   {
-    synchronized (this.jdField_d_of_type_JavaLangObject)
+    synchronized (this.r)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloaderGen$IUniformDownloaderGenListener = paramIUniformDownloaderGenListener;
+      this.q = paramIUniformDownloaderGenListener;
       return;
     }
   }
   
   private void a(HttpMsg paramHttpMsg)
   {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
+    synchronized (this.p)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = paramHttpMsg;
+      this.o = paramHttpMsg;
       return;
     }
-  }
-  
-  private boolean a()
-  {
-    return jdField_b_of_type_Int == a();
   }
   
   private boolean a(long paramLong)
   {
     try
     {
-      a(paramLong);
+      b(paramLong);
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("bytes=");
       ((StringBuilder)localObject1).append(paramLong);
       ((StringBuilder)localObject1).append("-");
       Object localObject3 = ((StringBuilder)localObject1).toString();
-      if ((this.jdField_b_of_type_JavaLangString != null) && (!this.jdField_b_of_type_JavaLangString.contains("?")))
+      if ((this.h != null) && (!this.h.contains("?")))
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.h);
         ((StringBuilder)localObject1).append("?&range=");
         ((StringBuilder)localObject1).append(String.valueOf(paramLong));
         localObject1 = ((StringBuilder)localObject1).toString();
@@ -200,7 +149,7 @@ public class UniformDownloaderGenWorker
       else
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.h);
         ((StringBuilder)localObject1).append("&range=");
         ((StringBuilder)localObject1).append(String.valueOf(paramLong));
         localObject1 = ((StringBuilder)localObject1).toString();
@@ -213,8 +162,8 @@ public class UniformDownloaderGenWorker
       localHttpMsg.setRequestProperty("Net-type", (String)localObject1);
       localHttpMsg.setRequestProperty("Range", (String)localObject3);
       localHttpMsg.setPriority(1);
-      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-        localHttpMsg.setRequestProperty("Cookie", this.jdField_d_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(this.x)) {
+        localHttpMsg.setRequestProperty("Cookie", this.x);
       }
       localHttpMsg.setDataSlice(true);
       localHttpMsg.fileType = 5;
@@ -222,28 +171,28 @@ public class UniformDownloaderGenWorker
       localHttpMsg.msgId = String.valueOf(System.currentTimeMillis());
       localHttpMsg.setRequestProperty("Accept-Encoding", "identity");
       a(localHttpMsg);
-      if (UniformDownloadMgr.a().a() == null)
+      if (UniformDownloadMgr.a().b() == null)
       {
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("[UniformDL][");
-        ((StringBuilder)localObject3).append(this.jdField_c_of_type_Long);
+        ((StringBuilder)localObject3).append(this.g);
         ((StringBuilder)localObject3).append("]. downloadFile failed. APP=null. POS:");
         ((StringBuilder)localObject3).append(paramLong);
         ((StringBuilder)localObject3).append(" PGR:");
-        ((StringBuilder)localObject3).append((int)(paramLong / this.jdField_d_of_type_Long));
+        ((StringBuilder)localObject3).append((int)(paramLong / this.i));
         QLog.i((String)localObject1, 1, ((StringBuilder)localObject3).toString());
         return false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator.sendMsg(localHttpMsg);
-      localObject1 = jdField_a_of_type_JavaLangString;
+      this.u.sendMsg(localHttpMsg);
+      localObject1 = a;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("[UniformDL][");
-      ((StringBuilder)localObject3).append(this.jdField_c_of_type_Long);
+      ((StringBuilder)localObject3).append(this.g);
       ((StringBuilder)localObject3).append("]. >>>>>>>>>>downloadFile. POS:");
       ((StringBuilder)localObject3).append(paramLong);
       ((StringBuilder)localObject3).append(" PGR:");
-      ((StringBuilder)localObject3).append((int)(paramLong / this.jdField_d_of_type_Long));
+      ((StringBuilder)localObject3).append((int)(paramLong / this.i));
       QLog.i((String)localObject1, 1, ((StringBuilder)localObject3).toString());
       return true;
     }
@@ -263,21 +212,21 @@ public class UniformDownloaderGenWorker
   
   private boolean a(byte[] paramArrayOfByte)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.l)
     {
       try
       {
-        if (this.jdField_a_of_type_JavaIoOutputStream == null)
+        if (this.k == null)
         {
-          paramArrayOfByte = jdField_a_of_type_JavaLangString;
+          paramArrayOfByte = a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("[UniformDL][");
-          localStringBuilder.append(this.jdField_c_of_type_Long);
+          localStringBuilder.append(this.g);
           localStringBuilder.append("]. writeFileStream: stream = null:");
           QLog.e(paramArrayOfByte, 1, localStringBuilder.toString());
           return false;
         }
-        this.jdField_a_of_type_JavaIoOutputStream.write(paramArrayOfByte);
+        this.k.write(paramArrayOfByte);
         return true;
       }
       catch (Exception paramArrayOfByte)
@@ -289,47 +238,12 @@ public class UniformDownloaderGenWorker
     }
   }
   
-  private boolean b()
+  private void b(long paramLong)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.n)
     {
-      Object localObject2 = this.jdField_a_of_type_JavaIoOutputStream;
-      Object localObject4;
-      if (localObject2 == null)
-      {
-        try
-        {
-          this.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.jdField_c_of_type_JavaLangString, true);
-          localObject2 = jdField_a_of_type_JavaLangString;
-          localObject4 = new StringBuilder();
-          ((StringBuilder)localObject4).append("[UniformDL][");
-          ((StringBuilder)localObject4).append(this.jdField_c_of_type_Long);
-          ((StringBuilder)localObject4).append("]. openFileStream: filepath:");
-          ((StringBuilder)localObject4).append(this.jdField_c_of_type_JavaLangString);
-          QLog.i((String)localObject2, 1, ((StringBuilder)localObject4).toString());
-        }
-        catch (FileNotFoundException localFileNotFoundException)
-        {
-          localObject4 = jdField_a_of_type_JavaLangString;
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("[UniformDL][");
-          localStringBuilder.append(this.jdField_c_of_type_Long);
-          localStringBuilder.append("]. openFileStream: exception");
-          QLog.e((String)localObject4, 1, localStringBuilder.toString());
-          localFileNotFoundException.printStackTrace();
-          return false;
-        }
-      }
-      else
-      {
-        String str = jdField_a_of_type_JavaLangString;
-        localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append("[UniformDL][");
-        ((StringBuilder)localObject4).append(this.jdField_c_of_type_Long);
-        ((StringBuilder)localObject4).append("]. openFileStream: had be opened");
-        QLog.w(str, 1, ((StringBuilder)localObject4).toString());
-      }
-      return true;
+      this.m = paramLong;
+      return;
     }
   }
   
@@ -337,9 +251,9 @@ public class UniformDownloaderGenWorker
   {
     try
     {
-      a(jdField_b_of_type_Int);
-      d();
-      c();
+      a(c);
+      i();
+      g();
       return;
     }
     finally
@@ -349,31 +263,90 @@ public class UniformDownloaderGenWorker
     }
   }
   
-  private boolean c()
+  private boolean d()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    return c == e();
+  }
+  
+  private int e()
+  {
+    int i1 = c;
+    synchronized (this.t)
+    {
+      i1 = this.s;
+      return i1;
+    }
+  }
+  
+  private boolean f()
+  {
+    synchronized (this.l)
+    {
+      Object localObject2 = this.k;
+      Object localObject4;
+      if (localObject2 == null)
+      {
+        try
+        {
+          this.k = new FileOutputStream(this.j, true);
+          localObject2 = a;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("[UniformDL][");
+          ((StringBuilder)localObject4).append(this.g);
+          ((StringBuilder)localObject4).append("]. openFileStream: filepath:");
+          ((StringBuilder)localObject4).append(this.j);
+          QLog.i((String)localObject2, 1, ((StringBuilder)localObject4).toString());
+        }
+        catch (FileNotFoundException localFileNotFoundException)
+        {
+          localObject4 = a;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[UniformDL][");
+          localStringBuilder.append(this.g);
+          localStringBuilder.append("]. openFileStream: exception");
+          QLog.e((String)localObject4, 1, localStringBuilder.toString());
+          localFileNotFoundException.printStackTrace();
+          return false;
+        }
+      }
+      else
+      {
+        String str = a;
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("[UniformDL][");
+        ((StringBuilder)localObject4).append(this.g);
+        ((StringBuilder)localObject4).append("]. openFileStream: had be opened");
+        QLog.w(str, 1, ((StringBuilder)localObject4).toString());
+      }
+      return true;
+    }
+  }
+  
+  private boolean g()
+  {
+    synchronized (this.l)
     {
       try
       {
         String str;
-        if (this.jdField_a_of_type_JavaIoOutputStream != null)
+        if (this.k != null)
         {
-          this.jdField_a_of_type_JavaIoOutputStream.close();
-          this.jdField_a_of_type_JavaIoOutputStream = null;
-          str = jdField_a_of_type_JavaLangString;
+          this.k.close();
+          this.k = null;
+          str = a;
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("[UniformDL][");
-          ((StringBuilder)localObject3).append(this.jdField_c_of_type_Long);
+          ((StringBuilder)localObject3).append(this.g);
           ((StringBuilder)localObject3).append("]. closeFileStream: filepath:");
-          ((StringBuilder)localObject3).append(this.jdField_c_of_type_JavaLangString);
+          ((StringBuilder)localObject3).append(this.j);
           QLog.i(str, 1, ((StringBuilder)localObject3).toString());
         }
         else
         {
-          str = jdField_a_of_type_JavaLangString;
+          str = a;
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("[UniformDL][");
-          ((StringBuilder)localObject3).append(this.jdField_c_of_type_Long);
+          ((StringBuilder)localObject3).append(this.g);
           ((StringBuilder)localObject3).append("]. closeFileStream.had closed: stream = null:");
           QLog.w(str, 1, ((StringBuilder)localObject3).toString());
         }
@@ -381,10 +354,10 @@ public class UniformDownloaderGenWorker
       }
       catch (IOException localIOException)
       {
-        Object localObject3 = jdField_a_of_type_JavaLangString;
+        Object localObject3 = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[UniformDL][");
-        localStringBuilder.append(this.jdField_c_of_type_Long);
+        localStringBuilder.append(this.g);
         localStringBuilder.append("]. closeFileStream: exception");
         QLog.e((String)localObject3, 1, localStringBuilder.toString());
         localIOException.printStackTrace();
@@ -394,37 +367,64 @@ public class UniformDownloaderGenWorker
     }
   }
   
-  private void d()
+  private HttpMsg h()
   {
-    Object localObject1 = a();
+    synchronized (this.p)
+    {
+      HttpMsg localHttpMsg = this.o;
+      return localHttpMsg;
+    }
+  }
+  
+  private void i()
+  {
+    Object localObject1 = h();
     if (localObject1 != null)
     {
-      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject2 = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_c_of_type_Long);
+      localStringBuilder.append(this.g);
       localStringBuilder.append("]. stopHttpRequest");
       QLog.i((String)localObject2, 1, localStringBuilder.toString());
       a(null);
-      if (UniformDownloadMgr.a().a() == null)
+      if (UniformDownloadMgr.a().b() == null)
       {
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("[UniformDL][");
-        ((StringBuilder)localObject2).append(this.jdField_c_of_type_Long);
+        ((StringBuilder)localObject2).append(this.g);
         ((StringBuilder)localObject2).append("]. stopHttpRequest failed.APP=null");
         QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator.cancelMsg((HttpMsg)localObject1);
+      this.u.cancelMsg((HttpMsg)localObject1);
       return;
     }
-    localObject1 = jdField_a_of_type_JavaLangString;
+    localObject1 = a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("[UniformDL][");
-    ((StringBuilder)localObject2).append(this.jdField_c_of_type_Long);
+    ((StringBuilder)localObject2).append(this.g);
     ((StringBuilder)localObject2).append("]. stopHttpRequest: no request");
     QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+  }
+  
+  private long j()
+  {
+    synchronized (this.n)
+    {
+      long l1 = this.m;
+      return l1;
+    }
+  }
+  
+  private UniformDownloaderGen.IUniformDownloaderGenListener k()
+  {
+    synchronized (this.r)
+    {
+      UniformDownloaderGen.IUniformDownloaderGenListener localIUniformDownloaderGenListener = this.q;
+      return localIUniformDownloaderGenListener;
+    }
   }
   
   public void a()
@@ -437,33 +437,33 @@ public class UniformDownloaderGenWorker
   {
     if (paramString == null)
     {
-      paramString = jdField_a_of_type_JavaLangString;
+      paramString = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_c_of_type_Long);
+      localStringBuilder.append(this.g);
       localStringBuilder.append("]. start failed. filepath = null. POS:");
       localStringBuilder.append(paramLong);
       QLog.e(paramString, 1, localStringBuilder.toString());
       return false;
     }
-    if (jdField_a_of_type_Int == a())
+    if (b == e())
     {
-      paramString = jdField_a_of_type_JavaLangString;
+      paramString = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_c_of_type_Long);
+      localStringBuilder.append(this.g);
       localStringBuilder.append("]. start. is runing. POS:");
       localStringBuilder.append(paramLong);
       QLog.w(paramString, 1, localStringBuilder.toString());
       return true;
     }
-    this.jdField_c_of_type_JavaLangString = paramString;
-    if (!b())
+    this.j = paramString;
+    if (!f())
     {
-      paramString = jdField_a_of_type_JavaLangString;
+      paramString = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_c_of_type_Long);
+      localStringBuilder.append(this.g);
       localStringBuilder.append("]. start failed. openFileStream failed. POS:");
       localStringBuilder.append(paramLong);
       QLog.w(paramString, 1, localStringBuilder.toString());
@@ -473,10 +473,10 @@ public class UniformDownloaderGenWorker
     }
     if (!a(paramLong))
     {
-      paramString = jdField_a_of_type_JavaLangString;
+      paramString = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_c_of_type_Long);
+      localStringBuilder.append(this.g);
       localStringBuilder.append("]. start download failed. POS:");
       localStringBuilder.append(paramLong);
       QLog.e(paramString, 1, localStringBuilder.toString());
@@ -484,12 +484,12 @@ public class UniformDownloaderGenWorker
       a(6, paramString, paramString);
       return false;
     }
-    a(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramString = jdField_a_of_type_JavaLangString;
+    a(b);
+    this.e = System.currentTimeMillis();
+    paramString = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[UniformDL][");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("]. start to run download . POS:");
     localStringBuilder.append(paramLong);
     QLog.i(paramString, 1, localStringBuilder.toString());
@@ -498,17 +498,17 @@ public class UniformDownloaderGenWorker
   
   public void b()
   {
-    a(jdField_c_of_type_Int);
+    a(d);
   }
   
   public void decode(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
   {
-    if (a())
+    if (d())
     {
-      paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+      paramHttpMsg1 = a;
       paramHttpMsg2 = new StringBuilder();
       paramHttpMsg2.append("[UniformDL][");
-      paramHttpMsg2.append(this.jdField_c_of_type_Long);
+      paramHttpMsg2.append(this.g);
       paramHttpMsg2.append("]. decode. but had stoped");
       QLog.e(paramHttpMsg1, 1, paramHttpMsg2.toString());
       return;
@@ -517,80 +517,80 @@ public class UniformDownloaderGenWorker
     {
       if ((paramHttpMsg2.getResponseCode() == 206) || (paramHttpMsg2.getResponseCode() == 200))
       {
-        int i;
+        int i1;
         if (!a(paramHttpMsg2.getRecvData()))
         {
-          i = 3;
+          i1 = 3;
           paramHttpMsg1 = UDConstants.a(3);
           l1 = 0L;
           if (SystemUtil.a()) {
-            l1 = SystemUtil.a() * 1024L;
+            l1 = SystemUtil.b() * 1024L;
           }
-          if (l1 < this.jdField_d_of_type_Long - a())
+          if (l1 < this.i - j())
           {
-            paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+            paramHttpMsg1 = a;
             paramHttpMsg2 = new StringBuilder();
             paramHttpMsg2.append("[UniformDL][");
-            paramHttpMsg2.append(this.jdField_c_of_type_Long);
+            paramHttpMsg2.append(this.g);
             paramHttpMsg2.append("] write file failed. sd card space is no enough:[");
-            paramHttpMsg2.append(this.jdField_d_of_type_Long);
+            paramHttpMsg2.append(this.i);
             paramHttpMsg2.append(" ");
-            paramHttpMsg2.append(a());
+            paramHttpMsg2.append(j());
             paramHttpMsg2.append(" ");
             paramHttpMsg2.append(l1);
             paramHttpMsg2.append("]");
             QLog.e(paramHttpMsg1, 1, paramHttpMsg2.toString());
-            i = 9;
+            i1 = 9;
             paramHttpMsg1 = UDConstants.a(9);
           }
-          a(i, paramHttpMsg1, paramHttpMsg1);
+          a(i1, paramHttpMsg1, paramHttpMsg1);
           return;
         }
-        long l1 = a() + paramHttpMsg2.getRecvData().length;
+        long l1 = j() + paramHttpMsg2.getRecvData().length;
         long l2 = paramHttpMsg2.getTotalLen();
-        if (this.jdField_d_of_type_Long != l2) {
-          this.jdField_d_of_type_Long = l2;
+        if (this.i != l2) {
+          this.i = l2;
         }
-        a(l1);
-        this.jdField_b_of_type_Long += paramHttpMsg2.getRecvData().length;
-        if (l1 >= this.jdField_d_of_type_Long)
+        b(l1);
+        this.f += paramHttpMsg2.getRecvData().length;
+        if (l1 >= this.i)
         {
-          if (!c())
+          if (!g())
           {
-            paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+            paramHttpMsg1 = a;
             paramHttpMsg2 = new StringBuilder();
             paramHttpMsg2.append("[UniformDL][");
-            paramHttpMsg2.append(this.jdField_c_of_type_Long);
+            paramHttpMsg2.append(this.g);
             paramHttpMsg2.append("].closeFileStream falied.path=");
-            paramHttpMsg2.append(this.jdField_c_of_type_JavaLangString);
+            paramHttpMsg2.append(this.j);
             QLog.e(paramHttpMsg1, 1, paramHttpMsg2.toString());
             paramHttpMsg1 = UDConstants.a(4);
             a(4, paramHttpMsg1, paramHttpMsg1);
             return;
           }
-          paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+          paramHttpMsg1 = a;
           paramHttpMsg2 = new StringBuilder();
           paramHttpMsg2.append("[UniformDL][");
-          paramHttpMsg2.append(this.jdField_c_of_type_Long);
+          paramHttpMsg2.append(this.g);
           paramHttpMsg2.append("].decode >>>>>>>. SUCESSFUL!!!");
           QLog.i(paramHttpMsg1, 1, paramHttpMsg2.toString());
-          paramHttpMsg1 = a();
+          paramHttpMsg1 = k();
           if (paramHttpMsg1 != null)
           {
             paramHttpMsg2 = new Bundle();
-            paramHttpMsg2.putLong("EXT_TRANS_SIZE ", this.jdField_e_of_type_Long);
-            paramHttpMsg2.putLong("EXT_TTRANS_SIZE ", this.jdField_b_of_type_Long);
-            paramHttpMsg2.putInt("EXT_AUTOTRY_COUNT", this.jdField_e_of_type_Int);
-            paramHttpMsg1.a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Long, paramHttpMsg2);
+            paramHttpMsg2.putLong("EXT_TRANS_SIZE ", this.m);
+            paramHttpMsg2.putLong("EXT_TTRANS_SIZE ", this.f);
+            paramHttpMsg2.putInt("EXT_AUTOTRY_COUNT", this.v);
+            paramHttpMsg1.a(this.j, this.i, paramHttpMsg2);
           }
         }
         else
         {
-          i = (int)((float)l1 / (float)this.jdField_d_of_type_Long * 100.0F);
-          paramHttpMsg1 = a();
+          i1 = (int)((float)l1 / (float)this.i * 100.0F);
+          paramHttpMsg1 = k();
           if (paramHttpMsg1 != null)
           {
-            paramHttpMsg1.a(i, null);
+            paramHttpMsg1.a(i1, null);
             return;
           }
         }
@@ -606,12 +606,12 @@ public class UniformDownloaderGenWorker
   
   public void handleError(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
   {
-    if (a())
+    if (d())
     {
-      paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+      paramHttpMsg1 = a;
       paramHttpMsg2 = new StringBuilder();
       paramHttpMsg2.append("[UniformDL][");
-      paramHttpMsg2.append(this.jdField_c_of_type_Long);
+      paramHttpMsg2.append(this.g);
       paramHttpMsg2.append("]. handleError..user puase");
       QLog.i(paramHttpMsg1, 1, paramHttpMsg2.toString());
       return;
@@ -619,34 +619,34 @@ public class UniformDownloaderGenWorker
     long l3;
     if (paramHttpMsg2 == null)
     {
-      paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+      paramHttpMsg1 = a;
       paramHttpMsg2 = new StringBuilder();
       paramHttpMsg2.append("[UniformDL][");
-      paramHttpMsg2.append(this.jdField_c_of_type_Long);
+      paramHttpMsg2.append(this.g);
       paramHttpMsg2.append("]. handleError.. response=NULL:");
       QLog.e(paramHttpMsg1, 1, paramHttpMsg2.toString());
       c();
       paramHttpMsg1 = UDConstants.a(2);
-      paramHttpMsg2 = UniformDownloadMgr.a().a();
+      paramHttpMsg2 = UniformDownloadMgr.a().b();
       if (paramHttpMsg2 != null)
       {
         paramHttpMsg2 = (BaseQQAppInterface)paramHttpMsg2;
-        l1 = this.jdField_c_of_type_Long;
-        l2 = this.jdField_a_of_type_Long;
+        l1 = this.g;
+        l2 = this.e;
         l3 = 2;
-        QQFileManagerUtil.a(paramHttpMsg2, l1, "actFileUfGenDownload", l2, "", "", "", "", l3, paramHttpMsg1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, paramHttpMsg1, null);
-        QQFileManagerUtil.a(paramHttpMsg2, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", l3, paramHttpMsg1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, paramHttpMsg1, null);
+        QQFileManagerUtil.a(paramHttpMsg2, l1, "actFileUfGenDownload", l2, "", "", "", "", l3, paramHttpMsg1, this.f, this.m, this.i, this.h, "", 0, paramHttpMsg1, null);
+        QQFileManagerUtil.a(paramHttpMsg2, this.g, "actFileUfGenDownloadDetail", this.e, "", "", "", "", l3, paramHttpMsg1, this.f, this.m, this.i, this.h, "", 0, paramHttpMsg1, null);
       }
       else
       {
-        paramHttpMsg2 = jdField_a_of_type_JavaLangString;
+        paramHttpMsg2 = a;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("[UniformDL][");
-        ((StringBuilder)localObject1).append(this.jdField_c_of_type_Long);
+        ((StringBuilder)localObject1).append(this.g);
         ((StringBuilder)localObject1).append("].report failed - 111");
         QLog.w(paramHttpMsg2, 1, ((StringBuilder)localObject1).toString());
       }
-      paramHttpMsg2 = a();
+      paramHttpMsg2 = k();
       if (paramHttpMsg2 != null) {
         paramHttpMsg2.a(2, paramHttpMsg1, null);
       }
@@ -657,48 +657,48 @@ public class UniformDownloaderGenWorker
     if (localObject2 == null) {
       localObject1 = "null";
     }
-    localObject2 = jdField_a_of_type_JavaLangString;
+    localObject2 = a;
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("[UniformDL][");
-    ((StringBuilder)localObject3).append(this.jdField_c_of_type_Long);
+    ((StringBuilder)localObject3).append(this.g);
     ((StringBuilder)localObject3).append("]. handleError.. errString:");
     ((StringBuilder)localObject3).append((String)localObject1);
     QLog.e((String)localObject2, 1, ((StringBuilder)localObject3).toString());
-    if (jdField_c_of_type_Int == a())
+    if (d == e())
     {
-      paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+      paramHttpMsg1 = a;
       paramHttpMsg2 = new StringBuilder();
       paramHttpMsg2.append("[UniformDL][");
-      paramHttpMsg2.append(this.jdField_c_of_type_Long);
+      paramHttpMsg2.append(this.g);
       paramHttpMsg2.append("]. handleError.. slience pause. may app destroy!!");
       QLog.w(paramHttpMsg1, 1, paramHttpMsg2.toString());
-      c();
+      g();
       return;
     }
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
       c();
       paramHttpMsg1 = UDConstants.a(5);
-      paramHttpMsg2 = UniformDownloadMgr.a().a();
+      paramHttpMsg2 = UniformDownloadMgr.a().b();
       if (paramHttpMsg2 != null)
       {
         paramHttpMsg2 = (BaseQQAppInterface)paramHttpMsg2;
-        l1 = this.jdField_c_of_type_Long;
-        l2 = this.jdField_a_of_type_Long;
+        l1 = this.g;
+        l2 = this.e;
         l3 = 5;
-        QQFileManagerUtil.a(paramHttpMsg2, l1, "actFileUfGenDownload", l2, "", "", "", "", l3, paramHttpMsg1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, paramHttpMsg1, null);
-        QQFileManagerUtil.a(paramHttpMsg2, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", l3, paramHttpMsg1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, paramHttpMsg1, null);
+        QQFileManagerUtil.a(paramHttpMsg2, l1, "actFileUfGenDownload", l2, "", "", "", "", l3, paramHttpMsg1, this.f, this.m, this.i, this.h, "", 0, paramHttpMsg1, null);
+        QQFileManagerUtil.a(paramHttpMsg2, this.g, "actFileUfGenDownloadDetail", this.e, "", "", "", "", l3, paramHttpMsg1, this.f, this.m, this.i, this.h, "", 0, paramHttpMsg1, null);
       }
       else
       {
-        paramHttpMsg2 = jdField_a_of_type_JavaLangString;
+        paramHttpMsg2 = a;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("[UniformDL][");
-        ((StringBuilder)localObject1).append(this.jdField_c_of_type_Long);
+        ((StringBuilder)localObject1).append(this.g);
         ((StringBuilder)localObject1).append("].report failed - 11");
         QLog.w(paramHttpMsg2, 1, ((StringBuilder)localObject1).toString());
       }
-      paramHttpMsg2 = a();
+      paramHttpMsg2 = k();
       if (paramHttpMsg2 != null) {
         paramHttpMsg2.a(5, paramHttpMsg1, null);
       }
@@ -712,38 +712,38 @@ public class UniformDownloaderGenWorker
     localObject2 = str;
     if (a(paramHttpMsg1, paramHttpMsg2))
     {
-      int i = this.jdField_e_of_type_Int;
+      int i1 = this.v;
       l1 = l2;
       localObject1 = localObject3;
       localObject2 = str;
-      if (i < 3)
+      if (i1 < 3)
       {
-        this.jdField_e_of_type_Int = (i + 1);
-        if ((this.f < 3) && (paramHttpMsg2.errCode == 9056))
+        this.v = (i1 + 1);
+        if ((this.w < 3) && (paramHttpMsg2.errCode == 9056))
         {
-          this.f += 1;
-          this.jdField_e_of_type_Int -= 1;
+          this.w += 1;
+          this.v -= 1;
         }
         else
         {
-          this.f = 0;
+          this.w = 0;
         }
-        paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+        paramHttpMsg1 = a;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("[UniformDL][");
-        ((StringBuilder)localObject1).append(this.jdField_c_of_type_Long);
+        ((StringBuilder)localObject1).append(this.g);
         ((StringBuilder)localObject1).append("]. handleError. auto retry to download. autoRetry=");
-        ((StringBuilder)localObject1).append(this.jdField_e_of_type_Int);
+        ((StringBuilder)localObject1).append(this.v);
         ((StringBuilder)localObject1).append(" eofRetry=");
-        ((StringBuilder)localObject1).append(this.f);
+        ((StringBuilder)localObject1).append(this.w);
         QLog.w(paramHttpMsg1, 1, ((StringBuilder)localObject1).toString());
-        d();
-        if (!a(a()))
+        i();
+        if (!a(j()))
         {
-          paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+          paramHttpMsg1 = a;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("[UniformDL][");
-          ((StringBuilder)localObject1).append(this.jdField_c_of_type_Long);
+          ((StringBuilder)localObject1).append(this.g);
           ((StringBuilder)localObject1).append("]. auto retry dowload failed.");
           QLog.e(paramHttpMsg1, 1, ((StringBuilder)localObject1).toString());
           localObject1 = UDConstants.a((int)13L);
@@ -752,32 +752,32 @@ public class UniformDownloaderGenWorker
         }
         else
         {
-          paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+          paramHttpMsg1 = a;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("[UniformDL][");
-          ((StringBuilder)localObject1).append(this.jdField_c_of_type_Long);
+          ((StringBuilder)localObject1).append(this.g);
           ((StringBuilder)localObject1).append("]. auto retry dowload started.");
           QLog.i(paramHttpMsg1, 1, ((StringBuilder)localObject1).toString());
-          paramHttpMsg1 = UniformDownloadMgr.a().a();
+          paramHttpMsg1 = UniformDownloadMgr.a().b();
           if (paramHttpMsg1 != null)
           {
-            QQFileManagerUtil.a((BaseQQAppInterface)paramHttpMsg1, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", paramHttpMsg2.errCode, String.valueOf(paramHttpMsg2.getSerial()), this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, paramHttpMsg2.getRealUrl(), paramHttpMsg2.rawRespHeader, this.jdField_e_of_type_Int, paramHttpMsg2.getErrorString(), null);
+            QQFileManagerUtil.a((BaseQQAppInterface)paramHttpMsg1, this.g, "actFileUfGenDownloadDetail", this.e, "", "", "", "", paramHttpMsg2.errCode, String.valueOf(paramHttpMsg2.getSerial()), this.f, this.m, this.i, paramHttpMsg2.getRealUrl(), paramHttpMsg2.rawRespHeader, this.v, paramHttpMsg2.getErrorString(), null);
             return;
           }
-          paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+          paramHttpMsg1 = a;
           paramHttpMsg2 = new StringBuilder();
           paramHttpMsg2.append("[UniformDL][");
-          paramHttpMsg2.append(this.jdField_c_of_type_Long);
+          paramHttpMsg2.append(this.g);
           paramHttpMsg2.append("].report failed - 1");
           QLog.w(paramHttpMsg1, 1, paramHttpMsg2.toString());
           return;
         }
       }
     }
-    this.jdField_e_of_type_Int = 0;
-    this.f = 0;
+    this.v = 0;
+    this.w = 0;
     c();
-    localObject3 = UniformDownloadMgr.a().a();
+    localObject3 = UniformDownloadMgr.a().b();
     if (localObject3 != null)
     {
       if (13L != l1)
@@ -791,19 +791,19 @@ public class UniformDownloaderGenWorker
         paramHttpMsg1 = (HttpMsg)localObject1;
       }
       localObject1 = (BaseQQAppInterface)localObject3;
-      QQFileManagerUtil.a((BaseQQAppInterface)localObject1, this.jdField_c_of_type_Long, "actFileUfGenDownload", this.jdField_a_of_type_Long, "", "", "", "", l1, paramHttpMsg1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, paramHttpMsg2.getRealUrl(), paramHttpMsg2.rawRespHeader, this.jdField_e_of_type_Int, (String)localObject2, null);
-      QQFileManagerUtil.a((BaseQQAppInterface)localObject1, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", paramHttpMsg2.errCode, String.valueOf(paramHttpMsg2.getSerial()), this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, paramHttpMsg2.getRealUrl(), paramHttpMsg2.rawRespHeader, this.jdField_e_of_type_Int, paramHttpMsg2.getErrorString(), null);
+      QQFileManagerUtil.a((BaseQQAppInterface)localObject1, this.g, "actFileUfGenDownload", this.e, "", "", "", "", l1, paramHttpMsg1, this.f, this.m, this.i, paramHttpMsg2.getRealUrl(), paramHttpMsg2.rawRespHeader, this.v, (String)localObject2, null);
+      QQFileManagerUtil.a((BaseQQAppInterface)localObject1, this.g, "actFileUfGenDownloadDetail", this.e, "", "", "", "", paramHttpMsg2.errCode, String.valueOf(paramHttpMsg2.getSerial()), this.f, this.m, this.i, paramHttpMsg2.getRealUrl(), paramHttpMsg2.rawRespHeader, this.v, paramHttpMsg2.getErrorString(), null);
     }
     else
     {
-      paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+      paramHttpMsg1 = a;
       paramHttpMsg2 = new StringBuilder();
       paramHttpMsg2.append("[UniformDL][");
-      paramHttpMsg2.append(this.jdField_c_of_type_Long);
+      paramHttpMsg2.append(this.g);
       paramHttpMsg2.append("].report failed - 2");
       QLog.w(paramHttpMsg1, 1, paramHttpMsg2.toString());
     }
-    paramHttpMsg1 = a();
+    paramHttpMsg1 = k();
     if (paramHttpMsg1 != null) {
       paramHttpMsg1.a(6, "downloader fialed", null);
     }
@@ -813,37 +813,37 @@ public class UniformDownloaderGenWorker
   
   public boolean statusChanged(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
   {
-    paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+    paramHttpMsg1 = a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[UniformDL][");
-    ((StringBuilder)localObject).append(this.jdField_c_of_type_Long);
+    ((StringBuilder)localObject).append(this.g);
     ((StringBuilder)localObject).append("]. HttpCommunicator statusChanged. status:");
     ((StringBuilder)localObject).append(paramInt);
     QLog.i(paramHttpMsg1, 1, ((StringBuilder)localObject).toString());
-    if ((5 == paramInt) && (a() < this.jdField_d_of_type_Long))
+    if ((5 == paramInt) && (j() < this.i))
     {
       c();
       paramHttpMsg1 = UDConstants.a(14);
-      localObject = UniformDownloadMgr.a().a();
+      localObject = UniformDownloadMgr.a().b();
       if (localObject != null)
       {
         localObject = (BaseQQAppInterface)localObject;
-        long l1 = this.jdField_c_of_type_Long;
-        long l2 = this.jdField_a_of_type_Long;
+        long l1 = this.g;
+        long l2 = this.e;
         long l3 = 14;
-        QQFileManagerUtil.a((BaseQQAppInterface)localObject, l1, "actFileUfGenDownload", l2, "", "", "", "", l3, paramHttpMsg1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, paramHttpMsg2.getRealUrl(), paramHttpMsg2.rawRespHeader, this.jdField_e_of_type_Int, paramHttpMsg1, null);
-        QQFileManagerUtil.a((BaseQQAppInterface)localObject, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", l3, paramHttpMsg1, this.jdField_b_of_type_Long, this.jdField_e_of_type_Long, this.jdField_d_of_type_Long, paramHttpMsg2.getRealUrl(), paramHttpMsg2.rawRespHeader, this.jdField_e_of_type_Int, paramHttpMsg1, null);
+        QQFileManagerUtil.a((BaseQQAppInterface)localObject, l1, "actFileUfGenDownload", l2, "", "", "", "", l3, paramHttpMsg1, this.f, this.m, this.i, paramHttpMsg2.getRealUrl(), paramHttpMsg2.rawRespHeader, this.v, paramHttpMsg1, null);
+        QQFileManagerUtil.a((BaseQQAppInterface)localObject, this.g, "actFileUfGenDownloadDetail", this.e, "", "", "", "", l3, paramHttpMsg1, this.f, this.m, this.i, paramHttpMsg2.getRealUrl(), paramHttpMsg2.rawRespHeader, this.v, paramHttpMsg1, null);
       }
       else
       {
-        paramHttpMsg1 = jdField_a_of_type_JavaLangString;
+        paramHttpMsg1 = a;
         paramHttpMsg2 = new StringBuilder();
         paramHttpMsg2.append("[UniformDL][");
-        paramHttpMsg2.append(this.jdField_c_of_type_Long);
+        paramHttpMsg2.append(this.g);
         paramHttpMsg2.append("].report failed - 2");
         QLog.w(paramHttpMsg1, 1, paramHttpMsg2.toString());
       }
-      paramHttpMsg1 = a();
+      paramHttpMsg1 = k();
       if (paramHttpMsg1 != null) {
         paramHttpMsg1.a(14, "downloader fialed", null);
       }
@@ -853,7 +853,7 @@ public class UniformDownloaderGenWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloaderGenWorker
  * JD-Core Version:    0.7.0.1
  */

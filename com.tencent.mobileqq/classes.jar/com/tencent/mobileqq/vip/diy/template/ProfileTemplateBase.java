@@ -37,45 +37,42 @@ import org.json.JSONObject;
 
 public class ProfileTemplateBase
 {
-  private static ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  protected int a;
-  protected Activity a;
-  protected LayoutInflater a;
-  protected ProfileCardInfo a;
+  private static ArrayList<String> q = new ArrayList();
   protected ProfileTemplateBase.TemplateDecoderHandler a;
-  protected String a;
-  private Map<String, JSONObject> jdField_a_of_type_JavaUtilMap = null;
-  protected JSONObject a;
-  protected int b;
   protected String b;
-  protected int c;
   protected String c;
-  protected int d;
   protected String d;
-  protected String e;
-  protected String f = "";
+  protected int e = -1;
+  protected String f;
+  protected String g;
+  protected int h;
+  protected LayoutInflater i;
+  protected Activity j;
+  protected JSONObject k;
+  protected int l = -1;
+  protected String m = "";
+  protected int n = 0;
+  protected ProfileCardInfo o;
+  private Map<String, JSONObject> p = null;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList.add("map_key_personal_sign");
-    jdField_a_of_type_JavaUtilArrayList.add("map_key_account_level");
-    jdField_a_of_type_JavaUtilArrayList.add("map_key_diamond");
-    jdField_a_of_type_JavaUtilArrayList.add("map_key_troop_mem_info");
-    jdField_a_of_type_JavaUtilArrayList.add("map_key_present");
+    q.add("map_key_personal_sign");
+    q.add("map_key_account_level");
+    q.add("map_key_diamond");
+    q.add("map_key_troop_mem_info");
+    q.add("map_key_present");
   }
   
   public ProfileTemplateBase(Activity paramActivity, JSONObject paramJSONObject, ProfileCardInfo paramProfileCardInfo)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo = paramProfileCardInfo;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramActivity);
+    this.j = paramActivity;
+    this.k = paramJSONObject;
+    this.o = paramProfileCardInfo;
+    this.i = LayoutInflater.from(paramActivity);
     try
     {
-      this.jdField_c_of_type_Int = Color.parseColor(paramJSONObject.optString("c"));
+      this.l = Color.parseColor(paramJSONObject.optString("c"));
     }
     catch (IllegalArgumentException paramActivity)
     {
@@ -86,17 +83,17 @@ public class ProfileTemplateBase
     paramActivity.append("DIYProfileTemplate.ProfileTemplateBase default main color is illegal! ");
     paramActivity.append(paramJSONObject.optString("c"));
     AssertUtils.fail(paramActivity.toString(), new Object[0]);
-    this.jdField_c_of_type_Int = -16777216;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("sbg");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("t_bg");
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("arr");
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("f");
-    this.e = paramJSONObject.optString("cbg", "");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("cpd", 0);
-    this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateProfileTemplateBase$TemplateDecoderHandler = new ProfileTemplateBase.TemplateDecoderHandler();
+    this.l = -16777216;
+    this.b = paramJSONObject.optString("sbg");
+    this.c = paramJSONObject.optString("t_bg");
+    this.d = paramJSONObject.optString("arr");
+    this.f = paramJSONObject.optString("f");
+    this.g = paramJSONObject.optString("cbg", "");
+    this.h = paramJSONObject.optInt("cpd", 0);
+    this.a = new ProfileTemplateBase.TemplateDecoderHandler();
     try
     {
-      this.jdField_a_of_type_Int = Color.parseColor(paramJSONObject.optString("line"));
+      this.e = Color.parseColor(paramJSONObject.optString("line"));
     }
     catch (Exception paramActivity)
     {
@@ -107,7 +104,7 @@ public class ProfileTemplateBase
     paramActivity.append("DIYProfileTemplate.ProfileTemplateBase default line color is illegal! ");
     paramActivity.append(paramJSONObject.optString("c"));
     AssertUtils.fail(paramActivity.toString(), new Object[0]);
-    this.jdField_a_of_type_Int = -1;
+    this.e = -1;
     a();
   }
   
@@ -147,56 +144,56 @@ public class ProfileTemplateBase
   
   private void a()
   {
-    JSONArray localJSONArray = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("module");
-    int i = 0;
+    JSONArray localJSONArray = this.k.optJSONArray("module");
+    int i1 = 0;
     if ((localJSONArray != null) && (localJSONArray.length() != 0))
     {
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
-      while (i < localJSONArray.length())
+      this.p = new HashMap();
+      while (i1 < localJSONArray.length())
       {
-        Object localObject = localJSONArray.optJSONObject(i);
+        Object localObject = localJSONArray.optJSONObject(i1);
         if (localObject == null)
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("module array[");
-          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(i1);
           ((StringBuilder)localObject).append("] is null");
           SLog.e("DIYProfileTemplate.ProfileTemplateBase", ((StringBuilder)localObject).toString());
         }
         else
         {
           String str = ((JSONObject)localObject).optString("type");
-          this.jdField_a_of_type_JavaUtilMap.put(str, localObject);
+          this.p.put(str, localObject);
         }
-        i += 1;
+        i1 += 1;
       }
       return;
     }
     AssertUtils.fail("DIYProfileTemplate.ProfileTemplateBasethere is no module!", new Object[0]);
-    this.jdField_a_of_type_JavaUtilMap = null;
+    this.p = null;
   }
   
   private void i(View paramView)
   {
-    paramView.measure(View.MeasureSpec.makeMeasureSpec(UIUtils.b(this.jdField_a_of_type_AndroidAppActivity) - UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 30.0F), 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
+    paramView.measure(View.MeasureSpec.makeMeasureSpec(UIUtils.c(this.j) - UIUtils.a(this.j, 30.0F), 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
   }
   
   public int a(float paramFloat)
   {
-    return (int)(paramFloat * this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().density + 0.5F);
+    return (int)(paramFloat * this.j.getResources().getDisplayMetrics().density + 0.5F);
   }
   
   protected int a(JSONObject paramJSONObject)
   {
     Object localObject = paramJSONObject.optString("line");
-    int i = this.jdField_a_of_type_Int;
+    int i1 = this.e;
     if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return i;
+      return i1;
     }
     try
     {
-      int j = Color.parseColor((String)localObject);
-      return j;
+      int i2 = Color.parseColor((String)localObject);
+      return i2;
     }
     catch (Exception localException)
     {
@@ -209,17 +206,17 @@ public class ProfileTemplateBase
     ((StringBuilder)localObject).append(" value=");
     ((StringBuilder)localObject).append(paramJSONObject.optString("line"));
     AssertUtils.fail(((StringBuilder)localObject).toString(), new Object[0]);
-    return i;
+    return i1;
   }
   
   public <T extends View> T a(QQAppInterface paramQQAppInterface, ProfileCardInfo paramProfileCardInfo)
   {
-    paramQQAppInterface = new TemplatePhotoWall(this.jdField_a_of_type_AndroidAppActivity, paramQQAppInterface, paramProfileCardInfo.allInOne.uin);
-    paramProfileCardInfo = (ProfileCardDiyPhotoWallView)paramQQAppInterface.findViewById(2131372671).findViewById(2131372671);
-    paramProfileCardInfo.setMargin(UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 8.0F));
-    paramProfileCardInfo.setBorderWidth(this.jdField_d_of_type_Int);
-    paramProfileCardInfo = a(this.jdField_a_of_type_AndroidAppActivity);
-    paramProfileCardInfo.setTitle(HardCodeUtil.a(2131708489));
+    paramQQAppInterface = new TemplatePhotoWall(this.j, paramQQAppInterface, paramProfileCardInfo.allInOne.uin);
+    paramProfileCardInfo = (ProfileCardDiyPhotoWallView)paramQQAppInterface.findViewById(2131440217).findViewById(2131440217);
+    paramProfileCardInfo.setMargin(UIUtils.a(this.j, 8.0F));
+    paramProfileCardInfo.setBorderWidth(this.n);
+    paramProfileCardInfo = a(this.j);
+    paramProfileCardInfo.setTitle(HardCodeUtil.a(2131906275));
     paramProfileCardInfo.setVisibility(8);
     paramProfileCardInfo.addView(paramQQAppInterface);
     return paramProfileCardInfo;
@@ -227,22 +224,17 @@ public class ProfileTemplateBase
   
   public View a(JSONObject paramJSONObject, View paramView)
   {
-    QZoneLayoutTemplateBase localQZoneLayoutTemplateBase = (QZoneLayoutTemplateBase)paramView.findViewById(2131368817);
+    QZoneLayoutTemplateBase localQZoneLayoutTemplateBase = (QZoneLayoutTemplateBase)paramView.findViewById(2131435738);
     localQZoneLayoutTemplateBase.setBorderColor(a(paramJSONObject));
-    localQZoneLayoutTemplateBase.setBorderWidth(b(paramJSONObject));
+    localQZoneLayoutTemplateBase.setBorderWidth(c(paramJSONObject));
     localQZoneLayoutTemplateBase.setItemBg(a(paramJSONObject, a(70.0F), a(70.0F)));
-    a(paramJSONObject, paramView.findViewById(2131368343), (TextView)paramView.findViewById(2131378609), (ImageView)paramView.findViewById(2131368501));
+    a(paramJSONObject, paramView.findViewById(2131435219), (TextView)paramView.findViewById(2131447238), (ImageView)paramView.findViewById(2131435403));
     return paramView;
-  }
-  
-  protected URLDrawable a(String paramString)
-  {
-    return a(paramString, null);
   }
   
   protected URLDrawable a(String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
   {
-    paramString = a(paramString);
+    paramString = c(paramString);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
     localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
@@ -258,9 +250,9 @@ public class ProfileTemplateBase
   protected URLDrawable a(JSONObject paramJSONObject, int paramInt1, int paramInt2)
   {
     if (paramJSONObject == null) {
-      paramJSONObject = this.e;
+      paramJSONObject = this.g;
     } else {
-      paramJSONObject = paramJSONObject.optString("cbg", this.e);
+      paramJSONObject = paramJSONObject.optString("cbg", this.g);
     }
     if (TextUtils.isEmpty(paramJSONObject)) {
       return null;
@@ -270,42 +262,12 @@ public class ProfileTemplateBase
   
   public ProfileCardFavorShowView a(Activity paramActivity)
   {
-    return new ProfileCardFavorShowView(paramActivity, null, 2131562005);
-  }
-  
-  protected String a(@NonNull String paramString)
-  {
-    if (paramString.startsWith("http")) {
-      return paramString;
-    }
-    if (!TextUtils.isEmpty(this.f))
-    {
-      if (this.f.startsWith("http"))
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.f);
-        localStringBuilder.append(paramString);
-        return localStringBuilder.toString();
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("it have the illegal url prefix=");
-      localStringBuilder.append(this.f);
-      QLog.e("DIYProfileTemplate.ProfileTemplateBase", 1, localStringBuilder.toString());
-    }
-    return paramString;
-  }
-  
-  protected String a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return this.e;
-    }
-    return paramJSONObject.optString("cbg", this.e);
+    return new ProfileCardFavorShowView(paramActivity, null, 2131628431);
   }
   
   public void a(View paramView)
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.p;
     if (localMap == null) {
       return;
     }
@@ -314,7 +276,7 @@ public class ProfileTemplateBase
   
   public void a(String paramString)
   {
-    this.f = paramString;
+    this.m = paramString;
   }
   
   public void a(String paramString, TextView paramTextView, View paramView, ImageView paramImageView)
@@ -322,45 +284,36 @@ public class ProfileTemplateBase
     if (("map_key_phone".equals(paramString)) || ("map_key_personal_sign".equals(paramString)) || ("map_key_mine_weishi".equals(paramString)) || ("map_key_favor".equals(paramString)) || ("map_key_account_info_vas".equals(paramString)))
     {
       if (paramTextView != null) {
-        paramTextView.setTextColor(this.jdField_c_of_type_Int);
+        paramTextView.setTextColor(this.l);
       }
       if ((paramView instanceof TextView))
       {
-        ((TextView)paramView).setTextColor(this.jdField_c_of_type_Int);
+        ((TextView)paramView).setTextColor(this.l);
         return;
       }
       if ((paramView instanceof SingleLineTextView))
       {
-        ((SingleLineTextView)paramView).setTextColor(this.jdField_c_of_type_Int);
+        ((SingleLineTextView)paramView).setTextColor(this.l);
         return;
       }
       if ((paramView instanceof ImageView)) {
-        ((ImageView)paramView).setColorFilter(this.jdField_c_of_type_Int);
+        ((ImageView)paramView).setColorFilter(this.l);
       }
     }
   }
   
   public void a(HashMap<String, View> paramHashMap)
   {
-    paramHashMap.put("map_key_qzone", this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562013, null));
-  }
-  
-  protected void a(JSONObject paramJSONObject, View paramView)
-  {
-    if (paramView == null) {
-      return;
-    }
-    i(paramView);
-    a(paramJSONObject, paramView, paramView.getMeasuredWidth(), paramView.getMeasuredHeight());
+    paramHashMap.put("map_key_qzone", this.i.inflate(2131628439, null));
   }
   
   protected void a(JSONObject paramJSONObject, View paramView, int paramInt1, int paramInt2)
   {
     String str;
     if (paramJSONObject == null) {
-      str = this.jdField_a_of_type_JavaLangString;
+      str = this.b;
     } else {
-      str = paramJSONObject.optString("bg", this.jdField_a_of_type_JavaLangString);
+      str = paramJSONObject.optString("bg", this.b);
     }
     if (paramJSONObject == null) {
       paramJSONObject = "null module";
@@ -409,10 +362,10 @@ public class ProfileTemplateBase
   {
     if (paramView != null)
     {
-      Object localObject = b(paramJSONObject);
+      Object localObject = d(paramJSONObject);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        paramView.setBackgroundDrawable(a((String)localObject));
+        paramView.setBackgroundDrawable(b((String)localObject));
       }
       else
       {
@@ -428,16 +381,16 @@ public class ProfileTemplateBase
     }
     if (paramImageView != null)
     {
-      paramView = c(paramJSONObject);
+      paramView = e(paramJSONObject);
       if (!TextUtils.isEmpty(paramView))
       {
         try
         {
-          paramImageView.setImageDrawable(a(paramView));
+          paramImageView.setImageDrawable(b(paramView));
         }
         catch (IllegalArgumentException paramJSONObject)
         {
-          paramImageView.setImageResource(2130839270);
+          paramImageView.setImageResource(2130839446);
           if (!QLog.isColorLevel()) {
             break label212;
           }
@@ -461,41 +414,41 @@ public class ProfileTemplateBase
     }
     label212:
     if (paramTextView != null) {
-      paramTextView.setTextColor(this.jdField_c_of_type_Int);
+      paramTextView.setTextColor(this.l);
     }
   }
   
   public void a(JSONObject paramJSONObject, TextView paramTextView, View paramView1, ImageView paramImageView, View paramView2, View paramView3)
   {
     if (paramTextView != null) {
-      paramTextView.setTextColor(this.jdField_c_of_type_Int);
+      paramTextView.setTextColor(this.l);
     }
     if ((paramView1 instanceof TextView)) {
-      ((TextView)paramView1).setTextColor(this.jdField_c_of_type_Int);
+      ((TextView)paramView1).setTextColor(this.l);
     } else if ((paramView1 instanceof SingleLineTextView)) {
-      ((SingleLineTextView)paramView1).setTextColor(this.jdField_c_of_type_Int);
+      ((SingleLineTextView)paramView1).setTextColor(this.l);
     }
-    int i;
+    int i1;
     if (paramImageView != null)
     {
-      i = a(18.0F);
+      i1 = a(18.0F);
       paramTextView = paramImageView.getLayoutParams();
-      paramTextView.width = i;
-      paramTextView.height = i;
+      paramTextView.width = i1;
+      paramTextView.height = i1;
       paramImageView.setLayoutParams(paramTextView);
-      paramTextView = c(paramJSONObject);
+      paramTextView = e(paramJSONObject);
       if (!TextUtils.isEmpty(paramTextView)) {
-        paramImageView.setImageDrawable(a(paramTextView));
+        paramImageView.setImageDrawable(b(paramTextView));
       } else {
         paramImageView.setImageDrawable(null);
       }
     }
     if (paramView2 != null)
     {
-      paramTextView = b(paramJSONObject);
+      paramTextView = d(paramJSONObject);
       if (!TextUtils.isEmpty(paramTextView))
       {
-        paramView2.setBackgroundDrawable(a(paramTextView));
+        paramView2.setBackgroundDrawable(b(paramTextView));
         paramView2.setVisibility(0);
       }
       else
@@ -506,9 +459,9 @@ public class ProfileTemplateBase
     }
     if (paramView3 != null)
     {
-      i = a(10.0F);
-      paramView3.setPadding(i, i, i, i);
-      a(paramJSONObject, paramView3);
+      i1 = a(10.0F);
+      paramView3.setPadding(i1, i1, i1, i1);
+      c(paramJSONObject, paramView3);
     }
   }
   
@@ -535,7 +488,7 @@ public class ProfileTemplateBase
     }
     try
     {
-      localObject = a(paramJSONObject);
+      localObject = b(paramJSONObject);
       paramView.setBackgroundDrawable((Drawable)localObject);
       ((URLDrawable)localObject).setURLDrawableListener(new ProfileTemplateBase.BackGroundUpdateListener(paramView));
       return;
@@ -553,20 +506,6 @@ public class ProfileTemplateBase
     }
   }
   
-  protected int b(JSONObject paramJSONObject)
-  {
-    int i;
-    if (paramJSONObject == null) {
-      i = this.jdField_b_of_type_Int;
-    } else {
-      i = paramJSONObject.optInt("cpd", this.jdField_b_of_type_Int);
-    }
-    if (i == 0) {
-      return this.jdField_d_of_type_Int;
-    }
-    return a(i / 2);
-  }
-  
   public View b(JSONObject paramJSONObject, View paramView)
   {
     if (!(paramView instanceof ProfileCardFavorShowView)) {
@@ -574,12 +513,12 @@ public class ProfileTemplateBase
     }
     Object localObject = (ProfileCardFavorShowView)paramView;
     PhotoWallView localPhotoWallView = (PhotoWallView)((ProfileCardFavorShowView)localObject).getViewInContainer(0);
-    ProfileCardDiyPhotoWallView localProfileCardDiyPhotoWallView = (ProfileCardDiyPhotoWallView)localPhotoWallView.findViewById(2131372671).findViewById(2131372671);
+    ProfileCardDiyPhotoWallView localProfileCardDiyPhotoWallView = (ProfileCardDiyPhotoWallView)localPhotoWallView.findViewById(2131440217).findViewById(2131440217);
     localProfileCardDiyPhotoWallView.setItemViewBorderColor(a(paramJSONObject));
-    localProfileCardDiyPhotoWallView.setBorderImgUrl(a(paramJSONObject));
-    localProfileCardDiyPhotoWallView.setBorderWidth(b(paramJSONObject));
-    a(paramJSONObject, ((ProfileCardFavorShowView)localObject).findViewById(2131368343), (TextView)((ProfileCardFavorShowView)localObject).findViewById(2131378609), (ImageView)((ProfileCardFavorShowView)localObject).findViewById(2131368501));
-    localObject = localPhotoWallView.findViewById(2131372663);
+    localProfileCardDiyPhotoWallView.setBorderImgUrl(b(paramJSONObject));
+    localProfileCardDiyPhotoWallView.setBorderWidth(c(paramJSONObject));
+    a(paramJSONObject, ((ProfileCardFavorShowView)localObject).findViewById(2131435219), (TextView)((ProfileCardFavorShowView)localObject).findViewById(2131447238), (ImageView)((ProfileCardFavorShowView)localObject).findViewById(2131435403));
+    localObject = localPhotoWallView.findViewById(2131440209);
     if (((View)localObject).getVisibility() == 0)
     {
       ((View)localObject).setPadding(a(10.0F), a(15.0F), a(10.0F), a(10.0F));
@@ -589,23 +528,22 @@ public class ProfileTemplateBase
     return paramView;
   }
   
+  protected URLDrawable b(String paramString)
+  {
+    return a(paramString, null);
+  }
+  
   protected String b(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {
-      paramJSONObject = this.jdField_b_of_type_JavaLangString;
-    } else {
-      paramJSONObject = paramJSONObject.optString("t_bg");
+      return this.g;
     }
-    Object localObject = paramJSONObject;
-    if (TextUtils.isEmpty(paramJSONObject)) {
-      localObject = this.jdField_b_of_type_JavaLangString;
-    }
-    return localObject;
+    return paramJSONObject.optString("cbg", this.g);
   }
   
   public void b(View paramView)
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.p;
     if (localMap != null)
     {
       if (paramView == null) {
@@ -615,33 +553,55 @@ public class ProfileTemplateBase
     }
   }
   
-  protected String c(JSONObject paramJSONObject)
+  protected int c(JSONObject paramJSONObject)
   {
+    int i1;
     if (paramJSONObject == null) {
-      paramJSONObject = this.jdField_c_of_type_JavaLangString;
+      i1 = this.h;
     } else {
-      paramJSONObject = paramJSONObject.optString("arr");
+      i1 = paramJSONObject.optInt("cpd", this.h);
     }
-    Object localObject = paramJSONObject;
-    if (TextUtils.isEmpty(paramJSONObject)) {
-      localObject = this.jdField_c_of_type_JavaLangString;
+    if (i1 == 0) {
+      return this.n;
     }
-    return localObject;
+    return a(i1 / 2);
+  }
+  
+  protected String c(@NonNull String paramString)
+  {
+    if (paramString.startsWith("http")) {
+      return paramString;
+    }
+    if (!TextUtils.isEmpty(this.m))
+    {
+      if (this.m.startsWith("http"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.m);
+        localStringBuilder.append(paramString);
+        return localStringBuilder.toString();
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("it have the illegal url prefix=");
+      localStringBuilder.append(this.m);
+      QLog.e("DIYProfileTemplate.ProfileTemplateBase", 1, localStringBuilder.toString());
+    }
+    return paramString;
   }
   
   public void c(View paramView)
   {
-    JSONObject localJSONObject = a(this.jdField_a_of_type_JavaUtilMap, "info");
+    JSONObject localJSONObject = a(this.p, "info");
     if (localJSONObject != null)
     {
       if (paramView == null) {
         return;
       }
       paramView.setPadding(a(10.0F), a(12.0F), a(10.0F), a(12.0F));
-      a(localJSONObject, paramView);
-      if (this.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.isTroopMemberCard)
+      c(localJSONObject, paramView);
+      if (this.o.isTroopMemberCard)
       {
-        paramView = paramView.findViewById(2131361877);
+        paramView = paramView.findViewById(2131427431);
         if (paramView != null) {
           paramView.setVisibility(8);
         }
@@ -649,54 +609,91 @@ public class ProfileTemplateBase
     }
   }
   
+  protected void c(JSONObject paramJSONObject, View paramView)
+  {
+    if (paramView == null) {
+      return;
+    }
+    i(paramView);
+    a(paramJSONObject, paramView, paramView.getMeasuredWidth(), paramView.getMeasuredHeight());
+  }
+  
+  protected String d(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      paramJSONObject = this.c;
+    } else {
+      paramJSONObject = paramJSONObject.optString("t_bg");
+    }
+    Object localObject = paramJSONObject;
+    if (TextUtils.isEmpty(paramJSONObject)) {
+      localObject = this.c;
+    }
+    return localObject;
+  }
+  
   public void d(View paramView)
   {
-    Object localObject = a(this.jdField_a_of_type_JavaUtilMap, "info");
+    Object localObject = a(this.p, "info");
     if (localObject != null)
     {
       if (paramView == null) {
         return;
       }
-      ViewGroup localViewGroup = (ViewGroup)paramView.findViewById(2131361874);
+      ViewGroup localViewGroup = (ViewGroup)paramView.findViewById(2131427428);
       if (localViewGroup.getChildAt(0) != null) {
-        a((JSONObject)localObject, "qq", localViewGroup.getChildAt(0).findViewById(2131368343));
+        a((JSONObject)localObject, "qq", localViewGroup.getChildAt(0).findViewById(2131435219));
       }
       if (localViewGroup.getChildAt(1) != null) {
-        a((JSONObject)localObject, "p", localViewGroup.getChildAt(1).findViewById(2131368343));
+        a((JSONObject)localObject, "p", localViewGroup.getChildAt(1).findViewById(2131435219));
       }
-      localObject = (TextView)paramView.findViewById(2131361878);
+      localObject = (TextView)paramView.findViewById(2131427432);
       if (localObject != null) {
-        ((TextView)localObject).setTextColor(this.jdField_c_of_type_Int);
+        ((TextView)localObject).setTextColor(this.l);
       }
-      paramView = (ImageView)paramView.findViewById(2131362975);
+      paramView = (ImageView)paramView.findViewById(2131428774);
       if (paramView != null) {
-        paramView.setColorFilter(this.jdField_c_of_type_Int);
+        paramView.setColorFilter(this.l);
       }
     }
   }
   
+  protected String e(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      paramJSONObject = this.d;
+    } else {
+      paramJSONObject = paramJSONObject.optString("arr");
+    }
+    Object localObject = paramJSONObject;
+    if (TextUtils.isEmpty(paramJSONObject)) {
+      localObject = this.d;
+    }
+    return localObject;
+  }
+  
   public void e(View paramView)
   {
-    JSONObject localJSONObject = a(this.jdField_a_of_type_JavaUtilMap, "info");
+    JSONObject localJSONObject = a(this.p, "info");
     if (localJSONObject != null)
     {
       if (paramView == null) {
         return;
       }
-      a(localJSONObject, "sign", paramView.findViewById(2131368343));
+      a(localJSONObject, "sign", paramView.findViewById(2131435219));
     }
   }
   
   public void f(View paramView)
   {
-    JSONObject localJSONObject = a(this.jdField_a_of_type_JavaUtilMap, "info");
+    JSONObject localJSONObject = a(this.p, "info");
     if (localJSONObject != null)
     {
       if (paramView == null) {
         return;
       }
-      a(localJSONObject, "lv", paramView.findViewById(2131368343));
-      if (this.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.isTroopMemberCard) {
+      a(localJSONObject, "lv", paramView.findViewById(2131435219));
+      if (this.o.isTroopMemberCard) {
         paramView.setVisibility(8);
       }
     }
@@ -704,14 +701,14 @@ public class ProfileTemplateBase
   
   public void g(View paramView)
   {
-    JSONObject localJSONObject = a(this.jdField_a_of_type_JavaUtilMap, "info");
+    JSONObject localJSONObject = a(this.p, "info");
     if (localJSONObject != null)
     {
       if (paramView == null) {
         return;
       }
-      a(localJSONObject, "metal", paramView.findViewById(2131368343));
-      if (this.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.isTroopMemberCard) {
+      a(localJSONObject, "metal", paramView.findViewById(2131435219));
+      if (this.o.isTroopMemberCard) {
         paramView.setVisibility(8);
       }
     }
@@ -719,37 +716,37 @@ public class ProfileTemplateBase
   
   public void h(View paramView)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.isTroopMemberCard) {
+    if (!this.o.isTroopMemberCard) {
       return;
     }
     if ((paramView != null) && (paramView.getParent() == null))
     {
-      int i = 0;
+      int i1 = 0;
       for (;;)
       {
         Object localObject = (ViewGroup)paramView;
-        if (i >= ((ViewGroup)localObject).getChildCount()) {
+        if (i1 >= ((ViewGroup)localObject).getChildCount()) {
           break;
         }
-        localObject = ((ViewGroup)localObject).getChildAt(i);
-        TextView localTextView = (TextView)((View)localObject).findViewById(2131369087);
+        localObject = ((ViewGroup)localObject).getChildAt(i1);
+        TextView localTextView = (TextView)((View)localObject).findViewById(2131436051);
         if (localTextView != null) {
-          localTextView.setTextColor(this.jdField_c_of_type_Int);
+          localTextView.setTextColor(this.l);
         }
-        localObject = (ImageView)((View)localObject).findViewById(2131368343);
+        localObject = (ImageView)((View)localObject).findViewById(2131435219);
         if (localObject != null)
         {
           ((ImageView)localObject).clearColorFilter();
-          ((ImageView)localObject).setColorFilter(this.jdField_c_of_type_Int);
+          ((ImageView)localObject).setColorFilter(this.l);
         }
-        i += 1;
+        i1 += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.ProfileTemplateBase
  * JD-Core Version:    0.7.0.1
  */

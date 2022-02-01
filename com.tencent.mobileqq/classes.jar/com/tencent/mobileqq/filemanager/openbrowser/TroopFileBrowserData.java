@@ -12,29 +12,29 @@ import mqq.app.MobileQQ;
 public class TroopFileBrowserData
   extends EntityFileBrowserData
 {
-  private TroopFileStatusInfo a;
+  private TroopFileStatusInfo c;
   
   public TroopFileBrowserData(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
     super(paramQQAppInterface, paramFileManagerEntity);
     boolean bool1 = paramFileManagerEntity.isZipInnerFile;
     boolean bool2 = true;
-    if ((bool1) && (FileUtil.a(paramFileManagerEntity.getFilePath()))) {
+    if ((bool1) && (FileUtil.b(paramFileManagerEntity.getFilePath()))) {
       paramFileManagerEntity.status = 1;
     }
     if ((paramFileManagerEntity.isZipInnerFile) && (FileManagerUtil.a(paramQQAppInterface, paramFileManagerEntity.fileName, paramFileManagerEntity.status, true))) {
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
     } else {
-      this.jdField_a_of_type_Boolean = FileManagerUtil.a(paramQQAppInterface.getApplication().getBaseContext(), paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize);
+      this.b = FileManagerUtil.a(paramQQAppInterface.getApplication().getBaseContext(), paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize);
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo = TroopFileUtils.a(paramQQAppInterface, paramFileManagerEntity);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.b == 2) || (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.b == 3))
+    this.c = TroopFileUtils.a(paramQQAppInterface, paramFileManagerEntity);
+    if ((this.c.e == 2) || (this.c.e == 3))
     {
       int i;
-      if (FileUtil.a(paramFileManagerEntity.getFilePath())) {
+      if (FileUtil.b(paramFileManagerEntity.getFilePath())) {
         i = 3;
       } else {
         i = paramFileManagerEntity.getCloudType();
@@ -56,25 +56,25 @@ public class TroopFileBrowserData
       }
       bool1 = false;
       label195:
-      this.jdField_a_of_type_Boolean = bool1;
+      this.b = bool1;
     }
   }
   
-  public int d()
+  public int g()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 6) && (b() == 31)) {
-      return super.d();
+    if ((this.a.getCloudType() == 6) && (e() == 31)) {
+      return super.g();
     }
-    TroopFileStatusInfo localTroopFileStatusInfo = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo;
+    TroopFileStatusInfo localTroopFileStatusInfo = this.c;
     if (localTroopFileStatusInfo != null) {
-      return localTroopFileStatusInfo.b;
+      return localTroopFileStatusInfo.e;
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.openbrowser.TroopFileBrowserData
  * JD-Core Version:    0.7.0.1
  */

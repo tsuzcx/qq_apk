@@ -29,68 +29,62 @@ public class ApolloRecentViewBinder
 {
   public int a;
   
-  public int a()
-  {
-    return 1;
-  }
-  
   public View a()
   {
-    int i = this.b;
+    int i = this.k;
     if (i != 0)
     {
       if (i != 2) {
-        return new ApolloLinearLayout(this.jdField_a_of_type_AndroidContentContext, null, this.c, this.f, this.jdField_a_of_type_Int);
+        return new ApolloLinearLayout(this.i, null, this.l, this.q, this.a);
       }
-      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558613, null);
+      return LayoutInflater.from(this.i).inflate(2131624177, null);
     }
-    return new ApolloLinearLayout(this.jdField_a_of_type_AndroidContentContext, null, this.c, this.f, this.jdField_a_of_type_Int);
+    return new ApolloLinearLayout(this.i, null, this.l, this.q, this.a);
   }
   
   public void a(View paramView, int paramInt)
   {
     try
     {
-      if (this.b == 0)
+      int i = this.k;
+      if (i != 0) {
+        return;
+      }
+      Object localObject1 = this.o;
+      if (localObject1 == null) {
+        return;
+      }
+      int m = this.q;
+      int n = this.a;
+      int j = 0;
+      i = 0;
+      while (j < this.a)
       {
-        int m = this.f;
-        int n = this.jdField_a_of_type_Int;
-        int j = 0;
-        int i = 0;
-        while (j < this.jdField_a_of_type_Int)
+        localObject1 = (LinearLayout)((ApolloLinearLayout)paramView).getChildAt(j);
+        int k = 0;
+        while (k < this.q)
         {
-          LinearLayout localLinearLayout = (LinearLayout)((ApolloLinearLayout)paramView).getChildAt(j);
-          int k = 0;
-          while (k < this.f)
+          Object localObject2 = ((LinearLayout)localObject1).getChildAt(k);
+          ApolloLinearLayout.ViewHolder localViewHolder = (ApolloLinearLayout.ViewHolder)((View)localObject2).getTag();
+          int i1 = m * n * paramInt + i;
+          if (i1 >= this.o.size())
           {
-            Object localObject = localLinearLayout.getChildAt(k);
-            ApolloLinearLayout.ViewHolder localViewHolder = (ApolloLinearLayout.ViewHolder)((View)localObject).getTag();
-            int i1 = m * n * paramInt + i;
-            List localList = this.jdField_a_of_type_JavaUtilList;
-            if (localList == null) {
-              return;
-            }
-            if (i1 < this.jdField_a_of_type_JavaUtilList.size())
-            {
-              localObject = ((ApolloInfo)this.jdField_a_of_type_JavaUtilList.get(i1)).mAction;
-              localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-              localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((ApolloInfo)this.jdField_a_of_type_JavaUtilList.get(i1)).getPanelDrawable(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density));
-              if ((localObject != null) && (((ApolloActionData)localObject).actionName != null)) {
-                localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((ApolloActionData)localObject).actionName);
-              }
-              localViewHolder.jdField_a_of_type_ComTencentMobileqqApolloModelApolloInfo = ((ApolloInfo)this.jdField_a_of_type_JavaUtilList.get(i1));
-              localViewHolder.jdField_a_of_type_ComTencentMobileqqApolloModelApolloInfo.mBinderType = 1;
-            }
-            else
-            {
-              ((View)localObject).setContentDescription(null);
-              ((View)localObject).setOnClickListener(null);
-            }
-            i += 1;
-            k += 1;
+            ((View)localObject2).setContentDescription(null);
+            ((View)localObject2).setOnClickListener(null);
+            return;
           }
-          j += 1;
+          localObject2 = ((ApolloInfo)this.o.get(i1)).mAction;
+          localViewHolder.b.setVisibility(0);
+          localViewHolder.b.setBackgroundDrawable(((ApolloInfo)this.o.get(i1)).getPanelDrawable(this.i, this.i.getResources().getDisplayMetrics().density));
+          if ((localObject2 != null) && (((ApolloActionData)localObject2).actionName != null)) {
+            localViewHolder.c.setText(((ApolloActionData)localObject2).actionName);
+          }
+          localViewHolder.j = ((ApolloInfo)this.o.get(i1));
+          localViewHolder.j.mBinderType = 1;
+          i += 1;
+          k += 1;
         }
+        j += 1;
       }
       return;
     }
@@ -113,17 +107,17 @@ public class ApolloRecentViewBinder
       if (localObject == null) {
         return false;
       }
-      if (CmShowAioMatcherImpl.judgeSupported(paramSessionInfo.jdField_a_of_type_Int, 1)) {
-        localList = ((ApolloRecentManager)localObject).jdField_a_of_type_JavaUtilList;
-      } else if (CmShowAioMatcherImpl.judgeSupported(paramSessionInfo.jdField_a_of_type_Int, 2)) {
+      if (CmShowAioMatcherImpl.judgeSupported(paramSessionInfo.a, 1)) {
+        localList = ((ApolloRecentManager)localObject).a;
+      } else if (CmShowAioMatcherImpl.judgeSupported(paramSessionInfo.a, 2)) {
         localList = ((ApolloRecentManager)localObject).b;
       }
       if ((localList != null) && (localList.size() != 0))
       {
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          this.jdField_a_of_type_JavaUtilList.clear();
+        if (this.o != null) {
+          this.o.clear();
         } else {
-          this.jdField_a_of_type_JavaUtilList = new ArrayList();
+          this.o = new ArrayList();
         }
         int i = localList.size();
         i -= 1;
@@ -145,7 +139,7 @@ public class ApolloRecentViewBinder
             localObject = new ApolloMainInfo(paramQQAppInterface.getCurrentUin());
             ((ApolloMainInfo)localObject).mAction = paramSessionInfo;
             ((ApolloMainInfo)localObject).mBinderType = 1;
-            this.jdField_a_of_type_JavaUtilList.add(localObject);
+            this.o.add(localObject);
           }
           i -= 1;
         }
@@ -162,12 +156,17 @@ public class ApolloRecentViewBinder
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.i = null;
+  }
+  
+  public int c()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloRecentViewBinder
  * JD-Core Version:    0.7.0.1
  */

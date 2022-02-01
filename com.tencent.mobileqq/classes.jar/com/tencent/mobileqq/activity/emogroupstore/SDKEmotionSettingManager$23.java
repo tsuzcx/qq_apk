@@ -11,20 +11,20 @@ class SDKEmotionSettingManager$23
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager), "", "", "");
-    if (this.jdField_a_of_type_Boolean)
+    ReportController.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, SDKEmotionSettingManager.b(this.c), "", "", "");
+    if (this.a)
     {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager;
-      SDKEmotionSettingManager.a(paramDialogInterface, SDKEmotionSettingManager.a(paramDialogInterface), Long.valueOf(SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager)).longValue(), false);
+      paramDialogInterface = this.c;
+      SDKEmotionSettingManager.a(paramDialogInterface, SDKEmotionSettingManager.a(paramDialogInterface), Long.valueOf(SDKEmotionSettingManager.b(this.c)).longValue(), false);
       return;
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager;
-    SDKEmotionSettingManager.a(paramDialogInterface, SDKEmotionSettingManager.a(paramDialogInterface), Long.valueOf(SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager)).longValue(), false, this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.c;
+    SDKEmotionSettingManager.a(paramDialogInterface, SDKEmotionSettingManager.a(paramDialogInterface), Long.valueOf(SDKEmotionSettingManager.b(this.c)).longValue(), false, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.23
  * JD-Core Version:    0.7.0.1
  */

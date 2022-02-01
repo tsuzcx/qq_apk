@@ -18,14 +18,14 @@ class RecommendBannerItemView$1
       return false;
     }
     FeedbackSheetHelper.a(this.a.getContext(), RecommendBannerItemView.a(this.a), new RecommendBannerItemView.1.1(this), new RecommendBannerItemView.1.2(this));
-    if (RecommendBannerItemView.a(this.a))
+    if (RecommendBannerItemView.c(this.a))
     {
-      VSReporter.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_press", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
+      VSReporter.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_press", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.b(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
       return true;
     }
     paramView = RecommendBannerItemView.a(this.a).id.get();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(RecommendBannerItemView.a(this.a));
+    localStringBuilder.append(RecommendBannerItemView.b(this.a));
     localStringBuilder.append("");
     VSReporter.a(paramView, "auth_page", "recom_remove", 0, 0, new String[] { "", localStringBuilder.toString(), RecommendBannerItemView.a(this.a).nick.get() });
     return true;

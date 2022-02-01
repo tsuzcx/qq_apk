@@ -13,18 +13,18 @@ class QRDisplayActivity$14$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("file://");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localIntent.setData(Uri.parse(localStringBuilder.toString()));
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$14.this$0.sendBroadcast(localIntent);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$14.this$0.getString(2131694913), 1).b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$14.this$0.getTitleBarHeight());
+      this.c.this$0.sendBroadcast(localIntent);
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2, this.c.this$0.getString(2131892639), 1).show(this.c.this$0.getTitleBarHeight());
       return;
     }
-    QRUtils.a(1, 2131716706);
+    QRUtils.a(1, 2131914170);
   }
 }
 

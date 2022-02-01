@@ -12,8 +12,8 @@ class DetailBaseBlock$1
   
   public void onClick(View paramView)
   {
-    if ((this.a.a() instanceof SubscribeBaseFragment)) {
-      ((SubscribeBaseFragment)this.a.a()).a(this.a.a(2));
+    if ((this.a.A() instanceof SubscribeBaseFragment)) {
+      ((SubscribeBaseFragment)this.a.A()).a(this.a.b(2));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

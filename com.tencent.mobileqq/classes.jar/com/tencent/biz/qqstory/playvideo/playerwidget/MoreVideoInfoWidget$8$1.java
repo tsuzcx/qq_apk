@@ -21,11 +21,11 @@ class MoreVideoInfoWidget$8$1
   
   public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.l();
+    this.d.d.E();
     Object localObject;
     if (QLog.isColorLevel())
     {
-      paramBundle = this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.jdField_b_of_type_JavaLangString;
+      paramBundle = this.d.d.i;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("troop story delete result, code=");
       ((StringBuilder)localObject).append(paramInt);
@@ -34,28 +34,28 @@ class MoreVideoInfoWidget$8$1
     if ((paramInt == 0) && (paramArrayOfByte != null)) {
       try
       {
-        paramBundle = this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.a.jdField_b_of_type_JavaLangString;
+        paramBundle = this.d.d.p.c;
         localObject = new qqstory_group.RspGroupVideoDelete();
         ((qqstory_group.RspGroupVideoDelete)localObject).mergeFrom(paramArrayOfByte);
         paramArrayOfByte = (qqstory_struct.ErrorInfo)((qqstory_group.RspGroupVideoDelete)localObject).result.get();
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoManager.a(paramBundle, 0, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoManager.a(paramBundle, 1, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        localObject = new DeleteStoryVideoEvent(new ErrorMessage(), this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
-        ((DeleteStoryVideoEvent)localObject).jdField_b_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+        this.d.c.a(paramBundle, 0, this.d.b);
+        this.d.c.a(paramBundle, 1, this.d.b);
+        localObject = new DeleteStoryVideoEvent(new ErrorMessage(), this.d.b.mVid, false);
+        ((DeleteStoryVideoEvent)localObject).b = this.d.b.mOwnerUid;
         ((DeleteStoryVideoEvent)localObject).d = paramBundle;
-        ((DeleteStoryVideoEvent)localObject).jdField_b_of_type_Boolean = false;
-        ((DeleteStoryVideoEvent)localObject).c = this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.b();
-        ((DeleteStoryVideoEvent)localObject).a = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
-        if (((DeleteStoryVideoEvent)localObject).a == 0L) {
-          ((DeleteStoryVideoEvent)localObject).a = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
+        ((DeleteStoryVideoEvent)localObject).h = false;
+        ((DeleteStoryVideoEvent)localObject).c = this.d.d.D();
+        ((DeleteStoryVideoEvent)localObject).e = this.d.b.mVideoIndex;
+        if (((DeleteStoryVideoEvent)localObject).e == 0L) {
+          ((DeleteStoryVideoEvent)localObject).e = this.d.b.mCreateTime;
         }
-        Bosses.get().scheduleJobDelayed(new MoreVideoInfoWidget.8.1.1(this, this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.jdField_b_of_type_JavaLangString, (DeleteStoryVideoEvent)localObject), 400);
+        Bosses.get().scheduleJobDelayed(new MoreVideoInfoWidget.8.1.1(this, this.d.d.i, (DeleteStoryVideoEvent)localObject), 400);
         return paramArrayOfByte;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.jdField_b_of_type_JavaLangString, 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
+          QLog.d(this.d.d.i, 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
         }
       }
     }

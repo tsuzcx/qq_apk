@@ -64,15 +64,15 @@ public class UniteDownloadDbOperator
   public void a(String paramString, DownloadInfo paramDownloadInfo)
   {
     ThreadManager.excute(new UniteDownloadDbOperator.1(this, paramDownloadInfo, paramString), 32, null, false);
-    paramString = ((IUniformDownloadUtil)QRoute.api(IUniformDownloadUtil.class)).getApkName(paramDownloadInfo.l);
+    paramString = ((IUniformDownloadUtil)QRoute.api(IUniformDownloadUtil.class)).getApkName(paramDownloadInfo.q);
     if (!TextUtils.isEmpty(paramString))
     {
-      if (paramDownloadInfo.f)
+      if (paramDownloadInfo.U)
       {
         ReportHelperKt.a("0X800B53A", 0, "", paramString);
         return;
       }
-      if (DownloadManagerInterceptor.a(paramDownloadInfo.m))
+      if (DownloadManagerInterceptor.a(paramDownloadInfo.r))
       {
         UniteDownloadUtil.b(paramString);
         return;
@@ -105,7 +105,7 @@ public class UniteDownloadDbOperator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.core.UniteDownloadDbOperator
  * JD-Core Version:    0.7.0.1
  */

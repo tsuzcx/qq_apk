@@ -11,18 +11,18 @@ class ReadInJoyNinePicDeliverDynamicGridView$5
   public void onAnimationEnd(Animator paramAnimator)
   {
     ReadInJoyNinePicDeliverDynamicGridView.b(this.a, false);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a);
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
     ReadInJoyNinePicDeliverDynamicGridView.b(this.a, true);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyNinePicDeliverDynamicGridView.5
  * JD-Core Version:    0.7.0.1
  */

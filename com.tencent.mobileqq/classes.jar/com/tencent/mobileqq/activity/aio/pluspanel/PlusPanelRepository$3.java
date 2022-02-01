@@ -5,7 +5,6 @@ import com.tencent.mobileqq.activity.aio.core.DiscussChatPie;
 import com.tencent.mobileqq.activity.aio.core.FriendChatPie;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.GameBuddyChatPie;
 import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
 import com.tencent.mobileqq.activity.aio.rebuild.RobotChatPie;
 import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
@@ -23,14 +22,12 @@ class PlusPanelRepository$3
     put(FriendChatPie.class, paramPlusPanelRepository);
     put(BusinessCmrTmpChatPie.class, paramPlusPanelRepository);
     put(RobotChatPie.class, paramPlusPanelRepository);
-    paramPlusPanelRepository = Integer.valueOf(7);
-    put(StrangerChatPie.class, paramPlusPanelRepository);
-    put(GameBuddyChatPie.class, paramPlusPanelRepository);
+    put(StrangerChatPie.class, Integer.valueOf(7));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelRepository.3
  * JD-Core Version:    0.7.0.1
  */

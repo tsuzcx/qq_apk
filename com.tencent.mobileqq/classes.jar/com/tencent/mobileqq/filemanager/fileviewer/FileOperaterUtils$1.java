@@ -23,14 +23,14 @@ final class FileOperaterUtils$1
     try
     {
       Object localObject = new FileOperaterUtils.1.1(this);
-      IFModel localIFModel = FileModel.a(this.jdField_a_of_type_JavaLangString);
+      IFModel localIFModel = FileModel.a(this.a);
       if (localIFModel == null)
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("error. get filemodel null, filepath[ ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(this.a);
           ((StringBuilder)localObject).append("]");
           QLog.w("FileOperaterUtils", 2, ((StringBuilder)localObject).toString());
         }
@@ -38,9 +38,9 @@ final class FileOperaterUtils$1
       else if (localIFModel.a(false))
       {
         if (!NetworkUtil.isNetSupportHw(BaseApplicationImpl.getContext())) {
-          FMToastUtil.a(2131693191);
-        } else if (FreeWifiHelper.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 5, new FileOperaterUtils.1.2(this, (FMDialogUtil.FMDialogInterface)localObject))) {
-          FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 2131692561, 2131692564, (FMDialogUtil.FMDialogInterface)localObject);
+          FMToastUtil.a(2131890731);
+        } else if (FreeWifiHelper.a(this.b.getActivity(), 5, new FileOperaterUtils.1.2(this, (FMDialogUtil.FMDialogInterface)localObject))) {
+          FMDialogUtil.a(this.b.getActivity(), 2131889584, 2131889587, (FMDialogUtil.FMDialogInterface)localObject);
         }
       }
       else {
@@ -57,7 +57,7 @@ final class FileOperaterUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils.1
  * JD-Core Version:    0.7.0.1
  */

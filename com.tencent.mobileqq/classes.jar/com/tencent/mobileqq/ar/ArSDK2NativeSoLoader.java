@@ -15,20 +15,6 @@ import org.xmlpull.v1.XmlPullParser;
 
 public class ArSDK2NativeSoLoader
 {
-  public static int a(String paramString)
-  {
-    try
-    {
-      int i = ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2"), paramString);
-      return i;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
   public static int a(String paramString1, String paramString2)
   {
     try
@@ -71,7 +57,7 @@ public class ArSDK2NativeSoLoader
     }
     try
     {
-      paramString2 = a(FileUtils.readFileToString((File)localObject1));
+      paramString2 = c(FileUtils.readFileToString((File)localObject1));
       if (paramString2.size() > 0)
       {
         paramString2 = paramString2.entrySet().iterator();
@@ -185,58 +171,6 @@ public class ArSDK2NativeSoLoader
     return "v8.4.5.1";
   }
   
-  private static HashMap<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    int i;
-    try
-    {
-      localObject = Xml.newPullParser();
-      ((XmlPullParser)localObject).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-      i = ((XmlPullParser)localObject).getEventType();
-    }
-    catch (Exception localException)
-    {
-      Object localObject;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("parseSoMd5FromXmlConfig failed. error = ");
-      localStringBuilder.append(localException.getMessage());
-      localStringBuilder.append(", xmlConfigContent = ");
-      localStringBuilder.append(paramString);
-      QLog.e("AREngine_ArSDK2NativeSoLoader", 2, localStringBuilder.toString());
-      return localHashMap;
-    }
-    if (((XmlPullParser)localObject).getName().equalsIgnoreCase("libAlphaAR")) {
-      localHashMap.put("libAlphaAR", ((XmlPullParser)localObject).nextText());
-    }
-    for (;;)
-    {
-      i = ((XmlPullParser)localObject).next();
-      StringBuilder localStringBuilder;
-      while (i == 1)
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("parseSoMd5FromXmlConfig successfully. soMd5List = ");
-        ((StringBuilder)localObject).append(localHashMap);
-        QLog.d("AREngine_ArSDK2NativeSoLoader", 2, ((StringBuilder)localObject).toString());
-        return localHashMap;
-      }
-      if (i == 2) {
-        break;
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")));
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("libAlphaAR");
-    localStringBuilder.append(".so");
-    return new File(localStringBuilder.toString()).exists();
-  }
-  
   public static boolean a(String paramString)
   {
     boolean bool = false;
@@ -290,10 +224,76 @@ public class ArSDK2NativeSoLoader
     }
     finally {}
   }
+  
+  public static int b(String paramString)
+  {
+    try
+    {
+      int i = ArNativeSoLoaderBase.b("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2"), paramString);
+      return i;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public static boolean b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ArNativeSoLoaderBase.a("arsdk2", a(), ArNativeSoLoaderBase.b("arsdk2", a(), "arsdk2")));
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("libAlphaAR");
+    localStringBuilder.append(".so");
+    return new File(localStringBuilder.toString()).exists();
+  }
+  
+  private static HashMap<String, String> c(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    int i;
+    try
+    {
+      localObject = Xml.newPullParser();
+      ((XmlPullParser)localObject).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+      i = ((XmlPullParser)localObject).getEventType();
+    }
+    catch (Exception localException)
+    {
+      Object localObject;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseSoMd5FromXmlConfig failed. error = ");
+      localStringBuilder.append(localException.getMessage());
+      localStringBuilder.append(", xmlConfigContent = ");
+      localStringBuilder.append(paramString);
+      QLog.e("AREngine_ArSDK2NativeSoLoader", 2, localStringBuilder.toString());
+      return localHashMap;
+    }
+    if (((XmlPullParser)localObject).getName().equalsIgnoreCase("libAlphaAR")) {
+      localHashMap.put("libAlphaAR", ((XmlPullParser)localObject).nextText());
+    }
+    for (;;)
+    {
+      i = ((XmlPullParser)localObject).next();
+      StringBuilder localStringBuilder;
+      while (i == 1)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseSoMd5FromXmlConfig successfully. soMd5List = ");
+        ((StringBuilder)localObject).append(localHashMap);
+        QLog.d("AREngine_ArSDK2NativeSoLoader", 2, ((StringBuilder)localObject).toString());
+        return localHashMap;
+      }
+      if (i == 2) {
+        break;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArSDK2NativeSoLoader
  * JD-Core Version:    0.7.0.1
  */

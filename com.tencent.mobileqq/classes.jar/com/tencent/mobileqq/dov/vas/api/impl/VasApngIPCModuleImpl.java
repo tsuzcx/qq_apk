@@ -8,17 +8,17 @@ public class VasApngIPCModuleImpl
 {
   public void download()
   {
-    VasApngIPCModule.a().a();
+    VasApngIPCModule.a().b();
   }
   
   public boolean loadSoLib()
   {
-    return VasApngIPCModule.a().b();
+    return VasApngIPCModule.a().e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dov.vas.api.impl.VasApngIPCModuleImpl
  * JD-Core Version:    0.7.0.1
  */

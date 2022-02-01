@@ -17,12 +17,12 @@ class TroopFileItemOperation$7
       if (paramInt != 1) {
         return;
       }
-      if (TroopFileItemOperation.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) != 0) {
-        TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long).b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
+      if (TroopFileItemOperation.a(this.b) != 0) {
+        TroopFileManager.a(this.b.c, this.b.b).b(this.a);
       }
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramDialogInterface = this.b.c;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b.b);
       localStringBuilder.append("");
       ReportController.b(paramDialogInterface, "CliOper", "", "", "Grp", "Cancel_pause_upload", 0, 0, "", localStringBuilder.toString(), "", "");
     }
@@ -30,7 +30,7 @@ class TroopFileItemOperation$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFileItemOperation.7
  * JD-Core Version:    0.7.0.1
  */

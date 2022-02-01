@@ -17,10 +17,10 @@ class WebProteusViewCreator$ProteusItemViewHolder$11
   
   public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramProteusItemData.b;
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramProteusItemData.aQ;
     String str = paramViewBase.getEventAttachedData();
-    FastWebProteusReportUtils.b(paramProteusItemData.a, paramViewBase);
-    FastWebProteusReportUtils.a(paramProteusItemData.a, paramViewBase);
+    FastWebProteusReportUtils.b(paramProteusItemData.bd, paramViewBase);
+    FastWebProteusReportUtils.a(paramProteusItemData.bd, paramViewBase);
     if (!TextUtils.isEmpty(str))
     {
       if (((paramProteusItemData instanceof MiniAppData)) && (localAbsBaseArticleInfo != null))
@@ -32,13 +32,13 @@ class WebProteusViewCreator$ProteusItemViewHolder$11
         RIJMiniProgramUtils.a.a(localAbsBaseArticleInfo, 2, str);
         return;
       }
-      RIJJumpUtils.a(paramContext, str);
+      RIJJumpUtils.c(paramContext, str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebProteusViewCreator.ProteusItemViewHolder.11
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ final class CaptureComboFilter$1
     Object localObject;
     try
     {
-      paramVarArgs = paramVarArgs.a();
+      paramVarArgs = paramVarArgs.j();
       localObject = paramVarArgs;
       if (paramVarArgs == null) {
         break label193;
@@ -31,21 +31,21 @@ final class CaptureComboFilter$1
         if (paramVarArgs.isRecycled()) {
           break label193;
         }
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.a)
         {
           if (this.b)
           {
-            if (EditVideoPartManager.a == null) {
+            if (EditVideoPartManager.ag == null) {
               break label195;
             }
             localObject = new GPUBitmapImageRender();
-            ((GPUBitmapImageRender)localObject).a(EditVideoPartManager.a.a, paramVarArgs.getWidth(), paramVarArgs.getHeight());
-            localBitmap = ((GPUBitmapImageRender)localObject).a(paramVarArgs, this.jdField_a_of_type_JavaUtilList, EditVideoPartManager.a);
+            ((GPUBitmapImageRender)localObject).a(EditVideoPartManager.ag.a, paramVarArgs.getWidth(), paramVarArgs.getHeight());
+            localBitmap = ((GPUBitmapImageRender)localObject).a(paramVarArgs, this.c, EditVideoPartManager.ag);
             break label195;
           }
           localObject = new GPUBitmapImageRender();
           ((GPUBitmapImageRender)localObject).b(paramVarArgs.getWidth(), paramVarArgs.getHeight());
-          localBitmap = ((GPUBitmapImageRender)localObject).a(paramVarArgs, this.jdField_a_of_type_JavaUtilList, this.c);
+          localBitmap = ((GPUBitmapImageRender)localObject).a(paramVarArgs, this.c, this.d);
           ((GPUBitmapImageRender)localObject).a();
           break label195;
         }
@@ -86,17 +86,17 @@ final class CaptureComboFilter$1
   
   protected void a(Bitmap paramBitmap)
   {
-    EditVideoPartManager localEditVideoPartManager = VideoFilterTools.a().a();
+    EditVideoPartManager localEditVideoPartManager = VideoFilterTools.a().i();
     if ((localEditVideoPartManager != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
       localEditVideoPartManager.a(paramBitmap, true);
-      localEditVideoPartManager.v();
+      localEditVideoPartManager.G();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.CaptureComboFilter.1
  * JD-Core Version:    0.7.0.1
  */

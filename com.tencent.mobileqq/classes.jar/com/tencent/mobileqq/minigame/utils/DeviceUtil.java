@@ -13,11 +13,11 @@ public class DeviceUtil
       if (Build.VERSION.SDK_INT < 18) {
         return 0;
       }
-      int k = DeviceInfoUtil.b();
+      int k = DeviceInfoUtil.h();
       if (k <= 0) {
         return -1;
       }
-      int m = (int)(DeviceInfoUtil.c() / 100000L);
+      int m = (int)(DeviceInfoUtil.l() / 100000L);
       if (m <= 0) {
         return -1;
       }
@@ -51,7 +51,7 @@ public class DeviceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.DeviceUtil
  * JD-Core Version:    0.7.0.1
  */

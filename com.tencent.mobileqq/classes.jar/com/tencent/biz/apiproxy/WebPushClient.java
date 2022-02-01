@@ -8,30 +8,30 @@ import mqq.util.WeakReference;
 
 public class WebPushClient
 {
-  TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-  HashMap<Integer, WeakReference<WebPushClient.WebPushCallback>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  TroopMemberApiClient a;
+  HashMap<Integer, WeakReference<WebPushClient.WebPushCallback>> b = new HashMap();
   
   public WebPushClient(TroopMemberApiClient paramTroopMemberApiClient)
   {
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = paramTroopMemberApiClient;
+    this.a = paramTroopMemberApiClient;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.b.clear();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+    this.b.remove(Integer.valueOf(paramInt));
   }
   
   public void a(int paramInt, WebPushClient.WebPushCallback paramWebPushCallback)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+    if (this.b.containsKey(Integer.valueOf(paramInt))) {
+      this.b.remove(Integer.valueOf(paramInt));
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(paramWebPushCallback));
+    this.b.put(Integer.valueOf(paramInt), new WeakReference(paramWebPushCallback));
   }
   
   public void a(Bundle paramBundle)
@@ -51,7 +51,7 @@ public class WebPushClient
       }
       return;
     }
-    WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+    WeakReference localWeakReference = (WeakReference)this.b.get(Integer.valueOf(i));
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       ((WebPushClient.WebPushCallback)localWeakReference.get()).a(paramBundle);
     }

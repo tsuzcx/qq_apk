@@ -36,7 +36,7 @@ public class ViewHolderFactory
     case 9: 
       return new RecommendFollowNodeViewHolder(paramViewGroup);
     case 8: 
-      return new ShareGroupViewHolder(paramViewGroup, 2131561715);
+      return new ShareGroupViewHolder(paramViewGroup, 2131628094);
     case 7: 
       return new FollowNodeViewHolder(paramViewGroup);
     case 6: 
@@ -48,14 +48,14 @@ public class ViewHolderFactory
     case 3: 
       return new MsgNodeGuideViewHolder(paramViewGroup);
     case 2: 
-      return new NewMessageViewHolder(paramViewGroup, 2131561717);
+      return new NewMessageViewHolder(paramViewGroup, 2131628096);
     }
-    return new BaseViewHolder(paramViewGroup, 2131561715);
+    return new BaseViewHolder(paramViewGroup, 2131628094);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.ViewHolderFactory
  * JD-Core Version:    0.7.0.1
  */

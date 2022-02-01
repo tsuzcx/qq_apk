@@ -5,13 +5,14 @@ import com.tencent.pts.core.PTSAppInstance;
 import com.tencent.pts.ui.vnode.PTSNodeVirtual;
 import com.tencent.pts.utils.PTSValueConvertUtil;
 import kotlin.Metadata;
+import kotlin.TypeCastException;
 import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/pts/ui/PTSNodeRIJAvatar;", "Lcom/tencent/pts/ui/vnode/PTSNodeVirtual;", "Lcom/tencent/mobileqq/kandian/biz/pts/ui/PTSRIJAvatarView;", "ptsAppInstance", "Lcom/tencent/pts/core/PTSAppInstance;", "(Lcom/tencent/pts/core/PTSAppInstance;)V", "liveRingUrl", "", "liveStatusUrl", "uin", "", "onParseValueFinished", "", "setAttribute", "", "key", "value", "", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/pts/ui/PTSNodeRIJAvatar;", "Lcom/tencent/pts/ui/vnode/PTSNodeVirtual;", "ptsAppInstance", "Lcom/tencent/pts/core/PTSAppInstance;", "(Lcom/tencent/pts/core/PTSAppInstance;)V", "liveRingUrl", "", "liveStatusUrl", "uin", "", "onParseValueFinished", "", "setAttribute", "", "key", "value", "", "Builder", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class PTSNodeRIJAvatar
-  extends PTSNodeVirtual<PTSRIJAvatarView>
+  extends PTSNodeVirtual
 {
   public static final PTSNodeRIJAvatar.Companion Companion = new PTSNodeRIJAvatar.Companion(null);
   @NotNull
@@ -20,29 +21,30 @@ public final class PTSNodeRIJAvatar
   private String liveStatusUrl = "";
   private long uin;
   
-  public PTSNodeRIJAvatar(@NotNull PTSAppInstance paramPTSAppInstance)
+  public PTSNodeRIJAvatar(@Nullable PTSAppInstance paramPTSAppInstance)
   {
-    super(paramPTSAppInstance);
+    super(paramPTSAppInstance, "view", "rij-avatar-view");
   }
   
   public void onParseValueFinished()
   {
     super.onParseValueFinished();
-    PTSRIJAvatarView localPTSRIJAvatarView = (PTSRIJAvatarView)getView();
-    if (localPTSRIJAvatarView != null) {
-      localPTSRIJAvatarView.setLiveRingUrl(this.liveRingUrl);
+    if (getView() == null) {
+      return;
     }
-    localPTSRIJAvatarView = (PTSRIJAvatarView)getView();
-    if (localPTSRIJAvatarView != null) {
-      localPTSRIJAvatarView.setLiveStatusUrl(this.liveStatusUrl);
-    }
-    if (this.uin != 0L)
+    Object localObject = getView();
+    if (localObject != null)
     {
-      localPTSRIJAvatarView = (PTSRIJAvatarView)getView();
-      if (localPTSRIJAvatarView != null) {
-        localPTSRIJAvatarView.setUin(this.uin);
+      localObject = (PTSRIJAvatarView)localObject;
+      ((PTSRIJAvatarView)localObject).setLiveRingUrl(this.liveRingUrl);
+      ((PTSRIJAvatarView)localObject).setLiveStatusUrl(this.liveStatusUrl);
+      long l = this.uin;
+      if (l != 0L) {
+        ((PTSRIJAvatarView)localObject).setUin(l);
       }
+      return;
     }
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.kandian.biz.pts.ui.PTSRIJAvatarView");
   }
   
   protected boolean setAttribute(@Nullable String paramString, @Nullable Object paramObject)
@@ -104,7 +106,7 @@ public final class PTSNodeRIJAvatar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.ui.PTSNodeRIJAvatar
  * JD-Core Version:    0.7.0.1
  */

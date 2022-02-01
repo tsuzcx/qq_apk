@@ -14,8 +14,8 @@ import com.google.android.material.R.styleable;
 public class AppBarLayout$LayoutParams
   extends LinearLayout.LayoutParams
 {
-  int jdField_a_of_type_Int = 1;
-  Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
+  int a = 1;
+  Interpolator b;
   
   public AppBarLayout$LayoutParams(int paramInt1, int paramInt2)
   {
@@ -25,10 +25,10 @@ public class AppBarLayout$LayoutParams
   public AppBarLayout$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.c);
-    this.jdField_a_of_type_Int = paramAttributeSet.getInt(R.styleable.i, 0);
-    if (paramAttributeSet.hasValue(R.styleable.j)) {
-      this.jdField_a_of_type_AndroidViewAnimationInterpolator = AnimationUtils.loadInterpolator(paramContext, paramAttributeSet.getResourceId(R.styleable.j, 0));
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.u);
+    this.a = paramAttributeSet.getInt(R.styleable.v, 0);
+    if (paramAttributeSet.hasValue(R.styleable.w)) {
+      this.b = AnimationUtils.loadInterpolator(paramContext, paramAttributeSet.getResourceId(R.styleable.w, 0));
     }
     paramAttributeSet.recycle();
   }
@@ -51,23 +51,23 @@ public class AppBarLayout$LayoutParams
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  public Interpolator a()
+  public Interpolator b()
   {
-    return this.jdField_a_of_type_AndroidViewAnimationInterpolator;
+    return this.b;
   }
   
-  boolean a()
+  boolean c()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     return ((i & 0x1) == 1) && ((i & 0xA) != 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.AppBarLayout.LayoutParams
  * JD-Core Version:    0.7.0.1
  */

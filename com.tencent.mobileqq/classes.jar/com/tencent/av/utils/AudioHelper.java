@@ -16,37 +16,35 @@ import java.util.Map;
 
 public class AudioHelper
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long = 0L;
-  static String jdField_a_of_type_JavaLangString;
-  public static boolean a = false;
-  static final int[] jdField_a_of_type_ArrayOfInt;
-  static String jdField_b_of_type_JavaLangString = null;
+  static final int[] a;
   public static boolean b = false;
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 35, 36 };
-  public static boolean c = false;
-  private static final int[] c;
-  static boolean d = false;
-  private static boolean e = false;
-  private static boolean f = false;
-  private static boolean g = false;
+  static String c;
+  public static boolean d = false;
+  public static boolean e = false;
+  static boolean f = false;
+  static String g = null;
+  private static boolean h = false;
+  private static int i = 0;
+  private static boolean j = false;
+  private static boolean k = false;
+  private static final int[] l = { 35, 36 };
+  private static final int[] m = { 26, 27 };
+  private static long n;
   
   static
   {
-    jdField_c_of_type_ArrayOfInt = new int[] { 26, 27 };
-    jdField_a_of_type_ArrayOfInt = new int[39];
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_JavaLangString = "actAVFunChatExpression";
-    jdField_b_of_type_Boolean = false;
+    a = new int[39];
+    b = false;
+    n = 0L;
+    c = "actAVFunChatExpression";
+    d = false;
     boolean bool;
     if (Build.VERSION.SDK_INT >= 17) {
       bool = true;
     } else {
       bool = false;
     }
-    jdField_c_of_type_Boolean = bool;
-    d = false;
+    e = bool;
   }
   
   public static int a(int paramInt)
@@ -54,28 +52,18 @@ public class AudioHelper
     return ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).getDebugValue(paramInt);
   }
   
-  public static long a()
-  {
-    return ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).getServerMSTime();
-  }
-  
   public static long a(Context paramContext, byte[] paramArrayOfByte, int paramInt, float paramFloat)
   {
     try
     {
-      long l = ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).enlargeVolumWrapper(paramContext, paramArrayOfByte, paramInt, paramFloat);
-      return l;
+      long l1 = ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).enlargeVolumWrapper(paramContext, paramArrayOfByte, paramInt, paramFloat);
+      return l1;
     }
     finally
     {
       paramContext = finally;
       throw paramContext;
     }
-  }
-  
-  public static long a(String paramString)
-  {
-    return ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).stringToLong(paramString);
   }
   
   public static String a(Resources paramResources, int paramInt)
@@ -150,16 +138,7 @@ public class AudioHelper
   
   public static long b()
   {
-    try
-    {
-      long l = ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).genDebugSeq();
-      return l;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).getServerMSTime();
   }
   
   @TargetApi(17)
@@ -168,20 +147,39 @@ public class AudioHelper
     ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).printTime(paramString);
   }
   
-  public static boolean b()
+  public static long c()
   {
-    return ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).isLogColorOrGary();
+    try
+    {
+      long l1 = ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).genDebugSeq();
+      return l1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static long c(String paramString)
+  {
+    return ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).stringToLong(paramString);
   }
   
   @TargetApi(17)
-  public static long c()
+  public static long d()
   {
     return ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).elapsedRealtimeNanos();
   }
   
-  public static void c(String paramString)
+  public static void d(String paramString)
   {
     ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).showDebugToast(paramString);
+  }
+  
+  public static boolean e()
+  {
+    return ((IAudioHelperApi)QRoute.api(IAudioHelperApi.class)).isLogColorOrGary();
   }
 }
 

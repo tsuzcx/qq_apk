@@ -15,35 +15,35 @@ public class ICloudAVEngine$ApkDetectBundle
 {
   public ICloudAVEngine$ApkDetectBundle(String paramString)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.a = 1;
+    this.b = 1;
+    this.f = paramString;
   }
   
   public String a()
   {
-    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.f)) {
       return null;
     }
     try
     {
-      Object localObject = BaseApplication.getContext().getPackageManager().getPackageInfo(this.jdField_c_of_type_JavaLangString, 192);
+      Object localObject = BaseApplication.getContext().getPackageManager().getPackageInfo(this.f, 192);
       if (localObject != null)
       {
         if ((((PackageInfo)localObject).signatures != null) && (((PackageInfo)localObject).signatures.length > 0)) {
-          this.e = SecUtil.getSignatureHash(localObject.signatures[0].toByteArray());
+          this.h = SecUtil.getSignatureHash(localObject.signatures[0].toByteArray());
         }
         if (((PackageInfo)localObject).applicationInfo != null)
         {
-          this.jdField_a_of_type_JavaLangString = ((PackageInfo)localObject).applicationInfo.sourceDir;
-          this.jdField_c_of_type_Int = ((int)new File(this.jdField_a_of_type_JavaLangString).length());
-          this.d = ((PackageInfo)localObject).applicationInfo.loadLabel(BaseApplication.getContext().getPackageManager()).toString();
+          this.d = ((PackageInfo)localObject).applicationInfo.sourceDir;
+          this.c = ((int)new File(this.d).length());
+          this.g = ((PackageInfo)localObject).applicationInfo.loadLabel(BaseApplication.getContext().getPackageManager()).toString();
           localObject = new byte[16];
-          TXSafeCheckUtil.a(this.jdField_a_of_type_JavaLangString, "META-INF/MANIFEST.MF", (byte[])localObject);
-          this.jdField_b_of_type_JavaLangString = SecUtil.toHexString((byte[])localObject);
+          TXSafeCheckUtil.a(this.d, "META-INF/MANIFEST.MF", (byte[])localObject);
+          this.e = SecUtil.toHexString((byte[])localObject);
         }
       }
-      localObject = this.jdField_b_of_type_JavaLangString;
+      localObject = this.e;
       return localObject;
     }
     catch (Exception localException)
@@ -55,7 +55,7 @@ public class ICloudAVEngine$ApkDetectBundle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.ICloudAVEngine.ApkDetectBundle
  * JD-Core Version:    0.7.0.1
  */

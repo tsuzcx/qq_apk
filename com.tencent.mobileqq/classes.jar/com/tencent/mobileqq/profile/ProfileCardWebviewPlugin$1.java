@@ -23,13 +23,13 @@ class ProfileCardWebviewPlugin$1
     if (paramIntent == null) {
       return;
     }
-    paramContext = this.a.mRuntime.a();
+    paramContext = this.a.mRuntime.d();
     if (paramContext != null)
     {
       if (paramContext.isFinishing()) {
         return;
       }
-      paramIntent = this.a.mRuntime.a(this.a.mRuntime.a());
+      paramIntent = this.a.mRuntime.a(this.a.mRuntime.d());
       if ((paramIntent != null) && ((paramIntent instanceof WebUiUtils.WebUiMethodInterface)))
       {
         paramIntent = ((WebUiUtils.WebUiMethodInterface)paramIntent).getCurrentUrl();
@@ -40,22 +40,22 @@ class ProfileCardWebviewPlugin$1
         }
       }
       paramContext.finish();
-      paramContext = new AllInOne(this.a.mRuntime.a().getCurrentAccountUin(), 0);
-      paramContext = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.a.mRuntime.a(), paramContext);
+      paramContext = new AllInOne(this.a.mRuntime.b().getCurrentAccountUin(), 0);
+      paramContext = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.a.mRuntime.d(), paramContext);
       if (this.a.a == 0) {
         paramContext.setFlags(67108864);
       }
-      this.a.mRuntime.a().startActivity(paramContext);
+      this.a.mRuntime.d().startActivity(paramContext);
       paramContext = new Intent();
       paramContext.putExtra("closeSpecialLogic", true);
-      this.a.mRuntime.a().setResult(-1, paramContext);
-      this.a.mRuntime.a().finish();
+      this.a.mRuntime.d().setResult(-1, paramContext);
+      this.a.mRuntime.d().finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardWebviewPlugin.1
  * JD-Core Version:    0.7.0.1
  */

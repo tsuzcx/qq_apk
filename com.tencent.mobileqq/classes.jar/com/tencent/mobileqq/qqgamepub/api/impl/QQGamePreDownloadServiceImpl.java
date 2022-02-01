@@ -153,7 +153,7 @@ public class QQGamePreDownloadServiceImpl
         else
         {
           localObject2 = ((IQQGameFlowControlService)QRoute.api(IQQGameFlowControlService.class)).getFlowControlConfig(str);
-          if ((localObject2 != null) && (((QQGameFlowControlConfig)localObject2).jdField_a_of_type_Int == 2) && (((QQGameFlowControlConfig)localObject2).jdField_a_of_type_Long > NetConnInfoCenter.getServerTime()))
+          if ((localObject2 != null) && (((QQGameFlowControlConfig)localObject2).a == 2) && (((QQGameFlowControlConfig)localObject2).b > NetConnInfoCenter.getServerTime()))
           {
             if (QLog.isColorLevel())
             {
@@ -212,17 +212,17 @@ public class QQGamePreDownloadServiceImpl
     if (paramDownloadTask != null) {}
     try
     {
-      if ((paramDownloadTask.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(paramDownloadTask.jdField_a_of_type_JavaLangString)))
+      if ((paramDownloadTask.g != null) && (!TextUtils.isEmpty(paramDownloadTask.b)))
       {
-        Object localObject1 = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString);
+        Object localObject1 = (File)paramDownloadTask.g.get(paramDownloadTask.b);
         if (localObject1 != null)
         {
           Object localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
           if (localObject2 != null)
           {
             localObject2 = (IPreDownloadController)((QQAppInterface)localObject2).getRuntimeService(IPreDownloadController.class);
-            String str = paramDownloadTask.jdField_a_of_type_JavaLangString;
-            int i = paramDownloadTask.jdField_a_of_type_Int;
+            String str = paramDownloadTask.b;
+            int i = paramDownloadTask.c;
             long l2 = -1L;
             long l1 = l2;
             if (i == 0)
@@ -237,14 +237,14 @@ public class QQGamePreDownloadServiceImpl
           if (((File)localObject1).exists())
           {
             localObject1 = MD5Coding.encodeFile2HexStr(((File)localObject1).getAbsolutePath());
-            ((IQQGameResService)QRoute.api(IQQGameResService.class)).updateResInfo(paramDownloadTask.jdField_a_of_type_JavaLangString, (String)localObject1, NetConnInfoCenter.getServerTimeMillis(), paramDownloadParam.filePos);
+            ((IQQGameResService)QRoute.api(IQQGameResService.class)).updateResInfo(paramDownloadTask.b, (String)localObject1, NetConnInfoCenter.getServerTimeMillis(), paramDownloadParam.filePos);
           }
         }
       }
       if (paramDownloadTask == null) {
         break label200;
       }
-      reportPreDownloadResult(paramDownloadTask.c, paramDownloadTask.jdField_a_of_type_Int);
+      reportPreDownloadResult(paramDownloadTask.h, paramDownloadTask.c);
       return;
     }
     catch (Throwable paramDownloadTask)
@@ -318,7 +318,7 @@ public class QQGamePreDownloadServiceImpl
   
   public void checkAndCleanExpireCache()
   {
-    if (!((IQQGameResService)QRoute.api(IQQGameResService.class)).IsOnlySupportInnerFilePos()) {
+    if (!((IQQGameResService)QRoute.api(IQQGameResService.class)).isOnlySupportInnerFilePos()) {
       ((IQQGameResService)QRoute.api(IQQGameResService.class)).checkAndCleanExpireCache(0);
     }
     ((IQQGameResService)QRoute.api(IQQGameResService.class)).checkAndCleanExpireCache(1);
@@ -355,7 +355,7 @@ public class QQGamePreDownloadServiceImpl
           QLog.i("QQGamePub_QQGamePreDownloadServiceImpl", 2, ((StringBuilder)localObject2).toString());
         }
         localObject2 = new QQGameResFlowControl.DSLPermitReq();
-        ((QQGameResFlowControl.DSLPermitReq)localObject2).active_id.set((String)localObject1);
+        ((QQGameResFlowControl.DSLPermitReq)localObject2).activeId.set((String)localObject1);
         localObject2 = ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).createTrpcInvokeReq("/v1/82", false, ((QQGameResFlowControl.DSLPermitReq)localObject2).toByteArray());
         Bundle localBundle = new Bundle();
         localBundle.putString("activityId", (String)localObject1);
@@ -603,7 +603,7 @@ public class QQGamePreDownloadServiceImpl
       int i;
       try
       {
-        if (getConfig().jdField_a_of_type_Int == 0)
+        if (getConfig().a == 0)
         {
           if (!QLog.isColorLevel()) {
             break label402;
@@ -736,20 +736,20 @@ public class QQGamePreDownloadServiceImpl
   protected void tryPreloadArkRes(String paramString, JSONObject paramJSONObject)
   {
     QQGamePreDownloadConfigBean localQQGamePreDownloadConfigBean = getConfig();
-    if (localQQGamePreDownloadConfigBean.jdField_a_of_type_Int == 0)
+    if (localQQGamePreDownloadConfigBean.a == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.i("QQGamePub_QQGamePreDownloadServiceImpl", 2, "preloadArkRes...mPreDownloadSwitch == 0 ,just return");
       }
       return;
     }
-    if (!isNetValidToDownload(localQQGamePreDownloadConfigBean.jdField_a_of_type_JavaLangString))
+    if (!isNetValidToDownload(localQQGamePreDownloadConfigBean.c))
     {
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("preloadArkRes...netValidToDownload is false ,just return -- mPreDownloadNetType：");
-        paramString.append(localQQGamePreDownloadConfigBean.jdField_a_of_type_JavaLangString);
+        paramString.append(localQQGamePreDownloadConfigBean.c);
         paramString.append(",curNetType:");
         paramString.append(NetworkUtil.getSystemNetwork(MobileQQ.sMobileQQ));
         QLog.i("QQGamePub_QQGamePreDownloadServiceImpl", 2, paramString.toString());
@@ -787,7 +787,7 @@ public class QQGamePreDownloadServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGamePreDownloadServiceImpl
  * JD-Core Version:    0.7.0.1
  */

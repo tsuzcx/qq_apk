@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.dinifly.parser;
 
 import android.graphics.Color;
-import android.support.annotation.IntRange;
-import android.util.JsonReader;
-import android.util.JsonToken;
+import androidx.annotation.IntRange;
 import com.tencent.mobileqq.dinifly.model.content.GradientColor;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Token;
 import com.tencent.mobileqq.dinifly.utils.MiscUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +67,7 @@ public class GradientColorParser
       double d1 = paramArrayOfDouble1[j];
       double d2 = paramArrayOfDouble1[i];
       if (paramArrayOfDouble1[i] >= paramDouble) {
-        paramDouble = (paramDouble - d1) / (d2 - d1);
+        paramDouble = MiscUtils.clamp((paramDouble - d1) / (d2 - d1), 0.0D, 1.0D);
       }
     }
     for (paramDouble = MiscUtils.lerp(paramArrayOfDouble2[j], paramArrayOfDouble2[i], paramDouble);; paramDouble = paramArrayOfDouble2[(paramArrayOfDouble2.length - 1)])
@@ -82,9 +82,9 @@ public class GradientColorParser
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = paramJsonReader.peek();
-    JsonToken localJsonToken = JsonToken.BEGIN_ARRAY;
+    JsonReader.Token localToken = JsonReader.Token.BEGIN_ARRAY;
     int k = 0;
-    if (localObject == localJsonToken) {
+    if (localObject == localToken) {
       i = 1;
     } else {
       i = 0;
@@ -137,9 +137,21 @@ public class GradientColorParser
           k = (int)(d * 255.0D);
         }
       }
-      else {
+      else
+      {
+        if (m > 0)
+        {
+          paramFloat = paramJsonReader[(m - 1)];
+          float f = (float)d;
+          if (paramFloat >= f)
+          {
+            paramJsonReader[m] = (f + 0.01F);
+            break label303;
+          }
+        }
         paramJsonReader[m] = ((float)d);
       }
+      label303:
       i += 1;
     }
     paramJsonReader = new GradientColor(paramJsonReader, (int[])localObject);
@@ -149,7 +161,7 @@ public class GradientColorParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.GradientColorParser
  * JD-Core Version:    0.7.0.1
  */

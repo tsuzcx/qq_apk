@@ -14,13 +14,13 @@ class AEPhotoListLogicDefault$2
   
   public void run()
   {
-    PhotoUtils.sendPhoto(((AENewPhotoListFragment)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoListData.a);
-    com.tencent.mobileqq.shortvideo.SVBusiUtil.b = System.currentTimeMillis();
+    PhotoUtils.sendPhoto(((AENewPhotoListFragment)this.this$0.b.get()).getActivity(), this.a, this.b, 2, this.this$0.l.a);
+    com.tencent.mobileqq.shortvideo.SVBusiUtil.c = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicDefault.2
  * JD-Core Version:    0.7.0.1
  */

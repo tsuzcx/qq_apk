@@ -25,11 +25,16 @@ public class PressLinearLayout
     super(paramContext, paramAttributeSet);
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.d);
-      this.a = paramContext.getBoolean(R.styleable.f, false);
-      this.b = paramContext.getBoolean(R.styleable.g, false);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.i);
+      this.a = paramContext.getBoolean(R.styleable.j, false);
+      this.b = paramContext.getBoolean(R.styleable.k, false);
       paramContext.recycle();
     }
+  }
+  
+  public final boolean getEnablePressEffect()
+  {
+    return this.c;
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
@@ -67,7 +72,7 @@ public class PressLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.PressLinearLayout
  * JD-Core Version:    0.7.0.1
  */

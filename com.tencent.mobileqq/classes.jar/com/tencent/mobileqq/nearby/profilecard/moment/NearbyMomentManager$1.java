@@ -8,13 +8,13 @@ class NearbyMomentManager$1
   public void a(boolean paramBoolean, int paramInt)
   {
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager.a(this.jdField_a_of_type_JavaLangString, paramInt);
+      this.b.a(this.a, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.1
  * JD-Core Version:    0.7.0.1
  */

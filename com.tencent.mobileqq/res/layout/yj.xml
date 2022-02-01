@@ -6,6 +6,6 @@
         <TextView android:textSize="17.0dip" android:textColor="#ff445a6c" android:gravity="center" android:id="@id/g8m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@null" />
     </FrameLayout>
     <TextView android:textSize="10.0dip" android:textColor="@color/s4" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/g90" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a5a" android:maxWidth="@dimen/a7c" android:singleLine="true" android:layout_below="@id/g8n" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/g92" android:visibility="gone" android:layout_width="@dimen/a5m" android:layout_height="@dimen/a5m" android:src="@drawable/gzf" android:layout_alignRight="@id/g8n" android:layout_alignBottom="@id/g8n" />
-    <ImageView android:id="@id/g8z" android:visibility="gone" android:layout_width="@dimen/a5m" android:layout_height="@dimen/a5m" android:src="@drawable/gze" android:layout_alignRight="@id/g8n" android:layout_alignBottom="@id/g8n" />
+    <ImageView android:id="@id/g92" android:visibility="gone" android:layout_width="@dimen/a5m" android:layout_height="@dimen/a5m" android:src="@drawable/ik8" android:layout_alignRight="@id/g8n" android:layout_alignBottom="@id/g8n" />
+    <ImageView android:id="@id/g8z" android:visibility="gone" android:layout_width="@dimen/a5m" android:layout_height="@dimen/a5m" android:src="@drawable/ik7" android:layout_alignRight="@id/g8n" android:layout_alignBottom="@id/g8n" />
 </RelativeLayout>

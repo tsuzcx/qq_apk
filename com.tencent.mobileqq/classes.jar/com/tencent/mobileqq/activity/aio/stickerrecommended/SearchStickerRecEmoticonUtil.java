@@ -55,9 +55,9 @@ public class SearchStickerRecEmoticonUtil
           localObject = (IEmoticonSort)paramList.next();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("getSearchStickerRecEmotions item.ClickNum:");
-          localStringBuilder.append(((IEmoticonSort)localObject).b());
+          localStringBuilder.append(((IEmoticonSort)localObject).i());
           localStringBuilder.append(",item.ExposeNum: ");
-          localStringBuilder.append(((IEmoticonSort)localObject).a());
+          localStringBuilder.append(((IEmoticonSort)localObject).h());
           QLog.d("SearchStickerRecEmoticonUtil", 2, localStringBuilder.toString());
         }
         paramList = new StringBuilder();
@@ -81,7 +81,7 @@ public class SearchStickerRecEmoticonUtil
     while (localIterator.hasNext())
     {
       IEmoticonSort localIEmoticonSort = (IEmoticonSort)localIterator.next();
-      if (localIEmoticonSort.c() == 5)
+      if (localIEmoticonSort.j() == 5)
       {
         paramList2.add(localIEmoticonSort);
         localArrayList.add(localIEmoticonSort);
@@ -101,12 +101,12 @@ public class SearchStickerRecEmoticonUtil
       while (paramList.hasNext())
       {
         Object localObject2 = (IEmoticonSort)paramList.next();
-        if (((IEmoticonSort)localObject2).c() != paramT.c())
+        if (((IEmoticonSort)localObject2).j() != paramT.j())
         {
           Object localObject3;
           Object localObject1;
           String str;
-          if ((((IEmoticonSort)localObject2).c() == 2) && (paramT.c() == 4))
+          if ((((IEmoticonSort)localObject2).j() == 2) && (paramT.j() == 4))
           {
             localObject2 = (StickerRecLocalData)localObject2;
             localObject3 = (StickerRecFavoriteData)paramT;
@@ -118,7 +118,7 @@ public class SearchStickerRecEmoticonUtil
               return true;
             }
           }
-          else if ((((IEmoticonSort)localObject2).c() == 4) && (paramT.c() == 2))
+          else if ((((IEmoticonSort)localObject2).j() == 4) && (paramT.j() == 2))
           {
             localObject1 = (StickerRecLocalData)paramT;
             localObject3 = (StickerRecFavoriteData)localObject2;
@@ -132,17 +132,17 @@ public class SearchStickerRecEmoticonUtil
           }
           else
           {
-            if ((((IEmoticonSort)localObject2).c() == 4) && (paramT.c() == 3))
+            if ((((IEmoticonSort)localObject2).j() == 4) && (paramT.j() == 3))
             {
               localObject1 = (StickerRecFavoriteData)localObject2;
-              if ((((StickerRecFavoriteData)localObject1).c() != null) && (((StickerRecFavoriteData)localObject1).c().equals(((StickerRecCameraData)paramT).c()))) {
+              if ((((StickerRecFavoriteData)localObject1).l() != null) && (((StickerRecFavoriteData)localObject1).l().equals(((StickerRecCameraData)paramT).l()))) {
                 return true;
               }
             }
-            if ((((IEmoticonSort)localObject2).c() == 3) && (paramT.c() == 4))
+            if ((((IEmoticonSort)localObject2).j() == 3) && (paramT.j() == 4))
             {
               localObject1 = (StickerRecFavoriteData)paramT;
-              if ((((StickerRecFavoriteData)localObject1).c() != null) && (((StickerRecFavoriteData)localObject1).c().equals(((StickerRecCameraData)localObject2).c()))) {
+              if ((((StickerRecFavoriteData)localObject1).l() != null) && (((StickerRecFavoriteData)localObject1).l().equals(((StickerRecCameraData)localObject2).l()))) {
                 return true;
               }
             }
@@ -172,7 +172,7 @@ public class SearchStickerRecEmoticonUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.SearchStickerRecEmoticonUtil
  * JD-Core Version:    0.7.0.1
  */

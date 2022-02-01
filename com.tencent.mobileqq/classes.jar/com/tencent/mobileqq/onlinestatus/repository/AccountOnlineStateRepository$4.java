@@ -15,9 +15,9 @@ class AccountOnlineStateRepository$4
   public void a(boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateRepository", 2, new Object[] { "onSetOnlineStatus, isSuccess: ", Boolean.valueOf(paramBoolean), " , mIsUpdateStatus: ", Boolean.valueOf(AccountOnlineStateRepository.a(this.a).a()) });
+      QLog.d("AccountOnlineStateRepository", 2, new Object[] { "onSetOnlineStatus, isSuccess: ", Boolean.valueOf(paramBoolean), " , mIsUpdateStatus: ", Boolean.valueOf(AccountOnlineStateRepository.a(this.a).g()) });
     }
-    if (AccountOnlineStateRepository.a(this.a).a())
+    if (AccountOnlineStateRepository.a(this.a).g())
     {
       AccountOnlineStateRepository.a(this.a).a(false);
       if (paramBoolean)
@@ -43,7 +43,7 @@ class AccountOnlineStateRepository$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.repository.AccountOnlineStateRepository.4
  * JD-Core Version:    0.7.0.1
  */

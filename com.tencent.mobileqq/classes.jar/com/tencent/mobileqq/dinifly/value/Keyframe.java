@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.dinifly.value;
 
 import android.graphics.PointF;
-import android.support.annotation.FloatRange;
-import android.support.annotation.Nullable;
 import android.view.animation.Interpolator;
+import androidx.annotation.FloatRange;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 
 public class Keyframe<T>
@@ -29,6 +29,10 @@ public class Keyframe<T>
   public final T startValue;
   private float startValueFloat = -3987645.8F;
   private int startValueInt = 784923401;
+  @Nullable
+  public final Interpolator xInterpolator;
+  @Nullable
+  public final Interpolator yInterpolator;
   
   public Keyframe(LottieComposition paramLottieComposition, @Nullable T paramT1, @Nullable T paramT2, @Nullable Interpolator paramInterpolator, float paramFloat, @Nullable Float paramFloat1)
   {
@@ -36,6 +40,32 @@ public class Keyframe<T>
     this.startValue = paramT1;
     this.endValue = paramT2;
     this.interpolator = paramInterpolator;
+    this.xInterpolator = null;
+    this.yInterpolator = null;
+    this.startFrame = paramFloat;
+    this.endFrame = paramFloat1;
+  }
+  
+  public Keyframe(LottieComposition paramLottieComposition, @Nullable T paramT1, @Nullable T paramT2, @Nullable Interpolator paramInterpolator1, @Nullable Interpolator paramInterpolator2, float paramFloat, @Nullable Float paramFloat1)
+  {
+    this.composition = paramLottieComposition;
+    this.startValue = paramT1;
+    this.endValue = paramT2;
+    this.interpolator = null;
+    this.xInterpolator = paramInterpolator1;
+    this.yInterpolator = paramInterpolator2;
+    this.startFrame = paramFloat;
+    this.endFrame = paramFloat1;
+  }
+  
+  protected Keyframe(LottieComposition paramLottieComposition, @Nullable T paramT1, @Nullable T paramT2, @Nullable Interpolator paramInterpolator1, @Nullable Interpolator paramInterpolator2, @Nullable Interpolator paramInterpolator3, float paramFloat, @Nullable Float paramFloat1)
+  {
+    this.composition = paramLottieComposition;
+    this.startValue = paramT1;
+    this.endValue = paramT2;
+    this.interpolator = paramInterpolator1;
+    this.xInterpolator = paramInterpolator2;
+    this.yInterpolator = paramInterpolator3;
     this.startFrame = paramFloat;
     this.endFrame = paramFloat1;
   }
@@ -46,6 +76,8 @@ public class Keyframe<T>
     this.startValue = paramT;
     this.endValue = paramT;
     this.interpolator = null;
+    this.xInterpolator = null;
+    this.yInterpolator = null;
     this.startFrame = 1.4E-45F;
     this.endFrame = Float.valueOf(3.4028235E+38F);
   }
@@ -116,7 +148,7 @@ public class Keyframe<T>
   
   public boolean isStatic()
   {
-    return this.interpolator == null;
+    return (this.interpolator == null) && (this.xInterpolator == null) && (this.yInterpolator == null);
   }
   
   public String toString()
@@ -138,7 +170,7 @@ public class Keyframe<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.value.Keyframe
  * JD-Core Version:    0.7.0.1
  */

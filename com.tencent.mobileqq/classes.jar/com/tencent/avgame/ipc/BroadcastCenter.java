@@ -14,21 +14,21 @@ import mqq.util.WeakReference;
 
 public class BroadcastCenter
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  private AccountReceiver jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = null;
-  private ExitReceiver jdField_a_of_type_ComTencentAvgameIpcExitReceiver = null;
-  private final WeakReference<AppRuntime> jdField_a_of_type_MqqUtilWeakReference;
+  private final WeakReference<AppRuntime> a;
+  private BroadcastReceiver b = null;
+  private AccountReceiver c = null;
+  private ExitReceiver d = null;
   
   public BroadcastCenter(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAppRuntime);
+    this.a = new WeakReference(paramAppRuntime);
   }
   
   private void a(AccountReceiver.AccountListener paramAccountListener, String paramString)
   {
-    this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = new AccountReceiver(paramAccountListener, paramString);
+    this.c = new AccountReceiver(paramAccountListener, paramString);
     paramAccountListener = new IntentFilter();
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver.a();
+    Object localObject = this.c.a();
     int j = localObject.length;
     int i = 0;
     while (i < j)
@@ -41,9 +41,9 @@ public class BroadcastCenter
     }
     try
     {
-      paramAccountListener = MobileQQ.sMobileQQ.getApplicationContext().registerReceiver(this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver, paramAccountListener, "com.tencent.msg.permission.pushnotify", null);
+      paramAccountListener = MobileQQ.sMobileQQ.getApplicationContext().registerReceiver(this.c, paramAccountListener, "com.tencent.msg.permission.pushnotify", null);
       if (paramAccountListener == null) {
-        this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = null;
+        this.c = null;
       }
       if (QLog.isColorLevel())
       {
@@ -65,7 +65,7 @@ public class BroadcastCenter
   
   public void a()
   {
-    Object localObject2 = (AppRuntime)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Object localObject2 = (AppRuntime)this.a.get();
     Object localObject3 = new AVGameBroadcastReceiver((AppRuntime)localObject2);
     String[] arrayOfString = ((AVGameBroadcastReceiver)localObject3).a();
     int j = 0;
@@ -85,19 +85,19 @@ public class BroadcastCenter
         }
         i += 1;
       }
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = ((BroadcastReceiver)localObject3);
+      this.b = ((BroadcastReceiver)localObject3);
     }
     else
     {
       localIntentFilter = null;
     }
     Object localObject1;
-    if ((this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) && (localIntentFilter != null))
+    if ((this.b != null) && (localIntentFilter != null))
     {
       try
       {
         localObject3 = MobileQQ.sMobileQQ;
-        MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+        MobileQQ.getContext().registerReceiver(this.b, localIntentFilter);
       }
       catch (Throwable localThrowable1)
       {
@@ -124,15 +124,15 @@ public class BroadcastCenter
       localObject1 = (BaseAVGameAppInterface)localObject2;
       a((AccountReceiver.AccountListener)localObject1, ((BaseAVGameAppInterface)localObject1).getApp().getPackageName());
     }
-    if ((this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver == null) && ((localObject2 instanceof AppInterface)))
+    if ((this.d == null) && ((localObject2 instanceof AppInterface)))
     {
-      this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver = new ExitReceiver((AppInterface)localObject2);
+      this.d = new ExitReceiver((AppInterface)localObject2);
       localObject1 = new IntentFilter();
       ((IntentFilter)localObject1).addAction("com.tencent.process.exit");
       try
       {
         localObject2 = MobileQQ.sMobileQQ;
-        MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver, (IntentFilter)localObject1);
+        MobileQQ.getContext().registerReceiver(this.d, (IntentFilter)localObject1);
         return;
       }
       catch (Throwable localThrowable2)
@@ -144,34 +144,34 @@ public class BroadcastCenter
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
+    if (this.b != null) {
       try
       {
         MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
-        MobileQQ.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+        MobileQQ.getContext().unregisterReceiver(this.b);
+        this.b = null;
       }
       catch (Throwable localThrowable1)
       {
         QLog.i("BroadcastCenter", 1, "unregister", localThrowable1);
       }
     }
-    if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver != null) {
+    if (this.c != null) {
       try
       {
-        MobileQQ.sMobileQQ.getApplicationContext().unregisterReceiver(this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver);
-        this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = null;
+        MobileQQ.sMobileQQ.getApplicationContext().unregisterReceiver(this.c);
+        this.c = null;
       }
       catch (Throwable localThrowable2)
       {
         QLog.i("BroadcastCenter", 1, "unregister2", localThrowable2);
       }
     }
-    if (this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver != null) {
+    if (this.d != null) {
       try
       {
-        MobileQQ.sMobileQQ.getApplicationContext().unregisterReceiver(this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver);
-        this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver = null;
+        MobileQQ.sMobileQQ.getApplicationContext().unregisterReceiver(this.d);
+        this.d = null;
         return;
       }
       catch (Throwable localThrowable3)

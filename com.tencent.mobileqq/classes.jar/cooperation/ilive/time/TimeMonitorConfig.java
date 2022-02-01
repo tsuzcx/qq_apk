@@ -10,15 +10,6 @@ public class TimeMonitorConfig
   public static boolean a = false;
   public static boolean b = true;
   
-  private static HashMap<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cpu_num", String.valueOf(DeviceInfoUtil.b()));
-    localHashMap.put("device_level", String.valueOf(DeviceInfoUtils.a()));
-    localHashMap.put("contain_download", String.valueOf(a));
-    return localHashMap;
-  }
-  
   public static void a()
   {
     if (b)
@@ -40,27 +31,36 @@ public class TimeMonitorConfig
   
   public static void b()
   {
-    HashMap localHashMap = a();
+    HashMap localHashMap = c();
     if (b)
     {
-      TimeMonitorManager.a().a("ilive_monitor_cool_launch").a("ilive_monitor_cool_launch", localHashMap);
+      TimeMonitorManager.a().d("ilive_monitor_cool_launch").a("ilive_monitor_cool_launch", localHashMap);
       TimeMonitorManager.a().a("ilive_monitor_cool_launch");
       b = false;
       return;
     }
-    TimeMonitorManager.a().a("ilive_monitor_second_launch").a("ilive_monitor_second_launch", localHashMap);
+    TimeMonitorManager.a().d("ilive_monitor_second_launch").a("ilive_monitor_second_launch", localHashMap);
     TimeMonitorManager.a().a("ilive_monitor_second_launch");
   }
   
   public static void b(String paramString)
   {
-    TimeMonitorManager.a().a(paramString).a(paramString, a());
+    TimeMonitorManager.a().d(paramString).a(paramString, c());
     TimeMonitorManager.a().a(paramString);
+  }
+  
+  private static HashMap<String, String> c()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("cpu_num", String.valueOf(DeviceInfoUtil.h()));
+    localHashMap.put("device_level", String.valueOf(DeviceInfoUtils.getPerfLevel()));
+    localHashMap.put("contain_download", String.valueOf(a));
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.time.TimeMonitorConfig
  * JD-Core Version:    0.7.0.1
  */

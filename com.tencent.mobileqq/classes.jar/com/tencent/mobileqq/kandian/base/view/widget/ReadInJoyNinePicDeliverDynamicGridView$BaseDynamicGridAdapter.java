@@ -7,44 +7,38 @@ import java.util.List;
 public abstract class ReadInJoyNinePicDeliverDynamicGridView$BaseDynamicGridAdapter
   extends ReadInJoyNinePicDeliverDynamicGridView.AbstractDynamicGridAdapter
 {
-  protected int a;
   protected Context a;
-  private ReadInJoyNinePicDeliverDynamicGridView.BaseDynamicGridAdapter.ExchangeItemsListener a;
-  protected ArrayList<Object> a;
+  protected ArrayList<Object> b = new ArrayList();
+  protected int c;
+  private ReadInJoyNinePicDeliverDynamicGridView.BaseDynamicGridAdapter.ExchangeItemsListener d;
   
   protected ReadInJoyNinePicDeliverDynamicGridView$BaseDynamicGridAdapter(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    b(this.jdField_a_of_type_JavaUtilArrayList);
+    this.a = paramContext;
+    this.c = paramInt;
+    b(this.b);
   }
   
   private void b(List<?> paramList)
   {
     a(paramList);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.b.addAll(paramList);
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<Object> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.c;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     if (paramInt2 < getCount())
     {
-      ReadInJoyNinePicDeliverDynamicGridView.BaseDynamicGridAdapter.ExchangeItemsListener localExchangeItemsListener = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$BaseDynamicGridAdapter$ExchangeItemsListener;
+      ReadInJoyNinePicDeliverDynamicGridView.BaseDynamicGridAdapter.ExchangeItemsListener localExchangeItemsListener = this.d;
       if (localExchangeItemsListener != null) {
         localExchangeItemsListener.a(paramInt1, paramInt2);
       }
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_JavaUtilArrayList, paramInt1, paramInt2);
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.b, paramInt1, paramInt2);
       notifyDataSetChanged();
     }
   }
@@ -52,7 +46,7 @@ public abstract class ReadInJoyNinePicDeliverDynamicGridView$BaseDynamicGridAdap
   public void a(int paramInt, Object paramObject)
   {
     a(paramObject);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramObject);
+    this.b.add(paramInt, paramObject);
   }
   
   public boolean a(int paramInt)
@@ -60,35 +54,40 @@ public abstract class ReadInJoyNinePicDeliverDynamicGridView$BaseDynamicGridAdap
     return true;
   }
   
+  public List<Object> b()
+  {
+    return this.b;
+  }
+  
   public void c(Object paramObject)
   {
     a(paramObject);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+    this.b.add(paramObject);
     notifyDataSetChanged();
   }
   
   public void d(Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramObject);
+    this.b.remove(paramObject);
     b(paramObject);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return this.b.get(paramInt);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyNinePicDeliverDynamicGridView.BaseDynamicGridAdapter
  * JD-Core Version:    0.7.0.1
  */

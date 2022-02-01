@@ -25,39 +25,39 @@ public class SogouEmoji
 {
   public static String a = "taskId";
   public static String b = "exprId";
-  int jdField_a_of_type_Int = 0;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private BaseAIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext;
-  EmoticonHandler jdField_a_of_type_ComTencentMobileqqAppEmoticonHandler;
-  EmoticonObserver jdField_a_of_type_ComTencentMobileqqAppEmoticonObserver = new SogouEmoji.SogouEmoticonObserver(this);
-  IEmoticonManagerService jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonManagerService;
-  EmotionJsonDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmotionJsonDownloadListener = new SogouEmoji.1(this);
-  SogouEmojiTaskController jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmojiTaskController;
-  IEmojiManagerService jdField_a_of_type_ComTencentMobileqqEmoticonApiIEmojiManagerService;
-  int b;
+  int c = 0;
+  int d;
+  IEmoticonManagerService e;
+  IEmojiManagerService f;
+  EmoticonHandler g;
+  SogouEmojiTaskController h;
+  EmotionJsonDownloadListener i = new SogouEmoji.1(this);
+  EmoticonObserver j = new SogouEmoji.SogouEmoticonObserver(this);
+  private BaseAIOContext k;
+  private BaseQQAppInterface l;
+  private Activity m;
   
   public SogouEmoji(BaseAIOContext paramBaseAIOContext, Activity paramActivity, BaseQQAppInterface paramBaseQQAppInterface)
   {
     if (QLog.isColorLevel()) {
       QLog.d("SogouEmoji", 2, "func SogouEmoji constructor begins");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext = paramBaseAIOContext;
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonManagerService = ((IEmoticonManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IEmoticonManagerService.class));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonApiIEmojiManagerService = ((IEmojiManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IEmojiManagerService.class));
-    this.jdField_a_of_type_ComTencentMobileqqAppEmoticonHandler = ((EmoticonHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getBusinessHandler(EmoticonHandler.a));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmojiTaskController = new SogouEmojiTaskController(paramActivity);
+    this.k = paramBaseAIOContext;
+    this.l = paramBaseQQAppInterface;
+    this.m = paramActivity;
+    this.e = ((IEmoticonManagerService)this.l.getRuntimeService(IEmoticonManagerService.class));
+    this.f = ((IEmojiManagerService)this.l.getRuntimeService(IEmojiManagerService.class));
+    this.g = ((EmoticonHandler)this.l.getBusinessHandler(EmoticonHandler.a));
+    this.h = new SogouEmojiTaskController(paramActivity);
     if (QLog.isColorLevel()) {
       QLog.d("SogouEmoji", 2, "func SogouEmoji constructor ends");
     }
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonObserver);
+    this.l.addObserver(this.j);
   }
   
   private boolean a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext != null) && (this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface != null)) {
+    if ((this.k != null) && (this.l != null)) {
       return true;
     }
     if (QLog.isColorLevel())
@@ -107,21 +107,21 @@ public class SogouEmoji
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("func sendEmoji begins, mCurTaskId:");
-      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(",emoticon:");
       ((StringBuilder)localObject).append(paramEmoticon);
       QLog.d("SogouEmoji", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmojiTaskController.c();
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmojiTaskController.a(this.b);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmojiTaskController.b();
+    this.h.c();
+    this.h.a(this.d);
+    this.h.b();
     if (!a("sendEmoji")) {
       return;
     }
-    Object localObject = new PicEmoticonInfo(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin());
+    Object localObject = new PicEmoticonInfo(this.l.getCurrentAccountUin());
     ((PicEmoticonInfo)localObject).type = 6;
     ((PicEmoticonInfo)localObject).emoticon = paramEmoticon;
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonManagerService.asyncFindEmoticonPackage(paramEmoticon.epId, new SogouEmoji.5(this, (PicEmoticonInfo)localObject));
+    this.e.asyncFindEmoticonPackage(paramEmoticon.epId, new SogouEmoji.5(this, (PicEmoticonInfo)localObject));
   }
   
   public void a(String paramString1, String paramString2, boolean paramBoolean)
@@ -142,10 +142,10 @@ public class SogouEmoji
     if (!a("getPackEmojiKey")) {
       return;
     }
-    Object localObject = Integer.toString(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int += 1;
+    Object localObject = Integer.toString(this.c);
+    this.c += 1;
     if (EmosmUtils.a(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppEmoticonHandler.a(Integer.parseInt(paramString), paramArrayList, (String)localObject);
+      this.g.a(Integer.parseInt(paramString), paramArrayList, (String)localObject);
     }
     if (QLog.isColorLevel()) {
       QLog.d("SogouEmoji", 2, "func getPackEmojiKey ends");
@@ -157,18 +157,18 @@ public class SogouEmoji
     if (QLog.isColorLevel()) {
       QLog.d("SogouEmoji", 2, "func SogouEmoji destructor begins");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+    Object localObject = this.l;
     if (localObject != null) {
-      ((BaseQQAppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonObserver);
+      ((BaseQQAppInterface)localObject).removeObserver(this.j);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmojiTaskController;
+    localObject = this.h;
     if (localObject != null) {
       ((SogouEmojiTaskController)localObject).a();
     }
-    EmojiListenerManager.a().removeEmotionJsonDownloadListener(this.jdField_a_of_type_ComTencentMobileqqEmoticonEmotionJsonDownloadListener);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext = null;
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = null;
-    this.jdField_a_of_type_AndroidAppActivity = null;
+    EmojiListenerManager.a().removeEmotionJsonDownloadListener(this.i);
+    this.k = null;
+    this.l = null;
+    this.m = null;
     if (QLog.isColorLevel()) {
       QLog.d("SogouEmoji", 2, "func SogouEmoji destructor ends");
     }
@@ -192,21 +192,21 @@ public class SogouEmoji
       ((StringBuilder)localObject).append(paramString);
       QLog.d("SogouEmoji", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext != null)
+    if (this.k != null)
     {
-      localObject = this.jdField_a_of_type_AndroidAppActivity;
+      localObject = this.m;
       if ((localObject != null) && (!NetworkUtil.isNetSupport(((Activity)localObject).getApplicationContext())))
       {
-        QQToast.a(MobileQQ.getContext(), 2131694422, 0).a();
+        QQToast.makeText(MobileQQ.getContext(), 2131892102, 0).show();
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonManagerService.asyncFindEmoticon(Integer.toString(paramInt), paramString, new SogouEmoji.2(this, paramInt, paramString));
+    this.e.asyncFindEmoticon(Integer.toString(paramInt), paramString, new SogouEmoji.2(this, paramInt, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.SogouEmoji
  * JD-Core Version:    0.7.0.1
  */

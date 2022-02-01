@@ -22,8 +22,8 @@ import org.json.JSONObject;
 public class GamePartyPlugin
   extends WebViewPlugin
 {
-  private GamePartyPlugin.GamePartyBroadcastReceiver jdField_a_of_type_ComTencentBizWebviewpluginGamePartyPlugin$GamePartyBroadcastReceiver = null;
-  private OnRemoteRespObserver jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver = new GamePartyPlugin.1(this);
+  private GamePartyPlugin.GamePartyBroadcastReceiver a = null;
+  private OnRemoteRespObserver b = new GamePartyPlugin.1(this);
   
   public GamePartyPlugin()
   {
@@ -55,7 +55,7 @@ public class GamePartyPlugin
             String str2 = ((JSONObject)localObject2).getJSONObject("appMeta").toString();
             String str3 = ((JSONObject)localObject2).getString("config");
             localObject2 = ((JSONObject)localObject2).getString("appCompat");
-            Activity localActivity = this.mRuntime.a();
+            Activity localActivity = this.mRuntime.d();
             if (localActivity != null)
             {
               Intent localIntent = new Intent(localActivity, DirectForwardActivity.class);
@@ -95,7 +95,7 @@ public class GamePartyPlugin
             paramString3 = paramString3.optString("flags");
             try
             {
-              paramVarArgs = this.mRuntime.a();
+              paramVarArgs = this.mRuntime.d();
               if (paramVarArgs == null) {
                 break label492;
               }
@@ -131,7 +131,7 @@ public class GamePartyPlugin
             paramString1 = paramString1.getString("callback");
             paramString2 = new Bundle();
             paramString2.putString("member_list", paramJsBridgeListener.toString());
-            paramJsBridgeListener = DataFactory.a("batchGetUserInfo", paramString1, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, paramString2);
+            paramJsBridgeListener = DataFactory.a("batchGetUserInfo", paramString1, this.b.key, paramString2);
             ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJsBridgeListener);
           }
           catch (JSONException paramJsBridgeListener)
@@ -143,15 +143,15 @@ public class GamePartyPlugin
       }
       if ("onload".equals(paramString3))
       {
-        if (this.jdField_a_of_type_ComTencentBizWebviewpluginGamePartyPlugin$GamePartyBroadcastReceiver == null)
+        if (this.a == null)
         {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginGamePartyPlugin$GamePartyBroadcastReceiver = new GamePartyPlugin.GamePartyBroadcastReceiver(this);
+          this.a = new GamePartyPlugin.GamePartyBroadcastReceiver(this);
           paramJsBridgeListener = new IntentFilter();
           paramJsBridgeListener.addAction("android.intent.action.gameparty.notify");
           paramJsBridgeListener.addAction("android.intent.action.gameparty.refresh");
-          paramString1 = this.mRuntime.a();
+          paramString1 = this.mRuntime.d();
           if (paramString1 != null) {
-            paramString1.registerReceiver(this.jdField_a_of_type_ComTencentBizWebviewpluginGamePartyPlugin$GamePartyBroadcastReceiver, paramJsBridgeListener);
+            paramString1.registerReceiver(this.a, paramJsBridgeListener);
           }
         }
         return true;
@@ -163,26 +163,26 @@ public class GamePartyPlugin
   protected void onCreate()
   {
     super.onCreate();
-    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).registerObserver(this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).registerObserver(this.b);
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).unRegisterObserver(this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver);
-    if (this.jdField_a_of_type_ComTencentBizWebviewpluginGamePartyPlugin$GamePartyBroadcastReceiver != null)
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).unRegisterObserver(this.b);
+    if (this.a != null)
     {
-      Activity localActivity = this.mRuntime.a();
+      Activity localActivity = this.mRuntime.d();
       if (localActivity != null) {
-        localActivity.unregisterReceiver(this.jdField_a_of_type_ComTencentBizWebviewpluginGamePartyPlugin$GamePartyBroadcastReceiver);
+        localActivity.unregisterReceiver(this.a);
       }
-      this.jdField_a_of_type_ComTencentBizWebviewpluginGamePartyPlugin$GamePartyBroadcastReceiver = null;
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.GamePartyPlugin
  * JD-Core Version:    0.7.0.1
  */

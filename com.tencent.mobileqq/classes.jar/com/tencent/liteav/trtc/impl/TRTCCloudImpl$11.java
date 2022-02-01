@@ -1,37 +1,24 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.basic.module.Monitor;
-
 class TRTCCloudImpl$11
   implements Runnable
 {
-  TRTCCloudImpl$11(TRTCCloudImpl paramTRTCCloudImpl, int paramInt) {}
+  TRTCCloudImpl$11(TRTCCloudImpl paramTRTCCloudImpl, String paramString) {}
   
   public void run()
   {
-    Object localObject = this.this$0;
+    TRTCCloudImpl localTRTCCloudImpl = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("switchRole:");
-    localStringBuilder.append(this.val$role);
-    ((TRTCCloudImpl)localObject).apiLog(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    if (this.val$role == 20) {
-      localObject = "Anchor";
-    } else {
-      localObject = "Audience";
-    }
-    localStringBuilder.append(String.format("switchRole:%s", new Object[] { localObject }));
-    localStringBuilder.append(" self:");
-    localStringBuilder.append(this.this$0.hashCode());
-    Monitor.a(1, localStringBuilder.toString(), "", 0);
-    localObject = this.this$0;
-    ((TRTCCloudImpl)localObject).mTargetRole = this.val$role;
-    TRTCCloudImpl.access$1900((TRTCCloudImpl)localObject, ((TRTCCloudImpl)localObject).mNativeRtcContext, this.val$role);
+    localStringBuilder.append("ConnectOtherRoom ");
+    localStringBuilder.append(this.val$param);
+    localTRTCCloudImpl.apiOnlineLog(localStringBuilder.toString());
+    localTRTCCloudImpl = this.this$0;
+    TRTCCloudImpl.access$1700(localTRTCCloudImpl, localTRTCCloudImpl.mNativeRtcContext, this.val$param);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.11
  * JD-Core Version:    0.7.0.1
  */

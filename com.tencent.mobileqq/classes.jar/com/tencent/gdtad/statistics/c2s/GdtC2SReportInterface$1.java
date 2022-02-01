@@ -19,20 +19,20 @@ class GdtC2SReportInterface$1
           return;
         }
         localGdtC2SReportInterface = this.this$0;
-        GdtC2SReportInterface.a(localGdtC2SReportInterface, GdtC2SReportInterface.c(localGdtC2SReportInterface));
+        GdtC2SReportInterface.a(localGdtC2SReportInterface, GdtC2SReportInterface.d(localGdtC2SReportInterface));
         return;
       }
       localGdtC2SReportInterface = this.this$0;
-      GdtC2SReportInterface.a(localGdtC2SReportInterface, GdtC2SReportInterface.b(localGdtC2SReportInterface));
+      GdtC2SReportInterface.a(localGdtC2SReportInterface, GdtC2SReportInterface.c(localGdtC2SReportInterface));
       return;
     }
     GdtC2SReportInterface localGdtC2SReportInterface = this.this$0;
-    GdtC2SReportInterface.a(localGdtC2SReportInterface, GdtC2SReportInterface.a(localGdtC2SReportInterface));
+    GdtC2SReportInterface.a(localGdtC2SReportInterface, GdtC2SReportInterface.b(localGdtC2SReportInterface));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.statistics.c2s.GdtC2SReportInterface.1
  * JD-Core Version:    0.7.0.1
  */

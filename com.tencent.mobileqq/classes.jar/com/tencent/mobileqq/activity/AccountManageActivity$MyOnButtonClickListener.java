@@ -9,17 +9,22 @@ import com.tencent.widget.ActionSheet.OnButtonClickListener;
 class AccountManageActivity$MyOnButtonClickListener
   implements ActionSheet.OnButtonClickListener
 {
-  int jdField_a_of_type_Int = -1;
+  int a = -1;
   
   AccountManageActivity$MyOnButtonClickListener(AccountManageActivity paramAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.isFinishing()) {
+    this.a = paramInt;
+  }
+  
+  public void onClick(View paramView, int paramInt)
+  {
+    if (this.b.isFinishing()) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (this.b.p != null) {
+      this.b.p.dismiss();
     }
     StringBuilder localStringBuilder;
     if (paramInt != 0)
@@ -29,7 +34,7 @@ class AccountManageActivity$MyOnButtonClickListener
       }
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+        this.b.g.show();
       }
       catch (Throwable paramView)
       {
@@ -39,16 +44,16 @@ class AccountManageActivity$MyOnButtonClickListener
         localStringBuilder.append(paramView.getMessage());
         QLog.i("AccountManageActivity", 1, localStringBuilder.toString());
       }
-      paramInt = this.jdField_a_of_type_Int;
+      paramInt = this.a;
       if (paramInt >= 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(paramInt, true);
+        this.b.a(paramInt, true);
       }
     }
     else
     {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+        this.b.g.show();
       }
       catch (Throwable paramView)
       {
@@ -58,21 +63,16 @@ class AccountManageActivity$MyOnButtonClickListener
         localStringBuilder.append(paramView.getMessage());
         QLog.i("AccountManageActivity", 1, localStringBuilder.toString());
       }
-      paramInt = this.jdField_a_of_type_Int;
+      paramInt = this.a;
       if (paramInt >= 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(paramInt, false);
+        this.b.a(paramInt, false);
       }
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.MyOnButtonClickListener
  * JD-Core Version:    0.7.0.1
  */

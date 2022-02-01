@@ -11,15 +11,9 @@ import org.json.JSONObject;
 
 public class TroopAssociationsEntryConfig
 {
-  public int a;
-  public ArrayList<Integer> a;
+  public int a = 0;
   public int b = 0;
-  
-  public TroopAssociationsEntryConfig()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public ArrayList<Integer> c = new ArrayList();
   
   public static TroopAssociationsEntryConfig a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -27,7 +21,7 @@ public class TroopAssociationsEntryConfig
     int i = 0;
     while (i < paramArrayOfQConfItem.length)
     {
-      Object localObject = paramArrayOfQConfItem[i].a;
+      Object localObject = paramArrayOfQConfItem[i].b;
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         try
         {
@@ -39,7 +33,7 @@ public class TroopAssociationsEntryConfig
             localStringBuilder.append(((JSONObject)localObject).toString());
             QLog.i("TroopAssociationsEntryConfig", 2, localStringBuilder.toString());
           }
-          localTroopAssociationsEntryConfig.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("switchOn", 0);
+          localTroopAssociationsEntryConfig.a = ((JSONObject)localObject).optInt("switchOn", 0);
           localTroopAssociationsEntryConfig.b = ((JSONObject)localObject).optInt("troopMemberCount_ahn", 0);
           localObject = ((JSONObject)localObject).optJSONArray("troopType_ahn");
           if ((localObject != null) && (((JSONArray)localObject).length() > 0))
@@ -48,7 +42,7 @@ public class TroopAssociationsEntryConfig
             while (j < ((JSONArray)localObject).length())
             {
               if ((((JSONArray)localObject).get(j) instanceof Integer)) {
-                localTroopAssociationsEntryConfig.jdField_a_of_type_JavaUtilArrayList.add((Integer)((JSONArray)localObject).get(j));
+                localTroopAssociationsEntryConfig.c.add((Integer)((JSONArray)localObject).get(j));
               }
               j += 1;
             }
@@ -73,7 +67,7 @@ public class TroopAssociationsEntryConfig
   
   public boolean a(TroopInfoData paramTroopInfoData)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i == 0) {
       return false;
     }
@@ -85,7 +79,7 @@ public class TroopAssociationsEntryConfig
       if (TextUtils.isEmpty(paramTroopInfoData.troopUin)) {
         return false;
       }
-      if ((paramTroopInfoData.troopMemberMaxNum <= this.b) && (this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf((int)paramTroopInfoData.dwGroupClassExt)))) {
+      if ((paramTroopInfoData.troopMemberMaxNum <= this.b) && (this.c.contains(Integer.valueOf((int)paramTroopInfoData.dwGroupClassExt)))) {
         return true;
       }
     }
@@ -94,7 +88,7 @@ public class TroopAssociationsEntryConfig
   
   public boolean a(String paramString, int paramInt, long paramLong)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i == 0) {
       return false;
     }
@@ -106,7 +100,7 @@ public class TroopAssociationsEntryConfig
       if (TextUtils.isEmpty(paramString)) {
         return false;
       }
-      if ((paramInt <= this.b) && (this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf((int)paramLong)))) {
+      if ((paramInt <= this.b) && (this.c.contains(Integer.valueOf((int)paramLong)))) {
         return true;
       }
     }
@@ -117,20 +111,20 @@ public class TroopAssociationsEntryConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mSwitchOn:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\r\n");
     localStringBuilder.append("mTroopMemberCount:");
     localStringBuilder.append(this.b);
     localStringBuilder.append("\r\n");
     localStringBuilder.append("mGrayTroopType:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.toString());
+    localStringBuilder.append(this.c.toString());
     localStringBuilder.append("\r\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.association.TroopAssociationsEntryConfig
  * JD-Core Version:    0.7.0.1
  */

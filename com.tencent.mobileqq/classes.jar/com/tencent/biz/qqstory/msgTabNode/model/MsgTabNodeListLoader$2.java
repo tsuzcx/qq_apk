@@ -15,12 +15,12 @@ class MsgTabNodeListLoader$2
   
   public void a(@NonNull MsgTabNodeListRequest paramMsgTabNodeListRequest, @Nullable MsgTabNodeListRequest.MsgTabNodeListResponse paramMsgTabNodeListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramMsgTabNodeListRequest, paramMsgTabNodeListResponse, paramErrorMessage));
+    this.a.m.post(new MsgTabNodeListLoader.2.1(this, paramMsgTabNodeListRequest, paramMsgTabNodeListResponse, paramErrorMessage));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2
  * JD-Core Version:    0.7.0.1
  */

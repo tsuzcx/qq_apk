@@ -21,7 +21,7 @@ class VidToVideoInfoPuller$2
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    paramJobContext = ((StoryManager)SuperManager.a(5)).d(QQStoryContext.a().b());
+    paramJobContext = ((StoryManager)SuperManager.a(5)).g(QQStoryContext.a().i());
     if (paramJobContext != null)
     {
       paramVarArgs = paramJobContext.iterator();
@@ -45,7 +45,7 @@ class VidToVideoInfoPuller$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.VidToVideoInfoPuller.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,19 @@
 package com.tencent.av.opengl.effects;
 
+import com.tencent.av.business.manager.avatar2d.Avatar2dItem;
 import com.tencent.av.business.manager.pendant.PendantItem;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 public class RenderParams
 {
-  public PendantItem a;
   public FilterDesc a;
-  public VideoMaterial a;
-  public boolean a;
-  public boolean b;
-  public boolean c = false;
+  public VideoMaterial b;
+  public PendantItem c;
+  public Avatar2dItem d;
+  public boolean e;
+  public boolean f;
+  public boolean g = false;
   
   public RenderParams()
   {
@@ -20,11 +22,12 @@ public class RenderParams
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = null;
-    this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
+    this.a = null;
+    this.b = null;
+    this.e = false;
+    this.f = false;
+    this.c = null;
+    this.d = null;
   }
 }
 

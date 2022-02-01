@@ -19,20 +19,15 @@ public class MemoriesVideoListEmptySegment
     super(paramContext);
   }
   
-  private void f()
+  private void j()
   {
-    SegmentView localSegmentView = a().a("MemoriesVideoListSegment");
+    SegmentView localSegmentView = w().b("MemoriesVideoListSegment");
     if ((localSegmentView != null) && (localSegmentView.a() == 0))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.m = true;
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void P_()
-  {
-    f();
+    this.m = false;
   }
   
   public int a()
@@ -42,27 +37,32 @@ public class MemoriesVideoListEmptySegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramInt = UIUtils.d(this.jdField_a_of_type_AndroidContentContext);
-    int i = UIUtils.e(this.jdField_a_of_type_AndroidContentContext);
-    int j = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 225.0F);
-    int k = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+    paramInt = UIUtils.e(this.l);
+    int i = UIUtils.f(this.l);
+    int j = UIUtils.a(this.l, 225.0F);
+    int k = UIUtils.a(this.l, 50.0F);
     paramBaseViewHolder.a().getLayoutParams().height = (paramInt - i - j - k);
     return paramBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561707, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.l).inflate(2131628086, paramViewGroup, false));
   }
   
-  public String a()
+  public String b()
   {
     return "MemoriesVideoListEmptySegment";
   }
   
-  protected void c()
+  public void br_()
   {
-    f();
+    j();
+  }
+  
+  protected void g()
+  {
+    j();
   }
 }
 

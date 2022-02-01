@@ -6,6 +6,6 @@
         <ImageView android:id="@id/djp" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/djk" android:scaleType="centerCrop" />
         <TextView android:textSize="16.0sp" android:textColor="@color/x8" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/f13" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
     </FrameLayout>
-    <TextView android:textSize="16.0sp" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/f5e" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/e2f" android:layout_toRightOf="@id/pic" android:layout_centerVertical="true" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:id="@id/f5e" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/e2f" android:layout_toRightOf="@id/pic" android:layout_centerVertical="true" />
     <View android:background="@color/x5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="65.0dip" android:layout_alignParentBottom="true" />
 </RelativeLayout>

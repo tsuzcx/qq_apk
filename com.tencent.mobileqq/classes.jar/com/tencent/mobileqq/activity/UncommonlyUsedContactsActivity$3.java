@@ -28,7 +28,7 @@ class UncommonlyUsedContactsActivity$3
       i = j;
       if (!TextUtils.isEmpty(localCard.uin))
       {
-        paramObject = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        paramObject = this.a.a.iterator();
         UncommonlyUsedContactsActivity.ListItem localListItem;
         do
         {
@@ -37,20 +37,20 @@ class UncommonlyUsedContactsActivity$3
             break;
           }
           localListItem = (UncommonlyUsedContactsActivity.ListItem)paramObject.next();
-        } while ((localListItem.a == null) || (!(localListItem.a instanceof Friends)) || (!localCard.uin.equals(((Friends)localListItem.a).uin)));
+        } while ((localListItem.b == null) || (!(localListItem.b instanceof Friends)) || (!localCard.uin.equals(((Friends)localListItem.b).uin)));
         i = 1;
       }
     }
     if (i != 0)
     {
       UncommonlyUsedContactsActivity.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$GatheredGrpListAdapter.notifyDataSetChanged();
+      this.a.b.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity.3
  * JD-Core Version:    0.7.0.1
  */

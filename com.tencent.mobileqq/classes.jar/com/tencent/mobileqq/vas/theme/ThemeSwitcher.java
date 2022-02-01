@@ -18,6 +18,7 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.mobileqq.vas.VasStatisticCollector;
 import com.tencent.mobileqq.vas.quickupdate.ThemeUpdateCallback;
 import com.tencent.mobileqq.vas.theme.api.ISimpleUIHandler;
 import com.tencent.mobileqq.vas.theme.api.IThemeSwitchCallback;
@@ -42,25 +43,26 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.Pair;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
 public class ThemeSwitcher
   implements Handler.Callback, QueryItemCallback
 {
-  public static ThemeSwitcher a;
   public static final HashSet<String> a;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private static ThemeSwitcher jdField_b_of_type_ComTencentMobileqqVasThemeThemeSwitcher;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  public ThemeSwitcher.DownloadListenser a;
-  private IThemeSwitchCallback jdField_a_of_type_ComTencentMobileqqVasThemeApiIThemeSwitchCallback;
-  private ThemeLocator jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator = new ThemeLocator();
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public static ThemeSwitcher b;
+  private static AtomicBoolean d = new AtomicBoolean(false);
+  private static ThemeSwitcher m;
+  public ThemeSwitcher.DownloadListenser c;
+  private long e;
+  private String f;
+  private String g;
+  private IThemeSwitchCallback h;
+  private Handler i;
+  private AtomicBoolean j = new AtomicBoolean(false);
+  private ThemeLocator k = new ThemeLocator();
+  private long l;
   
   static
   {
@@ -69,15 +71,21 @@ public class ThemeSwitcher
     localHashSet.add("203");
     localHashSet.add("206");
     localHashSet.add("212");
-    jdField_a_of_type_JavaUtilHashSet = localHashSet;
+    a = localHashSet;
+  }
+  
+  public ThemeSwitcher()
+  {
+    this.i = new Handler(Looper.getMainLooper(), null);
   }
   
   private ThemeSwitcher(AppRuntime paramAppRuntime, IThemeSwitchCallback paramIThemeSwitchCallback, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeApiIThemeSwitchCallback = paramIThemeSwitchCallback;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a(paramString1);
-    this.jdField_a_of_type_JavaLangString = new SimpleDateFormat("MM-dd HH:mm:ss").format(new Date());
+    this.i = new Handler(Looper.getMainLooper(), this);
+    this.h = paramIThemeSwitchCallback;
+    this.g = paramString2;
+    this.k.a(paramString1);
+    this.f = new SimpleDateFormat("MM-dd HH:mm:ss").format(new Date());
   }
   
   public static String a(String paramString, boolean paramBoolean)
@@ -90,12 +98,12 @@ public class ThemeSwitcher
     }
     String str3 = ThemeUtil.getIDFromSCID(paramString);
     Object localObject2 = new ThemeLocator().a(str3).a(localBaseApplication, paramString, "");
-    if (!((ThemeLocator)localObject2).a())
+    if (!((ThemeLocator)localObject2).h())
     {
       QLog.e("ThemeSwitcher", 1, "unzipTheme: zip file missing");
       return null;
     }
-    String str4 = ((ThemeLocator)localObject2).c();
+    String str4 = ((ThemeLocator)localObject2).f();
     String str2 = FileUtils.encryptFile(str4, "MD5");
     if (TextUtils.isEmpty(str2))
     {
@@ -103,7 +111,7 @@ public class ThemeSwitcher
       return null;
     }
     ((ThemeLocator)localObject2).a(localBaseApplication, paramString, str2);
-    String str1 = ((ThemeLocator)localObject2).d();
+    String str1 = ((ThemeLocator)localObject2).g();
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("unzipTheme to ");
     ((StringBuilder)localObject3).append(str1);
@@ -117,7 +125,7 @@ public class ThemeSwitcher
         QLog.e("ThemeSwitcher", 1, "unzipTheme unzipDir exists");
         return str2;
       }
-      bool = VasUpdateUtil.a((File)localObject3, "theme_move_") ^ true;
+      bool = VasUpdateUtil.b((File)localObject3, "theme_move_") ^ true;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("unzipTheme remove oldUnzip needMove: ");
       ((StringBuilder)localObject2).append(bool);
@@ -134,20 +142,20 @@ public class ThemeSwitcher
       a(localBaseApplication, (File)localObject3);
       VasMonitorDT.a("individual_v2_theme_setup_err", "need_move");
     }
-    int i;
+    int n;
     try
     {
       FileUtils.uncompressZip(str4, str1, false);
       if (((File)localObject3).exists()) {
-        i = ThemeUtil.getFileNumInFile((File)localObject3);
+        n = ThemeUtil.getFileNumInFile((File)localObject3);
       }
     }
     catch (IOException localIOException)
     {
       QLog.e("ThemeSwitcher", 1, "unzipTheme failed", localIOException);
-      i = 0;
+      n = 0;
     }
-    if (i == 0)
+    if (n == 0)
     {
       if (paramBoolean)
       {
@@ -171,10 +179,10 @@ public class ThemeSwitcher
       paramString.isVoiceTheme = false;
     }
     paramString.status = "5";
-    paramString.fileNum = i;
-    long l = new File(str4).length();
-    paramString.size = l;
-    paramString.downsize = l;
+    paramString.fileNum = n;
+    long l1 = new File(str4).length();
+    paramString.size = l1;
+    paramString.downsize = l1;
     ThemeUtil.setThemeInfo(localBaseApplication, paramString);
     if (QLog.isColorLevel())
     {
@@ -186,28 +194,23 @@ public class ThemeSwitcher
     return str2;
   }
   
-  private void a()
-  {
-    ThreadManagerV2.excute(new ThemeSwitcher.1(this), 64, null, true);
-  }
-  
   private void a(int paramInt)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a();
-    int i = SimpleUIUtil.b(str);
+    String str = this.k.d();
+    int n = SimpleUIUtil.b(str);
     Object localObject;
-    if ((paramInt == 0) && (ThemeUtil.getCreateAppRuntime() != null) && (SimpleUIUtil.a(i)))
+    if ((paramInt == 0) && (ThemeUtil.getCreateAppRuntime() != null) && (SimpleUIUtil.g(n)))
     {
-      boolean bool = SimpleUIUtil.a();
+      boolean bool = SimpleUIUtil.e();
       localObject = (ISimpleUIHandler)QRoute.api(ISimpleUIHandler.class);
-      ((ISimpleUIHandler)localObject).setReqTs(((ISimpleUIHandler)localObject).sendSwitchAndSetSimpleUI(bool, i, false));
+      ((ISimpleUIHandler)localObject).setReqTs(((ISimpleUIHandler)localObject).sendSwitchAndSetSimpleUI(bool, n, false));
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("NightModeLogic.postSwitch, bSwitch = ");
         ((StringBuilder)localObject).append(bool);
         ((StringBuilder)localObject).append("; bPref = ");
-        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(n);
         ((StringBuilder)localObject).append("; themeId = ");
         ((StringBuilder)localObject).append(str);
         QLog.d("SimpleUIHandler", 2, ((StringBuilder)localObject).toString());
@@ -218,7 +221,7 @@ public class ThemeSwitcher
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("NightModeLogic.postSwitch error, mBPref = ");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(n);
       ((StringBuilder)localObject).append("; themeId = ");
       ((StringBuilder)localObject).append(str);
       ((StringBuilder)localObject).append("; code = ");
@@ -229,7 +232,7 @@ public class ThemeSwitcher
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    ??? = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+    ??? = this.j;
     boolean bool2 = false;
     if (((AtomicBoolean)???).compareAndSet(false, true))
     {
@@ -241,23 +244,24 @@ public class ThemeSwitcher
       ((StringBuilder)???).append(" ");
       ((StringBuilder)???).append(this);
       QLog.e("ThemeSwitcher", 1, ((StringBuilder)???).toString());
-      synchronized (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+      VasStatisticCollector.b("theme_finish", new Pair[] { new Pair("themeId", this.k.d()), new Pair("errorCode", String.valueOf(paramInt)), new Pair("from", this.g) });
+      synchronized (d)
       {
-        if (jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher == this)
+        if (b == this)
         {
-          jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher = null;
-          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+          b = null;
+          d.set(false);
         }
         boolean bool1 = bool2;
         if (!paramBoolean)
         {
-          ??? = this.jdField_a_of_type_ComTencentMobileqqVasThemeApiIThemeSwitchCallback;
+          ??? = this.h;
           bool1 = bool2;
           if (??? != null) {
             bool1 = ((IThemeSwitchCallback)???).postSwitch(paramInt);
           }
         }
-        if ((!bool1) && (("211".equals(this.jdField_b_of_type_JavaLangString)) || ("212".equals(this.jdField_b_of_type_JavaLangString)) || ("202".equals(this.jdField_b_of_type_JavaLangString))))
+        if ((!bool1) && (("211".equals(this.g)) || ("212".equals(this.g)) || ("202".equals(this.g))))
         {
           a(paramInt);
           return;
@@ -268,72 +272,21 @@ public class ThemeSwitcher
   
   public static void a(String paramString, long paramLong1, long paramLong2)
   {
-    Object localObject = jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher;
+    Object localObject = b;
     if (localObject == null) {
       localObject = null;
     } else {
-      localObject = ((ThemeSwitcher)localObject).jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher$DownloadListenser;
+      localObject = ((ThemeSwitcher)localObject).c;
     }
     if (localObject != null) {
       ((ThemeSwitcher.DownloadListenser)localObject).a(paramString, paramLong1, paramLong2);
     }
   }
   
-  private void a(AppRuntime paramAppRuntime)
-  {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a();
-    String str2 = VasTextUtil.a(paramAppRuntime.getAccount(), 2);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str2);
-    localStringBuilder.append(" startSwitch: ");
-    localStringBuilder.append(str1);
-    localStringBuilder.append(", ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    QLog.e("ThemeSwitcher", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
-    if ("1000".equals(str1))
-    {
-      b();
-      return;
-    }
-    if ("999".equals(str1))
-    {
-      a();
-      return;
-    }
-    if ("900".equals(str1))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.b();
-      b();
-      return;
-    }
-    b(paramAppRuntime);
-  }
-  
-  private void a(AppRuntime paramAppRuntime, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher$DownloadListenser = new ThemeSwitcher.DownloadListenser(this, paramBoolean);
-    ThemeUpdateCallback.sInstance.download(this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.b());
-    ThemeReporter.a(paramAppRuntime, "theme_detail", this.jdField_b_of_type_JavaLangString, 153, -1, 7, this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a(), "20000000", ThemeReporter.jdField_a_of_type_JavaLangString, "");
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isSwitching: ");
-    localStringBuilder.append(bool);
-    localStringBuilder.append(",");
-    localStringBuilder.append(jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher);
-    QLog.e("ThemeSwitcher", 1, localStringBuilder.toString());
-    return bool;
-  }
-  
   private static boolean a(Context paramContext, ThemeLocator paramThemeLocator)
   {
-    File localFile = new File(paramThemeLocator.d());
-    return (ThemeUtil.getThemeInfo(paramContext, paramThemeLocator.a()) != null) && (localFile.exists());
+    File localFile = new File(paramThemeLocator.g());
+    return (ThemeUtil.getThemeInfo(paramContext, paramThemeLocator.d()) != null) && (localFile.exists());
   }
   
   private static boolean a(Context paramContext, File paramFile)
@@ -363,8 +316,8 @@ public class ThemeSwitcher
   
   public static boolean a(String paramString)
   {
-    ThemeSwitcher localThemeSwitcher = jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher;
-    return (localThemeSwitcher != null) && (localThemeSwitcher.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a().equals(paramString));
+    ThemeSwitcher localThemeSwitcher = b;
+    return (localThemeSwitcher != null) && (localThemeSwitcher.k.d().equals(paramString));
   }
   
   public static boolean a(String paramString1, String paramString2, IThemeSwitchCallback paramIThemeSwitchCallback)
@@ -380,11 +333,12 @@ public class ThemeSwitcher
     ((StringBuilder)localObject).append("=>");
     ((StringBuilder)localObject).append(paramString2);
     QLog.e("ThemeSwitcher", 1, ((StringBuilder)localObject).toString());
-    QQTheme.a(paramString1);
+    VasStatisticCollector.b("theme_beforeSwitch", new Pair[] { new Pair("from", paramString1), new Pair("themeId", paramString2) });
+    QQTheme.storeLastThemeId(paramString1);
     localObject = ThemeBackground.a(paramAppRuntime.getApplication(), paramAppRuntime.getAccount(), 0);
     if ((!TextUtils.isEmpty(paramString2)) && (!paramString2.equals(paramString1)))
     {
-      if ((!jdField_a_of_type_JavaUtilHashSet.contains(this.jdField_b_of_type_JavaLangString)) && (!"200".equals(this.jdField_b_of_type_JavaLangString)) && ("1103".equals(paramString1)) && ("null".equals(ChatBackgroundUtil.a(MobileQQ.getContext(), paramAppRuntime.getAccount(), null))) && (((SharedPreferences)localObject).contains("theme_bg_record_for_night_mode")))
+      if ((!a.contains(this.g)) && (!"200".equals(this.g)) && ("1103".equals(paramString1)) && ("null".equals(ChatBackgroundUtil.a(MobileQQ.getContext(), paramAppRuntime.getAccount(), null))) && (((SharedPreferences)localObject).contains("theme_bg_record_for_night_mode")))
       {
         String str = ((SharedPreferences)localObject).getString("theme_bg_record_for_night_mode", "null");
         ChatBackgroundUtil.a(MobileQQ.getContext(), paramAppRuntime.getAccount(), null, str, -1);
@@ -392,16 +346,16 @@ public class ThemeSwitcher
       }
       if (!ThemeUtil.isFixTheme(paramString2)) {
         ThemeSwitchUtil.a(paramAppRuntime, paramString2, "20000000");
-      } else if ((!ThemeUtil.isFixTheme(paramString1)) && (!"206".equals(this.jdField_b_of_type_JavaLangString)) && (!paramString1.equals("1000"))) {
+      } else if ((!ThemeUtil.isFixTheme(paramString1)) && (!"206".equals(this.g)) && (!paramString1.equals("1000"))) {
         ThemeSwitchUtil.a(paramAppRuntime, paramString1, "20000000");
       }
       if (!ThemeUtil.isFixTheme(paramString2)) {
         ThemeCleaner.a(paramString1);
       }
     }
-    paramAppRuntime = this.jdField_a_of_type_ComTencentMobileqqVasThemeApiIThemeSwitchCallback;
+    paramAppRuntime = this.h;
     if (paramAppRuntime != null) {
-      return paramAppRuntime.beforeSwitch(this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator);
+      return paramAppRuntime.beforeSwitch(this.k);
     }
     return false;
   }
@@ -410,21 +364,21 @@ public class ThemeSwitcher
   {
     if ((!TextUtils.isEmpty(???)) && (VasTextUtil.a(???)))
     {
-      if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+      if (!d.compareAndSet(false, true))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("set ");
         localStringBuilder.append(???);
         localStringBuilder.append(" when NOT_FINISH ");
-        localStringBuilder.append(jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher);
+        localStringBuilder.append(b);
         QLog.e("ThemeSwitcher", 1, localStringBuilder.toString());
       }
-      jdField_b_of_type_ComTencentMobileqqVasThemeThemeSwitcher = null;
+      m = null;
       paramString2 = new ThemeSwitcher(paramAppRuntime, paramIThemeSwitchCallback, ???, paramString2);
-      synchronized (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+      synchronized (d)
       {
-        paramIThemeSwitchCallback = jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher;
-        jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher = paramString2;
+        paramIThemeSwitchCallback = b;
+        b = paramString2;
         if (paramIThemeSwitchCallback != null) {
           paramIThemeSwitchCallback.a(2, false);
         }
@@ -443,28 +397,95 @@ public class ThemeSwitcher
     return false;
   }
   
-  private void b()
-  {
-    long l2 = this.jdField_a_of_type_Long + 1500L - SystemClock.uptimeMillis();
-    long l1 = l2;
-    if (l2 < 0L) {
-      l1 = 0L;
-    }
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-    localHandler.sendMessageDelayed(localHandler.obtainMessage(1001), l1);
-  }
-  
   private void b(AppRuntime paramAppRuntime)
   {
-    ((IVasQuickUpdateService)paramAppRuntime.getRuntimeService(IVasQuickUpdateService.class, "")).queryItemVersion(3, this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.b(), true, true, 0L, this);
+    String str1 = ThemeUtil.getCurrentThemeId();
+    String str2 = this.k.d();
+    Object localObject = this.k.g();
+    ThemeBackground.f = false;
+    boolean bool1;
+    if (!a(paramAppRuntime, str1, str2))
+    {
+      if ((!c()) && (!QQTheme.isThemeSimpleUI(str2))) {}
+      for (bool1 = false;; bool1 = true)
+      {
+        bool2 = true;
+        break label93;
+        if (SkinEngine.getInstances().mResources != null) {
+          break;
+        }
+      }
+      boolean bool2 = a(paramAppRuntime.getApp(), str2, (String)localObject);
+      bool1 = false;
+      label93:
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("needRetry: ");
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append(" switchSuccess: ");
+      ((StringBuilder)localObject).append(bool2);
+      QLog.e("ThemeSwitcher", 1, ((StringBuilder)localObject).toString());
+      VasStatisticCollector.b("theme_skin_engine", new Pair[] { new Pair("themeId", str2), new Pair("switchSuccess", String.valueOf(bool2)), new Pair("needRetry", String.valueOf(bool1)) });
+      ThemeUtil.setCurrentThemeIdVersion(paramAppRuntime, this.k.d(), "20000000");
+      if (bool2)
+      {
+        a(0, false);
+      }
+      else
+      {
+        QLog.e("ThemeSwitcher", 1, "engine is doing a switch, retry later");
+        paramAppRuntime = this.i.obtainMessage(1002, 0, 0);
+        this.i.sendMessageDelayed(paramAppRuntime, 1000L);
+      }
+    }
+    else
+    {
+      a(0, true);
+      bool1 = false;
+    }
+    ThemeReporter.a(null, "theme_detail", this.g, 155, NetworkUtil.getSystemNetwork(null), 23, str2, "20000000", str1, "");
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("needRetry: ");
+    paramAppRuntime.append(bool1);
+    paramAppRuntime.append(" sIsSwitching: ");
+    paramAppRuntime.append(d.get());
+    QLog.e("ThemeSwitcher", 1, paramAppRuntime.toString());
+    if (bool1)
+    {
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("engine not ready, start retry: ");
+      paramAppRuntime.append(this);
+      QLog.e("ThemeSwitcher", 1, paramAppRuntime.toString());
+      this.l = (SystemClock.uptimeMillis() + 60000L);
+      m = this;
+      paramAppRuntime = this.i;
+      paramAppRuntime.sendMessageDelayed(paramAppRuntime.obtainMessage(1003), 2000L);
+      this.h = null;
+    }
   }
   
-  private boolean b()
+  public static boolean b()
   {
-    if (jdField_a_of_type_JavaUtilHashSet.contains(this.jdField_b_of_type_JavaLangString))
+    boolean bool = d.get();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isSwitching: ");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(",");
+    localStringBuilder.append(b);
+    QLog.e("ThemeSwitcher", 1, localStringBuilder.toString());
+    return bool;
+  }
+  
+  private void c(AppRuntime paramAppRuntime)
+  {
+    ((IVasQuickUpdateService)paramAppRuntime.getRuntimeService(IVasQuickUpdateService.class, "")).queryItemVersion(3, this.k.e(), true, true, 0L, this);
+  }
+  
+  private boolean c()
+  {
+    if (a.contains(this.g))
     {
       Object localObject = SkinEngine.getInstances().getSkinRootPath();
-      String str = this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.d();
+      String str = this.k.g();
       if ((TextUtils.isEmpty(str)) && (TextUtils.isEmpty((CharSequence)localObject)))
       {
         QLog.e("ThemeSwitcher", 1, "needSwitch: normal not changed");
@@ -474,7 +495,7 @@ public class ThemeSwitcher
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("needSwitch: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a());
+        ((StringBuilder)localObject).append(this.k.d());
         ((StringBuilder)localObject).append(" not changed");
         QLog.e("ThemeSwitcher", 1, ((StringBuilder)localObject).toString());
         return false;
@@ -483,16 +504,32 @@ public class ThemeSwitcher
     return true;
   }
   
+  private void d()
+  {
+    ThreadManagerV2.excute(new ThemeSwitcher.1(this), 64, null, true);
+  }
+  
+  private void e()
+  {
+    long l2 = this.e + 1500L - SystemClock.uptimeMillis();
+    long l1 = l2;
+    if (l2 < 0L) {
+      l1 = 0L;
+    }
+    Handler localHandler = this.i;
+    localHandler.sendMessageDelayed(localHandler.obtainMessage(1001), l1);
+  }
+  
   AppRuntime a()
   {
     Object localObject = ThemeUtil.getCreateAppRuntime();
     if ((localObject != null) && (((AppRuntime)localObject).isLogin()))
     {
-      if (jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher != this)
+      if (b != this)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("newSwitcher: ");
-        ((StringBuilder)localObject).append(jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher);
+        ((StringBuilder)localObject).append(b);
         ((StringBuilder)localObject).append(" old is:");
         ((StringBuilder)localObject).append(this);
         QLog.e("ThemeSwitcher", 1, ((StringBuilder)localObject).toString());
@@ -510,116 +547,105 @@ public class ThemeSwitcher
     return null;
   }
   
+  protected void a(AppRuntime paramAppRuntime)
+  {
+    this.e = SystemClock.uptimeMillis();
+    String str1 = this.k.d();
+    String str2 = VasTextUtil.a(paramAppRuntime.getAccount(), 2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str2);
+    localStringBuilder.append(" startSwitch: ");
+    localStringBuilder.append(str1);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.g);
+    QLog.e("ThemeSwitcher", 1, localStringBuilder.toString());
+    VasStatisticCollector.b("theme_startSwitch", new Pair[] { new Pair("themeId", str1), new Pair("from", this.g) });
+    this.i.sendEmptyMessage(1000);
+    if ("1000".equals(str1))
+    {
+      e();
+      return;
+    }
+    if ("999".equals(str1))
+    {
+      d();
+      return;
+    }
+    if ("900".equals(str1))
+    {
+      this.k.b();
+      e();
+      return;
+    }
+    if (QQTheme.isThemeSimpleUI(str1))
+    {
+      e();
+      return;
+    }
+    c(paramAppRuntime);
+  }
+  
+  protected void a(AppRuntime paramAppRuntime, boolean paramBoolean)
+  {
+    this.c = new ThemeSwitcher.DownloadListenser(this, paramBoolean);
+    ThemeUpdateCallback.sInstance.download(this.k.e());
+    VasStatisticCollector.b("theme_start_download", new Pair[] { new Pair("themeId", this.k.d()) });
+    ThemeReporter.a(paramAppRuntime, "theme_detail", this.g, 153, -1, 7, this.k.d(), "20000000", ThemeReporter.a, "");
+  }
+  
+  protected boolean a(Context paramContext, String paramString1, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setSkinRoot: ");
+    localStringBuilder.append(paramString2);
+    QLog.e("ThemeSwitcher", 1, localStringBuilder.toString());
+    if (QQTheme.isThemeSimpleUI(paramString1))
+    {
+      paramString2 = SimpleTintManager.instance();
+      paramString2.setThemeId(paramString1);
+      SkinEngine.getInstances().setSkinTint(paramString2);
+      boolean bool = SimpleUIManager.c(paramContext);
+      QQTheme.setNewSimpleThemeId(paramString1);
+      return bool;
+    }
+    QQTheme.setNewSimpleThemeId("");
+    SkinEngine.getInstances().setSkinTint(TintManager.a());
+    return SkinEngine.getInstances().setSkinRootPath(paramContext, paramString2);
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
-    Object localObject1 = a();
-    if (localObject1 == null)
+    AppRuntime localAppRuntime = a();
+    boolean bool = false;
+    int n = 0;
+    if ((localAppRuntime != null) && (localAppRuntime.getApp() != null))
     {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("app null when handleMessage: ");
-      ((StringBuilder)localObject1).append(paramMessage.what);
-      QLog.e("ThemeSwitcher", 1, ((StringBuilder)localObject1).toString());
-      return true;
-    }
-    if (paramMessage.what == 1000)
-    {
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasThemeApiIThemeSwitchCallback;
-      if (paramMessage != null)
+      if (paramMessage.what == 1000)
       {
-        paramMessage.beginSwitch();
-        return true;
-      }
-    }
-    else
-    {
-      int j = paramMessage.what;
-      int i = 0;
-      boolean bool1 = false;
-      if (j == 1001)
-      {
-        paramMessage = ThemeUtil.getCurrentThemeId();
-        String str = this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a();
-        Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.d();
-        ThemeBackground.c = false;
-        if (!a((AppRuntime)localObject1, paramMessage, str))
+        paramMessage = this.h;
+        if (paramMessage != null)
         {
-          if (b())
-          {
-            if (SkinEngine.getInstances().mResources == null)
-            {
-              bool1 = true;
-            }
-            else
-            {
-              StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append("setSkinRoot: ");
-              localStringBuilder.append((String)localObject2);
-              QLog.e("ThemeSwitcher", 1, localStringBuilder.toString());
-              bool2 = SkinEngine.getInstances().setSkinRootPath(((AppRuntime)localObject1).getApp(), (String)localObject2);
-              bool1 = false;
-              break label220;
-            }
-          }
-          else {
-            bool1 = false;
-          }
-          boolean bool2 = true;
-          label220:
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("needRetry: ");
-          ((StringBuilder)localObject2).append(bool1);
-          ((StringBuilder)localObject2).append(" switchSuccess: ");
-          ((StringBuilder)localObject2).append(bool2);
-          QLog.e("ThemeSwitcher", 1, ((StringBuilder)localObject2).toString());
-          ThemeUtil.setCurrentThemeIdVersion((AppRuntime)localObject1, this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a(), "20000000");
-          if (bool2)
-          {
-            a(0, false);
-          }
-          else
-          {
-            QLog.e("ThemeSwitcher", 1, "engine is doing a switch, retry later");
-            localObject1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1002, 0, 0);
-            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject1, 1000L);
-          }
-        }
-        else
-        {
-          a(0, true);
-        }
-        ThemeReporter.a(null, "theme_detail", this.jdField_b_of_type_JavaLangString, 155, NetworkUtil.getSystemNetwork(null), 23, str, "20000000", paramMessage, "");
-        paramMessage = new StringBuilder();
-        paramMessage.append("needRetry: ");
-        paramMessage.append(bool1);
-        paramMessage.append(" sIsSwitching: ");
-        paramMessage.append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-        QLog.e("ThemeSwitcher", 1, paramMessage.toString());
-        if (bool1)
-        {
-          paramMessage = new StringBuilder();
-          paramMessage.append("engine not ready, start retry: ");
-          paramMessage.append(this);
-          QLog.e("ThemeSwitcher", 1, paramMessage.toString());
-          this.jdField_b_of_type_Long = (SystemClock.uptimeMillis() + 60000L);
-          jdField_b_of_type_ComTencentMobileqqVasThemeThemeSwitcher = this;
-          paramMessage = this.jdField_a_of_type_AndroidOsHandler;
-          paramMessage.sendMessageDelayed(paramMessage.obtainMessage(1003), 2000L);
-          this.jdField_a_of_type_ComTencentMobileqqVasThemeApiIThemeSwitchCallback = null;
+          paramMessage.beginSwitch();
           return true;
         }
       }
       else
       {
+        if (paramMessage.what == 1001)
+        {
+          b(localAppRuntime);
+          return true;
+        }
         if (paramMessage.what == 1002)
         {
-          i = paramMessage.arg1;
-          if (i < 10)
+          n = paramMessage.arg1;
+          if (n < 10)
           {
-            paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.d();
-            if (!SkinEngine.getInstances().setSkinRootPath(((AppRuntime)localObject1).getApp(), paramMessage))
+            paramMessage = this.k.g();
+            if (!SkinEngine.getInstances().setSkinRootPath(localAppRuntime.getApp(), paramMessage))
             {
-              paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1002, i + 1, 0);
-              this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 1000L);
+              paramMessage = this.i.obtainMessage(1002, n + 1, 0);
+              this.i.sendMessageDelayed(paramMessage, 1000L);
               return true;
             }
             paramMessage = new StringBuilder();
@@ -629,38 +655,38 @@ public class ThemeSwitcher
           }
           paramMessage = new StringBuilder();
           paramMessage.append("retryCount: ");
-          paramMessage.append(i);
+          paramMessage.append(n);
           QLog.e("ThemeSwitcher", 1, paramMessage.toString());
           a(0, false);
           return true;
         }
         if (paramMessage.what == 1003)
         {
-          if (jdField_b_of_type_ComTencentMobileqqVasThemeThemeSwitcher != this)
+          if (m != this)
           {
             paramMessage = new StringBuilder();
             paramMessage.append("sRetry reset, stop retry: ");
             paramMessage.append(this);
             QLog.e("ThemeSwitcher", 1, paramMessage.toString());
-            i = 1;
+            n = 1;
           }
-          if (SystemClock.uptimeMillis() > this.jdField_b_of_type_Long)
+          if (SystemClock.uptimeMillis() > this.l)
           {
             paramMessage = new StringBuilder();
             paramMessage.append("meet deadLine, stop retry ");
             paramMessage.append(this);
             QLog.e("ThemeSwitcher", 1, paramMessage.toString());
             VasMonitorDT.a("individual_v2_theme_setup_err", "engine_timeout");
-            i = 1;
+            n = 1;
           }
-          if (i != 0)
+          if (n != 0)
           {
-            jdField_b_of_type_ComTencentMobileqqVasThemeThemeSwitcher = null;
+            m = null;
             return true;
           }
           if (SkinEngine.getInstances().mResources == null)
           {
-            paramMessage = this.jdField_a_of_type_AndroidOsHandler;
+            paramMessage = this.i;
             paramMessage.sendMessageDelayed(paramMessage.obtainMessage(1003), 2000L);
             return true;
           }
@@ -668,11 +694,17 @@ public class ThemeSwitcher
           paramMessage.append("engine ready, retry: ");
           paramMessage.append(this);
           QLog.e("ThemeSwitcher", 1, paramMessage.toString());
-          jdField_b_of_type_ComTencentMobileqqVasThemeThemeSwitcher = null;
-          a((AppRuntime)localObject1, this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a(), this.jdField_b_of_type_JavaLangString, null);
+          m = null;
+          a(localAppRuntime, this.k.d(), this.g, null);
         }
       }
+      return true;
     }
+    n = paramMessage.what;
+    if (localAppRuntime == null) {
+      bool = true;
+    }
+    QLog.e("ThemeSwitcher", 1, new Object[] { "app null or app.getApp is null when handleMessage: ", Integer.valueOf(n), " [app null] : ", Boolean.valueOf(bool) });
     return true;
   }
   
@@ -700,7 +732,7 @@ public class ThemeSwitcher
       paramString1.append(paramString2.toString());
       paramString2 = new StringBuilder();
       paramString2.append(" DeviceInfoUtil#getCpuType: ");
-      paramString2.append(DeviceInfoUtil.g());
+      paramString2.append(DeviceInfoUtil.m());
       paramString1.append(paramString2.toString());
       paramString2 = new StringBuilder();
       paramString2.append(" Build.CPU_ABI: ");
@@ -725,37 +757,37 @@ public class ThemeSwitcher
       a((AppRuntime)localObject, false);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a(((AppRuntime)localObject).getApp(), paramString1, paramString2);
-    if (a(((AppRuntime)localObject).getApp(), this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator))
+    this.k.a(((AppRuntime)localObject).getApp(), paramString1, paramString2);
+    if (a(((AppRuntime)localObject).getApp(), this.k))
     {
       paramString1 = ThemeUtil.getCurrentThemeId();
-      if ((!jdField_a_of_type_JavaUtilHashSet.contains(this.jdField_b_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a().equals(paramString1)))
+      if ((!a.contains(this.g)) && (!this.k.d().equals(paramString1)))
       {
         a((AppRuntime)localObject, true);
         return;
       }
-      b();
+      e();
       return;
     }
     QLog.e("ThemeSwitcher", 1, "unZip dir not exist, download again");
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.c();
+    this.k.c();
     a((AppRuntime)localObject, false);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a());
+    localStringBuilder.append(this.k.d());
     localStringBuilder.append(" start ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(" ,");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.ThemeSwitcher
  * JD-Core Version:    0.7.0.1
  */

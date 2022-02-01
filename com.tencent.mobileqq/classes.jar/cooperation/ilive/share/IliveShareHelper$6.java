@@ -22,17 +22,17 @@ class IliveShareHelper$6
       {
         if (i != 0)
         {
-          QQToast.a(this.this$0.mHostActivity, 1, HardCodeUtil.a(2131714445), 0).a();
+          QQToast.makeText(this.this$0.mHostActivity, 1, HardCodeUtil.a(2131911955), 0).show();
           return;
         }
-        QQToast.a(this.this$0.mHostActivity, 2, HardCodeUtil.a(2131714447), 0).a();
+        QQToast.makeText(this.this$0.mHostActivity, 2, HardCodeUtil.a(2131911957), 0).show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.share.IliveShareHelper.6
  * JD-Core Version:    0.7.0.1
  */

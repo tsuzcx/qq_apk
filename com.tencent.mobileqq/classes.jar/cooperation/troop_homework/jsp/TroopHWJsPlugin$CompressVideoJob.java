@@ -19,24 +19,24 @@ import java.util.Set;
 class TroopHWJsPlugin$CompressVideoJob
   implements Runnable
 {
-  private TroopHWJsPlugin.RequestSource jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource;
-  private HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<Integer, String> a;
+  private TroopHWJsPlugin.RequestSource b;
   
   public TroopHWJsPlugin$CompressVideoJob(TroopHWJsPlugin.RequestSource paramRequestSource, HashMap<Integer, String> paramHashMap)
   {
     Object localObject;
-    this.jdField_a_of_type_JavaUtilHashMap = localObject;
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource = paramHashMap;
+    this.a = localObject;
+    this.b = paramHashMap;
   }
   
   public void run()
   {
-    Context localContext = this.this$0.mRuntime.a().getApplicationContext();
+    Context localContext = this.this$0.mRuntime.d().getApplicationContext();
     VFSFile localVFSFile = new VFSFile(TroopHWJsPlugin.a);
     if (!localVFSFile.exists()) {
       localVFSFile.mkdirs();
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.a.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject1 = (Map.Entry)localIterator.next();
@@ -65,15 +65,15 @@ class TroopHWJsPlugin$CompressVideoJob
           this.this$0.a(i, 0.1F);
           if (j == 1)
           {
-            localObject1 = this.this$0.a(this.this$0, i, (String)localObject1, (Bitmap)localObject2, this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource, 2);
-            this.this$0.b.put(Integer.valueOf(i), localObject1);
+            localObject1 = this.this$0.a(this.this$0, i, (String)localObject1, (Bitmap)localObject2, this.b, 2);
+            this.this$0.t.put(Integer.valueOf(i), localObject1);
             ((TroopHWJsPlugin.UploadMediaEntry)localObject1).a();
             continue;
           }
           if ((j == 0) && (new File((String)localObject3).exists()))
           {
-            localObject1 = this.this$0.a(this.this$0, i, (String)localObject3, (Bitmap)localObject2, this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource, 2);
-            this.this$0.b.put(Integer.valueOf(i), localObject1);
+            localObject1 = this.this$0.a(this.this$0, i, (String)localObject3, (Bitmap)localObject2, this.b, 2);
+            this.this$0.t.put(Integer.valueOf(i), localObject1);
             ((TroopHWJsPlugin.UploadMediaEntry)localObject1).a();
             continue;
           }
@@ -84,8 +84,8 @@ class TroopHWJsPlugin$CompressVideoJob
             ((StringBuilder)localObject3).append(j);
             QLog.w("TroopHWJsPlugin", 2, ((StringBuilder)localObject3).toString());
           }
-          localObject1 = this.this$0.a(this.this$0, i, (String)localObject1, (Bitmap)localObject2, this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource, 2);
-          this.this$0.b.put(Integer.valueOf(i), localObject1);
+          localObject1 = this.this$0.a(this.this$0, i, (String)localObject1, (Bitmap)localObject2, this.b, 2);
+          this.this$0.t.put(Integer.valueOf(i), localObject1);
           ((TroopHWJsPlugin.UploadMediaEntry)localObject1).a();
         }
         catch (Exception localException)
@@ -104,7 +104,7 @@ class TroopHWJsPlugin$CompressVideoJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.CompressVideoJob
  * JD-Core Version:    0.7.0.1
  */

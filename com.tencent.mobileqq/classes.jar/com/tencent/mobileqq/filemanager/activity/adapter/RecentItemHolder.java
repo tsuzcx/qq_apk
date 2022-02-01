@@ -10,21 +10,21 @@ import com.tencent.mobileqq.widget.CircleFileStateView;
 public class RecentItemHolder
   implements Cloneable
 {
-  public int a;
-  public View a;
-  public CheckBox a;
   public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public int b;
-  public TextView b;
-  public int c;
+  public View b;
+  public CircleFileStateView c;
+  public int d;
+  public CheckBox e;
+  public AsyncImageView f;
+  public TextView g;
+  public TextView h;
+  public Object i;
+  public int j;
+  public int k;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.adapter.RecentItemHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.home;
 
 import com.tencent.mobileqq.activity.ConversationTitleBtnCtrl;
-import com.tencent.mobileqq.studymode.StudyModeChangeListener;
+import com.tencent.mobileqq.qqexpand.network.ExpandObserver;
 
 class Conversation$69
-  implements StudyModeChangeListener
+  extends ExpandObserver
 {
   Conversation$69(Conversation paramConversation) {}
   
-  public void onChange(boolean paramBoolean)
+  protected void b(boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
+    if (this.a.U != null) {
+      this.a.U.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.69
  * JD-Core Version:    0.7.0.1
  */

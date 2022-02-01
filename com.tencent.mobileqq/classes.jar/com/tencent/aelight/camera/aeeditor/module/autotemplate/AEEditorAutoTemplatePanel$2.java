@@ -9,7 +9,6 @@ import com.tencent.aelight.camera.aeeditor.module.filter.AEEditorResourceManager
 import com.tencent.aelight.camera.aeeditor.view.classifier.ApplyMaterialOnlineTask;
 import com.tencent.aelight.camera.aeeditor.view.classifier.ApplyMaterialTask.MaterialStatusCallback;
 import com.tencent.aelight.camera.aeeditor.view.classifier.MaterialClassifierView;
-import dov.com.qq.im.aeeditor.module.autotemplate.AEAutoTemplateRet;
 
 class AEEditorAutoTemplatePanel$2
   extends ApplyMaterialOnlineTask
@@ -18,25 +17,26 @@ class AEEditorAutoTemplatePanel$2
   
   public void a(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
-    AEEditorAutoTemplatePanel.a(this.a).setClearButtonEnable(true);
+    AEEditorAutoTemplatePanel.c(this.a).setClearButtonEnable(true);
+    AEEditorAutoTemplatePanel.a(this.a, paramInt);
     if (TextUtils.isEmpty(paramMetaMaterial.packageUrl))
     {
-      AEEditorAutoTemplatePanel.a(this.a).notifyDataSetChanged();
+      AEEditorAutoTemplatePanel.d(this.a).notifyDataSetChanged();
       return;
     }
-    AEEditorAutoTemplatePanel.a(this.a).postValue(new AEAutoTemplateRet(0L, paramMetaMaterial));
+    AEEditorAutoTemplatePanel.e(this.a).postValue(new AEAutoTemplateRet(0, paramMetaMaterial));
     AEEditorResourceManager.a().a(paramMetaMaterial, new AEEditorAutoTemplatePanel.2.1(this, paramMetaMaterial));
   }
   
   public void a(int paramInt, @NonNull MetaMaterial paramMetaMaterial, @NonNull ApplyMaterialTask.MaterialStatusCallback paramMaterialStatusCallback)
   {
     super.a(paramInt, paramMetaMaterial, paramMaterialStatusCallback);
-    AEReportUtils.e(paramMetaMaterial.id);
+    AEReportUtils.d(paramMetaMaterial.id);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.autotemplate.AEEditorAutoTemplatePanel.2
  * JD-Core Version:    0.7.0.1
  */

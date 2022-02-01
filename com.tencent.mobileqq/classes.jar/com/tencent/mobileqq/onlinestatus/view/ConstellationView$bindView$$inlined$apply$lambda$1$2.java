@@ -17,12 +17,12 @@ final class ConstellationView$bindView$$inlined$apply$lambda$1$2
   
   public final void invoke()
   {
-    this.this$0.a.a.a(1040);
+    this.this$0.a.n.a(1040);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.ConstellationView.bindView..inlined.apply.lambda.1.2
  * JD-Core Version:    0.7.0.1
  */

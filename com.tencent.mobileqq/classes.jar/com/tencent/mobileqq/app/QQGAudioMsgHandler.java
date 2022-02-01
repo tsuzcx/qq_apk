@@ -47,24 +47,24 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xe9.SubMsgType0xe9.MsgBody;
 public class QQGAudioMsgHandler
   implements Handler.Callback
 {
-  static ArrayList<QQGAudioMsgHandler.DoubleMeetingMsgWapper> jdField_a_of_type_JavaUtilArrayList;
-  static ArrayList<String> b;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  AVNotifyCenter jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  Vector<byte[]> jdField_a_of_type_JavaUtilVector = new Vector();
-  boolean jdField_a_of_type_Boolean = false;
-  byte[] jdField_a_of_type_ArrayOfByte = new byte['ª'];
+  static ArrayList<QQGAudioMsgHandler.DoubleMeetingMsgWapper> f;
+  static ArrayList<String> g;
+  QQAppInterface a = null;
+  AVNotifyCenter b;
+  byte[] c = new byte['ª'];
+  boolean d = false;
+  Vector<byte[]> e = new Vector();
+  Handler h;
   
   static
   {
     try
     {
-      jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      f = new ArrayList();
       if (QLog.isColorLevel()) {
         QLog.d("QQGAudioMsgHandler", 2, "sDoubleMeetingMsg create successful!");
       }
-      b = null;
+      g = null;
     }
     catch (Exception localException1)
     {
@@ -72,7 +72,7 @@ public class QQGAudioMsgHandler
       {
         try
         {
-          b = new ArrayList();
+          g = new ArrayList();
           if (QLog.isColorLevel()) {
             QLog.d("QQGAudioMsgHandler", 2, "sCacheMsgList create successful!");
           }
@@ -86,76 +86,9 @@ public class QQGAudioMsgHandler
   
   public QQGAudioMsgHandler(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter();
-  }
-  
-  public static QQGAudioMsgHandler.SubCmd0x8DMsg a(byte[] paramArrayOfByte)
-  {
-    QQGAudioMsgHandler.SubCmd0x8DMsg localSubCmd0x8DMsg = new QQGAudioMsgHandler.SubCmd0x8DMsg();
-    if (paramArrayOfByte != null)
-    {
-      if (paramArrayOfByte.length < 40) {
-        return localSubCmd0x8DMsg;
-      }
-      int i = paramArrayOfByte.length;
-      byte[] arrayOfByte1 = new byte[2];
-      byte[] arrayOfByte2 = new byte[4];
-      byte[] arrayOfByte3 = new byte[8];
-      System.arraycopy(paramArrayOfByte, 0, arrayOfByte1, 0, 2);
-      localSubCmd0x8DMsg.jdField_a_of_type_Int = VideoPackageUtils.a(VideoPackageUtils.a(arrayOfByte1, 2));
-      System.arraycopy(paramArrayOfByte, 2, arrayOfByte3, 0, 8);
-      localSubCmd0x8DMsg.jdField_a_of_type_Long = VideoPackageUtils.b(arrayOfByte3, 8);
-      localSubCmd0x8DMsg.jdField_b_of_type_Int = VideoPackageUtils.a(paramArrayOfByte[10]);
-      int j = localSubCmd0x8DMsg.jdField_b_of_type_Int + 11;
-      System.arraycopy(paramArrayOfByte, j, arrayOfByte2, 0, 4);
-      localSubCmd0x8DMsg.jdField_b_of_type_Long = VideoPackageUtils.a(VideoPackageUtils.a(arrayOfByte2, 4));
-      j += 4;
-      System.arraycopy(paramArrayOfByte, j, arrayOfByte2, 0, 4);
-      localSubCmd0x8DMsg.jdField_c_of_type_Long = VideoPackageUtils.a(VideoPackageUtils.a(arrayOfByte2, 4));
-      j += 4;
-      System.arraycopy(paramArrayOfByte, j, arrayOfByte3, 0, 8);
-      localSubCmd0x8DMsg.jdField_d_of_type_Long = VideoPackageUtils.b(arrayOfByte3, 8);
-      j += 8;
-      System.arraycopy(paramArrayOfByte, j, arrayOfByte2, 0, 4);
-      localSubCmd0x8DMsg.jdField_c_of_type_Int = VideoPackageUtils.a(arrayOfByte2, 4);
-      j += 4;
-      System.arraycopy(paramArrayOfByte, j, arrayOfByte1, 0, 2);
-      localSubCmd0x8DMsg.jdField_d_of_type_Int = VideoPackageUtils.a(VideoPackageUtils.a(arrayOfByte1, 2));
-      j += 2;
-      localSubCmd0x8DMsg.jdField_e_of_type_Int = VideoPackageUtils.a(paramArrayOfByte[j]);
-      j += 1;
-      System.arraycopy(paramArrayOfByte, j, arrayOfByte2, 0, 4);
-      localSubCmd0x8DMsg.jdField_e_of_type_Long = VideoPackageUtils.a(arrayOfByte2, 4);
-      j += localSubCmd0x8DMsg.jdField_e_of_type_Int;
-      System.arraycopy(paramArrayOfByte, j, arrayOfByte1, 0, 2);
-      localSubCmd0x8DMsg.jdField_f_of_type_Int = VideoPackageUtils.a(VideoPackageUtils.a(arrayOfByte1, 2));
-      j = j + 2 + localSubCmd0x8DMsg.jdField_f_of_type_Int * 8;
-      System.arraycopy(paramArrayOfByte, j, arrayOfByte2, 0, 4);
-      localSubCmd0x8DMsg.jdField_f_of_type_Long = VideoPackageUtils.a(VideoPackageUtils.a(arrayOfByte2, 4));
-      j += 4;
-      System.arraycopy(paramArrayOfByte, j, arrayOfByte1, 0, 2);
-      localSubCmd0x8DMsg.jdField_g_of_type_Int = VideoPackageUtils.a(VideoPackageUtils.a(arrayOfByte1, 2));
-      j += 2;
-      if ((localSubCmd0x8DMsg.jdField_g_of_type_Int >= 16) && (localSubCmd0x8DMsg.jdField_g_of_type_Int + j <= i))
-      {
-        System.arraycopy(paramArrayOfByte, j + 9, arrayOfByte1, 0, 2);
-        i = 11 + VideoPackageUtils.a(VideoPackageUtils.a(arrayOfByte1, 2));
-        if (localSubCmd0x8DMsg.jdField_d_of_type_Int != 3)
-        {
-          localSubCmd0x8DMsg.h = VideoPackageUtils.a(paramArrayOfByte[(j + i)]);
-          i += 1;
-          if (i + 4 <= localSubCmd0x8DMsg.jdField_g_of_type_Int)
-          {
-            System.arraycopy(paramArrayOfByte, j + i, arrayOfByte2, 0, 4);
-            localSubCmd0x8DMsg.jdField_g_of_type_Long = VideoPackageUtils.a(VideoPackageUtils.a(arrayOfByte2, 4));
-          }
-        }
-      }
-      i = localSubCmd0x8DMsg.jdField_g_of_type_Int;
-    }
-    return localSubCmd0x8DMsg;
+    this.a = paramQQAppInterface;
+    this.h = new Handler(ThreadManager.getSubThreadLooper(), this);
+    this.b = this.a.getAVNotifyCenter();
   }
   
   private void a(int paramInt, long paramLong)
@@ -166,27 +99,27 @@ public class QQGAudioMsgHandler
     long l;
     if (paramInt != 0)
     {
-      localObject1 = jdField_a_of_type_JavaUtilArrayList;
+      localObject1 = f;
       if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
       {
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("onRecvMultiVideoC2SACK_0x31-retCode->msgList size=");
-          ((StringBuilder)localObject1).append(jdField_a_of_type_JavaUtilArrayList.size());
+          ((StringBuilder)localObject1).append(f.size());
           QLog.d("QQGAudioMsgHandler", 2, ((StringBuilder)localObject1).toString());
         }
         paramInt = 0;
-        while (paramInt < jdField_a_of_type_JavaUtilArrayList.size())
+        while (paramInt < f.size())
         {
-          localObject1 = (QQGAudioMsgHandler.DoubleMeetingMsgWapper)jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-          if ((localObject1 != null) && (((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject1).jdField_a_of_type_Long == paramLong) && (((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject1).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)))
+          localObject1 = (QQGAudioMsgHandler.DoubleMeetingMsgWapper)f.get(paramInt);
+          if ((localObject1 != null) && (((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject1).a == paramLong) && (((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject1).d.compareAndSet(false, true)))
           {
             localObject2 = new byte[8];
-            arrayOfByte1 = ((im_msg_body.MsgBody)((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject1).jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).msg_content.get().toByteArray();
+            arrayOfByte1 = ((im_msg_body.MsgBody)((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject1).c.msg_body.get()).msg_content.get().toByteArray();
             System.arraycopy(arrayOfByte1, (arrayOfByte1[10] & 0xFF) + 19, localObject2, 0, 8);
-            l = VideoPackageUtils.b((byte[])localObject2, 8);
-            VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, 6, true, Long.toString(paramLong), Long.toString(l), false, null, false, new Object[] { ((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject1).jdField_a_of_type_MsfMsgcommMsg_comm$Msg });
+            l = VideoPackageUtils.c((byte[])localObject2, 8);
+            VideoMsgTools.a(this.a, 0, 6, true, Long.toString(paramLong), Long.toString(l), false, null, false, new Object[] { ((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject1).c });
           }
           paramInt += 1;
         }
@@ -194,7 +127,7 @@ public class QQGAudioMsgHandler
     }
     else
     {
-      localObject1 = jdField_a_of_type_JavaUtilArrayList;
+      localObject1 = f;
       if (localObject1 != null)
       {
         if (((ArrayList)localObject1).isEmpty()) {
@@ -204,15 +137,15 @@ public class QQGAudioMsgHandler
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("onRecvMultiVideoC2SACK_0x31-retCode->msgList size=");
-          ((StringBuilder)localObject1).append(jdField_a_of_type_JavaUtilArrayList.size());
+          ((StringBuilder)localObject1).append(f.size());
           QLog.d("QQGAudioMsgHandler", 2, ((StringBuilder)localObject1).toString());
         }
         localObject1 = new ArrayList();
         paramInt = 0;
-        while (paramInt < jdField_a_of_type_JavaUtilArrayList.size())
+        while (paramInt < f.size())
         {
-          localObject2 = (QQGAudioMsgHandler.DoubleMeetingMsgWapper)jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-          if ((localObject2 != null) && (((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject2).jdField_a_of_type_Long == paramLong) && (((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject2).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))) {
+          localObject2 = (QQGAudioMsgHandler.DoubleMeetingMsgWapper)f.get(paramInt);
+          if ((localObject2 != null) && (((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject2).a == paramLong) && (((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject2).d.compareAndSet(false, true))) {
             ((ArrayList)localObject1).add(localObject2);
           }
           paramInt += 1;
@@ -225,21 +158,21 @@ public class QQGAudioMsgHandler
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("onRecvMultiVideoC2SACK_0x31-retCode->list =");
-            ((StringBuilder)localObject2).append(((QQGAudioMsgHandler.DoubleMeetingMsgWapper)((ArrayList)localObject1).get(paramInt)).jdField_b_of_type_Long);
+            ((StringBuilder)localObject2).append(((QQGAudioMsgHandler.DoubleMeetingMsgWapper)((ArrayList)localObject1).get(paramInt)).b);
             QLog.d("QQGAudioMsgHandler", 2, ((StringBuilder)localObject2).toString());
           }
           localObject2 = (QQGAudioMsgHandler.DoubleMeetingMsgWapper)((ArrayList)localObject1).get(paramInt);
           arrayOfByte1 = new byte[8];
-          byte[] arrayOfByte2 = ((im_msg_body.MsgBody)((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject2).jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).msg_content.get().toByteArray();
+          byte[] arrayOfByte2 = ((im_msg_body.MsgBody)((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject2).c.msg_body.get()).msg_content.get().toByteArray();
           System.arraycopy(arrayOfByte2, (arrayOfByte2[10] & 0xFF) + 19, arrayOfByte1, 0, 8);
-          l = VideoPackageUtils.b(arrayOfByte1, 8);
-          VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, 6, true, Long.toString(paramLong), Long.toString(l), false, null, false, new Object[] { ((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject2).jdField_a_of_type_MsfMsgcommMsg_comm$Msg });
+          l = VideoPackageUtils.c(arrayOfByte1, 8);
+          VideoMsgTools.a(this.a, 0, 6, true, Long.toString(paramLong), Long.toString(l), false, null, false, new Object[] { ((QQGAudioMsgHandler.DoubleMeetingMsgWapper)localObject2).c });
           paramInt += 1;
         }
         if (((ArrayList)localObject1).size() > 0)
         {
-          localObject1 = ((im_msg_body.MsgBody)((QQGAudioMsgHandler.DoubleMeetingMsgWapper)((ArrayList)localObject1).get(((ArrayList)localObject1).size() - 1)).jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).msg_content.get().toByteArray();
-          localObject2 = this.jdField_a_of_type_ArrayOfByte;
+          localObject1 = ((im_msg_body.MsgBody)((QQGAudioMsgHandler.DoubleMeetingMsgWapper)((ArrayList)localObject1).get(((ArrayList)localObject1).size() - 1)).c.msg_body.get()).msg_content.get().toByteArray();
+          localObject2 = this.c;
           if (localObject2 == null) {
             return;
           }
@@ -248,10 +181,10 @@ public class QQGAudioMsgHandler
             return;
           }
           if (localObject2.length < paramInt) {
-            this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+            this.c = new byte[paramInt];
           }
-          System.arraycopy(localObject1, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramInt);
-          f(this.jdField_a_of_type_ArrayOfByte);
+          System.arraycopy(localObject1, 0, this.c, 0, paramInt);
+          f(this.c);
         }
       }
     }
@@ -303,8 +236,8 @@ public class QQGAudioMsgHandler
         }
         k += 1;
       }
-      this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(9, 2, l, arrayOfLong, i);
-      this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 2, l, 0L);
+      this.b.a(9, 2, l, arrayOfLong, i);
+      this.b.a(21, 2, l, 0L);
       j += 1;
     }
   }
@@ -371,7 +304,7 @@ public class QQGAudioMsgHandler
         l1 = l2;
         i = m;
       }
-      GVideoGrayConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1), new QQGAudioMsgHandler.1(this, l1, i));
+      GVideoGrayConfig.a().a(this.a, String.valueOf(l1), new QQGAudioMsgHandler.1(this, l1, i));
       j += 1;
     }
   }
@@ -485,7 +418,7 @@ public class QQGAudioMsgHandler
         localObject2 = localObject3;
         i = i5;
       }
-      if (QQAudioHelper.c())
+      if (QQAudioHelper.f())
       {
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("onRecvMultiVideoS2C_0x95, index[");
@@ -530,16 +463,83 @@ public class QQGAudioMsgHandler
         ((StringBuilder)localObject4).append("]");
         QLog.w("QQGAudioMsgHandler", 1, ((StringBuilder)localObject4).toString());
       }
-      localObject1 = this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter;
+      localObject1 = this.b;
       long l2 = i;
       ((AVNotifyCenter)localObject1).a(11, 1, l1, null, l2);
-      this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(6, l1, 10, 0, 0, 21, i);
-      this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 1, l1, 0L);
+      this.b.a(6, l1, 10, 0, 0, 21, i);
+      this.b.a(21, 1, l1, 0L);
       j += 1;
     }
   }
   
-  private void j(byte[] paramArrayOfByte)
+  public static QQGAudioMsgHandler.SubCmd0x8DMsg j(byte[] paramArrayOfByte)
+  {
+    QQGAudioMsgHandler.SubCmd0x8DMsg localSubCmd0x8DMsg = new QQGAudioMsgHandler.SubCmd0x8DMsg();
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length < 40) {
+        return localSubCmd0x8DMsg;
+      }
+      int i = paramArrayOfByte.length;
+      byte[] arrayOfByte1 = new byte[2];
+      byte[] arrayOfByte2 = new byte[4];
+      byte[] arrayOfByte3 = new byte[8];
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte1, 0, 2);
+      localSubCmd0x8DMsg.a = VideoPackageUtils.a(VideoPackageUtils.d(arrayOfByte1, 2));
+      System.arraycopy(paramArrayOfByte, 2, arrayOfByte3, 0, 8);
+      localSubCmd0x8DMsg.b = VideoPackageUtils.c(arrayOfByte3, 8);
+      localSubCmd0x8DMsg.c = VideoPackageUtils.a(paramArrayOfByte[10]);
+      int j = localSubCmd0x8DMsg.c + 11;
+      System.arraycopy(paramArrayOfByte, j, arrayOfByte2, 0, 4);
+      localSubCmd0x8DMsg.d = VideoPackageUtils.a(VideoPackageUtils.b(arrayOfByte2, 4));
+      j += 4;
+      System.arraycopy(paramArrayOfByte, j, arrayOfByte2, 0, 4);
+      localSubCmd0x8DMsg.e = VideoPackageUtils.a(VideoPackageUtils.b(arrayOfByte2, 4));
+      j += 4;
+      System.arraycopy(paramArrayOfByte, j, arrayOfByte3, 0, 8);
+      localSubCmd0x8DMsg.f = VideoPackageUtils.c(arrayOfByte3, 8);
+      j += 8;
+      System.arraycopy(paramArrayOfByte, j, arrayOfByte2, 0, 4);
+      localSubCmd0x8DMsg.g = VideoPackageUtils.b(arrayOfByte2, 4);
+      j += 4;
+      System.arraycopy(paramArrayOfByte, j, arrayOfByte1, 0, 2);
+      localSubCmd0x8DMsg.h = VideoPackageUtils.a(VideoPackageUtils.d(arrayOfByte1, 2));
+      j += 2;
+      localSubCmd0x8DMsg.i = VideoPackageUtils.a(paramArrayOfByte[j]);
+      j += 1;
+      System.arraycopy(paramArrayOfByte, j, arrayOfByte2, 0, 4);
+      localSubCmd0x8DMsg.j = VideoPackageUtils.a(arrayOfByte2, 4);
+      j += localSubCmd0x8DMsg.i;
+      System.arraycopy(paramArrayOfByte, j, arrayOfByte1, 0, 2);
+      localSubCmd0x8DMsg.k = VideoPackageUtils.a(VideoPackageUtils.d(arrayOfByte1, 2));
+      j = j + 2 + localSubCmd0x8DMsg.k * 8;
+      System.arraycopy(paramArrayOfByte, j, arrayOfByte2, 0, 4);
+      localSubCmd0x8DMsg.l = VideoPackageUtils.a(VideoPackageUtils.b(arrayOfByte2, 4));
+      j += 4;
+      System.arraycopy(paramArrayOfByte, j, arrayOfByte1, 0, 2);
+      localSubCmd0x8DMsg.m = VideoPackageUtils.a(VideoPackageUtils.d(arrayOfByte1, 2));
+      j += 2;
+      if ((localSubCmd0x8DMsg.m >= 16) && (localSubCmd0x8DMsg.m + j <= i))
+      {
+        System.arraycopy(paramArrayOfByte, j + 9, arrayOfByte1, 0, 2);
+        i = 11 + VideoPackageUtils.a(VideoPackageUtils.d(arrayOfByte1, 2));
+        if (localSubCmd0x8DMsg.h != 3)
+        {
+          localSubCmd0x8DMsg.n = VideoPackageUtils.a(paramArrayOfByte[(j + i)]);
+          i += 1;
+          if (i + 4 <= localSubCmd0x8DMsg.m)
+          {
+            System.arraycopy(paramArrayOfByte, j + i, arrayOfByte2, 0, 4);
+            localSubCmd0x8DMsg.o = VideoPackageUtils.a(VideoPackageUtils.b(arrayOfByte2, 4));
+          }
+        }
+      }
+      i = localSubCmd0x8DMsg.m;
+    }
+    return localSubCmd0x8DMsg;
+  }
+  
+  private void k(byte[] paramArrayOfByte)
   {
     Object localObject = new byte[1];
     int i = 0;
@@ -556,14 +556,14 @@ public class QQGAudioMsgHandler
       return;
     }
     localObject = BaseApplication.getContext();
-    long l = this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.b();
-    int j = this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a();
+    long l = this.b.g();
+    int j = this.b.h();
     if (l > 0L) {
-      i = this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.b(l);
+      i = this.b.e(l);
     }
     if ((j == 1) && (i == 2))
     {
-      new GroupVideoWrapper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(new QQGAudioMsgHandler.5(this, paramArrayOfByte));
+      new GroupVideoWrapper(this.a).a(new QQGAudioMsgHandler.5(this, paramArrayOfByte));
       return;
     }
     new QavWrapper((Context)localObject).a(new QQGAudioMsgHandler.6(this, paramArrayOfByte));
@@ -578,9 +578,9 @@ public class QQGAudioMsgHandler
     {
       System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, 8);
       paramInt1 += 8;
-      long l = VideoPackageUtils.b(arrayOfByte, 8);
+      long l = VideoPackageUtils.c(arrayOfByte, 8);
       paramArrayOfLong[i] = l;
-      if ((l == paramLong1) && (this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.b() == 0L) && (0L == this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(paramInt3, paramLong2))) {
+      if ((l == paramLong1) && (this.b.g() == 0L) && (0L == this.b.c(paramInt3, paramLong2))) {
         j = 1;
       }
       i += 1;
@@ -593,7 +593,7 @@ public class QQGAudioMsgHandler
       } else {
         paramInt2 = 1;
       }
-      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt2, 13, false, paramArrayOfByte, paramString, true, null, true, new Object[0]);
+      VideoMsgTools.a(this.a, paramInt2, 13, false, paramArrayOfByte, paramString, true, null, true, new Object[0]);
     }
     return paramInt1;
   }
@@ -652,30 +652,9 @@ public class QQGAudioMsgHandler
     return paramInt1;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject = this.jdField_a_of_type_JavaUtilVector;
-    if (localObject != null) {
-      ((Vector)localObject).clear();
-    }
-    localObject = jdField_a_of_type_JavaUtilArrayList;
-    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
-    {
-      jdField_a_of_type_JavaUtilArrayList.clear();
-      if (QLog.isColorLevel()) {
-        QLog.d("QQGAudioMsgHandler", 2, "sDoubleMeetingMsg is clear in clearOnLineQueue");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGAudioMsgHandler", 2, "sDoubleMeetingMsg is empty!");
-    }
-  }
-  
   public void a(int paramInt1, long paramLong1, long paramLong2, int paramInt2, int paramInt3, long paramLong3, long paramLong4)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.a != null)
     {
       Intent localIntent = new Intent("tencent.video.q2v.GvideoLevelUpgrade");
       localIntent.putExtra("type", paramInt1);
@@ -685,13 +664,13 @@ public class QQGAudioMsgHandler
       localIntent.putExtra("level", paramInt3);
       localIntent.putExtra("seq", paramLong3);
       localIntent.putExtra("groupId", paramLong4);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.getApp().sendBroadcast(localIntent);
     }
   }
   
   public void a(int paramInt1, long paramLong1, long paramLong2, int paramInt2, long paramLong3, long paramLong4)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.a != null)
     {
       Intent localIntent = new Intent("tencent.video.q2v.GvideoGift");
       localIntent.putExtra("type", paramInt1);
@@ -700,7 +679,7 @@ public class QQGAudioMsgHandler
       localIntent.putExtra("count", paramInt2);
       localIntent.putExtra("seq", paramLong3);
       localIntent.putExtra("groupId", paramLong4);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.getApp().sendBroadcast(localIntent);
     }
   }
   
@@ -737,7 +716,7 @@ public class QQGAudioMsgHandler
     if (l1 == 0L) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().a(paramString, paramInt3);
+    this.a.getAVNotifyCenter().a(paramString, paramInt3);
     if (paramInt3 == 14) {
       paramInt3 = 2;
     }
@@ -747,34 +726,34 @@ public class QQGAudioMsgHandler
     } else {
       i = 21;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().a(l1);
-    if ((localObject != null) && (((AVNotifyCenter.VideoRoomInfo)localObject).jdField_a_of_type_Int > 0) && (paramInt2 == 0)) {
-      this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(5, 1, l1, null, ((AVNotifyCenter.VideoRoomInfo)localObject).jdField_a_of_type_Int);
+    Object localObject = this.a.getAVNotifyCenter().f(l1);
+    if ((localObject != null) && (((AVNotifyCenter.VideoRoomInfo)localObject).c > 0) && (paramInt2 == 0)) {
+      this.b.a(5, 1, l1, null, ((AVNotifyCenter.VideoRoomInfo)localObject).c);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().a(l1, paramInt3, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().a(4, l1, paramInt3, paramInt4, paramInt5, paramInt6, i, paramInt2);
+    this.a.getAVNotifyCenter().a(l1, paramInt3, paramInt2);
+    this.a.getAVNotifyCenter().a(4, l1, paramInt3, paramInt4, paramInt5, paramInt6, i, paramInt2);
     long l2;
     if (paramInt2 == 0)
     {
       l2 = l1;
       paramArrayOfLong = this;
       paramArrayOfLong.a(l2, paramInt3);
-      paramArrayOfLong.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 1, l2, 0L);
+      paramArrayOfLong.b.a(21, 1, l2, 0L);
     }
     else
     {
       l2 = l1;
       localObject = this;
       paramInt4 = paramInt3;
-      ((QQGAudioMsgHandler)localObject).jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(6, 1, l2, paramArrayOfLong, paramInt2);
-      ((QQGAudioMsgHandler)localObject).jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.b(10, l2, paramInt4);
-      if ((paramInt4 == 2) && (paramInt1 == 1) && (((TroopVideoManager)((QQGAudioMsgHandler)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_VIDEO_MANAGER)).a(paramString) == 1)) {
-        ((QQGAudioMsgHandler)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().b(l2, true);
+      ((QQGAudioMsgHandler)localObject).b.a(6, 1, l2, paramArrayOfLong, paramInt2);
+      ((QQGAudioMsgHandler)localObject).b.c(10, l2, paramInt4);
+      if ((paramInt4 == 2) && (paramInt1 == 1) && (((TroopVideoManager)((QQGAudioMsgHandler)localObject).a.getManager(QQManagerFactory.TROOP_VIDEO_MANAGER)).a(paramString) == 1)) {
+        ((QQGAudioMsgHandler)localObject).a.getAVNotifyCenter().b(l2, true);
       }
-      ((QQGAudioMsgHandler)localObject).jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 1, l2, 0L);
+      ((QQGAudioMsgHandler)localObject).b.a(21, 1, l2, 0L);
     }
     paramArrayOfLong = this;
-    if (paramArrayOfLong.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().c(paramString) == 14) {
+    if (paramArrayOfLong.a.getAVNotifyCenter().m(paramString) == 14) {
       return;
     }
     paramString = new Intent();
@@ -787,7 +766,7 @@ public class QQGAudioMsgHandler
     } else {
       paramString.putExtra("Exit", false);
     }
-    paramArrayOfLong.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramString);
+    paramArrayOfLong.a.getApp().sendBroadcast(paramString);
   }
   
   void a(int paramInt, byte[] paramArrayOfByte)
@@ -807,8 +786,8 @@ public class QQGAudioMsgHandler
       localObject = new byte[4];
       System.arraycopy(paramArrayOfByte, (paramInt & 0xFF) + 34, localObject, 0, 4);
       l = VideoPackageUtils.a((byte[])localObject, 4);
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 3000, 18, false, String.valueOf(l), paramArrayOfByte, false, null, false, new Object[0]);
+      paramArrayOfByte = this.a.getCurrentAccountUin();
+      VideoMsgTools.a(this.a, 3000, 18, false, String.valueOf(l), paramArrayOfByte, false, null, false, new Object[0]);
       return;
     }
     if (paramInt == 7)
@@ -816,36 +795,36 @@ public class QQGAudioMsgHandler
       paramInt = (paramArrayOfByte[10] & 0xFF) + 19;
       localObject = new byte[8];
       System.arraycopy(paramArrayOfByte, paramInt, localObject, 0, 8);
-      VideoPackageUtils.b((byte[])localObject, 8);
+      VideoPackageUtils.c((byte[])localObject, 8);
       localObject = new byte[4];
       System.arraycopy(paramArrayOfByte, paramInt + 12, localObject, 0, 4);
       l = VideoPackageUtils.a((byte[])localObject, 4);
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 18, false, String.valueOf(l), paramArrayOfByte, false, null, false, new Object[0]);
+      paramArrayOfByte = this.a.getCurrentAccountUin();
+      VideoMsgTools.a(this.a, 1, 18, false, String.valueOf(l), paramArrayOfByte, false, null, false, new Object[0]);
     }
   }
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.a != null)
     {
       Intent localIntent = new Intent("tencent.video.q2v.GvideoRankListUpdate");
       localIntent.putExtra("groupId", paramLong);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.getApp().sendBroadcast(localIntent);
     }
   }
   
   void a(long paramLong, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter;
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    Object localObject = this.b;
+    if ((localObject != null) && (this.a != null))
     {
-      if (((AVNotifyCenter)localObject).a(1, paramLong) > 0L)
+      if (((AVNotifyCenter)localObject).c(1, paramLong) > 0L)
       {
-        this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(3, 1, paramLong, null, 0L);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 14, false, String.valueOf(paramLong), (String)localObject, false, null, false, paramInt, new Object[0]);
-        this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 1, paramLong, 0L);
+        this.b.a(3, 1, paramLong, null, 0L);
+        localObject = this.a.getCurrentAccountUin();
+        VideoMsgTools.a(this.a, 1, 14, false, String.valueOf(paramLong), (String)localObject, false, null, false, paramInt, new Object[0]);
+        this.b.a(21, 1, paramLong, 0L);
       }
       for (;;)
       {
@@ -853,10 +832,10 @@ public class QQGAudioMsgHandler
         if (QLog.isColorLevel()) {
           QLog.w("QQGAudioMsgHandler", 2, "MultiRoomMemberNum is 0");
         }
-        this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(23, 1, paramLong, 0L);
+        this.b.a(23, 1, paramLong, 0L);
       }
       if (paramInt == 2) {
-        this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.b(paramLong, false);
+        this.b.b(paramLong, false);
       }
       return;
     }
@@ -867,14 +846,14 @@ public class QQGAudioMsgHandler
   
   void a(long paramLong, int paramInt, byte paramByte)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.a == null) {
       return;
     }
     AVLog.printAllUserLog("QQGAudioMsgHandler", String.format("queryRoomMemberNum| discussId=%d, dataType= %d, wReserve=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), Byte.valueOf(paramByte) }));
     byte[] arrayOfByte = new byte[33];
     arrayOfByte[0] = ((byte)0);
     arrayOfByte[1] = ((byte)48);
-    long l = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue();
+    long l = Long.valueOf(this.a.getCurrentAccountUin()).longValue();
     int i = 0;
     while (i < 8)
     {
@@ -904,7 +883,7 @@ public class QQGAudioMsgHandler
     arrayOfByte[30] = 0;
     arrayOfByte[31] = 0;
     arrayOfByte[32] = paramByte;
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), VideoConfigServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.a.getApplication(), VideoConfigServlet.class);
     localNewIntent.putExtra("ver", (byte)0);
     localNewIntent.putExtra("type", (byte)1);
     localNewIntent.putExtra("cscmd", (short)462);
@@ -912,39 +891,39 @@ public class QQGAudioMsgHandler
     localNewIntent.putExtra("toUin", paramLong);
     localNewIntent.putExtra("vMsg", arrayOfByte);
     localNewIntent.putExtra("reqType", 8);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    this.a.startServlet(localNewIntent);
   }
   
   public void a(long paramLong1, long paramLong2, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.a != null)
     {
       Intent localIntent = new Intent("tencent.video.q2v.GvideoMemRejectInvite");
       localIntent.putExtra("groupId", paramLong1);
       localIntent.putExtra("dealMemUin", paramLong2);
       localIntent.putExtra("invitedId", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.getApp().sendBroadcast(localIntent);
     }
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.a != null)
     {
       Intent localIntent = new Intent("tencent.video.q2v.KickOutVisitor");
       localIntent.putExtra("groupId", paramLong);
       localIntent.putExtra("isAllVisitor", paramBoolean);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.getApp().sendBroadcast(localIntent);
     }
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.a != null)
     {
       Intent localIntent = new Intent("tencent.video.q2v.GVideoMedalChange");
       localIntent.putExtra("jsonString", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.getApp().sendBroadcast(localIntent);
     }
   }
   
@@ -957,7 +936,7 @@ public class QQGAudioMsgHandler
       paramMsgBody = paramMsgBody.string_data.get();
     }
     paramMsgBody = localIntent.putExtra("string_data", paramMsgBody);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramMsgBody);
+    this.a.getApp().sendBroadcast(paramMsgBody);
   }
   
   public void a(submsgtype0xcf.MsgBody paramMsgBody)
@@ -969,7 +948,7 @@ public class QQGAudioMsgHandler
       paramMsgBody = paramMsgBody.string_rspbody.get();
     }
     paramMsgBody = localIntent.putExtra("rspbody", paramMsgBody);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramMsgBody);
+    this.a.getApp().sendBroadcast(paramMsgBody);
   }
   
   public void a(submsgtype0xdb.MsgBody paramMsgBody)
@@ -981,7 +960,7 @@ public class QQGAudioMsgHandler
       paramMsgBody = paramMsgBody.string_rspbody.get();
     }
     paramMsgBody = localIntent.putExtra("rspbody", paramMsgBody);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramMsgBody);
+    this.a.getApp().sendBroadcast(paramMsgBody);
   }
   
   public void a(SubMsgType0xe9.MsgBody paramMsgBody)
@@ -995,7 +974,7 @@ public class QQGAudioMsgHandler
     }
     localIntent.putExtra("rsptype", paramMsgBody.uint32_business_type.get());
     localIntent.putExtra("rspbody", paramMsgBody.bytes_business.get().toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+    this.a.getApp().sendBroadcast(localIntent);
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -1031,7 +1010,7 @@ public class QQGAudioMsgHandler
           e(paramArrayOfByte);
           return;
         }
-        arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+        arrayOfByte = this.c;
         if (arrayOfByte == null) {
           return;
         }
@@ -1040,16 +1019,16 @@ public class QQGAudioMsgHandler
           return;
         }
         if (arrayOfByte.length < i) {
-          this.jdField_a_of_type_ArrayOfByte = new byte[i];
+          this.c = new byte[i];
         }
-        System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, i);
-        f(this.jdField_a_of_type_ArrayOfByte);
+        System.arraycopy(paramArrayOfByte, 0, this.c, 0, i);
+        f(this.c);
         return;
       }
-      j(paramArrayOfByte);
+      k(paramArrayOfByte);
       return;
     }
-    arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    arrayOfByte = this.c;
     if (arrayOfByte == null) {
       return;
     }
@@ -1058,9 +1037,9 @@ public class QQGAudioMsgHandler
       return;
     }
     if (arrayOfByte.length < i) {
-      this.jdField_a_of_type_ArrayOfByte = new byte[i];
+      this.c = new byte[i];
     }
-    System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, i);
+    System.arraycopy(paramArrayOfByte, 0, this.c, 0, i);
     g(paramArrayOfByte);
   }
   
@@ -1070,11 +1049,11 @@ public class QQGAudioMsgHandler
       QLog.d("QQGAudioMsgHandler", 2, String.format("sendRoomInfoBroadcast, type[%s]", new Object[] { Integer.valueOf(paramInt) }));
     }
     Intent localIntent = new Intent("tencent.video.q2v.MultiVideo");
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str = this.a.getCurrentAccountUin();
     localIntent.putExtra("type", paramInt);
     localIntent.putExtra("uin", str);
     localIntent.putExtra("buffer", paramArrayOfByte);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+    this.a.getApp().sendBroadcast(localIntent);
   }
   
   public void a(byte[] paramArrayOfByte, msg_comm.Msg paramMsg)
@@ -1084,19 +1063,19 @@ public class QQGAudioMsgHandler
     }
     Object localObject = new byte[2];
     System.arraycopy(paramArrayOfByte, 0, localObject, 0, 2);
-    int i = VideoPackageUtils.a(VideoPackageUtils.a((byte[])localObject, 2));
+    int i = VideoPackageUtils.a(VideoPackageUtils.d((byte[])localObject, 2));
     long l1;
     int j;
     long l2;
     if (i == 141)
     {
-      QQGAudioMsgHandler.SubCmd0x8DMsg localSubCmd0x8DMsg = a(paramArrayOfByte);
-      i = localSubCmd0x8DMsg.jdField_d_of_type_Int;
-      long l4 = localSubCmd0x8DMsg.jdField_d_of_type_Long;
-      l1 = localSubCmd0x8DMsg.jdField_e_of_type_Long;
-      j = localSubCmd0x8DMsg.jdField_c_of_type_Int;
-      l2 = localSubCmd0x8DMsg.jdField_f_of_type_Long;
-      long l3 = localSubCmd0x8DMsg.jdField_g_of_type_Long;
+      QQGAudioMsgHandler.SubCmd0x8DMsg localSubCmd0x8DMsg = j(paramArrayOfByte);
+      i = localSubCmd0x8DMsg.h;
+      long l4 = localSubCmd0x8DMsg.f;
+      l1 = localSubCmd0x8DMsg.j;
+      j = localSubCmd0x8DMsg.g;
+      l2 = localSubCmd0x8DMsg.l;
+      long l3 = localSubCmd0x8DMsg.o;
       String str = Long.toString(l1);
       localObject = Long.toString(l4);
       if (QLog.isColorLevel())
@@ -1115,13 +1094,13 @@ public class QQGAudioMsgHandler
       }
       if (1 == i)
       {
-        VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 13, false, str, (String)localObject, false, null, false, j, new Object[] { Long.valueOf(l2), Long.valueOf(l3) });
-        this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(l1, 1, 10, true);
+        VideoMsgTools.a(this.a, 1, 13, false, str, (String)localObject, false, null, false, j, new Object[] { Long.valueOf(l2), Long.valueOf(l3) });
+        this.b.a(l1, 1, 10, true);
         return;
       }
       if (3 == i)
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localObject)) {
+        if (!this.a.getCurrentAccountUin().equals(localObject)) {
           paramArrayOfByte = (byte[])localObject;
         } else {
           paramArrayOfByte = str;
@@ -1145,7 +1124,7 @@ public class QQGAudioMsgHandler
         }
         if (i != 0)
         {
-          VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, 6, true, paramArrayOfByte, (String)localObject, false, null, false, new Object[] { paramMsg });
+          VideoMsgTools.a(this.a, 0, 6, true, paramArrayOfByte, (String)localObject, false, null, false, new Object[] { paramMsg });
           return;
         }
         if (QLog.isColorLevel())
@@ -1156,31 +1135,31 @@ public class QQGAudioMsgHandler
           QLog.d("QQGAudioMsgHandler", 2, ((StringBuilder)localObject).toString());
         }
         if (l1 == 0L) {
-          l1 = MessageCache.a();
+          l1 = MessageCache.c();
         }
-        localObject = jdField_a_of_type_JavaUtilArrayList;
-        if ((localObject != null) && (this.jdField_a_of_type_AndroidOsHandler != null))
+        localObject = f;
+        if ((localObject != null) && (this.h != null))
         {
           ((ArrayList)localObject).add(new QQGAudioMsgHandler.DoubleMeetingMsgWapper(paramMsg, Long.valueOf(paramArrayOfByte).longValue(), l1));
           a(Long.valueOf(paramArrayOfByte).longValue(), 4, (byte)8);
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
+          this.h.sendEmptyMessageDelayed(1, 10000L);
         }
         return;
       }
-      paramMsg = (QCallFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.RECENT_CALL_FACADE);
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localObject))) {
+      paramMsg = (QCallFacade)this.a.getManager(QQManagerFactory.RECENT_CALL_FACADE);
+      if ((this.a.getCurrentAccountUin() != null) && (this.a.getCurrentAccountUin().equals(localObject))) {
         paramMsg.a(1, l1, (String)localObject);
-      } else if (this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(2, l1) <= 0L) {
+      } else if (this.b.c(2, l1) <= 0L) {
         paramMsg.a(3000, str, (String)localObject);
       }
-      this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(l1, 2, 0, true);
-      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 3000, 13, false, str, (String)localObject, false, null, false, new Object[] { Long.valueOf(l2), Long.valueOf(l3) });
-      if (this.jdField_a_of_type_Boolean)
+      this.b.a(l1, 2, 0, true);
+      VideoMsgTools.a(this.a, 3000, 13, false, str, (String)localObject, false, null, false, new Object[] { Long.valueOf(l2), Long.valueOf(l3) });
+      if (this.d)
       {
         h(paramArrayOfByte);
         return;
       }
-      paramMsg = this.jdField_a_of_type_JavaUtilVector;
+      paramMsg = this.e;
       if (paramMsg != null) {
         paramMsg.add(paramArrayOfByte);
       }
@@ -1190,18 +1169,18 @@ public class QQGAudioMsgHandler
       i = (paramArrayOfByte[10] & 0xFF) + 19;
       paramMsg = new byte[8];
       System.arraycopy(paramArrayOfByte, i, paramMsg, 0, 8);
-      l1 = VideoPackageUtils.b(paramMsg, 8);
+      l1 = VideoPackageUtils.c(paramMsg, 8);
       i += 8;
       paramMsg = new byte[4];
       System.arraycopy(paramArrayOfByte, i, paramMsg, 0, 4);
-      j = VideoPackageUtils.a(paramMsg, 4);
+      j = VideoPackageUtils.b(paramMsg, 4);
       paramMsg = new byte[4];
       System.arraycopy(paramArrayOfByte, i + 4, paramMsg, 0, 4);
-      l2 = VideoPackageUtils.b(paramMsg, 4);
-      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 13, true, Long.toString(l2), Long.toString(l1), false, null, false, j, new Object[0]);
-      this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.b(11, l2, j);
-      ((TroopVideoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_VIDEO_MANAGER)).a(l2);
-      this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(l2, 1, 2, true);
+      l2 = VideoPackageUtils.c(paramMsg, 4);
+      VideoMsgTools.a(this.a, 1, 13, true, Long.toString(l2), Long.toString(l1), false, null, false, j, new Object[0]);
+      this.b.c(11, l2, j);
+      ((TroopVideoManager)this.a.getManager(QQManagerFactory.TROOP_VIDEO_MANAGER)).a(l2);
+      this.b.a(l2, 1, 2, true);
     }
   }
   
@@ -1217,15 +1196,36 @@ public class QQGAudioMsgHandler
     return true;
   }
   
+  public void b()
+  {
+    this.d = false;
+    Object localObject = this.e;
+    if (localObject != null) {
+      ((Vector)localObject).clear();
+    }
+    localObject = f;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+    {
+      f.clear();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQGAudioMsgHandler", 2, "sDoubleMeetingMsg is clear in clearOnLineQueue");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGAudioMsgHandler", 2, "sDoubleMeetingMsg is empty!");
+    }
+  }
+  
   void b(long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter;
+    Object localObject = this.b;
     if (localObject != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      if (this.a == null) {
         return;
       }
-      long l = ((AVNotifyCenter)localObject).a(2, paramLong);
+      long l = ((AVNotifyCenter)localObject).c(2, paramLong);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onMultiRoomDestroy, discussId[");
       ((StringBuilder)localObject).append(paramLong);
@@ -1235,35 +1235,35 @@ public class QQGAudioMsgHandler
       QLog.w("QQGAudioMsgHandler", 1, ((StringBuilder)localObject).toString());
       if (l > 0L)
       {
-        this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(4, 2, paramLong, null, 0L);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 2, paramLong, 0L);
-        ((DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).a(paramLong);
-        VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 3000, 14, false, String.valueOf(paramLong), (String)localObject, false, null, false, new Object[0]);
+        this.b.a(4, 2, paramLong, null, 0L);
+        localObject = this.a.getCurrentAccountUin();
+        this.b.a(21, 2, paramLong, 0L);
+        ((DiscussionHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).a(paramLong);
+        VideoMsgTools.a(this.a, 3000, 14, false, String.valueOf(paramLong), (String)localObject, false, null, false, new Object[0]);
       }
     }
   }
   
   public void b(long paramLong1, long paramLong2, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.a != null)
     {
       Intent localIntent = new Intent("tencent.video.q2v.GvideoMemUntInvite");
       localIntent.putExtra("groupId", paramLong1);
       localIntent.putExtra("dealMemUin", paramLong2);
       localIntent.putExtra("invitedId", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.getApp().sendBroadcast(localIntent);
     }
   }
   
   public void b(long paramLong, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.a != null)
     {
       Intent localIntent = new Intent("tencent.video.q2v.ChangeVisitorSpeakMode");
       localIntent.putExtra("groupId", paramLong);
       localIntent.putExtra("visitorSpeakEnabled", paramBoolean);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.getApp().sendBroadcast(localIntent);
     }
   }
   
@@ -1274,19 +1274,19 @@ public class QQGAudioMsgHandler
     if (((localObject[0] & 0xFF) << 8 | (localObject[1] & 0xFF) << 0) == 49) {
       d(paramArrayOfByte);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.a != null)
     {
       localObject = new Intent("tencent.video.q2v.MultiVideo");
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      this.a.getCurrentAccountUin();
       ((Intent)localObject).putExtra("type", 30);
       ((Intent)localObject).putExtra("buffer", paramArrayOfByte);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast((Intent)localObject);
+      this.a.getApp().sendBroadcast((Intent)localObject);
     }
   }
   
   public void b(byte[] paramArrayOfByte, int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject1 = this.a;
     if (localObject1 != null)
     {
       localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();
@@ -1338,7 +1338,7 @@ public class QQGAudioMsgHandler
           }
           System.arraycopy(paramArrayOfByte, j, arrayOfByte, 0, 8);
           j += 8;
-          VideoPackageUtils.b(arrayOfByte, 8);
+          VideoPackageUtils.c(arrayOfByte, 8);
           m += 1;
         }
       case 8: 
@@ -1368,7 +1368,7 @@ public class QQGAudioMsgHandler
       i += 2;
       System.arraycopy(paramArrayOfByte, i, localObject2, 0, 4);
       i += 4;
-      VideoPackageUtils.b((byte[])localObject2, 4);
+      VideoPackageUtils.c((byte[])localObject2, 4);
       k += 1;
     }
     System.arraycopy(paramArrayOfByte, i, localObject1, 0, 2);
@@ -1383,7 +1383,7 @@ public class QQGAudioMsgHandler
     }
     localObject1 = new byte[j];
     System.arraycopy(paramArrayOfByte, i + 2, localObject1, 0, j);
-    long l = VideoPackageUtils.b((byte[])localObject1, j);
+    long l = VideoPackageUtils.c((byte[])localObject1, j);
     if (QLog.isColorLevel())
     {
       paramArrayOfByte = new StringBuilder();
@@ -1443,7 +1443,7 @@ public class QQGAudioMsgHandler
           {
             System.arraycopy(paramArrayOfByte, k, arrayOfByte2, 0, 8);
             k += 8;
-            arrayOfLong[j] = VideoPackageUtils.b(arrayOfByte2, 8);
+            arrayOfLong[j] = VideoPackageUtils.c(arrayOfByte2, 8);
             j += 1;
           }
           j = i1;
@@ -1453,7 +1453,7 @@ public class QQGAudioMsgHandler
           i = k + 2;
           System.arraycopy(paramArrayOfByte, i, localObject, 0, 4);
           k = i + 4;
-          i = VideoPackageUtils.a((byte[])localObject, 4);
+          i = VideoPackageUtils.b((byte[])localObject, 4);
           if (i == 0)
           {
             b(l1);
@@ -1462,7 +1462,7 @@ public class QQGAudioMsgHandler
             paramArrayOfByte.putExtra("relationType", 2);
             paramArrayOfByte.putExtra("relationId", l1);
             paramArrayOfByte.putExtra("Exit", true);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramArrayOfByte);
+            this.a.getApp().sendBroadcast(paramArrayOfByte);
             return;
           }
         }
@@ -1472,7 +1472,7 @@ public class QQGAudioMsgHandler
         k += 2;
         System.arraycopy(paramArrayOfByte, k, localObject, 0, 4);
         k += 4;
-        l1 = VideoPackageUtils.b((byte[])localObject, 4);
+        l1 = VideoPackageUtils.c((byte[])localObject, 4);
       }
       label403:
       n += 1;
@@ -1495,38 +1495,38 @@ public class QQGAudioMsgHandler
     paramArrayOfByte.append(j);
     paramArrayOfByte.append("]");
     QLog.w("QQGAudioMsgHandler", 1, paramArrayOfByte.toString());
-    if (this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter == null) {
+    if (this.b == null) {
       return;
     }
-    long l2 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue();
+    long l2 = Long.valueOf(this.a.getCurrentAccountUin()).longValue();
     if (i == 1)
     {
       paramArrayOfByte = arrayOfLong;
-      if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 1) && (l2 == paramArrayOfByte[0]) && (this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.b() == 0L))
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 1) && (l2 == paramArrayOfByte[0]) && (this.b.g() == 0L))
       {
-        if (this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(2, l1) == 0L) {
+        if (this.b.c(2, l1) == 0L) {
           a(l1, 1, (byte)1);
         }
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(2, l1, arrayOfLong, (int[])localObject, i);
-    this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 2, l1, 0L);
+    this.b.a(2, l1, arrayOfLong, (int[])localObject, i);
+    this.b.a(21, 2, l1, 0L);
     paramArrayOfByte = new Intent();
     paramArrayOfByte.setAction("tencent.video.q2v.membersChange");
     paramArrayOfByte.putExtra("relationType", 2);
     paramArrayOfByte.putExtra("relationId", l1);
     paramArrayOfByte.putExtra("Exit", false);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramArrayOfByte);
+    this.a.getApp().sendBroadcast(paramArrayOfByte);
   }
   
   public void d(byte[] paramArrayOfByte)
   {
     AVLog.printAllUserLog("QQGAudioMsgHandler", "onRecvMultiVideoC2SACK_0x31.");
-    if (this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter == null) {
+    if (this.b == null) {
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject1 = this.a;
     long l1;
     Object localObject4;
     if (localObject1 != null)
@@ -1551,7 +1551,7 @@ public class QQGAudioMsgHandler
     Object localObject2 = new byte[2];
     localObject1 = new byte[4];
     System.arraycopy(paramArrayOfByte, 2, localObject1, 0, 4);
-    int i = VideoPackageUtils.a((byte[])localObject1, 4);
+    int i = VideoPackageUtils.b((byte[])localObject1, 4);
     if (i != 0)
     {
       localObject1 = new byte[2];
@@ -1646,13 +1646,13 @@ public class QQGAudioMsgHandler
       i += 2;
       System.arraycopy(paramArrayOfByte, i, localObject1, 0, 4);
       i += 4;
-      l2 = VideoPackageUtils.b((byte[])localObject1, 4);
+      l2 = VideoPackageUtils.c((byte[])localObject1, 4);
       m += 1;
     }
     if ((localObject3 != null) && (localObject3.length > 0))
     {
-      this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(j, l2, (long[])localObject3);
-      this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, j, l2, 0L);
+      this.b.a(j, l2, (long[])localObject3);
+      this.b.a(21, j, l2, 0L);
       return;
     }
   }
@@ -1678,8 +1678,8 @@ public class QQGAudioMsgHandler
     if (i > 0) {
       c(paramArrayOfByte, i);
     }
-    this.jdField_a_of_type_Boolean = true;
-    paramArrayOfByte = this.jdField_a_of_type_JavaUtilVector;
+    this.d = true;
+    paramArrayOfByte = this.e;
     if (paramArrayOfByte != null)
     {
       int j = paramArrayOfByte.size();
@@ -1688,11 +1688,11 @@ public class QQGAudioMsgHandler
         i = 0;
         while (i < j)
         {
-          h((byte[])this.jdField_a_of_type_JavaUtilVector.elementAt(i));
+          h((byte[])this.e.elementAt(i));
           i += 1;
         }
       }
-      this.jdField_a_of_type_JavaUtilVector.clear();
+      this.e.clear();
     }
   }
   
@@ -1701,11 +1701,11 @@ public class QQGAudioMsgHandler
     int i = (paramArrayOfByte[10] & 0xFF) + 19;
     Object localObject = new byte[8];
     System.arraycopy(paramArrayOfByte, i, localObject, 0, 8);
-    long l1 = VideoPackageUtils.b((byte[])localObject, 8);
+    long l1 = VideoPackageUtils.c((byte[])localObject, 8);
     int j = i + 8;
     localObject = new byte[4];
     System.arraycopy(paramArrayOfByte, j, localObject, 0, 4);
-    i = VideoPackageUtils.a((byte[])localObject, 4);
+    i = VideoPackageUtils.b((byte[])localObject, 4);
     j += 4;
     localObject = new byte[2];
     System.arraycopy(paramArrayOfByte, j, localObject, 0, 2);
@@ -1736,16 +1736,16 @@ public class QQGAudioMsgHandler
         paramArrayOfByte.append(l1);
         QLog.d("QQGAudioMsgHandler", 2, paramArrayOfByte.toString());
       }
-      ((DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).b(l2);
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter;
+      ((DiscussionHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).b(l2);
+      paramArrayOfByte = this.b;
       if (paramArrayOfByte != null) {
         paramArrayOfByte.a(7, 2, l2, new long[] { l1 }, 1L);
       }
       paramArrayOfByte = Long.toString(l2);
       localObject = Long.toString(l1);
-      ((QCallFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.RECENT_CALL_FACADE)).a(0, l2, (String)localObject, "");
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().a()) {
-        VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 3000, 13, false, paramArrayOfByte, (String)localObject, false, null, true, new Object[0]);
+      ((QCallFacade)this.a.getManager(QQManagerFactory.RECENT_CALL_FACADE)).a(0, l2, (String)localObject, "");
+      if (!this.a.getAVNotifyCenter().c()) {
+        VideoMsgTools.a(this.a, 3000, 13, false, paramArrayOfByte, (String)localObject, false, null, true, new Object[0]);
       }
     }
     else if ((k == 1) && (i == 10))
@@ -1763,18 +1763,18 @@ public class QQGAudioMsgHandler
         paramArrayOfByte.append("]");
         QLog.w("QQGAudioMsgHandler", 1, paramArrayOfByte.toString());
       }
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter;
-      if ((paramArrayOfByte != null) && (paramArrayOfByte.a(1, l2) == 0L))
+      paramArrayOfByte = this.b;
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.c(1, l2) == 0L))
       {
-        this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(5, l2, 10, 0, 0, 20, 1);
-        this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(8, 1, l2, new long[] { l1 }, 1L);
-        this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 1, Long.valueOf(l2).longValue(), 0L);
+        this.b.a(5, l2, 10, 0, 0, 20, 1);
+        this.b.a(8, 1, l2, new long[] { l1 }, 1L);
+        this.b.a(21, 1, Long.valueOf(l2).longValue(), 0L);
       }
-      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 13, false, Long.toString(l2), Long.toString(l1), false, null, false, i, new Object[0]);
+      VideoMsgTools.a(this.a, 1, 13, false, Long.toString(l2), Long.toString(l1), false, null, false, i, new Object[0]);
     }
     if ((k == 1) && (i == 2))
     {
-      new GroupVideoWrapper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(new QQGAudioMsgHandler.2(this));
+      new GroupVideoWrapper(this.a).a(new QQGAudioMsgHandler.2(this));
       return;
     }
     new QavWrapper(BaseApplication.getContext()).a(new QQGAudioMsgHandler.3(this));
@@ -1788,22 +1788,22 @@ public class QQGAudioMsgHandler
     int i = (paramArrayOfByte[10] & 0xFF) + 19;
     byte[] arrayOfByte = new byte[8];
     System.arraycopy(paramArrayOfByte, i, arrayOfByte, 0, 8);
-    long l1 = VideoPackageUtils.b(arrayOfByte, 8);
+    long l1 = VideoPackageUtils.c(arrayOfByte, 8);
     i += 8;
     arrayOfByte = new byte[4];
     System.arraycopy(paramArrayOfByte, i, arrayOfByte, 0, 4);
-    int j = VideoPackageUtils.a(arrayOfByte, 4);
+    int j = VideoPackageUtils.b(arrayOfByte, 4);
     arrayOfByte = new byte[4];
     System.arraycopy(paramArrayOfByte, i + 4, arrayOfByte, 0, 4);
-    long l2 = VideoPackageUtils.b(arrayOfByte, 4);
-    GVideoGrayConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l2), new QQGAudioMsgHandler.4(this, l2, j, l1));
+    long l2 = VideoPackageUtils.c(arrayOfByte, 4);
+    GVideoGrayConfig.a().a(this.a, String.valueOf(l2), new QQGAudioMsgHandler.4(this, l2, j, l1));
   }
   
   void h(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter != null)
+    if (this.b != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      if (this.a == null) {
         return;
       }
       int i = paramArrayOfByte[10];
@@ -1814,14 +1814,14 @@ public class QQGAudioMsgHandler
       ((StringBuilder)localObject).append("dealGAudioOfflineMsg discussId is:");
       ((StringBuilder)localObject).append(l);
       QLog.d("QQGAudioMsgHandler", 1, ((StringBuilder)localObject).toString());
-      if (this.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(2, l) > 0L)
+      if (this.b.c(2, l) > 0L)
       {
-        ((DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).b(l);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        ((DiscussionHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).b(l);
+        localObject = this.a.getCurrentAccountUin();
         Intent localIntent = new Intent("tencent.video.q2v.RecvMultiVideoCall");
         localIntent.putExtra("uin", (String)localObject);
         localIntent.putExtra("buffer", paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+        this.a.getApp().sendBroadcast(localIntent);
         paramArrayOfByte = new StringBuilder();
         paramArrayOfByte.append("dealGAudioOfflineMsg sendBroadcast discussId is:");
         paramArrayOfByte.append(l);
@@ -1833,7 +1833,7 @@ public class QQGAudioMsgHandler
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage != null) {
-      if (jdField_a_of_type_JavaUtilArrayList == null) {
+      if (f == null) {
         return true;
       }
     }
@@ -1842,7 +1842,7 @@ public class QQGAudioMsgHandler
       if (paramMessage.what != 1) {
         return true;
       }
-      if (jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      if (f.isEmpty())
       {
         if (!QLog.isColorLevel()) {
           break label92;
@@ -1850,7 +1850,7 @@ public class QQGAudioMsgHandler
         QLog.d("QQGAudioMsgHandler", 2, "sDoubleMeetingMsg is empty!");
         return true;
       }
-      jdField_a_of_type_JavaUtilArrayList.clear();
+      f.clear();
       if (!QLog.isColorLevel()) {
         break label86;
       }
@@ -1875,12 +1875,12 @@ public class QQGAudioMsgHandler
   {
     Intent localIntent = new Intent("tencent.video.q2v.VisitorSendGift");
     localIntent.putExtra("data", paramArrayOfByte);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+    this.a.getApp().sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQGAudioMsgHandler
  * JD-Core Version:    0.7.0.1
  */

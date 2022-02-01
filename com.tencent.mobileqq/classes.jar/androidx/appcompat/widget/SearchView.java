@@ -35,8 +35,14 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ImageView;
 import android.widget.TextView.OnEditorActionListener;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.dimen;
+import androidx.appcompat.R.id;
+import androidx.appcompat.R.layout;
+import androidx.appcompat.R.string;
 import androidx.appcompat.R.styleable;
 import androidx.appcompat.view.CollapsibleActionView;
 import androidx.core.view.ViewCompat;
@@ -48,9 +54,9 @@ public class SearchView
   implements CollapsibleActionView
 {
   static final boolean DBG = false;
-  static final SearchView.AutoCompleteTextViewReflector HIDDEN_METHOD_INVOKER = new SearchView.AutoCompleteTextViewReflector();
   private static final String IME_OPTION_NO_MICROPHONE = "nm";
   static final String LOG_TAG = "SearchView";
+  static final SearchView.PreQAutoCompleteTextViewReflector PRE_API_29_HIDDEN_METHOD_INVOKER;
   private Bundle mAppSearchData;
   private boolean mClearingFocus;
   final ImageView mCloseButton;
@@ -102,31 +108,42 @@ public class SearchView
   private boolean mVoiceButtonEnabled;
   private final Intent mVoiceWebSearchIntent;
   
-  public SearchView(Context paramContext)
+  static
+  {
+    SearchView.PreQAutoCompleteTextViewReflector localPreQAutoCompleteTextViewReflector;
+    if (Build.VERSION.SDK_INT < 29) {
+      localPreQAutoCompleteTextViewReflector = new SearchView.PreQAutoCompleteTextViewReflector();
+    } else {
+      localPreQAutoCompleteTextViewReflector = null;
+    }
+    PRE_API_29_HIDDEN_METHOD_INVOKER = localPreQAutoCompleteTextViewReflector;
+  }
+  
+  public SearchView(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public SearchView(Context paramContext, AttributeSet paramAttributeSet)
+  public SearchView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035143);
+    this(paramContext, paramAttributeSet, R.attr.searchViewStyle);
   }
   
-  public SearchView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public SearchView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = TintTypedArray.obtainStyledAttributes(paramContext, paramAttributeSet, R.styleable.SearchView, paramInt, 0);
-    LayoutInflater.from(paramContext).inflate(paramAttributeSet.getResourceId(R.styleable.SearchView_layout, 2131558425), this, true);
-    this.mSearchSrcTextView = ((SearchView.SearchAutoComplete)findViewById(2131377085));
+    LayoutInflater.from(paramContext).inflate(paramAttributeSet.getResourceId(R.styleable.SearchView_layout, R.layout.abc_search_view), this, true);
+    this.mSearchSrcTextView = ((SearchView.SearchAutoComplete)findViewById(R.id.search_src_text));
     this.mSearchSrcTextView.setSearchView(this);
-    this.mSearchEditFrame = findViewById(2131377052);
-    this.mSearchPlate = findViewById(2131377077);
-    this.mSubmitArea = findViewById(2131378062);
-    this.mSearchButton = ((ImageView)findViewById(2131377044));
-    this.mGoButton = ((ImageView)findViewById(2131377056));
-    this.mCloseButton = ((ImageView)findViewById(2131377046));
-    this.mVoiceButton = ((ImageView)findViewById(2131377090));
-    this.mCollapsedIcon = ((ImageView)findViewById(2131377070));
+    this.mSearchEditFrame = findViewById(R.id.search_edit_frame);
+    this.mSearchPlate = findViewById(R.id.search_plate);
+    this.mSubmitArea = findViewById(R.id.submit_area);
+    this.mSearchButton = ((ImageView)findViewById(R.id.search_button));
+    this.mGoButton = ((ImageView)findViewById(R.id.search_go_btn));
+    this.mCloseButton = ((ImageView)findViewById(R.id.search_close_btn));
+    this.mVoiceButton = ((ImageView)findViewById(R.id.search_voice_btn));
+    this.mCollapsedIcon = ((ImageView)findViewById(R.id.search_mag_icon));
     ViewCompat.setBackground(this.mSearchPlate, paramAttributeSet.getDrawable(R.styleable.SearchView_queryBackground));
     ViewCompat.setBackground(this.mSubmitArea, paramAttributeSet.getDrawable(R.styleable.SearchView_submitBackground));
     this.mSearchButton.setImageDrawable(paramAttributeSet.getDrawable(R.styleable.SearchView_searchIcon));
@@ -135,8 +152,8 @@ public class SearchView
     this.mVoiceButton.setImageDrawable(paramAttributeSet.getDrawable(R.styleable.SearchView_voiceIcon));
     this.mCollapsedIcon.setImageDrawable(paramAttributeSet.getDrawable(R.styleable.SearchView_searchIcon));
     this.mSearchHintIcon = paramAttributeSet.getDrawable(R.styleable.SearchView_searchHintIcon);
-    TooltipCompat.setTooltipText(this.mSearchButton, getResources().getString(2131689514));
-    this.mSuggestionRowLayout = paramAttributeSet.getResourceId(R.styleable.SearchView_suggestionRowLayout, 2131558424);
+    TooltipCompat.setTooltipText(this.mSearchButton, getResources().getString(R.string.abc_searchview_description_search));
+    this.mSuggestionRowLayout = paramAttributeSet.getResourceId(R.styleable.SearchView_suggestionRowLayout, R.layout.abc_search_dropdown_item_icons_2line);
     this.mSuggestionCommitIconResId = paramAttributeSet.getResourceId(R.styleable.SearchView_commitIcon, 0);
     this.mSearchButton.setOnClickListener(this.mOnClickListener);
     this.mCloseButton.setOnClickListener(this.mOnClickListener);
@@ -379,12 +396,12 @@ public class SearchView
   
   private int getPreferredHeight()
   {
-    return getContext().getResources().getDimensionPixelSize(2131296310);
+    return getContext().getResources().getDimensionPixelSize(R.dimen.abc_search_view_preferred_height);
   }
   
   private int getPreferredWidth()
   {
-    return getContext().getResources().getDimensionPixelSize(2131296311);
+    return getContext().getResources().getDimensionPixelSize(R.dimen.abc_search_view_preferred_width);
   }
   
   private boolean hasVoiceSearch()
@@ -657,7 +674,7 @@ public class SearchView
       boolean bool = ViewUtils.isLayoutRtl(this);
       int i;
       if (this.mIconifiedByDefault) {
-        i = localResources.getDimensionPixelSize(2131296297) + localResources.getDimensionPixelSize(2131296298);
+        i = localResources.getDimensionPixelSize(R.dimen.abc_dropdownitem_icon_width) + localResources.getDimensionPixelSize(R.dimen.abc_dropdownitem_text_padding_left);
       } else {
         i = 0;
       }
@@ -691,8 +708,8 @@ public class SearchView
       this.mSearchSrcTextView.refreshAutoCompleteResults();
       return;
     }
-    HIDDEN_METHOD_INVOKER.doBeforeTextChanged(this.mSearchSrcTextView);
-    HIDDEN_METHOD_INVOKER.doAfterTextChanged(this.mSearchSrcTextView);
+    PRE_API_29_HIDDEN_METHOD_INVOKER.doBeforeTextChanged(this.mSearchSrcTextView);
+    PRE_API_29_HIDDEN_METHOD_INVOKER.doAfterTextChanged(this.mSearchSrcTextView);
   }
   
   public int getImeOptions()
@@ -997,7 +1014,7 @@ public class SearchView
           this.mSearchSrcTextView.setSelection(paramInt);
           this.mSearchSrcTextView.setListSelection(0);
           this.mSearchSrcTextView.clearListSelection();
-          HIDDEN_METHOD_INVOKER.ensureImeVisible(this.mSearchSrcTextView, true);
+          this.mSearchSrcTextView.ensureImeVisible();
           return true;
         }
       }

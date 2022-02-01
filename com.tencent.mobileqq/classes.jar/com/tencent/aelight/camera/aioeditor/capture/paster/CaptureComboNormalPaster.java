@@ -35,30 +35,25 @@ public class CaptureComboNormalPaster
   extends CaptureComboBase
   implements IEventReceiver
 {
-  public static HashMap<String, Drawable> a;
-  private float jdField_a_of_type_Float;
-  private CaptureComboNormalPaster.DoodleEmojiDownloadEventReceiver jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterCaptureComboNormalPaster$DoodleEmojiDownloadEventReceiver;
-  NormalFacePackage jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage;
-  private final String jdField_a_of_type_JavaLangString;
-  private float jdField_b_of_type_Float;
-  private String jdField_b_of_type_JavaLangString;
-  private float jdField_c_of_type_Float;
-  int jdField_c_of_type_Int = 2;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public static HashMap<String, Drawable> h = new HashMap();
+  NormalFacePackage f;
+  int g = 2;
+  private final String i;
+  private float j;
+  private float k;
+  private float l;
+  private String m;
+  private CaptureComboNormalPaster.DoodleEmojiDownloadEventReceiver n;
   
   public CaptureComboNormalPaster(NormalFacePackage paramNormalFacePackage, String paramString1, String paramString2, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     super(null);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage = paramNormalFacePackage;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
+    this.i = paramString1;
+    this.m = paramString2;
+    this.f = paramNormalFacePackage;
+    this.j = paramFloat1;
+    this.k = paramFloat2;
+    this.l = paramFloat3;
     if (QLog.isColorLevel())
     {
       paramNormalFacePackage = new StringBuilder();
@@ -76,23 +71,23 @@ public class CaptureComboNormalPaster
     URLDrawable localURLDrawable = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), paramString, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
     if (localURLDrawable != null)
     {
-      int i = localURLDrawable.getStatus();
-      if (i != 1)
+      int i1 = localURLDrawable.getStatus();
+      if (i1 != 1)
       {
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("urlDrawable is not  SUCCESSED :");
-          localStringBuilder.append(i);
+          localStringBuilder.append(i1);
           QLog.e("QComboNPaster", 2, localStringBuilder.toString());
         }
         localURLDrawable.setURLDrawableListener(paramURLDrawableListener);
-        if (i == 2) {
+        if (i1 == 2) {
           localURLDrawable.restartDownload();
         } else {
           localURLDrawable.startDownload();
         }
-        jdField_a_of_type_JavaUtilHashMap.put(paramString, localURLDrawable);
+        h.put(paramString, localURLDrawable);
       }
       else
       {
@@ -104,16 +99,16 @@ public class CaptureComboNormalPaster
   
   public static void a(NormalFacePackage paramNormalFacePackage, String paramString, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper, IFaceSelectedListener paramIFaceSelectedListener)
   {
-    int i;
+    int i1;
     if (paramIFaceSelectedListener != null)
     {
-      i = paramNormalFacePackage.a(paramString);
-      paramString = paramNormalFacePackage.a(paramString);
+      i1 = paramNormalFacePackage.c(paramString);
+      paramString = paramNormalFacePackage.b(paramString);
       if (!TextUtils.isEmpty(paramString)) {}
     }
     try
     {
-      FileUtils.d(paramNormalFacePackage.g);
+      FileUtils.e(paramNormalFacePackage.l);
       label33:
       if (QLog.isColorLevel()) {
         QLog.e("QComboNPaster", 2, "applyNormalPaster uriString error!");
@@ -121,11 +116,11 @@ public class CaptureComboNormalPaster
       return;
       paramString = Uri.parse(paramString).getPath();
       String str = new File(paramString).getName();
-      CaptureComboNormalPaster.2 local2 = new CaptureComboNormalPaster.2(str, paramString, paramNormalFacePackage, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper, paramIFaceSelectedListener, i);
-      if (i != 1) {
+      CaptureComboNormalPaster.2 local2 = new CaptureComboNormalPaster.2(str, paramString, paramNormalFacePackage, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper, paramIFaceSelectedListener, i1);
+      if (i1 != 1) {
         try
         {
-          b(Drawable.createFromPath(paramString), str, paramString, paramNormalFacePackage, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper, paramIFaceSelectedListener, i);
+          b(Drawable.createFromPath(paramString), str, paramString, paramNormalFacePackage, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper, paramIFaceSelectedListener, i1);
           return;
         }
         catch (OutOfMemoryError paramNormalFacePackage)
@@ -152,7 +147,7 @@ public class CaptureComboNormalPaster
       catch (IOException localIOException)
       {
         localIOException.printStackTrace();
-        b(a(paramString, local2), str, paramString, paramNormalFacePackage, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper, paramIFaceSelectedListener, i);
+        b(a(paramString, local2), str, paramString, paramNormalFacePackage, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper, paramIFaceSelectedListener, i1);
         return;
       }
       throw new IllegalStateException("applyNormalPaster listener is null!");
@@ -168,14 +163,14 @@ public class CaptureComboNormalPaster
     if (paramDrawable != null)
     {
       paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
-      int i = paramDrawable.getIntrinsicWidth();
-      float f = paramInt1;
-      paramFloat3 = f * paramFloat3 / i;
+      int i1 = paramDrawable.getIntrinsicWidth();
+      float f1 = paramInt1;
+      paramFloat3 = f1 * paramFloat3 / i1;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("applyNormalPaster w=");
-        localStringBuilder.append(i);
+        localStringBuilder.append(i1);
         localStringBuilder.append(" scale=");
         localStringBuilder.append(paramFloat3);
         localStringBuilder.append(" px=");
@@ -184,7 +179,7 @@ public class CaptureComboNormalPaster
         localStringBuilder.append(paramFloat2);
         QLog.d("QComboNPaster", 2, localStringBuilder.toString());
       }
-      paramIFaceSelectedListener.a(new SelectedItem(paramNormalFacePackage.jdField_b_of_type_JavaLangString, paramString1, paramDrawable, paramInt3), f * paramFloat1, paramInt2 * paramFloat2, paramFloat3, paramString2, paramSegmentKeeper);
+      paramIFaceSelectedListener.a(new SelectedItem(paramNormalFacePackage.b, paramString1, paramDrawable, paramInt3), f1 * paramFloat1, paramInt2 * paramFloat2, paramFloat3, paramString2, paramSegmentKeeper);
       return;
     }
     paramDrawable = new StringBuilder();
@@ -193,78 +188,42 @@ public class CaptureComboNormalPaster
     SLog.e("QComboNPaster", paramDrawable.toString());
   }
   
-  public float a()
-  {
-    try
-    {
-      if (!StringUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.g))
-      {
-        a();
-        return 1.0F;
-      }
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.jdField_c_of_type_Int != 100.0F) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.jdField_c_of_type_Int > 0.0F))
-      {
-        float f = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.d;
-        int i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.jdField_c_of_type_Int;
-        f = f * 1.0F / i;
-        return f;
-      }
-      return 0.0F;
-    }
-    finally {}
-  }
-  
-  public int a()
-  {
-    try
-    {
-      if (!StringUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.g)) {
-        this.jdField_c_of_type_Int = 3;
-      } else if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.jdField_b_of_type_Boolean) {
-        this.jdField_c_of_type_Int = 1;
-      }
-      int i = this.jdField_c_of_type_Int;
-      return i;
-    }
-    finally {}
-  }
-  
   public int a(Activity paramActivity, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.a == null) || (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.a.size() == 0))
+    if ((this.f.m == null) || (this.f.m.size() == 0))
     {
-      paramActivity = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage;
-      paramActivity.a(paramActivity.a());
+      paramActivity = this.f;
+      paramActivity.a(paramActivity.e());
     }
     ThreadManager.excute(new CaptureComboNormalPaster.1(this, paramInt), 64, null, true);
     if (QLog.isColorLevel())
     {
       paramActivity = new StringBuilder();
       paramActivity.append("apply id=");
-      paramActivity.append(this.jdField_a_of_type_JavaLangString);
+      paramActivity.append(this.i);
       paramActivity.append(" name=");
-      paramActivity.append(this.jdField_b_of_type_JavaLangString);
+      paramActivity.append(this.m);
       QLog.d("QComboNPaster", 2, paramActivity.toString());
     }
     return 0;
   }
   
-  public void a(Activity paramActivity, int paramInt)
+  public void b(Activity paramActivity, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.a == null) || (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.a.size() == 0))
+    if ((this.f.m == null) || (this.f.m.size() == 0))
     {
-      paramActivity = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage;
-      paramActivity.a(paramActivity.a());
+      paramActivity = this.f;
+      paramActivity.a(paramActivity.e());
     }
-    paramActivity = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.a(this.jdField_b_of_type_JavaLangString);
+    paramActivity = this.f.b(this.m);
     Object localObject;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("unApply id=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.i);
       ((StringBuilder)localObject).append(" name=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.m);
       ((StringBuilder)localObject).append("url=");
       ((StringBuilder)localObject).append(paramActivity);
       QLog.d("QComboNPaster", 2, ((StringBuilder)localObject).toString());
@@ -275,10 +234,10 @@ public class CaptureComboNormalPaster
     try
     {
       paramActivity = new File(Uri.parse(paramActivity).getPath()).getName();
-      localObject = DoodleLayoutConnector.a().a(paramInt);
+      localObject = DoodleLayoutConnector.a().b(paramInt);
       if (localObject != null)
       {
-        ((DoodleLayout)localObject).a().a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage.jdField_b_of_type_JavaLangString, paramActivity);
+        ((DoodleLayout)localObject).getFaceSelectedListener().a(this.f.b, paramActivity);
         return;
       }
     }
@@ -288,42 +247,78 @@ public class CaptureComboNormalPaster
     }
   }
   
-  public int b()
+  public int c()
   {
     try
     {
-      ((DoodleEmojiManager)QIMManager.a(14)).a(this.jdField_a_of_type_JavaLangString, false);
+      if (!StringUtil.isEmpty(this.f.l)) {
+        this.g = 3;
+      } else if (this.f.n) {
+        this.g = 1;
+      }
+      int i1 = this.g;
+      return i1;
+    }
+    finally {}
+  }
+  
+  public int d()
+  {
+    try
+    {
+      ((DoodleEmojiManager)QIMManager.a(14)).a(this.i, false);
       a();
       Object localObject1 = StoryDispatcher.a();
       CaptureComboNormalPaster.DoodleEmojiDownloadEventReceiver localDoodleEmojiDownloadEventReceiver = new CaptureComboNormalPaster.DoodleEmojiDownloadEventReceiver(this);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterCaptureComboNormalPaster$DoodleEmojiDownloadEventReceiver = localDoodleEmojiDownloadEventReceiver;
+      this.n = localDoodleEmojiDownloadEventReceiver;
       ((Dispatcher)localObject1).registerSubscriber(localDoodleEmojiDownloadEventReceiver);
-      this.jdField_c_of_type_Int = 1;
+      this.g = 1;
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("create mState=");
-        ((StringBuilder)localObject1).append(this.jdField_c_of_type_Int);
+        ((StringBuilder)localObject1).append(this.g);
         ((StringBuilder)localObject1).append(" id=");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.i);
         QLog.d("QComboNPaster", 2, ((StringBuilder)localObject1).toString());
       }
-      int i = this.jdField_c_of_type_Int;
-      return i;
+      int i1 = this.g;
+      return i1;
+    }
+    finally {}
+  }
+  
+  public float e()
+  {
+    try
+    {
+      if (!StringUtil.isEmpty(this.f.l))
+      {
+        c();
+        return 1.0F;
+      }
+      if ((this.f.o != 100.0F) && (this.f.o > 0.0F))
+      {
+        float f1 = this.f.p;
+        int i1 = this.f.o;
+        f1 = f1 * 1.0F / i1;
+        return f1;
+      }
+      return 0.0F;
     }
     finally {}
   }
   
   public boolean isValidate()
   {
-    return this.jdField_c_of_type_Int == 1;
+    return this.g == 1;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("NP@");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("@");
     localStringBuilder.append(hashCode());
     return localStringBuilder.toString();
@@ -331,7 +326,7 @@ public class CaptureComboNormalPaster
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.CaptureComboNormalPaster
  * JD-Core Version:    0.7.0.1
  */

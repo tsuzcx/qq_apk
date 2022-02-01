@@ -7,8 +7,8 @@ import java.util.List;
 public class RecommendLabelListPagerLoader$GetRecommendLabelListEvent
   extends BasePageLoaderEvent
 {
-  public String a;
-  public List<String> a;
+  public List<String> e;
+  public String f;
   
   public RecommendLabelListPagerLoader$GetRecommendLabelListEvent(ErrorMessage paramErrorMessage)
   {
@@ -19,17 +19,17 @@ public class RecommendLabelListPagerLoader$GetRecommendLabelListEvent
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetRecommendLabelListEvent{mKeyword='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mRecommendList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecommendLabelListPagerLoader.GetRecommendLabelListEvent
  * JD-Core Version:    0.7.0.1
  */

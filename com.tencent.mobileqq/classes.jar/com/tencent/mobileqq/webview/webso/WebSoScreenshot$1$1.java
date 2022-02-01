@@ -14,9 +14,9 @@ class WebSoScreenshot$1$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoScreenshot$1.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoScreenshot$1.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoScreenshot$1.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewViewPropertyAnimator.setListener(null);
+    this.b.a.setBackgroundDrawable(this.b.b);
+    this.b.a.setVisibility(8);
+    this.a.setListener(null);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -25,7 +25,7 @@ class WebSoScreenshot$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoScreenshot.1.1
  * JD-Core Version:    0.7.0.1
  */

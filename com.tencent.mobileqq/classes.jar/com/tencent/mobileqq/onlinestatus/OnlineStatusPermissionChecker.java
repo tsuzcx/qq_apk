@@ -113,23 +113,23 @@ public class OnlineStatusPermissionChecker
     ((Bundle)localObject).putInt("param_entrance", 40);
     ((Bundle)localObject).putBoolean("param_add_passed_members_to_result_set", true);
     ((Bundle)localObject).putInt("param_max", 1000);
-    ((Bundle)localObject).putString("param_title", paramActivity.getString(2131698463));
+    ((Bundle)localObject).putString("param_title", paramActivity.getString(2131896402));
     ((Bundle)localObject).putSerializable("online_status_permission_item", paramOnlineStatusPermissionItem);
-    ((Bundle)localObject).putString("param_done_button_wording", paramActivity.getString(2131698464));
-    ((Bundle)localObject).putString("param_done_button_highlight_wording", paramActivity.getString(2131698465));
+    ((Bundle)localObject).putString("param_done_button_wording", paramActivity.getString(2131896403));
+    ((Bundle)localObject).putString("param_done_button_highlight_wording", paramActivity.getString(2131896404));
     paramOnlineStatusPermissionItem = new ArrayList(1);
     ((Bundle)localObject).putStringArrayList("param_uins_hide", paramOnlineStatusPermissionItem);
     ((Bundle)localObject).putBoolean("filer_robot", true);
     paramOnlineStatusPermissionItem.add(paramAppRuntime.getCurrentAccountUin());
     ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).startSelectMemberActivityForResult(paramActivity, (Bundle)localObject, 100);
     if (paramBoolean) {
-      paramActivity.overridePendingTransition(2130771993, 2130771994);
+      paramActivity.overridePendingTransition(2130771996, 2130771997);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker
  * JD-Core Version:    0.7.0.1
  */

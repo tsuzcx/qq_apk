@@ -22,64 +22,39 @@ public class ARTransferDoorLogicManager
   implements ARPhonePoseDetectManager.PhonePoseDetectListener
 {
   public static final String a = "ARTransferDoorLogicManager";
-  public final int a;
-  private long jdField_a_of_type_Long = 0L;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private ARPhonePoseDetectManager jdField_a_of_type_ComTencentMobileqqArARPromotionARPhonePoseDetectManager;
-  private ARTransferDoorLogicManager.RenderProxy jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy;
-  volatile ARTransferDoorVideoInfo.PlayGuideShowInfo jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorVideoInfo$PlayGuideShowInfo = null;
-  private ARTransferPromotionUIContainer jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferPromotionUIContainer;
-  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-  private ARLocalGestureCircleRecogResult jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult = new ARLocalGestureCircleRecogResult();
-  public ARScanEntryView a;
-  public WeakReference<QQARSession> a;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean = false;
-  public final int b;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = true;
-  public final int c;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = true;
-  public final int d;
-  private String d;
-  public final int e = 5;
-  public final int f = 6;
-  public int g = 1;
-  private volatile int h = -1;
-  private int i = 0;
-  private int j = 15;
-  
-  public ARTransferDoorLogicManager()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 2;
-    this.jdField_c_of_type_Int = 3;
-    this.jdField_d_of_type_Int = 4;
-    this.jdField_d_of_type_JavaLangString = "";
-  }
-  
-  public int a()
-  {
-    return this.h;
-  }
-  
-  public void a()
-  {
-    ARTransferPromotionUIContainer localARTransferPromotionUIContainer = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferPromotionUIContainer;
-    if (localARTransferPromotionUIContainer != null) {
-      localARTransferPromotionUIContainer.b(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy = null;
-    f();
-    this.h = -1;
-  }
+  private int A = 0;
+  private int B = 15;
+  private ARLocalGestureCircleRecogResult C = new ARLocalGestureCircleRecogResult();
+  public final int b = 1;
+  public final int c = 2;
+  public final int d = 3;
+  public final int e = 4;
+  public final int f = 5;
+  public final int g = 6;
+  public int h = 1;
+  public ARScanEntryView i;
+  public WeakReference<QQARSession> j;
+  volatile ARTransferDoorVideoInfo.PlayGuideShowInfo k = null;
+  MqqHandler l;
+  private ARTransferDoorLogicManager.RenderProxy m;
+  private AppInterface n;
+  private RelativeLayout o;
+  private ARTransferPromotionUIContainer p;
+  private ARPhonePoseDetectManager q;
+  private volatile int r = -1;
+  private boolean s = false;
+  private String t = "";
+  private String u;
+  private boolean v = true;
+  private String w = "";
+  private ArCloudConfigInfo x = null;
+  private long y = 0L;
+  private boolean z = true;
   
   public void a(int paramInt)
   {
-    this.g = paramInt;
-    String str = jdField_a_of_type_JavaLangString;
+    this.h = paramInt;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setGamePlayMode mode ");
     localStringBuilder.append(paramInt);
@@ -88,39 +63,39 @@ public class ARTransferDoorLogicManager
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "setRecogRes");
-    ARTransferDoorLogicManager.RenderProxy localRenderProxy = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy;
+    QLog.i(a, 1, "setRecogRes");
+    ARTransferDoorLogicManager.RenderProxy localRenderProxy = this.m;
     if (localRenderProxy != null)
     {
       localRenderProxy.a(paramInt1, paramInt2, paramInt3, paramInt4);
       return;
     }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "setRecogRes failed.");
+    QLog.i(a, 1, "setRecogRes failed.");
   }
   
   public void a(AppInterface paramAppInterface, ScanTorchActivity paramScanTorchActivity, RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getUIHandler();
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARPhonePoseDetectManager = new ARPhonePoseDetectManager(paramScanTorchActivity);
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARPhonePoseDetectManager.a(this);
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy != null) && (paramRelativeLayout != null))
+    this.n = paramAppInterface;
+    this.o = paramRelativeLayout;
+    this.l = ThreadManager.getUIHandler();
+    this.q = new ARPhonePoseDetectManager(paramScanTorchActivity);
+    this.q.a(this);
+    if ((this.m != null) && (paramRelativeLayout != null))
     {
-      paramAppInterface = jdField_a_of_type_JavaLangString;
+      paramAppInterface = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("init ");
       localStringBuilder.append(paramRelativeLayout.getChildCount());
       QLog.d(paramAppInterface, 2, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      this.m.a(this.o);
     }
     else
     {
-      paramAppInterface = jdField_a_of_type_JavaLangString;
+      paramAppInterface = a;
       paramRelativeLayout = new StringBuilder();
       paramRelativeLayout.append("init ");
       boolean bool;
-      if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy != null) {
+      if (this.m != null) {
         bool = true;
       } else {
         bool = false;
@@ -128,112 +103,112 @@ public class ARTransferDoorLogicManager
       paramRelativeLayout.append(bool);
       QLog.d(paramAppInterface, 2, paramRelativeLayout.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferPromotionUIContainer = new ARTransferPromotionUIContainer(paramScanTorchActivity);
+    this.p = new ARTransferPromotionUIContainer(paramScanTorchActivity);
   }
   
   public void a(ARTransferDoorLogicManager.RenderProxy paramRenderProxy)
   {
     if (paramRenderProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy = paramRenderProxy;
-      paramRenderProxy = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      this.m = paramRenderProxy;
+      paramRenderProxy = this.o;
       if (paramRenderProxy != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy.a(paramRenderProxy);
+        this.m.a(paramRenderProxy);
       }
-      this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy.b();
-      int k;
-      if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy.c()) {
-        k = 1;
+      this.u = this.m.e();
+      int i1;
+      if (this.m.c()) {
+        i1 = 1;
       } else {
-        k = 2;
+        i1 = 2;
       }
-      this.g = k;
-      this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy.a();
+      this.h = i1;
+      this.w = this.m.d();
     }
   }
   
   public void a(ArCloudConfigInfo paramArCloudConfigInfo)
   {
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("startRenderTransferGame config ");
     localStringBuilder.append(paramArCloudConfigInfo);
     QLog.d((String)localObject, 2, localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo == null) {
-      this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+    if (this.x == null) {
+      this.x = paramArCloudConfigInfo;
     }
     localObject = paramArCloudConfigInfo;
     if (paramArCloudConfigInfo == null)
     {
       localObject = paramArCloudConfigInfo;
-      if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo != null)
+      if (this.x != null)
       {
         localObject = paramArCloudConfigInfo;
         if (a()) {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+          localObject = this.x;
         }
       }
     }
-    paramArCloudConfigInfo = this.jdField_a_of_type_JavaLangRefWeakReference;
+    paramArCloudConfigInfo = this.j;
     if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.get() != null)) {
-      ((QQARSession)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(4096L, (ArCloudConfigInfo)localObject);
+      ((QQARSession)this.j.get()).a(4096L, (ArCloudConfigInfo)localObject);
     }
   }
   
   public void a(ARLocalGestureCircleRecogResult paramARLocalGestureCircleRecogResult, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "processInternalGestureRecogResult");
-    if (!b()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "processInternalGestureRecogResult into Error status");
+    QLog.d(a, 2, "processInternalGestureRecogResult");
+    if (!f()) {
+      QLog.d(a, 2, "processInternalGestureRecogResult into Error status");
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult = paramARLocalGestureCircleRecogResult;
-    int k;
-    if (this.jdField_a_of_type_Long > 0L) {
-      k = 0;
+    this.C = paramARLocalGestureCircleRecogResult;
+    int i1;
+    if (this.y > 0L) {
+      i1 = 0;
     } else {
-      k = 1;
+      i1 = 1;
     }
-    int m;
-    int n;
-    if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_d_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_c_of_type_Int > 0))
+    int i2;
+    int i3;
+    if ((this.C.c.f == 0) && (this.C.c.e > 0))
     {
-      f();
-      if (k != 0)
+      h();
+      if (i1 != 0)
       {
         c(4);
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "processInternalGestureRecogResult start draw circle");
+        QLog.d(a, 2, "processInternalGestureRecogResult start draw circle");
       }
-      paramARLocalGestureCircleRecogResult = ARLocalGestureCircleRecog.a(paramInt1, paramInt2, paramInt3, paramInt4, new PointF(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.b, this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.c));
-      m = (int)(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Float / paramInt2 * paramInt3);
-      n = (int)paramARLocalGestureCircleRecogResult.x;
-      int i1 = (int)paramARLocalGestureCircleRecogResult.y;
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Boolean) {
-        k = 1;
+      paramARLocalGestureCircleRecogResult = ARLocalGestureCircleRecog.a(paramInt1, paramInt2, paramInt3, paramInt4, new PointF(this.C.c.c.b, this.C.c.c.c));
+      i2 = (int)(this.C.c.c.a / paramInt2 * paramInt3);
+      i3 = (int)paramARLocalGestureCircleRecogResult.x;
+      int i4 = (int)paramARLocalGestureCircleRecogResult.y;
+      if (this.C.c.c.d) {
+        i1 = 1;
       } else {
-        k = -1;
+        i1 = -1;
       }
-      a(m, n, i1, k);
+      a(i2, i3, i4, i1);
       b(1);
       ARVideoRecordUIControllerImpl.a().a(6);
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.g = 0;
+      this.C.c.k = 0;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_c_of_type_Int > this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_d_of_type_Int)
+    if (this.C.c.e > this.C.c.f)
     {
       boolean bool;
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARGestureResult.jdField_d_of_type_Int == 1)
+      if (this.C.b.g == 1)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_d_of_type_Int == 0)
+        if (this.C.c.f == 0)
         {
-          k = 1;
-          n = 0;
+          i1 = 1;
+          i3 = 0;
           bool = true;
-          m = k;
-          k = n;
+          i2 = i1;
+          i1 = i3;
         }
         else
         {
-          k = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_d_of_type_Int;
-          m = 1;
+          i1 = this.C.c.f;
+          i2 = 1;
         }
       }
       else {
@@ -241,223 +216,219 @@ public class ARTransferDoorLogicManager
         {
           bool = false;
           break label392;
-          if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_c_of_type_Int >= 1) {
-            k = 1;
+          if (this.C.c.e >= 1) {
+            i1 = 1;
           } else {
-            k = 0;
+            i1 = 0;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_d_of_type_Int < 1) {
+          if (this.C.c.f < 1) {
             break;
           }
-          n = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_d_of_type_Int;
-          m = k;
-          k = n;
+          i3 = this.C.c.f;
+          i2 = i1;
+          i1 = i3;
         }
       }
       label392:
-      if (m != 0)
+      if (i2 != 0)
       {
         Object localObject2;
-        if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARGestureResult.jdField_d_of_type_Int == 1)
+        if (this.C.b.g == 1)
         {
-          paramARLocalGestureCircleRecogResult = new int[this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_c_of_type_Int - k];
-          localObject1 = new int[this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_c_of_type_Int - k];
-          localObject2 = new int[this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_c_of_type_Int - k];
-          paramInt2 = k;
-          while (paramInt2 < this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_c_of_type_Int)
+          paramARLocalGestureCircleRecogResult = new int[this.C.c.e - i1];
+          localObject1 = new int[this.C.c.e - i1];
+          localObject2 = new int[this.C.c.e - i1];
+          paramInt2 = i1;
+          while (paramInt2 < this.C.c.e)
           {
-            PointF localPointF = ARLocalGestureCircleRecog.a(paramInt1, paramInt1, paramInt3, paramInt4, this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[paramInt2]);
-            m = paramInt2 - k;
-            paramARLocalGestureCircleRecogResult[m] = ((int)localPointF.x);
-            localObject1[m] = ((int)localPointF.y);
-            localObject2[m] = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_a_of_type_ArrayOfInt[paramInt2];
+            PointF localPointF = ARLocalGestureCircleRecog.a(paramInt1, paramInt1, paramInt3, paramInt4, this.C.c.d[paramInt2]);
+            i2 = paramInt2 - i1;
+            paramARLocalGestureCircleRecogResult[i2] = ((int)localPointF.x);
+            localObject1[i2] = ((int)localPointF.y);
+            localObject2[i2] = this.C.c.h[paramInt2];
             paramInt2 += 1;
           }
           a(paramARLocalGestureCircleRecogResult, (int[])localObject1, (int[])localObject2, bool);
         }
         else
         {
-          this.i = 0;
-          if (this.jdField_c_of_type_Boolean)
+          this.A = 0;
+          if (this.z)
           {
-            this.jdField_c_of_type_Boolean = false;
+            this.z = false;
             paramARLocalGestureCircleRecogResult = new ARTransferDoorLogicManager.1(this, paramInt1, paramInt2, paramInt3, paramInt4);
-            localObject1 = jdField_a_of_type_JavaLangString;
+            localObject1 = a;
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("DrawCircle. resume. mDrawCirclePuase = ");
-            ((StringBuilder)localObject2).append(this.jdField_c_of_type_Boolean);
+            ((StringBuilder)localObject2).append(this.z);
             ((StringBuilder)localObject2).append(", genIdx = ");
-            ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.g);
+            ((StringBuilder)localObject2).append(this.C.c.k);
             QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-            localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-            if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (!this.jdField_c_of_type_Boolean)) {
-              ((QQARSession)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b(paramARLocalGestureCircleRecogResult, this.j);
+            localObject1 = this.j;
+            if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (!this.z)) {
+              ((QQARSession)this.j.get()).b(paramARLocalGestureCircleRecogResult, this.B);
             }
           }
         }
       }
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_b_of_type_Int != -1) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_c_of_type_Int > 0))
+    if ((this.C.c.a == -1) && (this.C.c.b != -1) && (this.C.c.e > 0))
     {
-      this.jdField_c_of_type_Boolean = true;
-      d();
+      this.z = true;
+      e();
       c(3);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      paramARLocalGestureCircleRecogResult = this.jdField_a_of_type_JavaLangRefWeakReference;
+      this.y = System.currentTimeMillis();
+      paramARLocalGestureCircleRecogResult = this.j;
       if ((paramARLocalGestureCircleRecogResult != null) && (paramARLocalGestureCircleRecogResult.get() != null)) {
-        ((QQARSession)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b(new ARTransferDoorLogicManager.2(this), 1000L);
+        ((QQARSession)this.j.get()).b(new ARTransferDoorLogicManager.2(this), 1000L);
       }
     }
-    paramARLocalGestureCircleRecogResult = jdField_a_of_type_JavaLangString;
+    paramARLocalGestureCircleRecogResult = a;
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("zoomOutWorldCupSparks curent state ");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append(this.C.c.a);
     QLog.i(paramARLocalGestureCircleRecogResult, 1, ((StringBuilder)localObject1).toString());
-    if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.jdField_b_of_type_Int != 0))
+    if ((this.C.c.a == 0) && (this.C.c.b != 0))
     {
       c(5);
       b(2);
       ThreadManager.getSubThreadHandler().post(new ARTransferDoorLogicManager.3(this));
-      paramARLocalGestureCircleRecogResult = this.jdField_a_of_type_JavaLangRefWeakReference;
+      paramARLocalGestureCircleRecogResult = this.j;
       if ((paramARLocalGestureCircleRecogResult != null) && (paramARLocalGestureCircleRecogResult.get() != null)) {
-        ((QQARSession)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b(new ARTransferDoorLogicManager.4(this), 1500L);
+        ((QQARSession)this.j.get()).b(new ARTransferDoorLogicManager.4(this), 1500L);
       }
     }
   }
   
   public void a(QQARSession paramQQARSession)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQARSession);
+    this.j = new WeakReference(paramQQARSession);
   }
   
   public void a(boolean paramBoolean)
   {
-    b();
+    f();
     if (paramBoolean)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy;
-      if ((localObject != null) && (this.g == 1))
+      localObject = this.m;
+      if ((localObject != null) && (this.h == 1))
       {
         if (((ARTransferDoorLogicManager.RenderProxy)localObject).b())
         {
           c(6);
-          this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy.a();
-          this.h = -1;
+          this.m.f();
+          this.r = -1;
         }
         else
         {
-          this.h = 0;
+          this.r = 0;
         }
       }
-      else if ((this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy != null) && (this.g == 2))
+      else if ((this.m != null) && (this.h == 2))
       {
         c(2);
-        this.h = 0;
+        this.r = 0;
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy == null)
+      else if (this.m == null)
       {
         c(2);
-        this.h = 0;
+        this.r = 0;
       }
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onPhonePoseChaned standBy SUCCESS with mode: ");
-      localStringBuilder.append(this.g);
-      localStringBuilder.append("-mCurrentPoseStatus:");
       localStringBuilder.append(this.h);
+      localStringBuilder.append("-mCurrentPoseStatus:");
+      localStringBuilder.append(this.r);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy;
-    if ((localObject != null) && (((ARTransferDoorLogicManager.RenderProxy)localObject).b()) && (this.g == 1)) {
+    Object localObject = this.m;
+    if ((localObject != null) && (((ARTransferDoorLogicManager.RenderProxy)localObject).b()) && (this.h == 1)) {
       c(1);
-    } else if (this.g == 2) {
+    } else if (this.h == 2) {
       c(1);
     }
-    this.h = 1;
-    localObject = jdField_a_of_type_JavaLangString;
+    this.r = 1;
+    localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onPhonePoseChaned standBy FAIL with mode: ");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append("-mCurrentPoseStatus:");
     localStringBuilder.append(this.h);
+    localStringBuilder.append("-mCurrentPoseStatus:");
+    localStringBuilder.append(this.r);
     QLog.d((String)localObject, 2, localStringBuilder.toString());
   }
   
   public void a(boolean paramBoolean, String paramString)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("updateUITipsMessage ");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append(";");
     localStringBuilder.append(paramString);
     QLog.d(str, 2, localStringBuilder.toString());
-    if ((this.jdField_a_of_type_Boolean == paramBoolean) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
+    if ((this.s == paramBoolean) && (this.t.equalsIgnoreCase(paramString))) {
       return;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_Boolean)
+    this.s = paramBoolean;
+    this.t = paramString;
+    if (this.s)
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.6(this, paramString));
+      this.l.post(new ARTransferDoorLogicManager.6(this, paramString));
       return;
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.7(this));
+    this.l.post(new ARTransferDoorLogicManager.7(this));
   }
   
   public void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, boolean paramBoolean)
   {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "insertWorldCupSpark start.");
-    ARTransferDoorLogicManager.RenderProxy localRenderProxy = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy;
+    QLog.i(a, 1, "insertWorldCupSpark start.");
+    ARTransferDoorLogicManager.RenderProxy localRenderProxy = this.m;
     if ((localRenderProxy != null) && (localRenderProxy.a()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy.a(paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3, paramBoolean);
+      this.m.a(paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3, paramBoolean);
       return;
     }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "insertWorldCupSpark failed.");
+    QLog.i(a, 1, "insertWorldCupSpark failed.");
   }
   
   public boolean a()
   {
-    return this.g == 2;
-  }
-  
-  public int b()
-  {
-    ARTransferDoorLogicManager.RenderProxy localRenderProxy = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy;
-    if (localRenderProxy != null) {
-      return localRenderProxy.a();
-    }
-    return 0;
+    return this.h == 2;
   }
   
   public void b()
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "doOnResume");
-    if (this.g == 1) {}
+    ARTransferPromotionUIContainer localARTransferPromotionUIContainer = this.p;
+    if (localARTransferPromotionUIContainer != null) {
+      localARTransferPromotionUIContainer.b(this.o);
+    }
+    this.m = null;
+    h();
+    this.r = -1;
   }
   
   public void b(int paramInt)
   {
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("switchGameStatus ");
     localStringBuilder.append(paramInt);
     QLog.d((String)localObject, 2, localStringBuilder.toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy;
+    localObject = this.m;
     if (localObject != null)
     {
       ((ARTransferDoorLogicManager.RenderProxy)localObject).a(paramInt);
       return;
     }
-    localObject = jdField_a_of_type_JavaLangString;
+    localObject = a;
     boolean bool = true;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("switchGameStatus ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy);
+    localStringBuilder.append(this.m);
     if (localStringBuilder.toString() == null) {
       bool = false;
     }
@@ -466,52 +437,31 @@ public class ARTransferDoorLogicManager
   
   public void b(boolean paramBoolean)
   {
-    MqqHandler localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+    MqqHandler localMqqHandler = this.l;
     if (localMqqHandler != null) {
       localMqqHandler.post(new ARTransferDoorLogicManager.5(this, paramBoolean));
     }
   }
   
-  public boolean b()
-  {
-    ARTransferDoorLogicManager.RenderProxy localRenderProxy = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy;
-    boolean bool = true;
-    if (localRenderProxy == null) {
-      return true;
-    }
-    int k = b();
-    if (k != 0)
-    {
-      if (k == 1) {
-        return true;
-      }
-      bool = false;
-    }
-    return bool;
-  }
-  
   public void c()
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "notifyEnterIntoTransferDoorStatus");
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((QQARSession)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d(1);
-    }
+    QLog.d(a, 2, "doOnResume");
+    if (this.h == 1) {}
   }
   
   public void c(int paramInt)
   {
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("OnARTransferStatusChanged status changeTo ");
     localStringBuilder.append(paramInt);
     QLog.d((String)localObject, 2, localStringBuilder.toString());
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+    if (this.l != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView;
+      localObject = this.i;
       if (localObject != null)
       {
-        if ((localObject != null) && (!((ARScanEntryView)localObject).j_())) {
+        if ((localObject != null) && (!((ARScanEntryView)localObject).j())) {
           return;
         }
         switch (paramInt)
@@ -519,108 +469,149 @@ public class ARTransferDoorLogicManager
         default: 
           return;
         case 6: 
-          this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.13(this));
+          this.l.post(new ARTransferDoorLogicManager.13(this));
           return;
         case 5: 
-          this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.12(this));
+          this.l.post(new ARTransferDoorLogicManager.12(this));
           return;
         case 4: 
-          this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.11(this));
+          this.l.post(new ARTransferDoorLogicManager.11(this));
           return;
         case 3: 
-          this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.10(this));
+          this.l.post(new ARTransferDoorLogicManager.10(this));
           return;
         case 2: 
-          this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.9(this));
+          this.l.post(new ARTransferDoorLogicManager.9(this));
           return;
         }
-        this.jdField_a_of_type_MqqOsMqqHandler.post(new ARTransferDoorLogicManager.8(this));
+        this.l.post(new ARTransferDoorLogicManager.8(this));
       }
     }
   }
   
   public void d()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = true;
-    this.i = 0;
-    this.j = 15;
+    QLog.d(a, 2, "notifyEnterIntoTransferDoorStatus");
+    WeakReference localWeakReference = this.j;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((QQARSession)this.j.get()).d(1);
+    }
   }
   
   public void e()
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "startPhonePoseDetect");
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARPhonePoseDetectManager.a();
-    this.h = -1;
+    this.y = 0L;
+    this.z = true;
+    this.A = 0;
+    this.B = 15;
   }
   
-  public void f()
+  public boolean f()
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "stopPhonePoseDetect");
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARPhonePoseDetectManager.b();
+    ARTransferDoorLogicManager.RenderProxy localRenderProxy = this.m;
+    boolean bool = true;
+    if (localRenderProxy == null) {
+      return true;
+    }
+    int i1 = j();
+    if (i1 != 0)
+    {
+      if (i1 == 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public void g()
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "doOnPause");
-    if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy == null)
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "doOnPause but do nothing here");
-      return;
-    }
-    ARTransferPromotionUIContainer localARTransferPromotionUIContainer = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferPromotionUIContainer;
-    if (localARTransferPromotionUIContainer != null) {
-      localARTransferPromotionUIContainer.b(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    c(6);
-    f();
-    this.h = -1;
+    QLog.d(a, 2, "startPhonePoseDetect");
+    this.q.a();
+    this.r = -1;
   }
   
   public void h()
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "ARWorldGC ARWorldCupGameLogicManager uninit");
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy = null;
-    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    QLog.d(a, 2, "stopPhonePoseDetect");
+    this.q.b();
+  }
+  
+  public int i()
+  {
+    return this.r;
+  }
+  
+  public int j()
+  {
+    ARTransferDoorLogicManager.RenderProxy localRenderProxy = this.m;
+    if (localRenderProxy != null) {
+      return localRenderProxy.g();
+    }
+    return 0;
+  }
+  
+  public void k()
+  {
+    QLog.d(a, 2, "doOnPause");
+    if (this.m == null)
+    {
+      QLog.d(a, 2, "doOnPause but do nothing here");
+      return;
+    }
+    ARTransferPromotionUIContainer localARTransferPromotionUIContainer = this.p;
+    if (localARTransferPromotionUIContainer != null) {
+      localARTransferPromotionUIContainer.b(this.o);
+    }
+    this.o.setVisibility(8);
+    c(6);
+    h();
+    this.r = -1;
+  }
+  
+  public void l()
+  {
+    QLog.d(a, 2, "ARWorldGC ARWorldCupGameLogicManager uninit");
+    this.m = null;
+    Object localObject = this.o;
     if (localObject != null)
     {
       ((RelativeLayout)localObject).setOnTouchListener(null);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+      this.o = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView = null;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorVideoInfo$PlayGuideShowInfo = null;
-    localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+    this.i = null;
+    this.n = null;
+    this.k = null;
+    localObject = this.l;
     if (localObject != null) {
       ((MqqHandler)localObject).removeCallbacksAndMessages(null);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferPromotionUIContainer = null;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARPhonePoseDetectManager;
+    this.p = null;
+    localObject = this.q;
     if (localObject != null)
     {
       ((ARPhonePoseDetectManager)localObject).b();
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionARPhonePoseDetectManager = null;
+      this.q = null;
     }
-    this.h = -1;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
+    this.r = -1;
+    this.x = null;
   }
   
-  public void i()
+  public void m()
   {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "zoomOutWorldCupSparks .");
-    ARTransferDoorLogicManager.RenderProxy localRenderProxy = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager$RenderProxy;
+    QLog.i(a, 1, "zoomOutWorldCupSparks .");
+    ARTransferDoorLogicManager.RenderProxy localRenderProxy = this.m;
     if (localRenderProxy != null)
     {
-      localRenderProxy.b();
+      localRenderProxy.h();
       return;
     }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "zoomOutWorldCupSparks failed.");
+    QLog.i(a, 1, "zoomOutWorldCupSparks failed.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager
  * JD-Core Version:    0.7.0.1
  */

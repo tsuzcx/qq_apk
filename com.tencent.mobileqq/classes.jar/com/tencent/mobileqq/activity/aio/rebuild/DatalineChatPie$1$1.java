@@ -10,19 +10,19 @@ class DatalineChatPie$1$1
   
   public void a()
   {
-    DatalineChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDatalineChatPie$1.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel);
+    DatalineChatPie.a(this.c.a, this.a);
   }
   
   public void b()
   {
-    DatalineChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDatalineChatPie$1.a, this.b);
+    DatalineChatPie.a(this.c.a, this.b);
   }
   
   public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DatalineChatPie.1.1
  * JD-Core Version:    0.7.0.1
  */

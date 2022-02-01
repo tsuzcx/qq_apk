@@ -11,15 +11,15 @@ class ArkAppCGI$2
   {
     synchronized (ArkAppCGI.a(this.this$0))
     {
-      ArkAppCGI.a(this.this$0).remove(this.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppCGI$QueryTask);
-      this.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppCGI$QueryTask.a.a(this.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppCGI$QueryTask, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte);
+      ArkAppCGI.a(this.this$0).remove(this.a);
+      this.a.f.a(this.a, this.b, this.c);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkAppCGI.2
  * JD-Core Version:    0.7.0.1
  */

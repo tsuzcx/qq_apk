@@ -13,12 +13,12 @@ public final class ReadInJoyGlobalReporterImpl
 {
   public boolean needReport()
   {
-    return ReadInJoyGlobalReporter.a();
+    return ReadInJoyGlobalReporter.f();
   }
   
   public void report()
   {
-    ReadInJoyGlobalReporter localReadInJoyGlobalReporter = ReadInJoyGlobalReporter.a();
+    ReadInJoyGlobalReporter localReadInJoyGlobalReporter = ReadInJoyGlobalReporter.e();
     if (localReadInJoyGlobalReporter != null) {
       localReadInJoyGlobalReporter.a();
     }
@@ -26,7 +26,7 @@ public final class ReadInJoyGlobalReporterImpl
   
   public void rsetEnterTime(@Nullable AppRuntime paramAppRuntime, long paramLong)
   {
-    ReadInJoyGlobalReporter localReadInJoyGlobalReporter = ReadInJoyGlobalReporter.a();
+    ReadInJoyGlobalReporter localReadInJoyGlobalReporter = ReadInJoyGlobalReporter.e();
     if (localReadInJoyGlobalReporter != null) {
       localReadInJoyGlobalReporter.a((QQAppInterface)paramAppRuntime, paramLong);
     }
@@ -34,7 +34,7 @@ public final class ReadInJoyGlobalReporterImpl
   
   public void setAPPStatus(int paramInt)
   {
-    ReadInJoyGlobalReporter localReadInJoyGlobalReporter = ReadInJoyGlobalReporter.a();
+    ReadInJoyGlobalReporter localReadInJoyGlobalReporter = ReadInJoyGlobalReporter.e();
     if (localReadInJoyGlobalReporter != null) {
       localReadInJoyGlobalReporter.b(paramInt);
     }
@@ -42,15 +42,15 @@ public final class ReadInJoyGlobalReporterImpl
   
   public void stopReport()
   {
-    ReadInJoyGlobalReporter localReadInJoyGlobalReporter = ReadInJoyGlobalReporter.a();
+    ReadInJoyGlobalReporter localReadInJoyGlobalReporter = ReadInJoyGlobalReporter.e();
     if (localReadInJoyGlobalReporter != null) {
-      localReadInJoyGlobalReporter.e();
+      localReadInJoyGlobalReporter.j();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.api.impl.ReadInJoyGlobalReporterImpl
  * JD-Core Version:    0.7.0.1
  */

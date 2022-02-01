@@ -25,11 +25,6 @@ public class TroopPushHandler
     TroopPushHandlerProcessorConfig.a();
   }
   
-  protected String a()
-  {
-    return "TroopPushHandler";
-  }
-  
   public void a(String paramString, int paramInt)
   {
     ITroopInfoService localITroopInfoService = (ITroopInfoService)this.appRuntime.getRuntimeService(ITroopInfoService.class, "");
@@ -38,7 +33,7 @@ public class TroopPushHandler
     {
       localTroopInfo.dwGroupFlagExt3 = paramInt;
       localITroopInfoService.saveTroopInfo(localTroopInfo);
-      notifyUI(TroopPushObserver.c, true, new Object[] { String.valueOf(paramString), Long.valueOf(localTroopInfo.dwGroupFlagExt3) });
+      notifyUI(TroopPushObserver.d, true, new Object[] { String.valueOf(paramString), Long.valueOf(localTroopInfo.dwGroupFlagExt3) });
     }
   }
   
@@ -80,7 +75,7 @@ public class TroopPushHandler
         localITroopInfoService.saveTroopInfo(localTroopInfo);
       }
       TroopPushHandlerProcessorConfig.a(this.appRuntime, paramString, paramLong, paramInt1);
-      notifyUI(TroopPushObserver.a, true, new Object[] { paramString, Integer.valueOf(paramInt2) });
+      notifyUI(TroopPushObserver.b, true, new Object[] { paramString, Integer.valueOf(paramInt2) });
     }
     if (QLog.isColorLevel()) {
       QLog.d("TroopPushHandler", 2, String.format("handlePassiveExit push joinTime: %s, msgTime: %s", new Object[] { Long.valueOf(l), Long.valueOf(paramLong) }));
@@ -106,7 +101,7 @@ public class TroopPushHandler
     int i = localTroopInfo.groupFlagExt4;
     localTroopInfo.groupFlagExt4 = paramInt;
     ((ITroopInfoService)localObject).saveTroopInfo(localTroopInfo);
-    notifyUI(TroopPushObserver.d, true, new Object[] { paramString, Integer.valueOf(i) });
+    notifyUI(TroopPushObserver.e, true, new Object[] { paramString, Integer.valueOf(i) });
     TroopPushHandlerProcessorConfig.a(this.appRuntime, paramString, paramInt, i);
   }
   
@@ -122,8 +117,13 @@ public class TroopPushHandler
       long l = localTroopInfo.dwGroupClassExt;
       localTroopInfo.dwGroupClassExt = paramInt;
       localITroopInfoService.saveTroopInfo(localTroopInfo);
-      notifyUI(TroopPushObserver.b, true, new Object[] { paramString, Long.valueOf(l) });
+      notifyUI(TroopPushObserver.c, true, new Object[] { paramString, Long.valueOf(l) });
     }
+  }
+  
+  protected String dv_()
+  {
+    return "TroopPushHandler";
   }
   
   public Set<String> getCommandList()
@@ -143,7 +143,7 @@ public class TroopPushHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopPushHandler
  * JD-Core Version:    0.7.0.1
  */

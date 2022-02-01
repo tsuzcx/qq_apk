@@ -17,10 +17,10 @@ class QQMapActivity$7
     if (this.a.mActionSheet == null)
     {
       QQMapActivity localQQMapActivity = this.a;
-      localQQMapActivity.mActionSheet = ((ActionSheet)ActionSheetHelper.a(localQQMapActivity, null));
-      this.a.mActionSheet.addButton(2131698104);
-      this.a.mActionSheet.addButton(2131692184);
-      this.a.mActionSheet.addCancelButton(2131690728);
+      localQQMapActivity.mActionSheet = ((ActionSheet)ActionSheetHelper.b(localQQMapActivity, null));
+      this.a.mActionSheet.addButton(2131896005);
+      this.a.mActionSheet.addButton(2131889171);
+      this.a.mActionSheet.addCancelButton(2131887648);
       this.a.mActionSheet.setOnButtonClickListener(new QQMapActivity.7.1(this));
     }
     if (!this.a.mActionSheet.isShowing()) {
@@ -32,7 +32,7 @@ class QQMapActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.7
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,11 @@ package com.tencent.mobileqq.kandian.biz.ugc;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.ugc.api.IRIJDeliverUGCUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.ugc.api.impl.RIJDeliverUGCUtils;
 import com.tencent.mobileqq.kandian.repo.handler.RIJPublishTrendsHandler;
 import com.tencent.mobileqq.kandian.repo.ugc.DeliverData;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.FileMsg;
 import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +17,7 @@ import org.json.JSONObject;
 class ReadInJoyDeliverUGCActivity$UGCTransProcessorHandler
   extends TransProcessorHandler
 {
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
   
   public ReadInJoyDeliverUGCActivity$UGCTransProcessorHandler(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity, Looper paramLooper)
   {
@@ -43,11 +42,11 @@ class ReadInJoyDeliverUGCActivity$UGCTransProcessorHandler
   
   private void a(FileMsg paramFileMsg, int paramInt)
   {
-    if ((paramInt < ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity)) && (!paramFileMsg.fileUrl.equals(ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).a()[paramInt])) && (!paramFileMsg.fileMd5.equals(ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).b()[paramInt])))
+    if ((paramInt < ReadInJoyDeliverUGCActivity.d(this.b)) && (!paramFileMsg.fileUrl.equals(ReadInJoyDeliverUGCActivity.y(this.b).d()[paramInt])) && (!paramFileMsg.fileMd5.equals(ReadInJoyDeliverUGCActivity.y(this.b).e()[paramInt])))
     {
-      List localList = ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).a();
+      List localList = ReadInJoyDeliverUGCActivity.b(this.b).b();
       Object localObject = localList.get(paramInt);
-      localObject = ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity, localObject);
+      localObject = ReadInJoyDeliverUGCActivity.b(this.b, localObject);
       int i = paramInt;
       while (i < localList.size())
       {
@@ -61,14 +60,14 @@ class ReadInJoyDeliverUGCActivity$UGCTransProcessorHandler
   
   private boolean a(FileMsg paramFileMsg, int paramInt1, List paramList, String paramString, int paramInt2)
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).equals(paramList.get(paramInt2))) {
+    if (ReadInJoyDeliverUGCActivity.a(this.b).equals(paramList.get(paramInt2))) {
       return true;
     }
     if (paramInt2 == paramInt1)
     {
-      ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).a(paramInt2, paramFileMsg.fileUrl);
-      ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).b(paramInt2, paramFileMsg.fileMd5);
-      ReadInJoyDeliverUGCActivity.d(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity);
+      ReadInJoyDeliverUGCActivity.y(this.b).a(paramInt2, paramFileMsg.fileUrl);
+      ReadInJoyDeliverUGCActivity.y(this.b).b(paramInt2, paramFileMsg.fileMd5);
+      ReadInJoyDeliverUGCActivity.D(this.b);
       if (QLog.isColorLevel())
       {
         paramFileMsg = new StringBuilder();
@@ -77,11 +76,11 @@ class ReadInJoyDeliverUGCActivity$UGCTransProcessorHandler
         QLog.d("ReadInJoyDeliverUGCActivity", 2, paramFileMsg.toString());
       }
     }
-    else if (paramString.equals(ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity, paramList.get(paramInt2))))
+    else if (paramString.equals(ReadInJoyDeliverUGCActivity.b(this.b, paramList.get(paramInt2))))
     {
-      ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).a(paramInt2, paramFileMsg.fileUrl);
-      ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).b(paramInt2, paramFileMsg.fileMd5);
-      ReadInJoyDeliverUGCActivity.d(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity);
+      ReadInJoyDeliverUGCActivity.y(this.b).a(paramInt2, paramFileMsg.fileUrl);
+      ReadInJoyDeliverUGCActivity.y(this.b).b(paramInt2, paramFileMsg.fileMd5);
+      ReadInJoyDeliverUGCActivity.D(this.b);
       if (QLog.isColorLevel())
       {
         paramFileMsg = new StringBuilder();
@@ -95,36 +94,36 @@ class ReadInJoyDeliverUGCActivity$UGCTransProcessorHandler
   
   private void b(FileMsg paramFileMsg)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       int i = (int)paramFileMsg.uniseq;
-      ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).f(i, NetConnInfoCenter.getServerTimeMillis());
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity.app, "", "0X800817F", "0X800817F", 0, 0, String.valueOf(ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).d()[i]), String.valueOf(ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).c()[i]), String.valueOf(ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).b()[i] - ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).a()[i]), String.valueOf(ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).e()[i] - ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).f()[i]));
+      ReadInJoyDeliverUGCActivity.C(this.b).f(i, NetConnInfoCenter.getServerTimeMillis());
+      PublicAccountReportUtils.a(this.b.app, "", "0X800817F", "0X800817F", 0, 0, String.valueOf(ReadInJoyDeliverUGCActivity.C(this.b).d()[i]), String.valueOf(ReadInJoyDeliverUGCActivity.C(this.b).c()[i]), String.valueOf(ReadInJoyDeliverUGCActivity.C(this.b).b()[i] - ReadInJoyDeliverUGCActivity.C(this.b).a()[i]), String.valueOf(ReadInJoyDeliverUGCActivity.C(this.b).e()[i] - ReadInJoyDeliverUGCActivity.C(this.b).f()[i]));
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyDeliverUGCActivity", 2, "mTransProcessorHandler send error or cancel!");
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity.l();
-      paramFileMsg = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity;
-      paramFileMsg.a(1, paramFileMsg.getString(2131717876));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity.i();
-      ReadInJoyDeliverUGCActivity.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity, 1002);
+      this.b.p();
+      paramFileMsg = this.b;
+      paramFileMsg.a(1, paramFileMsg.getString(2131915349));
+      this.b.m();
+      ReadInJoyDeliverUGCActivity.c(this.b, 1002);
     }
   }
   
   private void c(FileMsg paramFileMsg)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       int i = (int)paramFileMsg.uniseq;
-      ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).f(i, NetConnInfoCenter.getServerTimeMillis());
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity.app, "", "0X800817F", "0X800817F", 0, 0, String.valueOf(ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).d()[i]), String.valueOf(ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).c()[i]), String.valueOf(ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).b()[i] - ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).a()[i]), String.valueOf(ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).e()[i] - ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).f()[i]));
+      ReadInJoyDeliverUGCActivity.C(this.b).f(i, NetConnInfoCenter.getServerTimeMillis());
+      PublicAccountReportUtils.a(this.b.app, "", "0X800817F", "0X800817F", 0, 0, String.valueOf(ReadInJoyDeliverUGCActivity.C(this.b).d()[i]), String.valueOf(ReadInJoyDeliverUGCActivity.C(this.b).c()[i]), String.valueOf(ReadInJoyDeliverUGCActivity.C(this.b).b()[i] - ReadInJoyDeliverUGCActivity.C(this.b).a()[i]), String.valueOf(ReadInJoyDeliverUGCActivity.C(this.b).e()[i] - ReadInJoyDeliverUGCActivity.C(this.b).f()[i]));
       QLog.d("ReadInJoyDeliverUGCActivity", 2, "mTransProcessorHandler send finished!");
       d(paramFileMsg);
       a(paramFileMsg, i);
-      if ((ReadInJoyDeliverUGCActivity.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity) == ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity)) && (!ReadInJoyDeliverUGCActivity.f(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity)))
+      if ((ReadInJoyDeliverUGCActivity.p(this.b) == ReadInJoyDeliverUGCActivity.d(this.b)) && (!ReadInJoyDeliverUGCActivity.B(this.b)))
       {
-        ReadInJoyDeliverUGCActivity.e(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity, true);
-        new RIJPublishTrendsHandler().a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity.c(), ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity), ReadInJoyDeliverUGCActivity.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity), ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity), ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity), this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity.jdField_a_of_type_ComTencentMobileqqTribeDataTroopBarPOI, this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity.jdField_a_of_type_ComTencentBizProtoUtils$TroopProtocolObserver);
+        ReadInJoyDeliverUGCActivity.e(this.b, true);
+        new RIJPublishTrendsHandler().a(this.b.k(), ReadInJoyDeliverUGCActivity.n(this.b), ReadInJoyDeliverUGCActivity.p(this.b), ReadInJoyDeliverUGCActivity.y(this.b), ReadInJoyDeliverUGCActivity.e(this.b), this.b.T, this.b.b);
         QLog.d("ReadInJoyDeliverUGCActivity", 2, "allFinishUp");
       }
     }
@@ -134,23 +133,23 @@ class ReadInJoyDeliverUGCActivity$UGCTransProcessorHandler
   {
     try
     {
-      ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).put("picCount", 1);
+      ReadInJoyDeliverUGCActivity.s(this.b).put("picCount", 1);
       JSONArray localJSONArray = new JSONArray();
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("url", paramFileMsg.fileUrl);
       localJSONObject.put("md5", paramFileMsg.fileMd5);
       localJSONArray.put(localJSONObject);
-      ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).put("picList", localJSONArray);
+      ReadInJoyDeliverUGCActivity.s(this.b).put("picList", localJSONArray);
       paramFileMsg = new StringBuilder();
       paramFileMsg.append("mTransProcessorHandler resultJson=");
-      paramFileMsg.append(((IRIJDeliverUGCUtils)QRoute.api(IRIJDeliverUGCUtils.class)).replaceUrlInLog(ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity).toString()));
+      paramFileMsg.append(RIJDeliverUGCUtils.INSTANCE.replaceUrlInLog(ReadInJoyDeliverUGCActivity.s(this.b).toString()));
       QLog.d("ReadInJoyDeliverUGCActivity", 2, paramFileMsg.toString());
       return;
     }
     catch (Exception paramFileMsg)
     {
-      label131:
-      break label131;
+      label123:
+      break label123;
     }
     QLog.d("ReadInJoyDeliverUGCActivity", 2, "mTransProcessorHandler resultJson=log error");
   }
@@ -158,7 +157,7 @@ class ReadInJoyDeliverUGCActivity$UGCTransProcessorHandler
   public void handleMessage(Message paramMessage)
   {
     FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if (ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDeliverUGCActivity, localFileMsg)) {
+    if (ReadInJoyDeliverUGCActivity.a(this.b, localFileMsg)) {
       return;
     }
     switch (paramMessage.what)
@@ -177,7 +176,7 @@ class ReadInJoyDeliverUGCActivity$UGCTransProcessorHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverUGCActivity.UGCTransProcessorHandler
  * JD-Core Version:    0.7.0.1
  */

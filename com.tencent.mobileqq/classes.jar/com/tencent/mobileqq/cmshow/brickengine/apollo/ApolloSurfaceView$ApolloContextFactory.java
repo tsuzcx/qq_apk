@@ -61,9 +61,9 @@ class ApolloSurfaceView$ApolloContextFactory
         QLog.d("[cmshow]ApolloSurfaceView", 2, "destroyContext, closeGame)");
       }
     }
-    else if ((this.a.mApolloWorker != null) && (this.a.mApolloWorker.a != null))
+    else if ((this.a.mApolloWorker != null) && (this.a.mApolloWorker.b != null))
     {
-      this.a.mApolloWorker.a.execScriptString("if(\"undefined\" != typeof clearSprite && clearSprite){clearSprite();}");
+      this.a.mApolloWorker.b.execScriptString("if(\"undefined\" != typeof clearSprite && clearSprite){clearSprite();}");
     }
     this.a.mIsDestroy.set(true);
     if (ApolloSurfaceView.access$400(this.a) != null) {
@@ -76,7 +76,7 @@ class ApolloSurfaceView$ApolloContextFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloSurfaceView.ApolloContextFactory
  * JD-Core Version:    0.7.0.1
  */

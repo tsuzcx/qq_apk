@@ -301,12 +301,12 @@ public class BaseConstants
   public static final boolean isSwitchToTestEnv = false;
   public static boolean isUseDebugSso = false;
   public static long reSendIntrevTime = 5000L;
-  public static final String revision = "01328a87";
+  public static final String revision = "846a9bfd";
   public static final String testServerAddress = "socket://183.3.233.202:14000";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.BaseConstants
  * JD-Core Version:    0.7.0.1
  */

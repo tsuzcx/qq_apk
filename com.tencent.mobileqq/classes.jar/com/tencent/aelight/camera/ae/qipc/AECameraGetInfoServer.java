@@ -27,7 +27,7 @@ public class AECameraGetInfoServer
     return AECameraGetInfoServer.Holder.a;
   }
   
-  private QQAppInterface a()
+  private QQAppInterface b()
   {
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
       return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
@@ -37,7 +37,7 @@ public class AECameraGetInfoServer
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (a() == null) {
+    if (b() == null) {
       return null;
     }
     if ("ACTION_GET_ENV_INFO".equals(paramString))
@@ -86,7 +86,7 @@ public class AECameraGetInfoServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.qipc.AECameraGetInfoServer
  * JD-Core Version:    0.7.0.1
  */

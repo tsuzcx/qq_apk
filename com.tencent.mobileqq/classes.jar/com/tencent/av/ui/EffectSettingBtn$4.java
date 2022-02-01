@@ -15,9 +15,9 @@ class EffectSettingBtn$4
   
   public boolean onPreDraw()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
-    this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.a.a().a().al = true;
-    UITools.a(this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.a);
+    this.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    this.b.b.b().k().bJ = true;
+    UITools.b(this.b.b);
     QLog.d("qav_face_guide", 1, "onPreDraw");
     return false;
   }

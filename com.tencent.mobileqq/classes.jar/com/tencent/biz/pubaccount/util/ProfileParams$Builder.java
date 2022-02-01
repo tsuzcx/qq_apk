@@ -6,19 +6,19 @@ public final class ProfileParams$Builder
   
   public Builder a(int paramInt)
   {
-    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.b = paramInt;
     return this;
   }
   
   public Builder a(ProfileParams.CurLoginUsr paramCurLoginUsr)
   {
-    this.a.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams$CurLoginUsr = paramCurLoginUsr;
+    this.a.f = paramCurLoginUsr;
     return this;
   }
   
   public Builder a(String paramString)
   {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
+    this.a.a = paramString;
     return this;
   }
   
@@ -29,25 +29,25 @@ public final class ProfileParams$Builder
   
   public Builder b(String paramString)
   {
-    this.a.b = paramString;
+    this.a.c = paramString;
     return this;
   }
   
   public Builder c(String paramString)
   {
-    this.a.c = paramString;
+    this.a.d = paramString;
     return this;
   }
   
   public Builder d(String paramString)
   {
-    this.a.d = paramString;
+    this.a.e = paramString;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ProfileParams.Builder
  * JD-Core Version:    0.7.0.1
  */

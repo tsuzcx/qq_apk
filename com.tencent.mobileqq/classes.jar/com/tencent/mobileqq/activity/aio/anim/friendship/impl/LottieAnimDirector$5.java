@@ -18,20 +18,20 @@ class LottieAnimDirector$5
   {
     Object localObject1;
     Object localObject2;
-    if (LottieAnimDirector.a(this.this$0) != null)
+    if (LottieAnimDirector.e(this.this$0) != null)
     {
-      localObject1 = LottieAnimDirector.a(this.this$0);
+      localObject1 = LottieAnimDirector.e(this.this$0);
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(LottieAnimDirector.a(this.this$0));
+      ((StringBuilder)localObject2).append(LottieAnimDirector.d(this.this$0));
       ((StringBuilder)localObject2).append("icon_close.png");
       ((LottieAnimController)localObject1).a(((StringBuilder)localObject2).toString());
     }
-    if (LottieAnimDirector.a(this.this$0) != null)
+    if (LottieAnimDirector.f(this.this$0) != null)
     {
-      if (LottieAnimDirector.a(this.this$0).isAnimating()) {
+      if (LottieAnimDirector.f(this.this$0).isAnimating()) {
         return;
       }
-      localObject1 = this.this$0.a();
+      localObject1 = this.this$0.h();
       if (localObject1 != null)
       {
         if (((FriendShipLayout)localObject1).getChildCount() > 0) {
@@ -39,32 +39,32 @@ class LottieAnimDirector$5
         }
         this.this$0.a(0);
         localObject2 = this.this$0;
-        LottieAnimDirector.a((LottieAnimDirector)localObject2, new ImageView(((LottieAnimDirector)localObject2).a()));
-        LottieAnimDirector.a(this.this$0).setScaleType(ImageView.ScaleType.CENTER_CROP);
+        LottieAnimDirector.a((LottieAnimDirector)localObject2, new ImageView(((LottieAnimDirector)localObject2).g()));
+        LottieAnimDirector.g(this.this$0).setScaleType(ImageView.ScaleType.CENTER_CROP);
         localObject2 = new FrameLayout.LayoutParams(-1, -1);
         ((FrameLayout.LayoutParams)localObject2).gravity = 81;
-        View localView = new View(this.this$0.a());
+        View localView = new View(this.this$0.g());
         localView.setBackgroundColor(-16777216);
         ((FriendShipLayout)localObject1).addView(localView, (ViewGroup.LayoutParams)localObject2);
-        ((FriendShipLayout)localObject1).addView(LottieAnimDirector.a(this.this$0), (ViewGroup.LayoutParams)localObject2);
-        LottieAnimDirector.a(this.this$0).setImageDrawable(LottieAnimDirector.a(this.this$0));
-        LottieAnimDirector.a(this.this$0).a(localView);
-        LottieAnimDirector.a(this.this$0).a((FriendShipLayout)localObject1);
+        ((FriendShipLayout)localObject1).addView(LottieAnimDirector.g(this.this$0), (ViewGroup.LayoutParams)localObject2);
+        LottieAnimDirector.g(this.this$0).setImageDrawable(LottieAnimDirector.f(this.this$0));
+        LottieAnimDirector.e(this.this$0).a(localView);
+        LottieAnimDirector.e(this.this$0).a((FriendShipLayout)localObject1);
       }
-      if (LottieAnimDirector.a(this.this$0).isAnimating()) {
-        LottieAnimDirector.a(this.this$0).cancelAnimation();
+      if (LottieAnimDirector.f(this.this$0).isAnimating()) {
+        LottieAnimDirector.f(this.this$0).cancelAnimation();
       }
-      if (LottieAnimDirector.a(this.this$0).a()) {
-        LottieAnimDirector.a(this.this$0).b();
+      if (LottieAnimDirector.e(this.this$0).b()) {
+        LottieAnimDirector.e(this.this$0).c();
       }
-      LottieAnimDirector.a(this.this$0).playAnimation();
-      LottieAnimDirector.a(this.this$0).a();
+      LottieAnimDirector.f(this.this$0).playAnimation();
+      LottieAnimDirector.e(this.this$0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.LottieAnimDirector.5
  * JD-Core Version:    0.7.0.1
  */

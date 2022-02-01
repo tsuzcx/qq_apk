@@ -7,21 +7,21 @@ import android.widget.TextView;
 public class ColorNickColorPanelAdapter$TitleViewHolder
   extends RecyclerView.ViewHolder
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView a;
+  int b;
   
   public ColorNickColorPanelAdapter$TitleViewHolder(View paramView, int paramInt)
   {
     super(paramView);
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364838));
+      this.a = ((TextView)paramView.findViewById(2131430963));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickColorPanelAdapter.TitleViewHolder
  * JD-Core Version:    0.7.0.1
  */

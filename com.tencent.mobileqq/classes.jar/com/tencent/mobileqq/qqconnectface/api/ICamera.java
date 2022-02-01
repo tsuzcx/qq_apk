@@ -11,11 +11,7 @@ import com.tencent.mobileqq.richmedia.capture.view.SizeListener;
 
 public abstract interface ICamera
 {
-  public abstract int a();
-  
   public abstract Bitmap a(Bitmap paramBitmap);
-  
-  public abstract Camera a();
   
   public abstract void a();
   
@@ -31,13 +27,17 @@ public abstract interface ICamera
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract boolean a();
-  
   public abstract void b();
+  
+  public abstract boolean c();
+  
+  public abstract Camera d();
+  
+  public abstract int e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqconnectface.api.ICamera
  * JD-Core Version:    0.7.0.1
  */

@@ -16,31 +16,31 @@ class RIJVideoHandleClick$11
     AbsBaseArticleInfo localAbsBaseArticleInfo1;
     String str;
     AbsBaseArticleInfo localAbsBaseArticleInfo2;
-    if (paramView.getId() == 2131369963)
+    if (paramView.getId() == 2131437113)
     {
-      localAbsBaseArticleInfo1 = ((VideoFeedsTwoItemViewHolder)paramView.getTag()).a;
-      str = ((VideoFeedsTwoItemViewHolder)paramView.getTag()).b.innerUniqueID;
+      localAbsBaseArticleInfo1 = ((VideoFeedsTwoItemViewHolder)paramView.getTag()).D;
+      str = ((VideoFeedsTwoItemViewHolder)paramView.getTag()).E.innerUniqueID;
       localAbsBaseArticleInfo2 = localAbsBaseArticleInfo1;
     }
     else
     {
-      localAbsBaseArticleInfo1 = ((VideoFeedsTwoItemViewHolder)paramView.getTag()).b;
-      str = ((VideoFeedsTwoItemViewHolder)paramView.getTag()).a.innerUniqueID;
-      localAbsBaseArticleInfo2 = ((VideoFeedsTwoItemViewHolder)paramView.getTag()).a;
+      localAbsBaseArticleInfo1 = ((VideoFeedsTwoItemViewHolder)paramView.getTag()).E;
+      str = ((VideoFeedsTwoItemViewHolder)paramView.getTag()).D.innerUniqueID;
+      localAbsBaseArticleInfo2 = ((VideoFeedsTwoItemViewHolder)paramView.getTag()).D;
       localAbsBaseArticleInfo1.isTwoItem = true;
     }
     boolean bool;
-    if (paramView.getId() == 2131369963) {
+    if (paramView.getId() == 2131437113) {
       bool = true;
     } else {
       bool = false;
     }
-    RIJVideoReportManager.a(bool, localAbsBaseArticleInfo1, localAbsBaseArticleInfo2, str, null, RIJVideoHandleClick.a(this.a));
+    RIJVideoReportManager.a(bool, localAbsBaseArticleInfo1, localAbsBaseArticleInfo2, str, null, RIJVideoHandleClick.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.click.RIJVideoHandleClick.11
  * JD-Core Version:    0.7.0.1
  */

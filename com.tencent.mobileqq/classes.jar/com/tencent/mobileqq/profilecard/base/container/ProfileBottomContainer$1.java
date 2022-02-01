@@ -19,18 +19,18 @@ class ProfileBottomContainer$1
     {
       if (localIPhoneContactService.addContactAndUpload(((ProfileCardInfo)ProfileBottomContainer.access$300(this.this$0)).allInOne.contactName, ((ProfileCardInfo)ProfileBottomContainer.access$400(this.this$0)).allInOne.uin))
       {
-        QQToast.a(ProfileBottomContainer.access$500(this.this$0), 2, HardCodeUtil.a(2131704996), 0).a();
+        QQToast.makeText(ProfileBottomContainer.access$500(this.this$0), 2, HardCodeUtil.a(2131902887), 0).show();
         return;
       }
-      QQToast.a(ProfileBottomContainer.access$600(this.this$0), 1, HardCodeUtil.a(2131705025), 0).a();
+      QQToast.makeText(ProfileBottomContainer.access$600(this.this$0), 1, HardCodeUtil.a(2131902915), 0).show();
       return;
     }
-    QQToast.a(ProfileBottomContainer.access$700(this.this$0), HardCodeUtil.a(2131704986), 0).a();
+    QQToast.makeText(ProfileBottomContainer.access$700(this.this$0), HardCodeUtil.a(2131902877), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.container.ProfileBottomContainer.1
  * JD-Core Version:    0.7.0.1
  */

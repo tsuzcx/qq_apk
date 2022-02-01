@@ -15,23 +15,23 @@ import java.util.List;
 class ProfileLabelPanelAdapter$AllLabelGridViewAdapter
   extends BaseAdapter
 {
-  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
+  List<ProfileLabelInfo> a;
   
   private ProfileLabelPanelAdapter$AllLabelGridViewAdapter(ProfileLabelPanelAdapter paramProfileLabelPanelAdapter) {}
   
   public void a(List<ProfileLabelInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -44,14 +44,14 @@ class ProfileLabelPanelAdapter$AllLabelGridViewAdapter
     Object localObject1;
     if (paramView == null)
     {
-      localObject1 = new ToggleButton(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext);
-      ((View)localObject1).setLayoutParams(new AbsListView.LayoutParams(-1, (int)(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Float * 28.0F)));
-      ((View)localObject1).setBackgroundResource(2130850924);
+      localObject1 = new ToggleButton(this.b.c);
+      ((View)localObject1).setLayoutParams(new AbsListView.LayoutParams(-1, (int)(this.b.e * 28.0F)));
+      ((View)localObject1).setBackgroundResource(2130852776);
       paramView = (ToggleButton)localObject1;
       paramView.setGravity(17);
-      paramView.setTextSize(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext.getResources().getInteger(2131427338));
+      paramView.setTextSize(this.b.c.getResources().getInteger(2131492881));
       paramView.setTextColor(Color.parseColor("#777777"));
-      paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter);
+      paramView.setOnClickListener(this.b);
     }
     else
     {
@@ -74,7 +74,7 @@ class ProfileLabelPanelAdapter$AllLabelGridViewAdapter
       paramView.setTextOn(((ProfileLabelInfo)localObject2).labelName);
       paramView.setTextOff(((ProfileLabelInfo)localObject2).labelName);
       if (((ProfileLabelInfo)localObject2).labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a((ProfileLabelInfo)localObject2, paramView);
+        this.b.i.a((ProfileLabelInfo)localObject2, paramView);
       }
     }
     else
@@ -87,7 +87,7 @@ class ProfileLabelPanelAdapter$AllLabelGridViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ProfileLabelPanelAdapter.AllLabelGridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -21,126 +21,91 @@ public class ChooseFileInfo
 {
   public static final Parcelable.Creator<ChooseFileInfo> CREATOR = new ChooseFileInfo.1();
   public int a;
-  public long a;
-  public String a;
   public int b;
-  public long b;
-  public String b;
-  public int c;
   public long c;
-  public String c;
-  public int d;
   public long d;
-  public String d;
   public int e;
-  public String e;
-  public String f = null;
-  public String g = null;
+  public String f;
+  public String g;
+  public String h;
+  public long i;
+  public long j;
+  public String k = null;
+  public String l = null;
+  public String m = null;
+  public String n = null;
+  public int o = 0;
+  public int p = 0;
   
   public ChooseFileInfo(int paramInt)
   {
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_b_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   protected ChooseFileInfo(Parcel paramParcel)
   {
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_Long = paramParcel.readLong();
-    this.jdField_d_of_type_Long = paramParcel.readLong();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readLong();
+    this.d = paramParcel.readLong();
+    this.e = paramParcel.readInt();
     this.f = paramParcel.readString();
     this.g = paramParcel.readString();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_Int = paramParcel.readInt();
-  }
-  
-  public int a()
-  {
-    int i = this.jdField_b_of_type_Int;
-    if (i == 0) {
-      return 1;
-    }
-    if (i == 1) {
-      return 2;
-    }
-    return 3;
-  }
-  
-  public String a()
-  {
-    int i = this.jdField_b_of_type_Int;
-    if (i == 0) {
-      return this.jdField_d_of_type_JavaLangString;
-    }
-    if (i == 1) {
-      return this.jdField_d_of_type_JavaLangString;
-    }
-    if (i == 4) {
-      return this.jdField_d_of_type_JavaLangString;
-    }
-    return "";
+    this.h = paramParcel.readString();
+    this.i = paramParcel.readLong();
+    this.j = paramParcel.readLong();
+    this.k = paramParcel.readString();
+    this.l = paramParcel.readString();
+    this.m = paramParcel.readString();
+    this.n = paramParcel.readString();
+    this.o = paramParcel.readInt();
+    this.p = paramParcel.readInt();
   }
   
   public WTogetherCommon.VideoInfoReq a()
   {
     WTogetherCommon.VideoInfoReq localVideoInfoReq = new WTogetherCommon.VideoInfoReq();
-    int i = this.jdField_b_of_type_Int;
-    if ((i != 0) && (i != 1))
+    int i1 = this.b;
+    if ((i1 != 0) && (i1 != 1))
     {
-      if (i == 2)
+      if (i1 == 2)
       {
         localObject = new WTogetherCommon.DirectUrlInfo();
-        if (this.jdField_d_of_type_JavaLangString != null) {
-          ((WTogetherCommon.DirectUrlInfo)localObject).file_name.set(this.jdField_d_of_type_JavaLangString);
+        if (this.k != null) {
+          ((WTogetherCommon.DirectUrlInfo)localObject).file_name.set(this.k);
         }
-        if (this.jdField_e_of_type_JavaLangString != null) {
-          ((WTogetherCommon.DirectUrlInfo)localObject).url.set(this.jdField_e_of_type_JavaLangString);
+        if (this.l != null) {
+          ((WTogetherCommon.DirectUrlInfo)localObject).url.set(this.l);
         }
-        if (this.f != null) {
-          ((WTogetherCommon.DirectUrlInfo)localObject).cookie.set(this.f);
+        if (this.m != null) {
+          ((WTogetherCommon.DirectUrlInfo)localObject).cookie.set(this.m);
         }
-        ((WTogetherCommon.DirectUrlInfo)localObject).media_format.set(this.jdField_e_of_type_Int);
+        ((WTogetherCommon.DirectUrlInfo)localObject).media_format.set(this.p);
         localVideoInfoReq.video_src_type.set(1);
         localVideoInfoReq.direct_url_info.set((MessageMicro)localObject);
         return localVideoInfoReq;
       }
       localVideoInfoReq.video_src_type.set(2);
-      localVideoInfoReq.online_resource_id.set(this.g);
+      localVideoInfoReq.online_resource_id.set(this.n);
       return localVideoInfoReq;
     }
     Object localObject = new WTogetherCommon.ForwardReq();
-    ((WTogetherCommon.ForwardReq)localObject).src_uin.set(this.jdField_a_of_type_Long);
-    ((WTogetherCommon.ForwardReq)localObject).src_group.set(this.jdField_b_of_type_Long);
-    ((WTogetherCommon.ForwardReq)localObject).src_svcid.set(this.jdField_c_of_type_Int);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      ((WTogetherCommon.ForwardReq)localObject).src_parentfolder.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_JavaLangString.getBytes()));
+    ((WTogetherCommon.ForwardReq)localObject).src_uin.set(this.c);
+    ((WTogetherCommon.ForwardReq)localObject).src_group.set(this.d);
+    ((WTogetherCommon.ForwardReq)localObject).src_svcid.set(this.e);
+    if (this.f != null) {
+      ((WTogetherCommon.ForwardReq)localObject).src_parentfolder.set(ByteStringMicro.copyFrom(this.f.getBytes()));
     }
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      ((WTogetherCommon.ForwardReq)localObject).src_uuid.set(ByteStringMicro.copyFrom(this.jdField_b_of_type_JavaLangString.getBytes()));
+    if (this.g != null) {
+      ((WTogetherCommon.ForwardReq)localObject).src_uuid.set(ByteStringMicro.copyFrom(this.g.getBytes()));
     }
-    if (this.jdField_c_of_type_JavaLangString != null) {
-      ((WTogetherCommon.ForwardReq)localObject).file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(this.jdField_c_of_type_JavaLangString)));
+    if (this.h != null) {
+      ((WTogetherCommon.ForwardReq)localObject).file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(this.h)));
     }
-    ((WTogetherCommon.ForwardReq)localObject).dst_uin.set(this.jdField_c_of_type_Long);
-    ((WTogetherCommon.ForwardReq)localObject).file_size.set(this.jdField_d_of_type_Long);
-    if (this.jdField_d_of_type_JavaLangString != null) {
-      ((WTogetherCommon.ForwardReq)localObject).file_name.set(this.jdField_d_of_type_JavaLangString);
+    ((WTogetherCommon.ForwardReq)localObject).dst_uin.set(this.i);
+    ((WTogetherCommon.ForwardReq)localObject).file_size.set(this.j);
+    if (this.k != null) {
+      ((WTogetherCommon.ForwardReq)localObject).file_name.set(this.k);
     }
     ((WTogetherCommon.ForwardReq)localObject).client_type.set(104);
     localVideoInfoReq.video_src_type.set(0);
@@ -148,26 +113,58 @@ public class ChooseFileInfo
     return localVideoInfoReq;
   }
   
-  public String b()
+  public int b()
   {
-    int i = this.jdField_b_of_type_Int;
-    if (i == 0) {
-      return this.jdField_b_of_type_JavaLangString;
+    int i1 = this.b;
+    if (i1 == 0) {
+      return 1;
     }
-    if (i == 1) {
-      return this.jdField_b_of_type_JavaLangString;
+    if (i1 == 1) {
+      return 2;
     }
-    if (i == 4) {
-      return this.g;
-    }
-    return "";
+    return 3;
   }
   
   public String c()
   {
-    if ((this.jdField_b_of_type_Int == 4) && (!TextUtils.isEmpty(this.g)))
+    int i1 = this.b;
+    if (i1 == 0) {
+      return this.k;
+    }
+    if (i1 == 1) {
+      return this.k;
+    }
+    if (i1 == 4) {
+      return this.k;
+    }
+    return "";
+  }
+  
+  public String d()
+  {
+    int i1 = this.b;
+    if (i1 == 0) {
+      return this.g;
+    }
+    if (i1 == 1) {
+      return this.g;
+    }
+    if (i1 == 4) {
+      return this.n;
+    }
+    return "";
+  }
+  
+  public int describeContents()
+  {
+    return 0;
+  }
+  
+  public String e()
+  {
+    if ((this.b == 4) && (!TextUtils.isEmpty(this.n)))
     {
-      localObject = this.g.split("@");
+      localObject = this.n.split("@");
       if (localObject.length >= 2)
       {
         localObject = localObject[(localObject.length - 1)];
@@ -182,99 +179,94 @@ public class ChooseFileInfo
     return "0";
   }
   
-  public String d()
-  {
-    int i = this.jdField_a_of_type_Int;
-    if (i == 1) {
-      return "1";
-    }
-    if (i == 3) {
-      return "2";
-    }
-    if (i == 4) {
-      return "3";
-    }
-    return "0";
-  }
-  
-  public int describeContents()
-  {
-    return 0;
-  }
-  
   public boolean equals(Object paramObject)
   {
     if ((paramObject instanceof ChooseFileInfo))
     {
       paramObject = (ChooseFileInfo)paramObject;
       if (paramObject == this) {}
-      int i;
+      int i1;
       do
       {
         return true;
-        i = this.jdField_b_of_type_Int;
-      } while ((i == paramObject.jdField_b_of_type_Int) && ((i != 0) && (i != 1) ? i == 2 ? (!TextUtils.equals(this.jdField_e_of_type_JavaLangString, paramObject.jdField_e_of_type_JavaLangString)) || (!TextUtils.equals(this.f, paramObject.f)) || (!TextUtils.equals(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) : i == 4 ? (!TextUtils.equals(this.g, paramObject.g)) || (!TextUtils.equals(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) : (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) || (TextUtils.equals(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) || (TextUtils.equals(this.jdField_e_of_type_JavaLangString, paramObject.jdField_e_of_type_JavaLangString)) || (TextUtils.equals(this.f, paramObject.f)) || (TextUtils.equals(this.g, paramObject.g)) : (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString))));
+        i1 = this.b;
+      } while ((i1 == paramObject.b) && ((i1 != 0) && (i1 != 1) ? i1 == 2 ? (!TextUtils.equals(this.l, paramObject.l)) || (!TextUtils.equals(this.m, paramObject.m)) || (!TextUtils.equals(this.k, paramObject.k)) : i1 == 4 ? (!TextUtils.equals(this.n, paramObject.n)) || (!TextUtils.equals(this.k, paramObject.k)) : (TextUtils.equals(this.g, paramObject.g)) || (TextUtils.equals(this.k, paramObject.k)) || (TextUtils.equals(this.l, paramObject.l)) || (TextUtils.equals(this.m, paramObject.m)) || (TextUtils.equals(this.n, paramObject.n)) : (TextUtils.equals(this.g, paramObject.g)) && (TextUtils.equals(this.k, paramObject.k))));
     }
     return false;
+  }
+  
+  public String f()
+  {
+    int i1 = this.a;
+    if (i1 == 1) {
+      return "1";
+    }
+    if (i1 == 3) {
+      return "2";
+    }
+    if (i1 == 4) {
+      return "3";
+    }
+    return "0";
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ChooseFile{entrance: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", type: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", srcUin: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", srcGroup: ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", busId: ");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", parentFolder: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", uuid: ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", fileMD5: ");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(", destUin: ");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(", fileSize: ");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append(", fileName: ");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append(", url: ");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append(", cookie: ");
     localStringBuilder.append(this.f);
-    localStringBuilder.append(", matchId: ");
+    localStringBuilder.append(", uuid: ");
     localStringBuilder.append(this.g);
+    localStringBuilder.append(", fileMD5: ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", destUin: ");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", fileSize: ");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", fileName: ");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(", url: ");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(", cookie: ");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(", matchId: ");
+    localStringBuilder.append(this.n);
     localStringBuilder.append(", isPay: ");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.o);
     localStringBuilder.append(", mediaFormat: ");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.p);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
-    paramParcel.writeLong(this.jdField_d_of_type_Long);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeLong(this.c);
+    paramParcel.writeLong(this.d);
+    paramParcel.writeInt(this.e);
     paramParcel.writeString(this.f);
     paramParcel.writeString(this.g);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
+    paramParcel.writeString(this.h);
+    paramParcel.writeLong(this.i);
+    paramParcel.writeLong(this.j);
+    paramParcel.writeString(this.k);
+    paramParcel.writeString(this.l);
+    paramParcel.writeString(this.m);
+    paramParcel.writeString(this.n);
+    paramParcel.writeInt(this.o);
+    paramParcel.writeInt(this.p);
   }
 }
 

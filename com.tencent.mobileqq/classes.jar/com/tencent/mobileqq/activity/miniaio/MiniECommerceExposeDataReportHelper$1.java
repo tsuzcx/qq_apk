@@ -17,12 +17,12 @@ class MiniECommerceExposeDataReportHelper$1
     }
     MiniECommerceExposeDataReportHelper.a(this.this$0, true);
     ThreadManager.getUIHandler().removeCallbacks(MiniECommerceExposeDataReportHelper.a(this.this$0));
-    MiniECommerceExposeDataReportHelper.a(this.this$0).a(MiniECommerceExposeDataReportHelper.a(this.this$0).a, MiniECommerceExposeDataReportHelper.a(this.this$0));
+    MiniECommerceExposeDataReportHelper.d(this.this$0).a(MiniECommerceExposeDataReportHelper.b(this.this$0).d, MiniECommerceExposeDataReportHelper.c(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniECommerceExposeDataReportHelper.1
  * JD-Core Version:    0.7.0.1
  */

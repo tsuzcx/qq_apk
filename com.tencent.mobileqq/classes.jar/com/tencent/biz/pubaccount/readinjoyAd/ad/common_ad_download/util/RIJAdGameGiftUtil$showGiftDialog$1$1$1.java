@@ -18,12 +18,12 @@ final class RIJAdGameGiftUtil$showGiftDialog$1$1$1
   
   public final void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog.dismiss();
-    GameComponentReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadUtilRIJAdGameGiftUtil$showGiftDialog$1$1.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 1, "2");
-    Context localContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadUtilRIJAdGameGiftUtil$showGiftDialog$1$1.this$0.jdField_a_of_type_AndroidContentContext;
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadUtilRIJAdGameGiftUtil$showGiftDialog$1$1.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.gameAdComData;
+    this.b.dismiss();
+    GameComponentReport.a(this.a.this$0.a, 1, "2");
+    Context localContext = this.a.this$0.b;
+    Object localObject = this.a.this$0.a.gameAdComData;
     if (localObject != null) {
-      localObject = ((GameAdComData)localObject).d;
+      localObject = ((GameAdComData)localObject).e;
     } else {
       localObject = null;
     }
@@ -32,7 +32,7 @@ final class RIJAdGameGiftUtil$showGiftDialog$1$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdGameGiftUtil.showGiftDialog.1.1.1
  * JD-Core Version:    0.7.0.1
  */

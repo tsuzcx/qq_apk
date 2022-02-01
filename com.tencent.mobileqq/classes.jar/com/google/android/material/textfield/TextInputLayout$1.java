@@ -13,7 +13,7 @@ class TextInputLayout$1
   {
     TextInputLayout localTextInputLayout = this.a;
     localTextInputLayout.a(TextInputLayout.a(localTextInputLayout) ^ true);
-    if (this.a.a) {
+    if (this.a.b) {
       this.a.a(paramEditable.length());
     }
     if (TextInputLayout.b(this.a)) {
@@ -27,7 +27,7 @@ class TextInputLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.TextInputLayout.1
  * JD-Core Version:    0.7.0.1
  */

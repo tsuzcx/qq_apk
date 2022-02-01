@@ -16,15 +16,15 @@ class DrawerBizFacade$6
     if (paramObject == null) {
       return;
     }
-    if ((paramBoolean) && (DrawerBizFacade.a(this.a)) && (this.a.jdField_a_of_type_MqqAppAppRuntime != null) && ((paramObject instanceof Card)) && (this.a.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin().equals(((Card)paramObject).uin)))
+    if ((paramBoolean) && (DrawerBizFacade.a(this.a)) && (this.a.a != null) && ((paramObject instanceof Card)) && (this.a.a.getCurrentAccountUin().equals(((Card)paramObject).uin)))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.runOnUiThread(new DrawerBizFacade.6.1(this));
+      this.a.b.runOnUiThread(new DrawerBizFacade.6.1(this));
       ThreadManager.excute(new DrawerBizFacade.6.2(this), 16, null, true);
       return;
     }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_MqqAppAppRuntime != null) && ((paramObject instanceof Card)) && (!DrawerBizFacade.a(this.a)))
+    if ((paramBoolean) && (this.a.a != null) && ((paramObject instanceof Card)) && (!DrawerBizFacade.a(this.a)))
     {
-      String str = this.a.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
+      String str = this.a.a.getCurrentAccountUin();
       paramObject = (Card)paramObject;
       if (str.equals(paramObject.uin)) {
         ThreadManager.excute(new DrawerBizFacade.6.3(this, paramObject), 16, null, true);
@@ -34,7 +34,7 @@ class DrawerBizFacade$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.DrawerBizFacade.6
  * JD-Core Version:    0.7.0.1
  */

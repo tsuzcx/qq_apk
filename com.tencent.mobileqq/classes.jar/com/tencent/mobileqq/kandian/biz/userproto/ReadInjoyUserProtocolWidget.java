@@ -30,11 +30,11 @@ public class ReadInjoyUserProtocolWidget
   extends Dialog
   implements View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713070);
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private static final String d = HardCodeUtil.a(2131910631);
+  TextView a;
+  Button b;
+  View c;
+  private Runnable e;
   
   public ReadInjoyUserProtocolWidget(@NonNull Context paramContext, int paramInt)
   {
@@ -44,7 +44,7 @@ public class ReadInjoyUserProtocolWidget
   public ReadInjoyUserProtocolWidget(@NonNull Context paramContext, Runnable paramRunnable)
   {
     this(paramContext, 0);
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    this.e = paramRunnable;
   }
   
   private Drawable a()
@@ -56,14 +56,6 @@ public class ReadInjoyUserProtocolWidget
     return localShapeDrawable;
   }
   
-  private SpannableString a()
-  {
-    int i = jdField_a_of_type_JavaLangString.indexOf("《QQ看点用户行为规范》");
-    SpannableString localSpannableString = new SpannableString(jdField_a_of_type_JavaLangString);
-    localSpannableString.setSpan(new ReadInjoyUserProtocolWidget.1(this, Color.parseColor("#12B7F5")), i, i + 12, 33);
-    return localSpannableString;
-  }
-  
   private Drawable b()
   {
     float f = AIOUtils.b(3.0F, getContext().getResources());
@@ -73,14 +65,22 @@ public class ReadInjoyUserProtocolWidget
     return localShapeDrawable;
   }
   
+  private SpannableString c()
+  {
+    int i = d.indexOf("《QQ看点用户行为规范》");
+    SpannableString localSpannableString = new SpannableString(d);
+    localSpannableString.setSpan(new ReadInjoyUserProtocolWidget.1(this, Color.parseColor("#12B7F5")), i, i + 12, 33);
+    return localSpannableString;
+  }
+  
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidViewView)
+    if (paramView == this.c)
     {
       dismiss();
       return;
     }
-    if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+    if (paramView == this.b)
     {
       paramView = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -88,7 +88,7 @@ public class ReadInjoyUserProtocolWidget
       localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
       paramView.putBoolean(localStringBuilder.toString(), true).apply();
       dismiss();
-      paramView = this.jdField_a_of_type_JavaLangRunnable;
+      paramView = this.e;
       if (paramView != null) {
         paramView.run();
       }
@@ -99,19 +99,19 @@ public class ReadInjoyUserProtocolWidget
   {
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    paramBundle = LayoutInflater.from(getContext()).inflate(2131560176, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131365201));
-    this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(false);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramBundle.findViewById(2131362314));
-    this.jdField_a_of_type_AndroidViewView = paramBundle.findViewById(2131364719);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
-    this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(new ReadInjoyUserProtocolWidget.LinkTouchMovementMethod());
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(a());
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    paramBundle = LayoutInflater.from(getContext()).inflate(2131626223, null);
+    this.a = ((TextView)paramBundle.findViewById(2131431365));
+    this.a.setFocusable(false);
+    this.b = ((Button)paramBundle.findViewById(2131427913));
+    this.c = paramBundle.findViewById(2131430825);
+    this.a.setText(c());
+    this.a.setMovementMethod(new ReadInjoyUserProtocolWidget.LinkTouchMovementMethod());
+    this.b.setOnClickListener(this);
+    this.b.setBackgroundDrawable(a());
+    this.c.setOnClickListener(this);
     Drawable localDrawable = b();
     getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    paramBundle.findViewById(2131363513).setBackgroundDrawable(localDrawable);
+    paramBundle.findViewById(2131429416).setBackgroundDrawable(localDrawable);
     setContentView(paramBundle);
     paramBundle = getWindow().getAttributes();
     paramBundle.height = -2;
@@ -123,7 +123,7 @@ public class ReadInjoyUserProtocolWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.userproto.ReadInjoyUserProtocolWidget
  * JD-Core Version:    0.7.0.1
  */

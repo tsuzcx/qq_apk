@@ -70,10 +70,10 @@ public class LiveDelivery
         }
       }
       localObject1 = new TogetherControlManager.EntryBannerInfo();
-      ((TogetherControlManager.EntryBannerInfo)localObject1).jdField_a_of_type_JavaLangString = ((String)localHashMap.get("type"));
+      ((TogetherControlManager.EntryBannerInfo)localObject1).a = ((String)localHashMap.get("type"));
       ((TogetherControlManager.EntryBannerInfo)localObject1).c = ((String)localHashMap.get("pic"));
       ((TogetherControlManager.EntryBannerInfo)localObject1).b = ((String)localHashMap.get("url"));
-      ((TogetherControlManager.EntryBannerInfo)localObject1).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)paramRspEntry.value.lst.get(0));
+      ((TogetherControlManager.EntryBannerInfo)localObject1).d = ((TianShuAccess.AdItem)paramRspEntry.value.lst.get(0));
       if (!TextUtils.isEmpty(((TogetherControlManager.EntryBannerInfo)localObject1).c)) {
         return localObject1;
       }
@@ -136,7 +136,7 @@ public class LiveDelivery
   
   public boolean isWxInstall()
   {
-    return WXShareHelper.a().a();
+    return WXShareHelper.a().b();
   }
   
   public void openChargePage()
@@ -206,13 +206,13 @@ public class LiveDelivery
     localStringBuilder.append("_");
     localStringBuilder.append(l);
     localTianShuReportData.b = localStringBuilder.toString();
-    localTianShuReportData.jdField_a_of_type_Int = paramInt2;
-    localTianShuReportData.jdField_e_of_type_JavaLangString = paramString1;
-    localTianShuReportData.f = paramString2;
-    localTianShuReportData.g = paramString3;
-    localTianShuReportData.d = paramInt1;
-    localTianShuReportData.jdField_e_of_type_Int = 1;
-    localTianShuReportData.jdField_a_of_type_Long = l;
+    localTianShuReportData.c = paramInt2;
+    localTianShuReportData.f = paramString1;
+    localTianShuReportData.g = paramString2;
+    localTianShuReportData.h = paramString3;
+    localTianShuReportData.p = paramInt1;
+    localTianShuReportData.q = 1;
+    localTianShuReportData.o = l;
     TianShuManager.getInstance().report(localTianShuReportData);
   }
   
@@ -220,9 +220,9 @@ public class LiveDelivery
   {
     paramEIPCResultCallback = new ArrayList();
     TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
-    localTianShuAdPosItemData.jdField_a_of_type_Int = paramInt1;
+    localTianShuAdPosItemData.a = paramInt1;
     localTianShuAdPosItemData.b = paramInt2;
-    localTianShuAdPosItemData.jdField_a_of_type_JavaUtilHashMap = ((HashMap)paramSerializable);
+    localTianShuAdPosItemData.c = ((HashMap)paramSerializable);
     paramEIPCResultCallback.add(localTianShuAdPosItemData);
     TianShuManager.getInstance().requestAdv(paramEIPCResultCallback, new LiveDelivery.5(this, paramInt1, paramEIPCModule, paramInt3));
   }
@@ -265,7 +265,7 @@ public class LiveDelivery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.remote.LiveDelivery
  * JD-Core Version:    0.7.0.1
  */

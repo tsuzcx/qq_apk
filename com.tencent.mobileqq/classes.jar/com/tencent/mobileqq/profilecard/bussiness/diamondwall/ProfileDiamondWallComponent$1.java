@@ -28,21 +28,21 @@ class ProfileDiamondWallComponent$1
     if ((localObject1 instanceof DataTag))
     {
       localObject1 = (DataTag)localObject1;
-      int i = ((DataTag)localObject1).jdField_a_of_type_Int;
+      int i = ((DataTag)localObject1).a;
       Object localObject2;
       if (i != 26)
       {
         if (i == 93) {
-          if (!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof PrivilegeInfo))
+          if (!(((DataTag)localObject1).b instanceof PrivilegeInfo))
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("DATA_TYPE_BIG_DIAMOND url is not string:");
-            ((StringBuilder)localObject2).append(((DataTag)localObject1).jdField_a_of_type_JavaLangObject);
+            ((StringBuilder)localObject2).append(((DataTag)localObject1).b);
             QLog.e("DIYProfileTemplate.ProfileDiamondWallComponent", 1, ((StringBuilder)localObject2).toString());
           }
           else
           {
-            localObject2 = (PrivilegeInfo)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
+            localObject2 = (PrivilegeInfo)((DataTag)localObject1).b;
             localObject1 = ((PrivilegeInfo)localObject2).strJumpUrl;
             Intent localIntent = new Intent(ProfileDiamondWallComponent.access$1300(this.this$0), QQBrowserActivity.class);
             localIntent.putExtra("url", (String)localObject1);
@@ -173,7 +173,7 @@ class ProfileDiamondWallComponent$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.diamondwall.ProfileDiamondWallComponent.1
  * JD-Core Version:    0.7.0.1
  */

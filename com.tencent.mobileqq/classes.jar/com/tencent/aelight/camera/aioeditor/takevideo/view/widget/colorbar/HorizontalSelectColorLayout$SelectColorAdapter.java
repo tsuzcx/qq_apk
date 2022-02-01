@@ -14,35 +14,35 @@ import java.util.ArrayList;
 class HorizontalSelectColorLayout$SelectColorAdapter
   extends BaseAdapter
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<HorizontalStroke> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<HorizontalStroke> a = new ArrayList();
+  int b = -1;
+  Context c;
   
   public HorizontalSelectColorLayout$SelectColorAdapter(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramContext;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     notifyDataSetChanged();
   }
   
   public void a(ArrayList<HorizontalStroke> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.a = paramArrayList;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -56,17 +56,17 @@ class HorizontalSelectColorLayout$SelectColorAdapter
     if (paramView == null)
     {
       HorizontalSelectColorLayout.SelectColorAdapter.ItemHold localItemHold = new HorizontalSelectColorLayout.SelectColorAdapter.ItemHold(this);
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout.b)
+      if (this.d.g)
       {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559074, paramViewGroup, false);
-        localItemHold.b = ((ImageView)paramView.findViewById(2131369152));
+        paramView = LayoutInflater.from(this.c).inflate(2131624734, paramViewGroup, false);
+        localItemHold.b = ((ImageView)paramView.findViewById(2131436123));
       }
       else
       {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559073, paramViewGroup, false);
+        paramView = LayoutInflater.from(this.c).inflate(2131624733, paramViewGroup, false);
       }
-      localItemHold.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369003));
-      localItemHold.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131369002));
+      localItemHold.a = ((ImageView)paramView.findViewById(2131435962));
+      localItemHold.c = ((ViewGroup)paramView.findViewById(2131435961));
       paramView.setTag(localItemHold);
       paramViewGroup = localItemHold;
     }
@@ -75,31 +75,31 @@ class HorizontalSelectColorLayout$SelectColorAdapter
       paramViewGroup = (HorizontalSelectColorLayout.SelectColorAdapter.ItemHold)paramView.getTag();
     }
     if (Build.VERSION.SDK_INT < 21) {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      paramViewGroup.a.setImageDrawable(null);
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localHorizontalStroke.a);
-    if (paramInt == this.jdField_a_of_type_Int)
+    paramViewGroup.a.setImageDrawable(localHorizontalStroke.f);
+    if (paramInt == this.b)
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout.b) {
+      if (this.d.g) {
         paramViewGroup.b.setVisibility(0);
       } else {
-        paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout.getResources().getDrawable(2130845083));
+        paramViewGroup.c.setBackgroundDrawable(this.d.getResources().getDrawable(2130846520));
       }
     }
-    else if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetColorbarHorizontalSelectColorLayout.b) {
+    else if (this.d.g) {
       paramViewGroup.b.setVisibility(4);
     } else {
-      paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(null);
+      paramViewGroup.c.setBackgroundDrawable(null);
     }
-    if (localHorizontalStroke.b != null) {
-      paramView.setContentDescription(localHorizontalStroke.b);
+    if (localHorizontalStroke.g != null) {
+      paramView.setContentDescription(localHorizontalStroke.g);
     }
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.SelectColorAdapter
  * JD-Core Version:    0.7.0.1
  */

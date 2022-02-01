@@ -15,40 +15,40 @@ class NearbyProfileDisplayTribePanel$30
   {
     if (paramInt == 1)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.a(2);
+      if (this.a.S != null) {
+        this.a.S.a(2);
       }
-      if (NearbyProfileDisplayTribePanel.a(this.a) != null)
+      if (NearbyProfileDisplayTribePanel.j(this.a) != null)
       {
-        if (this.a.n)
+        if (this.a.W)
         {
-          ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, NearbyProfileDisplayTribePanel.a(this.a).uin, "", "yes", "android");
+          ReportController.b(this.a.e.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, NearbyProfileDisplayTribePanel.j(this.a).uin, "", "yes", "android");
           return;
         }
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, NearbyProfileDisplayTribePanel.a(this.a).uin, "", "yes", "android");
+        ReportController.b(this.a.e.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, NearbyProfileDisplayTribePanel.j(this.a).uin, "", "yes", "android");
       }
     }
     else if (paramInt == 0)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.a(10);
+      if (this.a.S != null) {
+        this.a.S.a(10);
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
+      if (this.a.T != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698757);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
+        this.a.T.setText(2131896715);
+        this.a.T.setProgress(0);
       }
       paramDialogInterface = this.a;
-      paramDialogInterface.jdField_a_of_type_Int = 2;
-      if (NearbyProfileDisplayTribePanel.a(paramDialogInterface) != null) {
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, NearbyProfileDisplayTribePanel.a(this.a).uin, "", "yes", "android");
+      paramDialogInterface.U = 2;
+      if (NearbyProfileDisplayTribePanel.j(paramDialogInterface) != null) {
+        ReportController.b(this.a.e.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, NearbyProfileDisplayTribePanel.j(this.a).uin, "", "yes", "android");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.30
  * JD-Core Version:    0.7.0.1
  */

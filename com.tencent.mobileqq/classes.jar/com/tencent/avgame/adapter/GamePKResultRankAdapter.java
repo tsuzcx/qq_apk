@@ -25,43 +25,43 @@ import java.util.HashMap;
 public class GamePKResultRankAdapter
   extends RecyclerView.Adapter<GamePKResultRankAdapter.ViewHolder>
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private UserInfoHandler jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = null;
-  ArrayList<SurvivalPkResultInfo.Pair<Integer, Long>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  ArrayList<SurvivalPkResultInfo.Pair<Integer, Long>> a = new ArrayList();
+  private Context b;
+  private int c = 0;
+  private HashMap<String, String> d = null;
+  private UserInfoHandler e = null;
+  private boolean f = false;
   
   public GamePKResultRankAdapter(Context paramContext, ArrayList<SurvivalPkResultInfo.Pair<Integer, Long>> paramArrayList, int paramInt, HashMap<String, String> paramHashMap, UserInfoHandler paramUserInfoHandler)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = paramUserInfoHandler;
+    this.b = paramContext;
+    this.c = paramInt;
+    this.a = paramArrayList;
+    this.d = paramHashMap;
+    this.e = paramUserInfoHandler;
   }
   
   public GamePKResultRankAdapter.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558689, paramViewGroup, false);
+    if (this.f) {
+      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624306, paramViewGroup, false);
     } else {
-      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558693, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624310, paramViewGroup, false);
     }
     return new GamePKResultRankAdapter.ViewHolder(paramViewGroup);
   }
   
   public SurvivalPkResultInfo.Pair<Integer, Long> a(int paramInt)
   {
-    if ((paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
-      return (SurvivalPkResultInfo.Pair)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if ((paramInt < this.a.size()) && (paramInt >= 0)) {
+      return (SurvivalPkResultInfo.Pair)this.a.get(paramInt);
     }
     return null;
   }
   
   public ArrayList<SurvivalPkResultInfo.Pair<Integer, Long>> a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.a;
   }
   
   public void a(GamePKResultRankAdapter.ViewHolder paramViewHolder, int paramInt)
@@ -69,46 +69,46 @@ public class GamePKResultRankAdapter
     Object localObject = a(paramInt);
     if (localObject != null)
     {
-      Bitmap localBitmap = this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler.a(String.valueOf(((SurvivalPkResultInfo.Pair)localObject).second), (byte)1);
+      Bitmap localBitmap = this.e.a(String.valueOf(((SurvivalPkResultInfo.Pair)localObject).second), (byte)1);
       GamePKResultRankAdapter.ViewHolder.a(paramViewHolder).setImageBitmap(localBitmap);
-      GamePKResultRankAdapter.ViewHolder.a(paramViewHolder).setTypeface(AVGameText.a());
-      GamePKResultRankAdapter.ViewHolder.a(paramViewHolder).setText(String.valueOf(((SurvivalPkResultInfo.Pair)localObject).first));
-      localBitmap = AVGameUtil.a("avgame_pk_result_rank_num@2x.png");
+      GamePKResultRankAdapter.ViewHolder.b(paramViewHolder).setTypeface(AVGameText.getTypeface());
+      GamePKResultRankAdapter.ViewHolder.b(paramViewHolder).setText(String.valueOf(((SurvivalPkResultInfo.Pair)localObject).first));
+      localBitmap = AVGameUtil.c("avgame_pk_result_rank_num@2x.png");
       if (localBitmap != null) {
-        GamePKResultRankAdapter.ViewHolder.a(paramViewHolder).setBackgroundDrawable(new BitmapDrawable(localBitmap));
+        GamePKResultRankAdapter.ViewHolder.b(paramViewHolder).setBackgroundDrawable(new BitmapDrawable(localBitmap));
       }
-      localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(((SurvivalPkResultInfo.Pair)localObject).second));
-      GamePKResultRankAdapter.ViewHolder.b(paramViewHolder).setText((CharSequence)localObject);
-      float f = ViewUtils.a(12.0F);
+      localObject = (String)this.d.get(String.valueOf(((SurvivalPkResultInfo.Pair)localObject).second));
+      GamePKResultRankAdapter.ViewHolder.c(paramViewHolder).setText((CharSequence)localObject);
+      float f1 = ViewUtils.dip2px(12.0F);
       localObject = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] { 1712460323, 1713576244 });
-      int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int i = this.a.size();
       if (i == 1) {
-        ((GradientDrawable)localObject).setCornerRadius(f);
+        ((GradientDrawable)localObject).setCornerRadius(f1);
       } else if ((i > 1) && (paramInt == 0)) {
-        ((GradientDrawable)localObject).setCornerRadii(new float[] { f, f, f, f, 0.0F, 0.0F, 0.0F, 0.0F });
+        ((GradientDrawable)localObject).setCornerRadii(new float[] { f1, f1, f1, f1, 0.0F, 0.0F, 0.0F, 0.0F });
       } else if ((i > 1) && (paramInt == i - 1)) {
-        ((GradientDrawable)localObject).setCornerRadii(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, f, f });
+        ((GradientDrawable)localObject).setCornerRadii(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f1, f1, f1 });
       } else {
         ((GradientDrawable)localObject).setCornerRadius(0.0F);
       }
-      GamePKResultRankAdapter.ViewHolder.a(paramViewHolder).setBackgroundDrawable((Drawable)localObject);
+      GamePKResultRankAdapter.ViewHolder.d(paramViewHolder).setBackgroundDrawable((Drawable)localObject);
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public void a(HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.d = paramHashMap;
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    int i = this.jdField_a_of_type_Int;
-    if ((i != 0) && (i <= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      i = this.jdField_a_of_type_Int;
+    int i = this.c;
+    if ((i != 0) && (i <= this.a.size())) {
+      i = this.c;
     } else {
-      i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      i = this.a.size();
     }
     if (QLog.isColorLevel())
     {

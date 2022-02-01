@@ -8,9 +8,9 @@ import java.util.Set;
 
 public class TimeMonitorData
 {
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString = "";
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private String a = "";
+  private HashMap<String, String> b = new HashMap();
+  private long c = 0L;
   
   public TimeMonitorData(String paramString)
   {
@@ -21,7 +21,7 @@ public class TimeMonitorData
       localStringBuilder.append(paramString);
       QLog.i("LiteMonitorTag", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   private void b(HashMap<String, String> paramHashMap)
@@ -31,10 +31,10 @@ public class TimeMonitorData
     try
     {
       localObject = new HashMap();
-      if (this.jdField_a_of_type_JavaUtilHashMap.size() <= 0) {
+      if (this.b.size() <= 0) {
         QLog.e("LiteMonitorTag", 1, "mTimeTag is empty");
       }
-      paramHashMap = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      paramHashMap = this.b.keySet().iterator();
       while (paramHashMap.hasNext())
       {
         String str = (String)paramHashMap.next();
@@ -43,7 +43,7 @@ public class TimeMonitorData
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(str);
           localStringBuilder.append(" 执行耗时：");
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilHashMap.get(str));
+          localStringBuilder.append((String)this.b.get(str));
           localStringBuilder.append(" params = ");
           localStringBuilder.append(((HashMap)localObject).toString());
           QLog.e("LiteMonitorTag", 1, localStringBuilder.toString());
@@ -63,21 +63,21 @@ public class TimeMonitorData
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.size() > 0) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    if (this.b.size() > 0) {
+      this.b.clear();
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.c = System.currentTimeMillis();
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   public void a(String paramString)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, String.valueOf(l));
+    long l = System.currentTimeMillis() - this.c;
+    this.b.put(paramString, String.valueOf(l));
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -97,18 +97,18 @@ public class TimeMonitorData
   
   public void a(String paramString, HashMap<String, String> paramHashMap)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+    if (this.b.get(paramString) != null) {
+      this.b.remove(paramString);
     }
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, String.valueOf(l));
+    long l = System.currentTimeMillis() - this.c;
+    this.b.put(paramString, String.valueOf(l));
     a(paramString, l, paramHashMap);
   }
   
   public void a(HashMap<String, String> paramHashMap)
   {
     if (paramHashMap != null) {
-      paramHashMap.put("frame_time", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      paramHashMap.put("frame_time", String.valueOf(System.currentTimeMillis() - this.c));
     }
     b(paramHashMap);
     ThreadManagerV2.postImmediately(new TimeMonitorData.1(this, paramHashMap), null, false);
@@ -121,7 +121,7 @@ public class TimeMonitorData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.time.TimeMonitorData
  * JD-Core Version:    0.7.0.1
  */

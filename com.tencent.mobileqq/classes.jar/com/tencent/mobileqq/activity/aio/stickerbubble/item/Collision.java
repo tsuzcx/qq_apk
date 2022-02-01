@@ -5,14 +5,14 @@ import android.graphics.RectF;
 
 public class Collision
 {
-  private double jdField_a_of_type_Double = -0.8D;
-  private int jdField_a_of_type_Int = 0;
-  private ItemStatus jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus;
+  private double a = -0.8D;
   private int b = 0;
+  private int c = 0;
+  private ItemStatus d;
   
   public Collision(ItemStatus paramItemStatus)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus = paramItemStatus;
+    this.d = paramItemStatus;
   }
   
   private void a(int paramInt, Rect paramRect, RectF paramRectF)
@@ -23,7 +23,7 @@ public class Collision
       d1 = paramRectF.left - paramRect.left;
       Double.isNaN(d1);
       d1 *= -1.8D;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity.jdField_a_of_type_Double *= -0.8D;
+      this.d.b.a *= -0.8D;
     }
     else
     {
@@ -35,7 +35,7 @@ public class Collision
       d1 = paramRectF.right - paramRect.right;
       Double.isNaN(d1);
       d2 = d1 * -1.8D;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity.jdField_a_of_type_Double *= -0.8D;
+      this.d.b.a *= -0.8D;
     }
     double d1 = d3;
     if ((paramInt & 0x4) > 0)
@@ -43,17 +43,17 @@ public class Collision
       d1 = paramRectF.top - paramRect.top;
       Double.isNaN(d1);
       d1 *= -1.8D;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity.b *= -0.8D;
+      this.d.b.b *= -0.8D;
     }
     if ((paramInt & 0x8) > 0)
     {
       d1 = paramRectF.bottom - paramRect.bottom;
-      d3 = this.jdField_a_of_type_Double;
+      d3 = this.a;
       Double.isNaN(d1);
       d1 *= (d3 - 1.0D);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity.b *= this.jdField_a_of_type_Double;
+      this.d.b.b *= this.a;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.offset((float)d2, (float)d1);
+    this.d.a.offset((float)d2, (float)d1);
   }
   
   protected int a(Rect paramRect, RectF paramRectF)
@@ -80,37 +80,37 @@ public class Collision
   
   protected void a(Rect paramRect, long paramLong)
   {
-    int i = a(paramRect, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF);
+    int i = a(paramRect, this.d.a);
     if (i != 0)
     {
       Object localObject;
       if ((i & 0x8) > 0)
       {
-        this.jdField_a_of_type_Int += 1;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity;
-        ((ItemStatus.Velocity)localObject).jdField_a_of_type_Double *= 0.95D;
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int >= 3))
+        this.b += 1;
+        localObject = this.d.b;
+        ((ItemStatus.Velocity)localObject).a *= 0.95D;
+        if ((this.d.d != 2) && (this.b >= 3))
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus;
-          ((ItemStatus)localObject).jdField_a_of_type_Int = 2;
-          ((ItemStatus)localObject).jdField_a_of_type_Long = paramLong;
+          localObject = this.d;
+          ((ItemStatus)localObject).d = 2;
+          ((ItemStatus)localObject).f = paramLong;
         }
       }
-      this.b += 1;
-      if (this.b == 3)
+      this.c += 1;
+      if (this.c == 3)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus;
-        ((ItemStatus)localObject).jdField_a_of_type_Double = ((ItemStatus)localObject).jdField_a_of_type_AndroidGraphicsRectF.left;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Acceleration.b = 2000.0D;
-        this.jdField_a_of_type_Double = -0.5D;
+        localObject = this.d;
+        ((ItemStatus)localObject).e = ((ItemStatus)localObject).a.left;
+        this.d.c.b = 2000.0D;
+        this.a = -0.5D;
       }
-      a(i, paramRect, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF);
+      a(i, paramRect, this.d.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.item.Collision
  * JD-Core Version:    0.7.0.1
  */

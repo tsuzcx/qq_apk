@@ -10,11 +10,11 @@ import java.lang.ref.WeakReference;
 
 public class TroopAioClassController
 {
-  protected ImageView a;
-  protected SessionInfo a;
   protected QQAppInterface a;
-  protected RedDotAnimateView a;
-  protected WeakReference<BaseActivity> a;
+  protected WeakReference<BaseActivity> b;
+  protected SessionInfo c;
+  protected RedDotAnimateView d;
+  protected ImageView e;
   
   public void a() {}
   
@@ -30,7 +30,7 @@ public class TroopAioClassController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.groupclass.TroopAioClassController
  * JD-Core Version:    0.7.0.1
  */

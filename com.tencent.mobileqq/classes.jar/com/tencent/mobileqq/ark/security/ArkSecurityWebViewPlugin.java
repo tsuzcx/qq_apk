@@ -17,10 +17,10 @@ public class ArkSecurityWebViewPlugin
   extends WebViewPlugin
   implements IPreCreatePluginChecker
 {
-  private ArkBaseUrlChecker jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker = null;
-  private String jdField_a_of_type_JavaLangString = null;
-  private boolean jdField_a_of_type_Boolean = true;
-  private String b = "";
+  private ArkBaseUrlChecker a = null;
+  private String b = null;
+  private String c = "";
+  private boolean d = true;
   
   public ArkSecurityWebViewPlugin()
   {
@@ -60,7 +60,7 @@ public class ArkSecurityWebViewPlugin
       QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe now jump url=", paramString1 });
       return false;
     }
-    paramString2 = this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker;
+    paramString2 = this.a;
     boolean bool2;
     if (paramString2 != null)
     {
@@ -74,7 +74,7 @@ public class ArkSecurityWebViewPlugin
       int i;
       if (!bool1)
       {
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.d)
         {
           QLog.d("ArkApp.ArkSecurityWebViewPlugin", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.web.set isPermitted=true,url=", Util.b(paramString1, new String[0]) });
           bool1 = true;
@@ -88,7 +88,7 @@ public class ArkSecurityWebViewPlugin
       else {
         i = 0;
       }
-      ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportNavigateURLAccess(this.jdField_a_of_type_JavaLangString, paramString1, j, i, this.b);
+      ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportNavigateURLAccess(this.b, paramString1, j, i, this.c);
       bool2 = bool1;
       if (!bool1)
       {
@@ -113,19 +113,19 @@ public class ArkSecurityWebViewPlugin
       try
       {
         paramString1.setClassLoader(ArkSecurityWebViewPlugin.class.getClassLoader());
-        this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker = ((ArkBaseUrlChecker)paramString1.getParcelable("h5_ark_url_web_checker"));
-        this.jdField_a_of_type_JavaLangString = paramString1.getString("h5_ark_app_name", null);
-        this.b = paramString1.getString("h5_ark_url_web_sender_uin", "");
-        this.jdField_a_of_type_Boolean = paramString1.getBoolean("h5_ark_url_web_checker_enable", true);
+        this.a = ((ArkBaseUrlChecker)paramString1.getParcelable("h5_ark_url_web_checker"));
+        this.b = paramString1.getString("h5_ark_app_name", null);
+        this.c = paramString1.getString("h5_ark_url_web_sender_uin", "");
+        this.d = paramString1.getBoolean("h5_ark_url_web_checker_enable", true);
       }
       catch (Exception paramString1)
       {
         QLog.e("ArkApp.ArkSecurityWebViewPlugin", 1, "ArkSafe.ArkSecurityWebViewPlugin init exception:", paramString1);
       }
-      paramString1 = this.jdField_a_of_type_JavaLangString;
-      boolean bool = this.jdField_a_of_type_Boolean;
-      paramString2 = this.b;
-      ArkBaseUrlChecker localArkBaseUrlChecker = this.jdField_a_of_type_ComTencentArkOpenSecurityArkBaseUrlChecker;
+      paramString1 = this.b;
+      boolean bool = this.d;
+      paramString2 = this.c;
+      ArkBaseUrlChecker localArkBaseUrlChecker = this.a;
       if (localArkBaseUrlChecker != null) {
         paramIntent = localArkBaseUrlChecker.toString();
       }
@@ -150,7 +150,7 @@ public class ArkSecurityWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.security.ArkSecurityWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

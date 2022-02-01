@@ -13,18 +13,18 @@ class ColumnTwoVideoProteusItem$4
   public void onClick(ViewBase paramViewBase)
   {
     int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityMultiVideoColumnInfo.a) {
+    if (this.a.j) {
       i = 2;
     } else {
       i = 1;
     }
-    ColumnTwoVideoProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemColumnTwoVideoProteusItem, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, i);
-    ColumnTwoVideoProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemColumnTwoVideoProteusItem, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, true ^ this.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityMultiVideoColumnInfo.a);
+    ColumnTwoVideoProteusItem.a(this.c, this.b, i);
+    ColumnTwoVideoProteusItem.a(this.c, this.b, true ^ this.a.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.ColumnTwoVideoProteusItem.4
  * JD-Core Version:    0.7.0.1
  */

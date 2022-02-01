@@ -31,51 +31,51 @@ import org.json.JSONObject;
 public class TaskManager
 {
   public static int a = -1;
-  private static long jdField_a_of_type_Long = 0L;
-  private static TaskManager jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTaskManager = new TaskManager();
-  private static String jdField_a_of_type_JavaLangString;
-  private static List<String> jdField_a_of_type_JavaUtilList;
-  public static boolean a = false;
-  private static long jdField_b_of_type_Long = 3600000L;
-  private static String jdField_b_of_type_JavaLangString;
-  private static boolean jdField_b_of_type_Boolean = false;
-  private static String jdField_c_of_type_JavaLangString;
+  public static boolean b = false;
+  private static String c;
   private static String d;
   private static String e;
   private static String f;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new TaskManager.1(this);
-  private ArrayList<Task> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_c_of_type_Boolean = false;
+  private static String g;
+  private static String h;
+  private static boolean j = false;
+  private static long k = 0L;
+  private static long l = 3600000L;
+  private static TaskManager m = new TaskManager();
+  private static List<String> n;
+  private ArrayList<Task> i = new ArrayList();
+  private boolean o = false;
+  private INetInfoHandler p = new TaskManager.1(this);
   
   static
   {
     try
     {
-      jdField_a_of_type_Boolean = a();
+      b = a();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(OfflineEnvHelper.a("3412"));
+      localStringBuilder.append(OfflineEnvHelper.b("3412"));
       localStringBuilder.append("3412");
-      jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      c = localStringBuilder.toString();
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(c);
       localStringBuilder.append("/extraction");
-      jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
-      localStringBuilder.append("/process");
-      jdField_c_of_type_JavaLangString = localStringBuilder.toString();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
-      localStringBuilder.append("/distribution");
       d = localStringBuilder.toString();
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
-      localStringBuilder.append("/check");
+      localStringBuilder.append(c);
+      localStringBuilder.append("/process");
       e = localStringBuilder.toString();
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
-      localStringBuilder.append("/task_config");
+      localStringBuilder.append(c);
+      localStringBuilder.append("/distribution");
       f = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(c);
+      localStringBuilder.append("/check");
+      g = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(c);
+      localStringBuilder.append("/task_config");
+      h = localStringBuilder.toString();
       return;
     }
     catch (Throwable localThrowable)
@@ -90,86 +90,14 @@ public class TaskManager
   }
   
   @NotNull
-  private JSContext.Callback a()
+  private JSContext.Callback A()
   {
-    return new TaskManager.8(this);
-  }
-  
-  @NotNull
-  private JSContext.Callback a(Task paramTask)
-  {
-    return new TaskManager.14(this, paramTask);
+    return new TaskManager.27(this);
   }
   
   private Task a(File paramFile)
   {
-    return a(FileUtils.readFileContent(paramFile));
-  }
-  
-  private Task a(String paramString)
-  {
-    paramString = new JSONObject(paramString);
-    JSONArray localJSONArray1 = paramString.optJSONArray("filter");
-    JSONArray localJSONArray2 = paramString.optJSONArray("extraction");
-    JSONArray localJSONArray3 = paramString.optJSONArray("process");
-    JSONArray localJSONArray4 = paramString.optJSONArray("distribution");
-    JSONArray localJSONArray5 = paramString.optJSONArray("check");
-    Task localTask = new Task();
-    localTask.jdField_a_of_type_OrgJsonJSONObject = paramString;
-    localTask.jdField_a_of_type_JavaLangString = paramString.optString("id");
-    int j = 0;
-    int i;
-    if ((localJSONArray1 != null) && (localJSONArray1.length() > 0))
-    {
-      i = 0;
-      while (i < localJSONArray1.length())
-      {
-        a(localTask.jdField_a_of_type_JavaUtilArrayList, (JSONObject)localJSONArray1.opt(i));
-        i += 1;
-      }
-    }
-    if ((localJSONArray2 != null) && (localJSONArray2.length() > 0))
-    {
-      i = 0;
-      while (i < localJSONArray2.length())
-      {
-        a(localTask.jdField_b_of_type_JavaUtilArrayList, (JSONObject)localJSONArray2.opt(i));
-        i += 1;
-      }
-    }
-    if ((localJSONArray3 != null) && (localJSONArray3.length() > 0))
-    {
-      i = 0;
-      while (i < localJSONArray3.length())
-      {
-        a(localTask.jdField_c_of_type_JavaUtilArrayList, (JSONObject)localJSONArray3.opt(i));
-        i += 1;
-      }
-    }
-    if ((localJSONArray4 != null) && (localJSONArray4.length() > 0))
-    {
-      i = 0;
-      while (i < localJSONArray4.length())
-      {
-        a(localTask.jdField_d_of_type_JavaUtilArrayList, (JSONObject)localJSONArray4.opt(i));
-        i += 1;
-      }
-    }
-    if ((localJSONArray5 != null) && (localJSONArray5.length() > 0))
-    {
-      i = j;
-      while (i < localJSONArray5.length())
-      {
-        a(localTask.jdField_e_of_type_JavaUtilArrayList, (JSONObject)localJSONArray5.opt(i));
-        i += 1;
-      }
-    }
-    return localTask;
-  }
-  
-  public static TaskManager a()
-  {
-    return jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTaskManager;
+    return e(FileUtils.readFileContent(paramFile));
   }
   
   public static String a(String paramString)
@@ -214,15 +142,15 @@ public class TaskManager
     Object localObject2 = localObject1;
     if (paramArrayList != null)
     {
-      int i = 0;
+      int i1 = 0;
       for (;;)
       {
         localObject2 = localObject1;
-        if (i >= paramArrayList.size()) {
+        if (i1 >= paramArrayList.size()) {
           break;
         }
         localObject2 = localObject1;
-        if (i != 0)
+        if (i1 != 0)
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append((String)localObject1);
@@ -232,10 +160,10 @@ public class TaskManager
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append((String)localObject2);
         ((StringBuilder)localObject1).append("'");
-        ((StringBuilder)localObject1).append((String)paramArrayList.get(i));
+        ((StringBuilder)localObject1).append((String)paramArrayList.get(i1));
         ((StringBuilder)localObject1).append("'");
         localObject1 = ((StringBuilder)localObject1).toString();
-        i += 1;
+        i1 += 1;
       }
     }
     paramArrayList = new StringBuilder();
@@ -250,8 +178,8 @@ public class TaskManager
     while (paramArrayList.hasNext())
     {
       Task.ConfigItem localConfigItem = (Task.ConfigItem)paramArrayList.next();
-      if (localConfigItem.jdField_b_of_type_JavaLangString.equals(paramString)) {
-        return localConfigItem.jdField_a_of_type_JavaUtilArrayList;
+      if (localConfigItem.b.equals(paramString)) {
+        return localConfigItem.c;
       }
     }
     return null;
@@ -259,16 +187,16 @@ public class TaskManager
   
   private void a(Task paramTask, ArrayList<Task.ConfigItem> paramArrayList, int paramInt)
   {
-    JSContext localJSContext = paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext;
+    JSContext localJSContext = paramTask.a;
     String str;
-    if (paramInt == Task.i) {
-      str = jdField_b_of_type_JavaLangString;
-    } else if (paramInt == Task.j) {
-      str = jdField_c_of_type_JavaLangString;
-    } else if (paramInt == Task.k) {
+    if (paramInt == Task.k) {
       str = d;
     } else if (paramInt == Task.l) {
       str = e;
+    } else if (paramInt == Task.m) {
+      str = f;
+    } else if (paramInt == Task.n) {
+      str = g;
     } else {
       str = "";
     }
@@ -281,7 +209,7 @@ public class TaskManager
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(str);
         ((StringBuilder)localObject2).append("/");
-        ((StringBuilder)localObject2).append(((Task.ConfigItem)localObject1).jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(((Task.ConfigItem)localObject1).b);
         ((StringBuilder)localObject2).append(".js");
         localObject1 = ((StringBuilder)localObject2).toString();
         localObject2 = new File((String)localObject1);
@@ -298,7 +226,7 @@ public class TaskManager
               ((StringBuilder)localObject2).append("evaluate js exception: ");
               ((StringBuilder)localObject2).append(localObject1);
               QLog.d("kandianreport.taskmanager", 1, ((StringBuilder)localObject2).toString());
-              localObject2 = paramTask.jdField_a_of_type_JavaLangString;
+              localObject2 = paramTask.b;
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("evaluate js exception: ");
               localStringBuilder.append(localObject1);
@@ -347,8 +275,8 @@ public class TaskManager
       }
       localObject2 = ((JSONObject)localObject2).toString();
     }
-    localObject1 = b((String)localObject1);
-    localObject2 = b((String)localObject2);
+    localObject1 = d((String)localObject1);
+    localObject2 = d((String)localObject2);
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append(paramString);
     ((StringBuilder)localObject3).append("(");
@@ -377,7 +305,7 @@ public class TaskManager
       localStringBuilder.append(" ");
       localStringBuilder.append(paramStringBuffer);
       QLog.d("kandianreport.taskmanager", 1, localStringBuilder.toString());
-      paramTask = paramTask.jdField_a_of_type_JavaLangString;
+      paramTask = paramTask.b;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("evaluate js exception: ");
       localStringBuilder.append(paramString);
@@ -395,38 +323,38 @@ public class TaskManager
     Object localObject1 = paramJSONObject.optJSONArray("check");
     paramJSONObject = paramJSONObject.optJSONArray("args");
     Task.ConfigItem localConfigItem = new Task.ConfigItem();
-    localConfigItem.jdField_a_of_type_JavaLangString = str1;
-    localConfigItem.jdField_b_of_type_JavaLangString = str2;
-    int j = 0;
-    int i;
+    localConfigItem.a = str1;
+    localConfigItem.b = str2;
+    int i2 = 0;
+    int i1;
     if (localObject2 != null)
     {
-      i = 0;
-      while (i < ((JSONArray)localObject2).length())
+      i1 = 0;
+      while (i1 < ((JSONArray)localObject2).length())
       {
-        str1 = (String)((JSONArray)localObject2).opt(i);
-        localConfigItem.jdField_a_of_type_JavaUtilArrayList.add(str1);
-        i += 1;
+        str1 = (String)((JSONArray)localObject2).opt(i1);
+        localConfigItem.c.add(str1);
+        i1 += 1;
       }
     }
     if (localObject1 != null)
     {
-      i = 0;
-      while (i < ((JSONArray)localObject1).length())
+      i1 = 0;
+      while (i1 < ((JSONArray)localObject1).length())
       {
-        localObject2 = (String)((JSONArray)localObject1).opt(i);
-        localConfigItem.jdField_b_of_type_JavaUtilArrayList.add(localObject2);
-        i += 1;
+        localObject2 = (String)((JSONArray)localObject1).opt(i1);
+        localConfigItem.d.add(localObject2);
+        i1 += 1;
       }
     }
     if (paramJSONObject != null)
     {
-      i = j;
-      while (i < paramJSONObject.length())
+      i1 = i2;
+      while (i1 < paramJSONObject.length())
       {
-        localObject1 = (String)paramJSONObject.opt(i);
-        localConfigItem.jdField_c_of_type_JavaUtilArrayList.add(localObject1);
-        i += 1;
+        localObject1 = (String)paramJSONObject.opt(i1);
+        localConfigItem.e.add(localObject1);
+        i1 += 1;
       }
     }
     paramArrayList.add(localConfigItem);
@@ -435,29 +363,10 @@ public class TaskManager
   public static boolean a()
   {
     boolean bool = false;
-    if (((Integer)RIJSPUtils.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1) {
+    if (((Integer)RIJSPUtils.b("kandianreport_ON", Integer.valueOf(0))).intValue() == 1) {
       bool = true;
     }
     return bool;
-  }
-  
-  private boolean a(Task paramTask)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("kandianreport.taskmanager");
-    localStringBuilder.append(paramTask.jdField_a_of_type_JavaLangString);
-    paramTask = localStringBuilder.toString();
-    boolean bool2 = false;
-    int i = ((Integer)RIJSPUtils.a(paramTask, Integer.valueOf(0))).intValue();
-    boolean bool1 = bool2;
-    if (i != Task.f)
-    {
-      bool1 = bool2;
-      if (i != Task.jdField_e_of_type_Int) {
-        bool1 = true;
-      }
-    }
-    return bool1;
   }
   
   private String[] a(ArrayList<Task.ConfigItem> paramArrayList, ArrayList<String> paramArrayList1)
@@ -465,86 +374,27 @@ public class TaskManager
     if ((paramArrayList1 != null) && (paramArrayList1.size() > 0))
     {
       String[] arrayOfString = new String[paramArrayList1.size()];
-      int i = 0;
-      while (i < paramArrayList1.size())
+      int i1 = 0;
+      while (i1 < paramArrayList1.size())
       {
         Iterator localIterator = paramArrayList.iterator();
         while (localIterator.hasNext())
         {
           Task.ConfigItem localConfigItem = (Task.ConfigItem)localIterator.next();
-          if (localConfigItem.jdField_a_of_type_JavaLangString.equals(paramArrayList1.get(i))) {
-            arrayOfString[i] = localConfigItem.jdField_b_of_type_JavaLangString;
+          if (localConfigItem.a.equals(paramArrayList1.get(i1))) {
+            arrayOfString[i1] = localConfigItem.b;
           }
         }
-        i += 1;
+        i1 += 1;
       }
       return arrayOfString;
     }
     return null;
   }
   
-  @NotNull
-  private JSContext.Callback b()
+  public static TaskManager b()
   {
-    return new TaskManager.9(this);
-  }
-  
-  @NotNull
-  private JSContext.Callback b(Task paramTask)
-  {
-    return new TaskManager.15(this);
-  }
-  
-  public static String b(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int k = 0;
-    int i = 0;
-    int m;
-    for (int j = 1; k < paramString.length(); j = m)
-    {
-      char c1 = paramString.charAt(k);
-      if ((i == 0) && (c1 == '\\')) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      if (j != 0)
-      {
-        m = j;
-        if (c1 == ' ') {
-          break label126;
-        }
-        m = j;
-        if (c1 == '\r') {
-          break label126;
-        }
-        m = j;
-        if (c1 == '\n') {
-          break label126;
-        }
-        if (c1 == '\t')
-        {
-          m = j;
-          break label126;
-        }
-      }
-      localStringBuilder.append(c1);
-      m = j;
-      if (c1 == '"')
-      {
-        m = j;
-        if (i == 0) {
-          m = j ^ 0x1;
-        }
-      }
-      label126:
-      k += 1;
-    }
-    return localStringBuilder.toString().replaceAll("\r\n", "\\\\r\\\\n");
+    return m;
   }
   
   private ArrayList<String> b(ArrayList<Task.ConfigItem> paramArrayList, String paramString)
@@ -553,139 +403,244 @@ public class TaskManager
     while (paramArrayList.hasNext())
     {
       Task.ConfigItem localConfigItem = (Task.ConfigItem)paramArrayList.next();
-      if (localConfigItem.jdField_b_of_type_JavaLangString.equals(paramString)) {
-        return localConfigItem.jdField_c_of_type_JavaUtilArrayList;
+      if (localConfigItem.b.equals(paramString)) {
+        return localConfigItem.e;
       }
     }
     return null;
   }
   
-  private void b(Task paramTask)
+  private boolean b(Task paramTask)
   {
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext = new JSContext();
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a = paramTask;
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a();
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("doNext", f(paramTask));
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("setTimeout", e(paramTask));
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("QLog", p());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("getTaskId", d(paramTask));
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("setInterval", c(paramTask));
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("reportToServer", o());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("clearInterval", n());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("getPlatformInfo", m());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("createRIJStorage", l());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("setValueForKey", k());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("getValueForKey", j());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("removeKey", i());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("invalidate", h());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("reportCustomEvent", g());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("generateCustomData", b(paramTask));
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("httpRequest", a(paramTask));
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("alert", f());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("getAladdinConfig", e());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("decodeBase64", d());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("encodeBase64", c());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("getUserUin", b());
-    paramTask.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext.a("isPublicVersion", a());
-    paramTask.g = Task.jdField_b_of_type_Int;
-  }
-  
-  @NotNull
-  private JSContext.Callback c()
-  {
-    return new TaskManager.10(this);
-  }
-  
-  @NotNull
-  private JSContext.Callback c(Task paramTask)
-  {
-    return new TaskManager.25(this, paramTask);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("kandianreport.taskmanager");
+    localStringBuilder.append(paramTask.b);
+    paramTask = localStringBuilder.toString();
+    boolean bool2 = false;
+    int i1 = ((Integer)RIJSPUtils.b(paramTask, Integer.valueOf(0))).intValue();
+    boolean bool1 = bool2;
+    if (i1 != Task.h)
+    {
+      bool1 = bool2;
+      if (i1 != Task.g) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private void c(Task paramTask)
   {
-    a(paramTask, paramTask.jdField_b_of_type_JavaUtilArrayList, Task.i);
-    a(paramTask, paramTask.jdField_c_of_type_JavaUtilArrayList, Task.j);
-    a(paramTask, paramTask.jdField_d_of_type_JavaUtilArrayList, Task.k);
-    a(paramTask, paramTask.jdField_e_of_type_JavaUtilArrayList, Task.l);
-    paramTask.g = Task.jdField_c_of_type_Int;
-  }
-  
-  @NotNull
-  private JSContext.Callback d()
-  {
-    return new TaskManager.11(this);
+    paramTask.a = new JSContext();
+    paramTask.a.a = paramTask;
+    paramTask.a.a();
+    paramTask.a.a("doNext", i(paramTask));
+    paramTask.a.a("setTimeout", h(paramTask));
+    paramTask.a.a("QLog", A());
+    paramTask.a.a("getTaskId", g(paramTask));
+    paramTask.a.a("setInterval", f(paramTask));
+    paramTask.a.a("reportToServer", z());
+    paramTask.a.a("clearInterval", y());
+    paramTask.a.a("getPlatformInfo", x());
+    paramTask.a.a("createRIJStorage", w());
+    paramTask.a.a("setValueForKey", v());
+    paramTask.a.a("getValueForKey", u());
+    paramTask.a.a("removeKey", t());
+    paramTask.a.a("invalidate", s());
+    paramTask.a.a("reportCustomEvent", r());
+    paramTask.a.a("generateCustomData", e(paramTask));
+    paramTask.a.a("httpRequest", d(paramTask));
+    paramTask.a.a("alert", q());
+    paramTask.a.a("getAladdinConfig", p());
+    paramTask.a.a("decodeBase64", o());
+    paramTask.a.a("encodeBase64", n());
+    paramTask.a.a("getUserUin", m());
+    paramTask.a.a("isPublicVersion", l());
+    paramTask.i = Task.d;
   }
   
   @NotNull
   private JSContext.Callback d(Task paramTask)
   {
-    return new TaskManager.26(this, paramTask);
+    return new TaskManager.14(this, paramTask);
   }
   
-  @NotNull
-  private JSContext.Callback e()
+  public static String d(String paramString)
   {
-    return new TaskManager.12(this);
+    if (paramString == null) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i3 = 0;
+    int i1 = 0;
+    int i4;
+    for (int i2 = 1; i3 < paramString.length(); i2 = i4)
+    {
+      char c1 = paramString.charAt(i3);
+      if ((i1 == 0) && (c1 == '\\')) {
+        i1 = 1;
+      } else {
+        i1 = 0;
+      }
+      if (i2 != 0)
+      {
+        i4 = i2;
+        if (c1 == ' ') {
+          break label126;
+        }
+        i4 = i2;
+        if (c1 == '\r') {
+          break label126;
+        }
+        i4 = i2;
+        if (c1 == '\n') {
+          break label126;
+        }
+        if (c1 == '\t')
+        {
+          i4 = i2;
+          break label126;
+        }
+      }
+      localStringBuilder.append(c1);
+      i4 = i2;
+      if (c1 == '"')
+      {
+        i4 = i2;
+        if (i1 == 0) {
+          i4 = i2 ^ 0x1;
+        }
+      }
+      label126:
+      i3 += 1;
+    }
+    return localStringBuilder.toString().replaceAll("\r\n", "\\\\r\\\\n");
   }
   
   @NotNull
   private JSContext.Callback e(Task paramTask)
   {
-    return new TaskManager.28(this, paramTask);
+    return new TaskManager.15(this);
   }
   
-  private void e()
+  private Task e(String paramString)
   {
-    jdField_a_of_type_JavaUtilList = Arrays.asList(Aladdin.getConfig(177).getString("kandian_feature_compute_tasks", "").split("\\|"));
-  }
-  
-  @NotNull
-  private JSContext.Callback f()
-  {
-    return new TaskManager.13(this);
+    paramString = new JSONObject(paramString);
+    JSONArray localJSONArray1 = paramString.optJSONArray("filter");
+    JSONArray localJSONArray2 = paramString.optJSONArray("extraction");
+    JSONArray localJSONArray3 = paramString.optJSONArray("process");
+    JSONArray localJSONArray4 = paramString.optJSONArray("distribution");
+    JSONArray localJSONArray5 = paramString.optJSONArray("check");
+    Task localTask = new Task();
+    localTask.o = paramString;
+    localTask.b = paramString.optString("id");
+    int i2 = 0;
+    int i1;
+    if ((localJSONArray1 != null) && (localJSONArray1.length() > 0))
+    {
+      i1 = 0;
+      while (i1 < localJSONArray1.length())
+      {
+        a(localTask.p, (JSONObject)localJSONArray1.opt(i1));
+        i1 += 1;
+      }
+    }
+    if ((localJSONArray2 != null) && (localJSONArray2.length() > 0))
+    {
+      i1 = 0;
+      while (i1 < localJSONArray2.length())
+      {
+        a(localTask.q, (JSONObject)localJSONArray2.opt(i1));
+        i1 += 1;
+      }
+    }
+    if ((localJSONArray3 != null) && (localJSONArray3.length() > 0))
+    {
+      i1 = 0;
+      while (i1 < localJSONArray3.length())
+      {
+        a(localTask.r, (JSONObject)localJSONArray3.opt(i1));
+        i1 += 1;
+      }
+    }
+    if ((localJSONArray4 != null) && (localJSONArray4.length() > 0))
+    {
+      i1 = 0;
+      while (i1 < localJSONArray4.length())
+      {
+        a(localTask.s, (JSONObject)localJSONArray4.opt(i1));
+        i1 += 1;
+      }
+    }
+    if ((localJSONArray5 != null) && (localJSONArray5.length() > 0))
+    {
+      i1 = i2;
+      while (i1 < localJSONArray5.length())
+      {
+        a(localTask.t, (JSONObject)localJSONArray5.opt(i1));
+        i1 += 1;
+      }
+    }
+    return localTask;
   }
   
   @NotNull
   private JSContext.Callback f(Task paramTask)
   {
-    return new TaskManager.29(this, paramTask);
+    return new TaskManager.25(this, paramTask);
   }
   
-  private void f()
+  @NotNull
+  private JSContext.Callback g(Task paramTask)
+  {
+    return new TaskManager.26(this, paramTask);
+  }
+  
+  private void g()
+  {
+    n = Arrays.asList(Aladdin.getConfig(177).getString("kandian_feature_compute_tasks", "").split("\\|"));
+  }
+  
+  @NotNull
+  private JSContext.Callback h(Task paramTask)
+  {
+    return new TaskManager.28(this, paramTask);
+  }
+  
+  private void h()
   {
     ThreadManager.getFileThreadHandler().post(new TaskManager.5(this));
   }
   
   @NotNull
-  private JSContext.Callback g()
+  private JSContext.Callback i(Task paramTask)
   {
-    return new TaskManager.16(this);
+    return new TaskManager.29(this, paramTask);
   }
   
-  private void g()
+  private void i()
   {
     try
     {
-      if (jdField_b_of_type_Boolean) {
+      if (j) {
         return;
       }
-      if (!FileUtils.fileExists(jdField_a_of_type_JavaLangString)) {
+      if (!FileUtils.fileExists(c)) {
         QLog.d("kandianreport.taskmanager", 1, "startTasksIfExist: offline root dir is null");
       }
       try
       {
-        if (!OfflineSecurity.a(jdField_a_of_type_JavaLangString, "3412"))
+        if (!OfflineSecurity.a(c, "3412"))
         {
           KandianReportSoLoader.a("startTasksIfExist: verification failed");
           return;
         }
-        e();
-        h();
-        i();
+        g();
+        j();
+        k();
         StringBuilder localStringBuilder1 = new StringBuilder();
         localStringBuilder1.append("startTasksIfExist tasks size are: ");
-        localStringBuilder1.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+        localStringBuilder1.append(this.i.size());
         KandianReportSoLoader.a(localStringBuilder1.toString());
         return;
       }
@@ -722,31 +677,25 @@ public class TaskManager
     }
   }
   
-  @NotNull
-  private JSContext.Callback h()
-  {
-    return new TaskManager.17(this);
-  }
-  
-  private void h()
+  private void j()
   {
     QLog.d("kandianreport.taskmanager", 1, "readTasksFromConfigFile...");
-    if (FileUtils.fileExists(f))
+    if (FileUtils.fileExists(h))
     {
-      Object localObject1 = new File(f).listFiles();
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      Object localObject1 = new File(h).listFiles();
+      this.i.clear();
       if ((localObject1 != null) && (localObject1.length > 0))
       {
-        int j = localObject1.length;
-        int i = 0;
-        while (i < j)
+        int i2 = localObject1.length;
+        int i1 = 0;
+        while (i1 < i2)
         {
-          Object localObject2 = localObject1[i];
+          Object localObject2 = localObject1[i1];
           try
           {
             localObject2 = a((File)localObject2);
-            if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() > 0) && (("*".equals(jdField_a_of_type_JavaUtilList.get(0))) || (jdField_a_of_type_JavaUtilList.contains(((Task)localObject2).jdField_a_of_type_JavaLangString)))) {
-              this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+            if ((n != null) && (n.size() > 0) && (("*".equals(n.get(0))) || (n.contains(((Task)localObject2).b)))) {
+              this.i.add(localObject2);
             }
           }
           catch (Exception localException)
@@ -754,12 +703,12 @@ public class TaskManager
             QLog.d("kandianreport.taskmanager", 2, localException.getMessage());
             TaskException.b(localException.getMessage());
           }
-          i += 1;
+          i1 += 1;
         }
       }
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      if (this.i.size() > 0)
       {
-        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localObject1 = this.i.iterator();
         while (((Iterator)localObject1).hasNext()) {
           QLog.d("kandianreport.taskmanager", 1, ((Task)((Iterator)localObject1).next()).toString());
         }
@@ -768,32 +717,35 @@ public class TaskManager
     }
   }
   
-  @NotNull
-  private JSContext.Callback i()
+  private void j(Task paramTask)
   {
-    return new TaskManager.18(this);
+    a(paramTask, paramTask.q, Task.k);
+    a(paramTask, paramTask.r, Task.l);
+    a(paramTask, paramTask.s, Task.m);
+    a(paramTask, paramTask.t, Task.n);
+    paramTask.i = Task.e;
   }
   
-  private void i()
+  private void k()
   {
     QLog.d("kandianreport.taskmanager", 1, "startTasksInList...");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Task)localIterator.next();
       try
       {
-        if (a((Task)localObject))
+        if (b((Task)localObject))
         {
-          b((Task)localObject);
           c((Task)localObject);
+          j((Task)localObject);
         }
         else
         {
           StringBuilder localStringBuilder1 = new StringBuilder();
-          localStringBuilder1.append(((Task)localObject).jdField_a_of_type_JavaLangString);
+          localStringBuilder1.append(((Task)localObject).b);
           localStringBuilder1.append(" available status is ");
-          localStringBuilder1.append(((Task)localObject).g);
+          localStringBuilder1.append(((Task)localObject).i);
           QLog.d("kandianreport.taskmanager", 1, localStringBuilder1.toString());
         }
       }
@@ -804,7 +756,7 @@ public class TaskManager
         localStringBuilder2.append("startTasksInList unexpected error: ");
         localStringBuilder2.append(localError.getMessage());
         QLog.d("kandianreport.taskmanager", 1, localStringBuilder2.toString());
-        localObject = ((Task)localObject).jdField_a_of_type_JavaLangString;
+        localObject = ((Task)localObject).b;
         localStringBuilder2 = new StringBuilder();
         localStringBuilder2.append("startTasksInList unexpected error: ");
         localStringBuilder2.append(localError.getMessage());
@@ -817,160 +769,243 @@ public class TaskManager
         localStringBuilder2.append("startTasksInList unexpected exception: ");
         localStringBuilder2.append(localException.getMessage());
         QLog.d("kandianreport.taskmanager", 1, localStringBuilder2.toString());
-        localObject = ((Task)localObject).jdField_a_of_type_JavaLangString;
+        localObject = ((Task)localObject).b;
         localStringBuilder2 = new StringBuilder();
         localStringBuilder2.append("startTasksInList unexpected exception: ");
         localStringBuilder2.append(localException.getMessage());
         TaskException.a((String)localObject, localStringBuilder2.toString());
       }
     }
-    jdField_b_of_type_Boolean = true;
-  }
-  
-  @NotNull
-  private JSContext.Callback j()
-  {
-    return new TaskManager.19(this);
-  }
-  
-  @NotNull
-  private JSContext.Callback k()
-  {
-    return new TaskManager.20(this);
+    j = true;
   }
   
   @NotNull
   private JSContext.Callback l()
   {
-    return new TaskManager.21(this);
+    return new TaskManager.8(this);
   }
   
   @NotNull
   private JSContext.Callback m()
   {
-    return new TaskManager.22(this);
+    return new TaskManager.9(this);
   }
   
   @NotNull
   private JSContext.Callback n()
   {
-    return new TaskManager.23(this);
+    return new TaskManager.10(this);
   }
   
   @NotNull
   private JSContext.Callback o()
   {
-    return new TaskManager.24(this);
+    return new TaskManager.11(this);
   }
   
   @NotNull
   private JSContext.Callback p()
   {
-    return new TaskManager.27(this);
+    return new TaskManager.12(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback q()
+  {
+    return new TaskManager.13(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback r()
+  {
+    return new TaskManager.16(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback s()
+  {
+    return new TaskManager.17(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback t()
+  {
+    return new TaskManager.18(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback u()
+  {
+    return new TaskManager.19(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback v()
+  {
+    return new TaskManager.20(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback w()
+  {
+    return new TaskManager.21(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback x()
+  {
+    return new TaskManager.22(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback y()
+  {
+    return new TaskManager.23(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback z()
+  {
+    return new TaskManager.24(this);
+  }
+  
+  public void a(Task paramTask)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mark task fail ");
+    localStringBuilder.append(paramTask.b);
+    QLog.d("kandianreport.taskmanager", 2, localStringBuilder.toString());
+    paramTask.i = Task.h;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("kandianreport.taskmanager");
+    localStringBuilder.append(paramTask.b);
+    RIJSPUtils.a(localStringBuilder.toString(), Integer.valueOf(Task.h));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    long l1 = System.currentTimeMillis();
+    if (l1 - k >= l) {
+      TaskOfflineUtils.a("3412", 1, new TaskManager.30(this, paramBoolean));
+    }
+    k = l1;
+  }
+  
+  public void b(String paramString)
+  {
+    if ((b) && (j) && (!TextUtils.isEmpty(paramString)))
+    {
+      if (!KandianReportSoLoader.a())
+      {
+        QLog.d("kandianreport.taskmanager", 2, "accept so not load");
+        return;
+      }
+      ThreadManager.getFileThreadHandler().post(new TaskManager.6(this, paramString));
+    }
   }
   
   /* Error */
-  public void a()
+  public void c()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 38	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:a	()Z
-    //   5: putstatic 40	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:jdField_a_of_type_Boolean	Z
-    //   8: getstatic 40	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:jdField_a_of_type_Boolean	Z
+    //   2: invokestatic 48	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:a	()Z
+    //   5: putstatic 50	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:b	Z
+    //   8: getstatic 50	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:b	Z
     //   11: ifeq +114 -> 125
-    //   14: getstatic 675	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:jdField_b_of_type_Boolean	Z
+    //   14: getstatic 670	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:j	Z
     //   17: ifne +108 -> 125
-    //   20: ldc_w 775
-    //   23: invokestatic 692	com/tencent/mobileqq/kandian/glue/report/task/KandianReportSoLoader:a	(Ljava/lang/String;)V
+    //   20: ldc_w 820
+    //   23: invokestatic 687	com/tencent/mobileqq/kandian/glue/report/task/KandianReportSoLoader:a	(Ljava/lang/String;)V
     //   26: aload_0
-    //   27: getfield 99	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:jdField_c_of_type_Boolean	Z
+    //   27: getfield 109	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:o	Z
     //   30: ifne +18 -> 48
-    //   33: invokestatic 778	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   33: invokestatic 823	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   36: aload_0
-    //   37: getfield 106	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler	Lcom/tencent/mobileqq/msf/sdk/handler/INetInfoHandler;
-    //   40: invokestatic 784	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:registerConnectionChangeReceiver	(Landroid/content/Context;Lcom/tencent/mobileqq/msf/sdk/handler/INetInfoHandler;)V
+    //   37: getfield 116	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:p	Lcom/tencent/mobileqq/msf/sdk/handler/INetInfoHandler;
+    //   40: invokestatic 829	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:registerConnectionChangeReceiver	(Landroid/content/Context;Lcom/tencent/mobileqq/msf/sdk/handler/INetInfoHandler;)V
     //   43: aload_0
     //   44: iconst_1
-    //   45: putfield 99	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:jdField_c_of_type_Boolean	Z
-    //   48: ldc 45
+    //   45: putfield 109	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:o	Z
+    //   48: ldc 55
     //   50: iconst_1
-    //   51: invokestatic 789	com/tencent/mobileqq/kandian/glue/report/task/TaskOfflineUtils:a	(Ljava/lang/String;I)Lcom/tencent/mobileqq/kandian/glue/report/task/TaskOfflineUtils$ConfigData;
-    //   54: getfield 793	com/tencent/mobileqq/kandian/glue/report/task/TaskOfflineUtils$ConfigData:jdField_a_of_type_Int	I
-    //   57: putstatic 794	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:jdField_a_of_type_Int	I
-    //   60: invokestatic 795	com/tencent/mobileqq/kandian/glue/report/task/KandianReportSoLoader:a	()Z
+    //   51: invokestatic 832	com/tencent/mobileqq/kandian/glue/report/task/TaskOfflineUtils:a	(Ljava/lang/String;I)Lcom/tencent/mobileqq/kandian/glue/report/task/TaskOfflineUtils$ConfigData;
+    //   54: getfield 836	com/tencent/mobileqq/kandian/glue/report/task/TaskOfflineUtils$ConfigData:b	I
+    //   57: putstatic 838	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:a	I
+    //   60: invokestatic 811	com/tencent/mobileqq/kandian/glue/report/task/KandianReportSoLoader:a	()Z
     //   63: ifeq +19 -> 82
-    //   66: ldc 82
+    //   66: ldc 92
     //   68: iconst_1
-    //   69: ldc_w 797
-    //   72: invokestatic 267	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   69: ldc_w 840
+    //   72: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   75: aload_0
-    //   76: invokespecial 376	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:f	()V
+    //   76: invokespecial 333	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:h	()V
     //   79: goto +136 -> 215
-    //   82: ldc 82
+    //   82: ldc 92
     //   84: iconst_1
-    //   85: ldc_w 799
-    //   88: invokestatic 267	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   91: invokestatic 801	com/tencent/mobileqq/kandian/glue/report/task/KandianReportSoLoader:b	()Z
+    //   85: ldc_w 842
+    //   88: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   91: invokestatic 844	com/tencent/mobileqq/kandian/glue/report/task/KandianReportSoLoader:d	()Z
     //   94: ifne +17 -> 111
-    //   97: new 803	com/tencent/mobileqq/kandian/glue/report/task/TaskManager$3
+    //   97: new 846	com/tencent/mobileqq/kandian/glue/report/task/TaskManager$3
     //   100: dup
     //   101: aload_0
-    //   102: invokespecial 804	com/tencent/mobileqq/kandian/glue/report/task/TaskManager$3:<init>	(Lcom/tencent/mobileqq/kandian/glue/report/task/TaskManager;)V
-    //   105: invokestatic 807	com/tencent/mobileqq/kandian/glue/report/task/KandianReportSoLoader:a	(Ljava/lang/Runnable;)V
+    //   102: invokespecial 847	com/tencent/mobileqq/kandian/glue/report/task/TaskManager$3:<init>	(Lcom/tencent/mobileqq/kandian/glue/report/task/TaskManager;)V
+    //   105: invokestatic 850	com/tencent/mobileqq/kandian/glue/report/task/KandianReportSoLoader:a	(Ljava/lang/Runnable;)V
     //   108: goto +107 -> 215
-    //   111: new 809	com/tencent/mobileqq/kandian/glue/report/task/TaskManager$4
+    //   111: new 852	com/tencent/mobileqq/kandian/glue/report/task/TaskManager$4
     //   114: dup
     //   115: aload_0
-    //   116: invokespecial 810	com/tencent/mobileqq/kandian/glue/report/task/TaskManager$4:<init>	(Lcom/tencent/mobileqq/kandian/glue/report/task/TaskManager;)V
-    //   119: invokestatic 812	com/tencent/mobileqq/kandian/glue/report/task/KandianReportSoLoader:b	(Ljava/lang/Runnable;)V
+    //   116: invokespecial 853	com/tencent/mobileqq/kandian/glue/report/task/TaskManager$4:<init>	(Lcom/tencent/mobileqq/kandian/glue/report/task/TaskManager;)V
+    //   119: invokestatic 855	com/tencent/mobileqq/kandian/glue/report/task/KandianReportSoLoader:b	(Ljava/lang/Runnable;)V
     //   122: goto +93 -> 215
-    //   125: new 42	java/lang/StringBuilder
+    //   125: new 52	java/lang/StringBuilder
     //   128: dup
-    //   129: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   129: invokespecial 53	java/lang/StringBuilder:<init>	()V
     //   132: astore_1
     //   133: aload_1
-    //   134: ldc_w 814
-    //   137: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: ldc_w 857
+    //   137: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   140: pop
     //   141: aload_1
-    //   142: getstatic 40	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:jdField_a_of_type_Boolean	Z
-    //   145: invokevirtual 817	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   142: getstatic 50	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:b	Z
+    //   145: invokevirtual 860	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   148: pop
     //   149: aload_1
-    //   150: ldc_w 819
-    //   153: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: ldc_w 862
+    //   153: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   156: pop
     //   157: aload_1
-    //   158: getstatic 675	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:jdField_b_of_type_Boolean	Z
-    //   161: invokevirtual 817	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   158: getstatic 670	com/tencent/mobileqq/kandian/glue/report/task/TaskManager:j	Z
+    //   161: invokevirtual 860	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   164: pop
-    //   165: ldc 82
+    //   165: ldc 92
     //   167: iconst_2
     //   168: aload_1
-    //   169: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   172: invokestatic 267	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   169: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   172: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   175: goto +40 -> 215
     //   178: astore_1
     //   179: goto +39 -> 218
     //   182: astore_1
-    //   183: new 42	java/lang/StringBuilder
+    //   183: new 52	java/lang/StringBuilder
     //   186: dup
-    //   187: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   187: invokespecial 53	java/lang/StringBuilder:<init>	()V
     //   190: astore_2
     //   191: aload_2
-    //   192: ldc_w 821
-    //   195: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: ldc_w 864
+    //   195: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   198: pop
     //   199: aload_2
     //   200: aload_1
-    //   201: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   201: invokevirtual 322	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   204: pop
-    //   205: ldc 82
+    //   205: ldc 92
     //   207: iconst_2
     //   208: aload_2
-    //   209: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   212: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   209: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   212: invokestatic 100	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   215: aload_0
     //   216: monitorexit
     //   217: return
@@ -1000,73 +1035,38 @@ public class TaskManager
     //   125	175	182	java/lang/Throwable
   }
   
-  public void a(Task paramTask)
+  public void c(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mark task fail ");
-    localStringBuilder.append(paramTask.jdField_a_of_type_JavaLangString);
-    QLog.d("kandianreport.taskmanager", 2, localStringBuilder.toString());
-    paramTask.g = Task.f;
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("kandianreport.taskmanager");
-    localStringBuilder.append(paramTask.jdField_a_of_type_JavaLangString);
-    RIJSPUtils.a(localStringBuilder.toString(), Integer.valueOf(Task.f));
-  }
-  
-  public void a(String paramString)
-  {
-    if ((jdField_a_of_type_Boolean) && (jdField_b_of_type_Boolean) && (!TextUtils.isEmpty(paramString)))
-    {
-      if (!KandianReportSoLoader.a())
-      {
-        QLog.d("kandianreport.taskmanager", 2, "accept so not load");
-        return;
-      }
-      ThreadManager.getFileThreadHandler().post(new TaskManager.6(this, paramString));
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long >= jdField_b_of_type_Long) {
-      TaskOfflineUtils.a("3412", 1, new TaskManager.30(this, paramBoolean));
-    }
-    jdField_a_of_type_Long = l;
-  }
-  
-  public void b()
-  {
-    QLog.d("kandianreport.taskmanager", 2, "restartAllTasks");
-    c();
-    a();
-  }
-  
-  public void b(String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext())
     {
       Task localTask = (Task)localIterator.next();
-      if (localTask.jdField_a_of_type_JavaLangString == paramString) {
-        localTask.g = Task.jdField_d_of_type_Int;
+      if (localTask.b == paramString) {
+        localTask.i = Task.f;
       }
     }
   }
   
-  public void c()
+  public void d()
+  {
+    QLog.d("kandianreport.taskmanager", 2, "restartAllTasks");
+    e();
+    c();
+  }
+  
+  public void e()
   {
     try
     {
-      if (jdField_b_of_type_Boolean)
+      if (j)
       {
         QLog.d("kandianreport.taskmanager", 1, "stopAllTasks");
-        jdField_b_of_type_Boolean = false;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        j = false;
+        Iterator localIterator = this.i.iterator();
         while (localIterator.hasNext()) {
-          b(((Task)localIterator.next()).jdField_a_of_type_JavaLangString);
+          c(((Task)localIterator.next()).b);
         }
-        this.jdField_c_of_type_Boolean = false;
+        this.o = false;
       }
       return;
     }
@@ -1076,15 +1076,10 @@ public class TaskManager
       throw localObject;
     }
   }
-  
-  public void d()
-  {
-    ThreadManager.getFileThreadHandler().post(new TaskManager.7(this));
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.task.TaskManager
  * JD-Core Version:    0.7.0.1
  */

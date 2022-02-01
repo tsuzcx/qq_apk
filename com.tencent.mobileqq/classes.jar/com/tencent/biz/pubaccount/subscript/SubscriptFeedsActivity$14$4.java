@@ -8,13 +8,13 @@ class SubscriptFeedsActivity$14$4
   public void run()
   {
     if (this.a.a.a != null) {
-      this.a.a.a.h();
+      this.a.a.a.i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.4
  * JD-Core Version:    0.7.0.1
  */

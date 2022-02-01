@@ -32,16 +32,16 @@ class TroopRequestActivity$23
     }
     this.a.h();
     paramBundle = this.a;
-    QQToast.a(paramBundle, paramBundle.getString(2131697384), 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(paramBundle, paramBundle.getString(2131895157), 0).show(this.a.getTitleBarHeight());
     return;
     this.a.h();
     paramBundle = this.a;
-    QQToast.a(paramBundle, paramBundle.getString(2131697384), 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(paramBundle, paramBundle.getString(2131895157), 0).show(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.23
  * JD-Core Version:    0.7.0.1
  */

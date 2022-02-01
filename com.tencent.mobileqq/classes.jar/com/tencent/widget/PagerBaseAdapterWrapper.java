@@ -8,53 +8,53 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class PagerBaseAdapterWrapper
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = 1;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
-  private int b;
+  private int a = 1;
+  private BaseAdapter b;
+  private int c;
   
   public PagerBaseAdapterWrapper(BaseAdapter paramBaseAdapter, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
+    this.b = paramBaseAdapter;
     if (paramInt <= 0) {
       paramInt = 1;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    paramBaseAdapter = this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    this.a = paramInt;
+    paramBaseAdapter = this.b;
     if (paramBaseAdapter != null) {
       paramBaseAdapter.registerDataSetObserver(new PagerBaseAdapterWrapper.1(this));
     }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    return this.b;
   }
   
   public void a(int paramInt)
   {
-    int i = b();
+    int i = c();
     if (paramInt < 0)
     {
-      this.b = 0;
+      this.c = 0;
       return;
     }
     if (paramInt >= i)
     {
-      this.b = (i - 1);
+      this.c = (i - 1);
       return;
     }
-    this.b = paramInt;
+    this.c = paramInt;
   }
   
   public int b()
   {
-    int i = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
-    int k = this.jdField_a_of_type_Int;
+    return this.a;
+  }
+  
+  public int c()
+  {
+    int i = this.b.getCount();
+    int k = this.a;
     int j = i / k;
     if (i % k != 0) {
       i = 1;
@@ -66,9 +66,9 @@ public class PagerBaseAdapterWrapper
   
   public int getCount()
   {
-    int k = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
-    int m = this.b;
-    int j = this.jdField_a_of_type_Int;
+    int k = this.b.getCount();
+    int m = this.c;
+    int j = this.a;
     int i = j;
     if ((m + 1) * j > k) {
       i = k % j;
@@ -78,24 +78,24 @@ public class PagerBaseAdapterWrapper
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItem(this.b * this.jdField_a_of_type_Int + paramInt);
+    return this.b.getItem(this.c * this.a + paramInt);
   }
   
   public long getItemId(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemId(this.b * this.jdField_a_of_type_Int + paramInt);
+    return this.b.getItemId(this.c * this.a + paramInt);
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(this.b * this.jdField_a_of_type_Int + paramInt, paramView, paramViewGroup);
+    View localView = this.b.getView(this.c * this.a + paramInt, paramView, paramViewGroup);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.PagerBaseAdapterWrapper
  * JD-Core Version:    0.7.0.1
  */

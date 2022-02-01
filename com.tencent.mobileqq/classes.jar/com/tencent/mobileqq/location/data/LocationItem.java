@@ -5,56 +5,56 @@ import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 public class LocationItem
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int = -1;
-  private LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private LatLng b;
+  private double c;
+  private int d = -1;
   
   public LocationItem(String paramString, LatLng paramLatLng, double paramDouble)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    this.jdField_a_of_type_Double = paramDouble;
-  }
-  
-  public double a()
-  {
-    return this.jdField_a_of_type_Double;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramString;
+    this.b = paramLatLng;
+    this.c = paramDouble;
   }
   
   public LatLng a()
   {
-    return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = null;
+    return this.b;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void a(LatLng paramLatLng, Double paramDouble)
   {
     if (paramLatLng != null) {
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+      this.b = paramLatLng;
     }
     if (paramDouble != null) {
-      this.jdField_a_of_type_Double = paramDouble.doubleValue();
+      this.c = paramDouble.doubleValue();
     }
+  }
+  
+  public double b()
+  {
+    return this.c;
+  }
+  
+  public String c()
+  {
+    return this.a;
+  }
+  
+  public void d()
+  {
+    this.b = null;
+  }
+  
+  public int e()
+  {
+    return this.d;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -62,7 +62,7 @@ public class LocationItem
     if ((paramObject instanceof LocationItem))
     {
       paramObject = (LocationItem)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.a());
+      return this.a.equals(paramObject.c());
     }
     return super.equals(paramObject);
   }
@@ -71,19 +71,19 @@ public class LocationItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("LocationItem{mUin='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mLatLng=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", mRotation=");
-    localStringBuilder.append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.data.LocationItem
  * JD-Core Version:    0.7.0.1
  */

@@ -21,13 +21,13 @@ class ScanTorchActivity$3
       QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
     }
     if ("com.tencent.mobileqq__alive".equals(paramAppRuntime)) {
-      ScanTorchActivity.a(this.a);
+      ScanTorchActivity.access$008(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.ScanTorchActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.wink.editor.music.lyric.widget.LyricViewScroll android:id="@id/l37" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.wink.editor.music.lyric.widget.LyricViewInternalSingleLine android:id="@id/l36" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="1.0dip" />
+    </FrameLayout>
+</com.tencent.mobileqq.wink.editor.music.lyric.widget.LyricViewScroll>

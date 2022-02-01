@@ -19,16 +19,16 @@ final class TroopGiftResManager$asyncDownload$1
     try
     {
       Object localObject1 = new ArrayList();
-      Object localObject3 = this.jdField_a_of_type_ArrayOfJavaLangString;
+      Object localObject3 = this.a;
       int j = localObject3.length;
       int i = 0;
       while (i < j)
       {
         String str = localObject3[i];
-        TroopGiftResManager.a(TroopGiftResManager.a, this.jdField_a_of_type_AndroidContentContext, str, (Function1)new TroopGiftResManager.asyncDownload.1..special..inlined.synchronized.lambda.1((ArrayList)localObject1, this));
+        TroopGiftResManager.a(TroopGiftResManager.a, this.b, str, (Function1)new TroopGiftResManager.asyncDownload.1..special..inlined.synchronized.lambda.1((ArrayList)localObject1, this));
         i += 1;
       }
-      localObject3 = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+      localObject3 = this.c;
       localObject1 = ((ArrayList)localObject1).toArray(new File[0]);
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "files.toArray(emptyArray())");
       ((Function1)localObject3).invoke(localObject1);
@@ -44,7 +44,7 @@ final class TroopGiftResManager$asyncDownload$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopgift.TroopGiftResManager.asyncDownload.1
  * JD-Core Version:    0.7.0.1
  */

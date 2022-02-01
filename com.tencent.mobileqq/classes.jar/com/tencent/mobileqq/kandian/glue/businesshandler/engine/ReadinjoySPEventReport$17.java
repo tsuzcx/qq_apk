@@ -23,7 +23,7 @@ final class ReadinjoySPEventReport$17
     {
       try
       {
-        if (!ReadinjoySPEventReport.b(61)) {
+        if (!ReadinjoySPEventReport.j(61)) {
           return;
         }
         int k = -1;
@@ -105,7 +105,7 @@ final class ReadinjoySPEventReport$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.17
  * JD-Core Version:    0.7.0.1
  */

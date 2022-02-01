@@ -12,16 +12,16 @@ class SearchBaseActivity$3
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if (this.a.h != 1) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    this.a.K.setText("");
+    if (this.a.G != 1) {
+      this.a.M.e();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity.3
  * JD-Core Version:    0.7.0.1
  */

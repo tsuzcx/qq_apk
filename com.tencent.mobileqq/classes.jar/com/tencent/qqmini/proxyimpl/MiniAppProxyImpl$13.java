@@ -24,7 +24,7 @@ class MiniAppProxyImpl$13
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        boolean bool = this.jdField_a_of_type_Boolean;
+        boolean bool = this.a;
         if ((bool) && (paramSosoLbsInfo.mLat84 != 0.0D) && (paramSosoLbsInfo.mLon84 != 0.0D))
         {
           localJSONObject.put("latitude", paramSosoLbsInfo.mLat84);
@@ -42,7 +42,7 @@ class MiniAppProxyImpl$13
         }
         localJSONObject.put("verticalAccuracy", 0.0D);
         localJSONObject.put("horizontalAccuracy", paramSosoLbsInfo.accuracy);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, localJSONObject);
+        this.c.onReceiveResult(true, localJSONObject);
         return;
       }
       catch (JSONException paramSosoLbsInfo)
@@ -50,7 +50,7 @@ class MiniAppProxyImpl$13
         if (QLog.isColorLevel()) {
           QLog.e("MiniAppProxyImpl", 2, paramSosoLbsInfo, new Object[0]);
         }
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, new JSONObject());
+        this.c.onReceiveResult(false, new JSONObject());
         return;
       }
     }
@@ -63,12 +63,12 @@ class MiniAppProxyImpl$13
     {
       QLog.e("MiniAppProxyImpl", 1, "getLocationJsonObject exception:", localJSONException);
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, paramSosoLbsInfo);
+    this.c.onReceiveResult(false, paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.13
  * JD-Core Version:    0.7.0.1
  */

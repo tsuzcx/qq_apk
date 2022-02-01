@@ -1,26 +1,35 @@
 package com.tencent.qqmini.sdk.server;
 
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.core.proxy.WnsConfigProxy;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import android.support.annotation.NonNull;
+import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback.Stub;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 class LaunchManagerService$2
-  implements Runnable
+  extends MiniCmdCallback.Stub
 {
-  LaunchManagerService$2(LaunchManagerService paramLaunchManagerService) {}
+  LaunchManagerService$2(LaunchManagerService paramLaunchManagerService, ResultReceiver paramResultReceiver) {}
   
-  public void run()
+  public void onCmdResult(boolean paramBoolean, @NonNull Bundle paramBundle)
   {
-    QMLog.i("minisdk-start_LaunchManagerService", "zzconfig start to loadServer");
-    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy != null) {
-      localWnsConfigProxy.loadConfigFromServer();
+    if (paramBoolean)
+    {
+      int i = paramBundle.getInt("retCode");
+      ResultReceiver localResultReceiver = this.val$resultReceiver;
+      if (localResultReceiver != null) {
+        localResultReceiver.send(i, paramBundle);
+      }
+      paramBundle = new StringBuilder();
+      paramBundle.append("[preDownloadPkg] retCode=");
+      paramBundle.append(i);
+      QMLog.i("minisdk-start_LaunchManagerService", paramBundle.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.LaunchManagerService.2
  * JD-Core Version:    0.7.0.1
  */

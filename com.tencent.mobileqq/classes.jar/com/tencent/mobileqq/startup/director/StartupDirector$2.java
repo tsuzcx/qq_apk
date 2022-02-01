@@ -5,6 +5,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.RecentParcelUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.perf.report.FeatureFlag;
 import com.tencent.mobileqq.startup.step.Step;
 import com.tencent.mobileqq.startup.step.Step.AmStepFactory;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -13,6 +14,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.UnifiedMonitor;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
@@ -89,7 +91,7 @@ class StartupDirector$2
         {
           ((HashMap)localObject4).put("bootOpt", "-1");
         }
-        localObject1 = RecentParcelUtil.a(BaseApplicationImpl.context);
+        localObject1 = RecentParcelUtil.b(BaseApplicationImpl.context);
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           ((HashMap)localObject4).put("bootOptCrashMessage", localObject1);
         }
@@ -119,6 +121,7 @@ class StartupDirector$2
             ((HashMap)localObject4).put(localStringBuilder.toString(), String.valueOf(StartupDirector.a(this.this$0).get(localObject3)));
           }
         }
+        FeatureFlag.a((Map)localObject4);
         if (QLog.isColorLevel())
         {
           localObject1 = ((HashMap)localObject4).keySet().iterator();
@@ -151,7 +154,8 @@ class StartupDirector$2
       if ("Success".equals(BaseApplicationImpl.sInjectResult))
       {
         Step.AmStepFactory.b(16, this.this$0, null).step();
-        UnifiedMonitor.a().b();
+        UnifiedMonitor.a().c();
+        Step.AmStepFactory.b(17, this.this$0, null).step();
       }
       Step.AmStepFactory.b(42, this.this$0, null).step();
     }
@@ -159,7 +163,7 @@ class StartupDirector$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.director.StartupDirector.2
  * JD-Core Version:    0.7.0.1
  */

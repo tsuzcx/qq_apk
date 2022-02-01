@@ -48,11 +48,11 @@ public class ColorNoteSmallScreenPermissionDialogFragment
     } else {
       i = 1;
     }
-    int k = 2131690898;
+    int k = 2131887837;
     int j;
     if (i == 2)
     {
-      j = 2131690899;
+      j = 2131887838;
     }
     else
     {
@@ -63,8 +63,8 @@ public class ColorNoteSmallScreenPermissionDialogFragment
         j = k;
       }
     }
-    localObject = DialogUtil.a(getQBaseActivity(), 230).setMessage(j).setPositiveButton(2131690900, new ColorNoteSmallScreenPermissionDialogFragment.1(this));
-    ((QQCustomDialog)localObject).setTitle(2131690901);
+    localObject = DialogUtil.a(getQBaseActivity(), 230).setMessage(j).setPositiveButton(2131887839, new ColorNoteSmallScreenPermissionDialogFragment.1(this));
+    ((QQCustomDialog)localObject).setTitle(2131887840);
     ((QQCustomDialog)localObject).setCancelable(true);
     ((QQCustomDialog)localObject).setOnCancelListener(new ColorNoteSmallScreenPermissionDialogFragment.2(this));
     ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
@@ -89,7 +89,7 @@ public class ColorNoteSmallScreenPermissionDialogFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment
  * JD-Core Version:    0.7.0.1
  */

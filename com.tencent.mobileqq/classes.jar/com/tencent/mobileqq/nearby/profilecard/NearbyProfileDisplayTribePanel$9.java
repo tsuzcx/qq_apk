@@ -21,37 +21,37 @@ class NearbyProfileDisplayTribePanel$9
   
   public void onClick(View paramView)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a, QQBrowserActivity.class);
+    Object localObject = new Intent(this.b.e, QQBrowserActivity.class);
     paramView = new StringBuilder();
-    paramView.append(this.jdField_a_of_type_JavaLangString);
+    paramView.append(this.a);
     paramView.append("&type");
-    paramView.append(NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel).gender);
+    paramView.append(NearbyProfileDisplayTribePanel.j(this.b).gender);
     ((Intent)localObject).putExtra("url", paramView.toString());
-    paramView = HardCodeUtil.a(2131707283);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.mMode != 2)
+    paramView = HardCodeUtil.a(2131905109);
+    if (this.b.e.mMode != 2)
     {
-      if (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel).gender == 0) {
-        paramView = HardCodeUtil.a(2131707352);
+      if (NearbyProfileDisplayTribePanel.j(this.b).gender == 0) {
+        paramView = HardCodeUtil.a(2131905173);
       } else {
-        paramView = HardCodeUtil.a(2131707386);
+        paramView = HardCodeUtil.a(2131905204);
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app == null)
+      if (this.b.e.app == null)
       {
         QLog.w("NearbyProfileDisplayTribePanel", 2, "mActivity.app == null is true!");
         return;
       }
-      ((INearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).a().put(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app.getCurrentAccountUin(), Integer.valueOf(1));
+      ((INearbyCardManager)this.b.e.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).f().put(this.b.e.app.getCurrentAccountUin(), Integer.valueOf(1));
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramView);
-    localStringBuilder.append(HardCodeUtil.a(2131707403));
+    localStringBuilder.append(HardCodeUtil.a(2131905221));
     ((Intent)localObject).putExtra("title", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.startActivity((Intent)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app;
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.mMode == 2) {
+    this.b.e.startActivity((Intent)localObject);
+    localObject = this.b.e.app;
+    if (this.b.e.mMode == 2) {
       paramView = "1";
     } else {
       paramView = "2";
@@ -61,7 +61,7 @@ class NearbyProfileDisplayTribePanel$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.9
  * JD-Core Version:    0.7.0.1
  */

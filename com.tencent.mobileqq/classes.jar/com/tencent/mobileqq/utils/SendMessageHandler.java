@@ -10,31 +10,30 @@ import java.util.List;
 public class SendMessageHandler
   extends Handler
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  public long a;
-  private List<SendMessageHandler.SendMessageRunnable> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private volatile int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long = System.currentTimeMillis();
+  public long a = 0L;
+  private long b = System.currentTimeMillis();
+  private List<SendMessageHandler.SendMessageRunnable> c = Collections.synchronizedList(new ArrayList());
+  private volatile int d = 0;
+  private volatile int e = 0;
   
   public SendMessageHandler()
   {
     super(Looper.getMainLooper());
-    this.jdField_a_of_type_Long = 0L;
   }
   
   private void a(long paramLong, String paramString)
   {
     try
     {
-      if ((this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_JavaUtilList.size() >= 1))
+      if ((this.d < this.c.size()) && (this.c.size() >= 1))
       {
-        int i = this.jdField_a_of_type_Int;
-        this.jdField_a_of_type_Int = (i + 1);
-        SendMessageHandler.SendMessageRunnable localSendMessageRunnable = (SendMessageHandler.SendMessageRunnable)this.jdField_a_of_type_JavaUtilList.get(i);
-        localSendMessageRunnable.jdField_b_of_type_Int = i;
-        localSendMessageRunnable.g = System.currentTimeMillis();
-        localSendMessageRunnable.jdField_c_of_type_Long = paramLong;
-        localSendMessageRunnable.jdField_a_of_type_JavaLangString = paramString;
+        int i = this.d;
+        this.d = (i + 1);
+        SendMessageHandler.SendMessageRunnable localSendMessageRunnable = (SendMessageHandler.SendMessageRunnable)this.c.get(i);
+        localSendMessageRunnable.m = i;
+        localSendMessageRunnable.k = System.currentTimeMillis();
+        localSendMessageRunnable.g = paramLong;
+        localSendMessageRunnable.n = paramString;
         localSendMessageRunnable.run();
         return;
       }
@@ -47,7 +46,7 @@ public class SendMessageHandler
   {
     try
     {
-      long l = this.jdField_b_of_type_Long;
+      long l = this.b;
       return paramLong - l;
     }
     finally
@@ -65,9 +64,9 @@ public class SendMessageHandler
         QLog.d("Q.msg.SendMessageHandler", 2, "stopAndRemoveRunnalbes");
       }
       removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
+      this.c.clear();
+      this.d = 0;
+      this.e = 0;
       return;
     }
     finally {}
@@ -77,8 +76,8 @@ public class SendMessageHandler
   {
     try
     {
-      paramSendMessageRunnable.f = this.jdField_b_of_type_Long;
-      this.jdField_a_of_type_JavaUtilList.add(paramSendMessageRunnable);
+      paramSendMessageRunnable.j = this.b;
+      this.c.add(paramSendMessageRunnable);
       return;
     }
     finally
@@ -88,48 +87,23 @@ public class SendMessageHandler
     }
   }
   
-  public boolean a()
-  {
-    int i = 0;
-    try
-    {
-      while (i < this.jdField_b_of_type_Int)
-      {
-        boolean bool = ((SendMessageHandler.SendMessageRunnable)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_c_of_type_Boolean;
-        if (!bool) {
-          return false;
-        }
-        i += 1;
-      }
-      return true;
-    }
-    finally
-    {
-      localObject = finally;
-    }
-    for (;;)
-    {
-      throw localObject;
-    }
-  }
-  
   public boolean a(int paramInt, long paramLong1, long paramLong2, String[] paramArrayOfString)
   {
     try
     {
-      if (paramInt < this.jdField_a_of_type_Int)
+      if (paramInt < this.d)
       {
-        SendMessageHandler.SendMessageRunnable localSendMessageRunnable = (SendMessageHandler.SendMessageRunnable)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        localSendMessageRunnable.h = System.currentTimeMillis();
-        localSendMessageRunnable.d = paramLong1;
-        localSendMessageRunnable.e = paramLong2;
-        localSendMessageRunnable.jdField_c_of_type_Boolean = true;
-        localSendMessageRunnable.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+        SendMessageHandler.SendMessageRunnable localSendMessageRunnable = (SendMessageHandler.SendMessageRunnable)this.c.get(paramInt);
+        localSendMessageRunnable.l = System.currentTimeMillis();
+        localSendMessageRunnable.h = paramLong1;
+        localSendMessageRunnable.i = paramLong2;
+        localSendMessageRunnable.f = true;
+        localSendMessageRunnable.o = paramArrayOfString;
         if (QLog.isColorLevel())
         {
           paramArrayOfString = new StringBuilder();
           paramArrayOfString.append("--->>>recordRetryResult msgSeq[");
-          paramArrayOfString.append(this.jdField_a_of_type_Long);
+          paramArrayOfString.append(this.a);
           paramArrayOfString.append("] retryIndex[");
           paramArrayOfString.append(paramInt);
           paramArrayOfString.append("] errorCode[");
@@ -154,8 +128,8 @@ public class SendMessageHandler
   {
     try
     {
-      int i = this.jdField_b_of_type_Int;
-      int j = this.jdField_a_of_type_JavaUtilList.size();
+      int i = this.e;
+      int j = this.c.size();
       if (i >= j) {
         return false;
       }
@@ -163,22 +137,47 @@ public class SendMessageHandler
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("shedule retry, seq:");
-        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append(this.a);
         localStringBuilder.append("delayTime:");
         localStringBuilder.append(paramLong1);
         localStringBuilder.append(",timeout:");
         localStringBuilder.append(paramLong2);
         localStringBuilder.append(" scheduleCount:");
-        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append(this.e);
         localStringBuilder.append(" reason:");
         localStringBuilder.append(paramString);
         QLog.d("Q.msg.SendMessageHandler", 2, localStringBuilder.toString());
       }
-      this.jdField_b_of_type_Int += 1;
+      this.e += 1;
       postDelayed(new SendMessageHandler.1(this, paramLong2, paramString), paramLong1);
       return true;
     }
     finally {}
+  }
+  
+  public boolean b()
+  {
+    int i = 0;
+    try
+    {
+      while (i < this.e)
+      {
+        boolean bool = ((SendMessageHandler.SendMessageRunnable)this.c.get(i)).f;
+        if (!bool) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
+    }
+    finally
+    {
+      localObject = finally;
+    }
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public String toString()
@@ -187,17 +186,17 @@ public class SendMessageHandler
     localStringBuilder.append("[");
     try
     {
-      int j = this.jdField_a_of_type_Int;
+      int j = this.d;
       if (j > 0)
       {
-        int i = this.jdField_a_of_type_JavaUtilList.size();
+        int i = this.c.size();
         if (i >= j)
         {
           i = 0;
           while (i < j) {
             try
             {
-              localStringBuilder.append(((SendMessageHandler.SendMessageRunnable)this.jdField_a_of_type_JavaUtilList.get(i)).toString());
+              localStringBuilder.append(((SendMessageHandler.SendMessageRunnable)this.c.get(i)).toString());
               if (i != j - 1) {
                 localStringBuilder.append(",");
               }
@@ -222,7 +221,7 @@ public class SendMessageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SendMessageHandler
  * JD-Core Version:    0.7.0.1
  */

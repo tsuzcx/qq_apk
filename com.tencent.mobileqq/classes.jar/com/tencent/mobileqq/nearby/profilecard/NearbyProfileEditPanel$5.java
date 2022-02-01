@@ -8,39 +8,38 @@ import com.tencent.widget.ActionSheet;
 class NearbyProfileEditPanel$5
   implements IphonePickerView.IphonePickListener
 {
-  int jdField_a_of_type_Int = -1;
+  int a = -1;
   
   NearbyProfileEditPanel$5(NearbyProfileEditPanel paramNearbyProfileEditPanel, int paramInt, ActionSheet paramActionSheet) {}
   
   public void onConfirmBtClicked()
   {
-    if (this.jdField_a_of_type_Int == -1)
+    if (this.a == -1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h.setTag(Byte.valueOf((byte)(this.b + 1)));
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h.setText(NearbyProfileEditPanel.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel).getText(0, this.b));
+      this.d.z.setTag(Byte.valueOf((byte)(this.b + 1)));
+      this.d.z.setText(NearbyProfileEditPanel.b(this.d).getText(0, this.b));
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h.setTag(Byte.valueOf((byte)(this.jdField_a_of_type_Int + 1)));
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h.setText(NearbyProfileEditPanel.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel).getText(0, this.jdField_a_of_type_Int));
+      this.d.z.setTag(Byte.valueOf((byte)(this.a + 1)));
+      this.d.z.setText(NearbyProfileEditPanel.b(this.d).getText(0, this.a));
     }
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
-    if ((localObject != null) && (((ActionSheet)localObject).isShowing()))
+    if (this.c.isShowing())
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel;
-      NearbyProfileEditPanel.a((NearbyProfileEditPanel)localObject, ((NearbyProfileEditPanel)localObject).h, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      NearbyProfileEditPanel localNearbyProfileEditPanel = this.d;
+      localNearbyProfileEditPanel.a(localNearbyProfileEditPanel.z, false);
+      this.c.dismiss();
     }
   }
   
   public void onItemSelected(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt2;
+    this.a = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.5
  * JD-Core Version:    0.7.0.1
  */

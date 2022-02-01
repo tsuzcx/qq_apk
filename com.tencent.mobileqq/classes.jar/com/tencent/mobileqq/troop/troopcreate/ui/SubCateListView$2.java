@@ -13,30 +13,30 @@ class SubCateListView$2
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.a) {
+      this.b.setVisibility(8);
     }
     int j = 0;
     int i = j;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
       paramAnimator = new int[2];
-      this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramAnimator);
-      int k = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSubCateListView.jdField_a_of_type_AndroidContentContext).b() - paramAnimator[1];
-      int m = this.jdField_a_of_type_Int;
+      this.b.getLocationOnScreen(paramAnimator);
+      int k = DisplayUtil.a(this.d.b).b() - paramAnimator[1];
+      int m = this.c;
       i = j;
       if (k < m) {
         i = m - k;
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSubCateListView.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSubCateListView$OnToggleSubListListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSubCateListView.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiSubCateListView$OnToggleSubListListener.a(true ^ this.jdField_a_of_type_Boolean, i);
+    if (this.d.d != null) {
+      this.d.d.a(true ^ this.a, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.SubCateListView.2
  * JD-Core Version:    0.7.0.1
  */

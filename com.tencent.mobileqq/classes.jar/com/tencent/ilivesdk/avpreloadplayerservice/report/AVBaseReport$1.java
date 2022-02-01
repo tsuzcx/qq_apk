@@ -10,12 +10,12 @@ class AVBaseReport$1
   
   public LogInterface getLog()
   {
-    return this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadplayerservice.report.AVBaseReport.1
  * JD-Core Version:    0.7.0.1
  */

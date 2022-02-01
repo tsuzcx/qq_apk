@@ -27,32 +27,32 @@ class MemoriesProfilePresenter$UpdateUserInfoEventReceiver
   
   public void a(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if (TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_JavaLangString, String.valueOf(paramMemoriesProfilePresenter.hashCode())))
+    if (TextUtils.equals(paramUpdateUserInfoEvent.c, String.valueOf(paramMemoriesProfilePresenter.hashCode())))
     {
-      if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null))
+      if ((paramUpdateUserInfoEvent.g.isSuccess()) && (paramUpdateUserInfoEvent.a != null))
       {
         SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", paramUpdateUserInfoEvent);
-        paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-        paramMemoriesProfilePresenter.jdField_a_of_type_JavaLangString = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
-        if (MemoriesProfilePresenter.a(paramMemoriesProfilePresenter) != -1) {
-          paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = MemoriesProfilePresenter.a(paramMemoriesProfilePresenter);
-        }
+        paramMemoriesProfilePresenter.b = paramUpdateUserInfoEvent.a;
+        paramMemoriesProfilePresenter.a = paramUpdateUserInfoEvent.a.uid;
         if (MemoriesProfilePresenter.b(paramMemoriesProfilePresenter) != -1) {
-          paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.shareGroupCount = MemoriesProfilePresenter.b(paramMemoriesProfilePresenter);
+          paramMemoriesProfilePresenter.b.videoCount = MemoriesProfilePresenter.b(paramMemoriesProfilePresenter);
         }
-        ((FriendListHandler)PlayModeUtils.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getOnlineInfo(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, false);
+        if (MemoriesProfilePresenter.c(paramMemoriesProfilePresenter) != -1) {
+          paramMemoriesProfilePresenter.b.shareGroupCount = MemoriesProfilePresenter.c(paramMemoriesProfilePresenter);
+        }
+        ((FriendListHandler)PlayModeUtils.b().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getOnlineInfo(paramUpdateUserInfoEvent.a.qq, false);
         ThreadManager.post(new MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1(this, paramMemoriesProfilePresenter), 5, null, false);
       }
       else
       {
         BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131706567));
-        localStringBuilder.append(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.getErrorMessage());
-        QQToast.a(localBaseApplication, 1, localStringBuilder.toString(), 0);
+        localStringBuilder.append(HardCodeUtil.a(2131904421));
+        localStringBuilder.append(paramUpdateUserInfoEvent.g.getErrorMessage());
+        QQToast.makeText(localBaseApplication, 1, localStringBuilder.toString(), 0);
         SLog.e("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", new Object[] { paramUpdateUserInfoEvent });
       }
-      MemoriesProfilePresenter.a(paramMemoriesProfilePresenter).a(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      MemoriesProfilePresenter.a(paramMemoriesProfilePresenter).a(paramUpdateUserInfoEvent.g.isSuccess());
       return;
     }
     SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "ignore this update user info event: %s.", paramUpdateUserInfoEvent);

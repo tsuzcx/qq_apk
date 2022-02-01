@@ -18,22 +18,22 @@ class ReadInJoyCommentListFragment$2
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (ReadInJoyCommentListFragment.a(this.a) != null)
+    if (ReadInJoyCommentListFragment.g(this.a) != null)
     {
-      if (!ReadInJoyCommentListFragment.a(this.a).a().a().a()) {
+      if (!ReadInJoyCommentListFragment.g(this.a).f().n().a()) {
         ((ReadInJoyCommentListView)paramAbsListView).onScrollStateChanged(paramAbsListView, paramInt);
       } else {
         ((ReadInJoyCommentListView)paramAbsListView).hideFooterView();
       }
-      if ((ReadInJoyCommentListFragment.a(this.a) != null) && (ReadInJoyCommentListFragment.a(this.a).a() != null)) {
-        ReadInJoyCommentListFragment.a(this.a).a().a(ReadInJoyCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoyCommentListFragment.a(this.a).getLastVisiblePosition());
+      if ((ReadInJoyCommentListFragment.g(this.a) != null) && (ReadInJoyCommentListFragment.g(this.a).q() != null)) {
+        ReadInJoyCommentListFragment.g(this.a).q().a(ReadInJoyCommentListFragment.h(this.a).getFirstVisiblePosition(), ReadInJoyCommentListFragment.h(this.a).getLastVisiblePosition());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentListFragment.2
  * JD-Core Version:    0.7.0.1
  */

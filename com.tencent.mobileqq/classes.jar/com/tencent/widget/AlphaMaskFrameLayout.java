@@ -19,12 +19,12 @@ import android.widget.FrameLayout;
 public class AlphaMaskFrameLayout
   extends FrameLayout
 {
-  private static final float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 1.0F };
-  private static final int[] jdField_a_of_type_ArrayOfInt = { -1, 0 };
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Bitmap b;
+  private static final int[] c = { -1, 0 };
+  private static final float[] d = { 0.0F, 1.0F };
+  private Paint a;
+  private int b;
+  private Bitmap e;
+  private Bitmap f;
   
   public AlphaMaskFrameLayout(Context paramContext)
   {
@@ -39,51 +39,51 @@ public class AlphaMaskFrameLayout
   public AlphaMaskFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = ((int)(paramContext.getResources().getDisplayMetrics().density * 15.0F + 0.5F));
+    this.b = ((int)(paramContext.getResources().getDisplayMetrics().density * 15.0F + 0.5F));
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SCREEN));
+      this.a = new Paint();
+      this.a.setStyle(Paint.Style.FILL);
+      this.a.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SCREEN));
     }
-    Object localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject1 = this.e;
     Object localObject2;
     if ((localObject1 == null) || (((Bitmap)localObject1).getWidth() != getWidth()))
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(getWidth(), this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888);
-      this.jdField_a_of_type_AndroidGraphicsBitmap.setDensity(getResources().getDisplayMetrics().densityDpi);
-      localObject1 = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.e = Bitmap.createBitmap(getWidth(), this.b, Bitmap.Config.ARGB_8888);
+      this.e.setDensity(getResources().getDisplayMetrics().densityDpi);
+      localObject1 = new Canvas(this.e);
       localObject2 = new Paint(1);
-      ((Paint)localObject2).setShader(new LinearGradient(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_Int, jdField_a_of_type_ArrayOfInt, jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP));
+      ((Paint)localObject2).setShader(new LinearGradient(0.0F, 0.0F, 0.0F, this.b, c, d, Shader.TileMode.CLAMP));
       ((Canvas)localObject1).drawRect(0.0F, 0.0F, ((Canvas)localObject1).getWidth(), ((Canvas)localObject1).getHeight(), (Paint)localObject2);
     }
-    localObject1 = this.b;
-    if (((localObject1 == null) || (((Bitmap)localObject1).getWidth() != getWidth())) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    localObject1 = this.f;
+    if (((localObject1 == null) || (((Bitmap)localObject1).getWidth() != getWidth())) && (this.e != null))
     {
       localObject1 = new Matrix();
       ((Matrix)localObject1).preScale(1.0F, -1.0F);
-      localObject2 = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      this.b = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight(), (Matrix)localObject1, false);
-      this.b.setDensity(getResources().getDisplayMetrics().densityDpi);
+      localObject2 = this.e;
+      this.f = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight(), (Matrix)localObject1, false);
+      this.f.setDensity(getResources().getDisplayMetrics().densityDpi);
     }
-    localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    localObject1 = this.e;
     if (localObject1 != null) {
-      paramCanvas.drawBitmap((Bitmap)localObject1, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap((Bitmap)localObject1, 0.0F, 0.0F, this.a);
     }
-    localObject1 = this.b;
+    localObject1 = this.f;
     if (localObject1 != null) {
-      paramCanvas.drawBitmap((Bitmap)localObject1, 0.0F, getHeight() - this.b.getHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap((Bitmap)localObject1, 0.0F, getHeight() - this.f.getHeight(), this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AlphaMaskFrameLayout
  * JD-Core Version:    0.7.0.1
  */

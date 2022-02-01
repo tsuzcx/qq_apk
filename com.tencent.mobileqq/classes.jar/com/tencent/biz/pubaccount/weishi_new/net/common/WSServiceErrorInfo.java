@@ -2,28 +2,28 @@ package com.tencent.biz.pubaccount.weishi_new.net.common;
 
 public class WSServiceErrorInfo
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private int a;
+  private String b;
   
   public WSServiceErrorInfo(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  public String a()
+  public String b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.common.WSServiceErrorInfo
  * JD-Core Version:    0.7.0.1
  */

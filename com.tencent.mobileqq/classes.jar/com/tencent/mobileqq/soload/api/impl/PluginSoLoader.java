@@ -56,7 +56,7 @@ public class PluginSoLoader
     if (paramLoadParam == null)
     {
       if (paramOnLoadListener != null) {
-        paramOnLoadListener.onLoadResult(6, null);
+        paramOnLoadListener.onLoadResult(6, new LoadExtResult());
       }
     }
     else
@@ -89,23 +89,23 @@ public class PluginSoLoader
     }
   }
   
-  public void a(String paramString)
-  {
-    SoLoaderLogic localSoLoaderLogic = this.a;
-    if (localSoLoaderLogic != null) {
-      localSoLoaderLogic.a(paramString);
-    }
-  }
-  
   public boolean a(String paramString)
   {
     SoLoaderLogic localSoLoaderLogic = this.a;
     return (localSoLoaderLogic != null) && (localSoLoaderLogic.a(paramString));
   }
+  
+  public void b(String paramString)
+  {
+    SoLoaderLogic localSoLoaderLogic = this.a;
+    if (localSoLoaderLogic != null) {
+      localSoLoaderLogic.b(paramString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.PluginSoLoader
  * JD-Core Version:    0.7.0.1
  */

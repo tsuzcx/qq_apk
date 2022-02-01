@@ -26,8 +26,8 @@ class ShareModule$1
     Object localObject1 = paramView.getTag();
     if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleShareModule.a.dismiss();
-      int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject1).a.action;
+      this.c.b.dismiss();
+      int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject1).c.action;
       if (i != 1)
       {
         if (i != 2)
@@ -58,17 +58,17 @@ class ShareModule$1
       int j = (int)paramLong;
       if ((paramLong == 2L) || (paramLong == 3L))
       {
-        if (!WXShareHelper.a().a()) {
-          i = 2131720478;
-        } else if (!WXShareHelper.a().b()) {
-          i = 2131720479;
+        if (!WXShareHelper.a().b()) {
+          i = 2131918154;
+        } else if (!WXShareHelper.a().c()) {
+          i = 2131918155;
         } else {
           i = -1;
         }
         if (i != -1)
         {
           localObject1 = BaseApplicationImpl.getContext();
-          QQToast.a((Context)localObject1, ((Context)localObject1).getString(i), 0).b(this.jdField_a_of_type_Int);
+          QQToast.makeText((Context)localObject1, ((Context)localObject1).getString(i), 0).show(this.a);
         }
       }
       for (;;)
@@ -79,13 +79,13 @@ class ShareModule$1
         try
         {
           ((JSONObject)localObject1).put("selectChanel", j);
-          DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, (JSONObject)localObject1);
+          DoraemonUtil.a(this.b, (JSONObject)localObject1);
         }
         catch (Exception localException)
         {
           String str = localException.getMessage();
           QLog.e("DoraemonApi.ShareModule", 1, "put channel failed!");
-          APICallback localAPICallback = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+          APICallback localAPICallback = this.b;
           localObject2 = str;
           if (str == null) {
             localObject2 = "";
@@ -108,7 +108,7 @@ class ShareModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.ShareModule.1
  * JD-Core Version:    0.7.0.1
  */

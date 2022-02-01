@@ -16,9 +16,9 @@ class NearbyPeopleProfileActivity$14
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      if ((this.a.mMode == 3) && (!this.a.isFriend) && (NearbyPeopleProfileActivity.access$300(this.a) != null))
+      if ((this.a.mMode == 3) && (!this.a.isFriend) && (this.a.mCard != null))
       {
-        if (!paramString.equals(NearbyPeopleProfileActivity.access$300(this.a).uin)) {
+        if (!paramString.equals(this.a.mCard.uin)) {
           return;
         }
         this.a.checkIsFriend();
@@ -33,9 +33,9 @@ class NearbyPeopleProfileActivity$14
       if (!paramBoolean2) {
         return;
       }
-      if ((this.a.mMode == 3) && (NearbyPeopleProfileActivity.access$300(this.a) != null))
+      if ((this.a.mMode == 3) && (this.a.mCard != null))
       {
-        if (TextUtils.isEmpty(NearbyPeopleProfileActivity.access$300(this.a).uin)) {
+        if (TextUtils.isEmpty(this.a.mCard.uin)) {
           return;
         }
         this.a.checkIsFriend();
@@ -45,7 +45,7 @@ class NearbyPeopleProfileActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.14
  * JD-Core Version:    0.7.0.1
  */

@@ -16,34 +16,34 @@ import java.util.Map;
 class PreloadResourceImpl$2
   extends DownloadListener
 {
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean f = false;
   
   PreloadResourceImpl$2(PreloadResourceImpl paramPreloadResourceImpl, int paramInt, WeakReference paramWeakReference, DownloadListener paramDownloadListener, long paramLong) {}
   
   public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    Object localObject = (PreloadServiceImpl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (PreloadServiceImpl)this.b.get();
     if (PreloadServiceImpl.isManagerValid((PreloadServiceImpl)localObject)) {
       ((PreloadServiceImpl)localObject).notifyResFlowCheckNext();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener;
+    localObject = this.c;
     if (localObject != null) {
       ((DownloadListener)localObject).onDoneFile(paramDownloadTask);
     }
     localObject = new DownloadReportReq();
-    if (paramDownloadTask.jdField_a_of_type_Int == 0) {
+    if (paramDownloadTask.c == 0) {
       ((DownloadReportReq)localObject).iType = 1;
     } else {
       ((DownloadReportReq)localObject).iType = 2;
     }
     int j = -1;
     int i = j;
-    if (paramDownloadTask.jdField_a_of_type_JavaUtilMap != null)
+    if (paramDownloadTask.g != null)
     {
       i = j;
-      if (!TextUtils.isEmpty(paramDownloadTask.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(paramDownloadTask.b))
       {
-        File localFile = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString);
+        File localFile = (File)paramDownloadTask.g.get(paramDownloadTask.b);
         long l;
         if (localFile == null) {
           l = -2L;
@@ -64,19 +64,19 @@ class PreloadResourceImpl$2
         }
       }
     }
-    ((DownloadReportReq)localObject).vecResInfo = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.getMyResInfos(i);
-    ((DownloadReportReq)localObject).iUin = this.jdField_a_of_type_Long;
-    ((DownloadReportReq)localObject).sPhoneType = DeviceInfoUtil.i();
-    ((DownloadReportReq)localObject).sOsVersion = DeviceInfoUtil.e();
-    ((DownloadReportReq)localObject).sQQVersion = DeviceInfoUtil.c();
-    ((DownloadReportReq)localObject).iScene = paramDownloadTask.a().getInt("scene");
+    ((DownloadReportReq)localObject).vecResInfo = this.e.getMyResInfos(i);
+    ((DownloadReportReq)localObject).iUin = this.d;
+    ((DownloadReportReq)localObject).sPhoneType = DeviceInfoUtil.u();
+    ((DownloadReportReq)localObject).sOsVersion = DeviceInfoUtil.g();
+    ((DownloadReportReq)localObject).sQQVersion = DeviceInfoUtil.e();
+    ((DownloadReportReq)localObject).iScene = paramDownloadTask.b().getInt("scene");
     QWalletCommonServlet.a((JceStruct)localObject, null);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.mResId);
+      localStringBuilder.append(this.e.mResId);
       localStringBuilder.append(" flow down result:");
-      localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Int);
+      localStringBuilder.append(paramDownloadTask.c);
       localStringBuilder.append(localObject);
       QLog.d("PreloadResource", 2, localStringBuilder.toString());
     }
@@ -84,12 +84,12 @@ class PreloadResourceImpl$2
   
   public void onProgress(DownloadTask paramDownloadTask)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.f)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.f = true;
       long l1 = System.currentTimeMillis();
-      long l2 = paramDownloadTask.g;
-      double d1 = paramDownloadTask.f;
+      long l2 = paramDownloadTask.A;
+      double d1 = paramDownloadTask.z;
       double d2 = l1 - l2;
       Double.isNaN(d1);
       Double.isNaN(d2);
@@ -102,14 +102,14 @@ class PreloadResourceImpl$2
       localStringBuilder.append(d1);
       localStringBuilder.append("");
       paramDownloadTask.sSpeed = localStringBuilder.toString();
-      paramDownloadTask.vecResInfo = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.getMyResInfos();
+      paramDownloadTask.vecResInfo = this.e.getMyResInfos();
       paramDownloadTask.iType = 0;
-      paramDownloadTask.iUin = this.jdField_a_of_type_Long;
+      paramDownloadTask.iUin = this.d;
       QWalletCommonServlet.a(paramDownloadTask, null);
       if (QLog.isColorLevel())
       {
         paramDownloadTask = new StringBuilder();
-        paramDownloadTask.append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadResourceImpl.mResId);
+        paramDownloadTask.append(this.e.mResId);
         paramDownloadTask.append(" flow down speed:");
         paramDownloadTask.append(d1);
         QLog.d("PreloadResource", 2, paramDownloadTask.toString());
@@ -119,18 +119,18 @@ class PreloadResourceImpl$2
   
   public boolean onStart(DownloadTask paramDownloadTask)
   {
-    paramDownloadTask.f = 1048576L;
-    int i = this.jdField_a_of_type_Int;
+    paramDownloadTask.z = 1048576L;
+    int i = this.a;
     if (i <= 3) {
       i = 3;
     }
-    paramDownloadTask.b = i;
+    paramDownloadTask.e = i;
     return super.onStart(paramDownloadTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadResourceImpl.2
  * JD-Core Version:    0.7.0.1
  */

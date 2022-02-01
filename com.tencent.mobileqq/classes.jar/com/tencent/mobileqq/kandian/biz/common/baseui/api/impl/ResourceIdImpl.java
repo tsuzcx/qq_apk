@@ -53,7 +53,7 @@ public final class ResourceIdImpl
   
   public int getCommonMaskView()
   {
-    return 2131365017;
+    return 2131431149;
   }
   
   public int getId(@NotNull String paramString)
@@ -70,7 +70,7 @@ public final class ResourceIdImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.baseui.api.impl.ResourceIdImpl
  * JD-Core Version:    0.7.0.1
  */

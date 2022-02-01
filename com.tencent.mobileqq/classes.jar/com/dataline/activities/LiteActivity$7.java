@@ -10,7 +10,7 @@ class LiteActivity$7
   
   public void afterTextChanged(Editable paramEditable)
   {
-    this.a.q();
+    this.a.t();
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

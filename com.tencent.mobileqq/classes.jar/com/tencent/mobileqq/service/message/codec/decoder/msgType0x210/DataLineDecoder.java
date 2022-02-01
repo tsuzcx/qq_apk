@@ -38,17 +38,17 @@ public class DataLineDecoder
       new Handler(localLooper).post(new DataLineDecoder.1(this, paramMessageHandler, paramMsg));
       return;
     }
-    ((DataLineHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramMsg);
+    ((DataLineHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramMsg);
   }
   
   public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext, MessageHandler paramMessageHandler)
   {
-    a(paramMessageHandler, paramMsg, paramDecodeProtoPkgContext.h);
+    a(paramMessageHandler, paramMsg, paramDecodeProtoPkgContext.n);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.DataLineDecoder
  * JD-Core Version:    0.7.0.1
  */

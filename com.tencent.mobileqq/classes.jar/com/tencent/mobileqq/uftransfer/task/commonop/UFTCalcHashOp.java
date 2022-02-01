@@ -17,15 +17,15 @@ public class UFTCalcHashOp
   implements UFTHashCalculator.IHashCalcPrg
 {
   protected final String a;
-  protected boolean b = false;
-  protected final long c;
-  protected long d = 0L;
+  protected final long b;
+  protected long c = 0L;
+  protected boolean d = false;
   
   public UFTCalcHashOp(AppRuntime paramAppRuntime, UFTBaseTaskInfo paramUFTBaseTaskInfo, UFTTransferKey paramUFTTransferKey, String paramString, long paramLong, UFTBaseOp.UFTOpCallback paramUFTOpCallback)
   {
     super(paramAppRuntime, paramUFTBaseTaskInfo, paramUFTTransferKey, paramUFTOpCallback);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramLong;
+    this.a = paramString;
+    this.b = paramLong;
   }
   
   private boolean a(long paramLong)
@@ -33,12 +33,12 @@ public class UFTCalcHashOp
     Object localObject;
     if ((1L & paramLong) != 0L)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().a();
+      localObject = this.h.r().b();
       if ((localObject == null) || (localObject.length == 0))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("TId[");
-        ((StringBuilder)localObject).append(a());
+        ((StringBuilder)localObject).append(i());
         ((StringBuilder)localObject).append("] no 10m md5 calc result");
         UFTLog.d("[UFTTransfer] UFTCalcHashOp", 1, ((StringBuilder)localObject).toString());
         return false;
@@ -46,25 +46,25 @@ public class UFTCalcHashOp
     }
     if ((0x2 & paramLong) != 0L)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().b();
+      localObject = this.h.r().c();
       if ((localObject == null) || (localObject.length == 0))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("TId[");
-        ((StringBuilder)localObject).append(a());
+        ((StringBuilder)localObject).append(i());
         ((StringBuilder)localObject).append("] no md5 calc result");
         UFTLog.d("[UFTTransfer] UFTCalcHashOp", 1, ((StringBuilder)localObject).toString());
         return false;
       }
     }
-    if ((this.b) && ((0x4 & paramLong) != 0L))
+    if ((this.d) && ((0x4 & paramLong) != 0L))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().c();
+      localObject = this.h.r().d();
       if ((localObject == null) || (localObject.length == 0))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("TId[");
-        ((StringBuilder)localObject).append(a());
+        ((StringBuilder)localObject).append(i());
         ((StringBuilder)localObject).append("] no sha3 calc result");
         UFTLog.d("[UFTTransfer] UFTCalcHashOp", 1, ((StringBuilder)localObject).toString());
         return false;
@@ -72,12 +72,12 @@ public class UFTCalcHashOp
     }
     if ((paramLong & 0x8) != 0L)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().d();
+      localObject = this.h.r().e();
       if ((localObject == null) || (localObject.length == 0))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("TId[");
-        ((StringBuilder)localObject).append(a());
+        ((StringBuilder)localObject).append(i());
         ((StringBuilder)localObject).append("] no sha calc result");
         UFTLog.d("[UFTTransfer] UFTCalcHashOp", 1, ((StringBuilder)localObject).toString());
         return false;
@@ -86,19 +86,9 @@ public class UFTCalcHashOp
     return true;
   }
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    super.a();
-    UFTHashCalculator.a().a(this.d);
-    this.d = 0L;
-  }
-  
   public void a(long paramLong, int paramInt, UFTHashCalculator.IHashCalcResult paramIHashCalcResult)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.j) {
       return;
     }
     UFTBaseOp.OpRetData localOpRetData = new UFTBaseOp.OpRetData();
@@ -106,7 +96,7 @@ public class UFTCalcHashOp
     {
       paramIHashCalcResult = new StringBuilder();
       paramIHashCalcResult.append("TId[");
-      paramIHashCalcResult.append(a());
+      paramIHashCalcResult.append(i());
       paramIHashCalcResult.append("] on calc hash fail. errCode:");
       paramIHashCalcResult.append(paramInt);
       UFTLog.d("[UFTTransfer] UFTCalcHashOp", 1, paramIHashCalcResult.toString());
@@ -116,28 +106,28 @@ public class UFTCalcHashOp
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TId[");
-    localStringBuilder.append(a());
+    localStringBuilder.append(i());
     localStringBuilder.append("] on calc hash suc:");
     UFTLog.b("[UFTTransfer] UFTCalcHashOp", 1, localStringBuilder.toString());
-    if ((paramIHashCalcResult.a() > 0L) && (this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().a() == 0L)) {
-      this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().a(paramIHashCalcResult.a());
-    }
-    if ((paramIHashCalcResult.a() != null) && (paramIHashCalcResult.a().length > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().a(paramIHashCalcResult.a());
+    if ((paramIHashCalcResult.a() > 0L) && (this.h.r().a() == 0L)) {
+      this.h.r().a(paramIHashCalcResult.a());
     }
     if ((paramIHashCalcResult.b() != null) && (paramIHashCalcResult.b().length > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().b(paramIHashCalcResult.b());
-    }
-    if ((paramIHashCalcResult.d() != null) && (paramIHashCalcResult.d().length > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().c(paramIHashCalcResult.d());
+      this.h.r().a(paramIHashCalcResult.b());
     }
     if ((paramIHashCalcResult.c() != null) && (paramIHashCalcResult.c().length > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().d(paramIHashCalcResult.c());
+      this.h.r().b(paramIHashCalcResult.c());
     }
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().a(paramIHashCalcResult.a());
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().b(paramIHashCalcResult.b());
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().c(paramIHashCalcResult.c());
-    if (a(this.c)) {
+    if ((paramIHashCalcResult.e() != null) && (paramIHashCalcResult.e().length > 0)) {
+      this.h.r().c(paramIHashCalcResult.e());
+    }
+    if ((paramIHashCalcResult.d() != null) && (paramIHashCalcResult.d().length > 0)) {
+      this.h.r().d(paramIHashCalcResult.d());
+    }
+    this.h.r().a(paramIHashCalcResult.f());
+    this.h.r().b(paramIHashCalcResult.g());
+    this.h.r().c(paramIHashCalcResult.h());
+    if (a(this.b)) {
       localOpRetData.a(0);
     } else {
       localOpRetData.a(7);
@@ -157,44 +147,54 @@ public class UFTCalcHashOp
   
   public void a(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.d = paramBoolean;
   }
   
-  protected int b()
+  protected int c()
   {
     long l;
-    if (this.b) {
+    if (this.d) {
       l = 0L;
     } else {
       l = 4L;
     }
-    this.d = UFTHashCalculator.a().a(this.jdField_a_of_type_JavaLangString, this.c, l, this);
-    if (this.d == 0L)
+    this.c = UFTHashCalculator.a().a(this.a, this.b, l, this);
+    if (this.c == 0L)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("TId[");
-      localStringBuilder.append(a());
+      localStringBuilder.append(i());
       localStringBuilder.append("run calc hash fail.");
       UFTLog.d("[UFTTransfer] UFTCalcHashOp", 1, localStringBuilder.toString());
-      this.jdField_a_of_type_Boolean = false;
+      this.j = false;
       return 6;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TId[");
-    localStringBuilder.append(a());
+    localStringBuilder.append(i());
     localStringBuilder.append("] do calc hash op. calcId:");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" calcWhat:");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(" calcWhat:");
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" ignoreWhat:");
     localStringBuilder.append(l);
     UFTLog.b("[UFTTransfer] UFTCalcHashOp", 1, localStringBuilder.toString());
     return 0;
   }
+  
+  public void f()
+  {
+    if (this.j) {
+      return;
+    }
+    super.f();
+    UFTHashCalculator.a().a(this.c);
+    this.c = 0L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.commonop.UFTCalcHashOp
  * JD-Core Version:    0.7.0.1
  */

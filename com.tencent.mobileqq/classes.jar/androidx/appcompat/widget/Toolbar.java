@@ -31,6 +31,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StringRes;
 import androidx.annotation.StyleRes;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.R.styleable;
 import androidx.appcompat.app.ActionBar.LayoutParams;
 import androidx.appcompat.content.res.AppCompatResources;
@@ -91,99 +92,100 @@ public class Toolbar
   private TextView mTitleTextView;
   private ToolbarWidgetWrapper mWrapper;
   
-  public Toolbar(Context paramContext)
+  public Toolbar(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public Toolbar(Context paramContext, @Nullable AttributeSet paramAttributeSet)
+  public Toolbar(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035405);
+    this(paramContext, paramAttributeSet, R.attr.toolbarStyle);
   }
   
-  public Toolbar(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
+  public Toolbar(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = TintTypedArray.obtainStyledAttributes(getContext(), paramAttributeSet, R.styleable.Toolbar, paramInt, 0);
-    this.mTitleTextAppearance = paramContext.getResourceId(R.styleable.Toolbar_titleTextAppearance, 0);
-    this.mSubtitleTextAppearance = paramContext.getResourceId(R.styleable.Toolbar_subtitleTextAppearance, 0);
-    this.mGravity = paramContext.getInteger(R.styleable.Toolbar_android_gravity, this.mGravity);
-    this.mButtonGravity = paramContext.getInteger(R.styleable.Toolbar_buttonGravity, 48);
-    int i = paramContext.getDimensionPixelOffset(R.styleable.Toolbar_titleMargin, 0);
+    TintTypedArray localTintTypedArray = TintTypedArray.obtainStyledAttributes(getContext(), paramAttributeSet, R.styleable.Toolbar, paramInt, 0);
+    ViewCompat.saveAttributeDataForStyleable(this, paramContext, R.styleable.Toolbar, paramAttributeSet, localTintTypedArray.getWrappedTypeArray(), paramInt, 0);
+    this.mTitleTextAppearance = localTintTypedArray.getResourceId(R.styleable.Toolbar_titleTextAppearance, 0);
+    this.mSubtitleTextAppearance = localTintTypedArray.getResourceId(R.styleable.Toolbar_subtitleTextAppearance, 0);
+    this.mGravity = localTintTypedArray.getInteger(R.styleable.Toolbar_android_gravity, this.mGravity);
+    this.mButtonGravity = localTintTypedArray.getInteger(R.styleable.Toolbar_buttonGravity, 48);
+    int i = localTintTypedArray.getDimensionPixelOffset(R.styleable.Toolbar_titleMargin, 0);
     paramInt = i;
-    if (paramContext.hasValue(R.styleable.Toolbar_titleMargins)) {
-      paramInt = paramContext.getDimensionPixelOffset(R.styleable.Toolbar_titleMargins, i);
+    if (localTintTypedArray.hasValue(R.styleable.Toolbar_titleMargins)) {
+      paramInt = localTintTypedArray.getDimensionPixelOffset(R.styleable.Toolbar_titleMargins, i);
     }
     this.mTitleMarginBottom = paramInt;
     this.mTitleMarginTop = paramInt;
     this.mTitleMarginEnd = paramInt;
     this.mTitleMarginStart = paramInt;
-    paramInt = paramContext.getDimensionPixelOffset(R.styleable.Toolbar_titleMarginStart, -1);
+    paramInt = localTintTypedArray.getDimensionPixelOffset(R.styleable.Toolbar_titleMarginStart, -1);
     if (paramInt >= 0) {
       this.mTitleMarginStart = paramInt;
     }
-    paramInt = paramContext.getDimensionPixelOffset(R.styleable.Toolbar_titleMarginEnd, -1);
+    paramInt = localTintTypedArray.getDimensionPixelOffset(R.styleable.Toolbar_titleMarginEnd, -1);
     if (paramInt >= 0) {
       this.mTitleMarginEnd = paramInt;
     }
-    paramInt = paramContext.getDimensionPixelOffset(R.styleable.Toolbar_titleMarginTop, -1);
+    paramInt = localTintTypedArray.getDimensionPixelOffset(R.styleable.Toolbar_titleMarginTop, -1);
     if (paramInt >= 0) {
       this.mTitleMarginTop = paramInt;
     }
-    paramInt = paramContext.getDimensionPixelOffset(R.styleable.Toolbar_titleMarginBottom, -1);
+    paramInt = localTintTypedArray.getDimensionPixelOffset(R.styleable.Toolbar_titleMarginBottom, -1);
     if (paramInt >= 0) {
       this.mTitleMarginBottom = paramInt;
     }
-    this.mMaxButtonHeight = paramContext.getDimensionPixelSize(R.styleable.Toolbar_maxButtonHeight, -1);
-    paramInt = paramContext.getDimensionPixelOffset(R.styleable.Toolbar_contentInsetStart, -2147483648);
-    i = paramContext.getDimensionPixelOffset(R.styleable.Toolbar_contentInsetEnd, -2147483648);
-    int j = paramContext.getDimensionPixelSize(R.styleable.Toolbar_contentInsetLeft, 0);
-    int k = paramContext.getDimensionPixelSize(R.styleable.Toolbar_contentInsetRight, 0);
+    this.mMaxButtonHeight = localTintTypedArray.getDimensionPixelSize(R.styleable.Toolbar_maxButtonHeight, -1);
+    paramInt = localTintTypedArray.getDimensionPixelOffset(R.styleable.Toolbar_contentInsetStart, -2147483648);
+    i = localTintTypedArray.getDimensionPixelOffset(R.styleable.Toolbar_contentInsetEnd, -2147483648);
+    int j = localTintTypedArray.getDimensionPixelSize(R.styleable.Toolbar_contentInsetLeft, 0);
+    int k = localTintTypedArray.getDimensionPixelSize(R.styleable.Toolbar_contentInsetRight, 0);
     ensureContentInsets();
     this.mContentInsets.setAbsolute(j, k);
     if ((paramInt != -2147483648) || (i != -2147483648)) {
       this.mContentInsets.setRelative(paramInt, i);
     }
-    this.mContentInsetStartWithNavigation = paramContext.getDimensionPixelOffset(R.styleable.Toolbar_contentInsetStartWithNavigation, -2147483648);
-    this.mContentInsetEndWithActions = paramContext.getDimensionPixelOffset(R.styleable.Toolbar_contentInsetEndWithActions, -2147483648);
-    this.mCollapseIcon = paramContext.getDrawable(R.styleable.Toolbar_collapseIcon);
-    this.mCollapseDescription = paramContext.getText(R.styleable.Toolbar_collapseContentDescription);
-    paramAttributeSet = paramContext.getText(R.styleable.Toolbar_title);
-    if (!TextUtils.isEmpty(paramAttributeSet)) {
-      setTitle(paramAttributeSet);
+    this.mContentInsetStartWithNavigation = localTintTypedArray.getDimensionPixelOffset(R.styleable.Toolbar_contentInsetStartWithNavigation, -2147483648);
+    this.mContentInsetEndWithActions = localTintTypedArray.getDimensionPixelOffset(R.styleable.Toolbar_contentInsetEndWithActions, -2147483648);
+    this.mCollapseIcon = localTintTypedArray.getDrawable(R.styleable.Toolbar_collapseIcon);
+    this.mCollapseDescription = localTintTypedArray.getText(R.styleable.Toolbar_collapseContentDescription);
+    paramContext = localTintTypedArray.getText(R.styleable.Toolbar_title);
+    if (!TextUtils.isEmpty(paramContext)) {
+      setTitle(paramContext);
     }
-    paramAttributeSet = paramContext.getText(R.styleable.Toolbar_subtitle);
-    if (!TextUtils.isEmpty(paramAttributeSet)) {
-      setSubtitle(paramAttributeSet);
+    paramContext = localTintTypedArray.getText(R.styleable.Toolbar_subtitle);
+    if (!TextUtils.isEmpty(paramContext)) {
+      setSubtitle(paramContext);
     }
     this.mPopupContext = getContext();
-    setPopupTheme(paramContext.getResourceId(R.styleable.Toolbar_popupTheme, 0));
-    paramAttributeSet = paramContext.getDrawable(R.styleable.Toolbar_navigationIcon);
-    if (paramAttributeSet != null) {
-      setNavigationIcon(paramAttributeSet);
+    setPopupTheme(localTintTypedArray.getResourceId(R.styleable.Toolbar_popupTheme, 0));
+    paramContext = localTintTypedArray.getDrawable(R.styleable.Toolbar_navigationIcon);
+    if (paramContext != null) {
+      setNavigationIcon(paramContext);
     }
-    paramAttributeSet = paramContext.getText(R.styleable.Toolbar_navigationContentDescription);
-    if (!TextUtils.isEmpty(paramAttributeSet)) {
-      setNavigationContentDescription(paramAttributeSet);
+    paramContext = localTintTypedArray.getText(R.styleable.Toolbar_navigationContentDescription);
+    if (!TextUtils.isEmpty(paramContext)) {
+      setNavigationContentDescription(paramContext);
     }
-    paramAttributeSet = paramContext.getDrawable(R.styleable.Toolbar_logo);
-    if (paramAttributeSet != null) {
-      setLogo(paramAttributeSet);
+    paramContext = localTintTypedArray.getDrawable(R.styleable.Toolbar_logo);
+    if (paramContext != null) {
+      setLogo(paramContext);
     }
-    paramAttributeSet = paramContext.getText(R.styleable.Toolbar_logoDescription);
-    if (!TextUtils.isEmpty(paramAttributeSet)) {
-      setLogoDescription(paramAttributeSet);
+    paramContext = localTintTypedArray.getText(R.styleable.Toolbar_logoDescription);
+    if (!TextUtils.isEmpty(paramContext)) {
+      setLogoDescription(paramContext);
     }
-    if (paramContext.hasValue(R.styleable.Toolbar_titleTextColor)) {
-      setTitleTextColor(paramContext.getColorStateList(R.styleable.Toolbar_titleTextColor));
+    if (localTintTypedArray.hasValue(R.styleable.Toolbar_titleTextColor)) {
+      setTitleTextColor(localTintTypedArray.getColorStateList(R.styleable.Toolbar_titleTextColor));
     }
-    if (paramContext.hasValue(R.styleable.Toolbar_subtitleTextColor)) {
-      setSubtitleTextColor(paramContext.getColorStateList(R.styleable.Toolbar_subtitleTextColor));
+    if (localTintTypedArray.hasValue(R.styleable.Toolbar_subtitleTextColor)) {
+      setSubtitleTextColor(localTintTypedArray.getColorStateList(R.styleable.Toolbar_subtitleTextColor));
     }
-    if (paramContext.hasValue(R.styleable.Toolbar_menu)) {
-      inflateMenu(paramContext.getResourceId(R.styleable.Toolbar_menu, 0));
+    if (localTintTypedArray.hasValue(R.styleable.Toolbar_menu)) {
+      inflateMenu(localTintTypedArray.getResourceId(R.styleable.Toolbar_menu, 0));
     }
-    paramContext.recycle();
+    localTintTypedArray.recycle();
   }
   
   private void addCustomViewsWithGravity(List<View> paramList, int paramInt)
@@ -292,7 +294,7 @@ public class Toolbar
   {
     if (this.mNavButtonView == null)
     {
-      this.mNavButtonView = new AppCompatImageButton(getContext(), null, 2131035404);
+      this.mNavButtonView = new AppCompatImageButton(getContext(), null, R.attr.toolbarNavigationButtonStyle);
       Toolbar.LayoutParams localLayoutParams = generateDefaultLayoutParams();
       localLayoutParams.gravity = (0x800003 | this.mButtonGravity & 0x70);
       this.mNavButtonView.setLayoutParams(localLayoutParams);
@@ -415,11 +417,6 @@ public class Toolbar
   private boolean isChildOrHidden(View paramView)
   {
     return (paramView.getParent() == this) || (this.mHiddenViews.contains(paramView));
-  }
-  
-  private static boolean isCustomView(View paramView)
-  {
-    return ((Toolbar.LayoutParams)paramView.getLayoutParams()).mViewType == 0;
   }
   
   private int layoutChildLeft(View paramView, int paramInt1, int[] paramArrayOfInt, int paramInt2)
@@ -563,7 +560,7 @@ public class Toolbar
   {
     if (this.mCollapseButtonView == null)
     {
-      this.mCollapseButtonView = new AppCompatImageButton(getContext(), null, 2131035404);
+      this.mCollapseButtonView = new AppCompatImageButton(getContext(), null, R.attr.toolbarNavigationButtonStyle);
       this.mCollapseButtonView.setImageDrawable(this.mCollapseIcon);
       this.mCollapseButtonView.setContentDescription(this.mCollapseDescription);
       Toolbar.LayoutParams localLayoutParams = generateDefaultLayoutParams();

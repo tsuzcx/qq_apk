@@ -14,12 +14,12 @@ class MessageForNearbyMarketGrayTips$HightlightClickableSpan$4
     if (QLog.isDevelopLevel()) {
       QLog.i("MessageForNearbyMarketGrayTips", 4, "0X80052C4");
     }
-    ReportController.b(this.a, "CliOper", "", "", "0X80052C4", "0X80052C4", 0, 0, MessageForNearbyMarketGrayTips.HightlightClickableSpan.a(this.this$0).frienduin, "", "", "");
-    if ((MessageForNearbyMarketGrayTips.HightlightClickableSpan.a(this.this$0).AioType == 1) || (MessageForNearbyMarketGrayTips.HightlightClickableSpan.a(this.this$0).AioType == 3))
+    ReportController.b(this.a, "CliOper", "", "", "0X80052C4", "0X80052C4", 0, 0, MessageForNearbyMarketGrayTips.HightlightClickableSpan.b(this.this$0).frienduin, "", "", "");
+    if ((MessageForNearbyMarketGrayTips.HightlightClickableSpan.b(this.this$0).AioType == 1) || (MessageForNearbyMarketGrayTips.HightlightClickableSpan.b(this.this$0).AioType == 3))
     {
       QQAppInterface localQQAppInterface = this.a;
       String str;
-      if (MessageForNearbyMarketGrayTips.HightlightClickableSpan.a(this.this$0).AioType == 0) {
+      if (MessageForNearbyMarketGrayTips.HightlightClickableSpan.b(this.this$0).AioType == 0) {
         str = "0";
       } else {
         str = "1";
@@ -30,7 +30,7 @@ class MessageForNearbyMarketGrayTips$HightlightClickableSpan$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.4
  * JD-Core Version:    0.7.0.1
  */

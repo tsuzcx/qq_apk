@@ -45,10 +45,10 @@ import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.troop.api.IBizTroopMemberInfoService;
 import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.troop.data.MessageNavInfo;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.troop.utils.TroopBindPublicAccountMgr;
 import com.tencent.mobileqq.troop.utils.TroopBusinessUtil;
 import com.tencent.mobileqq.troop.utils.TroopBusinessUtil.TroopBusinessMessage;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.vas.troopkeyword.TroopKeywordManager;
 import com.tencent.qphone.base.util.QLog;
@@ -110,7 +110,7 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
   
   private String decodeAnonymousMsg(PBDecodeContext paramPBDecodeContext, List<im_msg_body.Elem> paramList, String paramString, MessageRecord paramMessageRecord)
   {
-    if (((paramPBDecodeContext.f == 1) || (paramPBDecodeContext.f == 1026)) && (paramList != null))
+    if (((paramPBDecodeContext.w == 1) || (paramPBDecodeContext.w == 1026)) && (paramList != null))
     {
       Iterator localIterator = paramList.iterator();
       paramList = paramString;
@@ -144,7 +144,7 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(paramMessageRecord.msgtype);
           localStringBuilder.append("");
-          ReportController.b(localQQAppInterface, "P_CliOper", "Grp_AIO", "", "five_m", "revice_msg", 0, 0, paramList, localStringBuilder.toString(), ((TroopBusinessUtil.TroopBusinessMessage)localObject).c, "");
+          ReportController.b(localQQAppInterface, "P_CliOper", "Grp_AIO", "", "five_m", "revice_msg", 0, 0, paramList, localStringBuilder.toString(), ((TroopBusinessUtil.TroopBusinessMessage)localObject).d, "");
           paramList = paramString;
           if (QLog.isColorLevel())
           {
@@ -177,7 +177,7 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
     if (paramElem.uint32_new_group_flag.has())
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramPBDecodeContext.g);
+      localStringBuilder.append(paramPBDecodeContext.x);
       localStringBuilder.append("");
       paramPBDecodeContext = localStringBuilder.toString();
       if (getConversationFacade().getTroopMask(paramPBDecodeContext) != paramElem.uint32_new_group_flag.get()) {
@@ -190,7 +190,7 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
   private void decodeArkMsg(long paramLong, MessageInfo paramMessageInfo, MessageRecord paramMessageRecord)
   {
     if (isArkMsg(paramMessageRecord)) {
-      paramMessageInfo.a.a(20, paramLong, paramMessageRecord.uniseq);
+      paramMessageInfo.c.a(20, paramLong, paramMessageRecord.uniseq);
     }
   }
   
@@ -200,23 +200,23 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
     long l = paramMessageRecord.uniseq;
     paramStructMsgForGeneralShare = paramMessageRecord.frienduin;
     Object localObject2 = new BaseMessageManager.AddMessageContext(this.app);
-    Object localObject1 = ((BaseMessageManager.AddMessageContext)localObject2).jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy;
-    localObject2 = ((BaseMessageManager.AddMessageContext)localObject2).jdField_a_of_type_JavaUtilMap;
-    localObject1 = ((RecentUserProxy)localObject1).a(paramStructMsgForGeneralShare, 1);
+    Object localObject1 = ((BaseMessageManager.AddMessageContext)localObject2).k;
+    localObject2 = ((BaseMessageManager.AddMessageContext)localObject2).a;
+    localObject1 = ((RecentUserProxy)localObject1).b(paramStructMsgForGeneralShare, 1);
     ((IBizTroopMemberInfoService)this.app.getRuntimeService(IBizTroopMemberInfoService.class, "")).getCalendarNoticeTroopMember(paramMessageRecord.frienduin, StructMsgForGeneralShare.eventId, paramMessageRecord.shmsgseq, new BaseMessageProcessorForTroopAndDiscServiceImpl.1(this, false, paramMessageInfo, paramLong, l, (RecentUser)localObject1, paramStructMsgForGeneralShare, paramMessageRecord, (Map)localObject2));
   }
   
   private void decodeGamePartyMsg(long paramLong, MessageInfo paramMessageInfo, MessageRecord paramMessageRecord)
   {
     if (isGamePartyMsg(paramMessageRecord)) {
-      paramMessageInfo.a.a(19, paramLong, paramMessageRecord.uniseq);
+      paramMessageInfo.c.a(19, paramLong, paramMessageRecord.uniseq);
     }
   }
   
   private void decodeHomeworkMsg(long paramLong, MessageInfo paramMessageInfo, MessageRecord paramMessageRecord)
   {
     if (isHomeworkMsg(paramMessageRecord)) {
-      paramMessageInfo.a.a(5, paramLong, paramMessageRecord.uniseq);
+      paramMessageInfo.c.a(5, paramLong, paramMessageRecord.uniseq);
     }
   }
   
@@ -242,7 +242,7 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
           if (!((String)localObject2).equals(localStringBuilder.toString())) {
             break;
           }
-          paramMessageInfo.a.a(22, paramLong, paramMessageRecord.uniseq);
+          paramMessageInfo.c.a(22, paramLong, paramMessageRecord.uniseq);
           return;
         }
         i += 1;
@@ -260,7 +260,7 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
       {
         if (this.app.getCurrentAccountUin().equals(((INearbyFlowerMessage)localObject).getrUin()))
         {
-          paramMessageInfo = paramMessageInfo.a;
+          paramMessageInfo = paramMessageInfo.c;
           localObject = this.app;
           boolean bool;
           if (paramMessageRecord.istroop == 1) {
@@ -272,7 +272,7 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
           return;
         }
         if (!this.app.getCurrentAccountUin().equals(((INearbyFlowerMessage)localObject).getsUin())) {
-          paramMessageInfo.a.a(7, paramLong, paramMessageRecord.uniseq);
+          paramMessageInfo.c.a(7, paramLong, paramMessageRecord.uniseq);
         }
       }
     }
@@ -290,7 +290,7 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
         localStringBuilder.append(localMessageForReplyText.mSourceMsgInfo.mSourceMsgSenderUin);
         localStringBuilder.append("");
         if (str.equals(localStringBuilder.toString())) {
-          paramMessageInfo.a.a(22, paramLong, paramMessageRecord.uniseq);
+          paramMessageInfo.c.a(22, paramLong, paramMessageRecord.uniseq);
         }
       }
     }
@@ -316,19 +316,19 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
           decodeCalendarMsg(paramLong, paramMessageInfo, paramMessageRecord, (StructMsgForGeneralShare)localObject);
           return;
         }
-        if ((localObject != null) && (((StructMsgForGeneralShare)localObject).mMsgServiceID == 19) && (!((StructMsgForGeneralShare)localObject).mMsgBrief.startsWith(HardCodeUtil.a(2131701242))) && (!((StructMsgForGeneralShare)localObject).mMsgBrief.equals(HardCodeUtil.a(2131701236))))
+        if ((localObject != null) && (((StructMsgForGeneralShare)localObject).mMsgServiceID == 19) && (!((StructMsgForGeneralShare)localObject).mMsgBrief.startsWith(HardCodeUtil.a(2131899252))) && (!((StructMsgForGeneralShare)localObject).mMsgBrief.equals(HardCodeUtil.a(2131899246))))
         {
-          paramMessageInfo.a.a(2, paramLong, paramMessageRecord.uniseq);
+          paramMessageInfo.c.a(2, paramLong, paramMessageRecord.uniseq);
           return;
         }
         if ((localObject != null) && (((StructMsgForGeneralShare)localObject).mMsgServiceID == 106))
         {
           if ((((StructMsgForGeneralShare)localObject).atMembers != null) && (((StructMsgForGeneralShare)localObject).atMembers.contains(this.app.getCurrentAccountUin()))) {
-            paramMessageInfo.a.a(24, paramLong, paramMessageRecord.uniseq);
+            paramMessageInfo.c.a(24, paramLong, paramMessageRecord.uniseq);
           }
         }
         else if ((localObject != null) && (((StructMsgForGeneralShare)localObject).mMsgServiceID == 107)) {
-          paramMessageInfo.a.a(12, paramLong, paramMessageRecord.uniseq);
+          paramMessageInfo.c.a(12, paramLong, paramMessageRecord.uniseq);
         }
       }
     }
@@ -340,7 +340,7 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
     {
       MessageForArkApp localMessageForArkApp = (MessageForArkApp)paramMessageRecord;
       if ((localMessageForArkApp.ark_app_message != null) && (localMessageForArkApp.ark_app_message.appName.equals("com.tencent.mannounce"))) {
-        paramMessageInfo.a.a(11, paramLong, paramMessageRecord.uniseq);
+        paramMessageInfo.c.a(11, paramLong, paramMessageRecord.uniseq);
       }
     }
   }
@@ -348,14 +348,14 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
   private void decodeTroopAttention(long paramLong, MessageInfo paramMessageInfo, MessageRecord paramMessageRecord)
   {
     if ((paramMessageRecord.istroop == 1) && (TroopKeywordManager.a(this.app).a(paramMessageRecord.msg, paramMessageRecord.frienduin))) {
-      paramMessageInfo.a.a(16, paramLong, paramMessageRecord.uniseq);
+      paramMessageInfo.c.a(16, paramLong, paramMessageRecord.uniseq);
     }
   }
   
   private void decodeTroopConfess(long paramLong, MessageInfo paramMessageInfo, MessageRecord paramMessageRecord)
   {
     if (((paramMessageRecord instanceof MessageForTroopConfess)) && (((MessageForTroopConfess)paramMessageRecord).isToSelf)) {
-      paramMessageInfo.a.a(10, paramLong, paramMessageRecord.uniseq);
+      paramMessageInfo.c.a(10, paramLong, paramMessageRecord.uniseq);
     }
   }
   
@@ -380,12 +380,12 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
           if ((!((String)localObject).equals(localStringBuilder.toString())) && (!localMessageForDeliverGiftTips.isToAll()))
           {
             if (localMessageForDeliverGiftTips.animationPackageId > 0) {
-              paramMessageInfo.a.a(7, paramLong, paramMessageRecord.uniseq);
+              paramMessageInfo.c.a(7, paramLong, paramMessageRecord.uniseq);
             }
           }
           else
           {
-            paramMessageInfo = paramMessageInfo.a;
+            paramMessageInfo = paramMessageInfo.c;
             localObject = this.app;
             boolean bool;
             if (paramMessageRecord.istroop == 1) {
@@ -407,14 +407,14 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
   private void decodeTroopFile(long paramLong, MessageInfo paramMessageInfo, MessageRecord paramMessageRecord)
   {
     if ((paramMessageRecord instanceof MessageForTroopFile)) {
-      paramMessageInfo.a.a(3, paramLong, paramMessageRecord.uniseq);
+      paramMessageInfo.c.a(3, paramLong, paramMessageRecord.uniseq);
     }
   }
   
   private void decodeTroopScriptMsg(long paramLong, MessageInfo paramMessageInfo, MessageRecord paramMessageRecord)
   {
     if (TroopBindPublicAccountMgr.a(paramMessageRecord)) {
-      paramMessageInfo.a.a(8, paramLong, paramMessageRecord.uniseq);
+      paramMessageInfo.c.a(8, paramLong, paramMessageRecord.uniseq);
     }
   }
   
@@ -557,7 +557,7 @@ public class BaseMessageProcessorForTroopAndDiscServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.api.impl.BaseMessageProcessorForTroopAndDiscServiceImpl
  * JD-Core Version:    0.7.0.1
  */

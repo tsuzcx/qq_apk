@@ -30,17 +30,12 @@ public class ComicBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.F;
-  }
+  public static final int a = BannerTypeCollections.G;
   
   public ComicBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
+    this.g = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   public int a()
@@ -53,8 +48,8 @@ public class ComicBannerProcessor
     if (QLog.isColorLevel()) {
       QLog.d("ComicBar", 2, "initComicBar");
     }
-    paramBanner = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity).inflate(2131558586, null);
-    paramBanner.findViewById(2131362529).setVisibility(8);
+    paramBanner = LayoutInflater.from(this.f).inflate(2131624144, null);
+    paramBanner.findViewById(2131428140).setVisibility(8);
     return paramBanner;
   }
   
@@ -70,7 +65,7 @@ public class ComicBannerProcessor
         ((StringBuilder)localObject).append(paramMessage.obj);
         QLog.d("ComicBar", 2, ((StringBuilder)localObject).toString());
       }
-      TextView localTextView = (TextView)paramBanner.a.findViewById(2131362510);
+      TextView localTextView = (TextView)paramBanner.c.findViewById(2131428120);
       if (((paramMessage.obj instanceof Bundle)) && (localTextView != null))
       {
         paramMessage = (Bundle)paramMessage.obj;
@@ -79,7 +74,7 @@ public class ComicBannerProcessor
         int j = paramMessage.getInt("type", -1);
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDisplayMetrics();
+          paramMessage = this.f.getResources().getDisplayMetrics();
           int k = (int)(localTextView.getPaint().measureText((String)localObject) / ((String)localObject).length());
           if (paramMessage.widthPixels > paramMessage.heightPixels) {
             i = paramMessage.heightPixels;
@@ -98,7 +93,7 @@ public class ComicBannerProcessor
           if ((j >= 100) && (j <= 300))
           {
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(HardCodeUtil.a(2131701134));
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131899151));
             ((StringBuilder)localObject).append(paramMessage);
             ((StringBuilder)localObject).append("》");
             localTextView.setText(((StringBuilder)localObject).toString());
@@ -106,16 +101,16 @@ public class ComicBannerProcessor
           else
           {
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(HardCodeUtil.a(2131701145));
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131899162));
             ((StringBuilder)localObject).append(paramMessage);
             ((StringBuilder)localObject).append("》");
             localTextView.setText(((StringBuilder)localObject).toString());
           }
-          paramBanner.a.setOnClickListener(new ComicBannerProcessor.1(this, str));
-          paramBanner.a.findViewById(2131362529).setVisibility(0);
-          this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1000);
-          this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1000, 900000L);
-          ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EDF", "0X8009EDF", 2, 0, "", "", "", "");
+          paramBanner.c.setOnClickListener(new ComicBannerProcessor.1(this, str));
+          paramBanner.c.findViewById(2131428140).setVisibility(0);
+          this.g.removeMessages(1000);
+          this.g.sendEmptyMessageDelayed(1000, 900000L);
+          ReportController.a(this.f.getAppRuntime(), "dc00898", "", "", "0X8009EDF", "0X8009EDF", 2, 0, "", "", "", "");
         }
       }
       return;
@@ -131,27 +126,27 @@ public class ComicBannerProcessor
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.g.removeCallbacksAndMessages(null);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public void b() {}
+  public void d() {}
   
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1000) {
-      BannerManager.a().a(jdField_a_of_type_Int, 0, paramMessage);
+      BannerManager.a().a(a, 0, paramMessage);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.ComicBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

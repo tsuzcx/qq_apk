@@ -21,38 +21,38 @@ import java.util.TreeMap;
 
 public class PromotionRes
 {
-  static final String jdField_a_of_type_JavaLangString;
-  long jdField_a_of_type_Long = 0L;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private PromotionConfigInfo.PromotionItem jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem = null;
-  private PromotionResDownload.DownloadListener jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload$DownloadListener = null;
-  private PromotionRes.ARTransferPromotionResStatusCallBack jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes$ARTransferPromotionResStatusCallBack;
-  private ScanTorchActivity jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity;
-  private GestureMgr.GestureStatusListener jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr$GestureStatusListener = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = { 100, 100, 100, 100, 100 };
+  static final String a;
+  int[] b = { 100, 100, 100, 100, 100 };
+  long c = 0L;
+  private ScanTorchActivity d;
+  private PromotionRes.ARTransferPromotionResStatusCallBack e;
+  private AppInterface f;
+  private PromotionConfigInfo.PromotionItem g = null;
+  private PromotionResDownload.DownloadListener h = null;
+  private GestureMgr.GestureStatusListener i = null;
+  private boolean j = false;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(PromotionUtil.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(PromotionUtil.a);
     localStringBuilder.append("_Res");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public PromotionRes(ScanTorchActivity paramScanTorchActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity = paramScanTorchActivity;
+    this.d = paramScanTorchActivity;
   }
   
   private void a(AppInterface paramAppInterface, PromotionConfigInfo.PromotionItem paramPromotionItem)
   {
-    if ((paramPromotionItem != null) && ((!paramPromotionItem.jdField_a_of_type_Boolean) || (paramPromotionItem.a() != null)))
+    if ((paramPromotionItem != null) && ((!paramPromotionItem.c) || (paramPromotionItem.a() != null)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem = paramPromotionItem;
+      this.g = paramPromotionItem;
       d(paramAppInterface);
-      PromotionUtil.a(paramAppInterface).a(paramAppInterface, paramPromotionItem.jdField_a_of_type_JavaLangString);
-      a(paramAppInterface, this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes$ARTransferPromotionResStatusCallBack.d());
+      PromotionUtil.a(paramAppInterface).a(paramAppInterface, paramPromotionItem.e);
+      a(paramAppInterface, this.e.j());
       return;
     }
     a("onGetTransferDoorConfig", paramAppInterface, true);
@@ -60,8 +60,8 @@ public class PromotionRes
   
   private void a(AppInterface paramAppInterface, boolean paramBoolean)
   {
-    boolean bool = a(paramAppInterface);
-    if (this.jdField_a_of_type_ArrayOfInt[0] == 100) {
+    boolean bool = e(paramAppInterface);
+    if (this.b[0] == 100) {
       a("tryDownload", paramAppInterface);
     }
     if (bool)
@@ -69,30 +69,30 @@ public class PromotionRes
       a("tryDownload", paramAppInterface, false);
       return;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
     a("tryDownload", true);
   }
   
   private void a(String paramString, AppInterface paramAppInterface)
   {
-    if (d())
+    if (g())
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkEntryRes, scanTorchActivity为空");
+      QLog.w(a, 1, "checkEntryRes, scanTorchActivity为空");
       return;
     }
     paramAppInterface = a();
     if (paramAppInterface == null)
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkEntryRes, promotion为空");
+      QLog.w(a, 1, "checkEntryRes, promotion为空");
       return;
     }
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes$ARTransferPromotionResStatusCallBack.c();
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    boolean bool2 = this.e.i();
+    Object localObject = this.b;
     boolean bool1 = false;
     if (localObject[0] == 100) {
       bool1 = true;
     }
-    localObject = jdField_a_of_type_JavaLangString;
+    localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("checkEntryRes, from[");
     localStringBuilder.append(paramString);
@@ -105,15 +105,15 @@ public class PromotionRes
     localStringBuilder.append("]");
     QLog.w((String)localObject, 1, localStringBuilder.toString());
     if ((bool2) && (bool1)) {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes$ARTransferPromotionResStatusCallBack.a(paramAppInterface);
+      this.e.a(paramAppInterface);
     }
   }
   
   private void a(String paramString, AppInterface paramAppInterface, boolean paramBoolean)
   {
-    if (d())
+    if (g())
     {
-      paramAppInterface = jdField_a_of_type_JavaLangString;
+      paramAppInterface = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("checkAllRes, scanTorchActivity为空, from[");
       ((StringBuilder)localObject).append(paramString);
@@ -126,7 +126,7 @@ public class PromotionRes
     paramAppInterface = a();
     if (paramAppInterface == null)
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("checkAllRes, promotionItem为空, from[");
       localStringBuilder.append(paramString);
@@ -135,14 +135,14 @@ public class PromotionRes
       localStringBuilder.append("]");
       QLog.w((String)localObject, 1, localStringBuilder.toString());
       if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes$ARTransferPromotionResStatusCallBack.a(paramAppInterface, false);
+        this.e.a(paramAppInterface, false);
       }
       return;
     }
     a("checkAllRes", true);
-    if (a())
+    if (d())
     {
-      paramAppInterface = jdField_a_of_type_JavaLangString;
+      paramAppInterface = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("checkAllRes, 还在下载中, from[");
       ((StringBuilder)localObject).append(paramString);
@@ -152,9 +152,9 @@ public class PromotionRes
       QLog.w(paramAppInterface, 1, ((StringBuilder)localObject).toString());
       return;
     }
-    if (b())
+    if (e())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("checkAllRes, 下载失败, from[");
       localStringBuilder.append(paramString);
@@ -162,12 +162,12 @@ public class PromotionRes
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append("]");
       QLog.w((String)localObject, 1, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes$ARTransferPromotionResStatusCallBack.a(paramAppInterface, false);
+      this.e.a(paramAppInterface, false);
       return;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes$ARTransferPromotionResStatusCallBack.b())
+    if (!this.e.h())
     {
-      paramAppInterface = jdField_a_of_type_JavaLangString;
+      paramAppInterface = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("checkAllRes, ArEngine未准备好, from[");
       ((StringBuilder)localObject).append(paramString);
@@ -177,7 +177,7 @@ public class PromotionRes
       QLog.w(paramAppInterface, 1, ((StringBuilder)localObject).toString());
       return;
     }
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("checkAllRes, all ready, from[");
     localStringBuilder.append(paramString);
@@ -185,22 +185,22 @@ public class PromotionRes
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append("]");
     QLog.w((String)localObject, 1, localStringBuilder.toString());
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes$ARTransferPromotionResStatusCallBack.a(paramAppInterface, true);
+    c();
+    this.e.a(paramAppInterface, true);
   }
   
   private void a(String paramString, boolean paramBoolean)
   {
-    if (d()) {
+    if (g()) {
       return;
     }
-    long l = this.jdField_a_of_type_Long;
+    long l = this.c;
     Object localObject;
     StringBuilder localStringBuilder;
     if (l == 0L)
     {
-      this.jdField_a_of_type_Long = (System.currentTimeMillis() + 1500L);
-      localObject = jdField_a_of_type_JavaLangString;
+      this.c = (System.currentTimeMillis() + 1500L);
+      localObject = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("showDownloadProgress, 忽略1, from[");
       localStringBuilder.append(paramString);
@@ -212,7 +212,7 @@ public class PromotionRes
     }
     if (l > System.currentTimeMillis())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("showDownloadProgress, 忽略2, from[");
       localStringBuilder.append(paramString);
@@ -222,9 +222,9 @@ public class PromotionRes
       QLog.w((String)localObject, 1, localStringBuilder.toString());
       return;
     }
-    if ((paramBoolean) && (c()))
+    if ((paramBoolean) && (f()))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes$ARTransferPromotionResStatusCallBack;
+      localObject = this.e;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("PromotionRes_");
       localStringBuilder.append(paramString);
@@ -232,40 +232,89 @@ public class PromotionRes
     }
   }
   
-  private boolean d()
+  private boolean g()
   {
-    ScanTorchActivity localScanTorchActivity = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity;
+    ScanTorchActivity localScanTorchActivity = this.d;
     return (localScanTorchActivity == null) || (localScanTorchActivity.isDestroyed);
-  }
-  
-  public int a()
-  {
-    int i = 0;
-    int j = 0;
-    int[] arrayOfInt;
-    for (;;)
-    {
-      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      if (i >= arrayOfInt.length) {
-        break;
-      }
-      j += arrayOfInt[i];
-      i += 1;
-    }
-    return j / arrayOfInt.length;
   }
   
   public PromotionConfigInfo.PromotionItem a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem;
+    return this.g;
   }
   
-  void a()
+  public void a(AppInterface paramAppInterface)
   {
-    if (QQAudioHelper.a(5) != 1) {
+    this.f = paramAppInterface;
+  }
+  
+  public void a(AppInterface paramAppInterface, PopupMenu paramPopupMenu) {}
+  
+  public void a(AppInterface paramAppInterface, String paramString)
+  {
+    if (this.e.j())
+    {
+      QLog.d(a, 1, "getRes,  需要显示穿越门进度条");
+      this.j = true;
+    }
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getRes, activityID[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], TotalProgress[");
+    localStringBuilder.append(b());
+    localStringBuilder.append("]");
+    QLog.d(str, 1, localStringBuilder.toString());
+    PromotionUtil.a(paramAppInterface).a(paramAppInterface, new PromotionRes.1(this, paramString, paramAppInterface));
+  }
+  
+  public void a(PromotionRes.ARTransferPromotionResStatusCallBack paramARTransferPromotionResStatusCallBack)
+  {
+    this.e = paramARTransferPromotionResStatusCallBack;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.j = paramBoolean;
+  }
+  
+  public int b()
+  {
+    int k = 0;
+    int m = 0;
+    int[] arrayOfInt;
+    for (;;)
+    {
+      arrayOfInt = this.b;
+      if (k >= arrayOfInt.length) {
+        break;
+      }
+      m += arrayOfInt[k];
+      k += 1;
+    }
+    return m / arrayOfInt.length;
+  }
+  
+  public void b(AppInterface paramAppInterface)
+  {
+    this.d = null;
+    if (this.h != null)
+    {
+      PromotionUtil.a(paramAppInterface).b(this.h);
+      this.h = null;
+    }
+    if (this.i != null) {
+      GestureMgr.e().a(false, this.i);
+    }
+    this.g = null;
+  }
+  
+  void c()
+  {
+    if (QQAudioHelper.b(5) != 1) {
       return;
     }
-    Button localButton = (Button)this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.findViewById(2131365440);
+    Button localButton = (Button)this.d.findViewById(2131431646);
     localButton.setVisibility(0);
     if (localButton.getTag() != null) {
       return;
@@ -274,86 +323,126 @@ public class PromotionRes
     localButton.setOnClickListener(new PromotionRes.4(this));
   }
   
-  public void a(AppInterface paramAppInterface)
+  public void c(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  public void a(AppInterface paramAppInterface, PopupMenu paramPopupMenu) {}
-  
-  public void a(AppInterface paramAppInterface, String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes$ARTransferPromotionResStatusCallBack.d())
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "getRes,  需要显示穿越门进度条");
-      this.jdField_a_of_type_Boolean = true;
+    PromotionConfigInfo.PromotionItem localPromotionItem = a();
+    boolean bool2 = d();
+    boolean bool1;
+    if (!bool2) {
+      bool1 = e();
+    } else {
+      bool1 = false;
     }
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getRes, activityID[");
-    localStringBuilder.append(paramString);
+    localStringBuilder.append("reTry, promotionItem[");
+    localStringBuilder.append(localPromotionItem);
+    localStringBuilder.append("], isDownloading[");
+    localStringBuilder.append(bool2);
+    localStringBuilder.append("], isDownloadError[");
+    localStringBuilder.append(bool1);
+    localStringBuilder.append("], needShowDownloadProgress[");
+    localStringBuilder.append(this.j);
     localStringBuilder.append("], TotalProgress[");
-    localStringBuilder.append(a());
+    localStringBuilder.append(b());
     localStringBuilder.append("]");
-    QLog.d(str, 1, localStringBuilder.toString());
-    PromotionUtil.a(paramAppInterface).a(paramAppInterface, new PromotionRes.1(this, paramString, paramAppInterface));
+    QLog.w(str, 1, localStringBuilder.toString());
+    this.j = true;
+    if (localPromotionItem == null) {
+      return;
+    }
+    if (bool2) {
+      return;
+    }
+    PromotionUtil.a(paramAppInterface).a(paramAppInterface, localPromotionItem.e);
+    a(paramAppInterface, this.e.j());
   }
   
-  public void a(PromotionRes.ARTransferPromotionResStatusCallBack paramARTransferPromotionResStatusCallBack)
+  void d(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes$ARTransferPromotionResStatusCallBack = paramARTransferPromotionResStatusCallBack;
+    if (this.h != null) {
+      return;
+    }
+    this.i = new PromotionRes.2(this, paramAppInterface);
+    GestureMgr.e().a(true, this.i);
+    this.h = new PromotionRes.3(this, paramAppInterface);
+    PromotionUtil.a(paramAppInterface).a(this.h);
   }
   
-  public void a(boolean paramBoolean)
+  public boolean d()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    int i = 0;
+    int k = 0;
     for (;;)
     {
-      Object localObject = this.jdField_a_of_type_ArrayOfInt;
-      if (i >= localObject.length) {
+      Object localObject = this.b;
+      if (k >= localObject.length) {
         break;
       }
-      if ((localObject[i] >= 0) && (localObject[i] <= 99))
+      if ((localObject[k] >= 0) && (localObject[k] <= 99))
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("isDownloading, index[");
-        localStringBuilder.append(i);
+        localStringBuilder.append(k);
         localStringBuilder.append("], Progress[");
-        localStringBuilder.append(this.jdField_a_of_type_ArrayOfInt[i]);
+        localStringBuilder.append(this.b[k]);
         localStringBuilder.append("]");
         QLog.w((String)localObject, 1, localStringBuilder.toString());
         return true;
       }
-      i += 1;
+      k += 1;
     }
     return false;
   }
   
-  public boolean a(AppInterface paramAppInterface)
+  public boolean e()
+  {
+    if (d()) {
+      return false;
+    }
+    int k = 0;
+    for (;;)
+    {
+      Object localObject = this.b;
+      if (k >= localObject.length) {
+        break;
+      }
+      if (localObject[k] < 0)
+      {
+        localObject = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isDownloadError, index[");
+        localStringBuilder.append(k);
+        localStringBuilder.append("], errCode[");
+        localStringBuilder.append(this.b[k]);
+        localStringBuilder.append("]");
+        QLog.w((String)localObject, 1, localStringBuilder.toString());
+        return true;
+      }
+      k += 1;
+    }
+    return false;
+  }
+  
+  public boolean e(AppInterface paramAppInterface)
   {
     Object localObject1 = a();
     if (localObject1 == null)
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isResReady no promotion Item so reay");
+      QLog.w(a, 1, "isResReady no promotion Item so reay");
       return true;
     }
-    localObject1 = ((PromotionConfigInfo.PromotionItem)localObject1).a();
-    int i = ((TreeMap)localObject1).size();
+    localObject1 = ((PromotionConfigInfo.PromotionItem)localObject1).b();
+    int k = ((TreeMap)localObject1).size();
     Object localObject2;
-    if (i + 1 > this.jdField_a_of_type_ArrayOfInt.length)
+    if (k + 1 > this.b.length)
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("checkRes, zip数目不对, itemCount[");
-      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(k);
       ((StringBuilder)localObject2).append("]");
       localObject2 = ((StringBuilder)localObject2).toString();
-      QLog.w(jdField_a_of_type_JavaLangString, 1, (String)localObject2);
+      QLog.w(a, 1, (String)localObject2);
       if (QQAudioHelper.b()) {
         throw new IllegalStateException((String)localObject2);
       }
@@ -363,144 +452,55 @@ public class PromotionRes
     {
       localObject2 = (PromotionConfigInfo.ZipItem)((Map.Entry)((Iterator)localObject1).next()).getValue();
       if (PromotionResDownload.a(paramAppInterface.getCurrentAccountUin(), (PromotionConfigInfo.ZipItem)localObject2)) {
-        this.jdField_a_of_type_ArrayOfInt[localObject2.a] = 100;
+        this.b[localObject2.a] = 100;
       } else {
-        this.jdField_a_of_type_ArrayOfInt[localObject2.a] = 0;
+        this.b[localObject2.a] = 0;
       }
     }
     if (GestureRecognitionUtils.a()) {
-      this.jdField_a_of_type_ArrayOfInt[3] = 100;
+      this.b[3] = 100;
     } else {
-      this.jdField_a_of_type_ArrayOfInt[3] = 0;
+      this.b[3] = 0;
     }
-    int j = a();
-    paramAppInterface = jdField_a_of_type_JavaLangString;
+    int m = b();
+    paramAppInterface = a;
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("checkRes, itemCount[");
-    ((StringBuilder)localObject1).append(i);
+    ((StringBuilder)localObject1).append(k);
     ((StringBuilder)localObject1).append("], Progress0[");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ArrayOfInt[0]);
+    ((StringBuilder)localObject1).append(this.b[0]);
     ((StringBuilder)localObject1).append("], Progress1[");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ArrayOfInt[1]);
+    ((StringBuilder)localObject1).append(this.b[1]);
     ((StringBuilder)localObject1).append("], Progress2[");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ArrayOfInt[2]);
+    ((StringBuilder)localObject1).append(this.b[2]);
     ((StringBuilder)localObject1).append("], Progress3[");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ArrayOfInt[3]);
+    ((StringBuilder)localObject1).append(this.b[3]);
     ((StringBuilder)localObject1).append("], TotalProgress[");
-    ((StringBuilder)localObject1).append(j);
+    ((StringBuilder)localObject1).append(m);
     ((StringBuilder)localObject1).append("]");
     QLog.w(paramAppInterface, 1, ((StringBuilder)localObject1).toString());
-    return j == 100;
-  }
-  
-  public void b(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload$DownloadListener != null)
-    {
-      PromotionUtil.a(paramAppInterface).b(this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload$DownloadListener);
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload$DownloadListener = null;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr$GestureStatusListener != null) {
-      GestureMgr.a().a(false, this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr$GestureStatusListener);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem = null;
-  }
-  
-  public boolean b()
-  {
-    if (a()) {
-      return false;
-    }
-    int i = 0;
-    for (;;)
-    {
-      Object localObject = this.jdField_a_of_type_ArrayOfInt;
-      if (i >= localObject.length) {
-        break;
-      }
-      if (localObject[i] < 0)
-      {
-        localObject = jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("isDownloadError, index[");
-        localStringBuilder.append(i);
-        localStringBuilder.append("], errCode[");
-        localStringBuilder.append(this.jdField_a_of_type_ArrayOfInt[i]);
-        localStringBuilder.append("]");
-        QLog.w((String)localObject, 1, localStringBuilder.toString());
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
-  public void c(AppInterface paramAppInterface)
-  {
-    PromotionConfigInfo.PromotionItem localPromotionItem = a();
-    boolean bool2 = a();
-    boolean bool1;
-    if (!bool2) {
-      bool1 = b();
-    } else {
-      bool1 = false;
-    }
-    String str = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("reTry, promotionItem[");
-    localStringBuilder.append(localPromotionItem);
-    localStringBuilder.append("], isDownloading[");
-    localStringBuilder.append(bool2);
-    localStringBuilder.append("], isDownloadError[");
-    localStringBuilder.append(bool1);
-    localStringBuilder.append("], needShowDownloadProgress[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("], TotalProgress[");
-    localStringBuilder.append(a());
-    localStringBuilder.append("]");
-    QLog.w(str, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_Boolean = true;
-    if (localPromotionItem == null) {
-      return;
-    }
-    if (bool2) {
-      return;
-    }
-    PromotionUtil.a(paramAppInterface).a(paramAppInterface, localPromotionItem.jdField_a_of_type_JavaLangString);
-    a(paramAppInterface, this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes$ARTransferPromotionResStatusCallBack.d());
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  void d(AppInterface paramAppInterface)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload$DownloadListener != null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr$GestureStatusListener = new PromotionRes.2(this, paramAppInterface);
-    GestureMgr.a().a(true, this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr$GestureStatusListener);
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload$DownloadListener = new PromotionRes.3(this, paramAppInterface);
-    PromotionUtil.a(paramAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload$DownloadListener);
-  }
-  
-  public void e(AppInterface paramAppInterface)
-  {
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "onAREngineReady");
-    a("onAREngineReady", paramAppInterface, false);
+    return m == 100;
   }
   
   public void f(AppInterface paramAppInterface)
+  {
+    QLog.w(a, 1, "onAREngineReady");
+    a("onAREngineReady", paramAppInterface, false);
+  }
+  
+  public boolean f()
+  {
+    return this.j;
+  }
+  
+  public void g(AppInterface paramAppInterface)
   {
     a("onAREngineReady", paramAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionRes
  * JD-Core Version:    0.7.0.1
  */

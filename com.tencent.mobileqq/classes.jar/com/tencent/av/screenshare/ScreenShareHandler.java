@@ -25,44 +25,18 @@ import java.util.Set;
 public class ScreenShareHandler
   extends BusinessHandler
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQRTCSvc.screen_share_ask", "QQRTCSvc.screen_share_answer" };
-  private final VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private static final String[] a = { "QQRTCSvc.screen_share_ask", "QQRTCSvc.screen_share_answer" };
+  private final VideoAppInterface b;
   
   public ScreenShareHandler(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.b = paramVideoAppInterface;
   }
   
   public static String[] a()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
-  }
-  
-  public void a()
-  {
-    ReqGroupVideo.ReqScreenShareAsk localReqScreenShareAsk = new ReqGroupVideo.ReqScreenShareAsk();
-    localReqScreenShareAsk.from_uin.set(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin());
-    localReqScreenShareAsk.to_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().c));
-    localReqScreenShareAsk.is_online.set(true);
-    Object localObject = createToServiceMsg("QQRTCSvc.screen_share_ask");
-    ((ToServiceMsg)localObject).putWupBuffer(localReqScreenShareAsk.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("askScreenShare, from ");
-    ((StringBuilder)localObject).append(localReqScreenShareAsk.from_uin.get());
-    ((StringBuilder)localObject).append(" , to ");
-    ((StringBuilder)localObject).append(localReqScreenShareAsk.to_uin.get());
-    QLog.i("ScreenShareHandler", 4, ((StringBuilder)localObject).toString());
-    if (QLog.isDevelopLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("askScreenShare, from ");
-      ((StringBuilder)localObject).append(localReqScreenShareAsk.from_uin);
-      ((StringBuilder)localObject).append(" , to ");
-      ((StringBuilder)localObject).append(localReqScreenShareAsk.to_uin);
-      QLog.i("ScreenShareHandler", 4, ((StringBuilder)localObject).toString());
-    }
+    return a;
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -105,7 +79,7 @@ public class ScreenShareHandler
     }
     paramToServiceMsg = (common.ErrorInfo)paramToServiceMsg.result.get();
     int i = MessageHandler.a(paramToServiceMsg);
-    paramToServiceMsg = MessageHandler.a(paramToServiceMsg);
+    paramToServiceMsg = MessageHandler.b(paramToServiceMsg);
     if ((i != -99) && (i != 0))
     {
       new Handler(Looper.getMainLooper()).post(new ScreenShareHandler.1(this, paramToServiceMsg));
@@ -125,8 +99,8 @@ public class ScreenShareHandler
   public void a(boolean paramBoolean)
   {
     ReqGroupVideo.ReqScreenShareAnswer localReqScreenShareAnswer = new ReqGroupVideo.ReqScreenShareAnswer();
-    localReqScreenShareAnswer.from_uin.set(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin());
-    localReqScreenShareAnswer.to_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().c));
+    localReqScreenShareAnswer.from_uin.set(this.b.getLongAccountUin());
+    localReqScreenShareAnswer.to_uin.set(Long.parseLong(this.b.b().k().s));
     localReqScreenShareAnswer.is_accept.set(paramBoolean);
     Object localObject = createToServiceMsg("QQRTCSvc.screen_share_answer");
     ((ToServiceMsg)localObject).putWupBuffer(localReqScreenShareAnswer.toByteArray());
@@ -140,6 +114,32 @@ public class ScreenShareHandler
       ((StringBuilder)localObject).append(localReqScreenShareAnswer.to_uin);
       ((StringBuilder)localObject).append(", isAccept: ");
       ((StringBuilder)localObject).append(localReqScreenShareAnswer.is_accept);
+      QLog.i("ScreenShareHandler", 4, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public void b()
+  {
+    ReqGroupVideo.ReqScreenShareAsk localReqScreenShareAsk = new ReqGroupVideo.ReqScreenShareAsk();
+    localReqScreenShareAsk.from_uin.set(this.b.getLongAccountUin());
+    localReqScreenShareAsk.to_uin.set(Long.parseLong(this.b.b().k().s));
+    localReqScreenShareAsk.is_online.set(true);
+    Object localObject = createToServiceMsg("QQRTCSvc.screen_share_ask");
+    ((ToServiceMsg)localObject).putWupBuffer(localReqScreenShareAsk.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("askScreenShare, from ");
+    ((StringBuilder)localObject).append(localReqScreenShareAsk.from_uin.get());
+    ((StringBuilder)localObject).append(" , to ");
+    ((StringBuilder)localObject).append(localReqScreenShareAsk.to_uin.get());
+    QLog.i("ScreenShareHandler", 4, ((StringBuilder)localObject).toString());
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("askScreenShare, from ");
+      ((StringBuilder)localObject).append(localReqScreenShareAsk.from_uin);
+      ((StringBuilder)localObject).append(" , to ");
+      ((StringBuilder)localObject).append(localReqScreenShareAsk.to_uin);
       QLog.i("ScreenShareHandler", 4, ((StringBuilder)localObject).toString());
     }
   }
@@ -184,7 +184,7 @@ public class ScreenShareHandler
     }
     paramToServiceMsg = (common.ErrorInfo)paramToServiceMsg.result.get();
     int i = MessageHandler.a(paramToServiceMsg);
-    paramToServiceMsg = MessageHandler.a(paramToServiceMsg);
+    paramToServiceMsg = MessageHandler.b(paramToServiceMsg);
     if (i != -99)
     {
       paramFromServiceMsg = new StringBuilder();

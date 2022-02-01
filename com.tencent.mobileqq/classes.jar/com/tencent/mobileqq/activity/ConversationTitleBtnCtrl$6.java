@@ -10,12 +10,12 @@ class ConversationTitleBtnCtrl$6
   
   public void run()
   {
-    QCircleUtils.a().onSmallRedPointClick("circle_entrance", null);
+    QCircleUtils.b().onSmallRedPointClick("circle_entrance", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationTitleBtnCtrl.6
  * JD-Core Version:    0.7.0.1
  */

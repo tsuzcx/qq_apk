@@ -12,11 +12,11 @@ public class RecentDataConvertDispatcher
 {
   public RecentBaseData a(BaseQQAppInterface paramBaseQQAppInterface, RecentUser paramRecentUser)
   {
-    Object localObject3 = jdField_a_of_type_JavaLangObject;
+    Object localObject3 = a;
     Object localObject1 = null;
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.b.iterator();
       Object localObject2;
       do
       {
@@ -42,7 +42,7 @@ public class RecentDataConvertDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.RecentDataConvertDispatcher
  * JD-Core Version:    0.7.0.1
  */

@@ -21,12 +21,12 @@ class ReadInJoyDeliverVideoActivity$5
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
       }
-      ReadInJoyDeliverVideoActivity.c(this.a, ShortVideoPreviewActivity.coverToLocalImage(paramURL.a()));
+      ReadInJoyDeliverVideoActivity.d(this.a, ShortVideoPreviewActivity.coverToLocalImage(paramURL.b()));
       if (QLog.isColorLevel())
       {
         paramURL = new StringBuilder();
         paramURL.append("king moment local cover is ");
-        paramURL.append(ReadInJoyDeliverVideoActivity.a(this.a));
+        paramURL.append(ReadInJoyDeliverVideoActivity.j(this.a));
         QLog.d("ReadInJoyDeliverVideoActivity", 2, paramURL.toString());
       }
       this.a.setRightViewTextDisable(1);
@@ -37,7 +37,7 @@ class ReadInJoyDeliverVideoActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverVideoActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -16,30 +16,13 @@ import java.util.List;
 public class FTSEntitySearchFragment
   extends BaseSearchFragment
 {
-  public static FTSEntitySearchFragment a(String paramString)
+  public static FTSEntitySearchFragment b(String paramString)
   {
     FTSEntitySearchFragment localFTSEntitySearchFragment = new FTSEntitySearchFragment();
     Bundle localBundle = new Bundle(1);
     localBundle.putString("keyword", paramString);
     localFTSEntitySearchFragment.setArguments(localBundle);
     return localFTSEntitySearchFragment;
-  }
-  
-  protected BaseMvpAdapter a()
-  {
-    return new FTSEntitySearchFragment.1(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder);
-  }
-  
-  protected ISearchEngine a()
-  {
-    BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getQBaseActivity();
-    return FTSEntitySearchUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, localBaseSearchActivity.b);
-  }
-  
-  protected String a()
-  {
-    BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getQBaseActivity();
-    return FTSEntitySearchUtils.a(localBaseSearchActivity, localBaseSearchActivity.b);
   }
   
   public void a(String paramString)
@@ -50,11 +33,11 @@ public class FTSEntitySearchFragment
   public void a(List paramList, int paramInt)
   {
     super.a(paramList, paramInt);
-    if (!this.b)
+    if (!this.j)
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(this.q);
       localObject = ((StringBuilder)localObject).toString();
       paramInt = 0;
       StringBuilder localStringBuilder = new StringBuilder();
@@ -64,62 +47,79 @@ public class FTSEntitySearchFragment
       }
       localStringBuilder.append(paramInt);
       SearchUtils.a("talk", "exp_page", new String[] { localObject, localStringBuilder.toString() });
-      this.b = true;
+      this.j = true;
     }
   }
   
   public void a(List paramList, SearchRespData paramSearchRespData)
   {
-    if (paramSearchRespData.a(this.c))
+    if (paramSearchRespData.a(this.q))
     {
-      a(paramList, paramSearchRespData.jdField_a_of_type_Int);
+      a(paramList, paramSearchRespData.b);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramSearchRespData.jdField_a_of_type_JavaLangString, " keyword2:", this.c });
+      QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramSearchRespData.a, " keyword2:", this.q });
     }
   }
   
-  protected String b()
+  protected BaseMvpAdapter b()
   {
-    return HardCodeUtil.a(2131701275);
+    return new FTSEntitySearchFragment.1(this, this.l, this.n);
+  }
+  
+  protected ISearchEngine c()
+  {
+    BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getQBaseActivity();
+    return FTSEntitySearchUtils.a((QQAppInterface)this.p, localBaseSearchActivity.j);
+  }
+  
+  protected String d()
+  {
+    BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getQBaseActivity();
+    return FTSEntitySearchUtils.a(localBaseSearchActivity, localBaseSearchActivity.j);
+  }
+  
+  protected String e()
+  {
+    return HardCodeUtil.a(2131899285);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     if (getArguments() != null) {
-      this.c = getArguments().getString("keyword");
+      this.q = getArguments().getString("keyword");
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine.c();
+    this.o.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine.d();
+    this.o.d();
   }
   
   public void onStart()
   {
     super.onStart();
-    ((FTSMessageSearchEngine)this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine).f();
+    ((FTSMessageSearchEngine)this.o).f();
   }
   
   public void onStop()
   {
     super.onStop();
-    ((FTSMessageSearchEngine)this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine).g();
+    ((FTSMessageSearchEngine)this.o).g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchFragment
  * JD-Core Version:    0.7.0.1
  */

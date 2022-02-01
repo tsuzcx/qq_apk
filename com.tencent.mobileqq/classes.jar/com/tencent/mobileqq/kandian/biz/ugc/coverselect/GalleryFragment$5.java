@@ -11,14 +11,14 @@ class GalleryFragment$5
   
   public void run()
   {
-    if ((GalleryFragment.a(this.this$0) != null) && (GalleryFragment.a(this.this$0).a() != null)) {
-      GalleryFragment.a(this.this$0).a().setImageBitmap(this.a);
+    if ((GalleryFragment.d(this.this$0) != null) && (GalleryFragment.d(this.this$0).getCropImageView() != null)) {
+      GalleryFragment.d(this.this$0).getCropImageView().setImageBitmap(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.GalleryFragment.5
  * JD-Core Version:    0.7.0.1
  */

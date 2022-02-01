@@ -35,7 +35,7 @@ public class LiveRoomBusinessPlugin
         if ("activity".equals(paramString2))
         {
           paramString1 = paramString1.optString("url");
-          paramString2 = this.mRuntime.a();
+          paramString2 = this.mRuntime.d();
           if ((paramString2 != null) && (paramString1 != null) && (!paramString1.isEmpty()))
           {
             LiveRoomProxyActivity.open(paramString2, paramString1, "BusinessPlugin openView");
@@ -83,7 +83,7 @@ public class LiveRoomBusinessPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.LiveRoomBusinessPlugin
  * JD-Core Version:    0.7.0.1
  */

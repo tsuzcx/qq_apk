@@ -17,10 +17,20 @@ import java.util.List;
 public class CheckBlackPOIRequest
   extends NetworkRequest<CheckBlackPOIRequest.GetBlackListResponse>
 {
-  private static final String jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.check_location_blacklist");
-  private List<GeoHashUtils.Gps> jdField_a_of_type_JavaUtilList;
+  private static final String e = StoryApi.a("StorySvc.check_location_blacklist");
+  private List<GeoHashUtils.Gps> f;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public void a(@NonNull List<GeoHashUtils.Gps> paramList)
+  {
+    this.f = paramList;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspCheckBlackList localRspCheckBlackList = new qqstory_service.RspCheckBlackList();
     try
@@ -35,25 +45,15 @@ public class CheckBlackPOIRequest
     return null;
   }
   
-  public String a()
+  protected byte[] c()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(@NonNull List<GeoHashUtils.Gps> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  protected byte[] a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (this.f != null)
     {
       localObject = new qqstory_service.ReqCheckBlackList();
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.f.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((GeoHashUtils.Gps)localIterator.next()).a());
+        localArrayList.add(((GeoHashUtils.Gps)localIterator.next()).c());
       }
       ((qqstory_service.ReqCheckBlackList)localObject).gps_list.addAll(localArrayList);
       return ((qqstory_service.ReqCheckBlackList)localObject).toByteArray();
@@ -67,7 +67,7 @@ public class CheckBlackPOIRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.network.CheckBlackPOIRequest
  * JD-Core Version:    0.7.0.1
  */

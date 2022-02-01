@@ -10,14 +10,14 @@ class CameraRoamingStrategy$1
   
   public void a(List<EmoticonInfo> paramList)
   {
-    if (this.a.a != null) {
-      this.a.a.b(paramList);
+    if (this.a.b != null) {
+      this.a.b.b(paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.CameraRoamingStrategy.1
  * JD-Core Version:    0.7.0.1
  */

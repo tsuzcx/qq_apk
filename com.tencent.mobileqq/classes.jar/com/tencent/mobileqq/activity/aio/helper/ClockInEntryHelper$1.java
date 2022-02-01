@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
+import android.widget.ImageView;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -54,21 +54,21 @@ class ClockInEntryHelper$1
       }
       if (paramBoolean)
       {
-        if ((paramString1.equals(ClockInEntryHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (ClockInEntryHelper.a(this.a)))
+        if ((paramString1.equals(ClockInEntryHelper.a(this.a).ah.b)) && (ClockInEntryHelper.b(this.a)))
         {
-          ClockInEntryHelper.a(this.a, false, false, false);
-          paramString1 = ClockInEntryHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO;
+          ClockInEntryHelper.a(this.a, false, false);
+          paramString1 = ClockInEntryHelper.a(this.a).p;
           int i;
-          if (AnonymousChatHelper.a().a(ClockInEntryHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
-            i = 2130850788;
+          if (AnonymousChatHelper.a().a(ClockInEntryHelper.a(this.a).ah.b)) {
+            i = 2130852610;
           } else {
-            i = 2130850789;
+            i = 2130852611;
           }
           paramString1.setRight2Icon(i);
         }
         long l = NetConnInfoCenter.getServerTime();
         paramString1 = this.a;
-        ClockInEntryHelper.b(paramString1, ClockInEntryHelper.a(paramString1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l);
+        ClockInEntryHelper.b(paramString1, ClockInEntryHelper.a(paramString1).ah.b, l);
       }
       return;
     }
@@ -113,36 +113,35 @@ class ClockInEntryHelper$1
         paramString2.append(paramBoolean);
         QLog.d("ClockInEntryHelper.helper", 2, paramString2.toString());
       }
-      if (ClockInEntryHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.getVisibility() == 0)
+      if (ClockInEntryHelper.a(this.a).p.getVisibility() == 0)
       {
-        if (!ClockInEntryHelper.a(this.a))
+        if (!ClockInEntryHelper.b(this.a))
         {
-          if (ClockInEntryHelper.a(this.a) != null) {
-            ClockInEntryHelper.a(this.a).setVisibility(8);
+          if (ClockInEntryHelper.c(this.a) != null) {
+            ClockInEntryHelper.c(this.a).setVisibility(8);
           }
         }
-        else if (paramString1.equals(ClockInEntryHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
+        else if (paramString1.equals(ClockInEntryHelper.a(this.a).ah.b))
         {
-          paramString1 = this.a;
-          ClockInEntryHelper.a(paramString1, paramBoolean ^ true, ClockInEntryHelper.b(paramString1), false);
+          ClockInEntryHelper.a(this.a, paramBoolean ^ true, false);
           if (paramBoolean)
           {
-            paramString1 = ClockInEntryHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO;
-            if (AnonymousChatHelper.a().a(ClockInEntryHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
-              paramInt = 2130850788;
+            paramString1 = ClockInEntryHelper.a(this.a).p;
+            if (AnonymousChatHelper.a().a(ClockInEntryHelper.a(this.a).ah.b)) {
+              paramInt = 2130852610;
             } else {
-              paramInt = 2130850789;
+              paramInt = 2130852611;
             }
             paramString1.setRight2Icon(paramInt);
           }
         }
         paramString1 = this.a;
-        ClockInEntryHelper.a(paramString1, ClockInEntryHelper.a(paramString1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l);
+        ClockInEntryHelper.a(paramString1, ClockInEntryHelper.a(paramString1).ah.b, l);
       }
       if (paramBoolean)
       {
         paramString1 = this.a;
-        ClockInEntryHelper.b(paramString1, ClockInEntryHelper.a(paramString1).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l);
+        ClockInEntryHelper.b(paramString1, ClockInEntryHelper.a(paramString1).ah.b, l);
       }
       return;
     }
@@ -153,7 +152,7 @@ class ClockInEntryHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.ClockInEntryHelper.1
  * JD-Core Version:    0.7.0.1
  */

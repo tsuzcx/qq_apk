@@ -10,7 +10,7 @@ class VideoAppInterface$CameraUsageRunnable
   
   public void run()
   {
-    QLog.w(VideoAppInterface.c(), 1, "CameraUsageRunnable");
+    QLog.w(VideoAppInterface.C(), 1, "CameraUsageRunnable");
     QavCameraUsage.b(this.this$0.getApplication(), "CameraUsageRunnable");
   }
 }

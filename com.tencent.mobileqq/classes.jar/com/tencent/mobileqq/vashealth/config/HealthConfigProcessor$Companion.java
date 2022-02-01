@@ -13,14 +13,14 @@ public final class HealthConfigProcessor$Companion
   @NotNull
   public final HealthConfigBean a()
   {
-    Object localObject = QConfigManager.a().a(671);
+    Object localObject = QConfigManager.b().b(671);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
     return (HealthConfigBean)localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.config.HealthConfigProcessor.Companion
  * JD-Core Version:    0.7.0.1
  */

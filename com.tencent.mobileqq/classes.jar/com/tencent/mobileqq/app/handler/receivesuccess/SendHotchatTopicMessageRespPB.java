@@ -83,11 +83,11 @@ public class SendHotchatTopicMessageRespPB
     long l1 = 0L;
     label193:
     paramFromServiceMsg.extraData.putLong("ServerReplyCode", i);
-    paramMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
+    paramMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, String.format("%s, troopUin = %s, replycode=%d, msgSeq=%d, uniseq=%d, shmsgseq=%d, uuid=%s", new Object[] { "handleSendHotchatTopicMessageRespPB", str, Integer.valueOf(i), Long.valueOf(l4), Long.valueOf(l5), Long.valueOf(l1), localObject1 }));
     }
-    localObject1 = paramMessageHandler.a(l4);
+    localObject1 = paramMessageHandler.b(l4);
     if (localObject1 == null) {
       return;
     }
@@ -123,15 +123,15 @@ public class SendHotchatTopicMessageRespPB
     {
       bool = false;
       break;
-      paramObject = ((HotChatManager)paramMessageHandler.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(str);
+      paramObject = ((HotChatManager)paramMessageHandler.n.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).c(str);
       if (paramObject != null)
       {
-        HotChatHelper.a(paramMessageHandler.a, paramObject);
+        HotChatHelper.a(paramMessageHandler.n, paramObject);
       }
       else
       {
-        paramObject = paramMessageHandler.a.getProxyManager().a();
-        localObject2 = paramObject.a(str, 1);
+        paramObject = paramMessageHandler.n.getProxyManager().g();
+        localObject2 = paramObject.b(str, 1);
         if (localObject2 != null) {
           paramObject.a((RecentUser)localObject2);
         }
@@ -143,12 +143,12 @@ public class SendHotchatTopicMessageRespPB
     label556:
     if (bool)
     {
-      paramMessageHandler.a.getMsgCache().a(str, 1026, l5);
+      paramMessageHandler.n.getMsgCache().b(str, 1026, l5);
       l3 = paramToServiceMsg.extraData.getLong("msg_request_time", 0L);
       paramMessageHandler.notifyUI(6003, true, new String[] { str, String.valueOf(l5) });
       l2 = l3;
       if (l3 == 0L) {
-        l2 = MessageCache.a();
+        l2 = MessageCache.c();
       }
       paramMessageHandler.a(str, 1026, l5, l1, l2);
     }
@@ -158,13 +158,13 @@ public class SendHotchatTopicMessageRespPB
       paramMessageHandler.a(3013, false, localObject1);
     }
     paramMessageHandler.a(paramToServiceMsg, paramFromServiceMsg, i, l5, bool);
-    paramMessageHandler.a(l4);
-    Report.a(paramMessageHandler.a, paramToServiceMsg, paramFromServiceMsg);
+    paramMessageHandler.c(l4);
+    Report.a(paramMessageHandler.n, paramToServiceMsg, paramFromServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.SendHotchatTopicMessageRespPB
  * JD-Core Version:    0.7.0.1
  */

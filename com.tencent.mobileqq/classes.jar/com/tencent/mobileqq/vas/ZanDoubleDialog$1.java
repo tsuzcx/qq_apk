@@ -15,18 +15,18 @@ class ZanDoubleDialog$1
     {
     default: 
       break;
-    case 2131374947: 
+    case 2131443132: 
       this.a.dismiss();
       break;
-    case 2131374946: 
-      if (this.a.a != null) {
-        this.a.a.onRightClick();
+    case 2131443131: 
+      if (this.a.b != null) {
+        this.a.b.onRightClick();
       }
       this.a.dismiss();
       break;
-    case 2131374945: 
-      if (this.a.a != null) {
-        this.a.a.onLeftClick();
+    case 2131443130: 
+      if (this.a.b != null) {
+        this.a.b.onLeftClick();
       }
       this.a.dismiss();
     }
@@ -35,7 +35,7 @@ class ZanDoubleDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ZanDoubleDialog.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,20 +6,19 @@ import org.json.JSONObject;
 public class TextInfo
   extends EditItemInfoBase
 {
-  public int a;
   public String a;
-  public boolean a;
+  public int b;
   public boolean c = false;
+  public boolean d = false;
   
   public TextInfo(String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+    this.a = paramString;
+    this.h = new JSONObject();
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("type", "str");
-      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
+      this.h.put("type", "str");
+      this.h.put("text", paramString);
       return;
     }
     catch (JSONException paramString)
@@ -30,21 +29,20 @@ public class TextInfo
   
   public TextInfo(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Boolean = false;
     a(paramJSONObject);
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaLangString.length();
+    return this.a.length();
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
+      this.h.put("text", paramString);
       return;
     }
     catch (JSONException paramString)
@@ -55,9 +53,9 @@ public class TextInfo
   
   public void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("text");
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangString.length();
+    this.h = paramJSONObject;
+    this.a = paramJSONObject.optString("text");
+    this.b = this.a.length();
   }
   
   public int b()
@@ -67,7 +65,7 @@ public class TextInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.TextInfo
  * JD-Core Version:    0.7.0.1
  */

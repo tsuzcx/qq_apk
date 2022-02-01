@@ -37,28 +37,23 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class AEResManager
   implements ShortVideoResourceManager.INet_ShortVideoResource, ShortVideoResourceStatus.ISVConfig_V2
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("AEResManagerHandlerThread", 0);
-  private List<ShortVideoResourceManager.SVConfigItem> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private Map<AEResInfo, Integer> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private Queue<AEResInfo> jdField_a_of_type_JavaUtilQueue = new ArrayDeque();
-  private List<IAEDownloadCallBack> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Map<AEResInfo, Long> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private List<ShortVideoResourceManager.SVConfigItem> a = new LinkedList();
+  private Map<AEResInfo, Integer> b = new ConcurrentHashMap();
+  private List<IAEDownloadCallBack> c = new CopyOnWriteArrayList();
+  private Queue<AEResInfo> d = new ArrayDeque();
+  private HandlerThread e = ThreadManager.newFreeHandlerThread("AEResManagerHandlerThread", 0);
+  private Handler f;
+  private Map<AEResInfo, Long> g = new ConcurrentHashMap();
   
   private AEResManager()
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.e.start();
+    this.f = new Handler(this.e.getLooper());
   }
   
   public static AEResManager a()
   {
     return AEResManager.InstanceHolder.a;
-  }
-  
-  private QQAppInterface a()
-  {
-    return (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
   }
   
   private String a(int paramInt)
@@ -87,10 +82,10 @@ public class AEResManager
     ((StringBuilder)localObject).append("[requestDownloadWithoutLoginInternal] - BEGIN -, packageIndex=");
     ((StringBuilder)localObject).append(paramAEResInfo.index);
     AEQLog.b("AEResManager", ((StringBuilder)localObject).toString());
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramAEResInfo)) {
-      this.jdField_a_of_type_JavaUtilMap.put(paramAEResInfo, Integer.valueOf(0));
+    if (!this.b.containsKey(paramAEResInfo)) {
+      this.b.put(paramAEResInfo, Integer.valueOf(0));
     }
-    int i = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramAEResInfo)).intValue();
+    int i = ((Integer)this.b.get(paramAEResInfo)).intValue();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[requestDownloadWithoutLoginInternal], status=");
     ((StringBuilder)localObject).append(a(i));
@@ -156,17 +151,17 @@ public class AEResManager
     ((StringBuilder)localObject).append(", networkStatus=USABLE");
     AEQLog.b("AEResManager", ((StringBuilder)localObject).toString());
     b(paramIAEDownloadCallBack);
-    if (!this.jdField_a_of_type_JavaUtilQueue.contains(paramAEResInfo))
+    if (!this.d.contains(paramAEResInfo))
     {
-      this.jdField_a_of_type_JavaUtilQueue.add(paramAEResInfo);
-      this.jdField_a_of_type_JavaUtilMap.put(paramAEResInfo, Integer.valueOf(1));
+      this.d.add(paramAEResInfo);
+      this.b.put(paramAEResInfo, Integer.valueOf(1));
     }
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(AEResInfo.AE_RES_CONFIG))
+    if (!this.b.containsKey(AEResInfo.AE_RES_CONFIG))
     {
-      this.jdField_a_of_type_JavaUtilMap.put(AEResInfo.AE_RES_CONFIG, Integer.valueOf(3));
-      ShortVideoResDownload.a(a(), this);
+      this.b.put(AEResInfo.AE_RES_CONFIG, Integer.valueOf(3));
+      ShortVideoResDownload.a(c(), this);
     }
-    else if ((this.jdField_a_of_type_JavaUtilMap.get(AEResInfo.AE_RES_CONFIG) != null) && (((Integer)this.jdField_a_of_type_JavaUtilMap.get(AEResInfo.AE_RES_CONFIG)).intValue() == 4))
+    else if ((this.b.get(AEResInfo.AE_RES_CONFIG) != null) && (((Integer)this.b.get(AEResInfo.AE_RES_CONFIG)).intValue() == 4))
     {
       a(1, 0);
     }
@@ -182,18 +177,18 @@ public class AEResManager
     ((StringBuilder)localObject).append("[requestDownloadInternal] - BEGIN -, packageIndex=");
     ((StringBuilder)localObject).append(paramAEResInfo.index);
     AEQLog.b("AEResManager", ((StringBuilder)localObject).toString());
-    boolean bool = this.jdField_a_of_type_JavaUtilMap.containsKey(paramAEResInfo);
+    boolean bool = this.b.containsKey(paramAEResInfo);
     Integer localInteger = Integer.valueOf(0);
     if (!bool) {
-      this.jdField_a_of_type_JavaUtilMap.put(paramAEResInfo, localInteger);
+      this.b.put(paramAEResInfo, localInteger);
     }
-    int j = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramAEResInfo)).intValue();
+    int j = ((Integer)this.b.get(paramAEResInfo)).intValue();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[requestDownloadInternal], status=");
     ((StringBuilder)localObject).append(a(j));
     AEQLog.b("AEResManager", ((StringBuilder)localObject).toString());
     localObject = null;
-    if ((j == 4) && (AEResUtil.b(paramAEResInfo)))
+    if ((j == 4) && (AEResUtil.d(paramAEResInfo)))
     {
       i = AEResUtil.a(paramAEResInfo.index);
       if (i != 0)
@@ -222,10 +217,10 @@ public class AEResManager
     if (j == 4)
     {
       i = j;
-      if (!AEResUtil.b(paramAEResInfo))
+      if (!AEResUtil.d(paramAEResInfo))
       {
         AEQLog.b("AEResManager", "[requestDownloadInternal], 重置内存中的文件状态为IDLE");
-        this.jdField_a_of_type_JavaUtilMap.put(paramAEResInfo, localInteger);
+        this.b.put(paramAEResInfo, localInteger);
         i = 0;
       }
     }
@@ -270,10 +265,10 @@ public class AEResManager
     ((StringBuilder)localObject).append(", networkStatus=USABLE");
     AEQLog.b("AEResManager", ((StringBuilder)localObject).toString());
     b(paramIAEDownloadCallBack);
-    if (!this.jdField_a_of_type_JavaUtilQueue.contains(paramAEResInfo))
+    if (!this.d.contains(paramAEResInfo))
     {
-      this.jdField_a_of_type_JavaUtilQueue.add(paramAEResInfo);
-      this.jdField_a_of_type_JavaUtilMap.put(paramAEResInfo, Integer.valueOf(1));
+      this.d.add(paramAEResInfo);
+      this.b.put(paramAEResInfo, Integer.valueOf(1));
     }
     if ((paramAEResInfo.isPredownload) && (paramBoolean2)) {
       paramBoolean1 = true;
@@ -281,16 +276,16 @@ public class AEResManager
       paramBoolean1 = false;
     }
     paramAEResInfo.isPredownload = paramBoolean1;
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(AEResInfo.AE_RES_CONFIG))
+    if (!this.b.containsKey(AEResInfo.AE_RES_CONFIG))
     {
       paramIAEDownloadCallBack = new StringBuilder();
       paramIAEDownloadCallBack.append("[requestDownloadInternal] 强制拉取配置列表");
       paramIAEDownloadCallBack.append(paramAEResInfo.index);
       AEQLog.b("AEResManager", paramIAEDownloadCallBack.toString());
-      this.jdField_a_of_type_JavaUtilMap.put(AEResInfo.AE_RES_CONFIG, Integer.valueOf(3));
-      ShortVideoResourceManager.a(a(), this);
+      this.b.put(AEResInfo.AE_RES_CONFIG, Integer.valueOf(3));
+      ShortVideoResourceManager.a(c(), this);
     }
-    else if ((this.jdField_a_of_type_JavaUtilMap.get(AEResInfo.AE_RES_CONFIG) != null) && (((Integer)this.jdField_a_of_type_JavaUtilMap.get(AEResInfo.AE_RES_CONFIG)).intValue() == 4))
+    else if ((this.b.get(AEResInfo.AE_RES_CONFIG) != null) && (((Integer)this.b.get(AEResInfo.AE_RES_CONFIG)).intValue() == 4))
     {
       paramIAEDownloadCallBack = new StringBuilder();
       paramIAEDownloadCallBack.append("[requestDownloadInternal] 配置列表已经存在, packageIndex = ");
@@ -339,18 +334,18 @@ public class AEResManager
         AEQLog.b("AEResManager", ((StringBuilder)localObject).toString());
         if (i == 0)
         {
-          this.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(4));
-          this.jdField_a_of_type_JavaUtilQueue.remove(str);
+          this.b.put(str, Integer.valueOf(4));
+          this.d.remove(str);
           AEResUtil.a(str, paramString2);
           j = Integer.valueOf(paramString1.substring(str.resPrefix.length())).intValue();
           AEResUtil.a(str.index, j);
         }
         else
         {
-          this.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(0));
-          this.jdField_a_of_type_JavaUtilQueue.remove(str);
+          this.b.put(str, Integer.valueOf(0));
+          this.d.remove(str);
         }
-        paramString1 = this.jdField_b_of_type_JavaUtilList.iterator();
+        paramString1 = this.c.iterator();
         boolean bool;
         while (paramString1.hasNext())
         {
@@ -365,8 +360,8 @@ public class AEResManager
         if (paramInt != 1)
         {
           long l = -1L;
-          if (this.jdField_b_of_type_JavaUtilMap.get(str) != null) {
-            l = System.currentTimeMillis() - ((Long)this.jdField_b_of_type_JavaUtilMap.get(str)).longValue();
+          if (this.g.get(str) != null) {
+            l = System.currentTimeMillis() - ((Long)this.g.get(str)).longValue();
           }
           paramString1 = AEBaseDataReporter.a();
           if (paramInt == 0) {
@@ -377,8 +372,8 @@ public class AEResManager
           paramString1.a(bool, str.index, "", "", paramInt, l);
         }
         AEQLog.b("AEResManager", "[onDownloadFinishInternal], start download next package");
-        paramString1 = a();
-        a(new LinkedList(this.jdField_a_of_type_JavaUtilList), paramString1, true);
+        paramString1 = c();
+        a(new LinkedList(this.a), paramString1, true);
         break;
       }
       j += 1;
@@ -399,8 +394,8 @@ public class AEResManager
       AEResInfo localAEResInfo = arrayOfAEResInfo[i];
       if (paramString.startsWith(localAEResInfo.resPrefix))
       {
-        this.jdField_a_of_type_JavaUtilMap.put(localAEResInfo, Integer.valueOf(3));
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        this.b.put(localAEResInfo, Integer.valueOf(3));
+        Iterator localIterator = this.c.iterator();
         while (localIterator.hasNext()) {
           ((IAEDownloadCallBack)localIterator.next()).onAEProgressUpdate(localAEResInfo, paramLong1, paramLong2);
         }
@@ -449,22 +444,22 @@ public class AEResManager
   private void a(@NonNull List<ShortVideoResourceManager.SVConfigItem> paramList, @NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     AEQLog.b("AEResManager_download", "[startDownLoad] + BEGIN");
-    if (CollectionUtils.isEmpty(this.jdField_a_of_type_JavaUtilQueue))
+    if (CollectionUtils.isEmpty(this.d))
     {
       AEQLog.d("AEResManager_download", "[startDownLoad], mDownLoadTaskQueue is empty");
       AEQLog.b("AEResManager_download", "[startDownLoad] - END -");
       return;
     }
-    AEResInfo localAEResInfo = (AEResInfo)this.jdField_a_of_type_JavaUtilQueue.peek();
+    AEResInfo localAEResInfo = (AEResInfo)this.d.peek();
     if (localAEResInfo == null)
     {
       AEQLog.d("AEResManager_download", "[startDownLoad], mDownLoadTaskQueue top element is null");
       AEQLog.b("AEResManager_download", "[startDownLoad] + END");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(localAEResInfo))
+    if (this.b.containsKey(localAEResInfo))
     {
-      int i = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(localAEResInfo)).intValue();
+      int i = ((Integer)this.b.get(localAEResInfo)).intValue();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[startDownLoad], resNeedDownload=");
       localStringBuilder.append(localAEResInfo);
@@ -485,14 +480,14 @@ public class AEResManager
           {
             a(paramList, paramQQAppInterface, localAEResInfo);
             localAEResInfo.isPredownload = false;
-            this.jdField_b_of_type_JavaUtilMap.put(localAEResInfo, Long.valueOf(System.currentTimeMillis()));
+            this.g.put(localAEResInfo, Long.valueOf(System.currentTimeMillis()));
             AEQLog.b("AEResManager", "[startDownLoad], realDownloadResource()");
-            this.jdField_a_of_type_JavaUtilMap.put(localAEResInfo, Integer.valueOf(3));
+            this.b.put(localAEResInfo, Integer.valueOf(3));
             AEResDownload.a(localAEResInfo, paramList, this);
           }
           else
           {
-            this.jdField_a_of_type_JavaUtilMap.put(localAEResInfo, Integer.valueOf(2));
+            this.b.put(localAEResInfo, Integer.valueOf(2));
           }
         }
       }
@@ -501,11 +496,11 @@ public class AEResManager
         AEQLog.b("AEResManager", "[startDownLoad], isDownLoadImmediately=true");
         if (i != 3)
         {
-          this.jdField_a_of_type_JavaUtilMap.put(localAEResInfo, Integer.valueOf(3));
+          this.b.put(localAEResInfo, Integer.valueOf(3));
           if (i == 2) {
             a(paramList, paramQQAppInterface, localAEResInfo);
           }
-          this.jdField_b_of_type_JavaUtilMap.put(localAEResInfo, Long.valueOf(System.currentTimeMillis()));
+          this.g.put(localAEResInfo, Long.valueOf(System.currentTimeMillis()));
           AEQLog.b("AEResManager", "[startDownLoad], realDownloadResource()");
           AEResDownload.a(localAEResInfo, paramList, this);
         }
@@ -522,10 +517,10 @@ public class AEResManager
     AEQLog.b("AEResManager", "[onConfigResultInternal] ++++++ BEGIN");
     int i;
     Object localObject2;
-    if (this.jdField_a_of_type_JavaUtilList.size() < 1)
+    if (this.a.size() < 1)
     {
       AEQLog.b("AEResManager", "[onConfigResultInternal] 内存中'还没有'列表信息，开始生成配置列表");
-      i = ShortVideoResourceManager.a(null, this.jdField_a_of_type_JavaUtilList);
+      i = ShortVideoResourceManager.a(null, this.a);
     }
     else
     {
@@ -538,8 +533,8 @@ public class AEResManager
       AEQLog.b("AEResManager", ((StringBuilder)localObject2).toString());
       if ((i == 0) && (((List)localObject1).size() > 0))
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject1);
+        this.a.clear();
+        this.a.addAll((Collection)localObject1);
       }
     }
     Object localObject1 = new StringBuilder();
@@ -548,32 +543,32 @@ public class AEResManager
     AEQLog.b("AEResManager", ((StringBuilder)localObject1).toString());
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("[onConfigResultInternal] 内存中'当前的'配置列表信息，size = ");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+    ((StringBuilder)localObject1).append(this.a.size());
     AEQLog.b("AEResManager", ((StringBuilder)localObject1).toString());
     int j = i;
     if (i == 0) {
-      j = AEResUtil.a(this.jdField_a_of_type_JavaUtilList);
+      j = AEResUtil.a(this.a);
     }
-    localObject1 = a();
+    localObject1 = c();
     if (j == 0)
     {
-      this.jdField_a_of_type_JavaUtilMap.put(AEResInfo.AE_RES_CONFIG, Integer.valueOf(4));
+      this.b.put(AEResInfo.AE_RES_CONFIG, Integer.valueOf(4));
       AEQLog.b("AEResManager", "[onConfigResultInternal] 配置列表拉取成功，开始进行ZIP包下载");
-      a(new LinkedList(this.jdField_a_of_type_JavaUtilList), (QQAppInterface)localObject1, paramBoolean ^ true);
+      a(new LinkedList(this.a), (QQAppInterface)localObject1, paramBoolean ^ true);
     }
     else
     {
       AEQLog.b("AEResManager", "[onConfigResultInternal] 配置列表拉取失败，尝试构造内置列表进行下载");
       ShortVideoResourceManager.a((QQAppInterface)localObject1, null);
-      localObject2 = AELocalConfig.jdField_a_of_type_JavaUtilList;
+      localObject2 = AELocalConfig.a;
       if (((List)localObject2).size() > 0)
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject2);
+        this.a.clear();
+        this.a.addAll((Collection)localObject2);
       }
-      this.jdField_a_of_type_JavaUtilMap.put(AEResInfo.AE_RES_CONFIG, Integer.valueOf(4));
+      this.b.put(AEResInfo.AE_RES_CONFIG, Integer.valueOf(4));
       AEQLog.b("AEResManager", "[onConfigResultInternal] 构造内置列表成功，开始下载");
-      a(new LinkedList(this.jdField_a_of_type_JavaUtilList), (QQAppInterface)localObject1, paramBoolean ^ true);
+      a(new LinkedList(this.a), (QQAppInterface)localObject1, paramBoolean ^ true);
     }
     AEQLog.b("AEResManager", "[onConfigResultInternal] ++++++ END");
   }
@@ -638,15 +633,20 @@ public class AEResManager
     if (paramIAEDownloadCallBack == null) {
       return;
     }
-    List localList = this.jdField_b_of_type_JavaUtilList;
+    List localList = this.c;
     if ((localList != null) && (!localList.contains(paramIAEDownloadCallBack))) {
-      this.jdField_b_of_type_JavaUtilList.add(paramIAEDownloadCallBack);
+      this.c.add(paramIAEDownloadCallBack);
     }
+  }
+  
+  private QQAppInterface c()
+  {
+    return (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
   }
   
   public int a(@NonNull AEResInfo paramAEResInfo)
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.b;
     if (localMap != null)
     {
       paramAEResInfo = (Integer)localMap.get(paramAEResInfo);
@@ -657,13 +657,6 @@ public class AEResManager
     return 0;
   }
   
-  public void a()
-  {
-    a().b(AEResInfo.AE_RES_BASE_PACKAGE, null, false);
-    a().b(AEResInfo.LIGHT_RES_BASE_PACKAGE, null, false);
-    AEOldResManager.a().a(AEOldResInfo.b, null, false);
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -672,7 +665,7 @@ public class AEResManager
     localStringBuilder.append(", serverError=");
     localStringBuilder.append(paramInt2);
     AEQLog.b("AEResManager", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.9(this));
+    this.f.post(new AEResManager.9(this));
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onConfigResultWithoutLogin] - END -, result=");
     localStringBuilder.append(paramInt1);
@@ -687,7 +680,7 @@ public class AEResManager
     localStringBuilder.append("[requestDownload] - BEGIN -, aeResInfo=");
     localStringBuilder.append(paramAEResInfo);
     AEQLog.b("AEResManager", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.1(this, paramAEResInfo, paramIAEDownloadCallBack, paramBoolean));
+    this.f.post(new AEResManager.1(this, paramAEResInfo, paramIAEDownloadCallBack, paramBoolean));
     paramIAEDownloadCallBack = new StringBuilder();
     paramIAEDownloadCallBack.append("[requestDownload] - END -, aeResInfo=");
     paramIAEDownloadCallBack.append(paramAEResInfo);
@@ -699,10 +692,17 @@ public class AEResManager
     if (paramIAEDownloadCallBack == null) {
       return;
     }
-    List localList = this.jdField_b_of_type_JavaUtilList;
+    List localList = this.c;
     if (localList != null) {
       localList.remove(paramIAEDownloadCallBack);
     }
+  }
+  
+  public void b()
+  {
+    a().b(AEResInfo.AE_RES_BASE_PACKAGE, null, false);
+    a().b(AEResInfo.LIGHT_RES_BASE_PACKAGE, null, false);
+    AEOldResManager.a().a(AEOldResInfo.b, null, false);
   }
   
   public void b(@NonNull AEResInfo paramAEResInfo, @Nullable IAEDownloadCallBack paramIAEDownloadCallBack, boolean paramBoolean)
@@ -711,7 +711,7 @@ public class AEResManager
     localStringBuilder.append("[requestDownload] - BEGIN -, aeResInfo=");
     localStringBuilder.append(paramAEResInfo);
     AEQLog.b("AEResManager", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.2(this, paramAEResInfo, paramIAEDownloadCallBack, paramBoolean));
+    this.f.post(new AEResManager.2(this, paramAEResInfo, paramIAEDownloadCallBack, paramBoolean));
     paramIAEDownloadCallBack = new StringBuilder();
     paramIAEDownloadCallBack.append("[requestDownload] - END -, aeResInfo=");
     paramIAEDownloadCallBack.append(paramAEResInfo);
@@ -726,7 +726,7 @@ public class AEResManager
     localStringBuilder.append(", serverError=");
     localStringBuilder.append(paramInt2);
     AEQLog.b("AEResManager", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.6(this));
+    this.f.post(new AEResManager.6(this));
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onConfigResult] - END -, result=");
     localStringBuilder.append(paramInt1);
@@ -745,24 +745,24 @@ public class AEResManager
     localStringBuilder.append(", filePath=");
     localStringBuilder.append(paramString2);
     AEQLog.b("AEResManager", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.7(this, paramString1, paramInt, paramString2));
+    this.f.post(new AEResManager.7(this, paramString1, paramInt, paramString2));
     AEQLog.b("AEResManager", "[onDownloadFinish] - END -");
   }
   
   public void onNetWorkNone()
   {
-    AEQLog.d("AEResManager", HardCodeUtil.a(2131700225));
+    AEQLog.d("AEResManager", HardCodeUtil.a(2131898268));
     ShortVideoErrorReport.a(3, -1500);
   }
   
   public void onUpdateProgress(String paramString, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEResManager.8(this, paramString, paramLong1, paramLong2));
+    this.f.post(new AEResManager.8(this, paramString, paramLong1, paramLong2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.AEResManager
  * JD-Core Version:    0.7.0.1
  */

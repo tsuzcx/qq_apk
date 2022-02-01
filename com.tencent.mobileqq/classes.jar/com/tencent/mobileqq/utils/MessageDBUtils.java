@@ -5,6 +5,37 @@ import com.tencent.mobileqq.app.SQLiteDatabase;
 
 public class MessageDBUtils
 {
+  public static StringBuilder a(String paramString1, long paramLong1, int paramInt1, long paramLong2, String paramString2, int paramInt2, SQLiteDatabase paramSQLiteDatabase)
+  {
+    boolean bool = a(paramString1, paramSQLiteDatabase);
+    if (paramInt1 <= 0) {
+      bool = false;
+    }
+    if (paramString2 != null)
+    {
+      paramSQLiteDatabase = paramString2;
+      if (paramString2.length() != 0) {}
+    }
+    else
+    {
+      paramSQLiteDatabase = "";
+    }
+    if (bool)
+    {
+      paramString2 = new StringBuilder("select ");
+      paramString2.append("_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ");
+      paramString2.append(" , shmsgseq as _index from ");
+      paramString2.append(paramString1);
+      paramString2.append(" where shmsgseq>=");
+      paramString2.append(paramLong2);
+      paramString2.append(paramSQLiteDatabase);
+      paramString2.append(" order by shmsgseq asc , _id asc limit ");
+      paramString2.append(paramInt2);
+      return paramString2;
+    }
+    return null;
+  }
+  
   public static StringBuilder a(String paramString1, String paramString2, long paramLong1, int paramInt1, long paramLong2, int paramInt2, SQLiteDatabase paramSQLiteDatabase, String paramString3)
   {
     boolean bool1 = a(paramString2, paramSQLiteDatabase);
@@ -456,9 +487,9 @@ public class MessageDBUtils
     //   10: ifnonnull +5 -> 15
     //   13: iconst_0
     //   14: ireturn
-    //   15: ldc 173
+    //   15: ldc 178
     //   17: aload_0
-    //   18: invokevirtual 177	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   18: invokevirtual 182	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   21: ifeq +5 -> 26
     //   24: iconst_1
     //   25: ireturn
@@ -467,15 +498,15 @@ public class MessageDBUtils
     //   29: aconst_null
     //   30: astore 8
     //   32: aload_1
-    //   33: ldc 179
+    //   33: ldc 184
     //   35: iconst_1
-    //   36: anewarray 18	java/lang/String
+    //   36: anewarray 16	java/lang/String
     //   39: dup
     //   40: iconst_0
     //   41: aload_0
-    //   42: invokevirtual 182	java/lang/String:trim	()Ljava/lang/String;
+    //   42: invokevirtual 187	java/lang/String:trim	()Ljava/lang/String;
     //   45: aastore
-    //   46: invokevirtual 56	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   46: invokevirtual 66	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   49: astore_0
     //   50: iload 4
     //   52: istore_3
@@ -484,7 +515,7 @@ public class MessageDBUtils
     //   56: aload_0
     //   57: astore 7
     //   59: aload_0
-    //   60: invokeinterface 186 1 0
+    //   60: invokeinterface 191 1 0
     //   65: ifeq +26 -> 91
     //   68: aload_0
     //   69: astore 8
@@ -492,7 +523,7 @@ public class MessageDBUtils
     //   72: astore 7
     //   74: aload_0
     //   75: iconst_0
-    //   76: invokeinterface 190 2 0
+    //   76: invokeinterface 195 2 0
     //   81: istore_2
     //   82: iload 4
     //   84: istore_3
@@ -505,14 +536,14 @@ public class MessageDBUtils
     //   94: aload_0
     //   95: ifnull +44 -> 139
     //   98: aload_0
-    //   99: invokeinterface 64 1 0
+    //   99: invokeinterface 74 1 0
     //   104: iload_3
     //   105: ireturn
     //   106: astore_0
     //   107: aload 8
     //   109: ifnull +10 -> 119
     //   112: aload 8
-    //   114: invokeinterface 64 1 0
+    //   114: invokeinterface 74 1 0
     //   119: aload_0
     //   120: athrow
     //   121: iload 6
@@ -598,7 +629,7 @@ public class MessageDBUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.MessageDBUtils
  * JD-Core Version:    0.7.0.1
  */

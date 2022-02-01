@@ -7,15 +7,9 @@ import java.util.List;
 
 public class MiniCard$QZoneInfo
 {
-  public String a;
-  public List<String> a;
+  public String a = "";
   public String b = "";
-  
-  public MiniCard$QZoneInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public List<String> c = new ArrayList();
   
   @NonNull
   public String toString()
@@ -23,7 +17,7 @@ public class MiniCard$QZoneInfo
     StringBuilder localStringBuilder = new StringBuilder(1024);
     localStringBuilder.append("qzoneName");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|");
     localStringBuilder.append("updateContent");
     localStringBuilder.append("=");
@@ -31,14 +25,14 @@ public class MiniCard$QZoneInfo
     localStringBuilder.append("|");
     localStringBuilder.append("imgUrls");
     localStringBuilder.append("=");
-    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray()));
+    localStringBuilder.append(Arrays.toString(this.c.toArray()));
     localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.bean.MiniCard.QZoneInfo
  * JD-Core Version:    0.7.0.1
  */

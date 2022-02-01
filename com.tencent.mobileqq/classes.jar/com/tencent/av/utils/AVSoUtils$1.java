@@ -5,8 +5,8 @@ final class AVSoUtils$1
 {
   public void run()
   {
-    AVSoUtils.e();
-    AVSoUtils.f();
+    AVSoUtils.o();
+    AVSoUtils.p();
   }
 }
 

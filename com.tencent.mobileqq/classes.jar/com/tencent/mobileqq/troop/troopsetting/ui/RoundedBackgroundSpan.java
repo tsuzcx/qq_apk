@@ -11,21 +11,21 @@ import android.text.style.ReplacementSpan;
 public class RoundedBackgroundSpan
   extends ReplacementSpan
 {
-  private int jdField_a_of_type_Int = 8;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private int a = 8;
   private int b = 0;
   private int c = 0;
   private int d;
   private int e;
-  private int f;
+  private Drawable f;
   private int g;
   private int h;
+  private int i;
   
   public RoundedBackgroundSpan(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     this.b = paramInt1;
     this.c = paramInt2;
-    this.jdField_a_of_type_Int = paramInt3;
+    this.a = paramInt3;
     this.d = paramInt5;
     this.e = paramInt4;
   }
@@ -37,28 +37,28 @@ public class RoundedBackgroundSpan
   
   public void a(Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.g = paramInt1;
-    this.h = paramInt2;
-    paramDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    this.f = paramDrawable;
+    this.h = paramInt1;
+    this.i = paramInt2;
+    paramDrawable = this.f;
     if (paramDrawable != null) {
-      paramDrawable.setBounds(0, 0, this.g, this.h);
+      paramDrawable.setBounds(0, 0, this.h, this.i);
     }
-    this.f = paramInt3;
+    this.g = paramInt3;
   }
   
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
     RectF localRectF = new RectF(paramFloat, paramInt3, a(paramPaint, paramCharSequence, paramInt1, paramInt2) + paramFloat, paramInt5);
     paramPaint.setColor(this.b);
-    paramInt3 = this.jdField_a_of_type_Int;
+    paramInt3 = this.a;
     paramCanvas.drawRoundRect(localRectF, paramInt3, paramInt3, paramPaint);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (this.f != null)
     {
       paramCanvas.save();
-      f1 = (localRectF.height() - this.h) / 2.0F;
-      paramCanvas.translate(this.f, f1);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      f1 = (localRectF.height() - this.i) / 2.0F;
+      paramCanvas.translate(this.g, f1);
+      this.f.draw(paramCanvas);
       paramCanvas.restore();
     }
     paramPaint.setColor(this.c);
@@ -78,7 +78,7 @@ public class RoundedBackgroundSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.ui.RoundedBackgroundSpan
  * JD-Core Version:    0.7.0.1
  */

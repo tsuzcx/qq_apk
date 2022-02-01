@@ -16,84 +16,32 @@ import com.tribe.async.dispatch.IEventReceiver;
 public abstract class EditVideoPart
   implements IEventReceiver
 {
-  protected long a;
   @NonNull
-  public final EditVideoPartManager a;
-  protected EditVideoUi a;
-  protected boolean g;
+  public final EditVideoPartManager t;
+  protected EditVideoUi u;
+  protected long v;
+  protected boolean w;
   
   public EditVideoPart(@NonNull EditVideoPartManager paramEditVideoPartManager)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager = paramEditVideoPartManager;
+    this.t = paramEditVideoPartManager;
   }
   
-  private void b()
+  private void c()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi == null) {
+    if (this.u == null) {
       ShortVideoExceptionReporter.a(new IllegalStateException("have not attached ui"));
     }
   }
   
-  public void A_()
-  {
-    b();
-  }
-  
-  @NonNull
-  public Context a()
-  {
-    b();
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getContext();
-  }
-  
-  @NonNull
-  public Resources a()
-  {
-    b();
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getContext().getResources();
-  }
-  
-  @NonNull
-  protected View a(int paramInt)
-  {
-    b();
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getRootView().findViewById(paramInt);
-    if (localObject != null) {
-      return localObject;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("can not find view by id ");
-    ((StringBuilder)localObject).append(paramInt);
-    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
-  }
-  
-  public EditVideoPart.EditExport a(Class<? extends EditVideoPart.EditExport> paramClass)
-  {
-    b();
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(paramClass);
-  }
-  
-  @NonNull
-  public EditVideoUi a()
-  {
-    b();
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi;
-  }
-  
-  protected String a(int paramInt)
-  {
-    b();
-    return a().getString(paramInt);
-  }
-  
   public void a()
   {
-    b();
+    c();
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    b();
+    c();
   }
   
   public void a(int paramInt1, int paramInt2, Object paramObject)
@@ -108,18 +56,13 @@ public abstract class EditVideoPart
   
   public void a(int paramInt, Object paramObject) {}
   
-  public void a(Bundle paramBundle)
-  {
-    b();
-  }
-  
   public void a(EditVideoUi paramEditVideoUi)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi == null)
+    if (this.u == null)
     {
       if (paramEditVideoUi != null)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi = paramEditVideoUi;
+        this.u = paramEditVideoUi;
         return;
       }
       throw new IllegalArgumentException("ui should not be null");
@@ -132,31 +75,47 @@ public abstract class EditVideoPart
   
   public void a(Class<? extends EditVideoPart.EditExport> paramClass, EditVideoPart.EditExport paramEditExport)
   {
-    b();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(paramClass, paramEditExport);
+    c();
+    this.t.a(paramClass, paramEditExport);
   }
   
   public void a(@NonNull Error paramError) {}
-  
-  public boolean a()
-  {
-    b();
-    return false;
-  }
   
   protected boolean a(Message paramMessage)
   {
     return false;
   }
   
+  public void at_()
+  {
+    c();
+  }
+  
+  public boolean au_()
+  {
+    c();
+    return false;
+  }
+  
+  public void ax_()
+  {
+    c();
+  }
+  
+  public EditVideoPart.EditExport b(Class<? extends EditVideoPart.EditExport> paramClass)
+  {
+    c();
+    return this.t.a(paramClass);
+  }
+  
   public void b(Bundle paramBundle)
   {
-    b();
+    c();
   }
   
   public void b(@NonNull GenerateContext paramGenerateContext)
   {
-    ((CaptureComboManager)QIMManager.a(5)).a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity());
+    ((CaptureComboManager)QIMManager.a(5)).a(this.u.getActivity());
   }
   
   public final boolean b(@NonNull Message paramMessage)
@@ -166,54 +125,95 @@ public abstract class EditVideoPart
     return bool;
   }
   
-  public int c()
+  public void c(Bundle paramBundle)
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.i();
+    c();
   }
   
-  public void d()
+  @NonNull
+  protected View d(int paramInt)
   {
-    b();
+    c();
+    Object localObject = this.u.getRootView().findViewById(paramInt);
+    if (localObject != null) {
+      return localObject;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("can not find view by id ");
+    ((StringBuilder)localObject).append(paramInt);
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
-  public void e()
+  protected String e(int paramInt)
   {
-    this.g = true;
-    n();
+    c();
+    return s().getString(paramInt);
+  }
+  
+  public void f()
+  {
+    c();
   }
   
   public void f(boolean paramBoolean)
   {
-    b();
+    c();
   }
   
-  public void i() {}
+  public void g()
+  {
+    this.w = true;
+    r();
+  }
   
   public boolean isValidate()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.isValidate();
+    return this.t.isValidate();
   }
   
-  public void n()
+  public void j() {}
+  
+  public void r()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi = null;
+    this.u = null;
   }
   
-  public void o()
+  @NonNull
+  public Resources s()
   {
-    b();
+    c();
+    return this.u.getContext().getResources();
   }
   
-  public void p() {}
-  
-  public void z_()
+  @NonNull
+  public EditVideoUi t()
   {
-    b();
+    c();
+    return this.u;
+  }
+  
+  @NonNull
+  public Context u()
+  {
+    c();
+    return this.u.getContext();
+  }
+  
+  public void v()
+  {
+    c();
+  }
+  
+  public void w() {}
+  
+  public int x()
+  {
+    return this.t.V();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoPart
  * JD-Core Version:    0.7.0.1
  */

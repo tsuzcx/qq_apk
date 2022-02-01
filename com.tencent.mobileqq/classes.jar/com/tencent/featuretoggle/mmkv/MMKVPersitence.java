@@ -10,56 +10,9 @@ public class MMKVPersitence
 {
   private MMKV a = null;
   
-  public long a(String paramString, long paramLong)
-  {
-    try
-    {
-      long l = this.a.a(paramString, paramLong);
-      return l;
-    }
-    catch (Throwable paramString)
-    {
-      if (!LogUtils.a(paramString)) {
-        paramString.printStackTrace();
-      }
-    }
-    return paramLong;
-  }
-  
   public MMKV a()
   {
     return this.a;
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    try
-    {
-      paramString1 = this.a.a(paramString1, paramString2);
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      if (!LogUtils.a(paramString1)) {
-        paramString1.printStackTrace();
-      }
-    }
-    return paramString2;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.a.clearAll();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      if (!LogUtils.a(localThrowable)) {
-        localThrowable.printStackTrace();
-      }
-    }
   }
   
   public void a(Context paramContext, String paramString)
@@ -69,7 +22,7 @@ public class MMKVPersitence
     }
     try
     {
-      this.a = MMKV.a(paramString, 2, ToggleSetting.h());
+      this.a = MMKV.a(paramString, 2, ToggleSetting.s());
       return;
     }
     catch (Throwable paramContext)
@@ -125,11 +78,58 @@ public class MMKVPersitence
     }
   }
   
-  public boolean a(String paramString)
+  public long b(String paramString, long paramLong)
   {
     try
     {
-      boolean bool = this.a.a(paramString);
+      long l = this.a.b(paramString, paramLong);
+      return l;
+    }
+    catch (Throwable paramString)
+    {
+      if (!LogUtils.a(paramString)) {
+        paramString.printStackTrace();
+      }
+    }
+    return paramLong;
+  }
+  
+  public String b(String paramString1, String paramString2)
+  {
+    try
+    {
+      paramString1 = this.a.b(paramString1, paramString2);
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      if (!LogUtils.a(paramString1)) {
+        paramString1.printStackTrace();
+      }
+    }
+    return paramString2;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.a.clearAll();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (!LogUtils.a(localThrowable)) {
+        localThrowable.printStackTrace();
+      }
+    }
+  }
+  
+  public boolean b(String paramString)
+  {
+    try
+    {
+      boolean bool = this.a.c(paramString);
       return bool;
     }
     catch (Throwable paramString)
@@ -141,7 +141,7 @@ public class MMKVPersitence
     return false;
   }
   
-  public String[] a()
+  public String[] c()
   {
     try
     {
@@ -159,7 +159,7 @@ public class MMKVPersitence
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.mmkv.MMKVPersitence
  * JD-Core Version:    0.7.0.1
  */

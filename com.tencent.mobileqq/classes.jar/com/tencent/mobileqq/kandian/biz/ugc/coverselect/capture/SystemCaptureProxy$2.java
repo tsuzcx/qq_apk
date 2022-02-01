@@ -12,7 +12,7 @@ class SystemCaptureProxy$2
   
   public void run()
   {
-    if (SystemCaptureProxy.a(this.this$0))
+    if (SystemCaptureProxy.b(this.this$0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("SystemCaptureProxy", 2, "capture return for released.");
@@ -23,9 +23,9 @@ class SystemCaptureProxy$2
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("capture captureTask:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append("  useScaleAPI:");
-      ((StringBuilder)localObject).append(SystemCaptureProxy.b(this.this$0));
+      ((StringBuilder)localObject).append(SystemCaptureProxy.c(this.this$0));
       QLog.d("SystemCaptureProxy", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = null;
@@ -34,14 +34,14 @@ class SystemCaptureProxy$2
       try
       {
         Bitmap localBitmap;
-        if ((SystemCaptureProxy.b(this.this$0)) && (Build.VERSION.SDK_INT >= 27))
+        if ((SystemCaptureProxy.c(this.this$0)) && (Build.VERSION.SDK_INT >= 27))
         {
-          localBitmap = SystemCaptureProxy.a(this.this$0).getScaledFrameAtTime(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask.c * 1000, 0, this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask.d, this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask.e);
+          localBitmap = SystemCaptureProxy.d(this.this$0).getScaledFrameAtTime(this.a.d * 1000, 0, this.a.e, this.a.f);
           localObject = localBitmap;
         }
         else
         {
-          localBitmap = SystemCaptureProxy.a(this.this$0, SystemCaptureProxy.a(this.this$0), this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask);
+          localBitmap = SystemCaptureProxy.a(this.this$0, SystemCaptureProxy.d(this.this$0), this.a);
           localObject = localBitmap;
         }
       }
@@ -49,7 +49,7 @@ class SystemCaptureProxy$2
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("capture failed for captureTask");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask);
+        localStringBuilder.append(this.a);
         QLog.e("SystemCaptureProxy", 1, localStringBuilder.toString(), localThrowable);
       }
     }
@@ -60,21 +60,21 @@ class SystemCaptureProxy$2
     }
     SystemCaptureProxy.a(this.this$0, false);
     localObject = this.this$0;
-    localObject = SystemCaptureProxy.a((SystemCaptureProxy)localObject, SystemCaptureProxy.a((SystemCaptureProxy)localObject), this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnCaptureCallback != null)
+    localObject = SystemCaptureProxy.a((SystemCaptureProxy)localObject, SystemCaptureProxy.d((SystemCaptureProxy)localObject), this.a);
+    if (this.b != null)
     {
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnCaptureCallback.a((Bitmap)localObject, this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask);
+        this.b.a((Bitmap)localObject, this.a);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnCaptureCallback.a();
+      this.b.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.capture.SystemCaptureProxy.2
  * JD-Core Version:    0.7.0.1
  */

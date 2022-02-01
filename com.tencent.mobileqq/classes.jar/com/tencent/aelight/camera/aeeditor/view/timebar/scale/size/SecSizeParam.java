@@ -6,32 +6,31 @@ import java.util.Locale;
 public class SecSizeParam
   extends SizeParam
 {
-  private SimpleDateFormat a;
+  private SimpleDateFormat b = new SimpleDateFormat("mm:ss", Locale.US);
   
   public SecSizeParam(float paramFloat)
   {
     super(paramFloat);
-    this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("mm:ss", Locale.US);
   }
   
   public float a(long paramLong)
   {
-    return (float)paramLong / 1000.0F / this.jdField_a_of_type_Float;
+    return (float)paramLong / 1000.0F / this.a;
   }
   
   public long a(float paramFloat)
   {
-    return Math.round(paramFloat * 1000.0F * this.jdField_a_of_type_Float);
+    return Math.round(paramFloat * 1000.0F * this.a);
   }
   
-  public String a(long paramLong)
+  public String b(long paramLong)
   {
-    return this.jdField_a_of_type_JavaTextSimpleDateFormat.format(Long.valueOf(paramLong));
+    return this.b.format(Long.valueOf(paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.timebar.scale.size.SecSizeParam
  * JD-Core Version:    0.7.0.1
  */

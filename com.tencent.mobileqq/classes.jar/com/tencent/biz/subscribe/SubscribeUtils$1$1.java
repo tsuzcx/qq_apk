@@ -21,9 +21,9 @@ class SubscribeUtils$1$1
     {
       paramNetResp = new StringBuilder();
       paramNetResp.append("start unzip file to folderPath:");
-      paramNetResp.append(this.a.jdField_a_of_type_JavaLangString);
+      paramNetResp.append(this.a.a);
       QLog.d("DownLoadZipFile", 4, paramNetResp.toString());
-      ZipUtils.unZipFile(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
+      ZipUtils.unZipFile(this.a.b, this.a.a);
       return;
     }
     catch (Exception paramNetResp)

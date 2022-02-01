@@ -19,36 +19,36 @@ class ScannerMultiResultSelectView$2
       localStringBuilder.append("updateAfterDecodeBitmap mShowing：");
       localStringBuilder.append(ScannerMultiResultSelectView.a(this.this$0));
       localStringBuilder.append(" mBitmap:");
-      localStringBuilder.append(ScannerMultiResultSelectView.a(this.this$0));
+      localStringBuilder.append(ScannerMultiResultSelectView.c(this.this$0));
       QLog.i("IQRScanConst_ScannerMultiResultSelectView", 2, localStringBuilder.toString());
     }
     if (!ScannerMultiResultSelectView.a(this.this$0)) {
       return;
     }
-    if (ScannerMultiResultSelectView.a(this.this$0) != null)
+    if (ScannerMultiResultSelectView.c(this.this$0) != null)
     {
-      ScannerMultiResultSelectView.b(this.this$0);
+      ScannerMultiResultSelectView.d(this.this$0);
       return;
     }
-    if ((ScannerMultiResultSelectView.a(this.this$0) != null) && (ScannerMultiResultSelectView.a(this.this$0) != null))
+    if ((ScannerMultiResultSelectView.e(this.this$0) != null) && (ScannerMultiResultSelectView.f(this.this$0) != null))
     {
-      if (ScannerMultiResultSelectView.a(this.this$0).d())
+      if (ScannerMultiResultSelectView.f(this.this$0).h())
       {
-        ScannerMultiResultSelectView.a(this.this$0).a((QBarResult)ScannerMultiResultSelectView.a(this.this$0).a.get(0), ScannerMultiResultSelectView.a(this.this$0), ScannerMultiResultSelectView.a(this.this$0));
+        ScannerMultiResultSelectView.e(this.this$0).a((QBarResult)ScannerMultiResultSelectView.f(this.this$0).a.get(0), ScannerMultiResultSelectView.g(this.this$0), ScannerMultiResultSelectView.h(this.this$0));
         return;
       }
-      if (ScannerMultiResultSelectView.a(this.this$0).c())
+      if (ScannerMultiResultSelectView.f(this.this$0).g())
       {
-        ScannerMultiResultSelectView.a(this.this$0).a((QMiniResult)ScannerMultiResultSelectView.a(this.this$0).b.get(0), ScannerMultiResultSelectView.a(this.this$0), ScannerMultiResultSelectView.a(this.this$0));
+        ScannerMultiResultSelectView.e(this.this$0).a((QMiniResult)ScannerMultiResultSelectView.f(this.this$0).b.get(0), ScannerMultiResultSelectView.g(this.this$0), ScannerMultiResultSelectView.h(this.this$0));
         return;
       }
-      this.this$0.a();
+      this.this$0.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.view.ScannerMultiResultSelectView.2
  * JD-Core Version:    0.7.0.1
  */

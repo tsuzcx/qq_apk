@@ -41,12 +41,11 @@ import com.tencent.mobileqq.kandian.biz.comment.ui.ExposeReplyCommentView.Builde
 import com.tencent.mobileqq.kandian.biz.comment.ui.PTSCommentLinkView.Builder;
 import com.tencent.mobileqq.kandian.biz.common.DividerConfigUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.kandian.biz.framework.click.ListenerBuilder;
 import com.tencent.mobileqq.kandian.biz.pts.IProteusItemView;
 import com.tencent.mobileqq.kandian.biz.pts.ProteusItem;
-import com.tencent.mobileqq.kandian.biz.pts.api.IReadInJoyPTSCostHelper;
 import com.tencent.mobileqq.kandian.biz.pts.data.ReadInJoyGalleryBigCell;
 import com.tencent.mobileqq.kandian.biz.pts.data.ReadInJoySingleTopicCell;
 import com.tencent.mobileqq.kandian.biz.pts.data.ReadInJoySmallImgCell;
@@ -86,6 +85,7 @@ import com.tencent.mobileqq.kandian.biz.pts.item.SmallImageProteusItem;
 import com.tencent.mobileqq.kandian.biz.pts.item.TripleProteusItem;
 import com.tencent.mobileqq.kandian.biz.pts.item.UgcProteusItem;
 import com.tencent.mobileqq.kandian.biz.pts.item.WechatSimpleVideoProteusItem;
+import com.tencent.mobileqq.kandian.biz.pts.network.ReadInJoyPTSCostHelper;
 import com.tencent.mobileqq.kandian.biz.pts.util.DynamicItemViewHelper;
 import com.tencent.mobileqq.kandian.biz.pts.util.FluencyLogUtil;
 import com.tencent.mobileqq.kandian.biz.pts.util.LogUtils;
@@ -153,15 +153,14 @@ import org.json.JSONObject;
 
 public class ProteusSupportUtil
 {
-  private static double jdField_a_of_type_Double = 0.0D;
-  private static int jdField_a_of_type_Int;
-  private static final ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
-  private static final Map<Integer, ProteusItem> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static final Map<Integer, ProteusItem> a = new HashMap();
+  private static final ArrayList<Integer> b = new ArrayList();
+  private static int c = 0;
+  private static double d = 0.0D;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    if (jdField_a_of_type_JavaUtilMap.isEmpty())
+    if (a.isEmpty())
     {
       a(3, new TripleProteusItem());
       a(72, new AnswerProteusItem());
@@ -245,82 +244,48 @@ public class ProteusSupportUtil
       a(138, new CommentBiuProteusItem());
       a(142, new ColumnTwoVideoProteusItem());
       a(147, new WechatSimpleVideoProteusItem());
-      a();
+      b();
     }
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(0));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(1));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(2));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(3));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(5));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(47));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(60));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(39));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(66));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(50));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(51));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(52));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(53));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(96));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(103));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(102));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(101));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(104));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(105));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(106));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(116));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(121));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(126));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(115));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(124));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(125));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(127));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(140));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(141));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(129));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(130));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(136));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(46));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(142));
-    jdField_a_of_type_Int = 0;
-  }
-  
-  private static double a(TemplateBean paramTemplateBean)
-  {
-    TraceUtils.traceBegin("getProteusSeparatorMarginLeftPx");
-    if ((jdField_a_of_type_Double > 0.0D) && (paramTemplateBean != null))
-    {
-      TemplateFactory localTemplateFactory = TemplateFactory.a("default_feeds", false);
-      if ((localTemplateFactory != null) && (!localTemplateFactory.a(paramTemplateBean)))
-      {
-        TraceUtils.traceEnd();
-        return jdField_a_of_type_Double;
-      }
-    }
-    if ((paramTemplateBean != null) && (paramTemplateBean.getViewBean() != null)) {
-      try
-      {
-        paramTemplateBean = paramTemplateBean.getViewBean().findViewById("id_separator");
-        if (paramTemplateBean != null) {
-          jdField_a_of_type_Double = Float.valueOf((String)paramTemplateBean.valueBean.normalValue.get("margin_left")).floatValue();
-        }
-      }
-      catch (Exception paramTemplateBean)
-      {
-        paramTemplateBean.printStackTrace();
-        QLog.d("ProteusSupportUtil", 1, "getProteusSeparatorMarginLeft exception.");
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TemplateFactory", 2, new Object[] { "sProteusSeparatorMarginLeft = ", Double.valueOf(jdField_a_of_type_Double) });
-    }
-    TraceUtils.traceEnd();
-    return jdField_a_of_type_Double;
+    b.add(Integer.valueOf(0));
+    b.add(Integer.valueOf(1));
+    b.add(Integer.valueOf(2));
+    b.add(Integer.valueOf(3));
+    b.add(Integer.valueOf(5));
+    b.add(Integer.valueOf(47));
+    b.add(Integer.valueOf(60));
+    b.add(Integer.valueOf(39));
+    b.add(Integer.valueOf(66));
+    b.add(Integer.valueOf(50));
+    b.add(Integer.valueOf(51));
+    b.add(Integer.valueOf(52));
+    b.add(Integer.valueOf(53));
+    b.add(Integer.valueOf(96));
+    b.add(Integer.valueOf(103));
+    b.add(Integer.valueOf(102));
+    b.add(Integer.valueOf(101));
+    b.add(Integer.valueOf(104));
+    b.add(Integer.valueOf(105));
+    b.add(Integer.valueOf(106));
+    b.add(Integer.valueOf(116));
+    b.add(Integer.valueOf(121));
+    b.add(Integer.valueOf(126));
+    b.add(Integer.valueOf(115));
+    b.add(Integer.valueOf(124));
+    b.add(Integer.valueOf(125));
+    b.add(Integer.valueOf(127));
+    b.add(Integer.valueOf(140));
+    b.add(Integer.valueOf(141));
+    b.add(Integer.valueOf(129));
+    b.add(Integer.valueOf(130));
+    b.add(Integer.valueOf(136));
+    b.add(Integer.valueOf(46));
+    b.add(Integer.valueOf(142));
   }
   
   private static int a(TemplateBean paramTemplateBean)
   {
     TraceUtils.traceBegin("getProteusSeparatorHeightPx");
-    if ((jdField_a_of_type_Int > 0) && (paramTemplateBean != null))
+    if ((c > 0) && (paramTemplateBean != null))
     {
       localTemplateFactory = TemplateFactory.a("default_feeds", false);
       if ((localTemplateFactory != null) && (!localTemplateFactory.a(paramTemplateBean)))
@@ -328,9 +293,9 @@ public class ProteusSupportUtil
         TraceUtils.traceEnd();
         paramTemplateBean = new StringBuilder();
         paramTemplateBean.append("[getProteusSeparatorHeightPx] SeparatorHeight : ");
-        paramTemplateBean.append(jdField_a_of_type_Int);
+        paramTemplateBean.append(c);
         FluencyLogUtil.a("ProteusSupportUtil", paramTemplateBean.toString());
-        return jdField_a_of_type_Int;
+        return c;
       }
     }
     TemplateFactory localTemplateFactory = TemplateFactory.a("default_feeds", false);
@@ -346,12 +311,12 @@ public class ProteusSupportUtil
         {
           paramTemplateBean = (SizeValue)paramTemplateBean.valueBean.normalValue.get("height");
           if (paramTemplateBean != null) {
-            jdField_a_of_type_Int = paramTemplateBean.getLayoutSize();
+            c = paramTemplateBean.getLayoutSize();
           }
         }
         else
         {
-          jdField_a_of_type_Int = Utils.dp2px(0.5D);
+          c = Utils.dp2px(0.5D);
         }
         FluencyLogUtil.a("ProteusSupportUtil", "[getProteusSeparatorHeightPx] getSeparatorHeightPx");
       }
@@ -362,13 +327,1140 @@ public class ProteusSupportUtil
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.d("TemplateFactory", 2, new Object[] { "sProteusSeparatorHeight = ", Integer.valueOf(jdField_a_of_type_Int) });
+      QLog.d("TemplateFactory", 2, new Object[] { "sProteusSeparatorHeight = ", Integer.valueOf(c) });
     }
     TraceUtils.traceEnd();
-    return jdField_a_of_type_Int;
+    return c;
   }
   
-  public static TemplateBean a(VafContext paramVafContext, int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static ProteusItemView a(VafContext paramVafContext, int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (LogUtils.a())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[getView] ");
+      ((StringBuilder)localObject1).append(paramAbsBaseArticleInfo);
+      ((StringBuilder)localObject1).append(" adapterViewType: ");
+      ((StringBuilder)localObject1).append(paramInt);
+      LogUtils.a("ProteusSupportUtil", ((StringBuilder)localObject1).toString());
+    }
+    long l1 = System.currentTimeMillis();
+    TraceUtils.traceBegin("ProteusSupportUtil.getView");
+    TraceUtils.traceBegin("ProteusSupportUtil#getView#getTemplateBean");
+    TemplateBean localTemplateBean = c(paramVafContext, paramInt, paramAbsBaseArticleInfo);
+    TraceUtils.traceEnd();
+    int i = 1;
+    Object localObject3 = null;
+    Object localObject2;
+    if (localTemplateBean != null)
+    {
+      paramAbsBaseArticleInfo = new StringBuilder();
+      paramAbsBaseArticleInfo.append("[");
+      paramAbsBaseArticleInfo.append(localTemplateBean.getStyleName());
+      paramAbsBaseArticleInfo.append("]");
+      localObject2 = paramAbsBaseArticleInfo.toString();
+      paramAbsBaseArticleInfo = null;
+    }
+    else
+    {
+      FluencyLogUtil.a("ProteusSupportUtil", "[getView]  new proteusItemView ");
+      localObject1 = new ProteusItemView(paramVafContext.getContext());
+      ((ProteusItemView)localObject1).setVisibility(8);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[getView] 未找到样式,请确认是否下发该卡片的样式:");
+      ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo);
+      ((StringBuilder)localObject2).append(" adapterViewType: ");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append("  ");
+      ((StringBuilder)localObject2).append(paramVafContext.getTemplateFactory());
+      QLog.i("ProteusSupportUtil", 1, ((StringBuilder)localObject2).toString());
+      localObject2 = "";
+      paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject1;
+    }
+    Object localObject1 = localObject3;
+    if ((paramVafContext.getTemplateFactory() instanceof TemplateFactory))
+    {
+      localObject1 = localObject3;
+      if (localTemplateBean != null) {
+        localObject1 = ProteusPreloadManager.a.a(((TemplateFactory)paramVafContext.getTemplateFactory()).b(), localTemplateBean.getStyleName());
+      }
+    }
+    localObject3 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("#inflate");
+      TraceUtils.traceBegin(((StringBuilder)localObject1).toString());
+      localObject3 = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
+      FluencyLogUtil.a("ProteusSupportUtil", "[getView] inflate");
+      TraceUtils.traceEnd();
+    }
+    if (localObject3 != null)
+    {
+      paramAbsBaseArticleInfo = new StringBuilder();
+      paramAbsBaseArticleInfo.append((String)localObject2);
+      paramAbsBaseArticleInfo.append("#setBackgroundDrawable");
+      TraceUtils.traceBegin(paramAbsBaseArticleInfo.toString());
+      if ((RIJKanDianOverDrawOptimizeAladdinConfig.a()) && (ReadInJoyHelper.w())) {
+        paramInt = i;
+      } else {
+        paramInt = 0;
+      }
+      paramAbsBaseArticleInfo = paramVafContext.getContext().getResources();
+      if (paramInt != 0) {
+        paramInt = 2130842689;
+      } else {
+        paramInt = 2130842690;
+      }
+      ((Container)localObject3).setBackgroundDrawable(paramAbsBaseArticleInfo.getDrawable(paramInt));
+      paramAbsBaseArticleInfo = new ProteusItemView(paramVafContext.getContext());
+      paramAbsBaseArticleInfo.a((Container)localObject3);
+      TraceUtils.traceEnd();
+      FluencyLogUtil.a("ProteusSupportUtil", "[getView]  add Container ");
+    }
+    if ((QLog.isColorLevel()) && (localObject3 != null)) {
+      LogUtils.a((View)localObject3, "ProteusSupportUtil");
+    }
+    long l2 = System.currentTimeMillis();
+    if (localTemplateBean != null) {
+      paramVafContext = localTemplateBean.getStyleName();
+    } else {
+      paramVafContext = "templateBean is null";
+    }
+    ReadInJoyPTSCostHelper.a("ProteusSupportUtil", paramVafContext, "ProteusSupportUtil.getView", l2 - l1);
+    TraceUtils.traceEnd();
+    return paramAbsBaseArticleInfo;
+  }
+  
+  private static void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
+  {
+    TraceUtils.traceBegin("ProteusSupportUtil.bindView");
+    if (paramContainer == null)
+    {
+      TraceUtils.traceEnd();
+      return;
+    }
+    FluencyLogUtil.a("ProteusSupportUtil", "[bindView]");
+    Object localObject = (ProteusItem)a.get(Integer.valueOf(paramInt1));
+    if (localObject != null)
+    {
+      ((ProteusItem)localObject).a(paramInt1, paramContainer, paramIReadInJoyModel, paramInt2);
+      TraceUtils.traceEnd();
+    }
+    else
+    {
+      paramContainer = paramContainer.getVirtualView();
+      if (paramInt1 != 10)
+      {
+        if (paramInt1 != 34)
+        {
+          switch (paramInt1)
+          {
+          default: 
+            break;
+          }
+        }
+        else
+        {
+          localObject = (AvatarView)paramContainer.findViewBaseByName("id_info_avator");
+          if (localObject != null) {
+            ((AvatarView)localObject).a(paramIReadInJoyModel);
+          }
+          localObject = (SummaryView)paramContainer.findViewBaseByName("id_summary");
+          if (localObject != null) {
+            ((SummaryView)localObject).a(paramIReadInJoyModel);
+          }
+          localObject = (BiuCommentView)paramContainer.findViewBaseByName("id_biu_comment");
+          if (localObject != null) {
+            ((BiuCommentView)localObject).a(paramIReadInJoyModel);
+          }
+          paramContainer = (GridImageView)paramContainer.findViewBaseByName("id_multi_image");
+          if (paramContainer != null) {
+            paramContainer.a(paramIReadInJoyModel.k());
+          }
+        }
+      }
+      else
+      {
+        localObject = (AvatarView)paramContainer.findViewBaseByName("id_info_avator");
+        if (localObject != null) {
+          ((AvatarView)localObject).a(paramIReadInJoyModel);
+        }
+        localObject = (SummaryView)paramContainer.findViewBaseByName("id_summary");
+        if (localObject != null) {
+          ((SummaryView)localObject).a(paramIReadInJoyModel);
+        }
+        localObject = (BiuCommentView)paramContainer.findViewBaseByName("id_biu_comment");
+        if (localObject != null) {
+          ((BiuCommentView)localObject).a(paramIReadInJoyModel);
+        }
+        paramContainer = (CornerTextImageView)paramContainer.findViewBaseByName("id_corner_text_image");
+        if (paramContainer != null) {
+          paramContainer.a(paramIReadInJoyModel);
+        }
+      }
+    }
+    TraceUtils.traceEnd();
+  }
+  
+  private static void a(int paramInt, ProteusItem paramProteusItem)
+  {
+    if (paramProteusItem != null)
+    {
+      a.put(Integer.valueOf(paramInt), paramProteusItem);
+      return;
+    }
+    throw new NullPointerException();
+  }
+  
+  public static void a(int paramInt, ProteusItemView paramProteusItemView, VafContext paramVafContext, IFaceDecoder paramIFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, IReadInJoyModel paramIReadInJoyModel, AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    Container localContainer = paramProteusItemView.getContainer();
+    ViewFactory.findClickableViewListener(localContainer.getVirtualView(), new ProteusSupportUtil.2(paramInt, localContainer, paramIReadInJoyModel, paramAbsBaseArticleInfo, paramVafContext, paramProteusItemView, paramIFaceDecoder, paramReadInJoyBaseAdapter));
+  }
+  
+  public static void a(TemplateBean paramTemplateBean, ViewBase paramViewBase)
+  {
+    a(paramTemplateBean, paramViewBase, "click_T");
+  }
+  
+  public static void a(TemplateBean paramTemplateBean, ViewBase paramViewBase, String paramString)
+  {
+    if (paramTemplateBean != null)
+    {
+      if (paramViewBase == null) {
+        return;
+      }
+      RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = new RIJTransMergeKanDianReport.ReportR5Builder();
+      String str = (String)paramTemplateBean.getDataAttribute(paramViewBase.getName(), paramString);
+      if (str == null)
+      {
+        QLog.d("ProteusSupportUtil", 2, "reportDataAttrInfo bigT is null");
+        return;
+      }
+      paramTemplateBean = paramTemplateBean.getDataAttribute(paramViewBase.getName());
+      if (paramTemplateBean != null)
+      {
+        paramTemplateBean = paramTemplateBean.entrySet().iterator();
+        while (paramTemplateBean.hasNext())
+        {
+          Object localObject = (Map.Entry)paramTemplateBean.next();
+          paramViewBase = (String)((Map.Entry)localObject).getKey();
+          localObject = ((Map.Entry)localObject).getValue();
+          if (!TextUtils.equals(paramViewBase, paramString)) {
+            localReportR5Builder.addStringNotThrow(paramViewBase, localObject.toString());
+          }
+        }
+      }
+      PublicAccountReportUtils.a(null, "CliOper", "", "", str, str, 0, 0, "", "", "", localReportR5Builder.build(), false);
+    }
+  }
+  
+  public static void a(ViewBean paramViewBean)
+  {
+    if (paramViewBean == null) {
+      return;
+    }
+    paramViewBean = paramViewBean.getDynamicValue("setProteusReportInfo:");
+    if ((paramViewBean instanceof JSONObject)) {
+      try
+      {
+        JSONObject localJSONObject = (JSONObject)paramViewBean;
+        paramViewBean = localJSONObject.getString("click_T");
+        localJSONObject = localJSONObject.getJSONObject("info");
+        RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = new RIJTransMergeKanDianReport.ReportR5Builder();
+        Iterator localIterator = localJSONObject.keys();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          localReportR5Builder.addStringNotThrow(str, localJSONObject.get(str).toString());
+        }
+        PublicAccountReportUtils.a(null, "CliOper", "", "", paramViewBean, paramViewBean, 0, 0, "", "", "", localReportR5Builder.build(), false);
+        return;
+      }
+      catch (Exception paramViewBean)
+      {
+        QLog.d("ProteusSupportUtil", 1, paramViewBean, new Object[] { "" });
+      }
+    }
+  }
+  
+  public static void a(Container paramContainer, TemplateBean paramTemplateBean1, TemplateBean paramTemplateBean2)
+  {
+    if (paramTemplateBean2 == null)
+    {
+      QLog.d("ProteusSupportUtil", 1, new Object[] { "[bindDynamicValueWithoutRecursion", "newTemplateBean == null", "return" });
+      return;
+    }
+    TraceUtils.traceBegin("ProteusSupportUtil.bindDynamicValueWithoutRecursion");
+    long l = System.currentTimeMillis();
+    Map localMap1 = paramContainer.getViewIdMapping();
+    Map localMap2 = paramTemplateBean2.getViewDataBinding();
+    HashSet localHashSet = new HashSet();
+    if (paramTemplateBean1 != null) {
+      paramContainer = paramTemplateBean1.getViewDataBinding();
+    } else {
+      paramContainer = null;
+    }
+    if (localMap1 != null) {
+      localHashSet.addAll(localMap1.keySet());
+    }
+    localHashSet.removeAll(localMap2.keySet());
+    StringBuilder localStringBuilder = new StringBuilder("bindDynamicValueWithoutRecursion: ");
+    Iterator localIterator = localMap2.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      ViewBean localViewBean = (ViewBean)localMap2.get(str);
+      if (paramContainer != null) {
+        paramTemplateBean1 = (ViewBean)paramContainer.get(str);
+      } else {
+        paramTemplateBean1 = null;
+      }
+      ViewBase localViewBase;
+      if (localMap1 != null) {
+        localViewBase = (ViewBase)localMap1.get(str);
+      } else {
+        localViewBase = null;
+      }
+      TraceUtils.traceBegin("bindDynamicValueWithoutRecursion.bindDynamicVal.check");
+      int i;
+      if ((str != null) && (localViewBase != null) && (localViewBean != null) && ((paramTemplateBean1 == null) || (!localViewBean.valueBean.dynamicValue.equals(paramTemplateBean1.valueBean.dynamicValue)))) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      TraceUtils.traceEnd();
+      if (i != 0)
+      {
+        localViewBean.setVisible(true);
+        localViewBase.bindDynamicValue(localViewBean);
+        TraceUtils.traceEnd();
+        localStringBuilder.append("[bindNewValue] bind dynamicValue: ");
+        localStringBuilder.append(localViewBean.valueBean.dynamicValue);
+        localStringBuilder.append(" viewId = ");
+        localStringBuilder.append(str);
+        localStringBuilder.append("\n");
+      }
+      else if ((QLog.isColorLevel()) && (localViewBean != null))
+      {
+        localStringBuilder.append("skip: ");
+        localStringBuilder.append(localViewBean.valueBean.dynamicValue);
+        localStringBuilder.append(" viewId = ");
+        localStringBuilder.append(str);
+        localStringBuilder.append("\n");
+      }
+      if (localViewBase != null) {
+        localViewBase.setVisibility(0);
+      }
+      TraceUtils.traceEnd();
+    }
+    QLog.i("ProteusSupportUtil", 1, localStringBuilder.toString());
+    paramContainer = localHashSet.iterator();
+    while (paramContainer.hasNext())
+    {
+      paramTemplateBean1 = (ViewBase)localMap1.get((String)paramContainer.next());
+      if (paramTemplateBean1 != null) {
+        paramTemplateBean1.setVisibility(8);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContainer = new StringBuilder();
+      paramContainer.append("bindDynamicValueWithoutRecursion_____ ");
+      paramContainer.append(paramTemplateBean2.getStyleName());
+      paramContainer.append(" cost ");
+      paramContainer.append(System.currentTimeMillis() - l);
+      paramContainer.append("ms");
+      QLog.d("ProteusSupportUtil", 2, paramContainer.toString());
+    }
+    TraceUtils.traceEnd();
+  }
+  
+  public static void a(Container paramContainer, VafContext paramVafContext, TemplateBean paramTemplateBean)
+  {
+    ViewFactory.findClickableViewListener(paramContainer.getVirtualView(), new ProteusSupportUtil.1(paramVafContext, paramTemplateBean));
+  }
+  
+  public static void a(Container paramContainer, IReadInJoyModel paramIReadInJoyModel, TemplateBean paramTemplateBean)
+  {
+    if (DividerConfigUtils.a(paramContainer, paramIReadInJoyModel)) {
+      return;
+    }
+    ViewBase localViewBase1 = paramContainer.getVirtualView();
+    ViewBase localViewBase2 = localViewBase1.findViewBaseByName("id_separator");
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
+    if ((localAbsBaseArticleInfo != null) && (localViewBase2 != null))
+    {
+      Layout.Params localParams = localViewBase2.getComLayoutParams();
+      int k = localParams.mLayoutHeight;
+      int j = Utils.dp2px(5.0D);
+      Utils.dp2px(6.0D);
+      int i = paramIReadInJoyModel.o();
+      int m = paramIReadInJoyModel.p();
+      if (localAbsBaseArticleInfo.mChannelID == 70L)
+      {
+        TraceUtils.traceBegin("configDivider.FollowFeeds");
+        localParams.mLayoutMarginLeft = 0;
+        localParams.mLayoutMarginRight = 0;
+        localParams.mLayoutWidth = -1;
+        i = Utils.dp2px(5.0D);
+        TraceUtils.traceEnd();
+      }
+      else if (DailyModeConfigHandler.c((int)localAbsBaseArticleInfo.mChannelID))
+      {
+        TraceUtils.traceBegin("configDivider.DailyFeeds");
+        paramIReadInJoyModel = paramIReadInJoyModel.l();
+        if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.mProteusTemplateBean != null) && (paramIReadInJoyModel.mProteusTemplateBean.getDataAttribute(null, "position_jump") != null)) {
+          j = 1;
+        } else {
+          j = 0;
+        }
+        if (localAbsBaseArticleInfo.mProteusTemplateBean != null)
+        {
+          if (localAbsBaseArticleInfo.mProteusTemplateBean.getDataAttribute(null, "position_jump") != null) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+        }
+        else {
+          i = 0;
+        }
+        if (i != j)
+        {
+          localParams.mLayoutMarginLeft = 0;
+          localParams.mLayoutMarginRight = 0;
+          localParams.mLayoutWidth = -1;
+          i = Utils.dp2px(5.0D);
+        }
+        for (;;)
+        {
+          break;
+          i = b(paramTemplateBean);
+          if (i == a(paramTemplateBean))
+          {
+            i = a(paramTemplateBean);
+            j = Utils.dp2px(c(paramTemplateBean));
+            localParams.mLayoutMarginRight = j;
+            localParams.mLayoutMarginLeft = j;
+            localParams.mLayoutWidth = -1;
+          }
+        }
+        TraceUtils.traceEnd();
+      }
+      else if ((i != 29) && (i != 30) && (m != 29) && (m != 30))
+      {
+        if ((!b(paramIReadInJoyModel.l())) && (!a(paramIReadInJoyModel)))
+        {
+          if (a(i, m, paramIReadInJoyModel.l()))
+          {
+            TraceUtils.traceBegin("configDivider.normal");
+            TraceUtils.traceBegin("configDivider.normal.getProteusSeparatorHeightPx");
+            i = a(paramTemplateBean);
+            TraceUtils.traceEnd();
+            TraceUtils.traceBegin("configDivider.normal.getProteusSeparatorMarginLeftPx");
+            double d1 = c(paramTemplateBean);
+            TraceUtils.traceEnd();
+            j = Utils.dp2px(d1);
+            localParams.mLayoutMarginRight = j;
+            localParams.mLayoutMarginLeft = j;
+            localParams.mLayoutWidth = -1;
+            TraceUtils.traceEnd();
+          }
+          else
+          {
+            localParams.mLayoutMarginLeft = 0;
+            localParams.mLayoutMarginRight = 0;
+            localParams.mLayoutWidth = -1;
+            i = j;
+            if (!b(m))
+            {
+              a(paramIReadInJoyModel, localViewBase2);
+              i = j;
+            }
+          }
+        }
+        else
+        {
+          localParams.mLayoutMarginLeft = 0;
+          localParams.mLayoutMarginRight = 0;
+          localParams.mLayoutWidth = -1;
+          i = 0;
+        }
+      }
+      else
+      {
+        i = a(paramTemplateBean);
+        localParams.mLayoutMarginLeft = 0;
+        localParams.mLayoutMarginRight = 0;
+        localParams.mLayoutWidth = -1;
+      }
+      localParams.mLayoutHeight = i;
+      localViewBase2.setComLayoutParams(localParams);
+      paramIReadInJoyModel = localViewBase1.getComLayoutParams();
+      if (paramIReadInJoyModel.mLayoutHeight >= 0) {
+        paramIReadInJoyModel.mLayoutHeight += i - k;
+      }
+      paramIReadInJoyModel = localViewBase1.getComLayoutParams();
+      paramContainer.setLayoutParams(new RelativeLayout.LayoutParams(paramIReadInJoyModel.mLayoutWidth, paramIReadInJoyModel.mLayoutHeight));
+      return;
+    }
+    QLog.d("ProteusSupportUtil", 1, "configDivider failed, articleInfo is null or divider is null.");
+  }
+  
+  private static void a(VafContext paramVafContext)
+  {
+    Object localObject = ((IRIJAdService)QRoute.api(IRIJAdService.class)).getProteusBuilders();
+    if ((localObject != null) && (!((Map)localObject).isEmpty()))
+    {
+      localObject = ((Map)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        paramVafContext.getViewFactory().registerViewBuilder((String)localEntry.getKey(), (ViewBase.IBuilder)localEntry.getValue());
+      }
+    }
+  }
+  
+  public static void a(VafContext paramVafContext, String paramString)
+  {
+    paramVafContext.setTemplateFactory(TemplateFactory.a(paramString, true));
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyLikeButton", new ReadInJoyLikeButton.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyAvatarView", new AvatarView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyVariableImageContentView", new GridImageView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoySummaryView", new SummaryView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyCommentView", new ArticleCommentView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyBiuCommentView", new BiuCommentView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("CornerTextImageView", new CornerTextImageView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyMiddleBodyView", new ReadInJoyMiddleBodyView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyUsersCommentView", new UsersCommentsView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyFriendsBiu", new ReadInJoyFriendsBiu.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyQARichView", new NativeText.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyBiuButton", new ReadInJoyBiuButton.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyCoordinateView", new ReadInJoyCoordinateView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoySocializeRecommendFollowView", new ReadInJoySocializeRecommendFollowView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("UILabel", new ReadInjoyTextView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInjoyAsynImageView", new ReadInjoyImageView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("UIImageView", new ReadInjoyImageView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInjoyAsynImageIcon", new ReadInjoyAsynImageIcon.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ProteusCollectionView", new RvPolymericContainer.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyAdVideoGuide", new ReadInJoyAdVideoCompleteGuide.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("PTSAvatarView", new CommentAvatarView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("QQAvatarView", new CommentAvatarView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("RIJCommentRichTextView", new CommentRichTextView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("QQRIJRichTextView", new CommentContentView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("QQRIJCommentLikeButton", new CommentLikeView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyExposeReplyCommentView", new ExposeReplyCommentView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyAwesomeCommentView", new ReadInJoyAwesomeCommentView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyAdLocationView", new ReadInJoyAdLocationView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ProteusTickerView", new ProteusTickerView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInjoyShareView", new ReadInJoyShareView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInjoyApngImageView", new ReadInjoyApngImageView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInjoyProgressView", new ReadInjoyProgressView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("RIJCommentLinksView", new PTSCommentLinkView.Builder());
+    c();
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyVideoView", new ReadInJoyVideoView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyGifView", new ReadInJoyGifView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ProteusMarqueeLabel", new NativeText.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyLinkClickableLabel", new ReadInjoyTextView.Builder());
+    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyLottieView", new ReadInJoyLottieView.Builder());
+    a(paramVafContext);
+  }
+  
+  public static void a(ViewBase paramViewBase, ViewBean paramViewBean)
+  {
+    if (paramViewBase != null)
+    {
+      paramViewBase.bindDynamicValue(paramViewBean);
+      if ((paramViewBase instanceof Layout))
+      {
+        paramViewBase = ((Layout)paramViewBase).getSubViews();
+        if ((paramViewBase != null) && (paramViewBean.children != null))
+        {
+          List localList = Arrays.asList(paramViewBean.children);
+          int j = paramViewBase.size();
+          if (localList.size() == j)
+          {
+            int i = 0;
+            while (i < j)
+            {
+              a((ViewBase)paramViewBase.get(i), (ViewBean)localList.get(i));
+              i += 1;
+            }
+          }
+          if (QLog.isColorLevel())
+          {
+            paramViewBase = new StringBuilder();
+            paramViewBase.append("bindDataImpl: fail to bind data for ");
+            paramViewBase.append(paramViewBean.viewId);
+            paramViewBase.append("due to ViewBean - ViewBase count mismatch");
+            QLog.d("ProteusSupportUtil", 2, paramViewBase.toString());
+          }
+        }
+      }
+      FluencyLogUtil.a("ProteusSupportUtil", "[bindDynamicValue]");
+    }
+  }
+  
+  public static void a(IProteusItemView paramIProteusItemView, int paramInt1, AbsBaseArticleInfo paramAbsBaseArticleInfo, VafContext paramVafContext, IFaceDecoder paramIFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, IReadInJoyModel paramIReadInJoyModel, int paramInt2, String paramString)
+  {
+    Object localObject;
+    if (LogUtils.a())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[bindData]  adapterViewType: ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", data : ");
+      ((StringBuilder)localObject).append(paramAbsBaseArticleInfo);
+      LogUtils.a("ProteusSupportUtil", ((StringBuilder)localObject).toString());
+    }
+    TraceUtils.traceBegin("ProteusSupportUtil.bindData");
+    long l1 = System.currentTimeMillis();
+    if ((paramIProteusItemView != null) && (paramIProteusItemView.getContainer() != null))
+    {
+      c(paramVafContext, paramString);
+      localObject = paramIProteusItemView.getTemplateBean();
+      TemplateBean localTemplateBean = c(paramVafContext, paramInt1, paramAbsBaseArticleInfo);
+      if ((!a(paramIProteusItemView.getContainer(), paramInt1)) && ((localObject == null) || (localTemplateBean == null) || (localTemplateBean.getId() == ((TemplateBean)localObject).getId())))
+      {
+        paramString = (String)localObject;
+        if (localObject != null)
+        {
+          paramString = (String)localObject;
+          if (localTemplateBean != null)
+          {
+            paramString = (String)localObject;
+            if (((TemplateBean)localObject).getStyleName() != null)
+            {
+              paramString = (String)localObject;
+              if (localTemplateBean.getStyleName() != null)
+              {
+                paramString = (String)localObject;
+                if (localTemplateBean.getStyleName().equals(((TemplateBean)localObject).getStyleName())) {}
+              }
+            }
+          }
+        }
+      }
+      else
+      {
+        int j = -1;
+        int i;
+        if (localTemplateBean != null) {
+          i = localTemplateBean.getId();
+        } else {
+          i = -1;
+        }
+        if (localObject != null) {
+          j = ((TemplateBean)localObject).getId();
+        }
+        paramString = new StringBuilder();
+        paramString.append("[bindData] trigger re-inflation, adapterViewType: ");
+        paramString.append(paramInt1);
+        paramString.append(" new id: ");
+        paramString.append(i);
+        paramString.append(" old id: ");
+        paramString.append(j);
+        QLog.i("ProteusSupportUtil", 1, paramString.toString());
+        paramString = new StringBuilder();
+        paramString.append("[bindData] trigger re-inflation, adapterViewType: ");
+        paramString.append(paramInt1);
+        paramString.append(" new id: ");
+        paramString.append(i);
+        paramString.append(" old id: ");
+        paramString.append(j);
+        FluencyLogUtil.a("ProteusSupportUtil", paramString.toString());
+        paramString = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
+        if (paramString != null)
+        {
+          paramString.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130842690));
+          paramIProteusItemView.d();
+          paramIProteusItemView.a(paramString);
+          LogUtils.a(paramString.getVirtualView(), "ProteusSupportUtil");
+          LogUtils.a(paramString, "ProteusSupportUtil");
+        }
+        paramAbsBaseArticleInfo.mProteusTemplateBean = localTemplateBean;
+        c();
+        paramString = null;
+      }
+      localObject = paramIProteusItemView.getContainer();
+      paramIProteusItemView.setTemplateBean(localTemplateBean);
+      paramIProteusItemView.setModel(paramIReadInJoyModel, paramReadInJoyBaseAdapter.y().a());
+      TraceUtils.traceBegin("ProteusSupportUtil.bindDataImpl");
+      if (localTemplateBean != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[bindData] bind data for ");
+        localStringBuilder.append(localTemplateBean.getStyleName());
+        QLog.i("ProteusSupportUtil", 1, localStringBuilder.toString());
+        a((Container)localObject, paramString, localTemplateBean);
+      }
+      else
+      {
+        QLog.d("ProteusSupportUtil", 2, "[bindData] newTemplateBean is null");
+      }
+      TraceUtils.traceEnd();
+      a(paramInt1, (Container)localObject, paramIReadInJoyModel, paramInt2);
+      a(paramInt1, (ProteusItemView)paramIProteusItemView, paramVafContext, paramIFaceDecoder, paramReadInJoyBaseAdapter, paramIReadInJoyModel, paramAbsBaseArticleInfo);
+      TraceUtils.traceBegin("ProteusSupportUtil.configDivider");
+      a(paramIReadInJoyModel, paramVafContext);
+      a((Container)localObject, paramIReadInJoyModel, localTemplateBean);
+      TraceUtils.traceEnd();
+      long l2 = System.currentTimeMillis();
+      if (localTemplateBean != null) {
+        paramIProteusItemView = localTemplateBean.getStyleName();
+      } else {
+        paramIProteusItemView = "";
+      }
+      ReadInJoyPTSCostHelper.a("ProteusSupportUtil", paramIProteusItemView, " ProteusSupportUtil.bindData", l2 - l1);
+      TraceUtils.traceEnd();
+      return;
+    }
+    TraceUtils.traceEnd();
+  }
+  
+  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    c(null, RIJBaseItemViewType.c(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo);
+  }
+  
+  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase)
+  {
+    if ((paramAbsBaseArticleInfo instanceof BaseArticleInfo))
+    {
+      if (paramTemplateBean == null) {
+        return;
+      }
+      String str = ReadinjoyReportUtils.e(paramAbsBaseArticleInfo.mChannelID);
+      HashMap localHashMap = new HashMap();
+      Map localMap = paramTemplateBean.getDataAttribute(null);
+      paramTemplateBean = paramTemplateBean.getDataAttribute(paramViewBase.getViewId());
+      if (localMap != null) {
+        localHashMap.putAll(localMap);
+      }
+      if (paramTemplateBean != null) {
+        localHashMap.putAll(paramTemplateBean);
+      }
+      ProteusReportUtil.a(paramAbsBaseArticleInfo, str, str, (int)paramAbsBaseArticleInfo.mChannelID, localHashMap);
+      ProteusReportUtil.a(paramTemplateBean);
+      ReadInJoyHelper.a(paramAbsBaseArticleInfo);
+    }
+  }
+  
+  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, ViewBase paramViewBase, TemplateBean paramTemplateBean)
+  {
+    if ((paramAbsBaseArticleInfo != null) && (paramViewBase != null))
+    {
+      if (paramTemplateBean == null) {
+        return;
+      }
+      paramViewBase = paramTemplateBean.getDataAttribute(paramViewBase.getViewId()).get("rowkey");
+      if ((paramViewBase instanceof String))
+      {
+        paramViewBase = (String)paramViewBase;
+        if (!TextUtils.isEmpty(paramViewBase)) {
+          paramAbsBaseArticleInfo.viewRowkey = paramViewBase;
+        }
+      }
+    }
+  }
+  
+  private static void a(IReadInJoyModel paramIReadInJoyModel, VafContext paramVafContext)
+  {
+    ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.u();
+    if (localReadInJoyBaseAdapter != null)
+    {
+      AbsBaseArticleInfo localAbsBaseArticleInfo = localReadInJoyBaseAdapter.a(paramIReadInJoyModel.r() + 1);
+      if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.mProteusTemplateBean == null))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("next.mProteusTemplateBean == null ");
+        localStringBuilder.append(localAbsBaseArticleInfo);
+        QLog.d("ProteusSupportUtil", 2, localStringBuilder.toString());
+        if ((localReadInJoyBaseAdapter.G() != null) && (localReadInJoyBaseAdapter.G().a(paramIReadInJoyModel.p())))
+        {
+          localAbsBaseArticleInfo.mProteusTemplateBean = localReadInJoyBaseAdapter.G().e(localAbsBaseArticleInfo);
+          return;
+        }
+        localAbsBaseArticleInfo.mProteusTemplateBean = c(paramVafContext, paramIReadInJoyModel.p(), localAbsBaseArticleInfo);
+      }
+    }
+  }
+  
+  private static void a(IReadInJoyModel paramIReadInJoyModel, ViewBase paramViewBase)
+  {
+    if ((paramIReadInJoyModel != null) && (paramViewBase != null) && (paramViewBase.getNativeView() != null))
+    {
+      paramIReadInJoyModel = paramIReadInJoyModel.l();
+      if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.mProteusTemplateBean != null))
+      {
+        paramIReadInJoyModel = (ViewBean)paramIReadInJoyModel.mProteusTemplateBean.getViewDataBinding().get("id_separator");
+        if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.valueBean != null) && (paramIReadInJoyModel.valueBean.normalValue != null))
+        {
+          paramIReadInJoyModel = paramIReadInJoyModel.valueBean.normalValue.get("setBackgroundColorString:");
+          if ((paramIReadInJoyModel instanceof String)) {
+            try
+            {
+              paramViewBase.getNativeView().setBackgroundColor(Color.parseColor((String)paramIReadInJoyModel));
+              return;
+            }
+            catch (Exception paramIReadInJoyModel)
+            {
+              QLog.d("ProteusSupportUtil", 1, paramIReadInJoyModel.getMessage());
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    if (!ProteusSettingUtil.a()) {
+      return false;
+    }
+    if ((paramInt != 0) && (paramInt != 5) && (paramInt != 29) && (paramInt != 47) && (paramInt != 60) && (paramInt != 96) && (paramInt != 90) && (paramInt != 91) && (paramInt != 124) && (paramInt != 125) && (paramInt != 129) && (paramInt != 130)) {
+      switch (paramInt)
+      {
+      default: 
+        switch (paramInt)
+        {
+        default: 
+          if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdProteusView(paramInt)) {
+            return false;
+          }
+          return a.containsKey(Integer.valueOf(paramInt));
+        }
+        break;
+      }
+    }
+    return true;
+  }
+  
+  public static boolean a(int paramInt1, int paramInt2, AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    TraceUtils.traceBegin("configDivider.isDividerNormal");
+    boolean bool;
+    if ((b(paramInt1)) && ((b(paramInt2)) || (PTSLiteItemViewUtil.a.a(paramAbsBaseArticleInfo, paramInt2) == 0))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    TraceUtils.traceEnd();
+    return bool;
+  }
+  
+  private static boolean a(Container paramContainer, int paramInt)
+  {
+    if (Aladdin.getConfig(330).getIntegerFromString("isAllowLayoutErrorCheck", 0) != 1) {
+      return false;
+    }
+    if (paramContainer != null) {}
+    label284:
+    for (;;)
+    {
+      try
+      {
+        int j = paramContainer.getChildCount();
+        int i = 0;
+        if (i < j)
+        {
+          Object localObject2 = paramContainer.getChildAt(i);
+          if (!(localObject2 instanceof NativeLayoutImpl)) {
+            break label284;
+          }
+          localObject1 = (NativeLayoutImpl)localObject2;
+          if ((((NativeLayoutImpl)localObject1).getChildCount() != 0) || (((NativeLayoutImpl)localObject1).getBackgroundColor() != 0)) {
+            break label284;
+          }
+          QQAppInterface localQQAppInterface = RIJQQAppInterfaceUtil.a();
+          if (((NativeLayoutImpl)localObject1).getContentDescription() != null)
+          {
+            localObject1 = ((NativeLayoutImpl)localObject1).getContentDescription().toString();
+            PublicAccountReportUtils.a(localQQAppInterface, "CliOper", "", "", "0X8009AC1", "0X8009AC1", 0, 0, "", "", "", (String)localObject1, false);
+            if (QLog.isColorLevel())
+            {
+              LogUtils.a(paramContainer.getVirtualView(), "ProteusSupportUtil");
+              LogUtils.a(paramContainer, "ProteusSupportUtil");
+            }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("[nativeLayoutImplError] empty native layout ");
+            ((StringBuilder)localObject1).append(paramInt);
+            QLog.e("ProteusSupportUtil", 1, ((StringBuilder)localObject1).toString());
+            if ((QLog.isColorLevel()) && ((localObject2 instanceof ViewGroup)))
+            {
+              localObject1 = (ViewGroup)localObject2;
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("ChildCount ");
+              ((StringBuilder)localObject2).append(((ViewGroup)localObject1).getChildCount());
+              QLog.e("ProteusSupportUtil", 1, ((StringBuilder)localObject2).toString());
+            }
+            i += 1;
+          }
+        }
+        else
+        {
+          return false;
+        }
+      }
+      catch (Exception paramContainer)
+      {
+        QLog.e("ProteusSupportUtil", 1, "[nativeLayoutImplError] ", paramContainer);
+      }
+      Object localObject1 = "";
+    }
+  }
+  
+  private static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo, ViewBase paramViewBase, VafContext paramVafContext)
+  {
+    boolean bool = paramAbsBaseArticleInfo instanceof AdvertisementInfo;
+    if ((paramViewBase == null) || (paramVafContext == null) || (paramVafContext.getContext() == null) || (paramAbsBaseArticleInfo == null)) {
+      bool = false;
+    }
+    return bool;
+  }
+  
+  public static boolean a(IReadInJoyModel paramIReadInJoyModel)
+  {
+    boolean bool = false;
+    if (paramIReadInJoyModel != null) {
+      try
+      {
+        int i = paramIReadInJoyModel.p();
+        if ((i == 66) || (i == 39))
+        {
+          paramIReadInJoyModel = paramIReadInJoyModel.l();
+          if ((paramIReadInJoyModel != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramIReadInJoyModel)))
+          {
+            paramIReadInJoyModel = ((AdvertisementInfo)paramIReadInJoyModel).mAdExtInfo;
+            if (paramIReadInJoyModel != null)
+            {
+              i = new JSONObject(paramIReadInJoyModel).optInt("is_video_new");
+              if (i == 1) {
+                bool = true;
+              }
+              return bool;
+            }
+          }
+        }
+      }
+      catch (Exception paramIReadInJoyModel)
+      {
+        QLog.d("ProteusSupportUtil", 1, "isNextCardAdBigImgOrAdVideo JSONException, e = ", paramIReadInJoyModel);
+      }
+    }
+    return false;
+  }
+  
+  private static int b(TemplateBean paramTemplateBean)
+  {
+    if ((paramTemplateBean != null) && (paramTemplateBean.getViewBean() != null)) {
+      try
+      {
+        paramTemplateBean = (SizeValue)paramTemplateBean.getViewBean().findViewById("id_separator").valueBean.normalValue.get("height");
+        FluencyLogUtil.a("ProteusSupportUtil", "[getSepatatorHeight] getSepatatorHeight");
+        int i = paramTemplateBean.getLayoutSize();
+        return i;
+      }
+      catch (Exception paramTemplateBean)
+      {
+        paramTemplateBean.printStackTrace();
+        QLog.d("ProteusSupportUtil", 1, "getProteusSeparatorHeight exception.");
+      }
+    }
+    return 0;
+  }
+  
+  private static void b()
+  {
+    Object localObject = ((IRIJAdService)QRoute.api(IRIJAdService.class)).getProteusItems();
+    if ((localObject != null) && (!((Map)localObject).isEmpty()))
+    {
+      localObject = ((Map)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        a(((Integer)localEntry.getKey()).intValue(), (ProteusItem)localEntry.getValue());
+      }
+    }
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    if (b.contains(Integer.valueOf(paramInt))) {
+      return true;
+    }
+    return paramInt >= 154;
+  }
+  
+  public static boolean b(VafContext paramVafContext, int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return c(paramVafContext, paramInt, paramAbsBaseArticleInfo) != null;
+  }
+  
+  public static boolean b(VafContext paramVafContext, String paramString)
+  {
+    paramString = TemplateFactory.a(paramString, true);
+    if (paramVafContext.getTemplateFactory() == null)
+    {
+      paramVafContext.setTemplateFactory(paramString);
+      return true;
+    }
+    if ((paramString != null) && (paramString.getTemplateId() != paramVafContext.getTemplateFactory().getTemplateId()))
+    {
+      paramVafContext.setTemplateFactory(paramString);
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    TraceUtils.traceBegin("configDivider.isNextCardFlowGuideTwoOrThree");
+    boolean bool1 = false;
+    if ((paramAbsBaseArticleInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.proteusItemsData)))
+    {
+      if (paramAbsBaseArticleInfo.mFeedType != 29)
+      {
+        TraceUtils.traceEnd();
+        return false;
+      }
+      try
+      {
+        paramAbsBaseArticleInfo = new JSONObject(paramAbsBaseArticleInfo.proteusItemsData);
+        Iterator localIterator = paramAbsBaseArticleInfo.keys();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          Object localObject = paramAbsBaseArticleInfo.opt(str);
+          if ("guide_card_type".equals(str))
+          {
+            QLog.d("ProteusSupportUtil", 1, new Object[] { "isNextCardFlowGuideTwoOrThree, guide_card_type = ", localObject });
+            TraceUtils.traceEnd();
+            if (!"2".equals(String.valueOf(localObject)))
+            {
+              boolean bool2 = "3".equals(String.valueOf(localObject));
+              if (!bool2) {}
+            }
+            else
+            {
+              bool1 = true;
+            }
+            return bool1;
+          }
+        }
+      }
+      catch (Exception paramAbsBaseArticleInfo)
+      {
+        QLog.d("ProteusSupportUtil", 1, "isNextCardFlowGuideTwoOrThree, e = ", paramAbsBaseArticleInfo);
+      }
+      catch (JSONException paramAbsBaseArticleInfo)
+      {
+        QLog.d("ProteusSupportUtil", 1, "isNextCardFlowGuideTwoOrThree JSONException, e = ", paramAbsBaseArticleInfo);
+      }
+    }
+    TraceUtils.traceEnd();
+    return false;
+  }
+  
+  @Deprecated
+  private static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt, ViewBase paramViewBase, VafContext paramVafContext)
+  {
+    boolean bool2 = false;
+    if (paramAbsBaseArticleInfo != null) {
+      if (paramInt != 1007)
+      {
+        bool1 = bool2;
+        if (paramInt == 1036) {
+          break label247;
+        }
+        if (paramInt != 1071)
+        {
+          if ((paramInt != 1106) && (paramInt != 1131) && (paramInt != 1132))
+          {
+            bool1 = bool2;
+            if (paramInt == 1175) {
+              break label247;
+            }
+            bool1 = bool2;
+            if (paramInt == 1176) {
+              break label247;
+            }
+            if ((paramInt == 1200) || (paramInt == 1201)) {}
+          }
+          switch (paramInt)
+          {
+          default: 
+            switch (paramInt)
+            {
+            default: 
+              switch (paramInt)
+              {
+              }
+              break;
+            }
+            break;
+          case 1045: 
+            return ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).isUgcAd(paramAbsBaseArticleInfo);
+          case 1043: 
+          case 1044: 
+            return a(paramAbsBaseArticleInfo, paramViewBase, paramVafContext);
+          }
+        }
+        else
+        {
+          return ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo);
+        }
+      }
+      else if (!RIJFeedsType.p(paramAbsBaseArticleInfo))
+      {
+        bool1 = bool2;
+        if (!RIJFeedsType.q(paramAbsBaseArticleInfo)) {
+          break label247;
+        }
+      }
+    }
+    boolean bool1 = true;
+    label247:
+    return bool1;
+  }
+  
+  private static double c(TemplateBean paramTemplateBean)
+  {
+    TraceUtils.traceBegin("getProteusSeparatorMarginLeftPx");
+    if ((d > 0.0D) && (paramTemplateBean != null))
+    {
+      TemplateFactory localTemplateFactory = TemplateFactory.a("default_feeds", false);
+      if ((localTemplateFactory != null) && (!localTemplateFactory.a(paramTemplateBean)))
+      {
+        TraceUtils.traceEnd();
+        return d;
+      }
+    }
+    if ((paramTemplateBean != null) && (paramTemplateBean.getViewBean() != null)) {
+      try
+      {
+        paramTemplateBean = paramTemplateBean.getViewBean().findViewById("id_separator");
+        if (paramTemplateBean != null) {
+          d = Float.valueOf((String)paramTemplateBean.valueBean.normalValue.get("margin_left")).floatValue();
+        }
+      }
+      catch (Exception paramTemplateBean)
+      {
+        paramTemplateBean.printStackTrace();
+        QLog.d("ProteusSupportUtil", 1, "getProteusSeparatorMarginLeft exception.");
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TemplateFactory", 2, new Object[] { "sProteusSeparatorMarginLeft = ", Double.valueOf(d) });
+    }
+    TraceUtils.traceEnd();
+    return d;
+  }
+  
+  public static TemplateBean c(VafContext paramVafContext, int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     TemplateBean localTemplateBean = null;
     Object localObject5 = null;
@@ -417,7 +1509,7 @@ public class ProteusSupportUtil
         }
         localObject2 = localTemplateBean;
         localObject3 = localObject5;
-        ProteusItem localProteusItem = (ProteusItem)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+        ProteusItem localProteusItem = (ProteusItem)a.get(Integer.valueOf(paramInt));
         if (localProteusItem != null)
         {
           localObject2 = localTemplateBean;
@@ -584,108 +1676,7 @@ public class ProteusSupportUtil
     }
   }
   
-  public static ProteusItemView a(VafContext paramVafContext, int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (LogUtils.a())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("[getView] ");
-      ((StringBuilder)localObject1).append(paramAbsBaseArticleInfo);
-      ((StringBuilder)localObject1).append(" adapterViewType: ");
-      ((StringBuilder)localObject1).append(paramInt);
-      LogUtils.a("ProteusSupportUtil", ((StringBuilder)localObject1).toString());
-    }
-    long l1 = System.currentTimeMillis();
-    TraceUtils.traceBegin("ProteusSupportUtil.getView");
-    TraceUtils.traceBegin("ProteusSupportUtil#getView#getTemplateBean");
-    TemplateBean localTemplateBean = a(paramVafContext, paramInt, paramAbsBaseArticleInfo);
-    TraceUtils.traceEnd();
-    int i = 1;
-    Object localObject3 = null;
-    Object localObject2;
-    if (localTemplateBean != null)
-    {
-      paramAbsBaseArticleInfo = new StringBuilder();
-      paramAbsBaseArticleInfo.append("[");
-      paramAbsBaseArticleInfo.append(localTemplateBean.getStyleName());
-      paramAbsBaseArticleInfo.append("]");
-      localObject2 = paramAbsBaseArticleInfo.toString();
-      paramAbsBaseArticleInfo = null;
-    }
-    else
-    {
-      FluencyLogUtil.a("ProteusSupportUtil", "[getView]  new proteusItemView ");
-      localObject1 = new ProteusItemView(paramVafContext.getContext());
-      ((ProteusItemView)localObject1).setVisibility(8);
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("[getView] 未找到样式,请确认是否下发该卡片的样式:");
-      ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo);
-      ((StringBuilder)localObject2).append(" adapterViewType: ");
-      ((StringBuilder)localObject2).append(paramInt);
-      ((StringBuilder)localObject2).append("  ");
-      ((StringBuilder)localObject2).append(paramVafContext.getTemplateFactory());
-      QLog.i("ProteusSupportUtil", 1, ((StringBuilder)localObject2).toString());
-      localObject2 = "";
-      paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject1;
-    }
-    Object localObject1 = localObject3;
-    if ((paramVafContext.getTemplateFactory() instanceof TemplateFactory))
-    {
-      localObject1 = localObject3;
-      if (localTemplateBean != null) {
-        localObject1 = ProteusPreloadManager.a.a(((TemplateFactory)paramVafContext.getTemplateFactory()).b(), localTemplateBean.getStyleName());
-      }
-    }
-    localObject3 = localObject1;
-    if (localObject1 == null)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append((String)localObject2);
-      ((StringBuilder)localObject1).append("#inflate");
-      TraceUtils.traceBegin(((StringBuilder)localObject1).toString());
-      localObject3 = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
-      FluencyLogUtil.a("ProteusSupportUtil", "[getView] inflate");
-      TraceUtils.traceEnd();
-    }
-    if (localObject3 != null)
-    {
-      paramAbsBaseArticleInfo = new StringBuilder();
-      paramAbsBaseArticleInfo.append((String)localObject2);
-      paramAbsBaseArticleInfo.append("#setBackgroundDrawable");
-      TraceUtils.traceBegin(paramAbsBaseArticleInfo.toString());
-      if ((RIJKanDianOverDrawOptimizeAladdinConfig.a()) && (ReadInJoyHelper.m())) {
-        paramInt = i;
-      } else {
-        paramInt = 0;
-      }
-      paramAbsBaseArticleInfo = paramVafContext.getContext().getResources();
-      if (paramInt != 0) {
-        paramInt = 2130841772;
-      } else {
-        paramInt = 2130841773;
-      }
-      ((Container)localObject3).setBackgroundDrawable(paramAbsBaseArticleInfo.getDrawable(paramInt));
-      paramAbsBaseArticleInfo = new ProteusItemView(paramVafContext.getContext());
-      paramAbsBaseArticleInfo.a((Container)localObject3);
-      TraceUtils.traceEnd();
-      FluencyLogUtil.a("ProteusSupportUtil", "[getView]  add Container ");
-    }
-    if ((QLog.isColorLevel()) && (localObject3 != null)) {
-      LogUtils.a((View)localObject3, "ProteusSupportUtil");
-    }
-    long l2 = System.currentTimeMillis();
-    localObject1 = (IReadInJoyPTSCostHelper)QRoute.api(IReadInJoyPTSCostHelper.class);
-    if (localTemplateBean != null) {
-      paramVafContext = localTemplateBean.getStyleName();
-    } else {
-      paramVafContext = "templateBean is null";
-    }
-    ((IReadInJoyPTSCostHelper)localObject1).printCost("ProteusSupportUtil", paramVafContext, "ProteusSupportUtil.getView", l2 - l1);
-    TraceUtils.traceEnd();
-    return paramAbsBaseArticleInfo;
-  }
-  
-  public static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static String c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool = UGRuleManager.c(paramAbsBaseArticleInfo);
     String str = null;
@@ -694,7 +1685,7 @@ public class ProteusSupportUtil
       QLog.d("ProteusSupportUtil", 1, "UGRuleManager getUGSchema is not ugCard");
       return null;
     }
-    int i = ReadInJoySrtHandler.jdField_a_of_type_Int;
+    int i = ReadInJoySrtHandler.a;
     ReadInJoySrtHandler localReadInJoySrtHandler = ReadInJoySrtHandler.a();
     bool = localReadInJoySrtHandler.a(paramAbsBaseArticleInfo, true, i);
     if (bool)
@@ -709,1019 +1700,24 @@ public class ProteusSupportUtil
     return str;
   }
   
-  private static void a()
-  {
-    Object localObject = ((IRIJAdService)QRoute.api(IRIJAdService.class)).getProteusItems();
-    if ((localObject != null) && (!((Map)localObject).isEmpty()))
-    {
-      localObject = ((Map)localObject).entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        a(((Integer)localEntry.getKey()).intValue(), (ProteusItem)localEntry.getValue());
-      }
-    }
-  }
-  
-  private static void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
-  {
-    TraceUtils.traceBegin("ProteusSupportUtil.bindView");
-    if (paramContainer == null)
-    {
-      TraceUtils.traceEnd();
-      return;
-    }
-    FluencyLogUtil.a("ProteusSupportUtil", "[bindView]");
-    Object localObject = (ProteusItem)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
-    if (localObject != null)
-    {
-      ((ProteusItem)localObject).a(paramInt1, paramContainer, paramIReadInJoyModel, paramInt2);
-      TraceUtils.traceEnd();
-    }
-    else
-    {
-      paramContainer = paramContainer.getVirtualView();
-      if (paramInt1 != 10)
-      {
-        if (paramInt1 != 34)
-        {
-          switch (paramInt1)
-          {
-          default: 
-            break;
-          }
-        }
-        else
-        {
-          localObject = (AvatarView)paramContainer.findViewBaseByName("id_info_avator");
-          if (localObject != null) {
-            ((AvatarView)localObject).a(paramIReadInJoyModel);
-          }
-          localObject = (SummaryView)paramContainer.findViewBaseByName("id_summary");
-          if (localObject != null) {
-            ((SummaryView)localObject).a(paramIReadInJoyModel);
-          }
-          localObject = (BiuCommentView)paramContainer.findViewBaseByName("id_biu_comment");
-          if (localObject != null) {
-            ((BiuCommentView)localObject).a(paramIReadInJoyModel);
-          }
-          paramContainer = (GridImageView)paramContainer.findViewBaseByName("id_multi_image");
-          if (paramContainer != null) {
-            paramContainer.a(paramIReadInJoyModel.a());
-          }
-        }
-      }
-      else
-      {
-        localObject = (AvatarView)paramContainer.findViewBaseByName("id_info_avator");
-        if (localObject != null) {
-          ((AvatarView)localObject).a(paramIReadInJoyModel);
-        }
-        localObject = (SummaryView)paramContainer.findViewBaseByName("id_summary");
-        if (localObject != null) {
-          ((SummaryView)localObject).a(paramIReadInJoyModel);
-        }
-        localObject = (BiuCommentView)paramContainer.findViewBaseByName("id_biu_comment");
-        if (localObject != null) {
-          ((BiuCommentView)localObject).a(paramIReadInJoyModel);
-        }
-        paramContainer = (CornerTextImageView)paramContainer.findViewBaseByName("id_corner_text_image");
-        if (paramContainer != null) {
-          paramContainer.a(paramIReadInJoyModel);
-        }
-      }
-    }
-    TraceUtils.traceEnd();
-  }
-  
-  private static void a(int paramInt, ProteusItem paramProteusItem)
-  {
-    if (paramProteusItem != null)
-    {
-      jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramProteusItem);
-      return;
-    }
-    throw new NullPointerException();
-  }
-  
-  public static void a(int paramInt, ProteusItemView paramProteusItemView, VafContext paramVafContext, IFaceDecoder paramIFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, IReadInJoyModel paramIReadInJoyModel, AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    Container localContainer = paramProteusItemView.a();
-    ViewFactory.findClickableViewListener(localContainer.getVirtualView(), new ProteusSupportUtil.2(paramInt, localContainer, paramIReadInJoyModel, paramAbsBaseArticleInfo, paramVafContext, paramProteusItemView, paramIFaceDecoder, paramReadInJoyBaseAdapter));
-  }
-  
-  public static void a(TemplateBean paramTemplateBean, ViewBase paramViewBase)
-  {
-    a(paramTemplateBean, paramViewBase, "click_T");
-  }
-  
-  public static void a(TemplateBean paramTemplateBean, ViewBase paramViewBase, String paramString)
-  {
-    if (paramTemplateBean != null)
-    {
-      if (paramViewBase == null) {
-        return;
-      }
-      RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = new RIJTransMergeKanDianReport.ReportR5Builder();
-      String str = (String)paramTemplateBean.getDataAttribute(paramViewBase.getName(), paramString);
-      if (str == null)
-      {
-        QLog.d("ProteusSupportUtil", 2, "reportDataAttrInfo bigT is null");
-        return;
-      }
-      paramTemplateBean = paramTemplateBean.getDataAttribute(paramViewBase.getName());
-      if (paramTemplateBean != null)
-      {
-        paramTemplateBean = paramTemplateBean.entrySet().iterator();
-        while (paramTemplateBean.hasNext())
-        {
-          Object localObject = (Map.Entry)paramTemplateBean.next();
-          paramViewBase = (String)((Map.Entry)localObject).getKey();
-          localObject = ((Map.Entry)localObject).getValue();
-          if (!TextUtils.equals(paramViewBase, paramString)) {
-            localReportR5Builder.addStringNotThrow(paramViewBase, localObject.toString());
-          }
-        }
-      }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", str, str, 0, 0, "", "", "", localReportR5Builder.build(), false);
-    }
-  }
-  
-  public static void a(ViewBean paramViewBean)
-  {
-    if (paramViewBean == null) {
-      return;
-    }
-    paramViewBean = paramViewBean.getDynamicValue("setProteusReportInfo:");
-    if ((paramViewBean instanceof JSONObject)) {
-      try
-      {
-        JSONObject localJSONObject = (JSONObject)paramViewBean;
-        paramViewBean = localJSONObject.getString("click_T");
-        localJSONObject = localJSONObject.getJSONObject("info");
-        RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = new RIJTransMergeKanDianReport.ReportR5Builder();
-        Iterator localIterator = localJSONObject.keys();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          localReportR5Builder.addStringNotThrow(str, localJSONObject.get(str).toString());
-        }
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", paramViewBean, paramViewBean, 0, 0, "", "", "", localReportR5Builder.build(), false);
-        return;
-      }
-      catch (Exception paramViewBean)
-      {
-        QLog.d("ProteusSupportUtil", 1, paramViewBean, new Object[] { "" });
-      }
-    }
-  }
-  
-  public static void a(Container paramContainer, TemplateBean paramTemplateBean1, TemplateBean paramTemplateBean2)
-  {
-    if (paramTemplateBean2 == null)
-    {
-      QLog.d("ProteusSupportUtil", 1, new Object[] { "[bindDynamicValueWithoutRecursion", "newTemplateBean == null", "return" });
-      return;
-    }
-    TraceUtils.traceBegin("ProteusSupportUtil.bindDynamicValueWithoutRecursion");
-    long l = System.currentTimeMillis();
-    Map localMap1 = paramContainer.getViewIdMapping();
-    Map localMap2 = paramTemplateBean2.getViewDataBinding();
-    HashSet localHashSet = new HashSet();
-    if (paramTemplateBean1 != null) {
-      paramContainer = paramTemplateBean1.getViewDataBinding();
-    } else {
-      paramContainer = null;
-    }
-    if (localMap1 != null) {
-      localHashSet.addAll(localMap1.keySet());
-    }
-    localHashSet.removeAll(localMap2.keySet());
-    StringBuilder localStringBuilder = new StringBuilder("bindDynamicValueWithoutRecursion: ");
-    Iterator localIterator = localMap2.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      ViewBean localViewBean = (ViewBean)localMap2.get(str);
-      if (paramContainer != null) {
-        paramTemplateBean1 = (ViewBean)paramContainer.get(str);
-      } else {
-        paramTemplateBean1 = null;
-      }
-      ViewBase localViewBase;
-      if (localMap1 != null) {
-        localViewBase = (ViewBase)localMap1.get(str);
-      } else {
-        localViewBase = null;
-      }
-      TraceUtils.traceBegin("bindDynamicValueWithoutRecursion.bindDynamicVal.check");
-      int i;
-      if ((str != null) && (localViewBase != null) && (localViewBean != null) && ((paramTemplateBean1 == null) || (!localViewBean.valueBean.dynamicValue.equals(paramTemplateBean1.valueBean.dynamicValue)))) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      TraceUtils.traceEnd();
-      if (i != 0)
-      {
-        localViewBean.setVisible(true);
-        localViewBase.bindDynamicValue(localViewBean);
-        TraceUtils.traceEnd();
-        localStringBuilder.append("[bindNewValue] bind dynamicValue: ");
-        localStringBuilder.append(localViewBean.valueBean.dynamicValue);
-        localStringBuilder.append(" viewId = ");
-        localStringBuilder.append(str);
-        localStringBuilder.append("\n");
-      }
-      else if ((QLog.isColorLevel()) && (localViewBean != null))
-      {
-        localStringBuilder.append("skip: ");
-        localStringBuilder.append(localViewBean.valueBean.dynamicValue);
-        localStringBuilder.append(" viewId = ");
-        localStringBuilder.append(str);
-        localStringBuilder.append("\n");
-      }
-      if (localViewBase != null) {
-        localViewBase.setVisibility(0);
-      }
-      TraceUtils.traceEnd();
-    }
-    QLog.i("ProteusSupportUtil", 1, localStringBuilder.toString());
-    paramContainer = localHashSet.iterator();
-    while (paramContainer.hasNext())
-    {
-      paramTemplateBean1 = (ViewBase)localMap1.get((String)paramContainer.next());
-      if (paramTemplateBean1 != null) {
-        paramTemplateBean1.setVisibility(8);
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      paramContainer = new StringBuilder();
-      paramContainer.append("bindDynamicValueWithoutRecursion_____ ");
-      paramContainer.append(paramTemplateBean2.getStyleName());
-      paramContainer.append(" cost ");
-      paramContainer.append(System.currentTimeMillis() - l);
-      paramContainer.append("ms");
-      QLog.d("ProteusSupportUtil", 2, paramContainer.toString());
-    }
-    TraceUtils.traceEnd();
-  }
-  
-  public static void a(Container paramContainer, VafContext paramVafContext, TemplateBean paramTemplateBean)
-  {
-    ViewFactory.findClickableViewListener(paramContainer.getVirtualView(), new ProteusSupportUtil.1(paramVafContext, paramTemplateBean));
-  }
-  
-  public static void a(Container paramContainer, IReadInJoyModel paramIReadInJoyModel, TemplateBean paramTemplateBean)
-  {
-    if (DividerConfigUtils.a(paramContainer, paramIReadInJoyModel)) {
-      return;
-    }
-    ViewBase localViewBase1 = paramContainer.getVirtualView();
-    ViewBase localViewBase2 = localViewBase1.findViewBaseByName("id_separator");
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
-    if ((localAbsBaseArticleInfo != null) && (localViewBase2 != null))
-    {
-      Layout.Params localParams = localViewBase2.getComLayoutParams();
-      int k = localParams.mLayoutHeight;
-      int j = Utils.dp2px(5.0D);
-      Utils.dp2px(6.0D);
-      int i = paramIReadInJoyModel.d();
-      int m = paramIReadInJoyModel.e();
-      if (localAbsBaseArticleInfo.mChannelID == 70L)
-      {
-        TraceUtils.traceBegin("configDivider.FollowFeeds");
-        localParams.mLayoutMarginLeft = 0;
-        localParams.mLayoutMarginRight = 0;
-        localParams.mLayoutWidth = -1;
-        i = Utils.dp2px(5.0D);
-        TraceUtils.traceEnd();
-      }
-      else if (DailyModeConfigHandler.c((int)localAbsBaseArticleInfo.mChannelID))
-      {
-        TraceUtils.traceBegin("configDivider.DailyFeeds");
-        paramIReadInJoyModel = paramIReadInJoyModel.b();
-        if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.mProteusTemplateBean != null) && (paramIReadInJoyModel.mProteusTemplateBean.getDataAttribute(null, "position_jump") != null)) {
-          j = 1;
-        } else {
-          j = 0;
-        }
-        if (localAbsBaseArticleInfo.mProteusTemplateBean != null)
-        {
-          if (localAbsBaseArticleInfo.mProteusTemplateBean.getDataAttribute(null, "position_jump") != null) {
-            i = 1;
-          } else {
-            i = 0;
-          }
-        }
-        else {
-          i = 0;
-        }
-        if (i != j)
-        {
-          localParams.mLayoutMarginLeft = 0;
-          localParams.mLayoutMarginRight = 0;
-          localParams.mLayoutWidth = -1;
-          i = Utils.dp2px(5.0D);
-        }
-        for (;;)
-        {
-          break;
-          i = b(paramTemplateBean);
-          if (i == a(paramTemplateBean))
-          {
-            i = a(paramTemplateBean);
-            j = Utils.dp2px(a(paramTemplateBean));
-            localParams.mLayoutMarginRight = j;
-            localParams.mLayoutMarginLeft = j;
-            localParams.mLayoutWidth = -1;
-          }
-        }
-        TraceUtils.traceEnd();
-      }
-      else if ((i != 29) && (i != 30) && (m != 29) && (m != 30))
-      {
-        if ((!a(paramIReadInJoyModel.b())) && (!a(paramIReadInJoyModel)))
-        {
-          if (a(i, m, paramIReadInJoyModel.b()))
-          {
-            TraceUtils.traceBegin("configDivider.normal");
-            TraceUtils.traceBegin("configDivider.normal.getProteusSeparatorHeightPx");
-            i = a(paramTemplateBean);
-            TraceUtils.traceEnd();
-            TraceUtils.traceBegin("configDivider.normal.getProteusSeparatorMarginLeftPx");
-            double d = a(paramTemplateBean);
-            TraceUtils.traceEnd();
-            j = Utils.dp2px(d);
-            localParams.mLayoutMarginRight = j;
-            localParams.mLayoutMarginLeft = j;
-            localParams.mLayoutWidth = -1;
-            TraceUtils.traceEnd();
-          }
-          else
-          {
-            localParams.mLayoutMarginLeft = 0;
-            localParams.mLayoutMarginRight = 0;
-            localParams.mLayoutWidth = -1;
-            i = j;
-            if (!b(m))
-            {
-              a(paramIReadInJoyModel, localViewBase2);
-              i = j;
-            }
-          }
-        }
-        else
-        {
-          localParams.mLayoutMarginLeft = 0;
-          localParams.mLayoutMarginRight = 0;
-          localParams.mLayoutWidth = -1;
-          i = 0;
-        }
-      }
-      else
-      {
-        i = a(paramTemplateBean);
-        localParams.mLayoutMarginLeft = 0;
-        localParams.mLayoutMarginRight = 0;
-        localParams.mLayoutWidth = -1;
-      }
-      localParams.mLayoutHeight = i;
-      localViewBase2.setComLayoutParams(localParams);
-      paramIReadInJoyModel = localViewBase1.getComLayoutParams();
-      if (paramIReadInJoyModel.mLayoutHeight >= 0) {
-        paramIReadInJoyModel.mLayoutHeight += i - k;
-      }
-      paramIReadInJoyModel = localViewBase1.getComLayoutParams();
-      paramContainer.setLayoutParams(new RelativeLayout.LayoutParams(paramIReadInJoyModel.mLayoutWidth, paramIReadInJoyModel.mLayoutHeight));
-      return;
-    }
-    QLog.d("ProteusSupportUtil", 1, "configDivider failed, articleInfo is null or divider is null.");
-  }
-  
-  private static void a(VafContext paramVafContext)
-  {
-    Object localObject = ((IRIJAdService)QRoute.api(IRIJAdService.class)).getProteusBuilders();
-    if ((localObject != null) && (!((Map)localObject).isEmpty()))
-    {
-      localObject = ((Map)localObject).entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        paramVafContext.getViewFactory().registerViewBuilder((String)localEntry.getKey(), (ViewBase.IBuilder)localEntry.getValue());
-      }
-    }
-  }
-  
-  public static void a(VafContext paramVafContext, String paramString)
-  {
-    paramVafContext.setTemplateFactory(TemplateFactory.a(paramString, true));
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyLikeButton", new ReadInJoyLikeButton.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyAvatarView", new AvatarView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyVariableImageContentView", new GridImageView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoySummaryView", new SummaryView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyCommentView", new ArticleCommentView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyBiuCommentView", new BiuCommentView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("CornerTextImageView", new CornerTextImageView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyMiddleBodyView", new ReadInJoyMiddleBodyView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyUsersCommentView", new UsersCommentsView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyFriendsBiu", new ReadInJoyFriendsBiu.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyQARichView", new NativeText.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyBiuButton", new ReadInJoyBiuButton.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyCoordinateView", new ReadInJoyCoordinateView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoySocializeRecommendFollowView", new ReadInJoySocializeRecommendFollowView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("UILabel", new ReadInjoyTextView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInjoyAsynImageView", new ReadInjoyImageView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("UIImageView", new ReadInjoyImageView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInjoyAsynImageIcon", new ReadInjoyAsynImageIcon.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ProteusCollectionView", new RvPolymericContainer.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyAdVideoGuide", new ReadInJoyAdVideoCompleteGuide.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("PTSAvatarView", new CommentAvatarView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("QQAvatarView", new CommentAvatarView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("RIJCommentRichTextView", new CommentRichTextView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("QQRIJRichTextView", new CommentContentView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("QQRIJCommentLikeButton", new CommentLikeView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyExposeReplyCommentView", new ExposeReplyCommentView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyAwesomeCommentView", new ReadInJoyAwesomeCommentView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyAdLocationView", new ReadInJoyAdLocationView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ProteusTickerView", new ProteusTickerView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInjoyShareView", new ReadInJoyShareView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInjoyApngImageView", new ReadInjoyApngImageView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInjoyProgressView", new ReadInjoyProgressView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("RIJCommentLinksView", new PTSCommentLinkView.Builder());
-    b();
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyVideoView", new ReadInJoyVideoView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyGifView", new ReadInJoyGifView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ProteusMarqueeLabel", new NativeText.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyLinkClickableLabel", new ReadInjoyTextView.Builder());
-    paramVafContext.getViewFactory().registerViewBuilder("ReadInJoyLottieView", new ReadInJoyLottieView.Builder());
-    a(paramVafContext);
-  }
-  
-  public static void a(ViewBase paramViewBase, ViewBean paramViewBean)
-  {
-    if (paramViewBase != null)
-    {
-      paramViewBase.bindDynamicValue(paramViewBean);
-      if ((paramViewBase instanceof Layout))
-      {
-        paramViewBase = ((Layout)paramViewBase).getSubViews();
-        if ((paramViewBase != null) && (paramViewBean.children != null))
-        {
-          List localList = Arrays.asList(paramViewBean.children);
-          int j = paramViewBase.size();
-          if (localList.size() == j)
-          {
-            int i = 0;
-            while (i < j)
-            {
-              a((ViewBase)paramViewBase.get(i), (ViewBean)localList.get(i));
-              i += 1;
-            }
-          }
-          if (QLog.isColorLevel())
-          {
-            paramViewBase = new StringBuilder();
-            paramViewBase.append("bindDataImpl: fail to bind data for ");
-            paramViewBase.append(paramViewBean.viewId);
-            paramViewBase.append("due to ViewBean - ViewBase count mismatch");
-            QLog.d("ProteusSupportUtil", 2, paramViewBase.toString());
-          }
-        }
-      }
-      FluencyLogUtil.a("ProteusSupportUtil", "[bindDynamicValue]");
-    }
-  }
-  
-  public static void a(IProteusItemView paramIProteusItemView, int paramInt1, AbsBaseArticleInfo paramAbsBaseArticleInfo, VafContext paramVafContext, IFaceDecoder paramIFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, IReadInJoyModel paramIReadInJoyModel, int paramInt2, String paramString)
-  {
-    Object localObject;
-    if (LogUtils.a())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[bindData]  adapterViewType: ");
-      ((StringBuilder)localObject).append(paramInt1);
-      ((StringBuilder)localObject).append(", data : ");
-      ((StringBuilder)localObject).append(paramAbsBaseArticleInfo);
-      LogUtils.a("ProteusSupportUtil", ((StringBuilder)localObject).toString());
-    }
-    TraceUtils.traceBegin("ProteusSupportUtil.bindData");
-    long l1 = System.currentTimeMillis();
-    if ((paramIProteusItemView != null) && (paramIProteusItemView.a() != null))
-    {
-      b(paramVafContext, paramString);
-      localObject = paramIProteusItemView.a();
-      TemplateBean localTemplateBean = a(paramVafContext, paramInt1, paramAbsBaseArticleInfo);
-      if ((!a(paramIProteusItemView.a(), paramInt1)) && ((localObject == null) || (localTemplateBean == null) || (localTemplateBean.getId() == ((TemplateBean)localObject).getId())))
-      {
-        paramString = (String)localObject;
-        if (localObject != null)
-        {
-          paramString = (String)localObject;
-          if (localTemplateBean != null)
-          {
-            paramString = (String)localObject;
-            if (((TemplateBean)localObject).getStyleName() != null)
-            {
-              paramString = (String)localObject;
-              if (localTemplateBean.getStyleName() != null)
-              {
-                paramString = (String)localObject;
-                if (localTemplateBean.getStyleName().equals(((TemplateBean)localObject).getStyleName())) {}
-              }
-            }
-          }
-        }
-      }
-      else
-      {
-        int j = -1;
-        int i;
-        if (localTemplateBean != null) {
-          i = localTemplateBean.getId();
-        } else {
-          i = -1;
-        }
-        if (localObject != null) {
-          j = ((TemplateBean)localObject).getId();
-        }
-        paramString = new StringBuilder();
-        paramString.append("[bindData] trigger re-inflation, adapterViewType: ");
-        paramString.append(paramInt1);
-        paramString.append(" new id: ");
-        paramString.append(i);
-        paramString.append(" old id: ");
-        paramString.append(j);
-        QLog.i("ProteusSupportUtil", 1, paramString.toString());
-        paramString = new StringBuilder();
-        paramString.append("[bindData] trigger re-inflation, adapterViewType: ");
-        paramString.append(paramInt1);
-        paramString.append(" new id: ");
-        paramString.append(i);
-        paramString.append(" old id: ");
-        paramString.append(j);
-        FluencyLogUtil.a("ProteusSupportUtil", paramString.toString());
-        paramString = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
-        if (paramString != null)
-        {
-          paramString.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841773));
-          paramIProteusItemView.c();
-          paramIProteusItemView.a(paramString);
-          LogUtils.a(paramString.getVirtualView(), "ProteusSupportUtil");
-          LogUtils.a(paramString, "ProteusSupportUtil");
-        }
-        paramAbsBaseArticleInfo.mProteusTemplateBean = localTemplateBean;
-        b();
-        paramString = null;
-      }
-      localObject = paramIProteusItemView.a();
-      paramIProteusItemView.setTemplateBean(localTemplateBean);
-      paramIProteusItemView.setModel(paramIReadInJoyModel, paramReadInJoyBaseAdapter.a().a());
-      TraceUtils.traceBegin("ProteusSupportUtil.bindDataImpl");
-      if (localTemplateBean != null)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[bindData] bind data for ");
-        localStringBuilder.append(localTemplateBean.getStyleName());
-        QLog.i("ProteusSupportUtil", 1, localStringBuilder.toString());
-        a((Container)localObject, paramString, localTemplateBean);
-      }
-      else
-      {
-        QLog.d("ProteusSupportUtil", 2, "[bindData] newTemplateBean is null");
-      }
-      TraceUtils.traceEnd();
-      a(paramInt1, (Container)localObject, paramIReadInJoyModel, paramInt2);
-      a(paramInt1, (ProteusItemView)paramIProteusItemView, paramVafContext, paramIFaceDecoder, paramReadInJoyBaseAdapter, paramIReadInJoyModel, paramAbsBaseArticleInfo);
-      TraceUtils.traceBegin("ProteusSupportUtil.configDivider");
-      a(paramIReadInJoyModel, paramVafContext);
-      a((Container)localObject, paramIReadInJoyModel, localTemplateBean);
-      TraceUtils.traceEnd();
-      long l2 = System.currentTimeMillis();
-      paramAbsBaseArticleInfo = (IReadInJoyPTSCostHelper)QRoute.api(IReadInJoyPTSCostHelper.class);
-      if (localTemplateBean != null) {
-        paramIProteusItemView = localTemplateBean.getStyleName();
-      } else {
-        paramIProteusItemView = "";
-      }
-      paramAbsBaseArticleInfo.printCost("ProteusSupportUtil", paramIProteusItemView, " ProteusSupportUtil.bindData", l2 - l1);
-      TraceUtils.traceEnd();
-      return;
-    }
-    TraceUtils.traceEnd();
-  }
-  
-  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    a(null, RIJBaseItemViewType.a(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo);
-  }
-  
-  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase)
-  {
-    if ((paramAbsBaseArticleInfo instanceof BaseArticleInfo))
-    {
-      if (paramTemplateBean == null) {
-        return;
-      }
-      String str = ReadinjoyReportUtils.b(paramAbsBaseArticleInfo.mChannelID);
-      HashMap localHashMap = new HashMap();
-      Map localMap = paramTemplateBean.getDataAttribute(null);
-      paramTemplateBean = paramTemplateBean.getDataAttribute(paramViewBase.getViewId());
-      if (localMap != null) {
-        localHashMap.putAll(localMap);
-      }
-      if (paramTemplateBean != null) {
-        localHashMap.putAll(paramTemplateBean);
-      }
-      ProteusReportUtil.a(paramAbsBaseArticleInfo, str, str, (int)paramAbsBaseArticleInfo.mChannelID, localHashMap);
-      ProteusReportUtil.a(paramTemplateBean);
-      ReadInJoyHelper.a(paramAbsBaseArticleInfo);
-    }
-  }
-  
-  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, ViewBase paramViewBase, TemplateBean paramTemplateBean)
-  {
-    if ((paramAbsBaseArticleInfo != null) && (paramViewBase != null))
-    {
-      if (paramTemplateBean == null) {
-        return;
-      }
-      paramViewBase = paramTemplateBean.getDataAttribute(paramViewBase.getViewId()).get("rowkey");
-      if ((paramViewBase instanceof String))
-      {
-        paramViewBase = (String)paramViewBase;
-        if (!TextUtils.isEmpty(paramViewBase)) {
-          paramAbsBaseArticleInfo.viewRowkey = paramViewBase;
-        }
-      }
-    }
-  }
-  
-  private static void a(IReadInJoyModel paramIReadInJoyModel, VafContext paramVafContext)
-  {
-    ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.a();
-    if (localReadInJoyBaseAdapter != null)
-    {
-      AbsBaseArticleInfo localAbsBaseArticleInfo = localReadInJoyBaseAdapter.a(paramIReadInJoyModel.g() + 1);
-      if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.mProteusTemplateBean == null))
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("next.mProteusTemplateBean == null ");
-        localStringBuilder.append(localAbsBaseArticleInfo);
-        QLog.d("ProteusSupportUtil", 2, localStringBuilder.toString());
-        if ((localReadInJoyBaseAdapter.a() != null) && (localReadInJoyBaseAdapter.a().a(paramIReadInJoyModel.e())))
-        {
-          localAbsBaseArticleInfo.mProteusTemplateBean = localReadInJoyBaseAdapter.a().a(localAbsBaseArticleInfo);
-          return;
-        }
-        localAbsBaseArticleInfo.mProteusTemplateBean = a(paramVafContext, paramIReadInJoyModel.e(), localAbsBaseArticleInfo);
-      }
-    }
-  }
-  
-  private static void a(IReadInJoyModel paramIReadInJoyModel, ViewBase paramViewBase)
-  {
-    if ((paramIReadInJoyModel != null) && (paramViewBase != null) && (paramViewBase.getNativeView() != null))
-    {
-      paramIReadInJoyModel = paramIReadInJoyModel.b();
-      if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.mProteusTemplateBean != null))
-      {
-        paramIReadInJoyModel = (ViewBean)paramIReadInJoyModel.mProteusTemplateBean.getViewDataBinding().get("id_separator");
-        if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.valueBean != null) && (paramIReadInJoyModel.valueBean.normalValue != null))
-        {
-          paramIReadInJoyModel = paramIReadInJoyModel.valueBean.normalValue.get("setBackgroundColorString:");
-          if ((paramIReadInJoyModel instanceof String)) {
-            try
-            {
-              paramViewBase.getNativeView().setBackgroundColor(Color.parseColor((String)paramIReadInJoyModel));
-              return;
-            }
-            catch (Exception paramIReadInJoyModel)
-            {
-              QLog.d("ProteusSupportUtil", 1, paramIReadInJoyModel.getMessage());
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    if (!ProteusSettingUtil.a()) {
-      return false;
-    }
-    if ((paramInt != 0) && (paramInt != 5) && (paramInt != 29) && (paramInt != 47) && (paramInt != 60) && (paramInt != 96) && (paramInt != 90) && (paramInt != 91) && (paramInt != 124) && (paramInt != 125) && (paramInt != 129) && (paramInt != 130)) {
-      switch (paramInt)
-      {
-      default: 
-        switch (paramInt)
-        {
-        default: 
-          if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdProteusView(paramInt)) {
-            return false;
-          }
-          return jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt));
-        }
-        break;
-      }
-    }
-    return true;
-  }
-  
-  public static boolean a(int paramInt1, int paramInt2, AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    TraceUtils.traceBegin("configDivider.isDividerNormal");
-    boolean bool;
-    if ((b(paramInt1)) && ((b(paramInt2)) || (PTSLiteItemViewUtil.a.a(paramAbsBaseArticleInfo, paramInt2) == 0))) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    TraceUtils.traceEnd();
-    return bool;
-  }
-  
-  private static boolean a(Container paramContainer, int paramInt)
-  {
-    if (Aladdin.getConfig(330).getIntegerFromString("isAllowLayoutErrorCheck", 0) != 1) {
-      return false;
-    }
-    if (paramContainer != null) {}
-    label299:
-    for (;;)
-    {
-      try
-      {
-        int j = paramContainer.getChildCount();
-        int i = 0;
-        if (i < j)
-        {
-          Object localObject2 = paramContainer.getChildAt(i);
-          if (!(localObject2 instanceof NativeLayoutImpl)) {
-            break label299;
-          }
-          localObject1 = (NativeLayoutImpl)localObject2;
-          if ((((NativeLayoutImpl)localObject1).getChildCount() != 0) || (((NativeLayoutImpl)localObject1).getBackgroundColor() != 0)) {
-            break label299;
-          }
-          IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-          QQAppInterface localQQAppInterface = RIJQQAppInterfaceUtil.a();
-          if (((NativeLayoutImpl)localObject1).getContentDescription() != null)
-          {
-            localObject1 = ((NativeLayoutImpl)localObject1).getContentDescription().toString();
-            localIPublicAccountReportUtils.publicAccountReportClickEventForMigrate(localQQAppInterface, "CliOper", "", "", "0X8009AC1", "0X8009AC1", 0, 0, "", "", "", (String)localObject1, false);
-            if (QLog.isColorLevel())
-            {
-              LogUtils.a(paramContainer.getVirtualView(), "ProteusSupportUtil");
-              LogUtils.a(paramContainer, "ProteusSupportUtil");
-            }
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("[nativeLayoutImplError] empty native layout ");
-            ((StringBuilder)localObject1).append(paramInt);
-            QLog.e("ProteusSupportUtil", 1, ((StringBuilder)localObject1).toString());
-            if ((QLog.isColorLevel()) && ((localObject2 instanceof ViewGroup)))
-            {
-              localObject1 = (ViewGroup)localObject2;
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("ChildCount ");
-              ((StringBuilder)localObject2).append(((ViewGroup)localObject1).getChildCount());
-              QLog.e("ProteusSupportUtil", 1, ((StringBuilder)localObject2).toString());
-            }
-            i += 1;
-          }
-        }
-        else
-        {
-          return false;
-        }
-      }
-      catch (Exception paramContainer)
-      {
-        QLog.e("ProteusSupportUtil", 1, "[nativeLayoutImplError] ", paramContainer);
-      }
-      Object localObject1 = "";
-    }
-  }
-  
-  public static boolean a(VafContext paramVafContext, int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return a(paramVafContext, paramInt, paramAbsBaseArticleInfo) != null;
-  }
-  
-  public static boolean a(VafContext paramVafContext, String paramString)
-  {
-    paramString = TemplateFactory.a(paramString, true);
-    if (paramVafContext.getTemplateFactory() == null)
-    {
-      paramVafContext.setTemplateFactory(paramString);
-      return true;
-    }
-    if ((paramString != null) && (paramString.getTemplateId() != paramVafContext.getTemplateFactory().getTemplateId()))
-    {
-      paramVafContext.setTemplateFactory(paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    TraceUtils.traceBegin("configDivider.isNextCardFlowGuideTwoOrThree");
-    boolean bool1 = false;
-    if ((paramAbsBaseArticleInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.proteusItemsData)))
-    {
-      if (paramAbsBaseArticleInfo.mFeedType != 29)
-      {
-        TraceUtils.traceEnd();
-        return false;
-      }
-      try
-      {
-        paramAbsBaseArticleInfo = new JSONObject(paramAbsBaseArticleInfo.proteusItemsData);
-        Iterator localIterator = paramAbsBaseArticleInfo.keys();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          Object localObject = paramAbsBaseArticleInfo.opt(str);
-          if ("guide_card_type".equals(str))
-          {
-            QLog.d("ProteusSupportUtil", 1, new Object[] { "isNextCardFlowGuideTwoOrThree, guide_card_type = ", localObject });
-            TraceUtils.traceEnd();
-            if (!"2".equals(String.valueOf(localObject)))
-            {
-              boolean bool2 = "3".equals(String.valueOf(localObject));
-              if (!bool2) {}
-            }
-            else
-            {
-              bool1 = true;
-            }
-            return bool1;
-          }
-        }
-      }
-      catch (Exception paramAbsBaseArticleInfo)
-      {
-        QLog.d("ProteusSupportUtil", 1, "isNextCardFlowGuideTwoOrThree, e = ", paramAbsBaseArticleInfo);
-      }
-      catch (JSONException paramAbsBaseArticleInfo)
-      {
-        QLog.d("ProteusSupportUtil", 1, "isNextCardFlowGuideTwoOrThree JSONException, e = ", paramAbsBaseArticleInfo);
-      }
-    }
-    TraceUtils.traceEnd();
-    return false;
-  }
-  
-  private static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo, ViewBase paramViewBase, VafContext paramVafContext)
-  {
-    boolean bool = paramAbsBaseArticleInfo instanceof AdvertisementInfo;
-    if ((paramViewBase == null) || (paramVafContext == null) || (paramVafContext.getContext() == null) || (paramAbsBaseArticleInfo == null)) {
-      bool = false;
-    }
-    return bool;
-  }
-  
-  public static boolean a(IReadInJoyModel paramIReadInJoyModel)
-  {
-    boolean bool = false;
-    if (paramIReadInJoyModel != null) {
-      try
-      {
-        int i = paramIReadInJoyModel.e();
-        if ((i == 66) || (i == 39))
-        {
-          paramIReadInJoyModel = paramIReadInJoyModel.b();
-          if ((paramIReadInJoyModel != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramIReadInJoyModel)))
-          {
-            paramIReadInJoyModel = ((AdvertisementInfo)paramIReadInJoyModel).mAdExtInfo;
-            if (paramIReadInJoyModel != null)
-            {
-              i = new JSONObject(paramIReadInJoyModel).optInt("is_video_new");
-              if (i == 1) {
-                bool = true;
-              }
-              return bool;
-            }
-          }
-        }
-      }
-      catch (Exception paramIReadInJoyModel)
-      {
-        QLog.d("ProteusSupportUtil", 1, "isNextCardAdBigImgOrAdVideo JSONException, e = ", paramIReadInJoyModel);
-      }
-    }
-    return false;
-  }
-  
-  private static int b(TemplateBean paramTemplateBean)
-  {
-    if ((paramTemplateBean != null) && (paramTemplateBean.getViewBean() != null)) {
-      try
-      {
-        paramTemplateBean = (SizeValue)paramTemplateBean.getViewBean().findViewById("id_separator").valueBean.normalValue.get("height");
-        FluencyLogUtil.a("ProteusSupportUtil", "[getSepatatorHeight] getSepatatorHeight");
-        int i = paramTemplateBean.getLayoutSize();
-        return i;
-      }
-      catch (Exception paramTemplateBean)
-      {
-        paramTemplateBean.printStackTrace();
-        QLog.d("ProteusSupportUtil", 1, "getProteusSeparatorHeight exception.");
-      }
-    }
-    return 0;
-  }
-  
-  private static void b()
+  private static void c()
   {
     FluencyLogUtil.a("ProteusSupportUtil", "resetProteusSeparatorHeightPx ");
     QLog.d("TemplateFactory", 4, "resetProteusSeparatorHeightPx");
-    jdField_a_of_type_Int = 0;
+    c = 0;
   }
   
-  private static void b(VafContext paramVafContext, String paramString)
+  private static void c(VafContext paramVafContext, String paramString)
   {
     paramString = TemplateFactory.a(paramString, false);
     if ((paramString != null) && (paramVafContext.getTemplateFactory() != paramString)) {
       paramVafContext.setTemplateFactory(paramString);
     }
   }
-  
-  public static boolean b(int paramInt)
-  {
-    if (jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt))) {
-      return true;
-    }
-    return paramInt >= 151;
-  }
-  
-  @Deprecated
-  private static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt, ViewBase paramViewBase, VafContext paramVafContext)
-  {
-    boolean bool2 = false;
-    if (paramAbsBaseArticleInfo != null) {
-      if (paramInt != 1007)
-      {
-        bool1 = bool2;
-        if (paramInt == 1036) {
-          break label235;
-        }
-        if (paramInt != 1071)
-        {
-          if (paramInt != 1106)
-          {
-            bool1 = bool2;
-            if (paramInt == 1175) {
-              break label235;
-            }
-            bool1 = bool2;
-            if (paramInt == 1176) {
-              break label235;
-            }
-            if ((paramInt != 1200) && (paramInt != 1201)) {
-              switch (paramInt)
-              {
-              default: 
-                switch (paramInt)
-                {
-                default: 
-                  switch (paramInt)
-                  {
-                  }
-                  break;
-                }
-                break;
-              case 1045: 
-                return ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).isUgcAd(paramAbsBaseArticleInfo);
-              }
-            }
-          }
-          return a(paramAbsBaseArticleInfo, paramViewBase, paramVafContext);
-        }
-        else
-        {
-          return ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo);
-        }
-      }
-      else if (!RIJFeedsType.j(paramAbsBaseArticleInfo))
-      {
-        bool1 = bool2;
-        if (!RIJFeedsType.k(paramAbsBaseArticleInfo)) {
-          break label235;
-        }
-      }
-    }
-    boolean bool1 = true;
-    label235:
-    return bool1;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.pts.util.ProteusSupportUtil
  * JD-Core Version:    0.7.0.1
  */

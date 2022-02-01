@@ -13,15 +13,15 @@ class ActiveEntitySearchFragment$1$1
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentActiveEntitySearchFragment$1.a.getBaseActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqSearchFragmentActiveEntitySearchFragment$1.a.startActivity(localIntent);
+    Intent localIntent = new Intent(this.b.a.getBaseActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", this.a);
+    this.b.a.startActivity(localIntent);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -37,13 +37,13 @@ public class MsgProxyDisGroupMsgSeq
       {
         if (localSvcResponsePullDisGroupSeq != null)
         {
-          DiscussionHandler localDiscussionHandler = (DiscussionHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
+          DiscussionHandler localDiscussionHandler = (DiscussionHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
           paramObject = new SvcResponsePullDisMsgSeq();
           paramObject.cReplyCode = localSvcResponsePullDisGroupSeq.cReplyCode;
           paramObject.strResult = localSvcResponsePullDisGroupSeq.strResult;
           if (localSvcResponsePullDisGroupSeq.vDisInfo != null)
           {
-            IPasswdRedBagService localIPasswdRedBagService = (IPasswdRedBagService)paramMessageHandler.a.getRuntimeService(IPasswdRedBagService.class);
+            IPasswdRedBagService localIPasswdRedBagService = (IPasswdRedBagService)paramMessageHandler.n.getRuntimeService(IPasswdRedBagService.class);
             HashMap localHashMap = new HashMap();
             paramObject.vConfNumInfo = new ArrayList();
             ArrayList localArrayList = new ArrayList();
@@ -112,7 +112,7 @@ public class MsgProxyDisGroupMsgSeq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MsgProxyDisGroupMsgSeq
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import android.util.Log;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qcircle.tavcut.session.TAVCutVideoSession;
 import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tavcut.session.TAVCutVideoSession;
 import com.tencent.ttpic.filter.aifilter.NewEnhanceCategories;
 import com.tencent.ttpic.filter.aifilter.PhotoAIFilter;
 import java.util.ArrayList;
@@ -18,36 +18,36 @@ import mqq.os.MqqHandler;
 public class VideoAIFilterProxy
   extends AIFilterProxyBase
 {
-  private static final String a = "VideoAIFilterProxy";
-  protected TAVCutVideoSession a;
-  protected final int b = 250;
+  private static final String d = "VideoAIFilterProxy";
+  protected final int f = 250;
+  protected TAVCutVideoSession g;
   
   public VideoAIFilterProxy(TAVCutVideoSession paramTAVCutVideoSession)
   {
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession = paramTAVCutVideoSession;
+    this.g = paramTAVCutVideoSession;
   }
   
   protected AIFilterResult a(List<AIFilterResponse> paramList)
   {
     VideoAIFilterResult localVideoAIFilterResult = new VideoAIFilterResult();
-    if (a(this.jdField_a_of_type_JavaUtilList)) {
+    if (c(this.b)) {
       try
       {
-        localVideoAIFilterResult.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData = PhotoAIFilter.preprocessImages(this.jdField_a_of_type_JavaUtilList);
+        localVideoAIFilterResult.b = PhotoAIFilter.preprocessImages(this.b);
       }
       catch (Exception localException)
       {
-        AEQLog.d(jdField_a_of_type_JavaLangString, Log.getStackTraceString(localException));
+        AEQLog.d(d, Log.getStackTraceString(localException));
       }
     }
-    localVideoAIFilterResult.jdField_a_of_type_ArrayOfFloat = AEEditorAIFilterManager.a(localVideoAIFilterResult.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData);
-    localVideoAIFilterResult.jdField_a_of_type_JavaUtilHashMap = AEEditorAIFilterManager.a(localVideoAIFilterResult.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData);
+    localVideoAIFilterResult.f = AEEditorAIFilterManager.a(localVideoAIFilterResult.b);
+    localVideoAIFilterResult.i = AEEditorAIFilterManager.b(localVideoAIFilterResult.b);
     Object localObject2 = new ArrayList();
     Object localObject4;
     Object localObject1;
     if ((paramList != null) && (paramList.size() != 0))
     {
-      localObject3 = a(paramList);
+      localObject3 = b(paramList);
       localObject4 = paramList.iterator();
       do
       {
@@ -57,8 +57,8 @@ public class VideoAIFilterProxy
           break;
         }
         paramList = (AIFilterResponse)((Iterator)localObject4).next();
-      } while (!paramList.jdField_a_of_type_JavaLangString.equals(localObject3));
-      paramList = paramList.jdField_a_of_type_JavaUtilList;
+      } while (!paramList.a.equals(localObject3));
+      paramList = paramList.b;
       localObject1 = localObject3;
     }
     else
@@ -66,7 +66,7 @@ public class VideoAIFilterProxy
       localObject1 = NewEnhanceCategories.COMMON.serverLabel;
       paramList = (List<AIFilterResponse>)localObject2;
     }
-    localObject2 = jdField_a_of_type_JavaLangString;
+    localObject2 = d;
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("sceneLabel: ");
     ((StringBuilder)localObject3).append((String)localObject1);
@@ -75,7 +75,7 @@ public class VideoAIFilterProxy
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (YoutuResultItem)((Iterator)localObject2).next();
-      localObject4 = jdField_a_of_type_JavaLangString;
+      localObject4 = d;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("label: ");
       localStringBuilder.append(((YoutuResultItem)localObject3).Label);
@@ -83,19 +83,30 @@ public class VideoAIFilterProxy
       localStringBuilder.append(((YoutuResultItem)localObject3).Confidence);
       AEQLog.b((String)localObject4, localStringBuilder.toString());
     }
-    localVideoAIFilterResult.jdField_a_of_type_JavaLangString = ((String)localObject1);
-    localVideoAIFilterResult.jdField_a_of_type_JavaUtilList = paramList;
-    localVideoAIFilterResult.b = b(localVideoAIFilterResult.jdField_a_of_type_JavaLangString);
+    localVideoAIFilterResult.d = ((String)localObject1);
+    localVideoAIFilterResult.c = paramList;
+    localVideoAIFilterResult.e = b(localVideoAIFilterResult.d);
     return localVideoAIFilterResult;
   }
   
-  protected List<Long> a()
+  protected void a(Context paramContext, AIFilterProxyBase.AIFilterProxyCallback paramAIFilterProxyCallback)
+  {
+    List localList = g();
+    ThreadManager.getSubThreadHandler().post(new VideoAIFilterProxy.1(this, localList, paramContext, paramAIFilterProxyCallback));
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  protected List<Long> g()
   {
     ArrayList localArrayList = new ArrayList();
-    TAVCutVideoSession localTAVCutVideoSession = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession;
+    TAVCutVideoSession localTAVCutVideoSession = this.g;
     if ((localTAVCutVideoSession != null) && (localTAVCutVideoSession.getDuration() != null))
     {
-      long l1 = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration().getTimeUs() / 1000L;
+      long l1 = this.g.getDuration().getTimeUs() / 1000L;
       int i = 3000;
       if (l1 > 30000L) {
         i = 6000;
@@ -112,21 +123,10 @@ public class VideoAIFilterProxy
     }
     return localArrayList;
   }
-  
-  protected void a(Context paramContext, AIFilterProxyBase.AIFilterProxyCallback paramAIFilterProxyCallback)
-  {
-    List localList = a();
-    ThreadManager.getSubThreadHandler().post(new VideoAIFilterProxy.1(this, localList, paramContext, paramAIFilterProxyCallback));
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.VideoAIFilterProxy
  * JD-Core Version:    0.7.0.1
  */

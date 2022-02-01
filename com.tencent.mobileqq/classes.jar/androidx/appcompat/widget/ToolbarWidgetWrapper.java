@@ -16,6 +16,10 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.drawable;
+import androidx.appcompat.R.id;
+import androidx.appcompat.R.string;
 import androidx.appcompat.R.styleable;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.view.menu.MenuBuilder;
@@ -52,7 +56,7 @@ public class ToolbarWidgetWrapper
   
   public ToolbarWidgetWrapper(Toolbar paramToolbar, boolean paramBoolean)
   {
-    this(paramToolbar, paramBoolean, 2131689494, 2130837526);
+    this(paramToolbar, paramBoolean, R.string.abc_action_bar_up_description, R.drawable.abc_ic_ab_back_material);
   }
   
   public ToolbarWidgetWrapper(Toolbar paramToolbar, boolean paramBoolean, int paramInt1, int paramInt2)
@@ -68,7 +72,7 @@ public class ToolbarWidgetWrapper
     }
     this.mTitleSet = bool;
     this.mNavIcon = paramToolbar.getNavigationIcon();
-    paramToolbar = TintTypedArray.obtainStyledAttributes(paramToolbar.getContext(), null, R.styleable.ActionBar, 2131034122, 0);
+    paramToolbar = TintTypedArray.obtainStyledAttributes(paramToolbar.getContext(), null, R.styleable.ActionBar, R.attr.actionBarStyle, 0);
     this.mDefaultNavigationIcon = paramToolbar.getDrawable(R.styleable.ActionBar_homeAsUpIndicator);
     if (paramBoolean)
     {
@@ -155,7 +159,7 @@ public class ToolbarWidgetWrapper
   {
     if (this.mSpinner == null)
     {
-      this.mSpinner = new AppCompatSpinner(getContext(), null, 2131034129);
+      this.mSpinner = new AppCompatSpinner(getContext(), null, R.attr.actionDropDownStyle);
       Toolbar.LayoutParams localLayoutParams = new Toolbar.LayoutParams(-2, -2, 8388627);
       this.mSpinner.setLayoutParams(localLayoutParams);
     }
@@ -540,7 +544,7 @@ public class ToolbarWidgetWrapper
     if (this.mActionMenuPresenter == null)
     {
       this.mActionMenuPresenter = new ActionMenuPresenter(this.mToolbar.getContext());
-      this.mActionMenuPresenter.setId(2131361974);
+      this.mActionMenuPresenter.setId(R.id.action_menu_presenter);
     }
     this.mActionMenuPresenter.setCallback(paramCallback);
     this.mToolbar.setMenu((MenuBuilder)paramMenu, this.mActionMenuPresenter);

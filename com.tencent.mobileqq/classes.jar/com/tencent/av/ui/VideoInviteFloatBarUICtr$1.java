@@ -43,7 +43,7 @@ class VideoInviteFloatBarUICtr$1
         paramIntent.append("onReceive action = ");
         paramIntent.append(paramContext);
         QLog.d("VideoInviteFloatBarUICtr", 1, paramIntent.toString());
-        this.a.b();
+        this.a.f();
       }
     }
   }

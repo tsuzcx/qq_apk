@@ -27,17 +27,17 @@ class QQSettingMsgClearFragment$1
 {
   QQSettingMsgClearFragment$1(QQSettingMsgClearFragment paramQQSettingMsgClearFragment, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingMsgClearFragment.getBaseActivity().isFinishing())
+    if (!this.b.getBaseActivity().isFinishing())
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      QQSettingMsgClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingMsgClearFragment, true);
+      this.a.cancel();
+      QQSettingMsgClearFragment.a(this.b, true);
     }
     ReportController.b(null, "dc00898", "", "", "0X800A0C5", "0X800A0C5", 0, 0, "", "", "", "");
     try
     {
-      QZoneHelper.onQQClearLocalCache(QQSettingMsgClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingMsgClearFragment).getLongAccountUin());
+      QZoneHelper.onQQClearLocalCache(QQSettingMsgClearFragment.a(this.b).getLongAccountUin());
     }
     catch (Exception paramView)
     {
@@ -46,9 +46,9 @@ class QQSettingMsgClearFragment$1
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actCleanCacheData", true, 0L, 0L, null, null);
     if (((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isWebProcessExist())
     {
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingMsgClearFragment.getBaseActivity(), WebProcessReceiver.class);
+      paramView = new Intent(this.b.getBaseActivity(), WebProcessReceiver.class);
       paramView.setAction("action_clear_cache");
-      this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingMsgClearFragment.getBaseActivity().sendBroadcast(paramView, "com.tencent.msg.permission.pushnotify");
+      this.b.getBaseActivity().sendBroadcast(paramView, "com.tencent.msg.permission.pushnotify");
     }
     else
     {
@@ -66,14 +66,14 @@ class QQSettingMsgClearFragment$1
     paramView.append(BaseApplication.getContext().getExternalCacheDir());
     paramView.append("/superplayer");
     FileUtils.delete(paramView.toString(), false);
-    ((IApolloUtil)QRoute.api(IApolloUtil.class)).deleteApolloResource(false, QQSettingMsgClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingMsgClearFragment));
+    ((IApolloUtil)QRoute.api(IApolloUtil.class)).deleteApolloResource(false, QQSettingMsgClearFragment.a(this.b));
     FileUtils.delete(AppConstants.PATH_CUSTOM_HEAD_ROOT, false);
     ThreadManagerV2.excute(new QQSettingMsgClearFragment.1.1(this), 64, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingMsgClearFragment.1
  * JD-Core Version:    0.7.0.1
  */

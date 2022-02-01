@@ -5,15 +5,16 @@ import android.content.res.AssetManager;
 import android.text.TextUtils;
 import com.tencent.mtt.hippy.bridge.HippyBridge;
 import com.tencent.mtt.hippy.bridge.NativeCallback;
+import com.tencent.mtt.hippy.utils.LogUtils;
 
 public class HippyAssetBundleLoader
   implements HippyBundleLoader
 {
   private static final String ASSETS_STR = "assets://";
-  private String mAssetPath;
+  private final String mAssetPath;
   private boolean mCanUseCodeCache;
   private String mCodeCacheTag;
-  private Context mContext;
+  private final Context mContext;
   
   public HippyAssetBundleLoader(Context paramContext, String paramString)
   {
@@ -61,10 +62,10 @@ public class HippyAssetBundleLoader
     return this.mAssetPath;
   }
   
-  public boolean load(HippyBridge paramHippyBridge, NativeCallback paramNativeCallback)
+  public void load(HippyBridge paramHippyBridge, NativeCallback paramNativeCallback)
   {
     if (TextUtils.isEmpty(this.mAssetPath)) {
-      return false;
+      return;
     }
     AssetManager localAssetManager = this.mContext.getAssets();
     String str2 = this.mAssetPath;
@@ -85,7 +86,11 @@ public class HippyAssetBundleLoader
       ((StringBuilder)localObject).append(this.mAssetPath);
       localObject = ((StringBuilder)localObject).toString();
     }
-    return paramHippyBridge.runScriptFromUri((String)localObject, localAssetManager, this.mCanUseCodeCache, this.mCodeCacheTag, paramNativeCallback);
+    boolean bool = paramHippyBridge.runScriptFromUri((String)localObject, localAssetManager, this.mCanUseCodeCache, this.mCodeCacheTag, paramNativeCallback);
+    paramHippyBridge = new StringBuilder();
+    paramHippyBridge.append("load: ret");
+    paramHippyBridge.append(bool);
+    LogUtils.d("HippyAssetBundleLoader", paramHippyBridge.toString());
   }
   
   public void setCodeCache(boolean paramBoolean, String paramString)
@@ -96,7 +101,7 @@ public class HippyAssetBundleLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.bundleloader.HippyAssetBundleLoader
  * JD-Core Version:    0.7.0.1
  */

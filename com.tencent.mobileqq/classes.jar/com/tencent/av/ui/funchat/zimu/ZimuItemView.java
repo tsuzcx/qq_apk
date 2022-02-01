@@ -17,47 +17,39 @@ import java.lang.ref.WeakReference;
 public abstract class ZimuItemView
   implements IZimuItemView
 {
-  static int i;
-  protected float a;
-  protected int a;
-  protected Context a;
-  protected Bitmap a;
-  protected Canvas a;
-  protected Paint a;
-  protected SentenceInfo a;
-  protected IZimuItemView.FontPara a;
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<ZimuView> jdField_a_of_type_JavaLangRefWeakReference;
-  protected boolean a;
-  protected int b = 255;
-  protected int c;
-  protected int d;
-  protected int e;
+  static int s;
+  final String a;
+  protected IZimuItemView.FontPara b;
+  protected int c = 24;
+  protected int d = 255;
+  protected boolean e = false;
   protected int f;
   protected int g;
   protected int h;
+  protected int i;
+  protected int j;
+  protected int k;
+  protected SentenceInfo l;
+  protected Bitmap m;
+  protected Context n;
+  protected Paint o;
+  protected float p;
+  protected Canvas q = new Canvas();
+  WeakReference<ZimuView> r;
   
   public ZimuItemView(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
   {
-    this.jdField_a_of_type_Int = 24;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(getClass().getSimpleName());
     localStringBuilder.append("_");
-    localStringBuilder.append(AudioHelper.b());
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_Float = paramFloat;
-    this.g = paramInt1;
-    this.h = paramInt2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-  }
-  
-  public int a()
-  {
-    return this.e;
+    localStringBuilder.append(AudioHelper.c());
+    this.a = localStringBuilder.toString();
+    this.n = paramContext;
+    this.o = new Paint(1);
+    this.p = paramFloat;
+    this.j = paramInt1;
+    this.k = paramInt2;
+    this.r = paramWeakReference;
   }
   
   protected int a(Paint paramPaint)
@@ -72,142 +64,179 @@ public abstract class ZimuItemView
     float f3 = 0.0F;
     if (!bool)
     {
-      int k = paramString.length();
-      float[] arrayOfFloat = new float[k + 1];
+      int i2 = paramString.length();
+      float[] arrayOfFloat = new float[i2 + 1];
       paramPaint.getTextWidths(paramString, arrayOfFloat);
-      int j = 0;
+      int i1 = 0;
       f1 = 0.0F;
       for (;;)
       {
         f2 = f1;
-        if (j >= k) {
+        if (i1 >= i2) {
           break;
         }
-        f1 += arrayOfFloat[j];
-        j += 1;
+        f1 += arrayOfFloat[i1];
+        i1 += 1;
       }
     }
     float f2 = 0.0F;
-    paramPaint = this.jdField_a_of_type_ComTencentAvUiFunchatZimuIZimuItemView$FontPara;
+    paramPaint = this.b;
     float f1 = f3;
     if (paramPaint != null) {
-      f1 = paramPaint.jdField_a_of_type_Float;
+      f1 = paramPaint.c;
     }
     return (int)Math.ceil(f2 + f1 / 2.0F);
   }
   
-  public Bitmap a()
-  {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if ((localBitmap == null) || (localBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = b();
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((ZimuView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).e();
-    }
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
-    this.e = paramInt1;
-    this.f = paramInt2;
-  }
-  
-  public void a(long paramLong)
-  {
-    String str = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("start:");
-    localStringBuilder.append(paramLong);
-    AVLog.printColorLog(str, localStringBuilder.toString());
+    this.h = paramInt1;
+    this.i = paramInt2;
   }
   
   protected abstract void a(Canvas paramCanvas, int paramInt1, int paramInt2);
   
   public void a(Typeface paramTypeface, int paramInt, IZimuItemView.FontPara paramFontPara)
   {
-    Typeface localTypeface = this.jdField_a_of_type_AndroidGraphicsPaint.getTypeface();
-    if ((localTypeface != paramTypeface) || (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getTextSize()))
+    Typeface localTypeface = this.o.getTypeface();
+    if ((localTypeface != paramTypeface) || (paramInt != this.o.getTextSize()))
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setFontAttr, Typeface[");
       localStringBuilder.append(localTypeface);
       localStringBuilder.append("->");
       localStringBuilder.append(paramTypeface);
       localStringBuilder.append("], TextSize[");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsPaint.getTextSize());
+      localStringBuilder.append(this.o.getTextSize());
       localStringBuilder.append("->");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
     }
     if (paramTypeface != null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
+      this.o.setTypeface(paramTypeface);
     }
-    this.jdField_a_of_type_ComTencentAvUiFunchatZimuIZimuItemView$FontPara = paramFontPara;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
-    d();
-    paramTypeface = this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo;
+    this.b = paramFontPara;
+    this.o.setTextSize(paramInt);
+    m();
+    paramTypeface = this.l;
     if (paramTypeface != null) {
-      paramTypeface = paramTypeface.a;
+      paramTypeface = paramTypeface.b;
     } else {
       paramTypeface = null;
     }
     paramTypeface = (String)paramTypeface;
-    this.c = a(this.jdField_a_of_type_AndroidGraphicsPaint, paramTypeface);
-    this.d = a(this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.f = a(this.o, paramTypeface);
+    this.g = a(this.o);
   }
   
   public void a(SentenceInfo paramSentenceInfo)
   {
-    d();
-    Object localObject1 = this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo;
+    m();
+    Object localObject1 = this.l;
     Object localObject2 = null;
     if (localObject1 != null) {
-      localObject1 = ((SentenceInfo)localObject1).b;
+      localObject1 = ((SentenceInfo)localObject1).c;
     } else {
       localObject1 = null;
     }
     localObject1 = (String)localObject1;
-    this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo = paramSentenceInfo;
-    SentenceInfo localSentenceInfo = this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo;
-    if ((localSentenceInfo != null) && (!localSentenceInfo.a()) && (paramSentenceInfo != null) && (TextUtils.isEmpty(paramSentenceInfo.b)) && (localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-      this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo.b = ((CharSequence)localObject1);
+    this.l = paramSentenceInfo;
+    SentenceInfo localSentenceInfo = this.l;
+    if ((localSentenceInfo != null) && (!localSentenceInfo.a()) && (paramSentenceInfo != null) && (TextUtils.isEmpty(paramSentenceInfo.c)) && (localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
+      this.l.c = ((CharSequence)localObject1);
     }
-    localObject1 = this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo;
+    localObject1 = this.l;
     paramSentenceInfo = localObject2;
     if (localObject1 != null) {
-      paramSentenceInfo = ((SentenceInfo)localObject1).a;
+      paramSentenceInfo = ((SentenceInfo)localObject1).b;
     }
     paramSentenceInfo = (String)paramSentenceInfo;
-    this.c = a(this.jdField_a_of_type_AndroidGraphicsPaint, paramSentenceInfo);
+    this.f = a(this.o, paramSentenceInfo);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
-  public int b()
+  void b()
+  {
+    if (this.r.get() != null) {
+      ((ZimuView)this.r.get()).e();
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    String str = this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start:");
+    localStringBuilder.append(paramLong);
+    AVLog.printColorLog(str, localStringBuilder.toString());
+  }
+  
+  public void c()
+  {
+    this.o.setTypeface(null);
+    this.o = null;
+    m();
+  }
+  
+  public boolean d()
+  {
+    return this.e;
+  }
+  
+  public void e() {}
+  
+  public int f()
+  {
+    return this.h;
+  }
+  
+  public int g()
+  {
+    return this.i;
+  }
+  
+  public int h()
   {
     return this.f;
   }
   
-  Bitmap b()
+  public int i()
   {
-    boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo.a);
+    if (this.g == 0) {
+      this.g = a(this.o);
+    }
+    return this.g;
+  }
+  
+  public boolean j()
+  {
+    return true;
+  }
+  
+  public Bitmap k()
+  {
+    Bitmap localBitmap = this.m;
+    if ((localBitmap == null) || (localBitmap.isRecycled())) {
+      this.m = l();
+    }
+    return this.m;
+  }
+  
+  Bitmap l()
+  {
+    boolean bool = TextUtils.isEmpty(this.l.b);
     Object localObject4 = null;
     Object localObject3 = null;
     if (bool) {
       return null;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Object localObject1 = this.a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("build:");
     ((StringBuilder)localObject2).append(toString());
@@ -216,19 +245,19 @@ public abstract class ZimuItemView
     localObject2 = localObject4;
     try
     {
-      int j = c();
+      int i1 = h();
       localObject1 = localObject3;
       localObject2 = localObject4;
-      int k = d();
+      int i2 = i();
       localObject1 = localObject3;
       localObject2 = localObject4;
-      localObject3 = Bitmap.createBitmap(j, k, Bitmap.Config.ARGB_8888);
+      localObject3 = Bitmap.createBitmap(i1, i2, Bitmap.Config.ARGB_8888);
       localObject1 = localObject3;
       localObject2 = localObject3;
-      this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap((Bitmap)localObject3);
+      this.q.setBitmap((Bitmap)localObject3);
       localObject1 = localObject3;
       localObject2 = localObject3;
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, j, k);
+      a(this.q, i1, i2);
       return localObject3;
     }
     catch (Exception localException)
@@ -236,7 +265,7 @@ public abstract class ZimuItemView
       localObject3 = localObject1;
       if (QLog.isColorLevel())
       {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, localException.getMessage());
+        QLog.e(this.a, 2, localException.getMessage());
         return localObject1;
       }
     }
@@ -245,59 +274,27 @@ public abstract class ZimuItemView
       localObject3 = localException;
       if (QLog.isColorLevel())
       {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, localOutOfMemoryError.getMessage());
+        QLog.e(this.a, 2, localOutOfMemoryError.getMessage());
         localObject3 = localException;
       }
     }
     return localObject3;
   }
   
-  public void b()
+  void m()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(null);
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    d();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public void c() {}
-  
-  public boolean c()
-  {
-    return true;
-  }
-  
-  public int d()
-  {
-    if (this.d == 0) {
-      this.d = a(this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    return this.d;
-  }
-  
-  void d()
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("releaseBitmap:");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    localStringBuilder.append(this.m);
     AVLog.printColorLog((String)localObject, localStringBuilder.toString());
-    localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    localObject = this.m;
     if (localObject != null)
     {
       if (!((Bitmap)localObject).isRecycled()) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        this.m.recycle();
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      this.m = null;
     }
   }
   
@@ -305,25 +302,25 @@ public abstract class ZimuItemView
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ZimuItemView{mFontPara=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiFunchatZimuIZimuItemView$FontPara.toString());
+    localStringBuilder.append(this.b.toString());
     localStringBuilder.append(", getTypeface=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsPaint.getTypeface());
+    localStringBuilder.append(this.o.getTypeface());
     localStringBuilder.append(", mTextSize=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", mAlpha=");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(", mWidth=");
     localStringBuilder.append(this.c);
-    localStringBuilder.append(", mHeight=");
+    localStringBuilder.append(", mAlpha=");
     localStringBuilder.append(this.d);
-    localStringBuilder.append(", mCurrentX=");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(", mCurrentY=");
+    localStringBuilder.append(", mWidth=");
     localStringBuilder.append(this.f);
+    localStringBuilder.append(", mHeight=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", mCurrentX=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", mCurrentY=");
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", mSentenceInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo.toString());
+    localStringBuilder.append(this.l.toString());
     localStringBuilder.append(", mBitmapCache=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    localStringBuilder.append(this.m);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

@@ -6,24 +6,24 @@ import java.lang.ref.WeakReference;
 class ReadInjoyIMAXAdFragment$WeakReferenceRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<ReadInjoyIMAXAdFragment> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ReadInjoyIMAXAdFragment> a;
+  private int b;
   
   protected ReadInjoyIMAXAdFragment$WeakReferenceRunnable(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReadInjoyIMAXAdFragment);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramReadInjoyIMAXAdFragment);
+    this.b = paramInt;
   }
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((WeakReference)localObject).get() == null) {
         return;
       }
-      int i = this.jdField_a_of_type_Int;
+      int i = this.b;
       if (i != 1)
       {
         if (i != 2)
@@ -38,35 +38,35 @@ class ReadInjoyIMAXAdFragment$WeakReferenceRunnable
                 {
                   localObject = new StringBuilder();
                   ((StringBuilder)localObject).append("WeakReferenceRunnable run type is error mType: ");
-                  ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+                  ((StringBuilder)localObject).append(this.b);
                   QLog.e("ReadInjoyIMAXAdFragment", 2, ((StringBuilder)localObject).toString());
                 }
               }
               else {
-                ((ReadInjoyIMAXAdFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).h();
+                ((ReadInjoyIMAXAdFragment)this.a.get()).i();
               }
             }
             else {
-              ((ReadInjoyIMAXAdFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).g();
+              ((ReadInjoyIMAXAdFragment)this.a.get()).h();
             }
           }
           else {
-            ((ReadInjoyIMAXAdFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).f();
+            ((ReadInjoyIMAXAdFragment)this.a.get()).g();
           }
         }
         else {
-          ((ReadInjoyIMAXAdFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).e();
+          ((ReadInjoyIMAXAdFragment)this.a.get()).f();
         }
       }
       else {
-        ((ReadInjoyIMAXAdFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d();
+        ((ReadInjoyIMAXAdFragment)this.a.get()).e();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable
  * JD-Core Version:    0.7.0.1
  */

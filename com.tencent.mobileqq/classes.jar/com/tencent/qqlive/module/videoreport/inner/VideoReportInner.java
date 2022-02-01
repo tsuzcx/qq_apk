@@ -6,10 +6,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AbsListView;
 import com.tencent.qqlive.module.videoreport.Configuration;
 import com.tencent.qqlive.module.videoreport.Configuration.Builder;
 import com.tencent.qqlive.module.videoreport.DetectionMode;
@@ -65,17 +67,20 @@ import com.tencent.qqlive.module.videoreport.report.element.IExposureRecorder;
 import com.tencent.qqlive.module.videoreport.report.element.IExposureRecorder.Factory;
 import com.tencent.qqlive.module.videoreport.report.element.ReportPolicyOperator;
 import com.tencent.qqlive.module.videoreport.report.element.ReversedDataCollector;
-import com.tencent.qqlive.module.videoreport.report.scroll.ScrollableViewObserver;
+import com.tencent.qqlive.module.videoreport.report.keyboard.KeyBoardEditorActionReporter;
+import com.tencent.qqlive.module.videoreport.report.scroll.ScrollableViewManager;
 import com.tencent.qqlive.module.videoreport.reportdata.DataBuilderFactory;
 import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
 import com.tencent.qqlive.module.videoreport.reportdata.IDataBuilder;
 import com.tencent.qqlive.module.videoreport.reportdata.PathData;
 import com.tencent.qqlive.module.videoreport.staging.CustomEventStagingManager;
+import com.tencent.qqlive.module.videoreport.staging.EventStashManager;
 import com.tencent.qqlive.module.videoreport.task.ThreadUtils;
 import com.tencent.qqlive.module.videoreport.trace.SimpleTracer;
 import com.tencent.qqlive.module.videoreport.traversal.ViewGroupDrawingCompat;
 import com.tencent.qqlive.module.videoreport.utils.IDetectionInterceptor;
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr;
+import com.tencent.qqlive.module.videoreport.utils.ProcessUtils;
 import com.tencent.qqlive.module.videoreport.utils.ReportUtils;
 import com.tencent.qqlive.module.videoreport.utils.ReusablePool;
 import java.lang.ref.WeakReference;
@@ -186,10 +191,44 @@ public class VideoReportInner
     PageManager.getInstance();
     PageReporter.getInstance();
     ElementExposureReporter.getInstance();
-    ScrollableViewObserver.getInstance();
+    ScrollableViewManager.getInstance();
     ElementExposureEndReporter.getInstance();
     AudioEventReporter.getInstance();
     VideoPageReporter.getInstance();
+    KeyBoardEditorActionReporter.getInstance();
+    EventStashManager.getInstance();
+  }
+  
+  private boolean reportCustomElementEvent(String paramString, Object paramObject, Map<String, ?> paramMap)
+  {
+    if (!TextUtils.isEmpty(DataRWProxy.getElementId(paramObject))) {
+      if ((paramObject instanceof Dialog))
+      {
+        paramObject = (Dialog)paramObject;
+        if (paramObject.getWindow() != null) {
+          return elementReport(paramString, paramObject.getWindow().getDecorView(), paramMap);
+        }
+      }
+      else if ((paramObject instanceof View))
+      {
+        return elementReport(paramString, (View)paramObject, paramMap);
+      }
+    }
+    return false;
+  }
+  
+  private boolean reportCustomPageEvent(String paramString, Object paramObject, Map<String, ?> paramMap)
+  {
+    if (PageFinder.isPage(paramObject))
+    {
+      paramString = PageUtils.createTrackData(paramString, paramObject);
+      if ((paramString != null) && (paramMap != null)) {
+        paramString.putAll(paramMap);
+      }
+      FinalDataTarget.handle(paramObject, paramString);
+      return true;
+    }
+    return false;
   }
   
   public void addInnerReporter(IInnerReporter paramIInnerReporter)
@@ -225,6 +264,22 @@ public class VideoReportInner
   public void addToDetectionWhitelist(Activity paramActivity)
   {
     DetectionPolicy.addWhitelist(paramActivity);
+  }
+  
+  public void bindSubmitTarget(View paramView1, View paramView2)
+  {
+    if (isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bindSubmitTarget: object=");
+      localStringBuilder.append(paramView1);
+      localStringBuilder.append(", target=");
+      localStringBuilder.append(paramView2);
+      Log.i("VideoReportInner", localStringBuilder.toString());
+    }
+    if ((checkElementObjectArgument(paramView1)) && (checkElementObjectArgument(paramView2))) {
+      DataRWProxy.putExtendParam(paramView1, "submitTarget", new WeakReference(paramView2));
+    }
   }
   
   public void bindVideoPlayerInfo(@NonNull Object paramObject, VideoEntity paramVideoEntity)
@@ -265,6 +320,15 @@ public class VideoReportInner
   public void doAppOutReport()
   {
     AppEventReporter.getInstance().appOutDataSender();
+  }
+  
+  public void enableScrollExposureReport(Object paramObject, boolean paramBoolean)
+  {
+    if (((paramObject instanceof AbsListView)) || ((paramObject instanceof RecyclerView)))
+    {
+      DataRWProxy.putExtendParam(paramObject, "element_scroll_exposure", Boolean.valueOf(paramBoolean));
+      ScrollableViewManager.getInstance().inject((View)paramObject);
+    }
   }
   
   public PageInfo findOwnerPage(View paramView)
@@ -319,6 +383,16 @@ public class VideoReportInner
       }
     }
     return null;
+  }
+  
+  public EndExposurePolicy getElementScrollEndExposePolicy(Object paramObject)
+  {
+    return (EndExposurePolicy)ReportPolicyOperator.getReportPolicy(paramObject, "element_scroll_end_expose_policy", EndExposurePolicy.class);
+  }
+  
+  public ExposurePolicy getElementScrollExposePolicy(Object paramObject)
+  {
+    return (ExposurePolicy)ReportPolicyOperator.getReportPolicy(paramObject, "element_scroll_expose_policy", ExposurePolicy.class);
   }
   
   public IEventDynamicParams getEventDynamicParams()
@@ -663,29 +737,10 @@ public class VideoReportInner
     if (!checkTrackObjectArgument(paramObject)) {
       return false;
     }
-    if (PageFinder.isPage(paramObject))
-    {
-      paramString = PageUtils.createTrackData(paramString, paramObject);
-      if ((paramString != null) && (paramMap != null)) {
-        paramString.putAll(paramMap);
-      }
-      FinalDataTarget.handle(paramObject, paramString);
+    if (reportCustomPageEvent(paramString, paramObject, paramMap)) {
       return true;
     }
-    if (!TextUtils.isEmpty(DataRWProxy.getElementId(paramObject))) {
-      if ((paramObject instanceof Dialog))
-      {
-        paramObject = (Dialog)paramObject;
-        if (paramObject.getWindow() != null) {
-          return elementReport(paramString, paramObject.getWindow().getDecorView(), paramMap);
-        }
-      }
-      else if ((paramObject instanceof View))
-      {
-        return elementReport(paramString, (View)paramObject, paramMap);
-      }
-    }
-    return false;
+    return reportCustomElementEvent(paramString, paramObject, paramMap);
   }
   
   public boolean reportEvent(String paramString, Map<String, ?> paramMap)
@@ -794,6 +849,11 @@ public class VideoReportInner
       return;
     }
     DataRWProxy.setInnerParam(paramView, "click_interval", Long.valueOf(paramLong));
+  }
+  
+  public void setCollectProcessName(boolean paramBoolean)
+  {
+    ProcessUtils.setCollectProcessName(paramBoolean);
   }
   
   public void setDataCollectEnable(boolean paramBoolean)
@@ -1020,6 +1080,16 @@ public class VideoReportInner
     DataRWProxy.setInnerParam(paramObject, "element_identifier", paramString);
   }
   
+  public void setElementScrollEndExposePolicy(Object paramObject, EndExposurePolicy paramEndExposurePolicy)
+  {
+    ReportPolicyOperator.setReportPolicy(paramObject, paramEndExposurePolicy, "element_scroll_end_expose_policy");
+  }
+  
+  public void setElementScrollExposePolicy(Object paramObject, ExposurePolicy paramExposurePolicy)
+  {
+    ReportPolicyOperator.setReportPolicy(paramObject, paramExposurePolicy, "element_scroll_expose_policy");
+  }
+  
   public void setElementVirtualParentParams(Object paramObject, int paramInt, String paramString, Map<String, Object> paramMap)
   {
     if (isDebugMode())
@@ -1130,14 +1200,7 @@ public class VideoReportInner
       localStringBuilder.append(paramString);
       Log.i("VideoReportInner", localStringBuilder.toString());
     }
-    if (checkPageObjectArgument(paramObject))
-    {
-      DataRWProxy.setPageId(paramObject, paramString);
-      PageSwitchObserver.getInstance().onPageReport(paramObject);
-      if (!TextUtils.isEmpty(paramString)) {
-        this.mPageInfoCacheCtrl.appendPageStore(paramObject);
-      }
-    }
+    ThreadUtils.ensureRunOnUiThread(new -..Lambda.VideoReportInner.J_BPMSwsnaojL0WWquXyjYM_Cps(this, paramObject, paramString));
   }
   
   public void setPageParams(Object paramObject, PageParams paramPageParams)
@@ -1151,15 +1214,7 @@ public class VideoReportInner
       localStringBuilder.append(paramPageParams);
       Log.i("VideoReportInner", localStringBuilder.toString());
     }
-    if (checkPageObjectArgument(paramObject))
-    {
-      if (paramPageParams == null) {
-        paramPageParams = null;
-      } else {
-        paramPageParams = getTotalPageParams(paramPageParams);
-      }
-      DataRWProxy.setPageParams(paramObject, paramPageParams);
-    }
+    ThreadUtils.ensureRunOnUiThread(new -..Lambda.VideoReportInner.cDPFyVhgYtX5mdWpNkDuMgvxmmE(this, paramObject, paramPageParams));
   }
   
   public void setPageParams(Object paramObject1, String paramString, Object paramObject2)
@@ -1175,9 +1230,7 @@ public class VideoReportInner
       localStringBuilder.append(paramObject2);
       Log.i("VideoReportInner", localStringBuilder.toString());
     }
-    if (checkPageObjectArgument(paramObject1)) {
-      DataRWProxy.setPageParams(paramObject1, paramString, paramObject2);
-    }
+    ThreadUtils.ensureRunOnUiThread(new -..Lambda.VideoReportInner.XuouxjphQEHU3SxuklraAF-iJwE(this, paramObject1, paramString, paramObject2));
   }
   
   public void setPageSearchMode(Object paramObject, int paramInt)
@@ -1282,9 +1335,24 @@ public class VideoReportInner
     finally {}
   }
   
+  public void supportNewPlayType(boolean paramBoolean)
+  {
+    DTConfigConstants.config.newPlayTypeSupport(paramBoolean);
+  }
+  
   public void supportPlayerReport(boolean paramBoolean)
   {
     DTConfigConstants.config.videoReportSupport(paramBoolean);
+  }
+  
+  public void supportSeekReport(boolean paramBoolean)
+  {
+    DTConfigConstants.config.seekReportSupport(paramBoolean);
+  }
+  
+  public void supportSpeedRatioReport(boolean paramBoolean)
+  {
+    DTConfigConstants.config.speedRatioReportSupport(paramBoolean);
   }
   
   public void supportWebViewReport(boolean paramBoolean)
@@ -1398,7 +1466,7 @@ public class VideoReportInner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inner.VideoReportInner
  * JD-Core Version:    0.7.0.1
  */

@@ -14,20 +14,20 @@ class ServiceAccountFolderManager$5
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      RecentUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 1008);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(str, 1008);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(str, 1008, true);
+      RecentUtil.b(this.b, str, 1008);
+      this.b.getMessageFacade().a(str, 1008);
+      this.b.getConversationFacade().a(str, 1008, true);
     }
-    this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.this$0.b(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager.5
  * JD-Core Version:    0.7.0.1
  */

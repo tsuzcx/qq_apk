@@ -31,19 +31,18 @@ import mqq.app.AppRuntime;
 public class DataLineMsgProxy
   extends BaseProxy
 {
-  private DataLineMsgSetList a;
-  protected String a;
+  protected String a = DataLineMsgRecord.tableName();
   private DataLineMsgSetList b;
+  private DataLineMsgSetList c;
   
   public DataLineMsgProxy(QQAppInterface paramQQAppInterface, BaseProxyManager paramBaseProxyManager)
   {
     super(paramQQAppInterface, paramBaseProxyManager);
-    this.jdField_a_of_type_JavaLangString = DataLineMsgRecord.tableName();
   }
   
   private String a(long paramLong, int paramInt)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("select ");
@@ -109,32 +108,53 @@ public class DataLineMsgProxy
     return false;
   }
   
-  private boolean b(DataLineMsgSet paramDataLineMsgSet)
+  private long c(DataLineMsgRecord paramDataLineMsgRecord)
+  {
+    try
+    {
+      init();
+      paramDataLineMsgRecord.msgId = (this.b.getLastId() + 1L);
+      DataLineMsgSet localDataLineMsgSet = this.b.appendToList(paramDataLineMsgRecord);
+      h();
+      if (this.c != null) {
+        if (localDataLineMsgSet == null) {
+          this.c.appendToList(paramDataLineMsgRecord);
+        } else {
+          this.c.appendToList(localDataLineMsgSet);
+        }
+      }
+      long l = paramDataLineMsgRecord.msgId;
+      return l;
+    }
+    finally {}
+  }
+  
+  private boolean c(DataLineMsgSet paramDataLineMsgSet)
   {
     for (;;)
     {
       try
       {
         init();
-        if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList != null)
+        if (this.b != null)
         {
-          boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.remove(paramDataLineMsgSet);
+          boolean bool2 = this.b.remove(paramDataLineMsgSet);
           bool1 = bool2;
           if (bool2)
           {
             bool1 = bool2;
-            if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.size() < 3)
+            if (this.b.size() < 3)
             {
-              this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.clear();
-              this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList = null;
+              this.b.clear();
+              this.b = null;
               init();
               bool1 = bool2;
             }
           }
           bool2 = bool1;
-          if (this.b != null)
+          if (this.c != null)
           {
-            if (this.b.remove(paramDataLineMsgSet)) {
+            if (this.c.remove(paramDataLineMsgSet)) {
               break label148;
             }
             if (!bool1) {
@@ -145,12 +165,12 @@ public class DataLineMsgProxy
             if (bool1)
             {
               bool2 = bool1;
-              if (this.b.size() == 0)
+              if (this.c.size() == 0)
               {
                 bool2 = bool1;
-                if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList != null)
+                if (this.b != null)
                 {
-                  this.b.copyFrom(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList);
+                  this.c.copyFrom(this.b);
                   bool2 = bool1;
                 }
               }
@@ -170,39 +190,18 @@ public class DataLineMsgProxy
     }
   }
   
-  private long c(DataLineMsgRecord paramDataLineMsgRecord)
+  private void h()
   {
     try
     {
       init();
-      paramDataLineMsgRecord.msgId = (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.getLastId() + 1L);
-      DataLineMsgSet localDataLineMsgSet = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.appendToList(paramDataLineMsgRecord);
-      d();
-      if (this.b != null) {
-        if (localDataLineMsgSet == null) {
-          this.b.appendToList(paramDataLineMsgRecord);
-        } else {
-          this.b.appendToList(localDataLineMsgSet);
-        }
-      }
-      long l = paramDataLineMsgRecord.msgId;
-      return l;
-    }
-    finally {}
-  }
-  
-  private void d()
-  {
-    try
-    {
-      init();
-      while (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.size() > 20)
+      while (this.b.size() > 20)
       {
-        DataLineMsgSet localDataLineMsgSet = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.get(0);
+        DataLineMsgSet localDataLineMsgSet = this.b.get(0);
         if ((localDataLineMsgSet.getGroupType() != -2334) && (localDataLineMsgSet.getGroupType() != -1000) && (!localDataLineMsgSet.isAllCompleted())) {
           break;
         }
-        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.remove(0);
+        this.b.remove(0);
       }
       return;
     }
@@ -213,28 +212,16 @@ public class DataLineMsgProxy
     }
   }
   
-  private void d(long paramLong)
-  {
-    DataLineMsgRecord localDataLineMsgRecord = a(paramLong);
-    if (localDataLineMsgRecord != null)
-    {
-      ContentValues localContentValues = new ContentValues();
-      localDataLineMsgRecord.doPrewrite();
-      localContentValues.put("msgData", localDataLineMsgRecord.msgData);
-      a(this.jdField_a_of_type_JavaLangString, localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
-    }
-  }
-  
-  private void e()
+  private void i()
   {
     try
     {
       init();
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList;
+      Object localObject1 = this.b;
       if (localObject1 == null) {
         return;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.iterator();
+      localObject1 = this.b.iterator();
       Iterator localIterator;
       while (((Iterator)localObject1).hasNext())
       {
@@ -243,9 +230,9 @@ public class DataLineMsgProxy
           ((DataLineMsgRecord)localIterator.next()).isread = true;
         }
       }
-      if (this.b != null)
+      if (this.c != null)
       {
-        localObject1 = this.b.iterator();
+        localObject1 = this.c.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localIterator = ((DataLineMsgSet)((Iterator)localObject1).next()).values().iterator();
@@ -263,7 +250,19 @@ public class DataLineMsgProxy
     }
   }
   
-  private void e(long paramLong)
+  private void i(long paramLong)
+  {
+    DataLineMsgRecord localDataLineMsgRecord = a(paramLong);
+    if (localDataLineMsgRecord != null)
+    {
+      ContentValues localContentValues = new ContentValues();
+      localDataLineMsgRecord.doPrewrite();
+      localContentValues.put("msgData", localDataLineMsgRecord.msgData);
+      a(this.a, localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+    }
+  }
+  
+  private void j(long paramLong)
   {
     DataLineMsgRecord localDataLineMsgRecord = a(paramLong);
     Object localObject = new ContentValues();
@@ -273,7 +272,7 @@ public class DataLineMsgProxy
     {
       localDataLineMsgRecord.issuc = true;
       localDataLineMsgRecord.progress = 1.0F;
-      a(this.jdField_a_of_type_JavaLangString, (ContentValues)localObject, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+      a(this.a, (ContentValues)localObject, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
       if (localDataLineMsgRecord.path == null) {
         return;
       }
@@ -295,13 +294,13 @@ public class DataLineMsgProxy
         }
       }
       localObject = FileManagerUtil.a(localDataLineMsgRecord);
-      if ((((FileManagerEntity)localObject).getCloudType() == 6) && (FilePathUtil.a(((FileManagerEntity)localObject).getFilePath()))) {
+      if ((((FileManagerEntity)localObject).getCloudType() == 6) && (FilePathUtil.d(((FileManagerEntity)localObject).getFilePath()))) {
         ((FileManagerEntity)localObject).setCloudType(3);
       }
-      a(localDataLineMsgRecord.msgId);
+      e(localDataLineMsgRecord.msgId);
       ((FileManagerEntity)localObject).bDelInFM = false;
       if (!localDataLineMsgRecord.isSend()) {
-        ((FileManagerEntity)localObject).srvTime = (MessageCache.a() * 1000L);
+        ((FileManagerEntity)localObject).srvTime = (MessageCache.c() * 1000L);
       }
       if (!localDataLineMsgRecord.bNoInsertFm)
       {
@@ -316,37 +315,6 @@ public class DataLineMsgProxy
     }
   }
   
-  public int a()
-  {
-    try
-    {
-      init();
-      int i = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.size();
-      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.clear();
-      if (this.b != null) {
-        this.b.clear();
-      }
-      a(this.jdField_a_of_type_JavaLangString, null, null, null);
-      return i;
-    }
-    finally {}
-  }
-  
-  public int a(DataLineMsgSet paramDataLineMsgSet)
-  {
-    if (paramDataLineMsgSet == null) {
-      return -1;
-    }
-    Iterator localIterator = paramDataLineMsgSet.values().iterator();
-    while (localIterator.hasNext())
-    {
-      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-      a(this.jdField_a_of_type_JavaLangString, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
-    }
-    b(paramDataLineMsgSet);
-    return 1;
-  }
-  
   public long a(DataLineMsgRecord paramDataLineMsgRecord)
   {
     WaitEvent localWaitEvent = new WaitEvent(false, false);
@@ -359,32 +327,17 @@ public class DataLineMsgProxy
     return 0L;
   }
   
-  public DataLineMsgRecord a()
-  {
-    try
-    {
-      init();
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList;
-      if (localObject1 == null) {
-        return null;
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.get(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.size() - 1).getLastItem();
-      return localObject1;
-    }
-    finally {}
-  }
-  
   public DataLineMsgRecord a(long paramLong)
   {
     try
     {
       init();
-      Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList;
+      Object localObject3 = this.b;
       Object localObject1 = null;
       if (localObject3 == null) {
         return null;
       }
-      Iterator localIterator1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.iterator();
+      Iterator localIterator1 = this.b.iterator();
       Iterator localIterator2;
       for (;;)
       {
@@ -406,9 +359,9 @@ public class DataLineMsgProxy
       if (localObject1 == null)
       {
         localObject3 = localObject1;
-        if (this.b != null)
+        if (this.c != null)
         {
-          localIterator1 = this.b.iterator();
+          localIterator1 = this.c.iterator();
           for (;;)
           {
             localObject3 = localObject1;
@@ -447,7 +400,7 @@ public class DataLineMsgProxy
       if (paramInt == 0) {
         return null;
       }
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.iterator();
+      Iterator localIterator = this.b.iterator();
       Object localObject1;
       do
       {
@@ -461,9 +414,9 @@ public class DataLineMsgProxy
       if (localObject1 == null)
       {
         localObject3 = localObject1;
-        if (this.b != null)
+        if (this.c != null)
         {
-          localIterator = this.b.iterator();
+          localIterator = this.c.iterator();
           int i;
           do
           {
@@ -488,76 +441,12 @@ public class DataLineMsgProxy
     }
   }
   
-  public DataLineMsgSet a(long paramLong)
-  {
-    try
-    {
-      init();
-      Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList;
-      Object localObject1 = null;
-      if (localObject3 == null) {
-        return null;
-      }
-      Iterator localIterator1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.iterator();
-      Iterator localIterator2;
-      for (;;)
-      {
-        if (!localIterator1.hasNext()) {
-          break label100;
-        }
-        localObject3 = (DataLineMsgSet)localIterator1.next();
-        localIterator2 = ((DataLineMsgSet)localObject3).values().iterator();
-        if (localIterator2.hasNext())
-        {
-          if (((DataLineMsgRecord)localIterator2.next()).sessionid != paramLong) {
-            break;
-          }
-          localObject1 = localObject3;
-        }
-      }
-      label100:
-      localObject3 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject3 = localObject1;
-        if (this.b != null)
-        {
-          localIterator1 = this.b.iterator();
-          for (;;)
-          {
-            localObject3 = localObject1;
-            if (!localIterator1.hasNext()) {
-              break label202;
-            }
-            localObject3 = (DataLineMsgSet)localIterator1.next();
-            localIterator2 = ((DataLineMsgSet)localObject3).values().iterator();
-            if (localIterator2.hasNext())
-            {
-              long l = ((DataLineMsgRecord)localIterator2.next()).sessionid;
-              if (l != paramLong) {
-                break;
-              }
-              localObject1 = localObject3;
-            }
-          }
-        }
-      }
-      label202:
-      return localObject3;
-    }
-    finally {}
-    for (;;)
-    {
-      throw localObject2;
-    }
-  }
-  
   public DataLineMsgSetList a()
   {
     try
     {
       init();
-      DataLineMsgSetList localDataLineMsgSetList = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList;
+      DataLineMsgSetList localDataLineMsgSetList = this.b;
       return localDataLineMsgSetList;
     }
     finally
@@ -572,67 +461,13 @@ public class DataLineMsgProxy
     try
     {
       init();
-      if ((this.b == null) && (paramBoolean)) {
-        this.b = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.clone();
+      if ((this.c == null) && (paramBoolean)) {
+        this.c = this.b.clone();
       }
-      DataLineMsgSetList localDataLineMsgSetList = this.b;
+      DataLineMsgSetList localDataLineMsgSetList = this.c;
       return localDataLineMsgSetList;
     }
     finally {}
-  }
-  
-  public List<DataLineMsgRecord> a()
-  {
-    try
-    {
-      init();
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.iterator();
-      Iterator localIterator2;
-      DataLineMsgRecord localDataLineMsgRecord;
-      for (;;)
-      {
-        if (!localIterator1.hasNext()) {
-          break label87;
-        }
-        localIterator2 = ((DataLineMsgSet)localIterator1.next()).values().iterator();
-        if (localIterator2.hasNext())
-        {
-          localDataLineMsgRecord = (DataLineMsgRecord)localIterator2.next();
-          if (!DataLineMsgSet.isFileType(localDataLineMsgRecord)) {
-            break;
-          }
-          localArrayList.add(localDataLineMsgRecord);
-        }
-      }
-      label87:
-      if ((localArrayList.isEmpty()) && (this.b != null))
-      {
-        localIterator1 = this.b.iterator();
-        for (;;)
-        {
-          if (!localIterator1.hasNext()) {
-            break label176;
-          }
-          localIterator2 = ((DataLineMsgSet)localIterator1.next()).values().iterator();
-          if (localIterator2.hasNext())
-          {
-            localDataLineMsgRecord = (DataLineMsgRecord)localIterator2.next();
-            if (!DataLineMsgSet.isFileType(localDataLineMsgRecord)) {
-              break;
-            }
-            localArrayList.add(localDataLineMsgRecord);
-          }
-        }
-      }
-      label176:
-      return localArrayList;
-    }
-    finally {}
-    for (;;)
-    {
-      throw localObject;
-    }
   }
   
   public List<DataLineMsgRecord> a(String paramString)
@@ -644,7 +479,7 @@ public class DataLineMsgProxy
         return null;
       }
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.iterator();
+      Iterator localIterator1 = this.b.iterator();
       Iterator localIterator2;
       DataLineMsgRecord localDataLineMsgRecord;
       for (;;)
@@ -663,9 +498,9 @@ public class DataLineMsgProxy
         }
       }
       label113:
-      if ((localArrayList.size() == 0) && (this.b != null))
+      if ((localArrayList.size() == 0) && (this.c != null))
       {
-        localIterator1 = this.b.iterator();
+        localIterator1 = this.c.iterator();
         for (;;)
         {
           if (!localIterator1.hasNext()) {
@@ -696,40 +531,16 @@ public class DataLineMsgProxy
     }
   }
   
-  public void a()
-  {
-    try
-    {
-      if (this.b != null) {
-        this.b.clear();
-      }
-      this.b = null;
-      return;
-    }
-    finally {}
-  }
-  
   public void a(int paramInt, DataLineMsgProxy.LoadMoreAioMessageCb paramLoadMoreAioMessageCb)
   {
-    DataLineMsgSetList localDataLineMsgSetList = this.b;
+    DataLineMsgSetList localDataLineMsgSetList = this.c;
     long l;
     if ((localDataLineMsgSetList != null) && (!localDataLineMsgSetList.isEmpty())) {
-      l = this.b.getFirstId();
+      l = this.c.getFirstId();
     } else {
       l = 0L;
     }
     ThreadManager.post(new DataLineMsgProxy.13(this, l, paramInt, paramLoadMoreAioMessageCb), 8, null, true);
-  }
-  
-  public void a(long paramLong)
-  {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() == localLooper.getThread())
-    {
-      d(paramLong);
-      return;
-    }
-    new Handler(localLooper).post(new DataLineMsgProxy.10(this, paramLong));
   }
   
   public void a(long paramLong, String paramString)
@@ -741,7 +552,7 @@ public class DataLineMsgProxy
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("path", paramString);
       if (localObject != null) {
-        a(this.jdField_a_of_type_JavaLangString, localContentValues, "msgId=?", new String[] { String.valueOf(((DataLineMsgRecord)localObject).msgId) }, null);
+        a(this.a, localContentValues, "msgId=?", new String[] { String.valueOf(((DataLineMsgRecord)localObject).msgId) }, null);
       }
     }
     else
@@ -764,7 +575,7 @@ public class DataLineMsgProxy
         localContentValues.put("md5", paramArrayOfByte);
       }
       if (localObject != null) {
-        a(this.jdField_a_of_type_JavaLangString, localContentValues, "msgId=?", new String[] { String.valueOf(((DataLineMsgRecord)localObject).msgId) }, null);
+        a(this.a, localContentValues, "msgId=?", new String[] { String.valueOf(((DataLineMsgRecord)localObject).msgId) }, null);
       }
     }
     else
@@ -780,7 +591,7 @@ public class DataLineMsgProxy
     if (Thread.currentThread() == localLooper.getThread())
     {
       paramEntity = ((DataLineMsgRecord)paramEntity).clone();
-      this.proxyManager.addMsgQueue(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, paramEntity, 0, paramProxyListener);
+      this.proxyManager.addMsgQueue(String.valueOf(0), 0, this.a, paramEntity, 0, paramProxyListener);
       return;
     }
     new Handler(localLooper).post(new DataLineMsgProxy.2(this, paramEntity, paramProxyListener, localWaitEvent));
@@ -809,59 +620,29 @@ public class DataLineMsgProxy
     new Handler(localLooper).post(new DataLineMsgProxy.4(this, paramString1, paramString2, paramArrayOfString, paramProxyListener));
   }
   
-  public boolean a(long paramLong)
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("preloadDatalineFileData: sessionId[");
-    ((StringBuilder)localObject1).append(paramLong);
-    ((StringBuilder)localObject1).append("]");
-    QLog.e("DataLineMsgProxy", 1, ((StringBuilder)localObject1).toString());
-    if (a(paramLong) != null)
-    {
-      QLog.e("DataLineMsgProxy", 1, "preloadDatalineFileData: cache exist.");
-      return true;
-    }
-    localObject1 = this.app.getEntityManagerFactory().createEntityManager();
-    if (a(this.proxyManager, this.jdField_a_of_type_JavaLangString)) {
-      this.proxyManager.transSaveToDatabase((EntityManager)localObject1);
-    }
-    Object localObject3 = this.jdField_a_of_type_JavaLangString;
-    Object localObject2 = new StringBuilder();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("select * from ");
-    localStringBuilder.append((String)localObject3);
-    localStringBuilder.append(" ");
-    ((StringBuilder)localObject2).append(localStringBuilder.toString());
-    localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append("where sessionid = ");
-    ((StringBuilder)localObject3).append(paramLong);
-    ((StringBuilder)localObject2).append(((StringBuilder)localObject3).toString());
-    localObject2 = ((StringBuilder)localObject2).toString();
-    localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append("preloadDatalineFileData: sql[");
-    ((StringBuilder)localObject3).append((String)localObject2);
-    ((StringBuilder)localObject3).append("]");
-    QLog.e("DataLineMsgProxy", 1, ((StringBuilder)localObject3).toString());
-    localObject2 = ((EntityManager)localObject1).rawQuery(DataLineMsgRecord.class, (String)localObject2, null);
-    ((EntityManager)localObject1).close();
-    if ((localObject2 != null) && (!((List)localObject2).isEmpty()) && (this.b != null))
-    {
-      QLog.e("DataLineMsgProxy", 1, "preloadDatalineFileData: db exist.");
-      ThreadManagerV2.getUIHandlerV2().post(new DataLineMsgProxy.14(this, (List)localObject2));
-      return true;
-    }
-    QLog.e("DataLineMsgProxy", 1, "preloadDatalineFileData: not exist.");
-    return false;
-  }
-  
   public boolean a(DataLineMsgSet paramDataLineMsgSet)
   {
     init();
-    DataLineMsgSetList localDataLineMsgSetList = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList;
+    DataLineMsgSetList localDataLineMsgSetList = this.b;
     if (localDataLineMsgSetList != null) {
       return localDataLineMsgSetList.remove(paramDataLineMsgSet);
     }
     return false;
+  }
+  
+  public int b(DataLineMsgSet paramDataLineMsgSet)
+  {
+    if (paramDataLineMsgSet == null) {
+      return -1;
+    }
+    Iterator localIterator = paramDataLineMsgSet.values().iterator();
+    while (localIterator.hasNext())
+    {
+      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
+      a(this.a, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+    }
+    c(paramDataLineMsgSet);
+    return 1;
   }
   
   public long b(DataLineMsgRecord paramDataLineMsgRecord)
@@ -884,12 +665,12 @@ public class DataLineMsgProxy
     try
     {
       init();
-      Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList;
+      Object localObject3 = this.b;
       Object localObject1 = null;
       if (localObject3 == null) {
         return null;
       }
-      Iterator localIterator1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.iterator();
+      Iterator localIterator1 = this.b.iterator();
       Iterator localIterator2;
       for (;;)
       {
@@ -911,9 +692,9 @@ public class DataLineMsgProxy
       if (localObject1 == null)
       {
         localObject3 = localObject1;
-        if (this.b != null)
+        if (this.c != null)
         {
-          localIterator1 = this.b.iterator();
+          localIterator1 = this.c.iterator();
           for (;;)
           {
             localObject3 = localObject1;
@@ -943,17 +724,127 @@ public class DataLineMsgProxy
     }
   }
   
-  public DataLineMsgSet b(long paramLong)
+  public void b()
+  {
+    try
+    {
+      if (this.c != null) {
+        this.c.clear();
+      }
+      this.c = null;
+      return;
+    }
+    finally {}
+  }
+  
+  public void b(long paramLong, String paramString)
+  {
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() == ((Looper)localObject).getThread())
+    {
+      localObject = a(paramLong);
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("thumbPath", paramString);
+      if (localObject != null) {
+        a(this.a, localContentValues, "msgId=?", new String[] { String.valueOf(((DataLineMsgRecord)localObject).msgId) }, null);
+      }
+    }
+    else
+    {
+      new Handler((Looper)localObject).post(new DataLineMsgProxy.8(this, paramLong, paramString));
+    }
+  }
+  
+  public DataLineMsgRecord c()
   {
     try
     {
       init();
-      Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList;
+      Object localObject1 = this.b;
+      if (localObject1 == null) {
+        return null;
+      }
+      localObject1 = this.b.get(this.b.size() - 1).getLastItem();
+      return localObject1;
+    }
+    finally {}
+  }
+  
+  public DataLineMsgSet c(long paramLong)
+  {
+    try
+    {
+      init();
+      Object localObject3 = this.b;
       Object localObject1 = null;
       if (localObject3 == null) {
         return null;
       }
-      Iterator localIterator1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.iterator();
+      Iterator localIterator1 = this.b.iterator();
+      Iterator localIterator2;
+      for (;;)
+      {
+        if (!localIterator1.hasNext()) {
+          break label100;
+        }
+        localObject3 = (DataLineMsgSet)localIterator1.next();
+        localIterator2 = ((DataLineMsgSet)localObject3).values().iterator();
+        if (localIterator2.hasNext())
+        {
+          if (((DataLineMsgRecord)localIterator2.next()).sessionid != paramLong) {
+            break;
+          }
+          localObject1 = localObject3;
+        }
+      }
+      label100:
+      localObject3 = localObject1;
+      if (localObject1 == null)
+      {
+        localObject3 = localObject1;
+        if (this.c != null)
+        {
+          localIterator1 = this.c.iterator();
+          for (;;)
+          {
+            localObject3 = localObject1;
+            if (!localIterator1.hasNext()) {
+              break label202;
+            }
+            localObject3 = (DataLineMsgSet)localIterator1.next();
+            localIterator2 = ((DataLineMsgSet)localObject3).values().iterator();
+            if (localIterator2.hasNext())
+            {
+              long l = ((DataLineMsgRecord)localIterator2.next()).sessionid;
+              if (l != paramLong) {
+                break;
+              }
+              localObject1 = localObject3;
+            }
+          }
+        }
+      }
+      label202:
+      return localObject3;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
+    }
+  }
+  
+  public DataLineMsgSet d(long paramLong)
+  {
+    try
+    {
+      init();
+      Object localObject3 = this.b;
+      Object localObject1 = null;
+      if (localObject3 == null) {
+        return null;
+      }
+      Iterator localIterator1 = this.b.iterator();
       Iterator localIterator2;
       for (;;)
       {
@@ -975,9 +866,9 @@ public class DataLineMsgProxy
       if (localObject1 == null)
       {
         localObject3 = localObject1;
-        if (this.b != null)
+        if (this.c != null)
         {
-          localIterator1 = this.b.iterator();
+          localIterator1 = this.c.iterator();
           for (;;)
           {
             localObject3 = localObject1;
@@ -1007,11 +898,67 @@ public class DataLineMsgProxy
     }
   }
   
-  public void b()
+  public List<DataLineMsgRecord> d()
   {
     try
     {
-      d();
+      init();
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator1 = this.b.iterator();
+      Iterator localIterator2;
+      DataLineMsgRecord localDataLineMsgRecord;
+      for (;;)
+      {
+        if (!localIterator1.hasNext()) {
+          break label87;
+        }
+        localIterator2 = ((DataLineMsgSet)localIterator1.next()).values().iterator();
+        if (localIterator2.hasNext())
+        {
+          localDataLineMsgRecord = (DataLineMsgRecord)localIterator2.next();
+          if (!DataLineMsgSet.isFileType(localDataLineMsgRecord)) {
+            break;
+          }
+          localArrayList.add(localDataLineMsgRecord);
+        }
+      }
+      label87:
+      if ((localArrayList.isEmpty()) && (this.c != null))
+      {
+        localIterator1 = this.c.iterator();
+        for (;;)
+        {
+          if (!localIterator1.hasNext()) {
+            break label176;
+          }
+          localIterator2 = ((DataLineMsgSet)localIterator1.next()).values().iterator();
+          if (localIterator2.hasNext())
+          {
+            localDataLineMsgRecord = (DataLineMsgRecord)localIterator2.next();
+            if (!DataLineMsgSet.isFileType(localDataLineMsgRecord)) {
+              break;
+            }
+            localArrayList.add(localDataLineMsgRecord);
+          }
+        }
+      }
+      label176:
+      return localArrayList;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
+  }
+  
+  public void destroy() {}
+  
+  public void e()
+  {
+    try
+    {
+      h();
       return;
     }
     finally
@@ -1021,44 +968,53 @@ public class DataLineMsgProxy
     }
   }
   
-  public void b(long paramLong)
+  public void e(long paramLong)
   {
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      e(paramLong);
+      i(paramLong);
+      return;
+    }
+    new Handler(localLooper).post(new DataLineMsgProxy.10(this, paramLong));
+  }
+  
+  public void f()
+  {
+    i();
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("isread", Boolean.valueOf(true));
+    a(this.a, localContentValues, "isread=?", new String[] { "0" }, null);
+  }
+  
+  public void f(long paramLong)
+  {
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() == localLooper.getThread())
+    {
+      j(paramLong);
       return;
     }
     new Handler(localLooper).post(new DataLineMsgProxy.11(this, paramLong));
   }
   
-  public void b(long paramLong, String paramString)
+  public int g()
   {
-    Object localObject = Looper.getMainLooper();
-    if (Thread.currentThread() == ((Looper)localObject).getThread())
+    try
     {
-      localObject = a(paramLong);
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("thumbPath", paramString);
-      if (localObject != null) {
-        a(this.jdField_a_of_type_JavaLangString, localContentValues, "msgId=?", new String[] { String.valueOf(((DataLineMsgRecord)localObject).msgId) }, null);
+      init();
+      int i = this.b.size();
+      this.b.clear();
+      if (this.c != null) {
+        this.c.clear();
       }
+      a(this.a, null, null, null);
+      return i;
     }
-    else
-    {
-      new Handler((Looper)localObject).post(new DataLineMsgProxy.8(this, paramLong, paramString));
-    }
+    finally {}
   }
   
-  public void c()
-  {
-    e();
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("isread", Boolean.valueOf(true));
-    a(this.jdField_a_of_type_JavaLangString, localContentValues, "isread=?", new String[] { "0" }, null);
-  }
-  
-  public void c(long paramLong)
+  public void g(long paramLong)
   {
     Object localObject = Looper.getMainLooper();
     if (Thread.currentThread() == ((Looper)localObject).getThread())
@@ -1069,7 +1025,7 @@ public class DataLineMsgProxy
         ((DataLineMsgRecord)localObject).issuc = false;
         ContentValues localContentValues = new ContentValues();
         localContentValues.put("issuc", Boolean.valueOf(false));
-        a(this.jdField_a_of_type_JavaLangString, localContentValues, "msgId=?", new String[] { String.valueOf(((DataLineMsgRecord)localObject).msgId) }, null);
+        a(this.a, localContentValues, "msgId=?", new String[] { String.valueOf(((DataLineMsgRecord)localObject).msgId) }, null);
       }
     }
     else
@@ -1078,19 +1034,62 @@ public class DataLineMsgProxy
     }
   }
   
-  public void destroy() {}
+  public boolean h(long paramLong)
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("preloadDatalineFileData: sessionId[");
+    ((StringBuilder)localObject1).append(paramLong);
+    ((StringBuilder)localObject1).append("]");
+    QLog.e("DataLineMsgProxy", 1, ((StringBuilder)localObject1).toString());
+    if (c(paramLong) != null)
+    {
+      QLog.e("DataLineMsgProxy", 1, "preloadDatalineFileData: cache exist.");
+      return true;
+    }
+    localObject1 = this.app.getEntityManagerFactory().createEntityManager();
+    if (a(this.proxyManager, this.a)) {
+      this.proxyManager.transSaveToDatabase((EntityManager)localObject1);
+    }
+    Object localObject3 = this.a;
+    Object localObject2 = new StringBuilder();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("select * from ");
+    localStringBuilder.append((String)localObject3);
+    localStringBuilder.append(" ");
+    ((StringBuilder)localObject2).append(localStringBuilder.toString());
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("where sessionid = ");
+    ((StringBuilder)localObject3).append(paramLong);
+    ((StringBuilder)localObject2).append(((StringBuilder)localObject3).toString());
+    localObject2 = ((StringBuilder)localObject2).toString();
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("preloadDatalineFileData: sql[");
+    ((StringBuilder)localObject3).append((String)localObject2);
+    ((StringBuilder)localObject3).append("]");
+    QLog.e("DataLineMsgProxy", 1, ((StringBuilder)localObject3).toString());
+    localObject2 = ((EntityManager)localObject1).rawQuery(DataLineMsgRecord.class, (String)localObject2, null);
+    ((EntityManager)localObject1).close();
+    if ((localObject2 != null) && (!((List)localObject2).isEmpty()) && (this.c != null))
+    {
+      QLog.e("DataLineMsgProxy", 1, "preloadDatalineFileData: db exist.");
+      ThreadManagerV2.getUIHandlerV2().post(new DataLineMsgProxy.14(this, (List)localObject2));
+      return true;
+    }
+    QLog.e("DataLineMsgProxy", 1, "preloadDatalineFileData: not exist.");
+    return false;
+  }
   
   public void init()
   {
     try
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList;
+      Object localObject1 = this.b;
       if (localObject1 != null) {
         return;
       }
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.a;
       EntityManager localEntityManager = this.app.getEntityManagerFactory().createEntityManager();
-      if (a(this.proxyManager, this.jdField_a_of_type_JavaLangString)) {
+      if (a(this.proxyManager, this.a)) {
         this.proxyManager.transSaveToDatabase(localEntityManager);
       }
       ThreadManager.post(new DataLineMsgProxy.1(this, localEntityManager, (String)localObject1), 5, null, true);
@@ -1099,7 +1098,7 @@ public class DataLineMsgProxy
       if (localObject3 == null) {
         localObject1 = new ArrayList();
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList = new DataLineMsgSetList();
+      this.b = new DataLineMsgSetList();
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
@@ -1112,7 +1111,7 @@ public class DataLineMsgProxy
         if ((str != null) && (str.contains("/Tencent/QQfile_recv/"))) {
           ((DataLineMsgRecord)localObject3).thumbPath = VFSAssistantUtils.getSDKPrivatePath(str);
         }
-        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.appendToList((DataLineMsgRecord)localObject3);
+        this.b.appendToList((DataLineMsgRecord)localObject3);
       }
       localEntityManager.close();
       return;
@@ -1126,7 +1125,7 @@ public class DataLineMsgProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.DataLineMsgProxy
  * JD-Core Version:    0.7.0.1
  */

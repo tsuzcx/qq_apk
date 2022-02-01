@@ -15,33 +15,33 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IRIJXTabFrameUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
-import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoySPEventReport;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
+import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
+import com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase;
+import com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase.Companion;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailyFragment;
-import com.tencent.mobileqq.kandian.biz.daily.api.IKanDianDailyReportUtils;
 import com.tencent.mobileqq.kandian.biz.feeds.entity.RedPntInfoForReport;
-import com.tencent.mobileqq.kandian.biz.framework.api.IRIJAppSetting;
-import com.tencent.mobileqq.kandian.biz.framework.api.IRIJFeedsType;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
+import com.tencent.mobileqq.kandian.biz.privatechat.api.impl.RIJPrivateChatServiceImpl;
+import com.tencent.mobileqq.kandian.biz.privatechat.api.impl.RIJPrivateChatServiceImpl.Companion;
 import com.tencent.mobileqq.kandian.biz.pts.listeners.OnSocialHeaderFollowClickListener;
 import com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus;
 import com.tencent.mobileqq.kandian.biz.push.api.IKanDianMergeManager;
-import com.tencent.mobileqq.kandian.biz.xtab.badge.RIJXTabBadgeStore;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.ForeBackGround;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.UserOptInfo;
-import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyUserInfoModule;
 import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyUserInfoModule.RefreshUserInfoCallBack;
-import com.tencent.mobileqq.kandian.glue.report.api.IReadInJoyReportUtils;
-import com.tencent.mobileqq.kandian.glue.router.msgbox.api.IRIJMsgBoxUtils;
+import com.tencent.mobileqq.kandian.glue.router.msgbox.api.impl.RIJMsgBoxUtils;
 import com.tencent.mobileqq.kandian.repo.account.api.IUserOperationModule;
 import com.tencent.mobileqq.kandian.repo.aladdin.handlers.DailyModeConfigHandler;
 import com.tencent.mobileqq.kandian.repo.common.RIJItemViewTypeUtils;
+import com.tencent.mobileqq.kandian.repo.common.RIJShowKanDianTabSp;
+import com.tencent.mobileqq.kandian.repo.common.ReadInJoyUserInfoModule;
 import com.tencent.mobileqq.kandian.repo.db.struct.BaseArticleInfo;
+import com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsType;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.FeedsInfoUser;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyUserInfo;
@@ -49,10 +49,11 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.SocializeFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.UGCFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.reddot.KandianMsgBoxRedPntInfo;
 import com.tencent.mobileqq.kandian.repo.report.ReportInfo;
+import com.tencent.mobileqq.kandian.repo.report.UserOperationModule;
+import com.tencent.mobileqq.kandian.repo.xtab.badge.RIJXTabBadgeStore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.EmotionCodecUtils;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.util.Utils;
@@ -69,6 +70,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -77,40 +79,40 @@ import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 public class ReadinjoyReportUtils
 {
   public static int a = 1;
-  public static long a = 0L;
-  public static String a;
-  public static Map<Long, Pair<Long, Long>> a;
-  private static boolean a = true;
   public static int b = 2;
-  public static final Map<Long, Map<Long, ReadinjoyReportUtils.ExposureReportItem>> b;
-  private static boolean b = false;
   public static int c = 1;
   public static int d = 2;
   public static int e = 10;
   public static int f = 11;
   public static int g = 12;
-  public static volatile int h = 0;
-  private static int i;
+  public static long h = 0L;
+  public static String i;
+  public static Map<Long, Pair<Long, Long>> j;
+  public static final Map<Long, Map<Long, ReadinjoyReportUtils.ExposureReportItem>> k;
+  public static volatile int l = 0;
+  private static boolean m = true;
+  private static boolean n;
+  private static int o;
   
   static
   {
-    ((IReadInJoySPEventReport)QRoute.api(IReadInJoySPEventReport.class)).addForeBackGroundCallback(new ReadinjoyReportUtils.1());
-    jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_b_of_type_JavaUtilMap = new HashMap();
-    jdField_b_of_type_Boolean = true;
-    i = 0;
+    ReadinjoySPEventReport.ForeBackGround.a(new ReadinjoyReportUtils.1());
+    h = 0L;
+    i = "";
+    j = new HashMap();
+    k = new HashMap();
+    n = true;
+    o = 0;
   }
   
   public static int a()
   {
-    int j = ((IRIJAppSetting)QRoute.api(IRIJAppSetting.class)).getKanDianMode();
-    if (j != 1)
+    int i1 = RIJAppSetting.b();
+    if (i1 != 1)
     {
-      if (j != 2)
+      if (i1 != 2)
       {
-        if (j != 7) {
+        if (i1 != 7) {
           return 1;
         }
         return 5;
@@ -152,58 +154,10 @@ public class ReadinjoyReportUtils
   
   public static Pair<Long, Long> a(long paramLong)
   {
-    if (jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-      return (Pair)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+    if (j.containsKey(Long.valueOf(paramLong))) {
+      return (Pair)j.get(Long.valueOf(paramLong));
     }
     return null;
-  }
-  
-  public static String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("version", VideoReporter.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("os", "1");
-      localJSONObject.put("channel_id", ((IKanDianDailyReportUtils)QRoute.api(IKanDianDailyReportUtils.class)).getChannelId());
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return localJSONObject.toString();
-  }
-  
-  private static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "Other";
-    case 7: 
-      return "4Tab";
-    case 6: 
-      return "Daily";
-    case 5: 
-      return "Lock";
-    case 4: 
-      return "MsgTab";
-    case 3: 
-      return "FromDTTab";
-    }
-    return "KDTAB";
-  }
-  
-  public static String a(long paramLong)
-  {
-    if ((!DailyModeConfigHandler.a((int)paramLong)) && (!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isDailyChildFeeds(paramLong)))
-    {
-      if (a(paramLong)) {
-        return "0X8009356";
-      }
-      return "0X8009332";
-    }
-    return "0X8009CCB";
   }
   
   public static String a(Context paramContext, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2)
@@ -211,8 +165,8 @@ public class ReadinjoyReportUtils
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("network", ((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).getNetWord(paramContext));
-      localJSONObject.put("version", VideoReporter.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("network", GalleryReportedUtils.a(paramContext));
+      localJSONObject.put("version", VideoReporter.a);
       localJSONObject.put("os", "1");
       localJSONObject.put("ads_source", paramInt1);
       localJSONObject.put("card_pos ", paramInt2);
@@ -247,9 +201,9 @@ public class ReadinjoyReportUtils
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("network", ((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).getNetWord(paramContext));
+      localJSONObject.put("network", GalleryReportedUtils.a(paramContext));
       localJSONObject.put("channel_id", paramInt2);
-      localJSONObject.put("version", VideoReporter.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("version", VideoReporter.a);
       localJSONObject.put("os", "1");
       localJSONObject.put("vid", paramString2);
       localJSONObject.put("rowkey", paramString1);
@@ -257,7 +211,7 @@ public class ReadinjoyReportUtils
       localJSONObject.put("feeds_type", paramInt1);
       localJSONObject.put("star_logo", "0");
       localJSONObject.put("is_ugc_as_pgc", paramInt3);
-      localJSONObject.put("r_session_id", jdField_a_of_type_JavaLangString);
+      localJSONObject.put("r_session_id", i);
       paramContext = a(paramLong1);
       if (paramContext != null)
       {
@@ -272,11 +226,10 @@ public class ReadinjoyReportUtils
       }
       if (DailyModeConfigHandler.c(paramInt2))
       {
-        paramContext = (IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class);
-        paramString1 = new StringBuilder();
-        paramString1.append("readinjoy_daily_article_first_exposure_");
-        paramString1.append(paramLong1);
-        paramLong1 = ((Long)paramContext.getReadInJoySpValue(paramString1.toString(), Long.valueOf(0L))).longValue();
+        paramContext = new StringBuilder();
+        paramContext.append("readinjoy_daily_article_first_exposure_");
+        paramContext.append(paramLong1);
+        paramLong1 = ((Long)RIJSPUtils.b(paramContext.toString(), Long.valueOf(0L))).longValue();
         if (paramLong1 != 0L)
         {
           paramContext = new StringBuilder();
@@ -302,38 +255,6 @@ public class ReadinjoyReportUtils
     return "";
   }
   
-  public static String a(TemplateBean paramTemplateBean, String paramString1, String paramString2)
-  {
-    if (paramTemplateBean != null)
-    {
-      if (paramString2 == null) {
-        return null;
-      }
-      paramTemplateBean = paramTemplateBean.getDataAttribute(paramString1);
-      if (paramTemplateBean != null)
-      {
-        paramTemplateBean = paramTemplateBean.get(paramString2);
-        if (paramTemplateBean != null) {
-          return paramTemplateBean.toString();
-        }
-      }
-    }
-    return null;
-  }
-  
-  public static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    Object localObject = "";
-    if (paramAbsBaseArticleInfo != null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.innerUniqueID);
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    return localObject;
-  }
-  
   public static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo, IReadInJoyUserInfoModule.RefreshUserInfoCallBack paramRefreshUserInfoCallBack)
   {
     if (paramAbsBaseArticleInfo == null)
@@ -357,29 +278,28 @@ public class ReadinjoyReportUtils
         paramRefreshUserInfoCallBack.append(paramAbsBaseArticleInfo.msgBoxBriefPreFix);
         paramRefreshUserInfoCallBack.append(": ");
         paramRefreshUserInfoCallBack = paramRefreshUserInfoCallBack.toString();
-        break label282;
+        break label244;
       }
       if ((paramAbsBaseArticleInfo.msgBoxBriefPreFixType == 2) && (TextUtils.isDigitsOnly(paramAbsBaseArticleInfo.msgBoxBriefPreFix)))
       {
-        long l = Long.valueOf(paramAbsBaseArticleInfo.msgBoxBriefPreFix).longValue();
-        paramRefreshUserInfoCallBack = ((IReadInJoyUserInfoModule)QRoute.api(IReadInJoyUserInfoModule.class)).getSingleKDUserInfo(l, paramRefreshUserInfoCallBack);
+        paramRefreshUserInfoCallBack = ReadInJoyUserInfoModule.a(Long.valueOf(paramAbsBaseArticleInfo.msgBoxBriefPreFix).longValue(), paramRefreshUserInfoCallBack);
         if (paramRefreshUserInfoCallBack == null)
         {
           paramRefreshUserInfoCallBack = new StringBuilder();
-          paramRefreshUserInfoCallBack.append(((IReadInJoyUserInfoModule)QRoute.api(IReadInJoyUserInfoModule.class)).getDefaultNickName());
+          paramRefreshUserInfoCallBack.append(ReadInJoyUserInfoModule.d());
           paramRefreshUserInfoCallBack.append(": ");
           paramRefreshUserInfoCallBack = paramRefreshUserInfoCallBack.toString();
-          break label282;
+          break label244;
         }
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramRefreshUserInfoCallBack.nick);
         localStringBuilder.append(": ");
         paramRefreshUserInfoCallBack = localStringBuilder.toString();
-        break label282;
+        break label244;
       }
     }
     paramRefreshUserInfoCallBack = null;
-    label282:
+    label244:
     if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.msgBoxBriefContent)) {
       paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.msgBoxBriefContent;
     } else {
@@ -392,7 +312,7 @@ public class ReadinjoyReportUtils
       localStringBuilder.append(paramAbsBaseArticleInfo);
       paramAbsBaseArticleInfo = localStringBuilder.toString();
     }
-    return EmotionCodecUtils.b(paramAbsBaseArticleInfo);
+    return EmotionCodecUtils.c(paramAbsBaseArticleInfo);
   }
   
   public static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString, int paramInt)
@@ -413,118 +333,20 @@ public class ReadinjoyReportUtils
   
   public static Map<Long, ReadinjoyReportUtils.ExposureReportItem> a(int paramInt)
   {
-    Map localMap1 = jdField_b_of_type_JavaUtilMap;
-    long l = paramInt;
+    Map localMap1 = k;
+    long l1 = paramInt;
     try
     {
-      Map localMap2 = a(l);
-      jdField_b_of_type_JavaUtilMap.remove(Long.valueOf(l));
+      Map localMap2 = b(l1);
+      k.remove(Long.valueOf(l1));
       return localMap2;
     }
     finally {}
   }
   
-  public static Map<Long, ReadinjoyReportUtils.ExposureReportItem> a(long paramLong)
-  {
-    synchronized (jdField_b_of_type_JavaUtilMap)
-    {
-      Map localMap1 = (Map)jdField_b_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      Object localObject1 = localMap1;
-      if (localMap1 == null)
-      {
-        localObject1 = new HashMap();
-        jdField_b_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localObject1);
-      }
-      return localObject1;
-    }
-  }
-  
-  public static JSONObject a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt, boolean paramBoolean, String paramString)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramAbsBaseArticleInfo != null) {}
-    for (;;)
-    {
-      try
-      {
-        localJSONObject.put("app_type", c());
-        localJSONObject.put("channel_id", paramAbsBaseArticleInfo.mChannelID);
-        localJSONObject.put("scene_type", paramInt);
-        if (!paramBoolean) {
-          break label236;
-        }
-        paramInt = 1;
-        localJSONObject.put("is_intensify", paramInt);
-        localJSONObject.put("feeds_type", ((IRIJFeedsType)QRoute.api(IRIJFeedsType.class)).checkArticleType(paramAbsBaseArticleInfo));
-        localJSONObject.put("rowkey", paramAbsBaseArticleInfo.innerUniqueID);
-        localJSONObject.put("puin", paramAbsBaseArticleInfo.getSubscribeUin());
-        if ((paramAbsBaseArticleInfo.mSocialFeedInfo == null) || (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser == null)) {
-          break label241;
-        }
-        l = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long;
-        localJSONObject.put("ugcuin", l);
-        localJSONObject.put("algorithm_id", paramAbsBaseArticleInfo.mAlgorithmID);
-        localJSONObject.put("button_type", paramAbsBaseArticleInfo.showFollowButtonType);
-        localJSONObject.put("last_rowkey", paramAbsBaseArticleInfo.mArticleID);
-        localJSONObject.put("comment_id", paramString);
-        localJSONObject.put("kandian_mode_new", VideoReporter.a());
-        return localJSONObject;
-      }
-      catch (JSONException paramAbsBaseArticleInfo)
-      {
-        QLog.d("ReadinjoyReportUtils", 1, paramAbsBaseArticleInfo.getMessage());
-      }
-      return localJSONObject;
-      label236:
-      paramInt = 0;
-      continue;
-      label241:
-      long l = 0L;
-    }
-  }
-  
-  public static JSONObject a(String paramString)
-  {
-    try
-    {
-      paramString = (JSONObject)new JSONTokener(paramString).nextValue();
-      return paramString;
-    }
-    catch (JSONException|NullPointerException|Exception paramString) {}
-    return null;
-  }
-  
-  public static void a()
-  {
-    Object localObject = new ArrayList();
-    oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
-    localAttributeList.att_id.set(1);
-    localAttributeList.att_name.set("FolderStatus");
-    PBStringField localPBStringField = localAttributeList.att_value;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(RIJKanDianFolderStatus.reportFolderStatus);
-    localStringBuilder.append("");
-    localPBStringField.set(localStringBuilder.toString());
-    ((ArrayList)localObject).add(localAttributeList);
-    a(10, (List)localObject);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("reportKandianDelete  , foldStatus :  ");
-      ((StringBuilder)localObject).append(RIJKanDianFolderStatus.reportFolderStatus);
-      QLog.d("ReadinjoyReportUtils", 2, ((StringBuilder)localObject).toString());
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    i = paramInt | i;
-    ReadinjoySPEventReport.e(3);
-  }
-  
   public static void a(int paramInt1, int paramInt2, long paramLong, HashMap<String, Object> paramHashMap)
   {
-    Object localObject1 = RIJTransMergeKanDianReport.a();
+    Object localObject1 = RIJTransMergeKanDianReport.g();
     if (paramHashMap != null)
     {
       paramHashMap = paramHashMap.entrySet().iterator();
@@ -557,21 +379,21 @@ public class ReadinjoyReportUtils
       QLog.d("ReadinjoyReportUtils", 2, ((StringBuilder)localObject1).toString());
     }
     localObject1 = Aladdin.getConfig(466);
-    int k = 0;
-    int j = k;
+    int i2 = 0;
+    int i1 = i2;
     if (localObject1 != null)
     {
-      j = k;
+      i1 = i2;
       if (((AladdinConfig)localObject1).getIntegerFromString("qualityReportSwitch", 0) == 1) {
-        j = 1;
+        i1 = 1;
       }
     }
-    if (j == 0)
+    if (i1 == 0)
     {
       QLog.i("ReadinjoyReportUtils", 1, "[reportQualityDataDimension] qualityReportSwitch canReport is false.");
       return;
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800ACB9", "0X800ACB9", paramInt2, 0, String.valueOf(paramInt1), String.valueOf(paramLong), "", paramHashMap, false);
+    PublicAccountReportUtils.a(null, "", "0X800ACB9", "0X800ACB9", paramInt2, 0, String.valueOf(paramInt1), String.valueOf(paramLong), "", paramHashMap, false);
   }
   
   public static void a(int paramInt1, int paramInt2, Activity paramActivity, int paramInt3)
@@ -588,7 +410,7 @@ public class ReadinjoyReportUtils
     if (paramInt1 == 0) {
       return;
     }
-    boolean bool1 = jdField_b_of_type_Boolean;
+    boolean bool1 = n;
     boolean bool2 = true;
     if ((!bool1) && (3 == paramInt1))
     {
@@ -605,17 +427,17 @@ public class ReadinjoyReportUtils
       {
         bool1 = bool2;
         if (paramInt1 == 6) {
-          break label114;
+          break label113;
         }
         if (paramInt1 != 1001)
         {
           bool1 = bool2;
-          break label114;
+          break label113;
         }
       }
       bool1 = paramBoolean;
     }
-    label114:
+    label113:
     a(paramInt2, paramActivity, bool1, paramInt3);
   }
   
@@ -635,24 +457,24 @@ public class ReadinjoyReportUtils
       QLog.e("ReadinjoyReportUtils", 1, "reportQuality req = null ");
       return;
     }
-    long l = 0L;
+    long l1 = 0L;
     if (paramToServiceMsg.extraData != null) {
-      l = System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey");
+      l1 = System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey");
     }
-    a(paramInt1, paramInt2, l, paramHashMap);
+    a(paramInt1, paramInt2, l1, paramHashMap);
   }
   
   public static void a(int paramInt, String paramString1, String paramString2, Resources paramResources)
   {
     if ((paramInt == 1008) && (AppConstants.KANDIAN_DAILY_UIN.equals(paramString1)))
     {
-      if (Utils.a(paramString2, paramResources.getString(com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder.a[3])))
+      if (Utils.a(paramString2, paramResources.getString(com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder.c[3])))
       {
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009884", "0X8009884", 0, 0, "", "", "", a(), false);
+        PublicAccountReportUtils.a(null, null, "0X8009884", "0X8009884", 0, 0, "", "", "", c(), false);
         return;
       }
-      if (Utils.a(paramString2, paramResources.getString(com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder.a[2]))) {
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009885", "0X8009885", 0, 0, "", "", "", a(), false);
+      if (Utils.a(paramString2, paramResources.getString(com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder.c[2]))) {
+        PublicAccountReportUtils.a(null, null, "0X8009885", "0X8009885", 0, 0, "", "", "", c(), false);
       }
     }
   }
@@ -663,10 +485,10 @@ public class ReadinjoyReportUtils
     {
       if (paramBoolean)
       {
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009884", "0X8009884", 0, 0, "", "", "", a(), false);
+        PublicAccountReportUtils.a(null, null, "0X8009884", "0X8009884", 0, 0, "", "", "", c(), false);
         return;
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009885", "0X8009885", 0, 0, "", "", "", a(), false);
+      PublicAccountReportUtils.a(null, null, "0X8009885", "0X8009885", 0, 0, "", "", "", c(), false);
     }
   }
   
@@ -688,20 +510,20 @@ public class ReadinjoyReportUtils
   public static void a(int paramInt1, boolean paramBoolean1, long paramLong, int paramInt2, int paramInt3, boolean paramBoolean2, int paramInt4)
   {
     ArrayList localArrayList = new ArrayList();
-    ReadinjoySPEventReport.a().jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineReadinjoySPEventReport$UserOptInfo.a(paramBoolean1);
-    int j = 5;
+    ReadinjoySPEventReport.a().f.a(paramBoolean1);
+    int i1 = 5;
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    long l;
+    long l1;
     if (paramBoolean1)
     {
-      ReadinjoySPEventReport.n();
+      ReadinjoySPEventReport.t();
       ReadinjoySPEventReport.ForeBackGround.a(4);
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(1);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("EnterType");
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(a(paramInt1));
+      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(c(paramInt1));
       localArrayList.add(localObject1);
       localObject2 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject2).att_id.set(2);
@@ -725,41 +547,41 @@ public class ReadinjoyReportUtils
         localObject1 = new oidb_cmd0x80a.AttributeList();
         ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(3);
         ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("StrategyID");
-        ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.b);
+        ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.c);
         localArrayList.add(localObject1);
         localObject1 = new oidb_cmd0x80a.AttributeList();
         ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(4);
         ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("AlgorithmID");
-        ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_JavaLangString);
+        ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.b);
         localArrayList.add(localObject1);
         paramLong = NetConnInfoCenter.getServerTime();
-        l = RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_Long;
+        l1 = RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.f;
         localObject1 = new oidb_cmd0x80a.AttributeList();
         ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(5);
         ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("costtime");
         localObject2 = ((oidb_cmd0x80a.AttributeList)localObject1).att_value;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("");
-        ((StringBuilder)localObject3).append(paramLong - l);
+        ((StringBuilder)localObject3).append(paramLong - l1);
         ((PBStringField)localObject2).set(((StringBuilder)localObject3).toString());
         localArrayList.add(localObject1);
       }
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(6);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("durationBeforeEnter");
-      if (ReadinjoySPEventReport.a().d() > 0L)
+      if (ReadinjoySPEventReport.a().u() > 0L)
       {
         paramLong = System.currentTimeMillis();
-        l = ReadinjoySPEventReport.a().d();
+        l1 = ReadinjoySPEventReport.a().u();
       }
       else
       {
         paramLong = System.currentTimeMillis();
-        l = ReadinjoySPEventReport.jdField_a_of_type_Long;
+        l1 = ReadinjoySPEventReport.a;
       }
       localObject2 = ((oidb_cmd0x80a.AttributeList)localObject1).att_value;
       localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(paramLong - l);
+      ((StringBuilder)localObject3).append(paramLong - l1);
       ((StringBuilder)localObject3).append("");
       ((PBStringField)localObject2).set(((StringBuilder)localObject3).toString());
       localArrayList.add(localObject1);
@@ -767,7 +589,7 @@ public class ReadinjoyReportUtils
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(7);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("channelID");
       if (paramInt1 == 7) {
-        paramInt2 = RIJXTabBadgeStore.a.a();
+        paramInt2 = RIJXTabBadgeStore.a.c();
       } else {
         paramInt2 = paramInt4;
       }
@@ -791,7 +613,7 @@ public class ReadinjoyReportUtils
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(1);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("ExitType");
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(a(paramInt1));
+      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(c(paramInt1));
       localArrayList.add(localObject1);
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(2);
@@ -801,7 +623,7 @@ public class ReadinjoyReportUtils
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(3);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("Time");
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(String.valueOf(ReadinjoySPEventReport.a(paramLong)));
+      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(String.valueOf(ReadinjoySPEventReport.b(paramLong)));
       localArrayList.add(localObject1);
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(4);
@@ -812,36 +634,36 @@ public class ReadinjoyReportUtils
       ((StringBuilder)localObject3).append("");
       ((PBStringField)localObject2).set(((StringBuilder)localObject3).toString());
       localArrayList.add(localObject1);
-      if (RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_Int != 1)
+      if (RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.a != 1)
       {
         localObject1 = new oidb_cmd0x80a.AttributeList();
         ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(5);
         ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("StrategyID");
-        ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.b);
+        ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.c);
         localArrayList.add(localObject1);
         localObject1 = new oidb_cmd0x80a.AttributeList();
         ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(6);
         ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("AlgorithmID");
-        ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_JavaLangString);
+        ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.b);
         localArrayList.add(localObject1);
         paramLong = NetConnInfoCenter.getServerTime();
-        l = RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_Long;
+        l1 = RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.f;
         localObject1 = new oidb_cmd0x80a.AttributeList();
         ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(7);
         ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("costtime");
         localObject2 = ((oidb_cmd0x80a.AttributeList)localObject1).att_value;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("");
-        ((StringBuilder)localObject3).append(paramLong - l);
+        ((StringBuilder)localObject3).append(paramLong - l1);
         ((PBStringField)localObject2).set(((StringBuilder)localObject3).toString());
         localArrayList.add(localObject1);
       }
-      localObject1 = ReadinjoySPEventReport.a().b;
+      localObject1 = ReadinjoySPEventReport.a().g;
       localObject2 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject2).att_id.set(8);
       ((oidb_cmd0x80a.AttributeList)localObject2).att_name.set("staticDurationAfterEnter");
-      if (((ReadinjoySPEventReport.UserOptInfo)localObject1).jdField_a_of_type_Long > 0L) {
-        paramLong = ((ReadinjoySPEventReport.UserOptInfo)localObject1).jdField_a_of_type_Long - ((ReadinjoySPEventReport.UserOptInfo)localObject1).d;
+      if (((ReadinjoySPEventReport.UserOptInfo)localObject1).a > 0L) {
+        paramLong = ((ReadinjoySPEventReport.UserOptInfo)localObject1).a - ((ReadinjoySPEventReport.UserOptInfo)localObject1).d;
       } else {
         paramLong = 0L;
       }
@@ -854,9 +676,9 @@ public class ReadinjoyReportUtils
       localObject2 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject2).att_id.set(9);
       ((oidb_cmd0x80a.AttributeList)localObject2).att_name.set("staticDurationBeforeExit");
-      l = ((ReadinjoySPEventReport.UserOptInfo)localObject1).c;
+      l1 = ((ReadinjoySPEventReport.UserOptInfo)localObject1).c;
       paramLong = 0L;
-      if (l > 0L) {
+      if (l1 > 0L) {
         paramLong = ((ReadinjoySPEventReport.UserOptInfo)localObject1).e - ((ReadinjoySPEventReport.UserOptInfo)localObject1).c;
       }
       localObject3 = ((oidb_cmd0x80a.AttributeList)localObject2).att_value;
@@ -884,7 +706,7 @@ public class ReadinjoyReportUtils
       ((StringBuilder)localObject3).append("");
       ((PBStringField)localObject2).set(((StringBuilder)localObject3).toString());
       localArrayList.add(localObject1);
-      paramInt2 = j;
+      paramInt2 = i1;
     }
     a(paramInt2, localArrayList);
     if (QLog.isColorLevel())
@@ -904,11 +726,11 @@ public class ReadinjoyReportUtils
         return;
       }
       RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = a(paramTemplateBean, paramString1);
-      paramTemplateBean = a(paramTemplateBean, paramString1, paramString2);
+      paramTemplateBean = b(paramTemplateBean, paramString1, paramString2);
       if (paramTemplateBean == null) {
         return;
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", paramTemplateBean, paramTemplateBean, 0, 0, "", "", "", localReportR5Builder.build(), false);
+      PublicAccountReportUtils.a(null, "CliOper", "", "", paramTemplateBean, paramTemplateBean, 0, 0, "", "", "", localReportR5Builder.build(), false);
     }
   }
   
@@ -924,7 +746,7 @@ public class ReadinjoyReportUtils
     localReportInfo.mOpSource = 3;
     localReportInfo.mStrategyId = paramInt2;
     localArrayList.add(localReportInfo);
-    ((IUserOperationModule)QRoute.api(IUserOperationModule.class)).request0x64eUserOperationReport(localArrayList);
+    UserOperationModule.getInstance().request0x64eUserOperationReport(localArrayList);
   }
   
   public static void a(AppInterface paramAppInterface, MessageForStructing paramMessageForStructing, int paramInt)
@@ -933,16 +755,16 @@ public class ReadinjoyReportUtils
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    int k;
-    int j;
+    int i2;
+    int i1;
     if (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mAlgorithmIds))
     {
       localObject = paramMessageForStructing.structingMsg.mAlgorithmIds.split("\\|");
-      k = localObject.length;
-      j = 0;
-      while (j < k)
+      i2 = localObject.length;
+      i1 = 0;
+      while (i1 < i2)
       {
-        String str1 = localObject[j];
+        String str1 = localObject[i1];
         try
         {
           localArrayList.add(Integer.valueOf(Integer.parseInt(str1)));
@@ -951,18 +773,18 @@ public class ReadinjoyReportUtils
         {
           localException1.printStackTrace();
         }
-        j += 1;
+        i1 += 1;
       }
     }
     Object localObject = new ArrayList();
     if (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mStrategyIds))
     {
       String[] arrayOfString = paramMessageForStructing.structingMsg.mStrategyIds.split("\\|");
-      k = arrayOfString.length;
-      j = 0;
-      while (j < k)
+      i2 = arrayOfString.length;
+      i1 = 0;
+      while (i1 < i2)
       {
-        String str2 = arrayOfString[j];
+        String str2 = arrayOfString[i1];
         try
         {
           ((ArrayList)localObject).add(Integer.valueOf(Integer.parseInt(str2)));
@@ -971,16 +793,16 @@ public class ReadinjoyReportUtils
         {
           localException2.printStackTrace();
         }
-        j += 1;
+        i1 += 1;
       }
     }
     if (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mMsgActionData))
     {
-      paramMessageForStructing = a(paramMessageForStructing.structingMsg.mMsgActionData);
+      paramMessageForStructing = b(paramMessageForStructing.structingMsg.mMsgActionData);
       if (paramMessageForStructing != null) {
         try
         {
-          l = Long.parseLong(paramMessageForStructing.getString("id"));
+          l1 = Long.parseLong(paramMessageForStructing.getString("id"));
         }
         catch (Exception paramMessageForStructing)
         {
@@ -988,20 +810,20 @@ public class ReadinjoyReportUtils
         }
       }
     }
-    long l = -1L;
-    if ((l != -1L) && (localArrayList.size() > 0) && (((ArrayList)localObject).size() > 0)) {
-      a(paramAppInterface, l, ((Integer)localArrayList.get(0)).intValue(), ((Integer)((ArrayList)localObject).get(0)).intValue(), paramInt);
+    long l1 = -1L;
+    if ((l1 != -1L) && (localArrayList.size() > 0) && (((ArrayList)localObject).size() > 0)) {
+      a(paramAppInterface, l1, ((Integer)localArrayList.get(0)).intValue(), ((Integer)((ArrayList)localObject).get(0)).intValue(), paramInt);
     }
   }
   
   public static void a(RecentItemChatMsgData paramRecentItemChatMsgData)
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!m) {
       return;
     }
     if ((paramRecentItemChatMsgData != null) && (paramRecentItemChatMsgData.mUser != null) && (AppConstants.KANDIAN_SUBSCRIBE_UIN.equals(paramRecentItemChatMsgData.mUser.uin)))
     {
-      jdField_a_of_type_Boolean = false;
+      m = false;
       ThreadManager.executeOnSubThread(new ReadinjoyReportUtils.4(paramRecentItemChatMsgData));
     }
   }
@@ -1012,10 +834,10 @@ public class ReadinjoyReportUtils
     localReportR5Builder.addFolderStatus();
     localReportR5Builder.addKandianMode();
     paramQQAppInterface = ((IKanDianMergeManager)paramQQAppInterface.getRuntimeService(IKanDianMergeManager.class)).getUnreadMsgBoxRedPntInfo();
-    int j;
+    int i1;
     if (paramQQAppInterface != null)
     {
-      j = paramQQAppInterface.mMsgCnt;
+      i1 = RIJPrivateChatServiceImpl.Companion.a().getTotalRedCount(paramQQAppInterface);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramQQAppInterface.mUin);
       localStringBuilder.append("");
@@ -1024,57 +846,26 @@ public class ReadinjoyReportUtils
     else
     {
       paramQQAppInterface = "";
-      j = 0;
+      i1 = 0;
     }
-    if (j > 0) {
+    if (i1 > 0) {
       try
       {
-        localReportR5Builder.addRedDotNum(j);
+        localReportR5Builder.addRedDotNum(i1);
       }
       catch (JSONException localJSONException)
       {
         QLog.e("ReadinjoyReportUtils", 2, localJSONException, new Object[0]);
       }
     }
-    localReportR5Builder.addStringNotThrow("message_reddot_style", ((IRIJMsgBoxUtils)QRoute.api(IRIJMsgBoxUtils.class)).getMsgBoxUIMode());
+    localReportR5Builder.addStringNotThrow("message_reddot_style", RIJMsgBoxUtils.b());
     String str;
     if (paramBoolean) {
       str = "0X8009A85";
     } else {
       str = "0X8009A84";
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, paramQQAppInterface, str, str, 0, 0, "", "", "", localReportR5Builder.build(), false);
-  }
-  
-  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo == null) {
-      return;
-    }
-    String str;
-    if ((!RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.p(paramAbsBaseArticleInfo))) {
-      str = paramAbsBaseArticleInfo.mSubscribeID;
-    } else if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null)) {
-      str = Long.toString(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Long);
-    } else {
-      str = "";
-    }
-    long l1 = paramAbsBaseArticleInfo.mFeedId;
-    long l2 = paramAbsBaseArticleInfo.mArticleID;
-    long l3 = paramAbsBaseArticleInfo.mStrategyId;
-    int j = RIJItemViewTypeUtils.c(paramAbsBaseArticleInfo);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      RIJTransMergeKanDianReport.a(localJSONObject, paramAbsBaseArticleInfo);
-      localJSONObject.put("touin", str);
-      localJSONObject.put("entry_mode", String.valueOf(j));
-    }
-    catch (Exception paramAbsBaseArticleInfo)
-    {
-      paramAbsBaseArticleInfo.printStackTrace();
-    }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009846", "0X8009846", 0, 0, String.valueOf(l1), String.valueOf(l2), String.valueOf(l3), localJSONObject.toString(), false);
+    PublicAccountReportUtils.a(null, paramQQAppInterface, str, str, 0, 0, "", "", "", localReportR5Builder.build(), false);
   }
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt, String paramString)
@@ -1089,38 +880,41 @@ public class ReadinjoyReportUtils
     }
   }
   
+  public static void a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt, boolean paramBoolean, String paramString1, String paramString2)
+  {
+    PublicAccountReportUtils.a(null, null, "0X800B1A6", "0X800B1A6", 0, 0, "", "", "", b(paramAbsBaseArticleInfo, paramInt, paramBoolean, paramString1, paramString2).toString(), false);
+  }
+  
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, long paramLong)
   {
-    ??? = (IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class);
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("readinjoy_daily_article_first_exposure_");
-    ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mArticleID);
-    if (((Long)((IReadInJoyHelper)???).getReadInJoySpValue(((StringBuilder)localObject2).toString(), Long.valueOf(0L))).longValue() == 0L)
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("readinjoy_daily_article_first_exposure_");
+    ((StringBuilder)???).append(paramAbsBaseArticleInfo.mArticleID);
+    if (((Long)RIJSPUtils.b(((StringBuilder)???).toString(), Long.valueOf(0L))).longValue() == 0L)
     {
-      ??? = (IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class);
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("readinjoy_daily_article_first_exposure_");
-      ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mArticleID);
-      ((IReadInJoyHelper)???).updateReadInJoySpValue(((StringBuilder)localObject2).toString(), Long.valueOf(System.currentTimeMillis() / 1000L));
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("readinjoy_daily_article_first_exposure_");
+      ((StringBuilder)???).append(paramAbsBaseArticleInfo.mArticleID);
+      RIJSPUtils.a(((StringBuilder)???).toString(), Long.valueOf(System.currentTimeMillis() / 1000L));
     }
-    synchronized (jdField_b_of_type_JavaUtilMap)
+    synchronized (k)
     {
-      localObject2 = a(paramAbsBaseArticleInfo.mChannelID);
-      ReadinjoyReportUtils.ExposureReportItem localExposureReportItem = (ReadinjoyReportUtils.ExposureReportItem)((Map)localObject2).get(Long.valueOf(paramAbsBaseArticleInfo.mArticleID));
+      Map localMap = b(paramAbsBaseArticleInfo.mChannelID);
+      ReadinjoyReportUtils.ExposureReportItem localExposureReportItem = (ReadinjoyReportUtils.ExposureReportItem)localMap.get(Long.valueOf(paramAbsBaseArticleInfo.mArticleID));
       if (localExposureReportItem != null)
       {
-        long l = paramLong;
-        if (localExposureReportItem.jdField_a_of_type_Long > paramLong) {
-          l = localExposureReportItem.jdField_a_of_type_Long;
+        long l1 = paramLong;
+        if (localExposureReportItem.b > paramLong) {
+          l1 = localExposureReportItem.b;
         }
-        localExposureReportItem.jdField_a_of_type_Long = l;
+        localExposureReportItem.b = l1;
       }
       else
       {
-        localExposureReportItem = new ReadinjoyReportUtils.ExposureReportItem(RIJTransMergeKanDianReport.a());
-        localExposureReportItem.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-        localExposureReportItem.jdField_a_of_type_Long = paramLong;
-        ((Map)localObject2).put(Long.valueOf(paramAbsBaseArticleInfo.mArticleID), localExposureReportItem);
+        localExposureReportItem = new ReadinjoyReportUtils.ExposureReportItem(RIJTransMergeKanDianReport.b());
+        localExposureReportItem.a = paramAbsBaseArticleInfo;
+        localExposureReportItem.b = paramLong;
+        localMap.put(Long.valueOf(paramAbsBaseArticleInfo.mArticleID), localExposureReportItem);
       }
       return;
     }
@@ -1130,14 +924,14 @@ public class ReadinjoyReportUtils
   {
     if (AppConstants.KANDIAN_SUBSCRIBE_UIN.equals(paramString))
     {
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800978D", "0X800978D", 0, 0, "", "", "", a(), false);
-      ReadinjoySPEventReport.l();
+      PublicAccountReportUtils.a(null, null, "0X800978D", "0X800978D", 0, 0, "", "", "", c(), false);
+      ReadinjoySPEventReport.r();
       return;
     }
     if (AppConstants.KANDIAN_DAILY_UIN.equals(paramString))
     {
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009886", "0X8009886", 0, 0, "", "", "", a(), false);
-      ReadinjoySPEventReport.m();
+      PublicAccountReportUtils.a(null, null, "0X8009886", "0X8009886", 0, 0, "", "", "", c(), false);
+      ReadinjoySPEventReport.s();
     }
   }
   
@@ -1160,19 +954,19 @@ public class ReadinjoyReportUtils
       }
       Collections.sort(paramList, new ReadinjoyReportUtils.5());
       ArrayList localArrayList = new ArrayList();
-      int j = 0;
-      while (j < paramList.size())
+      int i1 = 0;
+      while (i1 < paramList.size())
       {
-        Object localObject = (AbsBaseArticleInfo)paramList.get(j);
+        Object localObject = (AbsBaseArticleInfo)paramList.get(i1);
         ReportInfo localReportInfo = new ReportInfo();
         localReportInfo.mAlgorithmId = ((int)((AbsBaseArticleInfo)localObject).mAlgorithmID);
         localReportInfo.mStrategyId = ((AbsBaseArticleInfo)localObject).mStrategyId;
         localReportInfo.mSourceArticleId = ((AbsBaseArticleInfo)localObject).mArticleID;
         localReportInfo.mInnerId = ((AbsBaseArticleInfo)localObject).innerUniqueID;
         localReportInfo.mServerContext = ((AbsBaseArticleInfo)localObject).mServerContext;
-        localReportInfo.mUin = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
+        localReportInfo.mUin = RIJQQAppInterfaceUtil.c();
         localReportInfo.mChannelId = 0;
-        localReportInfo.replyUin = j;
+        localReportInfo.replyUin = i1;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(NetConnInfoCenter.getServerTime());
         ((StringBuilder)localObject).append("");
@@ -1180,7 +974,7 @@ public class ReadinjoyReportUtils
         localReportInfo.mSource = 3;
         localReportInfo.mOperation = 57;
         localArrayList.add(localReportInfo);
-        j += 1;
+        i1 += 1;
       }
       if (localArrayList.size() > 0) {
         ReadInJoyLogicEngine.a().a(localArrayList);
@@ -1202,11 +996,11 @@ public class ReadinjoyReportUtils
         AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)paramList.next();
         if (paramList1.contains(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq)))
         {
-          Map localMap = jdField_a_of_type_JavaUtilMap;
+          Map localMap = j;
           long l2 = localAbsBaseArticleInfo.mArticleID;
-          long l3 = jdField_a_of_type_Long;
+          long l3 = h;
           long l1 = 1L;
-          jdField_a_of_type_Long = l3 + 1L;
+          h = l3 + 1L;
           if (!paramBoolean) {
             l1 = 0L;
           }
@@ -1219,8 +1013,8 @@ public class ReadinjoyReportUtils
   public static void a(AppRuntime paramAppRuntime)
   {
     long l1 = 0L;
-    jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_JavaUtilMap.clear();
+    h = 0L;
+    j.clear();
     if (paramAppRuntime != null) {
       l1 = paramAppRuntime.getLongAccountUin();
     }
@@ -1229,78 +1023,259 @@ public class ReadinjoyReportUtils
     paramAppRuntime.append(String.valueOf(l1));
     paramAppRuntime.append("_");
     paramAppRuntime.append(String.valueOf(l2));
-    jdField_a_of_type_JavaLangString = paramAppRuntime.toString();
+    i = paramAppRuntime.toString();
   }
   
   public static void a(boolean paramBoolean)
   {
-    jdField_b_of_type_Boolean = paramBoolean;
+    n = paramBoolean;
   }
   
-  public static boolean a(long paramLong)
+  public static String b(TemplateBean paramTemplateBean, String paramString1, String paramString2)
   {
-    return (paramLong == 70L) || (paramLong == 41403L);
-  }
-  
-  public static int b()
-  {
-    return i;
-  }
-  
-  public static String b(long paramLong)
-  {
-    if ((!DailyModeConfigHandler.a((int)paramLong)) && (!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isDailyChildFeeds(paramLong)))
+    if (paramTemplateBean != null)
     {
-      if (a(paramLong)) {
-        return "0X8009355";
+      if (paramString2 == null) {
+        return null;
       }
-      return "0X8007625";
+      paramTemplateBean = paramTemplateBean.getDataAttribute(paramString1);
+      if (paramTemplateBean != null)
+      {
+        paramTemplateBean = paramTemplateBean.get(paramString2);
+        if (paramTemplateBean != null) {
+          return paramTemplateBean.toString();
+        }
+      }
     }
-    return "0X8009CC9";
+    return null;
+  }
+  
+  public static Map<Long, ReadinjoyReportUtils.ExposureReportItem> b(long paramLong)
+  {
+    synchronized (k)
+    {
+      Map localMap1 = (Map)k.get(Long.valueOf(paramLong));
+      Object localObject1 = localMap1;
+      if (localMap1 == null)
+      {
+        localObject1 = new HashMap();
+        k.put(Long.valueOf(paramLong), localObject1);
+      }
+      return localObject1;
+    }
+  }
+  
+  public static JSONObject b(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt, boolean paramBoolean, String paramString1, @Nullable String paramString2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (paramAbsBaseArticleInfo != null) {}
+    for (;;)
+    {
+      String str;
+      try
+      {
+        localJSONObject.put("app_type", h());
+        localJSONObject.put("channel_id", paramAbsBaseArticleInfo.mChannelID);
+        localJSONObject.put("scene_type", paramInt);
+        if (!paramBoolean) {
+          break label254;
+        }
+        paramInt = 1;
+        localJSONObject.put("is_intensify", paramInt);
+        localJSONObject.put("feeds_type", RIJFeedsType.g(paramAbsBaseArticleInfo));
+        localJSONObject.put("rowkey", paramAbsBaseArticleInfo.innerUniqueID);
+        str = paramAbsBaseArticleInfo.getSubscribeUin();
+        SocializeFeedsInfo localSocializeFeedsInfo = paramAbsBaseArticleInfo.mSocialFeedInfo;
+        long l2 = 0L;
+        if ((localSocializeFeedsInfo == null) || (paramAbsBaseArticleInfo.mSocialFeedInfo.c == null)) {
+          break label259;
+        }
+        l1 = paramAbsBaseArticleInfo.mSocialFeedInfo.c.a;
+        if ((paramString2 == null) || (paramString2.length() <= 0)) {
+          break label265;
+        }
+        l1 = l2;
+        localJSONObject.put("puin", paramString2);
+        localJSONObject.put("ugcuin", l1);
+        localJSONObject.put("algorithm_id", paramAbsBaseArticleInfo.mAlgorithmID);
+        localJSONObject.put("button_type", paramAbsBaseArticleInfo.showFollowButtonType);
+        localJSONObject.put("last_rowkey", paramAbsBaseArticleInfo.mArticleID);
+        localJSONObject.put("comment_id", paramString1);
+        localJSONObject.put("kandian_mode_new", VideoReporter.c());
+        return localJSONObject;
+      }
+      catch (JSONException paramAbsBaseArticleInfo)
+      {
+        QLog.d("ReadinjoyReportUtils", 1, paramAbsBaseArticleInfo.getMessage());
+      }
+      return localJSONObject;
+      label254:
+      paramInt = 0;
+      continue;
+      label259:
+      long l1 = 0L;
+      continue;
+      label265:
+      paramString2 = str;
+    }
+  }
+  
+  public static JSONObject b(String paramString)
+  {
+    try
+    {
+      paramString = (JSONObject)new JSONTokener(paramString).nextValue();
+      return paramString;
+    }
+    catch (JSONException|NullPointerException|Exception paramString) {}
+    return null;
   }
   
   public static void b()
   {
-    i = 0;
+    Object localObject = new ArrayList();
+    oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
+    localAttributeList.att_id.set(1);
+    localAttributeList.att_name.set("FolderStatus");
+    PBStringField localPBStringField = localAttributeList.att_value;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(RIJKanDianFolderStatus.reportFolderStatus);
+    localStringBuilder.append("");
+    localPBStringField.set(localStringBuilder.toString());
+    ((ArrayList)localObject).add(localAttributeList);
+    a(10, (List)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportKandianDelete  , foldStatus :  ");
+      ((StringBuilder)localObject).append(RIJKanDianFolderStatus.reportFolderStatus);
+      QLog.d("ReadinjoyReportUtils", 2, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public static void b(int paramInt)
+  {
+    o = paramInt | o;
+    ReadinjoySPEventReport.i(3);
+  }
+  
+  public static void b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (paramAbsBaseArticleInfo == null) {
+      return;
+    }
+    String str;
+    if ((!RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.p(paramAbsBaseArticleInfo))) {
+      str = paramAbsBaseArticleInfo.mSubscribeID;
+    } else if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null)) {
+      str = Long.toString(paramAbsBaseArticleInfo.mSocialFeedInfo.s.e);
+    } else {
+      str = "";
+    }
+    long l1 = paramAbsBaseArticleInfo.mFeedId;
+    long l2 = paramAbsBaseArticleInfo.mArticleID;
+    long l3 = paramAbsBaseArticleInfo.mStrategyId;
+    int i1 = RIJItemViewTypeUtils.D(paramAbsBaseArticleInfo);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      RIJTransMergeKanDianReport.a(localJSONObject, paramAbsBaseArticleInfo);
+      localJSONObject.put("touin", str);
+      localJSONObject.put("entry_mode", String.valueOf(i1));
+    }
+    catch (Exception paramAbsBaseArticleInfo)
+    {
+      paramAbsBaseArticleInfo.printStackTrace();
+    }
+    PublicAccountReportUtils.a(null, "", "0X8009846", "0X8009846", 0, 0, String.valueOf(l1), String.valueOf(l2), String.valueOf(l3), localJSONObject.toString(), false);
   }
   
   public static void b(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt, boolean paramBoolean, String paramString)
   {
-    paramAbsBaseArticleInfo = a(paramAbsBaseArticleInfo, paramInt, paramBoolean, paramString);
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800B1A6", "0X800B1A6", 0, 0, "", "", "", paramAbsBaseArticleInfo.toString(), false);
+    a(paramAbsBaseArticleInfo, paramInt, paramBoolean, paramString, null);
   }
   
-  public static int c()
+  public static String c()
   {
-    if (((IRIJXTabFrameUtils)QRoute.api(IRIJXTabFrameUtils.class)).isNowInKanDianTab()) {
-      return jdField_a_of_type_Int;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", VideoReporter.a);
+      localJSONObject.put("os", "1");
+      localJSONObject.put("channel_id", KandianDailyReportUtils.h());
     }
-    if (ReadInJoyDailyFragment.a()) {
-      return jdField_b_of_type_Int;
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
-    return c;
+    return localJSONObject.toString();
   }
   
-  public static void c()
+  private static String c(int paramInt)
   {
-    h = 1;
+    switch (paramInt)
+    {
+    default: 
+      return "Other";
+    case 7: 
+      return "4Tab";
+    case 6: 
+      return "Daily";
+    case 5: 
+      return "Lock";
+    case 4: 
+      return "MsgTab";
+    case 3: 
+      return "FromDTTab";
+    }
+    return "KDTAB";
+  }
+  
+  public static String c(long paramLong)
+  {
+    if ((!DailyModeConfigHandler.a((int)paramLong)) && (!RIJShowKanDianTabSp.a(paramLong)))
+    {
+      if (d(paramLong)) {
+        return "0X8009356";
+      }
+      return "0X8009332";
+    }
+    return "0X8009CCB";
+  }
+  
+  public static String c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    Object localObject = "";
+    if (paramAbsBaseArticleInfo != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.innerUniqueID);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   public static void c(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt, boolean paramBoolean, String paramString)
   {
+    c(paramAbsBaseArticleInfo, paramInt, paramBoolean, paramString, null);
+  }
+  
+  public static void c(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt, boolean paramBoolean, String paramString1, @Nullable String paramString2)
+  {
     if (paramAbsBaseArticleInfo != null) {
-      paramString = a(paramAbsBaseArticleInfo, paramInt, paramBoolean, paramString);
+      paramString1 = b(paramAbsBaseArticleInfo, paramInt, paramBoolean, paramString1, paramString2);
     }
     for (;;)
     {
       try
       {
         if (!OnSocialHeaderFollowClickListener.a(paramAbsBaseArticleInfo)) {
-          break label82;
+          break label72;
         }
         paramInt = 2;
-        paramString.put("click_type", paramInt);
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800B1A7", "0X800B1A7", 0, 0, "", "", "", paramString.toString(), false);
+        paramString1.put("click_type", paramInt);
+        PublicAccountReportUtils.a(null, null, "0X800B1A7", "0X800B1A7", 0, 0, "", "", "", paramString1.toString(), false);
         return;
       }
       catch (JSONException paramAbsBaseArticleInfo)
@@ -1308,19 +1283,67 @@ public class ReadinjoyReportUtils
         QLog.d("ReadinjoyReportUtils", 1, paramAbsBaseArticleInfo.getMessage());
       }
       return;
-      label82:
+      label72:
       paramInt = 1;
     }
   }
   
   public static void d()
   {
-    h = 0;
+    o = 0;
+  }
+  
+  public static boolean d(long paramLong)
+  {
+    return (paramLong == 70L) || (paramLong == 41403L);
+  }
+  
+  public static int e()
+  {
+    return o;
+  }
+  
+  public static String e(long paramLong)
+  {
+    if ((!DailyModeConfigHandler.a((int)paramLong)) && (!RIJShowKanDianTabSp.a(paramLong)))
+    {
+      if (d(paramLong)) {
+        return "0X8009355";
+      }
+      return "0X8007625";
+    }
+    return "0X8009CC9";
+  }
+  
+  public static void f()
+  {
+    l = 1;
+  }
+  
+  public static void g()
+  {
+    l = 0;
+  }
+  
+  public static int h()
+  {
+    if (RIJTabFrameBase.d.a()) {
+      return a;
+    }
+    if (ReadInJoyDailyFragment.a()) {
+      return b;
+    }
+    return c;
+  }
+  
+  public static int i()
+  {
+    return RIJKanDianFolderStatus.reportFolderStatus;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils
  * JD-Core Version:    0.7.0.1
  */

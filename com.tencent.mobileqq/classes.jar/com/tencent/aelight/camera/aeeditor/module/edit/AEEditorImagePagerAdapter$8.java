@@ -1,7 +1,7 @@
 package com.tencent.aelight.camera.aeeditor.module.edit;
 
 import android.view.ViewGroup;
-import com.tencent.tavcut.view.TAVCutImageView;
+import com.tencent.qcircle.tavcut.view.TAVCutImageView;
 
 class AEEditorImagePagerAdapter$8
   implements Runnable
@@ -10,12 +10,12 @@ class AEEditorImagePagerAdapter$8
   
   public void run()
   {
-    AEEditorImagePagerAdapter.a(this.this$0, this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentTavcutViewTAVCutImageView);
+    AEEditorImagePagerAdapter.a(this.this$0, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImagePagerAdapter.8
  * JD-Core Version:    0.7.0.1
  */

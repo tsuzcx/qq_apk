@@ -1,23 +1,32 @@
 package com.tencent.turingfd.sdk.xq;
 
-public class Blueberry
-  extends Thread
+public final class Blueberry
+  extends else
 {
-  public Blueberry(Bullace paramBullace) {}
+  public String a = "";
+  public String b = "";
   
-  public void run()
+  public void a(case paramcase)
   {
-    try
-    {
-      Bullace.a(this.this$0);
-      return;
+    String str = this.a;
+    if (str != null) {
+      paramcase.a(str, 0);
     }
-    catch (Throwable localThrowable) {}
+    str = this.b;
+    if (str != null) {
+      paramcase.a(str, 1);
+    }
+  }
+  
+  public void a(try paramtry)
+  {
+    this.a = paramtry.b(0, false);
+    this.b = paramtry.b(1, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Blueberry
  * JD-Core Version:    0.7.0.1
  */

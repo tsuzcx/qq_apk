@@ -12,7 +12,7 @@ class SubAccountApiImpl$4
   
   public void onGetSubAccountMsg(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    ISubAccountApi.MessageObserverInterface localMessageObserverInterface = this.jdField_a_of_type_ComTencentMobileqqSubaccountApiISubAccountApi$MessageObserverInterface;
+    ISubAccountApi.MessageObserverInterface localMessageObserverInterface = this.a;
     boolean bool;
     if (paramSubAccountBackProtocData == null) {
       bool = true;
@@ -24,12 +24,12 @@ class SubAccountApiImpl$4
   
   public void onSubAccountMsgNumConfirm(boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountApiISubAccountApi$MessageObserverInterface.a(paramBoolean, paramString1, paramString2);
+    this.a.a(paramBoolean, paramString1, paramString2);
   }
   
   public void onSubAccountThirdQQUnreadMsgNum(boolean paramBoolean, String paramString, SubAccountThirdQQBackProtocData paramSubAccountThirdQQBackProtocData)
   {
-    ISubAccountApi.MessageObserverInterface localMessageObserverInterface = this.jdField_a_of_type_ComTencentMobileqqSubaccountApiISubAccountApi$MessageObserverInterface;
+    ISubAccountApi.MessageObserverInterface localMessageObserverInterface = this.a;
     boolean bool;
     if (paramSubAccountThirdQQBackProtocData == null) {
       bool = true;
@@ -41,7 +41,7 @@ class SubAccountApiImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.api.impl.SubAccountApiImpl.4
  * JD-Core Version:    0.7.0.1
  */

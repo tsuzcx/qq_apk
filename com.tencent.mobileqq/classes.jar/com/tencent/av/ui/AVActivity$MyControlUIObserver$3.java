@@ -9,9 +9,9 @@ class AVActivity$MyControlUIObserver$3
   
   public void run()
   {
-    QavPanel localQavPanel = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a;
+    QavPanel localQavPanel = this.a.aA;
     int i;
-    if (this.jdField_a_of_type_ComTencentAvUiAVActivity$MyControlUIObserver.a.a.o) {
+    if (this.b.a.I.ac) {
       i = 2;
     } else {
       i = 0;

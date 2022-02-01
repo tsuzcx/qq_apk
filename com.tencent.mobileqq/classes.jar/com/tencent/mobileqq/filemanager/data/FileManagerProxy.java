@@ -50,17 +50,17 @@ import mqq.os.MqqHandler;
 public class FileManagerProxy
   extends BaseProxy
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler;
-  private final int jdField_a_of_type_Int = 2000;
-  private long jdField_a_of_type_Long = 0L;
-  List<FileManagerEntity> jdField_a_of_type_JavaUtilList = null;
-  private Map<Long, FileManagerEntity> jdField_a_of_type_JavaUtilMap = null;
-  private Set<String> jdField_a_of_type_JavaUtilSet = null;
-  List<FileManagerEntity> jdField_b_of_type_JavaUtilList = null;
-  private Map<String, FileManagerEntity> jdField_b_of_type_JavaUtilMap = new Hashtable();
+  private static Handler k;
+  List<FileManagerEntity> a = null;
+  List<FileManagerEntity> b = null;
   List<FileManagerProxy.DeletedOlSessionInfo> c = new ArrayList();
   private List<FileManagerEntity> d = null;
-  private List<Integer> e = Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9), Integer.valueOf(10), Integer.valueOf(11), Integer.valueOf(12) });
+  private Map<Long, FileManagerEntity> e = null;
+  private Set<String> f = null;
+  private long g = 0L;
+  private List<Integer> h = Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9), Integer.valueOf(10), Integer.valueOf(11), Integer.valueOf(12) });
+  private final int i = 2000;
+  private Map<String, FileManagerEntity> j = new Hashtable();
   
   public FileManagerProxy(QQAppInterface paramQQAppInterface, BaseProxyManager paramBaseProxyManager)
   {
@@ -71,11 +71,11 @@ public class FileManagerProxy
   {
     ContentValues localContentValues = new ContentValues();
     List localList = TableBuilder.getValidField(paramEntity.getClass());
-    int j = localList.size();
-    int i = 0;
-    while (i < j)
+    int n = localList.size();
+    int m = 0;
+    while (m < n)
     {
-      Object localObject2 = (Field)localList.get(i);
+      Object localObject2 = (Field)localList.get(m);
       String str = ((Field)localObject2).getName();
       if (!((Field)localObject2).isAccessible()) {
         ((Field)localObject2).setAccessible(true);
@@ -113,20 +113,20 @@ public class FileManagerProxy
       } else if ((localObject1 instanceof Byte)) {
         localContentValues.put(str, (Byte)localObject1);
       }
-      i += 1;
+      m += 1;
     }
     return localContentValues;
   }
   
-  private boolean a(int paramInt)
+  private boolean b(int paramInt)
   {
     try
     {
       if (this.d == null) {
         init();
       }
-      int i = this.d.size();
-      if (i == 0) {
+      int m = this.d.size();
+      if (m == 0) {
         return false;
       }
       Object localObject1 = new StringBuilder();
@@ -153,7 +153,7 @@ public class FileManagerProxy
       while (localIterator1.hasNext())
       {
         FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator1.next();
-        if ((localFileManagerEntity.nFileType == 5) && (localFileManagerEntity.getCloudType() == 3) && (!FileUtil.b(localFileManagerEntity.getFilePath())) && (localFileManagerEntity.strApkPackageName != null) && (localFileManagerEntity.strApkPackageName.length() > 0))
+        if ((localFileManagerEntity.nFileType == 5) && (localFileManagerEntity.getCloudType() == 3) && (!FileUtil.d(localFileManagerEntity.getFilePath())) && (localFileManagerEntity.strApkPackageName != null) && (localFileManagerEntity.strApkPackageName.length() > 0))
         {
           Iterator localIterator2 = localList.iterator();
           while (localIterator2.hasNext())
@@ -164,10 +164,10 @@ public class FileManagerProxy
             }
           }
         }
-        if (this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localFileManagerEntity.nSessionId)) == null) {
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(localFileManagerEntity.nSessionId), localFileManagerEntity);
+        if (this.e.get(Long.valueOf(localFileManagerEntity.nSessionId)) == null) {
+          this.e.put(Long.valueOf(localFileManagerEntity.nSessionId), localFileManagerEntity);
         }
-        this.d.add(this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localFileManagerEntity.nSessionId)));
+        this.d.add(this.e.get(Long.valueOf(localFileManagerEntity.nSessionId)));
       }
       paramInt = ((List)localObject1).size();
       return paramInt >= 30;
@@ -179,17 +179,17 @@ public class FileManagerProxy
     }
   }
   
-  private void e()
+  private void h()
   {
     try
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      localObject1 = this.jdField_a_of_type_JavaUtilMap;
+      this.g = System.currentTimeMillis();
+      localObject1 = this.e;
       if (localObject1 == null) {
         return;
       }
-      int i = this.jdField_a_of_type_JavaUtilMap.size();
-      if (i == 0) {
+      int m = this.e.size();
+      if (m == 0) {
         return;
       }
     }
@@ -205,7 +205,7 @@ public class FileManagerProxy
     }
     try
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      localObject1 = this.e.entrySet().iterator();
       if (((Iterator)localObject1).hasNext())
       {
         Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
@@ -237,7 +237,7 @@ public class FileManagerProxy
     if (this.d == null) {
       init();
     }
-    Object localObject1 = ((QQAppInterface)this.app).getMessageFacade().a(String.valueOf(paramLong3), paramInt);
+    Object localObject1 = ((QQAppInterface)this.app).getMessageFacade().h(String.valueOf(paramLong3), paramInt);
     Object localObject2;
     if (QLog.isColorLevel())
     {
@@ -245,15 +245,15 @@ public class FileManagerProxy
       ((StringBuilder)localObject2).append("------->FileManager findUinSeqForCache :msgIsTroop:");
       ((StringBuilder)localObject2).append(paramInt);
       ((StringBuilder)localObject2).append(",peerUin:");
-      ((StringBuilder)localObject2).append(FileManagerUtil.d(String.valueOf(paramLong3)));
+      ((StringBuilder)localObject2).append(FileManagerUtil.k(String.valueOf(paramLong3)));
       ((StringBuilder)localObject2).append(",list size:");
-      int i;
+      int m;
       if (localObject1 == null) {
-        i = 0;
+        m = 0;
       } else {
-        i = ((List)localObject1).size();
+        m = ((List)localObject1).size();
       }
-      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(m);
       QLog.i("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject2).toString());
     }
     if ((localObject1 != null) && (((List)localObject1).size() > 0))
@@ -303,9 +303,9 @@ public class FileManagerProxy
           return localFileManagerEntity;
         }
       }
-      if (this.jdField_a_of_type_JavaUtilList != null)
+      if (this.a != null)
       {
-        localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject1 = this.a.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localFileManagerEntity = (FileManagerEntity)((Iterator)localObject1).next();
@@ -315,7 +315,7 @@ public class FileManagerProxy
           }
         }
       }
-      localObject1 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      localObject1 = (FileManagerEntity)this.e.get(Long.valueOf(paramLong));
       return localObject1;
     }
     finally {}
@@ -349,7 +349,7 @@ public class FileManagerProxy
           }
         }
       }
-      localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+      localIterator = this.e.values().iterator();
       while (localIterator.hasNext())
       {
         localFileManagerEntity = (FileManagerEntity)localIterator.next();
@@ -385,23 +385,23 @@ public class FileManagerProxy
           while (localIterator.hasNext())
           {
             localFileManagerEntity = (FileManagerEntity)localIterator.next();
-            if ((localFileManagerEntity.peerUin != null) && (localFileManagerEntity.uniseq == paramLong) && (localFileManagerEntity.peerUin.equals(paramString)))
+            if (((localFileManagerEntity.peerUin != null) && (localFileManagerEntity.peerUin.equals(paramString))) || ((!TextUtils.isEmpty(localFileManagerEntity.guildId)) && (!TextUtils.isEmpty(localFileManagerEntity.channelId)) && (localFileManagerEntity.uniseq == paramLong)))
             {
-              if ((localFileManagerEntity.cloudType == 1) && (FileManagerUtil.b(localFileManagerEntity))) {
+              if ((localFileManagerEntity.cloudType == 1) && (FileManagerUtil.d(localFileManagerEntity))) {
                 localFileManagerEntity.status = 16;
               }
               return localFileManagerEntity;
             }
           }
-          if (this.jdField_a_of_type_JavaUtilMap != null)
+          if (this.e != null)
           {
-            localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+            localIterator = this.e.entrySet().iterator();
             while (localIterator.hasNext())
             {
               localFileManagerEntity = (FileManagerEntity)((Map.Entry)localIterator.next()).getValue();
               if ((localFileManagerEntity.uniseq == paramLong) && (localFileManagerEntity.peerUin != null) && (localFileManagerEntity.peerUin.equals(paramString)) && (paramInt == localFileManagerEntity.peerType))
               {
-                if ((localFileManagerEntity.cloudType == 1) && (FileManagerUtil.b(localFileManagerEntity))) {
+                if ((localFileManagerEntity.cloudType == 1) && (FileManagerUtil.d(localFileManagerEntity))) {
                   localFileManagerEntity.status = 16;
                 }
                 return localFileManagerEntity;
@@ -414,68 +414,6 @@ public class FileManagerProxy
       finally {}
     }
     return null;
-  }
-  
-  public FileManagerEntity a(String paramString)
-  {
-    try
-    {
-      if (this.d == null) {
-        init();
-      }
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("select * from ");
-      ((StringBuilder)localObject).append(FileManagerEntity.tableName());
-      ((StringBuilder)localObject).append(" where Uuid = ?");
-      localObject = ((StringBuilder)localObject).toString();
-      EntityManager localEntityManager = this.app.getEntityManagerFactory().createEntityManager();
-      if (localEntityManager == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("FileManagerProxy<FileAssistant>", 2, "get EntityManager null!");
-        }
-        return null;
-      }
-      long l1 = System.currentTimeMillis();
-      paramString = localEntityManager.rawQuery(FileManagerEntity.class, (String)localObject, new String[] { SecurityUtile.encode(paramString) });
-      long l2 = System.currentTimeMillis();
-      if (paramString == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FileManagerProxy<FileAssistant>", 2, "queryOver, but no data!");
-        }
-        return null;
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("query over,startTime[");
-        ((StringBuilder)localObject).append(String.valueOf(l1));
-        ((StringBuilder)localObject).append("], overTime[");
-        ((StringBuilder)localObject).append(String.valueOf(l2));
-        ((StringBuilder)localObject).append("]");
-        QLog.d("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject).toString());
-      }
-      if ((paramString.size() > 1) && (QLog.isColorLevel()))
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("why size[");
-        ((StringBuilder)localObject).append(String.valueOf(paramString.size()));
-        ((StringBuilder)localObject).append("] over 1?");
-        QLog.w("FileManagerProxy", 2, ((StringBuilder)localObject).toString());
-      }
-      paramString = (FileManagerEntity)paramString.get(0);
-      if (paramString == null) {
-        return null;
-      }
-      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramString.nSessionId), paramString);
-      ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).upDataApkPathForPackageName(paramString);
-      if ((paramString.cloudType == 1) && (FileManagerUtil.b(paramString))) {
-        paramString.status = 16;
-      }
-      return paramString;
-    }
-    finally {}
   }
   
   public FileManagerEntity a(String paramString, long paramLong)
@@ -522,7 +460,7 @@ public class FileManagerProxy
     localFileManagerEntity.nOLfileSessionId = paramLong;
     d(localFileManagerEntity);
     return localFileManagerEntity;
-    localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    localIterator = this.e.values().iterator();
     while (localIterator.hasNext())
     {
       localFileManagerEntity = (FileManagerEntity)localIterator.next();
@@ -548,11 +486,11 @@ public class FileManagerProxy
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList = a(200);
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.a = a(200);
+      if (this.a == null) {
+        this.a = new ArrayList();
       }
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      List localList = this.a;
       return localList;
     }
     finally {}
@@ -627,10 +565,10 @@ public class FileManagerProxy
         while (((Iterator)localObject1).hasNext())
         {
           FileManagerEntity localFileManagerEntity1 = (FileManagerEntity)((Iterator)localObject1).next();
-          int i = 0;
-          if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(localFileManagerEntity1.nSessionId)) == true)
+          int m = 0;
+          if (this.e.containsKey(Long.valueOf(localFileManagerEntity1.nSessionId)) == true)
           {
-            localFileManagerEntity1 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localFileManagerEntity1.nSessionId));
+            localFileManagerEntity1 = (FileManagerEntity)this.e.get(Long.valueOf(localFileManagerEntity1.nSessionId));
             FileManagerUtil.a(localFileManagerEntity1);
             ((List)localObject4).add(localFileManagerEntity1);
           }
@@ -640,7 +578,7 @@ public class FileManagerProxy
             FileManagerEntity localFileManagerEntity2;
             do
             {
-              paramInt = i;
+              paramInt = m;
               if (!localIterator.hasNext()) {
                 break;
               }
@@ -745,9 +683,9 @@ public class FileManagerProxy
         {
           FileManagerEntity localFileManagerEntity1 = (FileManagerEntity)((Iterator)localObject1).next();
           paramInt2 = 0;
-          if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(localFileManagerEntity1.nSessionId)) == true)
+          if (this.e.containsKey(Long.valueOf(localFileManagerEntity1.nSessionId)) == true)
           {
-            localFileManagerEntity1 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localFileManagerEntity1.nSessionId));
+            localFileManagerEntity1 = (FileManagerEntity)this.e.get(Long.valueOf(localFileManagerEntity1.nSessionId));
             FileManagerUtil.a(localFileManagerEntity1);
             ((List)localObject4).add(localFileManagerEntity1);
           }
@@ -797,10 +735,10 @@ public class FileManagerProxy
     try
     {
       ArrayList localArrayList = new ArrayList();
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if (this.a == null) {
+        this.a = new ArrayList();
       }
-      Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject = this.a.iterator();
       FileManagerEntity localFileManagerEntity;
       while (((Iterator)localObject).hasNext())
       {
@@ -808,25 +746,25 @@ public class FileManagerProxy
         if ((localFileManagerEntity != null) && (localFileManagerEntity.peerUin != null) && (localFileManagerEntity.peerUin.equals(paramString)) && ((localFileManagerEntity.getCloudType() != 2) || (localFileManagerEntity.nOpType == 3))) {
           localArrayList.add(localFileManagerEntity);
         }
-        i = localArrayList.size();
-        if (i >= paramInt) {
+        m = localArrayList.size();
+        if (m >= paramInt) {
           return localArrayList;
         }
       }
-      int i = 0;
-      int j = localArrayList.size();
-      if (j > 0) {
+      int m = 0;
+      int n = localArrayList.size();
+      if (n > 0) {
         return localArrayList;
       }
-      localObject = a(200, i);
+      localObject = a(200, m);
       if (localObject == null) {
         return localArrayList;
       }
-      j = i + 1;
+      n = m + 1;
       localObject = ((List)localObject).iterator();
       do
       {
-        i = j;
+        m = n;
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
@@ -834,10 +772,10 @@ public class FileManagerProxy
         if ((localFileManagerEntity != null) && (localFileManagerEntity.peerUin != null) && (!localArrayList.contains(localFileManagerEntity)) && (localFileManagerEntity.peerUin.equals(paramString)) && ((localFileManagerEntity.getCloudType() != 2) || (localFileManagerEntity.nOpType == 3)))
         {
           localArrayList.add(localFileManagerEntity);
-          this.jdField_a_of_type_JavaUtilList.add(localFileManagerEntity);
+          this.a.add(localFileManagerEntity);
         }
-        i = localArrayList.size();
-      } while (i < paramInt);
+        m = localArrayList.size();
+      } while (m < paramInt);
       return localArrayList;
     }
     finally {}
@@ -851,67 +789,25 @@ public class FileManagerProxy
   {
     try
     {
-      if (this.jdField_b_of_type_JavaUtilList != null) {
-        this.jdField_b_of_type_JavaUtilList.clear();
+      if (this.b != null) {
+        this.b.clear();
       } else {
-        this.jdField_b_of_type_JavaUtilList = new ArrayList();
+        this.b = new ArrayList();
       }
-      this.jdField_b_of_type_JavaUtilList = a(200, paramString);
-      paramString = this.jdField_b_of_type_JavaUtilList;
+      this.b = a(200, paramString);
+      paramString = this.b;
       return paramString;
     }
     finally {}
   }
   
-  public List<FileManagerEntity> a(String paramString, long paramLong)
-  {
-    try
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("call thread:");
-        ((StringBuilder)localObject1).append(Thread.currentThread().getName());
-        QLog.i("FileManagerProxy<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
-      }
-      if (this.d == null) {
-        init();
-      }
-      Object localObject1 = new ArrayList();
-      Iterator localIterator = this.d.iterator();
-      Object localObject2;
-      while (localIterator.hasNext())
-      {
-        localObject2 = (FileManagerEntity)localIterator.next();
-        if ((((FileManagerEntity)localObject2).fileSize == paramLong) && (((FileManagerEntity)localObject2).fileName.equals(paramString)) && (((FileManagerEntity)localObject2).status == 1) && (FileUtil.a(((FileManagerEntity)localObject2).getFilePath()))) {
-          ((ArrayList)localObject1).add(localObject2);
-        }
-      }
-      localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject2 = (Long)localIterator.next();
-        localObject2 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
-        if ((!((ArrayList)localObject1).contains(localObject2)) && (((FileManagerEntity)localObject2).fileSize == paramLong) && (((FileManagerEntity)localObject2).fileName.equals(paramString)) && (((FileManagerEntity)localObject2).status == 1) && (FileUtil.a(((FileManagerEntity)localObject2).getFilePath()))) {
-          ((ArrayList)localObject1).add(localObject2);
-        }
-      }
-      return localObject1;
-    }
-    finally {}
-    for (;;)
-    {
-      throw paramString;
-    }
-  }
-  
   public List<FileManagerEntity> a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    if (this.a == null) {
       a();
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
@@ -921,7 +817,7 @@ public class FileManagerProxy
         if (localFileManagerEntity.peerUin.equals(paramString2)) {
           if (str.indexOf(paramString1) >= 0) {
             localArrayList.add(localFileManagerEntity);
-          } else if (SearchUtils.b(paramString1, str, IContactSearchable.g) > -9223372036854775808L) {
+          } else if (SearchUtils.b(paramString1, str, IContactSearchable.k) > -9223372036854775808L) {
             localArrayList.add(localFileManagerEntity);
           }
         }
@@ -934,18 +830,18 @@ public class FileManagerProxy
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
+      if (this.a == null) {
         a();
       }
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
         if ((!TextUtils.isEmpty(localFileManagerEntity.fileName)) && (!TextUtils.isEmpty(localFileManagerEntity.peerUin)))
         {
-          int i = FileManagerUtil.a(localFileManagerEntity.fileName);
-          if ((localFileManagerEntity.peerUin.equals(paramString)) && (paramList.contains(Integer.valueOf(i)))) {
+          int m = FileManagerUtil.c(localFileManagerEntity.fileName);
+          if ((localFileManagerEntity.peerUin.equals(paramString)) && (paramList.contains(Integer.valueOf(m)))) {
             localArrayList.add(localFileManagerEntity);
           }
         }
@@ -953,115 +849,6 @@ public class FileManagerProxy
       return localArrayList;
     }
     return null;
-  }
-  
-  public Map<String, List<FileManagerEntity>> a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      a();
-    }
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    FileManagerEntity localFileManagerEntity;
-    while (localIterator.hasNext())
-    {
-      localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if ((!TextUtils.isEmpty(localFileManagerEntity.fileName)) && (localFileManagerEntity.fileName.indexOf(paramString) >= 0))
-      {
-        if (!localLinkedHashMap.containsKey(localFileManagerEntity.fileName)) {
-          localLinkedHashMap.put(localFileManagerEntity.fileName, new ArrayList());
-        }
-        ((List)localLinkedHashMap.get(localFileManagerEntity.fileName)).add(localFileManagerEntity);
-      }
-    }
-    localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!TextUtils.isEmpty(localFileManagerEntity.fileName))
-      {
-        String str = localFileManagerEntity.fileName;
-        if (localLinkedHashMap.containsKey(localFileManagerEntity.fileName) != true) {
-          if (SearchUtils.b(paramString, str, IContactSearchable.g) > -9223372036854775808L)
-          {
-            if (!localLinkedHashMap.containsKey(localFileManagerEntity.fileName)) {
-              localLinkedHashMap.put(localFileManagerEntity.fileName, new ArrayList());
-            }
-            ((List)localLinkedHashMap.get(localFileManagerEntity.fileName)).add(localFileManagerEntity);
-          }
-          else
-          {
-            str = FileManagerUtil.b(localFileManagerEntity);
-            if (TextUtils.isEmpty(str))
-            {
-              if (QLog.isDevelopLevel()) {
-                throw new NullPointerException("get Full String error!!!");
-              }
-            }
-            else if (SearchUtils.b(paramString, str.replace(HardCodeUtil.a(2131704632), "").replace(HardCodeUtil.a(2131704655), "").replace(HardCodeUtil.a(2131704650), "").replace(HardCodeUtil.a(2131704643), "").replace(HardCodeUtil.a(2131704633), "").replace(HardCodeUtil.a(2131704662), "").replace(HardCodeUtil.a(2131704648), "").replace(HardCodeUtil.a(2131704644), "").replace(HardCodeUtil.a(2131704641), "").trim(), IContactSearchable.g) > -9223372036854775808L)
-            {
-              if (!localLinkedHashMap.containsKey(localFileManagerEntity.fileName)) {
-                localLinkedHashMap.put(localFileManagerEntity.fileName, new ArrayList());
-              }
-              ((List)localLinkedHashMap.get(localFileManagerEntity.fileName)).add(localFileManagerEntity);
-            }
-          }
-        }
-      }
-    }
-    return localLinkedHashMap;
-  }
-  
-  public void a()
-  {
-    if (this.d == null) {
-      init();
-    }
-    Object localObject2 = this.d.iterator();
-    for (Object localObject1 = null; ((Iterator)localObject2).hasNext(); localObject1 = ((FileManagerEntity)localObject1).getTableName())
-    {
-      localObject1 = (FileManagerEntity)((Iterator)localObject2).next();
-      ((FileManagerEntity)localObject1).isReaded = true;
-    }
-    if (localObject1 != null)
-    {
-      localObject2 = new ContentValues();
-      ((ContentValues)localObject2).put("isReaded", Boolean.valueOf(true));
-      a((String)localObject1, (ContentValues)localObject2, "isReaded=?", new String[] { "0" }, null);
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilMap != null)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-        while (localIterator.hasNext()) {
-          if (paramLong == ((FileManagerEntity)((Map.Entry)localIterator.next()).getValue()).nSessionId) {
-            localIterator.remove();
-          }
-        }
-      }
-      return;
-    }
-    finally {}
-    for (;;)
-    {
-      throw localObject;
-    }
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    if (jdField_a_of_type_AndroidOsHandler == null)
-    {
-      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("FileManagerDBThread", 0);
-      localHandlerThread.start();
-      jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-    }
-    jdField_a_of_type_AndroidOsHandler.post(new FileManagerProxy.4(this, paramLong, paramString));
   }
   
   public void a(long paramLong1, String paramString, long paramLong2)
@@ -1075,9 +862,9 @@ public class FileManagerProxy
         this.c.remove(0);
       }
       FileManagerProxy.DeletedOlSessionInfo localDeletedOlSessionInfo = new FileManagerProxy.DeletedOlSessionInfo(this);
-      localDeletedOlSessionInfo.jdField_a_of_type_Long = paramLong1;
-      localDeletedOlSessionInfo.jdField_a_of_type_JavaLangString = paramString;
-      localDeletedOlSessionInfo.b = paramLong2;
+      localDeletedOlSessionInfo.a = paramLong1;
+      localDeletedOlSessionInfo.b = paramString;
+      localDeletedOlSessionInfo.c = paramLong2;
       this.c.add(localDeletedOlSessionInfo);
       if (QLog.isColorLevel())
       {
@@ -1097,8 +884,8 @@ public class FileManagerProxy
     {
       init();
       FileManagerUtil.a(paramFileManagerEntity);
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramFileManagerEntity.nSessionId));
-      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramFileManagerEntity.nSessionId), paramFileManagerEntity);
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.e.get(Long.valueOf(paramFileManagerEntity.nSessionId));
+      this.e.put(Long.valueOf(paramFileManagerEntity.nSessionId), paramFileManagerEntity);
       return;
     }
     finally
@@ -1118,7 +905,7 @@ public class FileManagerProxy
       }
       paramProxyListener = new FileManagerEntity();
       if (paramFileManagerEntity.nFileType != 13) {
-        paramFileManagerEntity.nFileType = FileManagerUtil.a(paramFileManagerEntity.fileName);
+        paramFileManagerEntity.nFileType = FileManagerUtil.c(paramFileManagerEntity.fileName);
       }
       paramProxyListener.copyFrom(paramFileManagerEntity);
       paramProxyListener.nSessionId = paramFileManagerEntity.nSessionId;
@@ -1174,14 +961,6 @@ public class FileManagerProxy
     a(FileManagerEntity.tableName(), localContentValues, "nSessionId=?", new String[] { String.valueOf(paramFileManagerEntity.nSessionId) }, null);
   }
   
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilSet == null) {
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    }
-    this.jdField_a_of_type_JavaUtilSet.add(paramString);
-  }
-  
   public void a(String paramString, int paramInt)
   {
     try
@@ -1200,11 +979,11 @@ public class FileManagerProxy
           ((FileManagerEntity)localObject2).bDelInAio = true;
         }
       }
-      localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      localObject1 = this.e.keySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Long)((Iterator)localObject1).next();
-        localObject2 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+        localObject2 = (FileManagerEntity)this.e.get(localObject2);
         if ((((FileManagerEntity)localObject2).peerUin != null) && (((FileManagerEntity)localObject2).peerUin.equals(paramString)) && (((FileManagerEntity)localObject2).peerType == paramInt))
         {
           ((FileManagerEntity)localObject2).uniseq = -1L;
@@ -1235,17 +1014,6 @@ public class FileManagerProxy
     this.proxyManager.addMsgQueue(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramProxyListener);
   }
   
-  public boolean a(long paramLong)
-  {
-    Iterator localIterator = this.c.iterator();
-    while (localIterator.hasNext()) {
-      if (((FileManagerProxy.DeletedOlSessionInfo)localIterator.next()).jdField_a_of_type_Long == paramLong) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
   public boolean a(FileManagerEntity paramFileManagerEntity, boolean paramBoolean)
   {
     if (paramFileManagerEntity == null) {}
@@ -1270,16 +1038,16 @@ public class FileManagerProxy
     {
       a(FileManagerEntity.tableName(), "nSessionId = ?", new String[] { String.valueOf(paramFileManagerEntity.nSessionId) }, null);
       this.d.remove(paramFileManagerEntity);
-      if (this.jdField_a_of_type_JavaUtilList != null)
+      if (this.a != null)
       {
-        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject = this.a.iterator();
         while (((Iterator)localObject).hasNext()) {
           if (((Iterator)localObject).next() == paramFileManagerEntity) {
             ((Iterator)localObject).remove();
           }
         }
       }
-      localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      localObject = this.e.entrySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
@@ -1293,11 +1061,11 @@ public class FileManagerProxy
         ((StringBuilder)localObject).append("Delete FileManagerEntity[");
         ((StringBuilder)localObject).append(String.valueOf(paramFileManagerEntity.nSessionId));
         ((StringBuilder)localObject).append("] for memory and db:");
-        ((StringBuilder)localObject).append(FileManagerUtil.a(paramFileManagerEntity));
+        ((StringBuilder)localObject).append(FileManagerUtil.c(paramFileManagerEntity));
         QLog.i("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject).toString());
       }
       a(paramFileManagerEntity.nSessionId, paramFileManagerEntity.peerUin, paramFileManagerEntity.nOLfileSessionId);
-      paramBoolean = a(1);
+      paramBoolean = b(1);
       return paramBoolean;
     }
     localObject = new ContentValues();
@@ -1314,7 +1082,7 @@ public class FileManagerProxy
       ((StringBuilder)localObject).append("Update FileManagerEntity[");
       ((StringBuilder)localObject).append(String.valueOf(paramFileManagerEntity.nSessionId));
       ((StringBuilder)localObject).append("] for db:");
-      ((StringBuilder)localObject).append(FileManagerUtil.a(paramFileManagerEntity));
+      ((StringBuilder)localObject).append(FileManagerUtil.c(paramFileManagerEntity));
       QLog.i("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject).toString());
     }
     return true;
@@ -1322,47 +1090,6 @@ public class FileManagerProxy
     for (;;)
     {
       throw paramFileManagerEntity;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    Set localSet = this.jdField_a_of_type_JavaUtilSet;
-    if (localSet == null)
-    {
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      return false;
-    }
-    return localSet.contains(paramString);
-  }
-  
-  public boolean a(String paramString, long paramLong)
-  {
-    Iterator localIterator = this.c.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerProxy.DeletedOlSessionInfo localDeletedOlSessionInfo = (FileManagerProxy.DeletedOlSessionInfo)localIterator.next();
-      if ((localDeletedOlSessionInfo.b == paramLong) && (localDeletedOlSessionInfo.jdField_a_of_type_JavaLangString != null) && (localDeletedOlSessionInfo.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public FileManagerEntity b(long paramLong)
-  {
-    FileManagerEntity localFileManagerEntity = null;
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-        localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      }
-      return localFileManagerEntity;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
     }
   }
   
@@ -1412,9 +1139,9 @@ public class FileManagerProxy
         paramString = (FileManagerEntity)paramString.get(0);
         try
         {
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramString.nSessionId), paramString);
+          this.e.put(Long.valueOf(paramString.nSessionId), paramString);
           ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).upDataApkPathForPackageName(paramString);
-          if ((paramString.cloudType == 1) && (FileManagerUtil.b(paramString))) {
+          if ((paramString.cloudType == 1) && (FileManagerUtil.d(paramString))) {
             paramString.status = 16;
           }
           return paramString;
@@ -1434,65 +1161,22 @@ public class FileManagerProxy
     finally {}
   }
   
-  public FileManagerEntity b(String paramString)
-  {
-    try
-    {
-      if (this.d == null) {
-        init();
-      }
-      Iterator localIterator = this.d.iterator();
-      Object localObject;
-      boolean bool;
-      while (localIterator.hasNext())
-      {
-        localObject = (FileManagerEntity)localIterator.next();
-        if (((FileManagerEntity)localObject).getFilePath() != null)
-        {
-          bool = ((FileManagerEntity)localObject).getFilePath().equalsIgnoreCase(paramString);
-          if (bool) {
-            return localObject;
-          }
-        }
-      }
-      localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (Long)localIterator.next();
-        localObject = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if (((FileManagerEntity)localObject).getFilePath() != null)
-        {
-          bool = ((FileManagerEntity)localObject).getFilePath().equalsIgnoreCase(paramString);
-          if (bool) {
-            return localObject;
-          }
-        }
-      }
-      return null;
-    }
-    finally {}
-    for (;;)
-    {
-      throw paramString;
-    }
-  }
-  
   public List<FileManagerEntity> b()
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
+      if (this.a == null) {
         a();
       }
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("queryMaxRecentRecords size[");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+        ((StringBuilder)localObject1).append(this.a.size());
         ((StringBuilder)localObject1).append("]");
         QLog.i("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
       }
-      Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+      Object localObject1 = this.a;
       return localObject1;
     }
     finally {}
@@ -1502,32 +1186,74 @@ public class FileManagerProxy
   {
     try
     {
-      if (this.jdField_b_of_type_JavaUtilList == null) {
-        this.jdField_b_of_type_JavaUtilList = new ArrayList();
+      if (this.b == null) {
+        this.b = new ArrayList();
       }
-      paramString = this.jdField_b_of_type_JavaUtilList;
+      paramString = this.b;
       return paramString;
     }
     finally {}
   }
   
+  public List<FileManagerEntity> b(String paramString, long paramLong)
+  {
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("call thread:");
+        ((StringBuilder)localObject1).append(Thread.currentThread().getName());
+        QLog.i("FileManagerProxy<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
+      }
+      if (this.d == null) {
+        init();
+      }
+      Object localObject1 = new ArrayList();
+      Iterator localIterator = this.d.iterator();
+      Object localObject2;
+      while (localIterator.hasNext())
+      {
+        localObject2 = (FileManagerEntity)localIterator.next();
+        if ((((FileManagerEntity)localObject2).fileSize == paramLong) && (((FileManagerEntity)localObject2).fileName.equals(paramString)) && (((FileManagerEntity)localObject2).status == 1) && (FileUtil.b(((FileManagerEntity)localObject2).getFilePath()))) {
+          ((ArrayList)localObject1).add(localObject2);
+        }
+      }
+      localIterator = this.e.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (Long)localIterator.next();
+        localObject2 = (FileManagerEntity)this.e.get(localObject2);
+        if ((!((ArrayList)localObject1).contains(localObject2)) && (((FileManagerEntity)localObject2).fileSize == paramLong) && (((FileManagerEntity)localObject2).fileName.equals(paramString)) && (((FileManagerEntity)localObject2).status == 1) && (FileUtil.b(((FileManagerEntity)localObject2).getFilePath()))) {
+          ((ArrayList)localObject1).add(localObject2);
+        }
+      }
+      return localObject1;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
+  
   public List<FileManagerEntity> b(List<Integer> paramList, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    if (this.a == null) {
       a();
     }
     ArrayList localArrayList = new ArrayList(paramList);
-    paramList = new ArrayList(this.e);
+    paramList = new ArrayList(this.h);
     paramList.removeAll(localArrayList);
     localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
       if ((!TextUtils.isEmpty(localFileManagerEntity.fileName)) && (!TextUtils.isEmpty(localFileManagerEntity.peerUin)))
       {
-        int i = FileManagerUtil.a(localFileManagerEntity.fileName);
-        if ((localFileManagerEntity.peerUin.equals(paramString)) && (paramList.contains(Integer.valueOf(i)))) {
+        int m = FileManagerUtil.c(localFileManagerEntity.fileName);
+        if ((localFileManagerEntity.peerUin.equals(paramString)) && (paramList.contains(Integer.valueOf(m)))) {
           localArrayList.add(localFileManagerEntity);
         }
       }
@@ -1535,17 +1261,15 @@ public class FileManagerProxy
     return localArrayList;
   }
   
-  public void b()
+  public void b(long paramLong, String paramString)
   {
-    long l = System.currentTimeMillis();
-    Object localObject = this.jdField_a_of_type_JavaUtilMap;
-    if ((localObject != null) && (((Map)localObject).size() > 0) && (l - this.jdField_a_of_type_Long > 5000L)) {
-      ThreadManager.getSubThreadHandler().post(new FileManagerProxy.2(this));
+    if (k == null)
+    {
+      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("FileManagerDBThread", 0);
+      localHandlerThread.start();
+      k = new Handler(localHandlerThread.getLooper());
     }
-    localObject = this.jdField_a_of_type_JavaUtilSet;
-    if (localObject != null) {
-      ((Set)localObject).clear();
-    }
+    k.post(new FileManagerProxy.4(this, paramLong, paramString));
   }
   
   public void b(FileManagerEntity paramFileManagerEntity)
@@ -1574,7 +1298,352 @@ public class FileManagerProxy
     finally {}
   }
   
+  public boolean b(long paramLong)
+  {
+    Iterator localIterator = this.c.iterator();
+    while (localIterator.hasNext()) {
+      if (((FileManagerProxy.DeletedOlSessionInfo)localIterator.next()).a == paramLong) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
   public FileManagerEntity c(String paramString)
+  {
+    try
+    {
+      if (this.d == null) {
+        init();
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("select * from ");
+      ((StringBuilder)localObject).append(FileManagerEntity.tableName());
+      ((StringBuilder)localObject).append(" where Uuid = ?");
+      localObject = ((StringBuilder)localObject).toString();
+      EntityManager localEntityManager = this.app.getEntityManagerFactory().createEntityManager();
+      if (localEntityManager == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("FileManagerProxy<FileAssistant>", 2, "get EntityManager null!");
+        }
+        return null;
+      }
+      long l1 = System.currentTimeMillis();
+      paramString = localEntityManager.rawQuery(FileManagerEntity.class, (String)localObject, new String[] { SecurityUtile.encode(paramString) });
+      long l2 = System.currentTimeMillis();
+      if (paramString == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FileManagerProxy<FileAssistant>", 2, "queryOver, but no data!");
+        }
+        return null;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("query over,startTime[");
+        ((StringBuilder)localObject).append(String.valueOf(l1));
+        ((StringBuilder)localObject).append("], overTime[");
+        ((StringBuilder)localObject).append(String.valueOf(l2));
+        ((StringBuilder)localObject).append("]");
+        QLog.d("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+      }
+      if ((paramString.size() > 1) && (QLog.isColorLevel()))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("why size[");
+        ((StringBuilder)localObject).append(String.valueOf(paramString.size()));
+        ((StringBuilder)localObject).append("] over 1?");
+        QLog.w("FileManagerProxy", 2, ((StringBuilder)localObject).toString());
+      }
+      paramString = (FileManagerEntity)paramString.get(0);
+      if (paramString == null) {
+        return null;
+      }
+      this.e.put(Long.valueOf(paramString.nSessionId), paramString);
+      ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).upDataApkPathForPackageName(paramString);
+      if ((paramString.cloudType == 1) && (FileManagerUtil.d(paramString))) {
+        paramString.status = 16;
+      }
+      return paramString;
+    }
+    finally {}
+  }
+  
+  public List<FileManagerEntity> c()
+  {
+    List localList = this.d;
+    if ((localList == null) || (localList.isEmpty())) {
+      init();
+    }
+    return this.d;
+  }
+  
+  public void c(long paramLong)
+  {
+    try
+    {
+      if (this.e != null)
+      {
+        Iterator localIterator = this.e.entrySet().iterator();
+        while (localIterator.hasNext()) {
+          if (paramLong == ((FileManagerEntity)((Map.Entry)localIterator.next()).getValue()).nSessionId) {
+            localIterator.remove();
+          }
+        }
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
+  }
+  
+  /* Error */
+  public void c(FileManagerEntity paramFileManagerEntity)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   6: ifnonnull +7 -> 13
+    //   9: aload_0
+    //   10: invokevirtual 183	com/tencent/mobileqq/filemanager/data/FileManagerProxy:init	()V
+    //   13: aload_0
+    //   14: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   17: aload_1
+    //   18: invokeinterface 536 2 0
+    //   23: ifeq +16 -> 39
+    //   26: ldc_w 372
+    //   29: iconst_1
+    //   30: ldc_w 827
+    //   33: invokestatic 720	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   36: aload_0
+    //   37: monitorexit
+    //   38: return
+    //   39: iconst_0
+    //   40: istore_2
+    //   41: iload_2
+    //   42: aload_0
+    //   43: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   46: invokeinterface 101 1 0
+    //   51: if_icmpge +326 -> 377
+    //   54: aload_0
+    //   55: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   58: iload_2
+    //   59: invokeinterface 105 2 0
+    //   64: checkcast 194	com/tencent/mobileqq/filemanager/data/FileManagerEntity
+    //   67: astore 4
+    //   69: aload_1
+    //   70: getfield 202	com/tencent/mobileqq/filemanager/data/FileManagerEntity:srvTime	J
+    //   73: aload 4
+    //   75: getfield 202	com/tencent/mobileqq/filemanager/data/FileManagerEntity:srvTime	J
+    //   78: lcmp
+    //   79: iflt +291 -> 370
+    //   82: aload_1
+    //   83: getfield 602	com/tencent/mobileqq/filemanager/data/FileManagerEntity:bDelInFM	Z
+    //   86: ifne +14 -> 100
+    //   89: aload_0
+    //   90: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   93: iload_2
+    //   94: aload_1
+    //   95: invokeinterface 830 3 0
+    //   100: aload_0
+    //   101: getfield 44	com/tencent/mobileqq/filemanager/data/FileManagerProxy:a	Ljava/util/List;
+    //   104: ifnull +261 -> 365
+    //   107: aload_0
+    //   108: getfield 44	com/tencent/mobileqq/filemanager/data/FileManagerProxy:a	Ljava/util/List;
+    //   111: iload_2
+    //   112: aload_1
+    //   113: invokeinterface 830 3 0
+    //   118: goto +247 -> 365
+    //   121: iload_3
+    //   122: ifne +90 -> 212
+    //   125: aload_0
+    //   126: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   129: invokeinterface 101 1 0
+    //   134: ifne +42 -> 176
+    //   137: aload_1
+    //   138: getfield 602	com/tencent/mobileqq/filemanager/data/FileManagerEntity:bDelInFM	Z
+    //   141: ifne +14 -> 155
+    //   144: aload_0
+    //   145: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   148: iconst_0
+    //   149: aload_1
+    //   150: invokeinterface 830 3 0
+    //   155: aload_0
+    //   156: getfield 44	com/tencent/mobileqq/filemanager/data/FileManagerProxy:a	Ljava/util/List;
+    //   159: ifnull +53 -> 212
+    //   162: aload_0
+    //   163: getfield 44	com/tencent/mobileqq/filemanager/data/FileManagerProxy:a	Ljava/util/List;
+    //   166: iconst_0
+    //   167: aload_1
+    //   168: invokeinterface 830 3 0
+    //   173: goto +39 -> 212
+    //   176: aload_1
+    //   177: getfield 602	com/tencent/mobileqq/filemanager/data/FileManagerEntity:bDelInFM	Z
+    //   180: ifne +14 -> 194
+    //   183: aload_0
+    //   184: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   187: aload_1
+    //   188: invokeinterface 324 2 0
+    //   193: pop
+    //   194: aload_0
+    //   195: getfield 44	com/tencent/mobileqq/filemanager/data/FileManagerProxy:a	Ljava/util/List;
+    //   198: ifnull +14 -> 212
+    //   201: aload_0
+    //   202: getfield 44	com/tencent/mobileqq/filemanager/data/FileManagerProxy:a	Ljava/util/List;
+    //   205: aload_1
+    //   206: invokeinterface 324 2 0
+    //   211: pop
+    //   212: invokestatic 505	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   215: ifeq +59 -> 274
+    //   218: new 185	java/lang/StringBuilder
+    //   221: dup
+    //   222: invokespecial 186	java/lang/StringBuilder:<init>	()V
+    //   225: astore 4
+    //   227: aload 4
+    //   229: ldc_w 832
+    //   232: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   235: pop
+    //   236: aload 4
+    //   238: iload_3
+    //   239: invokevirtual 835	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   242: pop
+    //   243: aload 4
+    //   245: ldc_w 837
+    //   248: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   251: pop
+    //   252: aload 4
+    //   254: aload_1
+    //   255: invokestatic 692	com/tencent/mobileqq/filemanager/util/FileManagerUtil:c	(Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;)Ljava/lang/String;
+    //   258: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: pop
+    //   262: ldc_w 372
+    //   265: iconst_4
+    //   266: aload 4
+    //   268: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   271: invokestatic 375	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   274: aload_0
+    //   275: getfield 40	com/tencent/mobileqq/filemanager/data/FileManagerProxy:e	Ljava/util/Map;
+    //   278: aload_1
+    //   279: getfield 210	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
+    //   282: invokestatic 314	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   285: aload_1
+    //   286: invokeinterface 320 3 0
+    //   291: pop
+    //   292: aload_0
+    //   293: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   296: invokeinterface 101 1 0
+    //   301: bipush 30
+    //   303: if_icmple +49 -> 352
+    //   306: aload_0
+    //   307: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   310: aload_0
+    //   311: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   314: invokeinterface 101 1 0
+    //   319: iconst_1
+    //   320: isub
+    //   321: invokeinterface 573 2 0
+    //   326: pop
+    //   327: goto +25 -> 352
+    //   330: astore_1
+    //   331: goto +24 -> 355
+    //   334: astore_1
+    //   335: invokestatic 363	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   338: ifeq +14 -> 352
+    //   341: ldc_w 372
+    //   344: iconst_1
+    //   345: aload_1
+    //   346: invokevirtual 724	java/lang/Exception:toString	()Ljava/lang/String;
+    //   349: invokestatic 502	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   352: aload_0
+    //   353: monitorexit
+    //   354: return
+    //   355: aload_0
+    //   356: monitorexit
+    //   357: goto +5 -> 362
+    //   360: aload_1
+    //   361: athrow
+    //   362: goto -2 -> 360
+    //   365: iconst_1
+    //   366: istore_3
+    //   367: goto -246 -> 121
+    //   370: iload_2
+    //   371: iconst_1
+    //   372: iadd
+    //   373: istore_2
+    //   374: goto -333 -> 41
+    //   377: iconst_0
+    //   378: istore_3
+    //   379: goto -258 -> 121
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	382	0	this	FileManagerProxy
+    //   0	382	1	paramFileManagerEntity	FileManagerEntity
+    //   40	334	2	m	int
+    //   121	258	3	bool	boolean
+    //   67	200	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	13	330	finally
+    //   13	36	330	finally
+    //   41	100	330	finally
+    //   100	118	330	finally
+    //   125	155	330	finally
+    //   155	173	330	finally
+    //   176	194	330	finally
+    //   194	212	330	finally
+    //   212	274	330	finally
+    //   274	327	330	finally
+    //   335	352	330	finally
+    //   2	13	334	java/lang/Exception
+    //   13	36	334	java/lang/Exception
+    //   41	100	334	java/lang/Exception
+    //   100	118	334	java/lang/Exception
+    //   125	155	334	java/lang/Exception
+    //   155	173	334	java/lang/Exception
+    //   176	194	334	java/lang/Exception
+    //   194	212	334	java/lang/Exception
+    //   212	274	334	java/lang/Exception
+    //   274	327	334	java/lang/Exception
+  }
+  
+  public boolean c(String paramString, long paramLong)
+  {
+    Iterator localIterator = this.c.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerProxy.DeletedOlSessionInfo localDeletedOlSessionInfo = (FileManagerProxy.DeletedOlSessionInfo)localIterator.next();
+      if ((localDeletedOlSessionInfo.c == paramLong) && (localDeletedOlSessionInfo.b != null) && (localDeletedOlSessionInfo.b.equalsIgnoreCase(paramString))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public FileManagerEntity d(long paramLong)
+  {
+    FileManagerEntity localFileManagerEntity = null;
+    try
+    {
+      if (this.e.containsKey(Long.valueOf(paramLong))) {
+        localFileManagerEntity = (FileManagerEntity)this.e.get(Long.valueOf(paramLong));
+      }
+      return localFileManagerEntity;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public FileManagerEntity d(String paramString)
   {
     try
     {
@@ -1587,296 +1656,23 @@ public class FileManagerProxy
       while (localIterator.hasNext())
       {
         localObject = (FileManagerEntity)localIterator.next();
-        if (((FileManagerEntity)localObject).strServerPath != null)
+        if (((FileManagerEntity)localObject).getFilePath() != null)
         {
-          bool = ((FileManagerEntity)localObject).strServerPath.equalsIgnoreCase(paramString);
+          bool = ((FileManagerEntity)localObject).getFilePath().equalsIgnoreCase(paramString);
           if (bool) {
             return localObject;
           }
         }
       }
-      localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      localIterator = this.e.keySet().iterator();
       while (localIterator.hasNext())
       {
         localObject = (Long)localIterator.next();
-        localObject = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if ((((FileManagerEntity)localObject).strServerPath != null) && (((FileManagerEntity)localObject).bDelInFM != true))
+        localObject = (FileManagerEntity)this.e.get(localObject);
+        if (((FileManagerEntity)localObject).getFilePath() != null)
         {
-          bool = ((FileManagerEntity)localObject).strServerPath.equalsIgnoreCase(paramString);
+          bool = ((FileManagerEntity)localObject).getFilePath().equalsIgnoreCase(paramString);
           if (bool) {
-            return localObject;
-          }
-        }
-      }
-      return null;
-    }
-    finally {}
-    for (;;)
-    {
-      throw paramString;
-    }
-  }
-  
-  public List<FileManagerEntity> c()
-  {
-    List localList = this.d;
-    if ((localList == null) || (localList.isEmpty())) {
-      init();
-    }
-    return this.d;
-  }
-  
-  public void c()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("delete from ");
-    ((StringBuilder)localObject).append(FileManagerEntity.tableName());
-    localObject = ((StringBuilder)localObject).toString();
-    this.app.getEntityManagerFactory().createEntityManager().execSQL((String)localObject);
-  }
-  
-  /* Error */
-  public void c(FileManagerEntity paramFileManagerEntity)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   6: ifnonnull +7 -> 13
-    //   9: aload_0
-    //   10: invokevirtual 178	com/tencent/mobileqq/filemanager/data/FileManagerProxy:init	()V
-    //   13: aload_0
-    //   14: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   17: aload_1
-    //   18: invokeinterface 558 2 0
-    //   23: ifeq +346 -> 369
-    //   26: invokestatic 357	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   29: ifeq +340 -> 369
-    //   32: ldc_w 366
-    //   35: iconst_2
-    //   36: ldc_w 889
-    //   39: invokestatic 475	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   42: goto +327 -> 369
-    //   45: iload_2
-    //   46: aload_0
-    //   47: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   50: invokeinterface 95 1 0
-    //   55: if_icmpge +331 -> 386
-    //   58: aload_0
-    //   59: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   62: iload_2
-    //   63: invokeinterface 99 2 0
-    //   68: checkcast 189	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   71: astore 4
-    //   73: aload_1
-    //   74: getfield 197	com/tencent/mobileqq/filemanager/data/FileManagerEntity:srvTime	J
-    //   77: aload 4
-    //   79: getfield 197	com/tencent/mobileqq/filemanager/data/FileManagerEntity:srvTime	J
-    //   82: lcmp
-    //   83: iflt +296 -> 379
-    //   86: aload_1
-    //   87: getfield 736	com/tencent/mobileqq/filemanager/data/FileManagerEntity:bDelInFM	Z
-    //   90: ifne +14 -> 104
-    //   93: aload_0
-    //   94: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   97: iload_2
-    //   98: aload_1
-    //   99: invokeinterface 892 3 0
-    //   104: aload_0
-    //   105: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   108: ifnull +266 -> 374
-    //   111: aload_0
-    //   112: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   115: iload_2
-    //   116: aload_1
-    //   117: invokeinterface 892 3 0
-    //   122: goto +252 -> 374
-    //   125: iload_3
-    //   126: ifne +90 -> 216
-    //   129: aload_0
-    //   130: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   133: invokeinterface 95 1 0
-    //   138: ifne +42 -> 180
-    //   141: aload_1
-    //   142: getfield 736	com/tencent/mobileqq/filemanager/data/FileManagerEntity:bDelInFM	Z
-    //   145: ifne +14 -> 159
-    //   148: aload_0
-    //   149: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   152: iconst_0
-    //   153: aload_1
-    //   154: invokeinterface 892 3 0
-    //   159: aload_0
-    //   160: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   163: ifnull +53 -> 216
-    //   166: aload_0
-    //   167: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   170: iconst_0
-    //   171: aload_1
-    //   172: invokeinterface 892 3 0
-    //   177: goto +39 -> 216
-    //   180: aload_1
-    //   181: getfield 736	com/tencent/mobileqq/filemanager/data/FileManagerEntity:bDelInFM	Z
-    //   184: ifne +14 -> 198
-    //   187: aload_0
-    //   188: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   191: aload_1
-    //   192: invokeinterface 319 2 0
-    //   197: pop
-    //   198: aload_0
-    //   199: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   202: ifnull +14 -> 216
-    //   205: aload_0
-    //   206: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   209: aload_1
-    //   210: invokeinterface 319 2 0
-    //   215: pop
-    //   216: invokestatic 529	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   219: ifeq +59 -> 278
-    //   222: new 180	java/lang/StringBuilder
-    //   225: dup
-    //   226: invokespecial 181	java/lang/StringBuilder:<init>	()V
-    //   229: astore 4
-    //   231: aload 4
-    //   233: ldc_w 894
-    //   236: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   239: pop
-    //   240: aload 4
-    //   242: iload_3
-    //   243: invokevirtual 897	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   246: pop
-    //   247: aload 4
-    //   249: ldc_w 899
-    //   252: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   255: pop
-    //   256: aload 4
-    //   258: aload_1
-    //   259: invokestatic 814	com/tencent/mobileqq/filemanager/util/FileManagerUtil:a	(Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;)Ljava/lang/String;
-    //   262: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   265: pop
-    //   266: ldc_w 366
-    //   269: iconst_4
-    //   270: aload 4
-    //   272: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   275: invokestatic 369	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   278: aload_0
-    //   279: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   282: aload_1
-    //   283: getfield 205	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   286: invokestatic 309	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   289: aload_1
-    //   290: invokeinterface 315 3 0
-    //   295: pop
-    //   296: aload_0
-    //   297: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   300: invokeinterface 95 1 0
-    //   305: bipush 30
-    //   307: if_icmple +49 -> 356
-    //   310: aload_0
-    //   311: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   314: aload_0
-    //   315: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   318: invokeinterface 95 1 0
-    //   323: iconst_1
-    //   324: isub
-    //   325: invokeinterface 709 2 0
-    //   330: pop
-    //   331: goto +25 -> 356
-    //   334: astore_1
-    //   335: goto +24 -> 359
-    //   338: astore_1
-    //   339: invokestatic 357	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   342: ifeq +14 -> 356
-    //   345: ldc_w 366
-    //   348: iconst_1
-    //   349: aload_1
-    //   350: invokevirtual 828	java/lang/Exception:toString	()Ljava/lang/String;
-    //   353: invokestatic 475	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   356: aload_0
-    //   357: monitorexit
-    //   358: return
-    //   359: aload_0
-    //   360: monitorexit
-    //   361: goto +5 -> 366
-    //   364: aload_1
-    //   365: athrow
-    //   366: goto -2 -> 364
-    //   369: iconst_0
-    //   370: istore_2
-    //   371: goto -326 -> 45
-    //   374: iconst_1
-    //   375: istore_3
-    //   376: goto -251 -> 125
-    //   379: iload_2
-    //   380: iconst_1
-    //   381: iadd
-    //   382: istore_2
-    //   383: goto -338 -> 45
-    //   386: iconst_0
-    //   387: istore_3
-    //   388: goto -263 -> 125
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	391	0	this	FileManagerProxy
-    //   0	391	1	paramFileManagerEntity	FileManagerEntity
-    //   45	338	2	i	int
-    //   125	263	3	bool	boolean
-    //   71	200	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	13	334	finally
-    //   13	42	334	finally
-    //   45	104	334	finally
-    //   104	122	334	finally
-    //   129	159	334	finally
-    //   159	177	334	finally
-    //   180	198	334	finally
-    //   198	216	334	finally
-    //   216	278	334	finally
-    //   278	331	334	finally
-    //   339	356	334	finally
-    //   2	13	338	java/lang/Exception
-    //   13	42	338	java/lang/Exception
-    //   45	104	338	java/lang/Exception
-    //   104	122	338	java/lang/Exception
-    //   129	159	338	java/lang/Exception
-    //   159	177	338	java/lang/Exception
-    //   180	198	338	java/lang/Exception
-    //   198	216	338	java/lang/Exception
-    //   216	278	338	java/lang/Exception
-    //   278	331	338	java/lang/Exception
-  }
-  
-  public FileManagerEntity d(String paramString)
-  {
-    try
-    {
-      if (this.d == null) {
-        init();
-      }
-      Iterator localIterator = this.d.iterator();
-      Object localObject;
-      int i;
-      while (localIterator.hasNext())
-      {
-        localObject = (FileManagerEntity)localIterator.next();
-        if ((((FileManagerEntity)localObject).WeiYunFileId != null) && (((FileManagerEntity)localObject).WeiYunFileId.equalsIgnoreCase(paramString)) && (((FileManagerEntity)localObject).status == 1) && (((FileManagerEntity)localObject).imgHeight > 0))
-        {
-          i = ((FileManagerEntity)localObject).imgWidth;
-          if (i > 0) {
-            return localObject;
-          }
-        }
-      }
-      localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (Long)localIterator.next();
-        localObject = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if ((((FileManagerEntity)localObject).WeiYunFileId != null) && (((FileManagerEntity)localObject).WeiYunFileId.equalsIgnoreCase(paramString)) && (((FileManagerEntity)localObject).status == 1) && (((FileManagerEntity)localObject).imgHeight > 0))
-        {
-          i = ((FileManagerEntity)localObject).imgWidth;
-          if (i > 0) {
             return localObject;
           }
         }
@@ -1892,10 +1688,20 @@ public class FileManagerProxy
   
   public void d()
   {
-    synchronized (this.jdField_b_of_type_JavaUtilMap)
+    if (this.d == null) {
+      init();
+    }
+    Object localObject2 = this.d.iterator();
+    for (Object localObject1 = null; ((Iterator)localObject2).hasNext(); localObject1 = ((FileManagerEntity)localObject1).getTableName())
     {
-      this.jdField_b_of_type_JavaUtilMap.clear();
-      return;
+      localObject1 = (FileManagerEntity)((Iterator)localObject2).next();
+      ((FileManagerEntity)localObject1).isReaded = true;
+    }
+    if (localObject1 != null)
+    {
+      localObject2 = new ContentValues();
+      ((ContentValues)localObject2).put("isReaded", Boolean.valueOf(true));
+      a((String)localObject1, (ContentValues)localObject2, "isReaded=?", new String[] { "0" }, null);
     }
   }
   
@@ -1909,12 +1715,12 @@ public class FileManagerProxy
       return;
     }
     FileManagerUtil.a(paramFileManagerEntity);
-    int i = paramFileManagerEntity.status;
-    if (i == 2) {
+    int m = paramFileManagerEntity.status;
+    if (m == 2) {
       paramFileManagerEntity.status = 0;
     }
     ContentValues localContentValues = a(paramFileManagerEntity);
-    paramFileManagerEntity.status = i;
+    paramFileManagerEntity.status = m;
     long l = paramFileManagerEntity.nSessionId;
     paramFileManagerEntity = Looper.getMainLooper();
     if (Thread.currentThread() == paramFileManagerEntity.getThread()) {
@@ -1947,22 +1753,22 @@ public class FileManagerProxy
       while (localIterator.hasNext())
       {
         localObject = (FileManagerEntity)localIterator.next();
-        if (((FileManagerEntity)localObject).Uuid != null)
+        if (((FileManagerEntity)localObject).strServerPath != null)
         {
-          bool = ((FileManagerEntity)localObject).Uuid.equalsIgnoreCase(paramString);
+          bool = ((FileManagerEntity)localObject).strServerPath.equalsIgnoreCase(paramString);
           if (bool) {
             return localObject;
           }
         }
       }
-      localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      localIterator = this.e.keySet().iterator();
       while (localIterator.hasNext())
       {
         localObject = (Long)localIterator.next();
-        localObject = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if ((localObject != null) && (!TextUtils.isEmpty(((FileManagerEntity)localObject).Uuid)))
+        localObject = (FileManagerEntity)this.e.get(localObject);
+        if ((((FileManagerEntity)localObject).strServerPath != null) && (((FileManagerEntity)localObject).bDelInFM != true))
         {
-          bool = ((FileManagerEntity)localObject).Uuid.equalsIgnoreCase(paramString);
+          bool = ((FileManagerEntity)localObject).strServerPath.equalsIgnoreCase(paramString);
           if (bool) {
             return localObject;
           }
@@ -1974,6 +1780,19 @@ public class FileManagerProxy
     for (;;)
     {
       throw paramString;
+    }
+  }
+  
+  public void e()
+  {
+    long l = System.currentTimeMillis();
+    Object localObject = this.e;
+    if ((localObject != null) && (((Map)localObject).size() > 0) && (l - this.g > 5000L)) {
+      ThreadManager.getSubThreadHandler().post(new FileManagerProxy.2(this));
+    }
+    localObject = this.f;
+    if (localObject != null) {
+      ((Set)localObject).clear();
     }
   }
   
@@ -2003,74 +1822,31 @@ public class FileManagerProxy
       if (this.d == null) {
         init();
       }
-      Object localObject1 = new ArrayList();
       Iterator localIterator = this.d.iterator();
-      Object localObject2;
-      boolean bool;
+      Object localObject;
+      int m;
       while (localIterator.hasNext())
       {
-        localObject2 = (FileManagerEntity)localIterator.next();
-        if ((((FileManagerEntity)localObject2).WeiYunFileId != null) && (((FileManagerEntity)localObject2).WeiYunFileId.equalsIgnoreCase(paramString)))
+        localObject = (FileManagerEntity)localIterator.next();
+        if ((((FileManagerEntity)localObject).WeiYunFileId != null) && (((FileManagerEntity)localObject).WeiYunFileId.equalsIgnoreCase(paramString)) && (((FileManagerEntity)localObject).status == 1) && (((FileManagerEntity)localObject).imgHeight > 0))
         {
-          if (((FileManagerEntity)localObject2).status == 1)
-          {
-            bool = FileUtil.a(((FileManagerEntity)localObject2).getFilePath());
-            if (bool) {
-              return localObject2;
-            }
+          m = ((FileManagerEntity)localObject).imgWidth;
+          if (m > 0) {
+            return localObject;
           }
-          ((ArrayList)localObject1).add(localObject2);
         }
       }
-      localIterator = ((ArrayList)localObject1).iterator();
-      int i;
+      localIterator = this.e.keySet().iterator();
       while (localIterator.hasNext())
       {
-        localObject2 = (FileManagerEntity)localIterator.next();
-        if ((((FileManagerEntity)localObject2).nOpType != 5) && (((FileManagerEntity)localObject2).nOpType != 50))
+        localObject = (Long)localIterator.next();
+        localObject = (FileManagerEntity)this.e.get(localObject);
+        if ((((FileManagerEntity)localObject).WeiYunFileId != null) && (((FileManagerEntity)localObject).WeiYunFileId.equalsIgnoreCase(paramString)) && (((FileManagerEntity)localObject).status == 1) && (((FileManagerEntity)localObject).imgHeight > 0))
         {
-          i = ((FileManagerEntity)localObject2).cloudType;
-          if (i != 2) {
-            break;
+          m = ((FileManagerEntity)localObject).imgWidth;
+          if (m > 0) {
+            return localObject;
           }
-        }
-        else
-        {
-          return localObject2;
-        }
-      }
-      ((ArrayList)localObject1).clear();
-      localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject2 = (Long)localIterator.next();
-        localObject2 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
-        if ((((FileManagerEntity)localObject2).WeiYunFileId != null) && (((FileManagerEntity)localObject2).WeiYunFileId.equalsIgnoreCase(paramString)))
-        {
-          if (((FileManagerEntity)localObject2).status == 1)
-          {
-            bool = FileUtil.a(((FileManagerEntity)localObject2).getFilePath());
-            if (bool) {
-              return localObject2;
-            }
-          }
-          ((ArrayList)localObject1).add(localObject2);
-        }
-      }
-      paramString = ((ArrayList)localObject1).iterator();
-      while (paramString.hasNext())
-      {
-        localObject1 = (FileManagerEntity)paramString.next();
-        if ((((FileManagerEntity)localObject1).nOpType != 5) && (((FileManagerEntity)localObject1).nOpType != 50))
-        {
-          i = ((FileManagerEntity)localObject1).cloudType;
-          if (i != 2) {
-            break;
-          }
-        }
-        else
-        {
-          return localObject1;
         }
       }
       return null;
@@ -2080,6 +1856,15 @@ public class FileManagerProxy
     {
       throw paramString;
     }
+  }
+  
+  public void f()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("delete from ");
+    ((StringBuilder)localObject).append(FileManagerEntity.tableName());
+    localObject = ((StringBuilder)localObject).toString();
+    this.app.getEntityManagerFactory().createEntityManager().execSQL((String)localObject);
   }
   
   public void f(FileManagerEntity paramFileManagerEntity)
@@ -2103,57 +1888,63 @@ public class FileManagerProxy
     }
   }
   
-  public FileManagerEntity g(String arg1)
+  public FileManagerEntity g(String paramString)
   {
-    synchronized (this.jdField_b_of_type_JavaUtilMap)
+    try
     {
-      if (this.jdField_b_of_type_JavaUtilMap.size() == 0) {
-        return null;
+      if (this.d == null) {
+        init();
       }
-      FileManagerEntity localFileManagerEntity1 = (FileManagerEntity)this.jdField_b_of_type_JavaUtilMap.get(???);
-      if (localFileManagerEntity1 == null) {
-        return null;
-      }
-      ??? = b(localFileManagerEntity1.nSessionId);
-      if (??? != null)
+      Iterator localIterator = this.d.iterator();
+      Object localObject;
+      boolean bool;
+      while (localIterator.hasNext())
       {
-        if (??? == localFileManagerEntity1)
+        localObject = (FileManagerEntity)localIterator.next();
+        if (((FileManagerEntity)localObject).Uuid != null)
         {
-          if (!FileUtil.a(localFileManagerEntity1.getFilePath())) {
-            synchronized (this.jdField_b_of_type_JavaUtilMap)
-            {
-              this.jdField_b_of_type_JavaUtilMap.remove(localFileManagerEntity1.zipInnerPath);
-              ??? = new StringBuilder();
-              ???.append("getZipFileListEntity : can find the Entity in cache, but raw file is not exist! [fileName] = ");
-              ???.append(localFileManagerEntity1.fileName);
-              ???.append("[sessionId] = ");
-              ???.append(localFileManagerEntity1.nSessionId);
-              QLog.e("FileManagerProxy<FileAssistant>", 1, ???.toString());
-              return null;
-            }
+          bool = ((FileManagerEntity)localObject).Uuid.equalsIgnoreCase(paramString);
+          if (bool) {
+            return localObject;
           }
-          return localFileManagerEntity2;
-        }
-        synchronized (this.jdField_b_of_type_JavaUtilMap)
-        {
-          this.jdField_b_of_type_JavaUtilMap.put(???, ???);
-          return ???;
         }
       }
-      try
+      localIterator = this.e.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(???.nSessionId), ???);
-        return ???;
+        localObject = (Long)localIterator.next();
+        localObject = (FileManagerEntity)this.e.get(localObject);
+        if ((localObject != null) && (!TextUtils.isEmpty(((FileManagerEntity)localObject).Uuid)))
+        {
+          bool = ((FileManagerEntity)localObject).Uuid.equalsIgnoreCase(paramString);
+          if (bool) {
+            return localObject;
+          }
+        }
       }
-      finally {}
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
+  
+  public void g()
+  {
+    synchronized (this.j)
+    {
+      this.j.clear();
+      return;
     }
   }
   
   public void g(FileManagerEntity paramFileManagerEntity)
   {
-    synchronized (this.jdField_b_of_type_JavaUtilMap)
+    synchronized (this.j)
     {
-      this.jdField_b_of_type_JavaUtilMap.put(paramFileManagerEntity.zipInnerPath, paramFileManagerEntity);
+      this.j.put(paramFileManagerEntity.zipInnerPath, paramFileManagerEntity);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("insertToZipListFile : [fileName] = ");
       localStringBuilder.append(paramFileManagerEntity.fileName);
@@ -2162,6 +1953,149 @@ public class FileManagerProxy
       QLog.e("FileManagerProxy<FileAssistant>", 1, localStringBuilder.toString());
       return;
     }
+  }
+  
+  public FileManagerEntity h(String paramString)
+  {
+    try
+    {
+      if (this.d == null) {
+        init();
+      }
+      Object localObject1 = new ArrayList();
+      Iterator localIterator = this.d.iterator();
+      Object localObject2;
+      boolean bool;
+      while (localIterator.hasNext())
+      {
+        localObject2 = (FileManagerEntity)localIterator.next();
+        if ((((FileManagerEntity)localObject2).WeiYunFileId != null) && (((FileManagerEntity)localObject2).WeiYunFileId.equalsIgnoreCase(paramString)))
+        {
+          if (((FileManagerEntity)localObject2).status == 1)
+          {
+            bool = FileUtil.b(((FileManagerEntity)localObject2).getFilePath());
+            if (bool) {
+              return localObject2;
+            }
+          }
+          ((ArrayList)localObject1).add(localObject2);
+        }
+      }
+      localIterator = ((ArrayList)localObject1).iterator();
+      int m;
+      while (localIterator.hasNext())
+      {
+        localObject2 = (FileManagerEntity)localIterator.next();
+        if ((((FileManagerEntity)localObject2).nOpType != 5) && (((FileManagerEntity)localObject2).nOpType != 50))
+        {
+          m = ((FileManagerEntity)localObject2).cloudType;
+          if (m != 2) {
+            break;
+          }
+        }
+        else
+        {
+          return localObject2;
+        }
+      }
+      ((ArrayList)localObject1).clear();
+      localIterator = this.e.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (Long)localIterator.next();
+        localObject2 = (FileManagerEntity)this.e.get(localObject2);
+        if ((((FileManagerEntity)localObject2).WeiYunFileId != null) && (((FileManagerEntity)localObject2).WeiYunFileId.equalsIgnoreCase(paramString)))
+        {
+          if (((FileManagerEntity)localObject2).status == 1)
+          {
+            bool = FileUtil.b(((FileManagerEntity)localObject2).getFilePath());
+            if (bool) {
+              return localObject2;
+            }
+          }
+          ((ArrayList)localObject1).add(localObject2);
+        }
+      }
+      paramString = ((ArrayList)localObject1).iterator();
+      while (paramString.hasNext())
+      {
+        localObject1 = (FileManagerEntity)paramString.next();
+        if ((((FileManagerEntity)localObject1).nOpType != 5) && (((FileManagerEntity)localObject1).nOpType != 50))
+        {
+          m = ((FileManagerEntity)localObject1).cloudType;
+          if (m != 2) {
+            break;
+          }
+        }
+        else
+        {
+          return localObject1;
+        }
+      }
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
+  
+  public Map<String, List<FileManagerEntity>> i(String paramString)
+  {
+    if (this.a == null) {
+      a();
+    }
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    Iterator localIterator = this.a.iterator();
+    FileManagerEntity localFileManagerEntity;
+    while (localIterator.hasNext())
+    {
+      localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if ((!TextUtils.isEmpty(localFileManagerEntity.fileName)) && (localFileManagerEntity.fileName.indexOf(paramString) >= 0))
+      {
+        if (!localLinkedHashMap.containsKey(localFileManagerEntity.fileName)) {
+          localLinkedHashMap.put(localFileManagerEntity.fileName, new ArrayList());
+        }
+        ((List)localLinkedHashMap.get(localFileManagerEntity.fileName)).add(localFileManagerEntity);
+      }
+    }
+    localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!TextUtils.isEmpty(localFileManagerEntity.fileName))
+      {
+        String str = localFileManagerEntity.fileName;
+        if (localLinkedHashMap.containsKey(localFileManagerEntity.fileName) != true) {
+          if (SearchUtils.b(paramString, str, IContactSearchable.k) > -9223372036854775808L)
+          {
+            if (!localLinkedHashMap.containsKey(localFileManagerEntity.fileName)) {
+              localLinkedHashMap.put(localFileManagerEntity.fileName, new ArrayList());
+            }
+            ((List)localLinkedHashMap.get(localFileManagerEntity.fileName)).add(localFileManagerEntity);
+          }
+          else
+          {
+            str = FileManagerUtil.k(localFileManagerEntity);
+            if (TextUtils.isEmpty(str))
+            {
+              if (QLog.isDevelopLevel()) {
+                throw new NullPointerException("get Full String error!!!");
+              }
+            }
+            else if (SearchUtils.b(paramString, str.replace(HardCodeUtil.a(2131902536), "").replace(HardCodeUtil.a(2131902559), "").replace(HardCodeUtil.a(2131902554), "").replace(HardCodeUtil.a(2131902547), "").replace(HardCodeUtil.a(2131902537), "").replace(HardCodeUtil.a(2131902566), "").replace(HardCodeUtil.a(2131902552), "").replace(HardCodeUtil.a(2131902548), "").replace(HardCodeUtil.a(2131902545), "").trim(), IContactSearchable.k) > -9223372036854775808L)
+            {
+              if (!localLinkedHashMap.containsKey(localFileManagerEntity.fileName)) {
+                localLinkedHashMap.put(localFileManagerEntity.fileName, new ArrayList());
+              }
+              ((List)localLinkedHashMap.get(localFileManagerEntity.fileName)).add(localFileManagerEntity);
+            }
+          }
+        }
+      }
+    }
+    return localLinkedHashMap;
   }
   
   public void init()
@@ -2182,7 +2116,7 @@ public class FileManagerProxy
     ((StringBuilder)localObject1).append(" set bDelInFM = ?  where ( srvTime + ?  ) < ? and cloudType = ? ");
     Object localObject4 = ((StringBuilder)localObject1).toString();
     localObject1 = this.app.getEntityManagerFactory().createEntityManager();
-    ((EntityManager)localObject1).update((String)localObject4, new Object[] { Integer.valueOf(1), Long.valueOf(604800000L), Long.valueOf(MessageCache.a() * 1000L), Integer.valueOf(1) });
+    ((EntityManager)localObject1).update((String)localObject4, new Object[] { Integer.valueOf(1), Long.valueOf(604800000L), Long.valueOf(MessageCache.c() * 1000L), Integer.valueOf(1) });
     this.d = ((EntityManager)localObject1).rawQuery(FileManagerEntity.class, (String)localObject3, null);
     if (this.d == null)
     {
@@ -2198,15 +2132,15 @@ public class FileManagerProxy
     }
     try
     {
-      if (this.jdField_a_of_type_JavaUtilMap == null)
+      if (this.e == null)
       {
-        this.jdField_a_of_type_JavaUtilMap = new HashMap();
+        this.e = new HashMap();
         localObject3 = this.d.iterator();
         while (((Iterator)localObject3).hasNext())
         {
           localObject4 = (FileManagerEntity)((Iterator)localObject3).next();
           FileManagerUtil.a((FileManagerEntity)localObject4);
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(((FileManagerEntity)localObject4).nSessionId), localObject4);
+          this.e.put(Long.valueOf(((FileManagerEntity)localObject4).nSessionId), localObject4);
         }
       }
       ((EntityManager)localObject1).close();
@@ -2218,10 +2152,75 @@ public class FileManagerProxy
       throw localObject2;
     }
   }
+  
+  public FileManagerEntity j(String arg1)
+  {
+    synchronized (this.j)
+    {
+      if (this.j.size() == 0) {
+        return null;
+      }
+      FileManagerEntity localFileManagerEntity1 = (FileManagerEntity)this.j.get(???);
+      if (localFileManagerEntity1 == null) {
+        return null;
+      }
+      ??? = d(localFileManagerEntity1.nSessionId);
+      if (??? != null)
+      {
+        if (??? == localFileManagerEntity1)
+        {
+          if (!FileUtil.b(localFileManagerEntity1.getFilePath())) {
+            synchronized (this.j)
+            {
+              this.j.remove(localFileManagerEntity1.zipInnerPath);
+              ??? = new StringBuilder();
+              ???.append("getZipFileListEntity : can find the Entity in cache, but raw file is not exist! [fileName] = ");
+              ???.append(localFileManagerEntity1.fileName);
+              ???.append("[sessionId] = ");
+              ???.append(localFileManagerEntity1.nSessionId);
+              QLog.e("FileManagerProxy<FileAssistant>", 1, ???.toString());
+              return null;
+            }
+          }
+          return localFileManagerEntity2;
+        }
+        synchronized (this.j)
+        {
+          this.j.put(???, ???);
+          return ???;
+        }
+      }
+      try
+      {
+        this.e.put(Long.valueOf(???.nSessionId), ???);
+        return ???;
+      }
+      finally {}
+    }
+  }
+  
+  public void k(String paramString)
+  {
+    if (this.f == null) {
+      this.f = new HashSet();
+    }
+    this.f.add(paramString);
+  }
+  
+  public boolean l(String paramString)
+  {
+    Set localSet = this.f;
+    if (localSet == null)
+    {
+      this.f = new HashSet();
+      return false;
+    }
+    return localSet.contains(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerProxy
  * JD-Core Version:    0.7.0.1
  */

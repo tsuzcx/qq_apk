@@ -12,11 +12,6 @@ public class OpenPlayerBuilder
     this.a.mInfo = paramSerializable;
   }
   
-  public OpenPlayerBuilder.Data a()
-  {
-    return this.a;
-  }
-  
   public OpenPlayerBuilder a()
   {
     this.a.mUIStyle.bottomWidgetShowFlag = 2;
@@ -64,10 +59,15 @@ public class OpenPlayerBuilder
     this.a.mUIStyle.hideBannerInfo = true;
     return this;
   }
+  
+  public OpenPlayerBuilder.Data f()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder
  * JD-Core Version:    0.7.0.1
  */

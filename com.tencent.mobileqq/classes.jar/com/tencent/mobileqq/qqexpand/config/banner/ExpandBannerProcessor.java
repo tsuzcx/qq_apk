@@ -12,7 +12,7 @@ public class ExpandBannerProcessor
 {
   public static ExpandBannerConfBean a()
   {
-    ExpandBannerConfBean localExpandBannerConfBean2 = (ExpandBannerConfBean)QConfigManager.a().a(583);
+    ExpandBannerConfBean localExpandBannerConfBean2 = (ExpandBannerConfBean)QConfigManager.b().b(583);
     ExpandBannerConfBean localExpandBannerConfBean1 = localExpandBannerConfBean2;
     if (localExpandBannerConfBean2 == null) {
       localExpandBannerConfBean1 = new ExpandBannerConfBean();
@@ -108,7 +108,7 @@ public class ExpandBannerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.config.banner.ExpandBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

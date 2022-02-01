@@ -37,19 +37,19 @@ public class RecentItemDiscussionMsgData
   
   private void a()
   {
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       Object localObject;
       if (this.mTitleName != null)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(this.mTitleName);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131713104));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131910663));
         localObject = ((StringBuilder)localObject).toString();
       }
       else
       {
-        localObject = HardCodeUtil.a(2131713104);
+        localObject = HardCodeUtil.a(2131910663);
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
@@ -86,22 +86,22 @@ public class RecentItemDiscussionMsgData
   
   private void a(Context paramContext)
   {
-    if (a().msg == null)
+    if (e().msg == null)
     {
       this.mContentDesc = "";
       return;
     }
-    boolean bool = a().msg instanceof AbstructRecentUserMsg;
+    boolean bool = e().msg instanceof AbstructRecentUserMsg;
     int i = 0;
     if (bool)
     {
-      AbstructRecentUserMsg localAbstructRecentUserMsg = (AbstructRecentUserMsg)a().msg;
-      this.mMsgExtroInfo = localAbstructRecentUserMsg.a;
-      this.mContentDesc = localAbstructRecentUserMsg.b;
-      if ((a().msg instanceof TroopAtAllMsg)) {
-        this.mContentDesc = String.format(HardCodeUtil.a(2131713103), new Object[] { this.mTitleName });
+      AbstructRecentUserMsg localAbstructRecentUserMsg = (AbstructRecentUserMsg)e().msg;
+      this.mMsgExtroInfo = localAbstructRecentUserMsg.c;
+      this.mContentDesc = localAbstructRecentUserMsg.d;
+      if ((e().msg instanceof TroopAtAllMsg)) {
+        this.mContentDesc = String.format(HardCodeUtil.a(2131910662), new Object[] { this.mTitleName });
       }
-      i = 2131167170;
+      i = 2131168153;
     }
     if ((!android.text.TextUtils.isEmpty(this.mMsgExtroInfo)) && (i > 0)) {
       this.mExtraInfoColor = paramContext.getResources().getColor(i);
@@ -112,11 +112,11 @@ public class RecentItemDiscussionMsgData
   {
     if ((paramMessage != null) && (paramMessage.msgtype == -2025) && (this.mUnreadNum > 0) && (!paramMsgSummary.bShowDraft))
     {
-      paramMessage = paramContext.getString(2131693169);
+      paramMessage = paramContext.getString(2131890709);
       if ((!android.text.TextUtils.isEmpty(this.mLastMsg)) && (this.mLastMsg.toString().startsWith(paramMessage)))
       {
         if (this.mExtraInfoColor == 0) {
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
         }
         if (android.text.TextUtils.isEmpty(this.mMsgExtroInfo))
         {
@@ -142,8 +142,8 @@ public class RecentItemDiscussionMsgData
       a(paramContext);
       return;
     }
-    if ((a().msg instanceof AbstructRecentUserMsg)) {
-      this.mMsgExtroInfo = ((AbstructRecentUserMsg)a().msg).a;
+    if ((e().msg instanceof AbstructRecentUserMsg)) {
+      this.mMsgExtroInfo = ((AbstructRecentUserMsg)e().msg).c;
     }
   }
   
@@ -166,8 +166,8 @@ public class RecentItemDiscussionMsgData
       this.mUnreadNum += paramQQAppInterface.a();
       if (paramQQAppInterface.a() > 0)
       {
-        this.mMsgExtroInfo = paramQQAppInterface.a();
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+        this.mMsgExtroInfo = paramQQAppInterface.b();
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
       }
     }
     else
@@ -227,7 +227,7 @@ public class RecentItemDiscussionMsgData
       b(paramQQAppInterface);
       DiscussionManager localDiscussionManager = (DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
       if (localDiscussionManager != null) {
-        localObject2 = localDiscussionManager.a(this.mUser.uin);
+        localObject2 = localDiscussionManager.d(this.mUser.uin);
       }
       if ((localObject2 == null) && (!TimeManager.a().b(this.mUser.uin)))
       {
@@ -256,7 +256,7 @@ public class RecentItemDiscussionMsgData
       a((Message)localObject1, this.mUser.getType(), paramQQAppInterface, paramContext, localMsgSummary);
       if (localDiscussionManager != null)
       {
-        int i = localDiscussionManager.a(this.mUser.uin);
+        int i = localDiscussionManager.c(this.mUser.uin);
         if (i > 0)
         {
           localObject2 = new StringBuilder();
@@ -272,7 +272,7 @@ public class RecentItemDiscussionMsgData
       this.mExtraInfo = ((CharSequence)localObject2);
       a(paramQQAppInterface);
       a(paramQQAppInterface, localMsgSummary);
-      if (((a().msg instanceof TroopReceiptMsg)) && (this.mUnreadNum > 0))
+      if (((e().msg instanceof TroopReceiptMsg)) && (this.mUnreadNum > 0))
       {
         localMsgSummary.suffix = "";
         localMsgSummary.strPrefix = "";
@@ -280,23 +280,23 @@ public class RecentItemDiscussionMsgData
       a(paramQQAppInterface, paramContext, localMsgSummary);
       a(paramContext, localMsgSummary);
       a(paramContext, (Message)localObject1, localMsgSummary);
-      paramQQAppInterface = a();
+      paramQQAppInterface = e();
       if ((paramQQAppInterface != null) && (paramQQAppInterface.msg == null)) {
         paramQQAppInterface.reParse();
       }
       a();
-      b();
+      d();
     }
   }
   
-  protected boolean a()
+  protected boolean b()
   {
     return this.mUser.getType() == 3000;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemDiscussionMsgData
  * JD-Core Version:    0.7.0.1
  */

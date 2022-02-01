@@ -43,7 +43,7 @@ public class MiniChatProvider
     return (IHelper)this.b.get(paramInt);
   }
   
-  public void a(int paramInt)
+  public void b(int paramInt)
   {
     SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt);
     if (localSparseArrayCompat == null) {
@@ -60,7 +60,7 @@ public class MiniChatProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatProvider
  * JD-Core Version:    0.7.0.1
  */

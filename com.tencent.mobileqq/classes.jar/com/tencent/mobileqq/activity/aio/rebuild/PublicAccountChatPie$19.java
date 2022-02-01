@@ -21,13 +21,13 @@ class PublicAccountChatPie$19
       while (localIterator.hasNext())
       {
         ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
+        this.this$0.d.getMessageFacade().a(this.this$0.ah.b, this.this$0.ah.a, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
         if (QLog.isColorLevel())
         {
-          String str = this.this$0.b;
+          String str = this.this$0.c;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("saveReadedToDB uin=");
-          localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.this$0.ah.b);
           localStringBuilder.append(" uniseq=");
           localStringBuilder.append(localChatMessage.uniseq);
           localStringBuilder.append(" extstr=");
@@ -40,14 +40,14 @@ class PublicAccountChatPie$19
     catch (Exception localException)
     {
       if (QLog.isDevelopLevel()) {
-        QLog.d(this.this$0.b, 4, localException.getMessage());
+        QLog.d(this.this$0.c, 4, localException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.19
  * JD-Core Version:    0.7.0.1
  */

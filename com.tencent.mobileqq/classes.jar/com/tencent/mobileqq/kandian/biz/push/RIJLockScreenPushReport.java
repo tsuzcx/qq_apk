@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport;
@@ -16,7 +16,6 @@ import com.tencent.mobileqq.kandian.glue.report.RIJKanDianTabReport;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.KandianRedDotInfo;
 import com.tencent.mobileqq.kandian.repo.report.ReportInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.math.BigInteger;
@@ -27,45 +26,6 @@ import org.json.JSONObject;
 
 public class RIJLockScreenPushReport
 {
-  public static int a(MessageRecord paramMessageRecord)
-  {
-    j = 1;
-    if (paramMessageRecord == null) {
-      return 1;
-    }
-    i = j;
-    Object localObject;
-    if ((paramMessageRecord instanceof MessageForStructing))
-    {
-      localObject = (MessageForStructing)paramMessageRecord;
-      i = j;
-      if (((MessageForStructing)localObject).structingMsg != null) {
-        localObject = ((MessageForStructing)localObject).structingMsg.mExtraData;
-      }
-    }
-    try
-    {
-      i = new JSONObject((String)localObject).optInt("sceneType", 1);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        i = j;
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("isDailyLockScreen, ret=");
-      ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append(", mr=");
-      ((StringBuilder)localObject).append(paramMessageRecord);
-      QLog.d("RIJLockScreenPushReport", 2, ((StringBuilder)localObject).toString());
-    }
-    return i;
-  }
-  
   private static String a(String paramString, MessageForStructing paramMessageForStructing)
   {
     if (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mMsgActionData)) {
@@ -76,11 +36,11 @@ public class RIJLockScreenPushReport
   
   public static void a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)RIJQQAppInterfaceUtil.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)RIJQQAppInterfaceUtil.e();
     if (localQQAppInterface == null) {
       return;
     }
-    a(((KandianMergeManager)localQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a());
+    a(((KandianMergeManager)localQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).e());
   }
   
   private static void a(Intent paramIntent, MessageForStructing paramMessageForStructing)
@@ -132,7 +92,7 @@ public class RIJLockScreenPushReport
       else
       {
         if (paramMessageRecord.extInt != 5) {
-          break label361;
+          break label350;
         }
         str1 = "0";
         paramQQMessageFacade = "";
@@ -145,15 +105,15 @@ public class RIJLockScreenPushReport
       MessageForStructing localMessageForStructing;
       Object localObject2;
       String str2;
-      break label343;
+      break label332;
     }
     catch (NumberFormatException paramQQMessageFacade)
     {
       for (;;)
       {
-        label343:
+        label332:
         continue;
-        label361:
+        label350:
         String str1 = "0";
         paramQQMessageFacade = "";
         paramIntent = paramQQMessageFacade;
@@ -166,10 +126,10 @@ public class RIJLockScreenPushReport
     ((JSONObject)localObject2).put("folder_status", localObject1);
     ((JSONObject)localObject2).put("report_time", NetConnInfoCenter.getServerTimeMillis());
     a(paramMessageRecord, localMessageForStructing, (JSONObject)localObject2);
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", paramMessageRecord.senderuin, "0X80081DC", "0X80081DC", 0, 0, "", paramIntent, str1, ((JSONObject)localObject2).toString(), false);
+    PublicAccountReportUtils.a(null, "CliOper", "", paramMessageRecord.senderuin, "0X80081DC", "0X80081DC", 0, 0, "", paramIntent, str1, ((JSONObject)localObject2).toString(), false);
     ReadinjoySPEventReport.a(40, Integer.parseInt((String)localObject1), Integer.parseInt(str2), Integer.parseInt(str1));
     paramQQMessageFacade = new ReportInfo();
-    paramQQMessageFacade.mUin = RIJQQAppInterfaceUtil.a();
+    paramQQMessageFacade.mUin = RIJQQAppInterfaceUtil.c();
     paramQQMessageFacade.mSourceArticleId = new BigInteger(paramIntent).longValue();
     paramQQMessageFacade.mAlgorithmId = Integer.parseInt(str2);
     paramQQMessageFacade.mStrategyId = Integer.parseInt(str1);
@@ -197,9 +157,9 @@ public class RIJLockScreenPushReport
       paramJSONObject.put("feeds_source", paramMessageRecord);
       if (paramMessageForStructing.structingMsg != null)
       {
-        paramJSONObject.put("load_mode", RIJKanDianTabReport.a(paramMessageForStructing.structingMsg.mExtraData));
-        paramJSONObject.put("push_type", RIJKanDianTabReport.b(paramMessageForStructing.structingMsg.mExtraData));
-        paramJSONObject.put("landing_type", a(paramMessageForStructing));
+        paramJSONObject.put("load_mode", RIJKanDianTabReport.b(paramMessageForStructing.structingMsg.mExtraData));
+        paramJSONObject.put("push_type", RIJKanDianTabReport.c(paramMessageForStructing.structingMsg.mExtraData));
+        paramJSONObject.put("landing_type", b(paramMessageForStructing));
       }
     }
   }
@@ -217,25 +177,24 @@ public class RIJLockScreenPushReport
           if ((localObject2 != null) && (((MessageForStructing)localObject2).structingMsg != null))
           {
             ((JSONObject)localObject1).put("rowkey", paramKandianRedDotInfo.getRowKey());
-            ((JSONObject)localObject1).put("load_mode", RIJKanDianTabReport.a(((MessageForStructing)localObject2).structingMsg.mExtraData));
-            ((JSONObject)localObject1).put("push_type", RIJKanDianTabReport.b(((MessageForStructing)localObject2).structingMsg.mExtraData));
-            ((JSONObject)localObject1).put("landing_type", a(paramKandianRedDotInfo.getMessageRecord()));
+            ((JSONObject)localObject1).put("load_mode", RIJKanDianTabReport.b(((MessageForStructing)localObject2).structingMsg.mExtraData));
+            ((JSONObject)localObject1).put("push_type", RIJKanDianTabReport.c(((MessageForStructing)localObject2).structingMsg.mExtraData));
+            ((JSONObject)localObject1).put("landing_type", b(paramKandianRedDotInfo.getMessageRecord()));
           }
           ((JSONObject)localObject1).put("folder_status", paramKandianRedDotInfo.forderStatus);
           ((JSONObject)localObject1).put("report_time", NetConnInfoCenter.getServerTimeMillis());
           ((JSONObject)localObject1).put("articleID", paramKandianRedDotInfo.articleIDList.get(0));
-          localObject2 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-          Object localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append(paramKandianRedDotInfo.articleIDList.get(0));
-          ((StringBuilder)localObject3).append("");
-          localObject3 = ((StringBuilder)localObject3).toString();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(paramKandianRedDotInfo.articleIDList.get(0));
+          ((StringBuilder)localObject2).append("");
+          localObject2 = ((StringBuilder)localObject2).toString();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(paramKandianRedDotInfo.strategyID);
           localStringBuilder.append("");
-          ((IPublicAccountReportUtils)localObject2).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X80081DB", "0X80081DB", 0, 0, "", (String)localObject3, localStringBuilder.toString(), ((JSONObject)localObject1).toString(), false);
+          PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80081DB", "0X80081DB", 0, 0, "", (String)localObject2, localStringBuilder.toString(), ((JSONObject)localObject1).toString(), false);
           ReadinjoySPEventReport.a(41, Integer.parseInt(paramKandianRedDotInfo.forderStatus), (int)paramKandianRedDotInfo.algorithmID, (int)paramKandianRedDotInfo.strategyID);
           localObject1 = new ReportInfo();
-          ((ReportInfo)localObject1).mUin = RIJQQAppInterfaceUtil.a();
+          ((ReportInfo)localObject1).mUin = RIJQQAppInterfaceUtil.c();
           ((ReportInfo)localObject1).mSourceArticleId = ((Long)paramKandianRedDotInfo.articleIDList.get(0)).longValue();
           ((ReportInfo)localObject1).mAlgorithmId = ((int)paramKandianRedDotInfo.algorithmID);
           ((ReportInfo)localObject1).mStrategyId = ((int)paramKandianRedDotInfo.strategyID);
@@ -256,7 +215,46 @@ public class RIJLockScreenPushReport
   
   public static boolean a(MessageRecord paramMessageRecord)
   {
-    return a(paramMessageRecord) == 1;
+    return b(paramMessageRecord) == 1;
+  }
+  
+  public static int b(MessageRecord paramMessageRecord)
+  {
+    j = 1;
+    if (paramMessageRecord == null) {
+      return 1;
+    }
+    i = j;
+    Object localObject;
+    if ((paramMessageRecord instanceof MessageForStructing))
+    {
+      localObject = (MessageForStructing)paramMessageRecord;
+      i = j;
+      if (((MessageForStructing)localObject).structingMsg != null) {
+        localObject = ((MessageForStructing)localObject).structingMsg.mExtraData;
+      }
+    }
+    try
+    {
+      i = new JSONObject((String)localObject).optInt("sceneType", 1);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        i = j;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isDailyLockScreen, ret=");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(", mr=");
+      ((StringBuilder)localObject).append(paramMessageRecord);
+      QLog.d("RIJLockScreenPushReport", 2, ((StringBuilder)localObject).toString());
+    }
+    return i;
   }
   
   private static String b(String paramString, MessageForStructing paramMessageForStructing)
@@ -285,7 +283,7 @@ public class RIJLockScreenPushReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.RIJLockScreenPushReport
  * JD-Core Version:    0.7.0.1
  */

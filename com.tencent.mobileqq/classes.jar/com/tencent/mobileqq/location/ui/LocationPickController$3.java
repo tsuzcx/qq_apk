@@ -26,7 +26,7 @@ class LocationPickController$3
       QLog.d("LocationShareController", 2, new Object[] { "[location] onDecodeTaskCompleted invoked. ", ((StringBuilder)localObject).toString() });
     }
     Bitmap localBitmap = BaseImageUtil.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
-    Object localObject = LocationAvatarHelper.a().a(paramString);
+    Object localObject = LocationAvatarHelper.a().b(paramString);
     long l = System.currentTimeMillis();
     paramBitmap = (Bitmap)localObject;
     if (localObject == null)
@@ -34,17 +34,17 @@ class LocationPickController$3
       paramBitmap = new FaceItem();
       LocationAvatarHelper.a().a(paramString, paramBitmap);
     }
-    paramBitmap.jdField_a_of_type_Long = l;
-    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
-    LocationPickController.a(this.a).a(paramString, localBitmap);
-    if (LocationPickController.a(this.a) != null) {
-      LocationPickController.a(this.a).onDecodeTaskCompleted(paramInt1, paramInt2, paramString, localBitmap);
+    paramBitmap.a = l;
+    paramBitmap.c = localBitmap;
+    LocationPickController.c(this.a).a(paramString, localBitmap);
+    if (LocationPickController.d(this.a) != null) {
+      LocationPickController.d(this.a).onDecodeTaskCompleted(paramInt1, paramInt2, paramString, localBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickController.3
  * JD-Core Version:    0.7.0.1
  */

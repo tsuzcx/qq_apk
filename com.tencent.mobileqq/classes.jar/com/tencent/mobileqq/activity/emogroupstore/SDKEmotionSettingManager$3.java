@@ -20,29 +20,29 @@ class SDKEmotionSettingManager$3
   public void a(int paramInt)
   {
     QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    if (!SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).isFinishing())
+    if (!SDKEmotionSettingManager.a(this.b).isFinishing())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager.b) {
+      if (this.b.b) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager.d();
-      if (SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager) != null) {
-        SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).removeCallbacks(SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager));
+      this.b.d();
+      if (SDKEmotionSettingManager.e(this.b) != null) {
+        SDKEmotionSettingManager.e(this.b).removeCallbacks(SDKEmotionSettingManager.f(this.b));
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager.a(HardCodeUtil.a(2131713525), this.jdField_a_of_type_JavaLangString);
+      this.b.a(HardCodeUtil.a(2131911073), this.a);
     }
   }
   
   public void a(int paramInt, String paramString)
   {
     QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    if ((!SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager.b))
+    if ((!SDKEmotionSettingManager.a(this.b).isFinishing()) && (!this.b.b))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager.d();
-      if (SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager) != null) {
-        SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).removeCallbacks(SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager));
+      this.b.d();
+      if (SDKEmotionSettingManager.e(this.b) != null) {
+        SDKEmotionSettingManager.e(this.b).removeCallbacks(SDKEmotionSettingManager.f(this.b));
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager.a(HardCodeUtil.a(2131713524), this.jdField_a_of_type_JavaLangString);
+      this.b.a(HardCodeUtil.a(2131911072), this.a);
       return;
     }
     QLog.d("SDKEmotionSettingManager", 1, "check api, acitivty finish or timeout");
@@ -51,15 +51,15 @@ class SDKEmotionSettingManager$3
   public void a(JSONObject paramJSONObject)
   {
     QLog.d("SDKEmotionSettingManager", 1, "check api, onSuccess");
-    if (!SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).isFinishing())
+    if (!SDKEmotionSettingManager.a(this.b).isFinishing())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager.b) {
+      if (this.b.b) {
         return;
       }
-      if (SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager) != null) {
-        SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).removeCallbacks(SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager));
+      if (SDKEmotionSettingManager.e(this.b) != null) {
+        SDKEmotionSettingManager.e(this.b).removeCallbacks(SDKEmotionSettingManager.f(this.b));
       }
-      SDKEmotionSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager);
+      SDKEmotionSettingManager.g(this.b);
     }
   }
   
@@ -70,7 +70,7 @@ class SDKEmotionSettingManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.3
  * JD-Core Version:    0.7.0.1
  */

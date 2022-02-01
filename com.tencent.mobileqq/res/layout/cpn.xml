@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:id="@id/iex" android:background="@drawable/gtf" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/kg7" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginBottom="-22.0dip" android:text="测试弹幕1" android:maxEms="10" android:singleLine="true" android:layout_alignParentBottom="true" />
-    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/khm" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginBottom="-22.0dip" android:text="测试弹幕2" android:maxEms="10" android:singleLine="true" android:layout_alignParentBottom="true" />
-    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/kip" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginBottom="-22.0dip" android:text="测试弹幕3" android:maxEms="10" android:singleLine="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="?a9y" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/0x">
+        <ImageView android:id="@id/icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/2c" />
+        <TextView android:id="@id/jfb" style="@style/a61" />
+    </LinearLayout>
+</LinearLayout>

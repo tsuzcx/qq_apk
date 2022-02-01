@@ -19,7 +19,7 @@ class CaptureComboFilter$MyDownloaderListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.CaptureComboFilter.MyDownloaderListener
  * JD-Core Version:    0.7.0.1
  */

@@ -12,78 +12,73 @@ import java.util.ArrayList;
 public class ChatHistoryC2CMediaFragment
   extends ChatHistoryMediaBaseFragment
 {
-  private FMObserver a;
-  
-  public ChatHistoryC2CMediaFragment()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new ChatHistoryC2CMediaFragment.1(this);
-  }
+  private FMObserver y = new ChatHistoryC2CMediaFragment.1(this);
   
   void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt2 == -1) && (paramInt1 == 1)) {
-      AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramIntent);
+      AIOImageListScene.a(this.d, paramIntent);
     }
   }
   
-  public void e()
+  public void i()
   {
-    super.e();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    super.i();
+    if (this.y != null) {
+      this.a.getFileManagerNotifyCenter().addObserver(this.y);
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B0", "0X800A0B0", 2, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X800A0B0", "0X800A0B0", 2, 0, "", "", "", "");
   }
   
-  public void f()
+  public void j()
   {
-    super.f();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
-    }
-  }
-  
-  public void g()
-  {
-    super.g();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    super.j();
+    if (this.y != null) {
+      this.a.getFileManagerNotifyCenter().deleteObserver(this.y);
     }
   }
   
-  protected void q()
+  public void k()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView != null))
+    super.k();
+    if (this.y != null) {
+      this.a.getFileManagerNotifyCenter().deleteObserver(this.y);
+    }
+  }
+  
+  protected void v()
+  {
+    if ((this.t != null) && (this.t.size() > 0) && (this.s != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.h();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B2", "0X800A0B2", 1, 0, "", "", "", "");
+      this.s.l();
+      ReportController.b(this.a, "dc00898", "", "", "0X800A0B2", "0X800A0B2", 1, 0, "", "", "", "");
     }
   }
   
-  void r()
+  void w()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 1, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 1, 0, "", "", "", "");
   }
   
-  void s()
+  void x()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B3", "0X800A0B3", 1, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X800A0B3", "0X800A0B3", 1, 0, "", "", "", "");
   }
   
-  void t()
+  void y()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B1", "0X800A0B1", 1, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X800A0B1", "0X800A0B1", 1, 0, "", "", "", "");
   }
   
-  void u()
+  void z()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B4", "0X800A0B4", 1, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X800A0B4", "0X800A0B4", 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CMediaFragment
  * JD-Core Version:    0.7.0.1
  */

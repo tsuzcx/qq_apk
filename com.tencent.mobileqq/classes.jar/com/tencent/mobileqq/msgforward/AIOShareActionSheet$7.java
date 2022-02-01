@@ -12,14 +12,14 @@ class AIOShareActionSheet$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (WeiyunAIOUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, AIOShareActionSheet.a(this.a), AIOShareActionSheet.a(this.a).a(), this.a.jdField_a_of_type_MqqOsMqqHandler)) {
+    if (WeiyunAIOUtils.a(this.a.a, AIOShareActionSheet.b(this.a), AIOShareActionSheet.a(this.a).A(), this.a.c)) {
       AIOShareActionSheet.a(this.a).a(false, null, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgforward.AIOShareActionSheet.7
  * JD-Core Version:    0.7.0.1
  */

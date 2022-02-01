@@ -1,8 +1,5 @@
 package com.tencent.aelight.camera.aeeditor.module.music;
 
-import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
-import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
-import NS_QQ_STORY_META.META.StMusic;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -14,7 +11,6 @@ import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.BatchGetMusicInfoRequest;
 import com.tencent.biz.richframework.network.request.SmartMusicMatchRequest;
 import com.tencent.biz.videostory.config.VSConfigManager;
 import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
@@ -29,17 +25,19 @@ import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qcircle.tavcut.session.TAVCutVideoSession;
+import com.tencent.qcircle.weseevideo.model.data.MusicData;
 import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.weseevideo.model.data.MusicData;
 import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneHelper;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import mqq.app.AppRuntime;
+import org.json.JSONException;
 import org.json.JSONObject;
+import qqcircle.QQCircleSmartMatchMusic.MusicInfo;
+import qqcircle.QQCircleSmartMatchMusic.SmartMatchMusicRsp;
 
 public class AEEditorMusicHelper
 {
@@ -53,27 +51,65 @@ public class AEEditorMusicHelper
     localStringBuilder.append("[parseMusicWebData], eventValue=");
     localStringBuilder.append(paramIntent);
     AEQLog.b("AEEditorMusicHelper", localStringBuilder.toString());
-    if (!TextUtils.isEmpty(paramIntent))
+    if ((!"kTribeSelectMusic".equals(paramIntent)) && (!"kTribeClipsMusic".equals(paramIntent))) {
+      return null;
+    }
+    paramIntent = new StringBuilder();
+    paramIntent.append("[parseMusicWebData], dataValue=");
+    paramIntent.append(str);
+    AEQLog.b("AEEditorMusicHelper", paramIntent.toString());
+    try
     {
-      if (!paramIntent.equals("kTribeSelectMusic")) {
-        return null;
-      }
-      paramIntent = new StringBuilder();
-      paramIntent.append("[parseMusicWebData], dataValue=");
-      paramIntent.append(str);
-      AEQLog.b("AEEditorMusicHelper", paramIntent.toString());
-      try
-      {
-        paramIntent = new VsMusicItemInfo(new JSONObject(str));
-        return paramIntent;
-      }
-      catch (Exception paramIntent)
-      {
-        AEQLog.a("AEEditorMusicHelper", "[parseMusicWebData], error=", paramIntent);
-        return null;
-      }
+      paramIntent = a(new JSONObject(str));
+      return paramIntent;
+    }
+    catch (Exception paramIntent)
+    {
+      AEQLog.a("AEEditorMusicHelper", "[parseMusicWebData], error=", paramIntent);
     }
     return null;
+  }
+  
+  public static VsMusicItemInfo a(JSONObject paramJSONObject)
+  {
+    VsMusicItemInfo localVsMusicItemInfo = new VsMusicItemInfo();
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject1 = paramJSONObject.getJSONObject("albumInfo");
+        JSONObject localJSONObject2 = paramJSONObject.getJSONObject("singerInfo");
+        JSONObject localJSONObject3 = paramJSONObject.getJSONObject("songInfo");
+        JSONObject localJSONObject4 = paramJSONObject.getJSONObject("confInfo");
+        paramJSONObject = paramJSONObject.getJSONObject("lyricInfo");
+        localVsMusicItemInfo.mType = 5;
+        localVsMusicItemInfo.mMusicName = localJSONObject3.optString("name");
+        localVsMusicItemInfo.mSingername = localJSONObject2.optString("name");
+        localVsMusicItemInfo.mItemId = localJSONObject3.optInt("ID");
+        localVsMusicItemInfo.mAlbumUrl = localJSONObject1.optString("thumbURL");
+        localVsMusicItemInfo.mSongMid = localJSONObject3.optString("MID");
+        int i = localJSONObject3.optInt("Copyright");
+        bool = true;
+        if (i == 1)
+        {
+          localVsMusicItemInfo.mHasCopyright = bool;
+          localVsMusicItemInfo.c = 2;
+          localVsMusicItemInfo.mUrl = localJSONObject3.optString("PlayUrl");
+          localVsMusicItemInfo.musicDuration = (localJSONObject3.optInt("IPlayTime") * 1000);
+          localVsMusicItemInfo.musicStart = localJSONObject4.optInt("startPos");
+          localVsMusicItemInfo.b = paramJSONObject.optString("strLyric");
+          localVsMusicItemInfo.musicEnd = 0;
+          localVsMusicItemInfo.a = paramJSONObject.optString("strFormat");
+          return localVsMusicItemInfo;
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        AEQLog.a("AEEditorMusicHelper", "[convertJsonToVsMusicInfo], error=", paramJSONObject);
+        return localVsMusicItemInfo;
+      }
+      boolean bool = false;
+    }
   }
   
   public static MusicData a(@NonNull String paramString, int paramInt1, int paramInt2)
@@ -101,11 +137,24 @@ public class AEEditorMusicHelper
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(AEEditorPath.EDITOR.CACHE.c);
       localStringBuilder.append(File.separator);
-      localStringBuilder.append(paramAEEditorMusicInfo.a());
+      localStringBuilder.append(paramAEEditorMusicInfo.c());
       localStringBuilder.append(".m4a");
       return localStringBuilder.toString();
     }
     return "";
+  }
+  
+  public static String a(String paramString, Intent paramIntent)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mqqapi://qcircle/openwebview?url=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("?");
+    paramString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    a(localStringBuilder, "videoclipduration", String.valueOf(paramIntent.getIntExtra("videoclipduration", 0)));
+    return localStringBuilder.toString();
   }
   
   private static List<Long> a(long paramLong)
@@ -133,7 +182,7 @@ public class AEEditorMusicHelper
   }
   
   @NonNull
-  public static List<VsMusicItemInfo> a(@Nullable List<META.StMusic> paramList)
+  public static List<VsMusicItemInfo> a(@Nullable List<QQCircleSmartMatchMusic.MusicInfo> paramList)
   {
     AEQLog.b("AEEditorMusicHelper", "[convertToMusicItemList]");
     if (paramList == null) {
@@ -143,9 +192,9 @@ public class AEEditorMusicHelper
     int i = 0;
     while (i < paramList.size())
     {
-      META.StMusic localStMusic = (META.StMusic)paramList.get(i);
-      if (localStMusic != null) {
-        localLinkedList.add(new VsMusicItemInfo(localStMusic));
+      QQCircleSmartMatchMusic.MusicInfo localMusicInfo = (QQCircleSmartMatchMusic.MusicInfo)paramList.get(i);
+      if (localMusicInfo != null) {
+        localLinkedList.add(new VsMusicItemInfo(localMusicInfo));
       }
       i += 1;
     }
@@ -167,24 +216,19 @@ public class AEEditorMusicHelper
     }
   }
   
-  public static void a(@NonNull Context paramContext, @NonNull String paramString)
+  public static void a(@NonNull Context paramContext, @NonNull String paramString, Intent paramIntent)
   {
-    AEQLog.b("AEEditorMusicHelper", "[startMusicWebView]");
-    Object localObject = String.format("https://ti.qq.com/music/index.html?_wv=5&_bid=2831&device_id=%s&client_ip=%s&bustype=%s&sessionId=%s&source=%s", new Object[] { UserAction.getQIMEI(), "", Integer.valueOf(6), paramString, "qcirclePublish" });
-    paramString = (String)localObject;
-    if (QzoneConfig.isQQCircleVideoMusicUseWNSUrl()) {
-      paramString = QzoneConfig.getAEEditorEditedMusicUrl((String)localObject);
+    if (paramIntent == null) {
+      return;
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("mqqapi://qcircle/openwebview?url=");
-    ((StringBuilder)localObject).append(paramString);
-    ((StringBuilder)localObject).append("?");
-    paramString = ((StringBuilder)localObject).toString();
-    localObject = new Intent();
-    ((Intent)localObject).setAction("android.intent.action.VIEW");
-    ((Intent)localObject).setData(Uri.parse(paramString));
-    QZoneHelper.addSource((Intent)localObject);
-    paramContext.startActivity((Intent)localObject);
+    AEQLog.b("AEEditorMusicHelper", "[startMusicWebView]");
+    String str = String.format("https://ti.qq.com/music/index.html?_wv=5&_bid=2831&device_id=%s&client_ip=%s&bustype=%s&sessionId=%s&source=%s", new Object[] { UserAction.getQIMEI(), "", Integer.valueOf(6), paramString, "qcirclePublish" });
+    paramString = str;
+    if (QzoneConfig.isQQCircleVideoMusicUseWNSUrl()) {
+      paramString = QzoneConfig.getAEEditorEditedMusicUrl(str);
+    }
+    paramIntent.setData(Uri.parse(a(paramString, paramIntent)));
+    paramContext.startActivity(paramIntent);
   }
   
   public static void a(@Nullable TAVCutVideoSession paramTAVCutVideoSession, @Nullable FrameVideoHelper.GetFrameByteArrayListener paramGetFrameByteArrayListener)
@@ -204,14 +248,18 @@ public class AEEditorMusicHelper
     ThreadManager.executeOnFileThread(new AEEditorMusicHelper.2(paramTAVCutVideoSession, a(l1), ((Long)VSConfigManager.a().a("SmartCutPicWidth", Long.valueOf(224L))).longValue(), ((Long)VSConfigManager.a().a("SmartCutPicQuality_And", Long.valueOf(80L))).longValue(), ((Long)VSConfigManager.a().a("SmartCutPicMaxByte", Long.valueOf(90000L))).longValue(), paramGetFrameByteArrayListener));
   }
   
-  public static void a(@NonNull ArrayList<String> paramArrayList, @Nullable VSDispatchObserver.onVSRspCallBack<CLIENT.StBatchGetMusicInfoRsp> paramonVSRspCallBack)
+  private static void a(StringBuilder paramStringBuilder, String paramString1, String paramString2)
   {
-    AEQLog.b("AEEditorMusicHelper", "[requestDetailedMusicInfo]");
-    long l = System.currentTimeMillis();
-    VSNetworkHelper.getInstance().sendRequest(new BatchGetMusicInfoRequest(paramArrayList), new AEEditorMusicHelper.4(paramonVSRspCallBack, l));
+    if (paramStringBuilder == null) {
+      return;
+    }
+    paramStringBuilder.append("&");
+    paramStringBuilder.append(paramString1);
+    paramStringBuilder.append("=");
+    paramStringBuilder.append(paramString2);
   }
   
-  public static void a(@NonNull ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, @Nullable SosoLocation paramSosoLocation, boolean paramBoolean, @Nullable LocalMediaInfo paramLocalMediaInfo, int paramInt, @Nullable VSDispatchObserver.onVSRspCallBack<CLIENT.StSmartMatchMusicRsp> paramonVSRspCallBack)
+  public static void a(@NonNull ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, @Nullable SosoLocation paramSosoLocation, boolean paramBoolean, @Nullable LocalMediaInfo paramLocalMediaInfo, int paramInt, @Nullable VSDispatchObserver.onVSRspCallBack<QQCircleSmartMatchMusic.SmartMatchMusicRsp> paramonVSRspCallBack)
   {
     AEQLog.b("AEEditorMusicHelper", "[requestRecommendMusicList]");
     paramArrayList = new SmartMusicMatchRequest(paramArrayList, paramSosoLocation, paramBoolean, paramInt, paramLocalMediaInfo);
@@ -286,7 +334,7 @@ public class AEEditorMusicHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorMusicHelper
  * JD-Core Version:    0.7.0.1
  */

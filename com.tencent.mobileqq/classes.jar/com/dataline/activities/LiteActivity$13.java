@@ -18,27 +18,29 @@ class LiteActivity$13
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getIntExtra("forward_type", -1) == 11) {
-      ReportCenter.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), "", String.valueOf(this.jdField_a_of_type_Long), "1000", "51", "0", false);
+    if (this.c.getIntent().getIntExtra("forward_type", -1) == 11) {
+      ReportCenter.a().a(this.c.app.getAccount(), "", String.valueOf(this.a), "1000", "51", "0", false);
     }
     if (QLog.isColorLevel()) {
       QLog.i(LiteActivity.a, 2, "qbShowShareResultDialog back");
     }
-    if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getBooleanExtra("MigSdkShareNotDone", false))
+    if (this.c.getIntent().getBooleanExtra("MigSdkShareNotDone", false))
     {
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().putExtra("MigSdkShareNotDone", false);
-      ForwardSdkShareOption.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "sendToMyComputer", this.jdField_a_of_type_Long);
+      this.c.getIntent().putExtra("MigSdkShareNotDone", false);
+      ForwardSdkShareOption.a(this.c, true, "sendToMyComputer", this.a);
     }
     else
     {
-      ForwardSdkShareOption.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
+      ForwardSdkShareOption.a(this.c, true, "shareToQQ", this.a);
     }
-    Util.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.finish();
-    if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getBooleanExtra("show_share_result_dialog_return_thirdapp", true)) {
+    Util.a(this.b, 0, "", "");
+    if (LiteActivity.d(this.c)) {
+      this.c.finish();
+    }
+    if (this.c.getIntent().getBooleanExtra("show_share_result_dialog_return_thirdapp", true)) {
       try
       {
-        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getActivity().moveTaskToBack(true);
+        this.c.getActivity().moveTaskToBack(true);
         return;
       }
       catch (Throwable paramDialogInterface)

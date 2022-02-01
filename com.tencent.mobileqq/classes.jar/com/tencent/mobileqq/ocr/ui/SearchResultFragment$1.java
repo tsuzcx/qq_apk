@@ -10,15 +10,15 @@ class SearchResultFragment$1
   
   public void a(int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setCurrentItem(paramInt);
-    this.a.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface.a(false);
+    this.a.c.setCurrentItem(paramInt);
+    this.a.a.a(false);
   }
   
   public void b(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.SearchResultFragment.1
  * JD-Core Version:    0.7.0.1
  */

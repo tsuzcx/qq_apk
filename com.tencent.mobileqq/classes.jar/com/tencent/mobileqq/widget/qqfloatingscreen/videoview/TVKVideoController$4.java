@@ -37,8 +37,8 @@ class TVKVideoController$4
   
   public void onPlayProgress(long paramLong1, long paramLong2)
   {
-    if (TVKVideoController.a(this.a) != null) {
-      TVKVideoController.a(this.a).onVideoProgressUpdate((int)paramLong2);
+    if (TVKVideoController.e(this.a) != null) {
+      TVKVideoController.e(this.a).onVideoProgressUpdate((int)paramLong2);
     }
   }
   
@@ -64,45 +64,45 @@ class TVKVideoController$4
             if (paramInt != 8) {
               return;
             }
-            if (TVKVideoController.a(this.a) != null) {
-              TVKVideoController.a(this.a).e = 0L;
+            if (TVKVideoController.j(this.a) != null) {
+              TVKVideoController.j(this.a).q = 0L;
             }
-            if (TVKVideoController.a(this.a) != null) {
-              TVKVideoController.a(this.a).mStartPlayPosMs = 0L;
+            if (TVKVideoController.k(this.a) != null) {
+              TVKVideoController.k(this.a).mStartPlayPosMs = 0L;
             }
-            TVKVideoController.d(this.a);
-            if (TVKVideoController.a(this.a) != null)
+            TVKVideoController.l(this.a);
+            if (TVKVideoController.e(this.a) != null)
             {
-              TVKVideoController.a(this.a).onVideoComplete(true);
-              TVKVideoController.a(this.a).onVideoProgressUpdate(0);
+              TVKVideoController.e(this.a).onVideoComplete(true);
+              TVKVideoController.e(this.a).onVideoProgressUpdate(0);
             }
-            TVKVideoController.a(this.a, 8);
+            TVKVideoController.b(this.a, 8);
             return;
           }
-          TVKVideoController.a(this.a, 7);
+          TVKVideoController.b(this.a, 7);
           return;
         }
-        if (TVKVideoController.a(this.a) != null) {
-          TVKVideoController.a(this.a).onVideoBuffering();
+        if (TVKVideoController.e(this.a) != null) {
+          TVKVideoController.e(this.a).onVideoBuffering();
         }
-        TVKVideoController.a(this.a, 5);
+        TVKVideoController.b(this.a, 5);
         return;
       }
-      TVKVideoController.c(this.a);
-      TVKVideoController.a(this.a, 4);
+      TVKVideoController.f(this.a);
+      TVKVideoController.b(this.a, 4);
       return;
     }
-    if ((TVKVideoController.a(this.a) != null) && (TVKVideoController.a(this.a) != null))
+    if ((TVKVideoController.g(this.a) != null) && (TVKVideoController.e(this.a) != null))
     {
-      TVKVideoController.a(this.a).onSetVideoCover(TVKVideoController.a(this.a));
-      TVKVideoController.a(this.a).onVideoSize(TVKVideoController.a(this.a), TVKVideoController.b(this.a));
+      TVKVideoController.e(this.a).onSetVideoCover(TVKVideoController.g(this.a));
+      TVKVideoController.e(this.a).onVideoSize(TVKVideoController.h(this.a), TVKVideoController.i(this.a));
     }
-    TVKVideoController.a(this.a, 3);
+    TVKVideoController.b(this.a, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.TVKVideoController.4
  * JD-Core Version:    0.7.0.1
  */

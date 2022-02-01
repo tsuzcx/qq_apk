@@ -28,7 +28,7 @@ public final class oidb_0xd1e$FirstCommentDeleteReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.FirstCommentDeleteReq
  * JD-Core Version:    0.7.0.1
  */

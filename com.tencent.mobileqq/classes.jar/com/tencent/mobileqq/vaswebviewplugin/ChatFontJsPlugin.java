@@ -257,7 +257,7 @@ public class ChatFontJsPlugin
   
   private void queryLocalHiBoom(String paramString)
   {
-    Object localObject = new File(HiBoomFont.b);
+    Object localObject = new File(HiBoomFont.f);
     JSONObject localJSONObject = new JSONObject();
     JSONArray localJSONArray = new JSONArray();
     if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
@@ -269,7 +269,7 @@ public class ChatFontJsPlugin
         int i = 0;
         while (i < k)
         {
-          String[] arrayOfString = arrayOfFile[i].list(HiBoomFont.a);
+          String[] arrayOfString = arrayOfFile[i].list(HiBoomFont.i);
           if (arrayOfString != null)
           {
             int m = arrayOfString.length;
@@ -665,7 +665,7 @@ public class ChatFontJsPlugin
       paramString2.put("status", 3);
       paramString2.put("progress", 100);
       paramJsBridgeListener.put("result", 0);
-      paramJsBridgeListener.put("message", HardCodeUtil.a(2131701799));
+      paramJsBridgeListener.put("message", HardCodeUtil.a(2131899817));
       super.callJs(paramString1, new String[] { paramJsBridgeListener.toString() });
       label318:
       paramJsBridgeListener = "queryFontInfo";
@@ -703,9 +703,9 @@ public class ChatFontJsPlugin
             try
             {
               paramString2 = paramString2.getString("msg");
-              paramString3 = this.mRuntime.a();
+              paramString3 = this.mRuntime.e();
               if ((paramString3 != null) && (paramString3.getWebTitleBarInterface() != null)) {
-                QQToast.a(this.mRuntime.a(), paramString2, 0).b(paramString3.getWebTitleBarInterface().a());
+                QQToast.makeText(this.mRuntime.d(), paramString2, 0).show(paramString3.getWebTitleBarInterface().m());
               }
             }
             catch (JSONException paramString2)
@@ -906,10 +906,10 @@ public class ChatFontJsPlugin
   
   public void isUseFont(String paramString)
   {
-    Object localObject1 = this.mRuntime.a().getSharedPreferences("font_open_switch", 4);
+    Object localObject1 = this.mRuntime.d().getSharedPreferences("font_open_switch", 4);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("isUserOpenFontSwitch_");
-    ((StringBuilder)localObject2).append(this.mRuntime.a().getAccount());
+    ((StringBuilder)localObject2).append(this.mRuntime.b().getAccount());
     boolean bool1 = ((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject2).toString(), false);
     boolean bool2 = ((IDPCApi)QRoute.api(IDPCApi.class)).isFeatureSupported(DPCNames.chat_font.name());
     if ((!bool1) && (!bool2)) {
@@ -921,7 +921,7 @@ public class ChatFontJsPlugin
     localObject1 = new JSONObject();
     if (!this.isUseFont)
     {
-      localObject2 = DialogUtil.a(this.mRuntime.a(), 230).setTitle(this.mRuntime.a().getString(2131719638)).setMessage(this.mRuntime.a().getString(2131694953)).setPositiveButton(this.mRuntime.a().getString(2131694954), new ChatFontJsPlugin.3(this, (JSONObject)localObject1, paramString)).setNegativeButton(this.mRuntime.a().getString(2131694951), new ChatFontJsPlugin.2(this, (JSONObject)localObject1, paramString));
+      localObject2 = DialogUtil.a(this.mRuntime.d(), 230).setTitle(this.mRuntime.d().getString(2131917239)).setMessage(this.mRuntime.d().getString(2131892680)).setPositiveButton(this.mRuntime.d().getString(2131892681), new ChatFontJsPlugin.3(this, (JSONObject)localObject1, paramString)).setNegativeButton(this.mRuntime.d().getString(2131892678), new ChatFontJsPlugin.2(this, (JSONObject)localObject1, paramString));
       ((QQCustomDialog)localObject2).show();
       ((QQCustomDialog)localObject2).setOnCancelListener(new ChatFontJsPlugin.4(this, (JSONObject)localObject1, paramString));
       return;
@@ -942,7 +942,7 @@ public class ChatFontJsPlugin
   protected void onCreate()
   {
     super.onCreate();
-    AppInterface localAppInterface = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
     if ((localAppInterface instanceof BrowserAppInterface)) {
       this.browserApp = ((BrowserAppInterface)localAppInterface);
     } else if (QLog.isColorLevel()) {
@@ -1319,10 +1319,10 @@ public class ChatFontJsPlugin
         }
       }
       localJSONObject.put("currentSize", paramJSONObject);
-      paramJSONObject = this.mRuntime.a().getSharedPreferences("font_open_switch", 4);
+      paramJSONObject = this.mRuntime.d().getSharedPreferences("font_open_switch", 4);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("isUserOpenFontSwitch_");
-      ((StringBuilder)localObject).append(this.mRuntime.a().getAccount());
+      ((StringBuilder)localObject).append(this.mRuntime.b().getAccount());
       boolean bool1 = paramJSONObject.getBoolean(((StringBuilder)localObject).toString(), false);
       boolean bool2 = ((IDPCApi)QRoute.api(IDPCApi.class)).isFeatureSupported(DPCNames.chat_font.name());
       if ((!bool1) && (!bool2)) {
@@ -1539,7 +1539,7 @@ public class ChatFontJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatFontJsPlugin
  * JD-Core Version:    0.7.0.1
  */

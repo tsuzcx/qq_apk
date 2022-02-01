@@ -17,25 +17,25 @@ import java.util.List;
 public class UpdateAllFullMusicInfoTask
   extends ParallGroup
 {
-  private QIMMusicConfigManager jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)QIMManager.a(2);
-  private ArrayList<FlowMusic> jdField_a_of_type_JavaUtilArrayList;
-  private List<FlowMusic> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ArrayList<FlowMusic> b = new ArrayList();
+  private QIMMusicConfigManager f = (QIMMusicConfigManager)QIMManager.a(2);
+  private ArrayList<FlowMusic> g;
+  private ArrayList<FlowMusic> h = new ArrayList();
+  private List<FlowMusic> i = new ArrayList();
   
-  private void a()
+  private void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager.a.query(FlowMusic.class);
-    int i;
+    Object localObject = this.f.d.query(FlowMusic.class);
+    int j;
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList((Collection)localObject);
-      i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      this.g = new ArrayList((Collection)localObject);
+      j = this.g.size();
     }
     else
     {
-      i = 0;
+      j = 0;
     }
-    localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject = this.g;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -43,7 +43,7 @@ public class UpdateAllFullMusicInfoTask
       {
         FlowMusic localFlowMusic = (FlowMusic)((Iterator)localObject).next();
         if (localFlowMusic.albumUrl == null) {
-          this.jdField_a_of_type_JavaUtilList.add(localFlowMusic);
+          this.i.add(localFlowMusic);
         }
       }
     }
@@ -51,24 +51,24 @@ public class UpdateAllFullMusicInfoTask
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("load db, has load local, size=");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(j);
       QLog.d("UpdateAllFullMusicInfoTask", 2, ((StringBuilder)localObject).toString());
     }
   }
   
-  private void b()
+  private void c()
   {
-    if (!this.b.isEmpty())
+    if (!this.h.isEmpty())
     {
-      localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager.a.getTransaction();
+      localObject1 = this.f.d.getTransaction();
       try
       {
         ((EntityTransaction)localObject1).begin();
-        Iterator localIterator = this.b.iterator();
+        Iterator localIterator = this.h.iterator();
         while (localIterator.hasNext())
         {
           FlowMusic localFlowMusic = (FlowMusic)localIterator.next();
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager.a.update(localFlowMusic);
+          this.f.d.update(localFlowMusic);
         }
         ((EntityTransaction)localObject1).commit();
       }
@@ -77,9 +77,9 @@ public class UpdateAllFullMusicInfoTask
         ((EntityTransaction)localObject1).end();
       }
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject1 = this.g;
     if (localObject1 != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager.a(4, true, localObject1);
+      this.f.a(4, true, localObject1);
     }
   }
   
@@ -96,18 +96,18 @@ public class UpdateAllFullMusicInfoTask
           localFlowMusic.url = ((GetSingleFullMusicInfoTask)paramAsyncStep).b.url;
           localFlowMusic.size = ((GetSingleFullMusicInfoTask)paramAsyncStep).b.size;
           localFlowMusic.playable = ((GetSingleFullMusicInfoTask)paramAsyncStep).b.playable;
-          this.b.add(localFlowMusic);
+          this.h.add(localFlowMusic);
         }
       }
-      paramInt = this.jdField_a_of_type_Int - 1;
-      this.jdField_a_of_type_Int = paramInt;
+      paramInt = this.a - 1;
+      this.a = paramInt;
       if (paramInt == 0)
       {
-        b();
+        c();
         setResult(7);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep = null;
+        this.b = null;
       }
-      this.mAutomator.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep);
+      this.mAutomator.a(this.b);
       return;
     }
     finally {}
@@ -115,10 +115,10 @@ public class UpdateAllFullMusicInfoTask
   
   protected int doStep()
   {
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    this.a = this.i.size();
+    if (!this.i.isEmpty())
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.i.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (FlowMusic)localIterator.next();
@@ -131,18 +131,18 @@ public class UpdateAllFullMusicInfoTask
       }
       return 2;
     }
-    b();
+    c();
     return 7;
   }
   
   public void onCreate()
   {
-    a();
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.control.UpdateAllFullMusicInfoTask
  * JD-Core Version:    0.7.0.1
  */

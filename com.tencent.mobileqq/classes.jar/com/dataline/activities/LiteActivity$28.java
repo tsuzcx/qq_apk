@@ -10,10 +10,10 @@ final class LiteActivity$28
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView.getCount() > 2)
+    if (this.a.getCount() > 2)
     {
-      ScrollerRunnable localScrollerRunnable = this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable;
-      XListView localXListView = this.jdField_a_of_type_ComTencentWidgetXListView;
+      ScrollerRunnable localScrollerRunnable = this.b;
+      XListView localXListView = this.a;
       LiteActivity.a(localScrollerRunnable, localXListView, localXListView.getCount());
     }
   }

@@ -16,25 +16,25 @@ class C2CFileModel$1
   public void a()
   {
     C2CFileModel localC2CFileModel = this.a;
-    localC2CFileModel.a(false, FileModel.a(localC2CFileModel.a.a()), this.a.c(), new C2CFileModel.1.1(this));
+    localC2CFileModel.a(false, FileModel.a(localC2CFileModel.c.r()), this.a.x(), new C2CFileModel.1.1(this));
   }
   
   public void b()
   {
-    this.a.e();
-    int i = this.a.d();
+    this.a.o();
+    int i = this.a.w();
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
     if (i == 0)
     {
-      localQQAppInterface.getOnlineFileSessionCenter().a(this.a.d());
+      localQQAppInterface.getOnlineFileSessionCenter().c(this.a.C());
       return;
     }
-    localQQAppInterface.getFileManagerEngine().a(this.a.a.a());
+    localQQAppInterface.getFileManagerEngine().a(this.a.c.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel.1
  * JD-Core Version:    0.7.0.1
  */

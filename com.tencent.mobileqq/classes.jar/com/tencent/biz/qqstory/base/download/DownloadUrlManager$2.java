@@ -17,14 +17,14 @@ class DownloadUrlManager$2
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
+    paramJobContext = this.d.a(this.a, this.b, false);
     ThreadManager.getUIHandler().post(new DownloadUrlManager.2.1(this, paramJobContext));
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.DownloadUrlManager.2
  * JD-Core Version:    0.7.0.1
  */

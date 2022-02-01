@@ -31,7 +31,7 @@ class ReceiptMessageReadMemberListContainerFragment$DiscussionFetchReadStatusCal
         paramBundle = paramBundle.rpt_msg_unread_list.get();
         ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, paramArrayOfByte));
         ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a, ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, paramBundle));
-        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
+        ReceiptMessageReadMemberListContainerFragment.f((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
         return;
       }
       paramArrayOfByte = new StringBuilder();
@@ -40,13 +40,13 @@ class ReceiptMessageReadMemberListContainerFragment$DiscussionFetchReadStatusCal
       QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, paramArrayOfByte.toString());
       if (paramInt == 5)
       {
-        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+        ReceiptMessageReadMemberListContainerFragment.f((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
         return;
       }
       if (paramInt != 20) {
         break label206;
       }
-      ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+      ReceiptMessageReadMemberListContainerFragment.f((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -68,7 +68,7 @@ class ReceiptMessageReadMemberListContainerFragment$DiscussionFetchReadStatusCal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.DiscussionFetchReadStatusCallback
  * JD-Core Version:    0.7.0.1
  */

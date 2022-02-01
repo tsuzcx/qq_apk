@@ -15,7 +15,7 @@ class SmallVideoFragment$5
   public void run()
   {
     ReportTask localReportTask = new ReportTask(SmallVideoFragment.a(this.this$0).app).a("dc00899").b("grp_lbs").c("video").d("playpage_fw_suc").e(((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getAnchorUin());
-    int i = this.a.b();
+    int i = this.a.c();
     String str2 = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getFrom();
     String str1;
     if (TextUtils.equals(((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getFrom(), "2")) {
@@ -28,7 +28,7 @@ class SmallVideoFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.SmallVideoFragment.5
  * JD-Core Version:    0.7.0.1
  */

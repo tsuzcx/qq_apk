@@ -14,10 +14,10 @@ class HotPicMainPanel$3
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
+    if ((this.a.s != null) && (this.a.s.isShowing())) {
+      this.a.s.dismiss();
     }
-    this.a.b.setVisibility(8);
+    this.a.j.setVisibility(8);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -26,7 +26,7 @@ class HotPicMainPanel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicMainPanel.3
  * JD-Core Version:    0.7.0.1
  */

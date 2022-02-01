@@ -5,12 +5,12 @@ import java.util.ArrayList;
 
 class WSGridDataManager$WSGridRspModel
 {
-  private ArrayList<stSimpleMetaFeed> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
+  private ArrayList<stSimpleMetaFeed> a;
+  private boolean b;
   
   public ArrayList<stSimpleMetaFeed> a()
   {
-    ArrayList localArrayList2 = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList2 = this.a;
     ArrayList localArrayList1 = localArrayList2;
     if (localArrayList2 == null) {
       localArrayList1 = new ArrayList();
@@ -20,22 +20,22 @@ class WSGridDataManager$WSGridRspModel
   
   public void a(ArrayList<stSimpleMetaFeed> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.a = paramArrayList;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.data.WSGridDataManager.WSGridRspModel
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.aelight.camera.log.AEQLog;
+import com.tencent.mobileqq.wink.editor.export.WinkExportManager;
 
 public class AEEditorOrderBroadcastReceiver
   extends BroadcastReceiver
@@ -24,6 +25,7 @@ public class AEEditorOrderBroadcastReceiver
     localIntentFilter.addAction("AEEDITOR_ORDER_CANCEL");
     localIntentFilter.addAction("AEEDITOR_ORDER_SAVE");
     localIntentFilter.addAction("AEEDITOR_ORDER_REMOVE_MISSION");
+    localIntentFilter.addAction("AEEDITOR_ORDER_QFS_CANCEL");
     return localIntentFilter;
   }
   
@@ -44,8 +46,13 @@ public class AEEditorOrderBroadcastReceiver
       this.mAEEditorOrderListener.onAEEditorCancel(paramIntent);
       return;
     }
-    if ("AEEDITOR_ORDER_REMOVE_MISSION".equals(paramContext)) {
+    if ("AEEDITOR_ORDER_REMOVE_MISSION".equals(paramContext))
+    {
       this.mAEEditorOrderListener.onAEEditorRemove(paramIntent);
+      return;
+    }
+    if ("AEEDITOR_ORDER_QFS_CANCEL".equals(paramContext)) {
+      WinkExportManager.a().b();
     }
   }
   
@@ -69,7 +76,7 @@ public class AEEditorOrderBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.core.AEEditorOrderBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

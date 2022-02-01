@@ -16,27 +16,27 @@ public class SelectedMemberListViewAdapter
   extends BaseAdapter
   implements ObservableList.OnListChangedCallback<ObservableArrayList<ResultRecord>>
 {
-  private PorterDuffColorFilter jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter = new PorterDuffColorFilter(-1711276033, PorterDuff.Mode.SRC_ATOP);
-  private ObservableArrayList<ResultRecord> jdField_a_of_type_ComTencentMobileqqKandianBizUgcDatabindingObservableArrayList = new ObservableArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private ObservableArrayList<ResultRecord> a = new ObservableArrayList();
+  private PorterDuffColorFilter b = new PorterDuffColorFilter(-1711276033, PorterDuff.Mode.SRC_ATOP);
+  private boolean c = false;
   
   SelectedMemberListViewAdapter(@NonNull ObservableArrayList<ResultRecord> paramObservableArrayList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcDatabindingObservableArrayList = paramObservableArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcDatabindingObservableArrayList.addOnListChangedCallback(this);
+    this.a = paramObservableArrayList;
+    this.a.addOnListChangedCallback(this);
   }
   
   public void a()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcDatabindingObservableArrayList.size();
+    int i = this.a.size();
     if (i > 0)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.c)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcDatabindingObservableArrayList.remove(i - 1);
+        this.a.remove(i - 1);
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
       notifyDataSetChanged();
     }
   }
@@ -52,24 +52,24 @@ public class SelectedMemberListViewAdapter
   
   public void b(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
     notifyDataSetChanged();
   }
   
   public void c(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcDatabindingObservableArrayList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcDatabindingObservableArrayList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -85,8 +85,8 @@ public class SelectedMemberListViewAdapter
     }
     else
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560281, paramViewGroup, false);
-      paramViewGroup = (ReadInJoyHeadImageView)paramView.findViewById(2131368579);
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131626327, paramViewGroup, false);
+      paramViewGroup = (ReadInJoyHeadImageView)paramView.findViewById(2131435491);
       paramView.setTag(paramViewGroup);
     }
     Object localObject = getItem(paramInt);
@@ -94,8 +94,8 @@ public class SelectedMemberListViewAdapter
       paramViewGroup.setHeadImgByUin(((ResultRecord)localObject).a());
     }
     int i = getCount();
-    paramViewGroup = paramView.findViewById(2131368580);
-    if ((this.jdField_a_of_type_Boolean) && (paramInt == i - 1))
+    paramViewGroup = paramView.findViewById(2131435492);
+    if ((this.c) && (paramInt == i - 1))
     {
       paramViewGroup.setVisibility(0);
       return paramView;
@@ -106,7 +106,7 @@ public class SelectedMemberListViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectmember.SelectedMemberListViewAdapter
  * JD-Core Version:    0.7.0.1
  */

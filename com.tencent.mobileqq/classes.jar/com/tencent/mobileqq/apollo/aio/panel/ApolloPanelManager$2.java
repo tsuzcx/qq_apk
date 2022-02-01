@@ -14,31 +14,31 @@ class ApolloPanelManager$2
   public void run()
   {
     Object localObject = this.this$0;
-    int i = ((ApolloPanelManager)localObject).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    int i = ((ApolloPanelManager)localObject).c.get();
     boolean bool;
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloModelApolloInfo != null) {
+    if (this.this$0.g != null) {
       bool = true;
     } else {
       bool = false;
     }
     ((ApolloPanelManager)localObject).a(i, bool, ApolloPanelManager.a(this.this$0));
-    if ((this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) && (!ApolloPanelManager.a(this.this$0)) && (this.this$0.a() != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloModelApolloInfo != null))
+    if ((this.this$0.c.get() == 0) && (!ApolloPanelManager.a(this.this$0)) && (this.this$0.a() != null) && (this.this$0.g != null))
     {
       localObject = ((SpriteScriptManagerImpl)this.this$0.a().getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteActionMessage();
       if (localObject != null) {
-        ((SpriteActionMessage)localObject).a(this.this$0.b);
+        ((SpriteActionMessage)localObject).a(this.this$0.e);
       }
     }
-    if (((ApolloPanelManager.a(this.this$0)) || (this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0)) && (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloModelApolloInfo != null))
+    if (((ApolloPanelManager.a(this.this$0)) || (this.this$0.c.get() > 0)) && (this.this$0.g != null))
     {
       localObject = this.this$0;
-      ApolloPanelManager.a((ApolloPanelManager)localObject, ((ApolloPanelManager)localObject).jdField_a_of_type_ComTencentMobileqqApolloModelApolloInfo);
+      ApolloPanelManager.a((ApolloPanelManager)localObject, ((ApolloPanelManager)localObject).g);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanelManager.2
  * JD-Core Version:    0.7.0.1
  */

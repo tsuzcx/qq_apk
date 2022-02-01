@@ -13,16 +13,16 @@ class TCProgressBar$BlinkBlock
   
   void a(Canvas paramCanvas)
   {
-    this.a.b.left = this.f;
-    this.a.b.right = (this.f + this.g);
-    this.a.a.setColor(this.a.m);
-    paramCanvas.drawRect(this.a.b, this.a.a);
+    this.a.y.left = this.k;
+    this.a.y.right = (this.k + this.l);
+    this.a.i.setColor(this.a.w);
+    paramCanvas.drawRect(this.a.y, this.a.i);
     super.a(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.TCProgressBar.BlinkBlock
  * JD-Core Version:    0.7.0.1
  */

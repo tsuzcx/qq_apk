@@ -13,9 +13,9 @@ final class SpringHbMonitorReporter$5
   
   public void run()
   {
-    if (SpringHbMonitorReporter.a(this.jdField_a_of_type_JavaLangString))
+    if (SpringHbMonitorReporter.a(this.a))
     {
-      Object localObject = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getEncodeUrl(this.jdField_a_of_type_JavaLangString);
+      Object localObject = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getEncodeUrl(this.a);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         HashMap localHashMap = new HashMap();
@@ -32,14 +32,14 @@ final class SpringHbMonitorReporter$5
           localObject = "";
         }
         localHashMap.put("ext3", localObject);
-        SpringHbReporter.a(ReportConstant.Event.jdField_a_of_type_JavaLangString, 4, this.jdField_a_of_type_Int, localHashMap, ReportConstant.Res.a(4));
+        SpringHbReporter.a(ReportConstant.Event.a, 4, this.d, localHashMap, ReportConstant.Res.a(4));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbMonitorReporter.5
  * JD-Core Version:    0.7.0.1
  */

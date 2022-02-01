@@ -12,31 +12,31 @@ class DownloadManagerV2$10
   
   public void run()
   {
-    Object localObject = this.this$0.a(this.a.d);
+    Object localObject = this.this$0.g(this.a.d);
     if (localObject != null) {
-      this.a.l = ((TMAssistantDownloadTaskInfo)localObject).mSavePath;
+      this.a.q = ((TMAssistantDownloadTaskInfo)localObject).mSavePath;
     }
     localObject = this.a;
-    ((DownloadInfo)localObject).j = DownloadManagerV2.a(this.this$0, (DownloadInfo)localObject);
-    if (this.a.j != 0)
+    ((DownloadInfo)localObject).D = DownloadManagerV2.b(this.this$0, (DownloadInfo)localObject);
+    if (this.a.D != 0)
     {
-      LogUtility.b("DownloadManagerV2", HardCodeUtil.a(2131703652));
+      LogUtility.b("DownloadManagerV2", HardCodeUtil.a(2131901601));
       this.a.a(-2);
       localObject = this.a;
-      ((DownloadInfo)localObject).f = 100;
-      DownloadManagerV2.a(this.this$0, (DownloadInfo)localObject, ((DownloadInfo)localObject).j, null);
+      ((DownloadInfo)localObject).t = 100;
+      DownloadManagerV2.a(this.this$0, (DownloadInfo)localObject, ((DownloadInfo)localObject).D, null);
       return;
     }
-    LogUtility.a("DownloadManagerV2", HardCodeUtil.a(2131703671));
+    LogUtility.a("DownloadManagerV2", HardCodeUtil.a(2131901620));
     this.a.a(4);
     localObject = this.a;
-    ((DownloadInfo)localObject).f = 100;
+    ((DownloadInfo)localObject).t = 100;
     this.this$0.a((DownloadInfo)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.10
  * JD-Core Version:    0.7.0.1
  */

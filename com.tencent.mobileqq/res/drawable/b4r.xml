@@ -2,5 +2,5 @@
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="true" android:drawable="@drawable/skin_pic_troop_album_icon_local_albums_checked" />
-    <item android:drawable="@drawable/gyp" />
+    <item android:drawable="@drawable/skin_pic_troop_album_icon_local_albums_unchecked" />
 </selector>

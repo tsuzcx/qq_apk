@@ -216,7 +216,7 @@ public class FriendDataServiceImpl
   
   public List<Friends> getAllFriends(boolean paramBoolean)
   {
-    List localList = this.mFriendCache.a();
+    List localList = this.mFriendCache.d();
     int i = localList.size();
     Iterator localIterator = localList.iterator();
     ArrayList localArrayList = new ArrayList();
@@ -368,7 +368,7 @@ public class FriendDataServiceImpl
   
   public List<Groups> getGroupList()
   {
-    List localList = this.mGroupCache.a();
+    List localList = this.mGroupCache.c();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -384,7 +384,7 @@ public class FriendDataServiceImpl
     if (QLog.isColorLevel()) {
       QLog.d("IMCore.friend.FriendDataServiceImpl", 2, "initFriendCache");
     }
-    this.mFriendCache.a();
+    this.mFriendCache.b();
   }
   
   public void initGroupCache()
@@ -414,7 +414,7 @@ public class FriendDataServiceImpl
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 274	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 276	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +4 -> 8
     //   7: return
     //   8: aconst_null
@@ -467,7 +467,7 @@ public class FriendDataServiceImpl
     //   94: istore_3
     //   95: aload_0
     //   96: iload 4
-    //   98: invokevirtual 276	com/tencent/mobileqq/friend/api/impl/FriendDataServiceImpl:getGroup	(I)Lcom/tencent/mobileqq/data/Groups;
+    //   98: invokevirtual 278	com/tencent/mobileqq/friend/api/impl/FriendDataServiceImpl:getGroup	(I)Lcom/tencent/mobileqq/data/Groups;
     //   101: astore 10
     //   103: aload 10
     //   105: ifnull +29 -> 134
@@ -492,8 +492,8 @@ public class FriendDataServiceImpl
     //   144: istore_3
     //   145: ldc 10
     //   147: iconst_1
-    //   148: ldc_w 278
-    //   151: invokestatic 281	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   148: ldc_w 280
+    //   151: invokestatic 283	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   154: aload 8
     //   156: astore 7
     //   158: aload 8
@@ -521,7 +521,7 @@ public class FriendDataServiceImpl
     //   199: istore_3
     //   200: aload_0
     //   201: aload 9
-    //   203: invokevirtual 285	com/tencent/mobileqq/friend/api/impl/FriendDataServiceImpl:saveFriend	(Lcom/tencent/mobileqq/data/Friends;)Z
+    //   203: invokevirtual 287	com/tencent/mobileqq/friend/api/impl/FriendDataServiceImpl:saveFriend	(Lcom/tencent/mobileqq/data/Friends;)Z
     //   206: pop
     //   207: aload 8
     //   209: astore 7
@@ -531,7 +531,7 @@ public class FriendDataServiceImpl
     //   217: istore_3
     //   218: aload_0
     //   219: iload_2
-    //   220: invokevirtual 276	com/tencent/mobileqq/friend/api/impl/FriendDataServiceImpl:getGroup	(I)Lcom/tencent/mobileqq/data/Groups;
+    //   220: invokevirtual 278	com/tencent/mobileqq/friend/api/impl/FriendDataServiceImpl:getGroup	(I)Lcom/tencent/mobileqq/data/Groups;
     //   223: astore 9
     //   225: aload 9
     //   227: ifnull +47 -> 274
@@ -566,8 +566,8 @@ public class FriendDataServiceImpl
     //   284: istore_3
     //   285: ldc 10
     //   287: iconst_1
-    //   288: ldc_w 287
-    //   291: invokestatic 281	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   288: ldc_w 289
+    //   291: invokestatic 283	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   294: aload 8
     //   296: astore 7
     //   298: aload 8
@@ -611,7 +611,7 @@ public class FriendDataServiceImpl
     //   378: invokespecial 107	java/lang/StringBuilder:<init>	()V
     //   381: astore 6
     //   383: aload 6
-    //   385: ldc_w 289
+    //   385: ldc_w 291
     //   388: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   391: pop
     //   392: aload 6
@@ -619,7 +619,7 @@ public class FriendDataServiceImpl
     //   395: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   398: pop
     //   399: aload 6
-    //   401: ldc_w 291
+    //   401: ldc_w 293
     //   404: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   407: pop
     //   408: aload 6
@@ -627,7 +627,7 @@ public class FriendDataServiceImpl
     //   412: invokevirtual 226	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   415: pop
     //   416: aload 6
-    //   418: ldc_w 293
+    //   418: ldc_w 295
     //   421: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   424: pop
     //   425: aload 6
@@ -708,7 +708,7 @@ public class FriendDataServiceImpl
     //   5: if_icmpne +13 -> 18
     //   8: ldc 10
     //   10: iconst_1
-    //   11: ldc_w 297
+    //   11: ldc_w 299
     //   14: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   17: return
     //   18: aload_0
@@ -722,7 +722,7 @@ public class FriendDataServiceImpl
     //   36: invokespecial 107	java/lang/StringBuilder:<init>	()V
     //   39: astore 5
     //   41: aload 5
-    //   43: ldc_w 299
+    //   43: ldc_w 301
     //   46: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   49: pop
     //   50: aload 5
@@ -730,7 +730,7 @@ public class FriendDataServiceImpl
     //   53: invokevirtual 226	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   56: pop
     //   57: aload 5
-    //   59: ldc_w 301
+    //   59: ldc_w 303
     //   62: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: pop
     //   66: ldc 10
@@ -742,7 +742,7 @@ public class FriendDataServiceImpl
     //   78: getfield 61	com/tencent/mobileqq/friend/api/impl/FriendDataServiceImpl:mFriendCache	Lcom/tencent/mobileqq/friend/cache/FriendCache;
     //   81: iload_1
     //   82: invokestatic 185	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   85: invokevirtual 304	com/tencent/mobileqq/friend/cache/FriendCache:a	(Ljava/lang/Integer;)Ljava/util/List;
+    //   85: invokevirtual 306	com/tencent/mobileqq/friend/cache/FriendCache:a	(Ljava/lang/Integer;)Ljava/util/List;
     //   88: astore 8
     //   90: aconst_null
     //   91: astore 6
@@ -796,7 +796,7 @@ public class FriendDataServiceImpl
     //   200: aload_0
     //   201: getfield 61	com/tencent/mobileqq/friend/api/impl/FriendDataServiceImpl:mFriendCache	Lcom/tencent/mobileqq/friend/cache/FriendCache;
     //   204: aload 10
-    //   206: invokevirtual 306	com/tencent/mobileqq/friend/cache/FriendCache:a	(Lcom/tencent/mobileqq/data/Friends;)Z
+    //   206: invokevirtual 308	com/tencent/mobileqq/friend/cache/FriendCache:b	(Lcom/tencent/mobileqq/data/Friends;)Z
     //   209: pop
     //   210: goto -70 -> 140
     //   213: aload 7
@@ -807,7 +807,7 @@ public class FriendDataServiceImpl
     //   222: getfield 35	com/tencent/mobileqq/friend/api/impl/FriendDataServiceImpl:mGroupCache	Lcom/tencent/mobileqq/friend/cache/GroupCache;
     //   225: iload_1
     //   226: invokestatic 185	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   229: invokevirtual 308	com/tencent/mobileqq/friend/cache/GroupCache:c	(Ljava/lang/Integer;)Lcom/tencent/mobileqq/data/Groups;
+    //   229: invokevirtual 310	com/tencent/mobileqq/friend/cache/GroupCache:c	(Ljava/lang/Integer;)Lcom/tencent/mobileqq/data/Groups;
     //   232: pop
     //   233: aload 7
     //   235: astore 5
@@ -831,7 +831,7 @@ public class FriendDataServiceImpl
     //   274: astore 5
     //   276: ldc 10
     //   278: iconst_1
-    //   279: ldc_w 309
+    //   279: ldc_w 311
     //   282: aload 7
     //   284: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   287: aload 6
@@ -859,7 +859,7 @@ public class FriendDataServiceImpl
     //   343: getfield 35	com/tencent/mobileqq/friend/api/impl/FriendDataServiceImpl:mGroupCache	Lcom/tencent/mobileqq/friend/cache/GroupCache;
     //   346: iload_1
     //   347: invokestatic 185	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   350: invokevirtual 311	com/tencent/mobileqq/friend/cache/GroupCache:a	(Ljava/lang/Integer;)Lcom/tencent/mobileqq/data/Groups;
+    //   350: invokevirtual 313	com/tencent/mobileqq/friend/cache/GroupCache:a	(Ljava/lang/Integer;)Lcom/tencent/mobileqq/data/Groups;
     //   353: pop
     //   354: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   357: ifeq +70 -> 427
@@ -868,7 +868,7 @@ public class FriendDataServiceImpl
     //   364: invokespecial 107	java/lang/StringBuilder:<init>	()V
     //   367: astore 5
     //   369: aload 5
-    //   371: ldc_w 313
+    //   371: ldc_w 315
     //   374: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   377: pop
     //   378: aload 5
@@ -876,7 +876,7 @@ public class FriendDataServiceImpl
     //   381: invokevirtual 226	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   384: pop
     //   385: aload 5
-    //   387: ldc_w 315
+    //   387: ldc_w 317
     //   390: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   393: pop
     //   394: aload 5
@@ -953,7 +953,7 @@ public class FriendDataServiceImpl
   
   public void onDestroy()
   {
-    this.mFriendCache.b();
+    this.mFriendCache.c();
     this.mGroupCache.b();
   }
   
@@ -975,10 +975,10 @@ public class FriendDataServiceImpl
       return false;
     }
     if ((paramFriends.mCompareSpell == null) || (paramFriends.mCompareSpell.length() == 0)) {
-      FriendSorter.a(paramFriends);
+      FriendSorter.b(paramFriends);
     }
     this.mFriendCache.a(paramFriends);
-    return this.mFriendCache.a(paramFriends);
+    return this.mFriendCache.b(paramFriends);
   }
   
   public void saveFriendCache(Friends paramFriends)
@@ -987,7 +987,7 @@ public class FriendDataServiceImpl
       return;
     }
     if ((paramFriends.mCompareSpell == null) || (paramFriends.mCompareSpell.length() == 0)) {
-      FriendSorter.a(paramFriends);
+      FriendSorter.b(paramFriends);
     }
     this.mFriendCache.a(paramFriends);
   }
@@ -1009,12 +1009,12 @@ public class FriendDataServiceImpl
         else
         {
           if ((localFriends.mCompareSpell == null) || (localFriends.mCompareSpell.length() == 0)) {
-            FriendSorter.a(localFriends);
+            FriendSorter.b(localFriends);
           }
           this.mFriendCache.a(localFriends);
         }
       }
-      boolean bool = this.mFriendCache.a(paramList);
+      boolean bool = this.mFriendCache.b(paramList);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -1034,7 +1034,7 @@ public class FriendDataServiceImpl
   public boolean saveFriendList(List<Friends> paramList, boolean paramBoolean, long paramLong)
   {
     // Byte code:
-    //   0: invokestatic 372	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 375	java/lang/System:currentTimeMillis	()J
     //   3: lstore 7
     //   5: iconst_0
     //   6: istore 6
@@ -1094,7 +1094,7 @@ public class FriendDataServiceImpl
     //   131: astore 12
     //   133: ldc 10
     //   135: iconst_2
-    //   136: ldc_w 356
+    //   136: ldc_w 359
     //   139: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   142: goto -74 -> 68
     //   145: aload 13
@@ -1102,22 +1102,22 @@ public class FriendDataServiceImpl
     //   149: aload 13
     //   151: astore 12
     //   153: aload 15
-    //   155: getfield 345	com/tencent/mobileqq/data/Friends:mCompareSpell	Ljava/lang/String;
+    //   155: getfield 347	com/tencent/mobileqq/data/Friends:mCompareSpell	Ljava/lang/String;
     //   158: ifnull +22 -> 180
     //   161: aload 13
     //   163: astore 11
     //   165: aload 13
     //   167: astore 12
     //   169: aload 15
-    //   171: getfield 345	com/tencent/mobileqq/data/Friends:mCompareSpell	Ljava/lang/String;
-    //   174: invokevirtual 348	java/lang/String:length	()I
+    //   171: getfield 347	com/tencent/mobileqq/data/Friends:mCompareSpell	Ljava/lang/String;
+    //   174: invokevirtual 350	java/lang/String:length	()I
     //   177: ifne +16 -> 193
     //   180: aload 13
     //   182: astore 11
     //   184: aload 13
     //   186: astore 12
     //   188: aload 15
-    //   190: invokestatic 351	com/tencent/mobileqq/friend/utils/FriendSorter:a	(Lcom/tencent/mobileqq/data/Friends;)V
+    //   190: invokestatic 354	com/tencent/mobileqq/friend/utils/FriendSorter:b	(Lcom/tencent/mobileqq/data/Friends;)V
     //   193: aload 13
     //   195: astore 11
     //   197: aload 13
@@ -1133,7 +1133,7 @@ public class FriendDataServiceImpl
     //   218: aload_0
     //   219: getfield 61	com/tencent/mobileqq/friend/api/impl/FriendDataServiceImpl:mFriendCache	Lcom/tencent/mobileqq/friend/cache/FriendCache;
     //   222: aload 15
-    //   224: invokevirtual 306	com/tencent/mobileqq/friend/cache/FriendCache:a	(Lcom/tencent/mobileqq/data/Friends;)Z
+    //   224: invokevirtual 308	com/tencent/mobileqq/friend/cache/FriendCache:b	(Lcom/tencent/mobileqq/data/Friends;)Z
     //   227: pop
     //   228: goto -160 -> 68
     //   231: iload_2
@@ -1166,7 +1166,7 @@ public class FriendDataServiceImpl
     //   296: aload 13
     //   298: astore 12
     //   300: aload 15
-    //   302: getfield 376	com/tencent/mobileqq/data/Friends:datetime	J
+    //   302: getfield 379	com/tencent/mobileqq/data/Friends:datetime	J
     //   305: lload_3
     //   306: lcmp
     //   307: ifge -53 -> 254
@@ -1231,14 +1231,14 @@ public class FriendDataServiceImpl
     //   436: istore 5
     //   438: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   441: ifeq +101 -> 542
-    //   444: invokestatic 372	java/lang/System:currentTimeMillis	()J
+    //   444: invokestatic 375	java/lang/System:currentTimeMillis	()J
     //   447: lstore 9
     //   449: new 106	java/lang/StringBuilder
     //   452: dup
     //   453: invokespecial 107	java/lang/StringBuilder:<init>	()V
     //   456: astore 11
     //   458: aload 11
-    //   460: ldc_w 378
+    //   460: ldc_w 381
     //   463: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   466: pop
     //   467: aload 11
@@ -1247,7 +1247,7 @@ public class FriendDataServiceImpl
     //   475: invokevirtual 226	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   478: pop
     //   479: aload 11
-    //   481: ldc_w 380
+    //   481: ldc_w 383
     //   484: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   487: pop
     //   488: aload 11
@@ -1255,22 +1255,22 @@ public class FriendDataServiceImpl
     //   491: invokevirtual 118	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   494: pop
     //   495: aload 11
-    //   497: ldc_w 382
+    //   497: ldc_w 385
     //   500: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   503: pop
     //   504: aload 11
     //   506: lload_3
-    //   507: invokevirtual 385	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   507: invokevirtual 388	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   510: pop
     //   511: aload 11
-    //   513: ldc_w 387
+    //   513: ldc_w 390
     //   516: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   519: pop
     //   520: aload 11
     //   522: lload 9
     //   524: lload 7
     //   526: lsub
-    //   527: invokevirtual 385	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   527: invokevirtual 388	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   530: pop
     //   531: ldc 10
     //   533: iconst_2
@@ -1287,8 +1287,8 @@ public class FriendDataServiceImpl
     //   556: athrow
     //   557: ldc 10
     //   559: iconst_1
-    //   560: ldc_w 364
-    //   563: invokestatic 281	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   560: ldc_w 367
+    //   563: invokestatic 283	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   566: iconst_0
     //   567: ireturn
     // Local variable table:
@@ -1357,7 +1357,7 @@ public class FriendDataServiceImpl
     if (paramGroups == null) {
       return false;
     }
-    boolean bool = this.mGroupCache.a(paramGroups);
+    boolean bool = this.mGroupCache.b(paramGroups);
     if (bool) {
       this.mGroupCache.a(paramGroups);
     }
@@ -1379,7 +1379,7 @@ public class FriendDataServiceImpl
     {
       boolean bool = this.mGroupCache.a(paramList);
       if (bool) {
-        this.mGroupCache.a(paramList);
+        this.mGroupCache.b(paramList);
       }
       if (QLog.isColorLevel())
       {
@@ -1462,7 +1462,7 @@ public class FriendDataServiceImpl
     //   110: aload 7
     //   112: astore 5
     //   114: aload 9
-    //   116: getfield 414	com/tencent/mobileqq/data/Groups:seqid	B
+    //   116: getfield 418	com/tencent/mobileqq/data/Groups:seqid	B
     //   119: aload_2
     //   120: iload_3
     //   121: baload
@@ -1475,7 +1475,7 @@ public class FriendDataServiceImpl
     //   135: aload_2
     //   136: iload_3
     //   137: baload
-    //   138: putfield 414	com/tencent/mobileqq/data/Groups:seqid	B
+    //   138: putfield 418	com/tencent/mobileqq/data/Groups:seqid	B
     //   141: aload 7
     //   143: astore 6
     //   145: aload 7
@@ -1506,7 +1506,7 @@ public class FriendDataServiceImpl
     //   198: aload 7
     //   200: astore 5
     //   202: aload 9
-    //   204: ldc_w 416
+    //   204: ldc_w 420
     //   207: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   210: pop
     //   211: aload 7
@@ -1534,7 +1534,7 @@ public class FriendDataServiceImpl
     //   257: aload_0
     //   258: getfield 35	com/tencent/mobileqq/friend/api/impl/FriendDataServiceImpl:mGroupCache	Lcom/tencent/mobileqq/friend/cache/GroupCache;
     //   261: aload 8
-    //   263: invokevirtual 402	com/tencent/mobileqq/friend/cache/GroupCache:a	(Ljava/util/List;)V
+    //   263: invokevirtual 406	com/tencent/mobileqq/friend/cache/GroupCache:b	(Ljava/util/List;)V
     //   266: aload 7
     //   268: astore 6
     //   270: aload 7
@@ -1567,7 +1567,7 @@ public class FriendDataServiceImpl
     //   331: invokespecial 107	java/lang/StringBuilder:<init>	()V
     //   334: astore 5
     //   336: aload 5
-    //   338: ldc_w 418
+    //   338: ldc_w 422
     //   341: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   344: pop
     //   345: aload 5
@@ -1575,7 +1575,7 @@ public class FriendDataServiceImpl
     //   348: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   351: pop
     //   352: aload 5
-    //   354: ldc_w 420
+    //   354: ldc_w 424
     //   357: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   360: pop
     //   361: aload 5
@@ -1596,8 +1596,8 @@ public class FriendDataServiceImpl
     //   391: athrow
     //   392: ldc 10
     //   394: iconst_1
-    //   395: ldc_w 422
-    //   398: invokestatic 281	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   395: ldc_w 426
+    //   398: invokestatic 283	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   401: return
     //   402: iload_3
     //   403: iconst_1
@@ -1654,7 +1654,7 @@ public class FriendDataServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.api.impl.FriendDataServiceImpl
  * JD-Core Version:    0.7.0.1
  */

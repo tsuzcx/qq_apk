@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/skin_header_btn_back_press_black" />
-    <item android:drawable="@drawable/skin_header_btn_back_normal_black" />
-</selector>
+    <solid android:color="?7f" />
+    <corners android:topLeftRadius="4.0dip" android:topRightRadius="4.0dip" android:bottomLeftRadius="4.0dip" android:bottomRightRadius="4.0dip" />
+    <padding android:top="8.0dip" android:bottom="8.0dip" />
+</shape>

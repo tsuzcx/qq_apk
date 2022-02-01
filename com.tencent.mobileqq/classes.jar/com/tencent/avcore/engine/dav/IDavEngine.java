@@ -19,6 +19,8 @@ public abstract interface IDavEngine
   
   public abstract int doQuaReport(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
   
+  public abstract boolean enableAIDenoise(boolean paramBoolean);
+  
   public abstract void enableDumpAudioData(boolean paramBoolean);
   
   public abstract boolean enableLoopback(boolean paramBoolean);
@@ -45,7 +47,7 @@ public abstract interface IDavEngine
   
   public abstract int ignore(long paramLong);
   
-  public abstract int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15, String paramString16);
+  public abstract int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15, String paramString16, boolean paramBoolean3);
   
   public abstract boolean isEnableLoopback();
   
@@ -90,6 +92,10 @@ public abstract interface IDavEngine
   public abstract int requestUnQQ(long paramLong, int paramInt1, int paramInt2, int paramInt3);
   
   public abstract int requestVideoMode(long paramLong);
+  
+  public abstract int sendAVAvatar2DMsg(long paramLong, byte[] paramArrayOfByte, boolean paramBoolean);
+  
+  public abstract int sendAVAvatar2DSwitchRequest(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
   
   public abstract int sendAVFunChatMsg(long paramLong, int paramInt, byte[] paramArrayOfByte);
   

@@ -16,9 +16,9 @@ class ArkAppPreDownloadMgr$2$1$1
   public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppPreDownloadMgr$2.a.a, ",retcode=", Integer.valueOf(paramInt), ",msg=", paramString });
+      QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.b.a.a, ",retcode=", Integer.valueOf(paramInt), ",msg=", paramString });
     }
-    if ((AppRuntime)ArkAppPreDownloadMgr.a(this.a.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppPreDownloadMgr$2.this$0).get() == null) {
+    if ((AppRuntime)ArkAppPreDownloadMgr.a(this.a.b.this$0).get() == null) {
       return;
     }
     if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null))
@@ -29,17 +29,17 @@ class ArkAppPreDownloadMgr$2$1$1
         l = paramString.length();
       }
       if (QLog.isColorLevel()) {
-        QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppPreDownloadMgr$2.a.a, ",filesize=", Long.valueOf(l) });
+        QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.b.a.a, ",filesize=", Long.valueOf(l) });
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqArkCoreArkPredownloader$Task.a(this.a.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppPreDownloadMgr$2.a.a, l);
+      this.a.a.a(this.a.b.a.a, l);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqArkCoreArkPredownloader$Task.a(this.a.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppPreDownloadMgr$2.a.a, -1L);
+    this.a.a.a(this.a.b.a.a, -1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkAppPreDownloadMgr.2.1.1
  * JD-Core Version:    0.7.0.1
  */

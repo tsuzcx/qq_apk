@@ -9,16 +9,16 @@ class FriendCardApolloViewController$1
   
   public void run()
   {
-    if (FriendCardApolloViewController.a(this.this$0) != null)
+    if (FriendCardApolloViewController.b(this.this$0) != null)
     {
-      FriendCardApolloViewController.a(this.this$0).b(2);
-      FriendCardApolloViewController.a(this.this$0).a();
+      FriendCardApolloViewController.b(this.this$0).b(2);
+      FriendCardApolloViewController.b(this.this$0).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.profilecard.FriendCardApolloViewController.1
  * JD-Core Version:    0.7.0.1
  */

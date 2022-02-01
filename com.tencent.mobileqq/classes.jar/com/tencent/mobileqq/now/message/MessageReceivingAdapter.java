@@ -27,31 +27,31 @@ import java.util.List;
 public class MessageReceivingAdapter
   extends PagerAdapter
 {
-  private ItemBuilderFactory jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistItemItemBuilderFactory;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private List<ChatMessage> jdField_a_of_type_JavaUtilList;
+  private BaseActivity a;
+  private List<ChatMessage> b;
+  private ItemBuilderFactory c;
   
   public MessageReceivingAdapter(BaseActivity paramBaseActivity, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistItemItemBuilderFactory = new ItemBuilderFactory(paramBaseActivity, paramBaseActivity.app, paramBaseChatPie.a, null, paramBaseChatPie);
+    this.a = paramBaseActivity;
+    this.c = new ItemBuilderFactory(paramBaseActivity, paramBaseActivity.app, paramBaseChatPie.ah, null, paramBaseChatPie);
   }
   
   private View a(Context paramContext, ViewGroup paramViewGroup, MessageForArkApp paramMessageForArkApp, int paramInt)
   {
-    paramContext = new WrapperArkView(paramContext, paramViewGroup, paramMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistItemItemBuilderFactory.a(paramMessageForArkApp, null), paramInt);
+    paramContext = new WrapperArkView(paramContext, paramViewGroup, paramMessageForArkApp, this.c.a(paramMessageForArkApp, null), paramInt);
     paramContext.setOnArkViewTouchListener(new MessageReceivingAdapter.2(this, paramInt, paramMessageForArkApp));
     return paramContext;
   }
   
   private View a(Context paramContext, ViewGroup paramViewGroup, MessageForStructing paramMessageForStructing, int paramInt)
   {
-    ChatItemBuilder localChatItemBuilder = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistItemItemBuilderFactory.a(paramMessageForStructing, null);
+    ChatItemBuilder localChatItemBuilder = this.c.a(paramMessageForStructing, null);
     if ((paramMessageForStructing.structingMsg instanceof StructMsgForGeneralShare))
     {
       StructMsgForGeneralShare localStructMsgForGeneralShare = (StructMsgForGeneralShare)paramMessageForStructing.structingMsg;
       paramContext = new GeneralSharePagerView(paramContext);
-      ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(paramContext.a, localStructMsgForGeneralShare.mContentCover, new ColorDrawable(0), new ColorDrawable(0), null);
+      ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(paramContext.b, localStructMsgForGeneralShare.mContentCover, new ColorDrawable(0), new ColorDrawable(0), null);
       paramContext.a(localChatItemBuilder.a(paramInt, getCount(), paramMessageForStructing, null, paramViewGroup, new MessageReceivingAdapter.1(this, paramInt, paramMessageForStructing, localStructMsgForGeneralShare)));
       return paramContext;
     }
@@ -71,13 +71,13 @@ public class MessageReceivingAdapter
     ChatMessage localChatMessage = a(paramInt);
     if ((localChatMessage instanceof MessageForStructing))
     {
-      paramViewGroup = a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramViewGroup, (MessageForStructing)localChatMessage, paramInt);
+      paramViewGroup = a(this.a, paramViewGroup, (MessageForStructing)localChatMessage, paramInt);
       NowQQLiveDataReport.a(paramInt + 1, ChatMessageHelper.b(localChatMessage), "2");
       return paramViewGroup;
     }
     if ((localChatMessage instanceof MessageForArkApp))
     {
-      paramViewGroup = a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramViewGroup, (MessageForArkApp)localChatMessage, paramInt);
+      paramViewGroup = a(this.a, paramViewGroup, (MessageForArkApp)localChatMessage, paramInt);
       NowQQLiveDataReport.a(paramInt + 1, ChatMessageHelper.b(localChatMessage), "1");
       return paramViewGroup;
     }
@@ -89,12 +89,12 @@ public class MessageReceivingAdapter
   
   private View a(ViewGroup paramViewGroup, ChatMessage paramChatMessage, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistItemItemBuilderFactory.a(paramChatMessage, null).a(paramInt, getCount(), paramChatMessage, null, paramViewGroup, new OnArkViewTouchListener());
+    return this.c.a(paramChatMessage, null).a(paramInt, getCount(), paramChatMessage, null, paramViewGroup, new OnArkViewTouchListener());
   }
   
   private boolean a(View paramView, ChatMessage paramChatMessage, StructMsgForGeneralShare paramStructMsgForGeneralShare)
   {
-    paramView = new StructMsgClickHandler(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, paramView, paramChatMessage);
+    paramView = new StructMsgClickHandler(this.a.app, paramView, paramChatMessage);
     if (!TextUtils.isEmpty(paramStructMsgForGeneralShare.mMsgUrl)) {
       return paramView.a(paramStructMsgForGeneralShare.mMsgUrl, paramChatMessage.getId(), null);
     }
@@ -102,8 +102,8 @@ public class MessageReceivingAdapter
     while (localIterator.hasNext())
     {
       AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)localIterator.next();
-      if ((localAbsStructMsgElement.a == paramStructMsgForGeneralShare.msgId) && (!TextUtils.isEmpty(localAbsStructMsgElement.b))) {
-        return paramView.a(localAbsStructMsgElement.b, paramChatMessage.getId(), null);
+      if ((localAbsStructMsgElement.ao == paramStructMsgForGeneralShare.msgId) && (!TextUtils.isEmpty(localAbsStructMsgElement.d))) {
+        return paramView.a(localAbsStructMsgElement.d, paramChatMessage.getId(), null);
       }
     }
     return false;
@@ -111,21 +111,21 @@ public class MessageReceivingAdapter
   
   private View b(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    return LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131559520, paramViewGroup, false);
+    return LayoutInflater.from(this.a).inflate(2131625542, paramViewGroup, false);
   }
   
   public ChatMessage a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (paramInt < localList.size())) {
-      return (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (ChatMessage)this.b.get(paramInt);
     }
     return null;
   }
   
   public void a(List<ChatMessage> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
     notifyDataSetChanged();
   }
   
@@ -136,13 +136,13 @@ public class MessageReceivingAdapter
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (localList.size() != 0))
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
+      if (this.b.size() > 3) {
         return 4;
       }
-      return this.jdField_a_of_type_JavaUtilList.size();
+      return this.b.size();
     }
     return 0;
   }
@@ -169,7 +169,7 @@ public class MessageReceivingAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.MessageReceivingAdapter
  * JD-Core Version:    0.7.0.1
  */

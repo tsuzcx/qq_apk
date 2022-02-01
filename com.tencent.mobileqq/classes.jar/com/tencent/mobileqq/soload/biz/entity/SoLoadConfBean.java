@@ -20,9 +20,9 @@ public class SoLoadConfBean
         if (localQConfItem != null)
         {
           localStringBuilder.append("confItem ");
-          localStringBuilder.append(localQConfItem.jdField_a_of_type_Int);
+          localStringBuilder.append(localQConfItem.a);
           localStringBuilder.append(":");
-          localStringBuilder.append(localQConfItem.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(localQConfItem.b);
           localStringBuilder.append("\n");
         }
         i += 1;
@@ -33,7 +33,7 @@ public class SoLoadConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.biz.entity.SoLoadConfBean
  * JD-Core Version:    0.7.0.1
  */

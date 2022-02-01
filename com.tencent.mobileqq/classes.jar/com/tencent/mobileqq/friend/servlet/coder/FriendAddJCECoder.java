@@ -39,7 +39,7 @@ public final class FriendAddJCECoder
 {
   public static final FriendAddJCECoder.Companion a = new FriendAddJCECoder.Companion(null);
   
-  private final long a(String paramString)
+  private final long b(String paramString)
   {
     long l = 0L;
     if (paramString != null)
@@ -152,8 +152,8 @@ public final class FriendAddJCECoder
     Intrinsics.checkParameterIsNotNull(paramToServiceMsg, "request");
     Intrinsics.checkParameterIsNotNull(paramUniPacket, "client");
     GetAutoInfoReq localGetAutoInfoReq = new GetAutoInfoReq();
-    localGetAutoInfoReq.uin = a(paramToServiceMsg.getUin());
-    localGetAutoInfoReq.dwFriendUin = a(paramToServiceMsg.extraData.getString("uin"));
+    localGetAutoInfoReq.uin = b(paramToServiceMsg.getUin());
+    localGetAutoInfoReq.dwFriendUin = b(paramToServiceMsg.extraData.getString("uin"));
     localGetAutoInfoReq.cType = paramToServiceMsg.extraData.getByte("cType");
     localGetAutoInfoReq.sourceID = paramToServiceMsg.extraData.getInt("source_id", 3999);
     localGetAutoInfoReq.sourceSubID = paramToServiceMsg.extraData.getInt("sub_source_id", 0);
@@ -167,7 +167,7 @@ public final class FriendAddJCECoder
   {
     Intrinsics.checkParameterIsNotNull(paramToServiceMsg, "request");
     Intrinsics.checkParameterIsNotNull(paramUniPacket, "client");
-    long l = a(paramToServiceMsg.getUin());
+    long l = b(paramToServiceMsg.getUin());
     if (l == 0L) {
       return false;
     }
@@ -217,7 +217,7 @@ public final class FriendAddJCECoder
         }
         else
         {
-          l = a((String)localObject1);
+          l = b((String)localObject1);
           if (l == 0L) {
             return false;
           }
@@ -226,7 +226,7 @@ public final class FriendAddJCECoder
       }
       else
       {
-        l = a((String)localObject1);
+        l = b((String)localObject1);
         if (l == 0L) {
           return false;
         }
@@ -270,7 +270,7 @@ public final class FriendAddJCECoder
   {
     Intrinsics.checkParameterIsNotNull(paramToServiceMsg, "request");
     Intrinsics.checkParameterIsNotNull(paramUniPacket, "client");
-    long l1 = a(paramToServiceMsg.getUin());
+    long l1 = b(paramToServiceMsg.getUin());
     if (l1 == 0L) {
       return false;
     }
@@ -323,7 +323,7 @@ public final class FriendAddJCECoder
       label276:
       return false;
       label278:
-      long l2 = a((String)localObject1);
+      long l2 = b((String)localObject1);
       if ((l2 != 0L) && (l1 != l2))
       {
         localAddFriendReq.adduin = l2;
@@ -333,7 +333,7 @@ public final class FriendAddJCECoder
         return false;
         label316:
         paramToServiceMsg = "troop_uin";
-        l1 = a((String)localObject1);
+        l1 = b((String)localObject1);
         if (l1 == 0L) {
           return false;
         }
@@ -345,7 +345,7 @@ public final class FriendAddJCECoder
         if ((paramToServiceMsg != null) && (paramToServiceMsg.length() > 0))
         {
           localObject2 = new FrdSysMsg.GroupInfo();
-          ((FrdSysMsg.GroupInfo)localObject2).uint64_group_uin.set(a(paramToServiceMsg));
+          ((FrdSysMsg.GroupInfo)localObject2).uint64_group_uin.set(b(paramToServiceMsg));
           localAddFriendReq.friend_src_desc = ((FrdSysMsg.GroupInfo)localObject2).toByteArray();
         }
       }
@@ -358,7 +358,7 @@ public final class FriendAddJCECoder
         {
           paramToServiceMsg = localBundle.getString("extra");
           localObject2 = new FrdSysMsg.DiscussInfo();
-          ((FrdSysMsg.DiscussInfo)localObject2).uint64_discuss_uin.set(a(paramToServiceMsg));
+          ((FrdSysMsg.DiscussInfo)localObject2).uint64_discuss_uin.set(b(paramToServiceMsg));
           localAddFriendReq.friend_src_desc = ((FrdSysMsg.DiscussInfo)localObject2).toByteArray();
         }
         else
@@ -371,7 +371,7 @@ public final class FriendAddJCECoder
           {
             localObject2 = new FrdSysMsg.FriendSysMsg();
             localObject4 = new FrdSysMsg.GroupInfoExt();
-            ((FrdSysMsg.GroupInfoExt)localObject4).uint64_group_code.set(a(paramToServiceMsg));
+            ((FrdSysMsg.GroupInfoExt)localObject4).uint64_group_code.set(b(paramToServiceMsg));
             ((FrdSysMsg.FriendSysMsg)localObject2).msg_group_ext.set((MessageMicro)localObject4);
             localAddFriendReq.friend_src_desc = ((FrdSysMsg.FriendSysMsg)localObject2).toByteArray();
             break label860;
@@ -387,10 +387,10 @@ public final class FriendAddJCECoder
         {
           localObject4 = new FrdSysMsg.FriendSysMsg();
           localObject5 = new FrdSysMsg.GroupInfoExt();
-          ((FrdSysMsg.GroupInfoExt)localObject5).uint64_group_code.set(a(paramToServiceMsg));
+          ((FrdSysMsg.GroupInfoExt)localObject5).uint64_group_code.set(b(paramToServiceMsg));
           ((FrdSysMsg.GroupInfoExt)localObject5).uint32_notify_type.set(k);
           paramToServiceMsg = new FrdSysMsg.InviteInfo();
-          paramToServiceMsg.uint64_recommend_uin.set(a((String)localObject2));
+          paramToServiceMsg.uint64_recommend_uin.set(b((String)localObject2));
           ((FrdSysMsg.FriendSysMsg)localObject4).msg_group_ext.set((MessageMicro)localObject5);
           ((FrdSysMsg.FriendSysMsg)localObject4).msg_intite_info.set((MessageMicro)paramToServiceMsg);
           localAddFriendReq.friend_src_desc = ((FrdSysMsg.FriendSysMsg)localObject4).toByteArray();
@@ -399,7 +399,7 @@ public final class FriendAddJCECoder
         {
           localObject2 = new FrdSysMsg.FriendSysMsg();
           localObject4 = new FrdSysMsg.GroupInfoExt();
-          ((FrdSysMsg.GroupInfoExt)localObject4).uint64_group_code.set(a(paramToServiceMsg));
+          ((FrdSysMsg.GroupInfoExt)localObject4).uint64_group_code.set(b(paramToServiceMsg));
           ((FrdSysMsg.GroupInfoExt)localObject4).uint32_notify_type.set(k);
           ((FrdSysMsg.FriendSysMsg)localObject2).msg_group_ext.set((MessageMicro)localObject4);
           localAddFriendReq.friend_src_desc = ((FrdSysMsg.FriendSysMsg)localObject2).toByteArray();
@@ -412,7 +412,7 @@ public final class FriendAddJCECoder
         {
           localObject2 = new FrdSysMsg.FriendSysMsg();
           localObject4 = new FrdSysMsg.InviteInfo();
-          ((FrdSysMsg.InviteInfo)localObject4).uint64_recommend_uin.set(a(paramToServiceMsg));
+          ((FrdSysMsg.InviteInfo)localObject4).uint64_recommend_uin.set(b(paramToServiceMsg));
           ((FrdSysMsg.FriendSysMsg)localObject2).msg_intite_info.set((MessageMicro)localObject4);
           localAddFriendReq.friend_src_desc = ((FrdSysMsg.FriendSysMsg)localObject2).toByteArray();
         }
@@ -450,7 +450,7 @@ public final class FriendAddJCECoder
     {
       localObject2 = new StringBuilder(300);
       ((StringBuilder)localObject2).append("handleAddFriend [uin: ");
-      ((StringBuilder)localObject2).append(Utils.a((String)localObject1));
+      ((StringBuilder)localObject2).append(Utils.i((String)localObject1));
       ((StringBuilder)localObject2).append(", source_id: ");
       ((StringBuilder)localObject2).append(i);
       ((StringBuilder)localObject2).append(", sub_source_id: ");
@@ -646,7 +646,7 @@ public final class FriendAddJCECoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.servlet.coder.FriendAddJCECoder
  * JD-Core Version:    0.7.0.1
  */

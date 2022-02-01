@@ -8,8 +8,8 @@ import org.json.JSONObject;
 
 public class TencentDocAIOPlusPanelEntryConfigBean
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private String b = "";
   
   public static TencentDocAIOPlusPanelEntryConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -24,7 +24,7 @@ public class TencentDocAIOPlusPanelEntryConfigBean
     {
       try
       {
-        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].b);
         if (paramArrayOfQConfItem.has("tencentDocAioSendEntry"))
         {
           paramArrayOfQConfItem = paramArrayOfQConfItem.getJSONObject("tencentDocAioSendEntry");
@@ -35,11 +35,11 @@ public class TencentDocAIOPlusPanelEntryConfigBean
             if (i != 1) {
               break label125;
             }
-            localTencentDocAIOPlusPanelEntryConfigBean.jdField_a_of_type_Boolean = bool;
+            localTencentDocAIOPlusPanelEntryConfigBean.a = bool;
           }
           if (paramArrayOfQConfItem.has("webDocSelectorUrl"))
           {
-            localTencentDocAIOPlusPanelEntryConfigBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.getString("webDocSelectorUrl");
+            localTencentDocAIOPlusPanelEntryConfigBean.b = paramArrayOfQConfItem.getString("webDocSelectorUrl");
             return localTencentDocAIOPlusPanelEntryConfigBean;
           }
         }
@@ -55,22 +55,22 @@ public class TencentDocAIOPlusPanelEntryConfigBean
     }
   }
   
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
+  }
+  
+  public String b()
+  {
+    if (TextUtils.isEmpty(this.b)) {
+      return null;
+    }
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocAIOPlusPanelEntryConfigBean
  * JD-Core Version:    0.7.0.1
  */

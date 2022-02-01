@@ -32,22 +32,17 @@ public class AioFriendTitleHelper
   implements ILifeCycleHelper, LyricStateListener
 {
   public static int a = 259200;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new AioFriendTitleHelper.3(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ViewFlipper jdField_a_of_type_AndroidWidgetViewFlipper;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private boolean jdField_a_of_type_Boolean;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
+  private BaseChatPie b;
+  private boolean c;
+  private boolean d;
+  private TextView e;
+  private TextView f;
+  private ViewFlipper g;
+  private View.OnClickListener h = new AioFriendTitleHelper.3(this);
   
   public AioFriendTitleHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-  }
-  
-  private Friends a()
-  {
-    return ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    this.b = paramBaseChatPie;
   }
   
   private void a(RichStatus paramRichStatus)
@@ -60,7 +55,7 @@ public class AioFriendTitleHelper
       paramRichStatus = RichTitleConfProcessor.a();
       if (paramRichStatus != null)
       {
-        jdField_a_of_type_Int = (int)(paramRichStatus.a * 60.0D * 60.0D);
+        a = (int)(paramRichStatus.a * 60.0D * 60.0D);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -78,7 +73,7 @@ public class AioFriendTitleHelper
         paramRichStatus.append(l1);
         paramRichStatus.append(" needShow =");
         boolean bool;
-        if (l2 - l1 < jdField_a_of_type_Int) {
+        if (l2 - l1 < a) {
           bool = true;
         } else {
           bool = false;
@@ -86,11 +81,11 @@ public class AioFriendTitleHelper
         paramRichStatus.append(bool);
         QLog.d("AioFriendTitleHelper", 2, paramRichStatus.toString());
       }
-      if (l2 - l1 < jdField_a_of_type_Int)
+      if (l2 - l1 < a)
       {
-        this.jdField_a_of_type_Boolean = (TextUtils.isEmpty(str) ^ true);
+        this.c = (TextUtils.isEmpty(str) ^ true);
         a(str);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A66A", "0X800A66A", 0, 0, "", "", "", "");
+        ReportController.b(this.b.d, "CliOper", "", "", "0X800A66A", "0X800A66A", 0, 0, "", "", "", "");
       }
     }
   }
@@ -99,48 +94,53 @@ public class AioFriendTitleHelper
   {
     if (paramBoolean1)
     {
-      if ((this.jdField_a_of_type_AndroidWidgetViewFlipper.getCurrentView() == this.jdField_a_of_type_AndroidWidgetTextView) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.showNext();
+      if ((this.g.getCurrentView() == this.e) && (this.c)) {
+        this.g.showNext();
       }
     }
-    else if (this.jdField_a_of_type_AndroidWidgetViewFlipper.getCurrentView() != this.jdField_a_of_type_AndroidWidgetTextView) {
-      this.jdField_a_of_type_AndroidWidgetViewFlipper.showNext();
+    else if (this.g.getCurrentView() != this.e) {
+      this.g.showNext();
     }
-    if (this.jdField_a_of_type_AndroidWidgetViewFlipper.isFlipping()) {
-      this.jdField_a_of_type_AndroidWidgetViewFlipper.stopFlipping();
+    if (this.g.isFlipping()) {
+      this.g.stopFlipping();
     }
     if (paramBoolean2) {
-      ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).setSubtitleOnlineDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), this.jdField_a_of_type_AndroidWidgetTextView, false);
+      ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).setSubtitleOnlineDrawable(this.b.d, i(), this.e, false);
     }
     if (QLog.isColorLevel()) {
       QLog.d("AioFriendTitleHelper", 2, new Object[] { "resetSubTitleText, ", paramString });
     }
   }
   
-  private void f()
+  private Friends i()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetTextView.getText())) && (!TextUtils.isEmpty(this.jdField_b_of_type_AndroidWidgetTextView.getText())))
+    return ((FriendsManager)this.b.d.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(this.b.ah.b);
+  }
+  
+  private void j()
+  {
+    if ((!TextUtils.isEmpty(this.e.getText())) && (!TextUtils.isEmpty(this.f.getText())))
     {
-      if ((this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0) && (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
+      if ((this.e.getVisibility() == 0) && (this.f.getVisibility() == 0))
       {
         if (QLog.isColorLevel()) {
           QLog.i("AioFriendTitleHelper", 2, "needShowRichSubTitle, updateSubTitleStatusAndText() -> type 1 startFlipping all Visibility");
         }
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.showNext();
+        this.g.showNext();
       }
-      if (!this.jdField_a_of_type_AndroidWidgetViewFlipper.isFlipping()) {
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.startFlipping();
+      if (!this.g.isFlipping()) {
+        this.g.startFlipping();
       }
     }
     else
     {
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetTextView.getText())) && (this.jdField_a_of_type_AndroidWidgetViewFlipper.getCurrentView() == this.jdField_a_of_type_AndroidWidgetTextView))
+      if ((TextUtils.isEmpty(this.e.getText())) && (this.g.getCurrentView() == this.e))
       {
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.showNext();
+        this.g.showNext();
         return;
       }
-      if ((TextUtils.isEmpty(this.jdField_b_of_type_AndroidWidgetTextView.getText())) && (this.jdField_a_of_type_AndroidWidgetViewFlipper.getCurrentView() == this.jdField_b_of_type_AndroidWidgetTextView)) {
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.showNext();
+      if ((TextUtils.isEmpty(this.f.getText())) && (this.g.getCurrentView() == this.f)) {
+        this.g.showNext();
       }
     }
   }
@@ -152,13 +152,13 @@ public class AioFriendTitleHelper
   
   public void a(ViewFlipper paramViewFlipper, TextView paramTextView1, TextView paramTextView2)
   {
-    this.jdField_a_of_type_AndroidWidgetViewFlipper = paramViewFlipper;
-    this.jdField_a_of_type_AndroidWidgetViewFlipper.setOutAnimation(null);
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView1;
-    this.jdField_b_of_type_AndroidWidgetTextView = paramTextView2;
+    this.g = paramViewFlipper;
+    this.g.setOutAnimation(null);
+    this.e = paramTextView1;
+    this.f = paramTextView2;
     e();
     d();
-    paramViewFlipper = this.jdField_a_of_type_AndroidWidgetTextView;
+    paramViewFlipper = this.e;
     if ((paramViewFlipper instanceof OnlineStatusLyricView)) {
       ((OnlineStatusLyricView)paramViewFlipper).setLyricStateListener(this);
     }
@@ -166,30 +166,21 @@ public class AioFriendTitleHelper
   
   protected void a(String paramString)
   {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    if ((localTextView != null) && (this.jdField_a_of_type_AndroidWidgetViewFlipper != null) && (localTextView != null))
+    TextView localTextView = this.f;
+    if ((localTextView != null) && (this.g != null) && (localTextView != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      if (this.b.ah == null) {
         return;
       }
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(new QQText(paramString, 3, 12));
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.f.setVisibility(0);
+      this.f.setText(new QQText(paramString, 3, 12));
+      this.f.setCompoundDrawables(null, null, null, null);
+      this.f.setOnClickListener(this.h);
       b("");
     }
-  }
-  
-  public boolean a()
-  {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if ((localTextView instanceof OnlineStatusLyricView)) {
-      return ((OnlineStatusLyricView)localTextView).a();
-    }
-    return false;
   }
   
   public boolean a(boolean paramBoolean, String paramString)
@@ -203,10 +194,10 @@ public class AioFriendTitleHelper
       localStringBuilder.append(paramString);
       QLog.i("AioFriendTitleHelper", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.c) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new AioFriendTitleHelper.2(this, paramBoolean, paramString));
+    this.b.f.runOnUiThread(new AioFriendTitleHelper.2(this, paramBoolean, paramString));
     return true;
   }
   
@@ -214,47 +205,106 @@ public class AioFriendTitleHelper
   
   public void b(String paramString)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.C) && (!this.jdField_a_of_type_Boolean)) {
+    if ((!this.b.bf) && (!this.c)) {
       return;
     }
-    if (c())
+    if (h())
     {
       a(false, false, "isListenTogetherTime");
       return;
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.d)
     {
       a(false, true, "isInputting");
       return;
     }
-    if (b())
+    if (g())
     {
       a(true, true, "isStatusOffline");
       return;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.C)
+    if (!this.b.bf)
     {
       a(true, true, "mChatPie.setSubTitleVisible");
       return;
     }
-    if (a())
+    if (f())
     {
       a(false, false, "isPlayLyric");
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       if (QLog.isColorLevel()) {
         QLog.i("AioFriendTitleHelper", 2, "needShowRichSubTitle");
       }
-      f();
+      j();
     }
-    ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).setSubtitleOnlineDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), this.jdField_a_of_type_AndroidWidgetTextView, true);
+    ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).setSubtitleOnlineDrawable(this.b.d, i(), this.e, true);
   }
   
-  public boolean b()
+  public void c()
   {
-    Object localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    Object localObject = this.g;
+    if (localObject != null)
+    {
+      if (((ViewFlipper)localObject).getCurrentView() != this.e) {
+        this.g.showNext();
+      }
+      this.g.stopFlipping();
+    }
+    localObject = this.e;
+    if (localObject != null)
+    {
+      ((TextView)localObject).setText("");
+      if (QLog.isColorLevel()) {
+        QLog.d("AioFriendTitleHelper", 2, "needShowRichSubTitle-> destroy()");
+      }
+    }
+    this.d = false;
+    this.c = false;
+    localObject = this.e;
+    if ((localObject instanceof OnlineStatusLyricView)) {
+      ((OnlineStatusLyricView)localObject).f();
+    }
+  }
+  
+  protected void d()
+  {
+    RichStatus localRichStatus = ((StatusManager)this.b.d.getManager(QQManagerFactory.STATUS_MANAGER)).a(this.b.ah.b, false);
+    if ((localRichStatus != null) && (!localRichStatus.isEmpty()))
+    {
+      a(localRichStatus);
+      return;
+    }
+    ThreadManager.getFileThreadHandler().post(new AioFriendTitleHelper.1(this));
+  }
+  
+  public void e()
+  {
+    TextView localTextView = this.f;
+    if (localTextView != null)
+    {
+      if (this.g == null) {
+        return;
+      }
+      localTextView.setText("");
+      this.g.stopFlipping();
+    }
+  }
+  
+  public boolean f()
+  {
+    TextView localTextView = this.e;
+    if ((localTextView instanceof OnlineStatusLyricView)) {
+      return ((OnlineStatusLyricView)localTextView).d();
+    }
+    return false;
+  }
+  
+  public boolean g()
+  {
+    Object localObject = ((FriendsManager)this.b.d.getManager(QQManagerFactory.FRIENDS_MANAGER)).d(this.b.ah.b);
     if (localObject == null)
     {
       ThreadManager.post(new AioFriendTitleHelper.4(this), 8, null, true);
@@ -271,81 +321,31 @@ public class AioFriendTitleHelper
     return i == 0;
   }
   
-  public void c()
+  public String getTag()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetViewFlipper;
-    if (localObject != null)
-    {
-      if (((ViewFlipper)localObject).getCurrentView() != this.jdField_a_of_type_AndroidWidgetTextView) {
-        this.jdField_a_of_type_AndroidWidgetViewFlipper.showNext();
-      }
-      this.jdField_a_of_type_AndroidWidgetViewFlipper.stopFlipping();
-    }
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localObject != null)
-    {
-      ((TextView)localObject).setText("");
-      if (QLog.isColorLevel()) {
-        QLog.d("AioFriendTitleHelper", 2, "needShowRichSubTitle-> destroy()");
-      }
-    }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if ((localObject instanceof OnlineStatusLyricView)) {
-      ((OnlineStatusLyricView)localObject).d();
-    }
+    return "AioFriendTitleHelper";
   }
   
-  public boolean c()
+  public boolean h()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    Object localObject = this.b;
     int j = 0;
     if (localObject == null) {
       return false;
     }
-    localObject = (C2CListenTogetherPanel)((BaseChatPie)localObject).a(32);
+    localObject = (C2CListenTogetherPanel)((BaseChatPie)localObject).q(32);
     int i = j;
     if (localObject != null)
     {
       i = j;
-      if (((C2CListenTogetherPanel)localObject).c()) {
+      if (((C2CListenTogetherPanel)localObject).e()) {
         i = 1;
       }
     }
     if (i != 0) {
       return true;
     }
-    return ((TogetherControlHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(43)).c();
-  }
-  
-  protected void d()
-  {
-    RichStatus localRichStatus = ((StatusManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, false);
-    if ((localRichStatus != null) && (!localRichStatus.isEmpty()))
-    {
-      a(localRichStatus);
-      return;
-    }
-    ThreadManager.getFileThreadHandler().post(new AioFriendTitleHelper.1(this));
-  }
-  
-  public void e()
-  {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    if (localTextView != null)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetViewFlipper == null) {
-        return;
-      }
-      localTextView.setText("");
-      this.jdField_a_of_type_AndroidWidgetViewFlipper.stopFlipping();
-    }
-  }
-  
-  public String getTag()
-  {
-    return "AioFriendTitleHelper";
+    return ((TogetherControlHelper)this.b.q(43)).e();
   }
   
   public int[] interestedIn()
@@ -367,9 +367,9 @@ public class AioFriendTitleHelper
           c();
           return;
         }
-        ViewFlipper localViewFlipper = this.jdField_a_of_type_AndroidWidgetViewFlipper;
+        ViewFlipper localViewFlipper = this.g;
         if ((localViewFlipper != null) && (localViewFlipper.isFlipping())) {
-          this.jdField_a_of_type_AndroidWidgetViewFlipper.stopFlipping();
+          this.g.stopFlipping();
         }
       }
       else
@@ -378,13 +378,13 @@ public class AioFriendTitleHelper
       }
     }
     else {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetQqViewFlipper, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.f, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.g);
+      a(this.b.K, this.b.I, this.b.J);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.AioFriendTitleHelper
  * JD-Core Version:    0.7.0.1
  */

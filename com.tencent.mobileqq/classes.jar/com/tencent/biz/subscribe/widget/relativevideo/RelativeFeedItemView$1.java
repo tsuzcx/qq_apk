@@ -18,15 +18,15 @@ class RelativeFeedItemView$1
   
   public void onClick(View paramView)
   {
-    if ((RelativeFeedItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView)) && (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.a() != null) && (SubscribeUtils.a(((CertifiedAccountMeta.StFeed)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.a()).status.get()))) {
-      if (!RelativeFeedItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView))
+    if ((RelativeFeedItemView.a(this.b)) && (this.b.getData() != null) && (SubscribeUtils.a(((CertifiedAccountMeta.StFeed)this.b.getData()).status.get()))) {
+      if (!RelativeFeedItemView.b(this.b))
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), HardCodeUtil.a(2131713291), 0).a();
+        QQToast.makeText(this.b.getContext(), HardCodeUtil.a(2131910844), 0).show();
       }
       else
       {
-        RelativeFeedItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView, false);
-        DoLikeRequest localDoLikeRequest = new DoLikeRequest(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+        RelativeFeedItemView.a(this.b, false);
+        DoLikeRequest localDoLikeRequest = new DoLikeRequest(this.a);
         VSNetworkHelper.getInstance().sendRequest(localDoLikeRequest, new RelativeFeedItemView.1.1(this));
       }
     }
@@ -35,7 +35,7 @@ class RelativeFeedItemView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView.1
  * JD-Core Version:    0.7.0.1
  */

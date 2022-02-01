@@ -33,7 +33,7 @@ class RegisterQQNumberActivity$1
     }
     RegisterQQNumberActivity.a(this.a);
     paramString = new Intent(this.a, LoginActivity.class);
-    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+    paramString.putExtra("uin", RegisterQQNumberActivity.b(this.a));
     paramString.putExtra("tab_index", 0);
     paramString.addFlags(131072);
     this.a.startActivity(paramString);
@@ -42,7 +42,7 @@ class RegisterQQNumberActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterQQNumberActivity.1
  * JD-Core Version:    0.7.0.1
  */

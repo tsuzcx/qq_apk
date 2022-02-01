@@ -16,21 +16,21 @@ class QfileFavFileTabView$1
   {
     if (QfileFavFileTabView.a(this.a))
     {
-      QfileFavFileTabView.a(this.a);
-      this.a.a();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() > 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.expandGroup(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1);
+      QfileFavFileTabView.b(this.a);
+      this.a.e();
+      if (this.a.e.getGroupCount() > 0) {
+        this.a.d.expandGroup(this.a.e.getGroupCount() - 1);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
+      this.a.d.setSelection(this.a.d.getAdapter().getCount() - 1);
       QfileFavFileTabView.a(this.a, false);
-      this.a.g();
+      this.a.getMoreFileRecord();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView.1
  * JD-Core Version:    0.7.0.1
  */

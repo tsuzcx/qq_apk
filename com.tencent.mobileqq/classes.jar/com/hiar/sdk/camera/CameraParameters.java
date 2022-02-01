@@ -128,7 +128,7 @@ public class CameraParameters
       {
         List localList = paramParameters.getSupportedFocusModes();
         boolean bool = localList.contains("continuous-video");
-        if ((!bool) || (!ScanEntranceDPC.a().b))
+        if ((!bool) || (!ScanEntranceDPC.a().d))
         {
           if (!localList.contains("auto")) {
             continue;
@@ -275,7 +275,7 @@ public class CameraParameters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.hiar.sdk.camera.CameraParameters
  * JD-Core Version:    0.7.0.1
  */

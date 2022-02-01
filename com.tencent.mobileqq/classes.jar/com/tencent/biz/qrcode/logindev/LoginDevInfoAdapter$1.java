@@ -24,28 +24,28 @@ class LoginDevInfoAdapter$1
           return true;
         }
       }
-      else if (LoginDevInfoAdapter.a(this.jdField_a_of_type_ComTencentBizQrcodeLogindevLoginDevInfoAdapter) != null) {
-        LoginDevInfoAdapter.a(this.jdField_a_of_type_ComTencentBizQrcodeLogindevLoginDevInfoAdapter).a(this.jdField_a_of_type_ComTencentBizQrcodeLogindevLoginDevItem);
+      else if (LoginDevInfoAdapter.a(this.c) != null) {
+        LoginDevInfoAdapter.a(this.c).a(this.b);
       }
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable))
+      if ((this.a instanceof GradientDrawable))
       {
         if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
         {
-          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-16777216);
+          ((GradientDrawable)this.a).setColor(-16777216);
           return true;
         }
-        ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-1);
+        ((GradientDrawable)this.a).setColor(-1);
         return true;
       }
     }
-    else if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable))
+    else if ((this.a instanceof GradientDrawable))
     {
       if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
       {
-        ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-15263977);
+        ((GradientDrawable)this.a).setColor(-15263977);
         return true;
       }
-      ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-920840);
+      ((GradientDrawable)this.a).setColor(-920840);
     }
     return true;
   }

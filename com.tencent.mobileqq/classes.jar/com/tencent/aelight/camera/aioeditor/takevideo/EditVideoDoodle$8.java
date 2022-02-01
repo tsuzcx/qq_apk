@@ -21,24 +21,24 @@ class EditVideoDoodle$8
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     super.onLoadFialed(paramURLDrawable, paramThrowable);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle.a().dismissLoadingDialog();
-    QQToast.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle.a(), HardCodeUtil.a(2131703879), 1).a();
+    this.b.t().dismissLoadingDialog();
+    QQToast.makeText(this.b.u(), HardCodeUtil.a(2131901821), 1).show();
     SLog.e("Q.qqstory.publish.edit.StoryDoodle", "onLoadFailed");
   }
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     super.onLoadSuccessed(paramURLDrawable);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle.a().dismissLoadingDialog();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item.a = paramURLDrawable;
+    this.b.t().dismissLoadingDialog();
+    this.a.e = paramURLDrawable;
     paramURLDrawable = PasterUtil.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle.a.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item, paramURLDrawable.a, paramURLDrawable.b);
+    this.b.b.a(this.a, paramURLDrawable.a, paramURLDrawable.b);
     SLog.e("Q.qqstory.publish.edit.StoryDoodle", "onLoadSucceed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoDoodle.8
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class HongBaoPanel$5
   
   public void a(View paramView, int paramInt)
   {
-    PanelData localPanelData = this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter.a(paramInt);
+    PanelData localPanelData = this.a.e.a(paramInt);
     if (QLog.isColorLevel())
     {
       paramView = new StringBuilder();
@@ -35,18 +35,18 @@ class HongBaoPanel$5
       }
       QLog.d("HongBaoPanel", 2, paramView);
     }
-    ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).sendRedPkg(this.a.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, localPanelData, this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter.a(), 3);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService != null) && (localPanelData != null))
+    ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).sendRedPkg(this.a.a, this.a.c, this.a.h, localPanelData, this.a.e.a(), 3);
+    if ((this.a.k != null) && (localPanelData != null))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService.doClick(localPanelData.a);
-      ReportUtils.a(this.a.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "aio.lucky.click", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, localPanelData.b);
+      this.a.k.doClick(localPanelData.a);
+      ReportUtils.a(this.a.a, "aio.lucky.click", this.a.h, localPanelData.c);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter.notifyItemChanged(paramInt);
+    this.a.e.notifyItemChanged(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanel.5
  * JD-Core Version:    0.7.0.1
  */

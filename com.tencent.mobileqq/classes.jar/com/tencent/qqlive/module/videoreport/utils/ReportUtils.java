@@ -19,6 +19,7 @@ public class ReportUtils
 {
   private static final String BUGLY_APP_ID = "c7924ada07";
   private static final String BUGLY_SDK_SP = "BuglySdkInfos";
+  private static final String TAG = "ReportUtils";
   private static volatile boolean sBuglyInited = false;
   private static volatile Context sContext;
   private static volatile Application sCurrentApplication;
@@ -89,7 +90,10 @@ public class ReportUtils
           catch (Throwable localThrowable)
           {
             sGetCurrentApplicationChecked = true;
-            localThrowable.printStackTrace();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getCurrentApplication error ");
+            localStringBuilder.append(localThrowable);
+            Log.e("ReportUtils", localStringBuilder.toString());
           }
         }
       }
@@ -114,13 +118,15 @@ public class ReportUtils
       if (sPackageInfo == null) {
         sPackageInfo = sContext.getPackageManager().getPackageInfo(sContext.getPackageName(), 0);
       }
-      label25:
-      return sPackageInfo;
     }
     catch (Exception localException)
     {
-      break label25;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPackageInfo exception ");
+      localStringBuilder.append(localException);
+      Log.e("ReportUtils", localStringBuilder.toString());
     }
+    return sPackageInfo;
   }
   
   public static String getPackageName()
@@ -172,7 +178,7 @@ public class ReportUtils
   {
     paramContext = paramContext.getSharedPreferences("BuglySdkInfos", 0);
     String str1 = paramContext.getString("c7924ada07", "");
-    String str2 = String.valueOf(2200);
+    String str2 = String.valueOf(2225);
     if (TextUtils.equals(str1, str2)) {
       return;
     }
@@ -181,7 +187,7 @@ public class ReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.ReportUtils
  * JD-Core Version:    0.7.0.1
  */

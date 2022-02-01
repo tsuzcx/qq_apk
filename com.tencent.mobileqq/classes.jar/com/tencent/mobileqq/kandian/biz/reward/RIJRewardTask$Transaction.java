@@ -9,31 +9,31 @@ import org.jetbrains.annotations.NotNull;
 public final class RIJRewardTask$Transaction
   implements RIJRewardTask.ITransaction
 {
-  private final RIJRewardTask jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJRewardTask;
-  private Integer jdField_a_of_type_JavaLangInteger;
+  private Integer a;
+  private final RIJRewardTask b;
   
   public RIJRewardTask$Transaction(@NotNull RIJRewardTask paramRIJRewardTask)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJRewardTask = paramRIJRewardTask;
+    this.b = paramRIJRewardTask;
   }
   
   @NotNull
   public RIJRewardTask.ITransaction a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJRewardTask.a(paramInt);
-    this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt);
+    this.b.a(paramInt);
+    this.a = Integer.valueOf(paramInt);
     return (RIJRewardTask.ITransaction)this;
   }
   
   public void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "key");
-    RIJRewardTaskPrefHelper.a(paramString, this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJRewardTask);
+    RIJRewardTaskPrefHelper.a(paramString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJRewardTask.Transaction
  * JD-Core Version:    0.7.0.1
  */

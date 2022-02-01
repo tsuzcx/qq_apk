@@ -87,7 +87,7 @@ public class MessageForVideo
     if (!bool1)
     {
       bool1 = bool2;
-      if (!localObject[0].contains(HardCodeUtil.a(2131706636))) {}
+      if (!localObject[0].contains(HardCodeUtil.a(2131904487))) {}
     }
     else
     {
@@ -254,7 +254,7 @@ public class MessageForVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForVideo
  * JD-Core Version:    0.7.0.1
  */

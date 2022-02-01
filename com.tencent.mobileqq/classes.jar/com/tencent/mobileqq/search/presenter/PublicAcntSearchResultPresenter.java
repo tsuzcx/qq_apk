@@ -31,7 +31,7 @@ public class PublicAcntSearchResultPresenter
     {
       if (this.a == null)
       {
-        this.a = paramISearchResultView.a().getContext().getResources().getDrawable(2130841838);
+        this.a = paramISearchResultView.b().getContext().getResources().getDrawable(2130842755);
         this.a.setBounds(0, 0, ImmersiveUtils.dpToPx(15.0F), ImmersiveUtils.dpToPx(15.0F));
       }
       paramTextView.setCompoundDrawables(null, null, this.a, null);
@@ -42,13 +42,13 @@ public class PublicAcntSearchResultPresenter
   
   private void b(ISearchResultView paramISearchResultView, ISearchResultModel paramISearchResultModel)
   {
-    TextView localTextView = paramISearchResultView.a();
+    TextView localTextView = paramISearchResultView.b();
     if ((localTextView != null) && (paramISearchResultModel != null))
     {
       Context localContext = localTextView.getContext();
       if ((paramISearchResultModel instanceof PublicAccountSearchResultModel))
       {
-        paramISearchResultModel = ((PublicAccountSearchResultModel)paramISearchResultModel).a();
+        paramISearchResultModel = ((PublicAccountSearchResultModel)paramISearchResultModel).s();
         if ((paramISearchResultModel != null) && (localContext != null))
         {
           boolean bool;
@@ -64,7 +64,7 @@ public class PublicAcntSearchResultPresenter
       {
         paramISearchResultModel = (GroupNetSearchModelPublicAcntItem)paramISearchResultModel;
         if ((paramISearchResultModel != null) && (localContext != null)) {
-          a(paramISearchResultView, localTextView, paramISearchResultModel.b());
+          a(paramISearchResultView, localTextView, paramISearchResultModel.i());
         }
       }
     }
@@ -76,12 +76,12 @@ public class PublicAcntSearchResultPresenter
     if ((paramISearchResultModel instanceof PublicAccountSearchResultModel))
     {
       Object localObject = (PublicAccountSearchResultModel)paramISearchResultModel;
-      PublicAccountInfo localPublicAccountInfo = ((PublicAccountSearchResultModel)localObject).a();
-      if ((localPublicAccountInfo != null) && (localPublicAccountInfo.displayNumber != null) && (localPublicAccountInfo.displayNumber.equalsIgnoreCase(((PublicAccountSearchResultModel)localObject).b())))
+      PublicAccountInfo localPublicAccountInfo = ((PublicAccountSearchResultModel)localObject).s();
+      if ((localPublicAccountInfo != null) && (localPublicAccountInfo.displayNumber != null) && (localPublicAccountInfo.displayNumber.equalsIgnoreCase(((PublicAccountSearchResultModel)localObject).g())))
       {
         localObject = new SpannableString(localPublicAccountInfo.name);
         ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-16734752), 0, localPublicAccountInfo.name.length(), 33);
-        paramISearchResultView.a().setText((CharSequence)localObject);
+        paramISearchResultView.b().setText((CharSequence)localObject);
       }
     }
     b(paramISearchResultView, paramISearchResultModel);
@@ -89,7 +89,7 @@ public class PublicAcntSearchResultPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.PublicAcntSearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

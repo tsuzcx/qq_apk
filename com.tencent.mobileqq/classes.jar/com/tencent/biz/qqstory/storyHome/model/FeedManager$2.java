@@ -15,9 +15,9 @@ class FeedManager$2
       SLog.d("Q.qqstory.home.position", "cache in use");
       return;
     }
-    this.this$0.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache != null) {
-      this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache.a();
+    this.this$0.e.clear();
+    if (this.this$0.d != null) {
+      this.this$0.d.a();
     }
     SLog.d("Q.qqstory.home.position", "release cache");
   }

@@ -51,33 +51,33 @@ public class BottomAppBar
   extends Toolbar
   implements CoordinatorLayout.AttachedBehavior
 {
-  private static final int jdField_a_of_type_Int = R.style.s;
-  @Nullable
-  private Animator jdField_a_of_type_AndroidAnimationAnimator;
+  private static final int c = R.style.u;
   @NonNull
-  AnimatorListenerAdapter jdField_a_of_type_AndroidAnimationAnimatorListenerAdapter = new BottomAppBar.1(this);
+  AnimatorListenerAdapter a = new BottomAppBar.1(this);
   @NonNull
-  TransformationCallback<FloatingActionButton> jdField_a_of_type_ComGoogleAndroidMaterialAnimationTransformationCallback = new BottomAppBar.2(this);
-  private BottomAppBar.Behavior jdField_a_of_type_ComGoogleAndroidMaterialBottomappbarBottomAppBar$Behavior;
-  private final MaterialShapeDrawable jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = new MaterialShapeDrawable();
-  private ArrayList<BottomAppBar.AnimationListener> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int;
+  TransformationCallback<FloatingActionButton> b = new BottomAppBar.2(this);
+  private final int d;
+  private final MaterialShapeDrawable e = new MaterialShapeDrawable();
   @Nullable
-  private Animator jdField_b_of_type_AndroidAnimationAnimator;
-  private final boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private final boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private final boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int = 0;
-  private boolean jdField_e_of_type_Boolean = false;
-  @MenuRes
-  private int jdField_f_of_type_Int = 0;
-  private boolean jdField_f_of_type_Boolean = true;
-  private int g;
+  private Animator f;
+  @Nullable
+  private Animator g;
   private int h;
   private int i;
+  private boolean j;
+  private final boolean k;
+  private final boolean l;
+  private final boolean m;
+  private int n = 0;
+  private ArrayList<BottomAppBar.AnimationListener> o;
+  @MenuRes
+  private int p = 0;
+  private boolean q = false;
+  private boolean r = true;
+  private BottomAppBar.Behavior s;
+  private int t;
+  private int u;
+  private int v;
   
   public BottomAppBar(@NonNull Context paramContext)
   {
@@ -86,120 +86,46 @@ public class BottomAppBar
   
   public BottomAppBar(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.jdField_c_of_type_Int);
+    this(paramContext, paramAttributeSet, R.attr.e);
   }
   
   public BottomAppBar(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, c), paramAttributeSet, paramInt);
     paramContext = getContext();
-    Object localObject = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.f, paramInt, jdField_a_of_type_Int, new int[0]);
-    ColorStateList localColorStateList = MaterialResources.a(paramContext, (TypedArray)localObject, R.styleable.s);
-    int j = ((TypedArray)localObject).getDimensionPixelSize(R.styleable.t, 0);
-    float f1 = ((TypedArray)localObject).getDimensionPixelOffset(R.styleable.w, 0);
-    float f2 = ((TypedArray)localObject).getDimensionPixelOffset(R.styleable.x, 0);
-    float f3 = ((TypedArray)localObject).getDimensionPixelOffset(R.styleable.y, 0);
-    this.jdField_c_of_type_Int = ((TypedArray)localObject).getInt(R.styleable.u, 0);
-    this.jdField_d_of_type_Int = ((TypedArray)localObject).getInt(R.styleable.v, 0);
-    this.jdField_a_of_type_Boolean = ((TypedArray)localObject).getBoolean(R.styleable.z, false);
-    this.jdField_b_of_type_Boolean = ((TypedArray)localObject).getBoolean(R.styleable.A, false);
-    this.jdField_c_of_type_Boolean = ((TypedArray)localObject).getBoolean(R.styleable.B, false);
-    this.jdField_d_of_type_Boolean = ((TypedArray)localObject).getBoolean(R.styleable.C, false);
+    Object localObject = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.T, paramInt, c, new int[0]);
+    ColorStateList localColorStateList = MaterialResources.a(paramContext, (TypedArray)localObject, R.styleable.U);
+    int i1 = ((TypedArray)localObject).getDimensionPixelSize(R.styleable.V, 0);
+    float f1 = ((TypedArray)localObject).getDimensionPixelOffset(R.styleable.Y, 0);
+    float f2 = ((TypedArray)localObject).getDimensionPixelOffset(R.styleable.Z, 0);
+    float f3 = ((TypedArray)localObject).getDimensionPixelOffset(R.styleable.aa, 0);
+    this.h = ((TypedArray)localObject).getInt(R.styleable.W, 0);
+    this.i = ((TypedArray)localObject).getInt(R.styleable.X, 0);
+    this.j = ((TypedArray)localObject).getBoolean(R.styleable.ab, false);
+    this.k = ((TypedArray)localObject).getBoolean(R.styleable.ac, false);
+    this.l = ((TypedArray)localObject).getBoolean(R.styleable.ad, false);
+    this.m = ((TypedArray)localObject).getBoolean(R.styleable.ae, false);
     ((TypedArray)localObject).recycle();
-    this.jdField_b_of_type_Int = getResources().getDimensionPixelOffset(R.dimen.N);
+    this.d = getResources().getDimensionPixelOffset(R.dimen.N);
     localObject = new BottomAppBarTopEdgeTreatment(f1, f2, f3);
     localObject = ShapeAppearanceModel.a().a((EdgeTreatment)localObject).a();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setShapeAppearanceModel((ShapeAppearanceModel)localObject);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.D(2);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.a(Paint.Style.FILL);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.a(paramContext);
-    setElevation(j);
-    DrawableCompat.setTintList(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable, localColorStateList);
-    ViewCompat.setBackground(this, this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable);
-    ViewUtils.a(this, paramAttributeSet, paramInt, jdField_a_of_type_Int, new BottomAppBar.3(this));
-  }
-  
-  private float a(int paramInt)
-  {
-    boolean bool = ViewUtils.a(this);
-    int j = 1;
-    if (paramInt == 1)
-    {
-      if (bool) {
-        paramInt = this.i;
-      } else {
-        paramInt = this.h;
-      }
-      int k = this.jdField_b_of_type_Int;
-      int m = getMeasuredWidth() / 2;
-      if (bool) {
-        j = -1;
-      }
-      return (m - (k + paramInt)) * j;
-    }
-    return 0.0F;
-  }
-  
-  private int a()
-  {
-    return this.g;
-  }
-  
-  @Nullable
-  private View a()
-  {
-    if (!(getParent() instanceof CoordinatorLayout)) {
-      return null;
-    }
-    Iterator localIterator = ((CoordinatorLayout)getParent()).getDependents(this).iterator();
-    while (localIterator.hasNext())
-    {
-      View localView = (View)localIterator.next();
-      if (((localView instanceof FloatingActionButton)) || ((localView instanceof ExtendedFloatingActionButton))) {
-        return localView;
-      }
-    }
-    return null;
-  }
-  
-  @Nullable
-  private ActionMenuView a()
-  {
-    int j = 0;
-    while (j < getChildCount())
-    {
-      View localView = getChildAt(j);
-      if ((localView instanceof ActionMenuView)) {
-        return (ActionMenuView)localView;
-      }
-      j += 1;
-    }
-    return null;
-  }
-  
-  @NonNull
-  private BottomAppBarTopEdgeTreatment a()
-  {
-    return (BottomAppBarTopEdgeTreatment)this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.a().b();
-  }
-  
-  @Nullable
-  private FloatingActionButton a()
-  {
-    View localView = a();
-    if ((localView instanceof FloatingActionButton)) {
-      return (FloatingActionButton)localView;
-    }
-    return null;
+    this.e.setShapeAppearanceModel((ShapeAppearanceModel)localObject);
+    this.e.D(2);
+    this.e.a(Paint.Style.FILL);
+    this.e.a(paramContext);
+    setElevation(i1);
+    DrawableCompat.setTintList(this.e, localColorStateList);
+    ViewCompat.setBackground(this, this.e);
+    ViewUtils.a(this, paramAttributeSet, paramInt, c, new BottomAppBar.3(this));
   }
   
   private void a()
   {
-    int j = this.jdField_e_of_type_Int;
-    this.jdField_e_of_type_Int = (j + 1);
-    if (j == 0)
+    int i1 = this.n;
+    this.n = (i1 + 1);
+    if (i1 == 0)
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      Object localObject = this.o;
       if (localObject != null)
       {
         localObject = ((ArrayList)localObject).iterator();
@@ -214,16 +140,16 @@ public class BottomAppBar
   {
     if (!ViewCompat.isLaidOut(this))
     {
-      this.jdField_e_of_type_Boolean = false;
-      a(this.jdField_f_of_type_Int);
+      this.q = false;
+      a(this.p);
       return;
     }
-    Object localObject = this.jdField_b_of_type_AndroidAnimationAnimator;
+    Object localObject = this.g;
     if (localObject != null) {
       ((Animator)localObject).cancel();
     }
     localObject = new ArrayList();
-    if (!b())
+    if (!e())
     {
       paramInt = 0;
       paramBoolean = false;
@@ -231,14 +157,14 @@ public class BottomAppBar
     a(paramInt, paramBoolean, (List)localObject);
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.playTogether((Collection)localObject);
-    this.jdField_b_of_type_AndroidAnimationAnimator = localAnimatorSet;
-    this.jdField_b_of_type_AndroidAnimationAnimator.addListener(new BottomAppBar.6(this));
-    this.jdField_b_of_type_AndroidAnimationAnimator.start();
+    this.g = localAnimatorSet;
+    this.g.addListener(new BottomAppBar.6(this));
+    this.g.start();
   }
   
   private void a(int paramInt, boolean paramBoolean, @NonNull List<Animator> paramList)
   {
-    Object localObject = a();
+    Object localObject = getActionMenuView();
     if (localObject == null) {
       return;
     }
@@ -258,11 +184,6 @@ public class BottomAppBar
     }
   }
   
-  private void a(@NonNull ActionMenuView paramActionMenuView, int paramInt, boolean paramBoolean)
-  {
-    a(paramActionMenuView, paramInt, paramBoolean, false);
-  }
-  
   private void a(@NonNull ActionMenuView paramActionMenuView, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     BottomAppBar.8 local8 = new BottomAppBar.8(this, paramActionMenuView, paramInt, paramBoolean1);
@@ -276,23 +197,18 @@ public class BottomAppBar
   
   private void a(@NonNull FloatingActionButton paramFloatingActionButton)
   {
-    paramFloatingActionButton.b(this.jdField_a_of_type_AndroidAnimationAnimatorListenerAdapter);
+    paramFloatingActionButton.b(this.a);
     paramFloatingActionButton.a(new BottomAppBar.9(this));
-    paramFloatingActionButton.a(this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationTransformationCallback);
-  }
-  
-  private int b()
-  {
-    return this.h;
+    paramFloatingActionButton.a(this.b);
   }
   
   private void b()
   {
-    int j = this.jdField_e_of_type_Int - 1;
-    this.jdField_e_of_type_Int = j;
-    if (j == 0)
+    int i1 = this.n - 1;
+    this.n = i1;
+    if (i1 == 0)
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      Object localObject = this.o;
       if (localObject != null)
       {
         localObject = ((ArrayList)localObject).iterator();
@@ -303,73 +219,116 @@ public class BottomAppBar
     }
   }
   
-  private void b(int paramInt)
+  private void b(int paramInt, @NonNull List<Animator> paramList)
   {
-    if (this.jdField_c_of_type_Int != paramInt)
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(c(), "translationX", new float[] { d(paramInt) });
+    localObjectAnimator.setDuration(300L);
+    paramList.add(localObjectAnimator);
+  }
+  
+  private void b(@NonNull ActionMenuView paramActionMenuView, int paramInt, boolean paramBoolean)
+  {
+    a(paramActionMenuView, paramInt, paramBoolean, false);
+  }
+  
+  @Nullable
+  private FloatingActionButton c()
+  {
+    View localView = d();
+    if ((localView instanceof FloatingActionButton)) {
+      return (FloatingActionButton)localView;
+    }
+    return null;
+  }
+  
+  private void c(int paramInt)
+  {
+    if (this.h != paramInt)
     {
       if (!ViewCompat.isLaidOut(this)) {
         return;
       }
-      Object localObject = this.jdField_a_of_type_AndroidAnimationAnimator;
+      Object localObject = this.f;
       if (localObject != null) {
         ((Animator)localObject).cancel();
       }
       localObject = new ArrayList();
-      if (this.jdField_d_of_type_Int == 1) {
+      if (this.i == 1) {
         b(paramInt, (List)localObject);
       } else {
         a(paramInt, (List)localObject);
       }
       AnimatorSet localAnimatorSet = new AnimatorSet();
       localAnimatorSet.playTogether((Collection)localObject);
-      this.jdField_a_of_type_AndroidAnimationAnimator = localAnimatorSet;
-      this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new BottomAppBar.4(this));
-      this.jdField_a_of_type_AndroidAnimationAnimator.start();
+      this.f = localAnimatorSet;
+      this.f.addListener(new BottomAppBar.4(this));
+      this.f.start();
     }
   }
   
-  private void b(int paramInt, @NonNull List<Animator> paramList)
+  private float d(int paramInt)
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(a(), "translationX", new float[] { a(paramInt) });
-    localObjectAnimator.setDuration(300L);
-    paramList.add(localObjectAnimator);
+    boolean bool = ViewUtils.a(this);
+    int i1 = 1;
+    if (paramInt == 1)
+    {
+      if (bool) {
+        paramInt = this.v;
+      } else {
+        paramInt = this.u;
+      }
+      int i2 = this.d;
+      int i3 = getMeasuredWidth() / 2;
+      if (bool) {
+        i1 = -1;
+      }
+      return (i3 - (i2 + paramInt)) * i1;
+    }
+    return 0.0F;
   }
   
-  private boolean b()
+  @Nullable
+  private View d()
   {
-    FloatingActionButton localFloatingActionButton = a();
+    if (!(getParent() instanceof CoordinatorLayout)) {
+      return null;
+    }
+    Iterator localIterator = ((CoordinatorLayout)getParent()).getDependents(this).iterator();
+    while (localIterator.hasNext())
+    {
+      View localView = (View)localIterator.next();
+      if (((localView instanceof FloatingActionButton)) || ((localView instanceof ExtendedFloatingActionButton))) {
+        return localView;
+      }
+    }
+    return null;
+  }
+  
+  private boolean e()
+  {
+    FloatingActionButton localFloatingActionButton = c();
     return (localFloatingActionButton != null) && (localFloatingActionButton.c());
   }
   
-  private int c()
+  private void f()
   {
-    return this.i;
-  }
-  
-  private void c()
-  {
-    Animator localAnimator = this.jdField_b_of_type_AndroidAnimationAnimator;
+    Animator localAnimator = this.g;
     if (localAnimator != null) {
       localAnimator.cancel();
     }
-    localAnimator = this.jdField_a_of_type_AndroidAnimationAnimator;
+    localAnimator = this.f;
     if (localAnimator != null) {
       localAnimator.cancel();
     }
   }
   
-  private float d()
+  private void g()
   {
-    return -a().c();
-  }
-  
-  private void d()
-  {
-    a().b(e());
-    View localView = a();
-    MaterialShapeDrawable localMaterialShapeDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
+    getTopEdgeTreatment().b(getFabTranslationX());
+    View localView = d();
+    MaterialShapeDrawable localMaterialShapeDrawable = this.e;
     float f1;
-    if ((this.jdField_f_of_type_Boolean) && (b())) {
+    if ((this.r) && (e())) {
       f1 = 1.0F;
     } else {
       f1 = 0.0F;
@@ -377,34 +336,70 @@ public class BottomAppBar
     localMaterialShapeDrawable.p(f1);
     if (localView != null)
     {
-      localView.setTranslationY(d());
-      localView.setTranslationX(e());
+      localView.setTranslationY(getFabTranslationY());
+      localView.setTranslationX(getFabTranslationX());
     }
   }
   
-  private float e()
+  @Nullable
+  private ActionMenuView getActionMenuView()
   {
-    return a(this.jdField_c_of_type_Int);
+    int i1 = 0;
+    while (i1 < getChildCount())
+    {
+      View localView = getChildAt(i1);
+      if ((localView instanceof ActionMenuView)) {
+        return (ActionMenuView)localView;
+      }
+      i1 += 1;
+    }
+    return null;
   }
   
-  private void e()
+  private int getBottomInset()
   {
-    ActionMenuView localActionMenuView = a();
-    if ((localActionMenuView != null) && (this.jdField_b_of_type_AndroidAnimationAnimator == null))
+    return this.t;
+  }
+  
+  private float getFabTranslationX()
+  {
+    return d(this.h);
+  }
+  
+  private float getFabTranslationY()
+  {
+    return -getTopEdgeTreatment().c();
+  }
+  
+  private int getLeftInset()
+  {
+    return this.v;
+  }
+  
+  private int getRightInset()
+  {
+    return this.u;
+  }
+  
+  @NonNull
+  private BottomAppBarTopEdgeTreatment getTopEdgeTreatment()
+  {
+    return (BottomAppBarTopEdgeTreatment)this.e.getShapeAppearanceModel().k();
+  }
+  
+  private void h()
+  {
+    ActionMenuView localActionMenuView = getActionMenuView();
+    if ((localActionMenuView != null) && (this.g == null))
     {
       localActionMenuView.setAlpha(1.0F);
-      if (!b())
+      if (!e())
       {
-        a(localActionMenuView, 0, false);
+        b(localActionMenuView, 0, false);
         return;
       }
-      a(localActionMenuView, this.jdField_c_of_type_Int, this.jdField_f_of_type_Boolean);
+      b(localActionMenuView, this.h, this.r);
     }
-  }
-  
-  public float a()
-  {
-    return a().d();
   }
   
   protected int a(@NonNull ActionMenuView paramActionMenuView, int paramInt, boolean paramBoolean)
@@ -420,25 +415,25 @@ public class BottomAppBar
       } else {
         paramInt = 0;
       }
-      int k = 0;
-      for (int j = paramInt; k < getChildCount(); j = paramInt)
+      int i2 = 0;
+      for (int i1 = paramInt; i2 < getChildCount(); i1 = paramInt)
       {
-        View localView = getChildAt(k);
-        int m;
+        View localView = getChildAt(i2);
+        int i3;
         if (((localView.getLayoutParams() instanceof Toolbar.LayoutParams)) && ((((Toolbar.LayoutParams)localView.getLayoutParams()).gravity & 0x800007) == 8388611)) {
-          m = 1;
+          i3 = 1;
         } else {
-          m = 0;
+          i3 = 0;
         }
-        paramInt = j;
-        if (m != 0) {
+        paramInt = i1;
+        if (i3 != 0) {
           if (paramBoolean) {
-            paramInt = Math.min(j, localView.getLeft());
+            paramInt = Math.min(i1, localView.getLeft());
           } else {
-            paramInt = Math.max(j, localView.getRight());
+            paramInt = Math.max(i1, localView.getRight());
           }
         }
-        k += 1;
+        i2 += 1;
       }
       if (paramBoolean) {
         paramInt = paramActionMenuView.getRight();
@@ -446,29 +441,20 @@ public class BottomAppBar
         paramInt = paramActionMenuView.getLeft();
       }
       if (paramBoolean) {
-        k = this.h;
+        i2 = this.u;
       } else {
-        k = -this.i;
+        i2 = -this.v;
       }
-      return j - (paramInt + k);
+      return i1 - (paramInt + i2);
     }
     return 0;
-  }
-  
-  @NonNull
-  public BottomAppBar.Behavior a()
-  {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialBottomappbarBottomAppBar$Behavior == null) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomappbarBottomAppBar$Behavior = new BottomAppBar.Behavior();
-    }
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialBottomappbarBottomAppBar$Behavior;
   }
   
   public void a(@MenuRes int paramInt)
   {
     if (paramInt != 0)
     {
-      this.jdField_f_of_type_Int = 0;
+      this.p = 0;
       getMenu().clear();
       inflateMenu(paramInt);
     }
@@ -476,7 +462,7 @@ public class BottomAppBar
   
   protected void a(int paramInt, List<Animator> paramList)
   {
-    paramList = a();
+    paramList = c();
     if (paramList != null)
     {
       if (paramList.b()) {
@@ -487,39 +473,69 @@ public class BottomAppBar
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  boolean a(@Px int paramInt)
+  boolean b(@Px int paramInt)
   {
     float f1 = paramInt;
-    if (f1 != a().a())
+    if (f1 != getTopEdgeTreatment().a())
     {
-      a().a(f1);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.invalidateSelf();
+      getTopEdgeTreatment().a(f1);
+      this.e.invalidateSelf();
       return true;
     }
     return false;
   }
   
-  @Dimension
-  public float b()
+  @Nullable
+  public ColorStateList getBackgroundTint()
   {
-    return a().e();
+    return this.e.O();
+  }
+  
+  @NonNull
+  public BottomAppBar.Behavior getBehavior()
+  {
+    if (this.s == null) {
+      this.s = new BottomAppBar.Behavior();
+    }
+    return this.s;
   }
   
   @Dimension
-  public float c()
+  public float getCradleVerticalOffset()
   {
-    return a().c();
+    return getTopEdgeTreatment().c();
+  }
+  
+  public int getFabAlignmentMode()
+  {
+    return this.h;
+  }
+  
+  public int getFabAnimationMode()
+  {
+    return this.i;
+  }
+  
+  public float getFabCradleMargin()
+  {
+    return getTopEdgeTreatment().d();
+  }
+  
+  @Dimension
+  public float getFabCradleRoundedCornerRadius()
+  {
+    return getTopEdgeTreatment().e();
+  }
+  
+  public boolean getHideOnScroll()
+  {
+    return this.j;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    MaterialShapeUtils.a(this, this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable);
+    MaterialShapeUtils.a(this, this.e);
     if ((getParent() instanceof ViewGroup)) {
       ((ViewGroup)getParent()).setClipChildren(false);
     }
@@ -530,10 +546,10 @@ public class BottomAppBar
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean)
     {
-      c();
-      d();
+      f();
+      g();
     }
-    e();
+    h();
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
@@ -545,40 +561,40 @@ public class BottomAppBar
     }
     paramParcelable = (BottomAppBar.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.jdField_c_of_type_Int = paramParcelable.jdField_a_of_type_Int;
-    this.jdField_f_of_type_Boolean = paramParcelable.jdField_a_of_type_Boolean;
+    this.h = paramParcelable.a;
+    this.r = paramParcelable.b;
   }
   
   @NonNull
   protected Parcelable onSaveInstanceState()
   {
     BottomAppBar.SavedState localSavedState = new BottomAppBar.SavedState(super.onSaveInstanceState());
-    localSavedState.jdField_a_of_type_Int = this.jdField_c_of_type_Int;
-    localSavedState.jdField_a_of_type_Boolean = this.jdField_f_of_type_Boolean;
+    localSavedState.a = this.h;
+    localSavedState.b = this.r;
     return localSavedState;
   }
   
   public void setBackgroundTint(@Nullable ColorStateList paramColorStateList)
   {
-    DrawableCompat.setTintList(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable, paramColorStateList);
+    DrawableCompat.setTintList(this.e, paramColorStateList);
   }
   
   public void setCradleVerticalOffset(@Dimension float paramFloat)
   {
-    if (paramFloat != c())
+    if (paramFloat != getCradleVerticalOffset())
     {
-      a().c(paramFloat);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.invalidateSelf();
-      d();
+      getTopEdgeTreatment().c(paramFloat);
+      this.e.invalidateSelf();
+      g();
     }
   }
   
   public void setElevation(float paramFloat)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.r(paramFloat);
-    int j = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.a();
-    int k = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.c();
-    a().a(this, j - k);
+    this.e.r(paramFloat);
+    int i1 = this.e.X();
+    int i2 = this.e.aa();
+    getBehavior().a(this, i1 - i2);
   }
   
   public void setFabAlignmentMode(int paramInt)
@@ -588,39 +604,39 @@ public class BottomAppBar
   
   public void setFabAlignmentModeAndReplaceMenu(int paramInt1, @MenuRes int paramInt2)
   {
-    this.jdField_f_of_type_Int = paramInt2;
-    this.jdField_e_of_type_Boolean = true;
-    a(paramInt1, this.jdField_f_of_type_Boolean);
-    b(paramInt1);
-    this.jdField_c_of_type_Int = paramInt1;
+    this.p = paramInt2;
+    this.q = true;
+    a(paramInt1, this.r);
+    c(paramInt1);
+    this.h = paramInt1;
   }
   
   public void setFabAnimationMode(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.i = paramInt;
   }
   
   public void setFabCradleMargin(@Dimension float paramFloat)
   {
-    if (paramFloat != a())
+    if (paramFloat != getFabCradleMargin())
     {
-      a().d(paramFloat);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.invalidateSelf();
+      getTopEdgeTreatment().d(paramFloat);
+      this.e.invalidateSelf();
     }
   }
   
   public void setFabCradleRoundedCornerRadius(@Dimension float paramFloat)
   {
-    if (paramFloat != b())
+    if (paramFloat != getFabCradleRoundedCornerRadius())
     {
-      a().e(paramFloat);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.invalidateSelf();
+      getTopEdgeTreatment().e(paramFloat);
+      this.e.invalidateSelf();
     }
   }
   
   public void setHideOnScroll(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public void setSubtitle(CharSequence paramCharSequence) {}
@@ -629,7 +645,7 @@ public class BottomAppBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar
  * JD-Core Version:    0.7.0.1
  */

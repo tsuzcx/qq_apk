@@ -13,49 +13,49 @@ import org.jetbrains.annotations.Nullable;
 public final class UiComponentSdkConfig
 {
   @NotNull
-  private final IImageLoader jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader;
+  private final IImageLoader a;
   @NotNull
-  private final ILogger jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
+  private final IDataTransfer b;
   @NotNull
-  private final IDataTransfer jdField_a_of_type_ComTencentTkdWeiboDataIDataTransfer;
+  private final ILogger c;
   @Nullable
-  private final IEmoJiBridge jdField_a_of_type_ComTencentTkdWeiboFrameworkIEmoJiBridge;
+  private final IEmoJiBridge d;
   
   public UiComponentSdkConfig(@NotNull IImageLoader paramIImageLoader, @NotNull IDataTransfer paramIDataTransfer, @NotNull ILogger paramILogger, @Nullable IEmoJiBridge paramIEmoJiBridge)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader = paramIImageLoader;
-    this.jdField_a_of_type_ComTencentTkdWeiboDataIDataTransfer = paramIDataTransfer;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger = paramILogger;
-    this.jdField_a_of_type_ComTencentTkdWeiboFrameworkIEmoJiBridge = paramIEmoJiBridge;
-  }
-  
-  @NotNull
-  public final IImageLoader a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader;
-  }
-  
-  @NotNull
-  public final ILogger a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
-  }
-  
-  @NotNull
-  public final IDataTransfer a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdWeiboDataIDataTransfer;
-  }
-  
-  @Nullable
-  public final IEmoJiBridge a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdWeiboFrameworkIEmoJiBridge;
+    this.a = paramIImageLoader;
+    this.b = paramIDataTransfer;
+    this.c = paramILogger;
+    this.d = paramIEmoJiBridge;
   }
   
   public final void a()
   {
-    this.jdField_a_of_type_ComTencentTkdWeiboDataIDataTransfer.a();
+    this.b.a();
+  }
+  
+  @NotNull
+  public final IImageLoader b()
+  {
+    return this.a;
+  }
+  
+  @NotNull
+  public final IDataTransfer c()
+  {
+    return this.b;
+  }
+  
+  @NotNull
+  public final ILogger d()
+  {
+    return this.c;
+  }
+  
+  @Nullable
+  public final IEmoJiBridge e()
+  {
+    return this.d;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -64,7 +64,7 @@ public final class UiComponentSdkConfig
       if ((paramObject instanceof UiComponentSdkConfig))
       {
         paramObject = (UiComponentSdkConfig)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdWeiboDataIDataTransfer, paramObject.jdField_a_of_type_ComTencentTkdWeiboDataIDataTransfer)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdWeiboFrameworkIEmoJiBridge, paramObject.jdField_a_of_type_ComTencentTkdWeiboFrameworkIEmoJiBridge))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (Intrinsics.areEqual(this.d, paramObject.d))) {}
       }
       else
       {
@@ -76,7 +76,7 @@ public final class UiComponentSdkConfig
   
   public int hashCode()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader;
+    Object localObject = this.a;
     int m = 0;
     int i;
     if (localObject != null) {
@@ -84,21 +84,21 @@ public final class UiComponentSdkConfig
     } else {
       i = 0;
     }
-    localObject = this.jdField_a_of_type_ComTencentTkdWeiboDataIDataTransfer;
+    localObject = this.b;
     int j;
     if (localObject != null) {
       j = localObject.hashCode();
     } else {
       j = 0;
     }
-    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger;
+    localObject = this.c;
     int k;
     if (localObject != null) {
       k = localObject.hashCode();
     } else {
       k = 0;
     }
-    localObject = this.jdField_a_of_type_ComTencentTkdWeiboFrameworkIEmoJiBridge;
+    localObject = this.d;
     if (localObject != null) {
       m = localObject.hashCode();
     }
@@ -110,20 +110,20 @@ public final class UiComponentSdkConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("UiComponentSdkConfig(imageLoader=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", dataTransfer=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdWeiboDataIDataTransfer);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", logger=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesILogger);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", emoJiBridge=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdWeiboFrameworkIEmoJiBridge);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.UiComponentSdkConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -64,7 +64,7 @@ public class AVLoadingDialogActivity$MyHandler
         ((StringBuilder)localObject2).append(".MSG_START_AVACTIVITY");
         AudioHelper.a(((StringBuilder)localObject2).toString(), paramMessage.getExtras());
         ((AVLoadingDialogActivity)((WeakReference)localObject1).get()).startActivity(paramMessage);
-        ((AVLoadingDialogActivity)((WeakReference)localObject1).get()).overridePendingTransition(2130772220, 0);
+        ((AVLoadingDialogActivity)((WeakReference)localObject1).get()).overridePendingTransition(2130772286, 0);
         return;
       }
       catch (Exception paramMessage)

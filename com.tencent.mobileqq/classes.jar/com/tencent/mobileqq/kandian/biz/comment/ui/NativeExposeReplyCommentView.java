@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.kandian.biz.comment.ui;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -22,47 +24,47 @@ public class NativeExposeReplyCommentView
   extends FrameLayout
   implements View.OnClickListener, IView
 {
-  private static String jdField_a_of_type_JavaLangString = "NativeExposeReplyCommentView";
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ReadInJoyCommentListAdapter jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentListAdapter;
-  private CommentViewItem jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem;
-  private View jdField_b_of_type_AndroidViewView;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private LinearLayout jdField_c_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private static String a = "NativeExposeReplyCommentView";
+  private Context b;
+  private LinearLayout c;
   private TextView d;
   private TextView e;
+  private LinearLayout f;
+  private TextView g;
+  private TextView h;
+  private LinearLayout i;
+  private TextView j;
+  private ReadInJoyCommentListAdapter k;
+  private CommentViewItem l;
+  private View m;
+  private View n;
   
   public NativeExposeReplyCommentView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
     a();
   }
   
   public NativeExposeReplyCommentView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
     a();
   }
   
   public NativeExposeReplyCommentView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
     a();
   }
   
   private SubCommentData a(CommentViewItem paramCommentViewItem, int paramInt)
   {
-    if ((paramCommentViewItem != null) && ((paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData instanceof CommentData)))
+    if ((paramCommentViewItem != null) && ((paramCommentViewItem.c instanceof CommentData)))
     {
-      paramCommentViewItem = (CommentData)paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
+      paramCommentViewItem = (CommentData)paramCommentViewItem.c;
       if ((paramCommentViewItem.subCommentList != null) && (paramCommentViewItem.subCommentList.size() > paramInt)) {
         return (SubCommentData)paramCommentViewItem.subCommentList.get(paramInt);
       }
@@ -72,121 +74,128 @@ public class NativeExposeReplyCommentView
   
   private void a()
   {
-    inflate(this.jdField_a_of_type_AndroidContentContext, 2131560181, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131366868));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366880));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366881));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131377102));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377109));
-    this.d = ((TextView)findViewById(2131377110));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376429));
-    this.e = ((TextView)findViewById(2131376428));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366882);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131377111);
+    inflate(this.b, 2131626228, this);
+    this.c = ((LinearLayout)findViewById(2131433197));
+    this.d = ((TextView)findViewById(2131433209));
+    this.e = ((TextView)findViewById(2131433210));
+    this.f = ((LinearLayout)findViewById(2131445473));
+    this.g = ((TextView)findViewById(2131445480));
+    this.h = ((TextView)findViewById(2131445481));
+    this.i = ((LinearLayout)findViewById(2131444650));
+    this.j = ((TextView)findViewById(2131444649));
+    this.m = findViewById(2131433211);
+    this.n = findViewById(2131445482);
   }
   
   private void a(int paramInt)
   {
-    int k = 0;
-    int j = 4;
-    int i;
+    int i3 = 0;
+    int i2 = 4;
+    int i1;
     if (paramInt > 1)
     {
-      i = k;
+      i1 = i3;
       if (paramInt > 2)
       {
-        j = 0;
-        i = k;
+        i2 = 0;
+        i1 = i3;
       }
     }
     else
     {
-      i = 4;
+      i1 = 4;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(i);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(j);
+    this.m.setVisibility(i1);
+    this.n.setVisibility(i2);
   }
   
   private void b()
   {
-    if (!(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData instanceof CommentData)) {
+    if (!(this.l.c instanceof CommentData)) {
       return;
     }
-    if (((CommentData)this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData).subCommentNum < 3) {
+    if (((CommentData)this.l.c).subCommentNum < 3) {
       return;
     }
-    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-    localLinearLayout.setOnTouchListener(new NativeExposeReplyCommentView.OnCommentTouchListener(this.jdField_a_of_type_AndroidContentContext, localLinearLayout));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnTouchListener(new NativeExposeReplyCommentView.OnCommentTouchListener(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetLinearLayout));
-    localLinearLayout = this.jdField_b_of_type_AndroidWidgetLinearLayout;
-    localLinearLayout.setOnTouchListener(new NativeExposeReplyCommentView.OnCommentTouchListener(this.jdField_a_of_type_AndroidContentContext, localLinearLayout));
-    this.d.setOnTouchListener(new NativeExposeReplyCommentView.OnCommentTouchListener(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidWidgetLinearLayout));
+    LinearLayout localLinearLayout = this.c;
+    localLinearLayout.setOnTouchListener(new NativeExposeReplyCommentView.OnCommentTouchListener(this.b, localLinearLayout));
+    this.e.setOnTouchListener(new NativeExposeReplyCommentView.OnCommentTouchListener(this.b, this.c));
+    localLinearLayout = this.f;
+    localLinearLayout.setOnTouchListener(new NativeExposeReplyCommentView.OnCommentTouchListener(this.b, localLinearLayout));
+    this.h.setOnTouchListener(new NativeExposeReplyCommentView.OnCommentTouchListener(this.b, this.f));
+  }
+  
+  private void setVIcon(TextView paramTextView)
+  {
+    Drawable localDrawable = getResources().getDrawable(2130851368);
+    localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), localDrawable.getMinimumHeight());
+    paramTextView.setCompoundDrawables(null, null, localDrawable, null);
   }
   
   public void a(CommentViewItem paramCommentViewItem)
   {
     if (paramCommentViewItem != null)
     {
-      if (paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData == null) {
+      if (paramCommentViewItem.c == null) {
         return;
       }
-      if (!(paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData instanceof CommentData)) {
+      if (!(paramCommentViewItem.c instanceof CommentData)) {
         return;
       }
-      CommentData localCommentData = (CommentData)paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
-      if (!paramCommentViewItem.a())
+      CommentData localCommentData = (CommentData)paramCommentViewItem.c;
+      if (!paramCommentViewItem.b())
       {
         setVisibility(8);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem = paramCommentViewItem;
+      this.l = paramCommentViewItem;
       setVisibility(0);
-      Object localObject = paramCommentViewItem.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
-      int j = ((List)localObject).size();
-      int i = 0;
-      while (i < j)
+      Object localObject = paramCommentViewItem.g;
+      this.c.setVisibility(8);
+      this.f.setVisibility(8);
+      this.f.setOnClickListener(null);
+      this.c.setOnClickListener(null);
+      int i2 = ((List)localObject).size();
+      int i1 = 0;
+      while (i1 < i2)
       {
-        if (i == 0)
+        if (i1 == 0)
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramCommentViewItem.jdField_a_of_type_JavaUtilList.get(i));
-          this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(ReadInJoyLinkMovementMethod.a());
-          this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)paramCommentViewItem.b.get(i));
-          this.jdField_b_of_type_AndroidWidgetTextView.setMovementMethod(ReadInJoyLinkMovementMethod.a());
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-          this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-        }
-        else if (i == 1)
-        {
-          this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)paramCommentViewItem.jdField_a_of_type_JavaUtilList.get(i));
-          this.jdField_c_of_type_AndroidWidgetTextView.setMovementMethod(ReadInJoyLinkMovementMethod.a());
-          this.d.setText((CharSequence)paramCommentViewItem.b.get(i));
+          this.d.setText((CharSequence)paramCommentViewItem.g.get(i1));
           this.d.setMovementMethod(ReadInJoyLinkMovementMethod.a());
-          this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-          this.d.setOnClickListener(this);
-          this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+          this.e.setText((CharSequence)paramCommentViewItem.h.get(i1));
+          this.e.setMovementMethod(ReadInJoyLinkMovementMethod.a());
+          this.c.setVisibility(0);
+          this.e.setOnClickListener(this);
+          this.c.setOnClickListener(this);
         }
-        i += 1;
+        else if (i1 == 1)
+        {
+          this.g.setText((CharSequence)paramCommentViewItem.g.get(i1));
+          this.g.setMovementMethod(ReadInJoyLinkMovementMethod.a());
+          this.h.setText((CharSequence)paramCommentViewItem.h.get(i1));
+          this.h.setMovementMethod(ReadInJoyLinkMovementMethod.a());
+          this.f.setVisibility(0);
+          this.h.setOnClickListener(this);
+          this.f.setOnClickListener(this);
+        }
+        i1 += 1;
       }
       if (localCommentData.subCommentNum > 2)
       {
-        paramCommentViewItem = this.e;
+        paramCommentViewItem = this.j;
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131707108));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131904946));
         ((StringBuilder)localObject).append(ReadInJoyHelper.a(localCommentData.subCommentNum, 99989500L, "9999万+", "0"));
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131707107));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131904945));
         paramCommentViewItem.setText(((StringBuilder)localObject).toString());
-        this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+        this.i.setVisibility(0);
+        this.i.setOnClickListener(this);
       }
       else
       {
-        this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        this.jdField_c_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+        this.i.setVisibility(8);
+        this.i.setOnClickListener(null);
       }
       b();
       a(localCommentData.subCommentNum);
@@ -215,33 +224,33 @@ public class NativeExposeReplyCommentView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentListAdapter != null)
+    if (this.k != null)
     {
-      CommentViewItem localCommentViewItem = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem;
+      CommentViewItem localCommentViewItem = this.l;
       if (localCommentViewItem == null) {
         return;
       }
-      if (!(localCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData instanceof CommentData)) {
+      if (!(localCommentViewItem.c instanceof CommentData)) {
         return;
       }
       switch (paramView.getId())
       {
       default: 
         return;
-      case 2131377102: 
-      case 2131377110: 
-        this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130843066);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentListAdapter;
-        localCommentViewItem = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem;
+      case 2131445473: 
+      case 2131445481: 
+        this.f.setBackgroundResource(2130844021);
+        paramView = this.k;
+        localCommentViewItem = this.l;
         paramView.a(localCommentViewItem, a(localCommentViewItem, 1), 2);
         return;
-      case 2131376429: 
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem, null, 1);
+      case 2131444650: 
+        this.k.a(this.l, null, 1);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130843066);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentListAdapter;
-      localCommentViewItem = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem;
+      this.c.setBackgroundResource(2130844021);
+      paramView = this.k;
+      localCommentViewItem = this.l;
       paramView.a(localCommentViewItem, a(localCommentViewItem, 0), 2);
     }
   }
@@ -258,12 +267,12 @@ public class NativeExposeReplyCommentView
   
   public void setAdapter(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentListAdapter = paramReadInJoyCommentListAdapter;
+    this.k = paramReadInJoyCommentListAdapter;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.NativeExposeReplyCommentView
  * JD-Core Version:    0.7.0.1
  */

@@ -16,9 +16,9 @@ final class RIJ3ClickUtils$addLongClickListener$longClickListener$1
   public final boolean onLongClick(View paramView)
   {
     RIJ3ClickUtils localRIJ3ClickUtils = RIJ3ClickUtils.a;
-    FastWebActivity localFastWebActivity = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity;
+    FastWebActivity localFastWebActivity = this.a;
     Intrinsics.checkExpressionValueIsNotNull(paramView, "it");
-    RIJ3ClickUtils.a(localRIJ3ClickUtils, localFastWebActivity, paramView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+    RIJ3ClickUtils.a(localRIJ3ClickUtils, localFastWebActivity, paramView, this.b);
     RIJ3ClickUtils.a(RIJ3ClickUtils.a);
     RIJ3ClickUtils.a(RIJ3ClickUtils.a, paramView);
     return true;
@@ -26,7 +26,7 @@ final class RIJ3ClickUtils$addLongClickListener$longClickListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.RIJ3ClickUtils.addLongClickListener.longClickListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -73,11 +73,6 @@ class TransitionUtils
     return paramCanvas.saveLayerAlpha(a.left, a.top, a.right, a.bottom, paramInt, 31);
   }
   
-  static Rect a(View paramView)
-  {
-    return new Rect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
-  }
-  
   static RectF a(View paramView)
   {
     return new RectF(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
@@ -115,12 +110,12 @@ class TransitionUtils
   
   static ShapeAppearanceModel a(ShapeAppearanceModel paramShapeAppearanceModel1, ShapeAppearanceModel paramShapeAppearanceModel2, RectF paramRectF, TransitionUtils.CornerSizeBinaryOperator paramCornerSizeBinaryOperator)
   {
-    if (a(paramShapeAppearanceModel1, paramRectF)) {
+    if (b(paramShapeAppearanceModel1, paramRectF)) {
       paramRectF = paramShapeAppearanceModel1;
     } else {
       paramRectF = paramShapeAppearanceModel2;
     }
-    return paramRectF.b().b(paramCornerSizeBinaryOperator.a(paramShapeAppearanceModel1.a(), paramShapeAppearanceModel2.a())).c(paramCornerSizeBinaryOperator.a(paramShapeAppearanceModel1.b(), paramShapeAppearanceModel2.b())).e(paramCornerSizeBinaryOperator.a(paramShapeAppearanceModel1.d(), paramShapeAppearanceModel2.d())).d(paramCornerSizeBinaryOperator.a(paramShapeAppearanceModel1.c(), paramShapeAppearanceModel2.c())).a();
+    return paramRectF.n().b(paramCornerSizeBinaryOperator.a(paramShapeAppearanceModel1.f(), paramShapeAppearanceModel2.f())).c(paramCornerSizeBinaryOperator.a(paramShapeAppearanceModel1.g(), paramShapeAppearanceModel2.g())).e(paramCornerSizeBinaryOperator.a(paramShapeAppearanceModel1.i(), paramShapeAppearanceModel2.i())).d(paramCornerSizeBinaryOperator.a(paramShapeAppearanceModel1.h(), paramShapeAppearanceModel2.h())).a();
   }
   
   @NonNull
@@ -147,20 +142,9 @@ class TransitionUtils
     paramCanvas.restoreToCount(i);
   }
   
-  private static boolean a(ShapeAppearanceModel paramShapeAppearanceModel, RectF paramRectF)
+  static Rect b(View paramView)
   {
-    return (paramShapeAppearanceModel.a().a(paramRectF) != 0.0F) || (paramShapeAppearanceModel.b().a(paramRectF) != 0.0F) || (paramShapeAppearanceModel.c().a(paramRectF) != 0.0F) || (paramShapeAppearanceModel.d().a(paramRectF) != 0.0F);
-  }
-  
-  static RectF b(View paramView)
-  {
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    int i = arrayOfInt[0];
-    int j = arrayOfInt[1];
-    int k = paramView.getWidth();
-    int m = paramView.getHeight();
-    return new RectF(i, j, k + i, m + j);
+    return new Rect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
   }
   
   static View b(View paramView, @IdRes int paramInt)
@@ -186,10 +170,26 @@ class TransitionUtils
       throw paramView;
     }
   }
+  
+  private static boolean b(ShapeAppearanceModel paramShapeAppearanceModel, RectF paramRectF)
+  {
+    return (paramShapeAppearanceModel.f().a(paramRectF) != 0.0F) || (paramShapeAppearanceModel.g().a(paramRectF) != 0.0F) || (paramShapeAppearanceModel.h().a(paramRectF) != 0.0F) || (paramShapeAppearanceModel.i().a(paramRectF) != 0.0F);
+  }
+  
+  static RectF c(View paramView)
+  {
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    int i = arrayOfInt[0];
+    int j = arrayOfInt[1];
+    int k = paramView.getWidth();
+    int m = paramView.getHeight();
+    return new RectF(i, j, k + i, m + j);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.platform.TransitionUtils
  * JD-Core Version:    0.7.0.1
  */

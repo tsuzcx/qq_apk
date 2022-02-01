@@ -14,8 +14,8 @@ public class TroopAtAllMsg
 {
   public TroopAtAllMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697248);
-    this.b = this.jdField_a_of_type_JavaLangString;
+    this.c = HardCodeUtil.a(2131895021);
+    this.d = this.c;
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -23,14 +23,14 @@ public class TroopAtAllMsg
     if ((paramObject instanceof TroopAtAllMsg))
     {
       paramObject = (TroopAtAllMsg)paramObject;
-      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramObject.h.b(paramMessageInfo.c);
       paramMessageInfo = paramObject;
     }
     else
     {
       paramObject = new TroopAtAllMsg(BaseApplication.getContext());
-      paramObject.a(paramMessageRecord.senderuin);
-      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramObject.b(paramMessageRecord.senderuin);
+      paramObject.h = new MessageNavInfo(paramMessageInfo.c);
       paramMessageInfo = paramObject;
     }
     if (QLog.isColorLevel())
@@ -45,7 +45,7 @@ public class TroopAtAllMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopAtAllMsg
  * JD-Core Version:    0.7.0.1
  */

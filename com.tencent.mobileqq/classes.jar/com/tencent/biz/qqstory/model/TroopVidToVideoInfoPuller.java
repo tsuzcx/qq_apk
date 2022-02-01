@@ -20,55 +20,43 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class TroopVidToVideoInfoPuller
   implements IEventReceiver
 {
-  protected int a;
-  protected long a;
-  protected IVidToVideoInfoPuller.OnFinishCallBack a;
-  protected TroopVidToVideoInfoPuller.StoryVidListReceiver a;
   protected BatchHandlerListPuller a;
-  protected TroopUidToVidListHandler a;
-  protected String a;
-  protected List<String> a;
-  protected AtomicBoolean a;
-  protected boolean a;
-  public int b;
-  protected IVidToVideoInfoPuller.OnFinishCallBack b;
-  protected String b;
+  protected TroopUidToVidListHandler b;
+  protected TroopVidToVideoInfoPuller.StoryVidListReceiver c;
+  protected IVidToVideoInfoPuller.OnFinishCallBack d;
+  protected IVidToVideoInfoPuller.OnFinishCallBack e;
+  protected AtomicBoolean f = new AtomicBoolean(false);
+  protected int g;
+  protected String h;
+  protected String i;
+  protected boolean j = false;
+  public int k = 0;
+  protected long l;
+  protected List<String> m = new ArrayList();
   
   public TroopVidToVideoInfoPuller(String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected BatchHandlerListPuller a(@NonNull List<String> paramList)
-  {
-    BatchHandlerListPuller localBatchHandlerListPuller = BatchHandlerListPuller.a(paramList);
-    localBatchHandlerListPuller.a("Q.qqstory.net:TroopVidToVideoInfoPuller");
-    localBatchHandlerListPuller.a(new TroopVidToVideoInfoPuller.2(this, paramList));
-    return localBatchHandlerListPuller;
+    this.i = paramString1;
+    this.h = paramString2;
+    this.g = paramInt;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) {
+    if (this.f.getAndSet(true)) {
       return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Int = 1;
+    this.l = System.currentTimeMillis();
+    this.k = 1;
     SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", String.format("Start , %s", new Object[] { this }));
     b();
   }
   
   protected void a(@NonNull List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller = a(paramList);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.b();
+    this.m = paramList;
+    this.a = b(paramList);
+    this.a.b();
   }
   
   protected void a(List<String> paramList, ErrorMessage paramErrorMessage, boolean paramBoolean1, boolean paramBoolean2)
@@ -89,61 +77,69 @@ public class TroopVidToVideoInfoPuller
       localArrayList.add(paramList);
     }
     paramList = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-    paramList.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    paramList.jdField_a_of_type_Boolean = (paramBoolean1 ^ true);
-    paramList.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    paramList.jdField_b_of_type_Boolean = paramBoolean1;
-    paramList.jdField_a_of_type_JavaUtilList = localArrayList;
-    paramList.jdField_a_of_type_Int = localArrayList.size();
-    paramList.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramList.g = paramErrorMessage;
+    paramList.i = (paramBoolean1 ^ true);
+    paramList.a = this.i;
+    paramList.j = paramBoolean1;
+    paramList.e = localArrayList;
+    paramList.h = localArrayList.size();
+    paramList.b = this.h;
     StoryDispatcher.a().dispatch(paramList);
     if (paramBoolean1)
     {
-      i = this.jdField_b_of_type_Int;
-      if (i == 1)
+      n = this.k;
+      if (n == 1)
       {
-        this.jdField_b_of_type_Int = 2;
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack;
+        this.k = 2;
+        localObject = this.d;
         if (localObject != null) {
-          ((IVidToVideoInfoPuller.OnFinishCallBack)localObject).a(paramList.jdField_a_of_type_JavaUtilList, paramBoolean2);
+          ((IVidToVideoInfoPuller.OnFinishCallBack)localObject).a(paramList.e, paramBoolean2);
         }
       }
-      else if (i == 3)
+      else if (n == 3)
       {
-        this.jdField_b_of_type_Int = 4;
-        localObject = this.jdField_b_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack;
+        this.k = 4;
+        localObject = this.e;
         if (localObject != null) {
-          ((IVidToVideoInfoPuller.OnFinishCallBack)localObject).a(paramList.jdField_a_of_type_JavaUtilList, paramBoolean2);
+          ((IVidToVideoInfoPuller.OnFinishCallBack)localObject).a(paramList.e, paramBoolean2);
         }
       }
     }
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    int i = localArrayList.size();
+    Object localObject = this.h;
+    int n = localArrayList.size();
     if (paramBoolean1) {
       paramList = "from net ";
     } else {
       paramList = "from local";
     }
-    SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", "Dispatch event , uin = %s , count = %d , error = %s , %s ,video list = %s ,use total time = %d", new Object[] { localObject, Integer.valueOf(i), paramErrorMessage, paramList, localArrayList, Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+    SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", "Dispatch event , uin = %s , count = %d , error = %s , %s ,video list = %s ,use total time = %d", new Object[] { localObject, Integer.valueOf(n), paramErrorMessage, paramList, localArrayList, Long.valueOf(System.currentTimeMillis() - this.l) });
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
+  }
+  
+  protected BatchHandlerListPuller b(@NonNull List<String> paramList)
+  {
+    BatchHandlerListPuller localBatchHandlerListPuller = BatchHandlerListPuller.a(paramList);
+    localBatchHandlerListPuller.a("Q.qqstory.net:TroopVidToVideoInfoPuller");
+    localBatchHandlerListPuller.a(new TroopVidToVideoInfoPuller.2(this, paramList));
+    return localBatchHandlerListPuller;
   }
   
   protected void b()
   {
-    if (this.jdField_b_of_type_Int == 3)
+    if (this.k == 3)
     {
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      List localList = this.m;
       if ((localList != null) && (localList.size() > 0))
       {
-        a(this.jdField_a_of_type_JavaUtilList);
+        a(this.m);
         return;
       }
     }
-    if (this.jdField_a_of_type_Int == 3) {
+    if (this.g == 3) {
       c();
     }
   }
@@ -155,17 +151,17 @@ public class TroopVidToVideoInfoPuller
   
   public boolean isValidate()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return this.f.get();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VidToVideoInfoPuller{, mUin='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mContext='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -173,7 +169,7 @@ public class TroopVidToVideoInfoPuller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopVidToVideoInfoPuller
  * JD-Core Version:    0.7.0.1
  */

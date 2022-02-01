@@ -15,12 +15,12 @@ public class SimpleWebSocketAdapter
   implements VWebSocketAdapter
 {
   public static String a = "viola.SimpleWebSocketAdapter";
-  private VWebSocketAdapter.EventListener jdField_a_of_type_ComTencentViolaAdapterVWebSocketAdapter$EventListener;
-  private WebSocket jdField_a_of_type_Okhttp3WebSocket;
+  private WebSocket b;
+  private VWebSocketAdapter.EventListener c;
   
   public void close(int paramInt, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_Okhttp3WebSocket;
+    Object localObject = this.b;
     if (localObject != null) {
       try
       {
@@ -31,7 +31,7 @@ public class SimpleWebSocketAdapter
       {
         if (QLog.isColorLevel())
         {
-          localObject = jdField_a_of_type_JavaLangString;
+          localObject = a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("close Exception:");
           localStringBuilder.append(paramString.getMessage());
@@ -43,7 +43,7 @@ public class SimpleWebSocketAdapter
   
   public void connect(String paramString1, @Nullable String paramString2, VWebSocketAdapter.EventListener paramEventListener)
   {
-    this.jdField_a_of_type_ComTencentViolaAdapterVWebSocketAdapter$EventListener = paramEventListener;
+    this.c = paramEventListener;
     paramEventListener = new OkHttpClient().newBuilder().connectTimeout(3600L, TimeUnit.SECONDS).readTimeout(3600L, TimeUnit.SECONDS).writeTimeout(3600L, TimeUnit.SECONDS).build();
     Request.Builder localBuilder = new Request.Builder();
     if (paramString2 != null) {
@@ -55,7 +55,7 @@ public class SimpleWebSocketAdapter
   
   public void destroy()
   {
-    WebSocket localWebSocket = this.jdField_a_of_type_Okhttp3WebSocket;
+    WebSocket localWebSocket = this.b;
     if (localWebSocket != null) {
       try
       {
@@ -66,7 +66,7 @@ public class SimpleWebSocketAdapter
       {
         if (QLog.isColorLevel())
         {
-          String str = jdField_a_of_type_JavaLangString;
+          String str = a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("destroy Exception");
           localStringBuilder.append(localException.getMessage());
@@ -80,7 +80,7 @@ public class SimpleWebSocketAdapter
   
   public void send(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_Okhttp3WebSocket;
+    Object localObject = this.b;
     if (localObject != null) {
       try
       {
@@ -88,7 +88,7 @@ public class SimpleWebSocketAdapter
         if (!QLog.isDebugVersion()) {
           return;
         }
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("send data:");
         localStringBuilder.append(paramString);
@@ -100,7 +100,7 @@ public class SimpleWebSocketAdapter
         StringBuilder localStringBuilder;
         if (QLog.isColorLevel())
         {
-          localObject = jdField_a_of_type_JavaLangString;
+          localObject = a;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("send Exception:");
           localStringBuilder.append(paramString.getMessage());
@@ -110,13 +110,13 @@ public class SimpleWebSocketAdapter
         return;
       }
     } else if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "send ws is null");
+      QLog.d(a, 2, "send ws is null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.adapter.SimpleWebSocketAdapter
  * JD-Core Version:    0.7.0.1
  */

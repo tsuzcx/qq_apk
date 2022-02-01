@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/pkh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.utils.RoundImageView android:id="@id/pkl" android:layout_width="60.0dip" android:layout_height="60.0dip" />
+    <TextView android:textSize="@dimen/ms" android:textColor="#ff999999" android:gravity="center" android:id="@id/pkm" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:lines="1" />
+</LinearLayout>

@@ -30,8 +30,8 @@ public class ScreenShareManager
   extends BusinessManager
   implements Handler.Callback
 {
-  private final WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  private WeakReference<AVActivity> jdField_a_of_type_MqqUtilWeakReference = null;
+  private final WeakReferenceHandler d = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  private WeakReference<AVActivity> e = null;
   
   public ScreenShareManager(VideoAppInterface paramVideoAppInterface)
   {
@@ -43,10 +43,10 @@ public class ScreenShareManager
     paramString = new ScreenShareManager.3(this, paramString);
     if (paramLong == 0L)
     {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(paramString);
+      this.d.post(paramString);
       return;
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(paramString, paramLong);
+    this.d.postDelayed(paramString, paramLong);
   }
   
   protected void a() {}
@@ -125,7 +125,7 @@ public class ScreenShareManager
       }
       label205:
       if (i != 0) {
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
+        this.d.sendMessage(localMessage);
       }
       return;
     }
@@ -136,14 +136,14 @@ public class ScreenShareManager
   
   public void a(AVActivity paramAVActivity)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAVActivity);
+    this.e = new WeakReference(paramAVActivity);
   }
   
   public void a(String paramString1, String paramString2)
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    ScreenShareCtrl localScreenShareCtrl = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    ScreenShareCtrl localScreenShareCtrl = this.c.b().aF();
+    Object localObject = this.e;
     if (localObject != null)
     {
       localObject = (AVActivity)((WeakReference)localObject).get();
@@ -152,7 +152,7 @@ public class ScreenShareManager
         if (((AVActivity)localObject).isDestroyed()) {
           return;
         }
-        DialogUtil.a((Context)localObject, 230, localBaseApplication.getString(2131718555), paramString1, 2131718554, 2131718552, new ScreenShareManager.1(this, localScreenShareCtrl, paramString2), new ScreenShareManager.2(this, paramString2)).show();
+        DialogUtil.a((Context)localObject, 230, localBaseApplication.getString(2131916054), paramString1, 2131916053, 2131916051, new ScreenShareManager.1(this, localScreenShareCtrl, paramString2), new ScreenShareManager.2(this, paramString2)).show();
         ReportController.b(null, "dc00898", "", "", "0X800B8A8", "0X800B8A8", 0, 0, paramString2, "", "", "");
       }
     }
@@ -160,7 +160,7 @@ public class ScreenShareManager
   
   public void a(boolean paramBoolean)
   {
-    ((ScreenShareHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.d)).a(paramBoolean);
+    ((ScreenShareHandler)this.c.getBusinessHandler(BusinessHandlerFactory.d)).a(paramBoolean);
   }
   
   protected boolean a(String paramString)
@@ -170,7 +170,7 @@ public class ScreenShareManager
   
   public void b()
   {
-    ((ScreenShareHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.d)).a();
+    ((ScreenShareHandler)this.c.getBusinessHandler(BusinessHandlerFactory.d)).b();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -193,8 +193,8 @@ public class ScreenShareManager
     else if ((paramMessage.arg1 == 6) && (!((ReqGroupVideo.MsgScreenShareAnswer)paramMessage.obj).is_accept.get()))
     {
       paramMessage = new StringBuilder();
-      paramMessage.append(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d);
-      paramMessage.append(BaseApplicationImpl.getContext().getString(2131718556));
+      paramMessage.append(this.c.b().k().t);
+      paramMessage.append(BaseApplicationImpl.getContext().getString(2131916055));
       a(paramMessage.toString(), 0L);
     }
     if (QLog.isDevelopLevel()) {

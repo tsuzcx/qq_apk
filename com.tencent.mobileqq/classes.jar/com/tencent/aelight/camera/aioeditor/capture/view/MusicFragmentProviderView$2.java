@@ -20,7 +20,7 @@ class MusicFragmentProviderView$2
     if (paramInt != -1)
     {
       this.a.a(paramInt);
-      MusicFragmentProviderView.a(this.a).set(-1);
+      MusicFragmentProviderView.b(this.a).set(-1);
       this.a.j();
       return;
     }
@@ -29,14 +29,14 @@ class MusicFragmentProviderView$2
   
   public void a(MusicItemInfo paramMusicItemInfo)
   {
-    if (this.a.a != null)
+    if (this.a.F != null)
     {
       if (paramMusicItemInfo.mType == 2)
       {
-        this.a.a.a(true);
+        this.a.F.a(true);
         return;
       }
-      this.a.a.a(false);
+      this.a.F.a(false);
     }
   }
   
@@ -45,7 +45,7 @@ class MusicFragmentProviderView$2
     this.a.a(paramInt);
     if (paramInt != -1)
     {
-      MusicFragmentProviderView.a(this.a).set(-1);
+      MusicFragmentProviderView.b(this.a).set(-1);
       this.a.j();
     }
     else
@@ -53,7 +53,7 @@ class MusicFragmentProviderView$2
       this.a.i();
     }
     if (MusicFragmentProviderView.a(this.a) != null) {
-      MusicFragmentProviderView.a(this.a).f();
+      MusicFragmentProviderView.a(this.a).k();
     }
   }
   
@@ -76,7 +76,7 @@ class MusicFragmentProviderView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.MusicFragmentProviderView.2
  * JD-Core Version:    0.7.0.1
  */

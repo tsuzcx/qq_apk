@@ -2,40 +2,35 @@ package com.tencent.mobileqq.kandian.biz.comment.data;
 
 public class ReadInJoyCommentPBModule$ResponseExtraInfo
 {
-  public int a;
   public long a;
-  public ReadInJoyCommentPBModule.Label a;
-  public String a;
-  public boolean a;
   public long b;
-  public String b;
-  public boolean b;
-  
-  public ReadInJoyCommentPBModule$ResponseExtraInfo()
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
+  public int c = -1;
+  public String d;
+  public boolean e;
+  public ReadInJoyCommentPBModule.Label f;
+  public boolean g;
+  public String h;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ResponseExtraInfo{commentCnt=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", hideCommentCnt=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", showMaskPageNo=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", jumpSchema='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isPgcAuthor=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", label=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$Label.toString());
+    localStringBuilder.append(this.f.toString());
     localStringBuilder.append(", isShowLabel=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", defaultInput='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -43,7 +38,7 @@ public class ReadInJoyCommentPBModule$ResponseExtraInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentPBModule.ResponseExtraInfo
  * JD-Core Version:    0.7.0.1
  */

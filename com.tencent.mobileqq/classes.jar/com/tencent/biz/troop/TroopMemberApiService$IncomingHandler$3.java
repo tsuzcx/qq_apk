@@ -12,16 +12,16 @@ class TroopMemberApiService$IncomingHandler$3
   {
     if (paramInt == 0)
     {
-      ITroopManagerBizHandler localITroopManagerBizHandler = this.jdField_a_of_type_ComTencentMobileqqTroopTroopmanagerApiITroopManagerBizHandler;
+      ITroopManagerBizHandler localITroopManagerBizHandler = this.a;
       if (localITroopManagerBizHandler != null) {
-        localITroopManagerBizHandler.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 510, this.jdField_a_of_type_Int, this.b);
+        localITroopManagerBizHandler.a(Long.valueOf(this.b).longValue(), 510, this.c, this.d);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.3
  * JD-Core Version:    0.7.0.1
  */

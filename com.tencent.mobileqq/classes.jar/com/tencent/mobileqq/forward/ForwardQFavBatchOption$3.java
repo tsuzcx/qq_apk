@@ -9,12 +9,12 @@ class ForwardQFavBatchOption$3
   
   public void run()
   {
-    ForwardSendPicUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c, false, this.this$0.jdField_a_of_type_AndroidAppActivity, this.jdField_b_of_type_Int);
+    ForwardSendPicUtil.a(this.this$0.q, this.a, this.b, this.c, this.d, false, this.this$0.s, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardQFavBatchOption.3
  * JD-Core Version:    0.7.0.1
  */

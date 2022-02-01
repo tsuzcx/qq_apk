@@ -12,13 +12,13 @@ import mqq.app.MobileQQ;
 public abstract class AbsNewTroopBaseView
   extends FrameLayout
 {
-  protected AppInterface a;
   public QBaseActivity a;
+  protected AppInterface b;
   
   public AbsNewTroopBaseView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null));
+    this.b = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null));
   }
   
   public AbsNewTroopBaseView(Context paramContext, AttributeSet paramAttributeSet)
@@ -33,24 +33,14 @@ public abstract class AbsNewTroopBaseView
   
   public void a() {}
   
-  protected final void a(int paramInt)
-  {
-    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(paramInt, this, true);
-  }
-  
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
   public void a(QBaseActivity paramQBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
+    this.a = paramQBaseActivity;
   }
   
   public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
   
   public void b() {}
   
@@ -59,10 +49,20 @@ public abstract class AbsNewTroopBaseView
   public void d() {}
   
   public void e() {}
+  
+  public boolean f()
+  {
+    return false;
+  }
+  
+  protected final void setContentView(int paramInt)
+  {
+    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(paramInt, this, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.AbsNewTroopBaseView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,24 +6,24 @@ import org.apache.http.HttpEntity;
 
 public class DownloaderFactory$DownloadStateParam
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = System.currentTimeMillis();
-  BufferedOutputStream jdField_a_of_type_JavaIoBufferedOutputStream = null;
-  InputStream jdField_a_of_type_JavaIoInputStream = null;
-  String jdField_a_of_type_JavaLangString = "";
-  HttpEntity jdField_a_of_type_OrgApacheHttpHttpEntity = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = -1;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = 2000;
-  long jdField_c_of_type_Long = 0L;
-  int d = 2048;
+  int a;
+  long b = System.currentTimeMillis();
+  boolean c = false;
+  int d = -1;
+  int e = 2000;
+  long f = 0L;
+  long g = 0L;
+  boolean h = false;
+  int i = 2048;
+  BufferedOutputStream j = null;
+  HttpEntity k = null;
+  InputStream l = null;
+  String m = "";
+  String n;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.DownloaderFactory.DownloadStateParam
  * JD-Core Version:    0.7.0.1
  */

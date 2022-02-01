@@ -37,11 +37,11 @@ public class OpenSdkFriendService$CheckAvatarUpdateCallback
         if (i > 0) {
           ThreadManager.executeOnSubThread(new OpenSdkFriendService.CheckAvatarUpdateCallback.1(this, i, (JSONArray)localObject));
         }
-        localObject = OpensdkPreference.a(CommonDataAdapter.a().a(), "prefer_last_avatar_update_time").edit();
-        ((SharedPreferences.Editor)localObject).putString(this.a.b, paramJSONObject.getString("time"));
+        localObject = OpensdkPreference.a(CommonDataAdapter.a().b(), "prefer_last_avatar_update_time").edit();
+        ((SharedPreferences.Editor)localObject).putString(this.a.f, paramJSONObject.getString("time"));
         ((SharedPreferences.Editor)localObject).commit();
-        if (this.a.a != null) {
-          this.a.a.a();
+        if (this.a.c != null) {
+          this.a.c.a();
         }
       }
       else
@@ -66,7 +66,7 @@ public class OpenSdkFriendService$CheckAvatarUpdateCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

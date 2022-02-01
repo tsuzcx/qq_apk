@@ -6,10 +6,10 @@ import org.json.JSONObject;
 public class CTEntryMng$EntryRedDotInfo
 {
   public int a;
-  public long a;
-  public boolean a;
   public int b;
-  public boolean b;
+  public boolean c;
+  public boolean d;
+  public long e;
   
   public JSONObject a()
   {
@@ -19,11 +19,11 @@ public class CTEntryMng$EntryRedDotInfo
       localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("entryID", this.jdField_a_of_type_Int);
-        localJSONObject.put("redDotVersion", this.jdField_b_of_type_Int);
-        localJSONObject.put("showRedDot", this.jdField_a_of_type_Boolean);
-        localJSONObject.put("userCanceled", this.jdField_b_of_type_Boolean);
-        localJSONObject.put("lastCancelTime", this.jdField_a_of_type_Long);
+        localJSONObject.put("entryID", this.a);
+        localJSONObject.put("redDotVersion", this.b);
+        localJSONObject.put("showRedDot", this.c);
+        localJSONObject.put("userCanceled", this.d);
+        localJSONObject.put("lastCancelTime", this.e);
         return localJSONObject;
       }
       catch (JSONException localJSONException1) {}
@@ -40,17 +40,17 @@ public class CTEntryMng$EntryRedDotInfo
   {
     if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryID");
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("redDotVersion");
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("showRedDot");
-      this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("userCanceled");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("lastCancelTime");
+      this.a = paramJSONObject.optInt("entryID");
+      this.b = paramJSONObject.optInt("redDotVersion");
+      this.c = paramJSONObject.optBoolean("showRedDot");
+      this.d = paramJSONObject.optBoolean("userCanceled");
+      this.e = paramJSONObject.optLong("lastCancelTime");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.EntryRedDotInfo
  * JD-Core Version:    0.7.0.1
  */

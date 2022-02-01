@@ -6,16 +6,11 @@ import java.util.List;
 
 public class BatchGetFeedCommentRequest$FeedCommentInfo
 {
-  public int a;
   public String a;
-  public List<CommentEntry> a;
   public int b;
-  public String b;
-  
-  public BatchGetFeedCommentRequest$FeedCommentInfo()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public int c;
+  public String d;
+  public List<CommentEntry> e = new ArrayList();
   
   public boolean equals(Object paramObject)
   {
@@ -28,18 +23,18 @@ public class BatchGetFeedCommentRequest$FeedCommentInfo
         return false;
       }
       paramObject = (FeedCommentInfo)paramObject;
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       if (str != null) {
-        return str.equals(paramObject.jdField_a_of_type_JavaLangString);
+        return str.equals(paramObject.a);
       }
-      return paramObject.jdField_a_of_type_JavaLangString == null;
+      return paramObject.a == null;
     }
     return false;
   }
   
   public int hashCode()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if (str != null) {
       return str.hashCode();
     }
@@ -48,7 +43,7 @@ public class BatchGetFeedCommentRequest$FeedCommentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.BatchGetFeedCommentRequest.FeedCommentInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -6,14 +6,14 @@ public final class AsyncSteps
   extends BaseStep
   implements StepGroup
 {
-  private int jdField_a_of_type_Int;
-  private final BaseStep[] jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseAutomatorBaseStep;
+  private int a;
+  private final BaseStep[] b;
   
   public AsyncSteps(@NotNull Automator paramAutomator, @NotNull BaseStep[] paramArrayOfBaseStep)
   {
     super(paramAutomator, false, "AsyncSteps");
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseAutomatorBaseStep = paramArrayOfBaseStep;
-    paramAutomator = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseAutomatorBaseStep;
+    this.b = paramArrayOfBaseStep;
+    paramAutomator = this.b;
     int j = paramAutomator.length;
     while (i < j)
     {
@@ -22,41 +22,16 @@ public final class AsyncSteps
     }
   }
   
-  public void a()
-  {
-    super.a();
-    BaseStep[] arrayOfBaseStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseAutomatorBaseStep;
-    int j = arrayOfBaseStep.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfBaseStep[i].a();
-      i += 1;
-    }
-  }
-  
   public boolean a()
   {
     super.a();
-    this.jdField_a_of_type_Int = 0;
+    this.a = 0;
     return true;
-  }
-  
-  public final void b()
-  {
-    this.jdField_a_of_type_Int += 1;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("AsyncSteps onEnd: mFinishCount = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    a(localStringBuilder.toString());
-    if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseAutomatorBaseStep.length) {
-      d();
-    }
   }
   
   public boolean b()
   {
-    BaseStep[] arrayOfBaseStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseAutomatorBaseStep;
+    BaseStep[] arrayOfBaseStep = this.b;
     int j = arrayOfBaseStep.length;
     int i = 0;
     while (i < j)
@@ -65,13 +40,13 @@ public final class AsyncSteps
       if (((BaseStep)localObject).a())
       {
         AsyncSteps.1 local1 = new AsyncSteps.1(this, (BaseStep)localObject);
-        if (((BaseStep)localObject).c())
+        if (((BaseStep)localObject).i())
         {
           local1.run();
         }
         else
         {
-          localObject = a().a();
+          localObject = h().b();
           if (localObject != null) {
             ((IThreadExecutor)localObject).a(local1);
           } else {
@@ -81,16 +56,41 @@ public final class AsyncSteps
       }
       else
       {
-        a().b(new AsyncSteps.2(this, (BaseStep)localObject));
+        h().b(new AsyncSteps.2(this, (BaseStep)localObject));
       }
       i += 1;
     }
     return false;
   }
+  
+  public void c()
+  {
+    super.c();
+    BaseStep[] arrayOfBaseStep = this.b;
+    int j = arrayOfBaseStep.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfBaseStep[i].c();
+      i += 1;
+    }
+  }
+  
+  public final void d()
+  {
+    this.a += 1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AsyncSteps onEnd: mFinishCount = ");
+    localStringBuilder.append(this.a);
+    a(localStringBuilder.toString());
+    if (this.a == this.b.length) {
+      g();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.automator.AsyncSteps
  * JD-Core Version:    0.7.0.1
  */

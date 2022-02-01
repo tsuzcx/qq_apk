@@ -19,9 +19,6 @@ public class NumberWheelView
   implements AdapterView.OnItemSelectedListener, VerticalGallery.OnEndFlingListener, VerticalGallery.OnEndMovementListener, VerticalGallery.OnSelectViewDataUpdateListener
 {
   public int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private NumberWheelView.NumberAdapter jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter;
-  private NumberWheelView.ScrollStateListener jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$ScrollStateListener;
   private final int b = 0;
   private final int c = 36;
   private final int d = 18;
@@ -30,8 +27,11 @@ public class NumberWheelView
   private final int g = 1;
   private final int h = 19;
   private final int i = -16777216;
-  private int j;
-  private int k;
+  private NumberWheelView.ScrollStateListener j;
+  private Context k;
+  private NumberWheelView.NumberAdapter l;
+  private int m;
+  private int n;
   
   public NumberWheelView(Context paramContext)
   {
@@ -53,10 +53,10 @@ public class NumberWheelView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = 1;
-    this.j = 0;
-    this.k = 0;
+    this.k = paramContext;
+    this.a = 1;
+    this.m = 0;
+    this.n = 0;
     setNeedTranslate(true);
     setScrollCycle(true);
     setOnEndFlingListener(this);
@@ -85,19 +85,19 @@ public class NumberWheelView
     }
   }
   
-  public int a()
+  public int getCurrent()
   {
-    int m = getSelectedItemPosition();
-    if ((m >= 0) && (m < this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter.a.size())) {
-      return ((Integer)this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter.a.get(m)).intValue();
+    int i1 = getSelectedItemPosition();
+    if ((i1 >= 0) && (i1 < this.l.a.size())) {
+      return ((Integer)this.l.a.get(i1)).intValue();
     }
     return 0;
   }
   
   public void onEndFling(VerticalGallery paramVerticalGallery)
   {
-    this.jdField_a_of_type_Int = 1;
-    NumberWheelView.ScrollStateListener localScrollStateListener = this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$ScrollStateListener;
+    this.a = 1;
+    NumberWheelView.ScrollStateListener localScrollStateListener = this.j;
     if (localScrollStateListener != null) {
       localScrollStateListener.a(this, paramVerticalGallery);
     }
@@ -105,8 +105,8 @@ public class NumberWheelView
   
   public void onEndMovement(VerticalGallery paramVerticalGallery)
   {
-    this.jdField_a_of_type_Int = 1;
-    NumberWheelView.ScrollStateListener localScrollStateListener = this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$ScrollStateListener;
+    this.a = 1;
+    NumberWheelView.ScrollStateListener localScrollStateListener = this.j;
     if (localScrollStateListener != null) {
       localScrollStateListener.a(this, paramVerticalGallery);
     }
@@ -116,16 +116,16 @@ public class NumberWheelView
   {
     boolean bool = super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     if (bool) {
-      this.jdField_a_of_type_Int = 0;
+      this.a = 0;
     }
     return bool;
   }
   
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int m = this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter.getCount();
+    int i1 = this.l.getCount();
     paramInt = 0;
-    while (paramInt < m)
+    while (paramInt < i1)
     {
       a(paramAdapterView.getChildAt(paramInt), 0);
       paramInt += 1;
@@ -139,7 +139,7 @@ public class NumberWheelView
   {
     boolean bool = super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     if (bool) {
-      this.jdField_a_of_type_Int = 0;
+      this.a = 0;
     }
     return bool;
   }
@@ -153,19 +153,19 @@ public class NumberWheelView
   {
     if (paramInt1 > paramInt2)
     {
-      this.j = paramInt2;
-      this.k = paramInt1;
+      this.m = paramInt2;
+      this.n = paramInt1;
     }
     else
     {
-      this.k = paramInt2;
-      this.j = paramInt1;
+      this.n = paramInt2;
+      this.m = paramInt1;
     }
-    NumberWheelView.NumberAdapter localNumberAdapter = this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter;
+    NumberWheelView.NumberAdapter localNumberAdapter = this.l;
     if (localNumberAdapter == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter = new NumberWheelView.NumberAdapter(this, this.jdField_a_of_type_AndroidContentContext, 36, this.j, this.k);
-      setAdapter(this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter);
+      this.l = new NumberWheelView.NumberAdapter(this, this.k, 36, this.m, this.n);
+      setAdapter(this.l);
       return;
     }
     localNumberAdapter.a(paramInt1, paramInt2);
@@ -173,24 +173,24 @@ public class NumberWheelView
   
   public void setScrollStateListener(NumberWheelView.ScrollStateListener paramScrollStateListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$ScrollStateListener = paramScrollStateListener;
+    this.j = paramScrollStateListener;
   }
   
   public void setValue(int paramInt)
   {
-    int m = this.j;
-    if (paramInt >= m)
+    int i1 = this.m;
+    if (paramInt >= i1)
     {
-      if (paramInt > this.k) {
+      if (paramInt > this.n) {
         return;
       }
-      setSelection(paramInt - m);
+      setSelection(paramInt - i1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.NumberWheelView
  * JD-Core Version:    0.7.0.1
  */

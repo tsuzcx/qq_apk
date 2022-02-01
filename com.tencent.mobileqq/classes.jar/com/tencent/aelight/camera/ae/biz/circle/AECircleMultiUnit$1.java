@@ -16,26 +16,26 @@ class AECircleMultiUnit$1
     if (paramInt == 0)
     {
       AECircleMultiUnit.a(this.a).setCurrentItem(0, true);
-      AECircleMultiUnit.a(this.a).f();
-      AECircleMultiUnit.a(this.a).J();
-      AEBaseDataReporter.a().ah();
+      AECircleMultiUnit.b(this.a).l();
+      AECircleMultiUnit.b(this.a).aj();
+      AEBaseDataReporter.a().am();
     }
     else
     {
-      AEReportUtils.a(8, 2);
-      AECircleMultiUnit.a(this.a);
-      AECircleMultiUnit.b(this.a);
+      AEReportUtils.a(8, 2, "");
+      AECircleMultiUnit.c(this.a);
+      AECircleMultiUnit.d(this.a);
     }
     AECircleMultiUnit localAECircleMultiUnit = this.a;
-    AECircleMultiUnit.a(AECircleMultiUnit.a(localAECircleMultiUnit, AECircleMultiUnit.a(localAECircleMultiUnit)), AECircleMultiUnit.a(this.a));
+    AECircleMultiUnit.a(AECircleMultiUnit.a(localAECircleMultiUnit, AECircleMultiUnit.e(localAECircleMultiUnit)), AECircleMultiUnit.f(this.a));
   }
   
-  public boolean a(int paramInt)
+  public boolean b(int paramInt)
   {
     boolean bool = true;
     if (paramInt == 1)
     {
-      if (AECircleMultiUnit.a(this.a)) {
+      if (AECircleMultiUnit.g(this.a)) {
         return true;
       }
       bool = false;
@@ -45,7 +45,7 @@ class AECircleMultiUnit$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECircleMultiUnit.1
  * JD-Core Version:    0.7.0.1
  */

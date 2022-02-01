@@ -13,18 +13,18 @@ import mqq.util.WeakReference;
 public class SelectCityPresenter
   implements SelectPositionModule.IPositionOrCityListChangedListener
 {
-  private SelectPositionModule jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsSelectPositionModule = ReadInJoyLogicEngine.a().a();
-  private WeakReference<SelectCityPresenter.IView> jdField_a_of_type_MqqUtilWeakReference;
+  private SelectPositionModule a = ReadInJoyLogicEngine.a().j();
+  private WeakReference<SelectCityPresenter.IView> b;
   
   public SelectCityPresenter(SelectCityPresenter.IView paramIView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsSelectPositionModule.a(this);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramIView);
+    this.a.a(this);
+    this.b = new WeakReference(paramIView);
   }
   
   private void b(List<CityData> paramList)
   {
-    SelectCityPresenter.IView localIView = (SelectCityPresenter.IView)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    SelectCityPresenter.IView localIView = (SelectCityPresenter.IView)this.b.get();
     if ((localIView != null) && (paramList != null)) {
       localIView.a(paramList);
     }
@@ -32,7 +32,7 @@ public class SelectCityPresenter
   
   public void a()
   {
-    SelectPositionModule localSelectPositionModule = ReadInJoyLogicEngine.a().a();
+    SelectPositionModule localSelectPositionModule = ReadInJoyLogicEngine.a().j();
     if (localSelectPositionModule != null) {
       b(localSelectPositionModule.a());
     }
@@ -50,7 +50,7 @@ public class SelectCityPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.SelectCityPresenter
  * JD-Core Version:    0.7.0.1
  */

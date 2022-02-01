@@ -18,64 +18,64 @@ import com.tencent.mobileqq.util.DisplayUtil;
 public class AEEditorStickerMaterialContentAdapter
   extends MaterialContentAdapter
 {
-  private final int a;
   private final int b;
   private final int c;
   private final int d;
   private final int e;
   private final int f;
+  private final int g;
   
   public AEEditorStickerMaterialContentAdapter(@NonNull Context paramContext)
   {
     super(paramContext, 1, 2);
     DisplayMetrics localDisplayMetrics = paramContext.getResources().getDisplayMetrics();
     float f1 = (localDisplayMetrics.widthPixels / localDisplayMetrics.density - 24.0F) / 375.0F;
-    this.jdField_a_of_type_Int = DisplayUtil.a(paramContext, 84.0F * f1);
-    this.b = DisplayUtil.a(paramContext, 64.0F * f1);
-    this.d = DisplayUtil.a(paramContext, 6.0F * f1);
-    this.c = DisplayUtil.a(paramContext, -10.0F * f1);
-    this.e = DisplayUtil.a(paramContext, f1 * 155.0F);
-    this.f = DisplayUtil.a(paramContext, -8.0F);
+    this.b = DisplayUtil.a(paramContext, 84.0F * f1);
+    this.c = DisplayUtil.a(paramContext, 64.0F * f1);
+    this.e = DisplayUtil.a(paramContext, 6.0F * f1);
+    this.d = DisplayUtil.a(paramContext, -10.0F * f1);
+    this.f = DisplayUtil.a(paramContext, f1 * 155.0F);
+    this.g = DisplayUtil.a(paramContext, -8.0F);
   }
   
   protected MaterialContentAdapter.ContentItemVH a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = new MaterialContentAdapter.ContentItemVH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2064318609, paramViewGroup, false));
-    Object localObject = paramViewGroup.itemView.findViewById(2064122570).getLayoutParams();
-    int i = this.b;
+    paramViewGroup = new MaterialContentAdapter.ContentItemVH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2064056487, paramViewGroup, false));
+    Object localObject = paramViewGroup.itemView.findViewById(2063991388).getLayoutParams();
+    int i = this.c;
     ((ViewGroup.LayoutParams)localObject).width = i;
     ((ViewGroup.LayoutParams)localObject).height = i;
     localObject = (RecyclerView.LayoutParams)paramViewGroup.itemView.getLayoutParams();
-    i = this.jdField_a_of_type_Int;
+    i = this.b;
     ((RecyclerView.LayoutParams)localObject).width = i;
     ((RecyclerView.LayoutParams)localObject).height = i;
     i = paramInt & 0xF;
     if (i == 1)
     {
-      ((RecyclerView.LayoutParams)localObject).topMargin = this.c;
-      ((RecyclerView.LayoutParams)localObject).bottomMargin = this.f;
+      ((RecyclerView.LayoutParams)localObject).topMargin = this.d;
+      ((RecyclerView.LayoutParams)localObject).bottomMargin = this.g;
     }
     else if (i == 3)
     {
       ((RecyclerView.LayoutParams)localObject).topMargin = 0;
-      ((RecyclerView.LayoutParams)localObject).bottomMargin = this.e;
+      ((RecyclerView.LayoutParams)localObject).bottomMargin = this.f;
     }
     else
     {
       ((RecyclerView.LayoutParams)localObject).topMargin = 0;
-      ((RecyclerView.LayoutParams)localObject).bottomMargin = this.f;
+      ((RecyclerView.LayoutParams)localObject).bottomMargin = this.g;
     }
     paramInt &= 0xF0;
     if (paramInt == 16)
     {
-      ((RecyclerView.LayoutParams)localObject).leftMargin = this.d;
+      ((RecyclerView.LayoutParams)localObject).leftMargin = this.e;
       ((RecyclerView.LayoutParams)localObject).rightMargin = 0;
       return paramViewGroup;
     }
     if (paramInt == 48)
     {
       ((RecyclerView.LayoutParams)localObject).leftMargin = 0;
-      ((RecyclerView.LayoutParams)localObject).rightMargin = this.d;
+      ((RecyclerView.LayoutParams)localObject).rightMargin = this.e;
       return paramViewGroup;
     }
     ((RecyclerView.LayoutParams)localObject).leftMargin = 0;
@@ -86,7 +86,7 @@ public class AEEditorStickerMaterialContentAdapter
   public void a(MaterialContentAdapter.ContentItemVH paramContentItemVH, int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
     super.a(paramContentItemVH, paramInt, paramMetaMaterial);
-    AEReportUtils.e(this.jdField_a_of_type_Boolean, paramMetaMaterial.id);
+    AEReportUtils.f(this.a, paramMetaMaterial.id);
   }
   
   public int getItemViewType(int paramInt)
@@ -116,7 +116,7 @@ public class AEEditorStickerMaterialContentAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerMaterialContentAdapter
  * JD-Core Version:    0.7.0.1
  */

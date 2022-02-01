@@ -9,20 +9,20 @@ public class SelfPlusPanelAppLoader
 {
   protected void b(BaseChatPie paramBaseChatPie)
   {
-    c(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 203);
-    if (HotPicManager.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b()) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 204);
+    d(paramBaseChatPie.ah.a);
+    a(paramBaseChatPie.ah.a, 203);
+    if (HotPicManager.a(paramBaseChatPie.d).j()) {
+      a(paramBaseChatPie.ah.a, 204);
     }
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 219);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 205);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 206);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 208);
+    a(paramBaseChatPie.ah.a, 219);
+    a(paramBaseChatPie.ah.a, 205);
+    a(paramBaseChatPie.ah.a, 206);
+    a(paramBaseChatPie.ah.a, 208);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.SelfPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

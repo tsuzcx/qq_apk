@@ -16,7 +16,7 @@ public class MiniAppApiReportProcessor
 {
   public static MiniAppApiReportBean a()
   {
-    return (MiniAppApiReportBean)QConfigManager.a().a(446);
+    return (MiniAppApiReportBean)QConfigManager.b().b(446);
   }
   
   @NonNull
@@ -87,7 +87,7 @@ public class MiniAppApiReportProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MiniAppApiReportProcessor
  * JD-Core Version:    0.7.0.1
  */

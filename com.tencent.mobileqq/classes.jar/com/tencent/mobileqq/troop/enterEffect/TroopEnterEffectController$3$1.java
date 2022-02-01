@@ -11,15 +11,15 @@ class TroopEnterEffectController$3$1
   
   public void a(ILayer paramILayer)
   {
-    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
+    if (this.a.this$0.b == null) {
       return;
     }
-    this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.1.1(this, paramILayer));
+    this.a.this$0.f.post(new TroopEnterEffectController.3.1.1(this, paramILayer));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.1
  * JD-Core Version:    0.7.0.1
  */

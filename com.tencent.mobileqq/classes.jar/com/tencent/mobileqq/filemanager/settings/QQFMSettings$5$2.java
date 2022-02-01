@@ -13,14 +13,14 @@ class QQFMSettings$5$2
   {
     synchronized ()
     {
-      this.a.this$0.b = false;
+      this.a.this$0.i = false;
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.settings.QQFMSettings.5.2
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,19 @@ package androidx.appcompat.widget;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources.Theme;
+import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.util.Log;
 import android.util.TypedValue;
+import android.view.View;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.styleable;
 import androidx.core.graphics.ColorUtils;
 
-class ThemeUtils
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
+public class ThemeUtils
 {
   static final int[] ACTIVATED_STATE_SET;
   static final int[] CHECKED_STATE_SET;
@@ -17,6 +25,7 @@ class ThemeUtils
   static final int[] NOT_PRESSED_OR_FOCUSED_STATE_SET;
   static final int[] PRESSED_STATE_SET;
   static final int[] SELECTED_STATE_SET;
+  private static final String TAG = "ThemeUtils";
   private static final int[] TEMP_ARRAY = new int[1];
   private static final ThreadLocal<TypedValue> TL_TYPED_VALUE = new ThreadLocal();
   
@@ -31,12 +40,34 @@ class ThemeUtils
     NOT_PRESSED_OR_FOCUSED_STATE_SET = new int[] { -16842919, -16842908 };
   }
   
+  public static void checkAppCompatTheme(@NonNull View paramView, @NonNull Context paramContext)
+  {
+    paramContext = paramContext.obtainStyledAttributes(R.styleable.AppCompatTheme);
+    try
+    {
+      if (!paramContext.hasValue(R.styleable.AppCompatTheme_windowActionBar))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("View ");
+        localStringBuilder.append(paramView.getClass());
+        localStringBuilder.append(" is an AppCompat widget that can only be used with a Theme.AppCompat theme (or descendant).");
+        Log.e("ThemeUtils", localStringBuilder.toString());
+      }
+      return;
+    }
+    finally
+    {
+      paramContext.recycle();
+    }
+  }
+  
+  @NonNull
   public static ColorStateList createDisabledStateList(int paramInt1, int paramInt2)
   {
     return new ColorStateList(new int[][] { DISABLED_STATE_SET, EMPTY_STATE_SET }, new int[] { paramInt2, paramInt1 });
   }
   
-  public static int getDisabledThemeAttrColor(Context paramContext, int paramInt)
+  public static int getDisabledThemeAttrColor(@NonNull Context paramContext, int paramInt)
   {
     Object localObject = getThemeAttrColorStateList(paramContext, paramInt);
     if ((localObject != null) && (((ColorStateList)localObject).isStateful())) {
@@ -47,7 +78,7 @@ class ThemeUtils
     return getThemeAttrColor(paramContext, paramInt, ((TypedValue)localObject).getFloat());
   }
   
-  public static int getThemeAttrColor(Context paramContext, int paramInt)
+  public static int getThemeAttrColor(@NonNull Context paramContext, int paramInt)
   {
     int[] arrayOfInt = TEMP_ARRAY;
     arrayOfInt[0] = paramInt;
@@ -63,13 +94,14 @@ class ThemeUtils
     }
   }
   
-  static int getThemeAttrColor(Context paramContext, int paramInt, float paramFloat)
+  static int getThemeAttrColor(@NonNull Context paramContext, int paramInt, float paramFloat)
   {
     paramInt = getThemeAttrColor(paramContext, paramInt);
     return ColorUtils.setAlphaComponent(paramInt, Math.round(Color.alpha(paramInt) * paramFloat));
   }
   
-  public static ColorStateList getThemeAttrColorStateList(Context paramContext, int paramInt)
+  @Nullable
+  public static ColorStateList getThemeAttrColorStateList(@NonNull Context paramContext, int paramInt)
   {
     Object localObject1 = TEMP_ARRAY;
     localObject1[0] = paramInt;

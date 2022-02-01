@@ -1,0 +1,892 @@
+{
+    "RIJ_daily_plague_count_cell": {
+        "view_type": "UIView",
+        "view_id": "id_plague_count_container",
+        "layout_type": "layout_linear",
+        "direction": "vertical",
+        "event_type": "cmd_url_click_card_report",
+        "default_visible": "YES",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "attributes": {
+            "setAttatchInfo:": "$jump_url"
+        },
+        "data_attributes": {
+            "setLocalInfo:": {
+                "feeds_type": "2009",
+                "jump_page": "6",
+                "jump_src": "1"
+            }
+        },
+        "subviews": [
+            {
+                "view_type": "container",
+                "layout_type": "layout_relative",
+                "margin_top": "10",
+                "margin_left": "2.5",
+                "height": {
+                    "type": "absolutely",
+                    "value": "16"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_title_icon",
+                        "margin_left": "6",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "12"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "12"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "$title_icon_url",
+                                "0"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_title",
+                        "default_visible": "YES",
+                        "margin_left": "6",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setText:": "$title",
+                            "setTextColorString:" :"#1E1E1E",
+                            "setBoldFontSizeString:": "12"
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_time",
+                        "default_visible": "YES",
+                        "margin_left": "6",
+                        "right_of_view": "id_title",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setText:": "$time",
+                            "setTextColorString:" :"#808080",
+                            "setFontSizeString:": "11"
+                        }
+                    },
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_more_icon",
+                        "align_parent_right": "YES",
+                        "align_parent_center_vertical": "YES",
+                        "default_visible": "YES",
+                        "margin_right":"8",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "12"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "7"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "http://pub.idqqimg.com/pc/misc/files/20200130/52329a1d9d6f4979bfdb0b109c098713.png",
+                                "0"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_more_label",
+                        "default_visible": "YES",
+                        "margin_right": "6",
+                        "left_of_view": "id_more_icon",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setText:": "$more_text",
+                            "setTextColorString:" :"#1E1E1E",
+                            "setFontSizeString:": "11"
+                        }
+                    }
+                ]
+            },
+            {
+                "view_type": "container",
+                "layout_type": "layout_linear",
+                "direction": "horizontal",
+                "margin_bottom": "10",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "subviews": [
+                    {
+                        "view_type": "container",
+                        "layout_type": "layout_linear",
+                        "direction": "vertical",
+                        "margin_top": "29",
+                        "margin_left": "8.5",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "46"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_country",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$row_text_1",
+                                    "setTextColorString:" :"#1E1E1E",
+                                    "setBoldFontSizeString:": "12",
+                                    "setTextAlignmentString:": "0",
+                                    "setAttatchInfo:": "$country_total_num",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            },
+                            {
+                                "view_type":"UIView",
+                                "view_id":"id_add_placehoder",
+                                "margin_left":"6",
+                                "height":{
+                                    "type": "relative",
+                                    "value": "15"
+                                },
+                                "width":{
+                                    "type": "match_parent"
+                                },
+                                "attributes":{
+                                    "setAttatchInfo:": "$country_total_add"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_oversea",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$row_text_2",
+                                    "setTextColorString:": "#1E1E1E",
+                                    "setBoldFontSizeString:": "12",
+                                    "setTextAlignmentString:": "0",
+                                    "setAttatchInfo:": "$oversea_total_num",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "container",
+                        "layout_type": "layout_linear",
+                        "direction": "vertical",
+                        "margin_top": "8.5",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "78"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_total",
+                                "default_visible": "YES",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "20.5"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$column_text_1",
+                                    "setTextColorString:": "#808080",
+                                    "setFontSizeString:": "11",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_country_total",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$row1_col1_num",
+                                    "setTextColorString:" :"#AF2631",
+                                    "setBoldFontSizeString:": "15",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "container",
+                                "layout_type": "layout_relative",
+                                "align_parent_center_horizontal": "YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_country_total_add_pre",
+                                        "visible_depend_on_brother": "id_label_country_total_add_num",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "15"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "较昨日",
+                                            "setTextColorString:": "#808080",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_country_total_add_num",
+                                        "right_of_view": "id_label_country_total_add_pre",
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$country_total_add",
+                                            "setTextColorString:": "#080808",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_oversea_total",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$row2_col1_num",
+                                    "setTextColorString:": "#AF2631",
+                                    "setBoldFontSizeString:": "15",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "container",
+                                "layout_type": "layout_relative",
+                                "align_parent_center_horizontal": "YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_oversea_total_add_pre",
+                                        "visible_depend_on_brother": "id_label_oversea_total_add_num",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "15"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "较昨日",
+                                            "setTextColorString:": "#808080",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_oversea_total_add_num",
+                                        "right_of_view": "id_label_oversea_total_add_pre",
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$oversea_total_add",
+                                            "setTextColorString:": "#080808",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "container",
+                        "layout_type": "layout_linear",
+                        "direction": "vertical",
+                        "margin_top": "8.5",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "78"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_remainder",
+                                "default_visible": "YES",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "20.5"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$column_text_2",
+                                    "setTextColorString:": "#808080",
+                                    "setFontSizeString:": "11",
+                                    "setTextAlignmentString:": "1",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_country_remainder",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$row1_col2_num",
+                                    "setTextColorString:" :"#ED8D59",
+                                    "setBoldFontSizeString:": "15",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "container",
+                                "layout_type": "layout_relative",
+                                "align_parent_center_horizontal": "YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_country_remainder_add_pre",
+                                        "visible_depend_on_brother": "id_label_country_remainder_add_num",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "15"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "较昨日",
+                                            "setTextColorString:": "#808080",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_country_remainder_add_num",
+                                        "right_of_view": "id_label_country_remainder_add_pre",
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$country_remainder_add",
+                                            "setTextColorString:": "#080808",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_oversea_remainder",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$row2_col2_num",
+                                    "setTextColorString:": "#ED8D59",
+                                    "setBoldFontSizeString:": "15",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "container",
+                                "layout_type": "layout_relative",
+                                "align_parent_center_horizontal": "YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_oversea_remainder_add_pre",
+                                        "visible_depend_on_brother": "id_label_oversea_remainder_add_num",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "15"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "较昨日",
+                                            "setTextColorString:": "#808080",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_oversea_remainder_add_num",
+                                        "right_of_view": "id_label_oversea_remainder_add_pre",
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$oversea_remainder_add",
+                                            "setTextColorString:": "#080808",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "container",
+                        "layout_type": "layout_linear",
+                        "direction": "vertical",
+                        "margin_top": "8.5",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "78"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_death",
+                                "default_visible": "YES",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "20.5"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$column_text_3",
+                                    "setTextColorString:": "#808080",
+                                    "setFontSizeString:": "11",
+                                    "setTextAlignmentString:": "1",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_country_death",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$row1_col3_num",
+                                    "setTextColorString:" : "#ED8D59",
+                                    "setBoldFontSizeString:": "15",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "container",
+                                "layout_type": "layout_relative",
+                                "align_parent_center_horizontal": "YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_country_death_add_pre",
+                                        "visible_depend_on_brother": "id_label_country_death_add_num",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "15"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "较昨日",
+                                            "setTextColorString:": "#808080",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_country_death_add_num",
+                                        "right_of_view": "id_label_country_death_add_pre",
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$country_death_add",
+                                            "setTextColorString:": "#080808",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_oversea_death",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$row2_col3_num",
+                                    "setTextColorString:": "#ED8D59",
+                                    "setBoldFontSizeString:": "15",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "container",
+                                "layout_type": "layout_relative",
+                                "align_parent_center_horizontal": "YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_oversea_death_add_pre",
+                                        "visible_depend_on_brother": "id_label_oversea_death_add_num",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "15"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "较昨日",
+                                            "setTextColorString:": "#808080",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_oversea_death_add_num",
+                                        "right_of_view": "id_label_oversea_death_add_pre",
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$oversea_death_add",
+                                            "setTextColorString:": "#080808",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "container",
+                        "layout_type": "layout_linear",
+                        "direction": "vertical",
+                        "margin_top": "8.5",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "78"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_cured",
+                                "default_visible": "YES",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "20.5"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$column_text_4",
+                                    "setTextColorString:": "#808080",
+                                    "setFontSizeString:": "11",
+                                    "setTextAlignmentString:": "1",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_country_cured",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$row1_col4_num",
+                                    "setTextColorString:" :"#ED8D59",
+                                    "setBoldFontSizeString:": "15",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "container",
+                                "layout_type": "layout_relative",
+                                "align_parent_center_horizontal": "YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_country_cured_add_pre",
+                                        "visible_depend_on_brother": "id_label_country_cured_add_num",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "15"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "较昨日",
+                                            "setTextColorString:": "#808080",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_country_cured_add_num",
+                                        "right_of_view": "id_label_country_cured_add_pre",
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$country_cured_add",
+                                            "setTextColorString:": "#080808",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_label_oversea_cured",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$row2_col4_num",
+                                    "setTextColorString:": "#ED8D59",
+                                    "setBoldFontSizeString:": "15",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "container",
+                                "layout_type": "layout_relative",
+                                "align_parent_center_horizontal": "YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_oversea_cured_add_pre",
+                                        "visible_depend_on_brother": "id_label_oversea_cured_add_num",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "15"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "较昨日",
+                                            "setTextColorString:": "#808080",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_label_oversea_cured_add_num",
+                                        "right_of_view": "id_label_oversea_cured_add_pre",
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$oversea_cured_add",
+                                            "setTextColorString:": "#080808",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "view_type":"UIView",
+                "view_id":"id_separator",
+                "default_visible": "YES",
+                "margin_left":"6",
+                "height":{
+                    "type":"absolutely","value":"0.5"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"359"
+                },
+                "attributes":{
+                    "setBackgroundColorString:":"#E5E5E5"
+                }
+            }
+        ]
+    }
+}

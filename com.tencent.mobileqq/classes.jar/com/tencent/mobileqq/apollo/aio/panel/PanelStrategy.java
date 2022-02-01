@@ -11,18 +11,17 @@ import java.util.List;
 
 public abstract class PanelStrategy
 {
-  protected int a;
-  protected Context a;
-  protected SessionInfo a;
   protected QQAppInterface a;
-  private Runnable a;
+  protected Context b;
+  protected SessionInfo c;
+  protected int d = -1;
+  private Runnable e;
   
   public PanelStrategy(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.a = paramQQAppInterface;
+    this.b = paramContext;
+    this.c = paramSessionInfo;
   }
   
   protected int a(List<ApolloViewBinder> paramList, int paramInt)
@@ -36,7 +35,7 @@ public abstract class PanelStrategy
         ApolloViewBinder localApolloViewBinder = (ApolloViewBinder)paramList.get(i);
         k = j;
         if (localApolloViewBinder != null) {
-          k = j + localApolloViewBinder.a();
+          k = j + localApolloViewBinder.c();
         }
         i += 1;
       }
@@ -53,26 +52,26 @@ public abstract class PanelStrategy
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
+    if (this.e == null) {
       return;
     }
-    ThreadManagerV2.getUIHandlerV2().post(this.jdField_a_of_type_JavaLangRunnable);
+    ThreadManagerV2.getUIHandlerV2().post(this.e);
   }
-  
-  abstract void a(int paramInt1, int paramInt2);
   
   public void a(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    this.e = paramRunnable;
   }
   
   abstract void a(List<ApolloViewBinder> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean1, boolean paramBoolean2);
   
   abstract boolean a(int paramInt);
+  
+  abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.PanelStrategy
  * JD-Core Version:    0.7.0.1
  */

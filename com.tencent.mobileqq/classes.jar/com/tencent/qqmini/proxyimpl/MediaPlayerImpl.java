@@ -19,6 +19,11 @@ public class MediaPlayerImpl
 {
   OskExoMediaPlayer a = new OskExoMediaPlayer();
   
+  public int getBufferPercent()
+  {
+    return 0;
+  }
+  
   public long getCurrentPosition()
   {
     return this.a.getCurrentPosition();
@@ -47,6 +52,11 @@ public class MediaPlayerImpl
   public boolean isPlaying()
   {
     return this.a.isPlaying();
+  }
+  
+  public boolean isSuperPlayer()
+  {
+    return false;
   }
   
   public void pause()
@@ -90,6 +100,11 @@ public class MediaPlayerImpl
   public void setDisplay(SurfaceHolder paramSurfaceHolder)
   {
     this.a.setDisplay(paramSurfaceHolder);
+  }
+  
+  public void setDrmDataSource(String paramString1, String paramString2, String paramString3)
+  {
+    this.a.setDataSource(paramString1);
   }
   
   public void setLooping(boolean paramBoolean)
@@ -177,7 +192,7 @@ public class MediaPlayerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MediaPlayerImpl
  * JD-Core Version:    0.7.0.1
  */

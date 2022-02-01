@@ -16,18 +16,18 @@ class TroopApiPlugin$3$1
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqJspTroopApiPlugin.TAG;
+      String str = this.a.b.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onLocationFinish errCode = ");
       localStringBuilder.append(paramInt);
       QLog.e(str, 2, localStringBuilder.toString());
     }
-    TroopApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspTroopApiPlugin, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
+    TroopApiPlugin.a(this.a.b, paramSosoLbsInfo, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.TroopApiPlugin.3.1
  * JD-Core Version:    0.7.0.1
  */

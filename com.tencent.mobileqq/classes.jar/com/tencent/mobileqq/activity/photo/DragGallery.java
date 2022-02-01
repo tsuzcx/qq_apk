@@ -17,11 +17,6 @@ public class DragGallery
     super(paramContext, paramAttributeSet);
   }
   
-  public MotionEvent a()
-  {
-    return this.a;
-  }
-  
   protected void disPatchToParent()
   {
     float f;
@@ -50,6 +45,11 @@ public class DragGallery
     }
   }
   
+  public MotionEvent getSingleTapConfirmedEvent()
+  {
+    return this.a;
+  }
+  
   public boolean onDown(MotionEvent paramMotionEvent)
   {
     getParent().requestDisallowInterceptTouchEvent(true);
@@ -64,7 +64,7 @@ public class DragGallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.DragGallery
  * JD-Core Version:    0.7.0.1
  */

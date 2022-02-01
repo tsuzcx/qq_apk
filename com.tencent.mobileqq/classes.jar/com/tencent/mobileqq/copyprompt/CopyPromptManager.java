@@ -19,37 +19,37 @@ import mqq.manager.Manager;
 public class CopyPromptManager
   implements Manager
 {
-  private ClipboardManager jdField_a_of_type_AndroidContentClipboardManager;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ClipboardManager a;
+  private QQAppInterface b;
+  private SharedPreferences c = null;
   
   public CopyPromptManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
-  private ClipboardManager a()
+  private SharedPreferences b()
   {
-    if (this.jdField_a_of_type_AndroidContentClipboardManager == null) {
-      this.jdField_a_of_type_AndroidContentClipboardManager = ((ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getSystemService("clipboard"));
+    if (this.c == null) {
+      this.c = PreferenceManager.getDefaultSharedPreferences(this.b.getApp());
     }
-    return this.jdField_a_of_type_AndroidContentClipboardManager;
+    return this.c;
   }
   
-  private SharedPreferences a()
+  private ClipboardManager c()
   {
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+    if (this.a == null) {
+      this.a = ((ClipboardManager)this.b.getApp().getApplicationContext().getSystemService("clipboard"));
     }
-    return this.jdField_a_of_type_AndroidContentSharedPreferences;
+    return this.a;
   }
   
   public String a()
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      long l1 = a().getLong("KEY_LAST_COPY_TIME", 0L);
-      Object localObject = a();
+      long l1 = b().getLong("KEY_LAST_COPY_TIME", 0L);
+      Object localObject = c();
       ClipboardMonitor.getPrimaryClipDescription((ClipboardManager)localObject);
       localObject = ((ClipboardManager)localObject).getPrimaryClipDescription();
       if (localObject != null)
@@ -58,12 +58,12 @@ public class CopyPromptManager
         long l3 = System.currentTimeMillis();
         if ((l2 != l1) && (l3 - l2 < 180000L))
         {
-          a().edit().putLong("KEY_LAST_COPY_TIME", l2).apply();
-          localObject = a();
+          b().edit().putLong("KEY_LAST_COPY_TIME", l2).apply();
+          localObject = c();
           ClipboardMonitor.hasPrimaryClip((ClipboardManager)localObject);
           if (((ClipboardManager)localObject).hasPrimaryClip())
           {
-            localObject = a();
+            localObject = c();
             ClipboardMonitor.getPrimaryClip((ClipboardManager)localObject);
             localObject = ((ClipboardManager)localObject).getPrimaryClip();
             if ((localObject != null) && (((ClipData)localObject).getItemCount() > 0))
@@ -93,12 +93,12 @@ public class CopyPromptManager
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = null;
+    this.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.copyprompt.CopyPromptManager
  * JD-Core Version:    0.7.0.1
  */

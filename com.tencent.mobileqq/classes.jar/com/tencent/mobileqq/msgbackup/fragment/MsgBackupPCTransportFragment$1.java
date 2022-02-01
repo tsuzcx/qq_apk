@@ -15,7 +15,7 @@ class MsgBackupPCTransportFragment$1
   
   public void onItemSelect(View paramView, int paramInt)
   {
-    int i = MsgBackupAuthProcessor.a().a();
+    int i = MsgBackupAuthProcessor.a().c();
     if (paramInt != 2)
     {
       if (paramInt != 8) {
@@ -28,16 +28,16 @@ class MsgBackupPCTransportFragment$1
         paramView.append("backup is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= ");
         paramView.append(MsgBackupManager.a);
         paramView.append(", curSpeed = ");
-        paramView.append(this.a.a);
+        paramView.append(this.a.Q);
         paramView.append(", hasFinishedCount = ");
-        paramView.append(this.a.d);
+        paramView.append(this.a.S);
         QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, paramView.toString());
       }
-      MsgBackupManager.a().a().a(null);
-      MsgBackupManager.a().a(this.a.a, this.a.d, i, this.a.getQBaseActivity());
-      if (this.a.b == 1)
+      MsgBackupManager.a().d().a(null);
+      MsgBackupManager.a().a(this.a.Q, this.a.S, i, this.a.getQBaseActivity());
+      if (this.a.K == 1)
       {
-        if (this.a.f) {
+        if (this.a.ac) {
           MsgBackupReporter.a("0X800A260");
         }
       }
@@ -53,16 +53,16 @@ class MsgBackupPCTransportFragment$1
         paramView.append("page is in pc Link page! click cancel! bizType = ");
         paramView.append(i);
         paramView.append(", pcHandler = ");
-        paramView.append(this.a.f);
+        paramView.append(this.a.ac);
         QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, paramView.toString());
       }
-      this.a.aJ_();
+      this.a.de_();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCTransportFragment.1
  * JD-Core Version:    0.7.0.1
  */

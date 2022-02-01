@@ -13,12 +13,11 @@ import com.tencent.qphone.base.util.QLog;
 public class StrangerAddFriendHelper
   extends AddFriendHelper
 {
-  private ShieldListObserver a;
+  private ShieldListObserver k = new StrangerAddFriendHelper.1(this);
   
   public StrangerAddFriendHelper(AIOContext paramAIOContext)
   {
     super(paramAIOContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new StrangerAddFriendHelper.1(this);
   }
   
   protected boolean a()
@@ -26,22 +25,25 @@ public class StrangerAddFriendHelper
     return true;
   }
   
-  protected boolean b()
+  protected boolean h()
   {
-    if (((FullScreenInputHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(24)).c()) {
+    if (((FullScreenInputHelper)this.a.a(24)).e()) {
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.b()) {
+    if (this.a.l()) {
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006)
+    if (this.e.a == 10007) {
+      return false;
+    }
+    if (this.e.a == 1006)
     {
-      PhoneContact localPhoneContact = ((IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).queryContactByCodeNumber(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      PhoneContact localPhoneContact = ((IPhoneContactService)this.b.getRuntimeService(IPhoneContactService.class, "")).queryContactByCodeNumber(this.e.b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("StrangerChatPie.showorhideAddFriend curFriendUin=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.e.b);
         localStringBuilder.append(" contact=");
         String str;
         if (localPhoneContact == null) {
@@ -56,10 +58,10 @@ public class StrangerAddFriendHelper
         return false;
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10004) {
+    if (this.e.a == 10004) {
       return false;
     }
-    return !((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    return !((FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(this.e.b);
   }
   
   public void onMoveToState(int paramInt)
@@ -70,15 +72,15 @@ public class StrangerAddFriendHelper
       if (paramInt != 15) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver);
+      this.b.removeObserver(this.k);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver);
+    this.b.addObserver(this.k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.StrangerAddFriendHelper
  * JD-Core Version:    0.7.0.1
  */

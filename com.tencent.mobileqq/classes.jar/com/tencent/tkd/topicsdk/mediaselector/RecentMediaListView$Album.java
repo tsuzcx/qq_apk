@@ -11,29 +11,23 @@ import org.jetbrains.annotations.Nullable;
 public final class RecentMediaListView$Album
 {
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NotNull
-  private final ArrayList<Media> jdField_a_of_type_JavaUtilArrayList;
+  private final String a;
   @NotNull
   private final String b;
+  @NotNull
+  private final ArrayList<Media> c;
   
   public RecentMediaListView$Album(@NotNull String paramString1, @NotNull String paramString2, @NotNull ArrayList<Media> paramArrayList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.c = paramArrayList;
   }
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @NotNull
-  public final ArrayList<Media> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.a;
   }
   
   @NotNull
@@ -42,13 +36,19 @@ public final class RecentMediaListView$Album
     return this.b;
   }
   
+  @NotNull
+  public final ArrayList<Media> c()
+  {
+    return this.c;
+  }
+  
   public boolean equals(@Nullable Object paramObject)
   {
     if (this != paramObject) {
       if ((paramObject instanceof Album))
       {
         paramObject = (Album)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaUtilArrayList, paramObject.jdField_a_of_type_JavaUtilArrayList))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c))) {}
       }
       else
       {
@@ -60,7 +60,7 @@ public final class RecentMediaListView$Album
   
   public int hashCode()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     int k = 0;
     int i;
     if (localObject != null) {
@@ -75,7 +75,7 @@ public final class RecentMediaListView$Album
     } else {
       j = 0;
     }
-    localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject = this.c;
     if (localObject != null) {
       k = localObject.hashCode();
     }
@@ -87,18 +87,18 @@ public final class RecentMediaListView$Album
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Album(name=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", dirPath=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", medias=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.RecentMediaListView.Album
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true">
-        <shape>
-            <corners android:radius="12.0dip" />
-            <size android:height="38.0dip" />
-            <solid android:color="#ff00cafc" />
-        </shape>
+    <item android:state_pressed="true">
+        <bitmap android:src="@drawable/ibc" android:alpha="0.5" />
     </item>
     <item>
-        <shape>
-            <corners android:radius="12.0dip" />
-            <size android:height="38.0dip" />
-            <solid android:color="#ffffffff" />
-        </shape>
+        <bitmap android:src="@drawable/ibc" android:alpha="1.0" />
     </item>
 </selector>

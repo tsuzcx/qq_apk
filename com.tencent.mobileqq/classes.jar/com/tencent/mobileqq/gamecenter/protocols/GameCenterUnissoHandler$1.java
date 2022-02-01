@@ -20,7 +20,7 @@ class GameCenterUnissoHandler$1
   {
     if (QLog.isColorLevel())
     {
-      String str = GameCenterUnissoHandler.a();
+      String str = GameCenterUnissoHandler.g();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("WadlTrpcListener onTrpcRsp cmd:");
       localStringBuilder.append(paramString);
@@ -28,14 +28,24 @@ class GameCenterUnissoHandler$1
       localStringBuilder.append(paramLong);
       QLog.i(str, 1, localStringBuilder.toString());
     }
-    if ("/v1/33".equals(paramString)) {
+    if ("/v1/33".equals(paramString))
+    {
       this.a.a(paramIntent, paramLong, paramTrpcInovkeRsp);
+      return;
+    }
+    if ("/v1/216".equals(paramString))
+    {
+      GameCenterUnissoHandler.a(this.a, paramIntent, paramLong, paramTrpcInovkeRsp);
+      return;
+    }
+    if ("/v1/221".equals(paramString)) {
+      this.a.b(paramIntent, paramLong, paramTrpcInovkeRsp);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.protocols.GameCenterUnissoHandler.1
  * JD-Core Version:    0.7.0.1
  */

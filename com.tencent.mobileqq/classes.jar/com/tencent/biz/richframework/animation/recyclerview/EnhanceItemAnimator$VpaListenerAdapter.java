@@ -1,7 +1,7 @@
 package com.tencent.biz.richframework.animation.recyclerview;
 
-import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.view.View;
+import androidx.core.view.ViewPropertyAnimatorListener;
 
 class EnhanceItemAnimator$VpaListenerAdapter
   implements ViewPropertyAnimatorListener

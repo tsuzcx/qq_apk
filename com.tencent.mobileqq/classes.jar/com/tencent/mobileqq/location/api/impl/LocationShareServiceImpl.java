@@ -74,7 +74,7 @@ public class LocationShareServiceImpl
   
   public boolean isCurrentUserSharing()
   {
-    return LocationShareLocationManager.a().a();
+    return LocationShareLocationManager.a().b();
   }
   
   public boolean isSessionSharingLocation(int paramInt, String paramString)
@@ -242,12 +242,12 @@ public class LocationShareServiceImpl
   
   public void requestOperateRoom(int paramInt1, int paramInt2, String paramString)
   {
-    LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomOperateHandler.a(paramInt1, paramInt2, paramString);
+    LocationShareRoomManager.a().b.a(paramInt1, paramInt2, paramString);
   }
   
   public void requestQueryRoom(int paramInt, String paramString)
   {
-    LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomQueryHandler.a(paramInt, paramString);
+    LocationShareRoomManager.a().c.a(paramInt, paramString);
   }
   
   public void stopLocationSharing(int paramInt, String paramString, boolean paramBoolean)
@@ -258,7 +258,7 @@ public class LocationShareServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.api.impl.LocationShareServiceImpl
  * JD-Core Version:    0.7.0.1
  */

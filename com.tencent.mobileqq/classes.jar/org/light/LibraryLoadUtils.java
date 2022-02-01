@@ -71,7 +71,7 @@ public class LibraryLoadUtils
       localStringBuilder.append(paramString);
       localStringBuilder.append(" fail! Error: ");
       localStringBuilder.append(localThrowable.getMessage());
-      Log.i(str, localStringBuilder.toString());
+      Log.e(str, localStringBuilder.toString());
     }
     return false;
   }
@@ -122,7 +122,7 @@ public class LibraryLoadUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.LibraryLoadUtils
  * JD-Core Version:    0.7.0.1
  */

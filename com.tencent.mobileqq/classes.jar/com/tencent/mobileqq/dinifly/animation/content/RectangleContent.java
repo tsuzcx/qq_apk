@@ -3,7 +3,7 @@ package com.tencent.mobileqq.dinifly.animation.content;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
@@ -11,7 +11,6 @@ import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation.Ani
 import com.tencent.mobileqq.dinifly.animation.keyframe.FloatKeyframeAnimation;
 import com.tencent.mobileqq.dinifly.model.KeyPath;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
-import com.tencent.mobileqq.dinifly.model.animatable.AnimatablePointValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableValue;
 import com.tencent.mobileqq.dinifly.model.content.RectangleShape;
 import com.tencent.mobileqq.dinifly.model.content.ShapeTrimPath.Type;
@@ -184,7 +183,7 @@ public class RectangleContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.RectangleContent
  * JD-Core Version:    0.7.0.1
  */

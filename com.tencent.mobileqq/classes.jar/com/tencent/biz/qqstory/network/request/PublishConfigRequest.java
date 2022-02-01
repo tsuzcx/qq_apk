@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 public class PublishConfigRequest
   extends NetworkRequest<PublishConfigResponse>
 {
-  public static final String a = StoryApi.a("StorySvc.video_publish_config_get");
+  public static final String e = StoryApi.a("StorySvc.video_publish_config_get");
   
   public PublishConfigResponse a(byte[] paramArrayOfByte)
   {
@@ -29,17 +29,17 @@ public class PublishConfigRequest
   
   public String a()
   {
-    return a;
+    return e;
   }
   
-  protected byte[] a()
+  protected byte[] c()
   {
     return new qqstory_service.ReqGetPublishConfig().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.PublishConfigRequest
  * JD-Core Version:    0.7.0.1
  */

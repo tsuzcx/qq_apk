@@ -11,14 +11,14 @@ class OpenCardContainer$1
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(true);
-    this.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter.a();
+    this.a.k.setMainAccountSelect(true);
+    this.a.l.a();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenCardContainer.1
  * JD-Core Version:    0.7.0.1
  */

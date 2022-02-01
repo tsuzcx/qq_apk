@@ -8,11 +8,11 @@ public class FabTransformationBehavior$FabTransformationSpec
 {
   @Nullable
   public MotionSpec a;
-  public Positioning a;
+  public Positioning b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transformation.FabTransformationBehavior.FabTransformationSpec
  * JD-Core Version:    0.7.0.1
  */

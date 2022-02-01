@@ -14,15 +14,15 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 public class AECircleCaptureProgressView
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int = AIOUtils.b(98.0F, getResources());
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private AnimationQIMCircleProgress jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress;
+  private ImageView a;
+  private ImageView b;
+  private AnimationQIMCircleProgress c;
   @NonNull
-  private final float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 1.0F };
-  private int jdField_b_of_type_Int = AIOUtils.b(98.0F, getResources());
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private final float[] d = { 0.0F, 1.0F };
   @NonNull
-  private float[] jdField_b_of_type_ArrayOfFloat = { 0.0F, 1.0F };
+  private float[] e = { 0.0F, 1.0F };
+  private int f = AIOUtils.b(98.0F, getResources());
+  private int g = AIOUtils.b(98.0F, getResources());
   
   public AECircleCaptureProgressView(@NonNull Context paramContext)
   {
@@ -47,38 +47,29 @@ public class AECircleCaptureProgressView
   
   private void a(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(paramContext).inflate(2064318472, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2064122309));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2064122315));
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress = ((AnimationQIMCircleProgress)findViewById(2064121958));
-  }
-  
-  public int a()
-  {
-    AnimationQIMCircleProgress localAnimationQIMCircleProgress = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress;
-    if (localAnimationQIMCircleProgress != null) {
-      return localAnimationQIMCircleProgress.getMode();
-    }
-    return 0;
+    LayoutInflater.from(paramContext).inflate(2064056332, this, true);
+    this.a = ((ImageView)findViewById(2063991189));
+    this.b = ((ImageView)findViewById(2063991196));
+    this.c = ((AnimationQIMCircleProgress)findViewById(2063990889));
   }
   
   public void a(float paramFloat)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress;
+    Object localObject = this.c;
     if (localObject == null) {
       return;
     }
     localObject = ((AnimationQIMCircleProgress)localObject).getLayoutParams();
-    int i = this.jdField_b_of_type_Int;
+    int i = this.g;
     ((ViewGroup.LayoutParams)localObject).width = ((int)(i * paramFloat));
     ((ViewGroup.LayoutParams)localObject).height = ((int)(i * paramFloat));
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setAlpha(a(AECircleCaptureStyle.a(paramFloat), this.jdField_b_of_type_ArrayOfFloat));
+    this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.c.setAlpha(a(AECircleCaptureStyle.a(paramFloat), this.e));
   }
   
   public void a(int paramInt)
   {
-    AnimationQIMCircleProgress localAnimationQIMCircleProgress = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress;
+    AnimationQIMCircleProgress localAnimationQIMCircleProgress = this.c;
     if (localAnimationQIMCircleProgress != null) {
       localAnimationQIMCircleProgress.changeMode(paramInt);
     }
@@ -86,7 +77,7 @@ public class AECircleCaptureProgressView
   
   public void a(boolean paramBoolean)
   {
-    AnimationQIMCircleProgress localAnimationQIMCircleProgress = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress;
+    AnimationQIMCircleProgress localAnimationQIMCircleProgress = this.c;
     if (localAnimationQIMCircleProgress != null) {
       localAnimationQIMCircleProgress.a(paramBoolean);
     }
@@ -94,43 +85,52 @@ public class AECircleCaptureProgressView
   
   public void a(boolean paramBoolean, @NonNull AECircleCaptureStyle paramAECircleCaptureStyle)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    Object localObject = this.a;
     if (localObject != null) {
-      ((ImageView)localObject).setImageResource(paramAECircleCaptureStyle.jdField_a_of_type_Int);
+      ((ImageView)localObject).setImageResource(paramAECircleCaptureStyle.i);
     }
-    localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+    localObject = this.b;
     if (localObject != null) {
-      ((ImageView)localObject).setImageResource(paramAECircleCaptureStyle.d);
+      ((ImageView)localObject).setImageResource(paramAECircleCaptureStyle.l);
     }
-    this.jdField_b_of_type_ArrayOfFloat = paramAECircleCaptureStyle.jdField_a_of_type_ArrayOfFloat;
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress;
+    this.e = paramAECircleCaptureStyle.o;
+    localObject = this.c;
     if (localObject != null)
     {
       ((AnimationQIMCircleProgress)localObject).a(paramBoolean, paramAECircleCaptureStyle);
-      this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setAlpha(this.jdField_b_of_type_ArrayOfFloat[0]);
+      this.c.setAlpha(this.e[0]);
     }
+  }
+  
+  public int getMode()
+  {
+    AnimationQIMCircleProgress localAnimationQIMCircleProgress = this.c;
+    if (localAnimationQIMCircleProgress != null) {
+      return localAnimationQIMCircleProgress.getMode();
+    }
+    return 0;
   }
   
   public void setCenterScaleValue(float paramFloat)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
     ((ImageView)localObject).getLayoutParams();
-    localObject = this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
-    int i = this.jdField_a_of_type_Int;
+    localObject = this.b.getLayoutParams();
+    int i = this.f;
     ((ViewGroup.LayoutParams)localObject).width = ((int)(i * paramFloat));
     ((ViewGroup.LayoutParams)localObject).height = ((int)(i * paramFloat));
-    this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    paramFloat = a(AECircleCaptureStyle.b(paramFloat), this.jdField_a_of_type_ArrayOfFloat);
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(paramFloat);
-    this.jdField_b_of_type_AndroidWidgetImageView.setAlpha(1.0F - paramFloat);
+    this.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    paramFloat = a(AECircleCaptureStyle.b(paramFloat), this.d);
+    this.a.setAlpha(paramFloat);
+    this.b.setAlpha(1.0F - paramFloat);
   }
   
   public void setCenterView()
   {
-    AnimationQIMCircleProgress localAnimationQIMCircleProgress = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress;
+    AnimationQIMCircleProgress localAnimationQIMCircleProgress = this.c;
     if (localAnimationQIMCircleProgress != null) {
       localAnimationQIMCircleProgress.setCenterView();
     }
@@ -138,7 +138,7 @@ public class AECircleCaptureProgressView
   
   public void setProgress(float paramFloat)
   {
-    AnimationQIMCircleProgress localAnimationQIMCircleProgress = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress;
+    AnimationQIMCircleProgress localAnimationQIMCircleProgress = this.c;
     if (localAnimationQIMCircleProgress != null) {
       localAnimationQIMCircleProgress.setProgress(paramFloat);
     }
@@ -146,7 +146,7 @@ public class AECircleCaptureProgressView
   
   public void setStrokeWidth(float paramFloat)
   {
-    AnimationQIMCircleProgress localAnimationQIMCircleProgress = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress;
+    AnimationQIMCircleProgress localAnimationQIMCircleProgress = this.c;
     if (localAnimationQIMCircleProgress != null) {
       localAnimationQIMCircleProgress.setStrokeWidth(paramFloat);
     }
@@ -154,7 +154,7 @@ public class AECircleCaptureProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.view.AECircleCaptureProgressView
  * JD-Core Version:    0.7.0.1
  */

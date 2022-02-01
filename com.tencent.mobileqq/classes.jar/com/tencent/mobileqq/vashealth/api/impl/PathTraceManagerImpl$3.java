@@ -20,10 +20,10 @@ class PathTraceManagerImpl$3
     if (QLog.isColorLevel()) {
       QLog.d("PathTraceManager", 1, "voice down");
     }
-    paramDownloadTask = new File(this.jdField_a_of_type_JavaLangString);
+    paramDownloadTask = new File(this.a);
     try
     {
-      ZipUtils.unZipFile(paramDownloadTask, PathTraceManagerImpl.access$600(this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl));
+      ZipUtils.unZipFile(paramDownloadTask, PathTraceManagerImpl.access$600(this.c));
       i = 1;
     }
     catch (IOException paramDownloadTask)
@@ -40,7 +40,7 @@ class PathTraceManagerImpl$3
       QLog.d("PathTraceManager", 1, "unzip success");
       if (this.b != null)
       {
-        paramDownloadTask = PathTraceManagerImpl.access$600(this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl);
+        paramDownloadTask = PathTraceManagerImpl.access$600(this.c);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(this.b);
         localStringBuilder.append(".mp3");
@@ -51,7 +51,7 @@ class PathTraceManagerImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.api.impl.PathTraceManagerImpl.3
  * JD-Core Version:    0.7.0.1
  */

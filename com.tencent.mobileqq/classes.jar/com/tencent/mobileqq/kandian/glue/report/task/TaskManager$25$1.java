@@ -8,17 +8,17 @@ class TaskManager$25$1
   public void run()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    JSContext localJSContext = this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext;
+    JSContext localJSContext = this.a;
     if (localJSContext != null)
     {
-      localJSContext.a(this.jdField_a_of_type_JavaLangString, localStringBuffer);
-      TaskManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTaskManager$25.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTaskManager, localStringBuffer, this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTaskManager$25.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTask, this.jdField_a_of_type_JavaLangString);
+      localJSContext.a(this.b, localStringBuffer);
+      TaskManager.a(this.c.b, localStringBuffer, this.c.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.task.TaskManager.25.1
  * JD-Core Version:    0.7.0.1
  */

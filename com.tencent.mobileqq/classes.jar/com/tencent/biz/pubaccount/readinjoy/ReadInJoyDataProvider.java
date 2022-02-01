@@ -18,15 +18,15 @@ public class ReadInJoyDataProvider
   public static final Uri b;
   public static final Uri c;
   public static final Uri d;
-  private UriMatcher jdField_a_of_type_AndroidContentUriMatcher;
-  private ReadInJoyDataProvider.ReadInJoyDBHelper jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyDataProvider$ReadInJoyDBHelper;
+  private UriMatcher e;
+  private ReadInJoyDataProvider.ReadInJoyDBHelper f;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(ReadInJoyDataProviderConstants.a);
     localStringBuilder.append("subscribe_msg_records");
-    jdField_a_of_type_AndroidNetUri = Uri.parse(localStringBuilder.toString());
+    a = Uri.parse(localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(ReadInJoyDataProviderConstants.a);
     localStringBuilder.append("notify_msg_records");
@@ -81,16 +81,16 @@ public class ReadInJoyDataProvider
       }
       return null;
     }
-    paramUri = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyDataProvider$ReadInJoyDBHelper;
+    paramUri = this.f;
     if ((paramUri == null) || (!paramUri.a.equals(str)))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyDataProvider$ReadInJoyDBHelper = new ReadInJoyDataProvider.ReadInJoyDBHelper(this, ((AppRuntime)localObject1).getApplication().getApplicationContext(), (String)localObject2);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyDataProvider$ReadInJoyDBHelper.a = str;
+      this.f = new ReadInJoyDataProvider.ReadInJoyDBHelper(this, ((AppRuntime)localObject1).getApplication().getApplicationContext(), (String)localObject2);
+      this.f.a = str;
     }
     if (paramBoolean) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyDataProvider$ReadInJoyDBHelper.getReadableDatabase();
+      return this.f.getReadableDatabase();
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyDataProvider$ReadInJoyDBHelper.getWritableDatabase();
+    return this.f.getWritableDatabase();
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
@@ -100,7 +100,7 @@ public class ReadInJoyDataProvider
     if (localSQLiteDatabase == null) {
       return -1;
     }
-    switch (this.jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
+    switch (this.e.match(paramUri))
     {
     case 2002: 
     default: 
@@ -129,7 +129,7 @@ public class ReadInJoyDataProvider
       return null;
     }
     long l;
-    switch (this.jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
+    switch (this.e.match(paramUri))
     {
     case 2002: 
     default: 
@@ -156,12 +156,12 @@ public class ReadInJoyDataProvider
   public boolean onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidContentUriMatcher = new UriMatcher(-1);
-    this.jdField_a_of_type_AndroidContentUriMatcher.addURI("qq.readinjoy", "subscribe_msg_records", 2000);
-    this.jdField_a_of_type_AndroidContentUriMatcher.addURI("qq.readinjoy", "notify_msg_records", 2001);
-    this.jdField_a_of_type_AndroidContentUriMatcher.addURI("qq.readinjoy", "recent_data", 2002);
-    this.jdField_a_of_type_AndroidContentUriMatcher.addURI("qq.readinjoy", "feeds_msg_records", 2003);
-    this.jdField_a_of_type_AndroidContentUriMatcher.addURI("qq.readinjoy", "common_records", 2004);
+    this.e = new UriMatcher(-1);
+    this.e.addURI("qq.readinjoy", "subscribe_msg_records", 2000);
+    this.e.addURI("qq.readinjoy", "notify_msg_records", 2001);
+    this.e.addURI("qq.readinjoy", "recent_data", 2002);
+    this.e.addURI("qq.readinjoy", "feeds_msg_records", 2003);
+    this.e.addURI("qq.readinjoy", "common_records", 2004);
     return true;
   }
   
@@ -172,7 +172,7 @@ public class ReadInJoyDataProvider
     if (localSQLiteDatabase == null) {
       return null;
     }
-    switch (this.jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
+    switch (this.e.match(paramUri))
     {
     case 2002: 
     default: 
@@ -194,7 +194,7 @@ public class ReadInJoyDataProvider
     if (localSQLiteDatabase == null) {
       return -1;
     }
-    int i = this.jdField_a_of_type_AndroidContentUriMatcher.match(paramUri);
+    int i = this.e.match(paramUri);
     if (i != 2003)
     {
       if (i != 2004) {
@@ -207,7 +207,7 @@ public class ReadInJoyDataProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ReadInJoyDataProvider
  * JD-Core Version:    0.7.0.1
  */

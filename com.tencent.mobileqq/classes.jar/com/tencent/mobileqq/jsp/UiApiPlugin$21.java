@@ -27,8 +27,8 @@ class UiApiPlugin$21
     Object localObject1 = null;
     try
     {
-      Object localObject2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
-      JSONArray localJSONArray = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("list");
+      Object localObject2 = this.a.optString("callback");
+      JSONArray localJSONArray = this.a.optJSONArray("list");
       if (localJSONArray != null)
       {
         if (i >= localJSONArray.length()) {
@@ -36,7 +36,7 @@ class UiApiPlugin$21
         }
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs((String)localObject2, new String[] { String.valueOf(i + 1) });
+          this.c.callJs((String)localObject2, new String[] { String.valueOf(i + 1) });
           return;
         }
         localObject2 = localJSONArray.optJSONObject(i);
@@ -81,7 +81,7 @@ class UiApiPlugin$21
           return;
         }
         paramMenuItem = new Bundle();
-        Object localObject3 = this.jdField_a_of_type_AndroidAppActivity;
+        Object localObject3 = this.b;
         if ((localObject3 instanceof BasePluginActivity))
         {
           localObject3 = new Intent(((BasePluginActivity)localObject3).getOutActivity(), QQBrowserActivity.class);
@@ -89,7 +89,7 @@ class UiApiPlugin$21
           ((Intent)localObject3).putExtra("url", (String)localObject1);
           ((Intent)localObject3).putExtra("startOpenPageTime", System.currentTimeMillis());
           ((Intent)localObject3).setFlags(0);
-          this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject3);
+          this.b.startActivity((Intent)localObject3);
           return;
         }
         localObject3 = new Intent((Context)localObject3, localObject3.getClass());
@@ -97,16 +97,16 @@ class UiApiPlugin$21
         ((Intent)localObject3).putExtra("url", (String)localObject1);
         ((Intent)localObject3).putExtra("startOpenPageTime", System.currentTimeMillis());
         ((Intent)localObject3).setFlags(0);
-        this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject3);
+        this.b.startActivity((Intent)localObject3);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().loadUrl((String)localObject1);
+      this.c.mRuntime.a().loadUrl((String)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.21
  * JD-Core Version:    0.7.0.1
  */

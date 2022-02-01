@@ -36,12 +36,12 @@ class C2CRoamMsgFetcher$3
     } else {
       C2CRoamMsgFetcher.a(this.a, false);
     }
-    C2CRoamMsgFetcher.c(this.a).b();
+    C2CRoamMsgFetcher.c(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.roam.C2CRoamMsgFetcher.3
  * JD-Core Version:    0.7.0.1
  */

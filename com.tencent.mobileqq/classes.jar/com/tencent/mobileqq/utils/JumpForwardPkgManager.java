@@ -20,13 +20,13 @@ import org.json.JSONObject;
 
 public class JumpForwardPkgManager
 {
-  private static JumpForwardPkgManager jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager;
-  private ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static JumpForwardPkgManager b;
+  private ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
   
   private JumpForwardPkgManager()
   {
-    String str = a();
-    int i = a();
+    String str = d();
+    int i = b();
     if (!TextUtils.isEmpty(str))
     {
       if (QLog.isColorLevel())
@@ -36,48 +36,65 @@ public class JumpForwardPkgManager
         localStringBuilder.append(i);
         QLog.d("JumpForwardPkgManager", 2, localStringBuilder.toString());
       }
-      b(str);
+      c(str);
     }
-  }
-  
-  public static int a()
-  {
-    return BaseApplication.getContext().getSharedPreferences("jump_pkg_toast_cfg_798", 4).getInt("jump_pkg_toast_cfg_version", 0);
   }
   
   public static JumpForwardPkgManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager == null) {
-          jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager = new JumpForwardPkgManager();
+        if (b == null) {
+          b = new JumpForwardPkgManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager;
+    return b;
   }
   
-  private static String a()
+  public static final boolean a(Activity paramActivity)
   {
-    Object localObject = BaseApplication.getContext().getSharedPreferences("jump_pkg_toast_cfg", 4);
-    if (!TextUtils.isEmpty(((SharedPreferences)localObject).getString("short_video_res_config_key", ""))) {
-      ((SharedPreferences)localObject).edit().putString("short_video_res_config_key", "").commit();
+    if (paramActivity != null)
+    {
+      if (paramActivity.isFinishing()) {
+        return false;
+      }
+      if ((a().c()) && (!TextUtils.isEmpty(b(paramActivity))))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("JumpForwardPkgManager", 2, "needHidePreview true");
+        }
+        return true;
+      }
     }
-    localObject = BaseApplication.getContext().getSharedPreferences("jump_pkg_toast_cfg_798", 4).getString("short_video_res_config_key", "");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+    return false;
+  }
+  
+  private static boolean a(String paramString, int paramInt)
+  {
+    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("jump_pkg_toast_cfg_798", 4).edit();
     try
     {
-      localObject = XorCipher.b((String)localObject);
-      return localObject;
+      paramString = XorCipher.a(paramString);
+      localEditor.putString("short_video_res_config_key", paramString);
+      localEditor.putInt("jump_pkg_toast_cfg_version", paramInt);
+      return localEditor.commit();
     }
-    catch (XorCipherException localXorCipherException) {}
-    return null;
-    return "";
+    catch (XorCipherException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
   }
   
-  public static String a(Activity paramActivity)
+  public static int b()
+  {
+    return BaseApplication.getContext().getSharedPreferences("jump_pkg_toast_cfg_798", 4).getInt("jump_pkg_toast_cfg_version", 0);
+  }
+  
+  public static String b(Activity paramActivity)
   {
     if (paramActivity != null)
     {
@@ -91,7 +108,7 @@ public class JumpForwardPkgManager
       localObject = Class.forName("android.app.Activity").getDeclaredField("mReferrer");
       ((Field)localObject).setAccessible(true);
       localObject = (String)((Field)localObject).get(paramActivity);
-      localObject = a().a((String)localObject);
+      localObject = a().b((String)localObject);
       bool = TextUtils.isEmpty((CharSequence)localObject);
       if (!bool) {
         return localObject;
@@ -108,7 +125,7 @@ public class JumpForwardPkgManager
           if (localObject != null)
           {
             localObject = ((Uri)localObject).getAuthority();
-            localObject = a().a((String)localObject);
+            localObject = a().b((String)localObject);
             bool = TextUtils.isEmpty((CharSequence)localObject);
             if (!bool) {
               return localObject;
@@ -135,7 +152,7 @@ public class JumpForwardPkgManager
           }
           if (!TextUtils.isEmpty((CharSequence)localObject))
           {
-            paramActivity = a().a((String)localObject);
+            paramActivity = a().b((String)localObject);
             return paramActivity;
           }
           return null;
@@ -147,7 +164,7 @@ public class JumpForwardPkgManager
     return null;
   }
   
-  public static HashSet<String> a(Activity paramActivity)
+  public static HashSet<String> c(Activity paramActivity)
   {
     HashSet localHashSet;
     if ((paramActivity != null) && (!paramActivity.isFinishing()))
@@ -214,42 +231,7 @@ public class JumpForwardPkgManager
     }
   }
   
-  public static final boolean a(Activity paramActivity)
-  {
-    if (paramActivity != null)
-    {
-      if (paramActivity.isFinishing()) {
-        return false;
-      }
-      if ((a().a()) && (!TextUtils.isEmpty(a(paramActivity))))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("JumpForwardPkgManager", 2, "needHidePreview true");
-        }
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private static boolean a(String paramString, int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("jump_pkg_toast_cfg_798", 4).edit();
-    try
-    {
-      paramString = XorCipher.a(paramString);
-      localEditor.putString("short_video_res_config_key", paramString);
-      localEditor.putInt("jump_pkg_toast_cfg_version", paramInt);
-      return localEditor.commit();
-    }
-    catch (XorCipherException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
-  }
-  
-  private boolean b(String paramString)
+  private boolean c(String paramString)
   {
     for (;;)
     {
@@ -261,7 +243,7 @@ public class JumpForwardPkgManager
         if (j <= 0) {
           return false;
         }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+        this.a.clear();
         i = 0;
         if (i < j)
         {
@@ -269,7 +251,7 @@ public class JumpForwardPkgManager
           String str = ((JSONObject)localObject).optString("pkgName");
           localObject = ((JSONObject)localObject).optString("toastWording");
           if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject);
+            this.a.put(str, localObject);
           }
         }
         else
@@ -278,7 +260,7 @@ public class JumpForwardPkgManager
           {
             paramString = new StringBuilder();
             paramString.append("parseConfigData list size= ");
-            paramString.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+            paramString.append(this.a.size());
             QLog.d("JumpForwardPkgManager", 2, paramString.toString());
           }
           return true;
@@ -286,7 +268,7 @@ public class JumpForwardPkgManager
       }
       catch (Exception paramString)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+        this.a.clear();
         if (QLog.isColorLevel()) {
           QLog.d("JumpForwardPkgManager", 2, "parseConfigData[JSONException]", paramString);
         }
@@ -296,23 +278,22 @@ public class JumpForwardPkgManager
     }
   }
   
-  public String a(String paramString)
+  private static String d()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    Object localObject = BaseApplication.getContext().getSharedPreferences("jump_pkg_toast_cfg", 4);
+    if (!TextUtils.isEmpty(((SharedPreferences)localObject).getString("short_video_res_config_key", ""))) {
+      ((SharedPreferences)localObject).edit().putString("short_video_res_config_key", "").commit();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpForwardPkgManager", 2, "getPkgShareToast: ");
-    }
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-    if (localConcurrentHashMap != null)
+    localObject = BaseApplication.getContext().getSharedPreferences("jump_pkg_toast_cfg_798", 4).getString("short_video_res_config_key", "");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+    try
     {
-      if (localConcurrentHashMap.size() == 0) {
-        return null;
-      }
-      return (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      localObject = XorCipher.b((String)localObject);
+      return localObject;
     }
+    catch (XorCipherException localXorCipherException) {}
     return null;
+    return "";
   }
   
   public void a(int paramInt)
@@ -321,10 +302,10 @@ public class JumpForwardPkgManager
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("clearConfig list size= ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      localStringBuilder.append(this.a.size());
       QLog.d("JumpForwardPkgManager", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.a.clear();
     a("", paramInt);
   }
   
@@ -349,7 +330,7 @@ public class JumpForwardPkgManager
         QLog.d("JumpForwardPkgManager", 2, paramContext.toString());
       }
     }
-    else if (b(paramString))
+    else if (c(paramString))
     {
       boolean bool = a(paramString, paramInt);
       if (QLog.isColorLevel())
@@ -366,12 +347,6 @@ public class JumpForwardPkgManager
     }
   }
   
-  public boolean a()
-  {
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-    return (localConcurrentHashMap != null) && (localConcurrentHashMap.size() > 0);
-  }
-  
   public boolean a(String paramString)
   {
     boolean bool;
@@ -385,12 +360,12 @@ public class JumpForwardPkgManager
           if (TextUtils.isEmpty(str)) {
             return false;
           }
-          if (a())
+          if (c())
           {
-            if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+            if (this.a.containsKey(paramString)) {
               break label123;
             }
-            if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
+            if (!this.a.containsKey(str)) {
               break label118;
             }
             break label123;
@@ -419,10 +394,35 @@ public class JumpForwardPkgManager
     }
     return bool;
   }
+  
+  public String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("JumpForwardPkgManager", 2, "getPkgShareToast: ");
+    }
+    ConcurrentHashMap localConcurrentHashMap = this.a;
+    if (localConcurrentHashMap != null)
+    {
+      if (localConcurrentHashMap.size() == 0) {
+        return null;
+      }
+      return (String)this.a.get(paramString);
+    }
+    return null;
+  }
+  
+  public boolean c()
+  {
+    ConcurrentHashMap localConcurrentHashMap = this.a;
+    return (localConcurrentHashMap != null) && (localConcurrentHashMap.size() > 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpForwardPkgManager
  * JD-Core Version:    0.7.0.1
  */

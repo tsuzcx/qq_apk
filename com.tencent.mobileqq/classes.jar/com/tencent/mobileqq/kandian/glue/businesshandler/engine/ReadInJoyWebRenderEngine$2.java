@@ -14,7 +14,7 @@ class ReadInJoyWebRenderEngine$2
   {
     try
     {
-      JSONObject localJSONObject = ViolaAccessHelper.a();
+      JSONObject localJSONObject = ViolaAccessHelper.c();
       if (localJSONObject != null)
       {
         if (!TextUtils.isEmpty(this.a)) {
@@ -41,7 +41,7 @@ class ReadInJoyWebRenderEngine$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyWebRenderEngine.2
  * JD-Core Version:    0.7.0.1
  */

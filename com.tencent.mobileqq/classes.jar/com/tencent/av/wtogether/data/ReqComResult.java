@@ -7,68 +7,68 @@ import trpc.qq_av_together.common.WTogetherCommon.Result;
 public class ReqComResult
 {
   public final int a;
-  public final long a;
-  public ReqVideoAction a;
-  public String a;
-  public boolean a;
-  public int b;
+  public final long b;
+  public boolean c;
+  public int d;
+  public String e;
+  public ReqVideoAction f;
   
   public ReqComResult(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = -1;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction = null;
+    this.a = paramInt;
+    this.b = paramLong;
+    this.c = false;
+    this.d = -1;
+    this.e = null;
+    this.f = null;
   }
   
   public ReqComResult(int paramInt, long paramLong, ReqVideoAction paramReqVideoAction)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = -1;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction = paramReqVideoAction;
+    this.a = paramInt;
+    this.b = paramLong;
+    this.c = false;
+    this.d = -1;
+    this.e = null;
+    this.f = paramReqVideoAction;
   }
   
   public void a(WTogetherCommon.Result paramResult)
   {
     if (paramResult != null) {
-      this.b = paramResult.errcode.get();
+      this.d = paramResult.errcode.get();
     } else {
-      this.b = -1;
+      this.d = -1;
     }
     if (paramResult != null) {
-      this.jdField_a_of_type_JavaLangString = paramResult.errmsg.get();
+      this.e = paramResult.errmsg.get();
     } else {
-      this.jdField_a_of_type_JavaLangString = null;
+      this.e = null;
     }
     boolean bool;
-    if (this.b == 0) {
+    if (this.d == 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.c = bool;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ComResult{from: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", roomId: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", isSuccess: ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", errCode: ");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", isSuccess: ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", errCode: ");
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", errMsg: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", action: ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

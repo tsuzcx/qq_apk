@@ -25,10 +25,10 @@ public final class CECMShowOffscreenEngine$Companion$genCEApplication$frameCallb
       if (i != 0) {
         return;
       }
-      Object localObject = (CECMShowOffscreenEngine)CECMShowOffscreenEngine.a().get(paramString);
+      Object localObject = (CECMShowOffscreenEngine)CECMShowOffscreenEngine.n().get(paramString);
       if (localObject != null)
       {
-        localObject = CECMShowOffscreenEngine.a((CECMShowOffscreenEngine)localObject);
+        localObject = CECMShowOffscreenEngine.c((CECMShowOffscreenEngine)localObject);
         if (localObject != null) {
           ((CERenderService)localObject).a(paramString, paramArrayOfByte, paramInt1, paramInt2, paramInt3);
         }
@@ -38,7 +38,7 @@ public final class CECMShowOffscreenEngine$Companion$genCEApplication$frameCallb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.CECMShowOffscreenEngine.Companion.genCEApplication.frameCallback.1
  * JD-Core Version:    0.7.0.1
  */

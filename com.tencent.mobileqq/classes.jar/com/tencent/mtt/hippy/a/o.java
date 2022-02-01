@@ -12,11 +12,11 @@ public class o
   implements d.a
 {
   private d a;
-  private j b;
+  private final j b;
   private o.a c;
   private boolean d;
-  private Handler e;
-  private Runnable f = new o.1(this);
+  private final Handler e;
+  private final Runnable f = new o.1(this);
   
   public o(j paramj)
   {
@@ -103,7 +103,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.o
  * JD-Core Version:    0.7.0.1
  */

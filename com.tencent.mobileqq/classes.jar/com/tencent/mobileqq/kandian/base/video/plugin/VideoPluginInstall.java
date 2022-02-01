@@ -11,23 +11,23 @@ public class VideoPluginInstall
   implements IVideoPluginInstall
 {
   private static boolean b;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new VideoPluginInstall.3(this));
-  private IPlayerSDKMgr jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerWrapperIPlayerSDKMgr = PlayerHelper.a.a();
-  private OnVideoPluginInstallListener jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginOnVideoPluginInstallListener;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
+  private OnVideoPluginInstallListener c;
+  private IPlayerSDKMgr d = PlayerHelper.a.c();
+  private Handler e = new Handler(new VideoPluginInstall.3(this));
   
   public VideoPluginInstall()
   {
     ThreadManager.executeOnSubThread(new VideoPluginInstall.1(this));
   }
   
-  private void c()
+  private void e()
   {
     try
     {
       if (!b)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerWrapperIPlayerSDKMgr.a();
+        this.d.a();
         b = true;
       }
       return;
@@ -37,30 +37,30 @@ public class VideoPluginInstall
   
   public void a()
   {
-    if ((!a()) && (!this.jdField_a_of_type_Boolean)) {
+    if ((!b()) && (!this.a)) {
       ThreadManager.post(new VideoPluginInstall.2(this), 8, null, true);
     }
   }
   
   public void a(OnVideoPluginInstallListener paramOnVideoPluginInstallListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginOnVideoPluginInstallListener = paramOnVideoPluginInstallListener;
+    this.c = paramOnVideoPluginInstallListener;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerWrapperIPlayerSDKMgr.a();
+    return this.d.b();
   }
   
-  public void b()
+  public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginOnVideoPluginInstallListener = null;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.c = null;
+    this.e.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.plugin.VideoPluginInstall
  * JD-Core Version:    0.7.0.1
  */

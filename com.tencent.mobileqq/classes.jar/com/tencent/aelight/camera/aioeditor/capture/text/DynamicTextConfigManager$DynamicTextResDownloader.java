@@ -16,12 +16,12 @@ import mqq.util.WeakReference;
 
 public class DynamicTextConfigManager$DynamicTextResDownloader
 {
-  private DynamicTextConfigManager jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager;
-  private ConcurrentHashMap<String, ArrayList<WeakReference<DynamicTextConfigManager.IDynamicTextResDownloadCallback>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, ArrayList<WeakReference<DynamicTextConfigManager.IDynamicTextResDownloadCallback>>> a = new ConcurrentHashMap();
+  private DynamicTextConfigManager b;
   
   public DynamicTextConfigManager$DynamicTextResDownloader(DynamicTextConfigManager paramDynamicTextConfigManager)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager = paramDynamicTextConfigManager;
+    this.b = paramDynamicTextConfigManager;
   }
   
   private void a(DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo paramDynamicTextFontInfo)
@@ -74,13 +74,13 @@ public class DynamicTextConfigManager$DynamicTextResDownloader
         ((StringBuilder)???).append((String)localObject2);
         QLog.i("DText", 2, ((StringBuilder)???).toString());
       }
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      synchronized (this.a)
       {
-        boolean bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject2);
+        boolean bool = this.a.containsKey(localObject2);
         int j = 0;
         if (bool)
         {
-          paramDynamicTextFontInfo = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
+          paramDynamicTextFontInfo = (ArrayList)this.a.get(localObject2);
           localObject2 = paramDynamicTextFontInfo.iterator();
           do
           {
@@ -97,7 +97,7 @@ public class DynamicTextConfigManager$DynamicTextResDownloader
         }
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(new WeakReference(paramIDynamicTextResDownloadCallback));
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, localArrayList);
+        this.a.put(localObject2, localArrayList);
         paramIDynamicTextResDownloadCallback = new HttpNetReq();
         paramIDynamicTextResDownloadCallback.mCallback = new DynamicTextConfigManager.DynamicTextResDownloader.1(this);
         paramIDynamicTextResDownloadCallback.mReqUrl = ((String)localObject2);
@@ -116,7 +116,7 @@ public class DynamicTextConfigManager$DynamicTextResDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.DynamicTextConfigManager.DynamicTextResDownloader
  * JD-Core Version:    0.7.0.1
  */

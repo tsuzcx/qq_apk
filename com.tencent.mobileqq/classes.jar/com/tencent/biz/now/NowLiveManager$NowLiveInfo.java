@@ -5,25 +5,25 @@ import java.util.List;
 
 class NowLiveManager$NowLiveInfo
 {
-  int jdField_a_of_type_Int = -1;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  String b;
+  String a;
+  long b;
+  String c;
+  int d = -1;
+  List<String> e = new ArrayList();
   
   NowLiveManager$NowLiveInfo(NowLiveManager paramNowLiveManager) {}
   
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.now.NowLiveManager.NowLiveInfo
  * JD-Core Version:    0.7.0.1
  */

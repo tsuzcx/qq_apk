@@ -33,131 +33,131 @@ final class StudyRoomQShadowLauncher$enter$1
     //   37: invokestatic 56	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;Ljava/util/concurrent/CountDownLatch;)V
     //   40: aload_0
     //   41: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   44: invokestatic 59	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   44: invokestatic 60	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:b	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Ljava/util/concurrent/atomic/AtomicBoolean;
     //   47: iconst_0
-    //   48: invokevirtual 65	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   48: invokevirtual 66	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   51: aload_0
     //   52: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
     //   55: iconst_0
-    //   56: ldc 67
-    //   58: ldc 69
+    //   56: ldc 68
+    //   58: ldc 70
     //   60: aconst_null
     //   61: aconst_null
     //   62: bipush 24
     //   64: aconst_null
-    //   65: invokestatic 72	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+    //   65: invokestatic 73	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
     //   68: aload_0
     //   69: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   72: invokestatic 75	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Z
+    //   72: invokestatic 77	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:c	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Z
     //   75: ifeq +19 -> 94
     //   78: aload_0
     //   79: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   82: ldc 77
+    //   82: ldc 79
     //   84: invokestatic 42	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;Ljava/lang/String;)V
     //   87: aload_0
     //   88: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   91: invokestatic 79	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)V
+    //   91: invokestatic 82	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:d	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)V
     //   94: aload_0
     //   95: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   98: invokestatic 82	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:b	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Z
+    //   98: invokestatic 85	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:e	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Z
     //   101: ifne +15 -> 116
     //   104: aload_0
     //   105: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   108: invokestatic 85	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:c	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Z
+    //   108: invokestatic 88	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:f	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Z
     //   111: istore_1
     //   112: iload_1
     //   113: ifne -104 -> 9
     //   116: aload_0
     //   117: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   120: invokestatic 88	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:b	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Lcom/tencent/mobileqq/studyroom/utils/UITimer;
+    //   120: invokestatic 92	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:h	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Lcom/tencent/mobileqq/studyroom/utils/UITimer;
     //   123: ifnull +131 -> 254
     //   126: aload_0
     //   127: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   130: invokestatic 90	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Lcom/tencent/mobileqq/studyroom/utils/UITimer;
-    //   133: invokevirtual 94	com/tencent/mobileqq/studyroom/utils/UITimer:a	()V
+    //   130: invokestatic 95	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:g	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Lcom/tencent/mobileqq/studyroom/utils/UITimer;
+    //   133: invokevirtual 99	com/tencent/mobileqq/studyroom/utils/UITimer:a	()V
     //   136: goto +118 -> 254
     //   139: astore_2
     //   140: goto +152 -> 292
     //   143: astore_2
-    //   144: ldc 96
+    //   144: ldc 101
     //   146: iconst_1
-    //   147: ldc 98
+    //   147: ldc 103
     //   149: aload_2
-    //   150: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   150: invokestatic 108	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   153: aload_0
     //   154: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   157: invokestatic 107	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Landroid/os/Handler;
-    //   160: new 109	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1$2
+    //   157: invokestatic 112	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:i	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Landroid/os/Handler;
+    //   160: new 114	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1$2
     //   163: dup
     //   164: aload_0
     //   165: aload_2
-    //   166: invokespecial 112	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1$2:<init>	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1;Ljava/lang/Throwable;)V
+    //   166: invokespecial 117	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1$2:<init>	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1;Ljava/lang/Throwable;)V
     //   169: checkcast 6	java/lang/Runnable
-    //   172: invokevirtual 118	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   172: invokevirtual 123	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   175: pop
     //   176: aload_0
     //   177: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
     //   180: bipush 7
-    //   182: invokestatic 121	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;I)V
+    //   182: invokestatic 126	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;I)V
     //   185: aload_0
     //   186: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   189: invokestatic 88	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:b	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Lcom/tencent/mobileqq/studyroom/utils/UITimer;
+    //   189: invokestatic 92	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:h	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Lcom/tencent/mobileqq/studyroom/utils/UITimer;
     //   192: ifnull +62 -> 254
     //   195: goto -69 -> 126
     //   198: astore_2
-    //   199: ldc 96
+    //   199: ldc 101
     //   201: iconst_1
-    //   202: ldc 123
+    //   202: ldc 128
     //   204: aload_2
     //   205: checkcast 34	java/lang/Throwable
-    //   208: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   208: invokestatic 108	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   211: aload_0
     //   212: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   215: invokestatic 107	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Landroid/os/Handler;
-    //   218: new 125	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1$1
+    //   215: invokestatic 112	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:i	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Landroid/os/Handler;
+    //   218: new 130	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1$1
     //   221: dup
     //   222: aload_0
-    //   223: invokespecial 128	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1$1:<init>	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1;)V
+    //   223: invokespecial 133	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1$1:<init>	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1;)V
     //   226: checkcast 6	java/lang/Runnable
-    //   229: invokevirtual 118	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   229: invokevirtual 123	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   232: pop
     //   233: aload_0
     //   234: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
     //   237: iconst_1
-    //   238: invokestatic 121	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;I)V
+    //   238: invokestatic 126	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;I)V
     //   241: aload_0
     //   242: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   245: invokestatic 88	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:b	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Lcom/tencent/mobileqq/studyroom/utils/UITimer;
+    //   245: invokestatic 92	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:h	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Lcom/tencent/mobileqq/studyroom/utils/UITimer;
     //   248: ifnull +6 -> 254
     //   251: goto -125 -> 126
-    //   254: new 130	java/lang/StringBuilder
+    //   254: new 135	java/lang/StringBuilder
     //   257: dup
-    //   258: invokespecial 131	java/lang/StringBuilder:<init>	()V
+    //   258: invokespecial 136	java/lang/StringBuilder:<init>	()V
     //   261: astore_2
     //   262: aload_2
-    //   263: ldc 133
-    //   265: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   263: ldc 138
+    //   265: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   268: pop
     //   269: aload_2
     //   270: aload_0
     //   271: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   274: invokestatic 82	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:b	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Z
-    //   277: invokevirtual 140	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   274: invokestatic 85	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:e	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Z
+    //   277: invokevirtual 145	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   280: pop
-    //   281: ldc 96
+    //   281: ldc 101
     //   283: iconst_1
     //   284: aload_2
-    //   285: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   288: invokestatic 148	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   285: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   288: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   291: return
     //   292: aload_0
     //   293: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   296: invokestatic 88	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:b	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Lcom/tencent/mobileqq/studyroom/utils/UITimer;
+    //   296: invokestatic 92	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:h	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Lcom/tencent/mobileqq/studyroom/utils/UITimer;
     //   299: ifnull +13 -> 312
     //   302: aload_0
     //   303: getfield 26	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher$enter$1:this$0	Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;
-    //   306: invokestatic 90	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:a	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Lcom/tencent/mobileqq/studyroom/utils/UITimer;
-    //   309: invokevirtual 94	com/tencent/mobileqq/studyroom/utils/UITimer:a	()V
+    //   306: invokestatic 95	com/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher:g	(Lcom/tencent/mobileqq/studyroom/utils/StudyRoomQShadowLauncher;)Lcom/tencent/mobileqq/studyroom/utils/UITimer;
+    //   309: invokevirtual 99	com/tencent/mobileqq/studyroom/utils/UITimer:a	()V
     //   312: goto +5 -> 317
     //   315: aload_2
     //   316: athrow
@@ -194,7 +194,7 @@ final class StudyRoomQShadowLauncher$enter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.utils.StudyRoomQShadowLauncher.enter.1
  * JD-Core Version:    0.7.0.1
  */

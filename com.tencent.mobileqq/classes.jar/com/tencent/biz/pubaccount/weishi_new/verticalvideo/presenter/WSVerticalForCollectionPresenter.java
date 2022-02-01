@@ -22,14 +22,29 @@ import java.util.Map;
 public class WSVerticalForCollectionPresenter
   extends AbsWSVerticalChoiceVideoPresenter
 {
-  private static final int jdField_b_of_type_Int = ScreenUtil.dip2px(63.0F);
-  private final WSCollectionDataFetcher jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSCollectionDataFetcher = new WSCollectionDataFetcher();
-  private String jdField_a_of_type_JavaLangString;
-  private String jdField_b_of_type_JavaLangString;
+  private static final int a = ScreenUtil.dip2px(63.0F);
+  private String b;
+  private String i;
+  private final WSCollectionDataFetcher j = new WSCollectionDataFetcher();
   
   public WSVerticalForCollectionPresenter(WSVerticalPageContract.View paramView)
   {
     super(paramView);
+  }
+  
+  @NonNull
+  private Map<String, String> O()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("collection_id", this.b);
+    localHashMap.put("ref_feedid", y());
+    stCollection localstCollection = WSVerticalDataUtil.b(b(0));
+    if (localstCollection == null) {
+      return localHashMap;
+    }
+    localHashMap.put("collection_id", localstCollection.cid);
+    localHashMap.put("collection_type", String.valueOf(localstCollection.collectionType));
+    return localHashMap;
   }
   
   private int a(@Nullable String paramString, @NonNull WSVerticalPageAdapter paramWSVerticalPageAdapter)
@@ -41,65 +56,39 @@ public class WSVerticalForCollectionPresenter
     if (paramWSVerticalPageAdapter == null) {
       return -1;
     }
-    int i = 0;
-    while (i < paramWSVerticalPageAdapter.size())
+    int k = 0;
+    while (k < paramWSVerticalPageAdapter.size())
     {
-      WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)paramWSVerticalPageAdapter.get(i);
+      WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)paramWSVerticalPageAdapter.get(k);
       if (localWSVerticalItemData != null)
       {
-        stSimpleMetaFeed localstSimpleMetaFeed = localWSVerticalItemData.a();
+        stSimpleMetaFeed localstSimpleMetaFeed = localWSVerticalItemData.b();
         if ((localstSimpleMetaFeed != null) && (paramString.equals(localstSimpleMetaFeed.id)))
         {
           localWSVerticalItemData.a(true);
-          return i;
+          return k;
         }
       }
-      i += 1;
+      k += 1;
     }
     return -1;
   }
   
-  private String a(int paramInt)
+  private String d(int paramInt)
   {
-    if ((paramInt >= 0) && (a() != null))
+    if ((paramInt >= 0) && (J() != null))
     {
-      WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a().getItem(paramInt);
+      WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)J().getItem(paramInt);
       if (localWSVerticalItemData != null) {
-        return localWSVerticalItemData.a().id;
+        return localWSVerticalItemData.b().id;
       }
     }
-    return this.jdField_b_of_type_JavaLangString;
+    return this.i;
   }
   
-  @NonNull
-  private Map<String, String> c()
+  protected boolean B()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("collection_id", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("ref_feedid", c());
-    stCollection localstCollection = WSVerticalDataUtil.a(a(0));
-    if (localstCollection == null) {
-      return localHashMap;
-    }
-    localHashMap.put("collection_id", localstCollection.cid);
-    localHashMap.put("collection_type", String.valueOf(localstCollection.collectionType));
-    return localHashMap;
-  }
-  
-  public String a()
-  {
-    if ((a() != null) && (a().a() != null))
-    {
-      if (a().getItem(0) == null) {
-        return "";
-      }
-      WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a().a().getItem(0);
-      if (localWSVerticalItemData.a() == null) {
-        return "";
-      }
-      return localWSVerticalItemData.a().name;
-    }
-    return "";
+    return true;
   }
   
   public List<WSVerticalItemData> a(ArrayList paramArrayList)
@@ -110,8 +99,13 @@ public class WSVerticalForCollectionPresenter
   public Map<String, String> a(WSVerticalItemData paramWSVerticalItemData)
   {
     Map localMap = super.a(paramWSVerticalItemData);
-    localMap.put("cover_feedid", paramWSVerticalItemData.a().id);
+    localMap.put("cover_feedid", paramWSVerticalItemData.b().id);
     return localMap;
+  }
+  
+  public void a()
+  {
+    super.a();
   }
   
   public void a(Bundle paramBundle)
@@ -120,63 +114,29 @@ public class WSVerticalForCollectionPresenter
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("key_collection_id", "");
-    this.jdField_b_of_type_JavaLangString = paramBundle.getString("key_feed_id", "");
+    this.b = paramBundle.getString("key_collection_id", "");
+    this.i = paramBundle.getString("key_feed_id", "");
   }
   
-  protected boolean a(String paramString)
+  public boolean b(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    boolean bool = false;
-    paramString = a(0);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    paramString = d(J().getItemCount() - 1);
+    if (!TextUtils.isEmpty(this.b))
     {
       WSCollectionRequestParams localWSCollectionRequestParams = new WSCollectionRequestParams();
-      localWSCollectionRequestParams.jdField_a_of_type_Int = 1;
-      localWSCollectionRequestParams.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localWSCollectionRequestParams.jdField_a_of_type_Boolean = false;
-      localWSCollectionRequestParams.jdField_b_of_type_Boolean = true;
-      localWSCollectionRequestParams.jdField_b_of_type_JavaLangString = paramString;
-      bool = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSCollectionDataFetcher.a(localWSCollectionRequestParams, this);
-    }
-    return bool;
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    paramString = a(a().getItemCount() - 1);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      WSCollectionRequestParams localWSCollectionRequestParams = new WSCollectionRequestParams();
-      localWSCollectionRequestParams.jdField_b_of_type_Boolean = paramBoolean1;
-      localWSCollectionRequestParams.jdField_a_of_type_Boolean = paramBoolean2;
-      localWSCollectionRequestParams.jdField_a_of_type_Int = 0;
-      localWSCollectionRequestParams.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localWSCollectionRequestParams.jdField_b_of_type_JavaLangString = paramString;
-      return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSCollectionDataFetcher.a(localWSCollectionRequestParams, this);
+      localWSCollectionRequestParams.b = paramBoolean1;
+      localWSCollectionRequestParams.a = paramBoolean2;
+      localWSCollectionRequestParams.e = 0;
+      localWSCollectionRequestParams.c = this.b;
+      localWSCollectionRequestParams.d = paramString;
+      return this.j.a(localWSCollectionRequestParams, this);
     }
     return false;
   }
   
-  public int b()
+  public int c()
   {
-    return jdField_b_of_type_Int;
-  }
-  
-  public Map<String, String> b()
-  {
-    Map localMap = super.b();
-    localMap.putAll(c());
-    return localMap;
-  }
-  
-  public String c()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void c()
-  {
-    super.c();
+    return a;
   }
   
   protected void c(List<WSVerticalItemData> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
@@ -184,33 +144,73 @@ public class WSVerticalForCollectionPresenter
     super.c(paramList, paramBoolean1, paramBoolean2, paramObject);
     if (paramBoolean2)
     {
-      int i = a(this.jdField_b_of_type_JavaLangString, a());
-      if ((i != -1) && (a() != null) && (a().a() != null)) {
-        a().a().scrollToPosition(i);
+      int k = a(this.i, J());
+      if ((k != -1) && (z() != null) && (z().c() != null)) {
+        z().c().scrollToPosition(k);
       }
     }
   }
   
-  public boolean e()
+  protected boolean c(String paramString)
   {
-    WSCollectionDataFetcher localWSCollectionDataFetcher = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSCollectionDataFetcher;
-    return (localWSCollectionDataFetcher == null) || (localWSCollectionDataFetcher.jdField_b_of_type_Boolean);
+    boolean bool = false;
+    paramString = d(0);
+    if (!TextUtils.isEmpty(this.b))
+    {
+      WSCollectionRequestParams localWSCollectionRequestParams = new WSCollectionRequestParams();
+      localWSCollectionRequestParams.e = 1;
+      localWSCollectionRequestParams.c = this.b;
+      localWSCollectionRequestParams.a = false;
+      localWSCollectionRequestParams.b = true;
+      localWSCollectionRequestParams.d = paramString;
+      bool = this.j.a(localWSCollectionRequestParams, this);
+    }
+    return bool;
   }
   
-  public boolean f()
+  public Map<String, String> n()
   {
-    WSCollectionDataFetcher localWSCollectionDataFetcher = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSCollectionDataFetcher;
-    return (localWSCollectionDataFetcher == null) || (localWSCollectionDataFetcher.jdField_a_of_type_Boolean);
+    Map localMap = super.n();
+    localMap.putAll(O());
+    return localMap;
   }
   
-  protected boolean g()
+  public boolean u()
   {
-    return true;
+    WSCollectionDataFetcher localWSCollectionDataFetcher = this.j;
+    return (localWSCollectionDataFetcher == null) || (localWSCollectionDataFetcher.b);
+  }
+  
+  public boolean v()
+  {
+    WSCollectionDataFetcher localWSCollectionDataFetcher = this.j;
+    return (localWSCollectionDataFetcher == null) || (localWSCollectionDataFetcher.a);
+  }
+  
+  public String w()
+  {
+    if ((z() != null) && (z().b() != null))
+    {
+      if (J().getItem(0) == null) {
+        return "";
+      }
+      WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)z().b().getItem(0);
+      if (localWSVerticalItemData.h() == null) {
+        return "";
+      }
+      return localWSVerticalItemData.h().name;
+    }
+    return "";
+  }
+  
+  public String y()
+  {
+    return this.i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForCollectionPresenter
  * JD-Core Version:    0.7.0.1
  */

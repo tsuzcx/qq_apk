@@ -19,11 +19,11 @@ class ShowAndGuessGameVideoRecordCtrl$3
     if (this.a != null) {
       try
       {
-        Object localObject1 = Bitmap.createBitmap(ShowAndGuessGameVideoRecordCtrl.a(this.this$0), ShowAndGuessGameVideoRecordCtrl.b(this.this$0), Bitmap.Config.ARGB_8888);
+        Object localObject1 = Bitmap.createBitmap(ShowAndGuessGameVideoRecordCtrl.c(this.this$0), ShowAndGuessGameVideoRecordCtrl.d(this.this$0), Bitmap.Config.ARGB_8888);
         ((Bitmap)localObject1).copyPixelsFromBuffer(IntBuffer.wrap(this.a));
         localObject2 = new Matrix();
         ((Matrix)localObject2).setScale(1.0F, -1.0F);
-        boolean bool = FileUtil.a(Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), (Matrix)localObject2, true), ShowAndGuessGameVideoRecordCtrl.a(this.this$0));
+        boolean bool = FileUtil.a(Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), (Matrix)localObject2, true), ShowAndGuessGameVideoRecordCtrl.e(this.this$0));
         if (!bool) {
           ShowAndGuessGameVideoRecordCtrl.a(this.this$0, null);
         }
@@ -32,11 +32,11 @@ class ShowAndGuessGameVideoRecordCtrl$3
         ((StringBuilder)localObject2).append("save photo ");
         ((StringBuilder)localObject2).append(bool);
         ((StringBuilder)localObject2).append(" ");
-        ((StringBuilder)localObject2).append(ShowAndGuessGameVideoRecordCtrl.a(this.this$0));
+        ((StringBuilder)localObject2).append(ShowAndGuessGameVideoRecordCtrl.e(this.this$0));
         AVLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
-        if (!this.this$0.b())
+        if (!this.this$0.i())
         {
-          GameEngine.a().a().a(ShowAndGuessGameVideoRecordCtrl.b(this.this$0), ShowAndGuessGameVideoRecordCtrl.a(this.this$0), ShowAndGuessGameVideoRecordCtrl.a(this.this$0));
+          GameEngine.a().s().a(ShowAndGuessGameVideoRecordCtrl.f(this.this$0), ShowAndGuessGameVideoRecordCtrl.e(this.this$0), ShowAndGuessGameVideoRecordCtrl.g(this.this$0));
           return;
         }
       }

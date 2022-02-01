@@ -41,7 +41,7 @@ public class EmotionPanelDependListener
       ((WindowManager)paramContext.getSystemService("window")).removeViewImmediate(this.mWindowContent);
       paramContext = this.player;
       if (paramContext != null) {
-        paramContext.c();
+        paramContext.d();
       }
       if (paramEmoticonCallback != null) {
         paramEmoticonCallback.onHidePopup(this.mPointInfo);
@@ -76,7 +76,7 @@ public class EmotionPanelDependListener
     if ((i != 1) && (i != 2) && (i != 7) && (i != 10))
     {
       i = (int)(110.0F * f);
-      this.mPopupEmo.setBackgroundResource(2130850886);
+      this.mPopupEmo.setBackgroundResource(2130852738);
       this.mPopupEmo.setPadding(k, k, k, k);
       paramView.bottomMargin = 0;
       j = (int)(100.0F * f);
@@ -89,7 +89,7 @@ public class EmotionPanelDependListener
     {
       i = (int)(64.0F * f);
       j = (int)(71.0F * f);
-      this.mPopupEmo.setBackgroundResource(2130850887);
+      this.mPopupEmo.setBackgroundResource(2130852739);
       this.mPopupEmo.setPadding(k, k, k, k);
       k = (int)(28.0F * f);
       paramView.width = k;
@@ -125,7 +125,7 @@ public class EmotionPanelDependListener
     {
       paramRect = this.player;
       if (paramRect != null) {
-        paramRect.c();
+        paramRect.d();
       }
     }
     if ((paramEmoticonInfo.type == 6) && ((paramEmoticonInfo instanceof PicEmoticonInfo)) && ((localDrawable instanceof URLDrawable)))
@@ -152,7 +152,7 @@ public class EmotionPanelDependListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.api.impl.EmotionPanelDependListener
  * JD-Core Version:    0.7.0.1
  */

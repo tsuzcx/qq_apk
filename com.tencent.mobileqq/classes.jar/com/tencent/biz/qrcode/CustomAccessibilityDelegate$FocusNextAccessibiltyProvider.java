@@ -27,14 +27,14 @@ public class CustomAccessibilityDelegate$FocusNextAccessibiltyProvider
     boolean bool = CustomAccessibilityDelegate.a(this.a).performAccessibilityAction(paramInt2, paramBundle);
     if (paramInt2 == 128)
     {
-      CustomAccessibilityDelegate.a(this.a).post(CustomAccessibilityDelegate.a(this.a));
+      CustomAccessibilityDelegate.a(this.a).post(CustomAccessibilityDelegate.b(this.a));
       return bool;
     }
     if (paramInt2 == 64)
     {
-      CustomAccessibilityDelegate.a(this.a).removeCallbacks(CustomAccessibilityDelegate.a(this.a));
-      if (CustomAccessibilityDelegate.a(this.a) != null) {
-        CustomAccessibilityDelegate.a(this.a).a();
+      CustomAccessibilityDelegate.a(this.a).removeCallbacks(CustomAccessibilityDelegate.b(this.a));
+      if (CustomAccessibilityDelegate.c(this.a) != null) {
+        CustomAccessibilityDelegate.c(this.a).a();
       }
     }
     return bool;

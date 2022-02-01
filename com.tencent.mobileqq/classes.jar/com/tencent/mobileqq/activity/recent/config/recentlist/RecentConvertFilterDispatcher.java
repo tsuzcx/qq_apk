@@ -10,9 +10,9 @@ public class RecentConvertFilterDispatcher
 {
   public boolean a(RecentUser paramRecentUser, int paramInt1, int paramInt2)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
         IRecentConvertFilterProcessor localIRecentConvertFilterProcessor = (IRecentConvertFilterProcessor)localIterator.next();
@@ -30,7 +30,7 @@ public class RecentConvertFilterDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.RecentConvertFilterDispatcher
  * JD-Core Version:    0.7.0.1
  */

@@ -24,20 +24,19 @@ public class UpdateCollectionViewCountHandler
   extends BatchNetHandler
   implements CmdTaskManger.CommandCallback<UpdateCollectionViewCountRequest, UpdateCollectionViewCountResponse>
 {
-  protected String a;
-  protected List<UpdateCollectionViewCountHandler.CollectionID> a;
+  protected List<UpdateCollectionViewCountHandler.CollectionID> c = new ArrayList();
+  protected String d;
   
   public UpdateCollectionViewCountHandler(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void a()
   {
     UpdateCollectionViewCountRequest localUpdateCollectionViewCountRequest = new UpdateCollectionViewCountRequest();
-    localUpdateCollectionViewCountRequest.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    localUpdateCollectionViewCountRequest.b = this.jdField_a_of_type_JavaLangString;
+    localUpdateCollectionViewCountRequest.g = this.c;
+    localUpdateCollectionViewCountRequest.f = this.d;
     CmdTaskManger.a().a(localUpdateCollectionViewCountRequest, this);
   }
   
@@ -47,7 +46,7 @@ public class UpdateCollectionViewCountHandler
     {
       paramUpdateCollectionViewCountRequest = new DeleteStoryVideoHandler.UpdateMemoriesEvent(1);
       paramErrorMessage = (MemoryManager)SuperManager.a(19);
-      paramUpdateCollectionViewCountResponse = paramUpdateCollectionViewCountResponse.jdField_a_of_type_JavaUtilList;
+      paramUpdateCollectionViewCountResponse = paramUpdateCollectionViewCountResponse.a;
       Object localObject1 = paramUpdateCollectionViewCountResponse.iterator();
       Object localObject2;
       while (((Iterator)localObject1).hasNext())
@@ -63,7 +62,7 @@ public class UpdateCollectionViewCountHandler
         localObject2 = (VideoCollectionItem)paramUpdateCollectionViewCountResponse.next();
         if (!TextUtils.isEmpty(((VideoCollectionItem)localObject2).feedId))
         {
-          VideoListFeedItem localVideoListFeedItem = (VideoListFeedItem)paramErrorMessage.a(((VideoCollectionItem)localObject2).feedId);
+          VideoListFeedItem localVideoListFeedItem = (VideoListFeedItem)paramErrorMessage.b(((VideoCollectionItem)localObject2).feedId);
           if (localVideoListFeedItem != null)
           {
             localVideoListFeedItem.mViewTotalTime = ((VideoCollectionItem)localObject2).viewTimes;
@@ -78,13 +77,13 @@ public class UpdateCollectionViewCountHandler
   
   public void a(List<UpdateCollectionViewCountHandler.CollectionID> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.c.clear();
+    this.c.addAll(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.UpdateCollectionViewCountHandler
  * JD-Core Version:    0.7.0.1
  */

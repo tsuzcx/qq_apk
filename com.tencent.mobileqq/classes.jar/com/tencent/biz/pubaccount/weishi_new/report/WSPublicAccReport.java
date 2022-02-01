@@ -5,7 +5,9 @@ import UserGrowth.stSimpleMetaFeed;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.google.gson.Gson;
+import com.tencent.biz.pubaccount.weishi_new.aiolist.WSAioListHelper;
 import com.tencent.biz.pubaccount.weishi_new.cache.WSRedDotPreloadManager;
+import com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpABTestManager;
 import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
 import com.tencent.biz.pubaccount.weishi_new.push.WSPushGloryKingModel;
 import com.tencent.biz.pubaccount.weishi_new.push.WSPushPreloadModel;
@@ -33,6 +35,7 @@ public class WSPublicAccReport
   public static final String SOP_NAME_VIDEO_PLAY = "fullscreen_videoplay";
   private static volatile WSPublicAccReport instance;
   private String mEnterPublicAccFrom;
+  private boolean mIsReportedEnter;
   private String mLocalTestId;
   private String mPushId;
   private WSPublicAccReport.RecommendFullScreenInfo mRecommendFullScreenInfo;
@@ -78,6 +81,16 @@ public class WSPublicAccReport
     return instance;
   }
   
+  private void handleAddActionScene(HashMap<String, String> paramHashMap)
+  {
+    String str2 = WSExpABTestManager.a().h();
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "-1";
+    }
+    paramHashMap.put("action_scene", str1);
+  }
+  
   private void handleIntentBundle(Bundle paramBundle, HashMap<String, String> paramHashMap)
   {
     if (paramBundle == null) {
@@ -114,7 +127,7 @@ public class WSPublicAccReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("event_type", paramString1);
     localHashMap.put("push_count", String.valueOf(paramInt1));
-    localHashMap.put("row_key", WeishiUtils.b());
+    localHashMap.put("row_key", WeishiUtils.j());
     localHashMap.put("push_extra", paramString2);
     localHashMap.put("app_extra", "");
     localHashMap.put("push_entry", paramString3);
@@ -133,22 +146,23 @@ public class WSPublicAccReport
     if (paramMap == null) {
       localObject = new HashMap();
     }
-    baseActionReport("gzh_pagevisit", paramString, localHashMap, (Map)localObject, "", 1);
+    baseActionReport("gzh_pageview", paramString, localHashMap, (Map)localObject, "", 1);
   }
   
   private void reset()
   {
+    this.mIsReportedEnter = false;
     this.mRecommendFullScreenInfo = null;
     this.mPushId = "";
     this.pageVisitTimeMap.clear();
-    WeishiUtils.c("");
-    WSReportEventConstants.a = false;
-    WSRedDotPreloadManager.a().b();
+    WeishiUtils.m("");
+    WSReportEventConstants.c = false;
+    WSRedDotPreloadManager.a().c();
   }
   
   private void resetLocalTestId()
   {
-    this.mLocalTestId = LocalMultiProcConfig.getString4Uin("key_default_test_id", "", WeishiUtils.a());
+    this.mLocalTestId = LocalMultiProcConfig.getString4Uin("key_default_test_id", "", WeishiUtils.b());
   }
   
   private void setSessionId(String paramString)
@@ -179,7 +193,7 @@ public class WSPublicAccReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("event_type", paramString1);
     localHashMap.put("push_count", String.valueOf(paramInt1));
-    localHashMap.put("row_key", WeishiUtils.b());
+    localHashMap.put("row_key", WeishiUtils.j());
     localHashMap.put("push_extra", paramString2);
     localHashMap.put("app_extra", "");
     localHashMap.put("push_entry", paramString3);
@@ -231,10 +245,14 @@ public class WSPublicAccReport
   
   public void enterPublicAccReport(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, String paramString, Bundle paramBundle)
   {
+    if (this.mIsReportedEnter) {
+      return;
+    }
     resetLocalTestId();
     this.publicAccEnterTime = System.currentTimeMillis();
     long l = this.publicAccEnterTime;
     this.toForegroundTime = l;
+    this.mIsReportedEnter = true;
     setSessionId(String.valueOf(l));
     setSessionStamp(String.valueOf(this.publicAccEnterTime));
     setEnterPublicAccFrom(paramString);
@@ -267,7 +285,7 @@ public class WSPublicAccReport
         }
       }
     }
-    Object localObject = WeishiUtils.a();
+    Object localObject = WeishiUtils.d();
     if (WeishiUtils.a((WeishiManager)localObject)) {
       paramWSRedDotPushMsg = "1";
     } else {
@@ -276,17 +294,19 @@ public class WSPublicAccReport
     if (TextUtils.equals(paramWSRedDotPushMsg, "2"))
     {
       if (localObject != null) {
-        localObject = WeishiUtils.f();
+        localObject = WeishiUtils.q();
       } else {
         localObject = "0";
       }
       localHashMap.put("is_yunying_content", localObject);
     }
+    localHashMap.put("aio_index", Integer.toString(WSAioListHelper.d() + 1));
     if (paramInt == 3) {
       paramInt = 1;
     }
     handleIntentBundle(paramBundle, localHashMap);
-    publicAccActionReport("1", WeishiUtils.a(), paramString, paramWSRedDotPushMsg, paramInt, 0L, 0, localHashMap);
+    handleAddActionScene(localHashMap);
+    publicAccActionReport("1", WeishiUtils.m(), paramString, paramWSRedDotPushMsg, paramInt, 0L, 0, localHashMap);
   }
   
   public void enterTrendsTabReport(WSRedDotPushMsg paramWSRedDotPushMsg, boolean paramBoolean)
@@ -341,7 +361,7 @@ public class WSPublicAccReport
   public String getEnterPublicAccFrom()
   {
     if (TextUtils.isEmpty(this.mEnterPublicAccFrom)) {
-      this.mEnterPublicAccFrom = WSSharePreferencesUtil.a("key_enter_public_from", "");
+      this.mEnterPublicAccFrom = WSSharePreferencesUtil.b("key_enter_public_from", "");
     }
     return this.mEnterPublicAccFrom;
   }
@@ -426,7 +446,7 @@ public class WSPublicAccReport
   public String getScenesChannelFrom()
   {
     if (TextUtils.isEmpty(this.mScenesChannelFrom)) {
-      this.mScenesChannelFrom = WSSharePreferencesUtil.a("key_scenes_channel_from", "");
+      this.mScenesChannelFrom = WSSharePreferencesUtil.b("key_scenes_channel_from", "");
     }
     return this.mScenesChannelFrom;
   }
@@ -434,7 +454,7 @@ public class WSPublicAccReport
   public String getSessionId()
   {
     if (TextUtils.isEmpty(this.mSessionId)) {
-      return WSSharePreferencesUtil.a("key_session_id", "");
+      return WSSharePreferencesUtil.b("key_session_id", "");
     }
     return this.mSessionId;
   }
@@ -442,7 +462,7 @@ public class WSPublicAccReport
   public String getSessionStamp()
   {
     if (TextUtils.isEmpty(this.mSessionStamp)) {
-      return WSSharePreferencesUtil.a("key_session_stamp", "");
+      return WSSharePreferencesUtil.b("key_session_stamp", "");
     }
     return this.mSessionStamp;
   }
@@ -463,6 +483,9 @@ public class WSPublicAccReport
   
   public void reportAttentionRedDotExposure(int paramInt, String paramString)
   {
+    if (paramInt <= 0) {
+      return;
+    }
     HashMap localHashMap = new HashMap();
     localHashMap.put("red_dot_quantity", String.valueOf(paramInt));
     baseActionReport("gzh_exposure", paramString, getFeedsBaseParamsWithoutFeed("follow_tab", 1000001), localHashMap, "", 10001);
@@ -613,20 +636,23 @@ public class WSPublicAccReport
     baseActionReport("gzh_click", "focus", getFeedsBaseParamsWithoutFeed("recommend_tab", 1000001), localHashMap, "", 10001);
   }
   
-  public void reportShareClick(String paramString1, int paramInt, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed)
+  public void reportShareClick(String paramString1, int paramInt, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("material_type", getFeedOpVideoType(paramstSimpleMetaFeed));
-    if (!TextUtils.isEmpty(paramString3)) {
-      localHashMap.put("play_scene", paramString3);
+    Object localObject = paramMap;
+    if (paramMap == null) {
+      localObject = new HashMap();
     }
-    if (WSReportUtils.a(paramString2)) {
+    ((Map)localObject).put("material_type", getFeedOpVideoType(paramstSimpleMetaFeed));
+    if (!TextUtils.isEmpty(paramString3)) {
+      ((Map)localObject).put("play_scene", paramString3);
+    }
+    if (WSReportUtils.d(paramString2)) {
       paramString3 = WSVerticalBeaconReport.a();
     } else {
       paramString3 = "";
     }
-    localHashMap.put("tab_id", paramString3);
-    baseActionReport("gzh_click", paramString2, getFeedsBaseParams(paramString1, paramInt, paramstSimpleMetaFeed), localHashMap, "", 1);
+    ((Map)localObject).put("tab_id", paramString3);
+    baseActionReport("gzh_click", paramString2, getFeedsBaseParams(paramString1, paramInt, paramstSimpleMetaFeed), (Map)localObject, "", 1);
   }
   
   public void reportTabLiveBtnClick(int paramInt1, boolean paramBoolean, int paramInt2)
@@ -710,7 +736,7 @@ public class WSPublicAccReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport
  * JD-Core Version:    0.7.0.1
  */

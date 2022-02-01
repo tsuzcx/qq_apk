@@ -20,27 +20,27 @@ class DatalineMessageManager$1
   
   public void run()
   {
-    Object localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    Object localObject1 = this.this$0.a.getEntityManagerFactory().createEntityManager();
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time == 0L) {
-        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time = MessageCache.a();
+      if (this.a.time == 0L) {
+        this.a.time = MessageCache.c();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq == 0L) {
-        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq = ((int)this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time);
+      if (this.a.msgseq == 0L) {
+        this.a.msgseq = ((int)this.a.time);
       }
-      DatalineMessageManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, (EntityManager)localObject1);
-      if (!QFileAssistantUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      DatalineMessageManager.a(this.this$0, this.a, (EntityManager)localObject1);
+      if (!QFileAssistantUtils.a(this.this$0.a))
       {
-        RecentUserProxy localRecentUserProxy = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
-        RecentUser localRecentUser = localRecentUserProxy.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
-        localRecentUser.setType(this.this$0.jdField_a_of_type_Int);
-        localRecentUser.lastmsgtime = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time;
+        RecentUserProxy localRecentUserProxy = this.this$0.a.getProxyManager().g();
+        RecentUser localRecentUser = localRecentUserProxy.b(String.valueOf(this.this$0.c), this.this$0.d);
+        localRecentUser.setType(this.this$0.d);
+        localRecentUser.lastmsgtime = this.a.time;
         localRecentUserProxy.b(localRecentUser);
-        this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+        this.this$0.b.a(this.a);
       }
-      long l = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId;
-      this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+      long l = this.a.msgId;
+      this.b.a();
       ((EntityManager)localObject1).close();
       if (QLog.isColorLevel())
       {
@@ -59,7 +59,7 @@ class DatalineMessageManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.DatalineMessageManager.1
  * JD-Core Version:    0.7.0.1
  */

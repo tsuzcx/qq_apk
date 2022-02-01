@@ -8,20 +8,20 @@ import androidx.viewpager.widget.PagerAdapter;
 class EffectCycleViewPager$InnerPagerAdapter
   extends PagerAdapter
 {
-  private PagerAdapter jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
+  private PagerAdapter b;
   
   public EffectCycleViewPager$InnerPagerAdapter(EffectCycleViewPager paramEffectCycleViewPager, PagerAdapter paramPagerAdapter)
   {
-    this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter = paramPagerAdapter;
+    this.b = paramPagerAdapter;
     paramPagerAdapter.registerDataSetObserver(new EffectCycleViewPager.InnerPagerAdapter.1(this, paramEffectCycleViewPager));
   }
   
   int a(int paramInt)
   {
     if (paramInt == 0) {
-      return this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount() - 1;
+      return this.b.getCount() - 1;
     }
-    if (paramInt == this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount() + 1) {
+    if (paramInt == this.b.getCount() + 1) {
       return 0;
     }
     return paramInt - 1;
@@ -30,13 +30,13 @@ class EffectCycleViewPager$InnerPagerAdapter
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     int i = a(paramInt);
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.remove(paramInt);
-    this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.destroyItem(paramViewGroup, i, paramObject);
+    this.a.b.remove(paramInt);
+    this.b.destroyItem(paramViewGroup, i, paramObject);
   }
   
   public int getCount()
   {
-    int i = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount();
+    int i = this.b.getCount();
     if (i > 0) {
       return i + 2;
     }
@@ -46,19 +46,19 @@ class EffectCycleViewPager$InnerPagerAdapter
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     int i = a(paramInt);
-    paramViewGroup = (View)this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.instantiateItem(paramViewGroup, i);
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.put(paramInt, paramViewGroup);
+    paramViewGroup = (View)this.b.instantiateItem(paramViewGroup, i);
+    this.a.b.put(paramInt, paramViewGroup);
     return paramViewGroup;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    return this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.isViewFromObject(paramView, paramObject);
+    return this.b.isViewFromObject(paramView, paramObject);
   }
   
   public void notifyDataSetChanged()
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(1);
+    this.a.setCurrentItem(1);
     super.notifyDataSetChanged();
   }
 }

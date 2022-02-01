@@ -28,51 +28,50 @@ import mqq.app.MobileQQ;
 public class ReportLog
   extends CrashHandler
 {
-  static ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private static Handler jdField_a_of_type_AndroidOsHandler;
-  private static IHttpCommunicatorListener jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorListener;
-  public static String a;
-  private static Thread.UncaughtExceptionHandler jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler;
   public static boolean a = false;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = "9u23fh$jkf^%43hj".getBytes();
   public static String b;
-  private static boolean jdField_b_of_type_Boolean = false;
-  private static byte[] jdField_b_of_type_ArrayOfByte;
-  private static String c;
+  static ProgressDialog c;
+  public static String d = "https://bugtrace.3g.qq.com/upload/1/0";
+  private static boolean e = false;
+  private static final byte[] f = "9u23fh$jkf^%43hj".getBytes();
+  private static byte[] g;
+  private static String h;
+  private static Thread.UncaughtExceptionHandler i;
+  private static Handler j;
+  private static IHttpCommunicatorListener k;
   
   static
   {
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_ArrayOfByte = null;
-    c = "0";
-    jdField_a_of_type_JavaLangString = "/Tencent/MobileQQ/log/";
-    jdField_a_of_type_AndroidOsHandler = new ReportLog.1(Looper.getMainLooper());
-    jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorListener = new ReportLog.2();
-    jdField_b_of_type_JavaLangString = "https://bugtrace.3g.qq.com/upload/1/0";
+    a = false;
+    g = null;
+    h = "0";
+    b = "/Tencent/MobileQQ/log/";
+    j = new ReportLog.1(Looper.getMainLooper());
+    k = new ReportLog.2();
   }
   
   public ReportLog()
   {
-    if (jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler == null) {
-      jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
+    if (i == null) {
+      i = Thread.getDefaultUncaughtExceptionHandler();
     }
   }
   
   public static void a(Context paramContext, boolean paramBoolean)
   {
-    if (jdField_b_of_type_Boolean == paramBoolean) {
+    if (e == paramBoolean) {
       return;
     }
-    jdField_b_of_type_Boolean = paramBoolean;
+    e = paramBoolean;
     if (paramBoolean) {}
     try
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(ReportLogHelper.a(paramContext, "/Tencent/MobileQQ/log/"));
       localStringBuilder.append("/");
-      jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-      ReportLogHelper.jdField_a_of_type_JavaLangString = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
-      ReportLogHelper.jdField_b_of_type_JavaLangString = Build.MODEL;
+      b = localStringBuilder.toString();
+      ReportLogHelper.a = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
+      ReportLogHelper.b = Build.MODEL;
       ReportLogHelper.c = Build.VERSION.RELEASE;
       return;
     }
@@ -83,354 +82,380 @@ public class ReportLog
   public static void a(com.tencent.mobileqq.transfile.HttpCommunicator paramHttpCommunicator, Context paramContext, ProgressDialog paramProgressDialog, String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc 137
-    //   2: iconst_1
-    //   3: iconst_5
-    //   4: anewarray 139	java/lang/Object
-    //   7: dup
-    //   8: iconst_0
-    //   9: invokestatic 144	com/tencent/common/config/AppSetting:a	()I
-    //   12: invokestatic 150	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   15: aastore
-    //   16: dup
-    //   17: iconst_1
-    //   18: ldc 152
-    //   20: aastore
-    //   21: dup
-    //   22: iconst_2
-    //   23: ldc 154
-    //   25: aastore
-    //   26: dup
-    //   27: iconst_3
-    //   28: aload_3
-    //   29: aastore
-    //   30: dup
-    //   31: iconst_4
-    //   32: aload 4
-    //   34: aastore
-    //   35: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   38: aload_0
-    //   39: ifnonnull +4 -> 43
-    //   42: return
-    //   43: aload_2
-    //   44: putstatic 162	com/tencent/qqperf/monitor/crash/ReportLog:jdField_a_of_type_AndroidAppProgressDialog	Landroid/app/ProgressDialog;
-    //   47: new 81	java/lang/StringBuilder
-    //   50: dup
-    //   51: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   54: astore_2
-    //   55: aload_2
-    //   56: aload_1
-    //   57: ldc 37
-    //   59: invokestatic 87	com/tencent/qqperf/monitor/crash/tools/ReportLogHelper:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
-    //   62: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   65: pop
-    //   66: aload_2
-    //   67: ldc 93
-    //   69: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: pop
-    //   73: aload_2
-    //   74: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   77: putstatic 39	com/tencent/qqperf/monitor/crash/ReportLog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   80: new 81	java/lang/StringBuilder
-    //   83: dup
-    //   84: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   87: astore_1
-    //   88: aload_1
-    //   89: getstatic 39	com/tencent/qqperf/monitor/crash/ReportLog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   92: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   95: pop
-    //   96: aload_1
-    //   97: ldc 164
-    //   99: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: pop
-    //   103: new 166	java/io/File
-    //   106: dup
-    //   107: aload_1
-    //   108: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   111: invokespecial 169	java/io/File:<init>	(Ljava/lang/String;)V
-    //   114: astore 10
-    //   116: aload 10
-    //   118: invokevirtual 173	java/io/File:exists	()Z
-    //   121: ifne +4 -> 125
-    //   124: return
-    //   125: aconst_null
-    //   126: astore 4
-    //   128: aconst_null
-    //   129: astore 8
-    //   131: aconst_null
-    //   132: ldc 175
-    //   134: iconst_1
-    //   135: invokestatic 178	com/tencent/qqperf/monitor/crash/ReportLog:a	(Ljava/lang/String;Ljava/lang/String;Z)V
-    //   138: aload 8
-    //   140: astore_1
-    //   141: iconst_1
-    //   142: putstatic 29	com/tencent/qqperf/monitor/crash/ReportLog:jdField_a_of_type_Boolean	Z
-    //   145: aload 8
-    //   147: astore_1
-    //   148: aload 10
-    //   150: invokevirtual 182	java/io/File:length	()J
-    //   153: lstore 6
-    //   155: lload 6
-    //   157: l2i
-    //   158: istore 5
-    //   160: aload 8
-    //   162: astore_1
-    //   163: iload 5
-    //   165: newarray byte
-    //   167: astore 9
-    //   169: aload 8
-    //   171: astore_1
-    //   172: new 184	java/io/BufferedInputStream
-    //   175: dup
-    //   176: new 186	java/io/FileInputStream
-    //   179: dup
-    //   180: aload 10
-    //   182: invokespecial 189	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   185: invokespecial 192	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   188: astore_2
-    //   189: aload_2
-    //   190: aload 9
-    //   192: iconst_0
-    //   193: iload 5
-    //   195: invokevirtual 196	java/io/BufferedInputStream:read	([BII)I
-    //   198: i2l
-    //   199: lload 6
-    //   201: lcmp
-    //   202: ifne +200 -> 402
-    //   205: aload_2
-    //   206: invokevirtual 199	java/io/BufferedInputStream:close	()V
-    //   209: aload 8
-    //   211: astore_1
-    //   212: aload 10
-    //   214: invokevirtual 202	java/io/File:delete	()Z
-    //   217: pop
-    //   218: aload 8
-    //   220: astore_1
-    //   221: getstatic 31	com/tencent/qqperf/monitor/crash/ReportLog:jdField_b_of_type_ArrayOfByte	[B
-    //   224: ifnonnull +250 -> 474
-    //   227: aload 8
-    //   229: astore_1
-    //   230: ldc 204
-    //   232: invokevirtual 25	java/lang/String:getBytes	()[B
-    //   235: putstatic 31	com/tencent/qqperf/monitor/crash/ReportLog:jdField_b_of_type_ArrayOfByte	[B
-    //   238: goto +236 -> 474
-    //   241: aload 8
-    //   243: astore_1
-    //   244: new 206	KQQ/UploadInfo
-    //   247: dup
-    //   248: invokespecial 207	KQQ/UploadInfo:<init>	()V
-    //   251: astore_3
-    //   252: aload 8
-    //   254: astore_1
-    //   255: aload_3
-    //   256: invokestatic 144	com/tencent/common/config/AppSetting:a	()I
-    //   259: i2l
-    //   260: putfield 211	KQQ/UploadInfo:lAppID	J
+    //   0: invokestatic 151	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +44 -> 47
+    //   6: ldc 153
+    //   8: iconst_2
+    //   9: iconst_5
+    //   10: anewarray 155	java/lang/Object
+    //   13: dup
+    //   14: iconst_0
+    //   15: invokestatic 160	com/tencent/common/config/AppSetting:d	()I
+    //   18: invokestatic 166	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   21: aastore
+    //   22: dup
+    //   23: iconst_1
+    //   24: ldc 168
+    //   26: aastore
+    //   27: dup
+    //   28: iconst_2
+    //   29: ldc 170
+    //   31: aastore
+    //   32: dup
+    //   33: iconst_3
+    //   34: aload_3
+    //   35: aastore
+    //   36: dup
+    //   37: iconst_4
+    //   38: aload 4
+    //   40: aastore
+    //   41: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   44: goto +39 -> 83
+    //   47: ldc 153
+    //   49: iconst_1
+    //   50: iconst_4
+    //   51: anewarray 155	java/lang/Object
+    //   54: dup
+    //   55: iconst_0
+    //   56: invokestatic 160	com/tencent/common/config/AppSetting:d	()I
+    //   59: invokestatic 166	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   62: aastore
+    //   63: dup
+    //   64: iconst_1
+    //   65: ldc 168
+    //   67: aastore
+    //   68: dup
+    //   69: iconst_2
+    //   70: ldc 170
+    //   72: aastore
+    //   73: dup
+    //   74: iconst_3
+    //   75: aload_3
+    //   76: invokestatic 179	mqq/util/LogUtil:wrapLogUin	(Ljava/lang/String;)Ljava/lang/String;
+    //   79: aastore
+    //   80: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   83: aload_0
+    //   84: ifnonnull +4 -> 88
+    //   87: return
+    //   88: aload_2
+    //   89: putstatic 181	com/tencent/qqperf/monitor/crash/ReportLog:c	Landroid/app/ProgressDialog;
+    //   92: new 89	java/lang/StringBuilder
+    //   95: dup
+    //   96: invokespecial 90	java/lang/StringBuilder:<init>	()V
+    //   99: astore_2
+    //   100: aload_2
+    //   101: aload_1
+    //   102: ldc 45
+    //   104: invokestatic 95	com/tencent/qqperf/monitor/crash/tools/ReportLogHelper:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   107: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: pop
+    //   111: aload_2
+    //   112: ldc 101
+    //   114: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: pop
+    //   118: aload_2
+    //   119: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   122: putstatic 47	com/tencent/qqperf/monitor/crash/ReportLog:b	Ljava/lang/String;
+    //   125: new 89	java/lang/StringBuilder
+    //   128: dup
+    //   129: invokespecial 90	java/lang/StringBuilder:<init>	()V
+    //   132: astore_1
+    //   133: aload_1
+    //   134: getstatic 47	com/tencent/qqperf/monitor/crash/ReportLog:b	Ljava/lang/String;
+    //   137: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: pop
+    //   141: aload_1
+    //   142: ldc 183
+    //   144: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: pop
+    //   148: new 185	java/io/File
+    //   151: dup
+    //   152: aload_1
+    //   153: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   156: invokespecial 188	java/io/File:<init>	(Ljava/lang/String;)V
+    //   159: astore 10
+    //   161: aload 10
+    //   163: invokevirtual 191	java/io/File:exists	()Z
+    //   166: ifne +4 -> 170
+    //   169: return
+    //   170: aconst_null
+    //   171: astore 4
+    //   173: aconst_null
+    //   174: astore 8
+    //   176: aconst_null
+    //   177: ldc 193
+    //   179: iconst_1
+    //   180: invokestatic 196	com/tencent/qqperf/monitor/crash/ReportLog:a	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   183: aload 8
+    //   185: astore_1
+    //   186: iconst_1
+    //   187: putstatic 37	com/tencent/qqperf/monitor/crash/ReportLog:a	Z
+    //   190: aload 8
+    //   192: astore_1
+    //   193: aload 10
+    //   195: invokevirtual 200	java/io/File:length	()J
+    //   198: lstore 6
+    //   200: lload 6
+    //   202: l2i
+    //   203: istore 5
+    //   205: aload 8
+    //   207: astore_1
+    //   208: iload 5
+    //   210: newarray byte
+    //   212: astore 9
+    //   214: aload 8
+    //   216: astore_1
+    //   217: new 202	java/io/BufferedInputStream
+    //   220: dup
+    //   221: new 204	java/io/FileInputStream
+    //   224: dup
+    //   225: aload 10
+    //   227: invokespecial 207	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   230: invokespecial 210	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   233: astore_2
+    //   234: aload_2
+    //   235: aload 9
+    //   237: iconst_0
+    //   238: iload 5
+    //   240: invokevirtual 214	java/io/BufferedInputStream:read	([BII)I
+    //   243: i2l
+    //   244: lload 6
+    //   246: lcmp
+    //   247: ifne +200 -> 447
+    //   250: aload_2
+    //   251: invokevirtual 217	java/io/BufferedInputStream:close	()V
+    //   254: aload 8
+    //   256: astore_1
+    //   257: aload 10
+    //   259: invokevirtual 220	java/io/File:delete	()Z
+    //   262: pop
     //   263: aload 8
     //   265: astore_1
-    //   266: aload_3
-    //   267: aload_2
-    //   268: invokestatic 217	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   271: putfield 220	KQQ/UploadInfo:lFromMID	J
-    //   274: aload 8
-    //   276: astore_1
-    //   277: aload_3
-    //   278: lconst_0
-    //   279: putfield 223	KQQ/UploadInfo:lToMID	J
-    //   282: aload 8
-    //   284: astore_1
-    //   285: aload_3
-    //   286: iconst_1
-    //   287: putfield 227	KQQ/UploadInfo:shType	S
-    //   290: aload 8
-    //   292: astore_1
-    //   293: aload_3
-    //   294: getstatic 31	com/tencent/qqperf/monitor/crash/ReportLog:jdField_b_of_type_ArrayOfByte	[B
-    //   297: putfield 230	KQQ/UploadInfo:vSignature	[B
-    //   300: aload 8
-    //   302: astore_1
-    //   303: aload_3
-    //   304: invokevirtual 233	KQQ/UploadInfo:toByteArray	()[B
-    //   307: astore_2
+    //   266: getstatic 39	com/tencent/qqperf/monitor/crash/ReportLog:g	[B
+    //   269: ifnonnull +250 -> 519
+    //   272: aload 8
+    //   274: astore_1
+    //   275: ldc 222
+    //   277: invokevirtual 33	java/lang/String:getBytes	()[B
+    //   280: putstatic 39	com/tencent/qqperf/monitor/crash/ReportLog:g	[B
+    //   283: goto +236 -> 519
+    //   286: aload 8
+    //   288: astore_1
+    //   289: new 224	KQQ/UploadInfo
+    //   292: dup
+    //   293: invokespecial 225	KQQ/UploadInfo:<init>	()V
+    //   296: astore_3
+    //   297: aload 8
+    //   299: astore_1
+    //   300: aload_3
+    //   301: invokestatic 160	com/tencent/common/config/AppSetting:d	()I
+    //   304: i2l
+    //   305: putfield 229	KQQ/UploadInfo:lAppID	J
     //   308: aload 8
     //   310: astore_1
-    //   311: new 235	com/tencent/qphone/base/util/Cryptor
-    //   314: dup
-    //   315: invokespecial 236	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   318: aload_2
-    //   319: getstatic 27	com/tencent/qqperf/monitor/crash/ReportLog:jdField_a_of_type_ArrayOfByte	[B
-    //   322: invokevirtual 240	com/tencent/qphone/base/util/Cryptor:encrypt	([B[B)[B
-    //   325: astore_2
-    //   326: aload 8
-    //   328: astore_1
-    //   329: new 242	KQQ/HttpUploadReq
-    //   332: dup
-    //   333: invokespecial 243	KQQ/HttpUploadReq:<init>	()V
-    //   336: astore_3
-    //   337: aload 8
-    //   339: astore_1
-    //   340: aload_3
-    //   341: aload_2
-    //   342: putfield 246	KQQ/HttpUploadReq:vEncryptUploadInfo	[B
+    //   311: aload_3
+    //   312: aload_2
+    //   313: invokestatic 235	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   316: putfield 238	KQQ/UploadInfo:lFromMID	J
+    //   319: aload 8
+    //   321: astore_1
+    //   322: aload_3
+    //   323: lconst_0
+    //   324: putfield 241	KQQ/UploadInfo:lToMID	J
+    //   327: aload 8
+    //   329: astore_1
+    //   330: aload_3
+    //   331: iconst_1
+    //   332: putfield 245	KQQ/UploadInfo:shType	S
+    //   335: aload 8
+    //   337: astore_1
+    //   338: aload_3
+    //   339: getstatic 39	com/tencent/qqperf/monitor/crash/ReportLog:g	[B
+    //   342: putfield 248	KQQ/UploadInfo:vSignature	[B
     //   345: aload 8
     //   347: astore_1
     //   348: aload_3
-    //   349: aload 9
-    //   351: putfield 249	KQQ/HttpUploadReq:vFileData	[B
-    //   354: aload 8
-    //   356: astore_1
-    //   357: new 251	com/tencent/mobileqq/utils/httputils/HttpMsg
-    //   360: dup
-    //   361: getstatic 63	com/tencent/qqperf/monitor/crash/ReportLog:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   364: aload_3
-    //   365: invokevirtual 252	KQQ/HttpUploadReq:toByteArray	()[B
-    //   368: getstatic 59	com/tencent/qqperf/monitor/crash/ReportLog:jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorListener	Lcom/tencent/mobileqq/utils/httputils/IHttpCommunicatorListener;
-    //   371: invokespecial 255	com/tencent/mobileqq/utils/httputils/HttpMsg:<init>	(Ljava/lang/String;[BLcom/tencent/mobileqq/utils/httputils/IHttpCommunicatorListener;)V
-    //   374: astore_2
-    //   375: aload 8
-    //   377: astore_1
-    //   378: aload_2
-    //   379: ldc_w 257
-    //   382: invokevirtual 260	com/tencent/mobileqq/utils/httputils/HttpMsg:setRequestMethod	(Ljava/lang/String;)V
-    //   385: aload 8
-    //   387: astore_1
-    //   388: aload_0
-    //   389: aload_2
-    //   390: invokevirtual 266	com/tencent/mobileqq/transfile/HttpCommunicator:sendMsg	(Lcom/tencent/mobileqq/utils/httputils/HttpMsg;)I
-    //   393: pop
-    //   394: aload 8
-    //   396: astore_1
-    //   397: iconst_0
-    //   398: putstatic 29	com/tencent/qqperf/monitor/crash/ReportLog:jdField_a_of_type_Boolean	Z
-    //   401: return
-    //   402: new 133	java/lang/Exception
+    //   349: invokevirtual 251	KQQ/UploadInfo:toByteArray	()[B
+    //   352: astore_2
+    //   353: aload 8
+    //   355: astore_1
+    //   356: new 253	com/tencent/qphone/base/util/Cryptor
+    //   359: dup
+    //   360: invokespecial 254	com/tencent/qphone/base/util/Cryptor:<init>	()V
+    //   363: aload_2
+    //   364: getstatic 35	com/tencent/qqperf/monitor/crash/ReportLog:f	[B
+    //   367: invokevirtual 258	com/tencent/qphone/base/util/Cryptor:encrypt	([B[B)[B
+    //   370: astore_2
+    //   371: aload 8
+    //   373: astore_1
+    //   374: new 260	KQQ/HttpUploadReq
+    //   377: dup
+    //   378: invokespecial 261	KQQ/HttpUploadReq:<init>	()V
+    //   381: astore_3
+    //   382: aload 8
+    //   384: astore_1
+    //   385: aload_3
+    //   386: aload_2
+    //   387: putfield 264	KQQ/HttpUploadReq:vEncryptUploadInfo	[B
+    //   390: aload 8
+    //   392: astore_1
+    //   393: aload_3
+    //   394: aload 9
+    //   396: putfield 267	KQQ/HttpUploadReq:vFileData	[B
+    //   399: aload 8
+    //   401: astore_1
+    //   402: new 269	com/tencent/mobileqq/utils/httputils/HttpMsg
     //   405: dup
-    //   406: ldc_w 268
-    //   409: invokespecial 269	java/lang/Exception:<init>	(Ljava/lang/String;)V
-    //   412: athrow
-    //   413: astore_0
-    //   414: aload_2
-    //   415: astore_1
-    //   416: goto +40 -> 456
-    //   419: astore_1
-    //   420: aload_2
-    //   421: astore_0
-    //   422: aload_1
-    //   423: astore_2
-    //   424: goto +11 -> 435
-    //   427: astore_0
-    //   428: goto +28 -> 456
-    //   431: astore_2
-    //   432: aload 4
-    //   434: astore_0
-    //   435: aload_0
-    //   436: astore_1
-    //   437: aload_2
-    //   438: invokevirtual 272	java/lang/Exception:printStackTrace	()V
-    //   441: aload_0
-    //   442: ifnull +13 -> 455
-    //   445: aload_0
-    //   446: invokevirtual 199	java/io/BufferedInputStream:close	()V
-    //   449: return
-    //   450: astore_0
-    //   451: aload_0
-    //   452: invokevirtual 273	java/io/IOException:printStackTrace	()V
-    //   455: return
-    //   456: aload_1
-    //   457: ifnull +15 -> 472
-    //   460: aload_1
-    //   461: invokevirtual 199	java/io/BufferedInputStream:close	()V
-    //   464: goto +8 -> 472
-    //   467: astore_1
-    //   468: aload_1
-    //   469: invokevirtual 273	java/io/IOException:printStackTrace	()V
-    //   472: aload_0
-    //   473: athrow
-    //   474: aload_3
-    //   475: astore_2
-    //   476: aload_3
-    //   477: ifnonnull -236 -> 241
-    //   480: ldc 33
-    //   482: astore_2
-    //   483: goto -242 -> 241
+    //   406: getstatic 71	com/tencent/qqperf/monitor/crash/ReportLog:d	Ljava/lang/String;
+    //   409: aload_3
+    //   410: invokevirtual 270	KQQ/HttpUploadReq:toByteArray	()[B
+    //   413: getstatic 67	com/tencent/qqperf/monitor/crash/ReportLog:k	Lcom/tencent/mobileqq/utils/httputils/IHttpCommunicatorListener;
+    //   416: invokespecial 273	com/tencent/mobileqq/utils/httputils/HttpMsg:<init>	(Ljava/lang/String;[BLcom/tencent/mobileqq/utils/httputils/IHttpCommunicatorListener;)V
+    //   419: astore_2
+    //   420: aload 8
+    //   422: astore_1
+    //   423: aload_2
+    //   424: ldc_w 275
+    //   427: invokevirtual 278	com/tencent/mobileqq/utils/httputils/HttpMsg:setRequestMethod	(Ljava/lang/String;)V
+    //   430: aload 8
+    //   432: astore_1
+    //   433: aload_0
+    //   434: aload_2
+    //   435: invokevirtual 284	com/tencent/mobileqq/transfile/HttpCommunicator:sendMsg	(Lcom/tencent/mobileqq/utils/httputils/HttpMsg;)I
+    //   438: pop
+    //   439: aload 8
+    //   441: astore_1
+    //   442: iconst_0
+    //   443: putstatic 37	com/tencent/qqperf/monitor/crash/ReportLog:a	Z
+    //   446: return
+    //   447: new 143	java/lang/Exception
+    //   450: dup
+    //   451: ldc_w 286
+    //   454: invokespecial 287	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   457: athrow
+    //   458: astore_0
+    //   459: aload_2
+    //   460: astore_1
+    //   461: goto +40 -> 501
+    //   464: astore_1
+    //   465: aload_2
+    //   466: astore_0
+    //   467: aload_1
+    //   468: astore_2
+    //   469: goto +11 -> 480
+    //   472: astore_0
+    //   473: goto +28 -> 501
+    //   476: astore_2
+    //   477: aload 4
+    //   479: astore_0
+    //   480: aload_0
+    //   481: astore_1
+    //   482: aload_2
+    //   483: invokevirtual 290	java/lang/Exception:printStackTrace	()V
+    //   486: aload_0
+    //   487: ifnull +13 -> 500
+    //   490: aload_0
+    //   491: invokevirtual 217	java/io/BufferedInputStream:close	()V
+    //   494: return
+    //   495: astore_0
+    //   496: aload_0
+    //   497: invokevirtual 291	java/io/IOException:printStackTrace	()V
+    //   500: return
+    //   501: aload_1
+    //   502: ifnull +15 -> 517
+    //   505: aload_1
+    //   506: invokevirtual 217	java/io/BufferedInputStream:close	()V
+    //   509: goto +8 -> 517
+    //   512: astore_1
+    //   513: aload_1
+    //   514: invokevirtual 291	java/io/IOException:printStackTrace	()V
+    //   517: aload_0
+    //   518: athrow
+    //   519: aload_3
+    //   520: astore_2
+    //   521: aload_3
+    //   522: ifnonnull -236 -> 286
+    //   525: ldc 41
+    //   527: astore_2
+    //   528: goto -242 -> 286
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	486	0	paramHttpCommunicator	com.tencent.mobileqq.transfile.HttpCommunicator
-    //   0	486	1	paramContext	Context
-    //   0	486	2	paramProgressDialog	ProgressDialog
-    //   0	486	3	paramString1	String
-    //   0	486	4	paramString2	String
-    //   158	36	5	i	int
-    //   153	47	6	l	long
-    //   129	266	8	localObject	Object
-    //   167	183	9	arrayOfByte	byte[]
-    //   114	99	10	localFile	java.io.File
+    //   0	531	0	paramHttpCommunicator	com.tencent.mobileqq.transfile.HttpCommunicator
+    //   0	531	1	paramContext	Context
+    //   0	531	2	paramProgressDialog	ProgressDialog
+    //   0	531	3	paramString1	String
+    //   0	531	4	paramString2	String
+    //   203	36	5	m	int
+    //   198	47	6	l	long
+    //   174	266	8	localObject	Object
+    //   212	183	9	arrayOfByte	byte[]
+    //   159	99	10	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   189	209	413	finally
-    //   402	413	413	finally
-    //   189	209	419	java/lang/Exception
-    //   402	413	419	java/lang/Exception
-    //   141	145	427	finally
-    //   148	155	427	finally
-    //   163	169	427	finally
-    //   172	189	427	finally
-    //   212	218	427	finally
-    //   221	227	427	finally
-    //   230	238	427	finally
-    //   244	252	427	finally
-    //   255	263	427	finally
-    //   266	274	427	finally
-    //   277	282	427	finally
-    //   285	290	427	finally
-    //   293	300	427	finally
-    //   303	308	427	finally
-    //   311	326	427	finally
-    //   329	337	427	finally
-    //   340	345	427	finally
-    //   348	354	427	finally
-    //   357	375	427	finally
-    //   378	385	427	finally
-    //   388	394	427	finally
-    //   397	401	427	finally
-    //   437	441	427	finally
-    //   141	145	431	java/lang/Exception
-    //   148	155	431	java/lang/Exception
-    //   163	169	431	java/lang/Exception
-    //   172	189	431	java/lang/Exception
-    //   212	218	431	java/lang/Exception
-    //   221	227	431	java/lang/Exception
-    //   230	238	431	java/lang/Exception
-    //   244	252	431	java/lang/Exception
-    //   255	263	431	java/lang/Exception
-    //   266	274	431	java/lang/Exception
-    //   277	282	431	java/lang/Exception
-    //   285	290	431	java/lang/Exception
-    //   293	300	431	java/lang/Exception
-    //   303	308	431	java/lang/Exception
-    //   311	326	431	java/lang/Exception
-    //   329	337	431	java/lang/Exception
-    //   340	345	431	java/lang/Exception
-    //   348	354	431	java/lang/Exception
-    //   357	375	431	java/lang/Exception
-    //   378	385	431	java/lang/Exception
-    //   388	394	431	java/lang/Exception
-    //   397	401	431	java/lang/Exception
-    //   445	449	450	java/io/IOException
-    //   460	464	467	java/io/IOException
+    //   234	254	458	finally
+    //   447	458	458	finally
+    //   234	254	464	java/lang/Exception
+    //   447	458	464	java/lang/Exception
+    //   186	190	472	finally
+    //   193	200	472	finally
+    //   208	214	472	finally
+    //   217	234	472	finally
+    //   257	263	472	finally
+    //   266	272	472	finally
+    //   275	283	472	finally
+    //   289	297	472	finally
+    //   300	308	472	finally
+    //   311	319	472	finally
+    //   322	327	472	finally
+    //   330	335	472	finally
+    //   338	345	472	finally
+    //   348	353	472	finally
+    //   356	371	472	finally
+    //   374	382	472	finally
+    //   385	390	472	finally
+    //   393	399	472	finally
+    //   402	420	472	finally
+    //   423	430	472	finally
+    //   433	439	472	finally
+    //   442	446	472	finally
+    //   482	486	472	finally
+    //   186	190	476	java/lang/Exception
+    //   193	200	476	java/lang/Exception
+    //   208	214	476	java/lang/Exception
+    //   217	234	476	java/lang/Exception
+    //   257	263	476	java/lang/Exception
+    //   266	272	476	java/lang/Exception
+    //   275	283	476	java/lang/Exception
+    //   289	297	476	java/lang/Exception
+    //   300	308	476	java/lang/Exception
+    //   311	319	476	java/lang/Exception
+    //   322	327	476	java/lang/Exception
+    //   330	335	476	java/lang/Exception
+    //   338	345	476	java/lang/Exception
+    //   348	353	476	java/lang/Exception
+    //   356	371	476	java/lang/Exception
+    //   374	382	476	java/lang/Exception
+    //   385	390	476	java/lang/Exception
+    //   393	399	476	java/lang/Exception
+    //   402	420	476	java/lang/Exception
+    //   423	430	476	java/lang/Exception
+    //   433	439	476	java/lang/Exception
+    //   442	446	476	java/lang/Exception
+    //   490	494	495	java/io/IOException
+    //   505	509	512	java/io/IOException
   }
   
   public static void a(String paramString)
   {
-    c = paramString;
+    h = paramString;
   }
   
   public static void a(String paramString1, String paramString2)
   {
-    if (!jdField_b_of_type_Boolean) {
+    if (!e) {
       return;
     }
-    if (jdField_a_of_type_Boolean) {
+    if (a) {
       return;
     }
     a(paramString1, paramString2, true);
@@ -459,9 +484,9 @@ public class ReportLog
     }
     for (;;)
     {
-      int k;
-      int i;
-      int n;
+      int i1;
+      int m;
+      int i3;
       try
       {
         Object localObject3 = ((SharedPreferences)localObject2).getString("key_not_exit_crash_type", null);
@@ -470,54 +495,54 @@ public class ReportLog
           break label370;
         }
         localObject3 = ((String)localObject3).split("\\|");
-        m = localObject3.length;
-        k = 0;
-        i = 0;
-        j = i;
-        if (k < m)
+        i2 = localObject3.length;
+        i1 = 0;
+        m = 0;
+        n = m;
+        if (i1 < i2)
         {
-          CharSequence localCharSequence = localObject3[k];
+          CharSequence localCharSequence = localObject3[i1];
           if (!((String)localObject1).contains(localCharSequence)) {
             break label361;
           }
           QLog.d("ReportLog", 1, new Object[] { "exMsg = ", localObject1, ",crash = ", localCharSequence });
-          i = 1;
+          m = 1;
           break label361;
         }
         if (localObject2 != null)
         {
           localObject1 = ((String)localObject2).split("\\|");
           paramThrowable = paramThrowable.getStackTrace();
-          n = paramThrowable.length;
-          k = 0;
-          i = 0;
+          i3 = paramThrowable.length;
+          i1 = 0;
+          m = 0;
           break label375;
           localObject2 = ((StackTraceElement)localObject2).toString();
-          int i1 = localObject1.length;
-          m = 0;
-          if (m < i1)
+          int i4 = localObject1.length;
+          i2 = 0;
+          if (i2 < i4)
           {
-            localObject3 = localObject1[m];
+            localObject3 = localObject1[i2];
             if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (((String)localObject2).contains((CharSequence)localObject3)))
             {
               QLog.d("ReportLog", 1, new Object[] { "stackElemStr = ", localObject2, ",crash = ", localObject3 });
-              i = 1;
+              m = 1;
             }
             else
             {
-              m += 1;
+              i2 += 1;
               continue;
             }
           }
-          k += 1;
+          i1 += 1;
           break label375;
         }
-        m = 0;
+        i2 = 0;
         boolean bool1 = bool2;
-        if (m != 0)
+        if (i2 != 0)
         {
           bool1 = bool2;
-          if (j != 0) {
+          if (n != 0) {
             bool1 = true;
           }
         }
@@ -529,18 +554,18 @@ public class ReportLog
       }
       return false;
       label361:
-      k += 1;
+      i1 += 1;
       continue;
       label370:
-      int j = 0;
+      int n = 0;
       continue;
       label375:
-      int m = i;
-      if (k < n)
+      int i2 = m;
+      if (i1 < i3)
       {
-        localObject2 = paramThrowable[k];
-        if (i != 0) {
-          m = i;
+        localObject2 = paramThrowable[i1];
+        if (m != 0) {
+          i2 = m;
         }
       }
     }
@@ -561,8 +586,8 @@ public class ReportLog
     }
     if (a(paramThrowable))
     {
-      SafeModeUtil.a(HardCodeUtil.a(2131713338));
-      QQCrashReportManager.c = true;
+      SafeModeUtil.a(HardCodeUtil.a(2131910891));
+      QQCrashReportManager.i = true;
       CaughtExceptionReport.a(new Throwable(paramThrowable), "notExitOnSafeMode");
       if (Looper.myLooper() != null) {
         for (;;)
@@ -621,8 +646,8 @@ public class ReportLog
     paramThread = MobileQQ.sMobileQQ;
     try
     {
-      ReportLogHelper.jdField_a_of_type_JavaLangString = paramThread.getPackageManager().getPackageInfo(paramThread.getPackageName(), 0).versionName;
-      ReportLogHelper.jdField_b_of_type_JavaLangString = Build.MODEL;
+      ReportLogHelper.a = paramThread.getPackageManager().getPackageInfo(paramThread.getPackageName(), 0).versionName;
+      ReportLogHelper.b = Build.MODEL;
       ReportLogHelper.c = Build.VERSION.RELEASE;
       label339:
       paramThread.crashed();
@@ -645,7 +670,7 @@ public class ReportLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.crash.ReportLog
  * JD-Core Version:    0.7.0.1
  */

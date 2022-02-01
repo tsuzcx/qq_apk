@@ -23,11 +23,11 @@ final class AVGameLottieHelper$1
     }
     LottieDrawable localLottieDrawable = new LottieDrawable();
     localLottieDrawable.setComposition(paramLottieComposition);
-    if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
+    if ((this.a > 0) && (this.b > 0))
     {
       paramLottieComposition = paramLottieComposition.getBounds();
-      int i = ViewUtils.a(this.jdField_a_of_type_Int);
-      int j = ViewUtils.a(this.b);
+      int i = ViewUtils.dip2px(this.a);
+      int j = ViewUtils.dip2px(this.b);
       localLottieDrawable.setScale(i / paramLottieComposition.width(), j / paramLottieComposition.height());
     }
     localLottieDrawable.setRepeatCount(0);

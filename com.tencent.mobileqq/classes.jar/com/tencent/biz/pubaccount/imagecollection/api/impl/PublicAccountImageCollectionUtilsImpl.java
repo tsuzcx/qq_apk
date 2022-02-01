@@ -97,10 +97,10 @@ public class PublicAccountImageCollectionUtilsImpl
       paramString1 = paramString2;
     }
     int i;
-    if (!WXShareHelper.a().a()) {
-      i = 2131720478;
-    } else if (!WXShareHelper.a().b()) {
-      i = 2131720479;
+    if (!WXShareHelper.a().b()) {
+      i = 2131918154;
+    } else if (!WXShareHelper.a().c()) {
+      i = 2131918155;
     } else {
       i = -1;
     }
@@ -144,7 +144,7 @@ public class PublicAccountImageCollectionUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

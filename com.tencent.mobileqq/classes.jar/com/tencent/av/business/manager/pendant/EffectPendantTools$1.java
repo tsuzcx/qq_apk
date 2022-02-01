@@ -13,7 +13,7 @@ class EffectPendantTools$1
   {
     try
     {
-      ZipUtils.unZipFile(this.jdField_a_of_type_JavaIoFile, this.this$0.b(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem));
+      ZipUtils.unZipFile(this.a, this.this$0.b(this.b));
       return;
     }
     catch (Exception localException)

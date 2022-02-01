@@ -17,7 +17,7 @@ class TroopEnterEffectController$4
   {
     if ((paramLong == 25L) && (paramString1.startsWith("groupeffect_item_")) && (paramInt1 == 0))
     {
-      paramInt1 = TroopEnterEffectController.a(paramString1);
+      paramInt1 = TroopEnterEffectController.b(paramString1);
       if (QLog.isColorLevel())
       {
         paramString1 = new StringBuilder();
@@ -27,15 +27,15 @@ class TroopEnterEffectController$4
       }
       if (paramInt1 > 0)
       {
-        paramString1 = (TroopEnterEffectData)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-        this.a.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt1);
+        paramString1 = (TroopEnterEffectData)this.a.g.get(paramInt1);
+        this.a.g.remove(paramInt1);
         if (paramString1 != null)
         {
           paramString2 = new StringBuilder();
-          paramString2.append(TroopEnterEffectController.jdField_a_of_type_JavaLangString);
+          paramString2.append(TroopEnterEffectController.a);
           paramString2.append(paramInt1);
           if (TroopGiftUtil.a(new File(paramString2.toString()))) {
-            this.a.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.4.1(this, paramInt1, paramString1));
+            this.a.f.post(new TroopEnterEffectController.4.1(this, paramInt1, paramString1));
           }
         }
         else
@@ -51,7 +51,7 @@ class TroopEnterEffectController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,19 @@
 package com.tencent.mobileqq.apollo.utils.api.impl;
 
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 final class ApolloUtilImpl$6
-  implements Comparator<File>
+  implements Runnable
 {
-  public int a(File paramFile1, File paramFile2)
+  public void run()
   {
-    if ((paramFile1.exists()) && (paramFile2.exists()))
-    {
-      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
-        return 1;
-      }
-      return -1;
-    }
-    return 0;
+    QQToast.makeText(BaseApplicationImpl.getContext(), this.a, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl.6
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ public class MusicGeneQQBrowserActivity$MusicGeneQQBrowserFragment
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity.MusicGeneQQBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

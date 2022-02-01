@@ -13,29 +13,11 @@ import org.json.JSONObject;
 
 public class IliveConfigBean
 {
-  public String a;
-  public boolean a;
+  public boolean a = false;
   public String b;
   public String c;
   public String d;
-  
-  public IliveConfigBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public static IliveConfigBean a()
-  {
-    IliveConfigBean localIliveConfigBean = IliveDbManager.getIliveConfigBean(1);
-    if ((localIliveConfigBean != null) && (!localIliveConfigBean.jdField_a_of_type_Boolean) && (new File(localIliveConfigBean.e()).exists()))
-    {
-      localIliveConfigBean.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("IliveConfigBean", 2, "IlivePluginDownloadManager getConfig reset mIsUseAnchor = true");
-      }
-    }
-    return localIliveConfigBean;
-  }
+  public String e;
   
   public static IliveConfigBean a(String paramString)
   {
@@ -46,11 +28,11 @@ public class IliveConfigBean
     try
     {
       paramString = new JSONObject(paramString);
-      localIliveConfigBean.jdField_a_of_type_Boolean = paramString.optBoolean("mIsUseAnchor");
-      localIliveConfigBean.jdField_a_of_type_JavaLangString = paramString.optString("mWatchPluginUrl");
-      localIliveConfigBean.b = paramString.optString("mWatchPluginMd5");
-      localIliveConfigBean.c = paramString.optString("mAnchorPluginUrl");
-      localIliveConfigBean.d = paramString.optString("mAnchorPluginMd5");
+      localIliveConfigBean.a = paramString.optBoolean("mIsUseAnchor");
+      localIliveConfigBean.b = paramString.optString("mWatchPluginUrl");
+      localIliveConfigBean.c = paramString.optString("mWatchPluginMd5");
+      localIliveConfigBean.d = paramString.optString("mAnchorPluginUrl");
+      localIliveConfigBean.e = paramString.optString("mAnchorPluginMd5");
       return localIliveConfigBean;
     }
     catch (JSONException paramString)
@@ -68,11 +50,11 @@ public class IliveConfigBean
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("mIsUseAnchor", paramIliveConfigBean.jdField_a_of_type_Boolean);
-      localJSONObject.put("mWatchPluginUrl", paramIliveConfigBean.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("mWatchPluginMd5", paramIliveConfigBean.b);
-      localJSONObject.put("mAnchorPluginUrl", paramIliveConfigBean.c);
-      localJSONObject.put("mAnchorPluginMd5", paramIliveConfigBean.d);
+      localJSONObject.put("mIsUseAnchor", paramIliveConfigBean.a);
+      localJSONObject.put("mWatchPluginUrl", paramIliveConfigBean.b);
+      localJSONObject.put("mWatchPluginMd5", paramIliveConfigBean.c);
+      localJSONObject.put("mAnchorPluginUrl", paramIliveConfigBean.d);
+      localJSONObject.put("mAnchorPluginMd5", paramIliveConfigBean.e);
     }
     catch (JSONException paramIliveConfigBean)
     {
@@ -81,19 +63,32 @@ public class IliveConfigBean
     return localJSONObject.toString();
   }
   
-  public static boolean a()
+  public static IliveConfigBean d()
+  {
+    IliveConfigBean localIliveConfigBean = IliveDbManager.getIliveConfigBean(1);
+    if ((localIliveConfigBean != null) && (!localIliveConfigBean.a) && (new File(localIliveConfigBean.g()).exists()))
+    {
+      localIliveConfigBean.a = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("IliveConfigBean", 2, "IlivePluginDownloadManager getConfig reset mIsUseAnchor = true");
+      }
+    }
+    return localIliveConfigBean;
+  }
+  
+  public static boolean e()
   {
     Object localObject = IliveDbManager.getIliveConfigBean(1);
     int i;
     int j;
-    if ((localObject != null) && (!((IliveConfigBean)localObject).jdField_a_of_type_Boolean))
+    if ((localObject != null) && (!((IliveConfigBean)localObject).a))
     {
       i = -1;
       j = i;
     }
     try
     {
-      localObject = Pattern.compile("\\d+").matcher(((IliveConfigBean)localObject).jdField_a_of_type_JavaLangString);
+      localObject = Pattern.compile("\\d+").matcher(((IliveConfigBean)localObject).b);
       for (;;)
       {
         k = i;
@@ -123,39 +118,39 @@ public class IliveConfigBean
     return true;
   }
   
-  private String d()
+  private String f()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.b))
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(IlivePluginDownloadManager.a());
+      localStringBuilder.append(IlivePluginDownloadManager.b());
       localStringBuilder.append(File.separator);
       localStringBuilder.append("plugin_watch_manager_");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString.hashCode());
+      localStringBuilder.append(this.b.hashCode());
       localStringBuilder.append(".zip");
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(IlivePluginDownloadManager.a());
+    localStringBuilder.append(IlivePluginDownloadManager.b());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("plugin_watch_manager.zip");
     return localStringBuilder.toString();
   }
   
-  private String e()
+  private String g()
   {
-    if (!TextUtils.isEmpty(this.c))
+    if (!TextUtils.isEmpty(this.d))
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(IlivePluginDownloadManager.a());
+      localStringBuilder.append(IlivePluginDownloadManager.b());
       localStringBuilder.append(File.separator);
       localStringBuilder.append("plugin_anchor_manager_");
-      localStringBuilder.append(this.c.hashCode());
+      localStringBuilder.append(this.d.hashCode());
       localStringBuilder.append(".zip");
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(IlivePluginDownloadManager.a());
+    localStringBuilder.append(IlivePluginDownloadManager.b());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("plugin_anchor_manager.zip");
     return localStringBuilder.toString();
@@ -163,26 +158,26 @@ public class IliveConfigBean
   
   public String a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return e();
+    if (this.a) {
+      return g();
     }
-    return d();
+    return f();
   }
   
   public String b()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.d;
+    if (this.a) {
+      return this.e;
     }
-    return this.b;
+    return this.c;
   }
   
   public String c()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.c;
+    if (this.a) {
+      return this.d;
     }
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
   
   @NonNull
@@ -190,17 +185,17 @@ public class IliveConfigBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mIsUseAnchor = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" mWatchPluginMd5 =  ");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" , mAnchorPluginMd5 = ");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.e);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.config.IliveConfigBean
  * JD-Core Version:    0.7.0.1
  */

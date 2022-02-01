@@ -17,20 +17,20 @@ class FMLocalFileActivity$2
   
   public void onClick(View paramView)
   {
-    if (!this.a.a())
+    if (!this.a.d())
     {
       if (QLog.isColorLevel()) {
-        QLog.i(FMLocalFileActivity.e, 2, "click too fast , wait a minute.");
+        QLog.i(FMLocalFileActivity.F, 2, "click too fast , wait a minute.");
       }
     }
     else
     {
-      this.a.e();
+      this.a.g();
       Object localObject = (FileCategoryAdapter.ItemHolder)paramView.getTag();
-      if (((FileCategoryAdapter.ItemHolder)localObject).a != 0)
+      if (((FileCategoryAdapter.ItemHolder)localObject).g != 0)
       {
-        int i = ((FileCategoryAdapter.ItemHolder)localObject).a;
-        localObject = this.a.a.getApplicationContext().getSharedPreferences("aio_last_select_file", 0).edit();
+        int i = ((FileCategoryAdapter.ItemHolder)localObject).g;
+        localObject = this.a.p.getApplicationContext().getSharedPreferences("aio_last_select_file", 0).edit();
         ((SharedPreferences.Editor)localObject).putBoolean("last_select_All", true);
         ((SharedPreferences.Editor)localObject).commit();
         FMLocalFileActivity.a(this.a, i);
@@ -41,7 +41,7 @@ class FMLocalFileActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class ReadInJoyLottieDrawable$4
   {
     try
     {
-      LottieComposition.Factory.fromInputStream(BaseApplication.getContext(), new FileInputStream(this.jdField_a_of_type_ArrayOfJavaIoFile[0]), new ReadInJoyLottieDrawable.4.1(this));
+      LottieComposition.Factory.fromInputStream(BaseApplication.getContext(), new FileInputStream(this.a[0]), new ReadInJoyLottieDrawable.4.1(this));
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)
@@ -29,7 +29,7 @@ class ReadInJoyLottieDrawable$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.ReadInJoyLottieDrawable.4
  * JD-Core Version:    0.7.0.1
  */

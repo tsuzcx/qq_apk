@@ -7,82 +7,82 @@ import com.tencent.mobileqq.widget.ClearableEditText;
 class EditActivity$6
   implements TextWatcher
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = true;
-  String jdField_c_of_type_JavaLangString;
-  boolean jdField_c_of_type_Boolean = false;
+  String a;
+  String b;
+  String c;
+  boolean d = true;
+  int e = 0;
+  boolean f = true;
+  boolean g = false;
   
   EditActivity$6(EditActivity paramEditActivity) {}
   
   public void afterTextChanged(Editable paramEditable)
   {
-    EditActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity, true);
-    if (!this.jdField_b_of_type_Boolean) {
+    EditActivity.b(this.h, true);
+    if (!this.f) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {
-      paramEditable = this.jdField_c_of_type_JavaLangString;
+    localStringBuilder.append(this.a);
+    if (this.d) {
+      paramEditable = this.c;
     } else {
       paramEditable = "";
     }
     localStringBuilder.append(paramEditable);
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     paramEditable = localStringBuilder.toString();
-    if (this.jdField_c_of_type_Boolean)
+    if (this.g)
     {
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramEditable);
-      this.jdField_b_of_type_Boolean = true;
+      this.f = false;
+      this.h.a.setText(paramEditable);
+      this.f = true;
     }
-    int i = this.jdField_a_of_type_JavaLangString.length();
-    int j = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSelection(i + j);
-    this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.c();
+    int i = this.a.length();
+    int j = this.e;
+    this.h.a.setSelection(i + j);
+    this.h.c();
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.f) {
       return;
     }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString().substring(0, paramInt1);
-    this.jdField_b_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1 + paramInt2);
+    this.g = false;
+    this.a = paramCharSequence.toString().substring(0, paramInt1);
+    this.b = paramCharSequence.toString().substring(paramInt1 + paramInt2);
     if (paramInt3 > 0)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.d = true;
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.f) {
       return;
     }
-    this.jdField_c_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1, paramInt3 + paramInt1);
-    if (this.jdField_a_of_type_Boolean)
+    this.c = paramCharSequence.toString().substring(paramInt1, paramInt3 + paramInt1);
+    if (this.d)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_Int == 100) && (this.jdField_c_of_type_JavaLangString.contains("\n")))
+      if ((this.h.d == 100) && (this.c.contains("\n")))
       {
-        this.jdField_c_of_type_Boolean = true;
-        this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("\n", "");
+        this.g = true;
+        this.c = this.c.replace("\n", "");
       }
-      this.jdField_a_of_type_Int = this.jdField_c_of_type_JavaLangString.length();
+      this.e = this.c.length();
       return;
     }
-    this.jdField_a_of_type_Int = 0;
+    this.e = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EditActivity.6
  * JD-Core Version:    0.7.0.1
  */

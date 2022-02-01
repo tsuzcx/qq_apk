@@ -9,8 +9,8 @@ class WTogetherObserverImpl$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl.b(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl.a(this.jdField_a_of_type_Float);
+    this.a.b(this.b);
+    this.a.a(this.c);
   }
 }
 

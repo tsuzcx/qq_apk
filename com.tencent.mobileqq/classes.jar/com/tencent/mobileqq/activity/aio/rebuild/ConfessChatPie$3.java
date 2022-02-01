@@ -12,18 +12,18 @@ class ConfessChatPie$3
   {
     try
     {
-      LottieComposition.Factory.fromAssetFileName(this.this$0.a, "qq_confess_holmes_progress_lottie.json", new ConfessChatPie.3.1(this));
+      LottieComposition.Factory.fromAssetFileName(this.this$0.e, "qq_confess_holmes_progress_lottie.json", new ConfessChatPie.3.1(this));
       return;
     }
     catch (Exception localException)
     {
-      QLog.e(this.this$0.b, 1, "loadHolmesProgressAnimation fail.", localException);
+      QLog.e(this.this$0.c, 1, "loadHolmesProgressAnimation fail.", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3
  * JD-Core Version:    0.7.0.1
  */

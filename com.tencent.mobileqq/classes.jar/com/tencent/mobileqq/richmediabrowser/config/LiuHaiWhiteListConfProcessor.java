@@ -22,12 +22,6 @@ public class LiuHaiWhiteListConfProcessor
     return LiuHaiWhiteListConfProcessor.SingletonHolder.a();
   }
   
-  public LiuHaiConfigInfo a()
-  {
-    this.a = ((LiuHaiConfigInfo)QConfigManager.a().a(654));
-    return this.a;
-  }
-  
   @NonNull
   public LiuHaiConfigInfo a(int paramInt)
   {
@@ -50,7 +44,7 @@ public class LiuHaiWhiteListConfProcessor
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -58,7 +52,7 @@ public class LiuHaiWhiteListConfProcessor
         localStringBuilder.append(paramArrayOfQConfItem);
         QLog.d("LiuHaiWhiteListConfProcessor", 2, localStringBuilder.toString());
       }
-      this.a.a = ListConfigParseUtils.a(paramArrayOfQConfItem);
+      this.a.b = ListConfigParseUtils.a(paramArrayOfQConfItem);
     }
     return this.a;
   }
@@ -72,7 +66,7 @@ public class LiuHaiWhiteListConfProcessor
       localStringBuilder.append(paramLiuHaiConfigInfo);
       QLog.d("LiuHaiWhiteListConfProcessor", 2, localStringBuilder.toString());
     }
-    if ((paramLiuHaiConfigInfo != null) && (paramLiuHaiConfigInfo.a != null)) {
+    if ((paramLiuHaiConfigInfo != null) && (paramLiuHaiConfigInfo.b != null)) {
       this.a = paramLiuHaiConfigInfo;
     }
   }
@@ -80,17 +74,17 @@ public class LiuHaiWhiteListConfProcessor
   public boolean a(String paramString1, String paramString2, String paramString3)
   {
     if (this.a == null) {
-      this.a = a();
+      this.a = b();
     }
     Object localObject = this.a;
-    if ((localObject != null) && (((LiuHaiConfigInfo)localObject).a != null))
+    if ((localObject != null) && (((LiuHaiConfigInfo)localObject).b != null))
     {
-      if (this.a.a.isEmpty()) {
+      if (this.a.b.isEmpty()) {
         return false;
       }
       if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
       {
-        localObject = this.a.a.iterator();
+        localObject = this.a.b.iterator();
         while (((Iterator)localObject).hasNext())
         {
           MachineInfo localMachineInfo = (MachineInfo)((Iterator)localObject).next();
@@ -101,6 +95,12 @@ public class LiuHaiWhiteListConfProcessor
       }
     }
     return false;
+  }
+  
+  public LiuHaiConfigInfo b()
+  {
+    this.a = ((LiuHaiConfigInfo)QConfigManager.b().b(654));
+    return this.a;
   }
   
   public Class<LiuHaiConfigInfo> clazz()
@@ -141,7 +141,7 @@ public class LiuHaiWhiteListConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.config.LiuHaiWhiteListConfProcessor
  * JD-Core Version:    0.7.0.1
  */

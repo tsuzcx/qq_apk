@@ -33,7 +33,7 @@ public class AudioCallAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839113;
+    return 2130839269;
   }
   
   public int getAppID()
@@ -68,38 +68,38 @@ public class AudioCallAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719732);
+    return BaseApplicationImpl.getContext().getString(2131917335);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface1 = paramBaseChatPie.a;
-    if (localQQAppInterface1.getAVNotifyCenter().a(paramBaseChatPie.a(), 1, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+    QQAppInterface localQQAppInterface1 = paramBaseChatPie.d;
+    if (localQQAppInterface1.getAVNotifyCenter().a(paramBaseChatPie.aX(), 1, paramSessionInfo.a, paramSessionInfo.b)) {
       return;
     }
-    if (paramSessionInfo.jdField_a_of_type_Int == 1)
+    if (paramSessionInfo.a == 1)
     {
       showSelGAudioChatEntryActionSheet(paramBaseChatPie, paramSessionInfo, 10, false, null);
       return;
     }
-    if (paramSessionInfo.jdField_a_of_type_Int == 3000)
+    if (paramSessionInfo.a == 3000)
     {
       paramPlusPanelViewModel.a("chat_tool_gaudio", localQQAppInterface1.getCurrentAccountUin());
       showSelGAudioChatEntryActionSheet(paramBaseChatPie, paramSessionInfo, 1, false, null);
       paramPlusPanelViewModel.b(paramBaseChatPie);
-      paramBaseChatPie.a().setCanLock(false);
-      long l = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      if (localQQAppInterface1.getAVNotifyCenter().b() != l) {
+      paramBaseChatPie.aX().setCanLock(false);
+      long l = Long.parseLong(paramSessionInfo.b);
+      if (localQQAppInterface1.getAVNotifyCenter().g() != l) {
         ReportController.b(localQQAppInterface1, "CliOper", "", "", "0X8004085", "0X8004085", 0, 0, "", "", "", "");
       }
     }
     else
     {
-      if ((paramSessionInfo.jdField_a_of_type_Int != 1001) && (paramSessionInfo.jdField_a_of_type_Int != 10002))
+      if ((paramSessionInfo.a != 1001) && (paramSessionInfo.a != 10002))
       {
-        if ((paramSessionInfo.jdField_a_of_type_Int == 1010) && (!DatingUtil.a(localQQAppInterface1, paramSessionInfo.jdField_a_of_type_JavaLangString)))
+        if ((paramSessionInfo.a == 1010) && (!DatingUtil.a(localQQAppInterface1, paramSessionInfo.b)))
         {
-          paramBaseChatPie.b(BaseApplicationImpl.getContext().getString(2131694402));
+          paramBaseChatPie.c(BaseApplicationImpl.getContext().getString(2131892081));
           ReportController.b(localQQAppInterface1, "CliOper", "", "", "0X80049C8", "0X80049C8", 0, 0, "", "", "", "");
           return;
         }
@@ -108,11 +108,11 @@ public class AudioCallAppInfo
       {
         QQAppInterface localQQAppInterface2 = localQQAppInterface1;
         ReportController.b(localQQAppInterface1, "CliOper", "", "", "0X8005152", "0X8005152", 0, 0, "", "", "", "");
-        if (!LBSHandler.a(localQQAppInterface2, paramSessionInfo.jdField_a_of_type_JavaLangString))
+        if (!LBSHandler.a(localQQAppInterface2, paramSessionInfo.b))
         {
-          paramBaseChatPie.b(BaseApplicationImpl.getContext().getString(2131694402));
+          paramBaseChatPie.c(BaseApplicationImpl.getContext().getString(2131892081));
           ReportController.b(localQQAppInterface2, "CliOper", "", "", "0X8005154", "0X8005154", 0, 0, "", "", "", "");
-          if (paramSessionInfo.jdField_a_of_type_Int == 1001) {
+          if (paramSessionInfo.a == 1001) {
             paramPlusPanelViewModel = "0";
           } else {
             paramPlusPanelViewModel = "1";
@@ -122,23 +122,23 @@ public class AudioCallAppInfo
         }
       }
       paramPlusPanelViewModel.a("chat_tool_audio", localQQAppInterface1.getCurrentAccountUin());
-      paramBaseChatPie.Q();
+      paramBaseChatPie.aw();
       paramPlusPanelViewModel.b(paramBaseChatPie);
-      if (paramSessionInfo.jdField_a_of_type_Int == 1024)
+      if (paramSessionInfo.a == 1024)
       {
-        if (((QidianManager)localQQAppInterface1.getManager(QQManagerFactory.QIDIAN_MANAGER)).c(paramSessionInfo.jdField_a_of_type_JavaLangString))
+        if (((QidianManager)localQQAppInterface1.getManager(QQManagerFactory.QIDIAN_MANAGER)).g(paramSessionInfo.b))
         {
-          PlusPanelUtils.a(localQQAppInterface1, paramBaseChatPie.a(), paramSessionInfo, true, null, null);
+          PlusPanelUtils.a(localQQAppInterface1, paramBaseChatPie.aX(), paramSessionInfo, true, null, null);
           return;
         }
-        if (CrmUtils.a(localQQAppInterface1, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int))
+        if (CrmUtils.a(localQQAppInterface1, paramSessionInfo.b, paramSessionInfo.a))
         {
-          CrmUtils.a(localQQAppInterface1, paramBaseChatPie.a(), paramSessionInfo, "IvrAIOBottomButtonEngineFalse");
+          CrmUtils.a(localQQAppInterface1, paramBaseChatPie.aX(), paramSessionInfo, "IvrAIOBottomButtonEngineFalse");
           ReportController.b(localQQAppInterface1, "CliOper", "", "", "0X8004651", "0X8004651", 0, 0, "", "", "", "");
         }
         else
         {
-          QQToast.a(BaseApplicationImpl.getContext(), 2131695706, 1).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText(BaseApplicationImpl.getContext(), 2131893465, 1).show(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299920));
           if (QLog.isColorLevel()) {
             QLog.d("AIOAudioPanel", 2, "Don't support ivr");
           }
@@ -146,16 +146,16 @@ public class AudioCallAppInfo
       }
       else
       {
-        PlusPanelUtils.a(localQQAppInterface1, paramBaseChatPie.a(), paramSessionInfo, true, null, null);
+        PlusPanelUtils.a(localQQAppInterface1, paramBaseChatPie.aX(), paramSessionInfo, true, null, null);
       }
-      paramBaseChatPie.a().setCanLock(false);
-      AIOPanelUtiles.a(localQQAppInterface1, "0X800407B", paramSessionInfo.jdField_a_of_type_Int);
+      paramBaseChatPie.aX().setCanLock(false);
+      AIOPanelUtiles.a(localQQAppInterface1, "0X800407B", paramSessionInfo.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.AudioCallAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ public class MusicShareAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130839136;
+    return 2130839292;
   }
   
   public int getAppID()
@@ -29,26 +29,26 @@ public class MusicShareAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131694362);
+    return BaseApplicationImpl.getContext().getString(2131892037);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     if (paramBaseChatPie != null)
     {
-      if (paramBaseChatPie.a() == null) {
+      if (paramBaseChatPie.aX() == null) {
         return;
       }
-      paramPlusPanelViewModel = AuthorizeConfig.a().a("aio_qqMusicShare", "");
-      PlusPanelUtils.a(paramBaseChatPie.a, paramBaseChatPie.a(), paramSessionInfo, paramPlusPanelViewModel);
-      paramBaseChatPie.a().setCanLock(false);
-      AIOPanelUtiles.a(paramBaseChatPie.a, "0X8004083", paramSessionInfo.a);
+      paramPlusPanelViewModel = AuthorizeConfig.a().c("aio_qqMusicShare", "");
+      PlusPanelUtils.a(paramBaseChatPie.d, paramBaseChatPie.aX(), paramSessionInfo, paramPlusPanelViewModel);
+      paramBaseChatPie.aX().setCanLock(false);
+      AIOPanelUtiles.a(paramBaseChatPie.d, "0X8004083", paramSessionInfo.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.MusicShareAppInfo
  * JD-Core Version:    0.7.0.1
  */

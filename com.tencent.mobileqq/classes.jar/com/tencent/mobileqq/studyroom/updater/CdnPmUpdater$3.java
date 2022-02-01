@@ -14,20 +14,20 @@ class CdnPmUpdater$3
   public void a()
   {
     QLog.d("studyroom.CdnPmUpdater", 1, " download cdn success");
-    if (!CdnPmUpdater.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomUpdaterCdnPmUpdater).renameTo(this.jdField_a_of_type_JavaIoFile))
+    if (!CdnPmUpdater.b(this.d).renameTo(this.a))
     {
-      Exception[] arrayOfException = this.jdField_a_of_type_ArrayOfJavaLangException;
+      Exception[] arrayOfException = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131701681));
-      localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+      localStringBuilder.append(HardCodeUtil.a(2131899703));
+      localStringBuilder.append(this.a.getAbsolutePath());
       arrayOfException[0] = new RuntimeException(localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.c.countDown();
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    Exception[] arrayOfException = this.jdField_a_of_type_ArrayOfJavaLangException;
+    Exception[] arrayOfException = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("下载失败 retcode:");
     localStringBuilder.append(paramInt1);
@@ -39,14 +39,14 @@ class CdnPmUpdater$3
     if (QLog.isColorLevel()) {
       QLog.d("studyroom.CdnPmUpdater", 2, " onDownloadFailed ");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.c.countDown();
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.updater.CdnPmUpdater.3
  * JD-Core Version:    0.7.0.1
  */

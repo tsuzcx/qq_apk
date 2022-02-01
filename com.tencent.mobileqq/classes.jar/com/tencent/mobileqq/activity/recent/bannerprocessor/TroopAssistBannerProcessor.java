@@ -30,74 +30,69 @@ public class TroopAssistBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle
 {
-  public static final int a;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b = false;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.s;
-  }
+  public static final int a = BannerTypeCollections.s;
+  private boolean b = true;
+  private boolean c = false;
+  private String d = "";
   
   public TroopAssistBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
+    this.g = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   public View a(Banner paramBanner)
   {
-    paramBanner = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131558943, null);
-    View localView = paramBanner.findViewById(2131365236);
+    paramBanner = View.inflate(this.f, 2131624574, null);
+    View localView = paramBanner.findViewById(2131431402);
     paramBanner.setOnClickListener(new TroopAssistBannerProcessor.1(this));
     localView.setVisibility(8);
     return paramBanner;
   }
   
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
-    this.jdField_a_of_type_Boolean = true;
-    this.b = false;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
   public void a(String paramString)
   {
-    if ((BannerManager.a().a(jdField_a_of_type_Int)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
+    if ((BannerManager.a().c(a)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(paramString)) && (this.d.equals(paramString)))
     {
-      this.jdField_a_of_type_JavaLangString = "";
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1000, 1000L);
+      this.d = "";
+      this.g.sendEmptyMessageDelayed(1000, 1000L);
     }
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.g.removeCallbacksAndMessages(null);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public void b() {}
-  
   public void c()
+  {
+    BannerManager.a().a(a, 0);
+    this.b = true;
+    this.c = false;
+    this.d = "";
+  }
+  
+  public void d() {}
+  
+  public void e()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, "checkIsShowTroopTip");
     }
     QQAppInterface localQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) {
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
+    if (this.f != null) {
+      localQQAppInterface = (QQAppInterface)this.f.getAppRuntime();
     } else {
       localQQAppInterface = null;
     }
-    if ((localQQAppInterface != null) && ((TroopAssistantManager.a().c(localQQAppInterface, this.jdField_a_of_type_JavaLangString)) || (this.b)))
+    if ((localQQAppInterface != null) && ((TroopAssistantManager.a().g(localQQAppInterface, this.d)) || (this.c)))
     {
-      Object localObject = localQQAppInterface.getProxyManager().a();
+      Object localObject = localQQAppInterface.getProxyManager().g();
       int m = 0;
       localObject = ((RecentUserProxy)localObject).a(false);
       int i;
@@ -116,8 +111,8 @@ public class TroopAssistBannerProcessor
         }
         if (((RecentUser)((List)localObject).get(j)).getType() == 5000)
         {
-          if (this.b) {
-            this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1000);
+          if (this.c) {
+            this.g.sendEmptyMessage(1000);
           }
           return;
         }
@@ -126,26 +121,26 @@ public class TroopAssistBannerProcessor
       while (k < i)
       {
         RecentUser localRecentUser = (RecentUser)((List)localObject).get(k);
-        if ((localRecentUser.getType() == 1) && (!TextUtils.isEmpty(localRecentUser.uin)) && (!TroopAssistantManager.a().b(localQQAppInterface, localRecentUser.uin)) && (TroopAssistantManager.a().a(localQQAppInterface, localRecentUser.uin) == 1))
+        if ((localRecentUser.getType() == 1) && (!TextUtils.isEmpty(localRecentUser.uin)) && (!TroopAssistantManager.a().c(localQQAppInterface, localRecentUser.uin)) && (TroopAssistantManager.a().b(localQQAppInterface, localRecentUser.uin) == 1))
         {
           if (localQQAppInterface.getConversationFacade().a(localRecentUser.uin, localRecentUser.getType()) > 99)
           {
-            if ((this.b) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(localRecentUser.uin))) {
+            if ((this.c) && (!TextUtils.isEmpty(this.d)) && (this.d.equals(localRecentUser.uin))) {
               return;
             }
-            this.jdField_a_of_type_JavaLangString = localRecentUser.uin;
+            this.d = localRecentUser.uin;
             return;
           }
-          if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(localRecentUser.uin)))
+          if ((!TextUtils.isEmpty(this.d)) && (this.d.equals(localRecentUser.uin)))
           {
-            this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1000);
+            this.g.sendEmptyMessage(1000);
             return;
           }
         }
         k += 1;
       }
-      if ((this.b) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1000);
+      if ((this.c) && (!TextUtils.isEmpty(this.d))) {
+        this.g.sendEmptyMessage(1000);
       }
     }
   }
@@ -154,12 +149,12 @@ public class TroopAssistBannerProcessor
   {
     if (paramMessage.what == 1000)
     {
-      this.jdField_a_of_type_JavaLangString = "";
-      BannerManager.a().a(jdField_a_of_type_Int, 0, paramMessage);
+      this.d = "";
+      BannerManager.a().a(a, 0, paramMessage);
     }
     else if (paramMessage.what == 2000)
     {
-      c();
+      e();
     }
     else if (paramMessage.what == 2001)
     {
@@ -170,7 +165,7 @@ public class TroopAssistBannerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.TroopAssistBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

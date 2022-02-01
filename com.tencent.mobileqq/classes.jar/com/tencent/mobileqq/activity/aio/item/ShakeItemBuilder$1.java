@@ -24,8 +24,8 @@ class ShakeItemBuilder$1
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
     }
-    AIOUtils.o = true;
-    if (!this.a.a()) {
+    AIOUtils.q = true;
+    if (!this.a.c()) {
       if (SystemClock.uptimeMillis() - ShakeItemBuilder.a(this.a) < 3000L)
       {
         QLog.d("Q.msg.shakemsg", 2, "shake return cause:too much click in a very short time!");
@@ -33,16 +33,16 @@ class ShakeItemBuilder$1
       else
       {
         MessageForShakeWindow localMessageForShakeWindow = (MessageForShakeWindow)AIOUtils.a(paramView);
-        if ((!(this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity)) && (!(this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)))
+        if ((!(this.a.e instanceof ChatActivity)) && (!(this.a.e instanceof SplashActivity)))
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.vibratorAndAudioForShake(localMessageForShakeWindow.frienduin, false);
+          this.a.d.vibratorAndAudioForShake(localMessageForShakeWindow.frienduin, false);
         }
         else
         {
-          BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_AndroidContentContext;
+          BaseActivity localBaseActivity = (BaseActivity)this.a.e;
           ShakeItemBuilder.a(this.a, SystemClock.uptimeMillis());
-          localBaseActivity.getChatFragment().a().T();
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.vibratorAndAudioForShake(localMessageForShakeWindow.frienduin, false);
+          localBaseActivity.getChatFragment().k().az();
+          this.a.d.vibratorAndAudioForShake(localMessageForShakeWindow.frienduin, false);
         }
       }
     }
@@ -51,7 +51,7 @@ class ShakeItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

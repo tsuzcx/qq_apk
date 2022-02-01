@@ -25,17 +25,17 @@ public class TroopDiscussionTroop
   extends TroopDiscussionBaseV
   implements View.OnClickListener, AbsListView.OnScrollListener
 {
-  int jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131299223);
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  private AutomatorObserver jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver = new TroopDiscussionTroop.2(this);
-  private TroopDiscussionMemSelectAdapter jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionMemSelectAdapter;
-  private TroopDiscussionTroop.MyAvatarObserver jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyAvatarObserver;
-  private TroopDiscussionTroop.MyMessageObserver jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyMessageObserver;
-  private TroopDiscussionTroop.MyRoamSettingObserver jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyRoamSettingObserver;
-  private TroopDiscussionTroop.MyTroopMngObserver jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopMngObserver;
-  private TroopDiscussionTroop.MyTroopModifyObserver jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopModifyObserver;
-  private TroopDiscussionTroop.MyTroopObserver jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopObserver;
-  private SwipPinnedHeaderExpandableListView jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView;
+  TextView a = null;
+  int b = getResources().getDimensionPixelSize(2131299976);
+  private SwipPinnedHeaderExpandableListView c;
+  private TroopDiscussionMemSelectAdapter i;
+  private TroopDiscussionTroop.MyRoamSettingObserver j;
+  private TroopDiscussionTroop.MyAvatarObserver k;
+  private TroopDiscussionTroop.MyTroopModifyObserver l;
+  private TroopDiscussionTroop.MyTroopMngObserver m;
+  private TroopDiscussionTroop.MyTroopObserver n;
+  private TroopDiscussionTroop.MyMessageObserver o;
+  private AutomatorObserver p = new TroopDiscussionTroop.2(this);
   
   public TroopDiscussionTroop(SelectMemberActivity paramSelectMemberActivity)
   {
@@ -44,42 +44,42 @@ public class TroopDiscussionTroop
   
   private void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyRoamSettingObserver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyRoamSettingObserver = new TroopDiscussionTroop.MyRoamSettingObserver(this);
+    if (this.j == null) {
+      this.j = new TroopDiscussionTroop.MyRoamSettingObserver(this);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyAvatarObserver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyAvatarObserver = new TroopDiscussionTroop.MyAvatarObserver(this);
+    if (this.k == null) {
+      this.k = new TroopDiscussionTroop.MyAvatarObserver(this);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopModifyObserver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopModifyObserver = new TroopDiscussionTroop.MyTroopModifyObserver(this);
+    if (this.l == null) {
+      this.l = new TroopDiscussionTroop.MyTroopModifyObserver(this);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopMngObserver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopMngObserver = new TroopDiscussionTroop.MyTroopMngObserver(this);
+    if (this.m == null) {
+      this.m = new TroopDiscussionTroop.MyTroopMngObserver(this);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopObserver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopObserver = new TroopDiscussionTroop.MyTroopObserver(this);
+    if (this.n == null) {
+      this.n = new TroopDiscussionTroop.MyTroopObserver(this);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyMessageObserver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyMessageObserver = new TroopDiscussionTroop.MyMessageObserver(this);
+    if (this.o == null) {
+      this.o = new TroopDiscussionTroop.MyMessageObserver(this);
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyRoamSettingObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyAvatarObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopModifyObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopMngObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyMessageObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver);
+    this.f.addObserver(this.j);
+    this.f.addObserver(this.k);
+    this.f.addObserver(this.l);
+    this.f.addObserver(this.m);
+    this.f.addObserver(this.n);
+    this.f.addObserver(this.o);
+    this.f.addObserver(this.p);
   }
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyRoamSettingObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyAvatarObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopModifyObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopMngObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyTroopObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionTroop$MyMessageObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver);
+    this.f.removeObserver(this.j);
+    this.f.removeObserver(this.k);
+    this.f.removeObserver(this.l);
+    this.f.removeObserver(this.m);
+    this.f.removeObserver(this.n);
+    this.f.removeObserver(this.o);
+    this.f.removeObserver(this.p);
   }
   
   protected void a()
@@ -89,19 +89,19 @@ public class TroopDiscussionTroop
   
   public void a(Bundle paramBundle)
   {
-    a(2131560460);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView = ((SwipPinnedHeaderExpandableListView)findViewById(2131381293));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379364));
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setSelector(2131167333);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setNeedCheckSpringback(true);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setGroupIndicator(null);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setPadding(0, 0, 0, CommonUtils.a(54.0F, getResources()));
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setChildDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setClipToPadding(false);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setScrollBarStyle(33554432);
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionMemSelectAdapter = new TroopDiscussionMemSelectAdapter(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView, this);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionMemSelectAdapter);
+    setContentView(2131626505);
+    this.c = ((SwipPinnedHeaderExpandableListView)findViewById(2131450345));
+    this.a = ((TextView)findViewById(2131448101));
+    this.c.setSelector(2131168376);
+    this.c.setNeedCheckSpringback(true);
+    this.c.setGroupIndicator(null);
+    this.c.setDivider(null);
+    this.c.setPadding(0, 0, 0, CommonUtils.a(54.0F, getResources()));
+    this.c.setChildDivider(null);
+    this.c.setClipToPadding(false);
+    this.c.setScrollBarStyle(33554432);
+    this.i = new TroopDiscussionMemSelectAdapter(this.d, this.f, this.c, this);
+    this.c.setAdapter(this.i);
   }
   
   public void b()
@@ -110,7 +110,7 @@ public class TroopDiscussionTroop
     if (QLog.isColorLevel()) {
       QLog.d("TroopDiscussionTroop", 2, "doOnDestroy");
     }
-    TroopDiscussionMemSelectAdapter localTroopDiscussionMemSelectAdapter = this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionMemSelectAdapter;
+    TroopDiscussionMemSelectAdapter localTroopDiscussionMemSelectAdapter = this.i;
     if (localTroopDiscussionMemSelectAdapter != null) {
       localTroopDiscussionMemSelectAdapter.b();
     }
@@ -121,12 +121,12 @@ public class TroopDiscussionTroop
   public void b(Bundle paramBundle)
   {
     d();
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.postDelayed(new TroopDiscussionTroop.1(this), 200L);
+    this.c.postDelayed(new TroopDiscussionTroop.1(this), 200L);
   }
   
   void c()
   {
-    TroopDiscussionMemSelectAdapter localTroopDiscussionMemSelectAdapter = this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopDiscussionMemSelectAdapter;
+    TroopDiscussionMemSelectAdapter localTroopDiscussionMemSelectAdapter = this.i;
     if (localTroopDiscussionMemSelectAdapter != null) {
       localTroopDiscussionMemSelectAdapter.notifyDataSetChanged();
     }
@@ -141,17 +141,17 @@ public class TroopDiscussionTroop
   {
     Object localObject2 = (TroopDiscussionMemSelectAdapter.TroopViewHolder)paramView.getTag();
     Object localObject1;
-    if ((localObject2 != null) && (((TroopDiscussionMemSelectAdapter.TroopViewHolder)localObject2).jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null))
+    if ((localObject2 != null) && (((TroopDiscussionMemSelectAdapter.TroopViewHolder)localObject2).c != null))
     {
-      localObject1 = ((TroopDiscussionMemSelectAdapter.TroopViewHolder)localObject2).jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity instanceof SelectMemberActivity;
-      int j = 0;
-      if ((bool) && (!((TroopInfo)localObject1).isAllowCreateDiscuss()) && (!((TroopInfo)localObject1).isTroopOwner(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin())) && (!((TroopInfo)localObject1).isTroopAdmin(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin())))
+      localObject1 = ((TroopDiscussionMemSelectAdapter.TroopViewHolder)localObject2).c;
+      boolean bool = this.d instanceof SelectMemberActivity;
+      int i2 = 0;
+      if ((bool) && (!((TroopInfo)localObject1).isAllowCreateDiscuss()) && (!((TroopInfo)localObject1).isTroopOwner(this.f.getCurrentAccountUin())) && (!((TroopInfo)localObject1).isTroopAdmin(this.f.getCurrentAccountUin())))
       {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.mGroupCode)) {
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity, 0, this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.getString(2131697624), 0).b(getResources().getDimensionPixelSize(2131299168));
+        if (TextUtils.isEmpty(this.d.mGroupCode)) {
+          QQToast.makeText(this.d, 0, this.d.getString(2131895397), 0).show(getResources().getDimensionPixelSize(2131299920));
         } else {
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity, 0, this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.getString(2131697626), 0).b(getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText(this.d, 0, this.d.getString(2131895399), 0).show(getResources().getDimensionPixelSize(2131299920));
         }
       }
       else
@@ -159,42 +159,42 @@ public class TroopDiscussionTroop
         Object localObject3 = new Bundle();
         ((Bundle)localObject3).putString("group_uin", ((TroopInfo)localObject1).troopuin);
         ((Bundle)localObject3).putString("group_name", ((TroopInfo)localObject1).getTroopDisplayName());
-        this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(6, (Bundle)localObject3);
-        int k = ((TroopDiscussionMemSelectAdapter.TroopViewHolder)localObject2).jdField_a_of_type_Int;
-        int i = j;
-        if (k != 1) {
-          if (k != 3)
+        this.g.a(6, (Bundle)localObject3);
+        int i3 = ((TroopDiscussionMemSelectAdapter.TroopViewHolder)localObject2).e;
+        int i1 = i2;
+        if (i3 != 1) {
+          if (i3 != 3)
           {
-            if (k != 5)
+            if (i3 != 5)
             {
-              if (k != 7) {
-                i = j;
+              if (i3 != 7) {
+                i1 = i2;
               } else {
-                i = 2;
+                i1 = 2;
               }
             }
             else {
-              i = 1;
+              i1 = 1;
             }
           }
           else {
-            i = 3;
+            i1 = 3;
           }
         }
-        localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+        localObject2 = this.f;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append(((TroopInfo)localObject1).troopuin);
         ((StringBuilder)localObject3).append("");
-        ReportController.b((AppRuntime)localObject2, "P_CliOper", "Grp_contacts", "", "choose_grp", "create_discuss", 0, 0, ((StringBuilder)localObject3).toString(), String.valueOf(i), "", "");
+        ReportController.b((AppRuntime)localObject2, "P_CliOper", "Grp_contacts", "", "choose_grp", "create_discuss", 0, 0, ((StringBuilder)localObject3).toString(), String.valueOf(i1), "", "");
       }
     }
-    else if ((localObject2 != null) && (((TroopDiscussionMemSelectAdapter.TroopViewHolder)localObject2).jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null))
+    else if ((localObject2 != null) && (((TroopDiscussionMemSelectAdapter.TroopViewHolder)localObject2).d != null))
     {
-      localObject1 = ((TroopDiscussionMemSelectAdapter.TroopViewHolder)localObject2).jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo;
+      localObject1 = ((TroopDiscussionMemSelectAdapter.TroopViewHolder)localObject2).d;
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("group_uin", ((DiscussionInfo)localObject1).uin);
       ((Bundle)localObject2).putString("group_name", ((DiscussionInfo)localObject1).discussionName);
-      this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(7, (Bundle)localObject2);
+      this.g.a(7, (Bundle)localObject2);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -205,7 +205,7 @@ public class TroopDiscussionTroop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopDiscussionTroop
  * JD-Core Version:    0.7.0.1
  */

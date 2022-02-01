@@ -26,36 +26,26 @@ import java.util.List;
 public abstract class AVGameShareBase
   implements IShareBusinessInterface
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
   protected ShareActionSheet a;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private Activity b;
   private String c;
+  private String d;
+  private String e;
+  private int f;
   
   public AVGameShareBase(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramActivity;
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
+    this.f = paramInt;
     paramString1 = new ShareActionSheetV2.Param();
     paramString1.context = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet = ShareActionSheetFactory.create(paramString1);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = ShareActionSheetFactory.create(paramString1);
   }
   
   public Activity a()
-  {
-    return this.jdField_a_of_type_AndroidAppActivity;
-  }
-  
-  public String a()
   {
     return this.b;
   }
@@ -83,50 +73,6 @@ public abstract class AVGameShareBase
     return localObject;
   }
   
-  protected List<ShareActionSheetBuilder.ActionSheetItem> a()
-  {
-    QLog.d("AVGameShareBase", 1, "getPathsLines");
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
-    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
-    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
-    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
-    return localArrayList;
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      Object localObject1 = GameEngine.a().a();
-      long l = ((EngineData)localObject1).a();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("copyRoomId: ");
-      ((StringBuilder)localObject2).append(l);
-      QLog.d("AVGameShareBase", 1, ((StringBuilder)localObject2).toString());
-      int i = ((EngineData)localObject1).d();
-      ReportController.b(null, "dc00898", "", "", "0X800B066", "0X800B066", i, 0, "5", String.valueOf(l), "", "");
-      ReportController.b(null, "dc00898", "", "", "0X800B067", "0X800B067", i, 0, "", String.valueOf(l), "", "");
-      localObject2 = GameEngine.a().a().getCurrentAccountUin();
-      localObject2 = ((EngineData)localObject1).a().getNick((String)localObject2);
-      localObject1 = (ClipboardManager)BaseApplicationImpl.getContext().getSystemService("clipboard");
-      localObject2 = ClipData.newPlainText("avgame_share_copy_room_id_label", String.format(a().getString(2131690304), new Object[] { localObject2, a(), a(l) }));
-      ClipboardMonitor.setPrimaryClip((ClipboardManager)localObject1, (ClipData)localObject2);
-      ((ClipboardManager)localObject1).setPrimaryClip((ClipData)localObject2);
-      AVGameHandler.a().b().post(new AVGameShareBase.1(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("copyRoomId error: ");
-      ((StringBuilder)localObject2).append(localException.getMessage());
-      QLog.e("AVGameShareBase", 1, ((StringBuilder)localObject2).toString());
-    }
-  }
-  
-  protected abstract void a(int paramInt);
-  
   protected void a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
     int i = paramActionSheetItem.action;
@@ -151,7 +97,7 @@ public abstract class AVGameShareBase
                 QLog.e("AVGameShareBase", 1, paramActionSheetItem.toString());
                 break label145;
               }
-              a();
+              m();
               break label145;
             }
           }
@@ -163,34 +109,24 @@ public abstract class AVGameShareBase
         }
         else
         {
-          a(i);
+          c(i);
           break label145;
         }
       }
       else
       {
-        d();
+        r();
         break label145;
       }
     }
-    c();
+    q();
     label145:
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  protected int b()
-  {
-    return 10000;
+    this.a.dismiss();
   }
   
   public String b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.d;
   }
   
   protected String b(int paramInt)
@@ -198,7 +134,71 @@ public abstract class AVGameShareBase
     return "";
   }
   
-  protected List<ShareActionSheetBuilder.ActionSheetItem> b()
+  protected abstract void b(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem);
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  protected abstract void c(int paramInt);
+  
+  public String d()
+  {
+    return this.e;
+  }
+  
+  public void d(int paramInt) {}
+  
+  public int e()
+  {
+    return this.f;
+  }
+  
+  public void e(int paramInt) {}
+  
+  public void f(int paramInt) {}
+  
+  protected boolean f()
+  {
+    return false;
+  }
+  
+  public void g(int paramInt) {}
+  
+  protected boolean g()
+  {
+    return false;
+  }
+  
+  protected String h()
+  {
+    return "";
+  }
+  
+  public void h(int paramInt) {}
+  
+  protected String i()
+  {
+    return "";
+  }
+  
+  public void i(int paramInt) {}
+  
+  protected List<ShareActionSheetBuilder.ActionSheetItem> j()
+  {
+    QLog.d("AVGameShareBase", 1, "getPathsLines");
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
+    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
+    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
+    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+    return localArrayList;
+  }
+  
+  public void j(int paramInt) {}
+  
+  protected List<ShareActionSheetBuilder.ActionSheetItem> k()
   {
     QLog.d("AVGameShareBase", 1, "getOperationsLines");
     ArrayList localArrayList = new ArrayList();
@@ -206,67 +206,67 @@ public abstract class AVGameShareBase
     return localArrayList;
   }
   
-  public abstract void b();
+  public void k(int paramInt) {}
   
-  public void b(int paramInt) {}
-  
-  protected abstract void b(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem);
-  
-  protected boolean b()
+  protected int l()
   {
-    return false;
+    return 10000;
   }
   
-  public String c()
+  public void l(int paramInt) {}
+  
+  protected void m()
   {
-    return this.c;
+    try
+    {
+      Object localObject1 = GameEngine.a().s();
+      long l = ((EngineData)localObject1).i();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("copyRoomId: ");
+      ((StringBuilder)localObject2).append(l);
+      QLog.d("AVGameShareBase", 1, ((StringBuilder)localObject2).toString());
+      int i = ((EngineData)localObject1).p();
+      ReportController.b(null, "dc00898", "", "", "0X800B066", "0X800B066", i, 0, "5", String.valueOf(l), "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B067", "0X800B067", i, 0, "", String.valueOf(l), "", "");
+      localObject2 = GameEngine.a().f().getCurrentAccountUin();
+      localObject2 = ((EngineData)localObject1).e().getNick((String)localObject2);
+      localObject1 = (ClipboardManager)BaseApplicationImpl.getContext().getSystemService("clipboard");
+      localObject2 = ClipData.newPlainText("avgame_share_copy_room_id_label", String.format(a().getString(2131887215), new Object[] { localObject2, b(), a(l) }));
+      ClipboardMonitor.setPrimaryClip((ClipboardManager)localObject1, (ClipData)localObject2);
+      ((ClipboardManager)localObject1).setPrimaryClip((ClipData)localObject2);
+      AVGameHandler.a().c().post(new AVGameShareBase.1(this));
+      return;
+    }
+    catch (Exception localException)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("copyRoomId error: ");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      QLog.e("AVGameShareBase", 1, ((StringBuilder)localObject2).toString());
+    }
   }
   
-  protected abstract void c();
+  public void m(int paramInt) {}
   
-  public void c(int paramInt) {}
-  
-  protected String d()
-  {
-    return "";
-  }
-  
-  protected abstract void d();
-  
-  public void d(int paramInt) {}
-  
-  protected String e()
-  {
-    return "";
-  }
-  
-  public void e(int paramInt) {}
-  
-  protected String f()
+  protected String n()
   {
     return "https://qqvgame.qq.com/0e7d77945e6e86568d67a788d8c6874a.png";
   }
   
-  public void f(int paramInt) {}
-  
-  protected String g()
+  protected String o()
   {
     return "https://qqvgame.qq.com/b4feec84dbadde0df6eb60ea0437aad1.png";
   }
   
-  public void g(int paramInt) {}
+  public abstract void p();
   
-  public void h(int paramInt) {}
+  protected abstract void q();
   
-  public void i(int paramInt) {}
-  
-  public void j(int paramInt) {}
-  
-  public void k(int paramInt) {}
+  protected abstract void r();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.avgameshare.AVGameShareBase
  * JD-Core Version:    0.7.0.1
  */

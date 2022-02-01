@@ -9,17 +9,17 @@ public class HostChatUtils
 {
   public static String QCIRCLE_CHAT_HIDE_MENU_KEY()
   {
-    return ((IQCircleChatUtilApi)QRoute.api(IQCircleChatUtilApi.class)).QCIRCLE_CHAT_HIDE_MENU_KEY();
+    return ((IQCircleChatUtilApi)QRoute.api(IQCircleChatUtilApi.class)).qcircleChatHideMenuKey();
   }
   
   public static String QCIRLCE_CHAT_GIFT_INFO_BYTES_KEY()
   {
-    return ((IQCircleChatUtilApi)QRoute.api(IQCircleChatUtilApi.class)).QCIRLCE_CHAT_GIFT_INFO_BYTES_KEY();
+    return ((IQCircleChatUtilApi)QRoute.api(IQCircleChatUtilApi.class)).qcirlceChatGiftInfoBytesKey();
   }
   
   public static String QCIRLCE_CHAT_SHOW_FUEL_TIPS_KEY()
   {
-    return ((IQCircleChatUtilApi)QRoute.api(IQCircleChatUtilApi.class)).QCIRLCE_CHAT_SHOW_FUEL_TIPS_KEY();
+    return ((IQCircleChatUtilApi)QRoute.api(IQCircleChatUtilApi.class)).qcirlceChatShowFuelTipsKey();
   }
   
   public static void clearQCircleChatUnread(List<String> paramList, boolean paramBoolean)
@@ -44,7 +44,7 @@ public class HostChatUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.variation.HostChatUtils
  * JD-Core Version:    0.7.0.1
  */

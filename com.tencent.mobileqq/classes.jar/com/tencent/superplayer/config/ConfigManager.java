@@ -52,7 +52,7 @@ public class ConfigManager
   
   private boolean needRequest()
   {
-    if (!CommonUtil.a())
+    if (!CommonUtil.b())
     {
       LogUtil.w("ConfigManager", "This process is not main, not request.");
       return false;
@@ -114,7 +114,7 @@ public class ConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.config.ConfigManager
  * JD-Core Version:    0.7.0.1
  */

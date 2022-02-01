@@ -15,12 +15,12 @@ class TroopMemberApiPlugin$1
     if (bool)
     {
       paramBundle = paramBundle.getString("data");
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      this.b.callJs(this.a, new String[] { paramBundle });
       return;
     }
     if (QLog.isColorLevel())
     {
-      paramBundle = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.TAG;
+      paramBundle = this.b.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getTroopBarPublishInfo() in callback isSuccess=");
       localStringBuilder.append(bool);
@@ -30,7 +30,7 @@ class TroopMemberApiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

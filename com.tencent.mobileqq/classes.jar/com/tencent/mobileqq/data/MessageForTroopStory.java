@@ -19,7 +19,7 @@ public class MessageForTroopStory
   public static final String KEY_UNION_ID = "key_union_id";
   public static final String KEY_VIDEO_HEIGHT = "key_video_height";
   public static final String KEY_VIDEO_WIDTH = "key_video_width";
-  public static final String MSG_CONTENT = HardCodeUtil.a(2131706613);
+  public static final String MSG_CONTENT = HardCodeUtil.a(2131904464);
   public static final String TAG = "MessageForTroopStory";
   public String compatibleText;
   public int ctrVersion;
@@ -526,7 +526,7 @@ public class MessageForTroopStory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopStory
  * JD-Core Version:    0.7.0.1
  */

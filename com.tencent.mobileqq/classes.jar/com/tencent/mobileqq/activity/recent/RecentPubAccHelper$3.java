@@ -22,27 +22,27 @@ class RecentPubAccHelper$3
     if (QLog.isColorLevel()) {
       QLog.d("RecentPubAccHelper", 2, "unfollow success");
     }
-    RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    StructLongMessageDownloadProcessor.deleteTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-    ((TroopBindPublicAccountMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-    RecentPubAccHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    RecentPubAccHelper.a(this.c, this.a, this.b);
+    StructLongMessageDownloadProcessor.deleteTask(this.b, this.a.getRecentUserUin());
+    ((TroopBindPublicAccountMgr)this.b.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(this.a.getRecentUserUin());
+    RecentPubAccHelper.b(this.c, this.a, this.b);
   }
   
   public void a(boolean paramBoolean, Object paramObject) {}
   
   public void b(Object paramObject)
   {
-    RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, 2131695217);
+    RecentPubAccHelper.a(this.c, 2131892951);
   }
   
   public void b(boolean paramBoolean, Object paramObject)
   {
-    RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper);
+    RecentPubAccHelper.a(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentPubAccHelper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -22,15 +22,15 @@ class ArkInfoBannerProcessor$1
       localAppRuntime = null;
     }
     if ((localAppRuntime instanceof QQAppInterface)) {
-      ArkTipsManager.a().a(ArkInfoBannerProcessor.c(this.a), (QQAppInterface)localAppRuntime);
+      ArkTipsManager.b().a(ArkInfoBannerProcessor.c(this.a), (QQAppInterface)localAppRuntime);
     }
-    ArkTipsManager.a().a();
+    ArkTipsManager.b().d();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.ArkInfoBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

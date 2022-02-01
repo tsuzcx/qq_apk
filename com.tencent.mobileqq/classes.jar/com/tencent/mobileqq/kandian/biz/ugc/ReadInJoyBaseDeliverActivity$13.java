@@ -11,15 +11,15 @@ class ReadInJoyBaseDeliverActivity$13
   
   public void onDismiss()
   {
-    if ((!this.a.a) && (this.a.j != -1)) {
+    if ((!this.a.o) && (this.a.af != -1)) {
       ThreadManager.getUIHandler().postDelayed(new ReadInJoyBaseDeliverActivity.13.1(this), 300L);
     }
-    this.a.a = false;
+    this.a.o = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyBaseDeliverActivity.13
  * JD-Core Version:    0.7.0.1
  */

@@ -43,10 +43,10 @@ public class CustomEmotionSenderUtil
       }
       return;
     }
-    RichMediaUtil.logUI(paramBaseSessionInfo.jdField_a_of_type_Int, true, 1, String.valueOf(-1), "image_send_prepare", "ChatActivity.sendCustomEmotion");
+    RichMediaUtil.logUI(paramBaseSessionInfo.a, true, 1, String.valueOf(-1), "image_send_prepare", "ChatActivity.sendCustomEmotion");
     if (!FileUtils.fileExistsAndNotEmpty(paramString1))
     {
-      QQToast.a(paramContext, 2131694909, 0).b(paramContext.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(paramContext, 2131892635, 0).show(paramContext.getResources().getDimensionPixelSize(2131299920));
       if (paramBoolean1) {
         VasReportUtils.a("emotionType", "emotionActionSend", "6", "", "", "", "", "", "", "");
       }
@@ -59,16 +59,16 @@ public class CustomEmotionSenderUtil
     Object localObject1 = new PicUploadInfo.Builder();
     ((PicUploadInfo.Builder)localObject1).a(paramString1);
     ((PicUploadInfo.Builder)localObject1).d(1006);
-    ((PicUploadInfo.Builder)localObject1).d(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    ((PicUploadInfo.Builder)localObject1).d(paramBaseSessionInfo.b);
     ((PicUploadInfo.Builder)localObject1).c(0);
-    ((PicUploadInfo.Builder)localObject1).e(paramBaseSessionInfo.b);
+    ((PicUploadInfo.Builder)localObject1).e(paramBaseSessionInfo.c);
     ((PicUploadInfo.Builder)localObject1).c(paramBaseQQAppInterface.getCurrentAccountUin());
-    ((PicUploadInfo.Builder)localObject1).e(paramBaseSessionInfo.jdField_a_of_type_Int);
-    ((PicUploadInfo.Builder)localObject1).l(paramBaseSessionInfo.e);
+    ((PicUploadInfo.Builder)localObject1).e(paramBaseSessionInfo.a);
+    ((PicUploadInfo.Builder)localObject1).l(paramBaseSessionInfo.v);
     Object localObject2 = (IPicBus)QRoute.api(IPicBus.class);
     int i = 2;
     localObject2 = ((IPicBus)localObject2).createPicReq(2, 1006);
-    ((PicReq)localObject2).a(((PicUploadInfo.Builder)localObject1).a());
+    ((PicReq)localObject2).a(((PicUploadInfo.Builder)localObject1).k());
     PicMessageExtraData localPicMessageExtraData = new PicMessageExtraData();
     localObject1 = "";
     if (paramBoolean3)
@@ -104,13 +104,13 @@ public class CustomEmotionSenderUtil
     }
     else if (paramBoolean3)
     {
-      localPicMessageExtraData.textSummary = paramContext.getResources().getString(2131691280);
+      localPicMessageExtraData.textSummary = paramContext.getResources().getString(2131888230);
     }
     else
     {
-      localPicMessageExtraData.textSummary = paramContext.getResources().getString(2131691279);
+      localPicMessageExtraData.textSummary = paramContext.getResources().getString(2131888229);
     }
-    ((PicReq)localObject2).a = localPicMessageExtraData;
+    ((PicReq)localObject2).i = localPicMessageExtraData;
     ((IPicBus)QRoute.api(IPicBus.class)).launch((PicReq)localObject2);
     if (paramBoolean1) {
       ThreadManager.post(new CustomEmotionSenderUtil.1(paramString1, paramBaseSessionInfo, paramBaseQQAppInterface), 5, null, false);
@@ -119,7 +119,7 @@ public class CustomEmotionSenderUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.sender.CustomEmotionSenderUtil
  * JD-Core Version:    0.7.0.1
  */

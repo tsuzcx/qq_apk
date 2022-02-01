@@ -9,6 +9,7 @@ import android.content.res.Resources.Theme;
 import android.os.Build.VERSION;
 import android.view.LayoutInflater;
 import androidx.annotation.StyleRes;
+import androidx.appcompat.R.style;
 
 public class ContextThemeWrapper
   extends ContextWrapper
@@ -39,10 +40,20 @@ public class ContextThemeWrapper
   private Resources getResourcesInternal()
   {
     if (this.mResources == null) {
-      if (this.mOverrideConfiguration == null) {
+      if (this.mOverrideConfiguration == null)
+      {
         this.mResources = super.getResources();
-      } else if (Build.VERSION.SDK_INT >= 17) {
+      }
+      else if (Build.VERSION.SDK_INT >= 17)
+      {
         this.mResources = createConfigurationContext(this.mOverrideConfiguration).getResources();
+      }
+      else
+      {
+        Resources localResources = super.getResources();
+        Configuration localConfiguration = new Configuration(localResources.getConfiguration());
+        localConfiguration.updateFrom(this.mOverrideConfiguration);
+        this.mResources = new Resources(localResources.getAssets(), localResources.getDisplayMetrics(), localConfiguration);
       }
     }
     return this.mResources;
@@ -115,7 +126,7 @@ public class ContextThemeWrapper
       return localTheme;
     }
     if (this.mThemeResource == 0) {
-      this.mThemeResource = 2131755643;
+      this.mThemeResource = R.style.Theme_AppCompat_Light;
     }
     initializeTheme();
     return this.mTheme;

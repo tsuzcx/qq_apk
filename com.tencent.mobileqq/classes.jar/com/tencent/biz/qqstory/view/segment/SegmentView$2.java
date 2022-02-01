@@ -10,17 +10,17 @@ class SegmentView$2
 {
   public void onAnimationEnd(Animation paramAnimation)
   {
-    SLog.b(this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentView.a(), "deletedItemViewWithAnimation end");
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentView.m();
-    this.jdField_a_of_type_AndroidViewView.getLayoutParams().height = this.jdField_a_of_type_Int;
+    SLog.b(this.c.b(), "deletedItemViewWithAnimation end");
+    this.a.clearAnimation();
+    this.c.u();
+    this.a.getLayoutParams().height = this.b;
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    SLog.b(this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentView.a(), "deletedItemViewWithAnimation start");
+    SLog.b(this.c.b(), "deletedItemViewWithAnimation start");
   }
 }
 

@@ -23,22 +23,6 @@ public class PeakJceService
     return this.a;
   }
   
-  protected void a()
-  {
-    try
-    {
-      super.a();
-      a(new CameraPeakDataService());
-      super.b();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
   public void a(ToServiceMsg paramToServiceMsg)
   {
     a(paramToServiceMsg, AudioTransServlet.class);
@@ -48,10 +32,26 @@ public class PeakJceService
   {
     super.a(paramBoolean, paramToServiceMsg, paramFromServiceMsg, null);
   }
+  
+  protected void b()
+  {
+    try
+    {
+      super.b();
+      a(new CameraPeakDataService());
+      super.c();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.PeakJceService
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ final class VideoGetUrlReporter$reportVideoH265GetURL$1
   
   public final void run()
   {
-    StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext).collectPerformance(this.jdField_a_of_type_JavaLangString, "actKandianVideoH265GetURL", true, -1L, 0L, this.jdField_a_of_type_JavaUtilHashMap, null);
+    StatisticCollector.getInstance(this.a).collectPerformance(this.b, "actKandianVideoH265GetURL", true, -1L, 0L, this.c, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.videourl.VideoGetUrlReporter.reportVideoH265GetURL.1
  * JD-Core Version:    0.7.0.1
  */

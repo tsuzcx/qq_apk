@@ -19,16 +19,16 @@ class MatchChatSettingFragment$2
   
   public void run()
   {
-    if (MatchChatSettingFragment.a(this.this$0) == null) {
+    if (MatchChatSettingFragment.b(this.this$0) == null) {
       return;
     }
-    ReportController.b(MatchChatSettingFragment.a(this.this$0), "dc00898", "", "", "0X800A699", "0X800A699", 0, 0, "", "", "", "");
+    ReportController.b(MatchChatSettingFragment.b(this.this$0), "dc00898", "", "", "0X800A699", "0X800A699", 0, 0, "", "", "", "");
     ((IExpandReportUtils)QRoute.api(IExpandReportUtils.class)).onUserActionToTunnel("click#message_setting_page#delete_all_message", true, -1L, -1L, null, true, true);
-    MatchChatMsgUtil.a(MatchChatSettingFragment.a(this.this$0));
-    ((IExpandChatUtils)QRoute.api(IExpandChatUtils.class)).clearAllMatchChatLocalData(MatchChatSettingFragment.a(this.this$0));
-    ((IExpandManager)MatchChatSettingFragment.a(this.this$0).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).d();
-    ((IExpandLimitChatManager)MatchChatSettingFragment.a(this.this$0).getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER)).a();
-    ((IceBreakingMng)MatchChatSettingFragment.a(this.this$0).getManager(QQManagerFactory.ICE_BREAKING_MNG)).a();
+    MatchChatMsgUtil.a(MatchChatSettingFragment.b(this.this$0));
+    ((IExpandChatUtils)QRoute.api(IExpandChatUtils.class)).clearAllMatchChatLocalData(MatchChatSettingFragment.b(this.this$0));
+    ((IExpandManager)MatchChatSettingFragment.b(this.this$0).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).O();
+    ((IExpandLimitChatManager)MatchChatSettingFragment.b(this.this$0).getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER)).a();
+    ((IceBreakingMng)MatchChatSettingFragment.b(this.this$0).getManager(QQManagerFactory.ICE_BREAKING_MNG)).a();
     ThreadManager.getUIHandler().post(new MatchChatSettingFragment.2.1(this));
   }
 }

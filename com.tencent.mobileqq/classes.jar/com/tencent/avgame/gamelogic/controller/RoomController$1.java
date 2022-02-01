@@ -19,12 +19,12 @@ class RoomController$1
   {
     if (paramBoolean)
     {
-      EngineData localEngineData = (EngineData)RoomController.a(this.a).a();
+      EngineData localEngineData = (EngineData)RoomController.a(this.a).H();
       localEngineData.a(paramHashMap);
       if (QLog.isColorLevel()) {
-        QLog.i("avgame_logic.GameRoomController", 2, String.format("updateNicks when onUserNickUpdated %s", new Object[] { Arrays.toString(localEngineData.a().players.toArray()) }));
+        QLog.i("avgame_logic.GameRoomController", 2, String.format("updateNicks when onUserNickUpdated %s", new Object[] { Arrays.toString(localEngineData.e().players.toArray()) }));
       }
-      RoomController.a(this.a).a(paramHashMap);
+      RoomController.b(this.a).a(paramHashMap);
       RoomController.a(this.a, paramHashMap);
     }
   }

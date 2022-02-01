@@ -9,7 +9,7 @@ class PublicAccountDetailDynamicDataManagerServiceImpl$1
   
   public void run()
   {
-    this.this$0.updateAccountDetailDynamicInfoDB(this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte);
+    this.this$0.updateAccountDetailDynamicInfoDB(this.a, this.b);
     if (QLog.isColorLevel()) {
       QLog.d("AccountDetailDynamicDataManager", 2, "updateAccountDetailDynamicInfoDB end");
     }
@@ -17,7 +17,7 @@ class PublicAccountDetailDynamicDataManagerServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailDynamicDataManagerServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

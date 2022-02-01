@@ -11,13 +11,13 @@ class VasResController$2
   
   public void run()
   {
-    String[] arrayOfString = this.this$0.a(this.jdField_a_of_type_JavaLangString);
+    String[] arrayOfString = this.this$0.a(this.a);
     Message localMessage = VasResController.a(this.this$0).obtainMessage();
     Bundle localBundle = new Bundle();
     localBundle.putInt("type", 1);
     localBundle.putStringArray("pngs", arrayOfString);
-    localBundle.putInt("interval", this.jdField_a_of_type_Int);
-    localBundle.putInt("repeatTimes", this.b);
+    localBundle.putInt("interval", this.b);
+    localBundle.putInt("repeatTimes", this.c);
     localMessage.setData(localBundle);
     localMessage.what = 10001;
     VasResController.a(this.this$0).sendMessage(localMessage);
@@ -25,7 +25,7 @@ class VasResController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasResEngine.VasResController.2
  * JD-Core Version:    0.7.0.1
  */

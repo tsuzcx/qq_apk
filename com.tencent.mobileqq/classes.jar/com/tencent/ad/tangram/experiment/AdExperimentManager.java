@@ -19,7 +19,7 @@ public enum AdExperimentManager
   
   private AdExperimentManager() {}
   
-  private void cacheEachLayerParamsByHash(int paramInt, gdt_experiment_settings.SettingsForJointExperiment.ExpItem[] paramArrayOfExpItem, AdExperimentManager.a parama)
+  private static void cacheEachLayerParamsByHash(int paramInt, gdt_experiment_settings.SettingsForJointExperiment.ExpItem[] paramArrayOfExpItem, AdExperimentManager.a parama)
   {
     if (paramArrayOfExpItem != null)
     {
@@ -31,33 +31,36 @@ public enum AdExperimentManager
       while (i < k)
       {
         gdt_experiment_settings.SettingsForJointExperiment.ExpItem localExpItem = paramArrayOfExpItem[i];
-        Object localObject = localExpItem.rangeList;
-        int m = localObject.length;
-        int j = 0;
-        while (j < m)
+        if (localExpItem.rangeList != null)
         {
-          localStringBuilder = localObject[j];
-          if (localStringBuilder == null) {
-            return;
-          }
-          if ((localStringBuilder.lower <= paramInt) && (paramInt <= localStringBuilder.upper))
+          Object localObject = localExpItem.rangeList;
+          int m = localObject.length;
+          int j = 0;
+          while (j < m)
           {
-            paramArrayOfExpItem = TAG;
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("[cacheParams] hit the experiment. expId = ");
-            ((StringBuilder)localObject).append(localExpItem.expId);
-            AdLog.i(paramArrayOfExpItem, ((StringBuilder)localObject).toString());
-            AdExperimentManager.a.access$600(parama, localExpItem.expId);
-            AdExperimentManager.a.access$500(parama, localExpItem.expParamKey);
-            return;
+            localStringBuilder = localObject[j];
+            if (localStringBuilder == null) {
+              return;
+            }
+            if ((localStringBuilder.lower <= paramInt) && (paramInt <= localStringBuilder.upper))
+            {
+              paramArrayOfExpItem = TAG;
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("[cacheParams] hit the experiment. expId = ");
+              ((StringBuilder)localObject).append(localExpItem.expId);
+              AdLog.i(paramArrayOfExpItem, ((StringBuilder)localObject).toString());
+              AdExperimentManager.a.access$600(parama, localExpItem.expId);
+              AdExperimentManager.a.access$500(parama, localExpItem.expParamKey);
+              return;
+            }
+            j += 1;
           }
-          j += 1;
+          localObject = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[cacheParams] miss the experiment. expId = ");
+          localStringBuilder.append(localExpItem.expId);
+          AdLog.i((String)localObject, localStringBuilder.toString());
         }
-        localObject = TAG;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[cacheParams] miss the experiment. expId = ");
-        localStringBuilder.append(localExpItem.expId);
-        AdLog.i((String)localObject, localStringBuilder.toString());
         i += 1;
       }
     }
@@ -75,24 +78,27 @@ public enum AdExperimentManager
       while (i < k)
       {
         gdt_experiment_settings.SettingsForJointExperiment.ExpItem localExpItem = paramArrayOfExpItem[i];
-        String[] arrayOfString = localExpItem.whiteList;
-        int m = arrayOfString.length;
-        int j = 0;
-        while (j < m)
+        if (localExpItem.whiteList != null)
         {
-          String str = arrayOfString[j];
-          if ((!TextUtils.isEmpty(str)) && (str.equals(paramString)))
+          String[] arrayOfString = localExpItem.whiteList;
+          int m = arrayOfString.length;
+          int j = 0;
+          while (j < m)
           {
-            paramString = TAG;
-            paramArrayOfExpItem = new StringBuilder();
-            paramArrayOfExpItem.append("[checkWhiteListAndCacheParams] hit the whitelist. expId = ");
-            paramArrayOfExpItem.append(localExpItem.expId);
-            AdLog.i(paramString, paramArrayOfExpItem.toString());
-            AdExperimentManager.a.access$500(parama, localExpItem.expParamKey);
-            AdExperimentManager.a.access$600(parama, localExpItem.expId);
-            return true;
+            String str = arrayOfString[j];
+            if ((!TextUtils.isEmpty(str)) && (str.equals(paramString)))
+            {
+              paramString = TAG;
+              paramArrayOfExpItem = new StringBuilder();
+              paramArrayOfExpItem.append("[checkWhiteListAndCacheParams] hit the whitelist. expId = ");
+              paramArrayOfExpItem.append(localExpItem.expId);
+              AdLog.i(paramString, paramArrayOfExpItem.toString());
+              AdExperimentManager.a.access$500(parama, localExpItem.expParamKey);
+              AdExperimentManager.a.access$600(parama, localExpItem.expId);
+              return true;
+            }
+            j += 1;
           }
-          j += 1;
         }
         i += 1;
       }
@@ -100,11 +106,11 @@ public enum AdExperimentManager
     return false;
   }
   
-  private static int murmurHash32(byte[] paramArrayOfByte, int paramInt)
+  private static int murmurHash32(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    int k = paramInt / 4;
+    int k = paramInt1 / 4;
     int j = 0;
-    int i = paramInt;
+    int i = paramInt1;
     while (j < k)
     {
       int m = j * 4;
@@ -112,10 +118,10 @@ public enum AdExperimentManager
       i = i * 1540483477 ^ (m >> 24 ^ m) * 1540483477;
       j += 1;
     }
-    k = paramInt % 4;
+    k = paramInt1 % 4;
     j = i;
     if (k == 3) {
-      j = i ^ (paramArrayOfByte[((paramInt & 0xFFFFFFFC) + 2)] & 0xFF) << 16;
+      j = i ^ (paramArrayOfByte[((paramInt1 & 0xFFFFFFFC) + 2)] & 0xFF) << 16;
     }
     if (k != 3)
     {
@@ -124,14 +130,14 @@ public enum AdExperimentManager
     }
     else
     {
-      i = j ^ (paramArrayOfByte[((paramInt & 0xFFFFFFFC) + 1)] & 0xFF) << 8;
+      i = j ^ (paramArrayOfByte[((paramInt1 & 0xFFFFFFFC) + 1)] & 0xFF) << 8;
     }
     j = i;
     if (k != 0) {
-      j = (paramArrayOfByte[(paramInt & 0xFFFFFFFC)] & 0xFF ^ i) * 1540483477;
+      j = (paramArrayOfByte[(paramInt1 & 0xFFFFFFFC)] & 0xFF ^ i) * 1540483477;
     }
-    paramInt = (j >> 13 ^ j) * 1540483477;
-    return paramInt ^ paramInt >> 15;
+    paramInt1 = (j >> 13 ^ j) * 1540483477;
+    return (paramInt1 ^ paramInt1 >> 15) % paramInt2;
   }
   
   public String[] getAllExpIdsByCache(String paramString, gdt_settings.Settings paramSettings)
@@ -144,6 +150,9 @@ public enum AdExperimentManager
   
   public boolean isHitExperiment(String paramString1, String paramString2, gdt_settings.Settings paramSettings)
   {
+    if (TextUtils.isEmpty(paramString2)) {
+      return false;
+    }
     if (!AdExperimentManager.a.access$100(this.cache, paramString1)) {
       updateCache(paramString1, paramSettings);
     }
@@ -155,7 +164,7 @@ public enum AdExperimentManager
     int i = 0;
     while (i < j)
     {
-      if (paramString1[i].equals(paramString2)) {
+      if (paramString2.equals(paramString1[i])) {
         return true;
       }
       i += 1;
@@ -191,7 +200,7 @@ public enum AdExperimentManager
         ((StringBuilder)localObject2).append(paramString);
         ((StringBuilder)localObject2).append(localObject1.layerName);
         localObject2 = ((StringBuilder)localObject2).toString().getBytes();
-        cacheEachLayerParamsByHash(murmurHash32((byte[])localObject2, localObject2.length) % 10000, localObject1.itemList, locala);
+        cacheEachLayerParamsByHash(murmurHash32((byte[])localObject2, localObject2.length, 10000), localObject1.itemList, locala);
       }
       i += 1;
     }

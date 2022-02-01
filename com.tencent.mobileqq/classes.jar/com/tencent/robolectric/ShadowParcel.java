@@ -5,16 +5,16 @@ import java.util.Map;
 
 public class ShadowParcel
 {
-  private static long jdField_a_of_type_Long = 1L;
-  private static final Map<Long, ShadowParcel.ByteBuffer> jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
+  private static final Map<Long, ShadowParcel.ByteBuffer> a = new LinkedHashMap();
+  private static long b = 1L;
   
   public static Number a()
   {
     try
     {
-      long l = jdField_a_of_type_Long;
-      jdField_a_of_type_Long = 1L + l;
-      jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), new ShadowParcel.ByteBuffer());
+      long l = b;
+      b = 1L + l;
+      a.put(Long.valueOf(l), new ShadowParcel.ByteBuffer());
       Number localNumber = a(l);
       return localNumber;
     }
@@ -32,17 +32,17 @@ public class ShadowParcel
   
   public static byte[] a(int paramInt)
   {
-    return a(paramInt);
+    return b(paramInt);
   }
   
-  protected static byte[] a(long paramLong)
+  protected static byte[] b(long paramLong)
   {
-    return ((ShadowParcel.ByteBuffer)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).a();
+    return ((ShadowParcel.ByteBuffer)a.get(Long.valueOf(paramLong))).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.robolectric.ShadowParcel
  * JD-Core Version:    0.7.0.1
  */

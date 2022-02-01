@@ -15,17 +15,17 @@ class GivingHeartItemBuilder$1
   {
     if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
     {
-      paramMessageForPoke1.setPlayed(this.a.b);
-      paramMessageForPoke1.mFrameState.a = false;
-      paramMessageForPoke1.mFrameState.c = true;
-      paramMessageForPoke1.mUnlimitedState.a = false;
-      paramMessageForPoke1.mUnlimitedState.b = true;
+      paramMessageForPoke1.setPlayed(this.a.w);
+      paramMessageForPoke1.mFrameState.d = false;
+      paramMessageForPoke1.mFrameState.h = true;
+      paramMessageForPoke1.mUnlimitedState.d = false;
+      paramMessageForPoke1.mUnlimitedState.e = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

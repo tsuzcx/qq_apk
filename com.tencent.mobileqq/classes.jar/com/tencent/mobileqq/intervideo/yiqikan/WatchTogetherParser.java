@@ -58,13 +58,13 @@ public class WatchTogetherParser
       if (TextUtils.isEmpty(str1)) {
         return;
       }
-      str1 = String.format(paramQQAppInterface.getApp().getString(2131699442), new Object[] { str1 });
+      str1 = String.format(paramQQAppInterface.getApp().getString(2131897473), new Object[] { str1 });
       if (paramBoolean)
       {
         a(paramQQAppInterface, paramLong1, 1, str1, paramInt, paramLong2, paramLong3, 131092);
         return;
       }
-      String str2 = paramQQAppInterface.getApp().getString(2131699441);
+      String str2 = paramQQAppInterface.getApp().getString(2131897472);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(str1);
       localStringBuilder.append(str2);
@@ -115,7 +115,7 @@ public class WatchTogetherParser
         i = -5040;
       }
       localObject1 = String.valueOf(paramLong1);
-      paramString = new UniteGrayTipParam((String)localObject1, (String)localObject1, paramString, paramInt1, i, paramInt3, MessageCache.a());
+      paramString = new UniteGrayTipParam((String)localObject1, (String)localObject1, paramString, paramInt1, i, paramInt3, MessageCache.c());
       if ((paramInt4 >= 0) && (paramInt5 > 0))
       {
         localObject1 = new Bundle();
@@ -143,7 +143,7 @@ public class WatchTogetherParser
       ((StringBuilder)localObject2).append(paramLong2);
       ((StringBuilder)localObject2).append("_");
       ((StringBuilder)localObject2).append(paramLong3);
-      paramString.d = ((StringBuilder)localObject2).toString();
+      paramString.p = ((StringBuilder)localObject2).toString();
       boolean bool = UniteGrayTipMsgUtil.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject1);
       if (QLog.isColorLevel())
       {
@@ -151,7 +151,7 @@ public class WatchTogetherParser
         paramQQAppInterface.append("insertGrayTips end  res:");
         paramQQAppInterface.append(bool);
         paramQQAppInterface.append(" grayTipKey:");
-        paramQQAppInterface.append(((MessageForUniteGrayTip)localObject1).tipParam.d);
+        paramQQAppInterface.append(((MessageForUniteGrayTip)localObject1).tipParam.p);
         QLog.i("WatchTogetherParser", 2, paramQQAppInterface.toString());
       }
     }
@@ -162,8 +162,8 @@ public class WatchTogetherParser
     TogetherSession localTogetherSession = ((TogetherControlManager)this.a.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER)).a(2, 1, paramString);
     if ((localTogetherSession instanceof WatchTogetherSession))
     {
-      localTogetherSession.jdField_h_of_type_Int = 3;
-      localTogetherSession.i = 3;
+      localTogetherSession.p = 3;
+      localTogetherSession.q = 3;
       TogetherUtils.a(this.a, paramString, false);
       a(true, (WatchTogetherSession)localTogetherSession, 1007, "");
     }
@@ -258,10 +258,10 @@ public class WatchTogetherParser
         } else {
           localObject = String.valueOf(l3);
         }
-        localWatchTogetherSession.jdField_f_of_type_JavaLangString = ((String)localObject);
+        localWatchTogetherSession.r = ((String)localObject);
       }
       if ((i == 1) || (i == 3) || (i == 4)) {
-        localWatchTogetherSession.g = j;
+        localWatchTogetherSession.o = j;
       }
       a(paramQQAppInterface, localWatchTogetherSession, i, l3, paramObject, l1, paramLong1, localVideoChangePushInfo);
       if (((i == 5) || (i == 2)) && (!TextUtils.isEmpty(paramObject)) && (l2 != -1L))
@@ -284,50 +284,50 @@ public class WatchTogetherParser
   public void a(QQAppInterface paramQQAppInterface, WatchTogetherSession paramWatchTogetherSession, int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3, TroopTips0x857.VideoChangePushInfo paramVideoChangePushInfo)
   {
     TogetherControlManager localTogetherControlManager = (TogetherControlManager)paramQQAppInterface.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER);
-    localTogetherControlManager.a(2, 1, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramLong2);
-    WatchTogetherSession localWatchTogetherSession2 = (WatchTogetherSession)localTogetherControlManager.a(paramWatchTogetherSession.jdField_e_of_type_Int, paramWatchTogetherSession.jdField_f_of_type_Int, paramWatchTogetherSession.jdField_e_of_type_JavaLangString);
+    localTogetherControlManager.a(2, 1, paramWatchTogetherSession.n, paramLong2);
+    WatchTogetherSession localWatchTogetherSession2 = (WatchTogetherSession)localTogetherControlManager.a(paramWatchTogetherSession.l, paramWatchTogetherSession.m, paramWatchTogetherSession.n);
     WatchTogetherSession localWatchTogetherSession1;
     if (localWatchTogetherSession2 != null)
     {
       if ((paramInt == 1) || (paramInt == 3) || (paramInt == 4)) {
-        localWatchTogetherSession2.g = paramWatchTogetherSession.g;
+        localWatchTogetherSession2.o = paramWatchTogetherSession.o;
       }
       localWatchTogetherSession1 = localWatchTogetherSession2;
       if (paramInt == 1)
       {
         localWatchTogetherSession1 = localWatchTogetherSession2;
-        if (!TextUtils.isEmpty(paramWatchTogetherSession.jdField_f_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(paramWatchTogetherSession.r))
         {
-          localWatchTogetherSession2.jdField_f_of_type_JavaLangString = paramWatchTogetherSession.jdField_f_of_type_JavaLangString;
+          localWatchTogetherSession2.r = paramWatchTogetherSession.r;
           localWatchTogetherSession1 = localWatchTogetherSession2;
         }
       }
     }
     else
     {
-      localTogetherControlManager.a(paramWatchTogetherSession.jdField_e_of_type_Int, paramWatchTogetherSession.jdField_f_of_type_Int, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramWatchTogetherSession);
+      localTogetherControlManager.a(paramWatchTogetherSession.l, paramWatchTogetherSession.m, paramWatchTogetherSession.n, paramWatchTogetherSession);
       localWatchTogetherSession1 = paramWatchTogetherSession;
     }
     if (paramQQAppInterface.getCurrentAccountUin().equals(String.valueOf(paramLong1))) {
       if ((paramInt != 3) && (paramInt != 1) && (paramInt != 4) && (paramInt != 5))
       {
         if (paramInt == 2) {
-          TogetherUtils.a(paramQQAppInterface, localWatchTogetherSession1.jdField_e_of_type_JavaLangString, false);
+          TogetherUtils.a(paramQQAppInterface, localWatchTogetherSession1.n, false);
         }
       }
       else {
-        TogetherUtils.a(paramQQAppInterface, localWatchTogetherSession1.jdField_e_of_type_JavaLangString, true);
+        TogetherUtils.a(paramQQAppInterface, localWatchTogetherSession1.n, true);
       }
     }
-    if (!TextUtils.isEmpty(localWatchTogetherSession1.jdField_e_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(localWatchTogetherSession1.n))
     {
-      paramQQAppInterface = localTogetherControlManager.a(2, 1, localWatchTogetherSession1.jdField_e_of_type_JavaLangString, 1003);
-      paramQQAppInterface.jdField_a_of_type_AndroidOsBundle.putInt("action_type", paramInt);
-      paramQQAppInterface.jdField_a_of_type_AndroidOsBundle.putString("tips", paramString);
-      paramQQAppInterface.jdField_a_of_type_AndroidOsBundle.putLong("seq", paramLong2);
-      paramQQAppInterface.jdField_a_of_type_AndroidOsBundle.putLong("msgSeq", paramLong3);
-      paramQQAppInterface.jdField_a_of_type_JavaLangObject = paramVideoChangePushInfo;
-      localTogetherControlManager.a(2, 1, localWatchTogetherSession1.jdField_e_of_type_JavaLangString, 1003);
+      paramQQAppInterface = localTogetherControlManager.b(2, 1, localWatchTogetherSession1.n, 1003);
+      paramQQAppInterface.a.putInt("action_type", paramInt);
+      paramQQAppInterface.a.putString("tips", paramString);
+      paramQQAppInterface.a.putLong("seq", paramLong2);
+      paramQQAppInterface.a.putLong("msgSeq", paramLong3);
+      paramQQAppInterface.b = paramVideoChangePushInfo;
+      localTogetherControlManager.a(2, 1, localWatchTogetherSession1.n, 1003);
     }
   }
   
@@ -373,7 +373,7 @@ public class WatchTogetherParser
       localObject3 = (WatchTogetherSession)TogetherUtils.a(2, 1, (String)localObject2);
       ((TogetherControlManager)localObject4).a(2, 1, (String)localObject2, (TogetherSession)localObject3);
     }
-    boolean bool4 = ((WatchTogetherSession)localObject3).a();
+    boolean bool4 = ((WatchTogetherSession)localObject3).g();
     boolean bool2 = false;
     boolean bool1 = false;
     Object localObject2 = localObject1;
@@ -393,32 +393,32 @@ public class WatchTogetherParser
         {
           try
           {
-            ((WatchTogetherSession)localObject3).jdField_h_of_type_Int = paramRspLatestPlayingState.enum_aio_state.get();
-            ((WatchTogetherSession)localObject3).i = paramRspLatestPlayingState.enum_user_state.get();
-            ((WatchTogetherSession)localObject3).jdField_f_of_type_JavaLangString = String.valueOf(paramRspLatestPlayingState.uint64_create_uin.get());
-            ((WatchTogetherSession)localObject3).g = paramRspLatestPlayingState.uint32_joined_num.get();
-            ((WatchTogetherSession)localObject3).jdField_c_of_type_Long = ((aio_media.ResultInfo)localObject4).uint64_svr_time.get();
-            ((WatchTogetherSession)localObject3).jdField_e_of_type_Long = ((WatchTogetherSession)localObject3).d;
-            ((WatchTogetherSession)localObject3).d = paramRspLatestPlayingState.uint64_aio_identification.get();
-            if (((WatchTogetherSession)localObject3).d != ((WatchTogetherSession)localObject3).jdField_e_of_type_Long) {
-              ((WatchTogetherSession)localObject3).l = 0;
+            ((WatchTogetherSession)localObject3).p = paramRspLatestPlayingState.enum_aio_state.get();
+            ((WatchTogetherSession)localObject3).q = paramRspLatestPlayingState.enum_user_state.get();
+            ((WatchTogetherSession)localObject3).r = String.valueOf(paramRspLatestPlayingState.uint64_create_uin.get());
+            ((WatchTogetherSession)localObject3).o = paramRspLatestPlayingState.uint32_joined_num.get();
+            ((WatchTogetherSession)localObject3).t = ((aio_media.ResultInfo)localObject4).uint64_svr_time.get();
+            ((WatchTogetherSession)localObject3).y = ((WatchTogetherSession)localObject3).x;
+            ((WatchTogetherSession)localObject3).x = paramRspLatestPlayingState.uint64_aio_identification.get();
+            if (((WatchTogetherSession)localObject3).x != ((WatchTogetherSession)localObject3).y) {
+              ((WatchTogetherSession)localObject3).z = 0;
             }
-            if ((((WatchTogetherSession)localObject3).i == 2) && (((WatchTogetherSession)localObject3).jdField_h_of_type_Int == 1)) {
-              ((WatchTogetherSession)localObject3).l = 1;
+            if ((((WatchTogetherSession)localObject3).q == 2) && (((WatchTogetherSession)localObject3).p == 1)) {
+              ((WatchTogetherSession)localObject3).z = 1;
             }
             bool1 = bool3;
             paramToServiceMsg = (ToServiceMsg)localObject1;
             if (!paramRspLatestPlayingState.msg_room_info.has()) {
               break label593;
             }
-            ((WatchTogetherSession)localObject3).jdField_a_of_type_Int = paramRspLatestPlayingState.msg_room_info.uint32_type.get();
-            ((WatchTogetherSession)localObject3).jdField_a_of_type_Long = paramRspLatestPlayingState.msg_room_info.uint64_id.get();
-            ((WatchTogetherSession)localObject3).b = paramRspLatestPlayingState.msg_room_info.bytes_name.get().toStringUtf8();
-            ((WatchTogetherSession)localObject3).jdField_a_of_type_JavaLangString = paramRspLatestPlayingState.msg_room_info.bytes_jump.get().toStringUtf8();
-            ((WatchTogetherSession)localObject3).jdField_c_of_type_JavaLangString = paramRspLatestPlayingState.msg_room_info.bytes_cover.get().toStringUtf8();
-            ((WatchTogetherSession)localObject3).j = paramRspLatestPlayingState.msg_room_info.enum_video_type.get();
-            ((WatchTogetherSession)localObject3).k = paramRspLatestPlayingState.msg_room_info.enum_video_jump_type.get();
-            ((WatchTogetherSession)localObject3).jdField_h_of_type_JavaLangString = paramRspLatestPlayingState.msg_room_info.bytes_video_jump_value.get().toStringUtf8();
+            ((WatchTogetherSession)localObject3).a = paramRspLatestPlayingState.msg_room_info.uint32_type.get();
+            ((WatchTogetherSession)localObject3).c = paramRspLatestPlayingState.msg_room_info.uint64_id.get();
+            ((WatchTogetherSession)localObject3).d = paramRspLatestPlayingState.msg_room_info.bytes_name.get().toStringUtf8();
+            ((WatchTogetherSession)localObject3).b = paramRspLatestPlayingState.msg_room_info.bytes_jump.get().toStringUtf8();
+            ((WatchTogetherSession)localObject3).e = paramRspLatestPlayingState.msg_room_info.bytes_cover.get().toStringUtf8();
+            ((WatchTogetherSession)localObject3).u = paramRspLatestPlayingState.msg_room_info.enum_video_type.get();
+            ((WatchTogetherSession)localObject3).v = paramRspLatestPlayingState.msg_room_info.enum_video_jump_type.get();
+            ((WatchTogetherSession)localObject3).w = paramRspLatestPlayingState.msg_room_info.bytes_video_jump_value.get().toStringUtf8();
             bool1 = bool3;
             paramToServiceMsg = (ToServiceMsg)localObject1;
           }
@@ -456,9 +456,9 @@ public class WatchTogetherParser
       }
       localObject2 = paramToServiceMsg;
       bool2 = bool1;
-      if (!TextUtils.isEmpty(((WatchTogetherSession)localObject3).jdField_f_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(((WatchTogetherSession)localObject3).r))
       {
-        ContactUtils.b(this.a, ((WatchTogetherSession)localObject3).jdField_e_of_type_JavaLangString, ((WatchTogetherSession)localObject3).jdField_f_of_type_JavaLangString);
+        ContactUtils.b(this.a, ((WatchTogetherSession)localObject3).n, ((WatchTogetherSession)localObject3).r);
         bool2 = bool1;
         localObject2 = paramToServiceMsg;
       }
@@ -484,8 +484,8 @@ public class WatchTogetherParser
     TogetherSession localTogetherSession = ((TogetherControlManager)this.a.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER)).a(2, 1, paramString);
     if ((localTogetherSession instanceof WatchTogetherSession))
     {
-      localTogetherSession.jdField_h_of_type_Int = 3;
-      localTogetherSession.i = 3;
+      localTogetherSession.p = 3;
+      localTogetherSession.q = 3;
       TogetherUtils.a(this.a, paramString, false);
       a(true, (WatchTogetherSession)localTogetherSession, 1007, "");
     }
@@ -494,53 +494,53 @@ public class WatchTogetherParser
   public void a(boolean paramBoolean, WatchTogetherSession paramWatchTogetherSession, int paramInt, String paramString)
   {
     TogetherControlManager localTogetherControlManager = (TogetherControlManager)this.a.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER);
-    Object localObject = localTogetherControlManager.a(2, 1, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramInt);
-    if ((paramBoolean) && (paramInt == 1003) && ((((TogetherControlManager.CacheHolder)localObject).jdField_a_of_type_JavaLangObject instanceof TroopTips0x857.VideoChangePushInfo)))
+    Object localObject = localTogetherControlManager.b(2, 1, paramWatchTogetherSession.n, paramInt);
+    if ((paramBoolean) && (paramInt == 1003) && ((((TogetherControlManager.CacheHolder)localObject).b instanceof TroopTips0x857.VideoChangePushInfo)))
     {
-      int i = ((TogetherControlManager.CacheHolder)localObject).jdField_a_of_type_AndroidOsBundle.getInt("action_type");
-      String str = ((TogetherControlManager.CacheHolder)localObject).jdField_a_of_type_AndroidOsBundle.getString("tips");
-      long l1 = ((TogetherControlManager.CacheHolder)localObject).jdField_a_of_type_AndroidOsBundle.getLong("seq");
-      long l2 = ((TogetherControlManager.CacheHolder)localObject).jdField_a_of_type_AndroidOsBundle.getLong("msgSeq");
-      localTogetherControlManager.a(paramWatchTogetherSession, i, str, l1, l2, (TroopTips0x857.VideoChangePushInfo)((TogetherControlManager.CacheHolder)localObject).jdField_a_of_type_JavaLangObject);
-      localTogetherControlManager.b(paramWatchTogetherSession, i, str, l1, l2, (TroopTips0x857.VideoChangePushInfo)((TogetherControlManager.CacheHolder)localObject).jdField_a_of_type_JavaLangObject);
+      int i = ((TogetherControlManager.CacheHolder)localObject).a.getInt("action_type");
+      String str = ((TogetherControlManager.CacheHolder)localObject).a.getString("tips");
+      long l1 = ((TogetherControlManager.CacheHolder)localObject).a.getLong("seq");
+      long l2 = ((TogetherControlManager.CacheHolder)localObject).a.getLong("msgSeq");
+      localTogetherControlManager.a(paramWatchTogetherSession, i, str, l1, l2, (TroopTips0x857.VideoChangePushInfo)((TogetherControlManager.CacheHolder)localObject).b);
+      localTogetherControlManager.b(paramWatchTogetherSession, i, str, l1, l2, (TroopTips0x857.VideoChangePushInfo)((TogetherControlManager.CacheHolder)localObject).b);
     }
-    if (paramWatchTogetherSession.jdField_h_of_type_Int == 3) {
-      TogetherUtils.a(this.a, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, false);
+    if (paramWatchTogetherSession.p == 3) {
+      TogetherUtils.a(this.a, paramWatchTogetherSession.n, false);
     } else {
-      TogetherUtils.a(this.a, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, true);
+      TogetherUtils.a(this.a, paramWatchTogetherSession.n, true);
     }
-    if ((paramWatchTogetherSession.jdField_h_of_type_Int == 1) && (paramWatchTogetherSession.i == 2))
+    if ((paramWatchTogetherSession.p == 1) && (paramWatchTogetherSession.q == 2))
     {
       boolean bool1;
-      if ((paramWatchTogetherSession.jdField_a_of_type_Int != 1) && (paramWatchTogetherSession.jdField_a_of_type_Int != 0)) {
+      if ((paramWatchTogetherSession.a != 1) && (paramWatchTogetherSession.a != 0)) {
         bool1 = true;
       } else {
         bool1 = false;
       }
       boolean bool2;
-      if ((!TextUtils.isEmpty(paramWatchTogetherSession.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramWatchTogetherSession.jdField_h_of_type_JavaLangString))) {
+      if ((!TextUtils.isEmpty(paramWatchTogetherSession.b)) && (!TextUtils.isEmpty(paramWatchTogetherSession.w))) {
         bool2 = true;
       } else {
         bool2 = false;
       }
-      if ((bool1) && (bool2) && (TogetherWatchFloatingUtil.b(paramWatchTogetherSession.jdField_e_of_type_Int, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramWatchTogetherSession.jdField_f_of_type_Int)))
+      if ((bool1) && (bool2) && (TogetherWatchFloatingUtil.b(paramWatchTogetherSession.l, paramWatchTogetherSession.n, paramWatchTogetherSession.m)))
       {
         if (QLog.isColorLevel()) {
           QLog.d("WatchTogetherParser", 1, "isSameFloatingInfo");
         }
         localObject = new WatchTogetherFloatingData();
-        ((WatchTogetherFloatingData)localObject).setCurUin(paramWatchTogetherSession.jdField_e_of_type_JavaLangString);
-        ((WatchTogetherFloatingData)localObject).setCurType(paramWatchTogetherSession.jdField_f_of_type_Int);
-        ((WatchTogetherFloatingData)localObject).setSmallUrl(paramWatchTogetherSession.jdField_a_of_type_JavaLangString);
-        ((WatchTogetherFloatingData)localObject).setBigUrl(paramWatchTogetherSession.jdField_h_of_type_JavaLangString);
-        if ((!((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramWatchTogetherSession.jdField_e_of_type_JavaLangString).isAdmin()) && (!paramWatchTogetherSession.jdField_f_of_type_JavaLangString.equals(this.a.getCurrentUin()))) {
+        ((WatchTogetherFloatingData)localObject).setCurUin(paramWatchTogetherSession.n);
+        ((WatchTogetherFloatingData)localObject).setCurType(paramWatchTogetherSession.m);
+        ((WatchTogetherFloatingData)localObject).setSmallUrl(paramWatchTogetherSession.b);
+        ((WatchTogetherFloatingData)localObject).setBigUrl(paramWatchTogetherSession.w);
+        if ((!((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramWatchTogetherSession.n).isAdmin()) && (!paramWatchTogetherSession.r.equals(this.a.getCurrentUin()))) {
           ((WatchTogetherFloatingData)localObject).setIsAdm(false);
         } else {
           ((WatchTogetherFloatingData)localObject).setIsAdm(true);
         }
         TogetherWatchFloatingUtil.a(BaseApplicationImpl.context, (WatchTogetherFloatingData)localObject);
       }
-      else if (TogetherWatchFloatingUtil.b(paramWatchTogetherSession.jdField_e_of_type_Int, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramWatchTogetherSession.jdField_f_of_type_Int))
+      else if (TogetherWatchFloatingUtil.b(paramWatchTogetherSession.l, paramWatchTogetherSession.n, paramWatchTogetherSession.m))
       {
         if (QLog.isColorLevel())
         {
@@ -551,36 +551,36 @@ public class WatchTogetherParser
           ((StringBuilder)localObject).append(bool2);
           QLog.d("WatchTogetherParser", 1, ((StringBuilder)localObject).toString());
         }
-        TogetherWatchFloatingUtil.a(false, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramWatchTogetherSession.jdField_f_of_type_Int, false);
+        TogetherWatchFloatingUtil.a(false, paramWatchTogetherSession.n, paramWatchTogetherSession.m, false);
       }
     }
-    if ((paramWatchTogetherSession.jdField_h_of_type_Int == 3) || (paramWatchTogetherSession.i == 1) || (paramWatchTogetherSession.i == 3))
+    if ((paramWatchTogetherSession.p == 3) || (paramWatchTogetherSession.q == 1) || (paramWatchTogetherSession.q == 3))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("session.state=");
-        ((StringBuilder)localObject).append(paramWatchTogetherSession.jdField_h_of_type_Int);
+        ((StringBuilder)localObject).append(paramWatchTogetherSession.p);
         ((StringBuilder)localObject).append(" session.userState=");
-        ((StringBuilder)localObject).append(paramWatchTogetherSession.i);
+        ((StringBuilder)localObject).append(paramWatchTogetherSession.q);
         ((StringBuilder)localObject).append(" uin=");
-        ((StringBuilder)localObject).append(paramWatchTogetherSession.jdField_e_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramWatchTogetherSession.n);
         ((StringBuilder)localObject).append(" type=");
-        ((StringBuilder)localObject).append(paramWatchTogetherSession.jdField_f_of_type_Int);
+        ((StringBuilder)localObject).append(paramWatchTogetherSession.m);
         QLog.d("WatchTogetherParser", 1, ((StringBuilder)localObject).toString());
       }
       localObject = new WatchTogetherFloatingData();
-      ((WatchTogetherFloatingData)localObject).setCurUin(paramWatchTogetherSession.jdField_e_of_type_JavaLangString);
-      ((WatchTogetherFloatingData)localObject).setCurType(paramWatchTogetherSession.jdField_f_of_type_Int);
-      TogetherWatchFloatingUtil.a(BaseApplicationImpl.context, (WatchTogetherFloatingData)localObject);
+      ((WatchTogetherFloatingData)localObject).setCurUin(paramWatchTogetherSession.n);
+      ((WatchTogetherFloatingData)localObject).setCurType(paramWatchTogetherSession.m);
+      TogetherWatchFloatingUtil.b(BaseApplicationImpl.context, (WatchTogetherFloatingData)localObject);
     }
     localTogetherControlManager.a(paramBoolean, paramWatchTogetherSession, paramInt, paramString);
-    localTogetherControlManager.b(2, 1, paramWatchTogetherSession.jdField_e_of_type_JavaLangString, paramInt);
+    localTogetherControlManager.c(2, 1, paramWatchTogetherSession.n, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherParser
  * JD-Core Version:    0.7.0.1
  */

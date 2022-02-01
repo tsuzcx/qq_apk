@@ -160,7 +160,7 @@ public class h
     ((ByteBuffer)localObject1).putShort((short)0);
     ((ByteBuffer)localObject1).putLong(this.a.f);
     ((ByteBuffer)localObject1).putShort((short)10);
-    ((ByteBuffer)localObject1).put("6.0.0.2473".getBytes());
+    ((ByteBuffer)localObject1).put("6.0.0.2477".getBytes());
     ((ByteBuffer)localObject1).putShort((short)this.b);
     ((ByteBuffer)localObject1).putShort((short)this.c);
     int i;
@@ -572,7 +572,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.h
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class SubscribePermissionSettingFragment$1
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369202) {
+    if (paramView.getId() == 2131436180) {
       this.this$0.getBaseActivity().finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.SubscribePermissionSettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

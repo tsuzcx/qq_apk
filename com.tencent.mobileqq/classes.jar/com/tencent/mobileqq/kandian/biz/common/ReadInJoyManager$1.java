@@ -22,59 +22,59 @@ class ReadInJoyManager$1
   public void run()
   {
     Object localObject1 = ReadInJoyDataProvider.c.buildUpon();
-    ((Uri.Builder)localObject1).appendQueryParameter("uin", ReadInJoyManager.a(this.this$0).getAccount());
+    ((Uri.Builder)localObject1).appendQueryParameter("uin", ReadInJoyManager.d(this.this$0).getAccount());
     localObject1 = ((Uri.Builder)localObject1).build();
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       ReadInJoyFeedsMsgRecord localReadInJoyFeedsMsgRecord = (ReadInJoyFeedsMsgRecord)localIterator.next();
-      Object localObject2 = new HashSet(ReadInJoyManager.a(this.this$0).keySet()).iterator();
+      Object localObject2 = new HashSet(ReadInJoyManager.f(this.this$0).keySet()).iterator();
       int i;
       while (((Iterator)localObject2).hasNext())
       {
         i = ((Integer)((Iterator)localObject2).next()).intValue();
         int j = (int)NetConnInfoCenter.getServerTime();
         if ((i < j) && (j - i > 300)) {
-          ReadInJoyManager.a(this.this$0).remove(Integer.valueOf(i));
+          ReadInJoyManager.f(this.this$0).remove(Integer.valueOf(i));
         }
       }
-      if (!ReadInJoyManager.a(this.this$0).containsValue(Integer.valueOf(localReadInJoyFeedsMsgRecord.jdField_b_of_type_Int)))
+      if (!ReadInJoyManager.f(this.this$0).containsValue(Integer.valueOf(localReadInJoyFeedsMsgRecord.b)))
       {
-        ReadInJoyManager.a(this.this$0).put(Integer.valueOf(localReadInJoyFeedsMsgRecord.a), Integer.valueOf(localReadInJoyFeedsMsgRecord.jdField_b_of_type_Int));
-        long l = ReadInJoyManager.a(this.this$0);
+        ReadInJoyManager.f(this.this$0).put(Integer.valueOf(localReadInJoyFeedsMsgRecord.a), Integer.valueOf(localReadInJoyFeedsMsgRecord.b));
+        long l = ReadInJoyManager.g(this.this$0);
         if ((localReadInJoyFeedsMsgRecord.c != 10) && (localReadInJoyFeedsMsgRecord.c != 11) && (localReadInJoyFeedsMsgRecord.c != 12) && (localReadInJoyFeedsMsgRecord.c != 999999))
         {
           ContentValues localContentValues;
           if (localReadInJoyFeedsMsgRecord.c == 14)
           {
-            localObject2 = String.format("%s = '%s' and %s = %d", new Object[] { "commentID", localReadInJoyFeedsMsgRecord.jdField_b_of_type_JavaLangString, "notifyType", Integer.valueOf(11) });
+            localObject2 = String.format("%s = '%s' and %s = %d", new Object[] { "commentID", localReadInJoyFeedsMsgRecord.h, "notifyType", Integer.valueOf(11) });
             localContentValues = new ContentValues();
             localContentValues.put("isDelete", Integer.valueOf(1));
-            ReadInJoyManager.a(this.this$0).getApp().getContentResolver().update((Uri)localObject1, localContentValues, (String)localObject2, null);
+            ReadInJoyManager.d(this.this$0).getApp().getContentResolver().update((Uri)localObject1, localContentValues, (String)localObject2, null);
             ReadInJoyManager.a(this.this$0, (Uri)localObject1, localReadInJoyFeedsMsgRecord, l);
           }
           else if (localReadInJoyFeedsMsgRecord.c == 13)
           {
-            localObject2 = String.format("%s = %s and %s = %d", new Object[] { "feedsID", Long.toString(localReadInJoyFeedsMsgRecord.jdField_b_of_type_Long), "notifyType", Integer.valueOf(10) });
+            localObject2 = String.format("%s = %s and %s = %d", new Object[] { "feedsID", Long.toString(localReadInJoyFeedsMsgRecord.e), "notifyType", Integer.valueOf(10) });
             localContentValues = new ContentValues();
             localContentValues.put("isDelete", Integer.valueOf(1));
-            ReadInJoyManager.a(this.this$0).getApp().getContentResolver().update((Uri)localObject1, localContentValues, (String)localObject2, null);
+            ReadInJoyManager.d(this.this$0).getApp().getContentResolver().update((Uri)localObject1, localContentValues, (String)localObject2, null);
             ReadInJoyManager.a(this.this$0, (Uri)localObject1, localReadInJoyFeedsMsgRecord, l);
           }
         }
         else if (ReadInJoyManager.a(this.this$0, (Uri)localObject1, localReadInJoyFeedsMsgRecord, l))
         {
-          ReadInJoyManager.a(this.this$0);
+          ReadInJoyManager.b(this.this$0);
         }
         i = localReadInJoyFeedsMsgRecord.c;
       }
     }
-    ReadInJoyManager.a(this.this$0).getApp().getContentResolver().notifyChange(ReadInJoyDataProvider.c, null);
+    ReadInJoyManager.d(this.this$0).getApp().getContentResolver().notifyChange(ReadInJoyDataProvider.c, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyManager.1
  * JD-Core Version:    0.7.0.1
  */

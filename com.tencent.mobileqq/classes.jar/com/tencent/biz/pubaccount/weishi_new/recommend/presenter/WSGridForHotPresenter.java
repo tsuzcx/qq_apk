@@ -6,6 +6,7 @@ import UserGrowth.stNotificationRsp;
 import UserGrowth.stSimpleMetaFeed;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
 import com.tencent.biz.pubaccount.weishi_new.WSUserAuthDialog;
 import com.tencent.biz.pubaccount.weishi_new.WeishiConstants;
 import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager;
@@ -37,28 +38,22 @@ public class WSGridForHotPresenter
   extends AbsWSGridPagePresenter
   implements IWSNoticeRspListener
 {
-  private long jdField_a_of_type_Long = 0L;
-  private final IFetchDataListener<WSFollowDramaData> jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheIFetchDataListener = a();
-  private final WSGetFollowDramaFetcher jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSGetFollowDramaFetcher = new WSGetFollowDramaFetcher();
-  private final WSNoticeDataManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataWSNoticeDataManager = new WSNoticeDataManager();
-  private long b = 0L;
-  private long c;
-  private long d = -1L;
+  private final WSNoticeDataManager f = new WSNoticeDataManager();
+  private final WSGetFollowDramaFetcher g = new WSGetFollowDramaFetcher();
+  private final IFetchDataListener<WSFollowDramaData> h = y();
+  private long i = 0L;
+  private long j = 0L;
+  private long k = 0L;
+  private long l = -1L;
   
   public WSGridForHotPresenter(String paramString)
   {
     super(paramString);
-    this.jdField_c_of_type_Long = 0L;
-  }
-  
-  private IFetchDataListener<WSFollowDramaData> a()
-  {
-    return new WSGridForHotPresenter.2(this);
   }
   
   private void a(int paramInt)
   {
-    WeishiLinkUtil.a();
+    WeishiLinkUtil.b();
     WeishiLinkUtil.a(paramInt);
   }
   
@@ -71,101 +66,120 @@ public class WSGridForHotPresenter
   
   private void a(stGlobalConfig paramstGlobalConfig, String paramString, WSGridPageContract.View paramView)
   {
-    int i;
+    int m;
     if ((paramstGlobalConfig.jumpinfo != null) && (!TextUtils.isEmpty(paramstGlobalConfig.jumpinfo.h5url)))
     {
-      i = 1;
+      m = 1;
       paramView.a(paramstGlobalConfig.jumpinfo.h5url);
     }
     else
     {
-      i = 2;
+      m = 2;
     }
-    WSReportDc00898.a(i, 2, paramString);
+    WSReportDc00898.a(m, 2, paramString);
   }
   
   private void a(@Nullable WSFollowDramaData paramWSFollowDramaData, boolean paramBoolean)
   {
-    if (a() == null) {
+    if (getView() == null) {
       return;
     }
     if ((paramWSFollowDramaData != null) && (paramWSFollowDramaData.a() != null) && (paramWSFollowDramaData.a().size() != 0))
     {
-      ((WSGridPageContract.View)a()).a(paramWSFollowDramaData, paramBoolean);
+      ((WSGridPageContract.View)getView()).a(paramWSFollowDramaData, paramBoolean);
       return;
     }
-    ((WSGridPageContract.View)a()).j();
+    ((WSGridPageContract.View)getView()).l();
   }
   
   private void a(List<stSimpleMetaFeed> paramList, stGlobalConfig paramstGlobalConfig, String paramString, boolean paramBoolean)
   {
-    WSGridPageContract.View localView = (WSGridPageContract.View)a();
+    WSGridPageContract.View localView = (WSGridPageContract.View)getView();
     if ((paramstGlobalConfig != null) && (localView != null))
     {
-      int i = paramstGlobalConfig.link_strategy_type;
-      localView.a(i, (stSimpleMetaFeed)paramList.get(0));
+      int m = paramstGlobalConfig.link_strategy_type;
+      localView.a(m, (stSimpleMetaFeed)paramList.get(0));
       if (paramBoolean) {
-        WSFallKeyPicMonitor.a().a();
+        WSFallKeyPicMonitor.a().b();
       }
-      if (i == 4)
+      if ((m != 1) && (m != 2))
       {
+        if (m != 4)
+        {
+          if (m != 7) {
+            return;
+          }
+          a(paramstGlobalConfig, paramString, localView);
+          return;
+        }
         a(paramstGlobalConfig, localView);
-        return;
-      }
-      if (i == 7)
-      {
-        a(paramstGlobalConfig, paramString, localView);
         return;
       }
       localView.a(paramstGlobalConfig);
       return;
     }
-    WSLog.d("WSGridForHotPresenterLog", "[WSGridPageFragment.java][performLinkStrategy] globalConfig is null!");
+    WSLog.d("WSGridForHotPresenterLog", "[WSGridForHotPresenter.java][performLinkStrategy] globalConfig is null!");
   }
   
-  private void l()
+  private void u()
   {
-    if (this.jdField_c_of_type_Long > 0L)
+    if (this.k > 0L)
     {
-      long l = System.currentTimeMillis() - this.jdField_c_of_type_Long;
-      this.jdField_c_of_type_Long = 0L;
+      long l1 = System.currentTimeMillis() - this.k;
+      this.k = 0L;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[WSGridForHotPresenter.java][reportPageInitConst] initTime：");
-      localStringBuilder.append(l);
+      localStringBuilder.append(l1);
       WSLog.e("WSGridForHotPresenterLog", localStringBuilder.toString());
-      WsBeaconReportPresenter.a().a(true, l);
-      WsBeaconReportPresenter.a().a(true, l, "feeds", "feeds");
+      WsBeaconReportPresenter.a().a(true, l1);
+      WsBeaconReportPresenter.a().a(true, l1, "feeds", "feeds");
     }
   }
   
-  private void m()
+  private void v()
   {
-    WSReportDc00898.a(6, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg);
+    WSReportDc00898.a(6, this.e);
   }
   
-  private void n()
+  private void w()
   {
     if (!WeishiConstants.a)
     {
-      this.jdField_a_of_type_Long = (System.currentTimeMillis() - this.b);
+      this.i = (System.currentTimeMillis() - this.j);
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[WSGridPageFragment.java][reportBeaconAnd898Exit] exitPublicAccount mStayTime:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append("[WSGridForHotPresenter.java][reportBeaconAnd898Exit] exitPublicAccount mStayTime:");
+      ((StringBuilder)localObject).append(this.i);
       WSLog.e("WSGridForHotPresenterLog", ((StringBuilder)localObject).toString());
-      this.b = 0L;
+      this.j = 0L;
     }
-    Object localObject = (WSGridPageContract.View)a();
+    Object localObject = (WSGridPageContract.View)getView();
     if (localObject == null) {
       return;
     }
-    int i = ((WSGridPageContract.View)localObject).a();
-    WSReportDc00898.a(117, new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(i) });
-    WsBeaconReportPresenter.a().a(this.jdField_a_of_type_Long, this.d, i, WeishiUtils.a, WeishiScehmeUtil.a, 1);
+    int m = ((WSGridPageContract.View)localObject).d();
+    WSReportDc00898.a(117, new Object[] { Long.valueOf(this.i), Integer.valueOf(m) });
+    WsBeaconReportPresenter.a().a(this.i, this.l, m, WeishiUtils.a, WeishiScehmeUtil.b, 1);
   }
   
-  private void o()
+  private void x()
   {
     WeiShiCacheManager.a().c(new WSGridForHotPresenter.1(this));
+  }
+  
+  private IFetchDataListener<WSFollowDramaData> y()
+  {
+    return new WSGridForHotPresenter.2(this);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.k = System.currentTimeMillis();
+    a(this.a);
+    WSFallKeyPicMonitor.a().a(BaseApplicationImpl.getContext());
+    if (k()) {
+      x();
+    }
   }
   
   public void a(int paramInt, String paramString)
@@ -175,7 +189,7 @@ public class WSGridForHotPresenter
   
   public void a(stNotificationRsp paramstNotificationRsp, RspHeaderBean paramRspHeaderBean)
   {
-    WSGridPageContract.View localView = (WSGridPageContract.View)a();
+    WSGridPageContract.View localView = (WSGridPageContract.View)getView();
     if (localView != null)
     {
       localView.b();
@@ -184,17 +198,22 @@ public class WSGridForHotPresenter
     WSFallKeyPicMonitor.a(2);
   }
   
+  protected void a(JceStruct paramJceStruct, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.a(paramJceStruct, paramBoolean1, paramBoolean2);
+  }
+  
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataWSNoticeDataManager.a(paramString, this);
+    this.f.a(paramString, this);
   }
   
   protected void a(List<stSimpleMetaFeed> paramList, boolean paramBoolean, stGlobalConfig paramstGlobalConfig, int paramInt, long paramLong)
   {
     super.a(paramList, paramBoolean, paramstGlobalConfig, paramInt, paramLong);
-    WSInitializeHelper.a().a().d();
-    this.d = (System.currentTimeMillis() - paramLong);
-    String str = WSGridPageUtils.a(false, paramInt, (stSimpleMetaFeed)paramList.get(0), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg, this.jdField_c_of_type_JavaLangString);
+    WSInitializeHelper.a().h().d();
+    this.l = (System.currentTimeMillis() - paramLong);
+    String str = WSGridPageUtils.a(false, paramInt, (stSimpleMetaFeed)paramList.get(0), this.e, this.c);
     if (WSUserAuthDialog.a()) {
       WSSimpleEventBus.a().a(new WSUserAuthEvent());
     }
@@ -205,79 +224,83 @@ public class WSGridForHotPresenter
   protected void a(List<stSimpleMetaFeed> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean2) {
-      WSInitializeHelper.a().a().e();
+      WSInitializeHelper.a().h().e();
     }
     super.a(paramList, paramBoolean1, paramBoolean2);
+  }
+  
+  public void b()
+  {
+    this.g.a(this.h);
   }
   
   public void c()
   {
     super.c();
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    a(this.jdField_a_of_type_JavaLangString);
-    WSFallKeyPicMonitor.a().a(BaseApplicationImpl.getContext());
-    if (c()) {
-      o();
+    if (!WeishiConstants.a) {
+      this.j = System.currentTimeMillis();
+    } else {
+      WeishiConstants.a = false;
     }
-  }
-  
-  public boolean c()
-  {
-    return WSExpABTestManager.a().h();
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSGetFollowDramaFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheIFetchDataListener);
-  }
-  
-  protected boolean d()
-  {
-    boolean bool = WeishiUtils.a(8);
-    int i = WeiShiCacheManager.a().a();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[WSGridForHotPresenter.java][isPreloadCacheValid] mSubTab:");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(", preloadCacheValid:");
-    localStringBuilder.append(bool);
-    localStringBuilder.append(", redCacheCount:");
-    localStringBuilder.append(i);
-    WSLog.e("WSGridForHotPresenterLog", localStringBuilder.toString());
-    return (bool) && (i >= 8);
+    u();
+    v();
   }
   
   public void e()
   {
     super.e();
-    if (!WeishiConstants.a) {
-      this.b = System.currentTimeMillis();
-    } else {
-      WeishiConstants.a = false;
-    }
-    l();
-    m();
+    WSFallKeyPicMonitor.a().c();
+    w();
   }
   
-  protected boolean e()
+  public boolean k()
   {
-    return false;
+    return WSExpABTestManager.a().t();
   }
   
-  protected boolean f()
+  public boolean l()
   {
     return true;
   }
   
-  public void g()
+  public boolean m()
   {
-    super.g();
-    WSFallKeyPicMonitor.a().b();
-    n();
+    return true;
+  }
+  
+  protected boolean n()
+  {
+    boolean bool = WeishiUtils.b(8);
+    int m = WeiShiCacheManager.a().b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSGridForHotPresenter.java][isPreloadCacheValid] mSubTab:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", preloadCacheValid:");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(", redCacheCount:");
+    localStringBuilder.append(m);
+    WSLog.e("WSGridForHotPresenterLog", localStringBuilder.toString());
+    return (bool) && (m >= 8);
+  }
+  
+  protected boolean o()
+  {
+    return false;
+  }
+  
+  protected boolean p()
+  {
+    return false;
+  }
+  
+  protected boolean q()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.presenter.WSGridForHotPresenter
  * JD-Core Version:    0.7.0.1
  */

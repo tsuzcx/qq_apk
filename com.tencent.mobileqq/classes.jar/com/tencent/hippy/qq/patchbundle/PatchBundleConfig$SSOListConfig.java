@@ -25,7 +25,7 @@ public class PatchBundleConfig$SSOListConfig
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("QQ/8.7.0 Android/0.17 Android/");
+    localStringBuilder.append("QQ/8.8.17 Android/0.17 Android/");
     localStringBuilder.append(Build.VERSION.RELEASE);
     UA = localStringBuilder.toString();
   }
@@ -714,7 +714,7 @@ public class PatchBundleConfig$SSOListConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.patchbundle.PatchBundleConfig.SSOListConfig
  * JD-Core Version:    0.7.0.1
  */

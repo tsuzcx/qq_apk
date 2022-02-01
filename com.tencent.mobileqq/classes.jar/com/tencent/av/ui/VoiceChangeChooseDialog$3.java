@@ -15,25 +15,25 @@ class VoiceChangeChooseDialog$3
     localStringBuilder.append("onItemSelected| voiceType=");
     localStringBuilder.append(paramInt);
     AVLog.printAllUserLog("VoiceChangeChooseDialog", localStringBuilder.toString());
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null)
+    if (this.a.a == null)
     {
       AVLog.printErrorLog("VoiceChangeChooseDialog", "onItemSelected mVideoController is null!!");
       return;
     }
     if (paramInt == 0)
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131695978);
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      this.a.f.setText(2131893740);
+      this.a.k.removeCallbacks(this.a.l);
       VoiceChangeChooseDialog.a(this.a, 0);
     }
     else
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131695977);
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)
+      this.a.f.setText(2131893739);
+      if (this.a.a.k() != null)
       {
-        if ((!this.a.jdField_a_of_type_ComTencentAvVideoController.a().aq) && (VoiceChangeChooseDialog.a(this.a) == 0) && (!this.a.jdField_a_of_type_Boolean))
+        if ((!this.a.a.k().bW) && (VoiceChangeChooseDialog.a(this.a) == 0) && (!this.a.g))
         {
-          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 5000L);
+          this.a.k.postDelayed(this.a.l, 5000L);
           VoiceChangeChooseDialog.a(this.a, 1);
         }
       }
@@ -41,12 +41,12 @@ class VoiceChangeChooseDialog$3
         AVLog.printErrorLog("VoiceChangeChooseDialog", "mVideoController.getSessionInfo() == null");
       }
     }
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)
+    if (this.a.a.k() != null)
     {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().ad = paramInt;
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().ae = 0;
-      this.a.jdField_a_of_type_ComTencentAvVideoController.z();
-      VoiceChangeDataReport.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a(), paramInt);
+      this.a.a.k().cr = paramInt;
+      this.a.a.k().cs = 0;
+      this.a.a.am();
+      VoiceChangeDataReport.a(this.a.a.k(), paramInt);
       return;
     }
     AVLog.printErrorLog("VoiceChangeChooseDialog", "mVideoController.getSessionInfo() == null");

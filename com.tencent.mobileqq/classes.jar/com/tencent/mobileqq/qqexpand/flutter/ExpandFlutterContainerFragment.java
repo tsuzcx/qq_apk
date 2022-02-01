@@ -51,23 +51,18 @@ import org.jetbrains.annotations.Nullable;
 public final class ExpandFlutterContainerFragment
   extends QFlutterContainerFragment
 {
-  public static final ExpandFlutterContainerFragment.Companion a;
-  private final int jdField_a_of_type_Int = 30000;
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  private View jdField_a_of_type_AndroidViewView;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private final String jdField_a_of_type_JavaLangString = "https://down.qq.com/innovate/qqexpend/match/boxing.png";
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean = true;
-  private long jdField_b_of_type_Long;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqQqexpandFlutterExpandFlutterContainerFragment$Companion = new ExpandFlutterContainerFragment.Companion(null);
-  }
+  public static final ExpandFlutterContainerFragment.Companion a = new ExpandFlutterContainerFragment.Companion(null);
+  private long c = System.currentTimeMillis();
+  private boolean d = true;
+  private final int e = 30000;
+  private View f;
+  private View g;
+  private ProgressBar h;
+  private long i;
+  private boolean j;
+  private boolean k;
+  private final String l = "https://down.qq.com/innovate/qqexpend/match/boxing.png";
+  private HashMap m;
   
   private final void a(int paramInt)
   {
@@ -86,72 +81,66 @@ public final class ExpandFlutterContainerFragment
   public View a()
   {
     QLog.d("ExpandFlutterContainerFragment", 1, "getSplashView");
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Boolean = true;
+    this.i = System.currentTimeMillis();
+    this.j = true;
     ReportHelper.a();
-    boolean bool = ExpandFlutterUtils.a.a();
+    boolean bool = ExpandFlutterUtils.a.f();
     Object localObject2 = null;
     if (bool) {
       return null;
     }
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561091, null);
-    Object localObject1 = this.jdField_b_of_type_AndroidViewView;
+    this.g = LayoutInflater.from(getContext()).inflate(2131627441, null);
+    Object localObject1 = this.g;
     if (localObject1 != null) {
-      localObject1 = (ImageView)((View)localObject1).findViewById(2131370371);
+      localObject1 = (ImageView)((View)localObject1).findViewById(2131437633);
     } else {
       localObject1 = null;
     }
-    Object localObject3 = getContext().getResources().getDrawable(2130839653);
+    Object localObject3 = getContext().getResources().getDrawable(2130840125);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mUseApngImage = true;
     localURLDrawableOptions.mExtraInfo = new Bundle();
     localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject3);
     localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject3);
-    localObject3 = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+    localObject3 = URLDrawable.getDrawable(this.l, localURLDrawableOptions);
     if (localObject1 != null) {
       ((ImageView)localObject1).setImageDrawable((Drawable)localObject3);
     }
-    localObject1 = this.jdField_b_of_type_AndroidViewView;
+    localObject1 = this.g;
     if (localObject1 != null)
     {
-      localObject1 = ((View)localObject1).findViewById(2131378817);
+      localObject1 = ((View)localObject1).findViewById(2131447500);
       if (localObject1 != null) {
         ((View)localObject1).setOnClickListener((View.OnClickListener)new ExpandFlutterContainerFragment.getSplashView.1(this));
       }
     }
-    localObject3 = this.jdField_b_of_type_AndroidViewView;
+    localObject3 = this.g;
     localObject1 = localObject2;
     if (localObject3 != null) {
-      localObject1 = (ProgressBar)((View)localObject3).findViewById(2131370387);
+      localObject1 = (ProgressBar)((View)localObject3).findViewById(2131437654);
     }
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localObject1);
-    int i = RangesKt.random(new IntRange(10, 15), (Random)Random.Default);
-    localObject1 = this.jdField_a_of_type_AndroidWidgetProgressBar;
+    this.h = ((ProgressBar)localObject1);
+    int n = RangesKt.random(new IntRange(10, 15), (Random)Random.Default);
+    localObject1 = this.h;
     if (localObject1 != null) {
-      ((ProgressBar)localObject1).setProgress(i);
+      ((ProgressBar)localObject1).setProgress(n);
     }
-    a(i);
-    return this.jdField_b_of_type_AndroidViewView;
+    a(n);
+    return this.g;
   }
   
-  public final void a()
-  {
-    ReportHelper.a(this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public boolean a()
+  public boolean e()
   {
     QLog.d("ExpandFlutterContainerFragment", 1, "handleSplashRemove");
-    if ((this.jdField_b_of_type_Boolean) && (!this.c))
+    if ((this.j) && (!this.k))
     {
-      this.jdField_b_of_type_Boolean = false;
-      ReportHelper.a(this.jdField_b_of_type_Long, 2, ExpandFlutterUtils.a.a());
-      if (ExpandFlutterUtils.a.a()) {
+      this.j = false;
+      ReportHelper.a(this.i, 2, ExpandFlutterUtils.a.f());
+      if (ExpandFlutterUtils.a.f()) {
         return false;
       }
-      ExpandFlutterUtils.a.f();
-      localObject = this.jdField_a_of_type_AndroidWidgetProgressBar;
+      ExpandFlutterUtils.a.g();
+      localObject = this.h;
       if (localObject != null) {
         ((ProgressBar)localObject).setProgress(100);
       }
@@ -160,16 +149,22 @@ public final class ExpandFlutterContainerFragment
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("splash showing ");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.j);
     ((StringBuilder)localObject).append(' ');
-    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(this.k);
     QLog.d("ExpandFlutterContainerFragment", 1, ((StringBuilder)localObject).toString());
     return false;
   }
   
-  public void b()
+  public final void f()
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    ReportHelper.a(this.c);
+    this.c = 0L;
+  }
+  
+  public void g()
+  {
+    HashMap localHashMap = this.m;
     if (localHashMap != null) {
       localHashMap.clear();
     }
@@ -193,23 +188,23 @@ public final class ExpandFlutterContainerFragment
   public void onAttach(@NotNull Activity paramActivity)
   {
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    ThreadManager.getUIHandler().postDelayed((Runnable)new ExpandFlutterContainerFragment.onAttach.1(this), this.jdField_a_of_type_Int);
+    ThreadManager.getUIHandler().postDelayed((Runnable)new ExpandFlutterContainerFragment.onAttach.1(this), this.e);
     super.onAttach(paramActivity);
   }
   
   public boolean onBackEvent()
   {
-    if ((this.jdField_b_of_type_Boolean) && (!this.c))
+    if ((this.j) && (!this.k))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onBackEvent splash showing ");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.j);
       localStringBuilder.append(' ');
-      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.k);
       QLog.d("ExpandFlutterContainerFragment", 1, localStringBuilder.toString());
-      ReportHelper.a(this.jdField_b_of_type_Long, 1, ExpandFlutterUtils.a.a());
+      ReportHelper.a(this.i, 1, ExpandFlutterUtils.a.f());
     }
-    return this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.a();
+    return this.b.i();
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
@@ -218,7 +213,7 @@ public final class ExpandFlutterContainerFragment
     ExpandReportUtils.a();
     ExpandFlutterUtils.a.a();
     ExpandFlutterUtils.a.b();
-    ExpandFlutterIPCClient.a();
+    ExpandFlutterIPCClient.b();
     ExpandFlutterUtils.a.c();
     ExpandFlutterUtils.a.d();
     ExpandFlutterUtils.a.e();
@@ -235,16 +230,16 @@ public final class ExpandFlutterContainerFragment
     Intrinsics.checkExpressionValueIsNotNull(localQBaseActivity, "qBaseActivity");
     ImmersiveUtils.setStatusTextColor(true, localQBaseActivity.getWindow());
     paramBundle = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = LayoutInflater.from((Context)getQBaseActivity()).inflate(2131561080, null);
+    paramLayoutInflater = LayoutInflater.from((Context)getQBaseActivity()).inflate(2131627428, null);
     Intrinsics.checkExpressionValueIsNotNull(paramLayoutInflater, "LayoutInflater.from(qBas…ter_empty_fragment, null)");
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater;
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.f = paramLayoutInflater;
+    paramLayoutInflater = this.f;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mErrorView");
     }
-    paramLayoutInflater = paramLayoutInflater.findViewById(2131378837);
+    paramLayoutInflater = paramLayoutInflater.findViewById(2131447534);
     Intrinsics.checkExpressionValueIsNotNull(paramLayoutInflater, "mErrorView.findViewById<View>(R.id.title_layout)");
-    int i = ViewUtils.c(ImmersiveUtils.getStatusBarHeight((Context)getQBaseActivity()));
+    int n = ViewUtils.pxToDp(ImmersiveUtils.getStatusBarHeight((Context)getQBaseActivity()));
     paramViewGroup = paramLayoutInflater.getLayoutParams();
     paramLayoutInflater = paramViewGroup;
     if (!(paramViewGroup instanceof ViewGroup.MarginLayoutParams)) {
@@ -252,14 +247,14 @@ public final class ExpandFlutterContainerFragment
     }
     paramLayoutInflater = (ViewGroup.MarginLayoutParams)paramLayoutInflater;
     if (paramLayoutInflater != null) {
-      paramLayoutInflater.topMargin = LayoutAttrsKt.getDp(i);
+      paramLayoutInflater.topMargin = LayoutAttrsKt.getDp(n);
     }
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    paramLayoutInflater = this.f;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mErrorView");
     }
-    paramLayoutInflater.findViewById(2131369934).setOnClickListener((View.OnClickListener)new ExpandFlutterContainerFragment.onCreateView.1(this));
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    paramLayoutInflater.findViewById(2131437083).setOnClickListener((View.OnClickListener)new ExpandFlutterContainerFragment.onCreateView.1(this));
+    paramLayoutInflater = this.f;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mErrorView");
     }
@@ -267,7 +262,7 @@ public final class ExpandFlutterContainerFragment
     if (paramBundle != null)
     {
       paramLayoutInflater = (FrameLayout)paramBundle;
-      paramViewGroup = this.jdField_a_of_type_AndroidViewView;
+      paramViewGroup = this.f;
       if (paramViewGroup == null) {
         Intrinsics.throwUninitializedPropertyAccessException("mErrorView");
       }
@@ -284,8 +279,8 @@ public final class ExpandFlutterContainerFragment
   public void onDestroy()
   {
     super.onDestroy();
-    a();
-    ExpandFlutterIPCClient.b();
+    f();
+    ExpandFlutterIPCClient.c();
     Object localObject1 = getQBaseActivity();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "qBaseActivity");
     localObject1 = ((QBaseActivity)localObject1).getIntent().getSerializableExtra("params");
@@ -310,13 +305,13 @@ public final class ExpandFlutterContainerFragment
   public void onPause()
   {
     super.onPause();
-    this.c = true;
+    this.k = true;
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
       if (QLog.isDebugVersion())
       {
@@ -347,13 +342,13 @@ public final class ExpandFlutterContainerFragment
           throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.flutter.router.SerializableMap");
         }
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.ExpandFlutterContainerFragment
  * JD-Core Version:    0.7.0.1
  */

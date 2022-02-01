@@ -13,10 +13,10 @@ public class ViewTransformer
   extends ViewGroup
   implements Animation.AnimationListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewTransformer.ViewTransformerListener jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplViewTransformer$ViewTransformerListener = null;
+  private View a;
   private View b;
+  private Context c;
+  private ViewTransformer.ViewTransformerListener d = null;
   
   public ViewTransformer(Context paramContext)
   {
@@ -38,7 +38,7 @@ public class ViewTransformer
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramContext;
   }
   
   protected ViewTransformer.LayoutParams a()
@@ -58,20 +58,20 @@ public class ViewTransformer
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = this.jdField_a_of_type_AndroidViewView;
+    paramAnimation = this.a;
     if (paramAnimation != null) {
       paramAnimation.setVisibility(8);
     }
-    paramAnimation = this.jdField_a_of_type_AndroidViewView;
-    this.jdField_a_of_type_AndroidViewView = this.b;
+    paramAnimation = this.a;
+    this.a = this.b;
     this.b = paramAnimation;
-    if ((getChildCount() > 1) && (this.jdField_a_of_type_AndroidViewView != null) && (this.b != null))
+    if ((getChildCount() > 1) && (this.a != null) && (this.b != null))
     {
       removeAllViews();
-      addView(this.jdField_a_of_type_AndroidViewView, 0);
+      addView(this.a, 0);
       addView(this.b, 1);
       requestLayout();
-      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplViewTransformer$ViewTransformerListener;
+      paramAnimation = this.d;
       if (paramAnimation != null) {
         paramAnimation.a();
       }
@@ -140,12 +140,12 @@ public class ViewTransformer
   
   public void setLisenter(ViewTransformer.ViewTransformerListener paramViewTransformerListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplViewTransformer$ViewTransformerListener = paramViewTransformerListener;
+    this.d = paramViewTransformerListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.view.impl.ViewTransformer
  * JD-Core Version:    0.7.0.1
  */

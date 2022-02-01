@@ -10,41 +10,41 @@ class VideoInviteActivity$6
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null)
+    if (this.b.Q != null)
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131373510, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363119, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363130, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363129, false);
+      this.b.Q.setViewEnable(2131441182, false);
+      this.b.Q.setViewEnable(2131428972, false);
+      this.b.Q.setViewEnable(2131428983, false);
+      this.b.Q.setViewEnable(2131428982, false);
     }
   }
   
   public void b()
   {
-    VideoInviteActivity localVideoInviteActivity = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity;
-    localVideoInviteActivity.d = false;
-    if (localVideoInviteActivity.i)
+    VideoInviteActivity localVideoInviteActivity = this.b;
+    localVideoInviteActivity.r = false;
+    if (localVideoInviteActivity.G)
     {
-      long l = CharacterUtil.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, 3, l);
-      if (!this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h)
+      long l = CharacterUtil.b(this.b.o);
+      this.b.d().a(this.a, 3, l);
+      if (!this.b.F)
       {
-        localVideoInviteActivity = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity;
-        localVideoInviteActivity.h = true;
-        localVideoInviteActivity.a().a(this.jdField_a_of_type_Long, l, 2);
+        localVideoInviteActivity = this.b;
+        localVideoInviteActivity.F = true;
+        localVideoInviteActivity.d().a(this.a, l, 2);
       }
-      localVideoInviteActivity = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity;
-      localVideoInviteActivity.e = true;
+      localVideoInviteActivity = this.b;
+      localVideoInviteActivity.s = true;
       localVideoInviteActivity.finish();
     }
     else
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 246);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(246);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 0);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+      this.b.d().a(this.b.o, 246);
+      this.b.d().b(246);
+      this.b.d().b(this.b.o, 0);
+      this.b.finish();
     }
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.overridePendingTransition(0, 2130772219);
+    this.b.overridePendingTransition(0, 2130772285);
   }
 }
 

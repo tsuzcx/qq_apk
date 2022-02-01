@@ -16,6 +16,7 @@ import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -41,13 +42,22 @@ import android.view.Window.Callback;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import androidx.annotation.CallSuper;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StyleRes;
+import androidx.annotation.VisibleForTesting;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.color;
+import androidx.appcompat.R.id;
+import androidx.appcompat.R.layout;
+import androidx.appcompat.R.style;
 import androidx.appcompat.R.styleable;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.view.ActionMode.Callback;
@@ -65,20 +75,23 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.VectorEnabledTintResources;
 import androidx.appcompat.widget.ViewStubCompat;
 import androidx.appcompat.widget.ViewUtils;
-import androidx.collection.ArrayMap;
+import androidx.collection.SimpleArrayMap;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NavUtils;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat.ThemeCompat;
+import androidx.core.util.ObjectsCompat;
 import androidx.core.view.KeyEventDispatcher;
 import androidx.core.view.KeyEventDispatcher.Component;
 import androidx.core.view.LayoutInflaterCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewPropertyAnimatorCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.core.widget.PopupWindowCompat;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.Lifecycle.State;
 import androidx.lifecycle.LifecycleOwner;
 import java.lang.reflect.Constructor;
-import java.util.Map;
 import org.xmlpull.v1.XmlPullParser;
 
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
@@ -86,12 +99,12 @@ class AppCompatDelegateImpl
   extends AppCompatDelegate
   implements LayoutInflater.Factory2, MenuBuilder.Callback
 {
-  private static final boolean DEBUG = false;
   static final String EXCEPTION_HANDLER_MESSAGE_SUFFIX = ". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.";
   private static final boolean IS_PRE_LOLLIPOP;
-  private static final boolean sAlwaysOverrideConfiguration;
+  private static final boolean sCanApplyOverrideConfiguration;
+  private static final boolean sCanReturnDifferentContext;
   private static boolean sInstalledExceptionHandler;
-  private static final Map<Class<?>, Integer> sLocalNightModes = new ArrayMap();
+  private static final SimpleArrayMap<String, Integer> sLocalNightModes = new SimpleArrayMap();
   private static final int[] sWindowBackgroundStyleable;
   ActionBar mActionBar;
   private AppCompatDelegateImpl.ActionMenuPresenterCallback mActionMenuPresenterCallback;
@@ -133,7 +146,7 @@ class AppCompatDelegateImpl
   Runnable mShowActionModePopup;
   private boolean mStarted;
   private View mStatusGuard;
-  private ViewGroup mSubDecor;
+  ViewGroup mSubDecor;
   private boolean mSubDecorInstalled;
   private Rect mTempRect1;
   private Rect mTempRect2;
@@ -154,15 +167,12 @@ class AppCompatDelegateImpl
     }
     IS_PRE_LOLLIPOP = bool1;
     sWindowBackgroundStyleable = new int[] { 16842836 };
+    sCanReturnDifferentContext = "robolectric".equals(Build.FINGERPRINT) ^ true;
     boolean bool1 = bool2;
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      bool1 = bool2;
-      if (Build.VERSION.SDK_INT <= 25) {
-        bool1 = true;
-      }
+    if (Build.VERSION.SDK_INT >= 17) {
+      bool1 = true;
     }
-    sAlwaysOverrideConfiguration = bool1;
+    sCanApplyOverrideConfiguration = bool1;
     if ((IS_PRE_LOLLIPOP) && (!sInstalledExceptionHandler))
     {
       Thread.setDefaultUncaughtExceptionHandler(new AppCompatDelegateImpl.1(Thread.getDefaultUncaughtExceptionHandler()));
@@ -204,11 +214,11 @@ class AppCompatDelegateImpl
     }
     if (this.mLocalNightMode == -100)
     {
-      paramContext = (Integer)sLocalNightModes.get(this.mHost.getClass());
+      paramContext = (Integer)sLocalNightModes.get(this.mHost.getClass().getName());
       if (paramContext != null)
       {
         this.mLocalNightMode = paramContext.intValue();
-        sLocalNightModes.remove(this.mHost.getClass());
+        sLocalNightModes.remove(this.mHost.getClass().getName());
       }
     }
     if (paramWindow != null) {
@@ -223,10 +233,10 @@ class AppCompatDelegateImpl
       return false;
     }
     int i = calculateNightMode();
-    paramBoolean = updateForNightMode(mapNightMode(i), paramBoolean);
+    paramBoolean = updateForNightMode(mapNightMode(this.mContext, i), paramBoolean);
     if (i == 0)
     {
-      getAutoTimeNightModeManager().setup();
+      getAutoTimeNightModeManager(this.mContext).setup();
     }
     else
     {
@@ -237,7 +247,7 @@ class AppCompatDelegateImpl
     }
     if (i == 3)
     {
-      getAutoBatteryNightModeManager().setup();
+      getAutoBatteryNightModeManager(this.mContext).setup();
       return paramBoolean;
     }
     AppCompatDelegateImpl.AutoNightModeManager localAutoNightModeManager = this.mAutoBatteryNightModeManager;
@@ -315,6 +325,29 @@ class AppCompatDelegateImpl
     }
   }
   
+  @NonNull
+  private Configuration createOverrideConfigurationForDayNight(@NonNull Context paramContext, int paramInt, @Nullable Configuration paramConfiguration)
+  {
+    if (paramInt != 1)
+    {
+      if (paramInt != 2) {
+        paramInt = paramContext.getApplicationContext().getResources().getConfiguration().uiMode & 0x30;
+      } else {
+        paramInt = 32;
+      }
+    }
+    else {
+      paramInt = 16;
+    }
+    paramContext = new Configuration();
+    paramContext.fontScale = 0.0F;
+    if (paramConfiguration != null) {
+      paramContext.setTo(paramConfiguration);
+    }
+    paramContext.uiMode = (paramInt | paramContext.uiMode & 0xFFFFFFCF);
+    return paramContext;
+  }
+  
   private ViewGroup createSubDecor()
   {
     Object localObject1 = this.mContext.obtainStyledAttributes(R.styleable.AppCompatTheme);
@@ -341,21 +374,21 @@ class AppCompatDelegateImpl
       {
         if (this.mIsFloating)
         {
-          localObject1 = (ViewGroup)((LayoutInflater)localObject1).inflate(2131558412, null);
+          localObject1 = (ViewGroup)((LayoutInflater)localObject1).inflate(R.layout.abc_dialog_title_material, null);
           this.mOverlayActionBar = false;
           this.mHasActionBar = false;
         }
         else if (this.mHasActionBar)
         {
           localObject1 = new TypedValue();
-          this.mContext.getTheme().resolveAttribute(2131034126, (TypedValue)localObject1, true);
+          this.mContext.getTheme().resolveAttribute(R.attr.actionBarTheme, (TypedValue)localObject1, true);
           if (((TypedValue)localObject1).resourceId != 0) {
             localObject1 = new androidx.appcompat.view.ContextThemeWrapper(this.mContext, ((TypedValue)localObject1).resourceId);
           } else {
             localObject1 = this.mContext;
           }
-          localObject2 = (ViewGroup)LayoutInflater.from((Context)localObject1).inflate(2131558423, null);
-          this.mDecorContentParent = ((DecorContentParent)((ViewGroup)localObject2).findViewById(2131365456));
+          localObject2 = (ViewGroup)LayoutInflater.from((Context)localObject1).inflate(R.layout.abc_screen_toolbar, null);
+          this.mDecorContentParent = ((DecorContentParent)((ViewGroup)localObject2).findViewById(R.id.decor_content_parent));
           this.mDecorContentParent.setWindowCallback(getWindowCallback());
           if (this.mOverlayActionBar) {
             this.mDecorContentParent.initFeature(109);
@@ -375,26 +408,23 @@ class AppCompatDelegateImpl
           localObject1 = null;
         }
       }
-      else
-      {
-        if (this.mOverlayActionMode) {
-          localObject1 = (ViewGroup)((LayoutInflater)localObject1).inflate(2131558422, null);
-        } else {
-          localObject1 = (ViewGroup)((LayoutInflater)localObject1).inflate(2131558421, null);
-        }
-        if (Build.VERSION.SDK_INT >= 21) {
-          ViewCompat.setOnApplyWindowInsetsListener((View)localObject1, new AppCompatDelegateImpl.3(this));
-        } else {
-          ((FitWindowsViewGroup)localObject1).setOnFitSystemWindowsListener(new AppCompatDelegateImpl.4(this));
-        }
+      else if (this.mOverlayActionMode) {
+        localObject1 = (ViewGroup)((LayoutInflater)localObject1).inflate(R.layout.abc_screen_simple_overlay_action_mode, null);
+      } else {
+        localObject1 = (ViewGroup)((LayoutInflater)localObject1).inflate(R.layout.abc_screen_simple, null);
       }
       if (localObject1 != null)
       {
+        if (Build.VERSION.SDK_INT >= 21) {
+          ViewCompat.setOnApplyWindowInsetsListener((View)localObject1, new AppCompatDelegateImpl.3(this));
+        } else if ((localObject1 instanceof FitWindowsViewGroup)) {
+          ((FitWindowsViewGroup)localObject1).setOnFitSystemWindowsListener(new AppCompatDelegateImpl.4(this));
+        }
         if (this.mDecorContentParent == null) {
-          this.mTitleView = ((TextView)((ViewGroup)localObject1).findViewById(2131378784));
+          this.mTitleView = ((TextView)((ViewGroup)localObject1).findViewById(R.id.title));
         }
         ViewUtils.makeOptionalFitsSystemWindows((View)localObject1);
-        localObject2 = (ContentFrameLayout)((ViewGroup)localObject1).findViewById(2131361955);
+        localObject2 = (ContentFrameLayout)((ViewGroup)localObject1).findViewById(R.id.action_bar_activity_content);
         ViewGroup localViewGroup = (ViewGroup)this.mWindow.findViewById(16908290);
         if (localViewGroup != null)
         {
@@ -486,12 +516,99 @@ class AppCompatDelegateImpl
     throw new IllegalStateException("We have not been given a Window");
   }
   
-  private AppCompatDelegateImpl.AutoNightModeManager getAutoBatteryNightModeManager()
+  @NonNull
+  private static Configuration generateConfigDelta(@NonNull Configuration paramConfiguration1, @Nullable Configuration paramConfiguration2)
+  {
+    Configuration localConfiguration = new Configuration();
+    localConfiguration.fontScale = 0.0F;
+    if (paramConfiguration2 != null)
+    {
+      if (paramConfiguration1.diff(paramConfiguration2) == 0) {
+        return localConfiguration;
+      }
+      if (paramConfiguration1.fontScale != paramConfiguration2.fontScale) {
+        localConfiguration.fontScale = paramConfiguration2.fontScale;
+      }
+      if (paramConfiguration1.mcc != paramConfiguration2.mcc) {
+        localConfiguration.mcc = paramConfiguration2.mcc;
+      }
+      if (paramConfiguration1.mnc != paramConfiguration2.mnc) {
+        localConfiguration.mnc = paramConfiguration2.mnc;
+      }
+      if (Build.VERSION.SDK_INT >= 24) {
+        AppCompatDelegateImpl.ConfigurationImplApi24.generateConfigDelta_locale(paramConfiguration1, paramConfiguration2, localConfiguration);
+      } else if (!ObjectsCompat.equals(paramConfiguration1.locale, paramConfiguration2.locale)) {
+        localConfiguration.locale = paramConfiguration2.locale;
+      }
+      if (paramConfiguration1.touchscreen != paramConfiguration2.touchscreen) {
+        localConfiguration.touchscreen = paramConfiguration2.touchscreen;
+      }
+      if (paramConfiguration1.keyboard != paramConfiguration2.keyboard) {
+        localConfiguration.keyboard = paramConfiguration2.keyboard;
+      }
+      if (paramConfiguration1.keyboardHidden != paramConfiguration2.keyboardHidden) {
+        localConfiguration.keyboardHidden = paramConfiguration2.keyboardHidden;
+      }
+      if (paramConfiguration1.navigation != paramConfiguration2.navigation) {
+        localConfiguration.navigation = paramConfiguration2.navigation;
+      }
+      if (paramConfiguration1.navigationHidden != paramConfiguration2.navigationHidden) {
+        localConfiguration.navigationHidden = paramConfiguration2.navigationHidden;
+      }
+      if (paramConfiguration1.orientation != paramConfiguration2.orientation) {
+        localConfiguration.orientation = paramConfiguration2.orientation;
+      }
+      if ((paramConfiguration1.screenLayout & 0xF) != (paramConfiguration2.screenLayout & 0xF)) {
+        localConfiguration.screenLayout |= paramConfiguration2.screenLayout & 0xF;
+      }
+      if ((paramConfiguration1.screenLayout & 0xC0) != (paramConfiguration2.screenLayout & 0xC0)) {
+        localConfiguration.screenLayout |= paramConfiguration2.screenLayout & 0xC0;
+      }
+      if ((paramConfiguration1.screenLayout & 0x30) != (paramConfiguration2.screenLayout & 0x30)) {
+        localConfiguration.screenLayout |= paramConfiguration2.screenLayout & 0x30;
+      }
+      if ((paramConfiguration1.screenLayout & 0x300) != (paramConfiguration2.screenLayout & 0x300)) {
+        localConfiguration.screenLayout |= paramConfiguration2.screenLayout & 0x300;
+      }
+      if (Build.VERSION.SDK_INT >= 26) {
+        AppCompatDelegateImpl.ConfigurationImplApi26.generateConfigDelta_colorMode(paramConfiguration1, paramConfiguration2, localConfiguration);
+      }
+      if ((paramConfiguration1.uiMode & 0xF) != (paramConfiguration2.uiMode & 0xF)) {
+        localConfiguration.uiMode |= paramConfiguration2.uiMode & 0xF;
+      }
+      if ((paramConfiguration1.uiMode & 0x30) != (paramConfiguration2.uiMode & 0x30)) {
+        localConfiguration.uiMode |= paramConfiguration2.uiMode & 0x30;
+      }
+      if (paramConfiguration1.screenWidthDp != paramConfiguration2.screenWidthDp) {
+        localConfiguration.screenWidthDp = paramConfiguration2.screenWidthDp;
+      }
+      if (paramConfiguration1.screenHeightDp != paramConfiguration2.screenHeightDp) {
+        localConfiguration.screenHeightDp = paramConfiguration2.screenHeightDp;
+      }
+      if (paramConfiguration1.smallestScreenWidthDp != paramConfiguration2.smallestScreenWidthDp) {
+        localConfiguration.smallestScreenWidthDp = paramConfiguration2.smallestScreenWidthDp;
+      }
+      if (Build.VERSION.SDK_INT >= 17) {
+        AppCompatDelegateImpl.ConfigurationImplApi17.generateConfigDelta_densityDpi(paramConfiguration1, paramConfiguration2, localConfiguration);
+      }
+    }
+    return localConfiguration;
+  }
+  
+  private AppCompatDelegateImpl.AutoNightModeManager getAutoBatteryNightModeManager(@NonNull Context paramContext)
   {
     if (this.mAutoBatteryNightModeManager == null) {
-      this.mAutoBatteryNightModeManager = new AppCompatDelegateImpl.AutoBatteryNightModeManager(this, this.mContext);
+      this.mAutoBatteryNightModeManager = new AppCompatDelegateImpl.AutoBatteryNightModeManager(this, paramContext);
     }
     return this.mAutoBatteryNightModeManager;
+  }
+  
+  private AppCompatDelegateImpl.AutoNightModeManager getAutoTimeNightModeManager(@NonNull Context paramContext)
+  {
+    if (this.mAutoTimeNightModeManager == null) {
+      this.mAutoTimeNightModeManager = new AppCompatDelegateImpl.AutoTimeNightModeManager(this, TwilightManager.getInstance(paramContext));
+    }
+    return this.mAutoTimeNightModeManager;
   }
   
   private void initWindowDecorActionBar()
@@ -555,18 +672,18 @@ class AppCompatDelegateImpl
       {
         TypedValue localTypedValue = new TypedValue();
         Resources.Theme localTheme = localContext.getTheme();
-        localTheme.resolveAttribute(2131034126, localTypedValue, true);
+        localTheme.resolveAttribute(R.attr.actionBarTheme, localTypedValue, true);
         localObject1 = null;
         if (localTypedValue.resourceId != 0)
         {
           localObject1 = localContext.getResources().newTheme();
           ((Resources.Theme)localObject1).setTo(localTheme);
           ((Resources.Theme)localObject1).applyStyle(localTypedValue.resourceId, true);
-          ((Resources.Theme)localObject1).resolveAttribute(2131034127, localTypedValue, true);
+          ((Resources.Theme)localObject1).resolveAttribute(R.attr.actionBarWidgetTheme, localTypedValue, true);
         }
         else
         {
-          localTheme.resolveAttribute(2131034127, localTypedValue, true);
+          localTheme.resolveAttribute(R.attr.actionBarWidgetTheme, localTypedValue, true);
         }
         Object localObject2 = localObject1;
         if (localTypedValue.resourceId != 0)
@@ -617,9 +734,20 @@ class AppCompatDelegateImpl
     {
       try
       {
-        localObject = ((PackageManager)localObject).getActivityInfo(new ComponentName(this.mContext, this.mHost.getClass()), 0);
+        if (Build.VERSION.SDK_INT >= 29)
+        {
+          i = 269221888;
+        }
+        else
+        {
+          if (Build.VERSION.SDK_INT < 24) {
+            break label140;
+          }
+          i = 786432;
+        }
+        localObject = ((PackageManager)localObject).getActivityInfo(new ComponentName(this.mContext, this.mHost.getClass()), i);
         if ((localObject == null) || ((((ActivityInfo)localObject).configChanges & 0x200) == 0)) {
-          break label110;
+          break label145;
         }
         bool = true;
         this.mActivityHandlesUiMode = bool;
@@ -631,7 +759,10 @@ class AppCompatDelegateImpl
       }
       this.mActivityHandlesUiModeChecked = true;
       return this.mActivityHandlesUiMode;
-      label110:
+      label140:
+      int i = 0;
+      continue;
+      label145:
       boolean bool = false;
     }
   }
@@ -703,7 +834,7 @@ class AppCompatDelegateImpl
     label198:
     if (bool)
     {
-      paramKeyEvent = (AudioManager)this.mContext.getSystemService("audio");
+      paramKeyEvent = (AudioManager)this.mContext.getApplicationContext().getSystemService("audio");
       if (paramKeyEvent != null)
       {
         paramKeyEvent.playSoundEffect(0);
@@ -753,7 +884,7 @@ class AppCompatDelegateImpl
           if ((paramKeyEvent != null) && (paramKeyEvent.width == -1))
           {
             i = -1;
-            break label337;
+            break label339;
           }
         }
       }
@@ -766,11 +897,8 @@ class AppCompatDelegateImpl
         else if ((paramPanelFeatureState.refreshDecorView) && (paramPanelFeatureState.decorView.getChildCount() > 0)) {
           paramPanelFeatureState.decorView.removeAllViews();
         }
-        if (!initializePanelContent(paramPanelFeatureState)) {
-          return;
-        }
-        if (!paramPanelFeatureState.hasPanelItems()) {
-          return;
+        if ((!initializePanelContent(paramPanelFeatureState)) || (!paramPanelFeatureState.hasPanelItems())) {
+          break label405;
         }
         localObject = paramPanelFeatureState.shownPanelView.getLayoutParams();
         paramKeyEvent = (KeyEvent)localObject;
@@ -789,13 +917,16 @@ class AppCompatDelegateImpl
         }
       }
       int i = -2;
-      label337:
+      label339:
       paramPanelFeatureState.isHandled = false;
       paramKeyEvent = new WindowManager.LayoutParams(i, -2, paramPanelFeatureState.x, paramPanelFeatureState.y, 1002, 8519680, -3);
       paramKeyEvent.gravity = paramPanelFeatureState.gravity;
       paramKeyEvent.windowAnimations = paramPanelFeatureState.windowAnimations;
       localWindowManager.addView(paramPanelFeatureState.decorView, paramKeyEvent);
       paramPanelFeatureState.isOpen = true;
+      return;
+      label405:
+      paramPanelFeatureState.refreshDecorView = true;
     }
   }
   
@@ -921,20 +1052,20 @@ class AppCompatDelegateImpl
     return true;
   }
   
-  private void reopenMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
+  private void reopenMenu(boolean paramBoolean)
   {
-    paramMenuBuilder = this.mDecorContentParent;
-    if ((paramMenuBuilder != null) && (paramMenuBuilder.canShowOverflowMenu()) && ((!ViewConfiguration.get(this.mContext).hasPermanentMenuKey()) || (this.mDecorContentParent.isOverflowMenuShowPending())))
+    Object localObject = this.mDecorContentParent;
+    if ((localObject != null) && (((DecorContentParent)localObject).canShowOverflowMenu()) && ((!ViewConfiguration.get(this.mContext).hasPermanentMenuKey()) || (this.mDecorContentParent.isOverflowMenuShowPending())))
     {
-      paramMenuBuilder = getWindowCallback();
+      localObject = getWindowCallback();
       if ((this.mDecorContentParent.isOverflowMenuShowing()) && (paramBoolean))
       {
         this.mDecorContentParent.hideOverflowMenu();
         if (!this.mIsDestroyed) {
-          paramMenuBuilder.onPanelClosed(108, getPanelState(0, true).menu);
+          ((Window.Callback)localObject).onPanelClosed(108, getPanelState(0, true).menu);
         }
       }
-      else if ((paramMenuBuilder != null) && (!this.mIsDestroyed))
+      else if ((localObject != null) && (!this.mIsDestroyed))
       {
         if ((this.mInvalidatePanelMenuPosted) && ((this.mInvalidatePanelMenuFeatures & 0x1) != 0))
         {
@@ -942,18 +1073,18 @@ class AppCompatDelegateImpl
           this.mInvalidatePanelMenuRunnable.run();
         }
         AppCompatDelegateImpl.PanelFeatureState localPanelFeatureState = getPanelState(0, true);
-        if ((localPanelFeatureState.menu != null) && (!localPanelFeatureState.refreshMenuContent) && (paramMenuBuilder.onPreparePanel(0, localPanelFeatureState.createdPanelView, localPanelFeatureState.menu)))
+        if ((localPanelFeatureState.menu != null) && (!localPanelFeatureState.refreshMenuContent) && (((Window.Callback)localObject).onPreparePanel(0, localPanelFeatureState.createdPanelView, localPanelFeatureState.menu)))
         {
-          paramMenuBuilder.onMenuOpened(108, localPanelFeatureState.menu);
+          ((Window.Callback)localObject).onMenuOpened(108, localPanelFeatureState.menu);
           this.mDecorContentParent.showOverflowMenu();
         }
       }
       return;
     }
-    paramMenuBuilder = getPanelState(0, true);
-    paramMenuBuilder.refreshDecorView = true;
-    closePanel(paramMenuBuilder, false);
-    openPanel(paramMenuBuilder, null);
+    localObject = getPanelState(0, true);
+    ((AppCompatDelegateImpl.PanelFeatureState)localObject).refreshDecorView = true;
+    closePanel((AppCompatDelegateImpl.PanelFeatureState)localObject, false);
+    openPanel((AppCompatDelegateImpl.PanelFeatureState)localObject, null);
   }
   
   private int sanitizeWindowFeatureId(int paramInt)
@@ -1019,118 +1150,53 @@ class AppCompatDelegateImpl
   
   private boolean updateForNightMode(int paramInt, boolean paramBoolean)
   {
-    int j = this.mContext.getApplicationContext().getResources().getConfiguration().uiMode & 0x30;
-    boolean bool3 = true;
-    int i;
-    if (paramInt != 1)
+    Object localObject = createOverrideConfigurationForDayNight(this.mContext, paramInt, null);
+    boolean bool2 = isActivityManifestHandlingUiMode();
+    int i = this.mContext.getResources().getConfiguration().uiMode & 0x30;
+    int j = ((Configuration)localObject).uiMode & 0x30;
+    if ((i != j) && (paramBoolean) && (!bool2) && (this.mBaseContextAttached) && ((sCanReturnDifferentContext) || (this.mCreated)))
     {
-      if (paramInt != 2) {
-        i = j;
-      } else {
-        i = 32;
-      }
-    }
-    else {
-      i = 16;
-    }
-    boolean bool4 = isActivityManifestHandlingUiMode();
-    boolean bool1 = sAlwaysOverrideConfiguration;
-    boolean bool2 = false;
-    if (!bool1)
-    {
-      bool1 = bool2;
-      if (i == j) {}
-    }
-    else
-    {
-      bool1 = bool2;
-      if (!bool4)
+      localObject = this.mHost;
+      if (((localObject instanceof Activity)) && (!((Activity)localObject).isChild()))
       {
-        bool1 = bool2;
-        if (Build.VERSION.SDK_INT >= 17)
-        {
-          bool1 = bool2;
-          if (!this.mBaseContextAttached)
-          {
-            bool1 = bool2;
-            if ((this.mHost instanceof android.view.ContextThemeWrapper))
-            {
-              Configuration localConfiguration = new Configuration();
-              localConfiguration.uiMode = (localConfiguration.uiMode & 0xFFFFFFCF | i);
-              try
-              {
-                ((android.view.ContextThemeWrapper)this.mHost).applyOverrideConfiguration(localConfiguration);
-                bool1 = true;
-              }
-              catch (IllegalStateException localIllegalStateException)
-              {
-                Log.e("AppCompatDelegate", "updateForNightMode. Calling applyOverrideConfiguration() failed with an exception. Will fall back to using Resources.updateConfiguration()", localIllegalStateException);
-                bool1 = bool2;
-              }
-            }
-          }
-        }
+        ActivityCompat.recreate((Activity)this.mHost);
+        paramBoolean = true;
+        break label122;
       }
     }
-    j = this.mContext.getResources().getConfiguration().uiMode & 0x30;
-    bool2 = bool1;
-    Object localObject;
-    if (!bool1)
+    paramBoolean = false;
+    label122:
+    boolean bool1 = paramBoolean;
+    if (!paramBoolean)
     {
-      bool2 = bool1;
-      if (j != i)
+      bool1 = paramBoolean;
+      if (i != j)
       {
-        bool2 = bool1;
-        if (paramBoolean)
-        {
-          bool2 = bool1;
-          if (!bool4)
-          {
-            bool2 = bool1;
-            if (this.mBaseContextAttached) {
-              if (Build.VERSION.SDK_INT < 17)
-              {
-                bool2 = bool1;
-                if (!this.mCreated) {}
-              }
-              else
-              {
-                localObject = this.mHost;
-                bool2 = bool1;
-                if ((localObject instanceof Activity))
-                {
-                  ActivityCompat.recreate((Activity)localObject);
-                  bool2 = true;
-                }
-              }
-            }
-          }
-        }
+        updateResourcesConfigurationForNightMode(j, bool2, null);
+        bool1 = true;
       }
     }
-    if ((!bool2) && (j != i))
-    {
-      updateResourcesConfigurationForNightMode(i, bool4);
-      bool2 = bool3;
-    }
-    if (bool2)
+    if (bool1)
     {
       localObject = this.mHost;
       if ((localObject instanceof AppCompatActivity)) {
         ((AppCompatActivity)localObject).onNightModeChanged(paramInt);
       }
     }
-    return bool2;
+    return bool1;
   }
   
-  private void updateResourcesConfigurationForNightMode(int paramInt, boolean paramBoolean)
+  private void updateResourcesConfigurationForNightMode(int paramInt, boolean paramBoolean, @Nullable Configuration paramConfiguration)
   {
-    Object localObject = this.mContext.getResources();
-    Configuration localConfiguration = new Configuration(((Resources)localObject).getConfiguration());
-    localConfiguration.uiMode = (paramInt | ((Resources)localObject).getConfiguration().uiMode & 0xFFFFFFCF);
-    ((Resources)localObject).updateConfiguration(localConfiguration, null);
+    Resources localResources = this.mContext.getResources();
+    Configuration localConfiguration = new Configuration(localResources.getConfiguration());
+    if (paramConfiguration != null) {
+      localConfiguration.updateFrom(paramConfiguration);
+    }
+    localConfiguration.uiMode = (paramInt | localResources.getConfiguration().uiMode & 0xFFFFFFCF);
+    localResources.updateConfiguration(localConfiguration, null);
     if (Build.VERSION.SDK_INT < 26) {
-      ResourcesFlusher.flush((Resources)localObject);
+      ResourcesFlusher.flush(localResources);
     }
     paramInt = this.mThemeResId;
     if (paramInt != 0)
@@ -1142,21 +1208,37 @@ class AppCompatDelegateImpl
     }
     if (paramBoolean)
     {
-      localObject = this.mHost;
-      if ((localObject instanceof Activity))
+      paramConfiguration = this.mHost;
+      if ((paramConfiguration instanceof Activity))
       {
-        localObject = (Activity)localObject;
-        if ((localObject instanceof LifecycleOwner))
+        paramConfiguration = (Activity)paramConfiguration;
+        if ((paramConfiguration instanceof LifecycleOwner))
         {
-          if (((LifecycleOwner)localObject).getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED)) {
-            ((Activity)localObject).onConfigurationChanged(localConfiguration);
+          if (((LifecycleOwner)paramConfiguration).getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED)) {
+            paramConfiguration.onConfigurationChanged(localConfiguration);
           }
         }
         else if (this.mStarted) {
-          ((Activity)localObject).onConfigurationChanged(localConfiguration);
+          paramConfiguration.onConfigurationChanged(localConfiguration);
         }
       }
     }
+  }
+  
+  private void updateStatusGuardColor(View paramView)
+  {
+    int i;
+    if ((ViewCompat.getWindowSystemUiVisibility(paramView) & 0x2000) != 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      i = ContextCompat.getColor(this.mContext, R.color.abc_decor_view_status_guard_light);
+    } else {
+      i = ContextCompat.getColor(this.mContext, R.color.abc_decor_view_status_guard);
+    }
+    paramView.setBackgroundColor(i);
   }
   
   public void addContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
@@ -1171,10 +1253,76 @@ class AppCompatDelegateImpl
     return applyDayNight(true);
   }
   
-  public void attachBaseContext(Context paramContext)
+  @CallSuper
+  @NonNull
+  public Context attachBaseContext2(@NonNull Context paramContext)
   {
-    applyDayNight(false);
     this.mBaseContextAttached = true;
+    int i = mapNightMode(paramContext, calculateNightMode());
+    boolean bool = sCanApplyOverrideConfiguration;
+    Object localObject = null;
+    Configuration localConfiguration1;
+    if ((bool) && ((paramContext instanceof android.view.ContextThemeWrapper))) {
+      localConfiguration1 = createOverrideConfigurationForDayNight(paramContext, i, null);
+    }
+    label179:
+    try
+    {
+      AppCompatDelegateImpl.ContextThemeWrapperCompatApi17Impl.applyOverrideConfiguration((android.view.ContextThemeWrapper)paramContext, localConfiguration1);
+      return paramContext;
+    }
+    catch (IllegalStateException localIllegalStateException1)
+    {
+      label53:
+      label80:
+      break label53;
+    }
+    if ((paramContext instanceof androidx.appcompat.view.ContextThemeWrapper)) {
+      localConfiguration1 = createOverrideConfigurationForDayNight(paramContext, i, null);
+    }
+    try
+    {
+      ((androidx.appcompat.view.ContextThemeWrapper)paramContext).applyOverrideConfiguration(localConfiguration1);
+      return paramContext;
+    }
+    catch (IllegalStateException localIllegalStateException2)
+    {
+      break label80;
+    }
+    if (!sCanReturnDifferentContext) {
+      return super.attachBaseContext2(paramContext);
+    }
+    try
+    {
+      localConfiguration1 = paramContext.getPackageManager().getResourcesForApplication(paramContext.getApplicationInfo()).getConfiguration();
+      Configuration localConfiguration2 = paramContext.getResources().getConfiguration();
+      if (!localConfiguration1.equals(localConfiguration2)) {
+        localObject = generateConfigDelta(localConfiguration1, localConfiguration2);
+      }
+      localConfiguration1 = createOverrideConfigurationForDayNight(paramContext, i, (Configuration)localObject);
+      localObject = new androidx.appcompat.view.ContextThemeWrapper(paramContext, R.style.Theme_AppCompat_Empty);
+      ((androidx.appcompat.view.ContextThemeWrapper)localObject).applyOverrideConfiguration(localConfiguration1);
+      i = 0;
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      throw new RuntimeException("Application failed to obtain resources from itself", paramContext);
+    }
+    try
+    {
+      paramContext = paramContext.getTheme();
+      if (paramContext != null) {
+        i = 1;
+      }
+    }
+    catch (NullPointerException paramContext)
+    {
+      break label179;
+    }
+    if (i != 0) {
+      ResourcesCompat.ThemeCompat.rebase(((androidx.appcompat.view.ContextThemeWrapper)localObject).getTheme());
+    }
+    return super.attachBaseContext2((Context)localObject);
   }
   
   void callOnPanelClosed(int paramInt, AppCompatDelegateImpl.PanelFeatureState paramPanelFeatureState, Menu paramMenu)
@@ -1212,7 +1360,7 @@ class AppCompatDelegateImpl
     }
   }
   
-  void checkCloseActionMenu(MenuBuilder paramMenuBuilder)
+  void checkCloseActionMenu(@NonNull MenuBuilder paramMenuBuilder)
   {
     if (this.mClosingActionMenu) {
       return;
@@ -1267,7 +1415,9 @@ class AppCompatDelegateImpl
     if (localObject == null)
     {
       localObject = this.mContext.obtainStyledAttributes(R.styleable.AppCompatTheme).getString(R.styleable.AppCompatTheme_viewInflaterClass);
-      if ((localObject != null) && (!AppCompatViewInflater.class.getName().equals(localObject))) {
+      if (localObject == null) {
+        this.mAppCompatViewInflater = new AppCompatViewInflater();
+      } else {
         try
         {
           this.mAppCompatViewInflater = ((AppCompatViewInflater)Class.forName((String)localObject).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
@@ -1281,8 +1431,6 @@ class AppCompatDelegateImpl
           Log.i("AppCompatDelegate", localStringBuilder.toString(), localThrowable);
           this.mAppCompatViewInflater = new AppCompatViewInflater();
         }
-      } else {
-        this.mAppCompatViewInflater = new AppCompatViewInflater();
       }
     }
     if (IS_PRE_LOLLIPOP)
@@ -1436,12 +1584,10 @@ class AppCompatDelegateImpl
   
   @NonNull
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
+  @VisibleForTesting
   final AppCompatDelegateImpl.AutoNightModeManager getAutoTimeNightModeManager()
   {
-    if (this.mAutoTimeNightModeManager == null) {
-      this.mAutoTimeNightModeManager = new AppCompatDelegateImpl.AutoTimeNightModeManager(this, TwilightManager.getInstance(this.mContext));
-    }
-    return this.mAutoTimeNightModeManager;
+    return getAutoTimeNightModeManager(this.mContext);
   }
   
   public final ActionBarDrawerToggle.Delegate getDrawerToggleDelegate()
@@ -1599,36 +1745,30 @@ class AppCompatDelegateImpl
     return this.mHandleNativeActionModes;
   }
   
-  int mapNightMode(int paramInt)
+  int mapNightMode(@NonNull Context paramContext, int paramInt)
   {
     if (paramInt != -100)
     {
-      int i = paramInt;
       if (paramInt != -1) {
         if (paramInt != 0)
         {
-          i = paramInt;
-          if (paramInt != 1)
+          if ((paramInt != 1) && (paramInt != 2))
           {
-            i = paramInt;
-            if (paramInt != 2)
-            {
-              if (paramInt == 3) {
-                return getAutoBatteryNightModeManager().getApplyableNightMode();
-              }
-              throw new IllegalStateException("Unknown value set for night mode. Please use one of the MODE_NIGHT values from AppCompatDelegate.");
+            if (paramInt == 3) {
+              return getAutoBatteryNightModeManager(paramContext).getApplyableNightMode();
             }
+            throw new IllegalStateException("Unknown value set for night mode. Please use one of the MODE_NIGHT values from AppCompatDelegate.");
           }
         }
         else
         {
-          if ((Build.VERSION.SDK_INT >= 23) && (((UiModeManager)this.mContext.getSystemService(UiModeManager.class)).getNightMode() == 0)) {
+          if ((Build.VERSION.SDK_INT >= 23) && (((UiModeManager)paramContext.getApplicationContext().getSystemService(UiModeManager.class)).getNightMode() == 0)) {
             return -1;
           }
-          i = getAutoTimeNightModeManager().getApplyableNightMode();
+          return getAutoTimeNightModeManager(paramContext).getApplyableNightMode();
         }
       }
-      return i;
+      return paramInt;
     }
     return -1;
   }
@@ -1686,6 +1826,7 @@ class AppCompatDelegateImpl
         paramBundle.setDefaultDisplayHomeAsUpEnabled(true);
       }
     }
+    addActiveDelegate(this);
     this.mCreated = true;
   }
   
@@ -1701,15 +1842,28 @@ class AppCompatDelegateImpl
   
   public void onDestroy()
   {
-    markStopped(this);
+    if ((this.mHost instanceof Activity)) {
+      removeActivityDelegate(this);
+    }
     if (this.mInvalidatePanelMenuPosted) {
       this.mWindow.getDecorView().removeCallbacks(this.mInvalidatePanelMenuRunnable);
     }
     this.mStarted = false;
     this.mIsDestroyed = true;
-    ActionBar localActionBar = this.mActionBar;
-    if (localActionBar != null) {
-      localActionBar.onDestroy();
+    if (this.mLocalNightMode != -100)
+    {
+      localObject = this.mHost;
+      if (((localObject instanceof Activity)) && (((Activity)localObject).isChangingConfigurations()))
+      {
+        sLocalNightModes.put(this.mHost.getClass().getName(), Integer.valueOf(this.mLocalNightMode));
+        break label121;
+      }
+    }
+    sLocalNightModes.remove(this.mHost.getClass().getName());
+    label121:
+    Object localObject = this.mActionBar;
+    if (localObject != null) {
+      ((ActionBar)localObject).onDestroy();
     }
     cleanupAutoManagers();
   }
@@ -1783,7 +1937,7 @@ class AppCompatDelegateImpl
     return onBackPressed();
   }
   
-  public boolean onMenuItemSelected(MenuBuilder paramMenuBuilder, MenuItem paramMenuItem)
+  public boolean onMenuItemSelected(@NonNull MenuBuilder paramMenuBuilder, @NonNull MenuItem paramMenuItem)
   {
     Window.Callback localCallback = getWindowCallback();
     if ((localCallback != null) && (!this.mIsDestroyed))
@@ -1796,9 +1950,9 @@ class AppCompatDelegateImpl
     return false;
   }
   
-  public void onMenuModeChange(MenuBuilder paramMenuBuilder)
+  public void onMenuModeChange(@NonNull MenuBuilder paramMenuBuilder)
   {
-    reopenMenu(paramMenuBuilder, true);
+    reopenMenu(true);
   }
   
   void onMenuOpened(int paramInt)
@@ -1844,30 +1998,20 @@ class AppCompatDelegateImpl
     }
   }
   
-  public void onSaveInstanceState(Bundle paramBundle)
-  {
-    if (this.mLocalNightMode != -100) {
-      sLocalNightModes.put(this.mHost.getClass(), Integer.valueOf(this.mLocalNightMode));
-    }
-  }
+  public void onSaveInstanceState(Bundle paramBundle) {}
   
   public void onStart()
   {
     this.mStarted = true;
     applyDayNight();
-    markStarted(this);
   }
   
   public void onStop()
   {
     this.mStarted = false;
-    markStopped(this);
     ActionBar localActionBar = getSupportActionBar();
     if (localActionBar != null) {
       localActionBar.setShowHideAnimationEnabled(false);
-    }
-    if ((this.mHost instanceof Dialog)) {
-      cleanupAutoManagers();
     }
   }
   
@@ -1957,12 +2101,15 @@ class AppCompatDelegateImpl
     this.mHandleNativeActionModes = paramBoolean;
   }
   
+  @RequiresApi(17)
   public void setLocalNightMode(int paramInt)
   {
     if (this.mLocalNightMode != paramInt)
     {
       this.mLocalNightMode = paramInt;
-      applyDayNight();
+      if (this.mBaseContextAttached) {
+        applyDayNight();
+      }
     }
   }
   
@@ -2102,7 +2249,7 @@ class AppCompatDelegateImpl
         {
           localObject2 = new TypedValue();
           paramCallback = this.mContext.getTheme();
-          paramCallback.resolveAttribute(2131034126, (TypedValue)localObject2, true);
+          paramCallback.resolveAttribute(R.attr.actionBarTheme, (TypedValue)localObject2, true);
           if (((TypedValue)localObject2).resourceId != 0)
           {
             localTheme = this.mContext.getResources().newTheme();
@@ -2116,11 +2263,11 @@ class AppCompatDelegateImpl
             paramCallback = this.mContext;
           }
           this.mActionModeView = new ActionBarContextView(paramCallback);
-          this.mActionModePopup = new PopupWindow(paramCallback, null, 2131034140);
+          this.mActionModePopup = new PopupWindow(paramCallback, null, R.attr.actionModePopupWindowStyle);
           PopupWindowCompat.setWindowLayoutType(this.mActionModePopup, 2);
           this.mActionModePopup.setContentView(this.mActionModeView);
           this.mActionModePopup.setWidth(-1);
-          paramCallback.getTheme().resolveAttribute(2131034120, (TypedValue)localObject2, true);
+          paramCallback.getTheme().resolveAttribute(R.attr.actionBarSize, (TypedValue)localObject2, true);
           i = TypedValue.complexToDimensionPixelSize(((TypedValue)localObject2).data, paramCallback.getResources().getDisplayMetrics());
           this.mActionModeView.setContentHeight(i);
           this.mActionModePopup.setHeight(-2);
@@ -2128,7 +2275,7 @@ class AppCompatDelegateImpl
         }
         else
         {
-          paramCallback = (ViewStubCompat)this.mSubDecor.findViewById(2131361976);
+          paramCallback = (ViewStubCompat)this.mSubDecor.findViewById(R.id.action_mode_bar_stub);
           if (paramCallback != null)
           {
             paramCallback.setLayoutInflater(LayoutInflater.from(getActionBarThemedContext()));
@@ -2187,19 +2334,27 @@ class AppCompatDelegateImpl
     return this.mActionMode;
   }
   
-  int updateStatusGuard(int paramInt)
+  final int updateStatusGuard(@Nullable WindowInsetsCompat paramWindowInsetsCompat, @Nullable Rect paramRect)
   {
-    Object localObject1 = this.mActionModeView;
-    int i1 = 0;
+    int i2 = 0;
     int i;
-    int k;
-    if ((localObject1 != null) && ((((ActionBarContextView)localObject1).getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
+    if (paramWindowInsetsCompat != null) {
+      i = paramWindowInsetsCompat.getSystemWindowInsetTop();
+    } else if (paramRect != null) {
+      i = paramRect.top;
+    } else {
+      i = 0;
+    }
+    Object localObject = this.mActionModeView;
+    int j;
+    if ((localObject != null) && ((((ActionBarContextView)localObject).getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
     {
-      localObject1 = (ViewGroup.MarginLayoutParams)this.mActionModeView.getLayoutParams();
+      localObject = (ViewGroup.MarginLayoutParams)this.mActionModeView.getLayoutParams();
       boolean bool = this.mActionModeView.isShown();
-      int m = 1;
-      int n;
-      int j;
+      int n = 1;
+      int i1;
+      int k;
+      int m;
       if (bool)
       {
         if (this.mTempRect1 == null)
@@ -2207,98 +2362,124 @@ class AppCompatDelegateImpl
           this.mTempRect1 = new Rect();
           this.mTempRect2 = new Rect();
         }
-        Object localObject2 = this.mTempRect1;
-        Rect localRect = this.mTempRect2;
-        ((Rect)localObject2).set(0, paramInt, 0, 0);
-        ViewUtils.computeFitSystemWindows(this.mSubDecor, (Rect)localObject2, localRect);
-        if (localRect.top == 0) {
-          i = paramInt;
+        Rect localRect1 = this.mTempRect1;
+        Rect localRect2 = this.mTempRect2;
+        if (paramWindowInsetsCompat == null) {
+          localRect1.set(paramRect);
         } else {
-          i = 0;
+          localRect1.set(paramWindowInsetsCompat.getSystemWindowInsetLeft(), paramWindowInsetsCompat.getSystemWindowInsetTop(), paramWindowInsetsCompat.getSystemWindowInsetRight(), paramWindowInsetsCompat.getSystemWindowInsetBottom());
         }
-        if (((ViewGroup.MarginLayoutParams)localObject1).topMargin != i)
+        ViewUtils.computeFitSystemWindows(this.mSubDecor, localRect1, localRect2);
+        i1 = localRect1.top;
+        j = localRect1.left;
+        int i3 = localRect1.right;
+        paramWindowInsetsCompat = ViewCompat.getRootWindowInsets(this.mSubDecor);
+        if (paramWindowInsetsCompat == null) {
+          k = 0;
+        } else {
+          k = paramWindowInsetsCompat.getSystemWindowInsetLeft();
+        }
+        if (paramWindowInsetsCompat == null) {
+          m = 0;
+        } else {
+          m = paramWindowInsetsCompat.getSystemWindowInsetRight();
+        }
+        if ((((ViewGroup.MarginLayoutParams)localObject).topMargin == i1) && (((ViewGroup.MarginLayoutParams)localObject).leftMargin == j) && (((ViewGroup.MarginLayoutParams)localObject).rightMargin == i3))
         {
-          ((ViewGroup.MarginLayoutParams)localObject1).topMargin = paramInt;
-          localObject2 = this.mStatusGuard;
-          if (localObject2 == null)
-          {
-            this.mStatusGuard = new View(this.mContext);
-            this.mStatusGuard.setBackgroundColor(this.mContext.getResources().getColor(2131165206));
-            this.mSubDecor.addView(this.mStatusGuard, -1, new ViewGroup.LayoutParams(-1, paramInt));
-          }
-          else
-          {
-            localObject2 = ((View)localObject2).getLayoutParams();
-            if (((ViewGroup.LayoutParams)localObject2).height != paramInt)
-            {
-              ((ViewGroup.LayoutParams)localObject2).height = paramInt;
-              this.mStatusGuard.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-            }
-          }
-          k = 1;
+          j = 0;
         }
         else
         {
-          k = 0;
+          ((ViewGroup.MarginLayoutParams)localObject).topMargin = i1;
+          ((ViewGroup.MarginLayoutParams)localObject).leftMargin = j;
+          ((ViewGroup.MarginLayoutParams)localObject).rightMargin = i3;
+          j = 1;
+        }
+        if ((i1 > 0) && (this.mStatusGuard == null))
+        {
+          this.mStatusGuard = new View(this.mContext);
+          this.mStatusGuard.setVisibility(8);
+          paramWindowInsetsCompat = new FrameLayout.LayoutParams(-1, ((ViewGroup.MarginLayoutParams)localObject).topMargin, 51);
+          paramWindowInsetsCompat.leftMargin = k;
+          paramWindowInsetsCompat.rightMargin = m;
+          this.mSubDecor.addView(this.mStatusGuard, -1, paramWindowInsetsCompat);
+        }
+        else
+        {
+          paramWindowInsetsCompat = this.mStatusGuard;
+          if (paramWindowInsetsCompat != null)
+          {
+            paramWindowInsetsCompat = (ViewGroup.MarginLayoutParams)paramWindowInsetsCompat.getLayoutParams();
+            if ((paramWindowInsetsCompat.height != ((ViewGroup.MarginLayoutParams)localObject).topMargin) || (paramWindowInsetsCompat.leftMargin != k) || (paramWindowInsetsCompat.rightMargin != m))
+            {
+              paramWindowInsetsCompat.height = ((ViewGroup.MarginLayoutParams)localObject).topMargin;
+              paramWindowInsetsCompat.leftMargin = k;
+              paramWindowInsetsCompat.rightMargin = m;
+              this.mStatusGuard.setLayoutParams(paramWindowInsetsCompat);
+            }
+          }
         }
         if (this.mStatusGuard == null) {
-          m = 0;
+          n = 0;
         }
-        n = k;
-        i = m;
-        j = paramInt;
+        if ((n != 0) && (this.mStatusGuard.getVisibility() != 0)) {
+          updateStatusGuardColor(this.mStatusGuard);
+        }
+        k = i;
+        m = n;
+        i1 = j;
         if (!this.mOverlayActionMode)
         {
-          n = k;
-          i = m;
-          j = paramInt;
-          if (m != 0)
+          k = i;
+          m = n;
+          i1 = j;
+          if (n != 0)
           {
-            j = 0;
-            n = k;
-            i = m;
+            k = 0;
+            m = n;
+            i1 = j;
           }
         }
       }
       else
       {
-        if (((ViewGroup.MarginLayoutParams)localObject1).topMargin != 0)
+        if (((ViewGroup.MarginLayoutParams)localObject).topMargin != 0)
         {
-          ((ViewGroup.MarginLayoutParams)localObject1).topMargin = 0;
-          k = 1;
+          ((ViewGroup.MarginLayoutParams)localObject).topMargin = 0;
+          j = 1;
         }
         else
         {
-          k = 0;
+          j = 0;
         }
-        i = 0;
-        j = paramInt;
-        n = k;
-      }
-      k = i;
-      paramInt = j;
-      if (n != 0)
-      {
-        this.mActionModeView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        m = 0;
+        i1 = j;
         k = i;
-        paramInt = j;
+      }
+      i = k;
+      j = m;
+      if (i1 != 0)
+      {
+        this.mActionModeView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        i = k;
+        j = m;
       }
     }
     else
     {
-      k = 0;
+      j = 0;
     }
-    localObject1 = this.mStatusGuard;
-    if (localObject1 != null)
+    paramWindowInsetsCompat = this.mStatusGuard;
+    if (paramWindowInsetsCompat != null)
     {
-      if (k != 0) {
-        i = i1;
+      if (j != 0) {
+        j = i2;
       } else {
-        i = 8;
+        j = 8;
       }
-      ((View)localObject1).setVisibility(i);
+      paramWindowInsetsCompat.setVisibility(j);
     }
-    return paramInt;
+    return i;
   }
 }
 

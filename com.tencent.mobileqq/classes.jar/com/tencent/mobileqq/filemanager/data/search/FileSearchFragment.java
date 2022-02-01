@@ -18,46 +18,41 @@ import java.util.List;
 public class FileSearchFragment
   extends BaseSearchFragment<ISearchResultModel>
 {
-  protected boolean a;
-  public String b;
-  public List<ISearchResultModel> b;
-  int c = -1;
+  public List<ISearchResultModel> f;
+  public String g;
+  protected boolean h = true;
+  int i = -1;
   
-  public FileSearchFragment()
+  protected BaseMvpAdapter b()
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  protected BaseMvpAdapter a()
-  {
-    return new FileSearchFragment.FileSearchAdapter(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-  }
-  
-  protected ISearchEngine a()
-  {
-    return new FileManagerSearchEngine((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.c);
-  }
-  
-  protected String a()
-  {
-    return GroupSearchModelFileEntity.jdField_b_of_type_JavaLangString;
-  }
-  
-  protected String b()
-  {
-    return HardCodeUtil.a(2131701272);
+    return new FileSearchFragment.FileSearchAdapter(this, this.l, this.n, this.f, this.g, (QQAppInterface)this.p);
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
+  }
+  
+  protected ISearchEngine c()
+  {
+    return new FileManagerSearchEngine((QQAppInterface)this.p, this.i);
+  }
+  
+  protected String d()
+  {
+    return GroupSearchModelFileEntity.b;
+  }
+  
+  protected String e()
+  {
+    return HardCodeUtil.a(2131899282);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramViewGroup = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368087);
-    if (!this.jdField_a_of_type_Boolean) {
+    paramViewGroup = (TextView)this.k.findViewById(2131434940);
+    if (!this.h) {
       paramViewGroup.setVisibility(8);
     } else {
       paramViewGroup.setVisibility(0);
@@ -68,7 +63,7 @@ public class FileSearchFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchFragment
  * JD-Core Version:    0.7.0.1
  */

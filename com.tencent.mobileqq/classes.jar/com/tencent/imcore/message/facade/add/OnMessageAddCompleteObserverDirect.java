@@ -12,7 +12,7 @@ class OnMessageAddCompleteObserverDirect
     MessageRecord localMessageRecord = a(paramList);
     if (localMessageRecord != null)
     {
-      paramQQMessageFacade.d();
+      paramQQMessageFacade.f();
       paramQQMessageFacade.notifyObservers(localMessageRecord);
     }
     paramQQMessageFacade.b(paramList);
@@ -20,7 +20,7 @@ class OnMessageAddCompleteObserverDirect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.add.OnMessageAddCompleteObserverDirect
  * JD-Core Version:    0.7.0.1
  */

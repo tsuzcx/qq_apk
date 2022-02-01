@@ -7,15 +7,15 @@ import mqq.os.MqqHandler;
 class TaskOfflineUtils$TaskAsyncBack
   implements AsyncBack
 {
-  private final int jdField_a_of_type_Int;
-  private final TaskOfflineUtils.OfflineCallBack jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTaskOfflineUtils$OfflineCallBack;
-  private final String jdField_a_of_type_JavaLangString;
+  private final TaskOfflineUtils.OfflineCallBack a;
+  private final String b;
+  private final int c;
   
   public TaskOfflineUtils$TaskAsyncBack(String paramString, int paramInt, TaskOfflineUtils.OfflineCallBack paramOfflineCallBack)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTaskOfflineUtils$OfflineCallBack = paramOfflineCallBack;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString;
+    this.a = paramOfflineCallBack;
+    this.c = paramInt;
   }
   
   public void loaded(String paramString, int paramInt)
@@ -27,7 +27,7 @@ class TaskOfflineUtils$TaskAsyncBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.task.TaskOfflineUtils.TaskAsyncBack
  * JD-Core Version:    0.7.0.1
  */

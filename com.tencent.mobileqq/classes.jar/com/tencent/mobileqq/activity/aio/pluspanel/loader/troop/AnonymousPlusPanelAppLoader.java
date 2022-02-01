@@ -9,17 +9,17 @@ public class AnonymousPlusPanelAppLoader
 {
   protected void b(BaseChatPie paramBaseChatPie)
   {
-    a(paramBaseChatPie.a.a);
-    a(paramBaseChatPie.a.a, 1200000004);
-    if (!StudyModeManager.a()) {
-      a(paramBaseChatPie.a.a, 1200000006);
+    a(paramBaseChatPie.ah.a);
+    a(paramBaseChatPie.ah.a, 1200000004);
+    if (!StudyModeManager.h()) {
+      a(paramBaseChatPie.ah.a, 1200000006);
     }
-    a(paramBaseChatPie.a.a, 1200000005);
+    a(paramBaseChatPie.ah.a, 1200000005);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.troop.AnonymousPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

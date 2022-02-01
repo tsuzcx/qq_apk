@@ -54,7 +54,7 @@ public class TenDocWebPreLoadHelper
       else
       {
         bool1 = bool2;
-        if (TenDocWebViewPool.a().a()) {
+        if (TenDocWebViewPool.a().c()) {
           if (!paramString.contains(a))
           {
             bool1 = bool2;
@@ -78,10 +78,10 @@ public class TenDocWebPreLoadHelper
       a = paramString;
       if (Looper.getMainLooper() == Looper.myLooper())
       {
-        if ((((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsUrlForPreLoad(paramString)) && (!TenDocWebViewPool.a().a(paramString)))
+        if ((((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsUrlForPreLoad(paramString)) && (!TenDocWebViewPool.a().b(paramString)))
         {
           TenDocWebViewPool.a().a(paramString);
-          TenDocWebViewPool.a().a(paramString);
+          TenDocWebViewPool.a().b(paramString);
         }
       }
       else {
@@ -92,7 +92,7 @@ public class TenDocWebPreLoadHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocWebPreLoadHelper
  * JD-Core Version:    0.7.0.1
  */

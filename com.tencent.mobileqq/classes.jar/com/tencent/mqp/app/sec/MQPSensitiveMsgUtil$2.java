@@ -11,13 +11,13 @@ final class MQPSensitiveMsgUtil$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(null, "P_CliOper", "Safe_SensMsg", this.jdField_a_of_type_JavaLangString, "Alert_Dialog", "Cancel", this.jdField_a_of_type_Int, this.b, "", "", "", "");
+    ReportController.b(null, "P_CliOper", "Safe_SensMsg", this.a, "Alert_Dialog", "Cancel", this.b, this.c, "", "", "", "");
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.MQPSensitiveMsgUtil.2
  * JD-Core Version:    0.7.0.1
  */

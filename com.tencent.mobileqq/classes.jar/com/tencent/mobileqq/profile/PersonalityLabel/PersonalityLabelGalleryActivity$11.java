@@ -17,14 +17,14 @@ class PersonalityLabelGalleryActivity$11
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    paramAnimator = a(this.jdField_a_of_type_AndroidAnimationObjectAnimator);
+    paramAnimator = a(this.a);
     if (paramAnimator != null)
     {
       int i;
-      if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {
-        i = 2130845827;
+      if (this.b.i) {
+        i = 2130847297;
       } else {
-        i = 2130845819;
+        i = 2130847289;
       }
       paramAnimator.setImageResource(i);
       paramAnimator.setRotation(0.0F);
@@ -33,14 +33,14 @@ class PersonalityLabelGalleryActivity$11
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = a(this.jdField_a_of_type_AndroidAnimationObjectAnimator);
+    paramAnimator = a(this.a);
     if (paramAnimator != null)
     {
       int i;
-      if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {
-        i = 2130845827;
+      if (this.b.i) {
+        i = 2130847297;
       } else {
-        i = 2130845819;
+        i = 2130847289;
       }
       paramAnimator.setImageResource(i);
       paramAnimator.setRotation(0.0F);
@@ -53,7 +53,7 @@ class PersonalityLabelGalleryActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.AndroidRuntimeException;
 import android.util.Pair;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -155,7 +156,7 @@ public class z0
       if (paramContext == null) {
         break label40;
       }
-      paramContext = paramContext.getDeviceId();
+      paramContext = PhoneInfoMonitor.getDeviceId(paramContext);
       return paramContext;
     }
     catch (SecurityException paramContext)
@@ -206,7 +207,7 @@ public class z0
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.huawei.hms.hatool.z0
  * JD-Core Version:    0.7.0.1
  */

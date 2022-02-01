@@ -11,7 +11,7 @@ class BottomVideoInfoWidget$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    BottomVideoInfoWidget.a(this.a);
+    BottomVideoInfoWidget.e(this.a);
     StoryReportor.a("play_video", "clk_window", 0, 0, new String[0]);
   }
 }

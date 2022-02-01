@@ -11,18 +11,18 @@ class ForwardD55Manager$1$1
   public void run()
   {
     AppInfo localAppInfo = new AppInfo();
-    oidb_0xd55.RspBody localRspBody = ForwardUtils.a(this.jdField_a_of_type_ArrayOfByte);
+    oidb_0xd55.RspBody localRspBody = ForwardUtils.c(this.a);
     if (localRspBody != null) {
-      AppInfo.a(localRspBody, this.jdField_a_of_type_ComTencentMobileqqForwardForwardD55Manager$1.jdField_a_of_type_JavaLangString, localAppInfo);
+      AppInfo.a(localRspBody, this.c.a, localAppInfo);
     }
-    ForwardD55Manager.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardD55Manager$1.jdField_a_of_type_ComTencentMobileqqForwardForwardD55Manager, this.jdField_a_of_type_Int);
-    ForwardD55Manager.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardD55Manager$1.jdField_a_of_type_ComTencentMobileqqForwardForwardD55Manager, localAppInfo);
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardD55Manager$1.jdField_a_of_type_ComTencentMobileqqForwardForwardD55Manager.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardD55Manager$1.jdField_a_of_type_Long, localAppInfo);
+    ForwardD55Manager.a(this.c.c, this.b);
+    ForwardD55Manager.a(this.c.c, localAppInfo);
+    this.c.c.a(this.c.b, localAppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardD55Manager.1.1
  * JD-Core Version:    0.7.0.1
  */

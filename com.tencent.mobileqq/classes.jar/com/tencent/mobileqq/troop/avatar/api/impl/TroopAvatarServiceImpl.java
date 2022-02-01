@@ -26,7 +26,7 @@ public class TroopAvatarServiceImpl
     {
       try
       {
-        return ImageUtil.d();
+        return ImageUtil.g();
       }
       catch (Throwable paramString)
       {
@@ -46,7 +46,7 @@ public class TroopAvatarServiceImpl
       {
         updateGroupIcon(paramString, true);
         if (paramBoolean) {
-          return ImageUtil.d();
+          return ImageUtil.g();
         }
       }
       else
@@ -82,14 +82,14 @@ public class TroopAvatarServiceImpl
   {
     GroupIconHelper localGroupIconHelper = this.mIconHelper;
     if (localGroupIconHelper != null) {
-      localGroupIconHelper.a();
+      localGroupIconHelper.c();
     }
   }
   
   public void updateGroupIcon(String paramString, boolean paramBoolean)
   {
     AppRuntime localAppRuntime = this.app;
-    if (((localAppRuntime instanceof QQAppInterface)) && (((QQAppInterface)localAppRuntime).mAutomator.c()))
+    if (((localAppRuntime instanceof QQAppInterface)) && (((QQAppInterface)localAppRuntime).mAutomator.h()))
     {
       if (paramBoolean)
       {
@@ -102,7 +102,7 @@ public class TroopAvatarServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.avatar.api.impl.TroopAvatarServiceImpl
  * JD-Core Version:    0.7.0.1
  */

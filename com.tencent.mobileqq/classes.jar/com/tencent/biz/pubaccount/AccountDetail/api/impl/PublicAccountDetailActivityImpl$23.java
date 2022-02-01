@@ -35,7 +35,7 @@ class PublicAccountDetailActivityImpl$23
         }
         else
         {
-          this.a.displayToast(2131695217);
+          this.a.displayToast(2131892951);
         }
       }
     }
@@ -96,7 +96,7 @@ class PublicAccountDetailActivityImpl$23
               }
             }
             else {
-              this.a.displayToast(2131695217);
+              this.a.displayToast(2131892951);
             }
           }
           else if (this.a.isFirst) {
@@ -107,7 +107,7 @@ class PublicAccountDetailActivityImpl$23
             }
             else
             {
-              this.a.displayToast(2131695217);
+              this.a.displayToast(2131892951);
             }
           }
         }
@@ -120,13 +120,13 @@ class PublicAccountDetailActivityImpl$23
           }
           else
           {
-            this.a.displayToast(2131695217);
+            this.a.displayToast(2131892951);
           }
         }
       }
       catch (Exception paramBundle)
       {
-        this.a.displayToast(2131695217);
+        this.a.displayToast(2131892951);
         QLog.w("com.tencent.biz.pubaccount.AccountDetail.activity.api.impl.AccountDetailActivity", 4, paramBundle.getMessage(), paramBundle);
       }
     }
@@ -139,7 +139,7 @@ class PublicAccountDetailActivityImpl$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailActivityImpl.23
  * JD-Core Version:    0.7.0.1
  */

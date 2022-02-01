@@ -11,17 +11,17 @@ class WSDramaEpisodePresenter$3
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSDramaEpisodeContract$View.a(paramInt, paramString);
+    this.a.a(paramInt, paramString);
   }
   
   public void a(stDramaFeed paramstDramaFeed)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSDramaEpisodeContract$View.b(paramstDramaFeed);
+    this.a.b(paramstDramaFeed);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.presenter.WSDramaEpisodePresenter.3
  * JD-Core Version:    0.7.0.1
  */

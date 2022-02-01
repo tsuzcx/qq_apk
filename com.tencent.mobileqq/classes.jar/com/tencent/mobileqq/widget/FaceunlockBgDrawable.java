@@ -11,41 +11,41 @@ import android.support.annotation.NonNull;
 public class FaceunlockBgDrawable
   extends IdentifierDrawable
 {
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-  private int d = -872415232;
-  private int e = 0;
-  private int f;
+  private Paint d = new Paint();
+  private int e = -872415232;
+  private int f = 0;
+  private PorterDuffXfermode g = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+  private float h;
+  private int i;
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.h = paramFloat;
   }
   
   public void a(int paramInt)
   {
-    this.f = paramInt;
+    this.i = paramInt;
   }
   
   public void draw(@NonNull Canvas paramCanvas)
   {
     Rect localRect = getBounds();
     paramCanvas.save();
-    int i = localRect.centerX();
-    int j = this.f;
+    int j = localRect.centerX();
+    int k = this.i;
     paramCanvas.clipRect(localRect);
-    paramCanvas.drawColor(this.d);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-    paramCanvas.drawCircle(i, this.jdField_a_of_type_Float, j, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawColor(this.e);
+    this.d.setStyle(Paint.Style.FILL);
+    this.d.setColor(this.f);
+    this.d.setXfermode(this.g);
+    paramCanvas.drawCircle(j, this.h, k, this.d);
     paramCanvas.restore();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FaceunlockBgDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,6 @@ import org.json.JSONObject;
 class KeyEventChannel$1
   implements BasicMessageChannel.Reply<Object>
 {
-  KeyEventChannel$1(KeyEventChannel paramKeyEventChannel, long paramLong) {}
-  
   public void reply(@Nullable Object paramObject)
   {
     if (KeyEventChannel.access$000(this.this$0) == null) {
@@ -41,7 +39,7 @@ class KeyEventChannel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.KeyEventChannel.1
  * JD-Core Version:    0.7.0.1
  */

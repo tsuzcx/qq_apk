@@ -15,11 +15,11 @@ import mqq.app.MobileQQ;
 public class SystemNoticeBeancurdView
   extends BeancurdView
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private BoxShadowLayout jdField_b_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout;
+  private TextView j;
+  private TextView k;
+  private ImageView l;
+  private ImageView m;
+  private BoxShadowLayout n;
   
   public SystemNoticeBeancurdView(Context paramContext, View paramView)
   {
@@ -29,37 +29,37 @@ public class SystemNoticeBeancurdView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379930));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379544));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368056));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368072));
+    this.j = ((TextView)this.a.findViewById(2131448814));
+    this.k = ((TextView)this.a.findViewById(2131448296));
+    this.l = ((ImageView)this.a.findViewById(2131434906));
+    this.m = ((ImageView)this.a.findViewById(2131434922));
   }
   
   protected View a(Context paramContext)
   {
-    return View.inflate(paramContext, 2131560988, null);
+    return View.inflate(paramContext, 2131627329, null);
   }
   
   public View a(MessageForBeancurd paramMessageForBeancurd)
   {
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    a(this.jdField_a_of_type_AndroidWidgetTextView, paramMessageForBeancurd.getDescription());
-    a(this.jdField_b_of_type_AndroidWidgetTextView, paramMessageForBeancurd.getContentList());
+    a(this.j, paramMessageForBeancurd.getDescription());
+    a(this.k, paramMessageForBeancurd.getContentList());
     a((BaseQQAppInterface)localAppRuntime, paramMessageForBeancurd.getUinList());
-    return this.jdField_b_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout;
+    return this.n;
   }
   
   protected void a(AppInterface paramAppInterface, List<String> paramList)
   {
-    a(paramAppInterface, this.jdField_b_of_type_AndroidWidgetImageView, (String)paramList.get(0));
+    a(paramAppInterface, this.m, (String)paramList.get(0));
     if (paramList.size() > 1) {
-      a(paramAppInterface, this.jdField_a_of_type_AndroidWidgetImageView, (String)paramList.get(1));
+      a(paramAppInterface, this.l, (String)paramList.get(1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.beancurd.SystemNoticeBeancurdView
  * JD-Core Version:    0.7.0.1
  */

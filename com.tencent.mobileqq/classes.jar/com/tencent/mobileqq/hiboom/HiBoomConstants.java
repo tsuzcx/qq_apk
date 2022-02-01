@@ -15,26 +15,18 @@ import mqq.app.AppRuntime;
 public class HiBoomConstants
 {
   public static int a = 300;
-  public static HiBoomFont.HiBoomFontDownloader a;
-  public static AtomicBoolean a;
-  public static HiBoomFont.HiBoomFontDownloader b;
-  public static AtomicBoolean b;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader = new HiBoomConstants.1();
-    jdField_b_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader = new HiBoomConstants.2();
-  }
+  public static AtomicBoolean b = new AtomicBoolean(false);
+  public static AtomicBoolean c = new AtomicBoolean(false);
+  public static HiBoomFont.HiBoomFontDownloader d = new HiBoomConstants.1();
+  public static HiBoomFont.HiBoomFontDownloader e = new HiBoomConstants.2();
   
   public static int a(int paramInt)
   {
-    HiBoomFontDrawer localHiBoomFontDrawer = HiBoomFont.a().a(paramInt, 0, jdField_b_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader);
-    if ((localHiBoomFontDrawer.a != 2) && (localHiBoomFontDrawer.a != 1) && (localHiBoomFontDrawer.a != 4) && (localHiBoomFontDrawer.a != 3)) {
-      localHiBoomFontDrawer.a(false);
+    HiBoomFontDrawer localHiBoomFontDrawer = HiBoomFont.a().a(paramInt, 0, e);
+    if ((localHiBoomFontDrawer.b != 2) && (localHiBoomFontDrawer.b != 1) && (localHiBoomFontDrawer.b != 4) && (localHiBoomFontDrawer.b != 3)) {
+      localHiBoomFontDrawer.d(false);
     }
-    return localHiBoomFontDrawer.a;
+    return localHiBoomFontDrawer.b;
   }
   
   public static IHiBoomManager a(AppRuntime paramAppRuntime)
@@ -55,7 +47,7 @@ public class HiBoomConstants
     return Pattern.compile("\\s*|\t|\r|\n").matcher(paramString).replaceAll("");
   }
   
-  public static boolean a(int paramInt)
+  public static boolean b(int paramInt)
   {
     boolean bool2 = true;
     boolean bool1 = bool2;
@@ -79,7 +71,7 @@ public class HiBoomConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomConstants
  * JD-Core Version:    0.7.0.1
  */

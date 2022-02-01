@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/q47" android:layout_width="fill_parent" android:layout_height="22.5dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.5dip" android:layout_marginRight="12.0dip">
+        <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/q48" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="开黑车队" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff7a7a7a" android:id="@id/q44" android:layout_width="86.5dip" android:layout_height="16.5dip" android:layout_marginLeft="6.0dip" android:layout_toRightOf="@id/q48" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/q40" android:layout_width="27.0dip" android:layout_height="27.0dip" android:src="@drawable/jim" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <CheckBox android:textSize="12.0sp" android:textColor="#fff5a300" android:id="@id/q46" android:padding="8.0dip" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:button="@null" android:text="模式/段位/分路" android:drawableRight="@drawable/jj4" android:drawablePadding="5.0dip" android:layout_below="@id/q47" />
+    <android.support.v4.widget.SwipeRefreshLayout android:id="@id/q8j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="17.0dip" android:layout_marginRight="12.0dip" android:layout_below="@id/q46">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/q_2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <RelativeLayout android:id="@id/n92" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="181.0dip" android:layout_below="@id/q46">
+        <ImageView android:id="@id/n94" android:layout_width="176.0dip" android:layout_height="132.0dip" android:src="@drawable/jhx" android:layout_centerHorizontal="true" />
+        <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="14.0sp" android:textColor="#ff000000" android:id="@id/n95" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="目前没有车队哦" android:layout_below="@id/n94" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#99000000" android:id="@id/n93" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="现在创建，立即发车" android:layout_below="@id/n95" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="90.0dip" android:layout_alignParentBottom="true">
+        <com.tencent.mobileqq.widget.QQBlurView android:id="@id/mmw" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/q_3" android:background="@drawable/jj_" android:layout_width="287.0dip" android:layout_height="45.0dip" android:layout_marginBottom="29.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="16.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="我要发车" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <com.tencent.timi.game.teamlist.view.TeamListFilterView android:id="@id/q45" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/q46" />
+</RelativeLayout>

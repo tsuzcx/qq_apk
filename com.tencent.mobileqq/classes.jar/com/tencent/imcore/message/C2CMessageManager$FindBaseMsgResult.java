@@ -4,29 +4,29 @@ import com.tencent.mobileqq.data.MessageRecord;
 
 class C2CMessageManager$FindBaseMsgResult
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public MessageRecord a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  }
+  private boolean a;
+  private long b;
+  private MessageRecord c;
+  private int d;
   
   boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
+  }
+  
+  public MessageRecord b()
+  {
+    return this.c;
+  }
+  
+  public long c()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageManager.FindBaseMsgResult
  * JD-Core Version:    0.7.0.1
  */

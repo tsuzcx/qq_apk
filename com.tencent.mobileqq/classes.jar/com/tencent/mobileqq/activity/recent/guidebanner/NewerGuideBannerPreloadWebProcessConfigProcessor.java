@@ -37,7 +37,7 @@ public final class NewerGuideBannerPreloadWebProcessConfigProcessor
       }
       if ((i ^ 0x1) != 0)
       {
-        paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+        paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
         Intrinsics.checkExpressionValueIsNotNull(paramArrayOfQConfItem, "confFiles[0].content");
         localConfig.a(paramArrayOfQConfItem);
       }
@@ -87,7 +87,7 @@ public final class NewerGuideBannerPreloadWebProcessConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerPreloadWebProcessConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ class IlivePlayerWrapper$5
   public void onSeekComplete(ITPPlayer paramITPPlayer)
   {
     QLog.i("CachePlayer", 1, "CachePlayer onSeekComplete  ");
-    if (IlivePlayerWrapper.a(this.a) != null) {
-      IlivePlayerWrapper.a(this.a).onSeekComplete(paramITPPlayer);
+    if (IlivePlayerWrapper.g(this.a) != null) {
+      IlivePlayerWrapper.g(this.a).onSeekComplete(paramITPPlayer);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.player.IlivePlayerWrapper.5
  * JD-Core Version:    0.7.0.1
  */

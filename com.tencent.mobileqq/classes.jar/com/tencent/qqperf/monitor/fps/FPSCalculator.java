@@ -7,15 +7,15 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class FPSCalculator
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = -1L;
-  private String jdField_a_of_type_JavaLangString = null;
-  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
-  private final CopyOnWriteArrayList<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private final CopyOnWriteArrayList<String> a = new CopyOnWriteArrayList();
+  private StringBuffer b = new StringBuffer();
+  private long c = -1L;
+  private int d = 0;
+  private String e = null;
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 1) {
+    if (this.a.size() < 1) {
       return;
     }
     new FPSCalculator.1(this).execute(new Void[0]);
@@ -23,62 +23,62 @@ public class FPSCalculator
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (this.e != null)
     {
       if (paramInt == 2)
       {
-        this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-        this.jdField_a_of_type_Int = 0;
+        this.c = AnimationUtils.currentAnimationTimeMillis();
+        this.d = 0;
         return;
       }
-      if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Int > 0))
+      if ((this.c > 0L) && (this.d > 0))
       {
-        long l = AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long;
-        if ((l > 1000L) || ((l >= 500L) && ("actFPSRecent".equals(this.jdField_a_of_type_JavaLangString))))
+        long l = AnimationUtils.currentAnimationTimeMillis() - this.c;
+        if ((l > 1000L) || ((l >= 500L) && ("actFPSRecent".equals(this.e))))
         {
-          paramInt = (int)Math.floor(this.jdField_a_of_type_Int * 1000 / ((float)l * 1.0F));
-          this.jdField_a_of_type_JavaLangStringBuffer.setLength(0);
-          StringBuffer localStringBuffer = this.jdField_a_of_type_JavaLangStringBuffer;
+          paramInt = (int)Math.floor(this.d * 1000 / ((float)l * 1.0F));
+          this.b.setLength(0);
+          StringBuffer localStringBuffer = this.b;
           localStringBuffer.append("FPSCalculator ");
-          localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuffer.append(this.e);
           localStringBuffer.append(" frameCount :");
-          localStringBuffer.append(this.jdField_a_of_type_Int);
+          localStringBuffer.append(this.d);
           localStringBuffer.append(",diffTime :");
           localStringBuffer.append(l);
           localStringBuffer.append(" fps:");
           localStringBuffer.append(paramInt);
-          localStringBuffer = this.jdField_a_of_type_JavaLangStringBuffer;
+          localStringBuffer = this.b;
           localStringBuffer.append(",aioBusiness=");
           localStringBuffer.append(BusinessRecoderForPerf.a());
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaLangStringBuffer.toString());
-          if ((paramInt > 0) && (!"".equals(this.jdField_a_of_type_JavaLangString))) {
-            PerformanceReportUtils.a(this.jdField_a_of_type_JavaLangString, paramInt, String.valueOf(BusinessRecoderForPerf.a()));
+          this.a.add(this.b.toString());
+          if ((paramInt > 0) && (!"".equals(this.e))) {
+            PerformanceReportUtils.a(this.e, paramInt, String.valueOf(BusinessRecoderForPerf.a()));
           }
-          if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 100) {
+          if (this.a.size() > 100) {
             a();
           }
         }
       }
-      this.jdField_a_of_type_Long = -1L;
-      this.jdField_a_of_type_Int = 0;
+      this.c = -1L;
+      this.d = 0;
     }
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.e = paramString;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_Int += 1;
+    if (this.e != null) {
+      this.d += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.fps.FPSCalculator
  * JD-Core Version:    0.7.0.1
  */

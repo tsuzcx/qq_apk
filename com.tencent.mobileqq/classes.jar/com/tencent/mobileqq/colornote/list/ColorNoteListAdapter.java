@@ -19,20 +19,20 @@ import java.util.List;
 public class ColorNoteListAdapter
   extends RecyclerView.Adapter<ColorNoteListAdapter.ViewHolder>
 {
-  private ColorNoteListAdapter.OnRecentNoteDeleteListener jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter$OnRecentNoteDeleteListener;
-  private OnListHideListener jdField_a_of_type_ComTencentMobileqqColornoteListOnListHideListener;
-  private List<ColorNote> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private List<IColorNoteListListener> b;
+  private List<ColorNote> a;
+  private boolean b;
+  private OnListHideListener c;
+  private ColorNoteListAdapter.OnRecentNoteDeleteListener d;
+  private List<IColorNoteListListener> e;
   
   public ColorNoteListAdapter(List<IColorNoteListListener> paramList)
   {
-    this.b = paramList;
+    this.e = paramList;
   }
   
   private void a(View paramView, ColorNote paramColorNote)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext()) {
       ((IColorNoteListListener)localIterator.next()).a(paramView, paramColorNote);
     }
@@ -40,7 +40,7 @@ public class ColorNoteListAdapter
   
   private void b(View paramView, ColorNote paramColorNote)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext()) {
       ((IColorNoteListListener)localIterator.next()).b(paramView, paramColorNote);
     }
@@ -48,36 +48,36 @@ public class ColorNoteListAdapter
   
   public ColorNoteListAdapter.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new ColorNoteListAdapter.ViewHolder(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558883, paramViewGroup, false));
+    return new ColorNoteListAdapter.ViewHolder(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624505, paramViewGroup, false));
   }
   
   public void a(ColorNoteListAdapter.OnRecentNoteDeleteListener paramOnRecentNoteDeleteListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter$OnRecentNoteDeleteListener = paramOnRecentNoteDeleteListener;
+    this.d = paramOnRecentNoteDeleteListener;
   }
   
   public void a(ColorNoteListAdapter.ViewHolder paramViewHolder, int paramInt)
   {
-    ColorNote localColorNote = (ColorNote)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    ColorNoteControllerImpl.getItemBuilder(localColorNote).a(paramViewHolder, paramInt, this.jdField_a_of_type_Boolean);
-    if (ColorNoteUtils.d(localColorNote))
+    ColorNote localColorNote = (ColorNote)this.a.get(paramInt);
+    ColorNoteControllerImpl.getItemBuilder(localColorNote).a(paramViewHolder, paramInt, this.b);
+    if (ColorNoteUtils.i(localColorNote))
     {
-      UpComingMsgModel localUpComingMsgModel = ColorNoteSmallScreenUtil.a(localColorNote);
-      int j = DisplayUtil.a(paramViewHolder.a.getContext(), 200.0F);
+      UpComingMsgModel localUpComingMsgModel = ColorNoteSmallScreenUtil.b(localColorNote);
+      int j = DisplayUtil.a(paramViewHolder.e.getContext(), 200.0F);
       int i;
-      if (ColorNoteUtils.c(localColorNote)) {
-        i = DisplayUtil.a(paramViewHolder.a.getContext(), 27.0F);
+      if (ColorNoteUtils.h(localColorNote)) {
+        i = DisplayUtil.a(paramViewHolder.e.getContext(), 27.0F);
       } else {
         i = 0;
       }
       if (localUpComingMsgModel.uniseq.size() > 1)
       {
-        paramViewHolder.a.setMaxWidth(j);
-        ColorNoteSmallScreenUtil.a(paramViewHolder.a, localColorNote.getMainTitle(), j, TextUtils.TruncateAt.MIDDLE, "的", i);
+        paramViewHolder.e.setMaxWidth(j);
+        ColorNoteSmallScreenUtil.a(paramViewHolder.e, localColorNote.getMainTitle(), j, TextUtils.TruncateAt.MIDDLE, "的", i);
       }
       else
       {
-        ColorNoteSmallScreenUtil.a(paramViewHolder.a, localColorNote.getMainTitle(), j, TextUtils.TruncateAt.END, null, i);
+        ColorNoteSmallScreenUtil.a(paramViewHolder.e, localColorNote.getMainTitle(), j, TextUtils.TruncateAt.END, null, i);
       }
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
@@ -85,22 +85,22 @@ public class ColorNoteListAdapter
   
   public void a(OnListHideListener paramOnListHideListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListOnListHideListener = paramOnListHideListener;
+    this.c = paramOnListHideListener;
   }
   
   void a(List<ColorNote> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList == null) {
       return 0;
     }
@@ -109,7 +109,7 @@ public class ColorNoteListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.ColorNoteListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,17 @@ import android.text.TextUtils;
 
 public class LastDownloadAction
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
+  String a;
   String b;
+  int c;
+  long d;
   
   public LastDownloadAction(String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.c = paramInt;
+    this.d = System.currentTimeMillis();
   }
   
   public boolean a(String paramString1, String paramString2, int paramInt)
@@ -23,23 +23,23 @@ public class LastDownloadAction
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (!bool3) {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      if (TextUtils.isEmpty(this.a))
       {
         bool1 = bool2;
       }
       else
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_Int == paramInt)
+        if (this.c == paramInt)
         {
           bool1 = bool2;
-          if (this.jdField_a_of_type_JavaLangString.equals(paramString1))
+          if (this.a.equals(paramString1))
           {
             bool1 = bool2;
             if (this.b.equals(paramString2))
             {
               bool1 = bool2;
-              if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {
+              if (System.currentTimeMillis() - this.d < 1000L) {
                 bool1 = true;
               }
             }
@@ -49,17 +49,17 @@ public class LastDownloadAction
     }
     if (!bool1)
     {
-      this.jdField_a_of_type_JavaLangString = paramString1;
+      this.a = paramString1;
       this.b = paramString2;
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.c = paramInt;
+      this.d = System.currentTimeMillis();
     }
     return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.LastDownloadAction
  * JD-Core Version:    0.7.0.1
  */

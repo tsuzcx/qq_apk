@@ -13,29 +13,29 @@ public class SwiftFileChooseHandler
   
   public void a(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper == null) {
-      this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper = new FileChooserHelper();
+    if (this.a == null) {
+      this.a = new FileChooserHelper();
     }
-    this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a(), 0, paramValueCallback, paramString1, paramString2);
+    this.a.a(this.b.b(), 0, paramValueCallback, paramString1, paramString2);
   }
   
   public boolean a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    FileChooserHelper localFileChooserHelper = this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper;
+    FileChooserHelper localFileChooserHelper = this.a;
     return (localFileChooserHelper != null) && (localFileChooserHelper.a(paramInt1, paramInt2, paramIntent));
   }
   
   public boolean a(ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    if (this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper == null) {
-      this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper = new FileChooserHelper();
+    if (this.a == null) {
+      this.a = new FileChooserHelper();
     }
-    return this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a(), 0, paramValueCallback, paramFileChooserParams);
+    return this.a.a(this.b.b(), 0, paramValueCallback, paramFileChooserParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftFileChooseHandler
  * JD-Core Version:    0.7.0.1
  */

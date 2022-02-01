@@ -15,18 +15,18 @@ class DiscussionInfoCardActivity$11$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity$11.a).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity$11.a.app.getProxyManager().a();
-    paramDialogInterface.a(paramDialogInterface.a(this.jdField_a_of_type_JavaLangString, 3000));
+    DiscussionInfoCardActivity.d(this.b.a).g(this.a);
+    paramDialogInterface = this.b.a.app.getProxyManager().g();
+    paramDialogInterface.a(paramDialogInterface.b(this.a, 3000));
     paramDialogInterface = new Intent();
     paramDialogInterface.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity$11.a.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity$11.a.finish();
+    this.b.a.setResult(-1, paramDialogInterface);
+    this.b.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.11.2
  * JD-Core Version:    0.7.0.1
  */

@@ -17,31 +17,31 @@ import java.util.ArrayList;
 public class DebugFilterSendMessageCallback
   implements ISendMessageCallback
 {
-  public void a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam) {}
+  public void afterMessageSend(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam) {}
   
-  public boolean a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
+  public boolean beforeMessageSend(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
   {
-    paramSendLogicParam = paramAIOContext.a();
-    EditTextUI localEditTextUI = paramAIOContext.a().a().a();
-    FunBtnUI localFunBtnUI = paramAIOContext.a().a().a();
-    if (paramSendLogicParam.l)
+    paramSendLogicParam = paramAIOContext.O();
+    EditTextUI localEditTextUI = paramAIOContext.p().d().f();
+    FunBtnUI localFunBtnUI = paramAIOContext.p().d().d();
+    if (paramSendLogicParam.z)
     {
       BaseChatpieHelper.a(paramSendLogicParam, localEditTextUI, localFunBtnUI, true);
-      paramAIOContext.a().a().b(131075);
-      paramAIOContext.a().a().a(paramAIOContext.a().a().b());
+      paramAIOContext.e().f().b(131075);
+      paramAIOContext.e().f().a(paramAIOContext.e().f().d());
       return true;
     }
     return false;
   }
   
-  public boolean a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam, ArrayList<AtTroopMemberInfo> paramArrayList)
+  public boolean onMessageSending(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam, ArrayList<AtTroopMemberInfo> paramArrayList)
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.send.DebugFilterSendMessageCallback
  * JD-Core Version:    0.7.0.1
  */

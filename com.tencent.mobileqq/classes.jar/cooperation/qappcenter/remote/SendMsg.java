@@ -12,33 +12,31 @@ public class SendMsg
   implements Parcelable
 {
   public static final Parcelable.Creator<SendMsg> CREATOR = new SendMsg.1();
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = -1L;
-  public final Bundle a;
-  public IActionListener a;
   public String a;
-  long b = -1L;
+  public final Bundle b = new Bundle();
+  long c = -1L;
+  long d = -1L;
+  int e;
+  public IActionListener f;
   
   public SendMsg(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
     a(paramParcel);
   }
   
   public SendMsg(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   private void a(Parcel paramParcel)
   {
     try
     {
-      this.jdField_a_of_type_Int = paramParcel.readInt();
-      this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_a_of_type_Long = paramParcel.readLong();
-      this.jdField_a_of_type_AndroidOsBundle.clear();
+      this.e = paramParcel.readInt();
+      this.a = paramParcel.readString();
+      this.c = paramParcel.readLong();
+      this.b.clear();
       Bundle localBundle = paramParcel.readBundle(getClass().getClassLoader());
       try
       {
@@ -48,8 +46,8 @@ public class SendMsg
       {
         localException.printStackTrace();
       }
-      this.jdField_a_of_type_AndroidOsBundle.putAll(localBundle);
-      this.jdField_a_of_type_CooperationQappcenterRemoteIActionListener = IActionListener.Stub.a(paramParcel.readStrongBinder());
+      this.b.putAll(localBundle);
+      this.f = IActionListener.Stub.a(paramParcel.readStrongBinder());
       return;
     }
     catch (RuntimeException paramParcel)
@@ -59,19 +57,19 @@ public class SendMsg
     }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public IActionListener a()
-  {
-    return this.jdField_a_of_type_CooperationQappcenterRemoteIActionListener;
-  }
-  
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
+  }
+  
+  public IActionListener b()
+  {
+    return this.f;
+  }
+  
+  public int c()
+  {
+    return this.e;
   }
   
   public int describeContents()
@@ -83,11 +81,11 @@ public class SendMsg
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("SendMsg appSeq:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" serviceCmd:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" timeout:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
   
@@ -95,11 +93,11 @@ public class SendMsg
   {
     try
     {
-      paramParcel.writeInt(this.jdField_a_of_type_Int);
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-      paramParcel.writeLong(this.jdField_a_of_type_Long);
-      paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
-      paramParcel.writeStrongInterface(this.jdField_a_of_type_CooperationQappcenterRemoteIActionListener);
+      paramParcel.writeInt(this.e);
+      paramParcel.writeString(this.a);
+      paramParcel.writeLong(this.c);
+      paramParcel.writeBundle(this.b);
+      paramParcel.writeStrongInterface(this.f);
       return;
     }
     catch (RuntimeException paramParcel)
@@ -111,7 +109,7 @@ public class SendMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qappcenter.remote.SendMsg
  * JD-Core Version:    0.7.0.1
  */

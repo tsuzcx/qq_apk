@@ -6,16 +6,15 @@ import com.tencent.qphone.base.util.QLog;
 public class ScribbleDownloadInfo
   implements Comparable<ScribbleDownloadInfo>
 {
-  public int a;
   public MessageForScribble a;
+  public int b = 200;
   
   public ScribbleDownloadInfo(MessageForScribble paramMessageForScribble, int paramInt)
   {
-    this.jdField_a_of_type_Int = 200;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = paramMessageForScribble;
+    this.a = paramMessageForScribble;
     if (paramInt >= 200)
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.b = paramInt;
       return;
     }
     QLog.e("ScribbleDownloadInfo", 1, "err priority");
@@ -23,8 +22,8 @@ public class ScribbleDownloadInfo
   
   public int a(ScribbleDownloadInfo paramScribbleDownloadInfo)
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = paramScribbleDownloadInfo.jdField_a_of_type_Int;
+    int i = this.b;
+    int j = paramScribbleDownloadInfo.b;
     if (i < j) {
       return -1;
     }
@@ -36,7 +35,7 @@ public class ScribbleDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

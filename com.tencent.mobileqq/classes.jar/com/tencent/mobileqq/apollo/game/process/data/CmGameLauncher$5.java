@@ -16,24 +16,27 @@ class CmGameLauncher$5
     ((StringBuilder)localObject).append("[onSoLoadComplete], ret:");
     ((StringBuilder)localObject).append(paramInt);
     QLog.i("cmgame_process.CmGameLauncher", 1, ((StringBuilder)localObject).toString());
-    ApolloSoLoaderImpl.removeLoadCallback(CmGameLauncher.a(this.a));
-    localObject = this.a.a();
+    ApolloSoLoaderImpl.removeLoadCallback(CmGameLauncher.f(this.a));
+    localObject = this.a.f();
+    if (localObject == null) {
+      return;
+    }
     if (paramInt == 0)
     {
-      if ((localObject != null) && (!CmGameLauncher.c(this.a)))
+      if (!CmGameLauncher.g(this.a))
       {
         CmGameLauncher.a(this.a, true);
-        CmGameLauncher.c(this.a);
+        CmGameLauncher.h(this.a);
       }
     }
-    else if (localObject != null) {
+    else {
       ((Activity)localObject).finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.data.CmGameLauncher.5
  * JD-Core Version:    0.7.0.1
  */

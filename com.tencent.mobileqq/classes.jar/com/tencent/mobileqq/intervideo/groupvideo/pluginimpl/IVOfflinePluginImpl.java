@@ -53,7 +53,7 @@ public class IVOfflinePluginImpl
       if (localObject1 != null)
       {
         this.isCheckModel = true;
-        localObject1 = ((AuthorizeConfig)localObject1).a("ex_offline", "");
+        localObject1 = ((AuthorizeConfig)localObject1).c("ex_offline", "");
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
           localObject1 = ((String)localObject1).split(",");
@@ -140,7 +140,7 @@ public class IVOfflinePluginImpl
       }
       if (TextUtils.isEmpty(this.mBusinessId))
       {
-        this.mBusinessId = this.mAuthConfig.a(paramString);
+        this.mBusinessId = this.mAuthConfig.b(paramString);
         if (this.mBid == null) {
           this.mBid = this.mBusinessId;
         }
@@ -193,7 +193,7 @@ public class IVOfflinePluginImpl
     }
     Object localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = this.mAuthConfig.b(paramString);
+      localObject2 = this.mAuthConfig.c(paramString);
     }
     if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals("1")))
     {
@@ -335,7 +335,7 @@ public class IVOfflinePluginImpl
         if (i == 0)
         {
           j = k;
-          if (!HtmlOffline.c((String)localObject))
+          if (!HtmlOffline.h((String)localObject))
           {
             if (QLog.isColorLevel()) {
               QLog.d(this.TAG, 2, "verifySign fail to reload");
@@ -344,7 +344,7 @@ public class IVOfflinePluginImpl
           }
         }
       }
-      if (((this.mOfflineLoadMode == 3) || (j != 0)) && (!HtmlOffline.a((String)localObject, paramString)))
+      if (((this.mOfflineLoadMode == 3) || (j != 0)) && (!HtmlOffline.c((String)localObject, paramString)))
       {
         reloadCurrentUrl();
         if (QLog.isColorLevel()) {
@@ -352,7 +352,7 @@ public class IVOfflinePluginImpl
         }
         return null;
       }
-      paramString = HtmlOffline.a((String)localObject, paramString);
+      paramString = HtmlOffline.b((String)localObject, paramString);
       if (paramString == null)
       {
         if (QLog.isColorLevel()) {
@@ -363,14 +363,14 @@ public class IVOfflinePluginImpl
       if (QLog.isColorLevel()) {
         QLog.d(this.TAG, 2, "shouldInterceptRequest , return local value");
       }
-      return new WebResourceResponse(paramString.jdField_a_of_type_JavaLangString, "utf-8", paramString.jdField_a_of_type_JavaIoInputStream);
+      return new WebResourceResponse(paramString.a, "utf-8", paramString.b);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVOfflinePluginImpl
  * JD-Core Version:    0.7.0.1
  */

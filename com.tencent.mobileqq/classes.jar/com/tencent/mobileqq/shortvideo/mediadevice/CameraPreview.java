@@ -12,20 +12,20 @@ public class CameraPreview
   implements SurfaceHolder.Callback
 {
   SurfaceHolder a;
-  public SurfacePreviewContext a;
+  public SurfacePreviewContext b;
   
   public CameraPreview(Context paramContext)
   {
     super(paramContext);
     super.getResources().getDisplayMetrics();
-    this.jdField_a_of_type_AndroidViewSurfaceHolder = getHolder();
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.addCallback(this);
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.setType(3);
+    this.a = getHolder();
+    this.a.addCallback(this);
+    this.a.setType(3);
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceSurfacePreviewContext.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
+    this.b.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
     if (QLog.isColorLevel()) {
       QLog.d("CameraPreview", 2, "[@] surfaceChanged end");
     }
@@ -33,17 +33,17 @@ public class CameraPreview
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceSurfacePreviewContext.surfaceCreated(paramSurfaceHolder);
+    this.b.surfaceCreated(paramSurfaceHolder);
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceSurfacePreviewContext.surfaceDestroyed(paramSurfaceHolder);
+    this.b.surfaceDestroyed(paramSurfaceHolder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraPreview
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,12 @@ class StoryPlayerCommentDialog$2$1
   public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
     if (paramBoolean) {
-      QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131714342), 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 2, HardCodeUtil.a(2131911856), 0).show();
     } else {
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131714343), 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131911857), 0).show();
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryPlayerCommentDialog$2.a.a != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryPlayerCommentDialog$2.a.a.a(paramBoolean, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    if (this.b.a.b != null) {
+      this.b.a.b.a(paramBoolean, this.a);
     }
   }
 }

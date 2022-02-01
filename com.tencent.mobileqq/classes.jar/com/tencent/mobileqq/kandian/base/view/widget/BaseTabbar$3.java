@@ -6,30 +6,30 @@ import android.view.View.OnClickListener;
 class BaseTabbar$3
   implements View.OnClickListener
 {
-  long jdField_a_of_type_Long = 0L;
+  long a = 0L;
   
   BaseTabbar$3(BaseTabbar paramBaseTabbar, int paramInt) {}
   
   public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 300L)
+    if (l - this.a < 300L)
     {
-      this.jdField_a_of_type_Long = 0L;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBaseTabbar.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBaseTabbar.a.a(this.jdField_a_of_type_Int);
+      this.a = 0L;
+      if (this.c.a != null) {
+        this.c.a.a(this.b);
       }
     }
     else
     {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
+      this.a = l;
+      this.c.setSelectedTab(this.b, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.BaseTabbar.3
  * JD-Core Version:    0.7.0.1
  */

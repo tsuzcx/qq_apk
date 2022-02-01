@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.soload.config;
 
 import android.text.TextUtils;
+import com.tencent.hippy.qq.api.IHippyLibrary;
 import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.soload.biz.entity.SoInfo;
 import com.tencent.mobileqq.soload.biz.entity.SoLoadConfBean;
 import com.tencent.mobileqq.soload.entity.SoConfig;
@@ -10,57 +12,54 @@ import com.tencent.mobileqq.soload.entity.SoCrashInfo;
 import com.tencent.mobileqq.soload.util.SoDataUtil;
 import com.tencent.mobileqq.soload.util.SoLoadUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class SoConfigManager
 {
-  private static volatile SoConfigManager jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfigManager;
-  SoConfig jdField_a_of_type_ComTencentMobileqqSoloadEntitySoConfig;
+  private static volatile SoConfigManager b;
+  SoConfig a;
   
   private SoConfigManager()
   {
     if (QLog.isColorLevel()) {
       QLog.d("SoLoadWidget.SoConfigManager", 2, "SoConfigManager init");
     }
-    QLog.i("SoLoadWidget.SoConfigManager", 2, "---isQQProcess1---");
     if (SoLoadUtils.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqSoloadEntitySoConfig = SoConfig.readConfig();
+      this.a = SoConfig.readConfig();
     }
   }
   
   private SoInfo a(String paramString)
   {
-    SoConfig localSoConfig = this.jdField_a_of_type_ComTencentMobileqqSoloadEntitySoConfig;
+    SoConfig localSoConfig = this.a;
     if ((localSoConfig != null) && (localSoConfig.mSoInfos != null)) {
-      return (SoInfo)this.jdField_a_of_type_ComTencentMobileqqSoloadEntitySoConfig.mSoInfos.get(paramString);
+      return (SoInfo)this.a.mSoInfos.get(paramString);
     }
     return null;
   }
   
   public static SoConfigManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfigManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfigManager == null) {
-          jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfigManager = new SoConfigManager();
+        if (b == null) {
+          b = new SoConfigManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfigManager;
+    return b;
   }
   
   public static boolean a(SoCrashInfo paramSoCrashInfo)
   {
     if (paramSoCrashInfo != null)
     {
-      if (paramSoCrashInfo.d()) {
+      if (paramSoCrashInfo.e()) {
         return Math.abs(NetConnInfoCenter.getServerTimeMillis() - SoDataUtil.a()) < 600000L;
       }
-      if (paramSoCrashInfo.a()) {
+      if (paramSoCrashInfo.b()) {
         return Math.abs(NetConnInfoCenter.getServerTimeMillis() - SoDataUtil.a()) < 1800000L;
       }
     }
@@ -77,15 +76,15 @@ public class SoConfigManager
       localStringBuilder.append(",isSync=");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(", SoConfig=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqSoloadEntitySoConfig);
+      localStringBuilder.append(this.a);
       QLog.i("SoLoadWidget.SoConfigManager", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqSoloadEntitySoConfig.isValid(paramString))
+    if (!this.a.isValid(paramString))
     {
       if (paramBoolean) {
         return null;
       }
-      ((SoLoaderConfProcessor)QConfigManager.a().a(526)).a(new SoConfigManager.1(this, paramOnGetSoInfoListener, paramString));
+      ((SoLoaderConfProcessor)QConfigManager.b().a(526)).a(new SoConfigManager.1(this, paramOnGetSoInfoListener, paramString));
       return null;
     }
     if (paramBoolean) {
@@ -97,24 +96,10 @@ public class SoConfigManager
     return null;
   }
   
-  @Deprecated
-  public Map<String, SoInfo> a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSoloadEntitySoConfig.mSoInfos;
-  }
-  
-  public Set<String> a()
-  {
-    SoConfig localSoConfig = this.jdField_a_of_type_ComTencentMobileqqSoloadEntitySoConfig;
-    if (localSoConfig != null) {
-      return localSoConfig.mSoInfos.keySet();
-    }
-    return new HashSet();
-  }
-  
   public void a(SoLoadConfBean paramSoLoadConfBean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSoloadEntitySoConfig.update(paramSoLoadConfBean);
+    this.a.update(paramSoLoadConfBean);
+    ((IHippyLibrary)QRoute.api(IHippyLibrary.class)).downloadWhenSoInfoUpdated();
   }
   
   public void a(String paramString, SoCrashInfo paramSoCrashInfo, SoConfigManager.OnGetSoInfoListener paramOnGetSoInfoListener)
@@ -134,7 +119,7 @@ public class SoConfigManager
         paramSoCrashInfo.append(paramString);
         QLog.i("SoLoadWidget.SoConfigManager", 2, paramSoCrashInfo.toString());
       }
-      ((SoLoaderConfProcessor)QConfigManager.a().a(526)).a(new SoConfigManager.2(this, paramOnGetSoInfoListener, paramString), false);
+      ((SoLoaderConfProcessor)QConfigManager.b().a(526)).a(new SoConfigManager.2(this, paramOnGetSoInfoListener, paramString), false);
     }
   }
   
@@ -143,14 +128,20 @@ public class SoConfigManager
     SoInfo localSoInfo = a(paramString1);
     if ((localSoInfo != null) && (TextUtils.equals(localSoInfo.ver, paramString2)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqSoloadEntitySoConfig.mSoInfos.remove(paramString1);
-      this.jdField_a_of_type_ComTencentMobileqqSoloadEntitySoConfig.saveConfig(true);
+      this.a.mSoInfos.remove(paramString1);
+      this.a.saveConfig(true);
     }
+  }
+  
+  @Deprecated
+  public Map<String, SoInfo> b()
+  {
+    return this.a.mSoInfos;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.config.SoConfigManager
  * JD-Core Version:    0.7.0.1
  */

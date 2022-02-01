@@ -13,12 +13,14 @@ final class PublishArticlePage$initTitleBar$2
   
   public final void onClick(View paramView)
   {
-    PublishArticlePage.a(this.a, (Function1)new PublishArticlePage.initTitleBar.2.1(this));
+    if (PublishArticlePage.j(this.a)) {
+      PublishArticlePage.a(this.a, (Function1)new PublishArticlePage.initTitleBar.2.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.initTitleBar.2
  * JD-Core Version:    0.7.0.1
  */

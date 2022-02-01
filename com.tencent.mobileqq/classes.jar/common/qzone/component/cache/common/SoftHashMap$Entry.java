@@ -8,16 +8,16 @@ class SoftHashMap$Entry<K, V>
   extends SoftReference<K>
   implements Map.Entry<K, V>
 {
-  private final int jdField_a_of_type_Int;
-  private Entry<K, V> jdField_a_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry;
-  private V jdField_a_of_type_JavaLangObject;
+  private V a;
+  private final int b;
+  private Entry<K, V> c;
   
   SoftHashMap$Entry(K paramK, V paramV, ReferenceQueue<K> paramReferenceQueue, int paramInt, Entry<K, V> paramEntry)
   {
     super(paramK, paramReferenceQueue);
-    this.jdField_a_of_type_JavaLangObject = paramV;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry = paramEntry;
+    this.a = paramV;
+    this.b = paramInt;
+    this.c = paramEntry;
   }
   
   public boolean equals(Object paramObject)
@@ -43,7 +43,7 @@ class SoftHashMap$Entry<K, V>
   
   public V getValue()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.a;
   }
   
   public int hashCode()
@@ -65,8 +65,8 @@ class SoftHashMap$Entry<K, V>
   
   public V setValue(V paramV)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
-    this.jdField_a_of_type_JavaLangObject = paramV;
+    Object localObject = this.a;
+    this.a = paramV;
     return localObject;
   }
   
@@ -81,7 +81,7 @@ class SoftHashMap$Entry<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     common.qzone.component.cache.common.SoftHashMap.Entry
  * JD-Core Version:    0.7.0.1
  */

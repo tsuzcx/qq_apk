@@ -12,26 +12,26 @@ import java.util.PriorityQueue;
 
 final class ColorCutQuantizer
 {
-  private static final Comparator<ColorCutQuantizer.Vbox> jdField_a_of_type_JavaUtilComparator = new ColorCutQuantizer.1();
-  @Nullable
-  final TimingLogger jdField_a_of_type_AndroidUtilTimingLogger = null;
-  final List<Palette.Swatch> jdField_a_of_type_JavaUtilList;
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[3];
-  final int[] jdField_a_of_type_ArrayOfInt;
-  @Nullable
-  final Palette.Filter[] jdField_a_of_type_ArrayOfComTencentMobileqqUtilsPalettePalette$Filter;
+  private static final Comparator<ColorCutQuantizer.Vbox> g = new ColorCutQuantizer.1();
+  final int[] a;
   final int[] b;
+  final List<Palette.Swatch> c;
+  @Nullable
+  final TimingLogger d = null;
+  @Nullable
+  final Palette.Filter[] e;
+  private final float[] f = new float[3];
   
   ColorCutQuantizer(int[] paramArrayOfInt, int paramInt, @Nullable Palette.Filter[] paramArrayOfFilter)
   {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsPalettePalette$Filter = paramArrayOfFilter;
+    this.e = paramArrayOfFilter;
     paramArrayOfFilter = new int[32768];
     this.b = paramArrayOfFilter;
     int n = 0;
     int i = 0;
     while (i < paramArrayOfInt.length)
     {
-      j = d(paramArrayOfInt[i]);
+      j = f(paramArrayOfInt[i]);
       paramArrayOfInt[i] = j;
       paramArrayOfFilter[j] += 1;
       i += 1;
@@ -39,7 +39,7 @@ final class ColorCutQuantizer
     int j = 0;
     for (i = 0; j < paramArrayOfFilter.length; i = k)
     {
-      if ((paramArrayOfFilter[j] > 0) && (a(j))) {
+      if ((paramArrayOfFilter[j] > 0) && (e(j))) {
         paramArrayOfFilter[j] = 0;
       }
       k = i;
@@ -49,7 +49,7 @@ final class ColorCutQuantizer
       j += 1;
     }
     paramArrayOfInt = new int[i];
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    this.a = paramArrayOfInt;
     j = 0;
     int m;
     for (int k = 0; j < paramArrayOfFilter.length; k = m)
@@ -64,17 +64,17 @@ final class ColorCutQuantizer
     }
     if (i <= paramInt)
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.c = new ArrayList();
       i = paramArrayOfInt.length;
       paramInt = n;
       while (paramInt < i)
       {
         j = paramArrayOfInt[paramInt];
-        this.jdField_a_of_type_JavaUtilList.add(new Palette.Swatch(e(j), paramArrayOfFilter[j]));
+        this.c.add(new Palette.Swatch(g(j), paramArrayOfFilter[j]));
         paramInt += 1;
       }
     }
-    this.jdField_a_of_type_JavaUtilList = a(paramInt);
+    this.c = d(paramInt);
   }
   
   static int a(int paramInt)
@@ -87,21 +87,13 @@ final class ColorCutQuantizer
     return Color.rgb(b(paramInt1, 5, 8), b(paramInt2, 5, 8), b(paramInt3, 5, 8));
   }
   
-  private List<Palette.Swatch> a(int paramInt)
-  {
-    PriorityQueue localPriorityQueue = new PriorityQueue(paramInt, jdField_a_of_type_JavaUtilComparator);
-    localPriorityQueue.offer(new ColorCutQuantizer.Vbox(this, 0, this.jdField_a_of_type_ArrayOfInt.length - 1));
-    a(localPriorityQueue, paramInt);
-    return a(localPriorityQueue);
-  }
-  
   private List<Palette.Swatch> a(Collection<ColorCutQuantizer.Vbox> paramCollection)
   {
     ArrayList localArrayList = new ArrayList(paramCollection.size());
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext())
     {
-      Palette.Swatch localSwatch = ((ColorCutQuantizer.Vbox)paramCollection.next()).a();
+      Palette.Swatch localSwatch = ((ColorCutQuantizer.Vbox)paramCollection.next()).h();
       if (!a(localSwatch)) {
         localArrayList.add(localSwatch);
       }
@@ -114,10 +106,10 @@ final class ColorCutQuantizer
     while (paramPriorityQueue.size() < paramInt)
     {
       ColorCutQuantizer.Vbox localVbox = (ColorCutQuantizer.Vbox)paramPriorityQueue.poll();
-      if ((localVbox == null) || (!localVbox.a())) {
+      if ((localVbox == null) || (!localVbox.b())) {
         break;
       }
-      paramPriorityQueue.offer(localVbox.a());
+      paramPriorityQueue.offer(localVbox.e());
       paramPriorityQueue.offer(localVbox);
     }
   }
@@ -153,23 +145,16 @@ final class ColorCutQuantizer
     }
   }
   
-  private boolean a(int paramInt)
-  {
-    paramInt = e(paramInt);
-    ColorUtils.a(paramInt, this.jdField_a_of_type_ArrayOfFloat);
-    return a(paramInt, this.jdField_a_of_type_ArrayOfFloat);
-  }
-  
   private boolean a(int paramInt, float[] paramArrayOfFloat)
   {
-    Palette.Filter[] arrayOfFilter = this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsPalettePalette$Filter;
+    Palette.Filter[] arrayOfFilter = this.e;
     if ((arrayOfFilter != null) && (arrayOfFilter.length > 0))
     {
       int j = arrayOfFilter.length;
       int i = 0;
       while (i < j)
       {
-        if (!this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsPalettePalette$Filter[i].a(paramInt, paramArrayOfFloat)) {
+        if (!this.e[i].a(paramInt, paramArrayOfFloat)) {
           return true;
         }
         i += 1;
@@ -180,7 +165,7 @@ final class ColorCutQuantizer
   
   private boolean a(Palette.Swatch paramSwatch)
   {
-    return a(paramSwatch.a(), paramSwatch.a());
+    return a(paramSwatch.a(), paramSwatch.b());
   }
   
   static int b(int paramInt)
@@ -203,26 +188,41 @@ final class ColorCutQuantizer
     return paramInt & 0x1F;
   }
   
-  private static int d(int paramInt)
+  private List<Palette.Swatch> d(int paramInt)
+  {
+    PriorityQueue localPriorityQueue = new PriorityQueue(paramInt, g);
+    localPriorityQueue.offer(new ColorCutQuantizer.Vbox(this, 0, this.a.length - 1));
+    a(localPriorityQueue, paramInt);
+    return a(localPriorityQueue);
+  }
+  
+  private boolean e(int paramInt)
+  {
+    paramInt = g(paramInt);
+    ColorUtils.a(paramInt, this.f);
+    return a(paramInt, this.f);
+  }
+  
+  private static int f(int paramInt)
   {
     int i = b(Color.red(paramInt), 8, 5);
     int j = b(Color.green(paramInt), 8, 5);
     return b(Color.blue(paramInt), 8, 5) | i << 10 | j << 5;
   }
   
-  private static int e(int paramInt)
+  private static int g(int paramInt)
   {
     return a(a(paramInt), b(paramInt), c(paramInt));
   }
   
   List<Palette.Swatch> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.ColorCutQuantizer
  * JD-Core Version:    0.7.0.1
  */

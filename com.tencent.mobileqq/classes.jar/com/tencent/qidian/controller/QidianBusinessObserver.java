@@ -7,7 +7,7 @@ public class QidianBusinessObserver
   extends QidianBusinessObserverBase
 {
   private static final String a = "com.tencent.qidian.controller.QidianBusinessObserver";
-  public int a = hashCode();
+  public int b = hashCode();
   
   protected void a(boolean paramBoolean) {}
   
@@ -101,7 +101,7 @@ public class QidianBusinessObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianBusinessObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ import org.json.JSONObject;
 public class ListenTogetherIPCModuleWebClient
   extends QIPCModule
 {
-  private ArrayList<ListenTogetherIPCModuleWebClient.ListenTogetherClient2WebCallback> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private ArrayList<ListenTogetherIPCModuleWebClient.ListenTogetherClient2WebCallback> a = new ArrayList();
+  private volatile boolean b = false;
   
   private ListenTogetherIPCModuleWebClient()
   {
@@ -59,9 +59,9 @@ public class ListenTogetherIPCModuleWebClient
         QLog.d("ListenTogetherIPCModuleWebClient", 2, ((StringBuilder)localObject).toString());
       }
       if (paramBundle != null) {
-        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+        synchronized (this.a)
         {
-          localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          localObject = this.a.iterator();
           while (((Iterator)localObject).hasNext())
           {
             ListenTogetherIPCModuleWebClient.ListenTogetherClient2WebCallback localListenTogetherClient2WebCallback = (ListenTogetherIPCModuleWebClient.ListenTogetherClient2WebCallback)((Iterator)localObject).next();
@@ -102,16 +102,16 @@ public class ListenTogetherIPCModuleWebClient
       ((StringBuilder)localObject).append(paramListenTogetherClient2WebCallback);
       QLog.d("ListenTogetherIPCModuleWebClient", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramListenTogetherClient2WebCallback)) {
+    if (this.a.contains(paramListenTogetherClient2WebCallback)) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    if (this.a.isEmpty())
     {
       localObject = a();
       try
       {
         QIPCClientHelper.getInstance().register((QIPCModule)localObject);
-        this.jdField_a_of_type_Boolean = true;
+        this.b = true;
         if (QLog.isColorLevel()) {
           QLog.d("ListenTogetherIPCModuleWebClient", 2, "register real");
         }
@@ -121,14 +121,14 @@ public class ListenTogetherIPCModuleWebClient
         QLog.e("ListenTogetherIPCModuleWebClient", 1, "register ipc module error.", localException);
       }
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramListenTogetherClient2WebCallback);
+      this.a.add(paramListenTogetherClient2WebCallback);
       if (QLog.isColorLevel())
       {
         paramListenTogetherClient2WebCallback = new StringBuilder();
         paramListenTogetherClient2WebCallback.append("register mListenTogetherClient2WebCallbacks.size:");
-        paramListenTogetherClient2WebCallback.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+        paramListenTogetherClient2WebCallback.append(this.a.size());
         QLog.d("ListenTogetherIPCModuleWebClient", 2, paramListenTogetherClient2WebCallback.toString());
       }
       return;
@@ -143,29 +143,29 @@ public class ListenTogetherIPCModuleWebClient
       ((StringBuilder)???).append("unregister callback:");
       ((StringBuilder)???).append(paramListenTogetherClient2WebCallback);
       ((StringBuilder)???).append(" mHasRegistered:");
-      ((StringBuilder)???).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)???).append(this.b);
       QLog.d("ListenTogetherIPCModuleWebClient", 2, ((StringBuilder)???).toString());
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramListenTogetherClient2WebCallback)) {
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if (this.a.contains(paramListenTogetherClient2WebCallback)) {
+      synchronized (this.a)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(paramListenTogetherClient2WebCallback);
+        this.a.remove(paramListenTogetherClient2WebCallback);
       }
     }
     if (QLog.isColorLevel())
     {
       paramListenTogetherClient2WebCallback = new StringBuilder();
       paramListenTogetherClient2WebCallback.append("unregister mListenTogetherClient2WebCallbacks.size:");
-      paramListenTogetherClient2WebCallback.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      paramListenTogetherClient2WebCallback.append(this.a.size());
       QLog.d("ListenTogetherIPCModuleWebClient", 2, paramListenTogetherClient2WebCallback.toString());
     }
-    if ((this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_a_of_type_Boolean)) {
+    if ((this.a.isEmpty()) && (this.b)) {
       try
       {
         if (QIPCClientHelper.getInstance().getClient() != null)
         {
           QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-          this.jdField_a_of_type_Boolean = false;
+          this.b = false;
           if (QLog.isColorLevel())
           {
             QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister real");
@@ -211,7 +211,7 @@ public class ListenTogetherIPCModuleWebClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleWebClient
  * JD-Core Version:    0.7.0.1
  */

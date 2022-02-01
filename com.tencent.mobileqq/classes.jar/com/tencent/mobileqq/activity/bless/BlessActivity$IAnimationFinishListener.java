@@ -6,7 +6,7 @@ public abstract interface BlessActivity$IAnimationFinishListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessActivity.IAnimationFinishListener
  * JD-Core Version:    0.7.0.1
  */

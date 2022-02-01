@@ -62,10 +62,10 @@ public class QzoneSelectMoodPictureJsPlugin
       QLog.w(this.TAG, 2, "select mood picture,decode param error");
     }
     paramJsBridgeListener.putExtras(paramString1);
-    if (this.mRuntime.a() != null)
+    if (this.mRuntime.d() != null)
     {
-      this.mRuntime.a().setResult(-1, paramJsBridgeListener);
-      this.mRuntime.a().finish();
+      this.mRuntime.d().setResult(-1, paramJsBridgeListener);
+      this.mRuntime.d().finish();
     }
     return true;
     return false;
@@ -78,14 +78,14 @@ public class QzoneSelectMoodPictureJsPlugin
     Bundle localBundle = new Bundle();
     localBundle.putString("url", "https://www.baidu.com");
     localIntent.putExtras(localBundle);
-    this.mRuntime.a().setResult(50, localIntent);
+    this.mRuntime.d().setResult(50, localIntent);
   }
   
   protected void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.mood.QzoneSelectMoodPictureJsPlugin
  * JD-Core Version:    0.7.0.1
  */

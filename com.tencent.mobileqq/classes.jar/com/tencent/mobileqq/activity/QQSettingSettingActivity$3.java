@@ -19,7 +19,7 @@ class QQSettingSettingActivity$3
   protected void a(Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("SecSvcObserver", 2, String.format(Locale.getDefault(), "onGetPhoneUnityLocalData data: %s, create: %s, count: %s", new Object[] { paramObject, Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+      QLog.i("SecSvcObserver", 2, String.format(Locale.getDefault(), "onGetPhoneUnityLocalData data: %s, create: %s, count: %s", new Object[] { paramObject, Boolean.valueOf(this.a.i), Integer.valueOf(this.a.s) }));
     }
     boolean bool1;
     if (paramObject == null) {
@@ -32,27 +32,27 @@ class QQSettingSettingActivity$3
     {
       bool2 = bool1;
       if ((paramObject instanceof PhoneUnityBannerData)) {
-        bool2 = ((PhoneUnityBannerData)paramObject).b;
+        bool2 = ((PhoneUnityBannerData)paramObject).i;
       }
     }
-    paramObject = this.a.findViewById(2131374449);
+    paramObject = this.a.findViewById(2131442619);
     if (paramObject != null) {
       if (bool2)
       {
         paramObject.setVisibility(0);
-        if (this.a.jdField_a_of_type_Boolean)
+        if (this.a.i)
         {
           this.a.a(true);
         }
-        else if (this.a.jdField_a_of_type_Int == 0)
+        else if (this.a.s == 0)
         {
           this.a.a(false);
         }
         else
         {
           paramObject = (PhoneUnityManager)this.a.app.getManager(QQManagerFactory.PHONE_UNITY_MANAGER);
-          if (paramObject.a != null) {
-            QQSettingSettingActivity.a(this.a, true, paramObject.a);
+          if (paramObject.h != null) {
+            QQSettingSettingActivity.a(this.a, true, paramObject.h);
           }
         }
       }
@@ -61,7 +61,7 @@ class QQSettingSettingActivity$3
         paramObject.setVisibility(8);
       }
     }
-    this.a.jdField_a_of_type_Boolean = false;
+    this.a.i = false;
   }
   
   public void a(boolean paramBoolean, int paramInt, String paramString)
@@ -82,8 +82,8 @@ class QQSettingSettingActivity$3
     }
     if (this.a.isResume())
     {
-      paramString = this.a.getString(2131692031);
-      QQToast.a(this.a.getApplicationContext(), paramString, 0).b(this.a.getTitleBarHeight());
+      paramString = this.a.getString(2131888998);
+      QQToast.makeText(this.a.getApplicationContext(), paramString, 0).show(this.a.getTitleBarHeight());
     }
   }
   
@@ -101,24 +101,24 @@ class QQSettingSettingActivity$3
     }
     QQSettingSettingActivity.b(this.a, false);
     QQSettingSettingActivity.a(this.a, paramBoolean, paramBundle);
-    if (QQSettingSettingActivity.b(this.a)) {
-      if (QQSettingSettingActivity.c(this.a)) {
-        QQSettingSettingActivity.c(this.a);
+    if (QQSettingSettingActivity.e(this.a)) {
+      if (QQSettingSettingActivity.f(this.a)) {
+        QQSettingSettingActivity.g(this.a);
       } else if (this.a.isResume()) {
-        QQToast.a(this.a.getApplicationContext(), this.a.getString(2131694768), 0).b(this.a.getTitleBarHeight());
+        QQToast.makeText(this.a.getApplicationContext(), this.a.getString(2131892471), 0).show(this.a.getTitleBarHeight());
       }
     }
     QQSettingSettingActivity.c(this.a, false);
     if (this.a.isResume())
     {
       paramBundle = this.a;
-      paramBundle.jdField_a_of_type_Int -= 1;
+      paramBundle.s -= 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingSettingActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -22,15 +22,15 @@ class AccountPanel$5
     ReportController.a(null, "dc00898", "", "", "0X800B430", "0X800B430", 0, 0, "", "", "", "");
     paramDialogInterface = new Intent();
     paramDialogInterface.putExtra("is_change_account", true);
-    paramDialogInterface.putExtra("uin", AccountPanel.a(this.a).a());
-    paramDialogInterface.putExtra("befault_uin", AccountPanel.a(this.a).getCurrentAccountUin());
+    paramDialogInterface.putExtra("uin", AccountPanel.d(this.a).m());
+    paramDialogInterface.putExtra("befault_uin", AccountPanel.c(this.a).getCurrentAccountUin());
     UiRouteUtils.a(AccountPanel.a(this.a), paramDialogInterface, "/base/login");
-    AccountPanel.a(this.a).a(null);
+    AccountPanel.d(this.a).a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountPanel.5
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ public final class RIJDianDianEntryVisibleConfig$Companion
       while (paramString.hasNext())
       {
         String str = (String)paramString.next();
-        RIJDianDianEntryVisibleConfig.a().add(Integer.valueOf(Integer.parseInt(str)));
+        RIJDianDianEntryVisibleConfig.b().add(Integer.valueOf(Integer.parseInt(str)));
       }
       return;
     }
@@ -60,7 +60,7 @@ public final class RIJDianDianEntryVisibleConfig$Companion
     if (i == 1)
     {
       bool1 = bool2;
-      if (!RIJDianDianEntryVisibleConfig.a().contains(Integer.valueOf(paramInt))) {}
+      if (!RIJDianDianEntryVisibleConfig.b().contains(Integer.valueOf(paramInt))) {}
     }
     else if ((RIJDianDianEntryVisibleConfig.a() == 0) && (paramInt == 0))
     {
@@ -83,13 +83,13 @@ public final class RIJDianDianEntryVisibleConfig$Companion
   
   public final void b()
   {
-    RIJDianDianEntryVisibleConfig.a().clear();
+    RIJDianDianEntryVisibleConfig.b().clear();
     ((Companion)this).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.channelbanner.RIJDianDianEntryVisibleConfig.Companion
  * JD-Core Version:    0.7.0.1
  */

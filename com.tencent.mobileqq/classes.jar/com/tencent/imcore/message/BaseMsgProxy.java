@@ -32,14 +32,6 @@ public abstract class BaseMsgProxy
   
   public abstract int a(MessageRecord paramMessageRecord, boolean paramBoolean);
   
-  public abstract int a(String paramString, int paramInt);
-  
-  public abstract int a(String paramString, int paramInt, long paramLong);
-  
-  public abstract int a(String paramString, int paramInt, MessageRecord paramMessageRecord);
-  
-  public abstract int a(String paramString, int paramInt, boolean paramBoolean);
-  
   public abstract int a(List<MessageRecord> paramList, boolean paramBoolean);
   
   @Deprecated
@@ -54,24 +46,9 @@ public abstract class BaseMsgProxy
     return this.a;
   }
   
-  public BaseProxyManager a()
-  {
-    return this.proxyManager;
-  }
-  
   public abstract ChatHistorySearchData a(String paramString1, String paramString2, int paramInt, String paramString3);
   
   public abstract MessageRecord a(MessageRecord paramMessageRecord, int paramInt);
-  
-  public abstract MessageRecord a(MessageRecord paramMessageRecord, boolean paramBoolean);
-  
-  public abstract MessageRecord a(String paramString, int paramInt);
-  
-  public abstract MessageRecord a(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract MessageRecord a(String paramString, int paramInt, long paramLong);
-  
-  public abstract MessageRecord a(String paramString, int paramInt1, long paramLong, int paramInt2);
   
   public abstract MessageRecord a(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3);
   
@@ -87,17 +64,11 @@ public abstract class BaseMsgProxy
   
   public abstract MessageRecord a(String paramString, int paramInt, long paramLong, byte[] paramArrayOfByte);
   
-  public abstract MessageRecord a(String paramString, int paramInt, MessageRecord paramMessageRecord);
-  
   public abstract MessageRecord a(String paramString, int paramInt, MessageRecord paramMessageRecord, List<MessageRecord> paramList);
   
   public abstract MessageRecord a(String paramString1, int paramInt, String paramString2);
   
-  public abstract EntityManager a();
-  
-  public abstract String a(String paramString, int paramInt);
-  
-  public abstract List<MessageRecord> a(String paramString, int paramInt);
+  public abstract MessageRecord a(List<MessageRecord> paramList, MessageRecord paramMessageRecord);
   
   public abstract List<MessageRecord> a(String paramString, int paramInt1, int paramInt2);
   
@@ -121,18 +92,13 @@ public abstract class BaseMsgProxy
   
   public abstract List<MessageRecord> a(String paramString, int paramInt, int[] paramArrayOfInt);
   
-  public AppRuntime a()
-  {
-    return this.app;
-  }
-  
-  public abstract void a();
-  
   public abstract void a(int paramInt, String paramString);
   
   public abstract void a(QueryHistoryParam paramQueryHistoryParam);
   
   public abstract void a(String paramString, int paramInt, long paramLong);
+  
+  public abstract void a(String paramString, int paramInt, long paramLong1, long paramLong2, List<MessageRecord> paramList);
   
   public abstract void a(String paramString, int paramInt, long paramLong, ContentValues paramContentValues);
   
@@ -148,72 +114,120 @@ public abstract class BaseMsgProxy
   
   public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3, String[] paramArrayOfString, ProxyListener paramProxyListener);
   
-  public abstract void a(String paramString, int paramInt, List<MessageRecord> paramList);
-  
   public abstract void a(List<MessageRecord> paramList, ProxyListener paramProxyListener);
   
   public abstract boolean a(String paramString, int paramInt, boolean paramBoolean);
   
-  public abstract int b(String paramString, int paramInt, long paramLong);
+  public abstract int b(String paramString, int paramInt, boolean paramBoolean);
   
-  public abstract MessageRecord b(String paramString, int paramInt);
+  public abstract MessageRecord b(MessageRecord paramMessageRecord, boolean paramBoolean);
+  
+  public abstract MessageRecord b(String paramString, int paramInt1, int paramInt2);
   
   public abstract MessageRecord b(String paramString, int paramInt, long paramLong);
   
-  public abstract MessageRecord b(String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3);
+  public abstract MessageRecord b(String paramString, int paramInt1, long paramLong, int paramInt2);
   
-  @NonNull
-  public abstract String b(String paramString, int paramInt);
+  public abstract MessageRecord b(String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3);
   
   public abstract List<MessageRecord> b(String paramString, int paramInt);
   
-  public abstract List<MessageRecord> b(String paramString, int paramInt1, int paramInt2);
+  public abstract List<MessageRecord> b(String paramString, int paramInt1, int paramInt2, boolean paramBoolean);
   
-  public abstract List<MessageRecord> b(String paramString, int paramInt1, long paramLong, int paramInt2);
+  public abstract List<MessageRecord> b(String paramString, int paramInt1, long paramLong1, int paramInt2, long paramLong2, int paramInt3, int[] paramArrayOfInt);
   
   public abstract List<MessageRecord> b(String paramString, int paramInt, long paramLong1, long paramLong2);
   
-  public abstract List<MessageRecord> b(String paramString, int paramInt, List<Integer> paramList);
+  public AppRuntime b()
+  {
+    return this.app;
+  }
   
-  public abstract void b();
+  public abstract void b(String paramString, int paramInt, long paramLong, List<MessageRecord> paramList);
   
   public abstract void b(String paramString, int paramInt, MessageRecord paramMessageRecord);
+  
+  public abstract void b(String paramString, int paramInt, List<MessageRecord> paramList);
+  
+  public abstract int c(String paramString, int paramInt, MessageRecord paramMessageRecord);
+  
+  public BaseProxyManager c()
+  {
+    return this.proxyManager;
+  }
   
   public abstract MessageRecord c(String paramString, int paramInt, long paramLong);
   
   public abstract List<MessageRecord> c(String paramString, int paramInt);
   
+  public abstract List<MessageRecord> c(String paramString, int paramInt1, int paramInt2);
+  
   public abstract List<MessageRecord> c(String paramString, int paramInt1, long paramLong, int paramInt2);
   
   public abstract List<MessageRecord> c(String paramString, int paramInt, long paramLong1, long paramLong2);
   
-  public abstract void c();
+  public abstract void c(String paramString, int paramInt, List<MessageRecord> paramList);
   
   public abstract MessageRecord d(String paramString, int paramInt, long paramLong);
+  
+  public abstract MessageRecord d(String paramString, int paramInt, MessageRecord paramMessageRecord);
+  
+  public abstract EntityManager d();
   
   public abstract List<MessageRecord> d(String paramString, int paramInt);
   
   public abstract List<MessageRecord> d(String paramString, int paramInt1, long paramLong, int paramInt2);
   
-  public abstract void d();
+  public abstract List<MessageRecord> d(String paramString, int paramInt, List<Integer> paramList);
   
   public abstract void destroy();
   
+  public abstract MessageRecord e(String paramString, int paramInt);
+  
   public abstract MessageRecord e(String paramString, int paramInt, long paramLong);
   
-  public abstract List<MessageRecord> e(String paramString, int paramInt);
+  public abstract List<MessageRecord> e(String paramString, int paramInt1, long paramLong, int paramInt2);
   
-  public abstract MessageRecord f(String paramString, int paramInt, long paramLong);
+  public abstract void e();
   
-  public abstract List<MessageRecord> f(String paramString, int paramInt);
+  public abstract int f(String paramString, int paramInt, long paramLong);
+  
+  public abstract MessageRecord f(String paramString, int paramInt);
+  
+  public abstract void f();
   
   public abstract MessageRecord g(String paramString, int paramInt, long paramLong);
   
+  public abstract List<MessageRecord> g(String paramString, int paramInt);
+  
+  public abstract void g();
+  
+  public abstract int h(String paramString, int paramInt);
+  
+  public abstract MessageRecord h(String paramString, int paramInt, long paramLong);
+  
+  public abstract void h();
+  
+  public abstract int i(String paramString, int paramInt, long paramLong);
+  
+  public abstract List<MessageRecord> i(String paramString, int paramInt);
+  
   public abstract void init();
+  
+  public abstract String j(String paramString, int paramInt);
+  
+  public abstract void j(String paramString, int paramInt, long paramLong);
+  
+  public abstract MessageRecord k(String paramString, int paramInt, long paramLong);
+  
+  public abstract List<MessageRecord> k(String paramString, int paramInt);
+  
+  @NonNull
+  public abstract String l(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMsgProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 class XfermodeDrawable$XfermodeState
   extends DrawableContainer.ContainerState
 {
-  Xfermode a;
+  Xfermode c;
   
   public Drawable newDrawable()
   {
@@ -15,7 +15,7 @@ class XfermodeDrawable$XfermodeState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.XfermodeDrawable.XfermodeState
  * JD-Core Version:    0.7.0.1
  */

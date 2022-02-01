@@ -13,18 +13,18 @@ class HotPicMainPanel$5
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
+    if (i == this.a) {
       AbstractGifImage.resumeAll();
     }
-    XPanelContainer.jdField_a_of_type_Int = i;
-    if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.requestLayout();
+    XPanelContainer.a = i;
+    if (this.b.m != null) {
+      this.b.m.requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicMainPanel.5
  * JD-Core Version:    0.7.0.1
  */

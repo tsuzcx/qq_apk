@@ -1,27 +1,49 @@
 package com.tencent.mobileqq.activity.home;
 
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.recent.OnlineStatusExposureHelper;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusObserver;
+import com.tencent.mobileqq.onlinestatus.api.IOnLineStatueHelperApi;
+import com.tencent.mobileqq.onlinestatus.olympic.model.OlympicMedalEventInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 class Conversation$63
-  implements Runnable
+  extends OnlineStatusObserver
 {
-  Conversation$63(Conversation paramConversation, int paramInt) {}
+  Conversation$63(Conversation paramConversation) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    View localView = Conversation.a(this.this$0).getChildAt(this.a - Conversation.a(this.this$0).getFirstVisiblePosition());
-    if (localView != null)
+    if (this.a.Y != null)
     {
-      localView = localView.findViewById(2131376384);
-      this.this$0.a.a(this.this$0.a(), localView);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, new Object[] { "onSetOnlineStatus, isSuccess", Boolean.valueOf(paramBoolean) });
+      }
+      this.a.Y.b("OnlineStatusObserver.onSetOnlineStatus");
+      paramBundle = this.a;
+      paramBundle.a(8, paramBundle.aF.getCurrentUin(), 0);
+      this.a.Y.K();
+    }
+  }
+  
+  public void a(boolean paramBoolean, OlympicMedalEventInfo paramOlympicMedalEventInfo)
+  {
+    if (((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).getSelfExtOnlineStatus(this.a.aF) == 1080L) {
+      this.a.Y.q.sendEmptyMessage(19);
+    }
+    if ((OnlineStatusExposureHelper.a()) && (!SimpleUIUtil.e())) {
+      this.a.a(0L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.63
  * JD-Core Version:    0.7.0.1
  */

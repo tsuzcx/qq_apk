@@ -10,12 +10,12 @@ class AVGameControlUIImpl$2$6
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.a()) {
+    if (this.d.a.d()) {
       return;
     }
-    long l1 = QQAudioHelper.b();
-    long l2 = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getLongAccountUin();
-    long l3 = this.jdField_a_of_type_Long;
+    long l1 = QQAudioHelper.d();
+    long l2 = this.d.a.g.getLongAccountUin();
+    long l3 = this.a;
     int i;
     if ((l2 != l3) && (l3 != -1L)) {
       i = 0;
@@ -24,16 +24,16 @@ class AVGameControlUIImpl$2$6
     }
     if (i != 0)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.c(this.jdField_a_of_type_Boolean);
+      this.d.a.h.c(this.b);
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.c();
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.a("onMemberShareInOrOut", l1, Long.toString(this.jdField_a_of_type_Long), this.jdField_a_of_type_Int);
+      this.d.a.e();
+      this.d.a.h.a("onMemberShareInOrOut", l1, Long.toString(this.a), this.c);
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.b("onMemberShareInOrOut", l1, Long.toString(this.jdField_a_of_type_Long), this.jdField_a_of_type_Int);
+    this.d.a.h.b("onMemberShareInOrOut", l1, Long.toString(this.a), this.c);
   }
 }
 

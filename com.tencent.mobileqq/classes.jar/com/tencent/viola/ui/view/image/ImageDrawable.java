@@ -18,6 +18,7 @@ import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.widget.ImageView.ScaleType;
+import com.tencent.viola.adapter.VComponentAdapter;
 import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.utils.ViolaLogUtils;
 import com.tencent.viola.utils.ViolaUtils;
@@ -31,7 +32,7 @@ public class ImageDrawable
   private float[] radii = new float[8];
   private float radius;
   
-  public static void blurImage(Drawable paramDrawable, ImageView.ScaleType paramScaleType, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener)
+  public static void blurImage(Drawable paramDrawable, ImageView.ScaleType paramScaleType, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener, boolean paramBoolean)
   {
     if ((paramDrawable != null) && (paramInt1 >= 0))
     {
@@ -40,10 +41,10 @@ public class ImageDrawable
       }
       if (isMainThread())
       {
-        ViolaSDKManager.getInstance().postOnThreadPool(new ImageDrawable.3(paramDrawable, paramScaleType, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramOnImageDrawableListener));
+        ViolaSDKManager.getInstance().postOnThreadPool(new ImageDrawable.3(paramDrawable, paramScaleType, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramOnImageDrawableListener, paramBoolean));
         return;
       }
-      internalBlurImage(paramDrawable, paramScaleType, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramOnImageDrawableListener);
+      internalBlurImage(paramDrawable, paramScaleType, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramOnImageDrawableListener, paramBoolean);
     }
   }
   
@@ -59,12 +60,25 @@ public class ImageDrawable
     return localImageDrawable;
   }
   
-  private static ImageDrawable createFromDrawable(Drawable paramDrawable, ImageView.ScaleType paramScaleType, int paramInt1, int paramInt2)
+  public static ImageDrawable createFromDrawable(Drawable paramDrawable, ImageView.ScaleType paramScaleType, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (paramDrawable == null) {
       return null;
     }
-    Object localObject = drawableToBitmap(paramDrawable, paramInt1, paramInt2, paramScaleType);
+    if (paramBoolean)
+    {
+      Bitmap localBitmap = getBitmapFromComponentAdapter(paramDrawable);
+      localObject = localBitmap;
+      if (localBitmap == null)
+      {
+        localObject = drawableToBitmap(paramDrawable, paramInt1, paramInt2, paramScaleType);
+        ViolaLogUtils.e("ViolaImageDrawable", "getBitmap is null from componentAdapter");
+      }
+    }
+    else
+    {
+      localObject = drawableToBitmap(paramDrawable, paramInt1, paramInt2, paramScaleType);
+    }
     if (localObject == null) {
       return null;
     }
@@ -72,13 +86,13 @@ public class ImageDrawable
     paramDrawable.bitmapWidth = ((Bitmap)localObject).getWidth();
     paramDrawable.bitmapHeight = ((Bitmap)localObject).getHeight();
     paramDrawable.setBitmap((Bitmap)localObject);
-    localObject = new BitmapShader((Bitmap)localObject, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    Object localObject = new BitmapShader((Bitmap)localObject, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
     updateShaderAndSize(paramScaleType, paramInt1, paramInt2, paramDrawable, (BitmapShader)localObject);
     paramDrawable.getPaint().setShader((Shader)localObject);
     return paramDrawable;
   }
   
-  public static void createImageDrawableForRound(Drawable paramDrawable, ImageView.ScaleType paramScaleType, int paramInt1, int paramInt2, String paramString, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener)
+  public static void createImageDrawableForRound(Drawable paramDrawable, ImageView.ScaleType paramScaleType, int paramInt1, int paramInt2, String paramString, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener, boolean paramBoolean)
   {
     if ((paramDrawable != null) && (paramInt1 >= 0))
     {
@@ -87,14 +101,14 @@ public class ImageDrawable
       }
       if (isMainThread())
       {
-        ViolaSDKManager.getInstance().postOnThreadPool(new ImageDrawable.1(paramDrawable, paramScaleType, paramInt1, paramInt2, paramString, paramOnImageDrawableListener));
+        ViolaSDKManager.getInstance().postOnThreadPool(new ImageDrawable.1(paramDrawable, paramScaleType, paramInt1, paramInt2, paramString, paramOnImageDrawableListener, paramBoolean));
         return;
       }
-      internalCreateImageDrawableForRound(paramDrawable, paramScaleType, paramInt1, paramInt2, paramString, paramOnImageDrawableListener);
+      internalCreateImageDrawableForRound(paramDrawable, paramScaleType, paramInt1, paramInt2, paramString, paramOnImageDrawableListener, paramBoolean);
     }
   }
   
-  public static void createRoundImageAndBlur(Drawable paramDrawable, ImageView.ScaleType paramScaleType, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener)
+  public static void createRoundImageAndBlur(Drawable paramDrawable, ImageView.ScaleType paramScaleType, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener, boolean paramBoolean)
   {
     if ((paramDrawable != null) && (paramInt2 >= 0))
     {
@@ -103,29 +117,41 @@ public class ImageDrawable
       }
       if (isMainThread())
       {
-        ViolaSDKManager.getInstance().postOnThreadPool(new ImageDrawable.6(paramDrawable, paramScaleType, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramOnImageDrawableListener));
+        ViolaSDKManager.getInstance().postOnThreadPool(new ImageDrawable.6(paramDrawable, paramScaleType, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramOnImageDrawableListener, paramBoolean));
         return;
       }
-      internalRoundImageAndBlur(paramDrawable, paramScaleType, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramOnImageDrawableListener);
+      internalRoundImageAndBlur(paramDrawable, paramScaleType, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramOnImageDrawableListener, paramBoolean);
     }
   }
   
-  private static Bitmap createScaleBitmapForBlur(Drawable paramDrawable, int paramInt1, int paramInt2, ImageView.ScaleType paramScaleType, int paramInt3)
+  private static Bitmap createScaleBitmapForBlur(Drawable paramDrawable, int paramInt1, int paramInt2, ImageView.ScaleType paramScaleType, int paramInt3, boolean paramBoolean)
   {
-    paramDrawable = drawableToBitmap(paramDrawable, paramInt1, paramInt2, paramScaleType);
-    if ((paramDrawable != null) && (paramInt1 != 0) && (paramInt2 != 0))
+    Bitmap localBitmap1;
+    if (paramBoolean)
+    {
+      Bitmap localBitmap2 = getBitmapFromComponentAdapter(paramDrawable);
+      localBitmap1 = localBitmap2;
+      if (localBitmap2 == null) {
+        localBitmap1 = drawableToBitmap(paramDrawable, paramInt1, paramInt2, paramScaleType);
+      }
+    }
+    else
+    {
+      localBitmap1 = drawableToBitmap(paramDrawable, paramInt1, paramInt2, paramScaleType);
+    }
+    if ((localBitmap1 != null) && (paramInt1 != 0) && (paramInt2 != 0))
     {
       int i = paramInt1 / paramInt3;
-      paramInt3 = paramInt2 / paramInt3;
+      paramInt2 /= paramInt3;
+      paramInt3 = 40;
       paramInt1 = i;
       if (i == 0) {
         paramInt1 = 40;
       }
-      paramInt2 = paramInt3;
-      if (paramInt3 == 0) {
-        paramInt2 = 40;
+      if (paramInt2 == 0) {
+        paramInt2 = paramInt3;
       }
-      return Bitmap.createScaledBitmap(paramDrawable, paramInt1, paramInt2, false);
+      return Bitmap.createScaledBitmap(localBitmap1, paramInt1, paramInt2, false);
     }
     return null;
   }
@@ -218,11 +244,20 @@ public class ImageDrawable
     return null;
   }
   
-  private static void internalBlurImage(Drawable paramDrawable, ImageView.ScaleType paramScaleType, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener)
+  private static Bitmap getBitmapFromComponentAdapter(Drawable paramDrawable)
+  {
+    VComponentAdapter localVComponentAdapter = ViolaSDKManager.getInstance().getComponentAdapter();
+    if (localVComponentAdapter == null) {
+      return null;
+    }
+    return localVComponentAdapter.getBitmap(paramDrawable);
+  }
+  
+  private static void internalBlurImage(Drawable paramDrawable, ImageView.ScaleType paramScaleType, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener, boolean paramBoolean)
   {
     try
     {
-      paramScaleType = createScaleBitmapForBlur(paramDrawable, paramInt1, paramInt2, paramScaleType, paramInt4);
+      paramScaleType = createScaleBitmapForBlur(paramDrawable, paramInt1, paramInt2, paramScaleType, paramInt4, paramBoolean);
       if (paramScaleType != null)
       {
         ViolaUtils.fastblur(paramScaleType, paramInt3);
@@ -237,18 +272,18 @@ public class ImageDrawable
     }
   }
   
-  private static void internalCreateImageDrawableForRound(Drawable paramDrawable, ImageView.ScaleType paramScaleType, int paramInt1, int paramInt2, String paramString, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener)
+  private static void internalCreateImageDrawableForRound(Drawable paramDrawable, ImageView.ScaleType paramScaleType, int paramInt1, int paramInt2, String paramString, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener, boolean paramBoolean)
   {
-    paramDrawable = createFromDrawable(paramDrawable, paramScaleType, paramInt1, paramInt2);
+    paramDrawable = createFromDrawable(paramDrawable, paramScaleType, paramInt1, paramInt2, paramBoolean);
     ViolaSDKManager.getInstance().postOnUiThread(new ImageDrawable.2(paramOnImageDrawableListener, paramDrawable, paramString));
   }
   
-  private static void internalRoundImageAndBlur(Drawable paramDrawable, ImageView.ScaleType paramScaleType, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener)
+  private static void internalRoundImageAndBlur(Drawable paramDrawable, ImageView.ScaleType paramScaleType, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener, boolean paramBoolean)
   {
     ImageDrawable localImageDrawable = null;
     try
     {
-      Bitmap localBitmap = createScaleBitmapForBlur(paramDrawable, paramInt2, paramInt3, paramScaleType, paramInt4);
+      Bitmap localBitmap = createScaleBitmapForBlur(paramDrawable, paramInt2, paramInt3, paramScaleType, paramInt4, paramBoolean);
       if (localBitmap != null)
       {
         ViolaUtils.fastblur(localBitmap, paramInt1);
@@ -269,9 +304,9 @@ public class ImageDrawable
     return Thread.currentThread() == Looper.getMainLooper().getThread();
   }
   
-  private static void updateShaderAndSize(@NonNull ImageView.ScaleType paramScaleType, int paramInt1, int paramInt2, ImageDrawable paramImageDrawable, BitmapShader paramBitmapShader)
+  private static void updateShaderAndSize(@NonNull ImageView.ScaleType paramScaleType, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageDrawable paramImageDrawable, BitmapShader paramBitmapShader)
   {
-    Matrix localMatrix = createShaderMatrix(paramScaleType, paramInt1, paramInt2, paramImageDrawable.bitmapWidth, paramImageDrawable.bitmapHeight);
+    Matrix localMatrix = createShaderMatrix(paramScaleType, paramInt1, paramInt2, paramInt3, paramInt4);
     Object localObject = localMatrix;
     if (paramScaleType == ImageView.ScaleType.FIT_CENTER)
     {
@@ -285,6 +320,11 @@ public class ImageDrawable
     paramImageDrawable.setIntrinsicWidth(paramInt1);
     paramImageDrawable.setIntrinsicHeight(paramInt2);
     paramBitmapShader.setLocalMatrix((Matrix)localObject);
+  }
+  
+  private static void updateShaderAndSize(@NonNull ImageView.ScaleType paramScaleType, int paramInt1, int paramInt2, ImageDrawable paramImageDrawable, BitmapShader paramBitmapShader)
+  {
+    updateShaderAndSize(paramScaleType, paramInt1, paramInt2, paramImageDrawable.bitmapWidth, paramImageDrawable.bitmapHeight, paramImageDrawable, paramBitmapShader);
   }
   
   public Bitmap getBitmap()
@@ -340,7 +380,7 @@ public class ImageDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.image.ImageDrawable
  * JD-Core Version:    0.7.0.1
  */

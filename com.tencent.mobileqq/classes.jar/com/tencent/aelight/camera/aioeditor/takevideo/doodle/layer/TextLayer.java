@@ -35,85 +35,45 @@ import java.util.List;
 public class TextLayer
   extends BaseLayer
 {
-  public static int a = 0;
+  private static String N = "TextLayer";
   public static final String a = "TextLayer";
-  public static final int b;
-  private static String jdField_b_of_type_JavaLangString = "TextLayer";
-  public static final int c;
-  public static int d;
+  public static int b;
+  public static final int c = com.tencent.aelight.camera.struct.editor.HorizontalStroke.a[1];
+  public static final int d = Color.parseColor("#80000000");
   public static int e;
-  public static volatile int f;
-  public Paint a;
-  PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  DynamicTextBuilder jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextBuilder = new DynamicTextBuilder();
-  public TextLayer.LayerListener a;
-  public TextLayer.TextItem a;
-  public GestureHelper a;
-  public ArrayList<TextLayer.TextItem> a;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  TextLayer.TextItem jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
-  public int g;
+  public static int f = 270;
+  public static volatile int g = 5;
+  private Paint M;
   public int h;
   public int i;
-  public int j = c;
-  public int k;
+  public int j;
+  public int k = d;
   public int l;
-  public int m;
+  public GestureHelper m;
   public int n;
   public int o;
-  
-  static
-  {
-    jdField_b_of_type_Int = com.tencent.aelight.camera.struct.editor.HorizontalStroke.a[1];
-    c = Color.parseColor("#80000000");
-    e = 270;
-    f = 5;
-  }
+  public int p;
+  public int q;
+  public TextLayer.LayerListener r;
+  public TextLayer.TextItem s;
+  public ArrayList<TextLayer.TextItem> t = new ArrayList();
+  DynamicTextBuilder u = new DynamicTextBuilder();
+  public Paint v;
+  TextLayer.TextItem w;
+  PointF x = new PointF();
   
   public TextLayer(DoodleView paramDoodleView)
   {
     super(paramDoodleView);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    n();
+    z();
   }
   
-  private void a(TextLayer.TextItem paramTextItem)
+  private void A()
   {
-    boolean bool1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(paramTextItem, StoryGuideLineView.jdField_a_of_type_Int, true);
-    boolean bool2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(paramTextItem, StoryGuideLineView.jdField_b_of_type_Int, false);
-    boolean bool3 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.b(paramTextItem, StoryGuideLineView.d, false);
-    TextLayer.LayerListener localLayerListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$LayerListener;
-    if (localLayerListener != null) {
-      localLayerListener.a(bool1, bool2, false, bool3, paramTextItem.g);
-    }
-    if (paramTextItem != null)
-    {
-      if (paramTextItem.f)
-      {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.a(paramTextItem.g, paramTextItem.k, paramTextItem.l, paramTextItem.m, paramTextItem.jdField_a_of_type_AndroidGraphicsPointF, paramTextItem.h, 2);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.a(paramTextItem.g, paramTextItem.k, paramTextItem.l, paramTextItem.m, paramTextItem.jdField_a_of_type_AndroidGraphicsPointF, paramTextItem.h, 1);
-    }
+    this.z.a(false, 0.0F, 0.0F, 0.0F, null, false, 1);
   }
   
-  public static void c(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      f -= 1;
-      break label26;
-      f += 1;
-      label26:
-      f = Math.min(f, 5);
-      f = Math.max(f, 4);
-      return;
-    }
-    finally {}
-  }
-  
-  private boolean d()
+  private boolean B()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(Build.MANUFACTURER);
@@ -126,7 +86,7 @@ public class TextLayer
     } else {
       bool = true;
     }
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isRubbish:");
     localStringBuilder.append(bool);
@@ -136,137 +96,132 @@ public class TextLayer
     return bool;
   }
   
-  private void n()
+  private void a(TextLayer.TextItem paramTextItem)
   {
-    this.k = AIOUtils.b(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext);
+    boolean bool1 = this.m.a(paramTextItem, StoryGuideLineView.a, true);
+    boolean bool2 = this.m.a(paramTextItem, StoryGuideLineView.b, false);
+    boolean bool3 = this.m.b(paramTextItem, StoryGuideLineView.d, false);
+    TextLayer.LayerListener localLayerListener = this.r;
+    if (localLayerListener != null) {
+      localLayerListener.a(bool1, bool2, false, bool3, paramTextItem.S);
+    }
+    if (paramTextItem != null)
+    {
+      if (paramTextItem.M)
+      {
+        this.z.a(paramTextItem.S, paramTextItem.C, paramTextItem.D, paramTextItem.E, paramTextItem.A, paramTextItem.T, 2);
+        return;
+      }
+      this.z.a(paramTextItem.S, paramTextItem.C, paramTextItem.D, paramTextItem.E, paramTextItem.A, paramTextItem.T, 1);
+    }
+  }
+  
+  public static void c(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      g -= 1;
+      break label26;
+      g += 1;
+      label26:
+      g = Math.min(g, 5);
+      g = Math.max(g, 4);
+      return;
+    }
+    finally {}
+  }
+  
+  private void z()
+  {
+    this.l = AIOUtils.b(50.0F, this.y.getResources());
+    this.j = DisplayUtil.a(this.y);
+    this.i = 1;
     this.h = 1;
-    this.g = 1;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper = new GestureHelper();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(6.0F);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.b(0.2F);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    d = ViewConfiguration.get(this.jdField_a_of_type_AndroidContentContext).getScaledTouchSlop();
-    if ((e == 270) && (d())) {
-      e = 540;
+    this.m = new GestureHelper();
+    this.m.a(6.0F);
+    this.m.b(0.2F);
+    this.m.a(true);
+    this.v = new Paint();
+    this.v.setAntiAlias(true);
+    this.v.setStyle(Paint.Style.STROKE);
+    this.v.setColor(-1);
+    this.v.setStrokeWidth(2.0F);
+    this.M = new Paint();
+    this.M.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    e = ViewConfiguration.get(this.y).getScaledTouchSlop();
+    if ((f == 270) && (B())) {
+      f = 540;
     }
-  }
-  
-  private void o()
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.a(false, 0.0F, 0.0F, 0.0F, null, false, 1);
-  }
-  
-  public DynamicTextItem a()
-  {
-    TextLayer.TextItem localTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
-    if (localTextItem != null) {
-      return localTextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
-    }
-    return null;
-  }
-  
-  public DynamicTextItem a(int paramInt)
-  {
-    return a(null, null, paramInt);
   }
   
   public DynamicTextItem a(TextLayer.LayerParams paramLayerParams, SegmentKeeper paramSegmentKeeper, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() < f)
+    if (this.t.size() < g)
     {
       if (paramLayerParams != null) {
         paramLayerParams = new TextLayer.TextItem(this, paramLayerParams);
       } else {
         paramLayerParams = new TextLayer.TextItem(this);
       }
-      paramLayerParams.jdField_a_of_type_Int = paramInt;
-      paramLayerParams.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper(paramSegmentKeeper);
-      paramLayerParams.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramLayerParams);
-      paramSegmentKeeper = paramLayerParams.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem = paramLayerParams;
+      paramLayerParams.l = paramInt;
+      paramLayerParams.U = new SegmentKeeper(paramSegmentKeeper);
+      paramLayerParams.F.set(this.L);
+      this.t.add(paramLayerParams);
+      paramSegmentKeeper = paramLayerParams.c;
+      this.s = paramLayerParams;
       return paramSegmentKeeper;
-    }
-    return null;
-  }
-  
-  public TextLayer.TextItem a()
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localArrayList != null) && (localArrayList.size() > f))
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem);
-      return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
     }
     return null;
   }
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.g = 1;
-    this.h = 1;
-    this.j = c;
-    this.m = 0;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem = null;
-    SLog.b(jdField_a_of_type_JavaLangString, "clear over");
+    return a;
   }
   
   public void a(int paramInt)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setMode:");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(",preMode:");
-    localStringBuilder.append(this.h);
+    localStringBuilder.append(this.i);
     SLog.b(str, localStringBuilder.toString());
-    this.h = this.g;
-    this.g = paramInt;
+    this.i = this.h;
+    this.h = paramInt;
     if (paramInt == 4) {
-      m();
+      x();
     }
-    super.k();
+    super.u();
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     super.a(paramInt1, paramInt2);
-    PointF localPointF = this.jdField_a_of_type_AndroidGraphicsPointF;
+    PointF localPointF = this.x;
     localPointF.x = (paramInt1 / 2);
     localPointF.y = (paramInt2 * 0.42F);
-    jdField_a_of_type_Int = (int)(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.b() * 0.04F);
+    b = (int)(this.z.getBitmapWidth() * 0.04F);
   }
   
   protected void a(Canvas paramCanvas)
   {
-    int i1 = this.g;
+    int i1 = this.h;
     Object localObject;
     TextLayer.TextItem localTextItem;
     if (i1 == 6)
     {
-      localObject = this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
+      localObject = this.w;
       if (localObject != null) {
         ((TextLayer.TextItem)localObject).a(paramCanvas);
       }
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = this.t.iterator();
       while (((Iterator)localObject).hasNext())
       {
         localTextItem = (TextLayer.TextItem)((Iterator)localObject).next();
-        if ((this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem != null) && (localTextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem != this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem)) {
+        if ((this.w != null) && (localTextItem.c != this.w.c)) {
           localTextItem.a(paramCanvas);
         }
       }
@@ -274,18 +229,18 @@ public class TextLayer
     if ((i1 != 4) && (i1 != 3))
     {
       if (i1 == 5) {
-        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localObject = this.t.iterator();
       }
     }
     else {
       while (((Iterator)localObject).hasNext())
       {
         localTextItem = (TextLayer.TextItem)((Iterator)localObject).next();
-        if (localTextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem != this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem)
+        if (localTextItem.c != this.s.c)
         {
           localTextItem.a(paramCanvas);
           continue;
-          localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          localObject = this.t.iterator();
           while (((Iterator)localObject).hasNext()) {
             ((TextLayer.TextItem)((Iterator)localObject).next()).a(paramCanvas);
           }
@@ -298,7 +253,7 @@ public class TextLayer
   {
     paramCanvas.save();
     paramCanvas.scale(paramFloat, paramFloat);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.t.iterator();
     while (localIterator.hasNext()) {
       ((TextLayer.TextItem)localIterator.next()).b(paramCanvas);
     }
@@ -308,9 +263,9 @@ public class TextLayer
   public void a(Matrix paramMatrix)
   {
     super.a(paramMatrix);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.t.iterator();
     while (localIterator.hasNext()) {
-      ((TextLayer.TextItem)localIterator.next()).jdField_a_of_type_AndroidGraphicsMatrix.set(paramMatrix);
+      ((TextLayer.TextItem)localIterator.next()).F.set(paramMatrix);
     }
   }
   
@@ -325,35 +280,35 @@ public class TextLayer
   
   public void a(DynamicTextItem paramDynamicTextItem)
   {
-    if ((paramDynamicTextItem != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if ((paramDynamicTextItem != null) && (this.t.size() > 0))
     {
       Object localObject = null;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.t.iterator();
       while (localIterator.hasNext())
       {
         TextLayer.TextItem localTextItem = (TextLayer.TextItem)localIterator.next();
-        if (paramDynamicTextItem.equals(localTextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem)) {
+        if (paramDynamicTextItem.equals(localTextItem.c)) {
           localObject = localTextItem;
         }
       }
-      this.jdField_a_of_type_JavaUtilArrayList.remove(localObject);
+      this.t.remove(localObject);
     }
   }
   
   public void a(DynamicTextItem paramDynamicTextItem, ShapeEffect paramShapeEffect, RectF paramRectF)
   {
     b(paramDynamicTextItem);
-    paramDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
+    paramDynamicTextItem = this.s;
     if (paramDynamicTextItem != null)
     {
-      paramDynamicTextItem.jdField_a_of_type_AndroidGraphicsPointF.x = (paramRectF.left + this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.n / 2.0F);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.jdField_a_of_type_AndroidGraphicsPointF.y = (paramRectF.top + this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.o / 2.0F);
+      paramDynamicTextItem.A.x = (paramRectF.left + this.s.G / 2.0F);
+      this.s.A.y = (paramRectF.top + this.s.H / 2.0F);
     }
   }
   
   public void a(TextLayer.LayerListener paramLayerListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$LayerListener = paramLayerListener;
+    this.r = paramLayerListener;
   }
   
   public void a(ArrayList<TextParcelData> paramArrayList, boolean paramBoolean)
@@ -361,7 +316,7 @@ public class TextLayer
     if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
       a(4);
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.t.clear();
       paramArrayList = paramArrayList.iterator();
       do
       {
@@ -369,16 +324,16 @@ public class TextLayer
           break;
         }
         TextLayer.TextItem localTextItem = ((TextParcelData)paramArrayList.next()).a(this);
-        localTextItem.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_AndroidGraphicsMatrix);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localTextItem);
-      } while (this.jdField_a_of_type_JavaUtilArrayList.size() <= f);
+        localTextItem.F.set(this.L);
+        this.t.add(localTextItem);
+      } while (this.t.size() <= g);
     }
-    k();
+    u();
   }
   
   public void a(boolean paramBoolean)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setKeyboardState:");
     localStringBuilder.append(paramBoolean);
@@ -386,19 +341,14 @@ public class TextLayer
     if (!paramBoolean) {
       a(4);
     }
-    super.k();
-  }
-  
-  public boolean a()
-  {
-    return this.g == 1;
+    super.u();
   }
   
   public boolean a(long paramLong)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.t.iterator();
     while (localIterator.hasNext()) {
-      if (((TextLayer.TextItem)localIterator.next()).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isSegmentChanged(paramLong)) {
+      if (((TextLayer.TextItem)localIterator.next()).U.isSegmentChanged(paramLong)) {
         return false;
       }
     }
@@ -407,10 +357,10 @@ public class TextLayer
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    if (b())
+    if (d())
     {
       int i1 = (int)paramMotionEvent.getY();
-      int i2 = Math.abs(i1 - this.l);
+      int i2 = Math.abs(i1 - this.n);
       int i3 = paramMotionEvent.getAction() & 0xFF;
       if (i3 != 0)
       {
@@ -419,44 +369,44 @@ public class TextLayer
           if (i3 != 2)
           {
             if (i3 == 5) {
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.c();
+              this.s.c();
             }
           }
           else
           {
-            if (this.g == 3) {
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.c();
+            if (this.h == 3) {
+              this.s.c();
             }
-            if (i2 > d) {
+            if (i2 > e) {
               a(3);
             }
           }
         }
         else
         {
-          TextLayer.TextItem localTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
+          TextLayer.TextItem localTextItem = this.s;
           if (localTextItem != null) {
             localTextItem.c();
           }
           a(this, false);
-          if (i2 < d) {
-            d();
-          } else if (this.g == 3) {
+          if (i2 < e) {
+            i();
+          } else if (this.h == 3) {
             a(4);
           }
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.b();
-        this.l = i1;
+        this.m.a(this.s);
+        this.s.b();
+        this.n = i1;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(paramMotionEvent, false);
-      paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
+      this.m.a(paramMotionEvent, false);
+      paramMotionEvent = this.s;
       if (paramMotionEvent == null)
       {
-        o();
+        A();
         return true;
       }
       a(paramMotionEvent);
@@ -465,46 +415,52 @@ public class TextLayer
     return false;
   }
   
-  public int b()
+  public void b()
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    this.h = 1;
+    this.i = 1;
+    this.k = d;
+    this.o = 0;
+    this.t.clear();
+    this.s = null;
+    SLog.b(a, "clear over");
   }
   
   public void b(int paramInt)
   {
     if (paramInt < 0)
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("setTextTop:");
       localStringBuilder.append(paramInt);
       SLog.e(str, localStringBuilder.toString());
       return;
     }
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setTextTop:");
     localStringBuilder.append(paramInt);
     SLog.b(str, localStringBuilder.toString());
-    this.m = paramInt;
+    this.o = paramInt;
   }
   
   public void b(int paramInt1, int paramInt2)
   {
     if ((paramInt1 >= 0) && (paramInt2 >= 0))
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("setTextTop:");
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("y=");
       localStringBuilder.append(paramInt2);
       SLog.b(str, localStringBuilder.toString());
-      this.n = paramInt1;
-      this.o = paramInt2;
+      this.p = paramInt1;
+      this.q = paramInt2;
       return;
     }
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setTextOffset x:");
     localStringBuilder.append(paramInt1);
@@ -515,27 +471,27 @@ public class TextLayer
   
   public void b(Canvas paramCanvas)
   {
-    a(paramCanvas, this.jdField_a_of_type_Float, false);
+    a(paramCanvas, this.J, false);
   }
   
   public void b(DynamicTextItem paramDynamicTextItem)
   {
-    TextLayer.TextItem localTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
+    TextLayer.TextItem localTextItem = this.s;
     if (localTextItem != null)
     {
-      localTextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem = paramDynamicTextItem;
-      localTextItem.n = paramDynamicTextItem.a();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.o = paramDynamicTextItem.b();
+      localTextItem.c = paramDynamicTextItem;
+      localTextItem.G = paramDynamicTextItem.c();
+      this.s.H = paramDynamicTextItem.d();
     }
-    localTextItem = this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
+    localTextItem = this.w;
     if (localTextItem != null)
     {
-      localTextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem = paramDynamicTextItem;
-      paramDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
+      localTextItem.c = paramDynamicTextItem;
+      paramDynamicTextItem = this.s;
       if (paramDynamicTextItem != null)
       {
-        localTextItem.j = paramDynamicTextItem.j;
-        this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.b = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.j;
+        localTextItem.B = paramDynamicTextItem.B;
+        this.w.d = this.s.B;
       }
     }
   }
@@ -544,31 +500,25 @@ public class TextLayer
   {
     a(5);
     if (paramBoolean) {
-      e();
+      k();
     }
-  }
-  
-  public boolean b()
-  {
-    int i1 = this.g;
-    return (i1 == 4) || (i1 == 3);
   }
   
   public boolean b(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = b();
+    boolean bool2 = d();
     boolean bool1 = true;
     if (bool2)
     {
       float f1 = paramMotionEvent.getX(0);
       float f2 = paramMotionEvent.getY(0);
-      int i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+      int i1 = this.t.size() - 1;
       while (i1 >= 0)
       {
-        paramMotionEvent = (TextLayer.TextItem)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        if (((paramMotionEvent == null) || (paramMotionEvent.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper == null) || (!paramMotionEvent.a()) || (paramMotionEvent.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isCurrentIn())) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(paramMotionEvent, f1, f2, false)))
+        paramMotionEvent = (TextLayer.TextItem)this.t.get(i1);
+        if (((paramMotionEvent == null) || (paramMotionEvent.U == null) || (!paramMotionEvent.e()) || (paramMotionEvent.U.isCurrentIn())) && (this.m.a(paramMotionEvent, f1, f2, false)))
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem = paramMotionEvent;
+          this.s = paramMotionEvent;
           break label120;
         }
         i1 -= 1;
@@ -578,78 +528,105 @@ public class TextLayer
     label120:
     if (bool1)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem);
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem);
+      this.t.remove(this.s);
+      this.t.add(this.s);
     }
     return bool1;
   }
   
-  public boolean c()
+  public DynamicTextItem c(int paramInt)
   {
-    return (this.n > 0) && (this.o > 0);
+    return a(null, null, paramInt);
   }
   
-  public void d()
+  public boolean c()
   {
-    TextLayer.LayerListener localLayerListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$LayerListener;
+    return this.h == 1;
+  }
+  
+  public boolean d()
+  {
+    int i1 = this.h;
+    return (i1 == 4) || (i1 == 3);
+  }
+  
+  public boolean h()
+  {
+    return (this.p > 0) && (this.q > 0);
+  }
+  
+  public void i()
+  {
+    TextLayer.LayerListener localLayerListener = this.r;
     if (localLayerListener != null)
     {
-      TextLayer.TextItem localTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
+      TextLayer.TextItem localTextItem = this.s;
       if (localTextItem != null)
       {
         if (localLayerListener.a(localTextItem))
         {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem);
+          this.t.remove(this.s);
           return;
         }
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$LayerListener.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem);
+        this.r.a(this.s.c);
       }
     }
   }
   
-  public void e()
+  public TextLayer.TextItem j()
+  {
+    ArrayList localArrayList = this.t;
+    if ((localArrayList != null) && (localArrayList.size() > g))
+    {
+      this.t.remove(this.s);
+      return this.s;
+    }
+    return null;
+  }
+  
+  public void k()
   {
     Object localObject;
-    if (!a())
+    if (!c())
     {
       a(6);
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
+      localObject = this.s;
       if (localObject != null)
       {
-        this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem = new TextLayer.TextItem(this, (TextLayer.TextItem)localObject);
-        this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.a();
-        TextLayer.TextItem.a(this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem);
+        this.w = new TextLayer.TextItem(this, (TextLayer.TextItem)localObject);
+        this.w.a();
+        TextLayer.TextItem.a(this.w);
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$LayerListener;
+      localObject = this.r;
       if (localObject != null) {
         ((TextLayer.LayerListener)localObject).a(1.0F);
       }
     }
   }
   
-  public void f()
+  public void l()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.t.size() > 0)
     {
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      ArrayList localArrayList = this.t;
       localArrayList.remove(localArrayList.size() - 1);
     }
   }
   
-  public void g()
+  public void m()
   {
     Object localObject1 = new ArrayList();
     Object localObject2;
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.t.size() > 0)
     {
-      localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject2 = this.t.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         TextLayer.TextItem localTextItem = (TextLayer.TextItem)((Iterator)localObject2).next();
-        if ((localTextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem != null) && (localTextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.e())) {
+        if ((localTextItem.c != null) && (localTextItem.c.m())) {
           ((List)localObject1).add(localTextItem);
         }
       }
@@ -658,68 +635,82 @@ public class TextLayer
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (TextLayer.TextItem)((Iterator)localObject1).next();
-      this.jdField_a_of_type_JavaUtilArrayList.remove(localObject2);
+      this.t.remove(localObject2);
     }
-    localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
-    if ((localObject1 != null) && (((TextLayer.TextItem)localObject1).jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.e())) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem = null;
+    localObject1 = this.s;
+    if ((localObject1 != null) && (((TextLayer.TextItem)localObject1).c != null) && (this.s.c.m())) {
+      this.s = null;
     }
   }
   
-  public void h()
+  public void n()
   {
-    if (this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem != null)
+    if (this.w != null)
     {
       a(6);
-      TextLayer.TextItem.b(this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem);
+      TextLayer.TextItem.b(this.w);
     }
   }
   
-  public void i()
+  public DynamicTextItem o()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
+    TextLayer.TextItem localTextItem = this.s;
+    if (localTextItem != null) {
+      return localTextItem.c;
+    }
+    return null;
+  }
+  
+  public void p()
+  {
+    Object localObject = this.s;
     if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(localObject);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.c();
-      localObject = jdField_a_of_type_JavaLangString;
+      this.t.remove(localObject);
+      this.s.c();
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("delete ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem);
+      localStringBuilder.append(this.s);
       SLog.b((String)localObject, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem = null;
+      this.s = null;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    if (this.t.size() == 0)
     {
-      this.g = 1;
       this.h = 1;
+      this.i = 1;
     }
   }
   
-  public void j()
+  public int q()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem;
-    if ((localObject != null) && (((TextLayer.TextItem)localObject).jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem != null)) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$TextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a(-1, false);
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public void r()
+  {
+    Object localObject = this.s;
+    if ((localObject != null) && (((TextLayer.TextItem)localObject).c != null)) {
+      this.s.c.a(-1, false);
     }
-    localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject = this.t;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         TextLayer.TextItem localTextItem = (TextLayer.TextItem)((Iterator)localObject).next();
-        if (localTextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem != null) {
-          localTextItem.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a(-1, false);
+        if (localTextItem.c != null) {
+          localTextItem.c.a(-1, false);
         }
       }
     }
-    k();
+    u();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.TextLayer
  * JD-Core Version:    0.7.0.1
  */

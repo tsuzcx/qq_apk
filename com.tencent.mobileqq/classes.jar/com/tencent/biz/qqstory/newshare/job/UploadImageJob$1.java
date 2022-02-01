@@ -22,22 +22,22 @@ class UploadImageJob$1
   
   public void b(UpCallBack.SendResult paramSendResult)
   {
-    if ((paramSendResult.jdField_b_of_type_Int == 0) && (!TextUtils.isEmpty(paramSendResult.jdField_b_of_type_JavaLangString)))
+    if ((paramSendResult.b == 0) && (!TextUtils.isEmpty(paramSendResult.d)))
     {
-      this.a.a("UploadImageJob_out_image_url", paramSendResult.jdField_b_of_type_JavaLangString);
+      this.a.a("UploadImageJob_out_image_url", paramSendResult.d);
       UploadImageJob.a(this.a, true);
       return;
     }
-    paramSendResult = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.a);
+    paramSendResult = new ErrorMessage(paramSendResult.b, paramSendResult.c);
     if (QLog.isColorLevel()) {
-      QLog.e(this.a.jdField_b_of_type_JavaLangString, 2, paramSendResult, new Object[0]);
+      QLog.e(this.a.e, 2, paramSendResult, new Object[0]);
     }
     UploadImageJob.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.UploadImageJob.1
  * JD-Core Version:    0.7.0.1
  */

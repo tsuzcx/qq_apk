@@ -20,11 +20,11 @@ class LiteActivity$6
     }
     if (paramInt > 0)
     {
-      this.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.b();
-      this.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setSelectionFromBottom(paramInt, 0);
+      this.a.m.d();
+      this.a.m.notifyDataSetChanged();
+      this.a.f.setSelectionFromBottom(paramInt, 0);
     }
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+    this.a.f.springBackOverScrollHeaderView();
   }
 }
 

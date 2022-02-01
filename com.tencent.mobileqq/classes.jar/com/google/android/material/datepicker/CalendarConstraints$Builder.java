@@ -5,27 +5,27 @@ import androidx.annotation.NonNull;
 
 public final class CalendarConstraints$Builder
 {
-  static final long jdField_a_of_type_Long = UtcDates.a(Month.a(1900, 0).jdField_a_of_type_Long);
-  static final long b = UtcDates.a(Month.a(2100, 11).jdField_a_of_type_Long);
-  private CalendarConstraints.DateValidator jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints$DateValidator = DateValidatorPointForward.a(-9223372036854775808L);
-  private Long jdField_a_of_type_JavaLangLong;
-  private long c = jdField_a_of_type_Long;
+  static final long a = UtcDates.a(Month.a(1900, 0).e);
+  static final long b = UtcDates.a(Month.a(2100, 11).e);
+  private long c = a;
   private long d = b;
+  private Long e;
+  private CalendarConstraints.DateValidator f = DateValidatorPointForward.b(-9223372036854775808L);
   
   public CalendarConstraints$Builder() {}
   
   CalendarConstraints$Builder(@NonNull CalendarConstraints paramCalendarConstraints)
   {
-    this.c = CalendarConstraints.a(paramCalendarConstraints).jdField_a_of_type_Long;
-    this.d = CalendarConstraints.b(paramCalendarConstraints).jdField_a_of_type_Long;
-    this.jdField_a_of_type_JavaLangLong = Long.valueOf(CalendarConstraints.c(paramCalendarConstraints).jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints$DateValidator = CalendarConstraints.a(paramCalendarConstraints);
+    this.c = CalendarConstraints.a(paramCalendarConstraints).e;
+    this.d = CalendarConstraints.b(paramCalendarConstraints).e;
+    this.e = Long.valueOf(CalendarConstraints.c(paramCalendarConstraints).e);
+    this.f = CalendarConstraints.d(paramCalendarConstraints);
   }
   
   @NonNull
   public Builder a(long paramLong)
   {
-    this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
+    this.e = Long.valueOf(paramLong);
     return this;
   }
   
@@ -33,11 +33,11 @@ public final class CalendarConstraints$Builder
   public CalendarConstraints a()
   {
     Object localObject = new Bundle();
-    ((Bundle)localObject).putParcelable("DEEP_COPY_VALIDATOR_KEY", this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints$DateValidator);
+    ((Bundle)localObject).putParcelable("DEEP_COPY_VALIDATOR_KEY", this.f);
     Month localMonth1 = Month.a(this.c);
     Month localMonth2 = Month.a(this.d);
     CalendarConstraints.DateValidator localDateValidator = (CalendarConstraints.DateValidator)((Bundle)localObject).getParcelable("DEEP_COPY_VALIDATOR_KEY");
-    localObject = this.jdField_a_of_type_JavaLangLong;
+    localObject = this.e;
     if (localObject == null) {
       localObject = null;
     } else {
@@ -48,7 +48,7 @@ public final class CalendarConstraints$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.CalendarConstraints.Builder
  * JD-Core Version:    0.7.0.1
  */

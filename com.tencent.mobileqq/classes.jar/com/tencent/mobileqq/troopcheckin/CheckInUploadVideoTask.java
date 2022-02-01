@@ -20,22 +20,20 @@ import pttcenterservice.PttShortVideo.PttShortVideoUploadReq;
 public class CheckInUploadVideoTask
   extends CheckInUploadTask
 {
-  private ITransactionCallback b;
-  protected Transaction b;
-  protected boolean b;
-  protected String c;
+  protected String h;
+  protected boolean i = false;
+  protected Transaction j;
+  private ITransactionCallback k = new CheckInUploadVideoTask.1(this);
   
   public CheckInUploadVideoTask(CheckInResEntity paramCheckInResEntity, int paramInt)
   {
     super(paramCheckInResEntity, paramInt);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_ComTencentMobileqqHighwayApiITransactionCallback = new CheckInUploadVideoTask.1(this);
   }
   
   public void a()
   {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInResEntity.jdField_b_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInResEntity.jdField_a_of_type_JavaLangString;
+    String str1 = this.a.b;
+    String str2 = this.a.a;
     boolean bool2 = a(str1);
     boolean bool1;
     if (bool2) {
@@ -51,7 +49,7 @@ public class CheckInUploadVideoTask
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean)) {
+    if ((this.e) && (this.i)) {
       c();
     }
   }
@@ -60,14 +58,14 @@ public class CheckInUploadVideoTask
   {
     if (QLog.isColorLevel())
     {
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.b;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("uploadVideo path= ");
       ((StringBuilder)localObject2).append(paramString);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    Object localObject2 = this.jdField_b_of_type_ComTencentMobileqqHighwayApiITransactionCallback;
-    Object localObject1 = a();
+    Object localObject2 = this.k;
+    Object localObject1 = f();
     if (localObject1 != null)
     {
       String str = ((QQAppInterface)localObject1).getCurrentUin();
@@ -76,13 +74,13 @@ public class CheckInUploadVideoTask
       if (arrayOfByte == null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadVideo md5 null ");
+          QLog.d(this.b, 2, "uploadVideo md5 null ");
         }
         return false;
       }
       if (QLog.isColorLevel())
       {
-        localObject3 = this.jdField_a_of_type_JavaLangString;
+        localObject3 = this.b;
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("uploadVideo,file length ");
         ((StringBuilder)localObject4).append(new File(paramString).length());
@@ -106,22 +104,22 @@ public class CheckInUploadVideoTask
       ((PttShortVideo.PttShortVideoFileInfo)localObject4).uint32_file_res_length.set(0);
       ((PttShortVideo.PttShortVideoFileInfo)localObject4).uint32_file_res_width.set(0);
       ((PttShortVideo.PttShortVideoFileInfo)localObject4).uint32_file_format.set(3);
-      ((PttShortVideo.PttShortVideoFileInfo)localObject4).uint32_file_time.set((int)this.jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInResEntity.jdField_a_of_type_Long);
+      ((PttShortVideo.PttShortVideoFileInfo)localObject4).uint32_file_time.set((int)this.a.c);
       ((PttShortVideo.PttShortVideoFileInfo)localObject4).uint64_thumb_file_size.set(0L);
       ((PttShortVideo.PttShortVideoUploadReq)localObject3).msg_PttShortVideoFileInfo.set((MessageMicro)localObject4);
       paramString = new Transaction(str, 74, paramString, 0, arrayOfByte, (ITransactionCallback)localObject2, ((PttShortVideo.PttShortVideoUploadReq)localObject3).toByteArray(), false);
-      int i = ((QQAppInterface)localObject1).getHwEngine().submitTransactionTask(paramString);
-      if (i == 0)
+      int m = ((QQAppInterface)localObject1).getHwEngine().submitTransactionTask(paramString);
+      if (m == 0)
       {
-        this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = paramString;
+        this.j = paramString;
         return true;
       }
       if (QLog.isColorLevel())
       {
-        paramString = this.jdField_a_of_type_JavaLangString;
+        paramString = this.b;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("uploadVideo submitTransactionTask  retCode= ");
-        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(m);
         QLog.d(paramString, 2, ((StringBuilder)localObject1).toString());
       }
     }
@@ -133,11 +131,11 @@ public class CheckInUploadVideoTask
     Bundle localBundle = new Bundle();
     boolean bool = true;
     localBundle.putInt("isVideo", 1);
-    if ((this.jdField_b_of_type_JavaLangString != null) && (this.c != null))
+    if ((this.d != null) && (this.h != null))
     {
       localBundle.putInt("result", 1);
-      localBundle.putString("url", this.jdField_b_of_type_JavaLangString);
-      localBundle.putString("vid", this.c);
+      localBundle.putString("url", this.d);
+      localBundle.putString("vid", this.h);
     }
     else
     {
@@ -145,15 +143,15 @@ public class CheckInUploadVideoTask
       localBundle.putString("error", "");
       bool = false;
     }
-    CheckInServer.a().a(bool, this.jdField_a_of_type_Int, localBundle);
+    CheckInServer.a().a(bool, this.c, localBundle);
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+    if (this.f != null) {
+      this.f.cancelTransaction();
     }
-    Transaction localTransaction = this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction;
+    Transaction localTransaction = this.j;
     if (localTransaction != null) {
       localTransaction.cancelTransaction();
     }
@@ -161,7 +159,7 @@ public class CheckInUploadVideoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopcheckin.CheckInUploadVideoTask
  * JD-Core Version:    0.7.0.1
  */

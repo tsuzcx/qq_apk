@@ -827,7 +827,7 @@ public class MttLoader
     localStringBuilder.append(",from=");
     localStringBuilder.append(paramString2);
     localStringBuilder.append(",version=");
-    localStringBuilder.append("4.3.0.73");
+    localStringBuilder.append("4.3.0.169");
     localStringBuilder.append((String)localObject);
     return loadUrl(paramContext, localStringBuilder.toString(), paramHashMap, paramWebView);
   }
@@ -1215,7 +1215,7 @@ public class MttLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.stat.MttLoader
  * JD-Core Version:    0.7.0.1
  */

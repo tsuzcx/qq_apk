@@ -21,12 +21,12 @@ public class TroopEnterEffectsStep
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "TroopEnterEffectsStep: doStep");
     }
-    long l = SharedPreUtils.c(this.mAutomator.a.getApplication(), this.mAutomator.a.getCurrentAccountUin());
-    TroopEnterEffectConfig localTroopEnterEffectConfig = ((ITroopEnterEffectService)this.mAutomator.a.getRuntimeService(ITroopEnterEffectService.class, "all")).getTroopEnterEffectConfig();
-    if ((l != 0L) && (localTroopEnterEffectConfig.a != null) && ((System.currentTimeMillis() - l) / 1000L <= localTroopEnterEffectConfig.a.a)) {
+    long l = SharedPreUtils.bi(this.mAutomator.k.getApplication(), this.mAutomator.k.getCurrentAccountUin());
+    TroopEnterEffectConfig localTroopEnterEffectConfig = ((ITroopEnterEffectService)this.mAutomator.k.getRuntimeService(ITroopEnterEffectService.class, "all")).getTroopEnterEffectConfig();
+    if ((l != 0L) && (localTroopEnterEffectConfig.b != null) && ((System.currentTimeMillis() - l) / 1000L <= localTroopEnterEffectConfig.b.a)) {
       return 7;
     }
-    ((IApolloExtensionHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(2L, 0L);
+    ((IApolloExtensionHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(2L, 0L);
     return 2;
   }
   
@@ -34,7 +34,7 @@ public class TroopEnterEffectsStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.TroopEnterEffectsStep
  * JD-Core Version:    0.7.0.1
  */

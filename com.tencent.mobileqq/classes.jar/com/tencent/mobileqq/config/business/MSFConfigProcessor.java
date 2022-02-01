@@ -18,7 +18,7 @@ public class MSFConfigProcessor
 {
   public static boolean a()
   {
-    MSFConfigBean localMSFConfigBean = (MSFConfigBean)QConfigManager.a().a(661);
+    MSFConfigBean localMSFConfigBean = (MSFConfigBean)QConfigManager.b().b(661);
     if (localMSFConfigBean != null) {
       return localMSFConfigBean.a;
     }
@@ -37,12 +37,12 @@ public class MSFConfigProcessor
     QLog.i("MSFConfigProcessor", 1, "[onParsed] config");
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      MSFConfigBean localMSFConfigBean = MSFConfigBean.a(paramArrayOfQConfItem[0].a);
+      MSFConfigBean localMSFConfigBean = MSFConfigBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("MSFConfigProcessor", 2, localStringBuilder.toString());
       }
       return localMSFConfigBean;
@@ -119,7 +119,7 @@ public class MSFConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MSFConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

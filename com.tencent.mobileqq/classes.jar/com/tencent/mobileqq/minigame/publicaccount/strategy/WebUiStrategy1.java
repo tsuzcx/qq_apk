@@ -18,7 +18,7 @@ public class WebUiStrategy1
   @SuppressLint({"UseCompatLoadingForDrawables"})
   public void setup(MiniGamePublicAccountWebFragment paramMiniGamePublicAccountWebFragment)
   {
-    if (!SimpleUIUtil.a())
+    if (!SimpleUIUtil.e())
     {
       paramMiniGamePublicAccountWebFragment.getBaseActivity().mSystemBarComp = null;
       paramMiniGamePublicAccountWebFragment.getBaseActivity().setImmersiveStatus(0);
@@ -27,18 +27,18 @@ public class WebUiStrategy1
       ImmersiveUtils.setStatusTextColor(true, paramMiniGamePublicAccountWebFragment.getActivity().getWindow());
     }
     paramMiniGamePublicAccountWebFragment.rootView.setBackgroundColor(-1);
-    paramMiniGamePublicAccountWebFragment.headerLayoutBg.setBackgroundResource(2030174209);
+    paramMiniGamePublicAccountWebFragment.headerLayoutBg.setBackgroundResource(2030239752);
     paramMiniGamePublicAccountWebFragment.layoutTitleBar.setBackgroundResource(2030108672);
     paramMiniGamePublicAccountWebFragment.titleBar.setTitleBarTransparent();
-    paramMiniGamePublicAccountWebFragment.titleBar.getLeftBackIcon().setBackgroundResource(2130849420);
-    paramMiniGamePublicAccountWebFragment.titleBar.setRightImage(paramMiniGamePublicAccountWebFragment.getResources().getDrawable(2130848559), null);
-    paramMiniGamePublicAccountWebFragment.moreMsgBtn.setCompoundDrawablesWithIntrinsicBounds(null, null, paramMiniGamePublicAccountWebFragment.getResources().getDrawable(2130839461), null);
+    paramMiniGamePublicAccountWebFragment.titleBar.getLeftBackIcon().setBackgroundResource(2130851104);
+    paramMiniGamePublicAccountWebFragment.titleBar.setRightImage(paramMiniGamePublicAccountWebFragment.getResources().getDrawable(2130850222), null);
+    paramMiniGamePublicAccountWebFragment.moreMsgBtn.setCompoundDrawablesWithIntrinsicBounds(null, null, paramMiniGamePublicAccountWebFragment.getResources().getDrawable(2130839650), null);
     paramMiniGamePublicAccountWebFragment.moreMsgBtn.setCompoundDrawablePadding(DisplayUtil.a(paramMiniGamePublicAccountWebFragment.getActivity(), 5.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.strategy.WebUiStrategy1
  * JD-Core Version:    0.7.0.1
  */

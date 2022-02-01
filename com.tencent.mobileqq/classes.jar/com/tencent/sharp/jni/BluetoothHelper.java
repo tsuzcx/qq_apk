@@ -14,20 +14,26 @@ import java.util.List;
 public class BluetoothHelper
   implements BluetoothProfile.ServiceListener
 {
-  private static final String jdField_a_of_type_JavaLangString = "BluetoothHelper";
-  private volatile int jdField_a_of_type_Int = 1;
-  private BluetoothAdapter jdField_a_of_type_AndroidBluetoothBluetoothAdapter = null;
-  private BluetoothProfile jdField_a_of_type_AndroidBluetoothBluetoothProfile = null;
-  private BluetoothHelper.IStateChangeListener jdField_a_of_type_ComTencentSharpJniBluetoothHelper$IStateChangeListener = null;
-  private DeviceConfigManager jdField_a_of_type_ComTencentSharpJniDeviceConfigManager = DeviceConfigManager.a();
-  public volatile boolean a;
+  private static final String b = "BluetoothHelper";
+  public volatile boolean a = false;
+  private BluetoothAdapter c = null;
+  private BluetoothProfile d = null;
+  private BluetoothHelper.IStateChangeListener e = null;
+  private DeviceConfigManager f = DeviceConfigManager.a();
+  private volatile int g = 1;
   
-  public BluetoothHelper()
+  static void a(IntentFilter paramIntentFilter)
   {
-    this.jdField_a_of_type_Boolean = false;
+    paramIntentFilter.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
+    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_CONNECTED");
+    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_DISCONNECTED");
+    paramIntentFilter.addAction("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED");
+    paramIntentFilter.addAction("android.bluetooth.headset.profile.action.AUDIO_STATE_CHANGED");
+    paramIntentFilter.addAction("android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED");
+    paramIntentFilter.addAction("android.media.ACTION_SCO_AUDIO_STATE_UPDATED");
   }
   
-  static String a(int paramInt)
+  static String b(int paramInt)
   {
     String str;
     switch (paramInt)
@@ -55,18 +61,7 @@ public class BluetoothHelper
     return localStringBuilder.toString();
   }
   
-  static void a(IntentFilter paramIntentFilter)
-  {
-    paramIntentFilter.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_CONNECTED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_DISCONNECTED");
-    paramIntentFilter.addAction("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED");
-    paramIntentFilter.addAction("android.bluetooth.headset.profile.action.AUDIO_STATE_CHANGED");
-    paramIntentFilter.addAction("android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED");
-    paramIntentFilter.addAction("android.media.ACTION_SCO_AUDIO_STATE_UPDATED");
-  }
-  
-  static String b(int paramInt)
+  static String c(int paramInt)
   {
     String str;
     if (paramInt != -1)
@@ -100,7 +95,7 @@ public class BluetoothHelper
     return localStringBuilder.toString();
   }
   
-  static String c(int paramInt)
+  static String d(int paramInt)
   {
     String str;
     if (paramInt != 0)
@@ -134,27 +129,22 @@ public class BluetoothHelper
     return localStringBuilder.toString();
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public void a()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter != null)
+      if (this.c != null)
       {
-        if (this.jdField_a_of_type_AndroidBluetoothBluetoothProfile != null) {
-          this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, this.jdField_a_of_type_AndroidBluetoothBluetoothProfile);
+        if (this.d != null) {
+          this.c.closeProfileProxy(1, this.d);
         }
-        this.jdField_a_of_type_AndroidBluetoothBluetoothProfile = null;
+        this.d = null;
         return;
       }
     }
     catch (Exception localException)
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" release exception[");
       localStringBuilder.append(localException.getMessage());
@@ -165,7 +155,7 @@ public class BluetoothHelper
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public void a(Intent paramIntent)
@@ -179,22 +169,22 @@ public class BluetoothHelper
       j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_STATE", -1);
       if (QLog.isColorLevel())
       {
-        paramIntent = jdField_a_of_type_JavaLangString;
+        paramIntent = b;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("receive BluetoothAdapter.ACTION_STATE_CHANGED[");
-        ((StringBuilder)localObject1).append(a(i));
+        ((StringBuilder)localObject1).append(b(i));
         ((StringBuilder)localObject1).append(" <- ");
-        ((StringBuilder)localObject1).append(a(j));
+        ((StringBuilder)localObject1).append(b(j));
         ((StringBuilder)localObject1).append("]");
         QLog.w(paramIntent, 2, ((StringBuilder)localObject1).toString());
       }
       if (i == 10)
       {
-        this.jdField_a_of_type_ComTencentSharpJniDeviceConfigManager.a("DEVICE_BLUETOOTH_HEADSET", false);
+        this.f.a("DEVICE_BLUETOOTH_HEADSET", false);
         return;
       }
       if (i == 12) {
-        this.jdField_a_of_type_ComTencentSharpJniDeviceConfigManager.a("DEVICE_BLUETOOTH_HEADSET", true);
+        this.f.a("DEVICE_BLUETOOTH_HEADSET", true);
       }
     }
     else
@@ -210,12 +200,12 @@ public class BluetoothHelper
         localObject2 = (BluetoothDevice)paramIntent.getParcelableExtra("android.bluetooth.device.extra.DEVICE");
         if (QLog.isColorLevel())
         {
-          localObject3 = jdField_a_of_type_JavaLangString;
+          localObject3 = b;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("receive BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED[");
-          localStringBuilder.append(c(i));
+          localStringBuilder.append(d(i));
           localStringBuilder.append(" <- ");
-          localStringBuilder.append(c(j));
+          localStringBuilder.append(d(j));
           localStringBuilder.append("], device[");
           if (localObject2 != null) {
             paramIntent = ((BluetoothDevice)localObject2).getName();
@@ -228,16 +218,16 @@ public class BluetoothHelper
         }
         if (i == 2)
         {
-          this.jdField_a_of_type_ComTencentSharpJniDeviceConfigManager.a("DEVICE_BLUETOOTH_HEADSET", true);
-          paramIntent = this.jdField_a_of_type_ComTencentSharpJniDeviceConfigManager;
+          this.f.a("DEVICE_BLUETOOTH_HEADSET", true);
+          paramIntent = this.f;
           if (localObject2 != null) {
             localObject1 = ((BluetoothDevice)localObject2).getName();
           }
-          paramIntent.a((String)localObject1);
+          paramIntent.c((String)localObject1);
           return;
         }
         if (i == 0) {
-          this.jdField_a_of_type_ComTencentSharpJniDeviceConfigManager.a("DEVICE_BLUETOOTH_HEADSET", false);
+          this.f.a("DEVICE_BLUETOOTH_HEADSET", false);
         }
       }
       else
@@ -247,7 +237,7 @@ public class BluetoothHelper
           i = paramIntent.getIntExtra("android.bluetooth.profile.extra.STATE", 10);
           if (QLog.isColorLevel())
           {
-            paramIntent = jdField_a_of_type_JavaLangString;
+            paramIntent = b;
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("receive BluetoothHeadset.ACTION_AUDIO_STATE_CHANGED[");
             ((StringBuilder)localObject1).append(i);
@@ -255,22 +245,22 @@ public class BluetoothHelper
             QLog.w(paramIntent, 2, ((StringBuilder)localObject1).toString());
           }
           if (i == 12) {
-            this.jdField_a_of_type_Int = 5;
+            this.g = 5;
           } else if (i == 10) {
-            if (this.jdField_a_of_type_Boolean)
+            if (this.a)
             {
               if (QLog.isColorLevel()) {
-                QLog.i(jdField_a_of_type_JavaLangString, 2, "self stop bluetooth");
+                QLog.i(b, 2, "self stop bluetooth");
               }
-              this.jdField_a_of_type_Int = 3;
+              this.g = 3;
             }
             else
             {
-              this.jdField_a_of_type_Int = 1;
-              this.jdField_a_of_type_ComTencentSharpJniDeviceConfigManager.a("DEVICE_BLUETOOTH_HEADSET", false);
+              this.g = 1;
+              this.f.a("DEVICE_BLUETOOTH_HEADSET", false);
             }
           }
-          this.jdField_a_of_type_Boolean = false;
+          this.a = false;
           return;
         }
         if ("android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED".equals(paramIntent.getAction()))
@@ -278,7 +268,7 @@ public class BluetoothHelper
           i = paramIntent.getIntExtra("android.bluetooth.profile.extra.STATE", -1);
           if (QLog.isColorLevel())
           {
-            paramIntent = jdField_a_of_type_JavaLangString;
+            paramIntent = b;
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("receive BluetoothHeadset.ACTION_CONNECTION_STATE_CHANGED[");
             ((StringBuilder)localObject1).append(i);
@@ -290,12 +280,12 @@ public class BluetoothHelper
             if (i != 2) {
               return;
             }
-            this.jdField_a_of_type_Int = 2;
-            this.jdField_a_of_type_ComTencentSharpJniDeviceConfigManager.a("DEVICE_BLUETOOTH_HEADSET", true);
+            this.g = 2;
+            this.f.a("DEVICE_BLUETOOTH_HEADSET", true);
             return;
           }
-          this.jdField_a_of_type_Int = 1;
-          this.jdField_a_of_type_ComTencentSharpJniDeviceConfigManager.a("DEVICE_BLUETOOTH_HEADSET", false);
+          this.g = 1;
+          this.f.a("DEVICE_BLUETOOTH_HEADSET", false);
           return;
         }
         if ("android.media.ACTION_SCO_AUDIO_STATE_UPDATED".equals(paramIntent.getAction()))
@@ -303,15 +293,15 @@ public class BluetoothHelper
           i = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_STATE", -1);
           j = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_PREVIOUS_STATE", -1);
           localObject3 = (BluetoothDevice)paramIntent.getParcelableExtra("android.bluetooth.device.extra.DEVICE");
-          bool = this.jdField_a_of_type_ComTencentSharpJniDeviceConfigManager.c("DEVICE_BLUETOOTH_HEADSET");
+          bool = this.f.d("DEVICE_BLUETOOTH_HEADSET");
           if (QLog.isColorLevel())
           {
-            paramIntent = jdField_a_of_type_JavaLangString;
+            paramIntent = b;
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("receive AudioManager.ACTION_SCO_AUDIO_STATE_UPDATED[");
-            ((StringBuilder)localObject2).append(b(i));
+            ((StringBuilder)localObject2).append(c(i));
             ((StringBuilder)localObject2).append(" <- ");
-            ((StringBuilder)localObject2).append(b(j));
+            ((StringBuilder)localObject2).append(c(j));
             ((StringBuilder)localObject2).append("], device[");
             if (localObject3 != null) {
               localObject1 = ((BluetoothDevice)localObject3).getName();
@@ -327,9 +317,55 @@ public class BluetoothHelper
     }
   }
   
-  public boolean a()
+  public boolean a(Context paramContext, BluetoothHelper.IStateChangeListener paramIStateChangeListener)
   {
-    Object localObject = this.jdField_a_of_type_AndroidBluetoothBluetoothProfile;
+    Object localObject;
+    if (paramContext != null)
+    {
+      localObject = BluetoothAdapter.getDefaultAdapter();
+      this.c = ((BluetoothAdapter)localObject);
+      if (localObject != null)
+      {
+        this.e = paramIStateChangeListener;
+        if (paramIStateChangeListener != null)
+        {
+          if ((this.c.isEnabled()) && (this.d == null) && (!this.c.getProfileProxy(paramContext, this, 1)))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e(b, 2, "init err, getProfileProxy HEADSET fail");
+            }
+            return false;
+          }
+          return true;
+        }
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramIStateChangeListener = b;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("init err, mContext[");
+      ((StringBuilder)localObject).append(paramContext);
+      paramContext = ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("], mBluetoothAdapter[");
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append("], mStateChangeListener[");
+      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append("]");
+      QLog.e(paramIStateChangeListener, 2, new Object[] { paramContext, ((StringBuilder)localObject).toString() });
+    }
+    return false;
+  }
+  
+  public int b()
+  {
+    return this.g;
+  }
+  
+  public boolean c()
+  {
+    Object localObject = this.d;
     if (localObject != null) {
       try
       {
@@ -344,7 +380,7 @@ public class BluetoothHelper
       }
       catch (Exception localException)
       {
-        String str = jdField_a_of_type_JavaLangString;
+        String str = b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("isConnected exception[");
         localStringBuilder.append(localException.getMessage());
@@ -355,69 +391,28 @@ public class BluetoothHelper
     return false;
   }
   
-  public boolean a(Context paramContext, BluetoothHelper.IStateChangeListener paramIStateChangeListener)
-  {
-    Object localObject;
-    if (paramContext != null)
-    {
-      localObject = BluetoothAdapter.getDefaultAdapter();
-      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter = ((BluetoothAdapter)localObject);
-      if (localObject != null)
-      {
-        this.jdField_a_of_type_ComTencentSharpJniBluetoothHelper$IStateChangeListener = paramIStateChangeListener;
-        if (paramIStateChangeListener != null)
-        {
-          if ((this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.isEnabled()) && (this.jdField_a_of_type_AndroidBluetoothBluetoothProfile == null) && (!this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.getProfileProxy(paramContext, this, 1)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e(jdField_a_of_type_JavaLangString, 2, "init err, getProfileProxy HEADSET fail");
-            }
-            return false;
-          }
-          return true;
-        }
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      paramIStateChangeListener = jdField_a_of_type_JavaLangString;
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("init err, mContext[");
-      ((StringBuilder)localObject).append(paramContext);
-      paramContext = ((StringBuilder)localObject).toString();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("], mBluetoothAdapter[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter);
-      ((StringBuilder)localObject).append("], mStateChangeListener[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentSharpJniBluetoothHelper$IStateChangeListener);
-      ((StringBuilder)localObject).append("]");
-      QLog.e(paramIStateChangeListener, 2, new Object[] { paramContext, ((StringBuilder)localObject).toString() });
-    }
-    return false;
-  }
-  
   public void onServiceConnected(int paramInt, BluetoothProfile paramBluetoothProfile)
   {
     if (paramInt == 1)
     {
-      Object localObject = this.jdField_a_of_type_AndroidBluetoothBluetoothProfile;
+      Object localObject = this.d;
       if ((localObject != null) && (localObject != paramBluetoothProfile))
       {
         if (QLog.isColorLevel())
         {
-          localObject = jdField_a_of_type_JavaLangString;
+          localObject = b;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("onServiceConnected: HEADSET connected proxy[");
           localStringBuilder.append(paramBluetoothProfile);
           localStringBuilder.append("], profile[");
-          localStringBuilder.append(this.jdField_a_of_type_AndroidBluetoothBluetoothProfile);
+          localStringBuilder.append(this.d);
           localStringBuilder.append("]");
           QLog.w((String)localObject, 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, this.jdField_a_of_type_AndroidBluetoothBluetoothProfile);
-        this.jdField_a_of_type_AndroidBluetoothBluetoothProfile = null;
+        this.c.closeProfileProxy(1, this.d);
+        this.d = null;
       }
-      this.jdField_a_of_type_AndroidBluetoothBluetoothProfile = paramBluetoothProfile;
+      this.d = paramBluetoothProfile;
       ThreadManager.post(new BluetoothHelper.1(this), 5, null, false);
     }
   }
@@ -427,23 +422,23 @@ public class BluetoothHelper
     if (paramInt == 1)
     {
       if (QLog.isColorLevel()) {
-        QLog.w(jdField_a_of_type_JavaLangString, 2, "onServiceDisconnected");
+        QLog.w(b, 2, "onServiceDisconnected");
       }
-      if (a()) {
-        this.jdField_a_of_type_ComTencentSharpJniBluetoothHelper$IStateChangeListener.a(false);
+      if (c()) {
+        this.e.a(false);
       }
-      BluetoothProfile localBluetoothProfile = this.jdField_a_of_type_AndroidBluetoothBluetoothProfile;
+      BluetoothProfile localBluetoothProfile = this.d;
       if (localBluetoothProfile != null)
       {
-        this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, localBluetoothProfile);
-        this.jdField_a_of_type_AndroidBluetoothBluetoothProfile = null;
+        this.c.closeProfileProxy(1, localBluetoothProfile);
+        this.d = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.sharp.jni.BluetoothHelper
  * JD-Core Version:    0.7.0.1
  */

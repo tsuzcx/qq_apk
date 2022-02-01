@@ -11,12 +11,6 @@ public abstract interface IScreenShotShareHelper
 {
   public static final IScreenShotShareHelper.Companion a = IScreenShotShareHelper.Companion.a;
   
-  @Nullable
-  public abstract QQProgressDialog a();
-  
-  @Nullable
-  public abstract String a();
-  
   public abstract void a();
   
   public abstract void a(int paramInt);
@@ -29,27 +23,33 @@ public abstract interface IScreenShotShareHelper
   
   public abstract void a(@Nullable JSONArray paramJSONArray);
   
-  public abstract int b();
-  
   @Nullable
   public abstract String b();
   
   public abstract void b(@Nullable String paramString);
   
-  @Nullable
-  public abstract String c();
-  
   public abstract void c(@Nullable String paramString);
-  
-  public abstract void d(@Nullable String paramString);
   
   public abstract void e(@Nullable String paramString);
   
-  public abstract void h();
+  public abstract void f(@Nullable String paramString);
+  
+  public abstract void k();
+  
+  @Nullable
+  public abstract String l();
+  
+  @Nullable
+  public abstract String m();
+  
+  public abstract int n();
+  
+  @Nullable
+  public abstract QQProgressDialog o();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.api.IScreenShotShareHelper
  * JD-Core Version:    0.7.0.1
  */

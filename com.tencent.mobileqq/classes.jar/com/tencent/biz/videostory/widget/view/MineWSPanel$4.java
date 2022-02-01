@@ -16,7 +16,7 @@ class MineWSPanel$4
   
   public void run()
   {
-    if (TextUtils.isEmpty(MineWSPanel.a(this.this$0)))
+    if (TextUtils.isEmpty(MineWSPanel.c(this.this$0)))
     {
       QLog.i("MineWSPanel", 2, "mUin is invalid");
       return;
@@ -27,7 +27,7 @@ class MineWSPanel$4
       return;
     }
     Object localObject = MineWSPanel.a(this.this$0).getAppRuntime().getEntityManagerFactory().createEntityManager();
-    WSPersonalEntity localWSPersonalEntity = (WSPersonalEntity)((EntityManager)localObject).find(WSPersonalEntity.class, MineWSPanel.a(this.this$0));
+    WSPersonalEntity localWSPersonalEntity = (WSPersonalEntity)((EntityManager)localObject).find(WSPersonalEntity.class, MineWSPanel.c(this.this$0));
     ((EntityManager)localObject).close();
     if (localWSPersonalEntity != null)
     {
@@ -38,7 +38,7 @@ class MineWSPanel$4
         if (MineWSPanel.a(this.this$0) != null) {
           MineWSPanel.a(this.this$0).runOnUiThread(new MineWSPanel.4.1(this, (WEISHI.stGetPersonalPageRsp)localObject));
         }
-        this.this$0.a();
+        this.this$0.c();
         return;
       }
       catch (Exception localException)
@@ -54,13 +54,13 @@ class MineWSPanel$4
     }
     else
     {
-      this.this$0.a();
+      this.this$0.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.MineWSPanel.4
  * JD-Core Version:    0.7.0.1
  */

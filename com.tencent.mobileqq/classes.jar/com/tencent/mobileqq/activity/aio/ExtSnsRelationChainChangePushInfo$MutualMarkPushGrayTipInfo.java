@@ -5,14 +5,14 @@ import android.text.TextUtils;
 
 public class ExtSnsRelationChainChangePushInfo$MutualMarkPushGrayTipInfo
 {
-  public int a;
-  public long a;
   public String a;
-  public String b;
+  public long b;
+  public String c;
+  public int d;
   
   public boolean a()
   {
-    return TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString) ^ true;
+    return TextUtils.isEmpty(this.a) ^ true;
   }
   
   @NonNull
@@ -21,13 +21,13 @@ public class ExtSnsRelationChainChangePushInfo$MutualMarkPushGrayTipInfo
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MutualMarkPushGrayTipInfo{");
     localStringBuilder.append("notifyTime:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", ");
     localStringBuilder.append("grayTipTemplate:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", ");
     localStringBuilder.append("grayTipType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", ");
     localStringBuilder.append("}");
     return localStringBuilder.toString();
@@ -35,7 +35,7 @@ public class ExtSnsRelationChainChangePushInfo$MutualMarkPushGrayTipInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ExtSnsRelationChainChangePushInfo.MutualMarkPushGrayTipInfo
  * JD-Core Version:    0.7.0.1
  */

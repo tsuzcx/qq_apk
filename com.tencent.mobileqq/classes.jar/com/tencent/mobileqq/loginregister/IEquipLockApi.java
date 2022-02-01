@@ -16,8 +16,6 @@ public abstract interface IEquipLockApi
   
   public abstract int a(AppRuntime paramAppRuntime, String paramString, WtloginObserver paramWtloginObserver);
   
-  public abstract int a(AppRuntime paramAppRuntime, VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver);
-  
   public abstract int a(AppRuntime paramAppRuntime, VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver, byte[] paramArrayOfByte);
   
   public abstract int a(AppRuntime paramAppRuntime, byte[] paramArrayOfByte, VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver);
@@ -34,7 +32,7 @@ public abstract interface IEquipLockApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.IEquipLockApi
  * JD-Core Version:    0.7.0.1
  */

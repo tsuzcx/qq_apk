@@ -13,17 +13,17 @@ class ProteusSupportUtil$1$3
   
   public void onClick(ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsUtilProteusSupportUtil$1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
+    if (this.b.b != null)
     {
-      ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsUtilProteusSupportUtil$1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.findViewById(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getName()));
-      ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsUtilProteusSupportUtil$1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+      ProteusSupportUtil.a(this.b.b.findViewById(this.a.getName()));
+      ProteusSupportUtil.a(this.b.b, this.a);
     }
-    RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsUtilProteusSupportUtil$1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
+    RIJJumpUtils.c(this.b.a.getContext(), this.a.getEventAttachedData());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.pts.util.ProteusSupportUtil.1.3
  * JD-Core Version:    0.7.0.1
  */

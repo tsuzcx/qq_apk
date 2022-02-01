@@ -10,15 +10,15 @@ class QuickRecyclerAdapter$1
   
   public int getSpanSize(int paramInt)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqTroopAdapterQuickRecyclerAdapter.a(paramInt)) && (!this.jdField_a_of_type_ComTencentMobileqqTroopAdapterQuickRecyclerAdapter.b(paramInt)) && (!this.jdField_a_of_type_ComTencentMobileqqTroopAdapterQuickRecyclerAdapter.c(paramInt)) && (!this.jdField_a_of_type_ComTencentMobileqqTroopAdapterQuickRecyclerAdapter.b())) {
+    if ((!this.b.b(paramInt)) && (!this.b.c(paramInt)) && (!this.b.d(paramInt)) && (!this.b.e())) {
       return 1;
     }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.getSpanCount();
+    return this.a.getSpanCount();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.adapter.QuickRecyclerAdapter.1
  * JD-Core Version:    0.7.0.1
  */

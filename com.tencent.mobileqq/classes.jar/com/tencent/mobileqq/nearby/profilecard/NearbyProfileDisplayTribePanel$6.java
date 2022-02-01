@@ -15,11 +15,11 @@ class NearbyProfileDisplayTribePanel$6
   {
     if (paramInterestTagInfo.tagJumpUrl.equals("icon_more_url"))
     {
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.startActivity(paramView);
-      paramInterestTagInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app;
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.mMode == 2) {
+      paramView = new Intent(this.b.e, QQBrowserActivity.class);
+      paramView.putExtra("url", this.a);
+      this.b.e.startActivity(paramView);
+      paramInterestTagInfo = this.b.e.app;
+      if (this.b.e.mMode == 2) {
         paramView = "1";
       } else {
         paramView = "2";
@@ -27,11 +27,11 @@ class NearbyProfileDisplayTribePanel$6
       ReportController.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_more_tribe", 0, 0, paramView, "", "", "");
       return;
     }
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a, QQBrowserActivity.class);
+    paramView = new Intent(this.b.e, QQBrowserActivity.class);
     paramView.putExtra("url", paramInterestTagInfo.tagJumpUrl);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.startActivity(paramView);
-    paramInterestTagInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app;
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.mMode == 2) {
+    this.b.e.startActivity(paramView);
+    paramInterestTagInfo = this.b.e.app;
+    if (this.b.e.mMode == 2) {
       paramView = "1";
     } else {
       paramView = "2";
@@ -41,7 +41,7 @@ class NearbyProfileDisplayTribePanel$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.6
  * JD-Core Version:    0.7.0.1
  */

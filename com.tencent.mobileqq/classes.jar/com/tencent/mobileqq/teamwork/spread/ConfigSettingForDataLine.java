@@ -24,28 +24,15 @@ import mqq.manager.TicketManager;
 
 public class ConfigSettingForDataLine
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TencentDocDataLineTipsConfigBean jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean;
+  QQAppInterface a;
+  private int b;
+  private TencentDocDataLineTipsConfigBean c;
+  private long d;
   
   public ConfigSettingForDataLine(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    a();
-  }
-  
-  private TencentDocDataLineTipsConfigBean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean == null) {
-      this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean = TencentDocDataLineTipsConfigProcessor.a();
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean;
-  }
-  
-  private void a()
-  {
-    ThreadManager.executeOnSubThread(new ConfigSettingForDataLine.2(this));
+    this.a = paramQQAppInterface;
+    c();
   }
   
   private void b(TencentDocDataLineTipsConfigBean paramTencentDocDataLineTipsConfigBean)
@@ -55,7 +42,7 @@ public class ConfigSettingForDataLine
     }
     try
     {
-      paramTencentDocDataLineTipsConfigBean.a(((ITeamWorkHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).getTemplateListByHttp());
+      paramTencentDocDataLineTipsConfigBean.a(((ITeamWorkHandler)this.a.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).getTemplateListByHttp());
       return;
     }
     catch (Exception paramTencentDocDataLineTipsConfigBean)
@@ -68,34 +55,22 @@ public class ConfigSettingForDataLine
     }
   }
   
-  public int a()
+  private void c()
   {
-    return this.jdField_a_of_type_Int;
+    ThreadManager.executeOnSubThread(new ConfigSettingForDataLine.2(this));
   }
   
-  public String a(BaseTimDataLineTipsProcessor paramBaseTimDataLineTipsProcessor)
+  private TencentDocDataLineTipsConfigBean d()
   {
-    if ((paramBaseTimDataLineTipsProcessor instanceof BuddyFileDataLineMsgTips))
-    {
-      Map localMap = a().a();
-      paramBaseTimDataLineTipsProcessor = FileUtil.a(paramBaseTimDataLineTipsProcessor.a());
-      Iterator localIterator = localMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        TencentDocDataLineTipsConfigBean.KeyWords localKeyWords = (TencentDocDataLineTipsConfigBean.KeyWords)localMap.get((String)localIterator.next());
-        String[] arrayOfString = localKeyWords.jdField_b_of_type_ArrayOfJavaLangString;
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          if (arrayOfString[i].equalsIgnoreCase(paramBaseTimDataLineTipsProcessor)) {
-            return localKeyWords.jdField_a_of_type_JavaLangString;
-          }
-          i += 1;
-        }
-      }
+    if (this.c == null) {
+      this.c = TencentDocDataLineTipsConfigProcessor.a();
     }
-    return "";
+    return this.c;
+  }
+  
+  public int a()
+  {
+    return this.b;
   }
   
   public void a(TencentDocDataLineTipsConfigBean paramTencentDocDataLineTipsConfigBean)
@@ -103,11 +78,11 @@ public class ConfigSettingForDataLine
     if (paramTencentDocDataLineTipsConfigBean == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean = paramTencentDocDataLineTipsConfigBean;
+    this.c = paramTencentDocDataLineTipsConfigBean;
     TicketManager localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
-    if (TextUtils.isEmpty(localTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "docs.qq.com")))
+    if (TextUtils.isEmpty(localTicketManager.getPskey(this.a.getCurrentAccountUin(), "docs.qq.com")))
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      String str = this.a.getCurrentAccountUin();
       paramTencentDocDataLineTipsConfigBean = new ConfigSettingForDataLine.LocalWtTicketPromise(this, paramTencentDocDataLineTipsConfigBean);
       localTicketManager.getPskey(str, 16L, new String[] { "docs.qq.com" }, paramTencentDocDataLineTipsConfigBean);
       return;
@@ -117,31 +92,15 @@ public class ConfigSettingForDataLine
   
   public void a(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Int += 1;
+    this.d = System.currentTimeMillis();
+    this.b += 1;
     ThreadManager.executeOnSubThread(new ConfigSettingForDataLine.3(this));
-  }
-  
-  public boolean a()
-  {
-    long l = System.currentTimeMillis();
-    BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    ((StringBuilder)localObject).append("_m_str_teamwork_dataline_tips_sp");
-    localObject = ((StringBuilder)localObject).toString();
-    boolean bool = false;
-    this.jdField_a_of_type_Long = localBaseApplication.getSharedPreferences((String)localObject, 0).getLong("file_str_lstat_show_time_local", 0L);
-    if (l - this.jdField_a_of_type_Long > a().b() * 1000) {
-      bool = true;
-    }
-    return bool;
   }
   
   public String[] a(BaseTimDataLineTipsProcessor paramBaseTimDataLineTipsProcessor)
   {
-    Map localMap = a().a();
-    Object localObject = a().a();
+    Map localMap = d().e();
+    Object localObject = d().f();
     boolean bool = paramBaseTimDataLineTipsProcessor instanceof BuddyFileDataLineMsgTips;
     int i = 0;
     if (bool)
@@ -151,13 +110,13 @@ public class ConfigSettingForDataLine
       while (((Iterator)localObject).hasNext())
       {
         TencentDocDataLineTipsConfigBean.KeyWords localKeyWords = (TencentDocDataLineTipsConfigBean.KeyWords)localMap.get((String)((Iterator)localObject).next());
-        String[] arrayOfString = localKeyWords.jdField_b_of_type_ArrayOfJavaLangString;
+        String[] arrayOfString = localKeyWords.d;
         int j = arrayOfString.length;
         i = 0;
         while (i < j)
         {
           if (arrayOfString[i].equalsIgnoreCase(paramBaseTimDataLineTipsProcessor)) {
-            return localKeyWords.jdField_a_of_type_ArrayOfJavaLangString;
+            return localKeyWords.a;
           }
           i += 1;
         }
@@ -167,7 +126,7 @@ public class ConfigSettingForDataLine
     paramBaseTimDataLineTipsProcessor = new String[((List)localObject).size()];
     while (i < ((List)localObject).size())
     {
-      paramBaseTimDataLineTipsProcessor[i] = ((TencentDocDataLineTipsConfigBean.TeamworkKeyWords)((List)localObject).get(i)).jdField_a_of_type_JavaLangString;
+      paramBaseTimDataLineTipsProcessor[i] = ((TencentDocDataLineTipsConfigBean.TeamworkKeyWords)((List)localObject).get(i)).a;
       i += 1;
     }
     return paramBaseTimDataLineTipsProcessor;
@@ -177,19 +136,60 @@ public class ConfigSettingForDataLine
   {
     if ((paramBaseTimDataLineTipsProcessor instanceof BuddyFileDataLineMsgTips))
     {
-      Map localMap = a().a();
+      Map localMap = d().e();
       paramBaseTimDataLineTipsProcessor = FileUtil.a(paramBaseTimDataLineTipsProcessor.a());
       Iterator localIterator = localMap.keySet().iterator();
       while (localIterator.hasNext())
       {
         TencentDocDataLineTipsConfigBean.KeyWords localKeyWords = (TencentDocDataLineTipsConfigBean.KeyWords)localMap.get((String)localIterator.next());
-        String[] arrayOfString = localKeyWords.jdField_b_of_type_ArrayOfJavaLangString;
+        String[] arrayOfString = localKeyWords.d;
         int j = arrayOfString.length;
         int i = 0;
         while (i < j)
         {
           if (arrayOfString[i].equalsIgnoreCase(paramBaseTimDataLineTipsProcessor)) {
-            return localKeyWords.jdField_b_of_type_JavaLangString;
+            return localKeyWords.b;
+          }
+          i += 1;
+        }
+      }
+    }
+    return "";
+  }
+  
+  public boolean b()
+  {
+    long l = System.currentTimeMillis();
+    BaseApplication localBaseApplication = this.a.getApp();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.a.getCurrentAccountUin());
+    ((StringBuilder)localObject).append("_m_str_teamwork_dataline_tips_sp");
+    localObject = ((StringBuilder)localObject).toString();
+    boolean bool = false;
+    this.d = localBaseApplication.getSharedPreferences((String)localObject, 0).getLong("file_str_lstat_show_time_local", 0L);
+    if (l - this.d > d().b() * 1000) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public String c(BaseTimDataLineTipsProcessor paramBaseTimDataLineTipsProcessor)
+  {
+    if ((paramBaseTimDataLineTipsProcessor instanceof BuddyFileDataLineMsgTips))
+    {
+      Map localMap = d().e();
+      paramBaseTimDataLineTipsProcessor = FileUtil.a(paramBaseTimDataLineTipsProcessor.a());
+      Iterator localIterator = localMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        TencentDocDataLineTipsConfigBean.KeyWords localKeyWords = (TencentDocDataLineTipsConfigBean.KeyWords)localMap.get((String)localIterator.next());
+        String[] arrayOfString = localKeyWords.d;
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (arrayOfString[i].equalsIgnoreCase(paramBaseTimDataLineTipsProcessor)) {
+            return localKeyWords.c;
           }
           i += 1;
         }
@@ -200,7 +200,7 @@ public class ConfigSettingForDataLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine
  * JD-Core Version:    0.7.0.1
  */

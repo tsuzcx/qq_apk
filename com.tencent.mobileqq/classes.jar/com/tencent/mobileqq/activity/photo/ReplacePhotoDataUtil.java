@@ -31,7 +31,7 @@ public class ReplacePhotoDataUtil
     if (paramBoolean)
     {
       localLocalMediaInfo.thumbWidth = 0;
-      localLocalMediaInfo.thumbHeight = ((int)paramContext.getResources().getDimension(2131297102));
+      localLocalMediaInfo.thumbHeight = ((int)paramContext.getResources().getDimension(2131297483));
       if ((localLocalMediaInfo.mediaWidth > 0) && (localLocalMediaInfo.mediaHeight > 0)) {
         FlowThumbDecoder.determineThumbSize(localLocalMediaInfo, localLocalMediaInfo.mediaWidth, localLocalMediaInfo.mediaHeight);
       }
@@ -46,19 +46,6 @@ public class ReplacePhotoDataUtil
       QLog.d("ReplacePhotoDataUtil", 1, new Object[] { "convert to mediaInfo, cost:", Long.valueOf(System.currentTimeMillis() - l) });
     }
     return localLocalMediaInfo;
-  }
-  
-  public static LocalMediaInfo a(Map<LocalMediaInfo, LocalMediaInfo> paramMap, String paramString)
-  {
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      if (paramString.equals(((LocalMediaInfo)localEntry.getValue()).path)) {
-        return (LocalMediaInfo)localEntry.getKey();
-      }
-    }
-    return null;
   }
   
   public static String a(Map<String, String> paramMap, String paramString)
@@ -104,7 +91,7 @@ public class ReplacePhotoDataUtil
         paramHashMap = (Map.Entry)localIterator.next();
         paramIntent = a(paramContext, (String)paramHashMap.getKey(), paramBoolean);
         LocalMediaInfo localLocalMediaInfo = a(paramContext, (String)paramHashMap.getValue(), paramBoolean);
-        paramHashMap = a((Map)localObject, (String)paramHashMap.getKey());
+        paramHashMap = b((Map)localObject, (String)paramHashMap.getKey());
         if (paramHashMap != null) {
           paramIntent = paramHashMap;
         }
@@ -127,7 +114,7 @@ public class ReplacePhotoDataUtil
         paramHashMap1 = (Map.Entry)localIterator.next();
         paramHashMap = a(paramContext, (String)paramHashMap1.getKey(), false);
         LocalMediaInfo localLocalMediaInfo = a(paramContext, (String)paramHashMap1.getValue(), false);
-        paramHashMap1 = a((Map)localObject, (String)paramHashMap1.getKey());
+        paramHashMap1 = b((Map)localObject, (String)paramHashMap1.getKey());
         if (paramHashMap1 != null) {
           paramHashMap = paramHashMap1;
         }
@@ -183,6 +170,19 @@ public class ReplacePhotoDataUtil
     return false;
   }
   
+  public static LocalMediaInfo b(Map<LocalMediaInfo, LocalMediaInfo> paramMap, String paramString)
+  {
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      if (paramString.equals(((LocalMediaInfo)localEntry.getValue()).path)) {
+        return (LocalMediaInfo)localEntry.getKey();
+      }
+    }
+    return null;
+  }
+  
   public static HashMap<String, String> b(HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
   {
     HashMap localHashMap = new HashMap(paramHashMap.size());
@@ -197,7 +197,7 @@ public class ReplacePhotoDataUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.ReplacePhotoDataUtil
  * JD-Core Version:    0.7.0.1
  */

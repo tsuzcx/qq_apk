@@ -18,6 +18,7 @@ import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.MiniProcessorConfig;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.CmdProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
@@ -40,6 +41,8 @@ import java.util.List;
 
 public class LaunchManagerService
 {
+  private static final String KEY_MINI_APP_CONFIG = "key_mini_app_config";
+  private static final String KEY_RUN_IN_MAINPROCSS = "key_run_in_mainprocess";
   private static final String TAG = "minisdk-start_LaunchManagerService";
   private AppLaunchStrategy mAppLaunchStrategy;
   private final LinkedList<MiniProcessorConfig> mAppProcessConfig = new LinkedList();
@@ -56,7 +59,7 @@ public class LaunchManagerService
     localStringBuilder.append("registerProcessInfo ");
     localStringBuilder.append(paramMiniProcessorConfig);
     QMLog.i("minisdk-start_LaunchManagerService", localStringBuilder.toString());
-    int i = LaunchManagerService.5.$SwitchMap$com$tencent$qqmini$sdk$launcher$shell$ProcessType[paramMiniProcessorConfig.processType.ordinal()];
+    int i = LaunchManagerService.6.a[paramMiniProcessorConfig.processType.ordinal()];
     if (i != 1)
     {
       if (i != 2)
@@ -80,7 +83,7 @@ public class LaunchManagerService
   
   private void checkMiniAppInfoCache()
   {
-    ThreadManager.getSubThreadHandler().post(new LaunchManagerService.4(this));
+    ThreadManager.getSubThreadHandler().post(new LaunchManagerService.5(this));
   }
   
   @SuppressLint({"WrongConstant"})
@@ -174,7 +177,7 @@ public class LaunchManagerService
     if (QUAUtil.isQQApp()) {
       return;
     }
-    ThreadManager.executeOnNetworkIOThreadPool(new LaunchManagerService.2(this));
+    ThreadManager.executeOnNetworkIOThreadPool(new LaunchManagerService.3(this));
   }
   
   private boolean isMiniAppProcess(String paramString)
@@ -220,7 +223,7 @@ public class LaunchManagerService
       }
       try
       {
-        BaseLibManager.g().updateBaseLib(new LaunchManagerService.3(this));
+        BaseLibManager.g().updateBaseLib(new LaunchManagerService.4(this));
       }
       catch (Throwable localThrowable)
       {
@@ -301,6 +304,14 @@ public class LaunchManagerService
         getLaunchStrategy(paramString2).onReceiveProcessRunningAppInfos(paramString2, paramString1);
       }
     }
+  }
+  
+  public void preDownloadPkg(MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("key_mini_app_config", paramMiniAppInfo);
+    localBundle.putBoolean("key_run_in_mainprocess", true);
+    ((CmdProxy)ProxyManager.get(CmdProxy.class)).handleMiniAppCmd("cmd_main_process_load_pkg", localBundle, new LaunchManagerService.2(this, paramResultReceiver));
   }
   
   public void preloadMiniApp(Bundle paramBundle)
@@ -445,7 +456,7 @@ public class LaunchManagerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.LaunchManagerService
  * JD-Core Version:    0.7.0.1
  */

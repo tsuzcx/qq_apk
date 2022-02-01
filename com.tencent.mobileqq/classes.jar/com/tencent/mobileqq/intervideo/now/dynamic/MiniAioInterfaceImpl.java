@@ -22,25 +22,81 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class MiniAioInterfaceImpl
   implements MiniAioInterface
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private MiniMsgUser jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
-  private int b = 0;
-  private int c = -1;
-  private int d = -1;
+  private MiniMsgUser a;
+  private long b = 0L;
+  private int c = 0;
+  private int d = 0;
+  private int e = -1;
+  private int f = -1;
   
-  Intent a(Activity paramActivity)
+  protected MiniMsgUserParam a(Activity paramActivity)
+  {
+    int i = paramActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
+    int k = ImmersiveUtils.getStatusBarHeight(paramActivity);
+    int j = i - paramActivity.getApplication().getResources().getDimensionPixelSize(2131297818) * 4;
+    i = j - ViewUtils.dpToPx(47.0F);
+    int m = this.e;
+    if (m != -1) {
+      i = j - m;
+    }
+    j = ViewUtils.dip2px(7.0F) + k;
+    m = this.f;
+    if (m != -1) {
+      j = k + m;
+    }
+    MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
+    localMiniMsgUserParam.businessName = 11;
+    localMiniMsgUserParam.accessType = 0;
+    localMiniMsgUserParam.entryType = 1;
+    localMiniMsgUserParam.positionX = i;
+    localMiniMsgUserParam.positionY = j;
+    localMiniMsgUserParam.filterMsgType = 1;
+    localMiniMsgUserParam.backConversationIntent = b(paramActivity);
+    if (this.d == 10026)
+    {
+      localMiniMsgUserParam.contentIconResId = 2130853483;
+      localMiniMsgUserParam.colorType = 2;
+      return localMiniMsgUserParam;
+    }
+    localMiniMsgUserParam.colorType = 1;
+    return localMiniMsgUserParam;
+  }
+  
+  public void a()
+  {
+    MiniMsgUser localMiniMsgUser = this.a;
+    if (localMiniMsgUser != null) {
+      localMiniMsgUser.onClick(null);
+    }
+  }
+  
+  public void a(Context paramContext, Bundle paramBundle, IMiniMsgUnreadCallback paramIMiniMsgUnreadCallback)
+  {
+    paramContext = (Activity)paramContext;
+    this.b = paramBundle.getLong("roomid");
+    this.c = paramBundle.getInt("roomType");
+    this.d = paramBundle.getInt("fromid", 10001);
+    this.e = paramBundle.getInt("offsetX", -1);
+    this.f = paramBundle.getInt("offsetY", -1);
+    paramBundle = a(paramContext);
+    paramBundle.accessType = 1;
+    paramBundle.unreadCallback = paramIMiniMsgUnreadCallback;
+    this.a = new MiniMsgUser(paramContext, paramBundle);
+    this.a.showEntry();
+  }
+  
+  Intent b(Activity paramActivity)
   {
     Intent localIntent1 = new Intent();
     localIntent1.setFlags(67108864);
-    localIntent1.putExtra("tab_index", FrameControllerUtil.jdField_a_of_type_Int);
+    localIntent1.putExtra("tab_index", FrameControllerUtil.a);
     localIntent1.putExtra("fragment_id", 1);
-    if (this.b == 10026)
+    if (this.d == 10026)
     {
       localIntent1.putExtra("banner_wording", "正在浏览语音房");
       localIntent1.putExtra("banner_iconIdx", 13);
     }
-    else if (this.jdField_a_of_type_Int == 10001)
+    else if (this.c == 10001)
     {
       localIntent1.putExtra("banner_wording", "正在浏览NOW交友");
       localIntent1.putExtra("banner_iconIdx", 13);
@@ -55,108 +111,52 @@ public class MiniAioInterfaceImpl
     localIntent1.putExtra("banner_plguinType", 1);
     localIntent1.putExtra("banner_pluginProxyActivityName", paramActivity.getClass().getName());
     Intent localIntent2 = new Intent(paramActivity, JumpActivity.class);
-    localIntent2.setData(Uri.parse(String.format("nowmqqapi://now/openroom?src_type=app&version=1&bid=88&roomid=%d&fromid=%d&roomtype=%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.b), Integer.valueOf(this.jdField_a_of_type_Int) })));
+    localIntent2.setData(Uri.parse(String.format("nowmqqapi://now/openroom?src_type=app&version=1&bid=88&roomid=%d&fromid=%d&roomtype=%d", new Object[] { Long.valueOf(this.b), Integer.valueOf(this.d), Integer.valueOf(this.c) })));
     localIntent2.addFlags(268435456);
     localIntent1.putExtra("banner_pendingIntent", PendingIntent.getActivities(paramActivity, 0, new Intent[] { localIntent2 }, 134217728));
     return localIntent1;
   }
   
-  protected MiniMsgUserParam a(Activity paramActivity)
-  {
-    int i = paramActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
-    int k = ImmersiveUtils.getStatusBarHeight(paramActivity);
-    int j = i - paramActivity.getApplication().getResources().getDimensionPixelSize(2131297351) * 4;
-    i = j - ViewUtils.b(47.0F);
-    int m = this.c;
-    if (m != -1) {
-      i = j - m;
-    }
-    j = ViewUtils.a(7.0F) + k;
-    m = this.d;
-    if (m != -1) {
-      j = k + m;
-    }
-    MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
-    localMiniMsgUserParam.businessName = 11;
-    localMiniMsgUserParam.accessType = 0;
-    localMiniMsgUserParam.entryType = 1;
-    localMiniMsgUserParam.positionX = i;
-    localMiniMsgUserParam.positionY = j;
-    localMiniMsgUserParam.filterMsgType = 1;
-    localMiniMsgUserParam.backConversationIntent = a(paramActivity);
-    if (this.b == 10026)
-    {
-      localMiniMsgUserParam.contentIconResId = 2130851227;
-      localMiniMsgUserParam.colorType = 2;
-      return localMiniMsgUserParam;
-    }
-    localMiniMsgUserParam.colorType = 1;
-    return localMiniMsgUserParam;
-  }
-  
-  public void a()
-  {
-    MiniMsgUser localMiniMsgUser = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
-    if (localMiniMsgUser != null) {
-      localMiniMsgUser.onClick(null);
-    }
-  }
-  
-  public void a(Context paramContext, Bundle paramBundle, IMiniMsgUnreadCallback paramIMiniMsgUnreadCallback)
-  {
-    paramContext = (Activity)paramContext;
-    this.jdField_a_of_type_Long = paramBundle.getLong("roomid");
-    this.jdField_a_of_type_Int = paramBundle.getInt("roomType");
-    this.b = paramBundle.getInt("fromid", 10001);
-    this.c = paramBundle.getInt("offsetX", -1);
-    this.d = paramBundle.getInt("offsetY", -1);
-    paramBundle = a(paramContext);
-    paramBundle.accessType = 1;
-    paramBundle.unreadCallback = paramIMiniMsgUnreadCallback;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = new MiniMsgUser(paramContext, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.showEntry();
-  }
-  
   public void onBackground()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.onBackground();
+    this.a.onBackground();
   }
   
   public void onCreate(Context paramContext, Bundle paramBundle)
   {
     paramContext = (Activity)((ContextWrapper)paramContext).getBaseContext();
-    this.jdField_a_of_type_Long = paramBundle.getLong("roomid");
-    this.jdField_a_of_type_Int = paramBundle.getInt("roomType");
-    this.b = paramBundle.getInt("fromid", 10001);
-    this.c = paramBundle.getInt("offsetX", -1);
-    this.d = paramBundle.getInt("offsetY", -1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = new MiniMsgUser(paramContext, a(paramContext));
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.showEntry();
+    this.b = paramBundle.getLong("roomid");
+    this.c = paramBundle.getInt("roomType");
+    this.d = paramBundle.getInt("fromid", 10001);
+    this.e = paramBundle.getInt("offsetX", -1);
+    this.f = paramBundle.getInt("offsetY", -1);
+    this.a = new MiniMsgUser(paramContext, a(paramContext));
+    this.a.showEntry();
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.destroy();
+    this.a.destroy();
   }
   
   public void onForeground()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.onForeground();
+    this.a.onForeground();
   }
   
   public void showEntry(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.showEntry();
+      this.a.showEntry();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.hideEntry();
+    this.a.hideEntry();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.MiniAioInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

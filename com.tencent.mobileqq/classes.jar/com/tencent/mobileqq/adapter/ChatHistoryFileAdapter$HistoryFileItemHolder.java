@@ -9,20 +9,20 @@ import com.tencent.mobileqq.widget.CircleFileStateView;
 public class ChatHistoryFileAdapter$HistoryFileItemHolder
   implements Cloneable
 {
-  public int a;
-  public CheckBox a;
   public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public TextView b;
+  public CircleFileStateView b;
+  public int c;
+  public CheckBox d;
+  public AsyncImageView e;
+  public TextView f;
+  public TextView g;
+  public Object h;
   
   public ChatHistoryFileAdapter$HistoryFileItemHolder(ChatHistoryFileAdapter paramChatHistoryFileAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ChatHistoryFileAdapter.HistoryFileItemHolder
  * JD-Core Version:    0.7.0.1
  */

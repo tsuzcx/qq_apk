@@ -22,13 +22,13 @@ public class SimpleTextView
   extends View
   implements ISkinTypeface
 {
-  private int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private Paint.FontMetrics jdField_a_of_type_AndroidGraphicsPaint$FontMetrics;
-  private final TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence = "";
-  private int b = -16777216;
-  private int c = -1;
+  private CharSequence a = "";
+  private final TextPaint b;
+  private ColorStateList c;
+  private int d;
+  private int e = -16777216;
+  private Paint.FontMetrics f;
+  private int g = -1;
   
   public SimpleTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,21 +39,21 @@ public class SimpleTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     Object localObject = getResources();
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
-    this.jdField_a_of_type_AndroidTextTextPaint.density = ((Resources)localObject).getDisplayMetrics().density;
+    this.b = new TextPaint(1);
+    this.b.density = ((Resources)localObject).getDisplayMetrics().density;
     if (paramAttributeSet != null)
     {
-      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bl);
-      paramInt = paramAttributeSet.getDimensionPixelSize(R.styleable.bt, (int)DisplayUtils.a(paramContext, 12.0F));
-      localObject = paramAttributeSet.getColorStateList(R.styleable.bu);
-      paramContext = paramAttributeSet.getString(R.styleable.bv);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt);
-      this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-      this.jdField_a_of_type_AndroidContentResColorStateList = ((ColorStateList)localObject);
+      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.dP);
+      paramInt = paramAttributeSet.getDimensionPixelSize(R.styleable.dQ, (int)DisplayUtils.a(paramContext, 12.0F));
+      localObject = paramAttributeSet.getColorStateList(R.styleable.dR);
+      paramContext = paramAttributeSet.getString(R.styleable.dS);
+      this.b.setTextSize(paramInt);
+      this.f = this.b.getFontMetrics();
+      this.c = ((ColorStateList)localObject);
       localObject = getDrawableState();
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState((int[])localObject, this.b);
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.SANS_SERIF);
+      this.d = this.c.getColorForState((int[])localObject, this.e);
+      this.b.setColor(this.d);
+      this.b.setTypeface(Typeface.SANS_SERIF);
       setText(paramContext);
       paramAttributeSet.recycle();
     }
@@ -75,29 +75,19 @@ public class SimpleTextView
   private void a()
   {
     int[] arrayOfInt = getDrawableState();
-    int i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(arrayOfInt, this.b);
-    if (i != this.jdField_a_of_type_Int)
+    int i = this.c.getColorForState(arrayOfInt, this.e);
+    if (i != this.d)
     {
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_a_of_type_Int);
+      this.d = i;
+      this.b.setColor(this.d);
       invalidate();
     }
-  }
-  
-  public Paint a()
-  {
-    return this.jdField_a_of_type_AndroidTextTextPaint;
-  }
-  
-  public CharSequence a()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
+    ColorStateList localColorStateList = this.c;
     if ((localColorStateList != null) && (localColorStateList.isStateful())) {
       a();
     }
@@ -105,41 +95,51 @@ public class SimpleTextView
   
   public Paint getPaint()
   {
-    return this.jdField_a_of_type_AndroidTextTextPaint;
+    return this.b;
+  }
+  
+  public CharSequence getText()
+  {
+    return this.a;
+  }
+  
+  public Paint getTextPaint()
+  {
+    return this.b;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     int i = getMeasuredHeight();
-    float f2 = this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.bottom;
-    float f3 = this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.top;
+    float f2 = this.f.bottom;
+    float f3 = this.f.top;
     float f1 = i;
     f2 = (f1 - (f2 - f3)) / 2.0F;
-    f3 = this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.bottom;
-    CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
-    paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), getPaddingLeft(), f1 - f2 - f3, this.jdField_a_of_type_AndroidTextTextPaint);
+    f3 = this.f.bottom;
+    CharSequence localCharSequence = this.a;
+    paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), getPaddingLeft(), f1 - f2 - f3, this.b);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i = this.c;
+    int i = this.g;
     if (i == -1)
     {
-      TextPaint localTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-      CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
+      TextPaint localTextPaint = this.b;
+      CharSequence localCharSequence = this.a;
       i = (int)localTextPaint.measureText(localCharSequence, 0, localCharSequence.length());
     }
-    setMeasuredDimension(a(paramInt1, i), a(paramInt2, Math.max((int)(this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.top - this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.bottom), getSuggestedMinimumWidth())));
+    setMeasuredDimension(a(paramInt1, i), a(paramInt2, Math.max((int)(this.f.top - this.f.bottom), getSuggestedMinimumWidth())));
   }
   
   public void setDefaultTextColor(int paramInt)
   {
-    this.b = paramInt;
+    this.e = paramInt;
   }
   
   public void setFixedWidth(int paramInt)
   {
-    this.c = paramInt;
+    this.g = paramInt;
   }
   
   public void setText(CharSequence paramCharSequence)
@@ -148,23 +148,23 @@ public class SimpleTextView
     if (paramCharSequence == null) {
       localObject = "";
     }
-    if (localObject != this.jdField_a_of_type_JavaLangCharSequence)
+    if (localObject != this.a)
     {
-      this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject);
+      this.a = ((CharSequence)localObject);
       requestLayout();
     }
   }
   
   public void setTextColor(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(paramInt);
+    this.c = ColorStateList.valueOf(paramInt);
     a();
     invalidate();
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.c = paramColorStateList;
     a();
   }
   
@@ -177,14 +177,14 @@ public class SimpleTextView
       localObject = ((Context)localObject).getResources();
     }
     paramFloat = TypedValue.applyDimension(1, paramFloat, ((Resources)localObject).getDisplayMetrics());
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
-    this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+    this.b.setTextSize(paramFloat);
+    this.f = this.b.getFontMetrics();
     requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.SimpleTextView
  * JD-Core Version:    0.7.0.1
  */

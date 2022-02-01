@@ -8,32 +8,20 @@ import java.lang.ref.WeakReference;
 public abstract class RichNodeBase
   implements IRichNode
 {
-  private int jdField_a_of_type_Int;
-  protected Context a;
   protected QQAppInterface a;
-  private IRichNodeView jdField_a_of_type_ComTencentMobileqqSearchRichIRichNodeView;
-  private RichMetaData jdField_a_of_type_ComTencentMobileqqSearchRichRichMetaData = new RichMetaData();
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<IRichNodeEvent> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public IRichNodeView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchRichIRichNodeView;
-  }
+  protected Context b;
+  private WeakReference<IRichNodeEvent> c;
+  private IRichNodeView d;
+  private RichMetaData e = new RichMetaData();
+  private String f;
+  private int g;
   
   protected abstract IRichNodeView a(Context paramContext);
   
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchRichRichMetaData.a();
-  }
-  
-  protected void a() {}
-  
   public void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramQQAppInterface;
+    this.b = paramContext;
     if (QLog.isColorLevel())
     {
       paramQQAppInterface = new StringBuilder();
@@ -47,17 +35,17 @@ public abstract class RichNodeBase
       paramQQAppInterface.append(paramInt);
       QLog.d("RichNodeBase", 2, paramQQAppInterface.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichMetaData.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichMetaData.a(paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichMetaData.b(paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichIRichNodeView = a(paramContext);
+    this.e.a(true);
+    this.e.a(paramString1);
+    this.e.b(paramString2);
+    this.f = paramString3;
+    this.g = paramInt;
+    this.d = a(paramContext);
   }
   
   public void a(IRichNodeEvent paramIRichNodeEvent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIRichNodeEvent);
+    this.c = new WeakReference(paramIRichNodeEvent);
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
@@ -73,16 +61,9 @@ public abstract class RichNodeBase
       localStringBuilder.append(paramString3);
       QLog.d("RichNodeBase", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichMetaData.a(paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichMetaData.b(paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString3;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichNodeBase", 2, "pause");
-    }
+    this.e.a(paramString1);
+    this.e.b(paramString2);
+    this.f = paramString3;
   }
   
   protected void b(String paramString1, String paramString2)
@@ -96,7 +77,7 @@ public abstract class RichNodeBase
       ((StringBuilder)localObject).append(paramString2);
       QLog.d("RichNodeBase", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.c;
     if (localObject != null)
     {
       localObject = (IRichNodeEvent)((WeakReference)localObject).get();
@@ -106,43 +87,62 @@ public abstract class RichNodeBase
     }
   }
   
-  public int c()
+  protected void c() {}
+  
+  public void e()
   {
-    return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "pause");
+    }
   }
   
-  public void c()
+  public void f()
   {
     if (QLog.isColorLevel()) {
       QLog.d("RichNodeBase", 2, "resume");
     }
   }
   
-  public void d()
+  public void g()
   {
     if (QLog.isColorLevel()) {
       QLog.d("RichNodeBase", 2, "destroy");
     }
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    IRichNodeView localIRichNodeView = this.jdField_a_of_type_ComTencentMobileqqSearchRichIRichNodeView;
+    c();
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    IRichNodeView localIRichNodeView = this.d;
     if (localIRichNodeView != null)
     {
-      localIRichNodeView.f();
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichIRichNodeView = null;
+      localIRichNodeView.l();
+      this.d = null;
     }
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichMetaData = null;
+    this.f = null;
+    this.e = null;
   }
   
-  protected void e()
+  public IRichNodeView h()
+  {
+    return this.d;
+  }
+  
+  public int i()
+  {
+    return this.g;
+  }
+  
+  public String j()
+  {
+    return this.e.a();
+  }
+  
+  protected void k()
   {
     if (QLog.isColorLevel()) {
       QLog.d("RichNodeBase", 2, "fireOnRichViewChangedEvent");
     }
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.c;
     if (localObject != null)
     {
       localObject = (IRichNodeEvent)((WeakReference)localObject).get();
@@ -154,7 +154,7 @@ public abstract class RichNodeBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.RichNodeBase
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract interface InnerListView$OnItemLongClickListener
 {
-  public abstract boolean a(InnerListView paramInnerListView, View paramView, int paramInt);
+  public abstract boolean b(InnerListView paramInnerListView, View paramView, int paramInt);
 }
 
 

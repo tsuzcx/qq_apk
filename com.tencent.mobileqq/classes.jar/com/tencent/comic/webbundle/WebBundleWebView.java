@@ -39,8 +39,8 @@ public class WebBundleWebView
       if (localObject != null)
       {
         localObject = ((WebHistoryItem)localObject).getUrl();
-        QQComicConfBean localQQComicConfBean = (QQComicConfBean)QConfigManager.a().a(534);
-        if ((localQQComicConfBean != null) && (localQQComicConfBean.a.a.equals(localObject))) {
+        QQComicConfBean localQQComicConfBean = (QQComicConfBean)QConfigManager.b().b(534);
+        if ((localQQComicConfBean != null) && (localQQComicConfBean.a.b.equals(localObject))) {
           return super.canGoBackOrForward(-2);
         }
       }
@@ -65,7 +65,7 @@ public class WebBundleWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.webbundle.WebBundleWebView
  * JD-Core Version:    0.7.0.1
  */

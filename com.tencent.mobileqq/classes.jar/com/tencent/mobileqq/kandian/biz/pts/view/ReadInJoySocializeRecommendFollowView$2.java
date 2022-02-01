@@ -10,13 +10,13 @@ class ReadInJoySocializeRecommendFollowView$2
   public void run()
   {
     ReadInJoySocializeRecommendFollowView localReadInJoySocializeRecommendFollowView = this.this$0;
-    ReadInJoySocializeRecommendFollowView.a(localReadInJoySocializeRecommendFollowView, ReadInJoySocializeRecommendFollowView.a(localReadInJoySocializeRecommendFollowView).getMeasuredHeight());
-    ReadInJoySocializeRecommendFollowView.a(this.this$0).requestLayout();
+    ReadInJoySocializeRecommendFollowView.a(localReadInJoySocializeRecommendFollowView, ReadInJoySocializeRecommendFollowView.b(localReadInJoySocializeRecommendFollowView).getMeasuredHeight());
+    ReadInJoySocializeRecommendFollowView.b(this.this$0).requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoySocializeRecommendFollowView.2
  * JD-Core Version:    0.7.0.1
  */

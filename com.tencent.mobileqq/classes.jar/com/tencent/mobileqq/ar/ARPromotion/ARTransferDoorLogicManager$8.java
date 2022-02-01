@@ -10,21 +10,21 @@ class ARTransferDoorLogicManager$8
   
   public void run()
   {
-    if (this.this$0.a == null) {
+    if (this.this$0.i == null) {
       return;
     }
-    if (this.this$0.g == 2)
+    if (this.this$0.h == 2)
     {
-      this.this$0.a.d(false);
-      this.this$0.a.b(1);
+      this.this$0.i.e(false);
+      this.this$0.i.b(1);
       return;
     }
-    this.this$0.a(true, HardCodeUtil.a(2131700980));
+    this.this$0.a(true, HardCodeUtil.a(2131899002));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.8
  * JD-Core Version:    0.7.0.1
  */

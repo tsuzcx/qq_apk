@@ -13,27 +13,27 @@ import mqq.os.MqqHandler;
 public class WSReportDC898Base
   implements WSReportDC898Const
 {
-  private final IWSDCParam jdField_a_of_type_ComTencentBizPubaccountWeishi_newReportDc898IWSDCParam;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
+  private final IWSDCParam c;
   
   WSReportDC898Base(IWSDCParam paramIWSDCParam)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newReportDc898IWSDCParam = paramIWSDCParam;
+    this.c = paramIWSDCParam;
   }
   
-  private String a()
+  private boolean d(int paramInt)
+  {
+    return (paramInt == 100) || (paramInt == 104) || (paramInt == 103) || (paramInt == 102) || (paramInt == 101) || (paramInt == 300) || (paramInt == 501) || (paramInt == 601) || (paramInt == 602) || (paramInt == 603);
+  }
+  
+  private String h()
   {
     Map localMap = a();
     if (localMap == null) {
       return "";
     }
     return new Gson().toJson(localMap);
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return (paramInt == 100) || (paramInt == 104) || (paramInt == 103) || (paramInt == 102) || (paramInt == 101) || (paramInt == 300) || (paramInt == 501) || (paramInt == 601) || (paramInt == 602) || (paramInt == 603);
   }
   
   public String a(int paramInt)
@@ -48,30 +48,14 @@ public class WSReportDC898Base
   
   public Map<String, String> a()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)))
+    if ((!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)))
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("play_scene", this.jdField_a_of_type_JavaLangString);
+      localHashMap.put("play_scene", this.a);
       localHashMap.put("sop_name", this.b);
       return localHashMap;
     }
     return null;
-  }
-  
-  public void a()
-  {
-    b("videoplay_close", 0, 0, 0L, 0L, a());
-  }
-  
-  public void a(int paramInt)
-  {
-    String str;
-    if (!a(paramInt)) {
-      str = a();
-    } else {
-      str = "";
-    }
-    a(WSReportDc00898.a(paramInt, true), 0, 0, 0L, 0L, str);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -113,23 +97,23 @@ public class WSReportDC898Base
   
   public void b()
   {
-    b("videoplay_more_clk", 0, 0, 0L, 0L, a());
+    b("videoplay_close", 0, 0, 0L, 0L, h());
   }
   
   public void b(int paramInt)
   {
     String str;
-    if (!a(paramInt)) {
-      str = a();
+    if (!d(paramInt)) {
+      str = h();
     } else {
       str = "";
     }
-    a(WSReportDc00898.a(paramInt, false), 0, 0, 0L, 0L, str);
+    a(WSReportDc00898.a(paramInt, true), 0, 0, 0L, 0L, str);
   }
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void b(String paramString, int paramInt1, int paramInt2)
@@ -144,12 +128,23 @@ public class WSReportDC898Base
   
   public void c()
   {
-    a("follow_entry_clk", 0, 0, 0L, 0L, a());
+    b("videoplay_more_clk", 0, 0, 0L, 0L, h());
+  }
+  
+  public void c(int paramInt)
+  {
+    String str;
+    if (!d(paramInt)) {
+      str = h();
+    } else {
+      str = "";
+    }
+    a(WSReportDc00898.a(paramInt, false), 0, 0, 0L, 0L, str);
   }
   
   public void c(String paramString)
   {
-    a(paramString, 0, 0, 0L, 0L, a());
+    a(paramString, 0, 0, 0L, 0L, h());
   }
   
   public void c(String paramString, int paramInt1, int paramInt2)
@@ -169,12 +164,17 @@ public class WSReportDC898Base
   
   public void d()
   {
-    b("profpic_clkc", 0, 0, 0L, 0L, a());
+    a("follow_entry_clk", 0, 0, 0L, 0L, h());
   }
   
   public void e()
   {
-    String str2 = a();
+    b("profpic_clkc", 0, 0, 0L, 0L, h());
+  }
+  
+  public void f()
+  {
+    String str2 = h();
     a("videoplay_title_clk", 0, 0, 0L, 0L, str2);
     String str1;
     if (WeishiGuideUtils.a(BaseApplicationImpl.sApplication)) {
@@ -185,14 +185,14 @@ public class WSReportDC898Base
     a(str1, 0, 0, 0L, 0L, str2);
   }
   
-  public void f()
+  public void g()
   {
-    b("fullscreen_exp", 0, 0, 0L, 0L, a());
+    b("fullscreen_exp", 0, 0, 0L, 0L, h());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.dc898.WSReportDC898Base
  * JD-Core Version:    0.7.0.1
  */

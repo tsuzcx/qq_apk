@@ -107,15 +107,15 @@ public class RelatedEmoSlideBottomPanel
     boolean bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
     if (bool1)
     {
-      this.mContentView.setBackgroundResource(2130850000);
+      this.mContentView.setBackgroundResource(2130851761);
     }
     else
     {
       localObject = this.mContentView;
       if (bool2) {
-        i = 2130849999;
+        i = 2130851760;
       } else {
-        i = 2130849998;
+        i = 2130851759;
       }
       ((LinearLayout)localObject).setBackgroundResource(i);
     }
@@ -129,7 +129,7 @@ public class RelatedEmoSlideBottomPanel
     this.mIvDragIcon = new ImageView(getContext());
     localObject = new FrameLayout.LayoutParams(i, i);
     ((FrameLayout.LayoutParams)localObject).gravity = 17;
-    this.mIvDragIcon.setImageResource(2130850002);
+    this.mIvDragIcon.setImageResource(2130851763);
     this.mIvDragIcon.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.mDragArea.addView(this.mIvDragIcon);
     setOnClickListener(new RelatedEmoSlideBottomPanel.1(this));
@@ -429,7 +429,7 @@ public class RelatedEmoSlideBottomPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoSlideBottomPanel
  * JD-Core Version:    0.7.0.1
  */

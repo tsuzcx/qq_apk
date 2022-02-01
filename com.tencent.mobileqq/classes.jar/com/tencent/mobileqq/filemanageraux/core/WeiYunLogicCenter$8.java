@@ -23,13 +23,13 @@ class WeiYunLogicCenter$8
   {
     WeiYunLogicCenter.a(this.a, true);
     WeiYunLogicCenter.b(this.a, false);
-    ((IWeiyunUploadDownloadService)QRoute.api(IWeiyunUploadDownloadService.class)).initTransmission(WeiYunLogicCenter.a(this.a).getApplication(), true);
+    ((IWeiyunUploadDownloadService)QRoute.api(IWeiyunUploadDownloadService.class)).initTransmission(WeiYunLogicCenter.c(this.a).getApplication(), true);
     WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter.8
  * JD-Core Version:    0.7.0.1
  */

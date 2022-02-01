@@ -26,15 +26,15 @@ public class WebviewWrapper
   implements IWebviewWrapper
 {
   protected Context a;
-  private View jdField_a_of_type_AndroidViewView;
-  protected TouchWebView a;
-  private JsBizAdapter jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter;
-  private LiteLiveJsProvider jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider;
-  private App jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsApp;
-  protected LiteLiveSdkWebViewBaseBuilder a;
-  private LiveBusinessJsInterface jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiveBusinessJsInterface;
-  protected final CloseGuard a;
-  private boolean jdField_a_of_type_Boolean;
+  protected TouchWebView b;
+  protected LiteLiveSdkWebViewBaseBuilder c;
+  protected final CloseGuard d = CloseGuard.get();
+  private boolean e;
+  private JsBizAdapter f;
+  private LiteLiveJsProvider g;
+  private LiveBusinessJsInterface h;
+  private View i;
+  private App j;
   
   public WebviewWrapper(Context paramContext, JsBizAdapter paramJsBizAdapter, LiteLiveJsProvider paramLiteLiveJsProvider, LiveBusinessJsInterface paramLiveBusinessJsInterface, View paramView)
   {
@@ -43,36 +43,23 @@ public class WebviewWrapper
   
   public WebviewWrapper(Context paramContext, boolean paramBoolean, JsBizAdapter paramJsBizAdapter, LiteLiveJsProvider paramLiteLiveJsProvider, LiveBusinessJsInterface paramLiveBusinessJsInterface, View paramView)
   {
-    this.jdField_a_of_type_CooperationQzoneCloseGuard = CloseGuard.get();
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter = paramJsBizAdapter;
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider = paramLiteLiveJsProvider;
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiveBusinessJsInterface = paramLiveBusinessJsInterface;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.e = paramBoolean;
+    this.a = paramContext;
+    this.f = paramJsBizAdapter;
+    this.g = paramLiteLiveJsProvider;
+    this.h = paramLiveBusinessJsInterface;
+    this.i = paramView;
     preInit();
   }
   
   public LiteLiveJsProvider a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider;
-  }
-  
-  public App a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsApp;
-  }
-  
-  public void a()
-  {
-    QLog.i("WebviewWrapper", 1, "ilivetime WebViewDirector start ");
-    new WebViewDirector(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewBaseBuilder).a(null, LiteLiveSdkWebViewPluginManager.a().a(), null);
-    QLog.i("WebviewWrapper", 1, "ilivetime WebViewDirector end ");
+    return this.g;
   }
   
   public void a(Context paramContext, JsBizAdapter paramJsBizAdapter)
   {
-    LiteLiveSdkWebViewBaseBuilder localLiteLiveSdkWebViewBaseBuilder = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewBaseBuilder;
+    LiteLiveSdkWebViewBaseBuilder localLiteLiveSdkWebViewBaseBuilder = this.c;
     if (localLiteLiveSdkWebViewBaseBuilder != null) {
       localLiteLiveSdkWebViewBaseBuilder.a(paramContext, paramJsBizAdapter);
     }
@@ -80,12 +67,24 @@ public class WebviewWrapper
   
   public void a(App paramApp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsApp = paramApp;
+    this.j = paramApp;
+  }
+  
+  public App b()
+  {
+    return this.j;
+  }
+  
+  public void c()
+  {
+    QLog.i("WebviewWrapper", 1, "ilivetime WebViewDirector start ");
+    new WebViewDirector(this.c).a(null, LiteLiveSdkWebViewPluginManager.a().b(), null);
+    QLog.i("WebviewWrapper", 1, "ilivetime WebViewDirector end ");
   }
   
   public void callJs(String paramString)
   {
-    LiteLiveSdkWebViewBaseBuilder localLiteLiveSdkWebViewBaseBuilder = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewBaseBuilder;
+    LiteLiveSdkWebViewBaseBuilder localLiteLiveSdkWebViewBaseBuilder = this.c;
     if (localLiteLiveSdkWebViewBaseBuilder != null) {
       localLiteLiveSdkWebViewBaseBuilder.a(paramString);
     }
@@ -95,7 +94,7 @@ public class WebviewWrapper
   {
     try
     {
-      this.jdField_a_of_type_CooperationQzoneCloseGuard.warnIfOpen();
+      this.d.warnIfOpen();
       return;
     }
     finally
@@ -106,24 +105,24 @@ public class WebviewWrapper
   
   public WebView getWebview()
   {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    return this.b;
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_CooperationQzoneCloseGuard.close();
+    this.d.close();
     onDetach();
-    LiteLiveSdkWebViewBaseBuilder localLiteLiveSdkWebViewBaseBuilder = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewBaseBuilder;
+    LiteLiveSdkWebViewBaseBuilder localLiteLiveSdkWebViewBaseBuilder = this.c;
     if (localLiteLiveSdkWebViewBaseBuilder != null) {
-      localLiteLiveSdkWebViewBaseBuilder.c();
+      localLiteLiveSdkWebViewBaseBuilder.f();
     }
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.b = null;
+    this.a = null;
   }
   
   public void onDetach()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = ((TouchWebView)localObject).getParent();
@@ -135,26 +134,26 @@ public class WebviewWrapper
   
   public void onInit(Activity paramActivity, Intent paramIntent, String paramString, IWebviewListener paramIWebviewListener)
   {
-    this.jdField_a_of_type_CooperationQzoneCloseGuard.open("onDestroy");
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewBaseBuilder = new LiteLiveSdkWebViewBaseBuilder(this.jdField_a_of_type_AndroidContentContext, paramActivity, paramIntent, LiteLiveSdkWebViewPluginManager.a().a(), false, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter, this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider, this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiveBusinessJsInterface, this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewBaseBuilder.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewBaseBuilder.a(new WebviewWrapper.1(this, paramIWebviewListener));
+    this.d.open("onDestroy");
+    this.c = new LiteLiveSdkWebViewBaseBuilder(this.a, paramActivity, paramIntent, LiteLiveSdkWebViewPluginManager.a().b(), false, this.f, this.g, this.h, this.i);
+    this.b.setVisibility(4);
+    this.c.a(this.b);
+    this.c.a(new WebviewWrapper.1(this, paramIWebviewListener));
   }
   
   public void onPause()
   {
-    LiteLiveSdkWebViewBaseBuilder localLiteLiveSdkWebViewBaseBuilder = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewBaseBuilder;
+    LiteLiveSdkWebViewBaseBuilder localLiteLiveSdkWebViewBaseBuilder = this.c;
     if (localLiteLiveSdkWebViewBaseBuilder != null) {
-      localLiteLiveSdkWebViewBaseBuilder.b();
+      localLiteLiveSdkWebViewBaseBuilder.e();
     }
   }
   
   public void onResume()
   {
-    LiteLiveSdkWebViewBaseBuilder localLiteLiveSdkWebViewBaseBuilder = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewLiteLiveSdkWebViewBaseBuilder;
+    LiteLiveSdkWebViewBaseBuilder localLiteLiveSdkWebViewBaseBuilder = this.c;
     if (localLiteLiveSdkWebViewBaseBuilder != null) {
-      localLiteLiveSdkWebViewBaseBuilder.a();
+      localLiteLiveSdkWebViewBaseBuilder.d();
     }
   }
   
@@ -162,10 +161,10 @@ public class WebviewWrapper
   {
     String str2;
     String str1;
-    int i;
+    int k;
     if (paramIntent != null)
     {
-      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) {
+      if (this.b == null) {
         return;
       }
       str2 = paramIntent.getStringExtra("wns_proxy_http_data");
@@ -194,7 +193,7 @@ public class WebviewWrapper
       }
       if ((paramBoolean) && (bool1))
       {
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(str1);
+        this.b.loadUrl(str1);
         if (QLog.isColorLevel())
         {
           paramIntent = new StringBuilder();
@@ -205,13 +204,13 @@ public class WebviewWrapper
         }
         return;
       }
-      Object localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
+      Object localObject = this.b.getUrl();
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!"about:blank".equals(localObject))) {
-        i = 0;
+        k = 0;
       } else {
-        i = 1;
+        k = 1;
       }
-      if (i != 0) {}
+      if (k != 0) {}
     }
     try
     {
@@ -219,7 +218,7 @@ public class WebviewWrapper
         break label289;
       }
       QLog.i("WebviewWrapper", 2, "isCurrentUrlEmpty loadDataWithBaseURL");
-      WebSoPlugin.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, str1, str2);
+      WebSoPlugin.a(this.b, str1, str2);
     }
     catch (Exception paramIntent)
     {
@@ -234,7 +233,7 @@ public class WebviewWrapper
       paramIntent.append("load Url: ");
       paramIntent.append(str1);
       paramIntent.append(", htmlBody(true), currentUrl(");
-      paramIntent.append(i ^ 0x1);
+      paramIntent.append(k ^ 0x1);
       paramIntent.append(")");
       QLog.i("WebviewWrapper", 2, paramIntent.toString());
     }
@@ -242,16 +241,16 @@ public class WebviewWrapper
   
   public void preInit()
   {
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)
+    if (this.b == null)
     {
       long l = System.currentTimeMillis();
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.e) {
         QbSdk.forceSysWebView();
       }
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView = WebViewPool.a.a();
+      this.b = WebViewPool.a.b();
       if (Build.VERSION.SDK_INT >= 21)
       {
-        localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings();
+        localObject = this.b.getSettings();
         if (localObject != null)
         {
           ((WebSettings)localObject).setUserAgentString("");
@@ -268,7 +267,7 @@ public class WebviewWrapper
   
   public void setOnWebviewTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    TouchWebView localTouchWebView = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    TouchWebView localTouchWebView = this.b;
     if (localTouchWebView != null) {
       localTouchWebView.setOnTouchListener(paramOnTouchListener);
     }
@@ -276,7 +275,7 @@ public class WebviewWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.webview.WebviewWrapper
  * JD-Core Version:    0.7.0.1
  */

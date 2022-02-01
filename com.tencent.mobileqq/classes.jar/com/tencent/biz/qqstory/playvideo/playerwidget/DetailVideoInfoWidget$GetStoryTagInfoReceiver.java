@@ -18,10 +18,10 @@ public class DetailVideoInfoWidget$GetStoryTagInfoReceiver
   
   public void a(@NonNull DetailVideoInfoWidget paramDetailVideoInfoWidget, @NonNull GetStoryPlayerTagInfoHandler.GetStoryPlayerTagInfoEvent paramGetStoryPlayerTagInfoEvent)
   {
-    if ((paramDetailVideoInfoWidget.a != null) && (paramGetStoryPlayerTagInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetStoryPlayerTagInfoEvent.jdField_a_of_type_JavaUtilList.contains(paramDetailVideoInfoWidget.a.a)))
+    if ((paramDetailVideoInfoWidget.p != null) && (paramGetStoryPlayerTagInfoEvent.g.isSuccess()) && (paramGetStoryPlayerTagInfoEvent.a.contains(paramDetailVideoInfoWidget.p.b)))
     {
       SLog.a(this.TAG, "receive tag info change event. %s", paramGetStoryPlayerTagInfoEvent.toString());
-      paramDetailVideoInfoWidget.i();
+      paramDetailVideoInfoWidget.x();
     }
   }
   

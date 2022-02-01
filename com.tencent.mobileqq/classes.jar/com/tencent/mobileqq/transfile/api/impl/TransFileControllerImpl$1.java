@@ -10,12 +10,12 @@ class TransFileControllerImpl$1
   
   public void run()
   {
-    this.this$0.mRichmediaIpv6ConifgBean = ((RichmediaIpv6ConifgBean)QConfigManager.a().a(538));
+    this.this$0.mRichmediaIpv6ConifgBean = ((RichmediaIpv6ConifgBean)QConfigManager.b().b(538));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl.1
  * JD-Core Version:    0.7.0.1
  */

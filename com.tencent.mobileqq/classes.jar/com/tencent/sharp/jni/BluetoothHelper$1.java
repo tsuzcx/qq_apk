@@ -23,7 +23,7 @@ class BluetoothHelper$1
       }
       catch (Exception localException)
       {
-        localObject2 = BluetoothHelper.a();
+        localObject2 = BluetoothHelper.d();
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("onServiceConnected run exception[");
         ((StringBuilder)localObject3).append(localException.getMessage());
@@ -41,11 +41,11 @@ class BluetoothHelper$1
         localObject2 = (BluetoothDevice)localObject1.get(i);
         int j = BluetoothHelper.a(this.this$0).getConnectionState((BluetoothDevice)localObject2);
         if (j == 2) {
-          BluetoothHelper.a(this.this$0).a(((BluetoothDevice)localObject2).getName());
+          BluetoothHelper.b(this.this$0).c(((BluetoothDevice)localObject2).getName());
         }
         if (QLog.isColorLevel())
         {
-          localObject3 = BluetoothHelper.a();
+          localObject3 = BluetoothHelper.d();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("onServiceConnected, device name[");
           localStringBuilder.append(((BluetoothDevice)localObject2).getName());
@@ -57,22 +57,22 @@ class BluetoothHelper$1
         i += 1;
       }
     }
-    if (BluetoothHelper.a(this.this$0) != null)
+    if (BluetoothHelper.b(this.this$0) != null)
     {
-      if ((!TextUtils.isEmpty(BluetoothHelper.a(this.this$0).a())) && (this.this$0.a()))
+      if ((!TextUtils.isEmpty(BluetoothHelper.b(this.this$0).e())) && (this.this$0.c()))
       {
-        BluetoothHelper.a(this.this$0).a("DEVICE_BLUETOOTH_HEADSET", true);
+        BluetoothHelper.b(this.this$0).a("DEVICE_BLUETOOTH_HEADSET", true);
         BluetoothHelper.a(this.this$0, 2);
-        BluetoothHelper.a(this.this$0).a(true);
+        BluetoothHelper.c(this.this$0).a(true);
         return;
       }
-      BluetoothHelper.a(this.this$0).a("DEVICE_BLUETOOTH_HEADSET", false);
+      BluetoothHelper.b(this.this$0).a("DEVICE_BLUETOOTH_HEADSET", false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.sharp.jni.BluetoothHelper.1
  * JD-Core Version:    0.7.0.1
  */

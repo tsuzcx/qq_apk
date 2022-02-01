@@ -100,7 +100,7 @@ public class DrawableWrapper
   
   public void jumpToCurrentState()
   {
-    DrawableCompat.jumpToCurrentState(this.mDrawable);
+    this.mDrawable.jumpToCurrentState();
   }
   
   protected void onBoundsChange(Rect paramRect)

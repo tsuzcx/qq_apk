@@ -15,14 +15,15 @@ class AssetExportThread$AudioRequestMediaDataCallback
   private void onAudioRequestMediaData()
   {
     while ((!AssetExportThread.access$900(this.this$0)) && (!AssetExportThread.access$1000(this.this$0))) {
-      if ((AssetExportThread.access$2600(this.this$0) != null) && (AssetExportThread.access$700(this.this$0).isReadyForMoreMediaData()))
+      if ((AssetExportThread.access$2700(this.this$0) != null) && (AssetExportThread.access$700(this.this$0).isReadyForMoreMediaData()))
       {
-        AssetExportThread.access$2600(this.this$0).duration();
-        localObject1 = AssetExportThread.access$2600(this.this$0).copyNextSampleBuffer();
+        AssetExportThread.access$2700(this.this$0).duration();
+        localObject1 = AssetExportThread.access$2700(this.this$0).copyNextSampleBuffer();
         Object localObject2 = ((CMSampleBuffer)localObject1).getState();
         if (((CMSampleState)localObject2).getStateCode() >= 0L)
         {
-          localObject2 = AssetExportThread.access$700(this.this$0).appendSampleBuffer((CMSampleBuffer)localObject1);
+          AssetExportThread.access$2300(this.this$0).syncAudio(((CMSampleBuffer)localObject1).getTime());
+          localObject2 = AssetExportThread.access$700(this.this$0).appendAudioSampleBuffer((CMSampleBuffer)localObject1);
           if (localObject2 != null) {
             AssetExportThread.access$400(this.this$0, (ExportErrorStatus)localObject2);
           }
@@ -41,7 +42,7 @@ class AssetExportThread$AudioRequestMediaDataCallback
       }
     }
     Object localObject1 = this.this$0;
-    AssetExportThread.access$2702((AssetExportThread)localObject1, AssetExportThread.access$1000((AssetExportThread)localObject1) ^ true);
+    AssetExportThread.access$2802((AssetExportThread)localObject1, AssetExportThread.access$1000((AssetExportThread)localObject1) ^ true);
     AssetExportThread.access$2000(this.this$0).sendEmptyMessage(2);
   }
   
@@ -61,7 +62,7 @@ class AssetExportThread$AudioRequestMediaDataCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AssetExportThread.AudioRequestMediaDataCallback
  * JD-Core Version:    0.7.0.1
  */

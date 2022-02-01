@@ -72,84 +72,55 @@ public class UniformDownloadActivity
   public static String i = "isqbdownload";
   public static String j = "fileMimeType";
   public static String k = "refer_url";
-  private static final String m;
-  private long jdField_a_of_type_Long = 0L;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new UniformDownloadActivity.6(this);
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public QQAppInterface a;
-  private IUniformDownloaderListener jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener = new UniformDownloadActivity.11(this);
-  private DownloadListener jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new UniformDownloadActivity.10(this);
-  private ActionSheet.OnButtonClickListener jdField_a_of_type_ComTencentWidgetActionSheet$OnButtonClickListener = new UniformDownloadActivity.7(this);
-  protected ActionSheet a;
-  private boolean jdField_a_of_type_Boolean;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private static final String o;
+  private boolean A;
+  private View.OnClickListener B = new UniformDownloadActivity.6(this);
+  private ActionSheet.OnButtonClickListener C = new UniformDownloadActivity.7(this);
+  private DownloadListener D = new UniformDownloadActivity.10(this);
+  private IUniformDownloaderListener E = new UniformDownloadActivity.11(this);
   public final String l = "application/vnd.android.package-archive";
-  private String n = null;
-  private String o = null;
+  public QQAppInterface m;
+  protected ActionSheet n;
   private String p = null;
   private String q = null;
-  private String r = "";
+  private long r = 0L;
+  private RelativeLayout s = null;
+  private String t = null;
+  private String u = null;
+  private String v = "";
+  private RelativeLayout w;
+  private ProgressBar x;
+  private TextView y;
+  private TextView z;
   
   private int a(float paramFloat)
   {
     return (int)(paramFloat * getResources().getDisplayMetrics().density + 0.5F);
   }
   
-  private View a()
+  private void a(OuterCallReportModel paramOuterCallReportModel)
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130839406));
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setId(241);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(242);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131691847);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166952));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(14.0F);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, a(30.0F));
-    localLayoutParams.addRule(13);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetProgressBar, localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(3, 241);
-    localLayoutParams.addRule(13);
-    localLayoutParams.topMargin = a(5.0F);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(3, 242);
-    localLayoutParams.addRule(13);
-    localLayoutParams.topMargin = a(5.0F);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-    return this.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    GlobalUtil.getInstance().setContext(getApplicationContext());
+    SDKReportManager2.getInstance().postReport(15, paramOuterCallReportModel.toString());
+  }
+  
+  private boolean a(String paramString)
+  {
+    PortalManager localPortalManager = (PortalManager)this.m.getManager(QQManagerFactory.MGR_PORTAL);
+    if (localPortalManager == null) {
+      return true;
+    }
+    return ((!((ArkMsgAIDisableConfBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkMsgAIDisableConfBean.class)).b().b) || (!this.A)) && (localPortalManager.c(paramString));
   }
   
   @NonNull
-  private OuterCallReportModel a()
-  {
-    OuterCallReportModel localOuterCallReportModel = OuterCallReportModel.getDefaultModel();
-    localOuterCallReportModel.mOuterCallMode = 1;
-    localOuterCallReportModel.mOuterCallType = 1;
-    localOuterCallReportModel.mOuterCallTime = System.currentTimeMillis();
-    localOuterCallReportModel.mVia = "ANDROIDQQ.POPUP.YYBDOWNAPP";
-    localOuterCallReportModel.mComponentName = "SplashActivity";
-    return localOuterCallReportModel;
-  }
-  
-  @NonNull
-  private String a(OuterCallReportModel paramOuterCallReportModel)
+  private String b(OuterCallReportModel paramOuterCallReportModel)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("tmast://download?downl_biz_id=ANDROIDQQ&down_ticket=");
     localStringBuilder.append(System.currentTimeMillis());
     localStringBuilder.append("&downl_url=");
-    localStringBuilder.append(URLEncoder.encode(this.n));
+    localStringBuilder.append(URLEncoder.encode(this.p));
     localStringBuilder.append("&via=");
     localStringBuilder.append("ANDROIDQQ.POPUP.YYBDOWNAPP");
     localStringBuilder.append("&hostpname=com.tencent.mobileqq&outerCallTime=");
@@ -163,13 +134,7 @@ public class UniformDownloadActivity
     return localStringBuilder.toString();
   }
   
-  private void a(OuterCallReportModel paramOuterCallReportModel)
-  {
-    GlobalUtil.getInstance().setContext(getApplicationContext());
-    SDKReportManager2.getInstance().postReport(15, paramOuterCallReportModel.toString());
-  }
-  
-  private void a(String paramString)
+  private void b(String paramString)
   {
     paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
     paramString.setFlags(268435456);
@@ -181,30 +146,16 @@ public class UniformDownloadActivity
     catch (Exception paramString) {}
   }
   
-  private boolean a()
+  private void c()
   {
-    return ("application/vnd.android.package-archive".equals(this.q)) || (this.o.toLowerCase().endsWith(".apk"));
-  }
-  
-  private boolean a(String paramString)
-  {
-    PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_PORTAL);
-    if (localPortalManager == null) {
-      return true;
-    }
-    return ((!((ArkMsgAIDisableConfBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkMsgAIDisableConfBean.class)).a().b) || (!this.jdField_a_of_type_Boolean)) && (localPortalManager.a(paramString));
-  }
-  
-  private void b()
-  {
-    super.setContentView(2131560832);
-    Object localObject1 = (TextView)findViewById(2131380173);
-    Object localObject2 = (TextView)findViewById(2131380174);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131380172));
+    super.setContentView(2131627090);
+    Object localObject1 = (TextView)findViewById(2131449088);
+    Object localObject2 = (TextView)findViewById(2131449089);
+    this.s = ((RelativeLayout)findViewById(2131449087));
     if (localObject2 != null)
     {
       if (getIntent().getLongExtra(c, 0L) == 1L) {
-        ((TextView)localObject2).setText(2131690635);
+        ((TextView)localObject2).setText(2131887546);
       }
       ((TextView)localObject2).setOnClickListener(new UniformDownloadActivity.1(this));
     }
@@ -212,22 +163,22 @@ public class UniformDownloadActivity
       ((TextView)localObject1).setOnClickListener(new UniformDownloadActivity.2(this));
     }
     Intent localIntent = getIntent();
-    TextView localTextView1 = (TextView)findViewById(2131380178);
-    TextView localTextView2 = (TextView)findViewById(2131380179);
-    ImageView localImageView = (ImageView)findViewById(2131380177);
+    TextView localTextView1 = (TextView)findViewById(2131449093);
+    TextView localTextView2 = (TextView)findViewById(2131449094);
+    ImageView localImageView = (ImageView)findViewById(2131449092);
     localObject2 = localIntent.getStringExtra(h);
     localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = this.o;
+      localObject1 = this.q;
     }
     localTextView1.setText((CharSequence)localObject1);
-    localTextView2.setText(FileUtil.a(this.jdField_a_of_type_Long));
-    int i1 = FileManagerUtil.b(this.o);
+    localTextView2.setText(FileUtil.a(this.r));
+    int i1 = FileManagerUtil.i(this.q);
     localObject1 = localIntent.getStringExtra(g);
     if (i1 != 0) {
       localImageView.setImageResource(i1);
     } else {
-      localImageView.setImageResource(2130844434);
+      localImageView.setImageResource(2130845752);
     }
     if (localObject1 != null)
     {
@@ -237,89 +188,133 @@ public class UniformDownloadActivity
     }
   }
   
-  private boolean b()
-  {
-    return AppUtil.a("com.tencent.android.qqdownloader") >= 5202129;
-  }
-  
-  private void c()
+  private void d()
   {
     ReportController.b(null, "P_CliOper", "webview", "", "webview_apk_download", "download_click", 0, 1, 0, "", "", "", "");
     Object localObject = new Bundle();
-    ((Bundle)localObject).putString("_filename_from_dlg", this.o);
-    ((Bundle)localObject).putLong("_filesize_from_dlg", this.jdField_a_of_type_Long);
+    ((Bundle)localObject).putString("_filename_from_dlg", this.q);
+    ((Bundle)localObject).putLong("_filesize_from_dlg", this.r);
     ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_WEBVIEW");
-    ((Bundle)localObject).putString("FILE_MIME_TYPE", this.q);
-    ((Bundle)localObject).putString("param_refer_url", this.r);
-    a().startDownload(this.n, (Bundle)localObject, this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener);
-    d();
-    OpenSdkStatic.a().a(this.p, "", "ANDROIDQQ.POPUP.SDKDOWNAPP", "202", false);
+    ((Bundle)localObject).putString("FILE_MIME_TYPE", this.u);
+    ((Bundle)localObject).putString("param_refer_url", this.v);
+    b().startDownload(this.p, (Bundle)localObject, this.E);
+    e();
+    OpenSdkStatic.a().a(this.t, "", "ANDROIDQQ.POPUP.SDKDOWNAPP", "202", false);
     ReportController.b(null, "dc00898", "", "", "0X8008FF9", "0X8008FF9", 1, 0, "", "", "", "");
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL]. >>> downloadFile. url:");
-      localStringBuilder.append(this.n);
+      localStringBuilder.append(this.p);
       QLog.i((String)localObject, 2, localStringBuilder.toString());
-    }
-  }
-  
-  private void d()
-  {
-    if ((!TextUtils.isEmpty(this.o)) && (this.o.startsWith("qzone"))) {
-      LocalMultiProcConfig.putLong("qzonedownloadtime", System.currentTimeMillis());
     }
   }
   
   private void e()
   {
-    if (b()) {
-      OpenSdkStatic.a().a(this.p, "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3008", false);
+    if ((!TextUtils.isEmpty(this.q)) && (this.q.startsWith("qzone"))) {
+      LocalMultiProcConfig.putLong("qzonedownloadtime", System.currentTimeMillis());
+    }
+  }
+  
+  private View f()
+  {
+    this.w = new RelativeLayout(this);
+    this.x = new ProgressBar(this);
+    this.x.setIndeterminateDrawable(getResources().getDrawable(2130839590));
+    this.x.setId(241);
+    this.y = new TextView(this);
+    this.y.setId(242);
+    this.y.setTextColor(-1);
+    this.y.setTextSize(14.0F);
+    this.z = new TextView(this);
+    this.z.setText(2131888812);
+    this.z.setVisibility(4);
+    this.z.setTextColor(getResources().getColor(2131167885));
+    this.z.setTextSize(14.0F);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, a(30.0F));
+    localLayoutParams.addRule(13);
+    this.w.addView(this.x, localLayoutParams);
+    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(3, 241);
+    localLayoutParams.addRule(13);
+    localLayoutParams.topMargin = a(5.0F);
+    this.w.addView(this.y, localLayoutParams);
+    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(3, 242);
+    localLayoutParams.addRule(13);
+    localLayoutParams.topMargin = a(5.0F);
+    this.w.addView(this.z, localLayoutParams);
+    this.w.setVisibility(4);
+    return this.w;
+  }
+  
+  private boolean g()
+  {
+    return ("application/vnd.android.package-archive".equals(this.u)) || (this.q.toLowerCase().endsWith(".apk"));
+  }
+  
+  private boolean h()
+  {
+    return AppUtil.d("com.tencent.android.qqdownloader") >= 5202129;
+  }
+  
+  private void i()
+  {
+    if (h()) {
+      OpenSdkStatic.a().a(this.t, "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3008", false);
     } else {
-      OpenSdkStatic.a().a(this.p, "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3005", false);
+      OpenSdkStatic.a().a(this.t, "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3005", false);
     }
     if (NetworkUtil.isNetSupport(getActivity()))
     {
-      if (FileManagerUtil.a())
+      if (FileManagerUtil.b())
       {
-        FMDialogUtil.a(getActivity(), 2131692561, 2131720077, new UniformDownloadActivity.8(this));
+        FMDialogUtil.a(getActivity(), 2131889584, 2131917699, new UniformDownloadActivity.8(this));
         return;
       }
-      c();
+      d();
       return;
     }
-    FMToastUtil.a(2131692554);
+    FMToastUtil.a(2131889577);
     finish();
     overridePendingTransition(0, 0);
   }
   
-  protected IUniformDownloadMgr a()
+  @NonNull
+  private OuterCallReportModel j()
   {
-    return (IUniformDownloadMgr)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IUniformDownloadMgr.class, "");
+    OuterCallReportModel localOuterCallReportModel = OuterCallReportModel.getDefaultModel();
+    localOuterCallReportModel.mOuterCallMode = 1;
+    localOuterCallReportModel.mOuterCallType = 1;
+    localOuterCallReportModel.mOuterCallTime = System.currentTimeMillis();
+    localOuterCallReportModel.mVia = "ANDROIDQQ.POPUP.YYBDOWNAPP";
+    localOuterCallReportModel.mComponentName = "SplashActivity";
+    return localOuterCallReportModel;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(getActivity(), null));
-    Object localObject = SharedPreUtils.i(this, "noSafeDown");
-    Log.d(jdField_a_of_type_JavaLangString, this.n);
+    this.n = ((ActionSheet)ActionSheetHelper.b(getActivity(), null));
+    Object localObject = SharedPreUtils.az(this, "noSafeDown");
+    Log.d(a, this.p);
     if (((String)localObject).equals("true"))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690088);
+      this.n.addButton(2131886907);
     }
     else
     {
       int i1 = 0;
       boolean bool1;
-      if (a())
+      if (g())
       {
-        boolean bool2 = a(this.n);
+        boolean bool2 = a(this.p);
         bool1 = bool2;
         if (bool2)
         {
-          DownloadSDKConfigManager.isDownloadUrlBlocked(this, this.n);
-          Log.d(jdField_a_of_type_JavaLangString, "url is blocked!! show only normal download");
+          DownloadSDKConfigManager.isDownloadUrlBlocked(this, this.p);
+          Log.d(a, "url is blocked!! show only normal download");
           i1 = 1;
           bool1 = bool2;
         }
@@ -331,27 +326,32 @@ public class UniformDownloadActivity
       if (bool1)
       {
         if (i1 != 0) {
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690088);
+          this.n.addButton(2131886907);
         } else {
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131691829);
+          this.n.addButton(2131888792);
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690089);
+        this.n.addButton(2131886908);
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(this.jdField_a_of_type_ComTencentWidgetActionSheet$OnButtonClickListener);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new UniformDownloadActivity.4(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnKeyListener(new UniformDownloadActivity.5(this));
-    localObject = LayoutInflater.from(this).inflate(2131558467, null);
-    Button localButton = (Button)((View)localObject).findViewById(2131361988);
-    localButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    localButton.setText(2131691828);
-    localButton.setTextColor(getResources().getColor(2131165229));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.addView((View)localObject);
-    OpenSdkStatic.a().a(this.p, "", "ANDROIDQQ.POPUP", "100", false);
+    this.n.setOnButtonClickListener(this.C);
+    this.n.setOnDismissListener(new UniformDownloadActivity.4(this));
+    this.n.show();
+    this.n.setOnKeyListener(new UniformDownloadActivity.5(this));
+    localObject = LayoutInflater.from(this).inflate(2131624005, null);
+    Button localButton = (Button)((View)localObject).findViewById(2131427548);
+    localButton.setOnClickListener(this.B);
+    localButton.setText(2131888791);
+    localButton.setTextColor(getResources().getColor(2131165408));
+    this.n.addView((View)localObject);
+    OpenSdkStatic.a().a(this.t, "", "ANDROIDQQ.POPUP", "100", false);
     ReportController.b(null, "dc00898", "", "", "0X8008FF8", "0X8008FF8", 1, 0, "", "", "", "");
+  }
+  
+  protected IUniformDownloadMgr b()
+  {
+    return (IUniformDownloadMgr)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IUniformDownloadMgr.class, "");
   }
   
   @Override
@@ -367,25 +367,25 @@ public class UniformDownloadActivity
   {
     super.doOnCreate(paramBundle);
     paramBundle = getIntent();
-    this.n = paramBundle.getStringExtra(jdField_b_of_type_JavaLangString);
-    this.o = paramBundle.getStringExtra(d);
-    this.jdField_a_of_type_Long = paramBundle.getLongExtra(e, 0L);
-    this.q = paramBundle.getStringExtra(j);
-    this.r = paramBundle.getStringExtra(k);
-    this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("fromArkAppDownload", false);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getAppRuntime());
-    this.p = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    this.p = paramBundle.getStringExtra(b);
+    this.q = paramBundle.getStringExtra(d);
+    this.r = paramBundle.getLongExtra(e, 0L);
+    this.u = paramBundle.getStringExtra(j);
+    this.v = paramBundle.getStringExtra(k);
+    this.A = paramBundle.getBooleanExtra("fromArkAppDownload", false);
+    this.m = ((QQAppInterface)getAppRuntime());
+    this.t = this.m.getCurrentAccountUin();
     if (paramBundle.getBooleanExtra(i, false))
     {
-      b();
+      c();
     }
     else
     {
-      setContentView(a(), new FrameLayout.LayoutParams(-1, -1));
+      setContentView(f(), new FrameLayout.LayoutParams(-1, -1));
       a();
     }
-    if (this.r == null) {
-      this.r = "";
+    if (this.v == null) {
+      this.v = "";
     }
     return true;
   }
@@ -394,8 +394,8 @@ public class UniformDownloadActivity
   {
     super.doOnDestroy();
     ThreadManager.getSubThreadHandler().post(new UniformDownloadActivity.9(this));
-    a().removeOuterListenner(this.n);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    b().removeOuterListenner(this.p);
+    this.m = null;
   }
   
   @Override
@@ -407,7 +407,7 @@ public class UniformDownloadActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ class ProfileContactComponent$1
 {
   ProfileContactComponent$1(ProfileContactComponent paramProfileContactComponent) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     paramInt = ProfileContactComponent.access$000(this.this$0)[paramInt];
     if (paramInt != 7)
@@ -32,7 +32,7 @@ class ProfileContactComponent$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.contact.ProfileContactComponent.1
  * JD-Core Version:    0.7.0.1
  */

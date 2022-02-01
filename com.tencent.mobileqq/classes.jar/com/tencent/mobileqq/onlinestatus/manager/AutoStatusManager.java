@@ -39,7 +39,6 @@ import com.tencent.mobileqq.onlinestatus.observer.OnAutoStatusBannerObserver;
 import com.tencent.mobileqq.onlinestatus.view.AutoStatusConfirmFragment;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import com.tencent.mobileqq.util.SharePreferenceUtils;
-import com.tencent.mobileqq.utils.ProcessUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
@@ -48,7 +47,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import mqq.app.AppRuntime;
 import mqq.app.AppRuntime.Status;
 import mqq.app.MobileQQ;
 
@@ -56,27 +54,26 @@ public class AutoStatusManager
   implements IGuardInterface, IAutoStatusManager
 {
   @ConfigInject(configPath="/Business/qqonlinestatus-impl/src/main/resources/Inject_onlinestatus_business.yml", version=1)
-  public static ArrayList<Class<? extends IOnlineStatusInjector>> a;
-  private volatile long jdField_a_of_type_Long = Constant.c;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getSubThreadLooper());
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private IOnlineStatusInjector jdField_a_of_type_ComTencentMobileqqOnlinestatusIOnlineStatusInjector;
-  private OnlineStatusObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusObserver = new AutoStatusManager.5(this);
-  private OnlineStatusPermissionObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionObserver = new AutoStatusManager.6(this);
-  private AutoStatus jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus = new AutoStatus(40001);
-  ActionDetector jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoActionActionDetector;
-  LocationBaseStateDetector jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector;
-  private AutoStatusManager.OnAutoStatusChangedListener jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$OnAutoStatusChangedListener;
-  private AutoStatusManager.ScreenBroadcastReceiver jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$ScreenBroadcastReceiver = new AutoStatusManager.ScreenBroadcastReceiver(null);
-  Runnable jdField_a_of_type_JavaLangRunnable = new AutoStatusManager.3(this);
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private long jdField_b_of_type_Long = 0L;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new AutoStatusManager.1(this);
+  public static ArrayList<Class<? extends IOnlineStatusInjector>> c = new ArrayList();
+  ActionDetector a;
+  LocationBaseStateDetector b;
+  Runnable d = new AutoStatusManager.3(this);
+  private AppInterface e;
+  private Handler f = new Handler(ThreadManagerV2.getSubThreadLooper());
+  private volatile long g = Constant.c;
+  private volatile boolean h = false;
+  private AutoStatus i = new AutoStatus(40001);
+  private long j = 0L;
+  private AutoStatusManager.OnAutoStatusChangedListener k;
+  private AutoStatusManager.ScreenBroadcastReceiver l = new AutoStatusManager.ScreenBroadcastReceiver(null);
+  private Runnable m = new AutoStatusManager.1(this);
+  private IOnlineStatusInjector n;
+  private OnlineStatusObserver o = new AutoStatusManager.5(this);
+  private OnlineStatusPermissionObserver p = new AutoStatusManager.6(this);
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(OnlineStatusInjectorImpl.class);
+    c.add(OnlineStatusInjectorImpl.class);
   }
   
   public AutoStatusManager(AppInterface paramAppInterface)
@@ -84,19 +81,19 @@ public class AutoStatusManager
     if (QLog.isColorLevel()) {
       QLog.d("AutoStatusManager", 2, "[status][autoMgr] AutoStatusManager() called");
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    f();
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoActionActionDetector = new ActionDetector(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector = new LocationBaseStateDetector(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new AutoStatusManager.2(this));
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusObserver);
+    this.e = paramAppInterface;
+    g();
+    this.a = new ActionDetector(this.e);
+    this.b = new LocationBaseStateDetector(this.e, new AutoStatusManager.2(this));
+    this.e.registObserver(this.p);
+    this.e.addObserver(this.o);
     paramAppInterface = new IntentFilter();
     paramAppInterface.addAction("android.intent.action.SCREEN_OFF");
-    MobileQQ.sMobileQQ.registerReceiver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$ScreenBroadcastReceiver, paramAppInterface);
-    if (GuardManager.a != null) {
-      GuardManager.a.a(this);
+    MobileQQ.sMobileQQ.registerReceiver(this.l, paramAppInterface);
+    if (GuardManager.sInstance != null) {
+      GuardManager.sInstance.registerCallBack(this);
     }
-    h();
+    i();
   }
   
   @NonNull
@@ -105,7 +102,7 @@ public class AutoStatusManager
     Intent localIntent = new Intent();
     localIntent.putExtra("ext_status", paramLong);
     localIntent.putExtra("public_fragment_window_feature", 1);
-    localIntent.putExtra("is_background", true ^ GuardManager.a.a());
+    localIntent.putExtra("is_background", true ^ GuardManager.sInstance.isApplicationForeground());
     localIntent.setClass(paramAppInterface.getApp(), QPublicTransFragmentActivity.class);
     localIntent.putExtra("public_fragment_class", AutoStatusConfirmFragment.class.getName());
     return localIntent;
@@ -119,12 +116,12 @@ public class AutoStatusManager
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[status][autoMgr] updateAutoStatus status changed cur: ");
-        ((StringBuilder)localObject).append(Constant.a(paramInt2));
+        ((StringBuilder)localObject).append(Constant.c(paramInt2));
         ((StringBuilder)localObject).append(" last: ");
-        ((StringBuilder)localObject).append(Constant.a(paramInt1));
+        ((StringBuilder)localObject).append(Constant.c(paramInt1));
         QLog.e("AutoStatusManager", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$OnAutoStatusChangedListener;
+      Object localObject = this.k;
       if (localObject != null) {
         ((AutoStatusManager.OnAutoStatusChangedListener)localObject).a(paramInt2);
       }
@@ -133,20 +130,20 @@ public class AutoStatusManager
         if (paramLong > 40001L)
         {
           if (a(true)) {
-            this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a(paramInt2);
+            this.i.a(paramInt2);
           }
         }
         else
         {
-          a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+          a(this.e);
           d();
-          this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a(paramInt2);
+          this.i.a(paramInt2);
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a(paramInt2);
-        localObject = Constant.a(paramInt2);
+        this.i.a(paramInt2);
+        localObject = Constant.b(paramInt2);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -167,7 +164,7 @@ public class AutoStatusManager
     }
     else
     {
-      ExtensionBizInfoHelper.a.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, ExtensionBizInfoHelper.a.a(), paramInt2);
+      ExtensionBizInfoHelper.a.b(this.e, ExtensionBizInfoHelper.a.a(), paramInt2);
     }
   }
   
@@ -187,29 +184,29 @@ public class AutoStatusManager
       ((StringBuilder)localObject).append("[status][autoMgr] submitStatus ");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(" status: ");
-      ((StringBuilder)localObject).append(Constant.a((int)paramLong));
+      ((StringBuilder)localObject).append(Constant.c((int)paramLong));
       ((StringBuilder)localObject).append(" auto: ");
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("AutoStatusManager", 2, ((StringBuilder)localObject).toString());
     }
     paramString = (IOnlineStatusService)paramAppInterface.getRuntimeService(IOnlineStatusService.class, "");
     Object localObject = (AutoStatusManager)((IOnlineStatusManagerService)paramAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IAutoStatusManager.class);
-    a(((AutoStatusManager)localObject).jdField_a_of_type_ComTencentCommonAppAppInterface);
+    a(((AutoStatusManager)localObject).e);
     ((AutoStatusManager)localObject).d();
     if (paramLong != 40001L) {
       ExtensionBizInfoHelper.a.a(paramAppInterface, ExtensionBizInfoHelper.a.a(), (int)paramLong);
     }
     paramString.updateOnlineStatus(AppRuntime.Status.online, paramLong, paramBoolean);
     if (Constant.a(paramLong)) {
-      ((AutoStatusManager)localObject).jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector.a(paramLong);
+      ((AutoStatusManager)localObject).b.a(paramLong);
     }
   }
   
   private void a(AutoStatusItem paramAutoStatusItem)
   {
-    int i = (int)((IOnlineStatusService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusService.class, "")).getExtOnlineStatus();
+    int i1 = (int)((IOnlineStatusService)this.e.getRuntimeService(IOnlineStatusService.class, "")).getExtOnlineStatus();
     StringBuilder localStringBuilder;
-    if (i == paramAutoStatusItem.jdField_a_of_type_Long)
+    if (i1 == paramAutoStatusItem.b)
     {
       if (QLog.isColorLevel())
       {
@@ -217,10 +214,10 @@ public class AutoStatusManager
         localStringBuilder.append("[status][autoMgr] showTips fail status : ");
         localStringBuilder.append(paramAutoStatusItem);
         localStringBuilder.append(" real: ");
-        localStringBuilder.append(i);
+        localStringBuilder.append(i1);
         QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
       }
-      a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      a(this.e);
       d();
       return;
     }
@@ -230,26 +227,26 @@ public class AutoStatusManager
       localStringBuilder.append("[status][autoMgr] showTips success status : ");
       localStringBuilder.append(paramAutoStatusItem);
       localStringBuilder.append(" real: ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
     }
-    if (i > 40001)
+    if (i1 > 40001)
     {
-      boolean bool = a(i);
+      boolean bool = a(i1);
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("[status][autoMgr] showTips real statusChanged: ");
         localStringBuilder.append(bool);
         localStringBuilder.append(" real: ");
-        localStringBuilder.append(Constant.a(i));
+        localStringBuilder.append(Constant.c(i1));
         QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
       }
       if (bool) {
         a(false);
       }
     }
-    if ((QBaseActivity.mAppForground) && (a()))
+    if ((QBaseActivity.mAppForground) && (f()))
     {
       b(paramAutoStatusItem);
       d();
@@ -259,32 +256,22 @@ public class AutoStatusManager
     c(paramAutoStatusItem);
   }
   
-  private boolean a()
-  {
-    IOnlineStatusInjector localIOnlineStatusInjector = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusIOnlineStatusInjector;
-    if (localIOnlineStatusInjector != null) {
-      return localIOnlineStatusInjector.a();
-    }
-    QLog.w("AutoStatusManager", 1, "isConversationTabTop injector not init");
-    return false;
-  }
-  
   private boolean a(int paramInt)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoActionActionDetector.a();
+    int i1 = this.a.a();
     boolean bool = false;
-    if (paramInt == i) {
+    if (paramInt == i1) {
       return false;
     }
-    if (paramInt == this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector.d()) {
+    if (paramInt == this.b.f()) {
       return false;
     }
-    if (Constant.b) {
-      i = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector.b();
+    if (Constant.P) {
+      i1 = this.b.d();
     } else {
-      i = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector.c();
+      i1 = this.b.e();
     }
-    if (paramInt != i) {
+    if (paramInt != i1) {
       bool = true;
     }
     return bool;
@@ -300,8 +287,8 @@ public class AutoStatusManager
       QLog.d("AutoStatusManager", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("StatusId", (int)paramAutoStatusItem.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.notifyObservers(OnAutoStatusBannerObserver.class, 26372, true, (Bundle)localObject);
+    ((Bundle)localObject).putInt("StatusId", (int)paramAutoStatusItem.b);
+    this.e.notifyObservers(OnAutoStatusBannerObserver.class, 26372, true, (Bundle)localObject);
   }
   
   private void c(AutoStatusItem paramAutoStatusItem)
@@ -315,13 +302,13 @@ public class AutoStatusManager
       ((StringBuilder)localObject).append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(System.currentTimeMillis())));
       QLog.d("AutoStatusManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramAutoStatusItem.jdField_a_of_type_Long);
-    NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp());
-    localBuilder.setContentText(String.format(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getString(2131690258), new Object[] { paramAutoStatusItem.b })).setWhen(System.currentTimeMillis()).setSmallIcon(2130841471).setAutoCancel(true).setContentIntent(PendingIntent.getActivity(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), 0, (Intent)localObject, 134217728));
+    Object localObject = a(this.e, paramAutoStatusItem.b);
+    NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(this.e.getApp());
+    localBuilder.setContentText(String.format(this.e.getApp().getString(2131887169), new Object[] { paramAutoStatusItem.c })).setWhen(System.currentTimeMillis()).setSmallIcon(2130842313).setAutoCancel(true).setContentIntent(PendingIntent.getActivity(this.e.getApp(), 0, (Intent)localObject, 134217728));
     paramAutoStatusItem = localBuilder.build();
     QQNotificationManager.addChannelIfNeed(paramAutoStatusItem, "CHANNEL_ID_OTHER");
     QQNotificationManager.getInstance().notify("AutoStatusManager", 3000530, paramAutoStatusItem);
-    if (!GuardManager.a.a())
+    if (!GuardManager.sInstance.isApplicationForeground())
     {
       ReportHelperKt.a("0X800AFA2", 1);
       return;
@@ -331,103 +318,103 @@ public class AutoStatusManager
   
   private void e()
   {
-    long l = ((IOnlineStatusService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusService.class, "")).getExtOnlineStatus();
-    int m = a();
+    long l1 = ((IOnlineStatusService)this.e.getRuntimeService(IOnlineStatusService.class, "")).getExtOnlineStatus();
+    int i4 = a();
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[status][autoMgr] updateAutoStatus last status: ");
-      localStringBuilder.append(Constant.a(m));
+      localStringBuilder.append(Constant.c(i4));
       localStringBuilder.append(" real status: ");
-      localStringBuilder.append(Constant.a((int)l));
+      localStringBuilder.append(Constant.c((int)l1));
       QLog.w("AutoStatusManager", 2, localStringBuilder.toString());
     }
-    if (l < 40000L)
+    if (l1 < 40000L)
     {
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("[status][autoMgr] updateAutoStatus [user submit no auto status] stopDetector. last status: ");
-        localStringBuilder.append(Constant.a(m));
+        localStringBuilder.append(Constant.c(i4));
         localStringBuilder.append(" real status: ");
-        localStringBuilder.append(Constant.a((int)l));
+        localStringBuilder.append(Constant.c((int)l1));
         QLog.w("AutoStatusManager", 2, localStringBuilder.toString());
       }
       b("updateStatus");
       return;
     }
-    int j = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoActionActionDetector.a();
+    int i2 = this.a.a();
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[status][autoMgr] updateAutoStatus actionStatus: ");
-      localStringBuilder.append(Constant.a(j));
+      localStringBuilder.append(Constant.c(i2));
       localStringBuilder.append(" enable: ");
-      localStringBuilder.append(Constant.a.contains(Integer.valueOf(j)));
+      localStringBuilder.append(Constant.S.contains(Integer.valueOf(i2)));
       QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
     }
-    int i;
-    if ((j > 40001) && (Constant.a.contains(Integer.valueOf(j))))
+    int i1;
+    if ((i2 > 40001) && (Constant.S.contains(Integer.valueOf(i2))))
     {
-      i = j;
+      i1 = i2;
     }
     else
     {
-      int k;
-      if (Constant.b)
+      int i3;
+      if (Constant.P)
       {
-        i = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector.b();
+        i1 = this.b.d();
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("[status][autoMgr] updateAutoStatus getNewMovementStatus: ");
-          localStringBuilder.append(Constant.a(i));
+          localStringBuilder.append(Constant.c(i1));
           localStringBuilder.append(" enable: ");
-          localStringBuilder.append(Constant.a.contains(Integer.valueOf(i)));
+          localStringBuilder.append(Constant.S.contains(Integer.valueOf(i1)));
           QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
         }
-        if ((i <= 40001) || (!Constant.a.contains(Integer.valueOf(i))))
+        if ((i1 <= 40001) || (!Constant.S.contains(Integer.valueOf(i1))))
         {
-          k = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector.d();
-          i = k;
+          i3 = this.b.f();
+          i1 = i3;
           if (QLog.isColorLevel())
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("[status][autoMgr] updateAutoStatus categoryStatus: ");
-            localStringBuilder.append(Constant.a(k));
+            localStringBuilder.append(Constant.c(i3));
             localStringBuilder.append(" enable: ");
-            localStringBuilder.append(Constant.a.contains(Integer.valueOf(k)));
+            localStringBuilder.append(Constant.S.contains(Integer.valueOf(i3)));
             QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
-            i = k;
+            i1 = i3;
           }
         }
       }
       else
       {
-        i = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector.c();
+        i1 = this.b.e();
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("[status][autoMgr] updateAutoStatus movementStatus: ");
-          localStringBuilder.append(Constant.a(i));
+          localStringBuilder.append(Constant.c(i1));
           localStringBuilder.append(" enable: ");
-          localStringBuilder.append(Constant.a.contains(Integer.valueOf(i)));
+          localStringBuilder.append(Constant.S.contains(Integer.valueOf(i1)));
           QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
         }
-        if ((i <= 40001) || (!Constant.a.contains(Integer.valueOf(i))))
+        if ((i1 <= 40001) || (!Constant.S.contains(Integer.valueOf(i1))))
         {
-          k = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector.d();
-          i = k;
+          i3 = this.b.f();
+          i1 = i3;
           if (QLog.isColorLevel())
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("[status][autoMgr] updateAutoStatus categoryStatus: ");
-            localStringBuilder.append(Constant.a(k));
+            localStringBuilder.append(Constant.c(i3));
             localStringBuilder.append(" enable: ");
-            localStringBuilder.append(Constant.a.contains(Integer.valueOf(k)));
+            localStringBuilder.append(Constant.S.contains(Integer.valueOf(i3)));
             QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
-            i = k;
+            i1 = i3;
           }
         }
       }
@@ -436,26 +423,36 @@ public class AutoStatusManager
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[status][autoMgr] updateAutoStatus result: ");
-      localStringBuilder.append(Constant.a(i));
+      localStringBuilder.append(Constant.c(i1));
       localStringBuilder.append(" enable: ");
-      localStringBuilder.append(Constant.a.contains(Integer.valueOf(i)));
+      localStringBuilder.append(Constant.S.contains(Integer.valueOf(i1)));
       QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
     }
-    if ((i > 40001) && (!Constant.a.contains(Integer.valueOf(i))))
+    if ((i1 > 40001) && (!Constant.S.contains(Integer.valueOf(i1))))
     {
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("[status][autoMgr] updateAutoStatus detected disabled cur status: ");
-        localStringBuilder.append(Constant.a(i));
+        localStringBuilder.append(Constant.c(i1));
         QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
       }
-      i = 40001;
+      i1 = 40001;
     }
-    a(l, m, i, j);
+    a(l1, i4, i1, i2);
   }
   
-  private void f()
+  private boolean f()
+  {
+    IOnlineStatusInjector localIOnlineStatusInjector = this.n;
+    if (localIOnlineStatusInjector != null) {
+      return localIOnlineStatusInjector.a();
+    }
+    QLog.w("AutoStatusManager", 1, "isConversationTabTop injector not init");
+    return false;
+  }
+  
+  private void g()
   {
     if (QLog.isColorLevel()) {
       QLog.d("AutoStatusManager", 2, "[status][autoMgr] loadConfig");
@@ -466,15 +463,15 @@ public class AutoStatusManager
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[status][autoMgr] loadConfig auto_config not valid stopDetector. detector started: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.h);
         QLog.e("AutoStatusManager", 2, ((StringBuilder)localObject).toString());
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.h) {
         b("configDrop");
       }
       return;
     }
-    Object localObject = (OnlineAutoStatusBean)QConfigManager.a().a(652);
+    Object localObject = (OnlineAutoStatusBean)QConfigManager.b().b(652);
     if ((localObject != null) && (((OnlineAutoStatusBean)localObject).a != null))
     {
       localObject = ((OnlineAutoStatusBean)localObject).a.a(false);
@@ -512,9 +509,9 @@ public class AutoStatusManager
     }
   }
   
-  private void g()
+  private void h()
   {
-    Object localObject1 = ((OnlineStatusPermissionManager)((IOnlineStatusManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusPermissionManager.class)).a();
+    Object localObject1 = ((OnlineStatusPermissionManager)((IOnlineStatusManagerService)this.e.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusPermissionManager.class)).b();
     Object localObject2;
     if (localObject1 != null)
     {
@@ -525,16 +522,16 @@ public class AutoStatusManager
         ((StringBuilder)localObject2).append(((List)localObject1).size());
         QLog.d("AutoStatusManager", 2, ((StringBuilder)localObject2).toString());
       }
-      Constant.a = (List)localObject1;
+      Constant.S = (List)localObject1;
     }
     else
     {
       if (QLog.isColorLevel()) {
         QLog.e("AutoStatusManager", 2, "[status][autoMgr] loadEnabledStatus smartSelectedList is null");
       }
-      Constant.a = new ArrayList();
+      Constant.S = new ArrayList();
     }
-    localObject1 = Constant.a.iterator();
+    localObject1 = Constant.S.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (Integer)((Iterator)localObject1).next();
@@ -542,21 +539,21 @@ public class AutoStatusManager
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[status][autoMgr] loadEnabledStatus status: ");
-        localStringBuilder.append(Constant.a(((Integer)localObject2).intValue()));
+        localStringBuilder.append(Constant.c(((Integer)localObject2).intValue()));
         QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
       }
     }
   }
   
-  private void h()
+  private void i()
   {
     try
     {
-      if (jdField_a_of_type_JavaUtilArrayList != null)
+      if (c != null)
       {
-        Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = c.iterator();
         while (localIterator.hasNext()) {
-          this.jdField_a_of_type_ComTencentMobileqqOnlinestatusIOnlineStatusInjector = ((IOnlineStatusInjector)((Class)localIterator.next()).newInstance());
+          this.n = ((IOnlineStatusInjector)((Class)localIterator.next()).newInstance());
         }
       }
       return;
@@ -567,19 +564,9 @@ public class AutoStatusManager
     }
   }
   
-  public void G_()
-  {
-    c("ForeBackgroundSwitch");
-  }
-  
-  public void H_()
-  {
-    d("ForeBackgroundSwitch");
-  }
-  
   public int a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a;
+    return this.i.a;
   }
   
   public String a(Integer paramInteger)
@@ -588,34 +575,16 @@ public class AutoStatusManager
     if (paramInteger == null) {
       localInteger = Integer.valueOf(a());
     }
-    paramInteger = Constant.a(localInteger.intValue());
+    paramInteger = Constant.b(localInteger.intValue());
     if (paramInteger != null) {
-      return paramInteger.b;
+      return paramInteger.c;
     }
     paramInteger = OnLineStatusHelper.a().a(AppRuntime.Status.online, 40001L);
-    if (paramInteger.e == null) {
+    if (paramInteger.i == null) {
       return "";
     }
-    return paramInteger.e;
+    return paramInteger.i;
   }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("AutoStatusManager", 2, "[status][autoMgr] destroy");
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      b("destroy");
-    }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusObserver);
-    MobileQQ.sMobileQQ.unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$ScreenBroadcastReceiver);
-    if (GuardManager.a != null) {
-      GuardManager.a.b(this);
-    }
-  }
-  
-  public void a(long paramLong) {}
   
   public void a(AutoStatusManager.OnAutoStatusChangedListener paramOnAutoStatusChangedListener)
   {
@@ -626,7 +595,7 @@ public class AutoStatusManager
       localStringBuilder.append(paramOnAutoStatusChangedListener);
       QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$OnAutoStatusChangedListener = paramOnAutoStatusChangedListener;
+    this.k = paramOnAutoStatusChangedListener;
   }
   
   public void a(@NonNull String paramString)
@@ -640,7 +609,7 @@ public class AutoStatusManager
     {
       try
       {
-        Object localObject = (IOnlineStatusService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusService.class, "");
+        Object localObject = (IOnlineStatusService)this.e.getRuntimeService(IOnlineStatusService.class, "");
         StringBuilder localStringBuilder;
         if (!OnlineStatusItem.a(((IOnlineStatusService)localObject).getOnlineStatus(), ((IOnlineStatusService)localObject).getExtOnlineStatus()))
         {
@@ -654,10 +623,10 @@ public class AutoStatusManager
             localStringBuilder.append(" extStatus: ");
             localStringBuilder.append(((IOnlineStatusService)localObject).getExtOnlineStatus());
             localStringBuilder.append(" started: ");
-            localStringBuilder.append(this.jdField_a_of_type_Boolean);
+            localStringBuilder.append(this.h);
             QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
           }
-          if (this.jdField_a_of_type_Boolean)
+          if (this.h)
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("startFail-");
@@ -667,82 +636,86 @@ public class AutoStatusManager
           return;
         }
         if (paramBoolean) {
-          this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a((int)((IOnlineStatusService)localObject).getExtOnlineStatus());
+          this.i.a((int)((IOnlineStatusService)localObject).getExtOnlineStatus());
         }
-        if (!ProcessUtil.a(MobileQQ.sMobileQQ))
+        if ((GuardManager.sInstance != null) && (GuardManager.sInstance.isApplicationForeground()))
         {
+          i1 = 1;
+          if (i1 == 0)
+          {
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("[status][autoMgr] startDetector from: ");
+              localStringBuilder.append(paramString);
+              localStringBuilder.append(" fail onAppBackground status: ");
+              localStringBuilder.append(((IOnlineStatusService)localObject).getOnlineStatus());
+              localStringBuilder.append(" extStatus: ");
+              localStringBuilder.append(((IOnlineStatusService)localObject).getExtOnlineStatus());
+              localStringBuilder.append(" started: ");
+              localStringBuilder.append(this.h);
+              QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
+            }
+            d("startDetector");
+            return;
+          }
+          if (this.h)
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("[status][autoMgr] startDetector from: ");
+              ((StringBuilder)localObject).append(paramString);
+              ((StringBuilder)localObject).append(" already started");
+              QLog.d("AutoStatusManager", 2, ((StringBuilder)localObject).toString());
+            }
+            return;
+          }
+          if (!OnlineStatusUtil.a())
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("[status][autoMgr] startDetector from: ");
+              ((StringBuilder)localObject).append(paramString);
+              ((StringBuilder)localObject).append(" fail by auto_config not valid.");
+              QLog.e("AutoStatusManager", 2, ((StringBuilder)localObject).toString());
+            }
+            return;
+          }
           if (QLog.isColorLevel())
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("[status][autoMgr] startDetector from: ");
             localStringBuilder.append(paramString);
-            localStringBuilder.append(" fail onAppBackground status: ");
-            localStringBuilder.append(((IOnlineStatusService)localObject).getOnlineStatus());
-            localStringBuilder.append(" extStatus: ");
-            localStringBuilder.append(((IOnlineStatusService)localObject).getExtOnlineStatus());
-            localStringBuilder.append(" started: ");
-            localStringBuilder.append(this.jdField_a_of_type_Boolean);
-            QLog.d("AutoStatusManager", 2, localStringBuilder.toString());
+            localStringBuilder.append(" success");
+            QLog.e("AutoStatusManager", 2, localStringBuilder.toString());
           }
-          d("startDetector");
-          return;
-        }
-        if (this.jdField_a_of_type_Boolean)
-        {
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("[status][autoMgr] startDetector from: ");
-            ((StringBuilder)localObject).append(paramString);
-            ((StringBuilder)localObject).append(" already started");
-            QLog.d("AutoStatusManager", 2, ((StringBuilder)localObject).toString());
+          this.h = true;
+          g();
+          h();
+          long l2 = ((IOnlineStatusService)localObject).getExtOnlineStatus();
+          if (this.i.a != l2) {
+            this.i.a("autoMgr");
           }
-          return;
-        }
-        if (!OnlineStatusUtil.a())
-        {
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("[status][autoMgr] startDetector from: ");
-            ((StringBuilder)localObject).append(paramString);
-            ((StringBuilder)localObject).append(" fail by auto_config not valid.");
-            QLog.e("AutoStatusManager", 2, ((StringBuilder)localObject).toString());
+          this.b.a(this.e.getApp());
+          l1 = 30000L;
+          if ((l2 == 41031L) || (l2 == 41014L)) {
+            break label976;
           }
-          return;
-        }
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("[status][autoMgr] startDetector from: ");
-          localStringBuilder.append(paramString);
-          localStringBuilder.append(" success");
-          QLog.e("AutoStatusManager", 2, localStringBuilder.toString());
-        }
-        this.jdField_a_of_type_Boolean = true;
-        f();
-        g();
-        long l2 = ((IOnlineStatusService)localObject).getExtOnlineStatus();
-        if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a != l2) {
-          this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a("autoMgr");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp());
-        l1 = 30000L;
-        if ((l2 != 41031L) && (l2 != 41014L))
-        {
           if (l2 == 41042L) {
-            l1 = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector.a();
+            l1 = this.b.c();
           }
           localObject = BaseApplication.getContext();
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("KEY_LAST_AUTO_RESET_TIME_");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin());
+          localStringBuilder.append(this.e.getCurrentUin());
           localObject = SharePreferenceUtils.a((Context)localObject, localStringBuilder.toString());
           if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            this.jdField_b_of_type_Long = Long.parseLong((String)localObject);
+            this.j = Long.parseLong((String)localObject);
           }
-          long l3 = System.currentTimeMillis() - this.jdField_b_of_type_Long;
-          if (l3 < this.jdField_a_of_type_Long)
+          long l3 = System.currentTimeMillis() - this.j;
+          if (l3 < this.g)
           {
             if (QLog.isColorLevel())
             {
@@ -759,7 +732,7 @@ public class AutoStatusManager
               ((StringBuilder)localObject).append(Math.max(l1, l3));
               QLog.i("AutoStatusManager", 2, ((StringBuilder)localObject).toString());
             }
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, Math.max(l1, l3));
+            this.f.postDelayed(this.d, Math.max(l1, l3));
           }
           else
           {
@@ -777,55 +750,64 @@ public class AutoStatusManager
               ((StringBuilder)localObject).append(" delay first");
               QLog.i("AutoStatusManager", 2, ((StringBuilder)localObject).toString());
             }
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, l1);
+            this.f.postDelayed(this.d, l1);
           }
           return;
         }
       }
       finally {}
+      int i1 = 0;
+      continue;
+      label976:
       long l1 = 390000L;
     }
   }
   
-  public void a(boolean paramBoolean) {}
-  
   public boolean a(boolean paramBoolean)
   {
-    long l = System.currentTimeMillis() - this.jdField_b_of_type_Long;
+    long l1 = System.currentTimeMillis() - this.j;
     StringBuilder localStringBuilder;
-    if (l > this.jdField_a_of_type_Long)
+    if (l1 > this.g)
     {
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("[status][autoMgr] resetStatusAuto success. internal: ");
-        localStringBuilder.append(l);
+        localStringBuilder.append(l1);
         localStringBuilder.append(" limit: ");
-        localStringBuilder.append(this.jdField_b_of_type_Long);
+        localStringBuilder.append(this.j);
         QLog.e("AutoStatusManager", 2, localStringBuilder.toString());
       }
-      a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 40001L, true, "auto_reset");
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
+      a(this.e, 40001L, true, "auto_reset");
+      this.j = System.currentTimeMillis();
       return true;
     }
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[status][autoMgr] resetStatusAuto fail by Frequency. internal: ");
-      localStringBuilder.append(l);
+      localStringBuilder.append(l1);
       localStringBuilder.append(" limit: ");
-      localStringBuilder.append(this.jdField_b_of_type_Long);
+      localStringBuilder.append(this.j);
       QLog.e("AutoStatusManager", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
-      a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      a(this.e);
       d();
     }
     return false;
   }
   
-  public void b(long paramLong) {}
+  public void b()
+  {
+    long l1 = ((IOnlineStatusService)this.e.getRuntimeService(IOnlineStatusService.class, "")).getExtOnlineStatus();
+    if ((l1 == 40001L) || (l1 == 41042L))
+    {
+      this.f.removeCallbacks(this.d);
+      this.f.post(this.d);
+    }
+  }
   
   public void b(@NonNull String paramString)
   {
@@ -836,7 +818,7 @@ public class AutoStatusManager
   {
     try
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.h)
       {
         if (QLog.isColorLevel())
         {
@@ -858,21 +840,21 @@ public class AutoStatusManager
       }
       if (paramBoolean)
       {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 600000L);
+        this.f.postDelayed(this.m, 600000L);
       }
       else
       {
-        a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        a(this.e);
         d();
       }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationBaseStateDetector.a(paramBoolean);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.h = false;
+      this.b.a(paramBoolean);
+      this.f.removeCallbacks(this.d);
       paramString = BaseApplication.getContext();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("KEY_LAST_AUTO_RESET_TIME_");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin());
-      SharePreferenceUtils.a(paramString, localStringBuilder.toString(), String.valueOf(this.jdField_b_of_type_Long));
+      localStringBuilder.append(this.e.getCurrentUin());
+      SharePreferenceUtils.a(paramString, localStringBuilder.toString(), String.valueOf(this.j));
       return;
     }
     finally {}
@@ -880,15 +862,19 @@ public class AutoStatusManager
   
   public void c()
   {
-    long l = ((IOnlineStatusService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusService.class, "")).getExtOnlineStatus();
-    if ((l == 40001L) || (l == 41042L))
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+    if (QLog.isColorLevel()) {
+      QLog.e("AutoStatusManager", 2, "[status][autoMgr] destroy");
+    }
+    if (this.h) {
+      b("destroy");
+    }
+    this.e.unRegistObserver(this.p);
+    this.e.removeObserver(this.o);
+    MobileQQ.sMobileQQ.unregisterReceiver(this.l);
+    if (GuardManager.sInstance != null) {
+      GuardManager.sInstance.unregisterCallback(this);
     }
   }
-  
-  public void c(long paramLong) {}
   
   public void c(String paramString)
   {
@@ -900,7 +886,7 @@ public class AutoStatusManager
       QLog.i("AutoStatusManager", 2, localStringBuilder.toString());
     }
     a("Foreground");
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+    this.f.removeCallbacks(this.m);
   }
   
   public void d()
@@ -920,15 +906,30 @@ public class AutoStatusManager
       localStringBuilder.append(paramString);
       QLog.i("AutoStatusManager", 2, localStringBuilder.toString());
     }
-    paramString = (AutoStatusManager)((IOnlineStatusManagerService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IAutoStatusManager.class);
-    if (paramString != null) {
-      paramString.b("Background", true);
-    }
+    b("Background", true);
   }
+  
+  public void onApplicationBackground()
+  {
+    d("ForeBackgroundSwitch");
+  }
+  
+  public void onApplicationForeground()
+  {
+    c("ForeBackgroundSwitch");
+  }
+  
+  public void onBackgroundTimeTick(long paramLong) {}
+  
+  public void onBackgroundUnguardTimeTick(long paramLong) {}
+  
+  public void onLiteTimeTick(long paramLong) {}
+  
+  public void onScreensStateChanged(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.manager.AutoStatusManager
  * JD-Core Version:    0.7.0.1
  */

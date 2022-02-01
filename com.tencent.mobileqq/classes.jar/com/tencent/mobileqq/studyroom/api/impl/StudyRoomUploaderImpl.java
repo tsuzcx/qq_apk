@@ -37,7 +37,7 @@ public class StudyRoomUploaderImpl
       localStringBuilder.append(str);
       QLog.d("StudyRoomUploader", 2, localStringBuilder.toString());
     }
-    if (StudyRoomPicUploadUtil.a(str))
+    if (StudyRoomPicUploadUtil.b(str))
     {
       if (QLog.isColorLevel()) {
         QLog.d("StudyRoomUploader", 2, "isUploading ERROR_IS_UPLOADING");
@@ -56,7 +56,7 @@ public class StudyRoomUploaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.api.impl.StudyRoomUploaderImpl
  * JD-Core Version:    0.7.0.1
  */

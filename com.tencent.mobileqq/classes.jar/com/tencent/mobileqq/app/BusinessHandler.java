@@ -78,26 +78,33 @@ public abstract class BusinessHandler
   {
     List localList = getObservers(0);
     Iterator localIterator;
-    Object localObject;
     if ((localList != null) && (localList.size() > 0)) {
       try
       {
         localIterator = localList.iterator();
         while (localIterator.hasNext())
         {
-          localObject = (BusinessObserver)localIterator.next();
-          if (isAssignableFrom((BusinessObserver)localObject))
+          Object localObject = (BusinessObserver)localIterator.next();
+          boolean bool = isAssignableFrom((BusinessObserver)localObject);
+          if (bool)
           {
-            long l = System.currentTimeMillis();
-            ((BusinessObserver)localObject).onUpdate(paramInt, paramBoolean1, paramObject);
-            l = System.currentTimeMillis() - l;
-            if ((l > 100L) && (QLog.isColorLevel()))
+            try
             {
+              long l = System.currentTimeMillis();
+              ((BusinessObserver)localObject).onUpdate(paramInt, paramBoolean1, paramObject);
+              l = System.currentTimeMillis() - l;
+              if ((l <= 100L) || (!QLog.isColorLevel())) {
+                continue;
+              }
               localObject = new Exception("run too long!");
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("defaultObserver onUpdate cost:");
               localStringBuilder.append(l);
               QLog.d("BusinessHandler", 2, localStringBuilder.toString(), (Throwable)localObject);
+            }
+            catch (Exception localException) {}
+            if (QLog.isColorLevel()) {
+              QLog.e("BusinessHandler", 2, "onUpdate fail", localException);
             }
           }
         }
@@ -105,15 +112,16 @@ public abstract class BusinessHandler
       finally {}
     }
     localList = getObservers(1);
+    BusinessObserver localBusinessObserver;
     if ((localList != null) && (localList.size() > 0)) {
       try
       {
         localIterator = localList.iterator();
         while (localIterator.hasNext())
         {
-          localObject = (BusinessObserver)localIterator.next();
-          if (isAssignableFrom((BusinessObserver)localObject)) {
-            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (BusinessObserver)localObject, uiHandler);
+          localBusinessObserver = (BusinessObserver)localIterator.next();
+          if (isAssignableFrom(localBusinessObserver)) {
+            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, localBusinessObserver, uiHandler);
           }
         }
       }
@@ -126,9 +134,9 @@ public abstract class BusinessHandler
         localIterator = localList.iterator();
         while (localIterator.hasNext())
         {
-          localObject = (BusinessObserver)localIterator.next();
-          if (isAssignableFrom((BusinessObserver)localObject)) {
-            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (BusinessObserver)localObject, bgHandler);
+          localBusinessObserver = (BusinessObserver)localIterator.next();
+          if (isAssignableFrom(localBusinessObserver)) {
+            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, localBusinessObserver, bgHandler);
           }
         }
         return;
@@ -170,7 +178,7 @@ public abstract class BusinessHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BusinessHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -20,10 +20,10 @@ class ReadInJoyProteusFamilyAdapter$2
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReadInJoyBaseAdapter.Viewtype ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     TraceUtils.traceBegin(localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoyProteusFamilyAdapter.a(this.jdField_a_of_type_Int)) {
-      if ((ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoyProteusFamilyAdapter.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo)) && (ReadInJoyProteusFamilyAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoyProteusFamilyAdapter) != 56))
+    if (this.e.f(this.a)) {
+      if ((ProteusSupportUtil.b(this.e.F(), this.a, this.b)) && (ReadInJoyProteusFamilyAdapter.a(this.e) != 56))
       {
         if ((paramIBaseHandler instanceof FrameworkHandler)) {}
       }
@@ -31,15 +31,15 @@ class ReadInJoyProteusFamilyAdapter$2
         return;
       }
     }
-    if (paramIBaseHandler.a(this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_JavaLangObject = paramIBaseHandler.a(this.b, null, this.jdField_a_of_type_AndroidViewViewGroup);
+    if (paramIBaseHandler.d(this.a)) {
+      this.g = paramIBaseHandler.a(this.c, null, this.d);
     }
     TraceUtils.traceEnd();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.ReadInJoyProteusFamilyAdapter.2
  * JD-Core Version:    0.7.0.1
  */

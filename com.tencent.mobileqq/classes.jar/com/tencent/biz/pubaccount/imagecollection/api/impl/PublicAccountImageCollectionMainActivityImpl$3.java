@@ -94,7 +94,7 @@ class PublicAccountImageCollectionMainActivityImpl$3
             paramString.append("onGetPhotoCollectionInfoRespond isSuccess=");
             paramString.append(paramBoolean);
             paramString.append(" ;articleID = ");
-            paramString.append(paramPhotoCollectionInfo.jdField_a_of_type_JavaLangString);
+            paramString.append(paramPhotoCollectionInfo.a);
             QLog.d("qqBaseActivity", 2, paramString.toString());
           }
           ((IPublicAccountImageCollectionPreloadManager)QRoute.api(IPublicAccountImageCollectionPreloadManager.class)).saveImageCollectionInfo(paramPhotoCollectionInfo, paramArrayOfByte);
@@ -124,8 +124,8 @@ class PublicAccountImageCollectionMainActivityImpl$3
     if (paramPhotoCollectionInfo != null)
     {
       i = j;
-      if (paramPhotoCollectionInfo.jdField_a_of_type_JavaUtilArrayList != null) {
-        i = paramPhotoCollectionInfo.jdField_a_of_type_JavaUtilArrayList.size();
+      if (paramPhotoCollectionInfo.i != null) {
+        i = paramPhotoCollectionInfo.i.size();
       }
     }
     paramPhotoCollectionInfo = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
@@ -247,7 +247,7 @@ class PublicAccountImageCollectionMainActivityImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionMainActivityImpl.3
  * JD-Core Version:    0.7.0.1
  */

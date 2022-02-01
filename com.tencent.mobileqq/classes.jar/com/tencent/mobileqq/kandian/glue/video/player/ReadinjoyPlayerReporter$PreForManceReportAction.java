@@ -5,11 +5,6 @@ import com.tencent.qphone.base.util.QLog;
 public class ReadinjoyPlayerReporter$PreForManceReportAction
   extends ReadinjoyPlayerReporter.ReportInfoAction
 {
-  public ReadinjoyPlayerReporter$PreForManceReportAction(ReadinjoyPlayerReporter paramReadinjoyPlayerReporter)
-  {
-    super(paramReadinjoyPlayerReporter);
-  }
-  
   public void a(int paramInt, Object paramObject)
   {
     if (paramObject != null)
@@ -27,7 +22,7 @@ public class ReadinjoyPlayerReporter$PreForManceReportAction
           QLog.d("ReadinjoyPlayerReporter", 2, localStringBuilder.toString());
         }
         if ("prepare".equals(paramObject[0])) {
-          this.a.a.m = paramObject[1];
+          this.a.a.am = paramObject[1];
         }
       }
     }
@@ -35,7 +30,7 @@ public class ReadinjoyPlayerReporter$PreForManceReportAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.player.ReadinjoyPlayerReporter.PreForManceReportAction
  * JD-Core Version:    0.7.0.1
  */

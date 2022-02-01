@@ -16,16 +16,16 @@ class WholePeoplePlugin$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onClick ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       QLog.i("WholePeoplePlugin", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWholepeopleWholePeoplePlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+    this.b.callJs(this.a, new String[] { "" });
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.wholepeople.WholePeoplePlugin.1
  * JD-Core Version:    0.7.0.1
  */

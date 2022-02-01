@@ -17,7 +17,7 @@ class StudyRoomLoadingFragment$WeakCallback$1
       if (localStudyRoomLoadingFragment.getQBaseActivity() == null) {
         return;
       }
-      QQToast.a(localStudyRoomLoadingFragment.getQBaseActivity().getApplicationContext(), 1, 2131698812, 0).a();
+      QQToast.makeText(localStudyRoomLoadingFragment.getQBaseActivity().getApplicationContext(), 1, 2131896777, 0).show();
       StudyRoomLoadingFragment.a(localStudyRoomLoadingFragment);
       localStudyRoomLoadingFragment.a();
     }
@@ -25,7 +25,7 @@ class StudyRoomLoadingFragment$WeakCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment.WeakCallback.1
  * JD-Core Version:    0.7.0.1
  */

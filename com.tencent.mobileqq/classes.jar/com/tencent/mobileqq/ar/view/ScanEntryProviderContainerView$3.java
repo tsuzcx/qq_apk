@@ -9,14 +9,14 @@ class ScanEntryProviderContainerView$3
   
   public void a(int paramInt)
   {
-    if (ScanEntryProviderContainerView.a(this.a) != null) {
-      ScanEntryProviderContainerView.a(this.a).c(paramInt);
+    if (ScanEntryProviderContainerView.e(this.a) != null) {
+      ScanEntryProviderContainerView.e(this.a).d(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView.3
  * JD-Core Version:    0.7.0.1
  */

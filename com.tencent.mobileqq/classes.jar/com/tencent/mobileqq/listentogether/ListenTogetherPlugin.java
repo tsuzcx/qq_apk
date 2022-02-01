@@ -15,16 +15,14 @@ public class ListenTogetherPlugin
   extends WebViewPlugin
   implements ListenTogetherIPCModuleWebClient.ListenTogetherClient2WebCallback
 {
-  private EIPCResultCallback a;
   protected String a;
-  private EIPCResultCallback b;
   protected String b;
   private String c;
+  private EIPCResultCallback d = new ListenTogetherPlugin.1(this);
+  private EIPCResultCallback e = new ListenTogetherPlugin.2(this);
   
   public ListenTogetherPlugin()
   {
-    this.jdField_a_of_type_EipcEIPCResultCallback = new ListenTogetherPlugin.1(this);
-    this.jdField_b_of_type_EipcEIPCResultCallback = new ListenTogetherPlugin.2(this);
     this.mPluginNameSpace = "listenTogether";
   }
   
@@ -39,14 +37,14 @@ public class ListenTogetherPlugin
       ((StringBuilder)localObject).append(" data:");
       ((StringBuilder)localObject).append(paramJSONObject);
       ((StringBuilder)localObject).append(" mCheckJoinCallback:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(" mJoinListenCallback:");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b);
       QLog.d("ListenTogetherPlugin", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramJSONObject != null) && (TextUtils.equals(paramJSONObject.optString("type"), "checkJoin")))
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.a))
       {
         localObject = new JSONObject();
         try
@@ -54,7 +52,7 @@ public class ListenTogetherPlugin
           ((JSONObject)localObject).put("canJoin", paramJSONObject.optInt("canJoin"));
           ((JSONObject)localObject).put("isOpener", paramJSONObject.optInt("isOpener"));
           ((JSONObject)localObject).put("uinType", paramJSONObject.optInt("uinType"));
-          callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+          callJs(this.a, new String[] { ((JSONObject)localObject).toString() });
           return;
         }
         catch (Throwable paramJSONObject)
@@ -69,13 +67,13 @@ public class ListenTogetherPlugin
     }
     if ((paramJSONObject != null) && (TextUtils.equals(paramJSONObject.optString("type"), "joinListen")))
     {
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.b))
       {
         localObject = new JSONObject();
         try
         {
           ((JSONObject)localObject).put("retCode", paramJSONObject.optInt("retCode"));
-          callJs(this.jdField_b_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+          callJs(this.b, new String[] { ((JSONObject)localObject).toString() });
         }
         catch (Throwable paramJSONObject)
         {
@@ -84,7 +82,7 @@ public class ListenTogetherPlugin
           ((StringBuilder)localObject).append(paramJSONObject.getMessage());
           QLog.e("ListenTogetherPlugin", 1, ((StringBuilder)localObject).toString());
         }
-        this.jdField_b_of_type_JavaLangString = null;
+        this.b = null;
       }
       return;
     }
@@ -122,13 +120,13 @@ public class ListenTogetherPlugin
           ListenTogetherIPCModuleWebClient.a(paramJsBridgeListener);
           if ("checkJoin".equals(paramJsBridgeListener.opt("type")))
           {
-            this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
+            this.a = paramJsBridgeListener.optString("callback");
             return true;
           }
           if (!"joinListen".equals(paramJsBridgeListener.opt("type"))) {
             break label330;
           }
-          this.jdField_b_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
+          this.b = paramJsBridgeListener.optString("callback");
           return true;
         }
         catch (Exception paramJsBridgeListener)
@@ -142,7 +140,7 @@ public class ListenTogetherPlugin
         if (TextUtils.isEmpty(this.c)) {
           return true;
         }
-        ListenTogetherIPCModuleWebClient.a(paramJsBridgeListener, "isOpener", this.jdField_b_of_type_EipcEIPCResultCallback);
+        ListenTogetherIPCModuleWebClient.a(paramJsBridgeListener, "isOpener", this.e);
         return true;
       }
       if ("isShowAtmosphere".equals(paramString3))
@@ -150,7 +148,7 @@ public class ListenTogetherPlugin
         if (TextUtils.isEmpty(this.c)) {
           return true;
         }
-        ListenTogetherIPCModuleWebClient.a(paramJsBridgeListener, "isShowAtmosphere", this.jdField_a_of_type_EipcEIPCResultCallback);
+        ListenTogetherIPCModuleWebClient.a(paramJsBridgeListener, "isShowAtmosphere", this.d);
         return true;
       }
       if ("setPlayerId".equals(paramString3))
@@ -203,7 +201,7 @@ public class ListenTogetherPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherPlugin
  * JD-Core Version:    0.7.0.1
  */

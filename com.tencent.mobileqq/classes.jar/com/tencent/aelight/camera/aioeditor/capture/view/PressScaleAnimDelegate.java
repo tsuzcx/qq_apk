@@ -10,15 +10,15 @@ import com.tencent.qphone.base.util.QLog;
 
 public final class PressScaleAnimDelegate
 {
-  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new LinearInterpolator();
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator = null;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final PressScaleAnimDelegate.ScaleAnimUpdateListener jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate$ScaleAnimUpdateListener;
+  private static final Interpolator a = new LinearInterpolator();
+  private final View b;
+  private ValueAnimator c = null;
+  private final PressScaleAnimDelegate.ScaleAnimUpdateListener d;
   
   PressScaleAnimDelegate(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate$ScaleAnimUpdateListener = new PressScaleAnimDelegate.ScaleAnimUpdateListener(paramView);
+    this.b = paramView;
+    this.d = new PressScaleAnimDelegate.ScaleAnimUpdateListener(paramView);
   }
   
   public static void a(View paramView, long paramLong, View.OnClickListener paramOnClickListener)
@@ -29,38 +29,23 @@ public final class PressScaleAnimDelegate
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
     paramView = new PressScaleAnimDelegate.ScaleAnimAloneUpdateListener(paramView, paramOnClickListener);
     localValueAnimator.setDuration(paramLong);
-    localValueAnimator.setInterpolator(jdField_a_of_type_AndroidViewAnimationInterpolator);
+    localValueAnimator.setInterpolator(a);
     localValueAnimator.addUpdateListener(paramView);
     localValueAnimator.addListener(paramView);
     localValueAnimator.start();
   }
   
-  void a()
-  {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-    if (localValueAnimator != null)
-    {
-      localValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate$ScaleAnimUpdateListener);
-    }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(jdField_a_of_type_AndroidViewAnimationInterpolator);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate$ScaleAnimUpdateListener);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
   void a(Canvas paramCanvas)
   {
-    int i = this.jdField_a_of_type_AndroidViewView.getPaddingLeft();
-    int j = this.jdField_a_of_type_AndroidViewView.getRight() - this.jdField_a_of_type_AndroidViewView.getLeft() - this.jdField_a_of_type_AndroidViewView.getPaddingRight();
-    int m = this.jdField_a_of_type_AndroidViewView.getPaddingTop();
-    int n = this.jdField_a_of_type_AndroidViewView.getBottom();
-    int i1 = this.jdField_a_of_type_AndroidViewView.getTop();
-    int i2 = this.jdField_a_of_type_AndroidViewView.getPaddingBottom();
+    int i = this.b.getPaddingLeft();
+    int j = this.b.getRight() - this.b.getLeft() - this.b.getPaddingRight();
+    int m = this.b.getPaddingTop();
+    int n = this.b.getBottom();
+    int i1 = this.b.getTop();
+    int i2 = this.b.getPaddingBottom();
     int k = (i + j) / 2;
     m = (m + (n - i1 - i2)) / 2;
-    paramCanvas.scale(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate$ScaleAnimUpdateListener.a, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate$ScaleAnimUpdateListener.a, k, m);
+    paramCanvas.scale(this.d.b, this.d.b, k, m);
     if (QLog.isColorLevel())
     {
       paramCanvas = new StringBuilder();
@@ -73,19 +58,34 @@ public final class PressScaleAnimDelegate
       paramCanvas.append(",centerY=");
       paramCanvas.append(m);
       paramCanvas.append(",scale=");
-      paramCanvas.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate$ScaleAnimUpdateListener.a);
+      paramCanvas.append(this.d.b);
       QLog.d("PressScaleAnimDelegate ", 2, paramCanvas.toString());
     }
   }
   
   boolean a()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleAnimDelegate$ScaleAnimUpdateListener.a != 1.0F;
+    return this.d.b != 1.0F;
+  }
+  
+  void b()
+  {
+    ValueAnimator localValueAnimator = this.c;
+    if (localValueAnimator != null)
+    {
+      localValueAnimator.cancel();
+      this.c.removeUpdateListener(this.d);
+    }
+    this.c = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
+    this.c.setDuration(200L);
+    this.c.setInterpolator(a);
+    this.c.addUpdateListener(this.d);
+    this.c.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.PressScaleAnimDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -25,18 +25,18 @@ class ReminderListFragment$6
           ReminderListFragment.a(this.a, paramBundle, localArrayList, true);
           return;
         }
-        ReminderListFragment.b(this.a);
+        ReminderListFragment.j(this.a);
         return;
       }
-      ReminderListFragment.b(this.a);
+      ReminderListFragment.j(this.a);
       return;
     }
-    ReminderListFragment.a(this.a, HardCodeUtil.a(2131713304));
+    ReminderListFragment.a(this.a, HardCodeUtil.a(2131910857));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.6
  * JD-Core Version:    0.7.0.1
  */

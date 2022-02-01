@@ -8,31 +8,11 @@ import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 public class WSVerticalOperationCenterBottomVideoHolder
   extends WSVerticalCommonVideoHolder
 {
-  private static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = ScreenUtil.dip2px(45.0F);
-  }
+  private static final int a = ScreenUtil.dip2px(45.0F);
   
   public WSVerticalOperationCenterBottomVideoHolder(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
     super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public AbsWSVideoItemView a(int paramInt)
-  {
-    return new WSVerticalVideoOperationCenterBottomItemView(getContext(), this);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
   }
   
   protected boolean a()
@@ -40,22 +20,37 @@ public class WSVerticalOperationCenterBottomVideoHolder
     return true;
   }
   
-  public int b()
+  public AbsWSVideoItemView b(int paramInt)
   {
-    return jdField_a_of_type_Int;
+    return new WSVerticalVideoOperationCenterBottomItemView(getContext(), this);
   }
   
-  protected boolean b()
+  public void c(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), "aio_home_page"))) {
+    super.c(paramInt);
+  }
+  
+  public int f()
+  {
+    return 0;
+  }
+  
+  protected boolean g()
+  {
+    if ((this.d != null) && (TextUtils.equals(this.d.k(), "aio_home_page"))) {
       return false;
     }
-    return super.b();
+    return super.g();
+  }
+  
+  public int i()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalOperationCenterBottomVideoHolder
  * JD-Core Version:    0.7.0.1
  */

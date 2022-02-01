@@ -39,8 +39,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class VasService
   extends BaseProtocolCoder
 {
-  private static int jdField_a_of_type_Int;
-  private static ConcurrentHashMap<String, IJce> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static int a;
+  private static ConcurrentHashMap<String, IJce> b = new ConcurrentHashMap();
   
   private <T> T a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, T paramT)
   {
@@ -64,12 +64,12 @@ public class VasService
   
   public static void a(IJce paramIJce, String paramString)
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramIJce);
+    b.put(paramString, paramIJce);
   }
   
   public static void a(String paramString)
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    b.remove(paramString);
   }
   
   public String[] cmdHeaderPrefix()
@@ -181,9 +181,9 @@ public class VasService
         if ("QCUniBusinessLogic.uniGet".equals(paramToServiceMsg.getServiceCmd())) {
           return a(paramToServiceMsg, paramFromServiceMsg, new UniGetRsp());
         }
-        if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(IJce.Util.a(paramToServiceMsg)))
+        if (b.containsKey(IJce.Util.a(paramToServiceMsg)))
         {
-          paramToServiceMsg = ((IJce)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(IJce.Util.a(paramToServiceMsg))).decode(paramToServiceMsg, paramFromServiceMsg, (UniPacket)localObject);
+          paramToServiceMsg = ((IJce)b.get(IJce.Util.a(paramToServiceMsg))).decode(paramToServiceMsg, paramFromServiceMsg, (UniPacket)localObject);
           return paramToServiceMsg;
         }
         return null;
@@ -224,8 +224,8 @@ public class VasService
         paramUniPacket.setFuncName("setCloneAuthStatus");
       }
       paramUniPacket.setServantName("MQQ.FriendCloneServer.FriendCloneObj");
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      i = a;
+      a = i + 1;
       paramUniPacket.setRequestId(i);
       localObject = paramToServiceMsg.extraData.getString("uUin");
       boolean bool = paramToServiceMsg.extraData.getBoolean("bOpenAuth", false);
@@ -258,8 +258,8 @@ public class VasService
       paramUniPacket.setFuncName("readItemInfo");
       paramUniPacket.put("stReq", (readItemInfoReq)paramToServiceMsg.extraData.getSerializable("req"));
       paramUniPacket.setServantName("QC.readGroupNickServer.readGroupNickObj");
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      i = a;
+      a = i + 1;
       paramUniPacket.setRequestId(i);
       return true;
     }
@@ -267,8 +267,8 @@ public class VasService
     {
       paramUniPacket.setServantName("QC.ProfileLogicServer.ProfileLogicObj");
       paramUniPacket.setFuncName("ReadUserProfile");
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      i = a;
+      a = i + 1;
       paramUniPacket.setRequestId(i);
       paramUniPacket.put("stReq", (readUserInfoReq)paramToServiceMsg.extraData.getSerializable("req"));
       return true;
@@ -277,8 +277,8 @@ public class VasService
     {
       paramUniPacket.setServantName("QC.ProfileLogicServer.ProfileLogicObj");
       paramUniPacket.setFuncName("SetUserProfile");
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      i = a;
+      a = i + 1;
       paramUniPacket.setRequestId(i);
       paramUniPacket.put("stReq", (setUserProfileReq)paramToServiceMsg.extraData.get("req"));
       return true;
@@ -287,8 +287,8 @@ public class VasService
     {
       paramUniPacket.setServantName("QC.ProfileLogicServer.ProfileLogicObj");
       paramUniPacket.setFuncName("SetUserFlag");
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      i = a;
+      a = i + 1;
       paramUniPacket.setRequestId(i);
       paramUniPacket.put("stReq", (setUserFlagReq)paramToServiceMsg.extraData.get("req"));
       return true;
@@ -297,8 +297,8 @@ public class VasService
     {
       paramUniPacket.setServantName("GROUP.GroupCareServer.GroupCareObj");
       paramUniPacket.setFuncName("getMessageRemindInfo");
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      i = a;
+      a = i + 1;
       paramUniPacket.setRequestId(i);
       paramUniPacket.put("stReq", (MessageRemindReq)paramToServiceMsg.extraData.get("req"));
       return true;
@@ -307,8 +307,8 @@ public class VasService
     {
       paramUniPacket.setServantName("QC.FontBubbleRecommendServer.FontBubbleRecommendObj");
       paramUniPacket.setFuncName("getFontRecommend");
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      i = a;
+      a = i + 1;
       paramUniPacket.setRequestId(i);
       paramUniPacket.put("req", (FontRecommendReq)paramToServiceMsg.extraData.get("req"));
       return true;
@@ -317,8 +317,8 @@ public class VasService
     {
       paramUniPacket.setServantName("QC.FontBubbleRecommendServer.FontBubbleRecommendObj");
       paramUniPacket.setFuncName("getBubbleRecommend");
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      i = a;
+      a = i + 1;
       paramUniPacket.setRequestId(i);
       paramUniPacket.put("req", (BubbleRecommendReq)paramToServiceMsg.extraData.get("req"));
       return true;
@@ -327,8 +327,8 @@ public class VasService
     {
       paramUniPacket.setServantName("QC.UniBusinessLoginServer.UniBusinessLoginObj");
       paramUniPacket.setFuncName("UniLoginCheck");
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      i = a;
+      a = i + 1;
       paramUniPacket.setRequestId(i);
       paramUniPacket.put("stReq", (UniLoginCheckReq)paramToServiceMsg.extraData.get("req"));
       return true;
@@ -337,8 +337,8 @@ public class VasService
     {
       paramUniPacket.setServantName("QC.FontBubbleRecommendServer.FontBubbleRecommendObj");
       paramUniPacket.setFuncName("setFontBubble");
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      i = a;
+      a = i + 1;
       paramUniPacket.setRequestId(i);
       paramUniPacket.put("req", (SetFontBubbleReq)paramToServiceMsg.extraData.get("req"));
       return true;
@@ -347,8 +347,8 @@ public class VasService
     {
       paramUniPacket.setServantName("MQQ.RoamWrapServer.RoamWrapObj");
       paramUniPacket.setFuncName("GetRoamToast");
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      i = a;
+      a = i + 1;
       paramUniPacket.setRequestId(i);
       paramUniPacket.put("stReq", (GetRoamToastReq)paramToServiceMsg.extraData.get("req"));
       return true;
@@ -357,8 +357,8 @@ public class VasService
     {
       paramUniPacket.setServantName("QC.FaceServer.FaceObj");
       paramUniPacket.setFuncName("setFace");
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      i = a;
+      a = i + 1;
       paramUniPacket.setRequestId(i);
       paramUniPacket.put("req", (FaceReq)paramToServiceMsg.extraData.get("req"));
       return true;
@@ -377,11 +377,11 @@ public class VasService
       paramUniPacket.put("stReq", paramToServiceMsg.extraData.getSerializable("req"));
       return true;
     }
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(IJce.Util.a(paramToServiceMsg)))
+    if (b.containsKey(IJce.Util.a(paramToServiceMsg)))
     {
-      localObject = (IJce)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(IJce.Util.a(paramToServiceMsg));
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
+      localObject = (IJce)b.get(IJce.Util.a(paramToServiceMsg));
+      i = a;
+      a = i + 1;
       ((IJce)localObject).encode(paramToServiceMsg, paramUniPacket, i);
       return true;
     }
@@ -390,7 +390,7 @@ public class VasService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.VasService
  * JD-Core Version:    0.7.0.1
  */

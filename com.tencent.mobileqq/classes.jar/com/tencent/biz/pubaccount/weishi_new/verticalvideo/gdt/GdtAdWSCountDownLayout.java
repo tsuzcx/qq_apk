@@ -18,23 +18,23 @@ import com.tencent.qphone.base.util.QLog;
 public class GdtAdWSCountDownLayout
   extends RelativeLayout
 {
-  public final float a;
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new GdtAdWSCountDownLayout.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  public final float b;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int jdField_c_of_type_Int;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private final int jdField_d_of_type_Int = 1;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  public final float a = 128.5F;
+  public final float b = 99.0F;
+  private boolean c = false;
+  private TextView d;
   private TextView e;
   private TextView f;
   private TextView g;
   private TextView h;
+  private TextView i;
+  private TextView j;
+  private TextView k;
+  private Handler l = new Handler(Looper.getMainLooper());
+  private int m;
+  private int n;
+  private int o;
+  private final int p = 1;
+  private Runnable q = new GdtAdWSCountDownLayout.1(this);
   
   public GdtAdWSCountDownLayout(Context paramContext)
   {
@@ -44,19 +44,17 @@ public class GdtAdWSCountDownLayout
   public GdtAdWSCountDownLayout(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = 128.5F;
-    this.jdField_b_of_type_Float = 99.0F;
-    LayoutInflater.from(paramContext).inflate(2131559177, this);
-    this.jdField_c_of_type_Int = Color.parseColor("#CCFFFFFF");
-    this.jdField_b_of_type_Int = Color.parseColor("#FFFFFF");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367570));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367563));
-    this.f = ((TextView)findViewById(2131367564));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367565));
-    this.g = ((TextView)findViewById(2131367566));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367568));
-    this.h = ((TextView)findViewById(2131367569));
-    this.e = ((TextView)findViewById(2131367571));
+    LayoutInflater.from(paramContext).inflate(2131624932, this);
+    this.o = Color.parseColor("#CCFFFFFF");
+    this.n = Color.parseColor("#FFFFFF");
+    this.d = ((TextView)findViewById(2131434112));
+    this.e = ((TextView)findViewById(2131434105));
+    this.i = ((TextView)findViewById(2131434106));
+    this.f = ((TextView)findViewById(2131434107));
+    this.j = ((TextView)findViewById(2131434108));
+    this.g = ((TextView)findViewById(2131434110));
+    this.k = ((TextView)findViewById(2131434111));
+    this.h = ((TextView)findViewById(2131434113));
     d();
   }
   
@@ -72,22 +70,6 @@ public class GdtAdWSCountDownLayout
     return Long.toString(paramLong);
   }
   
-  private void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
-  }
-  
-  private void b(int paramInt)
-  {
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramInt);
-    this.f.setTextColor(paramInt);
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(paramInt);
-    this.g.setTextColor(paramInt);
-    this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(paramInt);
-    this.h.setTextColor(paramInt);
-    this.e.setTextColor(paramInt);
-  }
-  
   private boolean b(int paramInt)
   {
     return (paramInt > 0) && (paramInt < 8640000);
@@ -95,43 +77,59 @@ public class GdtAdWSCountDownLayout
   
   private void d()
   {
-    b(this.jdField_b_of_type_Int);
-    a(this.jdField_c_of_type_Int);
+    setTimeTextColor(this.n);
+    setRemainderTextColor(this.o);
   }
   
   private void e()
   {
-    if (this.jdField_a_of_type_Int < 0)
+    if (this.m < 0)
     {
       setVisibility(8);
       return;
     }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((LinearLayout)findViewById(2131367567)).getLayoutParams();
-    if (this.jdField_a_of_type_Int < 86400)
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((LinearLayout)findViewById(2131434109)).getLayoutParams();
+    if (this.m < 86400)
     {
       localLayoutParams.width = a(99.0F);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.f.setVisibility(8);
+      this.e.setVisibility(8);
+      this.i.setVisibility(8);
     }
     else
     {
       localLayoutParams.width = a(128.5F);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.f.setVisibility(0);
+      this.e.setVisibility(0);
+      this.i.setVisibility(0);
     }
     setVisibility(0);
   }
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_Int < 0)
+    this.l.removeCallbacks(this.q);
+    if (this.m < 0)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+    this.c = true;
+    this.l.postDelayed(this.q, 1000L);
+  }
+  
+  private void setRemainderTextColor(int paramInt)
+  {
+    this.d.setTextColor(paramInt);
+  }
+  
+  private void setTimeTextColor(int paramInt)
+  {
+    this.e.setTextColor(paramInt);
+    this.i.setTextColor(paramInt);
+    this.f.setTextColor(paramInt);
+    this.j.setTextColor(paramInt);
+    this.g.setTextColor(paramInt);
+    this.k.setTextColor(paramInt);
+    this.h.setTextColor(paramInt);
   }
   
   public int a(float paramFloat)
@@ -141,26 +139,26 @@ public class GdtAdWSCountDownLayout
   
   public void a()
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = i / 86400;
-    int k = i / 3600;
-    int m = i / 60;
-    long l = i % 60;
-    String str1 = a(j);
-    String str2 = a(k % 24);
-    String str3 = a(m % 60);
-    String str4 = a(l);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(str1);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(str2);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(str3);
-    this.e.setText(str4);
+    int i1 = this.m;
+    int i2 = i1 / 86400;
+    int i3 = i1 / 3600;
+    int i4 = i1 / 60;
+    long l1 = i1 % 60;
+    String str1 = a(i2);
+    String str2 = a(i3 % 24);
+    String str3 = a(i4 % 60);
+    String str4 = a(l1);
+    this.e.setText(str1);
+    this.f.setText(str2);
+    this.g.setText(str3);
+    this.h.setText(str4);
   }
   
   public boolean a(int paramInt)
   {
     if (b(paramInt))
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.m = paramInt;
       f();
       a();
       e();
@@ -172,35 +170,35 @@ public class GdtAdWSCountDownLayout
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.l.removeCallbacks(this.q);
     QLog.i("GdtAdWSCountDownLayout", 4, "countdown layout is recycled");
   }
   
   public void c()
   {
     QLog.i("GdtAdWSCountDownLayout", 4, "countdown layout is stopped");
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.c = false;
+    this.l.removeCallbacks(this.q);
     setVisibility(8);
   }
   
   public void setTextViewTextSize(int paramInt1, int paramInt2)
   {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.e;
     float f1 = paramInt2;
     localTextView.setTextSize(paramInt1, f1);
+    this.i.setTextSize(paramInt1, f1);
     this.f.setTextSize(paramInt1, f1);
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(paramInt1, f1);
+    this.j.setTextSize(paramInt1, f1);
     this.g.setTextSize(paramInt1, f1);
-    this.jdField_d_of_type_AndroidWidgetTextView.setTextSize(paramInt1, f1);
+    this.k.setTextSize(paramInt1, f1);
     this.h.setTextSize(paramInt1, f1);
-    this.e.setTextSize(paramInt1, f1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(paramInt1, f1);
+    this.d.setTextSize(paramInt1, f1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.GdtAdWSCountDownLayout
  * JD-Core Version:    0.7.0.1
  */

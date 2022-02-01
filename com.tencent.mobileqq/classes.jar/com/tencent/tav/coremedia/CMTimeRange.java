@@ -14,8 +14,8 @@ public class CMTimeRange
   
   public CMTimeRange(@NonNull CMTime paramCMTime1, @NonNull CMTime paramCMTime2)
   {
-    Utils.a(paramCMTime1);
-    Utils.a(paramCMTime2);
+    Utils.checkNotNull(paramCMTime1);
+    Utils.checkNotNull(paramCMTime2);
     this.start = paramCMTime1;
     this.duration = paramCMTime2;
     this.end = paramCMTime1.add(paramCMTime2);
@@ -109,13 +109,13 @@ public class CMTimeRange
   
   public boolean containsTime(@NonNull CMTime paramCMTime)
   {
-    Utils.a(paramCMTime);
+    Utils.checkNotNull(paramCMTime);
     return (getStartUs() <= paramCMTime.getTimeUs()) && (getEndUs() > paramCMTime.getTimeUs());
   }
   
   public boolean containsTimeRange(@NonNull CMTimeRange paramCMTimeRange)
   {
-    Utils.a(paramCMTimeRange);
+    Utils.checkNotNull(paramCMTimeRange);
     return (getStartUs() <= paramCMTimeRange.getStartUs()) && (getEndUs() >= paramCMTimeRange.getEndUs());
   }
   
@@ -178,14 +178,14 @@ public class CMTimeRange
   
   public void setDuration(@NonNull CMTime paramCMTime)
   {
-    Utils.a(paramCMTime);
+    Utils.checkNotNull(paramCMTime);
     this.duration = paramCMTime;
     this.end = this.start.add(paramCMTime);
   }
   
   public void setStart(@NonNull CMTime paramCMTime)
   {
-    Utils.a(paramCMTime);
+    Utils.checkNotNull(paramCMTime);
     this.start = paramCMTime;
     this.end = paramCMTime.add(this.duration);
   }
@@ -226,7 +226,7 @@ public class CMTimeRange
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMTimeRange
  * JD-Core Version:    0.7.0.1
  */

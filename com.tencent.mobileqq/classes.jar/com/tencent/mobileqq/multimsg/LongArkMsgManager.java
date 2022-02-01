@@ -34,18 +34,18 @@ public class LongArkMsgManager
       paramQQAppInterface.getMessageFacade().a(paramMessageForArkApp);
     }
     paramMessageForArkApp.mPendantAnimatable = true;
-    Object localObject = paramQQAppInterface.getProxyManager().a().a(paramMessageForArkApp);
+    Object localObject = paramQQAppInterface.getProxyManager().b().b(paramMessageForArkApp);
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StructLongTextMsg", 2, "step2: sendLongTextMsg pack failed! packData is null.............................");
       }
       paramMessageForArkApp.extraflag = 32768;
-      paramQQAppInterface.getMsgCache().a(paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq);
+      paramQQAppInterface.getMsgCache().b(paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq);
       String str = paramMessageForArkApp.frienduin;
       int i = paramMessageForArkApp.istroop;
       long l = paramMessageForArkApp.uniseq;
-      ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.a(paramMessageForArkApp.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+      ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.b(paramMessageForArkApp.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
     }
     paramBoolean = ((LongTextMsgManager)paramQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(paramQQAppInterface, (byte[])localObject, paramQQAppInterface.getCurrentAccountUin(), paramMessageForArkApp.frienduin, paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq, 1035, new LongArkMsgManager.1(this, paramMessageForArkApp, paramQQAppInterface));
     if (paramBoolean)
@@ -69,7 +69,7 @@ public class LongArkMsgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.LongArkMsgManager
  * JD-Core Version:    0.7.0.1
  */

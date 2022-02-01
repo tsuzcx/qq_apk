@@ -15,12 +15,7 @@ import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 public class PhoneUnityBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.b;
-  }
+  public static final int a = BannerTypeCollections.b;
   
   public PhoneUnityBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -34,27 +29,27 @@ public class PhoneUnityBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    return SafeUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
+    return SafeUtils.a((QQAppInterface)this.f.getAppRuntime(), this.f);
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    paramBanner.a.setVisibility(0);
+    paramBanner.c.setVisibility(0);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
+  }
+  
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.PhoneUnityBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

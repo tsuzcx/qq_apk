@@ -11,21 +11,16 @@ import java.util.Set;
 public abstract class AVBaseReport
   implements AVReportInterface
 {
-  HttpInterface jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface;
-  private LogInterface jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface = null;
-  protected Map<String, String> a;
+  protected Map<String, String> a = new HashMap();
+  HttpInterface b;
+  private LogInterface c = null;
   
-  public AVBaseReport()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  private String a()
+  private String c()
   {
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("_dc=");
     ((StringBuilder)localObject2).append(Math.random());
-    Object localObject3 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    Object localObject3 = this.a.entrySet().iterator();
     while (((Iterator)localObject3).hasNext())
     {
       localObject1 = (Map.Entry)((Iterator)localObject3).next();
@@ -44,7 +39,7 @@ public abstract class AVBaseReport
     ((StringBuilder)localObject2).append("https://h.trace.qq.com/kv?");
     ((StringBuilder)localObject2).append((String)localObject1);
     localObject1 = ((StringBuilder)localObject2).toString();
-    localObject2 = this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
+    localObject2 = this.c;
     if (localObject2 != null)
     {
       localObject3 = new StringBuilder();
@@ -59,25 +54,25 @@ public abstract class AVBaseReport
   
   public void a(HttpInterface paramHttpInterface)
   {
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface = paramHttpInterface;
+    this.b = paramHttpInterface;
   }
   
   public void a(LogInterface paramLogInterface)
   {
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface = paramLogInterface;
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface.init(new AVBaseReport.1(this, paramLogInterface));
+    this.c = paramLogInterface;
+    this.b.init(new AVBaseReport.1(this, paramLogInterface));
     a();
   }
   
   public void b()
   {
-    a();
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpInterface.post("https://h.trace.qq.com/kv", this.jdField_a_of_type_JavaUtilMap, new AVBaseReport.2(this));
+    c();
+    this.b.post("https://h.trace.qq.com/kv", this.a, new AVBaseReport.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadplayerservice.report.AVBaseReport
  * JD-Core Version:    0.7.0.1
  */

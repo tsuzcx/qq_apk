@@ -10,8 +10,7 @@ import android.view.View;
 public class SplitedProgressBar
   extends View
 {
-  public int a;
-  public Paint a;
+  public int a = 50;
   public int b = 1;
   public int c;
   public int d;
@@ -21,6 +20,7 @@ public class SplitedProgressBar
   public int h = 4;
   public int i = 0;
   public int j = 1;
+  public Paint k = new Paint();
   
   public SplitedProgressBar(Context paramContext)
   {
@@ -35,83 +35,81 @@ public class SplitedProgressBar
   public SplitedProgressBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_Int = 50;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int m = super.getWidth();
+    int n = super.getWidth();
     if (this.b == 0) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
-    int n = this.j;
-    int k = this.i;
-    float f1 = (m - (n - k - 1) * this.h) / (n - k);
-    while (k < this.j)
+    this.k.setStrokeWidth(this.g);
+    int i1 = this.j;
+    int m = this.i;
+    float f1 = (n - (i1 - m - 1) * this.h) / (i1 - m);
+    while (m < this.j)
     {
-      n = this.i;
-      float f2 = k - n;
-      int i1 = this.h;
-      m = (int)(f2 * (i1 + f1));
-      n = (int)((k - n) * (i1 + f1) + f1);
-      i1 = this.c;
+      i1 = this.i;
+      float f2 = m - i1;
+      int i2 = this.h;
+      n = (int)(f2 * (i2 + f1));
+      i1 = (int)((m - i1) * (i2 + f1) + f1);
+      i2 = this.c;
       float f3;
-      if (k < i1)
+      if (m < i2)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
-        f2 = m + 1;
-        f3 = n - 1;
-        paramCanvas.drawLine(f2, 1.0F, f3, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-        paramCanvas.drawPoint(m, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawPoint(f3, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        this.k.setStrokeWidth(this.g);
+        this.k.setColor(this.f);
+        f2 = n + 1;
+        f3 = i1 - 1;
+        paramCanvas.drawLine(f2, 1.0F, f3, 1.0F, this.k);
+        this.k.setStrokeWidth(1.0F);
+        paramCanvas.drawPoint(n, 1.0F, this.k);
+        paramCanvas.drawPoint(f3, 1.0F, this.k);
       }
-      else if (k == i1)
+      else if (m == i2)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
-        f3 = m + 1;
-        f2 = m;
-        paramCanvas.drawLine(f3, 1.0F, f2 + this.d * f1 / 100.0F, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-        paramCanvas.drawPoint(this.d * f1 / 100.0F + f2, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawPoint(f2, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
+        this.k.setStrokeWidth(this.g);
+        this.k.setColor(this.f);
+        f3 = n + 1;
+        f2 = n;
+        paramCanvas.drawLine(f3, 1.0F, f2 + this.d * f1 / 100.0F, 1.0F, this.k);
+        this.k.setStrokeWidth(1.0F);
+        paramCanvas.drawPoint(this.d * f1 / 100.0F + f2, 1.0F, this.k);
+        paramCanvas.drawPoint(f2, 1.0F, this.k);
+        this.k.setStrokeWidth(this.g);
+        this.k.setColor(this.e);
         f3 = this.d * f1 / 100.0F;
-        float f4 = n - 1;
-        paramCanvas.drawLine(f2 + f3, 1.0F, f4, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-        paramCanvas.drawPoint(f4, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        float f4 = i1 - 1;
+        paramCanvas.drawLine(f2 + f3, 1.0F, f4, 1.0F, this.k);
+        this.k.setStrokeWidth(1.0F);
+        paramCanvas.drawPoint(f4, 1.0F, this.k);
       }
       else
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-        f2 = m + 1;
-        f3 = n - 1;
-        paramCanvas.drawLine(f2, 1.0F, f3, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-        paramCanvas.drawPoint(m, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawPoint(f3, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        this.k.setStrokeWidth(this.g);
+        this.k.setColor(this.e);
+        f2 = n + 1;
+        f3 = i1 - 1;
+        paramCanvas.drawLine(f2, 1.0F, f3, 1.0F, this.k);
+        this.k.setStrokeWidth(1.0F);
+        paramCanvas.drawPoint(n, 1.0F, this.k);
+        paramCanvas.drawPoint(f3, 1.0F, this.k);
       }
-      k += 1;
+      m += 1;
     }
   }
   
   public void setProgress(int paramInt1, int paramInt2)
   {
-    int k = this.b;
-    if (k <= 0) {
+    int m = this.b;
+    if (m <= 0) {
       return;
     }
     if (paramInt1 >= 0)
     {
-      if (paramInt1 >= k) {
+      if (paramInt1 >= m) {
         return;
       }
       if (paramInt2 >= 0)
@@ -122,29 +120,29 @@ public class SplitedProgressBar
         this.c = paramInt1;
         this.d = paramInt2;
         paramInt1 = this.c;
-        paramInt2 = this.jdField_a_of_type_Int;
+        paramInt2 = this.a;
         if (paramInt1 < paramInt2)
         {
           this.i = 0;
           paramInt1 = paramInt2;
-          if (k < paramInt2) {
-            paramInt1 = k;
+          if (m < paramInt2) {
+            paramInt1 = m;
           }
           this.j = paramInt1;
         }
         else
         {
-          for (this.i = paramInt2;; this.i = (paramInt2 + k))
+          for (this.i = paramInt2;; this.i = (paramInt2 + m))
           {
             paramInt2 = this.i;
-            k = this.jdField_a_of_type_Int;
-            if (paramInt2 + k > this.c) {
+            m = this.a;
+            if (paramInt2 + m > this.c) {
               break;
             }
           }
           paramInt1 = this.b;
-          if (paramInt1 >= paramInt2 + k) {
-            paramInt1 = paramInt2 + k;
+          if (paramInt1 >= paramInt2 + m) {
+            paramInt1 = paramInt2 + m;
           }
           this.j = paramInt1;
         }
@@ -162,7 +160,7 @@ public class SplitedProgressBar
   {
     if (paramInt >= 1)
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.a = paramInt;
       if (Looper.myLooper() == Looper.getMainLooper())
       {
         super.invalidate();
@@ -198,7 +196,7 @@ public class SplitedProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.SplitedProgressBar
  * JD-Core Version:    0.7.0.1
  */

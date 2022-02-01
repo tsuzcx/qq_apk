@@ -11,13 +11,13 @@ class AccountDetailGroupListContainer$2
   
   public void onClick(View paramView)
   {
-    AccountDetailGroupListContainer.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_JavaLangString);
-    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.jdField_a_of_type_JavaLangString);
+    AccountDetailGroupListContainer.b(this.c, this.a);
+    AccountDetailGroupListContainer.a(this.c, this.b.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.2
  * JD-Core Version:    0.7.0.1
  */

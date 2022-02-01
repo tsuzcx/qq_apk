@@ -16,15 +16,15 @@ import java.util.Set;
 public class MultiCardContext
 {
   public QQAppInterface a;
-  private String jdField_a_of_type_JavaLangString;
-  private List<CardIndicator> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<String, CardContent> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<String, String> b = new HashMap();
+  private String b;
+  private Map<String, CardContent> c = new HashMap();
+  private List<CardIndicator> d = new ArrayList();
+  private Map<String, String> e = new HashMap();
   
   public MultiCardContext(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramQQAppInterface;
+    this.b = paramString;
   }
   
   public static MultiCardContext a(QQAppInterface paramQQAppInterface, String paramString)
@@ -40,48 +40,13 @@ public class MultiCardContext
     return new MultiCardContext(paramQQAppInterface, paramString);
   }
   
-  public int a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        return 0;
-      }
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      return i;
-    }
-    finally {}
-  }
-  
-  public CardContent a(int paramInt)
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_JavaUtilMap != null) && (paramInt >= 0) && (this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()))
-      {
-        CardIndicator localCardIndicator = (CardIndicator)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        if (localCardIndicator != null)
-        {
-          CardContent localCardContent = (CardContent)this.jdField_a_of_type_JavaUtilMap.get(localCardIndicator.a());
-          if ((localCardContent != null) && (TextUtils.isEmpty(localCardContent.b()))) {
-            localCardContent.a((String)this.b.get(localCardIndicator.a()));
-          }
-          return localCardContent;
-        }
-        return null;
-      }
-      return null;
-    }
-    finally {}
-  }
-  
   public CardIndicator a(int paramInt)
   {
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt >= 0) && (paramInt <= this.jdField_a_of_type_JavaUtilList.size()))
+      if ((this.d != null) && (paramInt >= 0) && (paramInt <= this.d.size()))
       {
-        CardIndicator localCardIndicator = (CardIndicator)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        CardIndicator localCardIndicator = (CardIndicator)this.d.get(paramInt);
         return localCardIndicator;
       }
       return null;
@@ -91,14 +56,14 @@ public class MultiCardContext
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
   
   public String a(String paramString)
   {
     try
     {
-      paramString = (String)this.b.get(paramString);
+      paramString = (String)this.e.get(paramString);
       return paramString;
     }
     finally {}
@@ -108,12 +73,12 @@ public class MultiCardContext
   {
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt1) || (paramInt1 < 0) || (paramInt2 <= 0)) {
+      if ((this.d == null) || (this.d.size() <= paramInt1) || (paramInt1 < 0) || (paramInt2 <= 0)) {
         break label127;
       }
       i = paramInt2;
-      if (paramInt1 + paramInt2 > this.jdField_a_of_type_JavaUtilList.size()) {
-        i = this.jdField_a_of_type_JavaUtilList.size() - paramInt1;
+      if (paramInt1 + paramInt2 > this.d.size()) {
+        i = this.d.size() - paramInt1;
       }
       localArrayList = new ArrayList();
       paramInt2 = paramInt1;
@@ -146,7 +111,7 @@ public class MultiCardContext
       }
     }
     if (paramInt2 < paramInt1 + i) {
-      str = ((CardIndicator)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).a();
+      str = ((CardIndicator)this.d.get(paramInt2)).a();
     }
   }
   
@@ -159,7 +124,7 @@ public class MultiCardContext
       while (paramList.hasNext())
       {
         String str = String.valueOf((Long)paramList.next());
-        localArrayList.add(new CardIndicator(str, ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, str)));
+        localArrayList.add(new CardIndicator(str, ContactUtils.b(this.a, this.b, str)));
       }
       return localArrayList;
     }
@@ -187,13 +152,13 @@ public class MultiCardContext
     if (paramList != null) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.d.clear();
+      this.d.addAll(paramList);
       if (paramMap != null) {
-        this.jdField_a_of_type_JavaUtilMap.putAll(paramMap);
+        this.c.putAll(paramMap);
       }
       if (paramMap1 != null) {
-        this.b.putAll(paramMap1);
+        this.e.putAll(paramMap1);
       }
       return;
     }
@@ -203,6 +168,41 @@ public class MultiCardContext
       break label60;
     }
     throw paramList;
+  }
+  
+  public int b()
+  {
+    try
+    {
+      if (this.d == null) {
+        return 0;
+      }
+      int i = this.d.size();
+      return i;
+    }
+    finally {}
+  }
+  
+  public CardContent b(int paramInt)
+  {
+    try
+    {
+      if ((this.c != null) && (paramInt >= 0) && (this.d != null) && (paramInt < this.d.size()))
+      {
+        CardIndicator localCardIndicator = (CardIndicator)this.d.get(paramInt);
+        if (localCardIndicator != null)
+        {
+          CardContent localCardContent = (CardContent)this.c.get(localCardIndicator.a());
+          if ((localCardContent != null) && (TextUtils.isEmpty(localCardContent.d()))) {
+            localCardContent.a((String)this.e.get(localCardIndicator.a()));
+          }
+          return localCardContent;
+        }
+        return null;
+      }
+      return null;
+    }
+    finally {}
   }
   
   public Map<String, String> b(Map<Long, String> paramMap)
@@ -223,7 +223,7 @@ public class MultiCardContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardContext
  * JD-Core Version:    0.7.0.1
  */

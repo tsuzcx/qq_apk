@@ -19,72 +19,72 @@ import com.tencent.biz.qqstory.support.report.StoryReportor;
 public class VipForwardVideoInfoController
   extends BannerVideoInfoWidget3.BannerVideoInfoController
 {
-  private VideoLinkInfo jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo;
-  private StoryPlayerVideoData jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean c = false;
+  private StoryPlayerVideoData f;
+  private VideoLinkInfo g;
+  private boolean h = false;
+  private String i = "";
   
   private void a(QQUserUIItem paramQQUserUIItem, BannerVideoInfoWidget3.BannerViewHolder paramBannerViewHolder)
   {
-    paramBannerViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramBannerViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    paramBannerViewHolder.d.setVisibility(8);
+    paramBannerViewHolder.e.setVisibility(0);
     String str = paramQQUserUIItem.headUrl;
     paramQQUserUIItem = paramQQUserUIItem.nickName;
-    paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b().getString(2131699360, new Object[] { paramQQUserUIItem }));
-    paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(null);
-    paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    BannerVideoInfoWidget3.a(str, paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView, paramBannerViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramBannerViewHolder.jdField_a_of_type_Int, paramBannerViewHolder.jdField_a_of_type_Int);
+    paramBannerViewHolder.c.setVisibility(0);
+    paramBannerViewHolder.c.setText(this.a.y().getString(2131897377, new Object[] { paramQQUserUIItem }));
+    paramBannerViewHolder.c.setContentDescription(null);
+    paramBannerViewHolder.b.setVisibility(0);
+    BannerVideoInfoWidget3.a(str, paramBannerViewHolder.b, paramBannerViewHolder.h, paramBannerViewHolder.g, paramBannerViewHolder.g);
     SLog.a("VipForwardVideoInfoController", "updateUI, nickName:%s,  avatarURL:%s", paramQQUserUIItem, str);
   }
   
   public boolean a(View paramView)
   {
-    VideoLinkInfo localVideoLinkInfo = this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo;
-    if ((localVideoLinkInfo != null) && (localVideoLinkInfo.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo$VipFrwrdLinkInfo != null))
+    VideoLinkInfo localVideoLinkInfo = this.g;
+    if ((localVideoLinkInfo != null) && (localVideoLinkInfo.a == 5) && (this.g.h != null))
     {
       if (!super.a(paramView)) {
         return false;
       }
-      StoryPlayerLauncher.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo$VipFrwrdLinkInfo.c, this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo$VipFrwrdLinkInfo.b, 1010);
+      StoryPlayerLauncher.a(this.a.y(), this.g.h.c, this.g.h.b, 1010);
       StoryReportor.a("play_video", "clk_transmit", 0, 0, new String[0]);
       return true;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.k();
+    this.a.A();
     return false;
   }
   
   public void b(BannerVideoInfoWidget3.BannerViewHolder paramBannerViewHolder, StoryPlayerVideoData paramStoryPlayerVideoData)
   {
-    SLog.a("VipForwardVideoInfoController", "doOnBind, forward video:%s", paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = paramStoryPlayerVideoData;
-    Object localObject = paramStoryPlayerVideoData.a().getVideoLinkInfo();
-    if ((localObject != null) && (((VideoLinkInfo)localObject).jdField_a_of_type_Int == 5) && (((VideoLinkInfo)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo$VipFrwrdLinkInfo != null))
+    SLog.a("VipForwardVideoInfoController", "doOnBind, forward video:%s", paramStoryPlayerVideoData.b);
+    this.f = paramStoryPlayerVideoData;
+    Object localObject = paramStoryPlayerVideoData.e().getVideoLinkInfo();
+    if ((localObject != null) && (((VideoLinkInfo)localObject).a == 5) && (((VideoLinkInfo)localObject).h != null))
     {
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString))
+      if (TextUtils.equals(this.i, paramStoryPlayerVideoData.b))
       {
-        this.c = false;
+        this.h = false;
       }
       else
       {
-        this.c = true;
-        this.jdField_a_of_type_JavaLangString = paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString;
+        this.h = true;
+        this.i = paramStoryPlayerVideoData.b;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo = ((VideoLinkInfo)localObject);
+      this.g = ((VideoLinkInfo)localObject);
       paramStoryPlayerVideoData = (UserManager)SuperManager.a(2);
-      localObject = paramStoryPlayerVideoData.b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo$VipFrwrdLinkInfo.jdField_a_of_type_JavaLangString);
+      localObject = paramStoryPlayerVideoData.b(this.g.h.a);
       if ((localObject != null) && (!TextUtils.isEmpty(((QQUserUIItem)localObject).nickName)))
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.j();
+        this.a.z();
         a((QQUserUIItem)localObject, paramBannerViewHolder);
         return;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.k();
-      paramStoryPlayerVideoData.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo$VipFrwrdLinkInfo.jdField_a_of_type_JavaLangString, new VipForwardVideoInfoController.1(this, paramBannerViewHolder));
+      this.a.A();
+      paramStoryPlayerVideoData.a(this.g.h.a, new VipForwardVideoInfoController.1(this, paramBannerViewHolder));
       return;
     }
     SLog.b("VipForwardVideoInfoController", "something error, hide()");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.k();
+    this.a.A();
   }
 }
 

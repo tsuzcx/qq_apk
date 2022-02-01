@@ -37,7 +37,7 @@ final class EcshopRainViewApiImpl$addRainView$1
     {
       localMessageRecord = ((IMessageFacade)AppUtils.a().getRuntimeService(IMessageFacade.class, "")).getLastMsgForMsgTab("3046055438", 1008);
       localObject2 = (JSONObject)null;
-      if (SharedPreferencesUtil.a("LAST_MSG_SEQ_RAIN") == localMessageRecord.uniseq) {
+      if (SharedPreferencesUtil.e("LAST_MSG_SEQ_RAIN") == localMessageRecord.uniseq) {
         return;
       }
       localObject1 = QRoute.api(IEcshopMessageApi.class);
@@ -58,7 +58,7 @@ final class EcshopRainViewApiImpl$addRainView$1
         {
           localObject3 = ((IEcshopMessageApi)localObject3).getArkMsgMetaList(localMessageRecord);
           localObject1 = localObject2;
-          if (!StringUtil.a((String)localObject3))
+          if (!StringUtil.isEmpty((String)localObject3))
           {
             localObject3 = new JSONObject((String)localObject3).optJSONObject("gdt");
             localObject1 = localObject2;
@@ -105,13 +105,13 @@ final class EcshopRainViewApiImpl$addRainView$1
       {
         localObject1 = ((IEcshopUtilApi)QRoute.api(IEcshopUtilApi.class)).getEcshopConfBean();
         localObject2 = this.this$0;
-        localObject3 = ((EcshopConfBean)localObject1).a;
+        localObject3 = ((EcshopConfBean)localObject1).m;
         Intrinsics.checkExpressionValueIsNotNull(localObject3, "ecshopConfBean.promotionConf");
         Intrinsics.checkExpressionValueIsNotNull(localMessageRecord, "lastMsg");
         if (!((EcshopRainViewApiImpl)localObject2).isInPromotionTime((EcshopConfBean.PromotionConfBean)localObject3, localMessageRecord)) {
           return;
         }
-        localObject1 = PreloadStaticApi.a(((EcshopConfBean)localObject1).a.d);
+        localObject1 = PreloadStaticApi.a(((EcshopConfBean)localObject1).m.d);
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           return;
         }
@@ -121,7 +121,7 @@ final class EcshopRainViewApiImpl$addRainView$1
         localObject1 = BitmapFactory.decodeFile((String)localObject1, (BitmapFactory.Options)localObject2);
         localObject2 = this.this$0;
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "rainIcon");
-        EcshopRainViewApiImpl.access$rainInUIThread((EcshopRainViewApiImpl)localObject2, (Bitmap)localObject1, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+        EcshopRainViewApiImpl.access$rainInUIThread((EcshopRainViewApiImpl)localObject2, (Bitmap)localObject1, this.a, this.b);
         SharedPreferencesUtil.a("LAST_MSG_SEQ_RAIN", localMessageRecord.uniseq);
         return;
       }
@@ -138,7 +138,7 @@ final class EcshopRainViewApiImpl$addRainView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.api.impl.EcshopRainViewApiImpl.addRainView.1
  * JD-Core Version:    0.7.0.1
  */

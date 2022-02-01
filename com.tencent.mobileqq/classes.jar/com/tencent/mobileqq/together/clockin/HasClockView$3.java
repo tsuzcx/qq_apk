@@ -11,27 +11,27 @@ class HasClockView$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (HasClockView.a(this.a) >= HasClockView.a(this.a).size())
+    if (HasClockView.c(this.a) >= HasClockView.e(this.a).size())
     {
       this.a.a(4);
       return;
     }
-    HasClockView.b(this.a);
+    HasClockView.f(this.a);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    if (HasClockView.a(this.a) == 0) {
+    if (HasClockView.c(this.a) == 0) {
       this.a.a(3);
     }
-    HasClockView.b(this.a);
+    HasClockView.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.HasClockView.3
  * JD-Core Version:    0.7.0.1
  */

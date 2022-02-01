@@ -4,8 +4,8 @@ import com.tencent.mtt.hippy.common.HippyArray;
 
 public class f
 {
-  protected HippyArray a;
-  protected HippyArray b;
+  protected final HippyArray a;
+  protected final HippyArray b;
   
   public f(HippyArray paramHippyArray1, HippyArray paramHippyArray2)
   {
@@ -36,44 +36,37 @@ public class f
     while (i < m)
     {
       paramNumber = this.a.get(i);
-      if (paramNumber != null)
-      {
-        if (!(paramNumber instanceof Number)) {
-          return null;
-        }
-        double d3 = ((Number)paramNumber).doubleValue();
-        int k = j;
-        double d2 = d1;
-        if (d3 <= d4)
-        {
-          d3 = Math.abs(d4 - d3);
-          if (d3 >= d1)
-          {
-            k = j;
-            d2 = d1;
-            if (d1 != -1.0D) {}
-          }
-          else
-          {
-            k = i;
-            d2 = d3;
-          }
-        }
-        i += 1;
-        j = k;
-        d1 = d2;
-      }
-      else
-      {
+      if (!(paramNumber instanceof Number)) {
         return null;
       }
+      double d3 = ((Number)paramNumber).doubleValue();
+      int k = j;
+      double d2 = d1;
+      if (d3 <= d4)
+      {
+        d3 = Math.abs(d4 - d3);
+        if (d3 >= d1)
+        {
+          k = j;
+          d2 = d1;
+          if (d1 != -1.0D) {}
+        }
+        else
+        {
+          k = i;
+          d2 = d3;
+        }
+      }
+      i += 1;
+      j = k;
+      d1 = d2;
     }
     return this.b.get(j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.animation.f
  * JD-Core Version:    0.7.0.1
  */

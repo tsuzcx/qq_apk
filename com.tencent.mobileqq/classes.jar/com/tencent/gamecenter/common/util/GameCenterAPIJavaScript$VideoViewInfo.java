@@ -9,38 +9,36 @@ import org.json.JSONObject;
 
 public class GameCenterAPIJavaScript$VideoViewInfo
 {
-  public int a;
-  public FrameLayout a;
   public GameCenterVideoViewController a;
-  public String a;
-  public Map<Integer, View> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
+  public FrameLayout b;
+  public Map<Integer, View> c;
   public int d;
-  public String d;
-  public boolean d;
   public int e;
-  public String e;
-  public String f;
+  public int f;
   public String g;
   public String h;
-  public String i;
+  public int i;
   public String j;
-  public String k;
-  public String l;
+  public boolean k;
+  public boolean l;
+  public boolean m = false;
+  public int n;
+  public boolean o = false;
+  public String p;
+  public String q;
+  public String r;
+  public String s;
+  public String t;
+  public String u;
+  public String v;
+  public String w;
+  public String x;
   
   public GameCenterAPIJavaScript$VideoViewInfo(GameCenterVideoViewController paramGameCenterVideoViewController, FrameLayout paramFrameLayout, Map<Integer, View> paramMap)
   {
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = paramGameCenterVideoViewController;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.a = paramGameCenterVideoViewController;
+    this.b = paramFrameLayout;
+    this.c = paramMap;
   }
   
   public String a()
@@ -48,20 +46,20 @@ public class GameCenterAPIJavaScript$VideoViewInfo
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("id", this.jdField_a_of_type_Int);
-      localJSONObject.put("x", this.jdField_c_of_type_Int);
-      localJSONObject.put("y", this.jdField_b_of_type_Int);
-      localJSONObject.put("vid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("streamType", this.jdField_d_of_type_Int);
-      localJSONObject.put("protocol", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("mute", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.getOutputMute());
-      localJSONObject.put("total", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.getDuration());
-      localJSONObject.put("current", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.getCurrentPostion());
-      localJSONObject.put("autoPlay", this.jdField_b_of_type_Boolean);
-      localJSONObject.put("isFullScreen", this.jdField_c_of_type_Boolean);
-      localJSONObject.put("progress", this.e);
-      localJSONObject.put("danmakuOn", this.jdField_d_of_type_Boolean);
+      localJSONObject.put("id", this.d);
+      localJSONObject.put("x", this.f);
+      localJSONObject.put("y", this.e);
+      localJSONObject.put("vid", this.g);
+      localJSONObject.put("url", this.h);
+      localJSONObject.put("streamType", this.i);
+      localJSONObject.put("protocol", this.j);
+      localJSONObject.put("mute", this.a.getOutputMute());
+      localJSONObject.put("total", this.a.getDuration());
+      localJSONObject.put("current", this.a.getCurrentPostion());
+      localJSONObject.put("autoPlay", this.l);
+      localJSONObject.put("isFullScreen", this.m);
+      localJSONObject.put("progress", this.n);
+      localJSONObject.put("danmakuOn", this.o);
     }
     catch (JSONException localJSONException)
     {
@@ -72,7 +70,7 @@ public class GameCenterAPIJavaScript$VideoViewInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.GameCenterAPIJavaScript.VideoViewInfo
  * JD-Core Version:    0.7.0.1
  */

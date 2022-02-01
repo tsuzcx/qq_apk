@@ -9,9 +9,9 @@ class VideoLayerUI$8
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.c(this.c, this.jdField_a_of_type_Int);
+    this.d.ae[this.a].c(this.b);
+    VideoLayerUI.a(this.d, 0L);
+    this.d.d(this.c, this.a);
   }
 }
 

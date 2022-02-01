@@ -95,7 +95,7 @@ public class AEStaticDetector
         float f19 = localByteArrayOutputStream.pitch;
         float f20 = localByteArrayOutputStream.yaw;
         float f21 = localByteArrayOutputStream.roll;
-        ((List)localObject1).add(new LightFaceFeature(new float[] { f1, f2 }, new float[] { f3, f4, f5, f6 }, new float[] { f7, f8, f9, f10 }, new float[] { f11, f12, f13, f14 }, new float[] { f15, f16, f17, f18 }, f19, f20, f21, true, arrayOfFloat1, arrayOfFloat2, null, null, arrayOfFloat3, arrayOfFloat4, null, null, null, null, null));
+        ((List)localObject1).add(new LightFaceFeature(new float[] { f1, f2 }, new float[] { f3, f4, f5, f6 }, new float[] { f7, f8, f9, f10 }, new float[] { f11, f12, f13, f14 }, new float[] { f15, f16, f17, f18 }, f19, f20, f21, true, "", arrayOfFloat1, arrayOfFloat2, null, null, arrayOfFloat3, arrayOfFloat4, null, null, null, null, null));
         i += 1;
       }
       paramBitmap.mLightFaceFeatureList = ((List)localObject1);
@@ -143,7 +143,7 @@ public class AEStaticDetector
     localMap = ((SDKModelConfig)localObject).modelPaths;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(modelPath);
-    localStringBuilder.append("LightFaceModel.bundle/face-alignment-v350");
+    localStringBuilder.append("LightFaceModel.bundle/face-alignment-v360");
     localMap.put("face-alignment", localStringBuilder.toString());
     return paramGYAIFace.setupWithModel((SDKModelConfig)localObject);
   }
@@ -158,7 +158,7 @@ public class AEStaticDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.AEStaticDetector
  * JD-Core Version:    0.7.0.1
  */

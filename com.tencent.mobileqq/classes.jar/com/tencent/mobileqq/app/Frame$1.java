@@ -7,14 +7,14 @@ class Frame$1
 {
   public void a()
   {
-    this.a.D();
+    this.a.T();
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.Frame.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,37 +6,37 @@ import java.util.List;
 
 public class BasicTextRegionTextItem$Builder
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int;
-  Typeface jdField_a_of_type_AndroidGraphicsTypeface = null;
-  ArrayList<BaseTextRegion> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  float jdField_b_of_type_Float = 0.0F;
-  int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
-  float jdField_c_of_type_Float = 0.0F;
-  int jdField_c_of_type_Int = 0;
-  float d = 0.0F;
+  ArrayList<BaseTextRegion> a = new ArrayList();
+  Typeface b = null;
+  int c;
+  boolean d = false;
+  float e = 0.0F;
+  float f = 0.0F;
+  float g = 0.0F;
+  int h = 0;
+  boolean i = false;
+  float j = 0.0F;
+  int k = 0;
   
   public BasicTextRegionTextItem$Builder()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.clear();
   }
   
   public BasicTextRegionTextItem a(int paramInt, List<String> paramList)
   {
     BasicTextRegionTextItem localBasicTextRegionTextItem = new BasicTextRegionTextItem(paramInt, paramList);
-    localBasicTextRegionTextItem.jdField_a_of_type_JavaUtilArrayList.clear();
-    localBasicTextRegionTextItem.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    Typeface localTypeface = this.jdField_a_of_type_AndroidGraphicsTypeface;
+    localBasicTextRegionTextItem.a.clear();
+    localBasicTextRegionTextItem.a.addAll(this.a);
+    Typeface localTypeface = this.b;
     if (localTypeface != null) {
       localBasicTextRegionTextItem.a(localTypeface);
     }
-    localBasicTextRegionTextItem.a(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Boolean) {
-      BasicTextRegionTextItem.a(localBasicTextRegionTextItem, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_b_of_type_Int);
+    localBasicTextRegionTextItem.a(this.c);
+    if (this.d) {
+      BasicTextRegionTextItem.a(localBasicTextRegionTextItem, this.e, this.f, this.g, this.h);
     }
-    BasicTextRegionTextItem.a(localBasicTextRegionTextItem, this.jdField_b_of_type_Boolean, this.d, this.jdField_c_of_type_Int);
+    BasicTextRegionTextItem.a(localBasicTextRegionTextItem, this.i, this.j, this.k);
     if (!paramList.isEmpty()) {
       localBasicTextRegionTextItem.a(0, (String)paramList.get(0));
     }
@@ -45,22 +45,22 @@ public class BasicTextRegionTextItem$Builder
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(Typeface paramTypeface)
   {
-    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
+    this.b = paramTypeface;
   }
   
   public void a(BaseTextRegion paramBaseTextRegion)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramBaseTextRegion);
+    this.a.add(paramBaseTextRegion);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.BasicTextRegionTextItem.Builder
  * JD-Core Version:    0.7.0.1
  */

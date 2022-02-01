@@ -6,6 +6,8 @@ import com.tencent.ad.tangram.AdBuilderAdapter;
 import com.tencent.ad.tangram.AdManagerForQQ;
 import com.tencent.ad.tangram.analysis.AdUin;
 import com.tencent.ad.tangram.analysis.AdUinAdapter;
+import com.tencent.ad.tangram.device.AdDeviceInfoV2;
+import com.tencent.ad.tangram.device.AdDeviceInfoV2Adapter;
 import com.tencent.ad.tangram.device.AdTAID;
 import com.tencent.ad.tangram.device.AdTAIDAdapter;
 import com.tencent.ad.tangram.dialog.AdProgressDialog;
@@ -46,10 +48,14 @@ import com.tencent.ad.tangram.toast.AdToastAdapter;
 import com.tencent.ad.tangram.util.AdExposureListHolder;
 import com.tencent.ad.tangram.version.AdVersion;
 import com.tencent.ad.tangram.version.AdVersionAdapter;
+import com.tencent.ad.tangram.video.AdVideo;
+import com.tencent.ad.tangram.video.AdVideoAdapter;
 import com.tencent.ad.tangram.videoceiling.AdVideoCeiling;
 import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter;
 import com.tencent.ad.tangram.videoceiling.AdVideoSplice;
 import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter;
+import com.tencent.ad.tangram.views.AdUISettings;
+import com.tencent.ad.tangram.views.AdUISettingsAdapter;
 import com.tencent.ad.tangram.views.canvas.AdCanvas;
 import com.tencent.ad.tangram.views.canvas.AdCanvasAdapter;
 import com.tencent.ad.tangram.views.canvas.AdCanvasDownloadListener;
@@ -60,6 +66,7 @@ import com.tencent.gdtad.adapter.GdtActivityLifecycleManager;
 import com.tencent.gdtad.adapter.GdtAdBuilderAdapter;
 import com.tencent.gdtad.adapter.GdtBrowserAdapter;
 import com.tencent.gdtad.adapter.GdtCanvasAdapter;
+import com.tencent.gdtad.adapter.GdtDeviceInfoV2Adapter;
 import com.tencent.gdtad.adapter.GdtDownloadListenerAdapter;
 import com.tencent.gdtad.adapter.GdtDownloaderAdapter;
 import com.tencent.gdtad.adapter.GdtDownloaderAdapterV2;
@@ -78,8 +85,10 @@ import com.tencent.gdtad.adapter.GdtReportAdapter;
 import com.tencent.gdtad.adapter.GdtThreadManagerAdapter;
 import com.tencent.gdtad.adapter.GdtTimeAdapter;
 import com.tencent.gdtad.adapter.GdtToastAdapter;
+import com.tencent.gdtad.adapter.GdtUISettingsAdapter;
 import com.tencent.gdtad.adapter.GdtUinAdapter;
 import com.tencent.gdtad.adapter.GdtVersionAdapter;
+import com.tencent.gdtad.adapter.GdtVideoAdapter;
 import com.tencent.gdtad.adapter.GdtVideoCeilingAdapter;
 import com.tencent.gdtad.adapter.GdtVideoSpliceAdapter;
 import com.tencent.gdtad.api.interstitial.IGdtInterstitialAPI;
@@ -90,47 +99,50 @@ import java.lang.ref.WeakReference;
 
 public final class GdtManager
 {
-  private static volatile GdtManager jdField_a_of_type_ComTencentGdtadUtilGdtManager;
-  private AdBuilderAdapter jdField_a_of_type_ComTencentAdTangramAdBuilderAdapter = new GdtAdBuilderAdapter();
-  private AdUinAdapter jdField_a_of_type_ComTencentAdTangramAnalysisAdUinAdapter = new GdtUinAdapter();
-  private AdTAIDAdapter jdField_a_of_type_ComTencentAdTangramDeviceAdTAIDAdapter = new GdtTAIDAdapter();
-  private AdProgressDialogAdapter jdField_a_of_type_ComTencentAdTangramDialogAdProgressDialogAdapter = new GdtProgressDialogAdapter();
-  private AdDownloaderAdapter jdField_a_of_type_ComTencentAdTangramDownloaderAdDownloaderAdapter = new GdtDownloaderAdapter();
-  private AdDownloaderAdapterV2 jdField_a_of_type_ComTencentAdTangramDownloaderAdDownloaderAdapterV2 = new GdtDownloaderAdapterV2();
-  private IAdDownloader.Callback jdField_a_of_type_ComTencentAdTangramDownloaderIAdDownloader$Callback = new GdtPreDownloadListenerAdapter();
-  private AdHalfScreenAdapter jdField_a_of_type_ComTencentAdTangramHalfScreenAdHalfScreenAdapter = new GdtHalfScreenAdapter();
-  private AdImageViewAdapter jdField_a_of_type_ComTencentAdTangramImageAdImageViewAdapter = new GdtImageViewBuilderAdapter();
-  private AdIPCManager.Adapter jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Adapter = new GdtIPCAdapter();
-  private AdLocationAdapter jdField_a_of_type_ComTencentAdTangramLbsAdLocationAdapter = new GdtLocationAdapter();
-  private AdLogAdapter jdField_a_of_type_ComTencentAdTangramLogAdLogAdapter = new GdtLogAdapter();
-  private AdQQMINIProgramAdapter jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter = new GdtQQMINIProgramAdapter();
-  private AdTimeAdapter jdField_a_of_type_ComTencentAdTangramNetAdTimeAdapter = new GdtTimeAdapter();
-  private AdOfflineAdapter jdField_a_of_type_ComTencentAdTangramOfflineAdOfflineAdapter = new GdtOfflineAdapter();
-  private AdQQReminderAdapter jdField_a_of_type_ComTencentAdTangramPreorderAdQQReminderAdapter = new GdtQQReminderAdapter();
-  private AdProcessManagerAdapter jdField_a_of_type_ComTencentAdTangramProcessAdProcessManagerAdapter = new GdtProcessManagerAdapter();
-  private AdReportAdapter jdField_a_of_type_ComTencentAdTangramStatisticsCanvasAdReportAdapter = new GdtReportAdapter();
-  private AdThreadManagerAdapter jdField_a_of_type_ComTencentAdTangramThreadAdThreadManagerAdapter = new GdtThreadManagerAdapter();
-  private AdToastAdapter jdField_a_of_type_ComTencentAdTangramToastAdToastAdapter = new GdtToastAdapter();
-  private AdVersionAdapter jdField_a_of_type_ComTencentAdTangramVersionAdVersionAdapter = new GdtVersionAdapter();
-  private AdVideoCeilingAdapter jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoCeilingAdapter = new GdtVideoCeilingAdapter();
-  private AdVideoSpliceAdapter jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter = new GdtVideoSpliceAdapter();
-  private AdCanvasAdapter jdField_a_of_type_ComTencentAdTangramViewsCanvasAdCanvasAdapter = new GdtCanvasAdapter();
-  private AdCanvasDownloadListenerAdapter jdField_a_of_type_ComTencentAdTangramViewsCanvasAdCanvasDownloadListenerAdapter = new GdtDownloadListenerAdapter();
-  private AdBrowserAdapter jdField_a_of_type_ComTencentAdTangramWebAdBrowserAdapter = new GdtBrowserAdapter();
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private static volatile GdtManager a;
+  private AdUinAdapter A = new GdtUinAdapter();
+  private AdDownloaderAdapterV2 B = new GdtDownloaderAdapterV2();
+  private AdDeviceInfoV2Adapter C = new GdtDeviceInfoV2Adapter();
+  private AdUISettingsAdapter D = new GdtUISettingsAdapter();
+  private AdVideoAdapter E = new GdtVideoAdapter();
+  private volatile boolean b = false;
+  private AdIPCManager.Adapter c = new GdtIPCAdapter();
+  private AdLogAdapter d = new GdtLogAdapter();
+  private AdProcessManagerAdapter e = new GdtProcessManagerAdapter();
+  private AdThreadManagerAdapter f = new GdtThreadManagerAdapter();
+  private AdBrowserAdapter g = new GdtBrowserAdapter();
+  private AdCanvasAdapter h = new GdtCanvasAdapter();
+  private AdVideoCeilingAdapter i = new GdtVideoCeilingAdapter();
+  private AdQQMINIProgramAdapter j = new GdtQQMINIProgramAdapter();
+  private AdVideoSpliceAdapter k = new GdtVideoSpliceAdapter();
+  private AdToastAdapter l = new GdtToastAdapter();
+  private AdProgressDialogAdapter m = new GdtProgressDialogAdapter();
+  private AdImageViewAdapter n = new GdtImageViewBuilderAdapter();
+  private AdDownloaderAdapter o = new GdtDownloaderAdapter();
+  private AdReportAdapter p = new GdtReportAdapter();
+  private AdVersionAdapter q = new GdtVersionAdapter();
+  private AdCanvasDownloadListenerAdapter r = new GdtDownloadListenerAdapter();
+  private AdOfflineAdapter s = new GdtOfflineAdapter();
+  private AdHalfScreenAdapter t = new GdtHalfScreenAdapter();
+  private AdTAIDAdapter u = new GdtTAIDAdapter();
+  private AdLocationAdapter v = new GdtLocationAdapter();
+  private AdBuilderAdapter w = new GdtAdBuilderAdapter();
+  private AdTimeAdapter x = new GdtTimeAdapter();
+  private AdQQReminderAdapter y = new GdtQQReminderAdapter();
+  private IAdDownloader.Callback z = new GdtPreDownloadListenerAdapter();
   
   public static GdtManager a()
   {
-    if (jdField_a_of_type_ComTencentGdtadUtilGdtManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentGdtadUtilGdtManager == null) {
-          jdField_a_of_type_ComTencentGdtadUtilGdtManager = new GdtManager();
+        if (a == null) {
+          a = new GdtManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentGdtadUtilGdtManager;
+    return a;
   }
   
   private void a(Context paramContext)
@@ -142,37 +154,40 @@ public final class GdtManager
   {
     AdThreadManager.INSTANCE.postDelayed(new GdtManager.1(this, paramContext), 0, 1000L);
     AdConnectivityManager.getInstance().init(paramContext);
-    GdtActivityLifecycleManager.a().a();
+    GdtActivityLifecycleManager.a().b();
   }
   
   private void b(Context paramContext, GdtManager.Params paramParams)
   {
-    AdIPCManager.INSTANCE.init(paramContext, new WeakReference(this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Adapter));
-    AdLog.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramLogAdLogAdapter));
-    AdProcessManager.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramProcessAdProcessManagerAdapter));
-    AdThreadManager.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramThreadAdThreadManagerAdapter));
-    AdBrowser.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramWebAdBrowserAdapter));
-    AdCanvas.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramViewsCanvasAdCanvasAdapter));
-    AdVideoCeiling.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoCeilingAdapter));
-    AdQQMINIProgram.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter));
-    AdVideoSplice.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter));
-    AdToast.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramToastAdToastAdapter));
-    AdProgressDialog.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramDialogAdProgressDialogAdapter));
-    AdImageViewBuilder.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramImageAdImageViewAdapter));
-    AdDownloader.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramDownloaderAdDownloaderAdapter));
-    AdReport.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramStatisticsCanvasAdReportAdapter));
-    AdVersion.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramVersionAdVersionAdapter));
-    AdCanvasDownloadListener.setAdapter(this.jdField_a_of_type_ComTencentAdTangramViewsCanvasAdCanvasDownloadListenerAdapter);
-    AdOffline.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramOfflineAdOfflineAdapter));
-    AdHalfScreen.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramHalfScreenAdHalfScreenAdapter));
-    AdTAID.getInstance().setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramDeviceAdTAIDAdapter));
-    AdLocationManager.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramLbsAdLocationAdapter));
-    AdBuilder.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramAdBuilderAdapter));
-    AdTime.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramNetAdTimeAdapter));
-    AdQQReminderManager.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramPreorderAdQQReminderAdapter));
-    AdAppPreOrderDownloadListener.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramDownloaderIAdDownloader$Callback));
-    AdUin.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramAnalysisAdUinAdapter));
-    AdDownloaderV2.INSTANCE.setAdapter(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramDownloaderAdDownloaderAdapterV2));
+    AdIPCManager.INSTANCE.init(paramContext, new WeakReference(this.c));
+    AdLog.setAdapter(new WeakReference(this.d));
+    AdProcessManager.INSTANCE.setAdapter(new WeakReference(this.e));
+    AdThreadManager.INSTANCE.setAdapter(new WeakReference(this.f));
+    AdBrowser.setAdapter(new WeakReference(this.g));
+    AdCanvas.setAdapter(new WeakReference(this.h));
+    AdVideoCeiling.setAdapter(new WeakReference(this.i));
+    AdQQMINIProgram.setAdapter(new WeakReference(this.j));
+    AdVideoSplice.setAdapter(new WeakReference(this.k));
+    AdToast.setAdapter(new WeakReference(this.l));
+    AdProgressDialog.INSTANCE.setAdapter(new WeakReference(this.m));
+    AdImageViewBuilder.setAdapter(new WeakReference(this.n));
+    AdDownloader.setAdapter(new WeakReference(this.o));
+    AdReport.setAdapter(new WeakReference(this.p));
+    AdVersion.INSTANCE.setAdapter(new WeakReference(this.q));
+    AdCanvasDownloadListener.setAdapter(this.r);
+    AdOffline.INSTANCE.setAdapter(new WeakReference(this.s));
+    AdHalfScreen.setAdapter(new WeakReference(this.t));
+    AdTAID.getInstance().setAdapter(new WeakReference(this.u));
+    AdLocationManager.INSTANCE.setAdapter(new WeakReference(this.v));
+    AdBuilder.INSTANCE.setAdapter(new WeakReference(this.w));
+    AdTime.INSTANCE.setAdapter(new WeakReference(this.x));
+    AdQQReminderManager.INSTANCE.setAdapter(new WeakReference(this.y));
+    AdAppPreOrderDownloadListener.setAdapter(new WeakReference(this.z));
+    AdUin.INSTANCE.setAdapter(new WeakReference(this.A));
+    AdDownloaderV2.INSTANCE.setAdapter(new WeakReference(this.B));
+    AdDeviceInfoV2.getInstance().setAdapter(new WeakReference(this.C));
+    AdUISettings.INSTANCE.setAdapter(new WeakReference(this.D));
+    AdVideo.INSTANCE.setAdapter(new WeakReference(this.E));
   }
   
   private void c(Context paramContext, GdtManager.Params paramParams)
@@ -190,24 +205,19 @@ public final class GdtManager
     AdExposureListHolder.getInstance().init(paramContext);
   }
   
-  public AdIPCManager.Adapter a()
-  {
-    return this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Adapter;
-  }
-  
   @Deprecated
   public void a(Context paramContext, GdtManager.Params paramParams)
   {
-    GdtLog.b("GdtManager", String.format("init %b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
-    if (this.jdField_a_of_type_Boolean) {
+    GdtLog.b("GdtManager", String.format("init %b", new Object[] { Boolean.valueOf(this.b) }));
+    if (this.b) {
       return;
     }
     try
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       b(paramContext, paramParams);
       AdManagerForQQ.INSTANCE.init(new WeakReference(paramContext));
       c(paramContext, paramParams);
@@ -219,10 +229,15 @@ public final class GdtManager
     }
     finally {}
   }
+  
+  public AdIPCManager.Adapter b()
+  {
+    return this.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtManager
  * JD-Core Version:    0.7.0.1
  */

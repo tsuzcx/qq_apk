@@ -13,19 +13,19 @@ import org.json.JSONObject;
 public class TestAppFragment$MyAPICallback
   implements APICallback
 {
-  EditText a;
+  EditText c;
   
   public TestAppFragment$MyAPICallback() {}
   
   public TestAppFragment$MyAPICallback(EditText paramEditText)
   {
-    this.a = paramEditText;
+    this.c = paramEditText;
   }
   
   private void a(String paramString)
   {
     boolean bool;
-    if (this.a == null) {
+    if (this.c == null) {
       bool = true;
     } else {
       bool = false;
@@ -36,12 +36,12 @@ public class TestAppFragment$MyAPICallback
   private void a(String paramString, boolean paramBoolean)
   {
     QLog.d("DoraemonOpenAPI.test", 2, paramString);
-    EditText localEditText = this.a;
+    EditText localEditText = this.c;
     if (localEditText != null) {
       localEditText.append(paramString);
     }
     if (paramBoolean) {
-      QQToast.a(BaseApplication.getContext(), paramString, 0).a();
+      QQToast.makeText(BaseApplication.getContext(), paramString, 0).show();
     }
   }
   
@@ -77,9 +77,9 @@ public class TestAppFragment$MyAPICallback
     ((StringBuilder)localObject).append(paramJSONObject);
     ((StringBuilder)localObject).append("\n");
     a(((StringBuilder)localObject).toString(), true);
-    localObject = this.a;
+    localObject = this.c;
     if (localObject != null) {
-      new AlertDialog.Builder(((EditText)localObject).getContext()).setTitle("onSuccess").setMessage(paramJSONObject.toString()).setNegativeButton(HardCodeUtil.a(2131714656), null).create().show();
+      new AlertDialog.Builder(((EditText)localObject).getContext()).setTitle("onSuccess").setMessage(paramJSONObject.toString()).setNegativeButton(HardCodeUtil.a(2131912165), null).create().show();
     }
   }
   
@@ -90,7 +90,7 @@ public class TestAppFragment$MyAPICallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.test.TestAppFragment.MyAPICallback
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,14 @@ import android.widget.TextView;
 
 class GiftPkgSelectDialog$ViewHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView a;
+  ImageView b;
   
   GiftPkgSelectDialog$ViewHolder(GiftPkgSelectDialog paramGiftPkgSelectDialog) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPkgSelectDialog.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

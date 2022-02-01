@@ -12,7 +12,7 @@ class ArkFullScreenAppActivity$1
   {
     this.a.finish();
     if (ArkFullScreenAppActivity.a(this.a)) {
-      this.a.overridePendingTransition(2130772011, 2130772015);
+      this.a.overridePendingTransition(2130772014, 2130772018);
     }
     return false;
   }
@@ -24,7 +24,7 @@ class ArkFullScreenAppActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ArkFullScreenAppActivity.1
  * JD-Core Version:    0.7.0.1
  */

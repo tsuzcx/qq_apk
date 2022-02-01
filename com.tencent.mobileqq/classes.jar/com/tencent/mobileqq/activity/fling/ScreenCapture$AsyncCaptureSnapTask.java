@@ -14,33 +14,33 @@ import java.lang.ref.WeakReference;
 class ScreenCapture$AsyncCaptureSnapTask
   extends AsyncTask<String, Void, Boolean>
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  private Bitmap mCache;
+  private WeakReference<View> mWillCachedView;
   
   public ScreenCapture$AsyncCaptureSnapTask(View paramView)
   {
     if (paramView != null)
     {
       Context localContext = paramView.getContext();
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+      this.mWillCachedView = new WeakReference(paramView);
       paramView.setDrawingCacheEnabled(true);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramView.getDrawingCache();
+      this.mCache = paramView.getDrawingCache();
       ScreenCapture.setSnapFile(localContext, false);
     }
   }
   
-  protected Boolean a(String... paramVarArgs)
+  protected Boolean doInBackground(String... paramVarArgs)
   {
     Boolean localBoolean = Boolean.FALSE;
     if (isCancelled()) {
       return localBoolean;
     }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    if (this.mWillCachedView.get() != null)
     {
-      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      Bitmap localBitmap = this.mCache;
       if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
-        localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        localBitmap = this.mCache;
         paramVarArgs = new File(paramVarArgs[0]);
         File localFile = paramVarArgs.getParentFile();
         if (!localFile.exists()) {
@@ -64,9 +64,11 @@ class ScreenCapture$AsyncCaptureSnapTask
     return localBoolean;
   }
   
-  protected void a(Boolean paramBoolean)
+  protected void onCancelled() {}
+  
+  protected void onPostExecute(Boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.mWillCachedView;
     if (localObject != null)
     {
       localObject = (View)((WeakReference)localObject).get();
@@ -75,18 +77,16 @@ class ScreenCapture$AsyncCaptureSnapTask
         if (paramBoolean.booleanValue()) {
           ScreenCapture.setSnapFile(((View)localObject).getContext(), true);
         }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        this.mCache = null;
         ((View)localObject).setDrawingCacheEnabled(false);
         ((View)localObject).destroyDrawingCache();
       }
     }
   }
-  
-  protected void onCancelled() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.ScreenCapture.AsyncCaptureSnapTask
  * JD-Core Version:    0.7.0.1
  */

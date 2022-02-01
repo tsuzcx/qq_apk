@@ -92,19 +92,19 @@ class VcControllerImpl$NativeEventCallback
           BaseApplication.getContext().sendBroadcast(new Intent("com.tencent.av.ui.ConfigTipsConstant.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD").putExtra("version", i));
           TraeConfigUpdate.a().a("load", i);
           continue;
-          if (AVReport.a().a)
+          if (AVReport.a().d)
           {
-            AVReport.a().k = localDavNativeEventParams.elapsedRealtime;
+            AVReport.a().o = localDavNativeEventParams.elapsedRealtime;
           }
           else
           {
-            AVReport.a().z = localDavNativeEventParams.elapsedRealtime;
+            AVReport.a().D = localDavNativeEventParams.elapsedRealtime;
             continue;
             long l2 = localDavNativeEventParams.extraParam0;
             long l3 = localDavNativeEventParams.extraParam1;
             this.a.mEventListener.a(l2, l3, l1);
             continue;
-            if (AudioDump.a())
+            if (AudioDump.c())
             {
               AudioDump.a().a(this.a, null);
               continue;

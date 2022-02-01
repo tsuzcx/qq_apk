@@ -15,13 +15,13 @@ final class CIOSubmitUtils$1
     CIOSubmitUtils.a((String)localObject);
     CIOSubmitUtils.a((String)localObject, this.a, this.b, this.c, this.d);
     localObject = CIOSubmitUtils.a((String)localObject, "com.tencent.mobileqq");
-    CIOSubmitUtils.a((String)((Pair)localObject).first, (String)((Pair)localObject).second);
-    CIOSubmitUtils.a();
+    CIOSubmitUtils.b((String)((Pair)localObject).first, (String)((Pair)localObject).second);
+    CIOSubmitUtils.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.debug.CIOSubmitUtils.1
  * JD-Core Version:    0.7.0.1
  */

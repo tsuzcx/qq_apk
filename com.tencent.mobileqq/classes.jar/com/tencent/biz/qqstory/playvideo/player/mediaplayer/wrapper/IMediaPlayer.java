@@ -7,8 +7,6 @@ import java.util.Map;
 
 public abstract interface IMediaPlayer
 {
-  public abstract int a();
-  
   public abstract void a(float paramFloat1, float paramFloat2);
   
   public abstract void a(int paramInt);
@@ -33,33 +31,35 @@ public abstract interface IMediaPlayer
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract boolean a();
-  
-  public abstract int b();
-  
   public abstract void b();
   
   public abstract void b(int paramInt);
   
   public abstract void b(boolean paramBoolean);
   
-  public abstract int c();
-  
   public abstract void c();
   
   public abstract void c(int paramInt);
   
-  public abstract int d();
-  
   public abstract void d();
   
-  public abstract int e();
-  
-  public abstract void e();
+  public abstract boolean e();
   
   public abstract void f();
   
   public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract int j();
+  
+  public abstract int k();
+  
+  public abstract int l();
+  
+  public abstract int m();
+  
+  public abstract int o();
 }
 
 

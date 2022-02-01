@@ -14,13 +14,13 @@ class CTEntryMng$1
     if (QLog.isColorLevel()) {
       QLog.i("CTEntryMng", 2, "read sp and init config");
     }
-    String str = SharedPreUtils.a(CTEntryMng.a(this.this$0).getApp(), CTEntryMng.a(this.this$0).getCurrentUin(), "contact_top_entry_config");
+    String str = SharedPreUtils.s(CTEntryMng.a(this.this$0).getApp(), CTEntryMng.a(this.this$0).getCurrentUin(), "contact_top_entry_config");
     CTEntryMng.a(this.this$0, false, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.1
  * JD-Core Version:    0.7.0.1
  */

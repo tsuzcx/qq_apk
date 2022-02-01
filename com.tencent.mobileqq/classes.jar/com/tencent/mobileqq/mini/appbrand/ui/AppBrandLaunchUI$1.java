@@ -37,7 +37,7 @@ class AppBrandLaunchUI$1
           ((MiniAppConfig)localObject1).launchParam.miniAppId = paramJSONObject.appId;
         }
         if ((paramJSONObject.verType != 3) && (paramJSONObject.verType != 1)) {
-          ((MiniAppConfig)localObject1).forceReroad = 3;
+          ((MiniAppConfig)localObject1).launchParam.forceReload = 3;
         }
         AppBrandLaunchUI.access$000(this.this$0, (MiniAppConfig)localObject1);
       }
@@ -55,7 +55,7 @@ class AppBrandLaunchUI$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI.1
  * JD-Core Version:    0.7.0.1
  */

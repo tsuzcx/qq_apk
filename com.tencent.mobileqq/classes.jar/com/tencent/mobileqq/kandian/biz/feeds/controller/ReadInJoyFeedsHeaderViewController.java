@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.LooperGifImage;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountGifPlayTimeHttpDownloader;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.GifDrawable;
@@ -26,20 +25,20 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.UniteSearchHandler;
 import com.tencent.mobileqq.app.UniteSearchObserver;
+import com.tencent.mobileqq.kandian.base.image.api.impl.PublicAccountGifPlayTimeHttpDownloaderImpl;
 import com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyCapsuleView;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.config.IReadInJoySearchJumpUrlConfBean;
-import com.tencent.mobileqq.kandian.biz.config.api.IReadInJoySearchJumpUrlConfProcessor;
 import com.tencent.mobileqq.kandian.biz.framework.RIJWebSearchUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.search.ReadInjoySearchJumpurlConfProcessor;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
 import com.tencent.mobileqq.kandian.repo.common.RIJShowKanDianTabSp;
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyObserver;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ChannelCoverInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
 import com.tencent.mobileqq.search.report.ReportModelDC02528;
@@ -60,64 +59,55 @@ public class ReadInJoyFeedsHeaderViewController
   extends HeaderViewController
   implements View.OnClickListener
 {
-  protected static int a;
-  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#F1F3F6"));
-  private static int jdField_b_of_type_Int = Color.parseColor("#47000000");
-  protected BroadcastReceiver a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private LooperGifImage jdField_a_of_type_ComTencentBizPubaccountLooperGifImage;
-  private URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new ReadInJoyFeedsHeaderViewController.6(this);
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  protected UniteSearchHandler a;
-  protected UniteSearchObserver a;
-  private ReadInJoyCapsuleView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView;
-  private ReadInJoyFeedsHeaderViewController.CapsuleViewStateController jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController;
-  private ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new ReadInJoyFeedsHeaderViewController.1(this);
-  HotWordSearchEntryDataModel jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel;
-  protected String a;
-  protected boolean a;
-  private ReadInJoyCapsuleView jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView;
-  private ReadInJoyFeedsHeaderViewController.CapsuleViewStateController jdField_b_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController;
-  protected boolean b;
-  private ReadInJoyCapsuleView jdField_c_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView;
-  private ReadInJoyFeedsHeaderViewController.CapsuleViewStateController jdField_c_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController;
-  
-  static
-  {
-    jdField_a_of_type_Int = 0;
-  }
+  protected static int e = 0;
+  private static Drawable i = new ColorDrawable(Color.parseColor("#F1F3F6"));
+  private static int j = Color.parseColor("#47000000");
+  protected boolean a = false;
+  HotWordSearchEntryDataModel b;
+  protected UniteSearchHandler c;
+  protected UniteSearchObserver d = new ReadInJoyFeedsHeaderViewController.2(this);
+  protected String f;
+  protected boolean g = true;
+  protected BroadcastReceiver h = new ReadInJoyFeedsHeaderViewController.4(this);
+  private Context k;
+  private View l;
+  private URLImageView m;
+  private ReadInJoyCapsuleView n;
+  private ReadInJoyFeedsHeaderViewController.CapsuleViewStateController o;
+  private ReadInJoyCapsuleView p;
+  private ReadInJoyFeedsHeaderViewController.CapsuleViewStateController q;
+  private ReadInJoyCapsuleView r;
+  private ReadInJoyFeedsHeaderViewController.CapsuleViewStateController s;
+  private LooperGifImage t;
+  private ReadInJoyObserver u = new ReadInJoyFeedsHeaderViewController.1(this);
+  private URLDrawableDownListener v = new ReadInJoyFeedsHeaderViewController.6(this);
   
   public ReadInJoyFeedsHeaderViewController(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new ReadInJoyFeedsHeaderViewController.2(this);
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ReadInJoyFeedsHeaderViewController.4(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560200, null);
-    Object localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131378638);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView = ((ReadInJoyCapsuleView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364283));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController = new ReadInJoyFeedsHeaderViewController.CapsuleViewStateController(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView);
-    this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView = ((ReadInJoyCapsuleView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364282));
-    this.jdField_b_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController = new ReadInJoyFeedsHeaderViewController.CapsuleViewStateController(this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView);
-    this.jdField_c_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView = ((ReadInJoyCapsuleView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364281));
-    this.jdField_c_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController = new ReadInJoyFeedsHeaderViewController.CapsuleViewStateController(this.jdField_c_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369386));
-    a(a(ReadInJoyLogicEngine.a().a(0)));
+    this.k = paramContext;
+    this.l = LayoutInflater.from(this.k).inflate(2131626247, null);
+    Object localObject = this.l.findViewById(2131447277);
+    this.n = ((ReadInJoyCapsuleView)this.l.findViewById(2131430303));
+    this.o = new ReadInJoyFeedsHeaderViewController.CapsuleViewStateController(this.n);
+    this.p = ((ReadInJoyCapsuleView)this.l.findViewById(2131430302));
+    this.q = new ReadInJoyFeedsHeaderViewController.CapsuleViewStateController(this.p);
+    this.r = ((ReadInJoyCapsuleView)this.l.findViewById(2131430301));
+    this.s = new ReadInJoyFeedsHeaderViewController.CapsuleViewStateController(this.r);
+    this.m = ((URLImageView)this.l.findViewById(2131436419));
+    b(a(ReadInJoyLogicEngine.a().c(0)));
     ((View)localObject).setOnClickListener(this);
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
-    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.u);
+    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.d);
     g();
     localObject = new IntentFilter("mqq.intent.action.ACCOUNT_CHANGED");
-    paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
+    paramContext.registerReceiver(this.h, (IntentFilter)localObject);
   }
   
   private URLDrawable a(ChannelCoverInfo paramChannelCoverInfo, boolean paramBoolean)
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = paramBoolean;
-    paramChannelCoverInfo = ((IPublicAccountGifPlayTimeHttpDownloader)QRoute.api(IPublicAccountGifPlayTimeHttpDownloader.class)).getPubURL(paramChannelCoverInfo.externalExposureBackgroundUrl);
+    paramChannelCoverInfo = new PublicAccountGifPlayTimeHttpDownloaderImpl().getPubURL(paramChannelCoverInfo.externalExposureBackgroundUrl);
     if (paramChannelCoverInfo == null) {
       return null;
     }
@@ -147,10 +137,10 @@ public class ReadInJoyFeedsHeaderViewController
     while (localIterator.hasNext())
     {
       ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)localIterator.next();
-      if ((localChannelCoverInfo.isExternalExposure) && (((RIJShowKanDianTabSp.c()) && (!ReadInJoyHelper.l())) || (localChannelCoverInfo.mChannelCoverId != 56)))
+      if ((localChannelCoverInfo.isExternalExposure) && (((RIJShowKanDianTabSp.c()) && (!ReadInJoyHelper.v())) || (localChannelCoverInfo.mChannelCoverId != 56)))
       {
         paramList = localChannelCoverInfo.externalExposureBackgroundUrl;
-        if ((!TextUtils.isEmpty(paramList)) && (!TextUtils.equals(ReadInJoyHelper.e(localChannelCoverInfo.mChannelCoverId), paramList)))
+        if ((!TextUtils.isEmpty(paramList)) && (!TextUtils.equals(ReadInJoyHelper.g(localChannelCoverInfo.mChannelCoverId), paramList)))
         {
           if (localChannelCoverInfo.isExternalExposurePersist) {
             paramList = "";
@@ -177,34 +167,34 @@ public class ReadInJoyFeedsHeaderViewController
         AbstractGifImage localAbstractGifImage = ((GifDrawable)localURLDrawable.getCurrDrawable()).getImage();
         if ((localAbstractGifImage instanceof LooperGifImage))
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountLooperGifImage = ((LooperGifImage)localAbstractGifImage);
-          this.jdField_a_of_type_ComTencentBizPubaccountLooperGifImage.a(new ReadInJoyFeedsHeaderViewController.5(this, paramChannelCoverInfo));
+          this.t = ((LooperGifImage)localAbstractGifImage);
+          this.t.a(new ReadInJoyFeedsHeaderViewController.5(this, paramChannelCoverInfo));
         }
       }
-      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLImageView, localURLDrawable);
+      this.v.onLoadSuccessed(this.m, localURLDrawable);
     }
     else
     {
       localURLDrawable.startDownload();
     }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localURLDrawable);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setTag(paramChannelCoverInfo);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
+    this.m.setURLDrawableDownListener(this.v);
+    this.m.setImageDrawable(localURLDrawable);
+    this.m.setTag(paramChannelCoverInfo);
+    this.m.setOnClickListener(this);
   }
   
   private void a(String paramString, boolean paramBoolean)
   {
-    int i;
+    int i1;
     if (paramBoolean) {
-      i = 1;
+      i1 = 1;
     } else {
-      i = 2;
+      i1 = 2;
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("is_pic", i);
+      localJSONObject.put("is_pic", i1);
       a(paramString, localJSONObject);
       return;
     }
@@ -216,27 +206,50 @@ public class ReadInJoyFeedsHeaderViewController
     throw new IllegalArgumentException("fail to construct json object");
   }
   
-  private void a(List<ChannelCoverInfo> paramList)
+  private static int b(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView.setVisibility(8);
-    this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView.setVisibility(8);
-    this.jdField_c_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+    if (paramBoolean)
+    {
+      if (paramInt != 56)
+      {
+        if (paramInt != 1000000) {
+          return 0;
+        }
+        return 2130843979;
+      }
+      return 2130843982;
+    }
+    if (paramInt != 56)
+    {
+      if (paramInt != 1000000) {
+        return 0;
+      }
+      return 2130843978;
+    }
+    return 2130843981;
+  }
+  
+  private void b(List<ChannelCoverInfo> paramList)
+  {
+    this.n.setVisibility(8);
+    this.p.setVisibility(8);
+    this.r.setVisibility(8);
+    this.m.setVisibility(8);
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
       ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)localIterator.next();
-      int i = localChannelCoverInfo.mChannelCoverId;
+      int i1 = localChannelCoverInfo.mChannelCoverId;
       ReadInJoyCapsuleView localReadInJoyCapsuleView = null;
-      if (i == 56)
+      if (i1 == 56)
       {
-        localReadInJoyCapsuleView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView;
-        paramList = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController;
+        localReadInJoyCapsuleView = this.n;
+        paramList = this.o;
       }
       else if (localChannelCoverInfo.mChannelCoverId == 1000000)
       {
-        localReadInJoyCapsuleView = this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView;
-        paramList = this.jdField_b_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController;
+        localReadInJoyCapsuleView = this.p;
+        paramList = this.q;
       }
       else if (localChannelCoverInfo.mChannelCoverId == 2000000)
       {
@@ -245,8 +258,8 @@ public class ReadInJoyFeedsHeaderViewController
       }
       else
       {
-        localReadInJoyCapsuleView = this.jdField_c_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView;
-        paramList = this.jdField_c_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController;
+        localReadInJoyCapsuleView = this.r;
+        paramList = this.s;
       }
       if (localReadInJoyCapsuleView != null)
       {
@@ -257,56 +270,33 @@ public class ReadInJoyFeedsHeaderViewController
     }
   }
   
-  private static int b(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (paramInt != 56)
-      {
-        if (paramInt != 1000000) {
-          return 0;
-        }
-        return 2130843023;
-      }
-      return 2130843026;
-    }
-    if (paramInt != 56)
-    {
-      if (paramInt != 1000000) {
-        return 0;
-      }
-      return 2130843022;
-    }
-    return 2130843025;
-  }
-  
   public void a()
   {
     QLog.d("ReadInJoyFeedsHeaderVie", 2, "reportExposure");
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController.a() != null) {
-      a("0X8008B88", this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController.a());
+    if (this.o.a() != null) {
+      a("0X8008B88", this.o.c());
     }
-    if (this.jdField_b_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController.a() != null) {
-      a("0X8008B89", this.jdField_b_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController.a());
+    if (this.q.a() != null) {
+      a("0X8008B89", this.q.c());
     }
   }
   
   public void a(ListView paramListView)
   {
-    paramListView.addHeaderView(this.jdField_a_of_type_AndroidViewView);
+    paramListView.addHeaderView(this.l);
   }
   
   public void b()
   {
-    this.jdField_b_of_type_Boolean = false;
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController.b();
-    this.jdField_b_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController.b();
-    this.jdField_c_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController.b();
-    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver);
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.jdField_a_of_type_Boolean = true;
-    LooperGifImage localLooperGifImage = this.jdField_a_of_type_ComTencentBizPubaccountLooperGifImage;
+    this.g = false;
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.u);
+    this.o.d();
+    this.q.d();
+    this.s.d();
+    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).removeObserver(this.d);
+    this.k.unregisterReceiver(this.h);
+    this.a = true;
+    LooperGifImage localLooperGifImage = this.t;
     if (localLooperGifImage != null) {
       localLooperGifImage.a();
     }
@@ -315,8 +305,8 @@ public class ReadInJoyFeedsHeaderViewController
   public void c()
   {
     super.c();
-    if (this.jdField_b_of_type_Boolean) {
-      this.jdField_b_of_type_Boolean = false;
+    if (this.g) {
+      this.g = false;
     } else {
       f();
     }
@@ -327,88 +317,89 @@ public class ReadInJoyFeedsHeaderViewController
   
   protected void f()
   {
-    HotWordSearchEntryDataModel localHotWordSearchEntryDataModel = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel;
-    if ((localHotWordSearchEntryDataModel != null) && (localHotWordSearchEntryDataModel.a != null))
+    HotWordSearchEntryDataModel localHotWordSearchEntryDataModel = this.b;
+    if ((localHotWordSearchEntryDataModel != null) && (localHotWordSearchEntryDataModel.b != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.size() == 0) {
+      if (this.b.b.size() == 0) {
         return;
       }
-      int i = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.size();
-      this.jdField_a_of_type_JavaLangString = ((HotWordSearchEntryDataModel.HotSearchItem)this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.get(jdField_a_of_type_Int % i)).title;
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378638)).setText(this.jdField_a_of_type_JavaLangString);
-      jdField_a_of_type_Int += 1;
+      int i1 = this.b.b.size();
+      this.f = ((HotWordSearchEntryDataModel.HotSearchItem)this.b.b.get(e % i1)).title;
+      ((TextView)this.l.findViewById(2131447277)).setText(this.f);
+      e += 1;
     }
   }
   
   protected void g()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (!TextUtils.isEmpty(((IReadInJoySearchJumpUrlConfProcessor)QRoute.api(IReadInJoySearchJumpUrlConfProcessor.class)).getConfig().a()))
+    IReadInJoySearchJumpUrlConfBean localIReadInJoySearchJumpUrlConfBean = ReadInjoySearchJumpurlConfProcessor.a();
+    if ((localIReadInJoySearchJumpUrlConfBean != null) && (!TextUtils.isEmpty(localIReadInJoySearchJumpUrlConfBean.a())))
     {
-      this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = new HotWordSearchEntryDataModel(localQQAppInterface, 1, 6, false);
+      this.b = new HotWordSearchEntryDataModel(localQQAppInterface, 1, 6, false);
       ThreadManager.post(new ReadInJoyFeedsHeaderViewController.3(this, localQQAppInterface), 5, null, true);
     }
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
+    int i1 = paramView.getId();
     Object localObject1 = null;
-    switch (i)
+    switch (i1)
     {
     default: 
       return;
-    case 2131378638: 
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel;
+    case 2131447277: 
+      Object localObject2 = this.b;
       paramView = (View)localObject1;
       if (localObject2 != null)
       {
         paramView = (View)localObject1;
-        if (((HotWordSearchEntryDataModel)localObject2).a != null)
+        if (((HotWordSearchEntryDataModel)localObject2).b != null)
         {
           paramView = (View)localObject1;
-          if (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.size() > 0)
+          if (this.b.b.size() > 0)
           {
             paramView = (View)localObject1;
-            if (jdField_a_of_type_Int > 0)
+            if (e > 0)
             {
-              i = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.size();
-              paramView = (HotWordSearchEntryDataModel.HotSearchItem)this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.get((jdField_a_of_type_Int - 1) % i);
+              i1 = this.b.b.size();
+              paramView = (HotWordSearchEntryDataModel.HotSearchItem)this.b.b.get((e - 1) % i1);
             }
           }
         }
       }
-      RIJWebSearchUtils.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramView);
+      RIJWebSearchUtils.a((Activity)this.k, paramView);
       paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject1 = new ReportModelDC02528().opername("Kdian_inner_search").module("kd_web_search").action("active_search").ver1(this.jdField_a_of_type_JavaLangString);
+      localObject1 = new ReportModelDC02528().opername("Kdian_inner_search").module("kd_web_search").action("active_search").ver1(this.f);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("{experiment_id:");
       ((StringBuilder)localObject2).append(UniteSearchReportController.b);
       ((StringBuilder)localObject2).append("}");
       UniteSearchReportController.a(paramView, ((ReportModelDC02528)localObject1).ver7(((StringBuilder)localObject2).toString()));
       return;
-    case 2131369386: 
+    case 2131436419: 
       localObject1 = (ChannelCoverInfo)paramView.getTag();
       ReadInJoyUtils.a(paramView.getContext(), ((ChannelCoverInfo)localObject1).mChannelJumpUrl);
       a("0X800920D", new JSONObject());
       return;
-    case 2131364283: 
-      paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController.a();
+    case 2131430303: 
+      paramView = this.o.a();
       localObject1 = new HashMap();
       ((HashMap)localObject1).put("param_key_ariticle_id", Long.valueOf(paramView.mArticleId));
       ((HashMap)localObject1).put("param_key_channel_cover_style", Integer.valueOf(paramView.mChannelCoverStyle));
-      ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchChannelActivity(this.jdField_a_of_type_AndroidContentContext, paramView.mChannelCoverId, paramView.mChannelCoverName, paramView.mChannelType, 4, (Map)localObject1);
-      a("0X8008B84", this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController.a());
+      ReadInJoyActivityHelper.INSTANCE.launchChannelActivity(this.k, paramView.mChannelCoverId, paramView.mChannelCoverName, paramView.mChannelType, 4, (Map)localObject1);
+      a("0X8008B84", this.o.c());
       return;
     }
-    this.jdField_b_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController.a();
-    ViolaAccessHelper.a(this.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131712958), "https://kandian.qq.com/viola/bundle_hotTopic.js?v_bid=3256&statusColor=1", null);
-    a("0X8008B85", this.jdField_b_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$CapsuleViewStateController.a());
+    this.q.a();
+    ViolaAccessHelper.a(this.k, HardCodeUtil.a(2131910524), "https://kandian.qq.com/viola/bundle_hotTopic.js?v_bid=3256&statusColor=1", null);
+    a("0X8008B85", this.q.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyFeedsHeaderViewController
  * JD-Core Version:    0.7.0.1
  */

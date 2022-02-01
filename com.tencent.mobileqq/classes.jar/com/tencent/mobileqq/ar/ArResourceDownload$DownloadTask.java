@@ -7,14 +7,14 @@ import com.tencent.qphone.base.util.QLog;
 public class ArResourceDownload$DownloadTask
   extends AbsPreDownloadTask
 {
-  ArResourceDownload.DownloadInfo jdField_a_of_type_ComTencentMobileqqArArResourceDownload$DownloadInfo;
-  ArResourceDownload jdField_a_of_type_ComTencentMobileqqArArResourceDownload;
+  ArResourceDownload.DownloadInfo a;
+  ArResourceDownload b;
   
   public ArResourceDownload$DownloadTask(QQAppInterface paramQQAppInterface, ArResourceDownload.DownloadInfo paramDownloadInfo, ArResourceDownload paramArResourceDownload)
   {
-    super(paramQQAppInterface, paramDownloadInfo.b);
-    this.jdField_a_of_type_ComTencentMobileqqArArResourceDownload$DownloadInfo = paramDownloadInfo;
-    this.jdField_a_of_type_ComTencentMobileqqArArResourceDownload = paramArResourceDownload;
+    super(paramQQAppInterface, paramDownloadInfo.c);
+    this.a = paramDownloadInfo;
+    this.b = paramArResourceDownload;
   }
   
   protected void realCancel()
@@ -29,22 +29,22 @@ public class ArResourceDownload$DownloadTask
     if (QLog.isColorLevel()) {
       QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
     }
-    ArResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArResourceDownload, this.jdField_a_of_type_ComTencentMobileqqArArResourceDownload$DownloadInfo);
+    ArResourceDownload.a(this.b, this.a);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[DownloadTask] mInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArResourceDownload$DownloadInfo);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mDownloader=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArResourceDownload);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArResourceDownload.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

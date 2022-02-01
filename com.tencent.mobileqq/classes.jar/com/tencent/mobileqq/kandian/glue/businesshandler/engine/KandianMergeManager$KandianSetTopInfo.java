@@ -10,9 +10,8 @@ import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.push.RIJMergeKanDianMessage;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.Calendar;
@@ -73,14 +72,14 @@ public class KandianMergeManager$KandianSetTopInfo
   public void trySetTopKandianMsg(QQAppInterface paramQQAppInterface)
   {
     a();
-    MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().b(AppConstants.KANDIAN_MERGE_UIN, 7220);
+    MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().r(AppConstants.KANDIAN_MERGE_UIN, 7220);
     if ((localMessageRecord != null) && (!localMessageRecord.isread) && (!RIJMergeKanDianMessage.a(AppConstants.KANDIAN_MERGE_UIN)) && (localMessageRecord.uniseq != this.lastSetTopMsgUniseq) && (this.count != 0))
     {
-      if (paramQQAppInterface.mAutomator.d())
+      if (paramQQAppInterface.mAutomator.i())
       {
         long l = System.currentTimeMillis() / 1000L;
-        RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().a();
-        RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.KANDIAN_MERGE_UIN, 7220);
+        RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().g();
+        RecentUser localRecentUser = localRecentUserProxy.c(AppConstants.KANDIAN_MERGE_UIN, 7220);
         if (localRecentUser == null) {
           return;
         }
@@ -94,7 +93,7 @@ public class KandianMergeManager$KandianSetTopInfo
         this.count -= 1;
         this.lastSetTopMsgUniseq = localMessageRecord.uniseq;
         RIJSPUtils.a("kandian_msgtab_settop", this, true);
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8007927", "0X8007927", 0, 0, "", "", "", "");
+        PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8007927", "0X8007927", 0, 0, "", "", "", "");
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append("successful setTop !  newTime : ");
         paramQQAppInterface.append(l);
@@ -102,7 +101,7 @@ public class KandianMergeManager$KandianSetTopInfo
         QLog.d("KandianMergeManager.SETTOP", 2, paramQQAppInterface.toString());
         return;
       }
-      RIJMergeKanDianMessage.a = true;
+      RIJMergeKanDianMessage.b = true;
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("receiving msg , wait callback ! ");
       paramQQAppInterface.append(this);
@@ -112,7 +111,7 @@ public class KandianMergeManager$KandianSetTopInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.KandianSetTopInfo
  * JD-Core Version:    0.7.0.1
  */

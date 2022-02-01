@@ -11,14 +11,14 @@ class SmartMusicAdapter$1
   
   public void onClick(View paramView)
   {
-    if (SmartMusicAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter) != null) {
-      SmartMusicAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
+    if (SmartMusicAdapter.a(this.c) != null) {
+      SmartMusicAdapter.a(this.c).a(this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.SmartMusicAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ class RvPolymericContainer$9
   
   public void run()
   {
-    if ((RvPolymericContainer.a(this.this$0).a() > 1) && (RvPolymericContainer.a(this.this$0) != null)) {
-      RvPolymericContainer.a(this.this$0).a(this.a);
+    if ((RvPolymericContainer.f(this.this$0).a() > 1) && (RvPolymericContainer.d(this.this$0) != null)) {
+      RvPolymericContainer.d(this.this$0).a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.RvPolymericContainer.9
  * JD-Core Version:    0.7.0.1
  */

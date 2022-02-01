@@ -6,26 +6,21 @@ import com.tencent.avgame.gamelogic.data.Game;
 
 public class CJSurvivalReporterUtil
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static CJSurvivalReporterUtil jdField_a_of_type_ComTencentAvgameReportCJSurvivalReporterUtil;
-  private static String jdField_a_of_type_JavaLangString = "0";
+  private static int a = 0;
+  private static String b = "0";
+  private static CJSurvivalReporterUtil c;
   
   public static CJSurvivalReporterUtil a()
   {
-    if (jdField_a_of_type_ComTencentAvgameReportCJSurvivalReporterUtil == null) {
-      jdField_a_of_type_ComTencentAvgameReportCJSurvivalReporterUtil = new CJSurvivalReporterUtil();
+    if (c == null) {
+      c = new CJSurvivalReporterUtil();
     }
-    return jdField_a_of_type_ComTencentAvgameReportCJSurvivalReporterUtil;
-  }
-  
-  public int a()
-  {
-    return jdField_a_of_type_Int;
+    return c;
   }
   
   public int a(EngineData paramEngineData)
   {
-    switch (paramEngineData.o())
+    switch (paramEngineData.X())
     {
     case 6: 
     case 7: 
@@ -44,25 +39,9 @@ public class CJSurvivalReporterUtil
     return 1;
   }
   
-  public String a()
-  {
-    if (jdField_a_of_type_Int == 3) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    return "0";
-  }
-  
-  public String a(EngineData paramEngineData)
-  {
-    if (paramEngineData.a().a != null) {
-      return String.valueOf(paramEngineData.a().a.a());
-    }
-    return "";
-  }
-  
   public void a(int paramInt)
   {
-    jdField_a_of_type_Int = paramInt;
+    a = paramInt;
   }
   
   public void a(String paramString)
@@ -70,7 +49,28 @@ public class CJSurvivalReporterUtil
     if (paramString == null) {
       paramString = "0";
     }
-    jdField_a_of_type_JavaLangString = paramString;
+    b = paramString;
+  }
+  
+  public String b()
+  {
+    if (a == 3) {
+      return b;
+    }
+    return "0";
+  }
+  
+  public String b(EngineData paramEngineData)
+  {
+    if (paramEngineData.h().a != null) {
+      return String.valueOf(paramEngineData.h().a.a());
+    }
+    return "";
+  }
+  
+  public int c()
+  {
+    return a;
   }
 }
 

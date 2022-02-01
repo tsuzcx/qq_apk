@@ -13,8 +13,8 @@ import eipc.EIPCResult;
 public class FlutterSubQIPCModule
   extends QIPCModule
 {
-  private static volatile FlutterSubQIPCModule a;
   public static volatile boolean a = false;
+  private static volatile FlutterSubQIPCModule b;
   
   private FlutterSubQIPCModule(String paramString)
   {
@@ -23,25 +23,25 @@ public class FlutterSubQIPCModule
   
   public static FlutterSubQIPCModule a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqFlutterIpcFlutterSubQIPCModule == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqFlutterIpcFlutterSubQIPCModule == null) {
-          jdField_a_of_type_ComTencentMobileqqFlutterIpcFlutterSubQIPCModule = new FlutterSubQIPCModule("FlutterSubQIPCModule");
+        if (b == null) {
+          b = new FlutterSubQIPCModule("FlutterSubQIPCModule");
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqFlutterIpcFlutterSubQIPCModule;
+    return b;
   }
   
-  public static void a()
+  public static void b()
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!a) {
       try
       {
         QIPCClientHelper.getInstance().register(a());
-        jdField_a_of_type_Boolean = true;
+        a = true;
         return;
       }
       catch (Exception localException)
@@ -51,14 +51,14 @@ public class FlutterSubQIPCModule
     }
   }
   
-  public static void b()
+  public static void c()
   {
     try
     {
       if (QIPCClientHelper.getInstance().getClient() != null)
       {
         QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-        jdField_a_of_type_Boolean = false;
+        a = false;
         return;
       }
     }
@@ -88,7 +88,7 @@ public class FlutterSubQIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.ipc.FlutterSubQIPCModule
  * JD-Core Version:    0.7.0.1
  */

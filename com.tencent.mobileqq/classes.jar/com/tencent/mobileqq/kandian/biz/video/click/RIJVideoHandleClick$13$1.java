@@ -18,29 +18,29 @@ class RIJVideoHandleClick$13$1
     if (paramBoolean3)
     {
       if (paramBoolean4) {
-        RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick$13.a).a().a().c();
+        RIJVideoHandleClick.b(this.b.a).a().z().v();
       } else {
-        RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick$13.a).a().a().a(2);
+        RIJVideoHandleClick.b(this.b.a).a().z().a(2);
       }
-      RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick$13.a).a().a().a(ReportConstants.VideoEndType.SLIDE_LEAVE);
+      RIJVideoHandleClick.b(this.b.a).a().z().a(ReportConstants.VideoEndType.SLIDE_LEAVE);
     }
     if (!paramBoolean1)
     {
-      RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick$13.a).a().f(false);
+      RIJVideoHandleClick.b(this.b.a).a().f(false);
     }
-    else if (RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick$13.a).a().b())
+    else if (RIJVideoHandleClick.b(this.b.a).a().f())
     {
-      RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick$13.a).a().a().c();
-      RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick$13.a).a().f(false);
+      RIJVideoHandleClick.b(this.b.a).a().z().v();
+      RIJVideoHandleClick.b(this.b.a).a().f(false);
     }
-    if ((paramBoolean2) && (RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick$13.a).a().a() != null)) {
-      RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick$13.a).a().a().a(2, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 0L, 0L);
+    if ((paramBoolean2) && (RIJVideoHandleClick.b(this.b.a).a().y() != null)) {
+      RIJVideoHandleClick.b(this.b.a).a().y().a(2, this.a, 0L, 0L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.click.RIJVideoHandleClick.13.1
  * JD-Core Version:    0.7.0.1
  */

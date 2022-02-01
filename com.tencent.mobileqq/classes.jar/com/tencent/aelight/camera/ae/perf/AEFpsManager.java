@@ -13,40 +13,24 @@ public class AEFpsManager
   extends AEProfilerBase
   implements IAEFpsManager
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString = "none";
-  private List<Float> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private long jdField_b_of_type_Long = 0L;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = false;
+  private static boolean a = false;
+  private boolean b = false;
+  private List<Float> c = new ArrayList();
+  private long d = 0L;
+  private long e = 0L;
+  private int f = 0;
+  private boolean g = false;
+  private String h = "none";
   
   public AEFpsManager()
   {
-    jdField_a_of_type_Boolean = false;
+    a = false;
     this.mEnableBase = true;
-  }
-  
-  private float a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getAverageFps: fps list size=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
-    a(localStringBuilder.toString());
-    float f = 0.0F;
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      f += ((Float)this.jdField_a_of_type_JavaUtilList.get(i)).floatValue();
-      i += 1;
-    }
-    return f / this.jdField_a_of_type_JavaUtilList.size();
   }
   
   private void a(String paramString)
   {
-    if (jdField_a_of_type_Boolean)
+    if (a)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("report fps: ");
@@ -58,72 +42,88 @@ public class AEFpsManager
   private void h()
   {
     a("startMonitor");
-    this.jdField_b_of_type_Boolean = true;
+    this.b = true;
   }
   
   private void i()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.b)
     {
-      if (this.c) {
+      if (this.g) {
         return;
       }
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 5000L) {
+      if (System.currentTimeMillis() - this.d < 5000L) {
         return;
       }
-      int i = this.jdField_a_of_type_Int;
+      int i = this.f;
       if (i >= 30)
       {
-        long l = this.jdField_b_of_type_Long;
+        long l = this.e;
         if (l > 0L)
         {
-          float f = i * 1000.0F / (float)l;
-          if (this.jdField_a_of_type_JavaUtilList.size() >= 500) {
-            this.jdField_a_of_type_JavaUtilList.remove(0);
+          float f1 = i * 1000.0F / (float)l;
+          if (this.c.size() >= 500) {
+            this.c.remove(0);
           }
-          this.jdField_a_of_type_JavaUtilList.add(Float.valueOf(f));
+          this.c.add(Float.valueOf(f1));
         }
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_b_of_type_Long = 0L;
+        this.f = 0;
+        this.e = 0L;
         return;
       }
       if (this.mOneFrameCost != 0L)
       {
-        this.jdField_b_of_type_Long += this.mOneFrameCost;
-        this.jdField_a_of_type_Int += 1;
+        this.e += this.mOneFrameCost;
+        this.f += 1;
       }
     }
   }
   
-  private void j()
+  private float j()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getAverageFps: fps list size=");
+    localStringBuilder.append(this.c.size());
+    a(localStringBuilder.toString());
+    float f1 = 0.0F;
+    int i = 0;
+    while (i < this.c.size())
+    {
+      f1 += ((Float)this.c.get(i)).floatValue();
+      i += 1;
+    }
+    return f1 / this.c.size();
+  }
+  
+  private void k()
+  {
+    if (this.c.size() == 0) {
       return;
     }
-    float f = a();
+    float f1 = j();
     Object localObject = AEBaseDataReporter.a();
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.h;
     boolean bool;
-    if (FlowCameraConstant.jdField_a_of_type_Int == 1) {
+    if (FlowCameraConstant.b == 1) {
       bool = true;
     } else {
       bool = false;
     }
-    ((AEBaseDataReporter)localObject).a(str, bool, f, 0.0D, 0.0D, "");
+    ((AEBaseDataReporter)localObject).a(str, bool, f1, 0.0D, 0.0D, "");
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("fps=");
-    ((StringBuilder)localObject).append(f);
+    ((StringBuilder)localObject).append(f1);
     a(((StringBuilder)localObject).toString());
   }
   
   public void a()
   {
     a("stopMonitor");
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b = false;
+    this.d = 0L;
+    this.e = 0L;
+    this.f = 0;
+    this.c.clear();
   }
   
   public void a(VideoMaterial paramVideoMaterial)
@@ -133,9 +133,9 @@ public class AEFpsManager
     localStringBuilder.append(paramVideoMaterial);
     a(localStringBuilder.toString());
     if ((paramVideoMaterial != null) && (!TextUtils.isEmpty(paramVideoMaterial.getId()))) {
-      this.jdField_a_of_type_JavaLangString = paramVideoMaterial.getId();
+      this.h = paramVideoMaterial.getId();
     } else {
-      this.jdField_a_of_type_JavaLangString = "none";
+      this.h = "none";
     }
     a();
     h();
@@ -144,7 +144,7 @@ public class AEFpsManager
   public void a(boolean paramBoolean)
   {
     a("onCameraSwitch");
-    j();
+    k();
     a();
     h();
   }
@@ -157,7 +157,7 @@ public class AEFpsManager
   public void b(boolean paramBoolean)
   {
     a("onModeChangedToGif");
-    this.c = paramBoolean;
+    this.g = paramBoolean;
     if (paramBoolean) {
       a();
     }
@@ -166,7 +166,7 @@ public class AEFpsManager
   public void c()
   {
     a("onFirstFrame");
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.d = System.currentTimeMillis();
     h();
   }
   
@@ -178,7 +178,7 @@ public class AEFpsManager
   public void e()
   {
     a("onCaptureVideo");
-    j();
+    k();
     a();
   }
   
@@ -195,7 +195,7 @@ public class AEFpsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.perf.AEFpsManager
  * JD-Core Version:    0.7.0.1
  */

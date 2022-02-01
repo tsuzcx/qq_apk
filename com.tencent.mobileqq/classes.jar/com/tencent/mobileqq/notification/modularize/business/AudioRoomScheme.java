@@ -65,8 +65,8 @@ public final class AudioRoomScheme
   protected PendingIntent a(@NotNull PushComponent paramPushComponent)
   {
     Intrinsics.checkParameterIsNotNull(paramPushComponent, "pushComponent");
-    if (StringsKt.startsWith$default(paramPushComponent.d, "mqqapi://now/audioroom", false, 2, null)) {
-      paramPushComponent.d = a(paramPushComponent.d);
+    if (StringsKt.startsWith$default(paramPushComponent.h, "mqqapi://now/audioroom", false, 2, null)) {
+      paramPushComponent.h = a(paramPushComponent.h);
     }
     return d(paramPushComponent);
   }
@@ -78,7 +78,7 @@ public final class AudioRoomScheme
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.business.AudioRoomScheme
  * JD-Core Version:    0.7.0.1
  */

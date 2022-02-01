@@ -15,27 +15,27 @@ class DatalineOldForwardHandler$2
 {
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (DatalineOldForwardHandler.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler).getIntExtra("forward_type", -1) == 11) {
-      ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.jdField_a_of_type_Long), "1000", "51", "0", false);
+    if (DatalineOldForwardHandler.a(this.b).getIntExtra("forward_type", -1) == 11) {
+      ReportCenter.a().a(this.b.a.getAccount(), "", String.valueOf(this.a), "1000", "51", "0", false);
     }
     if (QLog.isColorLevel()) {
       QLog.i("DatalineOldForwardHandler", 2, "qbShowShareResultDialog back");
     }
-    if (DatalineOldForwardHandler.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler).getBooleanExtra("MigSdkShareNotDone", false))
+    if (DatalineOldForwardHandler.a(this.b).getBooleanExtra("MigSdkShareNotDone", false))
     {
-      DatalineOldForwardHandler.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler).putExtra("MigSdkShareNotDone", false);
-      ForwardSdkShareOption.a((Activity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler.jdField_a_of_type_AndroidContentContext, true, "sendToMyComputer", this.jdField_a_of_type_Long);
+      DatalineOldForwardHandler.a(this.b).putExtra("MigSdkShareNotDone", false);
+      ForwardSdkShareOption.a((Activity)this.b.b, true, "sendToMyComputer", this.a);
     }
     else
     {
-      ForwardSdkShareOption.a((Activity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler.jdField_a_of_type_AndroidContentContext, true, "shareToQQ", this.jdField_a_of_type_Long);
+      ForwardSdkShareOption.a((Activity)this.b.b, true, "shareToQQ", this.a);
     }
-    Util.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler.jdField_a_of_type_AndroidContentContext, 0, "", "");
-    DatalineOldForwardHandler.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler).finish();
-    if (DatalineOldForwardHandler.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler).getBooleanExtra("show_share_result_dialog_return_thirdapp", true)) {
+    Util.a(this.b.b, 0, "", "");
+    DatalineOldForwardHandler.b(this.b).finish();
+    if (DatalineOldForwardHandler.a(this.b).getBooleanExtra("show_share_result_dialog_return_thirdapp", true)) {
       try
       {
-        DatalineOldForwardHandler.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineOldForwardHandler).moveTaskToBack(true);
+        DatalineOldForwardHandler.b(this.b).moveTaskToBack(true);
         return;
       }
       catch (Throwable paramDialogInterface)
@@ -49,7 +49,7 @@ class DatalineOldForwardHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.forward.DatalineOldForwardHandler.2
  * JD-Core Version:    0.7.0.1
  */

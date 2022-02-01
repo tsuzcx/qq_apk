@@ -34,11 +34,11 @@ public class VideoPlayManager$PlayListenerAdapter
   public void a(IVideoPlayerWrapper paramIVideoPlayerWrapper, String paramString)
   {
     paramIVideoPlayerWrapper = (VideoPlayerWrapper)paramIVideoPlayerWrapper;
-    if ((VideoPlayManager.a(this.a) != null) && (VideoPlayManager.a(this.a).a != null)) {
-      VideoPlayManager.a(this.a).a.h = paramString;
+    if ((VideoPlayManager.d(this.a) != null) && (VideoPlayManager.d(this.a).z != null)) {
+      VideoPlayManager.d(this.a).z.ac = paramString;
     }
-    if (VideoPlayManager.a(this.a) != null) {
-      VideoBufferRangeController.a().a(paramIVideoPlayerWrapper, VideoPlayManager.a(this.a).b, paramIVideoPlayerWrapper.d());
+    if (VideoPlayManager.d(this.a) != null) {
+      VideoBufferRangeController.a().a(paramIVideoPlayerWrapper, VideoPlayManager.d(this.a).l, paramIVideoPlayerWrapper.M());
     }
   }
   
@@ -69,7 +69,7 @@ public class VideoPlayManager$PlayListenerAdapter
     if (paramBoolean) {
       VideoPlayManager.a(this.a).add(new Pair(Integer.valueOf(paramInt2), paramBitmap));
     }
-    ((VideoPlayerWrapper)VideoPlayManager.a(this.a).get(Integer.valueOf(paramInt2))).l();
+    ((VideoPlayerWrapper)VideoPlayManager.b(this.a).get(Integer.valueOf(paramInt2))).D();
   }
   
   public boolean a(IVideoPlayerWrapper paramIVideoPlayerWrapper, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
@@ -95,17 +95,17 @@ public class VideoPlayManager$PlayListenerAdapter
       String str = VideoPlayManager.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onSeekComplete(): video seek complete ! curPlayState:");
-      localStringBuilder.append(VideoPlayUtils.a(this.a.a()));
+      localStringBuilder.append(VideoPlayUtils.a(this.a.j()));
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if ((paramIVideoPlayerWrapper == VideoPlayManager.a(this.a)) && (this.a.a() != 5)) {
-      VideoPlayManager.a(this.a).d();
+    if ((paramIVideoPlayerWrapper == VideoPlayManager.c(this.a)) && (this.a.j() != 5)) {
+      VideoPlayManager.c(this.a).u();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoPlayManager.PlayListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

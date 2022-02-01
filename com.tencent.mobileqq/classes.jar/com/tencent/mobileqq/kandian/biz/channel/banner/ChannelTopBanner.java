@@ -32,30 +32,28 @@ import java.util.Set;
 public class ChannelTopBanner
   extends RelativeLayout
 {
-  private static final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  protected int a;
+  private static final Set<String> m = new HashSet();
   protected Context a;
-  protected Drawable a;
-  protected Handler a;
-  protected LinearLayout.LayoutParams a;
-  protected LinearLayout a;
-  protected ViewPager.SimpleOnPageChangeListener a;
-  protected BannerAdapter a;
-  private ChannelTopBanner.PagerChangeTransformer jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner$PagerChangeTransformer;
-  protected RollViewPager a;
-  protected boolean a;
-  protected View[] a;
-  protected Drawable b;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private boolean jdField_b_of_type_Boolean = true;
-  private boolean c = false;
+  protected RollViewPager b;
+  protected boolean c = true;
+  protected BannerAdapter d;
+  protected LinearLayout e;
+  protected LinearLayout.LayoutParams f;
+  protected View[] g;
+  protected Drawable h;
+  protected Drawable i;
+  protected int j;
+  protected ViewPager.SimpleOnPageChangeListener k;
+  protected Handler l = new ChannelTopBanner.1(this, Looper.getMainLooper());
+  private LinearLayout n;
+  private boolean o = true;
+  private boolean p = false;
+  private ChannelTopBanner.PagerChangeTransformer q;
   
   public ChannelTopBanner(Activity paramActivity)
   {
     super(paramActivity);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new ChannelTopBanner.1(this, Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidContentContext = paramActivity;
+    this.a = paramActivity;
     a(paramActivity);
   }
   
@@ -73,20 +71,20 @@ public class ChannelTopBanner
   
   private void a(int paramInt)
   {
-    View localView1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter.a(paramInt);
-    View localView2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter.a(paramInt - 1);
-    View localView3 = this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter.a(paramInt + 1);
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner$PagerChangeTransformer != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter.getCount() > 1))
+    View localView1 = this.d.a(paramInt);
+    View localView2 = this.d.a(paramInt - 1);
+    View localView3 = this.d.a(paramInt + 1);
+    if ((this.q != null) && (this.d.getCount() > 1))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner$PagerChangeTransformer.transformPage(localView1, 0.0F);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner$PagerChangeTransformer.transformPage(localView2, -1.0F);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner$PagerChangeTransformer.transformPage(localView3, 1.0F);
+      this.q.transformPage(localView1, 0.0F);
+      this.q.transformPage(localView2, -1.0F);
+      this.q.transformPage(localView3, 1.0F);
     }
   }
   
   private void a(View paramView)
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(paramView);
+    this.n.addView(paramView);
   }
   
   private void a(TemplateBean paramTemplateBean)
@@ -96,81 +94,46 @@ public class ChannelTopBanner
   
   protected View a()
   {
-    View localView = new View(this.jdField_a_of_type_AndroidContentContext);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
+    View localView = new View(this.a);
+    if (this.f == null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 11.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849627);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849628);
+      this.f = new LinearLayout.LayoutParams(UIUtils.a(this.a, 11.0F), UIUtils.a(this.a, 2.0F));
+      this.f.leftMargin = UIUtils.a(this.a, 6.0F);
+      this.h = getResources().getDrawable(2130851332);
+      this.i = getResources().getDrawable(2130851333);
     }
-    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-    localView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    localView.setLayoutParams(this.f);
+    localView.setBackgroundDrawable(this.h);
     return localView;
-  }
-  
-  public void a()
-  {
-    int j = this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter.a();
-    if (j == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChannelTopBanner", 2, "startRoll error, the count of avatars is 0...");
-      }
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    if (j > 1)
-    {
-      this.jdField_a_of_type_ArrayOfAndroidViewView = new View[j];
-      int i = 0;
-      while (i < j)
-      {
-        this.jdField_a_of_type_ArrayOfAndroidViewView[i] = a();
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ArrayOfAndroidViewView[i]);
-        i += 1;
-      }
-      this.jdField_a_of_type_ArrayOfAndroidViewView[0].setBackgroundDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-      this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setCurrentItem(this.jdField_a_of_type_Int, false);
-      d();
-    }
-    else
-    {
-      e();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ChannelTopBanner", 2, "startRoll is called successfully");
-    }
   }
   
   protected void a(Activity paramActivity)
   {
-    LayoutInflater.from(paramActivity).inflate(2131559970, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager = ((RollViewPager)findViewById(2131380907));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setOffscreenPageLimit(5);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setPageMargin(ViewUtils.a(-10.0F));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370213));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setOnPageChangeListener(new ChannelTopBanner.RollerChangeListener(this));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setOnTouchStateChangeListener(new ChannelTopBanner.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter = new BannerAdapter(paramActivity, this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager, BannerAdapter.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner$PagerChangeTransformer = new ChannelTopBanner.PagerChangeTransformer(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setPageTransformer(true, this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner$PagerChangeTransformer);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter);
-    paramActivity = new ViewPagerScroller(this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator());
+    LayoutInflater.from(paramActivity).inflate(2131626013, this, true);
+    this.b = ((RollViewPager)findViewById(2131449896));
+    this.b.setOffscreenPageLimit(5);
+    this.b.setPageMargin(ViewUtils.dip2px(-10.0F));
+    this.e = ((LinearLayout)findViewById(2131437397));
+    this.b.setOnPageChangeListener(new ChannelTopBanner.RollerChangeListener(this));
+    this.b.setOnTouchStateChangeListener(new ChannelTopBanner.2(this));
+    this.d = new BannerAdapter(paramActivity, this.b, BannerAdapter.a);
+    this.q = new ChannelTopBanner.PagerChangeTransformer(this, null);
+    this.b.setPageTransformer(true, this.q);
+    this.b.setAdapter(this.d);
+    paramActivity = new ViewPagerScroller(this.a, new LinearInterpolator());
     paramActivity.a(400);
-    paramActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager);
+    paramActivity.a(this.b);
     setClipChildren(false);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370211));
+    this.n = ((LinearLayout)findViewById(2131437394));
   }
   
   public void a(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, TopBannerInfo paramTopBannerInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter != null) {
+    if (this.d != null) {
       if (paramTopBannerInfo.items.size() > 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter.a(paramTopBannerInfo);
-        a();
+        this.d.a(paramTopBannerInfo);
+        b();
         a(true);
       }
       else
@@ -178,25 +141,25 @@ public class ChannelTopBanner
         a(false);
       }
     }
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    this.n.removeAllViews();
     if (paramTopBannerInfo.dynamicItems.size() > 0)
     {
-      boolean bool = jdField_a_of_type_JavaUtilSet.contains(a(paramTopBannerInfo));
-      jdField_a_of_type_JavaUtilSet.add(a(paramTopBannerInfo));
-      int i = 0;
-      while (i < paramTopBannerInfo.dynamicItems.size())
+      boolean bool = m.contains(a(paramTopBannerInfo));
+      m.add(a(paramTopBannerInfo));
+      int i1 = 0;
+      while (i1 < paramTopBannerInfo.dynamicItems.size())
       {
-        TopBannerInfo.DynamicItem localDynamicItem = (TopBannerInfo.DynamicItem)paramTopBannerInfo.dynamicItems.get(i);
+        TopBannerInfo.DynamicItem localDynamicItem = (TopBannerInfo.DynamicItem)paramTopBannerInfo.dynamicItems.get(i1);
         if ((localDynamicItem != null) && (!TextUtils.isEmpty(localDynamicItem.a)))
         {
           QLog.d("ChannelTopBanner", 2, new Object[] { "json = ", localDynamicItem.a });
-          ProteusItemView localProteusItemView = ProteusSupportUtilBase.a(paramReadInJoyBaseAdapter.a(), "default_feeds", ProteusSupportUtilBase.a(localDynamicItem.a));
+          ProteusItemView localProteusItemView = ProteusSupportUtilBase.a(paramReadInJoyBaseAdapter.F(), "default_feeds", ProteusSupportUtilBase.a(localDynamicItem.a));
           if (localProteusItemView != null)
           {
-            ProteusSupportUtilBase.a(localProteusItemView, paramReadInJoyBaseAdapter.a(), "default_feeds", localDynamicItem.a);
+            ProteusSupportUtilBase.a(localProteusItemView, paramReadInJoyBaseAdapter.F(), "default_feeds", localDynamicItem.a);
             a(localProteusItemView);
             if ((bool ^ true)) {
-              a(localProteusItemView.a());
+              a(localProteusItemView.getTemplateBean());
             }
           }
           else
@@ -208,7 +171,7 @@ public class ChannelTopBanner
         {
           QLog.d("ChannelTopBanner", 2, "refreshBanner, dynamicJSON is null.");
         }
-        i += 1;
+        i1 += 1;
       }
     }
     QLog.d("ChannelTopBanner", 2, "refreshBanner, dynamicItems is null.");
@@ -218,17 +181,47 @@ public class ChannelTopBanner
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.b.setVisibility(0);
+      this.e.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.b.setVisibility(8);
+    this.e.setVisibility(8);
   }
   
   public void b()
   {
-    d();
+    int i2 = this.d.c();
+    if (i2 == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelTopBanner", 2, "startRoll error, the count of avatars is 0...");
+      }
+      return;
+    }
+    this.e.removeAllViews();
+    if (i2 > 1)
+    {
+      this.g = new View[i2];
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        this.g[i1] = a();
+        this.e.addView(this.g[i1]);
+        i1 += 1;
+      }
+      this.g[0].setBackgroundDrawable(this.i);
+      this.j = 1;
+      this.b.setCurrentItem(this.j, false);
+      e();
+    }
+    else
+    {
+      f();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ChannelTopBanner", 2, "startRoll is called successfully");
+    }
   }
   
   public void c()
@@ -236,34 +229,39 @@ public class ChannelTopBanner
     e();
   }
   
-  protected void d()
+  public void d()
   {
-    this.jdField_b_of_type_Boolean = false;
-    if (this.c)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-      localHandler.sendMessageDelayed(localHandler.obtainMessage(), 4000L);
-    }
+    f();
   }
   
   protected void e()
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.o = false;
+    if (this.p)
+    {
+      this.l.removeCallbacksAndMessages(null);
+      Handler localHandler = this.l;
+      localHandler.sendMessageDelayed(localHandler.obtainMessage(), 4000L);
+    }
+  }
+  
+  protected void f()
+  {
+    this.o = true;
+    this.l.removeCallbacksAndMessages(null);
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.c = true;
-    if (!this.jdField_b_of_type_Boolean)
+    this.p = true;
+    if (!this.o)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      localObject = this.jdField_a_of_type_AndroidOsHandler;
+      this.l.removeCallbacksAndMessages(null);
+      localObject = this.l;
       ((Handler)localObject).sendMessageDelayed(((Handler)localObject).obtainMessage(), 4000L);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter;
+    Object localObject = this.d;
     if (localObject != null) {
       ((BannerAdapter)localObject).a();
     }
@@ -272,18 +270,18 @@ public class ChannelTopBanner
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.c = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.p = false;
+    this.l.removeCallbacksAndMessages(null);
   }
   
   public void setOnPageChangeListener(ViewPager.SimpleOnPageChangeListener paramSimpleOnPageChangeListener)
   {
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$SimpleOnPageChangeListener = paramSimpleOnPageChangeListener;
+    this.k = paramSimpleOnPageChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.channel.banner.ChannelTopBanner
  * JD-Core Version:    0.7.0.1
  */

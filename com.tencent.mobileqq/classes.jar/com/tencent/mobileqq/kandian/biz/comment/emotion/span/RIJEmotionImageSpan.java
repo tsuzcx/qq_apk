@@ -14,24 +14,24 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class RIJEmotionImageSpan
   extends RIJEnhancedImageSpan
 {
-  IViewProxy jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewIViewProxy;
-  private final RIJBaseEmotionInfo jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataRIJBaseEmotionInfo;
+  IViewProxy a;
+  private final RIJBaseEmotionInfo b;
   
   public RIJEmotionImageSpan(RIJBaseEmotionInfo paramRIJBaseEmotionInfo)
   {
     super(0);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataRIJBaseEmotionInfo = paramRIJBaseEmotionInfo;
+    this.b = paramRIJBaseEmotionInfo;
     a();
   }
   
   private void a()
   {
-    Object localObject1 = BaseApplication.getContext().getResources().getDrawable(2097479680);
+    Object localObject1 = BaseApplication.getContext().getResources().getDrawable(2097479684);
     Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
     ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
-    localObject1 = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataRIJBaseEmotionInfo.b, (URLDrawable.URLDrawableOptions)localObject2);
-    localObject2 = RIJEmotionCacheManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataRIJBaseEmotionInfo.c);
+    localObject1 = URLDrawable.getDrawable(this.b.b, (URLDrawable.URLDrawableOptions)localObject2);
+    localObject2 = RIJEmotionCacheManager.a(this.b.c);
     if (localObject2 != null)
     {
       a(((Point)localObject2).x, ((Point)localObject2).y);
@@ -44,12 +44,12 @@ public class RIJEmotionImageSpan
   
   public void a(IViewProxy paramIViewProxy)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewIViewProxy = paramIViewProxy;
+    this.a = paramIViewProxy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.emotion.span.RIJEmotionImageSpan
  * JD-Core Version:    0.7.0.1
  */

@@ -241,19 +241,19 @@ public class ProfileNameUtils
       {
         paramProfileCardInfo = new StringBuilder();
         paramProfileCardInfo.append("initNameList(), strNick = ");
-        paramProfileCardInfo.append(Utils.a(paramAppInterface));
+        paramProfileCardInfo.append(Utils.i(paramAppInterface));
         paramProfileCardInfo.append(", strRemark = ");
-        paramProfileCardInfo.append(Utils.a((String)localObject5));
+        paramProfileCardInfo.append(Utils.i((String)localObject5));
         paramProfileCardInfo.append(", strContactName = ");
-        paramProfileCardInfo.append(Utils.a((String)localObject9));
+        paramProfileCardInfo.append(Utils.i((String)localObject9));
         paramProfileCardInfo.append(", strRecommendName = ");
-        paramProfileCardInfo.append(Utils.a(str2));
+        paramProfileCardInfo.append(Utils.i(str2));
         paramProfileCardInfo.append(", strTroopNickName = ");
-        paramProfileCardInfo.append(Utils.a((String)localObject8));
+        paramProfileCardInfo.append(Utils.i((String)localObject8));
         paramProfileCardInfo.append(", strCircleName = ");
-        paramProfileCardInfo.append(Utils.a(str3));
+        paramProfileCardInfo.append(Utils.i(str3));
         paramProfileCardInfo.append(", strAutoRemark = ");
-        paramProfileCardInfo.append(Utils.a(str2));
+        paramProfileCardInfo.append(Utils.i(str2));
         QLog.d("ProfileNameUtils", 2, paramProfileCardInfo.toString());
       }
       return;
@@ -502,7 +502,7 @@ public class ProfileNameUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.utils.ProfileNameUtils
  * JD-Core Version:    0.7.0.1
  */

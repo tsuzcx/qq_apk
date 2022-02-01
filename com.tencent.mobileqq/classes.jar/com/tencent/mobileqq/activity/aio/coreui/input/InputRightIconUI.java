@@ -17,98 +17,98 @@ import java.util.List;
 public class InputRightIconUI
   implements View.OnTouchListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final AIOContext a;
+  private final QQAppInterface b;
+  private View c;
+  private ImageButton d;
   
   public InputRightIconUI(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
+    this.a = paramAIOContext;
+    this.b = paramAIOContext.a();
   }
   
   private void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.onClick(paramView);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
+    this.a.onClick(paramView);
+    Object localObject = this.a.p().c().b();
     Iterator localIterator = ((List)localObject).iterator();
     while (localIterator.hasNext()) {
-      if (((IOnRightIconClickListener)localIterator.next()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, paramView)) {
+      if (((IOnRightIconClickListener)localIterator.next()).a(this.a, paramView)) {
         return;
       }
     }
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((IOnRightIconClickListener)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, paramView);
+      ((IOnRightIconClickListener)((Iterator)localObject).next()).b(this.a, paramView);
     }
   }
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public ImageButton a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageButton;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131362371);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131362370));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnTouchListener(this);
-    AccessibilityUtil.a(this.jdField_a_of_type_AndroidWidgetImageButton, new InputRightIconUI.1(this));
-    AIOZhituHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidWidgetImageButton);
-  }
-  
-  public boolean a()
-  {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    return (localView != null) && (localView.getVisibility() == 0);
+    return this.c;
   }
   
   public boolean a(float paramFloat1, float paramFloat2)
   {
-    ImageButton localImageButton = this.jdField_a_of_type_AndroidWidgetImageButton;
+    ImageButton localImageButton = this.d;
     if (localImageButton == null) {
       return false;
     }
     if (localImageButton.getLeft() <= paramFloat1)
     {
-      if (this.jdField_a_of_type_AndroidWidgetImageButton.getRight() < paramFloat1) {
+      if (this.d.getRight() < paramFloat1) {
         return true;
       }
-      if (this.jdField_a_of_type_AndroidWidgetImageButton.getTop() <= paramFloat2) {
-        return this.jdField_a_of_type_AndroidWidgetImageButton.getBottom() < paramFloat2;
+      if (this.d.getTop() <= paramFloat2) {
+        return this.d.getBottom() < paramFloat2;
       }
     }
     return true;
   }
   
+  public ImageButton b()
+  {
+    return this.d;
+  }
+  
+  public void c()
+  {
+    this.c = this.a.d(2131427979);
+    this.d = ((ImageButton)this.a.d(2131427978));
+    this.d.setOnTouchListener(this);
+    AccessibilityUtil.a(this.d, new InputRightIconUI.1(this));
+    AIOZhituHelper.a(this.b, this.d);
+  }
+  
+  public boolean d()
+  {
+    View localView = this.c;
+    return (localView != null) && (localView.getVisibility() == 0);
+  }
+  
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(paramView, paramMotionEvent);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().b();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a() != 28) && (paramMotionEvent.getAction() == 0)) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), "CliOper", "", "", "0X80094D1", "0X80094D1", 0, 0, "", "", "", "");
+    this.a.a(paramView, paramMotionEvent);
+    Object localObject = this.a.p().c().c();
+    if ((this.a.k() != 28) && (paramMotionEvent.getAction() == 0)) {
+      ReportController.b(this.a.a(), "CliOper", "", "", "0X80094D1", "0X80094D1", 0, 0, "", "", "", "");
     }
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      if (((IOnRightIconTouchListener)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, paramView, paramMotionEvent)) {
+      if (((IOnRightIconTouchListener)((Iterator)localObject).next()).a(this.a, paramView, paramMotionEvent)) {
         return true;
       }
     }
     if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-      onClick(this.jdField_a_of_type_AndroidWidgetImageButton);
+      onClick(this.d);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.input.InputRightIconUI
  * JD-Core Version:    0.7.0.1
  */

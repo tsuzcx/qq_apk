@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.qqgamepub.view;
 
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo.SimpleMessage;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo.SimpleMessage;
 
 class GameSessionView$WrappedMessage
 {
-  public final GameCenterSessionInfo.SimpleMessage a;
   public final GameCenterSessionInfo a;
+  public final GameCenterSessionInfo.SimpleMessage b;
   
   GameSessionView$WrappedMessage(GameCenterSessionInfo paramGameCenterSessionInfo, GameCenterSessionInfo.SimpleMessage paramSimpleMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMsgInfoGameCenterSessionInfo = paramGameCenterSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMsgInfoGameCenterSessionInfo$SimpleMessage = paramSimpleMessage;
+    this.a = paramGameCenterSessionInfo;
+    this.b = paramSimpleMessage;
   }
   
   GameCenterSessionInfo a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqGamecenterMsgInfoGameCenterSessionInfo;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.GameSessionView.WrappedMessage
  * JD-Core Version:    0.7.0.1
  */

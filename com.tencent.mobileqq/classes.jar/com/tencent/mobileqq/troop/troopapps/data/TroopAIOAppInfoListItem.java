@@ -11,40 +11,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class TroopAIOAppInfoListItem
 {
-  public int a;
-  public String a;
-  private List<TroopAIOAppInfo> a;
-  public ConcurrentHashMap<Integer, TroopAIOAppInfo> a;
-  public int b = 0;
-  
-  public TroopAIOAppInfoListItem()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public int a = 0;
+  public String b = "";
+  public int c = 0;
+  public ConcurrentHashMap<Integer, TroopAIOAppInfo> d = new ConcurrentHashMap();
+  private List<TroopAIOAppInfo> e = new ArrayList();
   
   public ArrayList<TroopAIOAppInfo> a()
   {
     try
     {
-      ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+      ArrayList localArrayList = new ArrayList(this.e);
       return localArrayList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
     }
     finally
     {
@@ -55,16 +33,16 @@ public class TroopAIOAppInfoListItem
   
   public void a(int paramInt, TroopAIOAppInfo paramTroopAIOAppInfo)
   {
-    TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)this.d.get(Integer.valueOf(paramInt));
     if (localTroopAIOAppInfo != null)
     {
       localTroopAIOAppInfo.copyFrom(paramTroopAIOAppInfo);
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), paramTroopAIOAppInfo);
+    this.d.put(Integer.valueOf(paramInt), paramTroopAIOAppInfo);
     try
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramTroopAIOAppInfo);
+      this.e.add(paramTroopAIOAppInfo);
       return;
     }
     finally {}
@@ -74,16 +52,16 @@ public class TroopAIOAppInfoListItem
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.e.clear();
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         int i = ((Integer)paramList.next()).intValue();
-        TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+        TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)this.d.get(Integer.valueOf(i));
         AssertUtils.a(localTroopAIOAppInfo);
         if (localTroopAIOAppInfo != null)
         {
-          this.jdField_a_of_type_JavaUtilList.add(localTroopAIOAppInfo);
+          this.e.add(localTroopAIOAppInfo);
         }
         else
         {
@@ -106,7 +84,7 @@ public class TroopAIOAppInfoListItem
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilList.remove(paramTroopAIOAppInfo);
+      boolean bool = this.e.remove(paramTroopAIOAppInfo);
       return bool;
     }
     finally
@@ -120,12 +98,12 @@ public class TroopAIOAppInfoListItem
   {
     try
     {
-      int i = this.jdField_a_of_type_JavaUtilList.size();
+      int i = this.e.size();
       int j = paramList.size();
       if (i != j) {
         return true;
       }
-      ListIterator localListIterator = this.jdField_a_of_type_JavaUtilList.listIterator();
+      ListIterator localListIterator = this.e.listIterator();
       paramList = paramList.listIterator();
       while (localListIterator.hasNext())
       {
@@ -147,10 +125,24 @@ public class TroopAIOAppInfoListItem
       throw paramList;
     }
   }
+  
+  public void b()
+  {
+    try
+    {
+      this.e.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.data.TroopAIOAppInfoListItem
  * JD-Core Version:    0.7.0.1
  */

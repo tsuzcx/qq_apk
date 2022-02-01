@@ -11,44 +11,44 @@ class AccountDetailBaseAdapter$7
   
   public void a(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
+    if ((this.a.F.getFirstVisiblePosition() == 0) && (this.a.u))
     {
-      paramInt = -this.a.b();
+      paramInt = -this.a.f();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onEndScroll scrollY = ");
         localStringBuilder.append(paramInt);
         localStringBuilder.append(" ,isScrollUp = ");
-        localStringBuilder.append(this.a.e);
+        localStringBuilder.append(this.a.V);
         QLog.d("AccountDetailBaseAdapter", 2, localStringBuilder.toString());
       }
-      float f = this.a.jdField_a_of_type_Float * 150.0F;
+      float f = this.a.L * 150.0F;
       if (paramInt != 0)
       {
-        if (this.a.e)
+        if (this.a.V)
         {
           if (paramInt > f)
           {
-            this.a.d(paramInt);
+            this.a.e(paramInt);
             return;
           }
-          this.a.e();
+          this.a.l();
           return;
         }
-        if (paramInt > this.a.q - f)
+        if (paramInt > this.a.P - f)
         {
-          this.a.d(paramInt);
+          this.a.e(paramInt);
           return;
         }
-        this.a.e();
+        this.a.l();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.7
  * JD-Core Version:    0.7.0.1
  */

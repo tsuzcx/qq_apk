@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class PhoneContactName
   implements IFriendName
 {
-  private IPhoneContactInjectService a = FriendInjectFactory.a();
+  private IPhoneContactInjectService a = FriendInjectFactory.b();
   
   public String a(String paramString, Friends paramFriends, AppInterface paramAppInterface)
   {
@@ -35,7 +35,7 @@ public class PhoneContactName
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.name.PhoneContactName
  * JD-Core Version:    0.7.0.1
  */

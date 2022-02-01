@@ -25,7 +25,7 @@ public class QIMShortVideoUtils
     a(paramContext, null, paramString);
   }
   
-  public static boolean a(Context paramContext)
+  public static boolean b(Context paramContext)
   {
     try
     {
@@ -53,7 +53,7 @@ public class QIMShortVideoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.QIMShortVideoUtils
  * JD-Core Version:    0.7.0.1
  */

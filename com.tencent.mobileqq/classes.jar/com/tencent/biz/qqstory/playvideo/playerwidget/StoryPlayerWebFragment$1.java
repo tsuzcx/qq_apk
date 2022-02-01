@@ -36,7 +36,7 @@ class StoryPlayerWebFragment$1
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("unknown event: ");
         localStringBuilder.append(paramContext);
-        QQToast.a(paramIntent, 1, localStringBuilder.toString(), 1).a();
+        QQToast.makeText(paramIntent, 1, localStringBuilder.toString(), 1).show();
       }
     }
   }

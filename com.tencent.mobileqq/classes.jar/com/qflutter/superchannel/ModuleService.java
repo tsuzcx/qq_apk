@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 class ModuleService
 {
-  static final String TAG = "SuperChannelModuleService";
+  static final String TAG = "SuperChannel.ModuleService";
   private Map<String, IModule> moduleClazzImplMap = new ConcurrentHashMap();
   private Map<String, Class<? extends IModule>> moduleClazzMap = new ConcurrentHashMap();
   private Map<String, Stack<IModule>> moduleStackMap = new ConcurrentHashMap();
@@ -20,7 +20,7 @@ class ModuleService
     }
     catch (Exception paramClass)
     {
-      SuperChannelLog.e("SuperChannelModuleService", "[createModuleClassImpl]", paramClass);
+      SuperChannelLog.e("SuperChannel.ModuleService", "[createModuleClassImpl]", paramClass);
     }
     return null;
   }
@@ -55,7 +55,7 @@ class ModuleService
       ((StringBuilder)localObject).append("[getModuleFromClass] can not create module ");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append("'s instances");
-      SuperChannelLog.w("SuperChannelModuleService", ((StringBuilder)localObject).toString());
+      SuperChannelLog.w("SuperChannel.ModuleService", ((StringBuilder)localObject).toString());
       return null;
     }
     this.moduleClazzImplMap.put(paramString, localObject);
@@ -75,7 +75,7 @@ class ModuleService
         localStringBuilder.append(paramString.getClass().getName());
         localStringBuilder.append(", hashCode=");
         localStringBuilder.append(paramString.hashCode());
-        SuperChannelLog.d("SuperChannelModuleService", localStringBuilder.toString());
+        SuperChannelLog.d("SuperChannel.ModuleService", localStringBuilder.toString());
       }
       return paramString;
     }
@@ -94,7 +94,7 @@ class ModuleService
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[getModule] invalid parameter, moduleName=");
       ((StringBuilder)localObject).append(paramString);
-      SuperChannelLog.w("SuperChannelModuleService", ((StringBuilder)localObject).toString());
+      SuperChannelLog.w("SuperChannel.ModuleService", ((StringBuilder)localObject).toString());
       return null;
     }
     Object localObject = getModuleFromStack(paramString);
@@ -107,8 +107,9 @@ class ModuleService
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[getModule] moduleName ");
       localStringBuilder.append(paramString);
-      localStringBuilder.append(" not registered, please call registerModule() or registerModuleClass() first");
-      SuperChannelLog.w("SuperChannelModuleService", localStringBuilder.toString());
+      localStringBuilder.append(" not registered, ");
+      localStringBuilder.append("please call registerModule() or registerModuleClass() first");
+      SuperChannelLog.w("SuperChannel.ModuleService", localStringBuilder.toString());
     }
     return localObject;
   }
@@ -124,7 +125,7 @@ class ModuleService
         ((StringBuilder)localObject).append(paramString);
         ((StringBuilder)localObject).append(", hashCode=");
         ((StringBuilder)localObject).append(paramIModule.hashCode());
-        SuperChannelLog.d("SuperChannelModuleService", ((StringBuilder)localObject).toString());
+        SuperChannelLog.d("SuperChannel.ModuleService", ((StringBuilder)localObject).toString());
       }
       localObject = ensureModuleStack(paramString);
       ((Stack)localObject).push(paramIModule);
@@ -136,7 +137,7 @@ class ModuleService
         paramIModule.append(" has ");
         paramIModule.append(((Stack)localObject).size());
         paramIModule.append(" instances");
-        SuperChannelLog.d("SuperChannelModuleService", paramIModule.toString());
+        SuperChannelLog.d("SuperChannel.ModuleService", paramIModule.toString());
       }
       return;
     }
@@ -145,7 +146,7 @@ class ModuleService
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(", moduleImpl=");
     ((StringBuilder)localObject).append(paramIModule);
-    SuperChannelLog.w("SuperChannelModuleService", ((StringBuilder)localObject).toString());
+    SuperChannelLog.w("SuperChannel.ModuleService", ((StringBuilder)localObject).toString());
   }
   
   void registerModuleClass(String paramString, Class<? extends IModule> paramClass)
@@ -159,15 +160,16 @@ class ModuleService
         localStringBuilder.append(paramString);
         localStringBuilder.append(", clazz=");
         localStringBuilder.append(paramClass.getName());
-        SuperChannelLog.d("SuperChannelModuleService", localStringBuilder.toString());
+        SuperChannelLog.d("SuperChannel.ModuleService", localStringBuilder.toString());
       }
       if (this.moduleClazzMap.containsKey(paramString))
       {
         paramClass = new StringBuilder();
         paramClass.append("[registerModuleClass] module ");
         paramClass.append(paramString);
-        paramClass.append(" already registered,  please call unregisterModuleClass() to remove it first");
-        SuperChannelLog.w("SuperChannelModuleService", paramClass.toString());
+        paramClass.append(" already registered, ");
+        paramClass.append(" please call unregisterModuleClass() to remove it first");
+        SuperChannelLog.w("SuperChannel.ModuleService", paramClass.toString());
         return;
       }
       this.moduleClazzMap.put(paramString, paramClass);
@@ -178,7 +180,7 @@ class ModuleService
     localStringBuilder.append(paramString);
     localStringBuilder.append(", clazz=");
     localStringBuilder.append(paramClass);
-    SuperChannelLog.w("SuperChannelModuleService", localStringBuilder.toString());
+    SuperChannelLog.w("SuperChannel.ModuleService", localStringBuilder.toString());
   }
   
   void unregisterModule(String paramString)
@@ -195,14 +197,14 @@ class ModuleService
     }
     for (paramString = paramString.toString();; paramString = paramString.toString())
     {
-      SuperChannelLog.w("SuperChannelModuleService", paramString);
+      SuperChannelLog.w("SuperChannel.ModuleService", paramString);
       return;
       if (SuperChannelLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("[unregisterModule] moduleName=");
         ((StringBuilder)localObject1).append(paramString);
-        SuperChannelLog.d("SuperChannelModuleService", ((StringBuilder)localObject1).toString());
+        SuperChannelLog.d("SuperChannel.ModuleService", ((StringBuilder)localObject1).toString());
       }
       if (!this.moduleStackMap.containsKey(paramString))
       {
@@ -227,7 +229,7 @@ class ModuleService
           localStringBuilder.append(" has ");
           localStringBuilder.append(((Stack)localObject1).size());
           localStringBuilder.append(" instances");
-          SuperChannelLog.d("SuperChannelModuleService", localStringBuilder.toString());
+          SuperChannelLog.d("SuperChannel.ModuleService", localStringBuilder.toString());
         }
         if (((Stack)localObject1).isEmpty()) {
           this.moduleStackMap.remove(paramString);
@@ -246,9 +248,9 @@ class ModuleService
     if (isTextEmpty(paramString))
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[registerModuleClass] invalid parameters, moduleName=");
+      localStringBuilder.append("[unregisterModuleClass] invalid parameters, moduleName=");
       localStringBuilder.append(paramString);
-      SuperChannelLog.w("SuperChannelModuleService", localStringBuilder.toString());
+      SuperChannelLog.w("SuperChannel.ModuleService", localStringBuilder.toString());
       return;
     }
     if (SuperChannelLog.isColorLevel())
@@ -256,7 +258,7 @@ class ModuleService
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[unregisterModuleClass]  moduleName=");
       localStringBuilder.append(paramString);
-      SuperChannelLog.d("SuperChannelModuleService", localStringBuilder.toString());
+      SuperChannelLog.d("SuperChannel.ModuleService", localStringBuilder.toString());
     }
     this.moduleClazzMap.remove(paramString);
     this.moduleClazzImplMap.remove(paramString);
@@ -264,7 +266,7 @@ class ModuleService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.superchannel.ModuleService
  * JD-Core Version:    0.7.0.1
  */

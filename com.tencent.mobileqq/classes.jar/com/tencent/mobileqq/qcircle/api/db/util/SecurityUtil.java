@@ -5,8 +5,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class SecurityUtil
 {
-  private static final char[] jdField_a_of_type_ArrayOfChar = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
-  private static long[] jdField_a_of_type_ArrayOfLong = new long[256];
+  private static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  private static long[] b = new long[256];
   
   static
   {
@@ -26,7 +26,7 @@ public class SecurityUtil
         l1 = l1 >> 1 ^ l2;
         j += 1;
       }
-      jdField_a_of_type_ArrayOfLong[i] = l1;
+      b[i] = l1;
       i += 1;
     }
   }
@@ -62,7 +62,7 @@ public class SecurityUtil
       {
         int j = paramArrayOfByte[i];
         int k = i * 2;
-        char[] arrayOfChar2 = jdField_a_of_type_ArrayOfChar;
+        char[] arrayOfChar2 = a;
         arrayOfChar1[(k + 1)] = arrayOfChar2[(j & 0xF)];
         arrayOfChar1[k] = arrayOfChar2[((byte)(j >>> 4) & 0xF)];
         i += 1;
@@ -74,7 +74,7 @@ public class SecurityUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.util.SecurityUtil
  * JD-Core Version:    0.7.0.1
  */

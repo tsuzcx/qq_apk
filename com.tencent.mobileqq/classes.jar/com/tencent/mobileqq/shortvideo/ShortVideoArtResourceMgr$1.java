@@ -39,8 +39,8 @@ final class ShortVideoArtResourceMgr$1
           }
           else
           {
-            Object localObject3 = ShortVideoSoManager.a((String)localObject2);
-            j = ((ShortVideoSoManager.CfgParser)localObject3).a();
+            Object localObject3 = ShortVideoSoManager.d((String)localObject2);
+            j = ((ShortVideoSoManager.CfgParser)localObject3).e();
             if (j != 0)
             {
               localObject3 = new StringBuilder();
@@ -135,7 +135,7 @@ final class ShortVideoArtResourceMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr.1
  * JD-Core Version:    0.7.0.1
  */

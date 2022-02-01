@@ -2,45 +2,40 @@ package com.tencent.mobileqq.utils.dialogutils;
 
 public class QQCustomMenuItem
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
+  String a;
   int b;
   int c;
+  int d;
+  boolean e = false;
   
   public QQCustomMenuItem(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = QQCustomMenuItemPriorityHelper.a(paramString);
+    this.a = paramString;
+    this.b = paramInt;
+    this.d = QQCustomMenuItemPriorityHelper.a(paramString);
   }
   
   public QQCustomMenuItem(int paramInt1, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = QQCustomMenuItemPriorityHelper.a(paramString);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramString;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = QQCustomMenuItemPriorityHelper.a(paramString);
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.b = paramInt;
+    this.c = paramInt;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public int b()
@@ -48,23 +43,28 @@ public class QQCustomMenuItem
     return this.b;
   }
   
+  public int c()
+  {
+    return this.c;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("QQCustomMenuItem{title='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", special=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", priority=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem
  * JD-Core Version:    0.7.0.1
  */

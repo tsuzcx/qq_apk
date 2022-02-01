@@ -14,15 +14,15 @@ class DiscussionInfoCardActivity$5
   
   public void run()
   {
-    ArrayList localArrayList = DiscussionInfoCardActivity.a(this.this$0).a(DiscussionInfoCardActivity.a(this.this$0));
+    ArrayList localArrayList = DiscussionInfoCardActivity.d(this.this$0).a(DiscussionInfoCardActivity.c(this.this$0));
     this.this$0.a(localArrayList);
     if (this.a) {
       try
       {
         localObject = new DiscussionHandler.ReqDiscussInfo();
-        ((DiscussionHandler.ReqDiscussInfo)localObject).a = String.valueOf(DiscussionInfoCardActivity.a(this.this$0));
-        ((DiscussionHandler.ReqDiscussInfo)localObject).b = localArrayList.size();
-        DiscussionInfoCardActivity.a(this.this$0).a((DiscussionHandler.ReqDiscussInfo)localObject);
+        ((DiscussionHandler.ReqDiscussInfo)localObject).a = String.valueOf(DiscussionInfoCardActivity.c(this.this$0));
+        ((DiscussionHandler.ReqDiscussInfo)localObject).c = localArrayList.size();
+        DiscussionInfoCardActivity.e(this.this$0).a((DiscussionHandler.ReqDiscussInfo)localObject);
         return;
       }
       catch (Exception localException)
@@ -32,7 +32,7 @@ class DiscussionInfoCardActivity$5
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("initDiscussionView getDiscussInfo error disUin=");
-          ((StringBuilder)localObject).append(DiscussionInfoCardActivity.a(this.this$0));
+          ((StringBuilder)localObject).append(DiscussionInfoCardActivity.c(this.this$0));
           QLog.d("DiscussionInfoCardActivity", 2, ((StringBuilder)localObject).toString(), localException);
         }
       }
@@ -41,7 +41,7 @@ class DiscussionInfoCardActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.5
  * JD-Core Version:    0.7.0.1
  */

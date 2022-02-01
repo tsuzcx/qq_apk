@@ -11,9 +11,9 @@ class AIOPictureView$9
   
   public boolean queueIdle()
   {
-    AIOPictureData localAIOPictureData = this.a.a();
+    AIOPictureData localAIOPictureData = this.a.o();
     AIOPictureModel localAIOPictureModel = new AIOPictureModel();
-    if ((localAIOPictureData != null) && (localAIOPictureModel.a(localAIOPictureData, 4)) && (localAIOPictureModel.a(localAIOPictureData, 4) == null))
+    if ((localAIOPictureData != null) && (localAIOPictureModel.a(localAIOPictureData, 4)) && (localAIOPictureModel.c(localAIOPictureData, 4) == null))
     {
       this.a.g(true);
       this.a.a();
@@ -23,7 +23,7 @@ class AIOPictureView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOPictureView.9
  * JD-Core Version:    0.7.0.1
  */

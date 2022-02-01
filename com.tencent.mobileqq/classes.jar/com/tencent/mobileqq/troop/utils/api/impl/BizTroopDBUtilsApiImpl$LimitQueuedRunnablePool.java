@@ -7,34 +7,34 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class BizTroopDBUtilsApiImpl$LimitQueuedRunnablePool
   implements ThreadExcutor.IThreadListener
 {
-  private int jdField_a_of_type_Int;
-  ConcurrentLinkedQueue<Runnable> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  ConcurrentLinkedQueue<Runnable> a = new ConcurrentLinkedQueue();
   private int b;
   private int c;
+  private int d;
   
   public BizTroopDBUtilsApiImpl$LimitQueuedRunnablePool(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.b = 0;
+    this.b = paramInt1;
+    this.d = paramInt2;
+    this.c = 0;
   }
   
   public void a()
   {
-    if (this.b < this.jdField_a_of_type_Int)
+    if (this.c < this.b)
     {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      Runnable localRunnable = (Runnable)this.a.poll();
       if (localRunnable != null)
       {
-        this.b += 1;
-        ThreadManager.excute(localRunnable, this.c, this, false);
+        this.c += 1;
+        ThreadManager.excute(localRunnable, this.d, this, false);
       }
     }
   }
   
   public void a(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramRunnable);
+    this.a.offer(paramRunnable);
     a();
   }
   
@@ -42,7 +42,7 @@ public class BizTroopDBUtilsApiImpl$LimitQueuedRunnablePool
   
   public void onPostRun()
   {
-    this.b -= 1;
+    this.c -= 1;
     a();
   }
   
@@ -50,7 +50,7 @@ public class BizTroopDBUtilsApiImpl$LimitQueuedRunnablePool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.api.impl.BizTroopDBUtilsApiImpl.LimitQueuedRunnablePool
  * JD-Core Version:    0.7.0.1
  */

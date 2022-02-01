@@ -18,18 +18,18 @@ class RIJVideoHandleClick$10
   public void onClick(View paramView)
   {
     VideoFeedsViewHolder localVideoFeedsViewHolder = (VideoFeedsViewHolder)paramView.getTag();
-    AbsBaseArticleInfo localAbsBaseArticleInfo = RIJVideoHandleClick.a(this.a).a(localVideoFeedsViewHolder.jdField_a_of_type_Int);
+    AbsBaseArticleInfo localAbsBaseArticleInfo = RIJVideoHandleClick.b(this.a).c(localVideoFeedsViewHolder.P);
     if (localAbsBaseArticleInfo == null) {
       return;
     }
-    RIJVideoHandleClick.a(this.a).a().a().a(localVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, localAbsBaseArticleInfo, true, true);
+    RIJVideoHandleClick.b(this.a).a().v().a(localVideoFeedsViewHolder.t, localAbsBaseArticleInfo, true, true);
     ThreadManager.executeOnSubThread(new RIJVideoHandleClick.10.1(this, localAbsBaseArticleInfo));
-    VideoHandler.a(paramView);
+    VideoHandler.b(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.click.RIJVideoHandleClick.10
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class GameSessionView$GameMessageReceiver
@@ -51,7 +51,7 @@ class GameSessionView$GameMessageReceiver
           ((StringBuilder)localObject).append(paramContext);
           QLog.d(paramIntent, 2, ((StringBuilder)localObject).toString());
         }
-        this.a.a();
+        this.a.getData();
       }
     }
     else if ("action_qgame_unread_change".equals(localObject))
@@ -74,7 +74,7 @@ class GameSessionView$GameMessageReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.GameSessionView.GameMessageReceiver
  * JD-Core Version:    0.7.0.1
  */

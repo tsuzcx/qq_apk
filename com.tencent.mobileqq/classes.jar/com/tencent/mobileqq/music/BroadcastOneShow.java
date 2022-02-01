@@ -9,46 +9,34 @@ public class BroadcastOneShow
   implements Parcelable
 {
   public static final Parcelable.Creator<BroadcastOneShow> CREATOR = new BroadcastOneShow.1();
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public String c = "";
+  public String a = "";
+  public String b = "";
+  public long c = 0L;
+  public long d = 0L;
+  public int e = 0;
+  public String f = "";
   
-  BroadcastOneShow()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-  }
+  BroadcastOneShow() {}
   
   public BroadcastOneShow(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.c = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readLong();
+    this.d = paramParcel.readLong();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readString();
   }
   
   public static BroadcastOneShow a(NS_NEXTRADIO_QZONEBGMUSIC.BroadcastOneShow paramBroadcastOneShow)
   {
     BroadcastOneShow localBroadcastOneShow = new BroadcastOneShow();
-    localBroadcastOneShow.jdField_a_of_type_JavaLangString = paramBroadcastOneShow.bcShowId;
-    localBroadcastOneShow.jdField_b_of_type_JavaLangString = paramBroadcastOneShow.bcShowName;
-    localBroadcastOneShow.jdField_a_of_type_Long = paramBroadcastOneShow.startTime;
-    localBroadcastOneShow.jdField_b_of_type_Long = paramBroadcastOneShow.endTime;
-    localBroadcastOneShow.jdField_a_of_type_Int = paramBroadcastOneShow.singerId;
-    localBroadcastOneShow.c = paramBroadcastOneShow.singerName;
+    localBroadcastOneShow.a = paramBroadcastOneShow.bcShowId;
+    localBroadcastOneShow.b = paramBroadcastOneShow.bcShowName;
+    localBroadcastOneShow.c = paramBroadcastOneShow.startTime;
+    localBroadcastOneShow.d = paramBroadcastOneShow.endTime;
+    localBroadcastOneShow.e = paramBroadcastOneShow.singerId;
+    localBroadcastOneShow.f = paramBroadcastOneShow.singerName;
     return localBroadcastOneShow;
   }
   
@@ -58,12 +46,12 @@ public class BroadcastOneShow
     try
     {
       paramString = new JSONObject(paramString);
-      localBroadcastOneShow.jdField_a_of_type_JavaLangString = paramString.optString("bcShowId");
-      localBroadcastOneShow.jdField_b_of_type_JavaLangString = paramString.optString("bcShowName");
-      localBroadcastOneShow.jdField_a_of_type_Long = paramString.optLong("startTime");
-      localBroadcastOneShow.jdField_b_of_type_Long = paramString.optLong("endTime");
-      localBroadcastOneShow.jdField_a_of_type_Int = paramString.optInt("singerId");
-      localBroadcastOneShow.c = paramString.optString("singerName");
+      localBroadcastOneShow.a = paramString.optString("bcShowId");
+      localBroadcastOneShow.b = paramString.optString("bcShowName");
+      localBroadcastOneShow.c = paramString.optLong("startTime");
+      localBroadcastOneShow.d = paramString.optLong("endTime");
+      localBroadcastOneShow.e = paramString.optInt("singerId");
+      localBroadcastOneShow.f = paramString.optString("singerName");
       return localBroadcastOneShow;
     }
     catch (Exception paramString) {}
@@ -77,17 +65,17 @@ public class BroadcastOneShow
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeLong(this.c);
+    paramParcel.writeLong(this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeString(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.BroadcastOneShow
  * JD-Core Version:    0.7.0.1
  */

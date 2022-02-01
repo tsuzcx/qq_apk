@@ -9,17 +9,17 @@ class IntimateInfoView$7
   
   public void run()
   {
-    if (IntimateInfoView.a(this.this$0).getStatus() == 0)
+    if (IntimateInfoView.i(this.this$0).getStatus() == 0)
     {
-      IntimateInfoView.a(this.this$0).downloadImediatly();
+      IntimateInfoView.i(this.this$0).downloadImediatly();
       return;
     }
-    IntimateInfoView.a(this.this$0).restartDownload();
+    IntimateInfoView.i(this.this$0).restartDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.7
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ class ViolaInitDelegate$5
   
   public void a(int paramInt)
   {
-    if (ViolaInitDelegate.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaDelegateViolaInitDelegate) != null) {
-      ViolaInitDelegate.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaDelegateViolaInitDelegate).a(paramInt);
+    if (ViolaInitDelegate.g(this.b) != null) {
+      ViolaInitDelegate.g(this.b).a(paramInt);
     }
   }
   
@@ -28,16 +28,16 @@ class ViolaInitDelegate$5
     {
       Intent localIntent = new Intent();
       localIntent.setAction("float_layer_finsh_action");
-      ViolaInitDelegate.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaDelegateViolaInitDelegate).getQBaseActivity().sendBroadcast(localIntent);
+      ViolaInitDelegate.f(this.b).getQBaseActivity().sendBroadcast(localIntent);
     }
-    ViolaInitDelegate.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaDelegateViolaInitDelegate).getQBaseActivity().doOnBackPressed();
-    ViolaInitDelegate.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaDelegateViolaInitDelegate).getQBaseActivity().overridePendingTransition(0, 0);
+    ViolaInitDelegate.f(this.b).getQBaseActivity().doOnBackPressed();
+    ViolaInitDelegate.f(this.b).getQBaseActivity().overridePendingTransition(0, 0);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 0) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+    if (this.a.getVisibility() != 0) {
+      this.a.setVisibility(0);
     }
   }
   
@@ -47,7 +47,7 @@ class ViolaInitDelegate$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.delegate.ViolaInitDelegate.5
  * JD-Core Version:    0.7.0.1
  */

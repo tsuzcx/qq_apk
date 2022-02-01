@@ -44,12 +44,12 @@ import org.jetbrains.annotations.Nullable;
 public class QQstoryAction
   extends JumpAction
 {
-  private QQAppInterface a;
+  private QQAppInterface H;
   
   public QQstoryAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super(paramQQAppInterface, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.H = paramQQAppInterface;
   }
   
   public static int a(Map<String, String> paramMap)
@@ -104,28 +104,20 @@ public class QQstoryAction
     return paramInt;
   }
   
-  private Intent a()
-  {
-    ((QQStoryActivityManager)SuperManager.a(18)).a();
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQStoryMainActivity.class);
-    localIntent.setFlags(67108864);
-    return localIntent;
-  }
-  
   @NotNull
   private Intent a(Intent paramIntent, boolean paramBoolean)
   {
     if (paramBoolean) {
-      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "2", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api") });
+      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "2", (String)this.f.get("parter_api") });
     }
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("from_type");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("capture_mode");
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("tab_id");
-    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("category_id");
-    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("item_id");
-    String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("album_id");
-    str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("one_page");
-    String str6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("dispatch_event");
+    String str1 = (String)this.f.get("from_type");
+    String str2 = (String)this.f.get("capture_mode");
+    Object localObject = (String)this.f.get("tab_id");
+    String str3 = (String)this.f.get("category_id");
+    String str4 = (String)this.f.get("item_id");
+    String str5 = (String)this.f.get("album_id");
+    str5 = (String)this.f.get("one_page");
+    String str6 = (String)this.f.get("dispatch_event");
     paramIntent.putExtra("cameraDirection", 2);
     if (!TextUtils.isEmpty(str6)) {
       paramIntent.putExtra("web_dispatch_event", str6);
@@ -150,7 +142,7 @@ public class QQstoryAction
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("start story publish, NumberFormatException, attrs=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilHashMap.toString());
+      ((StringBuilder)localObject).append(this.f.toString());
       ((StringBuilder)localObject).append("\n");
       ((StringBuilder)localObject).append(localNumberFormatException);
       QLog.e("Q.qqstory.publish.QQstoryAction", 2, ((StringBuilder)localObject).toString());
@@ -195,14 +187,6 @@ public class QQstoryAction
     return paramString;
   }
   
-  private String a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1)) {
-      return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-    }
-    return paramString2;
-  }
-  
   private static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
     if (paramString1.equals(paramString2)) {
@@ -223,7 +207,7 @@ public class QQstoryAction
   {
     paramHashMap = (String)paramHashMap.get("bannerID");
     if (!TextUtils.isEmpty(paramHashMap)) {
-      StoryPlayerLauncher.a(paramActivity, new OpenPlayerBuilder(new DiscoverBannerPlayInfo(paramHashMap), 102).a());
+      StoryPlayerLauncher.a(paramActivity, new OpenPlayerBuilder(new DiscoverBannerPlayInfo(paramHashMap), 102).f());
     }
   }
   
@@ -488,14 +472,14 @@ public class QQstoryAction
         if (TextUtils.isEmpty(str1)) {
           return false;
         }
-        StoryApi.a(this.jdField_a_of_type_AndroidContentContext, 23, str3);
+        StoryApi.a(this.b, 23, str3);
       }
       return true;
     }
     catch (NumberFormatException paramMap)
     {
-      label145:
-      break label145;
+      label143:
+      break label143;
     }
     if (QLog.isColorLevel())
     {
@@ -513,9 +497,17 @@ public class QQstoryAction
   private Intent b(Intent paramIntent, boolean paramBoolean)
   {
     if (paramBoolean) {
-      StoryReportor.a("content_flow", "use_api", 0, 0, new String[] { "", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api") });
+      StoryReportor.a("content_flow", "use_api", 0, 0, new String[] { "", (String)this.f.get("parter_api") });
     }
     return c(paramIntent);
+  }
+  
+  private String b(String paramString1, String paramString2)
+  {
+    if (this.f.containsKey(paramString1)) {
+      return (String)this.f.get(paramString1);
+    }
+    return paramString2;
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface, Activity paramActivity, HashMap<String, String> paramHashMap)
@@ -535,7 +527,7 @@ public class QQstoryAction
       QLog.e("QQstoryAction", 2, localStringBuilder.toString());
       i = -1;
     }
-    paramHashMap = QQStoryShareGroupProfileActivity.a(paramActivity, 2, str, null, i, 0);
+    paramHashMap = QQStoryShareGroupProfileActivity.b(paramActivity, 2, str, null, i, 0);
     paramHashMap.putExtra("extra_share_from_user_uid", paramQQAppInterface);
     paramActivity.startActivity(paramHashMap);
     return true;
@@ -597,7 +589,7 @@ public class QQstoryAction
         else
         {
           if (TextUtils.isEmpty(paramString)) {
-            break label455;
+            break label453;
           }
           j = i;
           if (i == 0) {
@@ -621,7 +613,7 @@ public class QQstoryAction
       }
       StoryPlayerLauncher.b(paramActivity, paramQQAppInterface, paramHashMap, j);
       return true;
-      label455:
+      label453:
       paramHashMap = str2;
       if (str2 == null) {
         paramHashMap = "JUMP_ACTION_EMPTY_FEED_ID";
@@ -639,33 +631,33 @@ public class QQstoryAction
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("topicId=");
-      ((StringBuilder)localObject).append((String)this.jdField_a_of_type_JavaUtilHashMap.get("topicid"));
+      ((StringBuilder)localObject).append((String)this.f.get("topicid"));
       localObject = ((StringBuilder)localObject).toString();
-      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "5", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"), "", localObject });
+      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "5", (String)this.f.get("parter_api"), "", localObject });
     }
     return b(paramIntent);
   }
   
   private boolean c()
   {
-    boolean bool = ((Boolean)((StoryConfigManager)SuperManager.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue();
-    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("token");
+    boolean bool = ((Boolean)((StoryConfigManager)SuperManager.a(10)).c("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue();
+    String str = (String)this.f.get("token");
     if (!TextUtils.isEmpty(str))
     {
-      StoryShareEncryptHelper.a(this.jdField_a_of_type_AndroidContentContext, str, new QQstoryAction.1(this), null);
+      StoryShareEncryptHelper.a(this.b, str, new QQstoryAction.1(this), null);
     }
-    else if (TextUtils.equals(this.c, "publish"))
+    else if (TextUtils.equals(this.e, "publish"))
     {
-      j();
+      d();
     }
     else
     {
       if (bool)
       {
-        this.c = "open";
-        StoryShareEncryptHelper.a(this.jdField_a_of_type_JavaUtilHashMap);
+        this.e = "open";
+        StoryShareEncryptHelper.a(this.f);
       }
-      j();
+      d();
     }
     return true;
   }
@@ -674,10 +666,10 @@ public class QQstoryAction
   {
     if (paramBoolean)
     {
-      Object localObject1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("userid");
-      String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("usertype");
-      Object localObject2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("storyid");
-      String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("unionid");
+      Object localObject1 = (String)this.f.get("userid");
+      String str1 = (String)this.f.get("usertype");
+      Object localObject2 = (String)this.f.get("storyid");
+      String str2 = (String)this.f.get("unionid");
       if (TextUtils.isEmpty((CharSequence)localObject2))
       {
         localObject2 = new StringBuilder();
@@ -696,43 +688,78 @@ public class QQstoryAction
         ((StringBuilder)localObject1).append((String)localObject2);
         localObject1 = ((StringBuilder)localObject1).toString();
       }
-      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "4", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"), "", localObject1 });
+      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "4", (String)this.f.get("parter_api"), "", localObject1 });
     }
     return d(paramIntent);
   }
   
+  private boolean d()
+  {
+    if ((QzoneConfig.getInstance().getConfig("qqstoryvideo", "jump_hyws_scheme_enable", 0) == 0) && (BaseApplicationImpl.getContext() != null))
+    {
+      ThreadManager.getUIHandler().post(new QQstoryAction.2(this));
+      return false;
+    }
+    if ((((MsgTabStoryNodeConfigManager)this.H.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a) && (!"open".equals(this.e)) && (!"openTag".equals(this.e)) && (!"openSquare".equals(this.e)) && (!"publish".equals(this.e))) {
+      return q();
+    }
+    String str2 = (String)this.f.get("one_page");
+    String str1 = str2;
+    if (String.valueOf(2).equals(str2))
+    {
+      MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager = (MsgTabStoryNodeConfigManager)this.H.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER);
+      str1 = str2;
+      if (localMsgTabStoryNodeConfigManager != null)
+      {
+        str1 = str2;
+        if (!localMsgTabStoryNodeConfigManager.a)
+        {
+          str1 = String.valueOf(0);
+          this.f.put("one_page", str1);
+        }
+      }
+    }
+    if ("0".equals(str1)) {
+      return e();
+    }
+    if ("open".equals(this.e)) {
+      return e();
+    }
+    return q();
+  }
+  
   private Intent e(Intent paramIntent)
   {
-    boolean bool = TextUtils.isEmpty((String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api")) ^ true;
-    SLog.a("QQstoryAction", "makeStoryJumpActivity() action=%s isFromApi=%s", this.c, Boolean.valueOf(bool));
-    SLog.a("QQstoryAction", "makeStoryJumpActivity() attr=%s", String.valueOf(this.jdField_a_of_type_JavaUtilHashMap));
-    if ("open".equals(this.c)) {
+    boolean bool = TextUtils.isEmpty((String)this.f.get("parter_api")) ^ true;
+    SLog.a("QQstoryAction", "makeStoryJumpActivity() action=%s isFromApi=%s", this.e, Boolean.valueOf(bool));
+    SLog.a("QQstoryAction", "makeStoryJumpActivity() attr=%s", String.valueOf(this.f));
+    if ("open".equals(this.e)) {
       return f(paramIntent, bool);
     }
-    if ((!"openVideo".equals(this.c)) && (!"openvideo".equals(this.c)))
+    if ((!"openVideo".equals(this.e)) && (!"openvideo".equals(this.e)))
     {
-      if ("opencontent".equals(this.c)) {
+      if ("opencontent".equals(this.e)) {
         return d(paramIntent, bool);
       }
-      if ("opentopic".equals(this.c)) {
+      if ("opentopic".equals(this.e)) {
         return c(paramIntent, bool);
       }
-      if ("opendiscovery".equals(this.c)) {
+      if ("opendiscovery".equals(this.e)) {
         return b(paramIntent, bool);
       }
-      if ("publish".equals(this.c)) {
+      if ("publish".equals(this.e)) {
         return a(paramIntent, bool);
       }
-      if ("infoCard".equals(this.c)) {
+      if ("infoCard".equals(this.e)) {
         return i(paramIntent);
       }
-      if ("sharegroupcard".equals(this.c)) {
+      if ("sharegroupcard".equals(this.e)) {
         return h(paramIntent);
       }
-      if ("openTag".equals(this.c)) {
+      if ("openTag".equals(this.e)) {
         return g(paramIntent);
       }
-      if ("openSquare".equals(this.c)) {
+      if ("openSquare".equals(this.e)) {
         return f(paramIntent);
       }
       return null;
@@ -746,13 +773,75 @@ public class QQstoryAction
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("userId=");
-      ((StringBuilder)localObject).append((String)this.jdField_a_of_type_JavaUtilHashMap.get("videoOwnerUin"));
+      ((StringBuilder)localObject).append((String)this.f.get("videoOwnerUin"));
       ((StringBuilder)localObject).append("&vid=");
-      ((StringBuilder)localObject).append((String)this.jdField_a_of_type_JavaUtilHashMap.get("videoId"));
+      ((StringBuilder)localObject).append((String)this.f.get("videoId"));
       localObject = ((StringBuilder)localObject).toString();
-      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "6", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"), "", localObject });
+      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "6", (String)this.f.get("parter_api"), "", localObject });
     }
     return a(paramIntent);
+  }
+  
+  private boolean e()
+  {
+    Intent localIntent;
+    if (this.H.getNowLiveManager().d)
+    {
+      SLog.b("QQstoryAction", "startStoryMainActivity, isNowTabShow==true");
+      localIntent = new Intent(this.H.getApp(), SplashActivity.class);
+      localIntent.putExtra("fragment_id", 1);
+      localIntent.putExtra("tab_index", FrameControllerUtil.f);
+      localIntent.putExtra("open_now_tab_fragment", true);
+      localIntent.putExtra("extra_from_share", true);
+      localIntent.setFlags(335544320);
+      localIntent = e(localIntent);
+      if ((localIntent != null) && ((this.b instanceof Activity)))
+      {
+        this.b.startActivity(localIntent);
+        return true;
+      }
+      if (!(this.b instanceof Activity))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Error: context is not instanceof Activity, context is: ");
+        localStringBuilder.append(String.valueOf(this.b));
+        SLog.e("QQstoryAction", localStringBuilder.toString());
+      }
+      if (localIntent == null) {
+        SLog.e("QQstoryAction", "Error: jumpIntent is null");
+      }
+    }
+    else
+    {
+      SLog.b("QQstoryAction", "startStoryMainActivity, isNowTabShow==false");
+      if (((this.b instanceof JumpActivity)) && (!BaseApplicationImpl.appMainActivityHasLanuch))
+      {
+        localIntent = new Intent(this.H.getApp(), SplashActivity.class);
+        localIntent.putExtra("fragment_id", 1);
+        localIntent.putExtra("tab_index", FrameControllerUtil.a);
+        localIntent.setFlags(335544320);
+        localIntent.putExtra("jump_to_story", true);
+      }
+      else
+      {
+        localIntent = f();
+      }
+      localIntent = e(localIntent);
+      if ((localIntent != null) && (((this.b instanceof Activity)) || ((this.b instanceof BaseApplicationImpl))))
+      {
+        this.b.startActivity(localIntent);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private Intent f()
+  {
+    ((QQStoryActivityManager)SuperManager.a(18)).c();
+    Intent localIntent = new Intent(this.b, QQStoryMainActivity.class);
+    localIntent.setFlags(67108864);
+    return localIntent;
   }
   
   @NotNull
@@ -765,10 +854,10 @@ public class QQstoryAction
   @NotNull
   private Intent f(Intent paramIntent, boolean paramBoolean)
   {
-    paramIntent.putExtra("redid", (String)this.jdField_a_of_type_JavaUtilHashMap.get("redid"));
-    paramIntent.putExtra("lebaVersion", (String)this.jdField_a_of_type_JavaUtilHashMap.get("lebaVersion"));
+    paramIntent.putExtra("redid", (String)this.f.get("redid"));
+    paramIntent.putExtra("lebaVersion", (String)this.f.get("lebaVersion"));
     if (paramBoolean) {
-      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "1", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api") });
+      StoryReportor.a("basic", "use_api", 0, 0, new String[] { "1", (String)this.f.get("parter_api") });
     }
     return paramIntent;
   }
@@ -776,8 +865,8 @@ public class QQstoryAction
   @NotNull
   private Intent g(Intent paramIntent)
   {
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("tag_id");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("tag_type");
+    String str1 = (String)this.f.get("tag_id");
+    String str2 = (String)this.f.get("tag_type");
     paramIntent.putExtra("action", 14);
     paramIntent.putExtra("tag_id", str1);
     paramIntent.putExtra("tag_type", str2);
@@ -787,9 +876,9 @@ public class QQstoryAction
   @Nullable
   private Intent h(Intent paramIntent)
   {
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("unionid");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromId");
-    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromuid");
+    String str1 = (String)this.f.get("unionid");
+    String str2 = (String)this.f.get("fromId");
+    String str3 = (String)this.f.get("fromuid");
     try
     {
       paramIntent.putExtra("union_id", str1);
@@ -800,8 +889,8 @@ public class QQstoryAction
     }
     catch (NumberFormatException paramIntent)
     {
-      label85:
-      break label85;
+      label84:
+      break label84;
     }
     return null;
   }
@@ -809,10 +898,10 @@ public class QQstoryAction
   @Nullable
   private Intent i(Intent paramIntent)
   {
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("usertype");
-    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromId");
-    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("unionid");
+    String str1 = (String)this.f.get("uin");
+    String str2 = (String)this.f.get("usertype");
+    String str3 = (String)this.f.get("fromId");
+    String str4 = (String)this.f.get("unionid");
     if ((!TextUtils.isEmpty(str2)) && ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str4)))) {
       if (TextUtils.isEmpty(str3)) {
         return null;
@@ -831,126 +920,37 @@ public class QQstoryAction
     return null;
   }
   
-  private boolean j()
+  private boolean q()
   {
-    if ((QzoneConfig.getInstance().getConfig("qqstoryvideo", "jump_hyws_scheme_enable", 0) == 0) && (BaseApplicationImpl.getContext() != null))
+    if ("open".equals(this.e))
     {
-      ThreadManager.getUIHandler().post(new QQstoryAction.2(this));
-      return false;
-    }
-    if ((((MsgTabStoryNodeConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a) && (!"open".equals(this.c)) && (!"openTag".equals(this.c)) && (!"openSquare".equals(this.c)) && (!"publish".equals(this.c))) {
-      return l();
-    }
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("one_page");
-    String str1 = str2;
-    if (String.valueOf(2).equals(str2))
-    {
-      MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager = (MsgTabStoryNodeConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER);
-      str1 = str2;
-      if (localMsgTabStoryNodeConfigManager != null)
-      {
-        str1 = str2;
-        if (!localMsgTabStoryNodeConfigManager.a)
-        {
-          str1 = String.valueOf(0);
-          this.jdField_a_of_type_JavaUtilHashMap.put("one_page", str1);
-        }
-      }
-    }
-    if ("0".equals(str1)) {
-      return k();
-    }
-    if ("open".equals(this.c)) {
-      return k();
-    }
-    return l();
-  }
-  
-  private boolean k()
-  {
-    Intent localIntent;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNowLiveManager().a)
-    {
-      SLog.b("QQstoryAction", "startStoryMainActivity, isNowTabShow==true");
-      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SplashActivity.class);
-      localIntent.putExtra("fragment_id", 1);
-      localIntent.putExtra("tab_index", FrameControllerUtil.f);
-      localIntent.putExtra("open_now_tab_fragment", true);
-      localIntent.putExtra("extra_from_share", true);
-      localIntent.setFlags(335544320);
-      localIntent = e(localIntent);
-      if ((localIntent != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)))
-      {
-        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        return true;
-      }
-      if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("Error: context is not instanceof Activity, context is: ");
-        localStringBuilder.append(String.valueOf(this.jdField_a_of_type_AndroidContentContext));
-        SLog.e("QQstoryAction", localStringBuilder.toString());
-      }
-      if (localIntent == null) {
-        SLog.e("QQstoryAction", "Error: jumpIntent is null");
-      }
-    }
-    else
-    {
-      SLog.b("QQstoryAction", "startStoryMainActivity, isNowTabShow==false");
-      if (((this.jdField_a_of_type_AndroidContentContext instanceof JumpActivity)) && (!BaseApplicationImpl.appMainActivityHasLanuch))
-      {
-        localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SplashActivity.class);
-        localIntent.putExtra("fragment_id", 1);
-        localIntent.putExtra("tab_index", FrameControllerUtil.a);
-        localIntent.setFlags(335544320);
-        localIntent.putExtra("jump_to_story", true);
-      }
-      else
-      {
-        localIntent = a();
-      }
-      localIntent = e(localIntent);
-      if ((localIntent != null) && (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) || ((this.jdField_a_of_type_AndroidContentContext instanceof BaseApplicationImpl))))
-      {
-        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private boolean l()
-  {
-    if ("open".equals(this.c))
-    {
-      localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQStoryMainActivity.class);
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult((Intent)localObject, 8855);
+      localObject = new Intent(this.b, QQStoryMainActivity.class);
+      ((Activity)this.b).startActivityForResult((Intent)localObject, 8855);
       return true;
     }
-    if ("openVideo".equalsIgnoreCase(this.c))
+    if ("openVideo".equalsIgnoreCase(this.e))
     {
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-        return a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap, null);
+      if ((this.b instanceof Activity)) {
+        return a(this.H, (Activity)this.b, this.f, null);
       }
       return false;
     }
-    if ("opencontent".equals(this.c)) {
-      return a(this.jdField_a_of_type_JavaUtilHashMap, false);
+    if ("opencontent".equals(this.e)) {
+      return a(this.f, false);
     }
-    if ("opendiscovery".equals(this.c)) {
-      return n();
+    if ("opendiscovery".equals(this.e)) {
+      return s();
     }
-    if ("opentopic".equals(this.c)) {
-      return m();
+    if ("opentopic".equals(this.e)) {
+      return r();
     }
-    if ("infoCard".equals(this.c)) {
-      return a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+    if ("infoCard".equals(this.e)) {
+      return a(this.H, (Activity)this.b, this.f);
     }
-    if ("sharegroupcard".equals(this.c)) {
-      return b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+    if ("sharegroupcard".equals(this.e)) {
+      return b(this.H, (Activity)this.b, this.f);
     }
-    Object localObject = new QQStoryHomeJumpHelper((Activity)this.jdField_a_of_type_AndroidContentContext, new QQstoryAction.3(this));
+    Object localObject = new QQStoryHomeJumpHelper((Activity)this.b, new QQstoryAction.3(this));
     Intent localIntent = e(new Intent());
     if (localIntent != null)
     {
@@ -961,28 +961,28 @@ public class QQstoryAction
     return false;
   }
   
-  private boolean m()
+  private boolean r()
   {
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("topicid");
-    localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("topicname");
-    a((String)this.jdField_a_of_type_JavaUtilHashMap.get("sharefromtype"));
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    Object localObject = (String)this.f.get("topicid");
+    localObject = (String)this.f.get("topicname");
+    a((String)this.f.get("sharefromtype"));
+    if ((this.b instanceof Activity))
     {
-      localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      localObject = (Activity)this.b;
       return true;
     }
     return false;
   }
   
-  private boolean n()
+  private boolean s()
   {
-    if (!TextUtils.isEmpty(a((String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api")))) {
-      StoryReportor.a("content_flow", "use_api", 0, 0, new String[] { "", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api") });
+    if (!TextUtils.isEmpty(a((String)this.f.get("parter_api")))) {
+      StoryReportor.a("content_flow", "use_api", 0, 0, new String[] { "", (String)this.f.get("parter_api") });
     }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    if ((this.b instanceof Activity))
     {
-      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-      "1".equals((String)this.jdField_a_of_type_JavaUtilHashMap.get("to_new_version"));
+      Activity localActivity = (Activity)this.b;
+      "1".equals((String)this.f.get("to_new_version"));
       return true;
     }
     return false;
@@ -991,7 +991,7 @@ public class QQstoryAction
   public Intent a(Intent paramIntent)
   {
     paramIntent.putExtra("action", 5);
-    paramIntent.putExtra("extra_jump_attrs", this.jdField_a_of_type_JavaUtilHashMap);
+    paramIntent.putExtra("extra_jump_attrs", this.f);
     return paramIntent;
   }
   
@@ -999,7 +999,7 @@ public class QQstoryAction
   {
     try
     {
-      if ("openNow".equals(this.c)) {
+      if ("openNow".equals(this.e)) {
         return b();
       }
       boolean bool = c();
@@ -1011,7 +1011,7 @@ public class QQstoryAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QQstoryAction", 1, localStringBuilder.toString());
-      b_("QQstoryAction");
+      h_("QQstoryAction");
     }
     return false;
   }
@@ -1019,9 +1019,9 @@ public class QQstoryAction
   public Intent b(Intent paramIntent)
   {
     paramIntent.putExtra("action", 4);
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("topicname");
-    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("topicid");
-    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("storysharefrom");
+    String str2 = (String)this.f.get("topicname");
+    String str3 = (String)this.f.get("topicid");
+    String str4 = (String)this.f.get("storysharefrom");
     String str1 = str2;
     try
     {
@@ -1030,8 +1030,8 @@ public class QQstoryAction
       }
       paramIntent.putExtra("extra_topic_id", Long.parseLong(str3));
       paramIntent.putExtra("extra_topic_name", str1);
-      paramIntent.putExtra("extra_partner_api", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"));
-      paramIntent.putExtra("extra_share_from_type", a(this.jdField_a_of_type_JavaUtilHashMap));
+      paramIntent.putExtra("extra_partner_api", (String)this.f.get("parter_api"));
+      paramIntent.putExtra("extra_share_from_type", a(this.f));
       return paramIntent;
     }
     catch (Exception paramIntent)
@@ -1044,9 +1044,9 @@ public class QQstoryAction
   
   public boolean b()
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    if ((this.b instanceof Activity))
     {
-      localObject1 = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent();
+      localObject1 = ((Activity)this.b).getIntent();
       if (localObject1 != null)
       {
         str1 = ((Intent)localObject1).getStringExtra("big_brother_source_key");
@@ -1059,30 +1059,30 @@ public class QQstoryAction
     label46:
     Object localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = this.c;
     }
-    String str2 = a("roomid", "0");
-    String str3 = a("fromid", "");
-    String str4 = a("roomtype", "");
-    String str5 = a("list_name", "");
-    String str6 = a("first_jump_mode", "h5");
-    String str7 = a("need_record", "1");
-    String str8 = a("is_record", "0");
-    String str9 = a("enter_record_if_finish", "1");
-    String str10 = a("nowapp_ext", "");
-    String str11 = a("nowplugin_ext", "");
-    String str12 = a("h5_ext", "");
-    String str13 = a("shakespearetime", "");
-    String str14 = a("hostloading_percent", "0");
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("msgurl")) {
-      localObject1 = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("msgurl"));
+    String str2 = b("roomid", "0");
+    String str3 = b("fromid", "");
+    String str4 = b("roomtype", "");
+    String str5 = b("list_name", "");
+    String str6 = b("first_jump_mode", "h5");
+    String str7 = b("need_record", "1");
+    String str8 = b("is_record", "0");
+    String str9 = b("enter_record_if_finish", "1");
+    String str10 = b("nowapp_ext", "");
+    String str11 = b("nowplugin_ext", "");
+    String str12 = b("h5_ext", "");
+    String str13 = b("shakespearetime", "");
+    String str14 = b("hostloading_percent", "0");
+    if (this.f.containsKey("msgurl")) {
+      localObject1 = h((String)this.f.get("msgurl"));
     } else {
       localObject1 = "";
     }
-    String str15 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("coverurl");
-    String str16 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("extras");
-    Object localObject3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("bid");
-    localObject3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("first");
+    String str15 = (String)this.f.get("coverurl");
+    String str16 = (String)this.f.get("extras");
+    Object localObject3 = (String)this.f.get("bid");
+    localObject3 = (String)this.f.get("first");
     localObject3 = new Bundle();
     ((Bundle)localObject3).putString("coverurl", str15);
     ((Bundle)localObject3).putString("roomid", str2);
@@ -1110,26 +1110,26 @@ public class QQstoryAction
       bool = true;
     }
     ((Bundle)localObject3).putBoolean("need_record", bool);
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("topic")) {
-      ((Bundle)localObject3).putString("topic", (String)this.jdField_a_of_type_JavaUtilHashMap.get("topic"));
+    if (this.f.containsKey("topic")) {
+      ((Bundle)localObject3).putString("topic", (String)this.f.get("topic"));
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("story_ext")) {
-      ((Bundle)localObject3).putString("story_ext", (String)this.jdField_a_of_type_JavaUtilHashMap.get("story_ext"));
+    if (this.f.containsKey("story_ext")) {
+      ((Bundle)localObject3).putString("story_ext", (String)this.f.get("story_ext"));
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("startsrc")) {
-      ((Bundle)localObject3).putString("startsrc", (String)this.jdField_a_of_type_JavaUtilHashMap.get("startsrc"));
+    if (this.f.containsKey("startsrc")) {
+      ((Bundle)localObject3).putString("startsrc", (String)this.f.get("startsrc"));
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("hostloading_percent")) {
+    if (this.f.containsKey("hostloading_percent")) {
       ((Bundle)localObject3).putInt("hostloading_percent", Integer.valueOf(str14).intValue());
     }
     if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication()))
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, "无网络连接请稍后再试", 1).a();
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 1, "无网络连接请稍后再试", 1).show();
       return false;
     }
     try
     {
-      ((IDynamicNowManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).a((Bundle)localObject3);
+      ((IDynamicNowManager)this.H.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).a((Bundle)localObject3);
       QLog.i("QQstoryAction", 1, "enter now plugin use shadow");
       return true;
     }
@@ -1147,9 +1147,9 @@ public class QQstoryAction
     paramIntent.putExtra("action", 12);
     try
     {
-      paramIntent.putExtra("extra_partner_api", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"));
-      paramIntent.putExtra("extra_share_from_type", a(this.jdField_a_of_type_JavaUtilHashMap));
-      paramIntent.putExtra("to_new_version", (String)this.jdField_a_of_type_JavaUtilHashMap.get("to_new_version"));
+      paramIntent.putExtra("extra_partner_api", (String)this.f.get("parter_api"));
+      paramIntent.putExtra("extra_share_from_type", a(this.f));
+      paramIntent.putExtra("to_new_version", (String)this.f.get("to_new_version"));
       return paramIntent;
     }
     catch (Exception paramIntent)
@@ -1162,12 +1162,12 @@ public class QQstoryAction
   
   public Intent d(Intent paramIntent)
   {
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("userid");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("usertype");
-    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("unionid");
-    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("storyid");
-    String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("showinfocard");
-    int i = a(this.jdField_a_of_type_JavaUtilHashMap);
+    String str1 = (String)this.f.get("userid");
+    String str2 = (String)this.f.get("usertype");
+    String str3 = (String)this.f.get("unionid");
+    String str4 = (String)this.f.get("storyid");
+    String str5 = (String)this.f.get("showinfocard");
+    int i = a(this.f);
     boolean bool;
     if ((str5 != null) && (str5.equals("0"))) {
       bool = false;
@@ -1188,19 +1188,19 @@ public class QQstoryAction
         paramIntent.putExtra("EXTRA_USER_UNION_ID", str3);
         paramIntent.putExtra("extra_is_show_info_card", bool);
         paramIntent.putExtra("extra_share_from_type", i);
-        paramIntent.putExtra("extra_partner_api", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"));
+        paramIntent.putExtra("extra_partner_api", (String)this.f.get("parter_api"));
         return paramIntent;
       }
       if (j == 5)
       {
         paramIntent.putExtra("action", 4);
         paramIntent.putExtra("extra_topic_id", Long.parseLong(str1));
-        paramIntent.putExtra("extra_topic_name", (String)this.jdField_a_of_type_JavaUtilHashMap.get("topicname"));
-        str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("topiccolor");
+        paramIntent.putExtra("extra_topic_name", (String)this.f.get("topicname"));
+        str3 = (String)this.f.get("topiccolor");
         if (!TextUtils.isEmpty(str3)) {
           paramIntent.putExtra("extra_topic_color", Integer.parseInt(str3));
         }
-        paramIntent.putExtra("extra_partner_api", (String)this.jdField_a_of_type_JavaUtilHashMap.get("parter_api"));
+        paramIntent.putExtra("extra_partner_api", (String)this.f.get("parter_api"));
         paramIntent.putExtra("extra_share_from_type", i);
         return paramIntent;
       }
@@ -1214,8 +1214,8 @@ public class QQstoryAction
     }
     catch (NumberFormatException paramIntent)
     {
-      label402:
-      break label402;
+      label400:
+      break label400;
     }
     if (QLog.isColorLevel())
     {
@@ -1238,7 +1238,7 @@ public class QQstoryAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QQstoryAction
  * JD-Core Version:    0.7.0.1
  */

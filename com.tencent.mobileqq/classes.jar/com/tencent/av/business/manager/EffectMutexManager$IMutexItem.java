@@ -2,7 +2,7 @@ package com.tencent.av.business.manager;
 
 public abstract interface EffectMutexManager$IMutexItem
 {
-  public abstract void a(int paramInt, String paramString);
+  public abstract void b(int paramInt, String paramString);
 }
 
 

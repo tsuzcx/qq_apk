@@ -16,12 +16,12 @@ class QidianProfileCardActivity$22
     this.a.a();
     if ((paramBoolean) && (paramBmqqUserSimpleInfo != null))
     {
-      if (paramBmqqUserSimpleInfo.mBmqqUin.equals(this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin))
+      if (paramBmqqUserSimpleInfo.mBmqqUin.equals(this.a.e.allInOne.uin))
       {
-        if ((paramBmqqUserSimpleInfo.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo) ^ true))
+        if ((paramBmqqUserSimpleInfo.equals(this.a.o) ^ true))
         {
           QidianProfileCardActivity localQidianProfileCardActivity = this.a;
-          localQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo = paramBmqqUserSimpleInfo;
+          localQidianProfileCardActivity.o = paramBmqqUserSimpleInfo;
           localQidianProfileCardActivity.c(0);
           return;
         }
@@ -41,7 +41,7 @@ class QidianProfileCardActivity$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.22
  * JD-Core Version:    0.7.0.1
  */

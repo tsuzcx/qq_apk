@@ -7,8 +7,8 @@ import tencent.im.troop_search_searchtab.searchtab.Item2;
 public class TroopCardSameCity
   extends BaseTroopCardView
 {
-  protected List<searchtab.Item2> a;
-  protected searchtab.Card a;
+  protected searchtab.Card d;
+  protected List<searchtab.Item2> e;
 }
 
 

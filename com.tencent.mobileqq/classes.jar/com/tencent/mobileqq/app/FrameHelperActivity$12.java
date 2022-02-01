@@ -21,7 +21,7 @@ class FrameHelperActivity$12
     paramAnimation.addAnimation(localAlphaAnimation);
     paramAnimation.setDuration(30L);
     paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    this.a.startAnimation(paramAnimation);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -30,7 +30,7 @@ class FrameHelperActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.12
  * JD-Core Version:    0.7.0.1
  */

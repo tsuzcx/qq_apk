@@ -16,15 +16,15 @@ class WSFollowFragment$4
     if (WSFollowFragment.a(this.a) != null) {
       WSFollowFragment.a(this.a).clearList();
     }
-    ((WSFollowPresenter)this.a.b()).a(true, true);
-    WSFollowFragment.a(this.a).setVisibility(8);
-    this.a.c();
+    ((WSFollowPresenter)this.a.aO_()).a(true, true);
+    WSFollowFragment.d(this.a).setVisibility(8);
+    this.a.r();
     WSReportDc00898.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSFollowFragment.4
  * JD-Core Version:    0.7.0.1
  */

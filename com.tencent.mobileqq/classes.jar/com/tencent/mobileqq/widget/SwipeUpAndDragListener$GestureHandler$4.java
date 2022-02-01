@@ -10,16 +10,16 @@ class SwipeUpAndDragListener$GestureHandler$4
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener$GestureHandler.b.a.a = false;
+    this.b.G.i.e = false;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mPanel.mDisableGuestrueSend = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener$GestureHandler.b.a.a);
+    localStringBuilder.append(this.b.G.i.e);
     Logger.a("PhotoListPanel", "enableGuestrue", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SwipeUpAndDragListener.GestureHandler.4
  * JD-Core Version:    0.7.0.1
  */

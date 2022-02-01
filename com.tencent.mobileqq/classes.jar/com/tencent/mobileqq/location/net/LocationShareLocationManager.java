@@ -24,43 +24,38 @@ import mqq.os.MqqHandler;
 
 public class LocationShareLocationManager
 {
-  private static volatile LocationShareLocationManager jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager;
-  public static LatLng a;
-  private double jdField_a_of_type_Double = 0.0D;
-  private TencentDirectionListener jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener;
-  private TencentLocationListener jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener;
-  private TencentLocationManager jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager;
-  private LocationRoom.RoomKey jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
-  private volatile LocationShareLocationManager.LocationChangeListener jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager$LocationChangeListener;
-  public ReportLocationHandler a;
-  private LatLng b = null;
-  
-  private LocationShareLocationManager()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetReportLocationHandler = new ReportLocationHandler();
-  }
+  public static LatLng b;
+  private static volatile LocationShareLocationManager c;
+  public ReportLocationHandler a = new ReportLocationHandler();
+  private volatile LocationShareLocationManager.LocationChangeListener d;
+  private TencentLocationManager e;
+  private TencentLocationListener f;
+  private TencentDirectionListener g;
+  private double h = 0.0D;
+  private LatLng i = null;
+  private LocationRoom.RoomKey j;
   
   public static LocationShareLocationManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager == null) {
-          jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager = new LocationShareLocationManager();
+        if (c == null) {
+          c = new LocationShareLocationManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager;
+    return c;
   }
   
-  private void a()
+  private void d()
   {
     try
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.getClass().getDeclaredField("c");
+      Object localObject = this.e.getClass().getDeclaredField("c");
       ((Field)localObject).setAccessible(true);
-      localObject = ((Field)localObject).get(this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager);
+      localObject = ((Field)localObject).get(this.e);
       Field localField = localObject.getClass().getDeclaredField("b");
       localField.setAccessible(true);
       localObject = localField.get(localObject);
@@ -80,35 +75,27 @@ public class LocationShareLocationManager
     }
   }
   
-  public LatLng a()
-  {
-    if (this.b == null) {
-      QLog.d("Q.LocationShare", 1, "[LocationManager] getSelfLatLng: invoked. location null detected");
-    }
-    return this.b;
-  }
-  
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetReportLocationHandler.a(paramString, paramInt, new LocationShareLocationManager.5(this));
+    this.a.a(paramString, paramInt, new LocationShareLocationManager.5(this));
   }
   
   public void a(Activity paramActivity, LocationRoom paramLocationRoom)
   {
-    if (a()) {
+    if (b()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey = paramLocationRoom.a();
-    LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
-    if (GuardManager.a != null) {
-      GuardManager.a.a(LocationHandler.a());
+    this.j = paramLocationRoom.e();
+    LocationShareRoomManager.a().a = this.j;
+    if (GuardManager.sInstance != null) {
+      GuardManager.sInstance.registerCallBack(LocationHandler.a());
     }
     LocationShareLocationManager.1 local1 = new LocationShareLocationManager.1(this, new SoftReference(paramActivity));
     MqqHandler localMqqHandler = ThreadManager.getUIHandler();
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqLocationNetReportLocationHandler.a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey);
+    boolean bool = this.a.a(this.j);
     if (bool)
     {
-      LocationShareRoomManager.a().a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a());
+      LocationShareRoomManager.a().a(this.j.a(), this.j.b());
     }
     else
     {
@@ -117,35 +104,35 @@ public class LocationShareLocationManager
       }
       localMqqHandler.postDelayed(local1, 15000L);
     }
-    this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager = TencentLocationManager.getInstance(BaseApplication.getContext());
-    this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener = new LocationShareLocationManager.2(this, bool, local1, localMqqHandler, paramLocationRoom);
-    this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener = new LocationShareLocationManager.3(this);
-    int i = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.requestLocationUpdates(TencentLocationRequest.create().setInterval(2000L), this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener);
-    if (i != 0)
+    this.e = TencentLocationManager.getInstance(BaseApplication.getContext());
+    this.f = new LocationShareLocationManager.2(this, bool, local1, localMqqHandler, paramLocationRoom);
+    this.g = new LocationShareLocationManager.3(this);
+    int k = this.e.requestLocationUpdates(TencentLocationRequest.create().setInterval(2000L), this.f);
+    if (k != 0)
     {
       paramLocationRoom = new StringBuilder();
       paramLocationRoom.append("[LocationManager] requestLocationUpdates: invoked. error: ");
-      paramLocationRoom.append(i);
+      paramLocationRoom.append(k);
       QLog.e("Q.LocationShare", 1, paramLocationRoom.toString());
-      QQToast.a(BaseApplication.getContext(), "地图定位系统初始化失败，请稍后重试", 0).a();
+      QQToast.makeText(BaseApplication.getContext(), "地图定位系统初始化失败，请稍后重试", 0).show();
       if (paramActivity != null) {
         paramActivity.finish();
       }
     }
-    i = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.startDirectionUpdates(this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener, Looper.myLooper());
-    if (i != 0)
+    k = this.e.startDirectionUpdates(this.g, Looper.myLooper());
+    if (k != 0)
     {
       paramActivity = new StringBuilder();
       paramActivity.append("[LocationManager] startDirectionUpdates: invoked. error: ");
-      paramActivity.append(i);
+      paramActivity.append(k);
       QLog.e("Q.LocationShare", 1, paramActivity.toString());
-      QQToast.a(BaseApplication.getContext(), 1, "方向箭头暂不可用", 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 1, "方向箭头暂不可用", 0).show();
     }
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey, boolean paramBoolean)
   {
-    if ((!paramBoolean) && (paramRoomKey != null) && (!paramRoomKey.equals(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey))) {
+    if ((!paramBoolean) && (paramRoomKey != null) && (!paramRoomKey.equals(this.j))) {
       return;
     }
     if (Looper.getMainLooper() != Looper.myLooper())
@@ -160,20 +147,20 @@ public class LocationShareLocationManager
       localStringBuilder.append(paramRoomKey);
       QLog.d("Q.LocationShare", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey = null;
-    if (GuardManager.a != null) {
-      GuardManager.a.b(LocationHandler.a());
+    this.j = null;
+    if (GuardManager.sInstance != null) {
+      GuardManager.sInstance.unregisterCallback(LocationHandler.a());
     }
-    paramRoomKey = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager;
+    paramRoomKey = this.e;
     if (paramRoomKey != null)
     {
-      this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener = null;
-      paramRoomKey.removeUpdates(this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener);
-      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.stopDirectionUpdate();
-      a();
-      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager = null;
+      this.g = null;
+      paramRoomKey.removeUpdates(this.f);
+      this.e.stopDirectionUpdate();
+      d();
+      this.e = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetReportLocationHandler.a();
+    this.a.b();
     QQNotificationManager.getInstance().cancel("Q.LocationShare", 525);
     try
     {
@@ -190,7 +177,7 @@ public class LocationShareLocationManager
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager$LocationChangeListener = paramLocationChangeListener;
+      this.d = paramLocationChangeListener;
       return;
     }
     finally
@@ -204,8 +191,8 @@ public class LocationShareLocationManager
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager$LocationChangeListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager$LocationChangeListener.a(this.b, Double.valueOf(this.jdField_a_of_type_Double), paramBoolean);
+      if (this.d != null) {
+        this.d.a(this.i, Double.valueOf(this.h), paramBoolean);
       }
       return;
     }
@@ -214,11 +201,6 @@ public class LocationShareLocationManager
       localObject = finally;
       throw localObject;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey != null;
   }
   
   public void b(LocationShareLocationManager.LocationChangeListener paramLocationChangeListener)
@@ -230,19 +212,32 @@ public class LocationShareLocationManager
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramLocationChangeListener);
         localStringBuilder.append(" mLocationListener: ");
-        QLog.d("Q.LocationShare", 2, new Object[] { "removeLocationListener: invoked. listener: ", localStringBuilder.toString(), this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager$LocationChangeListener });
+        QLog.d("Q.LocationShare", 2, new Object[] { "removeLocationListener: invoked. listener: ", localStringBuilder.toString(), this.d });
       }
-      if (paramLocationChangeListener == this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager$LocationChangeListener) {
-        this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareLocationManager$LocationChangeListener = null;
+      if (paramLocationChangeListener == this.d) {
+        this.d = null;
       }
       return;
     }
     finally {}
   }
+  
+  public boolean b()
+  {
+    return this.j != null;
+  }
+  
+  public LatLng c()
+  {
+    if (this.i == null) {
+      QLog.d("Q.LocationShare", 1, "[LocationManager] getSelfLatLng: invoked. location null detected");
+    }
+    return this.i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationShareLocationManager
  * JD-Core Version:    0.7.0.1
  */

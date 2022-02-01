@@ -16,25 +16,24 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class ApolloStickerRecView
   extends CommonStickerRecView
 {
-  public IApolloIceBreakShow a;
+  public IApolloIceBreakShow a = (IApolloIceBreakShow)QRoute.api(IApolloIceBreakShow.class);
   
   public ApolloStickerRecView(IStickerPresenter paramIStickerPresenter, Activity paramActivity, BaseAIOContext paramBaseAIOContext, ViewGroup paramViewGroup, EditText paramEditText, AppInterface paramAppInterface)
   {
     super(paramIStickerPresenter, paramActivity, paramBaseAIOContext, paramViewGroup, paramEditText);
-    this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApiIApolloIceBreakShow = ((IApolloIceBreakShow)QRoute.api(IApolloIceBreakShow.class));
-    this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApiIApolloIceBreakShow.init(paramActivity.getApplicationContext(), this.b, this.jdField_a_of_type_Int, paramAppInterface);
-    paramIStickerPresenter = this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApiIApolloIceBreakShow.getView();
-    paramIStickerPresenter.setId(2131377907);
-    paramActivity = new RelativeLayout.LayoutParams(this.b, this.jdField_a_of_type_Int);
+    this.a.init(paramActivity.getApplicationContext(), this.c, this.b, paramAppInterface);
+    paramIStickerPresenter = this.a.getView();
+    paramIStickerPresenter.setId(2131446390);
+    paramActivity = new RelativeLayout.LayoutParams(this.c, this.b);
     paramActivity.addRule(13, -1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramIStickerPresenter, paramActivity);
+    this.g.addView(paramIStickerPresenter, paramActivity);
   }
   
   public void a()
   {
-    IApolloIceBreakShow localIApolloIceBreakShow = this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApiIApolloIceBreakShow;
+    IApolloIceBreakShow localIApolloIceBreakShow = this.a;
     if ((localIApolloIceBreakShow != null) && (localIApolloIceBreakShow.isPlaying())) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApiIApolloIceBreakShow.pause();
+      this.a.pause();
     }
   }
   
@@ -43,20 +42,20 @@ public class ApolloStickerRecView
     super.a(false);
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(4);
-      IApolloIceBreakShow localIApolloIceBreakShow = this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApiIApolloIceBreakShow;
+      this.e.setVisibility(4);
+      IApolloIceBreakShow localIApolloIceBreakShow = this.a;
       if (localIApolloIceBreakShow != null) {
         localIApolloIceBreakShow.getView().setVisibility(0);
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+      this.g.setOnClickListener(this);
     }
   }
   
   public void b()
   {
-    IApolloIceBreakShow localIApolloIceBreakShow = this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApiIApolloIceBreakShow;
-    if ((localIApolloIceBreakShow != null) && (localIApolloIceBreakShow.getView().getVisibility() == 0) && (this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApiIApolloIceBreakShow.isReady())) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApiIApolloIceBreakShow.play();
+    IApolloIceBreakShow localIApolloIceBreakShow = this.a;
+    if ((localIApolloIceBreakShow != null) && (localIApolloIceBreakShow.getView().getVisibility() == 0) && (this.a.isReady())) {
+      this.a.play();
     }
   }
   
@@ -68,7 +67,7 @@ public class ApolloStickerRecView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.adapter.mvp.ApolloStickerRecView
  * JD-Core Version:    0.7.0.1
  */

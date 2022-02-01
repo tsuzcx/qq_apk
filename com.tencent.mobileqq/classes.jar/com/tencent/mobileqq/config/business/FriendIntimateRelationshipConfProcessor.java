@@ -13,7 +13,7 @@ public class FriendIntimateRelationshipConfProcessor
   @NonNull
   public static FriendIntimateRelationshipBean a()
   {
-    FriendIntimateRelationshipBean localFriendIntimateRelationshipBean2 = (FriendIntimateRelationshipBean)QConfigManager.a().a(455);
+    FriendIntimateRelationshipBean localFriendIntimateRelationshipBean2 = (FriendIntimateRelationshipBean)QConfigManager.b().b(455);
     FriendIntimateRelationshipBean localFriendIntimateRelationshipBean1 = localFriendIntimateRelationshipBean2;
     if (localFriendIntimateRelationshipBean2 == null) {
       localFriendIntimateRelationshipBean1 = new FriendIntimateRelationshipBean();
@@ -32,12 +32,12 @@ public class FriendIntimateRelationshipConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      FriendIntimateRelationshipBean localFriendIntimateRelationshipBean = FriendIntimateRelationshipBean.a(paramArrayOfQConfItem[0].a);
+      FriendIntimateRelationshipBean localFriendIntimateRelationshipBean = FriendIntimateRelationshipBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("FriendIntimateRelationshipConfProcessor", 2, localStringBuilder.toString());
       }
       return localFriendIntimateRelationshipBean;
@@ -94,7 +94,7 @@ public class FriendIntimateRelationshipConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.FriendIntimateRelationshipConfProcessor
  * JD-Core Version:    0.7.0.1
  */

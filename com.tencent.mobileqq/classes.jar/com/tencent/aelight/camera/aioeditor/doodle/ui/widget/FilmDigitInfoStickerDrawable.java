@@ -16,20 +16,20 @@ import org.json.JSONObject;
 public class FilmDigitInfoStickerDrawable
   extends InfoStickerDrawable
 {
-  int jdField_a_of_type_Int = 0;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = "15:29";
+  int a = 0;
+  int b = 0;
   int c = 0;
   int d = 0;
   int e;
+  private String n = "15:29";
+  private TextPaint o = new TextPaint();
   
   public FilmDigitInfoStickerDrawable(Context paramContext, String paramString)
   {
     super(paramContext, paramString);
     a(paramString);
     b();
-    c();
+    e();
   }
   
   public static String a(int paramInt, String paramString)
@@ -56,17 +56,17 @@ public class FilmDigitInfoStickerDrawable
   
   public String a()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.n;
   }
   
   protected void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList)
   {
-    int i = paramCanvas.saveLayer(0.0F, 0.0F, getIntrinsicWidth(), getIntrinsicWidth(), this.jdField_a_of_type_AndroidTextTextPaint, 31);
-    int j = a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    float f1 = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().ascent);
+    int i = paramCanvas.saveLayer(0.0F, 0.0F, getIntrinsicWidth(), getIntrinsicWidth(), this.o, 31);
+    int j = a(2.0F, this.h.getResources());
+    float f1 = Math.abs(this.o.getFontMetrics().ascent);
     float f2 = ((Integer)paramArrayList.get(this.e)).intValue() % 100 * 1.0F / 99.0F;
-    this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(f2 * 20.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2063925361));
-    paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), j + f1, this.jdField_a_of_type_AndroidTextTextPaint);
+    this.o.setShadowLayer(f2 * 20.0F, 0.0F, 0.0F, this.h.getResources().getColor(2063794250));
+    paramCanvas.drawText(this.n, a(7.0F, this.h.getResources()), j + f1, this.o);
     paramCanvas.restoreToCount(i);
   }
   
@@ -83,49 +83,49 @@ public class FilmDigitInfoStickerDrawable
     }
     if (paramString != null)
     {
-      this.f = paramString.optInt("type", 0);
+      this.j = paramString.optInt("type", 0);
       String str = paramString.optString("first_line", "");
       paramString = str;
       if (str.contains("·")) {
         paramString = str.substring(0, str.indexOf("·"));
       }
-      this.jdField_b_of_type_JavaLangString = ChnToSpell.a(paramString, 1);
+      this.n = ChnToSpell.b(paramString, 1);
     }
-    return new String[] { this.jdField_b_of_type_JavaLangString };
+    return new String[] { this.n };
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2063925360));
-    Object localObject = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getResources().getAssets(), "info_sticker_typeface/dov_digital.ttf");
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface((Typeface)localObject);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+    this.o = new TextPaint();
+    this.o.setAntiAlias(true);
+    this.o.setDither(true);
+    this.o.setColor(this.h.getResources().getColor(2063794249));
+    Object localObject = Typeface.createFromAsset(this.h.getResources().getAssets(), "info_sticker_typeface/dov_digital.ttf");
+    this.o.setTypeface((Typeface)localObject);
+    this.o.setTextSize(a(30.0F, this.h.getResources()));
+    localObject = this.o.getFontMetrics();
     this.d = ((int)(((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top));
-    localObject = this.jdField_a_of_type_AndroidTextTextPaint;
-    String str = this.jdField_b_of_type_JavaLangString;
+    localObject = this.o;
+    String str = this.n;
     this.c = ((int)((TextPaint)localObject).measureText(str, 0, str.length()));
-    this.jdField_a_of_type_Int = (this.c + a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_b_of_type_Int = (a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.e = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("anim", 0L, 1000L, 0, 999, new LinearInterpolator());
+    this.a = (this.c + a(7.0F, this.h.getResources()));
+    this.b = (a(30.0F, this.h.getResources()) + a(10.0F, this.h.getResources()));
+    this.e = this.f.a("anim", 0L, 1000L, 0, 999, new LinearInterpolator());
   }
   
   public int getIntrinsicHeight()
   {
-    return this.jdField_b_of_type_Int;
+    return this.b;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.widget.FilmDigitInfoStickerDrawable
  * JD-Core Version:    0.7.0.1
  */

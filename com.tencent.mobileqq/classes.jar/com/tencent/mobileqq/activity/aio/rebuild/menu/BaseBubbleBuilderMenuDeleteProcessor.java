@@ -34,7 +34,7 @@ public class BaseBubbleBuilderMenuDeleteProcessor
       bool = false;
     }
     if ((!bool) || ((paramMessageRecord != null) && (!paramMessageRecord.isSend()))) {
-      ChatActivityFacade.a(paramQQCustomMenu, paramContext, this.a.a);
+      ChatActivityFacade.a(paramQQCustomMenu, paramContext, this.b.a);
     }
     if (paramBundle != null) {
       paramBundle.putBoolean("isInvokeMenuShow", false);
@@ -43,12 +43,12 @@ public class BaseBubbleBuilderMenuDeleteProcessor
   
   public boolean a(int paramInt)
   {
-    return paramInt == 2131365480;
+    return paramInt == 2131431695;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuDeleteProcessor
  * JD-Core Version:    0.7.0.1
  */

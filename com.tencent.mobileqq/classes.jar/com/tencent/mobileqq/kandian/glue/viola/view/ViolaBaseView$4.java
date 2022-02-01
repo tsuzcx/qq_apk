@@ -15,47 +15,46 @@ class ViolaBaseView$4
   
   public void onError(int paramInt)
   {
-    if ((this.jdField_a_of_type_Int == ViolaBaseView.c()) && (ViolaSoLoaderManager.a.a().b()))
+    if ((this.a == ViolaBaseView.k()) && (ViolaSoLoaderManager.a.a().e()))
     {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, System.currentTimeMillis());
-      ViolaBaseView.c(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView);
+      ViolaBaseView.a(this.b, System.currentTimeMillis());
+      ViolaBaseView.e(this.b);
     }
     else
     {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, 100);
+      ViolaBaseView.a(this.b, 100);
     }
-    String str = ViolaBaseView.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("loadSoIfNeed error,code=");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(",isActivityDestroy:");
-    localStringBuilder.append(ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView));
-    QLog.e(str, 2, localStringBuilder.toString());
+    localStringBuilder.append(ViolaBaseView.f(this.b));
+    QLog.e("ViolaBaseView", 2, localStringBuilder.toString());
   }
   
   public void onFinish(int paramInt)
   {
-    if (paramInt == ReadInJoyWebRenderEngine.g)
+    if (paramInt == ReadInJoyWebRenderEngine.h)
     {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_END_EXIT);
+      ViolaBaseView.a(this.b).addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_END_EXIT);
     }
-    else if (this.jdField_a_of_type_Int == ViolaBaseView.c())
+    else if (this.a == ViolaBaseView.k())
     {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_END_NET);
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_SO, Long.toString(System.currentTimeMillis() - ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView)));
+      ViolaBaseView.a(this.b).addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_END_NET);
+      ViolaBaseView.a(this.b).addReportData(ViolaEnvironment.TIME_SO, Long.toString(System.currentTimeMillis() - ViolaBaseView.b(this.b)));
     }
     else
     {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_END_OFFLINE);
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_SO, Long.toString(System.currentTimeMillis() - ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView)));
+      ViolaBaseView.a(this.b).addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_END_OFFLINE);
+      ViolaBaseView.a(this.b).addReportData(ViolaEnvironment.TIME_SO, Long.toString(System.currentTimeMillis() - ViolaBaseView.b(this.b)));
     }
-    ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView);
-    ViolaBaseView.b(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView);
+    ViolaBaseView.c(this.b);
+    ViolaBaseView.d(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.4
  * JD-Core Version:    0.7.0.1
  */

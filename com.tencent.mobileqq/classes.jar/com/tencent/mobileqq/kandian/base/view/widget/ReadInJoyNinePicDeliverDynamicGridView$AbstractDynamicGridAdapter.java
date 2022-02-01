@@ -9,14 +9,14 @@ public abstract class ReadInJoyNinePicDeliverDynamicGridView$AbstractDynamicGrid
   extends BaseAdapter
   implements ReadInJoyNinePicDeliverDynamicGridView.DynamicGridAdapterInterface
 {
-  private int jdField_a_of_type_Int = 0;
-  private HashMap<Object, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private int a = 0;
+  private HashMap<Object, Integer> b = new HashMap();
   
   protected void a(Object paramObject)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
+    HashMap localHashMap = this.b;
+    int i = this.a;
+    this.a = (i + 1);
     localHashMap.put(paramObject, Integer.valueOf(i));
   }
   
@@ -30,15 +30,15 @@ public abstract class ReadInJoyNinePicDeliverDynamicGridView$AbstractDynamicGrid
   
   protected void b(Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramObject);
+    this.b.remove(paramObject);
   }
   
   public final long getItemId(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilHashMap.size()))
+    if ((paramInt >= 0) && (paramInt < this.b.size()))
     {
       Object localObject = getItem(paramInt);
-      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
+      return ((Integer)this.b.get(localObject)).intValue();
     }
     return -1L;
   }
@@ -50,7 +50,7 @@ public abstract class ReadInJoyNinePicDeliverDynamicGridView$AbstractDynamicGrid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyNinePicDeliverDynamicGridView.AbstractDynamicGridAdapter
  * JD-Core Version:    0.7.0.1
  */

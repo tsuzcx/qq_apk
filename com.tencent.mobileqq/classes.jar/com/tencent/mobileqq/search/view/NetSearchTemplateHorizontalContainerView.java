@@ -18,13 +18,12 @@ import java.util.ArrayList;
 public class NetSearchTemplateHorizontalContainerView
   extends NetSearchTemplateBaseView
 {
-  public final ArrayList<NetSearchTemplateHorizontalBaseView> a;
+  public final ArrayList<NetSearchTemplateHorizontalBaseView> a = new ArrayList();
   
   public NetSearchTemplateHorizontalContainerView(ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    LinearLayout localLinearLayout = (LinearLayout)a(paramInt);
+    LinearLayout localLinearLayout = (LinearLayout)b(paramInt);
     localLinearLayout.setOrientation(0);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     paramInt = DisplayUtil.a(paramViewGroup.getContext(), 13.5F);
@@ -36,35 +35,35 @@ public class NetSearchTemplateHorizontalContainerView
   
   public void a(NetSearchTemplateHorizontalContainerItem paramNetSearchTemplateHorizontalContainerItem)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    LinearLayout localLinearLayout = (LinearLayout)a(this.jdField_a_of_type_Int);
+    this.a.clear();
+    LinearLayout localLinearLayout = (LinearLayout)b(this.m);
     localLinearLayout.removeAllViews();
-    if (paramNetSearchTemplateHorizontalContainerItem.jdField_a_of_type_JavaUtilArrayList != null)
+    if (paramNetSearchTemplateHorizontalContainerItem.c != null)
     {
-      if (paramNetSearchTemplateHorizontalContainerItem.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+      if (paramNetSearchTemplateHorizontalContainerItem.c.size() == 0) {
         return;
       }
       Object localObject = localLinearLayout.getContext();
-      int j = paramNetSearchTemplateHorizontalContainerItem.jdField_a_of_type_JavaUtilArrayList.size();
+      int j = paramNetSearchTemplateHorizontalContainerItem.c.size();
       int i = 3;
       if (j >= 3) {
-        i = paramNetSearchTemplateHorizontalContainerItem.jdField_a_of_type_JavaUtilArrayList.size();
+        i = paramNetSearchTemplateHorizontalContainerItem.c.size();
       }
       int k = (((Context)localObject).getResources().getDisplayMetrics().widthPixels - DisplayUtil.a((Context)localObject, 27.0F)) / i;
       i = 0;
       while (i < j)
       {
-        NetSearchTemplateHorizontalBaseItem localNetSearchTemplateHorizontalBaseItem = (NetSearchTemplateHorizontalBaseItem)paramNetSearchTemplateHorizontalContainerItem.jdField_a_of_type_JavaUtilArrayList.get(i);
+        NetSearchTemplateHorizontalBaseItem localNetSearchTemplateHorizontalBaseItem = (NetSearchTemplateHorizontalBaseItem)paramNetSearchTemplateHorizontalContainerItem.c.get(i);
         localObject = null;
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(k, -2);
-        if (localNetSearchTemplateHorizontalBaseItem.jdField_a_of_type_Int == 1) {
-          localObject = new NetSearchTemplateHorizontalOneView((ViewGroup)a(), 0);
+        if (localNetSearchTemplateHorizontalBaseItem.c == 1) {
+          localObject = new NetSearchTemplateHorizontalOneView((ViewGroup)h(), 0);
         }
         if (localObject != null)
         {
-          ((NetSearchTemplateHorizontalBaseView)localObject).a().setLayoutParams(localLayoutParams);
-          localLinearLayout.addView(((NetSearchTemplateHorizontalBaseView)localObject).a());
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          ((NetSearchTemplateHorizontalBaseView)localObject).h().setLayoutParams(localLayoutParams);
+          localLinearLayout.addView(((NetSearchTemplateHorizontalBaseView)localObject).h());
+          this.a.add(localObject);
         }
         i += 1;
       }
@@ -73,7 +72,7 @@ public class NetSearchTemplateHorizontalContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateHorizontalContainerView
  * JD-Core Version:    0.7.0.1
  */

@@ -23,12 +23,11 @@ public class HistoryHeadWebViewPlugin
   extends VasWebviewJsPlugin
 {
   protected String a;
-  private boolean a;
   protected String b;
+  private boolean c = false;
   
   public HistoryHeadWebViewPlugin()
   {
-    this.jdField_a_of_type_Boolean = false;
     this.mPluginNameSpace = "historyhead";
   }
   
@@ -62,7 +61,7 @@ public class HistoryHeadWebViewPlugin
       try
       {
         paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_JavaLangString = paramString.optString("setName");
+        this.a = paramString.optString("setName");
         this.b = paramString.optString("delName");
         localObject3 = paramString.optJSONArray("imageIDs");
         Object localObject2 = paramString.optJSONArray("str_fileids");
@@ -73,10 +72,10 @@ public class HistoryHeadWebViewPlugin
         if (this.mRuntime.a() == null) {
           return;
         }
-        if (this.mRuntime.a() == null) {
+        if (this.mRuntime.b() == null) {
           return;
         }
-        localObject1 = this.mRuntime.a();
+        localObject1 = this.mRuntime.d();
         if (localObject1 == null) {
           return;
         }
@@ -94,8 +93,8 @@ public class HistoryHeadWebViewPlugin
           if (i < n)
           {
             PicInfo localPicInfo = new PicInfo();
-            localPicInfo.jdField_a_of_type_JavaLangString = ((JSONArray)localObject3).get(i).toString();
-            localPicInfo.g = "type_history_head_pic";
+            localPicInfo.b = ((JSONArray)localObject3).get(i).toString();
+            localPicInfo.h = "type_history_head_pic";
             ((ArrayList)localObject1).add(localPicInfo);
             i += 1;
             continue;
@@ -113,7 +112,7 @@ public class HistoryHeadWebViewPlugin
             continue;
           }
         }
-        localObject2 = this.mRuntime.a();
+        localObject2 = this.mRuntime.f();
         if ((paramString instanceof WebViewPluginContainer))
         {
           i = ((WebViewPluginContainer)paramString).switchRequestCode(this, (byte)100);
@@ -160,11 +159,11 @@ public class HistoryHeadWebViewPlugin
         return;
       }
       if (paramIntent != null) {
-        if ((paramIntent.hasExtra("setHead_fileid")) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+        if ((paramIntent.hasExtra("setHead_fileid")) && (!TextUtils.isEmpty(this.a)))
         {
           paramIntent = paramIntent.getStringExtra("setHead_fileid");
           if (!TextUtils.isEmpty(paramIntent)) {
-            callJs(this.jdField_a_of_type_JavaLangString, new String[] { Util.a(paramIntent) });
+            callJs(this.a, new String[] { Util.c(paramIntent) });
           }
         }
         else if ((paramIntent.hasExtra("delHead_fileid")) && (!TextUtils.isEmpty(this.b)))
@@ -172,8 +171,8 @@ public class HistoryHeadWebViewPlugin
           paramIntent = paramIntent.getStringExtra("delHead_fileid");
           if (!TextUtils.isEmpty(paramIntent))
           {
-            callJs(this.b, new String[] { Util.a(paramIntent) });
-            this.jdField_a_of_type_Boolean = true;
+            callJs(this.b, new String[] { Util.c(paramIntent) });
+            this.c = true;
           }
         }
       }
@@ -182,10 +181,10 @@ public class HistoryHeadWebViewPlugin
   
   protected void onDestroy()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       Bundle localBundle = new Bundle();
-      localBundle.putBoolean("hasHistoryHeadDel", this.jdField_a_of_type_Boolean);
+      localBundle.putBoolean("hasHistoryHeadDel", this.c);
       super.sendRemoteReq(DataFactory.a("ipc_cmd_historyhead_refresh_numflag", "", 0, localBundle), false, true);
     }
     super.onDestroy();
@@ -193,7 +192,7 @@ public class HistoryHeadWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.HistoryHeadWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

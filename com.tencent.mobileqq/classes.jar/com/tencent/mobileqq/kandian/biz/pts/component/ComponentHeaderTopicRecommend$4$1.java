@@ -10,12 +10,12 @@ class ComponentHeaderTopicRecommend$4$1
   
   public void run()
   {
-    ReadInJoyLogicEngine.a().a((int)ComponentHeaderTopicRecommend.a(this.a.a).businessId, 1);
+    ReadInJoyLogicEngine.a().g((int)ComponentHeaderTopicRecommend.b(this.a.a).businessId, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderTopicRecommend.4.1
  * JD-Core Version:    0.7.0.1
  */

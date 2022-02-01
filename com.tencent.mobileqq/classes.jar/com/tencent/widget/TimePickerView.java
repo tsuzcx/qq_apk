@@ -11,13 +11,13 @@ import java.util.Calendar;
 public class TimePickerView
   implements DialogInterface.OnDismissListener, IphonePickerView.IphonePickListener, IphonePickerView.PickerViewAdapter
 {
-  static int jdField_a_of_type_Int = 2014;
-  IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
-  ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  TimePickerView.TimePickerListener jdField_a_of_type_ComTencentWidgetTimePickerView$TimePickerListener;
+  static int a = 2014;
   int b;
   int c;
   int d;
+  TimePickerView.TimePickerListener e;
+  ActionSheet f;
+  IphonePickerView g;
   
   public int getColumnCount()
   {
@@ -41,7 +41,7 @@ public class TimePickerView
       }
       return 12;
     }
-    return jdField_a_of_type_Int - 1895 + 1;
+    return a - 1895 + 1;
   }
   
   public String getText(int paramInt1, int paramInt2)
@@ -55,35 +55,35 @@ public class TimePickerView
         }
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramInt2 + 1);
-        localStringBuilder.append(HardCodeUtil.a(2131714779));
+        localStringBuilder.append(HardCodeUtil.a(2131912283));
         return localStringBuilder.toString();
       }
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramInt2 + 1);
-      localStringBuilder.append(HardCodeUtil.a(2131714778));
+      localStringBuilder.append(HardCodeUtil.a(2131912282));
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt2 + 1895);
-    localStringBuilder.append(HardCodeUtil.a(2131714777));
+    localStringBuilder.append(HardCodeUtil.a(2131912281));
     return localStringBuilder.toString();
   }
   
   public void onConfirmBtClicked()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetTimePickerView$TimePickerListener;
+    Object localObject = this.e;
     if (localObject != null)
     {
-      IphonePickerView localIphonePickerView = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
+      IphonePickerView localIphonePickerView = this.g;
       if (localIphonePickerView != null) {
-        ((TimePickerView.TimePickerListener)localObject).a(localIphonePickerView.a(0) + 1895, this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1) + 1, this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2) + 1);
+        ((TimePickerView.TimePickerListener)localObject).a(localIphonePickerView.b(0) + 1895, this.g.b(1) + 1, this.g.b(2) + 1);
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    localObject = this.f;
     if ((localObject != null) && (((ActionSheet)localObject).isShowing()))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = null;
+      this.f.dismiss();
+      this.g = null;
     }
   }
   
@@ -106,14 +106,14 @@ public class TimePickerView
     else {
       this.b = paramInt2;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+    if ((this.g != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+      this.g.a(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.TimePickerView
  * JD-Core Version:    0.7.0.1
  */

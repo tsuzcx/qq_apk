@@ -7,12 +7,12 @@ class QQComicJsPlugin$3$1
   
   public void run()
   {
-    this.a.this$0.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.b);
+    this.a.this$0.a(this.a.b, this.a.c, this.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.jsp.QQComicJsPlugin.3.1
  * JD-Core Version:    0.7.0.1
  */

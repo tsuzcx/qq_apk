@@ -21,12 +21,12 @@ public class AEPituCameraConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      AEPituCameraConfigProcessor.AEPituCameraConfigBean localAEPituCameraConfigBean = AEPituCameraConfigProcessor.AEPituCameraConfigBean.a(paramArrayOfQConfItem[0].a);
+      AEPituCameraConfigProcessor.AEPituCameraConfigBean localAEPituCameraConfigBean = AEPituCameraConfigProcessor.AEPituCameraConfigBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed:");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("AEPituCameraConfigProcessor", 2, localStringBuilder.toString());
       }
       return localAEPituCameraConfigBean;
@@ -94,7 +94,7 @@ public class AEPituCameraConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AEPituCameraConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -14,51 +14,51 @@ import mqq.observer.AccountObserver;
 public class AccountOnlineStateRepository
   extends BaseRepository
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private BusinessObserver jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = ((ICardHandler)QRoute.api(ICardHandler.class)).newCardHandlerForAutoReply(new AccountOnlineStateRepository.1(this));
-  private OnBatteryChangeObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusOnBatteryChangeObserver = new AccountOnlineStateRepository.5(this);
-  private OnlineStatusObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusObserver = new AccountOnlineStateRepository.4(this);
-  private OnlineStatusPermissionObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionObserver = new AccountOnlineStateRepository.3(this);
-  private AccountOnlineStateViewModel jdField_a_of_type_ComTencentMobileqqOnlinestatusViewmodelAccountOnlineStateViewModel;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new AccountOnlineStateRepository.2(this);
+  private AppInterface a;
+  private AccountOnlineStateViewModel b;
+  private BusinessObserver c = ((ICardHandler)QRoute.api(ICardHandler.class)).newCardHandlerForAutoReply(new AccountOnlineStateRepository.1(this));
+  private AccountObserver d = new AccountOnlineStateRepository.2(this);
+  private OnlineStatusPermissionObserver e = new AccountOnlineStateRepository.3(this);
+  private OnlineStatusObserver f = new AccountOnlineStateRepository.4(this);
+  private OnBatteryChangeObserver g = new AccountOnlineStateRepository.5(this);
   
   public AccountOnlineStateRepository(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.a = paramAppInterface;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnBatteryChangeObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionObserver);
+    this.a.addObserver(this.c);
+    this.a.registObserver(this.g);
+    this.a.registObserver(this.d);
+    this.a.addObserver(this.f);
+    this.a.registObserver(this.e);
   }
   
   public void a(AccountOnlineStateViewModel paramAccountOnlineStateViewModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewmodelAccountOnlineStateViewModel = paramAccountOnlineStateViewModel;
+    this.b = paramAccountOnlineStateViewModel;
   }
   
-  public void b()
+  protected void bN_()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnBatteryChangeObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusObserver);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionObserver);
+    super.bN_();
+    c();
   }
   
-  protected void c()
+  public void c()
   {
-    super.c();
-    b();
+    this.a.removeObserver(this.c);
+    this.a.unRegistObserver(this.g);
+    this.a.unRegistObserver(this.d);
+    this.a.removeObserver(this.f);
+    this.a.unRegistObserver(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.repository.AccountOnlineStateRepository
  * JD-Core Version:    0.7.0.1
  */

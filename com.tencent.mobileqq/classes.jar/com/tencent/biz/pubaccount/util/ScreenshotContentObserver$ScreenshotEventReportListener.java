@@ -17,12 +17,12 @@ public class ScreenshotContentObserver$ScreenshotEventReportListener
     } else {
       paramUri = "unkonw";
     }
-    ReportController.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8009815", "0X8009815", 0, 0, "", "", paramUri, NetworkUtils.c(BaseApplicationImpl.getContext()));
+    ReportController.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8009815", "0X8009815", 0, 0, "", "", paramUri, NetworkUtils.e(BaseApplicationImpl.getContext()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ScreenshotContentObserver.ScreenshotEventReportListener
  * JD-Core Version:    0.7.0.1
  */

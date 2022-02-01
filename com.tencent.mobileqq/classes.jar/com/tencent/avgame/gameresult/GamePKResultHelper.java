@@ -16,48 +16,47 @@ import com.tencent.util.URLUtil;
 public class GamePKResultHelper
   extends GameResultBaseHelper
 {
-  private static final String jdField_a_of_type_JavaLangString = "GamePKResultHelper";
-  private final int jdField_a_of_type_Int = 1;
-  protected SimpleGameRoomStatusListener a;
-  IAVGameRootContainer jdField_a_of_type_ComTencentAvgameUiIAVGameRootContainer;
-  private final int b = 2;
+  private static final String c = "GamePKResultHelper";
+  IAVGameRootContainer a;
+  protected SimpleGameRoomStatusListener b = new GamePKResultHelper.1(this);
+  private final int d = 1;
+  private final int e = 2;
   
   public GamePKResultHelper(IAVGameRootContainer paramIAVGameRootContainer)
   {
-    this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener = new GamePKResultHelper.1(this);
-    this.jdField_a_of_type_ComTencentAvgameUiIAVGameRootContainer = paramIAVGameRootContainer;
+    this.a = paramIAVGameRootContainer;
   }
   
   public void a()
   {
-    Object localObject = IGameEngine.a().a();
-    if (((this.jdField_a_of_type_ComTencentAvgameUiIAVGameRootContainer instanceof Activity)) && (!TextUtils.isEmpty(((EngineData)localObject).a().awardUrl)))
+    Object localObject = IGameEngine.I().s();
+    if (((this.a instanceof Activity)) && (!TextUtils.isEmpty(((EngineData)localObject).Z().awardUrl)))
     {
-      Activity localActivity = (Activity)this.jdField_a_of_type_ComTencentAvgameUiIAVGameRootContainer;
-      FloatWindowController.a().c();
+      Activity localActivity = (Activity)this.a;
+      FloatWindowController.c().d();
       Intent localIntent = new Intent(localActivity, QQBrowserActivity.class);
-      String str = ((EngineData)localObject).a().awardUrl;
+      String str = ((EngineData)localObject).Z().awardUrl;
       int i;
-      if (((EngineData)localObject).h()) {
+      if (((EngineData)localObject).O()) {
         i = 1;
       } else {
         i = 2;
       }
-      str = URLUtil.a(str, "id", ((EngineData)localObject).b());
+      str = URLUtil.a(str, "id", ((EngineData)localObject).n());
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((EngineData)localObject).c());
+      localStringBuilder.append(((EngineData)localObject).o());
       localStringBuilder.append("");
       str = URLUtil.a(str, "type", localStringBuilder.toString());
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((EngineData)localObject).a());
+      localStringBuilder.append(((EngineData)localObject).i());
       localStringBuilder.append("");
       str = URLUtil.a(str, "room", localStringBuilder.toString());
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((EngineData)localObject).k());
+      localStringBuilder.append(((EngineData)localObject).Q());
       localStringBuilder.append("");
       str = URLUtil.a(str, "pkid", localStringBuilder.toString());
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((EngineData)localObject).j());
+      localStringBuilder.append(((EngineData)localObject).P());
       localStringBuilder.append("");
       str = URLUtil.a(str, "poolid", localStringBuilder.toString());
       localStringBuilder = new StringBuilder();
@@ -65,11 +64,11 @@ public class GamePKResultHelper
       localStringBuilder.append("");
       str = URLUtil.a(str, "answer", localStringBuilder.toString());
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((EngineData)localObject).p());
+      localStringBuilder.append(((EngineData)localObject).Y());
       localStringBuilder.append("");
       str = URLUtil.a(str, "roundid", localStringBuilder.toString());
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((EngineData)localObject).r());
+      localStringBuilder.append(((EngineData)localObject).ah());
       localStringBuilder.append("");
       str = URLUtil.a(str, "businessid", localStringBuilder.toString());
       localObject = str;
@@ -79,7 +78,7 @@ public class GamePKResultHelper
       localIntent.putExtra("url", (String)localObject);
       if (QLog.isColorLevel())
       {
-        str = jdField_a_of_type_JavaLangString;
+        str = c;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("jump result url[");
         localStringBuilder.append((String)localObject);
@@ -92,18 +91,18 @@ public class GamePKResultHelper
   
   public void b()
   {
-    IGameEngine.a().a(this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener);
+    IGameEngine.I().a(this.b);
   }
   
   public void c()
   {
-    IGameEngine.a().b(this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener);
+    IGameEngine.I().b(this.b);
   }
   
   public void d()
   {
-    IGameEngine.a().a().c();
-    IGameEngine.a().l();
+    IGameEngine.I().s().c();
+    IGameEngine.I().x();
   }
 }
 

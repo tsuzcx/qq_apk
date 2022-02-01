@@ -23,12 +23,12 @@ import tencent.im.oidb.cmd0xac5.cmd0xac5.NearbyNowData;
 
 public class TopicLabelCtrl
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private LabelContainer jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer;
-  private boolean jdField_a_of_type_Boolean;
+  private QQAppInterface a;
   private View b;
+  private View c;
+  private LabelContainer d;
+  private boolean e;
+  private Context f;
   
   public View a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
@@ -40,7 +40,7 @@ public class TopicLabelCtrl
     if (paramInt2 < 16777216) {
       paramInt1 = paramInt2 - 16777216;
     }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    LinearLayout localLinearLayout = new LinearLayout(this.f);
     localLinearLayout.setOrientation(0);
     localLinearLayout.setGravity(16);
     try
@@ -64,19 +64,19 @@ public class TopicLabelCtrl
       }
       paramString1 = new ColorDrawable(-7829368);
     }
-    View localView = new View(this.jdField_a_of_type_AndroidContentContext);
+    View localView = new View(this.f);
     localView.setBackgroundDrawable(paramString1);
-    localLinearLayout.addView(localView, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 18.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F));
-    ((LinearLayout.LayoutParams)localView.getLayoutParams()).leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
-    paramString1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.addView(localView, DisplayUtil.a(this.f, 18.0F), DisplayUtil.a(this.f, 15.0F));
+    ((LinearLayout.LayoutParams)localView.getLayoutParams()).leftMargin = DisplayUtil.a(this.f, 4.0F);
+    paramString1 = new TextView(this.f);
     paramString1.setText(paramString2);
     paramString1.setTextSize(14.0F);
     paramString1.setTextColor(i);
     localLinearLayout.addView(paramString1);
     paramString1 = (LinearLayout.LayoutParams)paramString1.getLayoutParams();
-    paramString1.rightMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    paramString1.leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
-    localLinearLayout.setBackgroundResource(2130845722);
+    paramString1.rightMargin = DisplayUtil.a(this.f, 6.0F);
+    paramString1.leftMargin = DisplayUtil.a(this.f, 2.0F);
+    localLinearLayout.setBackgroundResource(2130847192);
     paramString1 = localLinearLayout.getBackground();
     if (paramString1 != null)
     {
@@ -89,20 +89,20 @@ public class TopicLabelCtrl
   
   public void a(QQAppInterface paramQQAppInterface, View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378882);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer = ((LabelContainer)paramView.findViewById(2131369877));
-    this.b = paramView.findViewById(2131370069);
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
+    this.a = paramQQAppInterface;
+    this.e = paramBoolean;
+    this.b = paramView.findViewById(2131447583);
+    this.d = ((LabelContainer)paramView.findViewById(2131437015));
+    this.c = paramView.findViewById(2131437230);
+    this.f = paramView.getContext();
   }
   
   public void a(cmd0xac5.NearbyNowData paramNearbyNowData)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.getChildCount() > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.removeAllViews();
+    if (this.d.getChildCount() > 0) {
+      this.d.removeAllViews();
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setSpace(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 8.0F));
+    this.d.setSpace(DisplayUtil.a(this.f, 6.0F), DisplayUtil.a(this.f, 8.0F));
     List localList = null;
     if (paramNearbyNowData != null) {
       localList = paramNearbyNowData.label_info.get();
@@ -121,20 +121,20 @@ public class TopicLabelCtrl
       {
         paramNearbyNowData = (cmd0xac5.NearbyLabelInfo)localList.get(i);
         paramNearbyNowData = a(paramNearbyNowData.label_pic.get().toStringUtf8(), paramNearbyNowData.label_name.get().toStringUtf8(), paramNearbyNowData.font_colour.get(), paramNearbyNowData.label_colour.get());
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.addView(paramNearbyNowData, -2, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 24.0F));
+        this.d.addView(paramNearbyNowData, -2, DisplayUtil.a(this.f, 24.0F));
         i += 1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setVisibility(0);
+      this.d.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.b.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setVisibility(8);
+    this.c.setVisibility(8);
+    this.d.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.TopicLabelCtrl
  * JD-Core Version:    0.7.0.1
  */

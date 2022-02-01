@@ -14,12 +14,12 @@ class LSRecordPanel$2
     if (QLog.isDevelopLevel()) {
       QLog.d("LsRecord", 4, "LS stopRecordingBarAnimation onAnimationEnd");
     }
-    LSRecordPanel.a(this.a).post(new LSRecordPanel.2.1(this));
+    LSRecordPanel.c(this.a).post(new LSRecordPanel.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordPanel.2
  * JD-Core Version:    0.7.0.1
  */

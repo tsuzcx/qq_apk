@@ -103,7 +103,7 @@ public final class QQHealthApiImpl
   
   public void setIsOldMode(boolean paramBoolean)
   {
-    SSOHttpUtils.b = paramBoolean;
+    SSOHttpUtils.n = paramBoolean;
   }
   
   public void showBanner(long paramLong, @Nullable String paramString)
@@ -126,7 +126,7 @@ public final class QQHealthApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.api.impl.QQHealthApiImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -20,39 +20,39 @@ import org.xmlpull.v1.XmlSerializer;
 final class CloudAVEngineImpl$AVEngineCache$1VisitorForRebuild
   extends CloudAVEngineImpl.AVEngineCache.CacheFileVisitor
 {
-  File jdField_a_of_type_JavaIoFile;
-  private OutputStream jdField_a_of_type_JavaIoOutputStream;
-  private XmlSerializer jdField_a_of_type_OrgXmlpullV1XmlSerializer;
+  File a;
+  private XmlSerializer c;
+  private OutputStream d;
   
   public CloudAVEngineImpl$AVEngineCache$1VisitorForRebuild(CloudAVEngineImpl.AVEngineCache paramAVEngineCache, File paramFile)
   {
     super(null);
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.a = paramFile;
   }
   
   public void a()
   {
     try
     {
-      Object localObject1 = this.jdField_a_of_type_OrgXmlpullV1XmlSerializer;
+      Object localObject1 = this.c;
       Object localObject2;
       Object localObject3;
       if (localObject1 == null)
       {
-        localObject1 = new IvParameterSpec(CloudAVEngineImpl.AVEngineCache.a());
-        localObject2 = new SecretKeySpec(CloudAVEngineImpl.AVEngineCache.b(), "AES");
+        localObject1 = new IvParameterSpec(CloudAVEngineImpl.AVEngineCache.b());
+        localObject2 = new SecretKeySpec(CloudAVEngineImpl.AVEngineCache.c(), "AES");
         localObject3 = Cipher.getInstance("AES/CBC/PKCS5PADDING");
         ((Cipher)localObject3).init(1, (Key)localObject2, (AlgorithmParameterSpec)localObject1);
-        this.jdField_a_of_type_JavaIoOutputStream = new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(this.jdField_a_of_type_JavaIoFile)), (Cipher)localObject3);
-        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = Xml.newSerializer();
-        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(this.jdField_a_of_type_JavaIoOutputStream, "UTF-8");
-        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
-        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(null, "AVCloudCache");
-        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(null, "Ver", Integer.toString(1));
+        this.d = new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(this.a)), (Cipher)localObject3);
+        this.c = Xml.newSerializer();
+        this.c.setOutput(this.d, "UTF-8");
+        this.c.startDocument("UTF-8", Boolean.valueOf(true));
+        this.c.startTag(null, "AVCloudCache");
+        this.c.attribute(null, "Ver", Integer.toString(1));
       }
-      if (CloudAVEngineImpl.AVEngineCache.a(this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache).size() > 0)
+      if (CloudAVEngineImpl.AVEngineCache.a(this.b).size() > 0)
       {
-        localObject1 = CloudAVEngineImpl.AVEngineCache.a(this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache).iterator();
+        localObject1 = CloudAVEngineImpl.AVEngineCache.a(this.b).iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (Pair)((Iterator)localObject1).next();
@@ -63,19 +63,19 @@ final class CloudAVEngineImpl$AVEngineCache$1VisitorForRebuild
             ((StringBuilder)localObject3).append(((ICloudAVEngine.ResultBundle)((Pair)localObject2).second).toString());
             QLog.d("QSec.AVEngine", 2, ((StringBuilder)localObject3).toString());
           }
-          CloudAVEngineImpl.AVEngineCache.a(this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache, (String)((Pair)localObject2).first, (ICloudAVEngine.ResultBundle)((Pair)localObject2).second, this.jdField_a_of_type_OrgXmlpullV1XmlSerializer);
+          CloudAVEngineImpl.AVEngineCache.a(this.b, (String)((Pair)localObject2).first, (ICloudAVEngine.ResultBundle)((Pair)localObject2).second, this.c);
         }
-        CloudAVEngineImpl.AVEngineCache.a(this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache).clear();
+        CloudAVEngineImpl.AVEngineCache.a(this.b).clear();
       }
-      this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endTag(null, "AVCloudCache");
-      this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endDocument();
-      CloudAVEngineImpl.AVEngineCache.a(this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache).delete();
+      this.c.endTag(null, "AVCloudCache");
+      this.c.endDocument();
+      CloudAVEngineImpl.AVEngineCache.b(this.b).delete();
     }
     catch (Exception localException1)
     {
       localException1.printStackTrace();
     }
-    OutputStream localOutputStream = this.jdField_a_of_type_JavaIoOutputStream;
+    OutputStream localOutputStream = this.d;
     if (localOutputStream != null) {}
     try
     {
@@ -89,33 +89,33 @@ final class CloudAVEngineImpl$AVEngineCache$1VisitorForRebuild
   {
     try
     {
-      if (this.jdField_a_of_type_OrgXmlpullV1XmlSerializer == null)
+      if (this.c == null)
       {
-        IvParameterSpec localIvParameterSpec = new IvParameterSpec(CloudAVEngineImpl.AVEngineCache.a());
-        SecretKeySpec localSecretKeySpec = new SecretKeySpec(CloudAVEngineImpl.AVEngineCache.b(), "AES");
+        IvParameterSpec localIvParameterSpec = new IvParameterSpec(CloudAVEngineImpl.AVEngineCache.b());
+        SecretKeySpec localSecretKeySpec = new SecretKeySpec(CloudAVEngineImpl.AVEngineCache.c(), "AES");
         Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
         localCipher.init(1, localSecretKeySpec, localIvParameterSpec);
-        this.jdField_a_of_type_JavaIoOutputStream = new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(this.jdField_a_of_type_JavaIoFile)), localCipher);
-        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = Xml.newSerializer();
-        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(this.jdField_a_of_type_JavaIoOutputStream, "UTF-8");
-        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
-        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(null, "AVCloudCache");
-        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(null, "Ver", Integer.toString(1));
+        this.d = new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(this.a)), localCipher);
+        this.c = Xml.newSerializer();
+        this.c.setOutput(this.d, "UTF-8");
+        this.c.startDocument("UTF-8", Boolean.valueOf(true));
+        this.c.startTag(null, "AVCloudCache");
+        this.c.attribute(null, "Ver", Integer.toString(1));
       }
-      CloudAVEngineImpl.AVEngineCache.a(this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache, paramString, paramResultBundle, this.jdField_a_of_type_OrgXmlpullV1XmlSerializer);
+      CloudAVEngineImpl.AVEngineCache.a(this.b, paramString, paramResultBundle, this.c);
       return true;
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = null;
+      this.c = null;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.AVEngineCache.1VisitorForRebuild
  * JD-Core Version:    0.7.0.1
  */

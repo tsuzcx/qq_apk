@@ -5,14 +5,8 @@ import org.json.JSONObject;
 
 public class TogetherConfigureBean
 {
-  public WatchTogetherBean a;
-  public boolean a;
-  
-  public TogetherConfigureBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessWatchTogetherBean = new WatchTogetherBean();
-  }
+  public boolean a = false;
+  public WatchTogetherBean b = new WatchTogetherBean();
   
   public static TogetherConfigureBean a(String paramString)
   {
@@ -23,7 +17,7 @@ public class TogetherConfigureBean
     {
       TogetherConfigureBean localTogetherConfigureBean = new TogetherConfigureBean();
       paramString = new JSONObject(paramString);
-      localTogetherConfigureBean.jdField_a_of_type_Boolean = paramString.optBoolean("showTogetherWatchInTroopSettingCard", false);
+      localTogetherConfigureBean.a = paramString.optBoolean("showTogetherWatchInTroopSettingCard", false);
       paramString = paramString.optJSONObject("watchTogether");
       if (paramString != null)
       {
@@ -32,7 +26,7 @@ public class TogetherConfigureBean
         localWatchTogetherBean.b(paramString.optInt("jumpType"));
         localWatchTogetherBean.a(paramString.optString("jumpUrl"));
         localWatchTogetherBean.b(paramString.optString("jumpExtensionInfo"));
-        localTogetherConfigureBean.jdField_a_of_type_ComTencentMobileqqConfigBusinessWatchTogetherBean = localWatchTogetherBean;
+        localTogetherConfigureBean.b = localWatchTogetherBean;
       }
       paramString = new StringBuilder();
       paramString.append("confBean = ");
@@ -53,9 +47,9 @@ public class TogetherConfigureBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TogetherConfigureBean{showTogetherWatchInTroopSettingCard=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", watchTogether=");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessWatchTogetherBean;
+    Object localObject = this.b;
     if (localObject == null) {
       localObject = "null";
     } else {
@@ -68,7 +62,7 @@ public class TogetherConfigureBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TogetherConfigureBean
  * JD-Core Version:    0.7.0.1
  */

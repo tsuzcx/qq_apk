@@ -27,32 +27,32 @@ import mqq.util.WeakReference;
 
 public class ScreenShareCtrl
 {
-  private int jdField_a_of_type_Int = 0;
-  private final VideoController jdField_a_of_type_ComTencentAvVideoController;
-  private ScreenShareCtrl.DoubleMeetingInviteTimeOutTask jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$DoubleMeetingInviteTimeOutTask = null;
-  private ScreenShareCtrl.ScreenShareListener jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ScreenShareListener = null;
-  private ScreenShareCtrl.ShareOpsTimeOutTask jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ShareOpsTimeOutTask = null;
-  private final RecordParam jdField_a_of_type_ComTencentAvcoreDataRecordParam = new RecordParam();
-  private Runnable jdField_a_of_type_JavaLangRunnable = null;
-  private WeakReference<AVActivity> jdField_a_of_type_MqqUtilWeakReference = null;
-  private int b = 0;
+  private final VideoController a;
+  private ScreenShareCtrl.ScreenShareListener b = null;
+  private ScreenShareCtrl.ShareOpsTimeOutTask c = null;
+  private final RecordParam d = new RecordParam();
+  private int e = 0;
+  private int f = 0;
+  private WeakReference<AVActivity> g = null;
+  private Runnable h = null;
+  private ScreenShareCtrl.DoubleMeetingInviteTimeOutTask i = null;
   
   public ScreenShareCtrl(VideoController paramVideoController)
   {
-    this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
+    this.a = paramVideoController;
   }
   
   private int a(SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    QQGAudioCtrl localQQGAudioCtrl = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    VideoAppInterface localVideoAppInterface = this.jdField_a_of_type_ComTencentAvVideoController.a;
+    QQGAudioCtrl localQQGAudioCtrl = this.a.F();
+    VideoAppInterface localVideoAppInterface = this.a.e;
     boolean bool = false;
     if (localQQGAudioCtrl != null)
     {
       if (localVideoAppInterface == null) {
         return 0;
       }
-      int i = 4;
+      int j = 4;
       if (paramInt1 == 1) {
         paramSessionInfo.a("executeShareScreenOps", 1, paramInt2);
       } else if (paramInt1 == 2) {
@@ -76,31 +76,36 @@ public class ScreenShareCtrl
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ShareOpsTimeOutTask != null)
+        if (this.c != null)
         {
-          localVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ShareOpsTimeOutTask);
-          this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ShareOpsTimeOutTask = null;
+          localVideoAppInterface.a().removeCallbacks(this.c);
+          this.c = null;
         }
-        this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ShareOpsTimeOutTask = new ScreenShareCtrl.ShareOpsTimeOutTask(this.jdField_a_of_type_ComTencentAvVideoController, paramSessionInfo, paramInt1, paramInt2);
-        localVideoAppInterface.a().postDelayed(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ShareOpsTimeOutTask, 30000L);
-        i = 1;
+        this.c = new ScreenShareCtrl.ShareOpsTimeOutTask(this.a, paramSessionInfo, paramInt1, paramInt2);
+        localVideoAppInterface.a().postDelayed(this.c, 30000L);
+        j = 1;
       }
-      return i;
+      return j;
     }
     return 0;
   }
   
-  private void a()
+  private boolean a(QQGAudioCtrl paramQQGAudioCtrl)
   {
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new ScreenShareCtrl.2(this);
+    return (paramQQGAudioCtrl != null) && (this.a.k().cj == 2);
+  }
+  
+  private void b()
+  {
+    if (this.h == null) {
+      this.h = new ScreenShareCtrl.2(this);
     }
-    if ((this.jdField_a_of_type_ComTencentAvVideoController.a != null) && (this.jdField_a_of_type_JavaLangRunnable != null)) {
-      this.jdField_a_of_type_ComTencentAvVideoController.a.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 20000L);
+    if ((this.a.e != null) && (this.h != null)) {
+      this.a.e.a().postDelayed(this.h, 20000L);
     }
   }
   
-  public static void a(int paramInt)
+  public static void b(int paramInt)
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     Object localObject = localBaseApplication.getResources();
@@ -111,30 +116,42 @@ public class ScreenShareCtrl
         if (paramInt != 8) {
           localObject = null;
         } else {
-          localObject = ((Resources)localObject).getString(2131695852);
+          localObject = ((Resources)localObject).getString(2131893611);
         }
       }
       else {
-        localObject = ((Resources)localObject).getString(2131695849);
+        localObject = ((Resources)localObject).getString(2131893608);
       }
     }
     else {
-      localObject = ((Resources)localObject).getString(2131695851);
+      localObject = ((Resources)localObject).getString(2131893610);
     }
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      QQToast.a(localBaseApplication, -1, (CharSequence)localObject, 0).a();
+      QQToast.makeText(localBaseApplication, -1, (CharSequence)localObject, 0).show();
     }
   }
   
-  public static boolean a(SessionInfo paramSessionInfo)
+  @TargetApi(21)
+  private void b(AVActivity paramAVActivity, long paramLong)
+  {
+    if ((paramAVActivity != null) && (!paramAVActivity.isFinishing()) && (!paramAVActivity.isDestroyed()))
+    {
+      int j = ScreenShareTipsHelper.a();
+      PopupDialog.a(paramAVActivity, 230, null, ScreenShareTipsHelper.b(), 2131893377, 2131893377, null, new ScreenShareCtrl.1(this, paramAVActivity, paramLong));
+      ReportController.b(null, "dc00898", "", "", "0X800B48D", "0X800B48D", j, 0, "", "", "", "");
+      return;
+    }
+  }
+  
+  public static boolean b(SessionInfo paramSessionInfo)
   {
     boolean bool = true;
     if (paramSessionInfo != null)
     {
-      if (paramSessionInfo.X == 2) {
+      if (paramSessionInfo.cj == 2) {
         return bool;
       }
-      if (paramSessionInfo.X == 1) {
+      if (paramSessionInfo.cj == 1) {
         return true;
       }
     }
@@ -142,12 +159,7 @@ public class ScreenShareCtrl
     return bool;
   }
   
-  private boolean a(QQGAudioCtrl paramQQGAudioCtrl)
-  {
-    return (paramQQGAudioCtrl != null) && (this.jdField_a_of_type_ComTencentAvVideoController.a().X == 2);
-  }
-  
-  private void b(int paramInt)
+  private void c(int paramInt)
   {
     if (QLog.isColorLevel())
     {
@@ -157,14 +169,14 @@ public class ScreenShareCtrl
       ((StringBuilder)localObject).append("]");
       QLog.i("AVShare", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    Object localObject = this.g;
     if (localObject == null) {
       localObject = null;
     } else {
       localObject = (AVActivity)((WeakReference)localObject).get();
     }
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    if (a(localSessionInfo))
+    SessionInfo localSessionInfo = this.a.k();
+    if (b(localSessionInfo))
     {
       a((AVActivity)localObject, 1L);
       if (localObject != null) {
@@ -173,45 +185,33 @@ public class ScreenShareCtrl
     }
   }
   
-  @TargetApi(21)
-  private void b(AVActivity paramAVActivity, long paramLong)
-  {
-    if ((paramAVActivity != null) && (!paramAVActivity.isFinishing()) && (!paramAVActivity.isDestroyed()))
-    {
-      int i = ScreenShareTipsHelper.a();
-      PopupDialog.a(paramAVActivity, 230, null, ScreenShareTipsHelper.a(), 2131695618, 2131695618, null, new ScreenShareCtrl.1(this, paramAVActivity, paramLong));
-      ReportController.b(null, "dc00898", "", "", "0X800B48D", "0X800B48D", i, 0, "", "", "", "");
-      return;
-    }
-  }
-  
   public int a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a() == null) {
+    if (this.a.F() == null) {
       return 2;
     }
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvVideoController.a();
+    SessionInfo localSessionInfo = this.a.k();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("requestShareScreenOps, emShareOps[");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("], cur[");
-      localStringBuilder.append(localSessionInfo.X);
+      localStringBuilder.append(localSessionInfo.cj);
       localStringBuilder.append(",");
-      localStringBuilder.append(localSessionInfo.Y);
+      localStringBuilder.append(localSessionInfo.ck);
       localStringBuilder.append("]");
       QLog.i("AVShare", 2, localStringBuilder.toString());
     }
-    int j = localSessionInfo.Y;
-    int i = 1;
-    if ((j != 1) && (localSessionInfo.Y != 0)) {
+    int k = localSessionInfo.ck;
+    int j = 1;
+    if ((k != 1) && (localSessionInfo.ck != 0)) {
       return 3;
     }
     if (paramInt != 1) {
       if (paramInt != 2) {}
     }
-    switch (localSessionInfo.X)
+    switch (localSessionInfo.cj)
     {
     default: 
       break;
@@ -223,31 +223,31 @@ public class ScreenShareCtrl
       for (;;)
       {
         return 0;
-        switch (localSessionInfo.X)
+        switch (localSessionInfo.cj)
         {
         }
       }
-      i = a(localSessionInfo, paramInt, 1);
+      j = a(localSessionInfo, paramInt, 1);
     }
-    return i;
+    return j;
   }
   
   public ScreenShareCtrl.ScreenShareListener a()
   {
-    if (this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ScreenShareListener == null) {
-      this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ScreenShareListener = new ScreenShareCtrl.ScreenShareListener(this);
+    if (this.b == null) {
+      this.b = new ScreenShareCtrl.ScreenShareListener(this);
     }
-    return this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ScreenShareListener;
+    return this.b;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, int paramInt5)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvVideoController.a;
+    Object localObject = this.a.e;
     if (localObject == null) {
       return;
     }
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    if ((localSessionInfo.jdField_E_of_type_Int == paramInt3) && (localSessionInfo.f == paramLong))
+    SessionInfo localSessionInfo = this.a.k();
+    if ((localSessionInfo.aQ == paramInt3) && (localSessionInfo.aN == paramLong))
     {
       if (QLog.isColorLevel())
       {
@@ -269,12 +269,12 @@ public class ScreenShareCtrl
         localStringBuilder.append("]");
         QLog.i("AVShare", 2, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ShareOpsTimeOutTask != null)
+      if (this.c != null)
       {
-        ((VideoAppInterface)localObject).a().removeCallbacks(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ShareOpsTimeOutTask);
-        this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$ShareOpsTimeOutTask = null;
+        ((VideoAppInterface)localObject).a().removeCallbacks(this.c);
+        this.c = null;
       }
-      paramInt5 = localSessionInfo.X;
+      paramInt5 = localSessionInfo.cj;
       switch (paramInt1)
       {
       default: 
@@ -283,33 +283,33 @@ public class ScreenShareCtrl
       case 88: 
       case 89: 
         paramInt1 = paramInt5;
-        if (localSessionInfo.X == 4) {
+        if (localSessionInfo.cj == 4) {
           paramInt1 = 6;
         }
-        ScreenShareReportHelper.b(localSessionInfo.b, "onShareOpsCallback");
+        ScreenShareReportHelper.b(localSessionInfo.f, "onShareOpsCallback");
         break;
       case 87: 
         paramInt1 = paramInt5;
-        if (localSessionInfo.X == 4) {
+        if (localSessionInfo.cj == 4) {
           paramInt1 = 5;
         }
-        ScreenShareReportHelper.b(localSessionInfo.b, "onShareOpsCallback");
+        ScreenShareReportHelper.b(localSessionInfo.f, "onShareOpsCallback");
         break;
       case 85: 
       case 86: 
         paramInt1 = paramInt5;
-        if (localSessionInfo.X == 1) {
+        if (localSessionInfo.cj == 1) {
           paramInt1 = 3;
         }
         break;
       case 84: 
         paramInt1 = paramInt5;
-        if (localSessionInfo.X == 1) {
+        if (localSessionInfo.cj == 1) {
           paramInt1 = 2;
         }
-        ScreenShareReportHelper.a(localSessionInfo.b, "onShareOpsCallback");
+        ScreenShareReportHelper.a(localSessionInfo.f, "onShareOpsCallback");
       }
-      if (paramInt1 != localSessionInfo.X)
+      if (paramInt1 != localSessionInfo.cj)
       {
         localSessionInfo.a("onShareOpsCallback", paramInt1, paramInt2);
         ((VideoAppInterface)localObject).a(new Object[] { Integer.valueOf(519), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong), Integer.valueOf(paramInt4) });
@@ -341,10 +341,10 @@ public class ScreenShareCtrl
     if (paramRecordParam == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    if (((SessionInfo)localObject).jdField_E_of_type_Int == paramInt)
+    Object localObject = this.a.k();
+    if (((SessionInfo)localObject).aQ == paramInt)
     {
-      if (((SessionInfo)localObject).f != paramLong) {
+      if (((SessionInfo)localObject).aN != paramLong) {
         return;
       }
       if (QLog.isColorLevel())
@@ -357,9 +357,9 @@ public class ScreenShareCtrl
         localStringBuilder.append("]");
         QLog.i("AVShare", 2, localStringBuilder.toString());
       }
-      if (((SessionInfo)localObject).X == 2)
+      if (((SessionInfo)localObject).cj == 2)
       {
-        localObject = this.jdField_a_of_type_ComTencentAvVideoController.a();
+        localObject = this.a.aE();
         if (localObject != null) {
           ((ScreenRecordHelper)localObject).a(paramRecordParam.width, paramRecordParam.height, paramRecordParam.fps);
         }
@@ -369,11 +369,11 @@ public class ScreenShareCtrl
   
   public void a(long paramLong)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentAvVideoController.a();
+    Object localObject1 = this.a.k();
     long l1;
     try
     {
-      l1 = Long.parseLong(((SessionInfo)localObject1).c);
+      l1 = Long.parseLong(((SessionInfo)localObject1).s);
     }
     catch (Throwable localThrowable)
     {
@@ -384,8 +384,8 @@ public class ScreenShareCtrl
     if (l1 == 0L)
     {
       l2 = l1;
-      if (((SessionInfo)localObject1).f != 0L) {
-        l2 = ((SessionInfo)localObject1).f;
+      if (((SessionInfo)localObject1).aN != 0L) {
+        l2 = ((SessionInfo)localObject1).aN;
       }
     }
     if (l2 == 0L)
@@ -402,34 +402,34 @@ public class ScreenShareCtrl
       QLog.i("normal_2_meeting", 2, ((StringBuilder)localObject2).toString());
     }
     SessionMgr localSessionMgr = SessionMgr.a();
-    int i = ((SessionInfo)localObject1).jdField_d_of_type_Int;
-    String str2 = ((SessionInfo)localObject1).b;
+    int j = ((SessionInfo)localObject1).g;
+    String str2 = ((SessionInfo)localObject1).f;
     String str1 = SessionMgr.a(100, String.valueOf(l2), new int[0]);
     Object localObject2 = localSessionMgr.a(str1, false);
-    ((SessionInfo)localObject2).b(paramLong, ((SessionInfo)localObject1).jdField_j_of_type_Boolean);
-    ((SessionInfo)localObject2).g = ((SessionInfo)localObject1).g;
-    ((SessionInfo)localObject2).aw = ((SessionInfo)localObject1).jdField_j_of_type_Boolean;
-    ((SessionInfo)localObject2).b("switchToDoubleMeeting", ((SessionInfo)localObject1).jdField_E_of_type_Boolean);
-    ((SessionInfo)localObject2).b("switchToDoubleMeeting", ((SessionInfo)localObject1).p);
-    ((SessionInfo)localObject2).c = ((SessionInfo)localObject1).c;
-    if (TextUtils.isEmpty(((SessionInfo)localObject2).c)) {
-      ((SessionInfo)localObject2).c = String.valueOf(l2);
+    ((SessionInfo)localObject2).b(paramLong, ((SessionInfo)localObject1).H);
+    ((SessionInfo)localObject2).E = ((SessionInfo)localObject1).E;
+    ((SessionInfo)localObject2).cn = ((SessionInfo)localObject1).H;
+    ((SessionInfo)localObject2).b("switchToDoubleMeeting", ((SessionInfo)localObject1).aG);
+    ((SessionInfo)localObject2).b("switchToDoubleMeeting", ((SessionInfo)localObject1).aD);
+    ((SessionInfo)localObject2).s = ((SessionInfo)localObject1).s;
+    if (TextUtils.isEmpty(((SessionInfo)localObject2).s)) {
+      ((SessionInfo)localObject2).s = String.valueOf(l2);
     }
-    ((SessionInfo)localObject2).jdField_d_of_type_JavaLangString = ((SessionInfo)localObject1).jdField_d_of_type_JavaLangString;
-    ((SessionInfo)localObject2).jdField_j_of_type_Int = 8;
-    ((SessionInfo)localObject2).av = true;
-    ((SessionInfo)localObject2).jdField_E_of_type_Int = 3;
-    ((SessionInfo)localObject2).f = l2;
-    ((SessionInfo)localObject2).k = 0;
+    ((SessionInfo)localObject2).t = ((SessionInfo)localObject1).t;
+    ((SessionInfo)localObject2).o = 8;
+    ((SessionInfo)localObject2).ch = true;
+    ((SessionInfo)localObject2).aQ = 3;
+    ((SessionInfo)localObject2).aN = l2;
+    ((SessionInfo)localObject2).p = 0;
     ((SessionInfo)localObject2).d("switchToDoubleMeeting", true);
-    ((SessionInfo)localObject2).c(((SessionInfo)localObject1).ab);
-    ((SessionInfo)localObject2).d(((SessionInfo)localObject1).ac);
-    ((SessionInfo)localObject2).W = 5;
-    this.jdField_a_of_type_ComTencentAvVideoController.k(true);
-    this.jdField_a_of_type_ComTencentAvVideoController.a(((SessionInfo)localObject1).c, 8);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(262);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(((SessionInfo)localObject1).c, 72);
-    this.jdField_a_of_type_ComTencentAvVideoController.jdField_d_of_type_Int = 3;
+    ((SessionInfo)localObject2).c(((SessionInfo)localObject1).cp);
+    ((SessionInfo)localObject2).d(((SessionInfo)localObject1).cq);
+    ((SessionInfo)localObject2).ci = 5;
+    this.a.r(true);
+    this.a.a(((SessionInfo)localObject1).s, 8);
+    this.a.b(262);
+    this.a.b(((SessionInfo)localObject1).s, 72);
+    this.a.r = 3;
     if (localSessionMgr.a(str2))
     {
       boolean bool = localSessionMgr.a(paramLong, str2);
@@ -439,27 +439,27 @@ public class ScreenShareCtrl
       ((StringBuilder)localObject1).append("]");
       QLog.i("AVShare", 2, ((StringBuilder)localObject1).toString());
     }
-    if (localSessionMgr.a() != localObject2) {
-      localSessionMgr.b(str1);
+    if (localSessionMgr.b() != localObject2) {
+      localSessionMgr.e(str1);
     }
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("switchToDoubleMeeting, after close pre one. cur[");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentAvVideoController.a());
+      ((StringBuilder)localObject1).append(this.a.k());
       ((StringBuilder)localObject1).append("]");
       QLog.i("normal_2_meeting", 2, ((StringBuilder)localObject1).toString());
     }
-    ((SessionInfo)localObject2).z = -1;
-    if (i == 1) {
+    ((SessionInfo)localObject2).ay = -1;
+    if (j == 1) {
       ((SessionInfo)localObject2).a(paramLong, "switchToDoubleMeeting.1", 3);
-    } else if (i == 2) {
+    } else if (j == 2) {
       ((SessionInfo)localObject2).a(paramLong, "switchToDoubleMeeting.2", 4);
     }
-    ((SessionInfo)localObject2).k = 0;
-    ((SessionInfo)localObject2).f = l2;
+    ((SessionInfo)localObject2).p = 0;
+    ((SessionInfo)localObject2).aN = l2;
     ((SessionInfo)localObject2).d("switchToDoubleMeeting", 0);
-    this.jdField_a_of_type_ComTencentAvVideoController.a.a(new Object[] { Integer.valueOf(174), Long.valueOf(paramLong) });
+    this.a.e.a(new Object[] { Integer.valueOf(174), Long.valueOf(paramLong) });
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
@@ -478,49 +478,49 @@ public class ScreenShareCtrl
       ((StringBuilder)localObject1).append("]");
       QLog.i("normal_2_meeting", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    if (this.h != null)
     {
-      this.jdField_a_of_type_ComTencentAvVideoController.a.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
+      this.a.e.a().removeCallbacks(this.h);
+      this.h = null;
     }
     Object localObject2 = SessionMgr.a(100, String.valueOf(paramLong2), new int[0]);
-    Object localObject1 = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    localObject2 = SessionMgr.a().c((String)localObject2);
-    ((SessionInfo)localObject2).H = true;
-    ((SessionInfo)localObject2).jdField_e_of_type_Int = 2;
-    ((SessionInfo)localObject2).jdField_e_of_type_JavaLangString = null;
-    ((SessionInfo)localObject2).jdField_e_of_type_Boolean = true;
-    ((SessionInfo)localObject2).r = String.valueOf(paramLong2);
-    ((SessionInfo)localObject2).c = ((SessionInfo)localObject1).c;
-    ((SessionInfo)localObject2).jdField_d_of_type_JavaLangString = ((SessionInfo)localObject1).jdField_d_of_type_JavaLangString;
-    ((SessionInfo)localObject2).aw = ((SessionInfo)localObject1).jdField_j_of_type_Boolean;
+    Object localObject1 = this.a.k();
+    localObject2 = SessionMgr.a().d((String)localObject2);
+    ((SessionInfo)localObject2).aK = true;
+    ((SessionInfo)localObject2).h = 2;
+    ((SessionInfo)localObject2).u = null;
+    ((SessionInfo)localObject2).B = true;
+    ((SessionInfo)localObject2).aW = String.valueOf(paramLong2);
+    ((SessionInfo)localObject2).s = ((SessionInfo)localObject1).s;
+    ((SessionInfo)localObject2).t = ((SessionInfo)localObject1).t;
+    ((SessionInfo)localObject2).cn = ((SessionInfo)localObject1).H;
     ((SessionInfo)localObject2).b(paramLong1, false);
-    ((SessionInfo)localObject2).g = ((SessionInfo)localObject1).g;
-    ((SessionInfo)localObject2).b("onSwitch2DoubleMeeting", ((SessionInfo)localObject1).jdField_E_of_type_Boolean);
-    ((SessionInfo)localObject2).b("onSwitch2DoubleMeeting", ((SessionInfo)localObject1).p);
-    ((SessionInfo)localObject2).av = true;
-    if (((SessionInfo)localObject1).jdField_d_of_type_Int == 1) {
+    ((SessionInfo)localObject2).E = ((SessionInfo)localObject1).E;
+    ((SessionInfo)localObject2).b("onSwitch2DoubleMeeting", ((SessionInfo)localObject1).aG);
+    ((SessionInfo)localObject2).b("onSwitch2DoubleMeeting", ((SessionInfo)localObject1).aD);
+    ((SessionInfo)localObject2).ch = true;
+    if (((SessionInfo)localObject1).g == 1) {
       ((SessionInfo)localObject2).a(paramLong1, "onSwitch2DoubleMeeting.1", 3);
     } else {
       ((SessionInfo)localObject2).a(paramLong1, "onSwitch2DoubleMeeting.2", 4);
     }
-    ((SessionInfo)localObject2).k = ((SessionInfo)localObject1).k;
-    ((SessionInfo)localObject2).f = paramLong2;
-    ((SessionInfo)localObject2).jdField_E_of_type_Int = 3;
-    ((SessionInfo)localObject2).jdField_j_of_type_Int = 8;
+    ((SessionInfo)localObject2).p = ((SessionInfo)localObject1).p;
+    ((SessionInfo)localObject2).aN = paramLong2;
+    ((SessionInfo)localObject2).aQ = 3;
+    ((SessionInfo)localObject2).o = 8;
     ((SessionInfo)localObject2).f("onSwitch2DoubleMeeting", true);
     ((SessionInfo)localObject2).d("onSwitch2DoubleMeeting", true);
     ((SessionInfo)localObject2).b("onSwitch2DoubleMeeting", 17);
     ((SessionInfo)localObject2).a("onSwitch2DoubleMeeting", 2);
     SessionMgr localSessionMgr = SessionMgr.a();
-    VideoRecoveryMonitor localVideoRecoveryMonitor = this.jdField_a_of_type_ComTencentAvVideoController.a.a();
+    VideoRecoveryMonitor localVideoRecoveryMonitor = this.a.e.d();
     if (localVideoRecoveryMonitor != null) {
       localVideoRecoveryMonitor.a(262);
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.b(((SessionInfo)localObject1).c, 72);
-    if ((!TextUtils.isEmpty(((SessionInfo)localObject1).b)) && (localSessionMgr.a(((SessionInfo)localObject1).b)))
+    this.a.b(((SessionInfo)localObject1).s, 72);
+    if ((!TextUtils.isEmpty(((SessionInfo)localObject1).f)) && (localSessionMgr.a(((SessionInfo)localObject1).f)))
     {
-      boolean bool = localSessionMgr.a(paramLong1, ((SessionInfo)localObject1).b);
+      boolean bool = localSessionMgr.a(paramLong1, ((SessionInfo)localObject1).f);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -530,20 +530,20 @@ public class ScreenShareCtrl
         QLog.i("AVShare", 2, ((StringBuilder)localObject1).toString());
       }
     }
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a() != localObject2)
+    if (this.a.k() != localObject2)
     {
-      localSessionMgr.b(((SessionInfo)localObject2).b);
+      localSessionMgr.e(((SessionInfo)localObject2).f);
       if (QLog.isColorLevel()) {
         QLog.i("AVShare", 2, "onSwitch2DoubleMeeting, need double set main session. ");
       }
     }
     ((SessionInfo)localObject2).d("onSwitch2DoubleMeeting", 1);
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a.a() > 0) {
-      this.jdField_a_of_type_ComTencentAvVideoController.a.a(new Object[] { Integer.valueOf(174), Long.valueOf(paramLong1) });
-    } else if (this.jdField_a_of_type_ComTencentAvVideoController.a.isBackgroundStop) {
-      this.jdField_a_of_type_ComTencentAvVideoController.a(paramLong1, 3, paramLong2, new long[] { paramLong2 }, false);
+    if (this.a.e.f() > 0) {
+      this.a.e.a(new Object[] { Integer.valueOf(174), Long.valueOf(paramLong1) });
+    } else if (this.a.e.isBackgroundStop) {
+      this.a.a(paramLong1, 3, paramLong2, new long[] { paramLong2 }, false);
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.a(((SessionInfo)localObject2).b, ((SessionInfo)localObject2).jdField_d_of_type_Int, false, false, true);
+    this.a.a(((SessionInfo)localObject2).f, ((SessionInfo)localObject2).g, false, false, true);
   }
   
   public void a(Bitmap paramBitmap, RecordParam paramRecordParam)
@@ -551,21 +551,21 @@ public class ScreenShareCtrl
     if (paramRecordParam == null) {
       return;
     }
-    QQGAudioCtrl localQQGAudioCtrl = this.jdField_a_of_type_ComTencentAvVideoController.a();
+    QQGAudioCtrl localQQGAudioCtrl = this.a.F();
     if (a(localQQGAudioCtrl))
     {
-      if (!this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.equals(paramRecordParam))
+      if (!this.d.equals(paramRecordParam))
       {
-        this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.update(paramRecordParam);
-        localQQGAudioCtrl.setShareEncParam(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam, this.jdField_a_of_type_Int, this.b, 1);
+        this.d.update(paramRecordParam);
+        localQQGAudioCtrl.setShareEncParam(this.d, this.e, this.f, 1);
       }
       if (localQQGAudioCtrl.sendShareFrame(paramBitmap, paramRecordParam.width, paramRecordParam.height) != 0) {
-        b(2);
+        c(2);
       }
     }
     else if (localQQGAudioCtrl == null)
     {
-      b(1);
+      c(1);
     }
   }
   
@@ -582,11 +582,11 @@ public class ScreenShareCtrl
       localStringBuilder.append("]");
       QLog.i("AVShare", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$DoubleMeetingInviteTimeOutTask != null) {
-      this.jdField_a_of_type_ComTencentAvVideoController.a.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$DoubleMeetingInviteTimeOutTask);
+    if (this.i != null) {
+      this.a.e.a().removeCallbacks(this.i);
     }
-    this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$DoubleMeetingInviteTimeOutTask = new ScreenShareCtrl.DoubleMeetingInviteTimeOutTask(this.jdField_a_of_type_ComTencentAvVideoController, paramSessionInfo);
-    this.jdField_a_of_type_ComTencentAvVideoController.a.a().postDelayed(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$DoubleMeetingInviteTimeOutTask, 15000L);
+    this.i = new ScreenShareCtrl.DoubleMeetingInviteTimeOutTask(this.a, paramSessionInfo);
+    this.a.e.a().postDelayed(this.i, 15000L);
   }
   
   @TargetApi(21)
@@ -596,11 +596,11 @@ public class ScreenShareCtrl
       return;
     }
     if (paramAVActivity != null) {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAVActivity);
+      this.g = new WeakReference(paramAVActivity);
     }
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvVideoController.a();
+    SessionInfo localSessionInfo = this.a.k();
     boolean bool = QLog.isColorLevel();
-    int i = 2;
+    int j = 2;
     if (bool)
     {
       localStringBuilder = new StringBuilder();
@@ -609,19 +609,19 @@ public class ScreenShareCtrl
       localStringBuilder.append("]");
       QLog.i("AVShare", 2, localStringBuilder.toString());
     }
-    int j = localSessionInfo.X;
+    int k = localSessionInfo.cj;
     Object localObject = null;
     StringBuilder localStringBuilder = null;
-    if ((j != 2) && (localSessionInfo.X != 1))
+    if ((k != 2) && (localSessionInfo.cj != 1))
     {
-      if (localSessionInfo.a(this.jdField_a_of_type_ComTencentAvVideoController.a.getCurrentAccountUin()))
+      if (localSessionInfo.b(this.a.e.getCurrentAccountUin()))
       {
-        a(1);
+        b(1);
         return;
       }
       if (localSessionInfo.s())
       {
-        a(8);
+        b(8);
         return;
       }
       if ((paramAVActivity != null) && ((ScreenShareTipsHelper.a() == 1) || (ScreenShareTipsHelper.a() == 2)))
@@ -632,7 +632,7 @@ public class ScreenShareCtrl
       if (paramAVActivity == null) {
         paramAVActivity = localStringBuilder;
       } else {
-        paramAVActivity = paramAVActivity.a();
+        paramAVActivity = paramAVActivity.v();
       }
       if (paramAVActivity != null)
       {
@@ -644,43 +644,43 @@ public class ScreenShareCtrl
     else
     {
       if (a(2) != 1) {
-        i = 3;
+        j = 3;
       }
-      a(i);
+      b(j);
       if (paramAVActivity == null) {
         paramAVActivity = localObject;
       } else {
-        paramAVActivity = paramAVActivity.a();
+        paramAVActivity = paramAVActivity.v();
       }
       if (paramAVActivity != null) {
-        paramAVActivity.a(1);
+        paramAVActivity.b(1);
       }
     }
   }
   
   public void a(RecordParam paramRecordParam, int paramInt1, int paramInt2)
   {
-    QQGAudioCtrl localQQGAudioCtrl = this.jdField_a_of_type_ComTencentAvVideoController.a();
+    QQGAudioCtrl localQQGAudioCtrl = this.a.F();
     if (localQQGAudioCtrl != null)
     {
       if (paramRecordParam == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.update(paramRecordParam);
+      this.d.update(paramRecordParam);
       if (paramInt1 != 0) {
-        this.jdField_a_of_type_Int = paramInt1;
+        this.e = paramInt1;
       }
       if (paramInt2 != 0) {
-        this.b = paramInt2;
+        this.f = paramInt2;
       }
-      localQQGAudioCtrl.setShareEncParam(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam, this.jdField_a_of_type_Int, this.b, 0);
+      localQQGAudioCtrl.setShareEncParam(this.d, this.e, this.f, 0);
     }
   }
   
   public void a(String paramString, byte[] paramArrayOfByte, long paramLong)
   {
-    long l = AudioHelper.b();
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentAvVideoController.a();
+    long l = AudioHelper.c();
+    paramArrayOfByte = this.a.k();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -695,20 +695,20 @@ public class ScreenShareCtrl
       localStringBuilder.append("]");
       QLog.w("normal_2_meeting", 2, localStringBuilder.toString());
     }
-    if (paramArrayOfByte.y) {
+    if (paramArrayOfByte.am) {
       return;
     }
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (!paramString.equalsIgnoreCase(paramArrayOfByte.c)) {
+    if (!paramString.equalsIgnoreCase(paramArrayOfByte.s)) {
       return;
     }
     paramArrayOfByte.d("onSwitchMeeting", true);
-    paramArrayOfByte.f = 0L;
+    paramArrayOfByte.aN = 0L;
     paramArrayOfByte.b("onSwitchMeeting", 16);
-    this.jdField_a_of_type_ComTencentAvVideoController.a.a(new Object[] { Integer.valueOf(174), Long.valueOf(l) });
-    a();
+    this.a.e.a(new Object[] { Integer.valueOf(174), Long.valueOf(l) });
+    b();
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, RecordParam paramRecordParam)
@@ -716,21 +716,21 @@ public class ScreenShareCtrl
     if (paramRecordParam == null) {
       return;
     }
-    QQGAudioCtrl localQQGAudioCtrl = this.jdField_a_of_type_ComTencentAvVideoController.a();
+    QQGAudioCtrl localQQGAudioCtrl = this.a.F();
     if (a(localQQGAudioCtrl))
     {
-      if (!this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.equals(paramRecordParam))
+      if (!this.d.equals(paramRecordParam))
       {
-        this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.update(paramRecordParam);
-        localQQGAudioCtrl.setShareEncParam(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam, this.jdField_a_of_type_Int, this.b, 1);
+        this.d.update(paramRecordParam);
+        localQQGAudioCtrl.setShareEncParam(this.d, this.e, this.f, 1);
       }
       if (localQQGAudioCtrl.sendShareFrame(paramArrayOfByte, paramInt1, paramRecordParam.width, paramRecordParam.height, paramInt2) != 0) {
-        b(2);
+        c(2);
       }
     }
     else if (localQQGAudioCtrl == null)
     {
-      b(1);
+      c(1);
     }
   }
   
@@ -744,11 +744,11 @@ public class ScreenShareCtrl
       ((StringBuilder)localObject).append("]");
       QLog.i("AVShare", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$DoubleMeetingInviteTimeOutTask;
-    if ((localObject != null) && (((ScreenShareCtrl.DoubleMeetingInviteTimeOutTask)localObject).a.f == paramLong))
+    Object localObject = this.i;
+    if ((localObject != null) && (((ScreenShareCtrl.DoubleMeetingInviteTimeOutTask)localObject).a.aN == paramLong))
     {
-      this.jdField_a_of_type_ComTencentAvVideoController.a.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$DoubleMeetingInviteTimeOutTask);
-      this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl$DoubleMeetingInviteTimeOutTask = null;
+      this.a.e.a().removeCallbacks(this.i);
+      this.i = null;
     }
   }
 }

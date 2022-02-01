@@ -48,7 +48,7 @@ public class HttpWebCgiAsyncTask2
           localBundle.putString("Origin", str3);
           ((Bundle)localObject).remove("Origin");
         }
-        paramVarArgs = new JSONObject(HttpUtil.openUrl(paramVarArgs, this.a, this.b, (Bundle)localObject, localBundle));
+        paramVarArgs = new JSONObject(HttpUtil.openUrl(paramVarArgs, this.e, this.f, (Bundle)localObject, localBundle));
         return paramVarArgs;
       }
       catch (OutOfMemoryError paramVarArgs)
@@ -69,7 +69,7 @@ public class HttpWebCgiAsyncTask2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2
  * JD-Core Version:    0.7.0.1
  */

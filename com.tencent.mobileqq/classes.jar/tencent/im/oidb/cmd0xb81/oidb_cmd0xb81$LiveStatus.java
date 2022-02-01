@@ -11,6 +11,8 @@ public final class oidb_cmd0xb81$LiveStatus
   extends MessageMicro<LiveStatus>
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public oidb_cmd0xb81.NowLiveInfo now_live_info = new oidb_cmd0xb81.NowLiveInfo();
+  public final PBStringField pic_url = PBField.initString("");
   public final PBStringField rowkey = PBField.initString("");
   public final PBStringField str_account = PBField.initString("");
   public final PBStringField str_roomid = PBField.initString("");
@@ -22,12 +24,12 @@ public final class oidb_cmd0xb81$LiveStatus
   static
   {
     Integer localInteger = Integer.valueOf(0);
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 122 }, new String[] { "uint32_liveing", "uint64_live_time", "uint32_source", "str_account", "str_roomid", "rowkey", "str_url" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, "", "", "", "" }, LiveStatus.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 82, 122 }, new String[] { "uint32_liveing", "uint64_live_time", "uint32_source", "str_account", "str_roomid", "rowkey", "pic_url", "now_live_info", "str_url" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, "", "", "", "", null, "" }, LiveStatus.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb81.oidb_cmd0xb81.LiveStatus
  * JD-Core Version:    0.7.0.1
  */

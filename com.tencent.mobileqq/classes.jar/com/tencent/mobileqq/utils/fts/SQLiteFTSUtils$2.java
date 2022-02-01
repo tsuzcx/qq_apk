@@ -10,21 +10,21 @@ final class SQLiteFTSUtils$2
 {
   public int a()
   {
-    WVPreloadPskeyConfBean localWVPreloadPskeyConfBean = (WVPreloadPskeyConfBean)QConfigManager.a().a(585);
+    WVPreloadPskeyConfBean localWVPreloadPskeyConfBean = (WVPreloadPskeyConfBean)QConfigManager.b().b(585);
     if (localWVPreloadPskeyConfBean != null) {
       return localWVPreloadPskeyConfBean.b;
     }
     return 0;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return SearchConfigUtils.d();
+    return SearchConfigUtils.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.2
  * JD-Core Version:    0.7.0.1
  */

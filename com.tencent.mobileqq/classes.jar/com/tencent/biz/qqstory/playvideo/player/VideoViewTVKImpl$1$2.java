@@ -15,20 +15,20 @@ class VideoViewTVKImpl$1$2
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.d)))
+    if ((this.a.f.c != null) && (!TextUtils.isEmpty(this.a.f.g)))
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$DebugInfo.f = SystemClock.uptimeMillis();
+      this.a.b.g = SystemClock.uptimeMillis();
       TVKPreloader.a();
-      String[] arrayOfString = this.a.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.d.replace("https://", "http://"));
-      SLog.d(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_JavaLangString, "TVK_IMediaPlayer.openMediaPlayerByUrl, 1, vid=%s, urls=%s", new Object[] { this.a.jdField_a_of_type_JavaLangString, Arrays.toString(arrayOfString) });
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_AndroidContentContext, arrayOfString, 0L, 0L, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, null);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.b = 1;
+      String[] arrayOfString = this.a.c.b(this.a.f.g.replace("https://", "http://"));
+      SLog.d(this.a.f.a, "TVK_IMediaPlayer.openMediaPlayerByUrl, 1, vid=%s, urls=%s", new Object[] { this.a.d, Arrays.toString(arrayOfString) });
+      this.a.f.c.openMediaPlayerByUrl(this.a.f.d, arrayOfString, 0L, 0L, this.a.e, null);
+      this.a.f.j = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.1.2
  * JD-Core Version:    0.7.0.1
  */

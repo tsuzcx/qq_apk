@@ -114,29 +114,23 @@ public class SVIPHandler
   extends BusinessHandler
   implements ISVIPHandler
 {
-  private static int h;
-  private int jdField_a_of_type_Int = 0;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public BubbleManager a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int b = -1;
-  private int c = -1;
-  private int d = -1;
+  private static int k;
+  public BubbleManager a = null;
+  private boolean b = false;
+  private int c = 0;
+  private QQAppInterface d;
   private int e = -1;
   private int f = -1;
   private int g = -1;
+  private int h = -1;
+  private int i = -1;
+  private int j = -1;
   
   SVIPHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager = ((BubbleManager)paramQQAppInterface.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER));
-  }
-  
-  private LoginInfo a()
-  {
-    return a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.d = paramQQAppInterface;
+    this.a = ((BubbleManager)paramQQAppInterface.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER));
   }
   
   public static LoginInfo a(QQAppInterface paramQQAppInterface)
@@ -150,7 +144,7 @@ public class SVIPHandler
       localLoginInfo.iKeyType = 1;
       localLoginInfo.sSKey = paramQQAppInterface;
       localLoginInfo.iOpplat = 2;
-      localLoginInfo.sClientVer = DeviceInfoUtil.c();
+      localLoginInfo.sClientVer = DeviceInfoUtil.e();
       return localLoginInfo;
     }
     catch (Exception paramQQAppInterface)
@@ -162,7 +156,7 @@ public class SVIPHandler
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    paramToServiceMsg = (IFontManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFontManagerService.class, "");
+    paramToServiceMsg = (IFontManagerService)this.d.getRuntimeService(IFontManagerService.class, "");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -182,35 +176,35 @@ public class SVIPHandler
         if ((paramFromServiceMsg.rpt_md5_ret.has()) && (paramFromServiceMsg.rpt_md5_ret.get().size() > 0))
         {
           paramFromServiceMsg = (VipFontUpdate.TFontMd5CheckRsp.TMd5Ret)paramFromServiceMsg.rpt_md5_ret.get().get(0);
-          int i = paramFromServiceMsg.i32_check_ret.get();
-          int j = paramFromServiceMsg.i32_check_font_id.get();
+          int m = paramFromServiceMsg.i32_check_ret.get();
+          int n = paramFromServiceMsg.i32_check_font_id.get();
           if (QLog.isColorLevel())
           {
             paramFromServiceMsg = new StringBuilder();
             paramFromServiceMsg.append("handleGetUserFont fontid = ");
-            paramFromServiceMsg.append(j);
+            paramFromServiceMsg.append(n);
             paramFromServiceMsg.append(" md5ret = ");
-            paramFromServiceMsg.append(i);
+            paramFromServiceMsg.append(m);
             QLog.d("SVIPHandler", 2, paramFromServiceMsg.toString());
           }
-          if ((j == a()) && (i > 0)) {
-            paramToServiceMsg.reDownloadFont(j, this.f);
+          if ((n == b()) && (m > 0)) {
+            paramToServiceMsg.reDownloadFont(n, this.i);
           }
         }
         paramFromServiceMsg = (VipFontUpdate.TFontFreshRsp)paramObject.st_fresh_rsp.get();
         if (!paramFromServiceMsg.i32_font_type.has()) {
           break label430;
         }
-        VasShieldFont.jdField_a_of_type_Int = paramFromServiceMsg.i32_font_type.get();
+        VasShieldFont.b = paramFromServiceMsg.i32_font_type.get();
         if (QLog.isColorLevel())
         {
           paramFromServiceMsg = new StringBuilder();
           paramFromServiceMsg.append("handleGetFontShieldType type= ");
-          paramFromServiceMsg.append(VasShieldFont.jdField_a_of_type_Int);
+          paramFromServiceMsg.append(VasShieldFont.b);
           QLog.d("VasShieldFont", 2, paramFromServiceMsg.toString());
         }
-        VasShieldFont.b = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
-        VasShieldFont.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        VasShieldFont.c = this.d.getCurrentUin();
+        VasShieldFont.a(this.d);
       }
       catch (Exception paramFromServiceMsg)
       {
@@ -241,7 +235,7 @@ public class SVIPHandler
         paramToServiceMsg.mergeFrom(paramFromServiceMsg.getWupBuffer());
         paramToServiceMsg = (VipFontUpdate.TDiyFontRsp)paramToServiceMsg.st_diyfont_rsp.get();
         ArrayList localArrayList = new ArrayList();
-        FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        FriendsManager localFriendsManager = (FriendsManager)this.d.getManager(QQManagerFactory.FRIENDS_MANAGER);
         Iterator localIterator = paramToServiceMsg.rpt_font_rsp_info.get().iterator();
         while (localIterator.hasNext())
         {
@@ -252,28 +246,28 @@ public class SVIPHandler
           if (paramObject == null) {
             paramToServiceMsg = "";
           }
-          int i = localTDiyFontRspInfo.i32_font_id.get();
+          int m = localTDiyFontRspInfo.i32_font_id.get();
           if (QLog.isColorLevel())
           {
             paramObject = new StringBuilder();
             paramObject.append("handleGetDiyFontConfig uin = ");
             paramObject.append(str);
             paramObject.append(" fontId = ");
-            paramObject.append(i);
+            paramObject.append(m);
             paramObject.append(" config = ");
             paramObject.append(paramToServiceMsg);
             paramObject.append(" seq = ");
             paramObject.append(paramFromServiceMsg.getRequestSsoSeq());
             QLog.d("FontManagerConstants", 2, paramObject.toString());
           }
-          paramObject = localFriendsManager.a(str);
+          paramObject = localFriendsManager.x(str);
           if (paramObject.diyFontConfigMap == null) {
             paramObject.diyFontConfigMap = new ConcurrentHashMap();
           }
-          if ((!paramObject.diyFontConfigMap.containsKey(Integer.valueOf(i))) || (!paramToServiceMsg.equals(paramObject.diyFontConfigMap.get(Integer.valueOf(i)))))
+          if ((!paramObject.diyFontConfigMap.containsKey(Integer.valueOf(m))) || (!paramToServiceMsg.equals(paramObject.diyFontConfigMap.get(Integer.valueOf(m)))))
           {
-            paramObject.diyFontConfigMap.put(Integer.valueOf(i), paramToServiceMsg);
-            ((IFontManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFontManagerService.class, "")).updateDiyConfig(str, i);
+            paramObject.diyFontConfigMap.put(Integer.valueOf(m), paramToServiceMsg);
+            ((IFontManagerService)this.d.getRuntimeService(IFontManagerService.class, "")).updateDiyConfig(str, m);
             localArrayList.add(paramObject);
           }
         }
@@ -310,7 +304,7 @@ public class SVIPHandler
   
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i = paramToServiceMsg.extraData.getInt("hiboom_auth_type");
+    int m = paramToServiceMsg.extraData.getInt("hiboom_auth_type");
     if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
       paramObject = new VipFontUpdate.TFontSsoRsp();
@@ -319,17 +313,17 @@ public class SVIPHandler
         paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
         if (paramObject.i32_ret.get() != 0)
         {
-          notifyUI(102, false, Integer.valueOf(i));
+          notifyUI(102, false, Integer.valueOf(m));
           return;
         }
         paramFromServiceMsg = (VipFontUpdate.TCheckRsp)paramObject.st_check_rsp.get();
         if (paramFromServiceMsg != null)
         {
-          notifyUI(102, true, new Object[] { Integer.valueOf(paramFromServiceMsg.i32_ret.get()), ((VipFontUpdate.TTipsInfo)paramFromServiceMsg.st_tips_info.get()).toByteArray(), Integer.valueOf(paramToServiceMsg.extraData.getInt("hiboom_id")), paramToServiceMsg.extraData.getString("hiboom_text"), Integer.valueOf(i) });
+          notifyUI(102, true, new Object[] { Integer.valueOf(paramFromServiceMsg.i32_ret.get()), ((VipFontUpdate.TTipsInfo)paramFromServiceMsg.st_tips_info.get()).toByteArray(), Integer.valueOf(paramToServiceMsg.extraData.getInt("hiboom_id")), paramToServiceMsg.extraData.getString("hiboom_text"), Integer.valueOf(m) });
           return;
         }
         QLog.e("SVIPHandler", 1, "handleAuthHiBoom fail authRsp is null");
-        notifyUI(102, false, Integer.valueOf(i));
+        notifyUI(102, false, Integer.valueOf(m));
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -339,7 +333,7 @@ public class SVIPHandler
         paramFromServiceMsg.append(paramToServiceMsg.getLocalizedMessage());
         paramFromServiceMsg.append(Log.getStackTraceString(paramToServiceMsg));
         QLog.e("SVIPHandler", 1, paramFromServiceMsg.toString());
-        notifyUI(102, false, Integer.valueOf(i));
+        notifyUI(102, false, Integer.valueOf(m));
         return;
       }
     }
@@ -355,7 +349,7 @@ public class SVIPHandler
     }
     paramToServiceMsg.append(bool);
     QLog.e("SVIPHandler", 1, paramToServiceMsg.toString());
-    notifyUI(102, false, Integer.valueOf(i));
+    notifyUI(102, false, Integer.valueOf(m));
   }
   
   private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -366,7 +360,7 @@ public class SVIPHandler
       try
       {
         paramToServiceMsg.mergeFrom(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = ((IVasService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasService.class, "")).getHiBoomManager();
+        paramFromServiceMsg = ((IVasService)this.d.getRuntimeService(IVasService.class, "")).getHiBoomManager();
         if (paramToServiceMsg.i32_ret.get() != 0)
         {
           paramObject = new StringBuilder();
@@ -419,8 +413,8 @@ public class SVIPHandler
           notifyUI(103, false, Boolean.valueOf(bool));
           return;
         }
-        int i = paramToServiceMsg.extraData.getInt("hiboom_id");
-        notifyUI(103, true, new Object[] { Integer.valueOf(paramFromServiceMsg.i32_ret.get()), Integer.valueOf(i), ((VipFontUpdate.TTipsInfo)paramFromServiceMsg.st_tips_info.get()).toByteArray(), Boolean.valueOf(bool), str });
+        int m = paramToServiceMsg.extraData.getInt("hiboom_id");
+        notifyUI(103, true, new Object[] { Integer.valueOf(paramFromServiceMsg.i32_ret.get()), Integer.valueOf(m), ((VipFontUpdate.TTipsInfo)paramFromServiceMsg.st_tips_info.get()).toByteArray(), Boolean.valueOf(bool), str });
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -432,26 +426,6 @@ public class SVIPHandler
         notifyUI(103, false, Boolean.valueOf(bool));
       }
     }
-  }
-  
-  private int h()
-  {
-    if (OSUtils.isMIUI()) {
-      return 1;
-    }
-    if (OSUtils.isEMUI()) {
-      return 2;
-    }
-    if (OSUtils.isFlymeOS()) {
-      return 5;
-    }
-    if (!TextUtils.isEmpty(SystemUtil.a("ro.build.version.opporom"))) {
-      return 3;
-    }
-    if (!TextUtils.isEmpty(SystemUtil.a("ro.vivo.os.version"))) {
-      return 4;
-    }
-    return 0;
   }
   
   private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -512,13 +486,13 @@ public class SVIPHandler
   
   private void l(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i = paramToServiceMsg.extraData.getInt("setFontBubbleSeq");
+    int m = paramToServiceMsg.extraData.getInt("setFontBubbleSeq");
     if ((paramObject instanceof SetFontBubbleRsp))
     {
-      notifyUI(109, true, new Object[] { paramObject, Integer.valueOf(i) });
+      notifyUI(109, true, new Object[] { paramObject, Integer.valueOf(m) });
       return;
     }
-    notifyUI(109, false, new Object[] { null, Integer.valueOf(i) });
+    notifyUI(109, false, new Object[] { null, Integer.valueOf(m) });
   }
   
   private void m(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -531,6 +505,11 @@ public class SVIPHandler
     notifyUI(111, false, paramObject);
   }
   
+  private LoginInfo n()
+  {
+    return a(this.d);
+  }
+  
   private void n(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ((paramObject instanceof FaceRsp))
@@ -541,70 +520,39 @@ public class SVIPHandler
     notifyUI(112, false, paramObject);
   }
   
-  public int a()
+  private int o()
   {
-    try
-    {
-      if (this.e == -1)
-      {
-        ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-        if (localExtensionInfo == null) {
-          return 0;
-        }
-        this.e = ((int)localExtensionInfo.uVipFont);
-        this.f = localExtensionInfo.vipFontType;
-      }
-      int i = this.e;
-      return i;
+    if (OSUtils.isMIUI()) {
+      return 1;
     }
-    finally {}
-  }
-  
-  public int a(MessageRecord paramMessageRecord)
-  {
-    int j = SVIPHandlerConstants.a(paramMessageRecord.vipBubbleID);
-    if (j == 0) {
-      return 0;
+    if (OSUtils.isEMUI()) {
+      return 2;
     }
-    int i;
-    if (paramMessageRecord.vipSubBubbleId != 0)
-    {
-      i = paramMessageRecord.vipSubBubbleId;
+    if (OSUtils.isFlymeOS()) {
+      return 5;
     }
-    else
-    {
-      String str = paramMessageRecord.getExtInfoFromExtStr("bubble_sub_id");
-      if (QLog.isColorLevel()) {
-        QLog.i("SVIPHandler", 2, String.format("try get bubbleSubId from msg id %d : %s", new Object[] { Long.valueOf(paramMessageRecord.uniseq), str }));
-      }
-      if (!TextUtils.isEmpty(str)) {
-        i = Integer.parseInt(str);
-      } else {
-        i = 0;
-      }
+    if (!TextUtils.isEmpty(SystemUtil.a("ro.build.version.opporom"))) {
+      return 3;
     }
-    if ((i != 0) && (a(j, i)))
-    {
-      paramMessageRecord.vipSubBubbleId = i;
-      return i;
+    if (!TextUtils.isEmpty(SystemUtil.a("ro.vivo.os.version"))) {
+      return 4;
     }
-    paramMessageRecord.vipSubBubbleId = 0;
-    return j;
+    return 0;
   }
   
   public int a(String paramString)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(paramString, 0).getInt("svip_colorScreen_id", 0);
+    int m = this.d.getApp().getSharedPreferences(paramString, 0).getInt("svip_colorScreen_id", 0);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getColorScreenId ");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" id ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(m);
       QLog.d("SVIPHandler", 2, localStringBuilder.toString());
     }
-    return i;
+    return m;
   }
   
   public void a()
@@ -615,11 +563,11 @@ public class SVIPHandler
     localTFontSsoReq.u64_seq.set(((Random)localObject1).nextInt(1000));
     localTFontSsoReq.i32_implat.set(109);
     localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    localTFontSsoReq.str_mqqver.set("8.7.0.5295");
+    localTFontSsoReq.str_mqqver.set("8.8.17.5770");
     Object localObject3 = new VipFontUpdate.TFontFreshReq();
-    ((VipFontUpdate.TFontFreshReq)localObject3).i32_local_font_id.set(a());
-    ((VipFontUpdate.TFontFreshReq)localObject3).i32_cpu_freq.set((int)DeviceInfoUtil.c());
-    ((VipFontUpdate.TFontFreshReq)localObject3).i32_cpu_num.set(DeviceInfoUtil.b());
+    ((VipFontUpdate.TFontFreshReq)localObject3).i32_local_font_id.set(b());
+    ((VipFontUpdate.TFontFreshReq)localObject3).i32_cpu_freq.set((int)DeviceInfoUtil.l());
+    ((VipFontUpdate.TFontFreshReq)localObject3).i32_cpu_num.set(DeviceInfoUtil.h());
     ((VipFontUpdate.TFontFreshReq)localObject3).i32_total_mem.set((int)(DeviceInfoUtil.a() / 1048576L));
     Object localObject2 = Build.BRAND.toUpperCase();
     localObject1 = localObject2;
@@ -628,7 +576,7 @@ public class SVIPHandler
     }
     ((VipFontUpdate.TFontFreshReq)localObject3).str_brand.set((String)localObject1);
     ((VipFontUpdate.TFontFreshReq)localObject3).str_model.set(Build.MODEL.toUpperCase());
-    ((VipFontUpdate.TFontFreshReq)localObject3).i32_os_type.set(h());
+    ((VipFontUpdate.TFontFreshReq)localObject3).i32_os_type.set(o());
     ((VipFontUpdate.TFontFreshReq)localObject3).i32_version.set(Build.VERSION.SDK_INT);
     if (QLog.isColorLevel())
     {
@@ -650,21 +598,21 @@ public class SVIPHandler
     }
     localTFontSsoReq.st_fresh_req.set((MessageMicro)localObject3);
     VasShieldFont.a();
-    VasShieldFont.c = a();
+    VasShieldFont.e = b();
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("pbGetUserFont: ");
-      ((StringBuilder)localObject1).append(VasShieldFont.c);
+      ((StringBuilder)localObject1).append(VasShieldFont.e);
       QLog.d("VasShieldFont", 2, ((StringBuilder)localObject1).toString());
     }
     localObject1 = new VipFontUpdate.TFontMd5CheckReq();
     localObject2 = new VipFontUpdate.TFontMd5CheckReq.TMd5Info();
-    ((VipFontUpdate.TFontMd5CheckReq.TMd5Info)localObject2).i32_font_id.set(a());
-    localObject3 = ((IFontManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFontManagerService.class, "")).findFontInfo(a(), this.f);
+    ((VipFontUpdate.TFontMd5CheckReq.TMd5Info)localObject2).i32_font_id.set(b());
+    localObject3 = ((IFontManagerService)this.d.getRuntimeService(IFontManagerService.class, "")).findFontInfo(b(), this.i);
     if (localObject3 != null)
     {
-      Object localObject4 = new File(((FontInfo)localObject3).a);
+      Object localObject4 = new File(((FontInfo)localObject3).b);
       if ((((File)localObject4).exists()) && (((File)localObject4).isFile()))
       {
         try
@@ -701,7 +649,7 @@ public class SVIPHandler
     }
     ((VipFontUpdate.TFontMd5CheckReq)localObject1).rpt_md5_info.add((MessageMicro)localObject2);
     localTFontSsoReq.st_md5_check_req.set((MessageMicro)localObject1);
-    localObject1 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Font.fresh");
+    localObject1 = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "Font.fresh");
     ((ToServiceMsg)localObject1).putWupBuffer(localTFontSsoReq.toByteArray());
     ((ToServiceMsg)localObject1).extraData.putInt("CMD", 1);
     sendPbReq((ToServiceMsg)localObject1);
@@ -711,12 +659,12 @@ public class SVIPHandler
   {
     try
     {
-      if (paramInt != this.b)
+      if (paramInt != this.e)
       {
-        this.b = paramInt;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().putInt("svip_bubble_id", paramInt).commit();
+        this.e = paramInt;
+        this.d.getApp().getSharedPreferences(this.d.getCurrentAccountUin(), 0).edit().putInt("svip_bubble_id", paramInt).commit();
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
       return;
     }
     finally {}
@@ -736,33 +684,33 @@ public class SVIPHandler
         ((StringBuilder)localObject1).append(paramInt2);
         QLog.d("SVIPHandler", 2, ((StringBuilder)localObject1).toString());
       }
-      if ((paramInt1 != this.e) || (paramInt2 != this.f))
+      if ((paramInt1 != this.h) || (paramInt2 != this.i))
       {
-        FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        ExtensionInfo localExtensionInfo = localFriendsManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+        FriendsManager localFriendsManager = (FriendsManager)this.d.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        ExtensionInfo localExtensionInfo = localFriendsManager.x(this.d.getAccount());
         localObject1 = localExtensionInfo;
         if (localExtensionInfo == null)
         {
           localObject1 = new ExtensionInfo();
-          ((ExtensionInfo)localObject1).uin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+          ((ExtensionInfo)localObject1).uin = this.d.getAccount();
         }
         ((ExtensionInfo)localObject1).uVipFont = paramInt1;
         ((ExtensionInfo)localObject1).vipFontType = paramInt2;
-        this.e = paramInt1;
-        this.f = paramInt2;
+        this.h = paramInt1;
+        this.i = paramInt2;
         localFriendsManager.a((ExtensionInfo)localObject1);
       }
-      if (VasShieldFont.c != paramInt1)
+      if (VasShieldFont.e != paramInt1)
       {
-        VasShieldFont.c = paramInt1;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+        VasShieldFont.e = paramInt1;
+        localObject1 = this.d.getHandler(ChatActivity.class);
         if (localObject1 != null)
         {
           ((MqqHandler)localObject1).removeMessages(87);
           ((MqqHandler)localObject1).sendEmptyMessage(87);
         }
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
       return;
     }
     finally {}
@@ -771,16 +719,16 @@ public class SVIPHandler
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     SetFontBubbleReq localSetFontBubbleReq = new SetFontBubbleReq();
-    localSetFontBubbleReq.stLogin = a();
+    localSetFontBubbleReq.stLogin = n();
     if (localSetFontBubbleReq.stLogin == null) {
       return;
     }
     localSetFontBubbleReq.stFontReq = new FontReq(paramInt1);
     localSetFontBubbleReq.stBubbleReq = new BubbleReq(paramInt2);
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "FontBubbleRecommend.setFontBubble");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "FontBubbleRecommend.setFontBubble");
     localToServiceMsg.extraData.putInt("setFontBubbleSeq", paramInt3);
     localToServiceMsg.extraData.putSerializable("req", localSetFontBubbleReq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(localToServiceMsg);
+    this.d.sendToService(localToServiceMsg);
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)
@@ -791,17 +739,17 @@ public class SVIPHandler
     localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
     localTFontSsoReq.i32_implat.set(109);
     localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    localTFontSsoReq.str_mqqver.set("8.7.0.5295");
+    localTFontSsoReq.str_mqqver.set("8.8.17.5770");
     localObject = new VipFontUpdate.TCheckReq();
     ((VipFontUpdate.TCheckReq)localObject).i32_font_id.set(paramInt1);
     ((VipFontUpdate.TCheckReq)localObject).i32_type.set(paramInt2);
     ((VipFontUpdate.TCheckReq)localObject).str_message_test.set(paramString);
     localTFontSsoReq.st_check_req.set((MessageMicro)localObject);
-    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Font.fresh");
-    int i = NetworkState.getNetworkType();
-    if (i != 1)
+    localObject = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "Font.fresh");
+    int m = NetworkState.getNetworkType();
+    if (m != 1)
     {
-      if ((i != 4) && (i != 5)) {
+      if ((m != 4) && (m != 5)) {
         ((ToServiceMsg)localObject).setTimeout(5000L);
       } else {
         ((ToServiceMsg)localObject).setTimeout(10000L);
@@ -822,7 +770,7 @@ public class SVIPHandler
   {
     try
     {
-      if ((paramInt != this.c) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      if ((paramInt != this.f) && (this.d != null))
       {
         Object localObject1;
         if (QLog.isColorLevel())
@@ -832,23 +780,23 @@ public class SVIPHandler
           ((StringBuilder)localObject1).append(paramInt);
           QLog.d("SVIPHandler", 2, ((StringBuilder)localObject1).toString());
         }
-        this.c = paramInt;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().putInt("svip_bubble_diy_text_id", paramInt).commit();
+        this.f = paramInt;
+        this.d.getApp().getSharedPreferences(this.d.getCurrentAccountUin(), 0).edit().putInt("svip_bubble_diy_text_id", paramInt).commit();
         if (paramInt > 0)
         {
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+          ((StringBuilder)localObject1).append(this.d.getAccount());
           ((StringBuilder)localObject1).append("_");
           ((StringBuilder)localObject1).append(paramInt);
           localObject1 = ((StringBuilder)localObject1).toString();
           if (paramBoolean) {
             ThreadManager.post(new SVIPHandler.1(this, (String)localObject1), 5, null, false);
           } else {
-            BubbleDiyFetcher.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, null);
+            BubbleDiyFetcher.a().a(this.d, (String)localObject1, null);
           }
         }
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
       return;
     }
     finally {}
@@ -869,11 +817,11 @@ public class SVIPHandler
     ((VipFontUpdate.TFontSsoReq)localObject1).u64_seq.set(((Random)localObject2).nextInt(1000));
     ((VipFontUpdate.TFontSsoReq)localObject1).i32_implat.set(109);
     ((VipFontUpdate.TFontSsoReq)localObject1).str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    ((VipFontUpdate.TFontSsoReq)localObject1).str_mqqver.set("8.7.0.5295");
+    ((VipFontUpdate.TFontSsoReq)localObject1).str_mqqver.set("8.8.17.5770");
     localObject2 = new VipFontUpdate.TSetPosterFontReq();
     ((VipFontUpdate.TSetPosterFontReq)localObject2).i32_font_id.set(paramInt);
     ((VipFontUpdate.TFontSsoReq)localObject1).st_setposterfont_req.set((MessageMicro)localObject2);
-    localObject2 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Font.fresh");
+    localObject2 = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "Font.fresh");
     ((ToServiceMsg)localObject2).putWupBuffer(((VipFontUpdate.TFontSsoReq)localObject1).toByteArray());
     ((ToServiceMsg)localObject2).extraData.putInt("CMD", 5);
     ((ToServiceMsg)localObject2).extraData.putInt("hiboom_id", paramInt);
@@ -886,11 +834,11 @@ public class SVIPHandler
   {
     Object localObject1 = new MessageRemindReq();
     ((MessageRemindReq)localObject1).iGroupCode = paramLong;
-    Object localObject2 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    Object localObject2 = (TroopManager)this.d.getManager(QQManagerFactory.TROOP_MANAGER);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramLong);
     localStringBuilder.append("");
-    localObject2 = ((TroopManager)localObject2).b(localStringBuilder.toString());
+    localObject2 = ((TroopManager)localObject2).f(localStringBuilder.toString());
     if (localObject2 == null)
     {
       if (QLog.isColorLevel())
@@ -903,13 +851,13 @@ public class SVIPHandler
       return;
     }
     ((MessageRemindReq)localObject1).uOwnerUin = Long.parseLong(((TroopInfo)localObject2).troopowneruin);
-    ((MessageRemindReq)localObject1).dwAppId = AppSetting.a();
-    ((MessageRemindReq)localObject1).sKey = ((TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    ((MessageRemindReq)localObject1).dwAppId = AppSetting.d();
+    ((MessageRemindReq)localObject1).sKey = ((TicketManager)this.d.getManager(2)).getSkey(this.d.getAccount());
     if (((MessageRemindReq)localObject1).sKey != null)
     {
-      localObject2 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "GroupCare.getMessageRemindInfo");
+      localObject2 = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "GroupCare.getMessageRemindInfo");
       ((ToServiceMsg)localObject2).extraData.putSerializable("req", (Serializable)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService((ToServiceMsg)localObject2);
+      this.d.sendToService((ToServiceMsg)localObject2);
       return;
     }
     if (QLog.isColorLevel())
@@ -923,28 +871,28 @@ public class SVIPHandler
   
   public void a(GetRoamToastRsp paramGetRoamToastRsp)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    Object localObject = this.d.getCurrentAccountUin();
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       QLog.e("SVIPHandler", 1, "closeToast null uin");
       return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences((String)localObject, 0);
+    localObject = this.d.getApp().getSharedPreferences((String)localObject, 0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("roam_toast_close_");
     localStringBuilder.append(paramGetRoamToastRsp.sToastKey);
     paramGetRoamToastRsp = localStringBuilder.toString();
-    int i = ((SharedPreferences)localObject).getInt(paramGetRoamToastRsp, 0);
+    int m = ((SharedPreferences)localObject).getInt(paramGetRoamToastRsp, 0);
     localObject = ((SharedPreferences)localObject).edit();
-    i += 1;
-    ((SharedPreferences.Editor)localObject).putInt(paramGetRoamToastRsp, i).commit();
+    m += 1;
+    ((SharedPreferences.Editor)localObject).putInt(paramGetRoamToastRsp, m).commit();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("closeToast: ");
       ((StringBuilder)localObject).append(paramGetRoamToastRsp);
       ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(m);
       QLog.d("SVIPHandler", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -952,9 +900,9 @@ public class SVIPHandler
   public void a(BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
     paramBusinessObserver = createToServiceMsg("QCUniBusinessLogin.check", paramBusinessObserver, paramBoolean);
-    UniLoginCheckReq localUniLoginCheckReq = new UniLoginCheckReq(a(), new ArrayList(), 2L, new GetUsrKeyWordInfoReq());
+    UniLoginCheckReq localUniLoginCheckReq = new UniLoginCheckReq(n(), new ArrayList(), 2L, new GetUsrKeyWordInfoReq());
     paramBusinessObserver.extraData.putSerializable("req", localUniLoginCheckReq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(paramBusinessObserver);
+    this.d.sendToService(paramBusinessObserver);
   }
   
   public void a(MessageRecord paramMessageRecord)
@@ -964,32 +912,32 @@ public class SVIPHandler
       if (!paramMessageRecord.needVipBubble()) {
         return;
       }
-      if ((AnonymousChatHelper.a(paramMessageRecord)) && (AnonymousChatHelper.b(paramMessageRecord))) {
+      if ((AnonymousChatHelper.c(paramMessageRecord)) && (AnonymousChatHelper.f(paramMessageRecord))) {
         return;
       }
       if ((paramMessageRecord.istroop != 1001) && (paramMessageRecord.istroop != 10002))
       {
-        if (e() > 0)
+        if (g() > 0)
         {
-          paramMessageRecord.vipBubbleID = SVIPHandlerConstants.a(b(), e());
-          paramMessageRecord.vipBubbleDiyTextId = e();
+          paramMessageRecord.vipBubbleID = SVIPHandlerConstants.a(d(), g());
+          paramMessageRecord.vipBubbleDiyTextId = g();
         }
         else
         {
-          paramMessageRecord.vipBubbleID = b();
+          paramMessageRecord.vipBubbleID = d();
         }
         if ((paramMessageRecord instanceof MessageForPtt))
         {
-          int i = f();
-          if (i > 0) {
-            paramMessageRecord.vipBubbleID = i;
+          int m = h();
+          if (m > 0) {
+            paramMessageRecord.vipBubbleID = m;
           }
         }
-        paramMessageRecord.vipSubBubbleId = c();
+        paramMessageRecord.vipSubBubbleId = e();
         if (paramMessageRecord.vipSubBubbleId != 0)
         {
           paramMessageRecord.saveExtInfoToExtStr("bubble_sub_id", String.valueOf(paramMessageRecord.vipSubBubbleId));
-          c();
+          i();
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
@@ -1021,7 +969,7 @@ public class SVIPHandler
   
   public void a(String paramString, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(paramString, 0);
+    Object localObject = this.d.getApp().getSharedPreferences(paramString, 0);
     ((SharedPreferences)localObject).getInt("svip_colorScreen_id", 0);
     ((SharedPreferences)localObject).edit().putInt("svip_colorScreen_id", paramInt).commit();
     if (QLog.isColorLevel())
@@ -1033,24 +981,15 @@ public class SVIPHandler
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("SVIPHandler", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    paramString = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "FriendClone.CloneAuthStatus");
-    paramString.extraData.putInt("operation", paramInt);
-    paramString.extraData.putString("uUin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    paramString.extraData.putBoolean("bOpenAuth", paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(paramString);
+    this.b = false;
   }
   
   public void a(ArrayList<Hamlet> paramArrayList, BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
     paramBusinessObserver = createToServiceMsg("QCUniBusinessLogin.check", paramBusinessObserver, paramBoolean);
-    paramArrayList = new UniLoginCheckReq(a(), paramArrayList, 3L, new GetUsrKeyWordInfoReq());
+    paramArrayList = new UniLoginCheckReq(n(), paramArrayList, 3L, new GetUsrKeyWordInfoReq());
     paramBusinessObserver.extraData.putSerializable("req", paramArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(paramBusinessObserver);
+    this.d.sendToService(paramBusinessObserver);
   }
   
   public void a(Map<String, Integer> paramMap)
@@ -1064,7 +1003,7 @@ public class SVIPHandler
     localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
     localTFontSsoReq.i32_implat.set(109);
     localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    localTFontSsoReq.str_mqqver.set("8.7.0.5295");
+    localTFontSsoReq.str_mqqver.set("8.8.17.5770");
     localObject = new VipFontUpdate.TDiyFontReq();
     Iterator localIterator = paramMap.keySet().iterator();
     while (localIterator.hasNext())
@@ -1076,108 +1015,71 @@ public class SVIPHandler
       ((VipFontUpdate.TDiyFontReq)localObject).rpt_font_req_info.add(localTDiyFontReqInfo);
     }
     localTFontSsoReq.st_diyfont_req.set((MessageMicro)localObject);
-    paramMap = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Font.fresh");
+    paramMap = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "Font.fresh");
     paramMap.putWupBuffer(localTFontSsoReq.toByteArray());
     paramMap.extraData.putInt("CMD", 3);
     sendPbReq(paramMap);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager;
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((BubbleManager)localObject).a != null)
-      {
-        localObject = (BubbleConfig)this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a.get(Integer.valueOf(paramInt1));
-        bool1 = bool2;
-        if (localObject != null)
-        {
-          bool1 = bool2;
-          if (((BubbleConfig)localObject).a())
-          {
-            bool1 = bool2;
-            if (((BubbleConfig)localObject).a(paramInt2)) {
-              bool1 = true;
-            }
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean a(GetRoamToastRsp paramGetRoamToastRsp)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      QLog.e("SVIPHandler", 1, "shouldShowToast null uin");
-      return false;
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences((String)localObject, 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("roam_toast_close_");
-    localStringBuilder.append(paramGetRoamToastRsp.sToastKey);
-    paramGetRoamToastRsp = localStringBuilder.toString();
-    int i = ((SharedPreferences)localObject).getInt(paramGetRoamToastRsp, 0);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("shouldShowToast: ");
-      ((StringBuilder)localObject).append(paramGetRoamToastRsp);
-      ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append(i);
-      QLog.d("SVIPHandler", 2, ((StringBuilder)localObject).toString());
-    }
-    return i < 2;
   }
   
   public int b()
   {
     try
     {
-      if (this.b == -1) {
-        this.b = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getInt("svip_bubble_id", 0);
+      if (this.h == -1)
+      {
+        ExtensionInfo localExtensionInfo = ((FriendsManager)this.d.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(this.d.getAccount());
+        if (localExtensionInfo == null) {
+          return 0;
+        }
+        this.h = ((int)localExtensionInfo.uVipFont);
+        this.i = localExtensionInfo.vipFontType;
       }
-      int i = SVIPHandlerConstants.a(this.b);
-      return i;
+      int m = this.h;
+      return m;
     }
     finally {}
   }
   
-  public void b()
+  public int b(MessageRecord paramMessageRecord)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HiBoomFont", 2, "getHiBoomList");
+    int n = SVIPHandlerConstants.a(paramMessageRecord.vipBubbleID);
+    if (n == 0) {
+      return 0;
     }
-    VipFontUpdate.TFontSsoReq localTFontSsoReq = new VipFontUpdate.TFontSsoReq();
-    localTFontSsoReq.u32_cmd.set(4);
-    Object localObject = new Random();
-    localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
-    localTFontSsoReq.i32_implat.set(109);
-    localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    localTFontSsoReq.str_mqqver.set("8.7.0.5295");
-    localObject = new VipFontUpdate.TGetPosterFontReq();
-    ((VipFontUpdate.TGetPosterFontReq)localObject).isgetrecommend.set(1);
-    localTFontSsoReq.st_getposterfont_req.set((MessageMicro)localObject);
-    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Font.fresh");
-    ((ToServiceMsg)localObject).putWupBuffer(localTFontSsoReq.toByteArray());
-    ((ToServiceMsg)localObject).extraData.putInt("CMD", 4);
-    sendPbReq((ToServiceMsg)localObject);
+    int m;
+    if (paramMessageRecord.vipSubBubbleId != 0)
+    {
+      m = paramMessageRecord.vipSubBubbleId;
+    }
+    else
+    {
+      String str = paramMessageRecord.getExtInfoFromExtStr("bubble_sub_id");
+      if (QLog.isColorLevel()) {
+        QLog.i("SVIPHandler", 2, String.format("try get bubbleSubId from msg id %d : %s", new Object[] { Long.valueOf(paramMessageRecord.uniseq), str }));
+      }
+      if (!TextUtils.isEmpty(str)) {
+        m = Integer.parseInt(str);
+      } else {
+        m = 0;
+      }
+    }
+    if ((m != 0) && (b(n, m)))
+    {
+      paramMessageRecord.vipSubBubbleId = m;
+      return m;
+    }
+    paramMessageRecord.vipSubBubbleId = 0;
+    return n;
   }
   
   public void b(int paramInt)
   {
     try
     {
-      if (paramInt != this.d)
+      if (paramInt != this.g)
       {
-        this.d = paramInt;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().putInt("svip_bubble_voice_print_id", paramInt).commit();
+        this.g = paramInt;
+        this.d.getApp().getSharedPreferences(this.d.getCurrentAccountUin(), 0).edit().putInt("svip_bubble_voice_print_id", paramInt).commit();
       }
       return;
     }
@@ -1192,7 +1094,7 @@ public class SVIPHandler
   {
     try
     {
-      if ((paramInt != this.g) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      if ((paramInt != this.j) && (this.d != null))
       {
         Object localObject1;
         if (QLog.isColorLevel())
@@ -1202,22 +1104,22 @@ public class SVIPHandler
           ((StringBuilder)localObject1).append(paramInt);
           QLog.d("SVIPHandler", 2, ((StringBuilder)localObject1).toString());
         }
-        this.g = paramInt;
+        this.j = paramInt;
         if (paramInt > 0)
         {
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+          ((StringBuilder)localObject1).append(this.d.getAccount());
           ((StringBuilder)localObject1).append("_");
           ((StringBuilder)localObject1).append(paramInt);
           localObject1 = ((StringBuilder)localObject1).toString();
           if (paramBoolean) {
             ThreadManager.post(new SVIPHandler.2(this, (String)localObject1), 5, null, false);
           } else {
-            DiyPendantFetcher.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, null);
+            DiyPendantFetcher.a().a(this.d, (String)localObject1, null);
           }
         }
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
       return;
     }
     finally {}
@@ -1240,44 +1142,79 @@ public class SVIPHandler
     notifyUI(106, true, paramObject);
   }
   
-  public int c()
+  public boolean b(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager;
-    if ((localObject != null) && (((BubbleManager)localObject).a != null))
+    Object localObject = this.a;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject != null)
     {
-      localObject = (BubbleConfig)this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a.get(Integer.valueOf(b()));
-      if ((localObject != null) && (((BubbleConfig)localObject).a()))
+      bool1 = bool2;
+      if (((BubbleManager)localObject).g != null)
       {
-        int i = ((BubbleConfig)localObject).a();
-        if (QLog.isColorLevel())
+        localObject = (BubbleConfig)this.a.g.get(Integer.valueOf(paramInt1));
+        bool1 = bool2;
+        if (localObject != null)
         {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("main bubbleid: ");
-          ((StringBuilder)localObject).append(this.b);
-          ((StringBuilder)localObject).append(", subBubbleId: ");
-          ((StringBuilder)localObject).append(i);
-          QLog.i("SVIPHandler", 2, ((StringBuilder)localObject).toString());
+          bool1 = bool2;
+          if (((BubbleConfig)localObject).c())
+          {
+            bool1 = bool2;
+            if (((BubbleConfig)localObject).a(paramInt2)) {
+              bool1 = true;
+            }
+          }
         }
-        return i;
       }
     }
-    return 0;
+    return bool1;
+  }
+  
+  public boolean b(GetRoamToastRsp paramGetRoamToastRsp)
+  {
+    Object localObject = this.d.getCurrentAccountUin();
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      QLog.e("SVIPHandler", 1, "shouldShowToast null uin");
+      return false;
+    }
+    localObject = this.d.getApp().getSharedPreferences((String)localObject, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("roam_toast_close_");
+    localStringBuilder.append(paramGetRoamToastRsp.sToastKey);
+    paramGetRoamToastRsp = localStringBuilder.toString();
+    int m = ((SharedPreferences)localObject).getInt(paramGetRoamToastRsp, 0);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("shouldShowToast: ");
+      ((StringBuilder)localObject).append(paramGetRoamToastRsp);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(m);
+      QLog.d("SVIPHandler", 2, ((StringBuilder)localObject).toString());
+    }
+    return m < 2;
   }
   
   public void c()
   {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager != null) && (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a != null))
-      {
-        BubbleConfig localBubbleConfig = (BubbleConfig)this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a.get(Integer.valueOf(b()));
-        if ((localBubbleConfig != null) && (localBubbleConfig.a())) {
-          localBubbleConfig.a();
-        }
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("HiBoomFont", 2, "getHiBoomList");
     }
-    finally {}
+    VipFontUpdate.TFontSsoReq localTFontSsoReq = new VipFontUpdate.TFontSsoReq();
+    localTFontSsoReq.u32_cmd.set(4);
+    Object localObject = new Random();
+    localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
+    localTFontSsoReq.i32_implat.set(109);
+    localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
+    localTFontSsoReq.str_mqqver.set("8.8.17.5770");
+    localObject = new VipFontUpdate.TGetPosterFontReq();
+    ((VipFontUpdate.TGetPosterFontReq)localObject).isgetrecommend.set(1);
+    localTFontSsoReq.st_getposterfont_req.set((MessageMicro)localObject);
+    localObject = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "Font.fresh");
+    ((ToServiceMsg)localObject).putWupBuffer(localTFontSsoReq.toByteArray());
+    ((ToServiceMsg)localObject).extraData.putInt("CMD", 4);
+    sendPbReq((ToServiceMsg)localObject);
   }
   
   public void c(int paramInt)
@@ -1291,13 +1228,13 @@ public class SVIPHandler
         ((StringBuilder)localObject1).append(paramInt);
         QLog.d("SVIPHandler", 2, ((StringBuilder)localObject1).toString());
       }
-      FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      ExtensionInfo localExtensionInfo = localFriendsManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      FriendsManager localFriendsManager = (FriendsManager)this.d.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      ExtensionInfo localExtensionInfo = localFriendsManager.x(this.d.getAccount());
       Object localObject1 = localExtensionInfo;
       if (localExtensionInfo == null)
       {
         localObject1 = new ExtensionInfo();
-        ((ExtensionInfo)localObject1).uin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+        ((ExtensionInfo)localObject1).uin = this.d.getAccount();
       }
       if (((ExtensionInfo)localObject1).magicFont != paramInt)
       {
@@ -1307,7 +1244,7 @@ public class SVIPHandler
         }
       }
       localFriendsManager.a((ExtensionInfo)localObject1);
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
       return;
     }
     finally {}
@@ -1322,37 +1259,13 @@ public class SVIPHandler
   {
     try
     {
-      String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.MsgLengthByBubble.name(), "0");
-      int j = 0;
-      int i;
-      try
-      {
-        i = Integer.parseInt(str);
+      if (this.e == -1) {
+        this.e = this.d.getApp().getSharedPreferences(this.d.getCurrentAccountUin(), 0).getInt("svip_bubble_id", 0);
       }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("SVIPHandler", 2, localNumberFormatException.getMessage());
-          i = j;
-        }
-      }
-      return i;
+      int m = SVIPHandlerConstants.a(this.e);
+      return m;
     }
     finally {}
-  }
-  
-  public void d()
-  {
-    FontRecommendReq localFontRecommendReq = new FontRecommendReq();
-    localFontRecommendReq.stLogin = a();
-    if (localFontRecommendReq.stLogin == null) {
-      return;
-    }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "FontBubbleRecommend.getFontRecommend");
-    localToServiceMsg.extraData.putSerializable("req", localFontRecommendReq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(localToServiceMsg);
   }
   
   public void d(int paramInt)
@@ -1369,153 +1282,230 @@ public class SVIPHandler
           ((StringBuilder)localObject1).append(paramInt);
           QLog.d("SVIPHandler", 2, ((StringBuilder)localObject1).toString());
         }
-        FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        Object localObject1 = localFriendsManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-        int j = 1;
+        FriendsManager localFriendsManager = (FriendsManager)this.d.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        Object localObject1 = localFriendsManager.x(this.d.getAccount());
+        int n = 1;
         if (localObject1 == null)
         {
           localObject1 = new ExtensionInfo();
-          ((ExtensionInfo)localObject1).uin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+          ((ExtensionInfo)localObject1).uin = this.d.getAccount();
           ((ExtensionInfo)localObject1).fontEffect = -1;
-          i = 1;
+          m = 1;
           if (((ExtensionInfo)localObject1).fontEffect == paramInt) {
             break label202;
           }
           ((ExtensionInfo)localObject1).fontEffect = paramInt;
           ((ExtensionInfo)localObject1).fontEffectLastUpdateTime = NetConnInfoCenter.getServerTime();
-          ((IFontManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFontManagerService.class, "")).resetLastSendReportTime();
-          i = j;
+          ((IFontManagerService)this.d.getRuntimeService(IFontManagerService.class, "")).resetLastSendReportTime();
+          m = n;
           if (paramInt != 0)
           {
             ((ExtensionInfo)localObject1).magicFont = 0;
-            i = j;
+            m = n;
           }
-          if (i != 0) {
+          if (m != 0) {
             localFriendsManager.a((ExtensionInfo)localObject1);
           }
-          this.jdField_a_of_type_Boolean = false;
+          this.b = false;
           return;
         }
       }
       finally {}
-      int i = 0;
+      int m = 0;
     }
   }
   
   public int e()
   {
-    try
+    Object localObject = this.a;
+    if ((localObject != null) && (((BubbleManager)localObject).g != null))
     {
-      if (this.c == -1) {
-        this.c = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getInt("svip_bubble_diy_text_id", 0);
+      localObject = (BubbleConfig)this.a.g.get(Integer.valueOf(d()));
+      if ((localObject != null) && (((BubbleConfig)localObject).c()))
+      {
+        int m = ((BubbleConfig)localObject).a();
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("main bubbleid: ");
+          ((StringBuilder)localObject).append(this.e);
+          ((StringBuilder)localObject).append(", subBubbleId: ");
+          ((StringBuilder)localObject).append(m);
+          QLog.i("SVIPHandler", 2, ((StringBuilder)localObject).toString());
+        }
+        return m;
       }
-      int i = this.c;
-      return i;
     }
-    finally {}
-  }
-  
-  public void e()
-  {
-    BubbleRecommendReq localBubbleRecommendReq = new BubbleRecommendReq();
-    localBubbleRecommendReq.stLogin = a();
-    if (localBubbleRecommendReq.stLogin == null) {
-      return;
-    }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "FontBubbleRecommend.getBubbleRecommend");
-    localToServiceMsg.extraData.putSerializable("req", localBubbleRecommendReq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(localToServiceMsg);
+    return 0;
   }
   
   public void e(int paramInt)
   {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "groupnick.readitem");
-    readItemInfoReq localreadItemInfoReq = new readItemInfoReq(109L, DeviceInfoUtil.c(), paramInt);
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "groupnick.readitem");
+    readItemInfoReq localreadItemInfoReq = new readItemInfoReq(109L, DeviceInfoUtil.e(), paramInt);
     localToServiceMsg.extraData.putSerializable("req", localreadItemInfoReq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(localToServiceMsg);
+    this.d.sendToService(localToServiceMsg);
   }
   
   public int f()
   {
     try
     {
-      if (this.d == -1) {
-        this.d = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getInt("svip_bubble_voice_print_id", 0);
+      String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.MsgLengthByBubble.name(), "0");
+      int n = 0;
+      int m;
+      try
+      {
+        m = Integer.parseInt(str);
       }
-      int i = this.d;
-      return i;
+      catch (NumberFormatException localNumberFormatException)
+      {
+        m = n;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("SVIPHandler", 2, localNumberFormatException.getMessage());
+          m = n;
+        }
+      }
+      return m;
     }
     finally {}
   }
   
-  public void f()
+  public void f(int paramInt)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "profilelogic.readUserInfo");
+    readUserInfoReq localreadUserInfoReq = new readUserInfoReq(DeviceInfoUtil.e(), 109, paramInt);
+    localToServiceMsg.extraData.putSerializable("req", localreadUserInfoReq);
+    this.d.sendToService(localToServiceMsg);
+  }
+  
+  public int g()
   {
     try
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      Object localObject2 = ((TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey((String)localObject1);
+      if (this.f == -1) {
+        this.f = this.d.getApp().getSharedPreferences(this.d.getCurrentAccountUin(), 0).getInt("svip_bubble_diy_text_id", 0);
+      }
+      int m = this.f;
+      return m;
+    }
+    finally {}
+  }
+  
+  public void g(int paramInt)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "profilelogic.setUserProfile");
+    setUserProfileReq localsetUserProfileReq = new setUserProfileReq(paramInt, DeviceInfoUtil.e(), 109);
+    localToServiceMsg.extraData.putSerializable("req", localsetUserProfileReq);
+    this.d.sendToService(localToServiceMsg);
+  }
+  
+  public int h()
+  {
+    try
+    {
+      if (this.g == -1) {
+        this.g = this.d.getApp().getSharedPreferences(this.d.getCurrentAccountUin(), 0).getInt("svip_bubble_voice_print_id", 0);
+      }
+      int m = this.g;
+      return m;
+    }
+    finally {}
+  }
+  
+  public void h(int paramInt)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "profilelogic.setUserFlag");
+    setUserFlagReq localsetUserFlagReq = new setUserFlagReq(paramInt, DeviceInfoUtil.e(), 109);
+    localToServiceMsg.extraData.putSerializable("req", localsetUserFlagReq);
+    this.d.sendToService(localToServiceMsg);
+  }
+  
+  public void i()
+  {
+    try
+    {
+      if ((this.a != null) && (this.a.g != null))
+      {
+        BubbleConfig localBubbleConfig = (BubbleConfig)this.a.g.get(Integer.valueOf(d()));
+        if ((localBubbleConfig != null) && (localBubbleConfig.c())) {
+          localBubbleConfig.b();
+        }
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void i(int paramInt)
+  {
+    FaceReq localFaceReq = new FaceReq();
+    localFaceReq.stLogin = n();
+    if (localFaceReq.stLogin == null) {
+      return;
+    }
+    localFaceReq.faceID = paramInt;
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "Face.setFace");
+    localToServiceMsg.extraData.putSerializable("req", localFaceReq);
+    this.d.sendToService(localToServiceMsg);
+  }
+  
+  public int j()
+  {
+    int m = VasUtil.b(this.d).getVipStatus().getPrivilegeFlags(null);
+    if ((m & 0x4) != 0) {
+      return 3;
+    }
+    if ((m & 0x2) != 0) {
+      return 1;
+    }
+    if ((m & 0x1) != 0) {
+      return 2;
+    }
+    return 0;
+  }
+  
+  public void k()
+  {
+    FontRecommendReq localFontRecommendReq = new FontRecommendReq();
+    localFontRecommendReq.stLogin = n();
+    if (localFontRecommendReq.stLogin == null) {
+      return;
+    }
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "FontBubbleRecommend.getFontRecommend");
+    localToServiceMsg.extraData.putSerializable("req", localFontRecommendReq);
+    this.d.sendToService(localToServiceMsg);
+  }
+  
+  public void l()
+  {
+    BubbleRecommendReq localBubbleRecommendReq = new BubbleRecommendReq();
+    localBubbleRecommendReq.stLogin = n();
+    if (localBubbleRecommendReq.stLogin == null) {
+      return;
+    }
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "FontBubbleRecommend.getBubbleRecommend");
+    localToServiceMsg.extraData.putSerializable("req", localBubbleRecommendReq);
+    this.d.sendToService(localToServiceMsg);
+  }
+  
+  public void m()
+  {
+    try
+    {
+      Object localObject1 = this.d.getCurrentAccountUin();
+      Object localObject2 = ((TicketManager)this.d.getManager(2)).getSkey((String)localObject1);
       localObject1 = new GetRoamToastReq(Long.parseLong((String)localObject1), (String)localObject2);
-      localObject2 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "RoamWrap.GetRoamToast");
+      localObject2 = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "RoamWrap.GetRoamToast");
       ((ToServiceMsg)localObject2).extraData.putSerializable("req", (Serializable)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService((ToServiceMsg)localObject2);
+      this.d.sendToService((ToServiceMsg)localObject2);
       return;
     }
     catch (Exception localException)
     {
       QLog.e("SVIPHandler", 1, "getRoamToast fail", localException);
     }
-  }
-  
-  public void f(int paramInt)
-  {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "profilelogic.readUserInfo");
-    readUserInfoReq localreadUserInfoReq = new readUserInfoReq(DeviceInfoUtil.c(), 109, paramInt);
-    localToServiceMsg.extraData.putSerializable("req", localreadUserInfoReq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(localToServiceMsg);
-  }
-  
-  public int g()
-  {
-    int i = VasUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getVipStatus().getPrivilegeFlags(null);
-    if ((i & 0x4) != 0) {
-      return 3;
-    }
-    if ((i & 0x2) != 0) {
-      return 1;
-    }
-    if ((i & 0x1) != 0) {
-      return 2;
-    }
-    return 0;
-  }
-  
-  public void g(int paramInt)
-  {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "profilelogic.setUserProfile");
-    setUserProfileReq localsetUserProfileReq = new setUserProfileReq(paramInt, DeviceInfoUtil.c(), 109);
-    localToServiceMsg.extraData.putSerializable("req", localsetUserProfileReq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(localToServiceMsg);
-  }
-  
-  public void h(int paramInt)
-  {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "profilelogic.setUserFlag");
-    setUserFlagReq localsetUserFlagReq = new setUserFlagReq(paramInt, DeviceInfoUtil.c(), 109);
-    localToServiceMsg.extraData.putSerializable("req", localsetUserFlagReq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(localToServiceMsg);
-  }
-  
-  public void i(int paramInt)
-  {
-    FaceReq localFaceReq = new FaceReq();
-    localFaceReq.stLogin = a();
-    if (localFaceReq.stLogin == null) {
-      return;
-    }
-    localFaceReq.faceID = paramInt;
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Face.setFace");
-    localToServiceMsg.extraData.putSerializable("req", localFaceReq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(localToServiceMsg);
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -1525,9 +1515,9 @@ public class SVIPHandler
   
   public void onDestroy()
   {
-    BubbleManager localBubbleManager = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager;
-    if ((localBubbleManager != null) && (localBubbleManager.a != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a.clear();
+    BubbleManager localBubbleManager = this.a;
+    if ((localBubbleManager != null) && (localBubbleManager.g != null)) {
+      this.a.g.clear();
     }
   }
   
@@ -1535,16 +1525,16 @@ public class SVIPHandler
   {
     if ("Font.fresh".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      int i = paramToServiceMsg.extraData.getInt("CMD");
-      if (i != 1)
+      int m = paramToServiceMsg.extraData.getInt("CMD");
+      if (m != 1)
       {
-        if (i != 2)
+        if (m != 2)
         {
-          if (i != 3)
+          if (m != 3)
           {
-            if (i != 4)
+            if (m != 4)
             {
-              if (i != 5) {
+              if (m != 5) {
                 return;
               }
               g(paramToServiceMsg, paramFromServiceMsg, paramObject);
@@ -1612,7 +1602,7 @@ public class SVIPHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SVIPHandler
  * JD-Core Version:    0.7.0.1
  */

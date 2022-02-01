@@ -67,7 +67,7 @@ public class RecentMatchChatListItem
       } else {
         this.mUnreadNum = 0;
       }
-      if (UinTypeUtil.a((MessageRecord)localObject1)) {
+      if (UinTypeUtil.c((MessageRecord)localObject1)) {
         this.mUnreadFlag = 3;
       }
     }
@@ -84,16 +84,16 @@ public class RecentMatchChatListItem
     super.dealStatus(paramQQAppInterface);
     a(paramQQAppInterface, (MsgSummary)localObject2);
     super.extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       paramQQAppInterface = new StringBuilder(24);
       paramQQAppInterface.append(this.mTitleName);
       if (this.mUnreadNum == 1) {
-        paramQQAppInterface.append(paramContext.getResources().getString(2131699005));
+        paramQQAppInterface.append(paramContext.getResources().getString(2131897009));
       } else if (this.mUnreadNum == 2) {
-        paramQQAppInterface.append(paramContext.getResources().getString(2131699006));
+        paramQQAppInterface.append(paramContext.getResources().getString(2131897010));
       } else if (this.mUnreadNum > 0) {
-        paramQQAppInterface.append(paramContext.getResources().getString(2131699004, new Object[] { Integer.valueOf(this.mUnreadNum) }));
+        paramQQAppInterface.append(paramContext.getResources().getString(2131897008, new Object[] { Integer.valueOf(this.mUnreadNum) }));
       }
       if (this.mMsgExtroInfo != null)
       {

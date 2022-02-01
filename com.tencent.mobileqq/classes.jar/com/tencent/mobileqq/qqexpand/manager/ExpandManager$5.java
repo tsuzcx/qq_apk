@@ -1,108 +1,24 @@
 package com.tencent.mobileqq.qqexpand.manager;
 
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.PluginDownloader.OnPluginDownLoadListener;
+import com.tencent.mobileqq.qqexpand.utils.ExpandLimitChatResourceUtil;
 
 class ExpandManager$5
-  implements PluginDownloader.OnPluginDownLoadListener
+  implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
+  ExpandManager$5(ExpandManager paramExpandManager, boolean paramBoolean) {}
   
-  ExpandManager$5(ExpandManager paramExpandManager) {}
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public void run()
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("preDownloadExpandPlugin: onDownloadProgress ");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(" ");
-      localStringBuilder.append(paramInt1);
-      localStringBuilder.append(" / ");
-      localStringBuilder.append(paramInt2);
-      QLog.d("ExtendFriendManager", 4, localStringBuilder.toString());
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      int i = paramInt1 * 100 / paramInt2;
-      if ((i > this.jdField_a_of_type_Int + 10) || (paramInt1 == paramInt2))
-      {
-        this.jdField_a_of_type_Int = Math.min(100, i / 10 + 10);
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("preDownloadExpandPlugin: onDownloadProgress ");
-        localStringBuilder.append(paramString);
-        localStringBuilder.append(" ");
-        localStringBuilder.append(paramInt1);
-        localStringBuilder.append(" / ");
-        localStringBuilder.append(paramInt2);
-        QLog.d("ExtendFriendManager", 4, localStringBuilder.toString());
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("preDownloadExpandPlugin: onDownloadCheckInvalid ");
-    localStringBuilder.append(paramString);
-    QLog.e("ExtendFriendManager", 1, localStringBuilder.toString());
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("preDownloadExpandPlugin: recordPluginStartupTime ");
-      localStringBuilder.append(paramString1);
-      localStringBuilder.append(" ");
-      localStringBuilder.append(paramString2);
-      localStringBuilder.append(" ");
-      localStringBuilder.append(paramLong);
-      QLog.d("ExtendFriendManager", 2, localStringBuilder.toString());
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("preDownloadExpandPlugin: onDownloadFinish ");
-      localStringBuilder.append(paramString);
-      QLog.d("ExtendFriendManager", 2, localStringBuilder.toString());
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_Int = 0;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("preDownloadExpandPlugin: onDownloadBegin ");
-      localStringBuilder.append(paramString);
-      QLog.d("ExtendFriendManager", 2, localStringBuilder.toString());
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("preDownloadExpandPlugin: onDownloadCancel ");
-      localStringBuilder.append(paramString);
-      QLog.d("ExtendFriendManager", 2, localStringBuilder.toString());
+    ExpandManager.c(this.this$0);
+    ExpandManager.d(this.this$0);
+    if (this.a) {
+      ExpandLimitChatResourceUtil.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.ExpandManager.5
  * JD-Core Version:    0.7.0.1
  */

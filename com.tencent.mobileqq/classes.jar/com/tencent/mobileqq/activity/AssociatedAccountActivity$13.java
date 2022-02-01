@@ -36,13 +36,13 @@ class AssociatedAccountActivity$13
       if (localIterator.hasNext())
       {
         AssociatedAccountListItemData localAssociatedAccountListItemData = (AssociatedAccountListItemData)localIterator.next();
-        if ((localAssociatedAccountListItemData.jdField_a_of_type_Int == 2) && (localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject != null) && ((localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject instanceof ArrayList)))
+        if ((localAssociatedAccountListItemData.a == 2) && (localAssociatedAccountListItemData.l != null) && ((localAssociatedAccountListItemData.l instanceof ArrayList)))
         {
-          paramArrayList = ((ArrayList)localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject).iterator();
+          paramArrayList = ((ArrayList)localAssociatedAccountListItemData.l).iterator();
           if (!paramArrayList.hasNext()) {
             continue;
           }
-          if (!paramString.equals(((SubAccountInfo)((AssociatedAccountListItemData)paramArrayList.next()).jdField_a_of_type_JavaLangObject).subuin)) {
+          if (!paramString.equals(((SubAccountInfo)((AssociatedAccountListItemData)paramArrayList.next()).l).subuin)) {
             break;
           }
           localObject = ((IContactUtils)QRoute.api(IContactUtils.class)).getBuddyNickName(this.a.app, paramString, true);
@@ -50,23 +50,23 @@ class AssociatedAccountActivity$13
           if (TextUtils.isEmpty((CharSequence)localObject)) {
             paramArrayList = paramString;
           }
-          if (paramArrayList.equals(localAssociatedAccountListItemData.jdField_a_of_type_JavaLangString)) {
+          if (paramArrayList.equals(localAssociatedAccountListItemData.b)) {
             continue;
           }
         }
-        for (localAssociatedAccountListItemData.jdField_a_of_type_JavaLangString = paramArrayList;; localAssociatedAccountListItemData.jdField_a_of_type_JavaLangString = paramArrayList)
+        for (localAssociatedAccountListItemData.b = paramArrayList;; localAssociatedAccountListItemData.b = paramArrayList)
         {
           bool = true;
           break;
-          if ((localAssociatedAccountListItemData.jdField_a_of_type_Int != 6) || (localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject == null) || (!(localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject instanceof SimpleAccount))) {
+          if ((localAssociatedAccountListItemData.a != 6) || (localAssociatedAccountListItemData.l == null) || (!(localAssociatedAccountListItemData.l instanceof SimpleAccount))) {
             break;
           }
-          paramArrayList = (SimpleAccount)localAssociatedAccountListItemData.jdField_a_of_type_JavaLangObject;
+          paramArrayList = (SimpleAccount)localAssociatedAccountListItemData.l;
           if (!paramString.equals(paramArrayList.getUin())) {
             break;
           }
-          paramArrayList = SubAccountControllUtil.a(this.a.app, paramArrayList);
-          if (paramArrayList.equals(localAssociatedAccountListItemData.jdField_a_of_type_JavaLangString)) {
+          paramArrayList = SubAccountControllUtil.b(this.a.app, paramArrayList);
+          if (paramArrayList.equals(localAssociatedAccountListItemData.b)) {
             break;
           }
         }
@@ -107,7 +107,7 @@ class AssociatedAccountActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.13
  * JD-Core Version:    0.7.0.1
  */

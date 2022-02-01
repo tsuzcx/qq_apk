@@ -19,14 +19,14 @@ import mqq.app.AppRuntime;
 public class TopPanelPresenter
   implements TopPanelContract.Presenter
 {
-  private static String jdField_a_of_type_JavaLangString = "TopPanelPresenter";
-  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private TopPanelContract.View jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$View;
+  private static String a = "TopPanelPresenter";
+  private TopPanelContract.View b;
+  private COMM.StCommonExt c;
   
   public TopPanelPresenter(TopPanelContract.View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$View = paramView;
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$View.setPresenter(this);
+    this.b = paramView;
+    this.b.setPresenter(this);
   }
   
   private List<RecommendInfoItem> a(CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp)
@@ -56,18 +56,18 @@ public class TopPanelPresenter
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     long l = System.currentTimeMillis();
-    localObject = new SubscribeGetRecommendUserListRequest((String)localObject, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 100, 0);
+    localObject = new SubscribeGetRecommendUserListRequest((String)localObject, this.c, 100, 0);
     ((SubscribeGetRecommendUserListRequest)localObject).setEnableCache(false);
     VSNetworkHelper.getInstance().sendRequest((BaseRequest)localObject, new TopPanelPresenter.1(this, l));
   }
   
   public void b()
   {
-    TopPanelContract.View localView = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$View;
+    TopPanelContract.View localView = this.b;
     if (localView != null)
     {
       localView.setPresenter(null);
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$View = null;
+      this.b = null;
     }
   }
 }

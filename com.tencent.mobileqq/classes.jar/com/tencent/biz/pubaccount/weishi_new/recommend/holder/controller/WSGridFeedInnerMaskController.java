@@ -12,55 +12,55 @@ import com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView;
 public class WSGridFeedInnerMaskController
   extends AbsWsUIGroup<stSimpleMetaFeed>
 {
-  protected stSimpleMetaFeed a;
-  private KandianUrlImageView a;
+  protected stSimpleMetaFeed g;
+  private KandianUrlImageView h;
   
   public WSGridFeedInnerMaskController(Context paramContext)
   {
     super(paramContext);
   }
   
-  private boolean a()
+  private void l()
   {
-    return (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.video_type == 1) && (WSGlobalConfig.a().a(1) == 2) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.maskImgUrl));
-  }
-  
-  private void f()
-  {
-    if (a())
+    if (m())
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(0);
-      WSPicLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.maskImgUrl);
+      this.h.setVisibility(0);
+      WSPicLoader.a().a(this.h, this.g.h5_op_info.maskImgUrl);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(8);
+    this.h.setVisibility(8);
+  }
+  
+  private boolean m()
+  {
+    return (this.g.video_type == 1) && (WSGlobalConfig.a().b(1) == 2) && (this.g.h5_op_info != null) && (!TextUtils.isEmpty(this.g.h5_op_info.maskImgUrl));
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
-  }
-  
-  protected int b()
-  {
-    return 2131560426;
+    this.g = ((stSimpleMetaFeed)c());
   }
   
   protected void b()
   {
-    f();
+    l();
   }
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)a(2131369122));
+    return 2131626471;
+  }
+  
+  protected void j()
+  {
+    this.h = ((KandianUrlImageView)c(2131436092));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedInnerMaskController
  * JD-Core Version:    0.7.0.1
  */

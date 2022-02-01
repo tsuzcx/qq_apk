@@ -74,12 +74,12 @@ public class KeyBoardUtil
     if (paramApolloRender.mEditWindow == null)
     {
       paramApolloRender.mEditWindow = new PopupWindow(paramView.getContext());
-      localObject = (RelativeLayout)LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131558618, null);
+      localObject = (RelativeLayout)LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131624182, null);
       paramApolloRender.mEditWindow.setContentView((View)localObject);
-      paramApolloRender.mEditorPop = ((EditText)((RelativeLayout)localObject).findViewById(2131362758));
+      paramApolloRender.mEditorPop = ((EditText)((RelativeLayout)localObject).findViewById(2131428444));
       ((RelativeLayout)localObject).requestLayout();
       ((RelativeLayout)localObject).post(new KeyBoardUtil.6(paramApolloRender, (RelativeLayout)localObject));
-      paramApolloRender.mEditorBtn = ((Button)((RelativeLayout)localObject).findViewById(2131362759));
+      paramApolloRender.mEditorBtn = ((Button)((RelativeLayout)localObject).findViewById(2131428445));
       paramApolloRender.mEditorBtn.setWidth((int)(DeviceInfoUtil.a * 50.0F));
       paramApolloRender.mEditWindow.setOutsideTouchable(false);
       paramApolloRender.mEditWindow.setFocusable(true);
@@ -88,7 +88,7 @@ public class KeyBoardUtil
         paramApolloRender.mEditorPop.setText(paramApolloRender.mEditorDefaultText);
         paramApolloRender.mEditorPop.setSelection(paramApolloRender.mEditorDefaultText.length());
       }
-      localObject = BaseApplicationImpl.getContext().getResources().getDrawable(2130850178);
+      localObject = BaseApplicationImpl.getContext().getResources().getDrawable(2130851969);
       paramApolloRender.mEditWindow.setBackgroundDrawable((Drawable)localObject);
     }
     Object localObject = (ApolloSurfaceView)paramView;
@@ -127,7 +127,7 @@ public class KeyBoardUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.KeyBoardUtil
  * JD-Core Version:    0.7.0.1
  */

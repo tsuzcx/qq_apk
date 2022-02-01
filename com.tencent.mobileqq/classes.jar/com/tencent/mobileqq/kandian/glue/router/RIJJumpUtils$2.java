@@ -11,12 +11,12 @@ final class RIJJumpUtils$2
   
   public void a()
   {
-    ReadInJoyUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    ReadInJoyUtils.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,6 @@ import com.tencent.richmediabrowser.view.recyclerview.DragView.OnGestureChangeLi
 public abstract interface ISceneCallback
   extends DragView.OnGestureChangeListener
 {
-  public abstract View a();
-  
-  public abstract RelativeLayout.LayoutParams a();
-  
-  public abstract Class<? extends AbstractPhotoListActivity> a();
-  
   public abstract void a();
   
   public abstract void a(int paramInt);
@@ -25,21 +19,27 @@ public abstract interface ISceneCallback
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract View b();
-  
-  public abstract RelativeLayout.LayoutParams b();
-  
   public abstract void b();
   
-  public abstract void g();
+  public abstract void i();
   
-  public abstract void j();
+  public abstract void o();
   
-  public abstract void k();
+  public abstract void p();
+  
+  public abstract Class<? extends AbstractPhotoListActivity> q();
+  
+  public abstract View v();
+  
+  public abstract RelativeLayout.LayoutParams w();
+  
+  public abstract View x();
+  
+  public abstract RelativeLayout.LayoutParams y();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.view.ISceneCallback
  * JD-Core Version:    0.7.0.1
  */

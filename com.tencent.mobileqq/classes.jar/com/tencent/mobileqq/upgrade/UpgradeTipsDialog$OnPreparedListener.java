@@ -6,7 +6,7 @@ public abstract interface UpgradeTipsDialog$OnPreparedListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeTipsDialog.OnPreparedListener
  * JD-Core Version:    0.7.0.1
  */

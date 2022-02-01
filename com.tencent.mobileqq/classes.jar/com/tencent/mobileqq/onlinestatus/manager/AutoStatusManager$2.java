@@ -5,19 +5,19 @@ class AutoStatusManager$2
 {
   AutoStatusManager$2(AutoStatusManager paramAutoStatusManager) {}
   
-  public int a()
-  {
-    return this.a.a();
-  }
-  
   public void a()
   {
-    this.a.c();
+    this.a.b();
+  }
+  
+  public int b()
+  {
+    return this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.manager.AutoStatusManager.2
  * JD-Core Version:    0.7.0.1
  */

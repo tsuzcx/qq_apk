@@ -13,19 +13,19 @@ class MoreVideoInfoWidget$OnSimpleShareListenerImpl$1
   
   public void a(String paramString, int paramInt)
   {
-    SLog.d(this.a.a.b, "save -info download suc , start watermark ,vid:%s", new Object[] { MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a).mVid });
+    SLog.d(this.a.a.i, "save -info download suc , start watermark ,vid:%s", new Object[] { MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a).mVid });
     PlayModeUtils.a(MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a), MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
   }
   
   public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
   {
-    SLog.d(this.a.a.b, "save video -info download error , vid:%s , error :%s", new Object[] { MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a).mVid, paramErrorMessage.toString() });
+    SLog.d(this.a.a.i, "save video -info download error , vid:%s , error :%s", new Object[] { MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a).mVid, paramErrorMessage.toString() });
     PlayModeUtils.a(MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a), MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
   }
   
   public void b(String paramString, int paramInt)
   {
-    SLog.d(this.a.a.b, "save video -info download cancel , vid:%s ", new Object[] { MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a).mVid });
+    SLog.d(this.a.a.i, "save video -info download cancel , vid:%s ", new Object[] { MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a).mVid });
     PlayModeUtils.a(MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a), MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
   }
 }

@@ -76,6 +76,14 @@ public class DataEntityOperator
     return localHashMap;
   }
   
+  public static Object getExtendParam(DataEntity paramDataEntity, String paramString)
+  {
+    if ((paramDataEntity != null) && (!TextUtils.isEmpty(paramString)) && (paramDataEntity.extendMap != null)) {
+      return paramDataEntity.extendMap.get(paramString);
+    }
+    return null;
+  }
+  
   @Nullable
   public static Object getInnerParam(DataEntity paramDataEntity, String paramString)
   {
@@ -116,6 +124,20 @@ public class DataEntityOperator
       return null;
     }
     return paramDataEntity.elementVirtualParentParams;
+  }
+  
+  public static void putExtendParam(DataEntity paramDataEntity, String paramString, Object paramObject)
+  {
+    if (paramDataEntity != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      if (paramDataEntity.extendMap == null) {
+        paramDataEntity.extendMap = new HashMap(1);
+      }
+      paramDataEntity.extendMap.put(paramString, paramObject);
+    }
   }
   
   public static void putInnerParam(DataEntity paramDataEntity, String paramString, Object paramObject)
@@ -297,7 +319,7 @@ public class DataEntityOperator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.data.DataEntityOperator
  * JD-Core Version:    0.7.0.1
  */

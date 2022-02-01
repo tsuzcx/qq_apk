@@ -11,9 +11,9 @@ import java.util.List;
 public class FastWebMergeAdapter
   extends BaseAdapter
 {
-  private FastWebMergeAdapter.OnDataSetChangeListener jdField_a_of_type_ComTencentMobileqqKandianBizFastwebAdapterFastWebMergeAdapter$OnDataSetChangeListener;
-  private FastWebMergeAdapter.OnGetViewListener jdField_a_of_type_ComTencentMobileqqKandianBizFastwebAdapterFastWebMergeAdapter$OnGetViewListener;
-  private List<BaseAdapter> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<BaseAdapter> a = new ArrayList();
+  private FastWebMergeAdapter.OnGetViewListener b;
+  private FastWebMergeAdapter.OnDataSetChangeListener c;
   
   private View a(ViewGroup paramViewGroup)
   {
@@ -33,14 +33,12 @@ public class FastWebMergeAdapter
   
   public List<BaseAdapter> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
-  
-  public void a() {}
   
   public void a(BaseAdapter paramBaseAdapter)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null)
     {
       if (paramBaseAdapter == null) {
@@ -53,17 +51,19 @@ public class FastWebMergeAdapter
   
   public void a(FastWebMergeAdapter.OnDataSetChangeListener paramOnDataSetChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebAdapterFastWebMergeAdapter$OnDataSetChangeListener = paramOnDataSetChangeListener;
+    this.c = paramOnDataSetChangeListener;
   }
   
   public void a(FastWebMergeAdapter.OnGetViewListener paramOnGetViewListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebAdapterFastWebMergeAdapter$OnGetViewListener = paramOnGetViewListener;
+    this.b = paramOnGetViewListener;
   }
+  
+  public void b() {}
   
   public void b(BaseAdapter paramBaseAdapter)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null)
     {
       if (paramBaseAdapter == null) {
@@ -75,7 +75,7 @@ public class FastWebMergeAdapter
   
   public int getCount()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     int i = 0;
     while (localIterator.hasNext()) {
       i += ((BaseAdapter)localIterator.next()).getCount();
@@ -85,7 +85,7 @@ public class FastWebMergeAdapter
   
   public Object getItem(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       BaseAdapter localBaseAdapter = (BaseAdapter)localIterator.next();
@@ -100,7 +100,7 @@ public class FastWebMergeAdapter
   
   public long getItemId(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       BaseAdapter localBaseAdapter = (BaseAdapter)localIterator.next();
@@ -115,7 +115,7 @@ public class FastWebMergeAdapter
   
   public int getItemViewType(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     int j = 0;
     int i = paramInt;
     paramInt = j;
@@ -140,7 +140,7 @@ public class FastWebMergeAdapter
   {
     try
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject1 = this.a.iterator();
       int i = paramInt;
       while (((Iterator)localObject1).hasNext())
       {
@@ -149,9 +149,9 @@ public class FastWebMergeAdapter
         if (i < j)
         {
           localObject2 = ((BaseAdapter)localObject2).getView(i, paramView, paramViewGroup);
-          if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebAdapterFastWebMergeAdapter$OnGetViewListener != null)
+          if (this.b != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebAdapterFastWebMergeAdapter$OnGetViewListener.a(paramInt, (View)localObject2);
+            this.b.a(paramInt, (View)localObject2);
             return localObject2;
           }
         }
@@ -171,7 +171,7 @@ public class FastWebMergeAdapter
   
   public int getViewTypeCount()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     int i = 0;
     while (localIterator.hasNext()) {
       i += ((BaseAdapter)localIterator.next()).getViewTypeCount();
@@ -182,7 +182,7 @@ public class FastWebMergeAdapter
   public void notifyDataSetChanged()
   {
     super.notifyDataSetChanged();
-    FastWebMergeAdapter.OnDataSetChangeListener localOnDataSetChangeListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebAdapterFastWebMergeAdapter$OnDataSetChangeListener;
+    FastWebMergeAdapter.OnDataSetChangeListener localOnDataSetChangeListener = this.c;
     if (localOnDataSetChangeListener != null) {
       localOnDataSetChangeListener.a();
     }
@@ -190,7 +190,7 @@ public class FastWebMergeAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.adapter.FastWebMergeAdapter
  * JD-Core Version:    0.7.0.1
  */

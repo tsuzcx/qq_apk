@@ -20,10 +20,10 @@ class GuardManager$ScreenLockReceiver
     }
     if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
-      if (this.a.jdField_a_of_type_Long > 0L)
+      if (this.this$0.mStartTime > 0L)
       {
-        paramContext = this.a;
-        paramContext.a(false, paramContext.jdField_a_of_type_JavaLangString);
+        paramContext = this.this$0;
+        paramContext.reportForegroundRunningTime(false, paramContext.mFgProcess);
       }
       GuardManagerCallbackDispatcher.a(false);
       return;
@@ -31,14 +31,14 @@ class GuardManager$ScreenLockReceiver
     if ("android.intent.action.SCREEN_ON".equals(paramContext))
     {
       GuardManagerCallbackDispatcher.a(true);
-      if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.jdField_a_of_type_JavaLangString != null))
+      if ((this.this$0.mStartTime == 0L) && (this.this$0.mFgProcess != null))
       {
-        this.a.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        paramContext = this.a;
-        paramContext.b(paramContext.jdField_a_of_type_JavaLangString);
+        this.this$0.mStartTime = SystemClock.uptimeMillis();
+        paramContext = this.this$0;
+        paramContext.reportForegroundEvent(paramContext.mFgProcess);
         paramContext = new StringBuilder();
         paramContext.append("848QQDT [onReceive] resetTime: ");
-        paramContext.append(this.a.jdField_a_of_type_Long);
+        paramContext.append(this.this$0.mStartTime);
         QLog.d("GuardManager", 1, paramContext.toString());
       }
     }
@@ -46,7 +46,7 @@ class GuardManager$ScreenLockReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.guard.GuardManager.ScreenLockReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class DynamicNowManager$7$1
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    IBizLoginObserver localIBizLoginObserver = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginIBizLoginObserver;
+    IBizLoginObserver localIBizLoginObserver = this.a;
     if (localIBizLoginObserver != null) {
       localIBizLoginObserver.a(paramInt, paramString);
     }
@@ -22,21 +22,21 @@ class DynamicNowManager$7$1
   public void a(JSONObject paramJSONObject)
   {
     super.a(paramJSONObject);
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginIBizLoginObserver != null)
+    if (this.a != null)
     {
       paramJSONObject = new BizLoginRequest();
-      paramJSONObject.jdField_a_of_type_JavaLangString = DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager$7.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager$7.jdField_a_of_type_AndroidOsBundle);
-      paramJSONObject.jdField_a_of_type_Int = 8;
-      paramJSONObject.g = DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager$7.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a();
-      paramJSONObject.f = DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager$7.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).b();
-      paramJSONObject.b = "101490787";
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginIBizLoginObserver.a(paramJSONObject);
+      paramJSONObject.a = DynamicNowManager.a(this.b.b).b(this.b.a);
+      paramJSONObject.b = 8;
+      paramJSONObject.i = DynamicNowManager.d(this.b.b).c();
+      paramJSONObject.h = DynamicNowManager.d(this.b.b).d();
+      paramJSONObject.c = "101490787";
+      this.a.a(paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.7.1
  * JD-Core Version:    0.7.0.1
  */

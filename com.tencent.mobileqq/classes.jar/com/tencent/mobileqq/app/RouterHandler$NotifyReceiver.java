@@ -54,7 +54,7 @@ public class RouterHandler$NotifyReceiver
       {
         paramIntent = new StringBuilder();
         paramIntent.append("mqq.intent.action.EXIT_");
-        paramIntent.append(this.a.b.getApp().getPackageName());
+        paramIntent.append(this.a.i.getApp().getPackageName());
         if ((!paramContext.equals(paramIntent.toString())) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {}
       }
       else
@@ -66,7 +66,7 @@ public class RouterHandler$NotifyReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RouterHandler.NotifyReceiver
  * JD-Core Version:    0.7.0.1
  */

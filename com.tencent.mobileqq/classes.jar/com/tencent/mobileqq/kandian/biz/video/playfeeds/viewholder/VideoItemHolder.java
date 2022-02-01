@@ -31,283 +31,283 @@ public class VideoItemHolder
   extends BaseVideoItemHolder
   implements AbsReadInJoyNickNameTextView.OnSetNickNameListener
 {
+  private final IVideoFeedsAccessibilityHelper a;
   @JvmField
   @Nullable
-  public View A;
+  public AbsVideoFeedsUGView aE;
   @JvmField
   @Nullable
-  public TextView A;
+  public AbsVideoFeedsUGView aF;
   @JvmField
   @Nullable
-  public View B;
+  public TextView aG;
   @JvmField
   @Nullable
-  public TextView B;
+  public ViewGroup aH;
+  @JvmField
+  @Nullable
+  public ViewGroup aI;
+  @JvmField
+  @Nullable
+  public AbsReadInJoyNickNameTextView aJ;
+  @JvmField
+  @Nullable
+  public IReadInJoyHeadImageView aK;
+  @JvmField
+  @Nullable
+  public IVideoFeedsFollowButton aL;
+  @JvmField
+  @Nullable
+  public View aM;
+  @JvmField
+  @Nullable
+  public ViewGroup aN;
+  @JvmField
+  @Nullable
+  public ViewGroup aO;
+  @JvmField
+  @Nullable
+  public ImageView aP;
+  @JvmField
+  @Nullable
+  public TextView aQ;
+  @JvmField
+  @Nullable
+  public ImageView aR;
+  @JvmField
+  @Nullable
+  public ImageView aS;
+  @JvmField
+  @Nullable
+  public TextView aT;
+  @JvmField
+  @Nullable
+  public TextView aU;
+  @JvmField
+  @Nullable
+  public ViewGroup aV;
+  @JvmField
+  @Nullable
+  public ViewGroup aW;
+  @JvmField
+  @Nullable
+  public View aX;
+  @JvmField
+  @Nullable
+  public ImageView aY;
+  @JvmField
+  @Nullable
+  public ViewGroup aZ;
+  private boolean b;
+  @JvmField
+  @Nullable
+  public View bA;
+  @JvmField
+  @Nullable
+  public View bB;
+  @JvmField
+  @Nullable
+  public TextView bC;
+  @JvmField
+  @Nullable
+  public FrameLayout bD;
+  @JvmField
+  @Nullable
+  public ViewGroup bE;
+  @JvmField
+  @Nullable
+  public ViewGroup bF;
+  @JvmField
+  @Nullable
+  public URLImageView bG;
+  @JvmField
+  @Nullable
+  public TextView bH;
+  @JvmField
+  @Nullable
+  public TextView bI;
+  @JvmField
+  @Nullable
+  public ImageView bJ;
+  @JvmField
+  @Nullable
+  public ViewGroup bK;
+  @JvmField
+  @Nullable
+  public TextView bL;
+  @JvmField
+  @Nullable
+  public LinearLayout bM;
+  @JvmField
+  @Nullable
+  public FrameLayout bN;
+  @JvmField
+  @Nullable
+  public FrameLayout bO;
+  @JvmField
+  @Nullable
+  public LinearLayout bP;
+  @JvmField
+  @Nullable
+  public URLImageView bQ;
+  @JvmField
+  @Nullable
+  public TextView bR;
+  @JvmField
+  @Nullable
+  public View bS;
+  @JvmField
+  @Nullable
+  public View bT;
+  @JvmField
+  @Nullable
+  public View bU;
+  @JvmField
+  @Nullable
+  public View bV;
+  @JvmField
+  @Nullable
+  public View bW;
+  @JvmField
+  @Nullable
+  public ViewGroup bX;
   @JvmField
   @NotNull
-  public View C;
+  public View bY;
   @JvmField
   @Nullable
-  public TextView C;
+  public ViewGroup ba;
   @JvmField
   @Nullable
-  public TextView D;
+  public URLImageView bb;
   @JvmField
   @Nullable
-  public TextView E;
+  public TextView bc;
   @JvmField
   @Nullable
-  public TextView F;
+  public View bd;
   @JvmField
   @Nullable
-  public TextView G;
+  public ViewGroup be;
   @JvmField
   @Nullable
-  public TextView H;
+  public ViewGroup bf;
   @JvmField
   @Nullable
-  public TextView I;
+  public ViewGroup bg;
   @JvmField
   @Nullable
-  public TextView J;
+  public URLImageView bh;
   @JvmField
   @Nullable
-  public TextView K;
+  public TextView bi;
   @JvmField
   @Nullable
-  public TextView L;
+  public TextView bj;
   @JvmField
   @Nullable
-  public TextView M;
+  public TextView bk;
   @JvmField
   @Nullable
-  public TextView N;
+  public TextView bl;
   @JvmField
   @Nullable
-  public TextView O;
+  public ViewStub bm;
   @JvmField
   @Nullable
-  public ViewStub a;
+  public ViewGroup bn;
   @JvmField
   @Nullable
-  public FrameLayout a;
+  public URLImageView bo;
   @JvmField
   @Nullable
-  public AbsReadInJoyNickNameTextView a;
+  public TextView bp;
   @JvmField
   @Nullable
-  public IReadInJoyHeadImageView a;
+  public View bq;
   @JvmField
   @Nullable
-  public AbsVideoFeedsUGView a;
-  private final IVideoFeedsAccessibilityHelper jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAccessibilityHelper;
+  public TextView br;
   @JvmField
   @Nullable
-  public IVideoFeedsFollowButton a;
-  private boolean jdField_a_of_type_Boolean;
+  public TextView bs;
   @JvmField
   @Nullable
-  public FrameLayout b;
+  public TextView bt;
   @JvmField
   @Nullable
-  public AbsVideoFeedsUGView b;
+  public URLImageView bu;
   @JvmField
   @Nullable
-  public FrameLayout c;
+  public TextView bv;
   @JvmField
   @Nullable
-  public FrameLayout d;
+  public View bw;
   @JvmField
   @Nullable
-  public LinearLayout d;
+  public TextView bx;
   @JvmField
   @Nullable
-  public URLImageView d;
-  @Nullable
-  private FrameLayout e;
-  @JvmField
-  @Nullable
-  public LinearLayout e;
-  @JvmField
-  @Nullable
-  public URLImageView e;
-  @JvmField
-  @Nullable
-  public URLImageView f;
-  @JvmField
-  @Nullable
-  public URLImageView g;
-  @JvmField
-  @Nullable
-  public URLImageView h;
-  @JvmField
-  @Nullable
-  public URLImageView i;
-  @JvmField
-  @Nullable
-  public ViewGroup j;
-  @JvmField
-  @Nullable
-  public ViewGroup k;
-  @JvmField
-  @Nullable
-  public ImageView k;
-  @JvmField
-  @Nullable
-  public ViewGroup l;
-  @JvmField
-  @Nullable
-  public ImageView l;
-  @JvmField
-  @Nullable
-  public ViewGroup m;
-  @JvmField
-  @Nullable
-  public ImageView m;
-  @JvmField
-  @Nullable
-  public ViewGroup n;
-  @JvmField
-  @Nullable
-  public ImageView n;
-  @JvmField
-  @Nullable
-  public ViewGroup o;
-  @JvmField
-  @Nullable
-  public ImageView o;
-  @JvmField
-  @Nullable
-  public View p;
-  @JvmField
-  @Nullable
-  public ViewGroup p;
-  @JvmField
-  @Nullable
-  public View q;
-  @JvmField
-  @Nullable
-  public ViewGroup q;
-  @JvmField
-  @Nullable
-  public View r;
-  @JvmField
-  @Nullable
-  public ViewGroup r;
-  @JvmField
-  @Nullable
-  public View s;
-  @JvmField
-  @Nullable
-  public ViewGroup s;
-  @JvmField
-  @Nullable
-  public View t;
-  @JvmField
-  @Nullable
-  public ViewGroup t;
-  @JvmField
-  @Nullable
-  public View u;
-  @JvmField
-  @Nullable
-  public ViewGroup u;
-  @JvmField
-  @Nullable
-  public View v;
-  @JvmField
-  @Nullable
-  public ViewGroup v;
+  public View by;
   @JvmField
   @Nullable
-  public TextView v;
-  @JvmField
-  @Nullable
-  public View w;
-  @JvmField
-  @Nullable
-  public ViewGroup w;
-  @JvmField
-  @Nullable
-  public TextView w;
-  @JvmField
-  @Nullable
-  public View x;
-  @JvmField
-  @Nullable
-  public ViewGroup x;
-  @JvmField
-  @Nullable
-  public TextView x;
-  @JvmField
-  @Nullable
-  public View y;
-  @JvmField
-  @Nullable
-  public ViewGroup y;
-  @JvmField
-  @Nullable
-  public TextView y;
-  @JvmField
-  @Nullable
-  public View z;
-  @JvmField
+  public FrameLayout bz;
   @Nullable
-  public TextView z;
+  private FrameLayout c;
   
   public VideoItemHolder(@NotNull View paramView, int paramInt)
   {
     super(paramView, paramInt);
-    this.C = paramView;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAccessibilityHelper = ((IVideoFeedsAccessibilityHelperFactory)QRoute.api(IVideoFeedsAccessibilityHelperFactory.class)).get();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_x_of_type_AndroidViewView = this.C.findViewById(RR.id.a.X());
-    this.v = ((TextView)this.C.findViewById(RR.id.a.z()));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsAbsVideoFeedsUGView = ((AbsVideoFeedsUGView)this.C.findViewById(RR.id.a.A()));
-    this.b = ((AbsVideoFeedsUGView)this.C.findViewById(RR.id.a.B()));
-    this.j = ((ViewGroup)this.C.findViewById(RR.id.a.C()));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetAbsReadInJoyNickNameTextView = ((AbsReadInJoyNickNameTextView)this.C.findViewById(RR.id.a.D()));
-    paramView = this.C.findViewById(RR.id.a.E());
+    this.bY = paramView;
+    this.a = ((IVideoFeedsAccessibilityHelperFactory)QRoute.api(IVideoFeedsAccessibilityHelperFactory.class)).get();
+    this.b = true;
+    this.bS = this.bY.findViewById(RR.id.a.X());
+    this.aG = ((TextView)this.bY.findViewById(RR.id.a.z()));
+    this.aE = ((AbsVideoFeedsUGView)this.bY.findViewById(RR.id.a.A()));
+    this.aF = ((AbsVideoFeedsUGView)this.bY.findViewById(RR.id.a.B()));
+    this.aH = ((ViewGroup)this.bY.findViewById(RR.id.a.C()));
+    this.aJ = ((AbsReadInJoyNickNameTextView)this.bY.findViewById(RR.id.a.D()));
+    paramView = this.bY.findViewById(RR.id.a.E());
     if (paramView != null)
     {
       if (paramView != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetIReadInJoyHeadImageView = ((IReadInJoyHeadImageView)paramView);
-        View localView = this.C.findViewById(RR.id.a.F());
+        this.aK = ((IReadInJoyHeadImageView)paramView);
+        View localView = this.bY.findViewById(RR.id.a.F());
         paramView = localView;
         if (!(localView instanceof IVideoFeedsFollowButton)) {
           paramView = null;
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsFollowButton = ((IVideoFeedsFollowButton)paramView);
-        this.jdField_l_of_type_AndroidViewViewGroup = ((ViewGroup)this.C.findViewById(RR.id.a.G()));
-        this.jdField_l_of_type_AndroidWidgetImageView = ((ImageView)this.C.findViewById(RR.id.a.H()));
-        this.jdField_n_of_type_AndroidViewViewGroup = ((ViewGroup)this.C.findViewById(RR.id.a.I()));
-        this.jdField_m_of_type_AndroidWidgetImageView = ((ImageView)this.C.findViewById(RR.id.a.J()));
-        this.jdField_m_of_type_AndroidViewViewGroup = ((ViewGroup)this.C.findViewById(RR.id.a.K()));
-        this.k = ((ImageView)this.C.findViewById(RR.id.a.L()));
-        this.w = ((TextView)this.C.findViewById(RR.id.a.M()));
-        this.jdField_p_of_type_AndroidViewView = this.C.findViewById(RR.id.a.N());
-        this.jdField_x_of_type_AndroidWidgetTextView = ((TextView)this.C.findViewById(RR.id.a.O()));
-        this.y = ((TextView)this.C.findViewById(RR.id.a.P()));
-        this.r = ((ViewGroup)this.C.findViewById(RR.id.a.Q()));
-        this.s = ((ViewGroup)this.C.findViewById(RR.id.a.R()));
-        this.jdField_p_of_type_AndroidViewViewGroup = ((ViewGroup)this.C.findViewById(RR.id.a.S()));
-        this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)this.C.findViewById(RR.id.a.T()));
-        this.o = ((ViewGroup)this.C.findViewById(RR.id.a.U()));
-        this.q = this.C.findViewById(RR.id.a.V());
-        this.jdField_n_of_type_AndroidWidgetImageView = ((ImageView)this.C.findViewById(RR.id.a.W()));
-        this.e = ((FrameLayout)this.C.findViewById(RR.id.a.Y()));
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAccessibilityHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetAbsReadInJoyNickNameTextView, (AbsReadInJoyNickNameTextView.OnSetNickNameListener)this);
-        VideoReport.setElementId(this.j, "puin_button");
-        VideoReport.setElementId(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsFollowButton, "follow_button");
-        VideoReport.setElementId(this.jdField_p_of_type_AndroidViewView, "write_comment_button");
-        VideoReport.setElementId(this.jdField_m_of_type_AndroidViewViewGroup, "comment_button");
-        VideoReport.setElementId(this.jdField_m_of_type_AndroidWidgetImageView, "like_button");
-        VideoReport.setElementId(this.jdField_l_of_type_AndroidWidgetImageView, "biu_button");
-        VideoReport.setElementId(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityAbsVideoFeedsGestureLayout, "card");
-        VideoReport.setElementReportPolicy(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityAbsVideoFeedsGestureLayout, ReportPolicy.REPORT_POLICY_NONE);
-        VideoReport.setElementId(this.g, "card");
-        VideoReport.setElementId(this.i, "card");
+        this.aL = ((IVideoFeedsFollowButton)paramView);
+        this.aN = ((ViewGroup)this.bY.findViewById(RR.id.a.G()));
+        this.aR = ((ImageView)this.bY.findViewById(RR.id.a.H()));
+        this.aV = ((ViewGroup)this.bY.findViewById(RR.id.a.I()));
+        this.aS = ((ImageView)this.bY.findViewById(RR.id.a.J()));
+        this.aO = ((ViewGroup)this.bY.findViewById(RR.id.a.K()));
+        this.aP = ((ImageView)this.bY.findViewById(RR.id.a.L()));
+        this.aQ = ((TextView)this.bY.findViewById(RR.id.a.M()));
+        this.aM = this.bY.findViewById(RR.id.a.N());
+        this.aT = ((TextView)this.bY.findViewById(RR.id.a.O()));
+        this.aU = ((TextView)this.bY.findViewById(RR.id.a.P()));
+        this.be = ((ViewGroup)this.bY.findViewById(RR.id.a.Q()));
+        this.bf = ((ViewGroup)this.bY.findViewById(RR.id.a.R()));
+        this.aZ = ((ViewGroup)this.bY.findViewById(RR.id.a.S()));
+        this.bm = ((ViewStub)this.bY.findViewById(RR.id.a.T()));
+        this.aW = ((ViewGroup)this.bY.findViewById(RR.id.a.U()));
+        this.aX = this.bY.findViewById(RR.id.a.V());
+        this.aY = ((ImageView)this.bY.findViewById(RR.id.a.W()));
+        this.c = ((FrameLayout)this.bY.findViewById(RR.id.a.Y()));
+        this.a.a(this.aJ, (AbsReadInJoyNickNameTextView.OnSetNickNameListener)this);
+        VideoReport.setElementId(this.aH, "puin_button");
+        VideoReport.setElementId(this.aL, "follow_button");
+        VideoReport.setElementId(this.aM, "write_comment_button");
+        VideoReport.setElementId(this.aO, "comment_button");
+        VideoReport.setElementId(this.aS, "like_button");
+        VideoReport.setElementId(this.aR, "biu_button");
+        VideoReport.setElementId(this.ac, "card");
+        VideoReport.setElementReportPolicy(this.ac, ReportPolicy.REPORT_POLICY_NONE);
+        VideoReport.setElementId(this.ad, "card");
+        VideoReport.setElementId(this.ax, "card");
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.kandian.biz.common.widget.IReadInJoyHeadImageView");
@@ -315,16 +315,21 @@ public class VideoItemHolder
     throw new TypeCastException("null cannot be cast to non-null type android.view.View");
   }
   
+  public final boolean M()
+  {
+    return this.b;
+  }
+  
   public void a(@Nullable String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetAbsReadInJoyNickNameTextView;
+    Object localObject = this.aJ;
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAccessibilityHelper.b((View)localObject, paramString);
-      IVideoFeedsAccessibilityHelper localIVideoFeedsAccessibilityHelper = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAccessibilityHelper;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetIReadInJoyHeadImageView;
+      this.a.b((View)localObject, paramString);
+      IVideoFeedsAccessibilityHelper localIVideoFeedsAccessibilityHelper = this.a;
+      localObject = this.aK;
       if (localObject != null) {
-        localObject = ((IReadInJoyHeadImageView)localObject).a();
+        localObject = ((IReadInJoyHeadImageView)localObject).getView();
       } else {
         localObject = null;
       }
@@ -334,17 +339,12 @@ public class VideoItemHolder
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public final boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.viewholder.VideoItemHolder
  * JD-Core Version:    0.7.0.1
  */

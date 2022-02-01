@@ -23,13 +23,13 @@ class QQProxyForQlink$10
       paramIntent.append(paramContext);
       QLog.w("QQProxyForQlink", 1, paramIntent.toString());
       QQProxyForQlink.a(this.a, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
-      QQProxyForQlink.c(this.a);
+      QQProxyForQlink.f(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QQProxyForQlink.10
  * JD-Core Version:    0.7.0.1
  */

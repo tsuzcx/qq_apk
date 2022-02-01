@@ -17,7 +17,7 @@ final class ChatActivityFacade$5
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(this.b.b);
     long l1;
     if (localExtensionInfo == null) {
       l1 = 0L;
@@ -36,7 +36,7 @@ final class ChatActivityFacade$5
     } else {
       l3 = localExtensionInfo.lastPullPLNewsTimestamp;
     }
-    long l4 = MessageCache.a();
+    long l4 = MessageCache.c();
     boolean bool;
     if ((l4 > 0L) && (l4 - l1 > 604800L)) {
       bool = true;
@@ -47,13 +47,13 @@ final class ChatActivityFacade$5
       QLog.i("ChatActivityFacade", 2, String.format("insertFriendPLNewsIfNeeded latest:%d last:%d pull:%d overWeek:%b", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool) }));
     }
     if ((l1 > l2) && (!bool) && (System.currentTimeMillis() / 1000L - l3 >= 86400L)) {
-      ((PersonalityLabelHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l2, l1);
+      ((PersonalityLabelHandler)this.a.getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL)).a(this.b.b, l2, l1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.5
  * JD-Core Version:    0.7.0.1
  */

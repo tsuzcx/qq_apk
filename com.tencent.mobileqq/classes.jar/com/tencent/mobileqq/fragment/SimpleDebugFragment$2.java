@@ -15,13 +15,13 @@ class SimpleDebugFragment$2
     if (paramInt != 1) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId() != 2131367785) {}
-    this.jdField_a_of_type_ComTencentMobileqqFragmentSimpleDebugFragment.getBaseActivity().finish();
+    if (this.a.getCheckedRadioButtonId() != 2131434356) {}
+    this.b.getBaseActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.SimpleDebugFragment.2
  * JD-Core Version:    0.7.0.1
  */

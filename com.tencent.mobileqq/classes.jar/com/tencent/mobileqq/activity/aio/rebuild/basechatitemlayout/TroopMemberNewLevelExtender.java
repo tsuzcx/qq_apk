@@ -23,10 +23,10 @@ public class TroopMemberNewLevelExtender
     if (this.a == null)
     {
       this.a = new TroopMemberNewLevelView(this.mContext);
-      this.a.setId(2131364561);
+      this.a.setId(2131430620);
       this.a.setGravity(16);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams.rightMargin = ViewUtils.a(2.0F);
+      localLayoutParams.rightMargin = ViewUtils.dip2px(2.0F);
       this.layoutParams = localLayoutParams;
     }
   }
@@ -47,7 +47,7 @@ public class TroopMemberNewLevelExtender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basechatitemlayout.TroopMemberNewLevelExtender
  * JD-Core Version:    0.7.0.1
  */

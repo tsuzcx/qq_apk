@@ -25,44 +25,44 @@ class MsgTabStoryVideoPreloader$2
   protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
     paramJobContext = new ArrayList();
-    paramVarArgs = this.jdField_a_of_type_JavaUtilList.iterator();
+    paramVarArgs = this.a.iterator();
     while (paramVarArgs.hasNext())
     {
       Object localObject1 = (StoryVideoItem)paramVarArgs.next();
       Object localObject2 = DownloadTask.a(((StoryVideoItem)localObject1).mVid, 2);
-      if (!TextUtils.isEmpty(((DownloadTask)localObject2).c))
+      if (!TextUtils.isEmpty(((DownloadTask)localObject2).e))
       {
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("download thumb url=");
-          localStringBuilder.append(((DownloadTask)localObject2).c);
+          localStringBuilder.append(((DownloadTask)localObject2).e);
           QLog.i("MsgTabStoryVideoPreloader", 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.b.add(((DownloadTask)localObject2).c);
+        this.b.f.add(((DownloadTask)localObject2).e);
         paramJobContext.add(localObject2);
       }
       localObject1 = DownloadTask.a(((StoryVideoItem)localObject1).mVid, 1);
-      if (!TextUtils.isEmpty(((DownloadTask)localObject1).c))
+      if (!TextUtils.isEmpty(((DownloadTask)localObject1).e))
       {
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("download mask url=");
-          ((StringBuilder)localObject2).append(((DownloadTask)localObject1).c);
+          ((StringBuilder)localObject2).append(((DownloadTask)localObject1).e);
           QLog.i("MsgTabStoryVideoPreloader", 2, ((StringBuilder)localObject2).toString());
         }
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.b.add(((DownloadTask)localObject1).c);
+        this.b.f.add(((DownloadTask)localObject1).e);
         paramJobContext.add(localObject1);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a.a(paramJobContext, false);
+      this.b.a.a(paramJobContext, false);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ class MultiIncomingCallUICtr$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, 244);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(244);
-    if (!this.jdField_a_of_type_Boolean)
+    this.a.a(this.b, 244);
+    this.a.b(244);
+    if (!this.c)
     {
-      this.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_JavaLangString, 23);
+      this.a.b(this.b, 23);
       return;
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_JavaLangString, 1);
+    this.a.b(this.b, 1);
   }
 }
 

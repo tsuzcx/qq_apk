@@ -18,11 +18,11 @@ class GVideoGrayConfig$1
     {
       GVideoGrayConfig.a(this.a, SystemClock.elapsedRealtime());
       paramString2 = new GVideoGrayConfig.Record(SystemClock.elapsedRealtime(), paramInt3, paramString2, paramString3, paramString4);
-      GVideoGrayConfig.a(this.a).put(paramString1, paramString2);
+      GVideoGrayConfig.b(this.a).put(paramString1, paramString2);
       if (localGVideoGrayConfigListener != null)
       {
         localGVideoGrayConfigListener.a(paramInt3, paramString2, paramInt5);
-        GVideoGrayConfig.a(this.a).a(paramLong);
+        GVideoGrayConfig.a(this.a).b(paramLong);
       }
       else if (QLog.isColorLevel())
       {
@@ -35,7 +35,7 @@ class GVideoGrayConfig$1
       if (paramString1 != null)
       {
         paramString1.a(-1, null, paramInt5);
-        GVideoGrayConfig.a(this.a).a(paramLong);
+        GVideoGrayConfig.a(this.a).b(paramLong);
       }
       else if (QLog.isColorLevel())
       {
@@ -44,9 +44,9 @@ class GVideoGrayConfig$1
     }
     paramString1 = this.a;
     paramString1.a = paramInt4;
-    if (GVideoGrayConfig.a(paramString1) != null)
+    if (GVideoGrayConfig.c(paramString1) != null)
     {
-      GVideoGrayConfig.a(this.a).a(paramInt4);
+      GVideoGrayConfig.c(this.a).a(paramInt4);
       GVideoGrayConfig.a(this.a, null);
     }
     else if (QLog.isColorLevel())

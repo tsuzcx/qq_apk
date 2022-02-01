@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
+import com.qq.taf.jce.HexUtil;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,6 +9,10 @@ import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pic.DownCallBack;
 import com.tencent.mobileqq.pic.DownCallBack.DownResult;
 import com.tencent.mobileqq.pic.PicInfoInterface.ErrInfo;
@@ -21,617 +26,357 @@ import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.MultiMsgDownResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
 import com.tencent.mobileqq.transfile.report.ProcessorReport;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import tencent.im.longconn.longmsg.LongMsg.MsgDownRsp;
+import tencent.im.longconn.longmsg.LongMsg.RspBody;
+import tencent.im.msg.im_msg_head.Head;
+import tencent.im.msg.im_msg_head.HttpConnHead;
 
 public class MultiMsgDownloadProcessor
   extends BaseDownloadProcessor
 {
-  QQAppInterface app = (QQAppInterface)this.app;
+  QQAppInterface app;
   private int mChannelType;
   private byte[] mContent;
   private byte[] mMsgKey;
-  private byte[] mMsgResId = this.mUiRequest.resIdStr.getBytes();
+  private byte[] mMsgResId;
   private String mOutFilePath;
-  private int mUinType = this.mUiRequest.mUinType;
+  private int mUinType;
+  
+  public MultiMsgDownloadProcessor() {}
   
   public MultiMsgDownloadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
     super(paramTransFileControllerImpl, paramTransferRequest);
+    this.app = ((QQAppInterface)this.app);
+    this.mMsgResId = this.mUiRequest.resIdStr.getBytes();
+    this.mUinType = this.mUiRequest.mUinType;
   }
   
   /* Error */
-  private boolean parseDownloadMsg(String paramString)
+  private byte[] getBodyData(String paramString)
   {
     // Byte code:
-    //   0: new 58	java/io/File
+    //   0: new 59	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: invokevirtual 65	java/io/File:exists	()Z
-    //   11: ifne +40 -> 51
-    //   14: new 67	java/lang/StringBuilder
+    //   5: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: invokevirtual 66	java/io/File:exists	()Z
+    //   11: ifne +36 -> 47
+    //   14: new 68	java/lang/StringBuilder
     //   17: dup
-    //   18: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   21: astore 5
-    //   23: aload 5
-    //   25: ldc 72
-    //   27: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: pop
-    //   31: aload 5
-    //   33: aload_1
-    //   34: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: pop
-    //   38: aload_0
-    //   39: ldc 77
-    //   41: aload 5
-    //   43: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   49: iconst_0
-    //   50: ireturn
-    //   51: aconst_null
-    //   52: astore 7
-    //   54: aconst_null
-    //   55: astore 6
-    //   57: new 87	java/io/RandomAccessFile
-    //   60: dup
-    //   61: aload_1
-    //   62: ldc 89
-    //   64: invokespecial 91	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   67: astore 5
-    //   69: aload 5
-    //   71: astore 6
-    //   73: aload 5
-    //   75: invokevirtual 95	java/io/RandomAccessFile:length	()J
-    //   78: l2i
-    //   79: newarray byte
-    //   81: astore 7
+    //   18: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   21: astore_3
+    //   22: aload_3
+    //   23: ldc 71
+    //   25: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: pop
+    //   29: aload_3
+    //   30: aload_1
+    //   31: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: pop
+    //   35: aload_0
+    //   36: ldc 77
+    //   38: aload_3
+    //   39: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   45: aconst_null
+    //   46: areturn
+    //   47: new 87	java/io/RandomAccessFile
+    //   50: dup
+    //   51: aload_1
+    //   52: ldc 89
+    //   54: invokespecial 91	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   57: astore 5
+    //   59: aload 5
+    //   61: astore 4
+    //   63: aload 5
+    //   65: invokevirtual 95	java/io/RandomAccessFile:length	()J
+    //   68: l2i
+    //   69: newarray byte
+    //   71: astore_3
+    //   72: aload 5
+    //   74: astore 4
+    //   76: aload 5
+    //   78: aload_3
+    //   79: invokevirtual 99	java/io/RandomAccessFile:read	([B)I
+    //   82: istore_2
     //   83: aload 5
-    //   85: astore 6
-    //   87: aload 5
-    //   89: aload 7
-    //   91: invokevirtual 99	java/io/RandomAccessFile:read	([B)I
-    //   94: istore_2
-    //   95: aload 5
-    //   97: invokevirtual 102	java/io/RandomAccessFile:close	()V
-    //   100: goto +8 -> 108
-    //   103: astore_1
-    //   104: aload_1
-    //   105: invokevirtual 105	java/io/IOException:printStackTrace	()V
-    //   108: aload 7
-    //   110: arraylength
-    //   111: ifle +730 -> 841
-    //   114: iload_2
-    //   115: ifgt +6 -> 121
-    //   118: goto +723 -> 841
-    //   121: aload 7
-    //   123: arraylength
-    //   124: istore_2
-    //   125: aload 7
-    //   127: iconst_0
-    //   128: baload
-    //   129: bipush 40
-    //   131: if_icmpne +612 -> 743
-    //   134: aload 7
-    //   136: iload_2
-    //   137: iconst_1
-    //   138: isub
-    //   139: baload
-    //   140: bipush 41
-    //   142: if_icmpeq +6 -> 148
-    //   145: goto +598 -> 743
-    //   148: new 107	java/io/DataInputStream
-    //   151: dup
-    //   152: new 109	java/io/ByteArrayInputStream
-    //   155: dup
-    //   156: aload 7
-    //   158: invokespecial 112	java/io/ByteArrayInputStream:<init>	([B)V
-    //   161: invokespecial 115	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   164: astore 5
-    //   166: aload 5
-    //   168: invokevirtual 119	java/io/DataInputStream:readByte	()B
-    //   171: pop
-    //   172: aload 5
-    //   174: invokevirtual 123	java/io/DataInputStream:readInt	()I
-    //   177: istore 4
+    //   85: invokevirtual 102	java/io/RandomAccessFile:close	()V
+    //   88: goto +225 -> 313
+    //   91: astore_1
+    //   92: aload_1
+    //   93: invokevirtual 105	java/io/IOException:printStackTrace	()V
+    //   96: aload_0
+    //   97: ldc 77
+    //   99: aload_1
+    //   100: invokevirtual 108	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   103: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   106: goto +207 -> 313
+    //   109: astore 4
+    //   111: aload_3
+    //   112: astore_1
+    //   113: aload 4
+    //   115: astore_3
+    //   116: goto +35 -> 151
+    //   119: astore 6
+    //   121: goto +103 -> 224
+    //   124: astore_3
+    //   125: aconst_null
+    //   126: astore_1
+    //   127: goto +24 -> 151
+    //   130: astore 6
+    //   132: aconst_null
+    //   133: astore_3
+    //   134: goto +90 -> 224
+    //   137: astore_1
+    //   138: aconst_null
+    //   139: astore 4
+    //   141: goto +302 -> 443
+    //   144: astore_3
+    //   145: aconst_null
+    //   146: astore 5
+    //   148: aload 5
+    //   150: astore_1
+    //   151: aload 5
+    //   153: astore 4
+    //   155: aload_0
+    //   156: ldc 77
+    //   158: ldc 110
+    //   160: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   163: aload 5
+    //   165: astore 4
+    //   167: aload_3
+    //   168: invokevirtual 105	java/io/IOException:printStackTrace	()V
+    //   171: aload_1
+    //   172: astore 4
+    //   174: aload 5
+    //   176: ifnull +32 -> 208
     //   179: aload 5
-    //   181: invokevirtual 123	java/io/DataInputStream:readInt	()I
-    //   184: istore_3
-    //   185: iload 4
-    //   187: iload_2
-    //   188: if_icmpgt +463 -> 651
-    //   191: iload_3
-    //   192: iload_2
-    //   193: if_icmple +6 -> 199
-    //   196: goto +455 -> 651
-    //   199: iload 4
-    //   201: ifle +820 -> 1021
-    //   204: iload 4
-    //   206: newarray byte
-    //   208: astore_1
-    //   209: aload 5
-    //   211: aload_1
-    //   212: invokevirtual 124	java/io/DataInputStream:read	([B)I
-    //   215: pop
-    //   216: new 126	tencent/im/msg/im_msg_head$Head
-    //   219: dup
-    //   220: invokespecial 127	tencent/im/msg/im_msg_head$Head:<init>	()V
-    //   223: astore 6
-    //   225: aload 6
-    //   227: aload_1
-    //   228: invokevirtual 131	tencent/im/msg/im_msg_head$Head:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   231: pop
-    //   232: aload 6
-    //   234: getfield 135	tencent/im/msg/im_msg_head$Head:msg_httpconn_head	Ltencent/im/msg/im_msg_head$HttpConnHead;
-    //   237: invokevirtual 141	tencent/im/msg/im_msg_head$HttpConnHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   240: checkcast 137	tencent/im/msg/im_msg_head$HttpConnHead
-    //   243: getfield 145	tencent/im/msg/im_msg_head$HttpConnHead:uint32_error_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   246: invokevirtual 149	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   249: istore_2
-    //   250: goto +773 -> 1023
-    //   253: iload_3
-    //   254: newarray byte
-    //   256: astore_1
-    //   257: aload 5
-    //   259: aload_1
-    //   260: invokevirtual 124	java/io/DataInputStream:read	([B)I
-    //   263: pop
-    //   264: new 151	com/tencent/qphone/base/util/Cryptor
-    //   267: dup
-    //   268: invokespecial 152	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   271: aload_1
-    //   272: aload_0
-    //   273: getfield 154	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:mMsgKey	[B
-    //   276: invokevirtual 158	com/tencent/qphone/base/util/Cryptor:decrypt	([B[B)[B
-    //   279: astore 5
-    //   281: aload 5
-    //   283: ifnull +312 -> 595
-    //   286: aload 5
-    //   288: arraylength
-    //   289: ifgt +6 -> 295
-    //   292: goto +303 -> 595
-    //   295: new 160	tencent/im/longconn/longmsg/LongMsg$RspBody
-    //   298: dup
-    //   299: invokespecial 161	tencent/im/longconn/longmsg/LongMsg$RspBody:<init>	()V
-    //   302: astore 6
-    //   304: aload 6
-    //   306: aload 5
-    //   308: invokevirtual 162	tencent/im/longconn/longmsg/LongMsg$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   311: pop
-    //   312: aload 6
-    //   314: getfield 166	tencent/im/longconn/longmsg/LongMsg$RspBody:rpt_msg_down_rsp	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   317: iconst_0
-    //   318: invokevirtual 171	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   321: checkcast 173	tencent/im/longconn/longmsg/LongMsg$MsgDownRsp
-    //   324: astore 5
-    //   326: aload 5
-    //   328: ifnonnull +13 -> 341
-    //   331: aload_0
-    //   332: ldc 77
-    //   334: ldc 175
-    //   336: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   339: iconst_0
-    //   340: ireturn
-    //   341: aload 5
-    //   343: getfield 178	tencent/im/longconn/longmsg/LongMsg$MsgDownRsp:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   346: invokevirtual 181	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   349: ifne +13 -> 362
-    //   352: aload_0
-    //   353: ldc 77
-    //   355: ldc 183
-    //   357: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   360: iconst_0
-    //   361: ireturn
-    //   362: aload 5
-    //   364: getfield 178	tencent/im/longconn/longmsg/LongMsg$MsgDownRsp:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   367: invokevirtual 149	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   370: ifeq +13 -> 383
-    //   373: aload_0
-    //   374: ldc 77
-    //   376: ldc 185
-    //   378: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   381: iconst_0
-    //   382: ireturn
-    //   383: aload 5
-    //   385: getfield 189	tencent/im/longconn/longmsg/LongMsg$MsgDownRsp:bytes_msg_content	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   388: invokevirtual 192	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   391: ifne +13 -> 404
-    //   394: aload_0
-    //   395: ldc 77
-    //   397: ldc 194
-    //   399: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   402: iconst_0
-    //   403: ireturn
-    //   404: aload_0
-    //   405: aload 5
-    //   407: getfield 189	tencent/im/longconn/longmsg/LongMsg$MsgDownRsp:bytes_msg_content	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   410: invokevirtual 197	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   413: invokevirtual 202	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   416: putfield 204	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:mContent	[B
-    //   419: aload_0
-    //   420: getfield 204	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:mContent	[B
-    //   423: ifnull +162 -> 585
-    //   426: aload_0
-    //   427: getfield 204	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:mContent	[B
-    //   430: arraylength
-    //   431: ifgt +6 -> 437
-    //   434: goto +151 -> 585
-    //   437: new 67	java/lang/StringBuilder
-    //   440: dup
-    //   441: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   444: astore 5
-    //   446: aload 5
-    //   448: ldc 206
-    //   450: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   453: pop
-    //   454: aload 5
-    //   456: aload_1
-    //   457: invokestatic 212	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   460: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   463: pop
-    //   464: aload_0
-    //   465: ldc 77
-    //   467: aload 5
-    //   469: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   472: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   475: new 67	java/lang/StringBuilder
-    //   478: dup
-    //   479: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   482: astore 5
-    //   484: aload 5
-    //   486: ldc 214
-    //   488: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   491: pop
-    //   492: aload 5
-    //   494: aload_1
-    //   495: arraylength
-    //   496: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   499: pop
-    //   500: aload_0
-    //   501: ldc 77
-    //   503: aload 5
-    //   505: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   508: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   511: new 67	java/lang/StringBuilder
-    //   514: dup
-    //   515: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   518: astore_1
-    //   519: aload_1
-    //   520: ldc 219
-    //   522: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   525: pop
-    //   526: aload_1
-    //   527: aload_0
-    //   528: getfield 204	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:mContent	[B
-    //   531: invokestatic 212	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   534: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   537: pop
-    //   538: aload_0
-    //   539: ldc 77
-    //   541: aload_1
-    //   542: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   545: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   548: new 67	java/lang/StringBuilder
-    //   551: dup
-    //   552: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   555: astore_1
-    //   556: aload_1
-    //   557: ldc 221
-    //   559: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   562: pop
-    //   563: aload_1
-    //   564: aload_0
-    //   565: getfield 204	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:mContent	[B
-    //   568: arraylength
-    //   569: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   572: pop
-    //   573: aload_0
-    //   574: ldc 77
-    //   576: aload_1
-    //   577: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   580: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   583: iconst_1
-    //   584: ireturn
-    //   585: aload_0
-    //   586: ldc 77
-    //   588: ldc 223
-    //   590: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   593: iconst_0
-    //   594: ireturn
-    //   595: aload_0
-    //   596: ldc 77
-    //   598: ldc 225
-    //   600: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   603: iconst_0
-    //   604: ireturn
-    //   605: new 67	java/lang/StringBuilder
-    //   608: dup
-    //   609: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   612: astore_1
-    //   613: aload_1
-    //   614: ldc 227
-    //   616: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   619: pop
-    //   620: aload_1
-    //   621: iload_3
-    //   622: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   625: pop
-    //   626: aload_1
-    //   627: ldc 229
-    //   629: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   632: pop
-    //   633: aload_1
-    //   634: iload_2
-    //   635: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   638: pop
-    //   639: aload_0
-    //   640: ldc 77
-    //   642: aload_1
-    //   643: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   646: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   649: iconst_0
-    //   650: ireturn
-    //   651: new 67	java/lang/StringBuilder
-    //   654: dup
-    //   655: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   658: astore_1
-    //   659: aload_1
-    //   660: ldc 231
-    //   662: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   665: pop
-    //   666: aload_1
-    //   667: iload 4
-    //   669: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   672: pop
-    //   673: aload_1
-    //   674: ldc 233
-    //   676: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   679: pop
-    //   680: aload_1
-    //   681: iload_3
-    //   682: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   685: pop
-    //   686: aload_0
-    //   687: ldc 77
-    //   689: aload_1
-    //   690: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   693: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   696: iconst_0
-    //   697: ireturn
-    //   698: astore_1
-    //   699: aload_1
-    //   700: invokevirtual 234	java/lang/Exception:printStackTrace	()V
-    //   703: new 67	java/lang/StringBuilder
-    //   706: dup
-    //   707: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   710: astore 5
-    //   712: aload 5
-    //   714: ldc 236
-    //   716: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   719: pop
-    //   720: aload 5
-    //   722: aload_1
-    //   723: invokevirtual 239	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   726: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   729: pop
-    //   730: aload_0
-    //   731: ldc 77
-    //   733: aload 5
-    //   735: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   738: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   741: iconst_0
-    //   742: ireturn
-    //   743: new 67	java/lang/StringBuilder
-    //   746: dup
-    //   747: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   750: astore_1
-    //   751: aload_1
-    //   752: ldc 241
-    //   754: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   757: pop
-    //   758: aload_1
-    //   759: iload_2
-    //   760: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   763: pop
-    //   764: aload_1
-    //   765: ldc 243
-    //   767: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   770: pop
-    //   771: aload_1
-    //   772: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   775: astore_1
-    //   776: aload 7
-    //   778: invokevirtual 246	java/lang/Object:toString	()Ljava/lang/String;
-    //   781: astore 5
-    //   783: new 67	java/lang/StringBuilder
-    //   786: dup
-    //   787: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   790: astore 6
-    //   792: aload 6
-    //   794: aload_1
-    //   795: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   798: pop
-    //   799: aload 5
-    //   801: astore_1
-    //   802: aload 5
-    //   804: invokevirtual 248	java/lang/String:length	()I
-    //   807: bipush 20
-    //   809: if_icmple +12 -> 821
-    //   812: aload 5
-    //   814: iconst_0
-    //   815: bipush 20
-    //   817: invokevirtual 252	java/lang/String:substring	(II)Ljava/lang/String;
-    //   820: astore_1
-    //   821: aload 6
-    //   823: aload_1
-    //   824: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   827: pop
-    //   828: aload_0
-    //   829: ldc 77
-    //   831: aload 6
-    //   833: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   836: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   839: iconst_0
-    //   840: ireturn
-    //   841: aload_0
-    //   842: ldc 77
-    //   844: ldc 254
-    //   846: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   849: iconst_0
-    //   850: ireturn
-    //   851: astore 6
-    //   853: aload 5
-    //   855: astore_1
-    //   856: aload 6
-    //   858: astore 5
-    //   860: goto +17 -> 877
-    //   863: astore 7
-    //   865: goto +54 -> 919
-    //   868: astore_1
-    //   869: goto +130 -> 999
-    //   872: astore 5
-    //   874: aload 7
-    //   876: astore_1
-    //   877: aload_1
-    //   878: astore 6
-    //   880: aload_0
-    //   881: ldc 77
-    //   883: ldc_w 256
-    //   886: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   889: aload_1
-    //   890: astore 6
-    //   892: aload 5
-    //   894: invokevirtual 105	java/io/IOException:printStackTrace	()V
-    //   897: aload_1
-    //   898: ifnull +14 -> 912
-    //   901: aload_1
-    //   902: invokevirtual 102	java/io/RandomAccessFile:close	()V
-    //   905: iconst_0
-    //   906: ireturn
-    //   907: astore_1
-    //   908: aload_1
-    //   909: invokevirtual 105	java/io/IOException:printStackTrace	()V
-    //   912: iconst_0
-    //   913: ireturn
-    //   914: astore 7
-    //   916: aconst_null
-    //   917: astore 5
-    //   919: aload 5
-    //   921: astore 6
-    //   923: aload 7
-    //   925: invokevirtual 257	java/io/FileNotFoundException:printStackTrace	()V
-    //   928: aload 5
-    //   930: astore 6
-    //   932: new 67	java/lang/StringBuilder
-    //   935: dup
-    //   936: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   939: astore 7
-    //   941: aload 5
-    //   943: astore 6
-    //   945: aload 7
-    //   947: ldc 72
-    //   949: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   952: pop
-    //   953: aload 5
-    //   955: astore 6
-    //   957: aload 7
-    //   959: aload_1
-    //   960: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   963: pop
-    //   964: aload 5
-    //   966: astore 6
-    //   968: aload_0
-    //   969: ldc 77
-    //   971: aload 7
-    //   973: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   976: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   979: aload 5
-    //   981: ifnull +15 -> 996
-    //   984: aload 5
-    //   986: invokevirtual 102	java/io/RandomAccessFile:close	()V
-    //   989: iconst_0
-    //   990: ireturn
-    //   991: astore_1
-    //   992: aload_1
-    //   993: invokevirtual 105	java/io/IOException:printStackTrace	()V
-    //   996: iconst_0
-    //   997: ireturn
-    //   998: astore_1
-    //   999: aload 6
-    //   1001: ifnull +18 -> 1019
-    //   1004: aload 6
-    //   1006: invokevirtual 102	java/io/RandomAccessFile:close	()V
-    //   1009: goto +10 -> 1019
-    //   1012: astore 5
-    //   1014: aload 5
-    //   1016: invokevirtual 105	java/io/IOException:printStackTrace	()V
-    //   1019: aload_1
-    //   1020: athrow
-    //   1021: iconst_0
-    //   1022: istore_2
-    //   1023: iload_3
-    //   1024: ifle -419 -> 605
-    //   1027: iload_2
-    //   1028: ifeq -775 -> 253
-    //   1031: goto -426 -> 605
+    //   181: invokevirtual 102	java/io/RandomAccessFile:close	()V
+    //   184: aload_1
+    //   185: astore 4
+    //   187: goto +21 -> 208
+    //   190: astore_3
+    //   191: aload_3
+    //   192: invokevirtual 105	java/io/IOException:printStackTrace	()V
+    //   195: aload_0
+    //   196: ldc 77
+    //   198: aload_3
+    //   199: invokevirtual 108	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   202: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   205: aload_1
+    //   206: astore 4
+    //   208: iconst_0
+    //   209: istore_2
+    //   210: aload 4
+    //   212: astore_3
+    //   213: goto +100 -> 313
+    //   216: astore 6
+    //   218: aconst_null
+    //   219: astore 5
+    //   221: aload 5
+    //   223: astore_3
+    //   224: aload 5
+    //   226: astore 4
+    //   228: aload 6
+    //   230: invokevirtual 111	java/io/FileNotFoundException:printStackTrace	()V
+    //   233: aload 5
+    //   235: astore 4
+    //   237: new 68	java/lang/StringBuilder
+    //   240: dup
+    //   241: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   244: astore 6
+    //   246: aload 5
+    //   248: astore 4
+    //   250: aload 6
+    //   252: ldc 71
+    //   254: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   257: pop
+    //   258: aload 5
+    //   260: astore 4
+    //   262: aload 6
+    //   264: aload_1
+    //   265: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: pop
+    //   269: aload 5
+    //   271: astore 4
+    //   273: aload_0
+    //   274: ldc 77
+    //   276: aload 6
+    //   278: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   281: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   284: aload_3
+    //   285: astore 4
+    //   287: aload 5
+    //   289: ifnull -81 -> 208
+    //   292: aload 5
+    //   294: invokevirtual 102	java/io/RandomAccessFile:close	()V
+    //   297: aload_3
+    //   298: astore 4
+    //   300: goto -92 -> 208
+    //   303: astore 4
+    //   305: aload_3
+    //   306: astore_1
+    //   307: aload 4
+    //   309: astore_3
+    //   310: goto -119 -> 191
+    //   313: aload_3
+    //   314: ifnull +36 -> 350
+    //   317: aload_3
+    //   318: arraylength
+    //   319: ifle +31 -> 350
+    //   322: iload_2
+    //   323: ifle +27 -> 350
+    //   326: aload_3
+    //   327: iconst_0
+    //   328: baload
+    //   329: bipush 40
+    //   331: if_icmpne +19 -> 350
+    //   334: aload_3
+    //   335: aload_3
+    //   336: arraylength
+    //   337: iconst_1
+    //   338: isub
+    //   339: baload
+    //   340: bipush 41
+    //   342: if_icmpeq +6 -> 348
+    //   345: goto +5 -> 350
+    //   348: aload_3
+    //   349: areturn
+    //   350: aload_3
+    //   351: ifnonnull +8 -> 359
+    //   354: iconst_0
+    //   355: istore_2
+    //   356: goto +6 -> 362
+    //   359: aload_3
+    //   360: arraylength
+    //   361: istore_2
+    //   362: aload_3
+    //   363: ifnonnull +9 -> 372
+    //   366: ldc 113
+    //   368: astore_1
+    //   369: goto +8 -> 377
+    //   372: aload_3
+    //   373: invokevirtual 116	java/lang/Object:toString	()Ljava/lang/String;
+    //   376: astore_1
+    //   377: aload_1
+    //   378: astore_3
+    //   379: aload_1
+    //   380: invokevirtual 119	java/lang/String:length	()I
+    //   383: bipush 20
+    //   385: if_icmple +11 -> 396
+    //   388: aload_1
+    //   389: iconst_0
+    //   390: bipush 20
+    //   392: invokevirtual 123	java/lang/String:substring	(II)Ljava/lang/String;
+    //   395: astore_3
+    //   396: new 68	java/lang/StringBuilder
+    //   399: dup
+    //   400: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   403: astore_1
+    //   404: aload_1
+    //   405: ldc 125
+    //   407: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   410: pop
+    //   411: aload_1
+    //   412: iload_2
+    //   413: invokevirtual 128	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   416: pop
+    //   417: aload_1
+    //   418: ldc 130
+    //   420: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   423: pop
+    //   424: aload_1
+    //   425: aload_3
+    //   426: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   429: pop
+    //   430: aload_0
+    //   431: ldc 77
+    //   433: aload_1
+    //   434: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   437: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   440: aconst_null
+    //   441: areturn
+    //   442: astore_1
+    //   443: aload 4
+    //   445: ifnull +26 -> 471
+    //   448: aload 4
+    //   450: invokevirtual 102	java/io/RandomAccessFile:close	()V
+    //   453: goto +18 -> 471
+    //   456: astore_3
+    //   457: aload_3
+    //   458: invokevirtual 105	java/io/IOException:printStackTrace	()V
+    //   461: aload_0
+    //   462: ldc 77
+    //   464: aload_3
+    //   465: invokevirtual 108	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   468: invokevirtual 85	com/tencent/mobileqq/transfile/MultiMsgDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   471: goto +5 -> 476
+    //   474: aload_1
+    //   475: athrow
+    //   476: goto -2 -> 474
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1034	0	this	MultiMsgDownloadProcessor
-    //   0	1034	1	paramString	String
-    //   94	934	2	i	int
-    //   184	840	3	j	int
-    //   177	491	4	k	int
-    //   21	838	5	localObject1	Object
-    //   872	21	5	localIOException1	java.io.IOException
-    //   917	68	5	localObject2	Object
-    //   1012	3	5	localIOException2	java.io.IOException
-    //   55	777	6	localObject3	Object
-    //   851	6	6	localIOException3	java.io.IOException
-    //   878	127	6	localObject4	Object
-    //   52	725	7	arrayOfByte	byte[]
-    //   863	12	7	localFileNotFoundException1	java.io.FileNotFoundException
-    //   914	10	7	localFileNotFoundException2	java.io.FileNotFoundException
-    //   939	33	7	localStringBuilder	StringBuilder
+    //   0	479	0	this	MultiMsgDownloadProcessor
+    //   0	479	1	paramString	String
+    //   82	331	2	i	int
+    //   21	95	3	localObject1	Object
+    //   124	1	3	localIOException1	java.io.IOException
+    //   133	1	3	localObject2	Object
+    //   144	24	3	localIOException2	java.io.IOException
+    //   190	9	3	localIOException3	java.io.IOException
+    //   212	214	3	localObject3	Object
+    //   456	9	3	localIOException4	java.io.IOException
+    //   61	14	4	localRandomAccessFile1	java.io.RandomAccessFile
+    //   109	5	4	localIOException5	java.io.IOException
+    //   139	160	4	localObject4	Object
+    //   303	146	4	localIOException6	java.io.IOException
+    //   57	236	5	localRandomAccessFile2	java.io.RandomAccessFile
+    //   119	1	6	localFileNotFoundException1	java.io.FileNotFoundException
+    //   130	1	6	localFileNotFoundException2	java.io.FileNotFoundException
+    //   216	13	6	localFileNotFoundException3	java.io.FileNotFoundException
+    //   244	33	6	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   95	100	103	java/io/IOException
-    //   148	185	698	java/lang/Exception
-    //   204	250	698	java/lang/Exception
-    //   253	281	698	java/lang/Exception
-    //   286	292	698	java/lang/Exception
-    //   295	326	698	java/lang/Exception
-    //   331	339	698	java/lang/Exception
-    //   341	360	698	java/lang/Exception
-    //   362	381	698	java/lang/Exception
-    //   383	402	698	java/lang/Exception
-    //   404	434	698	java/lang/Exception
-    //   437	583	698	java/lang/Exception
-    //   585	593	698	java/lang/Exception
-    //   595	603	698	java/lang/Exception
-    //   605	649	698	java/lang/Exception
-    //   651	696	698	java/lang/Exception
-    //   73	83	851	java/io/IOException
-    //   87	95	851	java/io/IOException
-    //   73	83	863	java/io/FileNotFoundException
-    //   87	95	863	java/io/FileNotFoundException
-    //   57	69	868	finally
-    //   880	889	868	finally
-    //   892	897	868	finally
-    //   57	69	872	java/io/IOException
-    //   901	905	907	java/io/IOException
-    //   57	69	914	java/io/FileNotFoundException
-    //   984	989	991	java/io/IOException
-    //   73	83	998	finally
-    //   87	95	998	finally
-    //   923	928	998	finally
-    //   932	941	998	finally
-    //   945	953	998	finally
-    //   957	964	998	finally
-    //   968	979	998	finally
-    //   1004	1009	1012	java/io/IOException
+    //   83	88	91	java/io/IOException
+    //   76	83	109	java/io/IOException
+    //   76	83	119	java/io/FileNotFoundException
+    //   63	72	124	java/io/IOException
+    //   63	72	130	java/io/FileNotFoundException
+    //   47	59	137	finally
+    //   47	59	144	java/io/IOException
+    //   179	184	190	java/io/IOException
+    //   47	59	216	java/io/FileNotFoundException
+    //   292	297	303	java/io/IOException
+    //   63	72	442	finally
+    //   76	83	442	finally
+    //   155	163	442	finally
+    //   167	171	442	finally
+    //   228	233	442	finally
+    //   237	246	442	finally
+    //   250	258	442	finally
+    //   262	269	442	finally
+    //   273	284	442	finally
+    //   448	453	456	java/io/IOException
+  }
+  
+  private boolean parseDownloadMsg(String paramString)
+  {
+    paramString = getBodyData(paramString);
+    if (paramString == null) {
+      return false;
+    }
+    return parsePBData(paramString);
   }
   
   private void recieveFile()
@@ -885,9 +630,9 @@ public class MultiMsgDownloadProcessor
     {
       DownCallBack.DownResult localDownResult = new DownCallBack.DownResult();
       localDownResult.b = -1;
-      localDownResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = new PicInfoInterface.ErrInfo();
-      localDownResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b = "[MultiMsgDownloadProcessor] download failed";
-      localDownResult.jdField_a_of_type_ArrayOfByte = null;
+      localDownResult.d = new PicInfoInterface.ErrInfo();
+      localDownResult.d.b = "[MultiMsgDownloadProcessor] download failed";
+      localDownResult.f = null;
       this.mUiRequest.mDownCallBack.a(localDownResult);
     }
     this.mContent = null;
@@ -898,21 +643,23 @@ public class MultiMsgDownloadProcessor
   {
     Object localObject = this.mProcessorReport;
     StepInfo localStepInfo = this.mProcessorReport.mStepTrans;
-    int i = paramNetResp.mResult;
-    boolean bool2 = false;
-    if (i == 0) {
-      bool1 = true;
+    int j = paramNetResp.mResult;
+    int i = 0;
+    boolean bool;
+    if (j == 0) {
+      bool = true;
     } else {
-      bool1 = false;
+      bool = false;
     }
-    ((ProcessorReport)localObject).copyStaticsInfoFromNetResp(localStepInfo, paramNetResp, bool1);
+    ((ProcessorReport)localObject).copyStaticsInfoFromNetResp(localStepInfo, paramNetResp, bool);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(" result:");
-    boolean bool1 = bool2;
     if (paramNetResp.mResult == 0) {
-      bool1 = true;
+      bool = true;
+    } else {
+      bool = false;
     }
-    ((StringBuilder)localObject).append(bool1);
+    ((StringBuilder)localObject).append(bool);
     logRichMediaEvent("onHttpResp", ((StringBuilder)localObject).toString());
     this.mTotolLen = paramNetResp.mTotalFileLen;
     this.mNetReq = null;
@@ -922,6 +669,30 @@ public class MultiMsgDownloadProcessor
     this.file.stepTrans.respHeader = ((String)paramNetResp.mRespProperties.get("param_rspHeader"));
     if ((paramNetResp.mResult == 0) && (parseDownloadMsg(this.mOutFilePath)))
     {
+      paramNetResp = new File(this.mOutFilePath);
+      try
+      {
+        localObject = FileUtils.getByte(paramNetResp);
+        paramNetResp = new StringBuffer();
+        paramNetResp.append("{");
+        j = localObject.length;
+        while (i < j)
+        {
+          paramNetResp.append(localObject[i]);
+          paramNetResp.append(",");
+          i += 1;
+        }
+        paramNetResp.deleteCharAt(paramNetResp.length() - 1);
+        paramNetResp.append("}");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" multimsg_filedata:");
+        ((StringBuilder)localObject).append(paramNetResp.toString());
+        logRichMediaEvent("onHttpResp", ((StringBuilder)localObject).toString());
+      }
+      catch (Exception paramNetResp)
+      {
+        paramNetResp.printStackTrace();
+      }
       onSuccess();
       return;
     }
@@ -944,20 +715,20 @@ public class MultiMsgDownloadProcessor
     {
       localObject1 = new DownCallBack.DownResult();
       ((DownCallBack.DownResult)localObject1).b = 0;
-      ((DownCallBack.DownResult)localObject1).jdField_a_of_type_ArrayOfByte = this.mContent;
-      ((DownCallBack.DownResult)localObject1).jdField_c_of_type_JavaLangString = this.mUiRequest.mMd5;
-      ((DownCallBack.DownResult)localObject1).jdField_c_of_type_Int = this.mUiRequest.mFileType;
-      ((DownCallBack.DownResult)localObject1).jdField_d_of_type_Int = this.mUiRequest.mDownMode;
-      ((DownCallBack.DownResult)localObject1).jdField_d_of_type_JavaLangString = this.mUiRequest.mRichTag;
-      ((DownCallBack.DownResult)localObject1).jdField_a_of_type_Long = this.mUiRequest.mUniseq;
-      ((DownCallBack.DownResult)localObject1).e = this.mUiRequest.resIdStr;
+      ((DownCallBack.DownResult)localObject1).f = this.mContent;
+      ((DownCallBack.DownResult)localObject1).g = this.mUiRequest.mMd5;
+      ((DownCallBack.DownResult)localObject1).h = this.mUiRequest.mFileType;
+      ((DownCallBack.DownResult)localObject1).i = this.mUiRequest.mDownMode;
+      ((DownCallBack.DownResult)localObject1).k = this.mUiRequest.mRichTag;
+      ((DownCallBack.DownResult)localObject1).l = this.mUiRequest.mUniseq;
+      ((DownCallBack.DownResult)localObject1).m = this.mUiRequest.resIdStr;
       this.mUiRequest.mDownCallBack.a((DownCallBack.DownResult)localObject1);
     }
     else
     {
       localObject1 = new HashMap();
       Object localObject2 = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
-      localObject2 = this.app.getProxyManager().a().a(this.mContent, (HashMap)localObject1, (MessageRecord)localObject2, null);
+      localObject2 = this.app.getProxyManager().b().b(this.mContent, (HashMap)localObject1, (MessageRecord)localObject2, null);
       if ((localObject2 != null) && (((HashMap)localObject2).size() > 0))
       {
         MultiMsgManager.a().a((HashMap)localObject1, this.mUiRequest.mUniseq, this.app);
@@ -968,6 +739,70 @@ public class MultiMsgDownloadProcessor
     }
     this.mContent = null;
     sendMessageToUpdate(2003);
+  }
+  
+  protected boolean parsePBData(byte[] paramArrayOfByte)
+  {
+    try
+    {
+      localObject1 = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte));
+      ((DataInputStream)localObject1).readByte();
+      int j = ((DataInputStream)localObject1).readInt();
+      int i = ((DataInputStream)localObject1).readInt();
+      paramArrayOfByte = new byte[j];
+      ((DataInputStream)localObject1).read(paramArrayOfByte);
+      Object localObject2 = new im_msg_head.Head();
+      ((im_msg_head.Head)localObject2).mergeFrom(paramArrayOfByte);
+      j = ((im_msg_head.HttpConnHead)((im_msg_head.Head)localObject2).msg_httpconn_head.get()).uint32_error_code.get();
+      if ((i > 0) && (j == 0))
+      {
+        paramArrayOfByte = new byte[i];
+        ((DataInputStream)localObject1).read(paramArrayOfByte);
+        localObject1 = new Cryptor().decrypt(paramArrayOfByte, this.mMsgKey);
+        localObject2 = new LongMsg.RspBody();
+        ((LongMsg.RspBody)localObject2).mergeFrom((byte[])localObject1);
+        localObject1 = (LongMsg.MsgDownRsp)((LongMsg.RspBody)localObject2).rpt_msg_down_rsp.get(0);
+        if (((LongMsg.MsgDownRsp)localObject1).uint32_result.get() != 0)
+        {
+          logRichMediaEvent("parseDownloadMsg", "uint32_result != 0");
+          return false;
+        }
+        this.mContent = ((LongMsg.MsgDownRsp)localObject1).bytes_msg_content.get().toByteArray();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("crypted data == ");
+        ((StringBuilder)localObject1).append(HexUtil.bytes2HexStr(paramArrayOfByte));
+        logRichMediaEvent("parseDownloadMsg", ((StringBuilder)localObject1).toString());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("crypted data length == ");
+        ((StringBuilder)localObject1).append(paramArrayOfByte.length);
+        logRichMediaEvent("parseDownloadMsg", ((StringBuilder)localObject1).toString());
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("decrypted data == ");
+        paramArrayOfByte.append(HexUtil.bytes2HexStr(this.mContent));
+        logRichMediaEvent("parseDownloadMsg", paramArrayOfByte.toString());
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("decrypted data length == ");
+        paramArrayOfByte.append(this.mContent.length);
+        logRichMediaEvent("parseDownloadMsg", paramArrayOfByte.toString());
+        return true;
+      }
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("bodyLen= ");
+      paramArrayOfByte.append(i);
+      paramArrayOfByte.append(" errCode= ");
+      paramArrayOfByte.append(j);
+      logRichMediaEvent("parseDownloadMsg", paramArrayOfByte.toString());
+      return false;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(" Exception:");
+      ((StringBuilder)localObject1).append(paramArrayOfByte.getMessage());
+      logRichMediaEvent("parseDownloadMsg", ((StringBuilder)localObject1).toString());
+    }
+    return false;
   }
   
   protected void setMtype()
@@ -995,7 +830,7 @@ public class MultiMsgDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.MultiMsgDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,12 @@
 package com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.entityformatter;
 
+import com.tencent.qqlive.module.videoreport.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class JsCallbackBuilder
 {
+  private static final String TAG = "JsCallbackBuilder";
   private IJsEntityFormatter dataFormatter;
   private String msg = "success";
   private String ret = "0";
@@ -21,7 +23,10 @@ public class JsCallbackBuilder
     }
     catch (JSONException localJSONException)
     {
-      localJSONException.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("format ");
+      localStringBuilder.append(localJSONException);
+      Log.e("JsCallbackBuilder", localStringBuilder.toString());
     }
     return localJSONObject.toString();
   }
@@ -46,7 +51,7 @@ public class JsCallbackBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.entityformatter.JsCallbackBuilder
  * JD-Core Version:    0.7.0.1
  */

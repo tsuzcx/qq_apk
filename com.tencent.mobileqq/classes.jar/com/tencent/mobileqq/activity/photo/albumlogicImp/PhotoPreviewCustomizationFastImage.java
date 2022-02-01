@@ -28,8 +28,8 @@ public class PhotoPreviewCustomizationFastImage
   extends PhotoPreviewCustomizationDefault
 {
   public static final String a = "com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationFastImage";
-  int jdField_a_of_type_Int = 1037;
-  boolean jdField_a_of_type_Boolean;
+  boolean b;
+  int j = 1037;
   
   protected PhotoPreviewCustomizationFastImage(AbstractPhotoPreviewActivity paramAbstractPhotoPreviewActivity)
   {
@@ -39,26 +39,26 @@ public class PhotoPreviewCustomizationFastImage
   public void a()
   {
     super.a();
-    a().d.setText(2131694876);
-    a().a.setVisibility(8);
-    a().jdField_c_of_type_AndroidViewView.setVisibility(8);
+    s().o.setText(2131892579);
+    s().m.setVisibility(8);
+    s().n.setVisibility(8);
   }
   
   public void a(Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.c = true;
+    this.d.g = true;
     super.a(paramIntent);
     Object localObject = (BinderWarpper)paramIntent.getParcelableExtra("binder_presendService");
     if (localObject != null)
     {
       if (PresendPicMgr.a(null) != null) {
-        PresendPicMgr.a(null).b();
+        PresendPicMgr.a(null).c();
       }
       localObject = PresendPicMgr.b(IPresendPicMgr.Stub.a(((BinderWarpper)localObject).a));
       String str = (String)paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS").get(0);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.a(str) != 1)
+      if (this.i.b(str) != 1)
       {
-        ((PresendPicMgr)localObject).a(str, this.jdField_a_of_type_Int, 10);
+        ((PresendPicMgr)localObject).a(str, this.j, 10);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -67,18 +67,18 @@ public class PhotoPreviewCustomizationFastImage
           localStringBuilder.append(",picpath = ");
           localStringBuilder.append(str);
           localStringBuilder.append(",from = ");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.d);
+          localStringBuilder.append(this.d.A);
           localStringBuilder.append(",mBusiType = ");
-          localStringBuilder.append(this.jdField_a_of_type_Int);
+          localStringBuilder.append(this.j);
           QLog.d("QQAlbum", 2, localStringBuilder.toString());
         }
       }
     }
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("callFromFastImage", false);
-    if ("FromFastImage".equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.d)) {
+    this.b = paramIntent.getBooleanExtra("callFromFastImage", false);
+    if ("FromFastImage".equals(this.d.A)) {
       StatisticConstants.c();
     }
-    if ("FromCamera".equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.d)) {
+    if ("FromCamera".equals(this.d.A)) {
       StatisticConstants.a();
     }
     if (paramIntent.getBooleanExtra("PhotoConst.SEND_FLAG", false))
@@ -92,76 +92,76 @@ public class PhotoPreviewCustomizationFastImage
         }
         ((PresendPicMgr)localObject).a(1003);
       }
-      PhotoUtils.sendPhoto(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity, paramIntent, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList, ((PhotoOtherData)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumOtherCommonData).jdField_a_of_type_Int, true);
+      PhotoUtils.sendPhoto(this.c, paramIntent, this.f.selectedPhotoList, ((PhotoOtherData)this.g).d, true);
     }
   }
   
   protected void a(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.a != null)
+    if (this.d.m != null)
     {
       ReportController.b(null, "CliOper", "", "", "0x8004B39", "0x8004B39", 0, 0, "", "", "", "");
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         ReportController.b(null, "CliOper", "", "", "0X8004D95", "0X8004D95", 0, 0, "", "", "", "");
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.i) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getIntent().putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1040);
+    if (this.d.r) {
+      this.c.getIntent().putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1040);
     }
     super.a(paramView, paramInt1, paramBundle, paramInt2, paramIntent);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.i = paramBoolean;
+    this.d.r = paramBoolean;
     if (paramBoolean)
     {
-      a().b.setChecked(paramBoolean ^ true);
-      a().jdField_c_of_type_AndroidWidgetTextView.setTextColor(2147483647);
+      s().j.setChecked(paramBoolean ^ true);
+      s().k.setTextColor(2147483647);
       return;
     }
-    a().jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.popup != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.popup.dismiss();
+    s().k.setTextColor(-1);
+    if (this.c.popup != null) {
+      this.c.popup.dismiss();
     }
   }
   
-  public void g()
+  public void i()
   {
     PresendPicMgr localPresendPicMgr = PresendPicMgr.a(null);
     if (localPresendPicMgr != null)
     {
       int i;
-      if ("FromCamera".equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.d)) {
+      if ("FromCamera".equals(this.d.A)) {
         i = 1016;
       } else {
         i = 1017;
       }
       localPresendPicMgr.a(i);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.finish();
+    this.c.finish();
   }
   
-  protected void h()
+  protected void j()
   {
-    if ("FromFastImage".equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.d))
+    if ("FromFastImage".equals(this.d.A))
     {
       ReportController.b(null, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
       StatisticConstants.d();
     }
-    if ("FromCamera".equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.d)) {
+    if ("FromCamera".equals(this.d.A)) {
       StatisticConstants.b();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.i) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getIntent().putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1040);
+    if (this.d.r) {
+      this.c.getIntent().putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1040);
     }
-    super.h();
+    super.j();
     ReportController.b(null, "CliOper", "", "", "0X8005147", "0X8005147", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationFastImage
  * JD-Core Version:    0.7.0.1
  */

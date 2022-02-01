@@ -11,6 +11,8 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Arrays;
@@ -39,7 +41,7 @@ public final class PhoneUtil$Companion
     if (paramContext != null) {}
     try
     {
-      paramContext = paramContext.getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo(paramContext);
     }
     catch (Throwable paramContext)
     {
@@ -104,7 +106,7 @@ public final class PhoneUtil$Companion
     Object localObject2 = null;
     try
     {
-      localEnumeration = NetworkInterface.getNetworkInterfaces();
+      localEnumeration = NetworkMonitor.getNetworkInterfaces();
     }
     catch (SocketException localSocketException1)
     {
@@ -210,7 +212,7 @@ public final class PhoneUtil$Companion
       paramApplication = (TelephonyManager)paramApplication;
       if (paramApplication != null)
       {
-        paramApplication = paramApplication.getDeviceId();
+        paramApplication = PhoneInfoMonitor.getDeviceId(paramApplication);
         if (paramApplication != null) {}
       }
       else
@@ -305,7 +307,7 @@ public final class PhoneUtil$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.PhoneUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

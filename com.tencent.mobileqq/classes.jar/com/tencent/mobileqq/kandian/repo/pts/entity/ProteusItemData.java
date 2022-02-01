@@ -15,35 +15,33 @@ import org.json.JSONObject;
 public class ProteusItemData
   extends BaseData
 {
-  public int A = -1;
-  public TemplateBean a;
-  public PTSComposer.IPTSUpdateDataListener a;
-  public PTSComposer a;
-  public PTSItemData a;
-  public String ad;
-  public String ae;
-  public String af;
-  public JSONObject c;
-  public boolean g = true;
-  public int z = 0;
+  public JSONObject bb;
+  public String bc;
+  public TemplateBean bd;
+  public int be = 0;
+  public int bf = -1;
+  public boolean bg = true;
+  public String bh;
+  public String bi;
+  public PTSItemData bj;
+  public PTSComposer bk;
+  public PTSComposer.IPTSUpdateDataListener bl = new ProteusItemData.1(this);
   
   public ProteusItemData(int paramInt)
   {
     super(paramInt);
-    this.jdField_a_of_type_ComTencentPtsCorePTSComposer$IPTSUpdateDataListener = new ProteusItemData.1(this);
   }
   
   public ProteusItemData(Parcel paramParcel)
   {
     super(paramParcel);
-    this.jdField_a_of_type_ComTencentPtsCorePTSComposer$IPTSUpdateDataListener = new ProteusItemData.1(this);
   }
   
   public void a(BaseTemplateFactory paramBaseTemplateFactory)
   {
     try
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = ProteusParser.getTemplateBean(paramBaseTemplateFactory, this.c);
+      this.bd = ProteusParser.getTemplateBean(paramBaseTemplateFactory, this.bb);
       return;
     }
     catch (JSONException paramBaseTemplateFactory)
@@ -53,23 +51,6 @@ public class ProteusItemData
   }
   
   protected void a(JSONObject paramJSONObject) {}
-  
-  public String b()
-  {
-    if (this.z == 3)
-    {
-      JSONObject localJSONObject = this.c;
-      if (localJSONObject != null) {
-        return localJSONObject.optString("mVideoVid");
-      }
-    }
-    return "";
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = null;
-  }
   
   public void b(JSONObject paramJSONObject)
   {
@@ -81,14 +62,31 @@ public class ProteusItemData
     {
       QLog.e("ProteusItemData", 2, localException.getMessage());
     }
-    this.c = paramJSONObject;
+    this.bb = paramJSONObject;
   }
   
-  public String c()
+  public void c(String paramString)
   {
-    if (this.z == 2)
+    this.bc = paramString;
+  }
+  
+  public String m()
+  {
+    if (this.be == 3)
     {
-      JSONObject localJSONObject = this.c;
+      JSONObject localJSONObject = this.bb;
+      if (localJSONObject != null) {
+        return localJSONObject.optString("mVideoVid");
+      }
+    }
+    return "";
+  }
+  
+  public String n()
+  {
+    if (this.be == 2)
+    {
+      JSONObject localJSONObject = this.bb;
       if (localJSONObject != null) {
         return localJSONObject.optString("articleImageUrl");
       }
@@ -96,26 +94,26 @@ public class ProteusItemData
     return "";
   }
   
-  public void c(String paramString)
+  public String o()
   {
-    this.ad = paramString;
-  }
-  
-  public String d()
-  {
-    if (this.z == 4)
+    if (this.be == 4)
     {
-      JSONObject localJSONObject = this.c;
+      JSONObject localJSONObject = this.bb;
       if (localJSONObject != null) {
         return localJSONObject.optString("type");
       }
     }
     return "";
   }
+  
+  public void p()
+  {
+    this.bd = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.pts.entity.ProteusItemData
  * JD-Core Version:    0.7.0.1
  */

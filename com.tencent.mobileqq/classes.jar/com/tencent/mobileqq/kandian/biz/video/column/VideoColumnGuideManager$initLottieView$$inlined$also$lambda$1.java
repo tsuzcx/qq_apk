@@ -15,16 +15,16 @@ public final class VideoColumnGuideManager$initLottieView$$inlined$also$lambda$1
   public void onAnimationStart(@Nullable Animator paramAnimator)
   {
     VideoColumnGuideManager.b(this.a, true);
-    paramAnimator = VideoColumnGuideManager.a(this.a);
+    paramAnimator = VideoColumnGuideManager.e(this.a);
     if (paramAnimator != null) {
       paramAnimator.pauseAnimation();
     }
-    VideoColumnGuideManager.b(this.a);
+    VideoColumnGuideManager.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.column.VideoColumnGuideManager.initLottieView..inlined.also.lambda.1
  * JD-Core Version:    0.7.0.1
  */

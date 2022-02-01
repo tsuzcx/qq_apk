@@ -10,64 +10,64 @@ import com.tencent.qphone.base.util.QLog;
 public class OfflinePreviewController
   extends FilePreViewControllerBase
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = null;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  QQAppInterface b;
+  String c;
+  String d;
+  FMObserver e = null;
   
   public OfflinePreviewController(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.b = paramQQAppInterface;
+    this.c = paramString1;
+    this.d = paramString2;
     if (TextUtils.isEmpty(paramString1))
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append(" init OfflinePreviewController error,uuid is null,stack:");
-      paramQQAppInterface.append(FileManagerUtil.a());
+      paramQQAppInterface.append(FileManagerUtil.d());
       QLog.e("OfflinePreviewController<FileAssistant>", 1, paramQQAppInterface.toString());
     }
-    b();
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
-    }
+    d();
   }
   
   public boolean a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.c))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" init OfflinePreviewController error,uuid is null,stack:");
-      localStringBuilder.append(FileManagerUtil.a());
+      localStringBuilder.append(FileManagerUtil.d());
       QLog.e("OfflinePreviewController<FileAssistant>", 1, localStringBuilder.toString());
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreControlerCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreControlerCallback.a(false, "", "", -100005L, "", "", null, this.jdField_a_of_type_JavaLangString, null);
+      if (this.a != null) {
+        this.a.a(false, "", "", -100005L, "", "", null, this.c, null);
       }
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(this.jdField_a_of_type_JavaLangString, this.b);
+    this.b.getFileManagerEngine().b(this.c, this.d);
     return true;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new OfflinePreviewController.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    if (this.e != null) {
+      this.b.getFileManagerNotifyCenter().deleteObserver(this.e);
+    }
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public void d()
+  {
+    this.e = new OfflinePreviewController.1(this);
+    this.b.getFileManagerNotifyCenter().addObserver(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OfflinePreviewController
  * JD-Core Version:    0.7.0.1
  */

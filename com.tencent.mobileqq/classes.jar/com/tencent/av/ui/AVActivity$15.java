@@ -1,13 +1,22 @@
 package com.tencent.av.ui;
 
+import com.tencent.av.gaudio.VideoViewInfo;
+import java.util.Comparator;
+
 class AVActivity$15
-  implements Runnable
+  implements Comparator<VideoViewInfo>
 {
   AVActivity$15(AVActivity paramAVActivity) {}
   
-  public void run()
+  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
   {
-    this.this$0.a.a("self", String.valueOf(1));
+    if (paramVideoViewInfo1.c) {
+      return 1;
+    }
+    if (paramVideoViewInfo2.c) {
+      return 1;
+    }
+    return 0;
   }
 }
 

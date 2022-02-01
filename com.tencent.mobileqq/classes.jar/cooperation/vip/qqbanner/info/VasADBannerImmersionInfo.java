@@ -17,7 +17,7 @@ import java.util.Map;
 public class VasADBannerImmersionInfo
   extends VasADBannerConfigInfo
 {
-  public ImmersionData a;
+  public ImmersionData b;
   
   public VasADBannerImmersionInfo(Map<String, String> paramMap)
   {
@@ -56,22 +56,22 @@ public class VasADBannerImmersionInfo
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("splash_union_banner_cartoon_num");
       localStringBuilder.append(paramString);
-      this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData = localImmersionData.f(paramSharedPreferences.getString(localStringBuilder.toString(), "")).b();
+      this.b = localImmersionData.f(paramSharedPreferences.getString(localStringBuilder.toString(), "")).b();
       if (a() != null) {
-        a().jdField_a_of_type_CooperationVipQqbannerDataImmersionData = this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData;
+        a().k = this.b;
       }
       paramSharedPreferences = new VasADBannerImmersionInfo.ZipResourcesinfo(this, null);
-      paramSharedPreferences.a = this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.d;
-      paramSharedPreferences.b = this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.e;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.d))
+      paramSharedPreferences.a = this.b.d;
+      paramSharedPreferences.b = this.b.e;
+      if (!TextUtils.isEmpty(this.b.d))
       {
         paramString = new StringBuilder();
-        paramString.append(((IQzoneZipCacheHelper)QRoute.api(IQzoneZipCacheHelper.class)).getBasePath("vas_banner", String.valueOf(this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.d.hashCode())));
+        paramString.append(((IQzoneZipCacheHelper)QRoute.api(IQzoneZipCacheHelper.class)).getBasePath("vas_banner", String.valueOf(this.b.d.hashCode())));
         paramString.append(".zip");
         paramSharedPreferences.c = paramString.toString();
       }
       paramSharedPreferences.a();
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(2, paramSharedPreferences);
+      this.a.put(2, paramSharedPreferences);
       return;
     }
     catch (Exception paramSharedPreferences)
@@ -98,31 +98,31 @@ public class VasADBannerImmersionInfo
       }
       super.a(paramString);
       paramString = ((SharedPreferences)localObject).edit();
-      localObject = a().c;
+      localObject = a().e;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("splash_union_banner_top_text");
       localStringBuilder.append((String)localObject);
-      paramString.putString(localStringBuilder.toString(), this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.a);
+      paramString.putString(localStringBuilder.toString(), this.b.a);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("splash_union_banner_bottom_text");
       localStringBuilder.append((String)localObject);
-      paramString.putString(localStringBuilder.toString(), this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.b);
+      paramString.putString(localStringBuilder.toString(), this.b.b);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("splash_union_banner_text_color");
       localStringBuilder.append((String)localObject);
-      paramString.putString(localStringBuilder.toString(), this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.c);
+      paramString.putString(localStringBuilder.toString(), this.b.c);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("splash_union_banner_cartoon_url");
       localStringBuilder.append((String)localObject);
-      paramString.putString(localStringBuilder.toString(), this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.d);
+      paramString.putString(localStringBuilder.toString(), this.b.d);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("splash_union_banner_md5");
       localStringBuilder.append((String)localObject);
-      paramString.putString(localStringBuilder.toString(), this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.e);
+      paramString.putString(localStringBuilder.toString(), this.b.e);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("splash_union_banner_cartoon_num");
       localStringBuilder.append((String)localObject);
-      paramString.putString(localStringBuilder.toString(), this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.f);
+      paramString.putString(localStringBuilder.toString(), this.b.f);
       paramString.apply();
     }
   }
@@ -133,21 +133,21 @@ public class VasADBannerImmersionInfo
     if ((paramMap != null) && (a() != null)) {
       try
       {
-        this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData = ImmersionData.a().a((String)paramMap.get("topText")).b((String)paramMap.get("bottomText")).c((String)paramMap.get("textColor")).d((String)paramMap.get("cartoon")).e((String)paramMap.get("cartoon_md5")).f((String)paramMap.get("cartoonNum")).b();
+        this.b = ImmersionData.a().a((String)paramMap.get("topText")).b((String)paramMap.get("bottomText")).c((String)paramMap.get("textColor")).d((String)paramMap.get("cartoon")).e((String)paramMap.get("cartoon_md5")).f((String)paramMap.get("cartoonNum")).b();
         paramMap = new VasADBannerImmersionInfo.ZipResourcesinfo(this, null);
-        paramMap.a = this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.d;
-        paramMap.b = this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.e;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.d))
+        paramMap.a = this.b.d;
+        paramMap.b = this.b.e;
+        if (!TextUtils.isEmpty(this.b.d))
         {
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(((IQzoneZipCacheHelper)QRoute.api(IQzoneZipCacheHelper.class)).getBasePath("vas_banner", String.valueOf(this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData.d.hashCode())));
+          localStringBuilder.append(((IQzoneZipCacheHelper)QRoute.api(IQzoneZipCacheHelper.class)).getBasePath("vas_banner", String.valueOf(this.b.d.hashCode())));
           localStringBuilder.append(".zip");
           paramMap.c = localStringBuilder.toString();
         }
         if (a() != null) {
-          a().jdField_a_of_type_CooperationVipQqbannerDataImmersionData = this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData;
+          a().k = this.b;
         }
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(2, paramMap);
+        this.a.put(2, paramMap);
         return;
       }
       catch (Exception paramMap)
@@ -165,7 +165,7 @@ public class VasADBannerImmersionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.info.VasADBannerImmersionInfo
  * JD-Core Version:    0.7.0.1
  */

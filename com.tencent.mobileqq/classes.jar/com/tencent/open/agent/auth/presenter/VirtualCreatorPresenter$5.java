@@ -9,11 +9,11 @@ class VirtualCreatorPresenter$5
   public void run()
   {
     // Byte code:
-    //   0: new 33	java/io/File
+    //   0: new 34	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: getfield 18	com/tencent/open/agent/auth/presenter/VirtualCreatorPresenter$5:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8: invokespecial 36	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: getfield 19	com/tencent/open/agent/auth/presenter/VirtualCreatorPresenter$5:a	Ljava/lang/String;
+    //   8: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
     //   11: astore_2
     //   12: aconst_null
     //   13: astore_3
@@ -21,31 +21,31 @@ class VirtualCreatorPresenter$5
     //   15: astore_1
     //   16: aconst_null
     //   17: astore 4
-    //   19: new 38	java/io/BufferedInputStream
+    //   19: new 39	java/io/BufferedInputStream
     //   22: dup
-    //   23: new 40	java/io/FileInputStream
+    //   23: new 41	java/io/FileInputStream
     //   26: dup
     //   27: aload_2
-    //   28: invokespecial 43	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   31: invokespecial 46	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   28: invokespecial 44	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   31: invokespecial 47	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   34: astore 5
-    //   36: new 48	android/graphics/BitmapFactory$Options
+    //   36: new 49	android/graphics/BitmapFactory$Options
     //   39: dup
-    //   40: invokespecial 49	android/graphics/BitmapFactory$Options:<init>	()V
+    //   40: invokespecial 50	android/graphics/BitmapFactory$Options:<init>	()V
     //   43: astore_1
     //   44: aload_1
     //   45: aload 5
     //   47: aload_0
-    //   48: getfield 20	com/tencent/open/agent/auth/presenter/VirtualCreatorPresenter$5:jdField_a_of_type_Int	I
+    //   48: getfield 21	com/tencent/open/agent/auth/presenter/VirtualCreatorPresenter$5:b	I
     //   51: aload_0
-    //   52: getfield 22	com/tencent/open/agent/auth/presenter/VirtualCreatorPresenter$5:b	I
-    //   55: invokestatic 54	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/io/InputStream;II)D
+    //   52: getfield 23	com/tencent/open/agent/auth/presenter/VirtualCreatorPresenter$5:c	I
+    //   55: invokestatic 55	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/io/InputStream;II)D
     //   58: d2i
-    //   59: putfield 57	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   59: putfield 58	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   62: aload_0
-    //   63: getfield 18	com/tencent/open/agent/auth/presenter/VirtualCreatorPresenter$5:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   63: getfield 19	com/tencent/open/agent/auth/presenter/VirtualCreatorPresenter$5:a	Ljava/lang/String;
     //   66: aload_1
-    //   67: invokestatic 62	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   67: invokestatic 63	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   70: astore_2
     //   71: aload_2
     //   72: astore_1
@@ -57,10 +57,10 @@ class VirtualCreatorPresenter$5
     //   81: astore_3
     //   82: aload_2
     //   83: aload_0
-    //   84: getfield 20	com/tencent/open/agent/auth/presenter/VirtualCreatorPresenter$5:jdField_a_of_type_Int	I
+    //   84: getfield 21	com/tencent/open/agent/auth/presenter/VirtualCreatorPresenter$5:b	I
     //   87: aload_0
-    //   88: getfield 20	com/tencent/open/agent/auth/presenter/VirtualCreatorPresenter$5:jdField_a_of_type_Int	I
-    //   91: invokestatic 67	com/tencent/open/agent/util/AuthorityUtil:a	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
+    //   88: getfield 21	com/tencent/open/agent/auth/presenter/VirtualCreatorPresenter$5:b	I
+    //   91: invokestatic 68	com/tencent/open/agent/util/AuthorityUtil:a	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
     //   94: astore 4
     //   96: aload 4
     //   98: astore_1
@@ -76,7 +76,7 @@ class VirtualCreatorPresenter$5
     //   112: aload_2
     //   113: astore_1
     //   114: aload 5
-    //   116: invokevirtual 70	java/io/BufferedInputStream:close	()V
+    //   116: invokevirtual 71	java/io/BufferedInputStream:close	()V
     //   119: aload_2
     //   120: astore_1
     //   121: goto +49 -> 170
@@ -95,17 +95,17 @@ class VirtualCreatorPresenter$5
     //   138: aload_3
     //   139: ifnull +11 -> 150
     //   142: aload 5
-    //   144: invokevirtual 70	java/io/BufferedInputStream:close	()V
+    //   144: invokevirtual 71	java/io/BufferedInputStream:close	()V
     //   147: goto +8 -> 155
     //   150: aload 5
-    //   152: invokevirtual 70	java/io/BufferedInputStream:close	()V
+    //   152: invokevirtual 71	java/io/BufferedInputStream:close	()V
     //   155: aload_2
     //   156: athrow
     //   157: astore_2
     //   158: goto +4 -> 162
     //   161: astore_2
-    //   162: ldc 72
-    //   164: ldc 74
+    //   162: ldc 73
+    //   164: ldc 75
     //   166: aload_2
     //   167: invokestatic 80	com/tencent/open/agent/util/SSOLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   170: aload_1
@@ -155,7 +155,7 @@ class VirtualCreatorPresenter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.VirtualCreatorPresenter.5
  * JD-Core Version:    0.7.0.1
  */

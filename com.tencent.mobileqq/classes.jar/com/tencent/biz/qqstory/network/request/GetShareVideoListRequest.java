@@ -16,24 +16,27 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public class GetShareVideoListRequest
   extends NetworkRequest
 {
-  public static final String a = StoryApi.a("StorySvc.new_get_shared_video_list");
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d = -1;
+  public static final String e = StoryApi.a("StorySvc.new_get_shared_video_list");
+  public String f;
+  public long g = -1L;
+  public String h = "";
+  public int i;
+  public int j = -1;
   
   public GetShareVideoListRequest(String paramString, long paramLong, int paramInt)
   {
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_c_of_type_Int = 50;
-    this.d = paramInt;
+    this.f = paramString;
+    this.g = paramLong;
+    this.i = 50;
+    this.j = paramInt;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetShareVideoList localRspGetShareVideoList = new qqstory_service.RspGetShareVideoList();
     try
@@ -44,26 +47,21 @@ public class GetShareVideoListRequest
     {
       paramArrayOfByte.printStackTrace();
     }
-    return new GetShareVideoListResponse(this.jdField_b_of_type_JavaLangString, localRspGetShareVideoList);
+    return new GetShareVideoListResponse(this.f, localRspGetShareVideoList);
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetShareVideoList localReqGetShareVideoList = new qqstory_service.ReqGetShareVideoList();
-    if (this.jdField_b_of_type_Long != -1L) {
-      localReqGetShareVideoList.share_time.set(this.jdField_b_of_type_Long);
+    if (this.g != -1L) {
+      localReqGetShareVideoList.share_time.set(this.g);
     }
-    localReqGetShareVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    localReqGetShareVideoList.count.set(this.jdField_c_of_type_Int);
-    if (this.d != -1) {
-      localReqGetShareVideoList.time_zone.set(this.d);
+    localReqGetShareVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.h));
+    localReqGetShareVideoList.count.set(this.i);
+    if (this.j != -1) {
+      localReqGetShareVideoList.time_zone.set(this.j);
     }
-    localReqGetShareVideoList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    localReqGetShareVideoList.union_id.set(ByteStringMicro.copyFromUtf8(this.f));
     return localReqGetShareVideoList.toByteArray();
   }
   
@@ -71,13 +69,13 @@ public class GetShareVideoListRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetShareVideoListRequest{, uid=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("count=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("timeZoneOffset=");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", startCookie='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -85,7 +83,7 @@ public class GetShareVideoListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetShareVideoListRequest
  * JD-Core Version:    0.7.0.1
  */

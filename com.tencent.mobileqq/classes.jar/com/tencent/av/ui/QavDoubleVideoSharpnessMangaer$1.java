@@ -20,11 +20,11 @@ class QavDoubleVideoSharpnessMangaer$1
     }
     if (("tencent.video.q2v.SVIP.PAY".equals(paramContext)) && (QavDoubleVideoSharpnessMangaer.a(this.a) != null))
     {
-      paramContext = QavDoubleVideoSharpnessMangaer.a(this.a).a();
-      if ((paramContext != null) && (paramContext.d == 2)) {
-        QavDoubleVideoSharpnessMangaer.a(this.a).a(Long.valueOf(paramContext.c).longValue(), QavDoubleVideoSharpnessMangaer.a(this.a));
+      paramContext = QavDoubleVideoSharpnessMangaer.a(this.a).k();
+      if ((paramContext != null) && (paramContext.g == 2)) {
+        QavDoubleVideoSharpnessMangaer.a(this.a).a(Long.valueOf(paramContext.s).longValue(), QavDoubleVideoSharpnessMangaer.b(this.a));
       }
-      this.a.e();
+      this.a.g();
     }
   }
 }

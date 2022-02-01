@@ -10,7 +10,7 @@ class WebViewKernel$2$1
   
   public void run()
   {
-    SwiftBrowserTBSHandler localSwiftBrowserTBSHandler = (SwiftBrowserTBSHandler)WebViewKernel.a(this.a.this$0).getComponentProvider().a(16);
+    SwiftBrowserTBSHandler localSwiftBrowserTBSHandler = (SwiftBrowserTBSHandler)WebViewKernel.b(this.a.this$0).getComponentProvider().a(16);
     if (localSwiftBrowserTBSHandler != null) {
       localSwiftBrowserTBSHandler.b();
     }
@@ -18,7 +18,7 @@ class WebViewKernel$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewKernel.2.1
  * JD-Core Version:    0.7.0.1
  */

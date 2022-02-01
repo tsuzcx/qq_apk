@@ -21,7 +21,7 @@ class ProfileQZoneComponent$6
     if (localObject == null) {
       localObject = null;
     } else {
-      localObject = ((FriendsManager)localObject).a(localProfileCardInfo.allInOne.uin);
+      localObject = ((FriendsManager)localObject).f(localProfileCardInfo.allInOne.uin);
     }
     int j = 0;
     if (localObject == null)
@@ -54,7 +54,7 @@ class ProfileQZoneComponent$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.qzone.ProfileQZoneComponent.6
  * JD-Core Version:    0.7.0.1
  */

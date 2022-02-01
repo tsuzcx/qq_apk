@@ -15,25 +15,25 @@ class TextItemBuilder$5
   
   public void onClick(View paramView)
   {
-    if (MessageFoldable.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForText))
+    if (MessageFoldable.a(this.a))
     {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.cancelLongPress();
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextMsg(this.jdField_a_of_type_JavaLangCharSequence);
-      MessageFoldable.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForText);
-      TextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop);
+      this.b.cancelLongPress();
+      this.b.setTextMsg(this.c);
+      MessageFoldable.b(this.a);
+      TextItemBuilder.a(this.d, this.a.istroop);
     }
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.a.getResources().getColor(2131165777));
+    paramTextPaint.setColor(this.d.e.getResources().getColor(2131166388));
     paramTextPaint.clearShadowLayer();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

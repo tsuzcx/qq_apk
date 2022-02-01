@@ -16,33 +16,33 @@ class ExpandChatRepository$1$2
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDataCard != null))
+    if ((this.a) && (this.b != null))
     {
       QLog.d("expand.chat.ExpandChatRepository", 2, "onGetExtendFriendInfo success");
       localObject = new ExtendFriendInfo();
-      ((ExtendFriendInfo)localObject).nickName = this.jdField_a_of_type_ComTencentMobileqqDataCard.strNick;
-      ((ExtendFriendInfo)localObject).declaration = this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration;
-      ((ExtendFriendInfo)localObject).voiceUrl = this.jdField_a_of_type_ComTencentMobileqqDataCard.voiceUrl;
+      ((ExtendFriendInfo)localObject).nickName = this.b.strNick;
+      ((ExtendFriendInfo)localObject).declaration = this.b.declaration;
+      ((ExtendFriendInfo)localObject).voiceUrl = this.b.voiceUrl;
       localObject = new Gson().toJson(localObject);
       Bundle localBundle = new Bundle();
       localBundle.putString("data", (String)localObject);
-      localBundle.putInt("seqNum", this.jdField_a_of_type_Int);
+      localBundle.putInt("seqNum", this.c);
       QIPCServerHelper.getInstance().getServer().callClient(((IExpandFlutterIPCServerHelper)QRoute.api(IExpandFlutterIPCServerHelper.class)).getProcessName(), 1, "ExpandFlutterIPCClient", "notifyGetExtendFriendInfoResponse", localBundle);
       return;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onGetExtendFriendInfo success=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.a);
     QLog.w("expand.chat.ExpandChatRepository", 2, ((StringBuilder)localObject).toString());
     localObject = new Bundle();
     ((Bundle)localObject).putString("data", "");
-    ((Bundle)localObject).putInt("seqNum", this.jdField_a_of_type_Int);
+    ((Bundle)localObject).putInt("seqNum", this.c);
     QIPCServerHelper.getInstance().getServer().callClient(((IExpandFlutterIPCServerHelper)QRoute.api(IExpandFlutterIPCServerHelper.class)).getProcessName(), 1, "ExpandFlutterIPCClient", "notifyGetExtendFriendInfoResponse", (Bundle)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.chat.ExpandChatRepository.1.2
  * JD-Core Version:    0.7.0.1
  */

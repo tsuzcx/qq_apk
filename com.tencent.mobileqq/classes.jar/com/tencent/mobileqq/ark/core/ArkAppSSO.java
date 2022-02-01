@@ -19,7 +19,7 @@ public class ArkAppSSO
   
   AppInterface a()
   {
-    AppRuntime localAppRuntime = this.a.a();
+    AppRuntime localAppRuntime = this.a.d();
     if ((localAppRuntime instanceof AppInterface)) {
       return (AppInterface)localAppRuntime;
     }
@@ -51,7 +51,7 @@ public class ArkAppSSO
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkAppSSO
  * JD-Core Version:    0.7.0.1
  */

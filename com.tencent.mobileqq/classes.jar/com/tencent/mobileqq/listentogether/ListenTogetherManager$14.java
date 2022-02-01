@@ -9,12 +9,12 @@ class ListenTogetherManager$14
   
   public void run()
   {
-    ListenTogetherManager.a(this.this$0).b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    ListenTogetherManager.q(this.this$0).b(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.14
  * JD-Core Version:    0.7.0.1
  */

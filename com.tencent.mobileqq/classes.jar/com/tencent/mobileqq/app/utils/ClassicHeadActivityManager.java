@@ -25,23 +25,23 @@ import mqq.manager.Manager;
 public class ClassicHeadActivityManager
   implements Manager
 {
-  private long jdField_a_of_type_Long = -1L;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ConcurrentHashMap<String, ClassicHeadActivityManager.HeadInfoItem> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private long jdField_b_of_type_Long = -1L;
-  private ConcurrentHashMap<String, String> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private QQAppInterface a;
+  private ConcurrentHashMap<String, ClassicHeadActivityManager.HeadInfoItem> b;
+  private ConcurrentHashMap<String, String> c;
+  private long d = -1L;
+  private long e = -1L;
   
   public ClassicHeadActivityManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(0);
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(0);
-    a();
+    this.a = paramQQAppInterface;
+    this.b = new ConcurrentHashMap(0);
+    this.c = new ConcurrentHashMap(0);
+    b();
   }
   
   private void c(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject1 = this.a;
     int j = 0;
     localObject1 = ((QQAppInterface)localObject1).getQQHeadSetting(4, paramString, 0);
     int i;
@@ -67,34 +67,34 @@ public class ClassicHeadActivityManager
       ((StringBuilder)localObject1).append(i);
       QLog.d("ClassicHeadActivityManager", 2, ((StringBuilder)localObject1).toString());
       localObject1 = new StringBuilder(1000);
-      localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      localObject2 = this.b.entrySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
         ((StringBuilder)localObject1).append(" QQ 18 handle mHeadIdMap: uin=");
         ((StringBuilder)localObject1).append((String)localEntry.getKey());
         ((StringBuilder)localObject1).append(",headid=");
-        ((StringBuilder)localObject1).append(((ClassicHeadActivityManager.HeadInfoItem)localEntry.getValue()).jdField_a_of_type_Int);
-        ((StringBuilder)localObject1).append(",type=");
         ((StringBuilder)localObject1).append(((ClassicHeadActivityManager.HeadInfoItem)localEntry.getValue()).b);
+        ((StringBuilder)localObject1).append(",type=");
+        ((StringBuilder)localObject1).append(((ClassicHeadActivityManager.HeadInfoItem)localEntry.getValue()).c);
         ((StringBuilder)localObject1).append(",isRequest=");
-        ((StringBuilder)localObject1).append(((ClassicHeadActivityManager.HeadInfoItem)localEntry.getValue()).jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject1).append(((ClassicHeadActivityManager.HeadInfoItem)localEntry.getValue()).d);
         ((StringBuilder)localObject1).append(",saveTime=");
-        ((StringBuilder)localObject1).append(((ClassicHeadActivityManager.HeadInfoItem)localEntry.getValue()).jdField_a_of_type_Long);
+        ((StringBuilder)localObject1).append(((ClassicHeadActivityManager.HeadInfoItem)localEntry.getValue()).e);
         ((StringBuilder)localObject1).append("\n");
         QLog.d("ClassicHeadActivityManager", 2, ((StringBuilder)localObject1).toString());
       }
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+    if (this.b.containsKey(paramString))
     {
-      localObject1 = (ClassicHeadActivityManager.HeadInfoItem)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      localObject1 = (ClassicHeadActivityManager.HeadInfoItem)this.b.get(paramString);
       if (localObject1 != null)
       {
-        int k = ((ClassicHeadActivityManager.HeadInfoItem)localObject1).jdField_a_of_type_Int;
-        int m = ((ClassicHeadActivityManager.HeadInfoItem)localObject1).b;
-        if (((m == 0) && (k != j)) || ((m != i) && (!((ClassicHeadActivityManager.HeadInfoItem)localObject1).jdField_a_of_type_Boolean)))
+        int k = ((ClassicHeadActivityManager.HeadInfoItem)localObject1).b;
+        int m = ((ClassicHeadActivityManager.HeadInfoItem)localObject1).c;
+        if (((m == 0) && (k != j)) || ((m != i) && (!((ClassicHeadActivityManager.HeadInfoItem)localObject1).d)))
         {
-          ((ClassicHeadActivityManager.HeadInfoItem)localObject1).jdField_a_of_type_Boolean = true;
+          ((ClassicHeadActivityManager.HeadInfoItem)localObject1).d = true;
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder(1000);
@@ -111,10 +111,10 @@ public class ClassicHeadActivityManager
             ((StringBuilder)localObject2).append("\n");
             QLog.d("ClassicHeadActivityManager", 2, ((StringBuilder)localObject2).toString());
           }
-          ((IQQAvatarHandlerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarHandlerService.class, "")).getCustomHead(paramString);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
+          ((IQQAvatarHandlerService)this.a.getRuntimeService(IQQAvatarHandlerService.class, "")).getCustomHead(paramString);
+          this.b.put(paramString, localObject1);
         }
-        if ((k == j) && (m == i) && (((ClassicHeadActivityManager.HeadInfoItem)localObject1).jdField_a_of_type_Boolean))
+        if ((k == j) && (m == i) && (((ClassicHeadActivityManager.HeadInfoItem)localObject1).d))
         {
           if (QLog.isColorLevel())
           {
@@ -127,72 +127,19 @@ public class ClassicHeadActivityManager
             ((StringBuilder)localObject1).append(j);
             QLog.d("ClassicHeadActivityManager", 4, ((StringBuilder)localObject1).toString());
           }
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+          this.b.remove(paramString);
         }
       }
-    }
-  }
-  
-  public long a()
-  {
-    Object localObject = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("classic_head_activity_switch_");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-    long l = ((SharedPreferences)localObject).getLong(localStringBuilder.toString(), -1L);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getSwitch key=classic_head_activity_switch value= ");
-      ((StringBuilder)localObject).append(l);
-      QLog.d("ClassicHeadActivityManager", 2, ((StringBuilder)localObject).toString());
-    }
-    return l;
-  }
-  
-  public Setting a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQHeadSetting(1, (String)localObject, 0);
-    if ((localObject != null) && (((Pair)localObject).second != null)) {
-      return (Setting)((Pair)localObject).second;
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    Object localObject = SharedPreUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = ((String)localObject).split("\\|");
-      if ((localObject != null) && (localObject.length == 2))
-      {
-        this.jdField_a_of_type_Long = ArMapUtil.a(localObject[0]);
-        this.jdField_b_of_type_Long = ArMapUtil.a(localObject[1]);
-        if (QLog.isColorLevel()) {
-          QLog.d("ClassicHeadActivityManager", 2, "parseClassicHeadActivityConfig success");
-        }
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("parseClassicHeadActivityConfig beginTime=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
-      ((StringBuilder)localObject).append(" endTime=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
-      QLog.d("ClassicHeadActivityManager", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void a(long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    long l = a();
+    Object localObject = this.a.getCurrentAccountUin();
+    long l = c();
     if (l != paramLong)
     {
-      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit();
+      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.a.getApp()).edit();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("classic_head_activity_switch_");
       localStringBuilder.append((String)localObject);
@@ -215,7 +162,7 @@ public class ClassicHeadActivityManager
   
   public void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp() == null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() == null)) {
+    if ((this.a.getApp() == null) && (this.a.getCurrentUin() == null)) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder("handleInitValue");
@@ -225,14 +172,14 @@ public class ClassicHeadActivityManager
     localStringBuilder.append(paramLong2);
     localStringBuilder.append(" qq18Switch=");
     localStringBuilder.append(paramLong3);
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str = this.a.getCurrentAccountUin();
     a(paramLong3);
     if (paramLong3 != 1L) {
       return;
     }
-    IQQAvatarHandlerService localIQQAvatarHandlerService = (IQQAvatarHandlerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarHandlerService.class, "");
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQHeadSetting(1, str, 0);
+    IQQAvatarHandlerService localIQQAvatarHandlerService = (IQQAvatarHandlerService)this.a.getRuntimeService(IQQAvatarHandlerService.class, "");
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+    Object localObject = this.a.getQQHeadSetting(1, str, 0);
     if ((localObject != null) && (((Boolean)((Pair)localObject).first).booleanValue()))
     {
       localIQQAvatarHandlerService.getCustomHead(str);
@@ -265,23 +212,23 @@ public class ClassicHeadActivityManager
     {
       StringBuilder localStringBuilder = new StringBuilder("handleFriendHeadFlagItem");
       localStringBuilder.append(" uin=");
-      localStringBuilder.append(StringUtil.e(paramFriendHeadFlagItem.jdField_a_of_type_JavaLangString));
+      localStringBuilder.append(StringUtil.getSimpleUinForPrint(paramFriendHeadFlagItem.a));
       localStringBuilder.append(" sysId=");
-      localStringBuilder.append(paramFriendHeadFlagItem.jdField_b_of_type_Long);
-      localStringBuilder.append(" headType=");
       localStringBuilder.append(paramFriendHeadFlagItem.c);
+      localStringBuilder.append(" headType=");
+      localStringBuilder.append(paramFriendHeadFlagItem.d);
       localStringBuilder.append(" qq18Switch=");
-      localStringBuilder.append(paramFriendHeadFlagItem.jdField_a_of_type_Long);
-      if ((!TextUtils.isEmpty(paramFriendHeadFlagItem.jdField_a_of_type_JavaLangString)) && (paramFriendHeadFlagItem.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (paramFriendHeadFlagItem.jdField_a_of_type_Long != -1L)) {
-        a(paramFriendHeadFlagItem.jdField_a_of_type_Long);
+      localStringBuilder.append(paramFriendHeadFlagItem.b);
+      if ((!TextUtils.isEmpty(paramFriendHeadFlagItem.a)) && (paramFriendHeadFlagItem.a.equals(this.a.getCurrentAccountUin())) && (paramFriendHeadFlagItem.b != -1L)) {
+        a(paramFriendHeadFlagItem.b);
       }
-      IQQAvatarHandlerService localIQQAvatarHandlerService = (IQQAvatarHandlerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarHandlerService.class, "");
-      FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQHeadSetting(1, paramFriendHeadFlagItem.jdField_a_of_type_JavaLangString, 0);
+      IQQAvatarHandlerService localIQQAvatarHandlerService = (IQQAvatarHandlerService)this.a.getRuntimeService(IQQAvatarHandlerService.class, "");
+      FriendListHandler localFriendListHandler = (FriendListHandler)this.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      Object localObject = this.a.getQQHeadSetting(1, paramFriendHeadFlagItem.a, 0);
       if ((localObject != null) && (((Boolean)((Pair)localObject).first).booleanValue()))
       {
-        localIQQAvatarHandlerService.getCustomHead(paramFriendHeadFlagItem.jdField_a_of_type_JavaLangString);
-        localFriendListHandler.notifyUI(3, true, paramFriendHeadFlagItem.jdField_a_of_type_JavaLangString);
+        localIQQAvatarHandlerService.getCustomHead(paramFriendHeadFlagItem.a);
+        localFriendListHandler.notifyUI(3, true, paramFriendHeadFlagItem.a);
       }
       else if ((localObject != null) && (((Pair)localObject).second != null))
       {
@@ -292,11 +239,11 @@ public class ClassicHeadActivityManager
         localStringBuilder.append(l1);
         localStringBuilder.append(" localheadType=");
         localStringBuilder.append(l2);
-        if (((paramFriendHeadFlagItem.jdField_a_of_type_Long == 1L) && (paramFriendHeadFlagItem.c != -1L) && (paramFriendHeadFlagItem.c != l2)) || ((paramFriendHeadFlagItem.jdField_b_of_type_Long != -1L) && (paramFriendHeadFlagItem.jdField_b_of_type_Long != l1) && (l2 == 0L)))
+        if (((paramFriendHeadFlagItem.b == 1L) && (paramFriendHeadFlagItem.d != -1L) && (paramFriendHeadFlagItem.d != l2)) || ((paramFriendHeadFlagItem.c != -1L) && (paramFriendHeadFlagItem.c != l1) && (l2 == 0L)))
         {
           localStringBuilder.append(" fetch userHead");
-          localIQQAvatarHandlerService.getCustomHead(paramFriendHeadFlagItem.jdField_a_of_type_JavaLangString);
-          localFriendListHandler.notifyUI(3, true, paramFriendHeadFlagItem.jdField_a_of_type_JavaLangString);
+          localIQQAvatarHandlerService.getCustomHead(paramFriendHeadFlagItem.a);
+          localFriendListHandler.notifyUI(3, true, paramFriendHeadFlagItem.a);
         }
       }
       if (QLog.isColorLevel()) {
@@ -309,23 +256,23 @@ public class ClassicHeadActivityManager
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      Object localObject = this.b;
       if ((localObject != null) && (((ConcurrentHashMap)localObject).containsKey(paramString)))
       {
-        localObject = (ClassicHeadActivityManager.HeadInfoItem)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        if ((localObject != null) && (((ClassicHeadActivityManager.HeadInfoItem)localObject).jdField_a_of_type_Boolean))
+        localObject = (ClassicHeadActivityManager.HeadInfoItem)this.b.get(paramString);
+        if ((localObject != null) && (((ClassicHeadActivityManager.HeadInfoItem)localObject).d))
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(" QQ 18 handle handleGetHeadError uin=");
           localStringBuilder.append(paramString);
           localStringBuilder.append(",HeadID=");
-          localStringBuilder.append(((ClassicHeadActivityManager.HeadInfoItem)localObject).jdField_a_of_type_Int);
-          localStringBuilder.append(",Type=");
           localStringBuilder.append(((ClassicHeadActivityManager.HeadInfoItem)localObject).b);
+          localStringBuilder.append(",Type=");
+          localStringBuilder.append(((ClassicHeadActivityManager.HeadInfoItem)localObject).c);
           localStringBuilder.append(",IsRequest=");
-          localStringBuilder.append(((ClassicHeadActivityManager.HeadInfoItem)localObject).jdField_a_of_type_Boolean);
+          localStringBuilder.append(((ClassicHeadActivityManager.HeadInfoItem)localObject).d);
           QLog.d("ClassicHeadActivityManager", 2, localStringBuilder.toString());
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+          this.b.remove(paramString);
         }
       }
     }
@@ -335,7 +282,7 @@ public class ClassicHeadActivityManager
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      Object localObject = this.a;
       if (localObject != null)
       {
         int j = 0;
@@ -353,9 +300,9 @@ public class ClassicHeadActivityManager
         }
         if ((paramInt1 == j) && (paramInt2 == i))
         {
-          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+          if (this.b.containsKey(paramString))
           {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+            this.b.remove(paramString);
             if (QLog.isColorLevel())
             {
               localObject = new StringBuilder();
@@ -371,9 +318,9 @@ public class ClassicHeadActivityManager
           return;
         }
         localObject = new ClassicHeadActivityManager.HeadInfoItem(paramString, paramInt1, paramInt2);
-        if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+        if (!this.b.containsKey(paramString))
         {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
+          this.b.put(paramString, localObject);
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
@@ -388,14 +335,14 @@ public class ClassicHeadActivityManager
         }
         else
         {
-          ClassicHeadActivityManager.HeadInfoItem localHeadInfoItem = (ClassicHeadActivityManager.HeadInfoItem)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+          ClassicHeadActivityManager.HeadInfoItem localHeadInfoItem = (ClassicHeadActivityManager.HeadInfoItem)this.b.get(paramString);
           if (localHeadInfoItem != null)
           {
-            i = localHeadInfoItem.jdField_a_of_type_Int;
-            j = localHeadInfoItem.b;
+            i = localHeadInfoItem.b;
+            j = localHeadInfoItem.c;
             if (((paramInt2 == 0) && (paramInt1 != i)) || (j != paramInt2))
             {
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
+              this.b.put(paramString, localObject);
               if (QLog.isColorLevel())
               {
                 localObject = new StringBuilder();
@@ -416,11 +363,11 @@ public class ClassicHeadActivityManager
   
   public boolean a()
   {
-    long l1 = MessageCache.a() * 1000L;
-    long l2 = this.jdField_a_of_type_Long;
+    long l1 = MessageCache.c() * 1000L;
+    long l2 = this.d;
     if (l2 != -1L)
     {
-      long l3 = this.jdField_b_of_type_Long;
+      long l3 = this.e;
       if ((l3 != -1L) && (l1 > l2) && (l1 < l3))
       {
         if (QLog.isColorLevel()) {
@@ -434,10 +381,104 @@ public class ClassicHeadActivityManager
   
   public void b()
   {
-    Object localObject = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+    Object localObject = SharedPreUtils.ae(this.a.getApp(), this.a.getCurrentAccountUin());
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject != null) && (localObject.length == 2))
+      {
+        this.d = ArMapUtil.a(localObject[0]);
+        this.e = ArMapUtil.a(localObject[1]);
+        if (QLog.isColorLevel()) {
+          QLog.d("ClassicHeadActivityManager", 2, "parseClassicHeadActivityConfig success");
+        }
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parseClassicHeadActivityConfig beginTime=");
+      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append(" endTime=");
+      ((StringBuilder)localObject).append(this.e);
+      QLog.d("ClassicHeadActivityManager", 2, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.a != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" QQ 18 handleUpdateStrangerHead strangerUin = ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("ClassicHeadActivityManager", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = this.a.getCurrentAccountUin();
+      if (((String)localObject).equals(paramString))
+      {
+        paramString = this.b;
+        if ((paramString != null) && (paramString.containsKey(localObject))) {
+          this.b.remove(localObject);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ClassicHeadActivityManager", 2, " QQ 18 handleUpdateStrangerHead remove current user ");
+        }
+        return;
+      }
+      if ((this.a.mAutomator != null) && (this.a.mAutomator.g()))
+      {
+        localObject = this.c;
+        if ((localObject != null) && (!((ConcurrentHashMap)localObject).containsKey(paramString))) {
+          this.c.put(paramString, "");
+        }
+        return;
+      }
+      localObject = this.b;
+      if ((localObject != null) && (((ConcurrentHashMap)localObject).size() > 0)) {
+        c(paramString);
+      }
+    }
+  }
+  
+  public long c()
+  {
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(this.a.getApp());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("classic_head_activity_switch_");
+    localStringBuilder.append(this.a.getCurrentUin());
+    long l = ((SharedPreferences)localObject).getLong(localStringBuilder.toString(), -1L);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getSwitch key=classic_head_activity_switch value= ");
+      ((StringBuilder)localObject).append(l);
+      QLog.d("ClassicHeadActivityManager", 2, ((StringBuilder)localObject).toString());
+    }
+    return l;
+  }
+  
+  public Setting d()
+  {
+    Object localObject = this.a.getCurrentAccountUin();
+    localObject = this.a.getQQHeadSetting(1, (String)localObject, 0);
+    if ((localObject != null) && (((Pair)localObject).second != null)) {
+      return (Setting)((Pair)localObject).second;
+    }
+    return null;
+  }
+  
+  public void e()
+  {
+    Object localObject = this.c;
     if ((localObject != null) && (((ConcurrentHashMap)localObject).size() > 0))
     {
-      localObject = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      localObject = this.c.entrySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
@@ -450,65 +491,24 @@ public class ClassicHeadActivityManager
         }
         c((String)localEntry.getKey());
       }
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.c.clear();
       if (QLog.isColorLevel()) {
         QLog.d("ClassicHeadActivityManager", 2, " QQ 18 handle actionB cached stranger head update finished");
       }
     }
   }
   
-  public void b(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return;
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(" QQ 18 handleUpdateStrangerHead strangerUin = ");
-        ((StringBuilder)localObject).append(paramString);
-        QLog.d("ClassicHeadActivityManager", 2, ((StringBuilder)localObject).toString());
-      }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if (((String)localObject).equals(paramString))
-      {
-        paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-        if ((paramString != null) && (paramString.containsKey(localObject))) {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ClassicHeadActivityManager", 2, " QQ 18 handleUpdateStrangerHead remove current user ");
-        }
-        return;
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.mAutomator != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.mAutomator.b()))
-      {
-        localObject = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
-        if ((localObject != null) && (!((ConcurrentHashMap)localObject).containsKey(paramString))) {
-          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, "");
-        }
-        return;
-      }
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-      if ((localObject != null) && (((ConcurrentHashMap)localObject).size() > 0)) {
-        c(paramString);
-      }
-    }
-  }
-  
   public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+    this.b.clear();
+    this.c.clear();
+    this.b = null;
+    this.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.ClassicHeadActivityManager
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class MsgBackupController$3
   public void run()
   {
     MsgBackupController localMsgBackupController = this.this$0;
-    localMsgBackupController.a(MsgBackupController.a(localMsgBackupController), this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupDBHelper, this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupSessionRequest, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int, MsgBackupController.a());
+    localMsgBackupController.a(MsgBackupController.a(localMsgBackupController), this.a, this.b, this.c, this.d, MsgBackupController.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupController.3
  * JD-Core Version:    0.7.0.1
  */

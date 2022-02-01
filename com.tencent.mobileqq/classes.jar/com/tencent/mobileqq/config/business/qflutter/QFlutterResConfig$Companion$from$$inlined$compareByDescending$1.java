@@ -10,12 +10,12 @@ public final class QFlutterResConfig$Companion$from$$inlined$compareByDescending
 {
   public final int compare(T paramT1, T paramT2)
   {
-    return ComparisonsKt.compareValues((Comparable)Integer.valueOf(((QFlutterResConfig)paramT2).a().length()), (Comparable)Integer.valueOf(((QFlutterResConfig)paramT1).a().length()));
+    return ComparisonsKt.compareValues((Comparable)Integer.valueOf(((QFlutterResConfig)paramT2).b().length()), (Comparable)Integer.valueOf(((QFlutterResConfig)paramT1).b().length()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qflutter.QFlutterResConfig.Companion.from..inlined.compareByDescending.1
  * JD-Core Version:    0.7.0.1
  */

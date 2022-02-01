@@ -17,12 +17,12 @@ class DownloadManagerV2$3
   
   public void run()
   {
-    DownloadManagerV2.a(this.this$0, DownloadInfoDB.a().a());
+    DownloadManagerV2.a(this.this$0, DownloadInfoDB.a().b());
     Object localObject1;
     Object localObject2;
-    if (DownloadManagerV2.a(this.this$0) != null)
+    if (DownloadManagerV2.c(this.this$0) != null)
     {
-      localObject1 = DownloadManagerV2.a(this.this$0).values().iterator();
+      localObject1 = DownloadManagerV2.c(this.this$0).values().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (DownloadInfo)((Iterator)localObject1).next();
@@ -36,13 +36,13 @@ class DownloadManagerV2$3
       DownloadInfo localDownloadInfo = this.this$0.c("com.tencent.mobileqq");
       if (localDownloadInfo != null)
       {
-        if (localDownloadInfo.c != 0) {
+        if (localDownloadInfo.o != 0) {
           return;
         }
         localObject1 = "";
-        if (localDownloadInfo.a == 0)
+        if (localDownloadInfo.j == 0)
         {
-          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.a(localDownloadInfo.d);
+          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.g(localDownloadInfo.d);
           localObject2 = localTMAssistantDownloadTaskInfo;
           if (localTMAssistantDownloadTaskInfo != null)
           {
@@ -52,15 +52,15 @@ class DownloadManagerV2$3
         }
         else
         {
-          localObject2 = this.this$0.a(localDownloadInfo.i);
-          localObject1 = localDownloadInfo.l;
+          localObject2 = this.this$0.g(localDownloadInfo.k);
+          localObject1 = localDownloadInfo.q;
         }
         if (localObject2 == null)
         {
           DownloadManagerV2.a(this.this$0, localDownloadInfo);
           return;
         }
-        if ((((TMAssistantDownloadTaskInfo)localObject2).mState == 4) && (AppUtil.c((String)localObject1) <= CommonDataAdapter.a().a())) {
+        if ((((TMAssistantDownloadTaskInfo)localObject2).mState == 4) && (AppUtil.f((String)localObject1) <= CommonDataAdapter.a().h())) {
           DownloadManagerV2.a(this.this$0, localDownloadInfo);
         }
       }
@@ -74,7 +74,7 @@ class DownloadManagerV2$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.3
  * JD-Core Version:    0.7.0.1
  */

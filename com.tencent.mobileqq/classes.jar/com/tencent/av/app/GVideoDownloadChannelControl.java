@@ -13,23 +13,17 @@ import java.util.HashMap;
 public class GVideoDownloadChannelControl
 {
   public static volatile int a = -1;
-  volatile HashMap<Long, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  volatile boolean jdField_a_of_type_Boolean = false;
+  volatile HashMap<Long, Integer> b = new HashMap();
+  volatile boolean c = false;
   
   public static int a()
   {
     return AudioHelper.a(20);
   }
   
-  public static boolean a()
+  public static boolean c()
   {
     return true;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public boolean a(long paramLong, int paramInt)
@@ -46,10 +40,10 @@ public class GVideoDownloadChannelControl
       }
       return paramInt >= i;
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong))) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong))).intValue() == 2;
+    if (this.b.containsKey(Long.valueOf(paramLong))) {
+      return ((Integer)this.b.get(Long.valueOf(paramLong))).intValue() == 2;
     }
-    return a();
+    return c();
   }
   
   public boolean a(qav_gvideo_sdk_transfer.gVideoDownChannelControl paramgVideoDownChannelControl)
@@ -68,9 +62,9 @@ public class GVideoDownloadChannelControl
     } else {
       bool1 = false;
     }
-    if (bool1 != this.jdField_a_of_type_Boolean)
+    if (bool1 != this.c)
     {
-      this.jdField_a_of_type_Boolean = bool1;
+      this.c = bool1;
       i = 1;
     }
     else
@@ -79,7 +73,7 @@ public class GVideoDownloadChannelControl
     }
     if (!bool1)
     {
-      a();
+      b();
       bool1 = bool2;
       if (i != 0)
       {
@@ -111,7 +105,7 @@ public class GVideoDownloadChannelControl
         ((StringBuilder)localObject).append(k);
         QLog.d("GVideoDownloadChannelControl", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l));
+      localObject = (Integer)this.b.get(Long.valueOf(l));
       if ((localObject == null) || (((Integer)localObject).intValue() != k))
       {
         localHashMap.put(Long.valueOf(l), Integer.valueOf(k));
@@ -119,8 +113,8 @@ public class GVideoDownloadChannelControl
       }
       i += 1;
     }
-    if ((n != this.jdField_a_of_type_JavaUtilHashMap.size()) || (j != 0)) {
-      this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
+    if ((n != this.b.size()) || (j != 0)) {
+      this.b = localHashMap;
     }
     boolean bool1 = bool3;
     if (j != 0)
@@ -131,6 +125,12 @@ public class GVideoDownloadChannelControl
       }
     }
     return bool1;
+  }
+  
+  public void b()
+  {
+    this.b.clear();
+    this.c = false;
   }
 }
 

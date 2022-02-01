@@ -12,18 +12,18 @@ import mqq.util.WeakReference;
 
 public class AudioBluetoothSCOHelper
 {
-  Application jdField_a_of_type_AndroidAppApplication;
-  AudioBluetoothSCOHelper.AudioBluetoothSCOReceiver jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioBluetoothSCOHelper$AudioBluetoothSCOReceiver;
-  WeakReference<AudioPlayerBase> jdField_a_of_type_MqqUtilWeakReference;
+  Application a;
+  AudioBluetoothSCOHelper.AudioBluetoothSCOReceiver b;
+  WeakReference<AudioPlayerBase> c;
   
   public AudioBluetoothSCOHelper(Application paramApplication)
   {
-    this.jdField_a_of_type_AndroidAppApplication = paramApplication;
+    this.a = paramApplication;
   }
   
-  private AudioPlayerBase a()
+  private AudioPlayerBase b()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
+    WeakReference localWeakReference = this.c;
     if (localWeakReference == null) {
       return null;
     }
@@ -33,17 +33,17 @@ public class AudioBluetoothSCOHelper
   @TargetApi(14)
   public int a(String paramString, int paramInt)
   {
-    if (AudioDeviceHelper.a != -1) {
+    if (AudioDeviceHelper.c != -1) {
       return 1;
     }
     BluetoothAdapter localBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-    AudioPlayerBase localAudioPlayerBase = a();
+    AudioPlayerBase localAudioPlayerBase = b();
     if (localAudioPlayerBase == null) {
       return 0;
     }
     if (localBluetoothAdapter == null)
     {
-      AudioDeviceHelper.a = 0;
+      AudioDeviceHelper.c = 0;
       return 1;
     }
     if ((localBluetoothAdapter.isEnabled()) && (localBluetoothAdapter.getProfileConnectionState(1) == 2) && (localBluetoothAdapter.getProfileConnectionState(2) != 2))
@@ -52,13 +52,13 @@ public class AudioBluetoothSCOHelper
       localBluetoothAdapter.getProfileProxy(BaseApplication.getContext(), paramString, 1);
       return 2;
     }
-    AudioDeviceHelper.a = 0;
+    AudioDeviceHelper.c = 0;
     return 1;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioBluetoothSCOHelper$AudioBluetoothSCOReceiver != null) {
+    if (this.b != null) {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -69,9 +69,9 @@ public class AudioBluetoothSCOHelper
     }
     try
     {
-      this.jdField_a_of_type_AndroidAppApplication.unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioBluetoothSCOHelper$AudioBluetoothSCOReceiver);
+      this.a.unregisterReceiver(this.b);
       label57:
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioBluetoothSCOHelper$AudioBluetoothSCOReceiver = null;
+      this.b = null;
       return;
     }
     catch (Exception localException)
@@ -85,21 +85,21 @@ public class AudioBluetoothSCOHelper
     if ((paramAudioPlayerBase == null) && (QLog.isColorLevel())) {
       QLog.d("AudioPlayer_SCOHelper", 2, "setAudioPlayer audioPlayer is null");
     }
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAudioPlayerBase);
+    this.c = new WeakReference(paramAudioPlayerBase);
   }
   
   public int b(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidAppApplication == null) {
+    if (this.a == null) {
       return 0;
     }
     paramString = new AudioBluetoothSCOHelper.AudioBluetoothSCOReceiver(this, paramString, paramInt, null);
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioBluetoothSCOHelper$AudioBluetoothSCOReceiver = paramString;
-    this.jdField_a_of_type_AndroidAppApplication.registerReceiver(paramString, new IntentFilter("android.media.ACTION_SCO_AUDIO_STATE_UPDATED"));
-    paramString = a();
-    if ((paramString != null) && (paramString.a() != null))
+    this.b = paramString;
+    this.a.registerReceiver(paramString, new IntentFilter("android.media.ACTION_SCO_AUDIO_STATE_UPDATED"));
+    paramString = b();
+    if ((paramString != null) && (paramString.i() != null))
     {
-      paramString.a().startBluetoothSco();
+      paramString.i().startBluetoothSco();
       if (QLog.isColorLevel()) {
         QLog.d("AudioPlayer_SCOHelper", 2, "tryStartBluetoothSCO return: Check_SCO_Result_Check_Access_Need_Return");
       }
@@ -110,7 +110,7 @@ public class AudioBluetoothSCOHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioBluetoothSCOHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,10 @@ final class BarrageController$onBarragePlaceInLine$1
   
   public final void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageController.a();
+    paramView = this.a.b();
     if (paramView != null)
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageInfo.a;
+      String str = this.b.a;
       Intrinsics.checkExpressionValueIsNotNull(str, "barrageInfo.id");
       paramView.onEventBarrageOnClick(str);
     }
@@ -24,7 +24,7 @@ final class BarrageController$onBarragePlaceInLine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageController.onBarragePlaceInLine.1
  * JD-Core Version:    0.7.0.1
  */

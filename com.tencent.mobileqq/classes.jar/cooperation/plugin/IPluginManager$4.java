@@ -20,9 +20,9 @@ final class IPluginManager$4
     if (QLog.isDevelopLevel()) {
       QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallError");
     }
-    paramString = this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener;
+    paramString = this.a;
     if (paramString != null) {
-      paramString.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+      paramString.a(false, this.c, this.b);
     }
   }
   
@@ -31,21 +31,21 @@ final class IPluginManager$4
     if (QLog.isDevelopLevel()) {
       QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallFinish");
     }
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null)
+    if (this.a != null)
     {
-      paramString = IPluginManager.a().queryPlugin(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b);
+      paramString = IPluginManager.d().queryPlugin(this.b.d);
       if (paramString != null)
       {
-        this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.d = paramString.mInstalledPath;
-        this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a(paramString);
+        this.b.f = paramString.mInstalledPath;
+        this.b.a(paramString);
       }
-      this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+      this.a.a(true, this.c, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.IPluginManager.4
  * JD-Core Version:    0.7.0.1
  */

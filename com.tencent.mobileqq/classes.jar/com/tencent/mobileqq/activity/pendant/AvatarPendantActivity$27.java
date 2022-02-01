@@ -15,12 +15,12 @@ class AvatarPendantActivity$27
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AvatarPendantActivity.e(this.a);
+    AvatarPendantActivity.i(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.27
  * JD-Core Version:    0.7.0.1
  */

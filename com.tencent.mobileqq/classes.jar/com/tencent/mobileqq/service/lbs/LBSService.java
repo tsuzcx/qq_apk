@@ -94,30 +94,10 @@ import mqq.manager.TicketManager;
 public class LBSService
   extends BaseProtocolCoder
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "NeighborSvc", "KQQFS", "MCardSvc", "MobileQQ", "EncounterSvc", "VisitorSvc", "LBS", "SummaryCard", "NearbyGroup", "NeighborRecommender" };
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-  private byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  public UserData[] a;
-  
-  public LBSService()
-  {
-    this.jdField_a_of_type_ArrayOfEncounterSvcUserData = new UserData[2];
-  }
-  
-  public static RspGetAreaList a(byte[] paramArrayOfByte)
-  {
-    UniPacket localUniPacket = new UniPacket(true);
-    localUniPacket.setEncodeName("utf-8");
-    try
-    {
-      localUniPacket.decode(paramArrayOfByte);
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return (RspGetAreaList)localUniPacket.getByClass("RspGetAreaList", new RspGetAreaList());
-  }
+  private static String[] b = { "NeighborSvc", "KQQFS", "MCardSvc", "MobileQQ", "EncounterSvc", "VisitorSvc", "LBS", "SummaryCard", "NearbyGroup", "NeighborRecommender" };
+  public UserData[] a = new UserData[2];
+  private AppInterface c = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+  private byte[] d = new byte[0];
   
   public static RspGetNearbyGroup a(byte[] paramArrayOfByte)
   {
@@ -175,7 +155,7 @@ public class LBSService
     int j;
     try
     {
-      j = Integer.parseInt("5295");
+      j = Integer.parseInt("5770");
     }
     catch (NumberFormatException localNumberFormatException)
     {
@@ -205,7 +185,7 @@ public class LBSService
         ((SummaryCardBusiEntry.comm)localObject6).touin.set(l4);
         ((SummaryCardBusiEntry.comm)localObject6).service.set(localBusinessReqBuffer.getBusinessType());
         ((SummaryCardBusiEntry.comm)localObject6).platform.set(2);
-        ((SummaryCardBusiEntry.comm)localObject6).qqver.set("8.7.0.5295");
+        ((SummaryCardBusiEntry.comm)localObject6).qqver.set("8.8.17.5770");
         ((SummaryCardBusiEntry.comm)localObject6).build.set(j);
         if ((localBusinessReqBuffer.getBusinessType() == 17) || (localBusinessReqBuffer.getBusinessType() == 19) || (localBusinessReqBuffer.getBusinessType() == 18))
         {
@@ -310,21 +290,21 @@ public class LBSService
           localObject1 = new AccountSearchPb.search();
           ((AccountSearchPb.search)localObject1).mergeFrom((byte[])localObject2);
           localObject2 = new SearchResult();
-          ((SearchResult)localObject2).jdField_a_of_type_Int = j;
-          ((SearchResult)localObject2).jdField_b_of_type_Int = ((AccountSearchPb.search)localObject1).start.get();
+          ((SearchResult)localObject2).a = j;
+          ((SearchResult)localObject2).b = ((AccountSearchPb.search)localObject1).start.get();
           if (((AccountSearchPb.search)localObject1).end.get() != 1) {
             break label652;
           }
           bool = true;
-          ((SearchResult)localObject2).jdField_a_of_type_Boolean = bool;
-          ((SearchResult)localObject2).jdField_b_of_type_JavaUtilList = ((AccountSearchPb.search)localObject1).list.get();
-          ((SearchResult)localObject2).jdField_a_of_type_JavaUtilList = ((AccountSearchPb.search)localObject1).highlight.get();
-          ((SearchResult)localObject2).jdField_a_of_type_JavaLangString = ((AccountSearchPb.search)localObject1).article_more_url.get();
-          ((SearchResult)localObject2).jdField_a_of_type_AddcontactsAccountSearchPb$hotwordrecord = ((AccountSearchPb.hotwordrecord)((AccountSearchPb.search)localObject1).hotword_record.get());
-          ((SearchResult)localObject2).jdField_c_of_type_JavaUtilList = ((AccountSearchPb.search)localObject1).result_items.get();
-          ((SearchResult)localObject2).jdField_b_of_type_Boolean = ((AccountSearchPb.search)localObject1).bool_keyword_suicide.get();
-          ((SearchResult)localObject2).jdField_c_of_type_Boolean = ((AccountSearchPb.search)localObject1).bool_exact_search.get();
-          if (((((SearchResult)localObject2).jdField_b_of_type_JavaUtilList != null) && (((SearchResult)localObject2).jdField_b_of_type_JavaUtilList.size() > 0)) || ((((SearchResult)localObject2).jdField_c_of_type_JavaUtilList != null) && (((SearchResult)localObject2).jdField_c_of_type_JavaUtilList.size() > 0)) || (((SearchResult)localObject2).jdField_b_of_type_Boolean))
+          ((SearchResult)localObject2).c = bool;
+          ((SearchResult)localObject2).e = ((AccountSearchPb.search)localObject1).list.get();
+          ((SearchResult)localObject2).d = ((AccountSearchPb.search)localObject1).highlight.get();
+          ((SearchResult)localObject2).g = ((AccountSearchPb.search)localObject1).article_more_url.get();
+          ((SearchResult)localObject2).f = ((AccountSearchPb.hotwordrecord)((AccountSearchPb.search)localObject1).hotword_record.get());
+          ((SearchResult)localObject2).i = ((AccountSearchPb.search)localObject1).result_items.get();
+          ((SearchResult)localObject2).j = ((AccountSearchPb.search)localObject1).bool_keyword_suicide.get();
+          ((SearchResult)localObject2).k = ((AccountSearchPb.search)localObject1).bool_exact_search.get();
+          if (((((SearchResult)localObject2).e != null) && (((SearchResult)localObject2).e.size() > 0)) || ((((SearchResult)localObject2).i != null) && (((SearchResult)localObject2).i.size() > 0)) || (((SearchResult)localObject2).j))
           {
             localArrayList.add(localObject2);
             if (j == 80000000)
@@ -346,7 +326,7 @@ public class LBSService
                 break label658;
               }
               j = k;
-              ((SearchResult)localObject2).jdField_c_of_type_Int = j;
+              ((SearchResult)localObject2).h = j;
             }
           }
         }
@@ -380,18 +360,6 @@ public class LBSService
     }
   }
   
-  private void a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
-  {
-    paramToServiceMsg = (RespGetVoterList)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespGetVoterList", new RespGetVoterList());
-    if (paramToServiceMsg.stHeader.iReplyCode != 0)
-    {
-      paramFromServiceMsg.setMsgFail();
-      return;
-    }
-    paramFromServiceMsg.setMsgSuccess();
-    paramFromServiceMsg.getAttributes().put("result", paramToServiceMsg);
-  }
-  
   public static boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     SummaryCard.ReqHead localReqHead = new SummaryCard.ReqHead();
@@ -405,6 +373,21 @@ public class LBSService
     return true;
   }
   
+  public static RspGetAreaList b(byte[] paramArrayOfByte)
+  {
+    UniPacket localUniPacket = new UniPacket(true);
+    localUniPacket.setEncodeName("utf-8");
+    try
+    {
+      localUniPacket.decode(paramArrayOfByte);
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return (RspGetAreaList)localUniPacket.getByClass("RspGetAreaList", new RspGetAreaList());
+  }
+  
   private Object b(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
     paramFromServiceMsg = (RespGetSwitches)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespGetSwitches", new RespGetSwitches());
@@ -412,18 +395,6 @@ public class LBSService
       return paramFromServiceMsg;
     }
     return null;
-  }
-  
-  private void b(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
-  {
-    paramToServiceMsg = (RespGetFavoriteList)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespGetFavoriteList", new RespGetFavoriteList());
-    if (paramToServiceMsg.stHeader.iReplyCode != 0)
-    {
-      paramFromServiceMsg.setMsgFail();
-      return;
-    }
-    paramFromServiceMsg.setMsgSuccess();
-    paramFromServiceMsg.getAttributes().put("result", paramToServiceMsg);
   }
   
   private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -448,21 +419,9 @@ public class LBSService
   {
     paramFromServiceMsg = a(paramFromServiceMsg.getWupBuffer());
     if ((paramFromServiceMsg != null) && (paramFromServiceMsg.eReplyCode == 0)) {
-      this.jdField_a_of_type_ArrayOfByte = paramFromServiceMsg.vContext;
+      this.d = paramFromServiceMsg.vContext;
     }
     return paramFromServiceMsg;
-  }
-  
-  private void c(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
-  {
-    paramToServiceMsg = (RespDeleteVisitorRecord)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespDeleteVisitorRecord", new RespDeleteVisitorRecord());
-    if (paramToServiceMsg.stHeader.iReplyCode != 0)
-    {
-      paramFromServiceMsg.setMsgFail();
-      return;
-    }
-    paramFromServiceMsg.setMsgSuccess();
-    paramFromServiceMsg.getAttributes().put("result", paramToServiceMsg);
   }
   
   private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -474,7 +433,7 @@ public class LBSService
     paramToServiceMsg.iLat = i;
     paramToServiceMsg.iLon = j;
     paramToServiceMsg.iRadius = k;
-    paramToServiceMsg.vClientVersion = "8.7.0".getBytes();
+    paramToServiceMsg.vClientVersion = "8.8.17".getBytes();
     paramToServiceMsg.uiClientType = 2L;
     paramUniPacket.setServantName("NearbyGroup");
     paramUniPacket.setFuncName("ReqGetAreaList");
@@ -484,7 +443,7 @@ public class LBSService
   
   private Object d(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
-    paramFromServiceMsg = a(paramFromServiceMsg.getWupBuffer());
+    paramFromServiceMsg = b(paramFromServiceMsg.getWupBuffer());
     if (paramFromServiceMsg != null) {
       return paramFromServiceMsg;
     }
@@ -496,27 +455,16 @@ public class LBSService
     return true;
   }
   
-  private Object e(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  private void e(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
-    paramToServiceMsg = (RespHeader)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespHeader", new RespHeader());
-    if ((paramToServiceMsg != null) && (paramToServiceMsg.eReplyCode == 0))
+    paramToServiceMsg = (RespGetVoterList)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespGetVoterList", new RespGetVoterList());
+    if (paramToServiceMsg.stHeader.iReplyCode != 0)
     {
-      paramFromServiceMsg = (RespGetRecommender)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespGetRecommender", new RespGetRecommender());
+      paramFromServiceMsg.setMsgFail();
+      return;
     }
-    else
-    {
-      if (QLog.isColorLevel())
-      {
-        if (paramToServiceMsg == null) {
-          paramFromServiceMsg = "decodeNearbyRecommender respHeader is null";
-        } else {
-          paramFromServiceMsg = String.valueOf(paramToServiceMsg.eReplyCode);
-        }
-        QLog.i("LBS", 2, paramFromServiceMsg);
-      }
-      paramFromServiceMsg = null;
-    }
-    return new Object[] { paramToServiceMsg, paramFromServiceMsg };
+    paramFromServiceMsg.setMsgSuccess();
+    paramFromServiceMsg.getAttributes().put("result", paramToServiceMsg);
   }
   
   private boolean e(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -541,7 +489,7 @@ public class LBSService
       localObject2 = new NeighborComm.ReqHeader();
       ((NeighborComm.ReqHeader)localObject2).shVersion = 2;
       ((NeighborComm.ReqHeader)localObject2).lMID = createUserId(Long.parseLong(paramToServiceMsg.getUin()));
-      ((NeighborComm.ReqHeader)localObject2).iAppID = AppSetting.a();
+      ((NeighborComm.ReqHeader)localObject2).iAppID = AppSetting.d();
       ((NeighborComm.ReqHeader)localObject2).eBusiType = 0;
       ((NeighborComm.ReqHeader)localObject2).eMqqSysType = 2;
       ReqUserInfo localReqUserInfo = new ReqUserInfo();
@@ -588,9 +536,16 @@ public class LBSService
     return false;
   }
   
-  private Object f(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  private void f(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
-    return (RespSummaryCard)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespSummaryCard", new RespSummaryCard());
+    paramToServiceMsg = (RespGetFavoriteList)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespGetFavoriteList", new RespGetFavoriteList());
+    if (paramToServiceMsg.stHeader.iReplyCode != 0)
+    {
+      paramFromServiceMsg.setMsgFail();
+      return;
+    }
+    paramFromServiceMsg.setMsgSuccess();
+    paramFromServiceMsg.getAttributes().put("result", paramToServiceMsg);
   }
   
   private boolean f(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -598,7 +553,7 @@ public class LBSService
     Object localObject = new NeighborSvc.ReqHeader();
     ((NeighborSvc.ReqHeader)localObject).shVersion = 2;
     ((NeighborSvc.ReqHeader)localObject).lMID = createUserId(Long.parseLong(paramToServiceMsg.getUin()));
-    ((NeighborSvc.ReqHeader)localObject).iAppID = AppSetting.a();
+    ((NeighborSvc.ReqHeader)localObject).iAppID = AppSetting.d();
     localObject = new ReqSetStateSwitch((NeighborSvc.ReqHeader)localObject, (byte)paramToServiceMsg.extraData.getBoolean("k_be_share", false));
     paramUniPacket.setServantName("NeighborObj");
     paramUniPacket.setFuncName("CMD_SET_STATE_SWITCH");
@@ -608,7 +563,246 @@ public class LBSService
     return true;
   }
   
-  private Object g(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  private void g(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  {
+    paramToServiceMsg = (RespDeleteVisitorRecord)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespDeleteVisitorRecord", new RespDeleteVisitorRecord());
+    if (paramToServiceMsg.stHeader.iReplyCode != 0)
+    {
+      paramFromServiceMsg.setMsgFail();
+      return;
+    }
+    paramFromServiceMsg.setMsgSuccess();
+    paramFromServiceMsg.getAttributes().put("result", paramToServiceMsg);
+  }
+  
+  private boolean g(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    Object localObject = new NeighborSvc.ReqHeader();
+    ((NeighborSvc.ReqHeader)localObject).shVersion = 2;
+    ((NeighborSvc.ReqHeader)localObject).lMID = createUserId(Long.parseLong(paramToServiceMsg.getUin()));
+    ((NeighborSvc.ReqHeader)localObject).iAppID = AppSetting.d();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Integer.valueOf(1));
+    localArrayList.add(Integer.valueOf(64));
+    localObject = new ReqGetSwitches((NeighborSvc.ReqHeader)localObject, localArrayList);
+    paramUniPacket.setServantName("NeighborObj");
+    paramUniPacket.setFuncName("CMD_GET_SWITCHES");
+    paramUniPacket.put("ReqGetSwitches", localObject);
+    paramToServiceMsg.setTimeout(10000L);
+    paramToServiceMsg.setServiceCmd("NeighborSvc.ReqGetSwitches");
+    return true;
+  }
+  
+  private Object h(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  {
+    paramToServiceMsg = (RespHeader)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespHeader", new RespHeader());
+    if ((paramToServiceMsg != null) && (paramToServiceMsg.eReplyCode == 0))
+    {
+      paramFromServiceMsg = (RespGetRecommender)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespGetRecommender", new RespGetRecommender());
+    }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        if (paramToServiceMsg == null) {
+          paramFromServiceMsg = "decodeNearbyRecommender respHeader is null";
+        } else {
+          paramFromServiceMsg = String.valueOf(paramToServiceMsg.eReplyCode);
+        }
+        QLog.i("LBS", 2, paramFromServiceMsg);
+      }
+      paramFromServiceMsg = null;
+    }
+    return new Object[] { paramToServiceMsg, paramFromServiceMsg };
+  }
+  
+  /* Error */
+  private boolean h(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    // Byte code:
+    //   0: new 597	QQService/ReqHead
+    //   3: dup
+    //   4: invokespecial 957	QQService/ReqHead:<init>	()V
+    //   7: astore 8
+    //   9: aload 8
+    //   11: iconst_2
+    //   12: putfield 958	QQService/ReqHead:shVersion	S
+    //   15: aload 8
+    //   17: aload_2
+    //   18: invokevirtual 600	com/qq/jce/wup/UniPacket:getRequestId	()I
+    //   21: putfield 961	QQService/ReqHead:iSeq	I
+    //   24: aload 8
+    //   26: aload_1
+    //   27: invokevirtual 748	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
+    //   30: invokestatic 753	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   33: putfield 964	QQService/ReqHead:lUIN	J
+    //   36: aload_1
+    //   37: getfield 101	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   40: ldc_w 966
+    //   43: invokevirtual 145	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   46: istore 4
+    //   48: aload_1
+    //   49: getfield 101	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   52: ldc_w 968
+    //   55: invokevirtual 128	android/os/Bundle:getByte	(Ljava/lang/String;)B
+    //   58: istore_3
+    //   59: aload_1
+    //   60: getfield 101	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   63: ldc_w 970
+    //   66: invokevirtual 168	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   69: astore 9
+    //   71: aload_1
+    //   72: getfield 101	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   75: ldc_w 972
+    //   78: invokevirtual 168	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   81: astore 10
+    //   83: new 974	java/io/ObjectInputStream
+    //   86: dup
+    //   87: new 976	java/io/ByteArrayInputStream
+    //   90: dup
+    //   91: aload_1
+    //   92: getfield 101	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   95: ldc_w 978
+    //   98: invokevirtual 168	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   101: invokespecial 980	java/io/ByteArrayInputStream:<init>	([B)V
+    //   104: invokespecial 983	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   107: invokevirtual 986	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   110: checkcast 161	java/util/ArrayList
+    //   113: astore 6
+    //   115: new 974	java/io/ObjectInputStream
+    //   118: dup
+    //   119: new 976	java/io/ByteArrayInputStream
+    //   122: dup
+    //   123: aload_1
+    //   124: getfield 101	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   127: ldc_w 988
+    //   130: invokevirtual 168	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   133: invokespecial 980	java/io/ByteArrayInputStream:<init>	([B)V
+    //   136: invokespecial 983	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   139: invokevirtual 986	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   142: checkcast 161	java/util/ArrayList
+    //   145: astore 5
+    //   147: new 974	java/io/ObjectInputStream
+    //   150: dup
+    //   151: new 976	java/io/ByteArrayInputStream
+    //   154: dup
+    //   155: aload_1
+    //   156: getfield 101	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   159: ldc_w 990
+    //   162: invokevirtual 168	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   165: invokespecial 980	java/io/ByteArrayInputStream:<init>	([B)V
+    //   168: invokespecial 983	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   171: invokevirtual 986	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   174: checkcast 161	java/util/ArrayList
+    //   177: astore 7
+    //   179: goto +33 -> 212
+    //   182: astore 7
+    //   184: goto +20 -> 204
+    //   187: astore 7
+    //   189: aconst_null
+    //   190: astore 5
+    //   192: goto +12 -> 204
+    //   195: astore 7
+    //   197: aconst_null
+    //   198: astore 6
+    //   200: aload 6
+    //   202: astore 5
+    //   204: aload 7
+    //   206: invokevirtual 991	java/lang/Exception:printStackTrace	()V
+    //   209: aconst_null
+    //   210: astore 7
+    //   212: new 993	QQService/ReqSetCard
+    //   215: dup
+    //   216: aload 8
+    //   218: iload 4
+    //   220: iload_3
+    //   221: aload 6
+    //   223: aload 9
+    //   225: aload 5
+    //   227: aload 7
+    //   229: aload 10
+    //   231: invokespecial 996	QQService/ReqSetCard:<init>	(LQQService/ReqHead;IBLjava/util/ArrayList;[BLjava/util/ArrayList;Ljava/util/ArrayList;[B)V
+    //   234: astore 5
+    //   236: aload_2
+    //   237: ldc 22
+    //   239: invokevirtual 555	com/qq/jce/wup/UniPacket:setServantName	(Ljava/lang/String;)V
+    //   242: aload_2
+    //   243: ldc_w 998
+    //   246: invokevirtual 560	com/qq/jce/wup/UniPacket:setFuncName	(Ljava/lang/String;)V
+    //   249: aload_2
+    //   250: ldc_w 998
+    //   253: aload 5
+    //   255: invokevirtual 566	com/qq/jce/wup/UniPacket:put	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   258: aload_1
+    //   259: ldc2_w 616
+    //   262: invokevirtual 573	com/tencent/qphone/base/remote/ToServiceMsg:setTimeout	(J)V
+    //   265: aload_1
+    //   266: ldc_w 1000
+    //   269: invokevirtual 578	com/tencent/qphone/base/remote/ToServiceMsg:setServiceCmd	(Ljava/lang/String;)V
+    //   272: iconst_1
+    //   273: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	274	0	this	LBSService
+    //   0	274	1	paramToServiceMsg	ToServiceMsg
+    //   0	274	2	paramUniPacket	UniPacket
+    //   58	163	3	b1	byte
+    //   46	173	4	i	int
+    //   145	109	5	localObject	Object
+    //   113	109	6	localArrayList1	ArrayList
+    //   177	1	7	localArrayList2	ArrayList
+    //   182	1	7	localException1	Exception
+    //   187	1	7	localException2	Exception
+    //   195	10	7	localException3	Exception
+    //   210	18	7	localArrayList3	ArrayList
+    //   7	210	8	localReqHead	QQService.ReqHead
+    //   69	155	9	arrayOfByte1	byte[]
+    //   81	149	10	arrayOfByte2	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   147	179	182	java/lang/Exception
+    //   115	147	187	java/lang/Exception
+    //   83	115	195	java/lang/Exception
+  }
+  
+  private Object i(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  {
+    return (RespSummaryCard)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespSummaryCard", new RespSummaryCard());
+  }
+  
+  private boolean i(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    try
+    {
+      Object localObject = (List)paramToServiceMsg.extraData.getSerializable("labels");
+      if (localObject != null)
+      {
+        SSummaryCardSetLabel localSSummaryCardSetLabel = new SSummaryCardSetLabel();
+        localSSummaryCardSetLabel.cmd = 4;
+        localSSummaryCardSetLabel.uin = Long.parseLong(this.c.getCurrentAccountUin());
+        localSSummaryCardSetLabel.version = "8.8.17";
+        localSSummaryCardSetLabel.platform = 109L;
+        localSSummaryCardSetLabel.labels = new ArrayList();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          localSSummaryCardSetLabel.labels.add(((Iterator)localObject).next());
+        }
+        paramUniPacket.setServantName("SummaryCard");
+        paramUniPacket.setFuncName("SetLabel");
+        paramUniPacket.put("SSummaryCardSetLabel", localSSummaryCardSetLabel);
+        paramToServiceMsg.setTimeout(10000L);
+        paramToServiceMsg.setServiceCmd("SummaryCard.SetLabel");
+        return true;
+      }
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      paramToServiceMsg.printStackTrace();
+    }
+    return false;
+  }
+  
+  private Object j(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
     RespSearch localRespSearch = (RespSearch)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespSearch", new RespSearch());
     int i = paramToServiceMsg.extraData.getInt("search_version");
@@ -634,234 +828,6 @@ public class LBSService
     return paramFromServiceMsg;
   }
   
-  private boolean g(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    Object localObject = new NeighborSvc.ReqHeader();
-    ((NeighborSvc.ReqHeader)localObject).shVersion = 2;
-    ((NeighborSvc.ReqHeader)localObject).lMID = createUserId(Long.parseLong(paramToServiceMsg.getUin()));
-    ((NeighborSvc.ReqHeader)localObject).iAppID = AppSetting.a();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Integer.valueOf(1));
-    localArrayList.add(Integer.valueOf(64));
-    localObject = new ReqGetSwitches((NeighborSvc.ReqHeader)localObject, localArrayList);
-    paramUniPacket.setServantName("NeighborObj");
-    paramUniPacket.setFuncName("CMD_GET_SWITCHES");
-    paramUniPacket.put("ReqGetSwitches", localObject);
-    paramToServiceMsg.setTimeout(10000L);
-    paramToServiceMsg.setServiceCmd("NeighborSvc.ReqGetSwitches");
-    return true;
-  }
-  
-  private Object h(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
-  {
-    paramFromServiceMsg = (RespCondSearch)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespCondSearch", new RespCondSearch());
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.vUserList != null) && (!paramFromServiceMsg.vUserList.isEmpty()))
-    {
-      int i = 0;
-      while (i < paramFromServiceMsg.vUserList.size())
-      {
-        paramToServiceMsg = (CondFitUser)paramFromServiceMsg.vUserList.get(i);
-        String str1 = ConditionSearchManager.a(paramToServiceMsg.dwCountry);
-        String str2 = ConditionSearchManager.a(paramToServiceMsg.dwProvince);
-        String str3 = ConditionSearchManager.a(paramToServiceMsg.dwCity);
-        paramToServiceMsg.locDesc = ((ConditionSearchManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER)).b(new String[] { str1, str2, str3, "0" });
-        i += 1;
-      }
-    }
-    return paramFromServiceMsg;
-  }
-  
-  /* Error */
-  private boolean h(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    // Byte code:
-    //   0: new 628	QQService/ReqHead
-    //   3: dup
-    //   4: invokespecial 1025	QQService/ReqHead:<init>	()V
-    //   7: astore 8
-    //   9: aload 8
-    //   11: iconst_2
-    //   12: putfield 1026	QQService/ReqHead:shVersion	S
-    //   15: aload 8
-    //   17: aload_2
-    //   18: invokevirtual 631	com/qq/jce/wup/UniPacket:getRequestId	()I
-    //   21: putfield 1029	QQService/ReqHead:iSeq	I
-    //   24: aload 8
-    //   26: aload_1
-    //   27: invokevirtual 772	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
-    //   30: invokestatic 777	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   33: putfield 1032	QQService/ReqHead:lUIN	J
-    //   36: aload_1
-    //   37: getfield 104	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   40: ldc_w 1034
-    //   43: invokevirtual 148	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   46: istore 4
-    //   48: aload_1
-    //   49: getfield 104	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   52: ldc_w 1036
-    //   55: invokevirtual 131	android/os/Bundle:getByte	(Ljava/lang/String;)B
-    //   58: istore_3
-    //   59: aload_1
-    //   60: getfield 104	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   63: ldc_w 1038
-    //   66: invokevirtual 171	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   69: astore 9
-    //   71: aload_1
-    //   72: getfield 104	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   75: ldc_w 1040
-    //   78: invokevirtual 171	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   81: astore 10
-    //   83: new 1042	java/io/ObjectInputStream
-    //   86: dup
-    //   87: new 1044	java/io/ByteArrayInputStream
-    //   90: dup
-    //   91: aload_1
-    //   92: getfield 104	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   95: ldc_w 1046
-    //   98: invokevirtual 171	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   101: invokespecial 1048	java/io/ByteArrayInputStream:<init>	([B)V
-    //   104: invokespecial 1051	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   107: invokevirtual 1054	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   110: checkcast 164	java/util/ArrayList
-    //   113: astore 6
-    //   115: new 1042	java/io/ObjectInputStream
-    //   118: dup
-    //   119: new 1044	java/io/ByteArrayInputStream
-    //   122: dup
-    //   123: aload_1
-    //   124: getfield 104	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   127: ldc_w 1056
-    //   130: invokevirtual 171	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   133: invokespecial 1048	java/io/ByteArrayInputStream:<init>	([B)V
-    //   136: invokespecial 1051	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   139: invokevirtual 1054	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   142: checkcast 164	java/util/ArrayList
-    //   145: astore 5
-    //   147: new 1042	java/io/ObjectInputStream
-    //   150: dup
-    //   151: new 1044	java/io/ByteArrayInputStream
-    //   154: dup
-    //   155: aload_1
-    //   156: getfield 104	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   159: ldc_w 1058
-    //   162: invokevirtual 171	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   165: invokespecial 1048	java/io/ByteArrayInputStream:<init>	([B)V
-    //   168: invokespecial 1051	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   171: invokevirtual 1054	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   174: checkcast 164	java/util/ArrayList
-    //   177: astore 7
-    //   179: goto +33 -> 212
-    //   182: astore 7
-    //   184: goto +20 -> 204
-    //   187: astore 7
-    //   189: aconst_null
-    //   190: astore 5
-    //   192: goto +12 -> 204
-    //   195: astore 7
-    //   197: aconst_null
-    //   198: astore 6
-    //   200: aload 6
-    //   202: astore 5
-    //   204: aload 7
-    //   206: invokevirtual 1059	java/lang/Exception:printStackTrace	()V
-    //   209: aconst_null
-    //   210: astore 7
-    //   212: new 1061	QQService/ReqSetCard
-    //   215: dup
-    //   216: aload 8
-    //   218: iload 4
-    //   220: iload_3
-    //   221: aload 6
-    //   223: aload 9
-    //   225: aload 5
-    //   227: aload 7
-    //   229: aload 10
-    //   231: invokespecial 1064	QQService/ReqSetCard:<init>	(LQQService/ReqHead;IBLjava/util/ArrayList;[BLjava/util/ArrayList;Ljava/util/ArrayList;[B)V
-    //   234: astore 5
-    //   236: aload_2
-    //   237: ldc 19
-    //   239: invokevirtual 587	com/qq/jce/wup/UniPacket:setServantName	(Ljava/lang/String;)V
-    //   242: aload_2
-    //   243: ldc_w 1066
-    //   246: invokevirtual 592	com/qq/jce/wup/UniPacket:setFuncName	(Ljava/lang/String;)V
-    //   249: aload_2
-    //   250: ldc_w 1066
-    //   253: aload 5
-    //   255: invokevirtual 597	com/qq/jce/wup/UniPacket:put	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   258: aload_1
-    //   259: ldc2_w 647
-    //   262: invokevirtual 604	com/tencent/qphone/base/remote/ToServiceMsg:setTimeout	(J)V
-    //   265: aload_1
-    //   266: ldc_w 1068
-    //   269: invokevirtual 609	com/tencent/qphone/base/remote/ToServiceMsg:setServiceCmd	(Ljava/lang/String;)V
-    //   272: iconst_1
-    //   273: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	274	0	this	LBSService
-    //   0	274	1	paramToServiceMsg	ToServiceMsg
-    //   0	274	2	paramUniPacket	UniPacket
-    //   58	163	3	b	byte
-    //   46	173	4	i	int
-    //   145	109	5	localObject	Object
-    //   113	109	6	localArrayList1	ArrayList
-    //   177	1	7	localArrayList2	ArrayList
-    //   182	1	7	localException1	Exception
-    //   187	1	7	localException2	Exception
-    //   195	10	7	localException3	Exception
-    //   210	18	7	localArrayList3	ArrayList
-    //   7	210	8	localReqHead	QQService.ReqHead
-    //   69	155	9	arrayOfByte1	byte[]
-    //   81	149	10	arrayOfByte2	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   147	179	182	java/lang/Exception
-    //   115	147	187	java/lang/Exception
-    //   83	115	195	java/lang/Exception
-  }
-  
-  private Object i(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
-  {
-    return (RespSetCard)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespSetCard", new RespSetCard());
-  }
-  
-  private boolean i(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    try
-    {
-      Object localObject = (List)paramToServiceMsg.extraData.getSerializable("labels");
-      if (localObject != null)
-      {
-        SSummaryCardSetLabel localSSummaryCardSetLabel = new SSummaryCardSetLabel();
-        localSSummaryCardSetLabel.cmd = 4;
-        localSSummaryCardSetLabel.uin = Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-        localSSummaryCardSetLabel.version = "8.7.0";
-        localSSummaryCardSetLabel.platform = 109L;
-        localSSummaryCardSetLabel.labels = new ArrayList();
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          localSSummaryCardSetLabel.labels.add(((Iterator)localObject).next());
-        }
-        paramUniPacket.setServantName("SummaryCard");
-        paramUniPacket.setFuncName("SetLabel");
-        paramUniPacket.put("SSummaryCardSetLabel", localSSummaryCardSetLabel);
-        paramToServiceMsg.setTimeout(10000L);
-        paramToServiceMsg.setServiceCmd("SummaryCard.SetLabel");
-        return true;
-      }
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      paramToServiceMsg.printStackTrace();
-    }
-    return false;
-  }
-  
-  private Object j(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
-  {
-    return (SSummaryCardLableRsp)decodePacket(paramFromServiceMsg.getWupBuffer(), "SSummaryCardLableRsp", new SSummaryCardLableRsp());
-  }
-  
   private boolean j(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     try
@@ -872,7 +838,7 @@ public class LBSService
       localSSummaryCardLikeIt.likeuin = paramToServiceMsg.extraData.getLong("destUin");
       localSSummaryCardLikeIt.label = paramToServiceMsg.extraData.getLong("labelId");
       localSSummaryCardLikeIt.platform = 109L;
-      localSSummaryCardLikeIt.version = "8.7.0";
+      localSSummaryCardLikeIt.version = "8.8.17";
       paramUniPacket.setServantName("SummaryCard");
       paramUniPacket.setFuncName("LikeIt");
       paramUniPacket.put("SSummaryCardLikeIt", localSSummaryCardLikeIt);
@@ -889,7 +855,21 @@ public class LBSService
   
   private Object k(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
-    return (SSummaryCardLableRsp)decodePacket(paramFromServiceMsg.getWupBuffer(), "SSummaryCardLableRsp", new SSummaryCardLableRsp());
+    paramFromServiceMsg = (RespCondSearch)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespCondSearch", new RespCondSearch());
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.vUserList != null) && (!paramFromServiceMsg.vUserList.isEmpty()))
+    {
+      int i = 0;
+      while (i < paramFromServiceMsg.vUserList.size())
+      {
+        paramToServiceMsg = (CondFitUser)paramFromServiceMsg.vUserList.get(i);
+        String str1 = ConditionSearchManager.a(paramToServiceMsg.dwCountry);
+        String str2 = ConditionSearchManager.a(paramToServiceMsg.dwProvince);
+        String str3 = ConditionSearchManager.a(paramToServiceMsg.dwCity);
+        paramToServiceMsg.locDesc = ((ConditionSearchManager)this.c.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER)).e(new String[] { str1, str2, str3, "0" });
+        i += 1;
+      }
+    }
+    return paramFromServiceMsg;
   }
   
   private boolean k(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -909,7 +889,7 @@ public class LBSService
   
   private Object l(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
-    return (RespSetCardSwitch)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespSetCardSwitch", new RespSetCardSwitch());
+    return (RespSetCard)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespSetCard", new RespSetCard());
   }
   
   private boolean l(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -935,7 +915,7 @@ public class LBSService
   
   private Object m(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
-    return (RespGetCardSwitch)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespGetCardSwitch", new RespGetCardSwitch());
+    return (SSummaryCardLableRsp)decodePacket(paramFromServiceMsg.getWupBuffer(), "SSummaryCardLableRsp", new SSummaryCardLableRsp());
   }
   
   private boolean m(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -950,6 +930,11 @@ public class LBSService
     paramToServiceMsg.setTimeout(10000L);
     paramToServiceMsg.setServiceCmd("VisitorSvc.ReqDeleteVisitorRecord");
     return true;
+  }
+  
+  private Object n(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  {
+    return (SSummaryCardLableRsp)decodePacket(paramFromServiceMsg.getWupBuffer(), "SSummaryCardLableRsp", new SSummaryCardLableRsp());
   }
   
   private boolean n(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -972,6 +957,11 @@ public class LBSService
     return true;
   }
   
+  private Object o(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  {
+    return (RespSetCardSwitch)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespSetCardSwitch", new RespSetCardSwitch());
+  }
+  
   private boolean o(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     long l1 = paramToServiceMsg.extraData.getLong("targetUin");
@@ -989,6 +979,11 @@ public class LBSService
     paramToServiceMsg.setTimeout(10000L);
     paramToServiceMsg.setServiceCmd("VisitorSvc.ReqGetFavoriteList");
     return true;
+  }
+  
+  private Object p(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  {
+    return (RespGetCardSwitch)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespGetCardSwitch", new RespGetCardSwitch());
   }
   
   private boolean p(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -1020,7 +1015,7 @@ public class LBSService
       int i;
       try
       {
-        i = Integer.parseInt("5295");
+        i = Integer.parseInt("5770");
       }
       catch (NumberFormatException localNumberFormatException)
       {
@@ -1045,17 +1040,17 @@ public class LBSService
         {
           ((SummaryCardBusiEntry.comm)localObject4).msg_login_sig.setHasFlag(true);
           ((SummaryCardBusiEntry.comm)localObject4).msg_login_sig.uint32_type.set(64);
-          localObject5 = (TicketManager)((LBSService)localObject3).jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
+          localObject5 = (TicketManager)((LBSService)localObject3).c.getManager(2);
           if (localObject5 != null)
           {
-            localObject3 = ((TicketManager)localObject5).getA2(((LBSService)localObject3).jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+            localObject3 = ((TicketManager)localObject5).getA2(((LBSService)localObject3).c.getCurrentAccountUin());
             if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!HexUtil.emptybytes.equals(localObject3))) {
               ((SummaryCardBusiEntry.comm)localObject4).msg_login_sig.bytes_sig.set(ByteStringMicro.copyFromUtf8((String)localObject3));
             }
           }
         }
         ((SummaryCardBusiEntry.comm)localObject4).platform.set(2);
-        ((SummaryCardBusiEntry.comm)localObject4).qqver.set("8.7.0.5295");
+        ((SummaryCardBusiEntry.comm)localObject4).qqver.set("8.8.17.5770");
         ((SummaryCardBusiEntry.comm)localObject4).build.set(i);
         localObject3 = ((SummaryCardBusiEntry.comm)localObject4).toByteArray();
         int i3 = localObject3.length;
@@ -1125,10 +1120,10 @@ public class LBSService
     ByteBuffer localByteBuffer = ByteBuffer.allocate(16);
     if ((localObject3 != null) && (localObject3.length == 4))
     {
-      localByteBuffer.putInt(ConditionSearchManager.a(localObject3[0]));
-      localByteBuffer.putInt(ConditionSearchManager.a(localObject3[1]));
-      localByteBuffer.putInt(ConditionSearchManager.a(localObject3[2]));
-      localByteBuffer.putInt(ConditionSearchManager.a(localObject3[3]));
+      localByteBuffer.putInt(ConditionSearchManager.f(localObject3[0]));
+      localByteBuffer.putInt(ConditionSearchManager.f(localObject3[1]));
+      localByteBuffer.putInt(ConditionSearchManager.f(localObject3[2]));
+      localByteBuffer.putInt(ConditionSearchManager.f(localObject3[3]));
     }
     else
     {
@@ -1137,10 +1132,10 @@ public class LBSService
     localObject3 = ByteBuffer.allocate(16);
     if ((localObject2 != null) && (localObject2.length == 4))
     {
-      ((ByteBuffer)localObject3).putInt(ConditionSearchManager.a(localObject2[0]));
-      ((ByteBuffer)localObject3).putInt(ConditionSearchManager.a(localObject2[1]));
-      ((ByteBuffer)localObject3).putInt(ConditionSearchManager.a(localObject2[2]));
-      ((ByteBuffer)localObject3).putInt(ConditionSearchManager.a(localObject2[3]));
+      ((ByteBuffer)localObject3).putInt(ConditionSearchManager.f(localObject2[0]));
+      ((ByteBuffer)localObject3).putInt(ConditionSearchManager.f(localObject2[1]));
+      ((ByteBuffer)localObject3).putInt(ConditionSearchManager.f(localObject2[2]));
+      ((ByteBuffer)localObject3).putInt(ConditionSearchManager.f(localObject2[3]));
     }
     else
     {
@@ -1173,7 +1168,7 @@ public class LBSService
   
   public String[] cmdHeaderPrefix()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return b;
   }
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -1182,22 +1177,22 @@ public class LBSService
       return (RespDelFace)decodePacket(paramFromServiceMsg.getWupBuffer(), "RespDelFace", new RespDelFace());
     }
     if ("MCardSvc.ReqSetCard".equals(paramFromServiceMsg.getServiceCmd())) {
-      return i(paramFromServiceMsg, paramToServiceMsg);
-    }
-    if ("SummaryCard.SetLabel".equals(paramFromServiceMsg.getServiceCmd())) {
-      return j(paramFromServiceMsg, paramToServiceMsg);
-    }
-    if ("SummaryCard.LikeIt".equals(paramFromServiceMsg.getServiceCmd())) {
-      return k(paramFromServiceMsg, paramToServiceMsg);
-    }
-    if ("MCardSvc.ReqGetCardSwitch".equals(paramFromServiceMsg.getServiceCmd())) {
-      return m(paramFromServiceMsg, paramToServiceMsg);
-    }
-    if ("MCardSvc.ReqSetCardSwitch".equals(paramFromServiceMsg.getServiceCmd())) {
       return l(paramFromServiceMsg, paramToServiceMsg);
     }
+    if ("SummaryCard.SetLabel".equals(paramFromServiceMsg.getServiceCmd())) {
+      return m(paramFromServiceMsg, paramToServiceMsg);
+    }
+    if ("SummaryCard.LikeIt".equals(paramFromServiceMsg.getServiceCmd())) {
+      return n(paramFromServiceMsg, paramToServiceMsg);
+    }
+    if ("MCardSvc.ReqGetCardSwitch".equals(paramFromServiceMsg.getServiceCmd())) {
+      return p(paramFromServiceMsg, paramToServiceMsg);
+    }
+    if ("MCardSvc.ReqSetCardSwitch".equals(paramFromServiceMsg.getServiceCmd())) {
+      return o(paramFromServiceMsg, paramToServiceMsg);
+    }
     if ("SummaryCard.ReqSummaryCard".equals(paramFromServiceMsg.getServiceCmd())) {
-      return f(paramFromServiceMsg, paramToServiceMsg);
+      return i(paramFromServiceMsg, paramToServiceMsg);
     }
     if ("NearbyGroup.GetGroupList".equals(paramFromServiceMsg.getServiceCmd())) {
       return c(paramFromServiceMsg, paramToServiceMsg);
@@ -1215,16 +1210,16 @@ public class LBSService
       return NearbyCmdHelper.a(this, paramFromServiceMsg, paramToServiceMsg);
     }
     if ("SummaryCard.ReqSearch".equals(paramFromServiceMsg.getServiceCmd())) {
-      return g(paramFromServiceMsg, paramToServiceMsg);
+      return j(paramFromServiceMsg, paramToServiceMsg);
     }
     if ("SummaryCard.ReqCondSearch".equals(paramFromServiceMsg.getServiceCmd())) {
-      return h(paramFromServiceMsg, paramToServiceMsg);
+      return k(paramFromServiceMsg, paramToServiceMsg);
     }
     if ("NeighborRecommender.ReqGetRecommender".equals(paramFromServiceMsg.getServiceCmd())) {
-      return e(paramFromServiceMsg, paramToServiceMsg);
+      return h(paramFromServiceMsg, paramToServiceMsg);
     }
     if ("EncounterSvc.ReqGetEncounter".equals(paramFromServiceMsg.getServiceCmd())) {
-      return NearbyCmdHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramFromServiceMsg, paramToServiceMsg, this);
+      return NearbyCmdHelper.a(this.c, paramFromServiceMsg, paramToServiceMsg, this);
     }
     return super.decode(paramToServiceMsg, paramFromServiceMsg);
   }
@@ -1233,12 +1228,12 @@ public class LBSService
   {
     if ("VisitorSvc.ReqGetVoterList".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      a(paramFromServiceMsg, paramToServiceMsg);
+      e(paramFromServiceMsg, paramToServiceMsg);
       return;
     }
     if ("VisitorSvc.ReqGetFavoriteList".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      b(paramFromServiceMsg, paramToServiceMsg);
+      f(paramFromServiceMsg, paramToServiceMsg);
       return;
     }
     if ("MCardSvc.ReqPicSafetyCheck".equals(paramFromServiceMsg.getServiceCmd())) {
@@ -1246,7 +1241,7 @@ public class LBSService
     }
     if ("VisitorSvc.ReqDeleteVisitorRecord".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      c(paramFromServiceMsg, paramToServiceMsg);
+      g(paramFromServiceMsg, paramToServiceMsg);
       return;
     }
     if ("VisitorSvc.ReqFavorite".equals(paramFromServiceMsg.getServiceCmd()))
@@ -1320,14 +1315,14 @@ public class LBSService
       return e(paramToServiceMsg, paramUniPacket);
     }
     if ("EncounterSvc.ReqGetEncounter".equals(paramToServiceMsg.getServiceCmd())) {
-      return NearbyCmdHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramToServiceMsg, paramUniPacket, this);
+      return NearbyCmdHelper.a(this.c, paramToServiceMsg, paramUniPacket, this);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.lbs.LBSService
  * JD-Core Version:    0.7.0.1
  */

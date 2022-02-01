@@ -2,16 +2,17 @@ package com.tencent.aelight.camera.constants;
 
 public class CameraCompatibleConstants
 {
-  public static String A = "HARDWARE_PRIVILEGE_ERROR_CAMERA_NO_CALLBACK_MODEL_NOSDK";
-  public static String B = "WHITE_LIST_FILTER_HIGH_FPS_PHONE";
-  public static String C = "DO_NOT_DESTORY_GLSURFACE_VIEW";
-  public static String D = "BLACK_3D_RENDER_ES20_NEED_SYNC";
-  public static String E = "BLACK_NOT_SUPPORT_3D_TK";
-  public static String F = "DISABLE_FLASH";
-  public static String G = "DISABLE_BACK_CAMERA_MODE";
-  public static String H = "NOT_SUPPORT_MUTIL_TOUCH";
-  public static String I = "DUAL_DIFF_SCREEN_PHONE";
-  public static String J = "DOT_NOT_CHANGE_PREVIEW_SIZE";
+  public static String A = "BLACK_OPENGL_ES20_NEED_FLUSH";
+  public static String B = "HARDWARE_PRIVILEGE_ERROR_CAMERA_NO_CALLBACK_MODEL_NOSDK";
+  public static String C = "WHITE_LIST_FILTER_HIGH_FPS_PHONE";
+  public static String D = "DO_NOT_DESTORY_GLSURFACE_VIEW";
+  public static String E = "BLACK_3D_RENDER_ES20_NEED_SYNC";
+  public static String F = "BLACK_NOT_SUPPORT_3D_TK";
+  public static String G = "DISABLE_FLASH";
+  public static String H = "DISABLE_BACK_CAMERA_MODE";
+  public static String I = "NOT_SUPPORT_MUTIL_TOUCH";
+  public static String J = "DUAL_DIFF_SCREEN_PHONE";
+  public static String K = "DOT_NOT_CHANGE_PREVIEW_SIZE";
   public static String a = "NOT_FOCUS_MODEL";
   public static String b = "NOT_CALLBACK_WHEN_SCREENOFF_MODEL";
   public static String c = "NOT_PREVIEW_EXCEPT_MAIN_PROCESS_MODEL";
@@ -35,9 +36,9 @@ public class CameraCompatibleConstants
   public static String u = "NO_QUALCOMM_CPU_IS_VERY_SLOW_PHONE";
   public static String v = "BLACK_EGL_MAKECURRENT_ERR_3009";
   public static String w = "BLACK_NOT_SUPPORT_FILTER_PHONE";
-  public static String x = "CONST_HEIGHT_MAP_CLIP_WIDTH_POSITIVE_OFFSET_OF_FRONT_CAMERA";
-  public static String y = "CAMERA_OPEN_BLOCK_CHOOSE_PERMITTED_MODEL";
-  public static String z = "BLACK_OPENGL_ES20_NEED_FLUSH";
+  public static String x = "BLACK_NOT_SUPPORT_AVATAR2D_PHONE";
+  public static String y = "CONST_HEIGHT_MAP_CLIP_WIDTH_POSITIVE_OFFSET_OF_FRONT_CAMERA";
+  public static String z = "CAMERA_OPEN_BLOCK_CHOOSE_PERMITTED_MODEL";
 }
 
 

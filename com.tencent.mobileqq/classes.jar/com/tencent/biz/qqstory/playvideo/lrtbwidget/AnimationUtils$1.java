@@ -15,45 +15,45 @@ final class AnimationUtils$1
   {
     float f1 = ((Float)paramValueAnimator.getAnimatedValue("scaleX")).floatValue();
     float f2 = ((Float)paramValueAnimator.getAnimatedValue("scaleY")).floatValue();
-    this.jdField_a_of_type_AndroidViewViewGroup.setPivotX(0.5F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setScaleX(f1);
-    this.jdField_a_of_type_AndroidViewViewGroup.setPivotY(0.5F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setScaleY(f2);
-    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(((Float)paramValueAnimator.getAnimatedValue("translateX")).floatValue());
-    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationY(((Float)paramValueAnimator.getAnimatedValue("translateY")).floatValue());
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    this.a.setPivotX(0.5F);
+    this.a.setScaleX(f1);
+    this.a.setPivotY(0.5F);
+    this.a.setScaleY(f2);
+    this.a.setTranslationX(((Float)paramValueAnimator.getAnimatedValue("translateX")).floatValue());
+    this.a.setTranslationY(((Float)paramValueAnimator.getAnimatedValue("translateY")).floatValue());
+    if (this.b != null)
     {
-      int i = this.jdField_a_of_type_AndroidViewViewGroup.getWidth();
-      int j = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+      int i = this.a.getWidth();
+      int j = this.a.getHeight();
       if (f1 < f2)
       {
         f1 = f2 / f1;
         f2 = i;
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(f1);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX((f2 - f2 * f1) * 0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(0.0F);
+        this.c.setPivotX(0.5F);
+        this.c.setScaleX(f1);
+        this.c.setTranslationX((f2 - f2 * f1) * 0.5F);
+        this.c.setPivotY(0.5F);
+        this.c.setScaleY(1.0F);
+        this.c.setTranslationY(0.0F);
       }
       else if (f2 < f1)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
+        this.c.setPivotX(0.5F);
+        this.c.setScaleX(1.0F);
+        this.c.setTranslationX(0.0F);
         f1 /= f2;
         f2 = j;
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(f1);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY((f2 - f2 * f1) * 0.5F);
+        this.c.setPivotY(0.5F);
+        this.c.setScaleY(f1);
+        this.c.setTranslationY((f2 - f2 * f1) * 0.5F);
       }
     }
-    this.b.setAlpha(((Float)paramValueAnimator.getAnimatedValue("backgroundAlpha")).floatValue());
+    this.d.setAlpha(((Float)paramValueAnimator.getAnimatedValue("backgroundAlpha")).floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationUtils.1
  * JD-Core Version:    0.7.0.1
  */

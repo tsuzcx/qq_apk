@@ -13,14 +13,14 @@ class VideoTrackContainerView$4
     if (!paramView.isSelected()) {
       paramView.setSelected(true);
     }
-    if (VideoTrackContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView) != null) {
-      VideoTrackContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView).a(this.jdField_a_of_type_Int);
+    if (VideoTrackContainerView.e(this.b) != null) {
+      VideoTrackContainerView.e(this.b).a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.videotrack.VideoTrackContainerView.4
  * JD-Core Version:    0.7.0.1
  */

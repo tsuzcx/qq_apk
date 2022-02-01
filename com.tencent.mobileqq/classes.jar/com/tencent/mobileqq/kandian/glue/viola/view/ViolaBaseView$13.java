@@ -13,25 +13,24 @@ class ViolaBaseView$13
     try
     {
       ViolaBaseView.a(this.this$0, new ViolaBaseView.13.1(this));
-      FPSCalculator.a().a(ViolaBaseView.a(this.this$0));
+      FPSCalculator.a().a(ViolaBaseView.q(this.this$0));
       return;
     }
     catch (Exception localException)
     {
       if (QLog.isColorLevel())
       {
-        String str = ViolaBaseView.b();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("pageOpenSuccess Exception:");
         localStringBuilder.append(localException.getMessage());
-        QLog.e(str, 2, localStringBuilder.toString());
+        QLog.e("ViolaBaseView", 2, localStringBuilder.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.13
  * JD-Core Version:    0.7.0.1
  */

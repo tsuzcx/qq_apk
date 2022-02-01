@@ -32,7 +32,7 @@ public class FontController
   
   public List<FontBubble> a(QQAppInterface paramQQAppInterface, FontRecommendRsp paramFontRecommendRsp)
   {
-    int j = ((ISVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).b();
+    int j = ((ISVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).d();
     paramQQAppInterface = new ArrayList();
     if (paramFontRecommendRsp.vItems != null)
     {
@@ -67,12 +67,12 @@ public class FontController
   
   public void a(ISVIPHandler paramISVIPHandler)
   {
-    paramISVIPHandler.d();
+    paramISVIPHandler.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontController
  * JD-Core Version:    0.7.0.1
  */

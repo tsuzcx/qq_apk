@@ -41,26 +41,26 @@ public class GVideoTranslucentBrowerActivity$GVideoBrowserFragment
     if (!this.a)
     {
       Monitor.a("2489207");
-      ReportController.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "8.7.0", "", "");
+      ReportController.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "8.8.17", "", "");
     }
   }
   
   public void onFinalState(Bundle paramBundle, WebViewKernelCallBack paramWebViewKernelCallBack)
   {
     super.onFinalState(paramBundle, paramWebViewKernelCallBack);
-    getSwiftTitleUI().b(false);
-    getUIStyleHandler().a.setVisibility(8);
+    getSwiftTitleUI().e(false);
+    getUIStyleHandler().v.setVisibility(8);
   }
   
   public void onInitUIContent(Bundle paramBundle, WebViewKernelCallBack paramWebViewKernelCallBack)
   {
-    getUIStyle().c = 0L;
+    getUIStyle().e = 0L;
     super.onInitUIContent(paramBundle, paramWebViewKernelCallBack);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.groupvideo.GVideoTranslucentBrowerActivity.GVideoBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

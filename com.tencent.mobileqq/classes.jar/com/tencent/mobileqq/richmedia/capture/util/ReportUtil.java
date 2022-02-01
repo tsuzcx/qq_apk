@@ -8,28 +8,20 @@ import com.tencent.qphone.base.util.BaseApplication;
 
 public class ReportUtil
 {
-  public static int a = 0;
-  public static long a = 0L;
-  public static String a;
   public static boolean a = false;
-  public static int b;
-  
-  private static String a()
-  {
-    if (jdField_a_of_type_Int % 180 == 0) {
-      return "0";
-    }
-    return "1";
-  }
+  public static String b;
+  public static int c;
+  public static int d;
+  public static long e;
   
   public static void a()
   {
-    if (jdField_a_of_type_Boolean)
+    if (a)
     {
-      FlowCameraMqqAction.a("", "0X80072C3", b(), jdField_a_of_type_JavaLangString, "", "");
+      FlowCameraMqqAction.a("", "0X80072C3", d(), b, "", "");
       return;
     }
-    FlowCameraMqqAction.a("", "0X80072C2", b());
+    FlowCameraMqqAction.a("", "0X80072C2", d());
   }
   
   public static void a(int paramInt, String paramString)
@@ -61,17 +53,17 @@ public class ReportUtil
       }
       if (paramInt2 == -1)
       {
-        if (!jdField_a_of_type_Boolean)
+        if (!a)
         {
-          FlowCameraMqqAction.a("", "0X8006A16", String.valueOf(jdField_a_of_type_Long), a(), b(), "");
+          FlowCameraMqqAction.a("", "0X8006A16", String.valueOf(e), c(), d(), "");
           return;
         }
-        FlowCameraMqqAction.a("", "0X8006A19", String.valueOf(jdField_a_of_type_Long), a(), b(), jdField_a_of_type_JavaLangString);
+        FlowCameraMqqAction.a("", "0X8006A19", String.valueOf(e), c(), d(), b);
         return;
       }
       if (paramInt2 == 0)
       {
-        if (jdField_a_of_type_Boolean)
+        if (a)
         {
           FlowCameraMqqAction.a("", "0X8006A1B");
           return;
@@ -83,17 +75,17 @@ public class ReportUtil
     {
       if (paramInt2 == -1)
       {
-        if (jdField_a_of_type_Boolean)
+        if (a)
         {
-          FlowCameraMqqAction.a("", "0X80072C5", b(), jdField_a_of_type_JavaLangString, "", "");
+          FlowCameraMqqAction.a("", "0X80072C5", d(), b, "", "");
           return;
         }
-        FlowCameraMqqAction.a("", "0X80072C4", b());
+        FlowCameraMqqAction.a("", "0X80072C4", d());
         return;
       }
       if (paramInt2 == 0)
       {
-        if (jdField_a_of_type_Boolean)
+        if (a)
         {
           FlowCameraMqqAction.a("", "0X80072C6");
           return;
@@ -114,27 +106,35 @@ public class ReportUtil
     FlowCameraMqqAction.a("", "0X8007BB7", str);
   }
   
-  private static String b()
+  public static void b()
   {
-    if (b == 1) {
+    if (a)
+    {
+      FlowCameraMqqAction.a("", "0X8006A18", String.valueOf(e), c(), d(), b);
+      return;
+    }
+    FlowCameraMqqAction.a("", "0X8006A13", String.valueOf(e), c(), d(), "");
+  }
+  
+  private static String c()
+  {
+    if (c % 180 == 0) {
+      return "0";
+    }
+    return "1";
+  }
+  
+  private static String d()
+  {
+    if (d == 1) {
       return "1";
     }
     return "0";
   }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_Boolean)
-    {
-      FlowCameraMqqAction.a("", "0X8006A18", String.valueOf(jdField_a_of_type_Long), a(), b(), jdField_a_of_type_JavaLangString);
-      return;
-    }
-    FlowCameraMqqAction.a("", "0X8006A13", String.valueOf(jdField_a_of_type_Long), a(), b(), "");
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.util.ReportUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -6,30 +6,25 @@ import java.util.HashMap;
 
 public class StoryQQTextCacher
 {
-  private static LruCache<String, CharSequence> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  private static StoryQQTextCacher jdField_a_of_type_ComTencentBizQqstoryCommentStoryQQTextCacher;
-  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  public String a;
-  
-  public StoryQQTextCacher()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  private static LruCache<String, CharSequence> b;
+  private static StoryQQTextCacher c;
+  private static HashMap<String, Integer> d;
+  public String a = "";
   
   public static StoryQQTextCacher a()
   {
-    if (jdField_a_of_type_ComTencentBizQqstoryCommentStoryQQTextCacher == null)
+    if (c == null)
     {
-      jdField_a_of_type_ComTencentBizQqstoryCommentStoryQQTextCacher = new StoryQQTextCacher();
-      jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(150);
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      c = new StoryQQTextCacher();
+      b = new LruCache(150);
+      d = new HashMap();
     }
-    return jdField_a_of_type_ComTencentBizQqstoryCommentStoryQQTextCacher;
+    return c;
   }
   
-  public static void a()
+  public static void b()
   {
-    LruCache localLruCache = jdField_a_of_type_AndroidSupportV4UtilLruCache;
+    LruCache localLruCache = b;
     if (localLruCache != null) {
       localLruCache.evictAll();
     }
@@ -37,7 +32,7 @@ public class StoryQQTextCacher
   
   public CharSequence a(String paramString)
   {
-    return (CharSequence)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+    return (CharSequence)b.get(paramString);
   }
   
   public void a(CommentEntry paramCommentEntry)
@@ -49,25 +44,25 @@ public class StoryQQTextCacher
     localStringBuilder.append(paramCommentEntry.feedId);
     localStringBuilder.append(paramCommentEntry.replyTime);
     paramCommentEntry = localStringBuilder.toString();
-    if (jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry) == null)
+    if (d.get(paramCommentEntry) == null)
     {
-      jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(1));
+      d.put(paramCommentEntry, Integer.valueOf(1));
       return;
     }
-    int i = ((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry)).intValue();
-    jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(i + 1));
+    int i = ((Integer)d.get(paramCommentEntry)).intValue();
+    d.put(paramCommentEntry, Integer.valueOf(i + 1));
   }
   
   public void a(String paramString, CharSequence paramCharSequence)
   {
     if (a(paramString) == null) {
-      jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, paramCharSequence);
+      b.put(paramString, paramCharSequence);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.StoryQQTextCacher
  * JD-Core Version:    0.7.0.1
  */

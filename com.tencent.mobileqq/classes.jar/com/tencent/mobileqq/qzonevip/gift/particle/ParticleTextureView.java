@@ -21,76 +21,70 @@ public abstract class ParticleTextureView
   extends TextureView
   implements TextureView.SurfaceTextureListener
 {
-  protected int a;
-  protected Context a;
-  protected Matrix a;
-  protected Paint a;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  protected Handler a;
-  protected HandlerThread a;
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  protected ParticleTextureView.ParticleListener a;
-  protected final Object a;
-  protected ArrayList<ParticleObject> a;
   protected Random a;
-  protected volatile boolean a;
-  protected int b;
-  protected int c = 0;
+  protected Matrix b;
+  protected Paint c;
+  protected ArrayList<ParticleObject> d;
+  protected Context e;
+  protected int f;
+  protected int g;
+  protected HandlerThread h;
+  protected Handler i;
+  protected volatile boolean j = false;
+  protected final Object k = new Object();
+  protected int l = 0;
+  protected ParticleTextureView.ParticleListener m;
+  private Surface n;
+  private Rect o = new Rect();
   
   public ParticleTextureView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangObject = new Object();
     a(paramContext);
   }
   
   public ParticleTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangObject = new Object();
     a(paramContext);
   }
   
   public ParticleTextureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangObject = new Object();
     a(paramContext);
   }
   
   private void a(int paramInt)
   {
-    a(paramInt, 0);
+    b(paramInt, 0);
   }
   
-  private void a(int paramInt1, int paramInt2)
+  private void a(Context paramContext)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    this.e = paramContext;
+    this.a = new Random();
+    this.b = new Matrix();
+    this.c = new Paint();
+    this.c.setAntiAlias(true);
+    this.c.setColor(-1);
+    this.d = new ArrayList();
+    setOpaque(false);
+    setSurfaceTextureListener(this);
+  }
+  
+  private void b(int paramInt1, int paramInt2)
+  {
+    Handler localHandler = this.i;
     if (localHandler == null)
     {
       QLog.i("ParticleTextureView", 1, "sendValidMessage: handle = null ");
       return;
     }
     if (localHandler.hasMessages(paramInt1)) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt1);
+      this.i.removeMessages(paramInt1);
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt1, paramInt2);
-  }
-  
-  private void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilRandom = new Random();
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    setOpaque(false);
-    setSurfaceTextureListener(this);
+    this.i.sendEmptyMessageDelayed(paramInt1, paramInt2);
   }
   
   protected float a(float paramFloat1, float paramFloat2)
@@ -98,45 +92,43 @@ public abstract class ParticleTextureView
     if (paramFloat1 > paramFloat2) {
       return paramFloat1;
     }
-    return this.jdField_a_of_type_JavaUtilRandom.nextFloat() * (paramFloat2 - paramFloat1) + paramFloat1;
+    return this.a.nextFloat() * (paramFloat2 - paramFloat1) + paramFloat1;
   }
-  
-  protected abstract int a();
   
   protected int a(int paramInt1, int paramInt2)
   {
     if (paramInt1 > paramInt2) {
       return paramInt1;
     }
-    return this.jdField_a_of_type_JavaUtilRandom.nextInt(paramInt2 - paramInt1) + paramInt1;
+    return this.a.nextInt(paramInt2 - paramInt1) + paramInt1;
   }
-  
-  protected abstract void a();
   
   protected abstract void a(Bitmap[] paramArrayOfBitmap);
   
-  protected abstract boolean a();
-  
   protected abstract Bitmap[] a();
   
-  public void b()
+  protected abstract void b();
+  
+  protected abstract boolean c();
+  
+  public void d()
   {
     a(1);
   }
   
-  public void c()
+  public void e()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.j = true;
   }
   
   /* Error */
-  protected void d()
+  protected void f()
   {
     // Byte code:
-    //   0: invokestatic 143	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 152	java/lang/System:currentTimeMillis	()J
     //   3: lstore_1
     //   4: aload_0
-    //   5: getfield 36	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   5: getfield 48	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:k	Ljava/lang/Object;
     //   8: astore 7
     //   10: aload 7
     //   12: monitorenter
@@ -149,38 +141,38 @@ public abstract class ParticleTextureView
     //   22: aload 6
     //   24: astore 4
     //   26: aload_0
-    //   27: getfield 145	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   27: getfield 154	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:n	Landroid/view/Surface;
     //   30: astore 8
     //   32: aload 8
     //   34: ifnonnull +65 -> 99
     //   37: aload_0
-    //   38: getfield 145	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   38: getfield 154	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:n	Landroid/view/Surface;
     //   41: ifnull +54 -> 95
     //   44: aload_0
-    //   45: getfield 145	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   45: getfield 154	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:n	Landroid/view/Surface;
     //   48: aconst_null
-    //   49: invokevirtual 151	android/view/Surface:unlockCanvasAndPost	(Landroid/graphics/Canvas;)V
+    //   49: invokevirtual 160	android/view/Surface:unlockCanvasAndPost	(Landroid/graphics/Canvas;)V
     //   52: goto +43 -> 95
     //   55: astore_3
     //   56: goto +539 -> 595
     //   59: astore_3
-    //   60: new 153	java/lang/StringBuilder
+    //   60: new 162	java/lang/StringBuilder
     //   63: dup
-    //   64: invokespecial 154	java/lang/StringBuilder:<init>	()V
+    //   64: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   67: astore 4
     //   69: aload 4
-    //   71: ldc 156
-    //   73: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: ldc 165
+    //   73: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   76: pop
     //   77: aload 4
     //   79: aload_3
-    //   80: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   80: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   83: pop
-    //   84: ldc 60
+    //   84: ldc 111
     //   86: iconst_1
     //   87: aload 4
-    //   89: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   89: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   92: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   95: aload 7
     //   97: monitorexit
     //   98: return
@@ -189,10 +181,10 @@ public abstract class ParticleTextureView
     //   102: aload 6
     //   104: astore 4
     //   106: aload_0
-    //   107: getfield 145	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   107: getfield 154	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:n	Landroid/view/Surface;
     //   110: aload_0
-    //   111: getfield 43	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
-    //   114: invokevirtual 174	android/view/Surface:lockCanvas	(Landroid/graphics/Rect;)Landroid/graphics/Canvas;
+    //   111: getfield 55	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:o	Landroid/graphics/Rect;
+    //   114: invokevirtual 182	android/view/Surface:lockCanvas	(Landroid/graphics/Rect;)Landroid/graphics/Canvas;
     //   117: astore 5
     //   119: aload 5
     //   121: ifnull +168 -> 289
@@ -201,8 +193,8 @@ public abstract class ParticleTextureView
     //   127: aload 5
     //   129: astore 4
     //   131: aload_0
-    //   132: getfield 145	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
-    //   135: invokevirtual 177	android/view/Surface:isValid	()Z
+    //   132: getfield 154	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:n	Landroid/view/Surface;
+    //   135: invokevirtual 185	android/view/Surface:isValid	()Z
     //   138: ifeq +151 -> 289
     //   141: aload 5
     //   143: astore_3
@@ -210,24 +202,24 @@ public abstract class ParticleTextureView
     //   146: astore 4
     //   148: aload 5
     //   150: iconst_0
-    //   151: getstatic 183	android/graphics/PorterDuff$Mode:CLEAR	Landroid/graphics/PorterDuff$Mode;
-    //   154: invokevirtual 189	android/graphics/Canvas:drawColor	(ILandroid/graphics/PorterDuff$Mode;)V
+    //   151: getstatic 191	android/graphics/PorterDuff$Mode:CLEAR	Landroid/graphics/PorterDuff$Mode;
+    //   154: invokevirtual 197	android/graphics/Canvas:drawColor	(ILandroid/graphics/PorterDuff$Mode;)V
     //   157: aload 5
     //   159: astore_3
     //   160: aload_0
-    //   161: getfield 110	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   164: invokevirtual 193	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   161: getfield 97	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:d	Ljava/util/ArrayList;
+    //   164: invokevirtual 201	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   167: astore 4
     //   169: aload 5
     //   171: astore_3
     //   172: aload 4
-    //   174: invokeinterface 198 1 0
+    //   174: invokeinterface 206 1 0
     //   179: ifeq +110 -> 289
     //   182: aload 5
     //   184: astore_3
     //   185: aload 4
-    //   187: invokeinterface 202 1 0
-    //   192: checkcast 204	com/tencent/mobileqq/qzonevip/gift/particle/ParticleObject
+    //   187: invokeinterface 210 1 0
+    //   192: checkcast 212	com/tencent/mobileqq/qzonevip/gift/particle/ParticleObject
     //   195: astore 6
     //   197: aload 6
     //   199: ifnull -30 -> 169
@@ -236,27 +228,27 @@ public abstract class ParticleTextureView
     //   205: aload 6
     //   207: aload 5
     //   209: aload_0
-    //   210: getfield 98	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   210: getfield 85	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:c	Landroid/graphics/Paint;
     //   213: aload_0
-    //   214: getfield 93	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidGraphicsMatrix	Landroid/graphics/Matrix;
-    //   217: invokevirtual 207	com/tencent/mobileqq/qzonevip/gift/particle/ParticleObject:a	(Landroid/graphics/Canvas;Landroid/graphics/Paint;Landroid/graphics/Matrix;)V
+    //   214: getfield 80	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:b	Landroid/graphics/Matrix;
+    //   217: invokevirtual 215	com/tencent/mobileqq/qzonevip/gift/particle/ParticleObject:a	(Landroid/graphics/Canvas;Landroid/graphics/Paint;Landroid/graphics/Matrix;)V
     //   220: goto -51 -> 169
     //   223: astore 6
     //   225: aload 5
     //   227: astore_3
     //   228: aload 5
     //   230: astore 4
-    //   232: new 153	java/lang/StringBuilder
+    //   232: new 162	java/lang/StringBuilder
     //   235: dup
-    //   236: invokespecial 154	java/lang/StringBuilder:<init>	()V
+    //   236: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   239: astore 8
     //   241: aload 5
     //   243: astore_3
     //   244: aload 5
     //   246: astore 4
     //   248: aload 8
-    //   250: ldc 209
-    //   252: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: ldc 217
+    //   252: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   255: pop
     //   256: aload 5
     //   258: astore_3
@@ -264,167 +256,167 @@ public abstract class ParticleTextureView
     //   261: astore 4
     //   263: aload 8
     //   265: aload 6
-    //   267: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   267: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   270: pop
     //   271: aload 5
     //   273: astore_3
     //   274: aload 5
     //   276: astore 4
-    //   278: ldc 60
+    //   278: ldc 111
     //   280: iconst_1
     //   281: aload 8
-    //   283: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   286: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   283: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   286: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   289: aload_0
-    //   290: getfield 145	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   290: getfield 154	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:n	Landroid/view/Surface;
     //   293: ifnull +164 -> 457
     //   296: aload_0
-    //   297: getfield 145	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   297: getfield 154	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:n	Landroid/view/Surface;
     //   300: aload 5
-    //   302: invokevirtual 151	android/view/Surface:unlockCanvasAndPost	(Landroid/graphics/Canvas;)V
+    //   302: invokevirtual 160	android/view/Surface:unlockCanvasAndPost	(Landroid/graphics/Canvas;)V
     //   305: goto +152 -> 457
     //   308: astore_3
-    //   309: new 153	java/lang/StringBuilder
+    //   309: new 162	java/lang/StringBuilder
     //   312: dup
-    //   313: invokespecial 154	java/lang/StringBuilder:<init>	()V
+    //   313: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   316: astore 4
     //   318: aload 4
-    //   320: ldc 156
-    //   322: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   320: ldc 165
+    //   322: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   325: pop
     //   326: aload 4
     //   328: aload_3
-    //   329: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   329: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   332: pop
     //   333: aload 4
-    //   335: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   335: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   338: astore_3
-    //   339: ldc 60
+    //   339: ldc 111
     //   341: iconst_1
     //   342: aload_3
-    //   343: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   343: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   346: goto +111 -> 457
     //   349: astore 4
     //   351: goto +187 -> 538
     //   354: astore 5
     //   356: aload 4
     //   358: astore_3
-    //   359: new 153	java/lang/StringBuilder
+    //   359: new 162	java/lang/StringBuilder
     //   362: dup
-    //   363: invokespecial 154	java/lang/StringBuilder:<init>	()V
+    //   363: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   366: astore 6
     //   368: aload 4
     //   370: astore_3
     //   371: aload 6
-    //   373: ldc 209
-    //   375: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   373: ldc 217
+    //   375: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   378: pop
     //   379: aload 4
     //   381: astore_3
     //   382: aload 6
     //   384: aload 5
-    //   386: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   386: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   389: pop
     //   390: aload 4
     //   392: astore_3
-    //   393: ldc 60
+    //   393: ldc 111
     //   395: iconst_1
     //   396: aload 6
-    //   398: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   401: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   398: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   401: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   404: aload_0
-    //   405: getfield 145	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   405: getfield 154	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:n	Landroid/view/Surface;
     //   408: ifnull +49 -> 457
     //   411: aload_0
-    //   412: getfield 145	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   412: getfield 154	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:n	Landroid/view/Surface;
     //   415: aload 4
-    //   417: invokevirtual 151	android/view/Surface:unlockCanvasAndPost	(Landroid/graphics/Canvas;)V
+    //   417: invokevirtual 160	android/view/Surface:unlockCanvasAndPost	(Landroid/graphics/Canvas;)V
     //   420: goto +37 -> 457
     //   423: astore_3
-    //   424: new 153	java/lang/StringBuilder
+    //   424: new 162	java/lang/StringBuilder
     //   427: dup
-    //   428: invokespecial 154	java/lang/StringBuilder:<init>	()V
+    //   428: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   431: astore 4
     //   433: aload 4
-    //   435: ldc 156
-    //   437: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   435: ldc 165
+    //   437: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   440: pop
     //   441: aload 4
     //   443: aload_3
-    //   444: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   444: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   447: pop
     //   448: aload 4
-    //   450: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   450: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   453: astore_3
     //   454: goto -115 -> 339
     //   457: aload 7
     //   459: monitorexit
-    //   460: new 153	java/lang/StringBuilder
+    //   460: new 162	java/lang/StringBuilder
     //   463: dup
-    //   464: invokespecial 154	java/lang/StringBuilder:<init>	()V
+    //   464: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   467: astore_3
     //   468: aload_3
-    //   469: ldc 211
-    //   471: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   469: ldc 219
+    //   471: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   474: pop
     //   475: aload_3
-    //   476: invokestatic 143	java/lang/System:currentTimeMillis	()J
+    //   476: invokestatic 152	java/lang/System:currentTimeMillis	()J
     //   479: lload_1
     //   480: lsub
-    //   481: invokevirtual 214	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   481: invokevirtual 222	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   484: pop
-    //   485: ldc 60
+    //   485: ldc 111
     //   487: iconst_1
     //   488: aload_3
-    //   489: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   492: invokestatic 68	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   489: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   492: invokestatic 118	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   495: aload_0
-    //   496: getfield 58	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   496: getfield 109	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:i	Landroid/os/Handler;
     //   499: ifnull +23 -> 522
     //   502: aload_0
-    //   503: getfield 110	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   506: invokevirtual 217	java/util/ArrayList:size	()I
+    //   503: getfield 97	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:d	Ljava/util/ArrayList;
+    //   506: invokevirtual 226	java/util/ArrayList:size	()I
     //   509: ifeq +13 -> 522
     //   512: aload_0
     //   513: iconst_3
     //   514: aload_0
-    //   515: invokevirtual 219	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:a	()I
-    //   518: invokespecial 56	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:a	(II)V
+    //   515: invokevirtual 229	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:getRefreshTime	()I
+    //   518: invokespecial 68	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:b	(II)V
     //   521: return
     //   522: aload_0
-    //   523: getfield 221	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView$ParticleListener	Lcom/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView$ParticleListener;
+    //   523: getfield 231	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:m	Lcom/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView$ParticleListener;
     //   526: astore_3
     //   527: aload_3
     //   528: ifnull +9 -> 537
     //   531: aload_3
-    //   532: invokeinterface 225 1 0
+    //   532: invokeinterface 235 1 0
     //   537: return
     //   538: aload_0
-    //   539: getfield 145	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   539: getfield 154	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:n	Landroid/view/Surface;
     //   542: ifnull +50 -> 592
     //   545: aload_0
-    //   546: getfield 145	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   546: getfield 154	com/tencent/mobileqq/qzonevip/gift/particle/ParticleTextureView:n	Landroid/view/Surface;
     //   549: aload_3
-    //   550: invokevirtual 151	android/view/Surface:unlockCanvasAndPost	(Landroid/graphics/Canvas;)V
+    //   550: invokevirtual 160	android/view/Surface:unlockCanvasAndPost	(Landroid/graphics/Canvas;)V
     //   553: goto +39 -> 592
     //   556: astore_3
-    //   557: new 153	java/lang/StringBuilder
+    //   557: new 162	java/lang/StringBuilder
     //   560: dup
-    //   561: invokespecial 154	java/lang/StringBuilder:<init>	()V
+    //   561: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   564: astore 5
     //   566: aload 5
-    //   568: ldc 156
-    //   570: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   568: ldc 165
+    //   570: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   573: pop
     //   574: aload 5
     //   576: aload_3
-    //   577: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   577: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   580: pop
-    //   581: ldc 60
+    //   581: ldc 111
     //   583: iconst_1
     //   584: aload 5
-    //   586: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   589: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   586: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   589: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   592: aload 4
     //   594: athrow
     //   595: aload 7
@@ -436,7 +428,7 @@ public abstract class ParticleTextureView
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	606	0	this	ParticleTextureView
-    //   3	477	1	l	long
+    //   3	477	1	l1	long
     //   21	1	3	localCanvas1	android.graphics.Canvas
     //   55	1	3	localObject1	Object
     //   59	21	3	localThrowable1	java.lang.Throwable
@@ -506,6 +498,8 @@ public abstract class ParticleTextureView
     //   538	553	556	java/lang/Throwable
   }
   
+  protected abstract int getRefreshTime();
+  
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -514,21 +508,21 @@ public abstract class ParticleTextureView
     localStringBuilder.append(" height = ");
     localStringBuilder.append(paramInt2);
     QLog.i("ParticleTextureView", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(paramSurfaceTexture);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, paramInt1, paramInt2);
+    this.n = new Surface(paramSurfaceTexture);
+    this.f = paramInt1;
+    this.g = paramInt2;
+    this.o = new Rect(0, 0, paramInt1, paramInt2);
     paramSurfaceTexture = new StringBuilder();
     paramSurfaceTexture.append("Particle-Texture-Thread");
     paramSurfaceTexture.append(UUID.randomUUID());
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread(paramSurfaceTexture.toString());
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new ParticleTextureView.WorkHandler(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.h = new HandlerThread(paramSurfaceTexture.toString());
+    this.h.start();
+    this.i = new ParticleTextureView.WorkHandler(this, this.h.getLooper());
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    this.jdField_a_of_type_AndroidViewSurface = null;
+    this.n = null;
     return true;
   }
   
@@ -538,12 +532,12 @@ public abstract class ParticleTextureView
   
   public void setParticleListener(ParticleTextureView.ParticleListener paramParticleListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView$ParticleListener = paramParticleListener;
+    this.m = paramParticleListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.particle.ParticleTextureView
  * JD-Core Version:    0.7.0.1
  */

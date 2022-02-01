@@ -9,24 +9,8 @@ import java.util.Random;
 public class TagUtils
 {
   public static int a = 12;
-  private static Paint a;
-  public static Random a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilRandom = new Random();
-    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  }
-  
-  public static float a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      jdField_a_of_type_AndroidGraphicsPaint.setTextSize(36.0F);
-      return jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString) / 36.0F;
-    }
-    return 1.0F;
-  }
+  public static Random b = new Random();
+  private static Paint c = new Paint();
   
   private static boolean a(int paramInt)
   {
@@ -49,6 +33,16 @@ public class TagUtils
     return true;
   }
   
+  public static float b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      c.setTextSize(36.0F);
+      return c.measureText(paramString) / 36.0F;
+    }
+    return 1.0F;
+  }
+  
   private static boolean b(String paramString, ArrayList<Pair<String, Float>> paramArrayList)
   {
     paramString = paramString.trim();
@@ -61,7 +55,7 @@ public class TagUtils
       if (a(paramString.codePointAt(i)))
       {
         str = paramString.substring(i, i + 1);
-        paramArrayList.add(new Pair(str, Float.valueOf(a(str))));
+        paramArrayList.add(new Pair(str, Float.valueOf(b(str))));
       }
       else
       {
@@ -78,7 +72,7 @@ public class TagUtils
         else
         {
           str = paramString.substring(j, m);
-          paramArrayList.add(new Pair(str, Float.valueOf(a(str))));
+          paramArrayList.add(new Pair(str, Float.valueOf(b(str))));
           k = -1;
         }
         bool = false;
@@ -90,7 +84,7 @@ public class TagUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.TagUtils
  * JD-Core Version:    0.7.0.1
  */

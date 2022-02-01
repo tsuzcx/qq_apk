@@ -26,13 +26,12 @@ import org.json.JSONObject;
 public class AVGameShareEntry
   extends AVGameShareBase
 {
-  public long a;
+  public long b = 0L;
   
   public AVGameShareEntry(Activity paramActivity, String paramString1, String paramString2, long paramLong, String paramString3, int paramInt)
   {
     super(paramActivity, paramString1, paramString2, paramString3, paramInt);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
   }
   
   public static String a(String paramString1, long paramLong, String paramString2)
@@ -61,38 +60,42 @@ public class AVGameShareEntry
     return localJSONObject1.toString();
   }
   
-  protected Intent a()
+  public void A()
   {
-    QLog.d("AVGameShareEntry", 1, "getShareArkIntent");
-    Intent localIntent = new Intent(a(), ForwardRecentActivity.class);
-    localIntent.putExtra("forward_type", 27);
-    localIntent.putExtra("is_ark_display_share", true);
-    localIntent.putExtra("forward_ark_app_name", "com.tencent.avgame");
-    localIntent.putExtra("forward_ark_app_view", "invite");
-    localIntent.putExtra("forward_ark_app_ver", "1.0.0.1");
-    boolean bool = TextUtils.isEmpty(c());
+    if (e() == 0)
+    {
+      ReportController.b(null, "dc00898", "", "", "0X800B068", "0X800B068", e(), 0, "2", String.valueOf(this.b), "", "");
+      return;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", e(), 0, "2", String.valueOf(this.b), "", "");
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2, Activity paramActivity, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareLinkToWeChat(paramString1, paramInt, paramString2, paramActivity, paramString3, paramString4, paramString5, paramString6);
+  }
+  
+  protected void b(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    QLog.d("AVGameShareEntry", 1, "shareToSpecifiedFriend");
+    x();
+    boolean bool = TextUtils.isEmpty(d());
     Object localObject = "邀请你加入派对";
     if (!bool)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(c());
+      ((StringBuilder)localObject).append(d());
       ((StringBuilder)localObject).append("邀请你加入派对");
       localObject = ((StringBuilder)localObject).toString();
     }
-    localIntent.putExtra("forward_ark_app_prompt", (String)localObject);
-    localIntent.putExtra("selection_mode", 2);
-    localIntent.putExtra("avgame_share_callback_key", true);
-    localObject = h();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getShareArkIntent metaDataString: ");
-    localStringBuilder.append((String)localObject);
-    QLog.d("AVGameShareEntry", 1, localStringBuilder.toString());
-    localIntent.putExtra("forward_ark_app_meta", (String)localObject);
-    localIntent.putExtras(QQCustomArkDialog.AppInfo.a("com.tencent.avgame", "invite", "1.0.0.1", (String)localObject, ArkAppCenterUtil.a(), null, null));
-    return localIntent;
+    Bundle localBundle = QQCustomArkDialog.AppInfo.a("com.tencent.avgame", "invite", "1.0.0.1", t(), ArkAppCenterUtil.d(), null, null);
+    localObject = new ArkShareInfo("com.tencent.avgame", "invite", "1.0.0.1", (String)localObject, t(), localBundle, "avgame_share_callback_key");
+    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareArkDirectly("avShareEntry", a(), (ArkShareInfo)localObject, paramActionSheetItem.uinType, paramActionSheetItem.uin);
+    y();
+    QLog.d("AVGameShareEntry", 1, "shareToSpecifiedFriend success");
   }
   
-  protected void a(int paramInt)
+  protected void c(int paramInt)
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("shareToWeChat: shareType is ");
@@ -100,20 +103,20 @@ public class AVGameShareEntry
     QLog.d("AVGameShareEntry", 1, ((StringBuilder)localObject1).toString());
     if (paramInt == 9)
     {
-      if (a() == 0) {
-        ReportController.b(null, "dc00898", "", "", "0X800B066", "0X800B066", a(), 0, "3", String.valueOf(this.jdField_a_of_type_Long), "", "");
+      if (e() == 0) {
+        ReportController.b(null, "dc00898", "", "", "0X800B066", "0X800B066", e(), 0, "3", String.valueOf(this.b), "", "");
       } else {
-        ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "3", String.valueOf(this.jdField_a_of_type_Long), "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", e(), 0, "3", String.valueOf(this.b), "", "");
       }
     }
     else if (paramInt == 10) {
-      if (a() == 0) {
-        ReportController.b(null, "dc00898", "", "", "0X800B066", "0X800B066", a(), 0, "4", String.valueOf(this.jdField_a_of_type_Long), "", "");
+      if (e() == 0) {
+        ReportController.b(null, "dc00898", "", "", "0X800B066", "0X800B066", e(), 0, "4", String.valueOf(this.b), "", "");
       } else {
-        ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "4", String.valueOf(this.jdField_a_of_type_Long), "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", e(), 0, "4", String.valueOf(this.b), "", "");
       }
     }
-    localObject1 = c();
+    localObject1 = d();
     Object localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
@@ -131,160 +134,33 @@ public class AVGameShareEntry
     } else {
       localObject2 = "快来QQ，加入我的派对";
     }
-    if (a())
+    if (f())
     {
       localObject1 = b(paramInt);
       localObject2 = a(paramInt);
     }
-    a("avShareEntry", paramInt, a(), a(), String.valueOf(System.currentTimeMillis()), (String)localObject1, (String)localObject2, g());
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2, Activity paramActivity, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareLinkToWeChat(paramString1, paramInt, paramString2, paramActivity, paramString3, paramString4, paramString5, paramString6);
-  }
-  
-  public void b()
-  {
-    QLog.d("AVGameShareEntry", 1, "showActionSheet");
-    if ((a() != null) && (!TextUtils.isEmpty(b())) && (!TextUtils.isEmpty(a())))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet == null)
-      {
-        QLog.e("AVGameShareEntry", 1, "mShareActionSheet is null");
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing())
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
-        return;
-      }
-      a().getIntent().putExtra("big_brother_source_key", "biz_src_jc_av_game");
-      List localList1 = a();
-      List localList2 = b();
-      Intent localIntent = a();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setIntentForStartForwardRecentActivity(localIntent);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setRowVisibility(0, 0, 0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(localList1, localList2);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(new AVGameShareEntry.1(this));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
-      return;
-    }
-    QLog.e("AVGameShareEntry", 1, "showActionSheet error: params wrong");
-    QQToast.a(a(), 2131690527, 0).a();
-  }
-  
-  public void b(int paramInt)
-  {
-    AVGameShareUtil.a().a(a(), 2, true);
-  }
-  
-  protected void b(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    QLog.d("AVGameShareEntry", 1, "shareToSpecifiedFriend");
-    h();
-    boolean bool = TextUtils.isEmpty(c());
-    Object localObject = "邀请你加入派对";
-    if (!bool)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(c());
-      ((StringBuilder)localObject).append("邀请你加入派对");
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    Bundle localBundle = QQCustomArkDialog.AppInfo.a("com.tencent.avgame", "invite", "1.0.0.1", h(), ArkAppCenterUtil.a(), null, null);
-    localObject = new ArkShareInfo("com.tencent.avgame", "invite", "1.0.0.1", (String)localObject, h(), localBundle, "avgame_share_callback_key");
-    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareArkDirectly("avShareEntry", a(), (ArkShareInfo)localObject, paramActionSheetItem.uinType, paramActionSheetItem.uin);
-    i();
-    QLog.d("AVGameShareEntry", 1, "shareToSpecifiedFriend success");
-  }
-  
-  protected void c()
-  {
-    f();
-    boolean bool = TextUtils.isEmpty(c());
-    Object localObject = "邀请你加入派对";
-    if (!bool)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(c());
-      ((StringBuilder)localObject).append("邀请你加入派对");
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    Bundle localBundle = QQCustomArkDialog.AppInfo.a("com.tencent.avgame", "invite", "1.0.0.1", h(), ArkAppCenterUtil.a(), null, null);
-    localObject = new ArkShareInfo("com.tencent.avgame", "invite", "1.0.0.1", (String)localObject, h(), localBundle, "avgame_share_callback_key");
-    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareArkBySelect("avShareEntry", a(), (ArkShareInfo)localObject);
-    g();
-  }
-  
-  public void c(int paramInt)
-  {
-    QQToast.a(a(), 1, 2131690526, 0).a();
-  }
-  
-  protected void d()
-  {
-    QLog.d("AVGameShareEntry", 1, "shareToQzone");
-    j();
-    e();
-    k();
+    a("avShareEntry", paramInt, b(), a(), String.valueOf(System.currentTimeMillis()), (String)localObject1, (String)localObject2, o());
   }
   
   public void d(int paramInt)
   {
-    QQToast.a(a(), 1, 2131690526, 0).a();
+    AVGameShareUtil.a().a(a(), 2, true);
   }
   
-  protected void e()
+  public void e(int paramInt)
   {
-    QLog.d("AVGameShareEntry", 1, "shareLinkToQzone");
-    QzoneLinkShareInfo localQzoneLinkShareInfo = new QzoneLinkShareInfo();
-    if (TextUtils.isEmpty(c()))
-    {
-      localQzoneLinkShareInfo.b("邀请你加入派对");
-      localQzoneLinkShareInfo.d("邀请你加入派对");
-    }
-    else
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(c());
-      localStringBuilder.append("邀请你加入派对");
-      localQzoneLinkShareInfo.b(localStringBuilder.toString());
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(c());
-      localStringBuilder.append("邀请你加入派对");
-      localQzoneLinkShareInfo.d(localStringBuilder.toString());
-    }
-    localQzoneLinkShareInfo.a("QQ一起派对");
-    localQzoneLinkShareInfo.a(new ArrayList());
-    localQzoneLinkShareInfo.a().add(f());
-    if (b())
-    {
-      localQzoneLinkShareInfo.b(e());
-      localQzoneLinkShareInfo.d(e());
-      localQzoneLinkShareInfo.a(d());
-    }
-    localQzoneLinkShareInfo.c(a());
-    localQzoneLinkShareInfo.a(0);
-    localQzoneLinkShareInfo.e(b());
-    localQzoneLinkShareInfo.b(b());
-    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareToQZoneWithLink("avShareEntry", a(), localQzoneLinkShareInfo);
-  }
-  
-  public void f()
-  {
-    if (a() == 0)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800B066", "0X800B066", a(), 0, "1", String.valueOf(this.jdField_a_of_type_Long), "", "");
-      return;
-    }
-    ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "1", String.valueOf(this.jdField_a_of_type_Long), "", "");
+    QQToast.makeText(a(), 1, 2131887437, 0).show();
   }
   
   public void f(int paramInt)
   {
+    QQToast.makeText(a(), 1, 2131887437, 0).show();
+  }
+  
+  public void h(int paramInt)
+  {
     String str;
-    if (a() == 0)
+    if (e() == 0)
     {
       if (paramInt == 9) {
         str = "3";
@@ -294,7 +170,7 @@ public class AVGameShareEntry
       ReportController.b(null, "dc00898", "", "", "0X800B068", "0X800B068", 0, 0, str, "", "", "");
       return;
     }
-    int i = a();
+    int i = e();
     if (paramInt == 9) {
       str = "3";
     } else {
@@ -303,21 +179,98 @@ public class AVGameShareEntry
     ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", i, 0, str, "", "", "");
   }
   
-  public void g()
+  public void p()
   {
-    if (a() == 0)
+    QLog.d("AVGameShareEntry", 1, "showActionSheet");
+    if ((a() != null) && (!TextUtils.isEmpty(c())) && (!TextUtils.isEmpty(b())))
     {
-      ReportController.b(null, "dc00898", "", "", "0X800B068", "0X800B068", a(), 0, "1", String.valueOf(this.jdField_a_of_type_Long), "", "");
+      if (this.a == null)
+      {
+        QLog.e("AVGameShareEntry", 1, "mShareActionSheet is null");
+        return;
+      }
+      if (this.a.isShowing())
+      {
+        this.a.dismiss();
+        return;
+      }
+      a().getIntent().putExtra("big_brother_source_key", "biz_src_jc_av_game");
+      List localList1 = j();
+      List localList2 = k();
+      Intent localIntent = s();
+      this.a.setIntentForStartForwardRecentActivity(localIntent);
+      this.a.setRowVisibility(0, 0, 0);
+      this.a.setActionSheetItems(localList1, localList2);
+      this.a.setItemClickListenerV2(new AVGameShareEntry.1(this));
+      this.a.show();
       return;
     }
-    ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "1", String.valueOf(this.jdField_a_of_type_Long), "", "");
+    QLog.e("AVGameShareEntry", 1, "showActionSheet error: params wrong");
+    QQToast.makeText(a(), 2131887438, 0).show();
   }
   
-  protected String h()
+  protected void q()
+  {
+    v();
+    boolean bool = TextUtils.isEmpty(d());
+    Object localObject = "邀请你加入派对";
+    if (!bool)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(d());
+      ((StringBuilder)localObject).append("邀请你加入派对");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    Bundle localBundle = QQCustomArkDialog.AppInfo.a("com.tencent.avgame", "invite", "1.0.0.1", t(), ArkAppCenterUtil.d(), null, null);
+    localObject = new ArkShareInfo("com.tencent.avgame", "invite", "1.0.0.1", (String)localObject, t(), localBundle, "avgame_share_callback_key");
+    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareArkBySelect("avShareEntry", a(), (ArkShareInfo)localObject);
+    w();
+  }
+  
+  protected void r()
+  {
+    QLog.d("AVGameShareEntry", 1, "shareToQzone");
+    z();
+    u();
+    A();
+  }
+  
+  protected Intent s()
+  {
+    QLog.d("AVGameShareEntry", 1, "getShareArkIntent");
+    Intent localIntent = new Intent(a(), ForwardRecentActivity.class);
+    localIntent.putExtra("forward_type", 27);
+    localIntent.putExtra("is_ark_display_share", true);
+    localIntent.putExtra("forward_ark_app_name", "com.tencent.avgame");
+    localIntent.putExtra("forward_ark_app_view", "invite");
+    localIntent.putExtra("forward_ark_app_ver", "1.0.0.1");
+    boolean bool = TextUtils.isEmpty(d());
+    Object localObject = "邀请你加入派对";
+    if (!bool)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(d());
+      ((StringBuilder)localObject).append("邀请你加入派对");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localIntent.putExtra("forward_ark_app_prompt", (String)localObject);
+    localIntent.putExtra("selection_mode", 2);
+    localIntent.putExtra("avgame_share_callback_key", true);
+    localObject = t();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getShareArkIntent metaDataString: ");
+    localStringBuilder.append((String)localObject);
+    QLog.d("AVGameShareEntry", 1, localStringBuilder.toString());
+    localIntent.putExtra("forward_ark_app_meta", (String)localObject);
+    localIntent.putExtras(QQCustomArkDialog.AppInfo.a("com.tencent.avgame", "invite", "1.0.0.1", (String)localObject, ArkAppCenterUtil.d(), null, null));
+    return localIntent;
+  }
+  
+  protected String t()
   {
     try
     {
-      String str = a(b(), this.jdField_a_of_type_Long, a());
+      String str = a(c(), this.b, b());
       return str;
     }
     catch (JSONException localJSONException)
@@ -330,49 +283,95 @@ public class AVGameShareEntry
     return "";
   }
   
-  public void h()
+  protected void u()
   {
-    if (a() == 0)
+    QLog.d("AVGameShareEntry", 1, "shareLinkToQzone");
+    QzoneLinkShareInfo localQzoneLinkShareInfo = new QzoneLinkShareInfo();
+    if (TextUtils.isEmpty(d()))
     {
-      ReportController.b(null, "dc00898", "", "", "0X800B066", "0X800B066", a(), 0, "0", String.valueOf(this.jdField_a_of_type_Long), "", "");
-      return;
+      localQzoneLinkShareInfo.b("邀请你加入派对");
+      localQzoneLinkShareInfo.d("邀请你加入派对");
     }
-    ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "0", String.valueOf(this.jdField_a_of_type_Long), "", "");
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(d());
+      localStringBuilder.append("邀请你加入派对");
+      localQzoneLinkShareInfo.b(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(d());
+      localStringBuilder.append("邀请你加入派对");
+      localQzoneLinkShareInfo.d(localStringBuilder.toString());
+    }
+    localQzoneLinkShareInfo.a("QQ一起派对");
+    localQzoneLinkShareInfo.a(new ArrayList());
+    localQzoneLinkShareInfo.c().add(n());
+    if (g())
+    {
+      localQzoneLinkShareInfo.b(i());
+      localQzoneLinkShareInfo.d(i());
+      localQzoneLinkShareInfo.a(h());
+    }
+    localQzoneLinkShareInfo.c(b());
+    localQzoneLinkShareInfo.a(0);
+    localQzoneLinkShareInfo.e(c());
+    localQzoneLinkShareInfo.b(l());
+    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareToQZoneWithLink("avShareEntry", a(), localQzoneLinkShareInfo);
   }
   
-  public void i()
+  public void v()
   {
-    if (a() == 0)
+    if (e() == 0)
     {
-      ReportController.b(null, "dc00898", "", "", "0X800B068", "0X800B068", a(), 0, "0", String.valueOf(this.jdField_a_of_type_Long), "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B066", "0X800B066", e(), 0, "1", String.valueOf(this.b), "", "");
       return;
     }
-    ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "0", String.valueOf(this.jdField_a_of_type_Long), "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", e(), 0, "1", String.valueOf(this.b), "", "");
   }
   
-  public void j()
+  public void w()
   {
-    if (a() == 0)
+    if (e() == 0)
     {
-      ReportController.b(null, "dc00898", "", "", "0X800B066", "0X800B066", a(), 0, "2", String.valueOf(this.jdField_a_of_type_Long), "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B068", "0X800B068", e(), 0, "1", String.valueOf(this.b), "", "");
       return;
     }
-    ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "2", String.valueOf(this.jdField_a_of_type_Long), "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", e(), 0, "1", String.valueOf(this.b), "", "");
   }
   
-  public void k()
+  public void x()
   {
-    if (a() == 0)
+    if (e() == 0)
     {
-      ReportController.b(null, "dc00898", "", "", "0X800B068", "0X800B068", a(), 0, "2", String.valueOf(this.jdField_a_of_type_Long), "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B066", "0X800B066", e(), 0, "0", String.valueOf(this.b), "", "");
       return;
     }
-    ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "2", String.valueOf(this.jdField_a_of_type_Long), "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", e(), 0, "0", String.valueOf(this.b), "", "");
+  }
+  
+  public void y()
+  {
+    if (e() == 0)
+    {
+      ReportController.b(null, "dc00898", "", "", "0X800B068", "0X800B068", e(), 0, "0", String.valueOf(this.b), "", "");
+      return;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", e(), 0, "0", String.valueOf(this.b), "", "");
+  }
+  
+  public void z()
+  {
+    if (e() == 0)
+    {
+      ReportController.b(null, "dc00898", "", "", "0X800B066", "0X800B066", e(), 0, "2", String.valueOf(this.b), "", "");
+      return;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", e(), 0, "2", String.valueOf(this.b), "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.avgameshare.AVGameShareEntry
  * JD-Core Version:    0.7.0.1
  */

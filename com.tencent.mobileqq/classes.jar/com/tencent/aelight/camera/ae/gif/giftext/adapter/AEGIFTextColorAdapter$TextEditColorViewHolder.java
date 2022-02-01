@@ -13,7 +13,7 @@ class AEGIFTextColorAdapter$TextEditColorViewHolder
   public AEGIFTextColorAdapter$TextEditColorViewHolder(@NonNull View paramView)
   {
     super(paramView);
-    this.a = ((AEGIFTextColorSelectionView)paramView.findViewById(2064122008));
+    this.a = ((AEGIFTextColorSelectionView)paramView.findViewById(2063990939));
   }
   
   public void a(String paramString)
@@ -28,7 +28,7 @@ class AEGIFTextColorAdapter$TextEditColorViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.adapter.AEGIFTextColorAdapter.TextEditColorViewHolder
  * JD-Core Version:    0.7.0.1
  */

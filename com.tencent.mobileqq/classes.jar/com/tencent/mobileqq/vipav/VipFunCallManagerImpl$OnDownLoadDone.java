@@ -9,42 +9,52 @@ import java.io.File;
 
 class VipFunCallManagerImpl$OnDownLoadDone
 {
-  private int jdField_a_of_type_Int;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean b;
   private int c;
   private int d;
+  private boolean e;
+  private int f;
+  private String g;
+  private String h;
+  private File i;
+  private int j;
+  private Bundle k;
   
   public VipFunCallManagerImpl$OnDownLoadDone(VipFunCallManagerImpl paramVipFunCallManagerImpl, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramBoolean;
+    this.f = paramInt3;
+    this.g = paramString1;
+    this.h = paramString2;
   }
   
-  public int a()
+  boolean a()
   {
-    return this.d;
+    return this.b;
   }
   
-  public Bundle a()
+  public File b()
   {
-    return this.jdField_a_of_type_AndroidOsBundle;
+    return this.i;
   }
   
-  public OnDownLoadDone a()
+  public int c()
   {
-    this.jdField_a_of_type_JavaIoFile = new File(this.jdField_b_of_type_JavaLangString);
+    return this.j;
+  }
+  
+  public Bundle d()
+  {
+    return this.k;
+  }
+  
+  public OnDownLoadDone e()
+  {
+    this.i = new File(this.h);
     boolean bool;
-    if ((this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_JavaIoFile.isFile())) {
+    if ((this.i.exists()) && (this.i.isFile())) {
       bool = true;
     } else {
       bool = false;
@@ -54,61 +64,51 @@ class VipFunCallManagerImpl$OnDownLoadDone
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("startDownload exists(), id=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      ((StringBuilder)localObject).append(", resType=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
-      ((StringBuilder)localObject).append(", isIPC=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
-      ((StringBuilder)localObject).append(", srcType=");
       ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(", resType=");
+      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append(", isIPC=");
+      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append(", srcType=");
+      ((StringBuilder)localObject).append(this.f);
       ((StringBuilder)localObject).append(", fileExist=");
       ((StringBuilder)localObject).append(bool);
       QLog.d("VipFunCallManager", 2, ((StringBuilder)localObject).toString());
     }
-    if ((bool) && (!this.jdField_b_of_type_Boolean))
+    if ((bool) && (!this.e))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       return this;
     }
-    this.d = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    if ((7 != VipFunCallUtil.a()) && (7 == this.d)) {
-      this.d = 0;
+    this.j = this.d;
+    this.k = new Bundle();
+    if ((7 != VipFunCallUtil.c()) && (7 == this.j)) {
+      this.j = 0;
     }
-    this.jdField_a_of_type_AndroidOsBundle.putInt("callId", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidOsBundle.putString("path", this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("isIPC", this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_AndroidOsBundle.putInt("resourceType", this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidOsBundle.putInt("srcType", this.c);
-    this.jdField_a_of_type_AndroidOsBundle.putInt("dealType", this.d);
+    this.k.putInt("callId", this.c);
+    this.k.putString("path", this.h);
+    this.k.putBoolean("isIPC", this.e);
+    this.k.putInt("resourceType", this.d);
+    this.k.putInt("srcType", this.f);
+    this.k.putInt("dealType", this.j);
     if (bool)
     {
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean("isExists", true);
-      localObject = new DownloadTask(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
+      this.k.putBoolean("isExists", true);
+      localObject = new DownloadTask(this.g, this.i);
       ((DownloadTask)localObject).a(3);
-      ((DownloadTask)localObject).jdField_a_of_type_Int = 0;
-      ((DownloadTask)localObject).a(this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallManagerImpl.a.onDone((DownloadTask)localObject);
-      this.jdField_a_of_type_Boolean = true;
+      ((DownloadTask)localObject).c = 0;
+      ((DownloadTask)localObject).a(this.k);
+      this.a.b.onDone((DownloadTask)localObject);
+      this.b = true;
       return this;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
     return this;
-  }
-  
-  public File a()
-  {
-    return this.jdField_a_of_type_JavaIoFile;
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vipav.VipFunCallManagerImpl.OnDownLoadDone
  * JD-Core Version:    0.7.0.1
  */

@@ -20,8 +20,8 @@ class AECMShowResourceManager$1
     boolean[] arrayOfBoolean = new boolean[1];
     arrayOfBoolean[0] = true;
     HashMap localHashMap = new HashMap();
-    CountDownLatch localCountDownLatch = new CountDownLatch(this.jdField_a_of_type_JavaUtilList.size());
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    CountDownLatch localCountDownLatch = new CountDownLatch(this.a.size());
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -45,7 +45,7 @@ class AECMShowResourceManager$1
           localHashMap.put(str, null);
           localCountDownLatch.countDown();
         }
-        else if (this.this$0.a((AEEditorDownloadResBean)localObject))
+        else if (this.this$0.b((AEEditorDownloadResBean)localObject))
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("[downloadEssentialResource], resId=");
@@ -69,7 +69,7 @@ class AECMShowResourceManager$1
     {
       AEQLog.a("AECMShowResourceManager", "[downloadEssentialResource], e=", localInterruptedException);
     }
-    CMJoyEssentialDownloadCallback localCMJoyEssentialDownloadCallback = this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCMJoyEssentialDownloadCallback;
+    CMJoyEssentialDownloadCallback localCMJoyEssentialDownloadCallback = this.b;
     if (localCMJoyEssentialDownloadCallback != null) {
       localCMJoyEssentialDownloadCallback.a(arrayOfBoolean[0], localHashMap);
     }
@@ -77,7 +77,7 @@ class AECMShowResourceManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowResourceManager.1
  * JD-Core Version:    0.7.0.1
  */

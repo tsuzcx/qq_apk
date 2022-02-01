@@ -18,15 +18,15 @@ class RMVideoInitState$1
       QLog.d("RMVideoInitState", 2, "[@] delayInit,run start");
     }
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.d())
+    if (!localRMVideoStateMgr.n())
     {
       RMVideoStateMgr.b(null);
-      if (!localRMVideoStateMgr.d()) {
+      if (!localRMVideoStateMgr.n()) {
         return;
       }
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(GloableValue.a);
+    ((StringBuilder)localObject).append(GloableValue.b);
     ((StringBuilder)localObject).append(File.separator);
     ((StringBuilder)localObject).append(".nomedia");
     localObject = new File(((StringBuilder)localObject).toString());
@@ -43,10 +43,10 @@ class RMVideoInitState$1
     if (QLog.isColorLevel()) {
       QLog.d("RMVideoInitState", 2, "[@] delayInit, post timeout runnable");
     }
-    localRMVideoStateMgr.a.postDelayed(this.this$0.a, 10000L);
-    localRMVideoStateMgr.l();
-    localRMVideoStateMgr.m();
-    localRMVideoStateMgr.k();
+    localRMVideoStateMgr.I.postDelayed(this.this$0.g, 10000L);
+    localRMVideoStateMgr.s();
+    localRMVideoStateMgr.t();
+    localRMVideoStateMgr.r();
     try
     {
       AVCodec.get().init();
@@ -64,7 +64,7 @@ class RMVideoInitState$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.1
  * JD-Core Version:    0.7.0.1
  */

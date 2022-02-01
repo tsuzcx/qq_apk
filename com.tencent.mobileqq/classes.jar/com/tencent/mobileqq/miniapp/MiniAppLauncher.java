@@ -8,10 +8,10 @@ import com.tencent.qphone.base.util.QLog;
 
 public class MiniAppLauncher
 {
-  private boolean a(IApp paramIApp, MiniAppOptions paramMiniAppOptions)
+  private boolean b(IApp paramIApp, MiniAppOptions paramMiniAppOptions)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher", 2, new Object[] { "checkMemory. cacheKey=", paramIApp.a.h });
+      QLog.d("MiniAppLauncher", 2, new Object[] { "checkMemory. cacheKey=", paramIApp.b.p });
     }
     return true;
   }
@@ -47,24 +47,24 @@ public class MiniAppLauncher
   
   void a(IApp paramIApp, MiniAppOptions paramMiniAppOptions)
   {
-    if (!a(paramIApp, paramMiniAppOptions)) {
+    if (!b(paramIApp, paramMiniAppOptions)) {
       return;
     }
-    DeviceInfoUtil.a();
+    DeviceInfoUtil.A();
     paramIApp.a();
   }
   
   void a(MiniAppInfo paramMiniAppInfo, @NonNull IDownloader paramIDownloader)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher", 2, new Object[] { "downloadApp. cacheKey=", paramMiniAppInfo.h });
+      QLog.d("MiniAppLauncher", 2, new Object[] { "downloadApp. cacheKey=", paramMiniAppInfo.p });
     }
-    paramIDownloader.a(paramMiniAppInfo.f, "MiniAppLauncher", paramMiniAppInfo.h);
+    paramIDownloader.a(paramMiniAppInfo.j, "MiniAppLauncher", paramMiniAppInfo.p);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppLauncher
  * JD-Core Version:    0.7.0.1
  */

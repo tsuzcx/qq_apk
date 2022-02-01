@@ -16,16 +16,16 @@ class LikeRankingListActivity$9
   public void run()
   {
     Object localObject = this.this$0;
-    localObject = new UpSideDownDrawable((Context)localObject, this.a, ((LikeRankingListActivity)localObject).b.getWidth(), this.this$0.b.getHeight());
-    this.this$0.b.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.this$0.b.setImageDrawable((Drawable)localObject);
+    localObject = new UpSideDownDrawable((Context)localObject, this.a, ((LikeRankingListActivity)localObject).q.getWidth(), this.this$0.q.getHeight());
+    this.this$0.q.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.this$0.q.setImageDrawable((Drawable)localObject);
     ((UpSideDownDrawable)localObject).start();
-    this.this$0.a.a(false);
+    this.this$0.m.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.9
  * JD-Core Version:    0.7.0.1
  */

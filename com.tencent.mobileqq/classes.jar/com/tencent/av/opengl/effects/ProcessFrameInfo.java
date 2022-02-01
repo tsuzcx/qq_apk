@@ -4,22 +4,22 @@ import com.tencent.qphone.base.util.QLog;
 
 public class ProcessFrameInfo
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  boolean jdField_a_of_type_Boolean = false;
+  int a = 0;
   int b = 0;
   int c = 0;
   int d = 0;
+  long e = 0L;
+  boolean f = false;
   
   void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, boolean paramBoolean, long paramLong2)
   {
     if (paramArrayOfByte != null)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       if (i != 0)
       {
         int j = this.b;
-        if ((j != 0) && (i == paramInt1) && (j == paramInt2) && (this.c == paramInt3) && (this.d == paramInt4) && (this.jdField_a_of_type_Long == paramLong1) && (this.jdField_a_of_type_Boolean == paramBoolean)) {
+        if ((j != 0) && (i == paramInt1) && (j == paramInt2) && (this.c == paramInt3) && (this.d == paramInt4) && (this.e == paramLong1) && (this.f == paramBoolean)) {
           return;
         }
       }
@@ -38,7 +38,7 @@ public class ProcessFrameInfo
       localStringBuilder.append("], frameIndex[");
       localStringBuilder.append(paramLong2);
       localStringBuilder.append("], width[");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("->");
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("], height[");
@@ -54,22 +54,22 @@ public class ProcessFrameInfo
       localStringBuilder.append("->");
       localStringBuilder.append(paramInt4);
       localStringBuilder.append("], FPS[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.e);
       localStringBuilder.append("->");
       localStringBuilder.append(paramLong1);
       localStringBuilder.append("], isFront[");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.f);
       localStringBuilder.append("->");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append("]");
       QLog.d("ProcessFrameInfo", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
     this.c = paramInt3;
     this.d = paramInt4;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramLong1;
+    this.f = paramBoolean;
   }
 }
 

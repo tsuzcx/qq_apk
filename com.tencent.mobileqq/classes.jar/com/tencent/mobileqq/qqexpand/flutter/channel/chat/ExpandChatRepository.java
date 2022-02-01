@@ -44,42 +44,42 @@ import mqq.os.MqqHandler;
 public class ExpandChatRepository
   implements Handler.Callback
 {
-  private long jdField_a_of_type_Long = 0L;
-  private final FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ExpandChatRepository.2(this);
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final ExpandObserver jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver = new ExpandChatRepository.1(this);
-  private final HashMap<String, RecentMatchChatListItem> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<RecentMatchChatListItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final Observer jdField_a_of_type_JavaUtilObserver = new ExpandChatRepository.3(this);
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private final List<Integer> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private volatile boolean jdField_b_of_type_Boolean = false;
-  private final List<Long> c = new ArrayList();
+  private List<RecentMatchChatListItem> a = new ArrayList();
+  private final HashMap<String, RecentMatchChatListItem> b = new HashMap();
+  private final MqqHandler c;
+  private volatile boolean d = false;
+  private long e = 0L;
+  private volatile boolean f = false;
+  private final List<Integer> g = new ArrayList();
+  private final List<Long> h = new ArrayList();
+  private final ExpandObserver i = new ExpandChatRepository.1(this);
+  private final QQAppInterface j;
+  private final FriendListObserver k = new ExpandChatRepository.2(this);
+  private final Observer l = new ExpandChatRepository.3(this);
   
   public ExpandChatRepository(@NonNull QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver);
-    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
+    this.j = paramQQAppInterface;
+    this.j.addObserver(this.i);
+    paramQQAppInterface = this.j.getMessageFacade();
     if (paramQQAppInterface != null) {
-      paramQQAppInterface.addObserver(this.jdField_a_of_type_JavaUtilObserver);
+      paramQQAppInterface.addObserver(this.l);
     } else {
       QLog.e("expand.chat.ExpandChatRepository", 1, "msg facade is null?");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(ThreadManager.getSubThreadLooper(), this);
+    this.j.addObserver(this.k);
+    this.c = new CustomHandler(ThreadManager.getSubThreadLooper(), this);
   }
   
   private ExpandConverListResponse a(int paramInt1, int paramInt2, ExpandChatRepository.GetConversationListCallback paramGetConversationListCallback)
   {
     ExpandConverListResponse localExpandConverListResponse = new ExpandConverListResponse();
     paramInt2 += paramInt1;
-    if (paramInt2 >= this.jdField_a_of_type_JavaUtilList.size())
+    if (paramInt2 >= this.a.size())
     {
       localExpandConverListResponse.finishFlag = true;
       localExpandConverListResponse.cursor = "";
-      paramInt2 = this.jdField_a_of_type_JavaUtilList.size();
+      paramInt2 = this.a.size();
     }
     else
     {
@@ -89,7 +89,7 @@ public class ExpandChatRepository
       ((StringBuilder)localObject1).append("");
       localExpandConverListResponse.cursor = ((StringBuilder)localObject1).toString();
     }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList.subList(paramInt1, paramInt2);
+    Object localObject2 = this.a.subList(paramInt1, paramInt2);
     Object localObject1 = new ArrayList(((List)localObject2).size());
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
@@ -97,10 +97,10 @@ public class ExpandChatRepository
     }
     localExpandConverListResponse.conversations = ((List)localObject1);
     paramGetConversationListCallback.a(0, "", localExpandConverListResponse);
-    if (!this.c.isEmpty())
+    if (!this.h.isEmpty())
     {
       paramGetConversationListCallback = new ArrayList();
-      localObject1 = new ArrayList(this.c);
+      localObject1 = new ArrayList(this.h);
       localObject2 = localExpandConverListResponse.conversations.iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -135,33 +135,6 @@ public class ExpandChatRepository
     return localExpandConverListResponse;
   }
   
-  private List<RecentMatchChatListItem> a()
-  {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(AppConstants.MATCH_CHAT_UIN, 1044, null, 150);
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new ArrayList();
-    }
-    localObject1 = c(a((List)localObject1));
-    this.jdField_a_of_type_JavaUtilList = ((List)localObject1);
-    this.jdField_a_of_type_Boolean = true;
-    localObject2 = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      RecentMatchChatListItem localRecentMatchChatListItem = (RecentMatchChatListItem)localIterator.next();
-      this.jdField_a_of_type_JavaUtilHashMap.put(localRecentMatchChatListItem.getRecentUserUin(), localRecentMatchChatListItem);
-      ((List)localObject2).add(localRecentMatchChatListItem.getRecentUserUin());
-    }
-    a((List)localObject2);
-    return localObject1;
-  }
-  
-  private List<MessageRecord> a(List<MessageRecord> paramList)
-  {
-    return b(paramList);
-  }
-  
   private void a(ExpandConversation paramExpandConversation)
   {
     Object localObject = new ArrayList(1);
@@ -177,7 +150,7 @@ public class ExpandChatRepository
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    Object localObject = (RecentMatchChatListItem)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    Object localObject = (RecentMatchChatListItem)this.b.get(paramString);
     if (localObject == null)
     {
       b(paramString);
@@ -217,20 +190,64 @@ public class ExpandChatRepository
     QIPCServerHelper.getInstance().getServer().callClient(((IExpandFlutterIPCServerHelper)QRoute.api(IExpandFlutterIPCServerHelper.class)).getProcessName(), 1, "ExpandFlutterIPCClient", "notifyGetOnLineStateResponse", localBundle);
   }
   
-  private List<MessageRecord> b(List<MessageRecord> paramList)
+  private List<RecentMatchChatListItem> b()
+  {
+    Object localObject2 = this.j.getMessageFacade().a(AppConstants.MATCH_CHAT_UIN, 1044, null, 150);
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new ArrayList();
+    }
+    localObject1 = e(c((List)localObject1));
+    this.a = ((List)localObject1);
+    this.d = true;
+    localObject2 = new ArrayList(this.a.size());
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      RecentMatchChatListItem localRecentMatchChatListItem = (RecentMatchChatListItem)localIterator.next();
+      this.b.put(localRecentMatchChatListItem.getRecentUserUin(), localRecentMatchChatListItem);
+      ((List)localObject2).add(localRecentMatchChatListItem.getRecentUserUin());
+    }
+    a((List)localObject2);
+    return localObject1;
+  }
+  
+  private void b(String paramString)
+  {
+    Object localObject = new ArrayList(1);
+    ((List)localObject).add(paramString);
+    paramString = new Gson().toJson(localObject);
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("response", paramString);
+    QIPCServerHelper.getInstance().getServer().callClient(((IExpandFlutterIPCServerHelper)QRoute.api(IExpandFlutterIPCServerHelper.class)).getProcessName(), 1, "ExpandFlutterIPCClient", "notifyConversationDelete", (Bundle)localObject);
+  }
+  
+  private List<MessageRecord> c(List<MessageRecord> paramList)
+  {
+    return d(paramList);
+  }
+  
+  private void c()
+  {
+    Bundle localBundle = new Bundle();
+    QIPCServerHelper.getInstance().getServer().callClient(((IExpandFlutterIPCServerHelper)QRoute.api(IExpandFlutterIPCServerHelper.class)).getProcessName(), 1, "ExpandFlutterIPCClient", "notifyConversationRefresh", localBundle);
+    QLog.i("expand.chat.ExpandChatRepository", 1, "notifyRefreshConversationList");
+  }
+  
+  private List<MessageRecord> d(List<MessageRecord> paramList)
   {
     Object localObject = new ArrayList();
     paramList = new ArrayList(paramList);
     HashSet localHashSet = new HashSet();
-    int i = paramList.size() - 1;
-    while (i >= 0)
+    int m = paramList.size() - 1;
+    while (m >= 0)
     {
-      if (localHashSet.contains(UinTypeUtil.b((MessageRecord)paramList.get(i)))) {
-        ((List)localObject).add(paramList.get(i));
+      if (localHashSet.contains(UinTypeUtil.b((MessageRecord)paramList.get(m)))) {
+        ((List)localObject).add(paramList.get(m));
       } else {
-        localHashSet.add(UinTypeUtil.b((MessageRecord)paramList.get(i)));
+        localHashSet.add(UinTypeUtil.b((MessageRecord)paramList.get(m)));
       }
-      i -= 1;
+      m -= 1;
     }
     paramList.removeAll((Collection)localObject);
     Collections.reverse(paramList);
@@ -245,24 +262,7 @@ public class ExpandChatRepository
     return paramList;
   }
   
-  private void b()
-  {
-    Bundle localBundle = new Bundle();
-    QIPCServerHelper.getInstance().getServer().callClient(((IExpandFlutterIPCServerHelper)QRoute.api(IExpandFlutterIPCServerHelper.class)).getProcessName(), 1, "ExpandFlutterIPCClient", "notifyConversationRefresh", localBundle);
-    QLog.i("expand.chat.ExpandChatRepository", 1, "notifyRefreshConversationList");
-  }
-  
-  private void b(String paramString)
-  {
-    Object localObject = new ArrayList(1);
-    ((List)localObject).add(paramString);
-    paramString = new Gson().toJson(localObject);
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("response", paramString);
-    QIPCServerHelper.getInstance().getServer().callClient(((IExpandFlutterIPCServerHelper)QRoute.api(IExpandFlutterIPCServerHelper.class)).getProcessName(), 1, "ExpandFlutterIPCClient", "notifyConversationDelete", (Bundle)localObject);
-  }
-  
-  private List<RecentMatchChatListItem> c(List<MessageRecord> paramList)
+  private List<RecentMatchChatListItem> e(List<MessageRecord> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList != null)
@@ -277,7 +277,7 @@ public class ExpandChatRepository
         if (localMessageRecord != null)
         {
           RecentMatchChatListItem localRecentMatchChatListItem = new RecentMatchChatListItem(localMessageRecord);
-          localRecentMatchChatListItem.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
+          localRecentMatchChatListItem.a(this.j, BaseApplicationImpl.getContext());
           localArrayList.add(localRecentMatchChatListItem);
           ((IExpandManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a(localMessageRecord.frienduin, true);
         }
@@ -288,8 +288,8 @@ public class ExpandChatRepository
   
   public int a(List<String> paramList)
   {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_b_of_type_Boolean) || (l - this.jdField_a_of_type_Long > 180000L))
+    long l1 = System.currentTimeMillis();
+    if ((this.f) || (l1 - this.e > 180000L))
     {
       ArrayList localArrayList = new ArrayList();
       paramList = paramList.iterator();
@@ -311,15 +311,15 @@ public class ExpandChatRepository
       }
       if (!localArrayList.isEmpty())
       {
-        paramList = (IExpandHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
-        int i = paramList.a();
-        if (paramList.a(localArrayList, i))
+        paramList = (IExpandHandler)this.j.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
+        int m = paramList.c();
+        if (paramList.a(localArrayList, m))
         {
-          this.jdField_a_of_type_Long = l;
-          this.jdField_b_of_type_Boolean = false;
-          this.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(i));
+          this.e = l1;
+          this.f = false;
+          this.g.add(Integer.valueOf(m));
         }
-        return i;
+        return m;
       }
     }
     return 0;
@@ -327,18 +327,18 @@ public class ExpandChatRepository
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
+    this.j.removeObserver(this.i);
+    this.j.removeObserver(this.k);
+    QQMessageFacade localQQMessageFacade = this.j.getMessageFacade();
     if (localQQMessageFacade != null) {
-      localQQMessageFacade.deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+      localQQMessageFacade.deleteObserver(this.l);
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Boolean = false;
-    this.c.clear();
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(0);
+    this.a.clear();
+    this.d = false;
+    this.h.clear();
+    this.g.clear();
+    this.e = 0L;
+    this.c.removeMessages(0);
     QLog.i("expand.chat.ExpandChatRepository", 1, "onDestroy");
   }
   
@@ -353,7 +353,7 @@ public class ExpandChatRepository
       paramGetConversationListCallback.a(-1, "pageCount error", null);
       return;
     }
-    long l = SystemClock.elapsedRealtime();
+    long l1 = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
@@ -368,22 +368,22 @@ public class ExpandChatRepository
       paramString = new Message();
       paramString.what = 0;
       paramString.arg2 = paramInt;
-      paramString.obj = new ExpandChatRepository.GetConversationListFirstPageEvent(this, l, paramInt, paramGetConversationListCallback);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramString);
+      paramString.obj = new ExpandChatRepository.GetConversationListFirstPageEvent(this, l1, paramInt, paramGetConversationListCallback);
+      this.c.sendMessage(paramString);
       return;
     }
     try
     {
-      int j = Integer.parseInt(paramString);
-      int i;
-      if (j < 0)
+      int n = Integer.parseInt(paramString);
+      int m;
+      if (n < 0)
       {
-        i = 0;
+        m = 0;
       }
       else
       {
-        i = j;
-        if (j >= this.jdField_a_of_type_JavaUtilList.size())
+        m = n;
+        if (n >= this.a.size())
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("getConversationList find no data with cursor:");
@@ -396,12 +396,12 @@ public class ExpandChatRepository
           return;
         }
       }
-      a(i, paramInt, paramGetConversationListCallback);
+      a(m, paramInt, paramGetConversationListCallback);
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("getConversationList time cost:");
-        paramString.append(SystemClock.elapsedRealtime() - l);
+        paramString.append(SystemClock.elapsedRealtime() - l1);
         QLog.d("expand.chat.ExpandChatRepository", 2, paramString.toString());
       }
       return;
@@ -421,7 +421,7 @@ public class ExpandChatRepository
     paramGetConversationListCallback.a(-1, localStringBuilder.toString(), null);
   }
   
-  public void a(List<String> paramList)
+  public void b(List<String> paramList)
   {
     Object localObject1 = BaseApplicationImpl.sApplication.getRuntime();
     if ((localObject1 instanceof QQAppInterface)) {
@@ -433,7 +433,7 @@ public class ExpandChatRepository
     while (paramList.hasNext())
     {
       Object localObject2 = (String)paramList.next();
-      localObject2 = (RecentMatchChatListItem)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
+      localObject2 = (RecentMatchChatListItem)this.b.get(localObject2);
       if (localObject2 != null) {
         MatchChatMsgUtil.a((QQAppInterface)localObject1, (RecentMatchChatListItem)localObject2, true);
       }
@@ -447,7 +447,7 @@ public class ExpandChatRepository
       if (QLog.isColorLevel()) {
         QLog.i("expand.chat.ExpandChatRepository", 1, "start load data");
       }
-      List localList = a();
+      List localList = b();
       paramMessage = (ExpandChatRepository.GetConversationListFirstPageEvent)paramMessage.obj;
       paramMessage.a();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -462,7 +462,7 @@ public class ExpandChatRepository
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.chat.ExpandChatRepository
  * JD-Core Version:    0.7.0.1
  */

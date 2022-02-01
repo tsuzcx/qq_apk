@@ -7,8 +7,8 @@ final class Constants$4
 {
   Constants$4()
   {
-    addAll(Constants.Priority.a);
-    addAll(Constants.Priority.b);
+    addAll(Constants.Priority.AUDIO_SYSTEM_LEVEL);
+    addAll(Constants.Priority.AUDIO_SET_TOP_LEVEL);
   }
 }
 

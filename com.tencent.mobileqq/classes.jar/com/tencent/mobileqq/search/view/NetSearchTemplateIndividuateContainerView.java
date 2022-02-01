@@ -20,17 +20,16 @@ import org.jetbrains.annotations.NotNull;
 public class NetSearchTemplateIndividuateContainerView
   extends NetSearchTemplateBaseView
 {
-  public final List<NetSearchTemplateHorizontalBaseView> a;
-  public final int b = ViewUtils.a(20.0F);
+  public final List<NetSearchTemplateHorizontalBaseView> a = new ArrayList();
+  public final int b = ViewUtils.dip2px(20.0F);
   
   public NetSearchTemplateIndividuateContainerView(ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramViewGroup = (LinearLayout)a(paramInt);
+    paramViewGroup = (LinearLayout)b(paramInt);
     paramViewGroup.setOrientation(0);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    paramInt = ViewUtils.a(13.5F);
+    paramInt = ViewUtils.dip2px(13.5F);
     localLayoutParams.rightMargin = paramInt;
     localLayoutParams.leftMargin = paramInt;
     paramViewGroup.setLayoutParams(localLayoutParams);
@@ -61,29 +60,29 @@ public class NetSearchTemplateIndividuateContainerView
   
   public void a(NetSearchTemplateIndividuateContainerItem paramNetSearchTemplateIndividuateContainerItem)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    LinearLayout localLinearLayout = (LinearLayout)a(this.jdField_a_of_type_Int);
+    this.a.clear();
+    LinearLayout localLinearLayout = (LinearLayout)b(this.m);
     localLinearLayout.removeAllViews();
-    if (paramNetSearchTemplateIndividuateContainerItem.jdField_a_of_type_JavaUtilList != null)
+    if (paramNetSearchTemplateIndividuateContainerItem.a != null)
     {
-      if (paramNetSearchTemplateIndividuateContainerItem.jdField_a_of_type_JavaUtilList.size() == 0) {
+      if (paramNetSearchTemplateIndividuateContainerItem.a.size() == 0) {
         return;
       }
       Object localObject = localLinearLayout.getContext();
-      int j = paramNetSearchTemplateIndividuateContainerItem.jdField_a_of_type_JavaUtilList.size();
+      int j = paramNetSearchTemplateIndividuateContainerItem.a.size();
       int i = 3;
       if (j >= 3) {
-        i = paramNetSearchTemplateIndividuateContainerItem.jdField_a_of_type_JavaUtilList.size();
+        i = paramNetSearchTemplateIndividuateContainerItem.a.size();
       }
       int k = (((Context)localObject).getResources().getDisplayMetrics().widthPixels - DisplayUtil.a((Context)localObject, 27.0F) - this.b) / i;
       i = 0;
       while (i < j)
       {
-        paramNetSearchTemplateIndividuateContainerItem = new NetSearchTemplateIndividuateOneView((ViewGroup)a(), k);
+        paramNetSearchTemplateIndividuateContainerItem = new NetSearchTemplateIndividuateOneView((ViewGroup)h(), k);
         localObject = a(k, i);
-        paramNetSearchTemplateIndividuateContainerItem.a().setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localLinearLayout.addView(paramNetSearchTemplateIndividuateContainerItem.a());
-        this.jdField_a_of_type_JavaUtilList.add(paramNetSearchTemplateIndividuateContainerItem);
+        paramNetSearchTemplateIndividuateContainerItem.h().setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localLinearLayout.addView(paramNetSearchTemplateIndividuateContainerItem.h());
+        this.a.add(paramNetSearchTemplateIndividuateContainerItem);
         i += 1;
       }
     }
@@ -91,7 +90,7 @@ public class NetSearchTemplateIndividuateContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateIndividuateContainerView
  * JD-Core Version:    0.7.0.1
  */

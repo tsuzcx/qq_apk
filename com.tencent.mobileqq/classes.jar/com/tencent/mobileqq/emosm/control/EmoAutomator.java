@@ -7,40 +7,31 @@ import java.util.LinkedList;
 public abstract class EmoAutomator
   implements Runnable
 {
-  public int a;
   public long a;
-  private EmoLinearGroup a;
-  protected LinkedList<EmoAsyncStep> a;
-  protected int b;
-  private LinkedList<EmoLinearGroup> b;
-  
-  public EmoAutomator()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoLinearGroup = null;
-    this.jdField_b_of_type_JavaUtilLinkedList = new LinkedList();
-  }
+  public int b = 0;
+  protected int c = 0;
+  protected LinkedList<EmoAsyncStep> d = new LinkedList();
+  private EmoLinearGroup e = null;
+  private LinkedList<EmoLinearGroup> f = new LinkedList();
   
   public void a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmoAutomator", 2, "onDestroy");
     }
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.d)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      this.jdField_b_of_type_Int = 0;
-      synchronized (this.jdField_b_of_type_JavaUtilLinkedList)
+      this.d.clear();
+      this.c = 0;
+      synchronized (this.f)
       {
-        this.jdField_b_of_type_JavaUtilLinkedList.clear();
-        if (this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoLinearGroup != null)
+        this.f.clear();
+        if (this.e != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoLinearGroup.a(8);
-          this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoLinearGroup = null;
+          this.e.a(8);
+          this.e = null;
         }
-        this.jdField_a_of_type_Long = 0L;
+        this.a = 0L;
         return;
       }
     }
@@ -53,10 +44,10 @@ public abstract class EmoAutomator
   {
     int i;
     label100:
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.d)
     {
-      this.jdField_b_of_type_Int -= 1;
-      if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+      this.c -= 1;
+      if (this.d.size() > 0)
       {
         if (paramArrayOfEmoAsyncStep != null)
         {
@@ -65,14 +56,14 @@ public abstract class EmoAutomator
           if (i < j)
           {
             EmoAsyncStep localEmoAsyncStep = paramArrayOfEmoAsyncStep[i];
-            if (!this.jdField_a_of_type_JavaUtilLinkedList.remove(localEmoAsyncStep)) {
+            if (!this.d.remove(localEmoAsyncStep)) {
               break label100;
             }
             a(localEmoAsyncStep);
             return;
           }
         }
-        a((EmoAsyncStep)this.jdField_a_of_type_JavaUtilLinkedList.poll());
+        a((EmoAsyncStep)this.d.poll());
       }
       else
       {
@@ -83,7 +74,7 @@ public abstract class EmoAutomator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.control.EmoAutomator
  * JD-Core Version:    0.7.0.1
  */

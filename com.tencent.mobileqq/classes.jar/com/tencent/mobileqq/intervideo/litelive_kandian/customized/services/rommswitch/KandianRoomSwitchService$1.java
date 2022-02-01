@@ -27,7 +27,7 @@ class KandianRoomSwitchService$1
       int i = paramJSONObject.getInt("retcode");
       if (i == 0)
       {
-        KandianRoomSwitchService.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedServicesRommswitchKandianRoomSwitchService, this.jdField_a_of_type_JavaUtilList, paramJSONObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentIlivesdkRoomswitchservice_interfaceRoomSwitchInterface$IRoomList);
+        KandianRoomSwitchService.a(this.d, this.a, paramJSONObject, this.b, this.c);
         return;
       }
       paramJSONObject.getString("errmsg");
@@ -47,7 +47,7 @@ class KandianRoomSwitchService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.services.rommswitch.KandianRoomSwitchService.1
  * JD-Core Version:    0.7.0.1
  */

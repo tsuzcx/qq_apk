@@ -8,7 +8,7 @@ import java.util.Calendar;
 class NewerGuidePlugin$DatePickerAdapter
   implements IphonePickerView.PickerViewAdapter
 {
-  private int jdField_a_of_type_Int;
+  private int b;
   
   public NewerGuidePlugin$DatePickerAdapter(NewerGuidePlugin paramNewerGuidePlugin, int paramInt)
   {
@@ -16,10 +16,10 @@ class NewerGuidePlugin$DatePickerAdapter
     {
       paramNewerGuidePlugin = Calendar.getInstance();
       paramNewerGuidePlugin.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-      this.jdField_a_of_type_Int = paramNewerGuidePlugin.get(1);
+      this.b = paramNewerGuidePlugin.get(1);
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public int getColumnCount()
@@ -37,14 +37,14 @@ class NewerGuidePlugin$DatePickerAdapter
           return 0;
         }
         Calendar localCalendar = Calendar.getInstance();
-        localCalendar.set(1, NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897);
-        localCalendar.set(2, NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
+        localCalendar.set(1, NewerGuidePlugin.e(this.a) + 1897);
+        localCalendar.set(2, NewerGuidePlugin.f(this.a));
         localCalendar.set(5, 1);
         return localCalendar.getActualMaximum(5);
       }
       return 12;
     }
-    return this.jdField_a_of_type_Int - 1897 + 1;
+    return this.b - 1897 + 1;
   }
   
   public String getText(int paramInt1, int paramInt2)
@@ -58,23 +58,23 @@ class NewerGuidePlugin$DatePickerAdapter
         }
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramInt2 + 1);
-        localStringBuilder.append(HardCodeUtil.a(2131707463));
+        localStringBuilder.append(HardCodeUtil.a(2131905281));
         return localStringBuilder.toString();
       }
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramInt2 + 1);
-      localStringBuilder.append(HardCodeUtil.a(2131707469));
+      localStringBuilder.append(HardCodeUtil.a(2131905287));
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt2 + 1897);
-    localStringBuilder.append(HardCodeUtil.a(2131707468));
+    localStringBuilder.append(HardCodeUtil.a(2131905286));
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.DatePickerAdapter
  * JD-Core Version:    0.7.0.1
  */

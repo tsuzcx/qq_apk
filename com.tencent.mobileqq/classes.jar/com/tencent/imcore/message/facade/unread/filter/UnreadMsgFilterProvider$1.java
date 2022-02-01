@@ -22,12 +22,16 @@ class UnreadMsgFilterProvider$1
     add(new SubAccountAssistantFilter());
     add(new MiniProgramFilter());
     add(new TempGameFilter());
+    add(new KanDianPrivateMsgFilter());
+    add(new PublicAccountFilter());
     add(new DefaultFilter());
+    add(new GuildMsgFilter());
+    add(new GameMsgUnreadFilter());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.unread.filter.UnreadMsgFilterProvider.1
  * JD-Core Version:    0.7.0.1
  */

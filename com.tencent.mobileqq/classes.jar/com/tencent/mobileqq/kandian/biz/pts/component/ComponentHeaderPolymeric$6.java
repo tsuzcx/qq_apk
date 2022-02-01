@@ -40,25 +40,25 @@ class ComponentHeaderPolymeric$6
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("ComponentHeaderPolymeric", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (AbsBaseArticleInfo)this.a.a.a.a().mGroupSubArticleList.get(0);
-    if ((localObject != null) && (((AbsBaseArticleInfo)localObject).mPolymericInfo != null) && (((AbsBaseArticleInfo)localObject).mPolymericInfo.b == paramLong))
+    Object localObject = (AbsBaseArticleInfo)this.a.a.a.k().mGroupSubArticleList.get(0);
+    if ((localObject != null) && (((AbsBaseArticleInfo)localObject).mPolymericInfo != null) && (((AbsBaseArticleInfo)localObject).mPolymericInfo.f == paramLong))
     {
       SocializeFeedsInfo localSocializeFeedsInfo = ((AbsBaseArticleInfo)localObject).mSocialFeedInfo;
       ComponentHeaderPolymeric.a(this.a).setVisibility(0);
       if (paramBoolean)
       {
-        ComponentHeaderPolymeric.a(this.a, true);
+        ComponentHeaderPolymeric.b(this.a, true);
         if (localSocializeFeedsInfo != null) {
-          localSocializeFeedsInfo.h = 2;
+          localSocializeFeedsInfo.o = 2;
         }
-        ((AbsBaseArticleInfo)localObject).mPolymericInfo.e = 2;
+        ((AbsBaseArticleInfo)localObject).mPolymericInfo.p = 2;
         return;
       }
-      ComponentHeaderPolymeric.a(this.a, false);
+      ComponentHeaderPolymeric.b(this.a, false);
       if (localSocializeFeedsInfo != null) {
-        localSocializeFeedsInfo.h = 1;
+        localSocializeFeedsInfo.o = 1;
       }
-      ((AbsBaseArticleInfo)localObject).mPolymericInfo.e = 1;
+      ((AbsBaseArticleInfo)localObject).mPolymericInfo.p = 1;
     }
   }
   
@@ -84,19 +84,19 @@ class ComponentHeaderPolymeric$6
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("ComponentHeaderPolymeric", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (AbsBaseArticleInfo)this.a.a.a.a().mGroupSubArticleList.get(0);
-    if ((localObject != null) && (((AbsBaseArticleInfo)localObject).mPolymericInfo != null) && (((AbsBaseArticleInfo)localObject).mPolymericInfo.f == paramLong))
+    Object localObject = (AbsBaseArticleInfo)this.a.a.a.k().mGroupSubArticleList.get(0);
+    if ((localObject != null) && (((AbsBaseArticleInfo)localObject).mPolymericInfo != null) && (((AbsBaseArticleInfo)localObject).mPolymericInfo.m == paramLong))
     {
       ComponentHeaderPolymeric.a(this.a).setVisibility(0);
       if (paramBoolean)
       {
-        ComponentHeaderPolymeric.a(this.a, true);
-        if ((((AbsBaseArticleInfo)localObject).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localObject).mTopicRecommendFeedsInfo.a != null)) {
-          ((TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localObject).mTopicRecommendFeedsInfo.a.get(0)).c = 1;
+        ComponentHeaderPolymeric.b(this.a, true);
+        if ((((AbsBaseArticleInfo)localObject).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localObject).mTopicRecommendFeedsInfo.g != null)) {
+          ((TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localObject).mTopicRecommendFeedsInfo.g.get(0)).g = 1;
         }
         if (((AbsBaseArticleInfo)localObject).mPolymericInfo != null)
         {
-          ((AbsBaseArticleInfo)localObject).mPolymericInfo.e = 2;
+          ((AbsBaseArticleInfo)localObject).mPolymericInfo.p = 2;
           return;
         }
         localStringBuilder = new StringBuilder();
@@ -105,13 +105,13 @@ class ComponentHeaderPolymeric$6
         QLog.e("ComponentHeaderPolymeric", 2, localStringBuilder.toString());
         return;
       }
-      ComponentHeaderPolymeric.a(this.a, false);
-      if ((((AbsBaseArticleInfo)localObject).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localObject).mTopicRecommendFeedsInfo.a != null)) {
-        ((TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localObject).mTopicRecommendFeedsInfo.a.get(0)).c = 0;
+      ComponentHeaderPolymeric.b(this.a, false);
+      if ((((AbsBaseArticleInfo)localObject).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localObject).mTopicRecommendFeedsInfo.g != null)) {
+        ((TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localObject).mTopicRecommendFeedsInfo.g.get(0)).g = 0;
       }
       if (((AbsBaseArticleInfo)localObject).mPolymericInfo != null)
       {
-        ((AbsBaseArticleInfo)localObject).mPolymericInfo.e = 1;
+        ((AbsBaseArticleInfo)localObject).mPolymericInfo.p = 1;
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
@@ -123,7 +123,7 @@ class ComponentHeaderPolymeric$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderPolymeric.6
  * JD-Core Version:    0.7.0.1
  */

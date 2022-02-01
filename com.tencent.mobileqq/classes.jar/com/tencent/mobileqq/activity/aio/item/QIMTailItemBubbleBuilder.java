@@ -46,18 +46,18 @@ public abstract class QIMTailItemBubbleBuilder
       paramView.setEllipsize(TextUtils.TruncateAt.END);
       paramView.setTextColor(-1);
       paramView.setTextSize(2, 12.0F);
-      paramView.setBackgroundResource(2130842703);
+      paramView.setBackgroundResource(2130843656);
     }
     TextView localTextView = (TextView)paramView;
     localTextView.setEnabled(paramBoolean);
     localTextView.setText(paramString1);
-    localTextView.setId(2131364549);
+    localTextView.setId(2131430607);
     Drawable localDrawable;
     if (!TextUtils.isEmpty(paramString2))
     {
-      localDrawable = localResources.getDrawable(2130850833);
+      localDrawable = localResources.getDrawable(2130852668);
       localDrawable.setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
-      paramString1 = localResources.getDrawable(2130850834);
+      paramString1 = localResources.getDrawable(2130852669);
       paramString1.setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
     }
     for (;;)
@@ -106,8 +106,8 @@ public abstract class QIMTailItemBubbleBuilder
   {
     paramSessionInfo = paramBaseChatItemLayout.getContext();
     boolean bool = "2".equals(paramMessageRecord.getExtInfoFromExtStr("app_tail_id"));
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseChatItemLayout.findViewById(2131377969);
-    FlashChatManager.GlobalConfig localGlobalConfig = ((FlashChatManager)paramQQAppInterface.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).a;
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseChatItemLayout.findViewById(2131446456);
+    FlashChatManager.GlobalConfig localGlobalConfig = ((FlashChatManager)paramQQAppInterface.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).c;
     int i = FlashChatManager.a(paramMessageRecord);
     if (i == -1) {
       return paramBaseChatItemLayout;
@@ -131,7 +131,7 @@ public abstract class QIMTailItemBubbleBuilder
     if (paramRelativeLayout == null)
     {
       paramRelativeLayout = new RelativeLayout(paramBaseChatItemLayout.getContext());
-      paramRelativeLayout.setId(2131377969);
+      paramRelativeLayout.setId(2131446456);
       i = 1;
     }
     else
@@ -147,8 +147,8 @@ public abstract class QIMTailItemBubbleBuilder
     boolean bool = paramMessageRecord.isSend();
     ((RelativeLayout.LayoutParams)localObject1).topMargin = AIOUtils.b(-2.0F, (Resources)localObject2);
     ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.b(0.0F, (Resources)localObject2);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(5, 2131364521);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131364521);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(5, 2131430578);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131430578);
     if (bool)
     {
       ((RelativeLayout.LayoutParams)localObject1).leftMargin += AIOUtils.b(18.0F, (Resources)localObject2);
@@ -173,7 +173,7 @@ public abstract class QIMTailItemBubbleBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QIMTailItemBubbleBuilder
  * JD-Core Version:    0.7.0.1
  */

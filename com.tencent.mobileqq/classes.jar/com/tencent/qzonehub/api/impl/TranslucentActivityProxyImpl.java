@@ -29,7 +29,7 @@ public class TranslucentActivityProxyImpl
     if (!((IPluginManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.MGR_PLUGIN)).isPlugininstalled("qzone_plugin.apk"))
     {
       localQQProgressDialog = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2080505856));
-      localQQProgressDialog.a(HardCodeUtil.a(2131714858));
+      localQQProgressDialog.a(HardCodeUtil.a(2131912357));
       localQQProgressDialog.setOnDismissListener(new TranslucentActivityProxyImpl.1(this, paramActivity));
     }
     else
@@ -39,16 +39,16 @@ public class TranslucentActivityProxyImpl
     String str = QzonePluginProxyActivityProxyImpl.getActivityNameToIntent(paramIntent);
     paramIntent.putExtra("userQqResources", 2);
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = "qzone_plugin.apk";
-    localPluginParams.e = "QZone";
-    localPluginParams.jdField_a_of_type_JavaLangString = "";
-    localPluginParams.f = str;
-    localPluginParams.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.c = -1;
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = localQQProgressDialog;
-    localPluginParams.d = 10000;
-    localPluginParams.g = null;
+    localPluginParams.d = "qzone_plugin.apk";
+    localPluginParams.g = "QZone";
+    localPluginParams.c = "";
+    localPluginParams.h = str;
+    localPluginParams.i = QzonePluginProxyActivity.class;
+    localPluginParams.j = paramIntent;
+    localPluginParams.k = -1;
+    localPluginParams.l = localQQProgressDialog;
+    localPluginParams.r = 10000;
+    localPluginParams.q = null;
     IPluginManager.a(paramActivity, localPluginParams);
     if (localQQProgressDialog == null) {
       paramActivity.finish();
@@ -57,7 +57,7 @@ public class TranslucentActivityProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.TranslucentActivityProxyImpl
  * JD-Core Version:    0.7.0.1
  */

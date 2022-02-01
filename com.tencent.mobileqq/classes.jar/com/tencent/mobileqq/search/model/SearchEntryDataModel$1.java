@@ -27,7 +27,7 @@ class SearchEntryDataModel$1
     //   25: astore_2
     //   26: aload_0
     //   27: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   30: getfield 37	com/tencent/mobileqq/search/model/SearchEntryDataModel:jdField_a_of_type_Boolean	Z
+    //   30: getfield 37	com/tencent/mobileqq/search/model/SearchEntryDataModel:k	Z
     //   33: ifne +150 -> 183
     //   36: aload_3
     //   37: astore_1
@@ -75,7 +75,7 @@ class SearchEntryDataModel$1
     //   107: aload 7
     //   109: aload_0
     //   110: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   113: getfield 62	com/tencent/mobileqq/search/model/SearchEntryDataModel:c	I
+    //   113: getfield 62	com/tencent/mobileqq/search/model/SearchEntryDataModel:g	I
     //   116: invokevirtual 65	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   119: pop
     //   120: aload_3
@@ -93,7 +93,7 @@ class SearchEntryDataModel$1
     //   138: aload 7
     //   140: aload_0
     //   141: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   144: getfield 68	com/tencent/mobileqq/search/model/SearchEntryDataModel:d	I
+    //   144: getfield 68	com/tencent/mobileqq/search/model/SearchEntryDataModel:h	I
     //   147: invokevirtual 65	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   150: pop
     //   151: aload_3
@@ -113,7 +113,7 @@ class SearchEntryDataModel$1
     //   172: ldc 77
     //   174: iconst_2
     //   175: ldc 79
-    //   177: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   177: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   180: goto +147 -> 327
     //   183: aload_3
     //   184: astore_1
@@ -134,7 +134,7 @@ class SearchEntryDataModel$1
     //   209: aload 4
     //   211: astore_2
     //   212: aload 7
-    //   214: ldc 86
+    //   214: ldc 87
     //   216: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   219: pop
     //   220: aload_3
@@ -161,7 +161,7 @@ class SearchEntryDataModel$1
     //   254: aload 7
     //   256: aload_0
     //   257: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   260: getfield 62	com/tencent/mobileqq/search/model/SearchEntryDataModel:c	I
+    //   260: getfield 62	com/tencent/mobileqq/search/model/SearchEntryDataModel:g	I
     //   263: invokevirtual 65	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   266: pop
     //   267: aload_3
@@ -179,7 +179,7 @@ class SearchEntryDataModel$1
     //   285: aload 7
     //   287: aload_0
     //   288: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   291: getfield 68	com/tencent/mobileqq/search/model/SearchEntryDataModel:d	I
+    //   291: getfield 68	com/tencent/mobileqq/search/model/SearchEntryDataModel:h	I
     //   294: invokevirtual 65	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   297: pop
     //   298: aload_3
@@ -196,17 +196,17 @@ class SearchEntryDataModel$1
     //   316: astore_1
     //   317: aload_3
     //   318: astore_2
-    //   319: ldc 88
+    //   319: ldc 89
     //   321: iconst_2
     //   322: ldc 79
-    //   324: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   324: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   327: aload_3
     //   328: astore_1
     //   329: aload_3
     //   330: astore_2
     //   331: aload_0
     //   332: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   335: getfield 91	com/tencent/mobileqq/search/model/SearchEntryDataModel:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   335: getfield 93	com/tencent/mobileqq/search/model/SearchEntryDataModel:j	Ljava/lang/Object;
     //   338: astore 4
     //   340: aload_3
     //   341: astore_1
@@ -216,43 +216,43 @@ class SearchEntryDataModel$1
     //   346: monitorenter
     //   347: aload_0
     //   348: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   351: getfield 94	com/tencent/mobileqq/search/model/SearchEntryDataModel:jdField_a_of_type_ArrayOfByte	[B
+    //   351: getfield 97	com/tencent/mobileqq/search/model/SearchEntryDataModel:i	[B
     //   354: ifnull +18 -> 372
     //   357: aload_3
     //   358: aload_0
     //   359: getfield 12	com/tencent/mobileqq/search/model/SearchEntryDataModel$1:this$0	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   362: getfield 94	com/tencent/mobileqq/search/model/SearchEntryDataModel:jdField_a_of_type_ArrayOfByte	[B
-    //   365: invokevirtual 100	java/io/FileOutputStream:write	([B)V
+    //   362: getfield 97	com/tencent/mobileqq/search/model/SearchEntryDataModel:i	[B
+    //   365: invokevirtual 103	java/io/FileOutputStream:write	([B)V
     //   368: aload_3
-    //   369: invokevirtual 103	java/io/FileOutputStream:flush	()V
+    //   369: invokevirtual 106	java/io/FileOutputStream:flush	()V
     //   372: aload 4
     //   374: monitorexit
     //   375: aload_3
     //   376: ifnull +148 -> 524
     //   379: aload_3
-    //   380: invokevirtual 106	java/io/FileOutputStream:close	()V
+    //   380: invokevirtual 109	java/io/FileOutputStream:close	()V
     //   383: return
     //   384: astore_1
-    //   385: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   385: invokestatic 113	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   388: ifeq +136 -> 524
     //   391: new 45	java/lang/StringBuilder
     //   394: dup
     //   395: invokespecial 46	java/lang/StringBuilder:<init>	()V
     //   398: astore_2
     //   399: aload_2
-    //   400: ldc 112
+    //   400: ldc 115
     //   402: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   405: pop
     //   406: aload_2
     //   407: aload_1
-    //   408: invokestatic 116	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   408: invokestatic 119	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   411: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   414: pop
-    //   415: ldc 118
+    //   415: ldc 121
     //   417: iconst_2
     //   418: aload_2
     //   419: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   422: invokestatic 121	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   422: invokestatic 124	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   425: return
     //   426: astore 5
     //   428: aload 4
@@ -268,7 +268,7 @@ class SearchEntryDataModel$1
     //   442: astore_3
     //   443: aload_2
     //   444: astore_1
-    //   445: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   445: invokestatic 113	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   448: ifeq +49 -> 497
     //   451: aload_2
     //   452: astore_1
@@ -279,30 +279,30 @@ class SearchEntryDataModel$1
     //   462: aload_2
     //   463: astore_1
     //   464: aload 4
-    //   466: ldc 112
+    //   466: ldc 115
     //   468: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   471: pop
     //   472: aload_2
     //   473: astore_1
     //   474: aload 4
     //   476: aload_3
-    //   477: invokestatic 116	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   477: invokestatic 119	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   480: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   483: pop
     //   484: aload_2
     //   485: astore_1
-    //   486: ldc 118
+    //   486: ldc 121
     //   488: iconst_2
     //   489: aload 4
     //   491: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   494: invokestatic 121	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   494: invokestatic 124	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   497: aload_2
     //   498: ifnull +26 -> 524
     //   501: aload_2
-    //   502: invokevirtual 106	java/io/FileOutputStream:close	()V
+    //   502: invokevirtual 109	java/io/FileOutputStream:close	()V
     //   505: return
     //   506: astore_1
-    //   507: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   507: invokestatic 113	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   510: ifeq +14 -> 524
     //   513: new 45	java/lang/StringBuilder
     //   516: dup
@@ -313,29 +313,29 @@ class SearchEntryDataModel$1
     //   525: aload_1
     //   526: ifnull +51 -> 577
     //   529: aload_1
-    //   530: invokevirtual 106	java/io/FileOutputStream:close	()V
+    //   530: invokevirtual 109	java/io/FileOutputStream:close	()V
     //   533: goto +44 -> 577
     //   536: astore_1
-    //   537: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   537: invokestatic 113	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   540: ifeq +37 -> 577
     //   543: new 45	java/lang/StringBuilder
     //   546: dup
     //   547: invokespecial 46	java/lang/StringBuilder:<init>	()V
     //   550: astore_3
     //   551: aload_3
-    //   552: ldc 112
+    //   552: ldc 115
     //   554: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   557: pop
     //   558: aload_3
     //   559: aload_1
-    //   560: invokestatic 116	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   560: invokestatic 119	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   563: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   566: pop
-    //   567: ldc 118
+    //   567: ldc 121
     //   569: iconst_2
     //   570: aload_3
     //   571: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   574: invokestatic 121	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   574: invokestatic 124	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   577: goto +5 -> 582
     //   580: aload_2
     //   581: athrow
@@ -426,7 +426,7 @@ class SearchEntryDataModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.SearchEntryDataModel.1
  * JD-Core Version:    0.7.0.1
  */

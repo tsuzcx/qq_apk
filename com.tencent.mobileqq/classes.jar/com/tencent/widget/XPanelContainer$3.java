@@ -12,21 +12,21 @@ class XPanelContainer$3
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
+    if (this.b.g)
     {
       if (QLog.isColorLevel()) {
         QLog.d("XPanelContainer", 2, "openAnim resetPosition");
       }
-      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
+      XPanelContainer.a(this.b, 0);
       return;
     }
-    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
+    XPanelContainer.a(this.b, this.a - i);
+    this.b.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.XPanelContainer.3
  * JD-Core Version:    0.7.0.1
  */

@@ -29,41 +29,35 @@ public class GdtAdWSVerticalItemTopController
   extends AbsWsUIGroup<WSVerticalItemData>
   implements View.OnClickListener
 {
-  public static GdtAppReceiver a;
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public AdExposureChecker.ExposureCallback a;
-  private WSVerticalPageAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageAdapter;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private RoundImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView;
-  private View b;
+  public static GdtAppReceiver h;
+  public AdExposureChecker.ExposureCallback g = null;
+  private WSVerticalPageFragment i;
+  private WSVerticalPageAdapter j;
+  private View k;
+  private RoundImageView l;
+  private TextView m;
+  private stSimpleMetaFeed n;
   
   public GdtAdWSVerticalItemTopController(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = null;
   }
   
   public GdtAdWSVerticalItemTopController(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
     this(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
+    this.i = paramWSVerticalPageFragment;
   }
   
   protected void a()
   {
-    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
+    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)c();
     if (localWSVerticalItemData == null) {
       return;
     }
-    if ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed)) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = localWSVerticalItemData.a();
+    if ((localWSVerticalItemData.b() instanceof stSimpleMetaFeed)) {
+      this.n = localWSVerticalItemData.b();
     }
-  }
-  
-  protected int b()
-  {
-    return 2131559174;
   }
   
   @UiThread
@@ -73,61 +67,66 @@ public class GdtAdWSVerticalItemTopController
     ((StringBuilder)localObject).append("onUpdateUI hashcode******************************");
     ((StringBuilder)localObject).append(hashCode());
     ((StringBuilder)localObject).append(",position:");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(h());
     WSLog.a("GdtAdWSVerticalItemTopController", ((StringBuilder)localObject).toString());
-    localObject = (WSVerticalItemData)a();
+    localObject = (WSVerticalItemData)c();
     if (localObject == null) {
       return;
     }
-    if ((((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed))
+    if ((((WSVerticalItemData)localObject).b() instanceof stSimpleMetaFeed))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.nick);
-      WSPicLoader.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.avatar);
+      this.m.setText(this.n.poster.nick);
+      WSPicLoader.a().a(this.a, this.l, this.n.poster.avatar);
     }
   }
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    return 2131624929;
+  }
+  
+  protected void j()
+  {
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
     localLayoutParams.height = WeishiUIUtil.b();
     localLayoutParams.width = -2;
-    localLayoutParams.topMargin = WeishiUIUtil.b((Activity)this.jdField_a_of_type_AndroidContentContext);
+    localLayoutParams.topMargin = WeishiUIUtil.b((Activity)this.a);
     localLayoutParams.leftMargin = WeishiUIUtil.a();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.b = a(2131376829);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)a(2131367532));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131367535));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.b.setOnClickListener(this);
+    this.b.setLayoutParams(localLayoutParams);
+    this.k = c(2131445160);
+    this.l = ((RoundImageView)c(2131434074));
+    this.m = ((TextView)c(2131434077));
+    this.l.setOnClickListener(this);
+    this.m.setOnClickListener(this);
+    this.k.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null))
+    if ((this.n != null) && (d() != null) && (this.i != null))
     {
       WSLog.b("GdtAdWSVerticalItemTopController", "跳转到广告落地页");
-      if (jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver == null)
+      if (h == null)
       {
-        jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-        jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(BaseApplicationImpl.getContext());
+        h = new GdtAppReceiver();
+        h.register(BaseApplicationImpl.getContext());
       }
-      paramView = new GdtAd(GdtAdUtil.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed));
-      if (this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
-        this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new GdtAdWSVerticalItemTopController.1(this);
+      paramView = new GdtAd(GdtAdUtil.a(this.n));
+      if (this.g == null) {
+        this.g = new GdtAdWSVerticalItemTopController.1(this);
       }
-      AdExposureChecker.onClick(a(), paramView, new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageAdapter = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a();
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageAdapter;
-      if ((paramView != null) && (paramView.a() != null))
+      AdExposureChecker.onClick(d(), paramView, new WeakReference(this.g));
+      this.j = this.i.b();
+      paramView = this.j;
+      if ((paramView != null) && (paramView.b() != null))
       {
-        paramView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageAdapter.a();
-        if ((paramView != null) && (paramView.a != null) && (a() != null) && (((WSVerticalItemData)a()).a() != null))
+        paramView = this.j.b();
+        if ((paramView != null) && (paramView.f != null) && (c() != null) && (((WSVerticalItemData)c()).e() != null))
         {
-          GdtAdUtil.a(a(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver, paramView.a, false);
-          ((WSVerticalItemData)a()).a().isGdtAdclicked = true;
+          GdtAdUtil.a(d(), this.n, h, paramView.f, false);
+          ((WSVerticalItemData)c()).e().isGdtAdclicked = true;
         }
       }
     }
@@ -135,7 +134,7 @@ public class GdtAdWSVerticalItemTopController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.GdtAdWSVerticalItemTopController
  * JD-Core Version:    0.7.0.1
  */

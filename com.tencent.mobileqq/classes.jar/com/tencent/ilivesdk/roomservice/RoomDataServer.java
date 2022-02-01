@@ -81,9 +81,9 @@ public class RoomDataServer
   public static void requestExitRoom(RoomServiceAdapter paramRoomServiceAdapter, LiveRoomInfo paramLiveRoomInfo)
   {
     LeaveRoomReq localLeaveRoomReq = new LeaveRoomReq();
-    localLeaveRoomReq.jdField_a_of_type_Long = ((int)paramLiveRoomInfo.roomId);
+    localLeaveRoomReq.a = ((int)paramLiveRoomInfo.roomId);
     localLeaveRoomReq.b = 0L;
-    localLeaveRoomReq.jdField_a_of_type_JavaLangString = convertExtData(paramRoomServiceAdapter, paramRoomServiceAdapter.getHostProxyInterface().getBizCommitData(HostProxyInterface.BizCommitScene.EXIT_ROOM));
+    localLeaveRoomReq.c = convertExtData(paramRoomServiceAdapter, paramRoomServiceAdapter.getHostProxyInterface().getBizCommitData(HostProxyInterface.BizCommitScene.EXIT_ROOM));
     paramRoomServiceAdapter.getChannel().sendWithTRpc("ilive-ilive_room_dispatch-ilive_room_dispatch-LeaveRoom", MessageNano.toByteArray(localLeaveRoomReq), new RoomDataServer.2(paramRoomServiceAdapter));
   }
   
@@ -108,7 +108,7 @@ public class RoomDataServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice.RoomDataServer
  * JD-Core Version:    0.7.0.1
  */

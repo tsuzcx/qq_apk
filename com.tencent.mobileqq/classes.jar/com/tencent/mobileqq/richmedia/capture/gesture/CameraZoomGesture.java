@@ -12,19 +12,19 @@ public class CameraZoomGesture
   implements GLGestureListener
 {
   public float a;
-  public GLSurfaceView a;
-  CameraZoomGesture.ZoomGestureListener a;
-  private float b;
-  private float c;
+  public GLSurfaceView b;
+  CameraZoomGesture.ZoomGestureListener c;
+  private float d;
+  private float e;
   
   public CameraZoomGesture(CameraZoomGesture.ZoomGestureListener paramZoomGestureListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture$ZoomGestureListener = paramZoomGestureListener;
+    this.c = paramZoomGestureListener;
   }
   
   protected void a(int paramInt)
   {
-    GLSurfaceView localGLSurfaceView = this.jdField_a_of_type_AndroidOpenglGLSurfaceView;
+    GLSurfaceView localGLSurfaceView = this.b;
     if ((localGLSurfaceView instanceof CameraCaptureView)) {
       ((CameraCaptureView)localGLSurfaceView).setZoom(paramInt);
     }
@@ -49,23 +49,23 @@ public class CameraZoomGesture
           return false;
         }
         f1 = paramMotionEvent.getY();
-        f2 = this.jdField_a_of_type_Float;
+        f2 = this.a;
         if (f1 >= f2)
         {
-          this.c = f2;
+          this.e = f2;
           return false;
         }
-        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
-        CameraZoomGesture.ZoomGestureListener localZoomGestureListener = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture$ZoomGestureListener;
+        i = new BigDecimal((this.e - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
+        CameraZoomGesture.ZoomGestureListener localZoomGestureListener = this.c;
         if (localZoomGestureListener != null) {
           localZoomGestureListener.a(i);
-        } else if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
+        } else if ((i != 0) && (this.b != null)) {
           a(i);
         }
-        this.c = paramMotionEvent.getY();
+        this.e = paramMotionEvent.getY();
         return false;
       }
-      this.c = this.jdField_a_of_type_Float;
+      this.e = this.a;
       return false;
     }
     if ((i == 2) && (!paramBoolean))
@@ -92,21 +92,21 @@ public class CameraZoomGesture
         if (j != 5) {
           return false;
         }
-        this.b = TakeVideoUtils.a(f4, f1, f2, f3);
+        this.d = TakeVideoUtils.a(f4, f1, f2, f3);
         return false;
       }
       f1 = TakeVideoUtils.a(f4, f1, f2, f3);
-      i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
-      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture$ZoomGestureListener;
+      i = new BigDecimal((f1 - this.d) / 20.0F).setScale(0, 4).intValue();
+      paramMotionEvent = this.c;
       if (paramMotionEvent != null)
       {
         paramMotionEvent.a(i);
         return true;
       }
-      if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
+      if ((i != 0) && (this.b != null))
       {
         a(i);
-        this.b = f1;
+        this.d = f1;
       }
       return true;
     }
@@ -115,7 +115,7 @@ public class CameraZoomGesture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.gesture.CameraZoomGesture
  * JD-Core Version:    0.7.0.1
  */

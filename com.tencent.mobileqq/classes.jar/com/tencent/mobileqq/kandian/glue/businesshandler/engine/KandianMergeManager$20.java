@@ -15,12 +15,12 @@ class KandianMergeManager$20
   
   public void run()
   {
-    KandianMergeManager.a(this.this$0).getMessageFacade().a(AppConstants.KANDIAN_MERGE_UIN, 7220, false, false);
+    KandianMergeManager.c(this.this$0).getMessageFacade().a(AppConstants.KANDIAN_MERGE_UIN, 7220, false, false);
     if (this.a.extInt == 2)
     {
-      KandianMergeManager.a(this.this$0).getMessageFacade().b(AppConstants.KANDIAN_MERGE_UIN, 7220, this.a.uniseq);
-      if (KandianMergeManager.a(this.this$0).get() > 0) {
-        this.this$0.c(2);
+      KandianMergeManager.c(this.this$0).getMessageFacade().h(AppConstants.KANDIAN_MERGE_UIN, 7220, this.a.uniseq);
+      if (KandianMergeManager.h(this.this$0).get() > 0) {
+        this.this$0.d(2);
       }
     }
     else
@@ -28,20 +28,20 @@ class KandianMergeManager$20
       if (this.a.extInt == 1)
       {
         SessionInfo localSessionInfo = new SessionInfo();
-        localSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.NEW_KANDIAN_UIN;
-        localSessionInfo.jdField_a_of_type_Int = 1008;
-        ChatActivityFacade.a(KandianMergeManager.a(this.this$0), localSessionInfo);
+        localSessionInfo.b = AppConstants.NEW_KANDIAN_UIN;
+        localSessionInfo.a = 1008;
+        ChatActivityFacade.a(KandianMergeManager.c(this.this$0), localSessionInfo);
         return;
       }
       if (this.a.extInt == 5) {
-        KandianMergeManager.a(this.this$0).getMessageFacade().b(AppConstants.KANDIAN_MERGE_UIN, 7220, this.a.uniseq);
+        KandianMergeManager.c(this.this$0).getMessageFacade().h(AppConstants.KANDIAN_MERGE_UIN, 7220, this.a.uniseq);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.20
  * JD-Core Version:    0.7.0.1
  */

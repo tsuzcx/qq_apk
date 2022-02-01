@@ -43,17 +43,17 @@ class AuthorizeConfig$2
       Object localObject2;
       break label16;
     }
-    this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+    this.this$0.c.set(0);
     return;
-    localObject1 = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences;
+    localObject1 = this.this$0.w;
     localObject3 = null;
     localObject1 = ((SharedPreferences)localObject1).getString("qqVersion", null);
     localObject4 = MobileQQ.sMobileQQ.waitAppRuntime(null);
     if (localObject4 != null)
     {
-      str = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getString("lastVersion", null);
+      str = this.this$0.w.getString("lastVersion", null);
       localObject3 = new mobileqq_mp.WebviewWhiteListRequset();
-      if ((!TextUtils.isEmpty(str)) && ("2013 8.7.0".equals(localObject1)))
+      if ((!TextUtils.isEmpty(str)) && ("2013 8.8.17".equals(localObject1)))
       {
         ((mobileqq_mp.WebviewWhiteListRequset)localObject3).version.set(str);
         if (QLog.isColorLevel())
@@ -73,7 +73,7 @@ class AuthorizeConfig$2
         }
         QLog.d("AuthorizeConfig", 2, (String)localObject1);
       }
-      ((mobileqq_mp.WebviewWhiteListRequset)localObject3).qqversion.set("8.7.0");
+      ((mobileqq_mp.WebviewWhiteListRequset)localObject3).qqversion.set("8.8.17");
       ((mobileqq_mp.WebviewWhiteListRequset)localObject3).gziped.set(true);
       ((mobileqq_mp.WebviewWhiteListRequset)localObject3).implat.set(109);
       if (QLog.isColorLevel())
@@ -87,25 +87,25 @@ class AuthorizeConfig$2
         ((StringBuilder)localObject1).append(((mobileqq_mp.WebviewWhiteListRequset)localObject3).gziped.get());
         QLog.i("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
       }
-      localObject1 = new NewIntent(this.this$0.jdField_a_of_type_AndroidContentContext, AuthorizeConfigServlet.class);
+      localObject1 = new NewIntent(this.this$0.v, AuthorizeConfigServlet.class);
       ((NewIntent)localObject1).setWithouLogin(true);
       ((NewIntent)localObject1).putExtra("cmd", "JsApiSvr.webview.whitelist");
       try
       {
         ((NewIntent)localObject1).putExtra("data", ((mobileqq_mp.WebviewWhiteListRequset)localObject3).toByteArray());
-        ((NewIntent)localObject1).setObserver(new AuthorizeConfig.2.1(this));
+        AuthorizeConfig.a(this.this$0, (NewIntent)localObject1);
         ((AppRuntime)localObject4).startServlet((NewIntent)localObject1);
         return;
       }
       catch (Exception localException1)
       {
         QLog.d("AuthorizeConfig", 1, "toByteArray failed", localException1);
-        this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+        this.this$0.c.set(0);
         return;
       }
     }
-    localObject4 = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getString("lastMod", null);
-    if ((localObject4 != null) && (((String)localObject4).length() > 0) && ("2013 8.7.0".equals(localException1)))
+    localObject4 = this.this$0.w.getString("lastMod", null);
+    if ((localObject4 != null) && (((String)localObject4).length() > 0) && ("2013 8.8.17".equals(localException1)))
     {
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("If-Modified-Since", (String)localObject4);
@@ -118,7 +118,7 @@ class AuthorizeConfig$2
     str = MsfSdkUtils.insertMtype("qb_offline", "https://pub.idqqimg.com/qqmobile/config/webview_whitelist2.json");
     try
     {
-      localObject4 = HttpUtil.openRequest(this.this$0.jdField_a_of_type_AndroidContentContext, str, (String)localObject4, "GET", null, (Bundle)localObject2);
+      localObject4 = HttpUtil.openRequest(this.this$0.v, str, (String)localObject4, "GET", null, (Bundle)localObject2);
       if (localObject4 != null)
       {
         int i = ((HttpResponse)localObject4).getStatusLine().getStatusCode();
@@ -144,8 +144,8 @@ class AuthorizeConfig$2
         }
         if (i == 304)
         {
-          this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-          this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastUpdate", System.currentTimeMillis()).commit();
+          this.this$0.c.set(2);
+          this.this$0.w.edit().putLong("lastUpdate", System.currentTimeMillis()).commit();
           ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 1, 1, 0, "", "", "", "");
           return;
         }
@@ -160,7 +160,7 @@ class AuthorizeConfig$2
         ((StringBuilder)localObject3).append(localException2);
         QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject3).toString());
       }
-      this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+      this.this$0.c.set(0);
       ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 1, 1, 0, "", "", "", "");
       return;
     }

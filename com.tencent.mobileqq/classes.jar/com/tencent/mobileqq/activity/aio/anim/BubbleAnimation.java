@@ -15,9 +15,9 @@ import java.util.List;
 public class BubbleAnimation
   extends AIOAnimationConatiner.AIOAnimator
 {
-  private AIOAnimationConatiner.AIOAnimator jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
-  private SigTlpAnimation jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation;
-  private XBubbleAnimation jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation;
+  private XBubbleAnimation d;
+  private AIOAnimationConatiner.AIOAnimator e;
+  private SigTlpAnimation f;
   
   public BubbleAnimation(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
@@ -32,15 +32,15 @@ public class BubbleAnimation
     if (i == 4)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner != null)
+      if (this.a != null)
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentWidgetListView != null)
+        if (this.b != null)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator == null) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator = new BubbleNewAIOAnim(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
+          if (this.e == null) {
+            this.e = new BubbleNewAIOAnim(0, this.a, this.b);
           }
-          bool1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator.a(paramVarArgs);
+          bool1 = this.e.a(paramVarArgs);
         }
       }
     }
@@ -50,18 +50,18 @@ public class BubbleAnimation
   private boolean c(Object... paramVarArgs)
   {
     boolean bool1 = ((Boolean)paramVarArgs[4]).booleanValue();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation != null) && ((paramVarArgs[5] != null) || (bool1))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation.a(true);
+    if ((this.f != null) && ((paramVarArgs[5] != null) || (bool1))) {
+      this.f.b(true);
     }
     boolean bool2 = false;
     bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner != null)
+    if (this.a != null)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentWidgetListView != null)
+      if (this.b != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation = new SigTlpAnimation(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
-        bool1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation.a(paramVarArgs);
+        this.f = new SigTlpAnimation(this.c, this.a, this.b);
+        bool1 = this.f.a(paramVarArgs);
       }
     }
     return bool1;
@@ -83,17 +83,17 @@ public class BubbleAnimation
         return false;
       }
       bool1 = bool2;
-      if (((BubbleInfo.CommonAttrs)((Pair)localObject).first).a.e == 1)
+      if (((BubbleInfo.CommonAttrs)((Pair)localObject).first).l.n == 1)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation;
+        localObject = this.d;
         if (localObject != null) {
-          ((XBubbleAnimation)localObject).e();
+          ((XBubbleAnimation)localObject).g();
         }
         bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentWidgetListView != null)
+        if (this.b != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation = new XBubbleAnimation(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
-          bool1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation.a(paramVarArgs);
+          this.d = new XBubbleAnimation(this.c, this.a, this.b);
+          bool1 = this.d.a(paramVarArgs);
         }
       }
     }
@@ -102,7 +102,7 @@ public class BubbleAnimation
   
   protected void a()
   {
-    SigTlpAnimation localSigTlpAnimation = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation;
+    SigTlpAnimation localSigTlpAnimation = this.f;
     if (localSigTlpAnimation != null) {
       localSigTlpAnimation.a();
     }
@@ -110,35 +110,30 @@ public class BubbleAnimation
   
   protected void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation;
+    Object localObject = this.d;
     if (localObject != null) {
       ((XBubbleAnimation)localObject).a(paramInt);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
+    localObject = this.e;
     if (localObject != null) {
       ((AIOAnimationConatiner.AIOAnimator)localObject).a(paramInt);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation;
+    localObject = this.f;
     if (localObject != null) {
       ((SigTlpAnimation)localObject).a(paramInt);
     }
   }
   
-  protected boolean a(int paramInt)
-  {
-    return true;
-  }
-  
   protected boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
+    Object localObject = this.e;
     boolean bool2;
     if (localObject != null) {
       bool2 = ((AIOAnimationConatiner.AIOAnimator)localObject).a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     } else {
       bool2 = false;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation;
+    localObject = this.d;
     boolean bool1 = bool2;
     if (localObject != null) {
       if ((!((XBubbleAnimation)localObject).a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4)) && (!bool2)) {
@@ -147,7 +142,7 @@ public class BubbleAnimation
         bool1 = true;
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation;
+    localObject = this.f;
     if (localObject != null) {
       bool1 = ((SigTlpAnimation)localObject).a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     }
@@ -164,10 +159,10 @@ public class BubbleAnimation
       try
       {
         long l = ((Long)paramVarArgs[1]).longValue();
-        if ((this.jdField_a_of_type_ComTencentWidgetListView != null) && (this.jdField_a_of_type_ComTencentWidgetListView.getAdapter() != null) && (l > 0L))
+        if ((this.b != null) && (this.b.getAdapter() != null) && (l > 0L))
         {
           Object localObject2 = null;
-          ListAdapter localListAdapter = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
+          ListAdapter localListAdapter = this.b.getAdapter();
           i = localListAdapter.getCount() - 1;
           Object localObject1 = localObject2;
           if (i >= 0)
@@ -183,7 +178,7 @@ public class BubbleAnimation
           }
           if (localObject1 != null)
           {
-            localObject1 = EmojiStickerManager.a().a((MessageRecord)localObject1);
+            localObject1 = EmojiStickerManager.a().c((MessageRecord)localObject1);
             if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
             {
               if (QLog.isColorLevel()) {
@@ -222,31 +217,36 @@ public class BubbleAnimation
   
   protected void b()
   {
-    SigTlpAnimation localSigTlpAnimation = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation;
+    SigTlpAnimation localSigTlpAnimation = this.f;
     if (localSigTlpAnimation != null) {
       localSigTlpAnimation.b();
     }
   }
   
+  protected boolean b(int paramInt)
+  {
+    return true;
+  }
+  
   protected void c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation;
+    Object localObject = this.d;
     if (localObject != null) {
-      ((XBubbleAnimation)localObject).e();
+      ((XBubbleAnimation)localObject).g();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner$AIOAnimator;
+    localObject = this.e;
     if (localObject != null) {
       ((AIOAnimationConatiner.AIOAnimator)localObject).c();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimSigTlpAnimation;
+    localObject = this.f;
     if (localObject != null) {
-      ((SigTlpAnimation)localObject).a(true);
+      ((SigTlpAnimation)localObject).b(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.BubbleAnimation
  * JD-Core Version:    0.7.0.1
  */

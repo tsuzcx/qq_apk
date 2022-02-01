@@ -13,33 +13,33 @@ class DBFixManager$1
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-    String str = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    Object localObject = this.this$0.a.getApplication().getSharedPreferences(DBFixManager.d, 0);
+    String str = this.this$0.a.getCurrentAccountUin();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
-    localStringBuilder.append(DBFixManager.d);
+    localStringBuilder.append(DBFixManager.f);
     if (((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false))
     {
-      this.this$0.a();
+      this.this$0.b();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(str);
-      localStringBuilder.append(DBFixManager.e);
-      if ((((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0) < DBFixManager.jdField_a_of_type_Int) && (DBFixManager.jdField_a_of_type_Boolean))
+      localStringBuilder.append(DBFixManager.g);
+      if ((((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0) < DBFixManager.h) && (DBFixManager.j))
       {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new DBFixManager.1.1(this));
+        this.this$0.a.runOnUiThread(new DBFixManager.1.1(this));
         return;
       }
-      QLog.d(DBFixManager.a(), 1, "DBFixDialogUI 1, max count, delete db");
+      QLog.d(DBFixManager.f(), 1, "DBFixDialogUI 1, max count, delete db");
       this.this$0.b(false);
       this.this$0.c();
       localObject = ((SharedPreferences)localObject).edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(str);
-      localStringBuilder.append(DBFixManager.d);
+      localStringBuilder.append(DBFixManager.f);
       ((SharedPreferences.Editor)localObject).remove(localStringBuilder.toString());
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(str);
-      localStringBuilder.append(DBFixManager.e);
+      localStringBuilder.append(DBFixManager.g);
       ((SharedPreferences.Editor)localObject).remove(localStringBuilder.toString());
       ((SharedPreferences.Editor)localObject).apply();
     }
@@ -47,7 +47,7 @@ class DBFixManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixManager.1
  * JD-Core Version:    0.7.0.1
  */

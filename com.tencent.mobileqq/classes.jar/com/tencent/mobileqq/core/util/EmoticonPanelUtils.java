@@ -21,93 +21,6 @@ import mqq.app.MobileQQ;
 
 public class EmoticonPanelUtils
 {
-  public static int a(int paramInt)
-  {
-    int i = 3;
-    if (paramInt != -1)
-    {
-      int j = Integer.valueOf(EmoticonReportUtil.getAioMoreFlag(paramInt)).intValue();
-      if (j != 0)
-      {
-        paramInt = i;
-        if (j == 1) {
-          return paramInt;
-        }
-        if (j != 2)
-        {
-          if (j == 3) {
-            return 1;
-          }
-        }
-        else {
-          return 4;
-        }
-      }
-      else
-      {
-        return 2;
-      }
-    }
-    paramInt = 0;
-    return paramInt;
-  }
-  
-  public static int a(String paramString)
-  {
-    try
-    {
-      int i = Integer.parseInt(paramString);
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return -1;
-  }
-  
-  public static IEmoticonManagerService a()
-  {
-    try
-    {
-      Object localObject = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (localObject != null)
-      {
-        localObject = (IEmoticonManagerService)((AppInterface)localObject).getRuntimeService(IEmoticonManagerService.class, "");
-        return localObject;
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static String a(int paramInt)
-  {
-    if (paramInt == 11000) {
-      return "qzone";
-    }
-    paramInt = Integer.valueOf(EmoticonReportUtil.getAioMoreFlag(paramInt)).intValue();
-    if (paramInt != 0)
-    {
-      if (paramInt != 1)
-      {
-        if (paramInt != 2)
-        {
-          if (paramInt != 3) {
-            return "other";
-          }
-          return "group";
-        }
-        return "discuss";
-      }
-      return "temp";
-    }
-    return "c2c";
-  }
-  
   public static String a(MessageForPic paramMessageForPic)
   {
     if (paramMessageForPic == null) {
@@ -157,23 +70,6 @@ public class EmoticonPanelUtils
       return "9";
     }
     return "";
-  }
-  
-  public static String a(String paramString)
-  {
-    int i = a(paramString);
-    if (i == -1) {
-      return null;
-    }
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("https://i.gtimg.cn/club/item/parcel/");
-    localStringBuilder2.append(i % 10);
-    localStringBuilder2.append("/");
-    localStringBuilder2.append(paramString);
-    localStringBuilder2.append("_android.json");
-    localStringBuilder1.append(localStringBuilder2.toString());
-    return EmosmUtils.a("VIP_emosm", localStringBuilder1.toString());
   }
   
   public static void a(EmoticonSpan[] paramArrayOfEmoticonSpan, float paramFloat1, float paramFloat2, boolean paramBoolean1, int paramInt1, int paramInt2, AppInterface paramAppInterface, Parcelable paramParcelable, Activity paramActivity, boolean paramBoolean2)
@@ -241,29 +137,18 @@ public class EmoticonPanelUtils
     return arrayOfByte;
   }
   
-  public static int b(int paramInt)
+  public static int b(String paramString)
   {
-    int i = 3;
-    if (paramInt != -1)
+    try
     {
-      int j = Integer.valueOf(EmoticonReportUtil.getAioMoreFlag(paramInt)).intValue();
-      if (j != 0)
-      {
-        paramInt = i;
-        if (j == 2) {
-          return paramInt;
-        }
-        if (j == 3) {
-          return 2;
-        }
-      }
-      else
-      {
-        return 1;
-      }
+      int i = Integer.parseInt(paramString);
+      return i;
     }
-    paramInt = 4;
-    return paramInt;
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return -1;
   }
   
   public static String b(MessageForPic paramMessageForPic)
@@ -327,11 +212,28 @@ public class EmoticonPanelUtils
     return false;
   }
   
+  public static String c(String paramString)
+  {
+    int i = b(paramString);
+    if (i == -1) {
+      return null;
+    }
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("https://i.gtimg.cn/club/item/parcel/");
+    localStringBuilder2.append(i % 10);
+    localStringBuilder2.append("/");
+    localStringBuilder2.append(paramString);
+    localStringBuilder2.append("_android.json");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return EmosmUtils.a("VIP_emosm", localStringBuilder1.toString());
+  }
+  
   public static boolean c()
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
     int i = NetworkUtil.getSystemNetwork(localBaseApplication);
-    boolean bool = SettingCloneUtil.readValue(localBaseApplication, null, localBaseApplication.getString(2131699755), "qqsetting_auto_receive_magic_face_key", true);
+    boolean bool = SettingCloneUtil.readValue(localBaseApplication, null, localBaseApplication.getString(2131897788), "qqsetting_auto_receive_magic_face_key", true);
     return ((i == 3) || (i == 4)) && (!bool);
   }
   
@@ -347,14 +249,36 @@ public class EmoticonPanelUtils
         bool1 = bool2;
         if (paramInt != 3000)
         {
-          if (paramInt == 99999) {
-            return true;
+          bool1 = bool2;
+          if (paramInt != 99999)
+          {
+            if (paramInt == 10014) {
+              return true;
+            }
+            bool1 = false;
           }
-          bool1 = false;
         }
       }
     }
     return bool1;
+  }
+  
+  public static IEmoticonManagerService d()
+  {
+    try
+    {
+      Object localObject = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (localObject != null)
+      {
+        localObject = (IEmoticonManagerService)((AppInterface)localObject).getRuntimeService(IEmoticonManagerService.class, "");
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
   }
   
   public static boolean d(int paramInt)
@@ -370,10 +294,90 @@ public class EmoticonPanelUtils
     }
     return bool;
   }
+  
+  public static int e(int paramInt)
+  {
+    int i = 3;
+    if (paramInt != -1)
+    {
+      int j = Integer.valueOf(EmoticonReportUtil.getAioMoreFlag(paramInt)).intValue();
+      if (j != 0)
+      {
+        paramInt = i;
+        if (j == 1) {
+          return paramInt;
+        }
+        if (j != 2)
+        {
+          if (j == 3) {
+            return 1;
+          }
+        }
+        else {
+          return 4;
+        }
+      }
+      else
+      {
+        return 2;
+      }
+    }
+    paramInt = 0;
+    return paramInt;
+  }
+  
+  public static int f(int paramInt)
+  {
+    int i = 3;
+    if (paramInt != -1)
+    {
+      int j = Integer.valueOf(EmoticonReportUtil.getAioMoreFlag(paramInt)).intValue();
+      if (j != 0)
+      {
+        paramInt = i;
+        if (j == 2) {
+          return paramInt;
+        }
+        if (j == 3) {
+          return 2;
+        }
+      }
+      else
+      {
+        return 1;
+      }
+    }
+    paramInt = 4;
+    return paramInt;
+  }
+  
+  public static String g(int paramInt)
+  {
+    if (paramInt == 11000) {
+      return "qzone";
+    }
+    paramInt = Integer.valueOf(EmoticonReportUtil.getAioMoreFlag(paramInt)).intValue();
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return "other";
+          }
+          return "group";
+        }
+        return "discuss";
+      }
+      return "temp";
+    }
+    return "c2c";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.core.util.EmoticonPanelUtils
  * JD-Core Version:    0.7.0.1
  */

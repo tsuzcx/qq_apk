@@ -14,6 +14,7 @@ import java.util.List;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
@@ -23,78 +24,47 @@ import org.jetbrains.annotations.Nullable;
 public final class VideoCapturePresenter
   implements VideoCaptureContract.IVideoCapturePresenter
 {
-  public static final VideoCapturePresenter.Companion a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  @Nullable
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private CandidateCaptureManager jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCandidateCaptureManager;
-  private ICaptureProxy jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy;
-  private OutputPicListener jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureOutputPicListener;
-  private PreviewCaptureManager jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocapturePreviewCaptureManager;
-  private VideoCaptureContract.IVideoCaptureView jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
+  public static final VideoCapturePresenter.Companion b = new VideoCapturePresenter.Companion(null);
   @NotNull
   public VideoCaptureView.CaptureVideoInfo a;
-  private final List<CaptureTask> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private final List<CaptureTask> jdField_b_of_type_JavaUtilList;
-  private int c;
-  private final int d;
-  private final int e;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCapturePresenter$Companion = new VideoCapturePresenter.Companion(null);
-  }
+  private VideoCaptureContract.IVideoCaptureView c;
+  private PreviewCaptureManager d;
+  private CandidateCaptureManager e;
+  private ICaptureProxy f;
+  private float g;
+  @Nullable
+  private Bitmap h;
+  private int i;
+  private OutputPicListener j;
+  private boolean k;
+  private final List<CaptureTask> l;
+  private final List<CaptureTask> m;
+  private int n;
+  private int o;
+  private final int p;
+  private final int q;
   
   public VideoCapturePresenter(int paramInt1, int paramInt2)
   {
-    this.d = paramInt1;
-    this.e = paramInt2;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy = ((ICaptureProxy)new SystemCaptureProxy(false));
-    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
-    this.jdField_b_of_type_JavaUtilList = ((List)new ArrayList());
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy.a((CapturePreparedListener)this);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocapturePreviewCaptureManager = new PreviewCaptureManager(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCandidateCaptureManager = new CandidateCaptureManager();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCandidateCaptureManager.a((CaptureTask.OnCaptureCallback)new VideoCapturePresenter.1(this));
-  }
-  
-  private final String a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo;
-    if (localObject == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
-    }
-    localObject = ((VideoCaptureView.CaptureVideoInfo)localObject).a();
-    VideoCaptureView.CaptureVideoInfo localCaptureVideoInfo = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo;
-    if (localCaptureVideoInfo == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
-    }
-    int i = StringsKt.lastIndexOf$default((CharSequence)localCaptureVideoInfo.a(), "/", 0, false, 6, null);
-    localCaptureVideoInfo = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo;
-    if (localCaptureVideoInfo == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
-    }
-    int j = StringsKt.lastIndexOf$default((CharSequence)localCaptureVideoInfo.a(), ".", 0, false, 6, null);
-    if (localObject != null)
-    {
-      localObject = ((String)localObject).substring(i + 1, j);
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      return localObject;
-    }
-    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    this.p = paramInt1;
+    this.q = paramInt2;
+    this.f = ((ICaptureProxy)new SystemCaptureProxy(false));
+    this.l = ((List)new ArrayList());
+    this.m = ((List)new ArrayList());
+    this.f.a((CapturePreparedListener)this);
+    this.d = new PreviewCaptureManager(this.f);
+    this.e = new CandidateCaptureManager();
+    this.e.a((CaptureTask.OnCaptureCallback)new VideoCapturePresenter.1(this));
   }
   
   private final void a(int paramInt1, int paramInt2, int paramInt3, List<CaptureTask> paramList)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo;
+    Object localObject = this.a;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
     }
-    localObject = new CaptureTask(1, ((VideoCaptureView.CaptureVideoInfo)localObject).a(), paramInt1, paramInt2, paramInt3, (CaptureTask.OnCaptureCallback)new VideoCapturePresenter.PreviewCaptureCallback(this, paramList.size()));
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocapturePreviewCaptureManager.c((CaptureTask)localObject);
+    localObject = new CaptureTask(1, ((VideoCaptureView.CaptureVideoInfo)localObject).f(), paramInt1, paramInt2, paramInt3, (CaptureTask.OnCaptureCallback)new VideoCapturePresenter.PreviewCaptureCallback(this, paramList.size()));
+    this.d.c((CaptureTask)localObject);
     paramList.add(localObject);
   }
   
@@ -107,8 +77,8 @@ public final class VideoCapturePresenter
     if (paramBitmap != null)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(TopicSDKHelperKt.c());
-      localStringBuilder.append(a());
+      localStringBuilder.append(TopicSDKHelperKt.e());
+      localStringBuilder.append(e());
       localStringBuilder.append('-');
       localStringBuilder.append(paramInt);
       localStringBuilder.append(".jpg");
@@ -118,117 +88,138 @@ public final class VideoCapturePresenter
   
   private final void a(String paramString)
   {
-    OutputPicListener localOutputPicListener = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureOutputPicListener;
+    OutputPicListener localOutputPicListener = this.j;
     if (localOutputPicListener != null) {
       localOutputPicListener.a(paramString);
     }
-    paramString = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
+    paramString = this.c;
     if (paramString != null) {
       paramString.a(false);
     }
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureOutputPicListener = ((OutputPicListener)null);
-    this.jdField_a_of_type_Boolean = false;
+    this.j = ((OutputPicListener)null);
+    this.k = false;
   }
   
-  private final void d()
+  private final String e()
   {
-    VideoCaptureContract.IVideoCaptureView localIVideoCaptureView = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
-    int i;
-    if (localIVideoCaptureView != null) {
-      i = localIVideoCaptureView.b();
-    } else {
-      i = this.d;
+    Object localObject = this.a;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
     }
-    this.c = i;
-    localIVideoCaptureView = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
-    if (localIVideoCaptureView != null) {
-      i = localIVideoCaptureView.c();
-    } else {
-      i = this.e;
+    localObject = ((VideoCaptureView.CaptureVideoInfo)localObject).f();
+    VideoCaptureView.CaptureVideoInfo localCaptureVideoInfo = this.a;
+    if (localCaptureVideoInfo == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
     }
-    this.jdField_b_of_type_Int = i;
+    int i1 = StringsKt.lastIndexOf$default((CharSequence)localCaptureVideoInfo.f(), "/", 0, false, 6, null);
+    localCaptureVideoInfo = this.a;
+    if (localCaptureVideoInfo == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
+    }
+    int i2 = StringsKt.lastIndexOf$default((CharSequence)localCaptureVideoInfo.f(), ".", 0, false, 6, null);
+    if (localObject != null)
+    {
+      localObject = ((String)localObject).substring(i1 + 1, i2);
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      return localObject;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
-  private final void e()
+  private final void f()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
-    int k = 0;
-    int i;
+    VideoCaptureContract.IVideoCaptureView localIVideoCaptureView = this.c;
+    int i1;
+    if (localIVideoCaptureView != null) {
+      i1 = localIVideoCaptureView.getPreviewImageHeight();
+    } else {
+      i1 = this.p;
+    }
+    this.o = i1;
+    localIVideoCaptureView = this.c;
+    if (localIVideoCaptureView != null) {
+      i1 = localIVideoCaptureView.getPreviewImageWidth();
+    } else {
+      i1 = this.q;
+    }
+    this.n = i1;
+  }
+  
+  private final void g()
+  {
+    Object localObject = this.c;
+    int i3 = 0;
+    int i1;
     if (localObject != null) {
-      i = ((VideoCaptureContract.IVideoCaptureView)localObject).a();
+      i1 = ((VideoCaptureContract.IVideoCaptureView)localObject).getPreviewImageCount();
     } else {
-      i = 0;
+      i1 = 0;
     }
-    float f = 0.0F;
-    int j = k;
-    if (i > 0)
+    float f1 = 0.0F;
+    int i2 = i3;
+    if (i1 > 0)
     {
-      f = (float)(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy.a() / i);
-      j = k;
+      f1 = (float)(this.f.a() / i1);
+      i2 = i3;
     }
-    while (j < i)
+    while (i2 < i1)
     {
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo;
+      localObject = this.a;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
       }
-      a((int)(((VideoCaptureView.CaptureVideoInfo)localObject).a() + j * f), this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_JavaUtilList);
-      j += 1;
+      a((int)(((VideoCaptureView.CaptureVideoInfo)localObject).a() + i2 * f1), this.n, this.o, this.l);
+      i2 += 1;
     }
-    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
+    localObject = this.c;
     if (localObject != null) {
-      ((VideoCaptureContract.IVideoCaptureView)localObject).a(this.jdField_a_of_type_JavaUtilList);
+      ((VideoCaptureContract.IVideoCaptureView)localObject).a(this.l);
     }
-  }
-  
-  public final float a()
-  {
-    return this.jdField_a_of_type_Float;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocapturePreviewCaptureManager.a();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCandidateCaptureManager.a();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView = ((VideoCaptureContract.IVideoCaptureView)null);
+    this.d.a();
+    this.e.b();
+    this.c = ((VideoCaptureContract.IVideoCaptureView)null);
   }
   
   public final void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.g = paramFloat;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.i = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_JavaUtilList.clear();
+    this.m.clear();
     List localList = (List)new ArrayList();
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
-    int j = 0;
-    int i;
+    Object localObject = this.c;
+    int i2 = 0;
+    int i1;
     if (localObject != null) {
-      i = ((VideoCaptureContract.IVideoCaptureView)localObject).a();
+      i1 = ((VideoCaptureContract.IVideoCaptureView)localObject).getPreviewImageCount();
     } else {
-      i = 0;
+      i1 = 0;
     }
-    while (j < i)
+    while (i2 < i1)
     {
-      int k = (j - paramInt2) * CaptureOperateTouchLayout.a.a() + paramInt1;
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo;
+      int i3 = (i2 - paramInt2) * CaptureOperateTouchLayout.a.a() + paramInt1;
+      localObject = this.a;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
       }
-      a(((VideoCaptureView.CaptureVideoInfo)localObject).a() + k, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_JavaUtilList);
-      localList.add(Integer.valueOf(k));
-      j += 1;
+      a(((VideoCaptureView.CaptureVideoInfo)localObject).a() + i3, this.n, this.o, this.m);
+      localList.add(Integer.valueOf(i3));
+      i2 += 1;
     }
-    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
+    localObject = this.c;
     if (localObject != null) {
-      ((VideoCaptureContract.IVideoCaptureView)localObject).b(this.jdField_b_of_type_JavaUtilList);
+      ((VideoCaptureContract.IVideoCaptureView)localObject).b(this.m);
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("expandCandidateImageList positionList: ");
@@ -242,112 +233,75 @@ public final class VideoCapturePresenter
   
   public void a(int paramInt1, int paramInt2, long paramLong)
   {
-    d();
-    e();
-    VideoCaptureContract.IVideoCaptureView localIVideoCaptureView = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
+    f();
+    g();
+    VideoCaptureContract.IVideoCaptureView localIVideoCaptureView = this.c;
     if (localIVideoCaptureView != null) {
-      localIVideoCaptureView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy.a());
+      localIVideoCaptureView.a(this.f.a());
     }
   }
   
   public final void a(@Nullable Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.h = paramBitmap;
   }
   
   public void a(@NotNull OutputPicListener paramOutputPicListener)
   {
     Intrinsics.checkParameterIsNotNull(paramOutputPicListener, "outputPicListener");
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
-    if (localObject != null) {
-      ((VideoCaptureContract.IVideoCaptureView)localObject).a(true);
-    }
-    if (!this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCandidateCaptureManager.a())
-    {
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
-      if (localObject != null) {
-        ((VideoCaptureContract.IVideoCaptureView)localObject).a(false);
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(TopicSDKHelperKt.c());
-      ((StringBuilder)localObject).append(a());
-      ((StringBuilder)localObject).append('-');
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      ((StringBuilder)localObject).append(".jpg");
-      paramOutputPicListener.a(((StringBuilder)localObject).toString());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureOutputPicListener = paramOutputPicListener;
-    this.jdField_a_of_type_Boolean = true;
+    this.e.a().a((Function1)new VideoCapturePresenter.confirmClick.1(paramOutputPicListener));
   }
   
   public void a(@NotNull VideoCaptureContract.IVideoCaptureView paramIVideoCaptureView)
   {
     Intrinsics.checkParameterIsNotNull(paramIVideoCaptureView, "view");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView = paramIVideoCaptureView;
+    this.c = paramIVideoCaptureView;
   }
   
   public final void a(@NotNull VideoCaptureView.CaptureVideoInfo paramCaptureVideoInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramCaptureVideoInfo, "<set-?>");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo = paramCaptureVideoInfo;
+    this.a = paramCaptureVideoInfo;
   }
   
-  public void b()
+  public final float b()
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCandidateCaptureManager;
-    VideoCaptureView.CaptureVideoInfo localCaptureVideoInfo = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo;
-    if (localCaptureVideoInfo == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
-    }
-    Object localObject1 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
-    if (localObject1 != null) {
-      localObject1 = ((VideoCaptureContract.IVideoCaptureView)localObject1).a();
-    } else {
-      localObject1 = null;
-    }
-    ((CandidateCaptureManager)localObject2).a(localCaptureVideoInfo, (ViewGroup)localObject1, (CapturePreparedListener)new VideoCapturePresenter.loadPreviewListCapture.1(this));
-    localObject1 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy;
-    localObject2 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo;
-    if (localObject2 == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
-    }
-    ((ICaptureProxy)localObject1).a((VideoCaptureView.CaptureVideoInfo)localObject2, null);
+    return this.g;
   }
   
   public void b(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCandidateCaptureManager;
-    Object localObject2 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo;
+    Object localObject1 = this.e;
+    Object localObject2 = this.a;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
     }
     ((CandidateCaptureManager)localObject1).a(((VideoCaptureView.CaptureVideoInfo)localObject2).a() + paramInt);
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(TopicSDKHelperKt.c());
-    ((StringBuilder)localObject1).append(a());
+    ((StringBuilder)localObject1).append(TopicSDKHelperKt.e());
+    ((StringBuilder)localObject1).append(e());
     ((StringBuilder)localObject1).append('-');
     ((StringBuilder)localObject1).append(paramInt);
     ((StringBuilder)localObject1).append(".jpg");
     localObject1 = ((StringBuilder)localObject1).toString();
     if (new File((String)localObject1).exists())
     {
-      localObject2 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
+      localObject2 = this.c;
       if (localObject2 != null) {
         ((VideoCaptureContract.IVideoCaptureView)localObject2).a((String)localObject1);
       }
     }
     else
     {
-      localObject1 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
+      localObject1 = this.c;
       if (localObject1 != null)
       {
         double d1 = paramInt;
-        double d2 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy.a();
+        double d2 = this.f.a();
         Double.isNaN(d1);
         Double.isNaN(d2);
         d1 /= d2;
-        d2 = ((VideoCaptureContract.IVideoCaptureView)localObject1).a();
+        d2 = ((VideoCaptureContract.IVideoCaptureView)localObject1).getPreviewImageCount();
         Double.isNaN(d2);
         ((VideoCaptureContract.IVideoCaptureView)localObject1).a((int)Math.ceil(d1 * d2));
       }
@@ -356,15 +310,37 @@ public final class VideoCapturePresenter
   
   public void c()
   {
-    VideoCaptureContract.IVideoCaptureView localIVideoCaptureView = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureContract$IVideoCaptureView;
+    Object localObject2 = this.e;
+    VideoCaptureView.CaptureVideoInfo localCaptureVideoInfo = this.a;
+    if (localCaptureVideoInfo == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
+    }
+    Object localObject1 = this.c;
+    if (localObject1 != null) {
+      localObject1 = ((VideoCaptureContract.IVideoCaptureView)localObject1).getCandidateView();
+    } else {
+      localObject1 = null;
+    }
+    ((CandidateCaptureManager)localObject2).a(localCaptureVideoInfo, (ViewGroup)localObject1, (CapturePreparedListener)new VideoCapturePresenter.loadPreviewListCapture.1(this));
+    localObject1 = this.f;
+    localObject2 = this.a;
+    if (localObject2 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
+    }
+    ((ICaptureProxy)localObject1).a((VideoCaptureView.CaptureVideoInfo)localObject2, null);
+  }
+  
+  public void d()
+  {
+    VideoCaptureContract.IVideoCaptureView localIVideoCaptureView = this.c;
     if (localIVideoCaptureView != null) {
-      localIVideoCaptureView.b(this.jdField_a_of_type_JavaUtilList);
+      localIVideoCaptureView.b(this.l);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCapturePresenter
  * JD-Core Version:    0.7.0.1
  */

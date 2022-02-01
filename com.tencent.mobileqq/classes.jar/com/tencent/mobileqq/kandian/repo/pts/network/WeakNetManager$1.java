@@ -18,10 +18,10 @@ class WeakNetManager$1
     WeakNetManager.a(this.this$0, null);
     if (WeakNetHelper.a())
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 1, 2131718128, 1).a();
+      QQToast.makeText(BaseApplicationImpl.sApplication, 1, 2131915605, 1).show();
       try
       {
-        WeakNetHelper.a("0X8009D08", RIJTransMergeKanDianReport.a().addString("loading_time", String.valueOf(this.a)).build());
+        WeakNetHelper.a("0X8009D08", RIJTransMergeKanDianReport.g().addString("loading_time", String.valueOf(this.a)).build());
       }
       catch (JSONException localJSONException)
       {
@@ -35,7 +35,7 @@ class WeakNetManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.pts.network.WeakNetManager.1
  * JD-Core Version:    0.7.0.1
  */

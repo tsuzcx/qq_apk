@@ -26,8 +26,8 @@ class SystemRequestInfoView$1
   {
     if (this.a.a())
     {
-      paramString = this.a.getResources().getString(2131719418);
-      QQToast.a(this.a.getContext(), 1, paramString, 0).b(this.a.a());
+      paramString = this.a.getResources().getString(2131916977);
+      QQToast.makeText(this.a.getContext(), 1, paramString, 0).show(this.a.getTitleBarHeight());
       return;
     }
     if (QLog.isColorLevel()) {
@@ -64,9 +64,9 @@ class SystemRequestInfoView$1
     if (!paramBoolean)
     {
       if (TextUtils.isEmpty(paramString3)) {
-        paramString3 = this.a.getResources().getString(2131718739);
+        paramString3 = this.a.getResources().getString(2131916242);
       }
-      QQToast.a(this.a.getContext(), 1, paramString3, 0).b(this.a.a());
+      QQToast.makeText(this.a.getContext(), 1, paramString3, 0).show(this.a.getTitleBarHeight());
       if (SystemMsgUtils.a(localStructMsg, paramInt3, paramString2, paramString4)) {
         SystemRequestInfoView.a(this.a).finish();
       }
@@ -78,7 +78,7 @@ class SystemRequestInfoView$1
       if (paramInt1 == 1)
       {
         SystemRequestInfoView.a(this.a).finish();
-        paramString1 = this.a.getResources().getString(2131692662);
+        paramString1 = this.a.getResources().getString(2131889687);
       }
       else
       {
@@ -88,18 +88,18 @@ class SystemRequestInfoView$1
           paramString1 = paramString2;
           if (localStructMsg != null)
           {
-            paramString1 = this.a.getResources().getString(2131692656);
+            paramString1 = this.a.getResources().getString(2131889681);
             AutoRemarkActivity.a(SystemRequestInfoView.a(this.a), 1017, String.valueOf(localStructMsg.req_uin.get()), l1, null);
           }
         }
       }
-      QQToast.a(this.a.getContext(), 2, paramString1, 0).b(this.a.a());
+      QQToast.makeText(this.a.getContext(), 2, paramString1, 0).show(this.a.getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView.1
  * JD-Core Version:    0.7.0.1
  */

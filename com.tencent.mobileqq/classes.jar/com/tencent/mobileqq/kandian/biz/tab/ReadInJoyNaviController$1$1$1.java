@@ -10,12 +10,12 @@ class ReadInJoyNaviController$1$1$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyNaviController.a(this.a.a.this$0, true);
+    ReadInJoyNaviController.a(this.a.b.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyNaviController.1.1.1
  * JD-Core Version:    0.7.0.1
  */

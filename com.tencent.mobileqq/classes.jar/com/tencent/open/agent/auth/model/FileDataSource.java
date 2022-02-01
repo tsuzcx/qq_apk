@@ -94,7 +94,7 @@ public class FileDataSource
     //   128: astore 7
     //   130: aload 11
     //   132: invokevirtual 28	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: invokestatic 79	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   135: invokestatic 79	com/tencent/mobileqq/utils/HexUtil:string2HexString	(Ljava/lang/String;)Ljava/lang/String;
     //   138: astore_1
     //   139: aload 9
     //   141: astore 7
@@ -259,7 +259,7 @@ public class FileDataSource
     //   32: pop
     //   33: aload 4
     //   35: invokevirtual 28	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokestatic 79	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   38: invokestatic 79	com/tencent/mobileqq/utils/HexUtil:string2HexString	(Ljava/lang/String;)Ljava/lang/String;
     //   41: astore 4
     //   43: new 10	java/lang/StringBuilder
     //   46: dup
@@ -479,7 +479,7 @@ public class FileDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.model.FileDataSource
  * JD-Core Version:    0.7.0.1
  */

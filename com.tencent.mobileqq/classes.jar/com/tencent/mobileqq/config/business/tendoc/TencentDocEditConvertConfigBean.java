@@ -23,7 +23,7 @@ public class TencentDocEditConvertConfigBean
       localTencentDocEditConvertConfigBean = new TencentDocEditConvertConfigBean();
       try
       {
-        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].b);
         Iterator localIterator = paramArrayOfQConfItem.keys();
         while (localIterator.hasNext())
         {
@@ -55,7 +55,7 @@ public class TencentDocEditConvertConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocEditConvertConfigBean
  * JD-Core Version:    0.7.0.1
  */

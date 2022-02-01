@@ -13,7 +13,7 @@ public class MsgTabStoryNodeDelegate$UpdateMsgTabCoverEventReceiver
   
   public void a(@NonNull MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, @NonNull MsgTabStoryNodeDelegate.UpdateMsgTabCoverEvent paramUpdateMsgTabCoverEvent)
   {
-    MsgTabStoryNodeDelegate.a(paramMsgTabStoryNodeDelegate, paramUpdateMsgTabCoverEvent.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId, paramUpdateMsgTabCoverEvent.jdField_a_of_type_JavaLangString);
+    MsgTabStoryNodeDelegate.a(paramMsgTabStoryNodeDelegate, paramUpdateMsgTabCoverEvent.a, paramUpdateMsgTabCoverEvent.b);
   }
   
   public Class acceptEventClass()
@@ -23,7 +23,7 @@ public class MsgTabStoryNodeDelegate$UpdateMsgTabCoverEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate.UpdateMsgTabCoverEventReceiver
  * JD-Core Version:    0.7.0.1
  */

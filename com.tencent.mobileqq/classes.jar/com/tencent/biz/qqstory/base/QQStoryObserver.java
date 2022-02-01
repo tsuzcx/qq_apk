@@ -45,19 +45,19 @@ public class QQStoryObserver
       if (paramBoolean2) {
         paramString = "";
       } else {
-        paramString = HardCodeUtil.a(2131710912);
+        paramString = HardCodeUtil.a(2131898212);
       }
       if (paramInt == 0) {
-        paramInt = 2131710913;
+        paramInt = 2131908581;
       } else {
-        paramInt = 2131710911;
+        paramInt = 2131899712;
       }
       String str = HardCodeUtil.a(paramInt);
       ToastUtil localToastUtil = ToastUtil.a();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
       localStringBuilder.append(str);
-      localStringBuilder.append(HardCodeUtil.a(2131710914));
+      localStringBuilder.append(HardCodeUtil.a(2131908582));
       localToastUtil.a(localStringBuilder.toString());
     }
   }
@@ -85,7 +85,7 @@ public class QQStoryObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.QQStoryObserver
  * JD-Core Version:    0.7.0.1
  */

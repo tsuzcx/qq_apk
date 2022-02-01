@@ -10,15 +10,15 @@ import java.util.ArrayList;
 class AIOImageListScene$ProcessTask
   extends AsyncTask<Integer, Integer, Integer>
 {
-  int jdField_a_of_type_Int;
-  AIORichMediaInfo jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo;
-  boolean jdField_a_of_type_Boolean = true;
-  AIORichMediaInfo[] jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaInfo;
+  AIORichMediaInfo[] a;
+  boolean b = true;
+  AIORichMediaInfo c;
+  int d;
   
   public AIOImageListScene$ProcessTask(ArrayList<AIORichMediaInfo> paramArrayList)
   {
     Object localObject;
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaInfo = ((AIORichMediaInfo[])localObject.toArray(new AIORichMediaInfo[0]));
+    this.a = ((AIORichMediaInfo[])localObject.toArray(new AIORichMediaInfo[0]));
   }
   
   private int a(AIORichMediaInfo[] paramArrayOfAIORichMediaInfo, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, Integer... paramVarArgs)
@@ -42,20 +42,20 @@ class AIOImageListScene$ProcessTask
         return 1;
       }
       int i;
-      if (AIOImageData.class.isInstance(((AIORichMediaInfo)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
+      if (AIOImageData.class.isInstance(((AIORichMediaInfo)localObject).a))
       {
-        localObject = (AIOImageData)((AIORichMediaInfo)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+        localObject = (AIOImageData)((AIORichMediaInfo)localObject).a;
         publishProgress(new Integer[] { Integer.valueOf(paramInt2 * 100 / paramVarArgs.length + paramInt1 * 100 / paramVarArgs.length / paramArrayOfAIORichMediaInfo.length & 0xFFFF | paramInt3 << 16) });
-        i = AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene, null, (AIOImageData)localObject, localFile);
+        i = AIOImageListScene.a(this.e, null, (AIOImageData)localObject, localFile);
         if (i != 20) {
           return i;
         }
       }
-      else if (AIOFilePicData.class.isInstance(((AIORichMediaInfo)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
+      else if (AIOFilePicData.class.isInstance(((AIORichMediaInfo)localObject).a))
       {
-        localObject = (AIOFilePicData)((AIORichMediaInfo)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+        localObject = (AIOFilePicData)((AIORichMediaInfo)localObject).a;
         publishProgress(new Integer[] { Integer.valueOf(paramInt2 * 100 / paramVarArgs.length + paramInt1 * 100 / paramVarArgs.length / paramArrayOfAIORichMediaInfo.length & 0xFFFF | paramInt3 << 16) });
-        i = AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene, null, (AIOFilePicData)localObject, localFile);
+        i = AIOImageListScene.a(this.e, null, (AIOFilePicData)localObject, localFile);
         if (i != 20) {
           return i;
         }
@@ -115,7 +115,7 @@ class AIOImageListScene$ProcessTask
     if (j < paramVarArgs.length)
     {
       k = paramVarArgs[j].intValue();
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.b) {
         return Integer.valueOf(1);
       }
       m = j * 100;
@@ -132,36 +132,36 @@ class AIOImageListScene$ProcessTask
         }
         break label594;
       }
-      return Integer.valueOf(a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaInfo, this.jdField_a_of_type_Boolean, i1, j, k, paramVarArgs));
-      if (i >= this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaInfo.length) {
+      return Integer.valueOf(a(this.a, this.b, i1, j, k, paramVarArgs));
+      if (i >= this.a.length) {
         break label579;
       }
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.b) {
         return Integer.valueOf(1);
       }
-      publishProgress(new Integer[] { Integer.valueOf(m / paramVarArgs.length + i * 100 / paramVarArgs.length / this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaInfo.length & 0xFFFF | n) });
-      ??? = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaInfo[i];
-      if (!AIOImageData.class.isInstance(???.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
+      publishProgress(new Integer[] { Integer.valueOf(m / paramVarArgs.length + i * 100 / paramVarArgs.length / this.a.length & 0xFFFF | n) });
+      ??? = this.a[i];
+      if (!AIOImageData.class.isInstance(???.a)) {
         break label572;
       }
-      localObject = (AIOImageData)???.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-      str = ((AIOImageData)localObject).jdField_b_of_type_JavaLangString;
+      localObject = (AIOImageData)???.a;
+      str = ((AIOImageData)localObject).b;
       if ("I:N".equals(str)) {
         break label572;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo = ???;
-      if ((this.jdField_a_of_type_Boolean) && ((str == null) || (!new File(str).exists())))
+      this.c = ???;
+      if ((this.b) && ((str == null) || (!new File(str).exists())))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(((AIOImageData)localObject).jdField_f_of_type_Long, ((AIOImageData)localObject).jdField_f_of_type_Int, 2);
+        this.c.e = true;
+        this.e.w.a(((AIOImageData)localObject).L, ((AIOImageData)localObject).M, 2);
       }
     }
     try
     {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo)
+      synchronized (this.c)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.wait();
+        if (this.c.e) {
+          this.c.wait();
         }
       }
     }
@@ -169,7 +169,7 @@ class AIOImageListScene$ProcessTask
     {
       break label362;
     }
-    if (((AIOImageData)localObject).jdField_b_of_type_Boolean)
+    if (((AIOImageData)localObject).f)
     {
       if (QLog.isColorLevel())
       {
@@ -177,17 +177,17 @@ class AIOImageListScene$ProcessTask
         paramVarArgs.append("Download Failed @@, index: ");
         paramVarArgs.append(i);
         paramVarArgs.append(", downloadPath:");
-        paramVarArgs.append(((AIOImageData)localObject).jdField_b_of_type_JavaLangString);
+        paramVarArgs.append(((AIOImageData)localObject).b);
         QLog.d("AIOImageListScene", 2, paramVarArgs.toString());
       }
-      this.jdField_a_of_type_Int = (this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaInfo.length - i);
+      this.d = (this.a.length - i);
       return Integer.valueOf(11);
       throw paramVarArgs;
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       return Integer.valueOf(1);
     }
-    if (((AIOImageData)localObject).a(2) == null)
+    if (((AIOImageData)localObject).c(2) == null)
     {
       if (QLog.isColorLevel())
       {
@@ -195,10 +195,10 @@ class AIOImageListScene$ProcessTask
         paramVarArgs.append("Download Failed, index: ");
         paramVarArgs.append(i);
         paramVarArgs.append(", downloadPath:");
-        paramVarArgs.append(((AIOImageData)localObject).jdField_b_of_type_JavaLangString);
+        paramVarArgs.append(((AIOImageData)localObject).b);
         QLog.d("AIOImageListScene", 2, paramVarArgs.toString());
       }
-      this.jdField_a_of_type_Int = (this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaInfo.length - i);
+      this.d = (this.a.length - i);
       return Integer.valueOf(11);
       return Integer.valueOf(i);
       return Integer.valueOf(2);
@@ -207,19 +207,19 @@ class AIOImageListScene$ProcessTask
   
   protected void a(Integer paramInteger)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.b(paramInteger.intValue(), this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene$ProcessTask = null;
+    this.e.b(paramInteger.intValue(), this.d);
+    this.e.x = null;
   }
   
-  protected void a(Integer... paramVarArgs)
+  protected void b(Integer... paramVarArgs)
   {
     int i = paramVarArgs[(paramVarArgs.length - 1)].intValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.c(i >> 16, 0xFFFF & i);
+    this.e.c(i >> 16, 0xFFFF & i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageListScene.ProcessTask
  * JD-Core Version:    0.7.0.1
  */

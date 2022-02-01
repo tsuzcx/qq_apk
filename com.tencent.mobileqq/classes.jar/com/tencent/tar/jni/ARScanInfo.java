@@ -5,20 +5,20 @@ import java.util.ArrayList;
 
 public class ARScanInfo
 {
-  public ARScanInfo.QBMatrix a;
   public boolean a;
+  public ARScanInfo.QBMatrix b;
   
   public static ARScanInfo a(boolean paramBoolean, ArrayList<Point> paramArrayList)
   {
     ARScanInfo localARScanInfo = new ARScanInfo();
-    localARScanInfo.jdField_a_of_type_Boolean = paramBoolean;
-    localARScanInfo.jdField_a_of_type_ComTencentTarJniARScanInfo$QBMatrix = new ARScanInfo.QBMatrix(paramArrayList);
+    localARScanInfo.a = paramBoolean;
+    localARScanInfo.b = new ARScanInfo.QBMatrix(paramArrayList);
     return localARScanInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tar.jni.ARScanInfo
  * JD-Core Version:    0.7.0.1
  */

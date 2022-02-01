@@ -18,13 +18,13 @@ final class ComIPCUtilsImpl$1
     if ((paramInt == 0) && (paramBundle != null))
     {
       paramBundle = paramBundle.getString("res");
-      this.jdField_a_of_type_ComTencentMobileqqQwalletConfigIQWalletConfigService$ConfigUpdateListener.onUpdate(this.jdField_a_of_type_JavaLangString, paramBundle, null);
+      this.a.onUpdate(this.b, paramBundle, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.ipc.impl.ComIPCUtilsImpl.1
  * JD-Core Version:    0.7.0.1
  */

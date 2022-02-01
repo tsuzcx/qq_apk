@@ -15,13 +15,13 @@ class VideoFeedsAdapter$2
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_scrollInterval", String.valueOf(this.a));
-      RIJStatisticCollectorReport.d(VideoFeedsAdapter.a(this.this$0), RIJQQAppInterfaceUtil.a(), true, localHashMap);
+      RIJStatisticCollectorReport.d(VideoFeedsAdapter.a(this.this$0), RIJQQAppInterfaceUtil.d(), true, localHashMap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsAdapter.2
  * JD-Core Version:    0.7.0.1
  */

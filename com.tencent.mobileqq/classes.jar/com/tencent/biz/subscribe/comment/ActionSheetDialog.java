@@ -32,91 +32,91 @@ public class ActionSheetDialog
   extends SafeDialog
   implements DialogInterface.OnCancelListener, Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int = 0;
   protected Context a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = null;
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ArrayList<Button> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   protected Context b;
-  private LinearLayout b;
+  private TextView d;
+  private Button e;
+  private LinearLayout f;
+  private LinearLayout g;
+  private View h;
+  private Handler i;
+  private int j = 0;
+  private ArrayList<Button> k = new ArrayList();
+  private View.OnClickListener l = null;
   
   public ActionSheetDialog(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_AndroidContentContext = paramContext;
-    setContentView(2131558783);
+    this.a = paramContext;
+    this.b = paramContext;
+    setContentView(2131624403);
     b();
     c();
-    D_();
+    aF_();
   }
   
   public ActionSheetDialog(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this(paramContext, i);
+    this(paramContext, m);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365352));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370548));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131361951));
-    this.jdField_a_of_type_AndroidWidgetButton.setDrawingCacheEnabled(false);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363349);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378784));
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    this.f = ((LinearLayout)findViewById(2131431538));
+    this.g = ((LinearLayout)findViewById(2131437821));
+    this.e = ((Button)findViewById(2131427505));
+    this.e.setDrawingCacheEnabled(false);
+    this.h = findViewById(2131429234);
+    this.d = ((TextView)findViewById(2131447463));
+    this.d.setVisibility(8);
+    this.d.setText("");
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ActionSheetDialog.2(this));
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.e.setOnClickListener(new ActionSheetDialog.2(this));
+    this.i = new Handler(Looper.getMainLooper());
   }
   
   private void d()
   {
-    Object localObject = new TranslateAnimation(0.0F, 0.0F, this.jdField_b_of_type_AndroidWidgetLinearLayout.getHeight(), 0.0F);
+    Object localObject = new TranslateAnimation(0.0F, 0.0F, this.g.getHeight(), 0.0F);
     ((TranslateAnimation)localObject).setFillAfter(true);
-    ((TranslateAnimation)localObject).setInterpolator(AnimationUtils.loadInterpolator(this.jdField_a_of_type_AndroidContentContext, 17432582));
+    ((TranslateAnimation)localObject).setInterpolator(AnimationUtils.loadInterpolator(this.a, 17432582));
     ((TranslateAnimation)localObject).setDuration(200L);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.startAnimation((Animation)localObject);
+    this.g.startAnimation((Animation)localObject);
     localObject = new AlphaAnimation(0.0F, 1.0F);
     ((AlphaAnimation)localObject).setFillAfter(true);
     ((AlphaAnimation)localObject).setDuration(200L);
-    this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
+    this.h.startAnimation((Animation)localObject);
   }
   
   private void e()
   {
-    Object localObject = new TranslateAnimation(0.0F, 0.0F, 0.0F, this.jdField_b_of_type_AndroidWidgetLinearLayout.getHeight());
+    Object localObject = new TranslateAnimation(0.0F, 0.0F, 0.0F, this.g.getHeight());
     ((TranslateAnimation)localObject).setFillAfter(true);
-    ((TranslateAnimation)localObject).setInterpolator(AnimationUtils.loadInterpolator(this.jdField_a_of_type_AndroidContentContext, 17432582));
+    ((TranslateAnimation)localObject).setInterpolator(AnimationUtils.loadInterpolator(this.a, 17432582));
     ((TranslateAnimation)localObject).setDuration(200L);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.startAnimation((Animation)localObject);
+    this.g.startAnimation((Animation)localObject);
     localObject = new AlphaAnimation(1.0F, 0.0F);
     ((AlphaAnimation)localObject).setFillAfter(true);
     ((AlphaAnimation)localObject).setDuration(200L);
-    this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
+    this.h.startAnimation((Animation)localObject);
     ((AlphaAnimation)localObject).setAnimationListener(this);
   }
   
   public Button a(String paramString, int paramInt, View.OnClickListener paramOnClickListener)
   {
-    Button localButton = new Button(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localButton);
+    Button localButton = new Button(this.a);
+    this.f.addView(localButton);
     Object localObject = (LinearLayout.LayoutParams)localButton.getLayoutParams();
     ((LinearLayout.LayoutParams)localObject).width = -1;
-    ((LinearLayout.LayoutParams)localObject).height = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297335));
-    ((LinearLayout.LayoutParams)localObject).bottomMargin = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296775));
+    ((LinearLayout.LayoutParams)localObject).height = ((int)this.a.getResources().getDimension(2131297770));
+    ((LinearLayout.LayoutParams)localObject).bottomMargin = ((int)this.a.getResources().getDimension(2131297106));
     ((LinearLayout.LayoutParams)localObject).gravity = 17;
     localButton.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localButton.setText(paramString);
-    int i = 2130839056;
+    int m = 2130839210;
     if (paramInt != 1)
     {
       if (paramInt != 2)
@@ -126,24 +126,24 @@ public class ActionSheetDialog
           if (paramInt != 4)
           {
             if (paramInt != 5) {
-              paramInt = this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131165260);
+              paramInt = this.b.getResources().getColor(2131165468);
             } else {
               paramInt = -14833678;
             }
           }
           else
           {
-            paramInt = this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131167443);
+            paramInt = this.b.getResources().getColor(2131168539);
             localButton.setTypeface(Typeface.defaultFromStyle(1));
           }
         }
         else
         {
           paramInt = -16777216;
-          int j = AIOUtils.b(8.0F, getContext().getResources());
+          int n = AIOUtils.b(8.0F, getContext().getResources());
           paramString = new SpannableString(localButton.getText());
-          localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840419);
-          ((Drawable)localObject).setBounds(j, 0, ((Drawable)localObject).getIntrinsicWidth() + j, ((Drawable)localObject).getIntrinsicHeight());
+          localObject = this.a.getResources().getDrawable(2130841175);
+          ((Drawable)localObject).setBounds(n, 0, ((Drawable)localObject).getIntrinsicWidth() + n, ((Drawable)localObject).getIntrinsicHeight());
           paramString.setSpan(new ImageSpan((Drawable)localObject, 1), paramString.length() - 1, paramString.length(), 33);
           localButton.setText(paramString);
         }
@@ -151,24 +151,24 @@ public class ActionSheetDialog
       else
       {
         paramInt = -14207157;
-        i = 2130839054;
+        m = 2130839208;
       }
     }
     else {
-      paramInt = this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131166941);
+      paramInt = this.b.getResources().getColor(2131167862);
     }
-    localButton.setBackgroundDrawable(this.jdField_b_of_type_AndroidContentContext.getResources().getDrawable(i));
+    localButton.setBackgroundDrawable(this.b.getResources().getDrawable(m));
     localButton.setTextColor(paramInt);
     localButton.setTextSize(16.0F);
     localButton.setOnClickListener(paramOnClickListener);
-    this.jdField_a_of_type_Int += 1;
-    this.jdField_a_of_type_JavaUtilArrayList.add(localButton);
+    this.j += 1;
+    this.k.add(localButton);
     return localButton;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetButton.post(new ActionSheetDialog.4(this, paramString));
+    this.e.post(new ActionSheetDialog.4(this, paramString));
   }
   
   public void dismiss()
@@ -187,7 +187,7 @@ public class ActionSheetDialog
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    paramDialogInterface = this.l;
     if (paramDialogInterface != null) {}
     try
     {
@@ -218,14 +218,14 @@ public class ActionSheetDialog
     if (isShowing()) {
       return;
     }
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    Context localContext = this.a;
     if (((localContext instanceof Activity)) && (((Activity)localContext).isFinishing())) {
       return;
     }
     super.show();
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ActionSheetDialog.1(this), 0L);
+    this.g.setVisibility(4);
+    this.h.setVisibility(4);
+    this.i.postDelayed(new ActionSheetDialog.1(this), 0L);
   }
 }
 

@@ -35,22 +35,22 @@ class EditTroopMemberNickService$8
         j = 0;
       }
       this.a.a.getEditableText().replace(i, j, str);
-      int i = paramColorItem.jdField_a_of_type_Int;
+      int i = paramColorItem.a;
       if (i != 2)
       {
         if (i != 3) {
           return;
         }
         localColorClearableEditText.setTextColor(-16777216);
-        paramColorItem = ColorNickManager.a(EditTroopMemberNickService.a(this.a)).a(paramColorItem.b);
+        paramColorItem = ColorNickManager.a(EditTroopMemberNickService.b(this.a)).a(paramColorItem.d);
         if (paramColorItem != null) {
-          localColorClearableEditText.setSpecialColor(paramColorItem.jdField_a_of_type_Int, paramColorItem.jdField_a_of_type_ArrayOfInt, paramColorItem.jdField_a_of_type_ArrayOfFloat, paramColorItem.b, paramColorItem.jdField_a_of_type_AndroidGraphicsBitmap);
+          localColorClearableEditText.setSpecialColor(paramColorItem.a, paramColorItem.c, paramColorItem.d, paramColorItem.b, paramColorItem.e);
         }
       }
       else
       {
-        if (paramColorItem.b != 0) {
-          localColorClearableEditText.setTextColor(paramColorItem.b);
+        if (paramColorItem.d != 0) {
+          localColorClearableEditText.setTextColor(paramColorItem.d);
         } else {
           localColorClearableEditText.setTextColor(-16777216);
         }
@@ -61,7 +61,7 @@ class EditTroopMemberNickService$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.8
  * JD-Core Version:    0.7.0.1
  */

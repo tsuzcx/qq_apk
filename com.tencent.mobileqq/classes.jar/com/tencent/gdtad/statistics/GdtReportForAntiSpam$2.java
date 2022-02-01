@@ -18,23 +18,23 @@ final class GdtReportForAntiSpam$2
     localParams.setUrl("https://sdk.e.qq.com/xq_event");
     localParams.method = "POST";
     localParams.contentType = "application/json";
-    localParams.requestData = this.jdField_a_of_type_ArrayOfByte;
+    localParams.requestData = this.a;
     if (!localParams.canSend())
     {
       QLog.e("GdtReportForAntiSpam", 1, "reportFlyingStreaming error");
       return;
     }
     AdHttp.send(localParams);
-    GdtReportForAntiSpam.ReportCallback localReportCallback = this.jdField_a_of_type_ComTencentGdtadStatisticsGdtReportForAntiSpam$ReportCallback;
+    GdtReportForAntiSpam.ReportCallback localReportCallback = this.b;
     if (localReportCallback != null) {
       localReportCallback.a(localParams);
     }
-    GdtLog.b("GdtReportForAntiSpam", String.format(Locale.getDefault(), "reportFlyingStreaming responseCode:%d durationMillis:%d %s", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis), this.jdField_a_of_type_OrgJsonJSONObject.toString() }));
+    GdtLog.b("GdtReportForAntiSpam", String.format(Locale.getDefault(), "reportFlyingStreaming responseCode:%d durationMillis:%d %s", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis), this.c.toString() }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtReportForAntiSpam.2
  * JD-Core Version:    0.7.0.1
  */

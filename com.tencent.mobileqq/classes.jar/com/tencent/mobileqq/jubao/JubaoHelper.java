@@ -41,7 +41,7 @@ public class JubaoHelper
   
   public static void a(QQAppInterface paramQQAppInterface, Intent paramIntent)
   {
-    MultiMsgManager.a().jdField_a_of_type_Int = 7;
+    MultiMsgManager.a().e = 7;
     Object localObject2 = paramIntent.getStringExtra("uin");
     int j = paramIntent.getIntExtra("uintype", 0);
     paramIntent = paramIntent.getSerializableExtra("msgs");
@@ -84,7 +84,7 @@ public class JubaoHelper
       }
       long l = i;
       paramIntent = new ArrayList();
-      paramQQAppInterface = paramQQAppInterface.getMessageFacade().a((String)localObject2, j, l);
+      paramQQAppInterface = paramQQAppInterface.getMessageFacade().i((String)localObject2, j, l);
       if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
       {
         localObject1 = ((ArrayList)localObject3).iterator();
@@ -123,7 +123,7 @@ public class JubaoHelper
         while (paramQQAppInterface.hasNext())
         {
           localObject1 = (ChatMessage)paramQQAppInterface.next();
-          MultiMsgManager.a().jdField_a_of_type_JavaUtilHashMap.put(localObject1, Boolean.valueOf(true));
+          MultiMsgManager.a().b.put(localObject1, Boolean.valueOf(true));
         }
       }
       if (QLog.isColorLevel())
@@ -138,7 +138,7 @@ public class JubaoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jubao.JubaoHelper
  * JD-Core Version:    0.7.0.1
  */

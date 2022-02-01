@@ -12,14 +12,14 @@ class AccountOnlineStateBinder$4
   
   public void a(List<AutoReplyText> paramList)
   {
-    if ((paramList != null) && (paramList.size() > 0) && (AccountOnlineStateBinder.a(this.a) != null)) {
-      AccountOnlineStateBinder.a(this.a).a(paramList);
+    if ((paramList != null) && (paramList.size() > 0) && (AccountOnlineStateBinder.e(this.a) != null)) {
+      AccountOnlineStateBinder.e(this.a).a(paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.binder.AccountOnlineStateBinder.4
  * JD-Core Version:    0.7.0.1
  */

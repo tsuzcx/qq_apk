@@ -8,17 +8,17 @@ import java.lang.ref.WeakReference;
 public class DetailCommentSegment$ClickNickCallback
   implements SpannableStringUtils.ClickNickCallback
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<DetailEventCallback> jdField_a_of_type_JavaLangRefWeakReference;
+  private int a;
+  private WeakReference<DetailEventCallback> b;
   
   public DetailCommentSegment$ClickNickCallback(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(DetailEventCallback paramDetailEventCallback)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDetailEventCallback);
+    this.b = new WeakReference(paramDetailEventCallback);
   }
   
   public void a(String paramString, int paramInt)
@@ -29,8 +29,8 @@ public class DetailCommentSegment$ClickNickCallback
       if (paramInt == 1003) {
         return;
       }
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-        ((DetailEventCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Int, paramString);
+      if (this.b.get() != null) {
+        ((DetailEventCallback)this.b.get()).a(this.a, paramString);
       }
     }
   }

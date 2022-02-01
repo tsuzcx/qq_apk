@@ -37,7 +37,7 @@ class ChatHistoryByDateFragment$1
         String str = ChatHistoryByDateFragment.a();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getFirstMessageByDate: ");
-        localStringBuilder.append(ChatHistoryByDateFragment.a(this.this$0, this.a, this.b + 1, j));
+        localStringBuilder.append(ChatHistoryByDateFragment.b(this.this$0, this.a, this.b + 1, j));
         localStringBuilder.append(" | result: ");
         localStringBuilder.append(localMessageRecord);
         QLog.d(str, 2, localStringBuilder.toString());
@@ -56,7 +56,7 @@ class ChatHistoryByDateFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.ChatHistoryByDateFragment.1
  * JD-Core Version:    0.7.0.1
  */

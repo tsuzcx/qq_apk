@@ -6,8 +6,6 @@ import mqq.app.AppRuntime;
 
 public abstract interface ILebaController
 {
-  public abstract int a();
-  
   public abstract void a();
   
   public abstract void a(InitViewParam paramInitViewParam);
@@ -20,11 +18,11 @@ public abstract interface ILebaController
   
   public abstract void c();
   
-  public abstract void d();
+  public abstract int d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.controller.ILebaController
  * JD-Core Version:    0.7.0.1
  */

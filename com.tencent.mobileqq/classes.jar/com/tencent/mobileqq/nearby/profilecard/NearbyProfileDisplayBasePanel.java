@@ -9,14 +9,12 @@ import java.util.List;
 public abstract class NearbyProfileDisplayBasePanel
   extends NearbyProfileAbsPanel
 {
-  public boolean a = false;
+  public boolean c = false;
   
   public NearbyProfileDisplayBasePanel(Context paramContext)
   {
     super(paramContext);
   }
-  
-  public abstract void a();
   
   public abstract void a(int paramInt1, int paramInt2);
   
@@ -28,21 +26,22 @@ public abstract class NearbyProfileDisplayBasePanel
   
   public abstract void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList);
   
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
+  public boolean a(Intent paramIntent)
+  {
+    return false;
+  }
   
   public abstract void b(NearbyPeopleCard paramNearbyPeopleCard);
+  
+  public void b(boolean paramBoolean) {}
   
   public abstract void c();
   
   public abstract void d();
   
-  public abstract void e();
+  public abstract int e();
   
-  public abstract void f();
+  public abstract boolean f();
   
   public abstract void g();
   
@@ -55,10 +54,20 @@ public abstract class NearbyProfileDisplayBasePanel
   public abstract void k();
   
   public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract void p();
+  
+  public void q() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayBasePanel
  * JD-Core Version:    0.7.0.1
  */

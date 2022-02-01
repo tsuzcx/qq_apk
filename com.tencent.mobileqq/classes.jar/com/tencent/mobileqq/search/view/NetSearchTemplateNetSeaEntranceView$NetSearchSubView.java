@@ -9,19 +9,19 @@ import com.tencent.image.URLImageView;
 class NetSearchTemplateNetSeaEntranceView$NetSearchSubView
 {
   public View a;
-  public TextView a;
-  public URLImageView a;
+  public URLImageView b;
+  public TextView c;
   
   public NetSearchTemplateNetSeaEntranceView$NetSearchSubView(NetSearchTemplateNetSeaEntranceView paramNetSearchTemplateNetSeaEntranceView, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559805, paramNetSearchTemplateNetSeaEntranceView.b, false);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368461));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365517));
+    this.a = LayoutInflater.from(paramContext).inflate(2131625848, paramNetSearchTemplateNetSeaEntranceView.q, false);
+    this.b = ((URLImageView)this.a.findViewById(2131435357));
+    this.c = ((TextView)this.a.findViewById(2131431733));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateNetSeaEntranceView.NetSearchSubView
  * JD-Core Version:    0.7.0.1
  */

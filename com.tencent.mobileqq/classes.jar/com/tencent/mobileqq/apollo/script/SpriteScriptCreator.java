@@ -8,30 +8,30 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SpriteScriptCreator
 {
-  private SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-  private ISpriteActionCallback jdField_a_of_type_ComTencentMobileqqApolloScriptCallbackISpriteActionCallback;
-  private CopyOnWriteArrayList<SpriteAioScript> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
+  private CopyOnWriteArrayList<SpriteAioScript> a = new CopyOnWriteArrayList();
+  private ISpriteActionCallback b;
+  private SpriteContext c;
+  private AtomicBoolean d = new AtomicBoolean(true);
   
   public SpriteScriptCreator(SpriteContext paramSpriteContext, ISpriteActionCallback paramISpriteActionCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptCallbackISpriteActionCallback = paramISpriteActionCallback;
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = paramSpriteContext;
+    this.b = paramISpriteActionCallback;
+    this.c = paramSpriteContext;
   }
   
   public SpriteAioScript a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext == null) {
+    if (this.c == null) {
       return null;
     }
     long l1 = System.currentTimeMillis();
     Object localObject = b(paramInt);
-    boolean bool = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    boolean bool = this.d.get();
     if (localObject != null) {
       if (bool)
       {
         QLog.w("[cmshow][scripted]SpriteCreator", 1, "createScript init load but has last script");
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+        this.a.clear();
       }
       else
       {
@@ -39,16 +39,16 @@ public class SpriteScriptCreator
       }
     }
     if (paramInt != 0) {
-      localObject = new SpriteBusinessScript(paramInt, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext);
+      localObject = new SpriteBusinessScript(paramInt, this.c);
     } else {
-      localObject = new SpriteActionScript(paramInt, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext);
+      localObject = new SpriteActionScript(paramInt, this.c);
     }
-    if (((SpriteAioScript)localObject).a())
+    if (((SpriteAioScript)localObject).f())
     {
-      ((SpriteAioScript)localObject).a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptCallbackISpriteActionCallback);
-      ((SpriteAioScript)localObject).c();
-      ((SpriteAioScript)localObject).b();
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject);
+      ((SpriteAioScript)localObject).a(this.b);
+      ((SpriteAioScript)localObject).e();
+      ((SpriteAioScript)localObject).d();
+      this.a.add(localObject);
       long l2 = System.currentTimeMillis();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("create script, bid:");
@@ -67,20 +67,20 @@ public class SpriteScriptCreator
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext == null) {
+    if (this.c == null) {
       return;
     }
     a(0);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.d.set(false);
   }
   
   public SpriteAioScript b(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       SpriteAioScript localSpriteAioScript = (SpriteAioScript)localIterator.next();
-      if (localSpriteAioScript.a() == paramInt) {
+      if (localSpriteAioScript.c() == paramInt) {
         return localSpriteAioScript;
       }
     }
@@ -89,24 +89,24 @@ public class SpriteScriptCreator
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((CopyOnWriteArrayList)localObject).size() == 0) {
         return;
       }
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      localObject = this.a.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((SpriteAioScript)((Iterator)localObject).next()).f();
+        ((SpriteAioScript)((Iterator)localObject).next()).i();
       }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.a.clear();
+      this.d.set(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteScriptCreator
  * JD-Core Version:    0.7.0.1
  */

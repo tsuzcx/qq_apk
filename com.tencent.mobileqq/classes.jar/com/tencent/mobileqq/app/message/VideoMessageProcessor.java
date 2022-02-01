@@ -48,7 +48,7 @@ public class VideoMessageProcessor
       paramArrayOfByte.putExtra("uin", String.valueOf(l1));
       paramArrayOfByte.putExtra("c2cuin", l1);
       paramArrayOfByte.putExtra("c2croomid", l2);
-      this.a.getApp().sendBroadcast(paramArrayOfByte);
+      this.q.getApp().sendBroadcast(paramArrayOfByte);
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("ACTION_OPPOSITE_AUDIO_ENGINE_READY Send video c2c broadcast: selfUin = ");
       paramArrayOfByte.append(l1);
@@ -80,8 +80,8 @@ public class VideoMessageProcessor
       if (paramInt == 9003) {
         if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
         {
-          boolean bool = AVMsgUtil.a(paramMsgInfo.vMsg);
-          ((QQAppInterface)this.a).getMsgHandler().a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime, bool);
+          boolean bool = AVMsgUtil.b(paramMsgInfo.vMsg);
+          ((QQAppInterface)this.q).getMsgHandler().a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime, bool);
         }
         else
         {
@@ -114,7 +114,7 @@ public class VideoMessageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.VideoMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

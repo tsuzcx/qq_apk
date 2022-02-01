@@ -10,12 +10,12 @@ class ChatHistoryC2CAllFragment$11
   
   public void onProxySaveToDbFinished()
   {
-    this.a.a.sendEmptyMessage(41);
+    this.a.F.sendEmptyMessage(41);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.11
  * JD-Core Version:    0.7.0.1
  */

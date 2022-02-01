@@ -10,7 +10,7 @@ class ShareHelper$2
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    DialogInterface.OnDismissListener localOnDismissListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener;
+    DialogInterface.OnDismissListener localOnDismissListener = this.a;
     if (localOnDismissListener != null) {
       localOnDismissListener.onDismiss(paramDialogInterface);
     }

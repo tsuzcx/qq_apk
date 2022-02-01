@@ -14,8 +14,8 @@ public class VideoControlUI$QavStatusBar
   
   VideoControlUI$QavStatusBar(View paramView)
   {
-    this.a = paramView.findViewById(2131373614);
-    this.b = paramView.getRootView().findViewById(2131373615);
+    this.a = paramView.findViewById(2131441279);
+    this.b = paramView.getRootView().findViewById(2131441280);
   }
   
   static void a(View paramView, int paramInt)

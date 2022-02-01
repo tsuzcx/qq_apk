@@ -17,7 +17,7 @@ public class AEResDownloadImpl
   
   public void preDownloadAERes()
   {
-    AEResManager.a().a();
+    AEResManager.a().b();
   }
   
   public void removeCallBack(@Nullable IAEDownloadCallBack paramIAEDownloadCallBack)
@@ -32,7 +32,7 @@ public class AEResDownloadImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.download.api.impl.AEResDownloadImpl
  * JD-Core Version:    0.7.0.1
  */

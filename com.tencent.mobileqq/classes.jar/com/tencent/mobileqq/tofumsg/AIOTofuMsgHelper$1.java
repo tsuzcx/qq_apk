@@ -13,12 +13,12 @@ class AIOTofuMsgHelper$1
   
   public void run()
   {
-    ((BeancurdManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.a, 0);
+    ((BeancurdManager)this.this$0.c.getManager(QQManagerFactory.BEANCURD_MANAGER)).a(this.this$0.a.ah.b, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.AIOTofuMsgHelper.1
  * JD-Core Version:    0.7.0.1
  */

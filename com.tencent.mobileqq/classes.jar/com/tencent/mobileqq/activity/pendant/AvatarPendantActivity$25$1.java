@@ -9,14 +9,14 @@ class AvatarPendantActivity$25$1
   
   public void run()
   {
-    if (AvatarPendantActivity.a(this.a.a)) {
-      AvatarPendantActivity.a(this.a.a, this.a.a.a.uin);
+    if (AvatarPendantActivity.h(this.a.a)) {
+      AvatarPendantActivity.a(this.a.a, this.a.a.L.uin);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.25.1
  * JD-Core Version:    0.7.0.1
  */

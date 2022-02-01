@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.kandian.biz.fastweb.util;
 
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -56,12 +55,12 @@ public final class RIJUniteReportUtils
       Map.Entry localEntry = (Map.Entry)paramMap.next();
       localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramString, paramString, 0, 0, "", "", "", localJSONObject.toString(), false);
+    PublicAccountReportUtils.a(null, "", paramString, paramString, 0, 0, "", "", "", localJSONObject.toString(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.RIJUniteReportUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -43,12 +43,12 @@ public class HotTopicInfoItem
   public HotTopicInfoItem(CardItem.ActivityCardInfo paramActivityCardInfo)
   {
     this.mTopicId = paramActivityCardInfo.a();
-    this.mJoinCount = paramActivityCardInfo.a();
-    this.mCoverUrl = paramActivityCardInfo.b();
-    this.mSubjectName = paramActivityCardInfo.a();
+    this.mJoinCount = paramActivityCardInfo.e();
+    this.mCoverUrl = paramActivityCardInfo.c();
+    this.mSubjectName = paramActivityCardInfo.b();
     this.mJoinDesc = "";
     this.mMaskColor = -1;
-    this.mLabel = paramActivityCardInfo.c();
+    this.mLabel = paramActivityCardInfo.d();
     this.mBackgroundUrl = "";
     this.mIsValid = true;
   }
@@ -77,7 +77,7 @@ public class HotTopicInfoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.HotTopicInfoItem
  * JD-Core Version:    0.7.0.1
  */

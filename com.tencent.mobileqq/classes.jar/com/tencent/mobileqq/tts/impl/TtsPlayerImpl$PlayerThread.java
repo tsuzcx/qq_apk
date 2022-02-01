@@ -22,52 +22,52 @@ import mqq.app.MobileQQ;
 class TtsPlayerImpl$PlayerThread
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
-  private SilkCodecWrapper jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private byte[] b;
+  private SilkCodecWrapper a;
+  private AudioTrack b;
+  private volatile boolean c;
+  private int d;
+  private byte[] e;
+  private byte[] f;
   
   private TtsPlayerImpl$PlayerThread(TtsPlayerImpl paramTtsPlayerImpl) {}
   
   private void a(int paramInt)
   {
     int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper = new SilkCodecWrapper(MobileQQ.sMobileQQ, false);
+      this.a = new SilkCodecWrapper(MobileQQ.sMobileQQ, false);
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper.a(paramInt, 0, 1);
+        this.a.a(paramInt, 0, 1);
         i = QQAudioUtils.a(paramInt);
-        this.jdField_a_of_type_ArrayOfByte = new byte[i];
-        this.b = new byte[i];
+        this.e = new byte[i];
+        this.f = new byte[i];
       }
       catch (Exception localException1)
       {
         QLog.e("TtsPlayer", 1, "[initCodecResource] error: ", localException1);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper = null;
+        this.a = null;
         return;
       }
     }
-    if (this.jdField_a_of_type_AndroidMediaAudioTrack == null) {
+    if (this.b == null) {
       try
       {
         i = AudioTrack.getMinBufferSize(paramInt, 4, 2);
-        if (this.jdField_a_of_type_Int != 0) {
-          this.jdField_a_of_type_AndroidMediaAudioTrack = new ReportAudioTrack(3, paramInt, 1, 2, i, 1, this.jdField_a_of_type_Int);
+        if (this.d != 0) {
+          this.b = new ReportAudioTrack(3, paramInt, 1, 2, i, 1, this.d);
         } else {
-          this.jdField_a_of_type_AndroidMediaAudioTrack = new ReportAudioTrack(3, paramInt, 1, 2, i, 1);
+          this.b = new ReportAudioTrack(3, paramInt, 1, 2, i, 1);
         }
-        this.jdField_a_of_type_AndroidMediaAudioTrack.play();
+        this.b.play();
         return;
       }
       catch (Exception localException2)
       {
         QLog.e("TtsPlayer", 1, "[initCodecResource] AudioTrack init error: ", localException2);
-        this.jdField_a_of_type_AndroidMediaAudioTrack.release();
-        this.jdField_a_of_type_AndroidMediaAudioTrack = null;
+        this.b.release();
+        this.b = null;
       }
     }
   }
@@ -76,40 +76,40 @@ class TtsPlayerImpl$PlayerThread
   {
     byte[] arrayOfByte = new byte[2];
     if (paramInputStream.read(arrayOfByte, 0, 2) > 0) {
-      return QQAudioUtils.a(arrayOfByte);
+      return QQAudioUtils.b(arrayOfByte);
     }
     return -1;
   }
   
-  boolean a(InputStream paramInputStream)
+  boolean b(InputStream paramInputStream)
   {
     for (;;)
     {
       bool = false;
       try
       {
-        if ((this.jdField_a_of_type_Boolean) && (paramInputStream.available() > 0))
+        if ((this.c) && (paramInputStream.available() > 0))
         {
           int i = a(paramInputStream);
-          if ((i >= 0) && (i <= this.jdField_a_of_type_ArrayOfByte.length))
+          if ((i >= 0) && (i <= this.e.length))
           {
-            if (paramInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, i) < 0)
+            if (paramInputStream.read(this.e, 0, i) < 0)
             {
               QLog.d("TtsPlayer", 1, "[playSilkStream] readSize < 0, stream end.");
             }
             else
             {
-              i = this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper.a(this.jdField_a_of_type_ArrayOfByte, this.b, i, this.b.length);
+              i = this.a.a(this.e, this.f, i, this.f.length);
               if (i < 0)
               {
                 QLog.d("TtsPlayer", 1, new Object[] { "[playSilkStream] silk decode error. decodeSize: ", Integer.valueOf(i) });
                 break label228;
               }
-              if (!this.jdField_a_of_type_Boolean) {
+              if (!this.c) {
                 continue;
               }
-              i = this.jdField_a_of_type_AndroidMediaAudioTrack.write(this.b, 0, i);
-              this.jdField_a_of_type_AndroidMediaAudioTrack.flush();
+              i = this.b.write(this.f, 0, i);
+              this.b.flush();
               if (i >= 0) {
                 continue;
               }
@@ -147,14 +147,14 @@ class TtsPlayerImpl$PlayerThread
   
   public void run()
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.c;
     int m = 1;
     if (bool)
     {
       QLog.d("TtsPlayer", 1, "[PlayerThread] other thread is working.");
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
     if (TtsPlayerImpl.access$000(this.this$0) == null)
     {
       QLog.d("TtsPlayer", 1, "[PlayerThread] inputStream is null.");
@@ -164,7 +164,7 @@ class TtsPlayerImpl$PlayerThread
     int i = 1;
     for (;;)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.c) {
         try
         {
           if (TtsPlayerImpl.access$100(this.this$0) != null) {
@@ -193,7 +193,7 @@ class TtsPlayerImpl$PlayerThread
             else
             {
               a(j);
-              if ((this.jdField_a_of_type_AndroidMediaAudioTrack != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper != null))
+              if ((this.b != null) && (this.a != null))
               {
                 List localList = ((TtsResBody.RspBody)localObject).voice_data.get();
                 if ((localList != null) && (localList.size() != 0))
@@ -206,7 +206,7 @@ class TtsPlayerImpl$PlayerThread
                       break;
                     }
                     j = i;
-                    if (!this.jdField_a_of_type_Boolean) {
+                    if (!this.c) {
                       break;
                     }
                     byte[] arrayOfByte2 = ((TtsResBody.voice_item)localList.get(k)).voice.get().toByteArray();
@@ -222,9 +222,9 @@ class TtsPlayerImpl$PlayerThread
                         j = 0;
                       }
                     }
-                    if (!a(new ByteArrayInputStream((byte[])localObject)))
+                    if (!b(new ByteArrayInputStream((byte[])localObject)))
                     {
-                      this.jdField_a_of_type_Boolean = false;
+                      this.c = false;
                       break;
                     }
                     k += 1;
@@ -257,7 +257,7 @@ class TtsPlayerImpl$PlayerThread
     }
     i = 0;
     label447:
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
     if ((i != 0) && (TtsPlayerImpl.access$100(this.this$0) != null)) {
       TtsPlayerImpl.access$100(this.this$0).a();
     }
@@ -265,7 +265,7 @@ class TtsPlayerImpl$PlayerThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tts.impl.TtsPlayerImpl.PlayerThread
  * JD-Core Version:    0.7.0.1
  */

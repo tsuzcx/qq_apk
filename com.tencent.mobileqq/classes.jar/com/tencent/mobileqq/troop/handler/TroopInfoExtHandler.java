@@ -85,6 +85,8 @@ public class TroopInfoExtHandler
             ((StringBuilder)localObject2).append(paramObject);
             ((StringBuilder)localObject2).append(" uint32_group_info_ext_seq:");
             ((StringBuilder)localObject2).append(((TroopInfo)localObject1).mTroopInfoExtObj.groupInfoExtSeq);
+            ((StringBuilder)localObject2).append(", uint32_todo_seq:");
+            ((StringBuilder)localObject2).append(((TroopInfo)localObject1).mTroopInfoExtObj.todoSeq);
             QLog.i("TroopInfoExtHandler", 2, ((StringBuilder)localObject2).toString());
           }
           paramToServiceMsg.saveTroopInfo((TroopInfo)localObject1);
@@ -129,6 +131,8 @@ public class TroopInfoExtHandler
       paramGroupInfoExt.bytes_lucky_word.set(ByteStringMicro.EMPTY);
       paramGroupInfoExt.uint32_star_id.set(0);
       paramGroupInfoExt.uint32_essential_msg_switch.set(0);
+      paramGroupInfoExt.uint32_todo_seq.set(0);
+      paramGroupInfoExt.uint32_blacklist_expire_time.set(0);
     }
   }
   
@@ -142,11 +146,6 @@ public class TroopInfoExtHandler
       return (paramTroopInfoExt1.luckyWordId != paramTroopInfoExt2.luckyWordId) || (paramTroopInfoExt1.lightCharNum != paramTroopInfoExt2.lightCharNum);
     }
     return false;
-  }
-  
-  protected String a()
-  {
-    return "TroopInfoExtHandler";
   }
   
   public void a(String paramString)
@@ -180,6 +179,11 @@ public class TroopInfoExtHandler
       localReqBody.rpt_uint64_group_code.set(paramList);
       a(makeOIDBPkg("OidbSvc.0xef0_1", 3824, 1, localReqBody.toByteArray(), 30000L));
     }
+  }
+  
+  protected String dv_()
+  {
+    return "TroopInfoExtHandler";
   }
   
   public Set<String> getCommandList()
@@ -218,7 +222,7 @@ public class TroopInfoExtHandler
       }
       return;
     }
-    if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+    if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
     {
       if (QLog.isColorLevel())
       {
@@ -236,7 +240,7 @@ public class TroopInfoExtHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopInfoExtHandler
  * JD-Core Version:    0.7.0.1
  */

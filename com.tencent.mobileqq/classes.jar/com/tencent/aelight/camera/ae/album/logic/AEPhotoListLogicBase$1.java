@@ -11,12 +11,12 @@ class AEPhotoListLogicBase$1
   
   public void run()
   {
-    ((AEAbstractPhotoListFragment)this.this$0.a.get()).a.scrollToPositionWithOffset(this.a, 0);
+    ((AEAbstractPhotoListFragment)this.this$0.b.get()).k.scrollToPositionWithOffset(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,58 +5,56 @@ import com.tencent.widget.pull2refresh.ILoadMoreLayout;
 
 public class LoadingMoreHelper
 {
-  protected int a;
-  Context a;
-  protected LoadingMoreHelper.OnLoadMoreListener a;
-  protected ILoadMoreLayout a;
-  protected boolean a;
+  protected int a = 5;
+  protected ILoadMoreLayout b;
+  protected LoadingMoreHelper.OnLoadMoreListener c;
+  protected boolean d = false;
+  Context e;
   
   public LoadingMoreHelper(ILoadMoreLayout paramILoadMoreLayout, Context paramContext)
   {
-    this.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout = paramILoadMoreLayout;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramILoadMoreLayout;
+    this.e = paramContext;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public void a(LoadingMoreHelper.OnLoadMoreListener paramOnLoadMoreListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener = paramOnLoadMoreListener;
+    this.c = paramOnLoadMoreListener;
     if (paramOnLoadMoreListener != null)
     {
       a(true);
       a(true, false);
     }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.setOnClickListener(new LoadingMoreHelper.1(this));
+    this.b.setOnClickListener(new LoadingMoreHelper.1(this));
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+    if (this.d == paramBoolean) {
       return;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.setState(3);
+      this.b.setState(3);
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.setState(0);
+    this.b.setState(0);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
     if (!paramBoolean1)
     {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.setState(5);
+      this.b.setState(5);
       return;
     }
     int i;
@@ -65,34 +63,34 @@ public class LoadingMoreHelper
     } else {
       i = 4;
     }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.setState(i);
-    if (!this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.checkState(i)) {
+    this.b.setState(i);
+    if (!this.b.checkState(i)) {
       return;
     }
-    LoadingMoreHelper.OnLoadMoreListener localOnLoadMoreListener = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener;
+    LoadingMoreHelper.OnLoadMoreListener localOnLoadMoreListener = this.c;
     if (localOnLoadMoreListener != null) {
-      localOnLoadMoreListener.a();
+      localOnLoadMoreListener.bx_();
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.getState() == 0) {
+    if (this.b.getState() == 0) {
       return;
     }
-    if (!this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.checkState(2)) {
+    if (!this.b.checkState(2)) {
       return;
     }
     boolean bool = true;
-    LoadingMoreHelper.OnLoadMoreListener localOnLoadMoreListener = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener;
+    LoadingMoreHelper.OnLoadMoreListener localOnLoadMoreListener = this.c;
     if (localOnLoadMoreListener != null) {
       bool = localOnLoadMoreListener.a(paramBoolean);
     }
     if (bool) {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.setState(2);
+      this.b.setState(2);
     }
   }
 }

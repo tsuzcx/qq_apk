@@ -11,7 +11,7 @@ class SlideDownFrameLayout$3
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    SlideDownFrameLayout.a(this.a).a();
+    SlideDownFrameLayout.a(this.a).d();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -20,7 +20,7 @@ class SlideDownFrameLayout$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideDownFrameLayout.3
  * JD-Core Version:    0.7.0.1
  */

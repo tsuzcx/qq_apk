@@ -56,7 +56,7 @@ public class ArkAIDictConfigProcessor
     localStringBuilder.append("[onUpdate] type=");
     localStringBuilder.append(type());
     localStringBuilder.append(", content = ");
-    localStringBuilder.append(paramArkAIDictConfBean.a());
+    localStringBuilder.append(paramArkAIDictConfBean.d());
     QLog.d("ArkApp.ConfProcessor", 1, localStringBuilder.toString());
     ((IArkDictManager)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IArkDictManager.class, "")).updateLocalDict();
   }
@@ -68,7 +68,7 @@ public class ArkAIDictConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.processor.ArkAIDictConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

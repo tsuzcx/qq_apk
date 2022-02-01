@@ -16,6 +16,7 @@ import com.tencent.mobileqq.config.business.OpenSdkConfProcessor;
 import com.tencent.mobileqq.config.business.OpenSdkSwitchConfBean;
 import com.tencent.mobileqq.config.business.OpenSdkSwitchConfBean.OpenSdkSwitchConfig;
 import com.tencent.mobileqq.config.business.OpenSdkSwitchProcessor;
+import com.tencent.mobileqq.qqfeatureswitch.IFeatureRuntimeService;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.open.agent.AuthorityActivity;
 import com.tencent.open.agent.OpenAuthorityFragment;
@@ -35,84 +36,46 @@ import com.tencent.open.model.AccountManage;
 import com.tencent.open.virtual.OpenSdkVirtualUtil;
 import com.tencent.qqconnect.wtlogin.AbstractOpenSdkAppInterface;
 import java.util.HashMap;
+import mqq.app.AppActivity;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
 public class SSOLoginAction
   extends BaseAction
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private BroadcastReceiver b;
+  private Activity b;
+  private Runnable c;
+  private BroadcastReceiver d;
+  private BroadcastReceiver e;
+  private Intent f;
+  private boolean g = false;
   
   public SSOLoginAction(String paramString)
   {
     super(paramString);
   }
   
-  private AbstractOpenSdkAppInterface a()
-  {
-    return (AbstractOpenSdkAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-  }
-  
-  private String a(Bundle paramBundle, String paramString)
-  {
-    String str2 = AuthorityUtil.a(this.jdField_a_of_type_AndroidAppActivity);
-    SSOLog.a("SSOLoginAction", new Object[] { "getCallingPkgName pkgName=", str2 });
-    if (!TextUtils.isEmpty(str2)) {
-      return str2;
-    }
-    if (!OpenSdkConfProcessor.a())
-    {
-      SSOLog.a("SSOLoginAction", new Object[] { "getCallingPkgName do not use third transform name" });
-      return str2;
-    }
-    String str1 = paramBundle.getString("ppsts");
-    if (TextUtils.isEmpty(str1))
-    {
-      SSOLog.a("SSOLoginAction", new Object[] { "getCallingPkgName ppsts is empty" });
-      return str2;
-    }
-    paramBundle = OpenSdkDESUtils.a(paramBundle);
-    str2 = OpenSdkDESUtils.a(str1, paramBundle);
-    SSOLog.a("SSOLoginAction", new Object[] { "getCallingPkgName can not get calling package name, use decryptPkgName=", str2 });
-    String str3 = AuthorityUtil.a(SharedPrefs.a(), this.jdField_a_of_type_AndroidAppActivity.getIntent());
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("appId", paramString);
-    localHashMap.put("ppsts", str1);
-    localHashMap.put("sha", paramBundle);
-    StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance(str3, "use_third_pkg_name", TextUtils.isEmpty(str2) ^ true, 0L, 0L, localHashMap, "", false);
-    return str2;
-  }
-  
-  private String a(Bundle paramBundle, String paramString1, String paramString2)
-  {
-    return AuthorityUtil.a(paramBundle, a(paramBundle, paramString1), paramString2);
-  }
-  
   private void a()
   {
-    SSOLog.a("SSOLoginAction", new Object[] { "registerLoginReceiver mLoginReceiver=", this.jdField_a_of_type_AndroidContentBroadcastReceiver });
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
+    Activity localActivity = this.b;
+    if (!(localActivity instanceof AppActivity)) {
       return;
     }
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new SSOLoginAction.7(this);
-    this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("action_login_sucess"));
+    this.g = ((IFeatureRuntimeService)((AppActivity)localActivity).getAppRuntime().getRuntimeService(IFeatureRuntimeService.class, "all")).isFeatureSwitchEnable("opensdk_login_page_new_ui_864284743");
   }
   
   private void a(int paramInt, String paramString)
   {
     String str;
     if (paramInt == -1) {
-      str = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694647);
+      str = this.b.getResources().getString(2131892333);
     } else if (TextUtils.isEmpty(paramString)) {
-      str = String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694636), new Object[] { Integer.valueOf(paramInt) });
+      str = String.format(this.b.getResources().getString(2131892320), new Object[] { Integer.valueOf(paramInt) });
     } else {
-      str = String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131696495), new Object[] { paramString, Integer.valueOf(paramInt) });
+      str = String.format(this.b.getResources().getString(2131894269), new Object[] { paramString, Integer.valueOf(paramInt) });
     }
-    AuthUIUtil.a(str, this.jdField_a_of_type_AndroidAppActivity, new SSOLoginAction.5(this, paramInt, paramString));
+    AuthUIUtil.a(str, this.b, new SSOLoginAction.5(this, paramInt, paramString));
   }
   
   private void a(int paramInt1, String paramString1, Bundle paramBundle, String paramString2, int paramInt2)
@@ -122,6 +85,9 @@ public class SSOLoginAction
     default: 
       a(paramInt1, paramString1);
       return;
+    case 110530: 
+      this.g = false;
+      break;
     case 110513: 
       a(0, "", "");
       return;
@@ -129,7 +95,6 @@ public class SSOLoginAction
       b(paramBundle, paramString2, paramInt2);
       return;
     case 1002: 
-    case 110530: 
       a(paramBundle, paramString2, false);
       return;
     }
@@ -138,7 +103,7 @@ public class SSOLoginAction
   
   private void a(int paramInt, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if (this.b.isFinishing()) {
       return;
     }
     Intent localIntent = new Intent();
@@ -146,22 +111,17 @@ public class SSOLoginAction
     localIntent.putExtra("key_error_msg", paramString1);
     localIntent.putExtra("key_error_detail", paramString2);
     localIntent.putExtra("key_response", "");
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-  }
-  
-  private void a(Bundle paramBundle, String paramString)
-  {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new SSOLoginAction.8(this, paramBundle, paramString));
+    this.b.setResult(-1, localIntent);
+    this.b.finish();
   }
   
   private void a(Bundle paramBundle, String paramString, int paramInt)
   {
     SSOLog.a("SSOLoginAction", new Object[] { "doVirtualAuth" });
-    String str3 = AuthorityUtil.a(SharedPrefs.a(), this.jdField_a_of_type_AndroidAppActivity.getIntent());
+    String str3 = AuthorityUtil.a(SharedPrefs.b(), this.b.getIntent());
     if (TextUtils.isEmpty(str3))
     {
-      SSOLog.a("SSOLoginAction", new Object[] { "doVirtualAuth currentUin is null, goto old auth" });
+      SSOLog.a("SSOLoginAction", new Object[] { "doVirtualAuth currentUin is null" });
       a(paramBundle, paramString, false);
       return;
     }
@@ -180,18 +140,19 @@ public class SSOLoginAction
   private void a(Bundle paramBundle, String paramString, Intent paramIntent, boolean paramBoolean)
   {
     SSOLog.a("SSOLoginAction", new Object[] { "toMainLogin qq is not login, first login it" });
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("authority_start_qq_login", true);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("intent_router", paramBoolean);
+    this.f = paramIntent;
+    this.f.putExtra("authority_start_qq_login", true);
+    this.f.putExtra("intent_router", paramBoolean);
     paramIntent = new Intent();
     paramIntent.putExtra("authority_start_qq_login", true);
     paramIntent.putExtra("appid", paramString);
-    paramIntent.putExtra("param_qr_code_url", a(paramBundle, paramString, "main"));
+    paramIntent.putExtra("oauth_app_name", AuthParamUtil.a(paramBundle, "oauth_app_name"));
+    paramIntent.putExtra("param_qr_code_url", b(paramBundle, paramString, "main"));
     paramIntent.setFlags(268435456);
     paramIntent.addFlags(32768);
     AuthModelUtil.a(paramIntent, paramBundle, paramString);
-    a();
-    RouteUtils.a(this.jdField_a_of_type_AndroidAppActivity, paramIntent, "/base/login");
+    c();
+    RouteUtils.a(this.b, paramIntent, "/base/login");
   }
   
   private void a(Bundle paramBundle, String paramString1, String paramString2)
@@ -220,11 +181,11 @@ public class SSOLoginAction
       a(-10000, "error", "not support proxy login");
       return;
     }
-    b();
+    d();
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_action", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("key_action", this.a);
     localIntent.putExtra("key_params", paramBundle);
-    localIntent.putExtra("param_qr_code_url", a(paramBundle, paramString, "add"));
+    localIntent.putExtra("param_qr_code_url", b(paramBundle, paramString, "add"));
     if (a(paramBoolean2))
     {
       a(paramBundle, paramString, localIntent, paramBoolean1);
@@ -242,7 +203,7 @@ public class SSOLoginAction
   private void a(String paramString1, Bundle paramBundle, String paramString2)
   {
     SSOLog.a("SSOLoginAction", new Object[] { "getTicketNoPasswd onFail" });
-    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(SharedPrefs.a())))
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(SharedPrefs.c())))
     {
       a(paramBundle, paramString2, false, true);
       AuthReporter.a(paramString1, "0X800B65D");
@@ -256,26 +217,30 @@ public class SSOLoginAction
     try
     {
       SSOLog.a("SSOLoginAction", new Object[] { "go to auth UI" });
-      if (paramBoolean)
+      if ((!paramBoolean) && (!this.g))
       {
-        paramIntent.putExtra("public_fragment_window_feature", 1);
-        QPublicFragmentActivity.Launcher.a(this.jdField_a_of_type_AndroidAppActivity, paramIntent, PublicFragmentActivityForOpenSDK.class, OpenAuthorityFragment.class, 0);
+        paramIntent.setComponent(new ComponentName(this.b, AuthorityActivity.class));
+        this.b.startActivityForResult(paramIntent, 0);
         return;
       }
-      paramIntent.setComponent(new ComponentName(this.jdField_a_of_type_AndroidAppActivity, AuthorityActivity.class));
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramIntent, 0);
+      paramIntent.putExtra("public_fragment_window_feature", 1);
+      QPublicFragmentActivity.Launcher.a(this.b, paramIntent, PublicFragmentActivityForOpenSDK.class, OpenAuthorityFragment.class, 0);
       return;
     }
     catch (ActivityNotFoundException paramIntent)
     {
       SSOLog.c("SSOLoginAction", "start Auth ActivityNotFoundException ", paramIntent);
-      a(this.jdField_a_of_type_AndroidAppActivity, -6);
+      a(this.b, -6);
     }
   }
   
   private boolean a(Bundle paramBundle, String paramString)
   {
-    if (!OpenSdkSwitchProcessor.b(467).a().a) {
+    if (!OpenSdkSwitchProcessor.b(467).b().a)
+    {
+      if (("101483258".equals(paramString)) || ("101842799".equals(paramString))) {
+        this.g = false;
+      }
       return false;
     }
     ThreadManager.excute(new SSOLoginAction.1(this, paramBundle, paramString), 128, null, false);
@@ -287,46 +252,20 @@ public class SSOLoginAction
     if (paramBoolean) {
       return true;
     }
-    if ((a() != null) && (a().isLogin())) {
+    if ((b() != null) && (b().isLogin())) {
       return false;
     }
-    return TextUtils.isEmpty(SharedPrefs.a());
+    return TextUtils.isEmpty(SharedPrefs.c());
   }
   
-  private String[] a(Bundle paramBundle, String paramString)
+  private AbstractOpenSdkAppInterface b()
   {
-    String str = a(paramBundle, paramString);
-    if (TextUtils.isEmpty(str))
-    {
-      paramBundle = new HashMap();
-      paramBundle.put("appId", paramString);
-      str = AuthorityUtil.a(SharedPrefs.a(), this.jdField_a_of_type_AndroidAppActivity.getIntent());
-      StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance(str, "login_pkg_name_empty", true, 0L, 0L, paramBundle, "", false);
-      AuthReporter.a(1, "LOGIN_CHECK_AGENT", null, paramString, 0, "AgentActivity callingPkgName is null");
-      return new String[] { "", "" };
-    }
-    String[] arrayOfString = OpenSdkVirtualUtil.a(str);
-    paramBundle.putString("packagename", str);
-    paramBundle.putString("packagesign", arrayOfString[0]);
-    paramBundle.putString("sign", arrayOfString[1]);
-    paramBundle.putString("time", arrayOfString[2]);
-    AuthReporter.a(0, "LOGIN_CHECK_AGENT", null, paramString, 0, null);
-    return new String[] { arrayOfString[1], arrayOfString[2] };
+    return (AbstractOpenSdkAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
   }
   
-  private void b()
+  private String b(Bundle paramBundle, String paramString1, String paramString2)
   {
-    a().a(new SSOLoginAction.9(this));
-  }
-  
-  private void b(Bundle paramBundle, String paramString)
-  {
-    SSOLog.a("SSOLoginAction", new Object[] { "addExpiredRunnable mExpiredRunnable=", this.jdField_a_of_type_JavaLangRunnable });
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRunnable = new SSOLoginAction.11(this, paramBundle, paramString);
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 20000L);
+    return AuthorityUtil.a(paramBundle, c(paramBundle, paramString1), paramString2);
   }
   
   private void b(Bundle paramBundle, String paramString, int paramInt)
@@ -341,16 +280,16 @@ public class SSOLoginAction
   
   private void b(AccountInfo paramAccountInfo, String paramString1, String paramString2, Bundle paramBundle, int paramInt)
   {
-    a(paramBundle, paramString1);
-    new SSOPreAuthPresenter().a(AuthorityUtil.a(this.jdField_a_of_type_AndroidAppActivity), paramString1, paramString2, paramBundle, paramAccountInfo, new SSOLoginAction.4(this, paramBundle, paramString1, paramInt), 0);
+    e(paramBundle, paramString1);
+    new SSOPreAuthPresenter().a(AuthorityUtil.c(this.b), paramString1, paramString2, paramBundle, paramAccountInfo, new SSOLoginAction.4(this, paramBundle, paramString1, paramInt), 0);
   }
   
   private boolean b(Bundle paramBundle, String paramString)
   {
-    String str = AuthorityUtil.a(SharedPrefs.a(), this.jdField_a_of_type_AndroidAppActivity.getIntent());
+    String str = AuthorityUtil.a(SharedPrefs.b(), this.b.getIntent());
     if (!TextUtils.isEmpty(str))
     {
-      if (!str.equals(SharedPrefs.a())) {
+      if (!str.equals(SharedPrefs.c())) {
         return false;
       }
       ThreadManager.excute(new SSOLoginAction.2(this, paramBundle, paramString, str), 128, null, false);
@@ -361,71 +300,153 @@ public class SSOLoginAction
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new SSOLoginAction.10(this));
-  }
-  
-  private void c(Bundle paramBundle, String paramString)
-  {
-    SSOLog.a("SSOLoginAction", new Object[] { "registerExpiredReceiver mExpiredReceiver=", this.b });
-    if (this.b != null) {
+    SSOLog.a("SSOLoginAction", new Object[] { "registerLoginReceiver mLoginReceiver=", this.d });
+    if (this.d != null) {
       return;
     }
-    this.b = new SSOLoginAction.12(this, paramBundle, paramString);
-    this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.b, new IntentFilter("mqq.intent.action.ACCOUNT_EXPIRED"));
+    this.d = new SSOLoginAction.7(this);
+    this.b.registerReceiver(this.d, new IntentFilter("action_login_sucess"));
+  }
+  
+  private String[] c(Bundle paramBundle, String paramString)
+  {
+    String str = d(paramBundle, paramString);
+    if (TextUtils.isEmpty(str))
+    {
+      paramBundle = new HashMap();
+      paramBundle.put("appId", paramString);
+      str = AuthorityUtil.a(SharedPrefs.b(), this.b.getIntent());
+      StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance(str, "login_pkg_name_empty", true, 0L, 0L, paramBundle, "", false);
+      AuthReporter.a(1, "LOGIN_CHECK_AGENT", null, paramString, 0, "AgentActivity callingPkgName is null");
+      return new String[] { "", "" };
+    }
+    String[] arrayOfString = OpenSdkVirtualUtil.a(str);
+    paramBundle.putString("packagename", str);
+    paramBundle.putString("packagesign", arrayOfString[0]);
+    paramBundle.putString("sign", arrayOfString[1]);
+    paramBundle.putString("time", arrayOfString[2]);
+    AuthReporter.a(0, "LOGIN_CHECK_AGENT", null, paramString, 0, null);
+    return new String[] { arrayOfString[1], arrayOfString[2] };
+  }
+  
+  private String d(Bundle paramBundle, String paramString)
+  {
+    String str2 = AuthorityUtil.c(this.b);
+    SSOLog.a("SSOLoginAction", new Object[] { "getCallingPkgName pkgName=", str2 });
+    if (!TextUtils.isEmpty(str2)) {
+      return str2;
+    }
+    if (!OpenSdkConfProcessor.b())
+    {
+      SSOLog.a("SSOLoginAction", new Object[] { "getCallingPkgName do not use third transform name" });
+      return str2;
+    }
+    String str1 = paramBundle.getString("ppsts");
+    if (TextUtils.isEmpty(str1))
+    {
+      SSOLog.a("SSOLoginAction", new Object[] { "getCallingPkgName ppsts is empty" });
+      return str2;
+    }
+    paramBundle = OpenSdkDESUtils.a(paramBundle);
+    str2 = OpenSdkDESUtils.a(str1, paramBundle);
+    SSOLog.a("SSOLoginAction", new Object[] { "getCallingPkgName can not get calling package name, use decryptPkgName=", str2 });
+    String str3 = AuthorityUtil.a(SharedPrefs.b(), this.b.getIntent());
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("appId", paramString);
+    localHashMap.put("ppsts", str1);
+    localHashMap.put("sha", paramBundle);
+    StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance(str3, "use_third_pkg_name", TextUtils.isEmpty(str2) ^ true, 0L, 0L, localHashMap, "", false);
+    return str2;
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
-    {
-      SSOLog.a("SSOLoginAction", new Object[] { "removeExpiredRunnable" });
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
-    }
+    b().a(new SSOLoginAction.9(this));
   }
   
   private void e()
   {
-    SSOLog.a("SSOLoginAction", new Object[] { "unregisterExpiredReceiver mExpiredReceiver=", this.b });
-    BroadcastReceiver localBroadcastReceiver = this.b;
+    this.b.runOnUiThread(new SSOLoginAction.10(this));
+  }
+  
+  private void e(Bundle paramBundle, String paramString)
+  {
+    this.b.runOnUiThread(new SSOLoginAction.8(this, paramBundle, paramString));
+  }
+  
+  private void f()
+  {
+    if (this.c != null)
+    {
+      SSOLog.a("SSOLoginAction", new Object[] { "removeExpiredRunnable" });
+      ThreadManager.getUIHandler().removeCallbacks(this.c);
+      this.c = null;
+    }
+  }
+  
+  private void f(Bundle paramBundle, String paramString)
+  {
+    SSOLog.a("SSOLoginAction", new Object[] { "addExpiredRunnable mExpiredRunnable=", this.c });
+    if (this.c != null) {
+      return;
+    }
+    this.c = new SSOLoginAction.11(this, paramBundle, paramString);
+    ThreadManager.getUIHandler().postDelayed(this.c, 20000L);
+  }
+  
+  private void g()
+  {
+    SSOLog.a("SSOLoginAction", new Object[] { "unregisterExpiredReceiver mExpiredReceiver=", this.e });
+    BroadcastReceiver localBroadcastReceiver = this.e;
     if (localBroadcastReceiver == null) {
       return;
     }
     try
     {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(localBroadcastReceiver);
+      this.b.unregisterReceiver(localBroadcastReceiver);
     }
     catch (Exception localException)
     {
       SSOLog.c("SSOLoginAction", "unregisterExpiredReceiver", localException);
     }
-    this.b = null;
+    this.e = null;
   }
   
-  private void f()
+  private void g(Bundle paramBundle, String paramString)
   {
-    SSOLog.b("SSOLoginAction", new Object[] { "unregisterLoginReceiver=", this.jdField_a_of_type_AndroidContentBroadcastReceiver });
-    BroadcastReceiver localBroadcastReceiver = this.jdField_a_of_type_AndroidContentBroadcastReceiver;
+    SSOLog.a("SSOLoginAction", new Object[] { "registerExpiredReceiver mExpiredReceiver=", this.e });
+    if (this.e != null) {
+      return;
+    }
+    this.e = new SSOLoginAction.12(this, paramBundle, paramString);
+    this.b.registerReceiver(this.e, new IntentFilter("mqq.intent.action.ACCOUNT_EXPIRED"));
+  }
+  
+  private void h()
+  {
+    SSOLog.b("SSOLoginAction", new Object[] { "unregisterLoginReceiver=", this.d });
+    BroadcastReceiver localBroadcastReceiver = this.d;
     if (localBroadcastReceiver == null) {
       return;
     }
     try
     {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(localBroadcastReceiver);
+      this.b.unregisterReceiver(localBroadcastReceiver);
     }
     catch (Exception localException)
     {
       SSOLog.c("SSOLoginAction", "unRegisterLoginReceiver", localException);
     }
-    this.b = null;
+    this.e = null;
   }
   
   public void a(Activity paramActivity, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramActivity;
+    a();
     paramActivity = paramBundle.getString("client_id");
     SSOLog.a("SSOLoginAction", new Object[] { "ssoLogin appId=", paramActivity, ", sdkv=", AuthParamUtil.a(paramBundle, "sdkv") });
-    AuthReporter.a(a().getCurrentAccountUin(), paramActivity, "8", "0", true);
+    AuthReporter.a(b().getCurrentAccountUin(), paramActivity, "8", "0", true);
     if (a(paramBundle, paramActivity)) {
       return;
     }
@@ -435,9 +456,9 @@ public class SSOLoginAction
     a(paramBundle, paramActivity, false);
   }
   
-  protected boolean a(Activity paramActivity, Bundle paramBundle)
+  protected boolean b(Activity paramActivity, Bundle paramBundle)
   {
-    if (super.a(paramActivity, paramBundle)) {
+    if (super.b(paramActivity, paramBundle)) {
       return true;
     }
     AuthReporter.a(1, "LOGIN_CHECK_AGENT", null, null, 0, "AgentActivity bundle is null");
@@ -446,7 +467,7 @@ public class SSOLoginAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.strategy.SSOLoginAction
  * JD-Core Version:    0.7.0.1
  */

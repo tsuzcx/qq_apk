@@ -41,6 +41,11 @@ public class GdtOriginalExposureReporter
   
   public static void a(GdtAd paramGdtAd, Context paramContext)
   {
+    a(paramGdtAd, paramContext, -1);
+  }
+  
+  public static void a(GdtAd paramGdtAd, Context paramContext, int paramInt)
+  {
     if ((paramGdtAd != null) && (paramContext != null))
     {
       String str = paramGdtAd.getOriginalExposureUrl();
@@ -50,7 +55,16 @@ public class GdtOriginalExposureReporter
         return;
       }
       boolean bool = PackageUtil.a(paramContext, paramGdtAd.getAppPackageName());
-      paramGdtAd = a(str, a(paramGdtAd.isAppProductType(), bool), "1", "0");
+      paramContext = a(str, a(paramGdtAd.isAppProductType(), bool), "1", "0");
+      paramGdtAd = paramContext;
+      if (paramInt >= 0)
+      {
+        paramGdtAd = new StringBuilder();
+        paramGdtAd.append(paramContext);
+        paramGdtAd.append("&slot=");
+        paramGdtAd.append(paramInt);
+        paramGdtAd = paramGdtAd.toString();
+      }
       GdtReporter.doCgiReport(paramGdtAd);
       paramContext = new StringBuilder();
       paramContext.append("original exposure report url: ");
@@ -68,7 +82,7 @@ public class GdtOriginalExposureReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtOriginalExposureReporter
  * JD-Core Version:    0.7.0.1
  */

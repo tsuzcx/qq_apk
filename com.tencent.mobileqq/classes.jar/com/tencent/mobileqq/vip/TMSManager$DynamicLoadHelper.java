@@ -31,7 +31,7 @@ public class TMSManager$DynamicLoadHelper
   {
     try
     {
-      ((IVasQuickUpdateService)VasUtil.a().getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "kcsdk_4_4_7_3661", "KC.TMSManager");
+      ((IVasQuickUpdateService)VasUtil.c().getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "kcsdk_4_4_7_3661", "KC.TMSManager");
       return;
     }
     finally
@@ -47,7 +47,7 @@ public class TMSManager$DynamicLoadHelper
     try
     {
       String str = paramContext.getDir("lib", 0).getAbsolutePath();
-      paramContext = TMSManager.a().b(paramContext);
+      paramContext = TMSManager.b().b(paramContext);
       if (VasSoUtils.a(paramContext, str, "kcsdk_4.4.7.3661.jar"))
       {
         QLog.d("KC.TMSManager", 1, "unzip succ");
@@ -94,7 +94,7 @@ public class TMSManager$DynamicLoadHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.TMSManager.DynamicLoadHelper
  * JD-Core Version:    0.7.0.1
  */

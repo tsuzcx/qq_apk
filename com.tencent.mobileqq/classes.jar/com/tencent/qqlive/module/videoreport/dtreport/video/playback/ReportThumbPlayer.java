@@ -4,6 +4,7 @@ import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.dtreport.api.DTConfig;
 import com.tencent.qqlive.module.videoreport.dtreport.constants.DTConfigConstants;
 import com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoReportManager;
+import com.tencent.qqlive.module.videoreport.task.ThreadUtils;
 
 public class ReportThumbPlayer
 {
@@ -89,6 +90,33 @@ public class ReportThumbPlayer
     }
   }
   
+  public void seekTo(Object paramObject, int paramInt)
+  {
+    if ((DTConfigConstants.config.videoReportSupport()) && (DTConfigConstants.config.seekReportSupport()))
+    {
+      Log.i("ReportThumbPlayer", "thumbplayer seekTo");
+      VideoReportManager.getInstance().seekTo(paramObject, paramInt);
+    }
+  }
+  
+  public void setLoopback(Object paramObject, boolean paramBoolean, long paramLong1, long paramLong2)
+  {
+    if (DTConfigConstants.config.videoReportSupport())
+    {
+      Log.i("ReportThumbPlayer", "thumbplayer setLoopback");
+      VideoReportManager.getInstance().setLoopback(paramObject, paramBoolean, paramLong1, paramLong2);
+    }
+  }
+  
+  public void setPlaySpeedRatio(Object paramObject, float paramFloat)
+  {
+    if ((DTConfigConstants.config.videoReportSupport()) && (DTConfigConstants.config.speedRatioReportSupport()))
+    {
+      Log.i("ReportThumbPlayer", "thumbplayer setPlaySpeedRatio");
+      VideoReportManager.getInstance().setPlaySpeedRatio(paramObject, paramFloat);
+    }
+  }
+  
   public void setPlayerOptionalParam(Object paramObject1, Object paramObject2)
   {
     if (DTConfigConstants.config.videoReportSupport())
@@ -112,7 +140,7 @@ public class ReportThumbPlayer
     if (DTConfigConstants.config.videoReportSupport())
     {
       Log.i("ReportThumbPlayer", "thumbplayer start");
-      VideoReportManager.getInstance().start(paramObject);
+      ThreadUtils.runOnUiThread(new ReportThumbPlayer.1(this, paramObject));
     }
   }
   
@@ -127,7 +155,7 @@ public class ReportThumbPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.playback.ReportThumbPlayer
  * JD-Core Version:    0.7.0.1
  */

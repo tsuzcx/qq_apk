@@ -6,9 +6,9 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 class ChooseFileAssistant$ChatInfo
 {
   public int a;
-  public ChooseFileInfo a;
-  public SessionInfo a;
-  public String a;
+  public String b;
+  public SessionInfo c;
+  public ChooseFileInfo d;
 }
 
 

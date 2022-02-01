@@ -13,7 +13,7 @@ final class ColorNickManager$1
   
   public void a(EmoticonPackage paramEmoticonPackage)
   {
-    char[] arrayOfChar1 = EmosmUtils.a(this.jdField_a_of_type_Int, this.b);
+    char[] arrayOfChar1 = EmosmUtils.a(this.a, this.b);
     char[] arrayOfChar2 = new char[7];
     int j = 0;
     arrayOfChar2[0] = '<';
@@ -40,15 +40,15 @@ final class ColorNickManager$1
       }
       i += 1;
     }
-    i = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-    j = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-    this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, String.valueOf(arrayOfChar2));
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+    i = this.c.getSelectionStart();
+    j = this.c.getSelectionEnd();
+    this.c.getEditableText().replace(i, j, String.valueOf(arrayOfChar2));
+    this.c.requestFocus();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickManager.1
  * JD-Core Version:    0.7.0.1
  */

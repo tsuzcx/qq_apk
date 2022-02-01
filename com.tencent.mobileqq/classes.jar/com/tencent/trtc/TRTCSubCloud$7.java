@@ -1,6 +1,5 @@
 package com.tencent.trtc;
 
-import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.trtc.impl.TRTCCloudImpl;
 import com.tencent.liteav.trtc.impl.TRTCRoomInfo;
 import java.lang.ref.WeakReference;
@@ -17,13 +16,8 @@ class TRTCSubCloud$7
     localStringBuilder.append("muteLocalAudio ");
     localStringBuilder.append(this.a);
     localStringBuilder.append(", roomId=");
-    localStringBuilder.append(TRTCSubCloud.access$6000(this.b).getRoomId());
-    TRTCSubCloud.access$6100((TRTCSubCloud)localObject, localStringBuilder.toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(String.format("muteLocalAudio mute:%b", new Object[] { Boolean.valueOf(this.a) }));
-    ((StringBuilder)localObject).append(" self:");
-    ((StringBuilder)localObject).append(this.b.hashCode());
-    Monitor.a(1, ((StringBuilder)localObject).toString(), "", 0);
+    localStringBuilder.append(TRTCSubCloud.access$6100(this.b).getRoomId());
+    TRTCSubCloud.access$6200((TRTCSubCloud)localObject, localStringBuilder.toString());
     localObject = (TRTCCloudImpl)this.b.mMainCloud.get();
     if (localObject != null) {
       ((TRTCCloudImpl)localObject).muteLocalAudio(this.a, this.b);

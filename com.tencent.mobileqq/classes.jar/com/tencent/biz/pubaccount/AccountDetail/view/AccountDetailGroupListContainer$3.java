@@ -12,14 +12,14 @@ class AccountDetailGroupListContainer$3
   
   public void onClick(View paramView)
   {
-    AccountDetailGroupListContainer.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_JavaLangString);
-    PublicAccountHandlerImpl.reportClickPublicAccountEventInner(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString, "Grp_tribe", "interest_data", "Clk_msg");
-    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.jdField_a_of_type_JavaLangString);
+    AccountDetailGroupListContainer.c(this.c, this.a);
+    PublicAccountHandlerImpl.reportClickPublicAccountEventInner(this.c.b, this.c.g, "Grp_tribe", "interest_data", "Clk_msg");
+    AccountDetailGroupListContainer.a(this.c, this.b.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.3
  * JD-Core Version:    0.7.0.1
  */

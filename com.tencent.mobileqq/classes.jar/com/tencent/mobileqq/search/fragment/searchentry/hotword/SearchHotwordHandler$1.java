@@ -13,7 +13,7 @@ class SearchHotwordHandler$1
   
   public void run()
   {
-    SearchHotwordHandler.access$000(this.this$0).a();
+    SearchHotwordHandler.access$000(this.this$0).c();
     Object localObject = SearchHotwordHandler.access$000(this.this$0).a();
     ArrayList localArrayList = new ArrayList();
     if (localObject != null)
@@ -30,7 +30,7 @@ class SearchHotwordHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hotword.SearchHotwordHandler.1
  * JD-Core Version:    0.7.0.1
  */

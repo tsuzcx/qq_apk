@@ -16,39 +16,22 @@ import com.tencent.qphone.base.util.QLog;
 
 public class PtuResChecker
 {
-  private static final PtuResChecker jdField_a_of_type_ComTencentAvPtuPtuResChecker = new PtuResChecker();
-  private final SparseArray<AEKitResItemChecker> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
-  private final AEKitResItemChecker jdField_a_of_type_ComTencentAvPtuAEKitResItemChecker;
+  private static final PtuResChecker a = new PtuResChecker();
+  private final AEKitResItemChecker b;
+  private final SparseArray<AEKitResItemChecker> c = new SparseArray(3);
   
   private PtuResChecker()
   {
     int i = AEResInfo.AE_RES_BASE_PACKAGE.index;
-    this.jdField_a_of_type_ComTencentAvPtuAEKitResItemChecker = new AEKitResItemChecker(i);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(i, this.jdField_a_of_type_ComTencentAvPtuAEKitResItemChecker);
+    this.b = new AEKitResItemChecker(i);
+    this.c.put(i, this.b);
     i = AEResInfo.LIGHT_RES_BUNDLE_HAND.index;
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(i, new AEKitResItemChecker(i));
-  }
-  
-  public static AEResInfo a(int paramInt)
-  {
-    AEResInfo localAEResInfo1 = AEResInfo.AE_RES_BASE_PACKAGE;
-    AEResInfo[] arrayOfAEResInfo = AEResInfo.values;
-    int j = arrayOfAEResInfo.length;
-    int i = 0;
-    while (i < j)
-    {
-      AEResInfo localAEResInfo2 = arrayOfAEResInfo[i];
-      if ((localAEResInfo2 != null) && (paramInt == localAEResInfo2.index)) {
-        return localAEResInfo2;
-      }
-      i += 1;
-    }
-    return localAEResInfo1;
+    this.c.put(i, new AEKitResItemChecker(i));
   }
   
   public static PtuResChecker a()
   {
-    return jdField_a_of_type_ComTencentAvPtuPtuResChecker;
+    return a;
   }
   
   public static void a(Context paramContext)
@@ -99,11 +82,11 @@ public class PtuResChecker
       paramIntent.append("]");
       QLog.i("PtuResChecker", 2, paramIntent.toString());
     }
-    paramIntent = VideoController.a().a();
-    if ((bool) && (paramIntent != null) && (b(i)) && (b()))
+    paramIntent = VideoController.f().aj();
+    if ((bool) && (paramIntent != null) && (b(i)) && (c()))
     {
       a().a(paramIntent);
-      ((EffectSupportManager)paramIntent.a(5)).a(3);
+      ((EffectSupportManager)paramIntent.c(5)).a(3);
     }
     if ((bool) && (!b(i))) {
       a().a(paramIntent, i);
@@ -128,7 +111,7 @@ public class PtuResChecker
     }
     else
     {
-      a((IAEDownloadCallBack)localObject, a(paramInt));
+      a((IAEDownloadCallBack)localObject, c(paramInt));
       bool = false;
     }
     if (QLog.isColorLevel())
@@ -205,24 +188,36 @@ public class PtuResChecker
     finally {}
   }
   
-  public static boolean b()
-  {
-    return ((IAEResUtil)QRoute.api(IAEResUtil.class)).isLightCameraResExist();
-  }
-  
   public static boolean b(int paramInt)
   {
     return (paramInt == AEResInfo.AE_RES_BASE_PACKAGE.index) || (paramInt == AEResInfo.LIGHT_RES_BASE_PACKAGE.index);
   }
   
-  public boolean a()
+  public static AEResInfo c(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentAvPtuAEKitResItemChecker.a();
+    AEResInfo localAEResInfo1 = AEResInfo.AE_RES_BASE_PACKAGE;
+    AEResInfo[] arrayOfAEResInfo = AEResInfo.values;
+    int j = arrayOfAEResInfo.length;
+    int i = 0;
+    while (i < j)
+    {
+      AEResInfo localAEResInfo2 = arrayOfAEResInfo[i];
+      if ((localAEResInfo2 != null) && (paramInt == localAEResInfo2.index)) {
+        return localAEResInfo2;
+      }
+      i += 1;
+    }
+    return localAEResInfo1;
+  }
+  
+  public static boolean c()
+  {
+    return ((IAEResUtil)QRoute.api(IAEResUtil.class)).isLightCameraResExist();
   }
   
   public boolean a(int paramInt)
   {
-    AEKitResItemChecker localAEKitResItemChecker = (AEKitResItemChecker)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    AEKitResItemChecker localAEKitResItemChecker = (AEKitResItemChecker)this.c.get(paramInt);
     return (localAEKitResItemChecker != null) && (localAEKitResItemChecker.a());
   }
   
@@ -230,29 +225,34 @@ public class PtuResChecker
   {
     VideoAppInterface localVideoAppInterface = paramVideoAppInterface;
     if (paramVideoAppInterface == null) {
-      localVideoAppInterface = VideoController.a().a;
+      localVideoAppInterface = VideoController.f().e;
     }
-    return this.jdField_a_of_type_ComTencentAvPtuAEKitResItemChecker.a(localVideoAppInterface);
+    return this.b.a(localVideoAppInterface);
   }
   
   public boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
     VideoAppInterface localVideoAppInterface = paramVideoAppInterface;
     if (paramVideoAppInterface == null) {
-      localVideoAppInterface = VideoController.a().a;
+      localVideoAppInterface = VideoController.f().e;
     }
-    AEKitResItemChecker localAEKitResItemChecker = (AEKitResItemChecker)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    AEKitResItemChecker localAEKitResItemChecker = (AEKitResItemChecker)this.c.get(paramInt);
     paramVideoAppInterface = localAEKitResItemChecker;
     if (localAEKitResItemChecker == null)
     {
       paramVideoAppInterface = localAEKitResItemChecker;
-      if (a(paramInt) != AEResInfo.AE_RES_BASE_PACKAGE)
+      if (c(paramInt) != AEResInfo.AE_RES_BASE_PACKAGE)
       {
         paramVideoAppInterface = new AEKitResItemChecker(paramInt);
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramVideoAppInterface);
+        this.c.put(paramInt, paramVideoAppInterface);
       }
     }
     return (paramVideoAppInterface != null) && (paramVideoAppInterface.a(localVideoAppInterface));
+  }
+  
+  public boolean b()
+  {
+    return this.b.a();
   }
 }
 

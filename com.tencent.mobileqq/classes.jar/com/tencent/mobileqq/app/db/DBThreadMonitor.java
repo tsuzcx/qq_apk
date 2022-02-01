@@ -10,29 +10,34 @@ import java.util.LinkedHashMap;
 
 public class DBThreadMonitor
 {
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final String jdField_a_of_type_JavaLangString;
-  private HashMap<Long, CompetitionThreadInfo> jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
+  private final String a;
+  private final Object b = new Object();
+  private HashMap<Long, CompetitionThreadInfo> c = new LinkedHashMap();
   
   public DBThreadMonitor(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DBThreadBlockMonitor_");
     localStringBuilder.append(paramString);
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    this.a = localStringBuilder.toString();
   }
   
-  private String a()
+  private boolean a(long paramLong)
+  {
+    return Looper.getMainLooper().getThread().getId() == paramLong;
+  }
+  
+  private String c()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      Iterator localIterator = this.c.values().iterator();
       while (localIterator.hasNext())
       {
         CompetitionThreadInfo localCompetitionThreadInfo = (CompetitionThreadInfo)localIterator.next();
         long l1 = System.nanoTime();
-        long l2 = localCompetitionThreadInfo.b;
+        long l2 = localCompetitionThreadInfo.c;
         l1 -= l2;
         double d = l1;
         Double.isNaN(d);
@@ -56,11 +61,6 @@ public class DBThreadMonitor
     }
   }
   
-  private boolean a(long paramLong)
-  {
-    return Looper.getMainLooper().getThread().getId() == paramLong;
-  }
-  
   public void a()
   {
     if (!SQLiteDatabase.sIsLogcatDBOperation) {
@@ -68,20 +68,20 @@ public class DBThreadMonitor
     }
     long l = Thread.currentThread().getId();
     Object localObject2 = Thread.currentThread().getName();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
       localObject2 = new CompetitionThreadInfo(l, (String)localObject2, System.nanoTime());
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("addCompetitionThread -> isMainThread: ");
       localStringBuilder.append(a(l));
       localStringBuilder.append(", curThreadInfo : ");
       localStringBuilder.append(localObject2);
       localStringBuilder.append(", BlockThreadList : \n");
-      localStringBuilder.append(a());
+      localStringBuilder.append(c());
       QLog.d(str, 1, localStringBuilder.toString());
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), localObject2);
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, new Throwable("add competition thread stack"), new Object[0]);
+      this.c.put(Long.valueOf(l), localObject2);
+      QLog.d(this.a, 1, new Throwable("add competition thread stack"), new Object[0]);
       return;
     }
   }
@@ -92,28 +92,28 @@ public class DBThreadMonitor
       return;
     }
     long l1 = Thread.currentThread().getId();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      CompetitionThreadInfo localCompetitionThreadInfo = (CompetitionThreadInfo)this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(l1));
+      CompetitionThreadInfo localCompetitionThreadInfo = (CompetitionThreadInfo)this.c.remove(Long.valueOf(l1));
       if (localCompetitionThreadInfo != null)
       {
         long l2 = System.nanoTime();
-        long l3 = localCompetitionThreadInfo.b;
+        long l3 = localCompetitionThreadInfo.c;
         double d = l2 - l3;
         Double.isNaN(d);
         d /= 1000000.0D;
-        String str = this.jdField_a_of_type_JavaLangString;
+        String str = this.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("finish thread : ");
         localStringBuilder.append(localCompetitionThreadInfo);
         localStringBuilder.append(", isMainThread: ");
         localStringBuilder.append(a(l1));
         localStringBuilder.append(", cost: ");
-        localStringBuilder.append(System.nanoTime() - localCompetitionThreadInfo.b);
+        localStringBuilder.append(System.nanoTime() - localCompetitionThreadInfo.c);
         localStringBuilder.append("ns, ");
         localStringBuilder.append(d);
         localStringBuilder.append("ms, BlockThreadList : \n");
-        localStringBuilder.append(a());
+        localStringBuilder.append(c());
         QLog.d(str, 1, localStringBuilder.toString());
       }
       return;
@@ -122,7 +122,7 @@ public class DBThreadMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.db.DBThreadMonitor
  * JD-Core Version:    0.7.0.1
  */

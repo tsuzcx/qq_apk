@@ -31,136 +31,83 @@ import mqq.manager.Manager;
 public class AppletsFolderManager
   implements Handler.Callback, Manager
 {
-  private static int jdField_b_of_type_Int = -1;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private DBDelayManager jdField_a_of_type_ComTencentMobileqqAppAsyncdbDBDelayManager;
-  private AppletAccountCache jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheAppletAccountCache;
-  private AppletsHandler jdField_a_of_type_ComTencentMobileqqAppletsAppletsHandler;
-  private AppletsObserver jdField_a_of_type_ComTencentMobileqqAppletsAppletsObserver = new AppletsFolderManager.1(this);
-  private CustomHandler jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private volatile boolean jdField_b_of_type_Boolean = false;
-  private boolean c = false;
+  private static int l = -1;
+  private CustomHandler a;
+  private boolean b;
+  private String c;
+  private int d;
+  private AppletsHandler e;
+  private QQAppInterface f;
+  private AppletAccountCache g;
+  private DBDelayManager h;
+  private volatile boolean i = false;
+  private long j;
+  private long k;
+  private AppletsObserver m = new AppletsFolderManager.1(this);
+  private boolean n = false;
   
   @Deprecated
   public AppletsFolderManager() {}
   
   public AppletsFolderManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbDBDelayManager = new DBDelayManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbDBDelayManager.start();
-    this.jdField_a_of_type_ComTencentMobileqqAppletsAppletsHandler = ((AppletsHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER));
-    this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheAppletAccountCache = new AppletAccountCache(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbDBDelayManager);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler = new CustomHandler(ThreadManagerV2.getSubThreadLooper(), this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.sendEmptyMessage(1);
-    this.jdField_a_of_type_Long = a();
-    this.jdField_a_of_type_Boolean = a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppletsAppletsObserver);
+    this.f = paramQQAppInterface;
+    this.h = new DBDelayManager(this.f);
+    this.h.start();
+    this.e = ((AppletsHandler)this.f.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER));
+    this.g = new AppletAccountCache(this.f, this.h);
+    this.a = new CustomHandler(ThreadManagerV2.getSubThreadLooper(), this);
+    this.a.sendEmptyMessage(1);
+    this.j = d();
+    this.b = c();
+    this.f.addObserver(this.m);
     b();
     a(true);
-  }
-  
-  private SharedPreferences a()
-  {
-    try
-    {
-      Object localObject = a();
-      if (localObject != null)
-      {
-        BaseApplication localBaseApplication = ((QQAppInterface)localObject).getApp();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("AppletsFolderManager");
-        localStringBuilder.append(((QQAppInterface)localObject).getCurrentAccountUin());
-        localObject = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
-        return localObject;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("AppletsFolderManager", 2, "getSharedPreferences error!: ", localThrowable);
-    }
-    return null;
-  }
-  
-  private QQAppInterface a()
-  {
-    QQAppInterface localQQAppInterface3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    QQAppInterface localQQAppInterface1 = localQQAppInterface3;
-    QQAppInterface localQQAppInterface2;
-    if (localQQAppInterface3 == null) {
-      try
-      {
-        Object localObject = BaseApplicationImpl.getApplication();
-        localQQAppInterface1 = localQQAppInterface3;
-        if (localObject != null)
-        {
-          localObject = ((BaseApplicationImpl)localObject).getRuntime();
-          localQQAppInterface1 = localQQAppInterface3;
-          if ((localObject instanceof QQAppInterface)) {
-            localQQAppInterface1 = (QQAppInterface)localObject;
-          }
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("AppletsFolderManager", 2, "getQQAppInterface error!: ", localThrowable);
-        localQQAppInterface2 = localQQAppInterface3;
-      }
-    }
-    if (localQQAppInterface2 == null) {
-      QLog.e("AppletsFolderManager", 2, "getQQAppInterface error: return null!");
-    }
-    return localQQAppInterface2;
   }
   
   /* Error */
   public static com.tencent.mobileqq.applets.data.AppletInfo a(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 177	java/io/ObjectInputStream
+    //   0: new 130	java/io/ObjectInputStream
     //   3: dup
-    //   4: new 179	java/io/ByteArrayInputStream
+    //   4: new 132	java/io/ByteArrayInputStream
     //   7: dup
     //   8: aload_0
-    //   9: invokespecial 182	java/io/ByteArrayInputStream:<init>	([B)V
-    //   12: invokespecial 185	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   9: invokespecial 135	java/io/ByteArrayInputStream:<init>	([B)V
+    //   12: invokespecial 138	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   15: astore_1
     //   16: aload_1
     //   17: astore_0
     //   18: aload_1
-    //   19: invokevirtual 189	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   19: invokevirtual 142	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   22: astore_2
     //   23: aload_1
     //   24: astore_0
     //   25: aload_2
-    //   26: instanceof 191
+    //   26: instanceof 144
     //   29: ifeq +23 -> 52
     //   32: aload_1
     //   33: astore_0
     //   34: aload_2
-    //   35: checkcast 191	com/tencent/mobileqq/applets/data/AppletInfo
+    //   35: checkcast 144	com/tencent/mobileqq/applets/data/AppletInfo
     //   38: astore_2
     //   39: aload_1
-    //   40: invokevirtual 194	java/io/ObjectInputStream:close	()V
+    //   40: invokevirtual 147	java/io/ObjectInputStream:close	()V
     //   43: aload_2
     //   44: areturn
     //   45: astore_0
     //   46: aload_0
-    //   47: invokevirtual 197	java/io/IOException:printStackTrace	()V
+    //   47: invokevirtual 150	java/io/IOException:printStackTrace	()V
     //   50: aload_2
     //   51: areturn
     //   52: aload_1
-    //   53: invokevirtual 194	java/io/ObjectInputStream:close	()V
+    //   53: invokevirtual 147	java/io/ObjectInputStream:close	()V
     //   56: aconst_null
     //   57: areturn
     //   58: astore_0
     //   59: aload_0
-    //   60: invokevirtual 197	java/io/IOException:printStackTrace	()V
+    //   60: invokevirtual 150	java/io/IOException:printStackTrace	()V
     //   63: aconst_null
     //   64: areturn
     //   65: astore_2
@@ -177,11 +124,11 @@ public class AppletsFolderManager
     //   82: aload_1
     //   83: astore_0
     //   84: aload_2
-    //   85: invokevirtual 198	java/lang/ClassNotFoundException:printStackTrace	()V
+    //   85: invokevirtual 151	java/lang/ClassNotFoundException:printStackTrace	()V
     //   88: aload_1
     //   89: ifnull +33 -> 122
     //   92: aload_1
-    //   93: invokevirtual 194	java/io/ObjectInputStream:close	()V
+    //   93: invokevirtual 147	java/io/ObjectInputStream:close	()V
     //   96: aconst_null
     //   97: areturn
     //   98: astore_2
@@ -190,16 +137,16 @@ public class AppletsFolderManager
     //   101: aload_1
     //   102: astore_0
     //   103: aload_2
-    //   104: invokevirtual 197	java/io/IOException:printStackTrace	()V
+    //   104: invokevirtual 150	java/io/IOException:printStackTrace	()V
     //   107: aload_1
     //   108: ifnull +14 -> 122
     //   111: aload_1
-    //   112: invokevirtual 194	java/io/ObjectInputStream:close	()V
+    //   112: invokevirtual 147	java/io/ObjectInputStream:close	()V
     //   115: aconst_null
     //   116: areturn
     //   117: astore_0
     //   118: aload_0
-    //   119: invokevirtual 197	java/io/IOException:printStackTrace	()V
+    //   119: invokevirtual 150	java/io/IOException:printStackTrace	()V
     //   122: aconst_null
     //   123: areturn
     //   124: astore_2
@@ -210,11 +157,11 @@ public class AppletsFolderManager
     //   129: aload_1
     //   130: ifnull +15 -> 145
     //   133: aload_1
-    //   134: invokevirtual 194	java/io/ObjectInputStream:close	()V
+    //   134: invokevirtual 147	java/io/ObjectInputStream:close	()V
     //   137: goto +8 -> 145
     //   140: astore_1
     //   141: aload_1
-    //   142: invokevirtual 197	java/io/IOException:printStackTrace	()V
+    //   142: invokevirtual 150	java/io/IOException:printStackTrace	()V
     //   145: aload_0
     //   146: athrow
     // Local variable table:
@@ -251,14 +198,6 @@ public class AppletsFolderManager
     //   133	137	140	java/io/IOException
   }
   
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.equals(paramString, QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationUin", "1038354735"))) {
-      return a(false);
-    }
-    return true;
-  }
-  
   public static boolean a(boolean paramBoolean)
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
@@ -274,32 +213,32 @@ public class AppletsFolderManager
     //   3: ifnonnull +5 -> 8
     //   6: aconst_null
     //   7: areturn
-    //   8: new 236	java/io/ByteArrayOutputStream
+    //   8: new 165	java/io/ByteArrayOutputStream
     //   11: dup
-    //   12: invokespecial 237	java/io/ByteArrayOutputStream:<init>	()V
+    //   12: invokespecial 166	java/io/ByteArrayOutputStream:<init>	()V
     //   15: astore_3
-    //   16: new 239	java/io/ObjectOutputStream
+    //   16: new 168	java/io/ObjectOutputStream
     //   19: dup
     //   20: aload_3
-    //   21: invokespecial 242	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   21: invokespecial 171	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   24: astore_2
     //   25: aload_2
     //   26: astore_1
     //   27: aload_2
     //   28: aload_0
-    //   29: invokevirtual 246	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   29: invokevirtual 175	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   32: aload_2
     //   33: astore_1
     //   34: aload_3
-    //   35: invokevirtual 250	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   35: invokevirtual 179	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   38: astore_0
     //   39: aload_2
-    //   40: invokevirtual 251	java/io/ObjectOutputStream:close	()V
+    //   40: invokevirtual 180	java/io/ObjectOutputStream:close	()V
     //   43: aload_0
     //   44: areturn
     //   45: astore_1
     //   46: aload_1
-    //   47: invokevirtual 197	java/io/IOException:printStackTrace	()V
+    //   47: invokevirtual 150	java/io/IOException:printStackTrace	()V
     //   50: aload_0
     //   51: areturn
     //   52: astore_1
@@ -316,27 +255,27 @@ public class AppletsFolderManager
     //   67: aload_0
     //   68: astore_1
     //   69: aload_2
-    //   70: invokevirtual 197	java/io/IOException:printStackTrace	()V
+    //   70: invokevirtual 150	java/io/IOException:printStackTrace	()V
     //   73: aload_0
     //   74: ifnull +14 -> 88
     //   77: aload_0
-    //   78: invokevirtual 251	java/io/ObjectOutputStream:close	()V
+    //   78: invokevirtual 180	java/io/ObjectOutputStream:close	()V
     //   81: aconst_null
     //   82: areturn
     //   83: astore_0
     //   84: aload_0
-    //   85: invokevirtual 197	java/io/IOException:printStackTrace	()V
+    //   85: invokevirtual 150	java/io/IOException:printStackTrace	()V
     //   88: aconst_null
     //   89: areturn
     //   90: astore_0
     //   91: aload_1
     //   92: ifnull +15 -> 107
     //   95: aload_1
-    //   96: invokevirtual 251	java/io/ObjectOutputStream:close	()V
+    //   96: invokevirtual 180	java/io/ObjectOutputStream:close	()V
     //   99: goto +8 -> 107
     //   102: astore_1
     //   103: aload_1
-    //   104: invokevirtual 197	java/io/IOException:printStackTrace	()V
+    //   104: invokevirtual 150	java/io/IOException:printStackTrace	()V
     //   107: aload_0
     //   108: athrow
     // Local variable table:
@@ -364,119 +303,144 @@ public class AppletsFolderManager
     //   95	99	102	java/io/IOException
   }
   
+  public static boolean b(String paramString)
+  {
+    if (TextUtils.equals(paramString, QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationUin", "1038354735"))) {
+      return a(false);
+    }
+    return true;
+  }
+  
+  private SharedPreferences i()
+  {
+    try
+    {
+      Object localObject = j();
+      if (localObject != null)
+      {
+        BaseApplication localBaseApplication = ((QQAppInterface)localObject).getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("AppletsFolderManager");
+        localStringBuilder.append(((QQAppInterface)localObject).getCurrentAccountUin());
+        localObject = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
+        return localObject;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("AppletsFolderManager", 2, "getSharedPreferences error!: ", localThrowable);
+    }
+    return null;
+  }
+  
+  private QQAppInterface j()
+  {
+    QQAppInterface localQQAppInterface3 = this.f;
+    QQAppInterface localQQAppInterface1 = localQQAppInterface3;
+    QQAppInterface localQQAppInterface2;
+    if (localQQAppInterface3 == null) {
+      try
+      {
+        Object localObject = BaseApplicationImpl.getApplication();
+        localQQAppInterface1 = localQQAppInterface3;
+        if (localObject != null)
+        {
+          localObject = ((BaseApplicationImpl)localObject).getRuntime();
+          localQQAppInterface1 = localQQAppInterface3;
+          if ((localObject instanceof QQAppInterface)) {
+            localQQAppInterface1 = (QQAppInterface)localObject;
+          }
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("AppletsFolderManager", 2, "getQQAppInterface error!: ", localThrowable);
+        localQQAppInterface2 = localQQAppInterface3;
+      }
+    }
+    if (localQQAppInterface2 == null) {
+      QLog.e("AppletsFolderManager", 2, "getQQAppInterface error: return null!");
+    }
+    return localQQAppInterface2;
+  }
+  
   public int a(com.tencent.imcore.message.Message paramMessage)
   {
-    int j = 1;
-    int i = j;
+    int i2 = 1;
+    int i1 = i2;
     if (paramMessage != null)
     {
       String str = paramMessage.getExtInfoFromExtStr(MessageConstants.A);
       if (!TextUtils.isEmpty(str)) {
-        i = Integer.valueOf(str).intValue();
+        i1 = Integer.valueOf(str).intValue();
       } else {
-        i = 1;
+        i1 = 1;
       }
-      if (paramMessage.time < this.jdField_a_of_type_Long)
+      if (paramMessage.time < this.j)
       {
-        i = j;
-        if (this.jdField_a_of_type_Boolean) {
+        i1 = i2;
+        if (this.b) {
           return 2;
         }
       }
     }
-    return i;
+    return i1;
   }
   
   public int a(com.tencent.imcore.message.Message paramMessage, RecentUser paramRecentUser)
   {
-    int j = 1;
-    int i = j;
+    int i2 = 1;
+    int i1 = i2;
     if (paramMessage != null)
     {
       paramMessage = paramMessage.getExtInfoFromExtStr(MessageConstants.A);
       if (!TextUtils.isEmpty(paramMessage)) {
-        i = Integer.valueOf(paramMessage).intValue();
+        i1 = Integer.valueOf(paramMessage).intValue();
       } else {
-        i = 1;
+        i1 = 1;
       }
-      if ((paramRecentUser != null) && (paramRecentUser.lastmsgtime < this.jdField_a_of_type_Long))
+      if ((paramRecentUser != null) && (paramRecentUser.lastmsgtime < this.j))
       {
-        i = j;
-        if (this.jdField_a_of_type_Boolean) {
+        i1 = i2;
+        if (this.b) {
           return 2;
         }
       }
     }
-    return i;
-  }
-  
-  public long a()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null) {
-      return 0L;
-    }
-    this.jdField_a_of_type_Long = localSharedPreferences.getLong("applets_setting_main_switch_time", 0L);
-    return this.jdField_a_of_type_Long;
+    return i1;
   }
   
   public AppletsAccountInfo a(String paramString)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheAppletAccountCache.a(paramString);
+    paramString = this.g.a(paramString);
     if ((paramString != null) && (paramString.appInfoDetail != null)) {
       paramString.appInfo = a(paramString.appInfoDetail);
     }
     return paramString;
   }
   
-  public String a()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null) {
-      return "";
-    }
-    return localSharedPreferences.getString("applets_main_des", "");
-  }
-  
-  public Set<String> a()
-  {
-    Object localObject = a();
-    if (localObject == null) {
-      return null;
-    }
-    localObject = ((SharedPreferences)localObject).getStringSet("applets_app_list_unreceive_msg_appids", null);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getAppletsSettingUnReceiveMsgAppids: ");
-      localStringBuilder.append(localObject);
-      QLog.i("AppletsFolderManager", 2, localStringBuilder.toString());
-    }
-    return localObject;
-  }
-  
   public void a()
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.i)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheAppletAccountCache.a();
-      this.jdField_b_of_type_Boolean = true;
+      this.g.a();
+      this.i = true;
     }
   }
   
   public void a(long paramLong)
   {
-    SharedPreferences localSharedPreferences = a();
+    SharedPreferences localSharedPreferences = i();
     if (localSharedPreferences == null) {
       return;
     }
-    this.jdField_b_of_type_Long = paramLong;
+    this.k = paramLong;
     localSharedPreferences.edit().putLong("applets_detail_last_request_time", paramLong).apply();
   }
   
   public void a(Context paramContext, String paramString1, String paramString2)
   {
-    QQAppInterface localQQAppInterface = a();
+    QQAppInterface localQQAppInterface = j();
     if (localQQAppInterface == null) {
       return;
     }
@@ -488,7 +452,7 @@ public class AppletsFolderManager
     if (paramAppletsAccountInfo != null)
     {
       paramAppletsAccountInfo.appInfoDetail = a(paramAppletsAccountInfo.appInfo);
-      this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheAppletAccountCache.a(paramAppletsAccountInfo);
+      this.g.a(paramAppletsAccountInfo);
     }
     if (QLog.isColorLevel())
     {
@@ -504,33 +468,24 @@ public class AppletsFolderManager
     if (paramRecentUser != null)
     {
       paramRecentUser = paramRecentUser.uin;
-      this.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.obtainMessage(3, 0, 0, paramRecentUser).sendToTarget();
+      this.a.obtainMessage(3, 0, 0, paramRecentUser).sendToTarget();
     }
-  }
-  
-  public void a(String paramString)
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null) {
-      return;
-    }
-    localSharedPreferences.edit().putString("applets_main_des", paramString).apply();
   }
   
   public void a(String paramString, int paramInt)
   {
-    SharedPreferences localSharedPreferences = a();
+    SharedPreferences localSharedPreferences = i();
     if (localSharedPreferences == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    localSharedPreferences.edit().putString("applets_detail_request_answer", paramString).putInt("applets_detail_request_duration", this.jdField_a_of_type_Int).apply();
+    this.d = paramInt;
+    this.c = paramString;
+    localSharedPreferences.edit().putString("applets_detail_request_answer", paramString).putInt("applets_detail_request_duration", this.d).apply();
   }
   
   public void a(Set<String> paramSet)
   {
-    Object localObject = a();
+    Object localObject = i();
     if (localObject == null) {
       return;
     }
@@ -548,71 +503,81 @@ public class AppletsFolderManager
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void b()
   {
-    SharedPreferences localSharedPreferences = a();
+    SharedPreferences localSharedPreferences = i();
     if (localSharedPreferences == null) {
       return;
     }
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTime();
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = localSharedPreferences.getString("applets_detail_request_answer", "");
+    this.d = localSharedPreferences.getInt("applets_detail_request_duration", 0);
+    this.k = localSharedPreferences.getLong("applets_detail_last_request_time", 0L);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = i();
+    if (localSharedPreferences == null) {
+      return;
+    }
+    this.j = NetConnInfoCenter.getServerTime();
+    this.b = paramBoolean;
     localSharedPreferences.edit().putBoolean("applets_setting_main_switch", paramBoolean).putLong("applets_setting_main_switch_time", NetConnInfoCenter.getServerTime()).apply();
   }
   
-  public boolean a()
+  public void c(String paramString)
   {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null) {
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("applets_setting_main_switch", false);
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null) {
-      return "";
-    }
-    return localSharedPreferences.getString("applets_app_list_des", "");
-  }
-  
-  public void b()
-  {
-    SharedPreferences localSharedPreferences = a();
+    SharedPreferences localSharedPreferences = i();
     if (localSharedPreferences == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString("applets_detail_request_answer", "");
-    this.jdField_a_of_type_Int = localSharedPreferences.getInt("applets_detail_request_duration", 0);
-    this.jdField_b_of_type_Long = localSharedPreferences.getLong("applets_detail_last_request_time", 0L);
+    localSharedPreferences.edit().putString("applets_main_des", paramString).apply();
   }
   
-  public void b(String paramString)
+  public boolean c()
   {
-    SharedPreferences localSharedPreferences = a();
+    SharedPreferences localSharedPreferences = i();
+    if (localSharedPreferences == null) {
+      return false;
+    }
+    this.b = localSharedPreferences.getBoolean("applets_setting_main_switch", false);
+    return this.b;
+  }
+  
+  public long d()
+  {
+    SharedPreferences localSharedPreferences = i();
+    if (localSharedPreferences == null) {
+      return 0L;
+    }
+    this.j = localSharedPreferences.getLong("applets_setting_main_switch_time", 0L);
+    return this.j;
+  }
+  
+  public void d(String paramString)
+  {
+    SharedPreferences localSharedPreferences = i();
     if (localSharedPreferences == null) {
       return;
     }
     localSharedPreferences.edit().putString("applets_app_list_des", paramString).apply();
   }
   
-  public String c()
+  public String e()
   {
-    SharedPreferences localSharedPreferences = a();
+    SharedPreferences localSharedPreferences = i();
     if (localSharedPreferences == null) {
       return "";
     }
-    return localSharedPreferences.getString("applets_main_title", "");
+    return localSharedPreferences.getString("applets_main_des", "");
   }
   
-  public void c(String paramString)
+  public void e(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    Object localObject2 = a();
+    Object localObject2 = g();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new HashSet();
@@ -628,12 +593,21 @@ public class AppletsFolderManager
     a((Set)localObject1);
   }
   
-  public void d(String paramString)
+  public String f()
+  {
+    SharedPreferences localSharedPreferences = i();
+    if (localSharedPreferences == null) {
+      return "";
+    }
+    return localSharedPreferences.getString("applets_app_list_des", "");
+  }
+  
+  public void f(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    Set localSet = a();
+    Set localSet = g();
     if (localSet != null)
     {
       if (localSet.size() < 1) {
@@ -652,36 +626,62 @@ public class AppletsFolderManager
     }
   }
   
-  public void e(String paramString)
+  public Set<String> g()
   {
-    SharedPreferences localSharedPreferences = a();
+    Object localObject = i();
+    if (localObject == null) {
+      return null;
+    }
+    localObject = ((SharedPreferences)localObject).getStringSet("applets_app_list_unreceive_msg_appids", null);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getAppletsSettingUnReceiveMsgAppids: ");
+      localStringBuilder.append(localObject);
+      QLog.i("AppletsFolderManager", 2, localStringBuilder.toString());
+    }
+    return localObject;
+  }
+  
+  public void g(String paramString)
+  {
+    SharedPreferences localSharedPreferences = i();
     if (localSharedPreferences == null) {
       return;
     }
     localSharedPreferences.edit().putString("applets_main_title", paramString).apply();
   }
   
+  public String h()
+  {
+    SharedPreferences localSharedPreferences = i();
+    if (localSharedPreferences == null) {
+      return "";
+    }
+    return localSharedPreferences.getString("applets_main_title", "");
+  }
+  
   public boolean handleMessage(android.os.Message paramMessage)
   {
-    int i = paramMessage.what;
-    if (i != 1)
+    int i1 = paramMessage.what;
+    if (i1 != 1)
     {
-      if (i != 2)
+      if (i1 != 2)
       {
-        if (i != 3) {
+        if (i1 != 3) {
           return true;
         }
         paramMessage = (String)paramMessage.obj;
-        if (!this.jdField_b_of_type_Boolean)
+        if (!this.i)
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheAppletAccountCache.a();
-          this.jdField_b_of_type_Boolean = true;
+          this.g.a();
+          this.i = true;
         }
-        if ((a(paramMessage) == null) || (this.jdField_b_of_type_Long + this.jdField_a_of_type_Int <= NetConnInfoCenter.getServerTime()))
+        if ((a(paramMessage) == null) || (this.k + this.d <= NetConnInfoCenter.getServerTime()))
         {
           ArrayList localArrayList = new ArrayList();
           localArrayList.add(Long.valueOf(paramMessage));
-          this.jdField_a_of_type_ComTencentMobileqqAppletsAppletsHandler.a(localArrayList);
+          this.e.a(localArrayList);
           a(NetConnInfoCenter.getServerTime());
           return true;
         }
@@ -705,26 +705,26 @@ public class AppletsFolderManager
     if (QLog.isColorLevel()) {
       QLog.d("AppletsFolderManager", 2, "onDestroy.");
     }
-    jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.removeCallbacksAndMessages(null);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbDBDelayManager;
+    l = -1;
+    this.a.removeCallbacksAndMessages(null);
+    Object localObject = this.h;
     if (localObject != null) {
       ((DBDelayManager)localObject).onDestroy();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject = this.f;
     if (localObject != null) {
-      ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppletsAppletsObserver);
+      ((QQAppInterface)localObject).removeObserver(this.m);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheAppletAccountCache;
+    localObject = this.g;
     if (localObject != null) {
       ((AppletAccountCache)localObject).b();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.f = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.AppletsFolderManager
  * JD-Core Version:    0.7.0.1
  */

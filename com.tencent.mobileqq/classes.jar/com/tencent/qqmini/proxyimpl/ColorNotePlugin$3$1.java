@@ -19,17 +19,17 @@ class ColorNotePlugin$3$1
     try
     {
       paramDialogInterface.dismiss();
-      this.a.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.insertColorNote();
-      if (ColorNotePlugin.a(this.a.this$0))
+      this.a.a.insertColorNote();
+      if (ColorNotePlugin.c(this.a.this$0))
       {
         paramDialogInterface = new ColorNotePlugin.3.1.1(this);
-        if ((ColorNotePlugin.b(this.a.this$0).getAttachedActivity() != null) && ((ColorNotePlugin.c(this.a.this$0).getAttachedActivity() instanceof GameActivity1))) {
-          ((GameActivity1)ColorNotePlugin.d(this.a.this$0).getAttachedActivity()).setColorSignAddListener(paramDialogInterface);
+        if ((ColorNotePlugin.d(this.a.this$0).getAttachedActivity() != null) && ((ColorNotePlugin.e(this.a.this$0).getAttachedActivity() instanceof GameActivity1))) {
+          ((GameActivity1)ColorNotePlugin.f(this.a.this$0).getAttachedActivity()).setColorSignAddListener(paramDialogInterface);
         }
       }
       else
       {
-        this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
+        this.a.b.ok();
         return;
       }
     }
@@ -44,7 +44,7 @@ class ColorNotePlugin$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ColorNotePlugin.3.1
  * JD-Core Version:    0.7.0.1
  */

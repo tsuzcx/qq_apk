@@ -23,30 +23,30 @@ class WebViewWrapperForDoc$1
   @SuppressLint({"InflateParams"})
   public View getVideoLoadingProgressView()
   {
-    if (WebViewWrapperForDoc.i(this.a) != null) {
-      return WebViewWrapperForDoc.j(this.a).getVideoLoadingProgressView();
+    if (WebViewWrapperForDoc.i(this.f) != null) {
+      return WebViewWrapperForDoc.j(this.f).getVideoLoadingProgressView();
     }
     return null;
   }
   
   public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    if (WebViewWrapperForDoc.k(this.a) != null) {
-      WebViewWrapperForDoc.l(this.a).onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    if (WebViewWrapperForDoc.k(this.f) != null) {
+      WebViewWrapperForDoc.l(this.f).onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
     }
   }
   
   public void onHideCustomView()
   {
-    if (WebViewWrapperForDoc.g(this.a) != null) {
-      WebViewWrapperForDoc.h(this.a).onHideCustomView();
+    if (WebViewWrapperForDoc.g(this.f) != null) {
+      WebViewWrapperForDoc.h(this.f).onHideCustomView();
     }
   }
   
   public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    if (WebViewWrapperForDoc.s(this.a) != null) {
-      WebViewWrapperForDoc.t(this.a).onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
+    if (WebViewWrapperForDoc.s(this.f) != null) {
+      WebViewWrapperForDoc.t(this.f).onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
     }
     return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
   }
@@ -61,8 +61,8 @@ class WebViewWrapperForDoc$1
       localStringBuilder.append(paramInt);
       QLog.d("WebLog_WebViewWrapper", 2, localStringBuilder.toString());
     }
-    if (WebViewWrapperForDoc.a(this.a) != null) {
-      WebViewWrapperForDoc.b(this.a).onProgressChanged(paramWebView, paramInt);
+    if (WebViewWrapperForDoc.a(this.f) != null) {
+      WebViewWrapperForDoc.b(this.f).onProgressChanged(paramWebView, paramInt);
     }
     if ((paramInt > 30) && (!paramWebView.getSettings().getLoadsImagesAutomatically())) {
       paramWebView.getSettings().setLoadsImagesAutomatically(true);
@@ -71,43 +71,43 @@ class WebViewWrapperForDoc$1
   
   public void onReceivedTitle(WebView paramWebView, String paramString)
   {
-    if (WebViewWrapperForDoc.m(this.a) != null) {
-      WebViewWrapperForDoc.n(this.a).onReceivedTitle(paramWebView, paramString);
+    if (WebViewWrapperForDoc.m(this.f) != null) {
+      WebViewWrapperForDoc.n(this.f).onReceivedTitle(paramWebView, paramString);
     }
   }
   
   public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    if (WebViewWrapperForDoc.e(this.a) != null) {
-      WebViewWrapperForDoc.f(this.a).showCustomView(paramView, paramInt, paramCustomViewCallback);
+    if (WebViewWrapperForDoc.e(this.f) != null) {
+      WebViewWrapperForDoc.f(this.f).showCustomView(paramView, paramInt, paramCustomViewCallback);
     }
   }
   
   public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    if (WebViewWrapperForDoc.c(this.a) != null) {
-      WebViewWrapperForDoc.d(this.a).showCustomView(paramView, 10, paramCustomViewCallback);
+    if (WebViewWrapperForDoc.c(this.f) != null) {
+      WebViewWrapperForDoc.d(this.f).showCustomView(paramView, 10, paramCustomViewCallback);
     }
   }
   
   public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    if ((paramValueCallback != null) && (WebViewWrapperForDoc.q(this.a) != null)) {
-      return WebViewWrapperForDoc.r(this.a).onShowFileChooser(paramValueCallback, paramFileChooserParams);
+    if ((paramValueCallback != null) && (WebViewWrapperForDoc.q(this.f) != null)) {
+      return WebViewWrapperForDoc.r(this.f).onShowFileChooser(paramValueCallback, paramFileChooserParams);
     }
     return super.onShowFileChooser(paramWebView, paramValueCallback, paramFileChooserParams);
   }
   
   public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
-    if (WebViewWrapperForDoc.o(this.a) != null) {
-      WebViewWrapperForDoc.p(this.a).openFileChooser(paramValueCallback, paramString1, paramString2);
+    if (WebViewWrapperForDoc.o(this.f) != null) {
+      WebViewWrapperForDoc.p(this.f).openFileChooser(paramValueCallback, paramString1, paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.WebViewWrapperForDoc.1
  * JD-Core Version:    0.7.0.1
  */

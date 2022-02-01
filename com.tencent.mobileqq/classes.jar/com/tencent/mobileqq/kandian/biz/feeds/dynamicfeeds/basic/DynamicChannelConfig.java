@@ -7,19 +7,19 @@ import java.util.List;
 
 public class DynamicChannelConfig
 {
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<DynamicChannelConfig.HeadData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private HashMap<String, String> b = new HashMap();
+  private HashMap<String, String> a = new HashMap();
+  private List<DynamicChannelConfig.HeadData> b = new ArrayList();
+  private HashMap<String, String> c = new HashMap();
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public DynamicChannelConfig.HeadData a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (DynamicChannelConfig.HeadData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return (DynamicChannelConfig.HeadData)this.b.get(paramInt);
     }
     return null;
   }
@@ -30,26 +30,26 @@ public class DynamicChannelConfig
     if ((localHeadData != null) && (!TextUtils.isEmpty(paramString)))
     {
       if ("style_ID".equalsIgnoreCase(paramString)) {
-        return localHeadData.jdField_a_of_type_JavaLangString;
+        return localHeadData.a;
       }
-      return (String)localHeadData.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      return (String)localHeadData.c.get(paramString);
     }
     return "";
   }
   
   public String a(String paramString)
   {
-    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    return (String)this.a.get(paramString);
   }
   
   public String b(String paramString)
   {
-    return (String)this.b.get(paramString);
+    return (String)this.c.get(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.basic.DynamicChannelConfig
  * JD-Core Version:    0.7.0.1
  */

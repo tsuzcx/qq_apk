@@ -7,14 +7,14 @@ class PressToSpeakPanel$2
   
   public void run()
   {
-    if (PressToSpeakPanel.a(this.this$0) != null) {
-      PressToSpeakPanel.a(this.this$0).a();
+    if (PressToSpeakPanel.e(this.this$0) != null) {
+      PressToSpeakPanel.e(this.this$0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel.2
  * JD-Core Version:    0.7.0.1
  */

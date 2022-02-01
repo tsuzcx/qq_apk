@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class WeishiPublicAccountUniversalAction
   extends JumpAction
 {
-  private Object a;
+  private Object H;
   
   public WeishiPublicAccountUniversalAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
@@ -21,14 +21,14 @@ public class WeishiPublicAccountUniversalAction
   public WeishiPublicAccountUniversalAction(QQAppInterface paramQQAppInterface, Context paramContext, Object paramObject)
   {
     this(paramQQAppInterface, paramContext);
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.H = paramObject;
   }
   
   public boolean a()
   {
     try
     {
-      boolean bool = ((IWSManager)QRoute.api(IWSManager.class)).doJumpAction((String)this.jdField_a_of_type_JavaUtilHashMap.get("action"), this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_JavaLangObject);
+      boolean bool = ((IWSManager)QRoute.api(IWSManager.class)).doJumpAction((String)this.f.get("action"), this.b, this.f, this.H);
       return bool;
     }
     catch (Exception localException)
@@ -37,14 +37,14 @@ public class WeishiPublicAccountUniversalAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("WeishiPublicAccountUniversalAction", 1, localStringBuilder.toString());
-      b_("WeishiPublicAccountUniversalAction");
+      h_("WeishiPublicAccountUniversalAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.WeishiPublicAccountUniversalAction
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public class DownloadManagerInterceptor
   
   public static boolean a(DownloadInfo paramDownloadInfo)
   {
-    return paramDownloadInfo.i == TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE;
+    return paramDownloadInfo.C == TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE;
   }
   
   public static boolean a(String paramString)
@@ -43,7 +43,7 @@ public class DownloadManagerInterceptor
       QLog.d("[UniteDownload] DownloadManagerInterceptor", 2, new Object[] { "[check] uniteUniversalDownload: invoked. in silent white list.", " downloadInfo: ", paramDownloadInfo });
     }
     if (!a(paramDownloadInfo)) {
-      paramDownloadInfo.i = TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE;
+      paramDownloadInfo.C = TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE;
     }
     d(paramDownloadInfo, paramRunnable);
   }
@@ -56,7 +56,7 @@ public class DownloadManagerInterceptor
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    boolean bool = DownloadConfigProcessor.a().jdField_a_of_type_JavaUtilList.contains(paramString);
+    boolean bool = DownloadConfigProcessor.a().a.contains(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("[UniteDownload] DownloadManagerInterceptor", 2, new Object[] { "[check] businessInBlackList: invoked. ", " inBlack: ", Boolean.valueOf(bool) });
     }
@@ -78,7 +78,7 @@ public class DownloadManagerInterceptor
   
   public void a(DownloadInfo paramDownloadInfo, Runnable paramRunnable)
   {
-    String str = paramDownloadInfo.m;
+    String str = paramDownloadInfo.r;
     if (b(str))
     {
       QLog.d("[UniteDownload] DownloadManagerInterceptor", 1, new Object[] { "[check] uniteDownload: invoked. in black list.", " sourceBusinessName: ", str });
@@ -93,9 +93,9 @@ public class DownloadManagerInterceptor
       return;
     }
     boolean bool1 = a(str);
-    boolean bool2 = paramDownloadInfo.f;
-    boolean bool3 = paramDownloadInfo.g ^ true;
-    boolean bool4 = DownloadConfigProcessor.a().jdField_a_of_type_Boolean ^ true;
+    boolean bool2 = paramDownloadInfo.U;
+    boolean bool3 = paramDownloadInfo.V ^ true;
+    boolean bool4 = DownloadConfigProcessor.a().h ^ true;
     if (QLog.isColorLevel()) {
       QLog.d("[UniteDownload] DownloadManagerInterceptor", 2, new Object[] { "[check] uniteDownload: invoked. ", " inWhite: ", Boolean.valueOf(bool1), " isFromRockDownloader: ", Boolean.valueOf(bool2), " notUniteDownload: ", Boolean.valueOf(bool3), " disableUniteDownloadDialog: ", Boolean.valueOf(bool4) });
     }
@@ -109,7 +109,7 @@ public class DownloadManagerInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.core.DownloadManagerInterceptor
  * JD-Core Version:    0.7.0.1
  */

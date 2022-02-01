@@ -12,17 +12,17 @@ import android.support.annotation.NonNull;
 public class CaptureStateCallBack
   extends CameraCaptureSession.CaptureCallback
 {
-  private int jdField_a_of_type_Int = 0;
-  private Camera2Control jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
+  private Camera2Control a;
+  private int b = 0;
   
   public CaptureStateCallBack(Camera2Control paramCamera2Control)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control = paramCamera2Control;
+    this.a = paramCamera2Control;
   }
   
   private void a(CaptureResult paramCaptureResult)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i != 0)
     {
       if (i != 1) {
@@ -35,9 +35,9 @@ public class CaptureStateCallBack
       Camera2Utils.a(1, localStringBuilder.toString());
       if (localObject == null)
       {
-        paramCaptureResult = this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
+        paramCaptureResult = this.a;
         if (paramCaptureResult != null) {
-          paramCaptureResult.d();
+          paramCaptureResult.j();
         }
       }
       else if ((4 == ((Integer)localObject).intValue()) || (5 == ((Integer)localObject).intValue()) || (((Integer)localObject).intValue() == 0) || (1 == ((Integer)localObject).intValue()) || (2 == ((Integer)localObject).intValue()))
@@ -49,21 +49,21 @@ public class CaptureStateCallBack
           ((StringBuilder)localObject).append("[Camera2]process preCapture aeState:");
           ((StringBuilder)localObject).append(paramCaptureResult);
           Camera2Utils.a(1, ((StringBuilder)localObject).toString());
-          paramCaptureResult = this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
+          paramCaptureResult = this.a;
           if (paramCaptureResult != null) {
-            paramCaptureResult.d();
+            paramCaptureResult.j();
           }
         }
         else
         {
-          this.jdField_a_of_type_Int = 4;
+          this.b = 4;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("[Camera2]process aeState:");
           ((StringBuilder)localObject).append(paramCaptureResult);
           Camera2Utils.a(1, ((StringBuilder)localObject).toString());
-          paramCaptureResult = this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
+          paramCaptureResult = this.a;
           if (paramCaptureResult != null) {
-            paramCaptureResult.d();
+            paramCaptureResult.j();
           }
         }
       }
@@ -72,7 +72,7 @@ public class CaptureStateCallBack
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
@@ -87,7 +87,7 @@ public class CaptureStateCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.CaptureStateCallBack
  * JD-Core Version:    0.7.0.1
  */

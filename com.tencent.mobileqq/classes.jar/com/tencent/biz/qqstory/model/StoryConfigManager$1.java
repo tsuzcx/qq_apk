@@ -17,19 +17,19 @@ class StoryConfigManager$1
     if ((paramPublishConfigResponse != null) && (paramErrorMessage.isSuccess()))
     {
       StoryConfigManager.a(this.a, System.currentTimeMillis());
-      this.a.b("show_now_entry", Boolean.valueOf(paramPublishConfigResponse.a));
-      this.a.b("publish_picture", Boolean.valueOf(paramPublishConfigResponse.b));
-      if (paramPublishConfigResponse.c) {
-        this.a.b("first_time_pic", Boolean.valueOf(paramPublishConfigResponse.c));
+      this.a.d("show_now_entry", Boolean.valueOf(paramPublishConfigResponse.a));
+      this.a.d("publish_picture", Boolean.valueOf(paramPublishConfigResponse.b));
+      if (paramPublishConfigResponse.e) {
+        this.a.d("first_time_pic", Boolean.valueOf(paramPublishConfigResponse.e));
       }
-      this.a.b("upload_video_use_bdh", Boolean.valueOf(paramPublishConfigResponse.d));
+      this.a.d("upload_video_use_bdh", Boolean.valueOf(paramPublishConfigResponse.f));
     }
     StoryDispatcher.a().dispatch(new StoryConfigManager.StoryConfigEvent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

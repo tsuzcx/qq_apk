@@ -15,12 +15,12 @@ public class QQComicConfigApiImpl
 {
   public List<ComicCancelRedPointPopItemData> getCancelRedPointDialogDefaultData()
   {
-    return QQComicConfBean.a().list;
+    return QQComicConfBean.e().list;
   }
   
   public int getCancelRedPointPopDayCount()
   {
-    return QQComicConfBean.a().dayCount;
+    return QQComicConfBean.e().dayCount;
   }
   
   public int getReaderPreloadNum()
@@ -40,32 +40,27 @@ public class QQComicConfigApiImpl
   
   public boolean isEnableCancelRedPointDataCache()
   {
-    return QQComicConfBean.a().enableLocalCache == 1;
-  }
-  
-  public boolean isEnableNewReader()
-  {
-    return QQComicConfBean.a().enableNewVersion;
+    return QQComicConfBean.e().enableLocalCache == 1;
   }
   
   public boolean isEnableShowCancelRedPointDialog()
   {
-    return QQComicConfBean.a().popSwitch == 1;
+    return QQComicConfBean.e().popSwitch == 1;
   }
   
   public boolean isIgnoreInteractiveControll()
   {
-    return QQComicConfBean.a().ignoreInteractiveControll == 1;
+    return QQComicConfBean.e().ignoreInteractiveControll == 1;
   }
   
   public boolean isIgnoreReddotControll()
   {
-    return QQComicConfBean.a().ignoreRedDot == 1;
+    return QQComicConfBean.e().ignoreRedDot == 1;
   }
   
   public boolean isMatched(String paramString)
   {
-    return QQComicConfBean.a().a(paramString);
+    return QQComicConfBean.d().a(paramString);
   }
   
   public boolean isReaderEnablePreload()
@@ -80,12 +75,12 @@ public class QQComicConfigApiImpl
   
   public boolean launchIfMatched(String paramString, Context paramContext, int paramInt, AppInterface paramAppInterface)
   {
-    return QQComicConfBean.a().a(paramString, paramContext, paramInt, paramAppInterface);
+    return QQComicConfBean.d().a(paramString, paramContext, paramInt, paramAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.api.impl.QQComicConfigApiImpl
  * JD-Core Version:    0.7.0.1
  */

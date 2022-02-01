@@ -13,13 +13,13 @@ public abstract interface MediaPlayerManager$Listener
   
   public abstract void c(int paramInt);
   
-  public abstract void d();
-  
   public abstract void e();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.MediaPlayerManager.Listener
  * JD-Core Version:    0.7.0.1
  */

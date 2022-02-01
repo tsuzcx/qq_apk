@@ -31,11 +31,10 @@ import com.tencent.mobileqq.kandian.biz.comment.handler.FirstCommentSinkHandler;
 import com.tencent.mobileqq.kandian.biz.comment.handler.FirstCommentStickyHandler;
 import com.tencent.mobileqq.kandian.biz.comment.handler.PatrolArbitrationHandler;
 import com.tencent.mobileqq.kandian.biz.comment.util.api.IRIJCommentNetworkHelper.RIJCreateCommentObserver;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicManager;
 import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicLong;
@@ -55,14 +54,8 @@ import org.json.JSONObject;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/comment/helper/RIJCommentNetworkHelper;", "", "()V", "TAG", "", "seqFactory", "Ljava/util/concurrent/atomic/AtomicLong;", "authorDeleteComment", "", "contentSrc", "", "commentViewItem", "Lcom/tencent/mobileqq/kandian/biz/comment/data/CommentViewItem;", "feedsType", "callback", "Lcom/tencent/mobileqq/kandian/biz/comment/ReadInJoyCommentObserver;", "blockUserComment", "Lcom/tencent/mobileqq/kandian/biz/comment/ReadInJoyCommentBubbleObserver;", "checkErrorCode", "errorCode", "createFirstComment", "", "requestData", "Lcom/tencent/mobileqq/kandian/biz/comment/entity/FirstCommentCreateData;", "Lcom/tencent/mobileqq/kandian/biz/comment/util/api/IRIJCommentNetworkHelper$RIJCreateCommentObserver;", "commentJsonStr", "isFeeds", "", "needBiuAfterComment", "createFirstCommentForHippy", "Lcom/tencent/mobileqq/kandian/biz/comment/helper/RIJCommentNetworkHelper$RIJCreateCommentForHippyObserver;", "extraParam", "createSubComment", "Lcom/tencent/mobileqq/kandian/biz/comment/entity/SubCommentCreateData;", "createSubCommentForHippy", "doCreateCommentReport", "consumeTime", "getCommentIds", "Lkotlin/Pair;", "commentData", "Lcom/tencent/mobileqq/kandian/biz/comment/entity/BaseCommentData;", "getCurrentUin", "patrolArbitration", "sendIsCopyMessageTo0xdc8", "commentContent", "rowKey", "parentCommentId", "subCommentId", "commentId", "sinkComment", "commentSinkData", "Lcom/tencent/mobileqq/kandian/biz/comment/entity/FirstCommentSinkData;", "updateCommentStickyStatus", "commentStickyData", "Lcom/tencent/mobileqq/kandian/biz/comment/entity/FirstCommentStickyData;", "RIJCreateCommentForHippyObserver", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJCommentNetworkHelper
 {
-  public static final RIJCommentNetworkHelper a;
-  private static final AtomicLong a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizCommentHelperRIJCommentNetworkHelper = new RIJCommentNetworkHelper();
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
-  }
+  public static final RIJCommentNetworkHelper a = new RIJCommentNetworkHelper();
+  private static final AtomicLong b = new AtomicLong(0L);
   
   private final String a()
   {
@@ -106,11 +99,11 @@ public final class RIJCommentNetworkHelper
   {
     if (paramInt == -4096)
     {
-      QQToast localQQToast = QQToast.a((Context)BaseApplicationImpl.sApplication, (CharSequence)HardCodeUtil.a(2131717807), 1);
+      QQToast localQQToast = QQToast.makeText((Context)BaseApplicationImpl.sApplication, (CharSequence)HardCodeUtil.a(2131915282), 1);
       Intrinsics.checkExpressionValueIsNotNull(localQQToast, "QQToast.makeText(\n      …     QQToast.LENGTH_LONG)");
-      localQQToast.b(1);
-      localQQToast.a(QQToast.a(1));
-      localQQToast.a();
+      localQQToast.setType(1);
+      localQQToast.setToastIcon(QQToast.getIconRes(1));
+      localQQToast.show();
     }
   }
   
@@ -120,13 +113,13 @@ public final class RIJCommentNetworkHelper
     localJSONObject.put("retCode", paramInt);
     localJSONObject.put("os", 1);
     localJSONObject.put("consume_time", paramLong);
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009A35", "0X8009A35", 0, 0, "", "", "", localJSONObject.toString(), false);
+    PublicAccountReportUtils.a(null, "", "0X8009A35", "0X8009A35", 0, 0, "", "", "", localJSONObject.toString(), false);
     ReadinjoyReportUtils.a(paramInt, 7, paramLong, null);
   }
   
   private final void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (ReadInJoyCommentUtils.a((Context)BaseApplicationImpl.getContext(), paramString1))
+    if (ReadInJoyCommentUtils.b((Context)BaseApplicationImpl.getContext(), paramString1))
     {
       if (QLog.isColorLevel())
       {
@@ -155,7 +148,7 @@ public final class RIJCommentNetworkHelper
         ReadInJoyLogicEngine localReadInJoyLogicEngine = ((ReadInJoyLogicManager)paramString1).getReadInJoyLogicEngine();
         paramString1 = localStringBuilder;
         if (localReadInJoyLogicEngine != null) {
-          paramString1 = localReadInJoyLogicEngine.a();
+          paramString1 = localReadInJoyLogicEngine.k();
         }
         if (paramString1 != null) {
           paramString1.a(paramString2, paramString3, paramString4, paramString5);
@@ -171,7 +164,7 @@ public final class RIJCommentNetworkHelper
   public final long a(@NotNull FirstCommentCreateData paramFirstCommentCreateData, @Nullable IRIJCommentNetworkHelper.RIJCreateCommentObserver paramRIJCreateCommentObserver, @Nullable String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     Intrinsics.checkParameterIsNotNull(paramFirstCommentCreateData, "requestData");
-    long l1 = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement();
+    long l1 = b.getAndIncrement();
     long l2 = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
@@ -190,7 +183,7 @@ public final class RIJCommentNetworkHelper
   public final long a(@NotNull SubCommentCreateData paramSubCommentCreateData, @Nullable IRIJCommentNetworkHelper.RIJCreateCommentObserver paramRIJCreateCommentObserver, @Nullable String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     Intrinsics.checkParameterIsNotNull(paramSubCommentCreateData, "requestData");
-    long l1 = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement();
+    long l1 = b.getAndIncrement();
     long l2 = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
@@ -210,7 +203,7 @@ public final class RIJCommentNetworkHelper
   {
     Intrinsics.checkParameterIsNotNull(paramCommentViewItem, "commentViewItem");
     Intrinsics.checkParameterIsNotNull(paramReadInJoyCommentObserver, "callback");
-    Object localObject1 = paramCommentViewItem.a;
+    Object localObject1 = paramCommentViewItem.c;
     if (localObject1 != null)
     {
       SimpleCommentData localSimpleCommentData = new SimpleCommentData(paramInt1, "");
@@ -229,7 +222,7 @@ public final class RIJCommentNetworkHelper
   {
     Intrinsics.checkParameterIsNotNull(paramCommentViewItem, "commentViewItem");
     Intrinsics.checkParameterIsNotNull(paramReadInJoyCommentBubbleObserver, "callback");
-    Object localObject = paramCommentViewItem.a;
+    Object localObject = paramCommentViewItem.c;
     if (localObject != null)
     {
       localObject = a((BaseCommentData)localObject);
@@ -324,7 +317,7 @@ public final class RIJCommentNetworkHelper
   {
     Intrinsics.checkParameterIsNotNull(paramCommentViewItem, "commentViewItem");
     Intrinsics.checkParameterIsNotNull(paramReadInJoyCommentBubbleObserver, "callback");
-    Object localObject1 = paramCommentViewItem.a;
+    Object localObject1 = paramCommentViewItem.c;
     if (localObject1 != null)
     {
       Object localObject2 = a((BaseCommentData)localObject1);
@@ -342,7 +335,7 @@ public final class RIJCommentNetworkHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkHelper
  * JD-Core Version:    0.7.0.1
  */

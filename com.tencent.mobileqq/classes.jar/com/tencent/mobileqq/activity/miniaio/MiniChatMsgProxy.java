@@ -11,8 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MiniChatMsgProxy
 {
-  private static final MiniChatMsgProxy jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatMsgProxy = new MiniChatMsgProxy();
-  private Map<String, List<WeakReference<IChatWindow>>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private static final MiniChatMsgProxy a = new MiniChatMsgProxy();
+  private Map<String, List<WeakReference<IChatWindow>>> b = new ConcurrentHashMap();
   
   private int a(List<WeakReference<IChatWindow>> paramList, IChatWindow paramIChatWindow)
   {
@@ -34,7 +34,7 @@ public class MiniChatMsgProxy
   
   public static MiniChatMsgProxy a()
   {
-    return jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatMsgProxy;
+    return a;
   }
   
   public void a(int paramInt, String paramString, IChatWindow paramIChatWindow)
@@ -42,12 +42,12 @@ public class MiniChatMsgProxy
     try
     {
       String str = UinTypeUtil.a(paramString, paramInt);
-      List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(str);
+      List localList = (List)this.b.get(str);
       paramString = localList;
       if (localList == null)
       {
         paramString = new ArrayList(2);
-        this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
+        this.b.put(str, paramString);
       }
       if (a(paramString, paramIChatWindow) < 0) {
         paramString.add(new WeakReference(paramIChatWindow));
@@ -63,7 +63,7 @@ public class MiniChatMsgProxy
     try
     {
       paramString = UinTypeUtil.a(paramString, paramInt);
-      paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      paramString = (List)this.b.get(paramString);
       boolean bool1 = bool2;
       if (paramString != null)
       {
@@ -103,7 +103,7 @@ public class MiniChatMsgProxy
     try
     {
       paramString = UinTypeUtil.a(paramString, paramInt);
-      paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      paramString = (List)this.b.get(paramString);
       if ((paramString != null) && (paramString.size() > 0) && (paramIChatWindow != null))
       {
         paramInt = a(paramString, paramIChatWindow);
@@ -118,7 +118,7 @@ public class MiniChatMsgProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatMsgProxy
  * JD-Core Version:    0.7.0.1
  */

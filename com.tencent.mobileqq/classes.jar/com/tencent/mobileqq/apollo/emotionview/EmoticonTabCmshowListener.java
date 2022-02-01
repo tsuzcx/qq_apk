@@ -21,23 +21,16 @@ import mqq.app.AppRuntime;
 public class EmoticonTabCmshowListener
   implements IEmotionTabCreateListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private IEmoticonMainPanelApp jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanelApp;
-  private boolean jdField_a_of_type_Boolean = false;
+  private Context a;
+  private IEmoticonMainPanelApp b;
+  private ImageView c;
+  private int d = -1;
+  private boolean e = false;
   
   public EmoticonTabCmshowListener(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanelApp = paramIEmoticonMainPanelApp;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public static void a(Context paramContext)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt("apollo_emoji_tab_cmshow_first_red_dot", 1);
-    paramContext.commit();
+    this.b = paramIEmoticonMainPanelApp;
+    this.a = paramContext;
   }
   
   public static boolean a(Context paramContext)
@@ -50,24 +43,31 @@ public class EmoticonTabCmshowListener
     return bool;
   }
   
+  public static void b(Context paramContext)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putInt("apollo_emoji_tab_cmshow_first_red_dot", 1);
+    paramContext.commit();
+  }
+  
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (this.c != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanelApp;
+      Object localObject = this.b;
       if (localObject != null)
       {
         if (((IEmoticonMainPanelApp)localObject).getQQAppInterface() == null) {
           return;
         }
-        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_AndroidContentContext);
-        if (this.jdField_a_of_type_Boolean)
+        this.e = a(this.a);
+        if (this.e)
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.c.setVisibility(0);
           QLog.i("EmoticonTabAdapter", 1, "updateCmShowRedDot");
           return;
         }
-        localObject = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanelApp.getQQAppInterface().getRuntimeService(IRedTouchManager.class, "");
+        localObject = (IRedTouchManager)this.b.getQQAppInterface().getRuntimeService(IRedTouchManager.class, "");
         BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)localObject).getAppInfoByPath("130105001");
         if (localAppInfo == null) {
           return;
@@ -78,46 +78,46 @@ public class EmoticonTabCmshowListener
         QLog.i("EmoticonTabAdapter", 1, localStringBuilder.toString());
         if (localAppInfo.iNewFlag.get() == 1)
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.c.setVisibility(0);
           ((IRedTouchManager)localObject).onRedTouchItemExposure(localAppInfo, "");
           return;
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.c.setVisibility(8);
       }
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (this.c != null)
     {
-      IEmoticonMainPanelApp localIEmoticonMainPanelApp = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanelApp;
+      IEmoticonMainPanelApp localIEmoticonMainPanelApp = this.b;
       if ((localIEmoticonMainPanelApp != null) && (localIEmoticonMainPanelApp.getQQAppInterface() != null))
       {
-        if (this.jdField_a_of_type_Int != paramInt) {
+        if (this.d != paramInt) {
           return;
         }
         QLog.i("EmoticonTabAdapter", 1, "onCmShowRedDotClick");
-        if (this.jdField_a_of_type_Boolean) {
-          a(this.jdField_a_of_type_AndroidContentContext);
+        if (this.e) {
+          b(this.a);
         }
-        ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanelApp.getQQAppInterface().getRuntimeService(IRedTouchManager.class, "")).onRedTouchItemClick("130105001");
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).report("aio", "emojicmtab", "click", new DtReportParamsBuilder().h(EmoticonPanelCmShowHelper.a()).a());
+        ((IRedTouchManager)this.b.getQQAppInterface().getRuntimeService(IRedTouchManager.class, "")).onRedTouchItemClick("130105001");
+        this.c.setVisibility(8);
+        ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).report("aio", "emojicmtab", "click", new DtReportParamsBuilder().k(EmoticonPanelCmShowHelper.a()).b(Integer.valueOf(EmoticonPanelCmShowHelper.b())).a());
       }
     }
   }
   
   public void onCreateTabView(View paramView, URLImageView paramURLImageView, ImageView paramImageView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramImageView;
+    this.d = paramInt;
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.emotionview.EmoticonTabCmshowListener
  * JD-Core Version:    0.7.0.1
  */

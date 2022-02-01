@@ -16,12 +16,12 @@ class AppBrandLaunchManager$7
     localStringBuilder.append("启动失败, scene未知");
     localStringBuilder.append(this.val$appConfig.toString());
     QLog.e("miniapp-process_AppBrandLaunchManager", 1, localStringBuilder.toString());
-    QQToast.a(AppBrandLaunchManager.access$000(this.this$0), HardCodeUtil.a(2131700820), 2000).a();
+    QQToast.makeText(AppBrandLaunchManager.access$000(this.this$0), HardCodeUtil.a(2131898845), 2000).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.7
  * JD-Core Version:    0.7.0.1
  */

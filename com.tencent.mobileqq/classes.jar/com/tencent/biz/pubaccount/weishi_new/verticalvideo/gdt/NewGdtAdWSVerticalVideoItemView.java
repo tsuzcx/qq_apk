@@ -11,45 +11,45 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalVide
 public class NewGdtAdWSVerticalVideoItemView
   extends GdtAdWSVerticalVideoItemView
 {
-  private AbsWsUIGroup<WSVerticalItemData> a;
+  private AbsWsUIGroup<WSVerticalItemData> i;
   
   public NewGdtAdWSVerticalVideoItemView(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
     super(paramContext, paramWSVerticalVideoHolder);
   }
   
-  private void e()
+  private void l()
   {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380777);
+    ViewStub localViewStub = (ViewStub)this.h.findViewById(2131449747);
     localViewStub.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup = new GdtAdWSVerticalItemBottomUserController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.a(localViewStub);
-    a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup);
+    this.i = new GdtAdWSVerticalItemBottomUserController(this.g, this.f);
+    this.i.a(localViewStub);
+    a(this.i);
   }
   
   public void a()
   {
     super.a();
-    AbsWsUIGroup localAbsWsUIGroup = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup;
+    AbsWsUIGroup localAbsWsUIGroup = this.i;
     if (localAbsWsUIGroup != null) {
-      localAbsWsUIGroup.d();
+      localAbsWsUIGroup.g();
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
   }
   
   public void b()
   {
     super.b();
-    e();
+    l();
+  }
+  
+  public boolean e()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.NewGdtAdWSVerticalVideoItemView
  * JD-Core Version:    0.7.0.1
  */

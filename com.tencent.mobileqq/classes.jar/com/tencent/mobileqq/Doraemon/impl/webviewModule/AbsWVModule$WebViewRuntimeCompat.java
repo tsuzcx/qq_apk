@@ -24,16 +24,11 @@ public class AbsWVModule$WebViewRuntimeCompat
     this.c = new WeakReference(paramActivity);
   }
   
-  public Activity a()
-  {
-    return (Activity)this.c.get();
-  }
-  
   public CustomWebView a()
   {
     if (this.a == null)
     {
-      WebViewFragment localWebViewFragment = a();
+      WebViewFragment localWebViewFragment = e();
       if (localWebViewFragment != null) {
         this.a = new WeakReference(localWebViewFragment.getWebView());
       } else {
@@ -43,7 +38,7 @@ public class AbsWVModule$WebViewRuntimeCompat
     return (CustomWebView)this.a.get();
   }
   
-  public AppInterface a()
+  public AppInterface b()
   {
     if (this.b == null)
     {
@@ -59,25 +54,30 @@ public class AbsWVModule$WebViewRuntimeCompat
     return (AppInterface)this.b.get();
   }
   
-  public WebUiBaseInterface a()
+  public Activity c()
+  {
+    return (Activity)this.c.get();
+  }
+  
+  public WebUiBaseInterface d()
   {
     if (this.d == null)
     {
-      Activity localActivity = a();
+      Activity localActivity = c();
       if ((localActivity instanceof WebUiBaseInterface)) {
         this.d = new WeakReference((WebUiBaseInterface)localActivity);
       } else {
-        this.d = new WeakReference(a());
+        this.d = new WeakReference(e());
       }
     }
     return (WebUiBaseInterface)this.d.get();
   }
   
-  public WebViewFragment a()
+  public WebViewFragment e()
   {
     if (this.e == null)
     {
-      Activity localActivity = a();
+      Activity localActivity = c();
       if ((localActivity instanceof SwiftWebViewFragmentSupporter)) {
         this.e = new WeakReference(((SwiftWebViewFragmentSupporter)localActivity).getCurrentWebViewFragment());
       } else {
@@ -89,7 +89,7 @@ public class AbsWVModule$WebViewRuntimeCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.webviewModule.AbsWVModule.WebViewRuntimeCompat
  * JD-Core Version:    0.7.0.1
  */

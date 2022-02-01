@@ -9,13 +9,13 @@ import com.tencent.ttpic.openapi.filter.GLGestureListener;
 public class CameraTriggerGesture
   implements GLGestureListener
 {
-  private int jdField_a_of_type_Int = 0;
-  GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
+  GLSurfaceView a;
+  private int b = 0;
   
   public CameraTriggerGesture(GLSurfaceView paramGLSurfaceView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
+    this.b = paramInt;
+    this.a = paramGLSurfaceView;
   }
   
   public int onGetPriority()
@@ -28,36 +28,44 @@ public class CameraTriggerGesture
     if (paramMotionEvent.getPointerCount() > 2) {
       return false;
     }
+    if (!(this.a instanceof AECameraGLSurfaceView)) {
+      return false;
+    }
     AEQLog.a("GLGestureListener", "[gestureFix][CameraTriggerGesture]:onTouchEvent");
     int i = paramMotionEvent.getAction() & 0xFF;
-    GLSurfaceView localGLSurfaceView;
-    if (i != 1)
+    AECameraGLSurfaceView localAECameraGLSurfaceView = (AECameraGLSurfaceView)this.a;
+    paramBoolean = localAECameraGLSurfaceView.hasTouchEffect();
+    boolean bool = localAECameraGLSurfaceView.hasTapEffect();
+    if (paramBoolean)
     {
-      if (i != 6) {
-        return false;
-      }
-      localGLSurfaceView = this.jdField_a_of_type_AndroidOpenglGLSurfaceView;
-      if (((localGLSurfaceView instanceof AECameraGLSurfaceView)) && (((AECameraGLSurfaceView)localGLSurfaceView).hasTapEffect()))
-      {
-        ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setTapEvent(100, paramMotionEvent.getX(1) + paramMotionEvent.getRawX() - paramMotionEvent.getX(0), paramMotionEvent.getY(1) + paramMotionEvent.getRawY() - paramMotionEvent.getY(0));
-        return true;
-      }
+      localAECameraGLSurfaceView.updateTouchEvent(paramMotionEvent);
+      paramBoolean = true;
     }
     else
     {
-      localGLSurfaceView = this.jdField_a_of_type_AndroidOpenglGLSurfaceView;
-      if (((localGLSurfaceView instanceof AECameraGLSurfaceView)) && (((AECameraGLSurfaceView)localGLSurfaceView).hasTapEffect()))
+      paramBoolean = false;
+    }
+    if (bool) {
+      if (i != 1)
       {
-        ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setTapEvent(100, paramMotionEvent.getX(), paramMotionEvent.getY() - this.jdField_a_of_type_Int);
+        if (i == 6)
+        {
+          localAECameraGLSurfaceView.setTapEvent(100, paramMotionEvent.getX(1) + paramMotionEvent.getRawX() - paramMotionEvent.getX(0), paramMotionEvent.getY(1) + paramMotionEvent.getRawY() - paramMotionEvent.getY(0));
+          return true;
+        }
+      }
+      else
+      {
+        localAECameraGLSurfaceView.setTapEvent(100, paramMotionEvent.getX(), paramMotionEvent.getY() - this.b);
         return true;
       }
     }
-    return false;
+    return paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gesture.CameraTriggerGesture
  * JD-Core Version:    0.7.0.1
  */

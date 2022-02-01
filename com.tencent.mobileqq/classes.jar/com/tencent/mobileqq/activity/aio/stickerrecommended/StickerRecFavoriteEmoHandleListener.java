@@ -18,12 +18,11 @@ import java.util.List;
 public class StickerRecFavoriteEmoHandleListener
   extends BaseLocalEmoticonHandleListener
 {
-  private Collection<String> a;
+  private Collection<String> b = null;
   
   public StickerRecFavoriteEmoHandleListener(BaseQQAppInterface paramBaseQQAppInterface)
   {
     super(paramBaseQQAppInterface);
-    this.jdField_a_of_type_JavaUtilCollection = null;
   }
   
   public List<? extends IStickerRecEmoticon> a(String paramString, BaseSessionInfo paramBaseSessionInfo)
@@ -35,9 +34,9 @@ public class StickerRecFavoriteEmoHandleListener
       QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite emoticon search start.");
     }
     paramBaseSessionInfo = new ArrayList();
-    IEmoticonManagerService localIEmoticonManagerService = (IEmoticonManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IEmoticonManagerService.class);
-    Object localObject1 = (IFavroamingDBManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IFavroamingDBManagerService.class);
-    StickerRecManagerImpl localStickerRecManagerImpl = StickerRecManagerImpl.get(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+    IEmoticonManagerService localIEmoticonManagerService = (IEmoticonManagerService)this.a.getRuntimeService(IEmoticonManagerService.class);
+    Object localObject1 = (IFavroamingDBManagerService)this.a.getRuntimeService(IFavroamingDBManagerService.class);
+    StickerRecManagerImpl localStickerRecManagerImpl = StickerRecManagerImpl.get(this.a);
     localObject1 = ((IFavroamingDBManagerService)localObject1).getEmoticonDataList();
     if (localObject1 != null)
     {
@@ -56,17 +55,17 @@ public class StickerRecFavoriteEmoHandleListener
         if (("isUpdate".equals(((CustomEmotionData)localObject2).RomaingType)) || ("needDownload".equals(((CustomEmotionData)localObject2).RomaingType)) || ("overflow".equals(((CustomEmotionData)localObject2).RomaingType)) || ("overflow_downloaded".equals(((CustomEmotionData)localObject2).RomaingType))) {
           if ((!TextUtils.isEmpty(((CustomEmotionData)localObject2).modifyWord)) && (paramString.equals(localStickerRecManagerImpl.preProcessUsrTextUseLocalSearch(((CustomEmotionData)localObject2).modifyWord))))
           {
-            paramBaseSessionInfo.add(new StickerRecFavoriteData(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (CustomEmotionData)localObject2));
+            paramBaseSessionInfo.add(new StickerRecFavoriteData(this.a, (CustomEmotionData)localObject2));
           }
           else if ((!TextUtils.isEmpty(((CustomEmotionData)localObject2).ocrWord)) && (paramString.equals(localStickerRecManagerImpl.preProcessUsrTextUseLocalSearch(((CustomEmotionData)localObject2).ocrWord))))
           {
-            paramBaseSessionInfo.add(new StickerRecFavoriteData(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (CustomEmotionData)localObject2));
+            paramBaseSessionInfo.add(new StickerRecFavoriteData(this.a, (CustomEmotionData)localObject2));
           }
           else if (((CustomEmotionData)localObject2).isMarkFace)
           {
             Emoticon localEmoticon = localIEmoticonManagerService.syncFindEmoticonById(((CustomEmotionData)localObject2).emoPath, ((CustomEmotionData)localObject2).eId);
             if ((localEmoticon != null) && (!TextUtils.isEmpty(localEmoticon.name)) && (paramString.equals(localStickerRecManagerImpl.preProcessUsrTextUseLocalSearch(localEmoticon.name)))) {
-              paramBaseSessionInfo.add(new StickerRecFavoriteData(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (CustomEmotionData)localObject2));
+              paramBaseSessionInfo.add(new StickerRecFavoriteData(this.a, (CustomEmotionData)localObject2));
             }
           }
         }
@@ -88,24 +87,24 @@ public class StickerRecFavoriteEmoHandleListener
   
   public void a()
   {
-    StickerRecManagerImpl localStickerRecManagerImpl = StickerRecManagerImpl.get(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+    StickerRecManagerImpl localStickerRecManagerImpl = StickerRecManagerImpl.get(this.a);
     if (localStickerRecManagerImpl != null) {
-      this.jdField_a_of_type_JavaUtilCollection = localStickerRecManagerImpl.loadKeywordForFavEmotion();
+      this.b = localStickerRecManagerImpl.loadKeywordForFavEmotion();
     }
   }
   
   public boolean a(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilCollection == null) {
+    if (this.b == null) {
       a();
     }
-    paramBaseQQAppInterface = this.jdField_a_of_type_JavaUtilCollection;
+    paramBaseQQAppInterface = this.b;
     return (paramBaseQQAppInterface != null) && (paramBaseQQAppInterface.contains(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecFavoriteEmoHandleListener
  * JD-Core Version:    0.7.0.1
  */

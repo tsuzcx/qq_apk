@@ -4,8 +4,8 @@ import com.tencent.mobileqq.statistics.ReportController;
 
 public class FloatingScreenReporter
 {
-  private static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long;
+  private static int a;
+  private static long b;
   
   public static int a(int paramInt)
   {
@@ -29,12 +29,7 @@ public class FloatingScreenReporter
   
   public static void a()
   {
-    jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public static void a(int paramInt)
-  {
-    ReportController.b(null, "dc00898", "", "", "0X800A496", "0X800A496", paramInt, 0, String.valueOf(paramInt), "", "", "");
+    b = System.currentTimeMillis();
   }
   
   public static void b()
@@ -44,8 +39,7 @@ public class FloatingScreenReporter
   
   public static void b(int paramInt)
   {
-    jdField_a_of_type_Int = paramInt;
-    ReportController.b(null, "dc00898", "", "", "0X800A20B", "0X800A20B", paramInt, 0, String.valueOf(paramInt), "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800A496", "0X800A496", paramInt, 0, String.valueOf(paramInt), "", "", "");
   }
   
   public static void c()
@@ -55,55 +49,61 @@ public class FloatingScreenReporter
   
   public static void c(int paramInt)
   {
-    ReportController.b(null, "dc00898", "", "", "0X800A87C", "0X800A87C", jdField_a_of_type_Int, 0, String.valueOf(paramInt / 1000), "", "", "");
+    a = paramInt;
+    ReportController.b(null, "dc00898", "", "", "0X800A20B", "0X800A20B", paramInt, 0, String.valueOf(paramInt), "", "", "");
   }
   
   public static void d()
   {
     ReportController.b(null, "dc00898", "", "", "0X800A20C", "0X800A20C", 0, 0, "", "", "", "");
-    d(1);
+    e(1);
   }
   
   public static void d(int paramInt)
   {
-    if (jdField_a_of_type_Long == 0L) {
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = jdField_a_of_type_Long;
-    jdField_a_of_type_Long = 0L;
-    ReportController.b(null, "dc00898", "", "", "0X800A87D", "0X800A87D", paramInt, 0, String.valueOf((l1 - l2) / 1000L), "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800A87C", "0X800A87C", a, 0, String.valueOf(paramInt / 1000), "", "", "");
   }
   
   public static void e()
   {
     ReportController.b(null, "dc00898", "", "", "0X800A20D", "0X800A20D", 0, 0, "", "", "", "");
-    d(2);
+    e(2);
     a();
   }
   
   public static void e(int paramInt)
   {
-    if (jdField_a_of_type_Long == 0L) {
+    if (b == 0L) {
       return;
     }
     long l1 = System.currentTimeMillis();
-    long l2 = jdField_a_of_type_Long;
-    jdField_a_of_type_Long = 0L;
-    ReportController.b(null, "dc00898", "", "", "0X800A87E", "0X800A87E", paramInt, 0, String.valueOf((l1 - l2) / 1000L), "", "", "");
+    long l2 = b;
+    b = 0L;
+    ReportController.b(null, "dc00898", "", "", "0X800A87D", "0X800A87D", paramInt, 0, String.valueOf((l1 - l2) / 1000L), "", "", "");
   }
   
   public static void f()
   {
     ReportController.b(null, "dc00898", "", "", "0X800A20E", "0X800A20E", 0, 0, "", "", "", "");
-    e(2);
+    f(2);
     a();
+  }
+  
+  public static void f(int paramInt)
+  {
+    if (b == 0L) {
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = b;
+    b = 0L;
+    ReportController.b(null, "dc00898", "", "", "0X800A87E", "0X800A87E", paramInt, 0, String.valueOf((l1 - l2) / 1000L), "", "", "");
   }
   
   public static void g()
   {
     ReportController.b(null, "dc00898", "", "", "0X800A20F", "0X800A20F", 0, 0, "", "", "", "");
-    e(1);
+    f(1);
   }
   
   public static void h()
@@ -113,23 +113,23 @@ public class FloatingScreenReporter
   
   public static void i()
   {
-    ReportController.b(null, "dc00898", "", "", "0X800A87F", "0X800A87F", jdField_a_of_type_Int, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800A87F", "0X800A87F", a, 0, "", "", "", "");
   }
   
   public static void j()
   {
-    ReportController.b(null, "dc00898", "", "", "0X800A880", "0X800A880", jdField_a_of_type_Int, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800A880", "0X800A880", a, 0, "", "", "", "");
   }
   
   public static void k()
   {
-    ReportController.b(null, "dc00898", "", "", "0X800A881", "0X800A881", jdField_a_of_type_Int, 0, "", "", "", "");
-    e(1);
+    ReportController.b(null, "dc00898", "", "", "0X800A881", "0X800A881", a, 0, "", "", "", "");
+    f(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.FloatingScreenReporter
  * JD-Core Version:    0.7.0.1
  */

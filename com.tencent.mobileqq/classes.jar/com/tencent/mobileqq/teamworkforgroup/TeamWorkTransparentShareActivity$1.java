@@ -13,24 +13,24 @@ class TeamWorkTransparentShareActivity$1
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
+    if (!this.a.equals(paramBaseResp.transaction)) {
       return;
     }
     BaseApplicationImpl.getContext();
     int i = paramBaseResp.errCode;
     if (i != -2) {
       if (i != 0) {
-        QRUtils.a(1, 2131719009);
+        QRUtils.a(1, 2131916544);
       } else {
-        QRUtils.a(2, 2131719027);
+        QRUtils.a(2, 2131916563);
       }
     }
-    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkTransparentShareActivity.a);
+    WXShareHelper.a().b(this.b.m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TeamWorkTransparentShareActivity.1
  * JD-Core Version:    0.7.0.1
  */

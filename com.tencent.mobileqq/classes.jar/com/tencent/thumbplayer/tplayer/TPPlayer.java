@@ -84,6 +84,7 @@ public class TPPlayer
   private static final int MSG_ON_PROXY_CDN_URL_EXPIRED = 275;
   private static final int MSG_ON_PROXY_DOWN_LOAD_STATUS_UPDATE = 272;
   private static final int MSG_ON_PROXY_NO_MORE_DATA = 276;
+  private static final int MSG_ON_PROXY_PCDN_FAILED = 282;
   private static final int MSG_ON_PROXY_PLAYERROR = 268;
   private static final int MSG_ON_PROXY_PLAY_CDN_INFO_UPDATE = 270;
   private static final int MSG_ON_PROXY_PLAY_CDN_URL_UPDATE = 269;
@@ -328,15 +329,15 @@ public class TPPlayer
   
   private void handlePlayerCallback(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    Object localObject = this.mTransformCallbackHandler;
-    if (localObject != null)
+    TPPlayer.EventHandler localEventHandler = this.mTransformCallbackHandler;
+    if (localEventHandler != null)
     {
-      localObject = ((TPPlayer.EventHandler)localObject).obtainMessage();
-      ((Message)localObject).what = paramInt1;
-      ((Message)localObject).arg1 = paramInt2;
-      ((Message)localObject).arg2 = paramInt3;
-      ((Message)localObject).obj = paramObject;
-      this.mTransformCallbackHandler.sendMessage((Message)localObject);
+      Message localMessage = localEventHandler.obtainMessage();
+      localMessage.what = paramInt1;
+      localMessage.arg1 = paramInt2;
+      localMessage.arg2 = paramInt3;
+      localMessage.obj = paramObject;
+      localEventHandler.sendMessage(localMessage);
     }
   }
   
@@ -1006,6 +1007,7 @@ public class TPPlayer
   @TPThreadAnnotations.ThreadSwitch
   public void seekTo(int paramInt)
   {
+    ReportThumbPlayer.getInstance().seekTo(this, paramInt);
     TPBaseLogger localTPBaseLogger = this.mLogger;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(LOG_API_CALL_PREFIX);
@@ -1020,6 +1022,7 @@ public class TPPlayer
   @TPThreadAnnotations.ThreadSwitch
   public void seekTo(int paramInt1, int paramInt2)
   {
+    ReportThumbPlayer.getInstance().seekTo(this, paramInt1);
     TPBaseLogger localTPBaseLogger = this.mLogger;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(LOG_API_CALL_PREFIX);
@@ -1304,7 +1307,7 @@ public class TPPlayer
           {
             if (isUseProxyEnable())
             {
-              localObject1 = this.mPlayProxyManager.startDownloadPlay(paramString, null);
+              localObject1 = this.mPlayProxyManager.startDownloadPlay(paramString, paramMap);
               paramString = this.mLogger;
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("handleSetDataSource selfPlayerUrl=");
@@ -1359,6 +1362,7 @@ public class TPPlayer
   @TPThreadAnnotations.ThreadSwitch(checkObj=true, removeRepeat=true)
   public void setLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
   {
+    ReportThumbPlayer.getInstance().setLoopback(this, paramBoolean, paramLong1, paramLong2);
     TPBaseLogger localTPBaseLogger = this.mLogger;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(LOG_API_CALL_PREFIX);
@@ -1515,6 +1519,7 @@ public class TPPlayer
   @TPThreadAnnotations.ThreadSwitch(removeRepeat=true)
   public void setPlaySpeedRatio(float paramFloat)
   {
+    ReportThumbPlayer.getInstance().setPlaySpeedRatio(this, paramFloat);
     TPBaseLogger localTPBaseLogger = this.mLogger;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(LOG_API_CALL_PREFIX);
@@ -1901,7 +1906,7 @@ public class TPPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayer
  * JD-Core Version:    0.7.0.1
  */

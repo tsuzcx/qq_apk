@@ -15,15 +15,15 @@ import android.widget.Scroller;
 public class AccountPanelRootLayout
   extends RelativeLayout
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private AccountPanelRootLayout.AccountPanelRootLayoutListener jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = 0.0F;
-  private boolean jdField_b_of_type_Boolean = false;
+  private float a = 0.0F;
+  private float b = 0.0F;
   private boolean c = false;
+  private boolean d = false;
+  private Scroller e;
+  private AccountPanelRootLayout.AccountPanelRootLayoutListener f;
+  private int g = 0;
+  private boolean h = false;
+  private View i;
   
   public AccountPanelRootLayout(@NonNull Context paramContext)
   {
@@ -43,52 +43,36 @@ public class AccountPanelRootLayout
     b();
   }
   
-  private int a()
-  {
-    int i = 0;
-    int k;
-    for (int j = 0; i < getChildCount(); j = k)
-    {
-      View localView = getChildAt(i);
-      k = j;
-      if (localView.getVisibility() == 0) {
-        k = j + localView.getHeight();
-      }
-      i += 1;
-    }
-    return j / 3;
-  }
-  
   public static boolean a(View paramView, MotionEvent paramMotionEvent)
   {
     if (paramView == null) {
       return false;
     }
-    int i = (int)paramMotionEvent.getRawY();
-    int j = (int)paramMotionEvent.getRawX();
+    int j = (int)paramMotionEvent.getRawY();
+    int k = (int)paramMotionEvent.getRawX();
     paramMotionEvent = new int[2];
     paramView.getLocationOnScreen(paramMotionEvent);
-    int k = paramMotionEvent[0];
-    int m = paramMotionEvent[1];
-    int n = paramView.getMeasuredWidth();
-    int i1 = paramView.getMeasuredHeight();
-    return (i >= m) && (i <= i1 + m) && (j >= k) && (j <= n + k);
+    int m = paramMotionEvent[0];
+    int n = paramMotionEvent[1];
+    int i1 = paramView.getMeasuredWidth();
+    int i2 = paramView.getMeasuredHeight();
+    return (j >= n) && (j <= i2 + n) && (k >= m) && (k <= i1 + m);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-    this.jdField_a_of_type_Int = getResources().getDisplayMetrics().heightPixels;
+    this.e = new Scroller(getContext());
+    this.g = getResources().getDisplayMetrics().heightPixels;
   }
   
   private boolean b(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       return true;
     }
     if (a(paramView, paramMotionEvent))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
       return true;
     }
     return false;
@@ -96,20 +80,36 @@ public class AccountPanelRootLayout
   
   private void c()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131365166);
+    if (this.i == null) {
+      this.i = findViewById(2131431319);
     }
+  }
+  
+  private int getMaxScrollDistance()
+  {
+    int j = 0;
+    int m;
+    for (int k = 0; j < getChildCount(); k = m)
+    {
+      View localView = getChildAt(j);
+      m = k;
+      if (localView.getVisibility() == 0) {
+        m = k + localView.getHeight();
+      }
+      j += 1;
+    }
+    return k / 3;
   }
   
   public float a(float paramFloat)
   {
-    int i = (int)(getScrollY() + paramFloat);
-    if (i < 0) {
+    int j = (int)(getScrollY() + paramFloat);
+    if (j < 0) {
       return paramFloat;
     }
-    if (i >= 0)
+    if (j >= 0)
     {
-      AccountPanelRootLayout.AccountPanelRootLayoutListener localAccountPanelRootLayoutListener = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener;
+      AccountPanelRootLayout.AccountPanelRootLayoutListener localAccountPanelRootLayoutListener = this.f;
       if (localAccountPanelRootLayoutListener != null) {
         localAccountPanelRootLayoutListener.b();
       }
@@ -126,7 +126,7 @@ public class AccountPanelRootLayout
   
   public void a(int paramInt)
   {
-    Scroller localScroller = this.jdField_a_of_type_AndroidWidgetScroller;
+    Scroller localScroller = this.e;
     if (localScroller != null)
     {
       localScroller.startScroll(0, getScrollY(), 0, paramInt - getScrollY());
@@ -138,54 +138,54 @@ public class AccountPanelRootLayout
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
     float f1 = paramMotionEvent.getY();
     float f2 = paramMotionEvent.getX();
-    int i = paramMotionEvent.getAction();
-    if (i != 0)
+    int j = paramMotionEvent.getAction();
+    if (j != 0)
     {
-      if (i != 1) {
-        if (i != 2)
+      if (j != 1) {
+        if (j != 2)
         {
-          if (i != 3) {
+          if (j != 3) {
             return false;
           }
         }
         else
         {
-          if ((Math.abs(f2 - this.jdField_b_of_type_Float) > 5.0F) || (Math.abs(f1 - this.jdField_a_of_type_Float) > 5.0F)) {
-            this.jdField_b_of_type_Boolean = true;
+          if ((Math.abs(f2 - this.b) > 5.0F) || (Math.abs(f1 - this.a) > 5.0F)) {
+            this.d = true;
           }
-          this.jdField_b_of_type_Float = f2;
-          this.jdField_a_of_type_Float = f1;
+          this.b = f2;
+          this.a = f1;
           return true;
         }
       }
-      if (!this.jdField_b_of_type_Boolean) {
+      if (!this.d) {
         return super.dispatchTouchEvent(paramMotionEvent);
       }
       return true;
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = f1;
-    this.jdField_b_of_type_Float = f2;
+    this.d = false;
+    this.a = f1;
+    this.b = f2;
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public void computeScroll()
   {
     super.computeScroll();
-    Object localObject = this.jdField_a_of_type_AndroidWidgetScroller;
+    Object localObject = this.e;
     if ((localObject != null) && (((Scroller)localObject).computeScrollOffset()))
     {
-      scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
+      scrollTo(this.e.getCurrX(), this.e.getCurrY());
       invalidate();
       return;
     }
-    if (this.c)
+    if (this.h)
     {
-      this.c = false;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener;
+      this.h = false;
+      localObject = this.f;
       if (localObject != null) {
         ((AccountPanelRootLayout.AccountPanelRootLayoutListener)localObject).a();
       }
@@ -195,40 +195,40 @@ public class AccountPanelRootLayout
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     c();
-    if (!b(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)) {
+    if (!b(this.i, paramMotionEvent)) {
       return a(paramMotionEvent);
     }
     float f2 = paramMotionEvent.getY();
     float f3 = paramMotionEvent.getX();
-    int i = paramMotionEvent.getAction();
+    int j = paramMotionEvent.getAction();
     boolean bool = false;
-    if (i != 0)
+    if (j != 0)
     {
-      if (i != 1) {
-        if (i != 2)
+      if (j != 1) {
+        if (j != 2)
         {
-          if (i != 3) {
+          if (j != 3) {
             return false;
           }
         }
         else
         {
-          float f1 = -(f2 - this.jdField_a_of_type_Float);
-          float f4 = this.jdField_b_of_type_Float;
-          this.jdField_a_of_type_Float = f2;
-          this.jdField_b_of_type_Float = f3;
-          if (((f1 <= 0.0F) || (getScrollY() < 0)) && (Math.abs(f3 - f4) <= Math.abs(f1)) && (this.jdField_a_of_type_AndroidViewView.getScrollY() <= 0))
+          float f1 = -(f2 - this.a);
+          float f4 = this.b;
+          this.a = f2;
+          this.b = f3;
+          if (((f1 <= 0.0F) || (getScrollY() < 0)) && (Math.abs(f3 - f4) <= Math.abs(f1)) && (this.i.getScrollY() <= 0))
           {
             f2 = a(f1);
-            if ((this.jdField_a_of_type_Boolean) && (f2 != 0.0F)) {
+            if ((this.c) && (f2 != 0.0F)) {
               scrollBy(0, (int)f2);
             } else if (f2 > 0.0F) {
               scrollBy(0, (int)f2);
             }
             if (Math.abs(f1) > 5.0F) {
-              this.jdField_b_of_type_Boolean = true;
+              this.d = true;
             }
-            paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener;
+            paramMotionEvent = this.f;
             if (paramMotionEvent != null)
             {
               if (getScrollY() > 0) {
@@ -241,32 +241,32 @@ public class AccountPanelRootLayout
           return super.dispatchTouchEvent(paramMotionEvent);
         }
       }
-      this.jdField_a_of_type_Boolean = false;
-      if (!this.jdField_b_of_type_Boolean) {
+      this.c = false;
+      if (!this.d) {
         return super.dispatchTouchEvent(paramMotionEvent);
       }
       paramMotionEvent.setAction(3);
       super.dispatchTouchEvent(paramMotionEvent);
-      if (-getScrollY() < a()) {
-        i = 1;
+      if (-getScrollY() < getMaxScrollDistance()) {
+        j = 1;
       } else {
-        i = 0;
+        j = 0;
       }
-      if (i == 1)
+      if (j == 1)
       {
         a(0);
         return false;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener != null)
+      if (this.f != null)
       {
-        this.c = true;
-        a(-this.jdField_a_of_type_Int);
+        this.h = true;
+        a(-this.g);
       }
       return false;
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = paramMotionEvent.getY();
-    this.jdField_b_of_type_Float = paramMotionEvent.getX();
+    this.d = false;
+    this.a = paramMotionEvent.getY();
+    this.b = paramMotionEvent.getX();
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
@@ -277,12 +277,12 @@ public class AccountPanelRootLayout
   
   public void setAccountPanelRootLayoutListener(AccountPanelRootLayout.AccountPanelRootLayoutListener paramAccountPanelRootLayoutListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelRootLayout$AccountPanelRootLayoutListener = paramAccountPanelRootLayoutListener;
+    this.f = paramAccountPanelRootLayoutListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.AccountPanelRootLayout
  * JD-Core Version:    0.7.0.1
  */

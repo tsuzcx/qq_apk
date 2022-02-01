@@ -13,7 +13,7 @@ class AVGameShareUtil$4
   
   public void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if (paramLong != this.jdField_a_of_type_Long)
+    if (paramLong != this.a)
     {
       QLog.e("GameRoomObserver", 1, "onGameShare fail: observer not match");
       return;
@@ -26,14 +26,14 @@ class AVGameShareUtil$4
     ((StringBuilder)localObject).append(" mark: ");
     ((StringBuilder)localObject).append(paramLong);
     QLog.d("GameRoomObserver", 1, ((StringBuilder)localObject).toString());
-    localObject = (GameRoomObserver)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(this.jdField_a_of_type_Long));
+    localObject = (GameRoomObserver)this.b.remove(Long.valueOf(this.a));
     if (localObject == null)
     {
       QLog.e("GameRoomObserver", 1, "onGameShare fail: observer not exist");
       return;
     }
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.removeObserver((BusinessObserver)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppAvgameshareAVGameShareUtil$AVGameShareProxy;
+    this.c.removeObserver((BusinessObserver)localObject);
+    localObject = this.d;
     if (localObject != null) {
       try
       {
@@ -52,7 +52,7 @@ class AVGameShareUtil$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.avgameshare.AVGameShareUtil.4
  * JD-Core Version:    0.7.0.1
  */

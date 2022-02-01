@@ -17,12 +17,12 @@ final class MyAppApi$3
     long l = System.currentTimeMillis();
     int i;
     Object localObject2;
-    if (MyAppApi.i()) {
+    if (MyAppApi.A()) {
       if (TMAssistantCallYYB_V2.getInstance().getIPCInterface() == null)
       {
         LogUtility.b("TAMST_WAKE", "getIPCInterface() == null");
         i = GlobalUtil.getInstance().getQQDownloaderVersionCode();
-        localObject1 = MyAppApi.a();
+        localObject1 = MyAppApi.B();
         if (i >= 7172130)
         {
           localObject2 = new StringBuilder();
@@ -32,7 +32,7 @@ final class MyAppApi$3
           LogUtility.b("TAMST_WAKE", ((StringBuilder)localObject2).toString());
           localObject2 = new Intent();
           ((Intent)localObject2).setClassName("com.tencent.android.qqdownloader", "com.live.push.PushActivity");
-          ((Intent)localObject2).putExtra("from", CommonDataAdapter.a().a().getPackageName());
+          ((Intent)localObject2).putExtra("from", CommonDataAdapter.a().b().getPackageName());
           ((Intent)localObject2).putExtra("via", "CALL_LIVE_QQ");
           ((Intent)localObject2).addFlags(268435456);
         }
@@ -42,7 +42,7 @@ final class MyAppApi$3
     {
       try
       {
-        CommonDataAdapter.a().a().startActivity((Intent)localObject2);
+        CommonDataAdapter.a().b().startActivity((Intent)localObject2);
         ((OuterCallReportModel)localObject1).mComponentName = "com.live.push.PushActivity";
       }
       catch (ActivityNotFoundException localActivityNotFoundException)
@@ -64,7 +64,7 @@ final class MyAppApi$3
       break label246;
     }
     MyAppApi.a((OuterCallReportModel)localObject1);
-    ControlPolicyUtil.c();
+    ControlPolicyUtil.v();
     break label274;
     LogUtility.b("TAMST_WAKE", "don't need tmast wake");
     break label274;
@@ -78,7 +78,7 @@ final class MyAppApi$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.3
  * JD-Core Version:    0.7.0.1
  */

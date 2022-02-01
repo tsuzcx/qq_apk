@@ -49,26 +49,26 @@ class MusicPlayerActivity$LoadAlbumImageHandler
       int i = paramArrayOfInt[0];
       int j = Color.argb(0, Color.red(i), Color.green(i), Color.blue(i));
       GradientDrawable localGradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i, j, j, j, j, j, i });
-      ((ImageView)localMusicPlayerActivity.findViewById(2131371635)).setImageDrawable(localGradientDrawable);
-      localMusicPlayerActivity.findViewById(2131371638).setBackgroundColor(i);
+      ((ImageView)localMusicPlayerActivity.findViewById(2131439055)).setImageDrawable(localGradientDrawable);
+      localMusicPlayerActivity.findViewById(2131439058).setBackgroundColor(i);
       i = paramArrayOfInt[1];
       j = Color.argb(128, Color.red(i), Color.green(i), Color.blue(i));
-      MusicPlayerActivity.a(localMusicPlayerActivity).setTextColor(i);
-      MusicPlayerActivity.b(localMusicPlayerActivity).setTextColor(i);
-      localMusicPlayerActivity.a.a().setLyricHilightColor(i);
-      localMusicPlayerActivity.a.a().setLyricColor(j);
-      MusicPlayerActivity.b(localMusicPlayerActivity).setTag(Integer.valueOf(i));
-      MusicPlayerActivity.a(localMusicPlayerActivity).setTag(Integer.valueOf(i));
-      MusicPlayerActivity.c(localMusicPlayerActivity).setTag(Integer.valueOf(i));
-      MusicPlayerActivity.a(localMusicPlayerActivity, 2130841862, i);
-      MusicPlayerActivity.a(localMusicPlayerActivity, 2130841863, i);
-      MusicPlayerActivity.a(localMusicPlayerActivity, 2130840090, i);
+      MusicPlayerActivity.j(localMusicPlayerActivity).setTextColor(i);
+      MusicPlayerActivity.l(localMusicPlayerActivity).setTextColor(i);
+      localMusicPlayerActivity.a.getLyricViewInternal().setLyricHilightColor(i);
+      localMusicPlayerActivity.a.getLyricViewInternal().setLyricColor(j);
+      MusicPlayerActivity.f(localMusicPlayerActivity).setTag(Integer.valueOf(i));
+      MusicPlayerActivity.d(localMusicPlayerActivity).setTag(Integer.valueOf(i));
+      MusicPlayerActivity.h(localMusicPlayerActivity).setTag(Integer.valueOf(i));
+      MusicPlayerActivity.a(localMusicPlayerActivity, 2130842779, i);
+      MusicPlayerActivity.a(localMusicPlayerActivity, 2130842780, i);
+      MusicPlayerActivity.a(localMusicPlayerActivity, 2130840315, i);
       if (paramBoolean)
       {
-        MusicPlayerActivity.a(localMusicPlayerActivity, 2130841369, i);
-        MusicPlayerActivity.a(localMusicPlayerActivity, 2130841371, i);
-        MusicPlayerActivity.a(localMusicPlayerActivity, 2130841370, i);
-        MusicPlayerActivity.a(localMusicPlayerActivity, 2130837602, i);
+        MusicPlayerActivity.a(localMusicPlayerActivity, 2130842191, i);
+        MusicPlayerActivity.a(localMusicPlayerActivity, 2130842193, i);
+        MusicPlayerActivity.a(localMusicPlayerActivity, 2130842192, i);
+        MusicPlayerActivity.a(localMusicPlayerActivity, 2130837608, i);
       }
     }
   }
@@ -85,7 +85,7 @@ class MusicPlayerActivity$LoadAlbumImageHandler
       {
       default: 
       case 55: 
-        localObject1 = MusicPlayerActivity.d((MusicPlayerActivity)localObject1).getTag();
+        localObject1 = MusicPlayerActivity.i((MusicPlayerActivity)localObject1).getTag();
         if ((localObject1 instanceof MusicPlayerActivity.ShareInfo))
         {
           localObject1 = (MusicPlayerActivity.ShareInfo)localObject1;
@@ -122,7 +122,7 @@ class MusicPlayerActivity$LoadAlbumImageHandler
         }
         break;
       case 53: 
-        MusicPlayerActivity.a((MusicPlayerActivity)localObject1);
+        MusicPlayerActivity.g((MusicPlayerActivity)localObject1);
         return;
       case 52: 
         if (localObject2 != null)
@@ -133,20 +133,20 @@ class MusicPlayerActivity$LoadAlbumImageHandler
           boolean bool1 = ((Bundle)localObject2).getBoolean("KEY_MATCH_SONG");
           boolean bool2 = ((Bundle)localObject2).getBoolean("KEY_IS_FAVOURITE");
           if (!TextUtils.isEmpty(paramMessage)) {
-            MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setText(paramMessage);
+            MusicPlayerActivity.j((MusicPlayerActivity)localObject1).setText(paramMessage);
           }
           if (bool1)
           {
             if (bool2) {
-              MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setImageResource(2130841370);
+              MusicPlayerActivity.d((MusicPlayerActivity)localObject1).setImageResource(2130842192);
             } else {
-              MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setImageResource(2130841371);
+              MusicPlayerActivity.d((MusicPlayerActivity)localObject1).setImageResource(2130842193);
             }
-            MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setSelected(bool2);
+            MusicPlayerActivity.d((MusicPlayerActivity)localObject1).setSelected(bool2);
           }
           if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (Patterns.WEB_URL.matcher((CharSequence)localObject3).matches()))
           {
-            paramMessage = (URLImageView)((MusicPlayerActivity)localObject1).findViewById(2131371644);
+            paramMessage = (URLImageView)((MusicPlayerActivity)localObject1).findViewById(2131439064);
             URLDrawable localURLDrawable = URLDrawable.getDrawable((String)localObject3, URLDrawable.URLDrawableOptions.obtain());
             Object localObject4 = AlbumDecodeHandler.a((String)localObject3);
             if (localObject4 != null)
@@ -162,7 +162,7 @@ class MusicPlayerActivity$LoadAlbumImageHandler
             }
             else
             {
-              localObject3 = new AlbumDecodeHandler((String)localObject3, MusicPlayerActivity.a((MusicPlayerActivity)localObject1), Boolean.valueOf(bool1));
+              localObject3 = new AlbumDecodeHandler((String)localObject3, MusicPlayerActivity.k((MusicPlayerActivity)localObject1), Boolean.valueOf(bool1));
               if (localURLDrawable.getStatus() == 1)
               {
                 localObject4 = localURLDrawable.getCurrDrawable();
@@ -180,10 +180,10 @@ class MusicPlayerActivity$LoadAlbumImageHandler
           paramMessage = ((Bundle)localObject2).getString("KEY_SOURCE_NAME");
           if (TextUtils.isEmpty(paramMessage))
           {
-            MusicPlayerActivity.b((MusicPlayerActivity)localObject1).setText(2131694370);
+            MusicPlayerActivity.l((MusicPlayerActivity)localObject1).setText(2131892047);
             return;
           }
-          MusicPlayerActivity.b((MusicPlayerActivity)localObject1).setText(((MusicPlayerActivity)localObject1).getString(2131694368, new Object[] { paramMessage }));
+          MusicPlayerActivity.l((MusicPlayerActivity)localObject1).setText(((MusicPlayerActivity)localObject1).getString(2131892045, new Object[] { paramMessage }));
           return;
         }
         break;
@@ -194,35 +194,35 @@ class MusicPlayerActivity$LoadAlbumImageHandler
           if (paramMessage.arg1 == 1) {
             i = 0;
           }
-          MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setVisibility(i);
-          if (MusicPlayerActivity.a((MusicPlayerActivity)localObject1).isSelected()) {
-            MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setImageResource(2130841370);
-          } else {
-            MusicPlayerActivity.a((MusicPlayerActivity)localObject1).setImageResource(2130841371);
-          }
-          MusicPlayerActivity.c((MusicPlayerActivity)localObject1).setVisibility(i);
-          MusicPlayerActivity.c((MusicPlayerActivity)localObject1).setImageResource(2130841369);
           MusicPlayerActivity.d((MusicPlayerActivity)localObject1).setVisibility(i);
-          MusicPlayerActivity.d((MusicPlayerActivity)localObject1).setImageResource(2130837602);
-          MusicPlayerActivity.d((MusicPlayerActivity)localObject1).setTag(localObject2);
+          if (MusicPlayerActivity.d((MusicPlayerActivity)localObject1).isSelected()) {
+            MusicPlayerActivity.d((MusicPlayerActivity)localObject1).setImageResource(2130842192);
+          } else {
+            MusicPlayerActivity.d((MusicPlayerActivity)localObject1).setImageResource(2130842193);
+          }
+          MusicPlayerActivity.h((MusicPlayerActivity)localObject1).setVisibility(i);
+          MusicPlayerActivity.h((MusicPlayerActivity)localObject1).setImageResource(2130842191);
+          MusicPlayerActivity.i((MusicPlayerActivity)localObject1).setVisibility(i);
+          MusicPlayerActivity.i((MusicPlayerActivity)localObject1).setImageResource(2130837608);
+          MusicPlayerActivity.i((MusicPlayerActivity)localObject1).setTag(localObject2);
           return;
         }
         break;
       case 50: 
         i = paramMessage.arg1;
-        paramMessage = MusicPlayerActivity.b((MusicPlayerActivity)localObject1).getTag();
+        paramMessage = MusicPlayerActivity.f((MusicPlayerActivity)localObject1).getTag();
         if ((paramMessage instanceof Integer))
         {
           j = ((Integer)paramMessage).intValue();
-          MusicPlayerActivity.a((MusicPlayerActivity)localObject1, 2130841862, j);
-          MusicPlayerActivity.a((MusicPlayerActivity)localObject1, 2130841863, j);
+          MusicPlayerActivity.a((MusicPlayerActivity)localObject1, 2130842779, j);
+          MusicPlayerActivity.a((MusicPlayerActivity)localObject1, 2130842780, j);
         }
         if ((i != 3) && (i != 4)) {
-          MusicPlayerActivity.b((MusicPlayerActivity)localObject1).setImageResource(2130841862);
+          MusicPlayerActivity.f((MusicPlayerActivity)localObject1).setImageResource(2130842779);
         } else {
-          MusicPlayerActivity.b((MusicPlayerActivity)localObject1).setImageResource(2130841863);
+          MusicPlayerActivity.f((MusicPlayerActivity)localObject1).setImageResource(2130842780);
         }
-        MusicPlayerActivity.a((MusicPlayerActivity)localObject1);
+        MusicPlayerActivity.g((MusicPlayerActivity)localObject1);
         return;
       case 49: 
         a(((Bundle)localObject2).getIntArray("KEY_COLOR_LIST"), ((Bundle)localObject2).getBoolean("KEY_MATCH_SONG"));
@@ -232,7 +232,7 @@ class MusicPlayerActivity$LoadAlbumImageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicPlayerActivity.LoadAlbumImageHandler
  * JD-Core Version:    0.7.0.1
  */

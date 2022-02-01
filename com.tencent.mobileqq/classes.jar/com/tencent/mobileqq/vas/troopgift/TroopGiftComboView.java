@@ -17,17 +17,17 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/troopgift/TroopGiftComboView;", "Lcom/tencent/mobileqq/vas/ui/VasPagView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "comboState", "Lcom/tencent/mobileqq/vas/troopgift/TroopGiftPAGAnimationController$PlayState;", "pagState", "textAnimationDuration", "", "<set-?>", "wholeState", "getWholeState$AQQLiteApp_release", "()Lcom/tencent/mobileqq/vas/troopgift/TroopGiftPAGAnimationController$PlayState;", "getDefDuration", "comboTimes", "setAvatars", "", "senderAvatar", "Landroid/graphics/Bitmap;", "receiverAvatar", "setPAGResource", "pagPath", "fontPath", "setReceiverAvatar", "setSenderAvatar", "startComboAnimation", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/troopgift/TroopGiftComboView;", "Lcom/tencent/mobileqq/vas/ui/VasPagView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "comboState", "Lcom/tencent/mobileqq/vas/troopgift/PlayState;", "pagState", "textAnimationDuration", "", "<set-?>", "wholeState", "getWholeState$AQQLiteApp_release", "()Lcom/tencent/mobileqq/vas/troopgift/PlayState;", "getDefDuration", "comboTimes", "setAvatars", "", "senderAvatar", "Landroid/graphics/Bitmap;", "receiverAvatar", "setPAGResource", "pagPath", "fontPath", "setReceiverAvatar", "setSenderAvatar", "startComboAnimation", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class TroopGiftComboView
   extends VasPagView
 {
-  private long jdField_a_of_type_Long;
   @NotNull
-  private TroopGiftPAGAnimationController.PlayState jdField_a_of_type_ComTencentMobileqqVasTroopgiftTroopGiftPAGAnimationController$PlayState = TroopGiftPAGAnimationController.PlayState.PLAY_NONE;
+  private final String a = "TroopGiftComboView";
   @NotNull
-  private final String jdField_a_of_type_JavaLangString = "TroopGiftComboView";
-  private TroopGiftPAGAnimationController.PlayState b = TroopGiftPAGAnimationController.PlayState.PLAY_NONE;
-  private TroopGiftPAGAnimationController.PlayState c = TroopGiftPAGAnimationController.PlayState.PLAY_NONE;
+  private PlayState b = PlayState.PLAY_NONE;
+  private PlayState c = PlayState.PLAY_NONE;
+  private PlayState e = PlayState.PLAY_NONE;
+  private long f;
   
   public TroopGiftComboView(@NotNull Context paramContext)
   {
@@ -44,7 +44,7 @@ public final class TroopGiftComboView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private final long a(int paramInt)
+  private final long b(int paramInt)
   {
     long l = 1500L;
     if ((1 <= paramInt) && (9 >= paramInt)) {
@@ -62,60 +62,60 @@ public final class TroopGiftComboView
     return l;
   }
   
-  @NotNull
-  public final TroopGiftPAGAnimationController.PlayState a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqVasTroopgiftTroopGiftPAGAnimationController$PlayState;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public final void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "startComboAnimation");
+      QLog.d(this.a, 2, "startComboAnimation");
     }
     ValueAnimator localValueAnimator = ObjectAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     Intrinsics.checkExpressionValueIsNotNull(localValueAnimator, "animator");
     localValueAnimator.setInterpolator((TimeInterpolator)new AccelerateDecelerateInterpolator());
     localValueAnimator.addListener((Animator.AnimatorListener)new TroopGiftComboView.startComboAnimation.1(this));
-    a().a((Function1)new TroopGiftComboView.startComboAnimation.2(this, localValueAnimator, paramInt));
+    g().a((Function1)new TroopGiftComboView.startComboAnimation.2(this, localValueAnimator, paramInt));
     localValueAnimator.start();
+  }
+  
+  @NotNull
+  public final String getTAG()
+  {
+    return this.a;
+  }
+  
+  @NotNull
+  public final PlayState getWholeState$AQQLiteApp_release()
+  {
+    return this.b;
   }
   
   public final void setAvatars(@NotNull Bitmap paramBitmap1, @NotNull Bitmap paramBitmap2)
   {
     Intrinsics.checkParameterIsNotNull(paramBitmap1, "senderAvatar");
     Intrinsics.checkParameterIsNotNull(paramBitmap2, "receiverAvatar");
-    a().a((Function1)new TroopGiftComboView.setAvatars.1(this, paramBitmap1, paramBitmap2));
+    g().a((Function1)new TroopGiftComboView.setAvatars.1(this, paramBitmap1, paramBitmap2));
   }
   
   public final void setPAGResource(@NotNull String paramString1, @NotNull String paramString2)
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "pagPath");
     Intrinsics.checkParameterIsNotNull(paramString2, "fontPath");
-    a().a((Function1)new TroopGiftComboView.setPAGResource.1(this, paramString1, paramString2));
+    g().a((Function1)new TroopGiftComboView.setPAGResource.1(this, paramString1, paramString2));
   }
   
   public final void setReceiverAvatar(@NotNull Bitmap paramBitmap)
   {
     Intrinsics.checkParameterIsNotNull(paramBitmap, "receiverAvatar");
-    a().a((Function1)new TroopGiftComboView.setReceiverAvatar.1(this, paramBitmap));
+    g().a((Function1)new TroopGiftComboView.setReceiverAvatar.1(this, paramBitmap));
   }
   
   public final void setSenderAvatar(@NotNull Bitmap paramBitmap)
   {
     Intrinsics.checkParameterIsNotNull(paramBitmap, "senderAvatar");
-    a().a((Function1)new TroopGiftComboView.setSenderAvatar.1(this, paramBitmap));
+    g().a((Function1)new TroopGiftComboView.setSenderAvatar.1(this, paramBitmap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopgift.TroopGiftComboView
  * JD-Core Version:    0.7.0.1
  */

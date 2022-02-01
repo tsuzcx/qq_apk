@@ -178,7 +178,7 @@ public class ProfileAccountLevelComponent
     {
       if (this.mViewContainer == null)
       {
-        paramCard = this.mActivity.getLayoutInflater().inflate(2131561372, null);
+        paramCard = this.mActivity.getLayoutInflater().inflate(2131627728, null);
         ProfileAccountLevelReport.reportAccountLevelVisible(this.mQQAppInterface, (ProfileCardInfo)this.mData);
         this.mViewContainer = paramCard;
       }
@@ -186,7 +186,7 @@ public class ProfileAccountLevelComponent
       {
         bool1 = false;
       }
-      paramCard = (ProfileQQLevelView)((View)this.mViewContainer).findViewById(2131374263);
+      paramCard = (ProfileQQLevelView)((View)this.mViewContainer).findViewById(2131442358);
       paramCard.update((ProfileCardInfo)this.mData, this.mIsFromArkBabyQ);
       paramCard.setClickable(false);
       updateDarenView();
@@ -194,7 +194,7 @@ public class ProfileAccountLevelComponent
       updateNoticeView(paramBoolean);
       ((View)this.mViewContainer).setTag(new DataTag(69, null));
       ((View)this.mViewContainer).setOnClickListener(this);
-      paramCard = (ImageView)((View)this.mViewContainer).findViewById(2131362975);
+      paramCard = (ImageView)((View)this.mViewContainer).findViewById(2131428774);
       updateItemTheme((View)this.mViewContainer, null, null, paramCard);
     }
     else if (this.mViewContainer != null)
@@ -209,7 +209,7 @@ public class ProfileAccountLevelComponent
     paramCard = ProfileTemplateApi.getDiyMoreInfoManager(this.mComponentCenter);
     if (paramCard.isDiy())
     {
-      ((View)this.mViewContainer).setBackgroundResource(2130839435);
+      ((View)this.mViewContainer).setBackgroundResource(2130839624);
       ((View)this.mViewContainer).setClickable(false);
       paramCard.updateLevelForDeepDiy((View)this.mViewContainer);
     }
@@ -218,20 +218,20 @@ public class ProfileAccountLevelComponent
   
   private void updateNoticeView(boolean paramBoolean)
   {
-    if ((QQLevelIconProcessor.c().mIsNotifyPayment) && (paramBoolean) && (LocaleManager.a()))
+    if ((QQLevelIconProcessor.e().mIsNotifyPayment) && (paramBoolean) && (LocaleManager.a()))
     {
       Object localObject = (VasExtensionManager)this.mApp.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER);
-      int i = ((VasExtensionManager)localObject).a();
+      int i = ((VasExtensionManager)localObject).b();
       if (QLog.isColorLevel()) {
         QLog.d("ProfileAccountLevelComponent", 2, String.format("updateNoticeView noticeValue=%s", new Object[] { Integer.valueOf(i) }));
       }
       if ((i != 0) && (((ProfileCardInfo)this.mData).allInOne.pa == 0))
       {
-        String str = VasExtensionManager.a(i);
+        String str = VasExtensionManager.b(i);
         if (!TextUtils.isEmpty(str))
         {
           ((VasExtensionManager)localObject).a(0);
-          localObject = (TextView)((View)this.mViewContainer).findViewById(2131374262);
+          localObject = (TextView)((View)this.mViewContainer).findViewById(2131442357);
           ((TextView)localObject).setText(str);
           ((TextView)localObject).setVisibility(0);
           ((TextView)localObject).setOnClickListener(new ProfileAccountLevelComponent.2(this, (TextView)localObject, i));
@@ -330,17 +330,19 @@ public class ProfileAccountLevelComponent
       } else {
         bool2 = false;
       }
-      if (ProfilePAUtils.isPaTypeShowAccount(((ProfileCardInfo)this.mData).allInOne)) {}
-      while ((bool4) || (bool3) || (paramCard.iQQLevel >= 0))
+      boolean bool6;
+      if (((!ProfilePAUtils.isPaTypeShowAccount(((ProfileCardInfo)this.mData).allInOne)) || (ProfilePAUtils.isFromGuild(((ProfileCardInfo)this.mData).allInOne.pa))) && (!bool4) && (!bool3) && (paramCard.iQQLevel < 0))
+      {
+        bool6 = false;
+        bool5 = bool1;
+        bool1 = bool6;
+      }
+      else
       {
         bool6 = true;
         bool5 = bool1;
         bool1 = bool6;
-        break;
       }
-      boolean bool6 = false;
-      bool5 = bool1;
-      bool1 = bool6;
     }
     else
     {
@@ -447,7 +449,7 @@ public class ProfileAccountLevelComponent
   {
     if (this.mViewContainer != null)
     {
-      FrameLayout localFrameLayout = (FrameLayout)((View)this.mViewContainer).findViewById(2131365377);
+      FrameLayout localFrameLayout = (FrameLayout)((View)this.mViewContainer).findViewById(2131431576);
       if (localFrameLayout != null)
       {
         localFrameLayout.setOnClickListener(this);
@@ -466,7 +468,7 @@ public class ProfileAccountLevelComponent
   {
     if (this.mViewContainer != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((View)this.mViewContainer).findViewById(2131372274);
+      ViewGroup localViewGroup = (ViewGroup)((View)this.mViewContainer).findViewById(2131439784);
       if (localViewGroup != null)
       {
         localViewGroup.setOnClickListener(this);
@@ -477,7 +479,7 @@ public class ProfileAccountLevelComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.accountlevel.ProfileAccountLevelComponent
  * JD-Core Version:    0.7.0.1
  */

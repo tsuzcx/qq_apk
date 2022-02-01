@@ -13,14 +13,14 @@ class VipVideoPlayActivity$VideoPlayerPreparedListener$1
     long l1 = SystemClock.elapsedRealtime();
     long l2 = VipVideoPlayActivity.a(this.a.a);
     this.a.a.a("play_success", 0, 0, l1 - l2, "");
-    if (VipVideoPlayActivity.a(this.a.a) != null) {
-      VipVideoPlayActivity.a(this.a.a).start();
+    if (VipVideoPlayActivity.b(this.a.a) != null) {
+      VipVideoPlayActivity.b(this.a.a).start();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerPreparedListener.1
  * JD-Core Version:    0.7.0.1
  */

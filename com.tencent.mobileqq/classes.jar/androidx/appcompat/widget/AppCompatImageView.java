@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.core.view.TintableBackgroundView;
@@ -18,22 +19,24 @@ public class AppCompatImageView
   extends ImageView
   implements TintableBackgroundView, TintableImageSourceView
 {
-  private final AppCompatBackgroundHelper mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
+  private final AppCompatBackgroundHelper mBackgroundTintHelper;
   private final AppCompatImageHelper mImageHelper;
   
-  public AppCompatImageView(Context paramContext)
+  public AppCompatImageView(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public AppCompatImageView(Context paramContext, AttributeSet paramAttributeSet)
+  public AppCompatImageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
   }
   
-  public AppCompatImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppCompatImageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
+    ThemeUtils.checkAppCompatTheme(this, getContext());
+    this.mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
     this.mBackgroundTintHelper.loadFromAttributes(paramAttributeSet, paramInt);
     this.mImageHelper = new AppCompatImageHelper(this);
     this.mImageHelper.loadFromAttributes(paramAttributeSet, paramInt);

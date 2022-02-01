@@ -21,7 +21,7 @@ public class TroopRemindSettingManager
     return a;
   }
   
-  public static void a()
+  public static void b()
   {
     if (a != null) {
       a = null;
@@ -31,15 +31,6 @@ public class TroopRemindSettingManager
   public void a(EntityManager paramEntityManager, AppInterface paramAppInterface)
   {
     paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getAccount(), 0).edit().putBoolean("init_troop_remind", false).commit();
-  }
-  
-  public void a(String paramString, AppInterface paramAppInterface)
-  {
-    paramAppInterface = paramAppInterface.getEntityManagerFactory().createEntityManager();
-    TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
-    localTroopRemindSettingData.troopUin = paramString;
-    localTroopRemindSettingData.isOpenState = 1;
-    paramAppInterface.persistOrReplace(localTroopRemindSettingData);
   }
   
   public boolean a(AppInterface paramAppInterface)
@@ -55,12 +46,21 @@ public class TroopRemindSettingManager
   
   public void b(String paramString, AppInterface paramAppInterface)
   {
+    paramAppInterface = paramAppInterface.getEntityManagerFactory().createEntityManager();
+    TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
+    localTroopRemindSettingData.troopUin = paramString;
+    localTroopRemindSettingData.isOpenState = 1;
+    paramAppInterface.persistOrReplace(localTroopRemindSettingData);
+  }
+  
+  public void c(String paramString, AppInterface paramAppInterface)
+  {
     ThreadManager.post(new TroopRemindSettingManager.1(this, paramAppInterface, paramString), 8, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRemindSettingManager
  * JD-Core Version:    0.7.0.1
  */

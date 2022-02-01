@@ -12,8 +12,8 @@ import java.util.List<Lcom.tencent.qqcamerakit.capture.CameraSize;>;
 
 public class ResolutionStrategy
 {
-  private static double a = 0.009999999776482582D;
   public static CameraProxy.CustomPreviewSizeStrategy a;
+  private static double b = 0.009999999776482582D;
   
   public static CameraSize a(List<CameraSize> paramList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
@@ -112,7 +112,7 @@ public class ResolutionStrategy
           paramInt1 = Math.max(localCameraSize.a, localCameraSize.b);
           paramInt2 = Math.min(localCameraSize.a, localCameraSize.b);
           f2 = f3 - paramInt1 / paramInt2;
-          if (Math.abs(f2) < jdField_a_of_type_Double) {
+          if (Math.abs(f2) < b) {
             ((List)localObject1).add(localCameraSize);
           }
           if (Math.abs(f2) < f1) {
@@ -152,7 +152,7 @@ public class ResolutionStrategy
         {
           paramInt1 = Math.max(((CameraSize)localObject2).a, ((CameraSize)localObject2).b);
           paramInt2 = Math.min(((CameraSize)localObject2).a, ((CameraSize)localObject2).b);
-          if (Math.abs(Math.abs(f3 - paramInt1 / paramInt2) - f2) < jdField_a_of_type_Double) {
+          if (Math.abs(Math.abs(f3 - paramInt1 / paramInt2) - f2) < b) {
             ((List)localObject1).add(localObject2);
           }
         }
@@ -213,7 +213,7 @@ public class ResolutionStrategy
     }
     CameraSize[] arrayOfCameraSize = new CameraSize[2];
     Object localObject = a();
-    CameraProxy.CustomPreviewSizeStrategy localCustomPreviewSizeStrategy = jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy$CustomPreviewSizeStrategy;
+    CameraProxy.CustomPreviewSizeStrategy localCustomPreviewSizeStrategy = a;
     if (localCustomPreviewSizeStrategy != null) {
       localObject = localCustomPreviewSizeStrategy.a((List)localObject, paramCameraSize2.a, paramCameraSize2.b, paramCameraSize1.a, paramCameraSize1.b);
     } else {
@@ -225,7 +225,7 @@ public class ResolutionStrategy
       if (QLog.a())
       {
         boolean bool;
-        if (jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy$CustomPreviewSizeStrategy != null) {
+        if (a != null) {
           bool = true;
         } else {
           bool = false;
@@ -378,7 +378,7 @@ public class ResolutionStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.camerastrategy.ResolutionStrategy
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ class VideoHeaderBlock$2
   
   public void onClick(View paramView)
   {
-    if (!DetailBaseBlock.c())
+    if (!DetailBaseBlock.j())
     {
-      CertifiedAccountMeta.StFeed localStFeed = VideoHeaderBlock.a(this.a);
+      CertifiedAccountMeta.StFeed localStFeed = VideoHeaderBlock.b(this.a);
       if (localStFeed != null)
       {
         this.a.d(localStFeed);
-        if (this.a.a() != null) {
-          this.a.a().c(localStFeed);
+        if (this.a.w() != null) {
+          this.a.w().c(localStFeed);
         }
       }
     }

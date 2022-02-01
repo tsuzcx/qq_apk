@@ -12,8 +12,8 @@ class TroopTransferActivity$1
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
+    if (this.a.x != null) {
+      this.a.x.b();
     }
     this.a.finish();
     EventCollector.getInstance().onViewClicked(paramView);
@@ -21,7 +21,7 @@ class TroopTransferActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.1
  * JD-Core Version:    0.7.0.1
  */

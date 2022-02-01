@@ -16,7 +16,7 @@ public class CircularRevealWidget$CircularRevealScrimColorProperty
   @NonNull
   public Integer a(@NonNull CircularRevealWidget paramCircularRevealWidget)
   {
-    return Integer.valueOf(paramCircularRevealWidget.a());
+    return Integer.valueOf(paramCircularRevealWidget.getCircularRevealScrimColor());
   }
   
   public void a(@NonNull CircularRevealWidget paramCircularRevealWidget, @NonNull Integer paramInteger)
@@ -26,7 +26,7 @@ public class CircularRevealWidget$CircularRevealScrimColorProperty
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.circularreveal.CircularRevealWidget.CircularRevealScrimColorProperty
  * JD-Core Version:    0.7.0.1
  */

@@ -7,14 +7,12 @@ import com.tencent.mobileqq.picbrowser.PicInfo;
 public abstract class NearbyProfileEditBasePanel
   extends NearbyProfileAbsPanel
 {
-  public boolean a = false;
+  public boolean c = false;
   
   public NearbyProfileEditBasePanel(Context paramContext)
   {
     super(paramContext);
   }
-  
-  public abstract void a();
   
   public abstract void a(int paramInt);
   
@@ -22,19 +20,26 @@ public abstract class NearbyProfileEditBasePanel
   
   public abstract void a(String paramString, int paramInt);
   
-  public abstract boolean a();
-  
   public abstract boolean a(PicInfo paramPicInfo);
-  
-  public abstract void b();
   
   public abstract void c();
   
-  public abstract void d();
+  public abstract boolean d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public boolean h()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditBasePanel
  * JD-Core Version:    0.7.0.1
  */

@@ -18,25 +18,28 @@ class ApkgMainProcessManager$5
   
   public void onInitApkgInfo(int paramInt, ApkgInfo paramApkgInfo, String paramString)
   {
-    paramString = new StringBuilder();
-    paramString.append("onInitApkgInfo load apkg in main process end ");
-    paramString.append(paramApkgInfo);
-    QMLog.d("ApkgMainProcessManager", paramString.toString());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onInitApkgInfo load apkg in main process end ");
+    ((StringBuilder)localObject).append(paramApkgInfo);
+    QMLog.d("ApkgMainProcessManager", ((StringBuilder)localObject).toString());
     paramApkgInfo = (List)ApkgMainProcessManager.access$000(this.this$0).remove(this.val$miniAppConfig.appId);
     if (paramApkgInfo != null)
     {
       paramApkgInfo = paramApkgInfo.iterator();
       while (paramApkgInfo.hasNext())
       {
-        paramString = (MiniCmdCallback)paramApkgInfo.next();
-        if (paramString != null) {
+        localObject = (MiniCmdCallback)paramApkgInfo.next();
+        if (localObject != null) {
           try
           {
-            paramString.onCmdResult(true, new Bundle());
+            Bundle localBundle = new Bundle();
+            localBundle.putInt("retCode", paramInt);
+            localBundle.putString("errMsg", paramString);
+            ((MiniCmdCallback)localObject).onCmdResult(true, localBundle);
           }
-          catch (RemoteException paramString)
+          catch (RemoteException localRemoteException)
           {
-            paramString.printStackTrace();
+            localRemoteException.printStackTrace();
           }
         }
       }
@@ -45,7 +48,7 @@ class ApkgMainProcessManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.ApkgMainProcessManager.5
  * JD-Core Version:    0.7.0.1
  */

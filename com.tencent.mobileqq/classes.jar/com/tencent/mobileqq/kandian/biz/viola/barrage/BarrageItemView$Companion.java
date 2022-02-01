@@ -10,7 +10,7 @@ public final class BarrageItemView$Companion
 {
   public final int a()
   {
-    return BarrageItemView.b();
+    return BarrageItemView.a();
   }
   
   @NotNull
@@ -30,7 +30,7 @@ public final class BarrageItemView$Companion
   }
   
   @NotNull
-  public final String a(@NotNull String paramString)
+  public final String b(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "text");
     paramString = new StringBuilder(paramString);
@@ -49,7 +49,7 @@ public final class BarrageItemView$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageItemView.Companion
  * JD-Core Version:    0.7.0.1
  */

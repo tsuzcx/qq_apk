@@ -13,22 +13,22 @@ import java.lang.ref.WeakReference;
 public class SpannableStringUtils$DefaultClickNickCallback
   implements SpannableStringUtils.ClickNickCallback
 {
-  private int jdField_a_of_type_Int;
-  private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  private WeakReference<Context> a;
+  private CommentLikeFeedItem b;
+  private int c;
+  private boolean d;
   
   public SpannableStringUtils$DefaultClickNickCallback(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = new WeakReference(paramContext);
+    this.b = paramCommentLikeFeedItem;
+    this.c = paramInt;
+    this.d = paramBoolean;
   }
   
   public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.b = paramCommentLikeFeedItem;
   }
   
   public void a(String paramString, int paramInt)
@@ -39,18 +39,18 @@ public class SpannableStringUtils$DefaultClickNickCallback
       if (paramInt == 1003) {
         return;
       }
-      Object localObject1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      Object localObject1 = (Context)this.a.get();
       if (localObject1 != null) {
         StoryApi.a((Context)localObject1, 12, paramString);
       }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
+      if (this.b != null)
       {
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.d) {
           paramString = "clk_reply_nick";
         } else {
           paramString = "clk_like_name";
         }
-        Object localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+        Object localObject2 = this.b;
         boolean bool = localObject2 instanceof VideoListFeedItem;
         localObject1 = "2";
         if (bool)
@@ -68,7 +68,7 @@ public class SpannableStringUtils$DefaultClickNickCallback
         {
           paramInt = 4;
         }
-        StoryReportor.a("home_page", paramString, paramInt, 0, new String[] { localObject1, StoryReportor.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+        StoryReportor.a("home_page", paramString, paramInt, 0, new String[] { localObject1, StoryReportor.b(this.c), "", this.b.feedId });
       }
     }
   }

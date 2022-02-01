@@ -11,7 +11,7 @@ class WebAIOController$1
   
   public void onClick(View paramView)
   {
-    WebAIOController.b = true;
+    WebAIOController.n = true;
     this.a.a(false);
     this.a.a(paramView.getContext());
     EventCollector.getInstance().onViewClicked(paramView);
@@ -19,7 +19,7 @@ class WebAIOController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewbase.WebAIOController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,13 +15,13 @@ class GrayTipsItemBuilder$7
   public void onClick(View paramView)
   {
     paramView = ((IFMConfig)QRoute.api(IFMConfig.class)).timGuideUrl();
-    FileManagerUtil.c(this.a.a, paramView);
+    FileManagerUtil.c(this.a.c, paramView);
     FileManagerReporter.a("0X8007FA2");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.7
  * JD-Core Version:    0.7.0.1
  */

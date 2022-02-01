@@ -12,17 +12,9 @@ public abstract interface IPlugin
   
   public abstract void a(IPluginClassLoader paramIPluginClassLoader);
   
-  public abstract boolean a();
-  
   public abstract String b();
   
-  public abstract boolean b();
-  
-  public abstract String[] b();
-  
-  public abstract String c();
-  
-  public abstract String d();
+  public abstract String[] d();
   
   public abstract String e();
   
@@ -36,13 +28,21 @@ public abstract interface IPlugin
   
   public abstract String k();
   
-  public abstract String l();
+  public abstract boolean l();
   
   public abstract String m();
+  
+  public abstract String o();
+  
+  public abstract String p();
+  
+  public abstract String s();
+  
+  public abstract boolean t();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.interfaces.IPlugin
  * JD-Core Version:    0.7.0.1
  */

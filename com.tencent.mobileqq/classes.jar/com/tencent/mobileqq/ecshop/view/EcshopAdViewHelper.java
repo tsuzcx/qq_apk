@@ -41,9 +41,9 @@ import org.json.JSONObject;
 
 public class EcshopAdViewHelper
 {
-  private int jdField_a_of_type_Int;
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
+  private int a;
   private int b;
+  private PopupWindow c;
   
   private boolean a(String paramString, ViewGroup paramViewGroup, Context paramContext, MessageRecord paramMessageRecord, EcshopAdViewHelper.DeleteMsgListener paramDeleteMsgListener)
   {
@@ -89,7 +89,7 @@ public class EcshopAdViewHelper
           ((LinearLayout.LayoutParams)localObject4).height = DisplayUtil.a(paramContext, 18.0F);
           ((LinearLayout.LayoutParams)localObject4).leftMargin = DisplayUtil.a(paramContext, 15.0F);
           localObject4 = ((JSONObject)localObject1).optString("icon_url", "");
-          if (!StringUtil.a((String)localObject4))
+          if (!StringUtil.isEmpty((String)localObject4))
           {
             URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
             localURLDrawableOptions.mRequestHeight = DisplayUtil.a(paramContext, 20.0F);
@@ -125,21 +125,14 @@ public class EcshopAdViewHelper
     return false;
   }
   
-  public View a(Context paramContext, MessageRecord paramMessageRecord, String paramString1, String paramString2)
-  {
-    paramString1 = new TextView(paramContext);
-    a(paramContext, paramMessageRecord, paramString1, paramString2);
-    return paramString1;
-  }
-  
   public void a(Context paramContext, MessageRecord paramMessageRecord, View paramView, EcshopAdViewHelper.DeleteMsgListener paramDeleteMsgListener)
   {
-    Object localObject = LayoutInflater.from(paramContext).inflate(2131559569, null);
+    Object localObject = LayoutInflater.from(paramContext).inflate(2131625595, null);
     PopupWindow localPopupWindow = new PopupWindow((View)localObject, -1, -2, true);
     localPopupWindow.setTouchable(true);
     localPopupWindow.setOutsideTouchable(true);
-    ((View)localObject).findViewById(2131365498).setOnClickListener(new EcshopAdViewHelper.5(this, localPopupWindow, paramDeleteMsgListener, paramMessageRecord));
-    ((View)localObject).findViewById(2131366835).setOnClickListener(new EcshopAdViewHelper.6(this, paramDeleteMsgListener, paramMessageRecord, localPopupWindow));
+    ((View)localObject).findViewById(2131431713).setOnClickListener(new EcshopAdViewHelper.5(this, localPopupWindow, paramDeleteMsgListener, paramMessageRecord));
+    ((View)localObject).findViewById(2131433161).setOnClickListener(new EcshopAdViewHelper.6(this, paramDeleteMsgListener, paramMessageRecord, localPopupWindow));
     paramDeleteMsgListener = ((IEcshopPublicAccountChatPieTempApi)QRoute.api(IEcshopPublicAccountChatPieTempApi.class)).getCurPieAnimator(paramContext);
     if (paramDeleteMsgListener == null) {
       return;
@@ -150,19 +143,19 @@ public class EcshopAdViewHelper
     int j = paramDeleteMsgListener.getHeight();
     paramDeleteMsgListener = new int[2];
     paramView.getLocationOnScreen(paramDeleteMsgListener);
-    this.jdField_a_of_type_Int = paramDeleteMsgListener[0];
+    this.a = paramDeleteMsgListener[0];
     this.b = paramDeleteMsgListener[1];
-    int k = ViewUtils.a(106.0F);
+    int k = ViewUtils.dip2px(106.0F);
     int m = paramView.getHeight();
     if (this.b - i + m + k > j)
     {
-      localPopupWindow.setBackgroundDrawable(paramContext.getResources().getDrawable(2130847337));
-      localPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_Int, this.b - k);
+      localPopupWindow.setBackgroundDrawable(paramContext.getResources().getDrawable(2130848988));
+      localPopupWindow.showAtLocation(paramView, 0, this.a, this.b - k);
     }
     else
     {
-      localPopupWindow.setBackgroundDrawable(paramContext.getResources().getDrawable(2130847335));
-      localPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_Int, this.b + m);
+      localPopupWindow.setBackgroundDrawable(paramContext.getResources().getDrawable(2130848986));
+      localPopupWindow.showAtLocation(paramView, 0, this.a, this.b + m);
     }
     ((EcshopAdHandler)((BaseQQAppInterface)AppUtils.a()).getBusinessHandler(EcshopAdHandler.class.getName())).a(9, paramMessageRecord);
     paramMessageRecord = (Activity)paramContext;
@@ -188,10 +181,10 @@ public class EcshopAdViewHelper
     }
     try
     {
-      paramTextView.setBackgroundResource(2130847339);
+      paramTextView.setBackgroundResource(2130848990);
       paramTextView.setVisibility(0);
-      paramTextView.setText(HardCodeUtil.a(2131703774));
-      Drawable localDrawable = paramContext.getResources().getDrawable(2130847342);
+      paramTextView.setText(HardCodeUtil.a(2131901720));
+      Drawable localDrawable = paramContext.getResources().getDrawable(2130848993);
       localDrawable.setBounds(0, 0, 24, 16);
       paramTextView.setCompoundDrawables(null, null, localDrawable, null);
       int i = DisplayUtil.a(paramContext, 6.0F);
@@ -211,22 +204,22 @@ public class EcshopAdViewHelper
   
   public void b(Context paramContext, MessageRecord paramMessageRecord, View paramView, String paramString, EcshopAdViewHelper.DeleteMsgListener paramDeleteMsgListener)
   {
-    Object localObject = LayoutInflater.from(paramContext).inflate(2131559570, null);
-    if (!a(paramString, (LinearLayout)((View)localObject).findViewById(2131370239), paramContext, paramMessageRecord, paramDeleteMsgListener))
+    Object localObject = LayoutInflater.from(paramContext).inflate(2131625596, null);
+    if (!a(paramString, (LinearLayout)((View)localObject).findViewById(2131437433), paramContext, paramMessageRecord, paramDeleteMsgListener))
     {
       a(paramContext, paramMessageRecord, paramView, paramDeleteMsgListener);
       return;
     }
     ((View)localObject).measure(0, 0);
     int i = 1;
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow((View)localObject, -1, -2, true);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
+    this.c = new PopupWindow((View)localObject, -1, -2, true);
+    this.c.setTouchable(true);
+    this.c.setOutsideTouchable(true);
     paramString = new int[2];
     paramView.getLocationOnScreen(paramString);
-    this.jdField_a_of_type_Int = paramString[0];
+    this.a = paramString[0];
     this.b = paramString[1];
-    int j = this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().getMeasuredHeight();
+    int j = this.c.getContentView().getMeasuredHeight();
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
@@ -250,29 +243,29 @@ public class EcshopAdViewHelper
     }
     if (i != 0)
     {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(paramContext.getResources().getDrawable(2130847337));
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_Int, this.b - j);
+      this.c.setBackgroundDrawable(paramContext.getResources().getDrawable(2130848988));
+      this.c.showAtLocation(paramView, 0, this.a, this.b - j);
     }
     else
     {
       if (paramDeleteMsgListener != null) {
-        this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(paramContext.getResources().getDrawable(2130847336));
+        this.c.setBackgroundDrawable(paramContext.getResources().getDrawable(2130848987));
       } else {
-        this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(paramContext.getResources().getDrawable(2130847335));
+        this.c.setBackgroundDrawable(paramContext.getResources().getDrawable(2130848986));
       }
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_Int, this.b + k);
+      this.c.showAtLocation(paramView, 0, this.a, this.b + k);
     }
     ((EcshopAdHandler)((AppInterface)AppUtils.a()).getBusinessHandler(EcshopAdHandler.class.getName())).a(9, paramMessageRecord);
     paramMessageRecord = (Activity)paramContext;
     paramView = paramMessageRecord.getWindow().getAttributes();
     paramView.alpha = 0.5F;
     paramMessageRecord.getWindow().setAttributes(paramView);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new EcshopAdViewHelper.3(this, paramContext));
+    this.c.setOnDismissListener(new EcshopAdViewHelper.3(this, paramContext));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.EcshopAdViewHelper
  * JD-Core Version:    0.7.0.1
  */

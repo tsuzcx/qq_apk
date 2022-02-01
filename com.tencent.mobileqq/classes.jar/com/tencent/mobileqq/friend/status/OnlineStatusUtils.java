@@ -53,7 +53,7 @@ public class OnlineStatusUtils
     if (!Arrays.asList(new Integer[] { localInteger2, localInteger3, localInteger4, localInteger6, Integer.valueOf(6), localInteger5, localInteger1 }).contains(Integer.valueOf(paramInt1)))
     {
       i = paramInt1;
-      if (OnlineStatusIconHelper.a().a(paramInt2)) {
+      if (OnlineStatusIconHelper.a().b(paramInt2)) {
         i = 4;
       }
     }
@@ -107,14 +107,14 @@ public class OnlineStatusUtils
     return " - WiFi";
   }
   
-  public static boolean a(Friends paramFriends)
+  public static boolean b(Friends paramFriends)
   {
     return ((paramFriends.iTermType == 0) && (paramFriends.eNetwork == 0)) || ((a(paramFriends.detalStatusFlag, paramFriends.iTermType) == 0) && (!TextUtils.isEmpty(paramFriends.strTermDesc)) && (paramFriends.strTermDesc.contains("TIM")));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.status.OnlineStatusUtils
  * JD-Core Version:    0.7.0.1
  */

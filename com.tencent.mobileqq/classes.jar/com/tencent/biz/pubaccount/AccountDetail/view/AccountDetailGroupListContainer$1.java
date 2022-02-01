@@ -18,20 +18,20 @@ class AccountDetailGroupListContainer$1
   
   public void onClick(View paramView)
   {
-    paramView = new Intent((Context)this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangRefWeakReference.get(), QQMapActivity.class);
-    paramView.putExtra("lat", this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.g);
-    paramView.putExtra("lon", this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.f);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      paramView.putExtra("loc", this.jdField_a_of_type_JavaLangString);
+    paramView = new Intent((Context)this.c.a.get(), QQMapActivity.class);
+    paramView.putExtra("lat", this.a.m);
+    paramView.putExtra("lon", this.a.l);
+    if (!TextUtils.isEmpty(this.b)) {
+      paramView.putExtra("loc", this.b);
     }
-    ((BaseActivity)this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(paramView);
-    ReportController.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString, "", "", "");
-    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.jdField_a_of_type_JavaLangString);
+    ((BaseActivity)this.c.a.get()).startActivity(paramView);
+    ReportController.b(this.c.b, "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, this.c.g, "", "", "");
+    AccountDetailGroupListContainer.a(this.c, this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.1
  * JD-Core Version:    0.7.0.1
  */

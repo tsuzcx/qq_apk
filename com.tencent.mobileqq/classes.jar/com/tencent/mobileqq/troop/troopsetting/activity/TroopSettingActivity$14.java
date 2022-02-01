@@ -19,35 +19,35 @@ class TroopSettingActivity$14
       if (QLog.isColorLevel()) {
         QLog.i("Q.chatopttroop", 2, "mInitRunnable and init cardInfo");
       }
-      this.this$0.r();
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nUnreadMsgNum = ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).groupGroupNewsInfo(TroopSettingActivity.a(this.this$0).getCurrentAccountUin(), "troop_photo_message", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nNewPhotoNum = ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).groupGroupNewsInfo(TroopSettingActivity.a(this.this$0).getCurrentAccountUin(), "troop_photo_new", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+      this.this$0.s();
+      this.this$0.i.nUnreadMsgNum = ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).groupGroupNewsInfo(TroopSettingActivity.a(this.this$0).getCurrentAccountUin(), "troop_photo_message", this.this$0.i.troopUin);
+      this.this$0.i.nNewPhotoNum = ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).groupGroupNewsInfo(TroopSettingActivity.a(this.this$0).getCurrentAccountUin(), "troop_photo_new", this.this$0.i.troopUin);
+      this.this$0.aD.sendEmptyMessage(4);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("初始化，群空间未读计数， troopuin = ");
-        localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
+        localStringBuilder.append(this.this$0.i.troopUin);
         localStringBuilder.append(", unreadmsgnum = ");
-        localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nUnreadMsgNum);
+        localStringBuilder.append(this.this$0.i.nUnreadMsgNum);
         localStringBuilder.append(", newphotonum = ");
-        localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nNewPhotoNum);
+        localStringBuilder.append(this.this$0.i.nNewPhotoNum);
         QLog.i("Q.chatopttroop", 2, localStringBuilder.toString());
       }
       if (QLog.isColorLevel()) {
         QLog.i("Q.chatopttroop", 2, "init(),getTroopMemberCard,getMutiTroopInfo,refreshTroopFace");
       }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nNewFileMsgNum = ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).groupGroupNewsInfo(TroopSettingActivity.a(this.this$0).getCurrentAccountUin(), "troop_file_new", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.nUnreadFileMsgnum = 0;
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.mNewTroopNotificationNum = ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).groupGroupNewsInfo(TroopSettingActivity.a(this.this$0).getCurrentAccountUin(), "troop_notification_new", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-      this.this$0.b();
-      this.this$0.p();
+      this.this$0.i.nNewFileMsgNum = ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).groupGroupNewsInfo(TroopSettingActivity.a(this.this$0).getCurrentAccountUin(), "troop_file_new", this.this$0.i.troopUin);
+      this.this$0.i.nUnreadFileMsgnum = 0;
+      this.this$0.aD.sendEmptyMessage(8);
+      this.this$0.i.mNewTroopNotificationNum = ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).groupGroupNewsInfo(TroopSettingActivity.a(this.this$0).getCurrentAccountUin(), "troop_notification_new", this.this$0.i.troopUin);
+      this.this$0.aD.sendEmptyMessage(9);
+      this.this$0.c();
+      this.this$0.q();
       TroopSettingActivity.a(this.this$0, 0, false);
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(17);
-      TroopSettingActivity.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
-      TroopSettingActivity.c(this.this$0);
+      this.this$0.aD.sendEmptyMessage(17);
+      TroopSettingActivity.a(this.this$0, this.this$0.i.troopUin);
+      TroopSettingActivity.f(this.this$0);
       return;
     }
     catch (Error localError)
@@ -84,7 +84,7 @@ class TroopSettingActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.14
  * JD-Core Version:    0.7.0.1
  */

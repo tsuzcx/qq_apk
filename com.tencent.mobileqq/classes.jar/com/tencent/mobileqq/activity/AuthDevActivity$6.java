@@ -50,7 +50,7 @@ class AuthDevActivity$6
       AuthDevActivity localAuthDevActivity = this.a;
       paramWUserSigInfo.setLocalDevlockStatus(paramErrMsg, localAuthDevActivity, AuthDevActivity.access$2600(localAuthDevActivity).getCurrentAccountUin(), true);
       AuthDevActivity.access$2702(this.a, true);
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131691980), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a.getApplicationContext(), 2, this.a.getString(2131888947), 0).show(this.a.getTitleBarHeight());
       AuthDevActivity.access$2800(this.a);
       paramWUserSigInfo = this.a;
       paramWUserSigInfo = AuthDevActivity.access$2900(paramWUserSigInfo, AuthDevActivity.access$1300(paramWUserSigInfo).getLoginInfoActivity());
@@ -76,10 +76,10 @@ class AuthDevActivity$6
       }
       if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
       {
-        QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
+        QQToast.makeText(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).show(this.a.getTitleBarHeight());
         return;
       }
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131692022), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a.getApplicationContext(), 1, this.a.getString(2131888989), 0).show(this.a.getTitleBarHeight());
     }
   }
   
@@ -172,7 +172,7 @@ class AuthDevActivity$6
       }
     }
     AuthDevActivity.access$4100(this.a);
-    paramDevlockInfo = this.a.getString(2131692013);
+    paramDevlockInfo = this.a.getString(2131888980);
     paramWUserSigInfo = paramDevlockInfo;
     if (paramErrMsg != null)
     {
@@ -181,7 +181,7 @@ class AuthDevActivity$6
         paramWUserSigInfo = paramErrMsg.getMessage();
       }
     }
-    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a.getApplicationContext(), paramWUserSigInfo, 0).show(this.a.getTitleBarHeight());
   }
   
   public void onCloseDevLock(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
@@ -212,7 +212,7 @@ class AuthDevActivity$6
       paramErrMsg = AuthDevActivity.access$3300(this.a);
       AuthDevActivity localAuthDevActivity = this.a;
       paramWUserSigInfo.setLocalDevlockStatus(paramErrMsg, localAuthDevActivity, AuthDevActivity.access$3400(localAuthDevActivity).getCurrentAccountUin(), false);
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131691991), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a.getApplicationContext(), 2, this.a.getString(2131888958), 0).show(this.a.getTitleBarHeight());
       paramWUserSigInfo = this.a;
       paramWUserSigInfo = AuthDevActivity.access$2900(paramWUserSigInfo, AuthDevActivity.access$1300(paramWUserSigInfo).getLoginInfoActivity());
       if (paramWUserSigInfo != null) {
@@ -243,16 +243,16 @@ class AuthDevActivity$6
       }
       if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
       {
-        QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
+        QQToast.makeText(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).show(this.a.getTitleBarHeight());
         return;
       }
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131691990), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a.getApplicationContext(), 1, this.a.getString(2131888957), 0).show(this.a.getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevActivity.6
  * JD-Core Version:    0.7.0.1
  */

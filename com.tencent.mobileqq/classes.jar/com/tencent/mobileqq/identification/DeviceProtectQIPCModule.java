@@ -65,7 +65,7 @@ public class DeviceProtectQIPCModule
           localObject7 = BaseApplication.getContext();
           str = util.buf_to_string(paramAppRuntime.getGUID());
           localObject6 = UserAction.getQIMEI();
-          localObject1 = String.valueOf(AppSetting.a());
+          localObject1 = String.valueOf(AppSetting.d());
           localObject2 = "Android";
           localObject3 = Build.BRAND;
           localObject5 = Build.MODEL;
@@ -165,7 +165,7 @@ public class DeviceProtectQIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.DeviceProtectQIPCModule
  * JD-Core Version:    0.7.0.1
  */

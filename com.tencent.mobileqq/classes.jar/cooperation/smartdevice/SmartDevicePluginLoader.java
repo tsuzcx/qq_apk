@@ -43,21 +43,21 @@ public class SmartDevicePluginLoader
   extends Observable
   implements Handler.Callback, PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  private static SmartDevicePluginLoader jdField_a_of_type_CooperationSmartdeviceSmartDevicePluginLoader;
-  private static String jdField_a_of_type_JavaLangString = "SmartDevicePluginLoader";
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity = null;
-  private Context jdField_a_of_type_AndroidContentContext = null;
-  private PluginManagerClient jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
-  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
-  private IPluginManager.PluginParams jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private IPluginManager.PluginParams jdField_b_of_type_CooperationPluginIPluginManager$PluginParams = null;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  private static String a = "SmartDevicePluginLoader";
+  private static SmartDevicePluginLoader b;
+  private QQProgressDialog c = null;
+  private String d;
+  private String e;
+  private boolean f = false;
+  private MqqWeakReferenceHandler g = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
+  private PluginManagerClient h;
+  private long i;
+  private int j = 1;
+  private IPluginManager.PluginParams k = null;
+  private Activity l = null;
+  private IPluginManager.PluginParams m = null;
+  private Context n = null;
+  private int o = 0;
   
   public static AppInterface a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
@@ -121,10 +121,10 @@ public class SmartDevicePluginLoader
   
   public static SmartDevicePluginLoader a()
   {
-    if (jdField_a_of_type_CooperationSmartdeviceSmartDevicePluginLoader == null) {
-      jdField_a_of_type_CooperationSmartdeviceSmartDevicePluginLoader = new SmartDevicePluginLoader();
+    if (b == null) {
+      b = new SmartDevicePluginLoader();
     }
-    return jdField_a_of_type_CooperationSmartdeviceSmartDevicePluginLoader;
+    return b;
   }
   
   public static ClassLoader a(Context paramContext)
@@ -137,26 +137,26 @@ public class SmartDevicePluginLoader
     Object localObject;
     if (QLog.isColorLevel())
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[SmartDevicePluginLoader] handleFailed errCode:");
       ((StringBuilder)localObject).append(paramInt);
       QLog.d(str, 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = null;
-    this.jdField_a_of_type_AndroidAppActivity = null;
-    this.jdField_b_of_type_CooperationPluginIPluginManager$PluginParams = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.k = null;
+    this.l = null;
+    this.m = null;
+    this.n = null;
     b(paramInt);
-    String str = HardCodeUtil.a(2131714089);
+    String str = HardCodeUtil.a(2131911620);
     if (-4 == paramInt) {
-      str = HardCodeUtil.a(2131714084);
+      str = HardCodeUtil.a(2131911615);
     } else if (-5 == paramInt) {
-      str = HardCodeUtil.a(2131714086);
+      str = HardCodeUtil.a(2131911617);
     }
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[SmartDevicePluginLoader] handleFailed errCode:");
       localStringBuilder.append(str);
@@ -167,27 +167,27 @@ public class SmartDevicePluginLoader
   private void a(String paramString, PluginBaseInfo paramPluginBaseInfo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] queryPluginInfo!");
+      QLog.d(a, 2, "[SmartDevicePluginLoader] queryPluginInfo!");
     }
-    int i;
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 30000L) {
-      i = 1;
+    int i1;
+    if (System.currentTimeMillis() - this.i > 30000L) {
+      i1 = 1;
     } else {
-      i = 0;
+      i1 = 0;
     }
     if (paramPluginBaseInfo == null)
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.isReady())
+      if (!this.h.isReady())
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] queryPluginInfo is no ready and query it");
+          QLog.d(a, 2, "[SmartDevicePluginLoader] queryPluginInfo is no ready and query it");
         }
-        if (i != 0)
+        if (i1 != 0)
         {
           a(-5);
           return;
         }
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
+        this.g.sendEmptyMessageDelayed(1001, 400L);
         return;
       }
       a(-1);
@@ -195,7 +195,7 @@ public class SmartDevicePluginLoader
     }
     if (QLog.isColorLevel())
     {
-      paramString = jdField_a_of_type_JavaLangString;
+      paramString = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[SmartDevicePluginLoader] queryPluginInfo mState : ");
       localStringBuilder.append(paramPluginBaseInfo.mState);
@@ -203,7 +203,7 @@ public class SmartDevicePluginLoader
       localStringBuilder.append(paramPluginBaseInfo.mDownloadProgress);
       QLog.d(paramString, 2, localStringBuilder.toString());
     }
-    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
+    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) && (System.currentTimeMillis() - this.i > 5000L))
     {
       a(-4);
       return;
@@ -215,30 +215,30 @@ public class SmartDevicePluginLoader
       return;
     case 4: 
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] install plugin success");
+        QLog.d(a, 2, "[SmartDevicePluginLoader] install plugin success");
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.f = true;
       b(0);
-      b();
+      c();
       return;
     case 3: 
-      if (i != 0)
+      if (i1 != 0)
       {
         a(-5);
         return;
       }
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
+      this.g.sendEmptyMessageDelayed(1001, 400L);
       return;
     case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin("qqsmartdevice.apk");
+      this.h.installPlugin("qqsmartdevice.apk");
     case 1: 
     case 2: 
-      if (i != 0)
+      if (i1 != 0)
       {
         a(-5);
         return;
       }
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
+      this.g.sendEmptyMessageDelayed(1001, 400L);
       return;
     case -1: 
       a(-6);
@@ -247,7 +247,13 @@ public class SmartDevicePluginLoader
     a(-2);
   }
   
-  private boolean a(Context paramContext)
+  private void b(int paramInt)
+  {
+    super.setChanged();
+    super.notifyObservers(Integer.valueOf(paramInt));
+  }
+  
+  private boolean b(Context paramContext)
   {
     if (paramContext == null) {
       return false;
@@ -265,67 +271,52 @@ public class SmartDevicePluginLoader
     return false;
   }
   
-  private void b()
+  private void c()
   {
-    String str = this.c;
+    String str = this.e;
     if ((str != null) && (str.compareToIgnoreCase("openActivity") == 0))
     {
-      this.c = null;
+      this.e = null;
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader]  launchPluginActivity delay 2 second");
+        QLog.d(a, 2, "[SmartDevicePluginLoader]  launchPluginActivity delay 2 second");
       }
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1002, 2000L);
+      this.g.sendEmptyMessageDelayed(1002, 2000L);
     }
-    str = this.jdField_b_of_type_JavaLangString;
+    str = this.d;
     if ((str != null) && (str.compareToIgnoreCase("launchService") == 0))
     {
-      this.jdField_b_of_type_JavaLangString = null;
-      if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_b_of_type_CooperationPluginIPluginManager$PluginParams != null))
+      this.d = null;
+      if ((this.n != null) && (this.m != null))
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader]  launchPluginService:");
+          QLog.d(a, 2, "[SmartDevicePluginLoader]  launchPluginService:");
         }
-        IPluginManager.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_CooperationPluginIPluginManager$PluginParams);
-        this.jdField_b_of_type_CooperationPluginIPluginManager$PluginParams = null;
-        this.jdField_a_of_type_AndroidContentContext = null;
+        IPluginManager.c(this.n, this.m);
+        this.m = null;
+        this.n = null;
       }
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    super.setChanged();
-    super.notifyObservers(Integer.valueOf(paramInt));
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Int = 0;
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((!this.jdField_a_of_type_Boolean) && (!a(localQQAppInterface))) {
-      PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), this);
     }
   }
   
   public void a(Activity paramActivity, AppRuntime paramAppRuntime, String paramString1, Intent paramIntent, String paramString2, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, Class<? extends Activity> paramClass)
   {
-    boolean bool = a(paramActivity);
+    boolean bool = b(paramActivity);
     if (QLog.isColorLevel())
     {
-      paramAppRuntime = jdField_a_of_type_JavaLangString;
+      paramAppRuntime = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("launchPluingActivityForResult.isPluginInstalled end: ");
       ((StringBuilder)localObject).append(bool);
       QLog.d(paramAppRuntime, 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299168));
+    Object localObject = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299920));
     if ((bool) && (paramOnDismissListener == null))
     {
       paramAppRuntime = null;
     }
     else
     {
-      ((QQProgressDialog)localObject).a(HardCodeUtil.a(2131714082));
+      ((QQProgressDialog)localObject).a(HardCodeUtil.a(2131911613));
       ((QQProgressDialog)localObject).setOnDismissListener(new SmartDevicePluginLoader.1(this, paramOnDismissListener));
       paramAppRuntime = (AppRuntime)localObject;
       if (bool)
@@ -339,59 +330,59 @@ public class SmartDevicePluginLoader
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", true);
     paramIntent.putExtra("param_plugin_gesturelock", true);
-    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = new IPluginManager.PluginParams(this.jdField_a_of_type_Int);
-    localObject = this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams;
-    ((IPluginManager.PluginParams)localObject).jdField_b_of_type_JavaLangString = "qqsmartdevice.apk";
-    ((IPluginManager.PluginParams)localObject).e = PluginInfo.e;
-    localObject = this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams;
-    ((IPluginManager.PluginParams)localObject).jdField_a_of_type_JavaLangString = paramString1;
-    ((IPluginManager.PluginParams)localObject).f = paramString2;
-    ((IPluginManager.PluginParams)localObject).jdField_a_of_type_JavaLangClass = paramClass;
-    ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
-    ((IPluginManager.PluginParams)localObject).c = paramInt;
-    ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidAppDialog = paramAppRuntime;
-    ((IPluginManager.PluginParams)localObject).d = 10000;
-    ((IPluginManager.PluginParams)localObject).g = null;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = a(paramOnDismissListener);
+    this.k = new IPluginManager.PluginParams(this.j);
+    localObject = this.k;
+    ((IPluginManager.PluginParams)localObject).d = "qqsmartdevice.apk";
+    ((IPluginManager.PluginParams)localObject).g = PluginInfo.e;
+    localObject = this.k;
+    ((IPluginManager.PluginParams)localObject).c = paramString1;
+    ((IPluginManager.PluginParams)localObject).h = paramString2;
+    ((IPluginManager.PluginParams)localObject).i = paramClass;
+    ((IPluginManager.PluginParams)localObject).j = paramIntent;
+    ((IPluginManager.PluginParams)localObject).k = paramInt;
+    ((IPluginManager.PluginParams)localObject).l = paramAppRuntime;
+    ((IPluginManager.PluginParams)localObject).r = 10000;
+    ((IPluginManager.PluginParams)localObject).q = null;
+    this.l = paramActivity;
+    if (!this.f) {
+      this.f = a(paramOnDismissListener);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
       if (QLog.isColorLevel())
       {
-        paramAppRuntime = jdField_a_of_type_JavaLangString;
+        paramAppRuntime = a;
         paramString1 = new StringBuilder();
         paramString1.append("[SmartDevicePluginLoader] launchPluginActivity: plugin is installed ");
-        paramString1.append(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.f);
+        paramString1.append(this.k.h);
         QLog.d(paramAppRuntime, 2, paramString1.toString());
       }
       if (bool)
       {
-        IPluginManager.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
-        this.jdField_a_of_type_AndroidAppActivity = null;
-        this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = null;
+        IPluginManager.a(this.l, this.k);
+        this.l = null;
+        this.k = null;
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+      if (this.c == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299168));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131714083));
+        this.c = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299920));
+        this.c.a(HardCodeUtil.a(2131911614));
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      this.c = "openActivity";
-      b();
+      this.c.show();
+      this.e = "openActivity";
+      c();
       return;
     }
     if (QLog.isColorLevel())
     {
-      paramActivity = jdField_a_of_type_JavaLangString;
+      paramActivity = a;
       paramAppRuntime = new StringBuilder();
       paramAppRuntime.append("[SmartDevicePluginLoader] launchPluginActivity: waiting for plugin to install ");
-      paramAppRuntime.append(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.f);
+      paramAppRuntime.append(this.k.h);
       QLog.d(paramActivity, 2, paramAppRuntime.toString());
     }
-    this.c = "openActivity";
+    this.e = "openActivity";
     PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), this);
   }
   
@@ -400,30 +391,30 @@ public class SmartDevicePluginLoader
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), SmartDeviceProxyService.class);
     localIntent.putExtra("userQqResources", 2);
     localIntent.putExtra("useSkinEngine", true);
-    this.jdField_b_of_type_CooperationPluginIPluginManager$PluginParams = new IPluginManager.PluginParams(this.jdField_a_of_type_Int);
-    IPluginManager.PluginParams localPluginParams = this.jdField_b_of_type_CooperationPluginIPluginManager$PluginParams;
-    localPluginParams.jdField_b_of_type_JavaLangString = "qqsmartdevice.apk";
-    localPluginParams.e = PluginInfo.e;
-    this.jdField_b_of_type_CooperationPluginIPluginManager$PluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localPluginParams = this.jdField_b_of_type_CooperationPluginIPluginManager$PluginParams;
-    localPluginParams.f = "com.tencent.device.ipc.QQSmartDeviceService";
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    this.jdField_a_of_type_AndroidContentContext = paramAppRuntime.getApplication();
-    if (this.jdField_a_of_type_Boolean)
+    this.m = new IPluginManager.PluginParams(this.j);
+    IPluginManager.PluginParams localPluginParams = this.m;
+    localPluginParams.d = "qqsmartdevice.apk";
+    localPluginParams.g = PluginInfo.e;
+    this.m.c = paramAppRuntime.getAccount();
+    localPluginParams = this.m;
+    localPluginParams.h = "com.tencent.device.ipc.QQSmartDeviceService";
+    localPluginParams.j = localIntent;
+    localPluginParams.o = paramServiceConnection;
+    this.n = paramAppRuntime.getApplication();
+    if (this.f)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] launchPluginService directly");
+        QLog.d(a, 2, "[SmartDevicePluginLoader] launchPluginService directly");
       }
-      IPluginManager.c(paramAppRuntime.getApplication(), this.jdField_b_of_type_CooperationPluginIPluginManager$PluginParams);
-      this.jdField_b_of_type_CooperationPluginIPluginManager$PluginParams = null;
-      this.jdField_a_of_type_AndroidContentContext = null;
+      IPluginManager.c(paramAppRuntime.getApplication(), this.m);
+      this.m = null;
+      this.n = null;
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] launchPluginService: waiting for plugin to install ");
+      QLog.d(a, 2, "[SmartDevicePluginLoader] launchPluginService: waiting for plugin to install ");
     }
-    this.jdField_b_of_type_JavaLangString = "launchService";
+    this.d = "launchService";
     PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), this);
   }
   
@@ -434,7 +425,7 @@ public class SmartDevicePluginLoader
     boolean bool1 = bool2;
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = paramQQAppInterface.a("qqsmartdevice.apk");
+      paramQQAppInterface = paramQQAppInterface.d("qqsmartdevice.apk");
       bool1 = bool2;
       if (paramQQAppInterface != null)
       {
@@ -447,6 +438,15 @@ public class SmartDevicePluginLoader
     return bool1;
   }
   
+  public void b()
+  {
+    this.o = 0;
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((!this.f) && (!a(localQQAppInterface))) {
+      PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), this);
+    }
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
@@ -454,101 +454,101 @@ public class SmartDevicePluginLoader
     default: 
       break;
     case 1003: 
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+      paramMessage = this.c;
       if (paramMessage != null)
       {
         paramMessage.hide();
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+        this.c = null;
       }
       break;
     case 1002: 
       b(0);
-      if ((this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams != null))
+      if ((this.l != null) && (this.k != null))
       {
         if (QLog.isColorLevel())
         {
-          paramMessage = jdField_a_of_type_JavaLangString;
+          paramMessage = a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("[SmartDevicePluginLoader]  launchPluginActivity:");
-          localStringBuilder.append(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.f);
+          localStringBuilder.append(this.k.h);
           QLog.d(paramMessage, 2, localStringBuilder.toString());
         }
-        IPluginManager.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+        IPluginManager.a(this.l, this.k);
       }
-      this.jdField_a_of_type_AndroidAppActivity = null;
-      this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = null;
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1003, 600L);
+      this.l = null;
+      this.k = null;
+      this.g.sendEmptyMessageDelayed(1003, 600L);
       break;
     case 1001: 
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader]  ACTION_QUERY!");
+        QLog.d(a, 2, "[SmartDevicePluginLoader]  ACTION_QUERY!");
       }
-      a("qqsmartdevice.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.queryPlugin("qqsmartdevice.apk"));
+      a("qqsmartdevice.apk", this.h.queryPlugin("qqsmartdevice.apk"));
     }
     return true;
   }
   
   public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient = paramPluginManagerClient;
+    this.h = paramPluginManagerClient;
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] onPluginManagerLoaded SUPPORT_NETWORKING:true");
+      QLog.i(a, 2, "[SmartDevicePluginLoader] onPluginManagerLoaded SUPPORT_NETWORKING:true");
     }
-    paramPluginManagerClient = this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient;
-    int i = 1;
+    paramPluginManagerClient = this.h;
+    int i1 = 1;
     if (paramPluginManagerClient != null)
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      paramPluginManagerClient = this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.queryPlugin("qqsmartdevice.apk");
+      this.i = System.currentTimeMillis();
+      paramPluginManagerClient = this.h.queryPlugin("qqsmartdevice.apk");
       if (paramPluginManagerClient != null)
       {
         if (paramPluginManagerClient.mState == 4)
         {
           if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] plugin is installed");
+            QLog.d(a, 2, "[SmartDevicePluginLoader] plugin is installed");
           }
-          this.jdField_a_of_type_Boolean = true;
+          this.f = true;
           b(0);
-          b();
+          c();
         }
         else
         {
           if (QLog.isColorLevel())
           {
-            paramPluginManagerClient = jdField_a_of_type_JavaLangString;
+            paramPluginManagerClient = a;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("[SmartDevicePluginLoader] onPluginManagerLoaded start down or install... retryCount: ");
-            localStringBuilder.append(this.jdField_b_of_type_Int);
+            localStringBuilder.append(this.o);
             QLog.i(paramPluginManagerClient, 2, localStringBuilder.toString());
           }
-          int j = this.jdField_b_of_type_Int;
-          this.jdField_b_of_type_Int = (j + 1);
-          if (j < 3) {
-            this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin("qqsmartdevice.apk");
+          int i2 = this.o;
+          this.o = (i2 + 1);
+          if (i2 < 3) {
+            this.h.installPlugin("qqsmartdevice.apk");
           }
         }
       }
       else {
-        i = 0;
+        i1 = 0;
       }
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
+      if (i1 == 0) {
+        this.g.sendEmptyMessageDelayed(1001, 400L);
       }
     }
     else
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] not support networking");
+        QLog.d(a, 2, "[SmartDevicePluginLoader] not support networking");
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.f = true;
       b(0);
-      b();
+      c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.smartdevice.SmartDevicePluginLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -46,13 +46,13 @@ public class CommonAdFloatingBarUtils
       while (localIterator.hasNext())
       {
         paramList = (BaseData)localIterator.next();
-        if (((paramList instanceof ProteusInnerData)) && (paramList.f))
+        if (((paramList instanceof ProteusInnerData)) && (paramList.aS))
         {
           paramList = (ProteusInnerData)paramList;
-          if (paramList.e()) {
+          if (paramList.f()) {
             break label80;
           }
-          if (paramList.f()) {
+          if (paramList.g()) {
             break label80;
           }
         }
@@ -84,7 +84,7 @@ public class CommonAdFloatingBarUtils
       ViewGroup.LayoutParams localLayoutParams = paramCommonAdBar.getLayoutParams();
       boolean bool = paramAdData instanceof ProteusInnerData;
       Object localObject1;
-      if ((bool) && (((ProteusInnerData)paramAdData).f()))
+      if ((bool) && (((ProteusInnerData)paramAdData).g()))
       {
         localLayoutParams.height = AIOUtils.b(64.0F, paramCommonAdBar.getResources());
         paramAdData = a(paramCommonAdBar.getContext(), "#ffffff", 2.0F, 0.0F, "");
@@ -103,7 +103,7 @@ public class CommonAdFloatingBarUtils
         if (bool)
         {
           localObject1 = localObject2;
-          if (((ProteusInnerData)paramAdData).e())
+          if (((ProteusInnerData)paramAdData).f())
           {
             localLayoutParams.height = AIOUtils.b(46.0F, paramCommonAdBar.getResources());
             paramAdData = a(paramCommonAdBar.getContext(), "#f7f7f7", 3.0F, 0.0F, "");
@@ -145,7 +145,7 @@ public class CommonAdFloatingBarUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.CommonAdFloatingBarUtils
  * JD-Core Version:    0.7.0.1
  */

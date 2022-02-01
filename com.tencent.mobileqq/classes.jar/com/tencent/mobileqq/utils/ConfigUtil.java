@@ -165,47 +165,47 @@ public class ConfigUtil
       if (paramQQAppInterface.isCreateManager(QQManagerFactory.CONFESS_MANAGER))
       {
         paramString = ((ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).a();
-        paramCfgParseResult.jdField_b_of_type_Boolean = paramString.a(paramCfgParseResult.jdField_a_of_type_JavaLangString);
+        paramCfgParseResult.f = paramString.a(paramCfgParseResult.d);
         ((ConfessHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CONFESS_HANDLER)).a(paramQQAppInterface, paramString);
       }
       else
       {
-        paramCfgParseResult.jdField_b_of_type_Boolean = ConfessConfig.b(paramCfgParseResult.jdField_a_of_type_JavaLangString);
+        paramCfgParseResult.f = ConfessConfig.b(paramCfgParseResult.d);
       }
-      paramCfgParseResult.jdField_a_of_type_Boolean = true;
+      paramCfgParseResult.e = true;
       return;
     }
     Object localObject1;
     if ("extend_friend_config_785".equals(paramString))
     {
-      paramCfgParseResult.jdField_a_of_type_Boolean = true;
-      if (TextUtils.isEmpty(paramCfgParseResult.jdField_a_of_type_JavaLangString))
+      paramCfgParseResult.e = true;
+      if (TextUtils.isEmpty(paramCfgParseResult.d))
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append("processExtendFriendConfig is emtpy !! configParseResult version:");
-        paramQQAppInterface.append(paramCfgParseResult.jdField_b_of_type_Int);
+        paramQQAppInterface.append(paramCfgParseResult.b);
         paramQQAppInterface.append(" localVersion ");
-        paramQQAppInterface.append(paramCfgParseResult.jdField_a_of_type_Int);
+        paramQQAppInterface.append(paramCfgParseResult.a);
         QLog.e("ConfigUtil", 2, paramQQAppInterface.toString());
-        paramCfgParseResult.jdField_b_of_type_Boolean = false;
+        paramCfgParseResult.f = false;
         return;
       }
-      a(paramQQAppInterface.getApp(), str, paramString, paramCfgParseResult.jdField_a_of_type_JavaLangString);
+      a(paramQQAppInterface.getApp(), str, paramString, paramCfgParseResult.d);
       paramString = (IExpandSPUtils)QRoute.api(IExpandSPUtils.class);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(paramInt);
       ((StringBuilder)localObject1).append("");
       paramString.setExtendFriendsConfigTaskId(str, ((StringBuilder)localObject1).toString());
       if (paramQQAppInterface.isCreateManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)) {
-        ((IExpandManager)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).d(paramCfgParseResult.jdField_a_of_type_JavaLangString);
+        ((IExpandManager)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).d(paramCfgParseResult.d);
       }
-      paramCfgParseResult.jdField_b_of_type_Boolean = true;
+      paramCfgParseResult.f = true;
       return;
     }
     if ("sosointerface_config".equals(paramString))
     {
-      paramCfgParseResult.jdField_b_of_type_Boolean = ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).saveSosoInterfaceConfig(paramCfgParseResult.jdField_a_of_type_JavaLangString);
-      paramCfgParseResult.jdField_a_of_type_Boolean = true;
+      paramCfgParseResult.f = ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).saveSosoInterfaceConfig(paramCfgParseResult.d);
+      paramCfgParseResult.e = true;
       return;
     }
     Object localObject2;
@@ -213,7 +213,7 @@ public class ConfigUtil
     {
       try
       {
-        localObject2 = new JSONObject(paramCfgParseResult.jdField_a_of_type_JavaLangString);
+        localObject2 = new JSONObject(paramCfgParseResult.d);
         paramString = ((JSONObject)localObject2).optString("entranceTitle");
         localObject1 = ((JSONObject)localObject2).optString("entranceSubtitle");
         localObject2 = ((JSONObject)localObject2).optString("entranceUrl");
@@ -233,8 +233,8 @@ public class ConfigUtil
           QLog.i("ConfigUtil", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
         }
       }
-      paramCfgParseResult.jdField_a_of_type_Boolean = false;
-      paramCfgParseResult.jdField_b_of_type_Boolean = true;
+      paramCfgParseResult.e = false;
+      paramCfgParseResult.f = true;
       return;
     }
     if ("account_logout_config".equals(paramString)) {}
@@ -242,7 +242,7 @@ public class ConfigUtil
     {
       try
       {
-        localObject2 = new JSONObject(paramCfgParseResult.jdField_a_of_type_JavaLangString);
+        localObject2 = new JSONObject(paramCfgParseResult.d);
         if (((JSONObject)localObject2).optInt("isShowEntrance") != 1) {
           break label695;
         }
@@ -266,8 +266,8 @@ public class ConfigUtil
         SharedPreUtils.b(paramQQAppInterface.getApp(), str, "account_logout_success_text", "");
         SharedPreUtils.b(paramQQAppInterface.getApp(), str, "account_logout_bold_text", "");
       }
-      paramCfgParseResult.jdField_a_of_type_Boolean = false;
-      paramCfgParseResult.jdField_b_of_type_Boolean = true;
+      paramCfgParseResult.e = false;
+      paramCfgParseResult.f = true;
       return;
       label695:
       boolean bool = false;
@@ -276,7 +276,7 @@ public class ConfigUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ConfigUtil
  * JD-Core Version:    0.7.0.1
  */

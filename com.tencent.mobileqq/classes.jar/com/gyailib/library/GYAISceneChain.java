@@ -11,7 +11,6 @@ public class GYAISceneChain
     try
     {
       System.loadLibrary("c++_shared");
-      System.loadLibrary("opencv_world");
       System.loadLibrary("TNN");
       System.loadLibrary("light_ai_base");
       System.loadLibrary("light_detect_base");
@@ -51,7 +50,7 @@ public class GYAISceneChain
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.gyailib.library.GYAISceneChain
  * JD-Core Version:    0.7.0.1
  */

@@ -5,15 +5,15 @@ import com.tencent.qphone.base.util.QLog;
 
 public class AVSoundHelper
 {
-  private static AVGameMusic jdField_a_of_type_ComTencentAvgameQavAudioPlayerAVGameMusic;
-  private static AVGameSound jdField_a_of_type_ComTencentAvgameQavAudioPlayerAVGameSound;
-  private static volatile boolean jdField_a_of_type_Boolean;
+  private static AVGameMusic a;
+  private static AVGameSound b;
+  private static volatile boolean c;
   
   public static void a()
   {
-    jdField_a_of_type_ComTencentAvgameQavAudioPlayerAVGameMusic = new AVGameMusic();
-    jdField_a_of_type_ComTencentAvgameQavAudioPlayerAVGameSound = new AVGameSound();
-    jdField_a_of_type_Boolean = true;
+    a = new AVGameMusic();
+    b = new AVGameSound();
+    c = true;
   }
   
   private static void a(Runnable paramRunnable)
@@ -23,17 +23,12 @@ public class AVSoundHelper
   
   public static void a(String paramString, boolean paramBoolean)
   {
-    if (jdField_a_of_type_ComTencentAvgameQavAudioPlayerAVGameSound == null)
+    if (b == null)
     {
-      i();
+      l();
       return;
     }
     a(new AVSoundHelper.2(paramString, paramBoolean));
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Boolean;
   }
   
   public static void b()
@@ -43,17 +38,22 @@ public class AVSoundHelper
   
   public static void b(String paramString, boolean paramBoolean)
   {
-    if (jdField_a_of_type_ComTencentAvgameQavAudioPlayerAVGameMusic == null)
+    if (a == null)
     {
-      i();
+      l();
       return;
     }
     a(new AVSoundHelper.7(paramString, paramBoolean));
   }
   
-  public static void c()
+  public static boolean c()
   {
-    if (jdField_a_of_type_ComTencentAvgameQavAudioPlayerAVGameSound == null)
+    return c;
+  }
+  
+  public static void d()
+  {
+    if (b == null)
     {
       QLog.d("AVSoundHelper", 1, "[pauseEffects] AVSoundHelper not init.");
       return;
@@ -61,19 +61,19 @@ public class AVSoundHelper
     a(new AVSoundHelper.4());
   }
   
-  public static void d()
+  public static void e()
   {
-    if (jdField_a_of_type_ComTencentAvgameQavAudioPlayerAVGameSound == null)
+    if (b == null)
     {
-      i();
+      l();
       return;
     }
     a(new AVSoundHelper.5());
   }
   
-  public static void e()
+  public static void f()
   {
-    if (jdField_a_of_type_ComTencentAvgameQavAudioPlayerAVGameSound == null)
+    if (b == null)
     {
       QLog.d("AVSoundHelper", 1, "[stopEffects] AVSoundHelper not init.");
       return;
@@ -81,9 +81,9 @@ public class AVSoundHelper
     a(new AVSoundHelper.6());
   }
   
-  public static void f()
+  public static void g()
   {
-    if (jdField_a_of_type_ComTencentAvgameQavAudioPlayerAVGameMusic == null)
+    if (a == null)
     {
       QLog.d("AVSoundHelper", 1, "[stopBGM] AVSoundHelper not init.");
       return;
@@ -91,9 +91,9 @@ public class AVSoundHelper
     a(new AVSoundHelper.8());
   }
   
-  public static void g()
+  public static void h()
   {
-    if (jdField_a_of_type_ComTencentAvgameQavAudioPlayerAVGameMusic == null)
+    if (a == null)
     {
       QLog.d("AVSoundHelper", 1, "[pauseBGM] AVSoundHelper not init.");
       return;
@@ -101,17 +101,17 @@ public class AVSoundHelper
     a(new AVSoundHelper.9());
   }
   
-  public static void h()
+  public static void i()
   {
-    if (jdField_a_of_type_ComTencentAvgameQavAudioPlayerAVGameMusic == null)
+    if (a == null)
     {
-      i();
+      l();
       return;
     }
     a(new AVSoundHelper.10());
   }
   
-  private static void i() {}
+  private static void l() {}
 }
 
 

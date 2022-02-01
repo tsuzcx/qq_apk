@@ -9,12 +9,12 @@ class ReadinjoyTabFrame$10$1
   
   public void run()
   {
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadinjoyTabFrame$10.a, this.jdField_a_of_type_AndroidViewView);
+    ReadinjoyTabFrame.a(this.b.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.10.1
  * JD-Core Version:    0.7.0.1
  */

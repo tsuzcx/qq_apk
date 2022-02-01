@@ -40,21 +40,21 @@ public class OnlineAutoStatusBean
   
   public OnlineStatusItem a(AppRuntime.Status paramStatus, long paramLong)
   {
-    if (!OnlineStatusUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem))
+    if (!OnlineStatusUtil.a(this.a.b))
     {
       if (QLog.isColorLevel()) {
         QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "getAutoStatusItem is smartItem inValid : onlineStatusIDValue=", Long.valueOf(paramLong) });
       }
       return null;
     }
-    if ((this.a.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status == paramStatus) && (paramLong == this.a.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem.jdField_a_of_type_Long))
+    if ((this.a.e.g == paramStatus) && (paramLong == this.a.e.b))
     {
-      if (OnlineStatusUtil.b(this.a.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem))
+      if (OnlineStatusUtil.b(this.a.e))
       {
         if (QLog.isColorLevel()) {
           QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "getAutoStatusItem smartStatusOnEarth Valid: onlineStatusIDValue=", Long.valueOf(paramLong) });
         }
-        return this.a.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem;
+        return this.a.e;
       }
       return null;
     }
@@ -62,31 +62,15 @@ public class OnlineAutoStatusBean
     while (localIterator.hasNext())
     {
       AutoStatusItem localAutoStatusItem = (AutoStatusItem)localIterator.next();
-      if ((paramStatus == localAutoStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status) && (paramLong == localAutoStatusItem.jdField_a_of_type_Long))
+      if ((paramStatus == localAutoStatusItem.g) && (paramLong == localAutoStatusItem.b))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "getAutoStatusItem item is hide:", Boolean.valueOf(localAutoStatusItem.b), " onlineStatusIDValue= ", Long.valueOf(paramLong) });
+          QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "getAutoStatusItem item is hide:", Boolean.valueOf(localAutoStatusItem.r), " onlineStatusIDValue= ", Long.valueOf(paramLong) });
         }
-        if (localAutoStatusItem.b) {
-          return this.a.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem;
+        if (localAutoStatusItem.r) {
+          return this.a.e;
         }
         return localAutoStatusItem;
-      }
-    }
-    return null;
-  }
-  
-  public WeatherUrl a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    Iterator localIterator = this.a.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      WeatherUrl localWeatherUrl = (WeatherUrl)localIterator.next();
-      if (paramString.equals(localWeatherUrl.jdField_a_of_type_JavaLangString)) {
-        return localWeatherUrl;
       }
     }
     return null;
@@ -95,16 +79,16 @@ public class OnlineAutoStatusBean
   public boolean a()
   {
     boolean bool2 = this.a.a(true).isEmpty();
-    OnlineStatusItem localOnlineStatusItem = this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem;
+    OnlineStatusItem localOnlineStatusItem = this.a.b;
     int j = 0;
     boolean bool1;
-    if ((localOnlineStatusItem != null) && (this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem.jdField_a_of_type_Long == 0L)) {
+    if ((localOnlineStatusItem != null) && (this.a.b.b == 0L)) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    boolean bool3 = this.a.jdField_b_of_type_JavaUtilList.isEmpty();
-    boolean bool4 = TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString);
+    boolean bool3 = this.a.d.isEmpty();
+    boolean bool4 = TextUtils.isEmpty(this.a.c);
     if (QLog.isColorLevel()) {
       QLog.d("OnlineAutoStatusBean", 2, new Object[] { "configExists: invoked. ", " weatherJumpEmpty: ", Boolean.valueOf(bool4), " weatherEmpty: ", Boolean.valueOf(bool3), " smartEntranceEmpty: ", Boolean.valueOf(bool1), " statusEmpty: ", Boolean.valueOf(bool2) });
     }
@@ -129,30 +113,46 @@ public class OnlineAutoStatusBean
   
   public OnlineStatusItem b(AppRuntime.Status paramStatus, long paramLong)
   {
-    if (!OnlineStatusUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem))
+    if (!OnlineStatusUtil.a(this.a.b))
     {
       if (QLog.isColorLevel()) {
         QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "getAutoStatusItemWithHide is smartItem inValid : onlineStatusIDValue=", Long.valueOf(paramLong) });
       }
       return null;
     }
-    if ((this.a.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status == paramStatus) && (paramLong == this.a.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem.jdField_a_of_type_Long))
+    if ((this.a.e.g == paramStatus) && (paramLong == this.a.e.b))
     {
-      if (OnlineStatusUtil.b(this.a.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem))
+      if (OnlineStatusUtil.b(this.a.e))
       {
         if (QLog.isColorLevel()) {
           QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "getAutoStatusItemWithHide smartStatusOnEarth Valid: onlineStatusIDValue=", Long.valueOf(paramLong) });
         }
-        return this.a.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem;
+        return this.a.e;
       }
       return null;
     }
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.a.iterator();
     while (localIterator.hasNext())
     {
       AutoStatusItem localAutoStatusItem = (AutoStatusItem)localIterator.next();
-      if ((paramStatus == localAutoStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status) && (paramLong == localAutoStatusItem.jdField_a_of_type_Long)) {
+      if ((paramStatus == localAutoStatusItem.g) && (paramLong == localAutoStatusItem.b)) {
         return localAutoStatusItem;
+      }
+    }
+    return null;
+  }
+  
+  public WeatherUrl b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    Iterator localIterator = this.a.d.iterator();
+    while (localIterator.hasNext())
+    {
+      WeatherUrl localWeatherUrl = (WeatherUrl)localIterator.next();
+      if (paramString.equals(localWeatherUrl.a)) {
+        return localWeatherUrl;
       }
     }
     return null;
@@ -160,7 +160,7 @@ public class OnlineAutoStatusBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OnlineAutoStatusBean
  * JD-Core Version:    0.7.0.1
  */

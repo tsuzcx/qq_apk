@@ -16,13 +16,6 @@ public class FilterPagerViewStubHolder
     super(paramViewStub);
   }
   
-  public CameraViewPagerGesture a()
-  {
-    CameraViewPagerGesture localCameraViewPagerGesture = new CameraViewPagerGesture(null);
-    a(new FilterPagerViewStubHolder.2(this, localCameraViewPagerGesture));
-    return localCameraViewPagerGesture;
-  }
-  
   public void a(int paramInt)
   {
     a(new FilterPagerViewStubHolder.5(this, paramInt));
@@ -30,7 +23,7 @@ public class FilterPagerViewStubHolder
   
   protected void a(View paramView)
   {
-    this.a = ((VideoFilterViewPager)paramView.findViewById(2064122221));
+    this.a = ((VideoFilterViewPager)paramView.findViewById(2063991103));
   }
   
   public void a(VideoFilterViewPager.SelectCallBack paramSelectCallBack)
@@ -40,24 +33,16 @@ public class FilterPagerViewStubHolder
   
   public void a(boolean paramBoolean)
   {
-    a();
+    c();
     a(new FilterPagerViewStubHolder.1(this, paramBoolean));
-  }
-  
-  public void b()
-  {
-    if (!a()) {
-      return;
-    }
-    this.a.e();
   }
   
   public void b(boolean paramBoolean)
   {
-    if ((!paramBoolean) && (!a())) {
+    if ((!paramBoolean) && (!ap_())) {
       return;
     }
-    a();
+    c();
     VideoFilterViewPager localVideoFilterViewPager = this.a;
     int i;
     if (paramBoolean) {
@@ -69,11 +54,9 @@ public class FilterPagerViewStubHolder
     this.a.setEnabled(paramBoolean);
   }
   
-  public void c() {}
-  
   public void c(boolean paramBoolean)
   {
-    a();
+    c();
     VideoFilterViewPager localVideoFilterViewPager = this.a;
     if (localVideoFilterViewPager != null)
     {
@@ -89,19 +72,36 @@ public class FilterPagerViewStubHolder
         this.a.a(0);
         return;
       }
-      this.a.a();
+      this.a.b();
     }
+  }
+  
+  public CameraViewPagerGesture d()
+  {
+    CameraViewPagerGesture localCameraViewPagerGesture = new CameraViewPagerGesture(null);
+    a(new FilterPagerViewStubHolder.2(this, localCameraViewPagerGesture));
+    return localCameraViewPagerGesture;
   }
   
   public void d(boolean paramBoolean)
   {
-    a();
+    c();
     this.a.post(new FilterPagerViewStubHolder.3(this, paramBoolean));
   }
+  
+  public void e()
+  {
+    if (!ap_()) {
+      return;
+    }
+    this.a.f();
+  }
+  
+  public void f() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.FilterPagerViewStubHolder
  * JD-Core Version:    0.7.0.1
  */

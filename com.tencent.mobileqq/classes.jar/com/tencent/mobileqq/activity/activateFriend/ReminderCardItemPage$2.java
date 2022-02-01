@@ -18,12 +18,12 @@ class ReminderCardItemPage$2
       paramBundle.run();
       return;
     }
-    ReminderCardItemPage.a(this.a).runOnUiThread(paramBundle);
+    ReminderCardItemPage.b(this.a).runOnUiThread(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage.2
  * JD-Core Version:    0.7.0.1
  */

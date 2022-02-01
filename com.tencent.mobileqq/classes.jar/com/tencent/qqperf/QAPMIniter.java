@@ -15,17 +15,6 @@ public class QAPMIniter
 {
   public static boolean a = false;
   
-  public static int a()
-  {
-    if (MobileQQ.sProcessId == 2) {
-      return 14;
-    }
-    if (MobileQQ.sProcessId == 7) {
-      return 19;
-    }
-    return 0;
-  }
-  
   public static void a()
   {
     for (;;)
@@ -47,7 +36,7 @@ public class QAPMIniter
         Object localObject1 = "edf7897a-1";
         if ((2 != MobileQQ.sProcessId) && (8 != MobileQQ.sProcessId))
         {
-          String str3 = MagnifierSDK.a();
+          String str3 = MagnifierSDK.k();
           Object localObject3 = "";
           try
           {
@@ -77,10 +66,21 @@ public class QAPMIniter
       String str1 = "None-100";
     }
   }
+  
+  public static int b()
+  {
+    if (MobileQQ.sProcessId == 2) {
+      return 14;
+    }
+    if (MobileQQ.sProcessId == 7) {
+      return 19;
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.QAPMIniter
  * JD-Core Version:    0.7.0.1
  */

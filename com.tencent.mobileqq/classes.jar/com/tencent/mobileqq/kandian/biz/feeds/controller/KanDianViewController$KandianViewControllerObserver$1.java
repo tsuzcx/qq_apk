@@ -14,12 +14,12 @@ class KanDianViewController$KandianViewControllerObserver$1
   
   public void run()
   {
-    if (((KanDianViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerKanDianViewController$KandianViewControllerObserver.a) instanceof ReadInJoyListViewGroup)) && (KanDianViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerKanDianViewController$KandianViewControllerObserver.a).a() == 0) && (((ReadInJoyListViewGroup)KanDianViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerKanDianViewController$KandianViewControllerObserver.a)).a() != null) && (((ReadInJoyListViewGroup)KanDianViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerKanDianViewController$KandianViewControllerObserver.a)).a().a() != null))
+    if (((KanDianViewController.b(this.e.a) instanceof ReadInJoyListViewGroup)) && (KanDianViewController.b(this.e.a).getChannelID() == 0) && (((ReadInJoyListViewGroup)KanDianViewController.b(this.e.a)).getAdapter() != null) && (((ReadInJoyListViewGroup)KanDianViewController.b(this.e.a)).getAdapter().E() != null))
     {
-      if (KanDianViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerKanDianViewController$KandianViewControllerObserver.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList))
+      if (KanDianViewController.a(this.e.a, this.a, this.b))
       {
-        KanDianViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerKanDianViewController$KandianViewControllerObserver.a, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsApiIInsertArticleCallback);
-        KanDianViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerKanDianViewController$KandianViewControllerObserver.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        KanDianViewController.a(this.e.a, this.c);
+        KanDianViewController.a(this.e.a, this.d, this.a);
       }
       RIJFeedsDynamicInsertController.INSTANCE.updateAdReadStatus(false);
     }
@@ -27,7 +27,7 @@ class KanDianViewController$KandianViewControllerObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.KanDianViewController.KandianViewControllerObserver.1
  * JD-Core Version:    0.7.0.1
  */

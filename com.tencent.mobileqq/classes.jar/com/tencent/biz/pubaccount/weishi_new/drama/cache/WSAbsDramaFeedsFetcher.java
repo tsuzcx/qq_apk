@@ -15,7 +15,7 @@ public abstract class WSAbsDramaFeedsFetcher
   protected ArrayList<stDramaFeed> a(WSDramaFeedsParams paramWSDramaFeedsParams, int paramInt1, int paramInt2, IFetchDataRspListener<stDramaFeed> paramIFetchDataRspListener)
   {
     ArrayList localArrayList = new ArrayList();
-    Map localMap = paramWSDramaFeedsParams.a();
+    Map localMap = paramWSDramaFeedsParams.f();
     while (paramInt1 <= paramInt2)
     {
       stDramaFeed localstDramaFeed = (stDramaFeed)localMap.get(Integer.valueOf(paramInt1));
@@ -38,7 +38,7 @@ public abstract class WSAbsDramaFeedsFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.cache.WSAbsDramaFeedsFetcher
  * JD-Core Version:    0.7.0.1
  */

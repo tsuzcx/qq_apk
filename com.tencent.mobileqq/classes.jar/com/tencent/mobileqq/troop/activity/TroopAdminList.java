@@ -26,37 +26,24 @@ import java.util.Map;
 public class TroopAdminList
   extends IphoneTitleBarActivity
 {
-  public View.OnClickListener a;
-  protected LinearLayout a;
-  protected FriendListHandler a;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new TroopAdminList.2(this);
-  AvatarObserver jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new TroopAdminList.1(this);
-  TroopAdminList.AdminListAdapter jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter;
-  protected XListView a;
-  protected final String a;
-  protected List<Map<String, String>> a;
-  protected String[] a;
-  protected String b;
-  protected String c;
-  protected String d;
-  
-  public TroopAdminList()
-  {
-    this.jdField_a_of_type_JavaLangString = "TroopAdminList";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new TroopAdminList.6(this);
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    ThreadManager.post(new TroopAdminList.3(this), 8, null, true);
-  }
+  protected final String a = "TroopAdminList";
+  protected LinearLayout b;
+  protected XListView c;
+  TroopAdminList.AdminListAdapter d;
+  protected String[] e;
+  protected List<Map<String, String>> f = new ArrayList();
+  protected String g;
+  protected FriendListHandler h;
+  protected String i;
+  protected String j;
+  AvatarObserver k = new TroopAdminList.1(this);
+  FriendListObserver l = new TroopAdminList.2(this);
+  public View.OnClickListener m = new TroopAdminList.6(this);
   
   protected boolean a()
   {
-    this.b = getIntent().getStringExtra("uin");
-    if (TextUtils.isEmpty(this.b)) {
+    this.g = getIntent().getStringExtra("uin");
+    if (TextUtils.isEmpty(this.g)) {
       return false;
     }
     ArrayList localArrayList = getIntent().getStringArrayListExtra("troop_info_memo");
@@ -65,22 +52,22 @@ public class TroopAdminList
       if (localArrayList.size() < 1) {
         return false;
       }
-      this.jdField_a_of_type_ArrayOfJavaLangString = new String[localArrayList.size()];
-      this.jdField_a_of_type_ArrayOfJavaLangString[0] = this.b;
-      int k = localArrayList.size();
-      int j = 1;
-      int i = 0;
-      while (j < k)
+      this.e = new String[localArrayList.size()];
+      this.e[0] = this.g;
+      int i2 = localArrayList.size();
+      int i1 = 1;
+      int n = 0;
+      while (i1 < i2)
       {
-        if (!((String)localArrayList.get(i)).equals(this.b))
+        if (!((String)localArrayList.get(n)).equals(this.g))
         {
-          this.jdField_a_of_type_ArrayOfJavaLangString[j] = ((String)localArrayList.get(i));
-          j += 1;
+          this.e[i1] = ((String)localArrayList.get(n));
+          i1 += 1;
         }
-        i += 1;
+        n += 1;
       }
-      this.c = getIntent().getStringExtra("troop_uin");
-      this.d = getIntent().getStringExtra("troop_code");
+      this.i = getIntent().getStringExtra("troop_uin");
+      this.j = getIntent().getStringExtra("troop_code");
       return true;
     }
     return false;
@@ -88,32 +75,38 @@ public class TroopAdminList
   
   protected void b()
   {
-    View localView = View.inflate(this, 2131560604, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131365037));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this);
-    AbsListView.LayoutParams localLayoutParams = new AbsListView.LayoutParams(-1, -2);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    setContentView(localView);
-    setTitle(getString(2131693882));
+    this.f = new ArrayList();
+    ThreadManager.post(new TroopAdminList.3(this), 8, null, true);
   }
   
   protected void c()
+  {
+    View localView = View.inflate(this, 2131626649, null);
+    this.c = ((XListView)localView.findViewById(2131431170));
+    this.c.setVerticalScrollBarEnabled(false);
+    this.c.setDivider(null);
+    this.b = new LinearLayout(this);
+    AbsListView.LayoutParams localLayoutParams = new AbsListView.LayoutParams(-1, -2);
+    this.b.setLayoutParams(localLayoutParams);
+    this.b.setOrientation(1);
+    setContentView(localView);
+    setTitle(getString(2131891487));
+  }
+  
+  protected void d()
   {
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
       ThreadManager.post(new TroopAdminList.4(this), 8, null, true);
       return;
     }
-    int i = 0;
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    while (i < j)
+    int n = 0;
+    int i1 = this.f.size();
+    while (n < i1)
     {
-      String str = (String)((Map)this.jdField_a_of_type_JavaUtilList.get(i)).get("uin");
-      ((Map)this.jdField_a_of_type_JavaUtilList.get(i)).put("nick", ContactUtils.d(this.app, str));
-      i += 1;
+      String str = (String)((Map)this.f.get(n)).get("uin");
+      ((Map)this.f.get(n)).put("nick", ContactUtils.d(this.app, str));
+      n += 1;
     }
     runOnUiThread(new TroopAdminList.5(this));
   }
@@ -132,8 +125,8 @@ public class TroopAdminList
     super.doOnCreate(paramBundle);
     if (a())
     {
+      c();
       b();
-      a();
     }
     else
     {
@@ -147,8 +140,8 @@ public class TroopAdminList
   
   protected void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
+    removeObserver(this.l);
+    removeObserver(this.k);
     super.doOnDestroy();
   }
   
@@ -161,7 +154,7 @@ public class TroopAdminList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList
  * JD-Core Version:    0.7.0.1
  */

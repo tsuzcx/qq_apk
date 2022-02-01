@@ -30,25 +30,25 @@ class SmallScreenVideoController$2
     }
     if (paramBoolean)
     {
-      if ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (SmallScreenUtils.f()) && ((paramInt == 1) || (paramInt == 3)) && (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI != null))
+      if ((this.b.r != null) && (SmallScreenUtils.g()) && ((paramInt == 1) || (paramInt == 3)) && (this.b.u != null))
       {
-        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(true, false);
-        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.c(paramLong, this.a.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi.isFrontCamera());
+        this.b.u.a(true, false);
+        this.b.u.c(paramLong, this.b.v.isFrontCamera());
       }
     }
     else
     {
-      if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
+      if ((this.b.s != null) && (this.b.s.k() != null))
       {
-        if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().p()) {
+        if (this.b.s.k().p()) {
           localObject = "0X8004894";
         }
         for (;;)
         {
           break;
-          if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().e == 1) {
+          if (this.b.s.k().h == 1) {
             localObject = "0X8004888";
-          } else if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().e == 2) {
+          } else if (this.b.s.k().h == 2) {
             localObject = "0X800488E";
           } else {
             localObject = "";
@@ -56,8 +56,8 @@ class SmallScreenVideoController$2
         }
         ReportController.b(null, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
       }
-      if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(38), Integer.valueOf(2), Long.valueOf(paramLong) });
+      if (this.b.r != null) {
+        this.b.r.a(new Object[] { Integer.valueOf(38), Integer.valueOf(2), Long.valueOf(paramLong) });
       }
     }
   }
@@ -68,16 +68,16 @@ class SmallScreenVideoController$2
   
   protected void b(long paramLong, boolean paramBoolean)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().k == 1011))
+    if ((this.b.s != null) && (this.b.s.k().p == 1011))
     {
-      this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(false, false);
-      this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.m();
+      this.b.u.a(false, false);
+      this.b.u.B();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoController.2
  * JD-Core Version:    0.7.0.1
  */

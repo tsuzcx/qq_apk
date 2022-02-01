@@ -17,19 +17,9 @@ public class HotFriendResHandler
     super("qq.android.hotfriend.res", paramQQAppInterface);
   }
   
-  public int a()
-  {
-    return 10042;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return HotFriendResData.class;
-  }
-  
-  public String a()
-  {
-    return "HotFriendResHandler";
   }
   
   public void a(String paramString)
@@ -51,7 +41,7 @@ public class HotFriendResHandler
     }
     try
     {
-      localObject = HotReactiveHelper.a();
+      localObject = HotReactiveHelper.c();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -70,19 +60,29 @@ public class HotFriendResHandler
     super.a(paramString);
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public String b()
   {
+    return "HotFriendResHandler";
+  }
+  
+  public int c()
+  {
+    return 10042;
+  }
+  
+  public String d()
+  {
     return null;
+  }
+  
+  public boolean e()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.HotFriendResHandler
  * JD-Core Version:    0.7.0.1
  */

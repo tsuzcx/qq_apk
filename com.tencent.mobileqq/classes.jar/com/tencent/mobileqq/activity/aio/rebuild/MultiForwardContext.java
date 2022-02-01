@@ -9,14 +9,14 @@ import java.util.List;
 public class MultiForwardContext
   extends AIOContext
 {
-  public ChatAdapter1 a()
+  public ChatAdapter1 P()
   {
-    return ((MultiForwardChatPie)this.a).a();
+    return ((MultiForwardChatPie)this.c).bC();
   }
   
-  public ScrollerRunnable a()
+  public ScrollerRunnable Q()
   {
-    return ((MultiForwardChatPie)this.a).a;
+    return ((MultiForwardChatPie)this.c).bj;
   }
   
   public void a(List<ChatMessage> paramList, CharSequence paramCharSequence) {}
@@ -25,7 +25,7 @@ public class MultiForwardContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.MultiForwardContext
  * JD-Core Version:    0.7.0.1
  */

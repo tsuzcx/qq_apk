@@ -14,15 +14,15 @@ class GdtFeedbackJsCallHandler$1
   {
     if (paramGdtFeedbackResultParams == null)
     {
-      AdLog.e(GdtFeedbackJsCallHandler.jdField_a_of_type_JavaLangString, "[onResult] error, params are null");
+      AdLog.e(GdtFeedbackJsCallHandler.a, "[onResult] error, params are null");
       return;
     }
-    GdtFeedbackJsCallHandler.a(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtFeedbackJsCallHandler, this.jdField_a_of_type_JavaLangString, paramGdtFeedbackResultParams.jdField_a_of_type_Int, paramGdtFeedbackResultParams.jdField_a_of_type_ComTencentAdTangramAdError.getErrorCode());
+    GdtFeedbackJsCallHandler.a(this.b, this.a, paramGdtFeedbackResultParams.b, paramGdtFeedbackResultParams.a.getErrorCode());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtFeedbackJsCallHandler.1
  * JD-Core Version:    0.7.0.1
  */

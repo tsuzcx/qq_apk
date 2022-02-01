@@ -18,22 +18,22 @@ class GrayTipsItemBuilder$3$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.a.a.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetworkAvailable(this.a.a.c))
     {
-      ToastUtil.a().a(2131691526);
+      ToastUtil.a().a(2131888488);
       return;
     }
-    paramDialogInterface = (SmartDeviceProxyMgr)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-    paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, 1, 0);
-    paramDialogInterface = paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+    paramDialogInterface = (SmartDeviceProxyMgr)this.a.a.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    paramDialogInterface.a(Long.parseLong(this.a.a.d.b), 0, 1, 0);
+    paramDialogInterface = paramDialogInterface.g(Long.parseLong(this.a.a.d.b));
     if (paramDialogInterface != null) {
-      SmartDeviceReport.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), "Usr_AIO_Menu", 5, 0, paramDialogInterface.productId);
+      SmartDeviceReport.a(this.a.a.a, Long.parseLong(this.a.a.d.b), "Usr_AIO_Menu", 5, 0, paramDialogInterface.productId);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.3.2
  * JD-Core Version:    0.7.0.1
  */

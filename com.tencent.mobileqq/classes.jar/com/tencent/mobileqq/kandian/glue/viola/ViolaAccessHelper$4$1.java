@@ -23,40 +23,40 @@ class ViolaAccessHelper$4$1
     {
       if (paramString == null)
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaAccessHelper$ViolaOfflineDownloadListener != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaAccessHelper$ViolaOfflineDownloadListener.a();
+        if (this.a.c != null) {
+          this.a.c.a();
         }
       }
       else
       {
         if (paramString.contains("url"))
         {
-          QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. contains url. cost=", Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) });
+          QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. contains url. cost=", Long.valueOf(System.currentTimeMillis() - this.a.d) });
           return;
         }
         long l1 = System.currentTimeMillis();
-        long l2 = this.a.jdField_a_of_type_Long;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaAccessHelper$ViolaOfflineDownloadListener != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaAccessHelper$ViolaOfflineDownloadListener.a();
+        long l2 = this.a.d;
+        if (this.a.c != null) {
+          this.a.c.a();
         }
         QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. no update. cost=", Long.valueOf(l1 - l2) });
       }
     }
-    else if (this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaAccessHelper$ViolaOfflineDownloadListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaAccessHelper$ViolaOfflineDownloadListener.b();
+    else if (this.a.c != null) {
+      this.a.c.b();
     }
   }
   
   public void progress(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaAccessHelper$ViolaOfflineDownloadListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaAccessHelper$ViolaOfflineDownloadListener.a(paramInt);
+    if (this.a.c != null) {
+      this.a.c.a(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper.4.1
  * JD-Core Version:    0.7.0.1
  */

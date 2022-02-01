@@ -34,43 +34,38 @@ import java.util.List;
 public class ChatHistoryC2CDateFragment
   extends ChatHistoryBaseFragment
 {
-  private static String b = "Q.history.C2CDateFragment";
-  private int jdField_a_of_type_Int;
-  public ChatHistoryC2CDateFragment.ChatHistoryDatePickerController a;
-  MessageRoamManager.MessageRoamListener jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager$MessageRoamListener = new ChatHistoryC2CDateFragment.3(this);
-  private MessageRoamManager jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager;
-  private MessageRecordEntityManager jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager;
-  private QSlowTableManager jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager;
-  public CalendarDay a;
-  public DatePickerView a;
-  public HashMap<String, Boolean> a;
-  public QQAppInterface b;
-  public CalendarDay b;
-  public CalendarDay c;
-  private String c;
-  private CalendarDay jdField_d_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-  private String jdField_d_of_type_JavaLangString;
-  boolean jdField_d_of_type_Boolean = false;
-  private String e;
-  
-  public ChatHistoryC2CDateFragment()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  private static String B = "Q.history.C2CDateFragment";
+  MessageRoamManager.MessageRoamListener A = new ChatHistoryC2CDateFragment.3(this);
+  private MessageRecordEntityManager C;
+  private QSlowTableManager D;
+  private MessageRoamManager E;
+  private String F;
+  private int G;
+  private String H;
+  private String I;
+  private CalendarDay J;
+  public QQAppInterface s;
+  public DatePickerView t;
+  public ChatHistoryC2CDateFragment.ChatHistoryDatePickerController u;
+  public CalendarDay v;
+  public CalendarDay w;
+  public CalendarDay x;
+  public HashMap<String, Boolean> y = new HashMap();
+  boolean z = false;
   
   private MessageRecord a(int paramInt1, int paramInt2, int paramInt3)
   {
     long l1 = CalendarDay.dayToTimeMillis(paramInt1, paramInt2, paramInt3) / 1000L;
     long l2 = 86400L + l1;
     Object localObject1 = UinTypeUtil.a();
-    localObject1 = String.format("select * from %s m where m.time>=%s and m.time<%s and m.isValid=1 and m.msgtype %s limit 1", new Object[] { this.e, Long.valueOf(l1), Long.valueOf(l2), localObject1 });
-    Object localObject2 = this.jdField_c_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
+    localObject1 = String.format("select * from %s m where m.time>=%s and m.time<%s and m.isValid=1 and m.msgtype %s limit 1", new Object[] { this.I, Long.valueOf(l1), Long.valueOf(l2), localObject1 });
+    Object localObject2 = this.x;
     if ((localObject2 != null) && (l2 * 1000L < ((CalendarDay)localObject2).getTimeInMillis()))
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager;
+      localObject2 = this.D;
       if (localObject2 != null)
       {
-        localObject2 = ((QSlowTableManager)localObject2).a((String)localObject1);
+        localObject2 = ((QSlowTableManager)localObject2).b((String)localObject1);
         localObject1 = localObject2;
         if (localObject2 == null) {
           break label206;
@@ -79,7 +74,7 @@ public class ChatHistoryC2CDateFragment
         if (!QLog.isColorLevel()) {
           break label206;
         }
-        localObject1 = jdField_b_of_type_JavaLangString;
+        localObject1 = B;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("slowtable data:");
         localStringBuilder.append(localObject2);
@@ -90,7 +85,7 @@ public class ChatHistoryC2CDateFragment
     }
     else
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager;
+      localObject2 = this.C;
       if (localObject2 != null)
       {
         localObject1 = ((MessageRecordEntityManager)localObject2).rawQuery(MessageRecord.class, (String)localObject1, null);
@@ -105,39 +100,9 @@ public class ChatHistoryC2CDateFragment
     return null;
   }
   
-  private void a()
-  {
-    this.e = MessageRecord.getTableName(this.jdField_c_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager = ((MessageRecordEntityManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().a());
-    MessageRecord localMessageRecord = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(0).b(this.jdField_c_of_type_JavaLangString, 0);
-    Message localMessage = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_c_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager = ((QSlowTableManager)getBaseActivity().app.getManager(QQManagerFactory.SLOW_TABLE_MANAGER));
-    long l = this.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.b(this.e);
-    if (localMessageRecord != null) {
-      this.jdField_c_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(localMessageRecord.time * 1000L);
-    }
-    if ((localMessageRecord != null) && (localMessageRecord.time != 0L))
-    {
-      if ((l != 0L) && (l < localMessageRecord.time)) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(l * 1000L);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = this.jdField_c_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-      }
-    }
-    else {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(System.currentTimeMillis());
-    }
-    if ((localMessage != null) && (localMessage.time != 0L))
-    {
-      this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(localMessage.time * 1000L);
-      return;
-    }
-    this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(System.currentTimeMillis());
-  }
-  
   private void a(int paramInt1, int paramInt2, Boolean paramBoolean)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.y;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("-");
@@ -147,13 +112,13 @@ public class ChatHistoryC2CDateFragment
   
   private void a(Calendar paramCalendar)
   {
-    this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(paramCalendar.getTimeInMillis());
-    paramCalendar = new CalendarDay(this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.year, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.month, 1);
+    this.w = new CalendarDay(System.currentTimeMillis());
+    this.v = new CalendarDay(paramCalendar.getTimeInMillis());
+    paramCalendar = new CalendarDay(this.w.year, this.w.month, 1);
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTimeInMillis(paramCalendar.getTimeInMillis());
     paramCalendar = Calendar.getInstance();
-    paramCalendar.setTimeInMillis(this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.getTimeInMillis());
+    paramCalendar.setTimeInMillis(this.w.getTimeInMillis());
     BitSet localBitSet = ((MessageRoamManager)getBaseActivity().app.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).b(localCalendar, paramCalendar);
     localCalendar = (Calendar)localCalendar.clone();
     ArrayList localArrayList = new ArrayList(31);
@@ -163,9 +128,9 @@ public class ChatHistoryC2CDateFragment
       if ((!localCalendar.before(paramCalendar)) && (!localCalendar.equals(paramCalendar)))
       {
         if (localArrayList.size() > 0) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView.a(this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.year, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.month, localArrayList);
+          this.t.a(this.w.year, this.w.month, localArrayList);
         }
-        a(this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.year, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.month, Boolean.valueOf(true));
+        a(this.w.year, this.w.month, Boolean.valueOf(true));
         return;
       }
       if (localBitSet.get(i))
@@ -179,15 +144,45 @@ public class ChatHistoryC2CDateFragment
     }
   }
   
-  private boolean a(int paramInt1, int paramInt2)
+  private boolean c(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = this.y;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("-");
     localStringBuilder.append(paramInt2);
     localObject = (Boolean)((HashMap)localObject).get(localStringBuilder.toString());
     return (localObject != null) && (((Boolean)localObject).booleanValue());
+  }
+  
+  private void v()
+  {
+    this.I = MessageRecord.getTableName(this.F, 0);
+    this.C = ((MessageRecordEntityManager)this.s.getEntityManagerFactory().b());
+    MessageRecord localMessageRecord = this.s.getMessageProxy(0).f(this.F, 0);
+    Message localMessage = this.s.getMessageFacade().e(this.F, 0);
+    this.D = ((QSlowTableManager)getBaseActivity().app.getManager(QQManagerFactory.SLOW_TABLE_MANAGER));
+    long l = this.D.d(this.I);
+    if (localMessageRecord != null) {
+      this.x = new CalendarDay(localMessageRecord.time * 1000L);
+    }
+    if ((localMessageRecord != null) && (localMessageRecord.time != 0L))
+    {
+      if ((l != 0L) && (l < localMessageRecord.time)) {
+        this.v = new CalendarDay(l * 1000L);
+      } else {
+        this.v = this.x;
+      }
+    }
+    else {
+      this.v = new CalendarDay(System.currentTimeMillis());
+    }
+    if ((localMessage != null) && (localMessage.time != 0L))
+    {
+      this.w = new CalendarDay(localMessage.time * 1000L);
+      return;
+    }
+    this.w = new CalendarDay(System.currentTimeMillis());
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -207,30 +202,30 @@ public class ChatHistoryC2CDateFragment
     }
     if ((localObject instanceof QQAppInterface))
     {
-      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager = ((MessageRoamManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER));
-      this.jdField_c_of_type_JavaLangString = paramBundle.getString("uin");
-      if (this.jdField_c_of_type_JavaLangString == null)
+      this.s = ((QQAppInterface)localObject);
+      this.E = ((MessageRoamManager)this.s.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER));
+      this.F = paramBundle.getString("uin");
+      if (this.F == null)
       {
-        QLog.e(jdField_b_of_type_JavaLangString, 1, "Uin is null");
+        QLog.e(B, 1, "Uin is null");
         return;
       }
-      this.jdField_a_of_type_Int = paramBundle.getInt("uintype");
-      this.jdField_d_of_type_JavaLangString = paramBundle.getString("uinname");
+      this.G = paramBundle.getInt("uintype");
+      this.H = paramBundle.getString("uinname");
       a();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView = ((DatePickerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372740));
-      paramBundle = jdField_b_of_type_JavaLangString;
+      this.t = ((DatePickerView)this.f.findViewById(2131440287));
+      paramBundle = B;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("firstMessage : ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay);
+      ((StringBuilder)localObject).append(this.v);
       ((StringBuilder)localObject).append(" lastMssage : ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay);
+      ((StringBuilder)localObject).append(this.w);
       QLog.i(paramBundle, 1, ((StringBuilder)localObject).toString());
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$ChatHistoryDatePickerController = new ChatHistoryC2CDateFragment.ChatHistoryDatePickerController(this, this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView.setController(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$ChatHistoryDatePickerController);
+      this.u = new ChatHistoryC2CDateFragment.ChatHistoryDatePickerController(this, this.v, this.w);
+      this.t.setController(this.u);
       return;
     }
-    QLog.e(jdField_b_of_type_JavaLangString, 1, "app is null");
+    QLog.e(B, 1, "app is null");
     if (localBaseActivity != null) {
       localBaseActivity.finish();
     }
@@ -238,40 +233,38 @@ public class ChatHistoryC2CDateFragment
   
   boolean a()
   {
-    CalendarDay localCalendarDay1 = this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-    CalendarDay localCalendarDay2 = this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-    Calendar localCalendar = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b();
-    if ((localCalendar != null) && (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a()))
+    CalendarDay localCalendarDay1 = this.v;
+    CalendarDay localCalendarDay2 = this.w;
+    Calendar localCalendar = this.E.f();
+    if ((localCalendar != null) && (this.E.a()))
     {
-      this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(localCalendar.getTimeInMillis());
-      this.jdField_d_of_type_Boolean = true;
+      this.w = new CalendarDay(System.currentTimeMillis());
+      this.v = new CalendarDay(localCalendar.getTimeInMillis());
+      this.z = true;
     }
     else
     {
-      a();
-      this.jdField_d_of_type_Boolean = false;
+      v();
+      this.z = false;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_b_of_type_JavaLangString, 2, new Object[] { "initStartEndDate ", this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.toString(), " ", this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.toString() });
+      QLog.d(B, 2, new Object[] { "initStartEndDate ", this.v.toString(), " ", this.w.toString() });
     }
     if (localCalendarDay1 != null)
     {
       if (localCalendarDay2 == null) {
         return true;
       }
-      return (localCalendarDay1 != null) && (localCalendarDay1.getTimeInMillis() != this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.getTimeInMillis()) && (localCalendarDay2 != null) && (localCalendarDay2.getTimeInMillis() != this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.getTimeInMillis());
+      return (localCalendarDay1 != null) && (localCalendarDay1.getTimeInMillis() != this.v.getTimeInMillis()) && (localCalendarDay2 != null) && (localCalendarDay2.getTimeInMillis() != this.w.getTimeInMillis());
     }
     return true;
   }
-  
-  protected void b() {}
   
   public void b(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel())
     {
-      String str = jdField_b_of_type_JavaLangString;
+      String str = B;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("queryLocalMessageInMonth:");
       localStringBuilder.append(paramInt1);
@@ -285,53 +278,55 @@ public class ChatHistoryC2CDateFragment
   
   protected void c() {}
   
-  public void e()
+  protected void d() {}
+  
+  public void i()
   {
-    super.e();
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager$MessageRoamListener);
+    super.i();
+    this.E.a(this.A);
     boolean bool = a();
     if (bool)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$ChatHistoryDatePickerController.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay);
+      this.y.clear();
+      this.u.a(this.v, this.w);
     }
-    if (this.jdField_d_of_type_Boolean) {
-      a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b());
+    if (this.z) {
+      a(this.E.f());
     } else {
-      b(this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.year, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.month);
+      b(this.w.year, this.w.month);
     }
     if (bool)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView.getAdapter().notifyDataSetChanged();
-      DatePickerView localDatePickerView = this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView;
+      this.t.getAdapter().notifyDataSetChanged();
+      DatePickerView localDatePickerView = this.t;
       localDatePickerView.scrollToPosition(localDatePickerView.getAdapter().getItemCount() - 1);
     }
-    ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B6", "0X800A0B6", 6, 0, "", "", "", "");
+    ReportController.b(this.s, "dc00898", "", "", "0X800A0B6", "0X800A0B6", 6, 0, "", "", "", "");
   }
   
-  public void f()
+  public void j()
   {
-    super.f();
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager$MessageRoamListener);
+    super.j();
+    this.E.b(this.A);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560625, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131626670, paramViewGroup, false);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.f = paramView;
     a(getBaseActivity().getIntent().getExtras());
     super.onViewCreated(paramView, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment
  * JD-Core Version:    0.7.0.1
  */

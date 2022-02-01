@@ -18,29 +18,29 @@ public class EmojiStickerHelper
   implements Handler.Callback, ILifeCycleHelper, AbsListView.OnScrollListener
 {
   public View a;
-  private final BaseChatPie a;
+  private final BaseChatPie b;
   
   public EmojiStickerHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.b = paramBaseChatPie;
   }
   
   private void c()
   {
-    EmojiStickerManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    EmojiStickerManager.a().a(this.b);
   }
   
   private void d()
   {
     EmojiStickerManager localEmojiStickerManager = EmojiStickerManager.a();
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    localEmojiStickerManager.a(localBaseChatPie, localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.r);
+    BaseChatPie localBaseChatPie = this.b;
+    localEmojiStickerManager.a(localBaseChatPie, localBaseChatPie.ah.b, this.b.ah.a, this.b.aD);
   }
   
   public void a()
   {
-    ChatXListView localChatXListView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-    ChatAdapter1 localChatAdapter1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1;
+    ChatXListView localChatXListView = this.b.U;
+    ChatAdapter1 localChatAdapter1 = this.b.V;
     if (localChatXListView != null)
     {
       Object localObject;
@@ -56,27 +56,27 @@ public class EmojiStickerHelper
         }
         localChatXListView.setSelectionFromTop(j, i);
       }
-      if (this.jdField_a_of_type_AndroidViewView == null)
+      if (this.a == null)
       {
-        this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext);
-        this.jdField_a_of_type_AndroidViewView.setId(2131374108);
+        this.a = new View(this.b.e);
+        this.a.setId(2131442203);
         localObject = new AbsListView.LayoutParams(-1, 80);
-        this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      if (this.jdField_a_of_type_AndroidViewView.getParent() == null)
+      if (this.a.getParent() == null)
       {
         localChatXListView.setAdapter(null);
-        localChatXListView.addFooterView(this.jdField_a_of_type_AndroidViewView, null, false);
+        localChatXListView.addFooterView(this.a, null, false);
         localChatXListView.setAdapter(localChatAdapter1);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.e(196608);
+        this.b.j(196608);
       }
     }
   }
   
   public void b()
   {
-    ChatXListView localChatXListView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (localChatXListView != null))
+    ChatXListView localChatXListView = this.b.U;
+    if ((this.a != null) && (localChatXListView != null))
     {
       if (localChatXListView.getChildCount() > 0)
       {
@@ -88,12 +88,12 @@ public class EmojiStickerHelper
         }
         localChatXListView.setSelectionFromTop(j, i);
       }
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      View localView = this.a;
       if (localView != null) {
         localChatXListView.removeFooterView(localView);
       }
-      this.jdField_a_of_type_AndroidViewView = null;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.e(196608);
+      this.a = null;
+      this.b.j(196608);
     }
   }
   
@@ -131,13 +131,13 @@ public class EmojiStickerHelper
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     if (paramInt == 0) {
-      EmojiStickerManager.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+      EmojiStickerManager.a().b(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.EmojiStickerHelper
  * JD-Core Version:    0.7.0.1
  */

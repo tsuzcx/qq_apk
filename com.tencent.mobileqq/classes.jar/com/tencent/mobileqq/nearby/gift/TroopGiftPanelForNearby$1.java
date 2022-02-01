@@ -14,7 +14,7 @@ class TroopGiftPanelForNearby$1
   
   public void a(int paramInt)
   {
-    String str = this.a.a();
+    String str = this.a.getTroopUin();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(TroopGiftPanelForNearby.a(this.a));
     localStringBuilder.append("");
@@ -33,20 +33,20 @@ class TroopGiftPanelForNearby$1
       QLog.d("zivonchen", 2, localStringBuilder.toString());
     }
     if (paramInt == 20007) {
-      QQToast.a(TroopGiftPanelForNearby.a(this.a), HardCodeUtil.a(2131715204), 0).b(this.a.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(TroopGiftPanelForNearby.b(this.a), HardCodeUtil.a(2131912687), 0).show(this.a.getResources().getDimensionPixelSize(2131299920));
     } else {
-      QQToast.a(TroopGiftPanelForNearby.b(this.a), HardCodeUtil.a(2131715201), 0).b(this.a.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(TroopGiftPanelForNearby.c(this.a), HardCodeUtil.a(2131912684), 0).show(this.a.getResources().getDimensionPixelSize(2131299920));
     }
-    paramString = this.a.a();
+    paramString = this.a.getTroopUin();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(TroopGiftPanelForNearby.b(this.a));
+    localStringBuilder.append(TroopGiftPanelForNearby.d(this.a));
     localStringBuilder.append("");
     NearbyFlowerManager.a("gift_store", "fail_one", paramString, localStringBuilder.toString(), "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby.1
  * JD-Core Version:    0.7.0.1
  */

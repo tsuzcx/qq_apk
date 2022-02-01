@@ -19,13 +19,13 @@ class AuthorityControlAppDetailsFragment$1
     {
       QLog.d("AuthorityControlAppDetailsActivity", 1, "mLaunchReceiver.onReceive: finish self");
       AuthorityControlAppDetailsFragment.a(this.a, true);
-      AuthorityControlAppDetailsFragment.a(this.a).finish();
+      AuthorityControlAppDetailsFragment.c(this.a).finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlAppDetailsFragment.1
  * JD-Core Version:    0.7.0.1
  */

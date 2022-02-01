@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ViolaBridge
+  implements IViolaBridge
 {
   public static final String TAG = "ViolaBridge";
   private static ViolaBridge violaBridge;
@@ -83,6 +84,12 @@ public class ViolaBridge
     return violaBridge;
   }
   
+  public int callJS(String paramString1, String paramString2)
+  {
+    paramString2 = paramString2.getBytes();
+    return callJS(paramString1, paramString2, paramString2.length);
+  }
+  
   public native int callJS(String paramString, byte[] paramArrayOfByte, int paramInt);
   
   public void callSerializableNative(String paramString, byte[] paramArrayOfByte)
@@ -147,17 +154,35 @@ public class ViolaBridge
     }
   }
   
+  public int createInstance(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    paramString2 = paramString2.getBytes();
+    return createInstance(paramString1, paramString2, paramString2.length, paramString3, paramString4);
+  }
+  
   public native int createInstance(String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2, String paramString3);
   
   public native int destroy();
   
   public native int destroyInstance(String paramString);
   
+  public int execJSFunc(String paramString1, String paramString2)
+  {
+    paramString2 = paramString2.getBytes();
+    return execJSFunc(paramString1, paramString2, paramString2.length);
+  }
+  
   public native int execJSFunc(String paramString, byte[] paramArrayOfByte, int paramInt);
   
   public native JSParam execJSFuncWithResult(String paramString, List<JSParam> paramList);
   
   public native int init();
+  
+  public int initJsFramework(String paramString1, String paramString2)
+  {
+    paramString1 = paramString1.getBytes();
+    return initJsFramework(paramString1, paramString1.length, paramString2);
+  }
   
   public native int initJsFramework(byte[] paramArrayOfByte, int paramInt, String paramString);
   
@@ -249,7 +274,7 @@ public class ViolaBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.ViolaBridge
  * JD-Core Version:    0.7.0.1
  */

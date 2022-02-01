@@ -16,16 +16,16 @@ public class PAAddFriendHelper
     return true;
   }
   
-  public void d()
+  public void f()
   {
-    if (!((PAContext)this.a).k()) {
-      super.d();
+    if (!((PAContext)this.a).P()) {
+      super.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PAAddFriendHelper
  * JD-Core Version:    0.7.0.1
  */

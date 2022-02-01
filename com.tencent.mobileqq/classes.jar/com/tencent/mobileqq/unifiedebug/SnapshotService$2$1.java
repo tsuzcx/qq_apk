@@ -7,12 +7,12 @@ class SnapshotService$2$1
   
   public void run()
   {
-    SnapshotService.b(this.a.this$0, this.a.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$DebugCommand, this.a.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot);
+    SnapshotService.b(this.a.this$0, this.a.b, this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.SnapshotService.2.1
  * JD-Core Version:    0.7.0.1
  */

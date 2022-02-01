@@ -2,7 +2,7 @@ package cooperation.qqcircle.report;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class QCircleLpReportDc05493
 {
@@ -60,11 +60,10 @@ public class QCircleLpReportDc05493
       StringBuilder localStringBuilder;
       break label12;
     }
-    j = RFLog.USR;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("QCircle launch report invalid input fromStr:");
     localStringBuilder.append(paramString2);
-    RFLog.e("QCircleReportHelper_QCircleLpReportDc05493", j, localStringBuilder.toString());
+    QLog.e("QCircleReportHelper_QCircleLpReportDc05493", 1, localStringBuilder.toString());
     j = 0;
     if ((!TextUtils.isEmpty(paramString3)) && (TextUtils.isDigitsOnly(paramString3))) {}
     try
@@ -74,24 +73,22 @@ public class QCircleLpReportDc05493
     catch (Exception localException)
     {
       long l;
-      label79:
+      label73:
       int k;
-      break label79;
+      break label73;
     }
-    k = RFLog.USR;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("QCircle launch report invalid input pushId:");
     localStringBuilder.append(paramString3);
-    RFLog.e("QCircleReportHelper_QCircleLpReportDc05493", k, localStringBuilder.toString());
+    QLog.e("QCircleReportHelper_QCircleLpReportDc05493", 1, localStringBuilder.toString());
     l = 0L;
     switch (j)
     {
     default: 
-      k = RFLog.USR;
       paramString3 = new StringBuilder();
       paramString3.append("QCircle launch report invalid input fromStr:!");
       paramString3.append(paramString2);
-      RFLog.e("QCircleReportHelper_QCircleLpReportDc05493", k, paramString3.toString());
+      QLog.e("QCircleReportHelper_QCircleLpReportDc05493", 1, paramString3.toString());
       break;
     case 8: 
       i = 3;
@@ -130,7 +127,7 @@ public class QCircleLpReportDc05493
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05493
  * JD-Core Version:    0.7.0.1
  */

@@ -17,59 +17,59 @@ import java.util.List;
 public class YuvFboTexture
   extends YUVTexture
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static String b;
-  private static boolean e = false;
-  private static boolean f = false;
-  public static int o = 480;
-  private static int p = 1;
-  private FrameBufferCenterTexture jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture = null;
-  private GLVideoView jdField_a_of_type_ComTencentAvUiGLVideoView;
+  public static int B = 480;
+  private static boolean C = false;
+  private static boolean D = false;
+  private static int E = 1;
+  private static String F;
+  private static String G;
+  private FrameBufferCenterTexture H = null;
+  private GLVideoView I;
   
   public YuvFboTexture(Context paramContext, GLVideoView paramGLVideoView, String paramString, long paramLong)
   {
     super(paramContext, paramString, paramLong);
-    this.jdField_a_of_type_ComTencentAvUiGLVideoView = paramGLVideoView;
+    this.I = paramGLVideoView;
   }
   
   private static void a(Context paramContext)
   {
-    if (e) {
+    if (C) {
       return;
     }
-    e = true;
-    if (jdField_a_of_type_JavaLangString == null) {
-      jdField_a_of_type_JavaLangString = DeviceInfoUtil.c();
+    C = true;
+    if (F == null) {
+      F = DeviceInfoUtil.e();
     }
     paramContext = RendererConfig.a();
-    f = false;
-    if ((paramContext != null) && (paramContext.jdField_a_of_type_Int == 1))
+    D = false;
+    if ((paramContext != null) && (paramContext.a == 1))
     {
-      o = paramContext.b;
-      p = paramContext.c;
-      jdField_b_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
+      B = paramContext.b;
+      E = paramContext.c;
+      G = paramContext.d;
     }
     try
     {
-      if ((!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)))
+      if ((!TextUtils.isEmpty(G)) && (!TextUtils.isEmpty(F)))
       {
-        paramContext = jdField_b_of_type_JavaLangString.split("\\.");
-        String[] arrayOfString = jdField_a_of_type_JavaLangString.split("\\.");
+        paramContext = G.split("\\.");
+        String[] arrayOfString = F.split("\\.");
         int i = 0;
         while ((i < 3) && (i < paramContext.length) && (i < arrayOfString.length))
         {
           if (Integer.valueOf(arrayOfString[i]).intValue() > Integer.valueOf(paramContext[i]).intValue())
           {
-            f = true;
+            D = true;
             return;
           }
           if (Integer.valueOf(arrayOfString[i]).intValue() < Integer.valueOf(paramContext[i]).intValue())
           {
-            f = false;
+            D = false;
             return;
           }
           if (i == 2) {
-            f = true;
+            D = true;
           }
           i += 1;
         }
@@ -79,7 +79,7 @@ public class YuvFboTexture
     catch (Exception paramContext) {}
   }
   
-  public ShaderParameter[] a(GLCanvas paramGLCanvas)
+  public ShaderParameter[] c(GLCanvas paramGLCanvas)
   {
     int i;
     if (a() > b()) {
@@ -87,39 +87,39 @@ public class YuvFboTexture
     } else {
       i = b();
     }
-    a(this.jdField_a_of_type_AndroidContentContext);
-    if ((f) && (getImgWidth() <= o) && (i > ((GLES20Canvas)paramGLCanvas).c() / 3 * 2) && (getImgWidth() < i) && (getImgWidth() != 0) && (this.jdField_a_of_type_ComTencentAvUiGLVideoView.a().size() == 0) && (VideoController.a().a().d == 2)) {
+    a(this.o);
+    if ((D) && (getImgWidth() <= B) && (i > ((GLES20Canvas)paramGLCanvas).i() / 3 * 2) && (getImgWidth() < i) && (getImgWidth() != 0) && (this.I.a().size() == 0) && (VideoController.f().k().g == 2)) {
       i = 1;
     } else {
       i = 0;
     }
     if (i != 0)
     {
-      if (this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture == null) {
-        this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture = FrameBufferCenterTexture.a();
+      if (this.H == null) {
+        this.H = FrameBufferCenterTexture.a();
       }
-      super.a(paramGLCanvas);
-      if (super.a() != null)
+      super.b(paramGLCanvas);
+      if (super.e() != null)
       {
-        FrameBufferCenterTexture localFrameBufferCenterTexture = this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture;
+        FrameBufferCenterTexture localFrameBufferCenterTexture = this.H;
         i = getImgWidth();
         int j = getImgHeight();
         GLES20Canvas localGLES20Canvas = (GLES20Canvas)paramGLCanvas;
-        localFrameBufferCenterTexture.a(paramGLCanvas, i, j, localGLES20Canvas.c(), localGLES20Canvas.d(), a()[0], a()[1], a()[2], this.jdField_b_of_type_ArrayOfFloat, this.k, p);
+        localFrameBufferCenterTexture.a(paramGLCanvas, i, j, localGLES20Canvas.i(), localGLES20Canvas.j(), e()[0], e()[1], e()[2], this.r, this.x, E);
       }
-      return TextureProgramFactory.a(0).a();
+      return TextureProgramFactory.a(0).b();
     }
-    return super.a(paramGLCanvas);
+    return super.c(paramGLCanvas);
   }
   
-  public void b()
+  public void o()
   {
-    super.b();
-    FrameBufferCenterTexture localFrameBufferCenterTexture = this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture;
+    super.o();
+    FrameBufferCenterTexture localFrameBufferCenterTexture = this.H;
     if (localFrameBufferCenterTexture != null) {
-      localFrameBufferCenterTexture.a();
+      localFrameBufferCenterTexture.b();
     }
-    e = false;
+    C = false;
   }
 }
 

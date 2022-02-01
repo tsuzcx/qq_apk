@@ -4,6 +4,7 @@ import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.pb.vas.treasurecard.MobileOrderServer.GetIfSignReply;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.treasurecard.bean.UserInfoReq;
 import com.tencent.treasurecard.net.INetCallBack;
 import kotlin.Metadata;
@@ -19,22 +20,30 @@ final class VasFTManagerImpl$mRequest$1$signRequest$1
     if (!(paramObject instanceof MobileOrderServer.GetIfSignReply)) {
       return;
     }
-    paramObject = (MobileOrderServer.GetIfSignReply)paramObject;
-    paramInt = paramObject.RetCode.get();
+    Object localObject = (MobileOrderServer.GetIfSignReply)paramObject;
+    paramInt = ((MobileOrderServer.GetIfSignReply)localObject).RetCode.get();
     if (paramInt == 0) {
-      paramObject = this.jdField_a_of_type_ComTencentTreasurecardBeanUserInfoReq.b(paramObject.sign.get()).a("http://120.197.235.102/wabp/wabpGetUseInfo");
+      paramObject = this.a.a(((MobileOrderServer.GetIfSignReply)localObject).sign.get()).b("http://wap.cmpassport.com/openapi/wabpGetUseInfo");
     } else {
       paramObject = "";
     }
-    INetCallBack localINetCallBack = this.jdField_a_of_type_ComTencentTreasurecardNetINetCallBack;
-    if (localINetCallBack != null) {
-      localINetCallBack.a(paramInt, paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("request-sign_end ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" ; ");
+    localStringBuilder.append(((MobileOrderServer.GetIfSignReply)localObject).sign.get());
+    localStringBuilder.append(" ; ");
+    localStringBuilder.append(this.a.a());
+    QLog.d("treasureCard", 2, localStringBuilder.toString());
+    localObject = this.b;
+    if (localObject != null) {
+      ((INetCallBack)localObject).a(paramInt, paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.treasurecard.api.impl.VasFTManagerImpl.mRequest.1.signRequest.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,8 +16,8 @@ class MsgNotifyPushDialog$1
   
   public void onClick(View paramView)
   {
-    if (MsgNotifyPushDialog.a != null) {
-      MsgNotifyPushDialog.a(this.a).startActivity(MsgNotifyPushDialog.a);
+    if (MsgNotifyPushDialog.n != null) {
+      MsgNotifyPushDialog.a(this.a).startActivity(MsgNotifyPushDialog.n);
     }
     ReportController.b(null, "CliOper", "", "", "0X8006B15", "0X8006B15", 0, 0, "", "", "", "");
     ReportController.b(null, "dc00898", "", "", "0X8009AC8", "0X8009AC8", 0, 0, "", "", "", "");
@@ -32,7 +32,7 @@ class MsgNotifyPushDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog.1
  * JD-Core Version:    0.7.0.1
  */

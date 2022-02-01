@@ -16,19 +16,19 @@ public class MakeStoryPicSegment
 {
   protected void a(JobContext paramJobContext, GenerateContext paramGenerateContext)
   {
-    int i = UIUtils.b(BaseApplication.getContext());
-    int j = UIUtils.c(BaseApplication.getContext()) * 720 / i;
+    int i = UIUtils.c(BaseApplication.getContext());
+    int j = UIUtils.d(BaseApplication.getContext()) * 720 / i;
     i = j;
     if (j % 2 != 0) {
       i = j + 1;
     }
-    Object localObject = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.a;
+    Object localObject = paramGenerateContext.l.a;
     paramJobContext = (JobContext)localObject;
-    if (!paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.c)
+    if (!paramGenerateContext.l.h)
     {
       paramJobContext = (JobContext)localObject;
-      if (paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_Boolean) {
-        paramJobContext = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_JavaLangString;
+      if (paramGenerateContext.l.g) {
+        paramJobContext = paramGenerateContext.l.b;
       }
     }
     try
@@ -40,7 +40,7 @@ public class MakeStoryPicSegment
         super.notifyError(new BitmapError("Q.qqstory.publish.edit.MakeStoryPicSegment", 0));
         return;
       }
-      if ((paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.e == ((Bitmap)localObject).getHeight()) && (paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.d == ((Bitmap)localObject).getWidth())) {
+      if ((paramGenerateContext.a.g == ((Bitmap)localObject).getHeight()) && (paramGenerateContext.a.f == ((Bitmap)localObject).getWidth())) {
         j = 0;
       } else {
         j = 1;
@@ -90,10 +90,10 @@ public class MakeStoryPicSegment
       {
         paramJobContext = Bitmap.createScaledBitmap((Bitmap)localObject, ((Bitmap)localObject).getWidth() >> 1 << 1, ((Bitmap)localObject).getHeight() >> 1 << 1, false);
       }
-      localObject = PublishFileManager.a(paramGenerateContext.jdField_a_of_type_Int, paramGenerateContext.jdField_b_of_type_JavaLangString, ".jpg");
+      localObject = PublishFileManager.a(paramGenerateContext.b, paramGenerateContext.p, ".jpg");
       BitmapUtils.a(paramJobContext, (String)localObject);
       paramJobContext.recycle();
-      paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.thumbPath = ((String)localObject);
+      paramGenerateContext.d.thumbPath = ((String)localObject);
       super.notifyResult(paramGenerateContext);
       return;
     }
@@ -106,7 +106,7 @@ public class MakeStoryPicSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.publish.MakeStoryPicSegment
  * JD-Core Version:    0.7.0.1
  */

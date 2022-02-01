@@ -12,13 +12,13 @@ import androidx.viewpager.widget.PagerAdapter;
 class AEVideoStoryCaptureModePart$AECaptureModeAdapter
   extends PagerAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder> jdField_a_of_type_AndroidUtilSparseArray;
+  private Context b;
+  private SparseArray<AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder> c;
   
   AEVideoStoryCaptureModePart$AECaptureModeAdapter(AEVideoStoryCaptureModePart paramAEVideoStoryCaptureModePart, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.b = paramContext;
+    this.c = new SparseArray();
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -28,10 +28,10 @@ class AEVideoStoryCaptureModePart$AECaptureModeAdapter
   
   public int getCount()
   {
-    if (AEVideoStoryCaptureModePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModePart) == null) {
+    if (AEVideoStoryCaptureModePart.b(this.a) == null) {
       return 0;
     }
-    return AEVideoStoryCaptureModePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModePart).length;
+    return AEVideoStoryCaptureModePart.b(this.a).length;
   }
   
   public int getItemPosition(Object paramObject)
@@ -42,37 +42,37 @@ class AEVideoStoryCaptureModePart$AECaptureModeAdapter
   @SuppressLint({"ResourceType"})
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject2 = (AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject2 = (AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder)this.c.get(paramInt);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject2 = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2064318470, null);
+      localObject2 = View.inflate(this.b, 2064056329, null);
       localObject1 = new AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder(this);
-      ((AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView = ((View)localObject2);
-      ((AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2064122405));
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
+      ((AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder)localObject1).a = ((View)localObject2);
+      ((AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder)localObject1).b = ((TextView)((View)localObject2).findViewById(2063991262));
+      this.c.put(paramInt, localObject1);
     }
-    localObject2 = AEVideoStoryCaptureModePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModePart)[paramInt];
-    TextView localTextView = ((AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView;
+    localObject2 = AEVideoStoryCaptureModePart.b(this.a)[paramInt];
+    TextView localTextView = ((AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder)localObject1).b;
     localTextView.setText(((AECaptureMode)localObject2).textId);
-    if (AEVideoStoryCaptureModePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModePart))
+    if (AEVideoStoryCaptureModePart.f(this.a))
     {
       localTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-      localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165327));
+      localTextView.setTextColor(this.b.getResources().getColor(2131165564));
     }
     else
     {
-      localTextView.setShadowLayer(4.0F, 0.0F, 2.0F, localTextView.getResources().getColor(2131165337));
-      localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167394));
+      localTextView.setShadowLayer(4.0F, 0.0F, 2.0F, localTextView.getResources().getColor(2131165579));
+      localTextView.setTextColor(this.b.getResources().getColor(2131168464));
     }
-    if (AEVideoStoryCaptureModePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModePart) == localObject2) {
+    if (AEVideoStoryCaptureModePart.i(this.a) == localObject2) {
       localTextView.setAlpha(1.0F);
     } else {
       localTextView.setAlpha(0.6F);
     }
     localTextView.setOnClickListener(new AEVideoStoryCaptureModePart.AECaptureModeAdapter.1(this, (AECaptureMode)localObject2, paramInt));
-    paramViewGroup.addView(((AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView);
-    return ((AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView;
+    paramViewGroup.addView(((AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder)localObject1).a);
+    return ((AEVideoStoryCaptureModePart.AECaptureModeAdapter.ViewHolder)localObject1).a;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -82,7 +82,7 @@ class AEVideoStoryCaptureModePart$AECaptureModeAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.mode.AEVideoStoryCaptureModePart.AECaptureModeAdapter
  * JD-Core Version:    0.7.0.1
  */

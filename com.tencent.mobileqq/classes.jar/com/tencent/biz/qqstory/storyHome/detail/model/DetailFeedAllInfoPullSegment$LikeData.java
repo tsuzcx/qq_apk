@@ -5,17 +5,17 @@ import java.util.List;
 
 class DetailFeedAllInfoPullSegment$LikeData
 {
-  int jdField_a_of_type_Int;
-  List<LikeEntry> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  boolean a;
+  List<LikeEntry> b;
+  int c;
+  int d;
   
   public DetailFeedAllInfoPullSegment$LikeData(boolean paramBoolean, List<LikeEntry> paramList, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a = paramBoolean;
+    this.b = paramList;
+    this.c = paramInt1;
+    this.d = paramInt2;
   }
 }
 

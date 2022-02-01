@@ -22,8 +22,8 @@ class BaseStageView$5
     if (paramLottieDrawable != null)
     {
       localObject = this.a;
-      ((BaseStageView)localObject).b = paramLottieDrawable;
-      ((BaseStageView)localObject).b.addAnimatorListener(new BaseStageView.5.1(this));
+      ((BaseStageView)localObject).B = paramLottieDrawable;
+      ((BaseStageView)localObject).B.addAnimatorListener(new BaseStageView.5.1(this));
     }
   }
 }

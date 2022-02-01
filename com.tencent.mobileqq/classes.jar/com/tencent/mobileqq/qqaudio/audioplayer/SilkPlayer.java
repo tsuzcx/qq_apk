@@ -18,41 +18,36 @@ import java.util.Set;
 public final class SilkPlayer
   implements Handler.Callback, IAudioFilePlayer
 {
-  private byte jdField_a_of_type_Byte = -1;
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = 3;
-  private long jdField_a_of_type_Long = -1L;
-  private Application jdField_a_of_type_AndroidAppApplication = BaseApplication.getContext();
-  private IAudioFileDataListener jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFileDataListener;
-  private IAudioFilePlayerListener jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener;
-  private SilkPlayer.SilkPlayerThread jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  private String jdField_a_of_type_JavaLangString;
-  private int b = -1;
+  private int a = 3;
+  private String b;
   private int c = -1;
-  private int d = 0;
+  private int d = -1;
   private int e = 0;
-  
-  public int a()
-  {
-    return this.e * 20;
-  }
+  private int f = 0;
+  private byte g = -1;
+  private float h = 1.0F;
+  private IAudioFileDataListener i;
+  private Application j = BaseApplication.getContext();
+  private SilkPlayer.SilkPlayerThread k;
+  private IAudioFilePlayerListener l;
+  private WeakReferenceHandler m = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  private long n = -1L;
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread == null)
+    if (this.k == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread = new SilkPlayer.SilkPlayerThread(this, this.jdField_a_of_type_AndroidAppApplication);
-      if ((this.c == -1) && (this.e > 0)) {
-        b(a());
+      this.k = new SilkPlayer.SilkPlayerThread(this, this.j);
+      if ((this.d == -1) && (this.f > 0)) {
+        b(h());
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread.start();
+      this.k.start();
     }
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.h = paramFloat;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -64,25 +59,25 @@ public final class SilkPlayer
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(int paramInt, byte paramByte)
   {
-    this.b = paramInt;
-    this.jdField_a_of_type_Byte = paramByte;
+    this.c = paramInt;
+    this.g = paramByte;
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener != null)
+    this.k = null;
+    if (this.l != null)
     {
       localObject = Message.obtain();
       ((Message)localObject).what = 1;
       ((Message)localObject).arg1 = paramInt2;
       ((Message)localObject).obj = paramString;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage((Message)localObject);
+      this.m.sendMessage((Message)localObject);
     }
     paramString = new HashMap();
     paramString.put("param_succ_flag", "0");
@@ -104,12 +99,12 @@ public final class SilkPlayer
   
   public void a(IAudioFileDataListener paramIAudioFileDataListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFileDataListener = paramIAudioFileDataListener;
+    this.i = paramIAudioFileDataListener;
   }
   
   public void a(IAudioFilePlayerListener paramIAudioFilePlayerListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener = paramIAudioFilePlayerListener;
+    this.l = paramIAudioFilePlayerListener;
   }
   
   void a(Exception paramException, AudioTrack paramAudioTrack, int paramInt1, int paramInt2)
@@ -121,22 +116,22 @@ public final class SilkPlayer
         HashMap localHashMap = new HashMap();
         if (paramAudioTrack != null)
         {
-          int i = paramAudioTrack.getState();
-          int j = paramAudioTrack.getPlayState();
+          int i1 = paramAudioTrack.getState();
+          int i2 = paramAudioTrack.getPlayState();
           paramAudioTrack = new StringBuilder();
-          paramAudioTrack.append(i);
+          paramAudioTrack.append(i1);
           paramAudioTrack.append("");
           localHashMap.put("param_state", paramAudioTrack.toString());
           paramAudioTrack = new StringBuilder();
-          paramAudioTrack.append(j);
+          paramAudioTrack.append(i2);
           paramAudioTrack.append("");
           localHashMap.put("param_play_state", paramAudioTrack.toString());
         }
-        if (this.jdField_a_of_type_JavaLangString != null) {
-          localHashMap.put("param_filePath", this.jdField_a_of_type_JavaLangString);
+        if (this.b != null) {
+          localHashMap.put("param_filePath", this.b);
         }
         paramAudioTrack = new StringBuilder();
-        paramAudioTrack.append(this.jdField_a_of_type_Int);
+        paramAudioTrack.append(this.a);
         paramAudioTrack.append("");
         localHashMap.put("param_streamType", paramAudioTrack.toString());
         paramAudioTrack = new StringBuilder();
@@ -183,31 +178,20 @@ public final class SilkPlayer
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    SilkPlayer.SilkPlayerThread localSilkPlayerThread = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread;
-    return (localSilkPlayerThread != null) && (SilkPlayer.SilkPlayerThread.a(localSilkPlayerThread));
-  }
-  
-  public int b()
-  {
-    return this.b;
+    this.b = paramString;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener != null) {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
+    this.k = null;
+    if (this.l != null) {
+      this.m.sendEmptyMessage(2);
     }
   }
   
   public void b(int paramInt)
   {
-    this.c = paramInt;
+    this.d = paramInt;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -219,35 +203,35 @@ public final class SilkPlayer
   
   public void c()
   {
-    SilkPlayer.SilkPlayerThread localSilkPlayerThread = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread;
+    SilkPlayer.SilkPlayerThread localSilkPlayerThread = this.k;
     if ((localSilkPlayerThread != null) && (localSilkPlayerThread.isAlive()))
     {
-      SilkPlayer.SilkPlayerThread.a(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread, false);
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread = null;
+      SilkPlayer.SilkPlayerThread.a(this.k, false);
+      this.k = null;
     }
-    this.b = -1;
-    this.jdField_a_of_type_Byte = -1;
-    this.d = 0;
+    this.c = -1;
+    this.g = -1;
     this.e = 0;
+    this.f = 0;
   }
   
   public void c(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener != null)
+    if (this.l != null)
     {
       Message localMessage;
-      if (this.jdField_a_of_type_Long < 0L)
+      if (this.n < 0L)
       {
-        localMessage = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(3, Integer.valueOf(paramInt));
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        localMessage = this.m.obtainMessage(3, Integer.valueOf(paramInt));
+        this.m.sendMessage(localMessage);
+        this.n = System.currentTimeMillis();
         return;
       }
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 100L)
+      if (System.currentTimeMillis() - this.n > 100L)
       {
-        localMessage = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(3, Integer.valueOf(paramInt));
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        localMessage = this.m.obtainMessage(3, Integer.valueOf(paramInt));
+        this.m.sendMessage(localMessage);
+        this.n = System.currentTimeMillis();
       }
     }
   }
@@ -256,73 +240,120 @@ public final class SilkPlayer
   
   public void e() {}
   
-  public void f()
+  public boolean f()
   {
-    SilkPlayer.SilkPlayerThread localSilkPlayerThread = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread;
+    SilkPlayer.SilkPlayerThread localSilkPlayerThread = this.k;
+    return (localSilkPlayerThread != null) && (SilkPlayer.SilkPlayerThread.a(localSilkPlayerThread));
+  }
+  
+  public void g()
+  {
+    SilkPlayer.SilkPlayerThread localSilkPlayerThread = this.k;
     if ((localSilkPlayerThread != null) && (localSilkPlayerThread.isAlive()))
     {
-      SilkPlayer.SilkPlayerThread.a(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread, false);
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerSilkPlayer$SilkPlayerThread = null;
+      SilkPlayer.SilkPlayerThread.a(this.k, false);
+      this.k = null;
     }
   }
   
+  public int h()
+  {
+    return this.f * 20;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    IAudioFilePlayerListener localIAudioFilePlayerListener;
+    if (paramMessage.what == 1)
+    {
+      localIAudioFilePlayerListener = this.l;
+      if (localIAudioFilePlayerListener != null)
+      {
+        localIAudioFilePlayerListener.a(this, paramMessage.arg1, 0, (String)paramMessage.obj);
+        return true;
+      }
+    }
+    else if (paramMessage.what == 2)
+    {
+      paramMessage = this.l;
+      if (paramMessage != null)
+      {
+        paramMessage.a();
+        return true;
+      }
+    }
+    else if (paramMessage.what == 3)
+    {
+      localIAudioFilePlayerListener = this.l;
+      if (localIAudioFilePlayerListener != null) {
+        localIAudioFilePlayerListener.b(((Integer)paramMessage.obj).intValue());
+      }
+    }
+    return true;
+  }
+  
+  public int i()
+  {
+    return this.c;
+  }
+  
   /* Error */
-  public void g()
+  public void j()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 31	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:b	I
+    //   1: getfield 40	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:c	I
     //   4: iconst_m1
     //   5: if_icmpeq +11 -> 16
     //   8: aload_0
-    //   9: getfield 39	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:jdField_a_of_type_Byte	B
+    //   9: getfield 48	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:g	B
     //   12: iconst_m1
     //   13: if_icmpne +158 -> 171
-    //   16: new 305	java/io/FileInputStream
+    //   16: new 324	java/io/FileInputStream
     //   19: dup
     //   20: aload_0
-    //   21: getfield 80	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   24: invokespecial 307	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   21: getfield 86	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:b	Ljava/lang/String;
+    //   24: invokespecial 326	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   27: astore_1
     //   28: aload_1
     //   29: astore_2
     //   30: aload_0
-    //   31: getfield 39	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:jdField_a_of_type_Byte	B
+    //   31: getfield 48	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:g	B
     //   34: iconst_m1
     //   35: if_icmpne +16 -> 51
     //   38: aload_1
     //   39: astore_2
     //   40: aload_0
     //   41: aload_1
-    //   42: invokestatic 312	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Ljava/io/InputStream;)B
-    //   45: putfield 39	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:jdField_a_of_type_Byte	B
+    //   42: invokestatic 331	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Ljava/io/InputStream;)B
+    //   45: putfield 48	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:g	B
     //   48: goto +13 -> 61
     //   51: aload_1
     //   52: astore_2
     //   53: aload_1
-    //   54: ldc2_w 313
-    //   57: invokevirtual 318	java/io/FileInputStream:skip	(J)J
+    //   54: ldc2_w 332
+    //   57: invokevirtual 337	java/io/FileInputStream:skip	(J)J
     //   60: pop2
     //   61: aload_1
     //   62: astore_3
     //   63: aload_1
     //   64: astore_2
     //   65: aload_0
-    //   66: getfield 31	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:b	I
+    //   66: getfield 40	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:c	I
     //   69: iconst_m1
     //   70: if_icmpne +19 -> 89
     //   73: aload_1
     //   74: astore_2
     //   75: aload_0
     //   76: aload_0
-    //   77: getfield 39	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:jdField_a_of_type_Byte	B
+    //   77: getfield 48	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:g	B
     //   80: aload_1
-    //   81: invokestatic 321	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(BLjava/io/InputStream;)I
-    //   84: putfield 31	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:b	I
+    //   81: invokestatic 340	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(BLjava/io/InputStream;)I
+    //   84: putfield 40	com/tencent/mobileqq/qqaudio/audioplayer/SilkPlayer:c	I
     //   87: aload_1
     //   88: astore_3
     //   89: aload_3
-    //   90: invokevirtual 324	java/io/FileInputStream:close	()V
+    //   90: invokevirtual 343	java/io/FileInputStream:close	()V
     //   93: return
     //   94: astore_3
     //   95: goto +12 -> 107
@@ -335,34 +366,34 @@ public final class SilkPlayer
     //   106: astore_1
     //   107: aload_1
     //   108: astore_2
-    //   109: invokestatic 103	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   109: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   112: ifeq +50 -> 162
     //   115: aload_1
     //   116: astore_2
-    //   117: new 105	java/lang/StringBuilder
+    //   117: new 114	java/lang/StringBuilder
     //   120: dup
-    //   121: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   121: invokespecial 115	java/lang/StringBuilder:<init>	()V
     //   124: astore 4
     //   126: aload_1
     //   127: astore_2
     //   128: aload 4
-    //   130: ldc_w 326
-    //   133: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: ldc_w 345
+    //   133: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   136: pop
     //   137: aload_1
     //   138: astore_2
     //   139: aload 4
     //   141: aload_3
-    //   142: invokevirtual 329	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   145: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: invokevirtual 348	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   145: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   148: pop
     //   149: aload_1
     //   150: astore_2
-    //   151: ldc 117
+    //   151: ldc 126
     //   153: iconst_2
     //   154: aload 4
-    //   156: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   159: invokestatic 124	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   156: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   159: invokestatic 133	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   162: aload_1
     //   163: ifnull +8 -> 171
     //   166: aload_1
@@ -373,7 +404,7 @@ public final class SilkPlayer
     //   173: aload_2
     //   174: ifnull +7 -> 181
     //   177: aload_2
-    //   178: invokevirtual 324	java/io/FileInputStream:close	()V
+    //   178: invokevirtual 343	java/io/FileInputStream:close	()V
     //   181: goto +5 -> 186
     //   184: aload_1
     //   185: athrow
@@ -419,41 +450,10 @@ public final class SilkPlayer
     //   89	93	189	java/lang/Exception
     //   177	181	191	java/lang/Exception
   }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    IAudioFilePlayerListener localIAudioFilePlayerListener;
-    if (paramMessage.what == 1)
-    {
-      localIAudioFilePlayerListener = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener;
-      if (localIAudioFilePlayerListener != null)
-      {
-        localIAudioFilePlayerListener.a(this, paramMessage.arg1, 0, (String)paramMessage.obj);
-        return true;
-      }
-    }
-    else if (paramMessage.what == 2)
-    {
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener;
-      if (paramMessage != null)
-      {
-        paramMessage.a();
-        return true;
-      }
-    }
-    else if (paramMessage.what == 3)
-    {
-      localIAudioFilePlayerListener = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayerListener;
-      if (localIAudioFilePlayerListener != null) {
-        localIAudioFilePlayerListener.b(((Integer)paramMessage.obj).intValue());
-      }
-    }
-    return true;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.SilkPlayer
  * JD-Core Version:    0.7.0.1
  */

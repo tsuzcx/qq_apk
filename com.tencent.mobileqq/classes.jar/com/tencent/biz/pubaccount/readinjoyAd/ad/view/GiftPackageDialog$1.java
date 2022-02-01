@@ -21,34 +21,34 @@ class GiftPackageDialog$1
       GiftPackageDialog.a(this.a, paramGiftServiceBean);
       GiftPackageDialog.a(this.a).setText(paramGiftServiceBean.t);
       GiftPackageDialog.b(this.a, null);
-      if (GiftPackageDialog.a(this.a)) {
+      if (GiftPackageDialog.b(this.a)) {
         GiftPackageDialog.c(this.a, null);
       }
-      GiftPackageDialog.b(this.a).setText("");
       GiftPackageDialog.c(this.a).setText("");
+      GiftPackageDialog.d(this.a).setText("");
       GiftPackageDialog.a(this.a, new ArrayList());
-      localObject = GiftPackageDialog.a(this.a).iterator();
+      localObject = GiftPackageDialog.e(this.a).iterator();
       while (((Iterator)localObject).hasNext())
       {
         GiftServiceBean localGiftServiceBean = (GiftServiceBean)((Iterator)localObject).next();
         if ((!TextUtils.isEmpty(localGiftServiceBean.ck)) && (localGiftServiceBean.ck.equals(paramGiftServiceBean.ck)) && (localGiftServiceBean.c.equals(paramGiftServiceBean.v))) {
-          GiftPackageDialog.b(this.a).add(localGiftServiceBean);
+          GiftPackageDialog.f(this.a).add(localGiftServiceBean);
         }
       }
-      if (GiftPackageDialog.b(this.a).size() <= 0)
+      if (GiftPackageDialog.f(this.a).size() <= 0)
       {
         paramGiftServiceBean = new GiftServiceBean();
-        paramGiftServiceBean.t = HardCodeUtil.a(2131705365);
+        paramGiftServiceBean.t = HardCodeUtil.a(2131903247);
         paramGiftServiceBean.v = "0";
-        GiftPackageDialog.b(this.a).add(paramGiftServiceBean);
+        GiftPackageDialog.f(this.a).add(paramGiftServiceBean);
       }
-      GiftPackageDialog.a(this.a);
+      GiftPackageDialog.g(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageDialog.1
  * JD-Core Version:    0.7.0.1
  */

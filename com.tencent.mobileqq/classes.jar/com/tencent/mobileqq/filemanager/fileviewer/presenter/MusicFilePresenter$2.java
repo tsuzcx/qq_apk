@@ -11,17 +11,17 @@ class MusicFilePresenter$2
   
   public void onClick(View paramView)
   {
-    if (MusicFilePresenter.a(this.a)) {
-      MusicFilePresenter.a(this.a);
+    if (MusicFilePresenter.b(this.a)) {
+      MusicFilePresenter.c(this.a);
     } else {
-      MusicFilePresenter.b(this.a);
+      MusicFilePresenter.d(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter.2
  * JD-Core Version:    0.7.0.1
  */

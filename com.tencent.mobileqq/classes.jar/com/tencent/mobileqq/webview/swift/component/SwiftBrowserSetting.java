@@ -12,7 +12,7 @@ public class SwiftBrowserSetting
     this.a.put(paramString, Boolean.valueOf(paramBoolean));
   }
   
-  public boolean a(String paramString, boolean paramBoolean)
+  public boolean b(String paramString, boolean paramBoolean)
   {
     paramString = (Boolean)this.a.get(paramString);
     if (paramString == null) {
@@ -23,7 +23,7 @@ public class SwiftBrowserSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserSetting
  * JD-Core Version:    0.7.0.1
  */

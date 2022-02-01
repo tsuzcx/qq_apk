@@ -17,23 +17,23 @@ class QfileRecentAllFileTabView$1
   
   public void a()
   {
-    this.a.a.a().b();
+    this.a.C.A().b();
   }
   
   public void b()
   {
-    this.a.a.a().o();
+    this.a.C.A().o();
   }
   
   public void c()
   {
-    this.a.a.a().p();
+    this.a.C.A().p();
   }
   
   public void d()
   {
-    this.a.a.a().q();
-    Object localObject = FMDataCache.b();
+    this.a.C.A().q();
+    Object localObject = FMDataCache.h();
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       localObject = ((List)localObject).iterator();
@@ -47,17 +47,17 @@ class QfileRecentAllFileTabView$1
   
   public void e()
   {
-    this.a.a.a().r();
+    this.a.C.A().r();
   }
   
   public void f()
   {
-    this.a.a.a().E();
+    this.a.C.A().E();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView.1
  * JD-Core Version:    0.7.0.1
  */

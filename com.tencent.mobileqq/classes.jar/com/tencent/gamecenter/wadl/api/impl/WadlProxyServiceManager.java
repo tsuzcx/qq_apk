@@ -33,43 +33,36 @@ public class WadlProxyServiceManager
   extends IWadlServiceCallBack.Stub
   implements ServiceConnection, Handler.Callback, IBinder.DeathRecipient
 {
-  private final int jdField_a_of_type_Int = 100;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("WadlClientMessage.Thread", 10);
-  private IWadlService jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService;
-  private IWadlProxyServiceMonitor jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor;
-  private List<Bundle> jdField_a_of_type_JavaUtilList = new Vector();
-  private CopyOnWriteArrayList<WadlProxyServiceCallBackInterface> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  private volatile AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private final int jdField_b_of_type_Int = 5000;
-  private CopyOnWriteArrayList<WadlResCallBack> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  private volatile AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private int c = 0;
+  private final int a = 100;
+  private final int b = 5000;
+  private IWadlService c;
+  private List<Bundle> d = new Vector();
+  private Handler e;
+  private CopyOnWriteArrayList<WadlProxyServiceCallBackInterface> f;
+  private CopyOnWriteArrayList<WadlResCallBack> g;
+  private IWadlProxyServiceMonitor h;
+  private HandlerThread i = new HandlerThread("WadlClientMessage.Thread", 10);
+  private volatile AtomicBoolean j = new AtomicBoolean(false);
+  private volatile AtomicBoolean k = new AtomicBoolean(false);
+  private int l = 0;
   
   public WadlProxyServiceManager()
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor = new WadlProxyServiceMonitor(this);
+    this.i.start();
+    this.e = new Handler(this.i.getLooper(), this);
+    this.f = new CopyOnWriteArrayList();
+    this.g = new CopyOnWriteArrayList();
+    this.h = new WadlProxyServiceMonitor(this);
   }
   
   private void c(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 100)
+    if (this.d.size() > 100)
     {
       QLog.w("Wadl_WadlProxyServiceManager", 1, "storeCmdToCache there must be an error too many unproceed message!");
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.d.clear();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramBundle);
-  }
-  
-  private void d()
-  {
-    if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
-      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2).sendToTarget();
-    }
+    this.d.add(paramBundle);
   }
   
   private void d(Bundle paramBundle)
@@ -82,15 +75,22 @@ public class WadlProxyServiceManager
       ((StringBuilder)localObject).append("downloadActionCallback wadlResult:");
       ((StringBuilder)localObject).append(paramBundle);
       ((StringBuilder)localObject).append(",callBackList size=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+      ((StringBuilder)localObject).append(this.f.size());
       QLog.i("Wadl_WadlProxyServiceManager", 2, ((StringBuilder)localObject).toString());
     }
     if (paramBundle != null)
     {
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      localObject = this.f.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((WadlProxyServiceCallBackInterface)((Iterator)localObject).next()).a(paramBundle);
       }
+    }
+  }
+  
+  private void e()
+  {
+    if (!this.e.hasMessages(2)) {
+      this.e.obtainMessage(2).sendToTarget();
     }
   }
   
@@ -101,13 +101,13 @@ public class WadlProxyServiceManager
     localStringBuilder.append("onQueryCallback params:");
     localStringBuilder.append(paramBundle.toString());
     localStringBuilder.append(",callBackList size=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+    localStringBuilder.append(this.f.size());
     QLog.i("Wadl_WadlProxyServiceManager", 1, localStringBuilder.toString());
     paramBundle = (Bundle)localObject;
     if (localObject == null) {
       paramBundle = new ArrayList();
     }
-    localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    localObject = this.f.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((WadlProxyServiceCallBackInterface)((Iterator)localObject).next()).a(paramBundle);
     }
@@ -120,9 +120,9 @@ public class WadlProxyServiceManager
     localStringBuilder.append("onQueryCallbackVia params");
     localStringBuilder.append(paramBundle.toString());
     localStringBuilder.append(",callBackList size=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+    localStringBuilder.append(this.f.size());
     QLog.i("Wadl_WadlProxyServiceManager", 1, localStringBuilder.toString());
-    paramBundle = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    paramBundle = this.f.iterator();
     while (paramBundle.hasNext()) {
       ((WadlProxyServiceCallBackInterface)paramBundle.next()).b(localArrayList);
     }
@@ -135,9 +135,9 @@ public class WadlProxyServiceManager
     localStringBuilder.append("onQueryAllTaskCallback params");
     localStringBuilder.append(paramBundle.toString());
     localStringBuilder.append(",callBackList size=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+    localStringBuilder.append(this.f.size());
     QLog.i("Wadl_WadlProxyServiceManager", 1, localStringBuilder.toString());
-    paramBundle = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    paramBundle = this.f.iterator();
     while (paramBundle.hasNext()) {
       ((WadlProxyServiceCallBackInterface)paramBundle.next()).a(localArrayList);
     }
@@ -150,9 +150,9 @@ public class WadlProxyServiceManager
     localStringBuilder.append("onQueryAllResCallback params");
     localStringBuilder.append(paramBundle.toString());
     localStringBuilder.append(",callBackList size=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+    localStringBuilder.append(this.f.size());
     QLog.i("Wadl_WadlProxyServiceManager", 1, localStringBuilder.toString());
-    paramBundle = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    paramBundle = this.g.iterator();
     while (paramBundle.hasNext()) {
       ((WadlResCallBack)paramBundle.next()).c(localArrayList);
     }
@@ -165,11 +165,11 @@ public class WadlProxyServiceManager
     ((StringBuilder)localObject).append("onWadlResStatusChanged params:");
     ((StringBuilder)localObject).append(paramBundle);
     ((StringBuilder)localObject).append(",callBackList size=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+    ((StringBuilder)localObject).append(this.f.size());
     QLog.i("Wadl_WadlProxyServiceManager", 1, ((StringBuilder)localObject).toString());
     if (paramBundle != null)
     {
-      localObject = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      localObject = this.g.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((WadlResCallBack)((Iterator)localObject).next()).b(paramBundle);
       }
@@ -179,15 +179,15 @@ public class WadlProxyServiceManager
   protected void a()
   {
     QLog.i("Wadl_WadlProxyServiceManager", 1, "resetDiedCount");
-    this.c = 0;
-    this.jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor.a(1.0F, false);
+    this.l = 0;
+    this.h.a(1.0F, false);
   }
   
   public void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1))
+    if (!this.e.hasMessages(1))
     {
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+      Message localMessage = this.e.obtainMessage(1);
       localMessage.what = paramInt;
       localMessage.sendToTarget();
     }
@@ -200,26 +200,26 @@ public class WadlProxyServiceManager
     localStringBuilder.append("send action msg cmd=");
     localStringBuilder.append(str);
     QLog.i("Wadl_WadlProxyServiceManager", 1, localStringBuilder.toString());
-    if (!a())
+    if (!b())
     {
       QLog.w("Wadl_WadlProxyServiceManager", 1, "postRemoteNotify start but service is not launched and start service");
       b(0);
     }
     c(paramBundle);
-    d();
+    e();
   }
   
   public void a(WadlProxyServiceCallBackInterface paramWadlProxyServiceCallBackInterface)
   {
-    if ((paramWadlProxyServiceCallBackInterface != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramWadlProxyServiceCallBackInterface))) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramWadlProxyServiceCallBackInterface);
+    if ((paramWadlProxyServiceCallBackInterface != null) && (!this.f.contains(paramWadlProxyServiceCallBackInterface))) {
+      this.f.add(paramWadlProxyServiceCallBackInterface);
     }
   }
   
   public void a(WadlResCallBack paramWadlResCallBack)
   {
-    if ((paramWadlResCallBack != null) && (!this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramWadlResCallBack))) {
-      this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramWadlResCallBack);
+    if ((paramWadlResCallBack != null) && (!this.g.contains(paramWadlResCallBack))) {
+      this.g.add(paramWadlResCallBack);
     }
   }
   
@@ -234,77 +234,30 @@ public class WadlProxyServiceManager
     {
       if (paramString.equals("WADL.REVERSE_HEART_CMD"))
       {
-        paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        paramString = this.e.obtainMessage();
         paramString.what = 4;
         paramString.setData(paramBundle);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+        this.e.sendMessage(paramString);
         return;
       }
       if (paramString.equals("WADL.REVERSE_ACTION_CMD"))
       {
-        paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        paramString = this.e.obtainMessage();
         paramString.what = 3;
         paramString.setData(paramBundle);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+        this.e.sendMessage(paramString);
         return;
       }
       if (paramString.equals("WADL.REVERSE_STOP_MONITOR_CMD"))
       {
-        paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        paramString = this.e.obtainMessage();
         paramString.what = 5;
         paramString.setData(paramBundle);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+        this.e.sendMessage(paramString);
         return;
       }
-      if ((paramString.equals("WADL.REVERSE_START_MONITOR_CMD")) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(6))) {
-        this.jdField_a_of_type_AndroidOsHandler.obtainMessage(6).sendToTarget();
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService != null) && (!this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-  }
-  
-  public void b()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("sendAsynRemoteCommandMessage mWadlService=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService);
-    ((StringBuilder)localObject).append(",mServiceConnecting=");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
-    ((StringBuilder)localObject).append(",mCacheMsg size=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
-    QLog.i("Wadl_WadlProxyServiceManager", 1, ((StringBuilder)localObject).toString());
-    if ((a()) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      while (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-      {
-        localObject = (Bundle)this.jdField_a_of_type_JavaUtilList.remove(0);
-        if (localObject != null)
-        {
-          String str = ((Bundle)localObject).getString("WADL.REMOTE_NOTIFY_CMD_NAME");
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("sendAsynRemoteCommandMessage strNotifyCmd=");
-          localStringBuilder.append(str);
-          localStringBuilder.append(",mWadlService=");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService);
-          QLog.i("Wadl_WadlProxyServiceManager", 1, localStringBuilder.toString());
-          try
-          {
-            ((Bundle)localObject).setClassLoader(getClass().getClassLoader());
-            if (this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService == null) {
-              continue;
-            }
-            this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService.a("WADL.REMOTE_ACTION_CMD", (Bundle)localObject);
-          }
-          catch (Exception localException) {}
-          if ((localException instanceof DeadObjectException))
-          {
-            c((Bundle)localObject);
-            QLog.i("Wadl_WadlProxyServiceManager", 1, "remote service is dead", localException);
-          }
-        }
+      if ((paramString.equals("WADL.REVERSE_START_MONITOR_CMD")) && (!this.e.hasMessages(6))) {
+        this.e.obtainMessage(6).sendToTarget();
       }
     }
   }
@@ -312,12 +265,12 @@ public class WadlProxyServiceManager
   public void b(int paramInt)
   {
     QLog.i("Wadl_WadlProxyServiceManager", 1, "innerStartService start");
-    if (this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService != null)
+    if (this.c != null)
     {
       QLog.w("Wadl_WadlProxyServiceManager", 1, "innerStartService mWadlService is working");
       return;
     }
-    if (!this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true))
+    if (!this.k.getAndSet(true))
     {
       try
       {
@@ -325,26 +278,26 @@ public class WadlProxyServiceManager
         if (paramInt == 1)
         {
           WadlReportInfo localWadlReportInfo = WadlReportInfo.a();
-          localWadlReportInfo.c = "service dlied";
+          localWadlReportInfo.e = "service dlied";
           ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).reportDC("204685", "999", localWadlReportInfo, "08a00036462");
         }
       }
       catch (Throwable localThrowable)
       {
         QLog.e("Wadl_WadlProxyServiceManager", 1, "innerStartService fail", localThrowable);
-        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        this.k.set(false);
       }
-      if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+      if (this.k.get())
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(7);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 5000L);
+        this.e.removeMessages(7);
+        this.e.sendEmptyMessageDelayed(7, 5000L);
       }
     }
     else
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("innerStartService is connecting mWadlService:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService);
+      localStringBuilder.append(this.c);
       QLog.i("Wadl_WadlProxyServiceManager", 1, localStringBuilder.toString());
     }
   }
@@ -406,44 +359,49 @@ public class WadlProxyServiceManager
   public void b(WadlProxyServiceCallBackInterface paramWadlProxyServiceCallBackInterface)
   {
     if (paramWadlProxyServiceCallBackInterface != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramWadlProxyServiceCallBackInterface);
+      this.f.remove(paramWadlProxyServiceCallBackInterface);
     }
   }
   
   public void b(WadlResCallBack paramWadlResCallBack)
   {
     if (paramWadlResCallBack != null) {
-      this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramWadlResCallBack);
+      this.g.remove(paramWadlResCallBack);
     }
+  }
+  
+  public boolean b()
+  {
+    return (this.c != null) && (!this.k.get());
   }
   
   public void binderDied()
   {
     try
     {
-      this.c += 1;
+      this.l += 1;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("binderDied, diedCount=");
-      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(this.l);
       QLog.e("Wadl_WadlProxyServiceManager", 1, ((StringBuilder)localObject).toString());
-      if (this.c > 9) {
-        this.jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor.a(10.0F, true);
-      } else if (this.c > 6) {
-        this.jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor.a(2.0F, true);
-      } else if (this.c > 3) {
-        this.jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor.a(1.5F, true);
+      if (this.l > 9) {
+        this.h.a(10.0F, true);
+      } else if (this.l > 6) {
+        this.h.a(2.0F, true);
+      } else if (this.l > 3) {
+        this.h.a(1.5F, true);
       } else {
-        this.jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor.a(1.0F, true);
+        this.h.a(1.0F, true);
       }
-      if (this.jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor.a())
+      if (this.h.a())
       {
         localObject = WadlReportInfo.a();
-        ((WadlReportInfo)localObject).c = "service dlied";
+        ((WadlReportInfo)localObject).e = "service dlied";
         ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).reportDC("204685", "444", (WadlReportInfo)localObject, "08a00036462");
-        if (this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService != null)
+        if (this.c != null)
         {
-          this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService.asBinder().unlinkToDeath(this, 0);
-          this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService = null;
+          this.c.asBinder().unlinkToDeath(this, 0);
+          this.c = null;
           return;
         }
       }
@@ -456,16 +414,58 @@ public class WadlProxyServiceManager
   
   public void c()
   {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendAsynRemoteCommandMessage mWadlService=");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(",mServiceConnecting=");
+    ((StringBuilder)localObject).append(this.k);
+    ((StringBuilder)localObject).append(",mCacheMsg size=");
+    ((StringBuilder)localObject).append(this.d.size());
+    QLog.i("Wadl_WadlProxyServiceManager", 1, ((StringBuilder)localObject).toString());
+    if ((b()) && (!this.d.isEmpty())) {
+      while (!this.d.isEmpty())
+      {
+        localObject = (Bundle)this.d.remove(0);
+        if (localObject != null)
+        {
+          String str = ((Bundle)localObject).getString("WADL.REMOTE_NOTIFY_CMD_NAME");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("sendAsynRemoteCommandMessage strNotifyCmd=");
+          localStringBuilder.append(str);
+          localStringBuilder.append(",mWadlService=");
+          localStringBuilder.append(this.c);
+          QLog.i("Wadl_WadlProxyServiceManager", 1, localStringBuilder.toString());
+          try
+          {
+            ((Bundle)localObject).setClassLoader(getClass().getClassLoader());
+            if (this.c == null) {
+              continue;
+            }
+            this.c.a("WADL.REMOTE_ACTION_CMD", (Bundle)localObject);
+          }
+          catch (Exception localException) {}
+          if ((localException instanceof DeadObjectException))
+          {
+            c((Bundle)localObject);
+            QLog.i("Wadl_WadlProxyServiceManager", 1, "remote service is dead", localException);
+          }
+        }
+      }
+    }
+  }
+  
+  public void d()
+  {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("destroy: ");
     localStringBuilder.append(this);
     QLog.i("Wadl_WadlProxyServiceManager", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor.a();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.j.set(true);
+    this.h.b();
+    this.e.removeCallbacksAndMessages(null);
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+      this.f.clear();
     }
     catch (Exception localException1)
     {
@@ -473,7 +473,7 @@ public class WadlProxyServiceManager
     }
     try
     {
-      this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+      this.g.clear();
     }
     catch (Exception localException2)
     {
@@ -481,13 +481,13 @@ public class WadlProxyServiceManager
     }
     try
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      this.i.quit();
     }
     catch (Exception localException3)
     {
       QLog.e("Wadl_WadlProxyServiceManager", 1, "destroy mMessageThread.quit exception", localException3);
     }
-    IWadlService localIWadlService = this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService;
+    IWadlService localIWadlService = this.c;
     if (localIWadlService != null)
     {
       try
@@ -530,28 +530,28 @@ public class WadlProxyServiceManager
     default: 
       return false;
     case 7: 
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      this.k.set(false);
       QLog.i("Wadl_WadlProxyServiceManager", 1, "reset mServiceConnecting");
       return false;
     case 6: 
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+      if (this.j.get())
       {
-        this.jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor.a();
+        this.h.b();
         return false;
       }
-      this.jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor.b();
+      this.h.c();
       return false;
     case 5: 
-      this.jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor.a();
+      this.h.b();
       return false;
     case 4: 
-      this.jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor.a(paramMessage.getData());
+      this.h.a(paramMessage.getData());
       return false;
     case 3: 
       b(paramMessage.getData());
       return false;
     case 2: 
-      b();
+      c();
       return false;
     }
     b(paramMessage.what);
@@ -568,21 +568,21 @@ public class WadlProxyServiceManager
     QLog.i("Wadl_WadlProxyServiceManager", 1, localStringBuilder.toString());
     try
     {
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+      this.k.set(false);
+      if (this.j.get())
       {
         QLog.w("Wadl_WadlProxyServiceManager", 1, "onServiceConnected,but this is destroy");
         return;
       }
-      this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService = IWadlService.Stub.a(paramIBinder);
-      if (this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService == null)
+      this.c = IWadlService.Stub.a(paramIBinder);
+      if (this.c == null)
       {
         QLog.w("Wadl_WadlProxyServiceManager", 1, "onServiceConnected,but asInterface fail");
         return;
       }
-      this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService.a(this);
-      this.jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService.asBinder().linkToDeath(this, 0);
-      d();
+      this.c.a(this);
+      this.c.asBinder().linkToDeath(this, 0);
+      e();
       return;
     }
     catch (RemoteException paramComponentName)
@@ -595,41 +595,41 @@ public class WadlProxyServiceManager
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
     // Byte code:
-    //   0: ldc 95
+    //   0: ldc 104
     //   2: iconst_1
-    //   3: ldc_w 539
-    //   6: invokestatic 163	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3: ldc_w 543
+    //   6: invokestatic 157	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   9: aload_0
-    //   10: getfield 85	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:jdField_a_of_type_ComTencentGamecenterWadlApiImplIWadlProxyServiceMonitor	Lcom/tencent/gamecenter/wadl/api/impl/IWadlProxyServiceMonitor;
-    //   13: invokeinterface 457 1 0
+    //   10: getfield 94	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:h	Lcom/tencent/gamecenter/wadl/api/impl/IWadlProxyServiceMonitor;
+    //   13: invokeinterface 461 1 0
     //   18: aload_0
-    //   19: getfield 295	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService	Lcom/tencent/gamecenter/wadl/api/IWadlService;
+    //   19: getfield 302	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:c	Lcom/tencent/gamecenter/wadl/api/IWadlService;
     //   22: ifnull +25 -> 47
     //   25: aload_0
-    //   26: getfield 295	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService	Lcom/tencent/gamecenter/wadl/api/IWadlService;
+    //   26: getfield 302	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:c	Lcom/tencent/gamecenter/wadl/api/IWadlService;
     //   29: aload_0
-    //   30: invokeinterface 474 2 0
+    //   30: invokeinterface 478 2 0
     //   35: goto +12 -> 47
     //   38: astore_1
     //   39: goto +22 -> 61
     //   42: astore_1
     //   43: aload_1
-    //   44: invokevirtual 540	java/lang/Exception:printStackTrace	()V
+    //   44: invokevirtual 544	java/lang/Exception:printStackTrace	()V
     //   47: aload_0
     //   48: aconst_null
-    //   49: putfield 295	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService	Lcom/tencent/gamecenter/wadl/api/IWadlService;
+    //   49: putfield 302	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:c	Lcom/tencent/gamecenter/wadl/api/IWadlService;
     //   52: aload_0
-    //   53: getfield 46	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   53: getfield 55	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:k	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   56: iconst_0
-    //   57: invokevirtual 380	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   57: invokevirtual 349	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   60: return
     //   61: aload_0
     //   62: aconst_null
-    //   63: putfield 295	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:jdField_a_of_type_ComTencentGamecenterWadlApiIWadlService	Lcom/tencent/gamecenter/wadl/api/IWadlService;
+    //   63: putfield 302	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:c	Lcom/tencent/gamecenter/wadl/api/IWadlService;
     //   66: aload_0
-    //   67: getfield 46	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   67: getfield 55	com/tencent/gamecenter/wadl/api/impl/WadlProxyServiceManager:k	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   70: iconst_0
-    //   71: invokevirtual 380	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   71: invokevirtual 349	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   74: aload_1
     //   75: athrow
     // Local variable table:
@@ -645,7 +645,7 @@ public class WadlProxyServiceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.api.impl.WadlProxyServiceManager
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ final class WSPlayerUtils$1
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    WSPlayerUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerUtils$PlayerLayoutParams.a, paramInt1);
-    WSPlayerUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerUtils$PlayerLayoutParams.b, paramInt2, paramInt3);
-    WSPlayerUtils.OnCalculateLayoutListener localOnCalculateLayoutListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerUtils$OnCalculateLayoutListener;
+    WSPlayerUtils.a(this.a.a, paramInt1);
+    WSPlayerUtils.a(this.a.b, paramInt2, paramInt3);
+    WSPlayerUtils.OnCalculateLayoutListener localOnCalculateLayoutListener = this.b;
     if (localOnCalculateLayoutListener != null) {
       localOnCalculateLayoutListener.a(paramInt1, paramInt2, paramInt3);
     }
@@ -17,7 +17,7 @@ final class WSPlayerUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerUtils.1
  * JD-Core Version:    0.7.0.1
  */

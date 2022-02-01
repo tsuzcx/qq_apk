@@ -26,7 +26,6 @@ import java.util.TreeMap;
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
 import javax.crypto.spec.SecretKeySpec;
-import oicq.wlogin_sdk.report.event.a;
 import oicq.wlogin_sdk.sharemem.WloginLoginInfo;
 import oicq.wlogin_sdk.sharemem.WloginSigInfo;
 import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
@@ -651,7 +650,7 @@ public class c
     b(paramContext, paramString1, paramStringBuffer);
     paramContext = paramStringBuffer.toString();
     util.LOGI(paramContext, "");
-    oicq.wlogin_sdk.report.event.b.a(new a("wtlogin_db_error", paramString2, paramContext).a(true).b(true));
+    oicq.wlogin_sdk.report.event.c.a(new oicq.wlogin_sdk.report.event.b("wtlogin_db_error", paramString2, paramContext).a(true).b(true));
   }
   
   public static void a(Context paramContext, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
@@ -2059,6 +2058,7 @@ public class c
         ((StringBuilder)localObject2).append("");
         ((StringBuilder)localObject2).append(paramLong1);
         util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
+        localObject1 = null;
         if (this.a == null) {
           continue;
         }
@@ -2084,6 +2084,9 @@ public class c
         throw ???;
         continue;
         continue;
+        continue;
+        paramInt = 0;
+        ??? = (byte[][])localObject1;
         continue;
       }
       synchronized (e)
@@ -2221,7 +2224,7 @@ public class c
           catch (Exception ???)
           {
             util.printException(???, String.valueOf(paramLong1));
-            oicq.wlogin_sdk.report.event.b.a(new a("wtlogin_alarm", "pskey_other_exception", Log.getStackTraceString(???)).a(String.valueOf(paramLong1)).a(true).b(true));
+            oicq.wlogin_sdk.report.event.c.a(new oicq.wlogin_sdk.report.event.b("wtlogin_alarm", "pskey_other_exception", Log.getStackTraceString(???)).a(String.valueOf(paramLong1)).a(true).b(true));
             return -2006;
           }
           catch (BufferOverflowException ???)
@@ -2231,7 +2234,7 @@ public class c
             paramWloginSimpleInfo.append(((Map)localObject11).size());
             paramWloginSimpleInfo.append("is too large");
             util.LOGI(paramWloginSimpleInfo.toString(), String.valueOf(paramLong1));
-            oicq.wlogin_sdk.report.event.b.a(new a("wtlogin_alarm", "pskey_buffer_overflow", Log.getStackTraceString(???)).a(String.valueOf(paramLong1)).a(true).b(true));
+            oicq.wlogin_sdk.report.event.c.a(new oicq.wlogin_sdk.report.event.b("wtlogin_alarm", "pskey_buffer_overflow", Log.getStackTraceString(???)).a(String.valueOf(paramLong1)).a(true).b(true));
             return -1023;
           }
         }
@@ -2269,15 +2272,18 @@ public class c
             ???._dpwd = ((byte[])((byte[])localObject5).clone());
             ???._randseed = ((byte[])((byte[])localObject6).clone());
           }
-          ??? = new StringBuilder();
-          ???.append("");
-          ???.append(paramLong1);
-          util.LOGI("put_siginfo sig in memory changed", ???.toString());
+          ??? = a((WloginSigInfo)((WloginAllSigInfo)localObject1)._tk_map.get(Long.valueOf(paramLong2)), paramInt, (byte[])localObject2, paramLong1, paramLong2);
+          paramWloginSimpleInfo = new StringBuilder();
+          paramWloginSimpleInfo.append("");
+          paramWloginSimpleInfo.append(paramLong1);
+          util.LOGI("put_siginfo sig in memory changed", paramWloginSimpleInfo.toString());
           this.b.put(Long.valueOf(paramLong1), ((WloginAllSigInfo)localObject1).get_clone());
         }
       }
     }
-    paramInt = 0;
+    if (??? != null) {
+      oicq.wlogin_sdk.report.event.c.a(???);
+    }
     return paramInt;
   }
   
@@ -2398,6 +2404,34 @@ public class c
     {
       throw localObject2;
     }
+  }
+  
+  public oicq.wlogin_sdk.report.event.b a(WloginSigInfo paramWloginSigInfo, int paramInt, byte[] paramArrayOfByte, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 != 16L) {
+      return null;
+    }
+    boolean bool2 = false;
+    int i;
+    if ((paramWloginSigInfo != null) && (paramWloginSigInfo._en_A1 != null) && (paramWloginSigInfo._en_A1.length != 0)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i != 0)
+    {
+      boolean bool1;
+      if (paramWloginSigInfo == null) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+        bool2 = true;
+      }
+      return new oicq.wlogin_sdk.report.event.b("wtlogin_alarm", "a1_empty", "").a(String.valueOf(paramLong1)).a("isSigInfoEmpty", String.valueOf(bool1)).a("isOldA1Empty", String.valueOf(bool2)).a("ret", String.valueOf(paramInt));
+    }
+    return null;
   }
   
   public UinInfo a(String paramString, boolean paramBoolean)
@@ -2809,7 +2843,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.c
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ public abstract class SimpleStepExector
   extends SimpleStep
   implements Step.ErrorCallBack, Step.FinishCallBack
 {
-  protected SimpleStepExector.CompletedHandler a;
-  protected SimpleStepExector.ErrorHandler a;
+  protected SimpleStepExector.ErrorHandler g;
+  protected SimpleStepExector.CompletedHandler h;
 }
 
 

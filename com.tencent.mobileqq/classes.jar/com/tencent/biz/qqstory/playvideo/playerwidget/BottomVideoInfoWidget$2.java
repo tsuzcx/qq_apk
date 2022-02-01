@@ -12,11 +12,11 @@ class BottomVideoInfoWidget$2
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder;
+    paramDialogInterface = this.a;
     if (paramDialogInterface != null) {
       paramDialogInterface.c(false);
     }
-    BottomVideoInfoWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget).a = BottomVideoInfoWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget).a();
+    BottomVideoInfoWidget.a(this.b).a = BottomVideoInfoWidget.b(this.b).b();
   }
 }
 

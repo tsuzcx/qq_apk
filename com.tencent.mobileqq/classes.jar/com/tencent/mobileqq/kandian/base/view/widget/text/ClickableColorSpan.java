@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 public class ClickableColorSpan
   extends ClickableSpan
 {
-  private final int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private final int a;
+  private View.OnClickListener b;
   
   public ClickableColorSpan(@ColorInt int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.b = paramOnClickListener;
   }
   
   public void onClick(@NonNull View paramView)
   {
-    View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    View.OnClickListener localOnClickListener = this.b;
     if (localOnClickListener != null) {
       localOnClickListener.onClick(paramView);
     }
@@ -33,12 +33,12 @@ public class ClickableColorSpan
   
   public void updateDrawState(@NonNull TextPaint paramTextPaint)
   {
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setColor(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.text.ClickableColorSpan
  * JD-Core Version:    0.7.0.1
  */

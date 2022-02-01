@@ -14,18 +14,18 @@ public class ExtendFriendSearchFragment$CancelReceiver
   {
     if ("com.tencent.mobileqq.search.cancel".equals(paramIntent.getAction()))
     {
-      if (this.a.a != null) {
-        this.a.a.finish();
+      if (this.a.h != null) {
+        this.a.h.finish();
       }
     }
-    else if (("com.tencent.mobileqq.search.finish".equals(paramIntent.getAction())) && (this.a.a != null)) {
-      this.a.a.finish();
+    else if (("com.tencent.mobileqq.search.finish".equals(paramIntent.getAction())) && (this.a.h != null)) {
+      this.a.h.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendSearchFragment.CancelReceiver
  * JD-Core Version:    0.7.0.1
  */

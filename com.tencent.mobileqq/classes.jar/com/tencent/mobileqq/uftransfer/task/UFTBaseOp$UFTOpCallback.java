@@ -8,7 +8,7 @@ public abstract class UFTBaseOp$UFTOpCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.UFTBaseOp.UFTOpCallback
  * JD-Core Version:    0.7.0.1
  */

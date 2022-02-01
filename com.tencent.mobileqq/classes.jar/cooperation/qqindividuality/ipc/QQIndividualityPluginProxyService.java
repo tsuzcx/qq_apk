@@ -14,45 +14,21 @@ import mqq.app.MobileQQ;
 public class QQIndividualityPluginProxyService
   extends PluginProxyService
 {
-  private static IndividualityRemoteCommand jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand;
-  private static QQIndividualityRemoteProxy jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy;
-  
-  public static IndividualityRemoteCommand a()
-  {
-    if (jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand == null) {
-      try
-      {
-        if (jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand == null) {
-          jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand = new IndividualityRemoteCommand(BaseApplicationImpl.getApplication().getRuntime());
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand;
-  }
+  private static QQIndividualityRemoteProxy a;
+  private static IndividualityRemoteCommand b;
   
   public static QQIndividualityRemoteProxy a()
   {
-    if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy == null) {
-          jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy = new QQIndividualityRemoteProxy(BaseApplicationImpl.getApplication().getRuntime());
+        if (a == null) {
+          a = new QQIndividualityRemoteProxy(BaseApplicationImpl.getApplication().getRuntime());
         }
       }
       finally {}
     }
-    return jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy;
-  }
-  
-  public static void a()
-  {
-    QQIndividualityRemoteProxy localQQIndividualityRemoteProxy = jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy;
-    if (localQQIndividualityRemoteProxy != null)
-    {
-      localQQIndividualityRemoteProxy.b("qqindividuality_signature");
-      jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy = null;
-    }
+    return a;
   }
   
   public static void a(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection)
@@ -65,18 +41,42 @@ public class QQIndividualityPluginProxyService
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), QQIndividualityPluginProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = "qqindividuality_plugin.apk";
-    localPluginParams.e = PluginInfo.m;
-    localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localPluginParams.f = paramString;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    localPluginParams.d = "qqindividuality_plugin.apk";
+    localPluginParams.g = PluginInfo.m;
+    localPluginParams.c = paramAppRuntime.getAccount();
+    localPluginParams.h = paramString;
+    localPluginParams.j = localIntent;
+    localPluginParams.o = paramServiceConnection;
     IPluginManager.c(paramAppRuntime.getApplication(), localPluginParams);
   }
   
-  public static boolean a()
+  public static void b()
   {
-    IndividualityRemoteCommand localIndividualityRemoteCommand = a();
+    QQIndividualityRemoteProxy localQQIndividualityRemoteProxy = a;
+    if (localQQIndividualityRemoteProxy != null)
+    {
+      localQQIndividualityRemoteProxy.b("qqindividuality_signature");
+      a = null;
+    }
+  }
+  
+  public static IndividualityRemoteCommand c()
+  {
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new IndividualityRemoteCommand(BaseApplicationImpl.getApplication().getRuntime());
+        }
+      }
+      finally {}
+    }
+    return b;
+  }
+  
+  public static boolean d()
+  {
+    IndividualityRemoteCommand localIndividualityRemoteCommand = c();
     if (!PluginCommunicationHandler.getInstance().containsCmd(localIndividualityRemoteCommand.getCmd()))
     {
       PluginCommunicationHandler.getInstance().register(localIndividualityRemoteCommand);
@@ -87,7 +87,7 @@ public class QQIndividualityPluginProxyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

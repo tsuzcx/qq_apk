@@ -30,14 +30,14 @@ public class GdtMvElementsHelper
   public static String a(GdtMotiveVideoModel paramGdtMotiveVideoModel)
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    String str = HardCodeUtil.a(2131705300);
+    String str = HardCodeUtil.a(2131903183);
     GdtMotiveVideoPageData localGdtMotiveVideoPageData = paramGdtMotiveVideoModel.a();
-    Object localObject2 = paramGdtMotiveVideoModel.a();
+    Object localObject2 = paramGdtMotiveVideoModel.b();
     Object localObject1 = str;
     if (localObject2 != null) {
       if (((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).ext.is_app_preorder.get())
       {
-        localObject1 = HardCodeUtil.a(2131692843);
+        localObject1 = HardCodeUtil.a(2131889952);
       }
       else
       {
@@ -50,7 +50,7 @@ public class GdtMvElementsHelper
           if (!TextUtils.isEmpty(str))
           {
             localObject1 = str;
-            if (!a(paramGdtMotiveVideoModel)) {
+            if (!b(paramGdtMotiveVideoModel)) {
               break label204;
             }
             localObject1 = str;
@@ -58,25 +58,25 @@ public class GdtMvElementsHelper
               break label204;
             }
             if (localGdtMotiveVideoPageData.isStyleC()) {
-              i = 2131705295;
+              i = 2131903178;
             } else {
-              i = 2131705296;
+              i = 2131903179;
             }
           }
           for (paramGdtMotiveVideoModel = HardCodeUtil.a(i);; paramGdtMotiveVideoModel = HardCodeUtil.a(i))
           {
             localObject1 = paramGdtMotiveVideoModel;
             break label204;
-            if (!a(paramGdtMotiveVideoModel)) {
+            if (!b(paramGdtMotiveVideoModel)) {
               break;
             }
             if (GdtUtil.a(localBaseApplication, (String)localObject2)) {
-              i = 2131705297;
+              i = 2131903180;
             } else {
-              i = 2131705299;
+              i = 2131903182;
             }
           }
-          localObject1 = HardCodeUtil.a(2131705301);
+          localObject1 = HardCodeUtil.a(2131903184);
         }
       }
     }
@@ -88,7 +88,7 @@ public class GdtMvElementsHelper
     return localObject1;
   }
   
-  public static boolean a(GdtMotiveVideoModel paramGdtMotiveVideoModel)
+  public static boolean b(GdtMotiveVideoModel paramGdtMotiveVideoModel)
   {
     paramGdtMotiveVideoModel = paramGdtMotiveVideoModel.a();
     return (paramGdtMotiveVideoModel.productType == 12) || (paramGdtMotiveVideoModel.productType == 19);
@@ -151,7 +151,7 @@ public class GdtMvElementsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.elements.GdtMvElementsHelper
  * JD-Core Version:    0.7.0.1
  */

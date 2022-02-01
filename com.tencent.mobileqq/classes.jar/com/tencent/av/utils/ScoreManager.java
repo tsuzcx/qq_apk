@@ -14,34 +14,6 @@ import org.json.JSONObject;
 
 public class ScoreManager
 {
-  public static long a(String paramString)
-  {
-    long[] arrayOfLong = new long[4];
-    paramString = paramString.split("\\.");
-    int k = paramString.length;
-    int i = 0;
-    int j = 0;
-    while (i < k)
-    {
-      String str = paramString[i];
-      try
-      {
-        arrayOfLong[j] = Long.parseLong(str);
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.i("ScoreManager", 1, "ipStrToLong", localThrowable);
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        QLog.i("ScoreManager", 1, "ipStrToLong", localNumberFormatException);
-      }
-      j += 1;
-      i += 1;
-    }
-    return (arrayOfLong[0] << 24) + (arrayOfLong[1] << 16) + (arrayOfLong[2] << 8) + arrayOfLong[3];
-  }
-  
   public static String a()
   {
     String str = QAVConfigUtils.a(270, QAVConfigUtils.b).getString("scoreInfos", null);
@@ -67,7 +39,7 @@ public class ScoreManager
       AVLog.printColorLog("ScoreManager", "saveAVChatInfosForScore error ");
       return;
     }
-    if (QAVConfig.a(270) == 0)
+    if (QAVConfig.c(270) == 0)
     {
       if (QLog.isColorLevel())
       {
@@ -96,21 +68,49 @@ public class ScoreManager
     ScoreManager.1 local1 = new ScoreManager.1(paramDownloadInfo);
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.mCallback = local1;
-    localHttpNetReq.mReqUrl = paramDownloadInfo.jdField_a_of_type_JavaLangString;
+    localHttpNetReq.mReqUrl = paramDownloadInfo.a;
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mOutPath = paramDownloadInfo.c;
     localHttpNetReq.mPrioty = 1;
     localHttpNetReq.mSupportBreakResume = true;
     paramQQAppInterface.sendReq(localHttpNetReq);
-    paramDownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
+    paramDownloadInfo.d = localHttpNetReq;
     if (QLog.isColorLevel())
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("submitDownloadTask. url = ");
-      paramQQAppInterface.append(paramDownloadInfo.jdField_a_of_type_JavaLangString);
+      paramQQAppInterface.append(paramDownloadInfo.a);
       QLog.i("ScoreManager", 1, paramQQAppInterface.toString());
     }
     return true;
+  }
+  
+  public static long b(String paramString)
+  {
+    long[] arrayOfLong = new long[4];
+    paramString = paramString.split("\\.");
+    int k = paramString.length;
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      String str = paramString[i];
+      try
+      {
+        arrayOfLong[j] = Long.parseLong(str);
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.i("ScoreManager", 1, "ipStrToLong", localThrowable);
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        QLog.i("ScoreManager", 1, "ipStrToLong", localNumberFormatException);
+      }
+      j += 1;
+      i += 1;
+    }
+    return (arrayOfLong[0] << 24) + (arrayOfLong[1] << 16) + (arrayOfLong[2] << 8) + arrayOfLong[3];
   }
   
   static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
@@ -163,10 +163,10 @@ public class ScoreManager
           QLog.i("ScoreManager", 2, "parse|down load icons!");
         }
         localObject = new ScoreManager.DownloadInfo();
-        ((ScoreManager.DownloadInfo)localObject).jdField_a_of_type_JavaLangString = paramString1;
+        ((ScoreManager.DownloadInfo)localObject).a = paramString1;
         paramString1 = new StringBuilder();
         paramString1.append(ImageResUtil.a());
-        paramString1.append(((ScoreManager.DownloadInfo)localObject).jdField_a_of_type_JavaLangString.substring(((ScoreManager.DownloadInfo)localObject).jdField_a_of_type_JavaLangString.lastIndexOf(".")));
+        paramString1.append(((ScoreManager.DownloadInfo)localObject).a.substring(((ScoreManager.DownloadInfo)localObject).a.lastIndexOf(".")));
         ((ScoreManager.DownloadInfo)localObject).c = paramString1.toString();
         ((ScoreManager.DownloadInfo)localObject).b = paramString2;
         a(paramQQAppInterface, (ScoreManager.DownloadInfo)localObject);

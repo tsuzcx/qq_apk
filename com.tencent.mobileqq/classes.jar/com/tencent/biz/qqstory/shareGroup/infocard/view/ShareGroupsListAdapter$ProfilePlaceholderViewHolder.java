@@ -25,28 +25,28 @@ public class ShareGroupsListAdapter$ProfilePlaceholderViewHolder
   extends BaseStoryTimeLineAdapter.BaseViewHolder
   implements View.OnClickListener
 {
-  final Button jdField_a_of_type_AndroidWidgetButton;
-  final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  final TextView jdField_a_of_type_AndroidWidgetTextView;
-  final ShareGroupsListAdapter jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter;
-  List<QQUserUIItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  final ImageView jdField_b_of_type_AndroidWidgetImageView;
-  final TextView jdField_b_of_type_AndroidWidgetTextView;
+  final TextView b;
+  final Button c;
+  final ImageView d;
+  final TextView e;
+  final ImageView f;
+  final LinearLayout g;
+  final ShareGroupsListAdapter h;
+  List<QQUserUIItem> i = new ArrayList();
   
   public ShareGroupsListAdapter$ProfilePlaceholderViewHolder(View paramView, ShareGroupsListAdapter paramShareGroupsListAdapter)
   {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter = paramShareGroupsListAdapter;
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378563));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378589));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373071));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131378070));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370757));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368504));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.a = 2;
+    this.h = paramShareGroupsListAdapter;
+    this.e = ((TextView)paramView.findViewById(2131447188));
+    this.b = ((TextView)paramView.findViewById(2131447218));
+    this.d = ((ImageView)paramView.findViewById(2131440657));
+    this.c = ((Button)paramView.findViewById(2131446570));
+    this.g = ((LinearLayout)paramView.findViewById(2131438063));
+    this.f = ((ImageView)paramView.findViewById(2131435406));
+    this.c.setOnClickListener(this);
+    this.g.setOnClickListener(this);
+    this.e.setOnClickListener(this);
   }
   
   private void a(List<String> paramList)
@@ -56,72 +56,72 @@ public class ShareGroupsListAdapter$ProfilePlaceholderViewHolder
       if (paramList.isEmpty()) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.i.clear();
       Object localObject1 = (UserManager)SuperManager.a(2);
       Object localObject2 = new ArrayList();
-      int j = Math.min(paramList.size(), 6);
-      int i = 0;
-      while (i < j)
+      int k = Math.min(paramList.size(), 6);
+      int j = 0;
+      while (j < k)
       {
-        String str = (String)paramList.get(i);
+        String str = (String)paramList.get(j);
         QQUserUIItem localQQUserUIItem = ((UserManager)localObject1).b(str);
         if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.headUrl))) {
-          this.jdField_a_of_type_JavaUtilList.add(localQQUserUIItem);
+          this.i.add(localQQUserUIItem);
         } else {
           ((List)localObject2).add(new QQUserUIItem.UserID("", str));
         }
-        i += 1;
+        j += 1;
       }
       if (!((List)localObject2).isEmpty()) {
         new GetUserInfoHandler(1, (List)localObject2).a();
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      int k = this.jdField_a_of_type_JavaUtilList.size();
-      j = 0;
-      while (j < k)
+      this.g.removeAllViews();
+      int m = this.i.size();
+      k = 0;
+      while (k < m)
       {
-        if (j == 0) {
-          i = -1;
-        } else if (j == k - 1) {
-          i = 1;
+        if (k == 0) {
+          j = -1;
+        } else if (k == m - 1) {
+          j = 1;
         } else {
-          i = 0;
+          j = 0;
         }
-        paramList = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.jdField_a_of_type_AndroidContentContext;
-        localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-        localObject2 = (QQUserUIItem)this.jdField_a_of_type_JavaUtilList.get(j);
-        int m = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.memberCount;
+        paramList = this.h.b;
+        localObject1 = this.g;
+        localObject2 = (QQUserUIItem)this.i.get(k);
+        int n = this.h.g.memberCount;
         boolean bool;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.memberCount > 6) {
+        if (this.h.g.memberCount > 6) {
           bool = true;
         } else {
           bool = false;
         }
-        ShareGroupUtil.a(paramList, (LinearLayout)localObject1, 34, (QQUserUIItem)localObject2, i, m, bool);
-        j += 1;
+        ShareGroupUtil.a(paramList, (LinearLayout)localObject1, 34, (QQUserUIItem)localObject2, j, n, bool);
+        k += 1;
       }
     }
   }
   
   public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
+    if (this.h.g == null) {
       return;
     }
-    paramView = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramView.name);
+    paramView = this.h.g;
+    this.e.setText(paramView.name);
     if (paramView.type == 1)
     {
-      paramVideoCollectionItem = HardCodeUtil.a(2131713800);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847038);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      paramVideoCollectionItem = HardCodeUtil.a(2131911340);
+      this.d.setImageResource(2130848590);
+      this.c.setVisibility(8);
     }
     else
     {
       paramVideoCollectionItem = null;
     }
     if (!TextUtils.isEmpty(paramView.backgroundUrl)) {
-      UIUtils.a(this.jdField_b_of_type_AndroidWidgetImageView, paramView.backgroundUrl, 0, 0, null);
+      UIUtils.a(this.f, paramView.backgroundUrl, 0, 0, null);
     }
     if (paramView.headerUnionIdList != null) {
       paramView.memberCount = Math.max(paramView.headerUnionIdList.size(), paramView.memberCount);
@@ -130,29 +130,29 @@ public class ShareGroupsListAdapter$ProfilePlaceholderViewHolder
     localStringBuilder.append(paramVideoCollectionItem);
     localStringBuilder.append(" · ");
     localStringBuilder.append(paramView.memberCount);
-    localStringBuilder.append(HardCodeUtil.a(2131713802));
+    localStringBuilder.append(HardCodeUtil.a(2131911342));
     paramVideoCollectionItem = localStringBuilder.toString();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramVideoCollectionItem);
+    this.b.setText(paramVideoCollectionItem);
     a(paramView.headerUnionIdList);
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131370757)
+    int j = paramView.getId();
+    if (j != 2131438063)
     {
-      if (i != 2131378070)
+      if (j != 2131446570)
       {
-        if (i == 2131378563) {
-          this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView$UIEventListener.b(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+        if (j == 2131447188) {
+          this.h.h.b(this.g);
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView$UIEventListener.a(this.jdField_a_of_type_AndroidWidgetButton);
+        this.h.h.a(this.c);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView$UIEventListener.b(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+      this.h.h.b(this.g);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

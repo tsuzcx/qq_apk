@@ -28,11 +28,11 @@ public class ImaxAdSharePlugin
       JSONObject localJSONObject = new JSONObject();
       if (paramString != null)
       {
-        if ((QLog.isColorLevel()) && (paramString.a != null))
+        if ((QLog.isColorLevel()) && (paramString.g != null))
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("ad id  = ");
-          localStringBuilder.append(paramString.a.c);
+          localStringBuilder.append(paramString.g.c);
           QLog.d("ImaxAdvertisement", 2, localStringBuilder.toString());
         }
         PublicAccountAdvertisementActivity.a(BaseApplicationImpl.getContext(), paramString);
@@ -104,7 +104,7 @@ public class ImaxAdSharePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdSharePlugin
  * JD-Core Version:    0.7.0.1
  */

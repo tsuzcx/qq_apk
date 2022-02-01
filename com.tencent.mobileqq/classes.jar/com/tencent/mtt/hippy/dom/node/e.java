@@ -6,7 +6,7 @@ import android.text.style.LineHeightSpan;
 public class e
   implements LineHeightSpan
 {
-  private int a;
+  private final int a;
   
   public e(float paramFloat)
   {
@@ -67,7 +67,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.e
  * JD-Core Version:    0.7.0.1
  */

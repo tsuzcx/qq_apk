@@ -24,18 +24,18 @@ class LoginManager$2
   
   public void onFail(int paramInt, String paramString)
   {
-    LoginManager.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager, LoginStatus.NoLogin);
-    AegisHelper.a(String.format("livesdk 登录失败 errcode = %d, errMsg =%s, appid = %s, id = %s, token = %s, loginType = %d", new Object[] { Integer.valueOf(paramInt), paramString, this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginRequest.appid, this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginRequest.id, this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginRequest.token, Integer.valueOf(this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginRequest.loginType.ordinal()) }), "LoginManager");
+    LoginManager.a(this.b, LoginStatus.NoLogin);
+    AegisHelper.a(String.format("livesdk 登录失败 errcode = %d, errMsg =%s, appid = %s, id = %s, token = %s, loginType = %d", new Object[] { Integer.valueOf(paramInt), paramString, this.a.appid, this.a.id, this.a.token, Integer.valueOf(this.a.loginType.ordinal()) }), "LoginManager");
     LogFactory.a().e("LoginManager", String.format("loginToLiveSDK----livesdk 登录失败 errcode = %d, errMsg =%s", new Object[] { Integer.valueOf(paramInt), paramString }));
     if (paramInt == 1007)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager;
-      int i = ((LoginManager)localObject).jdField_a_of_type_Int + 1;
-      ((LoginManager)localObject).jdField_a_of_type_Int = i;
+      localObject = this.b;
+      int i = ((LoginManager)localObject).a + 1;
+      ((LoginManager)localObject).a = i;
       if (i > 2)
       {
         AegisHelper.a("登录重试超过2次后停止重试", "LoginManager");
-        localObject = (List)this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager.jdField_a_of_type_JavaUtilMap.get(BusinessManager.a.a().a);
+        localObject = (List)this.b.b.get(BusinessManager.a.b().a);
         if (localObject != null)
         {
           localObject = ((List)localObject).iterator();
@@ -43,7 +43,7 @@ class LoginManager$2
             ((ILiveLoginTicketListener)((Iterator)localObject).next()).a(paramInt, paramString);
           }
         }
-        if (LoginManager.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager))
+        if (LoginManager.a(this.b))
         {
           localObject = new Bundle();
           ((Bundle)localObject).putInt("Key_ErrCode", paramInt);
@@ -52,10 +52,10 @@ class LoginManager$2
         }
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager.a();
+      this.b.a();
       return;
     }
-    Object localObject = (List)this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager.jdField_a_of_type_JavaUtilMap.get(BusinessManager.a.a().a);
+    Object localObject = (List)this.b.b.get(BusinessManager.a.b().a);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -63,7 +63,7 @@ class LoginManager$2
         ((ILiveLoginTicketListener)((Iterator)localObject).next()).a(paramInt, paramString);
       }
     }
-    if (LoginManager.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager))
+    if (LoginManager.a(this.b))
     {
       localObject = new Bundle();
       ((Bundle)localObject).putInt("Key_ErrCode", paramInt);
@@ -74,23 +74,23 @@ class LoginManager$2
   
   public void onSucceed(LoginInfo paramLoginInfo)
   {
-    LoginManager.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager, LoginStatus.Logined);
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager.jdField_a_of_type_Int != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager.jdField_a_of_type_Int = 0;
+    LoginManager.a(this.b, LoginStatus.Logined);
+    if (this.b.a != 0) {
+      this.b.a = 0;
     }
     LogInterface localLogInterface = LogFactory.a();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("loginToLiveSDK onSucceed --loginInfo=");
     localStringBuilder.append(paramLoginInfo);
     localLogInterface.c("LoginManager", localStringBuilder.toString());
-    paramLoginInfo = LoginManager.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager, paramLoginInfo);
-    LoginManager.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager, paramLoginInfo);
-    LoginManager.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager, paramLoginInfo);
+    paramLoginInfo = LoginManager.a(this.b, paramLoginInfo);
+    LoginManager.a(this.b, paramLoginInfo);
+    LoginManager.b(this.b, paramLoginInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.framework.login.LoginManager.2
  * JD-Core Version:    0.7.0.1
  */

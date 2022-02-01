@@ -11,15 +11,6 @@ public class IntervalChecker
 {
   private final HashMap<Integer, TimePair> a = new HashMap();
   
-  public final long a(int paramInt)
-  {
-    TimePair localTimePair = (TimePair)this.a.get(Integer.valueOf(paramInt));
-    if (localTimePair == null) {
-      return 0L;
-    }
-    return localTimePair.a();
-  }
-  
   public final void a()
   {
     this.a.clear();
@@ -100,6 +91,15 @@ public class IntervalChecker
     return bool;
   }
   
+  public final long b(int paramInt)
+  {
+    TimePair localTimePair = (TimePair)this.a.get(Integer.valueOf(paramInt));
+    if (localTimePair == null) {
+      return 0L;
+    }
+    return localTimePair.a();
+  }
+  
   public final void b(int paramInt, long paramLong)
   {
     TimePair localTimePair = (TimePair)this.a.get(Integer.valueOf(paramInt));
@@ -115,7 +115,7 @@ public class IntervalChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.IntervalChecker
  * JD-Core Version:    0.7.0.1
  */

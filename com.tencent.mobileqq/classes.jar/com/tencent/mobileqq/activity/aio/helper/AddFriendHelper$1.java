@@ -16,11 +16,11 @@ class AddFriendHelper$1
   public void onClick(View paramView)
   {
     Object localObject = paramView.getTag();
-    if (((localObject instanceof Integer)) && (!AIOAssist.b()))
+    if (((localObject instanceof Integer)) && (!AIOAssist.c()))
     {
-      String str = this.a.a();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1006) {
-        str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
+      String str = this.a.b();
+      if (this.a.e.a == 1006) {
+        str = this.a.e.g;
       }
       int i = ((Integer)localObject).intValue();
       if (i != 1)
@@ -30,11 +30,11 @@ class AddFriendHelper$1
           if (i != 3)
           {
             if (i == 4) {
-              this.a.c();
+              this.a.e();
             }
           }
           else {
-            this.a.b();
+            this.a.d();
           }
         }
         else {
@@ -44,14 +44,14 @@ class AddFriendHelper$1
       else {
         this.a.b(str);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(i, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      this.a.a.d().a(i, this.a.e.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AddFriendHelper.1
  * JD-Core Version:    0.7.0.1
  */

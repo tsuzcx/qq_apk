@@ -9,7 +9,7 @@ class BaseQRScanResultProcessor$1
   
   public void a()
   {
-    this.a.a.a();
+    this.a.b.a();
   }
 }
 

@@ -7,7 +7,7 @@ class MultiVideoCtrlLayerUIBase$AutoCheckRunnable
   
   public void run()
   {
-    this.this$0.x();
+    this.this$0.J();
   }
 }
 

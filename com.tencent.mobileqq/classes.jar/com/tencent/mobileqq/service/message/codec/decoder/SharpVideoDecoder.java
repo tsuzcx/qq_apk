@@ -93,7 +93,7 @@ public class SharpVideoDecoder
       label241:
       if (-1 == m)
       {
-        VideoMsgTools.a(paramMessageHandler.a, 0, 6, true, str, String.valueOf(paramLong2), false, null, false, new Object[] { paramMsg });
+        VideoMsgTools.a(paramMessageHandler.n, 0, 6, true, str, String.valueOf(paramLong2), false, null, false, new Object[] { paramMsg });
       }
       else
       {
@@ -102,7 +102,7 @@ public class SharpVideoDecoder
         } else {
           paramBoolean = false;
         }
-        VideoMsgTools.a(paramMessageHandler.a, k, 6, paramBoolean, str, String.valueOf(paramLong1), false, null, false, new Object[] { paramMsg });
+        VideoMsgTools.a(paramMessageHandler.n, k, 6, paramBoolean, str, String.valueOf(paramLong1), false, null, false, new Object[] { paramMsg });
       }
       SharpReport_OffLine.a(paramLong2, paramLong1, 208);
     }
@@ -137,34 +137,34 @@ public class SharpVideoDecoder
         ((StringBuilder)localObject).append(paramList);
         QLog.d("shanezhaiSHARP", 2, ((StringBuilder)localObject).toString());
       }
-      if (paramMessageHandler.a.getMsgCache().a(l1, paramList))
+      if (paramMessageHandler.n.getMsgCache().a(l1, paramList))
       {
         if (QLog.isColorLevel()) {
           QLog.d("shanezhaiSHARP", 2, "msg has been pulled");
         }
         return;
       }
-      long l6 = MessageCache.a();
-      l4 = Long.valueOf(paramMessageHandler.a.getCurrentAccountUin()).longValue();
+      long l6 = MessageCache.c();
+      l4 = Long.valueOf(paramMessageHandler.n.getCurrentAccountUin()).longValue();
       Object localObject = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
       long l5 = l6 - l3;
       byte[] arrayOfByte1 = new byte[4];
       byte[] arrayOfByte2 = new byte[4];
       System.arraycopy(localObject, 0, arrayOfByte1, 0, 4);
       System.arraycopy(localObject, 4, arrayOfByte2, 0, 4);
-      int i = VideoPackageUtils.a(arrayOfByte1, 4);
+      int i = VideoPackageUtils.b(arrayOfByte1, 4);
       int j = localObject.length - 8 - i;
       if (j < 0) {
         return;
       }
       arrayOfByte1 = new byte[j];
       System.arraycopy(localObject, 8 + i, arrayOfByte1, 0, j);
-      boolean bool = AVMsgUtil.a(arrayOfByte1);
-      if (((!paramDecodeProtoPkgContext.jdField_a_of_type_Boolean) && (!paramDecodeProtoPkgContext.f)) || ((paramDecodeProtoPkgContext.jdField_a_of_type_Long == paramDecodeProtoPkgContext.b) && ((paramDecodeProtoPkgContext.jdField_a_of_type_Long != paramDecodeProtoPkgContext.b) || (bool))))
+      boolean bool = AVMsgUtil.b(arrayOfByte1);
+      if (((!paramDecodeProtoPkgContext.g) && (!paramDecodeProtoPkgContext.l)) || ((paramDecodeProtoPkgContext.a == paramDecodeProtoPkgContext.b) && ((paramDecodeProtoPkgContext.a != paramDecodeProtoPkgContext.b) || (bool))))
       {
         if (bool)
         {
-          paramDecodeProtoPkgContext = paramMessageHandler.a.getMsgCache();
+          paramDecodeProtoPkgContext = paramMessageHandler.n.getMsgCache();
           l2 = l1;
           paramDecodeProtoPkgContext.a(l2, paramList, l6);
           SharpReport_OffLine.a(l4, l2, 215);
@@ -199,9 +199,9 @@ public class SharpVideoDecoder
       {
         paramMessageHandler = new StringBuilder();
         paramMessageHandler.append("<---decodeC2CMsgPkg_SharpVideo return null:,isReaded:");
-        paramMessageHandler.append(paramDecodeProtoPkgContext.jdField_a_of_type_Boolean);
+        paramMessageHandler.append(paramDecodeProtoPkgContext.g);
         paramMessageHandler.append("syncOther:");
-        paramMessageHandler.append(paramDecodeProtoPkgContext.f);
+        paramMessageHandler.append(paramDecodeProtoPkgContext.l);
         paramMessageHandler.append(",isSharpRequest");
         paramMessageHandler.append(bool);
         QLog.e("SharpVideoDecoder", 2, paramMessageHandler.toString());
@@ -221,7 +221,7 @@ public class SharpVideoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.SharpVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

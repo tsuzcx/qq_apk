@@ -14,10 +14,10 @@ class NearbyGuideActivity$7
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.a;
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = this.a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         Integer localInteger = (Integer)((Iterator)localObject).next();
@@ -26,12 +26,12 @@ class NearbyGuideActivity$7
         localArrayList.add(localPicInfo);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessINearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, localArrayList, null, true, true, true, false);
+    this.b.a(this.c, localArrayList, null, true, true, true, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.7
  * JD-Core Version:    0.7.0.1
  */

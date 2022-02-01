@@ -18,7 +18,7 @@ public class TencentDocPreloadConfigBean
       TencentDocPreloadConfigBean localTencentDocPreloadConfigBean = new TencentDocPreloadConfigBean();
       try
       {
-        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].b);
         localTencentDocPreloadConfigBean.a = paramArrayOfQConfItem.getBoolean("fastload");
         localTencentDocPreloadConfigBean.b = paramArrayOfQConfItem.getBoolean("prefetch");
         localTencentDocPreloadConfigBean.c = paramArrayOfQConfItem.getBoolean("preloadWebView");
@@ -58,7 +58,7 @@ public class TencentDocPreloadConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocPreloadConfigBean
  * JD-Core Version:    0.7.0.1
  */

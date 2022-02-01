@@ -15,8 +15,8 @@ class PoiMapActivity$4
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    PoiMapActivity.d(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setEnabled(false);
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHandler().postDelayed(new PoiMapActivity.4.1(this), 150L);
+    PoiMapActivity.f(this.c).setEnabled(false);
+    this.c.u.getHandler().postDelayed(new PoiMapActivity.4.1(this), 150L);
   }
 }
 

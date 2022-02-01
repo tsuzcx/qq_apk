@@ -187,7 +187,18 @@ public final class VFSUtils
   
   static String normalizePathSimple(String paramString)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    if (paramString.isEmpty()) {
+      return paramString;
+    }
+    String str = paramString;
+    if (paramString.endsWith("/"))
+    {
+      str = paramString;
+      if (paramString.length() > 1) {
+        str = paramString.substring(0, paramString.length() - 1);
+      }
+    }
+    return str;
   }
   
   static Uri parseUri(String paramString)
@@ -254,14 +265,14 @@ public final class VFSUtils
     //   4: astore 8
     //   6: aload_0
     //   7: aload_1
-    //   8: invokeinterface 260 2 0
+    //   8: invokeinterface 266 2 0
     //   13: astore_1
     //   14: aload 8
     //   16: astore_0
     //   17: aload_2
     //   18: aload_3
     //   19: iconst_0
-    //   20: invokeinterface 264 3 0
+    //   20: invokeinterface 270 3 0
     //   25: astore_2
     //   26: aload_2
     //   27: astore_0
@@ -274,7 +285,7 @@ public final class VFSUtils
     //   38: astore_0
     //   39: aload_1
     //   40: aload_3
-    //   41: invokevirtual 270	java/io/InputStream:read	([B)I
+    //   41: invokevirtual 276	java/io/InputStream:read	([B)I
     //   44: istore 4
     //   46: iload 4
     //   48: iconst_m1
@@ -285,7 +296,7 @@ public final class VFSUtils
     //   55: aload_3
     //   56: iconst_0
     //   57: iload 4
-    //   59: invokevirtual 276	java/io/OutputStream:write	([BII)V
+    //   59: invokevirtual 282	java/io/OutputStream:write	([BII)V
     //   62: lload 5
     //   64: iload 4
     //   66: i2l
@@ -293,9 +304,9 @@ public final class VFSUtils
     //   68: lstore 5
     //   70: goto -33 -> 37
     //   73: aload_1
-    //   74: invokestatic 278	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   74: invokestatic 284	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   77: aload_2
-    //   78: invokestatic 278	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   78: invokestatic 284	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   81: lload 5
     //   83: lreturn
     //   84: astore_2
@@ -306,9 +317,9 @@ public final class VFSUtils
     //   91: aload 7
     //   93: astore_0
     //   94: aload_1
-    //   95: invokestatic 278	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   95: invokestatic 284	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   98: aload_0
-    //   99: invokestatic 278	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   99: invokestatic 284	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   102: goto +5 -> 107
     //   105: aload_2
     //   106: athrow
@@ -361,7 +372,7 @@ public final class VFSUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.VFSUtils
  * JD-Core Version:    0.7.0.1
  */

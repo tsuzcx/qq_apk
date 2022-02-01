@@ -23,20 +23,14 @@ public final class AppBridgeInvokeHandler
     {
       paramJSONObject = paramJSONObject.optString("params");
       if (paramJSONObject != null) {
-        a().downloadApp(paramJSONObject);
+        d().downloadApp(paramJSONObject);
       }
     }
   }
   
   private final void b(JSONObject paramJSONObject, String paramString)
   {
-    a().downloadApk(paramJSONObject, paramString);
-  }
-  
-  @NotNull
-  public String a()
-  {
-    return "app";
+    d().downloadApk(paramJSONObject, paramString);
   }
   
   public void a()
@@ -52,10 +46,16 @@ public final class AppBridgeInvokeHandler
     a("downloadApkCancel", (Function2)new AppBridgeInvokeHandler.register.8(this));
     a("downloadApkResume", (Function2)new AppBridgeInvokeHandler.register.9(this));
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "app";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.AppBridgeInvokeHandler
  * JD-Core Version:    0.7.0.1
  */

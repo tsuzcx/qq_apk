@@ -1,6 +1,7 @@
 package com.tencent.beacon.e;
 
 import com.tencent.beacon.a.a.d;
+import com.tencent.beacon.a.c.f;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -11,9 +12,10 @@ public class b
   implements d
 {
   private static volatile b a;
-  protected int A = 10000;
-  protected boolean B = false;
-  protected int C = 1;
+  private boolean A = true;
+  protected int B = 10000;
+  protected boolean C = false;
+  protected int D = 1;
   protected int b = 48;
   protected int c = 2000;
   protected int d = 48;
@@ -103,8 +105,8 @@ public class b
               }
             }
           }
-          this.B = com.tencent.beacon.base.util.b.a((String)paramMap.get("straOnOff"), this.B);
-          this.C = com.tencent.beacon.base.util.b.a((String)paramMap.get("straDayMaxCount"), this.C, 1, 2147483647);
+          this.C = com.tencent.beacon.base.util.b.a((String)paramMap.get("straOnOff"), this.C);
+          this.D = com.tencent.beacon.base.util.b.a((String)paramMap.get("straDayMaxCount"), this.D, 1, 2147483647);
           this.n = com.tencent.beacon.base.util.b.a((String)paramMap.get("acceleEnable"), this.n);
           this.o = com.tencent.beacon.base.util.b.a((String)paramMap.get("gyroEnable"), this.o);
           this.p = com.tencent.beacon.base.util.b.a((String)paramMap.get("magneticEnable"), this.p);
@@ -114,7 +116,7 @@ public class b
           this.t = com.tencent.beacon.base.util.b.a((String)paramMap.get("consuming"), this.t, 60, 86400);
           this.u = com.tencent.beacon.base.util.b.a((String)paramMap.get("bidEnable"), this.u);
           this.v = com.tencent.beacon.base.util.b.a((String)paramMap.get("auditEnable"), this.v);
-          this.A = com.tencent.beacon.base.util.b.a((String)paramMap.get("maxDBCount"), this.A, 10000, 100000);
+          this.B = com.tencent.beacon.base.util.b.a((String)paramMap.get("maxDBCount"), this.B, 10000, 100000);
           com.tencent.beacon.base.net.c.b.c((String)paramMap.get("eventUrl"));
           com.tencent.beacon.base.net.c.b.e((String)paramMap.get("strategyUrl"));
         }
@@ -162,7 +164,7 @@ public class b
   
   public int b()
   {
-    return this.A;
+    return this.B;
   }
   
   public void b(Set<String> paramSet)
@@ -225,7 +227,7 @@ public class b
   {
     try
     {
-      int i1 = this.C;
+      int i1 = this.D;
       return i1;
     }
     finally
@@ -276,19 +278,24 @@ public class b
   
   public boolean j()
   {
-    return this.f;
+    return this.A;
   }
   
   public boolean k()
   {
-    return this.z;
+    return this.f;
   }
   
   public boolean l()
   {
+    return this.z;
+  }
+  
+  public boolean m()
+  {
     try
     {
-      boolean bool = this.B;
+      boolean bool = this.C;
       return bool;
     }
     finally
@@ -332,9 +339,9 @@ public class b
     if (paramc.b.containsKey("u_c_d_s")) {
       i1 = ((Integer)paramc.b.get("u_c_d_s")).intValue();
     } else {
-      i1 = this.A;
+      i1 = this.B;
     }
-    this.A = i1;
+    this.B = i1;
     if (paramc.b.containsKey("u_c_p_s")) {
       bool = ((Boolean)paramc.b.get("u_c_p_s")).booleanValue();
     } else {
@@ -353,6 +360,15 @@ public class b
       bool = this.z;
     }
     this.z = bool;
+    if (paramc.b.containsKey("u_c_o_e")) {
+      bool = ((Boolean)paramc.b.get("u_c_o_e")).booleanValue();
+    } else {
+      bool = this.A;
+    }
+    this.A = bool;
+    if (a != null) {
+      f.p().N();
+    }
   }
 }
 

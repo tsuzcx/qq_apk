@@ -23,22 +23,22 @@ import mqq.os.MqqHandler;
 public class DataLineMessageSpreadManager
   implements Manager
 {
-  private int jdField_a_of_type_Int = -1;
-  long jdField_a_of_type_Long = 0L;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private BaseTimDataLineTipsProcessor jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBaseTimDataLineTipsProcessor = null;
-  private ConfigSettingForDataLine jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSettingForDataLine;
-  private List<MessageRecord> jdField_a_of_type_JavaUtilList = new ArrayList();
+  long a = 0L;
+  private QQAppInterface b;
+  private ConfigSettingForDataLine c;
+  private BaseTimDataLineTipsProcessor d = null;
+  private int e = -1;
+  private List<MessageRecord> f = new ArrayList();
   
   public DataLineMessageSpreadManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSettingForDataLine = new ConfigSettingForDataLine(paramQQAppInterface);
+    this.b = paramQQAppInterface;
+    this.c = new ConfigSettingForDataLine(paramQQAppInterface);
   }
   
   private void a(DataLineMsgRecord paramDataLineMsgRecord, String paramString1, String paramString2, String paramString3, TencentDocDataLineTipsConfigBean.TeamworkKeyWords paramTeamworkKeyWords)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSettingForDataLine.a())
+    if (!this.c.b())
     {
       if (QLog.isColorLevel()) {
         QLog.i("DataLineMessageSpreadManager", 1, "last insert time less");
@@ -54,13 +54,13 @@ public class DataLineMessageSpreadManager
       localStringBuilder.append(paramString2);
       QLog.i("DataLineMessageSpreadManager", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSettingForDataLine.a(paramDataLineMsgRecord);
+    this.c.a(paramDataLineMsgRecord);
     new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new DataLineMessageSpreadManager.2(this, paramDataLineMsgRecord, paramString1, paramTeamworkKeyWords, paramString2, paramString3), 1000L);
   }
   
-  private boolean a(DataLineMsgRecord paramDataLineMsgRecord)
+  private boolean b(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSettingForDataLine.a();
+    int i = this.c.a();
     int j = TencentDocDataLineTipsConfigProcessor.a().a();
     if (j == 0)
     {
@@ -86,7 +86,7 @@ public class DataLineMessageSpreadManager
   
   public void a(TencentDocDataLineTipsConfigBean paramTencentDocDataLineTipsConfigBean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSettingForDataLine.a(paramTencentDocDataLineTipsConfigBean);
+    this.c.a(paramTencentDocDataLineTipsConfigBean);
   }
   
   public void a(DataLineMsgRecord paramDataLineMsgRecord)
@@ -100,7 +100,7 @@ public class DataLineMessageSpreadManager
       localStringBuilder.append(paramDataLineMsgRecord.hashCode());
       QLog.i("DataLineMessageSpreadManager", 4, localStringBuilder.toString());
       if (paramDataLineMsgRecord.msgUid == 0L) {
-        FileManagerUtil.a();
+        FileManagerUtil.d();
       }
     }
     ThreadManager.executeOnSubThread(new DataLineMessageSpreadManager.1(this, paramDataLineMsgRecord));
@@ -120,7 +120,7 @@ public class DataLineMessageSpreadManager
       l = 0L;
     }
     int i = DataLineMsgRecord.getDevTypeBySeId(l);
-    paramDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(l);
+    paramDataLineMsgRecord = this.b.getMessageFacade().d(i).a(l);
     if (paramDataLineMsgRecord == null)
     {
       if (QLog.isColorLevel()) {
@@ -128,7 +128,7 @@ public class DataLineMessageSpreadManager
       }
       return;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80098F8", "0X80098F8", 0, 0, "", "", "", "");
+    ReportController.b(this.b, "dc00898", "", "", "0X80098F8", "0X80098F8", 0, 0, "", "", "", "");
     paramDataLineMsgRecord = paramDataLineMsgRecord.trans2Entity();
     if (paramDataLineMsgRecord == null)
     {
@@ -139,15 +139,15 @@ public class DataLineMessageSpreadManager
       QLog.e("DataLineMessageSpreadManager", 1, paramDataLineMsgRecord.toString());
       return;
     }
-    TeamWorkConvertUtils.a(paramDataLineMsgRecord, paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, i);
+    TeamWorkConvertUtils.a(paramDataLineMsgRecord, paramContext, this.b, 6, i);
   }
   
   public void a(MessageRecord paramMessageRecord, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
     if (paramMessageRecord == null)
     {
-      QLog.e("DataLineMessageSpreadManager", 1, FileManagerUtil.a());
+      QLog.e("DataLineMessageSpreadManager", 1, FileManagerUtil.d());
       return;
     }
     if (QLog.isColorLevel())
@@ -160,15 +160,15 @@ public class DataLineMessageSpreadManager
     ThreadManager.getUIHandler().postDelayed(new DataLineMessageSpreadManager.3(this), 1000L);
     try
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.f.add(paramMessageRecord);
+      this.a = System.currentTimeMillis();
       if (QLog.isColorLevel())
       {
         paramMessageRecord = new StringBuilder();
         paramMessageRecord.append("lastInsertTime[");
-        paramMessageRecord.append(this.jdField_a_of_type_Long);
+        paramMessageRecord.append(this.a);
         paramMessageRecord.append("],lstCache size[");
-        paramMessageRecord.append(this.jdField_a_of_type_JavaUtilList.size());
+        paramMessageRecord.append(this.f.size());
         paramMessageRecord.append("]");
         QLog.i("DataLineMessageSpreadManager", 1, paramMessageRecord.toString());
       }
@@ -181,7 +181,7 @@ public class DataLineMessageSpreadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager
  * JD-Core Version:    0.7.0.1
  */

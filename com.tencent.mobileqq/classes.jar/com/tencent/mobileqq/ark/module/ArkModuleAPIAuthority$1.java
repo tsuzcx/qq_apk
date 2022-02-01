@@ -14,23 +14,23 @@ final class ArkModuleAPIAuthority$1
   
   public void run()
   {
-    Activity localActivity = ArkAppModuleBase.b();
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(localActivity, 2131756189);
-    localQQCustomDialog.setContentView(2131558955);
-    localQQCustomDialog.setTitle(localActivity.getString(2131690122, new Object[] { this.jdField_a_of_type_JavaLangString }));
-    ((ImageView)localQQCustomDialog.findViewById(2131365600)).setImageDrawable(localActivity.getResources().getDrawable(2130838626));
-    ((TextView)localQQCustomDialog.findViewById(2131365602)).setText(this.jdField_a_of_type_JavaLangString);
-    ((TextView)localQQCustomDialog.findViewById(2131365644)).setText(this.b);
+    Activity localActivity = ArkAppModuleBase.h();
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(localActivity, 2131953338);
+    localQQCustomDialog.setContentView(2131624588);
+    localQQCustomDialog.setTitle(localActivity.getString(2131887021, new Object[] { this.a }));
+    ((ImageView)localQQCustomDialog.findViewById(2131431831)).setImageDrawable(localActivity.getResources().getDrawable(2130838751));
+    ((TextView)localQQCustomDialog.findViewById(2131431833)).setText(this.a);
+    ((TextView)localQQCustomDialog.findViewById(2131431876)).setText(this.b);
     localQQCustomDialog.setCanceledOnTouchOutside(false);
     ArkAppCacheMgr.getAppIcon(this.c, new ArkModuleAPIAuthority.1.1(this, localQQCustomDialog));
-    localQQCustomDialog.setNegativeButton(2131720400, new ArkModuleAPIAuthority.1.2(this, localQQCustomDialog, localActivity));
-    localQQCustomDialog.setPositiveButton(2131720390, new ArkModuleAPIAuthority.1.3(this, localQQCustomDialog));
+    localQQCustomDialog.setNegativeButton(2131918076, new ArkModuleAPIAuthority.1.2(this, localQQCustomDialog, localActivity));
+    localQQCustomDialog.setPositiveButton(2131918066, new ArkModuleAPIAuthority.1.3(this, localQQCustomDialog));
     try
     {
       localQQCustomDialog.show();
       label154:
-      if (ArkModuleAPIAuthority.a(this.jdField_a_of_type_JavaLangString, this.d, this.e) == 0) {
-        ArkModuleAPIAuthority.a(this.jdField_a_of_type_JavaLangString, this.d, this.e, 2);
+      if (ArkModuleAPIAuthority.a(this.a, this.e, this.f) == 0) {
+        ArkModuleAPIAuthority.a(this.a, this.e, this.f, 2);
       }
       return;
     }
@@ -42,7 +42,7 @@ final class ArkModuleAPIAuthority$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkModuleAPIAuthority.1
  * JD-Core Version:    0.7.0.1
  */

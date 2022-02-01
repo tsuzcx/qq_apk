@@ -25,13 +25,14 @@ import mqq.app.AccountNotMatchException;
 import mqq.app.BaseActivity;
 import mqq.app.MobileQQ;
 import mqq.app.Packet;
+import mqq.util.LogUtil;
 
 public class VChatActivity
   extends BaseActivity
 {
-  public VideoController a;
   public VideoAppInterface a;
-  private boolean a;
+  public VideoController b;
+  private boolean c;
   
   private void a(FromServiceMsg paramFromServiceMsg, String paramString)
   {
@@ -47,9 +48,9 @@ public class VChatActivity
           if ((localVideoPacket != null) && (localVideoPacket.a()))
           {
             VideoNodeManager.a(34);
-            String str1 = String.valueOf(localVideoPacket.c);
+            String str1 = String.valueOf(localVideoPacket.h);
             String str2 = SessionMgr.a(3, str1, new int[0]);
-            Object localObject = SessionMgr.a().c(str2);
+            Object localObject = SessionMgr.a().d(str2);
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("onCreate--onRequestVideo,  VideoPacket[");
             localStringBuilder.append(localVideoPacket);
@@ -67,27 +68,27 @@ public class VChatActivity
                 ((StringBuilder)localObject).append(" , msg_type = ");
                 ((StringBuilder)localObject).append(localSharpVideoMsg.msg_type);
                 ((StringBuilder)localObject).append(", bodyType = ");
-                ((StringBuilder)localObject).append(localVideoPacket.jdField_a_of_type_Int);
+                ((StringBuilder)localObject).append(localVideoPacket.d);
                 QLog.d("tagSharpSvr", 2, ((StringBuilder)localObject).toString());
               }
-              QAVNotificationUtil.a("VChatActivity", str2, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, localVideoPacket);
+              QAVNotificationUtil.a("VChatActivity", str2, this.a, localVideoPacket);
               paramFromServiceMsg = paramFromServiceMsg.getAttribute("__timestamp_net2msf");
               if (paramFromServiceMsg != null)
               {
                 long l = ((Long)paramFromServiceMsg).longValue();
-                this.jdField_a_of_type_ComTencentAvVideoController.b(str1, l);
+                this.b.b(str1, l);
               }
-              int i = localVideoPacket.e;
+              int i = localVideoPacket.k;
               paramFromServiceMsg = QAVNotificationUtil.a(localVideoPacket);
-              if (localVideoPacket.d != 1) {
+              if (localVideoPacket.i != 1) {
                 break label370;
               }
               bool = true;
-              this.jdField_a_of_type_ComTencentAvVideoController.onRequestVideo(i, str1, paramFromServiceMsg, null, bool, null, 0, localVideoPacket.b);
-              paramFromServiceMsg = SessionMgr.a().c(str2);
+              this.b.onRequestVideo(i, str1, paramFromServiceMsg, null, bool, null, 0, localVideoPacket.f);
+              paramFromServiceMsg = SessionMgr.a().d(str2);
               if (paramFromServiceMsg != null)
               {
-                paramFromServiceMsg.c(localVideoPacket.jdField_a_of_type_Long);
+                paramFromServiceMsg.e(localVideoPacket.c);
                 return;
               }
             }
@@ -121,14 +122,14 @@ public class VChatActivity
     ((StringBuilder)localObject).append("AV_UIN_NOT_MATCH, MSFUIN: ");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(" AVUIN:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject).append(LogUtil.getSafePrintUin(this.a.getCurrentAccountUin()));
     QLog.d("VChatActivity", 1, ((StringBuilder)localObject).toString());
     localObject = new HashMap();
-    ((HashMap)localObject).put("avuin", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+    ((HashMap)localObject).put("avuin", this.a.getCurrentAccountUin());
     ((HashMap)localObject).put("msfuin", String.valueOf(paramString));
-    StatisticCollector.getInstance(super.getApplicationContext()).collectPerformance(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "AV_UIN_NOT_MATCH", false, 0L, 0L, (HashMap)localObject, "", true);
+    StatisticCollector.getInstance(super.getApplicationContext()).collectPerformance(this.a.getCurrentAccountUin(), "AV_UIN_NOT_MATCH", false, 0L, 0L, (HashMap)localObject, "", true);
     if (!paramString.equals("0")) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(paramString);
+      this.a.b(paramString);
     }
   }
   
@@ -142,10 +143,10 @@ public class VChatActivity
     localStringBuilder.append("]");
     QLog.w("VChatActivity", 1, localStringBuilder.toString());
     super.finish();
-    if (this.jdField_a_of_type_ComTencentAvVideoController != null) {
+    if (this.b != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramLong, paramInt);
+    this.a.a(paramLong, paramInt);
   }
   
   @Override
@@ -169,9 +170,9 @@ public class VChatActivity
     super.onCreate(paramBundle);
     QLog.d("VChatActivity", 1, "onCreate()");
     if ((super.getAppRuntime() instanceof VideoAppInterface)) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)super.getAppRuntime());
+      this.a = ((VideoAppInterface)super.getAppRuntime());
     }
-    paramBundle = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    paramBundle = this.a;
     if (paramBundle == null)
     {
       QLog.d("VChatActivity", 1, "onCreate mApp is null! ");
@@ -179,8 +180,8 @@ public class VChatActivity
       return;
     }
     paramBundle.b(false);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    this.c = false;
+    this.b = this.a.b();
     paramBundle = super.getIntent();
     String str = paramBundle.getStringExtra("uin");
     FromServiceMsg localFromServiceMsg = (FromServiceMsg)paramBundle.getParcelableExtra("fromServiceMsg");
@@ -214,7 +215,7 @@ public class VChatActivity
       return super.onKeyDown(paramInt, paramKeyEvent);
     }
     super.finish();
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     paramKeyEvent = new StringBuilder();
     paramKeyEvent.append("exit when KEYCODE_BACK, seq[");
     paramKeyEvent.append(l);
@@ -242,9 +243,9 @@ public class VChatActivity
     super.onResume();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onResume()  mIsEffectiveRequest = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     QLog.d("VChatActivity", 1, localStringBuilder.toString());
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.c) {
       super.finish();
     }
   }

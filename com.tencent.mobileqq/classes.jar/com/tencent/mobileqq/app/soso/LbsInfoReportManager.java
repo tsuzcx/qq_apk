@@ -41,38 +41,21 @@ import org.json.JSONObject;
 public class LbsInfoReportManager
   implements Manager, BusinessObserver
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<LbsReportInfo> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean = false;
-  private double jdField_b_of_type_Double;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean = false;
+  private QQAppInterface a;
+  private long b;
+  private long c;
+  private double d;
+  private double e;
+  private int f;
+  private ArrayList<LbsReportInfo> g;
+  private boolean h = false;
+  private boolean i = false;
   
   public LbsInfoReportManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.a = paramQQAppInterface;
+    this.g = new ArrayList();
     b(null);
-  }
-  
-  private int a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Int <= 0) {
-        this.jdField_a_of_type_Int = (new Random().nextInt(1000000) + 100);
-      } else if (this.jdField_a_of_type_Int >= 1000100) {
-        this.jdField_a_of_type_Int = 100;
-      } else {
-        this.jdField_a_of_type_Int += 1;
-      }
-      int i = this.jdField_a_of_type_Int;
-      return i;
-    }
-    finally {}
   }
   
   private String a(Context paramContext, String paramString)
@@ -98,14 +81,14 @@ public class LbsInfoReportManager
     if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
       ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramArrayList.size())
+      int j = 0;
+      while (j < paramArrayList.size())
       {
-        LbsReportInfo localLbsReportInfo = (LbsReportInfo)paramArrayList.get(i);
+        LbsReportInfo localLbsReportInfo = (LbsReportInfo)paramArrayList.get(j);
         if ((localLbsReportInfo != null) && (!TextUtils.isEmpty(localLbsReportInfo.content))) {
           localArrayList.add("dc01864");
         }
-        i += 1;
+        j += 1;
       }
       return localArrayList;
     }
@@ -114,10 +97,10 @@ public class LbsInfoReportManager
   
   private void a()
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().query(LbsReportInfo.class);
+    List localList = this.a.getEntityManagerFactory().createEntityManager().query(LbsReportInfo.class);
     if ((localList != null) && (!localList.isEmpty()))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(localList);
+      this.g.addAll(localList);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -130,7 +113,7 @@ public class LbsInfoReportManager
     {
       QLog.i("LBSReport", 2, "initLbsReportInfoFromDB info list is empty.");
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.h = true;
   }
   
   private void a(Context paramContext, String paramString1, String paramString2)
@@ -160,10 +143,10 @@ public class LbsInfoReportManager
       if (paramSosoLocation.mLon02 == 0.0D) {
         return;
       }
-      int j = BaseApplicationImpl.sProcessId;
-      int i = 1;
-      if (j != 1) {
-        i = 0;
+      int k = BaseApplicationImpl.sProcessId;
+      int j = 1;
+      if (k != 1) {
+        j = 0;
       }
       localObject = new Intent();
       ((Intent)localObject).setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
@@ -185,7 +168,7 @@ public class LbsInfoReportManager
       if (!TextUtils.isEmpty(paramSosoLocation.district)) {
         ((Intent)localObject).putExtra("district", paramSosoLocation.district);
       }
-      if (i != 0)
+      if (j != 0)
       {
         paramSosoLocation = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
         if (paramSosoLocation != null) {
@@ -201,7 +184,7 @@ public class LbsInfoReportManager
   
   private void a(byte[] paramArrayOfByte, int paramInt)
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.a;
     if (localQQAppInterface != null)
     {
       if (paramArrayOfByte == null) {
@@ -218,6 +201,23 @@ public class LbsInfoReportManager
     }
   }
   
+  private int b()
+  {
+    try
+    {
+      if (this.f <= 0) {
+        this.f = (new Random().nextInt(1000000) + 100);
+      } else if (this.f >= 1000100) {
+        this.f = 100;
+      } else {
+        this.f += 1;
+      }
+      int j = this.f;
+      return j;
+    }
+    finally {}
+  }
+  
   private void b(@Nullable JSONObject paramJSONObject)
   {
     JSONObject localJSONObject = paramJSONObject;
@@ -226,16 +226,16 @@ public class LbsInfoReportManager
     {
       try
       {
-        paramJSONObject = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        paramJSONObject = a(this.a.getApp(), this.a.getCurrentAccountUin());
         if (TextUtils.isEmpty(paramJSONObject)) {
           return;
         }
         localJSONObject = new JSONObject(paramJSONObject);
-        int i = localJSONObject.optInt("is_close_old_report");
+        int j = localJSONObject.optInt("is_close_old_report");
         bool = true;
-        if (i == 1)
+        if (j == 1)
         {
-          this.jdField_b_of_type_Boolean = bool;
+          this.i = bool;
           return;
         }
       }
@@ -262,7 +262,7 @@ public class LbsInfoReportManager
     double d1 = paramIntent.getDoubleExtra("lat", 0.0D);
     double d2 = paramIntent.getDoubleExtra("lng", 0.0D);
     double d3 = paramIntent.getDoubleExtra("alt", 0.0D);
-    float f = paramIntent.getFloatExtra("accuracy", 0.0F);
+    float f1 = paramIntent.getFloatExtra("accuracy", 0.0F);
     String str1 = paramIntent.getStringExtra("businessTag");
     String str2 = paramIntent.getStringExtra("nation");
     String str3 = paramIntent.getStringExtra("province");
@@ -270,8 +270,8 @@ public class LbsInfoReportManager
     paramIntent = paramIntent.getStringExtra("district");
     if ((d1 != 0.0D) && (d2 != 0.0D))
     {
-      double d4 = TencentLocationUtils.distanceBetween(d1, d2, this.jdField_a_of_type_Double, this.jdField_b_of_type_Double);
-      double d5 = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+      double d4 = TencentLocationUtils.distanceBetween(d1, d2, this.d, this.e);
+      double d5 = SystemClock.elapsedRealtime() - this.b;
       if ((d4 < 20.0D) && (d5 < 180000.0D))
       {
         if (QLog.isColorLevel())
@@ -285,7 +285,7 @@ public class LbsInfoReportManager
         }
         return;
       }
-      ThreadManager.executeOnSubThread(new LbsInfoReportManager.1(this, d1, d2, d3, f, str1, str2, str3, str4, paramIntent));
+      ThreadManager.executeOnSubThread(new LbsInfoReportManager.1(this, d1, d2, d3, f1, str1, str2, str3, str4, paramIntent));
       return;
     }
     if (QLog.isColorLevel()) {
@@ -347,7 +347,7 @@ public class LbsInfoReportManager
       if (paramArrayList2.isEmpty()) {
         return;
       }
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      QQAppInterface localQQAppInterface = this.a;
       NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApp(), ReportServlet.class);
       localNewIntent.putExtra("sendType", 10);
       localNewIntent.putExtra("seqKey", paramInt1);
@@ -363,7 +363,7 @@ public class LbsInfoReportManager
   {
     paramJSONObject = paramJSONObject.optJSONObject("lbs_report_config");
     if (paramJSONObject != null) {
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramJSONObject.toString());
+      a(this.a.getApp(), this.a.getCurrentAccountUin(), paramJSONObject.toString());
     }
     b(paramJSONObject);
   }
@@ -372,33 +372,33 @@ public class LbsInfoReportManager
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
+    int k = 0;
     int j = 0;
-    int i = 0;
     Object localObject;
     if (paramInt == 10)
     {
-      j = paramBundle.getInt("seqKey");
+      k = paramBundle.getInt("seqKey");
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("OnReceive: isSuccess-");
         ((StringBuilder)localObject).append(paramBoolean);
         ((StringBuilder)localObject).append(", seqKey = ");
-        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(k);
         QLog.d("LBSReport", 2, ((StringBuilder)localObject).toString());
       }
-      paramInt = i;
+      paramInt = j;
       if (!paramBoolean) {
         paramInt = paramBundle.getInt("retryTime");
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localObject = this.a;
       if ((!paramBoolean) && (paramInt < 2) && (localObject != null)) {
-        a(paramBundle.getStringArrayList("tags"), paramBundle.getStringArrayList("contents"), j, paramInt);
+        a(paramBundle.getStringArrayList("tags"), paramBundle.getStringArrayList("contents"), k, paramInt);
       }
     }
     else if ((paramBundle.containsKey("cmd")) && ("LbsSvc.lbs_report".equals(paramBundle.getString("cmd"))))
     {
-      paramInt = j;
+      paramInt = k;
       if (!paramBoolean) {
         paramInt = paramBundle.getInt("retryTime");
       }
@@ -419,7 +419,7 @@ public class LbsInfoReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.soso.LbsInfoReportManager
  * JD-Core Version:    0.7.0.1
  */

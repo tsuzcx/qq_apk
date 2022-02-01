@@ -20,21 +20,21 @@ class RelativeFeedsAdapter$2
   {
     if (paramBoolean1)
     {
-      VSReporter.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_unfollow", 0, 0, new String[0]);
-      paramString = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.b().iterator();
+      VSReporter.b(this.a.poster.id.get(), "auth_follow", "clk_unfollow", 0, 0, new String[0]);
+      paramString = this.b.N().iterator();
       while (paramString.hasNext()) {
-        if (TextUtils.equals(((CertifiedAccountMeta.StFeed)paramString.next()).poster.id.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get())) {
+        if (TextUtils.equals(((CertifiedAccountMeta.StFeed)paramString.next()).poster.id.get(), this.a.poster.id.get())) {
           paramString.remove();
         }
       }
-      this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.notifyDataSetChanged();
-      QQToast.a(RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter), 2, HardCodeUtil.a(2131690779), 0).a();
-      if (this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.b().size() < 5) {
-        this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.o();
+      this.b.notifyDataSetChanged();
+      QQToast.makeText(RelativeFeedsAdapter.f(this.b), 2, HardCodeUtil.a(2131887701), 0).show();
+      if (this.b.N().size() < 5) {
+        this.b.y();
       }
     }
     if (paramBoolean2) {
-      VSReporter.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_cancel", 0, 0, new String[0]);
+      VSReporter.b(this.a.poster.id.get(), "auth_follow", "clk_cancel", 0, 0, new String[0]);
     }
   }
 }

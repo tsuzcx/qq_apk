@@ -19,7 +19,7 @@ import tencent.im.msg.im_msg_body.Text;
 public class TextElemDecoder
   extends SimplePBElemDecoder
 {
-  public static Boolean a(im_msg_body.Elem paramElem)
+  public static Boolean b(im_msg_body.Elem paramElem)
   {
     boolean bool2 = paramElem.text.has();
     boolean bool1 = true;
@@ -50,12 +50,12 @@ public class TextElemDecoder
   
   public boolean a(im_msg_body.Elem paramElem)
   {
-    return a(paramElem).booleanValue();
+    return b(paramElem).booleanValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.TextElemDecoder
  * JD-Core Version:    0.7.0.1
  */

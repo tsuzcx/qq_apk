@@ -4,6 +4,9 @@
   xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <View android:layout_width="fill_parent" android:layout_height="@dimen/ln" />
+        <Button android:gravity="center" android:id="@id/o1p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/xof" style="@style/l6" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/o4i" android:focusable="false" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:switchChecked="false" formItem:switchText="@string/xoj" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/o4h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ms" formItem:showArrow="false" />
         <com.tencent.mobileqq.widget.FormItemRelativeLayout android:id="@id/dr1" android:background="@drawable/common_strip_setting_middle" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/j2">
             <TextView android:textSize="17.0dip" android:textColor="@color/skin_black" android:id="@id/dqr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aes" android:text="@string/d4k" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
             <TextView android:id="@id/dqq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:drawableRight="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
@@ -18,16 +21,17 @@
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/lms" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ln" formItem:bgType="iwf" formItem:leftText="@string/b2q" formItem:showArrow="true" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/lmu" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:leftText="@string/bx9" formItem:showArrow="true" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/lmw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ln" formItem:bgType="iwf" formItem:leftText="@string/d26" formItem:showArrow="true" />
-        <View android:layout_width="fill_parent" android:layout_height="@dimen/ln" />
+        <View android:id="@id/o1n" android:layout_width="fill_parent" android:layout_height="@dimen/ln" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/dqo" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:leftText="@string/d4h" formItem:showArrow="true" />
-        <View android:layout_width="fill_parent" android:layout_height="@dimen/ln" />
+        <View android:id="@id/o1o" android:layout_width="fill_parent" android:layout_height="@dimen/ln" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/izn" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:leftText="@string/g92" formItem:showArrow="true" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/dpy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/ivp" formItem:showArrow="true" />
-        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/naf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/x4h" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/o3b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/xnl" formItem:showArrow="true" />
         <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ioz" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="@string/xg" />
         <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/iow" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:switchChecked="false" formItem:switchText="@string/hf0" />
         <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/f22" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="true" formItem:switchText="@string/d4g" />
         <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ip0" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:switchChecked="false" formItem:switchText="@string/a2p" />
+        <Button android:gravity="center" android:id="@id/o4d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jl" android:text="@string/xoh" style="@style/l6" />
         <Button android:gravity="center" android:id="@id/bfm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jl" android:text="@string/ak8" style="@style/l6" />
         <TextView android:textSize="@dimen/rj" android:textColor="#ff40a0ff" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/j45" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="15.0dip" android:text="@string/bz" />
     </LinearLayout>

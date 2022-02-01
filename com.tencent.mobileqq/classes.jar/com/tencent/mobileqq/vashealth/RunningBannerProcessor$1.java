@@ -23,18 +23,18 @@ class RunningBannerProcessor$1
   
   public void onClick(View paramView)
   {
-    if (RunningBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqVashealthRunningBannerProcessor))
+    if (RunningBannerProcessor.a(this.d))
     {
-      RunningBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqVashealthRunningBannerProcessor, false);
+      RunningBannerProcessor.a(this.d, false);
       new Handler().postDelayed(new RunningBannerProcessor.1.1(this), 1000L);
-      Object localObject1 = RunningBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqVashealthRunningBannerProcessor).getAppRuntime().getCurrentAccountUin();
-      Object localObject2 = new StringBuilder(this.jdField_a_of_type_JavaLangString);
+      Object localObject1 = RunningBannerProcessor.b(this.d).getAppRuntime().getCurrentAccountUin();
+      Object localObject2 = new StringBuilder(this.a);
       ((StringBuilder)localObject2).append("?");
       ((StringBuilder)localObject2).append("uin=");
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append("&plat=1");
       ((StringBuilder)localObject2).append("&app=1");
-      ((StringBuilder)localObject2).append("&version=8.7.0.5295");
+      ((StringBuilder)localObject2).append("&version=8.8.17.5770");
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("&device=");
       ((StringBuilder)localObject3).append(URLEncoder.encode(Build.DEVICE));
@@ -54,21 +54,21 @@ class RunningBannerProcessor$1
       ((Intent)localObject3).putExtra("uin", (String)localObject1);
       ((Intent)localObject3).putExtra("hide_operation_bar", true);
       ((Intent)localObject3).putExtra("hide_more_button", true);
-      VasWebviewUtil.a(RunningBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqVashealthRunningBannerProcessor), (String)localObject2, 32768L, (Intent)localObject3, false, -1);
-      if (this.jdField_a_of_type_JavaLangLong.longValue() == 3L)
+      VasWebviewUtil.a(RunningBannerProcessor.c(this.d), (String)localObject2, 32768L, (Intent)localObject3, false, -1);
+      if (this.b.longValue() == 3L)
       {
-        RunningBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqVashealthRunningBannerProcessor).sendEmptyMessage(3000);
-        localObject1 = new LpReportInfo_dc00307(LpReportInfo_dc00307.ACTION_TYPE_RED_PACK, LpReportInfo_dc00307.SUB_ACTION_TYPE_RED_PACK_CLICK, this.jdField_a_of_type_Int);
+        RunningBannerProcessor.d(this.d).sendEmptyMessage(3000);
+        localObject1 = new LpReportInfo_dc00307(LpReportInfo_dc00307.ACTION_TYPE_RED_PACK, LpReportInfo_dc00307.SUB_ACTION_TYPE_RED_PACK_CLICK, this.c);
         LpReportManager.getInstance().reportToDC00307((LpReportInfo_dc00307)localObject1, false, true);
       }
-      ReportController.a(RunningBannerProcessor.c(this.jdField_a_of_type_ComTencentMobileqqVashealthRunningBannerProcessor).getAppRuntime(), "dc00898", "", "", "0X8009EE3", "0X8009EE3", 9, 0, "", "", "", "");
+      ReportController.a(RunningBannerProcessor.e(this.d).getAppRuntime(), "dc00898", "", "", "0X8009EE3", "0X8009EE3", 9, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.RunningBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

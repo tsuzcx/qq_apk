@@ -12,13 +12,13 @@ final class PagViewProxy$refresh$$inlined$run$lambda$1
   
   public final void run()
   {
-    this.this$0.a().invoke(this.a);
+    this.this$0.getStateChangeListener().invoke(this.a);
     PagViewProxy.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.PagViewProxy.refresh..inlined.run.lambda.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class ARCloudControl$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131700860), 0).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131898884), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl.1
  * JD-Core Version:    0.7.0.1
  */

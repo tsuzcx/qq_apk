@@ -1,41 +1,41 @@
 package com.tencent.biz.richframework.network.request;
 
-import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicReq;
-import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
 import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.soso.location.data.SosoLocation;
 import java.util.ArrayList;
+import qqcircle.QQCircleSmartMatchMusic.SmartMatchMusicReq;
+import qqcircle.QQCircleSmartMatchMusic.SmartMatchMusicRsp;
 
 public class SmartMusicMatchRequest
   extends VSBaseRequest
 {
   private static final int VIDEO_LOCATION_DIVIDE = 1000000;
   private static final long serialVersionUID = 6159666206339855822L;
-  private final CLIENT.StSmartMatchMusicReq req;
+  private final QQCircleSmartMatchMusic.SmartMatchMusicReq req;
   
   public SmartMusicMatchRequest(ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, SosoLocation paramSosoLocation, boolean paramBoolean, int paramInt, LocalMediaInfo paramLocalMediaInfo) {}
   
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
-    CLIENT.StSmartMatchMusicRsp localStSmartMatchMusicRsp = new CLIENT.StSmartMatchMusicRsp();
+    QQCircleSmartMatchMusic.SmartMatchMusicRsp localSmartMatchMusicRsp = new QQCircleSmartMatchMusic.SmartMatchMusicRsp();
     try
     {
-      localStSmartMatchMusicRsp.mergeFrom(paramArrayOfByte);
-      return localStSmartMatchMusicRsp;
+      localSmartMatchMusicRsp.mergeFrom(paramArrayOfByte);
+      return localSmartMatchMusicRsp;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
       paramArrayOfByte.printStackTrace();
     }
-    return localStSmartMatchMusicRsp;
+    return localSmartMatchMusicRsp;
   }
   
   public String getCmdName()
   {
-    return "LightAppSvc.qq_story_client.SmartMatchMusic";
+    return "FeedCloudSvr.trpc.videocircle.circlemusic.CircleSmartMatchMusic.GetSmartMatchMusic";
   }
   
   protected byte[] getRequestByteData()

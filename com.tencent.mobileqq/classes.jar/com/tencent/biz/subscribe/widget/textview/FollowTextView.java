@@ -39,14 +39,14 @@ public class FollowTextView
   extends TextView
   implements View.OnClickListener, SimpleEventReceiver
 {
-  private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  private BaseWidgetView.ItemPreClickListener jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView$ItemPreClickListener;
-  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private FollowTextView.FollowChangeListener jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView$FollowChangeListener;
-  protected boolean a;
+  protected boolean a = false;
   private volatile boolean b = true;
-  private boolean c;
-  private boolean d;
+  private CertifiedAccountMeta.StFeed c;
+  private ExtraTypeInfo d;
+  private BaseWidgetView.ItemPreClickListener e;
+  private FollowTextView.FollowChangeListener f;
+  private boolean g;
+  private boolean h;
   
   public FollowTextView(Context paramContext)
   {
@@ -61,7 +61,6 @@ public class FollowTextView
   public FollowTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
     a();
   }
   
@@ -69,7 +68,7 @@ public class FollowTextView
   {
     if (paramStFeed != null)
     {
-      if (!StringUtil.a(paramStFeed.id.get())) {
+      if (!StringUtil.isEmpty(paramStFeed.id.get())) {
         localObject = paramStFeed.id;
       } else {
         localObject = paramStFeed.poster.nick;
@@ -78,7 +77,7 @@ public class FollowTextView
       String str1 = paramStFeed.poster.id.get();
       paramStFeed = new StringBuilder();
       paramStFeed.append("auth_");
-      paramStFeed.append(SubscribeShareHelper.a(a()));
+      paramStFeed.append(SubscribeShareHelper.a(getExtraTypeInfo()));
       String str2 = paramStFeed.toString();
       if (paramBoolean) {
         paramStFeed = "follow";
@@ -89,12 +88,12 @@ public class FollowTextView
     }
   }
   
-  private void d()
+  private void e()
   {
     ActionSheet localActionSheet = ActionSheet.create(getContext());
-    localActionSheet.setMainTitle(String.format(getContext().getResources().getString(2131695273), new Object[] { this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get() }));
-    localActionSheet.addButton(2131696446, 3);
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.setMainTitle(String.format(getContext().getResources().getString(2131893008), new Object[] { this.c.poster.nick.get() }));
+    localActionSheet.addButton(2131894218, 3);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnDismissListener(new FollowTextView.3(this));
     localActionSheet.setOnButtonClickListener(new FollowTextView.4(this, localActionSheet));
     if (!localActionSheet.isShowing())
@@ -102,11 +101,6 @@ public class FollowTextView
       this.b = true;
       localActionSheet.show();
     }
-  }
-  
-  public ExtraTypeInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   }
   
   protected void a()
@@ -118,7 +112,7 @@ public class FollowTextView
   
   public void a(int paramInt)
   {
-    CertifiedAccountMeta.StFeed localStFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+    CertifiedAccountMeta.StFeed localStFeed = this.c;
     if (localStFeed != null) {
       localStFeed.poster.followState.set(paramInt);
     }
@@ -135,7 +129,7 @@ public class FollowTextView
     if (QLog.isColorLevel()) {
       QLog.d("FollowTextView", 2, "follow");
     }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null)
+    if (this.c == null)
     {
       QLog.e("FollowTextView", 2, "follow user failed! user is null");
       return;
@@ -149,55 +143,55 @@ public class FollowTextView
       {
         localIPublicAccountObserver = (IPublicAccountObserver)QRoute.api(IPublicAccountObserver.class);
         localIPublicAccountObserver.setOnCallback(new FollowTextView.1(this));
-        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).followUin((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), localIPublicAccountObserver, false, 0, true);
+        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).followUin((AppInterface)localObject, getContext(), this.c.poster.id.get(), localIPublicAccountObserver, false, 0, true);
         return;
       }
       IPublicAccountObserver localIPublicAccountObserver = (IPublicAccountObserver)QRoute.api(IPublicAccountObserver.class);
       localIPublicAccountObserver.setOnCallback(new FollowTextView.2(this));
-      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).unfollowUin((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), false, localIPublicAccountObserver, true);
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).unfollowUin((AppInterface)localObject, getContext(), this.c.poster.id.get(), false, localIPublicAccountObserver, true);
     }
-  }
-  
-  protected boolean a()
-  {
-    CertifiedAccountMeta.StFeed localStFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-    return (localStFeed == null) || (StringUtil.a(localStFeed.poster.nick.get()));
   }
   
   protected void b()
   {
     int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 2130838962;
+    if (this.a) {
+      i = 2130839116;
     } else {
-      i = 2130838960;
+      i = 2130839114;
     }
     setBackgroundResource(i);
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       i = -9211021;
     } else {
       i = Color.parseColor("#bdbfc9");
     }
     setTextColor(i);
-    setText(2131690771);
+    setText(2131887693);
   }
   
   protected void c()
   {
     int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 2130839049;
+    if (this.a) {
+      i = 2130839203;
     } else {
-      i = 2130839047;
+      i = 2130839201;
     }
     setBackgroundResource(i);
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       i = -1493172225;
     } else {
       i = -1;
     }
     setTextColor(i);
-    setText(2131690777);
+    setText(2131887699);
+  }
+  
+  protected boolean d()
+  {
+    CertifiedAccountMeta.StFeed localStFeed = this.c;
+    return (localStFeed == null) || (StringUtil.isEmpty(localStFeed.poster.nick.get()));
   }
   
   public ArrayList<Class> getEventClass()
@@ -205,6 +199,11 @@ public class FollowTextView
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(FollowUpdateEvent.class);
     return localArrayList;
+  }
+  
+  public ExtraTypeInfo getExtraTypeInfo()
+  {
+    return this.d;
   }
   
   protected void onAttachedToWindow()
@@ -217,21 +216,21 @@ public class FollowTextView
   
   public void onClick(View paramView)
   {
-    if (!a()) {
+    if (!d()) {
       if (!this.b)
       {
-        QQToast.a(getContext(), "请勿重复操作", 0).a();
+        QQToast.makeText(getContext(), "请勿重复操作", 0).show();
       }
       else
       {
-        BaseWidgetView.ItemPreClickListener localItemPreClickListener = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView$ItemPreClickListener;
+        BaseWidgetView.ItemPreClickListener localItemPreClickListener = this.e;
         if (localItemPreClickListener != null) {
           localItemPreClickListener.a();
         }
-        if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.followState.get() == 0) {
+        if (this.c.poster.followState.get() == 0) {
           a(true);
-        } else if (!this.d) {
-          d();
+        } else if (!this.h) {
+          e();
         }
       }
     }
@@ -246,7 +245,7 @@ public class FollowTextView
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    CertifiedAccountMeta.StFeed localStFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+    CertifiedAccountMeta.StFeed localStFeed = this.c;
     if ((localStFeed != null) && ((paramSimpleBaseEvent instanceof FollowUpdateEvent)))
     {
       paramSimpleBaseEvent = (FollowUpdateEvent)paramSimpleBaseEvent;
@@ -261,41 +260,41 @@ public class FollowTextView
   
   public void setExtraTypeInfo(ExtraTypeInfo paramExtraTypeInfo)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
+    this.d = paramExtraTypeInfo;
   }
   
   public void setFeedData(CertifiedAccountMeta.StFeed paramStFeed)
   {
     if (paramStFeed != null)
     {
-      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
+      this.c = paramStFeed;
       a(paramStFeed.poster.followState.get());
     }
   }
   
   public void setFollowStateChangeListener(FollowTextView.FollowChangeListener paramFollowChangeListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView$FollowChangeListener = paramFollowChangeListener;
+    this.f = paramFollowChangeListener;
   }
   
   public void setIsInNightMode(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void setItemPreClickListener(BaseWidgetView.ItemPreClickListener paramItemPreClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView$ItemPreClickListener = paramItemPreClickListener;
+    this.e = paramItemPreClickListener;
   }
   
   public void setNoneReportType(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.g = paramBoolean;
   }
   
   public void setOnlyFollowMode(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public void setUserData(CertifiedAccountMeta.StUser paramStUser)
@@ -308,20 +307,20 @@ public class FollowTextView
     CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
     localStFeed.poster.set(paramStUser);
     localStFeed.type.set(paramInt);
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = localStFeed;
+    this.c = localStFeed;
     boolean bool;
     if (paramInt == -1) {
       bool = true;
     } else {
       bool = false;
     }
-    this.c = bool;
+    this.g = bool;
     a(localStFeed.poster.followState.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.FollowTextView
  * JD-Core Version:    0.7.0.1
  */

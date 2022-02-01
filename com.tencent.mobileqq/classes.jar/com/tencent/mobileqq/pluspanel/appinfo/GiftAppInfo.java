@@ -67,17 +67,17 @@ public class GiftAppInfo
         if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
         {
           i = 1;
-          paramSessionInfo = ((String)localObject).replace("{uin}", paramSessionInfo.jdField_a_of_type_JavaLangString);
+          paramSessionInfo = ((String)localObject).replace("{uin}", paramSessionInfo.b);
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(i);
           ((StringBuilder)localObject).append("");
           paramSessionInfo = paramSessionInfo.replace("{themeMode}", ((StringBuilder)localObject).toString());
-          localObject = new Intent(paramBaseChatPie.a(), QQTranslucentBrowserActivity.class);
+          localObject = new Intent(paramBaseChatPie.aX(), QQTranslucentBrowserActivity.class);
           ((Intent)localObject).putExtra("url", paramSessionInfo);
           ((Intent)localObject).setData(Uri.parse(paramSessionInfo));
           ((Intent)localObject).putExtra("flag_show_loading_dialog", true);
           ((Intent)localObject).putExtra("hide_left_button", true);
-          paramBaseChatPie.a().startActivity((Intent)localObject);
+          paramBaseChatPie.aX().startActivity((Intent)localObject);
           return;
         }
       }
@@ -94,8 +94,8 @@ public class GiftAppInfo
   {
     if ((paramBaseChatPie instanceof NearbyChatPie))
     {
-      paramSessionInfo = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10002) {
+      paramSessionInfo = paramSessionInfo.b;
+      if (paramBaseChatPie.ah.a == 10002) {
         paramBaseChatPie = "3";
       } else {
         paramBaseChatPie = "0";
@@ -116,18 +116,18 @@ public class GiftAppInfo
     }
     else if (paramInt == 1)
     {
-      if (AnonymousChatHelper.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString))
+      if (AnonymousChatHelper.a().a(paramSessionInfo.b))
       {
         paramBaseChatPie = new StringBuilder();
         paramBaseChatPie.append("");
-        paramBaseChatPie.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        paramBaseChatPie.append(paramSessionInfo.b);
         ReportController.b(null, "dc00899", "Grp_anon", "", "aio_plus", "clk_send", 1, 0, paramBaseChatPie.toString(), "", "", "");
       }
       else
       {
         paramBaseChatPie = new StringBuilder();
         paramBaseChatPie.append("");
-        paramBaseChatPie.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        paramBaseChatPie.append(paramSessionInfo.b);
         paramBaseChatPie = paramBaseChatPie.toString();
         paramSessionInfo = new StringBuilder();
         paramSessionInfo.append("");
@@ -150,14 +150,14 @@ public class GiftAppInfo
   
   private boolean a(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface)
   {
-    paramBaseChatPie = (GiftPanelHelper)paramBaseChatPie.a(136);
-    paramBaseChatPie.a(true);
+    paramBaseChatPie = (GiftPanelHelper)paramBaseChatPie.q(136);
+    paramBaseChatPie.b(true);
     long l1 = System.currentTimeMillis();
-    paramBaseChatPie = paramBaseChatPie.a();
+    paramBaseChatPie = paramBaseChatPie.d();
     if (paramBaseChatPie != null)
     {
-      long l2 = paramBaseChatPie.jdField_a_of_type_Long;
-      if ((paramBaseChatPie.jdField_a_of_type_Boolean) && (l1 >= paramBaseChatPie.jdField_a_of_type_Long) && (l1 <= l2 + 2592000000L) && (!((TroopGiftManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a())) {
+      long l2 = paramBaseChatPie.a;
+      if ((paramBaseChatPie.n) && (l1 >= paramBaseChatPie.a) && (l1 <= l2 + 2592000000L) && (!((TroopGiftManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a())) {
         return true;
       }
     }
@@ -166,7 +166,7 @@ public class GiftAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130851102;
+    return 2130853337;
   }
   
   public int getAppID()
@@ -195,7 +195,7 @@ public class GiftAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697317);
+    return BaseApplicationImpl.getContext().getString(2131895090);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
@@ -203,7 +203,7 @@ public class GiftAppInfo
     if (QLog.isColorLevel()) {
       QLog.i("testing", 2, "deliver flowers!");
     }
-    QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     int i = a(paramBaseChatPie);
     boolean bool;
     if (isC2C())
@@ -227,7 +227,7 @@ public class GiftAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.GiftAppInfo
  * JD-Core Version:    0.7.0.1
  */

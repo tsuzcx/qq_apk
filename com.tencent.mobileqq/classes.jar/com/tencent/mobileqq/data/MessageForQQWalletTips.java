@@ -143,7 +143,7 @@ public class MessageForQQWalletTips
               break label246;
             }
           }
-          str1 = ContactUtils.g(paramQQAppInterface, paramQQAppInterface.getCurrentNickname());
+          str1 = ContactUtils.h(paramQQAppInterface, paramQQAppInterface.getCurrentNickname());
           localObject = str1;
           if (TextUtils.isEmpty(str1)) {
             localObject = paramQQAppInterface.getCurrentNickname();
@@ -163,7 +163,7 @@ public class MessageForQQWalletTips
         localObject = (HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
         if ((localObject != null) && (((HotChatManager)localObject).b(this.frienduin)))
         {
-          str1 = ContactUtils.g(paramQQAppInterface, paramQQAppInterface.getCurrentNickname());
+          str1 = ContactUtils.h(paramQQAppInterface, paramQQAppInterface.getCurrentNickname());
           localObject = str1;
           if (TextUtils.isEmpty(str1)) {
             localObject = paramQQAppInterface.getCurrentNickname();
@@ -289,12 +289,12 @@ public class MessageForQQWalletTips
     }
     try
     {
-      localObject1 = localIPasswdRedBagService.getIconFromCacheByType("StatusIcon_IdiomHongBaoIcon", 2130847471);
+      localObject1 = localIPasswdRedBagService.getIconFromCacheByType("StatusIcon_IdiomHongBaoIcon", 2130849125);
       break label267;
       if (i == 999) {
-        localObject1 = localIPasswdRedBagService.getIconFromCacheByType("StatusIcon_GoldHongBaoIcon", 2130847469);
+        localObject1 = localIPasswdRedBagService.getIconFromCacheByType("StatusIcon_GoldHongBaoIcon", 2130849123);
       } else {
-        localObject1 = localIPasswdRedBagService.getIconFromCacheByType("StatusIcon_HongBaoIcon", 2130847536);
+        localObject1 = localIPasswdRedBagService.getIconFromCacheByType("StatusIcon_HongBaoIcon", 2130849196);
       }
       if (localObject1 == null) {
         break label1354;
@@ -330,7 +330,7 @@ public class MessageForQQWalletTips
     }
     try
     {
-      localObject1 = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.frienduin, this.memberUin);
+      localObject1 = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).b(this.frienduin, this.memberUin);
       if (localObject1 != null) {
         localObject1 = ((DiscussionMemberInfo)localObject1).inteRemark;
       } else {
@@ -343,13 +343,13 @@ public class MessageForQQWalletTips
     }
     localObject1 = ContactUtils.a(paramQQAppInterface, this.senderuin, this.memberUin);
     break label1142;
-    localObject1 = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.memberUin);
+    localObject1 = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(this.memberUin);
     if ((localObject1 != null) && (((Friends)localObject1).isFriend()) && (!this.memberUin.equals(paramQQAppInterface.getCurrentAccountUin())))
     {
-      localObject3 = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
-      localObject2 = ((ContactUtils.NameInfo)localObject3).jdField_a_of_type_JavaLangString;
+      localObject3 = ContactUtils.c(paramQQAppInterface, this.frienduin, this.memberUin);
+      localObject2 = ((ContactUtils.NameInfo)localObject3).a;
       localObject1 = localObject2;
-      if (((ContactUtils.NameInfo)localObject3).jdField_a_of_type_Boolean)
+      if (((ContactUtils.NameInfo)localObject3).b)
       {
         localLinkedList.add(this.memberUin);
         localObject1 = localObject2;
@@ -368,20 +368,20 @@ public class MessageForQQWalletTips
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         break label1370;
       }
-      localObject3 = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
-      localObject2 = ((ContactUtils.NameInfo)localObject3).jdField_a_of_type_JavaLangString;
+      localObject3 = ContactUtils.c(paramQQAppInterface, this.frienduin, this.memberUin);
+      localObject2 = ((ContactUtils.NameInfo)localObject3).a;
       localObject1 = localObject2;
-      if (!((ContactUtils.NameInfo)localObject3).jdField_a_of_type_Boolean) {
+      if (!((ContactUtils.NameInfo)localObject3).b) {
         break label1373;
       }
       localLinkedList.add(this.memberUin);
       localObject1 = localObject2;
       break label1373;
       localObject1 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-      localObject3 = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
-      localObject2 = ((ContactUtils.NameInfo)localObject3).jdField_a_of_type_JavaLangString;
+      localObject3 = ContactUtils.c(paramQQAppInterface, this.frienduin, this.memberUin);
+      localObject2 = ((ContactUtils.NameInfo)localObject3).a;
       localObject1 = localObject2;
-      if (((ContactUtils.NameInfo)localObject3).jdField_a_of_type_Boolean)
+      if (((ContactUtils.NameInfo)localObject3).b)
       {
         localLinkedList.add(this.memberUin);
         localObject1 = localObject2;
@@ -389,13 +389,13 @@ public class MessageForQQWalletTips
         localObject1 = (HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
         if ((localObject1 != null) && (((HotChatManager)localObject1).b(this.frienduin)))
         {
-          localObject1 = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.memberUin);
+          localObject1 = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(this.memberUin);
           if ((localObject1 != null) && (((Friends)localObject1).isFriend()) && (!this.memberUin.equals(paramQQAppInterface.getCurrentAccountUin())))
           {
-            localObject3 = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
-            localObject2 = ((ContactUtils.NameInfo)localObject3).jdField_a_of_type_JavaLangString;
+            localObject3 = ContactUtils.c(paramQQAppInterface, this.frienduin, this.memberUin);
+            localObject2 = ((ContactUtils.NameInfo)localObject3).a;
             localObject1 = localObject2;
-            if (!((ContactUtils.NameInfo)localObject3).jdField_a_of_type_Boolean) {
+            if (!((ContactUtils.NameInfo)localObject3).b) {
               break label1373;
             }
             localLinkedList.add(this.memberUin);
@@ -413,25 +413,25 @@ public class MessageForQQWalletTips
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
             break label1370;
           }
-          localObject3 = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
-          localObject2 = ((ContactUtils.NameInfo)localObject3).jdField_a_of_type_JavaLangString;
+          localObject3 = ContactUtils.c(paramQQAppInterface, this.frienduin, this.memberUin);
+          localObject2 = ((ContactUtils.NameInfo)localObject3).a;
           localObject1 = localObject2;
-          if (!((ContactUtils.NameInfo)localObject3).jdField_a_of_type_Boolean) {
+          if (!((ContactUtils.NameInfo)localObject3).b) {
             break label1373;
           }
           localLinkedList.add(this.memberUin);
           localObject1 = localObject2;
           break label1373;
         }
-        localObject3 = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
-        localObject2 = ((ContactUtils.NameInfo)localObject3).jdField_a_of_type_JavaLangString;
+        localObject3 = ContactUtils.c(paramQQAppInterface, this.frienduin, this.memberUin);
+        localObject2 = ((ContactUtils.NameInfo)localObject3).a;
         localObject1 = localObject2;
-        if (((ContactUtils.NameInfo)localObject3).jdField_a_of_type_Boolean)
+        if (((ContactUtils.NameInfo)localObject3).b)
         {
           localLinkedList.add(this.memberUin);
           localObject1 = localObject2;
           break label1142;
-          localObject1 = ContactUtils.f(paramQQAppInterface, this.memberUin);
+          localObject1 = ContactUtils.g(paramQQAppInterface, this.memberUin);
         }
       }
     }
@@ -485,9 +485,9 @@ public class MessageForQQWalletTips
       paramContext = (BaseActivity)paramContext;
       if (paramContext.getChatFragment() != null)
       {
-        paramContext = paramContext.getChatFragment().a();
+        paramContext = paramContext.getChatFragment().k();
         if (paramContext != null) {
-          return (QWalletAIOLifeCycleHelper)paramContext.a(27);
+          return (QWalletAIOLifeCycleHelper)paramContext.q(27);
         }
       }
     }
@@ -526,7 +526,7 @@ public class MessageForQQWalletTips
   
   public void addQQWalletTips(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    paramString1 = new UniteGrayTipParam(this.frienduin, paramQQAppInterface.getCurrentAccountUin(), paramString1.toString(), this.istroop, -5020, 3145729, MessageCache.a());
+    paramString1 = new UniteGrayTipParam(this.frienduin, paramQQAppInterface.getCurrentAccountUin(), paramString1.toString(), this.istroop, -5020, 3145729, MessageCache.c());
     Bundle localBundle = new Bundle();
     localBundle.putString("textColor", paramString2);
     if (!TextUtils.isEmpty(paramString3))
@@ -612,17 +612,17 @@ public class MessageForQQWalletTips
     //   1: astore 4
     //   3: aconst_null
     //   4: astore_1
-    //   5: new 598	com/tencent/mobileqq/data/QwSafeInputStream
+    //   5: new 601	com/tencent/mobileqq/data/QwSafeInputStream
     //   8: dup
     //   9: aload_0
-    //   10: getfield 602	com/tencent/mobileqq/data/MessageForQQWalletTips:msgData	[B
-    //   13: invokespecial 605	com/tencent/mobileqq/data/QwSafeInputStream:<init>	([B)V
+    //   10: getfield 605	com/tencent/mobileqq/data/MessageForQQWalletTips:msgData	[B
+    //   13: invokespecial 608	com/tencent/mobileqq/data/QwSafeInputStream:<init>	([B)V
     //   16: astore_2
     //   17: aload_0
     //   18: aload_2
-    //   19: invokevirtual 609	com/tencent/mobileqq/data/MessageForQQWalletTips:readExternal	(Lcom/tencent/mobileqq/data/QwSafeInputStream;)V
+    //   19: invokevirtual 612	com/tencent/mobileqq/data/MessageForQQWalletTips:readExternal	(Lcom/tencent/mobileqq/data/QwSafeInputStream;)V
     //   22: aload_2
-    //   23: invokevirtual 612	com/tencent/mobileqq/data/QwSafeInputStream:close	()V
+    //   23: invokevirtual 615	com/tencent/mobileqq/data/QwSafeInputStream:close	()V
     //   26: return
     //   27: astore_1
     //   28: goto +56 -> 84
@@ -647,21 +647,21 @@ public class MessageForQQWalletTips
     //   58: astore_1
     //   59: getstatic 91	com/tencent/mobileqq/data/MessageForQQWalletTips:TAG	Ljava/lang/String;
     //   62: iconst_1
-    //   63: ldc_w 614
-    //   66: invokestatic 536	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   63: ldc_w 617
+    //   66: invokestatic 539	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   69: aload_2
     //   70: astore_1
     //   71: aload_3
-    //   72: invokevirtual 425	java/lang/Exception:printStackTrace	()V
+    //   72: invokevirtual 426	java/lang/Exception:printStackTrace	()V
     //   75: aload_2
     //   76: ifnull +7 -> 83
     //   79: aload_2
-    //   80: invokevirtual 612	com/tencent/mobileqq/data/QwSafeInputStream:close	()V
+    //   80: invokevirtual 615	com/tencent/mobileqq/data/QwSafeInputStream:close	()V
     //   83: return
     //   84: aload_2
     //   85: ifnull +7 -> 92
     //   88: aload_2
-    //   89: invokevirtual 612	com/tencent/mobileqq/data/QwSafeInputStream:close	()V
+    //   89: invokevirtual 615	com/tencent/mobileqq/data/QwSafeInputStream:close	()V
     //   92: aload_1
     //   93: athrow
     // Local variable table:
@@ -803,7 +803,7 @@ public class MessageForQQWalletTips
         {
           localObject3 = parseListIdStr(new JSONObject(((String)localObject1).substring(localMatcher.start() + 1, localMatcher.end())));
           localObject2 = localObject3;
-          if (!StringUtil.a((String)localObject3)) {
+          if (!StringUtil.isEmpty((String)localObject3)) {
             localObject2 = localObject3;
           }
         }
@@ -860,7 +860,7 @@ public class MessageForQQWalletTips
     paramJSONObject = (IPasswdRedBagService)paramQQAppInterface.getRuntimeService(IPasswdRedBagService.class);
     QWalletAIOLifeCycleHelper localQWalletAIOLifeCycleHelper = getQWalletAIOLifeCycleHelper(paramContext);
     ((SpannableString)localObject1).setSpan(new MessageForQQWalletTips.2(this, localSoftReference, (SoftReference)localObject2, j, paramQQAppInterface, paramContext, localQWalletAIOLifeCycleHelper, paramJSONObject, i), 0, ((SpannableString)localObject1).length(), 33);
-    if ((paramJSONObject != null) && (paramString.contains(HardCodeUtil.a(2131706610))))
+    if ((paramJSONObject != null) && (paramString.contains(HardCodeUtil.a(2131904461))))
     {
       paramJSONObject.setPasswdRedBagFinish(this.listId);
       if (paramQQAppInterface.getCurrentAccountUin().equals(this.reciverUin)) {
@@ -1045,7 +1045,7 @@ public class MessageForQQWalletTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletTips
  * JD-Core Version:    0.7.0.1
  */

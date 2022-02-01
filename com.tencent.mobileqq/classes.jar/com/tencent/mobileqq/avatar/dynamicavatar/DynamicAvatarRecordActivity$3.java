@@ -9,18 +9,18 @@ class DynamicAvatarRecordActivity$3
 {
   DynamicAvatarRecordActivity$3(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0) {
       return;
     }
-    this.a.a.a("DynamicAvatarRecordActivity");
+    this.a.e.a("DynamicAvatarRecordActivity");
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.3
  * JD-Core Version:    0.7.0.1
  */

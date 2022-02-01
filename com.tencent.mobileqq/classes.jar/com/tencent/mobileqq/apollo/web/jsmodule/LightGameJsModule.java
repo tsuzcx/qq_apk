@@ -5,37 +5,64 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.apollo.game.CmGameStartChecker;
+import com.tencent.mobileqq.apollo.game.DefaultGameCheckListener;
+import com.tencent.mobileqq.apollo.game.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.ipc.ApolloIPCModule;
 import com.tencent.mobileqq.apollo.model.StartCheckParam;
+import com.tencent.mobileqq.apollo.utils.RequestRoute;
 import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.apollo.web.CmshowWebReqParam;
+import com.tencent.mobileqq.apollo.web.ipc.IStoreAvatar2D;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.emosm.web.RequestRoute;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 @Deprecated
 public class LightGameJsModule
   extends BaseJsModule
 {
-  private long a = 0L;
+  private long b = 0L;
+  private CmGameStartChecker c;
+  private DefaultGameCheckListener d;
   
   public LightGameJsModule(VasWebviewJsPlugin paramVasWebviewJsPlugin)
   {
     super(paramVasWebviewJsPlugin);
   }
   
+  private void a(String paramString, StartCheckParam paramStartCheckParam)
+  {
+    if (paramStartCheckParam == null)
+    {
+      a(paramString, HardCodeUtil.a(2131898702));
+      return;
+    }
+    AppInterface localAppInterface = CmGameUtil.b();
+    this.c = new CmGameStartChecker(localAppInterface);
+    this.d = new LightGameJsModule.3(this, localAppInterface, false, paramString);
+    this.c.a(paramStartCheckParam, this.d);
+  }
+  
+  private void b(int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new LightGameJsModule.4(this, paramInt));
+  }
+  
   @RequestRoute(a="checkGameStatus")
   public void checkGameStatus(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
-    Object localObject = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    paramCmshowWebReqParam = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
+    JSONObject localJSONObject = paramCmshowWebReqParam.a;
+    paramCmshowWebReqParam = paramCmshowWebReqParam.b;
     if (!FileUtils.hasSDCardAndWritable())
     {
       a(paramCmshowWebReqParam, "sdcard未装");
@@ -43,36 +70,26 @@ public class LightGameJsModule
     }
     if (FileUtils.getAvailableExternalMemorySize() < 52428800.0F)
     {
-      a(paramCmshowWebReqParam, HardCodeUtil.a(2131700637));
+      a(paramCmshowWebReqParam, HardCodeUtil.a(2131898664));
       return;
     }
-    int i = ((JSONObject)localObject).optInt("gameId");
-    localObject = new Bundle();
-    ((Bundle)localObject).putInt("gameId", i);
-    super.a(a("IPC_APOLLO_DOWNLOAD_GAME", paramCmshowWebReqParam, (Bundle)localObject), false, true);
-  }
-  
-  @RequestRoute(a="showGameCard")
-  public void showGameCard(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
-  {
-    JSONObject localJSONObject = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    paramCmshowWebReqParam = paramCmshowWebReqParam.jdField_a_of_type_AndroidAppActivity;
-    ApolloUtilImpl.launchGameDetailView(localJSONObject.optInt("gameId"), localJSONObject.optString("extraInfo"), paramCmshowWebReqParam);
+    int i = localJSONObject.optInt("gameId");
+    ((IStoreAvatar2D)ApolloIPCModule.a(IStoreAvatar2D.class)).a(i, new LightGameJsModule.2(this, paramCmshowWebReqParam));
   }
   
   @RequestRoute(a="startApolloGame")
   public void startApolloGame(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
-    Object localObject2 = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    String str1 = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    Activity localActivity = paramCmshowWebReqParam.jdField_a_of_type_AndroidAppActivity;
+    Object localObject2 = paramCmshowWebReqParam.a;
+    String str1 = paramCmshowWebReqParam.b;
+    Activity localActivity = paramCmshowWebReqParam.c;
     long l = System.currentTimeMillis();
-    if (l - this.a <= 1000L)
+    if (l - this.b <= 1000L)
     {
-      a(str1, HardCodeUtil.a(2131700638));
+      a(str1, HardCodeUtil.a(2131898665));
       return;
     }
-    this.a = l;
+    this.b = l;
     int j = ((JSONObject)localObject2).optInt("gameId");
     l = ((JSONObject)localObject2).optLong("roomId");
     boolean bool1;
@@ -127,7 +144,7 @@ public class LightGameJsModule
           paramCmshowWebReqParam.append(((Bundle)localObject2).toString());
           QLog.d("[cmshow]LightGameJsModule", 2, paramCmshowWebReqParam.toString());
         }
-        a(str1);
+        b(str1);
         return;
       }
       localObject1 = new StartCheckParam(j, bool1, "luanch", l, 4, i, 0, 0, "", k, str6);
@@ -158,17 +175,15 @@ public class LightGameJsModule
           ((StartCheckParam)localObject1).disableMinGame = true;
         }
       }
-      paramCmshowWebReqParam = new Bundle();
-      paramCmshowWebReqParam.putSerializable("StartCheckParam", (Serializable)localObject1);
-      super.a(a("ipc_apollo_start_apollo_game", str1, paramCmshowWebReqParam), false, true);
+      ((IStoreAvatar2D)ApolloIPCModule.a(IStoreAvatar2D.class)).a((StartCheckParam)localObject1, new LightGameJsModule.1(this, str1));
       return;
     }
-    a(str1, HardCodeUtil.a(2131700632));
+    a(str1, HardCodeUtil.a(2131898659));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.web.jsmodule.LightGameJsModule
  * JD-Core Version:    0.7.0.1
  */

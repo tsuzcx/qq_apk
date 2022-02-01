@@ -202,8 +202,8 @@ public class ARTransferDoorVideoInfo
     //   331: invokestatic 124	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   334: ldc 126
     //   336: iconst_0
-    //   337: invokestatic 131	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
-    //   340: invokevirtual 134	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   337: invokestatic 132	com/tencent/mobileqq/widget/QQToast:makeText	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
+    //   340: invokevirtual 136	com/tencent/mobileqq/widget/QQToast:show	()Landroid/widget/Toast;
     //   343: pop
     //   344: aload_0
     //   345: ifnull +10 -> 355
@@ -244,7 +244,7 @@ public class ARTransferDoorVideoInfo
     //   411: astore_3
     //   412: ldc 93
     //   414: iconst_0
-    //   415: ldc 136
+    //   415: ldc 138
     //   417: aload 5
     //   419: invokestatic 113	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
     //   422: aload_0
@@ -286,7 +286,7 @@ public class ARTransferDoorVideoInfo
     //   489: astore_3
     //   490: ldc 93
     //   492: iconst_0
-    //   493: ldc 138
+    //   493: ldc 140
     //   495: aload 5
     //   497: invokestatic 113	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
     //   500: aload_0
@@ -457,10 +457,10 @@ public class ARTransferDoorVideoInfo
             Object localObject2 = localJSONArray.getJSONObject(i);
             localObject1 = new ARTransferDoorVideoInfo.PlayGuideShowInfo();
             if (((JSONObject)localObject2).has("text")) {
-              ((ARTransferDoorVideoInfo.PlayGuideShowInfo)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("text");
+              ((ARTransferDoorVideoInfo.PlayGuideShowInfo)localObject1).c = ((JSONObject)localObject2).optString("text");
             }
             if (((JSONObject)localObject2).has("starttime")) {
-              ((ARTransferDoorVideoInfo.PlayGuideShowInfo)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).optLong("starttime");
+              ((ARTransferDoorVideoInfo.PlayGuideShowInfo)localObject1).a = ((JSONObject)localObject2).optLong("starttime");
             }
             if (((JSONObject)localObject2).has("endtime")) {
               ((ARTransferDoorVideoInfo.PlayGuideShowInfo)localObject1).b = ((JSONObject)localObject2).optLong("endtime");
@@ -494,7 +494,7 @@ public class ARTransferDoorVideoInfo
     while (localIterator.hasNext())
     {
       ARTransferDoorVideoInfo.PlayGuideShowInfo localPlayGuideShowInfo = (ARTransferDoorVideoInfo.PlayGuideShowInfo)localIterator.next();
-      long l = localPlayGuideShowInfo.jdField_a_of_type_Long;
+      long l = localPlayGuideShowInfo.a;
       if ((paramLong < localPlayGuideShowInfo.b * 1000L) && (paramLong >= l * 1000L)) {
         return localPlayGuideShowInfo;
       }
@@ -504,7 +504,7 @@ public class ARTransferDoorVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorVideoInfo
  * JD-Core Version:    0.7.0.1
  */

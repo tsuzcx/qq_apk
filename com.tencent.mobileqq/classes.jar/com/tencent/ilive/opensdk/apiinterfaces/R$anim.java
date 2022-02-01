@@ -14,29 +14,29 @@ public final class R$anim
   public static final int abc_slide_out_top = 2130771977;
   public static final int abc_tooltip_enter = 2130771978;
   public static final int abc_tooltip_exit = 2130771979;
-  public static final int btn_checkbox_to_checked_box_inner_merged_animation = 2130772033;
-  public static final int btn_checkbox_to_checked_box_outer_merged_animation = 2130772034;
-  public static final int btn_checkbox_to_checked_icon_null_animation = 2130772035;
-  public static final int btn_checkbox_to_unchecked_box_inner_merged_animation = 2130772036;
-  public static final int btn_checkbox_to_unchecked_check_path_merged_animation = 2130772037;
-  public static final int btn_checkbox_to_unchecked_icon_null_animation = 2130772038;
-  public static final int btn_radio_to_off_mtrl_dot_group_animation = 2130772039;
-  public static final int btn_radio_to_off_mtrl_ring_outer_animation = 2130772040;
-  public static final int btn_radio_to_off_mtrl_ring_outer_path_animation = 2130772041;
-  public static final int btn_radio_to_on_mtrl_dot_group_animation = 2130772042;
-  public static final int btn_radio_to_on_mtrl_ring_outer_animation = 2130772043;
-  public static final int btn_radio_to_on_mtrl_ring_outer_path_animation = 2130772044;
-  public static final int fragment_close_enter = 2130772076;
-  public static final int fragment_close_exit = 2130772077;
-  public static final int fragment_fade_enter = 2130772080;
-  public static final int fragment_fade_exit = 2130772081;
-  public static final int fragment_fast_out_extra_slow_in = 2130772082;
-  public static final int fragment_open_enter = 2130772085;
-  public static final int fragment_open_exit = 2130772086;
+  public static final int btn_checkbox_to_checked_box_inner_merged_animation = 2130772050;
+  public static final int btn_checkbox_to_checked_box_outer_merged_animation = 2130772051;
+  public static final int btn_checkbox_to_checked_icon_null_animation = 2130772052;
+  public static final int btn_checkbox_to_unchecked_box_inner_merged_animation = 2130772053;
+  public static final int btn_checkbox_to_unchecked_check_path_merged_animation = 2130772054;
+  public static final int btn_checkbox_to_unchecked_icon_null_animation = 2130772055;
+  public static final int btn_radio_to_off_mtrl_dot_group_animation = 2130772056;
+  public static final int btn_radio_to_off_mtrl_ring_outer_animation = 2130772057;
+  public static final int btn_radio_to_off_mtrl_ring_outer_path_animation = 2130772058;
+  public static final int btn_radio_to_on_mtrl_dot_group_animation = 2130772059;
+  public static final int btn_radio_to_on_mtrl_ring_outer_animation = 2130772060;
+  public static final int btn_radio_to_on_mtrl_ring_outer_path_animation = 2130772061;
+  public static final int fragment_close_enter = 2130772106;
+  public static final int fragment_close_exit = 2130772107;
+  public static final int fragment_fade_enter = 2130772110;
+  public static final int fragment_fade_exit = 2130772111;
+  public static final int fragment_fast_out_extra_slow_in = 2130772112;
+  public static final int fragment_open_enter = 2130772115;
+  public static final int fragment_open_exit = 2130772116;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.opensdk.apiinterfaces.R.anim
  * JD-Core Version:    0.7.0.1
  */

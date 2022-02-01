@@ -10,32 +10,32 @@ import com.tencent.widget.pull2refresh.BaseViewHolder;
 public abstract class WSPlayableHolder<T>
   extends BaseViewHolder<T>
 {
-  public IWSPlayerUIDelegate a;
-  public WSPlayerParam a;
   public WSVideoInfo a;
+  public WSPlayerParam b;
+  public IWSPlayerUIDelegate c;
   
   public WSPlayableHolder(ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
   }
   
-  public abstract ViewGroup a();
+  public abstract ViewGroup k();
   
-  public boolean b()
+  public boolean m()
   {
-    WSPlayerParam localWSPlayerParam = this.a;
-    return (localWSPlayerParam != null) && (localWSPlayerParam.a != null) && (this.a.a.b());
+    WSPlayerParam localWSPlayerParam = this.b;
+    return (localWSPlayerParam != null) && (localWSPlayerParam.d != null) && (this.b.d.e());
   }
   
-  public boolean c()
+  public boolean n()
   {
-    WSPlayerParam localWSPlayerParam = this.a;
-    return (localWSPlayerParam != null) && (localWSPlayerParam.a != null) && (this.a.a.c());
+    WSPlayerParam localWSPlayerParam = this.b;
+    return (localWSPlayerParam != null) && (localWSPlayerParam.d != null) && (this.b.d.h());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.holder.WSPlayableHolder
  * JD-Core Version:    0.7.0.1
  */

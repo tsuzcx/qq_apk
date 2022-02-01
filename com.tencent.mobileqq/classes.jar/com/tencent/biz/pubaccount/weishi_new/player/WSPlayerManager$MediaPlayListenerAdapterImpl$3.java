@@ -11,30 +11,30 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl$3
   
   public void run()
   {
-    this.a.a.b(WSPlayerManager.b(this.a.a), false);
-    Object localObject = WSPlayerManager.a(this.a.a);
+    this.a.a.b(WSPlayerManager.d(this.a.a), false);
+    Object localObject = WSPlayerManager.l(this.a.a);
     if (localObject != null)
     {
-      WSPlayerManager.b(this.a.a);
-      ((WSPlayerWrapper)localObject).i();
-      ((WSPlayerWrapper)localObject).j();
+      WSPlayerManager.m(this.a.a);
+      ((WSPlayerWrapper)localObject).C();
+      ((WSPlayerWrapper)localObject).D();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[WSPlayerManager.java][checkPlayerLoop] mReplayCount:");
-      ((StringBuilder)localObject).append(WSPlayerManager.c(this.a.a));
+      ((StringBuilder)localObject).append(WSPlayerManager.n(this.a.a));
       WSLog.d("WS_VIDEO_PLAYER", ((StringBuilder)localObject).toString());
     }
-    if (WSPlayerManager.a(this.a.a) != null)
+    if (WSPlayerManager.j(this.a.a) != null)
     {
-      localObject = WSPlayerManager.a(this.a.a).iterator();
+      localObject = WSPlayerManager.j(this.a.a).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((WSPlayerStatusListener)((Iterator)localObject).next()).a(WSPlayerManager.b(this.a.a), WSPlayerManager.c(this.a.a));
+        ((WSPlayerStatusListener)((Iterator)localObject).next()).a(WSPlayerManager.d(this.a.a), WSPlayerManager.n(this.a.a));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.MediaPlayListenerAdapterImpl.3
  * JD-Core Version:    0.7.0.1
  */

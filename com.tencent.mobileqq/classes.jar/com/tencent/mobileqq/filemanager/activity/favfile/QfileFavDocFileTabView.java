@@ -13,17 +13,17 @@ public class QfileFavDocFileTabView
   
   protected void a(boolean paramBoolean)
   {
-    ReportController.b(this.a, "dc00898", "", "", "0X800AFA9", "0X800AFA9", 0, 0, "", "", "", "");
+    ReportController.b(this.D, "dc00898", "", "", "0X800AFA9", "0X800AFA9", 0, 0, "", "", "", "");
   }
   
-  protected int b()
+  protected int getFileRecordType()
   {
     return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavDocFileTabView
  * JD-Core Version:    0.7.0.1
  */

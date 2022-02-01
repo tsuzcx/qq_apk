@@ -38,42 +38,42 @@ public final class DefaultPublisherChecker
     return i;
   }
   
-  private final int b()
+  private final int f()
   {
     return 0;
   }
   
-  public int a()
+  public int b()
   {
-    int i = super.a();
+    int i = super.b();
     if (i != 0) {
       return i;
     }
-    long l = a().getTopicId();
+    long l = d().getTopicId();
     int j = 1;
     if (l != 0L) {
       i = 1;
     } else {
       i = 0;
     }
-    if (((CharSequence)a().getCommunityId()).length() <= 0) {
+    if (((CharSequence)d().getCommunityId()).length() <= 0) {
       j = 0;
     }
     if ((i == 0) && (j == 0)) {
       return 4;
     }
     if ((i != 0) && (j == 0)) {
-      return a(a());
+      return a(d());
     }
     if ((i == 0) && (j != 0)) {
-      return b();
+      return f();
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.publishChecker.DefaultPublisherChecker
  * JD-Core Version:    0.7.0.1
  */

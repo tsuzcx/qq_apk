@@ -33,39 +33,39 @@ import mqq.app.AppRuntime;
 public class QQComicPreloadStrategy
   implements IQQComicPluginPreloadStrategy
 {
-  private int jdField_a_of_type_Int = 0;
   public final HitRateHelper a;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
+  private int c = 0;
+  private String d = "";
+  private boolean e = false;
   
   QQComicPreloadStrategy(int paramInt)
   {
-    jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_a_of_type_JavaLangString = "com.tencent.mobileqq:tool";
-    jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_b_of_type_JavaLangString = "comic_plugin.apk";
-    jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_b_of_type_Int = 2;
-    jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_c_of_type_JavaLangString = "comic_plugin.apk";
-    jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_b_of_type_Boolean = true;
-    jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentComicApiPluginHitRateHelper = new HitRateHelper(jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_b_of_type_Int, jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_c_of_type_Int);
+    b.a = "com.tencent.mobileqq:tool";
+    b.c = true;
+    b.d = "comic_plugin.apk";
+    b.e = 2;
+    b.h = "comic_plugin.apk";
+    b.i = true;
+    b.f = paramInt;
+    this.a = new HitRateHelper(b.e, b.f);
     if (paramInt == 6)
     {
-      this.jdField_a_of_type_ComTencentComicApiPluginHitRateHelper.a = new PreloadProcHitPluginSession("comic_leba_preload", jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_a_of_type_JavaLangString, jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_b_of_type_JavaLangString);
+      this.a.a = new PreloadProcHitPluginSession("comic_leba_preload", b.a, b.d);
       return;
     }
     if (paramInt == 5)
     {
-      this.jdField_a_of_type_ComTencentComicApiPluginHitRateHelper.a = new PreloadProcHitPluginSession("comic_activity_preload", jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_a_of_type_JavaLangString, jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_b_of_type_JavaLangString);
+      this.a.a = new PreloadProcHitPluginSession("comic_activity_preload", b.a, b.d);
       return;
     }
     if (paramInt == 9999) {
-      this.jdField_a_of_type_ComTencentComicApiPluginHitRateHelper.a = new PreloadProcHitPluginSession("comic_web_preload", jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_a_of_type_JavaLangString, jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_b_of_type_JavaLangString);
+      this.a.a = new PreloadProcHitPluginSession("comic_web_preload", b.a, b.d);
     }
   }
   
-  private String a()
+  private String b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.d;
   }
   
   public void a()
@@ -74,7 +74,7 @@ public class QQComicPreloadStrategy
       QLog.d("QQComicDebug", 2, "doPreload start");
     }
     QQComicPluginBridge.a("preload_plugin");
-    if (!QIPCServerHelper.getInstance().isModuleRunning(jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_c_of_type_JavaLangString)) {
+    if (!QIPCServerHelper.getInstance().isModuleRunning(b.h)) {
       VasWebviewUtil.a("qqcomic", "launch_plugin_action", "0", 0, 201);
     }
     Object localObject = new Intent(AppHelper.a(), VipProxyPreLoadComicProcess.class);
@@ -82,29 +82,20 @@ public class QQComicPreloadStrategy
     ((Intent)localObject).putExtra("useSkinEngine", false);
     ((Intent)localObject).putExtra("params_remote_connect_at_launch", true);
     ((Intent)localObject).putExtra("isPreloadProcess", true);
-    ((Intent)localObject).putExtra("preloadEntry", jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_c_of_type_Int);
+    ((Intent)localObject).putExtra("preloadEntry", b.f);
     ((Intent)localObject).putExtra("sendTime", SystemClock.elapsedRealtime());
-    PreloadSuccessRateReporter.a(AppHelper.a(), 1, 1, 0L);
+    PreloadSuccessRateReporter.a(AppHelper.b(), 1, 1, 0L);
     QQComicPluginBridge.a((Intent)localObject);
     Map localMap = ((IIndividuationUrlApi)QRoute.api(IIndividuationUrlApi.class)).getUrlMap();
     if ((localMap instanceof Serializable)) {
       ((Intent)localObject).putExtra("urlMap", (Serializable)localMap);
     }
-    this.jdField_a_of_type_ComTencentComicApiPluginHitRateHelper.a(this.jdField_a_of_type_Int, a(), jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.d);
-    localObject = new QRoutePluginReceiverParams.Builder(AppHelper.a()).setIntent((Intent)localObject).setReceiverName("com.qqcomic.app.VipPreloadComicProcess").setSession(this.jdField_a_of_type_ComTencentComicApiPluginHitRateHelper.a).build();
+    this.a.a(this.c, b(), b.g);
+    localObject = new QRoutePluginReceiverParams.Builder(AppHelper.a()).setIntent((Intent)localObject).setReceiverName("com.qqcomic.app.VipPreloadComicProcess").setSession(this.a.a).build();
     QRoute.plugin("comic_plugin.apk").sendBroadcast((QRoutePluginReceiverParams)localObject);
     if (QLog.isColorLevel()) {
       QLog.d("QQComicDebug", 2, "doPreload end");
     }
-  }
-  
-  public void a(IQQComicPluginUtil.ExtraResult paramExtraResult)
-  {
-    if (paramExtraResult == null) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramExtraResult.jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = paramExtraResult.jdField_a_of_type_JavaLangString;
   }
   
   public boolean a(IQQComicPluginUtil.ExtraResult paramExtraResult)
@@ -123,22 +114,22 @@ public class QQComicPreloadStrategy
     label54:
     if (paramExtraResult != null)
     {
-      paramExtraResult.jdField_a_of_type_Int = 2;
+      paramExtraResult.a = 2;
       if (bool) {
         localObject = "preload:ok:dpc";
       } else {
         localObject = "preload:fail:dpc";
       }
-      paramExtraResult.jdField_a_of_type_JavaLangString = ((String)localObject);
+      paramExtraResult.b = ((String)localObject);
     }
-    paramExtraResult = ((QQPluginPreloadServiceImpl)AppHelper.a().getRuntimeService(IQQPluginPreloadService.class, "")).manager;
+    paramExtraResult = ((QQPluginPreloadServiceImpl)AppHelper.b().getRuntimeService(IQQPluginPreloadService.class, "")).manager;
     if (paramExtraResult != null)
     {
       paramExtraResult.b();
-      if (paramExtraResult.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get() != null)
+      if (paramExtraResult.b.get() != null)
       {
-        jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_a_of_type_Int = ((PreloadServerParam)paramExtraResult.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).jdField_b_of_type_Int;
-        this.jdField_a_of_type_Boolean = ((PreloadServerParam)paramExtraResult.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).jdField_b_of_type_Boolean;
+        b.b = ((PreloadServerParam)paramExtraResult.b.get()).d;
+        this.e = ((PreloadServerParam)paramExtraResult.b.get()).c;
       }
     }
     return bool;
@@ -150,84 +141,93 @@ public class QQComicPreloadStrategy
     if (paramExtraResult == null) {
       localExtraResult = new IQQComicPluginUtil.ExtraResult();
     }
-    paramExtraResult = ((QQPluginPreloadServiceImpl)AppHelper.a().getRuntimeService(IQQPluginPreloadService.class, "")).manager;
+    paramExtraResult = ((QQPluginPreloadServiceImpl)AppHelper.b().getRuntimeService(IQQPluginPreloadService.class, "")).manager;
     boolean bool3 = false;
     boolean bool2 = false;
     boolean bool1 = false;
     if (paramExtraResult != null)
     {
       int i;
-      if ((paramExtraResult.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get() != null) && (((PreloadServerParam)paramExtraResult.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).jdField_a_of_type_Boolean)) {
+      if ((paramExtraResult.b.get() != null) && (((PreloadServerParam)paramExtraResult.b.get()).b)) {
         i = 1;
       } else {
         i = 0;
       }
-      if (jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_c_of_type_Int == 5)
+      if (b.f == 5)
       {
-        if ((i != 0) && (paramExtraResult.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -1))
+        if ((i != 0) && (paramExtraResult.d.get() != -1))
         {
-          if (paramExtraResult.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {
+          if (paramExtraResult.d.get() == 1) {
             bool1 = true;
           }
           if (bool1)
           {
-            localExtraResult.jdField_a_of_type_Int = 2;
-            localExtraResult.jdField_a_of_type_JavaLangString = "preload:ok:publicaccount";
+            localExtraResult.a = 2;
+            localExtraResult.b = "preload:ok:publicaccount";
           }
           else
           {
-            localExtraResult.jdField_a_of_type_Int = 2;
-            localExtraResult.jdField_a_of_type_JavaLangString = "preload:fail:publicaccount";
+            localExtraResult.a = 2;
+            localExtraResult.b = "preload:fail:publicaccount";
           }
         }
         else
         {
-          localExtraResult.jdField_a_of_type_Int = 1;
+          localExtraResult.a = 1;
         }
       }
       else
       {
-        for (localExtraResult.jdField_a_of_type_JavaLangString = "preload:ok:publicaccount";; localExtraResult.jdField_a_of_type_JavaLangString = "preload:ok:web")
+        for (localExtraResult.b = "preload:ok:publicaccount";; localExtraResult.b = "preload:ok:web")
         {
           bool1 = true;
           break label312;
-          if (jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_c_of_type_Int == 6)
+          if (b.f == 6)
           {
-            if ((i != 0) && (paramExtraResult.b.get() != null))
+            if ((i != 0) && (paramExtraResult.c.get() != null))
             {
-              bool1 = PluginPreloadStrategy.a((PreloadPublicParam)paramExtraResult.b.get(), String.valueOf(1113), paramExtraResult.jdField_a_of_type_MqqAppAppRuntime, "com.android.animation", paramExtraResult.a(), paramExtraResult.a(), paramExtraResult.a(), localExtraResult);
+              bool1 = PluginPreloadStrategy.a((PreloadPublicParam)paramExtraResult.c.get(), String.valueOf(1113), paramExtraResult.a, "com.android.animation", paramExtraResult.d(), paramExtraResult.c(), paramExtraResult.e(), localExtraResult);
               break label312;
             }
-            localExtraResult.jdField_a_of_type_Int = 1;
-            localExtraResult.jdField_a_of_type_JavaLangString = "preload:fail:normal";
+            localExtraResult.a = 1;
+            localExtraResult.b = "preload:fail:normal";
             bool1 = bool3;
             break label312;
           }
-          if (jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.jdField_c_of_type_Int != 9999) {
+          if (b.f != 9999) {
             break;
           }
-          localExtraResult.jdField_a_of_type_Int = 1;
+          localExtraResult.a = 1;
         }
-        localExtraResult.jdField_a_of_type_Int = 1;
-        localExtraResult.jdField_a_of_type_JavaLangString = "preload:fail:unknownentry";
+        localExtraResult.a = 1;
+        localExtraResult.b = "preload:fail:unknownentry";
         bool1 = bool3;
       }
       label312:
       bool2 = bool1;
-      if (paramExtraResult.b.get() != null)
+      if (paramExtraResult.c.get() != null)
       {
-        jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo.d = ((PreloadPublicParam)paramExtraResult.b.get()).jdField_a_of_type_Int;
+        b.g = ((PreloadPublicParam)paramExtraResult.c.get()).a;
         bool2 = bool1;
       }
     }
-    this.jdField_a_of_type_Int = localExtraResult.jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = localExtraResult.jdField_a_of_type_JavaLangString;
+    this.c = localExtraResult.a;
+    this.d = localExtraResult.b;
     return bool2;
+  }
+  
+  public void c(IQQComicPluginUtil.ExtraResult paramExtraResult)
+  {
+    if (paramExtraResult == null) {
+      return;
+    }
+    this.c = paramExtraResult.a;
+    this.d = paramExtraResult.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.QQComicPreloadStrategy
  * JD-Core Version:    0.7.0.1
  */

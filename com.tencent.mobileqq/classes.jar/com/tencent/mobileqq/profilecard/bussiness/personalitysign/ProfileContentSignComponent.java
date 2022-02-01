@@ -65,8 +65,8 @@ import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
-import com.tencent.mobileqq.widget.CircleBoarderImageView;
 import com.tencent.mobileqq.widget.StatableBitmapDrawable;
+import com.tencent.mobileqq.widget.imageview.CircleBoarderImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.Pair;
@@ -119,13 +119,13 @@ public class ProfileContentSignComponent
     int i;
     if (ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData))
     {
-      j = ((Resources)localObject1).getColor(2131167056);
-      i = ((Resources)localObject1).getColor(2131167056);
+      j = ((Resources)localObject1).getColor(2131167993);
+      i = ((Resources)localObject1).getColor(2131167993);
     }
     else
     {
       j = -8947849;
-      i = ((Resources)localObject1).getColor(2131165327);
+      i = ((Resources)localObject1).getColor(2131165564);
     }
     localObject1 = this.richStatus;
     if ((localObject1 == null) && (paramCard != null)) {
@@ -159,7 +159,7 @@ public class ProfileContentSignComponent
     {
       if (this.mViewContainer == null)
       {
-        this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131561369, null);
+        this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131627725, null);
         paramBoolean = true;
       }
       else
@@ -167,16 +167,16 @@ public class ProfileContentSignComponent
         paramBoolean = false;
       }
       View localView = (View)this.mViewContainer;
-      paramCard = localView.findViewById(2131374296);
-      TextView localTextView = (TextView)localView.findViewById(2131368773);
-      LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131370313);
+      paramCard = localView.findViewById(2131442459);
+      TextView localTextView = (TextView)localView.findViewById(2131435692);
+      LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131437563);
       localTextView.setTextColor(j);
       StatusManager localStatusManager = (StatusManager)this.mApp.getManager(QQManagerFactory.STATUS_MANAGER);
       updateSignInfo(bool, (SpannableString)localObject2, (RichStatus)localObject1, localTextView, localLinearLayout, localStatusManager);
       updateSignTopic(bool, (SpannableString)localObject2, (RichStatus)localObject1, localView, localTextView, localLinearLayout);
       updateSignContentDescription((RichStatus)localObject1, paramCard);
       updateRichStatusIconListener((RichStatus)localObject1, localStatusManager);
-      localObject1 = (ImageView)localView.findViewById(2131362975);
+      localObject1 = (ImageView)localView.findViewById(2131428774);
       if ((!bool) && (!ProfilePAUtils.isPaTypeFriend(((ProfileCardInfo)this.mData).allInOne)))
       {
         ((ImageView)localObject1).setVisibility(4);
@@ -193,7 +193,7 @@ public class ProfileContentSignComponent
     if (paramCard.isDiy())
     {
       if (this.mViewContainer != null) {
-        ((View)this.mViewContainer).setBackgroundResource(2130839435);
+        ((View)this.mViewContainer).setBackgroundResource(2130839624);
       }
       paramCard.updateSignForDeepDiy((View)this.mViewContainer);
     }
@@ -224,7 +224,7 @@ public class ProfileContentSignComponent
     }
     paramString = (String)localObject;
     if (localObject == null) {
-      paramString = ImageUtil.f();
+      paramString = ImageUtil.k();
     }
     paramString = new BitmapDrawable(paramString);
     if (ThemeUtil.isInNightMode(this.mApp)) {
@@ -248,7 +248,7 @@ public class ProfileContentSignComponent
       if (localObject == null) {
         localObject = null;
       } else {
-        localObject = ((FriendsManager)localObject).a(((ProfileCardInfo)this.mData).allInOne.uin);
+        localObject = ((FriendsManager)localObject).f(((ProfileCardInfo)this.mData).allInOne.uin);
       }
       if (localObject == null)
       {
@@ -332,7 +332,7 @@ public class ProfileContentSignComponent
       }
     }
     paramRichStatus = new StringBuilder();
-    paramRichStatus.append(HardCodeUtil.a(2131708471));
+    paramRichStatus.append(HardCodeUtil.a(2131906257));
     paramRichStatus.append(localStringBuilder);
     paramView.setContentDescription(paramRichStatus.toString());
   }
@@ -347,7 +347,7 @@ public class ProfileContentSignComponent
       if (paramStatusManager != null) {
         paramSpannableString = paramStatusManager.a(paramRichStatus.actionId, 200);
       } else {
-        paramSpannableString = BitmapManager.a(localResources, 2130849881);
+        paramSpannableString = BitmapManager.a(localResources, 2130851609);
       }
       int i = (int)(paramTextView.getTextSize() * 1.1F + 0.5F);
       paramSpannableString = new StatableBitmapDrawable(localResources, paramSpannableString, false, false);
@@ -363,7 +363,7 @@ public class ProfileContentSignComponent
     this.mDrawableSize = 0;
     if ((paramSpannableString.length() == 0) && (paramBoolean))
     {
-      paramTextView.setText(2131699221);
+      paramTextView.setText(2131897237);
       recommendTopicViewControl(paramLinearLayout, paramBoolean);
       return;
     }
@@ -417,8 +417,8 @@ public class ProfileContentSignComponent
         }
       }
       SigTopicManager.a().a(this.mQQAppInterface, paramRichStatus);
-      bool1 = SigTopicManager.a().b(this.mQQAppInterface);
-      paramRichStatus = (ImageView)paramView.findViewById(2131378896);
+      bool1 = SigTopicManager.a().d(this.mQQAppInterface);
+      paramRichStatus = (ImageView)paramView.findViewById(2131447598);
       paramSpannableString = new oidb_0xd9f.RspBody();
       if ((((ProfileCardInfo)this.mData).card != null) && (((ProfileCardInfo)this.mData).card.vLongNickTopicInfo != null)) {
         try
@@ -429,17 +429,17 @@ public class ProfileContentSignComponent
           if (paramView != null) {
             paramSpannableString = paramView.rpt_topic_item.get();
           }
-          long l = SigTopicManager.a().a(paramSpannableString);
-          boolean bool2 = SigTopicManager.a().a(this.mQQAppInterface, l);
+          long l = SigTopicManager.a().d(paramSpannableString);
+          boolean bool2 = SigTopicManager.a().b(this.mQQAppInterface, l);
           if ((!bool1) && (!bool2))
           {
             recommendTopicViewControl(paramLinearLayout, paramBoolean);
             return;
           }
-          i = SigTopicManager.a().a(paramSpannableString);
+          i = SigTopicManager.a().c(paramSpannableString);
           if ((paramSpannableString != null) && (paramSpannableString.size() > 0) && (i > 0))
           {
-            paramLinearLayout.setTag(new DataTag(97, SigTopicManager.a().a(paramSpannableString)));
+            paramLinearLayout.setTag(new DataTag(97, SigTopicManager.a().b(paramSpannableString)));
             paramLinearLayout.setOnClickListener(this);
             commonSigTopicViewControl(paramLinearLayout, paramSpannableString);
             paramRichStatus.setOnTouchListener(UITools.a);
@@ -466,17 +466,17 @@ public class ProfileContentSignComponent
       if ((paramList != null) && (!paramList.isEmpty()))
       {
         paramView.setVisibility(0);
-        ((RelativeLayout)paramView.findViewById(2131366908)).setVisibility(0);
-        Object localObject = (CircleBoarderImageView)paramView.findViewById(2131364649);
-        CircleBoarderImageView localCircleBoarderImageView1 = (CircleBoarderImageView)paramView.findViewById(2131364650);
-        CircleBoarderImageView localCircleBoarderImageView2 = (CircleBoarderImageView)paramView.findViewById(2131364651);
+        ((RelativeLayout)paramView.findViewById(2131433246)).setVisibility(0);
+        Object localObject = (CircleBoarderImageView)paramView.findViewById(2131430736);
+        CircleBoarderImageView localCircleBoarderImageView1 = (CircleBoarderImageView)paramView.findViewById(2131430737);
+        CircleBoarderImageView localCircleBoarderImageView2 = (CircleBoarderImageView)paramView.findViewById(2131430738);
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(localObject);
         localArrayList.add(localCircleBoarderImageView1);
         localArrayList.add(localCircleBoarderImageView2);
-        localObject = (TextView)paramView.findViewById(2131379593);
+        localObject = (TextView)paramView.findViewById(2131448350);
         Collections.sort(paramList, new ProfileContentSignComponent.5(this));
-        int j = SigTopicManager.a().a(paramList);
+        int j = SigTopicManager.a().c(paramList);
         paramList = SigTopicManager.a().a(paramList);
         if (paramList.size() > localArrayList.size())
         {
@@ -506,24 +506,24 @@ public class ProfileContentSignComponent
         {
           paramList = new StringBuilder();
           paramList.append(j);
-          paramList.append(HardCodeUtil.a(2131708468));
+          paramList.append(HardCodeUtil.a(2131906254));
           paramList = paramList.toString();
         }
         else
         {
           paramList = new StringBuilder();
-          paramList.append(HardCodeUtil.a(2131708438));
+          paramList.append(HardCodeUtil.a(2131906224));
           paramList.append(j);
-          paramList.append(HardCodeUtil.a(2131708417));
+          paramList.append(HardCodeUtil.a(2131906203));
           paramList = paramList.toString();
         }
         ((TextView)localObject).setText(paramList);
         if (ThemeUtil.isNowThemeIsNight(this.mApp, false, null)) {
           paramView.setBackgroundDrawable(null);
         } else if (!ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData)) {
-          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130846043));
+          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130847513));
         } else {
-          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130846042));
+          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130847512));
         }
         ReportController.b(null, "dc00898", "", "", "0X800A4D4", "0X800A4D4", 0, 0, "1", "0", "", "");
         return;
@@ -551,13 +551,13 @@ public class ProfileContentSignComponent
   {
     if (paramView != null)
     {
-      Object localObject = (RelativeLayout)paramView.findViewById(2131366908);
+      Object localObject = (RelativeLayout)paramView.findViewById(2131433246);
       if (localObject != null) {
         ((RelativeLayout)localObject).setVisibility(8);
       }
-      localObject = (CircleBoarderImageView)paramView.findViewById(2131364649);
-      CircleBoarderImageView localCircleBoarderImageView = (CircleBoarderImageView)paramView.findViewById(2131364650);
-      paramView = (CircleBoarderImageView)paramView.findViewById(2131364651);
+      localObject = (CircleBoarderImageView)paramView.findViewById(2131430736);
+      CircleBoarderImageView localCircleBoarderImageView = (CircleBoarderImageView)paramView.findViewById(2131430737);
+      paramView = (CircleBoarderImageView)paramView.findViewById(2131430738);
       if (localObject != null) {
         ((CircleBoarderImageView)localObject).setVisibility(8);
       }
@@ -575,12 +575,12 @@ public class ProfileContentSignComponent
     if ((paramView.getTag() instanceof DataTag))
     {
       Object localObject = (DataTag)paramView.getTag();
-      int i = ((DataTag)localObject).jdField_a_of_type_Int;
+      int i = ((DataTag)localObject).a;
       if (i != 3)
       {
         if (i == 97)
         {
-          localObject = (Pair)((DataTag)localObject).jdField_a_of_type_JavaLangObject;
+          localObject = (Pair)((DataTag)localObject).b;
           ProfileSignatureUtils.handleSignatureCommonClick(paramView, ((Integer)((Pair)localObject).first).intValue(), (String)((Pair)localObject).second, this.mActivity, this.mQQAppInterface);
         }
       }
@@ -689,31 +689,31 @@ public class ProfileContentSignComponent
         paramView.setVisibility(8);
         return;
       }
-      if (!SigTopicManager.a().c(this.mQQAppInterface))
+      if (!SigTopicManager.a().e(this.mQQAppInterface))
       {
         paramView.setVisibility(8);
         return;
       }
       Object localObject = SigTopicConfProcessor.a();
-      if ((localObject != null) && (!((SigTopicConfBean)localObject).a()))
+      if ((localObject != null) && (!((SigTopicConfBean)localObject).b()))
       {
         hideCommonTopicFriendAvatarControl(paramView);
         paramView.setVisibility(0);
-        ArrayList localArrayList = ((SigTopicConfBean)localObject).a().a;
-        TextView localTextView = (TextView)paramView.findViewById(2131379593);
-        ImageView localImageView = (ImageView)paramView.findViewById(2131378896);
+        ArrayList localArrayList = ((SigTopicConfBean)localObject).a().b;
+        TextView localTextView = (TextView)paramView.findViewById(2131448350);
+        ImageView localImageView = (ImageView)paramView.findViewById(2131447598);
         localTextView.setText(SigTopicManager.a().a((SigTopicConfBean)localObject));
         int j = -1;
         int i = 0;
-        while (i < ((SigTopicConfBean)localObject).a().a.size()) {
-          if (TextUtils.isEmpty(((SigTopicConfBean.TopicInfo)localArrayList.get(i)).jdField_a_of_type_JavaLangString))
+        while (i < ((SigTopicConfBean)localObject).a().b.size()) {
+          if (TextUtils.isEmpty(((SigTopicConfBean.TopicInfo)localArrayList.get(i)).b))
           {
             i += 1;
           }
           else
           {
-            j = ((SigTopicConfBean.TopicInfo)localArrayList.get(i)).jdField_a_of_type_Int;
-            localObject = ((SigTopicConfBean.TopicInfo)localArrayList.get(i)).jdField_a_of_type_JavaLangString;
+            j = ((SigTopicConfBean.TopicInfo)localArrayList.get(i)).a;
+            localObject = ((SigTopicConfBean.TopicInfo)localArrayList.get(i)).b;
             i = j;
             break label205;
           }
@@ -729,9 +729,9 @@ public class ProfileContentSignComponent
         if (ThemeUtil.isNowThemeIsNight(this.mApp, false, null)) {
           paramView.setBackgroundDrawable(null);
         } else if (!ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData)) {
-          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130846043));
+          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130847513));
         } else {
-          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130846042));
+          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130847512));
         }
         ReportController.b(null, "dc00898", "", "", "0X800A4D4", "0X800A4D4", 0, 0, "2", "0", "", "");
         return;
@@ -742,7 +742,7 @@ public class ProfileContentSignComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.personalitysign.ProfileContentSignComponent
  * JD-Core Version:    0.7.0.1
  */

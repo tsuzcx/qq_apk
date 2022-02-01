@@ -17,8 +17,8 @@ final class AVGameLottieHelper$3
   
   public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    int i = ViewUtils.a(this.jdField_a_of_type_Int);
-    int j = ViewUtils.a(this.b);
+    int i = ViewUtils.dip2px(this.a);
+    int j = ViewUtils.dip2px(this.b);
     if (paramLottieComposition == null)
     {
       QLog.w("AVGameLottieHelper", 1, "onCompositionLoaded, fail");

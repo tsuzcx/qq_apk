@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class a$c
 {
-  private static final String a = "msf.event.NetConnDontMatched";
+  private static final String a = "msf_event_NetConnDontMatched";
   private boolean b = false;
   private d c;
   private boolean d = false;
@@ -77,7 +77,7 @@ public class a$c
           localStringBuilder.append(System.currentTimeMillis());
           ((HashMap)localObject).put("uintime", String.valueOf(localStringBuilder.toString()));
           if (MsfService.getCore().getStatReporter() != null) {
-            MsfService.getCore().getStatReporter().a("msf.event.NetConnDontMatched", true, 0L, 0L, (Map)localObject, false, false);
+            MsfService.getCore().getStatReporter().a("msf_event_NetConnDontMatched", true, 0L, 0L, (Map)localObject, false, false);
           }
         }
       }
@@ -86,7 +86,7 @@ public class a$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.a.a.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -74,8 +74,8 @@ public class FastImagePreviewLayout
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     removeAllViews();
-    Object localObject = inflate(this.context, 2131558543, null);
-    ((ImageView)((View)localObject).findViewById(2131366479)).setImageDrawable(this.fastImgDrawable);
+    Object localObject = inflate(this.context, 2131624096, null);
+    ((ImageView)((View)localObject).findViewById(2131432798)).setImageDrawable(this.fastImgDrawable);
     addView((View)localObject);
     setVisibility(0);
     localObject = new AlphaAnimation(0.0F, 1.0F);
@@ -87,7 +87,7 @@ public class FastImagePreviewLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FastImagePreviewLayout
  * JD-Core Version:    0.7.0.1
  */

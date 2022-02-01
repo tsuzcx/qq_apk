@@ -25,16 +25,16 @@ class LoginAccountFragment$3
     if (LoginAccountFragment.a(this.a)) {
       return;
     }
-    LoginAccountFragment.a(this.a);
-    LoginUtils.b(LoginAccountFragment.a(this.a));
+    this.a.d();
+    LoginUtils.b(this.a.b);
     if ((paramString2 != null) && (!paramString2.equals("")))
     {
-      paramString1 = new LoginErrorInfo(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2, paramString4, LoginAccountFragment.a(this.a).getMaskUin(), LoginAccountFragment.a(this.a).getText().toString(), true);
-      LoginAccountFragment.a(this.a).a(LoginAccountFragment.a(this.a), LoginAccountFragment.a(this.a), paramString1);
+      paramString1 = new LoginErrorInfo(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2, paramString4, this.a.c.getMaskUin(), this.a.d.getText().toString(), true);
+      LoginAccountFragment.b(this.a).a(this.a.a, this.a.b, paramString1);
       LoginAccountFragment.b(this.a, paramString2);
       return;
     }
-    QQToast.a(LoginAccountFragment.a(this.a), 2131694422, 0).a();
+    QQToast.makeText(this.a.a, 2131892102, 0).show();
   }
   
   public void onLoginSuccess(String paramString1, String paramString2, byte[] paramArrayOfByte)
@@ -45,11 +45,11 @@ class LoginAccountFragment$3
       return;
     }
     LoginAccountFragment.a(this.a, paramArrayOfByte);
-    LoginAccountFragment.a(this.a);
-    GatewayUtil.a(LoginAccountFragment.a(this.a), LoginAccountFragment.a(this.a));
+    this.a.d();
+    GatewayUtil.a(this.a.a, this.a.b);
     LoginAccountFragment.a(this.a, paramString1);
-    paramString2 = this.a.getQBaseActivity();
-    if ((LoginAccountFragment.a(this.a) == 2) && (paramString2 != null))
+    paramString2 = this.a.a;
+    if ((this.a.e == 2) && (paramString2 != null))
     {
       paramArrayOfByte = new Intent();
       paramArrayOfByte.putExtra("last_account", paramString1);
@@ -65,15 +65,15 @@ class LoginAccountFragment$3
     if (LoginAccountFragment.a(this.a)) {
       return;
     }
-    QQToast.a(LoginAccountFragment.a(this.a), 2131694422, 0).a();
-    LoginAccountFragment.a(this.a);
+    QQToast.makeText(this.a.a, 2131892102, 0).show();
+    this.a.d();
     paramString = this.a;
-    LoginAccountFragment.b(paramString, paramString.getString(2131694422));
+    LoginAccountFragment.b(paramString, paramString.getString(2131892102));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.LoginAccountFragment.3
  * JD-Core Version:    0.7.0.1
  */

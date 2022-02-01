@@ -702,9 +702,9 @@ public class GroupPttUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Int = -1;
-      localSendResult.jdField_b_of_type_Int = this.mProcessorReport.errCode;
-      localSendResult.jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
+      localSendResult.a = -1;
+      localSendResult.b = this.mProcessorReport.errCode;
+      localSendResult.c = this.mProcessorReport.errDesc;
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
     if (this.mUiRequest.mIsPttPreSend) {
@@ -734,11 +734,11 @@ public class GroupPttUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Long = this.mFileSize;
-      localSendResult.d = this.mMd5Str;
-      localSendResult.c = this.mFileName;
-      localSendResult.jdField_b_of_type_JavaLangString = this.mUiRequest.mLocalPath;
-      localSendResult.jdField_b_of_type_Long = this.mFileID;
+      localSendResult.e = this.mFileSize;
+      localSendResult.g = this.mMd5Str;
+      localSendResult.f = this.mFileName;
+      localSendResult.d = this.mUiRequest.mLocalPath;
+      localSendResult.h = this.mFileID;
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
     else
@@ -1182,7 +1182,7 @@ public class GroupPttUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.GroupPttUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

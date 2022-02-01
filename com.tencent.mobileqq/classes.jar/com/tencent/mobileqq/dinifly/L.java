@@ -1,19 +1,30 @@
 package com.tencent.mobileqq.dinifly;
 
-import android.support.annotation.RestrictTo;
-import android.support.v4.os.TraceCompat;
+import android.content.Context;
 import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.annotation.RestrictTo;
+import androidx.core.os.TraceCompat;
+import com.tencent.mobileqq.dinifly.network.DefaultLottieNetworkFetcher;
+import com.tencent.mobileqq.dinifly.network.LottieNetworkCacheProvider;
+import com.tencent.mobileqq.dinifly.network.LottieNetworkFetcher;
+import com.tencent.mobileqq.dinifly.network.NetworkCache;
+import com.tencent.mobileqq.dinifly.network.NetworkFetcher;
 import java.util.HashSet;
 import java.util.Set;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
 public class L
 {
   public static boolean DBG = false;
   private static final int MAX_DEPTH = 20;
   public static final String TAG = "LOTTIE";
+  private static LottieNetworkCacheProvider cacheProvider;
   private static int depthPastMaxDepth = 0;
+  private static LottieNetworkFetcher fetcher;
   private static final Set<String> loggedMessages = new HashSet();
+  private static volatile NetworkCache networkCache;
+  private static volatile NetworkFetcher networkFetcher;
   private static String[] sections;
   private static long[] startTimeNs;
   private static int traceDepth;
@@ -39,13 +50,6 @@ public class L
     startTimeNs[i] = System.nanoTime();
     TraceCompat.beginSection(paramString);
     traceDepth += 1;
-  }
-  
-  public static void debug(String paramString)
-  {
-    if (DBG) {
-      Log.d("LOTTIE", paramString);
-    }
   }
   
   public static float endSection(String paramString)
@@ -79,6 +83,69 @@ public class L
     throw new IllegalStateException("Can't end trace section. There are none.");
   }
   
+  @NonNull
+  public static NetworkCache networkCache(@NonNull Context paramContext)
+  {
+    Object localObject = networkCache;
+    if (localObject == null) {
+      try
+      {
+        NetworkCache localNetworkCache = networkCache;
+        localObject = localNetworkCache;
+        if (localNetworkCache == null)
+        {
+          if (cacheProvider != null) {
+            paramContext = cacheProvider;
+          } else {
+            paramContext = new L.1(paramContext);
+          }
+          localObject = new NetworkCache(paramContext);
+          networkCache = (NetworkCache)localObject;
+        }
+        return localObject;
+      }
+      finally {}
+    }
+    return localObject;
+  }
+  
+  @NonNull
+  public static NetworkFetcher networkFetcher(@NonNull Context paramContext)
+  {
+    Object localObject = networkFetcher;
+    if (localObject == null) {
+      try
+      {
+        NetworkFetcher localNetworkFetcher = networkFetcher;
+        localObject = localNetworkFetcher;
+        if (localNetworkFetcher == null)
+        {
+          localObject = networkCache(paramContext);
+          if (fetcher != null) {
+            paramContext = fetcher;
+          } else {
+            paramContext = new DefaultLottieNetworkFetcher();
+          }
+          localObject = new NetworkFetcher((NetworkCache)localObject, paramContext);
+          networkFetcher = (NetworkFetcher)localObject;
+        }
+        return localObject;
+      }
+      finally {}
+    }
+    return localObject;
+  }
+  
+  public static void setCacheProvider(LottieNetworkCacheProvider paramLottieNetworkCacheProvider)
+  {
+    cacheProvider = paramLottieNetworkCacheProvider;
+  }
+  
+  public static void setFetcher(LottieNetworkFetcher paramLottieNetworkFetcher)
+  {
+    fetcher = paramLottieNetworkFetcher;
+  }
+  
   public static void setTraceEnabled(boolean paramBoolean)
   {
     if (traceEnabled == paramBoolean) {
@@ -103,7 +170,7 @@ public class L
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.L
  * JD-Core Version:    0.7.0.1
  */

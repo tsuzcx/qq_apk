@@ -22,13 +22,13 @@ final class VideoCropPresenter$startVideoCrop$1
   public final void invoke()
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(TopicSDKHelperKt.c());
+    ((StringBuilder)localObject).append(TopicSDKHelperKt.e());
     ((StringBuilder)localObject).append(System.currentTimeMillis());
     ((StringBuilder)localObject).append("-audio.mp4");
     String str = ((StringBuilder)localObject).toString();
     localObject = VideoCropPresenter.a(this.this$0);
     if (localObject != null) {
-      localObject = Boolean.valueOf(((VideoTrimmer)localObject).a(this.this$0.a(), str, this.$item.getStartMergeTime(), this.$item.getEndMergeTime(), true, true));
+      localObject = Boolean.valueOf(((VideoTrimmer)localObject).a(this.this$0.g(), str, this.$item.getStartMergeTime(), this.$item.getEndMergeTime(), true, true));
     } else {
       localObject = null;
     }
@@ -37,7 +37,7 @@ final class VideoCropPresenter$startVideoCrop$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPresenter.startVideoCrop.1
  * JD-Core Version:    0.7.0.1
  */

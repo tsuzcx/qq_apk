@@ -11,25 +11,27 @@ import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopAioAgent.Message;
 import java.util.List;
 
 public class TroopAioMsgNavigateUnRead
-  extends BaseTroopAioMsgNavigateBarDelegate
+  extends BaseAioMsgNavigateBarDelegate
 {
-  public TroopAioMsgNavigateUnRead(QQAppInterface paramQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
+  private TroopAioMsgNavigateBar a;
+  
+  public TroopAioMsgNavigateUnRead(QQAppInterface paramQQAppInterface, Context paramContext, TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar, BaseSessionInfo paramBaseSessionInfo)
   {
     super(paramQQAppInterface, paramContext, paramBaseSessionInfo);
-    this.jdField_a_of_type_Int = 1;
+    this.c = 1;
+    this.a = paramTroopAioMsgNavigateBar;
   }
   
   public int a(int paramInt)
   {
-    return 2130851087;
+    return 2130853322;
   }
   
   @Nullable
-  public BaseTroopAioMsgNavigateBarDelegate.Entity a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public BaseAioMsgNavigateBarDelegate.Entity a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
     if (paramLong3 >= paramLong2) {}
     for (;;)
@@ -39,13 +41,13 @@ public class TroopAioMsgNavigateUnRead
       if (paramInt2 >= 30) {
         break;
       }
-      paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
+      paramList = this.d.getMessageFacade().getLastMessage(this.f.b, this.f.a);
       if (paramList != null)
       {
         long l = paramList.shmsgseq;
         for (paramLong3 = 0L; paramLong3 < paramInt2; paramLong3 += 1L)
         {
-          paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, l);
+          paramList = this.d.getMessageFacade().d(this.f.b, this.f.a, l);
           if ((paramList != null) && (paramList.msgtype != -2058) && (paramList.shmsgseq < paramLong2)) {
             break label137;
           }
@@ -57,7 +59,7 @@ public class TroopAioMsgNavigateUnRead
     int i = 1;
     label140:
     if (i != 0) {
-      return new BaseTroopAioMsgNavigateBarDelegate.Entity(true, String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131697824), new Object[] { Integer.valueOf(paramInt2) }), TroopAioAgent.Message.a(paramInt1, paramLong1, paramInt2), "");
+      return new BaseAioMsgNavigateBarDelegate.Entity(true, String.format(this.e.getString(2131895597), new Object[] { Integer.valueOf(paramInt2) }), AioAgent.Message.a(paramInt1, paramLong1, paramInt2), "");
     }
     return null;
   }
@@ -66,25 +68,22 @@ public class TroopAioMsgNavigateUnRead
   {
     paramTextView1.setText(paramString);
     paramTextView2.setVisibility(8);
-    paramTextView2.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166273));
-    paramTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166273));
-    paramImageView.setBackgroundResource(2130851141);
+    paramTextView2.setTextColor(this.e.getResources().getColor(2131167006));
+    paramTextView1.setTextColor(this.e.getResources().getColor(2131167006));
+    paramImageView.setBackgroundResource(2130853376);
   }
   
   public void a(int paramInt, Object paramObject, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 3000)
+    if (this.f.a == 3000)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_Dis", "", "Grp_AIO", "Appear_Oneclk_read", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+      ReportController.b(this.d, "dc00899", "Grp_Dis", "", "Grp_AIO", "Appear_Oneclk_read", 0, 0, this.f.b, "", "", "");
       return;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Appear_Oneclk_read", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_new_msg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
+    ReportController.b(this.d, "P_CliOper", "Grp_AIO", "", "AIOchat", "Appear_Oneclk_read", 0, 0, this.f.b, "", "", "");
+    if (this.a != null) {
+      ReportController.b(this.d, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_new_msg", 0, 0, this.f.b, String.valueOf(this.a.e), "", "");
+    }
   }
   
   public boolean a(int paramInt1, int paramInt2)
@@ -94,18 +93,25 @@ public class TroopAioMsgNavigateUnRead
   
   public void b(int paramInt, Object paramObject, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 3000)
+    if (this.f.a == 3000)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_Dis", "", "Grp_AIO", "Clk_Oneclk_read", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+      ReportController.b(this.d, "dc00899", "Grp_Dis", "", "Grp_AIO", "Clk_Oneclk_read", 0, 0, this.f.b, "", "", "");
       return;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_Oneclk_read", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_new_msg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    ReportController.b(this.d, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_Oneclk_read", 0, 0, this.f.b, "", "", "");
+    if (this.a != null) {
+      ReportController.b(this.d, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_new_msg", 0, 0, this.f.b, String.valueOf(this.a.e), "", "");
+    }
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateUnRead
  * JD-Core Version:    0.7.0.1
  */

@@ -22,22 +22,22 @@ class QQStoryShareGroupProfileActivity$UpdateUserInfoEventReceiver
   
   public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null) && (!paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    if ((paramUpdateUserInfoEvent.g.isSuccess()) && (paramUpdateUserInfoEvent.b != null) && (!paramUpdateUserInfoEvent.b.isEmpty()) && (paramQQStoryShareGroupProfileActivity.u != null))
     {
-      if (paramQQStoryShareGroupProfileActivity.g)
+      if (paramQQStoryShareGroupProfileActivity.G)
       {
-        paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.a.notifyDataSetChanged();
+        paramQQStoryShareGroupProfileActivity.d.f.notifyDataSetChanged();
         return;
       }
       int j = 0;
       int i = j;
       Object localObject;
-      if (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList != null)
+      if (paramQQStoryShareGroupProfileActivity.u.headerUnionIdList != null)
       {
         i = j;
-        if (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.isEmpty())
+        if (!paramQQStoryShareGroupProfileActivity.u.headerUnionIdList.isEmpty())
         {
-          localObject = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
+          localObject = paramUpdateUserInfoEvent.b.iterator();
           QQUserUIItem localQQUserUIItem;
           do
           {
@@ -46,14 +46,14 @@ class QQStoryShareGroupProfileActivity$UpdateUserInfoEventReceiver
               break;
             }
             localQQUserUIItem = (QQUserUIItem)((Iterator)localObject).next();
-          } while (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.contains(localQQUserUIItem.uid));
+          } while (!paramQQStoryShareGroupProfileActivity.u.headerUnionIdList.contains(localQQUserUIItem.uid));
           i = 1;
         }
       }
       j = i;
-      if (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.d))
+      if (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.z))
       {
-        paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
+        paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.b.iterator();
         do
         {
           j = i;
@@ -61,11 +61,11 @@ class QQStoryShareGroupProfileActivity$UpdateUserInfoEventReceiver
             break;
           }
           localObject = (QQUserUIItem)paramUpdateUserInfoEvent.next();
-        } while (!paramQQStoryShareGroupProfileActivity.d.equals(((QQUserUIItem)localObject).uid));
+        } while (!paramQQStoryShareGroupProfileActivity.z.equals(((QQUserUIItem)localObject).uid));
         j = 1;
       }
       if (j != 0) {
-        QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+        QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramQQStoryShareGroupProfileActivity.u);
       }
     }
   }

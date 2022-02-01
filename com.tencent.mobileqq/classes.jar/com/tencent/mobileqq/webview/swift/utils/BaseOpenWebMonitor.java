@@ -17,11 +17,11 @@ import java.util.HashMap;
 
 public class BaseOpenWebMonitor
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static ArrayMap<String, Long> jdField_a_of_type_AndroidSupportV4UtilArrayMap;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private static int b = -1;
+  private static int a = 0;
+  private static HashMap<String, String> b;
+  private static ArrayMap<String, Long> c;
+  private static String d = "";
+  private static int e = -1;
   
   public static void a()
   {
@@ -35,7 +35,7 @@ public class BaseOpenWebMonitor
   
   public static void a(Intent paramIntent)
   {
-    jdField_a_of_type_Int += 1;
+    a += 1;
     if (paramIntent == null) {
       return;
     }
@@ -43,38 +43,38 @@ public class BaseOpenWebMonitor
       return;
     }
     long l = paramIntent.getLongExtra("from_aio_time", -1L);
-    Object localObject1 = jdField_a_of_type_JavaUtilHashMap;
+    Object localObject1 = b;
     if ((localObject1 != null) && (((HashMap)localObject1).size() <= 25)) {
-      jdField_a_of_type_JavaUtilHashMap.clear();
+      b.clear();
     } else {
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      b = new HashMap();
     }
-    localObject1 = jdField_a_of_type_AndroidSupportV4UtilArrayMap;
+    localObject1 = c;
     if ((localObject1 != null) && (((ArrayMap)localObject1).size() <= 25)) {
-      jdField_a_of_type_AndroidSupportV4UtilArrayMap.clear();
+      c.clear();
     } else {
-      jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
+      c = new ArrayMap();
     }
-    int i = WebProcessReceiver.jdField_a_of_type_Int;
+    int i = WebProcessReceiver.a;
     int j;
-    if ((jdField_a_of_type_Int == 1) && (i == 1)) {
+    if ((a == 1) && (i == 1)) {
       j = 1;
     } else {
       j = 0;
     }
-    b = 1;
-    localObject1 = jdField_a_of_type_JavaUtilHashMap;
+    e = 1;
+    localObject1 = b;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(paramIntent.getIntExtra("from_aio", 1));
     ((StringBuilder)localObject2).append("");
     ((HashMap)localObject1).put("from", ((StringBuilder)localObject2).toString());
-    localObject1 = jdField_a_of_type_JavaUtilHashMap;
+    localObject1 = b;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(paramIntent.getIntExtra("from_aio_opt", 2));
     ((StringBuilder)localObject2).append("");
     ((HashMap)localObject1).put("use_optimization", ((StringBuilder)localObject2).toString());
-    Object localObject3 = jdField_a_of_type_JavaUtilHashMap;
-    int k = jdField_a_of_type_Int;
+    Object localObject3 = b;
+    int k = a;
     localObject2 = "1";
     if (k == 1) {
       localObject1 = "1";
@@ -82,12 +82,12 @@ public class BaseOpenWebMonitor
       localObject1 = "2";
     }
     ((HashMap)localObject3).put("first_open", localObject1);
-    localObject1 = jdField_a_of_type_JavaUtilHashMap;
+    localObject1 = b;
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append(HttpUtil.getNetWorkType());
     ((StringBuilder)localObject3).append("");
     ((HashMap)localObject1).put("network_type", ((StringBuilder)localObject3).toString());
-    localObject3 = jdField_a_of_type_JavaUtilHashMap;
+    localObject3 = b;
     if (i == 1) {
       localObject1 = localObject2;
     } else {
@@ -96,12 +96,12 @@ public class BaseOpenWebMonitor
     ((HashMap)localObject3).put("has_pp", localObject1);
     if (i == 1) {
       i = 1;
-    } else if ((!SwiftBrowserStatistics.p) && (jdField_a_of_type_Int <= 1)) {
+    } else if ((!SwiftBrowserStatistics.aD) && (a <= 1)) {
       i = 3;
     } else {
       i = 2;
     }
-    localObject1 = jdField_a_of_type_JavaUtilHashMap;
+    localObject1 = b;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(i);
     ((StringBuilder)localObject2).append("");
@@ -110,8 +110,8 @@ public class BaseOpenWebMonitor
     ((StringBuilder)localObject1).append(SystemClock.uptimeMillis() - l);
     ((StringBuilder)localObject1).append("");
     b(paramIntent, "click_to_activity", ((StringBuilder)localObject1).toString());
-    jdField_a_of_type_JavaUtilHashMap.put("open_finished", "2");
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("web_finish", Long.valueOf(l));
+    b.put("open_finished", "2");
+    c.put("web_finish", Long.valueOf(l));
     a(paramIntent, "click_to_activity", "activity_to_webview");
     paramIntent.removeExtra("from_aio");
     paramIntent.removeExtra("from_aio_time");
@@ -137,7 +137,7 @@ public class BaseOpenWebMonitor
     if (paramIntent == null) {
       return;
     }
-    if (b == 1)
+    if (e == 1)
     {
       if (!paramIntent.getBooleanExtra("aio_open_web", false)) {
         return;
@@ -157,7 +157,7 @@ public class BaseOpenWebMonitor
     if (paramIntent == null) {
       return;
     }
-    if (b == 1)
+    if (e == 1)
     {
       if (!paramIntent.getBooleanExtra("aio_open_web", false)) {
         return;
@@ -165,10 +165,10 @@ public class BaseOpenWebMonitor
       long l = SystemClock.uptimeMillis();
       if (paramString1 != null)
       {
-        paramIntent = (Long)jdField_a_of_type_AndroidSupportV4UtilArrayMap.remove(paramString1);
+        paramIntent = (Long)c.remove(paramString1);
         if (paramIntent != null)
         {
-          HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
+          HashMap localHashMap = b;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(l - paramIntent.longValue());
           localStringBuilder.append("");
@@ -176,7 +176,7 @@ public class BaseOpenWebMonitor
         }
       }
       if (paramString2 != null) {
-        jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramString2, Long.valueOf(l));
+        c.put(paramString2, Long.valueOf(l));
       }
     }
   }
@@ -191,17 +191,17 @@ public class BaseOpenWebMonitor
     if (paramIntent == null) {
       return;
     }
-    if (b == 1)
+    if (e == 1)
     {
       if (!paramIntent.getBooleanExtra("aio_open_web", false)) {
         return;
       }
       a(paramIntent, "wb_c", null);
       a(paramIntent, "web_finish", null);
-      if (b == 1)
+      if (e == 1)
       {
-        b = 2;
-        jdField_a_of_type_JavaUtilHashMap.put("open_finished", "1");
+        e = 2;
+        b.put("open_finished", "1");
       }
     }
   }
@@ -211,7 +211,7 @@ public class BaseOpenWebMonitor
     if (paramIntent == null) {
       return;
     }
-    if (b == 1)
+    if (e == 1)
     {
       if (!paramIntent.getBooleanExtra("aio_open_web", false)) {
         return;
@@ -226,12 +226,12 @@ public class BaseOpenWebMonitor
     if (paramIntent == null) {
       return;
     }
-    if (b == 1)
+    if (e == 1)
     {
       if (!paramIntent.getBooleanExtra("aio_open_web", false)) {
         return;
       }
-      jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+      b.put(paramString1, paramString2);
     }
   }
   
@@ -243,7 +243,7 @@ public class BaseOpenWebMonitor
     if (!paramIntent.getBooleanExtra("aio_open_web", false)) {
       return;
     }
-    Object localObject = jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = b;
     if (localObject == null) {
       return;
     }
@@ -262,7 +262,7 @@ public class BaseOpenWebMonitor
       }
       if ((paramString.contains(URLEncoder.encode("/cgi-bin/httpconn?htcmd=0x6ff0080"))) || (paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080")))
       {
-        jdField_a_of_type_JavaLangString = paramString;
+        d = paramString;
         a(paramIntent, null, "safe_check");
       }
     }
@@ -277,15 +277,15 @@ public class BaseOpenWebMonitor
       return;
     }
     paramIntent.removeExtra("aio_open_web");
-    paramIntent = jdField_a_of_type_JavaUtilHashMap;
+    paramIntent = b;
     Object localObject;
     if (paramIntent != null)
     {
       if (TextUtils.isEmpty((CharSequence)paramIntent.get("from"))) {
         return;
       }
-      localObject = (String)jdField_a_of_type_JavaUtilHashMap.get("safe_check");
-      paramIntent = (String)jdField_a_of_type_JavaUtilHashMap.get("short_link");
+      localObject = (String)b.get("safe_check");
+      paramIntent = (String)b.get("short_link");
     }
     try
     {
@@ -313,17 +313,17 @@ public class BaseOpenWebMonitor
     }
     l2 = 0L;
     if (l1 == 0L) {
-      jdField_a_of_type_JavaUtilHashMap.put("has_safecheck", "2");
+      b.put("has_safecheck", "2");
     } else {
-      jdField_a_of_type_JavaUtilHashMap.put("has_safecheck", "1");
+      b.put("has_safecheck", "1");
     }
     if (l2 == 0L) {
-      jdField_a_of_type_JavaUtilHashMap.put("has_short_link", "2");
+      b.put("has_short_link", "2");
     } else {
-      jdField_a_of_type_JavaUtilHashMap.put("has_short_link", "1");
+      b.put("has_short_link", "1");
     }
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "AIOWeb", false, 0L, 0L, jdField_a_of_type_JavaUtilHashMap, "", false);
-    b = -1;
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "AIOWeb", false, 0L, 0L, b, "", false);
+    e = -1;
     if (Build.VERSION.SDK_INT > 10)
     {
       paramIntent = BaseApplication.getContext().getSharedPreferences("web_process_preload_file", 4);
@@ -350,8 +350,8 @@ public class BaseOpenWebMonitor
         paramIntent.edit().putInt("aio_preload_qweb_cout", 0).putLong("aio_preload_qweb_last", l2).putInt("aio_hit_count", 0).commit();
       }
     }
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.clear();
+    b.clear();
+    c.clear();
   }
   
   private static void d(Intent paramIntent, String paramString)
@@ -361,11 +361,11 @@ public class BaseOpenWebMonitor
       if (paramString == null) {
         return;
       }
-      String str = jdField_a_of_type_JavaLangString;
+      String str = d;
       if ((str != null) && (str.contains(URLEncoder.encode(paramString)))) {
         a(paramIntent, "safe_check", null);
       }
-      jdField_a_of_type_JavaLangString = "";
+      d = "";
     }
   }
   
@@ -391,7 +391,7 @@ public class BaseOpenWebMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.BaseOpenWebMonitor
  * JD-Core Version:    0.7.0.1
  */

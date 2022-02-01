@@ -16,8 +16,8 @@ class ExpandNewFragment$5
     {
       FragmentActivity localFragmentActivity = this.this$0.getActivity();
       QzonePluginProxyActivity.getQZonePluginClassLoader(localFragmentActivity);
-      QZoneApiProxy.initServlet(localFragmentActivity, ExpandNewFragment.a(this.this$0));
-      QZoneApiProxy.initEnv(localFragmentActivity, ExpandNewFragment.a(this.this$0));
+      QZoneApiProxy.initServlet(localFragmentActivity, ExpandNewFragment.c(this.this$0));
+      QZoneApiProxy.initEnv(localFragmentActivity, ExpandNewFragment.c(this.this$0));
       return;
     }
     catch (Exception localException)
@@ -28,7 +28,7 @@ class ExpandNewFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExpandNewFragment.5
  * JD-Core Version:    0.7.0.1
  */

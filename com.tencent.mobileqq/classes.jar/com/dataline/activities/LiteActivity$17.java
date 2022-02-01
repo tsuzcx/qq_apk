@@ -10,7 +10,7 @@ class LiteActivity$17
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    this.a.execute(new Integer[] { Integer.valueOf(this.b) });
   }
   
   public void b() {}

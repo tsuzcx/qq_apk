@@ -18,10 +18,10 @@ class OldAuthorityPresenter$4
     ((StringBuilder)localObject).append("getAppInfo observer onReceive isSuccess = ");
     ((StringBuilder)localObject).append(paramBoolean);
     SSOLog.b("OldAuthorityPresenter", ((StringBuilder)localObject).toString());
-    AuthReporter.a("KEY_GET_APP_INFO_REQUEST", this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterOldAuthorityPresenter.a, paramBoolean);
-    OldAuthorityPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterOldAuthorityPresenter).c();
+    AuthReporter.a("KEY_GET_APP_INFO_REQUEST", this.c.w, paramBoolean);
+    OldAuthorityPresenter.a(this.c).c();
     localObject = paramBundle.getString("ssoAccount");
-    if (!this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterOldAuthorityPresenter.a.jdField_a_of_type_JavaLangString.equals(localObject))
+    if (!this.c.w.a.equals(localObject))
     {
       SSOLog.b("OldAuthorityPresenter", new Object[] { "mAccount.uin != ssoAccount" });
       return;
@@ -29,12 +29,12 @@ class OldAuthorityPresenter$4
     if (!paramBoolean) {
       return;
     }
-    OldAuthorityPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterOldAuthorityPresenter, paramBundle, this.jdField_a_of_type_JavaLangString, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    OldAuthorityPresenter.a(this.c, paramBundle, this.a, System.currentTimeMillis() - this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.OldAuthorityPresenter.4
  * JD-Core Version:    0.7.0.1
  */

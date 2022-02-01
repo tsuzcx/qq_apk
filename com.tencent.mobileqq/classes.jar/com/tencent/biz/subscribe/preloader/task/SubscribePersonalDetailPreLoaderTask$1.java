@@ -12,7 +12,7 @@ class SubscribePersonalDetailPreLoaderTask$1
   
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    paramBaseRequest = this.jdField_a_of_type_ComTencentMobileqqEngineeringPreloadInterOnPreLoadListener;
+    paramBaseRequest = this.a;
     if (paramBaseRequest != null) {
       paramBaseRequest.onLoaded(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetMainPageRsp });
     }

@@ -20,38 +20,31 @@ import java.util.List;
 public class AioMiniProfileLabelListAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Context a;
+  private List<String> b = new ArrayList();
   
   public AioMiniProfileLabelListAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   private ColorStateList a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return new ColorStateList(new int[][] { { 16842919, 16842910 }, { 16842910, 16842908 }, { 16842910 }, { 16842908 }, { 16842909 }, new int[0] }, new int[] { paramInt2, paramInt3, paramInt1, paramInt3, paramInt4, paramInt1 });
-  }
-  
-  private Drawable a(int paramInt)
-  {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(25.0F);
-    localGradientDrawable.setColor(paramInt);
-    return localGradientDrawable;
+    int[] arrayOfInt1 = { 16842910 };
+    int[] arrayOfInt2 = { 16842909 };
+    return new ColorStateList(new int[][] { { 16842919, 16842910 }, { 16842910, 16842908 }, arrayOfInt1, { 16842908 }, arrayOfInt2, new int[0] }, new int[] { paramInt2, paramInt3, paramInt1, paramInt3, paramInt4, paramInt1 });
   }
   
   private Drawable a(int paramInt1, int paramInt2)
   {
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    Drawable localDrawable = a(paramInt1);
+    Drawable localDrawable = b(paramInt1);
     localStateListDrawable.addState(new int[] { 16842919 }, localDrawable);
-    localDrawable = a(paramInt1);
+    localDrawable = b(paramInt1);
     localStateListDrawable.addState(new int[] { 16842908 }, localDrawable);
-    localDrawable = a(paramInt1);
+    localDrawable = b(paramInt1);
     localStateListDrawable.addState(new int[] { 16842913 }, localDrawable);
-    localDrawable = a(paramInt2);
+    localDrawable = b(paramInt2);
     localStateListDrawable.addState(new int[0], localDrawable);
     return localStateListDrawable;
   }
@@ -63,8 +56,8 @@ public class AioMiniProfileLabelListAdapter
       str = "seed";
     }
     paramString = new AioMiniProfileLabelListAdapter.LabelColor(null);
-    String[] arrayOfString = paramContext.getResources().getStringArray(2130968660);
-    paramContext = paramContext.getResources().getStringArray(2130968659);
+    String[] arrayOfString = paramContext.getResources().getStringArray(2130968662);
+    paramContext = paramContext.getResources().getStringArray(2130968661);
     boolean bool = TextUtils.isEmpty(str);
     int i = 0;
     if (!bool) {
@@ -75,24 +68,33 @@ public class AioMiniProfileLabelListAdapter
     return paramString;
   }
   
+  private Drawable b(int paramInt)
+  {
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setCornerRadius(25.0F);
+    localGradientDrawable.setColor(paramInt);
+    return localGradientDrawable;
+  }
+  
   public String a(int paramInt)
   {
-    return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (String)this.b.get(paramInt);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
   }
   
   public void a(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.b.addAll(paramList);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public long getItemId(int paramInt)
@@ -105,9 +107,9 @@ public class AioMiniProfileLabelListAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561083, null, false);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131627431, null, false);
       paramView = new AioMiniProfileLabelListAdapter.ViewHolder();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379659));
+      paramView.b = ((TextView)localView.findViewById(2131448436));
       localView.setTag(paramView);
     }
     else
@@ -119,15 +121,15 @@ public class AioMiniProfileLabelListAdapter
     Object localObject = a(paramInt);
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      paramView.jdField_a_of_type_Int = paramInt;
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      localObject = a((String)localObject, this.jdField_a_of_type_AndroidContentContext);
+      paramView.a = paramInt;
+      paramView.b.setText((CharSequence)localObject);
+      localObject = a((String)localObject, this.a);
       int i = Color.parseColor(((AioMiniProfileLabelListAdapter.LabelColor)localObject).a);
       int j = Color.parseColor(((AioMiniProfileLabelListAdapter.LabelColor)localObject).b);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setFocusable(false);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a(j, j));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a(i, i, i, i));
+      paramView.b.setClickable(false);
+      paramView.b.setFocusable(false);
+      paramView.b.setBackgroundDrawable(a(j, j));
+      paramView.b.setTextColor(a(i, i, i, i));
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -135,7 +137,7 @@ public class AioMiniProfileLabelListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.AioMiniProfileLabelListAdapter
  * JD-Core Version:    0.7.0.1
  */

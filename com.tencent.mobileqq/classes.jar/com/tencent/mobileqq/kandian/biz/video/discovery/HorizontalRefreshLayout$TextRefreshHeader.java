@@ -12,15 +12,15 @@ public class HorizontalRefreshLayout$TextRefreshHeader
   
   public View a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560320, paramViewGroup, false);
-    this.a = ((TextView)paramViewGroup.findViewById(2131365728));
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131626366, paramViewGroup, false);
+    this.a = ((TextView)paramViewGroup.findViewById(2131431970));
     this.a.setText("继续滑动\n进入详情");
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.discovery.HorizontalRefreshLayout.TextRefreshHeader
  * JD-Core Version:    0.7.0.1
  */

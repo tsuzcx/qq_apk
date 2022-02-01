@@ -31,35 +31,30 @@ import org.json.JSONObject;
 
 public class QZoneVipInfoManager
 {
-  private static QZoneVipInfoManager jdField_a_of_type_CooperationVipManagerQZoneVipInfoManager;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private int jdField_a_of_type_Int;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private String b;
+  private static QZoneVipInfoManager a;
+  private static Object b = new Object();
+  private SharedPreferences c;
+  private volatile boolean d;
+  private int e;
+  private String f;
+  private String g;
   
   private QZoneVipInfoManager()
   {
     int i = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.b = null;
+    this.d = false;
+    this.e = -1;
+    this.f = null;
+    this.g = null;
     Object localObject = BaseApplicationImpl.getApplication();
     if (Build.VERSION.SDK_INT >= 11) {
       i = 4;
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences = ((BaseApplicationImpl)localObject).getSharedPreferences("QZONE_VIP_INFO", i);
-    localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    this.c = ((BaseApplicationImpl)localObject).getSharedPreferences("QZONE_VIP_INFO", i);
+    localObject = this.c;
     if (localObject != null) {
       ((SharedPreferences)localObject).registerOnSharedPreferenceChangeListener(new QZoneVipInfoManager.1(this));
     }
-  }
-  
-  public static int a(int paramInt)
-  {
-    return a(paramInt, 0, 1);
   }
   
   public static int a(int paramInt1, int paramInt2)
@@ -117,15 +112,15 @@ public class QZoneVipInfoManager
   
   public static QZoneVipInfoManager a()
   {
-    if (jdField_a_of_type_CooperationVipManagerQZoneVipInfoManager == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (a == null) {
+      synchronized (b)
       {
-        if (jdField_a_of_type_CooperationVipManagerQZoneVipInfoManager == null) {
-          jdField_a_of_type_CooperationVipManagerQZoneVipInfoManager = new QZoneVipInfoManager();
+        if (a == null) {
+          a = new QZoneVipInfoManager();
         }
       }
     }
-    return jdField_a_of_type_CooperationVipManagerQZoneVipInfoManager;
+    return a;
   }
   
   private String a(String paramString)
@@ -134,11 +129,6 @@ public class QZoneVipInfoManager
     localStringBuilder.append("key_vip_info_bitmap_pre");
     localStringBuilder.append(paramString);
     return localStringBuilder.toString();
-  }
-  
-  private void a()
-  {
-    a(false);
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2)
@@ -154,7 +144,7 @@ public class QZoneVipInfoManager
         return;
       }
       Intent localIntent = new Intent();
-      String str = paramActivity.getResources().getString(2131717689);
+      String str = paramActivity.getResources().getString(2131915164);
       QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
       localIntent.putExtra("aid", paramString2);
       localIntent.putExtra("source", paramString3);
@@ -173,24 +163,19 @@ public class QZoneVipInfoManager
   
   private void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Int >= 0) && (!paramBoolean)) {
+    if ((this.e >= 0) && (!paramBoolean)) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null)
+    if (this.c != null)
     {
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       if (localAppRuntime != null)
       {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(a(localAppRuntime.getAccount()), 0);
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(b(localAppRuntime.getAccount()), null);
-        this.b = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(c(localAppRuntime.getAccount()), null);
+        this.e = this.c.getInt(a(localAppRuntime.getAccount()), 0);
+        this.f = this.c.getString(b(localAppRuntime.getAccount()), null);
+        this.g = this.c.getString(c(localAppRuntime.getAccount()), null);
       }
     }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return a(paramInt, 6, 6) != 0;
   }
   
   public static boolean a(Activity paramActivity, int paramInt, String paramString)
@@ -411,7 +396,7 @@ public class QZoneVipInfoManager
   
   public static int b(int paramInt)
   {
-    return a(paramInt, 2, 5);
+    return a(paramInt, 0, 1);
   }
   
   public static int b(int paramInt1, int paramInt2)
@@ -438,27 +423,6 @@ public class QZoneVipInfoManager
     localStringBuilder.append("key_vip_info_personalized_vip_pre");
     localStringBuilder.append(paramString);
     return localStringBuilder.toString();
-  }
-  
-  private void b()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
-    if (localObject != null)
-    {
-      localObject = ((SharedPreferences)localObject).edit();
-      if (localObject != null)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-        if (localAppRuntime != null)
-        {
-          ((SharedPreferences.Editor)localObject).putInt(a(localAppRuntime.getAccount()), this.jdField_a_of_type_Int);
-          ((SharedPreferences.Editor)localObject).putString(b(localAppRuntime.getAccount()), this.jdField_a_of_type_JavaLangString);
-          ((SharedPreferences.Editor)localObject).putString(c(localAppRuntime.getAccount()), this.b);
-          ((SharedPreferences.Editor)localObject).commit();
-        }
-      }
-    }
   }
   
   public static void b(Activity paramActivity, String paramString1, String paramString2)
@@ -504,18 +468,13 @@ public class QZoneVipInfoManager
     }
   }
   
-  public static boolean b(int paramInt)
-  {
-    return a(paramInt, 13, 13) != 0;
-  }
-  
   public static boolean b(Activity paramActivity, String paramString)
   {
     QLog.d("QZoneVipInfoManager", 1, "onSuperYellowBrandClick");
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    int i = a().a() + 1;
+    int i = a().b() + 1;
     String str1;
     String str2;
     if (paramString.equals(BaseApplicationImpl.getApplication().getRuntime().getAccount()))
@@ -552,7 +511,7 @@ public class QZoneVipInfoManager
   
   public static int c(int paramInt)
   {
-    return a(paramInt, 7, 8);
+    return a(paramInt, 2, 5);
   }
   
   public static int c(int paramInt1, int paramInt2)
@@ -581,16 +540,6 @@ public class QZoneVipInfoManager
     return localStringBuilder.toString();
   }
   
-  public static boolean c(int paramInt)
-  {
-    return a(paramInt, 21, 21) != 0;
-  }
-  
-  public static int d(int paramInt)
-  {
-    return a(paramInt, 9, 12);
-  }
-  
   public static int d(int paramInt1, int paramInt2)
   {
     int i = paramInt1;
@@ -611,12 +560,12 @@ public class QZoneVipInfoManager
   
   public static boolean d(int paramInt)
   {
-    return a(paramInt, 22, 22) != 0;
+    return a(paramInt, 6, 6) != 0;
   }
   
   public static int e(int paramInt)
   {
-    return a(paramInt, 14, 16);
+    return a(paramInt, 7, 8);
   }
   
   public static int e(int paramInt1, int paramInt2)
@@ -637,14 +586,9 @@ public class QZoneVipInfoManager
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public static boolean e(int paramInt)
-  {
-    return a(paramInt, 23, 23) != 0;
-  }
-  
   public static int f(int paramInt)
   {
-    return a(paramInt, 17, 20);
+    return a(paramInt, 9, 12);
   }
   
   public static int f(int paramInt1, int paramInt2)
@@ -665,16 +609,6 @@ public class QZoneVipInfoManager
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public static boolean f(int paramInt)
-  {
-    return a(paramInt, 24, 24) != 0;
-  }
-  
-  public static int g(int paramInt)
-  {
-    return a(paramInt, 26, 29);
-  }
-  
   public static int g(int paramInt1, int paramInt2)
   {
     int i = paramInt1;
@@ -693,14 +627,19 @@ public class QZoneVipInfoManager
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
+  private void g()
+  {
+    a(false);
+  }
+  
   public static boolean g(int paramInt)
   {
-    return a(paramInt, 25, 25) != 0;
+    return a(paramInt, 13, 13) != 0;
   }
   
   public static int h(int paramInt)
   {
-    return a(paramInt, 30, 30);
+    return a(paramInt, 14, 16);
   }
   
   public static int h(int paramInt1, int paramInt2)
@@ -716,34 +655,83 @@ public class QZoneVipInfoManager
     return i;
   }
   
-  public int a()
+  private void h()
   {
-    a();
-    return a(this.jdField_a_of_type_Int);
+    Object localObject = this.c;
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      if (localObject != null)
+      {
+        this.d = true;
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+        if (localAppRuntime != null)
+        {
+          ((SharedPreferences.Editor)localObject).putInt(a(localAppRuntime.getAccount()), this.e);
+          ((SharedPreferences.Editor)localObject).putString(b(localAppRuntime.getAccount()), this.f);
+          ((SharedPreferences.Editor)localObject).putString(c(localAppRuntime.getAccount()), this.g);
+          ((SharedPreferences.Editor)localObject).commit();
+        }
+      }
+    }
   }
   
-  public String a()
+  public static int i(int paramInt)
   {
-    a();
-    return this.b;
+    return a(paramInt, 17, 20);
+  }
+  
+  public static boolean j(int paramInt)
+  {
+    return a(paramInt, 21, 21) != 0;
+  }
+  
+  public static boolean k(int paramInt)
+  {
+    return a(paramInt, 22, 22) != 0;
+  }
+  
+  public static boolean l(int paramInt)
+  {
+    return a(paramInt, 23, 23) != 0;
+  }
+  
+  public static boolean m(int paramInt)
+  {
+    return a(paramInt, 24, 24) != 0;
+  }
+  
+  public static boolean n(int paramInt)
+  {
+    return a(paramInt, 25, 25) != 0;
+  }
+  
+  public static int o(int paramInt)
+  {
+    return a(paramInt, 26, 29);
+  }
+  
+  public static int p(int paramInt)
+  {
+    return a(paramInt, 30, 30);
   }
   
   public void a(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt <= 2))
     {
-      a();
-      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int, paramInt);
-      b();
+      g();
+      this.e = a(this.e, paramInt);
+      h();
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, star_info paramstar_info, combine_diamond_info paramcombine_diamond_info)
   {
     a(true);
-    this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int, paramInt1);
-    this.jdField_a_of_type_Int = b(this.jdField_a_of_type_Int, paramInt2);
-    paramInt1 = this.jdField_a_of_type_Int;
+    this.e = a(this.e, paramInt1);
+    this.e = b(this.e, paramInt2);
+    paramInt1 = this.e;
     boolean bool2 = false;
     boolean bool1;
     if (paramInt3 != 0) {
@@ -751,74 +739,86 @@ public class QZoneVipInfoManager
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Int = a(paramInt1, bool1);
+    this.e = a(paramInt1, bool1);
     if (paramstar_info != null)
     {
-      this.jdField_a_of_type_Int = c(this.jdField_a_of_type_Int, paramstar_info.iStarStatus);
-      this.jdField_a_of_type_Int = d(this.jdField_a_of_type_Int, paramstar_info.iStarLevel);
-      paramInt1 = this.jdField_a_of_type_Int;
+      this.e = c(this.e, paramstar_info.iStarStatus);
+      this.e = d(this.e, paramstar_info.iStarLevel);
+      paramInt1 = this.e;
       if (paramstar_info.isAnnualVip != 0) {
         bool1 = true;
       } else {
         bool1 = false;
       }
-      this.jdField_a_of_type_Int = b(paramInt1, bool1);
-      paramInt1 = this.jdField_a_of_type_Int;
+      this.e = b(paramInt1, bool1);
+      paramInt1 = this.e;
       if (paramstar_info.isHighStarVip != 0) {
         bool1 = true;
       } else {
         bool1 = false;
       }
-      this.jdField_a_of_type_Int = e(paramInt1, bool1);
+      this.e = e(paramInt1, bool1);
     }
     if (paramcombine_diamond_info != null)
     {
-      this.jdField_a_of_type_Int = e(this.jdField_a_of_type_Int, paramcombine_diamond_info.iShowType);
-      this.jdField_a_of_type_Int = f(this.jdField_a_of_type_Int, paramcombine_diamond_info.iVipLevel);
-      paramInt1 = this.jdField_a_of_type_Int;
+      this.e = e(this.e, paramcombine_diamond_info.iShowType);
+      this.e = f(this.e, paramcombine_diamond_info.iVipLevel);
+      paramInt1 = this.e;
       if (paramcombine_diamond_info.isAnnualVip != 0) {
         bool1 = true;
       } else {
         bool1 = false;
       }
-      this.jdField_a_of_type_Int = c(paramInt1, bool1);
-      paramInt1 = this.jdField_a_of_type_Int;
+      this.e = c(paramInt1, bool1);
+      paramInt1 = this.e;
       bool1 = bool2;
       if (paramcombine_diamond_info.isAnnualVipEver != 0) {
         bool1 = true;
       }
-      this.jdField_a_of_type_Int = d(paramInt1, bool1);
+      this.e = d(paramInt1, bool1);
     }
     paramstar_info = new Intent("com.tencent.qq.syncQzoneVipInfoAction");
     paramcombine_diamond_info = new Bundle();
-    paramcombine_diamond_info.putInt("com.tencent.qq.syncQzoneVipInfoStr", this.jdField_a_of_type_Int);
-    paramcombine_diamond_info.putString("com.tencent.qq.syncQzoneVipInfoPersonalized", this.jdField_a_of_type_JavaLangString);
-    paramcombine_diamond_info.putString("com.tencent.qq.syncQzoneVipInfoCustomDiamondUrl", this.b);
+    paramcombine_diamond_info.putInt("com.tencent.qq.syncQzoneVipInfoStr", this.e);
+    paramcombine_diamond_info.putString("com.tencent.qq.syncQzoneVipInfoPersonalized", this.f);
+    paramcombine_diamond_info.putString("com.tencent.qq.syncQzoneVipInfoCustomDiamondUrl", this.g);
     paramstar_info.putExtras(paramcombine_diamond_info);
     BaseApplicationImpl.getContext().sendBroadcast(paramstar_info);
-    b();
-  }
-  
-  public boolean a()
-  {
-    return a() == 2;
+    h();
   }
   
   public int b()
   {
-    a();
-    return b(this.jdField_a_of_type_Int);
+    g();
+    return b(this.e);
   }
   
-  public boolean b()
+  public boolean c()
   {
-    a();
-    return a(this.jdField_a_of_type_Int);
+    return b() == 2;
+  }
+  
+  public int d()
+  {
+    g();
+    return c(this.e);
+  }
+  
+  public boolean e()
+  {
+    g();
+    return d(this.e);
+  }
+  
+  public String f()
+  {
+    g();
+    return this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.QZoneVipInfoManager
  * JD-Core Version:    0.7.0.1
  */

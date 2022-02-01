@@ -19,7 +19,7 @@ class MatchChatMsgListFragment$1
   {
     if (paramBoolean)
     {
-      if ((MatchChatMsgListFragment.a(this.a) != null) && (MatchChatMsgUtil.a(this.a.a)))
+      if ((MatchChatMsgListFragment.a(this.a) != null) && (MatchChatMsgUtil.b(this.a.a)))
       {
         if ((TextUtils.isEmpty(paramCard.declaration)) && (TextUtils.isEmpty(paramCard.voiceUrl)))
         {

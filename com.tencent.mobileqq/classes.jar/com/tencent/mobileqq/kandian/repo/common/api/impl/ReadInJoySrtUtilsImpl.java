@@ -16,17 +16,17 @@ public final class ReadInJoySrtUtilsImpl
   {
     ReadInJoySrtUtils localReadInJoySrtUtils = ReadInJoySrtUtils.a();
     Intrinsics.checkExpressionValueIsNotNull(localReadInJoySrtUtils, "ReadInJoySrtUtils.getInstance()");
-    return localReadInJoySrtUtils.a();
+    return localReadInJoySrtUtils.b();
   }
   
   public boolean judgeHasSrtInfoHandle()
   {
-    return ReadInJoySrtUtils.a().a();
+    return ReadInJoySrtUtils.a().e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.api.impl.ReadInJoySrtUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

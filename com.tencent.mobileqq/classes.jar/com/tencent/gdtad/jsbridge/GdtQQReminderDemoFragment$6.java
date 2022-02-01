@@ -14,9 +14,9 @@ class GdtQQReminderDemoFragment$6
   
   public void onClick(View paramView)
   {
-    GdtQQReminderDemoFragment.a();
+    GdtQQReminderDemoFragment.b();
     String str1 = UUID.randomUUID().toString();
-    String str2 = String.valueOf(GdtQQReminderDemoFragment.b());
+    String str2 = String.valueOf(GdtQQReminderDemoFragment.c());
     long l;
     if (!TextUtils.isEmpty(GdtQQReminderDemoFragment.a(this.a).getText().toString())) {
       l = Long.valueOf(GdtQQReminderDemoFragment.a(this.a).getText().toString()).longValue();
@@ -30,7 +30,7 @@ class GdtQQReminderDemoFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtQQReminderDemoFragment.6
  * JD-Core Version:    0.7.0.1
  */

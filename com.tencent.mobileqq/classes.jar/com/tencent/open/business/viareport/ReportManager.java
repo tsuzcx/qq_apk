@@ -28,26 +28,19 @@ import org.json.JSONObject;
 public class ReportManager
 {
   protected static ReportManager a;
-  protected String a;
-  protected ArrayList<BatchReportInfo> a;
-  protected volatile boolean a;
-  protected ArrayList<BatchReportInfo> b = new ArrayList();
-  
-  protected ReportManager()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  protected String b = "";
+  protected ArrayList<BatchReportInfo> c = new ArrayList();
+  protected ArrayList<BatchReportInfo> d = new ArrayList();
+  protected volatile boolean e = false;
   
   public static ReportManager a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentOpenBusinessViareportReportManager == null) {
-        jdField_a_of_type_ComTencentOpenBusinessViareportReportManager = new ReportManager();
+      if (a == null) {
+        a = new ReportManager();
       }
-      ReportManager localReportManager = jdField_a_of_type_ComTencentOpenBusinessViareportReportManager;
+      ReportManager localReportManager = a;
       return localReportManager;
     }
     finally {}
@@ -55,7 +48,7 @@ public class ReportManager
   
   private void a(String paramString1, String paramString2, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    i10 = ReportConfig.b();
+    i10 = ReportConfig.f();
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("<Viareport> doUploadItems requestRetryCount=");
     ((StringBuilder)localObject1).append(i10);
@@ -95,7 +88,7 @@ public class ReportManager
           i7 = m;
           i2 = k;
           i8 = m;
-          localObject2 = HttpBaseUtil.a(((HttpBaseUtil.Statistic)localObject1).jdField_a_of_type_JavaLangString);
+          localObject2 = HttpBaseUtil.a(((HttpBaseUtil.Statistic)localObject1).a);
           i4 = k;
           i6 = m;
           n = k;
@@ -114,7 +107,7 @@ public class ReportManager
             paramString1.append("<Viareport> doUploadItems error : ");
             paramString1.append(localException2.toString());
             LogUtility.e("viareport", paramString1.toString());
-            this.jdField_a_of_type_Boolean = false;
+            this.e = false;
             return;
           }
           if ((localException2 instanceof HttpBaseUtil.HttpStatusException)) {}
@@ -124,7 +117,7 @@ public class ReportManager
             if (!a(i)) {
               break label561;
             }
-            com.tencent.open.business.cgireport.ReportManager.a().a("mapp_apptrace", l2, l1, l4, i, CommonDataAdapter.a().a(), "1000002", null, paramBoolean2);
+            com.tencent.open.business.cgireport.ReportManager.a().a("mapp_apptrace", l2, l1, l4, i, CommonDataAdapter.a().c(), "1000002", null, paramBoolean2);
           }
           catch (Exception paramString1)
           {
@@ -138,7 +131,7 @@ public class ReportManager
           paramString1.append("<Viareport> doUploadItems error : ");
           paramString1.append(localException2.toString());
           LogUtility.e("viareport", paramString1.toString());
-          this.jdField_a_of_type_Boolean = false;
+          this.e = false;
           return;
           if ((localException2 instanceof IOException))
           {
@@ -183,7 +176,7 @@ public class ReportManager
         paramString2.append("<Viareport> doUploadItems error : ");
         paramString2.append(paramString1.toString());
         LogUtility.e("viareport", paramString2.toString());
-        this.jdField_a_of_type_Boolean = false;
+        this.e = false;
         return;
       }
       catch (JSONException localJSONException1)
@@ -246,7 +239,7 @@ public class ReportManager
       i7 = m;
       i2 = k;
       i8 = m;
-      if (!TextUtils.isEmpty(((HttpBaseUtil.Statistic)localObject1).jdField_a_of_type_JavaLangString)) {
+      if (!TextUtils.isEmpty(((HttpBaseUtil.Statistic)localObject1).a)) {
         break label1384;
       }
       label279:
@@ -260,7 +253,7 @@ public class ReportManager
       i7 = j;
       i2 = i;
       i8 = j;
-      l3 = ((HttpBaseUtil.Statistic)localObject1).jdField_a_of_type_Long;
+      l3 = ((HttpBaseUtil.Statistic)localObject1).b;
       n = i;
       i5 = j;
       i3 = i;
@@ -271,7 +264,7 @@ public class ReportManager
       i8 = j;
       try
       {
-        long l5 = ((HttpBaseUtil.Statistic)localObject1).b;
+        long l5 = ((HttpBaseUtil.Statistic)localObject1).c;
         k = j;
         j = i;
         l1 = l3;
@@ -295,7 +288,7 @@ public class ReportManager
         if (!a(i)) {
           break label884;
         }
-        com.tencent.open.business.cgireport.ReportManager.a().a("mapp_apptrace", l2, l1, l4, i, CommonDataAdapter.a().a(), "1000002", null, paramBoolean2);
+        com.tencent.open.business.cgireport.ReportManager.a().a("mapp_apptrace", l2, l1, l4, i, CommonDataAdapter.a().c(), "1000002", null, paramBoolean2);
       }
       catch (Exception paramString2)
       {
@@ -311,7 +304,7 @@ public class ReportManager
       paramString2.append("<Viareport> doUploadItems error : ");
       paramString2.append(paramString1.toString());
       LogUtility.e("viareport", paramString2.toString());
-      this.jdField_a_of_type_Boolean = false;
+      this.e = false;
       return;
       l4 = 0L;
       l3 = 0L;
@@ -332,7 +325,7 @@ public class ReportManager
         paramString1.append(i11);
         LogUtility.c("viareport", paramString1.toString());
         if (a(i11)) {
-          com.tencent.open.business.cgireport.ReportManager.a().a("mapp_apptrace", l2, l1, l3, i11, CommonDataAdapter.a().a(), "1000002", null, paramBoolean2);
+          com.tencent.open.business.cgireport.ReportManager.a().a("mapp_apptrace", l2, l1, l3, i11, CommonDataAdapter.a().c(), "1000002", null, paramBoolean2);
         }
         if (j == 1)
         {
@@ -343,14 +336,14 @@ public class ReportManager
           LogUtility.b("business_report_debug", "ReportManager doUploadItems Thread request failed");
           if (paramBoolean1)
           {
-            ReportDbHelper.a().a(this.b);
-            ReportDbHelper.a().a(this.jdField_a_of_type_JavaUtilArrayList);
+            ReportDbHelper.a().a(this.d);
+            ReportDbHelper.a().a(this.c);
           }
         }
         if (paramBoolean1)
         {
           LogUtility.b("viareport", " set isUploading = false");
-          this.jdField_a_of_type_Boolean = false;
+          this.e = false;
           if (j != 0) {
             a(paramBoolean2);
           }
@@ -364,18 +357,10 @@ public class ReportManager
   
   private void a(boolean paramBoolean)
   {
-    String str = String.valueOf(CommonDataAdapter.a().a());
+    String str = String.valueOf(CommonDataAdapter.a().c());
     if (a(str)) {
       ThreadManager.executeOnNetWorkThread(new ReportManager.2(this, str, paramBoolean));
     }
-  }
-  
-  protected String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = "https://analy.qq.com/cgi-bin/mapp_apptrace";
-    }
-    return this.jdField_a_of_type_JavaLangString;
   }
   
   protected String a(ArrayList<BatchReportInfo> paramArrayList1, ArrayList<BatchReportInfo> paramArrayList2)
@@ -389,7 +374,7 @@ public class ReportManager
       {
         localObject = (BatchReportInfo)paramArrayList1.next();
         StringBuilder localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append(((BatchReportInfo)localObject).jdField_a_of_type_JavaLangString);
+        localStringBuilder2.append(((BatchReportInfo)localObject).a);
         localStringBuilder2.append("_");
         localStringBuilder2.append(((BatchReportInfo)localObject).b);
         localStringBuilder2.append("_");
@@ -444,7 +429,7 @@ public class ReportManager
       {
         paramArrayList2 = (BatchReportInfo)paramArrayList1.next();
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramArrayList2.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramArrayList2.a);
         ((StringBuilder)localObject).append("_");
         ((StringBuilder)localObject).append(paramArrayList2.b);
         ((StringBuilder)localObject).append("_");
@@ -510,10 +495,10 @@ public class ReportManager
         LogUtility.b("viareport", "database empty");
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.e = true;
     }
     localBundle.putString("uin", paramString);
-    localBundle.putString("platform", CommonDataAdapter.a().g());
+    localBundle.putString("platform", CommonDataAdapter.a().m());
     localBundle.putString("action", "100");
     String str = "";
     if (paramBoolean2) {
@@ -523,7 +508,7 @@ public class ReportManager
     }
     localBundle.putString("imei", paramString);
     localBundle.putString("resolution", MobileInfoUtil.getResolution());
-    localBundle.putString("network", APNUtil.a(CommonDataAdapter.a().a()));
+    localBundle.putString("network", APNUtil.a(CommonDataAdapter.a().b()));
     localBundle.putString("wifimac", MobileInfoUtil.getLocalMacAddress());
     localBundle.putString("mobile_pf", "1");
     localBundle.putString("os_ver", Build.VERSION.RELEASE);
@@ -540,9 +525,9 @@ public class ReportManager
     }
     localBundle.putString("longitude", paramString);
     localBundle.putString("ret_code", "0");
-    localBundle.putString("qua", CommonDataAdapter.a().f());
-    localBundle.putString("qz_ver", CommonDataAdapter.a().c());
-    localBundle.putString("ext", CommonDataAdapter.a().h());
+    localBundle.putString("qua", CommonDataAdapter.a().l());
+    localBundle.putString("qz_ver", CommonDataAdapter.a().g());
+    localBundle.putString("ext", CommonDataAdapter.a().n());
     if (paramBundle != null) {
       localBundle.putAll(paramBundle);
     }
@@ -551,41 +536,12 @@ public class ReportManager
     } else {
       paramString = "GET";
     }
-    a(a(), paramString, localBundle, paramBoolean1, paramBoolean2);
+    a(b(), paramString, localBundle, paramBoolean1, paramBoolean2);
   }
   
   public void a(String paramString, BatchReportInfo paramBatchReportInfo, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
     ThreadManager.executeOnNetWorkThread(new ReportManager.1(this, paramBoolean1, paramBatchReportInfo, paramBundle, paramString, paramBoolean2));
-  }
-  
-  protected boolean a()
-  {
-    try
-    {
-      long l1 = ReportConfig.a();
-      long l2 = System.currentTimeMillis();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("lastReportTime=");
-      localStringBuilder.append(l1);
-      localStringBuilder.append(" currentTime=");
-      localStringBuilder.append(l2);
-      LogUtility.b("viareport", localStringBuilder.toString());
-      long l3 = ReportConfig.b();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("reportTimeInterval=");
-      localStringBuilder.append(l3);
-      LogUtility.b("viareport", localStringBuilder.toString());
-      if (l2 - l1 < l3 * 1000L)
-      {
-        LogUtility.b("business_report_debug", "ReportManager availableForTime = false");
-        return false;
-      }
-      ReportConfig.a(l2);
-      LogUtility.b("business_report_debug", "ReportManager availableForTime = ture");
-      return true;
-    }
-    finally {}
   }
   
   protected boolean a(int paramInt)
@@ -612,12 +568,12 @@ public class ReportManager
   {
     try
     {
-      int i = ReportConfig.a();
+      int i = ReportConfig.d();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("maxCount=");
       localStringBuilder.append(i);
       LogUtility.b("viareport", localStringBuilder.toString());
-      if (ReportDbHelper.a().a(paramString) >= i)
+      if (ReportDbHelper.a().c(paramString) >= i)
       {
         LogUtility.b("business_report_debug", "ReportManager availableForCount = ture");
         return true;
@@ -632,11 +588,11 @@ public class ReportManager
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilArrayList = ReportDbHelper.a().a(paramString);
-      ReportDbHelper.a().a("table_new_data", paramString);
-      this.b = ReportDbHelper.a().b(paramString);
-      ReportDbHelper.a().a("table_old_data", paramString);
-      paramString = a(this.jdField_a_of_type_JavaUtilArrayList, this.b);
+      this.c = ReportDbHelper.a().a(paramString);
+      ReportDbHelper.a().b("table_new_data", paramString);
+      this.d = ReportDbHelper.a().b(paramString);
+      ReportDbHelper.a().b("table_old_data", paramString);
+      paramString = a(this.c, this.d);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(">>>batchInfo:");
       localStringBuilder.append(paramString);
@@ -652,11 +608,19 @@ public class ReportManager
     }
   }
   
+  protected String b()
+  {
+    if (TextUtils.isEmpty(this.b)) {
+      this.b = "https://analy.qq.com/cgi-bin/mapp_apptrace";
+    }
+    return this.b;
+  }
+  
   protected boolean b(String paramString)
   {
     try
     {
-      int i = ReportConfig.a(paramString);
+      int i = ReportConfig.b(paramString);
       paramString = new StringBuilder();
       paramString.append("frequency=");
       paramString.append(i);
@@ -671,10 +635,39 @@ public class ReportManager
     }
     finally {}
   }
+  
+  protected boolean c()
+  {
+    try
+    {
+      long l1 = ReportConfig.c();
+      long l2 = System.currentTimeMillis();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("lastReportTime=");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(" currentTime=");
+      localStringBuilder.append(l2);
+      LogUtility.b("viareport", localStringBuilder.toString());
+      long l3 = ReportConfig.e();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportTimeInterval=");
+      localStringBuilder.append(l3);
+      LogUtility.b("viareport", localStringBuilder.toString());
+      if (l2 - l1 < l3 * 1000L)
+      {
+        LogUtility.b("business_report_debug", "ReportManager availableForTime = false");
+        return false;
+      }
+      ReportConfig.a(l2);
+      LogUtility.b("business_report_debug", "ReportManager availableForTime = ture");
+      return true;
+    }
+    finally {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.viareport.ReportManager
  * JD-Core Version:    0.7.0.1
  */

@@ -19,9 +19,9 @@ class ReadInJoyLottieDrawable$3$1
   public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
     Object localObject = paramLottieImageAsset.getFileName();
-    paramLottieImageAsset = ReadInJoyLottieDrawable.a(this.a.this$0, this.a.a, "images");
+    paramLottieImageAsset = ReadInJoyLottieDrawable.a(this.a.this$0, this.a.b, "images");
     if (paramLottieImageAsset == null) {
-      paramLottieImageAsset = this.a.a[0];
+      paramLottieImageAsset = this.a.b[0];
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramLottieImageAsset.getAbsolutePath());
@@ -62,7 +62,7 @@ class ReadInJoyLottieDrawable$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.ReadInJoyLottieDrawable.3.1
  * JD-Core Version:    0.7.0.1
  */

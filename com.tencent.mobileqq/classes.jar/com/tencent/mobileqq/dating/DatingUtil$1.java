@@ -16,15 +16,15 @@ final class DatingUtil$1
   public void run()
   {
     Object localObject = new DatingUtil.1.1(this);
-    localObject = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_JavaLangString, 0, 2131719788, (DialogInterface.OnClickListener)localObject, null);
+    localObject = DialogUtil.a(this.a, 230, null, this.b, 0, 2131917392, (DialogInterface.OnClickListener)localObject, null);
     if (localObject != null)
     {
-      ((TextView)((QQCustomDialog)localObject).findViewById(2131365621)).setVisibility(8);
-      TextView localTextView = (TextView)((QQCustomDialog)localObject).findViewById(2131365644);
+      ((TextView)((QQCustomDialog)localObject).findViewById(2131431852)).setVisibility(8);
+      TextView localTextView = (TextView)((QQCustomDialog)localObject).findViewById(2131431876);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 17;
       localTextView.setLayoutParams(localLayoutParams);
-      localTextView.setMinHeight(DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 35.0F));
+      localTextView.setMinHeight(DisplayUtil.a(this.a, 35.0F));
       localTextView.setGravity(17);
       ((QQCustomDialog)localObject).show();
     }
@@ -32,7 +32,7 @@ final class DatingUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingUtil.1
  * JD-Core Version:    0.7.0.1
  */

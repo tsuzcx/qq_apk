@@ -15,19 +15,19 @@ class ProfileCardExtendFriendView$4
   
   public void onClick(@NonNull View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCard.authState == 1L)
+    if (this.a.authState == 1L)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandProfilecardProfileCardExtendFriendView.getContext(), 0, 1913061378, 1).a();
+      QQToast.makeText(this.b.getContext(), 0, 1913061381, 1).show();
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataCard.authState == 0L) || (this.jdField_a_of_type_ComTencentMobileqqDataCard.authState == 3L)) {
-      CampusHelper.a((Activity)ProfileCardExtendFriendView.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandProfilecardProfileCardExtendFriendView), this.jdField_a_of_type_ComTencentMobileqqDataCard.idx, this.jdField_a_of_type_ComTencentMobileqqDataCard.schoolName, this.jdField_a_of_type_ComTencentMobileqqDataCard.schoolId);
+    if ((this.a.authState == 0L) || (this.a.authState == 3L)) {
+      CampusHelper.a((Activity)ProfileCardExtendFriendView.i(this.b), this.a.idx, this.a.schoolName, this.a.schoolId);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.profilecard.ProfileCardExtendFriendView.4
  * JD-Core Version:    0.7.0.1
  */

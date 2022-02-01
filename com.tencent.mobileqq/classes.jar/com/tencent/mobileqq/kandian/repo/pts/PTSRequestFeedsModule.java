@@ -69,8 +69,8 @@ public class PTSRequestFeedsModule
   
   public void requestFeeds(long paramLong1, long paramLong2, boolean paramBoolean, long paramLong3, long paramLong4)
   {
-    Object localObject3 = (QQAppInterface)RIJQQAppInterfaceUtil.a();
-    Object localObject1 = RIJKanDianRedDotUtils.a(((QQAppInterface)localObject3).getMessageFacade().b(AppConstants.KANDIAN_DAILY_UIN, 1008), "kandian_daily_red_pnt");
+    Object localObject3 = (QQAppInterface)RIJQQAppInterfaceUtil.e();
+    Object localObject1 = RIJKanDianRedDotUtils.a(((QQAppInterface)localObject3).getMessageFacade().r(AppConstants.KANDIAN_DAILY_UIN, 1008), "kandian_daily_red_pnt");
     paramLong4 = 0L;
     Object localObject2 = null;
     int i;
@@ -115,7 +115,7 @@ public class PTSRequestFeedsModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.pts.PTSRequestFeedsModule
  * JD-Core Version:    0.7.0.1
  */

@@ -20,69 +20,69 @@ public class ChatHistoryDatalineFileAdapter
     this.a = paramQQAppInterface;
   }
   
-  private DataLineMsgRecord a(FileManagerEntity paramFileManagerEntity)
+  private boolean a(FileManagerEntity paramFileManagerEntity)
+  {
+    return paramFileManagerEntity.peerType == 6000;
+  }
+  
+  private DataLineMsgRecord b(FileManagerEntity paramFileManagerEntity)
   {
     int i = DataLineMsgRecord.getDevTypeBySeId(paramFileManagerEntity.datalineEntitySessionId);
-    DatalineMessageManager localDatalineMessageManager = this.a.getMessageFacade().a(i);
+    DatalineMessageManager localDatalineMessageManager = this.a.getMessageFacade().d(i);
     if (localDatalineMessageManager == null) {
       return null;
     }
     return localDatalineMessageManager.a(paramFileManagerEntity.datalineEntitySessionId);
   }
   
-  private boolean a(FileManagerEntity paramFileManagerEntity)
-  {
-    return paramFileManagerEntity.peerType == 6000;
-  }
-  
   protected void a(ChatHistoryC2CFileAdapter.FileItemHolder paramFileItemHolder, FileManagerEntity paramFileManagerEntity)
   {
     if (a(paramFileManagerEntity))
     {
-      paramFileManagerEntity = a(paramFileManagerEntity);
+      paramFileManagerEntity = b(paramFileManagerEntity);
       if (paramFileManagerEntity == null)
       {
-        paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-        paramFileItemHolder.jdField_a_of_type_Int = 0;
+        paramFileItemHolder.b.setVisibility(8);
+        paramFileItemHolder.c = 0;
         return;
       }
       if (paramFileManagerEntity.fileMsgStatus == 2L)
       {
-        paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-        paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-        paramFileItemHolder.jdField_a_of_type_Int = 3;
+        paramFileItemHolder.b.setState(2);
+        paramFileItemHolder.b.setVisibility(0);
+        paramFileItemHolder.c = 3;
         return;
       }
       if (paramFileManagerEntity.fileMsgStatus == 1L)
       {
-        paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-        paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-        paramFileItemHolder.jdField_a_of_type_Int = 1;
+        paramFileItemHolder.b.setState(2);
+        paramFileItemHolder.b.setVisibility(0);
+        paramFileItemHolder.c = 1;
         return;
       }
       if (paramFileManagerEntity.bIsTransfering)
       {
-        paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(1);
-        paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setProgress((int)(paramFileManagerEntity.progress * 100.0F));
-        paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-        paramFileItemHolder.jdField_a_of_type_Int = 2;
+        paramFileItemHolder.b.setState(1);
+        paramFileItemHolder.b.setProgress((int)(paramFileManagerEntity.progress * 100.0F));
+        paramFileItemHolder.b.setVisibility(0);
+        paramFileItemHolder.c = 2;
         return;
       }
       if ((paramFileManagerEntity.progress == 1.0F) && (paramFileManagerEntity.issuc))
       {
         if (FileUtils.fileExistsAndNotEmpty(paramFileManagerEntity.path))
         {
-          paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-          paramFileItemHolder.jdField_a_of_type_Int = 0;
+          paramFileItemHolder.b.setVisibility(8);
+          paramFileItemHolder.c = 0;
           return;
         }
-        paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-        paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-        paramFileItemHolder.jdField_a_of_type_Int = 1;
+        paramFileItemHolder.b.setState(2);
+        paramFileItemHolder.b.setVisibility(0);
+        paramFileItemHolder.c = 1;
         return;
       }
-      paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-      paramFileItemHolder.jdField_a_of_type_Int = 0;
+      paramFileItemHolder.b.setVisibility(8);
+      paramFileItemHolder.c = 0;
       return;
     }
     super.a(paramFileItemHolder, paramFileManagerEntity);
@@ -90,7 +90,7 @@ public class ChatHistoryDatalineFileAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.adapter.ChatHistoryDatalineFileAdapter
  * JD-Core Version:    0.7.0.1
  */

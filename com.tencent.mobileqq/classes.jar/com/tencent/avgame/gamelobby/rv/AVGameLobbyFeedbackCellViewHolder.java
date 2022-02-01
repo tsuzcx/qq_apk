@@ -8,13 +8,13 @@ import com.tencent.avgame.gamelobby.data.AVGameLobbyFeedbackContentInfo;
 public class AVGameLobbyFeedbackCellViewHolder
   extends BaseViewHolder<AVGameLobbyFeedbackContentInfo>
 {
-  private TextView a;
+  private TextView d;
   
   public AVGameLobbyFeedbackCellViewHolder(@NonNull View paramView)
   {
     super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131366746));
-    a(this.a);
+    this.d = ((TextView)paramView.findViewById(2131433068));
+    a(this.d);
   }
   
   public void a(ViewHolderContext paramViewHolderContext, AVGameLobbyFeedbackContentInfo paramAVGameLobbyFeedbackContentInfo, int paramInt)

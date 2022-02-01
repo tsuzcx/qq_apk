@@ -44,7 +44,7 @@ public class TroopAnnouncementDecoder
       if (!paramArrayOfByte.msg_group_bulletin.has()) {
         break label292;
       }
-      MessageCache.a();
+      MessageCache.c();
       localObject1 = paramArrayOfByte.msg_group_bulletin.rpt_msg_content.get();
       new ArrayList();
       paramArrayOfByte = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
@@ -56,7 +56,7 @@ public class TroopAnnouncementDecoder
         String str = ((Submsgtype0x4e.GroupBulletin.Content)localObject2).bytes_feedid.get().toStringUtf8();
         int j = ((Submsgtype0x4e.GroupBulletin.Content)localObject2).uint32_time.get();
         localObject2 = (ITroopAnnouncementHandler)paramQQAppInterface.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopAnnouncementHandlerName());
-        if (((ITroopAnnouncementHandler)localObject2).a(str))
+        if (((ITroopAnnouncementHandler)localObject2).b(str))
         {
           if (QLog.isColorLevel()) {
             QLog.d("TroopNotificationHelper", 2, "notice is loading");
@@ -92,13 +92,13 @@ public class TroopAnnouncementDecoder
       QLog.d("TroopNotificationHelper", 2, "get notice from decodeC2CMsgPkg_MsgType0x210");
     }
     paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
-    a(paramMessageHandler.a, paramMsgType0x210);
-    MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.a());
+    a(paramMessageHandler.n, paramMsgType0x210);
+    MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.TroopAnnouncementDecoder
  * JD-Core Version:    0.7.0.1
  */

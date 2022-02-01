@@ -18,30 +18,30 @@ public final class VasApngFactoryImpl$getApngURLDrawable$listenerProxy$1
   public void onLoadCanceled(@NotNull URLDrawable paramURLDrawable)
   {
     Intrinsics.checkParameterIsNotNull(paramURLDrawable, "d");
-    VasApngFactoryImpl.access$doOnMainThread(this.jdField_a_of_type_ComTencentMobileqqVasApngApiImplVasApngFactoryImpl, (Function0)new VasApngFactoryImpl.getApngURLDrawable.listenerProxy.1.onLoadCanceled.1(this, paramURLDrawable));
+    VasApngFactoryImpl.access$doOnMainThread(this.a, (Function0)new VasApngFactoryImpl.getApngURLDrawable.listenerProxy.1.onLoadCanceled.1(this, paramURLDrawable));
   }
   
   public void onLoadFialed(@NotNull URLDrawable paramURLDrawable, @Nullable Throwable paramThrowable)
   {
     Intrinsics.checkParameterIsNotNull(paramURLDrawable, "d");
-    VasApngFactoryImpl.access$doOnMainThread(this.jdField_a_of_type_ComTencentMobileqqVasApngApiImplVasApngFactoryImpl, (Function0)new VasApngFactoryImpl.getApngURLDrawable.listenerProxy.1.onLoadFialed.1(this, paramURLDrawable, paramThrowable));
+    VasApngFactoryImpl.access$doOnMainThread(this.a, (Function0)new VasApngFactoryImpl.getApngURLDrawable.listenerProxy.1.onLoadFialed.1(this, paramURLDrawable, paramThrowable));
   }
   
   public void onLoadProgressed(@NotNull URLDrawable paramURLDrawable, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramURLDrawable, "d");
-    VasApngFactoryImpl.access$doOnMainThread(this.jdField_a_of_type_ComTencentMobileqqVasApngApiImplVasApngFactoryImpl, (Function0)new VasApngFactoryImpl.getApngURLDrawable.listenerProxy.1.onLoadProgressed.1(this, paramURLDrawable, paramInt));
+    VasApngFactoryImpl.access$doOnMainThread(this.a, (Function0)new VasApngFactoryImpl.getApngURLDrawable.listenerProxy.1.onLoadProgressed.1(this, paramURLDrawable, paramInt));
   }
   
   public void onLoadSuccessed(@NotNull URLDrawable paramURLDrawable)
   {
     Intrinsics.checkParameterIsNotNull(paramURLDrawable, "d");
-    VasApngFactoryImpl.access$doOnMainThread(this.jdField_a_of_type_ComTencentMobileqqVasApngApiImplVasApngFactoryImpl, (Function0)new VasApngFactoryImpl.getApngURLDrawable.listenerProxy.1.onLoadSuccessed.1(this, paramURLDrawable));
+    VasApngFactoryImpl.access$doOnMainThread(this.a, (Function0)new VasApngFactoryImpl.getApngURLDrawable.listenerProxy.1.onLoadSuccessed.1(this, paramURLDrawable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.apng.api.impl.VasApngFactoryImpl.getApngURLDrawable.listenerProxy.1
  * JD-Core Version:    0.7.0.1
  */

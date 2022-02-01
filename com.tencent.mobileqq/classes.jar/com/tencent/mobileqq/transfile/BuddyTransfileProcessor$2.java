@@ -14,7 +14,7 @@ class BuddyTransfileProcessor$2
   public void run()
   {
     FileMsg localFileMsg;
-    if ((StreamDataManager.b(this.this$0.file.filePath) != 0) && (!this.this$0.setPttRecordFinishTime))
+    if ((StreamDataManager.g(this.this$0.file.filePath) != 0) && (!this.this$0.setPttRecordFinishTime))
     {
       localFileMsg = this.this$0.file;
       ProcessorReport localProcessorReport = this.this$0.mProcessorReport;
@@ -27,13 +27,13 @@ class BuddyTransfileProcessor$2
     if (!this.val$isresend)
     {
       localFileMsg = this.this$0.file;
-      localFileMsg.transferedSize += StreamDataManager.a(this.this$0.file.filePath, this.val$shPackSeq);
+      localFileMsg.transferedSize += StreamDataManager.d(this.this$0.file.filePath, this.val$shPackSeq);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BuddyTransfileProcessor.2
  * JD-Core Version:    0.7.0.1
  */

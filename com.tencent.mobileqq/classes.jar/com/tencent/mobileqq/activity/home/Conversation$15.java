@@ -1,25 +1,20 @@
 package com.tencent.mobileqq.activity.home;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.startup.step.SetSplash;
 
 class Conversation$15
-  implements View.OnClickListener
+  implements Runnable
 {
   Conversation$15(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.b.performClick();
-    EventCollector.getInstance().onViewClicked(paramView);
+    SetSplash.a(this.this$0.d(2131449329), new Conversation.15.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.15
  * JD-Core Version:    0.7.0.1
  */

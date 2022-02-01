@@ -8,52 +8,28 @@ import com.tencent.qphone.base.util.QLog;
 
 public class QavWrapper
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  IAVServiceForQQ jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ = null;
-  QavWrapper.OnReadyListener jdField_a_of_type_ComTencentAvServiceQavWrapper$OnReadyListener = null;
-  QavWrapper.QavServiceConnection jdField_a_of_type_ComTencentAvServiceQavWrapper$QavServiceConnection = new QavWrapper.QavServiceConnection(this);
+  IAVServiceForQQ a = null;
+  Context b = null;
+  QavWrapper.OnReadyListener c = null;
+  QavWrapper.QavServiceConnection d = new QavWrapper.QavServiceConnection(this);
   
   public QavWrapper(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public AVPbInfo a(byte[] paramArrayOfByte)
-  {
-    IAVServiceForQQ localIAVServiceForQQ = this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ;
-    if (localIAVServiceForQQ == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-      return null;
-    }
-    try
-    {
-      paramArrayOfByte = localIAVServiceForQQ.a(paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (RemoteException paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "processQCallPush RemoteException", paramArrayOfByte);
-      }
-    }
-    return null;
+    this.b = paramContext;
   }
   
   public void a()
   {
-    b(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentAvServiceQavWrapper$OnReadyListener = null;
+    b(this.b);
+    this.c = null;
   }
   
   public void a(Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ == null)
+    if (this.a == null)
     {
       Intent localIntent = new Intent(paramContext, AVServiceForQQ.class);
-      boolean bool = paramContext.getApplicationContext().bindService(localIntent, this.jdField_a_of_type_ComTencentAvServiceQavWrapper$QavServiceConnection, 1);
+      boolean bool = paramContext.getApplicationContext().bindService(localIntent, this.d, 1);
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
@@ -66,13 +42,13 @@ public class QavWrapper
   
   public void a(QavWrapper.OnReadyListener paramOnReadyListener)
   {
-    this.jdField_a_of_type_ComTencentAvServiceQavWrapper$OnReadyListener = paramOnReadyListener;
-    a(this.jdField_a_of_type_AndroidContentContext);
+    this.c = paramOnReadyListener;
+    a(this.b);
   }
   
   public void a(String paramString)
   {
-    IAVServiceForQQ localIAVServiceForQQ = this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ;
+    IAVServiceForQQ localIAVServiceForQQ = this.a;
     if (localIAVServiceForQQ == null)
     {
       if (QLog.isColorLevel()) {
@@ -95,7 +71,7 @@ public class QavWrapper
   
   public void a(String paramString, Bitmap paramBitmap)
   {
-    IAVServiceForQQ localIAVServiceForQQ = this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ;
+    IAVServiceForQQ localIAVServiceForQQ = this.a;
     if (localIAVServiceForQQ == null)
     {
       if (QLog.isColorLevel()) {
@@ -118,7 +94,7 @@ public class QavWrapper
   
   public void a(byte[] paramArrayOfByte)
   {
-    IAVServiceForQQ localIAVServiceForQQ = this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ;
+    IAVServiceForQQ localIAVServiceForQQ = this.a;
     if (localIAVServiceForQQ == null)
     {
       if (QLog.isColorLevel()) {
@@ -141,13 +117,13 @@ public class QavWrapper
   
   public void b(Context paramContext)
   {
-    paramContext.getApplicationContext().unbindService(this.jdField_a_of_type_ComTencentAvServiceQavWrapper$QavServiceConnection);
-    this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ = null;
+    paramContext.getApplicationContext().unbindService(this.d);
+    this.a = null;
   }
   
   public void b(byte[] paramArrayOfByte)
   {
-    IAVServiceForQQ localIAVServiceForQQ = this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ;
+    IAVServiceForQQ localIAVServiceForQQ = this.a;
     if (localIAVServiceForQQ == null)
     {
       if (QLog.isColorLevel()) {
@@ -166,6 +142,30 @@ public class QavWrapper
         QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
       }
     }
+  }
+  
+  public AVPbInfo c(byte[] paramArrayOfByte)
+  {
+    IAVServiceForQQ localIAVServiceForQQ = this.a;
+    if (localIAVServiceForQQ == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      }
+      return null;
+    }
+    try
+    {
+      paramArrayOfByte = localIAVServiceForQQ.d(paramArrayOfByte);
+      return paramArrayOfByte;
+    }
+    catch (RemoteException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavWrapper", 2, "processQCallPush RemoteException", paramArrayOfByte);
+      }
+    }
+    return null;
   }
 }
 

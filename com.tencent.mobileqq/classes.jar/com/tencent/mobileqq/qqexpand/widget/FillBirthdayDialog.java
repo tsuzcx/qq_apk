@@ -26,24 +26,19 @@ import org.jetbrains.annotations.Nullable;
 public final class FillBirthdayDialog
   extends DialogFromBottom
 {
-  public static final FillBirthdayDialog.Companion a;
-  private int jdField_a_of_type_Int;
-  private BirthdayPickHelper jdField_a_of_type_ComTencentMobileqqActivityBirthdayPickHelper;
-  private FillBirthdayDialog.OnConfirmListener jdField_a_of_type_ComTencentMobileqqQqexpandWidgetFillBirthdayDialog$OnConfirmListener;
-  private int b;
+  public static final FillBirthdayDialog.Companion a = new FillBirthdayDialog.Companion(null);
+  private BirthdayPickHelper b;
   private int c;
   private int d;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqQqexpandWidgetFillBirthdayDialog$Companion = new FillBirthdayDialog.Companion(null);
-  }
+  private int e;
+  private int f;
+  private FillBirthdayDialog.OnConfirmListener g;
   
   public FillBirthdayDialog(@NotNull Context paramContext, int paramInt, @Nullable FillBirthdayDialog.OnConfirmListener paramOnConfirmListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetFillBirthdayDialog$OnConfirmListener = paramOnConfirmListener;
-    this.d = paramInt;
+    this.g = paramOnConfirmListener;
+    this.f = paramInt;
     a(paramContext, paramInt);
   }
   
@@ -53,30 +48,30 @@ public final class FillBirthdayDialog
     if (localObject1 != null)
     {
       localObject1 = (LinearLayout)localObject1;
-      this.jdField_a_of_type_ComTencentMobileqqActivityBirthdayPickHelper = new BirthdayPickHelper(paramContext, paramInt, true);
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityBirthdayPickHelper;
+      this.b = new BirthdayPickHelper(paramContext, paramInt, true);
+      Object localObject2 = this.b;
       if (localObject2 == null) {
         Intrinsics.throwNpe();
       }
       ((BirthdayPickHelper)localObject2).a((BirthdayPickHelper.BirthdayChangeListener)new FillBirthdayDialog.init.1(this));
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityBirthdayPickHelper;
+      localObject2 = this.b;
       if (localObject2 == null) {
         Intrinsics.throwNpe();
       }
       localObject2 = ((BirthdayPickHelper)localObject2).a();
-      ((IphonePickerView)localObject2).setBackgroundColor(paramContext.getResources().getColor(1912733696));
+      ((IphonePickerView)localObject2).setBackgroundColor(paramContext.getResources().getColor(1912733702));
       ((LinearLayout)localObject1).addView((View)localObject2, 2);
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "pickerView");
       paramContext = ((IphonePickerView)localObject2).getLayoutParams();
       if (paramContext != null)
       {
         paramContext = (LinearLayout.LayoutParams)paramContext;
-        paramContext.topMargin = ViewUtils.b(-2.0F);
+        paramContext.topMargin = ViewUtils.dpToPx(-2.0F);
         ((IphonePickerView)localObject2).setLayoutParams((ViewGroup.LayoutParams)paramContext);
         setContentView((View)localObject1);
-        ((ImageView)((LinearLayout)localObject1).findViewById(1912930304)).setOnClickListener((View.OnClickListener)new FillBirthdayDialog.init.2(this));
+        ((ImageView)((LinearLayout)localObject1).findViewById(1912930308)).setOnClickListener((View.OnClickListener)new FillBirthdayDialog.init.2(this));
         setOnCancelListener((DialogInterface.OnCancelListener)new FillBirthdayDialog.init.3(this));
-        ((Button)((LinearLayout)localObject1).findViewById(1912930309)).setOnClickListener((View.OnClickListener)new FillBirthdayDialog.init.4(this));
+        ((Button)((LinearLayout)localObject1).findViewById(1912930322)).setOnClickListener((View.OnClickListener)new FillBirthdayDialog.init.4(this));
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
@@ -86,7 +81,7 @@ public final class FillBirthdayDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.FillBirthdayDialog
  * JD-Core Version:    0.7.0.1
  */

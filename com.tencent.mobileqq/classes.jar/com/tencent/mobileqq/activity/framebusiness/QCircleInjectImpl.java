@@ -1,30 +1,39 @@
 package com.tencent.mobileqq.activity.framebusiness;
 
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.PopupWindow;
 import android.widget.TabWidget;
 import android.widget.TextView;
+import com.tencent.biz.richframework.delegate.impl.RFApplication;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.mobileqq.activity.home.ITabFrameController;
 import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.activity.home.impl.FrameInfoBean;
+import com.tencent.mobileqq.activity.home.impl.FrameInitBean;
 import com.tencent.mobileqq.activity.home.impl.TabFrameControllerImpl;
 import com.tencent.mobileqq.activity.qcircle.QCircleFrame;
 import com.tencent.mobileqq.activity.qcircle.QCircleThirdTabConfig.INotifyTabRefresh;
+import com.tencent.mobileqq.activity.qcircle.QCircleThirdTabConfig.QCircleTabBucketRequest;
+import com.tencent.mobileqq.activity.qcircle.utils.QCircleThemeUtils;
 import com.tencent.mobileqq.app.Frame;
 import com.tencent.mobileqq.app.FrameFragment;
 import com.tencent.mobileqq.app.FrameFragment.DragViewTouchListener;
 import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.auto.engine.lib.ASInject;
 import com.tencent.mobileqq.qcircle.api.IQCircleConfigApi;
 import com.tencent.mobileqq.qcircle.api.event.QCircleFrameEvent;
-import com.tencent.mobileqq.qcircle.api.event.QCircleTabConfigChangeEvent;
+import com.tencent.mobileqq.qcircle.api.global.QCircleHostGlobalInfo;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.redtouch.RedTouchTab;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
@@ -42,90 +51,88 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
 public class QCircleInjectImpl
   extends BaseFrameBusiness
   implements SimpleEventReceiver
 {
-  private static final int jdField_a_of_type_Int = ScreenUtil.dip2px(170.0F);
-  private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static WeakReference<FrameFragment> jdField_a_of_type_JavaLangRefWeakReference;
-  private static final int jdField_b_of_type_Int = ScreenUtil.dip2px(42.0F);
-  private static WeakReference<FrameFragment> jdField_b_of_type_JavaLangRefWeakReference;
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private boolean jdField_a_of_type_Boolean;
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { "1000", "1103", "2971", "2921", "3064", "3063", "3066", "3065", "3067", "3491", "2920" };
-  private Runnable jdField_b_of_type_JavaLangRunnable;
-  private boolean jdField_b_of_type_Boolean;
-  private Runnable c;
+  private static final int a = ScreenUtil.dip2px(42.0F);
+  private static WeakReference<FrameFragment> b;
+  private static WeakReference<FrameFragment> c;
+  private static QCircleThemeUtils d = new QCircleThemeUtils();
+  private static Runnable e;
+  private static PopupWindow h;
+  private static Runnable i;
+  private static Runnable j;
+  private static int k = 0;
+  private static FrameInitBean l;
+  private boolean f;
+  private final String[] g = { "1000", "1103", "2971", "2921", "3064", "3063", "3066", "3065", "3067", "3491", "2920" };
   
   public static QCircleThirdTabConfig.INotifyTabRefresh a(MainFragment paramMainFragment)
   {
-    if (paramMainFragment.jdField_a_of_type_ComTencentMobileqqActivityQcircleQCircleThirdTabConfig$INotifyTabRefresh == null)
+    if (paramMainFragment.d == null)
     {
       QLog.d("QCircleThirdTabConfig", 1, "inject listener");
-      jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramMainFragment);
-      paramMainFragment.jdField_a_of_type_ComTencentMobileqqActivityQcircleQCircleThirdTabConfig$INotifyTabRefresh = new QCircleInjectImpl.7();
+      c = new WeakReference(paramMainFragment);
+      paramMainFragment.d = new QCircleInjectImpl.10();
     }
-    return paramMainFragment.jdField_a_of_type_ComTencentMobileqqActivityQcircleQCircleThirdTabConfig$INotifyTabRefresh;
+    return paramMainFragment.d;
   }
   
-  public static QzoneConfig.QzoneConfigChangeListener a(FrameFragment paramFrameFragment)
+  public static void a(TabFrameControllerImpl paramTabFrameControllerImpl, FrameFragment paramFrameFragment, FrameInitBean paramFrameInitBean)
   {
-    MainFragment localMainFragment = (MainFragment)paramFrameFragment;
-    if (localMainFragment.jdField_a_of_type_CommonConfigServiceQzoneConfig$QzoneConfigChangeListener == null) {
-      localMainFragment.jdField_a_of_type_CommonConfigServiceQzoneConfig$QzoneConfigChangeListener = new QCircleInjectImpl.6(paramFrameFragment);
-    }
-    return localMainFragment.jdField_a_of_type_CommonConfigServiceQzoneConfig$QzoneConfigChangeListener;
-  }
-  
-  public static void a(TabFrameControllerImpl paramTabFrameControllerImpl, FrameFragment paramFrameFragment)
-  {
+    l = paramFrameInitBean;
+    QCircleThemeUtils.a(paramFrameInitBean);
+    n(paramFrameFragment);
+    k();
+    j();
     QLog.i("TabFrameControllerImpl", 1, "initQCircleTab enter");
-    if (((MainFragment)paramFrameFragment).jdField_a_of_type_CommonConfigServiceQzoneConfig$QzoneConfigChangeListener == null) {
-      QzoneConfig.getInstance().addListener(a(paramFrameFragment));
+    if (((MainFragment)paramFrameFragment).i == null) {
+      QzoneConfig.getInstance().addListener(i(paramFrameFragment));
     }
-    if (QzoneConfig.isShowQQCircleMainTabEntrance(StudyModeManager.a()))
+    if (paramFrameInitBean.b())
     {
-      if (paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[8] == null)
+      if (paramFrameFragment.z[8] == null)
       {
-        localObject1 = paramTabFrameControllerImpl.generateTabItem(-1, 2130850758, -1, 2130850759, 2131697851, 17, 0);
-        if (localObject1 == null)
+        paramFrameInitBean = paramTabFrameControllerImpl.generateTabItem(-1, 2130852578, -1, 2130852580, 2131895628, 17, 8);
+        if (paramFrameInitBean == null)
         {
           QLog.e("TabFrameControllerImpl", 1, "initQCircleTab qcircleTab is generate null");
           return;
         }
-        ((View)localObject1).setId(23);
-        ((View)localObject1).setOnClickListener(new QCircleInjectImpl.4(paramFrameFragment));
-        paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[8] = new RedTouchTab(paramFrameFragment.a(), (View)localObject1).b(49).e(3).a(true).c(5).a();
-        ((View)localObject1).setContentDescription(paramFrameFragment.getResources().getString(2131697851));
+        paramFrameInitBean.setId(23);
+        paramFrameInitBean.setOnClickListener(new QCircleInjectImpl.4(paramFrameFragment));
+        paramFrameFragment.z[8] = new RedTouchTab(paramFrameFragment.C(), paramFrameInitBean).c(49).c(3.0F).a(true).d(5).a();
+        paramFrameInitBean.setContentDescription(paramFrameFragment.getResources().getString(2131895628));
       }
       QLog.i("TabFrameControllerImpl", 1, "initQCircleTab mTabs[8] is not null");
-      paramFrameFragment.jdField_a_of_type_JavaUtilHashMap.put(FrameControllerUtil.g, paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[8]);
-      Object localObject1 = paramFrameFragment.jdField_a_of_type_JavaUtilHashMap;
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(FrameControllerUtil.g);
-      ((StringBuilder)localObject2).append("_num");
-      ((HashMap)localObject1).put(((StringBuilder)localObject2).toString(), paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[8].findViewById(2131380161));
-      localObject1 = (TabDragAnimationView)paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[8].findViewById(2131378232);
-      localObject2 = (TextView)paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[8].findViewById(2131379917);
-      if ((localObject1 != null) && (localObject2 != null))
+      paramFrameFragment.G.put(FrameControllerUtil.r, paramFrameFragment.z[8]);
+      paramFrameInitBean = paramFrameFragment.G;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(FrameControllerUtil.r);
+      ((StringBuilder)localObject).append("_num");
+      paramFrameInitBean.put(((StringBuilder)localObject).toString(), paramFrameFragment.z[8].findViewById(2131449076));
+      paramFrameInitBean = (TabDragAnimationView)paramFrameFragment.z[8].findViewById(2131446751);
+      localObject = (TextView)paramFrameFragment.z[8].findViewById(2131448791);
+      if ((paramFrameInitBean != null) && (localObject != null))
       {
-        paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray.put(FrameControllerUtil.j, localObject1);
-        paramFrameFragment.b.put(FrameControllerUtil.j, localObject2);
-        paramTabFrameControllerImpl.addFrame(paramFrameFragment, paramFrameFragment.jdField_a_of_type_AndroidViewView, QCircleFrame.class, paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[8]);
-        QCircleFrame.jdField_a_of_type_Boolean = true;
+        paramFrameFragment.B.put(FrameControllerUtil.j, paramFrameInitBean);
+        paramFrameFragment.C.put(FrameControllerUtil.j, localObject);
+        paramTabFrameControllerImpl.addFrame(paramFrameFragment, paramFrameFragment.W, QCircleFrame.class, paramFrameFragment.z[8]);
+        QCircleFrame.a = true;
         QLog.i("TabFrameControllerImpl", 1, "initQCircleTab addFrame success");
         c(paramFrameFragment, "initQCircleTab");
       }
-      d();
+      l();
       return;
     }
-    paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray.remove(FrameControllerUtil.j);
-    paramFrameFragment.b.remove(FrameControllerUtil.j);
-    paramFrameFragment.a(QCircleFrame.class);
-    QCircleFrame.jdField_a_of_type_Boolean = false;
+    paramFrameFragment.B.remove(FrameControllerUtil.j);
+    paramFrameFragment.C.remove(FrameControllerUtil.j);
+    paramFrameFragment.b(QCircleFrame.class);
+    QCircleFrame.a = false;
     QLog.i("TabFrameControllerImpl", 1, "initQCircleTab remove qcircleTab");
   }
   
@@ -135,7 +142,7 @@ public class QCircleInjectImpl
     localStringBuilder.append("update at ");
     localStringBuilder.append(paramString);
     QLog.i("updateQCircleRedDot", 1, localStringBuilder.toString());
-    if (!QCircleFrame.jdField_a_of_type_Boolean)
+    if (!QCircleFrame.a)
     {
       paramFrameFragment = new StringBuilder();
       paramFrameFragment.append("will not update QCircleRedDot because not show at");
@@ -146,15 +153,21 @@ public class QCircleInjectImpl
     ThreadManagerV2.executeOnSubThread(new QCircleInjectImpl.3(paramFrameFragment));
   }
   
-  public static void c()
+  private static void b(FrameFragment paramFrameFragment, boolean paramBoolean)
   {
-    Object localObject = jdField_b_of_type_JavaLangRefWeakReference;
-    if ((localObject != null) && ((((WeakReference)localObject).get() instanceof MainFragment)))
+    if (paramFrameFragment != null)
     {
-      localObject = (MainFragment)jdField_b_of_type_JavaLangRefWeakReference.get();
-      if (((MainFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityQcircleQCircleThirdTabConfig$INotifyTabRefresh != null) {
-        ((MainFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityQcircleQCircleThirdTabConfig$INotifyTabRefresh.a((MainFragment)localObject);
+      if (paramFrameFragment.C() == null) {
+        return;
       }
+      if (paramBoolean) {
+        return;
+      }
+      paramFrameFragment.C().moveTaskToBack(true);
+      paramFrameFragment = new StringBuilder();
+      paramFrameFragment.append("onFlashShowBackEventCall flashShowFrame:");
+      paramFrameFragment.append(paramBoolean);
+      QLog.d("ASDynamicEngine_back", 1, paramFrameFragment.toString());
     }
   }
   
@@ -163,47 +176,124 @@ public class QCircleInjectImpl
     a(paramFrameFragment, paramString, false);
   }
   
-  private static void d()
+  public static void d() {}
+  
+  public static QzoneConfig.QzoneConfigChangeListener i(FrameFragment paramFrameFragment)
   {
-    if (jdField_a_of_type_JavaLangRunnable != null) {
-      return;
+    MainFragment localMainFragment = (MainFragment)paramFrameFragment;
+    if (localMainFragment.i == null) {
+      localMainFragment.i = new QCircleInjectImpl.9(paramFrameFragment);
     }
-    jdField_a_of_type_JavaLangRunnable = new QCircleInjectImpl.5();
-    ThreadManager.getSubThreadHandler().post(jdField_a_of_type_JavaLangRunnable);
+    return localMainFragment.i;
   }
   
-  private void i(FrameFragment paramFrameFragment)
+  public static int j(FrameFragment paramFrameFragment)
   {
-    if (this.jdField_b_of_type_JavaLangRunnable == null) {
-      this.jdField_b_of_type_JavaLangRunnable = new QCircleInjectImpl.1(this, paramFrameFragment);
+    paramFrameFragment = paramFrameFragment.u;
+    if (paramFrameFragment.size() >= 4)
+    {
+      FrameInitBean localFrameInitBean = l;
+      if (localFrameInitBean != null)
+      {
+        if ((localFrameInitBean.c()) && (paramFrameFragment.size() == 5)) {
+          return 2;
+        }
+        return 1;
+      }
     }
-    if (this.c == null) {
-      this.c = new QCircleInjectImpl.2(this, paramFrameFragment);
+    return 0;
+  }
+  
+  private static void j()
+  {
+    if (RFApplication.getApplication() == null) {
+      return;
     }
-    ThreadManager.getUIHandler().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 500L);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
+    localIntentFilter.addAction("mqq.intent.action.FORCE_LOGOUT");
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
+    localIntentFilter.addAction("mqq.intent.action.LOGOUT");
+    localIntentFilter.addAction("mqq.intent.action.LOGIN");
+    MobileQQ.sMobileQQ.registerReceiver(new QCircleInjectImpl.6(), localIntentFilter);
+  }
+  
+  private static void k()
+  {
+    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null).getCurrentAccountUin();
+    SharedPreferences localSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("QCBT-QCircleInjectImpl", 0);
+    long l1 = Long.parseLong(localSharedPreferences.getString((String)localObject, "0"));
+    long l2 = System.currentTimeMillis();
+    if (l2 - l1 < 86400000L)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("don't need to send request lasRequest:");
+      ((StringBuilder)localObject).append(l1);
+      QLog.i("QCBT-QCircleInjectImpl", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    VSNetworkHelper.getInstance().sendRequest(new QCircleThirdTabConfig.QCircleTabBucketRequest(), new QCircleInjectImpl.7(localSharedPreferences, (String)localObject, l2));
+  }
+  
+  private static void l()
+  {
+    if (e != null) {
+      return;
+    }
+    e = new QCircleInjectImpl.8();
+    ThreadManager.getSubThreadHandler().post(e);
+  }
+  
+  private static void m(FrameFragment paramFrameFragment)
+  {
+    if (i == null) {
+      i = new QCircleInjectImpl.1(paramFrameFragment);
+    }
+    if (j == null) {
+      j = new QCircleInjectImpl.2(paramFrameFragment);
+    }
+    ThreadManager.getUIHandler().postDelayed(i, 4500L);
+  }
+  
+  private static void n(FrameFragment paramFrameFragment)
+  {
+    ASInject.g().setBackEventListener(new QCircleInjectImpl.5(paramFrameFragment));
+  }
+  
+  private static void o(FrameFragment paramFrameFragment)
+  {
+    if (p(paramFrameFragment))
+    {
+      m(paramFrameFragment);
+      QCircleHostGlobalInfo.setHasShowEntranceGuideTips(true);
+    }
+  }
+  
+  private static boolean p(FrameFragment paramFrameFragment)
+  {
+    if (paramFrameFragment != null)
+    {
+      paramFrameFragment = l;
+      if ((paramFrameFragment != null) && (paramFrameFragment.b()) && (((IQCircleConfigApi)QRoute.api(IQCircleConfigApi.class)).isShowQQCircleMainTabEntrance(StudyModeManager.h())) && (QCircleHostGlobalInfo.needShowEntranceGuideTips())) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public void a()
   {
-    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(QCircleFrame.class, FrameControllerUtil.j, FrameControllerUtil.g, 2130850758, 2130850759, 2131697851, 17, 0));
+    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(QCircleFrame.class, FrameControllerUtil.j, FrameControllerUtil.r, 2130852578, 2130852580, 2131895628, 17, 8));
     SimpleEventBus.getInstance().registerReceiver(this);
   }
   
   public void a(FrameFragment paramFrameFragment)
   {
-    paramFrameFragment = (QCircleFrame)paramFrameFragment.a(QCircleFrame.class);
-    if (paramFrameFragment != null) {
-      paramFrameFragment.i();
+    QCircleFrame localQCircleFrame = (QCircleFrame)paramFrameFragment.a(QCircleFrame.class);
+    if (localQCircleFrame != null) {
+      localQCircleFrame.l();
     }
-  }
-  
-  public void a(FrameFragment paramFrameFragment, int paramInt1, int paramInt2)
-  {
-    if ((paramFrameFragment != null) && (paramInt1 == 0) && (this.jdField_b_of_type_Boolean) && (((IQCircleConfigApi)QRoute.api(IQCircleConfigApi.class)).isShowQQCircleMainTabEntrance(StudyModeManager.a())))
-    {
-      i(paramFrameFragment);
-      this.jdField_b_of_type_Boolean = false;
-    }
+    d.a(paramFrameFragment);
   }
   
   public void a(FrameFragment paramFrameFragment, int paramInt1, Frame paramFrame, int paramInt2)
@@ -218,19 +308,21 @@ public class QCircleInjectImpl
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    if (this.jdField_a_of_type_Boolean)
+    this.f = bool;
+    if (this.f)
     {
-      if ((paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost != null) && (paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getTabWidget() != null) && (paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getTabWidget().getHeight() > 0) && (localQCircleFrame != null)) {
-        localQCircleFrame.b(paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getTabWidget().getHeight());
+      if ((paramFrameFragment.s != null) && (paramFrameFragment.s.getTabWidget() != null) && (paramFrameFragment.s.getTabWidget().getHeight() > 0) && (localQCircleFrame != null)) {
+        localQCircleFrame.b(paramFrameFragment.s.getTabWidget().getHeight());
       }
       if (localQCircleFrame != null) {
         localQCircleFrame.a(paramFrame);
       }
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-      return;
+      if (i != null) {
+        ThreadManager.getUIHandler().removeCallbacks(i);
+      }
     }
-    if ((paramFrame instanceof QCircleFrame)) {
+    else if ((paramFrame instanceof QCircleFrame))
+    {
       ((QCircleFrame)paramFrame).a(paramInt2);
     }
   }
@@ -250,28 +342,12 @@ public class QCircleInjectImpl
   
   public void a(AppRuntime paramAppRuntime, SparseArray<TabDragAnimationView> paramSparseArray, int paramInt) {}
   
-  public boolean a()
+  public void a(boolean paramBoolean)
   {
-    String str = ThemeUtil.getCurrentThemeId();
-    if (str != null)
-    {
-      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (str.equals(arrayOfString[i])) {
-          return false;
-        }
-        i += 1;
-      }
+    super.a(paramBoolean);
+    if (paramBoolean) {
+      FrameHelperActivity.b(this.f ^ true);
     }
-    return true;
-  }
-  
-  public boolean a(FrameFragment paramFrameFragment)
-  {
-    return false;
   }
   
   public boolean a(AppRuntime paramAppRuntime)
@@ -281,39 +357,68 @@ public class QCircleInjectImpl
   
   public void b()
   {
-    FrameInfoBean localFrameInfoBean = ((ITabFrameController)QRoute.api(ITabFrameController.class)).getFrameInfoByClazz(QCircleFrame.class);
-    localFrameInfoBean.a(FrameControllerUtil.j);
+    Object localObject = ((ITabFrameController)QRoute.api(ITabFrameController.class)).getFrameInfoByClazz(QCircleFrame.class);
+    ((FrameInfoBean)localObject).a(FrameControllerUtil.j);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("doOnUpdateFrameInfo className: ");
-    localStringBuilder.append(localFrameInfoBean.a().getName());
+    localStringBuilder.append(((FrameInfoBean)localObject).a().getName());
     localStringBuilder.append(" tabIndex: ");
-    localStringBuilder.append(localFrameInfoBean.a());
-    QLog.d("TabFrameControllerImplBusiness", 1, localStringBuilder.toString());
+    localStringBuilder.append(((FrameInfoBean)localObject).c());
+    QLog.d("QCBT-QCircleInjectImpl", 1, localStringBuilder.toString());
+    localObject = b;
+    if (localObject != null) {
+      d.a((FrameFragment)((WeakReference)localObject).get());
+    }
   }
   
   public void b(FrameFragment paramFrameFragment)
   {
-    if (a()) {
-      h(paramFrameFragment);
+    if (c()) {
+      k(paramFrameFragment);
     }
+    d.a(paramFrameFragment);
   }
   
   public void b(FrameFragment paramFrameFragment, String paramString) {}
   
   public void c(FrameFragment paramFrameFragment) {}
   
-  public void d(FrameFragment paramFrameFragment)
+  public boolean c()
   {
-    paramFrameFragment = paramFrameFragment.a(QCircleFrame.class);
-    if (paramFrameFragment != null) {
-      ((QCircleFrame)paramFrameFragment).k();
+    String str = ThemeUtil.getCurrentThemeId();
+    if (str != null)
+    {
+      String[] arrayOfString = this.g;
+      int n = arrayOfString.length;
+      int m = 0;
+      while (m < n)
+      {
+        if (str.equals(arrayOfString[m])) {
+          return false;
+        }
+        m += 1;
+      }
     }
-    if (this.jdField_a_of_type_Boolean) {
-      FrameHelperActivity.b(false);
-    }
+    return true;
   }
   
-  public void e(FrameFragment paramFrameFragment) {}
+  public void d(FrameFragment paramFrameFragment)
+  {
+    Frame localFrame = paramFrameFragment.a(QCircleFrame.class);
+    if (localFrame != null) {
+      ((QCircleFrame)localFrame).o();
+    }
+    if (this.f) {
+      FrameHelperActivity.c(false);
+    }
+    o(paramFrameFragment);
+  }
+  
+  public boolean e(FrameFragment paramFrameFragment)
+  {
+    d.a(paramFrameFragment);
+    return false;
+  }
   
   public void f(FrameFragment paramFrameFragment) {}
   
@@ -323,32 +428,40 @@ public class QCircleInjectImpl
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(QCircleFrameEvent.class);
-    localArrayList.add(QCircleTabConfigChangeEvent.class);
     return localArrayList;
   }
   
   public void h(FrameFragment paramFrameFragment) {}
   
+  public void k(FrameFragment paramFrameFragment) {}
+  
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
     if ((paramSimpleBaseEvent instanceof QCircleFrameEvent))
     {
-      if (((QCircleFrameEvent)paramSimpleBaseEvent).mTriggerSelectedQCircleTab)
+      WeakReference localWeakReference = b;
+      if (localWeakReference != null)
       {
-        paramSimpleBaseEvent = jdField_a_of_type_JavaLangRefWeakReference;
-        if ((paramSimpleBaseEvent != null) && (paramSimpleBaseEvent.get() != null)) {
-          ((FrameFragment)jdField_a_of_type_JavaLangRefWeakReference.get()).a(2);
+        if (localWeakReference.get() == null) {
+          return;
+        }
+        paramSimpleBaseEvent = (QCircleFrameEvent)paramSimpleBaseEvent;
+        if (paramSimpleBaseEvent.mTriggerSelectedQCircleTab)
+        {
+          int m = j((FrameFragment)b.get());
+          ((FrameFragment)b.get()).a(m);
+          return;
+        }
+        if (paramSimpleBaseEvent.mAddTab) {
+          ((ITabFrameController)QRoute.api(ITabFrameController.class)).setFrames((FrameFragment)b.get(), false);
         }
       }
-    }
-    else if (((paramSimpleBaseEvent instanceof QCircleTabConfigChangeEvent)) && (((QCircleTabConfigChangeEvent)paramSimpleBaseEvent).isShowBottom())) {
-      this.jdField_b_of_type_Boolean = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.QCircleInjectImpl
  * JD-Core Version:    0.7.0.1
  */

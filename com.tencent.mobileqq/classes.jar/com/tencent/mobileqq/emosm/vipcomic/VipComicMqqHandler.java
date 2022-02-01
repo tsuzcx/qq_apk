@@ -40,20 +40,12 @@ public class VipComicMqqHandler
   implements IVipComicMqqHandler
 {
   public static final String a = "com.tencent.mobileqq.emosm.vipcomic.VipComicMqqHandler";
-  private AppInterface a;
+  private AppInterface b;
   
   public VipComicMqqHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.a = paramAppInterface;
-  }
-  
-  private int a(byte[] paramArrayOfByte, int paramInt)
-  {
-    if (paramArrayOfByte == null) {
-      return 0;
-    }
-    return ((paramArrayOfByte[paramInt] & 0xFF) << 24) + ((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16) + ((paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8) + ((paramArrayOfByte[(paramInt + 3)] & 0xFF) << 0);
+    this.b = paramAppInterface;
   }
   
   private void a(String paramString)
@@ -63,12 +55,20 @@ public class VipComicMqqHandler
     }
   }
   
+  private int d(byte[] paramArrayOfByte, int paramInt)
+  {
+    if (paramArrayOfByte == null) {
+      return 0;
+    }
+    return ((paramArrayOfByte[paramInt] & 0xFF) << 24) + ((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16) + ((paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8) + ((paramArrayOfByte[(paramInt + 3)] & 0xFF) << 0);
+  }
+  
   public void a()
   {
     ToServiceMsg localToServiceMsg = createToServiceMsg("ComicProtoConvSvr.tunnel");
     localToServiceMsg.extraData.putString("subcmd", "GetMyComicFavorEmotIcons");
     localToServiceMsg.extraData.putLong("requestTime", SystemClock.elapsedRealtime());
-    localToServiceMsg.putWupBuffer(VipComicMqqHandlerConstants.a(VipComicMqqHandlerConstants.a(this.a, "GetMyComicFavorEmotIcons", NetConnInfoCenter.getServerTime(), null), new MqqComicPb.GetMyComicFavorEmotIconsReqBody()));
+    localToServiceMsg.putWupBuffer(VipComicMqqHandlerConstants.a(VipComicMqqHandlerConstants.a(this.b, "GetMyComicFavorEmotIcons", NetConnInfoCenter.getServerTime(), null), new MqqComicPb.GetMyComicFavorEmotIconsReqBody()));
     sendPbReq(localToServiceMsg);
   }
   
@@ -78,8 +78,8 @@ public class VipComicMqqHandler
     try
     {
       paramToServiceMsg = (byte[])paramToServiceMsg.getWupBuffer();
-      int j = a(paramToServiceMsg, 4);
-      byte[] arrayOfByte = new byte[a(paramToServiceMsg, j + 4) - 4];
+      int j = d(paramToServiceMsg, 4);
+      byte[] arrayOfByte = new byte[d(paramToServiceMsg, j + 4) - 4];
       int k = arrayOfByte.length;
       int i = 0;
       PkgTools.copyData(arrayOfByte, 0, paramToServiceMsg, j + 8, k);
@@ -92,7 +92,7 @@ public class VipComicMqqHandler
           paramToServiceMsg.add(((MqqComicPb.ComicFavorEmotIcons)((MqqComicPb.SetMyComicFavorEmotIconsReqBody)localObject).reqs.get(i)).md5.get());
           i += 1;
         }
-        ((IVipComicMqqManagerService)this.a.getRuntimeService(IVipComicMqqManagerService.class, "")).updateComicStructInfo(paramToServiceMsg);
+        ((IVipComicMqqManagerService)this.b.getRuntimeService(IVipComicMqqManagerService.class, "")).updateComicStructInfo(paramToServiceMsg);
         a("responseSetMyComicFavorEmotIcons updateComicStructInfo");
       }
     }
@@ -129,7 +129,7 @@ public class VipComicMqqHandler
     ToServiceMsg localToServiceMsg = createToServiceMsg("ComicProtoConvSvr.tunnel");
     localToServiceMsg.extraData.putString("subcmd", "SetMyComicFavorEmotIcons");
     localToServiceMsg.extraData.putLong("requestTime", SystemClock.elapsedRealtime());
-    MqqComicHeadPb.ComicReqHead localComicReqHead = VipComicMqqHandlerConstants.a(this.a, "SetMyComicFavorEmotIcons", NetConnInfoCenter.getServerTime(), null);
+    MqqComicHeadPb.ComicReqHead localComicReqHead = VipComicMqqHandlerConstants.a(this.b, "SetMyComicFavorEmotIcons", NetConnInfoCenter.getServerTime(), null);
     MqqComicPb.SetMyComicFavorEmotIconsReqBody localSetMyComicFavorEmotIconsReqBody = new MqqComicPb.SetMyComicFavorEmotIconsReqBody();
     localSetMyComicFavorEmotIconsReqBody.reqs.set(paramList);
     localToServiceMsg.putWupBuffer(VipComicMqqHandlerConstants.a(localComicReqHead, localSetMyComicFavorEmotIconsReqBody));
@@ -160,7 +160,7 @@ public class VipComicMqqHandler
       {
         if (paramArrayOfByte.rsps != null)
         {
-          localIVipComicMqqManagerService = (IVipComicMqqManagerService)this.a.getRuntimeService(IVipComicMqqManagerService.class, "");
+          localIVipComicMqqManagerService = (IVipComicMqqManagerService)this.b.getRuntimeService(IVipComicMqqManagerService.class, "");
           if (localIVipComicMqqManagerService != null)
           {
             paramInt = 0;
@@ -184,31 +184,12 @@ public class VipComicMqqHandler
     notifyUI(4, true, localIVipComicMqqManagerService);
   }
   
-  public boolean a()
-  {
-    int i;
-    if (VipComicMqqHandlerConstants.jdField_a_of_type_Int < 0) {
-      i = 0;
-    } else if (VipComicMqqHandlerConstants.jdField_a_of_type_Int > 100) {
-      i = 100;
-    } else {
-      i = VipComicMqqHandlerConstants.jdField_a_of_type_Int;
-    }
-    if (i == 0) {
-      return false;
-    }
-    if (i == 100) {
-      return true;
-    }
-    return new Random(System.currentTimeMillis()).nextInt(100) + 1 <= i;
-  }
-  
   public void b()
   {
     Object localObject = createToServiceMsg("ComicProtoConvSvr.tunnel");
     ((ToServiceMsg)localObject).extraData.putString("subcmd", "GetComicGlobalConfig");
     ((ToServiceMsg)localObject).extraData.putLong("requestTime", SystemClock.elapsedRealtime());
-    byte[] arrayOfByte = VipComicMqqHandlerConstants.a(VipComicMqqHandlerConstants.a(this.a, "GetComicGlobalConfig", NetConnInfoCenter.getServerTime(), null), new MqqComicPb.GetComicGlobalConfigReqBody());
+    byte[] arrayOfByte = VipComicMqqHandlerConstants.a(VipComicMqqHandlerConstants.a(this.b, "GetComicGlobalConfig", NetConnInfoCenter.getServerTime(), null), new MqqComicPb.GetComicGlobalConfigReqBody());
     if ((arrayOfByte != null) && (arrayOfByte.length != 0))
     {
       ((ToServiceMsg)localObject).putWupBuffer(arrayOfByte);
@@ -227,7 +208,7 @@ public class VipComicMqqHandler
     ToServiceMsg localToServiceMsg = createToServiceMsg("ComicProtoConvSvr.tunnel");
     localToServiceMsg.extraData.putString("subcmd", "DelMyComicFavorEmotIcons");
     localToServiceMsg.extraData.putLong("requestTime", SystemClock.elapsedRealtime());
-    MqqComicHeadPb.ComicReqHead localComicReqHead = VipComicMqqHandlerConstants.a(this.a, "DelMyComicFavorEmotIcons", NetConnInfoCenter.getServerTime(), null);
+    MqqComicHeadPb.ComicReqHead localComicReqHead = VipComicMqqHandlerConstants.a(this.b, "DelMyComicFavorEmotIcons", NetConnInfoCenter.getServerTime(), null);
     MqqComicPb.DelMyComicFavorEmotIconsReqBody localDelMyComicFavorEmotIconsReqBody = new MqqComicPb.DelMyComicFavorEmotIconsReqBody();
     localDelMyComicFavorEmotIconsReqBody.md5List.set(paramList);
     localToServiceMsg.putWupBuffer(VipComicMqqHandlerConstants.a(localComicReqHead, localDelMyComicFavorEmotIconsReqBody));
@@ -281,6 +262,25 @@ public class VipComicMqqHandler
       }
     }
     a("[ComicGlobalConfig] receive from server");
+  }
+  
+  public boolean c()
+  {
+    int i;
+    if (VipComicMqqHandlerConstants.a < 0) {
+      i = 0;
+    } else if (VipComicMqqHandlerConstants.a > 100) {
+      i = 100;
+    } else {
+      i = VipComicMqqHandlerConstants.a;
+    }
+    if (i == 0) {
+      return false;
+    }
+    if (i == 100) {
+      return true;
+    }
+    return new Random(System.currentTimeMillis()).nextInt(100) + 1 <= i;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -337,13 +337,13 @@ public class VipComicMqqHandler
             paramToServiceMsg = "";
           }
         }
-        if ((a()) && (!TextUtils.isEmpty(paramToServiceMsg))) {
-          ReportCenter.a().a(str, l3, l2, l1, paramFromServiceMsg.getBusinessFailCode(), Long.valueOf(this.a.getCurrentAccountUin()).longValue(), VipComicMqqHandlerConstants.jdField_a_of_type_JavaLangString, paramToServiceMsg, false);
+        if ((c()) && (!TextUtils.isEmpty(paramToServiceMsg))) {
+          ReportCenter.a().a(str, l3, l2, l1, paramFromServiceMsg.getBusinessFailCode(), Long.valueOf(this.b.getCurrentAccountUin()).longValue(), VipComicMqqHandlerConstants.b, paramToServiceMsg, false);
         }
         return;
       }
       paramObject = (byte[])paramObject;
-      int i = a(paramObject, 0);
+      int i = d(paramObject, 0);
       localObject = new byte[i - 4];
       PkgTools.copyData((byte[])localObject, 0, paramObject, 4, localObject.length);
       paramFromServiceMsg = new MqqComicHeadPb.ComicRspHead();
@@ -365,10 +365,10 @@ public class VipComicMqqHandler
           return;
         }
         int j = paramFromServiceMsg.retCode.get();
-        VipComicMqqHandlerConstants.jdField_a_of_type_Int = paramFromServiceMsg.reportRate.get();
+        VipComicMqqHandlerConstants.a = paramFromServiceMsg.reportRate.get();
         if (j == 0)
         {
-          paramFromServiceMsg = new byte[a(paramObject, i) - 4];
+          paramFromServiceMsg = new byte[d(paramObject, i) - 4];
           PkgTools.copyData(paramFromServiceMsg, 0, paramObject, i + 4, paramFromServiceMsg.length);
         }
         else
@@ -406,8 +406,8 @@ public class VipComicMqqHandler
             paramToServiceMsg = "";
           }
         }
-        if ((a()) && (!TextUtils.isEmpty(paramToServiceMsg))) {
-          ReportCenter.a().a("GetMyComicFavorEmotIcons", l3, l2, l1, j, Long.valueOf(this.a.getCurrentAccountUin()).longValue(), VipComicMqqHandlerConstants.jdField_a_of_type_JavaLangString, paramToServiceMsg, false);
+        if ((c()) && (!TextUtils.isEmpty(paramToServiceMsg))) {
+          ReportCenter.a().a("GetMyComicFavorEmotIcons", l3, l2, l1, j, Long.valueOf(this.b.getCurrentAccountUin()).longValue(), VipComicMqqHandlerConstants.b, paramToServiceMsg, false);
         }
       }
     }
@@ -415,7 +415,7 @@ public class VipComicMqqHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.vipcomic.VipComicMqqHandler
  * JD-Core Version:    0.7.0.1
  */

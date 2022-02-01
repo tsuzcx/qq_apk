@@ -7,12 +7,12 @@ class AutoLoginHelper$2$1
   
   public void run()
   {
-    AutoLoginHelper.a(this.a.a).notifyToast(2131716609, 1);
+    AutoLoginHelper.a(this.a.a).notifyToast(2131914072, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AutoLoginHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

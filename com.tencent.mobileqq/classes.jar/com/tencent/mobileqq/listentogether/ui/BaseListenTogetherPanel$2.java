@@ -18,30 +18,30 @@ class BaseListenTogetherPanel$2
   
   protected void a(int paramInt, String paramString)
   {
-    QLog.d("BaseListenTogetherPanel", 1, String.format("onJoinAndEnter [%d,%s] [%d,%s] resumed=[%b] ", new Object[] { Integer.valueOf(paramInt), paramString, Integer.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_JavaLangString, Boolean.valueOf(this.a.b) }));
-    if ((this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_Int == paramInt))
+    QLog.d("BaseListenTogetherPanel", 1, String.format("onJoinAndEnter [%d,%s] [%d,%s] resumed=[%b] ", new Object[] { Integer.valueOf(paramInt), paramString, Integer.valueOf(this.a.e.a), this.a.e.b, Boolean.valueOf(this.a.i) }));
+    if ((this.a.i) && (this.a.e.a == paramInt))
     {
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) {
+      if (!this.a.e.b.equalsIgnoreCase(paramString)) {
         return;
       }
-      paramString = ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(paramInt, paramString);
-      if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.b != 3))
+      paramString = ListenTogetherManager.a(this.a.b.app).e(paramInt, paramString);
+      if ((paramString != null) && (this.a.e.c != 3))
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.c != 2)
+        if (this.a.e.d != 2)
         {
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693661, 0).a();
+          QQToast.makeText(this.a.b, 2131891236, 0).show();
           return;
         }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.b == 4)
+        if (this.a.e.c == 4)
         {
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693663, 0).a();
+          QQToast.makeText(this.a.b, 2131891238, 0).show();
           return;
         }
-        MusicInfo localMusicInfo = paramString.a();
-        ListenTogetherPlayFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString, localMusicInfo, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_Boolean, null);
+        MusicInfo localMusicInfo = paramString.e();
+        ListenTogetherPlayFragment.a(this.a.b, paramString, localMusicInfo, this.a.e.e, null);
         return;
       }
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693659, 0).a();
+      QQToast.makeText(this.a.b, 2131891234, 0).show();
     }
   }
   
@@ -67,13 +67,13 @@ class BaseListenTogetherPanel$2
   
   protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3)
   {
-    if ((paramInt1 == this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_Int) && (paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_JavaLangString)) && (!paramBoolean))
+    if ((paramInt1 == this.a.e.a) && (paramString1.equals(this.a.e.b)) && (!paramBoolean))
     {
       paramString1 = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
-        paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131693665);
+        paramString1 = this.a.b.getResources().getString(2131891240);
       }
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString1, 0).a();
+      QQToast.makeText(this.a.b, paramString1, 0).show();
     }
   }
   
@@ -89,7 +89,7 @@ class BaseListenTogetherPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 public class DeleteEmotionViewHolder
   extends BaseEmotionViewHolder
 {
-  private ImageView a;
+  private ImageView c;
   
   public DeleteEmotionViewHolder(@NotNull View paramView)
   {
@@ -19,19 +19,19 @@ public class DeleteEmotionViewHolder
   
   public void a(@NotNull View paramView)
   {
-    this.a = ((ImageView)paramView.findViewById(R.id.a));
+    this.c = ((ImageView)paramView.findViewById(R.id.a));
   }
   
   public void a(Emotion paramEmotion)
   {
     if ((paramEmotion != null) && ((paramEmotion.actualEmotion instanceof Integer))) {
-      this.a.setImageResource(((Integer)paramEmotion.actualEmotion).intValue());
+      this.c.setImageResource(((Integer)paramEmotion.actualEmotion).intValue());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.emoji.list.DeleteEmotionViewHolder
  * JD-Core Version:    0.7.0.1
  */

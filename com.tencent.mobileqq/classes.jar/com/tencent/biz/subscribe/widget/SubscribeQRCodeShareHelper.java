@@ -50,24 +50,24 @@ import mqq.os.MqqHandler;
 public class SubscribeQRCodeShareHelper
 {
   public static final String a;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private ShareInfoBean jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean;
-  private AbsSubscribeShareCardView jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView;
-  private SubscirbeLoadingDialog jdField_a_of_type_ComTencentBizSubscribeWidgetSubscirbeLoadingDialog;
-  private ShareActionSheet.OnItemClickListener jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener;
-  private ShareActionSheet jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
-  private WXShareHelper.WXShareListener jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener;
   private final String b = "https://h5.qzone.qq.com/subscription/jump?_wv=3&_proxy=1&schema=";
   private final String c;
-  private String d;
+  private Activity d;
+  private ShareInfoBean e;
+  private Handler f;
+  private AbsSubscribeShareCardView g;
+  private WXShareHelper.WXShareListener h;
+  private String i;
+  private SubscirbeLoadingDialog j;
+  private ShareActionSheet k;
+  private ShareActionSheet.OnItemClickListener l;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append("subscribe_shared_card/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public SubscribeQRCodeShareHelper(Activity paramActivity)
@@ -76,63 +76,12 @@ public class SubscribeQRCodeShareHelper
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append("subscribe_card/");
     this.c = localStringBuilder.toString();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener = new SubscribeQRCodeShareHelper.4(this);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.l = new SubscribeQRCodeShareHelper.4(this);
+    this.d = paramActivity;
     paramActivity = ThreadManager.newFreeHandlerThread("subscribe_create_card", 0);
     paramActivity.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramActivity.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.1(this));
-  }
-  
-  private AbsSubscribeShareCardView a()
-  {
-    ShareInfoBean localShareInfoBean = this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean;
-    if ((localShareInfoBean != null) && (localShareInfoBean.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null))
-    {
-      int i = this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType;
-      if (i != 7005) {
-        switch (i)
-        {
-        default: 
-          return null;
-        case 7001: 
-          return new SubscribeMultiPicSharedCardView(this.jdField_a_of_type_AndroidAppActivity);
-        case 7000: 
-          return new SubscribeVideoSharedCardView(this.jdField_a_of_type_AndroidAppActivity);
-        }
-      }
-      if (this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.jdField_a_of_type_Int == 1) {
-        return new SubScribePersonalSharedCardView(this.jdField_a_of_type_AndroidAppActivity);
-      }
-      if (this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.jdField_a_of_type_Int == 3) {
-        return new SubscribeVideoSharedCardView(this.jdField_a_of_type_AndroidAppActivity);
-      }
-      if (this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.jdField_a_of_type_Int == 4) {
-        return new SubscribeMultiPicSharedCardView(this.jdField_a_of_type_AndroidAppActivity);
-      }
-    }
-    return null;
-  }
-  
-  private String a()
-  {
-    ShareInfoBean localShareInfoBean = this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean;
-    if ((localShareInfoBean != null) && (localShareInfoBean.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null))
-    {
-      int i = this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType;
-      if (i != 7005) {
-        switch (i)
-        {
-        default: 
-          return "";
-        case 7000: 
-        case 7001: 
-          return c();
-        }
-      }
-      return b();
-    }
-    return "";
+    this.f = new Handler(paramActivity.getLooper());
+    this.f.post(new SubscribeQRCodeShareHelper.1(this));
   }
   
   private String a(Context paramContext, String paramString)
@@ -168,13 +117,13 @@ public class SubscribeQRCodeShareHelper
     ((StringBuilder)localObject1).append(paramString);
     ((StringBuilder)localObject1).append(".nomedia");
     FileUtils.createFileIfNotExits(((StringBuilder)localObject1).toString());
-    Object localObject2 = this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean;
+    Object localObject2 = this.e;
     localObject1 = "";
-    if ((localObject2 != null) && (((ShareInfoBean)localObject2).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.a() != null))
+    if ((localObject2 != null) && (((ShareInfoBean)localObject2).e != null) && (this.e.a() != null))
     {
-      int i = this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType;
-      if (i != 7005) {
-        switch (i)
+      int m = this.e.e.pageType;
+      if (m != 7005) {
+        switch (m)
         {
         default: 
           return "";
@@ -182,7 +131,7 @@ public class SubscribeQRCodeShareHelper
         case 7001: 
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append(paramString);
-          ((StringBuilder)localObject2).append(((CertifiedAccountMeta.StFeed)this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.a().get()).id.get());
+          ((StringBuilder)localObject2).append(((CertifiedAccountMeta.StFeed)this.e.a().get()).id.get());
           if (bool) {
             localObject1 = Long.valueOf(System.currentTimeMillis());
           }
@@ -193,7 +142,7 @@ public class SubscribeQRCodeShareHelper
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramString);
-      ((StringBuilder)localObject2).append(MD5.a(this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.a().poster.id.get()));
+      ((StringBuilder)localObject2).append(MD5.b(this.e.a().poster.id.get()));
       if (bool) {
         localObject1 = Long.valueOf(System.currentTimeMillis());
       }
@@ -216,73 +165,106 @@ public class SubscribeQRCodeShareHelper
   
   private void a(int paramInt)
   {
-    if (a())
+    if (j())
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView.a();
-      this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.8(this, paramInt));
+      this.g.a();
+      this.f.post(new SubscribeQRCodeShareHelper.8(this, paramInt));
     }
   }
   
   private void a(AbsSubscribeShareCardView paramAbsSubscribeShareCardView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet == null) {
-      b();
+    if (this.k == null) {
+      f();
     }
-    ShareActionSheet localShareActionSheet = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+    ShareActionSheet localShareActionSheet = this.k;
     if (localShareActionSheet != null)
     {
       if (localShareActionSheet.isShowing()) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
+      this.k.show();
       ThreadManager.getUIHandler().post(new SubscribeQRCodeShareHelper.3(this, paramAbsSubscribeShareCardView));
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = this.d;
     if (localObject != null) {
       if (paramBoolean)
       {
-        if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscirbeLoadingDialog == null) {
-          this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscirbeLoadingDialog = new SubscirbeLoadingDialog((Context)localObject, "卡片生成中...");
+        if (this.j == null) {
+          this.j = new SubscirbeLoadingDialog((Context)localObject, "卡片生成中...");
         }
-        if ((!this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscirbeLoadingDialog.isShowing()) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-          this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscirbeLoadingDialog.show();
+        if ((!this.j.isShowing()) && (!this.d.isFinishing())) {
+          this.j.show();
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscirbeLoadingDialog;
-        if ((localObject != null) && (((SubscirbeLoadingDialog)localObject).isShowing()) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-          this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscirbeLoadingDialog.dismiss();
+        localObject = this.j;
+        if ((localObject != null) && (((SubscirbeLoadingDialog)localObject).isShowing()) && (!this.d.isFinishing())) {
+          this.j.dismiss();
         }
       }
     }
   }
   
-  private boolean a()
+  private AbsSubscribeShareCardView b()
   {
-    int i;
-    if (!WXShareHelper.a().a()) {
-      i = 2131720478;
-    } else if (!WXShareHelper.a().b()) {
-      i = 2131720479;
-    } else {
-      i = -1;
-    }
-    if (i != -1)
+    ShareInfoBean localShareInfoBean = this.e;
+    if ((localShareInfoBean != null) && (localShareInfoBean.e != null))
     {
-      QRUtils.a(0, i);
-      return false;
+      int m = this.e.e.pageType;
+      if (m != 7005) {
+        switch (m)
+        {
+        default: 
+          return null;
+        case 7001: 
+          return new SubscribeMultiPicSharedCardView(this.d);
+        case 7000: 
+          return new SubscribeVideoSharedCardView(this.d);
+        }
+      }
+      if (this.e.a == 1) {
+        return new SubScribePersonalSharedCardView(this.d);
+      }
+      if (this.e.a == 3) {
+        return new SubscribeVideoSharedCardView(this.d);
+      }
+      if (this.e.a == 4) {
+        return new SubscribeMultiPicSharedCardView(this.d);
+      }
     }
-    return true;
+    return null;
   }
   
-  private String b()
+  private String c()
   {
-    Object localObject1 = SubscribeGlobalInfo.a();
+    ShareInfoBean localShareInfoBean = this.e;
+    if ((localShareInfoBean != null) && (localShareInfoBean.e != null))
+    {
+      int m = this.e.e.pageType;
+      if (m != 7005) {
+        switch (m)
+        {
+        default: 
+          return "";
+        case 7000: 
+        case 7001: 
+          return e();
+        }
+      }
+      return d();
+    }
+    return "";
+  }
+  
+  private String d()
+  {
+    Object localObject1 = SubscribeGlobalInfo.b();
     if ((localObject1 != null) && (((CertifiedAccountRead.StGetMainPageRsp)localObject1).share != null)) {
       localObject1 = ((CertifiedAccountRead.StGetMainPageRsp)localObject1).share.shorturl.get();
     } else {
@@ -292,7 +274,7 @@ public class SubscribeQRCodeShareHelper
       try
       {
         Object localObject2 = new StringBuilder("https://h5.qzone.qq.com/subscription/jump?_wv=3&_proxy=1&schema=");
-        ((StringBuilder)localObject2).append(URLEncoder.encode(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.icon.get()), "UTF-8"));
+        ((StringBuilder)localObject2).append(URLEncoder.encode(SubscribeShareHelper.a(this.e.b.poster.id.get(), this.e.b.poster.nick.get(), this.e.b.poster.icon.get()), "UTF-8"));
         localObject2 = ((StringBuilder)localObject2).toString();
         return localObject2;
       }
@@ -304,52 +286,13 @@ public class SubscribeQRCodeShareHelper
     return localObject1;
   }
   
-  private void b()
+  private String e()
   {
-    Object localObject = new ShareActionSheetV2.Param();
-    this.jdField_a_of_type_AndroidAppActivity.getIntent().putExtra("big_brother_source_key", "dingyuehao");
-    ((ShareActionSheetV2.Param)localObject).context = this.jdField_a_of_type_AndroidAppActivity;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet = ShareActionSheetFactory.create((ShareActionSheetV2.Param)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener);
-    localObject = new ArrayList();
-    ((List)localObject).add(Integer.valueOf(2));
-    ((List)localObject).add(Integer.valueOf(3));
-    ((List)localObject).add(Integer.valueOf(9));
-    ((List)localObject).add(Integer.valueOf(10));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Integer.valueOf(39));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(a((List)localObject), a(localArrayList));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setRowVisibility(8, 0, 0);
-  }
-  
-  private boolean b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView != null)
-    {
-      String str = a(this.c);
-      if (!TextUtils.isEmpty(str))
-      {
-        if (new File(str).exists())
-        {
-          QLog.d("SubscribeQRCodeShareHelper", 4, "save file  is exit");
-          return true;
-        }
-        Bitmap localBitmap = this.jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView.a();
-        if (localBitmap != null) {
-          return QRScanUtil.a(localBitmap, str, Bitmap.CompressFormat.JPEG, 80, true);
-        }
-      }
-    }
-    return false;
-  }
-  
-  private String c()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.h())) {
+    if (TextUtils.isEmpty(this.e.i())) {
       try
       {
         Object localObject = new StringBuilder("https://h5.qzone.qq.com/subscription/jump?_wv=3&_proxy=1&schema=");
-        ((StringBuilder)localObject).append(URLEncoder.encode(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.a()), "UTF-8"));
+        ((StringBuilder)localObject).append(URLEncoder.encode(SubscribeShareHelper.a(this.e.a()), "UTF-8"));
         localObject = ((StringBuilder)localObject).toString();
         return localObject;
       }
@@ -359,61 +302,118 @@ public class SubscribeQRCodeShareHelper
         return "";
       }
     }
-    return this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.h();
+    return this.e.i();
   }
   
-  private void c()
+  private void f()
+  {
+    Object localObject = new ShareActionSheetV2.Param();
+    this.d.getIntent().putExtra("big_brother_source_key", "dingyuehao");
+    ((ShareActionSheetV2.Param)localObject).context = this.d;
+    this.k = ShareActionSheetFactory.create((ShareActionSheetV2.Param)localObject);
+    this.k.setItemClickListenerV2(this.l);
+    localObject = new ArrayList();
+    ((List)localObject).add(Integer.valueOf(2));
+    ((List)localObject).add(Integer.valueOf(3));
+    ((List)localObject).add(Integer.valueOf(9));
+    ((List)localObject).add(Integer.valueOf(10));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Integer.valueOf(39));
+    this.k.setActionSheetItems(a((List)localObject), a(localArrayList));
+    this.k.setRowVisibility(8, 0, 0);
+  }
+  
+  private void g()
   {
     boolean bool;
     if (Build.VERSION.SDK_INT >= 23) {
-      bool = PermissionUtils.isStorePermissionEnable(this.jdField_a_of_type_AndroidAppActivity);
+      bool = PermissionUtils.isStorePermissionEnable(this.d);
     } else {
       bool = true;
     }
     if (!bool)
     {
-      DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity);
+      DialogUtil.a(this.d);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView.a();
-    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.5(this));
+    this.g.a();
+    this.f.post(new SubscribeQRCodeShareHelper.5(this));
   }
   
-  private boolean c()
+  private void h()
   {
-    return (WXShareHelper.a().a() != null) && (WXShareHelper.a().a().getWXAppSupportAPI() >= 654314752);
+    this.g.a();
+    this.f.post(new SubscribeQRCodeShareHelper.6(this));
   }
   
-  private void d()
+  private void i()
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView.a();
-    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.6(this));
+    this.g.a();
+    this.f.post(new SubscribeQRCodeShareHelper.7(this));
   }
   
-  private boolean d()
+  private boolean j()
+  {
+    int m;
+    if (!WXShareHelper.a().b()) {
+      m = 2131918154;
+    } else if (!WXShareHelper.a().c()) {
+      m = 2131918155;
+    } else {
+      m = -1;
+    }
+    if (m != -1)
+    {
+      QRUtils.a(0, m);
+      return false;
+    }
+    return true;
+  }
+  
+  private void k()
+  {
+    if (this.h != null) {
+      return;
+    }
+    this.h = new SubscribeQRCodeShareHelper.9(this);
+    WXShareHelper.a().a(this.h);
+  }
+  
+  private boolean l()
+  {
+    if (this.g != null)
+    {
+      String str = a(this.c);
+      if (!TextUtils.isEmpty(str))
+      {
+        if (new File(str).exists())
+        {
+          QLog.d("SubscribeQRCodeShareHelper", 4, "save file  is exit");
+          return true;
+        }
+        Bitmap localBitmap = this.g.getSharedBitmap();
+        if (localBitmap != null) {
+          return QRScanUtil.a(localBitmap, str, Bitmap.CompressFormat.JPEG, 80, true);
+        }
+      }
+    }
+    return false;
+  }
+  
+  private boolean m()
+  {
+    return (WXShareHelper.a().e() != null) && (WXShareHelper.a().e().getWXAppSupportAPI() >= 654314752);
+  }
+  
+  private boolean n()
   {
     return Build.VERSION.SDK_INT >= 24;
   }
   
-  private void e()
-  {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetAbsSubscribeShareCardView.a();
-    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.7(this));
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new SubscribeQRCodeShareHelper.9(this);
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-  }
-  
   public void a()
   {
-    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.10(this));
+    WXShareHelper.a().b(this.h);
+    this.f.post(new SubscribeQRCodeShareHelper.10(this));
     a(false);
   }
   
@@ -421,29 +421,29 @@ public class SubscribeQRCodeShareHelper
   {
     boolean bool;
     if (Build.VERSION.SDK_INT >= 23) {
-      bool = PermissionUtils.isStorePermissionEnable(this.jdField_a_of_type_AndroidAppActivity);
+      bool = PermissionUtils.isStorePermissionEnable(this.d);
     } else {
       bool = true;
     }
     if (!bool)
     {
-      DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity);
+      DialogUtil.a(this.d);
       return;
     }
-    if ((paramShareInfoBean != null) && (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidAppActivity)))
+    if ((paramShareInfoBean != null) && (NetworkUtil.isNetworkAvailable(this.d)))
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean = paramShareInfoBean;
+      this.e = paramShareInfoBean;
       a(true);
-      this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeQRCodeShareHelper.2(this));
+      this.f.post(new SubscribeQRCodeShareHelper.2(this));
       return;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, 2131716888, 1).a();
+    QQToast.makeText(this.d, 1, 2131914361, 1).show();
     QLog.d("SubscribeQRCodeShareHelper", 4, "failed to create card code because shareInfoBean is empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper
  * JD-Core Version:    0.7.0.1
  */

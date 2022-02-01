@@ -12,40 +12,40 @@ class TroopFileItemOperation$12
 {
   TroopFileItemOperation$12(TroopFileItemOperation paramTroopFileItemOperation, boolean paramBoolean, TroopFileInfo paramTroopFileInfo, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       i = paramInt + 1;
     }
     StringBuilder localStringBuilder;
     if (i != 0)
     {
-      if ((i == 1) && (TroopFileItemOperation.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) != 0))
+      if ((i == 1) && (TroopFileItemOperation.a(this.d) != 0))
       {
-        TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long).b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        TroopFileManager.a(this.d.c, this.d.b).b(this.b);
+        paramView = this.d.c;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long);
+        localStringBuilder.append(this.d.b);
         localStringBuilder.append("");
         ReportController.b(paramView, "CliOper", "", "", "Grp", "Clk_delete_share", 0, 0, "", localStringBuilder.toString(), "", "");
       }
     }
     else
     {
-      TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long).a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      TroopFileTransferManager.a(this.d.c, this.d.b).a(this.b.b);
+      paramView = this.d.c;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long);
+      localStringBuilder.append(this.d.b);
       localStringBuilder.append("");
       ReportController.b(paramView, "CliOper", "", "", "Grp", "Clk_delete_local", 0, 0, "", localStringBuilder.toString(), "", "");
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFileItemOperation.12
  * JD-Core Version:    0.7.0.1
  */

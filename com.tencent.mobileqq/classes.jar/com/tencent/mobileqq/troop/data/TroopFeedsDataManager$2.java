@@ -3,12 +3,10 @@ package com.tencent.mobileqq.troop.data;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.List;
 import mqq.app.MobileQQ;
-import mqq.manager.TicketManager;
 
 class TroopFeedsDataManager$2
   implements Runnable
@@ -17,34 +15,22 @@ class TroopFeedsDataManager$2
   
   public void run()
   {
-    Object localObject2 = (TicketManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    Object localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    String str = ((TicketManager)localObject2).getSkey(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localObject2 = new Bundle();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
-    localStringBuilder.append(this.this$0.jdField_a_of_type_JavaLangLong);
-    ((Bundle)localObject2).putString("qid", localStringBuilder.toString());
-    ((Bundle)localObject2).putString("fnum", "1");
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
-    localStringBuilder.append(TroopUtils.a(str));
-    ((Bundle)localObject2).putString("bkn", localStringBuilder.toString());
-    ((Bundle)localObject2).putString("fids", this.this$0.a(this.jdField_a_of_type_JavaUtilList));
-    ((Bundle)localObject2).putString("ver", "8.7.0");
-    ((Bundle)localObject2).putString("src", "1");
-    ((Bundle)localObject2).putString("platform", "android");
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin=o");
-    localStringBuilder.append((String)localObject1);
-    localStringBuilder.append(";skey=");
-    localStringBuilder.append(str);
-    ((Bundle)localObject2).putString("Cookie", localStringBuilder.toString());
-    localObject1 = new HashMap();
-    ((HashMap)localObject1).put("BUNDLE", localObject2);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
-    ((HashMap)localObject1).put("CONTEXT", MobileQQ.getContext());
-    new HttpWebCgiAsyncTask("https://web.qun.qq.com/cgi-bin/notice/get_data_new", "GET", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback, this.jdField_a_of_type_Int, null, true).execute(new HashMap[] { localObject1 });
+    Object localObject1 = new Bundle();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(this.this$0.g);
+    ((Bundle)localObject1).putString("qid", ((StringBuilder)localObject2).toString());
+    ((Bundle)localObject1).putString("fnum", "1");
+    ((Bundle)localObject1).putString("fids", this.this$0.a(this.a));
+    ((Bundle)localObject1).putString("ver", "8.8.17");
+    ((Bundle)localObject1).putString("src", "1");
+    ((Bundle)localObject1).putString("platform", "android");
+    TroopFeedsDataManager.a(this.this$0, (Bundle)localObject1);
+    localObject2 = new HashMap();
+    ((HashMap)localObject2).put("BUNDLE", localObject1);
+    this.this$0.f.getApplication();
+    ((HashMap)localObject2).put("CONTEXT", MobileQQ.getContext());
+    new HttpWebCgiAsyncTask("https://web.qun.qq.com/cgi-bin/notice/get_data_new", "GET", this.this$0.j, this.b, null, true).execute(new HashMap[] { localObject2 });
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -56,7 +42,7 @@ class TroopFeedsDataManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedsDataManager.2
  * JD-Core Version:    0.7.0.1
  */

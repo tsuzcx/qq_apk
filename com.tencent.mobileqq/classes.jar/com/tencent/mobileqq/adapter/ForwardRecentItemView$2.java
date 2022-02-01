@@ -15,20 +15,20 @@ class ForwardRecentItemView$2
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b);
-    if (AppSetting.d)
+    this.a.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.b.f.setLayoutParams(this.a);
+    this.b.e.setChecked(false);
+    this.b.b.setMaxWidth(this.b.j);
+    if (AppSetting.e)
     {
-      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView;
-      paramValueAnimator.setContentDescription(paramValueAnimator.jdField_a_of_type_JavaLangString);
+      paramValueAnimator = this.b;
+      paramValueAnimator.setContentDescription(paramValueAnimator.h);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ForwardRecentItemView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -31,12 +31,12 @@ public final class ConstellationView$initData$1
       paramBundle = "";
     }
     ConstellationView.a((ConstellationView)localObject, paramBundle);
-    this.a.a();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.ConstellationView.initData.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ final class ExpandFlutterContainerFragment$handleSplashRemove$1
   
   public final void run()
   {
-    View localView = ExpandFlutterContainerFragment.b(this.this$0);
+    View localView = ExpandFlutterContainerFragment.f(this.this$0);
     if (localView != null) {
       localView.setVisibility(8);
     }
@@ -19,7 +19,7 @@ final class ExpandFlutterContainerFragment$handleSplashRemove$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.ExpandFlutterContainerFragment.handleSplashRemove.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,24 +23,24 @@ class ForwardBaseOption$1
       if (QLog.isColorLevel()) {
         QLog.d("ForwardOption.ForwardBaseOption", 2, "-->qbShowShareResultDialog--stay");
       }
-      this.a.a.finish();
-      paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
+      this.a.s.finish();
+      paramDialogInterface = new Intent(this.a.s, SplashActivity.class);
       paramDialogInterface.addFlags(335544320);
-      this.a.a.startActivity(paramDialogInterface);
+      this.a.s.startActivity(paramDialogInterface);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("ForwardOption.ForwardBaseOption", 2, "qbShowShareResultDialog back");
     }
-    if (!this.a.a.isFinishing()) {
+    if (!this.a.s.isFinishing()) {
       ForwardBaseOption.a(this.a).dismiss();
     }
-    this.a.a.finish();
+    this.a.s.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardBaseOption.1
  * JD-Core Version:    0.7.0.1
  */

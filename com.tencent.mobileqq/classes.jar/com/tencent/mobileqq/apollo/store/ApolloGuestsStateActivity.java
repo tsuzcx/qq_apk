@@ -37,7 +37,7 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader;
+import com.tencent.mobileqq.apollo.res.api.IApolloResHelper;
 import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil;
 import com.tencent.mobileqq.apollo.statistics.product.DtReportParamsBuilder;
 import com.tencent.mobileqq.apollo.utils.ApolloConstant;
@@ -141,16 +141,16 @@ public class ApolloGuestsStateActivity
       while (paramList.hasNext())
       {
         DressDescriptionItem localDressDescriptionItem = (DressDescriptionItem)paramList.next();
-        if (!TextUtils.isEmpty(localDressDescriptionItem.jdField_a_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(localDressDescriptionItem.b))
         {
-          this.mDressDescriptionMaps.put(localDressDescriptionItem.jdField_a_of_type_Int, localDressDescriptionItem);
+          this.mDressDescriptionMaps.put(localDressDescriptionItem.a, localDressDescriptionItem);
           TextView localTextView = new TextView(this);
-          localTextView.setId(localDressDescriptionItem.jdField_a_of_type_Int);
-          localTextView.setText(localDressDescriptionItem.jdField_a_of_type_JavaLangString);
+          localTextView.setId(localDressDescriptionItem.a);
+          localTextView.setText(localDressDescriptionItem.b);
           localTextView.setTextSize(10.0F);
           localTextView.setTextColor(-1);
           localTextView.setGravity(17);
-          if (localDressDescriptionItem.jdField_a_of_type_Boolean) {
+          if (localDressDescriptionItem.l) {
             localTextView.setTag("isRole");
           } else {
             localTextView.setTag("isDress");
@@ -158,16 +158,16 @@ public class ApolloGuestsStateActivity
           localTextView.setOnClickListener(this);
           RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
           localLayoutParams.addRule(15, -1);
-          Object localObject2 = getTagByType(localDressDescriptionItem.g);
-          if (localDressDescriptionItem.g != 0)
+          Object localObject2 = getTagByType(localDressDescriptionItem.h);
+          if (localDressDescriptionItem.h != 0)
           {
             ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getMinimumWidth(), ((Drawable)localObject2).getMinimumHeight());
             localTextView.setCompoundDrawables((Drawable)localObject2, null, null, null);
           }
           int j;
-          if (localDressDescriptionItem.b == 0)
+          if (localDressDescriptionItem.c == 0)
           {
-            ApolloUtilImpl.setBackgroundSafety(localTextView, 2130838506);
+            ApolloUtilImpl.setBackgroundSafety(localTextView, 2130838570);
             localTextView.setPadding((int)(((DisplayMetrics)localObject1).density * 5.0F), 0, (int)(((DisplayMetrics)localObject1).density * 19.0F), 0);
             localTextView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
             j = localTextView.getMeasuredWidth();
@@ -181,18 +181,18 @@ public class ApolloGuestsStateActivity
             }
             localArrayList2.add(localTextView);
             localLayoutParams.addRule(9, -1);
-            localLayoutParams.leftMargin = Math.max(localDressDescriptionItem.c - j, 0);
+            localLayoutParams.leftMargin = Math.max(localDressDescriptionItem.d - j, 0);
           }
-          else if (localDressDescriptionItem.b == 1)
+          else if (localDressDescriptionItem.c == 1)
           {
-            ApolloUtilImpl.setBackgroundSafety(localTextView, 2130838507);
+            ApolloUtilImpl.setBackgroundSafety(localTextView, 2130838571);
             localTextView.setPadding((int)(((DisplayMetrics)localObject1).density * 19.0F), 0, (int)(((DisplayMetrics)localObject1).density * 5.0F), 0);
             localTextView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
             j = localTextView.getMeasuredWidth();
             i = localTextView.getMeasuredHeight();
             localArrayList1.add(localTextView);
             localLayoutParams.addRule(11, -1);
-            localLayoutParams.rightMargin = Math.max(localDressDescriptionItem.c - j, 0);
+            localLayoutParams.rightMargin = Math.max(localDressDescriptionItem.d - j, 0);
           }
           else
           {
@@ -206,7 +206,7 @@ public class ApolloGuestsStateActivity
             QLog.d("[cmshow]ApolloGuestsStateActivity", 2, ((StringBuilder)localObject2).toString());
           }
           localLayoutParams.addRule(12, -1);
-          localLayoutParams.bottomMargin = Math.max(localDressDescriptionItem.d - i / 2, 0);
+          localLayoutParams.bottomMargin = Math.max(localDressDescriptionItem.e - i / 2, 0);
           if (this.mSurfaceView != null)
           {
             this.mSurfaceLayout.addView(localTextView, localLayoutParams);
@@ -222,14 +222,14 @@ public class ApolloGuestsStateActivity
   
   private void doApolloDtReport(String paramString)
   {
-    ApolloDtReportUtil.a("aio", "sprite_flower", paramString, new DtReportParamsBuilder().a(0).b(ApolloDtReportUtil.a(this.mFrom)).d(this.mIsMyCard ^ true).b(this.mUin).a());
+    ApolloDtReportUtil.a("aio", "sprite_flower", paramString, new DtReportParamsBuilder().a(0).b(ApolloDtReportUtil.a(this.mFrom)).d(this.mIsMyCard ^ true).c(this.mUin).a());
   }
   
   private Drawable getTagByType(int paramInt)
   {
-    int i = 2130838581;
+    int i = 2130838640;
     if (paramInt == 1) {
-      paramInt = 2130838580;
+      paramInt = 2130838639;
     } else {
       paramInt = i;
     }
@@ -415,7 +415,7 @@ public class ApolloGuestsStateActivity
         j -= i;
         if ((j > 0) && (i != 0))
         {
-          this.mAddNumber = ((TextView)this.mDialog.findViewById(2131362748));
+          this.mAddNumber = ((TextView)this.mDialog.findViewById(2131428434));
           paramMessage = this.mAddNumber;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("+");
@@ -430,14 +430,14 @@ public class ApolloGuestsStateActivity
   @TargetApi(11)
   public void initBottomBtn()
   {
-    this.mButtonRight = ((Button)this.mDialog.findViewById(2131362747));
+    this.mButtonRight = ((Button)this.mDialog.findViewById(2131428433));
     this.mButtonRight.setOnClickListener(this);
     this.mButtonRight.setOnTouchListener(new ApolloGuestsStateActivity.1(this));
   }
   
   public void initCommonView()
   {
-    Object localObject1 = (TextView)this.mDialog.findViewById(2131371854);
+    Object localObject1 = (TextView)this.mDialog.findViewById(2131439295);
     this.mNick = super.getIntent().getStringExtra("extra_guest_nick");
     this.mUin = super.getIntent().getStringExtra("extra_guest_uin");
     this.mFrom = super.getIntent().getIntExtra("extra_guest_from", 0);
@@ -459,9 +459,9 @@ public class ApolloGuestsStateActivity
     } else {
       ((TextView)localObject1).setText(" ");
     }
-    this.mPraiseNumberText = ((TextView)this.mDialog.findViewById(2131362728));
-    this.mProgress = ((ImageView)this.mDialog.findViewById(2131378780));
-    this.mApprovalLayout = ((RelativeLayout)this.mDialog.findViewById(2131362885));
+    this.mPraiseNumberText = ((TextView)this.mDialog.findViewById(2131428414));
+    this.mProgress = ((ImageView)this.mDialog.findViewById(2131447459));
+    this.mApprovalLayout = ((RelativeLayout)this.mDialog.findViewById(2131428683));
     initBottomBtn();
     localObject1 = Calendar.getInstance();
     Object localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
@@ -482,11 +482,11 @@ public class ApolloGuestsStateActivity
   
   public void initNoAIUI()
   {
-    this.mDialog = super.getLayoutInflater().inflate(2131558619, null, false);
+    this.mDialog = super.getLayoutInflater().inflate(2131624183, null, false);
     this.mRootView = new RelativeLayout(this);
-    this.mRootView.setBackgroundColor(super.getResources().getColor(2131166961));
-    long l1 = Math.max(DeviceInfoUtil.h(), DeviceInfoUtil.g());
-    long l2 = Math.min(DeviceInfoUtil.h(), DeviceInfoUtil.g());
+    this.mRootView.setBackgroundColor(super.getResources().getColor(2131167894));
+    long l1 = Math.max(DeviceInfoUtil.C(), DeviceInfoUtil.B());
+    long l2 = Math.min(DeviceInfoUtil.C(), DeviceInfoUtil.B());
     double d1 = l1;
     Double.isNaN(d1);
     float f1 = (float)(d1 / 1.52D);
@@ -507,9 +507,9 @@ public class ApolloGuestsStateActivity
     localLayoutParams.bottomMargin = ((int)(d1 / 19.899999999999999D + 0.5D));
     this.mCloseImageView = ((ImageView)localObject);
     this.mCloseImageView.setOnClickListener(this);
-    ((ImageView)localObject).setBackgroundResource(2130838412);
+    ((ImageView)localObject).setBackgroundResource(2130838470);
     this.mRootView.addView((View)localObject, localLayoutParams);
-    localObject = AnimationUtils.loadAnimation(this, 2130772021);
+    localObject = AnimationUtils.loadAnimation(this, 2130772024);
     this.mDialog.startAnimation((Animation)localObject);
     localObject = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = ((int)(this.mDialogHeight + 0.5F));
@@ -517,7 +517,7 @@ public class ApolloGuestsStateActivity
     localObject = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable(true, "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/apollo_aio_bg_v3.png", (URLDrawable.URLDrawableOptions)localObject, "https://cmshow.gtimg.cn/client/img/apollo_aio_bg_v3.png");
     this.mDialog.setBackgroundDrawable((Drawable)localObject);
     this.mSurfaceView = new ApolloTextureView(this, null);
-    this.mSurfaceLayout = ((RelativeLayout)this.mDialog.findViewById(2131367880));
+    this.mSurfaceLayout = ((RelativeLayout)this.mDialog.findViewById(2131434462));
     ((RelativeLayout.LayoutParams)this.mSurfaceLayout.getLayoutParams()).bottomMargin = ((int)((float)l1 / 5.03F + 0.5F));
     this.mSurfaceLayout.requestLayout();
     localObject = new RelativeLayout.LayoutParams(-1, -1);
@@ -583,7 +583,7 @@ public class ApolloGuestsStateActivity
     }
     else
     {
-      if (paramView.getId() == 2131362747)
+      if (paramView.getId() == 2131428433)
       {
         if (this.mIsMyCard)
         {
@@ -600,7 +600,7 @@ public class ApolloGuestsStateActivity
         doApolloDtReport("click_flower");
         if (this.mHasPraised)
         {
-          QQToast.a(this, 1, HardCodeUtil.a(2131700611), 0).b(super.getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText(this, 1, HardCodeUtil.a(2131898638), 0).show(super.getResources().getDimensionPixelSize(2131299920));
           if (QLog.isColorLevel()) {
             QLog.d("[cmshow]ApolloGuestsStateActivity", 2, "today is flowered");
           }
@@ -630,11 +630,11 @@ public class ApolloGuestsStateActivity
       }
       else
       {
-        if ((((DressDescriptionItem)localObject1).i > 0) && (((DressDescriptionItem)localObject1).j == 1))
+        if ((((DressDescriptionItem)localObject1).j > 0) && (((DressDescriptionItem)localObject1).k == 1))
         {
           paramView = new StringBuilder();
           paramView.append("&id=");
-          paramView.append(((DressDescriptionItem)localObject1).i);
+          paramView.append(((DressDescriptionItem)localObject1).j);
           paramView.append("&type=");
           paramView.append(4);
           ApolloUtilImpl.openCollectCard(this, paramView.toString(), "aio");
@@ -653,7 +653,7 @@ public class ApolloGuestsStateActivity
       ((StringBuilder)localObject2).append("openApolloStore urlPara :");
       ((StringBuilder)localObject2).append(paramView);
       QLog.d("[cmshow]ApolloGuestsStateActivity", 1, ((StringBuilder)localObject2).toString());
-      ((IApolloUtil)QRoute.api(IApolloUtil.class)).openApolloStore(this, (Intent)localObject1, "mycmshow", ApolloConstant.z, null);
+      ((IApolloUtil)QRoute.api(IApolloUtil.class)).openApolloStore(this, (Intent)localObject1, "mycmshow", ApolloConstant.H, null);
     }
   }
   
@@ -666,7 +666,7 @@ public class ApolloGuestsStateActivity
   
   public void onLoadApolloInfo(int[] paramArrayOfInt, int paramInt)
   {
-    float f = (float)Math.max(DeviceInfoUtil.h(), DeviceInfoUtil.g()) / 3.25F / 368.0F;
+    float f = (float)Math.max(DeviceInfoUtil.C(), DeviceInfoUtil.B()) / 3.25F / 368.0F;
     Object localObject = this.mSurfaceView;
     if (localObject == null) {
       return;
@@ -677,7 +677,7 @@ public class ApolloGuestsStateActivity
     }
     ((ApolloRenderInterfaceImpl)localObject).a(1, null, paramInt, f, this.mApolloWidth, 0.0F);
     if (paramInt == 0) {
-      ((ApolloRenderInterfaceImpl)localObject).a(1, null, ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(paramInt), null);
+      ((ApolloRenderInterfaceImpl)localObject).a(1, null, ((IApolloResHelper)QRoute.api(IApolloResHelper.class)).readRoleDefaultDressIds(paramInt), null);
     } else if ((paramInt > 0) && (paramArrayOfInt != null)) {
       ((ApolloRenderInterfaceImpl)localObject).a(1, null, paramArrayOfInt, this.mPresenter);
     }
@@ -721,7 +721,7 @@ public class ApolloGuestsStateActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity
  * JD-Core Version:    0.7.0.1
  */

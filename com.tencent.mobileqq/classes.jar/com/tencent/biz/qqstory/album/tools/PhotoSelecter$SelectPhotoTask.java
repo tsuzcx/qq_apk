@@ -12,28 +12,28 @@ import java.util.List;
 class PhotoSelecter$SelectPhotoTask
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  Context jdField_a_of_type_AndroidContentContext;
-  PhotoSelecter.SelectPhotoCallback jdField_a_of_type_ComTencentBizQqstoryAlbumToolsPhotoSelecter$SelectPhotoCallback;
-  List<PhotoSelecter.SelectPhotoTask.PicInfoContainer> jdField_a_of_type_JavaUtilList;
-  long b;
+  int a;
+  PhotoSelecter.SelectPhotoCallback b;
+  Context c;
+  List<PhotoSelecter.SelectPhotoTask.PicInfoContainer> d;
+  long e;
+  long f;
   
   public void run()
   {
-    Collections.sort(this.jdField_a_of_type_JavaUtilList);
+    Collections.sort(this.d);
     Object localObject2 = new ArrayList();
-    int j = this.jdField_a_of_type_JavaUtilList.size() / this.jdField_a_of_type_Int;
+    int j = this.d.size() / this.a;
     int i = 0;
     Object localObject1 = null;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.d.size())
     {
       if (i % j == 0)
       {
         localObject1 = new ArrayList();
         ((ArrayList)localObject2).add(localObject1);
       }
-      ((ArrayList)localObject1).add(this.jdField_a_of_type_JavaUtilList.get(i));
+      ((ArrayList)localObject1).add(this.d.get(i));
       i += 1;
     }
     int[] arrayOfInt = new int[((ArrayList)localObject2).size()];
@@ -46,7 +46,7 @@ class PhotoSelecter$SelectPhotoTask
     Object localObject3 = new ArrayList();
     i = 0;
     j = 1;
-    while (((ArrayList)localObject3).size() < this.jdField_a_of_type_Int)
+    while (((ArrayList)localObject3).size() < this.a)
     {
       int k = 0;
       int m = 0;
@@ -74,7 +74,7 @@ class PhotoSelecter$SelectPhotoTask
       while (((Iterator)localObject4).hasNext())
       {
         localObject1 = (PhotoSelecter.SelectPhotoTask.PicInfoContainer)((Iterator)localObject4).next();
-        if (((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).jdField_a_of_type_Int == 1) {
+        if (((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).c == 1) {
           break label314;
         }
       }
@@ -94,7 +94,7 @@ class PhotoSelecter$SelectPhotoTask
       {
         if (((ArrayList)localObject3).size() == 0)
         {
-          ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).jdField_a_of_type_Int = 2;
+          ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).c = 2;
           ((ArrayList)localObject3).add(localObject1);
         }
         else
@@ -102,15 +102,15 @@ class PhotoSelecter$SelectPhotoTask
           localObject4 = ((ArrayList)localObject3).iterator();
           while (((Iterator)localObject4).hasNext())
           {
-            Bitmap localBitmap1 = ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)((Iterator)localObject4).next()).a(this.jdField_a_of_type_AndroidContentContext);
-            Bitmap localBitmap2 = ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).a(this.jdField_a_of_type_AndroidContentContext);
+            Bitmap localBitmap1 = ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)((Iterator)localObject4).next()).a(this.c);
+            Bitmap localBitmap2 = ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).a(this.c);
             long l = System.currentTimeMillis();
-            double d = PhotoSimilar.a(localBitmap1, localBitmap2);
-            this.jdField_a_of_type_Long += System.currentTimeMillis() - l;
-            this.b += 1L;
-            if (d >= 0.7D)
+            double d1 = PhotoSimilar.a(localBitmap1, localBitmap2);
+            this.e += System.currentTimeMillis() - l;
+            this.f += 1L;
+            if (d1 >= 0.7D)
             {
-              ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).jdField_a_of_type_Int = 3;
+              ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).c = 3;
               i = 1;
               break label507;
             }
@@ -119,7 +119,7 @@ class PhotoSelecter$SelectPhotoTask
           label507:
           if (i == 0)
           {
-            ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).jdField_a_of_type_Int = 2;
+            ((PhotoSelecter.SelectPhotoTask.PicInfoContainer)localObject1).c = 2;
             ((ArrayList)localObject3).add(localObject1);
           }
         }
@@ -130,26 +130,26 @@ class PhotoSelecter$SelectPhotoTask
     localObject1 = new ArrayList();
     localObject2 = ((ArrayList)localObject3).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((ArrayList)localObject1).add(((PhotoSelecter.SelectPhotoTask.PicInfoContainer)((Iterator)localObject2).next()).jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum$PicInfo);
+      ((ArrayList)localObject1).add(((PhotoSelecter.SelectPhotoTask.PicInfoContainer)((Iterator)localObject2).next()).a);
     }
     localObject2 = PhotoSelecter.a;
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("compare total time = ");
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject3).append(this.e);
     ((StringBuilder)localObject3).append(" compareTimes = ");
-    ((StringBuilder)localObject3).append(this.b);
+    ((StringBuilder)localObject3).append(this.f);
     SLog.b((String)localObject2, ((StringBuilder)localObject3).toString());
     localObject2 = PhotoSelecter.a;
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("single compare time = ");
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long / this.b);
+    ((StringBuilder)localObject3).append(this.e / this.f);
     SLog.b((String)localObject2, ((StringBuilder)localObject3).toString());
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsPhotoSelecter$SelectPhotoCallback.a((ArrayList)localObject1);
+    this.b.a((ArrayList)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.PhotoSelecter.SelectPhotoTask
  * JD-Core Version:    0.7.0.1
  */

@@ -9,22 +9,22 @@ public class PluginUpdater
 {
   private IPlugin a;
   
-  private boolean a()
+  private boolean b()
   {
     if (TextUtils.isEmpty(this.a.a()))
     {
       LogUtil.b("PluginUpdater", "isNeedUpdate: the plugin download url is empty.", new Object[0]);
       return false;
     }
-    if (TextUtils.isEmpty(this.a.e()))
+    if (TextUtils.isEmpty(this.a.g()))
     {
       LogUtil.b("PluginUpdater", "isNeedUpdate: the install path is empty.", new Object[0]);
       return false;
     }
-    File localFile = new File(this.a.e());
+    File localFile = new File(this.a.g());
     if ((localFile.exists()) && (localFile.isFile()))
     {
-      if ((new File(this.a.e()).exists()) && (!new File(this.a.i(), this.a.l()).exists()))
+      if ((new File(this.a.g()).exists()) && (!new File(this.a.m(), this.a.p()).exists()))
       {
         LogUtil.b("PluginUpdater", "isNeedUpdate: the version copied had not been installed.", new Object[0]);
         return true;
@@ -43,17 +43,17 @@ public class PluginUpdater
   
   public File a()
   {
-    if (!a())
+    if (!b())
     {
       LogUtil.b("PluginUpdater", "update: no need to update the plugin.", new Object[0]);
       return null;
     }
-    return Downloader.a(this.a.a(), this.a.d(), this.a.h());
+    return Downloader.a(this.a.a(), this.a.f(), this.a.k());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.download.PluginUpdater
  * JD-Core Version:    0.7.0.1
  */

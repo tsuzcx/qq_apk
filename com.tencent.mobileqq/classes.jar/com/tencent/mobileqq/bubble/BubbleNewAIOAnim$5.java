@@ -12,20 +12,20 @@ class BubbleNewAIOAnim$5
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+    this.a.cancel();
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c != null) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c.setVisibility(0);
+    if (this.b.t != null) {
+      this.b.t.setVisibility(0);
     }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    this.a.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleNewAIOAnim.5
  * JD-Core Version:    0.7.0.1
  */

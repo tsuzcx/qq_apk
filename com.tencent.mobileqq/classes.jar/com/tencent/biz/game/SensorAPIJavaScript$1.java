@@ -12,23 +12,23 @@ class SensorAPIJavaScript$1
   public void denied()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user denied = ");
+      QLog.d(this.b.mTAG, 1, "CheckPermission user denied = ");
     }
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "false", "{result: -10, msg: 'no permission to record'}" });
+    this.b.callJs(this.a, new String[] { "false", "{result: -10, msg: 'no permission to record'}" });
   }
   
   @QQPermissionGrant(1)
   public void grant()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user grant = ");
+      QLog.d(this.b.mTAG, 1, "CheckPermission user grant = ");
     }
-    SensorAPIJavaScript.a(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript, this.jdField_a_of_type_JavaLangString);
+    SensorAPIJavaScript.a(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.1
  * JD-Core Version:    0.7.0.1
  */

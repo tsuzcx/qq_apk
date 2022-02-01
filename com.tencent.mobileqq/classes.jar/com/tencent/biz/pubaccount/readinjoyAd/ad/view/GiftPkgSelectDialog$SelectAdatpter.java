@@ -17,12 +17,12 @@ class GiftPkgSelectDialog$SelectAdatpter
   
   public int getCount()
   {
-    return GiftPkgSelectDialog.a(this.a).size();
+    return GiftPkgSelectDialog.b(this.a).size();
   }
   
   public Object getItem(int paramInt)
   {
-    return GiftPkgSelectDialog.a(this.a).get(paramInt);
+    return GiftPkgSelectDialog.b(this.a).get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -35,10 +35,10 @@ class GiftPkgSelectDialog$SelectAdatpter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560214, null);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131626261, null);
       paramView = new GiftPkgSelectDialog.ViewHolder(this.a);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379920));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369316));
+      paramView.a = ((TextView)localView.findViewById(2131448801));
+      paramView.b = ((ImageView)localView.findViewById(2131436314));
       localView.setTag(paramView);
     }
     else
@@ -48,11 +48,11 @@ class GiftPkgSelectDialog$SelectAdatpter
       paramView = (View)localObject;
     }
     Object localObject = (GiftServiceBean)getItem(paramInt);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((GiftServiceBean)localObject).t);
-    if (GiftPkgSelectDialog.a(this.a) == paramInt) {
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843005);
+    paramView.a.setText(((GiftServiceBean)localObject).t);
+    if (GiftPkgSelectDialog.e(this.a) == paramInt) {
+      paramView.b.setBackgroundResource(2130843961);
     } else {
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843006);
+      paramView.b.setBackgroundResource(2130843962);
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -60,7 +60,7 @@ class GiftPkgSelectDialog$SelectAdatpter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPkgSelectDialog.SelectAdatpter
  * JD-Core Version:    0.7.0.1
  */

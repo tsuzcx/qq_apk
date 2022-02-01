@@ -13,14 +13,14 @@ class ProteusItemView$2
   
   public void a(AbsListView paramAbsListView)
   {
-    if ((paramAbsListView != null) && (ProteusItemView.a(this.a) != null) && (ProteusItemView.a(this.a).a() != null) && (ProteusItemView.a(this.a).a().a() != null) && (ProteusItemView.a(this.a).a().a().a() == paramAbsListView)) {
-      this.a.d();
+    if ((paramAbsListView != null) && (ProteusItemView.a(this.a) != null) && (ProteusItemView.a(this.a).b() != null) && (ProteusItemView.a(this.a).b().u() != null) && (ProteusItemView.a(this.a).b().u().d() == paramAbsListView)) {
+      this.a.e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.ProteusItemView.2
  * JD-Core Version:    0.7.0.1
  */

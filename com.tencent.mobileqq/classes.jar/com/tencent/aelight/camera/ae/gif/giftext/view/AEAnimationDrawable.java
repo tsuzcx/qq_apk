@@ -14,14 +14,14 @@ public class AEAnimationDrawable
   
   public void start()
   {
-    if (!this.a)
+    if (!this.b)
     {
       if (QLog.isColorLevel()) {
         QLog.d("zswp20pro", 2, "start");
       }
-      this.a = true;
       this.b = true;
-      this.d = false;
+      this.c = true;
+      this.e = false;
       a();
       return;
     }
@@ -32,7 +32,7 @@ public class AEAnimationDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.view.AEAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

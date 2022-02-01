@@ -11,9 +11,9 @@ import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.LongSparseArray;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.collection.LongSparseArray;
 import com.tencent.mobileqq.dinifly.L;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
@@ -58,7 +58,6 @@ public class GradientFillContent
   private final Path path = new Path();
   private final List<PathContent> paths = new ArrayList();
   private final LongSparseArray<RadialGradient> radialGradientCache = new LongSparseArray();
-  private final Matrix shaderMatrix = new Matrix();
   private final BaseKeyframeAnimation<PointF, PointF> startPointAnimation;
   private final GradientType type;
   
@@ -198,6 +197,10 @@ public class GradientFillContent
     }
     if (paramT == LottieProperty.COLOR_FILTER)
     {
+      paramT = this.colorFilterAnimation;
+      if (paramT != null) {
+        this.layer.removeAnimation(paramT);
+      }
       if (paramLottieValueCallback == null)
       {
         this.colorFilterAnimation = null;
@@ -210,15 +213,17 @@ public class GradientFillContent
     }
     if (paramT == LottieProperty.GRADIENT_COLOR)
     {
+      paramT = this.colorCallbackAnimation;
+      if (paramT != null) {
+        this.layer.removeAnimation(paramT);
+      }
       if (paramLottieValueCallback == null)
       {
-        paramT = this.colorCallbackAnimation;
-        if (paramT != null) {
-          this.layer.removeAnimation(paramT);
-        }
         this.colorCallbackAnimation = null;
         return;
       }
+      this.linearGradientCache.clear();
+      this.radialGradientCache.clear();
       this.colorCallbackAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
       this.colorCallbackAnimation.addUpdateListener(this);
       this.layer.addAnimation(this.colorCallbackAnimation);
@@ -245,8 +250,7 @@ public class GradientFillContent
     } else {
       localObject = getRadialGradient();
     }
-    this.shaderMatrix.set(paramMatrix);
-    ((Shader)localObject).setLocalMatrix(this.shaderMatrix);
+    ((Shader)localObject).setLocalMatrix(paramMatrix);
     this.paint.setShader((Shader)localObject);
     paramMatrix = this.colorFilterAnimation;
     if (paramMatrix != null) {
@@ -301,7 +305,7 @@ public class GradientFillContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.GradientFillContent
  * JD-Core Version:    0.7.0.1
  */

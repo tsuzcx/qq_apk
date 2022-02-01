@@ -17,7 +17,7 @@ class AbsVasProfileHeaderComponent$5
 {
   AbsVasProfileHeaderComponent$5(AbsVasProfileHeaderComponent paramAbsVasProfileHeaderComponent, String paramString, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (AbsVasProfileHeaderComponent.access$1500(this.this$0) == null) {
       return;
@@ -56,7 +56,7 @@ class AbsVasProfileHeaderComponent$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.header.AbsVasProfileHeaderComponent.5
  * JD-Core Version:    0.7.0.1
  */

@@ -27,17 +27,6 @@ public class GdtMvWebJsActionHelper
     return localGdtMvWebJsAction.a(paramString);
   }
   
-  public void a(String paramString)
-  {
-    GdtMvWebJsAction localGdtMvWebJsAction = a;
-    if (localGdtMvWebJsAction == null)
-    {
-      QLog.i("GdtMvWebJsActionHelper", 1, "onReportAntiSpam mAction == null");
-      return;
-    }
-    localGdtMvWebJsAction.a(paramString);
-  }
-  
   public void a(String paramString, boolean paramBoolean)
   {
     GdtMvWebJsAction localGdtMvWebJsAction = a;
@@ -60,6 +49,17 @@ public class GdtMvWebJsActionHelper
     localGdtMvWebJsAction.a();
   }
   
+  public void b(String paramString)
+  {
+    GdtMvWebJsAction localGdtMvWebJsAction = a;
+    if (localGdtMvWebJsAction == null)
+    {
+      QLog.i("GdtMvWebJsActionHelper", 1, "onReportAntiSpam mAction == null");
+      return;
+    }
+    localGdtMvWebJsAction.b(paramString);
+  }
+  
   public void c()
   {
     GdtMvWebJsAction localGdtMvWebJsAction = a;
@@ -73,7 +73,7 @@ public class GdtMvWebJsActionHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.js.GdtMvWebJsActionHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class VideoPlayerView$4
   
   public void onClick(View paramView)
   {
-    VideoPlayerView.b(this.a);
+    VideoPlayerView.e(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

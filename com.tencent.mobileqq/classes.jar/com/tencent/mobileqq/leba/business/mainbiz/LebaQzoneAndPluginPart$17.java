@@ -19,13 +19,13 @@ class LebaQzoneAndPluginPart$17
     localStringBuilder.append(paramInt);
     QLog.i("LebaBusinessPartImpl", 1, localStringBuilder.toString());
     if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
-      this.a.a();
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.17
  * JD-Core Version:    0.7.0.1
  */

@@ -27,24 +27,15 @@ import com.tencent.qphone.base.util.QLog;
 public class SurvivalRoomController
   implements ISurvivalRoomController, IAVGameBusinessCtrl.IOnEnterRoom
 {
-  private RoomController jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController;
-  private final GameActivityLifeCycleListener jdField_a_of_type_ComTencentAvgameGamelogicListenerGameActivityLifeCycleListener = new SurvivalRoomController.2(this);
-  private SimpleGameRoomStatusListener jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener = new SurvivalRoomController.1(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private RoomController a;
+  private Runnable b;
+  private SimpleGameRoomStatusListener c = new SurvivalRoomController.1(this);
+  private final GameActivityLifeCycleListener d = new SurvivalRoomController.2(this);
   
   public SurvivalRoomController(RoomController paramRoomController)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController = paramRoomController;
+    this.a = paramRoomController;
     c();
-  }
-  
-  private QBaseActivity a()
-  {
-    Activity localActivity = this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameActivityLifeCycleListener.a();
-    if ((localActivity != null) && ((localActivity instanceof IAVGameRootContainer))) {
-      return (QBaseActivity)localActivity;
-    }
-    return null;
   }
   
   private void a(QBaseActivity paramQBaseActivity, int paramInt1, int paramInt2)
@@ -59,18 +50,18 @@ public class SurvivalRoomController
     if (paramInt1 == 4)
     {
       AVGameNodeReportUtil.b(-102);
-      AVGameUtil.a(paramQBaseActivity.getString(2131690457), paramQBaseActivity);
+      AVGameUtil.a(paramQBaseActivity.getString(2131887368), paramQBaseActivity);
       AVGameNodeReportUtil.b(-202);
     }
     else
     {
-      AVGameUtil.a(paramQBaseActivity.getString(2131690328), paramQBaseActivity);
+      AVGameUtil.a(paramQBaseActivity.getString(2131887239), paramQBaseActivity);
       AVGameNodeReportUtil.b(-201);
     }
     if ((paramQBaseActivity instanceof IAVGameRootContainer)) {
       ((IAVGameRootContainer)paramQBaseActivity).notifyExitGamed();
     }
-    IGameEngine.a().a(false, 7);
+    IGameEngine.I().a(false, 7);
   }
   
   private void a(QBaseActivity paramQBaseActivity, long paramLong, byte[] paramArrayOfByte)
@@ -78,17 +69,17 @@ public class SurvivalRoomController
     if (QLog.isColorLevel()) {
       QLog.d("SurvivalRoomController", 2, "beginRoomProcess");
     }
-    if (IGameEngine.k()) {
+    if (IGameEngine.J()) {
       return;
     }
     AVGamePerfReporter.a().a("param_StepGameReady");
-    IGameEngine.a().a(Long.valueOf(paramLong).longValue());
-    IGameEngine.a().a(Long.valueOf(paramLong).longValue(), paramQBaseActivity.getCurrentAccountUinFromRuntime());
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      AVGameHandler.a().a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    IGameEngine.I().a(Long.valueOf(paramLong).longValue());
+    IGameEngine.I().a(Long.valueOf(paramLong).longValue(), paramQBaseActivity.getCurrentAccountUinFromRuntime());
+    if (this.b != null) {
+      AVGameHandler.a().b().removeCallbacks(this.b);
     }
-    this.jdField_a_of_type_JavaLangRunnable = new SurvivalRoomController.3(this, paramQBaseActivity, paramLong, paramArrayOfByte);
-    AVGameHandler.a().a().post(this.jdField_a_of_type_JavaLangRunnable);
+    this.b = new SurvivalRoomController.3(this, paramQBaseActivity, paramLong, paramArrayOfByte);
+    AVGameHandler.a().b().post(this.b);
   }
   
   private void a(QBaseActivity paramQBaseActivity, String paramString, byte[] paramArrayOfByte)
@@ -114,19 +105,19 @@ public class SurvivalRoomController
     ((StringBuilder)localObject).append(paramString);
     QLog.i("SurvivalRoomController", 1, ((StringBuilder)localObject).toString());
     localObject = AVGameSession.a(11, Long.valueOf(paramString).longValue());
-    if (IAVGameBusinessCtrl.f()) {
+    if (IAVGameBusinessCtrl.q()) {
       return;
     }
-    AVGameSession localAVGameSession = IAVGameBusinessCtrl.a().a();
+    AVGameSession localAVGameSession = IAVGameBusinessCtrl.p().j();
     int i = 0;
-    if ((localAVGameSession != null) && (localAVGameSession.a.equalsIgnoreCase((String)localObject)))
+    if ((localAVGameSession != null) && (localAVGameSession.b.equalsIgnoreCase((String)localObject)))
     {
-      if (localAVGameSession.a() == 2)
+      if (localAVGameSession.c() == 2)
       {
         onEnterRoom(5);
         break label141;
       }
-      if (localAVGameSession.a() == 1)
+      if (localAVGameSession.c() == 1)
       {
         onEnterRoom(6);
         break label141;
@@ -137,11 +128,11 @@ public class SurvivalRoomController
     if (i == 0) {
       return;
     }
-    if ((localAVGameSession != null) && (!IGameEngine.k()))
+    if ((localAVGameSession != null) && (!IGameEngine.J()))
     {
       l = System.currentTimeMillis();
-      AVGamePerfReporter.a().a(0, IGameEngine.a().a().a(), IGameEngine.a().a().b(), 0L);
-      AVGameHandler.a().a().post(new SurvivalRoomController.4(this, l));
+      AVGamePerfReporter.a().a(0, IGameEngine.I().s().i(), IGameEngine.I().s().n(), 0L);
+      AVGameHandler.a().b().post(new SurvivalRoomController.4(this, l));
       if (QLog.isColorLevel()) {
         QLog.d("SurvivalRoomController", 2, "mEnterAvRoomRunnable exit old session");
       }
@@ -155,17 +146,17 @@ public class SurvivalRoomController
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
       AVGameNodeReportUtil.b();
-      if (!IGameEngine.k())
+      if (!IGameEngine.J())
       {
-        if (IAVGameBusinessCtrl.f()) {
+        if (IAVGameBusinessCtrl.q()) {
           return;
         }
-        if ((IGameEngine.a().f()) && (IGameEngine.a().i())) {
+        if ((IGameEngine.I().A()) && (IGameEngine.I().D())) {
           i = 4;
         } else {
           i = 2;
         }
-        i = IAVGameBusinessCtrl.a().a(paramString, paramArrayOfByte, 1, i, this);
+        i = IAVGameBusinessCtrl.p().a(paramString, paramArrayOfByte, 1, i, this);
         if (QLog.isColorLevel())
         {
           paramString = new StringBuilder();
@@ -180,7 +171,7 @@ public class SurvivalRoomController
           a(paramQBaseActivity, 2, i);
           return;
         }
-        if (IAVGameBusinessCtrl.a().a() == null)
+        if (IAVGameBusinessCtrl.p().j() == null)
         {
           a(paramQBaseActivity, 3, 1);
           return;
@@ -206,7 +197,7 @@ public class SurvivalRoomController
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("SurvivalRoomController", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = a();
+    Object localObject = d();
     if (localObject == null) {
       return;
     }
@@ -216,9 +207,9 @@ public class SurvivalRoomController
       paramString = (IAVGameRootContainer)localObject;
       if (!paramString.checkDestroyed())
       {
-        IGameEngine.a().a(paramRoomInfo);
+        IGameEngine.I().a(paramRoomInfo);
         paramString.updateRoomInfo(String.valueOf(paramLong), paramArrayOfByte);
-        IGameEngine.a().a(paramLong, ((QBaseActivity)localObject).getCurrentAccountUinFromRuntime(), true, true);
+        IGameEngine.I().a(paramLong, ((QBaseActivity)localObject).getCurrentAccountUinFromRuntime(), true, true);
         a((QBaseActivity)localObject, paramLong, paramArrayOfByte);
         return;
       }
@@ -226,10 +217,10 @@ public class SurvivalRoomController
     }
     paramString = AvGameEntranceUtil.a(paramBoolean, (Context)localObject, paramInt, paramLong, paramString);
     AVGameUtil.a(paramString, (Activity)localObject);
-    paramRoomInfo = IGameEngine.a();
+    paramRoomInfo = IGameEngine.I();
     int i = 7;
     paramRoomInfo.a(false, 7);
-    if (IGameEngine.a().i())
+    if (IGameEngine.I().D())
     {
       paramRoomInfo = AVGameExceptionReporter.a();
       if (paramBoolean) {
@@ -239,7 +230,16 @@ public class SurvivalRoomController
     }
   }
   
-  private void d()
+  private QBaseActivity d()
+  {
+    Activity localActivity = this.d.b();
+    if ((localActivity != null) && ((localActivity instanceof IAVGameRootContainer))) {
+      return (QBaseActivity)localActivity;
+    }
+    return null;
+  }
+  
+  private void e()
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
@@ -249,26 +249,26 @@ public class SurvivalRoomController
     if (QLog.isColorLevel()) {
       QLog.i("SurvivalRoomController", 2, "leavePkRoom ");
     }
-    IGameEngine.a().b(false, 12);
-    if (IGameEngine.a().a() == null) {
+    IGameEngine.I().b(false, 12);
+    if (IGameEngine.I().L() == null) {
       return;
     }
-    IGameEngine.a().a().a(0, "");
+    IGameEngine.I().L().b(0, "");
   }
   
   public void a(long paramLong, int paramInt, String paramString, RoomInfo paramRoomInfo)
   {
-    if (IGameEngine.k()) {
+    if (IGameEngine.J()) {
       return;
     }
-    paramString = IGameEngine.a().a();
-    if (paramString.n() == 2)
+    paramString = IGameEngine.I().s();
+    if (paramString.W() == 2)
     {
       if (QLog.isColorLevel()) {
         QLog.i("SurvivalRoomController", 2, "onLeaveGameRoomSuccess() pk to create or join new room ");
       }
-      if (paramString.n() == 2) {
-        d();
+      if (paramString.W() == 2) {
+        e();
       }
     }
   }
@@ -280,11 +280,11 @@ public class SurvivalRoomController
     }
     if (!paramBoolean)
     {
-      IGameEngine.a().m();
+      IGameEngine.I().y();
       return;
     }
-    IGameEngine.a().a().e(4);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.a(paramRoomInfo, true);
+    IGameEngine.I().s().f(4);
+    this.a.a(paramRoomInfo, true);
     c(true, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong);
   }
   
@@ -295,8 +295,8 @@ public class SurvivalRoomController
   
   public void b()
   {
-    IGameEngine.a().b(this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener);
-    IGameEngine.a().b(this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameActivityLifeCycleListener);
+    IGameEngine.I().b(this.c);
+    IGameEngine.I().b(this.d);
   }
   
   protected void b(boolean paramBoolean, int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong)
@@ -306,25 +306,25 @@ public class SurvivalRoomController
     }
     if (!paramBoolean)
     {
-      IGameEngine.a().m();
+      IGameEngine.I().y();
       return;
     }
-    IGameEngine.a().a().f(2);
-    IGameEngine.a().a().e(4);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.a(paramRoomInfo, true);
+    IGameEngine.I().s().g(2);
+    IGameEngine.I().s().f(4);
+    this.a.a(paramRoomInfo, true);
     c(false, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong);
-    IGameEngine.a().b("", IGameEngine.a().a());
+    IGameEngine.I().b("", IGameEngine.I().s());
   }
   
   public void c()
   {
-    IGameEngine.a().a(this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener);
-    IGameEngine.a().a(this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameActivityLifeCycleListener);
+    IGameEngine.I().a(this.c);
+    IGameEngine.I().a(this.d);
   }
   
   public void onEnterRoom(int paramInt)
   {
-    QBaseActivity localQBaseActivity = a();
+    QBaseActivity localQBaseActivity = d();
     if (localQBaseActivity == null) {
       return;
     }

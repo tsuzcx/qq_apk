@@ -7,20 +7,20 @@ import com.tencent.av.utils.AVUtil;
 public class DefaultViewEvent
   implements NormalMenuView.ViewEvent
 {
-  private String jdField_a_of_type_JavaLangString = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private String a = null;
+  private boolean b = false;
   
   public DefaultViewEvent(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((!this.b) && (!TextUtils.isEmpty(this.a)))
     {
-      this.jdField_a_of_type_Boolean = true;
-      AVUtil.a(this.jdField_a_of_type_JavaLangString, 0);
+      this.b = true;
+      AVUtil.a(this.a, 0);
     }
     if ((paramRelativeLayout instanceof QavMenuBaseView)) {
       ((QavMenuBaseView)paramRelativeLayout).a(paramLong, paramBoolean);
@@ -29,9 +29,9 @@ public class DefaultViewEvent
   
   public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
     if ((paramRelativeLayout instanceof QavMenuBaseView)) {
-      ((QavMenuBaseView)paramRelativeLayout).c(paramLong, paramBoolean);
+      ((QavMenuBaseView)paramRelativeLayout).b(paramLong, paramBoolean);
     }
   }
 }

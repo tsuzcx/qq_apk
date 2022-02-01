@@ -18,9 +18,9 @@ import com.tencent.smtt.utils.FileUtil;
 import com.tencent.smtt.utils.TbsLog;
 import com.tencent.smtt.utils.a;
 import com.tencent.smtt.utils.b;
-import com.tencent.smtt.utils.f;
 import com.tencent.smtt.utils.f.a;
 import com.tencent.smtt.utils.g;
+import com.tencent.smtt.utils.q;
 import java.io.File;
 import java.util.Locale;
 import java.util.Map;
@@ -47,17 +47,18 @@ public class TbsDownloader
   private static boolean i = false;
   private static boolean j = false;
   private static boolean k = false;
-  private static long l = -1L;
+  private static JSONObject l = null;
+  private static long m = -1L;
   
   protected static File a(int paramInt)
   {
     String[] arrayOfString = TbsShareManager.getCoreProviderAppList();
-    int n = arrayOfString.length;
+    int i1 = arrayOfString.length;
     Object localObject1 = null;
-    int m = 0;
-    while (m < n)
+    int n = 0;
+    while (n < i1)
     {
-      Object localObject2 = arrayOfString[m];
+      Object localObject2 = arrayOfString[n];
       if (!((String)localObject2).equals(c.getApplicationInfo().packageName))
       {
         localObject2 = FileUtil.a(c, (String)localObject2, 4, false);
@@ -86,7 +87,7 @@ public class TbsDownloader
         TbsLog.i("TbsDownload", (String)localObject1);
         localObject1 = localObject2;
       }
-      m += 1;
+      n += 1;
     }
     return localObject1;
   }
@@ -104,11 +105,11 @@ public class TbsDownloader
   {
     JSONArray localJSONArray = new JSONArray();
     String[] arrayOfString = TbsShareManager.getCoreProviderAppList();
-    int i1 = arrayOfString.length;
-    int m = 0;
-    while (m < i1)
+    int i2 = arrayOfString.length;
+    int n = 0;
+    while (n < i2)
     {
-      Object localObject = arrayOfString[m];
+      Object localObject = arrayOfString[n];
       if (paramBoolean)
       {
         String str = FileUtil.a(c, (String)localObject, 4, false);
@@ -128,24 +129,24 @@ public class TbsDownloader
         long l1 = a.a(c, (File)localObject);
         if (l1 > 0L)
         {
-          int n = 0;
-          while (n < localJSONArray.length())
+          int i1 = 0;
+          while (i1 < localJSONArray.length())
           {
-            if (localJSONArray.optInt(n) == l1)
+            if (localJSONArray.optInt(i1) == l1)
             {
-              n = 1;
+              i1 = 1;
               break label170;
             }
-            n += 1;
+            i1 += 1;
           }
-          n = 0;
+          i1 = 0;
           label170:
-          if (n == 0) {
+          if (i1 == 0) {
             localJSONArray.put(l1);
           }
         }
       }
-      m += 1;
+      n += 1;
     }
     return localJSONArray;
   }
@@ -159,10 +160,10 @@ public class TbsDownloader
     ((StringBuilder)localObject1).append(paramBoolean3);
     TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
     TbsDownloadConfig localTbsDownloadConfig = TbsDownloadConfig.getInstance(c);
-    String str1 = b(c);
-    String str2 = b.g(c);
-    String str3 = b.f(c);
-    String str4 = b.i(c);
+    String str2 = b(c);
+    String str3 = b.i(c);
+    String str4 = b.h(c);
+    String str5 = b.k(c);
     Object localObject4 = TimeZone.getDefault().getID();
     Object localObject3;
     if (localObject4 != null) {
@@ -190,43 +191,45 @@ public class TbsDownloader
     localObject4 = new JSONObject();
     try
     {
-      m = m.a(c).c("tpatch_num");
+      n = m.a(c).c("tpatch_num");
       bool2 = false;
-      if (m < 5) {
-        ((JSONObject)localObject4).put("REQUEST_TPATCH", 1);
-      } else {
-        ((JSONObject)localObject4).put("REQUEST_TPATCH", 0);
+      if (n >= 5) {
+        break label223;
       }
-      ((JSONObject)localObject4).put("TIMEZONEID", localObject3);
-      ((JSONObject)localObject4).put("COUNTRYISO", localObject2);
-      if (!b.d()) {
-        break label1168;
+      if (!TbsShareManager.isThirdPartyApp(c)) {
+        break label1368;
       }
-      ((JSONObject)localObject4).put("REQUEST_64", 1);
+      n = 2;
     }
     catch (Exception localException2)
     {
       for (;;)
       {
-        int m;
         boolean bool2;
-        int n;
+        label223:
+        label232:
+        int i1;
         boolean bool3;
+        label590:
+        continue;
+        int n = 1;
         continue;
         continue;
-        if (m == 0)
+        if (n == 0)
         {
-          n = 0;
+          i1 = 0;
         }
         else
         {
+          i1 = 1;
+          continue;
+          String str1 = "B";
+          continue;
+          i1 = 0;
+          continue;
+          i1 = 0;
+          continue;
           n = 1;
-          continue;
-          n = 0;
-          continue;
-          n = 0;
-          continue;
-          m = 1;
           continue;
           paramBoolean1 = false;
           boolean bool1;
@@ -238,71 +241,92 @@ public class TbsDownloader
         }
       }
     }
-    ((JSONObject)localObject4).put("PROTOCOLVERSION", 1);
-    if (TbsShareManager.isThirdPartyApp(c))
+    ((JSONObject)localObject4).put("REQUEST_TPATCH", n);
+    break label232;
+    ((JSONObject)localObject4).put("REQUEST_TPATCH", 0);
+    ((JSONObject)localObject4).put("TIMEZONEID", localObject3);
+    ((JSONObject)localObject4).put("COUNTRYISO", localObject2);
+    if (b.b())
     {
-      if (QbSdk.c) {
-        m = TbsShareManager.a(c, false);
-      } else {
-        m = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version", 0);
-      }
-    }
-    else
-    {
-      if (paramBoolean3) {
-        m = p.a().i(c);
-      } else {
-        m = p.a().m(c);
-      }
-      n = m;
-      if (m == 0)
+      ((JSONObject)localObject4).put("REQUEST_64", 1);
+      ((JSONObject)localObject4).put("PROTOCOLVERSION", 1);
+      if (TbsShareManager.isThirdPartyApp(c))
       {
-        n = m;
-        if (p.a().l(c))
+        if (QbSdk.c) {
+          n = TbsShareManager.a(c, false);
+        } else {
+          n = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version", 0);
+        }
+      }
+      else
+      {
+        if (paramBoolean3) {
+          n = p.a().j(c);
+        } else {
+          n = p.a().n(c);
+        }
+        i1 = n;
+        if (n == 0)
         {
-          m = -1;
-          n = m;
-          if ("com.tencent.mobileqq".equals(c.getApplicationInfo().packageName))
+          i1 = n;
+          if (p.a().m(c))
           {
-            TbsDownloadUpload.clear();
-            localObject2 = TbsDownloadUpload.getInstance(c);
-            ((TbsDownloadUpload)localObject2).a.put("tbs_local_core_version", Integer.valueOf(-1));
-            ((TbsDownloadUpload)localObject2).commit();
-            TbsPVConfig.releaseInstance();
-            n = m;
-            if (TbsPVConfig.getInstance(c).getLocalCoreVersionMoreTimes() == 1) {
-              n = p.a().i(c);
+            n = -1;
+            i1 = n;
+            if ("com.tencent.mobileqq".equals(c.getApplicationInfo().packageName))
+            {
+              TbsDownloadUpload.clear();
+              localObject2 = TbsDownloadUpload.getInstance(c);
+              ((TbsDownloadUpload)localObject2).a.put("tbs_local_core_version", Integer.valueOf(-1));
+              ((TbsDownloadUpload)localObject2).commit();
+              TbsPVConfig.releaseInstance();
+              i1 = n;
+              if (TbsPVConfig.getInstance(c).getLocalCoreVersionMoreTimes() == 1) {
+                i1 = p.a().j(c);
+              }
             }
           }
         }
-      }
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("[TbsDownloader.postJsonData] tbsLocalVersion=");
-      ((StringBuilder)localObject2).append(n);
-      ((StringBuilder)localObject2).append(" isDownloadForeground=");
-      ((StringBuilder)localObject2).append(paramBoolean2);
-      TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString());
-      m = n;
-      if (paramBoolean2)
-      {
-        bool3 = p.a().l(c);
-        if (bool3) {
-          m = n;
-        } else {
-          m = 0;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[TbsDownloader.postJsonData] tbsLocalVersion=");
+        ((StringBuilder)localObject2).append(i1);
+        ((StringBuilder)localObject2).append(" isDownloadForeground=");
+        ((StringBuilder)localObject2).append(paramBoolean2);
+        TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString());
+        n = i1;
+        if (paramBoolean2)
+        {
+          bool3 = p.a().m(c);
+          if (bool3) {
+            n = i1;
+          } else {
+            n = 0;
+          }
         }
       }
-    }
-    if (paramBoolean1)
-    {
+      if (!paramBoolean1) {
+        break label1376;
+      }
       ((JSONObject)localObject4).put("FUNCTION", 2);
-      break label562;
-      ((JSONObject)localObject4).put("FUNCTION", n);
-      label562:
+      localObject2 = "A";
+      break label590;
+      ((JSONObject)localObject4).put("FUNCTION", i1);
+      if (n != 0) {
+        break label1392;
+      }
+      localObject2 = "C";
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("2");
+      ((StringBuilder)localObject3).append((String)localObject2);
+      q.a(((StringBuilder)localObject3).toString());
       if (TbsShareManager.isThirdPartyApp(c))
       {
         localObject2 = f();
         ((JSONObject)localObject4).put("TBSVLARR", localObject2);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("3is");
+        ((StringBuilder)localObject3).append(((JSONArray)localObject2).toString());
+        q.a(((StringBuilder)localObject3).toString());
         localTbsDownloadConfig.mSyncMap.put("last_thirdapp_sendrequest_coreversion", ((JSONArray)localObject2).toString());
         localTbsDownloadConfig.commit();
         if (QbSdk.c) {
@@ -312,7 +336,7 @@ public class TbsDownloader
       else
       {
         localObject2 = a(paramBoolean3);
-        if ((Apn.getApnType(c) != 3) && (((JSONArray)localObject2).length() != 0) && (m == 0) && (paramBoolean1)) {
+        if ((Apn.getApnType(c) != 3) && (((JSONArray)localObject2).length() != 0) && (n == 0) && (paramBoolean1)) {
           ((JSONObject)localObject4).put("TBSBACKUPARR", localObject2);
         }
       }
@@ -320,58 +344,70 @@ public class TbsDownloader
       ((JSONObject)localObject4).put("APPVN", a(localTbsDownloadConfig.mPreferences.getString("app_versionname", null)));
       ((JSONObject)localObject4).put("APPVC", localTbsDownloadConfig.mPreferences.getInt("app_versioncode", 0));
       ((JSONObject)localObject4).put("APPMETA", a(localTbsDownloadConfig.mPreferences.getString("app_metadata", null)));
-      ((JSONObject)localObject4).put("TBSSDKV", 43973);
-      ((JSONObject)localObject4).put("TBSV", m);
+      ((JSONObject)localObject4).put("TBSSDKV", 44069);
+      ((JSONObject)localObject4).put("TBSV", n);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("4is");
+      ((StringBuilder)localObject2).append(n);
+      q.a(((StringBuilder)localObject2).toString());
       if (!paramBoolean3) {
-        break label1187;
+        break label1400;
       }
-      n = 1;
-      ((JSONObject)localObject4).put("DOWNLOADDECOUPLECORE", n);
+      i1 = 1;
+      ((JSONObject)localObject4).put("DOWNLOADDECOUPLECORE", i1);
       localObject2 = localTbsDownloadConfig.mSyncMap;
       if (!paramBoolean3) {
-        break label1193;
+        break label1406;
       }
-      n = 1;
-      ((Map)localObject2).put("tbs_downloaddecouplecore", Integer.valueOf(n));
+      i1 = 1;
+      ((Map)localObject2).put("tbs_downloaddecouplecore", Integer.valueOf(i1));
       localTbsDownloadConfig.commit();
-      if (m != 0) {
+      if (n != 0) {
         ((JSONObject)localObject4).put("TBSBACKUPV", g.c(paramBoolean3));
       }
       ((JSONObject)localObject4).put("CPU", e);
-      ((JSONObject)localObject4).put("UA", str1);
-      ((JSONObject)localObject4).put("IMSI", a(str2));
-      ((JSONObject)localObject4).put("IMEI", a(str3));
-      ((JSONObject)localObject4).put("ANDROID_ID", a(str4));
-      ((JSONObject)localObject4).put("GUID", b.e(c));
+      ((JSONObject)localObject4).put("UA", str2);
+      ((JSONObject)localObject4).put("IMSI", a(str3));
+      ((JSONObject)localObject4).put("IMEI", a(str4));
+      ((JSONObject)localObject4).put("ANDROID_ID", a(str5));
+      ((JSONObject)localObject4).put("GUID", b.f(c));
       paramBoolean1 = TbsShareManager.isThirdPartyApp(c);
       if (!paramBoolean1)
       {
-        if (m != 0)
+        if (n != 0)
         {
-          if (!QbSdk.a(c, m)) {
-            break label1199;
+          if (!QbSdk.a(c, n)) {
+            break label1412;
           }
-          m = 0;
-          ((JSONObject)localObject4).put("STATUS", m);
+          n = 0;
+          ((JSONObject)localObject4).put("STATUS", n);
         }
         else
         {
           ((JSONObject)localObject4).put("STATUS", 0);
         }
-        ((JSONObject)localObject4).put("TBSDV", p.a().h(c));
+        if (q.b(c)) {
+          n = TbsShareManager.getTbsStableCoreVersion(c, 0);
+        } else {
+          n = p.a().i(c);
+        }
+        ((JSONObject)localObject4).put("TBSDV", n);
       }
       paramBoolean3 = TbsDownloadConfig.getInstance(c).mPreferences.getBoolean("request_full_package", false);
+      if (!QbSdk.isEnableSensitiveApi()) {
+        break label1417;
+      }
       localObject2 = QbSdk.a(c, "can_unlzma", null);
       if ((localObject2 == null) || (!(localObject2 instanceof Boolean))) {
-        break label1204;
+        break label1417;
       }
       paramBoolean1 = ((Boolean)localObject2).booleanValue();
-      break label1206;
-      if (m != 0) {
+      break label1419;
+      if (n != 0) {
         ((JSONObject)localObject4).put("REQUEST_LZMA", 1);
       }
       if (!getOverSea(c)) {
-        break label1223;
+        break label1436;
       }
       ((JSONObject)localObject4).put("OVERSEA", 1);
       if (paramBoolean2) {
@@ -381,6 +417,10 @@ public class TbsDownloader
       ((StringBuilder)localObject2).append("[TbsDownloader.postJsonData] jsonData=");
       ((StringBuilder)localObject2).append(((JSONObject)localObject4).toString());
       TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[TbsDownloader.postJsonData] jsonData=");
+      ((StringBuilder)localObject2).append(((JSONObject)localObject4).toString());
+      Log.d("TbsDownload", ((StringBuilder)localObject2).toString());
       return localObject4;
     }
   }
@@ -388,52 +428,59 @@ public class TbsDownloader
   private static void a(JSONArray paramJSONArray)
   {
     String[] arrayOfString = e();
-    int i2 = arrayOfString.length;
-    int m = 0;
-    while (m < i2)
+    int i3 = arrayOfString.length;
+    int n = 0;
+    while (n < i3)
     {
-      Object localObject1 = arrayOfString[m];
-      int i3 = TbsShareManager.getSharedTbsCoreVersion(c, (String)localObject1);
-      if (i3 > 0)
+      Object localObject1 = arrayOfString[n];
+      int i4 = TbsShareManager.getSharedTbsCoreVersion(c, (String)localObject1);
+      if (i4 > 0)
       {
         Object localObject2 = c;
-        int i1 = 1;
+        int i2 = 1;
         localObject2 = TbsShareManager.getPackageContext((Context)localObject2, (String)localObject1, true);
-        if ((localObject2 != null) && (!p.a().f((Context)localObject2)))
+        if ((localObject2 != null) && (!p.a().g((Context)localObject2)))
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("host check failed,packageName = ");
           ((StringBuilder)localObject2).append((String)localObject1);
           TbsLog.e("TbsDownload", ((StringBuilder)localObject2).toString());
         }
-        else if (a(c, i3))
+        else if (a(c, i4))
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("add CoreVersionToJsonData,version+");
-          ((StringBuilder)localObject1).append(i3);
+          ((StringBuilder)localObject1).append(i4);
           ((StringBuilder)localObject1).append(" is in black list");
           TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
         }
         else
         {
-          int n = 0;
-          while (n < paramJSONArray.length())
+          int i1 = 0;
+          while (i1 < paramJSONArray.length())
           {
-            if (paramJSONArray.optInt(n) == i3)
+            if (paramJSONArray.optInt(i1) == i4)
             {
-              n = i1;
+              i1 = i2;
               break label204;
             }
-            n += 1;
+            i1 += 1;
           }
-          n = 0;
+          i1 = 0;
           label204:
-          if (n == 0) {
-            paramJSONArray.put(i3);
+          if (i1 == 0)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("addCoreVersionToJsonData,pkg=");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append(";version=");
+            ((StringBuilder)localObject2).append(i4);
+            TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString());
+            paramJSONArray.put(i4);
           }
         }
       }
-      m += 1;
+      n += 1;
     }
   }
   
@@ -460,13 +507,13 @@ public class TbsDownloader
   private static boolean a(Context paramContext, boolean paramBoolean)
   {
     TbsDownloadConfig localTbsDownloadConfig = TbsDownloadConfig.getInstance(paramContext);
-    int m;
+    int n;
     if (Build.VERSION.SDK_INT < 8) {
-      m = -102;
+      n = -102;
     }
     for (;;)
     {
-      localTbsDownloadConfig.setDownloadInterruptCode(m);
+      localTbsDownloadConfig.setDownloadInterruptCode(n);
       return false;
       Object localObject;
       if (!localTbsDownloadConfig.mPreferences.contains("is_oversea"))
@@ -496,7 +543,7 @@ public class TbsDownloader
         paramContext.append(Build.VERSION.SDK_INT);
         paramContext.append(", and overea");
         TbsLog.i("TbsDownload", paramContext.toString());
-        m = -103;
+        n = -103;
       }
       else
       {
@@ -521,7 +568,7 @@ public class TbsDownloader
         break;
       }
       TbsLog.e("TbsDownload", "can not support x86 devices!!");
-      m = -104;
+      n = -104;
     }
     return true;
   }
@@ -529,15 +576,15 @@ public class TbsDownloader
   private static boolean a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
     Object localObject2 = TbsDownloadConfig.getInstance(paramContext);
-    e.a().a(1000, new TbsDownloader.1((TbsDownloadConfig)localObject2));
+    c.a().a(paramContext, Integer.valueOf(1000), new TbsDownloader.1((TbsDownloadConfig)localObject2));
     Object localObject1;
     if (!paramBoolean1)
     {
       paramContext = ((TbsDownloadConfig)localObject2).mPreferences.getString("app_versionname", null);
-      int m = ((TbsDownloadConfig)localObject2).mPreferences.getInt("app_versioncode", 0);
+      int n = ((TbsDownloadConfig)localObject2).mPreferences.getInt("app_versioncode", 0);
       localObject1 = ((TbsDownloadConfig)localObject2).mPreferences.getString("app_metadata", null);
-      String str1 = b.c(c);
-      int n = b.d(c);
+      String str1 = b.d(c);
+      int i1 = b.e(c);
       String str2 = b.a(c, "com.tencent.mm.BuildInfo.CLIENT_VERSION");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[TbsDownloader.needSendQueryRequest] appVersionName=");
@@ -545,9 +592,9 @@ public class TbsDownloader
       localStringBuilder.append(" oldAppVersionName=");
       localStringBuilder.append(paramContext);
       localStringBuilder.append(" appVersionCode=");
-      localStringBuilder.append(n);
+      localStringBuilder.append(i1);
       localStringBuilder.append(" oldAppVersionCode=");
-      localStringBuilder.append(m);
+      localStringBuilder.append(n);
       localStringBuilder.append(" appMetadata=");
       localStringBuilder.append(str2);
       localStringBuilder.append(" oldAppVersionMetadata=");
@@ -587,33 +634,52 @@ public class TbsDownloader
       ((StringBuilder)localObject2).append(" s");
       TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString());
       TbsPVConfig.releaseInstance();
-      int i1 = TbsPVConfig.getInstance(c).getEmergentCoreVersion();
-      int i2 = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version", 0);
+      int i2 = TbsPVConfig.getInstance(c).getEmergentCoreVersion();
+      int i3 = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version", 0);
       l1 = l2 - l1;
       l5 *= 1000L;
-      if (l1 > l5) {}
+      if (l1 > l5) {
+        paramContext = "needSendRequest  true  #1";
+      }
       for (;;)
       {
-        paramContext = null;
-        paramBoolean1 = true;
-        break label849;
-        if (((i1 <= p.a().i(c)) || (i1 <= i2)) && ((!TbsShareManager.isThirdPartyApp(c)) || (l3 <= 0L) || (l2 - l3 <= l5) || (l4 >= 11L))) {
-          if ((TbsShareManager.isThirdPartyApp(c)) && (TbsShareManager.findCoreForThirdPartyApp(c) == 0) && (!d()))
+        TbsLog.i("TbsDownload", paramContext);
+        for (;;)
+        {
+          paramContext = null;
+          paramBoolean1 = true;
+          break label944;
+          if ((i2 > p.a().j(c)) && (i2 > i3))
           {
-            p.a().d(c);
+            paramContext = new StringBuilder();
+            paramContext.append("emergentCoreVersion is ");
+            paramContext.append(i2);
+            paramContext.append(" getTbsCoreInstalledVerInNolock is ");
+            paramContext.append(p.a().j(c));
+            paramContext.append(" responseCoreVersion is ");
+            paramContext.append(i3);
+            paramContext = paramContext.toString();
+            break;
           }
-          else
+          if ((TbsShareManager.isThirdPartyApp(c)) && (l3 > 0L) && (l2 - l3 > l5) && (l4 < 11L))
           {
-            if ((str1 == null) || (n == 0) || (str2 == null)) {
-              break;
-            }
-            if ((str1.equals(paramContext)) && (n == m)) {
-              if (str2.equals(localObject1)) {
-                break label845;
-              }
-            }
+            paramContext = "needSendRequest  true  #3";
+            break;
           }
+          if ((!TbsShareManager.isThirdPartyApp(c)) || (TbsShareManager.findCoreForThirdPartyApp(c) != 0) || (d())) {
+            break label710;
+          }
+          TbsLog.i("TbsDownload", "needSendRequest  true  #4");
+          p.a().e(c);
         }
+        label710:
+        if ((str1 == null) || (i1 == 0) || (str2 == null)) {
+          break;
+        }
+        if ((str1.equals(paramContext)) && (i1 == n) && (str2.equals(localObject1))) {
+          break label940;
+        }
+        paramContext = "needSendRequest  true  #5";
       }
       if (TbsShareManager.isThirdPartyApp(c))
       {
@@ -627,27 +693,28 @@ public class TbsDownloader
         ((StringBuilder)localObject2).append(" appVersionName is ");
         ((StringBuilder)localObject2).append(str1);
         ((StringBuilder)localObject2).append(" appVersionCode is ");
-        ((StringBuilder)localObject2).append(n);
+        ((StringBuilder)localObject2).append(i1);
         ((StringBuilder)localObject2).append(" appMetadata is ");
         ((StringBuilder)localObject2).append(str2);
         ((StringBuilder)localObject2).append(" oldAppVersionName is ");
         ((StringBuilder)localObject2).append(paramContext);
         ((StringBuilder)localObject2).append(" oldAppVersionCode is ");
-        ((StringBuilder)localObject2).append(m);
+        ((StringBuilder)localObject2).append(n);
         ((StringBuilder)localObject2).append(" oldAppVersionMetadata is ");
         ((StringBuilder)localObject2).append((String)localObject1);
         paramContext = ((StringBuilder)localObject2).toString();
       }
       else
       {
-        label845:
+        label940:
         paramContext = null;
       }
       paramBoolean1 = false;
     }
     else
     {
-      label849:
+      label944:
+      TbsLog.i("TbsDownload", "needSendRequest  true  #6");
       paramContext = null;
       paramBoolean1 = true;
     }
@@ -671,10 +738,10 @@ public class TbsDownloader
     ((StringBuilder)localObject1).append(paramBoolean3);
     TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
     TbsDownloadConfig localTbsDownloadConfig = TbsDownloadConfig.getInstance(c);
-    bool1 = TextUtils.isEmpty(paramString);
+    bool = TextUtils.isEmpty(paramString);
     Integer localInteger = Integer.valueOf(0);
     Boolean localBoolean = Boolean.valueOf(false);
-    if (bool1)
+    if (bool)
     {
       if (paramBoolean1) {
         paramInt = -108;
@@ -686,8 +753,8 @@ public class TbsDownloader
       return false;
     }
     JSONObject localJSONObject = new JSONObject(paramString);
-    int m = localJSONObject.getInt("RET");
-    if (m != 0)
+    int n = localJSONObject.getInt("RET");
+    if (n != 0)
     {
       if (paramBoolean1) {
         paramInt = -109;
@@ -697,25 +764,59 @@ public class TbsDownloader
       localTbsDownloadConfig.setDownloadInterruptCode(paramInt);
       paramString = new StringBuilder();
       paramString.append("[TbsDownloader.readResponse] return #2,returnCode=");
-      paramString.append(m);
+      paramString.append(n);
       TbsLog.i("TbsDownload", paramString.toString());
       return false;
     }
-    int i4 = localJSONObject.getInt("RESPONSECODE");
-    String str3 = localJSONObject.getString("DOWNLOADURL");
-    String str4 = localJSONObject.optString("URLLIST", "");
-    int i5 = localJSONObject.getInt("TBSAPKSERVERVERSION");
-    int i6 = localJSONObject.getInt("DOWNLOADMAXFLOW");
-    int i7 = localJSONObject.getInt("DOWNLOAD_MIN_FREE_SPACE");
-    int i8 = localJSONObject.getInt("DOWNLOAD_SUCCESS_MAX_RETRYTIMES");
-    int i9 = localJSONObject.getInt("DOWNLOAD_FAILED_MAX_RETRYTIMES");
+    int i5 = localJSONObject.getInt("RESPONSECODE");
+    String str2 = localJSONObject.getString("DOWNLOADURL");
+    String str3 = localJSONObject.optString("URLLIST", "");
+    int i6 = localJSONObject.getInt("TBSAPKSERVERVERSION");
+    int i7 = localJSONObject.getInt("DOWNLOADMAXFLOW");
+    int i8 = localJSONObject.getInt("DOWNLOAD_MIN_FREE_SPACE");
+    int i9 = localJSONObject.getInt("DOWNLOAD_SUCCESS_MAX_RETRYTIMES");
+    int i10 = localJSONObject.getInt("DOWNLOAD_FAILED_MAX_RETRYTIMES");
     long l3 = localJSONObject.getLong("DOWNLOAD_SINGLE_TIMEOUT");
     long l4 = localJSONObject.getLong("TBSAPKFILESIZE");
     long l1 = localJSONObject.optLong("RETRY_INTERVAL", 0L);
-    int i10 = localJSONObject.optInt("FLOWCTR", -1);
+    int i11 = localJSONObject.optInt("FLOWCTR", -1);
+    paramString = new StringBuilder();
+    paramString.append("5is");
+    paramString.append(i6);
+    q.a(paramString.toString());
     try
     {
-      m = localJSONObject.getInt("USEBBACKUPVER");
+      if (TextUtils.isEmpty(str2))
+      {
+        paramString = "A";
+      }
+      else
+      {
+        paramString = new StringBuilder();
+        paramString.append("");
+        paramString.append(i6);
+        if (str2.contains(paramString.toString())) {
+          paramString = "B";
+        } else {
+          paramString = str2;
+        }
+      }
+    }
+    catch (Throwable paramString)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("throwable is ");
+      ((StringBuilder)localObject1).append(Log.getStackTraceString(paramString));
+      TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
+      paramString = "";
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("6is");
+    ((StringBuilder)localObject1).append(paramString);
+    q.a(((StringBuilder)localObject1).toString());
+    try
+    {
+      n = localJSONObject.getInt("USEBBACKUPVER");
     }
     catch (Exception paramString)
     {
@@ -723,85 +824,32 @@ public class TbsDownloader
       {
         Object localObject2;
         continue;
-        bool1 = false;
+        bool = false;
         continue;
-        bool1 = false;
+        bool = false;
         continue;
-        bool1 = false;
+        bool = false;
         continue;
-        bool1 = false;
+        bool = false;
+        continue;
+        bool = false;
         continue;
       }
     }
-    m = 0;
-    localTbsDownloadConfig.mSyncMap.put("use_backup_version", Integer.valueOf(m));
+    n = 0;
+    localTbsDownloadConfig.mSyncMap.put("use_backup_version", Integer.valueOf(n));
     if ((paramBoolean1) && (QbSdk.i) && (TbsShareManager.isThirdPartyApp(c)))
     {
       try
       {
-        m = localJSONObject.optInt("BUGLY", 0);
+        n = localJSONObject.optInt("BUGLY", 0);
         paramString = TbsExtensionFunctionManager.getInstance();
         localObject1 = c;
-        if (m == 1) {
-          bool1 = true;
-        } else {
-          bool1 = false;
+        if (n != 1) {
+          break label3363;
         }
-        try
-        {
-          paramString.setFunctionEnable((Context)localObject1, "bugly_switch.txt", bool1);
-        }
-        catch (Throwable paramString) {}
-        localObject1 = new StringBuilder();
-      }
-      catch (Throwable paramString) {}
-      ((StringBuilder)localObject1).append("throwable:");
-      ((StringBuilder)localObject1).append(paramString.toString());
-      TbsLog.i("qbsdk", ((StringBuilder)localObject1).toString());
-    }
-    if (paramBoolean1)
-    {
-      try
-      {
-        m = localJSONObject.optInt("TEMPLATESWITCH", 0);
-        if ((m & 0x1) == 0) {
-          break label3263;
-        }
-        bool1 = true;
-        TbsExtensionFunctionManager.getInstance().setFunctionEnable(c, "cookie_switch.txt", bool1);
-        paramString = new StringBuilder();
-        paramString.append("useCookieCompatiable:");
-        paramString.append(bool1);
-        TbsLog.w("TbsDownload", paramString.toString());
-        if ((m & 0x2) == 0) {
-          break label3269;
-        }
-        bool1 = true;
-        TbsExtensionFunctionManager.getInstance().setFunctionEnable(c, "disable_get_apk_version_switch.txt", bool1);
-        paramString = new StringBuilder();
-        paramString.append("disableGetApkVersionByReadFile:");
-        paramString.append(bool1);
-        TbsLog.w("TbsDownload", paramString.toString());
-        if ((m & 0x4) == 0) {
-          break label3275;
-        }
-        bool1 = true;
-        TbsExtensionFunctionManager.getInstance().setFunctionEnable(c, "disable_unpreinit.txt", bool1);
-        QbSdk.setDisableUnpreinitBySwitch(bool1);
-        paramString = new StringBuilder();
-        paramString.append("disableUnpreinitBySwitch:");
-        paramString.append(bool1);
-        TbsLog.i("TbsDownload", paramString.toString());
-        if ((m & 0x8) == 0) {
-          break label3281;
-        }
-        bool1 = true;
-        TbsExtensionFunctionManager.getInstance().setFunctionEnable(c, "disable_use_host_backup_core.txt", bool1);
-        QbSdk.setDisableUseHostBackupCoreBySwitch(bool1);
-        paramString = new StringBuilder();
-        paramString.append("disableUseHostBackupCoreBySwitch:");
-        paramString.append(bool1);
-        TbsLog.i("TbsDownload", paramString.toString());
+        bool = true;
+        paramString.setFunctionEnable((Context)localObject1, "bugly_switch.txt", bool);
       }
       catch (Throwable paramString)
       {
@@ -813,61 +861,101 @@ public class TbsDownloader
     }
     else
     {
-      label1044:
-      label1060:
-      label3143:
+      if (paramBoolean1) {
+        try
+        {
+          n = localJSONObject.optInt("TEMPLATESWITCH", 0);
+          if ((n & 0x1) == 0) {
+            break label3369;
+          }
+          bool = true;
+          TbsExtensionFunctionManager.getInstance().setFunctionEnable(c, "cookie_switch.txt", bool);
+          paramString = new StringBuilder();
+          paramString.append("useCookieCompatiable:");
+          paramString.append(bool);
+          TbsLog.w("TbsDownload", paramString.toString());
+          if ((n & 0x2) == 0) {
+            break label3375;
+          }
+          bool = true;
+          TbsExtensionFunctionManager.getInstance().setFunctionEnable(c, "disable_get_apk_version_switch.txt", bool);
+          paramString = new StringBuilder();
+          paramString.append("disableGetApkVersionByReadFile:");
+          paramString.append(bool);
+          TbsLog.w("TbsDownload", paramString.toString());
+          if ((n & 0x4) == 0) {
+            break label3381;
+          }
+          bool = true;
+          TbsExtensionFunctionManager.getInstance().setFunctionEnable(c, "disable_unpreinit.txt", bool);
+          QbSdk.setDisableUnpreinitBySwitch(bool);
+          paramString = new StringBuilder();
+          paramString.append("disableUnpreinitBySwitch:");
+          paramString.append(bool);
+          TbsLog.i("TbsDownload", paramString.toString());
+          if ((n & 0x8) == 0) {
+            break label3387;
+          }
+          bool = true;
+          TbsExtensionFunctionManager.getInstance().setFunctionEnable(c, "disable_use_host_backup_core.txt", bool);
+          QbSdk.setDisableUseHostBackupCoreBySwitch(bool);
+          paramString = new StringBuilder();
+          paramString.append("disableUseHostBackupCoreBySwitch:");
+          paramString.append(bool);
+          TbsLog.i("TbsDownload", paramString.toString());
+        }
+        catch (Throwable paramString)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("throwable:");
+          ((StringBuilder)localObject1).append(paramString.toString());
+          TbsLog.i("qbsdk", ((StringBuilder)localObject1).toString());
+        }
+      }
       try
       {
         paramString = localJSONObject.getString("PKGMD5");
       }
       catch (Exception paramString)
       {
-        int n;
         int i1;
-        Object localObject3;
         int i2;
-        boolean bool2;
-        label970:
-        label973:
-        label989:
-        label995:
-        label998:
-        label1000:
-        label1006:
-        label1015:
-        label1022:
-        break label998;
+        Object localObject3;
+        int i3;
+        label1086:
+        label1089:
+        break label1114;
       }
       try
       {
-        n = localJSONObject.getInt("RESETX5");
+        i1 = localJSONObject.getInt("RESETX5");
       }
       catch (Exception localException1)
       {
-        break label995;
+        break label1111;
       }
       try
       {
-        i1 = localJSONObject.getInt("UPLOADLOG");
+        i2 = localJSONObject.getInt("UPLOADLOG");
       }
       catch (Exception localException2)
       {
-        break label989;
+        break label1105;
       }
       try
       {
         if (localJSONObject.has("RESETTOKEN"))
         {
-          m = localJSONObject.getInt("RESETTOKEN");
-          if (m != 0) {
-            m = 1;
+          n = localJSONObject.getInt("RESETTOKEN");
+          if (n != 0) {
+            n = 1;
           } else {
-            m = 0;
+            n = 0;
           }
         }
         else
         {
-          m = 0;
+          n = 0;
         }
         localObject3 = "";
         localObject1 = localObject3;
@@ -875,7 +963,7 @@ public class TbsDownloader
       }
       catch (Exception localException3)
       {
-        break label973;
+        break label1089;
       }
       try
       {
@@ -885,330 +973,312 @@ public class TbsDownloader
           localObject1 = localJSONObject.getString("SETTOKEN");
         }
         localObject2 = localObject1;
-        if (localJSONObject.has("ENABLE_LOAD_RENAME_FILE_LOCK"))
+        if (localJSONObject.has("ENABLE_LOAD_RENAME_FILE_LOCK_WAIT"))
         {
           localObject2 = localObject1;
-          i2 = localJSONObject.getInt("ENABLE_LOAD_RENAME_FILE_LOCK");
-          if (i2 != 0) {
-            bool1 = true;
-          } else {
-            bool1 = false;
+          i3 = localJSONObject.getInt("ENABLE_LOAD_RENAME_FILE_LOCK_WAIT");
+          if (i3 == 0)
+          {
+            bool = false;
+            break label1086;
           }
         }
-        else
-        {
-          bool1 = true;
-        }
+        bool = true;
       }
       catch (Exception localException4)
       {
         str1 = paramString;
         paramString = (String)localObject2;
-        break label1015;
+        break label1131;
       }
+      localObject2 = "";
+      n = 0;
+      localObject1 = paramString;
+      paramString = (String)localObject2;
+      break label1131;
+      label1105:
+      localObject1 = paramString;
+      break label1122;
+      label1111:
+      break label1116;
+      label1114:
+      paramString = null;
+      label1116:
+      i1 = 0;
+      localObject1 = paramString;
+      label1122:
+      paramString = "";
+      n = 0;
+      i2 = 0;
+      label1131:
+      localObject2 = paramString;
+      bool = true;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
       try
       {
-        if (localJSONObject.has("ENABLE_LOAD_RENAME_FILE_LOCK_WAIT"))
-        {
-          i2 = localJSONObject.getInt("ENABLE_LOAD_RENAME_FILE_LOCK_WAIT");
-          if (i2 == 0)
-          {
-            bool2 = false;
-            break label970;
-          }
-        }
-        bool2 = true;
+        i4 = localJSONObject.getInt("RESETDECOUPLECORE");
       }
       catch (Exception localException7)
       {
-        str2 = paramString;
-        paramString = str1;
-        break label1022;
+        int i4;
+        label1157:
+        break label1157;
       }
-      localObject2 = "";
-      m = 0;
-      localObject1 = paramString;
-      paramString = (String)localObject2;
-      break label1015;
-      localObject1 = paramString;
-      break label1006;
-      break label1000;
-      paramString = null;
-      n = 0;
-      localObject1 = paramString;
-      paramString = "";
-      m = 0;
-      i1 = 0;
-      bool1 = true;
-      localObject2 = localObject1;
-      localObject1 = paramString;
-      bool2 = true;
-      paramString = (String)localObject2;
+      i4 = 0;
       try
       {
-        i3 = localJSONObject.getInt("RESETDECOUPLECORE");
+        i3 = localJSONObject.getInt("RESETTODECOUPLECORE");
       }
       catch (Exception localException8)
       {
-        int i3;
-        break label1044;
+        label1173:
+        break label1173;
       }
       i3 = 0;
+      localObject2 = f;
+      if (n == 0) {
+        break label3393;
+      }
       try
       {
-        i2 = localJSONObject.getInt("RESETTODECOUPLECORE");
-      }
-      catch (Exception localException9)
-      {
-        break label1060;
-      }
-      i2 = 0;
-      localObject2 = f;
-      if (m == 0) {
-        break label3287;
-      }
-      for (;;)
-      {
-        try
+        localTbsDownloadConfig.mSyncMap.put("tbs_deskey_token", "");
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).length() == 96))
         {
-          localTbsDownloadConfig.mSyncMap.put("tbs_deskey_token", "");
-          if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).length() == 96))
-          {
-            localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append((String)localObject1);
-            ((StringBuilder)localObject3).append("&");
-            ((StringBuilder)localObject3).append(g.c());
-            localObject1 = ((StringBuilder)localObject3).toString();
-            localTbsDownloadConfig.mSyncMap.put("tbs_deskey_token", localObject1);
-          }
-          if (n == 1)
-          {
-            if (paramBoolean1) {
-              paramInt = -110;
-            } else {
-              paramInt = -210;
-            }
-            localTbsDownloadConfig.setDownloadInterruptCode(paramInt);
-            paramString = c;
-            if (i2 == 1) {
-              paramBoolean2 = true;
-            } else {
-              paramBoolean2 = false;
-            }
-            QbSdk.reset(paramString, paramBoolean2);
-            paramString = new StringBuilder();
-            paramString.append("[TbsDownloader.readResponse] return #3,needResetTbs=1,isQuery=");
-            paramString.append(paramBoolean1);
-            TbsLog.i("TbsDownload", paramString.toString());
-            return false;
-          }
-          if (!bool1) {
-            localTbsDownloadConfig.setTbsCoreLoadRenameFileLockEnable(bool1);
-          }
-          if (!bool2) {
-            localTbsDownloadConfig.setTbsCoreLoadRenameFileLockWaitEnable(bool2);
-          }
-          if (i3 == 1) {
-            QbSdk.resetDecoupleCore(c);
-          }
-          if (i1 == 1)
-          {
-            d.removeMessages(104);
-            Message.obtain(d, 104).sendToTarget();
-          }
-          if (i10 == 1)
-          {
-            long l2 = 604800L;
-            if (l1 > 604800L) {
-              l1 = l2;
-            }
-            if (l1 > 0L) {}
-          }
-          else
-          {
-            l1 = 86400L;
-          }
-          if (getRetryIntervalInSeconds() >= 0L) {
-            l1 = getRetryIntervalInSeconds();
-          }
-          localTbsDownloadConfig.mSyncMap.put("retry_interval", Long.valueOf(l1));
-          if (!paramBoolean1) {}
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append("&");
+          ((StringBuilder)localObject3).append(g.c());
+          localObject1 = ((StringBuilder)localObject3).toString();
+          localTbsDownloadConfig.mSyncMap.put("tbs_deskey_token", localObject1);
         }
-        finally
+        if (i1 == 1)
         {
-          continue;
-          throw paramString;
-          continue;
-        }
-        try
-        {
-          m = localJSONObject.getInt("DECOUPLECOREVERSION");
-        }
-        catch (Exception localException5)
-        {
-          continue;
-        }
-        m = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_decouplecoreversion", 0);
-        break label3290;
-        m = 0;
-        try
-        {
-          n = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_downloaddecouplecore", 0);
-        }
-        catch (Exception localException6)
-        {
-          continue;
-        }
-        n = 0;
-        i1 = m;
-        if (paramBoolean1)
-        {
-          i1 = m;
-          if (!TbsShareManager.isThirdPartyApp(c))
-          {
-            i1 = m;
-            if (m == 0) {
-              i1 = p.a().h(c);
-            }
-          }
-        }
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("in response decoupleCoreVersion is ");
-        ((StringBuilder)localObject1).append(i1);
-        TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
-        localTbsDownloadConfig.mSyncMap.put("tbs_decouplecoreversion", Integer.valueOf(i1));
-        localTbsDownloadConfig.mSyncMap.put("tbs_downloaddecouplecore", Integer.valueOf(n));
-        if (!TbsShareManager.isThirdPartyApp(c)) {
-          if ((i1 > 0) && (i1 != p.a().h(c)) && (i1 == p.a().i(c))) {
-            p.a().n(c);
-          } else if (i1 != 0) {}
-        }
-        try
-        {
-          FileUtil.b(p.a().p(c));
-        }
-        catch (Throwable localThrowable)
-        {
-          String str1;
-          String str2;
-          continue;
-        }
-        if ((TextUtils.isEmpty(str3)) && (TbsShareManager.isThirdPartyApp(c)))
-        {
-          localTbsDownloadConfig.mSyncMap.put("tbs_needdownload", localBoolean);
-          localTbsDownloadConfig.commit();
           if (paramBoolean1) {
-            TbsShareManager.writeCoreInfoForThirdPartyApp(c, i5, false);
-          }
-          TbsLog.i("TbsDownload", "[TbsDownloader.readResponse] return #4,current app is third app...");
-          return false;
-        }
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("in response responseCode is ");
-        ((StringBuilder)localObject1).append(i4);
-        TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
-        if (i4 == 0)
-        {
-          localTbsDownloadConfig.mSyncMap.put("tbs_responsecode", Integer.valueOf(i4));
-          localTbsDownloadConfig.mSyncMap.put("tbs_needdownload", localBoolean);
-          if (paramBoolean1)
-          {
-            localTbsDownloadConfig.mSyncMap.put("tbs_download_interrupt_code_reason", Integer.valueOf(-111));
-          }
-          else
-          {
-            localTbsDownloadConfig.mSyncMap.put("tbs_download_interrupt_code_reason", Integer.valueOf(-211));
-            localTbsDownloadConfig.setDownloadInterruptCode(-211);
-          }
-          localTbsDownloadConfig.commit();
-          if (!TbsShareManager.isThirdPartyApp(c)) {
-            startDecoupleCoreIfNeeded();
-          }
-          TbsLog.i("TbsDownload", "[TbsDownloader.readResponse] return #5,responseCode=0");
-          return false;
-        }
-        i2 = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version", 0);
-        if (i2 > i5)
-        {
-          g.c();
-          p.a().o(c);
-        }
-        if (!TbsShareManager.isThirdPartyApp(c))
-        {
-          i1 = p.a().e(c, 0);
-          if (i1 >= i5) {
-            m = 1;
+            paramInt = -110;
           } else {
-            m = 0;
+            paramInt = -210;
           }
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("tmpCoreVersion is ");
-          ((StringBuilder)localObject1).append(i1);
-          ((StringBuilder)localObject1).append(" tbsDownloadVersion is");
-          ((StringBuilder)localObject1).append(i5);
-          TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
+          localTbsDownloadConfig.setDownloadInterruptCode(paramInt);
+          paramString = c;
+          if (i3 == 1) {
+            paramBoolean2 = true;
+          } else {
+            paramBoolean2 = false;
+          }
+          QbSdk.reset(paramString, paramBoolean2);
+          paramString = new StringBuilder();
+          paramString.append("[TbsDownloader.readResponse] return #3,needResetTbs=1,isQuery=");
+          paramString.append(paramBoolean1);
+          TbsLog.i("TbsDownload", paramString.toString());
+          return false;
+        }
+        if (!bool) {
+          localTbsDownloadConfig.setTbsCoreLoadRenameFileLockWaitEnable(bool);
+        }
+        if (i4 == 1) {
+          QbSdk.resetDecoupleCore(c);
+        }
+        if (i2 == 1)
+        {
+          d.removeMessages(104);
+          Message.obtain(d, 104).sendToTarget();
+        }
+        if (i11 == 1)
+        {
+          long l2 = 604800L;
+          if (l1 > 604800L) {
+            l1 = l2;
+          }
+          if (l1 > 0L) {}
         }
         else
         {
-          m = 0;
+          l1 = 86400L;
         }
-        i1 = paramInt;
-        if (((i1 < i5) && (!TextUtils.isEmpty(str3)) && (m == 0)) || (n == 1)) {
-          continue;
+        if (getRetryIntervalInSeconds() >= 0L) {
+          l1 = getRetryIntervalInSeconds();
         }
+        localTbsDownloadConfig.mSyncMap.put("retry_interval", Long.valueOf(l1));
+        if (!paramBoolean1) {}
+      }
+      finally
+      {
+        label1557:
+        for (;;)
+        {
+          label1531:
+          throw paramString;
+        }
+      }
+      try
+      {
+        n = localJSONObject.getInt("DECOUPLECOREVERSION");
+      }
+      catch (Exception localException5)
+      {
+        break label1531;
+      }
+      n = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_decouplecoreversion", 0);
+      break label3396;
+      n = 0;
+      try
+      {
+        i1 = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_downloaddecouplecore", 0);
+      }
+      catch (Exception localException6)
+      {
+        break label1557;
+      }
+      i1 = 0;
+      i2 = n;
+      if (paramBoolean1)
+      {
+        i2 = n;
+        if (!TbsShareManager.isThirdPartyApp(c))
+        {
+          i2 = n;
+          if (n == 0) {
+            i2 = p.a().i(c);
+          }
+        }
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("in response decoupleCoreVersion is ");
+      ((StringBuilder)localObject1).append(i2);
+      TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
+      localTbsDownloadConfig.mSyncMap.put("tbs_decouplecoreversion", Integer.valueOf(i2));
+      localTbsDownloadConfig.mSyncMap.put("tbs_downloaddecouplecore", Integer.valueOf(i1));
+      if (!TbsShareManager.isThirdPartyApp(c)) {
+        if ((i2 > 0) && (i2 != p.a().i(c)) && (i2 == p.a().j(c))) {
+          p.a().o(c);
+        } else if (i2 != 0) {}
+      }
+      try
+      {
+        FileUtil.b(p.a().q(c));
+      }
+      catch (Throwable localThrowable)
+      {
+        label1750:
+        String str1;
+        break label1750;
+      }
+      if ((TextUtils.isEmpty(str2)) && (TbsShareManager.isThirdPartyApp(c)))
+      {
+        localTbsDownloadConfig.mSyncMap.put("tbs_needdownload", localBoolean);
+        localTbsDownloadConfig.commit();
+        if (paramBoolean1) {
+          TbsShareManager.writeCoreInfoForThirdPartyApp(c, i6, false);
+        }
+        TbsLog.i("TbsDownload", "[TbsDownloader.readResponse] return #4,current app is third app...");
+        return false;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("in response responseCode is ");
+      ((StringBuilder)localObject1).append(i5);
+      TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
+      if (i5 == 0)
+      {
+        localTbsDownloadConfig.mSyncMap.put("tbs_responsecode", Integer.valueOf(i5));
         localTbsDownloadConfig.mSyncMap.put("tbs_needdownload", localBoolean);
         if (paramBoolean1)
         {
-          if (TextUtils.isEmpty(str3))
-          {
-            paramString = localTbsDownloadConfig.mSyncMap;
-            paramInt = -124;
-            paramString.put("tbs_download_interrupt_code_reason", Integer.valueOf(paramInt));
-          }
-          else
-          {
-            if (i5 <= 0)
-            {
-              paramString = localTbsDownloadConfig.mSyncMap;
-              paramInt = -125;
-              continue;
-            }
-            if (i1 >= i5)
-            {
-              paramString = localTbsDownloadConfig.mSyncMap;
-              paramInt = -127;
-              continue;
-            }
-            paramString = localTbsDownloadConfig.mSyncMap;
-            paramInt = -112;
-            continue;
-          }
+          localTbsDownloadConfig.mSyncMap.put("tbs_download_interrupt_code_reason", Integer.valueOf(-111));
         }
         else
         {
-          paramInt = -212;
-          if (TextUtils.isEmpty(str3)) {
-            paramInt = -217;
-          } else if (i5 <= 0) {
-            paramInt = -218;
-          } else if (i1 >= i5) {
-            paramInt = -219;
-          }
-          localTbsDownloadConfig.mSyncMap.put("tbs_download_interrupt_code_reason", Integer.valueOf(paramInt));
-          localTbsDownloadConfig.setDownloadInterruptCode(paramInt);
+          localTbsDownloadConfig.mSyncMap.put("tbs_download_interrupt_code_reason", Integer.valueOf(-211));
+          localTbsDownloadConfig.setDownloadInterruptCode(-211);
         }
+        localTbsDownloadConfig.commit();
+        if (!TbsShareManager.isThirdPartyApp(c)) {
+          startDecoupleCoreIfNeeded();
+        }
+        TbsLog.i("TbsDownload", "[TbsDownloader.readResponse] return #5,responseCode=0");
+        return false;
+      }
+      i3 = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version", 0);
+      if (i3 > i6)
+      {
+        g.c();
+        p.a().p(c);
+      }
+      if (!TbsShareManager.isThirdPartyApp(c))
+      {
+        i2 = p.a().e(c, 0);
+        if (i2 >= i6) {
+          n = 1;
+        } else {
+          n = 0;
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("tmpCoreVersion is ");
+        ((StringBuilder)localObject1).append(i2);
+        ((StringBuilder)localObject1).append(" tbsDownloadVersion is");
+        ((StringBuilder)localObject1).append(i6);
+        TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
+      }
+      else
+      {
+        n = 0;
+      }
+      i2 = paramInt;
+      if (((i2 >= i6) || (TextUtils.isEmpty(str2)) || (n != 0)) && (i1 != 1))
+      {
+        localTbsDownloadConfig.mSyncMap.put("tbs_needdownload", localBoolean);
+        if (paramBoolean1)
+        {
+          if (TextUtils.isEmpty(str2))
+          {
+            paramString = localTbsDownloadConfig.mSyncMap;
+            paramInt = -124;
+          }
+          for (;;)
+          {
+            paramString.put("tbs_download_interrupt_code_reason", Integer.valueOf(paramInt));
+            break;
+            if (i6 <= 0)
+            {
+              paramString = localTbsDownloadConfig.mSyncMap;
+              paramInt = -125;
+            }
+            else if (i2 >= i6)
+            {
+              paramString = localTbsDownloadConfig.mSyncMap;
+              paramInt = -127;
+            }
+            else
+            {
+              paramString = localTbsDownloadConfig.mSyncMap;
+              paramInt = -112;
+            }
+          }
+        }
+        paramInt = -212;
+        if (TextUtils.isEmpty(str2)) {
+          paramInt = -217;
+        } else if (i6 <= 0) {
+          paramInt = -218;
+        } else if (i2 >= i6) {
+          paramInt = -219;
+        }
+        localTbsDownloadConfig.mSyncMap.put("tbs_download_interrupt_code_reason", Integer.valueOf(paramInt));
+        localTbsDownloadConfig.setDownloadInterruptCode(paramInt);
         localTbsDownloadConfig.commit();
         paramString = new StringBuilder();
         paramString.append("version error or downloadUrl empty ,return ahead tbsLocalVersion=");
-        paramString.append(i1);
-        paramString.append(" tbsDownloadVersion=");
-        paramString.append(i5);
-        paramString.append(" tbsLastDownloadVersion=");
         paramString.append(i2);
+        paramString.append(" tbsDownloadVersion=");
+        paramString.append(i6);
+        paramString.append(" tbsLastDownloadVersion=");
+        paramString.append(i3);
         paramString.append(" downloadUrl=");
-        paramString.append(str3);
+        paramString.append(str2);
+        TbsLog.i("TbsDownload", paramString.toString());
+        return false;
       }
-      if (!str3.equals(localTbsDownloadConfig.mPreferences.getString("tbs_downloadurl", null)))
+      if (!str2.equals(localTbsDownloadConfig.mPreferences.getString("tbs_downloadurl", null)))
       {
         g.c();
         localObject2 = localTbsDownloadConfig.mSyncMap;
@@ -1216,37 +1286,37 @@ public class TbsDownloader
         ((Map)localObject2).put("tbs_download_failed_retrytimes", localObject1);
         localTbsDownloadConfig.mSyncMap.put("tbs_download_success_retrytimes", localObject1);
       }
-      localTbsDownloadConfig.mSyncMap.put("tbs_download_version", Integer.valueOf(i5));
+      localTbsDownloadConfig.mSyncMap.put("tbs_download_version", Integer.valueOf(i6));
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("put KEY_TBS_DOWNLOAD_V is ");
-      ((StringBuilder)localObject1).append(i5);
+      ((StringBuilder)localObject1).append(i6);
       TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
-      if (i5 > 0)
+      if (i6 > 0)
       {
-        if (n == 1) {
+        if (i1 == 1) {
           localTbsDownloadConfig.mSyncMap.put("tbs_download_version_type", Integer.valueOf(1));
         } else {
           localTbsDownloadConfig.mSyncMap.put("tbs_download_version_type", localInteger);
         }
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("put KEY_TBS_DOWNLOAD_V_TYPE is ");
-        ((StringBuilder)localObject1).append(n);
+        ((StringBuilder)localObject1).append(i1);
         TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
       }
-      localTbsDownloadConfig.mSyncMap.put("tbs_downloadurl", str3);
-      localTbsDownloadConfig.mSyncMap.put("tbs_downloadurl_list", str4);
-      localTbsDownloadConfig.mSyncMap.put("tbs_responsecode", Integer.valueOf(i4));
-      localTbsDownloadConfig.mSyncMap.put("tbs_download_maxflow", Integer.valueOf(i6));
-      localTbsDownloadConfig.mSyncMap.put("tbs_download_min_free_space", Integer.valueOf(i7));
-      localTbsDownloadConfig.mSyncMap.put("tbs_download_success_max_retrytimes", Integer.valueOf(i8));
-      localTbsDownloadConfig.mSyncMap.put("tbs_download_failed_max_retrytimes", Integer.valueOf(i9));
+      localTbsDownloadConfig.mSyncMap.put("tbs_downloadurl", str2);
+      localTbsDownloadConfig.mSyncMap.put("tbs_downloadurl_list", str3);
+      localTbsDownloadConfig.mSyncMap.put("tbs_responsecode", Integer.valueOf(i5));
+      localTbsDownloadConfig.mSyncMap.put("tbs_download_maxflow", Integer.valueOf(i7 * 2));
+      localTbsDownloadConfig.mSyncMap.put("tbs_download_min_free_space", Integer.valueOf(i8));
+      localTbsDownloadConfig.mSyncMap.put("tbs_download_success_max_retrytimes", Integer.valueOf(i9));
+      localTbsDownloadConfig.mSyncMap.put("tbs_download_failed_max_retrytimes", Integer.valueOf(i10));
       localTbsDownloadConfig.mSyncMap.put("tbs_single_timeout", Long.valueOf(l3));
       localTbsDownloadConfig.mSyncMap.put("tbs_apkfilesize", Long.valueOf(l4));
       localTbsDownloadConfig.commit();
       if (paramString != null) {
         localTbsDownloadConfig.mSyncMap.put("tbs_apk_md5", paramString);
       }
-      if ((!paramBoolean2) && (paramBoolean3) && (p.a().b(c, i5)))
+      if ((!paramBoolean2) && (paramBoolean3) && (p.a().b(c, i6)))
       {
         if (paramBoolean1)
         {
@@ -1263,11 +1333,11 @@ public class TbsDownloader
       for (;;)
       {
         TbsLog.i("TbsDownload", paramString);
-        break label3143;
+        break label3254;
         if ((!paramBoolean2) && (paramBoolean3))
         {
           paramString = g;
-          if ((i4 != 1) && (i4 != 2)) {
+          if ((i5 != 1) && (i5 != 2)) {
             paramBoolean3 = false;
           } else {
             paramBoolean3 = true;
@@ -1324,6 +1394,7 @@ public class TbsDownloader
       }
       localTbsDownloadConfig.mSyncMap.put("tbs_needdownload", Boolean.valueOf(true));
       TbsLog.i("TbsDownload", "[TbsDownloader.readResponse] ##9 set needDownload=true");
+      label3254:
       if (localJSONObject.optInt("stop_pre_oat", 0) == 1) {
         localTbsDownloadConfig.mSyncMap.put("tbs_stop_preoat", Boolean.valueOf(true));
       }
@@ -1335,12 +1406,12 @@ public class TbsDownloader
   protected static File b(int paramInt)
   {
     Object localObject2 = TbsShareManager.getCoreProviderAppList();
-    int n = localObject2.length;
+    int i1 = localObject2.length;
     Object localObject1 = null;
-    int m = 0;
-    while (m < n)
+    int n = 0;
+    while (n < i1)
     {
-      String str1 = localObject2[m];
+      String str1 = localObject2[n];
       String str2 = FileUtil.a(c, str1, 4, false);
       if (getOverSea(c)) {
         localObject1 = "x5.oversea.tbs.org";
@@ -1360,7 +1431,7 @@ public class TbsDownloader
           break;
         }
       }
-      m += 1;
+      n += 1;
     }
     return localObject1;
   }
@@ -1372,55 +1443,54 @@ public class TbsDownloader
     }
     Locale localLocale = Locale.getDefault();
     StringBuffer localStringBuffer = new StringBuffer();
-    paramContext = Build.VERSION.RELEASE;
+    Object localObject = Build.VERSION.RELEASE;
     try
     {
-      str = new String(paramContext.getBytes("UTF-8"), "ISO8859-1");
-      paramContext = str;
+      String str = new String(((String)localObject).getBytes("UTF-8"), "ISO8859-1");
+      localObject = str;
     }
-    catch (Exception localException1)
+    catch (Exception localException2)
     {
-      String str;
-      label49:
-      break label49;
+      label50:
+      break label50;
     }
-    if (paramContext == null) {}
-    while (paramContext.length() <= 0)
+    if (localObject == null) {}
+    while (((String)localObject).length() <= 0)
     {
       localStringBuffer.append("1.0");
       break;
     }
-    localStringBuffer.append(paramContext);
+    localStringBuffer.append((String)localObject);
     localStringBuffer.append("; ");
-    paramContext = localLocale.getLanguage();
-    if (paramContext != null)
+    localObject = localLocale.getLanguage();
+    if (localObject != null)
     {
-      localStringBuffer.append(paramContext.toLowerCase());
-      paramContext = localLocale.getCountry();
-      if (paramContext == null) {
-        break label138;
+      localStringBuffer.append(((String)localObject).toLowerCase());
+      localObject = localLocale.getCountry();
+      if (localObject == null) {
+        break label141;
       }
       localStringBuffer.append("-");
-      paramContext = paramContext.toLowerCase();
+      localObject = ((String)localObject).toLowerCase();
     }
     else
     {
-      paramContext = "en";
+      localObject = "en";
     }
-    localStringBuffer.append(paramContext);
-    label138:
+    localStringBuffer.append((String)localObject);
+    label141:
     if ("REL".equals(Build.VERSION.CODENAME)) {
-      paramContext = Build.MODEL;
+      paramContext = q.d(paramContext);
     }
     try
     {
-      str = new String(paramContext.getBytes("UTF-8"), "ISO8859-1");
-      paramContext = str;
+      localObject = new String(paramContext.getBytes("UTF-8"), "ISO8859-1");
+      paramContext = (Context)localObject;
     }
-    catch (Exception localException2)
+    catch (Exception localException1)
     {
-      label174:
-      break label174;
+      label178:
+      break label178;
     }
     if (paramContext == null)
     {
@@ -1460,25 +1530,30 @@ public class TbsDownloader
   {
     if (TbsShareManager.getHostCorePathAppDefined() != null)
     {
-      int i2 = p.a().a(TbsShareManager.getHostCorePathAppDefined());
-      int i1 = 0;
-      int m = 0;
-      int n;
+      int i3 = p.a().a(TbsShareManager.getHostCorePathAppDefined());
+      int i2 = 0;
+      int n = 0;
+      int i1;
       for (;;)
       {
-        n = i1;
-        if (m >= paramJSONArray.length()) {
+        i1 = i2;
+        if (n >= paramJSONArray.length()) {
           break;
         }
-        if (paramJSONArray.optInt(m) == i2)
+        if (paramJSONArray.optInt(n) == i3)
         {
-          n = 1;
+          i1 = 1;
           break;
         }
-        m += 1;
+        n += 1;
       }
-      if (n == 0) {
-        paramJSONArray.put(i2);
+      if (i1 == 0)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addAppDefinedToCoreVersions, version=");
+        localStringBuilder.append(i3);
+        TbsLog.i("TbsDownload", localStringBuilder.toString());
+        paramJSONArray.put(i3);
       }
     }
   }
@@ -1526,7 +1601,7 @@ public class TbsDownloader
     ((StringBuilder)localObject1).append(" forDecoupleCore is ");
     ((StringBuilder)localObject1).append(paramBoolean3);
     TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
-    if (p.a().c(c))
+    if (p.a().d(c))
     {
       TbsLog.i("TbsDownload", "[TbsDownloader.sendRequest] -- isTbsLocalInstalled!");
       if (paramBoolean1)
@@ -1588,24 +1663,22 @@ public class TbsDownloader
     }
     if (e == null)
     {
-      e = b.b();
+      e = b.a();
       localTbsDownloadConfig.mSyncMap.put("device_cpuabi", e);
       localTbsDownloadConfig.commit();
     }
-    if (!TextUtils.isEmpty(e)) {
-      localObject1 = null;
-    }
+    if (!TextUtils.isEmpty(e)) {}
     try
     {
-      localObject2 = Pattern.compile("i686|mips|x86_64").matcher(e);
-      localObject1 = localObject2;
+      localObject1 = Pattern.compile("i686|mips|x86_64").matcher(e);
     }
-    catch (Exception localException2)
+    catch (Exception localException1)
     {
-      label663:
-      int m;
-      break label663;
+      label659:
+      int n;
+      break label659;
     }
+    localObject1 = null;
     if ((localObject1 != null) && (((Matcher)localObject1).find()))
     {
       if (TbsShareManager.isThirdPartyApp(c))
@@ -1636,29 +1709,33 @@ public class TbsDownloader
       {
         localTbsDownloadConfig.setDownloadInterruptCode(-205);
       }
-      m = 1;
+      n = 1;
     }
     else
     {
-      m = 0;
+      n = 0;
     }
-    localTbsDownloadConfig.mSyncMap.put("app_versionname", b.c(c));
-    localTbsDownloadConfig.mSyncMap.put("app_versioncode", Integer.valueOf(b.d(c)));
+    localTbsDownloadConfig.mSyncMap.put("app_versionname", b.d(c));
+    localTbsDownloadConfig.mSyncMap.put("app_versioncode", Integer.valueOf(b.e(c)));
     localTbsDownloadConfig.commit();
-    localObject3 = a(paramBoolean1, paramBoolean2, paramBoolean3);
+    localObject2 = a(paramBoolean1, paramBoolean2, paramBoolean3);
+    label1453:
+    label1590:
+    label1593:
+    label1641:
     try
     {
-      n = ((JSONObject)localObject3).getInt("TBSV");
+      i1 = ((JSONObject)localObject2).getInt("TBSV");
     }
-    catch (Exception localException1)
+    catch (Exception localException2)
     {
-      int n;
-      label895:
-      break label895;
+      int i1;
+      label894:
+      break label894;
     }
-    n = -1;
-    if ((m == 0) && (n == -1)) {}
-    for (;;)
+    i1 = -1;
+    if ((n == 0) && (i1 == -1)) {}
+    do
     {
       break;
       long l2 = System.currentTimeMillis();
@@ -1674,31 +1751,28 @@ public class TbsDownloader
         localTbsDownloadConfig.mSyncMap.put("count_request_fail_in_24hours", Long.valueOf(l1));
       }
       localTbsDownloadConfig.mSyncMap.put("request_fail", Long.valueOf(l2));
-      localTbsDownloadConfig.mSyncMap.put("app_versionname", b.c(c));
-      localTbsDownloadConfig.mSyncMap.put("app_versioncode", Integer.valueOf(b.d(c)));
+      localTbsDownloadConfig.mSyncMap.put("app_versionname", b.d(c));
+      localTbsDownloadConfig.mSyncMap.put("app_versioncode", Integer.valueOf(b.e(c)));
       localTbsDownloadConfig.mSyncMap.put("app_metadata", b.a(c, "com.tencent.mm.BuildInfo.CLIENT_VERSION"));
       localTbsDownloadConfig.commit();
-      if (m != 0)
-      {
-        if (paramBoolean1)
-        {
-          localObject1 = TbsDownloadUpload.getInstance(c);
-          ((TbsDownloadUpload)localObject1).a.put("tbs_needdownload_code", Integer.valueOf(147));
-        }
-        for (;;)
-        {
-          ((TbsDownloadUpload)localObject1).commit();
-          break;
-          if (paramBoolean3) {
-            break;
-          }
-          localObject1 = TbsDownloadUpload.getInstance(c);
-          ((TbsDownloadUpload)localObject1).a.put("tbs_startdownload_code", Integer.valueOf(167));
-        }
-        return false;
-      }
+    } while (n == 0);
+    if (paramBoolean1)
+    {
+      localObject1 = TbsDownloadUpload.getInstance(c);
+      ((TbsDownloadUpload)localObject1).a.put("tbs_needdownload_code", Integer.valueOf(147));
     }
-    if ((n == -1) && (!paramBoolean3))
+    for (;;)
+    {
+      ((TbsDownloadUpload)localObject1).commit();
+      break;
+      if (paramBoolean3) {
+        break;
+      }
+      localObject1 = TbsDownloadUpload.getInstance(c);
+      ((TbsDownloadUpload)localObject1).a.put("tbs_startdownload_code", Integer.valueOf(167));
+    }
+    return false;
+    if ((i1 == -1) && (!paramBoolean3))
     {
       if (paramBoolean1)
       {
@@ -1719,48 +1793,98 @@ public class TbsDownloader
     }
     try
     {
-      localObject2 = com.tencent.smtt.utils.m.a(c).d();
+      localObject3 = com.tencent.smtt.utils.n.a(c).g();
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("[TbsDownloader.sendRequest] postUrl=");
-      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append((String)localObject3);
       TbsLog.i("TbsDownload", ((StringBuilder)localObject1).toString());
-      if (paramBoolean1)
+      if (!paramBoolean1) {}
+    }
+    catch (Throwable localThrowable2) {}
+    for (;;)
+    {
+      try
       {
         localObject1 = TbsDownloadUpload.getInstance(c);
         ((TbsDownloadUpload)localObject1).a.put("tbs_needdownload_code", Integer.valueOf(148));
         ((TbsDownloadUpload)localObject1).a.put("tbs_needdownload_sent", Integer.valueOf(1));
         ((TbsDownloadUpload)localObject1).commit();
-      }
-      for (localObject1 = "sendRequest query 148";; localObject1 = "sendRequest download 168")
-      {
+        localObject1 = "sendRequest query 148";
         TbsLog.i("TbsDownload", (String)localObject1);
-        break;
-        if (paramBoolean3) {
+        break label1453;
+        if (!paramBoolean3)
+        {
+          localObject1 = TbsDownloadUpload.getInstance(c);
+          ((TbsDownloadUpload)localObject1).a.put("tbs_startdownload_code", Integer.valueOf(168));
+          ((TbsDownloadUpload)localObject1).a.put("tbs_startdownload_sent", Integer.valueOf(1));
+          ((TbsDownloadUpload)localObject1).commit();
+          localObject1 = "sendRequest download 168";
           break;
         }
-        localObject1 = TbsDownloadUpload.getInstance(c);
-        ((TbsDownloadUpload)localObject1).a.put("tbs_startdownload_code", Integer.valueOf(168));
-        ((TbsDownloadUpload)localObject1).a.put("tbs_startdownload_sent", Integer.valueOf(1));
-        ((TbsDownloadUpload)localObject1).commit();
+        if (paramBoolean1) {
+          l = (JSONObject)localObject2;
+        }
+        paramBoolean3 = q.e(c);
+        if (!paramBoolean3) {}
       }
-      localObject1 = ((JSONObject)localObject3).toString().getBytes("utf-8");
-      localObject3 = new TbsDownloader.3(localTbsDownloadConfig, paramBoolean1);
+      catch (Throwable localThrowable4)
+      {
+        continue;
+        break label1590;
+        break label1641;
+      }
       try
       {
-        paramBoolean2 = a(f.a((String)localObject2, (byte[])localObject1, (f.a)localObject3, false), n, paramBoolean1, paramBoolean2, paramBoolean4);
+        n = ((JSONObject)localObject2).getInt("FUNCTION");
+        if ((n == 0) && (!TextUtils.isEmpty(com.tencent.smtt.utils.n.a(c).f())))
+        {
+          localObject1 = com.tencent.smtt.utils.n.a(c).f();
+          continue;
+        }
+        if ((n == 1) && (!TextUtils.isEmpty(com.tencent.smtt.utils.n.a(c).e())))
+        {
+          localObject1 = com.tencent.smtt.utils.n.a(c).e();
+          continue;
+        }
+        if ((n == 2) && (!TextUtils.isEmpty(com.tencent.smtt.utils.n.a(c).d())))
+        {
+          localObject1 = com.tencent.smtt.utils.n.a(c).d();
+          continue;
+        }
+        localObject1 = null;
+      }
+      catch (Throwable localThrowable3)
+      {
+        break label1593;
+      }
+    }
+    localObject1 = null;
+    if (localObject1 == null)
+    {
+      localObject1 = ((JSONObject)localObject2).toString().getBytes("utf-8");
+      localObject2 = new TbsDownloader.3(localTbsDownloadConfig, paramBoolean1);
+      localObject1 = com.tencent.smtt.utils.f.a((String)localObject3, (byte[])localObject1, (f.a)localObject2, false);
+      paramBoolean2 = a((String)localObject1, i1, paramBoolean1, paramBoolean2, paramBoolean4);
+      try
+      {
+        TbsLog.i("TbsDownload", "sendrequest return false #2");
         return paramBoolean2;
       }
       catch (Throwable localThrowable1) {}
+      paramBoolean2 = false;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("sendrequest return false ");
+      ((StringBuilder)localObject2).append(Log.getStackTraceString(localThrowable2));
+      TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString());
       localThrowable2.printStackTrace();
+      if (paramBoolean1) {
+        n = -106;
+      } else {
+        n = -206;
+      }
+      localTbsDownloadConfig.setDownloadInterruptCode(n);
+      return paramBoolean2;
     }
-    catch (Throwable localThrowable2) {}
-    if (paramBoolean1) {
-      m = -106;
-    } else {
-      m = -206;
-    }
-    localTbsDownloadConfig.setDownloadInterruptCode(m);
-    return false;
   }
   
   private static void c()
@@ -1785,6 +1909,131 @@ public class TbsDownloader
     i = true;
     TbsLog.e("TbsDownload", "TbsApkDownloader init has Exception");
     return;
+  }
+  
+  private static void c(int paramInt)
+  {
+    if (paramInt < 32) {
+      return;
+    }
+    try
+    {
+      localObject1 = l;
+      if (localObject1 == null) {
+        return;
+      }
+      if (paramInt == 64) {
+        l.put("REQUEST_64", 1);
+      } else if (paramInt == 32) {
+        l.remove("REQUEST_64");
+      }
+      l.put("FUNCTION", 2);
+      l.put("DOWNLOADDECOUPLECORE", 1);
+      n = TbsShareManager.getTbsStableCoreVersion(c, paramInt);
+      l.put("TBSDV", n);
+      l.put("TBSV", 0);
+      localObject1 = com.tencent.smtt.utils.n.a(c).g();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[TbsDownloader.sendRequestForOtherStableCore] postUrl=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[TbsDownloader.sendRequestForOtherStableCore] mJsonDataQuery=");
+      ((StringBuilder)localObject2).append(l.toString());
+      TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString());
+      localObject1 = com.tencent.smtt.utils.f.a((String)localObject1, l.toString().getBytes("utf-8"), new TbsDownloader.4(), false);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[TbsDownloader.sendRequestForOtherStableCore] response=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString());
+      localObject3 = new JSONObject((String)localObject1);
+    }
+    catch (Throwable localThrowable)
+    {
+      Object localObject1;
+      Object localObject3;
+      Object localObject4;
+      int i1;
+      label395:
+      Object localObject5;
+      StringBuilder localStringBuilder;
+      label549:
+      long l1;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("stack is ");
+      ((StringBuilder)localObject2).append(Log.getStackTraceString(localThrowable));
+      Log.d("TbsDownload", ((StringBuilder)localObject2).toString());
+    }
+    try
+    {
+      if (((JSONObject)localObject3).getInt("RESETDECOUPLECORE") != 1) {
+        break label549;
+      }
+      localObject1 = TbsShareManager.getPackageContext(c, "com.tencent.mm", false);
+      if (localObject1 == null) {
+        localObject1 = new File(FileUtil.a(c, "com.tencent.mm", 4, true));
+      } else {
+        localObject1 = new File(FileUtil.a((Context)localObject1, 4));
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[TbsDownloader.sendRequestForOtherStableCore] resetDecoupleCore mFilePathStable is ");
+      ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+      TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString(), true);
+      localObject2 = ((File)localObject1).listFiles();
+      localObject4 = Pattern.compile(a.a(false, paramInt));
+      i1 = localObject2.length;
+      n = 0;
+    }
+    catch (Exception localException)
+    {
+      break label549;
+      n += 1;
+      break label395;
+    }
+    if (n < i1)
+    {
+      localObject5 = localObject2[n];
+      if ((((Pattern)localObject4).matcher(localObject5.getName()).find()) && (localObject5.isFile()) && (localObject5.exists()))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("resetStableCore file is ");
+        localStringBuilder.append(localObject5.getAbsolutePath());
+        TbsLog.i("TbsDownload", localStringBuilder.toString(), true);
+        localObject5.delete();
+      }
+    }
+    else
+    {
+      localObject1 = new File((File)localObject1, getBackupFileName(false, paramInt));
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("resetStableCore file is ");
+      ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+      TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString(), true);
+      ((File)localObject1).delete();
+      localObject1 = ((JSONObject)localObject3).getString("DOWNLOADURL");
+      l1 = ((JSONObject)localObject3).getLong("TBSAPKFILESIZE");
+      localObject2 = ((JSONObject)localObject3).getString("PKGMD5");
+      n = ((JSONObject)localObject3).getInt("TBSAPKSERVERVERSION");
+      if ((q.b(c)) && (TbsShareManager.getTbsStableCoreVersion(c, paramInt) < n))
+      {
+        localObject3 = TbsDownloadConfig.getInstance(c);
+        ((TbsDownloadConfig)localObject3).mSyncMap.put("tbs_downloadurl", localObject1);
+        ((TbsDownloadConfig)localObject3).mSyncMap.put("tbs_apkfilesize", Long.valueOf(l1));
+        ((TbsDownloadConfig)localObject3).mSyncMap.put("tbs_cpu_type_other_stable_core", Integer.valueOf(paramInt));
+        localObject4 = ((TbsDownloadConfig)localObject3).mSyncMap;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        ((Map)localObject4).put("tbs_apk_md5", localObject1);
+        ((TbsDownloadConfig)localObject3).mSyncMap.put("tbs_downloaddecouplecore", Integer.valueOf(1));
+        ((TbsDownloadConfig)localObject3).mSyncMap.put("tbs_download_version", Integer.valueOf(n));
+        ((TbsDownloadConfig)localObject3).commit();
+        g.b(false, true);
+        return;
+      }
+      return;
+    }
   }
   
   @TargetApi(11)
@@ -1813,74 +2062,92 @@ public class TbsDownloader
     if (!TbsPVConfig.getInstance(c).isDisableHostBackupCore())
     {
       String[] arrayOfString = e();
-      int i2 = arrayOfString.length;
-      int m = 0;
-      while (m < i2)
+      int i3 = arrayOfString.length;
+      int n = 0;
+      while (n < i3)
       {
-        String str = arrayOfString[m];
-        int i3 = TbsShareManager.getBackupCoreVersion(c, str);
-        int i1 = 1;
-        if (i3 > 0)
+        String str2 = arrayOfString[n];
+        int i4 = TbsShareManager.getBackupCoreVersion(c, str2);
+        int i2 = 1;
+        Object localObject;
+        if (i4 > 0)
         {
-          localObject = TbsShareManager.getPackageContext(c, str, false);
-          if ((localObject == null) || (p.a().f((Context)localObject))) {}
+          localObject = TbsShareManager.getPackageContext(c, str2, false);
+          if ((localObject != null) && (!p.a().g((Context)localObject))) {
+            localObject = new StringBuilder();
+          }
         }
-        for (Object localObject = new StringBuilder();; localObject = new StringBuilder())
+        for (String str1 = "addBackupVersionToJsonData,host check failed,packageName = ";; str1 = "host check failed,packageName = ")
         {
-          ((StringBuilder)localObject).append("host check failed,packageName = ");
-          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(str1);
+          ((StringBuilder)localObject).append(str2);
           TbsLog.e("TbsDownload", ((StringBuilder)localObject).toString());
-          break label322;
-          if (a(c, i3))
+          break label437;
+          if (a(c, i4))
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("add addBackupVersionToJsonData,version+");
-            ((StringBuilder)localObject).append(i3);
+            ((StringBuilder)localObject).append(i4);
             ((StringBuilder)localObject).append(" is in black list");
             TbsLog.i("TbsDownload", ((StringBuilder)localObject).toString());
-            break label322;
+            break label437;
           }
-          n = 0;
-          while (n < paramJSONArray.length())
+          i1 = 0;
+          while (i1 < paramJSONArray.length())
           {
-            if (paramJSONArray.optInt(n) == i3)
+            if (paramJSONArray.optInt(i1) == i4)
             {
-              n = 1;
-              break label212;
+              i1 = 1;
+              break label216;
             }
-            n += 1;
+            i1 += 1;
           }
-          n = 0;
-          label212:
-          if (n == 0) {
-            paramJSONArray.put(i3);
+          i1 = 0;
+          label216:
+          if (i1 == 0)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("addBackupVersionToJsonData,pkg=");
+            ((StringBuilder)localObject).append(str2);
+            ((StringBuilder)localObject).append(";version=");
+            ((StringBuilder)localObject).append(i4);
+            TbsLog.i("TbsDownload", ((StringBuilder)localObject).toString());
+            paramJSONArray.put(i4);
           }
-          i3 = TbsShareManager.getBackupDecoupleCoreVersion(c, str);
-          if (i3 <= 0) {
-            break label322;
+          i4 = TbsShareManager.getBackupDecoupleCoreVersion(c, str2);
+          if (i4 <= 0) {
+            break label437;
           }
-          localObject = TbsShareManager.getPackageContext(c, str, false);
-          if ((localObject == null) || (p.a().f((Context)localObject))) {
+          localObject = TbsShareManager.getPackageContext(c, str2, false);
+          if ((localObject == null) || (p.a().g((Context)localObject))) {
             break;
           }
+          localObject = new StringBuilder();
         }
-        int n = 0;
-        while (n < paramJSONArray.length())
+        int i1 = 0;
+        while (i1 < paramJSONArray.length())
         {
-          if (paramJSONArray.optInt(n) == i3)
+          if (paramJSONArray.optInt(i1) == i4)
           {
-            n = i1;
-            break label311;
+            i1 = i2;
+            break label373;
           }
-          n += 1;
+          i1 += 1;
         }
-        n = 0;
-        label311:
-        if (n == 0) {
-          paramJSONArray.put(i3);
+        i1 = 0;
+        label373:
+        if (i1 == 0)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("addBackupVersionToJsonDataByDecouple,pkg=");
+          ((StringBuilder)localObject).append(str2);
+          ((StringBuilder)localObject).append(";version=");
+          ((StringBuilder)localObject).append(i4);
+          TbsLog.i("TbsDownload", ((StringBuilder)localObject).toString());
+          paramJSONArray.put(i4);
         }
-        label322:
-        m += 1;
+        label437:
+        n += 1;
       }
     }
   }
@@ -1911,10 +2178,10 @@ public class TbsDownloader
     String[] arrayOfString1 = arrayOfString2;
     if (str.equals(TbsShareManager.f(c)))
     {
-      int m = arrayOfString2.length;
-      arrayOfString1 = new String[m + 1];
-      System.arraycopy(arrayOfString2, 0, arrayOfString1, 0, m);
-      arrayOfString1[m] = str;
+      int n = arrayOfString2.length;
+      arrayOfString1 = new String[n + 1];
+      System.arraycopy(arrayOfString2, 0, arrayOfString1, 0, n);
+      arrayOfString1[n] = str;
     }
     return arrayOfString1;
   }
@@ -1925,8 +2192,20 @@ public class TbsDownloader
     {
       JSONArray localJSONArray = new JSONArray();
       a(localJSONArray);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getHostCoreVersions addCoreVersionToJsonData is ");
+      localStringBuilder.append(localJSONArray.toString());
+      TbsLog.i("TbsDownload", localStringBuilder.toString());
       c(localJSONArray);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getHostCoreVersions addBackupVersionToJsonData is ");
+      localStringBuilder.append(localJSONArray.toString());
+      TbsLog.i("TbsDownload", localStringBuilder.toString());
       b(localJSONArray);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getHostCoreVersions addAppDefinedToCoreVersions is ");
+      localStringBuilder.append(localJSONArray.toString());
+      TbsLog.i("TbsDownload", localStringBuilder.toString());
       return localJSONArray;
     }
     return null;
@@ -1935,25 +2214,25 @@ public class TbsDownloader
   private static boolean g()
   {
     TbsDownloadConfig localTbsDownloadConfig = TbsDownloadConfig.getInstance(c);
-    int m;
+    int n;
     if (localTbsDownloadConfig.mPreferences.getInt("tbs_download_success_retrytimes", 0) >= localTbsDownloadConfig.getDownloadSuccessMaxRetrytimes())
     {
       TbsLog.i("TbsDownload", "[TbsDownloader.needStartDownload] out of success retrytimes", true);
-      m = -115;
+      n = -115;
     }
     for (;;)
     {
-      localTbsDownloadConfig.setDownloadInterruptCode(m);
+      localTbsDownloadConfig.setDownloadInterruptCode(n);
       return false;
       if (localTbsDownloadConfig.mPreferences.getInt("tbs_download_failed_retrytimes", 0) >= localTbsDownloadConfig.getDownloadFailedMaxRetrytimes())
       {
         TbsLog.i("TbsDownload", "[TbsDownloader.needStartDownload] out of failed retrytimes", true);
-        m = -116;
+        n = -116;
       }
       else if (!FileUtil.b(c))
       {
         TbsLog.i("TbsDownload", "[TbsDownloader.needStartDownload] local rom freespace limit", true);
-        m = -117;
+        n = -117;
       }
       else
       {
@@ -1969,7 +2248,7 @@ public class TbsDownloader
           break;
         }
         TbsLog.i("TbsDownload", "[TbsDownloader.needStartDownload] failed because you exceeded max flow!", true);
-        m = -120;
+        n = -120;
       }
     }
     return true;
@@ -1977,14 +2256,27 @@ public class TbsDownloader
   
   public static String getBackupFileName(boolean paramBoolean)
   {
+    return getBackupFileName(paramBoolean, 0);
+  }
+  
+  public static String getBackupFileName(boolean paramBoolean, int paramInt)
+  {
+    boolean bool;
+    if (paramInt == 64) {
+      bool = true;
+    } else if (paramInt == 32) {
+      bool = false;
+    } else {
+      bool = b.b();
+    }
     if (paramBoolean)
     {
-      if (b.d()) {
+      if (bool) {
         return "x5.tbs.decouple.64";
       }
       return "x5.tbs.decouple";
     }
-    if (b.d()) {
+    if (bool) {
       return "x5.tbs.org.64";
     }
     return "x5.tbs.org";
@@ -1992,12 +2284,12 @@ public class TbsDownloader
   
   public static int getCoreShareDecoupleCoreVersion()
   {
-    return p.a().h(c);
+    return p.a().i(c);
   }
   
   public static int getCoreShareDecoupleCoreVersionByContext(Context paramContext)
   {
-    return p.a().h(paramContext);
+    return p.a().i(paramContext);
   }
   
   public static boolean getOverSea(Context paramContext)
@@ -2029,7 +2321,7 @@ public class TbsDownloader
   
   public static long getRetryIntervalInSeconds()
   {
-    return l;
+    return m;
   }
   
   public static HandlerThread getsTbsHandlerThread()
@@ -2073,6 +2365,9 @@ public class TbsDownloader
   
   public static boolean needDownload(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, TbsDownloader.TbsDownloaderCallback paramTbsDownloaderCallback)
   {
+    c = paramContext.getApplicationContext();
+    q.a("1");
+    TbsLog.initIfNeed(paramContext);
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("needDownload,process=");
     ((StringBuilder)localObject1).append(QbSdk.getCurrentProcessName(paramContext));
@@ -2083,13 +2378,42 @@ public class TbsDownloader
     localObject1 = TbsDownloadUpload.getInstance(paramContext);
     ((TbsDownloadUpload)localObject1).a.put("tbs_needdownload_code", Integer.valueOf(140));
     ((TbsDownloadUpload)localObject1).commit();
-    Object localObject2 = new StringBuilder();
+    Object localObject2 = p.a();
+    if (f.a == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((p)localObject2).b(paramContext, bool);
+    int n = p.a().b(paramContext);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[TbsDownloader.needDownload],renameRet=");
+    ((StringBuilder)localObject2).append(n);
+    TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString());
+    if (n != 0)
+    {
+      localObject2 = TbsLogReport.getInstance(paramContext).tbsLogInfo();
+      ((TbsLogReport.TbsLogInfo)localObject2).a = 129;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("code=2");
+      localStringBuilder.append(n);
+      ((TbsLogReport.TbsLogInfo)localObject2).setFailDetail(localStringBuilder.toString());
+      TbsLogReport.getInstance(paramContext).eventReport(TbsLogReport.EventType.TYPE_SDK_REPORT_INFO, (TbsLogReport.TbsLogInfo)localObject2);
+    }
+    if (n < 0)
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("[TbsDownloader.needDownload],needReNameFile=");
+      paramContext.append(n);
+      TbsLog.i("TbsDownload", paramContext.toString());
+      return false;
+    }
+    localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("[TbsDownloader.needDownload] oversea=");
     ((StringBuilder)localObject2).append(paramBoolean1);
     ((StringBuilder)localObject2).append(",isDownloadForeground=");
     ((StringBuilder)localObject2).append(paramBoolean2);
     TbsLog.i("TbsDownload", ((StringBuilder)localObject2).toString());
-    TbsLog.initIfNeed(paramContext);
     if (p.b)
     {
       if (paramTbsDownloaderCallback != null) {
@@ -2183,7 +2507,6 @@ public class TbsDownloader
     paramContext.append(",hasNeedDownloadKey=");
     paramContext.append(paramBoolean2);
     TbsLog.i("TbsDownload", paramContext.toString());
-    int m;
     if (paramBoolean1)
     {
       if (!g())
@@ -2199,20 +2522,20 @@ public class TbsDownloader
     }
     else
     {
-      m = p.a().m(c);
+      n = p.a().n(c);
       paramContext = new StringBuilder();
       paramContext.append("[TbsDownloader.needDownload]#7,tbsLocalVersion=");
-      paramContext.append(m);
+      paramContext.append(n);
       paramContext.append(",needSendRequest=");
       paramContext.append(bool);
       TbsLog.i("TbsDownload", paramContext.toString());
-      if ((!bool) && (m > 0)) {}
-      for (m = -119;; m = -121)
+      if ((!bool) && (n > 0)) {}
+      for (n = -119;; n = -121)
       {
-        ((TbsDownloadConfig)localObject2).setDownloadInterruptCode(m);
+        ((TbsDownloadConfig)localObject2).setDownloadInterruptCode(n);
         break;
         d.removeMessages(103);
-        if ((m <= 0) && (!bool)) {
+        if ((n <= 0) && (!bool)) {
           paramContext = Message.obtain(d, 103, 0, 0, c);
         } else {
           paramContext = Message.obtain(d, 103, 1, 0, c);
@@ -2229,11 +2552,11 @@ public class TbsDownloader
     TbsLog.i("TbsDownload", paramContext.toString());
     paramContext = ((TbsDownloadUpload)localObject1).a;
     if (paramBoolean1) {
-      m = 170;
+      n = 170;
     } else {
-      m = 174;
+      n = 174;
     }
-    paramContext.put("tbs_needdownload_return", Integer.valueOf(m));
+    paramContext.put("tbs_needdownload_return", Integer.valueOf(n));
     ((TbsDownloadUpload)localObject1).commit();
     return paramBoolean1;
   }
@@ -2250,8 +2573,8 @@ public class TbsDownloader
     if (System.currentTimeMillis() - l1 < TbsDownloadConfig.getInstance(c).getRetryInterval() * 1000L) {
       return false;
     }
-    int m = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_decouplecoreversion", 0);
-    return (m > 0) && (m != p.a().h(c)) && (TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version", 0) != m);
+    int n = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_decouplecoreversion", 0);
+    return (n > 0) && (n != p.a().i(c)) && (TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version", 0) != n);
   }
   
   public static boolean needSendRequest(Context paramContext, boolean paramBoolean)
@@ -2261,12 +2584,12 @@ public class TbsDownloader
     if (!a(c, paramBoolean)) {
       return false;
     }
-    int m = p.a().m(paramContext);
+    int n = p.a().n(paramContext);
     paramContext = new StringBuilder();
     paramContext.append("[TbsDownloader.needSendRequest] localTbsVersion=");
-    paramContext.append(m);
+    paramContext.append(n);
     TbsLog.i("TbsDownload", paramContext.toString());
-    if (m > 0) {
+    if (n > 0) {
       return false;
     }
     paramContext = c;
@@ -2340,15 +2663,45 @@ public class TbsDownloader
       return;
     }
     if (paramContext.getApplicationInfo().packageName.equals("com.tencent.qqlive")) {
-      l = paramLong;
+      m = paramLong;
     }
     paramContext = new StringBuilder();
     paramContext.append("mRetryIntervalInSeconds is ");
-    paramContext.append(l);
+    paramContext.append(m);
     TbsLog.i("TbsDownload", paramContext.toString());
   }
   
   public static boolean startDecoupleCoreIfNeeded()
+  {
+    boolean bool = startDecoupleCoreIfNeededImpl();
+    if ((!bool) && (q.b(c)))
+    {
+      int i1 = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_cpu_type_other_stable_core", 0);
+      int n = 64;
+      if (i1 == 0)
+      {
+        if (b.b()) {
+          n = 32;
+        }
+        c(n);
+        return bool;
+      }
+      if ((i1 == 32) || (i1 == 64))
+      {
+        TbsDownloadConfig localTbsDownloadConfig = TbsDownloadConfig.getInstance(c);
+        localTbsDownloadConfig.mSyncMap.put("tbs_downloadurl", "");
+        localTbsDownloadConfig.mSyncMap.put("tbs_apkfilesize", Integer.valueOf(0));
+        localTbsDownloadConfig.mSyncMap.put("tbs_cpu_type_other_stable_core", Integer.valueOf(0));
+        localTbsDownloadConfig.mSyncMap.put("tbs_apk_md5", "");
+        localTbsDownloadConfig.mSyncMap.put("tbs_downloaddecouplecore", Integer.valueOf(0));
+        localTbsDownloadConfig.mSyncMap.put("tbs_download_version", Integer.valueOf(0));
+        localTbsDownloadConfig.commit();
+      }
+    }
+    return bool;
+  }
+  
+  public static boolean startDecoupleCoreIfNeededImpl()
   {
     TbsLog.i("TbsDownload", "startDecoupleCoreIfNeeded ");
     if (TbsShareManager.isThirdPartyApp(c)) {
@@ -2367,19 +2720,29 @@ public class TbsDownloader
       return false;
     }
     TbsLog.i("TbsDownload", "startDecoupleCoreIfNeeded #3");
-    int m = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_decouplecoreversion", 0);
-    Object localObject;
-    if ((m > 0) && (m != p.a().h(c)))
+    int i1 = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_decouplecoreversion", 0);
+    int n;
+    if (q.b(c)) {
+      n = TbsShareManager.getTbsStableCoreVersion(c, 0);
+    } else {
+      n = p.a().i(c);
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startDecoupleCoreIfNeeded coreVersionForThirdApp is ");
+    ((StringBuilder)localObject).append(n);
+    TbsLog.i("TbsDownload", ((StringBuilder)localObject).toString());
+    if ((i1 > 0) && (i1 != n))
     {
-      if ((TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version", 0) == m) && (TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version_type", 0) != 1))
+      if ((TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version", 0) == i1) && (TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version_type", 0) != 1))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("startDecoupleCoreIfNeeded no need, KEY_TBS_DOWNLOAD_V is ");
         ((StringBuilder)localObject).append(TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version", 0));
         ((StringBuilder)localObject).append(" deCoupleCoreVersion is ");
-        ((StringBuilder)localObject).append(m);
+        ((StringBuilder)localObject).append(i1);
         ((StringBuilder)localObject).append(" KEY_TBS_DOWNLOAD_V_TYPE is ");
-        m = TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version_type", 0);
+        ((StringBuilder)localObject).append(TbsDownloadConfig.getInstance(c).mPreferences.getInt("tbs_download_version_type", 0));
+        localObject = ((StringBuilder)localObject).toString();
       }
       else
       {
@@ -2397,12 +2760,12 @@ public class TbsDownloader
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("startDecoupleCoreIfNeeded no need, deCoupleCoreVersion is ");
-      ((StringBuilder)localObject).append(m);
+      ((StringBuilder)localObject).append(i1);
       ((StringBuilder)localObject).append(" getTbsCoreShareDecoupleCoreVersion is ");
-      m = p.a().h(c);
+      ((StringBuilder)localObject).append(n);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    ((StringBuilder)localObject).append(m);
-    TbsLog.i("TbsDownload", ((StringBuilder)localObject).toString());
+    TbsLog.i("TbsDownload", (String)localObject);
     return false;
   }
   
@@ -2417,55 +2780,86 @@ public class TbsDownloader
     {
       try
       {
+        TbsLog.initIfNeed(paramContext);
         TbsDownloadUpload localTbsDownloadUpload = TbsDownloadUpload.getInstance(paramContext);
         localTbsDownloadUpload.a.put("tbs_startdownload_code", Integer.valueOf(160));
         localTbsDownloadUpload.commit();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[TbsDownloader.startDownload] sAppContext=");
-        localStringBuilder.append(c);
-        TbsLog.i("TbsDownload", localStringBuilder.toString());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[TbsDownloader.startDownload] sAppContext=");
+        ((StringBuilder)localObject).append(c);
+        TbsLog.i("TbsDownload", ((StringBuilder)localObject).toString());
         if (p.b)
         {
           localTbsDownloadUpload.a.put("tbs_startdownload_code", Integer.valueOf(161));
           localTbsDownloadUpload.commit();
           return;
         }
-        m = 1;
-        a = true;
-        c = paramContext.getApplicationContext();
-        TbsDownloadConfig.getInstance(c).setDownloadInterruptCode(-200);
-        if (Build.VERSION.SDK_INT < 8)
+        localObject = p.a();
+        int i1 = f.a;
+        int n = 0;
+        if (i1 == 0)
         {
-          QbSdk.m.onDownloadFinish(110);
-          TbsDownloadConfig.getInstance(c).setDownloadInterruptCode(-201);
-          localTbsDownloadUpload.a.put("tbs_startdownload_code", Integer.valueOf(162));
-          localTbsDownloadUpload.commit();
-          return;
-        }
-        c();
-        if (i)
-        {
-          QbSdk.m.onDownloadFinish(121);
-          TbsDownloadConfig.getInstance(c).setDownloadInterruptCode(-202);
-          localTbsDownloadUpload.a.put("tbs_startdownload_code", Integer.valueOf(163));
-          localTbsDownloadUpload.commit();
-          return;
-        }
-        if (paramBoolean) {
-          stopDownload();
-        }
-        d.removeMessages(101);
-        d.removeMessages(100);
-        paramContext = Message.obtain(d, 101, QbSdk.m);
-        if (paramBoolean)
-        {
-          paramContext.arg1 = m;
+          bool = true;
+          ((p)localObject).b(paramContext, bool);
+          i1 = p.a().b(paramContext);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[TbsDownloader.needDownload],renameRet=");
+          ((StringBuilder)localObject).append(i1);
+          TbsLog.i("TbsDownload", ((StringBuilder)localObject).toString());
+          if (i1 != 0)
+          {
+            localObject = TbsLogReport.getInstance(paramContext).tbsLogInfo();
+            ((TbsLogReport.TbsLogInfo)localObject).a = 129;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("code=2");
+            localStringBuilder.append(i1);
+            ((TbsLogReport.TbsLogInfo)localObject).setFailDetail(localStringBuilder.toString());
+            TbsLogReport.getInstance(paramContext).eventReport(TbsLogReport.EventType.TYPE_SDK_REPORT_INFO, (TbsLogReport.TbsLogInfo)localObject);
+          }
+          if (i1 < 0)
+          {
+            paramContext = new StringBuilder();
+            paramContext.append("[TbsDownloader.needDownload],needReNameFile=");
+            paramContext.append(i1);
+            TbsLog.i("TbsDownload", paramContext.toString());
+            return;
+          }
+          a = true;
+          c = paramContext.getApplicationContext();
+          TbsDownloadConfig.getInstance(c).setDownloadInterruptCode(-200);
+          if (Build.VERSION.SDK_INT < 8)
+          {
+            QbSdk.m.onDownloadFinish(110);
+            TbsDownloadConfig.getInstance(c).setDownloadInterruptCode(-201);
+            localTbsDownloadUpload.a.put("tbs_startdownload_code", Integer.valueOf(162));
+            localTbsDownloadUpload.commit();
+            return;
+          }
+          c();
+          if (i)
+          {
+            QbSdk.m.onDownloadFinish(121);
+            TbsDownloadConfig.getInstance(c).setDownloadInterruptCode(-202);
+            localTbsDownloadUpload.a.put("tbs_startdownload_code", Integer.valueOf(163));
+            localTbsDownloadUpload.commit();
+            return;
+          }
+          if (paramBoolean) {
+            stopDownload();
+          }
+          d.removeMessages(101);
+          d.removeMessages(100);
+          paramContext = Message.obtain(d, 101, QbSdk.m);
+          if (paramBoolean) {
+            n = 1;
+          }
+          paramContext.arg1 = n;
           paramContext.sendToTarget();
           return;
         }
       }
       finally {}
-      int m = 0;
+      boolean bool = false;
     }
   }
   
@@ -2490,7 +2884,7 @@ public class TbsDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloader
  * JD-Core Version:    0.7.0.1
  */

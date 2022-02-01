@@ -21,6 +21,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.SpinnerAdapter;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.id;
 import androidx.appcompat.R.styleable;
 import androidx.appcompat.view.ActionBarPolicy;
 import androidx.appcompat.view.ActionMode;
@@ -65,7 +67,6 @@ public class WindowDecorActionBar
   DecorToolbar mDecorToolbar;
   ActionMode mDeferredDestroyActionMode;
   ActionMode.Callback mDeferredModeDestroyCallback;
-  private Dialog mDialog;
   private boolean mDisplayHomeAsUpSet;
   private boolean mHasEmbeddedTabs;
   boolean mHiddenByApp;
@@ -98,7 +99,6 @@ public class WindowDecorActionBar
   
   public WindowDecorActionBar(Dialog paramDialog)
   {
-    this.mDialog = paramDialog;
     init(paramDialog.getWindow().getDecorView());
   }
   
@@ -218,14 +218,14 @@ public class WindowDecorActionBar
   
   private void init(View paramView)
   {
-    this.mOverlayLayout = ((ActionBarOverlayLayout)paramView.findViewById(2131365456));
+    this.mOverlayLayout = ((ActionBarOverlayLayout)paramView.findViewById(R.id.decor_content_parent));
     ActionBarOverlayLayout localActionBarOverlayLayout = this.mOverlayLayout;
     if (localActionBarOverlayLayout != null) {
       localActionBarOverlayLayout.setActionBarVisibilityCallback(this);
     }
-    this.mDecorToolbar = getDecorToolbar(paramView.findViewById(2131361954));
-    this.mContextView = ((ActionBarContextView)paramView.findViewById(2131361966));
-    this.mContainerView = ((ActionBarContainer)paramView.findViewById(2131361956));
+    this.mDecorToolbar = getDecorToolbar(paramView.findViewById(R.id.action_bar));
+    this.mContextView = ((ActionBarContextView)paramView.findViewById(R.id.action_context_bar));
+    this.mContainerView = ((ActionBarContainer)paramView.findViewById(R.id.action_bar_container));
     paramView = this.mDecorToolbar;
     if ((paramView != null) && (this.mContextView != null) && (this.mContainerView != null))
     {
@@ -247,7 +247,7 @@ public class WindowDecorActionBar
       }
       setHomeButtonEnabled(bool);
       setHasEmbeddedTabs(paramView.hasEmbeddedTabs());
-      paramView = this.mContext.obtainStyledAttributes(null, R.styleable.ActionBar, 2131034122, 0);
+      paramView = this.mContext.obtainStyledAttributes(null, R.styleable.ActionBar, R.attr.actionBarStyle, 0);
       if (paramView.getBoolean(R.styleable.ActionBar_hideOnContentScroll, false)) {
         setHideOnContentScrollEnabled(true);
       }
@@ -655,7 +655,7 @@ public class WindowDecorActionBar
     if (this.mThemedContext == null)
     {
       TypedValue localTypedValue = new TypedValue();
-      this.mContext.getTheme().resolveAttribute(2131034127, localTypedValue, true);
+      this.mContext.getTheme().resolveAttribute(R.attr.actionBarWidgetTheme, localTypedValue, true);
       int i = localTypedValue.resourceId;
       if (i != 0) {
         this.mThemedContext = new ContextThemeWrapper(this.mContext, i);

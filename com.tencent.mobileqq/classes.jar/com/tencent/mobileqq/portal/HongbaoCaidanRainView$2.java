@@ -39,7 +39,7 @@ class HongbaoCaidanRainView$2
     {
       HongbaoCaidanRainView.a(this.this$0, System.currentTimeMillis());
       localObject1 = this.this$0;
-      HongbaoCaidanRainView.b((HongbaoCaidanRainView)localObject1, HongbaoCaidanRainView.a((HongbaoCaidanRainView)localObject1));
+      HongbaoCaidanRainView.b((HongbaoCaidanRainView)localObject1, HongbaoCaidanRainView.b((HongbaoCaidanRainView)localObject1));
       HongbaoCaidanRainView.a(this.this$0, true);
       HongbaoCaidanRainView.b(this.this$0, false);
       this.this$0.postInvalidate();
@@ -48,7 +48,7 @@ class HongbaoCaidanRainView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.HongbaoCaidanRainView.2
  * JD-Core Version:    0.7.0.1
  */

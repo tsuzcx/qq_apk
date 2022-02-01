@@ -15,14 +15,14 @@ class ApkFileDownloadFragment$1
   
   public void onClick(View paramView)
   {
-    AppCenterReporter.b(ClickDataBuilder.a().a("200").k(ApkFileDownloadFragment.a(this.a).b).j("1").l("0").m(ApkFileDownloadFragment.a(this.a).a).a(ApkFileDownloadFragment.a(this.a).h).b(ApkFileDownloadFragment.a(this.a).f).g(ApkFileDownloadFragment.a(this.a).e));
-    ApkFileDownloadFragment.a(this.a).finish();
+    AppCenterReporter.b(ClickDataBuilder.a().a("200").l(ApkFileDownloadFragment.b(this.a).e).k("1").m("0").n(ApkFileDownloadFragment.b(this.a).d).b(ApkFileDownloadFragment.a(this.a).i).c(ApkFileDownloadFragment.a(this.a).f).h(ApkFileDownloadFragment.a(this.a).e));
+    ApkFileDownloadFragment.c(this.a).finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.filedownload.ApkFileDownloadFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ class AbsProfileHeaderView$3
     if (localObject2 == null) {
       localObject1 = null;
     } else {
-      localObject1 = ((AvatarLayout)localObject2).a(0);
+      localObject1 = ((AvatarLayout)localObject2).b(0);
     }
     Object localObject1 = (ImageView)localObject1;
     if ((localObject1 instanceof DynamicAvatarView))
@@ -43,7 +43,7 @@ class AbsProfileHeaderView$3
         } else {
           ((View)localObject2).setVisibility(VasFaceManager.a(this.val$allinone.uin, this.this$0.mApp));
         }
-        if (SimpleUIUtil.a()) {
+        if (SimpleUIUtil.e()) {
           ((View)localObject2).setVisibility(4);
         }
       }
@@ -55,7 +55,7 @@ class AbsProfileHeaderView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView.3
  * JD-Core Version:    0.7.0.1
  */

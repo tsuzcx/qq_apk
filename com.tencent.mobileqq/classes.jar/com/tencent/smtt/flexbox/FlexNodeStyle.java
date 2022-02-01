@@ -24,10 +24,10 @@ public class FlexNodeStyle
   private float m;
   private float n = 0.0F;
   private float o = 0.0F;
-  private float[] p = new float[FlexNodeStyle.b.i.ordinal() + 1];
-  private float[] q = new float[FlexNodeStyle.b.i.ordinal() + 1];
-  private float[] r = new float[FlexNodeStyle.b.i.ordinal() + 1];
-  private float[] s = new float[FlexNodeStyle.b.i.ordinal() + 1];
+  private final float[] p = new float[FlexNodeStyle.b.i.ordinal() + 1];
+  private final float[] q = new float[FlexNodeStyle.b.i.ordinal() + 1];
+  private final float[] r = new float[FlexNodeStyle.b.i.ordinal() + 1];
+  private final float[] s = new float[FlexNodeStyle.b.i.ordinal() + 1];
   private float t = 0.0F;
   private float u = 0.0F;
   private float v;
@@ -219,32 +219,25 @@ public class FlexNodeStyle
     int i2 = parame.ordinal();
     this.d = parame;
     int i1 = 3;
-    if (i2 != 0)
+    if (i2 != 1)
     {
-      if (i2 == 1) {
-        break label53;
+      if (i2 != 2) {
+        if (i2 != 3)
+        {
+          if (i2 != 4) {
+            i1 = 1;
+          } else {
+            i1 = 7;
+          }
+        }
+        else {
+          i1 = 6;
+        }
       }
-      if (i2 == 2) {
-        break label55;
-      }
-      if (i2 == 3) {
-        break label47;
-      }
-      if (i2 == 4) {}
     }
-    else
-    {
-      i1 = 1;
-      break label55;
+    else {
+      i1 = 2;
     }
-    i1 = 7;
-    break label55;
-    label47:
-    i1 = 6;
-    break label55;
-    label53:
-    i1 = 2;
-    label55:
     nativeFlexNodeStyleSetJustifyContent(this.a, i1);
   }
   
@@ -619,7 +612,7 @@ public class FlexNodeStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.flexbox.FlexNodeStyle
  * JD-Core Version:    0.7.0.1
  */

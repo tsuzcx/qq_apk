@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @QAPI(process={"all"})
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/api/IVideoFeedsHelper;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "calculateCommentViewGroupHeight", "", "activity", "Landroid/app/Activity;", "calculateVideoAreaHeight", "", "", "videoWidth", "videoHeight", "(Landroid/app/Activity;II)[Ljava/lang/Object;", "changeVisibilityWithAlphaAnimation", "", "view", "Landroid/view/View;", "visibility", "duration", "changeVisibilityWithObjectAnimator", "commonCountToString", "", "count", "commonSetCountToTextView", "textView", "Landroid/widget/TextView;", "defaultValue", "commonSetCountToTextViewAsync", "computeXYaxis", "videoInfo", "Lcom/tencent/mobileqq/kandian/biz/video/playfeeds/entity/VideoInfo;", "bottomOffset", "fileSizeToString", "byteSize", "", "getLogoMarginSize", "", "isFullScreen", "", "getMainFeedsKingCardAutoPlayConfig", "getScreenSize", "getTodayShowCountForSoftAd", "app", "Lmqq/app/AppRuntime;", "getVideoFeedsPlayActivityIntent", "Landroid/content/Intent;", "context", "Landroid/content/Context;", "hideBottomUIMenu", "hideBottomUIMenuImmersived", "hideNavigationBar", "isFullScreenDisplay", "isIntentAvailable", "intent", "isPlayFeedsActivity", "isSystemAutoRotateOpen", "isVideoFeedsPlayActivity", "openVideoFeedsPlayActivity", "bundle", "Landroid/os/Bundle;", "isLazyLoad", "fromType", "openVideoFeedsPlayActivityForDebug", "vid", "url", "isH265", "performViewSlideDownAnimator", "targetHeight", "delay", "performViewSlideUpAnim", "Landroid/animation/Animator;", "resolveUrlJumpInfo", "jumpInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/UrlJumpInfo;", "setFollowTextVisibility", "videoHolder", "Lcom/tencent/mobileqq/kandian/biz/video/playfeeds/viewholder/VideoItemHolder;", "needShow", "setRichTitle", "titleTextView", "setTimeTextForTextView", "timeMS", "updateTodayShowCountForSoftAd", "newValue", "kandian-api_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/api/IVideoFeedsHelper;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "calculateCommentViewGroupHeight", "", "activity", "Landroid/app/Activity;", "calculateVideoAreaHeight", "", "", "videoWidth", "videoHeight", "(Landroid/app/Activity;II)[Ljava/lang/Object;", "changeVisibilityWithAlphaAnimation", "", "view", "Landroid/view/View;", "visibility", "duration", "changeVisibilityWithObjectAnimator", "commonCountToString", "", "count", "commonSetCountToTextView", "textView", "Landroid/widget/TextView;", "defaultValue", "commonSetCountToTextViewAsync", "computeXYaxis", "videoInfo", "Lcom/tencent/mobileqq/kandian/biz/video/playfeeds/entity/VideoInfo;", "bottomOffset", "fileSizeToString", "byteSize", "", "getLogoMarginSize", "", "isFullScreen", "", "getMainFeedsKingCardAutoPlayConfig", "getScreenSize", "getTodayShowCountForSoftAd", "app", "Lmqq/app/AppRuntime;", "getVideoFeedsPlayActivityIntent", "Landroid/content/Intent;", "context", "Landroid/content/Context;", "hideBottomUIMenu", "hideBottomUIMenuImmersived", "hideNavigationBar", "isFullScreenDisplay", "isIntentAvailable", "intent", "isPlayFeedsActivity", "isSystemAutoRotateOpen", "isVideoFeedsPlayActivity", "modifyVideoUrlForKingCard", "originUrl", "openVideoFeedsPlayActivity", "bundle", "Landroid/os/Bundle;", "isLazyLoad", "fromType", "openVideoFeedsPlayActivityForDebug", "vid", "url", "isH265", "performViewSlideDownAnimator", "targetHeight", "delay", "performViewSlideUpAnim", "Landroid/animation/Animator;", "resolveUrlJumpInfo", "jumpInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/UrlJumpInfo;", "setFollowTextVisibility", "videoHolder", "Lcom/tencent/mobileqq/kandian/biz/video/playfeeds/viewholder/VideoItemHolder;", "needShow", "setRichTitle", "titleTextView", "setTimeTextForTextView", "timeMS", "updateTodayShowCountForSoftAd", "newValue", "kandian-api_release"}, k=1, mv={1, 1, 16})
 public abstract interface IVideoFeedsHelper
   extends QRouteApi
 {
@@ -72,6 +72,9 @@ public abstract interface IVideoFeedsHelper
   
   public abstract boolean isVideoFeedsPlayActivity(@Nullable Activity paramActivity);
   
+  @Nullable
+  public abstract String modifyVideoUrlForKingCard(@Nullable String paramString);
+  
   public abstract void openVideoFeedsPlayActivity(@Nullable Context paramContext, @Nullable Bundle paramBundle, boolean paramBoolean, int paramInt);
   
   public abstract void openVideoFeedsPlayActivityForDebug(@Nullable Activity paramActivity, @Nullable String paramString1, @Nullable String paramString2, boolean paramBoolean);
@@ -95,7 +98,7 @@ public abstract interface IVideoFeedsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.api.IVideoFeedsHelper
  * JD-Core Version:    0.7.0.1
  */

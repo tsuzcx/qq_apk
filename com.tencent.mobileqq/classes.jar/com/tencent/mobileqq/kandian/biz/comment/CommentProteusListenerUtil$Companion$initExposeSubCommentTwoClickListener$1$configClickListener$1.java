@@ -14,11 +14,11 @@ final class CommentProteusListenerUtil$Companion$initExposeSubCommentTwoClickLis
   
   public final void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter;
+    paramViewBase = this.a;
     if (paramViewBase != null)
     {
       paramViewBase = (ReadInJoyCommentListAdapter)paramViewBase;
-      CommentViewItem localCommentViewItem = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem;
+      CommentViewItem localCommentViewItem = this.b;
       paramViewBase.a(localCommentViewItem, CommentProteusUtil.a(localCommentViewItem, 1), 2);
       return;
     }
@@ -27,7 +27,7 @@ final class CommentProteusListenerUtil$Companion$initExposeSubCommentTwoClickLis
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion.initExposeSubCommentTwoClickListener.1.configClickListener.1
  * JD-Core Version:    0.7.0.1
  */

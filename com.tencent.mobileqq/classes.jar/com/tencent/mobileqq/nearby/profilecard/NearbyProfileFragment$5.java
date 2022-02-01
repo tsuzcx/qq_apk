@@ -14,22 +14,22 @@ class NearbyProfileFragment$5
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentBizTroopgiftGiftConfigManager$TextEntryItem;
+    paramView = this.a;
     if (paramView != null) {
       paramView = paramView.b;
     } else {
       paramView = "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501";
     }
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
+    Intent localIntent = new Intent(this.b.c, QQBrowserActivity.class);
     localIntent.putExtra("url", paramView);
     localIntent.putExtra("url", paramView);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(localIntent);
+    this.b.c.startActivity(localIntent);
     ReportController.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.5
  * JD-Core Version:    0.7.0.1
  */

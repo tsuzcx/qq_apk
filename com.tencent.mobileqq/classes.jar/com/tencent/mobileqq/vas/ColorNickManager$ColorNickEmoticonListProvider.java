@@ -15,14 +15,14 @@ import java.util.List;
 public class ColorNickManager$ColorNickEmoticonListProvider
   implements EmoticonListProvider
 {
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<Integer> b = new ArrayList();
   
   public ColorNickManager$ColorNickEmoticonListProvider(ColorNickManager paramColorNickManager) {}
   
   public void a(List<Integer> paramList)
   {
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramList);
+      this.b = new ArrayList(paramList);
     }
   }
   
@@ -30,8 +30,8 @@ public class ColorNickManager$ColorNickEmoticonListProvider
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new EmotionPanelInfo(7, 7, null));
-    IEmoticonManagerService localIEmoticonManagerService = (IEmoticonManagerService)ColorNickManager.a(this.jdField_a_of_type_ComTencentMobileqqVasColorNickManager).getRuntimeService(IEmoticonManagerService.class);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    IEmoticonManagerService localIEmoticonManagerService = (IEmoticonManagerService)ColorNickManager.a(this.a).getRuntimeService(IEmoticonManagerService.class);
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
@@ -51,8 +51,8 @@ public class ColorNickManager$ColorNickEmoticonListProvider
         ((EmoticonPackage)localObject).status = 0;
         ((EmoticonPackage)localObject).aio = true;
         localIEmoticonManagerService.saveEmoticonPackage((EmoticonPackage)localObject);
-        localObject = (IEmojiManagerService)ColorNickManager.a(this.jdField_a_of_type_ComTencentMobileqqVasColorNickManager).getRuntimeService(IEmojiManagerService.class);
-        ((IEmojiManagerService)localObject).getEmojiListenerManager().addEmotionJsonDownloadListener(ColorNickManager.a(this.jdField_a_of_type_ComTencentMobileqqVasColorNickManager));
+        localObject = (IEmojiManagerService)ColorNickManager.a(this.a).getRuntimeService(IEmojiManagerService.class);
+        ((IEmojiManagerService)localObject).getEmojiListenerManager().addEmotionJsonDownloadListener(ColorNickManager.b(this.a));
         ((IEmojiManagerService)localObject).startDownloadEmosmJson(String.valueOf(i), EmojiManagerServiceConstant.JSON_EMOSM_MALL, null, true, 0);
       }
     }
@@ -61,7 +61,7 @@ public class ColorNickManager$ColorNickEmoticonListProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickManager.ColorNickEmoticonListProvider
  * JD-Core Version:    0.7.0.1
  */

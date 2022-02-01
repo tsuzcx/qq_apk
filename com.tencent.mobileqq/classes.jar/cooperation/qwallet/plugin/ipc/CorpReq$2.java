@@ -54,7 +54,7 @@ class CorpReq$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.CorpReq.2
  * JD-Core Version:    0.7.0.1
  */

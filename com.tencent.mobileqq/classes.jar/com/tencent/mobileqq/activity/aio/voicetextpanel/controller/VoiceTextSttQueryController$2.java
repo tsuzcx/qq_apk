@@ -13,7 +13,7 @@ class VoiceTextSttQueryController$2
   
   public void run()
   {
-    List localList = VoiceTextSttQueryController.b(this.this$0);
+    List localList = VoiceTextSttQueryController.f(this.this$0);
     if ((localList != null) && (!localList.isEmpty()))
     {
       VoiceTextSttQueryController.a(this.this$0).set(localList.size());
@@ -21,15 +21,15 @@ class VoiceTextSttQueryController$2
       VoiceTextSttQueryController.a(this.this$0, this.a, localList);
       return;
     }
-    if (VoiceTextSttQueryController.a(this.this$0) != null) {
-      VoiceTextSttQueryController.a(this.this$0).c();
+    if (VoiceTextSttQueryController.c(this.this$0) != null) {
+      VoiceTextSttQueryController.c(this.this$0).c();
     }
-    VoiceTextSttQueryController.a(this.this$0).set(true);
+    VoiceTextSttQueryController.g(this.this$0).set(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttQueryController.2
  * JD-Core Version:    0.7.0.1
  */

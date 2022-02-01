@@ -12,25 +12,25 @@ class FeedsPreloadManager$4
     FeedsPreloadDataModule localFeedsPreloadDataModule = FeedsPreloadDataModule.a();
     if (localFeedsPreloadDataModule != null)
     {
-      if (!FeedsPreloadHelper.b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.a))
+      if (!FeedsPreloadHelper.b(this.a.a))
       {
         QLog.d("FeedsPreloadManager", 1, "is not latest request, do not update preload cache.");
         return;
       }
-      QLog.d("FeedsPreloadManager", 1, new Object[] { "feeds preload recPackageSize = ", Long.valueOf(this.jdField_a_of_type_Long), ", limit = ", Integer.valueOf(20000) });
-      if (this.jdField_a_of_type_Long > 20000L)
+      QLog.d("FeedsPreloadManager", 1, new Object[] { "feeds preload recPackageSize = ", Long.valueOf(this.b), ", limit = ", Integer.valueOf(20000) });
+      if (this.b > 20000L)
       {
         QLog.d("FeedsPreloadManager", 1, "preload feeds recPackage is too large, do not update cache.");
         return;
       }
       QLog.d("FeedsPreloadManager", 1, "update preload cache.");
-      localFeedsPreloadDataModule.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache);
+      localFeedsPreloadDataModule.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.preload.FeedsPreloadManager.4
  * JD-Core Version:    0.7.0.1
  */

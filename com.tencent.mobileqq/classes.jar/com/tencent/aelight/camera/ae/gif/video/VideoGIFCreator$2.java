@@ -12,16 +12,16 @@ class VideoGIFCreator$2
   {
     VideoGIFCreator localVideoGIFCreator = this.this$0;
     VideoGIFCreator.a(localVideoGIFCreator, new VideoGIFCreator.TextConfig(localVideoGIFCreator));
-    VideoGIFCreator.a(this.this$0).jdField_a_of_type_Int = RendererUtils.createTexture(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    VideoGIFCreator.a(this.this$0).jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-    VideoGIFCreator.a(this.this$0).b = this.b;
-    VideoGIFCreator.a(this.this$0).c = this.c;
-    VideoGIFCreator.a(this.this$0).d = this.d;
+    VideoGIFCreator.j(this.this$0).a = RendererUtils.createTexture(this.a);
+    VideoGIFCreator.j(this.this$0).b = this.b;
+    VideoGIFCreator.j(this.this$0).c = this.c;
+    VideoGIFCreator.j(this.this$0).d = this.d;
+    VideoGIFCreator.j(this.this$0).e = this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.VideoGIFCreator.2
  * JD-Core Version:    0.7.0.1
  */

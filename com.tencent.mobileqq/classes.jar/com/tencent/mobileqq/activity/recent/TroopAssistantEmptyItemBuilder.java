@@ -15,8 +15,8 @@ public class TroopAssistantEmptyItemBuilder
 {
   private int a = 0;
   private int b = 0;
-  private int c = 0;
-  private int d = 0;
+  private int h = 0;
+  private int i = 0;
   
   public View a(int paramInt, Object paramObject, RecentFaceDecoder paramRecentFaceDecoder, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, DragFrameLayout.OnDragModeChangedListener paramOnDragModeChangedListener)
   {
@@ -27,31 +27,31 @@ public class TroopAssistantEmptyItemBuilder
     }
     if (!"TroopAssistantEmptyItemBuilder".equals(paramRecentFaceDecoder))
     {
-      paramView = View.inflate(paramContext, 2131562946, null);
+      paramView = View.inflate(paramContext, 2131629554, null);
       paramView.setTag("TroopAssistantEmptyItemBuilder");
       paramRecentFaceDecoder = paramContext.getResources();
-      this.b = paramRecentFaceDecoder.getDimensionPixelSize(2131298888);
-      this.a = paramRecentFaceDecoder.getDimensionPixelSize(2131298893);
-      this.c = paramRecentFaceDecoder.getDimensionPixelSize(2131298895);
-      this.d = (paramRecentFaceDecoder.getDimensionPixelSize(2131299204) + paramRecentFaceDecoder.getDimensionPixelSize(2131299205));
+      this.b = paramRecentFaceDecoder.getDimensionPixelSize(2131299610);
+      this.a = paramRecentFaceDecoder.getDimensionPixelSize(2131299615);
+      this.h = paramRecentFaceDecoder.getDimensionPixelSize(2131299617);
+      this.i = (paramRecentFaceDecoder.getDimensionPixelSize(2131299957) + paramRecentFaceDecoder.getDimensionPixelSize(2131299958));
     }
-    int i = paramViewGroup.getMeasuredHeight() - this.a - this.b - 10 - this.d;
-    int j = this.c;
-    if (i <= j) {
-      i = j;
+    int j = paramViewGroup.getMeasuredHeight() - this.a - this.b - 10 - this.i;
+    int k = this.h;
+    if (j <= k) {
+      j = k;
     }
     paramRecentFaceDecoder = new AbsListView.LayoutParams(-1, -1);
     paramRecentFaceDecoder.width = -1;
-    paramRecentFaceDecoder.height = i;
+    paramRecentFaceDecoder.height = j;
     paramView.setLayoutParams(paramRecentFaceDecoder);
     if ((paramObject instanceof Integer))
     {
       paramObject = (Integer)paramObject;
-      paramRecentFaceDecoder = (TextView)paramView.findViewById(2131379175);
+      paramRecentFaceDecoder = (TextView)paramView.findViewById(2131447911);
       if (paramObject.intValue() == 4) {
-        paramRecentFaceDecoder.setText(2131719792);
+        paramRecentFaceDecoder.setText(2131917396);
       } else {
-        paramRecentFaceDecoder.setText(2131694879);
+        paramRecentFaceDecoder.setText(2131892582);
       }
     }
     paramView.setTag(-1, Integer.valueOf(paramInt));
@@ -60,7 +60,7 @@ public class TroopAssistantEmptyItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.TroopAssistantEmptyItemBuilder
  * JD-Core Version:    0.7.0.1
  */

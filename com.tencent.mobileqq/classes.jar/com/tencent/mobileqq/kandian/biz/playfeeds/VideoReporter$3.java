@@ -3,8 +3,7 @@ package com.tencent.mobileqq.kandian.biz.playfeeds;
 import com.tencent.biz.pubaccount.util.PAVideoStructMsgUtil;
 import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -30,7 +29,7 @@ final class VideoReporter$3
       try
       {
         Object localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("vid", ((StructMsgItemVideo)localObject3).ae);
+        ((JSONObject)localObject1).put("vid", ((StructMsgItemVideo)localObject3).az);
         ((JSONObject)localObject1).put("os", "1");
         if (UinTypeUtil.b(this.a.istroop))
         {
@@ -43,7 +42,7 @@ final class VideoReporter$3
         else
         {
           if (this.a.istroop != 3000) {
-            break label270;
+            break label256;
           }
           i = 3;
         }
@@ -55,13 +54,12 @@ final class VideoReporter$3
         localException.printStackTrace();
         localObject2 = "";
       }
-      IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      if (((StructMsgItemVideo)localObject3).aj == null) {
+      if (((StructMsgItemVideo)localObject3).aO == null) {
         localObject3 = "0";
       } else {
-        localObject3 = ((StructMsgItemVideo)localObject3).aj;
+        localObject3 = ((StructMsgItemVideo)localObject3).aO;
       }
-      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "2", (String)localObject3, (String)localObject2, false);
+      PublicAccountReportUtils.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "2", (String)localObject3, (String)localObject2, false);
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel())
       {
@@ -72,14 +70,14 @@ final class VideoReporter$3
         QLog.d("VideoReporter", 2, ((StringBuilder)localObject2).toString());
       }
       return;
-      label270:
+      label256:
       int i = 4;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter.3
  * JD-Core Version:    0.7.0.1
  */

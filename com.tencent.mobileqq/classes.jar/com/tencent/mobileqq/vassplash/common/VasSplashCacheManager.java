@@ -25,7 +25,7 @@ public class VasSplashCacheManager
     localArrayList = new ArrayList();
     try
     {
-      SplashADUtil.a(paramQQAppInterface.getApp(), VasSplashUtil.a(paramString));
+      SplashADUtil.a(paramQQAppInterface.getApp(), VasSplashUtil.e(paramString));
       Object localObject1 = VasSplashUtil.a(BaseApplicationImpl.getContext(), paramString);
       localArrayList.clear();
       try
@@ -38,29 +38,29 @@ public class VasSplashCacheManager
           if (localObject2 != null)
           {
             localArrayList.add(localObject2);
-            if ((((SplashItem)localObject2).jdField_b_of_type_Int == 3) || (((SplashItem)localObject2).jdField_b_of_type_Int == 2)) {
-              ((IMiniAppService)QRoute.api(IMiniAppService.class)).prePullAppinfoByLink(((SplashItem)localObject2).f, false, null);
+            if ((((SplashItem)localObject2).g == 3) || (((SplashItem)localObject2).g == 2)) {
+              ((IMiniAppService)QRoute.api(IMiniAppService.class)).prePullAppinfoByLink(((SplashItem)localObject2).h, false, null);
             }
-            VasSplashUtil.a.put(((SplashItem)localObject2).jdField_b_of_type_JavaLangString, localObject2);
+            VasSplashUtil.e.put(((SplashItem)localObject2).b, localObject2);
           }
         }
         if (localArrayList.size() > 0)
         {
           localObject1 = ((SharedPreferences)localObject1).edit();
-          Object localObject3 = VasSplashUtil.a(BaseApplicationImpl.getContext(), paramString);
+          Object localObject3 = VasSplashUtil.b(BaseApplicationImpl.getContext(), paramString);
           paramList = new HashSet();
           localObject2 = new StringBuffer();
           Object localObject4 = localArrayList.iterator();
           while (((Iterator)localObject4).hasNext())
           {
             SplashItem localSplashItem = (SplashItem)((Iterator)localObject4).next();
-            String str = localSplashItem.jdField_b_of_type_JavaLangString;
+            String str = localSplashItem.b;
             paramList.add(str);
             ((StringBuffer)localObject2).append(str);
             ((StringBuffer)localObject2).append(",");
-            ((StringBuffer)localObject2).append(localSplashItem.jdField_c_of_type_JavaLangString);
+            ((StringBuffer)localObject2).append(localSplashItem.c);
             ((StringBuffer)localObject2).append(",");
-            ((StringBuffer)localObject2).append(localSplashItem.jdField_d_of_type_JavaLangString);
+            ((StringBuffer)localObject2).append(localSplashItem.d);
             ((StringBuffer)localObject2).append(",");
             if (((Set)localObject3).contains(str))
             {
@@ -104,97 +104,105 @@ public class VasSplashCacheManager
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("vas_splash_ad_begin_time_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.c);
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("vas_splash_ad_end_time_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.jdField_d_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.d);
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("vas_plash_ad_content_type_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putInt(((StringBuilder)localObject1).toString(), paramSplashItem.jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putInt(((StringBuilder)localObject1).toString(), paramSplashItem.e);
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("vas_splash_ad_download_url_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.jdField_e_of_type_JavaLangString);
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("vas_splash_ad_jumptype_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putInt(((StringBuilder)localObject1).toString(), paramSplashItem.jdField_b_of_type_Int);
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("vas_splash_ad_jump_h5_url_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
     paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.f);
     localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("vas_splash_ad_jumptype_");
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putInt(((StringBuilder)localObject1).toString(), paramSplashItem.g);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("vas_splash_ad_jump_h5_url_");
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.h);
+    localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("vas_splash_ad_showpriority_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putInt(((StringBuilder)localObject1).toString(), paramSplashItem.jdField_d_of_type_Int);
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putInt(((StringBuilder)localObject1).toString(), paramSplashItem.m);
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("vas_exposure_is_low_device_limit_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putBoolean(((StringBuilder)localObject1).toString(), paramSplashItem.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putBoolean(((StringBuilder)localObject1).toString(), paramSplashItem.q);
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("vas_splash_ad_exposure_platform_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putInt(((StringBuilder)localObject1).toString(), paramSplashItem.jdField_c_of_type_Int);
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putInt(((StringBuilder)localObject1).toString(), paramSplashItem.i);
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("vas_splash_info_report_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.j);
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("vas_splash_resource_md5_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.k);
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("vas_splash_should_show_ad_mark_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putInt(((StringBuilder)localObject1).toString(), paramSplashItem.jdField_e_of_type_Int);
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("vas_splash_union_banner_type_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.l);
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("vas_splash_ad_entry_text_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.m);
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("vas_splash_ad_entry_text_color_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
     paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.n);
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("vas_splash_ad_entry_text_bg_color_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append("vas_splash_resource_md5_");
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
     paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.o);
-    Object localObject2 = paramSplashItem.g;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("vas_splash_should_show_ad_mark_");
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putInt(((StringBuilder)localObject1).toString(), paramSplashItem.p);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("vas_splash_union_banner_type_");
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.s);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("vas_splash_ad_entry_text_");
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.t);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("vas_splash_ad_entry_text_color_");
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.u);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("vas_splash_ad_entry_text_bg_color_");
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.v);
+    Object localObject2 = paramSplashItem.j;
     localObject1 = localObject2;
     if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
       localObject1 = localObject2;
       if (!((String)localObject2).startsWith("https")) {
-        localObject1 = paramSplashItem.g.replaceFirst("http", "https");
+        localObject1 = paramSplashItem.j.replaceFirst("http", "https");
       }
     }
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("vas_exposure_url_");
-    ((StringBuilder)localObject2).append(paramSplashItem.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(paramSplashItem.b);
     paramEditor.putString(((StringBuilder)localObject2).toString(), (String)localObject1);
-    localObject1 = paramSplashItem.h;
+    localObject1 = paramSplashItem.k;
     paramBoolean = true;
     boolean bool = SplashItem.a((String)localObject1, true);
-    if ((paramSplashItem.jdField_a_of_type_Boolean) || (!bool)) {
+    if ((paramSplashItem.q) || (!bool) || (!paramSplashItem.d())) {
       paramBoolean = false;
     }
-    paramSplashItem.jdField_b_of_type_Boolean = paramBoolean;
+    paramSplashItem.r = paramBoolean;
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("vas_splash_ad_is_limited_");
-    ((StringBuilder)localObject1).append(paramSplashItem.jdField_b_of_type_JavaLangString);
-    paramEditor.putBoolean(((StringBuilder)localObject1).toString(), paramSplashItem.jdField_b_of_type_Boolean);
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putBoolean(((StringBuilder)localObject1).toString(), paramSplashItem.r);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("vas_splash_ad_entry_btn_type");
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putInt(((StringBuilder)localObject1).toString(), paramSplashItem.w);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("vas_splash_ad_entry_btn_url");
+    ((StringBuilder)localObject1).append(paramSplashItem.b);
+    paramEditor.putString(((StringBuilder)localObject1).toString(), paramSplashItem.x);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vassplash.common.VasSplashCacheManager
  * JD-Core Version:    0.7.0.1
  */

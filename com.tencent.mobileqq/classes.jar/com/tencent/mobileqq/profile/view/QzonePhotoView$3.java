@@ -12,31 +12,31 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class QzonePhotoView$3
   implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long = 0L;
+  private long b = 0L;
   
   QzonePhotoView$3(QzonePhotoView paramQzonePhotoView) {}
   
   public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if (Math.abs(l - this.jdField_a_of_type_Long) >= 1000L)
+    if (Math.abs(l - this.b) >= 1000L)
     {
-      this.jdField_a_of_type_Long = l;
+      this.b = l;
       if ((paramView != null) && ((paramView.getTag() instanceof DataTag)))
       {
         Object localObject = (DataTag)paramView.getTag();
         if (localObject != null)
         {
           int i = ((DataTag)localObject).a;
-          localObject = QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).allInOne.uin;
+          localObject = QzonePhotoView.d(this.a).allInOne.uin;
           if (i == 25)
           {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "2", "", "", "");
+            ReportController.b(this.a.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "2", "", "", "");
             if (QLog.isColorLevel()) {
               QLog.i("ProfileCard.QzonePhotoView", 2, "View.OnClickListener click type is photo wall view");
             }
-            localObject = this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView;
-            QzonePhotoView.a((QzonePhotoView)localObject, QzonePhotoView.a((QzonePhotoView)localObject));
+            localObject = this.a;
+            QzonePhotoView.a((QzonePhotoView)localObject, QzonePhotoView.e((QzonePhotoView)localObject));
           }
         }
       }
@@ -46,7 +46,7 @@ class QzonePhotoView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.QzonePhotoView.3
  * JD-Core Version:    0.7.0.1
  */

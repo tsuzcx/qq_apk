@@ -284,7 +284,7 @@ public class QQOfflineModule
     //   60: invokevirtual 80	com/tencent/mtt/hippy/common/HippyMap:toJSONObject	()Lorg/json/JSONObject;
     //   63: ldc 155
     //   65: invokevirtual 158	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   68: invokestatic 174	com/tencent/biz/common/offline/HtmlOffline:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   68: invokestatic 174	com/tencent/biz/common/offline/HtmlOffline:d	(Ljava/lang/String;)Ljava/lang/String;
     //   71: astore 4
     //   73: aload 4
     //   75: astore_1
@@ -357,7 +357,7 @@ public class QQOfflineModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQOfflineModule
  * JD-Core Version:    0.7.0.1
  */

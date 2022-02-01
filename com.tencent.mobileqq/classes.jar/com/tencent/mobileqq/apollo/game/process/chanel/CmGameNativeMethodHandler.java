@@ -15,47 +15,47 @@ public class CmGameNativeMethodHandler
   implements IRequestHandler
 {
   public static int a = -2147483648;
-  private SparseArray<CmGameNativeMethodHandler.NativeObject> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  public WeakReference<CmGameLauncher> a;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  public int b;
+  public WeakReference<CmGameLauncher> b;
+  public int c;
+  private SparseArray<CmGameNativeMethodHandler.NativeObject> d = new SparseArray();
+  private JSONObject e;
   
   public CmGameNativeMethodHandler(CmGameLauncher paramCmGameLauncher)
   {
     a(new CmGameAudioHandler());
     if (paramCmGameLauncher != null)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCmGameLauncher);
-      this.b = paramCmGameLauncher.a();
-    }
-  }
-  
-  private JSONObject a(String paramString)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-      }
-      this.jdField_a_of_type_OrgJsonJSONObject.put("message", paramString);
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("[cmshow]CmGameNetiveMethodHandler", 1, paramString, new Object[0]);
-    }
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  private void a(long paramLong, String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) && (paramString2 != null)) {
-      ApolloCmdChannel.getInstance().callbackFromRequest(paramLong, 0, paramString1, paramString2);
+      this.b = new WeakReference(paramCmGameLauncher);
+      this.c = paramCmGameLauncher.g();
     }
   }
   
   private void a(String paramString)
   {
-    a(0L, "cs.native_method_state.local", a(paramString).toString());
+    b(0L, "cs.native_method_state.local", b(paramString).toString());
+  }
+  
+  private JSONObject b(String paramString)
+  {
+    try
+    {
+      if (this.e == null) {
+        this.e = new JSONObject();
+      }
+      this.e.put("message", paramString);
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("[cmshow]CmGameNetiveMethodHandler", 1, paramString, new Object[0]);
+    }
+    return this.e;
+  }
+  
+  private void b(long paramLong, String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) && (paramString2 != null)) {
+      ApolloCmdChannel.getInstance().callbackFromRequest(paramLong, 0, paramString1, paramString2);
+    }
   }
   
   public int a()
@@ -70,24 +70,24 @@ public class CmGameNativeMethodHandler
       int i;
       try
       {
-        if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+        if (this.b == null) {
           return null;
         }
-        Object localObject = (CmGameLauncher)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        Object localObject = (CmGameLauncher)this.b.get();
         if (localObject == null)
         {
           QLog.e("[cmshow]CmGameNetiveMethodHandler", 1, "launcher is null");
           return null;
         }
-        localObject = ((CmGameLauncher)localObject).a();
+        localObject = ((CmGameLauncher)localObject).e();
         if ((localObject != null) && (((ApolloSurfaceView)localObject).getLuaState() == paramLong))
         {
           paramString2 = new JSONObject(paramString2);
           i = paramString2.optInt("N_R_OBJ");
-          if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+          if (this.d == null) {
             return null;
           }
-          localObject = (CmGameNativeMethodHandler.NativeObject)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+          localObject = (CmGameNativeMethodHandler.NativeObject)this.d.get(i);
           paramString2.put("N_R_CMD", paramString1);
           paramString2.put("N_R_STATE", paramLong);
           if (localObject != null)
@@ -99,7 +99,7 @@ public class CmGameNativeMethodHandler
                 paramString1.put("code", 0);
               }
               localObject = new HandleResult();
-              ((HandleResult)localObject).b = true;
+              ((HandleResult)localObject).c = true;
               if (paramString1 == null) {
                 paramString1 = paramString2.toString();
               } else {
@@ -111,12 +111,12 @@ public class CmGameNativeMethodHandler
             a(paramString1);
             return null;
           }
-          int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+          int j = this.d.size();
           i = 0;
           if (i < j)
           {
-            int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-            paramString1 = (CmGameNativeMethodHandler.NativeObject)this.jdField_a_of_type_AndroidUtilSparseArray.get(k);
+            int k = this.d.keyAt(i);
+            paramString1 = (CmGameNativeMethodHandler.NativeObject)this.d.get(k);
             if (paramString1 == null) {
               break label338;
             }
@@ -148,44 +148,16 @@ public class CmGameNativeMethodHandler
     }
   }
   
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidUtilSparseArray;
-    if (localObject != null)
-    {
-      int j = ((SparseArray)localObject).size();
-      int i = 0;
-      while (i < j)
-      {
-        int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-        localObject = (CmGameNativeMethodHandler.NativeObject)this.jdField_a_of_type_AndroidUtilSparseArray.get(k);
-        if (localObject != null) {
-          ((CmGameNativeMethodHandler.NativeObject)localObject).a();
-        }
-        i += 1;
-      }
-      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-      this.jdField_a_of_type_AndroidUtilSparseArray = null;
-    }
-    localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localObject != null)
-    {
-      ((WeakReference)localObject).clear();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    }
-    this.jdField_a_of_type_OrgJsonJSONObject = null;
-  }
-  
   public void a(CmGameNativeMethodHandler.NativeObject paramNativeObject)
   {
     if (paramNativeObject != null)
     {
       int i = paramNativeObject.c();
-      if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-        this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+      if (this.d == null) {
+        this.d = new SparseArray();
       }
-      if (this.jdField_a_of_type_AndroidUtilSparseArray.get(i) == null) {
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramNativeObject);
+      if (this.d.get(i) == null) {
+        this.d.put(i, paramNativeObject);
       }
     }
   }
@@ -225,13 +197,41 @@ public class CmGameNativeMethodHandler
     }
   }
   
+  public void b()
+  {
+    Object localObject = this.d;
+    if (localObject != null)
+    {
+      int j = ((SparseArray)localObject).size();
+      int i = 0;
+      while (i < j)
+      {
+        int k = this.d.keyAt(i);
+        localObject = (CmGameNativeMethodHandler.NativeObject)this.d.get(k);
+        if (localObject != null) {
+          ((CmGameNativeMethodHandler.NativeObject)localObject).d();
+        }
+        i += 1;
+      }
+      this.d.clear();
+      this.d = null;
+    }
+    localObject = this.b;
+    if (localObject != null)
+    {
+      ((WeakReference)localObject).clear();
+      this.b = null;
+    }
+    this.e = null;
+  }
+  
   public void b(CmGameNativeMethodHandler.NativeObject paramNativeObject)
   {
     if (paramNativeObject != null)
     {
       int i = paramNativeObject.c();
-      paramNativeObject.a();
-      paramNativeObject = this.jdField_a_of_type_AndroidUtilSparseArray;
+      paramNativeObject.d();
+      paramNativeObject = this.d;
       if (paramNativeObject != null) {
         paramNativeObject.remove(i);
       }
@@ -240,7 +240,7 @@ public class CmGameNativeMethodHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.chanel.CmGameNativeMethodHandler
  * JD-Core Version:    0.7.0.1
  */

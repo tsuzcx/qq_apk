@@ -12,40 +12,40 @@ class TranslateFragment$1$1
   
   public void run()
   {
-    TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment$1.a, false);
-    TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment$1.a);
-    if (this.jdField_a_of_type_Boolean)
+    TranslateFragment.a(this.c.a, false);
+    TranslateFragment.b(this.c.a);
+    if (this.a)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult;
-      if ((localObject != null) && (((TranslateResult)localObject).b()) && (!this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a()))
+      localObject = this.b;
+      if ((localObject != null) && (((TranslateResult)localObject).g()) && (!this.b.f()))
       {
-        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment$1.a, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
-        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment$1.a, 2, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
+        TranslateFragment.a(this.c.a, this.b);
+        TranslateFragment.a(this.c.a, 2, this.b);
         return;
       }
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment$1.a.getResources().getString(2131699088);
-    TranslateResult localTranslateResult = this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult;
+    String str = this.c.a.getResources().getString(2131897097);
+    TranslateResult localTranslateResult = this.b;
     Object localObject = str;
     if (localTranslateResult != null) {
-      if (!TextUtils.isEmpty(localTranslateResult.e))
+      if (!TextUtils.isEmpty(localTranslateResult.i))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.e;
+        localObject = this.b.i;
       }
       else
       {
         localObject = str;
-        if (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a()) {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment$1.a.getResources().getString(2131699075);
+        if (this.b.f()) {
+          localObject = this.c.a.getResources().getString(2131897084);
         }
       }
     }
-    QQToast.a(TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment$1.a), 1, (CharSequence)localObject, 0).a();
+    QQToast.makeText(TranslateFragment.c(this.c.a), 1, (CharSequence)localObject, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.TranslateFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

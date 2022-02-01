@@ -34,56 +34,19 @@ import org.json.JSONObject;
 
 public class ThemeDiyModule
 {
-  public static String[] a;
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private ThemeDiyModule.ThemeDiyImpl jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule$ThemeDiyImpl;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private ThemeDIYData[] jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData = a();
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "pageDrawer", "pageMessage", "pageAIO", "pageFriend", "pageDynamic" };
-  }
+  public static String[] a = { "pageDrawer", "pageMessage", "pageAIO", "pageFriend", "pageDynamic" };
+  private JSONObject b;
+  private SparseArray<String> c = new SparseArray();
+  private ThemeDIYData[] d = c();
+  private Context e;
+  private AppInterface f;
+  private ThemeDiyModule.ThemeDiyImpl g;
+  private int h = 0;
   
   public ThemeDiyModule(Context paramContext, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  private static String a(String paramString)
-  {
-    Object localObject;
-    if ((paramString != null) && (new File(paramString).exists()))
-    {
-      paramString = BitmapFactory.decodeFile(paramString);
-      localObject = new ByteArrayOutputStream();
-      int j = paramString.getWidth() / 180;
-      int i = j;
-      if (j < 1) {
-        i = 1;
-      }
-      Bitmap localBitmap = ThumbnailUtils.extractThumbnail(paramString, paramString.getWidth() / i, paramString.getHeight() / i);
-      localBitmap.compress(Bitmap.CompressFormat.JPEG, 60, (OutputStream)localObject);
-      paramString.recycle();
-      localBitmap.recycle();
-      paramString = Base64.encodeToString(((ByteArrayOutputStream)localObject).toByteArray(), 2);
-    }
-    else
-    {
-      paramString = null;
-    }
-    if (paramString != null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("data:image/jpg;base64,");
-      ((StringBuilder)localObject).append(paramString);
-      return ((StringBuilder)localObject).toString();
-    }
-    return "";
+    this.e = paramContext;
+    this.f = paramAppInterface;
   }
   
   private JSONObject a(int paramInt, String paramString)
@@ -102,15 +65,15 @@ public class ThemeDiyModule
         return localJSONObject;
       }
     }
-    Object localObject1 = ThemeBackground.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), 4);
+    Object localObject1 = ThemeBackground.a(this.e, this.f.getAccount(), 4);
     String str2 = "null";
     String str1 = ((SharedPreferences)localObject1).getString(paramString, "null");
     if ("theme_bg_aio_path".equals(paramString)) {
-      str1 = ChatBackgroundUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), "");
+      str1 = ChatBackgroundUtil.a(this.e, this.f.getAccount(), "");
     }
     if (!"null".equals(str1))
     {
-      paramString = a(str1);
+      paramString = b(str1);
       localObject1 = ChatBackgroundUtil.b(str1);
     }
     else
@@ -119,7 +82,7 @@ public class ThemeDiyModule
       paramString = (String)localObject2;
     }
     if (("custom".equals(localObject1)) || ("99".equals(localObject1))) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, str1);
+      this.c.put(paramInt, str1);
     }
     localObject2 = localObject1;
     if ("custom".equals(localObject1)) {
@@ -167,11 +130,11 @@ public class ThemeDiyModule
   
   private void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    if ((paramInt < this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData.length) && (paramInt >= 0))
+    if ((paramInt < this.d.length) && (paramInt >= 0))
     {
       if ((!"100".equals(paramString1)) && (!"99".equals(paramString1)) && (paramString2 != null) && (!new File(paramString2).exists()))
       {
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData[paramInt].e = 0;
+        this.d[paramInt].g = 0;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
@@ -183,26 +146,26 @@ public class ThemeDiyModule
         ((Bundle)localObject).putString("id", paramString1);
         ((Bundle)localObject).putString("name", String.valueOf(paramInt));
         ((Bundle)localObject).putString("url", paramString2);
-        ThemeDiyModule.ThemeDiyImpl localThemeDiyImpl = this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule$ThemeDiyImpl;
+        ThemeDiyModule.ThemeDiyImpl localThemeDiyImpl = this.g;
         if (localThemeDiyImpl != null) {
           localThemeDiyImpl.downloadBgPic(paramString3, (Bundle)localObject);
         }
       }
       else
       {
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData[paramInt].e = 5;
+        this.d[paramInt].g = 5;
       }
-      if (this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData[paramInt].jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData == null) {
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData[paramInt].jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData = new ResData();
+      if (this.d[paramInt].h == null) {
+        this.d[paramInt].h = new ResData();
       }
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData[paramInt].jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_Int = 5;
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData[paramInt].jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_JavaLangString = paramString1;
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData[paramInt].jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData.c = paramString2;
-      if (this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData[paramInt].jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData == null) {
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData[paramInt].jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData = new ResData();
+      this.d[paramInt].h.f = 5;
+      this.d[paramInt].h.b = paramString1;
+      this.d[paramInt].h.d = paramString2;
+      if (this.d[paramInt].i == null) {
+        this.d[paramInt].i = new ResData();
       }
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData[paramInt].jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_JavaLangString = paramString1;
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData[paramInt].jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.c = paramString2;
+      this.d[paramInt].i.b = paramString1;
+      this.d[paramInt].i.d = paramString2;
     }
   }
   
@@ -213,18 +176,18 @@ public class ThemeDiyModule
       QLog.e("ThemeDiyModule", 1, "sData is null");
       return;
     }
-    if ((paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData != null) && (paramThemeDIYData.jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData != null) && (!"100".equals(paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_JavaLangString)))
+    if ((paramThemeDIYData.i != null) && (paramThemeDIYData.h != null) && (!"100".equals(paramThemeDIYData.i.b)))
     {
-      ThemeBackground.a(paramContext, paramThemeDIYData.jdField_a_of_type_JavaLangString, paramString, paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.c, paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.d, paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_JavaLangString, "", 1, null, true);
-      if (!paramThemeDIYData.jdField_a_of_type_JavaLangString.equals(paramThemeDIYData.jdField_b_of_type_JavaLangString)) {
-        if ((paramThemeDIYData.jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData != null) && (paramThemeDIYData.jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_Int == 5)) {
-          ThemeBackground.a(paramContext, paramThemeDIYData.jdField_b_of_type_JavaLangString, paramString, paramThemeDIYData.jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData.c, paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.d, paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_JavaLangString, "", 1, null, true);
+      ThemeBackground.a(paramContext, paramThemeDIYData.b, paramString, paramThemeDIYData.i.d, paramThemeDIYData.i.e, paramThemeDIYData.i.b, "", 1, null, true);
+      if (!paramThemeDIYData.b.equals(paramThemeDIYData.d)) {
+        if ((paramThemeDIYData.h != null) && (paramThemeDIYData.h.f == 5)) {
+          ThemeBackground.a(paramContext, paramThemeDIYData.d, paramString, paramThemeDIYData.h.d, paramThemeDIYData.i.e, paramThemeDIYData.i.b, "", 1, null, true);
         } else {
-          ThemeBackground.a(paramContext, paramThemeDIYData.jdField_b_of_type_JavaLangString, paramString, paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.c, paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.d, paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_JavaLangString, "", 1, null, true);
+          ThemeBackground.a(paramContext, paramThemeDIYData.d, paramString, paramThemeDIYData.i.d, paramThemeDIYData.i.e, paramThemeDIYData.i.b, "", 1, null, true);
         }
       }
-      if (paramThemeDIYData.d == 2) {
-        ChatBackgroundUtil.a(paramContext, paramString, null, paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.c);
+      if (paramThemeDIYData.f == 2) {
+        ChatBackgroundUtil.a(paramContext, paramString, null, paramThemeDIYData.i.d);
       }
     }
     else
@@ -233,31 +196,58 @@ public class ThemeDiyModule
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("setSpThemeBackground sData.tryOnBgBigOrgRD=");
-        localStringBuilder.append(paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData);
+        localStringBuilder.append(paramThemeDIYData.i);
         localStringBuilder.append(", sData.tryOnBgBigRD=");
-        localStringBuilder.append(paramThemeDIYData.jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData);
+        localStringBuilder.append(paramThemeDIYData.h);
         localStringBuilder.append(", id=");
         String str;
-        if (paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData == null) {
+        if (paramThemeDIYData.i == null) {
           str = "-";
         } else {
-          str = paramThemeDIYData.jdField_b_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_JavaLangString;
+          str = paramThemeDIYData.i.b;
         }
         localStringBuilder.append(str);
         localStringBuilder.append(", pageIndex:");
-        localStringBuilder.append(paramThemeDIYData.d);
+        localStringBuilder.append(paramThemeDIYData.f);
         QLog.d("ThemeDiyModule", 2, localStringBuilder.toString());
       }
-      ThemeBackground.a(paramContext, paramThemeDIYData.jdField_b_of_type_JavaLangString, paramString, "", "", "", "", 1, null, true);
-      if (paramThemeDIYData.d == 2) {
+      ThemeBackground.a(paramContext, paramThemeDIYData.d, paramString, "", "", "", "", 1, null, true);
+      if (paramThemeDIYData.f == 2) {
         ChatBackgroundUtil.a(paramContext, paramString, null, "null");
       }
     }
   }
   
-  private static ThemeDIYData[] a()
+  private static String b(String paramString)
   {
-    return new ThemeDIYData[] { new ThemeDIYData(2130846235, "theme_bg_setting_path", 2131166621, "theme_bg_setting_path_png", -50, 0), new ThemeDIYData(2130847698, "theme_bg_message_path", 2131166623, "theme_bg_message_path_png", 50, 1), new ThemeDIYData(2130850371, "theme_bg_aio_path", 0, "theme_bg_aio_path", 0, 2), new ThemeDIYData(2130847698, "theme_bg_friend_path", 2131166623, "theme_bg_friend_path_png", 50, 3), new ThemeDIYData(2130850371, "theme_bg_dynamic_path", 2131166623, "theme_bg_dynamic_path_png", 50, 4) };
+    Object localObject;
+    if ((paramString != null) && (new File(paramString).exists()))
+    {
+      paramString = BitmapFactory.decodeFile(paramString);
+      localObject = new ByteArrayOutputStream();
+      int j = paramString.getWidth() / 180;
+      int i = j;
+      if (j < 1) {
+        i = 1;
+      }
+      Bitmap localBitmap = ThumbnailUtils.extractThumbnail(paramString, paramString.getWidth() / i, paramString.getHeight() / i);
+      localBitmap.compress(Bitmap.CompressFormat.JPEG, 60, (OutputStream)localObject);
+      paramString.recycle();
+      localBitmap.recycle();
+      paramString = Base64.encodeToString(((ByteArrayOutputStream)localObject).toByteArray(), 2);
+    }
+    else
+    {
+      paramString = null;
+    }
+    if (paramString != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("data:image/jpg;base64,");
+      ((StringBuilder)localObject).append(paramString);
+      return ((StringBuilder)localObject).toString();
+    }
+    return "";
   }
   
   private void b(JSONObject paramJSONObject, String paramString)
@@ -273,46 +263,9 @@ public class ThemeDiyModule
     ThemeIPCModule.a(str, new ThemeDiyModule.1(this, paramJSONObject, paramString));
   }
   
-  public Bundle a(String paramString1, String paramString2)
+  private static ThemeDIYData[] c()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("nowOperate", 16);
-    localBundle.putInt("nextOperate", 10);
-    localBundle.putString("key_from", "201");
-    int i = 0;
-    for (;;)
-    {
-      Object localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData;
-      if (i >= localObject1.length) {
-        break;
-      }
-      if (localObject1[i].jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData != null) {
-        localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData[i].jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_JavaLangString;
-      } else {
-        localObject1 = "100";
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("backgroundSave, bg save : index = ");
-        ((StringBuilder)localObject2).append(i);
-        ((StringBuilder)localObject2).append(",id=");
-        ((StringBuilder)localObject2).append((String)localObject1);
-        QLog.d("ThemeDiyModule", 2, ((StringBuilder)localObject2).toString());
-      }
-      Object localObject2 = localObject1;
-      if (((String)localObject1).equals("custom")) {
-        localObject2 = "99";
-      }
-      localBundle.putString(jdField_a_of_type_ArrayOfJavaLangString[i], (String)localObject2);
-      i += 1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeDiyModule", 2, "backgroundSave to save server2.");
-    }
-    localBundle.putString("themeId", paramString1);
-    localBundle.putString("version", paramString2);
-    return localBundle;
+    return new ThemeDIYData[] { new ThemeDIYData(2130847705, "theme_bg_setting_path", 2131167541, "theme_bg_setting_path_png", -50, 0), new ThemeDIYData(2130849358, "theme_bg_message_path", 2131167543, "theme_bg_message_path_png", 50, 1), new ThemeDIYData(2130852162, "theme_bg_aio_path", 0, "theme_bg_aio_path", 0, 2), new ThemeDIYData(2130849358, "theme_bg_friend_path", 2131167543, "theme_bg_friend_path_png", 50, 3), new ThemeDIYData(2130852162, "theme_bg_dynamic_path", 2131167543, "theme_bg_dynamic_path_png", 50, 4) };
   }
   
   public JSONObject a()
@@ -340,44 +293,21 @@ public class ThemeDiyModule
     return localJSONObject1;
   }
   
-  public void a()
-  {
-    try
-    {
-      ThemeDIYData[] arrayOfThemeDIYData = this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData;
-      int j = arrayOfThemeDIYData.length;
-      int i = 0;
-      while (i < j)
-      {
-        ThemeDIYData localThemeDIYData = arrayOfThemeDIYData[i];
-        a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), localThemeDIYData);
-        i += 1;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ThemeDiyModule", 2, QLog.getStackTraceString(localException));
-      }
-    }
-  }
-  
   public void a(Intent paramIntent, Activity paramActivity, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.h = paramInt1;
     Object localObject1 = new ResSuitData.BgSuit(null);
-    ((ResSuitData.BgSuit)localObject1).jdField_b_of_type_JavaLangString = "99";
-    ((ResSuitData.BgSuit)localObject1).jdField_a_of_type_Int = 2130846281;
-    ((ResSuitData.BgSuit)localObject1).c = HardCodeUtil.a(2131714695);
-    Object localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    ((ResSuitData.BgSuit)localObject1).b = "99";
+    ((ResSuitData.BgSuit)localObject1).c = 2130847751;
+    ((ResSuitData.BgSuit)localObject1).d = HardCodeUtil.a(2131912204);
+    Object localObject2 = this.f;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(((ResSuitData.BgSuit)localObject1).jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(((ResSuitData.BgSuit)localObject1).b);
     localStringBuilder.append(".");
     localStringBuilder.append(paramInt1);
     localStringBuilder.append(".");
     localStringBuilder.append(System.currentTimeMillis());
-    localObject1 = DIYThemeUtils.a((AppRuntime)localObject2, (ResSuitData)localObject1, 121, localStringBuilder.toString()).c;
+    localObject1 = DIYThemeUtils.a((AppRuntime)localObject2, (ResSuitData)localObject1, 121, localStringBuilder.toString()).d;
     localObject2 = new Rect();
     paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject2);
     paramIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
@@ -395,7 +325,7 @@ public class ThemeDiyModule
   
   public void a(ThemeDiyModule.ThemeDiyImpl paramThemeDiyImpl)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule$ThemeDiyImpl = paramThemeDiyImpl;
+    this.g = paramThemeDiyImpl;
   }
   
   public void a(String paramString)
@@ -403,18 +333,18 @@ public class ThemeDiyModule
     if (paramString == null) {
       return;
     }
-    ThemeDIYData[] arrayOfThemeDIYData = this.jdField_a_of_type_ArrayOfComTencentMobileqqVasThemeDiyThemeDIYData;
+    ThemeDIYData[] arrayOfThemeDIYData = this.d;
     int j = arrayOfThemeDIYData.length;
     int i = 0;
     while (i < j)
     {
       localObject = arrayOfThemeDIYData[i];
-      if ((((ThemeDIYData)localObject).jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData != null) && (((ThemeDIYData)localObject).e == 0))
+      if ((((ThemeDIYData)localObject).h != null) && (((ThemeDIYData)localObject).g == 0))
       {
-        String str = ChatBackgroundUtil.a(true, ((ThemeDIYData)localObject).jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_JavaLangString);
+        String str = ChatBackgroundUtil.a(true, ((ThemeDIYData)localObject).h.b);
         if (FileUtils.fileExists(str))
         {
-          ((ThemeDIYData)localObject).e = 5;
+          ((ThemeDIYData)localObject).g = 5;
         }
         else
         {
@@ -422,7 +352,7 @@ public class ThemeDiyModule
           {
             paramString = new StringBuilder();
             paramString.append("RES_DATA_STATE_DEALED saveDiyTheme  bgId:");
-            paramString.append(((ThemeDIYData)localObject).jdField_a_of_type_ComTencentMobileqqVasThemeDiyResData.jdField_b_of_type_JavaLangString);
+            paramString.append(((ThemeDIYData)localObject).h.b);
             paramString.append(" bgPath:");
             paramString.append(str);
             QLog.i("ThemeDiyModule", 2, paramString.toString());
@@ -432,7 +362,7 @@ public class ThemeDiyModule
       }
       i += 1;
     }
-    Object localObject = this.jdField_a_of_type_OrgJsonJSONObject;
+    Object localObject = this.b;
     if (localObject != null) {
       b((JSONObject)localObject, paramString);
     }
@@ -440,13 +370,13 @@ public class ThemeDiyModule
   
   public void a(String paramString1, String paramString2)
   {
-    String str = a(paramString1);
+    String str = b(paramString1);
     int i;
     Object localObject1;
     if (str.equals(""))
     {
       i = -1;
-      localObject1 = HardCodeUtil.a(2131714713);
+      localObject1 = HardCodeUtil.a(2131912221);
     }
     else
     {
@@ -477,8 +407,8 @@ public class ThemeDiyModule
     {
       localJSONException.printStackTrace();
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_Int, paramString1);
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule$ThemeDiyImpl;
+    this.c.put(this.h, paramString1);
+    paramString1 = this.g;
     if (paramString1 != null) {
       paramString1.callJs(paramString2, new String[] { ((JSONObject)localObject2).toString() });
     }
@@ -487,11 +417,11 @@ public class ThemeDiyModule
   public void a(JSONObject paramJSONObject, String paramString)
   {
     JSONArray localJSONArray = paramJSONObject.optJSONArray("bgInfos");
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject.optJSONObject("style");
+    this.b = paramJSONObject.optJSONObject("style");
     int i = 0;
     if (localJSONArray == null)
     {
-      paramJSONObject = this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule$ThemeDiyImpl;
+      paramJSONObject = this.g;
       if (paramJSONObject != null) {
         paramJSONObject.callJs(paramString, new String[] { new JSONResult(-1, "bginfos is null").a() });
       }
@@ -511,7 +441,7 @@ public class ThemeDiyModule
       }
       String str2;
       if ("99".equals(paramJSONObject)) {
-        str2 = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+        str2 = (String)this.c.get(i);
       } else {
         str2 = ChatBackgroundUtil.a(true, paramJSONObject);
       }
@@ -529,10 +459,75 @@ public class ThemeDiyModule
     }
     a(paramString);
   }
+  
+  public Bundle b(String paramString1, String paramString2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("nowOperate", 16);
+    localBundle.putInt("nextOperate", 10);
+    localBundle.putString("key_from", "201");
+    int i = 0;
+    for (;;)
+    {
+      Object localObject1 = this.d;
+      if (i >= localObject1.length) {
+        break;
+      }
+      if (localObject1[i].h != null) {
+        localObject1 = this.d[i].h.b;
+      } else {
+        localObject1 = "100";
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("backgroundSave, bg save : index = ");
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append(",id=");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("ThemeDiyModule", 2, ((StringBuilder)localObject2).toString());
+      }
+      Object localObject2 = localObject1;
+      if (((String)localObject1).equals("custom")) {
+        localObject2 = "99";
+      }
+      localBundle.putString(a[i], (String)localObject2);
+      i += 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDiyModule", 2, "backgroundSave to save server2.");
+    }
+    localBundle.putString("themeId", paramString1);
+    localBundle.putString("version", paramString2);
+    return localBundle;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      ThemeDIYData[] arrayOfThemeDIYData = this.d;
+      int j = arrayOfThemeDIYData.length;
+      int i = 0;
+      while (i < j)
+      {
+        ThemeDIYData localThemeDIYData = arrayOfThemeDIYData[i];
+        a(this.e, this.f.getAccount(), localThemeDIYData);
+        i += 1;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ThemeDiyModule", 2, QLog.getStackTraceString(localException));
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.diy.ThemeDiyModule
  * JD-Core Version:    0.7.0.1
  */

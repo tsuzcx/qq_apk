@@ -1,6 +1,6 @@
 package com.tencent.liteav.screencapture;
 
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 
 class a$1
   implements c.b
@@ -9,7 +9,7 @@ class a$1
   
   public void a()
   {
-    f.a(a.a(this.a), -7001, "Screen recording stopped. It may be preempted by other apps");
+    h.a(a.a(this.a), -7001, "Screen recording stopped. It may be preempted by other apps");
     a.a locala = a.b(this.a);
     a.a(this.a, null);
     if (locala != null) {
@@ -35,12 +35,12 @@ class a$1
       return;
     }
     a.a(this.a, null);
-    f.a(a.a(this.a), -1308, "Failed to share screen");
+    h.a(a.a(this.a), -1308, "Failed to share screen");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.screencapture.a.1
  * JD-Core Version:    0.7.0.1
  */

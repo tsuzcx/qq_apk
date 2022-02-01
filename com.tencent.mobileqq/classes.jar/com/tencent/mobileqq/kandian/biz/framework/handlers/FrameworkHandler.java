@@ -15,7 +15,7 @@ import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
 import com.tencent.mobileqq.kandian.base.utils.RIJThreadHandler;
 import com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataFetchManager;
 import com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataFetchManager.Builder;
-import com.tencent.mobileqq.kandian.biz.account.api.ICellFactory;
+import com.tencent.mobileqq.kandian.biz.account.api.impl.CellFactory;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyBaseListViewGroup;
 import com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyListViewGroup;
@@ -31,8 +31,8 @@ import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.kandian.biz.framework.UserActionCollector;
 import com.tencent.mobileqq.kandian.biz.gifvideo.utils.VideoPlayControlUtils;
 import com.tencent.mobileqq.kandian.biz.pts.ReadInJoyModelImpl;
-import com.tencent.mobileqq.kandian.biz.pts.api.IReadInJoyPTSCostHelper;
 import com.tencent.mobileqq.kandian.biz.pts.lite.PTSLiteItemViewBuilder;
+import com.tencent.mobileqq.kandian.biz.pts.network.ReadInJoyPTSCostHelper;
 import com.tencent.mobileqq.kandian.biz.pts.util.DynamicItemViewHelper;
 import com.tencent.mobileqq.kandian.biz.pts.util.PTSLiteSwitchManager;
 import com.tencent.mobileqq.kandian.biz.push.activity.ReadInJoyLockScreenJumpDelegate;
@@ -64,230 +64,91 @@ public class FrameworkHandler
   extends BaseHandler
   implements ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener
 {
-  private int jdField_a_of_type_Int = 8;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private RIJChannelBannerController jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController;
-  private RIJChannelBannerView jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerView;
-  private FrameworkHandler.ItemViewBuilder jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersFrameworkHandler$ItemViewBuilder = new FrameworkHandler.ItemViewBuilder(this);
-  private PTSLiteItemViewBuilder jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteItemViewBuilder;
-  private ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new FrameworkHandler.1(this);
-  private StudyModeChangeListener jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
   public boolean b;
   public boolean c;
-  private boolean d = true;
+  private FrameworkHandler.ItemViewBuilder d = new FrameworkHandler.ItemViewBuilder(this);
+  private PTSLiteItemViewBuilder e;
+  private RIJChannelBannerController f;
+  private StudyModeChangeListener g;
+  private RIJChannelBannerView h;
+  private ReadInJoyObserver i = new FrameworkHandler.1(this);
+  private TextView j;
+  private ImageView k;
+  private int l = 8;
+  private boolean m = true;
   
-  private void a(View paramView)
+  private void B()
   {
-    if (paramView == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366758));
-    if ((a() instanceof ReadInJoyListViewGroup)) {
-      ReadInJoyDropFrameHelper.a().a(a(), (FrameworkHandler)((ReadInJoyListViewGroup)a()).a().a());
-    }
-  }
-  
-  private boolean a(boolean paramBoolean)
-  {
-    if ((ReadInJoyHelper.j()) && (a() == 0))
+    if ((a().a().j() instanceof KanDianViewController))
     {
-      localObject = a();
-      if (localObject != null) {}
-    }
-    else
-    {
-      bool = false;
-      break label43;
-    }
-    ((RIJDataFetchManager)localObject).b(a());
-    boolean bool = true;
-    label43:
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("deleteArticleInStudyMode, isStudyMode=");
-    ((StringBuilder)localObject).append(paramBoolean);
-    ((StringBuilder)localObject).append("  hasDeleted=");
-    ((StringBuilder)localObject).append(bool);
-    QLog.d("FrameworkHandler", 1, ((StringBuilder)localObject).toString());
-    return bool;
-  }
-  
-  private void b(int paramInt) {}
-  
-  private void b(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369293));
-    if ((a() == 0) && (ReadInJoyHelper.m()))
-    {
-      paramView = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      paramView.setMargins(paramView.leftMargin, paramView.topMargin, ViewUtils.a(34.0F), ViewUtils.a(184.0F));
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramView);
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new FrameworkHandler.3(this));
-  }
-  
-  private void b(List<ChannelBannerInfo> paramList)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController == null) {
-      return;
-    }
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController.a(true);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController.a((ChannelBannerInfo)paramList.get(0));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController.a(false);
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    label163:
-    label168:
-    label173:
-    for (;;)
-    {
-      try
-      {
-        bool2 = StudyModeManager.a();
-        if ((bool2 == this.jdField_a_of_type_Boolean) && (!paramBoolean)) {
-          return;
-        }
-        if (a().a().a() == null) {
-          return;
-        }
-        this.jdField_a_of_type_Boolean = bool2;
-        if (DailyModeConfigHandler.c(a()))
-        {
-          if (paramBoolean) {
-            break label163;
-          }
-          return;
-        }
-        bool1 = this.jdField_a_of_type_Boolean;
-        if (a() == 0) {
-          break label173;
-        }
-        if (paramBoolean) {
-          break label168;
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        boolean bool2;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("update ListViewPadding error, e=");
-        localStringBuilder.append(localException);
-        QLog.d("FrameworkHandler", 2, localStringBuilder.toString());
-      }
-      a().a().a().a(a().a().a(), (ReadInJoyXListView)a(), a().a().a(), a(), bool1, paramBoolean);
-      if (bool2)
-      {
-        a(true);
-        return;
-      }
-      return;
-      boolean bool1 = false;
-      continue;
-      bool1 = false;
-    }
-  }
-  
-  private void c(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController != null) && ((a() instanceof ListView)))
-    {
-      RIJChannelBannerView localRIJChannelBannerView = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController.a();
-      ListView localListView = (ListView)a();
-      if (paramBoolean) {
-        localListView.removeHeaderView(localRIJChannelBannerView);
-      }
-    }
-    d(paramBoolean);
-  }
-  
-  private void d(boolean paramBoolean)
-  {
-    boolean bool = a(paramBoolean);
-    RIJDataFetchManager localRIJDataFetchManager = a();
-    if ((bool) && (!paramBoolean) && (localRIJDataFetchManager != null)) {
-      a(true);
-    }
-  }
-  
-  private void m()
-  {
-    if ((a().a().a() instanceof KanDianViewController))
-    {
-      Activity localActivity = a().a().a();
-      if (localActivity.findViewById(2131362020) != null)
+      Activity localActivity = a().a().q();
+      if (localActivity.findViewById(2131427598) != null)
       {
         b(true);
         return;
       }
-      if (localActivity.findViewById(2131362021) != null) {
-        a().a().a().a(a().a().a(), (ReadInJoyXListView)a(), a().a().a(), a());
+      if (localActivity.findViewById(2131427599) != null) {
+        a().a().c().a(a().a().q(), (ReadInJoyXListView)e(), a().a().a(), c());
       }
     }
-    else if ((a().a().a() instanceof ReadInJoyDailyViewController))
+    else if ((a().a().j() instanceof ReadInJoyDailyViewController))
     {
-      ((ReadInJoyDailyViewController)a().a().a()).a((ReadInJoyXListView)a(), a().a().a());
+      ((ReadInJoyDailyViewController)a().a().j()).a((ReadInJoyXListView)e(), a().a().p());
     }
   }
   
-  private void n()
+  private void C()
   {
-    int i;
+    int n;
     if ((!this.b) && (this.c))
     {
       this.b = true;
       this.c = false;
-      if (a() == ChannelCoverInfoModule.a())
+      if (c() == ChannelCoverInfoModule.g())
       {
-        PublicTracker.jdField_a_of_type_Int = 1;
+        PublicTracker.f = 1;
       }
       else
       {
-        i = a();
-        if (i != 0)
+        n = c();
+        if (n != 0)
         {
-          if (i != 56)
+          if (n != 56)
           {
-            if (i == 70) {
-              PublicTracker.jdField_a_of_type_Int = 3;
+            if (n == 70) {
+              PublicTracker.f = 3;
             }
           }
           else {
-            PublicTracker.jdField_a_of_type_Int = 2;
+            PublicTracker.f = 2;
           }
         }
         else {
-          PublicTracker.jdField_a_of_type_Int = 1;
+          PublicTracker.f = 1;
         }
       }
       PublicTracker.a("KANDIAN_NEW_FEEDS_LIST_VIEW_GROUP_MEASURE_LAYOUT_DRAW", null);
       PublicTracker.a("KANDIAN_FEEDS_STAGE_2_COST", null);
       PublicTracker.a("KANDIAN_FEEDS_COST", null);
-      if (a() == 56) {
+      if (c() == 56) {
         PublicTracker.a("video_tab_cost", null);
       }
     }
-    if (this.d)
+    if (this.m)
     {
-      this.d = false;
-      if (a() == ChannelCoverInfoModule.a())
+      this.m = false;
+      if (c() == ChannelCoverInfoModule.g())
       {
         PublicTracker.a("recommend_tab_cost", null);
         return;
       }
-      i = a();
-      if (i != 0)
+      n = c();
+      if (n != 0)
       {
-        if (i != 56)
+        if (n != 56)
         {
-          if (i != 70) {
+          if (n != 70) {
             return;
           }
           PublicTracker.a("subscribe_tab_cost", null);
@@ -300,16 +161,16 @@ public class FrameworkHandler
     }
   }
   
-  private void o()
+  private void D()
   {
-    if (a() != null) {
-      VideoPlayControlUtils.a(a(), null, true);
+    if (e() != null) {
+      VideoPlayControlUtils.a(e(), null, true);
     }
   }
   
-  private void p()
+  private void E()
   {
-    Activity localActivity = a().a().a();
+    Activity localActivity = a().a().q();
     if (ReadinjoyJumpActivity.a(localActivity.getIntent()))
     {
       ReadinjoyJumpActivity.a(localActivity, localActivity.getIntent(), 500L);
@@ -325,7 +186,7 @@ public class FrameworkHandler
     }
     if (ReadinjoyJumpActivity.c(localActivity.getIntent()))
     {
-      if (ReadInJoyHelper.m()) {
+      if (ReadInJoyHelper.w()) {
         return;
       }
       localIntent = localActivity.getIntent();
@@ -337,11 +198,11 @@ public class FrameworkHandler
     }
   }
   
-  private void q()
+  private void F()
   {
-    if (a() == 0)
+    if (c() == 0)
     {
-      if (RIJNewBiuCardTransformManager.a().a())
+      if (RIJNewBiuCardTransformManager.a().b())
       {
         a(false, 1);
         QLog.d("FrameworkHandler", 2, "transformCommentBiuCard | shouldAutoRefresh and backToTop");
@@ -349,51 +210,63 @@ public class FrameworkHandler
       ThreadManager.getUIHandler().postDelayed(new FrameworkHandler.5(this), 500L);
       return;
     }
-    RIJNewBiuCardTransformManager.a().c();
+    RIJNewBiuCardTransformManager.a().e();
     QLog.d("FrameworkHandler", 2, "transformCommentBiuCard | not in recommend feeds and clear biuinfo");
   }
   
-  private void r()
+  private void G()
   {
     new Handler(Looper.getMainLooper()).post(new FrameworkHandler.6(this));
   }
   
-  private void s()
+  private void H()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerView = new RIJChannelBannerView(a());
-    if ((a() instanceof ListView))
+    this.h = new RIJChannelBannerView(i());
+    if ((e() instanceof ListView))
     {
-      ((ListView)a()).addHeaderView(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerView, 2);
-      this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener = new FrameworkHandler.7(this);
-      StudyModeManager.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener);
+      ((ListView)e()).addHeaderView(this.h, 2);
+      this.g = new FrameworkHandler.7(this);
+      StudyModeManager.a(this.g);
     }
   }
   
-  private void t()
+  private void I()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController != null)
+    if (this.f != null)
     {
       QLog.i("FrameworkHandler", 1, "[initRijChannelBannerController] controller is not null, do not init again.");
       return;
     }
-    if ((PTSLiteSwitchManager.a().a()) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController = new RIJChannelBannerController(a(), a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerView);
+    if ((PTSLiteSwitchManager.a().b()) && (this.h != null)) {
+      this.f = new RIJChannelBannerController(c(), i(), this.h);
     }
   }
   
-  private void u()
+  private void J()
   {
-    RIJChannelBannerController localRIJChannelBannerController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController;
-    if (localRIJChannelBannerController != null) {
-      localRIJChannelBannerController.a();
+    if (this.e != null) {
+      return;
     }
-  }
-  
-  private void v()
-  {
-    if ((a() == 0) || (DailyModeConfigHandler.c(a())))
+    if (PTSLiteSwitchManager.a().b())
     {
-      ReadInJoyBaseListViewGroup localReadInJoyBaseListViewGroup = a();
+      this.e = new PTSLiteItemViewBuilder(i(), g());
+      QLog.i("FrameworkHandler", 1, "[initPtsLiteItemViewBuilder]");
+    }
+  }
+  
+  private void K()
+  {
+    RIJChannelBannerController localRIJChannelBannerController = this.f;
+    if (localRIJChannelBannerController != null) {
+      localRIJChannelBannerController.b();
+    }
+  }
+  
+  private void L()
+  {
+    if ((c() == 0) || (DailyModeConfigHandler.c(c())))
+    {
+      ReadInJoyBaseListViewGroup localReadInJoyBaseListViewGroup = d();
       if (localReadInJoyBaseListViewGroup != null)
       {
         localReadInJoyBaseListViewGroup.setFocusableInTouchMode(true);
@@ -403,34 +276,175 @@ public class FrameworkHandler
     }
   }
   
+  private void a(View paramView)
+  {
+    if (paramView == null) {
+      return;
+    }
+    this.j = ((TextView)paramView.findViewById(2131433080));
+    if ((d() instanceof ReadInJoyListViewGroup)) {
+      ReadInJoyDropFrameHelper.d().a(c(), (FrameworkHandler)((ReadInJoyListViewGroup)d()).getInvokeHandler().b());
+    }
+  }
+  
+  private void b(View paramView)
+  {
+    this.k = ((ImageView)paramView.findViewById(2131436279));
+    if ((c() == 0) && (ReadInJoyHelper.w()))
+    {
+      paramView = (FrameLayout.LayoutParams)this.k.getLayoutParams();
+      paramView.setMargins(paramView.leftMargin, paramView.topMargin, ViewUtils.dip2px(34.0F), ViewUtils.dip2px(184.0F));
+      this.k.setLayoutParams(paramView);
+    }
+    this.k.setOnClickListener(new FrameworkHandler.3(this));
+  }
+  
+  private void b(List<ChannelBannerInfo> paramList)
+  {
+    if (this.f == null) {
+      return;
+    }
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      this.f.a(true);
+      this.f.a((ChannelBannerInfo)paramList.get(0));
+      return;
+    }
+    this.f.a(false);
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    label164:
+    label169:
+    label174:
+    for (;;)
+    {
+      try
+      {
+        bool2 = StudyModeManager.h();
+        if ((bool2 == this.a) && (!paramBoolean)) {
+          return;
+        }
+        if (a().a().q() == null) {
+          return;
+        }
+        this.a = bool2;
+        if (DailyModeConfigHandler.c(c()))
+        {
+          if (paramBoolean) {
+            break label164;
+          }
+          return;
+        }
+        bool1 = this.a;
+        if (c() == 0) {
+          break label174;
+        }
+        if (paramBoolean) {
+          break label169;
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        boolean bool2;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("update ListViewPadding error, e=");
+        localStringBuilder.append(localException);
+        QLog.d("FrameworkHandler", 2, localStringBuilder.toString());
+      }
+      a().a().c().a(a().a().q(), (ReadInJoyXListView)e(), a().a().a(), c(), bool1, paramBoolean);
+      if (bool2)
+      {
+        a(true);
+        return;
+      }
+      return;
+      boolean bool1 = false;
+      continue;
+      bool1 = false;
+    }
+  }
+  
+  private void c(boolean paramBoolean)
+  {
+    if ((this.f != null) && ((e() instanceof ListView)))
+    {
+      RIJChannelBannerView localRIJChannelBannerView = this.f.a();
+      ListView localListView = (ListView)e();
+      if (paramBoolean) {
+        localListView.removeHeaderView(localRIJChannelBannerView);
+      }
+    }
+    d(paramBoolean);
+  }
+  
+  private void d(boolean paramBoolean)
+  {
+    boolean bool = e(paramBoolean);
+    RIJDataFetchManager localRIJDataFetchManager = a();
+    if ((bool) && (!paramBoolean) && (localRIJDataFetchManager != null)) {
+      a(true);
+    }
+  }
+  
+  private void e(int paramInt) {}
+  
+  private boolean e(boolean paramBoolean)
+  {
+    if ((ReadInJoyHelper.t()) && (c() == 0))
+    {
+      localObject = a();
+      if (localObject != null) {}
+    }
+    else
+    {
+      bool = false;
+      break label43;
+    }
+    ((RIJDataFetchManager)localObject).b(c());
+    boolean bool = true;
+    label43:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("deleteArticleInStudyMode, isStudyMode=");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append("  hasDeleted=");
+    ((StringBuilder)localObject).append(bool);
+    QLog.d("FrameworkHandler", 1, ((StringBuilder)localObject).toString());
+    return bool;
+  }
+  
+  public void A() {}
+  
   public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     System.currentTimeMillis();
-    int j = a(paramInt).intValue();
-    AbsBaseArticleInfo localAbsBaseArticleInfo1 = (AbsBaseArticleInfo)a(paramInt);
-    AbsBaseArticleInfo localAbsBaseArticleInfo2 = (AbsBaseArticleInfo)a(paramInt + 1);
+    int i1 = a(paramInt).intValue();
+    AbsBaseArticleInfo localAbsBaseArticleInfo1 = (AbsBaseArticleInfo)b(paramInt);
+    AbsBaseArticleInfo localAbsBaseArticleInfo2 = (AbsBaseArticleInfo)b(paramInt + 1);
     if (localAbsBaseArticleInfo1 != null) {
-      localAbsBaseArticleInfo1.mResolvedFeedType = j;
+      localAbsBaseArticleInfo1.mResolvedFeedType = i1;
     }
     paramViewGroup = null;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersFrameworkHandler$ItemViewBuilder.a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteItemViewBuilder != null) && (PTSLiteItemViewBuilder.b(localAbsBaseArticleInfo1)))
+    this.d.a();
+    if ((this.e != null) && (PTSLiteItemViewBuilder.c(localAbsBaseArticleInfo1)))
     {
-      paramViewGroup = new ReadInJoyModelImpl(a(), localAbsBaseArticleInfo1, j, a(), b(), paramInt, a(), c(), localAbsBaseArticleInfo2, a());
-      return this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteItemViewBuilder.a(paramView, localAbsBaseArticleInfo1, paramInt, paramViewGroup);
+      paramViewGroup = new ReadInJoyModelImpl(i(), localAbsBaseArticleInfo1, i1, c(), f(), paramInt, u(), t(), localAbsBaseArticleInfo2, g());
+      return this.e.a(paramView, localAbsBaseArticleInfo1, paramInt, paramViewGroup);
     }
-    int i;
-    if ((j == 123) && (!ProteusSupportUtil.a(a().a(), j, localAbsBaseArticleInfo1))) {
-      i = 1;
+    int n;
+    if ((i1 == 123) && (!ProteusSupportUtil.b(g().F(), i1, localAbsBaseArticleInfo1))) {
+      n = 1;
     } else {
-      i = 0;
+      n = 0;
     }
-    long l;
-    if ((i == 0) && (ProteusSupportUtil.a(j)))
+    long l1;
+    if ((n == 0) && (ProteusSupportUtil.a(i1)))
     {
-      l = System.currentTimeMillis();
-      paramView = FrameworkHandler.ItemViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersFrameworkHandler$ItemViewBuilder, paramView, localAbsBaseArticleInfo1, localAbsBaseArticleInfo2, j, paramInt);
-      ((IReadInJoyPTSCostHelper)QRoute.api(IReadInJoyPTSCostHelper.class)).printCost("FrameworkHandler", String.valueOf(j), "getProteusNormalView", System.currentTimeMillis() - l);
+      l1 = System.currentTimeMillis();
+      paramView = FrameworkHandler.ItemViewBuilder.a(this.d, paramView, localAbsBaseArticleInfo1, localAbsBaseArticleInfo2, i1, paramInt);
+      ReadInJoyPTSCostHelper.a("FrameworkHandler", String.valueOf(i1), "getProteusNormalView", System.currentTimeMillis() - l1);
       paramViewGroup = paramView;
       if (localAbsBaseArticleInfo1 != null)
       {
@@ -441,11 +455,11 @@ public class FrameworkHandler
         return paramView;
       }
     }
-    else if (FrameworkHandler.ItemViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersFrameworkHandler$ItemViewBuilder).a(j))
+    else if (FrameworkHandler.ItemViewBuilder.a(this.d).a(i1))
     {
-      l = System.currentTimeMillis();
-      paramView = FrameworkHandler.ItemViewBuilder.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersFrameworkHandler$ItemViewBuilder, paramView, localAbsBaseArticleInfo1, localAbsBaseArticleInfo2, j, paramInt);
-      ((IReadInJoyPTSCostHelper)QRoute.api(IReadInJoyPTSCostHelper.class)).printCost("FrameworkHandler", String.valueOf(j), "getDynamicProteusView", System.currentTimeMillis() - l);
+      l1 = System.currentTimeMillis();
+      paramView = FrameworkHandler.ItemViewBuilder.b(this.d, paramView, localAbsBaseArticleInfo1, localAbsBaseArticleInfo2, i1, paramInt);
+      ReadInJoyPTSCostHelper.a("FrameworkHandler", String.valueOf(i1), "getDynamicProteusView", System.currentTimeMillis() - l1);
       paramViewGroup = paramView;
       if (localAbsBaseArticleInfo1 != null)
       {
@@ -458,11 +472,11 @@ public class FrameworkHandler
     }
     else
     {
-      if (j == 38)
+      if (i1 == 38)
       {
-        l = System.currentTimeMillis();
-        paramViewGroup = FrameworkHandler.ItemViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersFrameworkHandler$ItemViewBuilder, paramView, localAbsBaseArticleInfo1, paramInt);
-        ((IReadInJoyPTSCostHelper)QRoute.api(IReadInJoyPTSCostHelper.class)).printCost("FrameworkHandler", String.valueOf(j), "getArkAppView", System.currentTimeMillis() - l);
+        l1 = System.currentTimeMillis();
+        paramViewGroup = FrameworkHandler.ItemViewBuilder.a(this.d, paramView, localAbsBaseArticleInfo1, paramInt);
+        ReadInJoyPTSCostHelper.a("FrameworkHandler", String.valueOf(i1), "getArkAppView", System.currentTimeMillis() - l1);
         paramView = paramViewGroup;
         if (localAbsBaseArticleInfo1 != null)
         {
@@ -475,12 +489,12 @@ public class FrameworkHandler
       }
       else
       {
-        if (!((ICellFactory)QRoute.api(ICellFactory.class)).cellRebuildCompleted(j)) {
+        if (!CellFactory.INSTANCE.cellRebuildCompleted(i1)) {
           return paramViewGroup;
         }
-        l = System.currentTimeMillis();
-        paramViewGroup = FrameworkHandler.ItemViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersFrameworkHandler$ItemViewBuilder, paramView, localAbsBaseArticleInfo1, j, paramInt);
-        ((IReadInJoyPTSCostHelper)QRoute.api(IReadInJoyPTSCostHelper.class)).printCost("FrameworkHandler", String.valueOf(j), "cellRebuildCompleted", System.currentTimeMillis() - l);
+        l1 = System.currentTimeMillis();
+        paramViewGroup = FrameworkHandler.ItemViewBuilder.a(this.d, paramView, localAbsBaseArticleInfo1, i1, paramInt);
+        ReadInJoyPTSCostHelper.a("FrameworkHandler", String.valueOf(i1), "cellRebuildCompleted", System.currentTimeMillis() - l1);
         paramView = paramViewGroup;
         if (localAbsBaseArticleInfo1 != null)
         {
@@ -496,66 +510,54 @@ public class FrameworkHandler
     return paramViewGroup;
   }
   
-  public void a()
-  {
-    QLog.d("FrameworkHandler", 2, "doStart!");
-  }
-  
-  public void a(int paramInt)
-  {
-    VideoPlayControlUtils.d(a());
-  }
-  
   public void a(int paramInt, List<Long> paramList)
   {
     super.a(paramInt, paramList);
-    paramList = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController;
+    paramList = this.f;
     if (paramList != null) {
-      paramList.c();
+      paramList.d();
     }
   }
   
   public void a(View paramView, ListView paramListView)
   {
-    v();
+    L();
   }
   
   public void a(View paramView, ListView paramListView, long paramLong)
   {
     a(paramView);
     b(paramView);
-    m();
-    PTSDeviceUtil.init(a());
-    if (PTSLiteSwitchManager.a().a()) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteItemViewBuilder = new PTSLiteItemViewBuilder(a(), a());
-    }
-    s();
-    t();
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    B();
+    PTSDeviceUtil.init(i());
+    J();
+    H();
+    I();
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.i);
   }
   
   public void a(AbsListView paramAbsListView, int paramInt)
   {
     super.a(paramAbsListView, paramInt);
-    if ((a() == 0) || (DailyModeConfigHandler.c(a()))) {
-      ReadinjoySPEventReport.a().a.onScrollStateChanged(paramAbsListView, paramInt);
+    if ((c() == 0) || (DailyModeConfigHandler.c(c()))) {
+      ReadinjoySPEventReport.a().f.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
   public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    b(paramInt1);
-    if ((a() == 0) || (DailyModeConfigHandler.c(a()))) {
-      ReadinjoySPEventReport.a().a.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    e(paramInt1);
+    if ((c() == 0) || (DailyModeConfigHandler.c(c()))) {
+      ReadinjoySPEventReport.a().f.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)a((int)paramLong);
-    if ((DailyModeConfigHandler.c(a())) || (a() == 0))
+    AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)b((int)paramLong);
+    if ((DailyModeConfigHandler.c(c())) || (c() == 0))
     {
-      ReadinjoySPEventReport.UserOptInfo localUserOptInfo = ReadinjoySPEventReport.a().a;
+      ReadinjoySPEventReport.UserOptInfo localUserOptInfo = ReadinjoySPEventReport.a().f;
       paramAdapterView = (AbsListView)paramAdapterView;
       localUserOptInfo.a(paramView, paramAdapterView, localAbsBaseArticleInfo);
       UserActionCollector.a().a(paramView, paramAdapterView, localAbsBaseArticleInfo);
@@ -564,11 +566,11 @@ public class FrameworkHandler
   
   public void a(String paramString)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.j;
     if (localTextView != null)
     {
       localTextView.setText(paramString);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.j.setVisibility(0);
     }
   }
   
@@ -579,57 +581,29 @@ public class FrameworkHandler
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    this.d = true;
-    if ((a() == 0) || (DailyModeConfigHandler.c(a())))
+    this.m = true;
+    if ((c() == 0) || (DailyModeConfigHandler.c(c())))
     {
-      ReadinjoySPEventReport.UserOptInfo localUserOptInfo = ReadinjoySPEventReport.a().a;
+      ReadinjoySPEventReport.UserOptInfo localUserOptInfo = ReadinjoySPEventReport.a().f;
       ListView localListView;
-      if (a() != null) {
-        localListView = a().a();
+      if (g() != null) {
+        localListView = g().d();
       } else {
         localListView = null;
       }
       localUserOptInfo.onScrollStateChanged(localListView, 6);
     }
-    VideoPlayControlUtils.d(a());
+    VideoPlayControlUtils.d(e());
   }
   
   public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
   {
     super.a(paramBoolean1, paramInt, paramList, paramBoolean2);
-    t();
-    paramList = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController;
+    I();
+    paramList = this.f;
     if (paramList != null) {
-      paramList.b();
+      paramList.c();
     }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersFrameworkHandler$ItemViewBuilder.a();
-    boolean bool2 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdProteusView(paramInt);
-    boolean bool1 = false;
-    if (bool2) {
-      return false;
-    }
-    if ((ProteusSupportUtil.a(paramInt)) || (FrameworkHandler.ItemViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersFrameworkHandler$ItemViewBuilder).a(paramInt)) || (38 == paramInt) || (((ICellFactory)QRoute.api(ICellFactory.class)).cellRebuildCompleted(paramInt)) || (PTSLiteItemViewBuilder.a(paramInt))) {
-      bool1 = true;
-    }
-    return bool1;
-  }
-  
-  public void b()
-  {
-    this.d = true;
-    RIJChannelBannerController localRIJChannelBannerController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController;
-    if (localRIJChannelBannerController != null) {
-      localRIJChannelBannerController.e();
-    }
-    q();
-    r();
-    p();
-    b(false);
-    o();
   }
   
   public void b(int paramInt, List<ChannelBannerInfo> paramList)
@@ -638,71 +612,104 @@ public class FrameworkHandler
     localStringBuilder.append("[onRijChannelBannerRefreshed], channelId = ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(", list size = ");
-    int i;
+    int n;
     if (paramList != null) {
-      i = paramList.size();
+      n = paramList.size();
     } else {
-      i = 0;
+      n = 0;
     }
-    localStringBuilder.append(i);
+    localStringBuilder.append(n);
     QLog.i("FrameworkHandler", 1, localStringBuilder.toString());
-    if (paramInt != a())
+    if (paramInt != c())
     {
       paramList = new StringBuilder();
       paramList.append("[onRijChannelBannerRefreshed], do not refresh, current channel id = ");
-      paramList.append(a());
+      paramList.append(c());
       QLog.i("FrameworkHandler", 1, paramList.toString());
       return;
     }
     RIJThreadHandler.b().post(new FrameworkHandler.2(this, paramList));
   }
   
-  public void c()
+  public void c(int paramInt)
   {
-    ReadInJoyVoicePlayController.a().a();
-    if ((a() == 0) || (DailyModeConfigHandler.c(a())))
+    VideoPlayControlUtils.d(e());
+  }
+  
+  public boolean d(int paramInt)
+  {
+    this.d.a();
+    boolean bool2 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdProteusView(paramInt);
+    boolean bool1 = false;
+    if (bool2) {
+      return false;
+    }
+    if ((ProteusSupportUtil.a(paramInt)) || (FrameworkHandler.ItemViewBuilder.a(this.d).a(paramInt)) || (38 == paramInt) || (CellFactory.INSTANCE.cellRebuildCompleted(paramInt)) || (PTSLiteItemViewBuilder.a(paramInt))) {
+      bool1 = true;
+    }
+    return bool1;
+  }
+  
+  public void j()
+  {
+    QLog.d("FrameworkHandler", 2, "doStart!");
+  }
+  
+  public void k()
+  {
+    this.m = true;
+    RIJChannelBannerController localRIJChannelBannerController = this.f;
+    if (localRIJChannelBannerController != null) {
+      localRIJChannelBannerController.f();
+    }
+    F();
+    G();
+    E();
+    b(false);
+    D();
+  }
+  
+  public void l()
+  {
+    ReadInJoyVoicePlayController.a().b();
+    if ((c() == 0) || (DailyModeConfigHandler.c(c())))
     {
-      ReadinjoySPEventReport.UserOptInfo localUserOptInfo = ReadinjoySPEventReport.a().a;
+      ReadinjoySPEventReport.UserOptInfo localUserOptInfo = ReadinjoySPEventReport.a().f;
       ListView localListView;
-      if (a() != null) {
-        localListView = a().a();
+      if (g() != null) {
+        localListView = g().d();
       } else {
         localListView = null;
       }
       localUserOptInfo.onScrollStateChanged(localListView, 5);
     }
-    VideoPlayControlUtils.b(a());
+    VideoPlayControlUtils.b(e());
   }
   
-  public int d()
-  {
-    return 2;
-  }
+  public void m() {}
   
-  public void d() {}
-  
-  public void e()
+  public void n()
   {
-    ReadInJoyDropFrameHelper.a().b(a(), this);
-    PTSLiteItemViewBuilder localPTSLiteItemViewBuilder = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLitePTSLiteItemViewBuilder;
+    ReadInJoyDropFrameHelper.d().b(c(), this);
+    PTSLiteItemViewBuilder localPTSLiteItemViewBuilder = this.e;
     if (localPTSLiteItemViewBuilder != null) {
-      localPTSLiteItemViewBuilder.a();
+      localPTSLiteItemViewBuilder.b();
     }
-    i();
-    j();
-    u();
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    x();
+    y();
+    K();
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.i);
   }
   
-  public void f()
+  public void o()
   {
-    n();
-    if ((a() == 0) || (DailyModeConfigHandler.c(a())))
+    C();
+    if ((c() == 0) || (DailyModeConfigHandler.c(c())))
     {
-      ReadinjoySPEventReport.UserOptInfo localUserOptInfo = ReadinjoySPEventReport.a().a;
+      ReadinjoySPEventReport.UserOptInfo localUserOptInfo = ReadinjoySPEventReport.a().f;
       ListView localListView;
-      if (a() != null) {
-        localListView = a().a();
+      if (g() != null) {
+        localListView = g().d();
       } else {
         localListView = null;
       }
@@ -710,42 +717,45 @@ public class FrameworkHandler
     }
   }
   
-  public void g()
+  public void q()
   {
-    VideoPlayControlUtils.a(a());
+    VideoPlayControlUtils.a(e());
   }
   
-  public void h()
+  public void r()
   {
-    super.h();
-    if ((a() == 0) || (DailyModeConfigHandler.c(a()))) {
-      ReadinjoySPEventReport.a().a.a();
+    super.r();
+    if ((c() == 0) || (DailyModeConfigHandler.c(c()))) {
+      ReadinjoySPEventReport.a().f.c();
     }
   }
   
-  public void i()
+  public int s()
   {
-    RIJChannelBannerController localRIJChannelBannerController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController;
+    return 2;
+  }
+  
+  public void x()
+  {
+    RIJChannelBannerController localRIJChannelBannerController = this.f;
     if (localRIJChannelBannerController != null) {
-      localRIJChannelBannerController.d();
+      localRIJChannelBannerController.e();
     }
   }
   
-  public void j()
+  public void y()
   {
-    StudyModeChangeListener localStudyModeChangeListener = this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener;
+    StudyModeChangeListener localStudyModeChangeListener = this.g;
     if (localStudyModeChangeListener != null) {
       StudyModeManager.b(localStudyModeChangeListener);
     }
   }
   
-  public void k() {}
-  
-  public void l() {}
+  public void z() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.FrameworkHandler
  * JD-Core Version:    0.7.0.1
  */

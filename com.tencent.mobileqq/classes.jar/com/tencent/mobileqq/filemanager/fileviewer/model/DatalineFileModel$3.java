@@ -12,7 +12,7 @@ class DatalineFileModel$3
   public void a()
   {
     DatalineFileModel localDatalineFileModel = this.a;
-    localDatalineFileModel.a(false, FileModel.a(localDatalineFileModel.a.a()), this.a.c(), new DatalineFileModel.3.1(this));
+    localDatalineFileModel.a(false, FileModel.a(localDatalineFileModel.c.r()), this.a.x(), new DatalineFileModel.3.1(this));
   }
   
   public void b()
@@ -22,7 +22,7 @@ class DatalineFileModel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel.3
  * JD-Core Version:    0.7.0.1
  */

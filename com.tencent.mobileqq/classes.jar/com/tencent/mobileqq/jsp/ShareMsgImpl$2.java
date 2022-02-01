@@ -24,10 +24,10 @@ class ShareMsgImpl$2
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("shareMsgToSina download image:");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       QLog.d("ShareMsgImpl", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = ImageUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    Object localObject1 = ImageUtil.a(BaseApplication.getContext(), this.a, null);
     Object localObject2;
     if (QLog.isColorLevel())
     {
@@ -36,9 +36,9 @@ class ShareMsgImpl$2
       ((StringBuilder)localObject2).append((String)localObject1);
       QLog.d("ShareMsgImpl", 2, ((StringBuilder)localObject2).toString());
     }
-    if (WBShareHelper.a(this.jdField_a_of_type_AndroidAppActivity))
+    if (WBShareHelper.a(this.b))
     {
-      WBShareHelper.a(2).a((Activity)this.this$0.a, this.b, this.c, this.d, "text", BitmapFactory.decodeFile((String)localObject1));
+      WBShareHelper.a(2).a((Activity)this.this$0.f, this.c, this.d, this.e, "text", BitmapFactory.decodeFile((String)localObject1));
       QLog.d("ShareMsgImpl", 1, "shareMsgToSina use weibo sdk!");
     }
     else
@@ -47,17 +47,17 @@ class ShareMsgImpl$2
       ((Intent)localObject2).setFlags(268435456);
       ((Intent)localObject2).setType("image/*");
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.b);
-      localStringBuilder.append(this.d);
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.e);
       ((Intent)localObject2).putExtra("android.intent.extra.TEXT", localStringBuilder.toString());
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         ((Intent)localObject2).putExtra("android.intent.extra.STREAM", Uri.fromFile(new File((String)localObject1)));
       }
-      FileProvider7Helper.intentCompatForN(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject2);
-      ((Intent)localObject2).setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject2);
+      FileProvider7Helper.intentCompatForN(this.b, (Intent)localObject2);
+      ((Intent)localObject2).setPackage(this.f.packageName);
+      this.b.startActivity((Intent)localObject2);
     }
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new ShareMsgImpl.2.1(this));
+    this.b.runOnUiThread(new ShareMsgImpl.2.1(this));
     if (QLog.isColorLevel()) {
       QLog.d("ShareMsgImpl", 2, "shareMsgToSina start weibo!");
     }
@@ -65,7 +65,7 @@ class ShareMsgImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.ShareMsgImpl.2
  * JD-Core Version:    0.7.0.1
  */

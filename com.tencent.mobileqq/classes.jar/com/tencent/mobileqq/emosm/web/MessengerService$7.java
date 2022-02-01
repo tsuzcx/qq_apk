@@ -25,7 +25,7 @@ class MessengerService$7
     if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
     {
       paramObject = (Card)paramObject;
-      localObject = (QQAppInterface)MessengerService.h(this.a);
+      localObject = (QQAppInterface)MessengerService.j(this.a);
       if ((localObject != null) && (Utils.a(((QQAppInterface)localObject).getCurrentAccountUin(), paramObject.uin)) && ((paramObject.templateRet == 0) || (paramObject.templateRet == 101107) || (paramObject.templateRet == 101108)))
       {
         l1 = paramObject.lCurrentBgId;
@@ -52,9 +52,9 @@ class MessengerService$7
     paramObject.putLong("currentId", l1);
     paramObject.putLong("styleId", l2);
     paramObject.putInt("result", i);
-    if ((this.a.a != null) && (this.a.a.size() > 0))
+    if ((this.a.k != null) && (this.a.k.size() > 0))
     {
-      localObject = (Bundle)this.a.a.remove(0);
+      localObject = (Bundle)this.a.k.remove(0);
       ((Bundle)localObject).putBundle("response", paramObject);
       this.a.a((Bundle)localObject);
     }
@@ -62,7 +62,7 @@ class MessengerService$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.7
  * JD-Core Version:    0.7.0.1
  */

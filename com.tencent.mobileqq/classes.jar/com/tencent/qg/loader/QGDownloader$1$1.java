@@ -7,12 +7,12 @@ class QGDownloader$1$1
   
   public void run()
   {
-    QGDownloader.a(this.jdField_a_of_type_ComTencentQgLoaderQGDownloader$1.this$0, this.jdField_a_of_type_ComTencentQgLoaderQGDownloader$1.a, this.jdField_a_of_type_Boolean);
+    QGDownloader.a(this.b.this$0, this.b.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.loader.QGDownloader.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class UniformDownloadActivity$9
   
   public void run()
   {
-    DownloadManager.a().b(UniformDownloadActivity.a(this.this$0));
+    DownloadManager.b().b(UniformDownloadActivity.i(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.9
  * JD-Core Version:    0.7.0.1
  */

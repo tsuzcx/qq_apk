@@ -14,11 +14,6 @@ public class MediaPlayerWrapper
 {
   MediaPlayer a = new MediaPlayer();
   
-  public int a()
-  {
-    return this.a.getDuration();
-  }
-  
   public void a(float paramFloat1, float paramFloat2)
   {
     this.a.setVolume(paramFloat1, paramFloat2);
@@ -121,16 +116,6 @@ public class MediaPlayerWrapper
     this.a.setLooping(paramBoolean);
   }
   
-  public boolean a()
-  {
-    return this.a.isPlaying();
-  }
-  
-  public int b()
-  {
-    return this.a.getCurrentPosition();
-  }
-  
   public void b()
   {
     this.a.prepareAsync();
@@ -146,11 +131,6 @@ public class MediaPlayerWrapper
     this.a.setScreenOnWhilePlaying(paramBoolean);
   }
   
-  public int c()
-  {
-    return this.a.getVideoWidth();
-  }
-  
   public void c()
   {
     this.a.start();
@@ -161,32 +141,27 @@ public class MediaPlayerWrapper
     this.a.setAudioStreamType(paramInt);
   }
   
-  public int d()
-  {
-    return this.a.getVideoHeight();
-  }
-  
   public void d()
   {
     this.a.pause();
   }
   
-  public int e()
+  public boolean e()
   {
-    return this.a.getAudioSessionId();
-  }
-  
-  public void e()
-  {
-    this.a.stop();
+    return this.a.isPlaying();
   }
   
   public void f()
   {
-    this.a.release();
+    this.a.stop();
   }
   
   public void g()
+  {
+    this.a.release();
+  }
+  
+  public void h()
   {
     try
     {
@@ -197,6 +172,31 @@ public class MediaPlayerWrapper
     {
       CaughtExceptionReport.a(localIllegalStateException);
     }
+  }
+  
+  public int j()
+  {
+    return this.a.getDuration();
+  }
+  
+  public int k()
+  {
+    return this.a.getCurrentPosition();
+  }
+  
+  public int l()
+  {
+    return this.a.getVideoWidth();
+  }
+  
+  public int m()
+  {
+    return this.a.getVideoHeight();
+  }
+  
+  public int o()
+  {
+    return this.a.getAudioSessionId();
   }
 }
 

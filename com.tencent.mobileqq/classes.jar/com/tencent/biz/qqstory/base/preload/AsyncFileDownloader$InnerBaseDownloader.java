@@ -12,30 +12,21 @@ class AsyncFileDownloader$InnerBaseDownloader
 {
   private AsyncFileDownloader$InnerBaseDownloader(AsyncFileDownloader paramAsyncFileDownloader) {}
   
-  protected IHttpEngineService a()
-  {
-    AppInterface localAppInterface = ((IAECaptureContext)QRoute.api(IAECaptureContext.class)).getAppInterface();
-    if (localAppInterface != null) {
-      return (IHttpEngineService)localAppInterface.getRuntimeService(IHttpEngineService.class, "all");
-    }
-    return null;
-  }
-  
   public void a(DownloadTask paramDownloadTask)
   {
-    paramDownloadTask.jdField_d_of_type_Int = 0;
+    paramDownloadTask.j = 0;
     HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mReqUrl = paramDownloadTask.jdField_d_of_type_JavaLangString;
+    localHttpNetReq.mReqUrl = paramDownloadTask.f;
     localHttpNetReq.mHttpMethod = 0;
-    localHttpNetReq.mOutPath = paramDownloadTask.e;
-    localHttpNetReq.mTempPath = paramDownloadTask.f;
-    localHttpNetReq.mPrioty = paramDownloadTask.g;
+    localHttpNetReq.mOutPath = paramDownloadTask.g;
+    localHttpNetReq.mTempPath = paramDownloadTask.h;
+    localHttpNetReq.mPrioty = paramDownloadTask.s;
     localHttpNetReq.mContinuErrorLimit = 3;
     localHttpNetReq.setUserData(paramDownloadTask);
     localHttpNetReq.mSupportBreakResume = true;
-    paramDownloadTask.a = localHttpNetReq;
+    paramDownloadTask.u = localHttpNetReq;
     localHttpNetReq.mCallback = new AsyncFileDownloader.InnerBaseDownloader.1(this);
-    IHttpEngineService localIHttpEngineService = a();
+    IHttpEngineService localIHttpEngineService = b();
     if (localIHttpEngineService != null) {
       localIHttpEngineService.sendReq(localHttpNetReq);
     }
@@ -47,12 +38,21 @@ class AsyncFileDownloader$InnerBaseDownloader
     return true;
   }
   
+  protected IHttpEngineService b()
+  {
+    AppInterface localAppInterface = ((IAECaptureContext)QRoute.api(IAECaptureContext.class)).getAppInterface();
+    if (localAppInterface != null) {
+      return (IHttpEngineService)localAppInterface.getRuntimeService(IHttpEngineService.class, "all");
+    }
+    return null;
+  }
+  
   public void b(DownloadTask paramDownloadTask)
   {
-    HttpNetReq localHttpNetReq = paramDownloadTask.a;
+    HttpNetReq localHttpNetReq = paramDownloadTask.u;
     if (localHttpNetReq != null)
     {
-      IHttpEngineService localIHttpEngineService = a();
+      IHttpEngineService localIHttpEngineService = b();
       if (localIHttpEngineService != null) {
         localIHttpEngineService.cancelReq(localHttpNetReq);
       }
@@ -62,7 +62,7 @@ class AsyncFileDownloader$InnerBaseDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerBaseDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ class LSRecordPanel$4
   
   public void a(Animation paramAnimation, float paramFloat)
   {
-    if ((this.a.c == null) && (this.a.a != null) && (paramFloat >= 0.5F)) {
-      this.a.e();
+    if ((this.a.d == null) && (this.a.a != null) && (paramFloat >= 0.5F)) {
+      this.a.f();
     }
   }
   
@@ -21,14 +21,14 @@ class LSRecordPanel$4
       QLog.d("LsRecord", 4, "LS startExpandAnimation onAnimationEnd");
     }
     if (paramAnimation == this.a.a) {
-      this.a.g();
+      this.a.i();
     }
     this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordPanel.4
  * JD-Core Version:    0.7.0.1
  */

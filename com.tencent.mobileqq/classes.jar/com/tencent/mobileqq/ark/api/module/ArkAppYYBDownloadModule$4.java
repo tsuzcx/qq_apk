@@ -12,15 +12,15 @@ class ArkAppYYBDownloadModule$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("ArkApp.downloadyyb.module", 1, new Object[] { "ark.dctrl [doDownloadAction] dialog callback appid=", this.jdField_a_of_type_JavaLangString, ",name=", this.b, ",which:", Integer.valueOf(paramInt) });
+    QLog.d("ArkApp.downloadyyb.module", 1, new Object[] { "ark.dctrl [doDownloadAction] dialog callback appid=", this.a, ",name=", this.b, ",which:", Integer.valueOf(paramInt) });
     if (paramInt == 1) {
-      ArkAppYYBDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppYYBDownloadModule, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+      ArkAppYYBDownloadModule.a(this.f, this.c, this.d, this.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppYYBDownloadModule.4
  * JD-Core Version:    0.7.0.1
  */

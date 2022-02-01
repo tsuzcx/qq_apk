@@ -22,18 +22,18 @@ class VideoFeedsShuntBarConfigure$1
         if (k != 0)
         {
           Object localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(VideoFeedsShuntBarConfigure.a(this.this$0));
+          ((StringBuilder)localObject1).append(VideoFeedsShuntBarConfigure.b(this.this$0));
           ((StringBuilder)localObject1).append(j);
-          int m = ((Integer)RIJSPUtils.a(((StringBuilder)localObject1).toString(), Integer.valueOf(0))).intValue();
+          int m = ((Integer)RIJSPUtils.b(((StringBuilder)localObject1).toString(), Integer.valueOf(0))).intValue();
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(VideoFeedsShuntBarConfigure.a(this.this$0));
+          ((StringBuilder)localObject1).append(VideoFeedsShuntBarConfigure.b(this.this$0));
           ((StringBuilder)localObject1).append(j);
           localObject1 = ((StringBuilder)localObject1).toString();
           k += m;
           RIJSPUtils.a((String)localObject1, Integer.valueOf(k));
           if (QLog.isColorLevel())
           {
-            localObject1 = VideoFeedsShuntBarConfigure.a();
+            localObject1 = VideoFeedsShuntBarConfigure.b();
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("video_source_id: ");
             ((StringBuilder)localObject2).append(j);
@@ -51,7 +51,7 @@ class VideoFeedsShuntBarConfigure$1
     {
       if (QLog.isColorLevel())
       {
-        localObject2 = VideoFeedsShuntBarConfigure.a();
+        localObject2 = VideoFeedsShuntBarConfigure.b();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("更新引流条配置出现错误: ");
         localStringBuilder.append(localException.getMessage());
@@ -62,7 +62,7 @@ class VideoFeedsShuntBarConfigure$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShuntBarConfigure.1
  * JD-Core Version:    0.7.0.1
  */

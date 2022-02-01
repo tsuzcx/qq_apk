@@ -13,7 +13,7 @@ class Palette$Builder$1
   {
     try
     {
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqUtilsPalettePalette$Builder.a();
+      paramVarArgs = this.b.a();
       return paramVarArgs;
     }
     catch (Exception paramVarArgs)
@@ -25,12 +25,12 @@ class Palette$Builder$1
   
   protected void a(@Nullable Palette paramPalette)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsPalettePalette$PaletteAsyncListener.a(paramPalette);
+    this.a.a(paramPalette);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.Palette.Builder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,23 +22,23 @@ import com.tencent.viola.utils.ViolaUtils;
 public class NativeVueLoaderManager
   implements NativeVuePreconditionAdapter
 {
-  private static volatile NativeVueLoaderManager jdField_a_of_type_ComTencentMobileqqKandianGlueViolaWormholeNativeVueLoaderManager;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private static volatile NativeVueLoaderManager a;
+  private volatile boolean b;
+  private String c;
+  private Handler d = new Handler(Looper.getMainLooper());
   
   public static NativeVueLoaderManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianGlueViolaWormholeNativeVueLoaderManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqKandianGlueViolaWormholeNativeVueLoaderManager == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianGlueViolaWormholeNativeVueLoaderManager = new NativeVueLoaderManager();
+        if (a == null) {
+          a = new NativeVueLoaderManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianGlueViolaWormholeNativeVueLoaderManager;
+    return a;
   }
   
   private void a(long paramLong, String paramString)
@@ -66,12 +66,12 @@ public class NativeVueLoaderManager
     return "1".equals(Uri.parse(paramString).getQueryParameter("supportNV"));
   }
   
-  private void c()
+  private void e()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     NativeVueEngine.Builder localBuilder = new NativeVueEngine.Builder().env("ViolaEnv", ViolaBizUtils.a()).logAdapter(new NativeVueLoaderManager.NVLogAdapter(null)).preconditionAdapter(this);
     NativeVueEngine.getInstance().init(localBuilder);
     if (QLog.isColorLevel()) {
@@ -79,30 +79,9 @@ public class NativeVueLoaderManager
     }
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(365);
-    int i = 0;
-    if (localAladdinConfig.getIntegerFromString("disable_preload_native_vue", 0) == 1) {
-      i = 1;
-    }
-    if (i != 0) {
-      return;
-    }
-    c();
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeVueLoaderManager", 2, "preInitNativeVue");
-    }
-  }
-  
   public void a(String paramString1, String paramString2, String paramString3, int paramInt, NativeVueEngine.DomResult paramDomResult)
   {
-    c();
+    e();
     if (paramString1 == null)
     {
       QLog.e("NativeVueLoaderManager", 1, "data is null");
@@ -120,7 +99,7 @@ public class NativeVueLoaderManager
         return;
       }
     }
-    this.jdField_a_of_type_JavaLangString = paramString3;
+    this.c = paramString3;
     NativeVueEngine.getInstance().createVDom(paramString1, paramString2, paramInt, new NativeVueLoaderManager.NVDomResultProxy(this, paramDomResult, paramString3));
   }
   
@@ -129,7 +108,28 @@ public class NativeVueLoaderManager
     a(paramString1, paramString2, paramString3, 0, paramDomResult);
   }
   
-  public void b()
+  public String b()
+  {
+    return this.c;
+  }
+  
+  public void c()
+  {
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(365);
+    int i = 0;
+    if (localAladdinConfig.getIntegerFromString("disable_preload_native_vue", 0) == 1) {
+      i = 1;
+    }
+    if (i != 0) {
+      return;
+    }
+    e();
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeVueLoaderManager", 2, "preInitNativeVue");
+    }
+  }
+  
+  public void d()
   {
     AladdinConfig localAladdinConfig = Aladdin.getConfig(336);
     int i = 0;
@@ -149,7 +149,7 @@ public class NativeVueLoaderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.wormhole.NativeVueLoaderManager
  * JD-Core Version:    0.7.0.1
  */

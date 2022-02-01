@@ -3,14 +3,13 @@ package com.tencent.mobileqq.kandian.biz.pts.util;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.pts.lite.PTSLiteItemViewBuilder;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5.Builder;
 import com.tencent.mobileqq.kandian.repo.db.struct.BaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsType;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -28,8 +27,8 @@ public class PTSRijReport
     if (paramAbsBaseArticleInfo == null) {
       return null;
     }
-    String str = RIJFeedsType.c(paramAbsBaseArticleInfo);
-    return a(RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.a(paramAbsBaseArticleInfo), (int)paramAbsBaseArticleInfo.mChannelID, NetworkUtil.isWifiConnected(null), str, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.e(paramAbsBaseArticleInfo), 0, RIJTransMergeKanDianReport.a(), paramAbsBaseArticleInfo).toString(), paramHashMap);
+    String str = RIJFeedsType.k(paramAbsBaseArticleInfo);
+    return a(RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.g(paramAbsBaseArticleInfo), (int)paramAbsBaseArticleInfo.mChannelID, NetworkUtil.isWifiConnected(null), str, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.n(paramAbsBaseArticleInfo), 0, RIJTransMergeKanDianReport.b(), paramAbsBaseArticleInfo).toString(), paramHashMap);
   }
   
   public static String a(String paramString, HashMap<String, String> paramHashMap)
@@ -136,7 +135,7 @@ public class PTSRijReport
       if (paramAbsBaseArticleInfo.proteusItemsData == null) {
         return;
       }
-      if (PTSLiteItemViewBuilder.b(paramAbsBaseArticleInfo)) {
+      if (PTSLiteItemViewBuilder.c(paramAbsBaseArticleInfo)) {
         try
         {
           paramAbsBaseArticleInfo = new JSONObject(paramAbsBaseArticleInfo.proteusItemsData);
@@ -149,7 +148,7 @@ public class PTSRijReport
               String str1 = (String)localIterator.next();
               String str2 = paramAbsBaseArticleInfo.optString(str1);
               if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-                paramBuilder.a(str1, str2);
+                paramBuilder.b(str1, str2);
               }
             }
           }
@@ -179,16 +178,15 @@ public class PTSRijReport
     else {
       i = 1;
     }
-    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(i);
-    localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", paramString, paramString, 0, 0, localStringBuilder.toString(), RIJQQAppInterfaceUtil.a(), "0", null, false);
+    PublicAccountReportUtils.a(null, "", paramString, paramString, 0, 0, localStringBuilder.toString(), RIJQQAppInterfaceUtil.d(), "0", null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.PTSRijReport
  * JD-Core Version:    0.7.0.1
  */

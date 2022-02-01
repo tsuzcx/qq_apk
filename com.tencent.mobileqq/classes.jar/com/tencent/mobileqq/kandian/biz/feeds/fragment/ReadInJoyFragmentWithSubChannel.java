@@ -21,26 +21,22 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends ChannelClassific
   extends ReadInJoyBaseFragment
 {
   protected ChannelClassificationListView<C> a;
-  ReadInJoyChannelWaterFallViewController jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController;
-  ReadInJoyFragmentWithSubChannel.ReadInjoyViewInterface jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyFragmentWithSubChannel$ReadInjoyViewInterface;
-  boolean e;
+  ReadInJoyFragmentWithSubChannel.ReadInjoyViewInterface b;
+  ReadInJoyChannelWaterFallViewController c;
+  boolean d;
   
   protected abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle, ChannelClassificationListView<C> paramChannelClassificationListView);
-  
-  public abstract ReadInJoyFragmentWithSubChannel.ReadInjoyViewInterface a();
-  
-  protected void a() {}
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController;
+    ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.c;
     if (localReadInJoyChannelWaterFallViewController != null)
     {
       localReadInJoyChannelWaterFallViewController.a(true, 0);
       return;
     }
-    ReadInJoyChannelViewPagerController.d(b());
+    ReadInJoyChannelViewPagerController.d(d());
   }
   
   protected void a(View paramView, int paramInt) {}
@@ -50,7 +46,7 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends ChannelClassific
     super.a(paramLogoutReason);
     if (RIJShowKanDianTabSp.c())
     {
-      ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController;
+      ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.c;
       if (localReadInJoyChannelWaterFallViewController != null) {
         localReadInJoyChannelWaterFallViewController.a(paramLogoutReason);
       }
@@ -60,47 +56,47 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends ChannelClassific
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
   {
     super.a(paramBoolean, paramActivity, paramBundle);
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController;
+    paramActivity = this.c;
     if (paramActivity != null) {
       paramActivity.b();
     }
   }
   
-  public void d()
-  {
-    super.d();
-    ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController;
-    if (localReadInJoyChannelWaterFallViewController != null) {
-      localReadInJoyChannelWaterFallViewController.a(true);
-    }
-  }
-  
-  public void e()
-  {
-    super.e();
-    this.b = false;
-    ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController;
-    if (localReadInJoyChannelWaterFallViewController != null) {
-      localReadInJoyChannelWaterFallViewController.l();
-    }
-  }
-  
-  public void f()
-  {
-    ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController;
-    if (localReadInJoyChannelWaterFallViewController != null) {
-      localReadInJoyChannelWaterFallViewController.a(true);
-    }
-  }
-  
-  protected boolean f()
+  protected boolean a()
   {
     return false;
   }
   
+  public void h()
+  {
+    super.h();
+    ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.c;
+    if (localReadInJoyChannelWaterFallViewController != null) {
+      localReadInJoyChannelWaterFallViewController.a(true);
+    }
+  }
+  
+  public void k()
+  {
+    super.k();
+    this.g = false;
+    ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.c;
+    if (localReadInJoyChannelWaterFallViewController != null) {
+      localReadInJoyChannelWaterFallViewController.p();
+    }
+  }
+  
+  public void l()
+  {
+    ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.c;
+    if (localReadInJoyChannelWaterFallViewController != null) {
+      localReadInJoyChannelWaterFallViewController.a(true);
+    }
+  }
+  
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController;
+    ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.c;
     if (localReadInJoyChannelWaterFallViewController != null) {
       localReadInJoyChannelWaterFallViewController.a(paramInt1, paramInt2, paramIntent);
     }
@@ -109,37 +105,37 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends ChannelClassific
   
   public void onCreate(Bundle paramBundle)
   {
-    a();
+    w();
     super.onCreate(paramBundle);
   }
   
   public final View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     boolean bool;
-    if (ReadInJoyHelper.s(RIJQQAppInterfaceUtil.a()) == 0) {
+    if (ReadInJoyHelper.Q(RIJQQAppInterfaceUtil.e()) == 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.e = bool;
+    this.d = bool;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("92 showSub = ");
-      localStringBuilder.append(this.e);
+      localStringBuilder.append(this.d);
       QLog.d("ReadInJoyFragmentWithSubChannel", 2, localStringBuilder.toString());
     }
-    if ((!f()) && (this.e))
+    if ((!a()) && (this.d))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView = new ChannelClassificationListView(a());
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView.setOnItemClickListener(new ReadInJoyFragmentWithSubChannel.1(this));
+      this.a = new ChannelClassificationListView(v());
+      this.a.setOnItemClickListener(new ReadInJoyFragmentWithSubChannel.1(this));
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyFragmentWithSubChannel$ReadInjoyViewInterface = a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController = new ReadInJoyChannelWaterFallViewController(b(), 0, a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyFragmentWithSubChannel$ReadInjoyViewInterface);
-    paramLayoutInflater = a(paramLayoutInflater, paramViewGroup, paramBundle, this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController.aw_();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController.d();
+    this.b = x();
+    this.c = new ReadInJoyChannelWaterFallViewController(d(), 0, v(), this.b);
+    paramLayoutInflater = a(paramLayoutInflater, paramViewGroup, paramBundle, this.a);
+    this.c.cT_();
+    if (this.a != null) {
+      this.c.k();
     }
     return paramLayoutInflater;
   }
@@ -147,13 +143,13 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends ChannelClassific
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController.e();
+    this.c.e();
   }
   
   public void onPause()
   {
     super.onPause();
-    ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController;
+    ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.c;
     if (localReadInJoyChannelWaterFallViewController != null) {
       localReadInJoyChannelWaterFallViewController.h();
     }
@@ -162,24 +158,28 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends ChannelClassific
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController.i();
+    this.c.i();
   }
   
   public void onStop()
   {
     super.onStop();
-    if (a().isFinishing())
+    if (v().isFinishing())
     {
-      ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController;
+      ReadInJoyChannelWaterFallViewController localReadInJoyChannelWaterFallViewController = this.c;
       if (localReadInJoyChannelWaterFallViewController != null) {
         localReadInJoyChannelWaterFallViewController.c();
       }
     }
   }
+  
+  protected void w() {}
+  
+  public abstract ReadInJoyFragmentWithSubChannel.ReadInjoyViewInterface x();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoyFragmentWithSubChannel
  * JD-Core Version:    0.7.0.1
  */

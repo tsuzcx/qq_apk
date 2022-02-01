@@ -13,27 +13,27 @@ final class MiniScanReport$2
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       localObject = "1";
     } else {
       localObject = "0";
     }
     localHashMap.put("report_key_so_suc", localObject);
-    localHashMap.put("report_key_so_version", String.valueOf(this.jdField_a_of_type_Int));
-    String str = this.jdField_a_of_type_JavaLangString;
+    localHashMap.put("report_key_so_version", String.valueOf(this.b));
+    String str = this.c;
     Object localObject = str;
     if (str == null) {
       localObject = "";
     }
     localHashMap.put("report_key_so_md5", localObject);
     localHashMap.put("report_key_qq_version", "0");
-    localHashMap.put("report_key_qq_subversion", "5295");
+    localHashMap.put("report_key_qq_subversion", "5770");
     StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance("", "report_tag_so_cover", true, 0L, 0L, localHashMap, "");
     if (QLog.isColorLevel())
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      int i = this.jdField_a_of_type_Int;
-      str = this.jdField_a_of_type_JavaLangString;
+      boolean bool = this.a;
+      int i = this.b;
+      str = this.c;
       localObject = str;
       if (str == null) {
         localObject = "";
@@ -44,7 +44,7 @@ final class MiniScanReport$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.minicode.MiniScanReport.2
  * JD-Core Version:    0.7.0.1
  */

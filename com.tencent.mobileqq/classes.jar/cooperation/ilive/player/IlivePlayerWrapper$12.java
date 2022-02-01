@@ -9,14 +9,14 @@ class IlivePlayerWrapper$12
   
   public void run()
   {
-    if (IlivePlayerWrapper.a(this.this$0) != null) {
-      IlivePlayerWrapper.a(this.this$0).stop();
+    if (IlivePlayerWrapper.j(this.this$0) != null) {
+      IlivePlayerWrapper.j(this.this$0).stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.player.IlivePlayerWrapper.12
  * JD-Core Version:    0.7.0.1
  */

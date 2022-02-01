@@ -2,19 +2,19 @@ package com.tencent.mobileqq.qwallet.hb.grap.voice.impl;
 
 public class VoiceRedPacketHelperImpl$RecogResult
 {
-  float jdField_a_of_type_Float = 0.0F;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
+  float b = 0.0F;
+  String c = "";
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RecogResult{isRecog=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", cfd=");
-    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", scoreId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -22,7 +22,7 @@ public class VoiceRedPacketHelperImpl$RecogResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.VoiceRedPacketHelperImpl.RecogResult
  * JD-Core Version:    0.7.0.1
  */

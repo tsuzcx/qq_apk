@@ -10,14 +10,14 @@ class MessengerService$2
   
   public void a(boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      EmojiStickerManager.a().a(this.a.a, paramBoolean);
+    if (this.a.b != null) {
+      EmojiStickerManager.a().a(this.a.b, paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.2
  * JD-Core Version:    0.7.0.1
  */

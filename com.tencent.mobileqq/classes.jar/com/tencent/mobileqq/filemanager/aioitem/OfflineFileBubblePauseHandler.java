@@ -33,7 +33,7 @@ public class OfflineFileBubblePauseHandler
       return null;
     }
     if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
-      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).u;
     }
     return null;
   }
@@ -56,7 +56,7 @@ public class OfflineFileBubblePauseHandler
       if ((paramChatMessage instanceof MessageForFile))
       {
         paramView = (MessageForFile)paramChatMessage;
-        paramViewHolder = FileManagerUtil.a(this.a, paramView);
+        paramViewHolder = FileManagerUtil.a(this.b, paramView);
         if (paramViewHolder == null) {
           return;
         }
@@ -68,13 +68,13 @@ public class OfflineFileBubblePauseHandler
         }
         if (paramInt == 0)
         {
-          ReportController.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", i, 0, "", "", "", "");
-          this.a.getFileManagerEngine().a(paramViewHolder.nSessionId);
+          ReportController.b(this.b, "dc00898", "", "", "0X800A7F1", "0X800A7F1", i, 0, "", "", "", "");
+          this.b.getFileManagerEngine().a(paramViewHolder.nSessionId);
           return;
         }
         if (paramInt == 1)
         {
-          ReportController.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", i, 0, "", "", "", "");
+          ReportController.b(this.b, "dc00898", "", "", "0X800A7F2", "0X800A7F2", i, 0, "", "", "", "");
           a(new OfflineFileBubblePauseHandler.1(this, i, paramViewHolder));
         }
       }
@@ -87,7 +87,7 @@ public class OfflineFileBubblePauseHandler
       return;
     }
     if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
-      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramImageView;
+      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).u = paramImageView;
     }
   }
   
@@ -102,7 +102,7 @@ public class OfflineFileBubblePauseHandler
     if ((paramChatMessage instanceof MessageForFile))
     {
       paramChatMessage = (MessageForFile)paramChatMessage;
-      paramChatMessage = FileManagerUtil.a(this.a, paramChatMessage);
+      paramChatMessage = FileManagerUtil.a(this.b, paramChatMessage);
       if (paramChatMessage == null) {
         return false;
       }
@@ -137,7 +137,7 @@ public class OfflineFileBubblePauseHandler
     if ((paramChatMessage instanceof MessageForFile))
     {
       paramChatMessage = (MessageForFile)paramChatMessage;
-      paramChatMessage = FileManagerUtil.a(this.a, paramChatMessage);
+      paramChatMessage = FileManagerUtil.a(this.b, paramChatMessage);
       if (paramChatMessage == null) {
         return false;
       }
@@ -163,7 +163,7 @@ public class OfflineFileBubblePauseHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.OfflineFileBubblePauseHandler
  * JD-Core Version:    0.7.0.1
  */

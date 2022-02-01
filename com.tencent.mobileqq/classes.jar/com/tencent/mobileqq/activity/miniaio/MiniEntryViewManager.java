@@ -32,131 +32,131 @@ public class MiniEntryViewManager
   extends D8SafeAnimatorListener
   implements ValueAnimator.AnimatorUpdateListener, View.OnTouchListener, IMiniMsgUnreadCallback
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private final GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View jdField_a_of_type_AndroidViewView;
-  private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  private MiniMsgConfigData jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgConfigData;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
+  ValueAnimator a;
+  private WindowManager.LayoutParams b;
+  private WindowManager c;
+  private Activity d;
+  private View e;
+  private final GestureDetector f;
   private int g;
   private int h;
   private int i;
   private int j;
   private int k;
   private int l;
-  private int m;
-  private int n;
+  private boolean m;
+  private float n;
+  private float o;
+  private int p;
+  private int q;
+  private int r;
+  private int s;
+  private int t;
+  private int u;
+  private View.OnClickListener v;
+  private MiniMsgConfigData w;
+  private int x;
+  private int y;
   
   public MiniEntryViewManager(Activity paramActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.d = paramInt1;
-    this.e = paramInt2;
-    this.m = paramInt3;
-    this.n = paramInt4;
-    this.k = paramInt5;
-    this.l = paramInt6;
-    this.c = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
+    this.d = paramActivity;
+    this.j = paramInt1;
+    this.k = paramInt2;
+    this.x = paramInt3;
+    this.y = paramInt4;
+    this.t = paramInt5;
+    this.u = paramInt6;
+    this.i = ImmersiveUtils.getStatusBarHeight(this.d);
     paramActivity = BaseApplicationImpl.getApplication().getBaseContext();
     paramInt1 = paramActivity.getResources().getDisplayMetrics().widthPixels;
     paramInt3 = paramActivity.getResources().getDisplayMetrics().heightPixels;
-    paramInt4 = paramActivity.getResources().getDimensionPixelSize(2131297351);
-    int i1 = paramActivity.getResources().getDimensionPixelSize(2131297352);
-    int i3 = paramActivity.getResources().getDimensionPixelSize(2131297350);
-    int i2 = ViewUtils.b(56.0F);
-    this.f = paramInt1;
-    this.i = paramInt4;
-    this.j = (paramInt3 - i3);
-    i3 = this.c;
-    int i4 = ViewUtils.a(7.0F);
-    int i5 = this.i;
+    paramInt4 = paramActivity.getResources().getDimensionPixelSize(2131297818);
+    int i1 = paramActivity.getResources().getDimensionPixelSize(2131297819);
+    int i3 = paramActivity.getResources().getDimensionPixelSize(2131297817);
+    int i2 = ViewUtils.dpToPx(56.0F);
+    this.l = paramInt1;
+    this.r = paramInt4;
+    this.s = (paramInt3 - i3);
+    i3 = this.i;
+    int i4 = ViewUtils.dip2px(7.0F);
+    int i5 = this.r;
     if (paramInt5 != -1)
     {
-      this.jdField_a_of_type_Int = paramInt5;
-      this.jdField_b_of_type_Int = paramInt6;
+      this.g = paramInt5;
+      this.h = paramInt6;
     }
     else if (paramInt2 != 0)
     {
-      this.jdField_a_of_type_Int = (paramInt1 - paramInt4 * 4);
-      this.jdField_b_of_type_Int = (i3 + i4);
+      this.g = (paramInt1 - paramInt4 * 4);
+      this.h = (i3 + i4);
     }
     else
     {
-      this.jdField_a_of_type_Int = (paramInt1 - i2 - i5);
-      this.jdField_b_of_type_Int = (paramInt3 - i1);
+      this.g = (paramInt1 - i2 - i5);
+      this.h = (paramInt3 - i1);
     }
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramActivity, new MiniEntryViewManager.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgConfigData = MiniMsgConfigProcessor.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgConfigData == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgConfigData = new MiniMsgConfigData();
+    this.v = paramOnClickListener;
+    this.f = new GestureDetector(paramActivity, new MiniEntryViewManager.1(this));
+    this.w = MiniMsgConfigProcessor.a();
+    if (this.w == null) {
+      this.w = new MiniMsgConfigData();
     }
     if (com.tencent.TMG.utils.QLog.isColorLevel())
     {
       paramActivity = new StringBuilder();
       paramActivity.append("configData : ");
-      paramActivity.append(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgConfigData.toString());
+      paramActivity.append(this.w.toString());
       com.tencent.TMG.utils.QLog.d("mini_msg_FloatViewManager", 0, paramActivity.toString());
     }
   }
   
-  private void a()
+  private void b()
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this);
+      this.a = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.a.setDuration(200L);
+      this.a.addListener(this);
+      this.a.addUpdateListener(this);
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    this.a.start();
   }
   
   public void a(View paramView, int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.m) {
       return;
     }
-    int i2 = this.c;
+    int i2 = this.i;
     int i1 = paramInt2;
     if (paramInt2 < i2) {
       i1 = i2;
     }
-    paramInt2 = this.j;
+    paramInt2 = this.s;
     i2 = i1;
     if (i1 > paramInt2) {
       i2 = paramInt2;
     }
-    i1 = this.i;
+    i1 = this.r;
     paramInt2 = paramInt1;
     if (paramInt1 < i1) {
       paramInt2 = i1;
     }
-    i1 = this.jdField_a_of_type_Int;
+    i1 = this.g;
     paramInt1 = paramInt2;
     if (paramInt2 > i1) {
       paramInt1 = i1;
     }
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    WindowManager.LayoutParams localLayoutParams = this.b;
     localLayoutParams.y = i2;
     localLayoutParams.x = paramInt1;
-    this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(paramView, localLayoutParams);
+    this.c.updateViewLayout(paramView, localLayoutParams);
   }
   
   public int[] a()
   {
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    WindowManager.LayoutParams localLayoutParams = this.b;
     if (localLayoutParams == null) {
       return null;
     }
@@ -164,33 +164,33 @@ public class MiniEntryViewManager
     if (localLayoutParams != null)
     {
       arrayOfInt[0] = localLayoutParams.x;
-      arrayOfInt[1] = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y;
+      arrayOfInt[1] = this.b.y;
     }
     return arrayOfInt;
   }
   
   public void destroy()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.m)
     {
-      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Boolean = false;
+      this.c.removeViewImmediate(this.e);
+      this.m = false;
     }
-    this.jdField_a_of_type_AndroidAppActivity = null;
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.d = null;
+    this.e = null;
   }
   
   public void hide()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.m) {
+      this.e.setVisibility(8);
     }
   }
   
   public void hideUnread()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131371244).setVisibility(8);
+    if (this.m) {
+      this.e.findViewById(2131438588).setVisibility(8);
     }
   }
   
@@ -215,33 +215,33 @@ public class MiniEntryViewManager
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i1 = this.jdField_a_of_type_Int;
-    if (this.g < this.f / 2) {
-      i1 = this.i;
+    int i1 = this.g;
+    if (this.p < this.l / 2) {
+      i1 = this.r;
     }
-    int i2 = this.g;
+    int i2 = this.p;
     i1 = i2 + (int)((i1 - i2) * f1);
     paramValueAnimator = new StringBuilder();
     paramValueAnimator.append("onAnimationUpdate .curPx = ");
     paramValueAnimator.append(i1);
     paramValueAnimator.append(" ,mTouchUpX = ");
-    paramValueAnimator.append(this.g);
+    paramValueAnimator.append(this.p);
     com.tencent.TMG.utils.QLog.d("mini_msg_FloatViewManager", 0, paramValueAnimator.toString());
-    i2 = this.h;
-    a(this.jdField_a_of_type_AndroidViewView, i1, i2);
+    i2 = this.q;
+    a(this.e, i1, i2);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.a;
     int i1 = 0;
     if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
       return false;
     }
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
-    boolean bool = this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    if (this.e != 0) {
+    boolean bool = this.f.onTouchEvent(paramMotionEvent);
+    if (this.k != 0) {
       return bool;
     }
     int i2 = paramMotionEvent.getAction();
@@ -256,92 +256,92 @@ public class MiniEntryViewManager
         }
         else
         {
-          a(paramView, (int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
+          a(paramView, (int)(f1 - this.n), (int)(f2 - this.o));
           break label185;
         }
       }
-      a(paramView, (int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
-      this.g = ((int)(f1 - this.jdField_a_of_type_Float));
-      this.h = ((int)(f2 - this.jdField_b_of_type_Float));
-      this.jdField_b_of_type_Float = 0.0F;
-      this.jdField_a_of_type_Float = 0.0F;
+      a(paramView, (int)(f1 - this.n), (int)(f2 - this.o));
+      this.p = ((int)(f1 - this.n));
+      this.q = ((int)(f2 - this.o));
+      this.o = 0.0F;
+      this.n = 0.0F;
       i1 = 1;
     }
     else
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getY();
+      this.n = paramMotionEvent.getX();
+      this.o = paramMotionEvent.getY();
     }
     label185:
     if ((!bool) && (i1 != 0)) {
-      a();
+      b();
     }
     return true;
   }
   
   public boolean show(int paramInt)
   {
-    if (!this.jdField_a_of_type_AndroidAppActivity.hasWindowFocus()) {
+    if (!this.d.hasWindowFocus()) {
       return false;
     }
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.d;
     Object localObject1;
     if (com.tencent.qphone.base.util.QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("styleType = ");
-      ((StringBuilder)localObject1).append(this.e);
+      ((StringBuilder)localObject1).append(this.k);
       ((StringBuilder)localObject1).append(",filterType = ");
-      ((StringBuilder)localObject1).append(this.d);
+      ((StringBuilder)localObject1).append(this.j);
       com.tencent.qphone.base.util.QLog.d("mini_msg_FloatViewManager", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.e == null)
     {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(localActivity.getApplicationContext(), 2131559396, null);
-      this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this);
-      Object localObject3 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371242);
-      localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371243);
-      Object localObject2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371244);
+      this.e = View.inflate(localActivity.getApplicationContext(), 2131625362, null);
+      this.e.setOnTouchListener(this);
+      Object localObject3 = (RelativeLayout)this.e.findViewById(2131438586);
+      localObject1 = (ImageView)this.e.findViewById(2131438587);
+      Object localObject2 = (TextView)this.e.findViewById(2131438588);
       localObject3 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject3).getLayoutParams();
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
       localObject2 = (RelativeLayout.LayoutParams)((TextView)localObject2).getLayoutParams();
-      if (this.e != 0)
+      if (this.k != 0)
       {
-        i1 = ViewUtils.b(38.0F);
-        i2 = ViewUtils.b(32.0F);
+        i1 = ViewUtils.dpToPx(38.0F);
+        i2 = ViewUtils.dpToPx(32.0F);
         ((RelativeLayout.LayoutParams)localObject3).width = i1;
         ((RelativeLayout.LayoutParams)localObject3).height = i2;
-        i1 = ViewUtils.b(24.0F);
+        i1 = ViewUtils.dpToPx(24.0F);
         localLayoutParams.width = i1;
         localLayoutParams.height = i1;
-        localLayoutParams.leftMargin = ViewUtils.b(4.0F);
+        localLayoutParams.leftMargin = ViewUtils.dpToPx(4.0F);
         ((ImageView)localObject1).setPadding(0, 0, 0, 0);
         ((ImageView)localObject1).setBackgroundDrawable(null);
-        i1 = this.m;
+        i1 = this.x;
         if (i1 == 1)
         {
-          ((ImageView)localObject1).setImageResource(2130841087);
+          ((ImageView)localObject1).setImageResource(2130841878);
         }
         else
         {
           if (i1 == 2)
           {
-            i1 = this.n;
+            i1 = this.y;
             if (i1 != 0)
             {
               ((ImageView)localObject1).setImageResource(i1);
               break label317;
             }
           }
-          ((ImageView)localObject1).setImageResource(2130841089);
+          ((ImageView)localObject1).setImageResource(2130841880);
         }
       }
       label317:
-      if (AppSetting.d) {
-        AccessibilityUtil.b(this.jdField_a_of_type_AndroidViewView, false);
+      if (AppSetting.e) {
+        AccessibilityUtil.b(this.e, false);
       }
-      this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)localActivity.getApplicationContext().getSystemService("window"));
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
+      this.c = ((WindowManager)localActivity.getApplicationContext().getSystemService("window"));
+      this.b = new WindowManager.LayoutParams();
       if (com.tencent.TMG.utils.QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -350,12 +350,12 @@ public class MiniEntryViewManager
         com.tencent.TMG.utils.QLog.d("mini_msg_FloatViewManager", 0, ((StringBuilder)localObject1).toString());
       }
       int i1 = localActivity.getResources().getDisplayMetrics().heightPixels;
-      if ((this.k != -1) && (this.e != 0) && (this.l == -1) && (ScreenUtil.isNavigationBarExist(localActivity))) {
-        this.jdField_b_of_type_Int = (i1 - localActivity.getResources().getDimensionPixelSize(2131297352) - ScreenUtil.getNavigationBarHeight(localActivity));
+      if ((this.t != -1) && (this.k != 0) && (this.u == -1) && (ScreenUtil.isNavigationBarExist(localActivity))) {
+        this.h = (i1 - localActivity.getResources().getDimensionPixelSize(2131297819) - ScreenUtil.getNavigationBarHeight(localActivity));
       }
-      i1 = this.jdField_a_of_type_Int;
-      int i2 = this.jdField_b_of_type_Int;
-      localObject1 = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+      i1 = this.g;
+      int i2 = this.h;
+      localObject1 = this.b;
       ((WindowManager.LayoutParams)localObject1).type = 1002;
       ((WindowManager.LayoutParams)localObject1).format = 1;
       ((WindowManager.LayoutParams)localObject1).flags = 40;
@@ -365,29 +365,29 @@ public class MiniEntryViewManager
       ((WindowManager.LayoutParams)localObject1).width = -2;
       ((WindowManager.LayoutParams)localObject1).height = -2;
       ((WindowManager.LayoutParams)localObject1).token = localActivity.getWindow().getDecorView().getWindowToken();
-      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      this.jdField_a_of_type_Boolean = true;
+      this.c.addView(this.e, this.b);
+      this.m = true;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (this.m) {
+      this.e.setVisibility(0);
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgConfigData.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (!this.w.a) {
+      this.e.setVisibility(8);
     }
     updateUnreadCount(paramInt, false);
-    return this.jdField_a_of_type_Boolean;
+    return this.m;
   }
   
   public void updateOnBackFromMiniAIO(Bundle paramBundle) {}
   
   public void updateUnreadCount(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.m)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgConfigData.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (this.w.a) {
+        this.e.setVisibility(0);
       }
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371244);
+      TextView localTextView = (TextView)this.e.findViewById(2131438588);
       String str = String.valueOf(paramInt);
       if (paramInt > 99) {
         str = "99+";
@@ -401,7 +401,7 @@ public class MiniEntryViewManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniEntryViewManager
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,6 @@ import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.imcore.message.BaseMsgProxy;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -29,33 +28,27 @@ import mqq.manager.Manager;
 public class LongTextMsgManager
   implements IUpLoadMsgPackBusinessType, Manager
 {
-  public static boolean a;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  public static final int[] a;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public boolean b = false;
+  public static final int[] a = { 0, 1, 3000 };
+  public static boolean b = true;
+  private static byte[] f = new byte[0];
   public boolean c = false;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 1, 3000 };
-    jdField_a_of_type_Boolean = true;
-  }
+  public boolean d = false;
+  private QQAppInterface e;
+  private long g;
   
   public LongTextMsgManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.e = paramQQAppInterface;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
     paramMessageRecord.extraflag = 32768;
-    paramQQAppInterface.getMsgCache().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
+    paramQQAppInterface.getMsgCache().b(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
     String str = paramMessageRecord.frienduin;
     int i = paramMessageRecord.istroop;
     long l = paramMessageRecord.uniseq;
-    ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+    ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.b(paramMessageRecord.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, long paramLong, String paramString2)
@@ -80,7 +73,7 @@ public class LongTextMsgManager
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
     LongTextMsgManager localLongTextMsgManager = (LongTextMsgManager)paramQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER);
-    if (!localLongTextMsgManager.b)
+    if (!localLongTextMsgManager.c)
     {
       String str = paramQQAppInterface.getAccount();
       paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
@@ -94,29 +87,11 @@ public class LongTextMsgManager
         localStringBuilder.append(str);
         localStringBuilder.append("_");
         localStringBuilder.append("long_text_msg_switch");
-        localLongTextMsgManager.c = paramQQAppInterface.getBoolean(localStringBuilder.toString(), jdField_a_of_type_Boolean);
+        localLongTextMsgManager.d = paramQQAppInterface.getBoolean(localStringBuilder.toString(), b);
       }
     }
-    localLongTextMsgManager.b = true;
-    return localLongTextMsgManager.c;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
-  {
-    if (paramInt == 1) {
-      return !((HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(paramString);
-    }
-    paramQQAppInterface = jdField_a_of_type_ArrayOfInt;
-    int j = paramQQAppInterface.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (paramQQAppInterface[i] == paramInt) {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
+    localLongTextMsgManager.c = true;
+    return localLongTextMsgManager.d;
   }
   
   public int a()
@@ -196,21 +171,21 @@ public class LongTextMsgManager
       ((StringBuilder)localObject).append(System.currentTimeMillis());
       QLog.d("StructLongTextMsg", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = paramQQAppInterface.getProxyManager().a().a(paramMessageRecord);
+    Object localObject = paramQQAppInterface.getProxyManager().b().b(paramMessageRecord);
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StructLongTextMsg", 2, "step2: sendLongTextMsg pack failed! packData is null.............................");
       }
       paramMessageRecord.extraflag = 32768;
-      paramQQAppInterface.getMsgCache().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
+      paramQQAppInterface.getMsgCache().b(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
       paramUpCallBack = paramMessageRecord.frienduin;
       int i = paramMessageRecord.istroop;
       long l = paramMessageRecord.uniseq;
-      ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.a(paramMessageRecord.istroop), false, new Object[] { paramUpCallBack, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+      ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.b(paramMessageRecord.istroop), false, new Object[] { paramUpCallBack, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
       return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.g = System.currentTimeMillis();
     paramBoolean = a(paramQQAppInterface, (byte[])localObject, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, 1035, paramUpCallBack);
     if (paramBoolean)
     {
@@ -235,7 +210,7 @@ public class LongTextMsgManager
   {
     try
     {
-      MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(paramInt1).a(paramString, paramInt1, paramLong1);
+      MessageRecord localMessageRecord = this.e.getMessageProxy(paramInt1).b(paramString, paramInt1, paramLong1);
       if (localMessageRecord != null)
       {
         Object localObject = new HashMap();
@@ -243,20 +218,20 @@ public class LongTextMsgManager
         ((HashMap)localObject).put("param_msgtype", String.valueOf(localMessageRecord.msgtype));
         ((HashMap)localObject).put("param_replycode", String.valueOf(paramInt2));
         ((HashMap)localObject).put("param_cost", String.valueOf(paramLong2));
-        ((HashMap)localObject).put("param_isAnonymous", String.valueOf(AnonymousChatHelper.a(localMessageRecord)));
+        ((HashMap)localObject).put("param_isAnonymous", String.valueOf(AnonymousChatHelper.c(localMessageRecord)));
         if (localMessageRecord.msgtype == -1051)
         {
-          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ltextNewSendResult", true, 0L, 0L, (HashMap)localObject, "");
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.e.getCurrentAccountUin(), "ltextNewSendResult", true, 0L, 0L, (HashMap)localObject, "");
         }
         else
         {
-          if ((!localMessageRecord.isLongMsg()) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(localMessageRecord))) {
+          if ((!localMessageRecord.isLongMsg()) || (this.e.getMsgCache().f(localMessageRecord))) {
             break label446;
           }
           ((HashMap)localObject).put("param_longMsgCount", String.valueOf(localMessageRecord.longMsgCount));
           ((HashMap)localObject).put("param_longMsgId", String.valueOf(localMessageRecord.longMsgId));
           ((HashMap)localObject).put("param_longMsgIndex", String.valueOf(localMessageRecord.longMsgIndex));
-          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ltextOldSendResult", true, 0L, 0L, (HashMap)localObject, "");
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.e.getCurrentAccountUin(), "ltextOldSendResult", true, 0L, 0L, (HashMap)localObject, "");
         }
         if (QLog.isColorLevel())
         {
@@ -341,7 +316,7 @@ public class LongTextMsgManager
     ((HashMap)localObject).put("param_istroop", String.valueOf(paramMessageRecord.istroop));
     ((HashMap)localObject).put("param_issend", String.valueOf(paramMessageRecord.issend));
     ((HashMap)localObject).put("param_msgtype", String.valueOf(paramMessageRecord.msgtype));
-    ((HashMap)localObject).put("param_isAnonymous", String.valueOf(AnonymousChatHelper.a(paramMessageRecord)));
+    ((HashMap)localObject).put("param_isAnonymous", String.valueOf(AnonymousChatHelper.c(paramMessageRecord)));
     if (paramMessageRecord.msgtype == -1051)
     {
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramQQAppInterface.getCurrentAccountUin(), "ltextNewReceiveResult", true, 0L, 0L, (HashMap)localObject, "");
@@ -360,7 +335,7 @@ public class LongTextMsgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.LongTextMsgManager
  * JD-Core Version:    0.7.0.1
  */

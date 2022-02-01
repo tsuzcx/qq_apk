@@ -8,7 +8,7 @@ import android.view.View;
 final class QIMAnimationUtils$2
   implements ValueAnimator.AnimatorUpdateListener
 {
-  final int jdField_a_of_type_Int = Color.red(this.d);
+  final int a = Color.red(this.d);
   final int b = Color.green(this.d);
   final int c = Color.blue(this.d);
   
@@ -17,12 +17,12 @@ final class QIMAnimationUtils$2
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
+    this.e.setBackgroundColor(Color.argb(i, this.a, this.b, this.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.util.QIMAnimationUtils.2
  * JD-Core Version:    0.7.0.1
  */

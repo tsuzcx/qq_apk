@@ -30,27 +30,27 @@ class MemoriesVideoListSegment$2
   {
     Object localObject = (MemoryManager)SuperManager.a(19);
     paramJobContext = new ArrayList();
-    paramVarArgs = ((MemoryManager)localObject).a(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString, paramJobContext);
+    paramVarArgs = ((MemoryManager)localObject).a(MemoriesVideoListSegment.a(this.e).a, paramJobContext);
     if ((paramVarArgs != null) && (paramVarArgs.size() != 0))
     {
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_JavaLangString);
-      MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).a(localArrayList);
-      int i = paramVarArgs.indexOf(this.jdField_a_of_type_JavaLangString);
+      localArrayList.add(this.a);
+      MemoriesVideoListSegment.a(this.e).a(localArrayList);
+      int i = paramVarArgs.indexOf(this.a);
       if (i == -1)
       {
-        SLog.e("Q.qqstory.memories.MemoriesVideoListSegment", "onVideoItemClick but can't find item, collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.jdField_a_of_type_JavaLangString, paramJobContext, this.b, Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int), paramVarArgs });
+        SLog.e("Q.qqstory.memories.MemoriesVideoListSegment", "onVideoItemClick but can't find item, collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.a, paramJobContext, this.b, Integer.valueOf(i), Integer.valueOf(this.c), paramVarArgs });
         return null;
       }
-      localObject = ((MemoryManager)localObject).a(DateCollectionListPageLoader.a(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString));
+      localObject = ((MemoryManager)localObject).c(DateCollectionListPageLoader.b(MemoriesVideoListSegment.a(this.e).a));
       if (localObject != null) {
         int j = ((MemoryInfoEntry)localObject).isEnd;
       }
-      localObject = ((UserManager)SuperManager.a(2)).b(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString);
+      localObject = ((UserManager)SuperManager.a(2)).b(MemoriesVideoListSegment.a(this.e).a);
       ThreadManager.getUIHandler().post(new MemoriesVideoListSegment.2.1(this, paramJobContext, i, paramVarArgs, (QQUserUIItem)localObject));
       return null;
     }
-    AssertUtils.fail("data key null for unionId:%s", new Object[] { MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString });
+    AssertUtils.fail("data key null for unionId:%s", new Object[] { MemoriesVideoListSegment.a(this.e).a });
     return null;
   }
 }

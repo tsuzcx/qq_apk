@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build.VERSION;
 import android.os.Handler.Callback;
 import android.os.Looper;
@@ -34,9 +35,11 @@ import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.util.AccessibilityUtil;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.widget.RandomCoverView;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.util.HashMap;
@@ -46,102 +49,99 @@ public class DrawerFrame
   extends FrameLayout
   implements Handler.Callback
 {
-  public static int a;
-  public static final boolean a;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private DrawerFrame.IDrawerCallbacks jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$IDrawerCallbacks;
-  private DrawerFrame.StoryTouchEventInterceptor jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$StoryTouchEventInterceptor;
-  private FrameHelperActivity jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private Map<Integer, DrawerFrame.StoryTouchEventInterceptor> jdField_a_of_type_JavaUtilMap;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  public boolean b;
-  private int jdField_c_of_type_Int;
-  private View jdField_c_of_type_AndroidViewView;
-  private ViewGroup jdField_c_of_type_AndroidViewViewGroup;
-  private boolean jdField_c_of_type_Boolean = true;
-  private int jdField_d_of_type_Int;
-  private ViewGroup jdField_d_of_type_AndroidViewViewGroup;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
-  private int jdField_g_of_type_Int;
-  private boolean jdField_g_of_type_Boolean;
-  private int jdField_h_of_type_Int;
-  private boolean jdField_h_of_type_Boolean;
-  private int jdField_i_of_type_Int;
-  private boolean jdField_i_of_type_Boolean;
-  private int jdField_j_of_type_Int;
-  private boolean jdField_j_of_type_Boolean;
+  public static final boolean a = ;
+  public static int b = 0;
+  private int A;
+  private int B;
+  private int C;
+  private int D;
+  private int E;
+  private int F;
+  private int G;
+  private View H;
+  private int I;
+  private int J;
+  private int K;
+  private int L;
+  private int M;
+  private boolean N;
+  private boolean O;
+  private DrawerFrame.StoryTouchEventInterceptor P;
+  private Map<Integer, DrawerFrame.StoryTouchEventInterceptor> Q;
+  private boolean R;
+  private FrameHelperActivity S;
+  private StringBuilder T;
+  public boolean c;
+  protected DrawerFrame.ContentViewOutlineProvider d;
+  private boolean e = true;
+  private boolean f;
+  private boolean g;
+  private boolean h;
+  private boolean i;
+  private int j;
   private int k;
   private int l;
   private int m;
   private int n;
   private int o;
   private int p;
-  private int q;
-  private int r;
-  private int s;
-  private int t;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = QLog.isDevelopLevel();
-    jdField_a_of_type_Int = 0;
-  }
+  private WeakReferenceHandler q;
+  private Scroller r;
+  private ViewGroup s;
+  private ViewGroup t;
+  private ViewGroup u;
+  private View v;
+  private ViewGroup w;
+  private View x;
+  private VelocityTracker y;
+  private DrawerFrame.IDrawerCallbacks z;
   
   public DrawerFrame(Context paramContext, ViewGroup paramViewGroup1, ViewGroup paramViewGroup2, View paramView, ViewGroup paramViewGroup3, FrameHelperActivity paramFrameHelperActivity)
   {
     super(paramContext);
     boolean bool = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.r = 0;
-    this.s = -1;
-    this.t = 0;
-    this.jdField_h_of_type_Boolean = true;
-    this.jdField_i_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_Boolean = true;
+    this.f = false;
+    this.g = false;
+    this.h = false;
+    this.i = true;
+    this.j = 0;
+    this.K = 0;
+    this.L = -1;
+    this.M = 0;
+    this.N = true;
+    this.O = true;
+    this.Q = new HashMap();
+    this.c = true;
+    this.d = new DrawerFrame.ContentViewOutlineProvider();
     if (paramContext != null)
     {
       Resources localResources = paramContext.getResources();
       DisplayMetrics localDisplayMetrics = localResources.getDisplayMetrics();
-      this.o = 0;
+      this.G = 0;
       double d1 = localDisplayMetrics.density * 100.0F;
       Double.isNaN(d1);
-      this.jdField_i_of_type_Int = ((int)(d1 + 0.5D));
-      this.k = localResources.getDimensionPixelSize(2131298519);
-      this.jdField_d_of_type_Int = localResources.getDimensionPixelSize(2131298927);
-      this.jdField_j_of_type_Int = 0;
+      this.A = ((int)(d1 + 0.5D));
+      this.C = localResources.getDimensionPixelSize(2131299233);
+      this.l = localResources.getDimensionPixelSize(2131299649);
+      this.B = 0;
       if (Build.VERSION.SDK_INT >= 11) {
         bool = true;
       }
-      this.jdField_g_of_type_Boolean = bool;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-      this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new DrawerFrame.SmoothInterpolator());
+      this.i = bool;
+      this.q = new WeakReferenceHandler(Looper.getMainLooper(), this);
+      this.r = new Scroller(paramContext, new DrawerFrame.BezierInterpolator(0.165F, 0.84F, 0.44F, 1.0F));
       if ((paramContext instanceof Activity)) {
-        this.s = DeviceInfoUtil.a((Activity)paramContext);
+        this.L = DeviceInfoUtil.a((Activity)paramContext);
       } else {
-        this.s = paramContext.getResources().getConfiguration().orientation;
+        this.L = paramContext.getResources().getConfiguration().orientation;
       }
-      if (jdField_a_of_type_Boolean) {
+      if (a) {
         a("DrawerFrame", null);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity = paramFrameHelperActivity;
+      this.S = paramFrameHelperActivity;
       a(paramViewGroup1, paramViewGroup2, paramView, paramViewGroup3);
-      b(this.r, 1);
+      c(this.K, 1);
+      setBackgroundColor(Color.parseColor("#000000"));
       return;
     }
     throw new NullPointerException("context is null");
@@ -149,8 +149,8 @@ public class DrawerFrame
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    this.o = 2;
-    if (!this.jdField_d_of_type_Boolean)
+    this.G = 2;
+    if (!this.f)
     {
       b(paramInt, paramBoolean);
       return;
@@ -160,112 +160,97 @@ public class DrawerFrame
   
   private void a(View paramView)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.v;
     if (paramView != localView)
     {
       if (localView != null) {
         removeView(localView);
       }
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      if (this.jdField_a_of_type_AndroidViewView != null)
+      this.v = paramView;
+      if (this.v != null)
       {
         paramView = new FrameLayout.LayoutParams(-2, -1, 21);
-        addView(this.jdField_a_of_type_AndroidViewView, paramView);
+        addView(this.v, paramView);
       }
     }
   }
   
   private void a(ViewGroup paramViewGroup)
   {
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    ViewGroup localViewGroup = this.s;
     if (paramViewGroup != localViewGroup)
     {
       if (localViewGroup != null)
       {
         removeView(localViewGroup);
-        localViewGroup = this.jdField_b_of_type_AndroidViewViewGroup;
+        localViewGroup = this.t;
         if (localViewGroup != null)
         {
           localViewGroup.removeView(this);
-          this.jdField_b_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewViewGroup);
-          this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(null);
-          this.jdField_b_of_type_AndroidViewViewGroup = null;
+          this.t.addView(this.s);
+          this.t.setOnClickListener(null);
+          this.t = null;
         }
       }
-      this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-      AccessibilityUtil.b(this.jdField_a_of_type_AndroidViewViewGroup, true);
-      paramViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+      this.s = paramViewGroup;
+      AccessibilityUtil.b(this.s, true);
+      paramViewGroup = this.s;
       if (paramViewGroup != null)
       {
         paramViewGroup = paramViewGroup.getParent();
         if ((paramViewGroup instanceof ViewGroup))
         {
-          this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramViewGroup);
-          this.jdField_b_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidViewViewGroup);
+          this.t = ((ViewGroup)paramViewGroup);
+          this.t.removeView(this.s);
         }
         else
         {
-          this.jdField_b_of_type_AndroidViewViewGroup = null;
+          this.t = null;
         }
         paramViewGroup = new FrameLayout.LayoutParams(-1, -1);
-        addView(this.jdField_a_of_type_AndroidViewViewGroup, paramViewGroup);
+        addView(this.s, paramViewGroup);
       }
-      if ((this.jdField_c_of_type_AndroidViewViewGroup != null) && (this.jdField_g_of_type_Boolean))
+      if (this.i)
       {
-        if (this.jdField_b_of_type_AndroidViewView == null)
+        if (this.x == null)
         {
-          this.jdField_b_of_type_AndroidViewView = new View(getContext());
-          this.jdField_b_of_type_AndroidViewView.setBackgroundColor(0);
+          this.x = new View(getContext());
+          this.x.setBackgroundColor(-16777216);
+          this.x.setAlpha(0.0F);
         }
-        if (ThemeUtil.isDefaultOrDIYTheme(false))
-        {
-          this.jdField_h_of_type_Boolean = true;
-          this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        }
-        else
-        {
-          this.jdField_h_of_type_Boolean = false;
-          this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        }
+        this.N = true;
         paramViewGroup = new FrameLayout.LayoutParams(-1, -1);
-        localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
-        if (localViewGroup != null) {
-          localViewGroup.addView(this.jdField_b_of_type_AndroidViewView, paramViewGroup);
-        }
+        addView(this.x, paramViewGroup);
       }
       else
       {
-        paramViewGroup = this.jdField_b_of_type_AndroidViewView;
-        if (paramViewGroup != null)
-        {
-          localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
-          if (localViewGroup != null) {
-            localViewGroup.removeView(paramViewGroup);
-          }
+        paramViewGroup = this.x;
+        if (paramViewGroup != null) {
+          removeView(paramViewGroup);
         }
       }
-      paramViewGroup = this.jdField_b_of_type_AndroidViewViewGroup;
+      paramViewGroup = this.t;
       if (paramViewGroup != null)
       {
         paramViewGroup.addView(this);
-        this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(new DrawerFrame.1(this));
+        this.t.setOnClickListener(new DrawerFrame.1(this));
       }
     }
   }
   
   private void a(ViewGroup paramViewGroup, int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_d_of_type_AndroidViewViewGroup;
+    Object localObject = this.w;
     if (paramViewGroup != localObject)
     {
       if (localObject != null) {
         removeView((View)localObject);
       }
-      this.jdField_d_of_type_AndroidViewViewGroup = paramViewGroup;
-      paramViewGroup = this.jdField_d_of_type_AndroidViewViewGroup;
+      this.w = paramViewGroup;
+      paramViewGroup = this.w;
       if (paramViewGroup != null)
       {
-        paramViewGroup = (RandomCoverView)paramViewGroup.findViewById(2131378997);
+        paramViewGroup = (RandomCoverView)paramViewGroup.findViewById(2131447715);
         if (paramViewGroup != null)
         {
           localObject = (RelativeLayout.LayoutParams)paramViewGroup.getLayoutParams();
@@ -275,7 +260,7 @@ public class DrawerFrame
           paramViewGroup.setDefaultCoverBg();
         }
         paramViewGroup = new FrameLayout.LayoutParams(-1, -1);
-        addView(this.jdField_d_of_type_AndroidViewViewGroup, paramViewGroup);
+        addView(this.w, paramViewGroup);
       }
     }
   }
@@ -284,160 +269,51 @@ public class DrawerFrame
   {
     if (QLog.isDevelopLevel())
     {
-      StringBuilder localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+      StringBuilder localStringBuilder = this.T;
       if (localStringBuilder == null) {
-        this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(120);
+        this.T = new StringBuilder(120);
       } else {
         localStringBuilder.setLength(0);
       }
-      localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+      localStringBuilder = this.T;
       localStringBuilder.append(paramString);
       localStringBuilder.append(", mConfigurationFlag = ");
-      localStringBuilder.append(this.t);
+      localStringBuilder.append(this.M);
       localStringBuilder.append(", mCurOrientation = ");
-      localStringBuilder.append(this.s);
+      localStringBuilder.append(this.L);
       localStringBuilder.append(", mDecorOffsetX = ");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.j);
       localStringBuilder.append(", mLeftDrawerWidth = ");
-      localStringBuilder.append(this.jdField_c_of_type_Int);
+      localStringBuilder.append(this.k);
       localStringBuilder.append(", mConfigurationFlag = ");
-      localStringBuilder.append(this.t);
+      localStringBuilder.append(this.M);
       localStringBuilder.append(", mWidth = ");
-      localStringBuilder.append(this.p);
+      localStringBuilder.append(this.I);
       localStringBuilder.append(", mHeight =");
-      localStringBuilder.append(this.q);
+      localStringBuilder.append(this.J);
       localStringBuilder.append(", param = ");
       localStringBuilder.append(paramObject);
-      QLog.i("DrawerFrame", 4, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+      QLog.i("DrawerFrame", 4, this.T.toString());
     }
-  }
-  
-  private boolean a(int paramInt)
-  {
-    ApngImage.pauseAll();
-    boolean bool = this.jdField_e_of_type_Boolean;
-    this.jdField_e_of_type_Boolean = true;
-    Object localObject;
-    if (!bool)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$IDrawerCallbacks;
-      if (localObject != null) {
-        ((DrawerFrame.IDrawerCallbacks)localObject).a(this.r);
-      }
-    }
-    this.o = 1;
-    int i1;
-    int i2;
-    if (this.r == 0)
-    {
-      i1 = this.jdField_b_of_type_Int;
-      i2 = this.jdField_c_of_type_Int;
-      if (i1 + paramInt > i2)
-      {
-        if (i1 == i2) {
-          break label362;
-        }
-        this.jdField_d_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidViewViewGroup.offsetLeftAndRight(i2 - i1);
-        this.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
-        a(this.r, this.jdField_b_of_type_Int);
-        invalidate();
-        return true;
-      }
-    }
-    if (this.r == 0)
-    {
-      i1 = this.jdField_b_of_type_Int;
-      if (i1 + paramInt < 0)
-      {
-        if (i1 == 0) {
-          break label362;
-        }
-        this.jdField_d_of_type_Boolean = false;
-        localObject = this.jdField_a_of_type_AndroidViewViewGroup;
-        ((ViewGroup)localObject).offsetLeftAndRight(0 - ((ViewGroup)localObject).getLeft());
-        this.jdField_b_of_type_Int = 0;
-        a(this.r, this.jdField_b_of_type_Int);
-        invalidate();
-        return true;
-      }
-    }
-    if (this.r == 1)
-    {
-      i1 = this.jdField_b_of_type_Int;
-      i2 = this.jdField_d_of_type_Int;
-      if (i1 + paramInt < -i2)
-      {
-        if (i1 == -i2) {
-          break label362;
-        }
-        this.jdField_d_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidViewViewGroup.offsetLeftAndRight(-i2 - i1);
-        this.jdField_b_of_type_Int = (-this.jdField_d_of_type_Int);
-        a(this.r, this.jdField_b_of_type_Int);
-        invalidate();
-        return true;
-      }
-    }
-    if (this.r == 1)
-    {
-      i1 = this.jdField_b_of_type_Int;
-      if (i1 + paramInt > 0)
-      {
-        if (i1 == 0) {
-          break label362;
-        }
-        this.jdField_d_of_type_Boolean = false;
-        localObject = this.jdField_a_of_type_AndroidViewViewGroup;
-        ((ViewGroup)localObject).offsetLeftAndRight(0 - ((ViewGroup)localObject).getLeft());
-        this.jdField_b_of_type_Int = 0;
-        a(this.r, this.jdField_b_of_type_Int);
-        invalidate();
-        return true;
-      }
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.offsetLeftAndRight(paramInt);
-    this.jdField_b_of_type_Int += paramInt;
-    a(this.r, this.jdField_b_of_type_Int);
-    invalidate();
-    label362:
-    return true;
-  }
-  
-  private boolean a(int paramInt1, int paramInt2)
-  {
-    this.jdField_f_of_type_Int = paramInt1;
-    this.jdField_e_of_type_Int = paramInt1;
-    this.jdField_h_of_type_Int = paramInt2;
-    this.jdField_g_of_type_Int = paramInt2;
-    if ((!this.jdField_d_of_type_Boolean) || (this.jdField_e_of_type_Int > this.jdField_j_of_type_Int)) {
-      this.jdField_f_of_type_Boolean = true;
-    }
-    if ((this.jdField_e_of_type_Boolean) && (((this.r == 0) && (this.jdField_e_of_type_Int > this.jdField_b_of_type_Int)) || ((this.r == 1) && (this.jdField_e_of_type_Int < this.p + this.jdField_b_of_type_Int))))
-    {
-      this.jdField_f_of_type_Boolean = true;
-      return true;
-    }
-    return false;
   }
   
   private boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool1 = this.jdField_f_of_type_Boolean;
+    boolean bool1 = this.h;
     boolean bool2 = false;
     if (!bool1) {
       return false;
     }
-    if ((!this.jdField_d_of_type_Boolean) && ((paramInt2 < this.jdField_f_of_type_Int) || (paramInt2 < this.jdField_e_of_type_Int)))
+    if ((!this.f) && ((paramInt2 < this.n) || (paramInt2 < this.m)))
     {
-      this.jdField_f_of_type_Boolean = false;
+      this.h = false;
       return false;
     }
-    this.jdField_f_of_type_Int = paramInt2;
-    this.jdField_h_of_type_Int = paramInt3;
-    paramInt2 = Math.abs(this.jdField_f_of_type_Int - this.jdField_e_of_type_Int);
-    paramInt3 = Math.abs(this.jdField_h_of_type_Int - this.jdField_g_of_type_Int);
-    if (this.jdField_d_of_type_Boolean)
+    this.n = paramInt2;
+    this.p = paramInt3;
+    paramInt2 = Math.abs(this.n - this.m);
+    paramInt3 = Math.abs(this.p - this.o);
+    if (this.f)
     {
       bool1 = bool2;
       if (paramInt2 <= paramInt1) {}
@@ -455,151 +331,101 @@ public class DrawerFrame
         bool1 = bool2;
       } while ((paramInt3 + 0.0F) / paramInt2 < 0.6F);
     }
-    if ((bool1) && (this.jdField_e_of_type_Boolean))
+    if ((bool1) && (this.g))
     {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(2);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(4);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(3);
+      this.q.removeMessages(1);
+      this.q.removeMessages(2);
+      this.q.removeMessages(4);
+      this.q.removeMessages(3);
     }
     return bool1;
   }
   
   private boolean a(ViewConfiguration paramViewConfiguration)
   {
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-    if (Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity()) > paramViewConfiguration.getScaledMinimumFlingVelocity())
+    this.h = false;
+    this.g = false;
+    this.y.computeCurrentVelocity(1000);
+    if (Math.abs(this.y.getXVelocity()) > paramViewConfiguration.getScaledMinimumFlingVelocity())
     {
-      if (this.r == 0)
+      if (this.K == 0)
       {
-        if (this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity() > 0.0F)
+        if (this.y.getXVelocity() > 0.0F)
         {
-          this.jdField_d_of_type_Boolean = false;
+          this.f = false;
           f();
           return true;
         }
-        this.jdField_d_of_type_Boolean = true;
+        this.f = true;
         i();
         return true;
       }
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity() < 0.0F)
+      if (this.y.getXVelocity() < 0.0F)
       {
-        this.jdField_d_of_type_Boolean = false;
+        this.f = false;
         g();
         return true;
       }
-      this.jdField_d_of_type_Boolean = true;
+      this.f = true;
       i();
       return true;
     }
-    if (this.r == 0)
+    if (this.K == 0)
     {
-      d1 = this.jdField_b_of_type_Int;
-      d2 = this.p;
+      d1 = this.j;
+      d2 = this.I;
       Double.isNaN(d2);
       if (d1 > d2 / 2.0D)
       {
-        this.jdField_d_of_type_Boolean = false;
+        this.f = false;
         f();
         return true;
       }
-      this.jdField_d_of_type_Boolean = true;
+      this.f = true;
       i();
       return true;
     }
-    double d1 = this.jdField_b_of_type_Int;
-    double d2 = this.jdField_d_of_type_Int;
+    double d1 = this.j;
+    double d2 = this.l;
     Double.isNaN(d2);
     if (d1 < -(d2 / 3.0D * 2.0D))
     {
-      this.jdField_d_of_type_Boolean = false;
+      this.f = false;
       g();
       return true;
     }
-    this.jdField_d_of_type_Boolean = true;
+    this.f = true;
     i();
     return true;
   }
   
-  private void b(int paramInt1, int paramInt2)
-  {
-    int i2 = 8;
-    int i1;
-    if (paramInt2 == 1) {
-      i1 = 8;
-    } else {
-      i1 = 0;
-    }
-    Object localObject = this.jdField_d_of_type_AndroidViewViewGroup;
-    if ((localObject != null) && (((ViewGroup)localObject).getVisibility() != i1)) {
-      this.jdField_d_of_type_AndroidViewViewGroup.setVisibility(i1);
-    }
-    if ((paramInt2 != 1) && (paramInt1 != 1)) {
-      i1 = 0;
-    } else {
-      i1 = 8;
-    }
-    localObject = this.jdField_c_of_type_AndroidViewViewGroup;
-    if ((localObject != null) && (((ViewGroup)localObject).getVisibility() != i1)) {
-      this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(i1);
-    }
-    if ((paramInt2 != 1) && (paramInt1 != 0)) {
-      paramInt1 = 0;
-    } else {
-      paramInt1 = 8;
-    }
-    localObject = this.jdField_a_of_type_AndroidViewView;
-    if ((localObject != null) && (((View)localObject).getVisibility() != paramInt1)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt1);
-    }
-    if ((paramInt2 != 2) && (paramInt2 != 0)) {
-      paramInt1 = 8;
-    } else {
-      paramInt1 = 0;
-    }
-    localObject = this.jdField_b_of_type_AndroidViewView;
-    if ((localObject != null) && (((View)localObject).getVisibility() != paramInt1) && (this.jdField_h_of_type_Boolean)) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(paramInt1);
-    }
-    paramInt1 = i2;
-    if (paramInt2 == 0) {
-      paramInt1 = 0;
-    }
-    localObject = this.jdField_c_of_type_AndroidViewView;
-    if ((localObject != null) && (((View)localObject).getVisibility() != paramInt1)) {
-      this.jdField_c_of_type_AndroidViewView.setVisibility(paramInt1);
-    }
-  }
-  
   private void b(int paramInt, boolean paramBoolean)
   {
-    if (!e()) {
+    if (!n()) {
       return;
     }
-    this.r = paramInt;
-    if (this.jdField_e_of_type_Boolean)
+    this.K = paramInt;
+    if (this.g)
     {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(2);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(4);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(3);
+      this.q.removeMessages(1);
+      this.q.removeMessages(2);
+      this.q.removeMessages(4);
+      this.q.removeMessages(3);
     }
-    else if (this.jdField_d_of_type_Boolean)
+    else if (this.f)
     {
       return;
     }
-    int i1 = this.r;
+    int i1 = this.K;
     if (i1 == 0) {
-      this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(0);
+      this.u.setVisibility(0);
     } else if (i1 == 1) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.v.setVisibility(0);
     }
-    this.jdField_e_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$IDrawerCallbacks;
+    this.g = true;
+    Object localObject = this.z;
     if (localObject != null) {
-      ((DrawerFrame.IDrawerCallbacks)localObject).a(this.r);
+      ((DrawerFrame.IDrawerCallbacks)localObject).a(this.K);
     }
     int i2;
     int i3;
@@ -607,9 +433,9 @@ public class DrawerFrame
     {
       if (paramInt == 1)
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetScroller;
-        i2 = this.jdField_b_of_type_Int;
-        i3 = -this.jdField_d_of_type_Int;
+        localObject = this.r;
+        i2 = this.j;
+        i3 = -this.l;
         if (paramBoolean) {
           i1 = 300;
         } else {
@@ -620,9 +446,9 @@ public class DrawerFrame
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidWidgetScroller;
-      i2 = this.jdField_b_of_type_Int;
-      i3 = this.jdField_c_of_type_Int;
+      localObject = this.r;
+      i2 = this.j;
+      i3 = this.k;
       if (paramBoolean) {
         i1 = 300;
       } else {
@@ -630,26 +456,26 @@ public class DrawerFrame
       }
       ((Scroller)localObject).startScroll(i2, 0, i3 - i2, 0, i1);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$IDrawerCallbacks;
+    localObject = this.z;
     if (localObject != null) {
       ((DrawerFrame.IDrawerCallbacks)localObject).a(paramInt, true);
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1);
+    this.q.sendEmptyMessage(1);
   }
   
   private void b(ViewGroup paramViewGroup)
   {
-    ViewGroup localViewGroup = this.jdField_c_of_type_AndroidViewViewGroup;
+    ViewGroup localViewGroup = this.u;
     if (paramViewGroup != localViewGroup)
     {
       if (localViewGroup != null) {
         removeView(localViewGroup);
       }
-      this.jdField_c_of_type_AndroidViewViewGroup = paramViewGroup;
-      if (this.jdField_c_of_type_AndroidViewViewGroup != null)
+      this.u = paramViewGroup;
+      if (this.u != null)
       {
         paramViewGroup = new FrameLayout.LayoutParams(-1, -1, 19);
-        addView(this.jdField_c_of_type_AndroidViewViewGroup, paramViewGroup);
+        addView(this.u, paramViewGroup);
       }
     }
   }
@@ -657,31 +483,31 @@ public class DrawerFrame
   private void b(boolean paramBoolean)
   {
     ApngImage.pauseByTag(1);
-    if (!e()) {
+    if (!n()) {
       return;
     }
-    if (this.jdField_e_of_type_Boolean)
+    if (this.g)
     {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(2);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(4);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(3);
+      this.q.removeMessages(1);
+      this.q.removeMessages(2);
+      this.q.removeMessages(4);
+      this.q.removeMessages(3);
     }
-    else if (!this.jdField_d_of_type_Boolean)
+    else if (!this.f)
     {
       return;
     }
-    this.jdField_e_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$IDrawerCallbacks;
+    this.g = true;
+    Object localObject = this.z;
     if (localObject != null) {
-      ((DrawerFrame.IDrawerCallbacks)localObject).a(this.r);
+      ((DrawerFrame.IDrawerCallbacks)localObject).a(this.K);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$IDrawerCallbacks;
+    localObject = this.z;
     if (localObject != null) {
-      ((DrawerFrame.IDrawerCallbacks)localObject).a(this.r, false);
+      ((DrawerFrame.IDrawerCallbacks)localObject).a(this.K, false);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetScroller;
-    int i2 = this.jdField_b_of_type_Int;
+    localObject = this.r;
+    int i2 = this.j;
     int i3 = -i2;
     int i1;
     if (paramBoolean) {
@@ -690,96 +516,303 @@ public class DrawerFrame
       i1 = 0;
     }
     ((Scroller)localObject).startScroll(i2, 0, i3, 0, i1);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
+    this.q.sendEmptyMessage(2);
   }
   
-  private boolean d()
+  private boolean b(int paramInt)
   {
-    this.jdField_f_of_type_Boolean = false;
-    if (((this.jdField_d_of_type_Boolean) && (this.r == 0) && (this.jdField_e_of_type_Int > this.jdField_c_of_type_Int)) || ((this.r == 1) && (this.jdField_e_of_type_Int < this.p - this.jdField_d_of_type_Int)))
+    ApngImage.pauseAll();
+    boolean bool = this.g;
+    this.g = true;
+    if (!bool)
     {
-      this.o = 3;
-      int i1 = this.jdField_g_of_type_Int;
-      if ((i1 >= this.m) && (i1 <= this.n)) {
-        this.o = 4;
+      DrawerFrame.IDrawerCallbacks localIDrawerCallbacks = this.z;
+      if (localIDrawerCallbacks != null)
+      {
+        localIDrawerCallbacks.a(this.K);
+        if (QQTheme.isSimpleWhite()) {
+          this.s.setBackgroundColor(-1);
+        } else {
+          this.s.setBackgroundColor(0);
+        }
       }
-      i();
-      this.jdField_f_of_type_Int = -1;
-      this.jdField_e_of_type_Int = -1;
-      this.jdField_h_of_type_Int = -1;
-      this.jdField_g_of_type_Int = -1;
+    }
+    this.G = 1;
+    int i1 = this.K;
+    int i2;
+    int i3;
+    if (i1 == 0)
+    {
+      i2 = this.j;
+      i3 = this.k;
+      if (i2 + paramInt > i3)
+      {
+        if (i2 == i3) {
+          break label320;
+        }
+        this.f = true;
+        this.j = i3;
+        a(i1, this.j);
+        invalidate();
+        return true;
+      }
+    }
+    i1 = this.K;
+    if (i1 == 0)
+    {
+      i2 = this.j;
+      if (i2 + paramInt < 0)
+      {
+        if (i2 == 0) {
+          break label320;
+        }
+        this.f = false;
+        this.j = 0;
+        a(i1, this.j);
+        invalidate();
+        return true;
+      }
+    }
+    i1 = this.K;
+    if (i1 == 1)
+    {
+      i2 = this.j;
+      i3 = this.l;
+      if (i2 + paramInt < -i3)
+      {
+        if (i2 == -i3) {
+          break label320;
+        }
+        this.f = true;
+        this.j = (-i3);
+        a(i1, this.j);
+        invalidate();
+        return true;
+      }
+    }
+    i1 = this.K;
+    if (i1 == 1)
+    {
+      i2 = this.j;
+      if (i2 + paramInt > 0)
+      {
+        if (i2 == 0) {
+          break label320;
+        }
+        this.f = false;
+        this.j = 0;
+        a(i1, this.j);
+        invalidate();
+        return true;
+      }
+    }
+    this.j += paramInt;
+    a(this.K, this.j);
+    invalidate();
+    label320:
+    return true;
+  }
+  
+  private boolean b(int paramInt1, int paramInt2)
+  {
+    this.n = paramInt1;
+    this.m = paramInt1;
+    this.p = paramInt2;
+    this.o = paramInt2;
+    if ((!this.f) || (this.m > this.B)) {
+      this.h = true;
+    }
+    if ((this.g) && (((this.K == 0) && (this.m > this.j)) || ((this.K == 1) && (this.m < this.I + this.j))))
+    {
+      this.h = true;
       return true;
     }
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_h_of_type_Int = -1;
-    this.jdField_g_of_type_Int = -1;
     return false;
   }
   
-  private boolean e()
+  private void c(int paramInt1, int paramInt2)
   {
-    return (this.jdField_c_of_type_Boolean) && (this.jdField_c_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewViewGroup != null);
+    int i2 = 8;
+    int i1;
+    if (paramInt2 == 1) {
+      i1 = 8;
+    } else {
+      i1 = 0;
+    }
+    Object localObject = this.w;
+    if ((localObject != null) && (((ViewGroup)localObject).getVisibility() != i1)) {
+      this.w.setVisibility(i1);
+    }
+    if ((paramInt2 != 1) && (paramInt1 != 1)) {
+      i1 = 0;
+    } else {
+      i1 = 8;
+    }
+    localObject = this.u;
+    if ((localObject != null) && (((ViewGroup)localObject).getVisibility() != i1)) {
+      this.u.setVisibility(i1);
+    }
+    if ((paramInt2 != 1) && (paramInt1 != 0)) {
+      paramInt1 = 0;
+    } else {
+      paramInt1 = 8;
+    }
+    localObject = this.v;
+    if ((localObject != null) && (((View)localObject).getVisibility() != paramInt1)) {
+      this.v.setVisibility(paramInt1);
+    }
+    if ((paramInt2 != 2) && (paramInt2 != 0)) {
+      paramInt1 = 8;
+    } else {
+      paramInt1 = 0;
+    }
+    localObject = this.x;
+    if ((localObject != null) && (((View)localObject).getVisibility() != paramInt1) && (this.N)) {
+      this.x.setVisibility(paramInt1);
+    }
+    paramInt1 = i2;
+    if (paramInt2 == 0) {
+      paramInt1 = 0;
+    }
+    localObject = this.H;
+    if ((localObject != null) && (((View)localObject).getVisibility() != paramInt1)) {
+      this.H.setVisibility(paramInt1);
+    }
   }
   
-  private boolean f()
+  private boolean l()
   {
-    if (this.jdField_e_of_type_Boolean) {
+    this.h = false;
+    if (((this.f) && (this.K == 0) && (this.m > this.k)) || ((this.K == 1) && (this.m < this.I - this.l)))
+    {
+      this.G = 3;
+      int i1 = this.o;
+      if ((i1 >= this.E) && (i1 <= this.F)) {
+        this.G = 4;
+      }
+      i();
+      this.n = -1;
+      this.m = -1;
+      this.p = -1;
+      this.o = -1;
       return true;
     }
-    AccessibilityUtil.b(this.jdField_a_of_type_AndroidViewViewGroup, false);
-    b(this.r, 0);
-    DrawerFrame.IDrawerCallbacks localIDrawerCallbacks = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$IDrawerCallbacks;
-    if (localIDrawerCallbacks != null) {
-      localIDrawerCallbacks.a(this.r, this.o);
+    this.n = -1;
+    this.m = -1;
+    this.p = -1;
+    this.o = -1;
+    return false;
+  }
+  
+  private void m()
+  {
+    if (this.g)
+    {
+      this.q.removeMessages(1);
+      this.q.removeMessages(2);
+      this.q.removeMessages(4);
+      this.q.removeMessages(3);
     }
-    this.o = 0;
-    this.jdField_i_of_type_Boolean = false;
+  }
+  
+  private boolean n()
+  {
+    return (this.e) && (this.u != null) && (this.s != null);
+  }
+  
+  private void o()
+  {
+    if (j())
+    {
+      int i1 = this.K;
+      int i2;
+      if (i1 == 0)
+      {
+        i2 = this.k;
+        i1 = i2 - this.j;
+        this.j = i2;
+      }
+      else if (i1 == 1)
+      {
+        i2 = this.l;
+        i1 = -i2 - this.j;
+        this.j = (-i2);
+      }
+      else
+      {
+        i1 = 0;
+      }
+      ViewGroup localViewGroup = this.s;
+      if ((localViewGroup != null) && (i1 != 0))
+      {
+        localViewGroup.offsetLeftAndRight(i1);
+        a(this.K, this.j);
+        postInvalidate();
+      }
+      if (a) {
+        a("MSG_CONFIGURATION_CHANGED", Integer.valueOf(i1));
+      }
+    }
+  }
+  
+  private boolean p()
+  {
+    if (this.g) {
+      return true;
+    }
+    AccessibilityUtil.b(this.s, false);
+    c(this.K, 0);
+    DrawerFrame.IDrawerCallbacks localIDrawerCallbacks = this.z;
+    if (localIDrawerCallbacks != null) {
+      localIDrawerCallbacks.a(this.K, this.G);
+    }
+    this.G = 0;
+    this.O = false;
     ApngImage.playByTag(1);
     return false;
   }
   
-  private boolean g()
+  private boolean q()
   {
-    if (this.jdField_e_of_type_Boolean) {
+    if (this.g) {
       return true;
     }
-    AccessibilityUtil.b(this.jdField_a_of_type_AndroidViewViewGroup, true);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$IDrawerCallbacks;
+    AccessibilityUtil.b(this.s, true);
+    Object localObject = this.z;
     if (localObject != null) {
-      ((DrawerFrame.IDrawerCallbacks)localObject).b(this.r, this.o);
+      ((DrawerFrame.IDrawerCallbacks)localObject).b(this.K, this.G);
     }
-    this.o = 0;
-    this.r = 0;
-    this.jdField_i_of_type_Boolean = true;
-    b(this.r, 1);
+    this.G = 0;
+    this.K = 0;
+    this.O = true;
+    c(this.K, 1);
     if ((BaseActivity.sTopActivity instanceof BaseActivity))
     {
       localObject = (QBaseFragment)BaseActivity.sTopActivity.getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
       if (localObject != null)
       {
-        int i1 = ((MainFragment)localObject).a();
-        if (i1 == FrameControllerUtil.jdField_a_of_type_Int)
+        int i1 = ((MainFragment)localObject).w();
+        if (i1 == FrameControllerUtil.a)
         {
           ApngImage.playByTag(2);
           return false;
         }
-        if (i1 == FrameControllerUtil.jdField_c_of_type_Int)
+        if (i1 == FrameControllerUtil.c)
         {
           ApngImage.playByTag(3);
           return false;
         }
-        if (i1 == FrameControllerUtil.jdField_d_of_type_Int)
+        if (i1 == FrameControllerUtil.d)
         {
           ApngImage.playByTag(4);
           return false;
         }
-        if (i1 == FrameControllerUtil.jdField_f_of_type_Int)
+        if (i1 == FrameControllerUtil.f)
         {
           ApngImage.playByTag(5);
           return false;
         }
-        if (i1 == FrameControllerUtil.jdField_g_of_type_Int) {
+        if (i1 == FrameControllerUtil.g) {
           ApngImage.playByTag(8);
         }
       }
@@ -787,181 +820,142 @@ public class DrawerFrame
     return false;
   }
   
-  private boolean h()
+  private void r()
   {
-    if ((this.s == 1) && (this.p > this.q)) {
-      return false;
-    }
-    return (this.s != 0) || (this.p >= this.q);
-  }
-  
-  private void j()
-  {
-    if (this.jdField_e_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(2);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(4);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(3);
-    }
-  }
-  
-  private void k()
-  {
-    if (b())
-    {
-      int i1 = this.r;
-      int i2;
-      if (i1 == 0)
-      {
-        i2 = this.jdField_c_of_type_Int;
-        i1 = i2 - this.jdField_b_of_type_Int;
-        this.jdField_b_of_type_Int = i2;
-      }
-      else if (i1 == 1)
-      {
-        i2 = this.jdField_d_of_type_Int;
-        i1 = -i2 - this.jdField_b_of_type_Int;
-        this.jdField_b_of_type_Int = (-i2);
-      }
-      else
-      {
-        i1 = 0;
-      }
-      ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
-      if ((localViewGroup != null) && (i1 != 0))
-      {
-        localViewGroup.offsetLeftAndRight(i1);
-        a(this.r, this.jdField_b_of_type_Int);
-        postInvalidate();
-      }
-      if (jdField_a_of_type_Boolean) {
-        a("MSG_CONFIGURATION_CHANGED", Integer.valueOf(i1));
-      }
-    }
-  }
-  
-  private void l()
-  {
-    boolean bool = this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
-    int i1 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-    int i2 = this.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-    Object localObject = this.jdField_a_of_type_AndroidViewViewGroup;
-    if (localObject != null)
-    {
-      ((ViewGroup)localObject).offsetLeftAndRight(i1 - i2);
-      a(this.r, this.jdField_b_of_type_Int);
+    boolean bool = this.r.computeScrollOffset();
+    this.r.getCurrX();
+    int i1 = this.j;
+    this.j = this.r.getCurrX();
+    if (this.s != null) {
+      a(this.K, this.j);
     }
     postInvalidate();
     if (!bool)
     {
-      this.jdField_e_of_type_Boolean = false;
-      this.jdField_d_of_type_Boolean = false;
-      localObject = this.jdField_c_of_type_AndroidViewViewGroup;
+      this.g = false;
+      this.f = false;
+      Object localObject = this.u;
       if (localObject != null) {
         ((ViewGroup)localObject).setVisibility(8);
       }
-      localObject = this.jdField_a_of_type_AndroidViewView;
+      localObject = this.v;
       if (localObject != null) {
         ((View)localObject).setVisibility(8);
       }
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
+      this.q.sendEmptyMessage(4);
       return;
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
+    this.q.sendEmptyMessage(2);
   }
   
-  private void m()
+  private void s()
   {
-    boolean bool = this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
-    int i1 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-    int i2 = this.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
-    if (localViewGroup != null)
-    {
-      localViewGroup.offsetLeftAndRight(i1 - i2);
-      a(this.r, this.jdField_b_of_type_Int);
+    boolean bool = this.r.computeScrollOffset();
+    this.r.getCurrX();
+    int i1 = this.j;
+    this.j = this.r.getCurrX();
+    if (this.s != null) {
+      a(this.K, this.j);
     }
     postInvalidate();
     if (!bool)
     {
-      this.jdField_e_of_type_Boolean = false;
-      this.jdField_d_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(3);
+      this.g = false;
+      this.f = true;
+      this.q.sendEmptyMessage(3);
       return;
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1);
+    this.q.sendEmptyMessage(1);
   }
   
-  public int a()
+  private boolean t()
   {
-    this.k = getContext().getResources().getDimensionPixelSize(2131298519);
-    return this.k;
+    if ((this.L == 1) && (this.I > this.J)) {
+      return false;
+    }
+    return (this.L != 0) || (this.I >= this.J);
   }
   
   public void a()
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    View localView = this.x;
     if (localView != null) {
-      localView.setVisibility(8);
+      localView.setVisibility(0);
     }
-    this.jdField_h_of_type_Boolean = false;
+    this.N = true;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+    this.Q.remove(Integer.valueOf(paramInt));
   }
   
   @TargetApi(11)
   protected void a(int paramInt1, int paramInt2)
   {
-    b(paramInt1, 2);
+    c(paramInt1, 2);
     if (Build.VERSION.SDK_INT >= 11)
     {
       float f1;
       if (paramInt1 == 0)
       {
         f1 = paramInt2;
-        paramInt2 = this.jdField_c_of_type_Int;
+        paramInt1 = this.k;
       }
       else
       {
         f1 = -paramInt2;
-        paramInt2 = this.jdField_d_of_type_Int;
+        paramInt1 = this.l;
       }
-      f1 /= paramInt2;
-      if (paramInt1 == 0) {
-        paramInt2 = this.p;
-      } else {
-        paramInt2 = -this.p;
+      f1 /= paramInt1;
+      float f2 = 1.0F - 0.1F * f1;
+      Object localObject = this.s;
+      ((ViewGroup)localObject).setPivotX(((ViewGroup)localObject).getWidth() / 2.0F);
+      localObject = this.s;
+      ((ViewGroup)localObject).setPivotY(((ViewGroup)localObject).getHeight() / 2.0F);
+      localObject = this.s;
+      if (localObject != null)
+      {
+        ((ViewGroup)localObject).setScaleX(f2);
+        this.s.setScaleY(f2);
+        a(this.s, 30.0F * f1);
       }
-      float f2 = paramInt2 * (f1 - 1.0F);
-      if (paramInt1 == 0) {
-        localObject = this.jdField_c_of_type_AndroidViewViewGroup;
-      } else {
-        localObject = this.jdField_a_of_type_AndroidViewView;
-      }
+      localObject = this.x;
       if (localObject != null) {
-        ((View)localObject).setTranslationX(f2);
+        ((View)localObject).setAlpha(0.5F * f1);
       }
-      Object localObject = this.jdField_d_of_type_AndroidViewViewGroup;
+      localObject = this.w;
       if (localObject != null) {
-        ((ViewGroup)localObject).setTranslationX(f2);
+        ((ViewGroup)localObject).setTranslationX(paramInt2 - this.k);
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$IDrawerCallbacks;
+      this.u.setTranslationX(paramInt2 - this.k);
+      localObject = this.z;
       if (localObject != null) {
-        ((DrawerFrame.IDrawerCallbacks)localObject).a(this.r, f1);
+        ((DrawerFrame.IDrawerCallbacks)localObject).a(this.K, f1);
       }
     }
+  }
+  
+  protected void a(View paramView, float paramFloat)
+  {
+    if (paramView == null) {
+      return;
+    }
+    if (paramFloat > 0.0F)
+    {
+      this.d.a(DisplayUtil.a(BaseApplication.getContext(), paramFloat));
+      paramView.setOutlineProvider(this.d);
+      paramView.setClipToOutline(true);
+      return;
+    }
+    paramView.setOutlineProvider(null);
+    paramView.setClipToOutline(false);
   }
   
   public void a(ViewGroup paramViewGroup1, ViewGroup paramViewGroup2, View paramView, ViewGroup paramViewGroup3)
   {
     int i1 = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getWidth();
-    int i2 = i1 - a();
+    int i2 = i1 - getTargetWidth();
     int i3 = ScreenUtil.dip2px(170.0F);
     if (QLog.isColorLevel())
     {
@@ -977,21 +971,21 @@ public class DrawerFrame
       localStringBuilder.append(")");
       QLog.d("DrawerFrame", 2, localStringBuilder.toString());
     }
+    a(paramViewGroup1);
     a(paramViewGroup3, i2, i3);
     b(paramViewGroup2);
     a(paramView);
-    a(paramViewGroup1);
-    if ((this.jdField_c_of_type_AndroidViewViewGroup != null) && (this.jdField_c_of_type_AndroidViewView == null))
+    if ((this.u != null) && (this.H == null))
     {
-      this.jdField_c_of_type_AndroidViewView = new View(getContext());
-      this.jdField_c_of_type_AndroidViewView.setFocusable(true);
-      this.jdField_c_of_type_AndroidViewView.setFocusableInTouchMode(true);
-      this.jdField_c_of_type_AndroidViewView.setClickable(true);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(17170445);
-      this.jdField_c_of_type_AndroidViewView.setContentDescription(HardCodeUtil.a(2131703692));
-      paramViewGroup1 = new FrameLayout.LayoutParams(this.jdField_c_of_type_Int, this.l, 21);
-      addView(this.jdField_c_of_type_AndroidViewView, paramViewGroup1);
+      this.H = new View(getContext());
+      this.H.setFocusable(true);
+      this.H.setFocusableInTouchMode(true);
+      this.H.setClickable(true);
+      this.H.setVisibility(8);
+      this.H.setBackgroundResource(17170445);
+      this.H.setContentDescription(HardCodeUtil.a(2131901641));
+      paramViewGroup1 = new FrameLayout.LayoutParams(this.k, this.D, 21);
+      addView(this.H, paramViewGroup1);
     }
   }
   
@@ -1004,34 +998,20 @@ public class DrawerFrame
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("DrawerFrame", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (RandomCoverView)this.jdField_d_of_type_AndroidViewViewGroup.findViewById(2131378997);
+    Object localObject = (RandomCoverView)this.w.findViewById(2131447715);
     if (localObject != null)
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((RandomCoverView)localObject).getLayoutParams();
-      localLayoutParams.width = (ScreenUtil.SCREEN_WIDTH - a());
+      localLayoutParams.width = (ScreenUtil.SCREEN_WIDTH - getTargetWidth());
       localLayoutParams.height = ScreenUtil.dip2px(170.0F);
       ((RandomCoverView)localObject).setLayoutParams(localLayoutParams);
       ((RandomCoverView)localObject).setDefaultCoverBg();
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    View localView = this.jdField_b_of_type_AndroidViewView;
-    if (localView != null) {
-      localView.setVisibility(0);
-    }
-    this.jdField_h_of_type_Boolean = true;
-  }
-  
   public boolean b()
   {
-    return this.jdField_d_of_type_Boolean;
+    return this.e;
   }
   
   public void c()
@@ -1039,37 +1019,32 @@ public class DrawerFrame
     if (QLog.isColorLevel()) {
       QLog.i("DrawerFrame", 2, "stopMovingOnPause");
     }
-    if (this.r == 0)
+    if (this.K == 0)
     {
-      d1 = this.jdField_b_of_type_Int;
-      d2 = this.p;
+      d1 = this.j;
+      d2 = this.I;
       Double.isNaN(d2);
       if (d1 > d2 / 2.0D)
       {
-        this.jdField_d_of_type_Boolean = false;
+        this.f = false;
         f();
         return;
       }
-      this.jdField_d_of_type_Boolean = true;
+      this.f = true;
       i();
       return;
     }
-    double d1 = this.jdField_b_of_type_Int;
-    double d2 = this.jdField_d_of_type_Int;
+    double d1 = this.j;
+    double d2 = this.l;
     Double.isNaN(d2);
     if (d1 < -(d2 / 3.0D * 2.0D))
     {
-      this.jdField_d_of_type_Boolean = false;
+      this.f = false;
       g();
       return;
     }
-    this.jdField_d_of_type_Boolean = true;
+    this.f = true;
     i();
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_e_of_type_Boolean;
   }
   
   public void d()
@@ -1079,26 +1054,26 @@ public class DrawerFrame
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    Object localObject1 = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.getQBaseActivity().getAppRuntime();
+    Object localObject1 = (QQAppInterface)this.S.getQBaseActivity().getAppRuntime();
     Object localObject2;
     if ((BaseActivity.sTopActivity instanceof BaseActivity))
     {
       localObject2 = (QBaseFragment)BaseActivity.sTopActivity.getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
       if (localObject2 != null)
       {
-        i1 = ((MainFragment)localObject2).a();
+        i1 = ((MainFragment)localObject2).w();
         break label63;
       }
     }
     int i1 = -1;
     label63:
     boolean bool2;
-    if ((!((QQAppInterface)localObject1).isInCallList) && (this.jdField_i_of_type_Boolean))
+    if ((!((QQAppInterface)localObject1).isInCallList) && (this.O))
     {
       localObject1 = MotionEvent.obtain(paramMotionEvent);
       if ((localObject1 != null) && (i1 != -1))
       {
-        localObject2 = (DrawerFrame.StoryTouchEventInterceptor)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i1));
+        localObject2 = (DrawerFrame.StoryTouchEventInterceptor)this.Q.get(Integer.valueOf(i1));
         if (localObject2 != null)
         {
           bool1 = ((DrawerFrame.StoryTouchEventInterceptor)localObject2).interceptDrawer(this, (MotionEvent)localObject1);
@@ -1119,12 +1094,12 @@ public class DrawerFrame
       bool2 = false;
     }
     if (paramMotionEvent.getAction() == 0) {
-      this.jdField_j_of_type_Boolean = false;
+      this.R = false;
     }
-    if ((this.jdField_j_of_type_Boolean) && (!bool2)) {
+    if ((this.R) && (!bool2)) {
       paramMotionEvent.setAction(0);
     }
-    this.jdField_j_of_type_Boolean = bool2;
+    this.R = bool2;
     if (bool2) {
       return true;
     }
@@ -1146,31 +1121,52 @@ public class DrawerFrame
     b(1, true);
   }
   
+  public DrawerFrame.IDrawerCallbacks getDrawerCallbacks()
+  {
+    return this.z;
+  }
+  
+  public int getDrawerContentTranslatexMax()
+  {
+    return this.A;
+  }
+  
+  public View getRightDrawerContent()
+  {
+    return this.v;
+  }
+  
+  public int getTargetWidth()
+  {
+    this.C = getContext().getResources().getDimensionPixelSize(2131299233);
+    return this.C;
+  }
+  
   public void h()
   {
     if (QLog.isDevelopLevel()) {
       QLog.i("DrawerFrame", 4, "resetDrawer()");
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(2);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(4);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(3);
-    this.jdField_e_of_type_Boolean = false;
-    this.r = 0;
-    this.jdField_b_of_type_Int = 0;
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    this.q.removeMessages(1);
+    this.q.removeMessages(2);
+    this.q.removeMessages(4);
+    this.q.removeMessages(3);
+    this.g = false;
+    this.K = 0;
+    this.j = 0;
+    ViewGroup localViewGroup = this.s;
     if (localViewGroup != null) {
       localViewGroup.offsetLeftAndRight(0 - localViewGroup.getLeft());
     }
-    a(this.r, this.jdField_b_of_type_Int);
+    a(this.K, this.j);
     postInvalidate();
-    if (this.jdField_d_of_type_Boolean)
+    if (this.f)
     {
-      this.jdField_d_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
+      this.f = false;
+      this.q.sendEmptyMessage(4);
     }
-    b(this.r, 1);
-    jdField_a_of_type_Int = 0;
+    c(this.K, 1);
+    b = 0;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -1187,26 +1183,26 @@ public class DrawerFrame
             if (i1 != 5) {
               return true;
             }
-            k();
+            o();
             return true;
           }
-          if (g()) {
+          if (q()) {
             return true;
           }
         }
-        else if (f())
+        else if (p())
         {
           return true;
         }
       }
       else
       {
-        l();
+        r();
         return true;
       }
     }
     else {
-      m();
+      s();
     }
     return true;
   }
@@ -1216,26 +1212,36 @@ public class DrawerFrame
     b(true);
   }
   
+  public boolean j()
+  {
+    return this.f;
+  }
+  
+  public boolean k()
+  {
+    return this.g;
+  }
+  
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    if (paramConfiguration.orientation != this.s)
+    if (paramConfiguration.orientation != this.L)
     {
-      this.s = paramConfiguration.orientation;
-      if ((b()) && (this.t == 0)) {
-        this.t = 1;
+      this.L = paramConfiguration.orientation;
+      if ((j()) && (this.M == 0)) {
+        this.M = 1;
       }
-      if (jdField_a_of_type_Boolean) {
-        a("onConfigurationChanged", Boolean.valueOf(b()));
+      if (a) {
+        a("onConfigurationChanged", Boolean.valueOf(j()));
       }
     }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!e()) {
+    if (!n()) {
       return false;
     }
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.c) {
       return false;
     }
     int i1 = ViewConfiguration.get(getContext()).getScaledTouchSlop();
@@ -1251,60 +1257,64 @@ public class DrawerFrame
         }
         return a(i1, i2, i3);
       }
-      return d();
+      return l();
     }
-    return a(i2, i3);
+    return b(i2, i3);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    Object localObject = this.jdField_d_of_type_AndroidViewViewGroup;
+    Object localObject = this.w;
     if ((localObject != null) && (((ViewGroup)localObject).getVisibility() != 8)) {
-      this.jdField_d_of_type_AndroidViewViewGroup.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.w.layout(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    localObject = this.jdField_c_of_type_AndroidViewViewGroup;
+    localObject = this.u;
     if ((localObject != null) && (((ViewGroup)localObject).getVisibility() != 8)) {
-      this.jdField_c_of_type_AndroidViewViewGroup.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.u.layout(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    localObject = this.x;
+    if (localObject != null) {
+      ((View)localObject).layout(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+    localObject = this.v;
     if ((localObject != null) && (((View)localObject).getVisibility() != 8)) {
-      this.jdField_a_of_type_AndroidViewView.layout(paramInt3 - this.jdField_d_of_type_Int, this.m, paramInt3, this.n);
+      this.v.layout(paramInt3 - this.l, this.E, paramInt3, this.F);
     }
-    localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+    localObject = this.s;
     if ((localObject != null) && (((ViewGroup)localObject).getVisibility() != 8))
     {
-      localObject = this.jdField_a_of_type_AndroidViewViewGroup;
-      ((ViewGroup)localObject).layout(((ViewGroup)localObject).getLeft(), this.jdField_a_of_type_AndroidViewViewGroup.getTop(), this.jdField_a_of_type_AndroidViewViewGroup.getLeft() + paramInt3, paramInt4);
+      localObject = this.s;
+      ((ViewGroup)localObject).layout(((ViewGroup)localObject).getLeft(), this.s.getTop(), this.s.getLeft() + paramInt3, paramInt4);
     }
-    localObject = this.jdField_c_of_type_AndroidViewView;
+    localObject = this.H;
     if ((localObject != null) && (((View)localObject).getVisibility() != 8))
     {
-      paramInt1 = this.r;
+      paramInt1 = this.K;
       if (paramInt1 == 0)
       {
-        localObject = this.jdField_c_of_type_AndroidViewView;
-        paramInt1 = this.jdField_c_of_type_Int;
-        ((View)localObject).layout(paramInt1, this.m, this.k + paramInt1, this.n);
+        localObject = this.H;
+        paramInt1 = this.k;
+        ((View)localObject).layout(paramInt1, this.E, this.C + paramInt1, this.F);
       }
       else if (paramInt1 == 1)
       {
-        this.jdField_c_of_type_AndroidViewView.layout(0, this.m, paramInt3 - this.jdField_d_of_type_Int, this.n);
+        this.H.layout(0, this.E, paramInt3 - this.l, this.F);
       }
     }
-    if (h())
+    if (t())
     {
-      if (this.t == 2)
+      if (this.M == 2)
       {
-        this.t = 0;
-        if (!this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(5)) {
-          this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(5);
+        this.M = 0;
+        if (!this.q.hasMessages(5)) {
+          this.q.sendEmptyMessage(5);
         }
-        if (jdField_a_of_type_Boolean) {
+        if (a) {
           a("onLayout", "valid orientation");
         }
       }
     }
-    else if (jdField_a_of_type_Boolean) {
+    else if (a) {
       a("onLayout", "not valid orientation");
     }
   }
@@ -1312,62 +1322,62 @@ public class DrawerFrame
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    this.p = getMeasuredWidth();
-    this.q = getMeasuredHeight();
-    this.jdField_c_of_type_Int = (this.p - this.k);
+    this.I = getMeasuredWidth();
+    this.J = getMeasuredHeight();
+    this.k = (this.I - this.C);
     if (Build.VERSION.SDK_INT >= 11)
     {
-      paramInt1 = this.q;
-      double d1 = paramInt1 * 0.8F;
+      paramInt1 = this.J;
+      double d1 = paramInt1 * 0.9F;
       Double.isNaN(d1);
-      this.l = ((int)(d1 + 0.5D));
-      this.m = ((int)(paramInt1 * 0.2F / 2.0F));
-      this.n = (this.m + this.l);
+      this.D = ((int)(d1 + 0.5D));
+      this.E = ((int)(paramInt1 * 0.1F / 2.0F));
+      this.F = (this.E + this.D);
     }
     else
     {
-      this.l = this.q;
-      this.m = 0;
-      this.n = (this.m + this.l);
+      this.D = this.J;
+      this.E = 0;
+      this.F = (this.E + this.D);
     }
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.v;
     if (localView != null) {
-      localView.getLayoutParams().height = this.l;
+      localView.getLayoutParams().height = this.D;
     }
-    if (h())
+    if (t())
     {
-      if (this.t == 1)
+      if (this.M == 1)
       {
-        this.t = 2;
-        if (jdField_a_of_type_Boolean) {
+        this.M = 2;
+        if (a) {
           a("onMeasure", "valid orientation");
         }
       }
     }
-    else if (jdField_a_of_type_Boolean) {
+    else if (a) {
       a("onMeasure", "not valid orientation");
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!e()) {
+    if (!n()) {
       return false;
     }
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.c) {
       return false;
     }
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
     int i1 = (int)(paramMotionEvent.getX() + 0.5F);
     int i3 = (int)(paramMotionEvent.getY() + 0.5F);
-    int i2 = this.jdField_f_of_type_Int;
-    int i4 = this.jdField_h_of_type_Int;
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    int i2 = this.n;
+    int i4 = this.p;
+    if (this.y == null) {
+      this.y = VelocityTracker.obtain();
     }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    this.jdField_f_of_type_Int = i1;
-    this.jdField_h_of_type_Int = i3;
+    this.y.addMovement(paramMotionEvent);
+    this.n = i1;
+    this.p = i3;
     i3 = paramMotionEvent.getAction() & 0xFF;
     if (i3 != 0)
     {
@@ -1382,39 +1392,39 @@ public class DrawerFrame
       }
     }
     else {
-      j();
+      m();
     }
-    return a(i1 - i2);
+    return b(i1 - i2);
   }
   
   public void setDrawerCallbacks(DrawerFrame.IDrawerCallbacks paramIDrawerCallbacks)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$IDrawerCallbacks = paramIDrawerCallbacks;
+    this.z = paramIDrawerCallbacks;
   }
   
   public void setDrawerEnabled(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void setDrawerShadowFlag(boolean paramBoolean)
   {
-    this.jdField_h_of_type_Boolean = paramBoolean;
+    this.N = paramBoolean;
   }
   
   public void setMiniAppTouchEventInterceptor(int paramInt, DrawerFrame.StoryTouchEventInterceptor paramStoryTouchEventInterceptor)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramStoryTouchEventInterceptor);
+    this.Q.put(Integer.valueOf(paramInt), paramStoryTouchEventInterceptor);
   }
   
   public void setStoryTouchEventInterceptor(DrawerFrame.StoryTouchEventInterceptor paramStoryTouchEventInterceptor)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$StoryTouchEventInterceptor = paramStoryTouchEventInterceptor;
+    this.P = paramStoryTouchEventInterceptor;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.DrawerFrame
  * JD-Core Version:    0.7.0.1
  */

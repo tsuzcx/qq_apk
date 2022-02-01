@@ -8,31 +8,31 @@ import com.tencent.util.MqqWeakReferenceHandler;
 
 public abstract interface BaseTroopView$ITroopContext
 {
-  public abstract Activity a();
-  
-  public abstract View a();
-  
   public abstract QQAppInterface a();
-  
-  public abstract ForwardBaseOption a();
-  
-  public abstract MqqWeakReferenceHandler a();
   
   public abstract void a(String paramString);
   
-  public abstract boolean a();
+  public abstract Activity b();
   
-  public abstract View b();
-  
-  public abstract boolean b();
-  
-  public abstract View c();
+  public abstract ForwardBaseOption c();
   
   public abstract View d();
+  
+  public abstract View e();
+  
+  public abstract View f();
+  
+  public abstract View g();
+  
+  public abstract MqqWeakReferenceHandler h();
+  
+  public abstract boolean i();
+  
+  public abstract boolean j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext
  * JD-Core Version:    0.7.0.1
  */

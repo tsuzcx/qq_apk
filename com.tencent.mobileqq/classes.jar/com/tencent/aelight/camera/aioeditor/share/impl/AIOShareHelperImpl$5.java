@@ -16,32 +16,32 @@ class AIOShareHelperImpl$5
   public void run()
   {
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.a())
+    if (this.a.g())
     {
-      localObject = BitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.a());
+      localObject = BitmapFactory.decodeFile(this.a.b());
       if (localObject == null)
       {
         AEQLog.d("AIOShareHelperImpl", "share image to wx, but decode image fail");
         this.this$0.dismissLoading();
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareIAIOShareHelper$AIOWXShareListener;
+        localObject = this.b;
         if (localObject != null) {
-          ((IAIOShareHelper.AIOWXShareListener)localObject).a(false, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject);
+          ((IAIOShareHelper.AIOWXShareListener)localObject).a(false, this.c, this.d, this.a);
         }
         return;
       }
       ThreadManager.getUIHandler().post(new AIOShareHelperImpl.5.1(this, (Bitmap)localObject));
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.b())
+    if (this.a.h())
     {
-      localObject = BitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.b());
+      localObject = BitmapFactory.decodeFile(this.a.c());
       ThreadManager.getUIHandler().post(new AIOShareHelperImpl.5.2(this, (Bitmap)localObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.share.impl.AIOShareHelperImpl.5
  * JD-Core Version:    0.7.0.1
  */

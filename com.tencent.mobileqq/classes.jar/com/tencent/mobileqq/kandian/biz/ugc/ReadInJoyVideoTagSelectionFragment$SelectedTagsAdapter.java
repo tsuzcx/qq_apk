@@ -23,7 +23,7 @@ class ReadInJoyVideoTagSelectionFragment$SelectedTagsAdapter
   public boolean a(@NonNull TagInfo paramTagInfo)
   {
     int i = getCount();
-    super.a(paramTagInfo);
+    super.b(paramTagInfo);
     return i != getCount();
   }
   
@@ -37,7 +37,7 @@ class ReadInJoyVideoTagSelectionFragment$SelectedTagsAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyVideoTagSelectionFragment.SelectedTagsAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -38,27 +38,27 @@ import mqq.os.MqqHandler;
 
 public class ProfileCardShareHelper
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ProfileCardShareHelper.1(this);
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new ProfileCardShareHelper.2(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ProfileCardShareHelper.OnShareListener jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$OnShareListener;
-  private ShareActionSheetBuilder jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  private String c;
+  private ShareActionSheetBuilder a;
+  private QQProgressDialog b;
+  private QQAppInterface c;
+  private Activity d;
+  private String e;
+  private String f;
+  private String g;
+  private Bitmap h;
+  private boolean i;
+  private int j;
+  private ProfileCardShareHelper.OnShareListener k;
+  private BroadcastReceiver l = new ProfileCardShareHelper.1(this);
+  private AdapterView.OnItemClickListener m = new ProfileCardShareHelper.2(this);
   
   public ProfileCardShareHelper(Activity paramActivity, QQAppInterface paramQQAppInterface, int paramInt, ProfileCardShareHelper.OnShareListener paramOnShareListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$OnShareListener = paramOnShareListener;
+    this.c = paramQQAppInterface;
+    this.d = paramActivity;
+    this.c = paramQQAppInterface;
+    this.j = paramInt;
+    this.k = paramOnShareListener;
     if (paramQQAppInterface == null) {
       a();
     }
@@ -74,65 +74,65 @@ public class ProfileCardShareHelper
   
   private void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Boolean = false;
-    long l = System.currentTimeMillis();
+    this.i = false;
+    long l1 = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("https://ti.qq.com/open_qq/index2.html?url=mqqapi%3a%2f%2fuserprofile%2ffriend_profile_card%3fsrc_type%3dweb%26version%3d1.0%26source%3d2%26uin%3d");
     localStringBuilder.append(paramString1);
     paramString1 = localStringBuilder.toString();
-    WXShareHelper.a().d(String.valueOf(l), paramString2, paramBitmap, "来自QQ的推荐好友", paramString1);
+    WXShareHelper.a().d(String.valueOf(l1), paramString2, paramBitmap, "来自QQ的推荐好友", paramString1);
   }
   
-  private List<ShareActionSheetBuilder.ActionSheetItem>[] a()
+  private List<ShareActionSheetBuilder.ActionSheetItem>[] e()
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = this.jdField_a_of_type_AndroidAppActivity.getString(2131696399);
-    localActionSheetItem.icon = 2130839067;
+    localActionSheetItem.label = this.d.getString(2131894171);
+    localActionSheetItem.icon = 2130839221;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = this.jdField_a_of_type_AndroidAppActivity.getString(2131696420);
-    localActionSheetItem.icon = 2130839071;
+    localActionSheetItem.label = this.d.getString(2131894192);
+    localActionSheetItem.icon = 2130839225;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     return (List[])new ArrayList[] { localArrayList };
   }
   
-  private void e()
+  private void f()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)))
+    if ((!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)))
     {
       Object localObject4 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class);
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.e);
       localObject1 = ((StringBuilder)localObject1).toString();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("AppCmd://OpenContactInfo/?uin=");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.e);
       localObject2 = ((StringBuilder)localObject2).toString();
-      String str1 = HardCodeUtil.a(2131708428);
+      String str1 = HardCodeUtil.a(2131906214);
       Object localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(HardCodeUtil.a(2131708474));
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(HardCodeUtil.a(2131906260));
+      ((StringBuilder)localObject3).append(this.e);
       localObject3 = ((StringBuilder)localObject3).toString();
-      String str2 = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131718140);
+      String str2 = this.d.getResources().getString(2131915618);
       localObject4 = ((AbsShareMsg.Builder)localObject4).c(14);
       Object localObject5 = new StringBuilder();
-      ((StringBuilder)localObject5).append(HardCodeUtil.a(2131708457));
-      ((StringBuilder)localObject5).append(this.b);
+      ((StringBuilder)localObject5).append(HardCodeUtil.a(2131906243));
+      ((StringBuilder)localObject5).append(this.f);
       localObject4 = ((AbsShareMsg.Builder)localObject4).a(((StringBuilder)localObject5).toString()).a(2).a(1).a("plugin", "", (String)localObject2, (String)localObject1, (String)localObject1).d(str2).a();
       localObject5 = new StructMsgItemLayoutDefault();
-      ((AbsStructMsgItem)localObject5).b(1);
-      ((AbsStructMsgItem)localObject5).a(str1);
+      ((AbsStructMsgItem)localObject5).c(1);
+      ((AbsStructMsgItem)localObject5).b(str1);
       StructMsgItemLayout2 localStructMsgItemLayout2 = new StructMsgItemLayout2();
-      localStructMsgItemLayout2.b(1);
+      localStructMsgItemLayout2.c(1);
       localStructMsgItemLayout2.a(new StructMsgItemCover((String)localObject1));
-      localStructMsgItemLayout2.a(new StructMsgItemTitle(this.b));
+      localStructMsgItemLayout2.a(new StructMsgItemTitle(this.f));
       localStructMsgItemLayout2.a(new StructMsgItemSummary((String)localObject3));
       ((AbsShareMsg)localObject4).addItem((AbsStructMsgElement)localObject5);
       ((AbsShareMsg)localObject4).addItem(localStructMsgItemLayout2);
@@ -141,7 +141,7 @@ public class ProfileCardShareHelper
       ((Bundle)localObject5).putInt("structmsg_service_id", 14);
       ((Bundle)localObject5).putByteArray("stuctmsg_bytes", ((AbsShareMsg)localObject4).getBytes());
       ((Bundle)localObject5).putBoolean("k_dataline", false);
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.j == 1)
       {
         localObject4 = new Intent();
         ((Bundle)localObject5).putString("sourceFrom", "share_from_troop_member_card");
@@ -152,7 +152,7 @@ public class ProfileCardShareHelper
       {
         localObject4 = new Intent();
         ((Intent)localObject4).putExtras((Bundle)localObject5);
-        ForwardBaseOption.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject4, 21);
+        ForwardBaseOption.a(this.d, (Intent)localObject4, 21);
       }
       if (QLog.isColorLevel())
       {
@@ -160,7 +160,7 @@ public class ProfileCardShareHelper
         ((StringBuilder)localObject4).append("recommentFriend [title: ");
         ((StringBuilder)localObject4).append(str1);
         ((StringBuilder)localObject4).append(", nickname: ");
-        ((StringBuilder)localObject4).append(this.b);
+        ((StringBuilder)localObject4).append(this.f);
         ((StringBuilder)localObject4).append(", info: ");
         ((StringBuilder)localObject4).append((String)localObject3);
         ((StringBuilder)localObject4).append(", serviceId: ");
@@ -178,55 +178,55 @@ public class ProfileCardShareHelper
       }
       return;
     }
-    QLog.d("ProfileCardShareHelper", 1, String.format("shareToFriend, uin or nickname is empty, uin: %s, nickname: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+    QLog.d("ProfileCardShareHelper", 1, String.format("shareToFriend, uin or nickname is empty, uin: %s, nickname: %s", new Object[] { this.e, this.f }));
   }
   
-  private void f()
+  private void g()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.i) {
       return;
     }
-    int i;
-    if (!WXShareHelper.a().a()) {
-      i = 2131720478;
-    } else if (!WXShareHelper.a().b()) {
-      i = 2131720479;
+    int n;
+    if (!WXShareHelper.a().b()) {
+      n = 2131918154;
+    } else if (!WXShareHelper.a().c()) {
+      n = 2131918155;
     } else {
-      i = -1;
+      n = -1;
     }
-    if (i != -1)
+    if (n != -1)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, i, 1).a();
+      QQToast.makeText(this.d, 1, n, 1).show();
       QLog.d("ProfileCardShareHelper", 1, "shareToWXFriend, but wechat is not install or version is too low");
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    this.i = true;
+    Object localObject = this.h;
     if (localObject != null)
     {
-      a(this.jdField_a_of_type_JavaLangString, this.b, (Bitmap)localObject);
+      a(this.e, this.f, (Bitmap)localObject);
       return;
     }
-    if (FileUtil.b(this.c))
+    if (FileUtil.d(this.g))
     {
-      a(this.c);
+      a(this.g);
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localObject = this.c;
       if (localObject != null)
       {
-        this.c = ((QQAppInterface)localObject).getCustomFaceFilePath(1, this.jdField_a_of_type_JavaLangString, 0);
-        a(this.c);
+        this.g = ((QQAppInterface)localObject).getCustomFaceFilePath(1, this.e, 0);
+        a(this.g);
       }
       else
       {
         localObject = new ArrayList(1);
-        ((ArrayList)localObject).add(this.jdField_a_of_type_JavaLangString);
+        ((ArrayList)localObject).add(this.e);
         Intent localIntent = new Intent("com.tencent.qqhead.getheadreq");
         localIntent.putExtra("faceType", 1);
         localIntent.putStringArrayListExtra("uinList", (ArrayList)localObject);
-        this.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent, "com.tencent.qqhead.permission.getheadresp");
+        this.d.sendBroadcast(localIntent, "com.tencent.qqhead.permission.getheadresp");
       }
     }
     b();
@@ -236,7 +236,7 @@ public class ProfileCardShareHelper
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.qqhead.getheadresp");
-    this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.qqhead.permission.getheadresp", null);
+    this.d.registerReceiver(this.l, localIntentFilter, "com.tencent.qqhead.permission.getheadresp", null);
   }
   
   public void a(String paramString1, String paramString2)
@@ -249,60 +249,60 @@ public class ProfileCardShareHelper
       if (TextUtils.isEmpty(paramString2)) {
         return;
       }
-      if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      if (!paramString1.equals(this.e)) {
+        this.h = null;
       }
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.b = paramString2;
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
+      this.e = paramString1;
+      this.f = paramString2;
+      if (this.a == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(this.jdField_a_of_type_AndroidAppActivity);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a());
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
+        this.a = new ShareActionSheetBuilder(this.d);
+        this.a.setActionSheetItems(e());
+        this.a.setItemClickListener(this.m);
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
+      if (!this.a.isShowing()) {
+        this.a.show();
       }
     }
   }
   
   protected void b()
   {
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.d;
     if ((localActivity != null) && (!localActivity.isFinishing()))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+      if (this.b == null)
       {
-        localActivity = this.jdField_a_of_type_AndroidAppActivity;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(localActivity, localActivity.getResources().getDimensionPixelSize(2131299168));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
+        localActivity = this.d;
+        this.b = new QQProgressDialog(localActivity, localActivity.getResources().getDimensionPixelSize(2131299920));
+        this.b.setCancelable(false);
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131708458));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      this.b.a(HardCodeUtil.a(2131906244));
+      this.b.show();
     }
   }
   
   protected void c()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.b;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.b.dismiss();
+      this.b = null;
     }
   }
   
   public void d()
   {
-    BroadcastReceiver localBroadcastReceiver = this.jdField_a_of_type_AndroidContentBroadcastReceiver;
+    BroadcastReceiver localBroadcastReceiver = this.l;
     if (localBroadcastReceiver != null) {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(localBroadcastReceiver);
+      this.d.unregisterReceiver(localBroadcastReceiver);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardShareHelper
  * JD-Core Version:    0.7.0.1
  */

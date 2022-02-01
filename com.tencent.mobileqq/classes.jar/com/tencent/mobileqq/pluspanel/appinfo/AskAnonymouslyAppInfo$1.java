@@ -48,7 +48,7 @@ class AskAnonymouslyAppInfo$1
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append("");
-      paramTroopInfo = paramTroopInfo.c(((StringBuilder)localObject).toString());
+      paramTroopInfo = paramTroopInfo.g(((StringBuilder)localObject).toString());
     }
     if ((paramTroopInfo != null) && (AskAnonymousUtil.a(paramTroopInfo.dwGroupFlagExt))) {
       paramInt = 1;
@@ -57,7 +57,7 @@ class AskAnonymouslyAppInfo$1
     }
     if (paramInt == 0)
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 2131698650, 1).a();
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 2131896599, 1).show();
       return;
     }
     if (WebViewComUtils.a(1000L))
@@ -73,7 +73,7 @@ class AskAnonymouslyAppInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.AskAnonymouslyAppInfo.1
  * JD-Core Version:    0.7.0.1
  */

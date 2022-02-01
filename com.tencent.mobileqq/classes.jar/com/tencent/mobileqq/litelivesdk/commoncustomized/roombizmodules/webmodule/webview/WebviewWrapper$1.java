@@ -10,13 +10,13 @@ class WebviewWrapper$1
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewWebviewWrapper.a == null) {
+    if (this.b.b == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewWebviewWrapper.a.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewWebviewWrapper.a.setVisibility(0);
+    if (this.b.b.getVisibility() != 0) {
+      this.b.b.setVisibility(0);
     }
-    IWebviewListener localIWebviewListener = this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener;
+    IWebviewListener localIWebviewListener = this.a;
     if (localIWebviewListener != null) {
       localIWebviewListener.onPageFinished();
     }
@@ -24,7 +24,7 @@ class WebviewWrapper$1
   
   public void a(int paramInt, String paramString1, String paramString2)
   {
-    IWebviewListener localIWebviewListener = this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener;
+    IWebviewListener localIWebviewListener = this.a;
     if (localIWebviewListener != null) {
       localIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
     }
@@ -32,7 +32,7 @@ class WebviewWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.webview.WebviewWrapper.1
  * JD-Core Version:    0.7.0.1
  */

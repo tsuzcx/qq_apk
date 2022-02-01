@@ -7,11 +7,11 @@ import android.widget.TextView;
 class TroopFeedViewFactory$VoteViewProvider$ViewHolder
   extends TroopFeedViewFactory.ViewHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView a;
   TextView b;
-  TextView c;
+  LinearLayout c;
+  TextView d;
+  TextView e;
   
   TroopFeedViewFactory$VoteViewProvider$ViewHolder(TroopFeedViewFactory.VoteViewProvider paramVoteViewProvider)
   {
@@ -20,7 +20,7 @@ class TroopFeedViewFactory$VoteViewProvider$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.VoteViewProvider.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

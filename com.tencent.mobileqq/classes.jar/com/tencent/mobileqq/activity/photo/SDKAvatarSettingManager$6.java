@@ -17,24 +17,24 @@ class SDKAvatarSettingManager$6
     {
       if (paramInt == 1)
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
-        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager;
-        SDKAvatarSettingManager.a(paramDialogInterface, SDKAvatarSettingManager.a(paramDialogInterface), true, Long.valueOf(SDKAvatarSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager)).longValue(), true);
+        ReportController.b(this.a, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
+        paramDialogInterface = this.b;
+        SDKAvatarSettingManager.a(paramDialogInterface, SDKAvatarSettingManager.a(paramDialogInterface), true, Long.valueOf(SDKAvatarSettingManager.g(this.b)).longValue(), true);
       }
     }
     else
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6C", "0X8009B6C", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.b();
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager;
-      SDKAvatarSettingManager.a(paramDialogInterface, SDKAvatarSettingManager.a(paramDialogInterface), true, Long.valueOf(SDKAvatarSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager)).longValue(), false);
+      ReportController.b(this.a, "dc00898", "", "", "0X8009B6C", "0X8009B6C", 0, 0, "", "", "", "");
+      this.b.b();
+      paramDialogInterface = this.b;
+      SDKAvatarSettingManager.a(paramDialogInterface, SDKAvatarSettingManager.a(paramDialogInterface), true, Long.valueOf(SDKAvatarSettingManager.g(this.b)).longValue(), false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.a.dismiss();
+    this.b.d.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.6
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,15 @@ class TroopRequestActivity$5
   {
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      this.a.j.setText(paramString);
-      this.a.b.setVisibility(0);
+      this.a.M.setText(paramString);
+      this.a.A.setVisibility(0);
       this.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.5
  * JD-Core Version:    0.7.0.1
  */

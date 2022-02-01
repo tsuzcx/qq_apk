@@ -11,37 +11,37 @@ public class ColorNickColorPanelAdapter$PureColorViewHolder
   extends RecyclerView.ViewHolder
   implements AdapterView.OnItemClickListener
 {
-  ColorNickColorPanelAdapter.OnColorSelectListener jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener;
-  ColorNickColorPanelAdapter.PureColorAdapter jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$PureColorAdapter;
-  ColorNickColorPanelAdapter jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter;
-  HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
+  HorizontalListView a;
+  ColorNickColorPanelAdapter.PureColorAdapter b;
+  ColorNickColorPanelAdapter.OnColorSelectListener c;
+  ColorNickColorPanelAdapter d;
   
   public ColorNickColorPanelAdapter$PureColorViewHolder(View paramView, ColorNickColorPanelAdapter.OnColorSelectListener paramOnColorSelectListener, ColorNickColorPanelAdapter.PureColorAdapter paramPureColorAdapter, ColorNickColorPanelAdapter paramColorNickColorPanelAdapter)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramView.findViewById(2131364836));
-    this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$PureColorAdapter = paramPureColorAdapter;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$PureColorAdapter);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener = paramOnColorSelectListener;
-    this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter = paramColorNickColorPanelAdapter;
+    this.a = ((HorizontalListView)paramView.findViewById(2131430961));
+    this.b = paramPureColorAdapter;
+    this.a.setAdapter(this.b);
+    this.a.setOnItemClickListener(this);
+    this.c = paramOnColorSelectListener;
+    this.d = paramColorNickColorPanelAdapter;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$PureColorAdapter.a(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter.a(-1);
-    if (this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener != null)
+    this.b.a(paramInt);
+    this.d.a(-1);
+    if (this.c != null)
     {
-      ColorNickColorPanelAdapter.ColorItem localColorItem = new ColorNickColorPanelAdapter.ColorItem(2, null, ((Integer)this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$PureColorAdapter.getItem(paramInt)).intValue(), null);
-      this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener.a(localColorItem);
+      ColorNickColorPanelAdapter.ColorItem localColorItem = new ColorNickColorPanelAdapter.ColorItem(2, null, ((Integer)this.b.getItem(paramInt)).intValue(), null);
+      this.c.a(localColorItem);
     }
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickColorPanelAdapter.PureColorViewHolder
  * JD-Core Version:    0.7.0.1
  */

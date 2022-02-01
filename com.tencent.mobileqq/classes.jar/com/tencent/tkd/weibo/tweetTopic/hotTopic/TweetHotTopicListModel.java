@@ -1,8 +1,8 @@
 package com.tencent.tkd.weibo.tweetTopic.hotTopic;
 
 import com.tencent.tkd.topicsdk.bean.TweetTopicItem;
+import com.tencent.tkd.topicsdk.mvp.ListModel;
 import com.tencent.tkd.weibo.data.DataTransferManager;
-import com.tencent.tkd.weibo.framework.mvp.ListModel;
 import java.util.ArrayList;
 import java.util.List;
 import kotlin.Metadata;
@@ -15,22 +15,16 @@ import kotlin.text.Charsets;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/tweetTopic/hotTopic/TweetHotTopicListModel;", "Lcom/tencent/tkd/weibo/framework/mvp/ListModel;", "Lcom/tencent/tkd/topicsdk/bean/TweetTopicItem;", "", "title", "", "(Ljava/lang/String;)V", "getTitle", "()Ljava/lang/String;", "loadDataFromDB", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "list", "loadDataFromNetwork", "cookie", "Lkotlin/Function7;", "", "isSuccess", "isEnd", "", "totalSize", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "errorCode", "errorMsg", "Lcom/tencent/tkd/weibo/framework/mvp/LoadDataFromNetworkCallback;", "saveDataToDB", "tkd-weibo-component_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/tweetTopic/hotTopic/TweetHotTopicListModel;", "Lcom/tencent/tkd/topicsdk/mvp/ListModel;", "Lcom/tencent/tkd/topicsdk/bean/TweetTopicItem;", "", "title", "", "(Ljava/lang/String;)V", "getTitle", "()Ljava/lang/String;", "loadDataFromDB", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "list", "loadDataFromNetwork", "cookie", "Lkotlin/Function7;", "", "isSuccess", "isEnd", "", "totalSize", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "errorCode", "errorMsg", "Lcom/tencent/tkd/topicsdk/mvp/LoadDataFromNetworkCallback;", "saveDataToDB", "tkd-weibo-component_release"}, k=1, mv={1, 1, 16})
 public final class TweetHotTopicListModel
   extends ListModel<TweetTopicItem, byte[]>
 {
   @NotNull
-  private final String a;
+  private final String b;
   
   public TweetHotTopicListModel(@NotNull String paramString)
   {
-    this.a = paramString;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.a;
+    this.b = paramString;
   }
   
   public void a(@NotNull List<TweetTopicItem> paramList)
@@ -54,10 +48,16 @@ public final class TweetHotTopicListModel
     }
     DataTransferManager.a.a(i, (Function5)new TweetHotTopicListModel.loadDataFromNetwork.1(this, paramFunction7));
   }
+  
+  @NotNull
+  public final String c()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.tweetTopic.hotTopic.TweetHotTopicListModel
  * JD-Core Version:    0.7.0.1
  */

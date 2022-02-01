@@ -31,9 +31,9 @@ public class QuestionCardProteusItem
 {
   public static Pair<Boolean, String> a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null))
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null))
     {
-      int i = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size();
+      int i = paramAbsBaseArticleInfo.mSocialFeedInfo.s.b.size();
       boolean bool = false;
       if (i == 0)
       {
@@ -42,7 +42,7 @@ public class QuestionCardProteusItem
       }
       else
       {
-        paramAbsBaseArticleInfo = ((UGCPicInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).c;
+        paramAbsBaseArticleInfo = ((UGCPicInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.s.b.get(0)).e;
       }
       Object localObject = paramAbsBaseArticleInfo;
       if (!TextUtils.isEmpty(paramAbsBaseArticleInfo))
@@ -61,7 +61,7 @@ public class QuestionCardProteusItem
   {
     if ((paramViewBase != null) && (paramIReadInJoyModel != null))
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.k() == null) {
         return;
       }
       paramViewBase = paramViewBase.findViewBaseByName("id_middle_body_wrapper");
@@ -71,7 +71,7 @@ public class QuestionCardProteusItem
           return;
         }
         paramViewBase = paramViewBase.getNativeView();
-        paramViewBase.setOnClickListener(new QuestionCardProteusItem.2(this, paramViewBase.getContext(), paramIReadInJoyModel.a()));
+        paramViewBase.setOnClickListener(new QuestionCardProteusItem.2(this, paramViewBase.getContext(), paramIReadInJoyModel.k()));
       }
     }
   }
@@ -85,15 +85,15 @@ public class QuestionCardProteusItem
   {
     if (paramInt == 75)
     {
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null)
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null)
       {
-        l = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long;
+        l = paramAbsBaseArticleInfo.mSocialFeedInfo.c.a;
         break label56;
       }
     }
-    else if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null)
+    else if (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null)
     {
-      l = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Long;
+      l = paramAbsBaseArticleInfo.mSocialFeedInfo.s.e;
       break label56;
     }
     long l = 0L;
@@ -103,14 +103,14 @@ public class QuestionCardProteusItem
     if (paramInt == 75) {
       localProteusItemDataBuilder.a("ReadInjoy_biu_small_pgc_cell").n(paramAbsBaseArticleInfo).a(paramAbsBaseArticleInfo, "Biu了").G(paramAbsBaseArticleInfo);
     } else {
-      localProteusItemDataBuilder.a("ReadInjoy_biu_small_pgc_cell").a(paramAbsBaseArticleInfo, HardCodeUtil.a(2131711174));
+      localProteusItemDataBuilder.a("ReadInjoy_biu_small_pgc_cell").a(paramAbsBaseArticleInfo, HardCodeUtil.a(2131908832));
     }
     return localProteusItemDataBuilder.a();
   }
   
   protected void a(int paramInt1, Context paramContext, IReadInJoyModel paramIReadInJoyModel, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2)
   {
-    paramNativeMiddleBodyView = (PgcSmallView)paramNativeMiddleBodyView.a();
+    paramNativeMiddleBodyView = (PgcSmallView)paramNativeMiddleBodyView.getContent();
     paramNativeMiddleBodyView.setOnClickListener(new QuestionCardProteusItem.1(this, paramIReadInJoyModel, paramContext, paramInt1));
     paramNativeMiddleBodyView.a(paramIReadInJoyModel);
   }
@@ -122,7 +122,7 @@ public class QuestionCardProteusItem
     if (localReadInJoyMiddleBodyView != null)
     {
       NativeMiddleBodyView localNativeMiddleBodyView = (NativeMiddleBodyView)localReadInJoyMiddleBodyView.getNativeView();
-      if (localNativeMiddleBodyView.a() == null)
+      if (localNativeMiddleBodyView.getContent() == null)
       {
         PgcSmallView localPgcSmallView = new PgcSmallView(paramInt1, paramContainer.getContext());
         RelativeLayout.LayoutParams localLayoutParams;
@@ -146,7 +146,7 @@ public class QuestionCardProteusItem
       }
       Util.b(localViewBase, paramIReadInJoyModel);
     }
-    BindViewHelper.a(localViewBase, paramIReadInJoyModel.a());
+    BindViewHelper.a(localViewBase, paramIReadInJoyModel.k());
     Util.a(localViewBase, paramIReadInJoyModel);
     a(localViewBase, paramIReadInJoyModel);
     BindViewHelper.c(localViewBase, paramIReadInJoyModel);
@@ -159,7 +159,7 @@ public class QuestionCardProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.QuestionCardProteusItem
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class NowShadowImpl$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131707677), 0).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131905491), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.2
  * JD-Core Version:    0.7.0.1
  */

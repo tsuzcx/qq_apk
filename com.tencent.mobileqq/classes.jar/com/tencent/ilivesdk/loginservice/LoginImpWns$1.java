@@ -33,19 +33,19 @@ class LoginImpWns$1
       paramArrayOfByte.openId = this.this$0.accountId;
       paramArrayOfByte.access_token = this.this$0.authKey;
       paramArrayOfByte.businessUid = this.this$0.accountId;
-      Object localObject2 = ((LoginReply)localObject1).jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo;
-      String str = ((AccountBaseInfo)localObject2).jdField_a_of_type_JavaLangString;
+      Object localObject2 = ((LoginReply)localObject1).a;
+      String str = ((AccountBaseInfo)localObject2).a;
       if (!TextUtils.isEmpty(str)) {
         paramArrayOfByte.openId = str;
       }
-      paramArrayOfByte.uid = ((AccountBaseInfo)localObject2).jdField_a_of_type_Long;
-      paramArrayOfByte.tinyid = ((AccountBaseInfo)localObject2).b;
+      paramArrayOfByte.uid = ((AccountBaseInfo)localObject2).b;
+      paramArrayOfByte.tinyid = ((AccountBaseInfo)localObject2).c;
       paramArrayOfByte.loginType = this.this$0.mLoginType;
-      localObject2 = ((LoginReply)localObject1).jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo;
+      localObject2 = ((LoginReply)localObject1).b;
       this.this$0.lastLoginTime = (TimeUtil.getCurrentMillis() / 1000L);
-      paramArrayOfByte.a2 = HexUtil.hexStr2Bytes(((TicketInfo)localObject2).jdField_a_of_type_JavaLangString);
-      this.this$0.a2ExpireTime = ((TicketInfo)localObject2).jdField_a_of_type_Int;
-      paramArrayOfByte.configData = this.this$0.wrapConfigJson(((LoginReply)localObject1).jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue);
+      paramArrayOfByte.a2 = HexUtil.hexStr2Bytes(((TicketInfo)localObject2).a);
+      this.this$0.a2ExpireTime = ((TicketInfo)localObject2).b;
+      paramArrayOfByte.configData = this.this$0.wrapConfigJson(((LoginReply)localObject1).c);
       localObject1 = this.this$0.loginServiceAdapter.getLog();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("lastLoginTime=");
@@ -68,7 +68,7 @@ class LoginImpWns$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.LoginImpWns.1
  * JD-Core Version:    0.7.0.1
  */

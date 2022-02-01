@@ -20,14 +20,14 @@ final class StoryShareEncryptHelper$2
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("decrypt params:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("Q.qqstory.share.trans.helper", 2, ((StringBuilder)localObject).toString());
     }
     long l = System.currentTimeMillis();
     StoryShareTranslateTokenRequest localStoryShareTranslateTokenRequest = new StoryShareTranslateTokenRequest();
-    localStoryShareTranslateTokenRequest.c = 2;
-    localStoryShareTranslateTokenRequest.b = this.jdField_a_of_type_JavaLangString;
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    localStoryShareTranslateTokenRequest.g = 2;
+    localStoryShareTranslateTokenRequest.f = this.a;
+    QQProgressDialog localQQProgressDialog = this.b;
     if (localQQProgressDialog != null)
     {
       localObject = localQQProgressDialog;
@@ -39,11 +39,11 @@ final class StoryShareEncryptHelper$2
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidContentContext;
+      localObject = this.c;
       if ((localObject instanceof Activity))
       {
         localObject = new QQProgressDialog((Context)localObject);
-        ((QQProgressDialog)localObject).a(HardCodeUtil.a(2131714358));
+        ((QQProgressDialog)localObject).a(HardCodeUtil.a(2131911872));
         ((QQProgressDialog)localObject).show();
       }
       else
@@ -56,7 +56,7 @@ final class StoryShareEncryptHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2
  * JD-Core Version:    0.7.0.1
  */

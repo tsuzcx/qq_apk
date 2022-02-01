@@ -136,7 +136,7 @@ public class ListenTogetherIPCModuleMainServer
     if (bool2)
     {
       paramString = new Bundle();
-      paramString.putBoolean("result", AIOMusicSkin.a().a());
+      paramString.putBoolean("result", AIOMusicSkin.a().b());
       paramString = EIPCResult.createResult(0, paramString);
       if (paramInt > 0)
       {
@@ -150,7 +150,7 @@ public class ListenTogetherIPCModuleMainServer
       {
         paramString = new JSONObject(paramBundle.getString("data")).optString("uin");
         paramBundle = new Bundle();
-        if (AIOMusicSkin.a().a()) {
+        if (AIOMusicSkin.a().b()) {
           break label661;
         }
         if (!AIOMusicSkin.a().a(paramString)) {
@@ -271,7 +271,7 @@ public class ListenTogetherIPCModuleMainServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer
  * JD-Core Version:    0.7.0.1
  */

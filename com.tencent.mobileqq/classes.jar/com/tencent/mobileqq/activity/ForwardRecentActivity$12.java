@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.troop.api.observer.TroopMngObserver;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 class ForwardRecentActivity$12
-  extends TroopMngObserver
+  extends FriendListObserver
 {
   ForwardRecentActivity$12(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean1) {
+    if (paramBoolean) {
       ForwardRecentActivity.access$1900(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.12
  * JD-Core Version:    0.7.0.1
  */

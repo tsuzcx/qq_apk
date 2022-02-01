@@ -16,24 +16,24 @@ public final class WXOpenBusinessView$Resp
     fromBundle(paramBundle);
   }
   
-  public final boolean checkArgs()
+  public boolean checkArgs()
   {
     return true;
   }
   
-  public final void fromBundle(Bundle paramBundle)
+  public void fromBundle(Bundle paramBundle)
   {
     super.fromBundle(paramBundle);
     this.extMsg = paramBundle.getString("_openbusinessview_ext_msg");
     this.businessType = paramBundle.getString("_openbusinessview_business_type");
   }
   
-  public final int getType()
+  public int getType()
   {
     return 26;
   }
   
-  public final void toBundle(Bundle paramBundle)
+  public void toBundle(Bundle paramBundle)
   {
     super.toBundle(paramBundle);
     paramBundle.putString("_openbusinessview_ext_msg", this.extMsg);
@@ -42,7 +42,7 @@ public final class WXOpenBusinessView$Resp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.WXOpenBusinessView.Resp
  * JD-Core Version:    0.7.0.1
  */

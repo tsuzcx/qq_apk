@@ -155,7 +155,7 @@ public class QWalletLockScreenActivity
       paramBundle.append(Thread.currentThread().getId());
       QLog.d("Q.qwallet.push", 2, paramBundle.toString());
     }
-    setContentView(R.layout.x);
+    setContentView(R.layout.A);
     getWindow().addFlags(524288);
     this.mScreenReceiver = new QWalletLockScreenActivity.ScreenBroadcastReceiver(this, null);
     registerListener();
@@ -172,13 +172,13 @@ public class QWalletLockScreenActivity
     this.title = getIntent().getStringExtra("title");
     this.content = getIntent().getStringExtra("content");
     this.time = getIntent().getStringExtra("time");
-    this.titleView = ((TextView)findViewById(R.id.co));
-    this.contentView = ((TextView)findViewById(R.id.bp));
-    this.timeView = ((TextView)findViewById(R.id.bq));
+    this.titleView = ((TextView)findViewById(R.id.cC));
+    this.contentView = ((TextView)findViewById(R.id.bz));
+    this.timeView = ((TextView)findViewById(R.id.bA));
     this.titleView.setText(this.title);
     this.contentView.setText(this.content);
     this.timeView.setText(this.time);
-    this.mBackBtn = ((RelativeLayout)findViewById(R.id.i));
+    this.mBackBtn = ((RelativeLayout)findViewById(R.id.n));
     this.mBackBtn.setOnClickListener(this);
     this.contentView.setOnClickListener(this);
     if (QLog.isColorLevel()) {
@@ -247,7 +247,7 @@ public class QWalletLockScreenActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == R.id.bp)
+    if (paramView.getId() == R.id.bz)
     {
       paramView = this.handler.obtainMessage(9);
       Handler localHandler = this.handler;
@@ -260,7 +260,7 @@ public class QWalletLockScreenActivity
       localHandler.sendMessageDelayed(paramView, l);
       return;
     }
-    if (paramView.getId() == R.id.i)
+    if (paramView.getId() == R.id.n)
     {
       paramView = this.handler.obtainMessage(2);
       this.handler.sendMessageDelayed(paramView, 1500L);
@@ -281,7 +281,7 @@ public class QWalletLockScreenActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletLockScreenActivity
  * JD-Core Version:    0.7.0.1
  */

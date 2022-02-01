@@ -10,13 +10,13 @@ class SSOLoginAction$10
   public void run()
   {
     SSOLog.a("SSOLoginAction", new Object[] { "unregisterExpiredCallback" });
-    SSOLoginAction.c(this.this$0);
-    SSOLoginAction.d(this.this$0);
+    SSOLoginAction.e(this.this$0);
+    SSOLoginAction.f(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.strategy.SSOLoginAction.10
  * JD-Core Version:    0.7.0.1
  */

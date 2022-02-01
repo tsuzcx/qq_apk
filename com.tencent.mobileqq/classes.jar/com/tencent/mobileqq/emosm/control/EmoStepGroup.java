@@ -3,15 +3,42 @@ package com.tencent.mobileqq.emosm.control;
 public class EmoStepGroup
   extends EmoAsyncStep
 {
-  protected EmoAsyncStep[] a;
-  protected String[] a;
-  public String b;
-  public int e;
+  protected EmoAsyncStep[] k;
+  public String l;
+  public int m;
+  protected String[] n;
   
-  private String a(String paramString)
+  private String[] a(String paramString)
+  {
+    int j = paramString.length();
+    int i = 0;
+    if (j <= 2) {
+      return new String[0];
+    }
+    String str2 = paramString.substring(1, paramString.length() - 1);
+    int i1 = str2.length();
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    for (paramString = str2; i < i1; paramString = str2.substring(i, i1))
+    {
+      j = i;
+      String str1 = paramString;
+      if (paramString.startsWith(","))
+      {
+        j = i + 1;
+        str1 = str2.substring(j, i1);
+      }
+      paramString = b(str1);
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("-");
+      i = j + paramString.length();
+    }
+    return localStringBuilder.toString().split("-");
+  }
+  
+  private String b(String paramString)
   {
     char[] arrayOfChar = paramString.toCharArray();
-    int n = arrayOfChar.length;
+    int i3 = arrayOfChar.length;
     int j;
     if (arrayOfChar[0] == '{')
     {
@@ -24,26 +51,26 @@ public class EmoStepGroup
       }
       j = 93;
     }
-    int i1 = arrayOfChar[0];
-    int k = 0;
+    int i4 = arrayOfChar[0];
+    int i1 = 0;
     int i;
-    for (int m = 0; k < n; m = i)
+    for (int i2 = 0; i1 < i3; i2 = i)
     {
-      if (arrayOfChar[k] == i1)
+      if (arrayOfChar[i1] == i4)
       {
-        i = m + 1;
+        i = i2 + 1;
       }
       else
       {
-        i = m;
-        if (arrayOfChar[k] == j) {
-          i = m - 1;
+        i = i2;
+        if (arrayOfChar[i1] == j) {
+          i = i2 - 1;
         }
       }
       if (i == 0) {
-        return paramString.substring(0, k + 1);
+        return paramString.substring(0, i1 + 1);
       }
-      k += 1;
+      i1 += 1;
     }
     return "";
     label121:
@@ -53,54 +80,12 @@ public class EmoStepGroup
     return paramString.substring(0, paramString.indexOf(","));
   }
   
-  private String[] a(String paramString)
-  {
-    int j = paramString.length();
-    int i = 0;
-    if (j <= 2) {
-      return new String[0];
-    }
-    String str2 = paramString.substring(1, paramString.length() - 1);
-    int k = str2.length();
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    for (paramString = str2; i < k; paramString = str2.substring(i, k))
-    {
-      j = i;
-      String str1 = paramString;
-      if (paramString.startsWith(","))
-      {
-        j = i + 1;
-        str1 = str2.substring(j, k);
-      }
-      paramString = a(str1);
-      localStringBuilder.append(paramString);
-      localStringBuilder.append("-");
-      i = j + paramString.length();
-    }
-    return localStringBuilder.toString().split("-");
-  }
-  
-  public EmoAsyncStep a()
-  {
-    int i = this.e;
-    if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqEmosmControlEmoAsyncStep[i] = EmoCaptureAsyncStepFactory.a(this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoAutomator, this.jdField_a_of_type_ArrayOfJavaLangString[this.e]);
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqEmosmControlEmoAsyncStep[this.e].jdField_a_of_type_ArrayOfJavaLangObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
-      EmoAsyncStep[] arrayOfEmoAsyncStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqEmosmControlEmoAsyncStep;
-      i = this.e;
-      this.e = (i + 1);
-      return arrayOfEmoAsyncStep[i];
-    }
-    return null;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_Long = 2147483647L;
-    this.jdField_a_of_type_ArrayOfJavaLangString = a(this.b);
-    this.e = 0;
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqEmosmControlEmoAsyncStep = new EmoAsyncStep[this.jdField_a_of_type_ArrayOfJavaLangString.length];
+    this.e = 2147483647L;
+    this.n = a(this.l);
+    this.m = 0;
+    this.k = new EmoAsyncStep[this.n.length];
   }
   
   public void a(int paramInt)
@@ -108,7 +93,7 @@ public class EmoStepGroup
     if (paramInt != 4) {
       super.a(paramInt);
     }
-    EmoAsyncStep[] arrayOfEmoAsyncStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqEmosmControlEmoAsyncStep;
+    EmoAsyncStep[] arrayOfEmoAsyncStep = this.k;
     if (((paramInt == 8) || (paramInt == 4)) && (arrayOfEmoAsyncStep != null))
     {
       int j = arrayOfEmoAsyncStep.length;
@@ -124,10 +109,25 @@ public class EmoStepGroup
       }
     }
   }
+  
+  public EmoAsyncStep c()
+  {
+    int i = this.m;
+    if (i < this.n.length)
+    {
+      this.k[i] = EmoCaptureAsyncStepFactory.a(this.f, this.n[this.m]);
+      this.k[this.m].j = this.j;
+      EmoAsyncStep[] arrayOfEmoAsyncStep = this.k;
+      i = this.m;
+      this.m = (i + 1);
+      return arrayOfEmoAsyncStep[i];
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.control.EmoStepGroup
  * JD-Core Version:    0.7.0.1
  */

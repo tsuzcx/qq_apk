@@ -19,18 +19,13 @@ import cooperation.qwallet.plugin.FakeUrl;
 public class QQSettingMeBaseMenuProcessor
   extends QQSettingMeBaseProcessor
 {
-  public final MutableLiveData<BusinessInfoCheckUpdate.AppInfo> a;
-  
-  public QQSettingMeBaseMenuProcessor()
-  {
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  }
+  public final MutableLiveData<BusinessInfoCheckUpdate.AppInfo> a = new MutableLiveData();
   
   protected void a(View paramView) {}
   
   public void a(QQSettingMe paramQQSettingMe)
   {
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeBaseMenuProcessor.1(this, paramQQSettingMe));
+    this.a.observe(this.e, new QQSettingMeBaseMenuProcessor.1(this, paramQQSettingMe));
   }
   
   public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo, boolean paramBoolean)
@@ -42,7 +37,7 @@ public class QQSettingMeBaseMenuProcessor
       bool = false;
     }
     QQSettingMeRedTouchUtil.a(paramAppInfo);
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.g) {
       return;
     }
     ThreadManagerV2.getUIHandlerV2().post(new QQSettingMeBaseMenuProcessor.2(this, paramBoolean, paramAppInfo, bool));
@@ -52,25 +47,25 @@ public class QQSettingMeBaseMenuProcessor
   
   public void onClick(View paramView)
   {
-    Object localObject = QQSettingMe.a(a());
+    Object localObject = QQSettingMe.a(b());
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, new Object[] { "onClick(), bizId = ", a(), ", bizBean == null" });
+        QLog.d("QQSettingRedesign", 2, new Object[] { "onClick(), bizId = ", b(), ", bizBean == null" });
       }
       return;
     }
-    localObject = ((QQSettingMeBizBean)localObject).a();
-    if (Uri.parse(((QQSettingMeBizBean.Action)localObject).jdField_a_of_type_JavaLangString) == null)
+    localObject = ((QQSettingMeBizBean)localObject).g();
+    if (Uri.parse(((QQSettingMeBizBean.Action)localObject).b) == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, new Object[] { "QQSettingMeBaseMenuProcessor#onClick, ", ((QQSettingMeBizBean.Action)localObject).jdField_a_of_type_JavaLangString, ", uri==null" });
+        QLog.d("QQSettingRedesign", 2, new Object[] { "QQSettingMeBaseMenuProcessor#onClick, ", ((QQSettingMeBizBean.Action)localObject).b, ", uri==null" });
       }
-      ((QQSettingMeBizBean.Action)localObject).jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean$ActionType = QQSettingMeBizBean.ActionType.DEFAULT;
+      ((QQSettingMeBizBean.Action)localObject).a = QQSettingMeBizBean.ActionType.DEFAULT;
     }
     FakeUrl localFakeUrl = new FakeUrl();
-    localFakeUrl.init(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    int i = QQSettingMeBaseMenuProcessor.3.a[localObject.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean$ActionType.ordinal()];
+    localFakeUrl.init(this.d);
+    int i = QQSettingMeBaseMenuProcessor.3.a[localObject.a.ordinal()];
     if (i != 1)
     {
       if (i != 2)
@@ -83,18 +78,18 @@ public class QQSettingMeBaseMenuProcessor
           a(paramView);
           return;
         }
-        localFakeUrl.gotoH5(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, ((QQSettingMeBizBean.Action)localObject).jdField_a_of_type_JavaLangString, false, false);
+        localFakeUrl.gotoH5(this.d, ((QQSettingMeBizBean.Action)localObject).b, false, false);
         return;
       }
-      localFakeUrl.gotoMqq(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, ((QQSettingMeBizBean.Action)localObject).jdField_a_of_type_JavaLangString);
+      localFakeUrl.gotoMqq(this.d, ((QQSettingMeBizBean.Action)localObject).b);
       return;
     }
-    ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, ((QQSettingMeBizBean.Action)localObject).jdField_a_of_type_JavaLangString, 2066, null);
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.d, ((QQSettingMeBizBean.Action)localObject).b, 2066, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeBaseMenuProcessor
  * JD-Core Version:    0.7.0.1
  */

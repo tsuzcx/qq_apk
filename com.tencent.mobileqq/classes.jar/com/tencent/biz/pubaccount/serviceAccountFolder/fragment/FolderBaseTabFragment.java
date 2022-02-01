@@ -11,17 +11,12 @@ import com.tencent.qphone.base.util.QLog;
 public abstract class FolderBaseTabFragment
   extends BaseFragment
 {
-  public static int a = 0;
   public static String a = "FolderBaseTabFragment";
-  public static int b = 1;
-  protected View a;
-  protected boolean a;
-  protected String b = "";
-  
-  public FolderBaseTabFragment()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public static int d = 0;
+  public static int e = 1;
+  protected View b;
+  protected boolean c = false;
+  protected String f = "";
   
   protected abstract void a();
   
@@ -31,19 +26,19 @@ public abstract class FolderBaseTabFragment
   {
     super.onActivityCreated(paramBundle);
     if (getBaseActivity() != null) {
-      this.b = getBaseActivity().app.getAccount();
+      this.f = getBaseActivity().app.getAccount();
     }
-    if ((!this.jdField_a_of_type_Boolean) && (getBaseActivity() != null))
+    if ((!this.c) && (getBaseActivity() != null))
     {
       a();
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
     }
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setUserVisibleHint :");
     localStringBuilder.append(getUserVisibleHint());
@@ -52,7 +47,7 @@ public abstract class FolderBaseTabFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderBaseTabFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ class ChatHistory$12
   
   public void onClick(View paramView)
   {
-    this.a.k();
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800568E", "0X800568E", this.a.k, 0, "", "", "", "");
+    this.a.m();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800568E", "0X800568E", this.a.L, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.12
  * JD-Core Version:    0.7.0.1
  */

@@ -20,24 +20,24 @@ class VideoCombineHelper$CombineTask$1$1$1
       QLog.d(".troop.VideoCombineHelper", 2, ((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("combineWordingTime:");
-      ((StringBuilder)localObject).append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - this.a);
       QLog.d(".troop.trace_video_combine", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new File(paramString1);
     if ((paramBoolean) && (((File)localObject).exists()))
     {
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1$1.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.e = paramString1;
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1$1.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.a.b(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1$1.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask);
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1$1.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.b();
+      this.b.b.a.j = paramString1;
+      this.b.b.b.f.b(this.b.b.b);
+      this.b.b.b.b();
       return;
     }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1$1.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.d = paramString2;
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1$1.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.a.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1$1.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask);
+    this.b.b.b.i = paramString2;
+    this.b.b.b.f.a(this.b.b.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.CombineTask.1.1.1
  * JD-Core Version:    0.7.0.1
  */

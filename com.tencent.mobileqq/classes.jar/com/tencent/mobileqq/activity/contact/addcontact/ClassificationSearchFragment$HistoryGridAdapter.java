@@ -27,54 +27,44 @@ public class ClassificationSearchFragment$HistoryGridAdapter
   extends BaseAdapter
   implements IPublicAccountSearchRecommendManager.GetRecommendListListener, DecodeTaskCompletionListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ClassificationSearchFragment.HistoryGridAdapter.1(this);
-  private RecentFaceDecoder jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = new RecentFaceDecoder(paramClassificationSearchFragment.a, this, false);
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean = false;
+  private View.OnClickListener b = new ClassificationSearchFragment.HistoryGridAdapter.1(this);
+  private boolean c = false;
+  private String d;
+  private ArrayList<IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem> e;
+  private RecentFaceDecoder f = new RecentFaceDecoder(paramClassificationSearchFragment.r, this, false);
   
   public ClassificationSearchFragment$HistoryGridAdapter(ClassificationSearchFragment paramClassificationSearchFragment)
   {
     a(true);
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public ArrayList<IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
   public void a()
   {
-    RecentFaceDecoder localRecentFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder;
+    RecentFaceDecoder localRecentFaceDecoder = this.f;
     if (localRecentFaceDecoder != null) {
-      localRecentFaceDecoder.a();
+      localRecentFaceDecoder.b();
     }
   }
   
   public void a(ArrayList<IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem> paramArrayList, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment) != null) {
+    this.e = paramArrayList;
+    this.d = paramString;
+    this.c = paramBoolean;
+    if (ClassificationSearchFragment.b(this.a) != null) {
       if (getCount() == 0)
       {
-        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131377061)).setText(HardCodeUtil.a(2131702114));
-        ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).setVisibility(8);
+        ((TextView)ClassificationSearchFragment.b(this.a).findViewById(2131445430)).setText(HardCodeUtil.a(2131900122));
+        ClassificationSearchFragment.b(this.a).setVisibility(8);
       }
       else
       {
         if (TextUtils.isEmpty(paramString)) {
-          ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131377061)).setText(HardCodeUtil.a(2131702119));
+          ((TextView)ClassificationSearchFragment.b(this.a).findViewById(2131445430)).setText(HardCodeUtil.a(2131900127));
         } else {
-          ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131377061)).setText(paramString);
+          ((TextView)ClassificationSearchFragment.b(this.a).findViewById(2131445430)).setText(paramString);
         }
-        ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).setVisibility(0);
+        ClassificationSearchFragment.b(this.a).setVisibility(0);
         notifyDataSetChanged();
       }
     }
@@ -114,12 +104,22 @@ public class ClassificationSearchFragment$HistoryGridAdapter
   
   public void a(boolean paramBoolean)
   {
-    ((IPublicAccountSearchRecommendManager)QRoute.api(IPublicAccountSearchRecommendManager.class)).getRecommendList(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment.a, paramBoolean, this);
+    ((IPublicAccountSearchRecommendManager)QRoute.api(IPublicAccountSearchRecommendManager.class)).getRecommendList(this.a.r, paramBoolean, this);
+  }
+  
+  public String b()
+  {
+    return this.d;
+  }
+  
+  public ArrayList<IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem> c()
+  {
+    return this.e;
   }
   
   public int getCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.e;
     if (localArrayList == null) {
       return 0;
     }
@@ -128,9 +128,9 @@ public class ClassificationSearchFragment$HistoryGridAdapter
   
   public Object getItem(int paramInt)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.e;
     if ((localArrayList != null) && (paramInt < localArrayList.size())) {
-      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      return this.e.get(paramInt);
     }
     return null;
   }
@@ -144,20 +144,20 @@ public class ClassificationSearchFragment$HistoryGridAdapter
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment.getBaseActivity()).inflate(2131559626, null);
+      localView = LayoutInflater.from(this.a.getBaseActivity()).inflate(2131625655, null);
     }
     paramView = (IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem)getItem(paramInt);
     if (paramView != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder;
+      Object localObject = this.f;
       if (localObject != null)
       {
-        localObject = ((RecentFaceDecoder)localObject).a(1008, paramView.jdField_a_of_type_JavaLangString);
-        ((URLImageView)localView.findViewById(2131368033)).setImageDrawable((Drawable)localObject);
+        localObject = ((RecentFaceDecoder)localObject).a(1008, paramView.a);
+        ((URLImageView)localView.findViewById(2131434878)).setImageDrawable((Drawable)localObject);
       }
-      ((TextView)localView.findViewById(2131371697)).setText(paramView.b);
-      localView.findViewById(2131365132).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localView.findViewById(2131365132).setTag(paramView);
+      ((TextView)localView.findViewById(2131439121)).setText(paramView.b);
+      localView.findViewById(2131431280).setOnClickListener(this.b);
+      localView.findViewById(2131431280).setTag(paramView);
       localView.setTag(paramView);
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
@@ -166,7 +166,7 @@ public class ClassificationSearchFragment$HistoryGridAdapter
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment) != null)
+    if (ClassificationSearchFragment.b(this.a) != null)
     {
       if (TextUtils.isEmpty(paramString)) {
         return;
@@ -176,14 +176,14 @@ public class ClassificationSearchFragment$HistoryGridAdapter
       }
       if (paramBitmap != null)
       {
-        GridView localGridView = (GridView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131377058);
+        GridView localGridView = (GridView)ClassificationSearchFragment.b(this.a).findViewById(2131445427);
         paramInt2 = localGridView.getChildCount();
         paramInt1 = 0;
         while (paramInt1 < paramInt2)
         {
           View localView = localGridView.getChildAt(paramInt1);
-          if (paramString.equals(((IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem)localView.getTag()).jdField_a_of_type_JavaLangString)) {
-            ((URLImageView)localView.findViewById(2131368033)).setImageBitmap(paramBitmap);
+          if (paramString.equals(((IPublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem)localView.getTag()).a)) {
+            ((URLImageView)localView.findViewById(2131434878)).setImageBitmap(paramBitmap);
           }
           paramInt1 += 1;
         }
@@ -193,7 +193,7 @@ public class ClassificationSearchFragment$HistoryGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment.HistoryGridAdapter
  * JD-Core Version:    0.7.0.1
  */

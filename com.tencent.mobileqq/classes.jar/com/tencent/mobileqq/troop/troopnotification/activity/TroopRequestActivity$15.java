@@ -26,7 +26,7 @@ class TroopRequestActivity$15
     if ((paramBoolean) && ((paramObject instanceof Card)))
     {
       paramObject = (Card)paramObject;
-      if ((paramObject.uin != null) && (paramObject.uin.equals(this.a.b))) {
+      if ((paramObject.uin != null) && (paramObject.uin.equals(this.a.e))) {
         TroopRequestActivity.a(this.a, paramObject);
       }
     }
@@ -34,7 +34,7 @@ class TroopRequestActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.15
  * JD-Core Version:    0.7.0.1
  */

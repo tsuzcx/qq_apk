@@ -26,45 +26,52 @@ import mqq.app.AppRuntime;
 @TargetApi(14)
 public class QQStoryContext
 {
-  protected static BaseApplicationImpl a;
   public static String a;
-  public static boolean a;
-  public static String b;
-  public static boolean b;
-  public static String c;
-  protected QQStoryContext.StoryBroadcastReceiver a;
-  protected QQStoryCmdHandler a;
-  protected EntityManagerFactory a;
-  private String d = "0_1000";
+  public static String b = "testserver";
+  public static String c = "last_env";
+  protected static BaseApplicationImpl e;
+  public static boolean f = true;
+  public static boolean g = true;
+  protected QQStoryCmdHandler d;
+  protected EntityManagerFactory h;
+  protected QQStoryContext.StoryBroadcastReceiver i;
+  private String j = "0_1000";
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
     localStringBuilder.append("/testEnv/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_b_of_type_JavaLangString = "testserver";
-    c = "last_env";
-    jdField_a_of_type_Boolean = true;
-    jdField_b_of_type_Boolean = true;
+    a = localStringBuilder.toString();
   }
   
   public static QQStoryContext a()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface)) {
-      return ((QQStoryManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.QQSTORY_MANAGER)).a;
+      return ((QQStoryManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.QQSTORY_MANAGER)).j;
     }
     if ((localObject instanceof ToolAppRuntime))
     {
       localObject = (PeakAppInterface)((ToolAppRuntime)localObject).onGetSubRuntime("peak");
       ((PeakAppInterface)localObject).a();
-      return ((PeakAppInterface)localObject).a();
+      return ((PeakAppInterface)localObject).d();
     }
-    return ((PeakAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak")).a();
+    return ((PeakAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak")).d();
   }
   
-  public static AppInterface a()
+  public static boolean e()
+  {
+    a();
+    return ThemeUtil.isNowThemeIsNight(k(), false, null);
+  }
+  
+  public static QQAppInterface j()
+  {
+    return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+  }
+  
+  public static AppInterface k()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
@@ -73,74 +80,34 @@ public class QQStoryContext
     return (PeakAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak");
   }
   
-  public static QQAppInterface a()
+  public void a(String paramString)
   {
-    return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-  }
-  
-  public static boolean a()
-  {
-    a();
-    return ThemeUtil.isNowThemeIsNight(a(), false, null);
-  }
-  
-  public long a()
-  {
-    return a().getLongAccountUin();
-  }
-  
-  public QQStoryCmdHandler a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler;
-  }
-  
-  public BaseApplicationImpl a()
-  {
-    return jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
-  }
-  
-  public EntityManagerFactory a()
-  {
-    Object localObject1 = a();
-    if (localObject1 != null) {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null)
-        {
-          localObject1 = new QQStoryEntityManagerFactory((String)localObject1);
-          ((QQStoryEntityManagerFactory)localObject1).verifyAuthentication();
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = ((EntityManagerFactory)localObject1);
-        }
-        return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
-      }
-      finally {}
+    SLog.d("Q.qqstory.user.QQStoryRuntime", "update current unionId %s", new Object[] { paramString });
+    if ((!this.j.equals(paramString)) && (!"0_1000".equals(paramString)) && (!TextUtils.isEmpty(paramString)))
+    {
+      this.j = paramString;
+      ((StoryConfigManager)SuperManager.a(10)).d("qqstory_my_union_id", this.j);
     }
-    throw new IllegalStateException("Can not create a entity factory, the account is null.");
   }
   
-  public String a()
-  {
-    return a().getAccount();
-  }
-  
-  public void a()
+  public void b()
   {
     for (;;)
     {
       try
       {
-        if (jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl == null)
+        if (e == null)
         {
           bool = true;
-          jdField_a_of_type_Boolean = bool;
-          jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
-          if (jdField_a_of_type_Boolean)
+          f = bool;
+          e = BaseApplicationImpl.getApplication();
+          if (f)
           {
-            Bosses.initWithBoss(jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, new StoryBoss(jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl));
+            Bosses.initWithBoss(e, new StoryBoss(e));
             SLog.a(QQStoryLoggingDelegate.a());
           }
           SLog.b("Q.qqstory.user.QQStoryRuntime", "on create");
-          this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler = new QQStoryCmdHandler();
+          this.d = new QQStoryCmdHandler();
           return;
         }
       }
@@ -149,58 +116,87 @@ public class QQStoryContext
     }
   }
   
-  public void a(String paramString)
+  public boolean b(String paramString)
   {
-    SLog.d("Q.qqstory.user.QQStoryRuntime", "update current unionId %s", new Object[] { paramString });
-    if ((!this.d.equals(paramString)) && (!"0_1000".equals(paramString)) && (!TextUtils.isEmpty(paramString)))
-    {
-      this.d = paramString;
-      ((StoryConfigManager)SuperManager.a(10)).b("qqstory_my_union_id", this.d);
-    }
+    return i().equals(paramString);
   }
   
-  public boolean a(String paramString)
+  public BaseApplicationImpl c()
   {
-    return b().equals(paramString);
+    return e;
   }
   
-  public String b()
+  public boolean c(String paramString)
   {
-    if (this.d.equals("0_1000"))
-    {
-      this.d = ((String)((StoryConfigManager)SuperManager.a(10)).b("qqstory_my_union_id", "0_1000"));
-      SLog.d("Q.qqstory.user.QQStoryRuntime", "get current unionId from sp %s", new Object[] { this.d });
+    return g().equals(paramString);
+  }
+  
+  public EntityManagerFactory d()
+  {
+    Object localObject1 = g();
+    if (localObject1 != null) {
+      try
+      {
+        if (this.h == null)
+        {
+          localObject1 = new QQStoryEntityManagerFactory((String)localObject1);
+          ((QQStoryEntityManagerFactory)localObject1).verifyAuthentication();
+          this.h = ((EntityManagerFactory)localObject1);
+        }
+        return this.h;
+      }
+      finally {}
     }
+    throw new IllegalStateException("Can not create a entity factory, the account is null.");
+  }
+  
+  public QQStoryCmdHandler f()
+  {
     return this.d;
   }
   
-  public void b()
+  public String g()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext$StoryBroadcastReceiver == null)
+    return k().getAccount();
+  }
+  
+  public long h()
+  {
+    return k().getLongAccountUin();
+  }
+  
+  public String i()
+  {
+    if (this.j.equals("0_1000"))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext$StoryBroadcastReceiver = new QQStoryContext.StoryBroadcastReceiver();
-      this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext$StoryBroadcastReceiver.a(jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl);
+      this.j = ((String)((StoryConfigManager)SuperManager.a(10)).c("qqstory_my_union_id", "0_1000"));
+      SLog.d("Q.qqstory.user.QQStoryRuntime", "get current unionId from sp %s", new Object[] { this.j });
+    }
+    return this.j;
+  }
+  
+  public void l()
+  {
+    if (this.i == null)
+    {
+      this.i = new QQStoryContext.StoryBroadcastReceiver();
+      this.i.a(e);
     }
   }
   
-  public boolean b(String paramString)
+  public void m()
   {
-    return a().equals(paramString);
-  }
-  
-  public void c()
-  {
-    QQStoryContext.StoryBroadcastReceiver localStoryBroadcastReceiver = this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext$StoryBroadcastReceiver;
+    QQStoryContext.StoryBroadcastReceiver localStoryBroadcastReceiver = this.i;
     if (localStoryBroadcastReceiver != null)
     {
-      localStoryBroadcastReceiver.b(jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl);
-      this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext$StoryBroadcastReceiver = null;
+      localStoryBroadcastReceiver.b(e);
+      this.i = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.app.QQStoryContext
  * JD-Core Version:    0.7.0.1
  */

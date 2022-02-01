@@ -10,12 +10,12 @@ class GdtVideoCommonView$4
   
   public void run()
   {
-    GdtVideoCommonView.a(this.this$0).setText(GdtUIUtils.a(GdtVideoCommonView.a(this.this$0)));
+    GdtVideoCommonView.d(this.this$0).setText(GdtUIUtils.a(GdtVideoCommonView.c(this.this$0)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.4
  * JD-Core Version:    0.7.0.1
  */

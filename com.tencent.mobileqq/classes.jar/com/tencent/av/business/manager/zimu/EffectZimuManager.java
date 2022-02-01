@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.av.AVLog;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.handler.AudioTransClientInfoHandler;
 import com.tencent.av.business.handler.AudioTransClientInterfaceHandler;
@@ -14,6 +15,7 @@ import com.tencent.av.business.manager.EffectMutexManager;
 import com.tencent.av.business.manager.EffectMutexManager.IMutexItem;
 import com.tencent.av.recog.AVVoiceRecog;
 import com.tencent.av.ui.ControlUIObserver.ZimuRequest;
+import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
 import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -25,14 +27,13 @@ public class EffectZimuManager
   extends EffectConfigBase<ZimuItem>
   implements EffectMutexManager.IMutexItem
 {
-  protected boolean a;
-  boolean b = false;
-  boolean c = false;
+  protected boolean k = false;
+  boolean l = false;
+  boolean m = false;
   
   public EffectZimuManager(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public static SharedPreferences a(Context paramContext)
@@ -47,17 +48,34 @@ public class EffectZimuManager
     paramContext.commit();
   }
   
+  public static void a(VideoController paramVideoController)
+  {
+    if (paramVideoController != null)
+    {
+      String str;
+      if (ZimuToolbar.isSupport()) {
+        str = "SUPPORT_TRUE";
+      } else {
+        str = "SUPPORT_FALSE";
+      }
+      paramVideoController.e(7, str);
+    }
+  }
+  
   public static boolean a(VideoAppInterface paramVideoAppInterface)
   {
     boolean bool = false;
-    ((EffectZimuManager)paramVideoAppInterface.a(0)).c();
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    ((EffectZimuManager)paramVideoAppInterface.c(0)).g();
     if (a(paramVideoAppInterface.getApp()).getInt("qav_zimu_is_show", 0) == 1) {
       bool = true;
     }
     return bool;
   }
   
-  private boolean b(String paramString)
+  private boolean d(String paramString)
   {
     boolean bool2 = TextUtils.isEmpty(paramString);
     boolean bool1 = true;
@@ -75,10 +93,10 @@ public class EffectZimuManager
         AVLog.printColorLog("EffectZimuManager", localStringBuilder.toString());
         if ((!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase("off")))
         {
-          a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), 0);
+          a(this.c.getApplication(), 0);
           return true;
         }
-        a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), 1);
+        a(this.c.getApplication(), 1);
         return true;
       }
       catch (JSONException paramString)
@@ -91,46 +109,12 @@ public class EffectZimuManager
     return bool1;
   }
   
-  public int a()
-  {
-    return 216;
-  }
-  
-  protected Class<?> a()
-  {
-    return ZimuItem.class;
-  }
-  
-  protected List<ZimuItem> a(int paramInt, String paramString)
-  {
-    List localList = super.a(paramInt, paramString);
-    b(paramString);
-    return localList;
-  }
-  
-  public List<ZimuItem> a(String paramString)
-  {
-    paramString = super.a(paramString);
-    ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      localArrayList.addAll(paramString);
-    }
-    return localArrayList;
-  }
-  
   protected void a()
   {
     super.a();
-    EffectMutexManager localEffectMutexManager = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+    EffectMutexManager localEffectMutexManager = (EffectMutexManager)this.c.c(12);
     if (localEffectMutexManager != null) {
       localEffectMutexManager.a(3001, this);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if ((paramInt == 3002) || (paramInt == 3003)) {
-      a(AudioHelper.b(), "");
     }
   }
   
@@ -146,37 +130,37 @@ public class EffectZimuManager
     paramString1.append(paramLong);
     paramString1.append("]");
     QLog.w("EffectZimuManager", 1, paramString1.toString());
-    paramString1 = (AudioTransClientInfoHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.b);
+    paramString1 = (AudioTransClientInfoHandler)this.c.getBusinessHandler(BusinessHandlerFactory.b);
     if (paramString1 != null) {
-      paramString1.a();
+      paramString1.b();
     }
-    new ControlUIObserver.ZimuRequest(paramLong, "onSessionStatusChanged", 2, null).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    new ControlUIObserver.ZimuRequest(paramLong, "onSessionStatusChanged", 2, null).a(this.c);
   }
   
   public void a(String paramString, long paramLong)
   {
-    if (this.b)
+    if (this.l)
     {
-      AudioTransClientInterfaceHandler localAudioTransClientInterfaceHandler = (AudioTransClientInterfaceHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.a);
+      AudioTransClientInterfaceHandler localAudioTransClientInterfaceHandler = (AudioTransClientInterfaceHandler)this.c.getBusinessHandler(BusinessHandlerFactory.a);
       localAudioTransClientInterfaceHandler.a(paramString, paramLong, "TransInfo.ExitSession", null);
       localAudioTransClientInterfaceHandler.onDestroy();
-      ((AudioTransClientInfoHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.b)).a();
+      ((AudioTransClientInfoHandler)this.c.getBusinessHandler(BusinessHandlerFactory.b)).b();
     }
-    this.b = false;
-    AVVoiceRecog.a().b(4);
+    this.l = false;
+    AVVoiceRecog.b().c(4);
   }
   
   public void a(String paramString1, boolean paramBoolean, long paramLong, String paramString2)
   {
-    AVVoiceRecog.a().a(4);
-    if (!this.b)
+    AVVoiceRecog.b().b(4);
+    if (!this.l)
     {
-      AudioTransClientInfoHandler localAudioTransClientInfoHandler = (AudioTransClientInfoHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.b);
+      AudioTransClientInfoHandler localAudioTransClientInfoHandler = (AudioTransClientInfoHandler)this.c.getBusinessHandler(BusinessHandlerFactory.b);
       localAudioTransClientInfoHandler.a(paramString1, "TransInfoCreate.CreateSession", paramLong, paramString2);
       localAudioTransClientInfoHandler.onDestroy();
-      this.c = paramBoolean;
+      this.m = paramBoolean;
     }
-    this.b = true;
+    this.l = true;
   }
   
   public boolean a(long paramLong, ZimuItem paramZimuItem)
@@ -207,9 +191,9 @@ public class EffectZimuManager
       localStringBuilder.append(paramLong);
       b(localStringBuilder.toString(), false);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    Object localObject = this.c;
     int i;
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase == null) {
+    if (this.d == null) {
       i = 4;
     } else {
       i = 5;
@@ -217,7 +201,7 @@ public class EffectZimuManager
     ((VideoAppInterface)localObject).a(new Object[] { Integer.valueOf(165), Integer.valueOf(i) });
     if (paramZimuItem != null)
     {
-      localObject = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+      localObject = (EffectMutexManager)this.c.c(12);
       if (localObject != null) {
         ((EffectMutexManager)localObject).a(3001, paramZimuItem.getId());
       }
@@ -227,15 +211,27 @@ public class EffectZimuManager
   
   protected boolean a(String paramString)
   {
-    return b(a());
+    return d(d());
+  }
+  
+  public int b()
+  {
+    return 216;
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    if ((paramInt == 3002) || (paramInt == 3003) || (paramInt == 3006)) {
+      a(AudioHelper.c(), "");
+    }
   }
   
   public void b(String paramString, long paramLong)
   {
-    AVVoiceRecog.a().a(4);
-    if (this.b)
+    AVVoiceRecog.b().b(4);
+    if (this.l)
     {
-      AudioTransClientInterfaceHandler localAudioTransClientInterfaceHandler = (AudioTransClientInterfaceHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.a);
+      AudioTransClientInterfaceHandler localAudioTransClientInterfaceHandler = (AudioTransClientInterfaceHandler)this.c.getBusinessHandler(BusinessHandlerFactory.a);
       localAudioTransClientInterfaceHandler.a(paramString, paramLong, "TransInfo.ChangeSession", null);
       localAudioTransClientInterfaceHandler.onDestroy();
     }
@@ -243,34 +239,56 @@ public class EffectZimuManager
   
   public void b(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.k != paramBoolean)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setRecievedSentence, from[");
       localStringBuilder.append(paramString);
       localStringBuilder.append("], mIsRecieveSentence[");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.k);
       localStringBuilder.append("->");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append("]");
       QLog.w("EffectZimuManager", 1, localStringBuilder.toString());
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.k = paramBoolean;
     }
   }
   
-  public boolean b()
+  protected List<ZimuItem> c(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_Boolean;
+    List localList = super.c(paramInt, paramString);
+    d(paramString);
+    return localList;
   }
   
-  public boolean c()
+  public List<ZimuItem> c(String paramString)
   {
-    return this.c;
+    paramString = super.c(paramString);
+    ArrayList localArrayList = new ArrayList();
+    if (this.e != null) {
+      localArrayList.addAll(paramString);
+    }
+    return localArrayList;
   }
   
-  public boolean d()
+  protected Class<?> i()
   {
-    return this.b;
+    return ZimuItem.class;
+  }
+  
+  public boolean j()
+  {
+    return this.k;
+  }
+  
+  public boolean k()
+  {
+    return this.m;
+  }
+  
+  public boolean l()
+  {
+    return this.l;
   }
 }
 

@@ -10,13 +10,13 @@ class CustomMenuBar$5
   public void run()
   {
     CustomMenuBar localCustomMenuBar = this.this$0;
-    localCustomMenuBar.b = false;
-    localCustomMenuBar.a.setVisibility(4);
+    localCustomMenuBar.g = false;
+    localCustomMenuBar.h.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.CustomMenuBar.5
  * JD-Core Version:    0.7.0.1
  */

@@ -343,8 +343,15 @@ public abstract interface AppConstants$Preferences
   public static final String KEY_COUNT_PRELOAD = "key_count_preload";
   public static final String KEY_DEEP_CLEAN_SHOW_TIME = "key_deep_clean_show_time";
   public static final String KEY_DEEP_CLEAN_USER_CLICK = "key_deep_clean_user_click";
+  public static final String KEY_ENABLE_DOUBLE_AI_DENOIDE = "enable_double_ai_denoise";
+  public static final String KEY_ENABLE_GROUP_AI_DENOIDE = "enable_group_ai_denoise";
   public static final String KEY_EXT_INFO_REQ_INTERVAL_S = "key_ext_info_request_interval_second";
   public static final String KEY_FLOAT_VIDEO_HAS_SHOW_TIPS = "key_float_video_has_show_tips";
+  public static final String KEY_GAME_MSG_BOX_LAST_FETCH_TIME = "key_game_msg_box_last_fetch_time";
+  public static final String KEY_GAME_MSG_BOX_SETTING_RED_DOT = "key_game_msg_box_setting_red_dot";
+  public static final String KEY_GAME_MSG_BOX_TAB_RED_POINT_CONFIG = "key_game_msg_box_tab_red_point_config";
+  public static final String KEY_GAME_MSG_BOX_TIPS = "key_game_msg_box_tips";
+  public static final String KEY_GAME_MSG_BOX_UPGRADING_TOAST = "key_game_msg_box_toast";
   public static final String KEY_GET_SPECIAL_SOUND_CONFIG_TIME = "key_get_special_sound_config_time";
   public static final String KEY_GET_SPECIAL_SOUND_QUOTA_TIME = "key_get_special_sound_quota_time";
   public static final String KEY_LAST_OPEN_WEATHER_PAGE = "key_last_open_weather_page";
@@ -363,6 +370,7 @@ public abstract interface AppConstants$Preferences
   public static final String KEY_STUDY_MODE_HAS_CHANGE = "study_mode_has_change";
   public static final String KEY_STUDY_MODE_LAST_LOGIN_REPORT_TIME = "study_mode_last_report_time";
   public static final String KEY_STUDY_MODE_UPGRADE_DIALOG_HAS_SHOW = "study_mode_upgrade_dialog_has_show";
+  public static final String KEY_SUPPORT_AI_DENOIDE = "support_ai_denoise";
   public static final String KEY_TEAM_WORK_DOC_ADD_COPY_SUCCESS_FIRST_TIME = "key_tam_work_doc_add_copy_success_first_time";
   public static final String KEY_TEAM_WORK_FIRST_GUIDE_ADD = "key_team_work_first_guide_add";
   public static final String KEY_TEENS_MODE_LAST_LOGIN_CHECK_ALPHABETIC_TIME = "teens_mode_last_report_alphabetic_time";
@@ -547,6 +555,7 @@ public abstract interface AppConstants$Preferences
   public static final String PUSH_OPEN_NOTIFY_OPEN = "push_open_notify_open";
   public static final String PUSH_OPEN_NOTIFY_VERSION = "push_open_notify_version";
   public static final String PUSH_OPEN_NOTIFY_XML = "push_open_notify_xml";
+  public static final String QAV_AI_DENOISE = "qav_ai_denoise";
   public static final String QAV_ANYCHAT_TIME_LIMIT = "qav_anychat_time_limit";
   public static final String QAV_ANYCHAT_TIME_LIMIT_CONFIG_VERSION_CODE = "qav_anychat_time_limit_config_version";
   public static final String QAV_ANYCHAT_TIME_VALUE = "qav_anychat_time_value";
@@ -1072,7 +1081,7 @@ public abstract interface AppConstants$Preferences
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.AppConstants.Preferences
  * JD-Core Version:    0.7.0.1
  */

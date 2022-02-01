@@ -10,12 +10,12 @@ class BottomAppBar$5$1
   
   public void b(FloatingActionButton paramFloatingActionButton)
   {
-    BottomAppBar.e(this.a.a);
+    BottomAppBar.o(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar.5.1
  * JD-Core Version:    0.7.0.1
  */

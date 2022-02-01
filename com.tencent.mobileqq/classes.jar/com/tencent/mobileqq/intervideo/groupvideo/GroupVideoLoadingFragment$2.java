@@ -37,47 +37,47 @@ class GroupVideoLoadingFragment$2
                       return;
                     }
                     GroupVideoLoadingFragment.b(this.a, 100);
-                    GroupVideoLoadingFragment.a(this.a).a(100, 0L);
-                    GroupVideoLoadingFragment.a(this.a).postDelayed(new GroupVideoLoadingFragment.2.1(this), 1500L);
+                    GroupVideoLoadingFragment.c(this.a).a(100, 0L);
+                    GroupVideoLoadingFragment.e(this.a).postDelayed(new GroupVideoLoadingFragment.2.1(this), 1500L);
                   }
                 }
                 else
                 {
                   GroupVideoLoadingFragment.b(this.a, 90);
-                  GroupVideoLoadingFragment.a(this.a).a(90, 0L);
+                  GroupVideoLoadingFragment.c(this.a).a(90, 0L);
                   return;
                 }
               }
-              GroupVideoLoadingFragment.a(this.a).b();
-              GroupVideoLoadingFragment.a(this.a).a(HardCodeUtil.a(2131705492), "");
-              GroupVideoLoadingFragment.a(this.a).a(HardCodeUtil.a(2131705493), new GroupVideoLoadingFragment.VideoButtonListener(this.a, null));
+              GroupVideoLoadingFragment.c(this.a).b();
+              GroupVideoLoadingFragment.c(this.a).a(HardCodeUtil.a(2131903380), "");
+              GroupVideoLoadingFragment.c(this.a).a(HardCodeUtil.a(2131903381), new GroupVideoLoadingFragment.VideoButtonListener(this.a, null));
               return;
             }
-            GroupVideoLoadingFragment.a(this.a).a(HardCodeUtil.a(2131705500), HardCodeUtil.a(2131705496));
-            GroupVideoLoadingFragment.a(this.a).a(HardCodeUtil.a(2131705501), new GroupVideoLoadingFragment.VideoButtonListener(this.a, null));
+            GroupVideoLoadingFragment.c(this.a).a(HardCodeUtil.a(2131903388), HardCodeUtil.a(2131903384));
+            GroupVideoLoadingFragment.c(this.a).a(HardCodeUtil.a(2131903389), new GroupVideoLoadingFragment.VideoButtonListener(this.a, null));
             return;
           }
-          GroupVideoLoadingFragment.a(this.a).a();
-          GroupVideoLoadingFragment.a(this.a).a(HardCodeUtil.a(2131705503), HardCodeUtil.a(2131705497));
+          GroupVideoLoadingFragment.c(this.a).a();
+          GroupVideoLoadingFragment.c(this.a).a(HardCodeUtil.a(2131903391), HardCodeUtil.a(2131903385));
           paramBundle = Message.obtain();
           paramBundle.arg1 = 10;
-          GroupVideoLoadingFragment.a(this.a).sendMessage(paramBundle);
+          GroupVideoLoadingFragment.e(this.a).sendMessage(paramBundle);
           return;
         }
-        GroupVideoLoadingFragment.a(this.a).a(HardCodeUtil.a(2131705504), HardCodeUtil.a(2131705505));
+        GroupVideoLoadingFragment.c(this.a).a(HardCodeUtil.a(2131903392), HardCodeUtil.a(2131903393));
         paramInt = paramBundle.getInt("key_progress", 0);
         l = paramBundle.getLong("key_totalSize", 0L);
-        GroupVideoLoadingFragment.a(this.a).a(paramInt, l);
-        GroupVideoLoadingFragment.a(this.a).b();
+        GroupVideoLoadingFragment.c(this.a).a(paramInt, l);
+        GroupVideoLoadingFragment.c(this.a).b();
         return;
       }
-      if (GroupVideoLoadingFragment.a(this.a))
+      if (GroupVideoLoadingFragment.d(this.a))
       {
         l = paramBundle.getLong("key_totalSize", 0L);
-        GroupVideoLoadingFragment.a(this.a).a(HardCodeUtil.a(2131705491), HardCodeUtil.a(2131705506));
-        paramBundle = GroupVideoLoadingFragment.a(this.a);
+        GroupVideoLoadingFragment.c(this.a).a(HardCodeUtil.a(2131903379), HardCodeUtil.a(2131903394));
+        paramBundle = GroupVideoLoadingFragment.c(this.a);
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131705502));
+        localStringBuilder.append(HardCodeUtil.a(2131903390));
         localStringBuilder.append(GVideoLoadingUI.a(l));
         localStringBuilder.append(")");
         paramBundle.a(localStringBuilder.toString(), new GroupVideoLoadingFragment.VideoButtonListener(this.a, null));
@@ -87,7 +87,7 @@ class GroupVideoLoadingFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment.2
  * JD-Core Version:    0.7.0.1
  */

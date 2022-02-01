@@ -10,22 +10,22 @@ class WSPlayerManager$2$1
   
   public void run()
   {
-    WSPlayerParam localWSPlayerParam = (WSPlayerParam)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+    WSPlayerParam localWSPlayerParam = (WSPlayerParam)this.a.a.get();
     if (localWSPlayerParam == null) {
       return;
     }
     WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][createVideoPlayerAndPlay] innerPlayVideo miss cache.");
-    if ((this.a.jdField_a_of_type_Boolean) && (localWSPlayerParam.a != null))
+    if ((this.a.b) && (localWSPlayerParam.b != null))
     {
       WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][createVideoPlayerAndPlay] set videoView null !!!");
-      localWSPlayerParam.a = null;
+      localWSPlayerParam.b = null;
     }
-    WSPlayerManager.b(this.a.this$0, localWSPlayerParam, this.a.b);
+    WSPlayerManager.b(this.a.this$0, localWSPlayerParam, this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.2.1
  * JD-Core Version:    0.7.0.1
  */

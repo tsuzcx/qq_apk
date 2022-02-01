@@ -22,40 +22,40 @@ class QQCustomDialogWtihInputAndChoose$6$1
   
   public void run()
   {
-    int k = this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout);
-    int m = this.a.this$0.a(this.a.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    int n = this.a.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    int k = this.a.this$0.a(this.a.this$0.e);
+    int m = this.a.this$0.a(this.a.this$0.j);
+    int n = this.a.this$0.j.getHeight();
     Object localObject1 = this.a.this$0.getWindow().getAttributes();
     int i;
     if (k - n > 0) {
-      i = this.a.this$0.jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout.getHeight() / 2;
+      i = this.a.this$0.e.getHeight() / 2;
     } else {
       i = m + n - k;
     }
     ((WindowManager.LayoutParams)localObject1).y = (-i);
     this.a.this$0.getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
-    boolean bool = this.a.this$0.c;
+    boolean bool = this.a.this$0.n;
     int j = 0;
     Object localObject2;
-    if ((bool) && (this.a.this$0.jdField_a_of_type_AndroidWidgetEditText.getText() != null) && (TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_AndroidWidgetEditText.getText().toString())))
+    if ((bool) && (this.a.this$0.c.getText() != null) && (TextUtils.isEmpty(this.a.this$0.c.getText().toString())))
     {
-      localObject1 = (LinearLayout)this.a.this$0.jdField_a_of_type_ComTencentMobileqqQwalletWidgetMyLinearLayout.findViewById(2131370113);
+      localObject1 = (LinearLayout)this.a.this$0.e.findViewById(2131437275);
       if ((localObject1 != null) && (((LinearLayout)localObject1).getChildCount() > 0))
       {
         localObject1 = ((LinearLayout)localObject1).getChildAt(0);
-        localObject2 = (TextView)((View)localObject1).findViewById(2131370112);
+        localObject2 = (TextView)((View)localObject1).findViewById(2131437274);
         if (((TextView)localObject2).getText() != null) {
           this.a.this$0.a(((TextView)localObject2).getText().toString());
         }
-        localObject1 = ((View)localObject1).findViewById(2131370111);
+        localObject1 = ((View)localObject1).findViewById(2131437273);
         ((View)localObject1).setVisibility(0);
-        this.a.this$0.jdField_a_of_type_AndroidViewView = ((View)localObject1);
-        this.a.this$0.c = false;
+        this.a.this$0.r = ((View)localObject1);
+        this.a.this$0.n = false;
       }
     }
     if (QLog.isColorLevel())
     {
-      localObject1 = (Context)this.a.this$0.jdField_a_of_type_JavaLangRefSoftReference.get();
+      localObject1 = (Context)this.a.this$0.a.get();
       if (localObject1 != null) {
         j = ((Context)localObject1).getResources().getDisplayMetrics().heightPixels;
       }
@@ -81,7 +81,7 @@ class QQCustomDialogWtihInputAndChoose$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose.6.1
  * JD-Core Version:    0.7.0.1
  */

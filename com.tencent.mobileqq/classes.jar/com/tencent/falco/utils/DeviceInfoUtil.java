@@ -7,6 +7,7 @@ import android.os.StatFs;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Method;
@@ -40,13 +41,13 @@ public final class DeviceInfoUtil
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("");
-        ((StringBuilder)localObject1).append(((TelephonyManager)localObject2).getDeviceId());
+        ((StringBuilder)localObject1).append(PhoneInfoMonitor.getDeviceId((TelephonyManager)localObject2));
         localObject1 = ((StringBuilder)localObject1).toString();
         try
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("");
-          localStringBuilder.append(((TelephonyManager)localObject2).getSimSerialNumber());
+          localStringBuilder.append(PhoneInfoMonitor.getSimSerialNumber((TelephonyManager)localObject2));
           localObject2 = localStringBuilder.toString();
         }
         catch (Exception localException1) {}
@@ -102,7 +103,7 @@ public final class DeviceInfoUtil
       paramContext = (TelephonyManager)paramContext.getSystemService("phone");
       try
       {
-        imei = paramContext.getDeviceId();
+        imei = PhoneInfoMonitor.getDeviceId(paramContext);
       }
       catch (Exception paramContext)
       {
@@ -181,7 +182,7 @@ public final class DeviceInfoUtil
     HashSet localHashSet = new HashSet();
     try
     {
-      String str = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
+      String str = PhoneInfoMonitor.getDeviceId((TelephonyManager)paramContext.getSystemService("phone"));
     }
     catch (Exception localException)
     {
@@ -218,7 +219,7 @@ public final class DeviceInfoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.falco.utils.DeviceInfoUtil
  * JD-Core Version:    0.7.0.1
  */

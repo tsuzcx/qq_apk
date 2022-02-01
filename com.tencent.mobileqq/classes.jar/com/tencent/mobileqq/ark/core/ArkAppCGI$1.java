@@ -12,16 +12,16 @@ class ArkAppCGI$1
   {
     if (paramInt != 0)
     {
-      QLog.i("ArkApp.ArkAppCGI", 1, String.format("download fail, url=%s, err=%d", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppCGI$QueryTask.a, Integer.valueOf(paramInt) }));
-      ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppCGI, this.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppCGI$QueryTask, false, null);
+      QLog.i("ArkApp.ArkAppCGI", 1, String.format("download fail, url=%s, err=%d", new Object[] { this.a.a, Integer.valueOf(paramInt) }));
+      ArkAppCGI.a(this.b, this.a, false, null);
       return;
     }
-    ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppCGI, this.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppCGI$QueryTask, true, paramArrayOfByte);
+    ArkAppCGI.a(this.b, this.a, true, paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkAppCGI.1
  * JD-Core Version:    0.7.0.1
  */

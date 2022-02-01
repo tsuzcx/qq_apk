@@ -43,12 +43,12 @@ import java.util.Queue;
 public class DigitLottieAnimation
   extends AIOAnimationConatiner.AIOAnimator
 {
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = null;
-  private final D8SafeAnimatorListener jdField_a_of_type_ComTencentMobileqqWidgetD8SafeAnimatorListener = new DigitLottieAnimation.1(this);
-  private final List<Bitmap> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private final Queue<DigitLottieAnimation.EggAnimInfo> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private RelativeLayout b = null;
+  private RelativeLayout d = null;
+  private DiniFlyAnimationView e = null;
+  private RelativeLayout f = null;
+  private final List<Bitmap> g = Collections.synchronizedList(new ArrayList());
+  private final Queue<DigitLottieAnimation.EggAnimInfo> h = new LinkedList();
+  private final D8SafeAnimatorListener i = new DigitLottieAnimation.1(this);
   
   public DigitLottieAnimation(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
@@ -58,14 +58,14 @@ public class DigitLottieAnimation
   @org.jetbrains.annotations.Nullable
   private Bitmap a(LottieImageAsset paramLottieImageAsset, String paramString)
   {
-    Object localObject1 = this.b;
+    Object localObject1 = this.f;
     Object localObject2 = null;
     if (localObject1 == null) {
       return null;
     }
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inScaled = true;
-    localOptions.inDensity = this.b.getContext().getResources().getDisplayMetrics().densityDpi;
+    localOptions.inDensity = this.f.getContext().getResources().getDisplayMetrics().densityDpi;
     localObject1 = localObject2;
     try
     {
@@ -79,7 +79,7 @@ public class DigitLottieAnimation
       localObject1 = localObject2;
       paramLottieImageAsset = BitmapFactory.decodeFile(localStringBuilder.toString(), localOptions);
       localObject1 = paramLottieImageAsset;
-      this.jdField_a_of_type_JavaUtilList.add(paramLottieImageAsset);
+      this.g.add(paramLottieImageAsset);
       return paramLottieImageAsset;
     }
     catch (Exception paramLottieImageAsset)
@@ -87,7 +87,7 @@ public class DigitLottieAnimation
       label126:
       break label126;
     }
-    QLog.d("DigitLottieAnimation", 2, "playNextAnim setImageAssetDelegate Exception");
+    QLog.d("DigitLottieAnimation", 1, "playNextAnim setImageAssetDelegate Exception");
     return localObject1;
   }
   
@@ -97,66 +97,68 @@ public class DigitLottieAnimation
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("playNextAnim absolutePath");
     localStringBuilder.append(paramFile);
-    QLog.d("DigitLottieAnimation", 2, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new DigitLottieAnimation.4(this, paramFile));
-    LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getContext(), paramFileInputStream, new DigitLottieAnimation.5(this, paramFileInputStream, paramJumpImage, paramAioAnimationRule));
+    QLog.d("DigitLottieAnimation", 1, localStringBuilder.toString());
+    this.e.setImageAssetDelegate(new DigitLottieAnimation.4(this, paramFile));
+    LottieComposition.Factory.fromInputStream(this.e.getContext(), paramFileInputStream, new DigitLottieAnimation.5(this, paramFileInputStream, paramJumpImage, paramAioAnimationRule));
   }
   
   private void a(@android.support.annotation.Nullable LottieComposition paramLottieComposition, AioAnimationRule.JumpImage paramJumpImage, AioAnimationRule paramAioAnimationRule)
   {
     if (paramLottieComposition != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.loop(false);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      if ((paramJumpImage != null) && (paramAioAnimationRule != null))
+      Object localObject = this.e;
+      if (localObject != null)
       {
-        float f = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getResources().getDisplayMetrics().density;
-        paramLottieComposition = new LevelEggsPosition(paramJumpImage.b);
-        paramAioAnimationRule = paramLottieComposition.jdField_a_of_type_JavaUtilList;
-        Point localPoint = (Point)paramAioAnimationRule.get(RandomUtils.a(0, paramAioAnimationRule.size()));
-        paramAioAnimationRule = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams();
-        int i = paramLottieComposition.jdField_a_of_type_Int / 2;
-        int j = paramLottieComposition.b / 2;
-        paramAioAnimationRule.width = ((int)(i * f));
-        paramAioAnimationRule.height = ((int)(j * f));
-        paramAioAnimationRule.leftMargin = ((int)((localPoint.x - paramLottieComposition.jdField_a_of_type_Int / 2) * f / 2.0F));
-        paramAioAnimationRule.topMargin = ((int)(f * (localPoint.y - paramLottieComposition.b / 2) / 2.0F));
-        f = this.jdField_a_of_type_ComTencentWidgetListView.getContext().getResources().getDisplayMetrics().density / 2.0F;
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setScale(f);
-        i = paramAioAnimationRule.leftMargin;
-        j = paramAioAnimationRule.topMargin;
-        int k = paramAioAnimationRule.width + i;
-        int m = paramAioAnimationRule.height + j;
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.layout(i, j, k, m);
+        ((DiniFlyAnimationView)localObject).setComposition(paramLottieComposition);
+        this.e.loop(false);
+        this.e.setVisibility(0);
+        if ((paramJumpImage == null) || (paramAioAnimationRule == null)) {
+          return;
+        }
+        float f1 = this.e.getResources().getDisplayMetrics().density;
+        paramLottieComposition = new LevelEggsPosition(paramJumpImage.d);
+        paramAioAnimationRule = paramLottieComposition.c;
+        localObject = (Point)paramAioAnimationRule.get(RandomUtils.a(0, paramAioAnimationRule.size()));
+        paramAioAnimationRule = (RelativeLayout.LayoutParams)this.e.getLayoutParams();
+        int j = paramLottieComposition.a / 2;
+        int k = paramLottieComposition.b / 2;
+        paramAioAnimationRule.width = ((int)(j * f1));
+        paramAioAnimationRule.height = ((int)(k * f1));
+        paramAioAnimationRule.leftMargin = ((int)((((Point)localObject).x - paramLottieComposition.a / 2) * f1 / 2.0F));
+        paramAioAnimationRule.topMargin = ((int)(f1 * (((Point)localObject).y - paramLottieComposition.b / 2) / 2.0F));
+        f1 = this.b.getContext().getResources().getDisplayMetrics().density / 2.0F;
+        this.e.setScale(f1);
+        j = paramAioAnimationRule.leftMargin;
+        k = paramAioAnimationRule.topMargin;
+        int m = paramAioAnimationRule.width + j;
+        int n = paramAioAnimationRule.height + k;
+        this.e.layout(j, k, m, n);
         paramLottieComposition = new StringBuilder();
         paramLottieComposition.append("[onCompositionLoaded] layout. l:");
-        paramLottieComposition.append(i);
-        paramLottieComposition.append(", t:");
         paramLottieComposition.append(j);
-        paramLottieComposition.append(", r:");
+        paramLottieComposition.append(", t:");
         paramLottieComposition.append(k);
-        paramLottieComposition.append(", b:");
+        paramLottieComposition.append(", r:");
         paramLottieComposition.append(m);
+        paramLottieComposition.append(", b:");
+        paramLottieComposition.append(n);
         QLog.d("DigitLottieAnimation", 1, paramLottieComposition.toString());
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams(paramAioAnimationRule);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
-        QLog.d("DigitLottieAnimation", 2, "playNextAnim fromInputStream succ");
-        ReportController.b(null, "dc00898", "", "", "0X800BC05", "0X800BC05", 0, 0, "", "", paramJumpImage.e, "");
+        this.e.setLayoutParams(paramAioAnimationRule);
+        this.e.playAnimation();
+        QLog.d("DigitLottieAnimation", 1, "playNextAnim fromInputStream succ");
+        ReportController.b(null, "dc00898", "", "", "0X800BC05", "0X800BC05", 0, 0, "", "", paramJumpImage.h, "");
+        return;
       }
     }
-    else
-    {
-      QLog.d("DigitLottieAnimation", 2, "playNextAnim fromInputStream composition null");
-      c();
-    }
+    QLog.d("DigitLottieAnimation", 1, "playNextAnim fromInputStream composition null");
+    c();
   }
   
   private void a(@android.support.annotation.Nullable LottieComposition paramLottieComposition, FileInputStream paramFileInputStream, AioAnimationRule.JumpImage paramJumpImage, AioAnimationRule paramAioAnimationRule)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView == null)
+    if (this.e == null)
     {
-      QLog.d("DigitLottieAnimation", 2, "LottieComposition.Factory.fromInputStream mLottieView is null!");
+      QLog.d("DigitLottieAnimation", 1, "LottieComposition.Factory.fromInputStream mLottieView is null!");
       return;
     }
     if (paramFileInputStream != null) {}
@@ -176,14 +178,14 @@ public class DigitLottieAnimation
   private void a(String paramString, AioAnimationRule paramAioAnimationRule, AioAnimationRule.JumpImage paramJumpImage)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.b.getContext().getFilesDir().getAbsoluteFile());
+    ((StringBuilder)localObject).append(this.f.getContext().getFilesDir().getAbsoluteFile());
     ((StringBuilder)localObject).append(File.separator);
     ((StringBuilder)localObject).append("animConfig/");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append("/data.json");
     File localFile = new File(((StringBuilder)localObject).toString());
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.b.getContext().getFilesDir().getAbsoluteFile());
+    ((StringBuilder)localObject).append(this.f.getContext().getFilesDir().getAbsoluteFile());
     ((StringBuilder)localObject).append(File.separator);
     ((StringBuilder)localObject).append("animConfig/");
     ((StringBuilder)localObject).append(paramString);
@@ -199,7 +201,7 @@ public class DigitLottieAnimation
       label173:
       break label173;
     }
-    QLog.d("DigitLottieAnimation", 2, "playNextAnim tempFis Exception");
+    QLog.d("DigitLottieAnimation", 1, "playNextAnim tempFis Exception");
     return;
     paramString = null;
     if (paramString == null) {
@@ -207,7 +209,7 @@ public class DigitLottieAnimation
     }
     if (!((File)localObject).exists())
     {
-      QLog.d("DigitLottieAnimation", 2, "playNextAnim fis == null || !imageDir.exists()");
+      QLog.d("DigitLottieAnimation", 1, "playNextAnim fis == null || !imageDir.exists()");
       if (paramString == null) {}
     }
     try
@@ -220,88 +222,73 @@ public class DigitLottieAnimation
     return;
   }
   
-  private boolean a()
+  private boolean e()
   {
     return Build.VERSION.SDK_INT > 24;
   }
   
-  private boolean b()
+  private boolean f()
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
+    if (this.d == null)
     {
-      this.b = ((RelativeLayout)this.jdField_a_of_type_ComTencentWidgetListView.getParent());
-      Object localObject = this.b;
+      this.f = ((RelativeLayout)this.b.getParent());
+      Object localObject = this.f;
       if (localObject == null) {
         return true;
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(((RelativeLayout)localObject).getContext(), 2131558531, null));
-      localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      this.d = ((RelativeLayout)View.inflate(((RelativeLayout)localObject).getContext(), 2131624084, null));
+      localObject = this.d;
       if (localObject == null)
       {
-        QLog.d("DigitLottieAnimation", 2, "startAnim mLottieLayout null");
+        QLog.d("DigitLottieAnimation", 1, "startAnim mLottieLayout null");
         return true;
       }
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)((RelativeLayout)localObject).findViewById(2131362317));
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+      this.e = ((DiniFlyAnimationView)((RelativeLayout)localObject).findViewById(2131427917));
+      localObject = this.e;
       if (localObject == null)
       {
-        QLog.d("DigitLottieAnimation", 2, "startAnim mLottieView null");
+        QLog.d("DigitLottieAnimation", 1, "startAnim mLottieView null");
         return true;
       }
-      ((DiniFlyAnimationView)localObject).addAnimatorListener(this.jdField_a_of_type_ComTencentMobileqqWidgetD8SafeAnimatorListener);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setRenderMode(RenderMode.HARDWARE);
+      ((DiniFlyAnimationView)localObject).addAnimatorListener(this.i);
+      this.a.addView(this.d);
+      this.e.setRenderMode(RenderMode.HARDWARE);
     }
     return false;
   }
   
-  private boolean c()
+  private void g()
   {
-    DiniFlyAnimationView localDiniFlyAnimationView = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-    if ((localDiniFlyAnimationView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null))
-    {
-      if (localDiniFlyAnimationView.isAnimating())
-      {
-        QLog.d("DigitLottieAnimation", 2, "playNextAnim mLottieView isAnimating");
-        return true;
-      }
-      return false;
-    }
-    QLog.d("DigitLottieAnimation", 2, "playNextAnim mLottieView == null || mLottieLayout == null");
-    return true;
-  }
-  
-  private void e()
-  {
-    if (c()) {
+    if (h()) {
       return;
     }
-    int i = 0;
+    int j = 0;
     String str = "";
-    int j = this.jdField_a_of_type_JavaUtilQueue.size();
+    int k = this.h.size();
     StringBuilder localStringBuilder = null;
     Object localObject1 = null;
     Object localObject2;
-    if (j > 0)
+    if (k > 0)
     {
-      localObject2 = (DigitLottieAnimation.EggAnimInfo)this.jdField_a_of_type_JavaUtilQueue.peek();
+      localObject2 = (DigitLottieAnimation.EggAnimInfo)this.h.peek();
       if (localObject2 != null)
       {
-        str = ((DigitLottieAnimation.EggAnimInfo)localObject2).jdField_a_of_type_JavaLangString;
-        i = ((DigitLottieAnimation.EggAnimInfo)localObject2).jdField_a_of_type_Int;
-        localObject1 = ((DigitLottieAnimation.EggAnimInfo)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule;
-        localObject2 = ((DigitLottieAnimation.EggAnimInfo)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$JumpImage;
+        str = ((DigitLottieAnimation.EggAnimInfo)localObject2).b;
+        j = ((DigitLottieAnimation.EggAnimInfo)localObject2).a;
+        localObject1 = ((DigitLottieAnimation.EggAnimInfo)localObject2).c;
+        localObject2 = ((DigitLottieAnimation.EggAnimInfo)localObject2).d;
       }
       else
       {
         localObject2 = null;
       }
+      this.h.clear();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("playNextAnim strAnimPath");
       localStringBuilder.append(str);
       localStringBuilder.append("id");
-      localStringBuilder.append(i);
-      QLog.d("DigitLottieAnimation", 2, localStringBuilder.toString());
+      localStringBuilder.append(j);
+      QLog.d("DigitLottieAnimation", 1, localStringBuilder.toString());
     }
     else
     {
@@ -310,48 +297,59 @@ public class DigitLottieAnimation
     }
     if ((!str.isEmpty()) && (localObject1 != null) && (localObject2 != null))
     {
-      if (this.b == null)
+      if (this.f == null)
       {
-        QLog.d("DigitLottieAnimation", 2, "playNextAnim listViewParent is null");
+        QLog.d("DigitLottieAnimation", 1, "playNextAnim listViewParent is null");
         return;
       }
       a(str, (AioAnimationRule)localObject1, (AioAnimationRule.JumpImage)localObject2);
       return;
     }
-    QLog.d("DigitLottieAnimation", 2, "playNextAnim strAnimPath isEmpty");
+    QLog.d("DigitLottieAnimation", 1, "playNextAnim strAnimPath isEmpty");
   }
   
-  protected boolean a(int paramInt)
+  private boolean h()
   {
+    DiniFlyAnimationView localDiniFlyAnimationView = this.e;
+    if ((localDiniFlyAnimationView != null) && (this.d != null))
+    {
+      if (localDiniFlyAnimationView.isAnimating())
+      {
+        QLog.d("DigitLottieAnimation", 1, "playNextAnim mLottieView isAnimating");
+        return true;
+      }
+      return false;
+    }
+    QLog.d("DigitLottieAnimation", 1, "playNextAnim mLottieView == null || mLottieLayout == null");
     return true;
   }
   
   protected boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null))
+    if ((this.e != null) && (this.d != null))
     {
-      Object localObject = this.b;
+      Object localObject = this.f;
       if (localObject == null) {
         return true;
       }
-      localObject = (InputLinearLayout)((RelativeLayout)localObject).findViewById(2131368875);
-      int i = 0;
+      localObject = (InputLinearLayout)((RelativeLayout)localObject).findViewById(2131435809);
+      int j = 0;
       if (localObject != null) {
         paramInt4 = ((InputLinearLayout)localObject).getHeight();
       } else {
         paramInt4 = 0;
       }
-      localObject = (PanelIconLinearLayout)this.b.findViewById(2131372306);
+      localObject = (PanelIconLinearLayout)this.f.findViewById(2131439817);
       if (localObject != null) {
-        i = ((PanelIconLinearLayout)localObject).getHeight();
+        j = ((PanelIconLinearLayout)localObject).getHeight();
       }
-      paramInt4 = UIUtils.c(this.b.getContext()) - paramInt4 - i;
-      i = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLeft();
-      int j = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getRight();
-      int k = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getTop();
-      int m = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getBottom();
-      if ((i != paramInt1) || (j != paramInt3) || (k != paramInt2) || (m != paramInt4)) {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+      paramInt4 = UIUtils.d(this.f.getContext()) - paramInt4 - j;
+      j = this.e.getLeft();
+      int k = this.e.getRight();
+      int m = this.e.getTop();
+      int n = this.e.getBottom();
+      if ((j != paramInt1) || (k != paramInt3) || (m != paramInt2) || (n != paramInt4)) {
+        this.d.layout(paramInt1, paramInt2, paramInt3, paramInt4);
       }
     }
     return true;
@@ -359,71 +357,76 @@ public class DigitLottieAnimation
   
   protected boolean a(Object... paramVarArgs)
   {
-    if (!a())
+    if (!e())
     {
       QLog.d("DigitLottieAnimation", 1, "[start] version too low not support lottie.");
       return false;
     }
     if (paramVarArgs == null)
     {
-      QLog.d("DigitLottieAnimation", 2, "startAnim args is null");
+      QLog.d("DigitLottieAnimation", 1, "startAnim args is null");
       return false;
     }
     if (paramVarArgs.length == 2)
     {
       AioAnimationRule.JumpImage localJumpImage = (AioAnimationRule.JumpImage)paramVarArgs[0];
-      String str = localJumpImage.e;
+      String str = localJumpImage.h;
       paramVarArgs = (AioAnimationRule)paramVarArgs[1];
-      int i = paramVarArgs.b;
-      if ((!TextUtils.isEmpty(str)) && (i != 0)) {
-        this.jdField_a_of_type_JavaUtilQueue.add(new DigitLottieAnimation.EggAnimInfo(str, i, paramVarArgs, localJumpImage, null));
+      int j = paramVarArgs.b;
+      if ((!TextUtils.isEmpty(str)) && (j != 0)) {
+        this.h.add(new DigitLottieAnimation.EggAnimInfo(str, j, paramVarArgs, localJumpImage, null));
       }
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+      paramVarArgs = this.e;
       if ((paramVarArgs != null) && (paramVarArgs.isAnimating()))
       {
-        QLog.d("DigitLottieAnimation", 2, "startAnim mLottieView isAnimating");
+        QLog.d("DigitLottieAnimation", 1, "startAnim mLottieView isAnimating");
         return true;
       }
-      if (b()) {
+      if (f()) {
         return false;
       }
       ThreadManagerV2.executeOnSubThread(new DigitLottieAnimation.2(this));
-      QLog.d("DigitLottieAnimation", 2, "startAnim succ");
+      QLog.d("DigitLottieAnimation", 1, "startAnim succ");
       return true;
     }
-    QLog.d("DigitLottieAnimation", 2, "startAnim args error!");
+    QLog.d("DigitLottieAnimation", 1, "startAnim args error!");
     return false;
+  }
+  
+  protected boolean b(int paramInt)
+  {
+    return true;
   }
   
   protected void c()
   {
-    QLog.d("DigitLottieAnimation", 2, "stopAnim");
-    Object localObject = this.jdField_a_of_type_JavaUtilQueue;
+    QLog.d("DigitLottieAnimation", 1, "stopAnim");
+    Object localObject = this.h;
     if ((localObject != null) && (!((Queue)localObject).isEmpty())) {
-      this.jdField_a_of_type_JavaUtilQueue.clear();
+      this.h.clear();
     }
     ThreadManagerV2.executeOnSubThread(new DigitLottieAnimation.3(this));
-    localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-    if ((localObject != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null))
+    localObject = this.e;
+    if ((localObject != null) && (this.d != null))
     {
       ((DiniFlyAnimationView)localObject).removeAllAnimatorListener();
-      if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()) {
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.endAnimation();
+      if (this.e.isAnimating()) {
+        this.e.endAnimation();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      if (this.a != null) {
+        this.a.removeView(this.d);
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = null;
+      this.d = null;
+      this.e = null;
       d();
       return;
     }
-    QLog.d("DigitLottieAnimation", 2, "mLottieView == null || mLottieLayout == null");
+    QLog.d("DigitLottieAnimation", 1, "mLottieView == null || mLottieLayout == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.DigitLottieAnimation
  * JD-Core Version:    0.7.0.1
  */

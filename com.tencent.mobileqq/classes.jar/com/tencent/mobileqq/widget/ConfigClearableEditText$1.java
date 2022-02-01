@@ -18,14 +18,14 @@ class ConfigClearableEditText$1
     } else {
       i = 0;
     }
-    if (ConfigClearableEditText.a(this.a) != null) {
+    if (ConfigClearableEditText.b(this.a) != null) {
       if ((i != 0) && (paramMotionEvent.getAction() != 1) && (paramMotionEvent.getAction() != 3)) {
-        ConfigClearableEditText.a(this.a).b(true);
+        ConfigClearableEditText.b(this.a).b(true);
       } else {
-        ConfigClearableEditText.a(this.a).b(false);
+        ConfigClearableEditText.b(this.a).b(false);
       }
     }
-    if ((paramView.getCompoundDrawables()[2] == null) && ((!ConfigClearableEditText.a(this.a)) || (ConfigClearableEditText.a(this.a) == null))) {
+    if ((paramView.getCompoundDrawables()[2] == null) && ((!ConfigClearableEditText.c(this.a)) || (ConfigClearableEditText.b(this.a) == null))) {
       return false;
     }
     if (paramMotionEvent.getAction() != 1) {
@@ -35,8 +35,8 @@ class ConfigClearableEditText$1
     {
       this.a.setText("");
       this.a.setClearButtonVisible(false);
-      if (this.a.a != null) {
-        this.a.a.afterTextCleared();
+      if (this.a.b != null) {
+        this.a.b.f();
       }
     }
     return false;
@@ -44,7 +44,7 @@ class ConfigClearableEditText$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ConfigClearableEditText.1
  * JD-Core Version:    0.7.0.1
  */

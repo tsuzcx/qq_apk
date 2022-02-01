@@ -27,11 +27,6 @@ public class TroopLuckyCharacterHandler
     super(paramAppInterface);
   }
   
-  protected String a()
-  {
-    return "TroopLuckyCharacterHandler";
-  }
-  
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
@@ -92,6 +87,11 @@ public class TroopLuckyCharacterHandler
     catch (Exception paramString) {}
   }
   
+  protected String dv_()
+  {
+    return "TroopLuckyCharacterHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.allowCmdSet == null)
@@ -123,7 +123,7 @@ public class TroopLuckyCharacterHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -146,7 +146,7 @@ public class TroopLuckyCharacterHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.luckycharacter.api.impl.TroopLuckyCharacterHandler
  * JD-Core Version:    0.7.0.1
  */

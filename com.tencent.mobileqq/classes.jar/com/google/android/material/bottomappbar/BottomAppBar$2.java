@@ -12,7 +12,7 @@ class BottomAppBar$2
   
   public void a(@NonNull FloatingActionButton paramFloatingActionButton)
   {
-    MaterialShapeDrawable localMaterialShapeDrawable = BottomAppBar.a(this.a);
+    MaterialShapeDrawable localMaterialShapeDrawable = BottomAppBar.d(this.a);
     float f;
     if (paramFloatingActionButton.getVisibility() == 0) {
       f = paramFloatingActionButton.getScaleY();
@@ -25,20 +25,20 @@ class BottomAppBar$2
   public void b(@NonNull FloatingActionButton paramFloatingActionButton)
   {
     float f1 = paramFloatingActionButton.getTranslationX();
-    if (BottomAppBar.a(this.a).b() != f1)
+    if (BottomAppBar.e(this.a).b() != f1)
     {
-      BottomAppBar.a(this.a).b(f1);
-      BottomAppBar.a(this.a).invalidateSelf();
+      BottomAppBar.e(this.a).b(f1);
+      BottomAppBar.d(this.a).invalidateSelf();
     }
     float f2 = -paramFloatingActionButton.getTranslationY();
     f1 = 0.0F;
     f2 = Math.max(0.0F, f2);
-    if (BottomAppBar.a(this.a).c() != f2)
+    if (BottomAppBar.e(this.a).c() != f2)
     {
-      BottomAppBar.a(this.a).c(f2);
-      BottomAppBar.a(this.a).invalidateSelf();
+      BottomAppBar.e(this.a).c(f2);
+      BottomAppBar.d(this.a).invalidateSelf();
     }
-    MaterialShapeDrawable localMaterialShapeDrawable = BottomAppBar.a(this.a);
+    MaterialShapeDrawable localMaterialShapeDrawable = BottomAppBar.d(this.a);
     if (paramFloatingActionButton.getVisibility() == 0) {
       f1 = paramFloatingActionButton.getScaleY();
     }
@@ -47,7 +47,7 @@ class BottomAppBar$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ public class TroopEffectPicMsgDecoder
   public void a(Message paramMessage, IMessageManager paramIMessageManager, AppRuntime paramAppRuntime)
   {
     if (paramMessage.msgtype == -5015) {
-      paramMessage.msg = HardCodeUtil.a(2131701238);
+      paramMessage.msg = HardCodeUtil.a(2131899248);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.decoder.TroopEffectPicMsgDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -13,54 +13,54 @@ final class MiniScanReport$1
   public void run()
   {
     StatisticCollector localStatisticCollector = StatisticCollector.getInstance(MobileQQ.getContext());
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     HashMap localHashMap;
     if ((i > 0) && (i < 180000))
     {
       localHashMap = new HashMap();
-      localHashMap.put("report_key_scan_total", String.valueOf(this.jdField_a_of_type_Long));
-      localHashMap.put("report_key_scan_cnt", String.valueOf(this.b));
-      localHashMap.put("report_key_scan_avg", String.valueOf(this.jdField_a_of_type_Int));
-      localHashMap.put("report_key_scan_suc", String.valueOf(this.c));
+      localHashMap.put("report_key_scan_total", String.valueOf(this.b));
+      localHashMap.put("report_key_scan_cnt", String.valueOf(this.c));
+      localHashMap.put("report_key_scan_avg", String.valueOf(this.a));
+      localHashMap.put("report_key_scan_suc", String.valueOf(this.d));
       MiniScanReport.a(localHashMap);
       localStatisticCollector.collectPerformance("", "report_tag_scan_avg_qr", true, 0L, 0L, localHashMap, "");
     }
-    if (this.d > 0)
+    if (this.e > 0)
     {
-      i = this.e;
+      i = this.f;
       if ((i > 0) && (i < 180000))
       {
         localHashMap = new HashMap();
-        localHashMap.put("report_key_scan_total", String.valueOf(this.jdField_a_of_type_Long));
-        localHashMap.put("report_key_scan_cnt", String.valueOf(this.d));
-        localHashMap.put("report_key_scan_avg", String.valueOf(this.e));
-        localHashMap.put("report_key_scan_suc", String.valueOf(this.c));
+        localHashMap.put("report_key_scan_total", String.valueOf(this.b));
+        localHashMap.put("report_key_scan_cnt", String.valueOf(this.e));
+        localHashMap.put("report_key_scan_avg", String.valueOf(this.f));
+        localHashMap.put("report_key_scan_suc", String.valueOf(this.d));
         MiniScanReport.a(localHashMap);
         localStatisticCollector.collectPerformance("", "report_tag_scan_avg_minidecode", true, 0L, 0L, localHashMap, "");
       }
     }
-    if (this.f > 0)
+    if (this.g > 0)
     {
-      i = this.g;
+      i = this.h;
       if ((i > 0) && (i < 180000))
       {
         localHashMap = new HashMap();
-        localHashMap.put("report_key_scan_total", String.valueOf(this.jdField_a_of_type_Long));
-        localHashMap.put("report_key_scan_cnt", String.valueOf(this.f));
-        localHashMap.put("report_key_scan_avg", String.valueOf(this.g));
-        localHashMap.put("report_key_scan_suc", String.valueOf(this.c));
+        localHashMap.put("report_key_scan_total", String.valueOf(this.b));
+        localHashMap.put("report_key_scan_cnt", String.valueOf(this.g));
+        localHashMap.put("report_key_scan_avg", String.valueOf(this.h));
+        localHashMap.put("report_key_scan_suc", String.valueOf(this.d));
         MiniScanReport.a(localHashMap);
         localStatisticCollector.collectPerformance("", "report_tag_scan_avg_minidetect", true, 0L, 0L, localHashMap, "");
       }
     }
-    if ((QLog.isColorLevel()) || (MiniScanReport.a())) {
-      QLog.i("MiniRecog.MiniScanReport", 1, String.format("base_test_scan markScanEnd [sucType,totalConsume,qrAvg,decodeAvg,detectAvg]=[%d,%d,%d,%d,%d]", new Object[] { Integer.valueOf(this.c), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.e), Integer.valueOf(this.g) }));
+    if ((QLog.isColorLevel()) || (MiniScanReport.b())) {
+      QLog.i("MiniRecog.MiniScanReport", 1, String.format("base_test_scan markScanEnd [sucType,totalConsume,qrAvg,decodeAvg,detectAvg]=[%d,%d,%d,%d,%d]", new Object[] { Integer.valueOf(this.d), Long.valueOf(this.b), Integer.valueOf(this.a), Integer.valueOf(this.f), Integer.valueOf(this.h) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.minicode.MiniScanReport.1
  * JD-Core Version:    0.7.0.1
  */

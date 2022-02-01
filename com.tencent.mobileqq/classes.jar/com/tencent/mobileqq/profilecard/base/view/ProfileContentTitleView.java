@@ -66,15 +66,15 @@ public class ProfileContentTitleView
   
   protected void init()
   {
-    LayoutInflater.from(this.mContext).inflate(2131559579, this, true);
-    this.mRoot = ((ViewGroup)findViewById(2131376818));
-    this.mTitleContainer = ((ViewGroup)findViewById(2131378823));
-    this.mTitleIcon = ((ImageView)findViewById(2131378828));
-    this.mTitleText = ((TextView)findViewById(2131378876));
-    this.mTitleTextBg = ((ViewGroup)findViewById(2131378877));
-    this.mTitleArrow = ((ImageView)findViewById(2131378801));
-    this.mTitleExtContainer = ((RelativeLayout)findViewById(2131378827));
-    this.mContentContainer = ((FrameLayout)findViewById(2131365179));
+    LayoutInflater.from(this.mContext).inflate(2131625607, this, true);
+    this.mRoot = ((ViewGroup)findViewById(2131445148));
+    this.mTitleContainer = ((ViewGroup)findViewById(2131447506));
+    this.mTitleIcon = ((ImageView)findViewById(2131447511));
+    this.mTitleText = ((TextView)findViewById(2131447576));
+    this.mTitleTextBg = ((ViewGroup)findViewById(2131447577));
+    this.mTitleArrow = ((ImageView)findViewById(2131447482));
+    this.mTitleExtContainer = ((RelativeLayout)findViewById(2131447510));
+    this.mContentContainer = ((FrameLayout)findViewById(2131431340));
     setIconEnable(false);
   }
   
@@ -130,7 +130,7 @@ public class ProfileContentTitleView
     {
       int i = 0;
       if (paramBoolean) {
-        i = getResources().getDimensionPixelSize(2131297592);
+        i = getResources().getDimensionPixelSize(2131298256);
       }
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mRoot.getLayoutParams();
       if (localLayoutParams != null)
@@ -173,7 +173,7 @@ public class ProfileContentTitleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.ProfileContentTitleView
  * JD-Core Version:    0.7.0.1
  */

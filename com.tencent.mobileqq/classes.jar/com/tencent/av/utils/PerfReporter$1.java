@@ -8,15 +8,15 @@ final class PerfReporter$1
 {
   public void run()
   {
-    if (PerfReporter.a().size() >= PerfReporter.a().capacity())
+    if (PerfReporter.d().size() >= PerfReporter.d().capacity())
     {
-      PerfReporter.CalResult localCalResult = PerfReporter.a(PerfReporter.a());
-      PerfReporter.a().a(localCalResult);
-      PerfReporter.a().clear();
+      PerfReporter.CalResult localCalResult = PerfReporter.a(PerfReporter.d());
+      PerfReporter.e().a(localCalResult);
+      PerfReporter.d().clear();
     }
-    int i = PerfReporter.a();
-    PerfReporter.a().add(Integer.valueOf(i));
-    PerfReporter.a().postDelayed(this, 30000L);
+    int i = PerfReporter.c();
+    PerfReporter.d().add(Integer.valueOf(i));
+    PerfReporter.f().postDelayed(this, 30000L);
   }
 }
 

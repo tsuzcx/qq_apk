@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/n4i" android:background="@drawable/c_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="新人推荐" />
-    <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/n4j" android:background="@drawable/c_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="新人推荐" />
-    <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/n4k" android:background="@drawable/c_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="新人推荐" />
-</LinearLayout>
+    <RelativeLayout android:id="@id/ibz" android:layout_width="@dimen/aet" android:layout_height="wrap_content" android:layout_marginLeft="-40.0dip" android:layout_centerVertical="true">
+        <CheckBox android:id="@id/axa" android:background="@drawable/0x" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="16.0dip" android:layout_height="16.0dip" android:checked="false" android:button="@null" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/icon" android:paddingTop="2.0dip" android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginLeft="79.0dip" android:src="@drawable/e1a" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:gravity="left" android:id="@id/qba" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="109.0dip" android:layout_marginRight="17.0dip" android:maxWidth="@dimen/ka" android:text="a你好Hello,World" android:singleLine="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/b5y" android:textColor="@color/aqx" android:ellipsize="end" android:gravity="left" android:id="@id/qbe" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="79.0dip" android:layout_marginRight="17.0dip" android:maxWidth="@dimen/ka" android:singleLine="true" android:layout_centerVertical="true" />
+</RelativeLayout>

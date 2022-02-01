@@ -16,13 +16,13 @@ class DiscussionMemberListInnerFrame$1
     if (paramInt != 1) {
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true ^ this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+    this.a.d.setChecked(true ^ this.a.d.isChecked());
     paramDialogInterface = this.a;
-    paramDialogInterface.onCheckedChanged(paramDialogInterface.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-    if (this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.mEntrance == 32)
+    paramDialogInterface.onCheckedChanged(paramDialogInterface.d, this.a.d.isChecked());
+    if (this.a.f.mEntrance == 32)
     {
       IQWalletApi localIQWalletApi = (IQWalletApi)QRoute.api(IQWalletApi.class);
-      if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+      if (this.a.d.isChecked()) {
         paramDialogInterface = "friendsfinder.all.confirm";
       } else {
         paramDialogInterface = "friendsfinder.all.cancel";
@@ -33,7 +33,7 @@ class DiscussionMemberListInnerFrame$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.DiscussionMemberListInnerFrame.1
  * JD-Core Version:    0.7.0.1
  */

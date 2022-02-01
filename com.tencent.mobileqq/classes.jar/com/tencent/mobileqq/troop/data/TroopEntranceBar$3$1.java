@@ -14,13 +14,13 @@ class TroopEntranceBar$3$1
   public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
     if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopBindPublicAccountMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar$3.a.a.a, 0, this.jdField_a_of_type_Int);
+      this.a.a(this.c.b.c.b, 0, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopEntranceBar.3.1
  * JD-Core Version:    0.7.0.1
  */

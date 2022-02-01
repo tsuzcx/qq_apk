@@ -11,17 +11,17 @@ class AvatarPendantActivity$14$3
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.a.c, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.a = ProfileCardUtils.enterSnapshot(this.a.a, 5);
+    this.a.c.K = ProfileCardUtils.enterSnapshot(this.a.c, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.14.3
  * JD-Core Version:    0.7.0.1
  */

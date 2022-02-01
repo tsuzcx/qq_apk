@@ -1,50 +1,72 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.MessageObserver;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.common.AccountDPCHelper;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.subaccount.api.ISubAccountControlService;
-import com.tencent.mobileqq.subaccount.api.ISubAccountControllUtil;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qwallet.plugin.PatternLockUtils;
 
 class AccountManageActivity$33
-  extends MessageObserver
+  implements View.OnClickListener
 {
-  AccountManageActivity$33(AccountManageActivity paramAccountManageActivity) {}
+  AccountManageActivity$33(AccountManageActivity paramAccountManageActivity, Dialog paramDialog) {}
   
-  public void onPushSubAccountMsg(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void onClick(View paramView)
   {
-    if (this.a.isFinishing()) {
+    QLog.flushLog();
+    boolean bool = ((CheckBox)this.a.findViewById(2131430666)).isChecked();
+    Object localObject = this.b;
+    ((AccountManageActivity)localObject).u = bool;
+    SettingCloneUtil.writeValue(((AccountManageActivity)localObject).getActivity(), this.b.app.getCurrentAccountUin(), this.b.getString(2131915612), "qqsetting_receivemsg_whenexit_key", bool);
+    AccountDPCHelper.b(this.b.getActivity(), this.b.u);
+    int i = this.b.app.getMessageFacade().w();
+    int j = this.b.app.getCallFacade().b();
+    localObject = this.b.getActivity().getSharedPreferences("unreadcount", 4).edit();
+    ((SharedPreferences.Editor)localObject).putInt("unread", i + j);
+    ((SharedPreferences.Editor)localObject).commit();
+    this.b.i();
+    this.b.app.bReceiveMsgOnExit = this.b.u;
+    com.tencent.mobileqq.activity.home.MainFragment.b = true;
+    if (QQPlayerService.b())
+    {
+      localObject = new Intent();
+      ((Intent)localObject).setAction("qqplayer_exit_action");
+      this.b.getActivity().sendBroadcast((Intent)localObject);
+    }
+    PatternLockUtils.setFirstEnterAfterLoginState(this.b.getActivity(), this.b.app.getCurrentAccountUin(), true);
+    localObject = new Intent("QQ_ACTION_MENU_QUIT");
+    ((Intent)localObject).setClass(this.b.getActivity(), SplashActivity.class);
+    ((Intent)localObject).addFlags(67108864);
+    try
+    {
+      this.b.startActivity((Intent)localObject);
+      label277:
+      ReportController.b(this.b.app, "CliOper", "", "", "0X800932A", "0X800932A", 0, 0, "0", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    Object localObject = this.a;
-    int i = 0;
-    AccountManageActivity.a((AccountManageActivity)localObject, false);
-    localObject = (ISubAccountControlService)this.a.app.getRuntimeService(ISubAccountControlService.class, null);
-    if (paramSubAccountBackProtocData.a == 1)
+    catch (Exception localException)
     {
-      if ((this.a.isResume()) && (((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).needShowHintDialog(this.a.app, "sub.uin.all")))
-      {
-        paramString = ((ISubAccountControlService)localObject).popWaittingHintPair("sub.uin.all");
-        int j = paramString.size();
-        while (i < j)
-        {
-          paramSubAccountBackProtocData = (Pair)paramString.get(i);
-          ((ISubAccountControlService)localObject).showHintDialog(this.a.app, this.a, paramSubAccountBackProtocData, new AccountManageActivity.33.1(this, (ISubAccountControlService)localObject, paramSubAccountBackProtocData));
-          i += 1;
-        }
-      }
-    }
-    else if (this.a.isResume()) {
-      ((ISubAccountControlService)localObject).cancelHintDialog(paramString, 1, true);
+      break label277;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.33
  * JD-Core Version:    0.7.0.1
  */

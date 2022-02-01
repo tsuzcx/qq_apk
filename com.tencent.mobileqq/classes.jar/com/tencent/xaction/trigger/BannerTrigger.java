@@ -144,22 +144,17 @@ public final class BannerTrigger
     Intrinsics.checkParameterIsNotNull(paramViewData, "data");
     Intrinsics.checkParameterIsNotNull(paramIView, "iview");
     super.monitor(paramViewData, paramIView);
-    paramViewData = paramIView.getDecor().getProxy();
-    if (paramViewData != null)
+    paramViewData = paramIView.getDecor().b();
+    if ((paramViewData != null) && ((paramViewData instanceof ViewPager)))
     {
-      if ((paramViewData instanceof ViewPager))
-      {
-        if (Build.VERSION.SDK_INT < 23) {
-          return;
-        }
-        paramViewData = (ViewPager)paramViewData;
-        this.firstItem = paramViewData.getCurrentItem();
-        this.lastItem = paramViewData.getCurrentItem();
-        paramViewData.addOnPageChangeListener((ViewPager.OnPageChangeListener)new BannerTrigger.monitor.1(this, paramViewData));
+      if (Build.VERSION.SDK_INT < 23) {
+        return;
       }
-      return;
+      paramViewData = (ViewPager)paramViewData;
+      this.firstItem = paramViewData.getCurrentItem();
+      this.lastItem = paramViewData.getCurrentItem();
+      paramViewData.addOnPageChangeListener((ViewPager.OnPageChangeListener)new BannerTrigger.monitor.1(this, paramViewData));
     }
-    throw new TypeCastException("null cannot be cast to non-null type android.view.View");
   }
   
   public final void setPtype(@Nullable String paramString)
@@ -169,7 +164,7 @@ public final class BannerTrigger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.BannerTrigger
  * JD-Core Version:    0.7.0.1
  */

@@ -8,12 +8,12 @@ class Interactive3DRenderable$9
 {
   public void run()
   {
-    Interactive3DRenderable.a(this.this$0).native_setBinHaiState(BaseActivity.sTopActivity, Interactive3DRenderable.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    Interactive3DRenderable.d(this.this$0).native_setBinHaiState(BaseActivity.sTopActivity, Interactive3DRenderable.d(this.this$0), this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.9
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ import java.lang.ref.WeakReference;
 public class GenerateLocalVideoSegment
   extends MeasureJobSegment<GenerateContext, GenerateContext>
 {
-  private final String a;
   public WeakReference<EditDoodleExport> a;
+  private final String b;
   
   public GenerateLocalVideoSegment()
   {
@@ -25,7 +25,7 @@ public class GenerateLocalVideoSegment
   
   public GenerateLocalVideoSegment(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   private Bitmap a(GenerateContext paramGenerateContext, Bitmap paramBitmap)
@@ -36,7 +36,7 @@ public class GenerateLocalVideoSegment
     }
     GPUBitmapImageRender localGPUBitmapImageRender = new GPUBitmapImageRender();
     localGPUBitmapImageRender.a(paramBitmap.getWidth(), paramBitmap.getHeight());
-    Object localObject2 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject2 = this.a;
     paramGenerateContext = (GenerateContext)localObject1;
     if (localObject2 != null)
     {
@@ -44,7 +44,7 @@ public class GenerateLocalVideoSegment
       if (((WeakReference)localObject2).get() != null) {
         try
         {
-          paramGenerateContext = ((EditDoodleExport)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(0);
+          paramGenerateContext = ((EditDoodleExport)this.a.get()).b().f(0);
         }
         catch (Exception paramGenerateContext)
         {
@@ -79,142 +79,142 @@ public class GenerateLocalVideoSegment
   {
     // Byte code:
     //   0: aload_2
-    //   1: getfield 116	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
-    //   4: instanceof 118
+    //   1: getfield 119	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:c	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
+    //   4: instanceof 121
     //   7: ifne +37 -> 44
     //   10: aload_2
-    //   11: getfield 116	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
-    //   14: instanceof 120
+    //   11: getfield 119	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:c	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
+    //   14: instanceof 123
     //   17: ifeq +6 -> 23
     //   20: goto +24 -> 44
-    //   23: ldc 73
-    //   25: ldc 122
+    //   23: ldc 75
+    //   25: ldc 125
     //   27: iconst_1
-    //   28: anewarray 124	java/lang/Object
+    //   28: anewarray 127	java/lang/Object
     //   31: dup
     //   32: iconst_0
     //   33: aload_2
-    //   34: getfield 116	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
+    //   34: getfield 119	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:c	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
     //   37: aastore
-    //   38: invokestatic 128	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   41: goto +456 -> 497
+    //   38: invokestatic 131	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   41: goto +457 -> 498
     //   44: aload_0
-    //   45: getfield 22	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateLocalVideoSegment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   45: getfield 23	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateLocalVideoSegment:b	Ljava/lang/String;
     //   48: astore_1
     //   49: aload_1
     //   50: astore 9
     //   52: aload_1
     //   53: ifnonnull +18 -> 71
     //   56: aload_2
-    //   57: getfield 131	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_Int	I
+    //   57: getfield 134	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:b	I
     //   60: aload_2
-    //   61: getfield 134	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:b	Ljava/lang/String;
-    //   64: ldc 136
-    //   66: invokestatic 141	com/tencent/aelight/camera/aioeditor/takevideo/publish/PublishFileManager:a	(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   61: getfield 137	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:p	Ljava/lang/String;
+    //   64: ldc 139
+    //   66: invokestatic 144	com/tencent/aelight/camera/aioeditor/takevideo/publish/PublishFileManager:a	(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   69: astore 9
     //   71: aload_2
-    //   72: getfield 116	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
-    //   75: instanceof 118
+    //   72: getfield 119	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:c	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
+    //   75: instanceof 121
     //   78: istore_3
     //   79: lconst_0
     //   80: lstore 4
     //   82: iload_3
     //   83: ifeq +19 -> 102
     //   86: aload_2
-    //   87: getfield 116	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
-    //   90: checkcast 118	com/tencent/mobileqq/editor/params/EditLocalVideoSource
-    //   93: getfield 142	com/tencent/mobileqq/editor/params/EditLocalVideoSource:jdField_a_of_type_Int	I
+    //   87: getfield 119	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:c	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
+    //   90: checkcast 121	com/tencent/mobileqq/editor/params/EditLocalVideoSource
+    //   93: getfield 146	com/tencent/mobileqq/editor/params/EditLocalVideoSource:c	I
     //   96: i2l
     //   97: lstore 6
     //   99: goto +6 -> 105
     //   102: lconst_0
     //   103: lstore 6
     //   105: aload_2
-    //   106: getfield 116	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
-    //   109: invokeinterface 146 1 0
+    //   106: getfield 119	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:c	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
+    //   109: invokeinterface 150 1 0
     //   114: astore 11
-    //   116: new 148	android/media/MediaMetadataRetriever
+    //   116: new 152	android/media/MediaMetadataRetriever
     //   119: dup
-    //   120: invokespecial 149	android/media/MediaMetadataRetriever:<init>	()V
+    //   120: invokespecial 153	android/media/MediaMetadataRetriever:<init>	()V
     //   123: astore 10
     //   125: aload 10
     //   127: aload 11
-    //   129: invokevirtual 152	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   129: invokevirtual 156	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   132: goto +44 -> 176
     //   135: astore_1
-    //   136: goto +377 -> 513
+    //   136: goto +378 -> 514
     //   139: astore_1
-    //   140: new 60	java/lang/StringBuilder
+    //   140: new 62	java/lang/StringBuilder
     //   143: dup
-    //   144: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   144: invokespecial 63	java/lang/StringBuilder:<init>	()V
     //   147: astore 8
     //   149: aload 8
-    //   151: ldc 154
-    //   153: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: ldc 158
+    //   153: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   156: pop
     //   157: aload 8
     //   159: aload 11
-    //   161: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   161: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: pop
-    //   165: ldc 73
+    //   165: ldc 75
     //   167: aload 8
-    //   169: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   169: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   172: aload_1
-    //   173: invokestatic 158	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   173: invokestatic 161	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   176: aconst_null
     //   177: astore 8
     //   179: aload 8
     //   181: astore_1
     //   182: aload_2
-    //   183: getfield 161	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGenerateThumbArgs	Lcom/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateThumbArgs;
-    //   186: getfield 166	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateThumbArgs:a	Z
+    //   183: getfield 165	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:i	Lcom/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateThumbArgs;
+    //   186: getfield 170	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateThumbArgs:f	Z
     //   189: ifeq +108 -> 297
     //   192: aload_2
-    //   193: getfield 116	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
-    //   196: instanceof 118
+    //   193: getfield 119	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:c	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
+    //   196: instanceof 121
     //   199: ifeq +19 -> 218
     //   202: aload_2
-    //   203: getfield 116	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
-    //   206: checkcast 118	com/tencent/mobileqq/editor/params/EditLocalVideoSource
-    //   209: getfield 168	com/tencent/mobileqq/editor/params/EditLocalVideoSource:b	I
+    //   203: getfield 119	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:c	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
+    //   206: checkcast 121	com/tencent/mobileqq/editor/params/EditLocalVideoSource
+    //   209: getfield 172	com/tencent/mobileqq/editor/params/EditLocalVideoSource:d	I
     //   212: i2l
     //   213: lstore 4
     //   215: goto +24 -> 239
     //   218: aload 10
     //   220: bipush 9
-    //   222: invokevirtual 172	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   222: invokevirtual 176	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   225: astore_1
     //   226: aload_1
     //   227: ifnull +12 -> 239
     //   230: aload_1
-    //   231: invokestatic 178	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   234: invokevirtual 182	java/lang/Long:longValue	()J
+    //   231: invokestatic 182	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   234: invokevirtual 186	java/lang/Long:longValue	()J
     //   237: lstore 4
-    //   239: new 184	com/tencent/mobileqq/activity/photo/LocalMediaInfo
+    //   239: new 188	com/tencent/mobileqq/activity/photo/LocalMediaInfo
     //   242: dup
-    //   243: invokespecial 185	com/tencent/mobileqq/activity/photo/LocalMediaInfo:<init>	()V
+    //   243: invokespecial 189	com/tencent/mobileqq/activity/photo/LocalMediaInfo:<init>	()V
     //   246: astore_1
     //   247: aload_1
     //   248: aload_2
-    //   249: getfield 116	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
-    //   252: invokeinterface 187 1 0
-    //   257: putfield 190	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
+    //   249: getfield 119	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:c	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
+    //   252: invokeinterface 191 1 0
+    //   257: putfield 194	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
     //   260: aload_1
     //   261: aload_2
-    //   262: getfield 116	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
-    //   265: invokeinterface 192 1 0
-    //   270: putfield 195	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
+    //   262: getfield 119	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:c	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
+    //   265: invokeinterface 196 1 0
+    //   270: putfield 199	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
     //   273: aload 11
     //   275: aload_1
     //   276: lload 4
-    //   278: invokestatic 200	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;J)Landroid/graphics/Bitmap;
+    //   278: invokestatic 204	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;J)Landroid/graphics/Bitmap;
     //   281: astore_1
     //   282: goto +15 -> 297
     //   285: astore_1
-    //   286: ldc 73
-    //   288: ldc 202
+    //   286: ldc 75
+    //   288: ldc 206
     //   290: aload_1
-    //   291: invokestatic 158	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   291: invokestatic 161	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   294: aload 8
     //   296: astore_1
     //   297: aload_1
@@ -222,17 +222,17 @@ public class GenerateLocalVideoSegment
     //   300: aload_1
     //   301: ifnonnull +33 -> 334
     //   304: aload 10
-    //   306: ldc2_w 203
+    //   306: ldc2_w 207
     //   309: lload 6
     //   311: lmul
-    //   312: invokevirtual 208	android/media/MediaMetadataRetriever:getFrameAtTime	(J)Landroid/graphics/Bitmap;
+    //   312: invokevirtual 212	android/media/MediaMetadataRetriever:getFrameAtTime	(J)Landroid/graphics/Bitmap;
     //   315: astore 8
     //   317: goto +17 -> 334
     //   320: astore 8
-    //   322: ldc 73
-    //   324: ldc 210
+    //   322: ldc 75
+    //   324: ldc 214
     //   326: aload 8
-    //   328: invokestatic 158	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   328: invokestatic 161	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   331: aload_1
     //   332: astore 8
     //   334: aload 8
@@ -242,101 +242,101 @@ public class GenerateLocalVideoSegment
     //   342: aload 8
     //   344: astore_1
     //   345: aload_2
-    //   346: getfield 213	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry	Lcom/tencent/mobileqq/editor/database/PublishVideoEntry;
-    //   349: getfield 218	com/tencent/mobileqq/editor/database/PublishVideoEntry:videoNeedRotate	Z
+    //   346: getfield 217	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:d	Lcom/tencent/mobileqq/editor/database/PublishVideoEntry;
+    //   349: getfield 222	com/tencent/mobileqq/editor/database/PublishVideoEntry:videoNeedRotate	Z
     //   352: ifeq +11 -> 363
     //   355: aload 8
-    //   357: ldc 219
-    //   359: invokestatic 224	com/tencent/biz/qqstory/utils/UIUtils:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
+    //   357: ldc 223
+    //   359: invokestatic 228	com/tencent/biz/qqstory/utils/UIUtils:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
     //   362: astore_1
     //   363: aload_1
     //   364: astore 8
     //   366: aload_2
-    //   367: getfield 116	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
-    //   370: instanceof 120
+    //   367: getfield 119	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:c	Lcom/tencent/mobileqq/editor/params/EditVideoParams$EditSource;
+    //   370: instanceof 123
     //   373: ifeq +11 -> 384
     //   376: aload_0
     //   377: aload_2
     //   378: aload_1
-    //   379: invokespecial 226	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateLocalVideoSegment:a	(Lcom/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext;Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    //   379: invokespecial 230	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateLocalVideoSegment:a	(Lcom/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext;Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
     //   382: astore 8
     //   384: aload 8
-    //   386: ifnull +86 -> 472
+    //   386: ifnull +87 -> 473
     //   389: aload 8
-    //   391: getstatic 232	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   391: getstatic 236	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   394: bipush 80
     //   396: aload 9
-    //   398: invokestatic 237	com/tencent/biz/qqstory/utils/BitmapUtils:a	(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap$CompressFormat;ILjava/lang/String;)Z
+    //   398: invokestatic 241	com/tencent/biz/qqstory/utils/BitmapUtils:a	(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap$CompressFormat;ILjava/lang/String;)Z
     //   401: istore_3
     //   402: aload 8
-    //   404: invokevirtual 240	android/graphics/Bitmap:recycle	()V
+    //   404: invokevirtual 244	android/graphics/Bitmap:recycle	()V
     //   407: iload_3
-    //   408: ifeq +53 -> 461
-    //   411: new 242	java/io/File
+    //   408: ifeq +54 -> 462
+    //   411: new 246	java/io/File
     //   414: dup
     //   415: aload 9
-    //   417: invokespecial 243	java/io/File:<init>	(Ljava/lang/String;)V
+    //   417: invokespecial 247	java/io/File:<init>	(Ljava/lang/String;)V
     //   420: astore_1
     //   421: aload_1
-    //   422: invokevirtual 247	java/io/File:exists	()Z
-    //   425: ifeq +67 -> 492
+    //   422: invokevirtual 251	java/io/File:exists	()Z
+    //   425: ifeq +68 -> 493
     //   428: aload_1
-    //   429: invokevirtual 250	java/io/File:isFile	()Z
-    //   432: ifeq +60 -> 492
-    //   435: ldc 73
-    //   437: ldc 252
-    //   439: aload 9
-    //   441: invokestatic 101	com/tencent/biz/qqstory/support/logging/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
-    //   444: aload_2
-    //   445: aload 9
-    //   447: putfield 253	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   450: aload_0
-    //   451: aload_2
-    //   452: invokespecial 257	com/tencent/aelight/camera/aioeditor/takevideo/publish/MeasureJobSegment:notifyResult	(Ljava/lang/Object;)V
-    //   455: aload 10
-    //   457: invokevirtual 260	android/media/MediaMetadataRetriever:release	()V
-    //   460: return
-    //   461: ldc 73
-    //   463: ldc_w 262
-    //   466: invokestatic 264	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   469: goto +23 -> 492
-    //   472: ldc 73
-    //   474: ldc_w 266
-    //   477: iconst_1
-    //   478: anewarray 124	java/lang/Object
-    //   481: dup
-    //   482: iconst_0
-    //   483: lload 6
-    //   485: invokestatic 269	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   488: aastore
-    //   489: invokestatic 128	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   492: aload 10
-    //   494: invokevirtual 260	android/media/MediaMetadataRetriever:release	()V
-    //   497: aload_0
-    //   498: new 271	com/tencent/biz/qqstory/base/ErrorMessage
-    //   501: dup
-    //   502: iconst_m1
-    //   503: ldc_w 273
-    //   506: invokespecial 276	com/tencent/biz/qqstory/base/ErrorMessage:<init>	(ILjava/lang/String;)V
-    //   509: invokevirtual 280	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateLocalVideoSegment:notifyError	(Ljava/lang/Error;)V
-    //   512: return
-    //   513: aload 10
-    //   515: invokevirtual 260	android/media/MediaMetadataRetriever:release	()V
-    //   518: aload_1
-    //   519: athrow
+    //   429: invokevirtual 254	java/io/File:isFile	()Z
+    //   432: ifeq +61 -> 493
+    //   435: ldc 75
+    //   437: ldc_w 256
+    //   440: aload 9
+    //   442: invokestatic 103	com/tencent/biz/qqstory/support/logging/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   445: aload_2
+    //   446: aload 9
+    //   448: putfield 259	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateContext:j	Ljava/lang/String;
+    //   451: aload_0
+    //   452: aload_2
+    //   453: invokespecial 263	com/tencent/aelight/camera/aioeditor/takevideo/publish/MeasureJobSegment:notifyResult	(Ljava/lang/Object;)V
+    //   456: aload 10
+    //   458: invokevirtual 266	android/media/MediaMetadataRetriever:release	()V
+    //   461: return
+    //   462: ldc 75
+    //   464: ldc_w 268
+    //   467: invokestatic 270	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   470: goto +23 -> 493
+    //   473: ldc 75
+    //   475: ldc_w 272
+    //   478: iconst_1
+    //   479: anewarray 127	java/lang/Object
+    //   482: dup
+    //   483: iconst_0
+    //   484: lload 6
+    //   486: invokestatic 275	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   489: aastore
+    //   490: invokestatic 131	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   493: aload 10
+    //   495: invokevirtual 266	android/media/MediaMetadataRetriever:release	()V
+    //   498: aload_0
+    //   499: new 277	com/tencent/biz/qqstory/base/ErrorMessage
+    //   502: dup
+    //   503: iconst_m1
+    //   504: ldc_w 279
+    //   507: invokespecial 282	com/tencent/biz/qqstory/base/ErrorMessage:<init>	(ILjava/lang/String;)V
+    //   510: invokevirtual 286	com/tencent/aelight/camera/aioeditor/takevideo/publish/GenerateLocalVideoSegment:notifyError	(Ljava/lang/Error;)V
+    //   513: return
+    //   514: aload 10
+    //   516: invokevirtual 266	android/media/MediaMetadataRetriever:release	()V
+    //   519: aload_1
+    //   520: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	520	0	this	GenerateLocalVideoSegment
-    //   0	520	1	paramJobContext	com.tribe.async.async.JobContext
-    //   0	520	2	paramGenerateContext	GenerateContext
+    //   0	521	0	this	GenerateLocalVideoSegment
+    //   0	521	1	paramJobContext	com.tribe.async.async.JobContext
+    //   0	521	2	paramGenerateContext	GenerateContext
     //   78	330	3	bool	boolean
     //   80	197	4	l1	long
-    //   97	387	6	l2	long
+    //   97	388	6	l2	long
     //   147	169	8	localObject1	Object
     //   320	7	8	localOutOfMemoryError	java.lang.OutOfMemoryError
     //   332	71	8	localObject2	Object
-    //   50	396	9	localObject3	Object
-    //   123	391	10	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
+    //   50	397	9	localObject3	Object
+    //   123	392	10	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
     //   114	160	11	str	String
     // Exception table:
     //   from	to	target	type
@@ -352,9 +352,9 @@ public class GenerateLocalVideoSegment
     //   345	363	135	finally
     //   366	384	135	finally
     //   389	407	135	finally
-    //   411	455	135	finally
-    //   461	469	135	finally
-    //   472	492	135	finally
+    //   411	456	135	finally
+    //   462	470	135	finally
+    //   473	493	135	finally
     //   125	132	139	java/lang/IllegalArgumentException
     //   239	282	285	java/lang/OutOfMemoryError
     //   304	317	320	java/lang/OutOfMemoryError
@@ -362,7 +362,7 @@ public class GenerateLocalVideoSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.publish.GenerateLocalVideoSegment
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public class PubAccountNavigationMenuInterceptor
 {
   public Class a(Interceptor.Chain<Class> paramChain)
   {
-    if (PubAccountNavigationMenu.class.getSimpleName().equals(a(paramChain))) {
+    if (PubAccountNavigationMenu.class.getSimpleName().equals(b(paramChain))) {
       return PubAccountNavigationMenu.class;
     }
     return (Class)paramChain.proceed();
@@ -16,7 +16,7 @@ public class PubAccountNavigationMenuInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.PubAccountNavigationMenuInterceptor
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,17 @@ class DownloadManager$2
   
   public void run()
   {
-    this.this$0.a = ((ConcurrentHashMap)DownloadDBHelper.a().a());
+    this.this$0.g = ((ConcurrentHashMap)DownloadDBHelper.a().b());
     try
     {
-      DownloadInfo localDownloadInfo = this.this$0.b("com.tencent.mobileqq");
-      if ((localDownloadInfo != null) && (localDownloadInfo.jdField_c_of_type_Int == 0))
+      DownloadInfo localDownloadInfo = this.this$0.f("com.tencent.mobileqq");
+      if ((localDownloadInfo != null) && (localDownloadInfo.o == 0))
       {
         String str = "";
         TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo1;
-        if (localDownloadInfo.a == 0)
+        if (localDownloadInfo.j == 0)
         {
-          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2 = this.this$0.a(localDownloadInfo.d);
+          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2 = this.this$0.h(localDownloadInfo.d);
           localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
           if (localTMAssistantDownloadTaskInfo2 != null)
           {
@@ -34,19 +34,19 @@ class DownloadManager$2
         }
         else
         {
-          localTMAssistantDownloadTaskInfo1 = this.this$0.a(localDownloadInfo.i);
-          str = localDownloadInfo.l;
+          localTMAssistantDownloadTaskInfo1 = this.this$0.h(localDownloadInfo.k);
+          str = localDownloadInfo.q;
         }
         if (localTMAssistantDownloadTaskInfo1 == null)
         {
-          this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-          DownloadDBHelper.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+          this.this$0.g.remove(localDownloadInfo.c);
+          DownloadDBHelper.a().b(localDownloadInfo.c);
           return;
         }
-        if ((localTMAssistantDownloadTaskInfo1.mState == 4) && (AppUtil.c(str) <= CommonDataAdapter.a().a()))
+        if ((localTMAssistantDownloadTaskInfo1.mState == 4) && (AppUtil.f(str) <= CommonDataAdapter.a().h()))
         {
-          this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-          DownloadDBHelper.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+          this.this$0.g.remove(localDownloadInfo.c);
+          DownloadDBHelper.a().b(localDownloadInfo.c);
           return;
         }
       }
@@ -59,7 +59,7 @@ class DownloadManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.2
  * JD-Core Version:    0.7.0.1
  */

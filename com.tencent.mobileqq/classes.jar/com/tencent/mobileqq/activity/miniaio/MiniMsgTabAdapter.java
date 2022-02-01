@@ -32,30 +32,27 @@ public class MiniMsgTabAdapter
   extends BaseAdapter
   implements View.OnClickListener, DecodeTaskCompletionListener
 {
-  private long jdField_a_of_type_Long = 0L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private MiniMsgTabDafultItemBulder jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgTabDafultItemBulder = new MiniMsgTabDafultItemBulder();
-  MiniMsgTabFragment.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgTabFragment$OnItemClickListener;
-  protected RecentFaceDecoder a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected XListView a;
-  protected final ArrayList<RecentBaseData> a;
-  private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
+  protected final ArrayList<RecentBaseData> a = new ArrayList(99);
+  protected XListView b = null;
+  protected RecentFaceDecoder c = new RecentFaceDecoder(paramQQAppInterface, this, false);
+  MiniMsgTabFragment.OnItemClickListener d;
+  private QQAppInterface e;
+  private Context f;
+  private long g = 0L;
+  private MiniMsgTabDafultItemBulder h = new MiniMsgTabDafultItemBulder();
+  private Hashtable<String, Bitmap> i = new Hashtable();
   
   public MiniMsgTabAdapter(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, MiniMsgTabFragment.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = null;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(99);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = new RecentFaceDecoder(paramQQAppInterface, this, false);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgTabFragment$OnItemClickListener = paramOnItemClickListener;
+    this.f = paramContext;
+    this.e = paramQQAppInterface;
+    this.b = paramXListView;
+    this.d = paramOnItemClickListener;
   }
   
   protected View a()
   {
-    return View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559411, null);
+    return View.inflate(this.f, 2131625377, null);
   }
   
   public RecentBaseData a(View paramView)
@@ -70,14 +67,6 @@ public class MiniMsgTabAdapter
     return null;
   }
   
-  public void a()
-  {
-    RecentFaceDecoder localRecentFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder;
-    if (localRecentFaceDecoder != null) {
-      localRecentFaceDecoder.a();
-    }
-  }
-  
   public void a(View paramView, RecentBaseData paramRecentBaseData, Drawable paramDrawable)
   {
     if (paramView != null)
@@ -88,22 +77,22 @@ public class MiniMsgTabAdapter
       Drawable localDrawable = paramDrawable;
       if (paramDrawable == null)
       {
-        RecentFaceDecoder localRecentFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder;
+        RecentFaceDecoder localRecentFaceDecoder = this.c;
         localDrawable = paramDrawable;
         if (localRecentFaceDecoder != null) {
           localDrawable = localRecentFaceDecoder.a(paramRecentBaseData.getRecentUserType(), paramRecentBaseData.getRecentUserUin());
         }
       }
-      paramDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgTabDafultItemBulder;
+      paramDrawable = this.h;
       if (paramDrawable != null) {
         try
         {
-          paramDrawable.a(paramView, paramRecentBaseData, this.jdField_a_of_type_AndroidContentContext, localDrawable);
+          paramDrawable.a(paramView, paramRecentBaseData, this.f, localDrawable);
           return;
         }
         catch (Throwable paramView)
         {
-          if (!RecentParcelUtil.b(this.jdField_a_of_type_AndroidContentContext)) {
+          if (!RecentParcelUtil.c(this.f)) {
             return;
           }
           throw new RuntimeException(paramView);
@@ -114,13 +103,13 @@ public class MiniMsgTabAdapter
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder;
+    Object localObject = this.c;
     if (localObject != null) {
       ((RecentFaceDecoder)localObject).a(paramQQAppInterface);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
+    if (this.e != paramQQAppInterface)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+      this.e = paramQQAppInterface;
       a(null);
     }
     if (QLog.isColorLevel())
@@ -134,10 +123,10 @@ public class MiniMsgTabAdapter
   
   public void a(List<RecentBaseData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.clear();
     if (paramList != null)
     {
-      int i = -1;
+      int j = -1;
       try
       {
         paramList = paramList.iterator();
@@ -146,18 +135,18 @@ public class MiniMsgTabAdapter
           RecentBaseData localRecentBaseData = (RecentBaseData)paramList.next();
           if (localRecentBaseData != null)
           {
-            i += 1;
+            j += 1;
             if ((localRecentBaseData instanceof RecentItemChatMsgData)) {
-              localRecentBaseData.mPosition = i;
+              localRecentBaseData.mPosition = j;
             }
-            this.jdField_a_of_type_JavaUtilArrayList.add(localRecentBaseData);
+            this.a.add(localRecentBaseData);
           }
           else if (QLog.isColorLevel())
           {
             QLog.i("MiniMsgTabAdapter", 2, "setDataList, [item is null]");
           }
         }
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+        if (this.a.size() <= 0) {
           break label127;
         }
       }
@@ -170,7 +159,7 @@ public class MiniMsgTabAdapter
     }
     else
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+      this.b.setVisibility(0);
       break label141;
     }
     label127:
@@ -181,9 +170,17 @@ public class MiniMsgTabAdapter
     notifyDataSetChanged();
   }
   
+  public void b()
+  {
+    RecentFaceDecoder localRecentFaceDecoder = this.c;
+    if (localRecentFaceDecoder != null) {
+      localRecentFaceDecoder.b();
+    }
+  }
+  
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
@@ -191,9 +188,9 @@ public class MiniMsgTabAdapter
     if (paramInt >= 0) {
       try
       {
-        if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+        if (paramInt < this.a.size())
         {
-          Object localObject = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+          Object localObject = this.a.get(paramInt);
           return localObject;
         }
       }
@@ -215,11 +212,11 @@ public class MiniMsgTabAdapter
   public int getItemViewType(int paramInt)
   {
     RecentBaseData localRecentBaseData = (RecentBaseData)getItem(paramInt);
-    int i = 0;
-    paramInt = i;
+    int j = 0;
+    paramInt = j;
     if (localRecentBaseData != null)
     {
-      paramInt = i;
+      paramInt = j;
       if (localRecentBaseData.getRecentUserUin().equals(Integer.valueOf(0))) {
         paramInt = 1;
       }
@@ -257,13 +254,13 @@ public class MiniMsgTabAdapter
       else
       {
         localObject2 = paramView;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgTabDafultItemBulder.a(paramInt, localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder, paramView, paramViewGroup, this.jdField_a_of_type_AndroidContentContext, this, null, null);
+        localObject1 = this.h.a(paramInt, localObject1, this.c, paramView, paramViewGroup, this.f, this, null, null);
       }
     }
     catch (Throwable paramView)
     {
-      RecentParcelUtil.a(this.jdField_a_of_type_AndroidContentContext, false, paramView);
-      if (RecentParcelUtil.b(this.jdField_a_of_type_AndroidContentContext)) {
+      RecentParcelUtil.a(this.f, false, paramView);
+      if (RecentParcelUtil.c(this.f)) {
         break label166;
       }
     }
@@ -299,7 +296,7 @@ public class MiniMsgTabAdapter
           ((StringBuilder)localObject2).append(((RecentBaseData)localObject1).mLastMsg);
           QLog.i("MiniMsgTabAdapter", 2, ((StringBuilder)localObject2).toString());
         }
-        Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgTabFragment$OnItemClickListener;
+        Object localObject2 = this.d;
         if (localObject2 != null)
         {
           ((MiniMsgTabFragment.OnItemClickListener)localObject2).a((RecentBaseData)localObject1);
@@ -316,7 +313,7 @@ public class MiniMsgTabAdapter
     long l1;
     boolean bool1;
     boolean bool2;
-    if (this.jdField_a_of_type_ComTencentWidgetXListView != null)
+    if (this.b != null)
     {
       if (TextUtils.isEmpty(paramString)) {
         return;
@@ -327,7 +324,7 @@ public class MiniMsgTabAdapter
       if (paramBitmap != null) {
         try
         {
-          Hashtable localHashtable = this.jdField_a_of_type_JavaUtilHashtable;
+          Hashtable localHashtable = this.i;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append(paramInt2);
           ((StringBuilder)localObject2).append(":");
@@ -345,7 +342,7 @@ public class MiniMsgTabAdapter
         }
       }
       l1 = System.currentTimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
+      long l2 = this.g;
       if ((l2 > 0L) && (l1 - l2 > 300L)) {
         bool1 = true;
       } else {
@@ -377,49 +374,49 @@ public class MiniMsgTabAdapter
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashtable)
+      synchronized (this.i)
       {
-        if (this.jdField_a_of_type_JavaUtilHashtable.size() == 0) {
+        if (this.i.size() == 0) {
           return;
         }
         if (paramInt1 == 0) {
-          this.jdField_a_of_type_Long = 0L;
+          this.g = 0L;
         } else {
-          this.jdField_a_of_type_Long = l1;
+          this.g = l1;
         }
-        paramInt2 = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
+        paramInt2 = this.b.getChildCount();
         paramInt1 = 0;
         bool1 = false;
         if (paramInt1 < paramInt2)
         {
-          localObject2 = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1);
+          localObject2 = this.b.getChildAt(paramInt1);
           RecentBaseData localRecentBaseData = a((View)localObject2);
           if (localRecentBaseData == null)
           {
             bool2 = bool1;
             break label772;
           }
-          int i = localRecentBaseData.getRecentUserType();
+          int j = localRecentBaseData.getRecentUserType();
           paramString = localRecentBaseData.getRecentUserUin();
-          i = ((Integer)RecentFaceDecoder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, paramString).first).intValue();
+          j = ((Integer)RecentFaceDecoder.a(this.e, j, paramString).first).intValue();
           bool2 = bool1;
-          if (i == -2147483648) {
+          if (j == -2147483648) {
             break label772;
           }
           paramBitmap = new StringBuilder();
-          paramBitmap.append(i);
+          paramBitmap.append(j);
           paramBitmap.append(":");
           paramBitmap.append(paramString);
           paramString = paramBitmap.toString();
-          paramString = (Bitmap)this.jdField_a_of_type_JavaUtilHashtable.get(paramString);
+          paramString = (Bitmap)this.i.get(paramString);
           bool2 = bool1;
           if (paramString == null) {
             break label772;
           }
-          if (i == 103)
+          if (j == 103)
           {
             l1 = System.currentTimeMillis();
-            paramBitmap = BaseApplication.getContext().getResources().getDrawable(2130840412);
+            paramBitmap = BaseApplication.getContext().getResources().getDrawable(2130841165);
             if ((paramBitmap instanceof SkinnableBitmapDrawable)) {
               ((SkinnableBitmapDrawable)paramBitmap).setGravity(81);
             }
@@ -450,12 +447,12 @@ public class MiniMsgTabAdapter
         {
           paramString = new StringBuilder();
           paramString.append("decodecomplete|faceCache size = ");
-          paramString.append(this.jdField_a_of_type_JavaUtilHashtable.size());
+          paramString.append(this.i.size());
           paramString.append(", isNeedUpdateAvatar=");
           paramString.append(bool1);
           QLog.i("MiniMsgTabAdapter", 4, paramString.toString());
         }
-        this.jdField_a_of_type_JavaUtilHashtable.clear();
+        this.i.clear();
         return;
       }
       return;
@@ -467,7 +464,7 @@ public class MiniMsgTabAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgTabAdapter
  * JD-Core Version:    0.7.0.1
  */

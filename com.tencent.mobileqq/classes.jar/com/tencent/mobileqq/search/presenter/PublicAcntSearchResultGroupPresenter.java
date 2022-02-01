@@ -31,11 +31,11 @@ public class PublicAcntSearchResultGroupPresenter
   {
     Object localObject = (ISearchResultGroupModel)paramIModel;
     a(paramISearchResultGroupView, (ISearchResultGroupModel)localObject);
-    int k = ((ISearchResultGroupModel)localObject).a();
-    paramIModel = paramISearchResultGroupView.a();
+    int k = ((ISearchResultGroupModel)localObject).d();
+    paramIModel = paramISearchResultGroupView.c();
     if ((paramIModel != null) && (paramIModel != null))
     {
-      localObject = ((ISearchResultGroupModel)localObject).a();
+      localObject = ((ISearchResultGroupModel)localObject).b();
       int i = 0;
       if (localObject != null)
       {
@@ -43,19 +43,19 @@ public class PublicAcntSearchResultGroupPresenter
         i = 0;
         while (i < m)
         {
-          ((ISearchResultView)paramIModel.get(i)).a().setVisibility(0);
-          ((ISearchResultView)paramIModel.get(i)).a().setTag(2131380884, ((List)localObject).get(i));
-          ((ISearchResultView)paramIModel.get(i)).a().setTag(2131380889, paramIModel.get(i));
-          ((ISearchResultView)paramIModel.get(i)).a().setTag(2131380885, Integer.valueOf(i));
-          ((ISearchResultView)paramIModel.get(i)).a().setTag(2131380883, Integer.valueOf(paramIModel.size()));
-          ((ISearchResultView)paramIModel.get(i)).a().setTag(2131380886, this.a);
+          ((ISearchResultView)paramIModel.get(i)).h().setVisibility(0);
+          ((ISearchResultView)paramIModel.get(i)).h().setTag(2131449867, ((List)localObject).get(i));
+          ((ISearchResultView)paramIModel.get(i)).h().setTag(2131449873, paramIModel.get(i));
+          ((ISearchResultView)paramIModel.get(i)).h().setTag(2131449868, Integer.valueOf(i));
+          ((ISearchResultView)paramIModel.get(i)).h().setTag(2131449866, Integer.valueOf(paramIModel.size()));
+          ((ISearchResultView)paramIModel.get(i)).h().setTag(2131449869, this.a);
           SearchViewUtils.a((ISearchResultModel)((List)localObject).get(i), m, i);
-          int n = ((ISearchResultModel)((List)localObject).get(i)).b();
-          int i1 = ((ISearchResultModel)((List)localObject).get(i)).f_();
-          View localView = ((ISearchResultView)paramIModel.get(i)).a();
+          int n = ((ISearchResultModel)((List)localObject).get(i)).ck_();
+          int i1 = ((ISearchResultModel)((List)localObject).get(i)).cl_();
+          View localView = ((ISearchResultView)paramIModel.get(i)).h();
           int j;
           if ((((List)localObject).get(i) instanceof ISearchResultPositionModel)) {
-            j = ((ISearchResultPositionModel)((List)localObject).get(i)).u;
+            j = ((ISearchResultPositionModel)((List)localObject).get(i)).af;
           } else {
             j = 0;
           }
@@ -66,13 +66,13 @@ public class PublicAcntSearchResultGroupPresenter
         i = Math.min(((List)localObject).size(), k);
         while (i < paramIModel.size())
         {
-          ((ISearchResultView)paramIModel.get(i)).a().setVisibility(8);
+          ((ISearchResultView)paramIModel.get(i)).h().setVisibility(8);
           i += 1;
         }
       }
       while (i < paramIModel.size())
       {
-        ((ISearchResultView)paramIModel.get(i)).a().setVisibility(8);
+        ((ISearchResultView)paramIModel.get(i)).h().setVisibility(8);
         i += 1;
       }
     }
@@ -83,7 +83,7 @@ public class PublicAcntSearchResultGroupPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.PublicAcntSearchResultGroupPresenter
  * JD-Core Version:    0.7.0.1
  */

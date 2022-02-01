@@ -29,15 +29,10 @@ import org.jetbrains.annotations.Nullable;
 public final class GdtMotiveBrowsingTitle
   extends RelativeLayout
 {
-  public static final GdtMotiveBrowsingTitle.Companion a;
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingTitle$Companion = new GdtMotiveBrowsingTitle.Companion(null);
-  }
+  public static final GdtMotiveBrowsingTitle.Companion a = new GdtMotiveBrowsingTitle.Companion(null);
+  private TextView b;
+  private View c;
+  private LinearLayout d;
   
   public GdtMotiveBrowsingTitle(@NotNull Context paramContext)
   {
@@ -53,158 +48,158 @@ public final class GdtMotiveBrowsingTitle
   {
     super(paramContext, paramAttributeSet, paramInt);
     ImmersiveUtils.setStatusTextColor(true, ((Activity)paramContext).getWindow());
-    int i = ViewUtils.b(63.0F);
+    int i = ViewUtils.dpToPx(63.0F);
     paramInt = i;
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       int j = ImmersiveUtils.getStatusBarHeight(paramContext);
       paramInt = i + j;
-      i = ViewUtils.b(15.0F);
+      i = ViewUtils.dpToPx(15.0F);
       setPadding(i, j + i, i, i);
     }
     setLayoutParams((ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, paramInt));
     setBackgroundColor(-1);
     a();
-    b();
-  }
-  
-  private final Drawable a()
-  {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(ViewUtils.b(18.0F));
-    localGradientDrawable.setStroke(ViewUtils.b(1.0F), Color.parseColor("#E5E5E5"));
-    return (Drawable)localGradientDrawable;
-  }
-  
-  private final CharSequence a(int paramInt)
-  {
-    if (paramInt > 0)
-    {
-      GdtMotiveBrowsingTitle.GdtMotiveBrowsingCenterFixWidthSpan localGdtMotiveBrowsingCenterFixWidthSpan = new GdtMotiveBrowsingTitle.GdtMotiveBrowsingCenterFixWidthSpan(ViewUtils.b(23.0F));
-      String str = String.valueOf(paramInt);
-      SpannableString localSpannableString = new SpannableString((CharSequence)getResources().getString(2131692846, new Object[] { str }));
-      localSpannableString.setSpan(localGdtMotiveBrowsingCenterFixWidthSpan, 2, str.length() + 2, 17);
-      return (CharSequence)localSpannableString;
-    }
-    return (CharSequence)getResources().getString(2131692848);
+    c();
   }
   
   private final void a()
   {
-    int i = ViewUtils.b(16.0F);
-    Object localObject1 = new RelativeLayout.LayoutParams(-2, ViewUtils.b(33.0F));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
+    int i = ViewUtils.dpToPx(16.0F);
+    Object localObject1 = new RelativeLayout.LayoutParams(-2, ViewUtils.dpToPx(33.0F));
+    this.d = new LinearLayout(getContext());
     if (Build.VERSION.SDK_INT >= 16)
     {
-      localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      localObject2 = this.d;
       if (localObject2 == null) {
         Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
       }
-      ((LinearLayout)localObject2).setBackground(a());
+      ((LinearLayout)localObject2).setBackground(b());
     }
     else
     {
-      localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      localObject2 = this.d;
       if (localObject2 == null) {
         Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
       }
-      ((LinearLayout)localObject2).setBackgroundDrawable(a());
+      ((LinearLayout)localObject2).setBackgroundDrawable(b());
     }
-    Object localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    Object localObject2 = this.d;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
     }
     ((LinearLayout)localObject2).setPadding(i, 0, i, 0);
-    localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    localObject2 = this.d;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
     }
     ((LinearLayout)localObject2).setOrientation(0);
-    localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    localObject2 = this.d;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
     }
     ((LinearLayout)localObject2).setGravity(16);
-    localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    localObject2 = this.d;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
     }
     ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
     localObject1 = new TextView(getContext());
-    ((TextView)localObject1).setText((CharSequence)getResources().getString(2131692849));
-    ((TextView)localObject1).setId(2131367562);
+    ((TextView)localObject1).setText((CharSequence)getResources().getString(2131889958));
+    ((TextView)localObject1).setId(2131434104);
     ((TextView)localObject1).setTextColor(-16777216);
     ((TextView)localObject1).setTextSize(1, 14.0F);
-    localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    localObject2 = this.d;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
     }
     ((LinearLayout)localObject2).addView((View)localObject1);
     localObject1 = new View(getContext());
-    i = ViewUtils.b(1.0F);
-    int j = ViewUtils.b(20.0F);
-    int k = ViewUtils.b(10.0F);
+    i = ViewUtils.dpToPx(1.0F);
+    int j = ViewUtils.dpToPx(20.0F);
+    int k = ViewUtils.dpToPx(10.0F);
     localObject2 = new RelativeLayout.LayoutParams(i, j);
     ((RelativeLayout.LayoutParams)localObject2).leftMargin = k;
     ((RelativeLayout.LayoutParams)localObject2).rightMargin = k;
     ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     ((View)localObject1).setBackgroundColor(Color.parseColor("#E5E5E5"));
-    localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    localObject2 = this.d;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
     }
     ((LinearLayout)localObject2).addView((View)localObject1);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+    this.b = new TextView(getContext());
+    localObject1 = this.b;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("tvBrowsing");
     }
-    ((TextView)localObject1).setId(2131367561);
-    localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+    ((TextView)localObject1).setId(2131434103);
+    localObject1 = this.b;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("tvBrowsing");
     }
     ((TextView)localObject1).setTextColor(-16777216);
-    localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject1 = this.b;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("tvBrowsing");
     }
     ((TextView)localObject1).setTextSize(1, 14.0F);
-    localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    localObject1 = this.d;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
     }
-    localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject2 = this.b;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("tvBrowsing");
     }
     ((LinearLayout)localObject1).addView((View)localObject2);
-    localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    localObject1 = this.d;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
     }
     ((LinearLayout)localObject1).setVisibility(8);
-    localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    localObject1 = this.d;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
     }
     addView((View)localObject1);
   }
   
-  private final void b()
+  private final Drawable b()
   {
-    int i = ViewUtils.b(33.0F);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setCornerRadius(ViewUtils.dpToPx(18.0F));
+    localGradientDrawable.setStroke(ViewUtils.dpToPx(1.0F), Color.parseColor("#E5E5E5"));
+    return (Drawable)localGradientDrawable;
+  }
+  
+  private final CharSequence b(int paramInt)
+  {
+    if (paramInt > 0)
+    {
+      GdtMotiveBrowsingTitle.GdtMotiveBrowsingCenterFixWidthSpan localGdtMotiveBrowsingCenterFixWidthSpan = new GdtMotiveBrowsingTitle.GdtMotiveBrowsingCenterFixWidthSpan(ViewUtils.dpToPx(23.0F));
+      String str = String.valueOf(paramInt);
+      SpannableString localSpannableString = new SpannableString((CharSequence)getResources().getString(2131889955, new Object[] { str }));
+      localSpannableString.setSpan(localGdtMotiveBrowsingCenterFixWidthSpan, 2, str.length() + 2, 17);
+      return (CharSequence)localSpannableString;
+    }
+    return (CharSequence)getResources().getString(2131889957);
+  }
+  
+  private final void c()
+  {
+    int i = ViewUtils.dpToPx(33.0F);
     Object localObject1 = new RelativeLayout.LayoutParams(i, i);
     Object localObject2 = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "context");
-    this.jdField_a_of_type_AndroidViewView = ((View)new GdtMotiveBrowsingImage((Context)localObject2));
+    this.c = ((View)new GdtMotiveBrowsingImage((Context)localObject2));
     ((RelativeLayout.LayoutParams)localObject1).addRule(11);
-    localObject2 = this.jdField_a_of_type_AndroidViewView;
+    localObject2 = this.c;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("imgClose");
     }
     ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = this.jdField_a_of_type_AndroidViewView;
+    localObject1 = this.c;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("imgClose");
     }
@@ -213,27 +208,27 @@ public final class GdtMotiveBrowsingTitle
   
   public final void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    Object localObject = this.d;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
     }
     ((LinearLayout)localObject).setVisibility(0);
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.b;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("tvBrowsing");
     }
     ((TextView)localObject).setVisibility(0);
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.b;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("tvBrowsing");
     }
-    ((TextView)localObject).setText(a(paramInt));
+    ((TextView)localObject).setText(b(paramInt));
   }
   
   public final void setOnCloseClickListener(@NotNull Function0<Unit> paramFunction0)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction0, "onClick");
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.c;
     if (localView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("imgClose");
     }
@@ -242,7 +237,7 @@ public final class GdtMotiveBrowsingTitle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivebrowsing.GdtMotiveBrowsingTitle
  * JD-Core Version:    0.7.0.1
  */

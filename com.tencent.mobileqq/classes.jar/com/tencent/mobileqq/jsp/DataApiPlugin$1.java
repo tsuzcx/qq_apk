@@ -33,7 +33,7 @@ class DataApiPlugin$1
     String str1;
     int i;
     Object localObject2;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.a.key))
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.b.key))
     {
       localObject1 = paramBundle.getString("cmd");
       str1 = paramBundle.getString("callbackid");
@@ -120,7 +120,7 @@ class DataApiPlugin$1
     }
     paramBundle = null;
     break label384;
-    paramBundle = ImageUtil.f();
+    paramBundle = ImageUtil.k();
     if (paramBundle == null)
     {
       ((JSONObject)localObject2).put("result", 1002);
@@ -183,7 +183,7 @@ class DataApiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DataApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

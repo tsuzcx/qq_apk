@@ -16,13 +16,13 @@ class MessageForGrayTips$HightlightClickableSpan$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((ConfessHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CONFESS_HANDLER)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo, -1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.a(0, ConfessConfig.h, 0);
+    ((ConfessHandler)this.a.getBusinessHandler(BusinessHandlerFactory.CONFESS_HANDLER)).a(this.b, this.c, this.d, this.e, -1);
+    this.f.a(0, ConfessConfig.h, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan.1
  * JD-Core Version:    0.7.0.1
  */

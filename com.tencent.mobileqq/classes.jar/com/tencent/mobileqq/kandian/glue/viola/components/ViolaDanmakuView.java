@@ -35,6 +35,12 @@ public final class ViolaDanmakuView
     return null;
   }
   
+  @Nullable
+  public final WeakReference<VDiv> getComponentWeakRef()
+  {
+    return this.a;
+  }
+  
   public final void setComponentWeakRef(@Nullable WeakReference<VDiv> paramWeakReference)
   {
     this.a = paramWeakReference;
@@ -42,7 +48,7 @@ public final class ViolaDanmakuView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.components.ViolaDanmakuView
  * JD-Core Version:    0.7.0.1
  */

@@ -5,17 +5,17 @@ final class QQMusicPlayService$3
 {
   public void run()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_ArrayOfInt[0] = QQMusicPlayService.b();
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      this.b[0] = QQMusicPlayService.b();
+      this.a.notifyAll();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayService.3
  * JD-Core Version:    0.7.0.1
  */

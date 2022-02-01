@@ -10,7 +10,7 @@ class FastWebActivity$FastWebSheetItemClickProcessor
   
   public boolean a(int paramInt, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    FastWebActivity.c(this.a, true);
+    FastWebActivity.d(this.a, true);
     FastWebActivity.a(this.a, paramInt);
     this.a.a(paramInt, paramActionSheetItem);
     return super.a(paramInt, paramActionSheetItem);
@@ -18,7 +18,7 @@ class FastWebActivity$FastWebSheetItemClickProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.FastWebSheetItemClickProcessor
  * JD-Core Version:    0.7.0.1
  */

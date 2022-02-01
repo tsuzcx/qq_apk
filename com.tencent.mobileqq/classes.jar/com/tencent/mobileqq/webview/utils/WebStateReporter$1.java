@@ -15,14 +15,14 @@ class WebStateReporter$1
   
   public void run()
   {
-    boolean bool3 = this.jdField_a_of_type_Boolean;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    boolean bool3 = this.a;
+    if (!TextUtils.isEmpty(this.b))
     {
       boolean bool2 = bool3;
       boolean bool1;
       try
       {
-        localObject2 = Uri.parse(this.jdField_a_of_type_JavaLangString);
+        localObject2 = Uri.parse(this.b);
         bool2 = bool3;
         String str = ((Uri)localObject2).getQueryParameter("hasRedDot");
         bool1 = bool3;
@@ -76,26 +76,26 @@ class WebStateReporter$1
         bool2 = bool1;
       }
       label215:
-      int i = this.jdField_a_of_type_JavaLangString.indexOf("?");
-      Object localObject2 = this.jdField_a_of_type_JavaLangString;
+      int i = this.b.indexOf("?");
+      Object localObject2 = this.b;
       Object localObject1 = localObject2;
       if (i != -1) {
         localObject1 = ((String)localObject2).substring(0, i);
       }
-      if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+      if (WebStateReporter.a.isEmpty())
       {
-        this.this$0.a(this.jdField_a_of_type_AndroidContentContext);
-        if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
-          WebStateReporter.jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(10));
+        this.this$0.a(this.c);
+        if (WebStateReporter.a.isEmpty()) {
+          WebStateReporter.a.put("sample_rate", Integer.valueOf(10));
         }
       }
-      if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1)) {
-        localObject2 = WebStateReporter.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+      if (WebStateReporter.a.containsKey(localObject1)) {
+        localObject2 = WebStateReporter.a.get(localObject1);
       } else {
-        localObject2 = WebStateReporter.jdField_a_of_type_JavaUtilHashMap.get("sample_rate");
+        localObject2 = WebStateReporter.a.get("sample_rate");
       }
       i = ((Integer)localObject2).intValue();
-      if ((1 != i) && (this.jdField_a_of_type_Long % i != WebStateReporter.jdField_c_of_type_Int)) {
+      if ((1 != i) && (this.d % i != WebStateReporter.i)) {
         i = 0;
       } else {
         i = 1;
@@ -116,37 +116,37 @@ class WebStateReporter$1
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("try report web status,  step: ");
-        ((StringBuilder)localObject1).append(this.this$0.jdField_b_of_type_Int);
+        ((StringBuilder)localObject1).append(this.this$0.d);
         ((StringBuilder)localObject1).append(", hasRedDot : ");
         ((StringBuilder)localObject1).append(bool2);
         ((StringBuilder)localObject1).append(", crashFrom : ");
         ((StringBuilder)localObject1).append(j);
         ((StringBuilder)localObject1).append(", stepTime: ");
-        ((StringBuilder)localObject1).append(this.this$0.jdField_c_of_type_Long - this.this$0.jdField_b_of_type_Long);
+        ((StringBuilder)localObject1).append(this.this$0.h - this.this$0.f);
         ((StringBuilder)localObject1).append(", totalTime: ");
-        ((StringBuilder)localObject1).append(System.currentTimeMillis() - this.this$0.jdField_b_of_type_Long);
+        ((StringBuilder)localObject1).append(System.currentTimeMillis() - this.this$0.f);
         ((StringBuilder)localObject1).append("\n");
         ((StringBuilder)localObject1).append((String)localObject2);
         QLog.d("WebStateReporter_report", 2, ((StringBuilder)localObject1).toString());
       }
-      if (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_JavaLangString)) {
-        localObject1 = this.this$0.jdField_a_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(this.this$0.g)) {
+        localObject1 = this.this$0.g;
       } else {
         localObject1 = "unknown";
       }
-      Object localObject3 = this.b;
+      Object localObject3 = this.e;
       if (bool2) {
         i = 1;
       } else {
         i = 0;
       }
-      ReportController.b(null, "P_CliOper", "WebStatusReport", "", (String)localObject1, (String)localObject3, i, 1, this.this$0.jdField_b_of_type_Int, (String)localObject2, Build.VERSION.RELEASE, String.valueOf(this.this$0.jdField_c_of_type_Long - this.this$0.jdField_b_of_type_Long), String.valueOf(System.currentTimeMillis() - this.this$0.jdField_b_of_type_Long));
+      ReportController.b(null, "P_CliOper", "WebStatusReport", "", (String)localObject1, (String)localObject3, i, 1, this.this$0.d, (String)localObject2, Build.VERSION.RELEASE, String.valueOf(this.this$0.h - this.this$0.f), String.valueOf(System.currentTimeMillis() - this.this$0.f));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.utils.WebStateReporter.1
  * JD-Core Version:    0.7.0.1
  */

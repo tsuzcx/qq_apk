@@ -15,8 +15,8 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class ArkAuthorityInfoActivity
   extends IphoneTitleBarActivity
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "ark_authority_api_user_info", "ark_authority_api_location", "ark_authority_api_relationship", "ark_authority_api_login", "ark_authority_api_phone_number" };
-  private String jdField_a_of_type_JavaLangString;
+  private static final String[] a = { "ark_authority_api_user_info", "ark_authority_api_location", "ark_authority_api_relationship", "ark_authority_api_login", "ark_authority_api_phone_number" };
+  private String b;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -30,15 +30,15 @@ public class ArkAuthorityInfoActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131558637);
-    super.setTitle(2131690123);
-    this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("intent_extra_authority_app_name");
-    ((TextView)super.findViewById(2131362954)).setText(getString(2131690129, new Object[] { this.jdField_a_of_type_JavaLangString }));
+    setContentView(2131624252);
+    super.setTitle(2131887022);
+    this.b = getIntent().getStringExtra("intent_extra_authority_app_name");
+    ((TextView)super.findViewById(2131428753)).setText(getString(2131887028, new Object[] { this.b }));
     int i = 0;
-    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
+    while (i < a.length)
     {
-      paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131362946, 2131362942, 2131362945, 2131362943, 2131362944 }[i]);
-      int j = ((IArkModuleAPIAuthority)QRoute.api(IArkModuleAPIAuthority.class)).getArkAuthorityInfo(this.jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[i], this.app.getCurrentAccountUin());
+      paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131428745, 2131428741, 2131428744, 2131428742, 2131428743 }[i]);
+      int j = ((IArkModuleAPIAuthority)QRoute.api(IArkModuleAPIAuthority.class)).getArkAuthorityInfo(this.b, a[i], this.app.getCurrentAccountUin());
       if (j == 0)
       {
         paramBundle.setVisibility(8);
@@ -69,7 +69,7 @@ public class ArkAuthorityInfoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity
  * JD-Core Version:    0.7.0.1
  */

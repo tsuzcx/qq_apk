@@ -39,7 +39,7 @@ public class MsgHelper
   {
     if ((paramInt == 1008) && (paramQQAppInterface != null))
     {
-      paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramString);
+      paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).d(paramString);
       if ((paramQQAppInterface != null) && (paramQQAppInterface.isFriend())) {
         return true;
       }
@@ -74,7 +74,7 @@ public class MsgHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.MsgHelper
  * JD-Core Version:    0.7.0.1
  */

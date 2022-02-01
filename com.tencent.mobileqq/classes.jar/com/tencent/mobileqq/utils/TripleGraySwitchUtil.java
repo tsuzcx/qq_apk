@@ -13,8 +13,8 @@ import javax.annotation.Nullable;
 
 public final class TripleGraySwitchUtil
 {
-  private static ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "KEY_DELAY_LOAD_PROXY", "KEY_ENABLE_MEMORY_LEAK", "KEY_DISABLE_NAVIGATION_BAR", "KEY_DISABLE_SAVE_PLUGIN_INFO" };
+  private static String[] a = { "KEY_DELAY_LOAD_PROXY", "KEY_ENABLE_MEMORY_LEAK", "KEY_DISABLE_NAVIGATION_BAR", "KEY_DISABLE_SAVE_PLUGIN_INFO" };
+  private static ConcurrentHashMap<String, Boolean> b = new ConcurrentHashMap(4);
   
   public static void a(Context paramContext, boolean paramBoolean, @Nullable String paramString, @Nullable Throwable paramThrowable)
   {
@@ -26,13 +26,13 @@ public final class TripleGraySwitchUtil
       if (paramBoolean)
       {
         paramContext.putLong("_last_crash_time_", System.currentTimeMillis());
-        paramString = jdField_a_of_type_ArrayOfJavaLangString;
+        paramString = a;
         int j = paramString.length;
         while (i < j)
         {
           paramThrowable = paramString[i];
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("8.7.0");
+          ((StringBuilder)localObject).append("8.8.17");
           ((StringBuilder)localObject).append(paramThrowable);
           paramContext.putBoolean(((StringBuilder)localObject).toString(), true);
           i += 1;
@@ -41,7 +41,7 @@ public final class TripleGraySwitchUtil
       if (TextUtils.isEmpty(paramString))
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("8.7.0");
+        ((StringBuilder)localObject).append("8.8.17");
         ((StringBuilder)localObject).append(paramString);
         paramContext.putBoolean(((StringBuilder)localObject).toString(), true);
         if (paramThrowable != null)
@@ -52,7 +52,7 @@ public final class TripleGraySwitchUtil
           localObject = new StringWriter();
           paramThrowable.printStackTrace(new PrintWriter((Writer)localObject));
           paramThrowable = new StringBuilder();
-          paramThrowable.append("8.7.0_crash_because_");
+          paramThrowable.append("8.8.17_crash_because_");
           paramThrowable.append(paramString);
           paramContext.putString(paramThrowable.toString(), ((StringWriter)localObject).getBuffer().toString());
         }
@@ -86,7 +86,7 @@ public final class TripleGraySwitchUtil
         return false;
       }
       paramContext.getSharedPreferences("BootOptimize", 0).edit().putBoolean(paramString, paramBoolean).apply();
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
+      b.put(paramString, Boolean.valueOf(paramBoolean));
       return true;
     }
     return false;
@@ -101,7 +101,7 @@ public final class TripleGraySwitchUtil
     if (!TextUtils.isEmpty(paramString))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("8.7.0");
+      localStringBuilder.append("8.8.17");
       localStringBuilder.append(paramString);
       if (paramContext.getBoolean(localStringBuilder.toString(), false)) {
         return false;
@@ -128,14 +128,14 @@ public final class TripleGraySwitchUtil
       if (TextUtils.isEmpty(paramString)) {
         return false;
       }
-      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-        return ((Boolean)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).booleanValue();
+      if (b.containsKey(paramString)) {
+        return ((Boolean)b.get(paramString)).booleanValue();
       }
       if ((paramBoolean) && (!b(paramContext, paramString))) {
         return false;
       }
       paramBoolean = paramContext.getSharedPreferences("BootOptimize", 0).getBoolean(paramString, false);
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
+      b.put(paramString, Boolean.valueOf(paramBoolean));
       if (QLog.isColorLevel()) {
         QLog.d("TripleGraySwitchUtil", 2, new Object[] { "key=", paramString, " value=", Boolean.valueOf(paramBoolean) });
       }
@@ -146,7 +146,7 @@ public final class TripleGraySwitchUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.TripleGraySwitchUtil
  * JD-Core Version:    0.7.0.1
  */

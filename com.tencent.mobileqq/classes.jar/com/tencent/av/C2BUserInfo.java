@@ -12,13 +12,13 @@ public class C2BUserInfo
   public static C2BUserInfo a(String paramString)
   {
     C2BUserInfo localC2BUserInfo = new C2BUserInfo();
-    if (localC2BUserInfo.a(paramString)) {
+    if (localC2BUserInfo.b(paramString)) {
       return localC2BUserInfo;
     }
     return null;
   }
   
-  private boolean a(String paramString)
+  private boolean b(String paramString)
   {
     for (;;)
     {

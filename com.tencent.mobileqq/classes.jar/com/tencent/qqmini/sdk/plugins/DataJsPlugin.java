@@ -651,7 +651,7 @@ public class DataJsPlugin
     }
   }
   
-  @JsEvent({"getNativeUserInfo"})
+  @JsEvent(isSync=false, value={"getNativeUserInfo"})
   public void getNativeUserInfo(RequestEvent paramRequestEvent)
   {
     if ((!MiniAppEnv.g().getAuthSate(this.mMiniAppContext.getMiniAppInfo().appId).isPermissionGranted("scope.userInfo")) && (!AuthFilterList.isAppInWhiteList(this.mMiniAppContext.getMiniAppInfo().appId)) && (!AuthFilterList.apiAuthoritySilent(this.mMiniAppContext.getMiniAppInfo())))
@@ -1023,7 +1023,7 @@ public class DataJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.DataJsPlugin
  * JD-Core Version:    0.7.0.1
  */

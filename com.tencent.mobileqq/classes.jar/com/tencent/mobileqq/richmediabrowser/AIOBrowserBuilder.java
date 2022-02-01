@@ -11,64 +11,64 @@ import com.tencent.richmediabrowser.core.IBrowserBuilder;
 public class AIOBrowserBuilder
   implements IBrowserBuilder
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AIOBrowserModel jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel;
-  private AIOBrowserPresenter jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-  private AIOBrowserScene jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene;
-  private BrowserParamsBuilder jdField_a_of_type_ComTencentRichmediabrowserApiBrowserParamsBuilder;
+  private Context a;
+  private AIOBrowserPresenter b;
+  private AIOBrowserScene c;
+  private AIOBrowserModel d;
+  private BrowserParamsBuilder e;
   
   public AIOBrowserBuilder(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public AIOBrowserPresenter a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
+    return this.b;
   }
   
   public void a(BrowserParamsBuilder paramBrowserParamsBuilder)
   {
-    this.jdField_a_of_type_ComTencentRichmediabrowserApiBrowserParamsBuilder = paramBrowserParamsBuilder;
+    this.e = paramBrowserParamsBuilder;
   }
   
   public void buildComplete()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.buildComplete();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene.buildComplete();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.buildComplete();
+    this.b.buildComplete();
+    this.c.buildComplete();
+    this.d.buildComplete();
   }
   
   public void buildModel()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.buildModel();
+    this.d.buildModel();
   }
   
   public void buildParams(Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.buildParams(paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene.buildParams(paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.buildParams(paramIntent);
+    this.b.buildParams(paramIntent);
+    this.c.buildParams(paramIntent);
+    this.d.buildParams(paramIntent);
   }
   
   public void buildPresenter()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter = new AIOBrowserPresenter();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.setParamsBuilder(this.jdField_a_of_type_ComTencentRichmediabrowserApiBrowserParamsBuilder);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene = new AIOBrowserScene(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel = new AIOBrowserModel(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel);
+    this.b = new AIOBrowserPresenter();
+    this.b.setParamsBuilder(this.e);
+    this.c = new AIOBrowserScene(this.a, this.b);
+    this.b.a(this.c);
+    this.d = new AIOBrowserModel(this.b);
+    this.b.a(this.d);
   }
   
   public void buildView()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene.buildView();
+    this.c.buildView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.AIOBrowserBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -19,10 +19,10 @@ class BaseJsCallBack$5
       {
         JSONObject localJSONObject = new JSONObject(this.a);
         SendMsg localSendMsg = new SendMsg("setActionButton");
-        localSendMsg.a.putString("iconType", localJSONObject.optString("iconType"));
-        localSendMsg.a.putString("visible", localJSONObject.optString("visible"));
-        localSendMsg.a.putString("callBackKey", localJSONObject.optString("callBackKey"));
-        localSendMsg.a.putString("rightText", localJSONObject.optString("text"));
+        localSendMsg.b.putString("iconType", localJSONObject.optString("iconType"));
+        localSendMsg.b.putString("visible", localJSONObject.optString("visible"));
+        localSendMsg.b.putString("callBackKey", localJSONObject.optString("callBackKey"));
+        localSendMsg.b.putString("rightText", localJSONObject.optString("text"));
         BaseJsCallBack.access$000(this.this$0).b(localSendMsg);
         return;
       }
@@ -35,7 +35,7 @@ class BaseJsCallBack$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.BaseJsCallBack.5
  * JD-Core Version:    0.7.0.1
  */

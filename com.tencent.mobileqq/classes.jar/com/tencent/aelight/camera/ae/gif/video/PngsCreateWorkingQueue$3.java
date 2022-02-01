@@ -10,16 +10,16 @@ class PngsCreateWorkingQueue$3
   
   public void run()
   {
-    PngsCreateWorkingQueue.a(this.this$0).a();
+    PngsCreateWorkingQueue.b(this.this$0).a();
     if (this.a) {
-      PngsCreateWorkingQueue.a(this.this$0);
+      PngsCreateWorkingQueue.c(this.this$0);
     }
-    PngsCreateWorkingQueue.a(this.this$0).getLooper().quit();
+    PngsCreateWorkingQueue.d(this.this$0).getLooper().quit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.PngsCreateWorkingQueue.3
  * JD-Core Version:    0.7.0.1
  */

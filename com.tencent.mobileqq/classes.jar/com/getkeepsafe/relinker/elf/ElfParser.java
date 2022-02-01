@@ -15,14 +15,14 @@ import java.util.List;
 public class ElfParser
   implements Elf, Closeable
 {
-  private final int jdField_a_of_type_Int = 1179403647;
-  private final FileChannel jdField_a_of_type_JavaNioChannelsFileChannel;
+  private final int a = 1179403647;
+  private final FileChannel b;
   
   public ElfParser(File paramFile)
   {
     if ((paramFile != null) && (paramFile.exists()))
     {
-      this.jdField_a_of_type_JavaNioChannelsFileChannel = new FileInputStream(paramFile).getChannel();
+      this.b = new FileInputStream(paramFile).getChannel();
       return;
     }
     throw new IllegalArgumentException("File is null or does not exist");
@@ -44,28 +44,16 @@ public class ElfParser
     }
   }
   
-  protected int a(ByteBuffer paramByteBuffer, long paramLong)
-  {
-    a(paramByteBuffer, paramLong, 2);
-    return paramByteBuffer.getShort() & 0xFFFF;
-  }
-  
-  protected long a(ByteBuffer paramByteBuffer, long paramLong)
-  {
-    a(paramByteBuffer, paramLong, 8);
-    return paramByteBuffer.getLong();
-  }
-  
   public Elf.Header a()
   {
-    this.jdField_a_of_type_JavaNioChannelsFileChannel.position(0L);
+    this.b.position(0L);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-    if (b(localByteBuffer, 0L) == 1179403647L)
+    if (c(localByteBuffer, 0L) == 1179403647L)
     {
-      int i = a(localByteBuffer, 4L);
+      int i = e(localByteBuffer, 4L);
       boolean bool;
-      if (a(localByteBuffer, 5L) == 2) {
+      if (e(localByteBuffer, 5L) == 2) {
         bool = true;
       } else {
         bool = false;
@@ -86,7 +74,7 @@ public class ElfParser
     StringBuilder localStringBuilder = new StringBuilder();
     for (;;)
     {
-      int i = a(paramByteBuffer, paramLong);
+      int i = e(paramByteBuffer, paramLong);
       if (i == 0) {
         break;
       }
@@ -96,9 +84,32 @@ public class ElfParser
     return localStringBuilder.toString();
   }
   
-  public List<String> a()
+  protected void a(ByteBuffer paramByteBuffer, long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_JavaNioChannelsFileChannel.position(0L);
+    paramByteBuffer.position(0);
+    paramByteBuffer.limit(paramInt);
+    long l = 0L;
+    while (l < paramInt)
+    {
+      int i = this.b.read(paramByteBuffer, paramLong + l);
+      if (i != -1) {
+        l += i;
+      } else {
+        throw new EOFException();
+      }
+    }
+    paramByteBuffer.position(0);
+  }
+  
+  protected long b(ByteBuffer paramByteBuffer, long paramLong)
+  {
+    a(paramByteBuffer, paramLong, 8);
+    return paramByteBuffer.getLong();
+  }
+  
+  public List<String> b()
+  {
+    this.b.position(0L);
     ArrayList localArrayList = new ArrayList();
     Elf.Header localHeader = a();
     ByteBuffer localByteBuffer = ByteBuffer.allocate(8);
@@ -108,7 +119,7 @@ public class ElfParser
       localObject = ByteOrder.LITTLE_ENDIAN;
     }
     localByteBuffer.order((ByteOrder)localObject);
-    long l1 = localHeader.c;
+    long l1 = localHeader.f;
     int i = 0;
     long l2 = l1;
     if (l1 == 65535L) {
@@ -155,30 +166,7 @@ public class ElfParser
     }
   }
   
-  protected short a(ByteBuffer paramByteBuffer, long paramLong)
-  {
-    a(paramByteBuffer, paramLong, 1);
-    return (short)(paramByteBuffer.get() & 0xFF);
-  }
-  
-  protected void a(ByteBuffer paramByteBuffer, long paramLong, int paramInt)
-  {
-    paramByteBuffer.position(0);
-    paramByteBuffer.limit(paramInt);
-    long l = 0L;
-    while (l < paramInt)
-    {
-      int i = this.jdField_a_of_type_JavaNioChannelsFileChannel.read(paramByteBuffer, paramLong + l);
-      if (i != -1) {
-        l += i;
-      } else {
-        throw new EOFException();
-      }
-    }
-    paramByteBuffer.position(0);
-  }
-  
-  protected long b(ByteBuffer paramByteBuffer, long paramLong)
+  protected long c(ByteBuffer paramByteBuffer, long paramLong)
   {
     a(paramByteBuffer, paramLong, 4);
     return paramByteBuffer.getInt() & 0xFFFFFFFF;
@@ -186,7 +174,19 @@ public class ElfParser
   
   public void close()
   {
-    this.jdField_a_of_type_JavaNioChannelsFileChannel.close();
+    this.b.close();
+  }
+  
+  protected int d(ByteBuffer paramByteBuffer, long paramLong)
+  {
+    a(paramByteBuffer, paramLong, 2);
+    return paramByteBuffer.getShort() & 0xFFFF;
+  }
+  
+  protected short e(ByteBuffer paramByteBuffer, long paramLong)
+  {
+    a(paramByteBuffer, paramLong, 1);
+    return (short)(paramByteBuffer.get() & 0xFF);
   }
 }
 

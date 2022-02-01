@@ -21,39 +21,39 @@ public class ContactSearchResultMobilePresenter
     super.a(paramISearchResultModel, paramISearchResultView);
     if (TextUtils.isEmpty(paramISearchResultModel.a()))
     {
-      paramISearchResultView.c().setVisibility(8);
-      ((ContactSearchResultMobileView)paramISearchResultView).a().setVisibility(0);
+      paramISearchResultView.d().setVisibility(8);
+      ((ContactSearchResultMobileView)paramISearchResultView).j().setVisibility(0);
     }
     else
     {
-      paramISearchResultView.c().setVisibility(0);
-      paramISearchResultView.c().setText(paramISearchResultModel.a());
-      ((ContactSearchResultMobileView)paramISearchResultView).a().setVisibility(8);
+      paramISearchResultView.d().setVisibility(0);
+      paramISearchResultView.d().setText(paramISearchResultModel.a());
+      ((ContactSearchResultMobileView)paramISearchResultView).j().setVisibility(8);
     }
-    if (paramISearchResultView.d() != null)
+    if (paramISearchResultView.e() != null)
     {
-      paramISearchResultModel = paramISearchResultModel.d();
+      paramISearchResultModel = paramISearchResultModel.f();
       if (TextUtils.isEmpty(paramISearchResultModel))
       {
-        paramISearchResultView.d().setVisibility(8);
+        paramISearchResultView.e().setVisibility(8);
         return;
       }
-      paramISearchResultView.d().setVisibility(0);
-      paramISearchResultView.d().setText(paramISearchResultModel);
+      paramISearchResultView.e().setVisibility(0);
+      paramISearchResultView.e().setText(paramISearchResultModel);
     }
   }
   
   protected void c(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     super.c(paramISearchResultModel, paramISearchResultView);
-    ((ContactSearchResultMobileView)paramISearchResultView).a().setOnClickListener(new ContactSearchResultMobilePresenter.1(this, paramISearchResultModel));
+    ((ContactSearchResultMobileView)paramISearchResultView).j().setOnClickListener(new ContactSearchResultMobilePresenter.1(this, paramISearchResultModel));
   }
   
   public void d(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.presenter.ContactSearchResultMobilePresenter
  * JD-Core Version:    0.7.0.1
  */

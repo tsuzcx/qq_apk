@@ -12,28 +12,28 @@ class CameraPeakServiceHandler$1
   
   public void onFail(int paramInt)
   {
-    CameraPeakServiceHandler.a(this.jdField_a_of_type_ComTencentAelightCameraAeConfigCameraPeakServiceHandler);
+    CameraPeakServiceHandler.a(this.b);
   }
   
   public void onSuccess(Bitmap paramBitmap)
   {
     if (paramBitmap != null)
     {
-      paramBitmap = CameraPeakServiceHandler.a(this.jdField_a_of_type_ComTencentAelightCameraAeConfigCameraPeakServiceHandler.a.getApp(), paramBitmap);
+      paramBitmap = CameraPeakServiceHandler.a(this.b.c.getApp(), paramBitmap);
       if ((paramBitmap != null) && (paramBitmap.length() >= 1))
       {
-        CameraPeakServiceHandler.a(this.jdField_a_of_type_ComTencentAelightCameraAeConfigCameraPeakServiceHandler, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, paramBitmap);
+        CameraPeakServiceHandler.a(this.b, this.a, paramBitmap);
         return;
       }
-      CameraPeakServiceHandler.a(this.jdField_a_of_type_ComTencentAelightCameraAeConfigCameraPeakServiceHandler);
+      CameraPeakServiceHandler.a(this.b);
       return;
     }
-    CameraPeakServiceHandler.a(this.jdField_a_of_type_ComTencentAelightCameraAeConfigCameraPeakServiceHandler);
+    CameraPeakServiceHandler.a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.config.CameraPeakServiceHandler.1
  * JD-Core Version:    0.7.0.1
  */

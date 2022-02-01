@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/dyj" android:tag="echopCustomTabView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:id="@id/nbj" android:layout_width="wrap_content" android:layout_height="18.0dip">
+        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/ax8" android:layout_gravity="center_vertical" android:id="@id/qlm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginRight="7.0dip" />
+    </FrameLayout>
+    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/o6t" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="2.0dip" />
+</FrameLayout>

@@ -11,26 +11,26 @@ class ColorNoteSmallScreenService$4
   
   public void a(int paramInt)
   {
-    if ((ColorNoteSmallScreenService.a(this.a) != null) && (ColorNoteSmallScreenService.a(this.a).a()))
+    if ((ColorNoteSmallScreenService.e(this.a) != null) && (ColorNoteSmallScreenService.e(this.a).e()))
     {
-      ColorNoteSmallScreenService.a(this.a).a();
-      ColorNoteSmallScreenService.a(this.a).b();
+      ColorNoteSmallScreenService.e(this.a).b();
+      ColorNoteSmallScreenService.c(this.a).b();
       return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast != null) && (this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.a)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.onClick(this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast);
+    if ((this.a.p != null) && (this.a.p.a)) {
+      this.a.p.onClick(this.a.p);
     }
   }
   
   public void b()
   {
-    ColorNoteSmallScreenService.a(this.a);
-    this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.f();
+    ColorNoteSmallScreenService.f(this.a);
+    this.a.m.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService.4
  * JD-Core Version:    0.7.0.1
  */

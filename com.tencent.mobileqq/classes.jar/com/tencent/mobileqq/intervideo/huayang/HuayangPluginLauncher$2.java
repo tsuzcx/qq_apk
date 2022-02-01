@@ -22,7 +22,7 @@ class HuayangPluginLauncher$2
         {
           localHuayangPluginLauncher = this.this$0;
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(HardCodeUtil.a(2131705740));
+          localStringBuilder.append(HardCodeUtil.a(2131903625));
           localStringBuilder.append(l);
           HuayangPluginLauncher.access$700(localHuayangPluginLauncher, "HuayangPluginLauncher", localStringBuilder.toString());
           try
@@ -58,7 +58,7 @@ class HuayangPluginLauncher$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher.2
  * JD-Core Version:    0.7.0.1
  */

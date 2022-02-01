@@ -42,51 +42,6 @@ public class ConfessMsgProxy
     return 0;
   }
   
-  private void a(String paramString, int paramInt1, int paramInt2)
-  {
-    Object localObject2 = c(paramString, paramInt1, paramInt2);
-    Object localObject1;
-    if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
-    {
-      if ((QLog.isColorLevel()) && (StartupTrackerForAio.a()))
-      {
-        localObject1 = new StringBuilder(((List)localObject2).size() * 48 + 28);
-        ((StringBuilder)localObject1).append("getAIOMsgList_confess, msgInfoList: ");
-        Iterator localIterator = ((List)localObject2).iterator();
-        while (localIterator.hasNext())
-        {
-          MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-          ((StringBuilder)localObject1).append("(");
-          ((StringBuilder)localObject1).append(localMessageRecord.time);
-          ((StringBuilder)localObject1).append(",");
-          ((StringBuilder)localObject1).append(localMessageRecord.shmsgseq);
-          ((StringBuilder)localObject1).append(",");
-          ((StringBuilder)localObject1).append(localMessageRecord.msgtype);
-          ((StringBuilder)localObject1).append(") ");
-        }
-        QLog.d("Q.msg.MsgProxy", 2, ((StringBuilder)localObject1).toString());
-      }
-      localObject1 = new ArrayList();
-      a((List)localObject2, (List)localObject1);
-    }
-    else
-    {
-      localObject1 = null;
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = new ArrayList();
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getAIOMsgList_confess continuedList :");
-      ((StringBuilder)localObject1).append(((List)localObject2).size());
-      QLog.d("Q.msg.MsgProxy", 2, ((StringBuilder)localObject1).toString());
-    }
-    a().a().put(a(paramString, paramInt1), localObject2);
-  }
-  
   private void a(List<MessageRecord> paramList)
   {
     HashMap localHashMap = new HashMap();
@@ -133,18 +88,18 @@ public class ConfessMsgProxy
   }
   
   @Nullable
-  private List<MessageRecord> c(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  private List<MessageRecord> d(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    List localList = (List)a().a().get(a(paramString, paramInt1));
+    List localList = (List)a().c().get(j(paramString, paramInt1));
     if (a(paramInt2, localList) == 0)
     {
       if (paramBoolean)
       {
-        a(paramString, paramInt1, paramInt2);
+        e(paramString, paramInt1, paramInt2);
       }
       else
       {
-        a().a().remove(a(paramString, paramInt1));
+        a().c().remove(j(paramString, paramInt1));
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.MsgProxy", 2, "MsgPool.getPoolInstance().getAIOMsgList_confess().remove");
         }
@@ -158,18 +113,63 @@ public class ConfessMsgProxy
       localStringBuilder.append(localList.size());
       QLog.d("Q.msg.MsgProxy", 2, localStringBuilder.toString());
     }
-    return (List)a().a().get(a(paramString, paramInt1));
+    return (List)a().c().get(j(paramString, paramInt1));
+  }
+  
+  private void e(String paramString, int paramInt1, int paramInt2)
+  {
+    Object localObject2 = d(paramString, paramInt1, paramInt2);
+    Object localObject1;
+    if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
+    {
+      if ((QLog.isColorLevel()) && (StartupTrackerForAio.a()))
+      {
+        localObject1 = new StringBuilder(((List)localObject2).size() * 48 + 28);
+        ((StringBuilder)localObject1).append("getAIOMsgList_confess, msgInfoList: ");
+        Iterator localIterator = ((List)localObject2).iterator();
+        while (localIterator.hasNext())
+        {
+          MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+          ((StringBuilder)localObject1).append("(");
+          ((StringBuilder)localObject1).append(localMessageRecord.time);
+          ((StringBuilder)localObject1).append(",");
+          ((StringBuilder)localObject1).append(localMessageRecord.shmsgseq);
+          ((StringBuilder)localObject1).append(",");
+          ((StringBuilder)localObject1).append(localMessageRecord.msgtype);
+          ((StringBuilder)localObject1).append(") ");
+        }
+        QLog.d("Q.msg.MsgProxy", 2, ((StringBuilder)localObject1).toString());
+      }
+      localObject1 = new ArrayList();
+      a((List)localObject2, (List)localObject1);
+    }
+    else
+    {
+      localObject1 = null;
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = new ArrayList();
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getAIOMsgList_confess continuedList :");
+      ((StringBuilder)localObject1).append(((List)localObject2).size());
+      QLog.d("Q.msg.MsgProxy", 2, ((StringBuilder)localObject1).toString());
+    }
+    a().c().put(j(paramString, paramInt1), localObject2);
   }
   
   @Nullable
-  private List<MessageRecord> d(String paramString, int paramInt1, int paramInt2)
+  private List<MessageRecord> f(String paramString, int paramInt1, int paramInt2)
   {
-    String str = a(paramString, paramInt1);
+    String str = j(paramString, paramInt1);
     List localList2 = (List)a().b().get(str);
     List localList1 = localList2;
     if (a(paramInt2, localList2) == 0)
     {
-      localList1 = e(paramString, paramInt1, paramInt2);
+      localList1 = g(paramString, paramInt1, paramInt2);
       a().b().put(str, localList1);
     }
     if ((localList1 != null) && (QLog.isColorLevel())) {
@@ -178,7 +178,7 @@ public class ConfessMsgProxy
     return localList1;
   }
   
-  private List<MessageRecord> e(String paramString, int paramInt1, int paramInt2)
+  private List<MessageRecord> g(String paramString, int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
@@ -186,10 +186,10 @@ public class ConfessMsgProxy
       this.proxyManager.transSaveToDatabase();
     }
     localStringBuilder.append("select * from ");
-    localStringBuilder.append(b(paramString, paramInt1));
+    localStringBuilder.append(l(paramString, paramInt1));
     localStringBuilder.append(" where _id in ");
     localStringBuilder.append("(select _id from ");
-    localStringBuilder.append(b(paramString, paramInt1));
+    localStringBuilder.append(l(paramString, paramInt1));
     int j;
     if (paramInt2 > 0)
     {
@@ -201,8 +201,8 @@ public class ConfessMsgProxy
     localStringBuilder.append(40);
     localStringBuilder.append(")");
     localStringBuilder.append(" order by time desc, _id desc");
-    List localList = b(paramString, paramInt1, paramInt2);
-    Object localObject = MsgProxy.a.a(localStringBuilder.toString(), null, this);
+    List localList = c(paramString, paramInt1, paramInt2);
+    Object localObject = MsgProxy.c.a(localStringBuilder.toString(), null, this);
     if (QLog.isColorLevel())
     {
       paramString = localStringBuilder.toString();
@@ -241,7 +241,7 @@ public class ConfessMsgProxy
   
   public List<MessageRecord> a(String paramString, int paramInt1, int paramInt2)
   {
-    paramString = c(paramString, paramInt1, paramInt2);
+    paramString = d(paramString, paramInt1, paramInt2);
     if (paramString == null) {
       return null;
     }
@@ -250,10 +250,10 @@ public class ConfessMsgProxy
   
   public List<MessageRecord> a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    return b(paramString, paramInt1, paramInt2, paramBoolean);
+    return c(paramString, paramInt1, paramInt2, paramBoolean);
   }
   
-  public List<MessageRecord> b(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  public List<MessageRecord> c(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (QLog.isColorLevel())
     {
@@ -272,7 +272,7 @@ public class ConfessMsgProxy
     ((Lock)localObject).lock();
     try
     {
-      paramString = c(paramString, paramInt1, paramInt2, paramBoolean);
+      paramString = d(paramString, paramInt1, paramInt2, paramBoolean);
       return paramString;
     }
     finally
@@ -281,13 +281,13 @@ public class ConfessMsgProxy
     }
   }
   
-  public List<MessageRecord> c(String paramString, int paramInt1, int paramInt2)
+  public List<MessageRecord> d(String paramString, int paramInt1, int paramInt2)
   {
     Lock localLock = a().a(paramString, paramInt1);
     localLock.lock();
     try
     {
-      paramString = d(paramString, paramInt1, paramInt2);
+      paramString = f(paramString, paramInt1, paramInt2);
       return paramString;
     }
     finally

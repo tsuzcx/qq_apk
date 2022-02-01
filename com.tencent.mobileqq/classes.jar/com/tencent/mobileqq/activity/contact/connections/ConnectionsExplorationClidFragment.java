@@ -15,29 +15,29 @@ import com.tencent.widget.SwipListView.RightIconMenuListener;
 public class ConnectionsExplorationClidFragment
   extends BaseFragment
 {
-  private int jdField_a_of_type_Int = 0;
-  private ConnectsExplorationFriendAdapter jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  SwipListView.RightIconMenuListener jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener = new ConnectionsExplorationClidFragment.1(this);
-  private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = false;
+  SwipListView.RightIconMenuListener a = new ConnectionsExplorationClidFragment.1(this);
+  private QQAppInterface b;
+  private int c = 0;
+  private int d = 0;
+  private boolean e = false;
+  private boolean f = false;
+  private SwipListView g = null;
+  private ConnectsExplorationFriendAdapter h;
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getBaseActivity().app;
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131376251));
-    View localView = paramView.findViewById(2131366221);
-    paramView = paramView.findViewById(2131370385);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter = new ConnectsExplorationFriendAdapter(getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipListView, localView, paramView, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    if (this.jdField_b_of_type_Boolean)
+    this.b = getBaseActivity().app;
+    this.g = ((SwipListView)paramView.findViewById(2131444459));
+    View localView = paramView.findViewById(2131432509);
+    paramView = paramView.findViewById(2131437652);
+    this.h = new ConnectsExplorationFriendAdapter(getBaseActivity(), this.b, this.g, localView, paramView, this.e, this.c, this.d);
+    if (this.f)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter.a();
-      this.jdField_b_of_type_Boolean = false;
+      this.h.a();
+      this.f = false;
     }
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this.jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener);
+    this.g.setDragEnable(true);
+    this.g.setRightIconMenuListener(this.a);
   }
   
   public void a()
@@ -46,26 +46,26 @@ public class ConnectionsExplorationClidFragment
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("ConnectionsExplorationClidFragment onPageSelected ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.d);
       QLog.d("ConnectionsExplorationClidFragment", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter;
+    Object localObject = this.h;
     if (localObject != null)
     {
       ((ConnectsExplorationFriendAdapter)localObject).a();
       return;
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.f = true;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void b()
@@ -74,10 +74,10 @@ public class ConnectionsExplorationClidFragment
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("ConnectionsExplorationClidFragment doOnDestroy ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.d);
       QLog.d("ConnectionsExplorationClidFragment", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter;
+    Object localObject = this.h;
     if (localObject != null) {
       ((ConnectsExplorationFriendAdapter)localObject).c();
     }
@@ -85,12 +85,12 @@ public class ConnectionsExplorationClidFragment
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561243, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131627599, paramViewGroup, false);
     a(paramLayoutInflater);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -108,7 +108,7 @@ public class ConnectionsExplorationClidFragment
       QLog.d("ConnectionsExplorationClidFragment", 2, " onResume");
     }
     super.onResume();
-    ConnectsExplorationFriendAdapter localConnectsExplorationFriendAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationFriendAdapter;
+    ConnectsExplorationFriendAdapter localConnectsExplorationFriendAdapter = this.h;
     if (localConnectsExplorationFriendAdapter != null) {
       localConnectsExplorationFriendAdapter.b();
     }
@@ -116,7 +116,7 @@ public class ConnectionsExplorationClidFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationClidFragment
  * JD-Core Version:    0.7.0.1
  */

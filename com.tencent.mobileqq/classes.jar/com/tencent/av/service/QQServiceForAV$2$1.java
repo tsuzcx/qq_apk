@@ -7,7 +7,7 @@ class QQServiceForAV$2$1
   
   public void a(QavWrapper paramQavWrapper)
   {
-    paramQavWrapper.a(this.jdField_a_of_type_JavaLangString);
+    paramQavWrapper.a(this.a);
     paramQavWrapper.a();
   }
 }

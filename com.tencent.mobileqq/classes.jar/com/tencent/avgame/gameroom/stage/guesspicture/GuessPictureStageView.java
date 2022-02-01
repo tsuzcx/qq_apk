@@ -14,7 +14,7 @@ import com.tencent.avgame.util.UiUtils;
 public class GuessPictureStageView
   extends BaseGuessPictureStageView
 {
-  ImageView d;
+  ImageView F;
   
   public GuessPictureStageView(Context paramContext)
   {
@@ -31,55 +31,55 @@ public class GuessPictureStageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void b()
+  protected void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131558671, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379929));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379927));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379550));
-    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379551));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370232);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369421));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365268));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366776));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370328);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378169));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new GuessPictureStageView.1(this));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131367771);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, UiUtils.b());
-    this.jdField_b_of_type_AndroidViewView.getLayoutParams().width = UiUtils.a();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = new GuessPictureStagePresenter(this);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    super.b();
+    LayoutInflater.from(getContext()).inflate(2131624288, this, true);
+    this.e = ((TextView)findViewById(2131448813));
+    this.f = ((TextView)findViewById(2131448811));
+    this.g = ((AVGameText)findViewById(2131448302));
+    this.h = ((AVGameText)findViewById(2131448303));
+    this.i = findViewById(2131437420);
+    this.k = ((ImageView)findViewById(2131436460));
+    this.l = ((ImageView)findViewById(2131431441));
+    this.F = ((ImageView)findViewById(2131433098));
+    this.m = findViewById(2131437582);
+    this.j = ((ImageView)findViewById(2131446682));
+    this.j.setOnClickListener(new GuessPictureStageView.1(this));
+    this.n = findViewById(2131434340);
+    this.e.setTextSize(0, UiUtils.b());
+    this.m.getLayoutParams().width = UiUtils.a();
+    this.d = new GuessPictureStagePresenter(this);
+    this.l.setVisibility(4);
+    this.m.setVisibility(4);
+    this.j.setVisibility(4);
+    this.n.setVisibility(8);
+    super.c();
   }
   
   public void setFontStyle(FontStyleConfig paramFontStyleConfig)
   {
     super.setFontStyle(paramFontStyleConfig);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramFontStyleConfig.e));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramFontStyleConfig.f));
+    this.e.setTextColor(Color.parseColor(paramFontStyleConfig.i));
+    this.f.setTextColor(Color.parseColor(paramFontStyleConfig.j));
   }
   
   public void setSpecialMode(boolean paramBoolean)
   {
     super.setSpecialMode(paramBoolean);
-    if (this.jdField_d_of_type_AndroidViewView == null) {
+    if (this.r == null) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.t)
     {
-      this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView = this.jdField_d_of_type_AndroidWidgetImageView;
+      this.r.setVisibility(0);
+      this.F.setVisibility(0);
+      this.l.setVisibility(8);
+      this.l = this.F;
       return;
     }
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.r.setVisibility(8);
+    this.l.setVisibility(0);
+    this.F.setVisibility(8);
   }
 }
 

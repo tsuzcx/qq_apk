@@ -54,12 +54,6 @@ public class ScribbleBaseOperator
     return localMessageForScribble;
   }
   
-  public boolean a(MessageForScribble paramMessageForScribble)
-  {
-    ThreadManager.post(new ScribbleBaseOperator.1(this, paramMessageForScribble), 8, null, false);
-    return true;
-  }
-  
   public boolean a(MessageForScribble paramMessageForScribble, DownCallBack paramDownCallBack)
   {
     TransferRequest localTransferRequest = new TransferRequest();
@@ -91,10 +85,16 @@ public class ScribbleBaseOperator
     ((ITransFileController)this.a.getRuntimeService(ITransFileController.class, "")).transferAsync(localTransferRequest);
     return true;
   }
+  
+  public boolean b(MessageForScribble paramMessageForScribble)
+  {
+    ThreadManager.post(new ScribbleBaseOperator.1(this, paramMessageForScribble), 8, null, false);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleBaseOperator
  * JD-Core Version:    0.7.0.1
  */

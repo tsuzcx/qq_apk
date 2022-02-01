@@ -14,45 +14,45 @@ class ThemeBackground$6$1
   
   public void run()
   {
-    if ((!"null".equals(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    if ((!"null".equals(this.a.a)) && (this.a.b != null))
     {
-      ThemeBackground.a(this.this$0.jdField_a_of_type_AndroidViewView, this.a, this.this$0.b, this.this$0.jdField_a_of_type_Int);
+      ThemeBackground.a(this.this$0.e, this.a, this.this$0.d, this.this$0.b);
       return;
     }
-    Object localObject = this.this$0.jdField_a_of_type_AndroidViewView.getTag();
+    Object localObject = this.this$0.e.getTag();
     if ((localObject instanceof ThemeBackground))
     {
       localObject = (ThemeBackground)localObject;
-      if ((((ThemeBackground)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof IGLDrawable)) {
-        ((IGLDrawable)((ThemeBackground)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable).recycle();
+      if ((((ThemeBackground)localObject).b instanceof IGLDrawable)) {
+        ((IGLDrawable)((ThemeBackground)localObject).b).recycle();
       }
     }
-    this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.this$0.jdField_a_of_type_AndroidViewView.setTag(null);
-    if ((this.this$0.jdField_a_of_type_AndroidViewView instanceof ImageView))
+    this.a.b = null;
+    this.this$0.e.setTag(null);
+    if ((this.this$0.e instanceof ImageView))
     {
-      ((ImageView)this.this$0.jdField_a_of_type_AndroidViewView).setImageResource(this.this$0.b);
-      if (this.a.jdField_a_of_type_AndroidWidgetImageView$ScaleType != null) {
-        ((ImageView)this.this$0.jdField_a_of_type_AndroidViewView).setScaleType(this.a.jdField_a_of_type_AndroidWidgetImageView$ScaleType);
+      ((ImageView)this.this$0.e).setImageResource(this.this$0.d);
+      if (this.a.g != null) {
+        ((ImageView)this.this$0.e).setScaleType(this.a.g);
       }
     }
     else
     {
-      if (((IVasDepTemp)QRoute.api(IVasDepTemp.class)).setContentBackground(this.this$0.jdField_a_of_type_AndroidViewView, this.this$0.b)) {
+      if (((IVasDepTemp)QRoute.api(IVasDepTemp.class)).setContentBackground(this.this$0.e, this.this$0.d)) {
         return;
       }
-      if ((this.this$0.jdField_a_of_type_AndroidViewView instanceof FPSSwipListView))
+      if ((this.this$0.e instanceof FPSSwipListView))
       {
-        ((FPSSwipListView)this.this$0.jdField_a_of_type_AndroidViewView).setContentBackground(this.this$0.b);
+        ((FPSSwipListView)this.this$0.e).setContentBackground(this.this$0.d);
         return;
       }
-      this.this$0.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.this$0.b);
+      this.this$0.e.setBackgroundResource(this.this$0.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.diy.ThemeBackground.6.1
  * JD-Core Version:    0.7.0.1
  */

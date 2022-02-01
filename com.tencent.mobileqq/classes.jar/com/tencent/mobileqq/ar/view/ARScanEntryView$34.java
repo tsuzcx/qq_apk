@@ -18,17 +18,17 @@ class ARScanEntryView$34
   public void onMapLoaded()
   {
     Object localObject = this.a;
-    ((ARScanEntryView)localObject).b = true;
-    if (ARScanEntryView.a((ARScanEntryView)localObject) != null)
+    ((ARScanEntryView)localObject).o = true;
+    if (ARScanEntryView.x((ARScanEntryView)localObject) != null)
     {
-      localObject = ARScanEntryView.a(this.a).getMap().getProjection();
-      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
+      localObject = ARScanEntryView.x(this.a).getMap().getProjection();
+      TencentMap localTencentMap = ARScanEntryView.x(this.a).getMap();
       if ((localObject != null) && (localTencentMap != null))
       {
         Point localPoint = ((Projection)localObject).toScreenLocation(localTencentMap.getCameraPosition().target);
         if (localPoint != null)
         {
-          localPoint.offset(0, AIOUtils.b(60.0F, this.a.a.getResources()) * -1);
+          localPoint.offset(0, AIOUtils.b(60.0F, this.a.E.getResources()) * -1);
           localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(((Projection)localObject).fromScreenLocation(localPoint)));
         }
       }
@@ -37,7 +37,7 @@ class ARScanEntryView$34
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.34
  * JD-Core Version:    0.7.0.1
  */

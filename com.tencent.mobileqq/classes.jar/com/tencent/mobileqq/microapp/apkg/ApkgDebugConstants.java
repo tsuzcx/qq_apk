@@ -55,7 +55,7 @@ public class ApkgDebugConstants
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         FormSimpleItem localFormSimpleItem = new FormSimpleItem(paramLinearLayout.getContext());
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131700507));
+        localStringBuilder.append(HardCodeUtil.a(2131898538));
         localStringBuilder.append(((ApkgConfig)localEntry.getValue()).app_name);
         localFormSimpleItem.setLeftText(localStringBuilder.toString());
         localFormSimpleItem.setOnClickListener(new ApkgDebugConstants.1(paramLinearLayout, localEntry));
@@ -66,7 +66,7 @@ public class ApkgDebugConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.ApkgDebugConstants
  * JD-Core Version:    0.7.0.1
  */

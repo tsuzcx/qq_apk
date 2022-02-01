@@ -22,18 +22,18 @@ public class FriendChooser$SearchResultAdapter
   public FriendChooser$SearchResultAdapter(List<Friend> paramList)
   {
     Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.a = localObject;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return this.a.get(paramInt);
     }
     return null;
   }
@@ -43,11 +43,11 @@ public class FriendChooser$SearchResultAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2131562824, paramViewGroup, false);
+      localView = this.b.getLayoutInflater().inflate(2131629269, paramViewGroup, false);
       paramView = new FriendChooser.ViewHolder();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369373));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379778));
-      paramView.b = ((TextView)localView.findViewById(2131379889));
+      paramView.c = ((ImageView)localView.findViewById(2131436404));
+      paramView.a = ((TextView)localView.findViewById(2131448598));
+      paramView.b = ((TextView)localView.findViewById(2131448762));
       localView.setTag(paramView);
     }
     else
@@ -56,31 +56,31 @@ public class FriendChooser$SearchResultAdapter
       localView = paramView;
       paramView = (View)localObject1;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.a;
     if ((localObject1 != null) && (((List)localObject1).size() != 0))
     {
-      localObject1 = (Friend)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localObject1 = (Friend)this.a.get(paramInt);
       if ((((Friend)localObject1).c != null) && (!"".equals(((Friend)localObject1).c))) {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((Friend)localObject1).c);
+        paramView.a.setText(((Friend)localObject1).c);
       } else {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((Friend)localObject1).b);
+        paramView.a.setText(((Friend)localObject1).b);
       }
       if ((((Friend)localObject1).d == null) || ("".equals(((Friend)localObject1).d))) {
-        ((Friend)localObject1).d = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), ((Friend)localObject1).a);
+        ((Friend)localObject1).d = QZonePortraitData.a(this.b.i(), ((Friend)localObject1).a);
       }
       Object localObject2 = ImageLoader.a().a(((Friend)localObject1).d);
       if (localObject2 == null)
       {
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840321);
-        localObject2 = paramView.jdField_a_of_type_AndroidWidgetImageView;
+        paramView.c.setImageResource(2130841060);
+        localObject2 = paramView.c;
         ImageLoader.a().a(((Friend)localObject1).d, new FriendChooser.SearchResultAdapter.1(this, (ImageView)localObject2));
       }
       else
       {
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject2);
+        paramView.c.setImageBitmap((Bitmap)localObject2);
       }
-      if (this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.a(((Friend)localObject1).a)) {
-        paramView.b.setText(2131691771);
+      if (this.b.C.b(((Friend)localObject1).a)) {
+        paramView.b.setText(2131888733);
       } else {
         paramView.b.setText("");
       }
@@ -91,7 +91,7 @@ public class FriendChooser$SearchResultAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.FriendChooser.SearchResultAdapter
  * JD-Core Version:    0.7.0.1
  */

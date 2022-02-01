@@ -126,16 +126,16 @@ public class StoryPlayControllerImpl
     if (localVideoViewHolder == null) {
       return;
     }
-    if ((this.mAdapter.jdField_a_of_type_JavaUtilList.size() > 1) && (!this.mIsShownNewGuide))
+    if ((this.mAdapter.d.size() > 1) && (!this.mIsShownNewGuide))
     {
-      if ((localVideoViewHolder != null) && (localVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout != null)) {
+      if ((localVideoViewHolder != null) && (localVideoViewHolder.c != null)) {
         ((IVideoPlayerView)this.mVideoPlayer).pause();
       }
       if (this.mNewGuideDialog != null) {
         return;
       }
-      this.mNewGuideDialog = new StoryNewGuideDialog(this.stuffContainerView.jdField_a_of_type_AndroidAppActivity);
-      this.mNewGuideDialog.a(HardCodeUtil.a(2131714350));
+      this.mNewGuideDialog = new StoryNewGuideDialog(this.stuffContainerView.a);
+      this.mNewGuideDialog.a(HardCodeUtil.a(2131911864));
       HashMap localHashMap = this.itemListeners;
       this.mNewGuideDialog.setOnDismissListener(new StoryPlayControllerImpl.8(this, localVideoViewHolder, localHashMap));
       this.mNewGuideDialog.show();
@@ -147,17 +147,17 @@ public class StoryPlayControllerImpl
   
   private void playPictuer(int paramInt, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, VideoData paramVideoData)
   {
-    this.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProgressControler.a(true);
-    paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setRelayoutListener(new StoryPlayControllerImpl.6(this, paramVideoViewHolder, paramVideoData));
-    if (paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0) != null)
+    this.stuffContainerView.h.a(true);
+    paramVideoViewHolder.e.setRelayoutListener(new StoryPlayControllerImpl.6(this, paramVideoViewHolder, paramVideoData));
+    if (paramVideoData.M.get(0) != null)
     {
-      if ((this.mAdapter.a(paramInt) instanceof IShortVideoCommentsView))
+      if ((this.mAdapter.d(paramInt) instanceof IShortVideoCommentsView))
       {
-        IShortVideoCommentsView localIShortVideoCommentsView = (IShortVideoCommentsView)this.mAdapter.a(paramInt);
-        ((IStoryRelayoutUtil)QRoute.api(IStoryRelayoutUtil.class)).dynamicLayoutStoryImageContainerView(paramVideoViewHolder, ((ImageData)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_Int, ((ImageData)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Int, paramVideoData, localIShortVideoCommentsView);
+        IShortVideoCommentsView localIShortVideoCommentsView = (IShortVideoCommentsView)this.mAdapter.d(paramInt);
+        ((IStoryRelayoutUtil)QRoute.api(IStoryRelayoutUtil.class)).dynamicLayoutStoryImageContainerView(paramVideoViewHolder, ((ImageData)paramVideoData.M.get(0)).c, ((ImageData)paramVideoData.M.get(0)).b, paramVideoData, localIShortVideoCommentsView);
       }
-      paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setVisibility(8);
-      paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.a(paramVideoData);
+      paramVideoViewHolder.e.setVisibility(8);
+      paramVideoViewHolder.e.a(paramVideoData);
       hideRootCover();
     }
   }
@@ -165,26 +165,26 @@ public class StoryPlayControllerImpl
   private void playShortVideo(int paramInt, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, VideoData paramVideoData)
   {
     
-    if (NetworkUtil.a(getContext()) != 1)
+    if (NetworkUtil.b(getContext()) != 1)
     {
       int i = this.mCurrentMediaType;
-      if ((i != 4) && (i != VideoData.jdField_a_of_type_Int) && (!paramVideoData.jdField_d_of_type_Boolean))
+      if ((i != 4) && (i != VideoData.a) && (!paramVideoData.L))
       {
-        QQToast.a(getContext(), HardCodeUtil.a(2131714340), 1).a();
+        QQToast.makeText(getContext(), HardCodeUtil.a(2131911854), 1).show();
         this.mHasShowToast = true;
       }
     }
     ActCallBack localActCallBack = this.callBack;
     if (localActCallBack != null) {
-      localActCallBack.a();
+      localActCallBack.d();
     }
-    if ((paramVideoViewHolder != null) && (paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null))
+    if ((paramVideoViewHolder != null) && (paramVideoViewHolder.d != null))
     {
-      paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a(paramVideoData);
-      ((IVideoPlayerView)this.mVideoPlayer).setOnVideoInfoListener((IVideoInfoListener)this.itemListeners.get(Integer.valueOf(paramVideoViewHolder.jdField_a_of_type_Int)));
-      ((IVideoPlayerView)this.mVideoPlayer).play(paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout, paramVideoData, new StoryPlayControllerImpl.5(this));
+      paramVideoViewHolder.d.a(paramVideoData);
+      ((IVideoPlayerView)this.mVideoPlayer).setOnVideoInfoListener((IVideoInfoListener)this.itemListeners.get(Integer.valueOf(paramVideoViewHolder.a)));
+      ((IVideoPlayerView)this.mVideoPlayer).play(paramVideoViewHolder.c, paramVideoData, new StoryPlayControllerImpl.5(this));
     }
-    this.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProgressControler.a(paramInt, 0);
+    this.stuffContainerView.h.a(paramInt, 0);
     if (QLog.isColorLevel())
     {
       paramVideoViewHolder = new StringBuilder();
@@ -222,7 +222,7 @@ public class StoryPlayControllerImpl
         Double.isNaN(d2);
         d1 /= d2;
       }
-      QualityReporter.a(this.mVideoPlayer.getVideoData().jdField_a_of_type_JavaLangString, 2, String.valueOf(d1), String.valueOf(l1), String.valueOf(l2), String.valueOf(QualityReporter.b()), ((IVideoPlayerView)this.mVideoPlayer).isPlaying());
+      QualityReporter.a(this.mVideoPlayer.getVideoData().c, 2, String.valueOf(d1), String.valueOf(l1), String.valueOf(l2), String.valueOf(QualityReporter.h()), ((IVideoPlayerView)this.mVideoPlayer).isPlaying());
     }
     ((IVideoPlayerView)this.mVideoPlayer).suspend();
     this.mAdapter.a();
@@ -237,11 +237,11 @@ public class StoryPlayControllerImpl
   public void doOnResume()
   {
     ((IVideoPlayerView)this.mVideoPlayer).resume();
-    if (NetworkUtil.a(getContext()) != 1)
+    if (NetworkUtil.b(getContext()) != 1)
     {
       int i = this.mCurrentMediaType;
-      if ((i != 4) && (i != VideoData.jdField_a_of_type_Int) && (this.mVideoPlayer.getVideoData() != null) && (!this.mVideoPlayer.getVideoData().jdField_d_of_type_Boolean)) {
-        QQToast.a(getContext(), HardCodeUtil.a(2131714351), 1).a();
+      if ((i != 4) && (i != VideoData.a) && (this.mVideoPlayer.getVideoData() != null) && (!this.mVideoPlayer.getVideoData().L)) {
+        QQToast.makeText(getContext(), HardCodeUtil.a(2131911865), 1).show();
       }
     }
     this.mFirstResume = false;
@@ -354,7 +354,7 @@ public class StoryPlayControllerImpl
   {
     ActCallBack localActCallBack = this.callBack;
     if (localActCallBack != null) {
-      localActCallBack.b();
+      localActCallBack.e();
     }
   }
   
@@ -383,16 +383,16 @@ public class StoryPlayControllerImpl
     VideoPlayerPagerAdapter localVideoPlayerPagerAdapter = this.mAdapter;
     if (localVideoPlayerPagerAdapter != null)
     {
-      if (localVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilList == null) {
+      if (localVideoPlayerPagerAdapter.d == null) {
         return;
       }
-      if (this.mAdapter.jdField_a_of_type_JavaUtilList.size() > 0) {
-        if ((!this.mAdapter.a(0).jdField_d_of_type_Boolean) && (this.mAdapter.jdField_a_of_type_JavaUtilList.size() <= 1))
+      if (this.mAdapter.d.size() > 0) {
+        if ((!this.mAdapter.c(0).L) && (this.mAdapter.d.size() <= 1))
         {
-          if (this.mAdapter.a(0).k == 4) {
+          if (this.mAdapter.c(0).G == 4) {
             ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setFeedType("2");
           }
-          if (this.mAdapter.a(0).k != 4) {
+          if (this.mAdapter.c(0).G != 4) {
             ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setFeedType("1");
           }
         }
@@ -438,7 +438,7 @@ public class StoryPlayControllerImpl
     if (this.mFeedId == null) {
       this.mFeedId = "";
     }
-    this.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProgressControler.a(false);
+    this.stuffContainerView.h.a(false);
     localObject = paramBundle.getString("processbar");
     boolean bool = TextUtils.isEmpty((CharSequence)localObject);
     int i = 2;
@@ -447,9 +447,9 @@ public class StoryPlayControllerImpl
     {
       int j = Integer.parseInt((String)localObject);
       if (j == 1) {
-        this.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProgressControler.a(false);
+        this.stuffContainerView.h.a(false);
       } else if (j == 2) {
-        this.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProgressControler.a(true);
+        this.stuffContainerView.h.a(true);
       }
     }
     catch (Exception localException)
@@ -461,10 +461,10 @@ public class StoryPlayControllerImpl
     this.mShouldOpenComment = paramBundle.getBoolean("should_show_comment_view", false);
     this.mPlayListDataModel.a(paramBundle);
     paramBundle = this.mPlayListDataModel;
-    paramBundle.a = this.app;
+    paramBundle.c = this.app;
     paramBundle.a(this.mDataComeListener);
     QualityReporter.a();
-    this.mPlayListDataModel.a();
+    this.mPlayListDataModel.b();
     paramBundle = new VideoData();
     localObject = getValue("preLoadParams");
     bool = getValue("feed_type").equals("4");
@@ -479,37 +479,37 @@ public class StoryPlayControllerImpl
     {
       this.isUrlProvided = true;
       localObject = new JSONObject((String)localObject);
-      paramBundle.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("id");
-      paramBundle.f = ((JSONObject)localObject).optString("headerUrl");
-      paramBundle.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("videoUrl");
-      paramBundle.l = ((JSONObject)localObject).optInt("videoHeight");
-      paramBundle.m = ((JSONObject)localObject).optInt("videoWidth");
-      paramBundle.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("coverUrl");
-      paramBundle.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("doodleUrl");
-      paramBundle.jdField_g_of_type_Long = ((JSONObject)localObject).optLong("video_timelong");
+      paramBundle.c = ((JSONObject)localObject).optString("id");
+      paramBundle.m = ((JSONObject)localObject).optString("headerUrl");
+      paramBundle.d = ((JSONObject)localObject).optString("videoUrl");
+      paramBundle.H = ((JSONObject)localObject).optInt("videoHeight");
+      paramBundle.I = ((JSONObject)localObject).optInt("videoWidth");
+      paramBundle.e = ((JSONObject)localObject).optString("coverUrl");
+      paramBundle.f = ((JSONObject)localObject).optString("doodleUrl");
+      paramBundle.z = ((JSONObject)localObject).optLong("video_timelong");
       if (((JSONObject)localObject).optLong("is_local") == 1L) {
         i = 4;
       }
-      paramBundle.jdField_b_of_type_Int = i;
-      paramBundle.jdField_d_of_type_Boolean = true;
-      paramBundle.k = 3;
+      paramBundle.b = i;
+      paramBundle.L = true;
+      paramBundle.G = 3;
       if (bool)
       {
-        paramBundle.k = 4;
-        paramBundle.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        paramBundle.G = 4;
+        paramBundle.M = new ArrayList();
         localObject = new ImageData();
-        ((ImageData)localObject).jdField_b_of_type_Int = paramBundle.l;
-        ((ImageData)localObject).jdField_a_of_type_Int = paramBundle.m;
-        ((ImageData)localObject).jdField_a_of_type_JavaLangString = paramBundle.jdField_c_of_type_JavaLangString;
-        paramBundle.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        ((ImageData)localObject).c = paramBundle.H;
+        ((ImageData)localObject).b = paramBundle.I;
+        ((ImageData)localObject).a = paramBundle.e;
+        paramBundle.M.add(localObject);
       }
-      if (paramBundle.jdField_b_of_type_Int == 4) {
+      if (paramBundle.b == 4) {
         this.mPlayListDataModel.a(true);
       } else {
-        this.mPlayListDataModel.b();
+        this.mPlayListDataModel.c();
       }
       this.mPlayListDataModel.a().add(paramBundle);
-      this.mPlayListDataModel.a(this.mFeedId, paramBundle.jdField_a_of_type_JavaLangString);
+      this.mPlayListDataModel.a(this.mFeedId, paramBundle.c);
       this.mDataComeListener.a(1, 0);
       this.stuffContainerView.setCurrentItem(0, false);
       return;
@@ -544,7 +544,7 @@ public class StoryPlayControllerImpl
   
   protected boolean isVideoListEnd()
   {
-    return this.mPlayListDataModel.a();
+    return this.mPlayListDataModel.e();
   }
   
   public void loadCoverImage(ImageView paramImageView, String paramString, Object paramObject)
@@ -577,34 +577,34 @@ public class StoryPlayControllerImpl
       ((StringBuilder)localObject).append("]");
       QLog.i("VideoPlayController", 2, ((StringBuilder)localObject).toString());
     }
-    paramObject1.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a(paramVideoData);
-    paramObject1.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a(true);
-    if ((paramVideoData.jdField_c_of_type_JavaLangString != null) && (!TextUtils.isEmpty(paramVideoData.jdField_c_of_type_JavaLangString)))
+    paramObject1.d.a(paramVideoData);
+    paramObject1.d.a(true);
+    if ((paramVideoData.e != null) && (!TextUtils.isEmpty(paramVideoData.e)))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(-16777216);
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(-16777216);
       ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "now_blur";
       ((URLDrawable.URLDrawableOptions)localObject).mUseAutoScaleParams = false;
-      localObject = URLDrawable.getDrawable(paramVideoData.jdField_c_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.s);
-      paramObject1.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(paramVideoData.e, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.t);
+      paramObject1.c.setBackgroundDrawable((Drawable)localObject);
     }
     else
     {
-      paramObject1.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(new ColorDrawable(-16777216));
+      paramObject1.c.setBackgroundDrawable(new ColorDrawable(-16777216));
     }
-    boolean bool = ((IStoryRelayoutUtil)QRoute.api(IStoryRelayoutUtil.class)).dynamicChangeStoryContainerView(paramObject1, paramVideoData.m, paramVideoData.l);
+    boolean bool = ((IStoryRelayoutUtil)QRoute.api(IStoryRelayoutUtil.class)).dynamicChangeStoryContainerView(paramObject1, paramVideoData.I, paramVideoData.H);
     paramObject2 = ((IVideoInfoListener)QRoute.api(IVideoInfoListener.class)).init(paramObject1, this, paramObject2, bool);
-    this.itemListeners.put(Integer.valueOf(paramObject1.jdField_a_of_type_Int), paramObject2);
-    if (paramVideoData.jdField_b_of_type_Int == 4)
+    this.itemListeners.put(Integer.valueOf(paramObject1.a), paramObject2);
+    if (paramVideoData.b == 4)
     {
-      paramObject1.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setVisibility(8);
-      if (paramObject1.jdField_a_of_type_AndroidViewView != null) {
-        paramObject1.jdField_a_of_type_AndroidViewView.findViewById(2131378833).setVisibility(4);
+      paramObject1.d.setVisibility(8);
+      if (paramObject1.g != null) {
+        paramObject1.g.findViewById(2131447530).setVisibility(4);
       }
     }
-    prepare(paramBoolean1, paramObject1.jdField_a_of_type_AndroidWidgetRelativeLayout, paramVideoData, paramObject2, paramBoolean2);
+    prepare(paramBoolean1, paramObject1.c, paramVideoData, paramObject2, paramBoolean2);
   }
   
   public void onFlingDown() {}
@@ -627,7 +627,7 @@ public class StoryPlayControllerImpl
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    if (this.mAdapter.jdField_a_of_type_JavaUtilList.size() == 1) {
+    if (this.mAdapter.d.size() == 1) {
       return;
     }
     if (paramInt == this.mOldState) {
@@ -653,10 +653,10 @@ public class StoryPlayControllerImpl
         localStringBuilder.append(this.mCurrentIndex);
         QLog.i("VideoPlayController", 2, localStringBuilder.toString());
       }
-      if (this.mCurrentIndex >= this.mAdapter.jdField_a_of_type_JavaUtilList.size()) {
+      if (this.mCurrentIndex >= this.mAdapter.d.size()) {
         return;
       }
-      if (((VideoData)this.mAdapter.jdField_a_of_type_JavaUtilList.get(this.mCurrentIndex)).jdField_c_of_type_Boolean)
+      if (((VideoData)this.mAdapter.d.get(this.mCurrentIndex)).K)
       {
         if (QLog.isColorLevel())
         {
@@ -689,7 +689,7 @@ public class StoryPlayControllerImpl
   
   public void onPageSelected(int paramInt)
   {
-    paramInt = paramInt - 50 + this.mAdapter.jdField_a_of_type_Int;
+    paramInt = paramInt - 50 + this.mAdapter.h;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -702,26 +702,26 @@ public class StoryPlayControllerImpl
     if (paramInt < 0) {
       return;
     }
-    if (this.mAdapter.jdField_a_of_type_JavaUtilList.size() == 0) {
+    if (this.mAdapter.d.size() == 0) {
       return;
     }
-    if (paramInt >= this.mAdapter.jdField_a_of_type_JavaUtilList.size() - 2)
+    if (paramInt >= this.mAdapter.d.size() - 2)
     {
-      this.mPlayListDataModel.a(this.mFeedId, ((VideoData)this.mAdapter.jdField_a_of_type_JavaUtilList.get(this.mAdapter.jdField_a_of_type_JavaUtilList.size() - 1)).jdField_a_of_type_JavaLangString);
-      this.mFeedId = ((VideoData)this.mAdapter.jdField_a_of_type_JavaUtilList.get(this.mAdapter.jdField_a_of_type_JavaUtilList.size() - 1)).jdField_a_of_type_JavaLangString;
-      this.mPlayListDataModel.a();
+      this.mPlayListDataModel.a(this.mFeedId, ((VideoData)this.mAdapter.d.get(this.mAdapter.d.size() - 1)).c);
+      this.mFeedId = ((VideoData)this.mAdapter.d.get(this.mAdapter.d.size() - 1)).c;
+      this.mPlayListDataModel.b();
     }
     if (paramInt < 2)
     {
-      this.mPlayListDataModel.a(this.mFeedId, ((VideoData)this.mAdapter.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString);
-      this.mFeedId = ((VideoData)this.mAdapter.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
-      this.mPlayListDataModel.b();
+      this.mPlayListDataModel.a(this.mFeedId, ((VideoData)this.mAdapter.d.get(0)).c);
+      this.mFeedId = ((VideoData)this.mAdapter.d.get(0)).c;
+      this.mPlayListDataModel.c();
     }
     if (paramInt < this.mCurrentIndex) {
       ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_left_slide").genderInd1().reportByVideo(this.app);
     }
-    Object localObject = (VideoData)this.mAdapter.jdField_a_of_type_JavaUtilList.get(this.mCurrentIndex);
-    ((VideoData)localObject).jdField_c_of_type_Boolean = false;
+    Object localObject = (VideoData)this.mAdapter.d.get(this.mCurrentIndex);
+    ((VideoData)localObject).K = false;
     if (paramInt > this.mCurrentIndex)
     {
       ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_right_slide").genderInd1().reportByVideo(this.app);
@@ -744,8 +744,8 @@ public class StoryPlayControllerImpl
   public void prepare(boolean paramBoolean1, RelativeLayout paramRelativeLayout, VideoData paramVideoData, Object paramObject, boolean paramBoolean2)
   {
     paramObject = (IVideoInfoListener)paramObject;
-    ImageView localImageView1 = (ImageView)paramRelativeLayout.findViewById(2131369331);
-    ImageView localImageView2 = (ImageView)paramRelativeLayout.findViewById(2131365808);
+    ImageView localImageView1 = (ImageView)paramRelativeLayout.findViewById(2131436334);
+    ImageView localImageView2 = (ImageView)paramRelativeLayout.findViewById(2131432065);
     localImageView1.setScaleType(ImageView.ScaleType.FIT_CENTER);
     localImageView2.setScaleType(ImageView.ScaleType.FIT_CENTER);
     localImageView1.setVisibility(0);
@@ -766,14 +766,14 @@ public class StoryPlayControllerImpl
       localStringBuilder.append("]");
       QLog.i("VideoPlayController", 2, localStringBuilder.toString());
     }
-    if ((paramBoolean2) && (paramVideoData.jdField_c_of_type_JavaLangString != null)) {
-      if (!paramVideoData.jdField_d_of_type_Boolean)
+    if ((paramBoolean2) && (paramVideoData.e != null)) {
+      if (!paramVideoData.L)
       {
-        loadCoverImage(localImageView1, paramVideoData.jdField_c_of_type_JavaLangString, paramObject);
+        loadCoverImage(localImageView1, paramVideoData.e, paramObject);
       }
       else
       {
-        paramRelativeLayout = AbsDownloader.getFile(paramVideoData.jdField_c_of_type_JavaLangString);
+        paramRelativeLayout = AbsDownloader.getFile(paramVideoData.e);
         if ((paramRelativeLayout != null) && (paramRelativeLayout.exists())) {
           try
           {
@@ -785,19 +785,19 @@ public class StoryPlayControllerImpl
               QLog.e("VideoPlayController", 2, localStringBuilder.toString());
             }
             localImageView1.setImageDrawable(new ImageDrawable(BitmapReference.getBitmapReference(BitmapFactory.decodeFile(paramRelativeLayout.getAbsolutePath()))));
-            ((IVideoPlayerView.VideoInfoListener)paramObject).onCoverComplete(paramVideoData.m, paramVideoData.l, true);
+            ((IVideoPlayerView.VideoInfoListener)paramObject).onCoverComplete(paramVideoData.I, paramVideoData.H, true);
           }
           catch (OutOfMemoryError paramRelativeLayout)
           {
             QLog.e("VideoPlayController", 1, paramRelativeLayout, new Object[0]);
-            loadCoverImage(localImageView1, paramVideoData.jdField_c_of_type_JavaLangString, paramObject);
+            loadCoverImage(localImageView1, paramVideoData.e, paramObject);
           }
         } else {
-          loadCoverImage(localImageView1, paramVideoData.jdField_c_of_type_JavaLangString, paramObject);
+          loadCoverImage(localImageView1, paramVideoData.e, paramObject);
         }
       }
     }
-    ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(localImageView2, paramVideoData.jdField_d_of_type_JavaLangString, new ColorDrawable(0), new ColorDrawable(0), new StoryPlayControllerImpl.4(this, paramObject));
+    ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(localImageView2, paramVideoData.f, new ColorDrawable(0), new ColorDrawable(0), new StoryPlayControllerImpl.4(this, paramObject));
   }
   
   public void returnBack()
@@ -852,58 +852,58 @@ public class StoryPlayControllerImpl
         ((StringBuilder)localObject).append("startPlayVideo: videoViewHolder == null videoDataIndex=");
         ((StringBuilder)localObject).append(paramInt);
         ((StringBuilder)localObject).append("  mAdapter.realIndex");
-        ((StringBuilder)localObject).append(this.mAdapter.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.mAdapter.h);
         QLog.e("VideoPlayController", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    VideoData localVideoData = (VideoData)this.mAdapter.jdField_a_of_type_JavaUtilList.get(paramInt);
+    VideoData localVideoData = (VideoData)this.mAdapter.d.get(paramInt);
     if (localVideoData != null)
     {
-      QualityReporter.a(localVideoData.jdField_a_of_type_JavaLangString, 2, "0", "0");
+      QualityReporter.a(localVideoData.c, 2, "0", "0");
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("startPlayVideo:videoItem=");
         localStringBuilder.append(localVideoData);
         localStringBuilder.append(",videoItem.anchorUin=");
-        localStringBuilder.append(localVideoData.jdField_a_of_type_Long);
+        localStringBuilder.append(localVideoData.i);
         localStringBuilder.append(",videoItem.anchorNickName=");
-        localStringBuilder.append(localVideoData.jdField_g_of_type_JavaLangString);
+        localStringBuilder.append(localVideoData.s);
         QLog.i("VideoPlayController", 2, localStringBuilder.toString());
       }
-      if (((VideoPlayerPagerAdapter.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null)
+      if (((VideoPlayerPagerAdapter.VideoViewHolder)localObject).d != null)
       {
-        long l = localVideoData.jdField_a_of_type_Long;
-        ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setCurrentAnchorUin(l);
+        long l = localVideoData.i;
+        ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).d.setCurrentAnchorUin(l);
       }
       if (paramInt != this.mCurrentIndex) {
         return;
       }
-      if (((VideoPlayerPagerAdapter.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null) {
-        ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.b();
+      if (((VideoPlayerPagerAdapter.VideoViewHolder)localObject).d != null) {
+        ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).d.b();
       }
-      this.mCurrentMediaType = localVideoData.k;
-      if (localVideoData.k == 4)
+      this.mCurrentMediaType = localVideoData.G;
+      if (localVideoData.G == 4)
       {
         playPictuer(paramInt, (VideoPlayerPagerAdapter.VideoViewHolder)localObject, localVideoData);
-        ((INowShortVideoProtoManager)QRoute.api(INowShortVideoProtoManager.class)).init(this.app).reportPlay(localVideoData.jdField_a_of_type_JavaLangString, null);
-        ((INearbyMomentManager)this.app.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).b(localVideoData.jdField_a_of_type_JavaLangString);
+        ((INowShortVideoProtoManager)QRoute.api(INowShortVideoProtoManager.class)).init(this.app).reportPlay(localVideoData.c, null);
+        ((INearbyMomentManager)this.app.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).b(localVideoData.c);
         return;
       }
-      if (localVideoData.k == VideoData.jdField_a_of_type_Int)
+      if (localVideoData.G == VideoData.a)
       {
-        ((INowShortVideoProtoManager)QRoute.api(INowShortVideoProtoManager.class)).init(this.app).reportPlay(localVideoData.jdField_a_of_type_JavaLangString, null);
-        ((INearbyMomentManager)this.app.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).b(localVideoData.jdField_a_of_type_JavaLangString);
+        ((INowShortVideoProtoManager)QRoute.api(INowShortVideoProtoManager.class)).init(this.app).reportPlay(localVideoData.c, null);
+        ((INearbyMomentManager)this.app.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).b(localVideoData.c);
         return;
       }
       playShortVideo(paramInt, (VideoPlayerPagerAdapter.VideoViewHolder)localObject, localVideoData);
-      if (NetworkUtil.a(getContext()) != 1)
+      if (NetworkUtil.b(getContext()) != 1)
       {
         int i = this.mCurrentMediaType;
-        if ((i != 4) && (i != VideoData.jdField_a_of_type_Int) && (!localVideoData.jdField_d_of_type_Boolean))
+        if ((i != 4) && (i != VideoData.a) && (!localVideoData.L))
         {
-          QQToast.a(getContext(), HardCodeUtil.a(2131714347), 1).a();
+          QQToast.makeText(getContext(), HardCodeUtil.a(2131911861), 1).show();
           this.mFirstPlayShow = false;
         }
       }
@@ -913,7 +913,7 @@ public class StoryPlayControllerImpl
   
   public void updateVideoLabelState()
   {
-    if ((this.mAdapter.jdField_a_of_type_AndroidUtilSparseArray != null) && (this.mAdapter.jdField_a_of_type_JavaUtilList != null)) {
+    if ((this.mAdapter.b != null) && (this.mAdapter.d != null)) {
       return;
     }
     QLog.e("VideoPlayController", 1, "updateVideoLabelState mAdapter.mVideoViewHolderList == null || mAdapter.mVideoDataList == null !!!!");
@@ -921,7 +921,7 @@ public class StoryPlayControllerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.impl.StoryPlayControllerImpl
  * JD-Core Version:    0.7.0.1
  */

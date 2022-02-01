@@ -12,14 +12,14 @@ class SpringFestivalEntryManager$TaskCallbackNotNullWrapper
   
   public void run()
   {
-    if (SpringFestivalEntryManager.a(this.this$0) != null) {
+    if (SpringFestivalEntryManager.g(this.this$0) != null) {
       this.a.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalEntryManager.TaskCallbackNotNullWrapper
  * JD-Core Version:    0.7.0.1
  */

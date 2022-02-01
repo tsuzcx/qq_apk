@@ -12,8 +12,8 @@ import com.tencent.qphone.base.util.QLog;
 public class ConfessHalfScreenActivity$ConfessBrowserFragment
   extends WebViewFragment
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
+  private int b;
   
   public SwiftBrowserComponentsProvider createComponentsProvider()
   {
@@ -44,7 +44,7 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

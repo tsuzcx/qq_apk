@@ -15,20 +15,20 @@ class AVGameMediaPlayerWrapper$8
     }
     AVGameMediaPlayerWrapper.a(this.this$0).start();
     AVGameMediaPlayerWrapper.b(this.this$0, true);
-    if (AVGameMediaPlayerWrapper.a(this.this$0) != null) {
-      if (AVGameMediaPlayerWrapper.b(this.this$0))
+    if (AVGameMediaPlayerWrapper.f(this.this$0) != null) {
+      if (AVGameMediaPlayerWrapper.g(this.this$0))
       {
-        AVGameMediaPlayerWrapper.a(this.this$0).c(AVGameMediaPlayerWrapper.a(this.this$0));
+        AVGameMediaPlayerWrapper.f(this.this$0).c(AVGameMediaPlayerWrapper.c(this.this$0));
       }
       else
       {
-        AVGameMediaPlayerWrapper.a(this.this$0).x = AVGameMediaPlayerWrapper.a(this.this$0).getVideoWidth();
-        AVGameMediaPlayerWrapper.a(this.this$0).y = AVGameMediaPlayerWrapper.a(this.this$0).getVideoHeight();
+        AVGameMediaPlayerWrapper.h(this.this$0).x = AVGameMediaPlayerWrapper.a(this.this$0).getVideoWidth();
+        AVGameMediaPlayerWrapper.h(this.this$0).y = AVGameMediaPlayerWrapper.a(this.this$0).getVideoHeight();
         AVGameMediaPlayerWrapper.c(this.this$0, true);
-        AVGameMediaPlayerWrapper.a(this.this$0).a(AVGameMediaPlayerWrapper.a(this.this$0));
+        AVGameMediaPlayerWrapper.f(this.this$0).a(AVGameMediaPlayerWrapper.c(this.this$0));
       }
     }
-    AVGameExceptionReporter.a().a(1, AVGameMediaPlayerWrapper.a(this.this$0), 0, null);
+    AVGameExceptionReporter.a().a(1, AVGameMediaPlayerWrapper.c(this.this$0), 0, null);
   }
 }
 

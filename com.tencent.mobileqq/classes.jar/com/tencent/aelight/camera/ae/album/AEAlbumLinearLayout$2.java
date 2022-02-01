@@ -10,7 +10,7 @@ class AEAlbumLinearLayout$2
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    AEAlbumLinearLayout.a(this.a, 0);
+    AEAlbumLinearLayout.b(this.a, 0);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
@@ -18,11 +18,11 @@ class AEAlbumLinearLayout$2
     if (AEAlbumLinearLayout.a(this.a) != null)
     {
       paramAnimator = AEAlbumLinearLayout.a(this.a);
-      int i = AEAlbumLinearLayout.b(this.a);
+      int i = AEAlbumLinearLayout.c(this.a);
       AEAlbumLinearLayout localAEAlbumLinearLayout = this.a;
-      paramAnimator.a(i, AEAlbumLinearLayout.a(localAEAlbumLinearLayout, AEAlbumLinearLayout.b(localAEAlbumLinearLayout)));
+      paramAnimator.a(i, AEAlbumLinearLayout.a(localAEAlbumLinearLayout, AEAlbumLinearLayout.c(localAEAlbumLinearLayout)));
     }
-    AEAlbumLinearLayout.a(this.a, 0);
+    AEAlbumLinearLayout.b(this.a, 0);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -30,13 +30,13 @@ class AEAlbumLinearLayout$2
   public void onAnimationStart(Animator paramAnimator)
   {
     if (AEAlbumLinearLayout.a(this.a) != null) {
-      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.b(this.a));
+      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.c(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.AEAlbumLinearLayout.2
  * JD-Core Version:    0.7.0.1
  */

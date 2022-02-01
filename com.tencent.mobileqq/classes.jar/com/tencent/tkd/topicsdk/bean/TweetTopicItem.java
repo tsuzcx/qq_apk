@@ -6,54 +6,64 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/TweetTopicItem;", "", "rowkey", "", "iconUrl", "name", "discussNum", "", "discussStr", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;)V", "getDiscussNum", "()J", "setDiscussNum", "(J)V", "getDiscussStr", "()Ljava/lang/String;", "setDiscussStr", "(Ljava/lang/String;)V", "getIconUrl", "setIconUrl", "getName", "setName", "getRowkey", "setRowkey", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "", "toString", "topicsdk-common_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/TweetTopicItem;", "", "rowkey", "", "iconUrl", "name", "discussNum", "", "discussStr", "readingNum", "readingStr", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;JLjava/lang/String;)V", "getDiscussNum", "()J", "setDiscussNum", "(J)V", "getDiscussStr", "()Ljava/lang/String;", "setDiscussStr", "(Ljava/lang/String;)V", "getIconUrl", "setIconUrl", "getName", "setName", "getReadingNum", "setReadingNum", "getReadingStr", "setReadingStr", "getRowkey", "setRowkey", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "equals", "", "other", "hashCode", "", "toString", "topicsdk-common_release"}, k=1, mv={1, 1, 16})
 public final class TweetTopicItem
 {
-  private long jdField_a_of_type_Long;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   @NotNull
   private String b;
   @NotNull
   private String c;
+  private long d;
   @NotNull
-  private String d;
+  private String e;
+  private long f;
+  @NotNull
+  private String g;
   
   public TweetTopicItem()
   {
-    this(null, null, null, 0L, null, 31, null);
+    this(null, null, null, 0L, null, 0L, null, 127, null);
   }
   
-  public TweetTopicItem(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, long paramLong, @NotNull String paramString4)
+  public TweetTopicItem(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, long paramLong1, @NotNull String paramString4, long paramLong2, @NotNull String paramString5)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
     this.c = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.d = paramString4;
-  }
-  
-  public final long a()
-  {
-    return this.jdField_a_of_type_Long;
+    this.d = paramLong1;
+    this.e = paramString4;
+    this.f = paramLong2;
+    this.g = paramString5;
   }
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
+  }
+  
+  public final void a(long paramLong)
+  {
+    this.d = paramLong;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   @NotNull
   public final String b()
   {
     return this.b;
+  }
+  
+  public final void b(long paramLong)
+  {
+    this.f = paramLong;
   }
   
   public final void b(@NotNull String paramString)
@@ -74,10 +84,27 @@ public final class TweetTopicItem
     this.c = paramString;
   }
   
-  @NotNull
-  public final String d()
+  public final long d()
   {
     return this.d;
+  }
+  
+  public final void d(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.e = paramString;
+  }
+  
+  @NotNull
+  public final String e()
+  {
+    return this.e;
+  }
+  
+  public final void e(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.g = paramString;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -86,7 +113,7 @@ public final class TweetTopicItem
       if ((paramObject instanceof TweetTopicItem))
       {
         paramObject = (TweetTopicItem)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) && (Intrinsics.areEqual(this.d, paramObject.d))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (this.d == paramObject.d) && (Intrinsics.areEqual(this.e, paramObject.e)) && (this.f == paramObject.f) && (Intrinsics.areEqual(this.g, paramObject.g))) {}
       }
       else
       {
@@ -96,10 +123,21 @@ public final class TweetTopicItem
     return true;
   }
   
+  public final long f()
+  {
+    return this.f;
+  }
+  
+  @NotNull
+  public final String g()
+  {
+    return this.g;
+  }
+  
   public int hashCode()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    int m = 0;
+    String str = this.a;
+    int n = 0;
     int i;
     if (str != null) {
       i = str.hashCode();
@@ -120,12 +158,20 @@ public final class TweetTopicItem
     } else {
       k = 0;
     }
-    int n = .r8.java8methods.utility.Long.hashCode.IJ.hashCode(this.jdField_a_of_type_Long);
-    str = this.d;
+    int i1 = .r8.java8methods.utility.Long.hashCode.IJ.hashCode(this.d);
+    str = this.e;
+    int m;
     if (str != null) {
       m = str.hashCode();
+    } else {
+      m = 0;
     }
-    return (((i * 31 + j) * 31 + k) * 31 + n) * 31 + m;
+    int i2 = .r8.java8methods.utility.Long.hashCode.IJ.hashCode(this.f);
+    str = this.g;
+    if (str != null) {
+      n = str.hashCode();
+    }
+    return (((((i * 31 + j) * 31 + k) * 31 + i1) * 31 + m) * 31 + i2) * 31 + n;
   }
   
   @NotNull
@@ -133,22 +179,26 @@ public final class TweetTopicItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TweetTopicItem(rowkey=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", iconUrl=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", name=");
     localStringBuilder.append(this.c);
     localStringBuilder.append(", discussNum=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", discussStr=");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(", discussStr=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", readingNum=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", readingStr=");
+    localStringBuilder.append(this.g);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.TweetTopicItem
  * JD-Core Version:    0.7.0.1
  */

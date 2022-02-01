@@ -14,14 +14,14 @@ class TofuAioMiniProfileItemBuilder$5
   
   public void onClick(View paramView)
   {
-    AnonymousViewHelper.jumpToQuestionListAndAnswer((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAioMiniProfileItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAioMiniProfileItemBuilder$Holder.a, 9);
-    ReportController.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAioMiniProfileItemBuilder$Holder.a, "0X800B5BF", "0X800B5BF", 0, 0, "", "", "", "");
+    AnonymousViewHelper.jumpToQuestionListAndAnswer((BaseActivity)this.b.c, this.a.d, 9);
+    ReportController.b(null, "dc00898", "", this.a.d, "0X800B5BF", "0X800B5BF", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TofuAioMiniProfileItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

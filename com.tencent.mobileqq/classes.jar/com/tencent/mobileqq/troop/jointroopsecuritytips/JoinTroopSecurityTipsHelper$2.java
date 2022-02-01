@@ -17,14 +17,14 @@ final class JoinTroopSecurityTipsHelper$2
       paramDialogInterface.dismiss();
     }
     paramDialogInterface = new Intent();
-    paramDialogInterface.setClass(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    paramDialogInterface.setClass(this.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", this.b);
+    this.a.startActivity(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jointroopsecuritytips.JoinTroopSecurityTipsHelper.2
  * JD-Core Version:    0.7.0.1
  */

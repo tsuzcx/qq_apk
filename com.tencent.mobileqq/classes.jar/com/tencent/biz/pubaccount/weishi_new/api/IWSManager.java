@@ -35,6 +35,8 @@ public abstract interface IWSManager
   
   public abstract boolean isFastClick();
   
+  public abstract void openQQSchema(Context paramContext, String paramString, Object paramObject);
+  
   public abstract void openWeishi(Context paramContext, String paramString1, String paramString2);
   
   public abstract void preloadData();
@@ -45,7 +47,7 @@ public abstract interface IWSManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.api.IWSManager
  * JD-Core Version:    0.7.0.1
  */

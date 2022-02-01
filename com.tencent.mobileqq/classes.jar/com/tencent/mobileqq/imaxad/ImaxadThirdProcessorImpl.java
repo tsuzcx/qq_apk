@@ -46,36 +46,36 @@ public class ImaxadThirdProcessorImpl
     if (paramInt == 1001)
     {
       WXShareHelper.a().b(paramString1, paramString2, paramBitmap, paramString3, paramString4);
-      ReportController.b(null, "dc00898", "", paramAdvertisementItem.a.a, "0X80092A3", "0X80092A3", 0, 0, paramAdvertisementItem.a.c, "", "", paramAdvertisementItem.a.b);
+      ReportController.b(null, "dc00898", "", paramAdvertisementItem.g.a, "0X80092A3", "0X80092A3", 0, 0, paramAdvertisementItem.g.c, "", "", paramAdvertisementItem.g.b);
       return;
     }
     if (paramInt == 1002)
     {
       WXShareHelper.a().a(paramString1, paramString2, paramBitmap, paramString3, paramString4);
-      ReportController.b(null, "dc00898", "", paramAdvertisementItem.a.a, "0X80092A5", "0X80092A5", 0, 0, paramAdvertisementItem.a.c, "", "", paramAdvertisementItem.a.b);
+      ReportController.b(null, "dc00898", "", paramAdvertisementItem.g.a, "0X80092A5", "0X80092A5", 0, 0, paramAdvertisementItem.g.c, "", "", paramAdvertisementItem.g.b);
     }
   }
   
   private boolean a(Context paramContext, int paramInt)
   {
-    if (!WXShareHelper.a().a())
-    {
-      QQToast.a(paramContext, 2131694310, 0).a();
-      return false;
-    }
     if (!WXShareHelper.a().b())
     {
-      QQToast.a(paramContext, 2131720479, 0).a();
+      QQToast.makeText(paramContext, 2131891948, 0).show();
       return false;
     }
-    if ((paramInt == 1002) && (!WXShareHelper.a().c()))
+    if (!WXShareHelper.a().c())
     {
-      QQToast.a(paramContext, 2131720479, 0).a();
+      QQToast.makeText(paramContext, 2131918155, 0).show();
+      return false;
+    }
+    if ((paramInt == 1002) && (!WXShareHelper.a().d()))
+    {
+      QQToast.makeText(paramContext, 2131918155, 0).show();
       return false;
     }
     if (!NetworkUtil.isNetworkAvailable(paramContext))
     {
-      QQToast.a(paramContext, 1, 2131694424, 1).a();
+      QQToast.makeText(paramContext, 1, 2131892104, 1).show();
       return false;
     }
     return true;
@@ -95,16 +95,16 @@ public class ImaxadThirdProcessorImpl
   {
     paramString4 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(127).b(12345).e(paramString4);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131705826));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131903711));
     ((StringBuilder)localObject).append(paramString3);
     paramString4 = paramString4.a(((StringBuilder)localObject).toString()).a();
-    localObject = paramAdvertisementItem.a.v;
-    String str = paramAdvertisementItem.a.w;
+    localObject = paramAdvertisementItem.g.L;
+    String str = paramAdvertisementItem.g.M;
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      paramString4.mSourceName = paramAdvertisementItem.a.v;
+      paramString4.mSourceName = paramAdvertisementItem.g.L;
       if (!TextUtils.isEmpty(str)) {
-        paramString4.mSourceIcon = paramAdvertisementItem.a.w;
+        paramString4.mSourceIcon = paramAdvertisementItem.g.M;
       }
     }
     paramString4.mContentLayout = 2;
@@ -118,7 +118,7 @@ public class ImaxadThirdProcessorImpl
     paramString1.putExtra("emoInputType", 2);
     paramString1.putExtra("forwardDirect", true);
     ForwardBaseOption.a((Activity)paramContext, paramString1, 1000);
-    ReportController.b(null, "dc00898", "", paramAdvertisementItem.a.a, "0X80092A2", "0X80092A2", 0, 0, paramAdvertisementItem.a.c, "", "", paramAdvertisementItem.a.b);
+    ReportController.b(null, "dc00898", "", paramAdvertisementItem.g.a, "0X80092A2", "0X80092A2", 0, 0, paramAdvertisementItem.g.c, "", "", paramAdvertisementItem.g.b);
   }
   
   public void a(AdvertisementItem paramAdvertisementItem, URLDrawable paramURLDrawable, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
@@ -164,13 +164,13 @@ public class ImaxadThirdProcessorImpl
     localQZoneShareData.mImageUrls = new ArrayList();
     localQZoneShareData.mImageUrls.add(paramString4);
     localQZoneShareData.targetUrl = paramString3;
-    QZoneShareManager.shareToQzone(paramContext, String.valueOf(CommonDataAdapter.a().a()), localQZoneShareData, null, 1003);
-    ReportController.b(null, "dc00898", "", paramAdvertisementItem.a.a, "0X80092A4", "0X80092A4", 0, 0, paramAdvertisementItem.a.c, "", "", paramAdvertisementItem.a.b);
+    QZoneShareManager.shareToQzone(paramContext, String.valueOf(CommonDataAdapter.a().c()), localQZoneShareData, null, 1003);
+    ReportController.b(null, "dc00898", "", paramAdvertisementItem.g.a, "0X80092A4", "0X80092A4", 0, 0, paramAdvertisementItem.g.c, "", "", paramAdvertisementItem.g.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxadThirdProcessorImpl
  * JD-Core Version:    0.7.0.1
  */

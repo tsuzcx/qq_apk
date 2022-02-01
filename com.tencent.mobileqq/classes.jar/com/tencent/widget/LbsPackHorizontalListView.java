@@ -52,10 +52,15 @@ public class LbsPackHorizontalListView
     }
     return bool1;
   }
+  
+  public int getScrollOffset()
+  {
+    return this.mNextX;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.LbsPackHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

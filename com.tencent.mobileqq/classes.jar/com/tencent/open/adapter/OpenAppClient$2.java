@@ -13,14 +13,14 @@ final class OpenAppClient$2
   {
     try
     {
-      OpenAppClient.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+      OpenAppClient.b(this.a, this.b);
       return;
     }
     catch (Exception localException)
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onPushMsg exception: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilHashMap);
+      ((StringBuilder)localObject).append(this.b);
       localObject = ((StringBuilder)localObject).toString();
       LogUtility.c(OpenAppClient.a, (String)localObject, localException);
     }
@@ -28,7 +28,7 @@ final class OpenAppClient$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.adapter.OpenAppClient.2
  * JD-Core Version:    0.7.0.1
  */

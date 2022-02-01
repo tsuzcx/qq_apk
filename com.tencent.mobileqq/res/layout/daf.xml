@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:id="@id/mwv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip">
+        <com.tencent.mobileqq.vas.avatar.VasAvatar android:id="@id/mx1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="5.5dip" />
+        <ImageView android:id="@id/mx2" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="13.0dip" android:layout_margin="5.5dip" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</LinearLayout>

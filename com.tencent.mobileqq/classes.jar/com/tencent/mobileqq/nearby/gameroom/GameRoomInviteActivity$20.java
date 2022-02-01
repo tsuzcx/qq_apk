@@ -24,7 +24,7 @@ class GameRoomInviteActivity$20
     localStringBuilder.append("");
     localStringBuilder.append(TroopUtils.a(str));
     ((Bundle)localObject2).putString("bkn", localStringBuilder.toString());
-    ((Bundle)localObject2).putString("ver", "8.7.0");
+    ((Bundle)localObject2).putString("ver", "8.8.17");
     ((Bundle)localObject2).putString("src", "1");
     ((Bundle)localObject2).putString("platform", "android");
     ((Bundle)localObject2).putString("uin", this.this$0.app.getCurrentAccountUin());
@@ -51,7 +51,7 @@ class GameRoomInviteActivity$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.20
  * JD-Core Version:    0.7.0.1
  */

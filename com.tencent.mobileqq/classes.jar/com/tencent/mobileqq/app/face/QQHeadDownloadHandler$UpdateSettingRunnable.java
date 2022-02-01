@@ -22,14 +22,14 @@ class QQHeadDownloadHandler$UpdateSettingRunnable
   public QQHeadDownloadHandler$UpdateSettingRunnable(QQHeadDownloadHandler paramQQHeadDownloadHandler, Setting paramSetting, FaceInfo paramFaceInfo)
   {
     this.mSetting = paramSetting;
-    this.mInfo = paramFaceInfo.a;
+    this.mInfo = paramFaceInfo.p;
     this.mFaceInfo = paramFaceInfo;
   }
   
   private void clearAvatar(String paramString)
   {
     FaceUtil.a(paramString);
-    FaceUtil.b(paramString);
+    FaceUtil.d(paramString);
     FaceUtil.a(QQHeadDownloadHandler.access$100(this.this$0), paramString);
   }
   
@@ -106,7 +106,7 @@ class QQHeadDownloadHandler$UpdateSettingRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.QQHeadDownloadHandler.UpdateSettingRunnable
  * JD-Core Version:    0.7.0.1
  */

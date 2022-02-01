@@ -15,13 +15,12 @@ public class VideoForwardVideoHolder
   extends VideoHolderBase
   implements View.OnClickListener
 {
-  private long a;
+  private long j = 0L;
   
   public VideoForwardVideoHolder(@NonNull ViewGroup paramViewGroup)
   {
     super(paramViewGroup);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    this.b.setOnClickListener(this);
   }
   
   protected View a(ViewGroup paramViewGroup)
@@ -31,18 +30,18 @@ public class VideoForwardVideoHolder
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData != null) && (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L))
+    if ((this.c != null) && (System.currentTimeMillis() - this.j >= 500L))
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      VideoLinkInfo localVideoLinkInfo = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a().getVideoLinkInfo();
-      if ((localVideoLinkInfo != null) && (localVideoLinkInfo.a()) && (localVideoLinkInfo.a.a()))
+      this.j = System.currentTimeMillis();
+      VideoLinkInfo localVideoLinkInfo = this.c.e().getVideoLinkInfo();
+      if ((localVideoLinkInfo != null) && (localVideoLinkInfo.c()) && (localVideoLinkInfo.h.a()))
       {
-        StoryPlayerLauncher.a(a(), localVideoLinkInfo.a.c, localVideoLinkInfo.a.b, 1010);
-        StoryReportor.a("play_video", "clk_tips", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a });
+        StoryPlayerLauncher.a(a(), localVideoLinkInfo.h.c, localVideoLinkInfo.h.b, 1010);
+        StoryReportor.a("play_video", "clk_tips", 0, 0, new String[] { "", "", "", this.c.b });
       }
       else
       {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        this.b.setVisibility(8);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -50,7 +49,7 @@ public class VideoForwardVideoHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoForwardVideoHolder
  * JD-Core Version:    0.7.0.1
  */

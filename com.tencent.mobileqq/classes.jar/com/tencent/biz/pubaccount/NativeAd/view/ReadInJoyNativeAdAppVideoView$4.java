@@ -18,25 +18,25 @@ class ReadInJoyNativeAdAppVideoView$4
   
   public void run()
   {
-    if ((ReadInJoyNativeAdAppVideoView.a(this.this$0) != null) && (ReadInJoyNativeAdAppVideoView.a(this.this$0).isPlaying()))
+    if ((ReadInJoyNativeAdAppVideoView.f(this.this$0) != null) && (ReadInJoyNativeAdAppVideoView.f(this.this$0).isPlaying()))
     {
-      long l = ReadInJoyNativeAdAppVideoView.a(this.this$0).getCurrentPostion();
+      long l = ReadInJoyNativeAdAppVideoView.f(this.this$0).getCurrentPostion();
       ReadInJoyNativeAdAppVideoView localReadInJoyNativeAdAppVideoView = this.this$0;
-      ReadInJoyNativeAdAppVideoView.a(localReadInJoyNativeAdAppVideoView, ReadInJoyNativeAdAppVideoView.a(localReadInJoyNativeAdAppVideoView).getDuration());
-      double d = (float)l * 1.0F * ReadInJoyNativeAdAppVideoView.b(this.this$0) / (float)ReadInJoyNativeAdAppVideoView.a(this.this$0);
+      ReadInJoyNativeAdAppVideoView.a(localReadInJoyNativeAdAppVideoView, ReadInJoyNativeAdAppVideoView.f(localReadInJoyNativeAdAppVideoView).getDuration());
+      double d = (float)l * 1.0F * ReadInJoyNativeAdAppVideoView.g(this.this$0) / (float)ReadInJoyNativeAdAppVideoView.h(this.this$0);
       Double.isNaN(d);
       int i = (int)(d + 0.5D);
-      ReadInJoyNativeAdAppVideoView.a(this.this$0).setProgress(i);
-      ReadInJoyNativeAdAppVideoView.a(this.this$0).setText(GdtUIUtils.a(l));
-      ReadInJoyNativeAdAppVideoView.b(this.this$0).setText(GdtUIUtils.a(ReadInJoyNativeAdAppVideoView.a(this.this$0)));
-      if (ReadInJoyNativeAdAppVideoView.a(this.this$0) - l < 50L)
+      ReadInJoyNativeAdAppVideoView.i(this.this$0).setProgress(i);
+      ReadInJoyNativeAdAppVideoView.j(this.this$0).setText(GdtUIUtils.a(l));
+      ReadInJoyNativeAdAppVideoView.k(this.this$0).setText(GdtUIUtils.a(ReadInJoyNativeAdAppVideoView.h(this.this$0)));
+      if (ReadInJoyNativeAdAppVideoView.h(this.this$0) - l < 50L)
       {
-        if (!ReadInJoyNativeAdAppVideoView.a(this.this$0))
+        if (!ReadInJoyNativeAdAppVideoView.l(this.this$0))
         {
           localReadInJoyNativeAdAppVideoView = this.this$0;
-          ReadInJoyNativeAdAppVideoView.a(localReadInJoyNativeAdAppVideoView, (int)ReadInJoyNativeAdAppVideoView.a(localReadInJoyNativeAdAppVideoView));
+          ReadInJoyNativeAdAppVideoView.a(localReadInJoyNativeAdAppVideoView, (int)ReadInJoyNativeAdAppVideoView.h(localReadInJoyNativeAdAppVideoView));
           ReadInJoyNativeAdAppVideoView.b(this.this$0, 1);
-          ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(ReadInJoyNativeAdAppVideoView.a(this.this$0)).a(this.this$0.getContext()).a(6).b(7).a(ReadInJoyNativeAdAppVideoView.a(this.this$0)).a(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getVideoInfoObject(ReadInJoyNativeAdAppVideoView.c(this.this$0), ReadInJoyNativeAdAppVideoView.d(this.this$0), ReadInJoyNativeAdAppVideoView.e(this.this$0), ReadInJoyNativeAdAppVideoView.f(this.this$0), ReadInJoyNativeAdAppVideoView.g(this.this$0), ReadInJoyNativeAdAppVideoView.h(this.this$0), (int)ReadInJoyNativeAdAppVideoView.a(this.this$0), 10, 0, ReadInJoyNativeAdAppVideoView.i(this.this$0), ReportConstants.VideoEndType.NORMAL_COMPLETE)));
+          ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(ReadInJoyNativeAdAppVideoView.u(this.this$0)).a(this.this$0.getContext()).a(6).b(7).a(ReadInJoyNativeAdAppVideoView.t(this.this$0)).a(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getVideoInfoObject(ReadInJoyNativeAdAppVideoView.m(this.this$0), ReadInJoyNativeAdAppVideoView.n(this.this$0), ReadInJoyNativeAdAppVideoView.o(this.this$0), ReadInJoyNativeAdAppVideoView.p(this.this$0), ReadInJoyNativeAdAppVideoView.q(this.this$0), ReadInJoyNativeAdAppVideoView.r(this.this$0), (int)ReadInJoyNativeAdAppVideoView.h(this.this$0), 10, 0, ReadInJoyNativeAdAppVideoView.s(this.this$0), ReportConstants.VideoEndType.NORMAL_COMPLETE)));
           ReadInJoyNativeAdAppVideoView.c(this.this$0, 0);
           ReadInJoyNativeAdAppVideoView.d(this.this$0, 1);
           ReadInJoyNativeAdAppVideoView.b(this.this$0, 0);
@@ -47,12 +47,12 @@ class ReadInJoyNativeAdAppVideoView$4
         ReadInJoyNativeAdAppVideoView.a(this.this$0, false);
       }
     }
-    ReadInJoyNativeAdAppVideoView.a(this.this$0).postDelayed(this, 50L);
+    ReadInJoyNativeAdAppVideoView.d(this.this$0).postDelayed(this, 50L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.4
  * JD-Core Version:    0.7.0.1
  */

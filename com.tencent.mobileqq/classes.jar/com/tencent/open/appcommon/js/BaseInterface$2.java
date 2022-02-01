@@ -13,12 +13,12 @@ class BaseInterface$2
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('batchCallback',{'guid':");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject1).append(this.a);
     ((StringBuilder)localObject1).append(",'r':0,'data':");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.toString());
+    ((StringBuilder)localObject1).append(this.b.toString());
     ((StringBuilder)localObject1).append("})};");
     localObject1 = ((StringBuilder)localObject1).toString();
-    Object localObject2 = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    Object localObject2 = this.c;
     if (localObject2 != null) {}
     try
     {
@@ -40,7 +40,7 @@ class BaseInterface$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.BaseInterface.2
  * JD-Core Version:    0.7.0.1
  */

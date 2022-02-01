@@ -13,19 +13,19 @@ import java.util.List;
 public class ReadMergeFile
   implements ReadFile
 {
-  private ReadAssetFile jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersFileReadAssetFile;
-  private File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  private String a;
+  private File b;
+  private ReadAssetFile c;
+  private String d;
+  private boolean e;
   
   public ReadMergeFile(Context paramContext, String paramString1, String paramString2)
   {
     if ((paramString1 != null) && (paramString2 != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersFileReadAssetFile = new ReadAssetFile(paramContext, paramString2);
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.jdField_a_of_type_JavaIoFile = new File(paramString1);
+      this.c = new ReadAssetFile(paramContext, paramString2);
+      this.a = paramString1;
+      this.b = new File(paramString1);
       return;
     }
     paramContext = new StringBuilder();
@@ -38,15 +38,15 @@ public class ReadMergeFile
   
   private void a(String paramString, boolean paramBoolean)
   {
-    if (TextUtils.equals(paramString, this.b)) {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+    if (TextUtils.equals(paramString, this.d)) {
+      this.e = paramBoolean;
     }
   }
   
   public InputStream a(String paramString)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append("/");
     ((StringBuilder)localObject).append(paramString);
     localObject = new File(((StringBuilder)localObject).toString());
@@ -54,7 +54,7 @@ public class ReadMergeFile
       try
       {
         a(paramString, true);
-        if (this.jdField_a_of_type_Boolean)
+        if (this.e)
         {
           localObject = new FileInputStream((File)localObject);
           return localObject;
@@ -68,7 +68,7 @@ public class ReadMergeFile
         QLog.e("ReadMergeFile", 2, localStringBuilder.toString(), localFileNotFoundException);
       }
     }
-    InputStream localInputStream = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersFileReadAssetFile.a(paramString);
+    InputStream localInputStream = this.c.a(paramString);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("使用兜底 file: ");
     localStringBuilder.append(paramString);
@@ -79,12 +79,12 @@ public class ReadMergeFile
   
   public List<String> a()
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersFileReadAssetFile.a();
+    Object localObject2 = this.c.a();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new ArrayList();
     }
-    localObject2 = this.jdField_a_of_type_JavaIoFile.list();
+    localObject2 = this.b.list();
     if (localObject2 != null)
     {
       int j = localObject2.length;
@@ -98,14 +98,14 @@ public class ReadMergeFile
     return localObject1;
   }
   
-  public void a(String paramString)
+  public void b(String paramString)
   {
-    this.b = paramString;
+    this.d = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.file.ReadMergeFile
  * JD-Core Version:    0.7.0.1
  */

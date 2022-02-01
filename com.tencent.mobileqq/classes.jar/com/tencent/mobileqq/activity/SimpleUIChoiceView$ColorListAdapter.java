@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
@@ -14,42 +15,42 @@ import java.util.List;
 public class SimpleUIChoiceView$ColorListAdapter
   extends RecyclerView.Adapter<SimpleUIChoiceView.ColorHolder>
 {
-  private int jdField_a_of_type_Int;
-  List<SimpleUIChoiceView.ColorItemInfo> jdField_a_of_type_JavaUtilList;
+  List<SimpleUIChoiceView.ColorItemInfo> a;
+  private int c;
   
   public SimpleUIChoiceView$ColorListAdapter(List<SimpleUIChoiceView.ColorItemInfo> paramList)
   {
     Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-    this.jdField_a_of_type_Int = SimpleUIUtil.f();
+    this.a = localObject;
+    this.c = SimpleUIUtil.i();
   }
   
-  private void a(int paramInt)
+  private void b(int paramInt)
   {
     SimpleUIChoiceView.ColorItemInfo localColorItemInfo = a(paramInt);
-    if ((localColorItemInfo != null) && (a(localColorItemInfo, paramInt, localColorItemInfo.jdField_a_of_type_Boolean ^ true))) {
-      SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView).c(localColorItemInfo.jdField_a_of_type_Int);
+    if ((localColorItemInfo != null) && (a(localColorItemInfo, paramInt, localColorItemInfo.c ^ true)) && (SimpleUIChoiceView.c(this.b) != null)) {
+      SimpleUIChoiceView.c(this.b).a(localColorItemInfo.f);
     }
   }
   
   public SimpleUIChoiceView.ColorHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView).getLayoutInflater().inflate(2131562842, paramViewGroup, false);
-    return new SimpleUIChoiceView.ColorHolder(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView, paramViewGroup);
+    paramViewGroup = SimpleUIChoiceView.a(this.b).getLayoutInflater().inflate(2131629291, paramViewGroup, false);
+    return new SimpleUIChoiceView.ColorHolder(this.b, paramViewGroup);
   }
   
   public SimpleUIChoiceView.ColorItemInfo a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if ((localList != null) && (paramInt >= 0) && (paramInt < localList.size())) {
-      return (SimpleUIChoiceView.ColorItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (SimpleUIChoiceView.ColorItemInfo)this.a.get(paramInt);
     }
     return null;
   }
   
   public void a()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       localList.clear();
     }
@@ -60,26 +61,26 @@ public class SimpleUIChoiceView$ColorListAdapter
     Object localObject = a(paramInt);
     if (localObject != null)
     {
-      if (((SimpleUIChoiceView.ColorItemInfo)localObject).jdField_a_of_type_Boolean)
+      if (((SimpleUIChoiceView.ColorItemInfo)localObject).c)
       {
         paramColorHolder.b.setVisibility(0);
-        ViewCompat.setAccessibilityDelegate(paramColorHolder.jdField_a_of_type_ComTencentImageURLImageView, new SimpleUIChoiceView.ColorListAdapter.1(this));
+        ViewCompat.setAccessibilityDelegate(paramColorHolder.a, new SimpleUIChoiceView.ColorListAdapter.1(this));
       }
       else
       {
         paramColorHolder.b.setVisibility(8);
-        ViewCompat.setAccessibilityDelegate(paramColorHolder.jdField_a_of_type_ComTencentImageURLImageView, new SimpleUIChoiceView.ColorListAdapter.2(this));
+        ViewCompat.setAccessibilityDelegate(paramColorHolder.a, new SimpleUIChoiceView.ColorListAdapter.2(this));
       }
-      SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView, paramColorHolder.jdField_a_of_type_ComTencentImageURLImageView, (SimpleUIChoiceView.ColorItemInfo)localObject);
-      if (((SimpleUIChoiceView.ColorItemInfo)localObject).b)
+      SimpleUIChoiceView.a(this.b, paramColorHolder.a, (SimpleUIChoiceView.ColorItemInfo)localObject);
+      if (((SimpleUIChoiceView.ColorItemInfo)localObject).e)
       {
-        paramColorHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        ((Animatable)paramColorHolder.jdField_a_of_type_AndroidViewView.getBackground()).start();
+        paramColorHolder.c.setVisibility(0);
+        ((Animatable)paramColorHolder.c.getBackground()).start();
       }
       else
       {
-        paramColorHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        ((Animatable)paramColorHolder.jdField_a_of_type_AndroidViewView.getBackground()).stop();
+        paramColorHolder.c.setVisibility(8);
+        ((Animatable)paramColorHolder.c.getBackground()).stop();
       }
       localObject = paramColorHolder.itemView;
       StringBuilder localStringBuilder = new StringBuilder();
@@ -87,40 +88,41 @@ public class SimpleUIChoiceView$ColorListAdapter
       localStringBuilder.append("按钮");
       ((View)localObject).setContentDescription(localStringBuilder.toString());
       paramColorHolder.itemView.setOnClickListener(new SimpleUIChoiceView.ColorListAdapter.3(this, paramInt));
+      paramColorHolder.a();
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramColorHolder, paramInt, getItemId(paramInt));
   }
   
   public void a(List<SimpleUIChoiceView.ColorItemInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
   }
   
   public boolean a(SimpleUIChoiceView.ColorItemInfo paramColorItemInfo, int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Int == paramInt)
+    if (this.c == paramInt)
     {
       notifyItemChanged(paramInt);
       return false;
     }
-    paramColorItemInfo.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramColorItemInfo.jdField_a_of_type_Boolean)
+    paramColorItemInfo.c = paramBoolean;
+    if (paramColorItemInfo.c)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.c;
       if (i < 0)
       {
-        this.jdField_a_of_type_Int = paramInt;
+        this.c = paramInt;
       }
       else
       {
         paramColorItemInfo = a(i);
         if (paramColorItemInfo != null)
         {
-          paramColorItemInfo.jdField_a_of_type_Boolean = false;
-          paramColorItemInfo.b = false;
-          notifyItemChanged(this.jdField_a_of_type_Int);
+          paramColorItemInfo.c = false;
+          paramColorItemInfo.e = false;
+          notifyItemChanged(this.c);
         }
-        this.jdField_a_of_type_Int = paramInt;
+        this.c = paramInt;
       }
     }
     notifyItemChanged(paramInt);
@@ -129,12 +131,12 @@ public class SimpleUIChoiceView$ColorListAdapter
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SimpleUIChoiceView.ColorListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -12,15 +12,15 @@ import org.json.JSONObject;
 public class MovieTicketTipsBar
   implements TipsBarTask
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
+  private Context a;
+  private View b;
+  private TextView c;
+  private ImageView d;
+  private String e;
   
   public MovieTicketTipsBar(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public int a()
@@ -30,13 +30,13 @@ public class MovieTicketTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558589, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362526));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362525));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847572);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new MovieTicketTipsBar.1(this));
+      this.b = LayoutInflater.from(this.a).inflate(2131624148, null);
+      this.c = ((TextView)this.b.findViewById(2131428137));
+      this.d = ((ImageView)this.b.findViewById(2131428136));
+      this.d.setImageResource(2130849232);
+      this.b.setOnClickListener(new MovieTicketTipsBar.1(this));
     }
     if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof String))) {
       paramVarArgs = new String(Base64.decode((String)paramVarArgs[0], 0));
@@ -45,10 +45,10 @@ public class MovieTicketTipsBar
     {
       paramVarArgs = new JSONObject(paramVarArgs);
       String str = paramVarArgs.getString("content");
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      this.jdField_a_of_type_JavaLangString = paramVarArgs.getString("url");
+      this.c.setText(str);
+      this.e = paramVarArgs.getString("url");
       label150:
-      return this.jdField_a_of_type_AndroidViewView;
+      return this.b;
     }
     catch (JSONException paramVarArgs)
     {
@@ -58,19 +58,19 @@ public class MovieTicketTipsBar
   
   public void a(int paramInt, Object... paramVarArgs) {}
   
-  public int[] a()
-  {
-    return null;
-  }
-  
   public int b()
   {
     return 17;
   }
+  
+  public int[] c()
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.MovieTicketTipsBar
  * JD-Core Version:    0.7.0.1
  */

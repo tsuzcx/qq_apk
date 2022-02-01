@@ -115,23 +115,25 @@ class AppCompatSeekBarHelper
   void loadFromAttributes(AttributeSet paramAttributeSet, int paramInt)
   {
     super.loadFromAttributes(paramAttributeSet, paramInt);
-    paramAttributeSet = TintTypedArray.obtainStyledAttributes(this.mView.getContext(), paramAttributeSet, R.styleable.AppCompatSeekBar, paramInt, 0);
-    Drawable localDrawable = paramAttributeSet.getDrawableIfKnown(R.styleable.AppCompatSeekBar_android_thumb);
-    if (localDrawable != null) {
-      this.mView.setThumb(localDrawable);
+    TintTypedArray localTintTypedArray = TintTypedArray.obtainStyledAttributes(this.mView.getContext(), paramAttributeSet, R.styleable.AppCompatSeekBar, paramInt, 0);
+    SeekBar localSeekBar = this.mView;
+    ViewCompat.saveAttributeDataForStyleable(localSeekBar, localSeekBar.getContext(), R.styleable.AppCompatSeekBar, paramAttributeSet, localTintTypedArray.getWrappedTypeArray(), paramInt, 0);
+    paramAttributeSet = localTintTypedArray.getDrawableIfKnown(R.styleable.AppCompatSeekBar_android_thumb);
+    if (paramAttributeSet != null) {
+      this.mView.setThumb(paramAttributeSet);
     }
-    setTickMark(paramAttributeSet.getDrawable(R.styleable.AppCompatSeekBar_tickMark));
-    if (paramAttributeSet.hasValue(R.styleable.AppCompatSeekBar_tickMarkTintMode))
+    setTickMark(localTintTypedArray.getDrawable(R.styleable.AppCompatSeekBar_tickMark));
+    if (localTintTypedArray.hasValue(R.styleable.AppCompatSeekBar_tickMarkTintMode))
     {
-      this.mTickMarkTintMode = DrawableUtils.parseTintMode(paramAttributeSet.getInt(R.styleable.AppCompatSeekBar_tickMarkTintMode, -1), this.mTickMarkTintMode);
+      this.mTickMarkTintMode = DrawableUtils.parseTintMode(localTintTypedArray.getInt(R.styleable.AppCompatSeekBar_tickMarkTintMode, -1), this.mTickMarkTintMode);
       this.mHasTickMarkTintMode = true;
     }
-    if (paramAttributeSet.hasValue(R.styleable.AppCompatSeekBar_tickMarkTint))
+    if (localTintTypedArray.hasValue(R.styleable.AppCompatSeekBar_tickMarkTint))
     {
-      this.mTickMarkTintList = paramAttributeSet.getColorStateList(R.styleable.AppCompatSeekBar_tickMarkTint);
+      this.mTickMarkTintList = localTintTypedArray.getColorStateList(R.styleable.AppCompatSeekBar_tickMarkTint);
       this.mHasTickMarkTint = true;
     }
-    paramAttributeSet.recycle();
+    localTintTypedArray.recycle();
     applyTickMarkTint();
   }
   

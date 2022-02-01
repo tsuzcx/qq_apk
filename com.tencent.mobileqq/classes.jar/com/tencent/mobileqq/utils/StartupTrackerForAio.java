@@ -11,7 +11,7 @@ public class StartupTrackerForAio
 {
   public static final void a(String paramString1, String paramString2)
   {
-    long l = StartupTracker.a(paramString1, paramString2);
+    long l = StartupTracker.b(paramString1, paramString2);
     if (l != -1L)
     {
       paramString2 = AIOUtils.a();
@@ -21,7 +21,7 @@ public class StartupTrackerForAio
       paramString2.append("|");
       paramString2.append(ChatFragment.a);
       paramString2.append("|");
-      paramString2.append(AIOPreLoadEngine.a);
+      paramString2.append(AIOPreLoadEngine.b);
       paramString1 = paramString2.toString();
       if (QLog.isColorLevel())
       {
@@ -39,7 +39,7 @@ public class StartupTrackerForAio
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.StartupTrackerForAio
  * JD-Core Version:    0.7.0.1
  */

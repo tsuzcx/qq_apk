@@ -20,15 +20,15 @@ class IntimateContentItemLoverAchievementView$CoupleAchievementViewHolder
   public IntimateContentItemLoverAchievementView$CoupleAchievementViewHolder(IntimateContentItemLoverAchievementView paramIntimateContentItemLoverAchievementView, @NonNull View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView = ((RoundRectImageView)paramView.findViewById(2131365278));
+    this.a = ((RoundRectImageView)paramView.findViewById(2131431452));
     paramView.setOnClickListener(this);
     paramView.setOnTouchListener(this);
   }
   
   public void onClick(View paramView)
   {
-    if (IntimateContentItemLoverAchievementView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView) != null) {
-      IntimateContentItemLoverAchievementView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView).a(paramView, getLayoutPosition(), (LoveAchievementInfo.LoveAchievementItem)paramView.getTag());
+    if (IntimateContentItemLoverAchievementView.b(this.b) != null) {
+      IntimateContentItemLoverAchievementView.b(this.b).a(paramView, getLayoutPosition(), (LoveAchievementInfo.LoveAchievementItem)paramView.getTag());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -50,7 +50,7 @@ class IntimateContentItemLoverAchievementView$CoupleAchievementViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemLoverAchievementView.CoupleAchievementViewHolder
  * JD-Core Version:    0.7.0.1
  */

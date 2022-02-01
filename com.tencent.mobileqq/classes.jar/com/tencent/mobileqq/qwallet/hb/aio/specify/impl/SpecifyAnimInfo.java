@@ -7,53 +7,47 @@ import java.text.DecimalFormat;
 
 public class SpecifyAnimInfo
 {
-  public static String a = "https://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
-  public static DecimalFormat a;
-  private static boolean a = false;
-  public static String b = "https://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
-  public static String c = jdField_a_of_type_JavaLangString;
-  private static String d = jdField_b_of_type_JavaLangString;
+  public static String e = "https://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
+  public static String f = "https://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
+  public static String g = e;
+  public static DecimalFormat h = new DecimalFormat("#0.00");
+  private static String i = f;
+  private static boolean j = false;
   public int a;
-  public long a;
-  public int b;
   public long b;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
-  }
+  public long c;
+  public int d;
   
   public static String a()
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!j)
     {
-      BaseQQAppInterface localBaseQQAppInterface = QWalletTools.a();
+      BaseQQAppInterface localBaseQQAppInterface = QWalletTools.b();
       if (localBaseQQAppInterface != null) {
-        d = ((IQWalletConfigService)localBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, "")).getString("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
+        i = ((IQWalletConfigService)localBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, "")).getString("hb_exclusive", f, new String[] { "aio_red", "prefix" });
       }
     }
-    return d;
+    return i;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("SpecifyAnimInfo{aId=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", minPrice=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", maxPrice=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", skinId=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.specify.impl.SpecifyAnimInfo
  * JD-Core Version:    0.7.0.1
  */

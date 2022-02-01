@@ -10,73 +10,67 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class DynamicItemViewHelperCompatBase<D>
 {
-  public static int b;
-  protected int a;
-  protected VafContext a;
-  protected final Map<String, Integer> a;
-  protected int c = b + 1;
-  protected int d = this.c;
-  
-  public DynamicItemViewHelperCompatBase()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_Int = 2147483647;
-  }
+  public static int c;
+  protected final Map<String, Integer> a = new ConcurrentHashMap();
+  protected int b = 2147483647;
+  protected int d = c + 1;
+  protected int e = this.d;
+  protected VafContext f;
   
   public void a(VafContext paramVafContext, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
+    this.f = paramVafContext;
     int i = paramVafContext.getTemplateFactory().size();
-    b = paramInt;
-    this.c = (b + 1);
-    paramInt = this.c;
-    this.d = paramInt;
-    int j = this.d;
-    if ((j < paramInt + i) && (i > 0) && (j < this.jdField_a_of_type_Int))
+    c = paramInt;
+    this.d = (c + 1);
+    paramInt = this.d;
+    this.e = paramInt;
+    int j = this.e;
+    if ((j < paramInt + i) && (i > 0) && (j < this.b))
     {
       paramVafContext = paramVafContext.getTemplateFactory().getNameTemplateMap().keySet();
-      paramInt = this.d;
+      paramInt = this.e;
       paramVafContext = paramVafContext.iterator();
       while (paramVafContext.hasNext())
       {
         String str = (String)paramVafContext.next();
-        if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str))
+        if (!this.a.containsKey(str))
         {
-          this.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(paramInt));
+          this.a.put(str, Integer.valueOf(paramInt));
           paramInt += 1;
         }
       }
-      this.d = (this.c + i);
-      if (this.jdField_a_of_type_Int == 2147483647) {
-        this.jdField_a_of_type_Int = (this.d + 30);
+      this.e = (this.d + i);
+      if (this.b == 2147483647) {
+        this.b = (this.e + 30);
       }
-      paramInt = this.d;
-      j = this.jdField_a_of_type_Int;
+      paramInt = this.e;
+      j = this.b;
       if (paramInt > j) {
-        this.d = j;
+        this.e = j;
       }
       paramVafContext = new StringBuilder();
       paramVafContext.append("init: templateCount : ");
       paramVafContext.append(i);
       paramVafContext.append(" TYPE_DYNAMIC_END : ");
-      paramVafContext.append(this.d);
+      paramVafContext.append(this.e);
       paramVafContext.append(" max : ");
-      paramVafContext.append(this.jdField_a_of_type_Int);
+      paramVafContext.append(this.b);
       QLog.d("DynamicItemViewHelperCompatBase", 1, paramVafContext.toString());
     }
-    if (this.jdField_a_of_type_Int == 2147483647) {
-      this.jdField_a_of_type_Int = (this.c + 100);
+    if (this.b == 2147483647) {
+      this.b = (this.d + 100);
     }
   }
   
   public boolean a(int paramInt)
   {
-    return (paramInt >= b) && (paramInt < this.d);
+    return (paramInt >= c) && (paramInt < this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.basic.DynamicItemViewHelperCompatBase
  * JD-Core Version:    0.7.0.1
  */

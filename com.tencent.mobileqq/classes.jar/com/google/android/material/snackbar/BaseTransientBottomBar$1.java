@@ -18,13 +18,13 @@ final class BaseTransientBottomBar$1
       ((BaseTransientBottomBar)paramMessage.obj).b(paramMessage.arg1);
       return true;
     }
-    ((BaseTransientBottomBar)paramMessage.obj).b();
+    ((BaseTransientBottomBar)paramMessage.obj).d();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.snackbar.BaseTransientBottomBar.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,26 +7,11 @@ import java.util.List;
 public class BatchImageAIFilterResult
   extends AIFilterResult
 {
-  public List<SingleImageAIFilterResult> a = new ArrayList();
-  
-  public float a()
-  {
-    return 0.0F;
-  }
+  public List<SingleImageAIFilterResult> b = new ArrayList();
   
   public String a()
   {
     return "";
-  }
-  
-  public HashMap<String, String> a()
-  {
-    return null;
-  }
-  
-  public float b()
-  {
-    return 0.0F;
   }
   
   public String b()
@@ -38,10 +23,25 @@ public class BatchImageAIFilterResult
   {
     return 0.0F;
   }
+  
+  public HashMap<String, String> d()
+  {
+    return null;
+  }
+  
+  public float e()
+  {
+    return 0.0F;
+  }
+  
+  public float f()
+  {
+    return 0.0F;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.BatchImageAIFilterResult
  * JD-Core Version:    0.7.0.1
  */

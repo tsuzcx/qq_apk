@@ -11,12 +11,12 @@ import com.tencent.widget.HorizontalListView;
 public class OverScrollCallbackHorizontalListView
   extends HorizontalListView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private OverScrollCallbackHorizontalListView.Listener jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView$Listener;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private boolean jdField_b_of_type_Boolean;
+  private float a;
+  private float b;
+  private boolean c;
+  private boolean d;
+  private OverScrollCallbackHorizontalListView.Listener e;
+  private int f = 0;
   
   public OverScrollCallbackHorizontalListView(Context paramContext)
   {
@@ -32,7 +32,7 @@ public class OverScrollCallbackHorizontalListView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = AIOUtils.b(50.0F, getResources());
+    this.f = AIOUtils.b(50.0F, getResources());
     setOverScrollMode(0);
   }
   
@@ -43,18 +43,18 @@ public class OverScrollCallbackHorizontalListView
     float f3 = paramMotionEvent.getY();
     if (i == 0)
     {
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f3;
+      this.a = f1;
+      this.b = f3;
       getParent().requestDisallowInterceptTouchEvent(true);
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Boolean = true;
+      this.c = true;
+      this.d = true;
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     if (i == 2)
     {
-      float f2 = this.jdField_a_of_type_Float;
-      f3 -= this.jdField_b_of_type_Float;
-      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > DisplayUtil.a(getContext(), 5.0F))) {
+      float f2 = this.a;
+      f3 -= this.b;
+      if ((this.c) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > DisplayUtil.a(getContext(), 5.0F))) {
         getParent().requestDisallowInterceptTouchEvent(false);
       } else {
         getParent().requestDisallowInterceptTouchEvent(true);
@@ -62,18 +62,18 @@ public class OverScrollCallbackHorizontalListView
     }
     else if ((i == 3) || (i == 1))
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
-    if ((this.jdField_b_of_type_Boolean) && (paramInt3 > this.jdField_a_of_type_Int))
+    if ((this.d) && (paramInt3 > this.f))
     {
-      this.jdField_b_of_type_Boolean = false;
-      OverScrollCallbackHorizontalListView.Listener localListener = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView$Listener;
-      if ((localListener != null) && (this.jdField_a_of_type_Boolean)) {
+      this.d = false;
+      OverScrollCallbackHorizontalListView.Listener localListener = this.e;
+      if ((localListener != null) && (this.c)) {
         localListener.a(this);
       }
     }
@@ -82,12 +82,12 @@ public class OverScrollCallbackHorizontalListView
   
   public void setListener(OverScrollCallbackHorizontalListView.Listener paramListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView$Listener = paramListener;
+    this.e = paramListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OverScrollCallbackHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

@@ -21,20 +21,20 @@ import java.util.List;
 public class MsgTabPlayPageLoader
   extends IGroupPageLoader.BaseGroupPageLoader
 {
-  private final MsgTabPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo;
-  private final List<MsgTabNodeInfo> jdField_a_of_type_JavaUtilList;
+  private final MsgTabPlayInfo a;
+  private final List<MsgTabNodeInfo> b;
   
   public MsgTabPlayPageLoader(MsgTabPlayInfo paramMsgTabPlayInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo = paramMsgTabPlayInfo;
-    MsgTabStoryManager localMsgTabStoryManager = (MsgTabStoryManager)PlayModeUtils.a().getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = paramMsgTabPlayInfo;
+    MsgTabStoryManager localMsgTabStoryManager = (MsgTabStoryManager)PlayModeUtils.b().getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER);
+    this.b = new ArrayList();
     if (paramMsgTabPlayInfo.source == 0) {
-      MsgTabStoryUtil.a(localMsgTabStoryManager.a().b(), this.jdField_a_of_type_JavaUtilList, paramMsgTabPlayInfo.nodeUnionId);
+      MsgTabStoryUtil.a(localMsgTabStoryManager.a().d(), this.b, paramMsgTabPlayInfo.nodeUnionId);
     }
   }
   
-  public static MsgTabVideoData a(List<MsgTabVideoData> paramList)
+  public static MsgTabVideoData b(List<MsgTabVideoData> paramList)
   {
     MsgTabVideoData localMsgTabVideoData = null;
     Object localObject1 = null;
@@ -53,7 +53,7 @@ public class MsgTabPlayPageLoader
             break;
           }
           localMsgTabVideoData = (MsgTabVideoData)paramList.get(i);
-          if (localMsgTabVideoData.b) {
+          if (localMsgTabVideoData.f) {
             return localMsgTabVideoData;
           }
           if (localObject1 == null)
@@ -63,10 +63,10 @@ public class MsgTabPlayPageLoader
           else
           {
             localObject2 = localObject1;
-            if (localObject1.jdField_a_of_type_Boolean)
+            if (localObject1.a)
             {
               localObject2 = localObject1;
-              if (!localMsgTabVideoData.jdField_a_of_type_Boolean) {
+              if (!localMsgTabVideoData.a) {
                 return (MsgTabVideoData)paramList.get(i);
               }
             }
@@ -77,21 +77,6 @@ public class MsgTabPlayPageLoader
       }
     }
     return localObject2;
-  }
-  
-  public IDataProvider.StartInfo a()
-  {
-    Object localObject = new MsgTabPlayPageLoader.MsgTabGroupId(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.nodeUnionId);
-    ((MsgTabPlayPageLoader.MsgTabGroupId)localObject).jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo = ((MsgTabStoryManager)QQStoryContext.a().getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.nodeUnionId);
-    IDataProvider.StartInfo localStartInfo = new IDataProvider.StartInfo((IDataProvider.GroupId)localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mStartVid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mStartVideoFeedId);
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mVids != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mVids.isEmpty()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mFeedIdMap != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mFeedIdMap.isEmpty()))
-    {
-      localObject = new IDataProvider.GroupInfo((IDataProvider.GroupId)localObject);
-      ((IDataProvider.GroupInfo)localObject).jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mVids;
-      ((IDataProvider.GroupInfo)localObject).jdField_a_of_type_JavaUtilMap = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mFeedIdMap;
-      localStartInfo.a = ((IDataProvider.GroupInfo)localObject);
-    }
-    return localStartInfo;
   }
   
   public List<IGroupPageLoader.IVidFullSyncer> a(List<IDataProvider.GroupId> paramList)
@@ -108,13 +93,13 @@ public class MsgTabPlayPageLoader
   
   public void a(int paramInt, IGroupPageLoader.CallBack paramCallBack)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.source == 1)
+    if (this.a.source == 1)
     {
-      localObject = ((StoryHaloManager)PlayModeUtils.a().getManager(QQManagerFactory.STORY_HALO_MANAGER)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.uin);
+      localObject = ((StoryHaloManager)PlayModeUtils.b().getManager(QQManagerFactory.STORY_HALO_MANAGER)).b(this.a.uin);
       if (localObject != null)
       {
-        ((MsgTabNodeInfo)localObject).f = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.source;
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        ((MsgTabNodeInfo)localObject).w = this.a.source;
+        this.b.add(localObject);
       }
       else
       {
@@ -122,7 +107,7 @@ public class MsgTabPlayPageLoader
       }
     }
     Object localObject = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       ((List)localObject).add(MsgTabPlayPageLoader.MsgTabGroupId.a((MsgTabNodeInfo)localIterator.next()));
     }
@@ -131,25 +116,25 @@ public class MsgTabPlayPageLoader
   
   public boolean a(IDataProvider.GroupInfo paramGroupInfo)
   {
-    if ((paramGroupInfo != null) && (paramGroupInfo.d()))
+    if ((paramGroupInfo != null) && (paramGroupInfo.e()))
     {
-      AssertUtils.assertTrue(paramGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId);
-      MsgTabPlayPageLoader.MsgTabGroupId localMsgTabGroupId = (MsgTabPlayPageLoader.MsgTabGroupId)paramGroupInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId;
-      if (localMsgTabGroupId.jdField_a_of_type_Boolean)
+      AssertUtils.assertTrue(paramGroupInfo.b instanceof MsgTabPlayPageLoader.MsgTabGroupId);
+      MsgTabPlayPageLoader.MsgTabGroupId localMsgTabGroupId = (MsgTabPlayPageLoader.MsgTabGroupId)paramGroupInfo.b;
+      if (localMsgTabGroupId.g)
       {
         SLog.a("Q.qqstory.player.data.MsgTabPlayPageLoader", "won't needSyncVidList. groupId %s is end", localMsgTabGroupId.a());
         return false;
       }
-      int i = localMsgTabGroupId.jdField_a_of_type_Int;
-      if (paramGroupInfo.jdField_a_of_type_Int != i) {
-        SLog.a("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList() groupId %s, position not match: %d != %d", localMsgTabGroupId.a(), Integer.valueOf(paramGroupInfo.jdField_a_of_type_Int), Integer.valueOf(i));
+      int i = localMsgTabGroupId.f;
+      if (paramGroupInfo.e != i) {
+        SLog.a("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList() groupId %s, position not match: %d != %d", localMsgTabGroupId.a(), Integer.valueOf(paramGroupInfo.e), Integer.valueOf(i));
       }
-      if ((i >= 0) && (paramGroupInfo.jdField_a_of_type_JavaUtilList.size() - i >= 10))
+      if ((i >= 0) && (paramGroupInfo.c.size() - i >= 10))
       {
-        SLog.b("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList. not need sync postion=%d, vidlist.size=%d, group=%s", Integer.valueOf(i), Integer.valueOf(paramGroupInfo.jdField_a_of_type_JavaUtilList.size()), paramGroupInfo);
+        SLog.b("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList. not need sync postion=%d, vidlist.size=%d, group=%s", Integer.valueOf(i), Integer.valueOf(paramGroupInfo.c.size()), paramGroupInfo);
         return false;
       }
-      SLog.b("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList. need sync postion=%d, vidlist.size=%d, group=%s", Integer.valueOf(i), Integer.valueOf(paramGroupInfo.jdField_a_of_type_JavaUtilList.size()), paramGroupInfo);
+      SLog.b("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList. need sync postion=%d, vidlist.size=%d, group=%s", Integer.valueOf(i), Integer.valueOf(paramGroupInfo.c.size()), paramGroupInfo);
       return true;
     }
     SLog.c("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList. need sync");
@@ -157,10 +142,25 @@ public class MsgTabPlayPageLoader
   }
   
   public void b() {}
+  
+  public IDataProvider.StartInfo c()
+  {
+    Object localObject = new MsgTabPlayPageLoader.MsgTabGroupId(this.a.nodeUnionId);
+    ((MsgTabPlayPageLoader.MsgTabGroupId)localObject).a = ((MsgTabStoryManager)QQStoryContext.j().getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER)).b(this.a.nodeUnionId);
+    IDataProvider.StartInfo localStartInfo = new IDataProvider.StartInfo((IDataProvider.GroupId)localObject, this.a.mStartVid, this.a.mStartVideoFeedId);
+    if ((this.a.mVids != null) && (!this.a.mVids.isEmpty()) && (this.a.mFeedIdMap != null) && (!this.a.mFeedIdMap.isEmpty()))
+    {
+      localObject = new IDataProvider.GroupInfo((IDataProvider.GroupId)localObject);
+      ((IDataProvider.GroupInfo)localObject).c = this.a.mVids;
+      ((IDataProvider.GroupInfo)localObject).d = this.a.mFeedIdMap;
+      localStartInfo.d = ((IDataProvider.GroupInfo)localObject);
+    }
+    return localStartInfo;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayPageLoader
  * JD-Core Version:    0.7.0.1
  */

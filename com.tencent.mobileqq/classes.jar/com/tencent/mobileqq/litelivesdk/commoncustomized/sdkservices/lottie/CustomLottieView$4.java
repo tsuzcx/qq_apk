@@ -10,17 +10,17 @@ class CustomLottieView$4
   
   public void run()
   {
-    InputStream localInputStream = CustomLottieView.a(CustomLottieView.b(this.this$0));
+    InputStream localInputStream = CustomLottieView.a(CustomLottieView.d(this.this$0));
     if (localInputStream != null)
     {
       CustomLottieView localCustomLottieView = this.this$0;
-      CustomLottieView.a(localCustomLottieView, LottieComposition.Factory.fromInputStream(CustomLottieView.a(localCustomLottieView), localInputStream, new CustomLottieView.4.1(this)));
+      CustomLottieView.a(localCustomLottieView, LottieComposition.Factory.fromInputStream(CustomLottieView.e(localCustomLottieView), localInputStream, new CustomLottieView.4.1(this)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.lottie.CustomLottieView.4
  * JD-Core Version:    0.7.0.1
  */

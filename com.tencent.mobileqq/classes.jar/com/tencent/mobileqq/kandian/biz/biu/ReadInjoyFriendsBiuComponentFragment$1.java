@@ -13,7 +13,7 @@ class ReadInjoyFriendsBiuComponentFragment$1
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.doOnBackPressed();
+    this.a.b.doOnBackPressed();
     Object localObject1 = paramView.getTag();
     try
     {
@@ -32,34 +32,34 @@ class ReadInjoyFriendsBiuComponentFragment$1
     if (i >= 0)
     {
       localObject1 = localObject2;
-      if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-        localObject1 = (MultiBiuSameContent)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (i < this.a.e.size()) {
+        localObject1 = (MultiBiuSameContent)this.a.e.get(i);
       }
     }
     i = paramView.getId();
-    if (i != 2131364910)
+    if (i != 2131431033)
     {
-      if ((i != 2131368064) && (i != 2131371862)) {
+      if ((i != 2131434914) && (i != 2131439303)) {
         return;
       }
       if (localObject1 != null)
       {
         paramView = ReadInjoyFriendsBiuComponentFragment.a(this.a, ((MultiBiuSameContent)localObject1).a);
         ReadInjoyFriendsBiuComponentFragment.a(this.a, paramView);
-        ReadInjoyFriendsBiuComponentFragment.a(this.a, ((MultiBiuSameContent)localObject1).a, ((MultiBiuSameContent)localObject1).b, "0X800953D", ((MultiBiuSameContent)localObject1).c);
+        ReadInjoyFriendsBiuComponentFragment.a(this.a, ((MultiBiuSameContent)localObject1).a, ((MultiBiuSameContent)localObject1).e, "0X800953D", ((MultiBiuSameContent)localObject1).f);
       }
     }
     else if (localObject1 != null)
     {
-      paramView = ReadInjoyFriendsBiuComponentFragment.a(this.a, ((MultiBiuSameContent)localObject1).a, ((MultiBiuSameContent)localObject1).c, ((MultiBiuSameContent)localObject1).b);
+      paramView = ReadInjoyFriendsBiuComponentFragment.a(this.a, ((MultiBiuSameContent)localObject1).a, ((MultiBiuSameContent)localObject1).f, ((MultiBiuSameContent)localObject1).e);
       ReadInjoyFriendsBiuComponentFragment.a(this.a, paramView);
-      ReadInjoyFriendsBiuComponentFragment.a(this.a, ((MultiBiuSameContent)localObject1).a, ((MultiBiuSameContent)localObject1).b, "0X800953C", ((MultiBiuSameContent)localObject1).c);
+      ReadInjoyFriendsBiuComponentFragment.a(this.a, ((MultiBiuSameContent)localObject1).a, ((MultiBiuSameContent)localObject1).e, "0X800953C", ((MultiBiuSameContent)localObject1).f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.biu.ReadInjoyFriendsBiuComponentFragment.1
  * JD-Core Version:    0.7.0.1
  */

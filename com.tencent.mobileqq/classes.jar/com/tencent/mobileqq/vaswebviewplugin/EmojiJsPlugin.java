@@ -71,7 +71,7 @@ public class EmojiJsPlugin
   
   private void buyEmoji(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
   {
-    paramString5 = this.mRuntime.a();
+    paramString5 = this.mRuntime.b();
     if (paramString5 != null)
     {
       showProgressDialog();
@@ -83,12 +83,12 @@ public class EmojiJsPlugin
         dismissProgressDialog();
         if (!TextUtils.isEmpty(paramString4))
         {
-          if (!NetworkUtil.isNetSupport(this.mRuntime.a().getApplicationContext()))
+          if (!NetworkUtil.isNetSupport(this.mRuntime.d().getApplicationContext()))
           {
             onPayResultCallback("net unsupport", 4, 0, -1, -1, -1, paramString1);
             return;
           }
-          PayBridgeActivity.startEmojimallPay(this.mRuntime.a(), paramString1, paramString2, paramString3, paramString4, paramString9, paramString7, paramString8, paramString10, paramString11);
+          PayBridgeActivity.startEmojimallPay(this.mRuntime.d(), paramString1, paramString2, paramString3, paramString4, paramString9, paramString7, paramString8, paramString10, paramString11);
           return;
         }
         onPayResultCallback("skey null", 8, 0, -1, -1, -1, paramString1);
@@ -102,7 +102,7 @@ public class EmojiJsPlugin
   
   private void buyGoods(String paramString1, String paramString2)
   {
-    PayBridgeActivity.tenpay(this.mRuntime.a(), paramString2, 7, paramString1);
+    PayBridgeActivity.tenpay(this.mRuntime.d(), paramString2, 7, paramString1);
   }
   
   private void clearDownloadingObservers()
@@ -119,8 +119,8 @@ public class EmojiJsPlugin
   
   private void closePage(int paramInt)
   {
-    if (this.mRuntime.a() != null) {
-      this.mRuntime.a().finish();
+    if (this.mRuntime.d() != null) {
+      this.mRuntime.d().finish();
     }
   }
   
@@ -137,8 +137,8 @@ public class EmojiJsPlugin
   
   private void dismissProgressDialog()
   {
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null)) {
-      this.mRuntime.a().runOnUiThread(new EmojiJsPlugin.9(this));
+    if ((this.mRuntime != null) && (this.mRuntime.d() != null)) {
+      this.mRuntime.d().runOnUiThread(new EmojiJsPlugin.9(this));
     }
   }
   
@@ -181,7 +181,7 @@ public class EmojiJsPlugin
   
   private void getNetwork(String paramString)
   {
-    int i = NetworkUtil.getSystemNetwork(this.mRuntime.a().getApplicationContext());
+    int i = NetworkUtil.getSystemNetwork(this.mRuntime.d().getApplicationContext());
     JSONObject localJSONObject1 = new JSONObject();
     try
     {
@@ -201,7 +201,7 @@ public class EmojiJsPlugin
   
   private void getSessionKey(String paramString1, String paramString2)
   {
-    Object localObject2 = this.mRuntime.a();
+    Object localObject2 = this.mRuntime.b();
     if (localObject2 != null)
     {
       showProgressDialog();
@@ -257,7 +257,7 @@ public class EmojiJsPlugin
   
   private void makeToast(String paramString)
   {
-    QQToast.a(this.mRuntime.a(), paramString, 0).b(this.mRuntime.a().getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(this.mRuntime.d(), paramString, 0).show(this.mRuntime.d().getResources().getDimensionPixelSize(2131299920));
   }
   
   private void onPayResultCallback(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2)
@@ -296,7 +296,7 @@ public class EmojiJsPlugin
     {
       if (!TextUtils.isEmpty(paramString2))
       {
-        Object localObject = this.mRuntime.a();
+        Object localObject = this.mRuntime.b();
         if (localObject != null)
         {
           showProgressDialog();
@@ -333,7 +333,7 @@ public class EmojiJsPlugin
   
   private void openService(String paramString1, String paramString2)
   {
-    PayBridgeActivity.tenpay(this.mRuntime.a(), paramString2, 4, paramString1);
+    PayBridgeActivity.tenpay(this.mRuntime.d(), paramString2, 4, paramString1);
   }
   
   private void openSubPage(String paramString1, String paramString2)
@@ -353,12 +353,12 @@ public class EmojiJsPlugin
     localIntent.putExtra("openpagetime", System.currentTimeMillis());
     localIntent.putExtra("emomall_new_time", this.mEmomallNewTimeFlag);
     localIntent.putExtra("reqType", 6);
-    VasWebviewUtil.b(this.mRuntime.a(), null, 8L, localIntent, false, -1);
+    VasWebviewUtil.b(this.mRuntime.d(), null, 8L, localIntent, false, -1);
   }
   
   private void openTenpayView(String paramString1, String paramString2)
   {
-    PayBridgeActivity.tenpay(this.mRuntime.a(), paramString2, 5, paramString1);
+    PayBridgeActivity.tenpay(this.mRuntime.d(), paramString2, 5, paramString1);
   }
   
   private void queryEmojiInfo(String paramString1, String paramString2, int paramInt1, int paramInt2)
@@ -388,12 +388,12 @@ public class EmojiJsPlugin
   
   private void rechargeGameCurrency(String paramString1, String paramString2)
   {
-    PayBridgeActivity.tenpay(this.mRuntime.a(), paramString2, 6, paramString1);
+    PayBridgeActivity.tenpay(this.mRuntime.d(), paramString2, 6, paramString1);
   }
   
   private void rechargeQb(String paramString1, String paramString2)
   {
-    PayBridgeActivity.tenpay(this.mRuntime.a(), paramString2, 8, paramString1);
+    PayBridgeActivity.tenpay(this.mRuntime.d(), paramString2, 8, paramString1);
   }
   
   private void respMakeDynamicEmoji(int paramInt, String paramString)
@@ -449,20 +449,20 @@ public class EmojiJsPlugin
         ((Bundle)localObject2).putInt("uintype", i);
         ((Bundle)localObject2).putInt("FORWARD_EMOPGK_ID", paramInt);
         ((Bundle)localObject2).putBoolean("isBack2Root", true);
-        localObject1 = AIOUtils.a(new Intent(this.mRuntime.a().getApplicationContext(), SplashActivity.class), new int[] { 2 });
-        this.mRuntime.a().getSharedPreferences("mobileQQ", 4).edit().putBoolean("FORWARD_EMOPGK_ID", true).commit();
+        localObject1 = AIOUtils.a(new Intent(this.mRuntime.d().getApplicationContext(), SplashActivity.class), new int[] { 2 });
+        this.mRuntime.d().getSharedPreferences("mobileQQ", 4).edit().putBoolean("FORWARD_EMOPGK_ID", true).commit();
         ((Intent)localObject1).putExtras((Bundle)localObject2);
-        this.mRuntime.a().startActivity((Intent)localObject1);
+        this.mRuntime.d().startActivity((Intent)localObject1);
         return;
       }
       localObject1 = new Bundle();
       ((Bundle)localObject1).putInt("forward_type", 14);
       ((Bundle)localObject1).putInt("FORWARD_EMOPGK_ID", paramInt);
-      localObject2 = new Intent(this.mRuntime.a().getApplicationContext(), ForwardRecentActivity.class);
+      localObject2 = new Intent(this.mRuntime.d().getApplicationContext(), ForwardRecentActivity.class);
       ((Intent)localObject2).addFlags(268435456);
       ((Intent)localObject2).addFlags(67108864);
       ((Intent)localObject2).putExtras((Bundle)localObject1);
-      this.mRuntime.a().startActivity((Intent)localObject2);
+      this.mRuntime.d().startActivity((Intent)localObject2);
       return;
     }
     catch (Exception localException)
@@ -478,7 +478,7 @@ public class EmojiJsPlugin
     paramString4 = paramString4.split("\t");
     if (paramString4.length >= 1)
     {
-      paramString2 = DialogUtil.a(this.mRuntime.a(), 230).a(paramString3).b(paramString2).a(paramString4[0], new EmojiJsPlugin.1(this, paramString1));
+      paramString2 = DialogUtil.c(this.mRuntime.d(), 230).a(paramString3).b(paramString2).a(paramString4[0], new EmojiJsPlugin.1(this, paramString1));
       if (paramString4.length >= 2) {
         paramString2.b(paramString4[1], new EmojiJsPlugin.2(this, paramString1));
       }
@@ -493,8 +493,8 @@ public class EmojiJsPlugin
   
   private void showProgressDialog()
   {
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null)) {
-      this.mRuntime.a().runOnUiThread(new EmojiJsPlugin.8(this));
+    if ((this.mRuntime != null) && (this.mRuntime.d() != null)) {
+      this.mRuntime.d().runOnUiThread(new EmojiJsPlugin.8(this));
     }
   }
   
@@ -503,7 +503,7 @@ public class EmojiJsPlugin
     try
     {
       Object localObject1;
-      if (!Utils.a())
+      if (!Utils.b())
       {
         boolean bool = QLog.isColorLevel();
         if (bool) {
@@ -515,7 +515,7 @@ public class EmojiJsPlugin
         onAppResponse(paramString, ((JSONObject)localObject1).toString());
         return;
       }
-      long l = Utils.b();
+      long l = Utils.c();
       if (l < 5242880)
       {
         if (QLog.isColorLevel())
@@ -540,14 +540,14 @@ public class EmojiJsPlugin
       Object localObject3;
       localJSONException1.printStackTrace();
       Object localObject2;
-      if (NetworkUtil.isNetSupport(this.mRuntime.a().getApplicationContext()))
+      if (NetworkUtil.isNetSupport(this.mRuntime.d().getApplicationContext()))
       {
-        if ((paramBoolean) && (NetworkUtil.getNetworkType(this.mRuntime.a().getApplicationContext()) != 1))
+        if ((paramBoolean) && (NetworkUtil.getNetworkType(this.mRuntime.d().getApplicationContext()) != 1))
         {
           if (QLog.isColorLevel()) {
             QLog.i(TAG, 2, "startDownloadEmoji non wifi net");
           }
-          localObject2 = DialogUtil.a(this.mRuntime.a(), 230).a(this.mRuntime.a().getString(2131691921)).b(this.mRuntime.a().getString(2131691920)).a(this.mRuntime.a().getString(2131691918), new EmojiJsPlugin.6(this, paramString)).c(this.mRuntime.a().getString(2131691919), new EmojiJsPlugin.5(this, paramInt1, paramInt2, paramInt3, paramString));
+          localObject2 = DialogUtil.c(this.mRuntime.d(), 230).a(this.mRuntime.d().getString(2131888888)).b(this.mRuntime.d().getString(2131888887)).a(this.mRuntime.d().getString(2131888885), new EmojiJsPlugin.6(this, paramString)).c(this.mRuntime.d().getString(2131888886), new EmojiJsPlugin.5(this, paramInt1, paramInt2, paramInt3, paramString));
           ((QQCustomDialogThreeBtns)localObject2).setOnKeyListener(new EmojiJsPlugin.7(this, (QQCustomDialogThreeBtns)localObject2, paramString));
           ((QQCustomDialogThreeBtns)localObject2).setCanceledOnTouchOutside(false);
           ((QQCustomDialogThreeBtns)localObject2).show();
@@ -584,7 +584,7 @@ public class EmojiJsPlugin
         {
           localJSONException2.printStackTrace();
         }
-        EmosmUtils.a(this.mRuntime.a());
+        EmosmUtils.a(this.mRuntime.d());
       }
       if (QLog.isColorLevel())
       {
@@ -682,8 +682,8 @@ public class EmojiJsPlugin
       if (paramString3 == null) {
         return false;
       }
-      if ((TextUtils.isEmpty(this.mSelfUin)) && (this.mRuntime.a() != null)) {
-        this.mSelfUin = this.mRuntime.a().getAccount();
+      if ((TextUtils.isEmpty(this.mSelfUin)) && (this.mRuntime.b() != null)) {
+        this.mSelfUin = this.mRuntime.b().getAccount();
       }
       try
       {
@@ -728,8 +728,8 @@ public class EmojiJsPlugin
   
   protected boolean handleSchemaRequest(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(this.mSelfUin)) && (this.mRuntime.a() != null)) {
-      this.mSelfUin = this.mRuntime.a().getAccount();
+    if ((TextUtils.isEmpty(this.mSelfUin)) && (this.mRuntime.b() != null)) {
+      this.mSelfUin = this.mRuntime.b().getAccount();
     }
     return handleEmojiSchemaRequest(paramString1, paramString2);
   }
@@ -737,7 +737,7 @@ public class EmojiJsPlugin
   public void invoke(String paramString1, String paramString2, String paramString3)
   {
     if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded()) {
-      ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doBindService(this.mRuntime.a().getApplicationContext());
+      ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doBindService(this.mRuntime.d().getApplicationContext());
     }
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString3))) {}
     for (;;)
@@ -778,11 +778,11 @@ public class EmojiJsPlugin
           int j = localJSONWrapper.getInt("businessType", 1);
           int k = localJSONWrapper.getInt("sceneType", 0);
           if (!localJSONObject.has("withoutFlowTips")) {
-            break label820;
+            break label821;
           }
           if (!localJSONObject.getBoolean("withoutFlowTips"))
           {
-            break label820;
+            break label821;
             startDownloadEmoji(paramString3, i, j, bool, k);
           }
         }
@@ -901,7 +901,7 @@ public class EmojiJsPlugin
       }
       boolean bool = false;
       continue;
-      label820:
+      label821:
       bool = true;
     }
   }
@@ -1065,7 +1065,7 @@ public class EmojiJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin
  * JD-Core Version:    0.7.0.1
  */

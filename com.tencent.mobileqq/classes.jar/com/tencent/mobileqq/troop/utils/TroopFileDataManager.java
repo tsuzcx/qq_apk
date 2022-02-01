@@ -9,30 +9,25 @@ import java.util.Map;
 
 public class TroopFileDataManager
 {
-  public static Map<Long, TroopFileDataManager> a;
-  public long a;
+  public static Map<Long, TroopFileDataManager> a = new HashMap();
   public Map<String, TroopFileData> b = new HashMap();
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  public long c;
   
   public TroopFileDataManager(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   public static TroopFileDataManager a(long paramLong)
   {
     try
     {
-      TroopFileDataManager localTroopFileDataManager2 = (TroopFileDataManager)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      TroopFileDataManager localTroopFileDataManager2 = (TroopFileDataManager)a.get(Long.valueOf(paramLong));
       TroopFileDataManager localTroopFileDataManager1 = localTroopFileDataManager2;
       if (localTroopFileDataManager2 == null)
       {
         localTroopFileDataManager1 = new TroopFileDataManager(paramLong);
-        jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localTroopFileDataManager1);
+        a.put(Long.valueOf(paramLong), localTroopFileDataManager1);
       }
       return localTroopFileDataManager1;
     }
@@ -76,7 +71,7 @@ public class TroopFileDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileDataManager
  * JD-Core Version:    0.7.0.1
  */

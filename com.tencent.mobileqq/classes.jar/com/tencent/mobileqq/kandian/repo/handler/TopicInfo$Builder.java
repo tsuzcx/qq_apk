@@ -2,29 +2,25 @@ package com.tencent.mobileqq.kandian.repo.handler;
 
 public final class TopicInfo$Builder
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
+  private long a;
+  private String b;
   private String c;
   private String d;
+  private String e;
+  private long f;
+  private boolean g;
+  private long h;
+  private long i;
   
   public Builder a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramLong;
     return this;
   }
   
   public Builder a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public Builder a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramString;
     return this;
   }
   
@@ -35,31 +31,37 @@ public final class TopicInfo$Builder
   
   public Builder b(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.h = paramLong;
     return this;
   }
   
   public Builder b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
+    return this;
+  }
+  
+  public Builder c(long paramLong)
+  {
+    this.i = paramLong;
     return this;
   }
   
   public Builder c(String paramString)
   {
-    this.c = paramString;
+    this.d = paramString;
     return this;
   }
   
   public Builder d(String paramString)
   {
-    this.d = paramString;
+    this.e = paramString;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.TopicInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

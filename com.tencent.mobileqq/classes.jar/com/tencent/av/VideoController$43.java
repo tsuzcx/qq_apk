@@ -13,19 +13,19 @@ class VideoController$43
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      paramInt = this.jdField_a_of_type_ComTencentAvVideoController.e();
-      paramDialogInterface = this.jdField_a_of_type_ComTencentAvVideoController;
-      paramDialogInterface.a("onHowling_click", paramDialogInterface.jdField_a_of_type_Long, true, false, -1);
-      paramDialogInterface = this.jdField_a_of_type_ComTencentAvVideoController;
-      paramDialogInterface.a(-1L, paramInt, paramDialogInterface.e());
-      if (this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
+      paramInt = this.c.D();
+      paramDialogInterface = this.c;
+      paramDialogInterface.a("onHowling_click", paramDialogInterface.k, true, false, -1);
+      paramDialogInterface = this.c;
+      paramDialogInterface.a(-1L, paramInt, paramDialogInterface.D());
+      if (this.c.e != null) {
+        this.c.e.a(new Object[] { Integer.valueOf(108) });
       }
     }
     if (this.b) {
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvUtilsTraeHelper.d();
+      this.c.v.g();
     }
     ReportController.b(null, "CliOper", "", "", "0x8006993", "0x8006993", 0, 0, "", "", "", "");
   }

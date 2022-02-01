@@ -11,17 +11,17 @@ class FriendChatPie$19
   
   public void a(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).onGetUserAuthDocsGrayTipsInfo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_MqqOsMqqHandler, paramBoolean, paramArrayOfObject);
+    ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).onGetUserAuthDocsGrayTipsInfo(this.a.d, this.a.e, this.a.m, paramBoolean, paramArrayOfObject);
   }
   
   public void b(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).onSetUserAuthDocsGrayTipsInfo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_MqqOsMqqHandler, paramBoolean, paramArrayOfObject);
+    ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).onSetUserAuthDocsGrayTipsInfo(this.a.d, this.a.e, this.a.m, paramBoolean, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.19
  * JD-Core Version:    0.7.0.1
  */

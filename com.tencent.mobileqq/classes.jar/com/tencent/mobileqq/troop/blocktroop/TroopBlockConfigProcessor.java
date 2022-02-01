@@ -23,7 +23,7 @@ public class TroopBlockConfigProcessor
   public TroopBlockConfig a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return TroopBlockConfig.a(paramArrayOfQConfItem[0].a);
+      return TroopBlockConfig.a(paramArrayOfQConfItem[0].b);
     }
     return null;
   }
@@ -70,7 +70,7 @@ public class TroopBlockConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.blocktroop.TroopBlockConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.video.player.api.IVideoPlayerWrapper;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyHeadImageView;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsAdapter;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsGradientMaskView;
@@ -27,7 +27,6 @@ import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo;
 import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoPlayParam;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5.Builder;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.util.DisplayUtil;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
@@ -40,19 +39,19 @@ public final class TiktokVideoItemDelegate
   extends ShortVideoItemDelegate
   implements VideoFeedsStressFollowLayout.OnFollowActionListener
 {
-  private final TiktokVideoItemHolder a;
+  private final TiktokVideoItemHolder e;
   
   public TiktokVideoItemDelegate(@NotNull TiktokVideoItemHolder paramTiktokVideoItemHolder, @NotNull VideoFeedsRecommendPresenter paramVideoFeedsRecommendPresenter, @NotNull VideoFeedsAdapter paramVideoFeedsAdapter)
   {
     super((ShortVideoItemHolder)paramTiktokVideoItemHolder, paramVideoFeedsRecommendPresenter, paramVideoFeedsAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder = paramTiktokVideoItemHolder;
-    paramTiktokVideoItemHolder = VideoFeedsHelper.b(paramVideoFeedsRecommendPresenter.a());
+    this.e = paramTiktokVideoItemHolder;
+    paramTiktokVideoItemHolder = VideoFeedsHelper.c(paramVideoFeedsRecommendPresenter.v());
     float f = paramTiktokVideoItemHolder[1];
     int j = 0;
     if (f / paramTiktokVideoItemHolder[0] >= 1.97D)
     {
-      paramTiktokVideoItemHolder = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder;
-      paramVideoFeedsRecommendPresenter = paramTiktokVideoItemHolder.p;
+      paramTiktokVideoItemHolder = this.e;
+      paramVideoFeedsRecommendPresenter = paramTiktokVideoItemHolder.aM;
       int i = j;
       if (paramVideoFeedsRecommendPresenter != null)
       {
@@ -62,74 +61,64 @@ public final class TiktokVideoItemDelegate
           i = paramVideoFeedsRecommendPresenter.height;
         }
       }
-      paramTiktokVideoItemHolder.jdField_d_of_type_Int = i;
-      paramTiktokVideoItemHolder = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.p;
+      paramTiktokVideoItemHolder.aD = i;
+      paramTiktokVideoItemHolder = this.e.aM;
       if (paramTiktokVideoItemHolder != null) {
         paramTiktokVideoItemHolder.setBackgroundDrawable(null);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.a().a((VideoFeedsStressFollowLayout.OnFollowActionListener)this);
+    this.e.H().a((VideoFeedsStressFollowLayout.OnFollowActionListener)this);
   }
   
-  private final void d(VideoInfo paramVideoInfo)
+  private final void e(VideoInfo paramVideoInfo)
   {
-    if (paramVideoInfo.p) {
-      paramVideoInfo.a = StressState.Shrink;
+    if (paramVideoInfo.al) {
+      paramVideoInfo.aP = StressState.Shrink;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.a().setVideoInfo(paramVideoInfo);
-    VideoFeedsStressFollowHelper localVideoFeedsStressFollowHelper = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowHelper;
-    paramVideoInfo = paramVideoInfo.a;
+    this.e.H().setVideoInfo(paramVideoInfo);
+    VideoFeedsStressFollowHelper localVideoFeedsStressFollowHelper = this.e.m;
+    paramVideoInfo = paramVideoInfo.aP;
     Intrinsics.checkExpressionValueIsNotNull(paramVideoInfo, "videoInfo.stressState");
     localVideoFeedsStressFollowHelper.a(paramVideoInfo);
-  }
-  
-  protected int a(@NotNull VideoInfo paramVideoInfo)
-  {
-    Intrinsics.checkParameterIsNotNull(paramVideoInfo, "info");
-    if (paramVideoInfo.n) {
-      return 2130843261;
-    }
-    return 2130843263;
   }
   
   public int a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return 2130843259;
+      return 2130844213;
     }
-    return 2130843262;
+    return 2130844216;
   }
   
   public void a(@Nullable VideoInfo paramVideoInfo)
   {
     if (paramVideoInfo != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.b(paramVideoInfo);
-      VideoPlayParam localVideoPlayParam = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam;
+      this.c.b(paramVideoInfo);
+      VideoPlayParam localVideoPlayParam = this.e.az;
       Object localObject2 = null;
       Object localObject1 = localObject2;
       if (localVideoPlayParam != null)
       {
-        localVideoPlayParam = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam;
+        localVideoPlayParam = this.e.az;
         localObject1 = localObject2;
         if (localVideoPlayParam != null) {
-          localObject1 = localVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
+          localObject1 = localVideoPlayParam.h;
         }
       }
       paramVideoInfo = new VideoR5.Builder(paramVideoInfo);
       long l2 = -1L;
       if (localObject1 != null) {
-        l1 = ((IVideoPlayerWrapper)localObject1).a();
+        l1 = ((IVideoPlayerWrapper)localObject1).C();
       } else {
         l1 = -1L;
       }
       paramVideoInfo = paramVideoInfo.a(l1);
       long l1 = l2;
       if (localObject1 != null) {
-        l1 = ((IVideoPlayerWrapper)localObject1).b();
+        l1 = ((IVideoPlayerWrapper)localObject1).I();
       }
-      paramVideoInfo = paramVideoInfo.c(l1).af(1).M(0).a();
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X80078FD", "0X80078FD", 0, 0, "3", "", "", paramVideoInfo.a(), false);
+      PublicAccountReportUtils.a(null, "", "0X80078FD", "0X80078FD", 0, 0, "3", "", "", paramVideoInfo.c(l1).ag(1).M(0).b().a(), false);
     }
   }
   
@@ -143,55 +132,55 @@ public final class TiktokVideoItemDelegate
       if (localQQAppInterface != null)
       {
         long l = localQQAppInterface.getLongAccountUin();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.a().setHeadImgByUin(l);
+        this.e.F().setHeadImgByUin(l);
       }
     }
-    if (paramVideoInfo.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a()))
+    if (paramVideoInfo.a(this.b.v()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.c().setVisibility(0);
+      this.e.I().setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.a().setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.c().setVisibility(8);
+    this.e.d().setVisibility(8);
+    this.e.I().setVisibility(8);
   }
   
   public void a_(@NotNull VideoInfo paramVideoInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramVideoInfo, "info");
-    VideoFeedsHelper.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.w, paramVideoInfo.e, "评论");
-    paramVideoInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.k;
+    VideoFeedsHelper.b(this.e.aQ, paramVideoInfo.p, "评论");
+    paramVideoInfo = this.e.aP;
     if (paramVideoInfo != null) {
-      paramVideoInfo.setImageResource(2130843258);
+      paramVideoInfo.setImageResource(2130844212);
     }
   }
   
   public void b()
   {
     super.b();
-    VideoFeedsHelper.b((View)this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.s, 0);
-    VideoFeedsHelper.b((View)this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.l, 0);
+    VideoFeedsHelper.b((View)this.e.bf, 0);
+    VideoFeedsHelper.b((View)this.e.aN, 0);
   }
   
   public void b(@NotNull VideoInfo paramVideoInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramVideoInfo, "videoInfo");
     super.b(paramVideoInfo);
-    d(paramVideoInfo);
+    e(paramVideoInfo);
   }
   
   protected void b(@NotNull VideoInfo paramVideoInfo, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramVideoInfo, "info");
-    d(paramVideoInfo);
-    if (paramVideoInfo.a == StressState.Stretched)
+    e(paramVideoInfo);
+    if (paramVideoInfo.aP == StressState.Stretched)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsFollowButton == null) {
+      if (this.e.aL == null) {
         return;
       }
-      paramVideoInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsFollowButton;
+      paramVideoInfo = this.e.aL;
       if (paramVideoInfo != null)
       {
-        paramVideoInfo = paramVideoInfo.a();
+        paramVideoInfo = paramVideoInfo.getView();
         if (paramVideoInfo != null) {
           paramVideoInfo.setVisibility(8);
         }
@@ -206,61 +195,70 @@ public final class TiktokVideoItemDelegate
   public void c()
   {
     super.c();
-    VideoFeedsHelper.b((View)this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.s, 8);
-    VideoFeedsHelper.b((View)this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.l, 8);
+    VideoFeedsHelper.b((View)this.e.bf, 8);
+    VideoFeedsHelper.b((View)this.e.aN, 8);
   }
   
   public void c(@NotNull VideoInfo paramVideoInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramVideoInfo, "info");
     super.c(paramVideoInfo);
-    View localView = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.q;
+    View localView = this.e.aX;
     if ((localView != null) && (localView.getVisibility() == 0)) {
-      VideoFeedsHelper.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.k(), paramVideoInfo.v, "分享");
+      VideoFeedsHelper.b(this.e.K(), paramVideoInfo.aw, "分享");
     }
   }
   
-  public void e(boolean paramBoolean)
+  protected int d(@NotNull VideoInfo paramVideoInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramVideoInfo, "info");
+    if (paramVideoInfo.af) {
+      return 2130844215;
+    }
+    return 2130844217;
+  }
+  
+  public void f(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam;
+      localObject = this.e.az;
       if (localObject != null)
       {
-        localObject = ((VideoPlayParam)localObject).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
-        if ((localObject != null) && (((VideoInfo)localObject).p == true))
+        localObject = ((VideoPlayParam)localObject).c;
+        if ((localObject != null) && (((VideoInfo)localObject).al == true))
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.jdField_d_of_type_AndroidWidgetTextView;
+          localObject = this.e.k;
           if (localObject != null) {
             ((TextView)localObject).setVisibility(0);
           }
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.f().setVisibility(0);
+      this.e.G().setVisibility(0);
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.jdField_d_of_type_AndroidWidgetTextView;
+    Object localObject = this.e.k;
     if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.f().setVisibility(8);
+    this.e.G().setVisibility(8);
   }
   
-  public void f(boolean paramBoolean)
+  public void g(boolean paramBoolean)
   {
-    super.f(paramBoolean);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.d().getLayoutParams();
+    super.g(paramBoolean);
+    Object localObject = this.e.J().getLayoutParams();
     if (localObject != null)
     {
       localObject = (ViewGroup.MarginLayoutParams)localObject;
       int i;
       if (paramBoolean) {
-        i = DisplayUtil.a((Context)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a(), 86.0F);
+        i = DisplayUtil.a((Context)this.b.v(), 86.0F);
       } else {
-        i = DisplayUtil.a((Context)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a(), 5.0F);
+        i = DisplayUtil.a((Context)this.b.v(), 5.0F);
       }
       ((ViewGroup.MarginLayoutParams)localObject).setMargins(((ViewGroup.MarginLayoutParams)localObject).leftMargin, ((ViewGroup.MarginLayoutParams)localObject).topMargin, i, ((ViewGroup.MarginLayoutParams)localObject).bottomMargin);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsTiktokVideoItemHolder.d().setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.e.J().setLayoutParams((ViewGroup.LayoutParams)localObject);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
@@ -268,7 +266,7 @@ public final class TiktokVideoItemDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.videofeeds.TiktokVideoItemDelegate
  * JD-Core Version:    0.7.0.1
  */

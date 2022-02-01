@@ -21,37 +21,37 @@ class QRLoginMgrActivity$7
     }
     if (!paramBoolean)
     {
-      if (QRLoginMgrActivity.a(this.a) == null) {
+      if (QRLoginMgrActivity.f(this.a) == null) {
         QRLoginMgrActivity.a(this.a, new HashSet());
       }
-      QRLoginMgrActivity.a(this.a).add(Long.valueOf(paramLong));
+      QRLoginMgrActivity.f(this.a).add(Long.valueOf(paramLong));
     }
-    if (QRLoginMgrActivity.a(this.a) != null) {
-      QRLoginMgrActivity.a(this.a).remove(Long.valueOf(paramLong));
+    if (QRLoginMgrActivity.g(this.a) != null) {
+      QRLoginMgrActivity.g(this.a).remove(Long.valueOf(paramLong));
     }
-    if ((QRLoginMgrActivity.a(this.a) != null) && (QRLoginMgrActivity.a(this.a).size() != 0))
+    if ((QRLoginMgrActivity.g(this.a) != null) && (QRLoginMgrActivity.g(this.a).size() != 0))
     {
       if (paramInt2 == 100)
       {
-        QRLoginMgrActivity.a(this.a);
+        QRLoginMgrActivity.h(this.a);
         if (paramBoolean)
         {
-          QQToast.a(this.a.getApplicationContext(), 2, 2131716697, 0).a();
+          QQToast.makeText(this.a.getApplicationContext(), 2, 2131914161, 0).show();
           return;
         }
-        QQToast.a(this.a.getApplicationContext(), 1, 2131716670, 0).a();
+        QQToast.makeText(this.a.getApplicationContext(), 1, 2131914134, 0).show();
       }
     }
     else
     {
-      QRLoginMgrActivity.a(this.a);
+      QRLoginMgrActivity.h(this.a);
       this.a.finish();
-      if ((QRLoginMgrActivity.a(this.a) != null) && (QRLoginMgrActivity.a(this.a).size() > 0))
+      if ((QRLoginMgrActivity.f(this.a) != null) && (QRLoginMgrActivity.f(this.a).size() > 0))
       {
-        QQToast.a(this.a.getApplicationContext(), 1, 2131716670, 0).a();
+        QQToast.makeText(this.a.getApplicationContext(), 1, 2131914134, 0).show();
         return;
       }
-      QQToast.a(this.a.getApplicationContext(), 2, 2131716671, 0).a();
+      QQToast.makeText(this.a.getApplicationContext(), 2, 2131914135, 0).show();
       Intent localIntent = new Intent("com.tencent.mobileqq.action.PC_STATUS_MANAGE");
       localIntent.putExtra("status", "logout");
       this.a.getApplicationContext().sendBroadcast(localIntent);

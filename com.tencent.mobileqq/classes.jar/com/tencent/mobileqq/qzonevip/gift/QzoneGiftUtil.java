@@ -70,14 +70,14 @@ public class QzoneGiftUtil
     }
   }
   
-  private static boolean b(String paramString1, String paramString2)
+  private static boolean c(String paramString1, String paramString2)
   {
-    return FileUtil.b(a(paramString1, paramString2));
+    return FileUtil.d(a(paramString1, paramString2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil
  * JD-Core Version:    0.7.0.1
  */

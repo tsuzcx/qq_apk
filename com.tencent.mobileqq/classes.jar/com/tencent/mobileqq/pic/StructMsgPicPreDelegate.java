@@ -25,8 +25,8 @@ import java.util.regex.Pattern;
 public class StructMsgPicPreDelegate
 {
   public static int a = 0;
-  public static String a = "struct_msg_pic_pre";
-  public static boolean a = false;
+  public static boolean b = false;
+  public static String c = "struct_msg_pic_pre";
   
   public static int a()
   {
@@ -37,7 +37,7 @@ public class StructMsgPicPreDelegate
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(localQQAppInterface.getCurrentAccountUin());
       localStringBuilder.append("_");
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(c);
       return localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).getInt("mStructMsgPicSwitch", 0);
     }
     return 0;
@@ -47,14 +47,14 @@ public class StructMsgPicPreDelegate
   {
     if (BaseApplicationImpl.sProcessId == 1)
     {
-      jdField_a_of_type_Int = paramInt;
-      jdField_a_of_type_Boolean = true;
+      a = paramInt;
+      b = true;
       Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(((QQAppInterface)localObject).getCurrentAccountUin());
       localStringBuilder.append("_");
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(c);
       localObject = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).edit();
       ((SharedPreferences.Editor)localObject).putInt("mStructMsgPicSwitch", paramInt);
       ((SharedPreferences.Editor)localObject).commit();
@@ -64,12 +64,12 @@ public class StructMsgPicPreDelegate
   public static void a(MessageForStructing paramMessageForStructing, QQAppInterface paramQQAppInterface)
   {
     int i = BasePicPreDownloadUtils.a();
-    if (!jdField_a_of_type_Boolean)
+    if (!b)
     {
-      jdField_a_of_type_Int = a();
-      jdField_a_of_type_Boolean = true;
+      a = a();
+      b = true;
     }
-    if ((i != 0) && (jdField_a_of_type_Int == 0))
+    if ((i != 0) && (a == 0))
     {
       if (QLog.isColorLevel()) {
         QLog.i("StructMsgPicPreDelegate", 2, "not wifi not pre download");
@@ -111,7 +111,7 @@ public class StructMsgPicPreDelegate
   {
     if ((paramAbsStructMsgElement != null) && ((paramAbsStructMsgElement instanceof AbsStructMsgItem)))
     {
-      paramAbsStructMsgElement = ((AbsStructMsgItem)paramAbsStructMsgElement).a;
+      paramAbsStructMsgElement = ((AbsStructMsgItem)paramAbsStructMsgElement).ax;
       if ((paramAbsStructMsgElement != null) && (paramAbsStructMsgElement.size() > 0)) {
         paramAbsStructMsgElement = paramAbsStructMsgElement.iterator();
       }
@@ -126,7 +126,7 @@ public class StructMsgPicPreDelegate
           continue;
           if ((paramAbsStructMsgElement != null) && ((paramAbsStructMsgElement instanceof StructMsgItemCover)))
           {
-            paramAbsStructMsgElement = ((StructMsgItemCover)paramAbsStructMsgElement).ac;
+            paramAbsStructMsgElement = ((StructMsgItemCover)paramAbsStructMsgElement).av;
             if ((!TextUtils.isEmpty(paramAbsStructMsgElement)) && (paramAbsStructMsgElement.startsWith("http"))) {
               try
               {
@@ -171,7 +171,7 @@ public class StructMsgPicPreDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.StructMsgPicPreDelegate
  * JD-Core Version:    0.7.0.1
  */

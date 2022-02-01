@@ -17,79 +17,30 @@ import org.json.JSONObject;
 
 public class GdtADFlyingStreamingReportHelper
 {
-  private static volatile GdtADFlyingStreamingReportHelper jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtADFlyingStreamingReportHelper;
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString;
+  private static volatile GdtADFlyingStreamingReportHelper f;
+  private String a;
   private String b;
   private String c;
   private String d;
+  private int e = 0;
   
   public static GdtADFlyingStreamingReportHelper a()
   {
-    if (jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtADFlyingStreamingReportHelper == null) {
+    if (f == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtADFlyingStreamingReportHelper == null) {
-          jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtADFlyingStreamingReportHelper = new GdtADFlyingStreamingReportHelper();
+        if (f == null) {
+          f = new GdtADFlyingStreamingReportHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentGdtadBasicsMotivevideoReportGdtADFlyingStreamingReportHelper;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  protected long a(long paramLong)
-  {
-    return paramLong + NetConnInfoCenter.servetTimeSecondInterv * 1000L;
-  }
-  
-  public String a()
-  {
-    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localAppRuntime == null) {
-      return "";
-    }
-    return localAppRuntime.getAccount();
-  }
-  
-  protected JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("app", String.valueOf(this.b));
-      localJSONObject.put("pkg", MobileQQ.sMobileQQ.getPackageName());
-      localJSONObject.put("sv", "8.7.0");
-      localJSONObject.put("av", "8.7.0");
-      localJSONObject.put("sdk_st", 2);
-      localJSONObject.put("ov", String.valueOf(Build.VERSION.RELEASE));
-      localJSONObject.put("os", 2);
-      localJSONObject.put("mn", DeviceInfoUtil.i());
-      localJSONObject.put("lid", a());
-      return localJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("GdtADFlyingStreamingReportHelper", 1, "buildParams", localThrowable);
-    }
-    return localJSONObject;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.b = null;
-    this.jdField_a_of_type_Int = 0;
+    return f;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void a(long paramLong)
@@ -99,14 +50,14 @@ public class GdtADFlyingStreamingReportHelper
   
   public void a(GdtMotiveVideoModel paramGdtMotiveVideoModel)
   {
-    if ((paramGdtMotiveVideoModel != null) && (paramGdtMotiveVideoModel.a() != null))
+    if ((paramGdtMotiveVideoModel != null) && (paramGdtMotiveVideoModel.d() != null))
     {
-      paramGdtMotiveVideoModel = paramGdtMotiveVideoModel.a();
-      this.jdField_a_of_type_JavaLangString = paramGdtMotiveVideoModel.getTraceId();
+      paramGdtMotiveVideoModel = paramGdtMotiveVideoModel.d();
+      this.a = paramGdtMotiveVideoModel.getTraceId();
       this.c = paramGdtMotiveVideoModel.getPosId();
       this.d = String.valueOf(paramGdtMotiveVideoModel.getAId());
     }
-    this.b = String.valueOf(AppSetting.a());
+    this.b = String.valueOf(AppSetting.d());
   }
   
   public boolean a(long paramLong, JSONObject paramJSONObject)
@@ -116,12 +67,12 @@ public class GdtADFlyingStreamingReportHelper
   
   public boolean a(long paramLong, JSONObject paramJSONObject, GdtReportForAntiSpam.ReportCallback paramReportCallback)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.a))
     {
       QLog.i("GdtADFlyingStreamingReportHelper", 1, "reportADEvent traceId is empty");
       return false;
     }
-    JSONObject localJSONObject1 = a();
+    JSONObject localJSONObject1 = d();
     if (localJSONObject1 == null)
     {
       QLog.i("GdtADFlyingStreamingReportHelper", 1, "reportADEvent local param is null");
@@ -133,11 +84,11 @@ public class GdtADFlyingStreamingReportHelper
       localJSONObject1.put("events", localJSONArray);
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("seq", 1);
-      localJSONObject2.put("ts", a(System.currentTimeMillis()));
+      localJSONObject2.put("ts", b(System.currentTimeMillis()));
       localJSONObject2.put("ei", paramLong);
       JSONObject localJSONObject3 = new JSONObject();
       localJSONObject2.put("biz", localJSONObject3);
-      localJSONObject3.put("traceid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject3.put("traceid", this.a);
       localJSONObject3.put("pid", this.c);
       localJSONObject3.put("aid", this.d);
       if (paramJSONObject != null) {
@@ -156,10 +107,59 @@ public class GdtADFlyingStreamingReportHelper
     GdtReportForAntiSpam.a(localJSONObject1, paramReportCallback);
     return true;
   }
+  
+  public int b()
+  {
+    return this.e;
+  }
+  
+  protected long b(long paramLong)
+  {
+    return paramLong + NetConnInfoCenter.servetTimeSecondInterv * 1000L;
+  }
+  
+  public void c()
+  {
+    this.a = null;
+    this.b = null;
+    this.e = 0;
+  }
+  
+  protected JSONObject d()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("app", String.valueOf(this.b));
+      localJSONObject.put("pkg", MobileQQ.sMobileQQ.getPackageName());
+      localJSONObject.put("sv", "8.8.17");
+      localJSONObject.put("av", "8.8.17");
+      localJSONObject.put("sdk_st", 9);
+      localJSONObject.put("ov", String.valueOf(Build.VERSION.RELEASE));
+      localJSONObject.put("os", 2);
+      localJSONObject.put("mn", DeviceInfoUtil.u());
+      localJSONObject.put("lid", e());
+      return localJSONObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("GdtADFlyingStreamingReportHelper", 1, "buildParams", localThrowable);
+    }
+    return localJSONObject;
+  }
+  
+  public String e()
+  {
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localAppRuntime == null) {
+      return "";
+    }
+    return localAppRuntime.getAccount();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.report.GdtADFlyingStreamingReportHelper
  * JD-Core Version:    0.7.0.1
  */

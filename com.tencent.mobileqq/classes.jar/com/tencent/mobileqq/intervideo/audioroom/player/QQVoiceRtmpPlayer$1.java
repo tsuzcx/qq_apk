@@ -19,15 +19,15 @@ class QQVoiceRtmpPlayer$1
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("initSDKAsync fail: ");
-    localStringBuilder.append(QQVideoPlaySDKManager.b());
+    localStringBuilder.append(QQVideoPlaySDKManager.isSoLoadSucess());
     localStringBuilder.append(", ");
-    localStringBuilder.append(QQVideoPlaySDKManager.a());
+    localStringBuilder.append(QQVideoPlaySDKManager.isSDKReady());
     QLog.w("QQVoiceRtmpPlayer", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.player.QQVoiceRtmpPlayer.1
  * JD-Core Version:    0.7.0.1
  */

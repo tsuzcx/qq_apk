@@ -12,30 +12,30 @@ public abstract class BaseChannel
   
   public abstract String a();
   
-  public AppRuntime a()
+  public AppRuntime d()
   {
     return BaseApplicationImpl.getApplication().getRuntime();
   }
   
-  public void a()
+  public String e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.BaseChannel", 2, String.format("channel: %s is destroy", new Object[] { a() }));
-    }
-  }
-  
-  public String b()
-  {
-    AppRuntime localAppRuntime = a();
+    AppRuntime localAppRuntime = d();
     if (localAppRuntime != null) {
       return localAppRuntime.getAccount();
     }
     return "";
   }
+  
+  public void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.BaseChannel", 2, String.format("channel: %s is destroy", new Object[] { a() }));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.BaseChannel
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ public class GPUOESBaseFilter
   public GPUOESBaseFilter(String paramString1, String paramString2)
   {
     super(paramString1, paramString2);
-    this.a = 36197;
-    this.b = 102;
+    this.c = 36197;
+    this.d = 102;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.renderer.GPUOESBaseFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -25,35 +25,35 @@ public class PublicAccountRefresher
   
   public void a(String paramString, int paramInt1, int paramInt2, RefreshMessageContext paramRefreshMessageContext)
   {
-    Object localObject = this.a.a(paramInt1).d(paramString, paramInt1);
+    Object localObject = this.a.a(paramInt1).g(paramString, paramInt1);
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
       if (localObject != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.dumpmsgs("current Aio", ((List)localObject).subList(0, Math.min(15, ((List)localObject).size())));
+        this.a.b.dumpmsgs("current Aio", ((List)localObject).subList(0, Math.min(15, ((List)localObject).size())));
       }
       long l = ((MessageRecord)((List)localObject).get(0)).uniseq;
       localObject = new ArrayList();
-      paramRefreshMessageContext.c = true;
-      if (paramRefreshMessageContext.c)
+      paramRefreshMessageContext.e = true;
+      if (paramRefreshMessageContext.e)
       {
         this.a.a(paramString, paramInt1, l, paramInt2, paramRefreshMessageContext, (ArrayList)localObject);
-        this.a.a(paramInt1).a(paramString, paramInt1, (List)localObject);
-        paramRefreshMessageContext.jdField_a_of_type_JavaUtilList = ((List)localObject);
-        if (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isMediaAndOtherSubscript((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime, paramString)) {
-          if ((paramRefreshMessageContext.jdField_a_of_type_JavaUtilList != null) && (paramRefreshMessageContext.jdField_a_of_type_JavaUtilList.size() != 0))
+        this.a.a(paramInt1).b(paramString, paramInt1, (List)localObject);
+        paramRefreshMessageContext.b = ((List)localObject);
+        if (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isMediaAndOtherSubscript((QQAppInterface)this.a.a, paramString)) {
+          if ((paramRefreshMessageContext.b != null) && (paramRefreshMessageContext.b.size() != 0))
           {
-            paramRefreshMessageContext.jdField_a_of_type_Boolean = false;
-            paramRefreshMessageContext.g = false;
+            paramRefreshMessageContext.c = false;
+            paramRefreshMessageContext.i = false;
           }
           else
           {
-            l = ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getMsgID((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime, paramString);
-            ((IPublicAccountHandler)((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime).getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).getAIOHistoryMsg(paramString, l, 1);
-            ReportController.b(this.a.jdField_a_of_type_MqqAppAppRuntime, "P_CliOper", "Pb_account_lifeservice", paramString, "0X8005C99", "0X8005C99", 0, 1, 0, "new", "2", "", "");
+            l = ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getMsgID((QQAppInterface)this.a.a, paramString);
+            ((IPublicAccountHandler)((QQAppInterface)this.a.a).getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).getAIOHistoryMsg(paramString, l, 1);
+            ReportController.b(this.a.a, "P_CliOper", "Pb_account_lifeservice", paramString, "0X8005C99", "0X8005C99", 0, 1, 0, "new", "2", "", "");
             return;
           }
         }
-        paramString = this.a.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade;
+        paramString = this.a.b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("refresh load local C2C msg only FIN , context = ");
         localStringBuilder.append(paramRefreshMessageContext);
@@ -64,20 +64,20 @@ public class PublicAccountRefresher
         localStringBuilder.append(", timestamp = ");
         localStringBuilder.append(System.currentTimeMillis());
         paramString.qLogColor((String)localObject, localStringBuilder.toString());
-        this.a.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.setChangeAndNotify(paramRefreshMessageContext);
+        this.a.b.setChangeAndNotify(paramRefreshMessageContext);
       }
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.w("Q.msg.BaseMessageManager", 2, "refreshC2CMessageListHead ERROR: AIO is closed !!");
     }
-    paramRefreshMessageContext.jdField_a_of_type_JavaUtilList = null;
+    paramRefreshMessageContext.b = null;
     this.a.a(paramRefreshMessageContext, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.PublicAccountRefresher
  * JD-Core Version:    0.7.0.1
  */

@@ -121,21 +121,6 @@ public class HotVideoPreviewDownloader
     return localStringBuilder.toString();
   }
   
-  public static URL a(HotVideoData paramHotVideoData)
-  {
-    paramHotVideoData = a(paramHotVideoData);
-    try
-    {
-      paramHotVideoData = new URL("hot_video_preview", "", paramHotVideoData);
-      return paramHotVideoData;
-    }
-    catch (MalformedURLException paramHotVideoData)
-    {
-      paramHotVideoData.printStackTrace();
-    }
-    return null;
-  }
-  
   private void a(File paramFile, HotVideoData paramHotVideoData, URLDrawableHandler paramURLDrawableHandler)
   {
     Object localObject = paramFile;
@@ -148,8 +133,8 @@ public class HotVideoPreviewDownloader
     }
     SystemClock.uptimeMillis();
     paramFile = new DownloadTask(paramHotVideoData.url.replaceFirst("https", "http"), (File)localObject);
-    paramFile.n = true;
-    paramFile.b = 2;
+    paramFile.J = true;
+    paramFile.e = 2;
     int i = DownloaderFactory.a(paramFile, null, null);
     if (i == 0)
     {
@@ -240,7 +225,22 @@ public class HotVideoPreviewDownloader
     }
   }
   
-  public static boolean a(HotVideoData paramHotVideoData)
+  public static URL b(HotVideoData paramHotVideoData)
+  {
+    paramHotVideoData = a(paramHotVideoData);
+    try
+    {
+      paramHotVideoData = new URL("hot_video_preview", "", paramHotVideoData);
+      return paramHotVideoData;
+    }
+    catch (MalformedURLException paramHotVideoData)
+    {
+      paramHotVideoData.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static boolean c(HotVideoData paramHotVideoData)
   {
     if (paramHotVideoData != null)
     {
@@ -291,11 +291,11 @@ public class HotVideoPreviewDownloader
       }
       return localFile;
     }
-    if ((com.tencent.mobileqq.util.Utils.a()) && (com.tencent.mobileqq.util.Utils.b() < 31457280L))
+    if ((com.tencent.mobileqq.util.Utils.b()) && (com.tencent.mobileqq.util.Utils.c() < 31457280L))
     {
       paramDownloadParams = new StringBuilder();
       paramDownloadParams.append("SD card free space is ");
-      paramDownloadParams.append(com.tencent.mobileqq.util.Utils.b());
+      paramDownloadParams.append(com.tencent.mobileqq.util.Utils.c());
       throw new IOException(paramDownloadParams.toString());
     }
     if (paramDownloadParams.url.isEmpty())
@@ -309,7 +309,7 @@ public class HotVideoPreviewDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader
  * JD-Core Version:    0.7.0.1
  */

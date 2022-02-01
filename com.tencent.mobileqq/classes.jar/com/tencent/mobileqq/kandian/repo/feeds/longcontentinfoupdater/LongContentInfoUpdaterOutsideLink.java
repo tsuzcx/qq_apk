@@ -11,21 +11,21 @@ import kotlin.Metadata;
 public final class LongContentInfoUpdaterOutsideLink
   extends LongContentInfoUpdater
 {
-  protected void a()
+  protected void e()
   {
-    Object localObject = a();
+    Object localObject = b();
     if (localObject != null) {
-      ((SocializeFeedsInfo)localObject).a = 19191924;
+      ((SocializeFeedsInfo)localObject).b = 19191924;
     }
-    localObject = a();
+    localObject = d();
     if (localObject != null) {
-      ((PGCFeedsInfo)localObject).a = true;
+      ((PGCFeedsInfo)localObject).f = true;
     }
     AbsBaseArticleInfo localAbsBaseArticleInfo = a();
-    localObject = a();
+    localObject = c();
     if (localObject != null)
     {
-      localObject = ((LongContentInfo)localObject).a;
+      localObject = ((LongContentInfo)localObject).d;
       if (localObject != null)
       {
         localObject = ((OutsideLinkInfo)localObject).a;
@@ -39,7 +39,7 @@ public final class LongContentInfoUpdaterOutsideLink
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.longcontentinfoupdater.LongContentInfoUpdaterOutsideLink
  * JD-Core Version:    0.7.0.1
  */

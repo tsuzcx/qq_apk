@@ -29,12 +29,12 @@ public final class VasAdvWebPlugin$handleGetGdtAdData$eventCallback$1
       localJSONObject.put("errorMsg", paramString);
       localJSONObject.put("returnCode", 1);
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasAdvWebVasAdvWebPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+    this.a.callJs(this.b, new String[] { localJSONObject.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.web.VasAdvWebPlugin.handleGetGdtAdData.eventCallback.1
  * JD-Core Version:    0.7.0.1
  */

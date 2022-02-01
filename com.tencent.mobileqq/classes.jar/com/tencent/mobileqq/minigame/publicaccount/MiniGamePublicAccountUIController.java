@@ -62,14 +62,14 @@ public class MiniGamePublicAccountUIController
         localIndicatorViewConfig.normalColor = Color.parseColor("#D0D8F2");
         localIndicatorViewConfig.selectedColor = Color.parseColor("#3EAFFF");
       }
-      localIndicatorViewConfig.normalWidth = ViewUtils.b(14.0F);
-      localIndicatorViewConfig.selectedWidth = ViewUtils.b(14.0F);
+      localIndicatorViewConfig.normalWidth = ViewUtils.dpToPx(14.0F);
+      localIndicatorViewConfig.selectedWidth = ViewUtils.dpToPx(14.0F);
       return localIndicatorViewConfig;
     }
     localIndicatorViewConfig.normalColor = Color.parseColor("#D0D8F2");
     localIndicatorViewConfig.selectedColor = Color.parseColor("#3857FF");
-    localIndicatorViewConfig.normalWidth = ViewUtils.b(14.0F);
-    localIndicatorViewConfig.selectedWidth = ViewUtils.b(32.0F);
+    localIndicatorViewConfig.normalWidth = ViewUtils.dpToPx(14.0F);
+    localIndicatorViewConfig.selectedWidth = ViewUtils.dpToPx(32.0F);
     return localIndicatorViewConfig;
   }
   
@@ -96,7 +96,7 @@ public class MiniGamePublicAccountUIController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountUIController
  * JD-Core Version:    0.7.0.1
  */

@@ -15,17 +15,17 @@ import android.view.View;
 public class TransCircleMaskView
   extends View
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private int a;
+  private int b;
   private int c;
   private int d;
   private int e;
-  private int f = -1;
+  private Paint f;
+  private Paint g;
+  private Bitmap h;
+  private Canvas i;
+  private int j = -1;
+  private boolean k = true;
   
   public TransCircleMaskView(Context paramContext)
   {
@@ -40,13 +40,13 @@ public class TransCircleMaskView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
-    this.c = getResources().getColor(2131167175);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    this.f = new Paint();
+    this.f.setColor(-16777216);
+    this.c = getResources().getColor(2131168160);
+    this.g = new Paint();
+    this.g.setStyle(Paint.Style.FILL);
+    this.g.setAntiAlias(true);
+    this.g.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
   }
   
   public void draw(Canvas paramCanvas)
@@ -54,19 +54,19 @@ public class TransCircleMaskView
     super.draw(paramCanvas);
     this.d = getWidth();
     this.e = getHeight();
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.h;
     if (localBitmap == null) {
       return;
     }
     localBitmap.eraseColor(0);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(this.c);
-    int j = this.f;
-    int i = j;
-    if (j == -1) {
-      i = a(getContext());
+    this.i.drawColor(this.c);
+    int n = this.j;
+    int m = n;
+    if (n == -1) {
+      m = a(getContext());
     }
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawCircle(this.d / 2, this.e / 2 + i, this.jdField_a_of_type_Int, this.jdField_b_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.i.drawCircle(this.d / 2, this.e / 2 + m, this.a, this.g);
+    paramCanvas.drawBitmap(this.h, 0.0F, 0.0F, this.f);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -74,7 +74,7 @@ public class TransCircleMaskView
     if (((paramInt1 != 0) && (paramInt2 != 0) && (paramInt1 != paramInt3)) || (paramInt2 != paramInt4)) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      this.h = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -82,22 +82,22 @@ public class TransCircleMaskView
       Bitmap localBitmap;
       break label34;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    this.h = null;
+    localBitmap = this.h;
     if (localBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(localBitmap);
+      this.i = new Canvas(localBitmap);
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Int = ((int)(paramInt2 * 0.5F * 0.83F));
+    if (this.k) {
+      this.a = ((int)(paramInt2 * 0.5F * 0.83F));
     } else {
-      this.jdField_a_of_type_Int = ((int)(paramInt2 * 0.5F) - this.jdField_b_of_type_Int);
+      this.a = ((int)(paramInt2 * 0.5F) - this.b);
     }
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setIsUseMaskRadiusRatios(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
   }
   
   public void setMaskColor(int paramInt)
@@ -108,24 +108,24 @@ public class TransCircleMaskView
   
   public void setMaskRadius(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     invalidate();
   }
   
   public void setUITopOffset(int paramInt)
   {
-    this.f = paramInt;
+    this.j = paramInt;
   }
   
   public void setmMaskRadiusBless(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.b = paramInt;
     this.c = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TransCircleMaskView
  * JD-Core Version:    0.7.0.1
  */

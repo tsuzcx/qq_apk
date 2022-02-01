@@ -15,13 +15,13 @@ import mqq.util.WeakReference;
 public class VipUtils$VipIconUtils$VipIconTouchListener
   implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private final String jdField_b_of_type_JavaLangString;
-  private int c;
+  private final WeakReference<QQAppInterface> a;
+  private final String b;
+  private final String c;
+  private int d;
+  private int e;
+  private int f;
+  private boolean g;
   
   private VipUtils$VipIconUtils$VipIconTouchListener(QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
   
@@ -32,10 +32,10 @@ public class VipUtils$VipIconUtils$VipIconTouchListener
   
   public void a()
   {
-    String str = this.jdField_b_of_type_JavaLangString;
-    int i = this.jdField_b_of_type_Int;
+    String str = this.c;
+    int i = this.e;
     boolean bool;
-    if (this.c != 0) {
+    if (this.f != 0) {
       bool = true;
     } else {
       bool = false;
@@ -45,7 +45,7 @@ public class VipUtils$VipIconUtils$VipIconTouchListener
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     if (localQQAppInterface == null) {
       return true;
     }
@@ -58,24 +58,24 @@ public class VipUtils$VipIconUtils$VipIconTouchListener
     if ((paramMotionEvent != null) && (paramMotionEvent.getAction() != 1)) {
       return true;
     }
-    VipIconCallback.VipIconClickConfig localVipIconClickConfig = VipIconCallback.sInstance.findConfig(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
-    paramMotionEvent = this.jdField_b_of_type_JavaLangString;
-    int i = this.jdField_b_of_type_Int;
-    if (this.c != 0) {
+    VipIconCallback.VipIconClickConfig localVipIconClickConfig = VipIconCallback.sInstance.findConfig(this.d, this.e, this.f);
+    paramMotionEvent = this.c;
+    int i = this.e;
+    if (this.f != 0) {
       bool1 = true;
     }
     VipUtils.VipIconUtils.b(paramMotionEvent, i, bool1);
     String str = localQQAppInterface.getCurrentAccountUin();
-    bool1 = this.jdField_a_of_type_JavaLangString.equals(str);
-    if ((localVipIconClickConfig != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    bool1 = this.b.equals(str);
+    if ((localVipIconClickConfig != null) && (!TextUtils.isEmpty(this.b)))
     {
-      if ("VIA_SETTINGME".equals(this.jdField_b_of_type_JavaLangString))
+      if ("VIA_SETTINGME".equals(this.c))
       {
         paramMotionEvent = localVipIconClickConfig.d;
       }
       else
       {
-        if ("VIA_PROFILECARD".equals(this.jdField_b_of_type_JavaLangString)) {
+        if ("VIA_PROFILECARD".equals(this.c)) {
           if (bool1) {
             paramMotionEvent = localVipIconClickConfig.e;
           } else {
@@ -85,7 +85,7 @@ public class VipUtils$VipIconUtils$VipIconTouchListener
         for (;;)
         {
           break;
-          if ("VIA_AIO_TITLE".equals(this.jdField_b_of_type_JavaLangString))
+          if ("VIA_AIO_TITLE".equals(this.c))
           {
             if (bool1) {
               paramMotionEvent = localVipIconClickConfig.f;
@@ -96,7 +96,7 @@ public class VipUtils$VipIconUtils$VipIconTouchListener
           else
           {
             paramMotionEvent = (MotionEvent)localObject;
-            if (!"VIA_AIO_CHATSETTINGS".equals(this.jdField_b_of_type_JavaLangString)) {
+            if (!"VIA_AIO_CHATSETTINGS".equals(this.c)) {
               break;
             }
             if (bool1) {
@@ -111,7 +111,7 @@ public class VipUtils$VipIconUtils$VipIconTouchListener
       {
         localObject = paramMotionEvent;
         if (!bool1) {
-          localObject = paramMotionEvent.replace("{uin}", this.jdField_a_of_type_JavaLangString);
+          localObject = paramMotionEvent.replace("{uin}", this.b);
         }
         paramMotionEvent = new Intent(paramView.getContext(), QQBrowserActivity.class);
         paramMotionEvent.putExtra("portraitOnly", true);
@@ -122,25 +122,25 @@ public class VipUtils$VipIconUtils$VipIconTouchListener
         return true;
       }
     }
-    if ("VIA_SETTINGME".equals(this.jdField_b_of_type_JavaLangString))
+    if ("VIA_SETTINGME".equals(this.c))
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.g)
       {
-        VipUtils.a(localQQAppInterface, paramView.getContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, "cty");
+        VipUtils.a(localQQAppInterface, paramView.getContext(), this.d, this.b, "cty");
         return true;
       }
       VipUtils.b(localQQAppInterface, paramView.getContext(), "cty");
       return true;
     }
-    if ("VIA_PROFILECARD".equals(this.jdField_b_of_type_JavaLangString))
+    if ("VIA_PROFILECARD".equals(this.c))
     {
-      bool2 = this.jdField_a_of_type_Boolean;
+      bool2 = this.g;
       paramMotionEvent = "zlk";
       if (bool2)
       {
         paramView = paramView.getContext();
-        i = this.jdField_a_of_type_Int;
-        localObject = this.jdField_a_of_type_JavaLangString;
+        i = this.d;
+        localObject = this.b;
         if (!bool1) {
           paramMotionEvent = "zlkkr";
         }
@@ -154,15 +154,15 @@ public class VipUtils$VipIconUtils$VipIconTouchListener
       VipUtils.b(localQQAppInterface, paramView, paramMotionEvent);
       return true;
     }
-    if ("VIA_AIO_TITLE".equals(this.jdField_b_of_type_JavaLangString))
+    if ("VIA_AIO_TITLE".equals(this.c))
     {
-      bool2 = this.jdField_a_of_type_Boolean;
+      bool2 = this.g;
       paramMotionEvent = "ctoc";
       if (bool2)
       {
         paramView = paramView.getContext();
-        i = this.jdField_a_of_type_Int;
-        localObject = this.jdField_a_of_type_JavaLangString;
+        i = this.d;
+        localObject = this.b;
         if (!bool1) {
           paramMotionEvent = "ctockr";
         }
@@ -176,15 +176,15 @@ public class VipUtils$VipIconUtils$VipIconTouchListener
       VipUtils.b(localQQAppInterface, paramView, paramMotionEvent);
       return true;
     }
-    if ("VIA_AIO_CHATSETTINGS".equals(this.jdField_b_of_type_JavaLangString))
+    if ("VIA_AIO_CHATSETTINGS".equals(this.c))
     {
-      bool2 = this.jdField_a_of_type_Boolean;
+      bool2 = this.g;
       paramMotionEvent = "ctocsetkr";
       if (bool2)
       {
         paramView = paramView.getContext();
-        i = this.jdField_a_of_type_Int;
-        localObject = this.jdField_a_of_type_JavaLangString;
+        i = this.d;
+        localObject = this.b;
         if (bool1) {
           paramMotionEvent = "ctocset";
         }
@@ -198,9 +198,9 @@ public class VipUtils$VipIconUtils$VipIconTouchListener
       VipUtils.b(localQQAppInterface, paramView, paramMotionEvent);
       return true;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.g)
     {
-      VipUtils.a(localQQAppInterface, paramView.getContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, "unknow");
+      VipUtils.a(localQQAppInterface, paramView.getContext(), this.d, this.b, "unknow");
       return true;
     }
     VipUtils.b(localQQAppInterface, paramView.getContext(), "unknow");
@@ -209,7 +209,7 @@ public class VipUtils$VipIconUtils$VipIconTouchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.VipIconUtils.VipIconTouchListener
  * JD-Core Version:    0.7.0.1
  */

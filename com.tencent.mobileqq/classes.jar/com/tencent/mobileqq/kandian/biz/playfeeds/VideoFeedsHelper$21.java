@@ -12,15 +12,15 @@ final class VideoFeedsHelper$21
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    localLayoutParams.width = (this.jdField_a_of_type_Int + paramValueAnimator.x);
-    localLayoutParams.height = (this.b + paramValueAnimator.y);
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+    ViewGroup.LayoutParams localLayoutParams = this.a.getLayoutParams();
+    localLayoutParams.width = (this.b + paramValueAnimator.x);
+    localLayoutParams.height = (this.c + paramValueAnimator.y);
+    this.a.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsHelper.21
  * JD-Core Version:    0.7.0.1
  */

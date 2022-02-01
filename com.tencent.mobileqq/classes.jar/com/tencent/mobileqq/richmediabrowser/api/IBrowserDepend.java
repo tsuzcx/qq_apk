@@ -30,7 +30,7 @@ public abstract interface IBrowserDepend
   
   public abstract void buildMessageRevokeUI(Activity paramActivity, RelativeLayout paramRelativeLayout);
   
-  public abstract String checkQQCode(Uri paramUri, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList, Activity paramActivity, String paramString, ShareActionSheet paramShareActionSheet);
+  public abstract String checkQQCode(Uri paramUri, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList1, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList2, Activity paramActivity, String paramString, ShareActionSheet paramShareActionSheet);
   
   public abstract Parcelable convertAIORichMediaData(Parcelable paramParcelable);
   
@@ -106,7 +106,7 @@ public abstract interface IBrowserDepend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.api.IBrowserDepend
  * JD-Core Version:    0.7.0.1
  */

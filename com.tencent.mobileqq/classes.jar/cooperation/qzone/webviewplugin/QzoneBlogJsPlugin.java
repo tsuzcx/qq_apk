@@ -28,7 +28,7 @@ public class QzoneBlogJsPlugin
       paramArrayOfString.append(paramWebViewPlugin.getAction());
       QLog.d("QzoneBlogJsPlugin", 2, paramArrayOfString.toString());
     }
-    QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.a(), QZoneHelper.UserInfo.getInstance(), paramWebViewPlugin);
+    QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.d(), QZoneHelper.UserInfo.getInstance(), paramWebViewPlugin);
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -49,7 +49,7 @@ public class QzoneBlogJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneBlogJsPlugin
  * JD-Core Version:    0.7.0.1
  */

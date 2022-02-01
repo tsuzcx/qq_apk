@@ -20,7 +20,7 @@ class CheckLoveStateRequestManager$1
   public JceStruct getReq()
   {
     sweet_pair_check_req localsweet_pair_check_req = new sweet_pair_check_req();
-    Object localObject = this.jdField_a_of_type_AndroidContentIntent;
+    Object localObject = this.a;
     if (localObject != null)
     {
       long l = ((Intent)localObject).getLongExtra("currentUin", -1L);
@@ -43,7 +43,7 @@ class CheckLoveStateRequestManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.CheckLoveStateRequestManager.1
  * JD-Core Version:    0.7.0.1
  */

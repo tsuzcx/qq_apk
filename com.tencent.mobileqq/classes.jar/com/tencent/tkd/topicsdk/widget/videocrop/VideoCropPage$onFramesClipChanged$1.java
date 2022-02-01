@@ -17,18 +17,18 @@ final class VideoCropPage$onFramesClipChanged$1
   
   public final void invoke()
   {
-    if (VideoCropPage.a(this.this$0).isPlaying()) {
-      VideoCropPage.a(this.this$0).pause();
+    if (VideoCropPage.d(this.this$0).isPlaying()) {
+      VideoCropPage.d(this.this$0).pause();
     }
-    FixedSizeVideoView localFixedSizeVideoView = VideoCropPage.a(this.this$0);
+    FixedSizeVideoView localFixedSizeVideoView = VideoCropPage.d(this.this$0);
     int i = this.$startTime;
     localFixedSizeVideoView.setPlayDuration(i, this.$endTime - i);
-    VideoCropPage.a(this.this$0).start();
+    VideoCropPage.d(this.this$0).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPage.onFramesClipChanged.1
  * JD-Core Version:    0.7.0.1
  */

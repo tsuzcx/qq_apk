@@ -13,8 +13,8 @@ public class TroopReceiptMsg
 {
   public TroopReceiptMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131698563);
-    this.b = this.jdField_a_of_type_JavaLangString;
+    this.c = HardCodeUtil.a(2131896510);
+    this.d = this.c;
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -22,17 +22,17 @@ public class TroopReceiptMsg
     if ((paramObject instanceof TroopReceiptMsg))
     {
       paramObject = (TroopReceiptMsg)paramObject;
-      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramObject.h.b(paramMessageInfo.c);
       return paramObject;
     }
     paramObject = new TroopReceiptMsg(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+    paramObject.h = new MessageNavInfo(paramMessageInfo.c);
     return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopReceiptMsg
  * JD-Core Version:    0.7.0.1
  */

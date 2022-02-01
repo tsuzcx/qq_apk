@@ -11,17 +11,17 @@ class WSDramaHistoryPart$2
   
   public void onClick(View paramView)
   {
-    if (!WSDramaHistoryPart.a(this.a).a())
+    if (!WSDramaHistoryPart.c(this.a).a())
     {
-      WSDramaHistoryPart.a(this.a).b(300);
+      WSDramaHistoryPart.c(this.a).b(300);
       return;
     }
-    WSDramaHistoryPart.a(this.a).c(300);
+    WSDramaHistoryPart.c(this.a).c(300);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.history.WSDramaHistoryPart.2
  * JD-Core Version:    0.7.0.1
  */

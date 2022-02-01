@@ -18,18 +18,19 @@ public class SuperPlayerSdkMgr
   public void a(Context paramContext)
   {
     WSLog.e("WS_VIDEO_PLAYER", "[SuperPlayerSdkMgr.java][initSDK]");
-    QQVideoPlaySDKManager.a(BaseApplicationImpl.getContext(), this);
+    QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getContext(), this);
   }
   
   public void a(Context paramContext, IWSPlayerSdkMgr.InstallListener paramInstallListener)
   {
+    WSLog.e("WS_VIDEO_PLAYER", "[SuperPlayerSdkMgr.java][installPlugin]");
     this.a = paramInstallListener;
-    QQVideoPlaySDKManager.a(BaseApplicationImpl.getContext(), this);
+    QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getContext(), this);
   }
   
-  public boolean a(Context paramContext)
+  public boolean b(Context paramContext)
   {
-    return QQVideoPlaySDKManager.a();
+    return QQVideoPlaySDKManager.isSDKReady();
   }
   
   public void onSDKInited(boolean paramBoolean)
@@ -48,7 +49,7 @@ public class SuperPlayerSdkMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.superplayer.SuperPlayerSdkMgr
  * JD-Core Version:    0.7.0.1
  */

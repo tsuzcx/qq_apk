@@ -31,12 +31,14 @@ public class SPlayerPreDownloaderImpl
   private ITPPreloadProxy mTPPreloadProxy;
   private AtomicInteger mTaskIdIncreaser = new AtomicInteger(0);
   private final Hashtable<Integer, Integer> mTaskIdMap = new Hashtable();
+  private int sceneId;
   
   public SPlayerPreDownloaderImpl(Context paramContext, int paramInt)
   {
-    CommonUtil.a(CommonUtil.a(paramInt));
+    this.sceneId = paramInt;
+    CommonUtil.a(CommonUtil.b(paramInt));
     this.mContext = paramContext.getApplicationContext();
-    this.mTPPreloadProxy = TPP2PProxyFactory.createPreloadManager(paramContext, CommonUtil.a(paramInt));
+    this.mTPPreloadProxy = TPP2PProxyFactory.createPreloadManager(paramContext, CommonUtil.b(paramInt));
     this.mHandlerThread = new HandlerThread(SPlayerPreDownloaderImpl.class.getSimpleName());
     this.mHandlerThread.start();
   }
@@ -152,7 +154,7 @@ public class SPlayerPreDownloaderImpl
       return;
     }
     configDownloadParamData(paramTPDownloadParamData, paramSuperPlayerVideoInfo);
-    int i = this.mTPPreloadProxy.startPreload(CommonUtil.a(paramSuperPlayerVideoInfo), paramTPDownloadParamData, new SPlayerPreDownloaderImpl.4(this, paramInt));
+    int i = this.mTPPreloadProxy.startPreload(CommonUtil.a(paramSuperPlayerVideoInfo), paramTPDownloadParamData, new SPlayerPreDownloaderImpl.4(this, paramSuperPlayerVideoInfo, paramInt));
     this.mTaskIdMap.put(Integer.valueOf(paramInt), Integer.valueOf(i));
     paramSuperPlayerVideoInfo = TAG;
     paramTPDownloadParamData = new StringBuilder();
@@ -306,7 +308,7 @@ public class SPlayerPreDownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.datatransport.SPlayerPreDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

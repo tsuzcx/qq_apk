@@ -11,10 +11,10 @@ import java.util.List;
 public class DoodleShapePanel
   extends RelativeLayout
 {
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private DoodleColorAndModeView jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView;
-  private AEDoodlePenWidthSeekBar jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelAEDoodlePenWidthSeekBar;
-  private DoodleShapePanel.DoodlePanelListener jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelDoodleShapePanel$DoodlePanelListener;
+  private DoodleColorAndModeView a;
+  private AEDoodlePenWidthSeekBar b;
+  private RelativeLayout c;
+  private DoodleShapePanel.DoodlePanelListener d;
   
   public DoodleShapePanel(Context paramContext)
   {
@@ -29,18 +29,18 @@ public class DoodleShapePanel
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131558513, this);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView = ((DoodleColorAndModeView)findViewById(2131370051));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView.setColorSelectListener(new DoodleShapePanel.1(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelAEDoodlePenWidthSeekBar = ((AEDoodlePenWidthSeekBar)findViewById(2131377129));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelAEDoodlePenWidthSeekBar.setOnSeekBarChangeListener(new DoodleShapePanel.2(this));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131379115));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new DoodleShapePanel.3(this));
+    LayoutInflater.from(getContext()).inflate(2131624066, this);
+    this.a = ((DoodleColorAndModeView)findViewById(2131437212));
+    this.a.setColorSelectListener(new DoodleShapePanel.1(this));
+    this.b = ((AEDoodlePenWidthSeekBar)findViewById(2131445502));
+    this.b.setOnSeekBarChangeListener(new DoodleShapePanel.2(this));
+    this.c = ((RelativeLayout)findViewById(2131447850));
+    this.c.setOnClickListener(new DoodleShapePanel.3(this));
   }
   
   public void setPanelListener(DoodleShapePanel.DoodlePanelListener paramDoodlePanelListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelDoodleShapePanel$DoodlePanelListener = paramDoodlePanelListener;
+    this.d = paramDoodlePanelListener;
   }
   
   public void setSelectedColorAndWidth(int paramInt, float paramFloat)
@@ -54,13 +54,13 @@ public class DoodleShapePanel
       localArrayList.add(Integer.valueOf(arrayOfInt[i]));
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView.a(localArrayList, true, paramInt);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelAEDoodlePenWidthSeekBar.setProgress(paramFloat);
+    this.a.a(localArrayList, true, paramInt);
+    this.b.setProgress(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.DoodleShapePanel
  * JD-Core Version:    0.7.0.1
  */

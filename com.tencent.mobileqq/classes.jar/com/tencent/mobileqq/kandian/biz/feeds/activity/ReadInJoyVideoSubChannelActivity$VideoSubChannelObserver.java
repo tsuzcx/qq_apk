@@ -25,16 +25,16 @@ class ReadInJoyVideoSubChannelActivity$VideoSubChannelObserver
   
   public void a(int paramInt, List<Long> paramList)
   {
-    if (paramInt == ReadInJoyVideoSubChannelActivity.c(this.a))
+    if (paramInt == ReadInJoyVideoSubChannelActivity.f(this.a))
     {
-      if (ReadInJoyVideoSubChannelActivity.a(this.a) == null) {
+      if (ReadInJoyVideoSubChannelActivity.g(this.a) == null) {
         return;
       }
       if ((paramList != null) && (!paramList.isEmpty()))
       {
         this.a.a(paramList, 1);
         Object localObject1 = (Long)paramList.get(0);
-        Object localObject2 = ReadInJoyLogicEngine.a().a(ReadInJoyVideoSubChannelActivity.c(this.a), ((Long)localObject1).longValue());
+        Object localObject2 = ReadInJoyLogicEngine.a().a(ReadInJoyVideoSubChannelActivity.f(this.a), ((Long)localObject1).longValue());
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("load history successful ! first article title : ");
         if (localObject2 != null) {
@@ -42,7 +42,7 @@ class ReadInJoyVideoSubChannelActivity$VideoSubChannelObserver
         } else {
           localObject1 = "";
         }
-        localStringBuilder.append(RIJAppSetting.a((String)localObject1));
+        localStringBuilder.append(RIJAppSetting.b((String)localObject1));
         localObject1 = localStringBuilder.toString();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject1);
@@ -70,11 +70,11 @@ class ReadInJoyVideoSubChannelActivity$VideoSubChannelObserver
           QLog.d("Q.readinjoy.video.SubChannelActivity", 1, ((StringBuilder)localObject1).toString());
         }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache.b = 0L;
+      this.a.c.c = 0L;
       paramList = this.a;
-      boolean bool = ReadInJoyVideoSubChannelActivity.b(paramList, ReadInJoyVideoSubChannelActivity.b(paramList) ^ true);
-      if (!ReadInJoyVideoSubChannelActivity.b(this.a)) {
-        ReadInJoyVideoSubChannelActivity.c(this.a, true);
+      boolean bool = ReadInJoyVideoSubChannelActivity.c(paramList, ReadInJoyVideoSubChannelActivity.h(paramList) ^ true);
+      if (!ReadInJoyVideoSubChannelActivity.h(this.a)) {
+        ReadInJoyVideoSubChannelActivity.d(this.a, true);
       }
       if (QLog.isColorLevel())
       {
@@ -109,12 +109,12 @@ class ReadInJoyVideoSubChannelActivity$VideoSubChannelObserver
   
   public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
   {
-    if (paramInt == ReadInJoyVideoSubChannelActivity.c(this.a))
+    if (paramInt == ReadInJoyVideoSubChannelActivity.f(this.a))
     {
-      if (ReadInJoyVideoSubChannelActivity.a(this.a) == null) {
+      if (ReadInJoyVideoSubChannelActivity.g(this.a) == null) {
         return;
       }
-      paramInt = ReadInJoyLogicEngine.a().a(Integer.valueOf(paramInt));
+      paramInt = ReadInJoyLogicEngine.a().b(Integer.valueOf(paramInt));
       Object localObject;
       if (paramBoolean1)
       {
@@ -137,18 +137,18 @@ class ReadInJoyVideoSubChannelActivity$VideoSubChannelObserver
           }
           VideoBehaviorsReporter.a().c(true);
           this.a.a(paramList, 1);
-          ReadInJoyVideoSubChannelActivity.a(this.a).b(0);
+          ReadInJoyVideoSubChannelActivity.g(this.a).d(0);
         }
-        else if (ReadInJoyVideoSubChannelActivity.a(this.a).isEmpty())
+        else if (ReadInJoyVideoSubChannelActivity.g(this.a).isEmpty())
         {
           localObject = this.a;
-          ReadInJoyVideoSubChannelActivity.a((ReadInJoyVideoSubChannelActivity)localObject, ((ReadInJoyVideoSubChannelActivity)localObject).getResources().getString(2131718010));
+          ReadInJoyVideoSubChannelActivity.a((ReadInJoyVideoSubChannelActivity)localObject, ((ReadInJoyVideoSubChannelActivity)localObject).getResources().getString(2131915491));
         }
       }
-      else if (ReadInJoyVideoSubChannelActivity.a(this.a).isEmpty())
+      else if (ReadInJoyVideoSubChannelActivity.g(this.a).isEmpty())
       {
         localObject = this.a;
-        ReadInJoyVideoSubChannelActivity.a((ReadInJoyVideoSubChannelActivity)localObject, ((ReadInJoyVideoSubChannelActivity)localObject).getResources().getString(2131717971));
+        ReadInJoyVideoSubChannelActivity.a((ReadInJoyVideoSubChannelActivity)localObject, ((ReadInJoyVideoSubChannelActivity)localObject).getResources().getString(2131915451));
       }
       ReadInJoyVideoSubChannelActivity.a(this.a, paramBoolean1, paramInt);
       this.a.a(paramList);
@@ -157,21 +157,21 @@ class ReadInJoyVideoSubChannelActivity$VideoSubChannelObserver
   
   public void b(int paramInt, List<Long> paramList)
   {
-    if ((paramInt == ReadInJoyVideoSubChannelActivity.c(this.a)) && (paramList != null))
+    if ((paramInt == ReadInJoyVideoSubChannelActivity.f(this.a)) && (paramList != null))
     {
-      if (ReadInJoyVideoSubChannelActivity.a(this.a) == null) {
+      if (ReadInJoyVideoSubChannelActivity.g(this.a) == null) {
         return;
       }
-      ReadInJoyVideoSubChannelActivity.a(this.a).b(ReadInJoyLogicEngine.a().a(Integer.valueOf(ReadInJoyVideoSubChannelActivity.c(this.a)), paramList));
-      ReadInJoyVideoSubChannelActivity.a(this.a).notifyDataSetChanged();
+      ReadInJoyVideoSubChannelActivity.g(this.a).b(ReadInJoyLogicEngine.a().a(Integer.valueOf(ReadInJoyVideoSubChannelActivity.f(this.a)), paramList));
+      ReadInJoyVideoSubChannelActivity.g(this.a).notifyDataSetChanged();
     }
   }
   
   public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
   {
-    if ((paramInt == ReadInJoyVideoSubChannelActivity.c(this.a)) && (ReadInJoyVideoSubChannelActivity.a(this.a) != null))
+    if ((paramInt == ReadInJoyVideoSubChannelActivity.f(this.a)) && (ReadInJoyVideoSubChannelActivity.g(this.a) != null))
     {
-      if ((paramBoolean1) && ((paramList == null) || (paramList.size() == ReadInJoyVideoSubChannelActivity.a(this.a).getCount()))) {
+      if ((paramBoolean1) && ((paramList == null) || (paramList.size() == ReadInJoyVideoSubChannelActivity.g(this.a).getCount()))) {
         paramBoolean2 = true;
       } else {
         paramBoolean2 = false;
@@ -179,47 +179,47 @@ class ReadInJoyVideoSubChannelActivity$VideoSubChannelObserver
       if ((paramBoolean1) && (paramList != null)) {
         this.a.a(paramList, 2);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView.a(paramBoolean2 ^ true);
+      this.a.b.a(paramBoolean2 ^ true);
       if (QLog.isColorLevel())
       {
         paramList = new StringBuilder();
         paramList.append("autoLoad:");
-        paramList.append(ReadInJoyVideoSubChannelActivity.c(this.a));
+        paramList.append(ReadInJoyVideoSubChannelActivity.i(this.a));
         paramList.append(" noMoreData:");
         paramList.append(paramBoolean2);
         paramList.append(" fore:");
-        paramList.append(GesturePWDUtils.isAppOnForeground(ReadInJoyVideoSubChannelActivity.a(this.a)));
+        paramList.append(GesturePWDUtils.isAppOnForeground(ReadInJoyVideoSubChannelActivity.j(this.a)));
         QLog.d("Q.readinjoy.video.SubChannelActivity", 2, paramList.toString());
       }
-      if ((!ReadInJoyVideoSubChannelActivity.c(this.a)) && (paramBoolean2) && (GesturePWDUtils.isAppOnForeground(ReadInJoyVideoSubChannelActivity.a(this.a))))
+      if ((!ReadInJoyVideoSubChannelActivity.i(this.a)) && (paramBoolean2) && (GesturePWDUtils.isAppOnForeground(ReadInJoyVideoSubChannelActivity.j(this.a))))
       {
-        paramList = this.a.getResources().getString(2131717752);
-        QQToast.a(ReadInJoyVideoSubChannelActivity.a(this.a).getApplicationContext(), paramList, 0).a();
+        paramList = this.a.getResources().getString(2131915227);
+        QQToast.makeText(ReadInJoyVideoSubChannelActivity.j(this.a).getApplicationContext(), paramList, 0).show();
       }
-      ReadInJoyVideoSubChannelActivity.d(this.a, false);
+      ReadInJoyVideoSubChannelActivity.e(this.a, false);
       return;
     }
-    ReadInJoyVideoSubChannelActivity.d(this.a, false);
+    ReadInJoyVideoSubChannelActivity.e(this.a, false);
   }
   
   public void e(int paramInt)
   {
     if (paramInt == 97)
     {
-      QQToast.a(ReadInJoyVideoSubChannelActivity.a(this.a), HardCodeUtil.a(2131712715), 0).a();
-      ReadInJoyVideoSubChannelActivity.b(this.a, true);
+      QQToast.makeText(ReadInJoyVideoSubChannelActivity.j(this.a), HardCodeUtil.a(2131910291), 0).show();
+      ReadInJoyVideoSubChannelActivity.f(this.a, true);
       return;
     }
     if (paramInt == 98)
     {
-      QQToast.a(ReadInJoyVideoSubChannelActivity.a(this.a), HardCodeUtil.a(2131712785), 0).a();
-      ReadInJoyVideoSubChannelActivity.b(this.a, false);
+      QQToast.makeText(ReadInJoyVideoSubChannelActivity.j(this.a), HardCodeUtil.a(2131910358), 0).show();
+      ReadInJoyVideoSubChannelActivity.f(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyVideoSubChannelActivity.VideoSubChannelObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -16,19 +16,19 @@ public class RecentOptPopBarSwitchProcessor
   @NonNull
   public RecentOptPopBarSwitchBean a(int paramInt)
   {
-    return RecentOptPopBarSwitchBean.a();
+    return RecentOptPopBarSwitchBean.k();
   }
   
   @Nullable
   public RecentOptPopBarSwitchBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (!TextUtils.isEmpty(paramArrayOfQConfItem[0].a))) {
-      return RecentOptPopBarSwitchBean.a(paramArrayOfQConfItem[0].a);
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (!TextUtils.isEmpty(paramArrayOfQConfItem[0].b))) {
+      return RecentOptPopBarSwitchBean.a(paramArrayOfQConfItem[0].b);
     }
     if (QLog.isColorLevel()) {
       QLog.d(a, 2, "RecentOptPopBarSwitchProcessor#onParsed, confFiles != null && confFiles.length > 0 && !TextUtils.isEmpty(confFiles[0].content)");
     }
-    return RecentOptPopBarSwitchBean.a();
+    return RecentOptPopBarSwitchBean.k();
   }
   
   public void a(RecentOptPopBarSwitchBean paramRecentOptPopBarSwitchBean) {}
@@ -62,7 +62,7 @@ public class RecentOptPopBarSwitchProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.optpopbar.RecentOptPopBarSwitchProcessor
  * JD-Core Version:    0.7.0.1
  */

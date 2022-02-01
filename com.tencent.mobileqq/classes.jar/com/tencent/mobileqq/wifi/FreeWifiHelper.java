@@ -178,7 +178,7 @@ public class FreeWifiHelper
       }
       return;
     }
-    long l = WifiSdkSharedPreUtils.c(localBaseApplication, (String)localObject1);
+    long l = WifiSdkSharedPreUtils.g(localBaseApplication, (String)localObject1);
     if ((l != -1L) && (System.currentTimeMillis() - l < 86400000L))
     {
       if (QLog.isColorLevel()) {
@@ -201,7 +201,7 @@ public class FreeWifiHelper
   {
     int i = paramConfig.version.get();
     Object localObject = paramQQAppInterface.getCurrentUin();
-    int j = SharedPreUtils.a(paramQQAppInterface.getApp(), "wifi_connect_config_version", (String)localObject);
+    int j = SharedPreUtils.c(paramQQAppInterface.getApp(), "wifi_connect_config_version", (String)localObject);
     if (QLog.isColorLevel()) {
       QLog.d("FreeWifiHelper", 2, String.format(Locale.getDefault(), "received wifi Config remote version: %d, localVersion: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
     }
@@ -304,8 +304,8 @@ public class FreeWifiHelper
         localObject1 = paramQQAppInterface.getApp();
         str = paramQQAppInterface.getCurrentAccountUin();
         long l1 = System.currentTimeMillis();
-        long l2 = WifiSdkSharedPreUtils.a((Context)localObject1, str);
-        long l3 = WifiSdkSharedPreUtils.b((Context)localObject1, str) * 60 * 60 * 1000L;
+        long l2 = WifiSdkSharedPreUtils.d((Context)localObject1, str);
+        long l3 = WifiSdkSharedPreUtils.e((Context)localObject1, str) * 60 * 60 * 1000L;
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
@@ -377,8 +377,8 @@ public class FreeWifiHelper
       Object localObject2;
       if (paramInt == 1)
       {
-        localObject1 = paramActivity.getString(2131692614);
-        localObject2 = paramActivity.getString(2131692617);
+        localObject1 = paramActivity.getString(2131889637);
+        localObject2 = paramActivity.getString(2131889640);
       }
       int i;
       for (;;)
@@ -389,13 +389,13 @@ public class FreeWifiHelper
         {
           if (paramInt == 3)
           {
-            localObject1 = paramActivity.getString(2131692615);
-            localObject2 = paramActivity.getString(2131692618);
+            localObject1 = paramActivity.getString(2131889638);
+            localObject2 = paramActivity.getString(2131889641);
           }
           else if (paramInt == 5)
           {
-            localObject1 = paramActivity.getString(2131692564);
-            localObject2 = paramActivity.getString(2131692619);
+            localObject1 = paramActivity.getString(2131889587);
+            localObject2 = paramActivity.getString(2131889642);
           }
           else
           {
@@ -407,17 +407,17 @@ public class FreeWifiHelper
         }
         else
         {
-          localObject1 = paramActivity.getString(2131692616);
-          localObject2 = paramActivity.getString(2131692619);
+          localObject1 = paramActivity.getString(2131889639);
+          localObject2 = paramActivity.getString(2131889642);
         }
       }
       if (i != 0)
       {
-        String str = paramActivity.getString(2131692620);
+        String str = paramActivity.getString(2131889643);
         Object localObject4 = WifiSdkSharedPreUtils.a(paramActivity);
         Object localObject3 = localObject4;
         if (TextUtils.isEmpty((CharSequence)localObject4)) {
-          localObject3 = paramActivity.getString(2131692613);
+          localObject3 = paramActivity.getString(2131889636);
         }
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("shouldOverrideDialog btn1Text: ");
@@ -492,7 +492,7 @@ public class FreeWifiHelper
     }
     Object localObject = paramQQAppInterface.getCurrentAccountUin();
     BaseApplication localBaseApplication = paramQQAppInterface.getApp();
-    long l = WifiSdkSharedPreUtils.b(localBaseApplication, (String)localObject);
+    long l = WifiSdkSharedPreUtils.f(localBaseApplication, (String)localObject);
     if ((l != -1L) && (System.currentTimeMillis() - l < 86400000L))
     {
       if (QLog.isColorLevel()) {
@@ -521,14 +521,14 @@ public class FreeWifiHelper
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("dialog click, jumpType: ");
-      localStringBuilder.append(localTargetJumpInfo.jdField_a_of_type_Int);
+      localStringBuilder.append(localTargetJumpInfo.a);
       localStringBuilder.append(" jumpUrl: ");
-      localStringBuilder.append(localTargetJumpInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(localTargetJumpInfo.b);
       QLog.i("WifiSdk", 2, localStringBuilder.toString());
     }
     if (WifiSDKUIApi.isWiFiManagerExist())
     {
-      if (localTargetJumpInfo.jdField_a_of_type_Int == 4)
+      if (localTargetJumpInfo.a == 4)
       {
         a(paramContext, paramInt);
         b(paramContext, 500105);
@@ -538,7 +538,7 @@ public class FreeWifiHelper
       b(paramContext, 500101);
       return;
     }
-    int i = localTargetJumpInfo.jdField_a_of_type_Int;
+    int i = localTargetJumpInfo.a;
     if (i != 1)
     {
       if (i != 2)
@@ -558,7 +558,7 @@ public class FreeWifiHelper
           b(paramContext, 500177);
           return;
         }
-        a(paramContext, localTargetJumpInfo.jdField_a_of_type_JavaLangString);
+        a(paramContext, localTargetJumpInfo.b);
         b(paramContext, 500103);
         return;
       }
@@ -566,13 +566,13 @@ public class FreeWifiHelper
       b(paramContext, 500104);
       return;
     }
-    a(paramContext, localTargetJumpInfo.jdField_a_of_type_JavaLangString);
+    a(paramContext, localTargetJumpInfo.b);
     b(paramContext, 500102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.FreeWifiHelper
  * JD-Core Version:    0.7.0.1
  */

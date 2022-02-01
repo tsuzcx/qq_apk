@@ -20,7 +20,7 @@ public class AvatarWallViewPager$RollScroller
     {
       Field localField = ViewPager.class.getDeclaredField("mScroller");
       localField.setAccessible(true);
-      localField.set(this.a.a, this);
+      localField.set(this.a.c, this);
       localField.setAccessible(false);
       return;
     }
@@ -42,7 +42,7 @@ public class AvatarWallViewPager$RollScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollScroller
  * JD-Core Version:    0.7.0.1
  */

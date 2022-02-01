@@ -12,18 +12,18 @@ class BaseChatPie$14
   
   public void run()
   {
-    this.this$0.e.setText(this.this$0.a.d);
-    if (AppSetting.d)
+    this.this$0.C.setText(this.this$0.ah.e);
+    if (AppSetting.e)
     {
-      String str = this.this$0.e.getText().toString();
-      this.this$0.e.setContentDescription(str);
-      this.this$0.a().setTitle(this.this$0.e.getText());
+      String str = this.this$0.C.getText().toString();
+      this.this$0.C.setContentDescription(str);
+      this.this$0.aX().setTitle(this.this$0.C.getText());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.14
  * JD-Core Version:    0.7.0.1
  */

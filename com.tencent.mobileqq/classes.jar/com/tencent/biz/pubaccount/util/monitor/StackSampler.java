@@ -10,9 +10,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 class StackSampler
 {
-  private StackSampler.SampleRunnable jdField_a_of_type_ComTencentBizPubaccountUtilMonitorStackSampler$SampleRunnable = new StackSampler.SampleRunnable(this, null);
-  private Map<Long, String> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private volatile boolean a = false;
+  private StackSampler.SampleRunnable b = new StackSampler.SampleRunnable(this, null);
+  private Map<Long, String> c = new ConcurrentHashMap();
   
   private void a()
   {
@@ -26,18 +26,18 @@ class StackSampler
       localStringBuilder.append("\n");
       i += 1;
     }
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 100)
+    if (this.c.size() == 100)
     {
-      localObject = (Long)this.jdField_a_of_type_JavaUtilMap.keySet().iterator().next();
-      this.jdField_a_of_type_JavaUtilMap.remove(localObject);
+      localObject = (Long)this.c.keySet().iterator().next();
+      this.c.remove(localObject);
     }
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(System.nanoTime()), localStringBuilder.toString());
+    this.c.put(Long.valueOf(System.nanoTime()), localStringBuilder.toString());
   }
   
   public void a(long paramLong1, long paramLong2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    Object localObject = this.c.entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
@@ -59,7 +59,7 @@ class StackSampler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.monitor.StackSampler
  * JD-Core Version:    0.7.0.1
  */

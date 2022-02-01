@@ -33,7 +33,7 @@ class BaseArticleInfo$1
       {
         paramString = (ReadInJoyLogicManager)paramString.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
         if (paramString != null) {
-          paramString.getReadInJoyLogicEngine().b(this.a);
+          paramString.getReadInJoyLogicEngine().c(this.a);
         }
       }
     }
@@ -41,7 +41,7 @@ class BaseArticleInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.BaseArticleInfo.1
  * JD-Core Version:    0.7.0.1
  */

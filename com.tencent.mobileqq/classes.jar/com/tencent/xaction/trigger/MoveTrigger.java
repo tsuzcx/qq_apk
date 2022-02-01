@@ -119,7 +119,7 @@ public final class MoveTrigger
           Iterator localIterator = ((Iterable)localLinkView.getViews()).iterator();
           while (localIterator.hasNext())
           {
-            View localView = ((IView)localIterator.next()).getDecor().getProxy();
+            View localView = ((IView)localIterator.next()).getDecor().b();
             if (localView != null) {
               moveX(localView, localLinkView.getDamping() * paramFloat);
             }
@@ -142,7 +142,7 @@ public final class MoveTrigger
           Iterator localIterator = ((Iterable)localLinkView.getViews()).iterator();
           while (localIterator.hasNext())
           {
-            View localView = ((IView)localIterator.next()).getDecor().getProxy();
+            View localView = ((IView)localIterator.next()).getDecor().b();
             if (localView != null) {
               moveY(localView, localLinkView.getDamping() * paramFloat);
             }
@@ -294,16 +294,16 @@ public final class MoveTrigger
     Intrinsics.checkParameterIsNotNull(paramViewData, "data");
     Intrinsics.checkParameterIsNotNull(paramIView, "iview");
     super.monitor(paramViewData, paramIView);
-    paramViewData = paramIView.getDecor().getProxy();
-    if (paramViewData == null) {
-      Intrinsics.throwNpe();
+    paramViewData = paramIView.getDecor().b();
+    if (paramViewData != null)
+    {
+      Context localContext = paramViewData.getContext();
+      Intrinsics.checkExpressionValueIsNotNull(localContext, "view.context");
+      localContext = localContext.getApplicationContext();
+      Intrinsics.checkExpressionValueIsNotNull(localContext, "view.context.applicationContext");
+      this.trackerHelper = new VelocityTrackerHelper(localContext, null, 2, null);
+      TouchEventHelper.a.a(paramViewData, (View.OnTouchListener)new MoveTrigger.monitor.1(this, paramIView, paramViewData));
     }
-    Context localContext = paramViewData.getContext();
-    Intrinsics.checkExpressionValueIsNotNull(localContext, "view.context");
-    localContext = localContext.getApplicationContext();
-    Intrinsics.checkExpressionValueIsNotNull(localContext, "view.context.applicationContext");
-    this.trackerHelper = new VelocityTrackerHelper(localContext, null, 2, null);
-    TouchEventHelper.a.a(paramViewData, (View.OnTouchListener)new MoveTrigger.monitor.1(this, paramIView, paramViewData));
   }
   
   public final void setDirection(int paramInt)
@@ -349,7 +349,7 @@ public final class MoveTrigger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.MoveTrigger
  * JD-Core Version:    0.7.0.1
  */

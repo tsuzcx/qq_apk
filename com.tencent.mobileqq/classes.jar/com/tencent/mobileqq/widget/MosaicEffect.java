@@ -12,27 +12,27 @@ import com.tencent.qphone.base.util.QLog;
 
 public class MosaicEffect
 {
-  private static boolean b = false;
-  private int jdField_a_of_type_Int = 10;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(5);
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean;
+  private static boolean h = false;
+  private View a;
+  private Bitmap b;
+  private boolean c;
+  private Rect d = new Rect();
+  private Paint e = new Paint(5);
+  private int f = 10;
+  private Canvas g = new Canvas();
   
   public MosaicEffect(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void a(Canvas paramCanvas)
   {
     long l = SystemClock.uptimeMillis();
-    int j = this.jdField_a_of_type_AndroidViewView.getWidth() / this.jdField_a_of_type_Int;
-    int k = this.jdField_a_of_type_AndroidViewView.getHeight() / this.jdField_a_of_type_Int;
-    Object localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if ((localObject1 == null) || (((Bitmap)localObject1).getWidth() != j) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() != k))
+    int j = this.a.getWidth() / this.f;
+    int k = this.a.getHeight() / this.f;
+    Object localObject1 = this.b;
+    if ((localObject1 == null) || (((Bitmap)localObject1).getWidth() != j) || (this.b.getHeight() != k))
     {
       if (QLog.isColorLevel())
       {
@@ -58,14 +58,14 @@ public class MosaicEffect
       }
       try
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+        this.b = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
       }
       catch (Exception localException1)
       {
         QLog.e("MosaicEffect", 1, "draw: createBitmap failed ", localException1);
         try
         {
-          this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.RGB_565);
+          this.b = Bitmap.createBitmap(i, j, Bitmap.Config.RGB_565);
         }
         catch (Exception localException2)
         {
@@ -73,28 +73,28 @@ public class MosaicEffect
         }
       }
     }
-    Object localObject2 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject2 = this.b;
     if (localObject2 == null)
     {
       QLog.e("MosaicEffect", 1, "draw: Bitmap is NULL");
       return;
     }
     ((Bitmap)localObject2).eraseColor(0);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_AndroidViewView.computeScroll();
-    int i = this.jdField_a_of_type_AndroidGraphicsCanvas.save();
-    float f = 1.0F / this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsCanvas.scale(f, f);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(-this.jdField_a_of_type_AndroidViewView.getScrollX(), -this.jdField_a_of_type_AndroidViewView.getScrollY());
-    this.jdField_a_of_type_Boolean = false;
-    localObject2 = this.jdField_a_of_type_AndroidViewView;
+    this.g.setBitmap(this.b);
+    this.a.computeScroll();
+    int i = this.g.save();
+    float f1 = 1.0F / this.f;
+    this.g.scale(f1, f1);
+    this.g.translate(-this.a.getScrollX(), -this.a.getScrollY());
+    this.c = false;
+    localObject2 = this.a;
     if ((localObject2 instanceof MosaicEffect.IMosaicEffect)) {
-      ((MosaicEffect.IMosaicEffect)localObject2).superDrawMosaic(this.jdField_a_of_type_AndroidGraphicsCanvas);
+      ((MosaicEffect.IMosaicEffect)localObject2).superDrawMosaic(this.g);
     }
-    this.jdField_a_of_type_AndroidGraphicsCanvas.restoreToCount(i);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(null);
-    this.jdField_a_of_type_Boolean = true;
-    localObject2 = this.jdField_a_of_type_AndroidViewView;
+    this.g.restoreToCount(i);
+    this.g.setBitmap(null);
+    this.c = true;
+    localObject2 = this.a;
     if ((localObject2 instanceof MosaicEffect.IMosaicEffect)) {
       ((MosaicEffect.IMosaicEffect)localObject2).superDrawMosaic(paramCanvas);
     }
@@ -110,52 +110,52 @@ public class MosaicEffect
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramView;
   }
   
   public void b(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      this.e.setFilterBitmap(false);
+      if (this.b != null)
       {
-        if (paramCanvas.getClipBounds(this.jdField_a_of_type_AndroidGraphicsRect))
+        if (paramCanvas.getClipBounds(this.d))
         {
           if (!paramCanvas.isHardwareAccelerated())
           {
-            View localView = this.jdField_a_of_type_AndroidViewView;
-            if ((localView != null) && ((localView.getWidth() < this.jdField_a_of_type_AndroidGraphicsRect.width()) || (this.jdField_a_of_type_AndroidViewView.getHeight() < this.jdField_a_of_type_AndroidGraphicsRect.height()))) {
-              this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidViewView.getWidth(), this.jdField_a_of_type_AndroidViewView.getHeight());
+            View localView = this.a;
+            if ((localView != null) && ((localView.getWidth() < this.d.width()) || (this.a.getHeight() < this.d.height()))) {
+              this.d.set(0, 0, this.a.getWidth(), this.a.getHeight());
             }
           }
-          if (b)
+          if (h)
           {
-            this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-            this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-            paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+            this.e.setStyle(Paint.Style.FILL);
+            this.e.setColor(-65536);
+            paramCanvas.drawRect(this.d, this.e);
           }
-          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+          paramCanvas.drawBitmap(this.b, null, this.d, this.e);
           return;
         }
         paramCanvas = new StringBuilder();
         paramCanvas.append("onDraw: clipBound is empty ");
-        paramCanvas.append(this.jdField_a_of_type_AndroidGraphicsRect);
+        paramCanvas.append(this.d);
         QLog.e("MosaicEffect", 1, paramCanvas.toString());
       }
     }
     else
     {
-      paramCanvas = this.jdField_a_of_type_AndroidViewView;
+      paramCanvas = this.a;
       if ((paramCanvas instanceof MosaicEffect.IMosaicEffect)) {
-        ((MosaicEffect.IMosaicEffect)paramCanvas).superOnDrawMosaic(this.jdField_a_of_type_AndroidGraphicsCanvas);
+        ((MosaicEffect.IMosaicEffect)paramCanvas).superOnDrawMosaic(this.g);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MosaicEffect
  * JD-Core Version:    0.7.0.1
  */

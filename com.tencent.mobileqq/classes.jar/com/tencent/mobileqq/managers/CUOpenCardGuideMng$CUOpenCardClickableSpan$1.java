@@ -11,15 +11,15 @@ class CUOpenCardGuideMng$CUOpenCardClickableSpan$1
   public void run()
   {
     String str;
-    if (this.this$0.a == 1) {
+    if (this.this$0.d == 1) {
       str = "0X8008124";
     }
     for (;;)
     {
       break;
-      if (this.this$0.a == 2) {
+      if (this.this$0.d == 2) {
         str = "0X8008126";
-      } else if ((this.this$0.a != 3) && (this.this$0.a != 4)) {
+      } else if ((this.this$0.d != 3) && (this.this$0.d != 4)) {
         str = null;
       } else {
         str = "0X800813E";

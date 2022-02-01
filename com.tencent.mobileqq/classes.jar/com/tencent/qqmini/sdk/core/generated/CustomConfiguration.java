@@ -112,7 +112,7 @@ public final class CustomConfiguration
         localObject1 = new JSONObject(DEX_CONFIG);
         if (!TextUtils.isEmpty(((JSONObject)localObject1).optString("ver")))
         {
-          ((JSONObject)localObject1).putOpt("app_version", "8.7.0.5295");
+          ((JSONObject)localObject1).putOpt("app_version", "8.8.17.5770");
           DEX_CONFIG = ((JSONObject)localObject1).toString();
           return;
         }
@@ -129,7 +129,7 @@ public final class CustomConfiguration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.CustomConfiguration
  * JD-Core Version:    0.7.0.1
  */

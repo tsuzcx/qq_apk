@@ -10,36 +10,31 @@ import com.tencent.mobileqq.app.QQAppInterface;
 
 public abstract class AppsBaseBuilder
 {
-  protected int a;
-  protected long a;
-  protected Context a;
-  protected SessionInfo a;
-  protected BaseActivity a;
-  protected QQAppInterface a;
-  protected TroopAppShortcutContainer a;
-  protected boolean a;
-  protected long b;
-  protected boolean b;
+  protected long b = 0L;
+  protected long c = 0L;
+  protected SessionInfo d;
+  protected TroopAppShortcutContainer e;
+  protected Context f;
+  protected QQAppInterface g;
+  protected BaseActivity h;
+  protected boolean i = false;
+  protected boolean j = false;
+  protected int k = 0;
   
   public AppsBaseBuilder(Context paramContext, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, TroopAppShortcutContainer paramTroopAppShortcutContainer, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer = paramTroopAppShortcutContainer;
+    this.f = paramContext;
+    this.g = paramQQAppInterface;
+    this.h = paramBaseActivity;
+    this.e = paramTroopAppShortcutContainer;
     if (paramBundle != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = ((SessionInfo)paramBundle.getParcelable("sessionInfo"));
-      this.jdField_a_of_type_Long = paramBundle.getLong("troopUin", 0L);
-      this.jdField_b_of_type_Long = paramBundle.getLong("troopClassExt", 0L);
-      this.jdField_a_of_type_Boolean = paramBundle.getBoolean("isNight", false);
-      this.jdField_b_of_type_Boolean = paramBundle.getBoolean("isAdminOrOwner", false);
-      this.jdField_a_of_type_Int = paramBundle.getInt("reportFrom");
+      this.d = ((SessionInfo)paramBundle.getParcelable("sessionInfo"));
+      this.b = paramBundle.getLong("troopUin", 0L);
+      this.c = paramBundle.getLong("troopClassExt", 0L);
+      this.i = paramBundle.getBoolean("isNight", false);
+      this.j = paramBundle.getBoolean("isAdminOrOwner", false);
+      this.k = paramBundle.getInt("reportFrom");
     }
   }
   
@@ -47,13 +42,13 @@ public abstract class AppsBaseBuilder
   
   public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
   
-  public abstract Object a();
-  
   public abstract void a_(Object paramObject);
+  
+  public abstract Object b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.AppsBaseBuilder
  * JD-Core Version:    0.7.0.1
  */

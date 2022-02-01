@@ -2,22 +2,22 @@ package com.tencent.av.gaudio;
 
 class AVNotifyCenter$OtherTerChatingRoomInfo
 {
-  public int a;
   public long a;
+  public int b;
   
   AVNotifyCenter$OtherTerChatingRoomInfo(AVNotifyCenter paramAVNotifyCenter, long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramLong;
+    this.b = paramInt;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("OtherTerChatingRoomInfo:mRoomId=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mSessionType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }

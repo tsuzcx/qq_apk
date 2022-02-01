@@ -14,7 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.apollo.game.ApolloGameTool;
 import com.tencent.mobileqq.apollo.game.process.CmGameUtil;
 import com.tencent.mobileqq.apollo.game.process.data.CmGameLauncher;
 import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
@@ -30,10 +29,8 @@ public class ApolloFloatActivity
 {
   private static final String TAG = "[cmshow]ApolloFloatActivity";
   private int mDelayTime = 1500;
-  private int mFrom;
   private boolean mFullScreen;
   private int mGameId;
-  private int mOrientation;
   TextView rightView;
   
   public void doOnBackPressed()
@@ -71,34 +68,8 @@ public class ApolloFloatActivity
         ((StringBuilder)localObject2).append(this.mGameId);
         QLog.d("[cmshow]ApolloFloatActivity", 2, ((StringBuilder)localObject2).toString());
       }
-      this.mFrom = localIntent.getIntExtra("extra_key_from", -1);
-      if (this.mFrom == 1)
-      {
-        getWindow().getDecorView().setSystemUiVisibility(5894);
-        i = CmGameUtil.a(localIntent.getIntExtra("extra_key_entratation", 1));
-        setRequestedOrientation(i);
-        localIntent.getIntExtra("extra_key_transparent", 1);
-        this.mDelayTime = 0;
-        this.mOrientation = localIntent.getIntExtra("extra_key_entratation", 1);
-        ((RelativeLayout.LayoutParams)localObject1).addRule(13);
-        if (QLog.isColorLevel())
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(((RelativeLayout.LayoutParams)localObject1).width);
-          ((StringBuilder)localObject2).append("#");
-          ((StringBuilder)localObject2).append(((RelativeLayout.LayoutParams)localObject1).height);
-          ((StringBuilder)localObject2).append("#");
-          ((StringBuilder)localObject2).append(((RelativeLayout.LayoutParams)localObject1).leftMargin);
-          QLog.d("[cmshow]ApolloFloatActivity", 2, ((StringBuilder)localObject2).toString());
-        }
-        paramBundle.addView(this.mWebView, (ViewGroup.LayoutParams)localObject1);
-        setRequestedOrientation(i);
-      }
-      else
-      {
-        setRequestedOrientation(1);
-        paramBundle.addView(this.mWebView, (ViewGroup.LayoutParams)localObject1);
-      }
+      setRequestedOrientation(1);
+      paramBundle.addView(this.mWebView, (ViewGroup.LayoutParams)localObject1);
     }
     else
     {
@@ -118,21 +89,21 @@ public class ApolloFloatActivity
       }
       else if (QLog.isColorLevel())
       {
-        QQToast.a(this, "透明浮层url为空", 0).a();
+        QQToast.makeText(this, "透明浮层url为空", 0).show();
         QLog.e("[cmshow]ApolloFloatActivity", 2, "ApolloFloat WebUrl is empty!");
       }
     }
     else
     {
       if (QLog.isColorLevel()) {
-        QQToast.a(this, "透明浮层url为空", 0).a();
+        QQToast.makeText(this, "透明浮层url为空", 0).show();
       }
       QLog.e("[cmshow]ApolloFloatActivity", 2, "[doOnCreate] intent is null url null");
     }
     localObject1 = super.getResources();
     if (this.mSystemBarComp != null)
     {
-      i = ((Resources)localObject1).getColor(2131167333);
+      i = ((Resources)localObject1).getColor(2131168376);
       this.mSystemBarComp.setStatusColor(i);
       this.mSystemBarComp.setStatusBarColor(i);
     }
@@ -148,14 +119,6 @@ public class ApolloFloatActivity
     }
     this.onCreateTime = (System.currentTimeMillis() - this.mOnCreateMilliTimeStamp);
     return false;
-  }
-  
-  protected void doOnWindowFocusChanged(boolean paramBoolean)
-  {
-    if (this.mFrom == 1) {
-      ApolloGameTool.a(this);
-    }
-    super.doOnWindowFocusChanged(paramBoolean);
   }
   
   protected boolean isWrapContent()
@@ -184,7 +147,7 @@ public class ApolloFloatActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloFloatActivity
  * JD-Core Version:    0.7.0.1
  */

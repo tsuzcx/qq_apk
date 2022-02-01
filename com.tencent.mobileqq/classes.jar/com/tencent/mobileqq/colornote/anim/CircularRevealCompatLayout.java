@@ -11,15 +11,15 @@ import android.widget.FrameLayout;
 public class CircularRevealCompatLayout
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float;
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final Path jdField_b_of_type_AndroidGraphicsPath = new Path();
-  private boolean jdField_b_of_type_Boolean;
+  private float a;
+  private float b;
   private float c;
-  private float d;
+  private final Path d = new Path();
+  private boolean e;
+  private RectF f = new RectF();
+  private float g;
+  private final Path h = new Path();
+  private boolean i;
   
   public CircularRevealCompatLayout(Context paramContext)
   {
@@ -38,12 +38,12 @@ public class CircularRevealCompatLayout
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e)
     {
-      if (!this.jdField_a_of_type_AndroidGraphicsPath.isEmpty())
+      if (!this.d.isEmpty())
       {
         paramCanvas.save();
-        paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+        paramCanvas.clipPath(this.d);
         super.dispatchDraw(paramCanvas);
         paramCanvas.restore();
         return;
@@ -51,12 +51,12 @@ public class CircularRevealCompatLayout
       super.dispatchDraw(paramCanvas);
       return;
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.i)
     {
-      if (!this.jdField_b_of_type_AndroidGraphicsPath.isEmpty())
+      if (!this.h.isEmpty())
       {
         paramCanvas.save();
-        paramCanvas.clipPath(this.jdField_b_of_type_AndroidGraphicsPath);
+        paramCanvas.clipPath(this.h);
         super.dispatchDraw(paramCanvas);
         paramCanvas.restore();
         return;
@@ -67,34 +67,42 @@ public class CircularRevealCompatLayout
     super.dispatchDraw(paramCanvas);
   }
   
+  public float getRadius()
+  {
+    if (this.e) {
+      return this.c;
+    }
+    return -1.0F;
+  }
+  
   public void setClipRect(RectF paramRectF, float paramFloat)
   {
     if ((paramRectF.width() >= getWidth()) && (paramRectF.height() >= getHeight()))
     {
-      this.jdField_b_of_type_Boolean = false;
+      this.i = false;
       invalidate();
       return;
     }
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRectF);
-    this.d = paramFloat;
-    this.jdField_b_of_type_AndroidGraphicsPath.reset();
-    paramRectF = this.jdField_b_of_type_AndroidGraphicsPath;
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    paramFloat = this.d;
+    this.i = true;
+    this.f.set(paramRectF);
+    this.g = paramFloat;
+    this.h.reset();
+    paramRectF = this.h;
+    RectF localRectF = this.f;
+    paramFloat = this.g;
     paramRectF.addRoundRect(localRectF, paramFloat, paramFloat, Path.Direction.CW);
-    this.jdField_b_of_type_AndroidGraphicsPath.close();
+    this.h.close();
   }
   
   public void setEnableClip(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void setRevealClip(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    this.a = paramFloat1;
+    this.b = paramFloat2;
     this.c = paramFloat3;
     float f1 = getWidth() - paramFloat1;
     float f2 = getWidth() - paramFloat2;
@@ -104,16 +112,16 @@ public class CircularRevealCompatLayout
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addCircle(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c, Path.Direction.CW);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
+    this.e = bool;
+    this.d.reset();
+    this.d.addCircle(this.a, this.b, this.c, Path.Direction.CW);
+    this.d.close();
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.anim.CircularRevealCompatLayout
  * JD-Core Version:    0.7.0.1
  */

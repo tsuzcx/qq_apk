@@ -10,12 +10,12 @@ class QPluginAsQRoutePlugin$1
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQrouteModuleQRoutePluginActivityParams.openResultListener.onOpenResult(paramBoolean);
+    this.a.openResultListener.onOpenResult(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.QPluginAsQRoutePlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,9 +16,9 @@ final class BKScriptService$onNativeEvent$1
   
   public final void run()
   {
-    if (BKScriptService.a(this.this$0).a() == EngineState.DESTROYED)
+    if (BKScriptService.a(this.this$0).e() == EngineState.DESTROYED)
     {
-      localObject1 = BKScriptService.a(this.this$0);
+      localObject1 = BKScriptService.b(this.this$0);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("onNativeEvent fail for cmd:");
       ((StringBuilder)localObject2).append(this.a);
@@ -30,28 +30,28 @@ final class BKScriptService$onNativeEvent$1
     }
     if (QLog.isColorLevel())
     {
-      localObject1 = BKScriptService.a(this.this$0);
+      localObject1 = BKScriptService.b(this.this$0);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("onNativeEvent cmd:");
       ((StringBuilder)localObject2).append(this.a);
       ((StringBuilder)localObject2).append(", respData:");
       ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append(", EngineState:");
-      ((StringBuilder)localObject2).append(BKScriptService.a(this.this$0).a());
+      ((StringBuilder)localObject2).append(BKScriptService.a(this.this$0).e());
       QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
     Object localObject1 = this.b;
     int i;
     if (localObject1 != null) {
-      i = EngineHelper.a.a((String)localObject1);
+      i = EngineHelper.a.b((String)localObject1);
     } else {
       i = 0;
     }
     localObject1 = ApolloCmdChannel.getInstance();
-    Object localObject2 = BKScriptService.a(this.this$0).a();
+    Object localObject2 = BKScriptService.a(this.this$0).f();
     if (localObject2 != null)
     {
-      ((ApolloCmdChannel)localObject1).callbackFromRequest(((BKRenderService)localObject2).a(), i, this.a, this.b);
+      ((ApolloCmdChannel)localObject1).callbackFromRequest(((BKRenderService)localObject2).d(), i, this.a, this.b);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.cmshow.brickengine.BKRenderService");
@@ -59,7 +59,7 @@ final class BKScriptService$onNativeEvent$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.BKScriptService.onNativeEvent.1
  * JD-Core Version:    0.7.0.1
  */

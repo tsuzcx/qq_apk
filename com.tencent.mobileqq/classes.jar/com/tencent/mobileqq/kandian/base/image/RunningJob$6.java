@@ -8,17 +8,17 @@ class RunningJob$6
 {
   public void run()
   {
-    if (this.this$0.a.a) {
+    if (this.this$0.b.d) {
       return;
     }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((IBitmapCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.this$0.a, this.jdField_a_of_type_Int);
+    if (this.a.get() != null) {
+      ((IBitmapCallback)this.a.get()).a(this.this$0.b, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.RunningJob.6
  * JD-Core Version:    0.7.0.1
  */

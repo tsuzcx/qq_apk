@@ -39,13 +39,13 @@ public class QZoneEntryReporterInLeba
     int i3 = 0;
     int i2;
     if (paramQZoneManagerImp != null) {
-      i2 = paramQZoneManagerImp.a(1);
+      i2 = paramQZoneManagerImp.d(1);
     } else {
       i2 = 0;
     }
     int i1;
     if (paramQZoneManagerImp != null) {
-      i1 = paramQZoneManagerImp.a(2);
+      i1 = paramQZoneManagerImp.d(2);
     } else {
       i1 = 0;
     }
@@ -59,24 +59,24 @@ public class QZoneEntryReporterInLeba
       localObject = null;
       QZoneCountInfo localQZoneCountInfo1;
       if (paramQZoneManagerImp != null) {
-        localQZoneCountInfo1 = paramQZoneManagerImp.a(6);
+        localQZoneCountInfo1 = paramQZoneManagerImp.e(6);
       } else {
         localQZoneCountInfo1 = null;
       }
       QZoneCountInfo localQZoneCountInfo2;
       if (paramQZoneManagerImp != null) {
-        localQZoneCountInfo2 = paramQZoneManagerImp.a(61);
+        localQZoneCountInfo2 = paramQZoneManagerImp.e(61);
       } else {
         localQZoneCountInfo2 = null;
       }
       QZoneCountInfo localQZoneCountInfo3;
       if (paramQZoneManagerImp != null) {
-        localQZoneCountInfo3 = paramQZoneManagerImp.a(3);
+        localQZoneCountInfo3 = paramQZoneManagerImp.e(3);
       } else {
         localQZoneCountInfo3 = null;
       }
       if (paramQZoneManagerImp != null) {
-        localObject = paramQZoneManagerImp.a(1013);
+        localObject = paramQZoneManagerImp.e(1013);
       }
       if ((localQZoneCountInfo1 != null) && (localQZoneCountInfo1.friendList != null) && (localQZoneCountInfo1.friendList.size() > 0) && (((QZoneCountUserInfo)localQZoneCountInfo1.friendList.get(0)).uin > 0L) && (localQZoneCountInfo1.uCount > 0L) && (!TextUtils.isEmpty(localQZoneCountInfo1.strShowMsg)))
       {
@@ -253,7 +253,7 @@ public class QZoneEntryReporterInLeba
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QZoneEntryReporterInLeba
  * JD-Core Version:    0.7.0.1
  */

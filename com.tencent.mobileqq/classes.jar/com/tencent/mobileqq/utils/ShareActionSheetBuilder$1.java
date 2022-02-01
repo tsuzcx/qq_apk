@@ -12,17 +12,17 @@ class ShareActionSheetBuilder$1
   
   public void onClick(View paramView)
   {
-    if (this.a.a.isShowing())
+    if (this.a.c.isShowing())
     {
-      this.a.a.cancel();
-      this.a.a.dismiss();
+      this.a.c.cancel();
+      this.a.c.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ShareActionSheetBuilder.1
  * JD-Core Version:    0.7.0.1
  */

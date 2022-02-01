@@ -10,22 +10,21 @@ public class MagicfaceView
   extends SurfaceView
   implements SurfaceHolder.Callback, IMagicFaceView
 {
-  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private MagicfaceView.SurfaceCreateListener jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceView$SurfaceCreateListener;
-  public volatile boolean a;
-  private volatile boolean b = false;
+  public volatile boolean a = false;
+  private SurfaceHolder b;
+  private volatile boolean c = false;
+  private MagicfaceView.SurfaceCreateListener d;
   
   public MagicfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
-    a();
+    b();
   }
   
-  private void a()
+  private void b()
   {
-    this.jdField_a_of_type_AndroidViewSurfaceHolder = getHolder();
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.addCallback(this);
+    this.b = getHolder();
+    this.b.addCallback(this);
   }
   
   /* Error */
@@ -39,49 +38,49 @@ public class MagicfaceView
     //   6: aload 10
     //   8: astore 9
     //   10: aload_0
-    //   11: invokevirtual 44	com/tencent/mobileqq/magicface/view/MagicfaceView:getWidth	()I
+    //   11: invokevirtual 46	com/tencent/mobileqq/magicface/view/MagicfaceView:getWidth	()I
     //   14: i2f
     //   15: fstore 5
     //   17: aload 10
     //   19: astore 9
     //   21: aload_0
-    //   22: invokevirtual 47	com/tencent/mobileqq/magicface/view/MagicfaceView:getHeight	()I
+    //   22: invokevirtual 49	com/tencent/mobileqq/magicface/view/MagicfaceView:getHeight	()I
     //   25: i2f
     //   26: fstore 6
     //   28: aload 10
     //   30: astore 9
     //   32: aload_0
-    //   33: getfield 31	com/tencent/mobileqq/magicface/view/MagicfaceView:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   33: getfield 33	com/tencent/mobileqq/magicface/view/MagicfaceView:b	Landroid/view/SurfaceHolder;
     //   36: aconst_null
-    //   37: invokeinterface 51 2 0
+    //   37: invokeinterface 53 2 0
     //   42: astore 10
-    //   44: new 53	android/graphics/Paint
+    //   44: new 55	android/graphics/Paint
     //   47: dup
-    //   48: invokespecial 55	android/graphics/Paint:<init>	()V
+    //   48: invokespecial 57	android/graphics/Paint:<init>	()V
     //   51: astore 9
     //   53: aload 9
-    //   55: new 57	android/graphics/PorterDuffXfermode
+    //   55: new 59	android/graphics/PorterDuffXfermode
     //   58: dup
-    //   59: getstatic 63	android/graphics/PorterDuff$Mode:CLEAR	Landroid/graphics/PorterDuff$Mode;
-    //   62: invokespecial 66	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
-    //   65: invokevirtual 70	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
+    //   59: getstatic 65	android/graphics/PorterDuff$Mode:CLEAR	Landroid/graphics/PorterDuff$Mode;
+    //   62: invokespecial 68	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
+    //   65: invokevirtual 72	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
     //   68: pop
     //   69: aload 10
     //   71: aload 9
-    //   73: invokevirtual 76	android/graphics/Canvas:drawPaint	(Landroid/graphics/Paint;)V
+    //   73: invokevirtual 78	android/graphics/Canvas:drawPaint	(Landroid/graphics/Paint;)V
     //   76: aload 9
-    //   78: new 57	android/graphics/PorterDuffXfermode
+    //   78: new 59	android/graphics/PorterDuffXfermode
     //   81: dup
-    //   82: getstatic 79	android/graphics/PorterDuff$Mode:SRC	Landroid/graphics/PorterDuff$Mode;
-    //   85: invokespecial 66	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
-    //   88: invokevirtual 70	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
+    //   82: getstatic 81	android/graphics/PorterDuff$Mode:SRC	Landroid/graphics/PorterDuff$Mode;
+    //   85: invokespecial 68	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
+    //   88: invokevirtual 72	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
     //   91: pop
     //   92: aload 9
     //   94: iconst_1
-    //   95: invokevirtual 83	android/graphics/Paint:setFilterBitmap	(Z)V
+    //   95: invokevirtual 85	android/graphics/Paint:setFilterBitmap	(Z)V
     //   98: aload 9
     //   100: iconst_1
-    //   101: invokevirtual 86	android/graphics/Paint:setAntiAlias	(Z)V
+    //   101: invokevirtual 88	android/graphics/Paint:setAntiAlias	(Z)V
     //   104: fload 5
     //   106: fload 6
     //   108: fcmpg
@@ -124,7 +123,7 @@ public class MagicfaceView
     //   160: fload 4
     //   162: fstore 5
     //   164: aload_0
-    //   165: getfield 19	com/tencent/mobileqq/magicface/view/MagicfaceView:b	Z
+    //   165: getfield 21	com/tencent/mobileqq/magicface/view/MagicfaceView:c	Z
     //   168: ifne +36 -> 204
     //   171: fload 6
     //   173: f2i
@@ -146,12 +145,12 @@ public class MagicfaceView
     //   192: aload 10
     //   194: fload 5
     //   196: fload 5
-    //   198: invokevirtual 90	android/graphics/Canvas:scale	(FF)V
+    //   198: invokevirtual 92	android/graphics/Canvas:scale	(FF)V
     //   201: goto +15 -> 216
     //   204: aload 10
     //   206: fload 5
     //   208: fload 4
-    //   210: invokevirtual 90	android/graphics/Canvas:scale	(FF)V
+    //   210: invokevirtual 92	android/graphics/Canvas:scale	(FF)V
     //   213: iconst_0
     //   214: istore 8
     //   216: aload 10
@@ -164,13 +163,13 @@ public class MagicfaceView
     //   226: iload_3
     //   227: iconst_1
     //   228: aload 9
-    //   230: invokevirtual 94	android/graphics/Canvas:drawBitmap	([IIIIIIIZLandroid/graphics/Paint;)V
+    //   230: invokevirtual 96	android/graphics/Canvas:drawBitmap	([IIIIIIIZLandroid/graphics/Paint;)V
     //   233: aload 10
     //   235: ifnull +118 -> 353
     //   238: aload_0
-    //   239: getfield 31	com/tencent/mobileqq/magicface/view/MagicfaceView:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   239: getfield 33	com/tencent/mobileqq/magicface/view/MagicfaceView:b	Landroid/view/SurfaceHolder;
     //   242: aload 10
-    //   244: invokeinterface 98 2 0
+    //   244: invokeinterface 100 2 0
     //   249: return
     //   250: astore_1
     //   251: aload 10
@@ -189,47 +188,47 @@ public class MagicfaceView
     //   278: astore_1
     //   279: aload_1
     //   280: astore 9
-    //   282: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   282: invokestatic 106	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   285: ifeq +54 -> 339
     //   288: aload_1
     //   289: astore 9
-    //   291: new 106	java/lang/StringBuilder
+    //   291: new 108	java/lang/StringBuilder
     //   294: dup
-    //   295: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   295: invokespecial 109	java/lang/StringBuilder:<init>	()V
     //   298: astore 11
     //   300: aload_1
     //   301: astore 9
     //   303: aload 11
-    //   305: ldc 109
-    //   307: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   305: ldc 111
+    //   307: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   310: pop
     //   311: aload_1
     //   312: astore 9
     //   314: aload 11
     //   316: aload 10
-    //   318: invokevirtual 117	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   321: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   318: invokevirtual 119	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   321: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   324: pop
     //   325: aload_1
     //   326: astore 9
-    //   328: ldc 119
+    //   328: ldc 121
     //   330: iconst_2
     //   331: aload 11
-    //   333: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   336: invokestatic 124	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   333: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   336: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   339: aload_1
     //   340: ifnull +13 -> 353
     //   343: aload_0
-    //   344: getfield 31	com/tencent/mobileqq/magicface/view/MagicfaceView:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   344: getfield 33	com/tencent/mobileqq/magicface/view/MagicfaceView:b	Landroid/view/SurfaceHolder;
     //   347: aload_1
-    //   348: invokeinterface 98 2 0
+    //   348: invokeinterface 100 2 0
     //   353: return
     //   354: aload 9
     //   356: ifnull +14 -> 370
     //   359: aload_0
-    //   360: getfield 31	com/tencent/mobileqq/magicface/view/MagicfaceView:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   360: getfield 33	com/tencent/mobileqq/magicface/view/MagicfaceView:b	Landroid/view/SurfaceHolder;
     //   363: aload 9
-    //   365: invokeinterface 98 2 0
+    //   365: invokeinterface 100 2 0
     //   370: aload_1
     //   371: athrow
     // Local variable table:
@@ -285,25 +284,25 @@ public class MagicfaceView
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public void setIsFullScreen(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void setSurfaceCreatelistener(MagicfaceView.SurfaceCreateListener paramSurfaceCreateListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceView$SurfaceCreateListener = paramSurfaceCreateListener;
+    this.d = paramSurfaceCreateListener;
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_Boolean = true;
-    paramSurfaceHolder = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceView$SurfaceCreateListener;
+    this.a = true;
+    paramSurfaceHolder = this.d;
     if (paramSurfaceHolder != null) {
       paramSurfaceHolder.a();
     }
@@ -313,7 +312,7 @@ public class MagicfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceView
  * JD-Core Version:    0.7.0.1
  */

@@ -29,7 +29,7 @@ class BusinessCmrTmpChatPie$5
       QLog.d("BusinessChatPie", 2, ((StringBuilder)localObject).toString());
     }
     if (!paramBoolean) {
-      this.a.l(2131695217);
+      this.a.s(2131892951);
     }
     try
     {
@@ -41,27 +41,27 @@ class BusinessCmrTmpChatPie$5
         paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.get();
         if (paramInt == 0)
         {
-          ((FriendListHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendGroupList(true, false);
-          paramBundle = (EnterpriseQQHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.ENTERPRISEQQ_HANDLER);
+          ((FriendListHandler)this.a.d.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendGroupList(true, false);
+          paramBundle = (EnterpriseQQHandler)this.a.d.getBusinessHandler(BusinessHandlerFactory.ENTERPRISEQQ_HANDLER);
           if (paramBundle != null) {
             paramBundle.a(SystemClock.uptimeMillis());
           }
         }
         else if (paramInt == 58)
         {
-          this.a.l(2131695212);
+          this.a.s(2131892946);
         }
         else if (paramInt == 65)
         {
-          this.a.l(2131695185);
+          this.a.s(2131892918);
         }
         else if (paramInt == 20)
         {
-          this.a.l(2131695186);
+          this.a.s(2131892919);
         }
         else
         {
-          this.a.l(2131695217);
+          this.a.s(2131892951);
         }
       }
       label224:
@@ -75,7 +75,7 @@ class BusinessCmrTmpChatPie$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.5
  * JD-Core Version:    0.7.0.1
  */

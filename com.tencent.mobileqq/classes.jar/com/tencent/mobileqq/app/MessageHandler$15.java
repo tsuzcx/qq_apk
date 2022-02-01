@@ -12,9 +12,9 @@ class MessageHandler$15
   {
     try
     {
-      ConfessMsgUtil.b(this.this$0.a, false);
-      ConfessMsgUtil.a(this.this$0.a, false);
-      this.this$0.e(this.a);
+      ConfessMsgUtil.b(this.this$0.n, false);
+      ConfessMsgUtil.a(this.this$0.n, false);
+      this.this$0.g(this.a);
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -26,7 +26,7 @@ class MessageHandler$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.15
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class MultiVideoEnterPageActivity$RemoveTipsRunnale
     if (QLog.isColorLevel()) {
       QLog.d(this.this$0.a, 2, "RemoveTipsRunnale Run");
     }
-    this.this$0.c();
+    this.this$0.d();
   }
 }
 

@@ -28,13 +28,13 @@ class AddContactViewPagerTroopFragment$4
       paramSosoLbsInfo.append("getview onLocationFinish, errorCode=");
       paramSosoLbsInfo.append(paramInt);
       QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, paramSosoLbsInfo.toString());
-      this.a.a.post(new AddContactViewPagerTroopFragment.4.1(this));
+      this.a.h.post(new AddContactViewPagerTroopFragment.4.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment.4
  * JD-Core Version:    0.7.0.1
  */

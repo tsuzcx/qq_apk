@@ -45,8 +45,8 @@ public class WSVerticalJumpUtils
   private static WSDownloadParams a(WSVerticalPageFragment paramWSVerticalPageFragment, int paramInt, String paramString)
   {
     WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = WSVerticalUtils.a(paramWSVerticalPageFragment.a());
-    localWSDownloadParams.mLinkStrategyType = WSGlobalConfig.a().a();
+    localWSDownloadParams.mScene = WSVerticalUtils.a(paramWSVerticalPageFragment.k());
+    localWSDownloadParams.mLinkStrategyType = WSGlobalConfig.a().d();
     localWSDownloadParams.mEventId = paramInt;
     localWSDownloadParams.mTestId = WeishiUtils.a(localWSDownloadParams.mScene);
     localWSDownloadParams.mScheme = paramString;
@@ -60,7 +60,7 @@ public class WSVerticalJumpUtils
       if (paramstSimpleMetaFeed == null) {
         return;
       }
-      if (WeishiUtils.c()) {
+      if (WeishiUtils.o()) {
         return;
       }
       if (WeishiScehmeUtil.a(paramstSimpleMetaFeed.feed_material_jump_url)) {
@@ -84,18 +84,18 @@ public class WSVerticalJumpUtils
   
   public static void a(WSVerticalPageFragment paramWSVerticalPageFragment, WSVerticalItemData paramWSVerticalItemData, boolean paramBoolean)
   {
-    if (WeishiUtils.c()) {
+    if (WeishiUtils.o()) {
       return;
     }
-    if ((paramWSVerticalPageFragment != null) && (paramWSVerticalItemData != null) && (paramWSVerticalItemData.a() != null))
+    if ((paramWSVerticalPageFragment != null) && (paramWSVerticalItemData != null) && (paramWSVerticalItemData.f() != null))
     {
-      stSchema localstSchema = paramWSVerticalItemData.a().a();
+      stSchema localstSchema = paramWSVerticalItemData.f().a();
       if (localstSchema == null) {
         return;
       }
-      String str1 = paramWSVerticalPageFragment.a();
-      String str2 = paramWSVerticalPageFragment.b();
-      new WSStSchemaJumpManager(paramWSVerticalPageFragment.getActivity()).a(localstSchema).a(true).a(new WSVerticalJumpUtils.2(str1, str2, paramWSVerticalItemData, localstSchema, paramBoolean)).c();
+      String str1 = paramWSVerticalPageFragment.k();
+      String str2 = paramWSVerticalPageFragment.l();
+      new WSStSchemaJumpManager(paramWSVerticalPageFragment.getActivity()).a(localstSchema).a(true).a(new WSVerticalJumpUtils.2(str1, str2, paramWSVerticalItemData, localstSchema, paramBoolean)).j();
     }
   }
   
@@ -107,11 +107,11 @@ public class WSVerticalJumpUtils
       if (paramstSimpleMetaFeed.poster.avatarSchema == null) {
         return;
       }
-      String str1 = paramWSVerticalPageFragment.a();
-      String str2 = paramWSVerticalPageFragment.b();
-      Map localMap = ((WSVerticalPageContract.Presenter)paramWSVerticalPageFragment.b()).b();
+      String str1 = paramWSVerticalPageFragment.k();
+      String str2 = paramWSVerticalPageFragment.l();
+      Map localMap = ((WSVerticalPageContract.Presenter)paramWSVerticalPageFragment.aO_()).n();
       stSimpleMetaPerson localstSimpleMetaPerson = paramstSimpleMetaFeed.poster;
-      new WSStSchemaJumpManager(paramWSVerticalPageFragment.getActivity()).a(localstSimpleMetaPerson.avatarSchema).a(a(paramWSVerticalPageFragment, 1, localstSimpleMetaPerson.avatarSchema.schema)).a(new WSVerticalJumpUtils.3(str1, str2, paramString, paramstSimpleMetaFeed, localMap)).c();
+      new WSStSchemaJumpManager(paramWSVerticalPageFragment.getActivity()).a(localstSimpleMetaPerson.avatarSchema).a(a(paramWSVerticalPageFragment, 1, localstSimpleMetaPerson.avatarSchema.schema)).a(new WSVerticalJumpUtils.3(str1, str2, paramString, paramstSimpleMetaFeed, localMap)).j();
     }
   }
   
@@ -122,16 +122,16 @@ public class WSVerticalJumpUtils
       if (paramstSimpleMetaFeed.new_icon == null) {
         return;
       }
-      if (WeishiUtils.c()) {
+      if (WeishiUtils.o()) {
         return;
       }
-      String str1 = paramWSVerticalPageFragment.a();
-      String str2 = paramWSVerticalPageFragment.b();
+      String str1 = paramWSVerticalPageFragment.k();
+      String str2 = paramWSVerticalPageFragment.l();
       Object localObject = paramstSimpleMetaFeed.new_icon;
       int i = ((stNewIconStyle)localObject).tag_type;
       int j = ((stNewIconStyle)localObject).id;
       localObject = a(paramstSimpleMetaFeed);
-      new WSStSchemaJumpManager(paramWSVerticalPageFragment.getActivity()).a((stSchema)localObject).a(true).a(a(paramWSVerticalPageFragment, 4, ((stSchema)localObject).schema)).a(new WSVerticalJumpUtils.1(str1, str2, paramstSimpleMetaFeed, i, j)).c();
+      new WSStSchemaJumpManager(paramWSVerticalPageFragment.getActivity()).a((stSchema)localObject).a(true).a(a(paramWSVerticalPageFragment, 4, ((stSchema)localObject).schema)).a(new WSVerticalJumpUtils.1(str1, str2, paramstSimpleMetaFeed, i, j)).j();
     }
   }
   
@@ -157,18 +157,18 @@ public class WSVerticalJumpUtils
       if (paramstSimpleMetaFeed.weishiButton == null) {
         return;
       }
-      if (WeishiUtils.c()) {
+      if (WeishiUtils.o()) {
         return;
       }
-      String str1 = paramWSVerticalPageFragment.a();
-      String str2 = paramWSVerticalPageFragment.b();
-      new WSStSchemaJumpManager(paramWSVerticalPageFragment.getActivity()).a(paramstSimpleMetaFeed.weishiButton.schema).a(true).b(true).a(new WSVerticalJumpUtils.4(str1, str2, paramstSimpleMetaFeed)).c();
+      String str1 = paramWSVerticalPageFragment.k();
+      String str2 = paramWSVerticalPageFragment.l();
+      new WSStSchemaJumpManager(paramWSVerticalPageFragment.getActivity()).a(paramstSimpleMetaFeed.weishiButton.schema).a(true).c(true).a(new WSVerticalJumpUtils.4(str1, str2, paramstSimpleMetaFeed)).j();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalJumpUtils
  * JD-Core Version:    0.7.0.1
  */

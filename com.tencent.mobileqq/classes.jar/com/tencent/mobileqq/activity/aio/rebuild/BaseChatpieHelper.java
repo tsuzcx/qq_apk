@@ -40,20 +40,20 @@ import java.util.List;
 
 public class BaseChatpieHelper
 {
-  private int jdField_a_of_type_Int = 1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private BaseChatPie a;
+  private QQAppInterface b;
+  private SessionInfo c;
+  private BaseActivity d;
+  private Context e;
+  private int f = 1;
   
   public BaseChatpieHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
+    this.a = paramBaseChatPie;
+    this.b = paramBaseChatPie.d;
+    this.c = paramBaseChatPie.ah;
+    this.d = paramBaseChatPie.f;
+    this.e = paramBaseChatPie.e;
   }
   
   public static List<ChatMessage> a(List<ChatMessage> paramList, String paramString)
@@ -105,12 +105,12 @@ public class BaseChatpieHelper
     if (QLog.isColorLevel()) {
       QLog.w("BaseChatpieHelper", 2, "exitMsgFilterMode ");
     }
-    paramBaseSessionInfo.l = false;
-    paramBaseSessionInfo.i = null;
+    paramBaseSessionInfo.z = false;
+    paramBaseSessionInfo.A = null;
     if (paramBoolean) {
       paramEditTextUI.a("");
     }
-    paramFunBtnUI.a(HardCodeUtil.a(2131701175));
+    paramFunBtnUI.a(HardCodeUtil.a(2131899190));
   }
   
   public static void a(SessionInfo paramSessionInfo, EditText paramEditText, Button paramButton, boolean paramBoolean)
@@ -118,17 +118,17 @@ public class BaseChatpieHelper
     if (QLog.isColorLevel()) {
       QLog.w("BaseChatpieHelper", 2, "exitMsgFilterMode ");
     }
-    paramSessionInfo.l = false;
-    paramSessionInfo.i = null;
+    paramSessionInfo.z = false;
+    paramSessionInfo.A = null;
     if (paramBoolean) {
       paramEditText.setText("");
     }
-    paramButton.setText(HardCodeUtil.a(2131701175));
+    paramButton.setText(HardCodeUtil.a(2131899190));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, XEditTextEx paramXEditTextEx, boolean paramBoolean)
   {
-    int i = VasUtil.a(paramQQAppInterface).getVipStatus().getPrivilegeFlags(null);
+    int i = VasUtil.b(paramQQAppInterface).getVipStatus().getPrivilegeFlags(null);
     if ((i & 0x4) != 0) {
       i = PttItemBuilder.a(paramQQAppInterface, "SVIP_MaxPtt");
     } else if ((i & 0x2) != 0) {
@@ -141,7 +141,7 @@ public class BaseChatpieHelper
       paramQQAppInterface = ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).getRecorderParam();
       paramXEditTextEx.getInputExtras(true).putBoolean("DoesSupportDirectlyAudio", paramBoolean ^ true);
       paramXEditTextEx.getInputExtras(true).putInt("Channels", 1);
-      paramXEditTextEx.getInputExtras(true).putInt("SampleRate", paramQQAppInterface.jdField_a_of_type_Int);
+      paramXEditTextEx.getInputExtras(true).putInt("SampleRate", paramQQAppInterface.a);
       paramXEditTextEx.getInputExtras(true).putInt("TimeLength", i);
       if (QLog.isColorLevel())
       {
@@ -149,7 +149,7 @@ public class BaseChatpieHelper
         localStringBuilder.append("sougouptt params : support = ");
         localStringBuilder.append(paramBoolean ^ true);
         localStringBuilder.append("sample = ");
-        localStringBuilder.append(paramQQAppInterface.jdField_a_of_type_Int);
+        localStringBuilder.append(paramQQAppInterface.a);
         localStringBuilder.append(" max = ");
         localStringBuilder.append(i);
         QLog.d("BaseChatpieHelper", 2, localStringBuilder.toString());
@@ -179,7 +179,7 @@ public class BaseChatpieHelper
   
   public void a()
   {
-    MiniChatMsgProxy.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    MiniChatMsgProxy.a().a(this.c.a, this.c.b, this.a);
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
@@ -189,11 +189,11 @@ public class BaseChatpieHelper
   
   public void a(Activity paramActivity, Intent paramIntent)
   {
-    ArrayList localArrayList = (ArrayList)MultiMsgManager.a().a();
+    ArrayList localArrayList = (ArrayList)MultiMsgManager.a().i();
     JubaoIPCServer.a().a(localArrayList);
     String str = JubaoApiPlugin.a(localArrayList);
-    paramIntent.putExtra("chatuin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    paramIntent.putExtra("chattype", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    paramIntent.putExtra("chatuin", this.c.b);
+    paramIntent.putExtra("chattype", this.c.a);
     paramIntent.putExtra("msgs", str);
     paramActivity.setResult(-1, paramIntent);
     if (QLog.isColorLevel())
@@ -207,14 +207,14 @@ public class BaseChatpieHelper
   
   public void a(Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = 1;
+    this.f = 1;
   }
   
   public void b()
   {
-    MiniChatMsgProxy.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade() != null) && (!MiniChatMsgProxy.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    MiniChatMsgProxy.a().b(this.c.a, this.c.b, this.a);
+    if ((this.b.getMessageFacade() != null) && (!MiniChatMsgProxy.a().a(this.c.a, this.c.b))) {
+      this.b.getMessageFacade().a(this.c.a, this.c.b);
     }
   }
   
@@ -226,7 +226,7 @@ public class BaseChatpieHelper
     if (QLog.isColorLevel()) {
       QLog.d("BaseChatpieHelper", 2, "uploadPreviewPhoto");
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+    int i = this.c.a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("ChatActivity.uploadPreviewPhoto:request=");
     ((StringBuilder)localObject).append(paramIntent.getIntExtra(AlbumConstants.h, -1));
@@ -236,7 +236,7 @@ public class BaseChatpieHelper
     {
       if (((Bundle)localObject).getBoolean("deleteImage", false))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(true, false);
+        this.a.a(true, false);
         return;
       }
       i = paramIntent.getIntExtra(AlbumConstants.h, -1);
@@ -249,13 +249,13 @@ public class BaseChatpieHelper
           {
             if (i == 1)
             {
-              a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.c, 1, "");
+              a(this.c.s, 1, "");
               return;
             }
-            a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.c, 2, "");
+            a(this.c.s, 2, "");
             return;
           }
-          i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.c;
+          i = this.c.s;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("");
           ((StringBuilder)localObject).append(paramIntent.size());
@@ -267,7 +267,7 @@ public class BaseChatpieHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BaseChatpieHelper
  * JD-Core Version:    0.7.0.1
  */

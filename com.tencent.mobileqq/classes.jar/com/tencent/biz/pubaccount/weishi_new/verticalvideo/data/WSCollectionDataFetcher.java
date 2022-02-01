@@ -16,16 +16,11 @@ import java.util.List;
 public class WSCollectionDataFetcher
   implements IDataFetcher<WSCollectionRequestParams, WSVerticalItemData>
 {
-  public String a;
-  private final HashSet<String> a;
   public boolean a;
-  public String b;
   public boolean b;
-  
-  public WSCollectionDataFetcher()
-  {
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  }
+  public String c;
+  public String d;
+  private final HashSet<String> e = new HashSet();
   
   private int a(boolean paramBoolean1, boolean paramBoolean2)
   {
@@ -42,7 +37,7 @@ public class WSCollectionDataFetcher
   {
     boolean bool2 = paramstGetCollectionRsp.isFinished;
     boolean bool1;
-    if (paramWSCollectionRequestParams.jdField_a_of_type_Int == 0) {
+    if (paramWSCollectionRequestParams.e == 0) {
       bool1 = true;
     } else {
       bool1 = false;
@@ -56,18 +51,18 @@ public class WSCollectionDataFetcher
       while (((Iterator)localObject).hasNext())
       {
         stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_JavaUtilHashSet.contains(localstSimpleMetaFeed.id))
+        if (!this.e.contains(localstSimpleMetaFeed.id))
         {
-          this.jdField_a_of_type_JavaUtilHashSet.add(localstSimpleMetaFeed.id);
+          this.e.add(localstSimpleMetaFeed.id);
           WSVerticalItemData localWSVerticalItemData = WSVerticalDataUtil.a(localstSimpleMetaFeed);
           localWSVerticalItemData.a(paramstGetCollectionRsp.collection);
-          if (paramWSCollectionRequestParams.jdField_a_of_type_Boolean) {
-            localWSVerticalItemData.a(TextUtils.equals(localstSimpleMetaFeed.id, paramWSCollectionRequestParams.jdField_b_of_type_JavaLangString));
+          if (paramWSCollectionRequestParams.a) {
+            localWSVerticalItemData.a(TextUtils.equals(localstSimpleMetaFeed.id, paramWSCollectionRequestParams.d));
           }
           localArrayList.add(localWSVerticalItemData);
         }
       }
-      if (paramWSCollectionRequestParams.jdField_a_of_type_Boolean) {
+      if (paramWSCollectionRequestParams.a) {
         ((WSVerticalItemData)localArrayList.get(0)).a(true);
       }
     }
@@ -77,42 +72,42 @@ public class WSCollectionDataFetcher
     ((StringBuilder)localObject).append(", mIsFinished:");
     ((StringBuilder)localObject).append(bool2);
     WSLog.e("WSCollectionDataFetcher", ((StringBuilder)localObject).toString());
-    return new WSCollectionDataFetcher.ResponseModel(localArrayList, paramWSCollectionRequestParams.jdField_a_of_type_Boolean, bool1, paramstGetCollectionRsp.attachInfo, bool2);
-  }
-  
-  private String a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return this.jdField_b_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
+    return new WSCollectionDataFetcher.ResponseModel(localArrayList, paramWSCollectionRequestParams.a, bool1, paramstGetCollectionRsp.attachInfo, bool2);
   }
   
   private void a(stGetCollectionRsp paramstGetCollectionRsp, WSCollectionRequestParams paramWSCollectionRequestParams, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean2)
     {
-      this.jdField_b_of_type_Boolean = paramBoolean1;
-      this.jdField_b_of_type_JavaLangString = paramstGetCollectionRsp.attachInfo;
+      this.b = paramBoolean1;
+      this.d = paramstGetCollectionRsp.attachInfo;
     }
     else
     {
-      this.jdField_a_of_type_Boolean = paramBoolean1;
-      this.jdField_a_of_type_JavaLangString = paramstGetCollectionRsp.attachInfo;
+      this.a = paramBoolean1;
+      this.c = paramstGetCollectionRsp.attachInfo;
     }
-    if (paramWSCollectionRequestParams.jdField_a_of_type_Boolean)
+    if (paramWSCollectionRequestParams.a)
     {
-      this.jdField_b_of_type_JavaLangString = paramstGetCollectionRsp.attachInfo;
-      this.jdField_a_of_type_JavaLangString = paramstGetCollectionRsp.attachInfo;
+      this.d = paramstGetCollectionRsp.attachInfo;
+      this.c = paramstGetCollectionRsp.attachInfo;
     }
   }
   
   private boolean a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return this.jdField_b_of_type_Boolean;
+      return this.b;
     }
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
+  }
+  
+  private String b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return this.d;
+    }
+    return this.c;
   }
   
   public boolean a(WSCollectionRequestParams paramWSCollectionRequestParams, IFetchDataRspListener<WSVerticalItemData> paramIFetchDataRspListener)
@@ -122,7 +117,7 @@ public class WSCollectionDataFetcher
     ((StringBuilder)localObject).append(paramWSCollectionRequestParams.toString());
     WSLog.a("WSCollectionDataFetcher", ((StringBuilder)localObject).toString());
     boolean bool;
-    if (paramWSCollectionRequestParams.jdField_a_of_type_Int == 0) {
+    if (paramWSCollectionRequestParams.e == 0) {
       bool = true;
     } else {
       bool = false;
@@ -131,18 +126,18 @@ public class WSCollectionDataFetcher
     {
       paramIFetchDataRspListener = new StringBuilder();
       paramIFetchDataRspListener.append("[WSCollectionDataManager.java][fetchData] is finished. isLoadMoreDown = ");
-      paramIFetchDataRspListener.append(paramWSCollectionRequestParams.jdField_a_of_type_Int);
+      paramIFetchDataRspListener.append(paramWSCollectionRequestParams.e);
       WSLog.a("WSCollectionDataFetcher", paramIFetchDataRspListener.toString());
       return false;
     }
-    localObject = a(bool);
-    WSNetService.a(new WSCollectionRequest(paramWSCollectionRequestParams.jdField_a_of_type_JavaLangString, paramWSCollectionRequestParams.jdField_b_of_type_JavaLangString, (String)localObject, 4011, paramWSCollectionRequestParams.jdField_a_of_type_Int)).a(new WSCollectionDataFetcher.1(this, paramWSCollectionRequestParams, paramIFetchDataRspListener));
+    localObject = b(bool);
+    WSNetService.a(new WSCollectionRequest(paramWSCollectionRequestParams.c, paramWSCollectionRequestParams.d, (String)localObject, 4011, paramWSCollectionRequestParams.e)).a(new WSCollectionDataFetcher.1(this, paramWSCollectionRequestParams, paramIFetchDataRspListener));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSCollectionDataFetcher
  * JD-Core Version:    0.7.0.1
  */

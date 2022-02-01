@@ -12,13 +12,13 @@ class GdtAdWSVerticalVideoItemView$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    GdtAdWSVerticalVideoItemView.a(this.a).onTouchEvent(paramMotionEvent);
+    GdtAdWSVerticalVideoItemView.b(this.a).onTouchEvent(paramMotionEvent);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.GdtAdWSVerticalVideoItemView.2
  * JD-Core Version:    0.7.0.1
  */

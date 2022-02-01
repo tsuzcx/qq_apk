@@ -20,10 +20,10 @@ import org.jetbrains.annotations.Nullable;
 public class RoundRelativeLayout
   extends RelativeLayout
 {
-  private float jdField_a_of_type_Float = 16.0F;
-  private final PaintFlagsDrawFilter jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter = new PaintFlagsDrawFilter(0, 3);
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private float a = 16.0F;
+  private Path b = new Path();
+  private RectF c = new RectF();
+  private final PaintFlagsDrawFilter d = new PaintFlagsDrawFilter(0, 3);
   
   public RoundRelativeLayout(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -31,32 +31,32 @@ public class RoundRelativeLayout
     DisplayUtils localDisplayUtils = DisplayUtils.a;
     Context localContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "getContext()");
-    this.jdField_a_of_type_Float = localDisplayUtils.a(localContext, 16.0F);
+    this.a = localDisplayUtils.a(localContext, 16.0F);
     setWillNotDraw(false);
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.l);
-      this.jdField_a_of_type_Float = paramContext.getDimensionPixelSize(R.styleable.J, 0);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.U);
+      this.a = paramContext.getDimensionPixelSize(R.styleable.V, 0);
       paramContext.recycle();
     }
   }
   
   private final void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    float f = this.jdField_a_of_type_Float;
+    this.b.reset();
+    Path localPath = this.b;
+    RectF localRectF = this.c;
+    float f = this.a;
     localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
   }
   
   public void draw(@NotNull Canvas paramCanvas)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
-    if (this.jdField_a_of_type_Float > 0.0F)
+    if (this.a > 0.0F)
     {
-      paramCanvas.setDrawFilter((DrawFilter)this.jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter);
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      paramCanvas.setDrawFilter((DrawFilter)this.d);
+      paramCanvas.clipPath(this.b);
     }
     super.draw(paramCanvas);
   }
@@ -64,20 +64,20 @@ public class RoundRelativeLayout
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth() - 1, getHeight() - 1);
+    this.c.set(0.0F, 0.0F, getWidth() - 1, getHeight() - 1);
     a();
   }
   
   public final void setRoundLayoutRadius(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.a = paramFloat;
     a();
     postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.RoundRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

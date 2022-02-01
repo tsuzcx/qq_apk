@@ -33,19 +33,19 @@ public final class GdtBannerViewWithRectangleStyle
   extends RelativeLayout
   implements GdtBannerView
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new GdtBannerViewWithRectangleStyle.1(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AdAntiSpamForClick jdField_a_of_type_ComTencentAdTangramStatisticsAdAntiSpamForClick = new AdAntiSpamForClick();
-  private GdtHandler.Params jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private TextView b;
+  private AdAntiSpamForClick a = new AdAntiSpamForClick();
+  private GdtHandler.Params b;
+  private URLImageView c;
+  private TextView d;
+  private TextView e;
+  private View.OnClickListener f = new GdtBannerViewWithRectangleStyle.1(this);
   
   public GdtBannerViewWithRectangleStyle(Context paramContext, GdtHandler.Params paramParams)
   {
     super(paramContext);
     if ((paramContext != null) && (paramParams != null) && (paramParams.a()))
     {
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = paramParams;
+      this.b = paramParams;
       if (!a())
       {
         GdtLog.d("GdtBannerViewWithRectangleStyle", "constructor");
@@ -62,10 +62,10 @@ public final class GdtBannerViewWithRectangleStyle
       }
       paramParams = new RelativeLayout.LayoutParams(-2, -1);
       paramParams.addRule(9);
-      this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(paramContext);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setId(2131367549);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageURL(a().getImageData().jdField_a_of_type_JavaLangString);
-      addView(this.jdField_a_of_type_ComTencentImageURLImageView, paramParams);
+      this.c = new URLImageView(paramContext);
+      this.c.setId(2131434091);
+      this.c.setImageURL(getAd().getImageData().a);
+      addView(this.c, paramParams);
       paramParams = new GradientDrawable();
       paramParams.setShape(0);
       paramParams.setCornerRadius(GdtUIUtils.a(14.0F, getResources()));
@@ -74,34 +74,34 @@ public final class GdtBannerViewWithRectangleStyle
       ((RelativeLayout.LayoutParams)localObject1).rightMargin = GdtUIUtils.a(12.0F, getResources());
       ((RelativeLayout.LayoutParams)localObject1).addRule(15);
       ((RelativeLayout.LayoutParams)localObject1).addRule(11);
-      this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367545);
-      this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-      a();
+      this.d = new TextView(paramContext);
+      this.d.setId(2131434087);
+      this.d.setGravity(17);
+      this.d.setTextColor(-1);
+      this.d.setTextSize(2, 14.0F);
+      b();
       if (Build.VERSION.SDK_INT >= 16) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setBackground(paramParams);
+        this.d.setBackground(paramParams);
       }
-      addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject1);
+      addView(this.d, (ViewGroup.LayoutParams)localObject1);
       paramParams = new LinearLayout(paramContext);
       paramParams.setOrientation(1);
       localObject1 = new RelativeLayout.LayoutParams(-1, -2);
       ((RelativeLayout.LayoutParams)localObject1).leftMargin = GdtUIUtils.a(12.0F, getResources());
       ((RelativeLayout.LayoutParams)localObject1).rightMargin = GdtUIUtils.a(12.0F, getResources());
-      ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131367549);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(0, 2131367545);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131434091);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(0, 2131434087);
       ((RelativeLayout.LayoutParams)localObject1).addRule(15);
       addView(paramParams, (ViewGroup.LayoutParams)localObject1);
-      if ((a().getCreativeSize() != 65) && (a().getCreativeSize() != 184))
+      if ((getAd().getCreativeSize() != 65) && (getAd().getCreativeSize() != 184))
       {
-        if (a().getCreativeSize() == 194)
+        if (getAd().getCreativeSize() == 194)
         {
           localObject1 = new LinearLayout.LayoutParams(-1, -2);
           localObject2 = new TextView(paramContext);
           ((TextView)localObject2).setMaxLines(1);
           ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-          ((TextView)localObject2).setText(a().getText());
+          ((TextView)localObject2).setText(getAd().getText());
           ((TextView)localObject2).setTextColor(Color.parseColor("#333333"));
           ((TextView)localObject2).setTypeface(null, 1);
           ((TextView)localObject2).setTextSize(2, 14.0F);
@@ -111,7 +111,7 @@ public final class GdtBannerViewWithRectangleStyle
           localObject2 = new TextView(paramContext);
           ((TextView)localObject2).setMaxLines(2);
           ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-          ((TextView)localObject2).setText(a().getDescription());
+          ((TextView)localObject2).setText(getAd().getDescription());
           ((TextView)localObject2).setTextColor(Color.parseColor("#666666"));
           ((TextView)localObject2).setTextSize(2, 13.0F);
           paramParams.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
@@ -126,7 +126,7 @@ public final class GdtBannerViewWithRectangleStyle
         localObject1 = new TextView(paramContext);
         ((TextView)localObject1).setMaxLines(2);
         ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
-        ((TextView)localObject1).setText(a().getText());
+        ((TextView)localObject1).setText(getAd().getText());
         ((TextView)localObject1).setTextColor(Color.parseColor("#333333"));
         ((TextView)localObject1).setTextSize(2, 13.0F);
         paramParams.addView((View)localObject1, new LinearLayout.LayoutParams(-1, -2));
@@ -139,7 +139,7 @@ public final class GdtBannerViewWithRectangleStyle
         int i = GdtUIUtils.a(16.0F, getResources());
         paramParams = new LinearLayout.LayoutParams(i, i);
         localObject2 = new GdtCircleImageView(paramContext);
-        ((GdtCircleImageView)localObject2).setImageURL(a().getAdvertiser_corporate_logo());
+        ((GdtCircleImageView)localObject2).setImageURL(getAd().getAdvertiser_corporate_logo());
         ((GdtCircleImageView)localObject2).a(i / 2);
         ((LinearLayout)localObject1).addView((View)localObject2, paramParams);
         paramParams = new LinearLayout.LayoutParams(-1, -2);
@@ -147,7 +147,7 @@ public final class GdtBannerViewWithRectangleStyle
         localObject2 = new TextView(paramContext);
         ((TextView)localObject2).setMaxLines(1);
         ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-        ((TextView)localObject2).setText(a().getAdvertiser_corporate_image_name());
+        ((TextView)localObject2).setText(getAd().getAdvertiser_corporate_image_name());
         ((TextView)localObject2).setTextColor(Color.parseColor("#999999"));
         ((TextView)localObject2).setTextSize(2, 12.0F);
         ((LinearLayout)localObject1).addView((View)localObject2, paramParams);
@@ -172,7 +172,7 @@ public final class GdtBannerViewWithRectangleStyle
       ((TextView)localObject1).setTextSize(2, 9.0F);
       paramParams.addView((View)localObject1);
       new LinearLayout.LayoutParams(GdtUIUtils.a(8.0F, getResources()), GdtUIUtils.a(8.0F, getResources())).leftMargin = GdtUIUtils.a(2.0F, getResources());
-      new ImageView(paramContext).setImageResource(2130840253);
+      new ImageView(paramContext).setImageResource(2130840571);
       paramContext = new GradientDrawable();
       paramContext.setShape(0);
       paramContext.setStroke(1, Color.parseColor("#EBEDF5"));
@@ -181,90 +181,90 @@ public final class GdtBannerViewWithRectangleStyle
       paramParams = new RelativeLayout.LayoutParams(GdtUIUtils.a(88.0F, getResources()), GdtUIUtils.a(34.0F, getResources()));
       paramParams.leftMargin = GdtUIUtils.a(3.0F, getResources());
       paramParams.topMargin = GdtUIUtils.a(18.0F, getResources());
-      this.b = new TextView(getContext());
-      this.b.setGravity(17);
-      this.b.setText("不感兴趣");
-      this.b.setTextColor(Color.parseColor("#333333"));
-      this.b.setTextSize(2, 14.0F);
+      this.e = new TextView(getContext());
+      this.e.setGravity(17);
+      this.e.setText("不感兴趣");
+      this.e.setTextColor(Color.parseColor("#333333"));
+      this.e.setTextSize(2, 14.0F);
       if (Build.VERSION.SDK_INT >= 16) {
-        this.b.setBackground(paramContext);
+        this.e.setBackground(paramContext);
       }
       if (Build.VERSION.SDK_INT > 22) {
-        ViewCompat.setElevation(this.b, GdtUIUtils.a(5.0F, getResources()));
+        ViewCompat.setElevation(this.e, GdtUIUtils.a(5.0F, getResources()));
       }
-      addView(this.b, paramParams);
-      this.b.setVisibility(8);
+      addView(this.e, paramParams);
+      this.e.setVisibility(8);
       return;
     }
     GdtLog.d("GdtBannerViewWithRectangleStyle", "constructor");
   }
   
-  private GdtAd a()
+  private boolean a()
   {
-    GdtHandler.Params localParams = this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params;
-    if ((localParams != null) && (localParams.a())) {
-      return this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a;
-    }
-    return null;
+    GdtHandler.Params localParams = this.b;
+    return (localParams != null) && (localParams.a()) && (getAd() != null) && (getAd().getImageData() != null) && (getAd().getImageData().a()) && ((getAd().getCreativeSize() == 65) || (getAd().getCreativeSize() == 184) || (getAd().getCreativeSize() == 194));
   }
   
-  private void a()
+  private void b()
   {
     if (!a()) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+    if (this.d == null) {
       return;
     }
-    int i = AdClickUtil.getActionAboutApp(GdtHandler.a(this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params), -2147483648);
+    int i = AdClickUtil.getActionAboutApp(GdtHandler.b(this.b), -2147483648);
     String str;
     if ((i != 4) && (i != 5)) {
       str = "查看";
     } else {
       str = "打开";
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    this.d.setText(str);
   }
   
-  private boolean a()
+  private GdtAd getAd()
   {
-    GdtHandler.Params localParams = this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params;
-    return (localParams != null) && (localParams.a()) && (a() != null) && (a().getImageData() != null) && (a().getImageData().a()) && ((a().getCreativeSize() == 65) || (a().getCreativeSize() == 184) || (a().getCreativeSize() == 194));
-  }
-  
-  public View a()
-  {
-    return this;
-  }
-  
-  public AdAntiSpamForClick a()
-  {
-    return this.jdField_a_of_type_ComTencentAdTangramStatisticsAdAntiSpamForClick;
+    GdtHandler.Params localParams = this.b;
+    if ((localParams != null) && (localParams.a())) {
+      return this.b.a;
+    }
+    return null;
   }
   
   public void a(Context paramContext)
   {
     GdtLog.b("GdtBannerViewWithRectangleStyle", "pause");
-    paramContext = this.jdField_a_of_type_ComTencentAdTangramStatisticsAdAntiSpamForClick;
+    paramContext = this.a;
     if (paramContext != null) {
       paramContext.setHasBeenPaused();
     }
   }
   
-  public View b()
-  {
-    return this.b;
-  }
-  
   public void b(Context paramContext)
   {
     GdtLog.b("GdtBannerViewWithRectangleStyle", "resume");
-    a();
+    b();
   }
   
   public void c(Context paramContext)
   {
     GdtLog.b("GdtBannerViewWithRectangleStyle", "destroy");
+  }
+  
+  public AdAntiSpamForClick getAntiSpamForClick()
+  {
+    return this.a;
+  }
+  
+  public View getCloseView()
+  {
+    return this.e;
+  }
+  
+  public View getView()
+  {
+    return this;
   }
   
   public void setSize(int paramInt1, int paramInt2)
@@ -277,19 +277,19 @@ public final class GdtBannerViewWithRectangleStyle
     paramInt1 = paramInt2 - 2;
     double d1 = paramInt1;
     Double.isNaN(d1);
-    double d2 = a().getImageData().b;
+    double d2 = getAd().getImageData().c;
     Double.isNaN(d2);
     d1 = d1 * 1.0D / d2;
-    d2 = a().getImageData().jdField_a_of_type_Int;
+    d2 = getAd().getImageData().b;
     Double.isNaN(d2);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(Double.valueOf(d1 * d2).intValue(), paramInt1);
     localLayoutParams.addRule(9, -1);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(localLayoutParams);
+    this.c.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.rectangle.GdtBannerViewWithRectangleStyle
  * JD-Core Version:    0.7.0.1
  */

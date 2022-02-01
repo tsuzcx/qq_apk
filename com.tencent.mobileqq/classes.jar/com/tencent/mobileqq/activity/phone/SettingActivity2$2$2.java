@@ -14,38 +14,38 @@ class SettingActivity2$2$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.a == 2) {
-      this.a.a.a("0X8005B8A", 1);
-    } else if (this.a.a.a == 6) {
-      this.a.a.a("0X8005B8A", 2);
-    } else if (this.a.a.a == 7) {
-      this.a.a.a("0X8005B8A", 3);
+    if (this.a.b.h == 2) {
+      this.a.b.a("0X8005B8A", 1);
+    } else if (this.a.b.h == 6) {
+      this.a.b.a("0X8005B8A", 2);
+    } else if (this.a.b.h == 7) {
+      this.a.b.a("0X8005B8A", 3);
     }
     paramDialogInterface.dismiss();
-    if (!NetworkUtil.isNetSupport(this.a.a))
+    if (!NetworkUtil.isNetSupport(this.a.b))
     {
-      this.a.a.showToast(2131694475);
+      this.a.b.showToast(2131892157);
       return;
     }
-    paramDialogInterface = this.a.a.mPhoneContactService.getSelfBindInfo();
+    paramDialogInterface = this.a.b.mPhoneContactService.getSelfBindInfo();
     if ((paramDialogInterface != null) && (paramDialogInterface.nationCode != null) && (paramDialogInterface.mobileNo != null))
     {
-      if (this.a.a.b == null)
+      if (this.a.b.d == null)
       {
-        this.a.a.b = new SettingActivity2.2.2.1(this);
-        this.a.a.app.registObserver(this.a.a.b);
+        this.a.b.d = new SettingActivity2.2.2.1(this);
+        this.a.b.app.registObserver(this.a.b.d);
       }
-      this.a.a.mPhoneContactService.disableMobileMatch(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
-      this.a.a.showProgressDialog(2131718766, 300L, true);
+      this.a.b.mPhoneContactService.disableMobileMatch(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
+      this.a.b.showProgressDialog(2131916272, 300L, true);
       return;
     }
-    this.a.a.setResult(0);
-    this.a.a.finish();
+    this.a.b.setResult(0);
+    this.a.b.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.SettingActivity2.2.2
  * JD-Core Version:    0.7.0.1
  */

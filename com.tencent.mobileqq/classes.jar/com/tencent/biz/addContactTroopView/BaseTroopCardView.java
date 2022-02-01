@@ -14,9 +14,9 @@ import com.tencent.mobileqq.utils.JumpParser;
 public abstract class BaseTroopCardView
   extends RelativeLayout
 {
-  protected Context a;
   protected ContactBaseView.IAddContactContext a;
-  protected QQAppInterface a;
+  protected Context b;
+  protected QQAppInterface c;
   
   public void a(String paramString)
   {
@@ -25,22 +25,22 @@ public abstract class BaseTroopCardView
     }
     if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
     {
-      paramString = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a(), paramString);
+      paramString = JumpParser.a(this.a.a(), this.a.b(), paramString);
       if (paramString != null) {
         paramString.a();
       }
     }
     else
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      Intent localIntent = new Intent(this.b, QQBrowserActivity.class);
       localIntent.putExtra("url", paramString);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      this.b.startActivity(localIntent);
     }
   }
   
   public void setContentView(int paramInt)
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(paramInt, this, true);
+    LayoutInflater.from(this.b).inflate(paramInt, this, true);
   }
 }
 

@@ -44,7 +44,7 @@ public class RIJGetIndividualArticleHandler
     localReqPara.enum_op_type.set(paramInt);
     ((oidb_cmd0x75e.ReqBody)localObject).msg_req_para.set(localReqPara);
     localObject = ReadInJoyOidbHelper.a("OidbSvc.0x75e", 1886, 0, ((oidb_cmd0x75e.ReqBody)localObject).toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReq((ToServiceMsg)localObject);
+    this.a.sendPbReq((ToServiceMsg)localObject);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -62,7 +62,7 @@ public class RIJGetIndividualArticleHandler
           if ((paramToServiceMsg.size() > 0) && (((oidb_cmd0x75e.ArticleInfo)paramToServiceMsg.get(0)).bytes_article_xml.has()) && (((oidb_cmd0x75e.ArticleInfo)paramToServiceMsg.get(0)).bytes_article_xml.get() != null))
           {
             paramToServiceMsg = ((oidb_cmd0x75e.ArticleInfo)paramToServiceMsg.get(0)).bytes_article_xml.get().toStringUtf8();
-            ((KandianMergeManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(paramToServiceMsg);
+            ((KandianMergeManager)this.c.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).b(paramToServiceMsg);
           }
         }
       }
@@ -74,12 +74,12 @@ public class RIJGetIndividualArticleHandler
       paramToServiceMsg.append(i);
       QLog.w("RIJGetIndividualArticleHandler", 2, paramToServiceMsg.toString());
     }
-    RIJGetIndividualArticleSp.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    RIJGetIndividualArticleSp.a(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJGetIndividualArticleHandler
  * JD-Core Version:    0.7.0.1
  */

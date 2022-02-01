@@ -11,11 +11,11 @@ public final class RIJRewardTask
   implements Parcelable
 {
   public static final RIJRewardTask.CREATOR CREATOR = new RIJRewardTask.CREATOR(null);
-  private final int jdField_a_of_type_Int;
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
+  private final String a;
   private final int b;
-  private int c;
+  private final int c;
+  private int d;
   
   public RIJRewardTask(@NotNull Parcel paramParcel)
   {
@@ -24,15 +24,10 @@ public final class RIJRewardTask
   
   public RIJRewardTask(@NotNull String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramString;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
   }
   
   @NotNull
@@ -41,23 +36,23 @@ public final class RIJRewardTask
     return (RIJRewardTask.ITransaction)new RIJRewardTask.Transaction(this);
   }
   
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public final void a(int paramInt)
   {
-    this.c = paramInt;
+    this.d = paramInt;
   }
   
-  public final int b()
+  @NotNull
+  public final String b()
+  {
+    return this.a;
+  }
+  
+  public final int c()
   {
     return this.b;
   }
   
-  public final int c()
+  public final int d()
   {
     return this.c;
   }
@@ -67,18 +62,23 @@ public final class RIJRewardTask
     return 0;
   }
   
+  public final int e()
+  {
+    return this.d;
+  }
+  
   @NotNull
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RIJRewardTask(rowKey='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("', contentType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", maxTimeInMs=");
     localStringBuilder.append(this.b);
-    localStringBuilder.append(", currentTimeInMs=");
+    localStringBuilder.append(", maxTimeInMs=");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", currentTimeInMs=");
+    localStringBuilder.append(this.d);
     localStringBuilder.append(')');
     return localStringBuilder.toString();
   }
@@ -86,10 +86,7 @@ public final class RIJRewardTask
   public void writeToParcel(@Nullable Parcel paramParcel, int paramInt)
   {
     if (paramParcel != null) {
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    }
-    if (paramParcel != null) {
-      paramParcel.writeInt(this.jdField_a_of_type_Int);
+      paramParcel.writeString(this.a);
     }
     if (paramParcel != null) {
       paramParcel.writeInt(this.b);
@@ -97,11 +94,14 @@ public final class RIJRewardTask
     if (paramParcel != null) {
       paramParcel.writeInt(this.c);
     }
+    if (paramParcel != null) {
+      paramParcel.writeInt(this.d);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJRewardTask
  * JD-Core Version:    0.7.0.1
  */

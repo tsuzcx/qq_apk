@@ -17,18 +17,21 @@ public class Configuration$Builder
   private boolean mDefaultDataCollectEnable = true;
   private boolean mDefaultReportEnable = true;
   private ClickPolicy mElementClickPolicy = ClickPolicy.REPORT_ALL;
+  private boolean mElementDetectEnable = true;
   private EndExposurePolicy mElementEndExposePolicy = EndExposurePolicy.REPORT_NONE;
   private ExposurePolicy mElementExposePolicy = ExposurePolicy.REPORT_FIRST;
   private double mElementExposureMinRate = 0.01D;
   private long mElementExposureMinTime = 200L;
   @Deprecated
   private ReportPolicy mElementReportPolicy = ReportPolicy.REPORT_POLICY_ALL;
+  private EndExposurePolicy mElementScrollEndExposePolicy = EndExposurePolicy.REPORT_NONE;
+  private ExposurePolicy mElementScrollExposePolicy = ExposurePolicy.REPORT_FIRST;
   private boolean mEnablePageLink = false;
   private boolean mEnableToast;
   private IFormatter mFormatter;
   private boolean mIndependentPageOut = false;
   private int mLazyInitType = 0;
-  private ILogger mLogger = Configuration.access$2400();
+  private ILogger mLogger = Configuration.access$2700();
   private double mPageExposureMinRate = 0.4D;
   private long mPageExposureMinTime = 200L;
   private int mVideoHeartBeatInterval = 300;
@@ -96,6 +99,12 @@ public class Configuration$Builder
     return this;
   }
   
+  public Builder elementDetectEnable(boolean paramBoolean)
+  {
+    this.mElementDetectEnable = paramBoolean;
+    return this;
+  }
+  
   public Builder elementEndExposePolicy(EndExposurePolicy paramEndExposurePolicy)
   {
     this.mElementEndExposePolicy = paramEndExposurePolicy;
@@ -158,6 +167,18 @@ public class Configuration$Builder
     }
     elementEndExposePolicy((EndExposurePolicy)localObject);
     this.mElementReportPolicy = paramReportPolicy;
+    return this;
+  }
+  
+  public Builder elementScrollEndExposePolicy(EndExposurePolicy paramEndExposurePolicy)
+  {
+    this.mElementScrollEndExposePolicy = paramEndExposurePolicy;
+    return this;
+  }
+  
+  public Builder elementScrollExposePolicy(ExposurePolicy paramExposurePolicy)
+  {
+    this.mElementScrollExposePolicy = paramExposurePolicy;
     return this;
   }
   
@@ -249,7 +270,7 @@ public class Configuration$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.Configuration.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ class LiteMutiPicViewerActivity$2$6
   
   public void run()
   {
-    LiteMutiPicViewerActivity.a(this.a.a);
+    LiteMutiPicViewerActivity.b(this.a.a);
   }
 }
 

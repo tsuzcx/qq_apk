@@ -20,30 +20,30 @@ class TroopEssenceMsgManager$10
     if (paramHashMap == null) {
       return;
     }
-    TroopEssenceMsgItem.TroopEssenceMsgItemKey localTroopEssenceMsgItemKey = new TroopEssenceMsgItem.TroopEssenceMsgItemKey(this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.troopUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.msgSeq, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.msgRandom);
-    TroopEssenceMsgItem.TroopEssenceMsgItemValue localTroopEssenceMsgItemValue = new TroopEssenceMsgItem.TroopEssenceMsgItemValue(this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.opType, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.msgSenderUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.opUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.opTime, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.graytipuniseq);
+    TroopEssenceMsgItem.TroopEssenceMsgItemKey localTroopEssenceMsgItemKey = new TroopEssenceMsgItem.TroopEssenceMsgItemKey(this.a.troopUin, this.a.msgSeq, this.a.msgRandom);
+    TroopEssenceMsgItem.TroopEssenceMsgItemValue localTroopEssenceMsgItemValue = new TroopEssenceMsgItem.TroopEssenceMsgItemValue(this.a.opType, this.a.msgSenderUin, this.a.opUin, this.a.opTime, this.a.graytipuniseq);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("updateEssenceMsgInfosByPush msgInfo:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.toString());
+    ((StringBuilder)localObject).append(this.a.toString());
     QLog.i("TroopEssenceMsgManager", 1, ((StringBuilder)localObject).toString());
     localObject = (TroopEssenceMsgItem.TroopEssenceMsgItemValue)paramHashMap.get(localTroopEssenceMsgItemKey);
-    if ((localObject != null) && (localTroopEssenceMsgItemValue.a <= ((TroopEssenceMsgItem.TroopEssenceMsgItemValue)localObject).a))
+    if ((localObject != null) && (localTroopEssenceMsgItemValue.d <= ((TroopEssenceMsgItem.TroopEssenceMsgItemValue)localObject).d))
     {
       paramHashMap = new StringBuilder();
       paramHashMap.append("updateEssenceMsgInfosByPush oldValue.opTime:");
-      paramHashMap.append(((TroopEssenceMsgItem.TroopEssenceMsgItemValue)localObject).a);
+      paramHashMap.append(((TroopEssenceMsgItem.TroopEssenceMsgItemValue)localObject).d);
       QLog.i("TroopEssenceMsgManager", 1, paramHashMap.toString());
       return;
     }
     paramHashMap.put(localTroopEssenceMsgItemKey, localTroopEssenceMsgItemValue);
-    TroopEssenceMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager, paramLong);
-    this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager.a(new TroopEssenceMsgItem(localTroopEssenceMsgItemKey, localTroopEssenceMsgItemValue));
-    TroopEssenceMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager).getBusinessHandler(BusinessHandlerFactory.TROOP_ESSENCE_MSG_HANDLER).notifyUI(TroopEssenceMsgObserver.f, true, Long.valueOf(paramLong));
+    TroopEssenceMsgManager.a(this.b, paramLong);
+    this.b.a(new TroopEssenceMsgItem(localTroopEssenceMsgItemKey, localTroopEssenceMsgItemValue));
+    TroopEssenceMsgManager.a(this.b).getBusinessHandler(BusinessHandlerFactory.TROOP_ESSENCE_MSG_HANDLER).notifyUI(TroopEssenceMsgObserver.g, true, Long.valueOf(paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.10
  * JD-Core Version:    0.7.0.1
  */

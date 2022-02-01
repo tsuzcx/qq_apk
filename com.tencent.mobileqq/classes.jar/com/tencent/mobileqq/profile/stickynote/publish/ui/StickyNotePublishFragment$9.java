@@ -9,28 +9,28 @@ import com.tencent.widget.XEditTextEx;
 class StickyNotePublishFragment$9
   implements TextWatcher
 {
-  private int jdField_a_of_type_Int;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private int b;
+  private CharSequence b;
+  private int c;
+  private int d;
   
   StickyNotePublishFragment$9(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
   public void afterTextChanged(Editable paramEditable)
   {
-    CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
+    CharSequence localCharSequence = this.b;
     if ((localCharSequence != null) && (com.tencent.mobileqq.text.TextUtils.getQQTextCharCount(String.valueOf(localCharSequence), 3) > 300))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.getBaseActivity(), 1, 2131690245, 0).a();
-      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
+      QQToast.makeText(this.a.getBaseActivity(), 1, 2131887156, 0).show();
+      paramEditable.delete(this.c, this.d);
     }
-    paramEditable = StickyNotePublishUtils.a(StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment));
+    paramEditable = StickyNotePublishUtils.a(StickyNotePublishFragment.a(this.a));
     if ((!android.text.TextUtils.isEmpty(paramEditable)) && (!android.text.TextUtils.isEmpty(paramEditable.trim()))) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(true);
+      this.a.d(true);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(false);
+      this.a.d(false);
     }
-    if (StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment) != null) {
-      StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment).post(new StickyNotePublishFragment.9.1(this));
+    if (StickyNotePublishFragment.a(this.a) != null) {
+      StickyNotePublishFragment.a(this.a).post(new StickyNotePublishFragment.9.1(this));
     }
   }
   
@@ -38,14 +38,14 @@ class StickyNotePublishFragment$9
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = (paramInt1 + paramInt3);
+    this.b = paramCharSequence;
+    this.c = paramInt1;
+    this.d = (paramInt1 + paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.9
  * JD-Core Version:    0.7.0.1
  */

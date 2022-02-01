@@ -14,12 +14,12 @@ class QIMProviderContainerView$7$1
   public void run()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    while (i < this.a)
     {
-      if (QIMProviderContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView$7.this$0).a(i))
+      if (QIMProviderContainerView.f(this.c.this$0).c(i))
       {
-        Object localObject = (ImageView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView$7.this$0.a.getChildAt(i);
-        Drawable[] arrayOfDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+        Object localObject = (ImageView)this.c.this$0.b.getChildAt(i);
+        Drawable[] arrayOfDrawable = this.b;
         if (arrayOfDrawable[i] != null)
         {
           ((ImageView)localObject).setImageDrawable(arrayOfDrawable[i]);
@@ -38,7 +38,7 @@ class QIMProviderContainerView$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.QIMProviderContainerView.7.1
  * JD-Core Version:    0.7.0.1
  */

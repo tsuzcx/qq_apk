@@ -10,16 +10,16 @@ class RedPacketKSongFragment$9$1
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKSongFragment$9.a.jdField_a_of_type_Boolean)
+    if (!this.b.a.u)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKSongFragment$9.a.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setAnimationFromInfo(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo);
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKSongFragment$9.a.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.play();
+      this.b.a.i.setAnimationFromInfo(this.a);
+      this.b.a.i.play();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKSongFragment.9.1
  * JD-Core Version:    0.7.0.1
  */

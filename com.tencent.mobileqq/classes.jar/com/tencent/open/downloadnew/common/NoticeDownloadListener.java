@@ -14,17 +14,17 @@ import java.util.List;
 public class NoticeDownloadListener
   implements DownloadListener
 {
-  protected static NoticeDownloadListener a;
+  protected static NoticeDownloadListener b;
   protected NoticeUpdateHandler a;
   
   public static NoticeDownloadListener a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeDownloadListener == null) {
-        jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeDownloadListener = new NoticeDownloadListener();
+      if (b == null) {
+        b = new NoticeDownloadListener();
       }
-      NoticeDownloadListener localNoticeDownloadListener = jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeDownloadListener;
+      NoticeDownloadListener localNoticeDownloadListener = b;
       return localNoticeDownloadListener;
     }
     finally {}
@@ -32,15 +32,15 @@ public class NoticeDownloadListener
   
   public void a(Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeUpdateHandler = new NoticeUpdateHandler(paramLooper);
+    this.a = new NoticeUpdateHandler(paramLooper);
   }
   
   protected void a(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeUpdateHandler == null) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeUpdateHandler = new NoticeUpdateHandler();
+    if (this.a == null) {
+      this.a = new NoticeUpdateHandler();
     }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeUpdateHandler.sendMessage(paramMessage);
+    this.a.sendMessage(paramMessage);
   }
   
   public void installSucceed(String paramString1, String paramString2)
@@ -49,13 +49,13 @@ public class NoticeDownloadListener
     ((StringBuilder)localObject).append("onInstallSucceed ,appId");
     ((StringBuilder)localObject).append(paramString1);
     LogUtility.a("NoticeDownloadListener", ((StringBuilder)localObject).toString());
-    paramString1 = DownloadManager.a().b(paramString2);
+    paramString1 = DownloadManager.b().f(paramString2);
     if (paramString1 != null)
     {
-      paramString2 = this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeUpdateHandler.obtainMessage();
+      paramString2 = this.a.obtainMessage();
       paramString2.what = 6;
       localObject = new Bundle();
-      ((Bundle)localObject).putString(DownloadConstants.b, paramString1.jdField_c_of_type_JavaLangString);
+      ((Bundle)localObject).putString(DownloadConstants.b, paramString1.c);
       paramString2.setData((Bundle)localObject);
       a(paramString2);
     }
@@ -71,16 +71,16 @@ public class NoticeDownloadListener
     LogUtility.a("NoticeDownloadListener", ((StringBuilder)localObject).toString());
     if (paramDownloadInfo != null)
     {
-      if (paramDownloadInfo.jdField_c_of_type_Int == 1) {
+      if (paramDownloadInfo.o == 1) {
         return;
       }
-      if (paramDownloadInfo.b) {
+      if (paramDownloadInfo.x) {
         return;
       }
-      localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeUpdateHandler.obtainMessage();
+      localObject = this.a.obtainMessage();
       ((Message)localObject).what = -2;
       Bundle localBundle = new Bundle();
-      localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
+      localBundle.putString("appId", paramDownloadInfo.c);
       ((Message)localObject).setData(localBundle);
       ((Message)localObject).obj = paramString;
       ((Message)localObject).arg2 = paramInt2;
@@ -93,16 +93,16 @@ public class NoticeDownloadListener
     LogUtility.a("NoticeDownloadListener", "onDownloadFinish ");
     if (paramDownloadInfo != null)
     {
-      if (paramDownloadInfo.jdField_c_of_type_Int == 1) {
+      if (paramDownloadInfo.o == 1) {
         return;
       }
-      if (paramDownloadInfo.b) {
+      if (paramDownloadInfo.x) {
         return;
       }
-      Message localMessage = this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeUpdateHandler.obtainMessage();
+      Message localMessage = this.a.obtainMessage();
       localMessage.what = 4;
       Bundle localBundle = new Bundle();
-      localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
+      localBundle.putString("appId", paramDownloadInfo.c);
       localMessage.setData(localBundle);
       a(localMessage);
     }
@@ -115,18 +115,18 @@ public class NoticeDownloadListener
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onDownloadPause ");
-    ((StringBuilder)localObject).append(paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(paramDownloadInfo.c);
     LogUtility.a("NoticeDownloadListener", ((StringBuilder)localObject).toString());
-    if (paramDownloadInfo.jdField_c_of_type_Int == 1) {
+    if (paramDownloadInfo.o == 1) {
       return;
     }
-    if (paramDownloadInfo.b) {
+    if (paramDownloadInfo.x) {
       return;
     }
-    localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeUpdateHandler.obtainMessage();
+    localObject = this.a.obtainMessage();
     ((Message)localObject).what = 3;
     Bundle localBundle = new Bundle();
-    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    localBundle.putString("appId", paramDownloadInfo.c);
     ((Message)localObject).setData(localBundle);
     a((Message)localObject);
   }
@@ -141,15 +141,15 @@ public class NoticeDownloadListener
     while (paramList.hasNext())
     {
       localObject = (DownloadInfo)paramList.next();
-      if ((localObject != null) && (((DownloadInfo)localObject).jdField_c_of_type_Int != 1))
+      if ((localObject != null) && (((DownloadInfo)localObject).o != 1))
       {
-        if (((DownloadInfo)localObject).b) {
+        if (((DownloadInfo)localObject).x) {
           return;
         }
-        Message localMessage = this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeUpdateHandler.obtainMessage();
+        Message localMessage = this.a.obtainMessage();
         localMessage.what = 2;
         Bundle localBundle = new Bundle();
-        localBundle.putString("appId", ((DownloadInfo)localObject).jdField_c_of_type_JavaLangString);
+        localBundle.putString("appId", ((DownloadInfo)localObject).c);
         localMessage.setData(localBundle);
         a(localMessage);
       }
@@ -160,10 +160,10 @@ public class NoticeDownloadListener
   {
     if (paramDownloadInfo != null)
     {
-      if (paramDownloadInfo.jdField_c_of_type_Int == 1) {
+      if (paramDownloadInfo.o == 1) {
         return;
       }
-      if (paramDownloadInfo.b) {
+      if (paramDownloadInfo.x) {
         return;
       }
       Object localObject2 = new StringBuilder();
@@ -171,14 +171,14 @@ public class NoticeDownloadListener
       if (paramDownloadInfo == null) {
         localObject1 = "";
       } else {
-        localObject1 = paramDownloadInfo.jdField_c_of_type_JavaLangString;
+        localObject1 = paramDownloadInfo.c;
       }
       ((StringBuilder)localObject2).append((String)localObject1);
       LogUtility.a("NoticeDownloadListener", ((StringBuilder)localObject2).toString());
-      Object localObject1 = this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeUpdateHandler.obtainMessage();
+      Object localObject1 = this.a.obtainMessage();
       ((Message)localObject1).what = 20;
       localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
+      ((Bundle)localObject2).putString("appId", paramDownloadInfo.c);
       ((Message)localObject1).setData((Bundle)localObject2);
       a((Message)localObject1);
     }
@@ -190,7 +190,7 @@ public class NoticeDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.NoticeDownloadListener
  * JD-Core Version:    0.7.0.1
  */

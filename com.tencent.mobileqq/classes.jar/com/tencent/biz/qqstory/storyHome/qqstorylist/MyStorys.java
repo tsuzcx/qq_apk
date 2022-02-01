@@ -17,101 +17,82 @@ import java.util.List;
 
 public class MyStorys
 {
-  public static final String[] a;
-  protected int a;
-  public long a;
-  public FeedFeatureItem a;
-  protected String a;
-  protected ArrayList<StoryVideoItem> a;
-  protected HashMap<String, StoryVideoItem> a;
-  protected boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public int f;
-  public int g;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = StoryApi.a(2130968664);
-  }
-  
-  public MyStorys()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem = new FeedFeatureItem();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public static final String[] a = StoryApi.c(2130968666);
+  protected boolean b = false;
+  protected int c = 0;
+  protected String d = "";
+  protected ArrayList<StoryVideoItem> e = new ArrayList();
+  protected HashMap<String, StoryVideoItem> f = new HashMap();
+  public boolean g = false;
+  public boolean h = false;
+  public int i = 0;
+  public int j;
+  public long k;
+  public String l;
+  public String m;
+  public String n = "";
+  public int o;
+  public int p;
+  public int q;
+  public int r;
+  public boolean s;
+  public FeedFeatureItem t = new FeedFeatureItem();
   
   public int a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    if (this.b) {
+      return this.e.size();
     }
     return 0;
   }
   
   public StoryVideoItem a(String paramString)
   {
-    return (StoryVideoItem)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    return (StoryVideoItem)this.f.get(paramString);
   }
   
   public String a(int paramInt, TextPaint paramTextPaint)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int j = this.jdField_c_of_type_Int;
-    int m = this.e;
-    int n = this.jdField_d_of_type_Int;
-    long l2 = this.jdField_a_of_type_Long;
-    int i = this.jdField_a_of_type_Int;
-    if (i != 0)
+    int i2 = this.j;
+    int i4 = this.p;
+    int i5 = this.o;
+    long l2 = this.k;
+    int i1 = this.c;
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
-        if (i != 2)
+        if (i1 != 2)
         {
-          if (i == 3)
+          if (i1 == 3)
           {
-            int k = m;
-            i = n;
+            int i3 = i4;
+            i1 = i5;
             long l1 = l2;
-            if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+            if (this.e.size() > 0)
             {
               localStringBuilder.append("最近");
-              int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
-              localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem;
-              j = i1;
-              k = m;
-              i = n;
+              int i6 = this.e.size();
+              localObject = this.t;
+              i2 = i6;
+              i3 = i4;
+              i1 = i5;
               l1 = l2;
               if (localObject != null)
               {
-                k = ((FeedFeatureItem)localObject).jdField_b_of_type_Int;
-                i = this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_a_of_type_Int;
-                l1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_c_of_type_Int;
-                j = i1;
+                i3 = ((FeedFeatureItem)localObject).c;
+                i1 = this.t.b;
+                l1 = this.t.d;
+                i2 = i6;
               }
             }
-            localStringBuilder.append(UIUtils.a(j));
+            localStringBuilder.append(UIUtils.a(i2));
             localStringBuilder.append("个小视频");
             Object localObject = localStringBuilder.toString();
             if (l1 > 0L)
             {
-              localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]);
+              localStringBuilder.append(a[0]);
               localStringBuilder.append("浏览");
               localStringBuilder.append(l1);
             }
@@ -119,135 +100,86 @@ public class MyStorys
               return localObject;
             }
             localObject = localStringBuilder.toString();
-            if (i > 0)
+            if (i1 > 0)
             {
-              localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]);
+              localStringBuilder.append(a[1]);
               localStringBuilder.append("赞");
-              localStringBuilder.append(UIUtils.a(i));
+              localStringBuilder.append(UIUtils.a(i1));
             }
             if ((paramTextPaint != null) && (paramTextPaint.measureText(localStringBuilder.toString()) > paramInt)) {
               return localObject;
             }
             localObject = localStringBuilder.toString();
-            if (k > 0)
+            if (i3 > 0)
             {
-              localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]);
+              localStringBuilder.append(a[1]);
               localStringBuilder.append("评论");
-              localStringBuilder.append(UIUtils.a(k));
+              localStringBuilder.append(UIUtils.a(i3));
             }
             if ((paramTextPaint != null) && (paramTextPaint.measureText(localStringBuilder.toString()) > paramInt)) {
               return localObject;
             }
           }
         }
-        else if (this.jdField_a_of_type_Boolean)
+        else if (this.b)
         {
-          localStringBuilder.append(UIUtils.a(j));
+          localStringBuilder.append(UIUtils.a(i2));
           localStringBuilder.append("个小视频");
-          if (this.jdField_a_of_type_Long > 0L)
+          if (this.k > 0L)
           {
-            localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]);
+            localStringBuilder.append(a[0]);
             localStringBuilder.append("浏览");
-            localStringBuilder.append(this.jdField_a_of_type_Long);
+            localStringBuilder.append(this.k);
           }
-          if (this.jdField_d_of_type_Int > 0)
+          if (this.o > 0)
           {
-            localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]);
+            localStringBuilder.append(a[1]);
             localStringBuilder.append("赞");
-            localStringBuilder.append(UIUtils.a(this.jdField_d_of_type_Int));
+            localStringBuilder.append(UIUtils.a(this.o));
           }
-          if (this.e > 0)
+          if (this.p > 0)
           {
-            localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]);
+            localStringBuilder.append(a[1]);
             localStringBuilder.append("评论");
-            localStringBuilder.append(UIUtils.a(this.e));
+            localStringBuilder.append(UIUtils.a(this.p));
           }
         }
         else
         {
-          localStringBuilder.append(UIUtils.a(this.f));
+          localStringBuilder.append(UIUtils.a(this.q));
           localStringBuilder.append("个小视频发送失败");
         }
         return localStringBuilder.toString();
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        localStringBuilder.append(UIUtils.a(j));
+        localStringBuilder.append(UIUtils.a(i2));
         localStringBuilder.append("个小视频");
         return localStringBuilder.toString();
       }
-      localStringBuilder.append(StoryApi.a(2131699932, new Object[] { Integer.valueOf(this.g) }));
+      localStringBuilder.append(StoryApi.a(2131897985, new Object[] { Integer.valueOf(this.r) }));
       return localStringBuilder.toString();
     }
-    if (j == 0) {
-      return StoryApi.a(2131699918);
+    if (i2 == 0) {
+      return StoryApi.b(2131897971);
     }
-    localStringBuilder.append(UIUtils.a(j));
+    localStringBuilder.append(UIUtils.a(i2));
     localStringBuilder.append("个小视频");
-    if (j > 0)
+    if (i2 > 0)
     {
-      localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]);
+      localStringBuilder.append(a[0]);
       localStringBuilder.append("浏览");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.k);
     }
     return localStringBuilder.toString();
-  }
-  
-  public ArrayList<StoryVideoItem> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a()
-  {
-    GetUserSelfInfoStep.a(this);
-    this.jdField_a_of_type_Int = 0;
-    this.f = 0;
-    this.jdField_d_of_type_Boolean = false;
-    this.g = 0;
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localObject != null) && (((ArrayList)localObject).size() != 0))
-    {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)((Iterator)localObject).next();
-        int i = StoryListUtils.a(localStoryVideoItem.mUploadStatus);
-        if ((i == 1) || (i == 0))
-        {
-          this.jdField_a_of_type_Int = 1;
-          this.g += 1;
-        }
-        if (localStoryVideoItem.isUploadFail()) {
-          this.f += 1;
-        }
-        if (!TextUtils.isEmpty(localStoryVideoItem.mDoodleText)) {
-          this.jdField_d_of_type_Boolean = true;
-        }
-      }
-      if (this.jdField_a_of_type_Int == 1) {
-        return;
-      }
-      if (this.f > 0)
-      {
-        this.jdField_a_of_type_Int = 2;
-        return;
-      }
-      this.jdField_a_of_type_Int = 3;
-      return;
-    }
-    if (this.jdField_c_of_type_Int <= 0) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 3;
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(0, paramStoryVideoItem);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
+      this.e.add(0, paramStoryVideoItem);
+      this.f.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
       return;
     }
     finally
@@ -262,17 +194,17 @@ public class MyStorys
     if (paramStoryVideoItem == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    this.f.remove(paramString);
+    this.f.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
+    int i1 = 0;
+    while (i1 < this.e.size())
     {
-      if (((StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).mVid.equals(paramString))
+      if (((StoryVideoItem)this.e.get(i1)).mVid.equals(paramString))
       {
-        this.jdField_a_of_type_JavaUtilArrayList.set(i, paramStoryVideoItem);
+        this.e.set(i1, paramStoryVideoItem);
         return;
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
@@ -286,8 +218,8 @@ public class MyStorys
         StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.next();
         if (localStoryVideoItem != null)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localStoryVideoItem);
-          this.jdField_a_of_type_JavaUtilHashMap.put(localStoryVideoItem.mVid, localStoryVideoItem);
+          this.e.add(localStoryVideoItem);
+          this.f.put(localStoryVideoItem.mVid, localStoryVideoItem);
         }
       }
       return;
@@ -299,24 +231,9 @@ public class MyStorys
     }
   }
   
-  public int b()
+  public ArrayList<StoryVideoItem> b()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.e;
   }
   
   public void b(StoryVideoItem paramStoryVideoItem)
@@ -324,17 +241,22 @@ public class MyStorys
     if (paramStoryVideoItem == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    this.f.put(paramStoryVideoItem.mVid, paramStoryVideoItem);
+    int i1 = 0;
+    while (i1 < this.e.size())
     {
-      if (((StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).mVid.equals(paramStoryVideoItem.mVid))
+      if (((StoryVideoItem)this.e.get(i1)).mVid.equals(paramStoryVideoItem.mVid))
       {
-        this.jdField_a_of_type_JavaUtilArrayList.set(i, paramStoryVideoItem);
+        this.e.set(i1, paramStoryVideoItem);
         return;
       }
-      i += 1;
+      i1 += 1;
     }
+  }
+  
+  public int c()
+  {
+    return this.c;
   }
   
   public void c(StoryVideoItem paramStoryVideoItem)
@@ -344,37 +266,96 @@ public class MyStorys
     }
     try
     {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramStoryVideoItem.mVid);
-      i = 0;
+      this.f.remove(paramStoryVideoItem.mVid);
+      i1 = 0;
     }
     finally
     {
       for (;;)
       {
-        int i;
+        int i1;
         for (;;)
         {
           throw paramStoryVideoItem;
         }
-        i += 1;
+        i1 += 1;
       }
     }
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    if (i1 < this.e.size())
     {
-      if (!((StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).mVid.equals(paramStoryVideoItem.mVid)) {
+      if (!((StoryVideoItem)this.e.get(i1)).mVid.equals(paramStoryVideoItem.mVid)) {
         break label160;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+      this.e.remove(i1);
     }
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem != null))
+    if ((this.e.size() == 0) && (this.t != null))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_c_of_type_Int = 0;
+      this.t.c = 0;
+      this.t.b = 0;
+      this.t.d = 0;
       paramStoryVideoItem = (StoryConfigManager)SuperManager.a(10);
-      paramStoryVideoItem.b("qqstory_my_visiter_count", Integer.valueOf(0));
-      paramStoryVideoItem.b("qqstory_my_newest_video_cover", "");
-      paramStoryVideoItem.b("qqstory_my_newest_video_vid", "");
+      paramStoryVideoItem.d("qqstory_my_visiter_count", Integer.valueOf(0));
+      paramStoryVideoItem.d("qqstory_my_newest_video_cover", "");
+      paramStoryVideoItem.d("qqstory_my_newest_video_vid", "");
+    }
+  }
+  
+  public void d()
+  {
+    GetUserSelfInfoStep.a(this);
+    this.c = 0;
+    this.q = 0;
+    this.s = false;
+    this.r = 0;
+    Object localObject = this.e;
+    if ((localObject != null) && (((ArrayList)localObject).size() != 0))
+    {
+      localObject = this.e.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)((Iterator)localObject).next();
+        int i1 = StoryListUtils.a(localStoryVideoItem.mUploadStatus);
+        if ((i1 == 1) || (i1 == 0))
+        {
+          this.c = 1;
+          this.r += 1;
+        }
+        if (localStoryVideoItem.isUploadFail()) {
+          this.q += 1;
+        }
+        if (!TextUtils.isEmpty(localStoryVideoItem.mDoodleText)) {
+          this.s = true;
+        }
+      }
+      if (this.c == 1) {
+        return;
+      }
+      if (this.q > 0)
+      {
+        this.c = 2;
+        return;
+      }
+      this.c = 3;
+      return;
+    }
+    if (this.j <= 0) {
+      return;
+    }
+    this.c = 3;
+  }
+  
+  public void e()
+  {
+    try
+    {
+      this.e.clear();
+      this.f.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }

@@ -128,7 +128,7 @@ public abstract interface HostActivityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.shadow.core.runtime.qcircle.container.HostActivityDelegate
  * JD-Core Version:    0.7.0.1
  */

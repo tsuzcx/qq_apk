@@ -20,18 +20,17 @@ public class ConfigLogic
   
   public ConfigLogic()
   {
-    Object localObject = QWalletTools.a();
+    Object localObject = QWalletTools.b();
     if (localObject != null)
     {
-      localObject = (IQWalletConfigService)((BaseQQAppInterface)localObject).getRuntimeService(IQWalletConfigService.class, "");
-      int i = 0;
-      JSONArray localJSONArray = ((IQWalletConfigService)localObject).getArray("redPackPanel", new String[] { "panelRedPkgList" });
+      JSONArray localJSONArray = ((IQWalletConfigService)((BaseQQAppInterface)localObject).getRuntimeService(IQWalletConfigService.class, "")).getArray("redPackPanel", new String[] { "panelRedPkgList" });
       if (localJSONArray == null)
       {
         QLog.i("ConfigLogic", 2, "no pkg list...");
         return;
       }
       localObject = null;
+      int i = 0;
       while (i < localJSONArray.length())
       {
         try
@@ -46,11 +45,12 @@ public class ConfigLogic
         if (localObject != null)
         {
           PanelData localPanelData = new PanelData();
-          localPanelData.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("id", "");
-          localPanelData.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("type", -1);
-          localPanelData.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("name", "");
-          localPanelData.c = ((JSONObject)localObject).optString("icon_pic", "");
-          localPanelData.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject).optJSONObject("params");
+          localPanelData.a = ((JSONObject)localObject).optString("id", "");
+          localPanelData.b = ((JSONObject)localObject).optInt("type", -1);
+          localPanelData.c = ((JSONObject)localObject).optString("name", "");
+          localPanelData.d = ((JSONObject)localObject).optString("icon_pic", "");
+          localPanelData.g = ((JSONObject)localObject).optInt("aioScene", 0);
+          localPanelData.h = ((JSONObject)localObject).optJSONObject("params");
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
@@ -58,7 +58,7 @@ public class ConfigLogic
             localStringBuilder.append(localPanelData);
             QLog.i("ConfigLogic", 2, localStringBuilder.toString());
           }
-          this.a.put(localPanelData.jdField_a_of_type_Int, localPanelData);
+          this.a.put(localPanelData.b, localPanelData);
         }
         i += 1;
       }
@@ -80,9 +80,9 @@ public class ConfigLogic
   public String a(int paramInt1, int paramInt2, String paramString)
   {
     Object localObject = a(paramInt1, paramInt2);
-    if ((localObject != null) && (((PanelData)localObject).jdField_a_of_type_OrgJsonJSONObject != null))
+    if ((localObject != null) && (((PanelData)localObject).h != null))
     {
-      localObject = ((PanelData)localObject).jdField_a_of_type_OrgJsonJSONObject.optJSONArray("hint");
+      localObject = ((PanelData)localObject).h.optJSONArray("hint");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("channel: ");
       localStringBuilder.append(paramInt1);
@@ -104,9 +104,9 @@ public class ConfigLogic
     }
     paramBundleInfo = new ArrayList();
     Object localObject = a(paramInt, i);
-    if ((localObject != null) && (((PanelData)localObject).jdField_a_of_type_OrgJsonJSONObject != null))
+    if ((localObject != null) && (((PanelData)localObject).h != null))
     {
-      localObject = ((PanelData)localObject).jdField_a_of_type_OrgJsonJSONObject.optJSONArray("labels");
+      localObject = ((PanelData)localObject).h.optJSONArray("labels");
       if ((localObject != null) && (((JSONArray)localObject).length() > 0))
       {
         paramInt = 0;
@@ -114,10 +114,10 @@ public class ConfigLogic
         {
           JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(paramInt);
           WordChainHbFragment.WordChainTypeLabel localWordChainTypeLabel = new WordChainHbFragment.WordChainTypeLabel();
-          localWordChainTypeLabel.jdField_a_of_type_JavaLangString = localJSONObject.optString("name");
-          localWordChainTypeLabel.jdField_a_of_type_Int = localJSONObject.optInt("sub_channel");
-          localWordChainTypeLabel.jdField_b_of_type_Int = localJSONObject.optInt("max_length", 0);
-          localWordChainTypeLabel.jdField_b_of_type_JavaLangString = localJSONObject.optString("hint");
+          localWordChainTypeLabel.a = localJSONObject.optString("name");
+          localWordChainTypeLabel.b = localJSONObject.optInt("sub_channel");
+          localWordChainTypeLabel.c = localJSONObject.optInt("max_length", 0);
+          localWordChainTypeLabel.d = localJSONObject.optString("hint");
           paramBundleInfo.add(localWordChainTypeLabel);
           paramInt += 1;
         }
@@ -128,7 +128,7 @@ public class ConfigLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.ConfigLogic
  * JD-Core Version:    0.7.0.1
  */

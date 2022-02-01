@@ -3,6 +3,8 @@ package com.tencent.mobileqq.kandian.biz.comment;
 import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.kandian.biz.ad.RIJCommentAdUtils;
 import com.tencent.mobileqq.kandian.biz.comment.data.CommentViewItem;
 import com.tencent.mobileqq.kandian.biz.comment.ui.CommentRichTextView;
 import kotlin.Metadata;
@@ -19,6 +21,11 @@ public final class CommentProteusListenerUtil$Companion$initCommentContentClickL
     Intrinsics.checkParameterIsNotNull(paramReadinjoyCommentListBaseAdapter, "adapter");
     Intrinsics.checkParameterIsNotNull(paramCommentViewItem, "commentViewItem");
     Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    if (RIJCommentAdUtils.a(paramCommentViewItem))
+    {
+      paramViewBase.setOnClickListener((ViewBase.OnClickListener)new CommentProteusListenerUtil.Companion.initCommentContentClickListener.1.configClickListener.1(paramReadinjoyCommentListBaseAdapter, paramContainer, paramCommentViewItem));
+      return;
+    }
     if ((paramViewBase instanceof CommentRichTextView)) {
       ((CommentRichTextView)paramViewBase).a(paramReadinjoyCommentListBaseAdapter, (View)paramContainer);
     }
@@ -26,7 +33,7 @@ public final class CommentProteusListenerUtil$Companion$initCommentContentClickL
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion.initCommentContentClickListener.1
  * JD-Core Version:    0.7.0.1
  */

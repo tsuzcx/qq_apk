@@ -5,23 +5,23 @@ import android.text.TextUtils;
 public class UFTFileUploaderProp$FtnMoreUrlFUperProp
   extends UFTFileUploaderProp.FtnMoreUrlFUperPropV1
 {
-  protected String c;
-  protected String d;
-  protected String e;
+  protected String f;
+  protected String g;
+  protected String h;
   
   public boolean a()
   {
     if (!super.a()) {
       return false;
     }
-    if (TextUtils.isEmpty(this.c))
+    if (TextUtils.isEmpty(this.f))
     {
-      this.b = "strCheckSum is empty";
+      this.d = "strCheckSum is empty";
       return false;
     }
-    if (TextUtils.isEmpty(this.d))
+    if (TextUtils.isEmpty(this.g))
     {
-      this.b = "strSHA is empty";
+      this.d = "strSHA is empty";
       return false;
     }
     return true;
@@ -29,37 +29,37 @@ public class UFTFileUploaderProp$FtnMoreUrlFUperProp
   
   public void b(String paramString)
   {
-    this.c = paramString;
-  }
-  
-  public String c()
-  {
-    return this.c;
+    this.f = paramString;
   }
   
   public void c(String paramString)
   {
-    this.d = paramString;
-  }
-  
-  public String d()
-  {
-    return this.d;
+    this.g = paramString;
   }
   
   public void d(String paramString)
   {
-    this.e = paramString;
+    this.h = paramString;
   }
   
-  public String e()
+  public String g()
   {
-    return this.e;
+    return this.f;
+  }
+  
+  public String h()
+  {
+    return this.g;
+  }
+  
+  public String i()
+  {
+    return this.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.UFTFileUploaderProp.FtnMoreUrlFUperProp
  * JD-Core Version:    0.7.0.1
  */

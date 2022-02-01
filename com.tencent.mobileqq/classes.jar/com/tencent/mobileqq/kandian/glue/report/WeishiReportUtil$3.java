@@ -16,17 +16,17 @@ final class WeishiReportUtil$3
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq, "extLong", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.extLong));
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg == null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.parse();
+    this.a.getMessageFacade().a(this.b.frienduin, this.b.istroop, this.b.uniseq, "extLong", Integer.valueOf(this.b.extLong));
+    if (this.b.structingMsg == null) {
+      this.b.parse();
     }
-    String str = new VideoR5.Builder(null, null, null, null).a("folder_status", WeishiReportUtil.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("algorithm_id", WeishiReportUtil.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("reddot_style", WeishiReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData)).a("is_jump_to_video_content", Integer.valueOf(ReadInJoyHelper.z(ReadInJoyUtils.a()))).a("EnterType", WeishiReportUtil.c(this.jdField_a_of_type_Int)).a().a();
-    WeishiReportUtil.a(WeishiReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "0X8009290", str);
+    String str = new VideoR5.Builder(null, null, null, null).b("folder_status", WeishiReportUtil.e(this.b)).b("algorithm_id", WeishiReportUtil.d(this.b)).b("reddot_style", WeishiReportUtil.a(this.c)).b("is_jump_to_video_content", Integer.valueOf(ReadInJoyHelper.aw(ReadInJoyUtils.b()))).b("EnterType", WeishiReportUtil.c(this.d)).b().a();
+    WeishiReportUtil.a(WeishiReportUtil.b(this.b), WeishiReportUtil.c(this.b), "0X8009290", str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.WeishiReportUtil.3
  * JD-Core Version:    0.7.0.1
  */

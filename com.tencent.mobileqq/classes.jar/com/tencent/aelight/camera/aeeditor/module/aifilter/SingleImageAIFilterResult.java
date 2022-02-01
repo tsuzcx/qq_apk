@@ -8,49 +8,49 @@ import java.util.List;
 public class SingleImageAIFilterResult
   extends AIFilterResult
 {
-  public float a;
-  public ImageStatisticsData a;
-  public String a;
-  public HashMap<String, String> a;
-  public List<YoutuResultItem> a;
-  public float[] a;
-  public float b;
-  public String b;
-  public float c;
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
+  public ImageStatisticsData b;
+  public List<YoutuResultItem> c;
+  public String d;
+  public String e;
+  public float[] f;
+  public float g;
+  public float h;
+  public HashMap<String, String> i;
+  public float j;
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public HashMap<String, String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public float b()
-  {
-    return this.c;
+    return this.d;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.e;
   }
   
   public float c()
   {
-    return this.jdField_b_of_type_Float;
+    return this.g;
+  }
+  
+  public HashMap<String, String> d()
+  {
+    return this.i;
+  }
+  
+  public float e()
+  {
+    return this.j;
+  }
+  
+  public float f()
+  {
+    return this.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.SingleImageAIFilterResult
  * JD-Core Version:    0.7.0.1
  */

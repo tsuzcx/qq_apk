@@ -4,23 +4,23 @@ import com.tencent.pts.core.PTSAppInstance;
 import com.tencent.pts.ui.view.PTSBoringView;
 
 public class PTSNodeView
-  extends PTSNodeVirtual<PTSBoringView>
+  extends PTSNodeVirtual
 {
   public PTSNodeView(PTSAppInstance paramPTSAppInstance)
   {
-    super(paramPTSAppInstance);
+    super(paramPTSAppInstance, "boring", null);
   }
   
   public void setNodeVirtualKey(String paramString)
   {
-    if (getView() != null) {
+    if ((getView() instanceof PTSBoringView)) {
       ((PTSBoringView)getView()).setNodeKey(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeView
  * JD-Core Version:    0.7.0.1
  */

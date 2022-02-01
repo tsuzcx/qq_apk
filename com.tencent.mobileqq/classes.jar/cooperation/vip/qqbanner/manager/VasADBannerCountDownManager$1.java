@@ -20,26 +20,26 @@ class VasADBannerCountDownManager$1
       return;
     }
     VasADBannerCountDownManager.a(this.this$0, (VasADBannerCountDownInfo)localObject);
-    localObject = VasADBannerCountDownManager.a(this.this$0).a();
+    localObject = VasADBannerCountDownManager.a(this.this$0).f();
     if (localObject == null) {
       return;
     }
-    VasADBannerCountDownManager.a(this.this$0).setText(this.this$0.a(((CountDownData)localObject).jdField_a_of_type_JavaLangString));
-    VasADBannerCountDownManager.b(this.this$0).setText(this.this$0.a(((CountDownData)localObject).b));
-    VasADBannerCountDownManager.a(this.this$0).setTextColor(this.this$0.a(((CountDownData)localObject).c));
-    VasADBannerCountDownManager.b(this.this$0).setTextColor(this.this$0.a(((CountDownData)localObject).c));
+    VasADBannerCountDownManager.b(this.this$0).setText(this.this$0.b(((CountDownData)localObject).d));
+    VasADBannerCountDownManager.c(this.this$0).setText(this.this$0.b(((CountDownData)localObject).e));
+    VasADBannerCountDownManager.b(this.this$0).setTextColor(this.this$0.a(((CountDownData)localObject).f));
+    VasADBannerCountDownManager.c(this.this$0).setTextColor(this.this$0.a(((CountDownData)localObject).f));
     VasADBannerCountDownManager localVasADBannerCountDownManager = this.this$0;
-    VasADBannerCountDownManager.a(localVasADBannerCountDownManager, VasADBannerCountDownManager.a(localVasADBannerCountDownManager));
-    VasADBannerCountDownManager.c(this.this$0).setBackgroundDrawable(VasADBannerCountDownManager.a(this.this$0, ((CountDownData)localObject).d));
-    VasADBannerCountDownManager.c(this.this$0).setTextColor(this.this$0.a(((CountDownData)localObject).e));
-    if (((CountDownData)localObject).jdField_a_of_type_Int == 1) {
-      VasADBannerCountDownManager.a(this.this$0);
+    VasADBannerCountDownManager.a(localVasADBannerCountDownManager, VasADBannerCountDownManager.d(localVasADBannerCountDownManager));
+    VasADBannerCountDownManager.e(this.this$0).setBackgroundDrawable(VasADBannerCountDownManager.b(this.this$0, ((CountDownData)localObject).g));
+    VasADBannerCountDownManager.e(this.this$0).setTextColor(this.this$0.a(((CountDownData)localObject).h));
+    if (((CountDownData)localObject).a == 1) {
+      VasADBannerCountDownManager.f(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.manager.VasADBannerCountDownManager.1
  * JD-Core Version:    0.7.0.1
  */

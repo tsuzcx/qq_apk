@@ -9,15 +9,15 @@ class DoodleLayout$EditDialogListener$1
   
   public void a()
   {
-    if (DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout$EditDialogListener.a) != null) {
-      DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout$EditDialogListener.a).b(true);
+    if (DoodleLayout.v(this.b.a) != null) {
+      DoodleLayout.v(this.b.a).b(true);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout$EditDialogListener.a.a().b(this.jdField_a_of_type_Boolean);
+    this.b.a.getTextLayer().b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLayout.EditDialogListener.1
  * JD-Core Version:    0.7.0.1
  */

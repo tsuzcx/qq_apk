@@ -12,9 +12,9 @@ class PoiMapActivity$4$1
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.b = false;
-    this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.getWindow().peekDecorView().getWindowToken(), 0);
+    this.a.c.v = false;
+    this.a.c.u.startAnimation(this.a.a);
+    this.a.b.hideSoftInputFromWindow(this.a.c.getWindow().peekDecorView().getWindowToken(), 0);
   }
 }
 

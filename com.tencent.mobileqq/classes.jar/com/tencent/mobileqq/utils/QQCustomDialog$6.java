@@ -12,14 +12,14 @@ class QQCustomDialog$6
   
   public void onClick(View paramView)
   {
-    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    DialogInterface.OnClickListener localOnClickListener = this.a;
     if (localOnClickListener != null) {
-      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 1);
+      localOnClickListener.onClick(this.b, 1);
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      if (this.b.isShowing()) {
+        this.b.dismiss();
       }
       label37:
       EventCollector.getInstance().onViewClicked(paramView);
@@ -33,7 +33,7 @@ class QQCustomDialog$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialog.6
  * JD-Core Version:    0.7.0.1
  */

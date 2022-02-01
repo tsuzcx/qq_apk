@@ -30,79 +30,79 @@ public class LinkMovementMethodExt
   extends ArrowKeyMovementMethod
   implements XEditTextEx.OnKeyboardShowListener
 {
-  private static LinkMovementMethodExt jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt;
-  private int jdField_a_of_type_Int;
-  private Class jdField_a_of_type_JavaLangClass = null;
-  private WeakReference<FullScreenInputHelper> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private WeakReference<BaseChatPie> jdField_b_of_type_MqqUtilWeakReference;
+  private static LinkMovementMethodExt a;
+  private Class b = null;
   private int c;
+  private int d;
+  private int e;
+  private boolean f = true;
+  private WeakReference<FullScreenInputHelper> g;
+  private WeakReference<BaseChatPie> h;
   
   public static LinkMovementMethodExt a(int paramInt, Class<? extends ImageSpan> paramClass)
   {
-    if (jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt == null) {
-      jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt = new LinkMovementMethodExt();
+    if (a == null) {
+      a = new LinkMovementMethodExt();
     }
-    LinkMovementMethodExt localLinkMovementMethodExt = jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt;
-    localLinkMovementMethodExt.c = paramInt;
-    localLinkMovementMethodExt.jdField_a_of_type_JavaLangClass = paramClass;
+    LinkMovementMethodExt localLinkMovementMethodExt = a;
+    localLinkMovementMethodExt.e = paramInt;
+    localLinkMovementMethodExt.b = paramClass;
     return localLinkMovementMethodExt;
   }
   
   public static void a()
   {
-    LinkMovementMethodExt localLinkMovementMethodExt = jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt;
+    LinkMovementMethodExt localLinkMovementMethodExt = a;
     if (localLinkMovementMethodExt != null) {
-      localLinkMovementMethodExt.jdField_a_of_type_Boolean = true;
+      localLinkMovementMethodExt.f = true;
     }
   }
   
   public static void a(BaseChatPie paramBaseChatPie)
   {
-    LinkMovementMethodExt localLinkMovementMethodExt = jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt;
+    LinkMovementMethodExt localLinkMovementMethodExt = a;
     if (localLinkMovementMethodExt != null)
     {
       if (paramBaseChatPie != null)
       {
-        localLinkMovementMethodExt.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramBaseChatPie);
+        localLinkMovementMethodExt.h = new WeakReference(paramBaseChatPie);
         return;
       }
-      localLinkMovementMethodExt.jdField_b_of_type_MqqUtilWeakReference = null;
+      localLinkMovementMethodExt.h = null;
     }
   }
   
   public static void a(FullScreenInputHelper paramFullScreenInputHelper)
   {
-    LinkMovementMethodExt localLinkMovementMethodExt = jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt;
+    LinkMovementMethodExt localLinkMovementMethodExt = a;
     if (localLinkMovementMethodExt != null)
     {
       if (paramFullScreenInputHelper != null)
       {
-        localLinkMovementMethodExt.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramFullScreenInputHelper);
+        localLinkMovementMethodExt.g = new WeakReference(paramFullScreenInputHelper);
         return;
       }
-      localLinkMovementMethodExt.jdField_a_of_type_MqqUtilWeakReference = null;
+      localLinkMovementMethodExt.g = null;
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.f;
   }
   
   public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getX());
-      this.jdField_b_of_type_Int = ((int)paramMotionEvent.getY());
+      this.c = ((int)paramMotionEvent.getX());
+      this.d = ((int)paramMotionEvent.getY());
     }
     if (paramMotionEvent.getAction() == 1)
     {
       int i = (int)paramMotionEvent.getX();
       int j = (int)paramMotionEvent.getY();
-      if ((Math.abs(this.jdField_a_of_type_Int - i) < 10) && (Math.abs(this.jdField_b_of_type_Int - j) < 10))
+      if ((Math.abs(this.c - i) < 10) && (Math.abs(this.d - j) < 10))
       {
         int m = paramTextView.getTotalPaddingLeft();
         int k = paramTextView.getTotalPaddingTop();
@@ -111,11 +111,11 @@ public class LinkMovementMethodExt
         Object localObject = paramTextView.getLayout();
         m = ((Layout)localObject).getLineForVertical(j);
         k = ((Layout)localObject).getOffsetForHorizontal(m, i);
-        Object[] arrayOfObject = paramSpannable.getSpans(k, k, this.jdField_a_of_type_JavaLangClass);
+        Object[] arrayOfObject = paramSpannable.getSpans(k, k, this.b);
         if (arrayOfObject.length > 0)
         {
           Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(arrayOfObject[0]), paramSpannable.getSpanEnd(arrayOfObject[0]));
-          paramSpannable = (BaseChatPie)this.jdField_b_of_type_MqqUtilWeakReference.get();
+          paramSpannable = (BaseChatPie)this.h.get();
           if (((arrayOfObject[0] instanceof ImageSpan)) && (paramSpannable != null))
           {
             k = ((Layout)localObject).getLineTop(m);
@@ -123,22 +123,22 @@ public class LinkMovementMethodExt
             int n = paramTextView.getTotalPaddingLeft();
             paramMotionEvent = ((ImageSpan)arrayOfObject[0]).getDrawable().getBounds();
             int i1 = paramMotionEvent.width();
-            int i2 = this.c;
+            int i2 = this.e;
             if ((i >= i2) && (i <= i2 + i1))
             {
               if ((j >= k) && (j <= m))
               {
-                i1 = m - paramMotionEvent.height() - paramTextView.getScrollY() + paramTextView.getTotalPaddingTop() + LiuHaiUtils.a(BaseApplicationImpl.getContext());
-                paramTextView = this.jdField_a_of_type_MqqUtilWeakReference;
+                i1 = m - paramMotionEvent.height() - paramTextView.getScrollY() + paramTextView.getTotalPaddingTop() + LiuHaiUtils.b(BaseApplicationImpl.getContext());
+                paramTextView = this.g;
                 boolean bool;
-                if ((paramTextView != null) && (paramTextView.get() != null) && (((FullScreenInputHelper)this.jdField_a_of_type_MqqUtilWeakReference.get()).c())) {
+                if ((paramTextView != null) && (paramTextView.get() != null) && (((FullScreenInputHelper)this.g.get()).e())) {
                   bool = true;
                 } else {
                   bool = false;
                 }
                 if (!bool)
                 {
-                  i = DisplayUtil.a(BaseApplicationImpl.getApplication()).jdField_b_of_type_Int;
+                  i = DisplayUtil.a(BaseApplicationImpl.getApplication()).b;
                   j = AIOUtils.b(50.0F, BaseApplicationImpl.getApplication().getResources());
                 }
                 else
@@ -172,9 +172,9 @@ public class LinkMovementMethodExt
                   ((StringBuilder)localObject).append(paramTextView);
                   QLog.i("LinkMovementMethodExt", 2, ((StringBuilder)localObject).toString());
                 }
-                if (paramSpannable.a != null)
+                if (paramSpannable.f != null)
                 {
-                  paramMotionEvent = new ActivityURIRequest(paramSpannable.a, "/base/album/photopreview");
+                  paramMotionEvent = new ActivityURIRequest(paramSpannable.f, "/base/album/photopreview");
                   paramMotionEvent.extra().putString("PhotoConst.SINGLE_PHOTO_PATH", ((ImageSpan)arrayOfObject[0]).getSource());
                   paramMotionEvent.extra().putBoolean("input_full_screen_click", true);
                   paramMotionEvent.extra().putBoolean("PhotoConst.SHOW_ALBUM", false);
@@ -184,13 +184,13 @@ public class LinkMovementMethodExt
                   paramMotionEvent.extra().putParcelable("KEY_THUMBNAL_BOUND", paramTextView);
                   paramMotionEvent.extra().putInt("enter_from", 1);
                   paramMotionEvent.extra().putString("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationAIO.a);
-                  paramMotionEvent.extra().putString("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationAIO.a);
+                  paramMotionEvent.extra().putString("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationAIO.j);
                   paramMotionEvent.extra().putString("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationAIO.a);
                   paramMotionEvent.setFlags(603979776);
                   QRoute.startUri(paramMotionEvent);
-                  paramSpannable.ad();
+                  paramSpannable.aQ();
                 }
-                this.jdField_a_of_type_Boolean = false;
+                this.f = false;
                 return true;
               }
               return false;
@@ -201,13 +201,13 @@ public class LinkMovementMethodExt
         }
       }
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.f = true;
     return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mixedmsg.LinkMovementMethodExt
  * JD-Core Version:    0.7.0.1
  */

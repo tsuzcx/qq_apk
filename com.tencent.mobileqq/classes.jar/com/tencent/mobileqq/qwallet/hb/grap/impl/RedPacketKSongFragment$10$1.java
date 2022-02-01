@@ -11,7 +11,7 @@ class RedPacketKSongFragment$10$1
   {
     try
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongView.a(RedPacketKSongFragment.a(this.a.a).c, RedPacketKSongFragment.a(this.a.a).d, this.a.a.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongProsBar, new RedPacketKSongFragment.10.1.1(this));
+      this.a.a.n.a(RedPacketKSongFragment.b(this.a.a).c, RedPacketKSongFragment.b(this.a.a).d, this.a.a.o, new RedPacketKSongFragment.10.1.1(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -22,7 +22,7 @@ class RedPacketKSongFragment$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKSongFragment.10.1
  * JD-Core Version:    0.7.0.1
  */

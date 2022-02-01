@@ -16,29 +16,29 @@ final class OpenSDKUtils$2
 {
   OpenSDKUtils$2(ActionSheet paramActionSheet, int[] paramArrayOfInt, String paramString, Context paramContext, QQAppInterface paramQQAppInterface) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    if (this.jdField_a_of_type_ArrayOfInt[paramInt] != 1) {
+    this.a.dismiss();
+    if (this.b[paramInt] != 1) {
       return;
     }
     paramView = new StringBuilder();
     paramView.append("tel:");
-    paramView.append(this.jdField_a_of_type_JavaLangString);
+    paramView.append(this.c);
     paramView = new Intent("android.intent.action.DIAL", Uri.parse(paramView.toString()));
-    if ((!MobileIssueSettings.a) && (KapalaiAdapterUtil.a().a())) {
+    if ((!MobileIssueSettings.a) && (KapalaiAdapterUtil.a().b())) {
       KapalaiAdapterUtil.a().a(paramView);
     }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCallFacade();
-    long l = MessageCache.a();
-    String str = this.jdField_a_of_type_JavaLangString;
+    this.d.startActivity(paramView);
+    paramView = this.e.getCallFacade();
+    long l = MessageCache.c();
+    String str = this.c;
     paramView.a(str, 26, -1, l, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.OpenSDKUtils.2
  * JD-Core Version:    0.7.0.1
  */

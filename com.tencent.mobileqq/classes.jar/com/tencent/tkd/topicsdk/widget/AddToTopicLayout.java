@@ -21,36 +21,30 @@ import org.jetbrains.annotations.Nullable;
 public final class AddToTopicLayout
   extends LinearLayout
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
   @Nullable
-  private TopicInfo jdField_a_of_type_ComTencentTkdTopicsdkBeanTopicInfo;
+  private TopicInfo a;
+  private TextView b;
   
   public AddToTopicLayout(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(R.layout.w, (ViewGroup)this, true);
-    paramContext = findViewById(R.id.aP);
+    LayoutInflater.from(paramContext).inflate(R.layout.r, (ViewGroup)this, true);
+    paramContext = findViewById(R.id.ar);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tvTopic)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
+    this.b = ((TextView)paramContext);
   }
   
   private final void a(TopicInfo paramTopicInfo)
   {
     if (paramTopicInfo == null)
     {
-      paramTopicInfo = this.jdField_a_of_type_AndroidWidgetTextView;
+      paramTopicInfo = this.b;
       Context localContext = getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-      paramTopicInfo.setText((CharSequence)localContext.getResources().getString(R.string.Y));
+      paramTopicInfo.setText((CharSequence)localContext.getResources().getString(R.string.O));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramTopicInfo.getTitle());
-  }
-  
-  @Nullable
-  public final TopicInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkBeanTopicInfo;
+    this.b.setText((CharSequence)paramTopicInfo.getTitle());
   }
   
   public final void a(@NotNull AddToTopicConfig paramAddToTopicConfig)
@@ -62,15 +56,21 @@ public final class AddToTopicLayout
     setSelectedTopic(localTopicInfo);
   }
   
+  @Nullable
+  public final TopicInfo getSelectedTopic()
+  {
+    return this.a;
+  }
+  
   public final void setSelectedTopic(@Nullable TopicInfo paramTopicInfo)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkBeanTopicInfo = paramTopicInfo;
+    this.a = paramTopicInfo;
     a(paramTopicInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.AddToTopicLayout
  * JD-Core Version:    0.7.0.1
  */

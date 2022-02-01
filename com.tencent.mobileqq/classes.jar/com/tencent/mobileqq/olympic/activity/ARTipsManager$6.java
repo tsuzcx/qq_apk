@@ -16,13 +16,13 @@ class ARTipsManager$6
     if (ARTipsManager.a(this.a) != null)
     {
       ARTipsManager.a(this.a).setAlpha(f);
-      ARTipsManager.a(this.a).setTranslationY((1.0F - f) * AIOUtils.b(25.0F, ARTipsManager.a(this.a)));
+      ARTipsManager.a(this.a).setTranslationY((1.0F - f) * AIOUtils.b(25.0F, ARTipsManager.d(this.a)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.ARTipsManager.6
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ class WSDramaHistoryDataFetcher$1
   
   protected WSDramaHistoryDataFetcher.ResponseModel a(WSRequest<stGetHistoryDramaRsp> paramWSRequest, stGetHistoryDramaRsp paramstGetHistoryDramaRsp, RspHeaderBean paramRspHeaderBean)
   {
-    return WSDramaHistoryDataFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryDataFetcher, paramstGetHistoryDramaRsp);
+    return WSDramaHistoryDataFetcher.a(this.d, paramstGetHistoryDramaRsp);
   }
   
   protected void a(WSDramaHistoryDataFetcher.ResponseModel paramResponseModel)
   {
     super.a(paramResponseModel);
-    WSDramaHistoryDataFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryDataFetcher, this.jdField_a_of_type_Boolean, this.b, paramResponseModel, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener);
+    WSDramaHistoryDataFetcher.a(this.d, this.a, this.b, paramResponseModel, this.c);
   }
   
   protected void a(WSServiceErrorInfo paramWSServiceErrorInfo) {}
@@ -28,12 +28,12 @@ class WSDramaHistoryDataFetcher$1
   protected void b(WSServiceErrorInfo paramWSServiceErrorInfo)
   {
     super.b(paramWSServiceErrorInfo);
-    WSDramaHistoryDataFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryDataFetcher, this.jdField_a_of_type_Boolean, this.b, paramWSServiceErrorInfo, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener);
+    WSDramaHistoryDataFetcher.a(this.d, this.a, this.b, paramWSServiceErrorInfo, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.history.WSDramaHistoryDataFetcher.1
  * JD-Core Version:    0.7.0.1
  */

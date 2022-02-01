@@ -10,15 +10,15 @@ class ScanEntranceReport$11
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("last_total_time", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("upload_count", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("session_ids", this.jdField_a_of_type_JavaLangString);
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "scanner_first_ocr_tips", true, this.b, 0L, localHashMap, "");
+    localHashMap.put("last_total_time", String.valueOf(this.a));
+    localHashMap.put("upload_count", String.valueOf(this.b));
+    localHashMap.put("session_ids", this.c);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "scanner_first_ocr_tips", true, this.d, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanEntranceReport.11
  * JD-Core Version:    0.7.0.1
  */

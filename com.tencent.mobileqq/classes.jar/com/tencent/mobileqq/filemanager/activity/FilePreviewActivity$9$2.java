@@ -7,12 +7,12 @@ class FilePreviewActivity$9$2
   
   public void run()
   {
-    this.a.a.b();
+    this.a.c.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.9.2
  * JD-Core Version:    0.7.0.1
  */

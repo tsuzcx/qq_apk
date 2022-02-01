@@ -9,17 +9,17 @@ import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 public class QQStoryFeedItemBuilder$FeedViewHolder
   extends AbstractChatItemBuilder.ViewHolder
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
+  ViewGroup d;
+  CornerImageView e;
+  ImageView f;
+  TextView g;
+  TextView h;
+  TextView i;
+  ImageView j;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryFeedItemBuilder.FeedViewHolder
  * JD-Core Version:    0.7.0.1
  */

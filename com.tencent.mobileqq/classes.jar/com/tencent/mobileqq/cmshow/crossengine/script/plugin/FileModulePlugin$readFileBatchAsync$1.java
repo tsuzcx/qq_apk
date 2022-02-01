@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.cmshow.crossengine.script.plugin;
 
 import com.tencent.mobileqq.cmshow.crossengine.model.CEArgument;
+import com.tencent.mobileqq.cmshow.crossengine.resource.util.CEGetResPathUtil;
 import com.tencent.mobileqq.cmshow.engine.EngineHelper;
-import com.tencent.mobileqq.cmshow.engine.util.CMGetResPathUtil;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -17,12 +17,12 @@ final class FileModulePlugin$readFileBatchAsync$1
   
   public final void run()
   {
-    if (this.a.b() != null) {}
+    if (this.a.e() != null) {}
     for (;;)
     {
       try
       {
-        JSONArray localJSONArray = new JSONObject(this.a.b()).optJSONArray("files");
+        JSONArray localJSONArray = new JSONObject(this.a.e()).optJSONArray("files");
         localObject2 = new JSONArray();
         int i = 0;
         int j = localJSONArray.length();
@@ -34,7 +34,7 @@ final class FileModulePlugin$readFileBatchAsync$1
             break label227;
           }
           Intrinsics.checkExpressionValueIsNotNull(str, "filePath");
-          localObject1 = CMGetResPathUtil.a(str, "");
+          localObject1 = CEGetResPathUtil.a(str, "");
           FileModulePlugin localFileModulePlugin = this.this$0;
           Intrinsics.checkExpressionValueIsNotNull(localObject1, "absoluteFilePath");
           localObject1 = FileModulePlugin.a(localFileModulePlugin, (String)localObject1);
@@ -43,18 +43,18 @@ final class FileModulePlugin$readFileBatchAsync$1
           i += 1;
           continue;
         }
-        localObject1 = EngineHelper.a.a();
+        localObject1 = EngineHelper.a.b();
         ((JSONObject)localObject1).put("data", localObject2);
       }
       catch (Exception localException)
       {
-        localObject1 = EngineHelper.a.a(localException.getMessage());
+        localObject1 = EngineHelper.a.c(localException.getMessage());
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("[print] error, ");
         ((StringBuilder)localObject2).append(localException);
         QLog.e("[cmshow][CECMShowOffscreenEngine]_FileModulePlugin", 1, ((StringBuilder)localObject2).toString());
       }
-      Object localObject1 = EngineHelper.a.a("params is invalid!");
+      Object localObject1 = EngineHelper.a.c("params is invalid!");
       this.a.a((JSONObject)localObject1);
       return;
       label227:
@@ -64,7 +64,7 @@ final class FileModulePlugin$readFileBatchAsync$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.script.plugin.FileModulePlugin.readFileBatchAsync.1
  * JD-Core Version:    0.7.0.1
  */

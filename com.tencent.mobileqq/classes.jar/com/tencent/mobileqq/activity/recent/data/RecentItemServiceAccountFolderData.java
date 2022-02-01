@@ -12,6 +12,7 @@ import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.util.LogUtil;
 
 public class RecentItemServiceAccountFolderData
   extends AbsRecentUserBusinessBaseData
@@ -68,24 +69,17 @@ public class RecentItemServiceAccountFolderData
         QLog.d("RecentItemServiceAccountFolderData", 2, ((StringBuilder)localObject).toString());
       }
       Object localObject = ServiceAccountFolderManager.a();
-      this.mTitleName = ServiceAccountFolderManager.a(paramQQAppInterface);
-      this.mDisplayTime = ((ServiceAccountFolderManager)localObject).a(paramQQAppInterface);
-      this.mUnreadNum = ((ServiceAccountFolderManager)localObject).b();
+      this.mTitleName = ServiceAccountFolderManager.h(paramQQAppInterface);
+      this.mDisplayTime = ((ServiceAccountFolderManager)localObject).i(paramQQAppInterface);
+      this.mUnreadNum = ((ServiceAccountFolderManager)localObject).h();
       int i = ((IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).getNumRedNumByPath("104000.104001", 100);
       if (i > 0) {
         this.mUnreadNum += i;
       }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("uin:");
-      localStringBuilder.append(paramQQAppInterface.getCurrentUin());
-      localStringBuilder.append("getSubscribeAccountRedDotNum  numRedNumByAppIdAndMsgType:");
-      localStringBuilder.append(i);
-      localStringBuilder.append("   mUnreadNum: ");
-      localStringBuilder.append(this.mUnreadNum);
-      QLog.d("RecentItemServiceAccountFolderData", 2, localStringBuilder.toString());
+      QLog.d("RecentItemServiceAccountFolderData", 2, new Object[] { "uin: ", LogUtil.wrapLogUin(paramQQAppInterface.getCurrentUin()), " getSubscribeAccountRedDotNum  numRedNumByAppIdAndMsgType: ", Integer.valueOf(i), " mUnreadNum: ", Integer.valueOf(this.mUnreadNum) });
       if (this.mUnreadNum <= 0)
       {
-        if ((((ServiceAccountFolderManager)localObject).a()) && (this.mDisplayTime > ((ServiceAccountFolderManager)localObject).b()))
+        if ((((ServiceAccountFolderManager)localObject).i()) && (this.mDisplayTime > ((ServiceAccountFolderManager)localObject).e()))
         {
           this.mUnreadFlag = 2;
           this.mUnreadNum = 1;
@@ -101,25 +95,25 @@ public class RecentItemServiceAccountFolderData
       if (this.mDisplayTime != 0L) {
         this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
       } else {
-        this.mShowTime = ((ServiceAccountFolderManager)localObject).b(paramQQAppInterface);
+        this.mShowTime = ((ServiceAccountFolderManager)localObject).j(paramQQAppInterface);
       }
-      this.mReportKeyBytesOacMsgxtend = ((ServiceAccountFolderManager)localObject).b();
-      this.mLastMsg = ((ServiceAccountFolderManager)localObject).a(paramQQAppInterface);
-      if (((ServiceAccountFolderManager)localObject).b()) {
+      this.mReportKeyBytesOacMsgxtend = ((ServiceAccountFolderManager)localObject).j();
+      this.mLastMsg = ((ServiceAccountFolderManager)localObject).l(paramQQAppInterface);
+      if (((ServiceAccountFolderManager)localObject).l()) {
         this.mStatus = 4;
       } else {
         this.mStatus = 0;
       }
       if ((this.mUnreadNum > 0) && (this.mUnreadFlag == 1))
       {
-        this.mMsgExtroInfo = ((ServiceAccountFolderManager)localObject).c();
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+        this.mMsgExtroInfo = ((ServiceAccountFolderManager)localObject).k();
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
       }
       else
       {
         this.mMsgExtroInfo = "";
       }
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName);
@@ -164,7 +158,7 @@ public class RecentItemServiceAccountFolderData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemServiceAccountFolderData
  * JD-Core Version:    0.7.0.1
  */

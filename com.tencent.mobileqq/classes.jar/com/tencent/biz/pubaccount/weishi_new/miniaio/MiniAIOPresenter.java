@@ -7,18 +7,13 @@ import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 
 public class MiniAIOPresenter
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean = true;
+  private View a;
+  private int b = 0;
+  private boolean c = true;
   
-  private IMiniMsgUnreadCallback a()
+  private IMiniMsgUnreadCallback c()
   {
     return new MiniAIOPresenter.1(this);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
   }
   
   public MiniMsgUserParam a()
@@ -27,37 +22,42 @@ public class MiniAIOPresenter
     localMiniMsgUserParam.businessName = 6;
     localMiniMsgUserParam.accessType = 2;
     localMiniMsgUserParam.filterMsgType = 0;
-    localMiniMsgUserParam.unreadCallback = a();
+    localMiniMsgUserParam.unreadCallback = c();
     return localMiniMsgUserParam;
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramView;
   }
   
   public void a(MiniMsgUser paramMiniMsgUser)
   {
-    if ((this.jdField_a_of_type_Int > 0) && (paramMiniMsgUser != null))
+    if ((this.b > 0) && (paramMiniMsgUser != null))
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      View localView = this.a;
       if (localView != null)
       {
-        this.jdField_a_of_type_Int = 0;
+        this.b = 0;
         localView.setVisibility(4);
-        paramMiniMsgUser.onClick(this.jdField_a_of_type_AndroidViewView);
+        paramMiniMsgUser.onClick(this.a);
       }
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.miniaio.MiniAIOPresenter
  * JD-Core Version:    0.7.0.1
  */

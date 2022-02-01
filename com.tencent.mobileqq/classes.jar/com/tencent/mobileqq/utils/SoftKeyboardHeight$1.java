@@ -19,11 +19,11 @@ class SoftKeyboardHeight$1
       return;
     }
     Object localObject = new Rect();
-    SoftKeyboardHeight.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
-    int j = SoftKeyboardHeight.a(this.a) - ((Rect)localObject).height();
+    SoftKeyboardHeight.b(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
+    int j = SoftKeyboardHeight.c(this.a) - ((Rect)localObject).height();
     SoftKeyboardHeight.a(this.a, ((Rect)localObject).height());
     int i;
-    if (j > SoftKeyboardHeight.b(this.a) / 3) {
+    if (j > SoftKeyboardHeight.d(this.a) / 3) {
       i = 1;
     } else {
       i = 0;
@@ -39,15 +39,15 @@ class SoftKeyboardHeight$1
     if (((SharedPreferences)localObject).getInt("key_height", 0) != j) {
       ((SharedPreferences)localObject).edit().putInt("key_height", j).commit();
     }
-    if (SoftKeyboardHeight.a(this.a) != null) {
-      SoftKeyboardHeight.a(this.a).a(j, false);
+    if (SoftKeyboardHeight.e(this.a) != null) {
+      SoftKeyboardHeight.e(this.a).a(j, false);
     }
-    this.a.a();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SoftKeyboardHeight.1
  * JD-Core Version:    0.7.0.1
  */

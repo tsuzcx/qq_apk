@@ -14,13 +14,13 @@ import mqq.app.MobileQQ;
 public class NetSearchTemplateBannerTitleView
   extends NetSearchTemplateBaseView
 {
-  public RelativeLayout a;
   public TextView a;
   public TextView b;
-  public ImageView c;
   public TextView c;
-  public ImageView d;
-  public TextView h;
+  public TextView d;
+  public RelativeLayout n;
+  public ImageView o;
+  public ImageView p;
   
   public NetSearchTemplateBannerTitleView(ViewGroup paramViewGroup, int paramInt)
   {
@@ -30,32 +30,32 @@ public class NetSearchTemplateBannerTitleView
   protected void a()
   {
     super.a();
-    Object localObject = a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131378784));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131369955));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131368486));
-    this.d = ((ImageView)((View)localObject).findViewById(2131365295));
-    this.b = ((TextView)((View)localObject).findViewById(2131378309));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131378124));
-    this.h = ((TextView)((View)localObject).findViewById(2131365536));
+    Object localObject = b(this.m);
+    this.a = ((TextView)((View)localObject).findViewById(2131447463));
+    this.n = ((RelativeLayout)((View)localObject).findViewById(2131437105));
+    this.o = ((ImageView)((View)localObject).findViewById(2131435388));
+    this.p = ((ImageView)((View)localObject).findViewById(2131431472));
+    this.b = ((TextView)((View)localObject).findViewById(2131446828));
+    this.c = ((TextView)((View)localObject).findViewById(2131446631));
+    this.d = ((TextView)((View)localObject).findViewById(2131431757));
     if (ThemeUtil.isNowThemeIsNight(MobileQQ.sMobileQQ.peekAppRuntime(), false, null))
     {
-      localObject = this.jdField_c_of_type_AndroidWidgetTextView;
+      localObject = this.c;
       if (localObject != null) {
-        ((TextView)localObject).setTextColor(((TextView)localObject).getContext().getResources().getColor(2131166982));
+        ((TextView)localObject).setTextColor(((TextView)localObject).getContext().getResources().getColor(2131167916));
       }
-      localObject = this.h;
+      localObject = this.d;
       if (localObject != null) {
-        ((TextView)localObject).setTextColor(((TextView)localObject).getContext().getResources().getColor(2131166982));
+        ((TextView)localObject).setTextColor(((TextView)localObject).getContext().getResources().getColor(2131167916));
       }
     }
     else
     {
-      localObject = this.jdField_c_of_type_AndroidWidgetTextView;
+      localObject = this.c;
       if (localObject != null) {
         ((TextView)localObject).setTextColor(Color.parseColor("#737373"));
       }
-      localObject = this.h;
+      localObject = this.d;
       if (localObject != null) {
         ((TextView)localObject).setTextColor(Color.parseColor("#737373"));
       }
@@ -64,7 +64,7 @@ public class NetSearchTemplateBannerTitleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.view.NetSearchTemplateBannerTitleView
  * JD-Core Version:    0.7.0.1
  */

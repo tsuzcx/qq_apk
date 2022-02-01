@@ -17,17 +17,17 @@ public class NetSearchTemplateMiniAppView
   protected void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(this.jdField_a_of_type_Int).findViewById(2131370212));
+    this.a = ((LinearLayout)b(this.m).findViewById(2131437396));
   }
   
-  public View b()
+  public View j()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.view.NetSearchTemplateMiniAppView
  * JD-Core Version:    0.7.0.1
  */

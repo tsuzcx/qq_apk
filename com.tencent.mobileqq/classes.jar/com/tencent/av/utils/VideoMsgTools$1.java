@@ -9,13 +9,13 @@ final class VideoMsgTools$1
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
-    if ((i != 9) && (i != 62) && (i != 63))
+    int j = this.a;
+    if ((j != 9) && (j != 62) && (j != 63))
     {
-      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, i, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+      VideoMsgTools.a(this.b, this.c, j, this.e, this.g, this.f, this.h, this.i);
       return;
     }
-    VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    VideoMsgTools.a(this.b, this.c, this.a, this.d, this.e, this.f);
   }
 }
 

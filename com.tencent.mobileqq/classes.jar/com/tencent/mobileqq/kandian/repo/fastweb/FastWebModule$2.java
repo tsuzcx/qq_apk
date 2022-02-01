@@ -7,12 +7,12 @@ class FastWebModule$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFastwebFeedbackCallback.a(this.jdField_a_of_type_Boolean, "", this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.a.a(this.b, "", this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.fastweb.FastWebModule.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,11 @@ class VideoController$19
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentAvUtilsTraeHelper.b(this.a);
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvUtilsTraeHelper;
-    TraeHelper.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    this.this$0.v.b(this.a);
+    Object localObject = this.this$0.v;
+    TraeHelper.b(this.this$0.e);
     localObject = this.this$0;
-    ((VideoController)localObject).b(((VideoController)localObject).a().c, 50);
+    ((VideoController)localObject).b(((VideoController)localObject).k().s, 50);
   }
 }
 

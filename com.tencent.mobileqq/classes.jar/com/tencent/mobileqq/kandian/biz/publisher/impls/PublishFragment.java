@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.publisher.impls;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +9,9 @@ import android.view.ViewGroup;
 import androidx.fragment.app.FragmentActivity;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.fragment.QPublicBaseFragment;
+import com.tencent.mobileqq.kandian.biz.publisher.api.impl.KanDianPublisher;
+import com.tencent.mobileqq.qqpermission.annotation.QQPermissionConfig;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.tkd.topicsdk.framework.eventdispatch.DispatchManager;
 import com.tencent.tkd.topicsdk.framework.eventdispatch.IEvent;
 import com.tencent.tkd.topicsdk.interfaces.IPage;
@@ -20,26 +24,22 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+@QQPermissionConfig(id="biz_src_kandian_publisher", scene="kandian_publisher_h5")
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/impls/PublishFragment;", "Lcom/tencent/mobileqq/fragment/QPublicBaseFragment;", "()V", "pageProxy", "Lcom/tencent/tkd/topicsdk/interfaces/PageProxy;", "beforeFinish", "", "isWrapContent", "", "needImmersive", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onBackEvent", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "onDestroyView", "onFinish", "onNewIntent", "intent", "onPause", "onResume", "onSaveInstanceState", "outState", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class PublishFragment
   extends QPublicBaseFragment
 {
-  public static final PublishFragment.Companion a;
-  private PageProxy a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsPublishFragment$Companion = new PublishFragment.Companion(null);
-  }
+  public static final PublishFragment.Companion a = new PublishFragment.Companion(null);
+  private PageProxy b;
   
   public void beforeFinish()
   {
     super.beforeFinish();
-    PageProxy localPageProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesPageProxy;
+    PageProxy localPageProxy = this.b;
     if (localPageProxy == null) {
       Intrinsics.throwUninitializedPropertyAccessException("pageProxy");
     }
-    localPageProxy.e();
+    localPageProxy.m();
   }
   
   public boolean isWrapContent()
@@ -54,7 +54,7 @@ public final class PublishFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, @Nullable Intent paramIntent)
   {
-    PageProxy localPageProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesPageProxy;
+    PageProxy localPageProxy = this.b;
     if (localPageProxy == null) {
       Intrinsics.throwUninitializedPropertyAccessException("pageProxy");
     }
@@ -66,16 +66,20 @@ public final class PublishFragment
   
   public boolean onBackEvent()
   {
-    PageProxy localPageProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesPageProxy;
+    PageProxy localPageProxy = this.b;
     if (localPageProxy == null) {
       Intrinsics.throwUninitializedPropertyAccessException("pageProxy");
     }
-    return localPageProxy.c();
+    return localPageProxy.e();
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    paramBundle = KanDianPublisher.INSTANCE;
+    Object localObject = BaseApplication.context;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplication.context");
+    paramBundle.init((Context)localObject);
     paramBundle = getArguments();
     if (paramBundle != null) {
       paramBundle = paramBundle.getString("pageId");
@@ -99,8 +103,8 @@ public final class PublishFragment
       localObject = ((QBaseActivity)localObject).getClassLoader().loadClass(paramBundle).newInstance();
       if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesPageProxy = ((PageProxy)localObject);
-        localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesPageProxy;
+        this.b = ((PageProxy)localObject);
+        localObject = this.b;
         if (localObject == null) {
           Intrinsics.throwUninitializedPropertyAccessException("pageProxy");
         }
@@ -111,10 +115,9 @@ public final class PublishFragment
     }
     catch (Exception localException)
     {
-      Object localObject;
-      label134:
+      label156:
       StringBuilder localStringBuilder;
-      break label134;
+      break label156;
     }
     localObject = getActivity();
     if (localObject != null) {
@@ -137,7 +140,7 @@ public final class PublishFragment
   public View onCreateView(@NotNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
     Intrinsics.checkParameterIsNotNull(paramLayoutInflater, "inflater");
-    PageProxy localPageProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesPageProxy;
+    PageProxy localPageProxy = this.b;
     if (localPageProxy == null) {
       Intrinsics.throwUninitializedPropertyAccessException("pageProxy");
     }
@@ -147,17 +150,17 @@ public final class PublishFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    PageProxy localPageProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesPageProxy;
+    PageProxy localPageProxy = this.b;
     if (localPageProxy == null) {
       Intrinsics.throwUninitializedPropertyAccessException("pageProxy");
     }
-    localPageProxy.a();
+    localPageProxy.f();
   }
   
   public void onFinish()
   {
     super.onFinish();
-    PageProxy localPageProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesPageProxy;
+    PageProxy localPageProxy = this.b;
     if (localPageProxy == null) {
       Intrinsics.throwUninitializedPropertyAccessException("pageProxy");
     }
@@ -193,28 +196,28 @@ public final class PublishFragment
   public void onPause()
   {
     super.onPause();
-    PageProxy localPageProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesPageProxy;
+    PageProxy localPageProxy = this.b;
     if (localPageProxy == null) {
       Intrinsics.throwUninitializedPropertyAccessException("pageProxy");
     }
-    localPageProxy.b();
+    localPageProxy.k();
   }
   
   public void onResume()
   {
     super.onResume();
-    PageProxy localPageProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesPageProxy;
+    PageProxy localPageProxy = this.b;
     if (localPageProxy == null) {
       Intrinsics.throwUninitializedPropertyAccessException("pageProxy");
     }
-    localPageProxy.b();
+    localPageProxy.k();
   }
   
   public void onSaveInstanceState(@NotNull Bundle paramBundle)
   {
     Intrinsics.checkParameterIsNotNull(paramBundle, "outState");
     super.onSaveInstanceState(paramBundle);
-    PageProxy localPageProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesPageProxy;
+    PageProxy localPageProxy = this.b;
     if (localPageProxy == null) {
       Intrinsics.throwUninitializedPropertyAccessException("pageProxy");
     }
@@ -223,7 +226,7 @@ public final class PublishFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.PublishFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class ArkDictManagerImpl
   
   public void clearDict()
   {
-    this.mDictMgr.b();
+    this.mDictMgr.d();
   }
   
   public Handler getAnalysisThread()
@@ -38,7 +38,7 @@ public class ArkDictManagerImpl
   
   public void loadTestDict()
   {
-    this.mDictMgr.a();
+    this.mDictMgr.c();
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -73,7 +73,7 @@ public class ArkDictManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.api.impl.ArkDictManagerImpl
  * JD-Core Version:    0.7.0.1
  */

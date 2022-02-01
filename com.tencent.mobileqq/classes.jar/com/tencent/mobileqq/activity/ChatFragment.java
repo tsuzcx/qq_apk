@@ -11,9 +11,6 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
@@ -26,9 +23,9 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOPreLoadEngine;
 import com.tencent.mobileqq.activity.aio.AIOTimeReporter;
@@ -36,146 +33,54 @@ import com.tencent.mobileqq.activity.aio.NewAIOTimeReporter;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.AIOEnterInAni;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.core.chatpiecreator.ChatPieCreatorFactory;
-import com.tencent.mobileqq.activity.aio.core.chatpiecreator.IChatPieCreator;
-import com.tencent.mobileqq.activity.aio.core.chatpiecreator.PutOrderCache;
+import com.tencent.mobileqq.activity.aio.core.ChatPieCache;
+import com.tencent.mobileqq.activity.aio.core.IChatPieCacheService;
 import com.tencent.mobileqq.activity.aio.helper.PhotoListHelper;
 import com.tencent.mobileqq.activity.aio.qim.QIMUserManager;
-import com.tencent.mobileqq.activity.aio.rebuild.chatpiecreator.ChatPieSubTypeCreatorFactory;
 import com.tencent.mobileqq.activity.aio.tim.TIMUserManager;
 import com.tencent.mobileqq.activity.fling.ChatFragmentTopGestureLayout;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BaseFragment;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
-import com.tencent.mobileqq.filemanager.util.QFileUtils;
 import com.tencent.mobileqq.forward.ForwardOptionUtils;
 import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoySPEventReport;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.troop.utils.RobotUtils;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
+import com.tencent.mobileqq.utils.BlurUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.DrawerFrame;
-import com.tencent.qidian.QidianManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.qqperf.tools.PerformanceReportUtils;
-import com.tencent.util.MqqWeakReferenceHandler;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
-import java.util.Collection;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
-import org.jetbrains.annotations.Nullable;
 
 public class ChatFragment
   extends BaseFragment
-  implements Handler.Callback, TopGestureLayout.OnGestureListener
+  implements TopGestureLayout.OnGestureListener
 {
-  private static SparseArray<Animation> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(2);
   public static volatile boolean a = false;
-  private static boolean d = false;
-  public Context a;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new ChatFragment.2(this);
-  ChatFragment.InterceptTouchEventListener jdField_a_of_type_ComTencentMobileqqActivityChatFragment$InterceptTouchEventListener;
-  ChatFragment.MyDispatchDrawListener jdField_a_of_type_ComTencentMobileqqActivityChatFragment$MyDispatchDrawListener;
-  AIOTimeReporter jdField_a_of_type_ComTencentMobileqqActivityAioAIOTimeReporter;
-  public BaseChatPie a;
-  private final PutOrderCache<Class<? extends BaseChatPie>, BaseChatPie> jdField_a_of_type_ComTencentMobileqqActivityAioCoreChatpiecreatorPutOrderCache = new PutOrderCache();
-  public TopGestureLayout a;
-  public BaseActivity a;
-  public QQAppInterface a;
-  private DrawerFrame jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame;
-  public SystemBarCompact a;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
-  boolean b = false;
-  private boolean c = false;
-  
-  public ChatFragment()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreChatpiecreatorPutOrderCache.setCapacity(2);
-  }
-  
-  private int a(Intent paramIntent)
-  {
-    int k = paramIntent.getIntExtra("uintype", -1);
-    int j = 1;
-    if (k == 1026)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PttShow", 4, "UIN_TYPE_HOTCHAT_TOPIC in create chat pie");
-      }
-      return 1;
-    }
-    String str;
-    if (k == 0)
-    {
-      str = paramIntent.getStringExtra("uin");
-      if ((!CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, k)) && (!QidianManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str)))
-      {
-        if (RobotUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str)) {
-          return 1043;
-        }
-        if (QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str)) {
-          return 6000;
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.ChatFragment", 2, "change uinType from UIN_TYPE_FRIEND to UIN_TYPE_BUSINESS_CMR_TMP");
-        }
-        paramIntent.putExtra("uintype", 1024);
-        return 1024;
-      }
-    }
-    else if (k == 1025)
-    {
-      str = paramIntent.getStringExtra("uin");
-      if ((!TextUtils.isEmpty(str)) && (((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(str))) {
-        paramIntent.putExtra("uintype", 0);
-      }
-    }
-    else
-    {
-      for (;;)
-      {
-        return 0;
-        if (k != 1024) {
-          break;
-        }
-        str = paramIntent.getStringExtra("uin");
-        if (TextUtils.isEmpty(str)) {
-          break label317;
-        }
-        int i = j;
-        if (!CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, k)) {
-          if (QidianManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str)) {
-            i = j;
-          } else {
-            i = 0;
-          }
-        }
-        if ((i != 0) || (!((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(str))) {
-          break label317;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.ChatFragment", 2, "change uinType from UIN_TYPE_BUSINESS_CMR_TMP to UIN_TYPE_FRIEND");
-        }
-        paramIntent.putExtra("uintype", 0);
-      }
-      if (k == 1043) {
-        paramIntent.putExtra("uintype", 0);
-      }
-    }
-    label317:
-    return k;
-  }
+  private static boolean n = false;
+  private static SparseArray<Animation> o = new SparseArray(2);
+  protected ChatPieCache b;
+  public BaseChatPie c;
+  public QQAppInterface d;
+  public Context e;
+  public BaseActivity f;
+  protected DrawerFrame g;
+  public TopGestureLayout h;
+  protected boolean i = false;
+  protected AIOTimeReporter j;
+  protected ChatFragment.MyDispatchDrawListener k;
+  protected ChatFragment.InterceptTouchEventListener l;
+  protected boolean m = false;
+  private Animation.AnimationListener p = new ChatFragment.2(this);
   
   public static ChatFragment a()
   {
@@ -186,77 +91,29 @@ public class ChatFragment
     return localChatFragment;
   }
   
-  private BaseChatPie a(BaseChatPie paramBaseChatPie)
-  {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreChatpiecreatorPutOrderCache.putAndGetRemoved(paramBaseChatPie.getClass(), paramBaseChatPie);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    return localBaseChatPie;
-  }
-  
-  private void a(BaseChatPie paramBaseChatPie, Intent paramIntent) {}
-  
   public static void a(boolean paramBoolean)
   {
-    if (d != paramBoolean) {
-      d = paramBoolean;
+    if (n != paramBoolean) {
+      n = paramBoolean;
     }
   }
   
-  private boolean c()
+  private void s()
   {
-    return ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof SplashActivity)) && (SplashActivity.currentFragment == 1);
-  }
-  
-  private boolean c(Intent paramIntent)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
+    if (this.i)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof SplashActivity)) {
-        c();
-      }
-      return true;
-    }
-    c();
-    a(a(new BaseChatPie(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidContentContext)), paramIntent);
-    return false;
-  }
-  
-  private void h()
-  {
-    if (isVisible())
-    {
-      Object localObject = getFragmentManager().beginTransaction();
-      ((FragmentTransaction)localObject).hide(this);
-      ((FragmentTransaction)localObject).commitAllowingStateLoss();
-      StartupTracker.a("AIO_preLoad_Cost", null);
-      long l = SystemClock.uptimeMillis() - AIOPreLoadEngine.a;
-      PerformanceReportUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 10, l);
-      if (!QLog.isColorLevel()) {
-        return;
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("AIO preLoad cost:");
-      ((StringBuilder)localObject).append(l);
-      QLog.d("Q.aio.ChatFragment", 2, ((StringBuilder)localObject).toString());
-    }
-  }
-  
-  private void i()
-  {
-    if (this.b)
-    {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
-      int i = -1;
+      Object localObject1 = this.f.getIntent();
+      int i1 = -1;
       if (localObject1 != null) {
-        i = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getIntExtra("uintype", -1);
+        i1 = this.f.getIntent().getIntExtra("uintype", -1);
       }
       if (QLog.isColorLevel())
       {
-        Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("KEY_FROM");
+        Object localObject2 = this.f.getIntent().getStringExtra("KEY_FROM");
         localObject1 = localObject2;
         if (localObject2 == null)
         {
-          ComponentName localComponentName = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getCallingActivity();
+          ComponentName localComponentName = this.f.getCallingActivity();
           localObject1 = localObject2;
           if (localComponentName != null) {
             localObject1 = localComponentName.getClassName();
@@ -264,237 +121,50 @@ public class ChatFragment
         }
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("aio drawComplete,duration:");
-        ((StringBuilder)localObject2).append(StartupTracker.a);
+        ((StringBuilder)localObject2).append(StartupTracker.b);
         ((StringBuilder)localObject2).append(",from:");
         ((StringBuilder)localObject2).append((String)localObject1);
         QLog.d("Q.PerfTrace", 2, ((StringBuilder)localObject2).toString());
       }
-      int j = jdField_a_of_type_Boolean ^ true;
+      int i2 = a ^ true;
       PerformanceReportUtils.a("actFPSAIO", SystemClock.uptimeMillis());
-      PerformanceReportUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i, StartupTracker.a);
-      jdField_a_of_type_Boolean = true;
-      PerformanceReportUtils.jdField_a_of_type_Boolean = true;
-      this.b = false;
-      ThreadManager.post(new ChatFragment.1(this, i, j), 5, null, false);
+      PerformanceReportUtils.a(this.e, this.d.getCurrentAccountUin(), i1, StartupTracker.b);
+      a = true;
+      this.i = false;
+      ThreadManager.post(new ChatFragment.1(this, i1, i2), 5, null, false);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("AIOTime aioOpenTimeReport end Cost ");
-        ((StringBuilder)localObject1).append(StartupTracker.a);
+        ((StringBuilder)localObject1).append(StartupTracker.b);
         ((StringBuilder)localObject1).append(" AIOType: ");
-        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(i1);
         ((StringBuilder)localObject1).append(" firstOpenAIO: ");
-        ((StringBuilder)localObject1).append(j);
+        ((StringBuilder)localObject1).append(i2);
         QLog.d("Q.aio.ChatFragment", 2, ((StringBuilder)localObject1).toString());
       }
     }
   }
   
-  protected Dialog a(int paramInt)
-  {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if (localBaseChatPie != null) {
-      return localBaseChatPie.a(paramInt);
-    }
-    return null;
-  }
-  
-  public BaseChatPie a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  @Nullable
-  Boolean a(Intent paramIntent, int paramInt)
-  {
-    if ((paramInt == 1) || (paramInt == 3) || (paramInt == 4))
-    {
-      IChatPieCreator localIChatPieCreator = ChatPieSubTypeCreatorFactory.a().a(paramInt);
-      if (localIChatPieCreator != null)
-      {
-        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreChatpiecreatorPutOrderCache.values().iterator();
-        while (localIterator.hasNext())
-        {
-          BaseChatPie localBaseChatPie = (BaseChatPie)localIterator.next();
-          if (localIChatPieCreator.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseChatPie, paramIntent))
-          {
-            if (localIChatPieCreator.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
-              c();
-            }
-            a(localBaseChatPie);
-            return Boolean.valueOf(false);
-          }
-        }
-        c();
-        a(a(localIChatPieCreator.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, paramIntent)), paramIntent);
-        return Boolean.valueOf(true);
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    long l1 = SystemClock.uptimeMillis();
-    Object localObject;
-    if (ImmersiveUtils.isSupporImmersive() == 1) {
-      if (this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("systembar", 2, "mChatBarComp =null new compact");
-        }
-        int i = getResources().getColor(2131167114);
-        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(getBaseActivity(), true, i);
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.d) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.c))
-        {
-          localObject = QIMUserManager.a().b(4);
-          if (localObject != null) {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable((Drawable)localObject);
-          } else if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(getResources().getDrawable(2130846361));
-          }
-        }
-        else if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.e) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.c))
-        {
-          localObject = TIMUserManager.a().b(4);
-          if (localObject != null) {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable((Drawable)localObject);
-          } else if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(getResources().getDrawable(2130846361));
-          }
-        }
-        else if (ThemeUtil.isDefaultOrDIYTheme(false))
-        {
-          this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(getResources().getDrawable(2130846361));
-        }
-        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.init();
-      }
-      else
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("mChatBarComp isStatusBarVisible=");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.isStatusBarVisible);
-          QLog.d("systembar", 2, ((StringBuilder)localObject).toString());
-        }
-        StringBuilder localStringBuilder;
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.d) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.c))
-        {
-          localObject = QIMUserManager.a().b(4);
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("isQimUserOnline=====");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.jdField_a_of_type_Boolean);
-            localStringBuilder.append("drawable = ");
-            localStringBuilder.append(localObject);
-            QLog.i("systembar", 2, localStringBuilder.toString());
-          }
-          if (localObject != null) {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarDrawable((Drawable)localObject);
-          } else if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarDrawable(getResources().getDrawable(2130846361));
-          }
-        }
-        else if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.e) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.c))
-        {
-          localObject = TIMUserManager.a().b(4);
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("isTimUserOnline=====");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.b);
-            localStringBuilder.append("drawable = ");
-            localStringBuilder.append(localObject);
-            QLog.i("systembar", 2, localStringBuilder.toString());
-          }
-          if (localObject != null) {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarDrawable((Drawable)localObject);
-          } else if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarDrawable(getResources().getDrawable(2130846361));
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("333 isDefaultTheme =====");
-            ((StringBuilder)localObject).append(ThemeUtil.isDefaultOrDIYTheme(false));
-            QLog.i("systembar", 2, ((StringBuilder)localObject).toString());
-          }
-          if (ThemeUtil.isDefaultOrDIYTheme(false))
-          {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarDrawable(getResources().getDrawable(2130846361));
-          }
-          else
-          {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarDrawable(null);
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarColor(getResources().getColor(2131167114));
-          }
-        }
-        if ((!this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.isStatusBarVisible) && (getBaseActivity() != null)) {
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.d) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.c)) {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setgetStatusBarVisible(true, 450);
-          } else if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.e) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.c)) {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setgetStatusBarVisible(true, 450);
-          } else {
-            this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setgetStatusBarVisible(true, 0);
-          }
-        }
-      }
-    }
-    long l2 = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("duration=====");
-      ((StringBuilder)localObject).append(l2 - l1);
-      QLog.i("systembar", 2, ((StringBuilder)localObject).toString());
-    }
-  }
-  
   public void a(int paramInt)
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.c;
     if (localBaseChatPie != null) {
-      localBaseChatPie.b(paramInt);
+      localBaseChatPie.f(paramInt);
     }
   }
   
   protected void a(int paramInt, Dialog paramDialog)
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.c;
     if (localBaseChatPie != null) {
       localBaseChatPie.a(paramInt, paramDialog);
     }
   }
   
-  protected boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onBackEvent ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.hashCode());
-        QLog.i("Q.aio.ChatFragment", 2, localStringBuilder.toString());
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d();
-    }
-    return false;
-  }
-  
   protected boolean a(Intent paramIntent)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    Object localObject = this.c;
     boolean bool2 = false;
     boolean bool1;
     if (localObject == null)
@@ -509,14 +179,14 @@ public class ChatFragment
       {
         bool1 = bool2;
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.B)
+      else if (this.c.aY)
       {
         bool1 = bool2;
       }
       else
       {
         localObject = paramIntent.getStringExtra("uin");
-        String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_JavaLangString;
+        String str = this.c.aE().b;
         bool1 = bool2;
         if (!TextUtils.isEmpty(str)) {
           if (!((String)localObject).equals(str))
@@ -525,8 +195,8 @@ public class ChatFragment
           }
           else
           {
-            int i = paramIntent.getIntExtra("uintype", -1);
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_Int != i)
+            int i1 = paramIntent.getIntExtra("uintype", -1);
+            if (this.c.aE().a != i1)
             {
               bool1 = bool2;
             }
@@ -549,47 +219,57 @@ public class ChatFragment
     return bool1;
   }
   
-  boolean a(Intent paramIntent, int paramInt)
+  protected Dialog b(int paramInt)
   {
-    IChatPieCreator localIChatPieCreator = ChatPieCreatorFactory.a().a(paramInt);
-    if (localIChatPieCreator != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreChatpiecreatorPutOrderCache.values().iterator();
-      while (localIterator.hasNext())
-      {
-        BaseChatPie localBaseChatPie = (BaseChatPie)localIterator.next();
-        if (localIChatPieCreator.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseChatPie, paramIntent))
-        {
-          if (localIChatPieCreator.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
-            c();
-          }
-          a(localBaseChatPie);
-          return false;
-        }
-      }
-      c();
-      a(a(localIChatPieCreator.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, paramIntent)), paramIntent);
-      return true;
+    BaseChatPie localBaseChatPie = this.c;
+    if (localBaseChatPie != null) {
+      return localBaseChatPie.h(paramInt);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.ChatFragment", 2, "AIOTime getChatPie no Type at default");
-    }
-    return !c(paramIntent);
+    return null;
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getBaseActivity().app;
+    if (ImmersiveUtils.isSupporImmersive() == 1)
+    {
+      TopGestureLayout localTopGestureLayout = this.h;
+      if ((localTopGestureLayout instanceof ChatFragmentTopGestureLayout))
+      {
+        localTopGestureLayout.setFitsSystemWindows(true);
+        ((ChatFragmentTopGestureLayout)this.h).disableTopInset();
+      }
+    }
   }
   
-  protected void b(int paramInt)
+  public void b(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.c;
+    if (localBaseChatPie != null) {
+      localBaseChatPie.m(paramBoolean);
+    }
+  }
+  
+  public boolean b(Intent paramIntent)
+  {
+    if (a(paramIntent))
+    {
+      paramIntent = this.c;
+      if (paramIntent != null) {
+        ((PhotoListHelper)paramIntent.q(7)).c();
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  protected void c(int paramInt)
+  {
+    Object localObject = this.c;
     if (localObject != null)
     {
-      if ((!((BaseChatPie)localObject).r) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.B))
+      if ((!((BaseChatPie)localObject).aD) && (!this.c.aY))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.g(paramInt);
+        this.c.l(paramInt);
       }
       else
       {
@@ -597,198 +277,89 @@ public class ChatFragment
         ((StringBuilder)localObject).append("onShowFirst return|");
         ((StringBuilder)localObject).append(paramInt);
         ((StringBuilder)localObject).append(" hasDestory:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.B);
+        ((StringBuilder)localObject).append(this.c.aY);
         QLog.i("Q.aio.ChatFragment", 1, ((StringBuilder)localObject).toString());
       }
-      g();
+      p();
     }
   }
   
-  public void b(boolean paramBoolean)
+  protected boolean c()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if (localBaseChatPie != null) {
-      localBaseChatPie.j(paramBoolean);
-    }
-  }
-  
-  protected boolean b(Intent paramIntent)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    boolean bool = false;
-    if ((localObject != null) && (!paramIntent.getBooleanExtra("open_chatfragment_fromphoto", false)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.z();
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("getChatPie doOnNewIntent_clearBusinessData ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.hashCode());
-        QLog.i("Q.aio.ChatFragment", 2, ((StringBuilder)localObject).toString());
-      }
-    }
-    int i = paramIntent.getIntExtra("chat_subType", 0);
-    localObject = paramIntent.getStringExtra("uin");
-    if ((localObject != null) && (((String)localObject).length() >= 4) && (QLog.isColorLevel()))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getChatPie uin=");
-      localStringBuilder.append(((String)localObject).substring(((String)localObject).length() - 4));
-      QLog.i("Q.aio.ChatFragment", 2, localStringBuilder.toString());
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getChatPie subType = ");
-      ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append(" type = ");
-      ((StringBuilder)localObject).append(paramIntent.getIntExtra("uintype", -1));
-      ((StringBuilder)localObject).append(" mRootView is null?: ");
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout == null) {
-        bool = true;
-      }
-      ((StringBuilder)localObject).append(bool);
-      QLog.i("Q.aio.ChatFragment", 2, ((StringBuilder)localObject).toString());
-    }
-    localObject = a(paramIntent, i);
-    if (localObject != null)
-    {
-      if (((Boolean)localObject).booleanValue()) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b();
-      }
-      return ((Boolean)localObject).booleanValue();
-    }
-    paramIntent = Boolean.valueOf(a(paramIntent, a(paramIntent)));
-    if (paramIntent.booleanValue()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b();
-    }
-    return paramIntent.booleanValue();
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreChatpiecreatorPutOrderCache.values().iterator();
-    while (localIterator.hasNext())
-    {
-      BaseChatPie localBaseChatPie = (BaseChatPie)localIterator.next();
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.aio.ChatFragment", 2, "OnClearLastPie");
-      }
-      if ((localBaseChatPie.d() != 6) && (!localBaseChatPie.s())) {
-        localBaseChatPie.u();
-      }
-      if (!localBaseChatPie.s()) {
-        localBaseChatPie.p();
-      } else {
-        QLog.e("Q.aio.ChatFragment", 1, "chatpie life cycle illegal");
-      }
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) && (QLog.isColorLevel())) {
-      QLog.i("Q.aio.ChatFragment", 2, "OnClearLastPie already cleared.");
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    Object localObject;
-    if (ImmersiveUtils.isSupporImmersive() == 1)
-    {
-      localObject = this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact;
-      if (localObject != null) {
-        ((SystemBarCompact)localObject).setStatusBarVisible(paramInt, 0);
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("fight doInMultiWindowModeStatusBarVisibilityChange  = ");
-      ((StringBuilder)localObject).append(paramInt);
-      QLog.i("Q.aio.ChatFragment", 2, ((StringBuilder)localObject).toString());
-    }
+    return true;
   }
   
   public void d()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if (a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent()))
+    this.f.setChatFragmentType(BaseActivity.CHAT_FRAGMENT_TYPE);
+  }
+  
+  public void d(int paramInt)
+  {
+    if (QLog.isColorLevel())
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-      if (localObject1 != null) {
-        ((PhotoListHelper)((BaseChatPie)localObject1).a(7)).c();
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fight doInMultiWindowModeStatusBarVisibilityChange  = ");
+      localStringBuilder.append(paramInt);
+      QLog.i("Q.aio.ChatFragment", 2, localStringBuilder.toString());
     }
-    else if (b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent()))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.aio.ChatFragment", 2, "onNewIntent mRootView != null---created a new Pie");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeAllViews();
-        localObject1 = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131558789, null);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.addView((View)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(false);
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.e("Q.aio.ChatFragment", 2, "onNewIntent mRootView == null---created a new Pie");
-      }
-    }
-    else
-    {
-      Object localObject2;
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("onNewIntent mBasePie.doOnCreate(false) reuse the pie. same session: ");
-        boolean bool;
-        if (localObject1 == this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-        ((StringBuilder)localObject2).append(bool);
-        QLog.i("Q.aio.ChatFragment", 2, ((StringBuilder)localObject2).toString());
-      }
-      if (localObject1 != this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeAllViews();
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131558789, null);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.addView((View)localObject1);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(false);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null)
-    {
-      a(false);
-      this.b = true;
-    }
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null)
-    {
-      int i = getResources().getColor(2131167114);
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarColor(i);
+    Object localObject = (ImmersiveTitleBar2)this.h.findViewById(2131447582);
+    if (localObject == null) {
+      return;
     }
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if (localBaseChatPie != null) {
-      localBaseChatPie.F();
+    long l1 = SystemClock.uptimeMillis();
+    if (ImmersiveUtils.isSupporImmersive() == 1)
+    {
+      Drawable localDrawable;
+      if ((this.c.ah.i) && (this.c.ah.l) && (!this.c.ah.k))
+      {
+        localDrawable = QIMUserManager.b().b(4);
+        if (localDrawable != null) {
+          ((ImmersiveTitleBar2)localObject).setBackgroundDrawable(localDrawable);
+        } else if (ThemeUtil.isDefaultOrDIYTheme(false)) {
+          ((ImmersiveTitleBar2)localObject).setBackgroundDrawable(getResources().getDrawable(2130847834));
+        }
+      }
+      else if ((this.c.ah.j) && (this.c.ah.m) && (!this.c.ah.k))
+      {
+        localDrawable = TIMUserManager.b().b(4);
+        if (localDrawable != null) {
+          ((ImmersiveTitleBar2)localObject).setBackgroundDrawable(localDrawable);
+        } else if (ThemeUtil.isDefaultOrDIYTheme(false)) {
+          ((ImmersiveTitleBar2)localObject).setBackgroundDrawable(getResources().getDrawable(2130847834));
+        }
+      }
+      else if ((QQTheme.isSimpleWhite()) && (BlurUtil.a()))
+      {
+        ((ImmersiveTitleBar2)localObject).setBackgroundColor(0);
+      }
+      else if (ThemeUtil.isDefaultOrDIYTheme(false))
+      {
+        ((ImmersiveTitleBar2)localObject).setBackgroundDrawable(getResources().getDrawable(2130847834));
+      }
+      else
+      {
+        ((ImmersiveTitleBar2)localObject).setBackgroundColor(getResources().getColor(2131168092));
+      }
+    }
+    SimpleUIUtil.a((ImmersiveTitleBar2)localObject, getActivity().getWindow());
+    long l2 = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("duration=====");
+      ((StringBuilder)localObject).append(l2 - l1);
+      QLog.i("systembar", 2, ((StringBuilder)localObject).toString());
     }
   }
   
-  public void f()
+  public boolean f()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if (localBaseChatPie != null) {
-      localBaseChatPie.E();
-    }
+    return ((this.f instanceof SplashActivity)) && (SplashActivity.currentFragment == 1);
   }
   
   public void flingLToR()
@@ -797,12 +368,12 @@ public class ChatFragment
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("flingLToR ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+      ((StringBuilder)localObject).append(this.c);
       QLog.d("Q.aio.ChatFragment", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    Object localObject = this.c;
     if (localObject != null) {
-      ((BaseChatPie)localObject).c(true);
+      ((BaseChatPie)localObject).f(true);
     }
   }
   
@@ -812,59 +383,167 @@ public class ChatFragment
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("flingRToL ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+      localStringBuilder.append(this.c);
       QLog.d("Q.aio.ChatFragment", 2, localStringBuilder.toString());
     }
   }
   
   public void g()
   {
-    if (Build.VERSION.SDK_INT >= 24)
+    if (isVisible())
     {
-      BaseActivity localBaseActivity = getBaseActivity();
-      int j = 0;
-      int i;
-      if ((localBaseActivity != null) && (getBaseActivity().isInMultiWindow()) && (getBaseActivity().isNeedStatusBarGone()))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("Q.aio.ChatFragment", 4, "fight onMulitWindowModePause isNeedStatusBarGone = true");
-        }
-        i = 0;
+      Object localObject = getFragmentManager().beginTransaction();
+      ((FragmentTransaction)localObject).hide(this);
+      ((FragmentTransaction)localObject).commitAllowingStateLoss();
+      StartupTracker.a("AIO_preLoad_Cost", null);
+      long l1 = SystemClock.uptimeMillis() - AIOPreLoadEngine.c;
+      PerformanceReportUtils.a(this.e, this.d.getCurrentAccountUin(), 10, l1);
+      if (!QLog.isColorLevel()) {
+        return;
       }
-      else
-      {
-        i = 1;
-      }
-      if (i != 0) {
-        i = j;
-      } else {
-        i = 2;
-      }
-      c(i);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("AIO preLoad cost:");
+      ((StringBuilder)localObject).append(l1);
+      QLog.d("Q.aio.ChatFragment", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public String getCIOPageName()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.c;
     if (localBaseChatPie != null) {
       return localBaseChatPie.getClass().getName();
     }
     return super.getCIOPageName();
   }
   
-  public boolean handleMessage(Message paramMessage)
+  protected void h()
   {
-    if (paramMessage.what == 1) {
-      c();
+    this.d = getBaseActivity().app;
+  }
+  
+  protected boolean i()
+  {
+    if (this.c != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onBackEvent ");
+        localStringBuilder.append(this.c.hashCode());
+        QLog.i("Q.aio.ChatFragment", 2, localStringBuilder.toString());
+      }
+      return this.c.V();
     }
     return false;
+  }
+  
+  public QQAppInterface j()
+  {
+    return this.d;
+  }
+  
+  public BaseChatPie k()
+  {
+    return this.c;
+  }
+  
+  public void l()
+  {
+    if (this.b == null) {
+      return;
+    }
+    d();
+    Object localObject1 = this.b.c();
+    if (!b(this.f.getIntent()))
+    {
+      boolean bool = this.b.a(this.f.getIntent(), this.h);
+      this.c = this.b.c();
+      if (bool)
+      {
+        if (this.h != null)
+        {
+          if ((localObject1 != null) && (((BaseChatPie)localObject1).aW() != null) && (((BaseChatPie)localObject1).aW() != this.h)) {
+            ((BaseChatPie)localObject1).aW().removeAllViews();
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.aio.ChatFragment", 2, "onNewIntent mRootView != null---created a new Pie");
+          }
+          this.h.removeAllViews();
+          localObject1 = View.inflate(this.f, 2131624409, null);
+          this.h.addView((View)localObject1);
+          this.c.a(false);
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.e("Q.aio.ChatFragment", 2, "onNewIntent mRootView == null---created a new Pie");
+        }
+      }
+      else
+      {
+        Object localObject2;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("onNewIntent mBasePie.doOnCreate(false) reuse the pie. same session: ");
+          if (localObject1 == this.c) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          ((StringBuilder)localObject2).append(bool);
+          QLog.i("Q.aio.ChatFragment", 2, ((StringBuilder)localObject2).toString());
+        }
+        if (localObject1 != this.c)
+        {
+          if ((localObject1 != null) && (((BaseChatPie)localObject1).aW() != null) && (((BaseChatPie)localObject1).aW() != this.h)) {
+            ((BaseChatPie)localObject1).aW().removeAllViews();
+          }
+          this.h.removeAllViews();
+          localObject2 = this.c.ba;
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = View.inflate(this.f, 2131624409, null);
+          }
+          this.h.addView((View)localObject1);
+        }
+        this.c.a(false);
+      }
+    }
+    if (this.h != null)
+    {
+      a(false);
+      this.i = true;
+    }
+    this.b.a();
+  }
+  
+  protected boolean m()
+  {
+    return true;
+  }
+  
+  public void n()
+  {
+    e();
+    BaseChatPie localBaseChatPie = this.c;
+    if (localBaseChatPie != null) {
+      localBaseChatPie.ai();
+    }
+  }
+  
+  public void o()
+  {
+    BaseChatPie localBaseChatPie = this.c;
+    if (localBaseChatPie != null) {
+      localBaseChatPie.ah();
+    }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.c;
     if (localBaseChatPie != null) {
       localBaseChatPie.a(paramInt1, paramInt2, paramIntent);
     }
@@ -878,9 +557,9 @@ public class ChatFragment
     StartupTracker.a(null, "AIO_Super_onAttach");
     super.onAttach(paramActivity);
     StartupTracker.a("AIO_Super_onAttach", "AIO_onAttach");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTimeReporter = new AIOTimeReporter();
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((BaseActivity)paramActivity);
-    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
+    this.j = new AIOTimeReporter();
+    this.f = ((BaseActivity)paramActivity);
+    Intent localIntent = this.f.getIntent();
     if ((localIntent != null) && (localIntent.getIntExtra("uintype", -1) == 1026))
     {
       localIntent.putExtra("uintype", 1);
@@ -888,9 +567,15 @@ public class ChatFragment
         QLog.i("PttShow", 4, "check UIN_TYPE_HOTCHAT_TOPIC");
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-    this.jdField_a_of_type_AndroidContentContext = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment$MyDispatchDrawListener = new ChatFragment.MyDispatchDrawListener(this);
+    this.d = this.f.app;
+    this.e = paramActivity;
+    this.k = new ChatFragment.MyDispatchDrawListener(this);
+    if ((this.f instanceof SplashActivity)) {
+      this.b = ((IChatPieCacheService)this.d.getRuntimeService(IChatPieCacheService.class, "")).getChatPieCache();
+    } else {
+      this.b = new ChatPieCache();
+    }
+    this.b.a(this.f);
     StartupTracker.a("AIO_onAttach", null);
   }
   
@@ -900,7 +585,7 @@ public class ChatFragment
     if (QLog.isColorLevel()) {
       QLog.i("Q.aio.ChatFragment", 2, "onConfigurationChanged");
     }
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.c;
     if (localBaseChatPie != null) {
       localBaseChatPie.a(paramConfiguration);
     }
@@ -921,21 +606,21 @@ public class ChatFragment
     if (paramInt2 == 0) {
       return null;
     }
-    Object localObject = (Animation)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
+    Object localObject = (Animation)o.get(paramInt2);
     if (localObject == null)
     {
-      if (paramInt2 == 2130772074)
+      if (paramInt2 == 2130772104)
       {
         localObject = new AIOEnterInAni();
-        ((Animation)localObject).setDuration(getBaseActivity().getResources().getInteger(2131427333));
+        ((Animation)localObject).setDuration(getBaseActivity().getResources().getInteger(2131492874));
         ((Animation)localObject).setInterpolator(getBaseActivity(), 17432580);
-        ((Animation)localObject).setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+        ((Animation)localObject).setAnimationListener(this.p);
       }
       else
       {
         localObject = AnimationUtils.loadAnimation(getBaseActivity(), paramInt2);
       }
-      jdField_a_of_type_AndroidUtilSparseArray.put(paramInt2, localObject);
+      o.put(paramInt2, localObject);
       return localObject;
     }
     ((Animation)localObject).reset();
@@ -950,27 +635,27 @@ public class ChatFragment
     }
     paramLayoutInflater = null;
     StartupTracker.a(null, "AIO_onCreateView");
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout == null)
+    if (this.h == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment$InterceptTouchEventListener = new ChatFragment.InterceptTouchEventListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = new ChatFragmentTopGestureLayout(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment$MyDispatchDrawListener, this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment$InterceptTouchEventListener);
+      this.l = new ChatFragment.InterceptTouchEventListener(this);
+      this.h = new ChatFragmentTopGestureLayout(this.f, this.k, this.l);
       paramViewGroup = (View)paramViewGroup.getParent();
       if (paramViewGroup != null) {
-        paramViewGroup.setBackgroundResource(2130850615);
+        paramViewGroup.setBackgroundResource(2130852413);
       }
       paramViewGroup = new ViewGroup.LayoutParams(-1, -1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setLayoutParams(paramViewGroup);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setOnFlingGesture(this);
+      this.h.setLayoutParams(paramViewGroup);
+      this.h.setOnFlingGesture(this);
       try
       {
-        paramViewGroup = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131558789, null);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.addView(paramViewGroup);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame = new DrawerFrame(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, true);
+        paramViewGroup = View.inflate(this.f, 2131624409, null);
+        this.h.addView(paramViewGroup);
+        this.g = new DrawerFrame(this.f, this.h, true);
         paramLayoutInflater = new ViewGroup.LayoutParams(-1, -1);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setLayoutParams(paramLayoutInflater);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.addView(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
+        this.g.setLayoutParams(paramLayoutInflater);
+        this.g.addView(this.h);
         a(false);
-        this.b = true;
+        this.i = true;
         if (!QLog.isColorLevel()) {
           break label248;
         }
@@ -979,22 +664,18 @@ public class ChatFragment
       catch (Exception paramViewGroup)
       {
         QLog.i("Q.aio.ChatFragment", 1, "onCreateView:", paramViewGroup);
-        break label295;
+        break label264;
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.getParent() != null)
+    else if (this.g.getParent() != null)
     {
-      ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame);
+      ((ViewGroup)this.g.getParent()).removeView(this.g);
     }
     label248:
-    if (ImmersiveUtils.isSupporImmersive() == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setFitsSystemWindows(true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(getBaseActivity()) - 10, 0, 0);
-    }
+    b();
     StartupTracker.a("AIO_onCreateView", null);
-    paramLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame;
-    label295:
+    paramLayoutInflater = this.g;
+    label264:
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -1004,26 +685,17 @@ public class ChatFragment
     StartupTracker.a(null, "AIO_Super_onDestroy");
     super.onDestroy();
     StartupTracker.a("AIO_Super_onDestroy", "AIO_onDestroy");
-    jdField_a_of_type_AndroidUtilSparseArray.clear();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    o.clear();
+    Object localObject = this.c;
     if (localObject != null)
     {
-      ((BaseChatPie)localObject).p();
+      ((BaseChatPie)localObject).K();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onDestroy ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.hashCode());
+        ((StringBuilder)localObject).append(this.c.hashCode());
         QLog.i("Q.aio.ChatFragment", 2, ((StringBuilder)localObject).toString());
-      }
-    }
-    localObject = this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact;
-    if (localObject != null)
-    {
-      ((SystemBarCompact)localObject).setgetStatusBarVisible(false, 0);
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = null;
-      if (QLog.isColorLevel()) {
-        QLog.d("systembar", 2, "mChatBarComp destroy");
       }
     }
     StartupTracker.a("AIO_onDestroy", null);
@@ -1033,12 +705,16 @@ public class ChatFragment
   {
     StartupTracker.a(null, "AIO_Super_onDestroyView");
     super.onDestroyView();
-    ChatFragmentTopGestureLayout localChatFragmentTopGestureLayout = (ChatFragmentTopGestureLayout)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-    if (localChatFragmentTopGestureLayout != null)
+    Object localObject = this.h;
+    if ((localObject instanceof ChatFragmentTopGestureLayout))
     {
-      localChatFragmentTopGestureLayout.setOnFlingGesture(null);
-      localChatFragmentTopGestureLayout.setMyDispatchDrawListener(null);
-      localChatFragmentTopGestureLayout.setInterceptTouchEventListener(null);
+      localObject = (ChatFragmentTopGestureLayout)localObject;
+      if (localObject != null)
+      {
+        ((ChatFragmentTopGestureLayout)localObject).setOnFlingGesture(null);
+        ((ChatFragmentTopGestureLayout)localObject).setMyDispatchDrawListener(null);
+        ((ChatFragmentTopGestureLayout)localObject).setInterceptTouchEventListener(null);
+      }
     }
     StartupTracker.a("AIO_Super_onDestroyView", null);
   }
@@ -1058,17 +734,25 @@ public class ChatFragment
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.i("Q.aio.ChatFragment", 2, ((StringBuilder)localObject).toString());
     }
+    if (!m())
+    {
+      super.onHiddenChanged(paramBoolean);
+      return;
+    }
     if (paramBoolean)
     {
-      this.c = true;
+      this.m = true;
       onPause();
       onStop();
-      this.c = false;
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 500L);
+      this.m = false;
+      localObject = this.b;
+      if (localObject != null) {
+        ((ChatPieCache)localObject).b();
+      }
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
+      localObject = this.f.getIntent();
       if (((Intent)localObject).getBooleanExtra("isFromMainTab", false))
       {
         onStart();
@@ -1087,27 +771,27 @@ public class ChatFragment
     StartupTracker.a(null, "AIO_Super_onPause");
     super.onPause();
     StartupTracker.a("AIO_Super_onPause", "AIO_onPause");
-    if ((c()) && (!this.c))
+    if ((f()) && (!this.m))
     {
       if (QLog.isColorLevel()) {
         QLog.i("Q.aio.ChatFragment", 2, "onPause return");
       }
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    Object localObject = this.c;
     if (localObject != null)
     {
-      ((BaseChatPie)localObject).v();
+      ((BaseChatPie)localObject).P();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onPause ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.hashCode());
+        ((StringBuilder)localObject).append(this.c.hashCode());
         QLog.i("Q.aio.ChatFragment", 2, ((StringBuilder)localObject).toString());
       }
     }
-    NewAIOTimeReporter.a().a();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTimeReporter;
+    NewAIOTimeReporter.b().c();
+    localObject = this.j;
     if (localObject != null) {
       ((AIOTimeReporter)localObject).a();
     }
@@ -1119,26 +803,26 @@ public class ChatFragment
     StartupTracker.a(null, "AIO_Super_onResume");
     super.onResume();
     StartupTracker.a("AIO_Super_onResume", "AIO_onResume");
-    if (c())
+    if ((f()) && (!this.m))
     {
       if (QLog.isColorLevel()) {
         QLog.i("Q.aio.ChatFragment", 2, "onResume return");
       }
-      h();
+      g();
       return;
     }
     StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
+    if (this.c != null)
     {
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onResume ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.hashCode());
+        localStringBuilder.append(this.c.hashCode());
         QLog.i("Q.aio.ChatFragment", 2, localStringBuilder.toString());
       }
-      a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.y();
+      e();
+      this.c.S();
     }
     getBaseActivity().getWindow().setSoftInputMode(18);
     if (BaseApplicationImpl.appStartTime > 0L)
@@ -1154,30 +838,30 @@ public class ChatFragment
   public void onStart()
   {
     super.onStart();
-    if (c())
+    if ((f()) && (!this.m))
     {
       if (QLog.isColorLevel()) {
         QLog.i("Q.aio.ChatFragment", 2, "onStart return");
       }
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    Object localObject = this.c;
     if (localObject != null)
     {
-      ((BaseChatPie)localObject).t();
+      ((BaseChatPie)localObject).N();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onStart ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.hashCode());
+        ((StringBuilder)localObject).append(this.c.hashCode());
         QLog.i("Q.aio.ChatFragment", 2, ((StringBuilder)localObject).toString());
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent() != null)
+    if (this.f.getIntent() != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("uin");
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getIntExtra("uintype", -1);
-      ((IReadInJoySPEventReport)QRoute.api(IReadInJoySPEventReport.class)).addAioEnterAndOutInfo(1, null, (String)localObject, i, -1);
+      localObject = this.f.getIntent().getStringExtra("uin");
+      int i1 = this.f.getIntent().getIntExtra("uintype", -1);
+      ((IReadInJoySPEventReport)QRoute.api(IReadInJoySPEventReport.class)).addAioEnterAndOutInfo(1, null, (String)localObject, i1, -1);
     }
   }
   
@@ -1186,22 +870,22 @@ public class ChatFragment
     StartupTracker.a(null, "AIO_Super_onStop");
     super.onStop();
     StartupTracker.a("AIO_Super_onStop", "AIO_onStop");
-    if ((c()) && (!this.c))
+    if ((f()) && (!this.m))
     {
       if (QLog.isColorLevel()) {
         QLog.i("Q.aio.ChatFragment", 2, "onStop return");
       }
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    Object localObject = this.c;
     if (localObject != null)
     {
-      ((BaseChatPie)localObject).u();
+      ((BaseChatPie)localObject).O();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onStop ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.hashCode());
+        ((StringBuilder)localObject).append(this.c.hashCode());
         QLog.i("Q.aio.ChatFragment", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -1214,40 +898,78 @@ public class ChatFragment
     super.onViewCreated(paramView, paramBundle);
     StartupTracker.a("AIO_Super_onViewCreated", "AIO_onViewCreated");
     StartupTracker.a(null, "AIO_onCreate_getPieCost");
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if ((paramView != null) && (paramView.c == null))
+    paramView = this.c;
+    if ((paramView != null) && (paramView.aZ == null))
     {
       if (QLog.isColorLevel()) {
         QLog.e("Q.aio.ChatFragment", 2, "onViewCreated mBasePie is not null and mAIORootView is null, is fail");
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
+      this.c.aZ = this.h;
     }
-    boolean bool = b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent());
+    paramView = this.b.c();
+    if ((paramView != null) && (paramView.aW() != null) && (paramView.aW() != this.h)) {
+      paramView.aW().removeAllViews();
+    }
+    d();
+    boolean bool = this.b.a(this.f.getIntent(), this.h);
+    this.c = this.b.c();
     paramView = new StringBuilder();
     paramView.append("create new chat pie: ");
     paramView.append(bool);
     QLog.d("Q.aio.ChatFragment", 1, paramView.toString());
     StartupTracker.a("AIO_onCreate_getPieCost", null);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
-      if (c())
+    if (this.c != null) {
+      if ((f()) && (c()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setVisibility(4);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d();
+        this.h.setVisibility(4);
+        this.c.k();
         if (QLog.isColorLevel()) {
           QLog.d("Q.aio.ChatFragment", 2, "BaseChatPie pre-start.");
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(false);
+        this.c.a(false);
       }
     }
     StartupTracker.a("AIO_onViewCreated", null);
   }
+  
+  public void p()
+  {
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      BaseActivity localBaseActivity = getBaseActivity();
+      int i2 = 0;
+      int i1;
+      if ((localBaseActivity != null) && (getBaseActivity().isInMultiWindow()) && (getBaseActivity().isNeedStatusBarGone()))
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("Q.aio.ChatFragment", 4, "fight onMulitWindowModePause isNeedStatusBarGone = true");
+        }
+        i1 = 0;
+      }
+      else
+      {
+        i1 = 1;
+      }
+      if (i1 != 0) {
+        i1 = i2;
+      } else {
+        i1 = 2;
+      }
+      d(i1);
+    }
+  }
+  
+  public ImmersiveTitleBar2 q()
+  {
+    return (ImmersiveTitleBar2)this.h.findViewById(2131447582);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatFragment
  * JD-Core Version:    0.7.0.1
  */

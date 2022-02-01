@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public class TroopDynamicConfig
   extends CommonConfigBase
 {
-  public boolean a;
+  public boolean d;
   
   public TroopDynamicConfig(Context paramContext, String paramString)
   {
@@ -25,7 +25,7 @@ public class TroopDynamicConfig
   public void a(String paramString)
   {
     boolean bool = true;
-    this.a = true;
+    this.d = true;
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
@@ -35,7 +35,7 @@ public class TroopDynamicConfig
       {
         if (new JSONObject(paramString).getInt("isShowTroopDynamic") == 1)
         {
-          this.a = bool;
+          this.d = bool;
           return;
         }
       }

@@ -25,26 +25,26 @@ class ActiveEntitySearchResultPresenter$1
         paramString.append(paramInt);
         QLog.d("Q.uniteSearch.ActiveEntitySearchResultPresenter", 2, paramString.toString());
       }
-      ActiveEntitySearchResultPresenter.a(this.a).removeObserver(ActiveEntitySearchResultPresenter.a(this.a));
-      if (ActiveEntitySearchResultPresenter.a(this.a) != null)
+      ActiveEntitySearchResultPresenter.c(this.a).removeObserver(ActiveEntitySearchResultPresenter.b(this.a));
+      if (ActiveEntitySearchResultPresenter.d(this.a) != null)
       {
         if ((paramBoolean) && (paramInt != 0))
         {
-          TroopNotifyHelper.a(ActiveEntitySearchResultPresenter.a(this.a).getContext(), ActiveEntitySearchResultPresenter.a(this.a), new Object[] { ActiveEntitySearchResultPresenter.a(this.a), ActiveEntitySearchResultPresenter.a(this.a) });
+          TroopNotifyHelper.a(ActiveEntitySearchResultPresenter.d(this.a).getContext(), ActiveEntitySearchResultPresenter.e(this.a), new Object[] { ActiveEntitySearchResultPresenter.d(this.a), ActiveEntitySearchResultPresenter.a(this.a) });
           return;
         }
         paramString = this.a;
-        ActiveEntitySearchResultPresenter.a(paramString, ActiveEntitySearchResultPresenter.a(paramString).getContext(), ActiveEntitySearchResultPresenter.a(this.a));
-        ActiveEntitySearchResultPresenter.a(this.a);
+        ActiveEntitySearchResultPresenter.a(paramString, ActiveEntitySearchResultPresenter.d(paramString).getContext(), ActiveEntitySearchResultPresenter.a(this.a));
+        ActiveEntitySearchResultPresenter.f(this.a);
       }
       return;
     }
-    ActiveEntitySearchResultPresenter.a(this.a).removeObserver(ActiveEntitySearchResultPresenter.a(this.a));
+    ActiveEntitySearchResultPresenter.c(this.a).removeObserver(ActiveEntitySearchResultPresenter.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter.1
  * JD-Core Version:    0.7.0.1
  */

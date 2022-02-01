@@ -9,56 +9,50 @@ import java.util.Iterator;
 public class AioAnimationRule
 {
   public int a;
-  public long a;
-  public AioAnimationRule.BussinessData a;
-  public String a;
-  public ArrayList<EggKeyword> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public ArrayList<AioAnimationRule.JumpImage> b;
-  public int c = 0;
-  public int d = -1;
-  public int e = -1;
+  public int b = -1;
+  public ArrayList<EggKeyword> c;
+  public long d;
+  public long e;
+  public int f = 0;
+  public int g = -1;
+  public int h = -1;
+  public boolean i = false;
+  public ArrayList<AioAnimationRule.JumpImage> j;
+  public AioAnimationRule.BussinessData k;
+  public String l;
+  public String m;
   
-  public AioAnimationRule()
-  {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public AioAnimationRule() {}
   
   public AioAnimationRule(AioAnimationRule paramAioAnimationRule)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramAioAnimationRule.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = paramAioAnimationRule.jdField_b_of_type_Int;
-    this.jdField_a_of_type_JavaUtilArrayList = paramAioAnimationRule.jdField_a_of_type_JavaUtilArrayList;
+    this.a = paramAioAnimationRule.a;
+    this.b = paramAioAnimationRule.b;
     this.c = paramAioAnimationRule.c;
-    this.d = paramAioAnimationRule.d;
+    this.f = paramAioAnimationRule.f;
+    this.g = paramAioAnimationRule.g;
+    this.h = paramAioAnimationRule.h;
+    this.i = paramAioAnimationRule.i;
+    this.j = paramAioAnimationRule.j;
+    this.k = paramAioAnimationRule.k;
+    this.l = paramAioAnimationRule.l;
+    this.m = paramAioAnimationRule.m;
     this.e = paramAioAnimationRule.e;
-    this.jdField_a_of_type_Boolean = paramAioAnimationRule.jdField_a_of_type_Boolean;
-    this.jdField_b_of_type_JavaUtilArrayList = paramAioAnimationRule.jdField_b_of_type_JavaUtilArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData = paramAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData;
-    this.jdField_a_of_type_JavaLangString = paramAioAnimationRule.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramAioAnimationRule.jdField_b_of_type_JavaLangString;
-    this.jdField_b_of_type_Long = paramAioAnimationRule.jdField_b_of_type_Long;
-    this.jdField_a_of_type_Long = paramAioAnimationRule.jdField_a_of_type_Long;
+    this.d = paramAioAnimationRule.d;
   }
   
   void a(int paramInt)
   {
-    if (ListUtils.a(this.jdField_b_of_type_JavaUtilArrayList)) {
+    if (ListUtils.a(this.j)) {
       return;
     }
-    int i = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
-    int j = 0;
-    while ((j < paramInt) && (i >= 0))
+    int n = this.j.size() - 1;
+    int i1 = 0;
+    while ((i1 < paramInt) && (n >= 0))
     {
-      ((AioAnimationRule.JumpImage)this.jdField_b_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Boolean = true;
-      j += 1;
-      i -= 1;
+      ((AioAnimationRule.JumpImage)this.j.get(n)).i = true;
+      i1 += 1;
+      n -= 1;
     }
   }
   
@@ -66,12 +60,12 @@ public class AioAnimationRule
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    localStringBuilder.append(this.b);
+    Object localObject = this.c.iterator();
     while (((Iterator)localObject).hasNext())
     {
       EggKeyword localEggKeyword = (EggKeyword)((Iterator)localObject).next();
-      localStringBuilder.append(localEggKeyword.a());
+      localStringBuilder.append(localEggKeyword.b());
       localStringBuilder.append(".");
       localStringBuilder.append(localEggKeyword.a());
       localStringBuilder.append(".");
@@ -84,7 +78,7 @@ public class AioAnimationRule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AioAnimationRule
  * JD-Core Version:    0.7.0.1
  */

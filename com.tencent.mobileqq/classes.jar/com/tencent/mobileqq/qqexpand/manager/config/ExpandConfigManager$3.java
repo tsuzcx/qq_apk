@@ -16,9 +16,9 @@ class ExpandConfigManager$3
 {
   ExpandConfigManager$3(ExpandConfigManager paramExpandConfigManager, IConfigCallback paramIConfigCallback) {}
   
-  public void a(ExpandReqInfo paramExpandReqInfo, @NonNull ExpandResponse paramExpandResponse)
+  public void onProtocol(ExpandReqInfo paramExpandReqInfo, @NonNull ExpandResponse paramExpandResponse)
   {
-    int i = paramExpandResponse.a();
+    int i = paramExpandResponse.b();
     boolean bool1 = false;
     if ((i == 0) && (paramExpandResponse.a() != null))
     {
@@ -26,14 +26,14 @@ class ExpandConfigManager$3
       try
       {
         paramExpandReqInfo.mergeFrom(paramExpandResponse.a());
-        boolean bool2 = ExpandSharePreUtils.a(ExpandConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandManagerConfigExpandConfigManager).getCurrentAccountUin(), paramExpandReqInfo, ExpandConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandManagerConfigExpandConfigManager));
+        boolean bool2 = ExpandSharePreUtils.a(ExpandConfigManager.a(this.b).getCurrentAccountUin(), paramExpandReqInfo, ExpandConfigManager.a(this.b));
         bool1 = bool2;
       }
       catch (InvalidProtocolBufferMicroException paramExpandReqInfo)
       {
         QLog.w("expand.config.ExpandConfigManager", 1, "getABTestConfig InvalidProtocolBufferMicroException", paramExpandReqInfo);
       }
-      paramExpandReqInfo = this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigIConfigCallback;
+      paramExpandReqInfo = this.a;
       if (paramExpandReqInfo != null) {
         paramExpandReqInfo.a(bool1);
       }
@@ -41,9 +41,9 @@ class ExpandConfigManager$3
     }
     paramExpandReqInfo = new StringBuilder();
     paramExpandReqInfo.append("getABTestConfig. ");
-    paramExpandReqInfo.append(paramExpandResponse.b());
+    paramExpandReqInfo.append(paramExpandResponse.d());
     QLog.w("expand.config.ExpandConfigManager", 1, paramExpandReqInfo.toString());
-    paramExpandReqInfo = this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigIConfigCallback;
+    paramExpandReqInfo = this.a;
     if (paramExpandReqInfo != null) {
       paramExpandReqInfo.a(false);
     }
@@ -51,7 +51,7 @@ class ExpandConfigManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.config.ExpandConfigManager.3
  * JD-Core Version:    0.7.0.1
  */

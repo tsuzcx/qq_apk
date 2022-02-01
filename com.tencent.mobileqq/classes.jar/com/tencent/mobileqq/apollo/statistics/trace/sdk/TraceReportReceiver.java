@@ -13,7 +13,7 @@ public class TraceReportReceiver
     }
     try
     {
-      if (!TraceReportInstance.a()) {
+      if (!TraceReportInstance.d()) {
         return;
       }
       int i = paramBundle.getInt("featureId");
@@ -67,7 +67,7 @@ public class TraceReportReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.TraceReportReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -31,8 +31,8 @@ class MiniAppDesktopAdapter$ModuleViewHolder
   {
     super(paramView);
     this.mActivityReference = new WeakReference(paramActivity);
-    this.mModuleText = ((TextView)paramView.findViewById(2131371136));
-    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131371135));
+    this.mModuleText = ((TextView)paramView.findViewById(2131438477));
+    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131438476));
   }
   
   public void update(DesktopAppModuleInfo paramDesktopAppModuleInfo)
@@ -41,12 +41,12 @@ class MiniAppDesktopAdapter$ModuleViewHolder
     AppInterface localAppInterface = MiniAppUtils.getAppInterface();
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
     {
-      this.mMoreMiniApp.setImageResource(2130841072);
+      this.mMoreMiniApp.setImageResource(2130841863);
       this.mModuleText.setTextColor(-1);
     }
     else
     {
-      this.mMoreMiniApp.setImageResource(2130841071);
+      this.mMoreMiniApp.setImageResource(2130841862);
       this.mModuleText.setTextColor(-16578534);
     }
     int j = paramDesktopAppModuleInfo.getModuleType();
@@ -89,7 +89,7 @@ class MiniAppDesktopAdapter$ModuleViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.ModuleViewHolder
  * JD-Core Version:    0.7.0.1
  */

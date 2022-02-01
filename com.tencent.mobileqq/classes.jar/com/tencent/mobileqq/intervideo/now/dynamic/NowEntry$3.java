@@ -13,17 +13,17 @@ class NowEntry$3
   public void run()
   {
     this.this$0.a.b("download_cover").c("2").b();
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (!this.a.get())
     {
       QLog.i("DynamicNow | NowEntry", 1, "download cover pic timeout!");
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      NowEntry.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle);
+      this.a.set(true);
+      NowEntry.a(this.this$0, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.NowEntry.3
  * JD-Core Version:    0.7.0.1
  */

@@ -19,22 +19,22 @@ class LocalFileBrowserActivity$5
     if (paramView == null) {
       return false;
     }
-    if (!this.a.b())
+    if (!this.a.p())
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+      this.a.M.a(null);
+      this.a.K.a();
       return false;
     }
     paramView.setSelected(true);
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131365474, paramView.getContext().getString(2131692543));
-    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).showAsDropDown(paramView, localQQCustomMenu, new LocalFileBrowserActivity.5.1(this, paramView), new LocalFileBrowserActivity.5.2(this, paramView));
+    localQQCustomMenu.a(2131431689, paramView.getContext().getString(2131889566));
+    this.a.U = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).showAsDropDown(paramView, localQQCustomMenu, new LocalFileBrowserActivity.5.1(this, paramView), new LocalFileBrowserActivity.5.2(this, paramView));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity.5
  * JD-Core Version:    0.7.0.1
  */

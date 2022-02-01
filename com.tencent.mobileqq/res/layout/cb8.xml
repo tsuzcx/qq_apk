@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <include android:id="@id/idz" android:visibility="visible" layout="@layout/is" />
     <LinearLayout android:orientation="vertical" android:id="@id/lr5" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">

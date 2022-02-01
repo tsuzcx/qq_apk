@@ -10,33 +10,22 @@ import com.tencent.widget.ThemeImageWrapper;
 public abstract class TogetherSession
   implements Cloneable
 {
-  public long c;
-  public long d;
-  public int e;
-  public long e;
-  public String e = "";
-  public int f;
-  public String f;
-  public int g = -1;
+  public int l;
+  public int m;
+  public String n = "";
+  public int o = -1;
+  public int p;
+  public int q;
+  public String r = "";
   @Nullable
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public int j;
-  public int k;
-  public int l = 0;
-  
-  public TogetherSession()
-  {
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_h_of_type_JavaLangString = "";
-  }
-  
-  public int a()
-  {
-    return ThemeImageWrapper.MODE_SQURE;
-  }
+  public String s;
+  public long t;
+  public int u;
+  public int v;
+  public String w = "";
+  public long x;
+  public long y;
+  public int z = 0;
   
   public String a()
   {
@@ -51,18 +40,18 @@ public abstract class TogetherSession
   protected String a(QQAppInterface paramQQAppInterface, int paramInt)
   {
     String str;
-    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.r))
     {
-      str = a(paramQQAppInterface, this.e, this.jdField_f_of_type_JavaLangString);
+      str = a(paramQQAppInterface, this.n, this.r);
       if (!TextUtils.isEmpty(str)) {
         str = TogetherUtils.a(16, str);
       } else {
-        str = paramQQAppInterface.getApp().getString(2131699450);
+        str = paramQQAppInterface.getApp().getString(2131897481);
       }
     }
     else
     {
-      str = paramQQAppInterface.getApp().getString(2131699450);
+      str = paramQQAppInterface.getApp().getString(2131897481);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
@@ -73,11 +62,11 @@ public abstract class TogetherSession
   protected String a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
     Object localObject;
-    if (this.jdField_h_of_type_Int != 3)
+    if (this.p != 3)
     {
-      String str = a(paramQQAppInterface, 2131699414);
-      int m = this.g;
-      if (m == 1)
+      String str = a(paramQQAppInterface, 2131897445);
+      int i = this.o;
+      if (i == 1)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(str);
@@ -85,11 +74,11 @@ public abstract class TogetherSession
         return ((StringBuilder)localObject).toString();
       }
       localObject = str;
-      if (m > 1)
+      if (i > 1)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(str);
-        ((StringBuilder)localObject).append(String.format(paramQQAppInterface.getApp().getString(paramInt2), new Object[] { Integer.valueOf(this.g) }));
+        ((StringBuilder)localObject).append(String.format(paramQQAppInterface.getApp().getString(paramInt2), new Object[] { Integer.valueOf(this.o) }));
         return ((StringBuilder)localObject).toString();
       }
     }
@@ -102,23 +91,23 @@ public abstract class TogetherSession
   
   protected String a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3)
   {
-    int m = this.jdField_h_of_type_Int;
+    int i = this.p;
     Object localObject = "";
-    if (m != 3)
+    if (i != 3)
     {
-      m = this.g;
-      if (m == 1)
+      i = this.o;
+      if (i == 1)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
         ((StringBuilder)localObject).append(paramQQAppInterface.getApp().getString(paramInt1));
         return ((StringBuilder)localObject).toString();
       }
-      if (m > 1)
+      if (i > 1)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
-        ((StringBuilder)localObject).append(String.format(paramQQAppInterface.getApp().getString(paramInt2), new Object[] { Integer.valueOf(this.g) }));
+        ((StringBuilder)localObject).append(String.format(paramQQAppInterface.getApp().getString(paramInt2), new Object[] { Integer.valueOf(this.o) }));
         return ((StringBuilder)localObject).toString();
       }
       localObject = a(paramQQAppInterface, paramInt3);
@@ -128,7 +117,7 @@ public abstract class TogetherSession
   
   public String a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return ContactUtils.i(paramQQAppInterface, paramString);
+    return ContactUtils.j(paramQQAppInterface, paramString);
   }
   
   public String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
@@ -141,15 +130,9 @@ public abstract class TogetherSession
     return "";
   }
   
-  public boolean a()
-  {
-    int m = this.jdField_f_of_type_Int;
-    return ((m == 2) || (m == 1)) && (!TextUtils.isEmpty(this.e));
-  }
-  
   public int b()
   {
-    return 0;
+    return ThemeImageWrapper.MODE_SQURE;
   }
   
   public String b(QQAppInterface paramQQAppInterface)
@@ -157,14 +140,25 @@ public abstract class TogetherSession
     return "";
   }
   
-  public int d()
+  public int c()
   {
-    return 2131699488;
+    return 0;
+  }
+  
+  public boolean g()
+  {
+    int i = this.m;
+    return ((i == 2) || (i == 1)) && (!TextUtils.isEmpty(this.n));
+  }
+  
+  public int h()
+  {
+    return 2131897519;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherSession
  * JD-Core Version:    0.7.0.1
  */

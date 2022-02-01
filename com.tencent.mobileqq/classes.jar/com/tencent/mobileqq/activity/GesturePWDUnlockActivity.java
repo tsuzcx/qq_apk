@@ -117,15 +117,15 @@ public class GesturePWDUnlockActivity
     if ((this.mIsFromJump) && (!TextUtils.isEmpty(this.mUrlString)))
     {
       JumpAction localJumpAction = JumpParser.a(this.app, getActivity(), this.mUrlString);
-      localJumpAction.c(this.mPkgNameString);
-      localJumpAction.g = paramBoolean;
+      localJumpAction.d(this.mPkgNameString);
+      localJumpAction.w = paramBoolean;
       localJumpAction.a();
     }
   }
   
   private void initData()
   {
-    this.mWrongTips = getString(2131692909);
+    this.mWrongTips = getString(2131890020);
     this.mIsFromJump = getIntent().getBooleanExtra("key_gesture_from_jumpactivity", false);
     this.mIsFromAuthority = getIntent().getBooleanExtra("key_gesture_from_authority", false);
     this.mIsFromSystemContact = getIntent().getBooleanExtra("key_req_by_contact_sync", false);
@@ -143,21 +143,21 @@ public class GesturePWDUnlockActivity
   
   private void initUI()
   {
-    setTitle(2131692893);
-    this.mUnlockTextView = ((TextView)findViewById(2131367662));
-    this.mUnlockTipTextView = ((TextView)findViewById(2131367659));
-    this.mLockView = ((LockPatternView)findViewById(2131367661));
+    setTitle(2131890004);
+    this.mUnlockTextView = ((TextView)findViewById(2131434206));
+    this.mUnlockTipTextView = ((TextView)findViewById(2131434203));
+    this.mLockView = ((LockPatternView)findViewById(2131434205));
     this.mLockView.setFillInGapCell(false);
     this.mLockView.setTactileFeedbackEnabled(false);
     this.mLockView.setOnPatternListener(this);
-    this.mFaceImageView = ((ImageView)findViewById(2131367658));
+    this.mFaceImageView = ((ImageView)findViewById(2131434202));
     Object localObject1;
     if ((this.app != null) && (this.app.getCurrentAccountUin() != null))
     {
       localObject1 = this.app.getFaceBitmap(this.app.getCurrentAccountUin(), (byte)3, false);
       this.mFaceImageView.setImageBitmap((Bitmap)localObject1);
     }
-    this.mForgeTextView = ((TextView)findViewById(2131367660));
+    this.mForgeTextView = ((TextView)findViewById(2131434204));
     this.mForgeTextView.setOnClickListener(this);
     this.mForgeTextView.setEnabled(false);
     if (this.density <= 1.0D)
@@ -173,7 +173,7 @@ public class GesturePWDUnlockActivity
     {
       this.mUnlockTime = (5 - i);
       localObject1 = MessageFormat.format(this.mWrongTips, new Object[] { Integer.valueOf(this.mUnlockTime) });
-      this.mUnlockTextView.setTextColor(getResources().getColor(2131166941));
+      this.mUnlockTextView.setTextColor(getResources().getColor(2131167862));
       this.mUnlockTipTextView.setVisibility(0);
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(this.mUnlockTime);
@@ -242,7 +242,7 @@ public class GesturePWDUnlockActivity
     }
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559206);
+    super.setContentView(2131624962);
     initData();
     initUI();
     GesturePWDUtils.setGestureLocking(this, true);
@@ -303,7 +303,7 @@ public class GesturePWDUnlockActivity
   public void finish()
   {
     super.finish();
-    overridePendingTransition(2130772004, 2130772067);
+    overridePendingTransition(2130772007, 2130772092);
   }
   
   public boolean isDelayFinish()
@@ -316,21 +316,21 @@ public class GesturePWDUnlockActivity
         QLog.d("qqBaseActivity", 1, "isDelayFinish false jumpAction == null");
         return false;
       }
-      if (("share".equals(((JumpAction)localObject).b)) && ("to_fri".equals(((JumpAction)localObject).c)) && (!TextUtils.isEmpty(JumpAction.c((String)((JumpAction)localObject).a.get("file_uri")))))
+      if (("share".equals(((JumpAction)localObject).d)) && ("to_fri".equals(((JumpAction)localObject).e)) && (!TextUtils.isEmpty(JumpAction.h((String)((JumpAction)localObject).f.get("file_uri")))))
       {
         QLog.d("qqBaseActivity", 1, "isDelayFinish true share qq file");
         return true;
       }
-      if (("share".equals(((JumpAction)localObject).b)) && ("to_qzone".equals(((JumpAction)localObject).c)) && (!TextUtils.isEmpty(JumpAction.c((String)((JumpAction)localObject).a.get("image_uri")))))
+      if (("share".equals(((JumpAction)localObject).d)) && ("to_qzone".equals(((JumpAction)localObject).e)) && (!TextUtils.isEmpty(JumpAction.h((String)((JumpAction)localObject).f.get("image_uri")))))
       {
         QLog.d("qqBaseActivity", 1, "isDelayFinish true share qqzone file");
         return true;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isDelayFinish false sn = ");
-      localStringBuilder.append(((JumpAction)localObject).b);
+      localStringBuilder.append(((JumpAction)localObject).d);
       localStringBuilder.append(",an=");
-      localStringBuilder.append(((JumpAction)localObject).c);
+      localStringBuilder.append(((JumpAction)localObject).e);
       QLog.d("qqBaseActivity", 1, localStringBuilder.toString());
       return false;
     }
@@ -398,7 +398,7 @@ public class GesturePWDUnlockActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131367660)
+    if (paramView.getId() == 2131434204)
     {
       unLockFailed();
       GesturePWDUtils.setGestureUnlockFailedType(this, 0);
@@ -469,7 +469,7 @@ public class GesturePWDUnlockActivity
       onUnlockFailedOutRange();
       return;
     }
-    QQToast.a(this, 1, getString(2131692904), 0).b(getTitleBarHeight());
+    QQToast.makeText(this, 1, getString(2131890015), 0).show(getTitleBarHeight());
     this.mLockView.setDisplayMode(2);
     this.mUnlockTime -= 1;
     if (this.mUnlockTime > 0)
@@ -488,7 +488,7 @@ public class GesturePWDUnlockActivity
       QLog.d("Q.gesturelock.unlock", 2, "onUnlockFailedInRange");
     }
     Object localObject1 = MessageFormat.format(this.mWrongTips, new Object[] { Integer.valueOf(this.mUnlockTime) });
-    this.mUnlockTextView.setTextColor(getResources().getColor(2131166941));
+    this.mUnlockTextView.setTextColor(getResources().getColor(2131167862));
     this.mUnlockTipTextView.setVisibility(0);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(this.mUnlockTime);
@@ -516,7 +516,7 @@ public class GesturePWDUnlockActivity
     if ((localObject != null) && (((QQCustomDialog)localObject).isShowing())) {
       return;
     }
-    this.faiedUnlockDialog = DialogUtil.a(this, 231, getString(2131692907), getString(2131692906), new GesturePWDUnlockActivity.4(this), null);
+    this.faiedUnlockDialog = DialogUtil.a(this, 231, getString(2131890018), getString(2131890017), new GesturePWDUnlockActivity.4(this), null);
     this.faiedUnlockDialog.setOnDismissListener(new GesturePWDUnlockActivity.5(this));
     this.faiedUnlockDialog.show();
   }
@@ -546,7 +546,7 @@ public class GesturePWDUnlockActivity
       getAppRuntime().getApplication().refreAccountList();
     }
     GesturePWDUtils.setGestureLocking(this, false);
-    if (QQPlayerService.a())
+    if (QQPlayerService.b())
     {
       localObject = new Intent();
       ((Intent)localObject).setAction("qqplayer_exit_action");
@@ -600,7 +600,7 @@ public class GesturePWDUnlockActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDUnlockActivity
  * JD-Core Version:    0.7.0.1
  */

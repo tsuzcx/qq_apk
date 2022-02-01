@@ -10,16 +10,16 @@ class FloatWindowController$5
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    FloatWindowController.a(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowController).a(this.jdField_a_of_type_Int, this.b);
-    FloatWindowController.a(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowController).d();
-    FloatWindowController.a(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowController, null);
+    FloatWindowController.c(this.c).a(this.a, this.b);
+    FloatWindowController.c(this.c).e();
+    FloatWindowController.a(this.c, null);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    FloatWindowController.a(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowController).a(this.jdField_a_of_type_Int, this.b);
-    FloatWindowController.a(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowController).d();
-    FloatWindowController.a(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowController, null);
+    FloatWindowController.c(this.c).a(this.a, this.b);
+    FloatWindowController.c(this.c).e();
+    FloatWindowController.a(this.c, null);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}

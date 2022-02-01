@@ -64,7 +64,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      localKandianMergeManager.c();
+      localKandianMergeManager.n();
     }
   }
   
@@ -72,7 +72,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      localKandianMergeManager.q();
+      localKandianMergeManager.T();
     }
   }
   
@@ -82,7 +82,7 @@ public final class KanDianMergeManagerImpl
     Intrinsics.checkParameterIsNotNull(paramMessageRecord, "mr");
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      return localKandianMergeManager.a(paramMessageRecord);
+      return localKandianMergeManager.b(paramMessageRecord);
     }
     return null;
   }
@@ -117,7 +117,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      localKandianMergeManager.d(paramInt);
+      localKandianMergeManager.f(paramInt);
     }
   }
   
@@ -125,7 +125,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      return localKandianMergeManager.a(paramInt1, paramInt2);
+      return localKandianMergeManager.b(paramInt1, paramInt2);
     }
     return false;
   }
@@ -135,7 +135,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      return localKandianMergeManager.a();
+      return localKandianMergeManager.e();
     }
     return null;
   }
@@ -145,7 +145,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      return localKandianMergeManager.c();
+      return localKandianMergeManager.t();
     }
     return null;
   }
@@ -155,7 +155,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      return localKandianMergeManager.c();
+      return localKandianMergeManager.t();
     }
     return null;
   }
@@ -164,7 +164,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      return localKandianMergeManager.b();
+      return localKandianMergeManager.C();
     }
     return 0L;
   }
@@ -172,7 +172,7 @@ public final class KanDianMergeManagerImpl
   public int getMsgFromSource(@NotNull MessageRecord paramMessageRecord)
   {
     Intrinsics.checkParameterIsNotNull(paramMessageRecord, "mr");
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
       return KandianMergeManager.a(paramMessageRecord, (AppInterface)localAppRuntime);
     }
@@ -184,7 +184,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      return localKandianMergeManager.a();
+      return localKandianMergeManager.v();
     }
     return null;
   }
@@ -199,7 +199,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      return localKandianMergeManager.a;
+      return localKandianMergeManager.d;
     }
     return 0;
   }
@@ -208,7 +208,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      return localKandianMergeManager.b(paramInt);
+      return localKandianMergeManager.e(paramInt);
     }
     return 0;
   }
@@ -218,7 +218,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      return localKandianMergeManager.a();
+      return localKandianMergeManager.Q();
     }
     return null;
   }
@@ -227,7 +227,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      return localKandianMergeManager.b();
+      return localKandianMergeManager.d();
     }
     return false;
   }
@@ -236,7 +236,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      localKandianMergeManager.d();
+      localKandianMergeManager.o();
     }
   }
   
@@ -244,7 +244,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      localKandianMergeManager.a(paramMessageRecord);
+      localKandianMergeManager.e(paramMessageRecord);
     }
   }
   
@@ -252,7 +252,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      return localKandianMergeManager.g();
+      return localKandianMergeManager.M();
     }
     return false;
   }
@@ -261,7 +261,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      localKandianMergeManager.l();
+      localKandianMergeManager.I();
     }
   }
   
@@ -285,7 +285,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      localKandianMergeManager.c(paramMessageRecord);
+      localKandianMergeManager.k(paramMessageRecord);
     }
   }
   
@@ -321,7 +321,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      localKandianMergeManager.g();
+      localKandianMergeManager.r();
     }
   }
   
@@ -342,7 +342,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      localKandianMergeManager.e();
+      localKandianMergeManager.p();
     }
   }
   
@@ -376,7 +376,7 @@ public final class KanDianMergeManagerImpl
   {
     KandianMergeManager localKandianMergeManager = this.kanDianMergeManager;
     if (localKandianMergeManager != null) {
-      localKandianMergeManager.o();
+      localKandianMergeManager.N();
     }
   }
   
@@ -390,7 +390,7 @@ public final class KanDianMergeManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.api.impl.KanDianMergeManagerImpl
  * JD-Core Version:    0.7.0.1
  */

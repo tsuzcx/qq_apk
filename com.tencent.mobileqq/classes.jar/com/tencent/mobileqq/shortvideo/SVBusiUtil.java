@@ -17,8 +17,8 @@ import java.io.File;
 public class SVBusiUtil
 {
   public static long a;
-  public static boolean a;
-  public static long b;
+  public static boolean b;
+  public static long c;
   
   public static int a(FileMsg paramFileMsg)
   {
@@ -57,27 +57,29 @@ public class SVBusiUtil
     }
     ShortVideoReq localShortVideoReq = a(2, paramMessageForShortVideo.busiType);
     ShortVideoDownloadInfo localShortVideoDownloadInfo = paramMessageForShortVideo.getDownloadInfo(localShortVideoReq.b);
-    localShortVideoDownloadInfo.h = SVUtils.a(paramMessageForShortVideo, "mp4");
-    localShortVideoDownloadInfo.f = paramInt;
+    localShortVideoDownloadInfo.o = SVUtils.a(paramMessageForShortVideo, "mp4");
+    localShortVideoDownloadInfo.r = paramInt;
     if (paramMessageForShortVideo.busiType == 0) {
-      localShortVideoDownloadInfo.b = true;
+      localShortVideoDownloadInfo.t = true;
     }
     paramBaseQQAppInterface = (IMessageFacade)paramBaseQQAppInterface.getRuntimeService(IMessageFacade.class);
     if ((paramBaseQQAppInterface.isChatting()) && (paramBaseQQAppInterface.getCurrChatUin().equals(paramMessageForShortVideo.frienduin))) {
-      localShortVideoDownloadInfo.g = 2;
+      localShortVideoDownloadInfo.s = 2;
     } else {
-      localShortVideoDownloadInfo.g = 1;
+      localShortVideoDownloadInfo.s = 1;
     }
     if ((paramMessageForShortVideo.istroop != 0) && (paramMessageForShortVideo.istroop != 1008))
     {
       if (paramMessageForShortVideo.istroop == 3000) {
-        localShortVideoDownloadInfo.e = 1005;
+        localShortVideoDownloadInfo.q = 1005;
       } else if (paramMessageForShortVideo.istroop == 1) {
-        localShortVideoDownloadInfo.e = 1003;
+        localShortVideoDownloadInfo.q = 1003;
+      } else if (paramMessageForShortVideo.istroop == 10014) {
+        localShortVideoDownloadInfo.q = 1003;
       }
     }
     else {
-      localShortVideoDownloadInfo.e = 1001;
+      localShortVideoDownloadInfo.q = 1001;
     }
     localShortVideoReq.a(localShortVideoDownloadInfo);
     localShortVideoReq.a(paramMessageForShortVideo);
@@ -107,7 +109,7 @@ public class SVBusiUtil
         if (localMessageForShortVideo.videoFileStatus == 1003) {
           localMessageForShortVideo.videoFileProgress = 100;
         }
-        a(paramFileMsg, localMessageForShortVideo);
+        b(paramFileMsg, localMessageForShortVideo);
         if (a(paramFileMsg, localMessageForShortVideo)) {
           return;
         }
@@ -140,19 +142,6 @@ public class SVBusiUtil
     Logger.b("SVBusiUtil", "updataMessageDataBaseContent", "fileMsg or req is null");
   }
   
-  public static void a(FileMsg paramFileMsg, MessageForShortVideo paramMessageForShortVideo)
-  {
-    if ((paramFileMsg.fileType == 6) || (paramFileMsg.fileType == 17) || (paramFileMsg.fileType == 9) || (paramFileMsg.fileType == 20))
-    {
-      if (paramFileMsg.status == 2002) {
-        paramMessageForShortVideo.transferedSize = ((int)paramFileMsg.transferedSize);
-      }
-      if (paramFileMsg.status == 2003) {
-        paramMessageForShortVideo.transferedSize = 0;
-      }
-    }
-  }
-  
   public static void a(FileMsg paramFileMsg, MessageForShortVideo paramMessageForShortVideo, int paramInt)
   {
     if ((paramFileMsg.fileType != 7) && (paramFileMsg.fileType != 16) && (paramFileMsg.fileType != 18)) {
@@ -176,10 +165,23 @@ public class SVBusiUtil
   {
     return ((paramMessageForShortVideo.videoFileStatus != 1002) && (paramMessageForShortVideo.videoFileStatus != 2002)) || (paramMessageForShortVideo.videoFileStatus != paramFileMsg.status) || (paramInt1 - paramInt2 >= 10);
   }
+  
+  public static void b(FileMsg paramFileMsg, MessageForShortVideo paramMessageForShortVideo)
+  {
+    if ((paramFileMsg.fileType == 6) || (paramFileMsg.fileType == 17) || (paramFileMsg.fileType == 9) || (paramFileMsg.fileType == 20) || (paramFileMsg.fileType == 67))
+    {
+      if (paramFileMsg.status == 2002) {
+        paramMessageForShortVideo.transferedSize = ((int)paramFileMsg.transferedSize);
+      }
+      if (paramFileMsg.status == 2003) {
+        paramMessageForShortVideo.transferedSize = 0;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.SVBusiUtil
  * JD-Core Version:    0.7.0.1
  */

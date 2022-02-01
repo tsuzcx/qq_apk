@@ -26,7 +26,7 @@ final class MiniAppUtils$5
     {
       localWebSoCgiState = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
       QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localWebSoCgiState });
-      if (localWebSoCgiState.jdField_c_of_type_Int == 0) {
+      if (localWebSoCgiState.i == 0) {
         try
         {
           JSONObject localJSONObject = new JSONObject();
@@ -39,7 +39,7 @@ final class MiniAppUtils$5
             }
             else
             {
-              if (localWebSoCgiState.a) {
+              if (localWebSoCgiState.g) {
                 paramMessage = Base64Util.encodeToString(localWebSoCgiState.d.getBytes(), 0);
               } else {
                 paramMessage = localWebSoCgiState.d;
@@ -50,9 +50,9 @@ final class MiniAppUtils$5
           else {
             localJSONObject.put("data", "");
           }
-          localJSONObject.put("statusCode", localWebSoCgiState.b);
-          localJSONObject.put("wnsCode", localWebSoCgiState.jdField_c_of_type_Int);
-          localJSONObject.put("header", localWebSoCgiState.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("statusCode", localWebSoCgiState.f);
+          localJSONObject.put("wnsCode", localWebSoCgiState.i);
+          localJSONObject.put("header", localWebSoCgiState.c);
           this.val$listener.onReceiveResult(true, localJSONObject);
           return;
         }
@@ -67,7 +67,7 @@ final class MiniAppUtils$5
     }
     try
     {
-      paramMessage.put("wnsCode", localWebSoCgiState.jdField_c_of_type_Int);
+      paramMessage.put("wnsCode", localWebSoCgiState.i);
       label227:
       this.val$listener.onReceiveResult(false, paramMessage);
       return;
@@ -83,7 +83,7 @@ final class MiniAppUtils$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.5
  * JD-Core Version:    0.7.0.1
  */

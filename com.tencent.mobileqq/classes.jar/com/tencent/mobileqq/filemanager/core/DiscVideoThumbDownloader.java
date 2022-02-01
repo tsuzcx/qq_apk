@@ -19,18 +19,17 @@ import java.util.List;
 public class DiscVideoThumbDownloader
   extends BaseThumbDownloader
 {
-  private FMObserver a;
+  private FMObserver c = new DiscVideoThumbDownloader.1(this);
   
   public DiscVideoThumbDownloader(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new DiscVideoThumbDownloader.1(this);
-    paramQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    paramQQAppInterface.getFileManagerNotifyCenter().addObserver(this.c);
   }
   
   private DiscVideoThumbDownloader.VideoSession a(long paramLong, boolean paramBoolean)
   {
-    BaseThumbDownloader.Session localSession = a(paramLong);
+    BaseThumbDownloader.Session localSession = b(paramLong);
     if (localSession == null) {
       return null;
     }
@@ -49,7 +48,7 @@ public class DiscVideoThumbDownloader
       ((StringBuilder)localObject1).append(paramFileManagerEntity.nSessionId);
       ((StringBuilder)localObject1).append("]");
       QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 50, new Object[] { paramFileManagerEntity });
+      this.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { paramFileManagerEntity });
       return null;
     }
     int i = a(paramFileManagerEntity.fileName);
@@ -59,7 +58,7 @@ public class DiscVideoThumbDownloader
       ((StringBuilder)localObject1).append("[downloadThumb]  download. can not getThumb of file:");
       ((StringBuilder)localObject1).append(paramFileManagerEntity.fileName);
       QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 50, new Object[] { paramFileManagerEntity });
+      this.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { paramFileManagerEntity });
       return null;
     }
     Object localObject1 = paramFileManagerEntity.Uuid.replace("/", "");
@@ -79,14 +78,14 @@ public class DiscVideoThumbDownloader
       return localObject1;
     }
     localObject2 = new DiscVideoThumbDownloader.VideoSession(paramFileManagerEntity);
-    ((DiscVideoThumbDownloader.VideoSession)localObject2).jdField_a_of_type_Int = paramInt;
-    ((DiscVideoThumbDownloader.VideoSession)localObject2).b = i;
-    a((BaseThumbDownloader.Session)localObject2, (String)localObject1);
+    ((DiscVideoThumbDownloader.VideoSession)localObject2).c = paramInt;
+    ((DiscVideoThumbDownloader.VideoSession)localObject2).d = i;
+    a((BaseThumbDownloader.Session)localObject2, (String)localObject1, true);
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("[downloadThumb] download  nSession[");
     ((StringBuilder)localObject1).append(paramFileManagerEntity.nSessionId);
     ((StringBuilder)localObject1).append("], ThumbDownloadId[");
-    ((StringBuilder)localObject1).append(((DiscVideoThumbDownloader.VideoSession)localObject2).jdField_a_of_type_Long);
+    ((StringBuilder)localObject1).append(((DiscVideoThumbDownloader.VideoSession)localObject2).a);
     ((StringBuilder)localObject1).append("]");
     QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
     return null;
@@ -95,7 +94,7 @@ public class DiscVideoThumbDownloader
   public List<String> a(long paramLong, String paramString, int paramInt, boolean paramBoolean, List<String> paramList)
   {
     paramList = a(paramLong, false);
-    if ((paramList != null) && (paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (!TextUtils.isEmpty(paramString)) && (FileIPv6StrateyController.a().isConfigEnableIPV6(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 5)))
+    if ((paramList != null) && (paramList.b != null) && (!TextUtils.isEmpty(paramString)) && (FileIPv6StrateyController.b().isConfigEnableIPV6(this.a, 5)))
     {
       paramList = new StringBuilder();
       paramList.append("[downloadThumb]  ID[");
@@ -105,18 +104,18 @@ public class DiscVideoThumbDownloader
       paramList.append("]");
       QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, paramList.toString());
       paramString = new FileIPv6StrateyController.DomainInfo(paramString, paramInt);
-      paramList = FileIPv6StrateyController.a().getIPlistForV6Domain(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 5);
+      paramList = FileIPv6StrateyController.b().getIPlistForV6Domain(this.a, paramString, 5);
       if ((paramList != null) && (!paramList.a()))
       {
         paramString = new ArrayList();
-        paramList = paramList.a.iterator();
+        paramList = paramList.b.iterator();
         while (paramList.hasNext())
         {
           FileIPv6StrateyController.IPInfo localIPInfo = (FileIPv6StrateyController.IPInfo)paramList.next();
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(localIPInfo.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(localIPInfo.a);
           localStringBuilder.append(":");
-          localStringBuilder.append(localIPInfo.jdField_a_of_type_Int);
+          localStringBuilder.append(localIPInfo.b);
           paramString.add(localStringBuilder.toString());
         }
         paramList = new StringBuilder();
@@ -135,8 +134,6 @@ public class DiscVideoThumbDownloader
     }
     return null;
   }
-  
-  public void a(long paramLong, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
   
   public void a(long paramLong, HttpMsg paramHttpMsg)
   {
@@ -157,11 +154,11 @@ public class DiscVideoThumbDownloader
     }
     if (paramBoolean)
     {
-      localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
-      FileManagerUtil.d(localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      localVideoSession.b.strLargeThumPath = paramString;
+      FileManagerUtil.n(localVideoSession.b);
+      this.a.getFileManagerDataCenter().c(localVideoSession.b);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramBoolean, 50, new Object[] { localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(localVideoSession.jdField_a_of_type_Int) });
+    this.a.getFileManagerNotifyCenter().a(paramBoolean, 50, new Object[] { localVideoSession.b, Integer.valueOf(localVideoSession.c) });
     super.a(paramLong, paramBoolean, paramInt, paramString, paramDownloadTask);
   }
   
@@ -177,15 +174,17 @@ public class DiscVideoThumbDownloader
       QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, paramDownloadTask.toString());
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().b(paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramLong);
+    this.a.getFileTransferHandler().b(paramDownloadTask.b.peerUin, paramDownloadTask.b.Uuid, paramLong);
     return true;
   }
   
   public void b(long paramLong, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
+  
+  public void c(long paramLong, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.DiscVideoThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

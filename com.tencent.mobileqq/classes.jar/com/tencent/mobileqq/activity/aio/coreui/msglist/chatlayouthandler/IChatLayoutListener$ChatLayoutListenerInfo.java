@@ -7,12 +7,12 @@ import com.tencent.mobileqq.data.ChatMessage;
 
 public class IChatLayoutListener$ChatLayoutListenerInfo
 {
-  public BaseBubbleBuilder.ViewHolder a;
-  public BaseChatItemLayout a;
-  public SessionInfo a;
-  public ChatMessage a;
   public int b;
   public int c;
+  public SessionInfo d;
+  public ChatMessage e;
+  public BaseChatItemLayout f;
+  public BaseBubbleBuilder.ViewHolder g;
   
   public IChatLayoutListener$ChatLayoutListenerInfo() {}
   
@@ -20,15 +20,15 @@ public class IChatLayoutListener$ChatLayoutListenerInfo
   {
     this.b = paramInt1;
     this.c = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder = paramViewHolder;
+    this.d = paramSessionInfo;
+    this.e = paramChatMessage;
+    this.f = paramBaseChatItemLayout;
+    this.g = paramViewHolder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.IChatLayoutListener.ChatLayoutListenerInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -60,7 +60,7 @@ public class QzoneGiftFullScreenViewController
   
   static
   {
-    String str = DeviceInfoUtil.g();
+    String str = DeviceInfoUtil.m();
     if (str != null)
     {
       str = str.toLowerCase();
@@ -82,12 +82,12 @@ public class QzoneGiftFullScreenViewController
   
   private void checkHardDecodeCondition()
   {
-    if (!DeviceInfoUtil.d())
+    if (!DeviceInfoUtil.L())
     {
       this.isUseHardDecode = false;
       return;
     }
-    if (Math.min(DeviceInfoUtil.g(), DeviceInfoUtil.h()) >= 720L)
+    if (Math.min(DeviceInfoUtil.B(), DeviceInfoUtil.C()) >= 720L)
     {
       this.isUseHardDecode = true;
       return;
@@ -101,17 +101,17 @@ public class QzoneGiftFullScreenViewController
     {
       View localView;
       if (this.isUseHardDecode) {
-        localView = View.inflate(BaseApplicationImpl.getContext(), 2131561935, null);
+        localView = View.inflate(BaseApplicationImpl.getContext(), 2131628359, null);
       } else {
-        localView = View.inflate(BaseApplicationImpl.getContext(), 2131561937, null);
+        localView = View.inflate(BaseApplicationImpl.getContext(), 2131628361, null);
       }
-      this.topbar = View.inflate(BaseApplicationImpl.getContext(), 2131561939, null);
-      this.topbarBgView = this.topbar.findViewById(2131370615);
-      this.magicfaceReceivePlay = ((IMagicFaceView)localView.findViewById(2131370608));
-      this.magicfaceReceiveContent = ((MagicfaceContainerView)localView.findViewById(2131370610));
-      this.magicfaceReceiveStop = ((Button)this.topbar.findViewById(2131370609));
+      this.topbar = View.inflate(BaseApplicationImpl.getContext(), 2131628363, null);
+      this.topbarBgView = this.topbar.findViewById(2131437889);
+      this.magicfaceReceivePlay = ((IMagicFaceView)localView.findViewById(2131437882));
+      this.magicfaceReceiveContent = ((MagicfaceContainerView)localView.findViewById(2131437884));
+      this.magicfaceReceiveStop = ((Button)this.topbar.findViewById(2131437883));
       this.magicfaceReceiveStop.setVisibility(8);
-      this.magicfaceTip = ((ImageView)this.topbar.findViewById(2131370613));
+      this.magicfaceTip = ((ImageView)this.topbar.findViewById(2131437887));
       this.magicfaceReceiveStop.setOnClickListener(this);
     }
   }
@@ -238,7 +238,7 @@ public class QzoneGiftFullScreenViewController
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131370609) {
+    if (paramView.getId() != 2131437883) {
       return;
     }
     magicfaceClose();
@@ -296,10 +296,10 @@ public class QzoneGiftFullScreenViewController
       if (paramBoolean)
       {
         localObject1 = (FrameLayout.LayoutParams)this.magicfaceReceiveContent.getLayoutParams();
-        ((FrameLayout.LayoutParams)localObject1).topMargin = ViewUtils.a(75.0F);
-        ((FrameLayout.LayoutParams)localObject1).bottomMargin = ViewUtils.a(75.0F);
-        ((FrameLayout.LayoutParams)localObject1).leftMargin = ViewUtils.a(15.0F);
-        ((FrameLayout.LayoutParams)localObject1).rightMargin = ViewUtils.a(15.0F);
+        ((FrameLayout.LayoutParams)localObject1).topMargin = ViewUtils.dip2px(75.0F);
+        ((FrameLayout.LayoutParams)localObject1).bottomMargin = ViewUtils.dip2px(75.0F);
+        ((FrameLayout.LayoutParams)localObject1).leftMargin = ViewUtils.dip2px(15.0F);
+        ((FrameLayout.LayoutParams)localObject1).rightMargin = ViewUtils.dip2px(15.0F);
         this.magicfaceReceivePlay.setIsFullScreen(false);
         this.magicfaceReceiveContent.setTouchEffect(true);
         ((View)this.magicfaceReceivePlay).setClickable(false);
@@ -311,7 +311,7 @@ public class QzoneGiftFullScreenViewController
       this.magicfaceReceiveContent.setVisibility(8);
       ((View)this.magicfaceReceivePlay).setVisibility(8);
       this.magicfaceReceiveContent.setVisibility(0);
-      this.magicfaceReceivePlay.setIsFullScreen(this.actionGlobalData.b);
+      this.magicfaceReceivePlay.setIsFullScreen(this.actionGlobalData.d);
       this.topbar.setVisibility(0);
       localObject1 = this.magicfaceReceivePlay;
       this.magicfaceTip.setVisibility(8);
@@ -333,7 +333,7 @@ public class QzoneGiftFullScreenViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QzoneGiftFullScreenViewController
  * JD-Core Version:    0.7.0.1
  */

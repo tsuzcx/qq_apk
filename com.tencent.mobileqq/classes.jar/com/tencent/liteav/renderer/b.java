@@ -2,20 +2,23 @@ package com.tencent.liteav.renderer;
 
 import android.graphics.SurfaceTexture;
 import android.view.Surface;
-import com.tencent.liteav.basic.c.c;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.TXCOpenGlUtils;
+import com.tencent.liteav.basic.opengl.c;
+import com.tencent.liteav.basic.util.e;
 import java.lang.ref.WeakReference;
+import java.util.concurrent.Semaphore;
 
 class b
   extends Thread
 {
   private WeakReference<a> a;
-  private boolean b = false;
+  private volatile boolean b = false;
   private int c = 1280;
   private int d = 720;
-  private Object e = new Object();
+  private final Semaphore e = new Semaphore(0);
   private c f = null;
-  private com.tencent.liteav.basic.c.b g = null;
+  private com.tencent.liteav.basic.opengl.b g = null;
   private Object h = null;
   
   b(WeakReference<a> paramWeakReference)
@@ -23,7 +26,45 @@ class b
     this.a = paramWeakReference;
   }
   
-  private void f()
+  private boolean a(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      if (this.a != null)
+      {
+        a locala = (a)this.a.get();
+        if (locala != null)
+        {
+          boolean bool = locala.b(paramInt1, paramInt2);
+          return bool;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("drawFrame failed.");
+      localStringBuilder.append(localException.getMessage());
+      TXCLog.e("TXCVideoRenderThread", localStringBuilder.toString());
+    }
+    return false;
+  }
+  
+  private e f()
+  {
+    Object localObject = this.g;
+    if (localObject != null) {
+      return ((com.tencent.liteav.basic.opengl.b)localObject).f();
+    }
+    localObject = this.f;
+    if (localObject != null) {
+      return ((c)localObject).c();
+    }
+    TXCOpenGlUtils.a("getSurfaceSize");
+    return new e(0, 0);
+  }
+  
+  private void g()
   {
     try
     {
@@ -40,7 +81,7 @@ class b
     }
   }
   
-  private void g()
+  private void h()
   {
     try
     {
@@ -57,30 +98,6 @@ class b
     }
   }
   
-  private boolean h()
-  {
-    try
-    {
-      if (this.a != null)
-      {
-        a locala = (a)this.a.get();
-        if (locala != null)
-        {
-          boolean bool = locala.c();
-          return bool;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("drawFrame failed.");
-      localStringBuilder.append(localException.getMessage());
-      TXCLog.e("TXCVideoRenderThread", localStringBuilder.toString());
-    }
-    return false;
-  }
-  
   private void i()
   {
     Object localObject = this.a;
@@ -88,7 +105,7 @@ class b
     {
       localObject = (a)((WeakReference)localObject).get();
       if (localObject != null) {
-        ((a)localObject).k();
+        ((a)localObject).j();
       }
     }
   }
@@ -100,7 +117,7 @@ class b
     {
       localObject = (a)((WeakReference)localObject).get();
       if (localObject != null) {
-        ((a)localObject).l();
+        ((a)localObject).k();
       }
     }
   }
@@ -111,7 +128,7 @@ class b
     if (localObject1 == null) {
       return;
     }
-    localObject1 = ((a)localObject1).d();
+    localObject1 = ((a)localObject1).c();
     if (localObject1 != null) {
       localObject1 = new Surface((SurfaceTexture)localObject1);
     } else {
@@ -121,7 +138,7 @@ class b
     if ((localObject2 != null) && (!(localObject2 instanceof javax.microedition.khronos.egl.EGLContext))) {
       this.f = c.a(null, (android.opengl.EGLContext)localObject2, (Surface)localObject1, this.c, this.d);
     } else {
-      this.g = com.tencent.liteav.basic.c.b.a(null, (javax.microedition.khronos.egl.EGLContext)this.h, (Surface)localObject1, this.c, this.d);
+      this.g = com.tencent.liteav.basic.opengl.b.a(null, (javax.microedition.khronos.egl.EGLContext)this.h, (Surface)localObject1, this.c, this.d);
     }
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("vrender: init egl share context ");
@@ -141,13 +158,13 @@ class b
     localObject = this.g;
     if (localObject != null)
     {
-      ((com.tencent.liteav.basic.c.b)localObject).c();
+      ((com.tencent.liteav.basic.opengl.b)localObject).c();
       this.g = null;
     }
     localObject = this.f;
     if (localObject != null)
     {
-      ((c)localObject).c();
+      ((c)localObject).d();
       this.f = null;
     }
   }
@@ -156,11 +173,11 @@ class b
   {
     Object localObject = this.g;
     if (localObject != null) {
-      return ((com.tencent.liteav.basic.c.b)localObject).d();
+      return ((com.tencent.liteav.basic.opengl.b)localObject).d();
     }
     localObject = this.f;
     if (localObject != null) {
-      return ((c)localObject).e();
+      return ((c)localObject).f();
     }
     return null;
   }
@@ -178,22 +195,18 @@ class b
   
   public void c()
   {
-    synchronized (this.e)
-    {
-      this.e.notifyAll();
-      return;
-    }
+    this.e.release();
   }
   
   public void d()
   {
     Object localObject = this.g;
     if (localObject != null) {
-      ((com.tencent.liteav.basic.c.b)localObject).a();
+      ((com.tencent.liteav.basic.opengl.b)localObject).a();
     }
     localObject = this.f;
     if (localObject != null) {
-      ((c)localObject).d();
+      ((c)localObject).e();
     }
   }
   
@@ -201,7 +214,7 @@ class b
   {
     Object localObject = this.g;
     if (localObject != null) {
-      ((com.tencent.liteav.basic.c.b)localObject).b();
+      ((com.tencent.liteav.basic.opengl.b)localObject).b();
     }
     localObject = this.f;
     if (localObject != null) {
@@ -213,128 +226,118 @@ class b
   public void run()
   {
     // Byte code:
-    //   0: new 77	java/lang/StringBuilder
+    //   0: new 64	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 78	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   7: astore_1
     //   8: aload_1
-    //   9: ldc 165
-    //   11: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9: ldc 185
+    //   11: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   14: pop
     //   15: aload_1
     //   16: aload_0
-    //   17: invokevirtual 169	com/tencent/liteav/renderer/b:getId	()J
-    //   20: invokevirtual 172	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   17: invokevirtual 189	com/tencent/liteav/renderer/b:getId	()J
+    //   20: invokevirtual 192	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload_0
     //   25: aload_1
-    //   26: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokevirtual 176	com/tencent/liteav/renderer/b:setName	(Ljava/lang/String;)V
+    //   26: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   29: invokevirtual 195	com/tencent/liteav/renderer/b:setName	(Ljava/lang/String;)V
     //   32: aload_0
     //   33: iconst_1
-    //   34: putfield 26	com/tencent/liteav/renderer/b:b	Z
+    //   34: putfield 27	com/tencent/liteav/renderer/b:b	Z
     //   37: aload_0
-    //   38: invokespecial 177	com/tencent/liteav/renderer/b:k	()V
+    //   38: invokespecial 196	com/tencent/liteav/renderer/b:k	()V
     //   41: aload_0
-    //   42: invokespecial 179	com/tencent/liteav/renderer/b:f	()V
+    //   42: invokespecial 198	com/tencent/liteav/renderer/b:g	()V
     //   45: aload_0
-    //   46: invokespecial 181	com/tencent/liteav/renderer/b:i	()V
+    //   46: invokespecial 200	com/tencent/liteav/renderer/b:i	()V
     //   49: aload_0
-    //   50: getfield 26	com/tencent/liteav/renderer/b:b	Z
-    //   53: ifeq +78 -> 131
+    //   50: getfield 27	com/tencent/liteav/renderer/b:b	Z
+    //   53: ifeq +87 -> 140
     //   56: aload_0
-    //   57: invokespecial 183	com/tencent/liteav/renderer/b:h	()Z
-    //   60: ifeq +41 -> 101
-    //   63: aload_0
-    //   64: getfield 43	com/tencent/liteav/renderer/b:a	Ljava/lang/ref/WeakReference;
-    //   67: ifnonnull +8 -> 75
-    //   70: aconst_null
-    //   71: astore_1
-    //   72: goto +14 -> 86
-    //   75: aload_0
-    //   76: getfield 43	com/tencent/liteav/renderer/b:a	Ljava/lang/ref/WeakReference;
-    //   79: invokevirtual 54	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   82: checkcast 56	com/tencent/liteav/renderer/a
-    //   85: astore_1
-    //   86: aload_1
-    //   87: ifnull +14 -> 101
-    //   90: aload_1
-    //   91: invokevirtual 105	com/tencent/liteav/renderer/a:d	()Landroid/graphics/SurfaceTexture;
-    //   94: ifnull +7 -> 101
-    //   97: aload_0
-    //   98: invokevirtual 185	com/tencent/liteav/renderer/b:d	()V
-    //   101: aload_0
-    //   102: getfield 35	com/tencent/liteav/renderer/b:e	Ljava/lang/Object;
-    //   105: astore_1
-    //   106: aload_1
-    //   107: monitorenter
-    //   108: aload_0
-    //   109: getfield 35	com/tencent/liteav/renderer/b:e	Ljava/lang/Object;
-    //   112: invokevirtual 188	java/lang/Object:wait	()V
-    //   115: goto +7 -> 122
-    //   118: astore_2
-    //   119: goto +8 -> 127
-    //   122: aload_1
-    //   123: monitorexit
-    //   124: goto -75 -> 49
-    //   127: aload_1
-    //   128: monitorexit
-    //   129: aload_2
-    //   130: athrow
-    //   131: aload_0
-    //   132: invokespecial 190	com/tencent/liteav/renderer/b:j	()V
-    //   135: aload_0
-    //   136: invokespecial 192	com/tencent/liteav/renderer/b:g	()V
-    //   139: aload_0
-    //   140: invokespecial 193	com/tencent/liteav/renderer/b:l	()V
-    //   143: return
-    //   144: astore_1
-    //   145: goto +13 -> 158
-    //   148: astore_1
-    //   149: ldc 61
-    //   151: ldc 195
-    //   153: aload_1
-    //   154: invokestatic 68	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   157: return
-    //   158: goto +5 -> 163
-    //   161: aload_1
-    //   162: athrow
-    //   163: goto -2 -> 161
-    //   166: astore_2
-    //   167: goto -45 -> 122
+    //   57: invokespecial 201	com/tencent/liteav/renderer/b:f	()Lcom/tencent/liteav/basic/util/e;
+    //   60: astore_1
+    //   61: aload_0
+    //   62: aload_1
+    //   63: getfield 203	com/tencent/liteav/basic/util/e:a	I
+    //   66: aload_1
+    //   67: getfield 205	com/tencent/liteav/basic/util/e:b	I
+    //   70: invokespecial 207	com/tencent/liteav/renderer/b:a	(II)Z
+    //   73: ifeq +41 -> 114
+    //   76: aload_0
+    //   77: getfield 46	com/tencent/liteav/renderer/b:a	Ljava/lang/ref/WeakReference;
+    //   80: ifnonnull +8 -> 88
+    //   83: aconst_null
+    //   84: astore_1
+    //   85: goto +14 -> 99
+    //   88: aload_0
+    //   89: getfield 46	com/tencent/liteav/renderer/b:a	Ljava/lang/ref/WeakReference;
+    //   92: invokevirtual 58	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   95: checkcast 60	com/tencent/liteav/renderer/a
+    //   98: astore_1
+    //   99: aload_1
+    //   100: ifnull +14 -> 114
+    //   103: aload_1
+    //   104: invokevirtual 128	com/tencent/liteav/renderer/a:c	()Landroid/graphics/SurfaceTexture;
+    //   107: ifnull +7 -> 114
+    //   110: aload_0
+    //   111: invokevirtual 208	com/tencent/liteav/renderer/b:d	()V
+    //   114: aload_0
+    //   115: getfield 27	com/tencent/liteav/renderer/b:b	Z
+    //   118: ifeq -69 -> 49
+    //   121: aload_0
+    //   122: getfield 38	com/tencent/liteav/renderer/b:e	Ljava/util/concurrent/Semaphore;
+    //   125: ldc2_w 209
+    //   128: getstatic 216	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   131: invokevirtual 220	java/util/concurrent/Semaphore:tryAcquire	(JLjava/util/concurrent/TimeUnit;)Z
+    //   134: ifne -85 -> 49
+    //   137: goto -23 -> 114
+    //   140: aload_0
+    //   141: invokespecial 221	com/tencent/liteav/renderer/b:j	()V
+    //   144: aload_0
+    //   145: invokespecial 223	com/tencent/liteav/renderer/b:h	()V
+    //   148: aload_0
+    //   149: invokespecial 225	com/tencent/liteav/renderer/b:l	()V
+    //   152: return
+    //   153: astore_1
+    //   154: goto +13 -> 167
+    //   157: astore_1
+    //   158: ldc 77
+    //   160: ldc 227
+    //   162: aload_1
+    //   163: invokestatic 114	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   166: return
+    //   167: goto +5 -> 172
+    //   170: aload_1
+    //   171: athrow
+    //   172: goto -2 -> 170
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	170	0	this	b
-    //   144	1	1	localObject2	Object
-    //   148	14	1	localException	Exception
-    //   118	12	2	localObject3	Object
-    //   166	1	2	localInterruptedException	java.lang.InterruptedException
+    //   0	175	0	this	b
+    //   7	97	1	localObject1	Object
+    //   153	1	1	localObject2	Object
+    //   157	14	1	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   108	115	118	finally
-    //   122	124	118	finally
-    //   127	129	118	finally
-    //   32	49	144	finally
-    //   49	70	144	finally
-    //   75	86	144	finally
-    //   90	101	144	finally
-    //   101	108	144	finally
-    //   129	131	144	finally
-    //   131	143	144	finally
-    //   149	157	144	finally
-    //   32	49	148	java/lang/Exception
-    //   49	70	148	java/lang/Exception
-    //   75	86	148	java/lang/Exception
-    //   90	101	148	java/lang/Exception
-    //   101	108	148	java/lang/Exception
-    //   129	131	148	java/lang/Exception
-    //   131	143	148	java/lang/Exception
-    //   108	115	166	java/lang/InterruptedException
+    //   32	49	153	finally
+    //   49	83	153	finally
+    //   88	99	153	finally
+    //   103	114	153	finally
+    //   114	137	153	finally
+    //   140	152	153	finally
+    //   158	166	153	finally
+    //   32	49	157	java/lang/Exception
+    //   49	83	157	java/lang/Exception
+    //   88	99	157	java/lang/Exception
+    //   103	114	157	java/lang/Exception
+    //   114	137	157	java/lang/Exception
+    //   140	152	157	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.renderer.b
  * JD-Core Version:    0.7.0.1
  */

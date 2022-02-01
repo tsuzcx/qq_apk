@@ -998,7 +998,7 @@ public class QWalletBluetoothJsPlugin
     super.onCreate();
     if (this.mRuntime != null)
     {
-      Activity localActivity = this.mRuntime.a();
+      Activity localActivity = this.mRuntime.d();
       this.mActivity = localActivity;
       if (localActivity != null) {
         this.mContext = this.mActivity.getApplicationContext();
@@ -1030,7 +1030,7 @@ public class QWalletBluetoothJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin
  * JD-Core Version:    0.7.0.1
  */

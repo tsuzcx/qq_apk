@@ -26,49 +26,43 @@ public class ExpandChatApiChannel
   extends ExpandBaseChannel
   implements EventChannel.StreamHandler
 {
-  public static final MethodCodec a;
-  public static final String[] a;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener jdField_a_of_type_ComTencentMobileqqQqexpandIpcIExpandIpcFlutterNotifyListener$ExpandIpcFlutterNotifyListener = new ExpandChatApiChannel.1(this);
-  private final Map<Object, EventChannel.EventSink> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private final Map<Integer, ExpandBaseChannel.MethodChannelResultWrapper> b = new HashMap();
-  
-  static
-  {
-    jdField_a_of_type_IoFlutterPluginCommonMethodCodec = StandardMethodCodec.INSTANCE;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "onConversationUpdate", "onConversationListRefresh", "onOnlineStateChange", "onExtendFriendInfoUpdate" };
-  }
+  public static final MethodCodec d = StandardMethodCodec.INSTANCE;
+  public static final String[] e = { "onConversationUpdate", "onConversationListRefresh", "onOnlineStateChange", "onExtendFriendInfoUpdate" };
+  private final Map<Object, EventChannel.EventSink> f = new HashMap();
+  private final Handler g;
+  private final Map<Integer, ExpandBaseChannel.MethodChannelResultWrapper> h = new HashMap();
+  private final IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener i = new ExpandChatApiChannel.1(this);
   
   public ExpandChatApiChannel(BinaryMessenger paramBinaryMessenger)
   {
     a(paramBinaryMessenger);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    ExpandFlutterIPCClient.a().a(this.jdField_a_of_type_ComTencentMobileqqQqexpandIpcIExpandIpcFlutterNotifyListener$ExpandIpcFlutterNotifyListener);
+    this.g = new Handler(Looper.getMainLooper());
+    ExpandFlutterIPCClient.a().a(this.i);
   }
   
   private void a(ExpandBaseChannel.MethodChannelResultWrapper paramMethodChannelResultWrapper, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ExpandChatApiChannel.2(this, paramMethodChannelResultWrapper, paramObject));
+    this.g.post(new ExpandChatApiChannel.2(this, paramMethodChannelResultWrapper, paramObject));
   }
   
   private void a(BinaryMessenger paramBinaryMessenger)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("com.tencent.qflutter/expand/event.expand_chat.");
-    localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[0]);
-    new EventChannel(paramBinaryMessenger, localStringBuilder.toString(), jdField_a_of_type_IoFlutterPluginCommonMethodCodec).setStreamHandler(this);
+    localStringBuilder.append(e[0]);
+    new EventChannel(paramBinaryMessenger, localStringBuilder.toString(), d).setStreamHandler(this);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("com.tencent.qflutter/expand/event.expand_chat.");
-    localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[1]);
-    new EventChannel(paramBinaryMessenger, localStringBuilder.toString(), jdField_a_of_type_IoFlutterPluginCommonMethodCodec).setStreamHandler(this);
+    localStringBuilder.append(e[1]);
+    new EventChannel(paramBinaryMessenger, localStringBuilder.toString(), d).setStreamHandler(this);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("com.tencent.qflutter/expand/event.expand_chat.");
-    localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[2]);
-    new EventChannel(paramBinaryMessenger, localStringBuilder.toString(), jdField_a_of_type_IoFlutterPluginCommonMethodCodec).setStreamHandler(this);
+    localStringBuilder.append(e[2]);
+    new EventChannel(paramBinaryMessenger, localStringBuilder.toString(), d).setStreamHandler(this);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("com.tencent.qflutter/expand/event.expand_chat.");
-    localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[3]);
-    new EventChannel(paramBinaryMessenger, localStringBuilder.toString(), jdField_a_of_type_IoFlutterPluginCommonMethodCodec).setStreamHandler(this);
+    localStringBuilder.append(e[3]);
+    new EventChannel(paramBinaryMessenger, localStringBuilder.toString(), d).setStreamHandler(this);
   }
   
   public static void a(@NonNull MethodCall paramMethodCall, IExpandChannelCallback paramIExpandChannelCallback)
@@ -88,13 +82,13 @@ public class ExpandChatApiChannel
       paramMethodCall = (Integer)paramMethodCall.argument("count");
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("cursor", (String)localObject1);
-      int i;
+      int j;
       if (paramMethodCall == null) {
-        i = 0;
+        j = 0;
       } else {
-        i = paramMethodCall.intValue();
+        j = paramMethodCall.intValue();
       }
-      ((Bundle)localObject2).putInt("count", i);
+      ((Bundle)localObject2).putInt("count", j);
       ExpandFlutterIPCClient.a().a("METHOD_CHAT_GET_CONVERSATION_LIST", (Bundle)localObject2, new ExpandChatApiChannel.4(paramIExpandChannelCallback));
       return;
     }
@@ -123,7 +117,7 @@ public class ExpandChatApiChannel
   
   private void a(String paramString, Map<String, Object> paramMap)
   {
-    EventChannel.EventSink localEventSink = (EventChannel.EventSink)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    EventChannel.EventSink localEventSink = (EventChannel.EventSink)this.f.get(paramString);
     if (localEventSink != null)
     {
       localEventSink.success(paramMap);
@@ -140,33 +134,33 @@ public class ExpandChatApiChannel
     QLog.w("expand.chat.ExpandChatApiChannel", 1, paramMap.toString());
   }
   
-  public MethodCodec a()
-  {
-    return jdField_a_of_type_IoFlutterPluginCommonMethodCodec;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    ExpandFlutterIPCClient.a().b(this.jdField_a_of_type_ComTencentMobileqqQqexpandIpcIExpandIpcFlutterNotifyListener$ExpandIpcFlutterNotifyListener);
-    this.b.clear();
-    QLog.i("expand.chat.ExpandChatApiChannel", 1, "channel destroy");
-  }
-  
   protected void a(@NonNull MethodCall paramMethodCall, @NonNull ExpandBaseChannel.MethodChannelResultWrapper paramMethodChannelResultWrapper)
   {
     a(paramMethodCall, new ExpandChatApiChannel.3(this, paramMethodChannelResultWrapper));
   }
   
-  protected String c()
+  public MethodCodec b()
+  {
+    return d;
+  }
+  
+  public void f()
+  {
+    super.f();
+    this.f.clear();
+    ExpandFlutterIPCClient.a().b(this.i);
+    this.h.clear();
+    QLog.i("expand.chat.ExpandChatApiChannel", 1, "channel destroy");
+  }
+  
+  protected String g()
   {
     return "method.expand_chat";
   }
   
   public void onCancel(Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilMap.remove(paramObject);
+    this.f.remove(paramObject);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -185,9 +179,9 @@ public class ExpandChatApiChannel
       localStringBuilder.append(paramObject);
       QLog.i("expand.chat.ExpandChatApiChannel", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramObject))
+    if (!this.f.containsKey(paramObject))
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramObject, paramEventSink);
+      this.f.put(paramObject, paramEventSink);
       return;
     }
     QLog.w("expand.chat.ExpandChatApiChannel", 1, "ChatStreamHandler. try listen but already exist");
@@ -195,7 +189,7 @@ public class ExpandChatApiChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.chat.ExpandChatApiChannel
  * JD-Core Version:    0.7.0.1
  */

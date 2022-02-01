@@ -10,32 +10,32 @@ class TeamWorkAuthorizeSettingFragment$4
 {
   TeamWorkAuthorizeSettingFragment$4(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) {
+    if (this.a.get(paramInt) == null) {
       paramInt = -1;
     } else {
-      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
+      paramInt = ((Integer)this.a.get(paramInt)).intValue();
     }
     switch (paramInt)
     {
     default: 
       break;
-    case 2131719503: 
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 3);
+    case 2131917066: 
+      TeamWorkAuthorizeSettingFragment.a(this.c, 3);
       break;
-    case 2131719502: 
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
+    case 2131917065: 
+      TeamWorkAuthorizeSettingFragment.a(this.c, 2);
     }
-    TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    TeamWorkAuthorizeSettingFragment.a(this.c);
+    if (this.b.isShowing()) {
+      this.b.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment.4
  * JD-Core Version:    0.7.0.1
  */

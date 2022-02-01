@@ -7,26 +7,26 @@ class BlessManager$5
   
   public void run()
   {
-    if (BlessManager.a(this.this$0) != null)
+    if (BlessManager.d(this.this$0) != null)
     {
-      if (!BlessManager.a(this.this$0))
+      if (!BlessManager.f(this.this$0))
       {
         BlessManager localBlessManager = this.this$0;
-        BlessManager.c(localBlessManager, BlessManager.a(localBlessManager, BlessManager.a(localBlessManager), false));
+        BlessManager.c(localBlessManager, BlessManager.a(localBlessManager, BlessManager.d(localBlessManager), false));
         localBlessManager = this.this$0;
-        BlessManager.a(localBlessManager, BlessManager.a(localBlessManager));
+        BlessManager.d(localBlessManager, BlessManager.f(localBlessManager));
         localBlessManager = this.this$0;
-        BlessManager.a(localBlessManager, BlessManager.a(localBlessManager), true);
+        BlessManager.a(localBlessManager, BlessManager.d(localBlessManager), true);
       }
     }
     else {
-      BlessManager.a(this.this$0, false);
+      BlessManager.d(this.this$0, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessManager.5
  * JD-Core Version:    0.7.0.1
  */

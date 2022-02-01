@@ -26,48 +26,48 @@ class FastWebActivity$23
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (FastWebActivity.a(this.a) != null)
+    if (FastWebActivity.v(this.a) != null)
     {
-      FastWebActivity.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-      FastWebActivity.a(this.a).a(this.a.app, paramAbsListView, paramInt1, paramInt2);
+      FastWebActivity.v(this.a).b(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      FastWebActivity.v(this.a).a(this.a.app, paramAbsListView, paramInt1, paramInt2);
     }
-    FastWebActivity.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    if (FastWebActivity.a(this.a) != null) {
-      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a), FastWebActivity.a(this.a).getFirstVisiblePosition(), paramInt2);
+    FastWebActivity.w(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (FastWebActivity.B(this.a) != null) {
+      FastWebActivity.B(this.a).a(FastWebActivity.w(this.a), FastWebActivity.w(this.a).getFirstVisiblePosition(), paramInt2);
     }
     FastWebActivity localFastWebActivity = this.a;
     paramInt2 += paramInt1;
     FastWebActivity.a(localFastWebActivity, paramAbsListView, paramInt2 - 1, false);
-    FastWebActivity.b(this.a, 0);
+    FastWebActivity.d(this.a, 0);
     paramAbsListView = paramAbsListView.getChildAt(0);
-    if ((paramAbsListView != null) && (FastWebActivity.c(this.a) != paramAbsListView.getTop()))
+    if ((paramAbsListView != null) && (FastWebActivity.C(this.a) != paramAbsListView.getTop()))
     {
-      FastWebActivity.c(this.a, paramAbsListView.getTop());
-      FastWebActivity.a(this.a).resetStationaryTime();
+      FastWebActivity.e(this.a, paramAbsListView.getTop());
+      FastWebActivity.D(this.a).resetStationaryTime();
     }
     if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0) && (paramInt1 == 0))
     {
       QLog.d("FastWebActivity", 2, "on scroller top");
-      FastWebActivity.b(this.a, 1);
+      FastWebActivity.d(this.a, 1);
     }
     if (paramInt2 == paramInt3)
     {
       QLog.d("FastWebActivity", 2, "on scroller bottom");
-      FastWebActivity.b(this.a, 2);
+      FastWebActivity.d(this.a, 2);
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     Object localObject1 = this.a;
-    boolean bool1 = FastWebActivity.a((FastWebActivity)localObject1, FastWebActivity.a((FastWebActivity)localObject1).getLastVisiblePosition());
+    boolean bool1 = FastWebActivity.b((FastWebActivity)localObject1, FastWebActivity.w((FastWebActivity)localObject1).getLastVisiblePosition());
     if (bool1) {
       localObject1 = "list_comment_kandian";
     } else {
       localObject1 = "list_kandian_native_web";
     }
     Object localObject2 = localObject1;
-    if (PTSLiteSwitchManager.a().b())
+    if (PTSLiteSwitchManager.a().c())
     {
       localObject2 = localObject1;
       if (TextUtils.equals((CharSequence)localObject1, "list_kandian_native_web")) {
@@ -77,48 +77,48 @@ class FastWebActivity$23
     if (paramInt == 0)
     {
       AbstractGifImage.resumeAll();
-      int i = FastWebActivity.a(this.a).getFirstVisiblePosition();
-      FastWebActivity.g(this.a);
+      int i = FastWebActivity.w(this.a).getFirstVisiblePosition();
+      FastWebActivity.x(this.a);
       localObject1 = this.a;
-      FastWebActivity.a((FastWebActivity)localObject1, i, FastWebActivity.a((FastWebActivity)localObject1));
-      DropFrameMonitor.a().a((String)localObject2, false);
+      FastWebActivity.a((FastWebActivity)localObject1, i, FastWebActivity.k((FastWebActivity)localObject1));
+      DropFrameMonitor.b().a((String)localObject2, false);
     }
     else
     {
       AbstractGifImage.pauseAll();
-      DropFrameMonitor.a().a((String)localObject2);
+      DropFrameMonitor.b().a((String)localObject2);
     }
     localObject1 = this.a;
-    boolean bool2 = FastWebActivity.b((FastWebActivity)localObject1, FastWebActivity.a((FastWebActivity)localObject1).getFirstVisiblePosition());
-    ReportUtil.a(paramAbsListView, paramInt, this.a.a.innerUniqueID, FastWebActivity.a(this.a, paramAbsListView, paramInt), bool2);
-    if (FastWebActivity.a(this.a) != null) {
-      FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+    boolean bool2 = FastWebActivity.c((FastWebActivity)localObject1, FastWebActivity.w((FastWebActivity)localObject1).getFirstVisiblePosition());
+    ReportUtil.a(paramAbsListView, paramInt, this.a.g.innerUniqueID, FastWebActivity.a(this.a, paramAbsListView, paramInt), bool2);
+    if (FastWebActivity.v(this.a) != null) {
+      FastWebActivity.v(this.a).a(paramAbsListView, paramInt);
     }
-    FastWebActivity.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
-    FastWebActivity.h(this.a);
-    if (FastWebActivity.a(this.a) != null) {
-      FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+    FastWebActivity.w(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+    FastWebActivity.y(this.a);
+    if ((FastWebActivity.z(this.a) != null) && (!bool1)) {
+      FastWebActivity.z(this.a).a(paramAbsListView, paramInt);
     }
     if (paramInt == 1) {
-      FastWebActivity.g(this.a);
+      FastWebActivity.x(this.a);
     }
     if (bool1)
     {
-      FastWebActivity.a(this.a).a();
-      if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).a() != null)) {
-        FastWebActivity.a(this.a).a().a(FastWebActivity.a(this.a).getFirstVisiblePosition() - FastWebActivity.a(this.a).getCount(), FastWebActivity.a(this.a).getLastVisiblePosition() - FastWebActivity.a(this.a).getCount());
+      FastWebActivity.A(this.a).b();
+      if ((FastWebActivity.o(this.a) != null) && (FastWebActivity.z(this.a) != null) && (FastWebActivity.o(this.a).q() != null)) {
+        FastWebActivity.o(this.a).q().a(FastWebActivity.w(this.a).getFirstVisiblePosition() - FastWebActivity.z(this.a).getCount(), FastWebActivity.w(this.a).getLastVisiblePosition() - FastWebActivity.z(this.a).getCount());
       }
     }
     else
     {
-      FastWebActivity.a(this.a).b();
+      FastWebActivity.A(this.a).c();
     }
     this.a.a(paramAbsListView, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.23
  * JD-Core Version:    0.7.0.1
  */

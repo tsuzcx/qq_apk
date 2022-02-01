@@ -24,16 +24,12 @@ public class ReportControllerServiceHolder
     return null;
   }
   
-  public static IReportService a()
+  public static void a(Provider<IReportDataProviderService> paramProvider)
   {
-    Provider localProvider = c;
-    if (localProvider != null) {
-      return (IReportService)localProvider.get();
-    }
-    return null;
+    a = paramProvider;
   }
   
-  public static ITouchEventService a()
+  public static ITouchEventService b()
   {
     Provider localProvider = b;
     if (localProvider != null) {
@@ -42,7 +38,26 @@ public class ReportControllerServiceHolder
     return null;
   }
   
-  public static ILocalMultiProcConfigService a()
+  public static void b(Provider<ITouchEventService> paramProvider)
+  {
+    b = paramProvider;
+  }
+  
+  public static IReportService c()
+  {
+    Provider localProvider = c;
+    if (localProvider != null) {
+      return (IReportService)localProvider.get();
+    }
+    return null;
+  }
+  
+  public static void c(Provider<IReportService> paramProvider)
+  {
+    c = paramProvider;
+  }
+  
+  public static ILocalMultiProcConfigService d()
   {
     Provider localProvider = d;
     if (localProvider != null) {
@@ -51,33 +66,18 @@ public class ReportControllerServiceHolder
     return null;
   }
   
-  public static IStatisticsCollectorService a()
+  public static void d(Provider<ILocalMultiProcConfigService> paramProvider)
+  {
+    d = paramProvider;
+  }
+  
+  public static IStatisticsCollectorService e()
   {
     Provider localProvider = e;
     if (localProvider != null) {
       return (IStatisticsCollectorService)localProvider.get();
     }
     return null;
-  }
-  
-  public static void a(Provider<IReportDataProviderService> paramProvider)
-  {
-    a = paramProvider;
-  }
-  
-  public static void b(Provider<ITouchEventService> paramProvider)
-  {
-    b = paramProvider;
-  }
-  
-  public static void c(Provider<IReportService> paramProvider)
-  {
-    c = paramProvider;
-  }
-  
-  public static void d(Provider<ILocalMultiProcConfigService> paramProvider)
-  {
-    d = paramProvider;
   }
   
   public static void e(Provider<IStatisticsCollectorService> paramProvider)
@@ -87,7 +87,7 @@ public class ReportControllerServiceHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bridge.ReportControllerServiceHolder
  * JD-Core Version:    0.7.0.1
  */

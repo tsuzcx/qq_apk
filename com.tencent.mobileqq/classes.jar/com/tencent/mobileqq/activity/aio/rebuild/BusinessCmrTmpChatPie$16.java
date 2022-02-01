@@ -23,25 +23,25 @@ class BusinessCmrTmpChatPie$16
   {
     if ((paramBoolean) && (paramNavigationMenuConfig != null))
     {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(String.valueOf(paramNavigationMenuConfig.jdField_a_of_type_Long))))
+      if ((this.a.ah.b != null) && (this.a.ah.b.equals(String.valueOf(paramNavigationMenuConfig.c))))
       {
-        int i = paramNavigationMenuConfig.jdField_a_of_type_Int;
+        int i = paramNavigationMenuConfig.a;
         paramBoolean = true;
         if (i == 1)
         {
-          QidianPubAccountBigDataHandler localQidianPubAccountBigDataHandler = (QidianPubAccountBigDataHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_PA_BIG_DATA_HANDLER);
-          PubAccountNavigationMenu localPubAccountNavigationMenu = localQidianPubAccountBigDataHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+          QidianPubAccountBigDataHandler localQidianPubAccountBigDataHandler = (QidianPubAccountBigDataHandler)this.a.d.getBusinessHandler(BusinessHandlerFactory.QIDIAN_PA_BIG_DATA_HANDLER);
+          PubAccountNavigationMenu localPubAccountNavigationMenu = localQidianPubAccountBigDataHandler.a(this.a.ah.b);
           BusinessCmrTmpChatPie localBusinessCmrTmpChatPie = this.a;
-          if (paramNavigationMenuConfig.jdField_b_of_type_Int != 0) {
+          if (paramNavigationMenuConfig.b != 0) {
             paramBoolean = false;
           }
           BusinessCmrTmpChatPie.b(localBusinessCmrTmpChatPie, paramBoolean);
-          if ((localPubAccountNavigationMenu != null) && (paramNavigationMenuConfig.jdField_b_of_type_Int == localPubAccountNavigationMenu.version))
+          if ((localPubAccountNavigationMenu != null) && (paramNavigationMenuConfig.b == localPubAccountNavigationMenu.version))
           {
             if (QLog.isColorLevel()) {
               QLog.d("BusinessChatPie", 2, "onGetNatigationStatus show directly");
             }
-            if (BusinessCmrTmpChatPie.a(this.a) == 0)
+            if (BusinessCmrTmpChatPie.d(this.a) == 0)
             {
               this.a.a(localPubAccountNavigationMenu);
               return;
@@ -49,10 +49,10 @@ class BusinessCmrTmpChatPie$16
             BusinessCmrTmpChatPie.a(this.a, 0);
             return;
           }
-          localQidianPubAccountBigDataHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramNavigationMenuConfig.jdField_b_of_type_Long);
+          localQidianPubAccountBigDataHandler.a(this.a.ah.b, paramNavigationMenuConfig.d);
           return;
         }
-        if (paramNavigationMenuConfig.c == 1) {
+        if (paramNavigationMenuConfig.e == 1) {
           BusinessCmrTmpChatPie.a(this.a, 1);
         }
         if (QLog.isColorLevel()) {
@@ -73,7 +73,7 @@ class BusinessCmrTmpChatPie$16
   {
     if (paramBoolean)
     {
-      if ((!BusinessCmrTmpChatPie.b(this.a)) && (BusinessCmrTmpChatPie.a(this.a) != 0))
+      if ((!BusinessCmrTmpChatPie.e(this.a)) && (BusinessCmrTmpChatPie.d(this.a) != 0))
       {
         BusinessCmrTmpChatPie.a(this.a, 0);
         return;
@@ -91,14 +91,14 @@ class BusinessCmrTmpChatPie$16
     if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
       paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramHashMap.uin))
+      if (this.a.ah.b.equals(paramHashMap.uin))
       {
-        if ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+        if ((TextUtils.isEmpty(this.a.ah.e)) || (this.a.ah.e.equals(this.a.ah.b)))
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramHashMap.nickname;
-          this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+          this.a.ah.e = paramHashMap.nickname;
+          this.a.C.setText(this.a.ah.e);
         }
-        this.a.j();
+        this.a.z();
         return;
       }
       if (QLog.isColorLevel()) {
@@ -121,16 +121,16 @@ class BusinessCmrTmpChatPie$16
       {
         i = Integer.parseInt(String.valueOf(paramHashMap.get("result")));
         String.valueOf(paramHashMap.get("master_uin"));
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (i == 1))
+        if ((this.a.ah.b != null) && (i == 1))
         {
-          long l1 = Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-          paramHashMap = ((QidianPubAccountBigDataHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_PA_BIG_DATA_HANDLER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-          QidianHandler localQidianHandler = (QidianHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER);
-          long l2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
+          long l1 = Long.parseLong(this.a.ah.b);
+          paramHashMap = ((QidianPubAccountBigDataHandler)this.a.d.getBusinessHandler(BusinessHandlerFactory.QIDIAN_PA_BIG_DATA_HANDLER)).a(this.a.ah.b);
+          QidianHandler localQidianHandler = (QidianHandler)this.a.d.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER);
+          long l2 = this.a.d.getLongAccountUin();
           if (paramHashMap != null)
           {
             i = paramHashMap.version;
-            localQidianHandler.a(l1, l2, i, BusinessCmrTmpChatPie.a(this.a), false);
+            localQidianHandler.a(l1, l2, i, BusinessCmrTmpChatPie.d(this.a), false);
           }
         }
         else
@@ -148,7 +148,7 @@ class BusinessCmrTmpChatPie$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.16
  * JD-Core Version:    0.7.0.1
  */

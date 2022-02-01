@@ -17,49 +17,49 @@ class PrivacyPermissionSettingFragment$1
   {
     if (!this.a.getBaseActivity().isFinishing())
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      if (this.a.a == null) {
         return;
       }
       if (!paramBoolean1)
       {
-        this.a.a(2131718834, 1);
-        localObject = ((FriendsManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        this.a.a(2131916364, 1);
+        localObject = ((FriendsManager)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).g(this.a.a.getCurrentAccountUin());
         PrivacyPermissionSettingFragment localPrivacyPermissionSettingFragment = this.a;
-        PrivacyPermissionSettingFragment.a(localPrivacyPermissionSettingFragment, localPrivacyPermissionSettingFragment.b.a(), ((Card)localObject).strangerInviteMeGroupOpen);
+        PrivacyPermissionSettingFragment.a(localPrivacyPermissionSettingFragment, localPrivacyPermissionSettingFragment.c.getSwitch(), ((Card)localObject).strangerInviteMeGroupOpen);
         return;
       }
       Object localObject = this.a;
-      PrivacyPermissionSettingFragment.a((PrivacyPermissionSettingFragment)localObject, ((PrivacyPermissionSettingFragment)localObject).b.a(), paramBoolean2);
+      PrivacyPermissionSettingFragment.a((PrivacyPermissionSettingFragment)localObject, ((PrivacyPermissionSettingFragment)localObject).c.getSwitch(), paramBoolean2);
     }
   }
   
   protected void onGetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString)) {
+    if (!this.a.a.getCurrentAccountUin().equals(paramString)) {
       return;
     }
     paramString = this.a;
-    PrivacyPermissionSettingFragment.a(paramString, paramString.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean2);
+    PrivacyPermissionSettingFragment.a(paramString, paramString.b.getSwitch(), paramBoolean2);
   }
   
   protected void onSetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString)) {
+    if (!this.a.a.getCurrentAccountUin().equals(paramString)) {
       return;
     }
     if (!paramBoolean1) {
-      this.a.a(2131718834, 1);
+      this.a.a(2131916364, 1);
     }
     if (paramBoolean2)
     {
       paramString = this.a;
-      PrivacyPermissionSettingFragment.a(paramString, paramString.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean3);
+      PrivacyPermissionSettingFragment.a(paramString, paramString.b.getSwitch(), paramBoolean3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PrivacyPermissionSettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

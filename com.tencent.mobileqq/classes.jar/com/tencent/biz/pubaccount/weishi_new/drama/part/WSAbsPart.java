@@ -7,56 +7,56 @@ import android.view.ViewStub;
 public abstract class WSAbsPart
   implements IWSPartLifeCycle
 {
-  protected Context a;
-  protected View a;
-  protected ViewStub a;
+  protected Context b;
+  protected ViewStub c;
+  protected View d;
   
   public WSAbsPart(Context paramContext, ViewStub paramViewStub)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
+    this.b = paramContext;
+    this.c = paramViewStub;
   }
   
   private void a(ViewStub paramViewStub)
   {
-    paramViewStub.setLayoutResource(a());
-    this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
-  }
-  
-  public void E_()
-  {
-    a(this.jdField_a_of_type_AndroidViewViewStub);
-  }
-  
-  public void F_() {}
-  
-  protected abstract int a();
-  
-  public Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
+    paramViewStub.setLayoutResource(b());
+    this.d = paramViewStub.inflate();
   }
   
   protected View a(int paramInt)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.d;
     if (localView != null) {
       return localView.findViewById(paramInt);
     }
     return null;
   }
   
-  public void c() {}
+  protected abstract int b();
+  
+  public void c()
+  {
+    a(this.c);
+  }
   
   public void d() {}
   
-  public void h() {}
+  public void e() {}
   
-  public void i() {}
+  public void f() {}
+  
+  public void m() {}
+  
+  public void n() {}
+  
+  public Context o()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.part.WSAbsPart
  * JD-Core Version:    0.7.0.1
  */

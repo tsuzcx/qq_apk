@@ -12,23 +12,23 @@ class QWalletIPCModule$2
   
   public void run()
   {
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("config_str");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("id");
-    QWalletIPCModule.2.1 local1 = new QWalletIPCModule.2.1(this, (ResultReceiver)this.jdField_a_of_type_AndroidOsBundle.getParcelable("receiver"));
-    IPreloadService localIPreloadService = (IPreloadService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IPreloadService.class, "");
-    if ("downloadModule".equals(this.jdField_a_of_type_JavaLangString))
+    String str1 = this.a.getString("config_str");
+    String str2 = this.a.getString("id");
+    QWalletIPCModule.2.1 local1 = new QWalletIPCModule.2.1(this, (ResultReceiver)this.a.getParcelable("receiver"));
+    IPreloadService localIPreloadService = (IPreloadService)this.b.getRuntimeService(IPreloadService.class, "");
+    if ("downloadModule".equals(this.c))
     {
       localIPreloadService.downloadModule(str2, str1, local1);
       return;
     }
-    if ("downloadRes".equals(this.jdField_a_of_type_JavaLangString)) {
+    if ("downloadRes".equals(this.c)) {
       localIPreloadService.downloadRes(str2, str1, local1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.ipc.impl.QWalletIPCModule.2
  * JD-Core Version:    0.7.0.1
  */

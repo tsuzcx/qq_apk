@@ -11,7 +11,7 @@ class a$4
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    Log.d(a.j(), "on error");
+    Log.d("MediaPlayerWrapper", "on error");
     a.a(this.a, a.a.b);
     a.a(this.a).a(paramMediaPlayer, paramInt1, paramInt2);
     return false;
@@ -19,7 +19,7 @@ class a$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.audio.a.4
  * JD-Core Version:    0.7.0.1
  */

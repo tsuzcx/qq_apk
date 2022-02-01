@@ -20,44 +20,44 @@ import java.util.HashMap;
 public class ImageUploadController
   extends FileUploadController
 {
-  private long jdField_a_of_type_Long;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler;
-  TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long;
-  private Long jdField_b_of_type_JavaLangLong;
-  private String jdField_b_of_type_JavaLangString;
-  private long jdField_c_of_type_Long;
-  private String jdField_c_of_type_JavaLangString;
-  private long jdField_d_of_type_Long;
-  private String jdField_d_of_type_JavaLangString;
+  TransferRequest d;
+  TransProcessorHandler e;
+  private Long f;
+  private Long g;
+  private long h;
+  private long i;
+  private long j;
+  private long k;
+  private String l;
+  private String m;
+  private String n;
+  private String o;
   
   public ImageUploadController(Context paramContext, QQAppInterface paramQQAppInterface, FileUploadController.FileUploadListener paramFileUploadListener)
   {
     super(paramContext, paramQQAppInterface, paramFileUploadListener);
     paramContext = Long.valueOf(0L);
-    this.jdField_a_of_type_JavaLangLong = paramContext;
-    this.jdField_b_of_type_JavaLangLong = paramContext;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new ImageUploadController.1(this);
+    this.f = paramContext;
+    this.g = paramContext;
+    this.h = 0L;
+    this.i = 0L;
+    this.j = 0L;
+    this.k = 0L;
+    this.l = null;
+    this.m = null;
+    this.n = null;
+    this.o = null;
+    this.e = new ImageUploadController.1(this);
   }
   
   private void a(int paramInt)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    long l1 = this.jdField_b_of_type_Long;
-    long l2 = this.jdField_a_of_type_Long;
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext);
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    long l1 = this.i;
+    long l2 = this.h;
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.a);
+    String str = this.b.getCurrentAccountUin();
     boolean bool;
     if (paramInt == 0) {
       bool = true;
@@ -71,8 +71,8 @@ public class ImageUploadController
   {
     b(paramInt);
     c(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController$FileUploadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController$FileUploadListener.a(paramInt, paramString1, paramString2, paramString3);
+    if (this.c != null) {
+      this.c.a(paramInt, paramString1, paramString2, paramString3);
     }
   }
   
@@ -80,32 +80,32 @@ public class ImageUploadController
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    localHashMap.put("cover_size_before_compression", this.jdField_a_of_type_JavaLangLong.toString());
-    localHashMap.put("cover_size_after_compression", this.jdField_b_of_type_JavaLangLong.toString());
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext);
-    String str = RIJQQAppInterfaceUtil.a();
+    localHashMap.put("cover_size_before_compression", this.f.toString());
+    localHashMap.put("cover_size_after_compression", this.g.toString());
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.a);
+    String str = RIJQQAppInterfaceUtil.d();
     boolean bool;
     if (paramInt == 0) {
       bool = true;
     } else {
       bool = false;
     }
-    localStatisticCollector.collectPerformance(str, "actReadInJoyDeliverVideoCompressCover", bool, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    localStatisticCollector.collectPerformance(str, "actReadInJoyDeliverVideoCompressCover", bool, this.i - this.h, 0L, localHashMap, "");
   }
   
   private void c(int paramInt)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext);
-    String str = RIJQQAppInterfaceUtil.a();
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.a);
+    String str = RIJQQAppInterfaceUtil.d();
     boolean bool;
     if (paramInt == 0) {
       bool = true;
     } else {
       bool = false;
     }
-    localStatisticCollector.collectPerformance(str, "actReadInJoyDeliverVideoUploadCover", bool, this.jdField_c_of_type_Long - this.jdField_d_of_type_Long, 0L, localHashMap, "");
+    localStatisticCollector.collectPerformance(str, "actReadInJoyDeliverVideoUploadCover", bool, this.j - this.k, 0L, localHashMap, "");
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -122,7 +122,7 @@ public class ImageUploadController
       ((StringBuilder)localObject).append(paramString);
       QLog.d("ImageUploadController", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_d_of_type_JavaLangString = paramString;
+    this.o = paramString;
     if (TextUtils.isEmpty(paramString))
     {
       if (QLog.isColorLevel()) {
@@ -144,18 +144,18 @@ public class ImageUploadController
       a(1002, null, null, null);
       return;
     }
-    this.jdField_a_of_type_JavaLangLong = Long.valueOf(((File)localObject).length());
-    if (!NetworkUtil.a(this.jdField_a_of_type_AndroidContentContext))
+    this.f = Long.valueOf(((File)localObject).length());
+    if (!NetworkUtil.a(this.a))
     {
       a(1003, null, null, null);
       return;
     }
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.l = "";
+    this.m = "";
+    this.n = "";
+    this.h = System.currentTimeMillis();
     localObject = new CompressInfo(paramString, paramInt);
-    ((CompressInfo)localObject).f = 0;
+    ((CompressInfo)localObject).o = 0;
     if (!((ICompressOperator)QRoute.api(ICompressOperator.class)).start((CompressInfo)localObject)) {
       a(1001);
     }
@@ -163,31 +163,31 @@ public class ImageUploadController
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("startUploadPic compressPath=");
-      localStringBuilder.append(((CompressInfo)localObject).jdField_e_of_type_JavaLangString);
+      localStringBuilder.append(((CompressInfo)localObject).l);
       localStringBuilder.append(", originPath=");
       localStringBuilder.append(paramString);
       localStringBuilder.append(", outWidth=");
-      localStringBuilder.append(((CompressInfo)localObject).d);
+      localStringBuilder.append(((CompressInfo)localObject).m);
       localStringBuilder.append(", outHeight=");
-      localStringBuilder.append(((CompressInfo)localObject).jdField_e_of_type_Int);
+      localStringBuilder.append(((CompressInfo)localObject).n);
       QLog.d("ImageUploadController", 2, localStringBuilder.toString());
     }
-    if (!TextUtils.isEmpty(((CompressInfo)localObject).jdField_e_of_type_JavaLangString)) {
-      paramString = ((CompressInfo)localObject).jdField_e_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(((CompressInfo)localObject).l)) {
+      paramString = ((CompressInfo)localObject).l;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangLong = Long.valueOf(new File(this.jdField_a_of_type_JavaLangString).length());
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    paramString = (ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BDHCommonUploadProcessor.class });
-    paramString.addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = new TransferRequest();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
+    this.l = paramString;
+    this.g = Long.valueOf(new File(this.l).length());
+    this.i = System.currentTimeMillis();
+    paramString = (ITransFileController)this.b.getRuntimeService(ITransFileController.class);
+    this.e.addFilter(new Class[] { BDHCommonUploadProcessor.class });
+    paramString.addHandle(this.e);
+    this.d = new TransferRequest();
+    localObject = this.d;
     ((TransferRequest)localObject).mIsUp = true;
     ((TransferRequest)localObject).mCommandId = 10;
-    ((TransferRequest)localObject).mLocalPath = this.jdField_a_of_type_JavaLangString;
+    ((TransferRequest)localObject).mLocalPath = this.l;
     ((TransferRequest)localObject).mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
+    localObject = this.d;
     ((TransferRequest)localObject).mPeerUin = "0";
     ((TransferRequest)localObject).mFileType = 24;
     ((TransferRequest)localObject).mRichTag = "KandianUGCPicUpload";
@@ -196,19 +196,19 @@ public class ImageUploadController
   
   public void b()
   {
-    ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-    if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_d_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
+    ((ITransFileController)this.b.getRuntimeService(ITransFileController.class)).removeHandle(this.e);
+    if ((!TextUtils.isEmpty(this.o)) && (!TextUtils.isEmpty(this.l)) && (!this.o.equals(this.l)))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("clearTempFile(image), origin:");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.o);
         ((StringBuilder)localObject).append(", compress:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.l);
         QLog.d("ImageUploadController", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = new File(this.jdField_a_of_type_JavaLangString);
+      Object localObject = new File(this.l);
       if (((File)localObject).exists()) {
         ((File)localObject).delete();
       }
@@ -217,7 +217,7 @@ public class ImageUploadController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.video.transfer.ImageUploadController
  * JD-Core Version:    0.7.0.1
  */

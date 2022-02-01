@@ -17,11 +17,16 @@ public class TXLivePusher
   public static final int YUV_420P = 3;
   public static final int YUV_420SP = 1;
   public static final int YUV_420YpCbCr = 2;
-  private b mTXTxLivePusherImpl;
+  private TXLivePusherImpl mTXTxLivePusherImpl;
   
   public TXLivePusher(Context paramContext)
   {
-    this.mTXTxLivePusherImpl = new b(paramContext);
+    this.mTXTxLivePusherImpl = new TXLivePusherImpl(paramContext);
+  }
+  
+  public void callExperimentalAPI(String paramString)
+  {
+    this.mTXTxLivePusherImpl.f(paramString);
   }
   
   public void enableAudioVolumeEvaluation(int paramInt)
@@ -36,17 +41,17 @@ public class TXLivePusher
   
   public TXBeautyManager getBeautyManager()
   {
-    return this.mTXTxLivePusherImpl.r();
+    return this.mTXTxLivePusherImpl.q();
   }
   
   public TXLivePushConfig getConfig()
   {
-    return this.mTXTxLivePusherImpl.i();
+    return this.mTXTxLivePusherImpl.h();
   }
   
   public int getMaxZoom()
   {
-    return this.mTXTxLivePusherImpl.q();
+    return this.mTXTxLivePusherImpl.p();
   }
   
   @Deprecated
@@ -57,7 +62,7 @@ public class TXLivePusher
   
   public boolean isPushing()
   {
-    return this.mTXTxLivePusherImpl.m();
+    return this.mTXTxLivePusherImpl.l();
   }
   
   public void onLogRecord(String paramString)
@@ -68,12 +73,12 @@ public class TXLivePusher
   @Deprecated
   public boolean pauseBGM()
   {
-    return this.mTXTxLivePusherImpl.u();
+    return this.mTXTxLivePusherImpl.t();
   }
   
   public void pausePusher()
   {
-    this.mTXTxLivePusherImpl.k();
+    this.mTXTxLivePusherImpl.j();
   }
   
   @Deprecated
@@ -85,12 +90,12 @@ public class TXLivePusher
   @Deprecated
   public boolean resumeBGM()
   {
-    return this.mTXTxLivePusherImpl.v();
+    return this.mTXTxLivePusherImpl.u();
   }
   
   public void resumePusher()
   {
-    this.mTXTxLivePusherImpl.l();
+    this.mTXTxLivePusherImpl.k();
   }
   
   public void sendCustomPCMData(byte[] paramArrayOfByte)
@@ -105,7 +110,7 @@ public class TXLivePusher
   
   public int sendCustomVideoTexture(int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.mTXTxLivePusherImpl.c(paramInt1, paramInt2, paramInt3);
+    return this.mTXTxLivePusherImpl.b(paramInt1, paramInt2, paramInt3);
   }
   
   @Deprecated
@@ -331,13 +336,13 @@ public class TXLivePusher
   
   public void startScreenCapture()
   {
-    this.mTXTxLivePusherImpl.n();
+    this.mTXTxLivePusherImpl.m();
   }
   
   @Deprecated
   public boolean stopBGM()
   {
-    return this.mTXTxLivePusherImpl.s();
+    return this.mTXTxLivePusherImpl.r();
   }
   
   public void stopCameraPreview(boolean paramBoolean)
@@ -347,22 +352,22 @@ public class TXLivePusher
   
   public void stopPusher()
   {
-    this.mTXTxLivePusherImpl.j();
+    this.mTXTxLivePusherImpl.i();
   }
   
   public void stopRecord()
   {
-    this.mTXTxLivePusherImpl.w();
+    this.mTXTxLivePusherImpl.v();
   }
   
   public void stopScreenCapture()
   {
-    this.mTXTxLivePusherImpl.o();
+    this.mTXTxLivePusherImpl.n();
   }
   
   public void switchCamera()
   {
-    this.mTXTxLivePusherImpl.p();
+    this.mTXTxLivePusherImpl.o();
   }
   
   public boolean turnOnFlashLight(boolean paramBoolean)
@@ -372,7 +377,7 @@ public class TXLivePusher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.TXLivePusher
  * JD-Core Version:    0.7.0.1
  */

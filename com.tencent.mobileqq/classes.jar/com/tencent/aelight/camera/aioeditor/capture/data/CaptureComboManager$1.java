@@ -14,22 +14,22 @@ class CaptureComboManager$1
     if (paramMessage.what != 1) {
       return false;
     }
-    this.a.a.removeMessages(1);
-    if (this.a.a()) {
-      this.a.a.sendEmptyMessageDelayed(1, 50L);
+    this.a.e.removeMessages(1);
+    if (this.a.e()) {
+      this.a.e.sendEmptyMessageDelayed(1, 50L);
     }
     if (paramMessage.arg2 == 7)
     {
       int i = paramMessage.arg1;
       paramMessage = (CaptureSet)paramMessage.obj;
-      Message.obtain(this.a.c, 7, i, 0, paramMessage).sendToTarget();
+      Message.obtain(this.a.i, 7, i, 0, paramMessage).sendToTarget();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.CaptureComboManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,17 +18,17 @@ final class ColdPalaceHelper$addMeBlockedGrayTip$1
   public final void run()
   {
     ILimitChatUtils localILimitChatUtils = (ILimitChatUtils)QRoute.api(ILimitChatUtils.class);
-    BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)this.this$0.a();
-    String str = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
-    MobileQQ localMobileQQ = this.this$0.a().getApplication();
+    BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)this.this$0.i();
+    String str = this.a;
+    int i = this.b;
+    MobileQQ localMobileQQ = this.this$0.i().getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localMobileQQ, "app.application");
-    localILimitChatUtils.addGrayTipsMessage(localBaseQQAppInterface, str, i, "", localMobileQQ.getResources().getString(2131698775), 459803, "", -1, null);
+    localILimitChatUtils.addGrayTipsMessage(localBaseQQAppInterface, str, i, "", localMobileQQ.getResources().getString(2131896737), 459803, "", -1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.ColdPalaceHelper.addMeBlockedGrayTip.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,17 +9,17 @@ class BaseVideoView$7
   
   public void run()
   {
-    if (this.this$0.a() != null)
+    if (this.this$0.getProgressBar() != null)
     {
-      if (this.jdField_a_of_type_Float == 0.0F)
+      if (this.a == 0.0F)
       {
-        this.this$0.a().setProgress(0);
+        this.this$0.getProgressBar().setProgress(0);
         return;
       }
-      SeekBar localSeekBar = this.this$0.a();
-      double d1 = this.this$0.a().getMax();
-      double d2 = this.jdField_a_of_type_Double;
-      double d3 = this.jdField_a_of_type_Float;
+      SeekBar localSeekBar = this.this$0.getProgressBar();
+      double d1 = this.this$0.getProgressBar().getMax();
+      double d2 = this.b;
+      double d3 = this.a;
       Double.isNaN(d3);
       d2 /= d3;
       Double.isNaN(d1);

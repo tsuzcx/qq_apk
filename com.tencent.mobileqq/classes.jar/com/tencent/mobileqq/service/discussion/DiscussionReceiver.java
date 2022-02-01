@@ -20,9 +20,9 @@ public class DiscussionReceiver
   private Object a(boolean paramBoolean, Object paramObject1, Object paramObject2)
   {
     DiscussionReceiver.RespPackage localRespPackage = new DiscussionReceiver.RespPackage(this);
-    localRespPackage.jdField_a_of_type_Boolean = paramBoolean;
-    localRespPackage.jdField_a_of_type_JavaLangObject = paramObject1;
-    localRespPackage.b = paramObject2;
+    localRespPackage.a = paramBoolean;
+    localRespPackage.b = paramObject1;
+    localRespPackage.c = paramObject2;
     return localRespPackage;
   }
   
@@ -254,7 +254,7 @@ public class DiscussionReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.discussion.DiscussionReceiver
  * JD-Core Version:    0.7.0.1
  */

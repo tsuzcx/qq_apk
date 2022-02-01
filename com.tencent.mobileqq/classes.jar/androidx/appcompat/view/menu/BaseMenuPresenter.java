@@ -117,7 +117,11 @@ public abstract class BaseMenuPresenter
   public boolean onSubMenuSelected(SubMenuBuilder paramSubMenuBuilder)
   {
     MenuPresenter.Callback localCallback = this.mCallback;
-    if (localCallback != null) {
+    if (localCallback != null)
+    {
+      if (paramSubMenuBuilder == null) {
+        paramSubMenuBuilder = this.mMenu;
+      }
       return localCallback.onOpenSubMenu(paramSubMenuBuilder);
     }
     return false;

@@ -14,9 +14,9 @@ class QQAppInterface$10
       this.this$0.mqqService.destroy();
     }
     int i = 0;
-    while (i < QQAppInterface.access$2000(this.this$0).length)
+    while (i < QQAppInterface.access$2100(this.this$0).length)
     {
-      Manager localManager = QQAppInterface.access$2000(this.this$0)[i];
+      Manager localManager = QQAppInterface.access$2100(this.this$0)[i];
       if (localManager != null) {
         localManager.onDestroy();
       }
@@ -26,7 +26,7 @@ class QQAppInterface$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.10
  * JD-Core Version:    0.7.0.1
  */

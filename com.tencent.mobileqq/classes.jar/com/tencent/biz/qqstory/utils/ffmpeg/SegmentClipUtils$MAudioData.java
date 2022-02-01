@@ -2,15 +2,15 @@ package com.tencent.biz.qqstory.utils.ffmpeg;
 
 class SegmentClipUtils$MAudioData
 {
-  public int a;
   public byte[] a;
   public int b;
+  public int c;
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a = paramArrayOfByte;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
 }
 

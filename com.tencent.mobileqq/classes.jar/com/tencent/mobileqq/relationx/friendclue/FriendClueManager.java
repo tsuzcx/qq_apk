@@ -28,43 +28,43 @@ import mqq.manager.Manager;
 public class FriendClueManager
   implements Handler.Callback, Manager
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private CardHandler jdField_a_of_type_ComTencentMobileqqAppCardHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private BusinessCard jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard;
-  private AllInOne jdField_a_of_type_ComTencentMobileqqProfilecardDataAllInOne;
-  ProfileCardObserver jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver = new FriendClueManager.2(this);
-  private FriendClueCommonGroupHelper jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueCommonGroupHelper;
-  private boolean jdField_a_of_type_Boolean = false;
+  ProfileCardObserver a = new FriendClueManager.2(this);
+  private FriendClueCommonGroupHelper b;
+  private BusinessCard c;
+  private CardHandler d;
+  private Context e;
+  private Handler f;
+  private QQAppInterface g;
+  private AllInOne h;
+  private boolean i = false;
   
   public FriendClueManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.g = paramQQAppInterface;
+    this.e = BaseApplicationImpl.getContext();
+    this.f = new Handler(Looper.getMainLooper(), this);
   }
   
   private void c(String paramString)
   {
-    if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+    if (NetworkUtil.isNetworkAvailable(this.e))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppCardHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppCardHandler = ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER));
+      if (this.d == null) {
+        this.d = ((CardHandler)this.g.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER));
       }
-      BusinessCardManager localBusinessCardManager = (BusinessCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER);
+      BusinessCardManager localBusinessCardManager = (BusinessCardManager)this.g.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER);
       if (localBusinessCardManager != null) {
-        this.jdField_a_of_type_Boolean = localBusinessCardManager.a(1);
+        this.i = localBusinessCardManager.b(1);
       }
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardDataAllInOne = new AllInOne(paramString, 1);
-      long l = ProfileUtils.getControl(this.jdField_a_of_type_ComTencentMobileqqProfilecardDataAllInOne, this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString, 1, 0L, (byte)1, 0L, 0L, null, "", l, 10004, null, (byte)0);
-      paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      this.h = new AllInOne(paramString, 1);
+      long l = ProfileUtils.getControl(this.h, this.i);
+      this.d.a(this.g.getCurrentAccountUin(), paramString, 1, 0L, (byte)1, 0L, 0L, null, "", l, 10004, null, (byte)0);
+      paramString = this.f.obtainMessage();
       paramString.what = 1;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramString, 10000L);
+      this.f.sendMessageDelayed(paramString, 10000L);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new FriendClueManager.1(this));
+    this.f.post(new FriendClueManager.1(this));
     if (QLog.isColorLevel()) {
       QLog.d("FriendClueManager", 2, String.format("network is not available, uin: %s", new Object[] { paramString }));
     }
@@ -75,28 +75,28 @@ public class FriendClueManager
     if (QLog.isColorLevel()) {
       QLog.d("FriendClueManager", 2, String.format("jumpToRemarkEdit, uin: %s", new Object[] { paramString }));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) {
-      this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = new BusinessCard();
+    if (this.c == null) {
+      this.c = new BusinessCard();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver);
+    this.g.addObserver(this.a);
     c(paramString);
   }
   
   public void b(String paramString)
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    if (this.jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueCommonGroupHelper == null) {
-      this.jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueCommonGroupHelper = new FriendClueCommonGroupHelper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseApplication);
+    if (this.b == null) {
+      this.b = new FriendClueCommonGroupHelper(this.g, localBaseApplication);
     }
-    this.jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueCommonGroupHelper.a(paramString);
+    this.b.a(paramString);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
-    if (i != 1)
+    int j = paramMessage.what;
+    if (j != 1)
     {
-      if (i != 2) {
+      if (j != 2) {
         return true;
       }
       Card localCard = null;
@@ -105,30 +105,30 @@ public class FriendClueManager
       }
       if (localCard != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = BusinessCardUtils.a(localCard.bCardInfo);
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.bindUin = this.jdField_a_of_type_ComTencentMobileqqProfilecardDataAllInOne.uin;
-        paramMessage = new Intent(this.jdField_a_of_type_AndroidContentContext, BusinessCardEditActivity.class);
+        this.c = BusinessCardUtils.a(localCard.bCardInfo);
+        this.c.bindUin = this.h.uin;
+        paramMessage = new Intent(this.e, BusinessCardEditActivity.class);
         paramMessage.addFlags(268435456);
         paramMessage.putExtra("mode_type", 2);
         paramMessage.putExtra("source_activity", 1);
-        paramMessage.putExtra("cur_card_body", this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard);
+        paramMessage.putExtra("cur_card_body", this.c);
         paramMessage.putExtra("is_edit_mode", true);
         paramMessage.putExtra("finish_immedia", true);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage);
+        this.e.startActivity(paramMessage);
         return true;
       }
       QLog.e("FriendClueManager", 1, "card get failed ");
       return true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver);
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131693432, 1).a();
+    this.g.removeObserver(this.a);
+    QQToast.makeText(this.e, 1, 2131890981, 1).show();
     return true;
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver);
-    FriendClueCommonGroupHelper localFriendClueCommonGroupHelper = this.jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueCommonGroupHelper;
+    this.g.removeObserver(this.a);
+    FriendClueCommonGroupHelper localFriendClueCommonGroupHelper = this.b;
     if (localFriendClueCommonGroupHelper != null) {
       localFriendClueCommonGroupHelper.b();
     }
@@ -136,7 +136,7 @@ public class FriendClueManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueManager
  * JD-Core Version:    0.7.0.1
  */

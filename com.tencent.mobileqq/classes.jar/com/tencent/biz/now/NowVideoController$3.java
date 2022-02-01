@@ -14,23 +14,23 @@ class NowVideoController$3
   
   public void run()
   {
-    if (NowVideoController.a(this.this$0) == null) {
+    if (NowVideoController.b(this.this$0) == null) {
       return;
     }
     int i = this.a;
     while (i <= this.b)
     {
-      Object localObject = NowVideoController.a(this.this$0).getChildAt(i - this.a);
+      Object localObject = NowVideoController.b(this.this$0).getChildAt(i - this.a);
       if (localObject != null)
       {
-        localObject = (PAVideoView)((View)localObject).findViewById(2131377982);
-        if ((localObject != null) && (((PAVideoView)localObject).jdField_j_of_type_Int == 4))
+        localObject = (PAVideoView)((View)localObject).findViewById(2131446469);
+        if ((localObject != null) && (((PAVideoView)localObject).P == 4))
         {
-          ((PAVideoView)localObject).getGlobalVisibleRect(NowVideoController.a());
-          if ((((PAVideoView)localObject).getHeight() == NowVideoController.a().height()) && (NetworkUtil.isWifiConnected(((PAVideoView)localObject).getContext())) && (EcShopAssistantManager.a) && (NowVideoController.a().top > 0) && (!((PAVideoView)localObject).jdField_j_of_type_Boolean)) {
-            ((PAVideoView)localObject).f();
+          ((PAVideoView)localObject).getGlobalVisibleRect(NowVideoController.f());
+          if ((((PAVideoView)localObject).getHeight() == NowVideoController.f().height()) && (NetworkUtil.isWifiConnected(((PAVideoView)localObject).getContext())) && (EcShopAssistantManager.t) && (NowVideoController.f().top > 0) && (!((PAVideoView)localObject).G)) {
+            ((PAVideoView)localObject).h();
           } else {
-            ((PAVideoView)localObject).e();
+            ((PAVideoView)localObject).g();
           }
         }
       }
@@ -40,7 +40,7 @@ class NowVideoController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.now.NowVideoController.3
  * JD-Core Version:    0.7.0.1
  */

@@ -19,8 +19,8 @@ public class EditPicMeiHua
   extends EditVideoPart
   implements ProviderContainerView.ProviderContainViewListener
 {
-  private static List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ProviderContainerView jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderContainerView;
+  private static List<Integer> b = new ArrayList();
+  private ProviderContainerView a;
   
   public EditPicMeiHua(@NonNull EditVideoPartManager paramEditVideoPartManager)
   {
@@ -31,16 +31,16 @@ public class EditPicMeiHua
   {
     try
     {
-      if (jdField_a_of_type_JavaUtilList.isEmpty())
+      if (b.isEmpty())
       {
         if (EditVideoPartManager.a(paramInt, 8)) {
-          jdField_a_of_type_JavaUtilList.add(Integer.valueOf(101));
+          b.add(Integer.valueOf(101));
         }
         if ((EditVideoPartManager.a(paramInt, 64)) && (Build.VERSION.SDK_INT >= 21)) {
-          jdField_a_of_type_JavaUtilList.add(Integer.valueOf(100));
+          b.add(Integer.valueOf(100));
         }
         if (EditVideoPartManager.a(paramInt, 2048)) {
-          jdField_a_of_type_JavaUtilList.add(Integer.valueOf(102));
+          b.add(Integer.valueOf(102));
         }
       }
       return;
@@ -48,48 +48,40 @@ public class EditPicMeiHua
     finally {}
   }
   
-  public static boolean a(int paramInt)
+  public static boolean b(int paramInt)
   {
     a(paramInt);
-    return (EditVideoPartManager.a(paramInt, 65536)) && (!jdField_a_of_type_JavaUtilList.isEmpty());
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.d()) {
-      return 3;
-    }
-    return 1;
+    return (EditVideoPartManager.a(paramInt, 65536)) && (!b.isEmpty());
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderContainerView = ((ProviderContainerView)a(2064122515));
-    if (jdField_a_of_type_JavaUtilList.isEmpty()) {
-      a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.c);
+    this.a = ((ProviderContainerView)d(2063991331));
+    if (b.isEmpty()) {
+      a(this.t.I.c);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderContainerView.a(a(), jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderContainerView.setProviderContainViewListener(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderContainerView.setEditActivityEntrance(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.c());
+    this.a.a(c(), b);
+    this.a.setProviderContainViewListener(this);
+    this.a.setEditActivityEntrance(this.t.I.j());
   }
   
   public void a(int paramInt, @NonNull GenerateContext paramGenerateContext)
   {
     super.a(paramInt, paramGenerateContext);
-    if ((QIMFilterProviderView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderContainerView.a(QIMFilterProviderView.class) != null)
+    if ((QIMFilterProviderView)this.a.a(QIMFilterProviderView.class) != null)
     {
       boolean bool;
-      if (VideoFilterTools.a().b(a()) != null) {
+      if (VideoFilterTools.a().b(c()) != null) {
         bool = true;
       } else {
         bool = false;
       }
-      paramGenerateContext.c = bool;
-      if ((paramGenerateContext.c) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.c()))
+      paramGenerateContext.h = bool;
+      if ((paramGenerateContext.h) && (this.t.j()))
       {
-        paramGenerateContext = paramGenerateContext.a;
-        paramGenerateContext.a += 1;
+        paramGenerateContext = paramGenerateContext.l;
+        paramGenerateContext.f += 1;
       }
     }
   }
@@ -101,18 +93,18 @@ public class EditPicMeiHua
       if (paramInt != 21)
       {
         if (paramInt != 22) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderContainerView.setVisibility(4);
+          this.a.setVisibility(4);
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderContainerView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderContainerView.a(0);
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.c())
+        this.a.setVisibility(0);
+        this.a.a(0);
+        if (this.t.j())
         {
-          EditActivityEntranceUtil.a("0X800B3CB", this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.c());
-          EditActivityEntranceUtil.a("0X800B3CC", this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.c());
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderContainerView.b(101);
+          EditActivityEntranceUtil.a("0X800B3CB", this.t.I.j());
+          EditActivityEntranceUtil.a("0X800B3CC", this.t.I.j());
+          this.a.b(101);
         }
       }
     }
@@ -123,18 +115,26 @@ public class EditPicMeiHua
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(10, Boolean.valueOf(true));
+    this.t.a(10, Boolean.valueOf(true));
   }
   
-  public void e()
+  public int c()
   {
-    super.e();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderContainerView.a();
+    if (this.t.k()) {
+      return 3;
+    }
+    return 1;
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditPicMeiHua
  * JD-Core Version:    0.7.0.1
  */

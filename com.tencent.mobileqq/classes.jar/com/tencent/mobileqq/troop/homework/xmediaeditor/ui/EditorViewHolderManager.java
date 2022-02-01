@@ -16,7 +16,7 @@ public class EditorViewHolderManager
   {
     EditItemBase localEditItemBase = a(paramInt);
     if (localEditItemBase != null) {
-      return localEditItemBase.a(paramViewGroup);
+      return localEditItemBase.b(paramViewGroup);
     }
     return null;
   }
@@ -39,9 +39,9 @@ public class EditorViewHolderManager
   public void a(RecyclerView.ViewHolder paramViewHolder)
   {
     paramViewHolder = (EditorViewHolderManager.EditViewHolderBase)paramViewHolder;
-    if (paramViewHolder.a != null)
+    if (paramViewHolder.f != null)
     {
-      EditItemBase localEditItemBase = a(paramViewHolder.a.b());
+      EditItemBase localEditItemBase = a(paramViewHolder.f.b());
       if (localEditItemBase != null) {
         localEditItemBase.a(paramViewHolder);
       }
@@ -53,7 +53,7 @@ public class EditorViewHolderManager
     EditItemBase localEditItemBase = a(paramEditItemInfoBase.b());
     if (localEditItemBase != null)
     {
-      ((EditorViewHolderManager.EditViewHolderBase)paramViewHolder).a = paramEditItemInfoBase;
+      ((EditorViewHolderManager.EditViewHolderBase)paramViewHolder).f = paramEditItemInfoBase;
       localEditItemBase.a(paramViewHolder, paramEditItemInfoBase, paramInt);
     }
   }
@@ -82,9 +82,9 @@ public class EditorViewHolderManager
   public void b(RecyclerView.ViewHolder paramViewHolder)
   {
     paramViewHolder = (EditorViewHolderManager.EditViewHolderBase)paramViewHolder;
-    if (paramViewHolder.a != null)
+    if (paramViewHolder.f != null)
     {
-      EditItemBase localEditItemBase = a(paramViewHolder.a.b());
+      EditItemBase localEditItemBase = a(paramViewHolder.f.b());
       if (localEditItemBase != null) {
         localEditItemBase.b(paramViewHolder);
       }
@@ -102,9 +102,9 @@ public class EditorViewHolderManager
   public void c(RecyclerView.ViewHolder paramViewHolder)
   {
     paramViewHolder = (EditorViewHolderManager.EditViewHolderBase)paramViewHolder;
-    if (paramViewHolder.a != null)
+    if (paramViewHolder.f != null)
     {
-      EditItemBase localEditItemBase = a(paramViewHolder.a.b());
+      EditItemBase localEditItemBase = a(paramViewHolder.f.b());
       if (localEditItemBase != null) {
         localEditItemBase.c(paramViewHolder);
       }
@@ -121,7 +121,7 @@ public class EditorViewHolderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager
  * JD-Core Version:    0.7.0.1
  */

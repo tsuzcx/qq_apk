@@ -14,11 +14,11 @@ class AEProviderContainerView$5
   {
     this.a.setAlpha(1.0F);
     this.a.setVisibility(8);
-    if (AEProviderContainerView.a(this.a) != null) {
-      AEProviderContainerView.a(this.a).a(false, 150);
+    if (AEProviderContainerView.d(this.a) != null) {
+      AEProviderContainerView.d(this.a).a(false, 150);
     }
-    if (AEProviderContainerView.a(this.a) != null) {
-      AEProviderContainerView.a(this.a).a(131075, new Object[0]);
+    if (AEProviderContainerView.e(this.a) != null) {
+      AEProviderContainerView.e(this.a).b(131075, new Object[0]);
     }
   }
   
@@ -28,7 +28,7 @@ class AEProviderContainerView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEProviderContainerView.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.apollo.game.process.data;
 
 import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.business.BaseToolAppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.apollo.game.process.CmGameClientQIPCModule;
@@ -13,7 +12,6 @@ import com.tencent.mobileqq.transfile.NetEngineFactory;
 import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -21,31 +19,57 @@ import java.util.Set;
 import mqq.app.IToolProcEventListener;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
+import org.jetbrains.annotations.Nullable;
 
 public class CmGameAppInterface
   extends BaseToolAppInterface
   implements IToolProcEventListener
 {
-  public static final int a;
-  public static final String a;
-  public static final int b;
-  private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
-  Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
-  
-  static
-  {
-    jdField_a_of_type_Int = QQManagerFactory.COUNT_MANAGER;
-    b = jdField_a_of_type_Int + 1;
-    jdField_a_of_type_JavaLangString = CmGameSSoHandler.class.getName();
-  }
+  public static final int a = QQManagerFactory.COUNT_MANAGER;
+  public static final int b = a + 1;
+  public static final String c = CmGameSSoHandler.class.getName();
+  private EntityManagerFactory d;
+  private Map<Integer, Manager> e = new HashMap(20);
   
   public CmGameAppInterface(MobileQQ paramMobileQQ, String paramString)
   {
     super(paramMobileQQ, paramString);
     QLog.i("cmgame_process.CmGameAppInterface", 1, "new CmGameAppInterface obj.");
-    CmGameClientQIPCModule.a();
-    TVK_SDKMgr.initSdk(BaseApplicationImpl.getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new CmGameAppInterface.1(this));
+    CmGameClientQIPCModule.b();
+  }
+  
+  @Nullable
+  private Manager a(int paramInt)
+  {
+    Object localObject1 = (Manager)this.e.get(Integer.valueOf(paramInt));
+    if (localObject1 != null) {
+      return localObject1;
+    }
+    synchronized (this.e)
+    {
+      if (paramInt == a) {
+        localObject1 = new CmGameManager(this);
+      } else if (paramInt == b) {
+        localObject1 = new NetEngineFactory();
+      } else if (paramInt == QQManagerFactory.DOWNLOADER_FACTORY) {
+        localObject1 = new DownloaderFactory(this);
+      }
+      Object localObject3;
+      if (this.e.get(Integer.valueOf(paramInt)) != null)
+      {
+        localObject3 = (Manager)this.e.get(Integer.valueOf(paramInt));
+      }
+      else
+      {
+        localObject3 = localObject1;
+        if (localObject1 != null)
+        {
+          this.e.put(Integer.valueOf(paramInt), localObject1);
+          localObject3 = localObject1;
+        }
+      }
+      return localObject3;
+    }
   }
   
   public BaseApplication getApp()
@@ -55,7 +79,7 @@ public class CmGameAppInterface
   
   public int getAppid()
   {
-    return AppSetting.a();
+    return AppSetting.d();
   }
   
   public String getCurrentAccountUin()
@@ -65,48 +89,22 @@ public class CmGameAppInterface
   
   public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = QQEntityManagerFactoryProxy.a(getAccount(), super.getEntityManagerFactory());
+    if (this.d == null) {
+      this.d = QQEntityManagerFactoryProxy.a(getAccount(), super.getEntityManagerFactory());
     }
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
+    return this.d;
   }
   
   public Manager getManager(int paramInt)
   {
     try
     {
-      Object localObject1 = (Manager)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      Object localObject5 = localObject1;
-      if (localObject1 == null) {
-        synchronized (this.jdField_a_of_type_JavaUtilMap)
-        {
-          if (paramInt == jdField_a_of_type_Int) {
-            localObject1 = new CmGameManager(this);
-          } else if (paramInt == b) {
-            localObject1 = new NetEngineFactory();
-          } else if (paramInt == QQManagerFactory.DOWNLOADER_FACTORY) {
-            localObject1 = new DownloaderFactory(this);
-          }
-          if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null)
-          {
-            localObject5 = (Manager)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-          }
-          else
-          {
-            localObject5 = localObject1;
-            if (localObject1 != null)
-            {
-              this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject1);
-              localObject5 = localObject1;
-            }
-          }
-        }
+      Manager localManager2 = a(paramInt);
+      Manager localManager1 = localManager2;
+      if (localManager2 == null) {
+        localManager1 = super.getManager(paramInt);
       }
-      Object localObject3 = localObject5;
-      if (localObject5 == null) {
-        localObject3 = super.getManager(paramInt);
-      }
-      return localObject3;
+      return localManager1;
     }
     finally {}
   }
@@ -123,36 +121,28 @@ public class CmGameAppInterface
   
   public void onDestroy()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.e)
     {
-      Object localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet();
-      if ((localObject1 != null) && (((Set)localObject1).size() > 0))
+      Object localObject1 = this.e.keySet();
+      if (((Set)localObject1).size() == 0) {
+        return;
+      }
+      localObject1 = ((Set)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject1 = ((Set)localObject1).iterator();
-        for (;;)
-        {
-          boolean bool = ((Iterator)localObject1).hasNext();
-          if (!bool) {
-            break;
-          }
+        Manager localManager = (Manager)this.e.get(((Iterator)localObject1).next());
+        if (localManager != null) {
           try
           {
-            Manager localManager = (Manager)this.jdField_a_of_type_JavaUtilMap.get(((Iterator)localObject1).next());
-            if (localManager == null) {
-              continue;
-            }
             localManager.onDestroy();
           }
           catch (Exception localException)
           {
-            localException.printStackTrace();
-          }
-          if (QLog.isColorLevel()) {
-            QLog.e("cmgame_process.CmGameAppInterface", 2, "onDesotry", localException);
+            QLog.e("cmgame_process.CmGameAppInterface", 1, "onDestroy", localException);
           }
         }
       }
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.e.clear();
       return;
     }
     for (;;)
@@ -174,7 +164,7 @@ public class CmGameAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.data.CmGameAppInterface
  * JD-Core Version:    0.7.0.1
  */

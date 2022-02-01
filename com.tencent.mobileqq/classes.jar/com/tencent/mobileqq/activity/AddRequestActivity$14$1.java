@@ -9,12 +9,12 @@ class AddRequestActivity$14$1
   
   public void run()
   {
-    this.a.a.a((TextView)this.a.a.findViewById(2131371565));
+    this.a.a.a((TextView)this.a.a.findViewById(2131438946));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.14.1
  * JD-Core Version:    0.7.0.1
  */

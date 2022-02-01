@@ -15,7 +15,7 @@ class Face2FaceAddFriendActivity$5
     paramAnimation = new AlphaAnimation(0.2F, 0.0F);
     paramAnimation.setDuration(500L);
     paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    this.a.startAnimation(paramAnimation);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -24,7 +24,7 @@ class Face2FaceAddFriendActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity.5
  * JD-Core Version:    0.7.0.1
  */

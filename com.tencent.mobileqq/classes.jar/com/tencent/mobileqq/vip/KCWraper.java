@@ -18,25 +18,14 @@ import mqq.os.MqqHandler;
 
 public class KCWraper
 {
-  private static SharedPreferences a()
-  {
-    return MobileQQ.getContext().getSharedPreferences("CUKingCardFile_sdk", 4);
-  }
-  
-  protected static Pair<Boolean, Integer> a()
-  {
-    SharedPreferences localSharedPreferences = a();
-    return new Pair(Boolean.valueOf(localSharedPreferences.getBoolean("kingCard", false)), Integer.valueOf(localSharedPreferences.getInt("kingCardProduct", 0)));
-  }
-  
   protected static void a(boolean paramBoolean)
   {
-    a().edit().putBoolean("supportActivationView", paramBoolean).apply();
+    f().edit().putBoolean("supportActivationView", paramBoolean).apply();
   }
   
   protected static boolean a(@NonNull String paramString, @NonNull OrderCheckResult paramOrderCheckResult)
   {
-    Object localObject = a();
+    Object localObject = f();
     int i = -1;
     boolean bool;
     if (((SharedPreferences)localObject).getInt("kingCardProduct", -1) != paramOrderCheckResult.product)
@@ -83,9 +72,20 @@ public class KCWraper
     return false;
   }
   
-  protected static boolean c()
+  protected static Pair<Boolean, Integer> d()
   {
-    return a().getBoolean("supportActivationView", false);
+    SharedPreferences localSharedPreferences = f();
+    return new Pair(Boolean.valueOf(localSharedPreferences.getBoolean("kingCard", false)), Integer.valueOf(localSharedPreferences.getInt("kingCardProduct", 0)));
+  }
+  
+  protected static boolean e()
+  {
+    return f().getBoolean("supportActivationView", false);
+  }
+  
+  private static SharedPreferences f()
+  {
+    return MobileQQ.getContext().getSharedPreferences("CUKingCardFile_sdk", 4);
   }
   
   String a()
@@ -120,12 +120,6 @@ public class KCWraper
     }
   }
   
-  boolean a()
-  {
-    a("isReady : disable kingcard");
-    return false;
-  }
-  
   boolean a(Activity paramActivity)
   {
     return false;
@@ -133,12 +127,18 @@ public class KCWraper
   
   boolean b()
   {
+    a("isReady : disable kingcard");
+    return false;
+  }
+  
+  boolean c()
+  {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraper
  * JD-Core Version:    0.7.0.1
  */

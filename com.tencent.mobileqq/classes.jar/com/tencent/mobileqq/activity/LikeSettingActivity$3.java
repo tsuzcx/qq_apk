@@ -18,18 +18,18 @@ class LikeSettingActivity$3
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
+    if (paramCompoundButton == this.a.c.getSwitch())
     {
       ((INearbyRelevantHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.NEARBY_RELEVANT_HANDLER)).a(paramBoolean);
       ReportController.b(this.a.app, "CliOper", "", "", "0X8006729", "0X8006729", 0, 0, "", "", "", "");
     }
-    else if (paramCompoundButton == this.a.c.a())
+    else if (paramCompoundButton == this.a.e.getSwitch())
     {
       this.a.app.setZanAllowed(true, paramBoolean);
     }
     else
     {
-      Object localObject = this.a.b.a();
+      Object localObject = this.a.d.getSwitch();
       String str = "1";
       if (paramCompoundButton == localObject)
       {
@@ -38,20 +38,20 @@ class LikeSettingActivity$3
           str = "0";
         }
         ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, str, "", "", "");
-        this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.h(paramBoolean);
+        this.a.h.g(paramBoolean);
       }
-      else if (paramCompoundButton == this.a.d.a())
+      else if (paramCompoundButton == this.a.f.getSwitch())
       {
         localObject = this.a.app;
         if (!paramBoolean) {
           str = "2";
         }
         ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, str, "", "", "");
-        this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.f(paramBoolean);
+        this.a.h.e(paramBoolean);
         if (!paramBoolean) {
-          this.a.b.setVisibility(8);
+          this.a.d.setVisibility(8);
         } else {
-          this.a.b.setVisibility(0);
+          this.a.d.setVisibility(0);
         }
       }
     }
@@ -60,7 +60,7 @@ class LikeSettingActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeSettingActivity.3
  * JD-Core Version:    0.7.0.1
  */

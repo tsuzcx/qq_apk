@@ -12,9 +12,9 @@ class MemoriesProfilePresenter$1
   
   protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    if ((paramBoolean) && (this.a.a != null) && (paramGetOnlineInfoResp != null))
+    if ((paramBoolean) && (this.a.b != null) && (paramGetOnlineInfoResp != null))
     {
-      if (!TextUtils.equals(paramString, this.a.a.qq)) {
+      if (!TextUtils.equals(paramString, this.a.b.qq)) {
         return;
       }
       if (MemoriesProfilePresenter.a(this.a) != null)

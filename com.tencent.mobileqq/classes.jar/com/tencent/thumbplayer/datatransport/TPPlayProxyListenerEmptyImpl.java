@@ -99,6 +99,10 @@ public class TPPlayProxyListenerEmptyImpl
   
   public void onDownloadStatusUpdate(int paramInt) {}
   
+  public void onInfo(int paramInt, long paramLong1, long paramLong2, Object paramObject) {}
+  
+  public void onPcdnDownloadFailed(String paramString) {}
+  
   public Object onPlayCallback(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
     String str = this.tag;
@@ -117,7 +121,7 @@ public class TPPlayProxyListenerEmptyImpl
     return null;
   }
   
-  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2) {}
+  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString) {}
   
   public void onPrepareError()
   {
@@ -148,7 +152,7 @@ public class TPPlayProxyListenerEmptyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPPlayProxyListenerEmptyImpl
  * JD-Core Version:    0.7.0.1
  */

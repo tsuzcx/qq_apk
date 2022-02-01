@@ -14,17 +14,17 @@ final class ImageLoaderImpl$saveBitmapToDiskCache$runnable$1
   
   public final void run()
   {
-    DiskLruCache.Editor localEditor = ImageLoaderImpl.a(this.this$0).edit(this.jdField_a_of_type_JavaLangString);
+    DiskLruCache.Editor localEditor = ImageLoaderImpl.b(this.this$0).edit(this.a);
     if (localEditor != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.compress(Bitmap.CompressFormat.PNG, 100, localEditor.newOutputStream(0));
+      this.b.compress(Bitmap.CompressFormat.PNG, 100, localEditor.newOutputStream(0));
       localEditor.commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.ImageLoaderImpl.saveBitmapToDiskCache.runnable.1
  * JD-Core Version:    0.7.0.1
  */

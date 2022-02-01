@@ -52,11 +52,11 @@ final class GroupVideoChatAppInfo$1
       } else {
         bool = true;
       }
-      if ("Panel".equals(this.jdField_a_of_type_JavaUtilHashMap.get("from"))) {
+      if ("Panel".equals(this.e.get("from"))) {
         paramInt = 1;
-      } else if ("tipBar".equals(this.jdField_a_of_type_JavaUtilHashMap.get("from"))) {
+      } else if ("tipBar".equals(this.e.get("from"))) {
         paramInt = 2;
-      } else if ("itemBuilder".equals(this.jdField_a_of_type_JavaUtilHashMap.get("from"))) {
+      } else if ("itemBuilder".equals(this.e.get("from"))) {
         paramInt = 3;
       } else {
         paramInt = 0;
@@ -70,15 +70,15 @@ final class GroupVideoChatAppInfo$1
       paramBundle.obj3(paramInt).report();
       if (!bool)
       {
-        GroupVideoChatAppInfo.access$100(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+        GroupVideoChatAppInfo.access$100(this.a, this.d);
         return;
       }
       if (paramArrayOfByte.app_type.get() == 2)
       {
-        GroupVideoChatAppInfo.access$200(this.jdField_a_of_type_Int, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), paramArrayOfByte.room_id.get(), paramArrayOfByte.game_id.get());
+        GroupVideoChatAppInfo.access$200(this.c, Long.valueOf(this.d).longValue(), paramArrayOfByte.room_id.get(), paramArrayOfByte.game_id.get());
         return;
       }
-      GroupVideoChatAppInfo.access$000(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap);
+      GroupVideoChatAppInfo.access$000(this.a, this.b, this.c, this.d, this.e);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -94,12 +94,12 @@ final class GroupVideoChatAppInfo$1
     localStringBuilder.append(" data=");
     localStringBuilder.append(Arrays.toString(paramArrayOfByte));
     QLog.i("GroupVideoChatAppInfo", 2, localStringBuilder.toString());
-    GroupVideoChatAppInfo.access$000(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap);
+    GroupVideoChatAppInfo.access$000(this.a, this.b, this.c, this.d, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.GroupVideoChatAppInfo.1
  * JD-Core Version:    0.7.0.1
  */

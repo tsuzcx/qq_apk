@@ -4,10 +4,9 @@ import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.res.api.impl.CmShowRscCacheManagerImpl.IdolRscItem;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.apollo.utils.ApolloResDownloaderUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -34,8 +33,8 @@ public class CmShowRscDownloader
     if (!TextUtils.isEmpty(paramString2))
     {
       localObject1 = new CmShowRscCacheManagerImpl.IdolRscItem();
-      ((CmShowRscCacheManagerImpl.IdolRscItem)localObject1).jdField_a_of_type_JavaLangString = paramString2;
-      ((CmShowRscCacheManagerImpl.IdolRscItem)localObject1).jdField_a_of_type_Int = 6;
+      ((CmShowRscCacheManagerImpl.IdolRscItem)localObject1).b = paramString2;
+      ((CmShowRscCacheManagerImpl.IdolRscItem)localObject1).a = 6;
       localArrayList.add(localObject1);
       paramString2 = (String)localObject1;
     }
@@ -56,11 +55,7 @@ public class CmShowRscDownloader
       }
       return;
     }
-    paramAppInterface = (DownloaderFactory)paramAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
-    if (paramAppInterface == null) {
-      return;
-    }
-    localObject3 = paramAppInterface.a(3);
+    localObject3 = ApolloResDownloaderUtil.a(paramAppInterface);
     if (localObject3 == null) {
       return;
     }
@@ -85,8 +80,8 @@ public class CmShowRscDownloader
         ((StringBuilder)localObject5).append(localObject6);
         QLog.d(str, 2, ((StringBuilder)localObject5).toString());
       }
-      int m = ((CmShowRscCacheManagerImpl.IdolRscItem)localObject6).jdField_a_of_type_Int;
-      int n = ((CmShowRscCacheManagerImpl.IdolRscItem)localObject6).b;
+      int m = ((CmShowRscCacheManagerImpl.IdolRscItem)localObject6).a;
+      int n = ((CmShowRscCacheManagerImpl.IdolRscItem)localObject6).c;
       Object localObject5 = ((CmShowRscCacheManagerImpl.IdolRscItem)localObject6).a();
       if (TextUtils.isEmpty((CharSequence)localObject5))
       {
@@ -107,7 +102,7 @@ public class CmShowRscDownloader
         if (!paramBoolean)
         {
           int k;
-          if ((localFile.exists()) && (((CmShowRscCacheManagerImpl.IdolRscItem)localObject6).b())) {
+          if ((localFile.exists()) && (((CmShowRscCacheManagerImpl.IdolRscItem)localObject6).d())) {
             k = 1;
           } else {
             k = 0;
@@ -124,7 +119,7 @@ public class CmShowRscDownloader
               QLog.d(str, 2, ((StringBuilder)localObject4).toString());
             }
             ((AtomicInteger)localObject1).decrementAndGet();
-            break label708;
+            break label691;
           }
           if (QLog.isColorLevel())
           {
@@ -148,15 +143,15 @@ public class CmShowRscDownloader
         }
         localFile.getParentFile().mkdirs();
         localObject4 = new DownloadTask((String)localObject5, localFile);
-        ((DownloadTask)localObject4).p = true;
-        ((DownloadTask)localObject4).n = true;
-        ((DownloadTask)localObject4).f = "apollo_res";
-        ((DownloadTask)localObject4).b = 1;
-        ((DownloadTask)localObject4).q = true;
-        ((DownloadTask)localObject4).r = true;
+        ((DownloadTask)localObject4).N = true;
+        ((DownloadTask)localObject4).J = true;
+        ((DownloadTask)localObject4).L = "apollo_res";
+        ((DownloadTask)localObject4).e = 1;
+        ((DownloadTask)localObject4).P = true;
+        ((DownloadTask)localObject4).Q = true;
         ((DownloaderInterface)localObject3).startDownload((DownloadTask)localObject4, new CmShowRscDownloader.1((String)localObject5, localFile, localAtomicInteger, m, n, (AtomicInteger)localObject2, (AtomicInteger)localObject1, paramOnRscDownLoadListener, paramString2, paramString1, paramList), null);
       }
-      label708:
+      label691:
       j += 1;
     }
     if (((AtomicInteger)localObject1).get() == 0)
@@ -164,7 +159,7 @@ public class CmShowRscDownloader
       if (paramOnRscDownLoadListener != null)
       {
         if (paramString2 != null) {
-          paramAppInterface = paramString2.c();
+          paramAppInterface = paramString2.e();
         }
         paramOnRscDownLoadListener.a(true, paramString1, paramList, paramAppInterface);
       }
@@ -182,7 +177,7 @@ public class CmShowRscDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.CmShowRscDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -14,22 +14,22 @@ public class DevicePlusPanelAppLoader
     long l;
     try
     {
-      l = Long.parseLong(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      l = Long.parseLong(paramBaseChatPie.ah.b);
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
       l = 0L;
     }
-    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)paramBaseChatPie.d.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
     if ((localSmartDeviceProxyMgr != null) && (localSmartDeviceProxyMgr.c(l))) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 206);
+      a(paramBaseChatPie.ah.a, 206);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.DevicePlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

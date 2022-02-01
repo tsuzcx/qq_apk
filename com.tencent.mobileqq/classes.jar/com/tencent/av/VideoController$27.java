@@ -13,12 +13,12 @@ class VideoController$27
   public void run()
   {
     VideoController localVideoController = this.this$0;
-    localVideoController.j = null;
-    localVideoController.a().a("acceptGAudioChat", 0);
-    boolean bool = NetworkUtil.isNetworkAvailable(this.this$0.a.getApplication().getApplicationContext());
+    localVideoController.af = null;
+    localVideoController.k().a("acceptGAudioChat", 0);
+    boolean bool = NetworkUtil.isNetworkAvailable(this.this$0.e.getApplication().getApplicationContext());
     localVideoController = this.this$0;
-    int j = this.jdField_a_of_type_Int;
-    long l = this.jdField_a_of_type_Long;
+    int j = this.a;
+    long l = this.b;
     int i;
     if (bool) {
       i = 69;

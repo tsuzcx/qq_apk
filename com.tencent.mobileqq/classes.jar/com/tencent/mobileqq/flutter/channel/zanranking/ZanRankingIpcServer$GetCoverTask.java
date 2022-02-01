@@ -25,32 +25,32 @@ import java.util.Set;
 class ZanRankingIpcServer$GetCoverTask
   implements Runnable
 {
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  volatile Card jdField_a_of_type_ComTencentMobileqqDataCard;
-  volatile CardCoverData jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData;
-  ProfileCardObserver jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver = new ZanRankingIpcServer.GetCoverTask.2(this);
-  CallBacker jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker = new ZanRankingIpcServer.GetCoverTask.1(this);
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  volatile boolean jdField_a_of_type_Boolean = false;
+  WeakReference<QQAppInterface> a;
+  Bundle b;
+  volatile Card c;
+  volatile CardCoverData d;
+  volatile boolean e = false;
+  CallBacker f = new ZanRankingIpcServer.GetCoverTask.1(this);
+  ProfileCardObserver g = new ZanRankingIpcServer.GetCoverTask.2(this);
   
   public ZanRankingIpcServer$GetCoverTask(ZanRankingIpcServer paramZanRankingIpcServer, Bundle paramBundle)
   {
-    paramZanRankingIpcServer.a.add(this);
+    paramZanRankingIpcServer.b.add(this);
     paramZanRankingIpcServer = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramZanRankingIpcServer);
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData = new CardCoverData(3, "");
+    this.a = new WeakReference(paramZanRankingIpcServer);
+    this.b = paramBundle;
+    this.d = new CardCoverData(3, "");
     if (paramZanRankingIpcServer != null)
     {
-      ((IVasQuickUpdateService)paramZanRankingIpcServer.getRuntimeService(IVasQuickUpdateService.class, "")).addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
-      paramZanRankingIpcServer.addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver, true);
+      ((IVasQuickUpdateService)paramZanRankingIpcServer.getRuntimeService(IVasQuickUpdateService.class, "")).addCallBacker(this.f);
+      paramZanRankingIpcServer.addObserver(this.g, true);
     }
   }
   
   private void a(Card paramCard)
   {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!this.jdField_a_of_type_Boolean)
+    Object localObject = (QQAppInterface)this.a.get();
+    if (!this.e)
     {
       if (localObject == null) {
         return;
@@ -58,7 +58,7 @@ class ZanRankingIpcServer$GetCoverTask
       if ((paramCard.lCurrentBgId != 160L) && (paramCard.lCurrentBgId != 1600L)) {
         paramCard = ProfileCardManager.b(((QQAppInterface)localObject).getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId);
       } else {
-        paramCard = ProfileCardUtil.a(paramCard.strDrawerCardUrl);
+        paramCard = ProfileCardUtil.c(paramCard.strDrawerCardUrl);
       }
       if (QLog.isColorLevel())
       {
@@ -67,9 +67,9 @@ class ZanRankingIpcServer$GetCoverTask
         ((StringBuilder)localObject).append(paramCard);
         QLog.d("ZanRankingIpcServer", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData.type = Integer.valueOf(2);
-      this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData.text = paramCard;
-      a(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData);
+      this.d.type = Integer.valueOf(2);
+      this.d.text = paramCard;
+      a(this.d);
     }
   }
   
@@ -78,8 +78,8 @@ class ZanRankingIpcServer$GetCoverTask
     if (QLog.isColorLevel()) {
       QLog.i("ZanRankingIpcServer", 2, String.format("GetCoverTask onGetCard() uin=%s", new Object[] { paramCard.uin }));
     }
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!this.jdField_a_of_type_Boolean)
+    Object localObject = (QQAppInterface)this.a.get();
+    if (!this.e)
     {
       if (localObject == null) {
         return;
@@ -90,8 +90,8 @@ class ZanRankingIpcServer$GetCoverTask
         {
           if ((paramCard.lCurrentBgId != 1600L) && (paramCard.lCurrentBgId != 160L) && (!ProfileTemplateApi.isDiyTemplateStyleID(paramCard.lCurrentStyleId)))
           {
-            this.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-            ProfileCardManager localProfileCardManager = ((VasExtensionManager)((QQAppInterface)localObject).getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
+            this.c = paramCard;
+            ProfileCardManager localProfileCardManager = ((VasExtensionManager)((QQAppInterface)localObject).getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).e;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("card.");
             localStringBuilder.append(paramCard.lCurrentBgId);
@@ -110,21 +110,21 @@ class ZanRankingIpcServer$GetCoverTask
       localObject = (Integer)localObject[1];
       if (TextUtils.isEmpty(paramCard))
       {
-        a(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData);
+        a(this.d);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData.type = Integer.valueOf(1);
-      this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData.text = paramCard;
-      a(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData);
+      this.d.type = Integer.valueOf(1);
+      this.d.text = paramCard;
+      a(this.d);
     }
   }
   
   private void a(CardCoverData paramCardCoverData)
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("callbackId");
-    this.jdField_a_of_type_AndroidOsBundle.putInt("type", paramCardCoverData.type.intValue());
-    this.jdField_a_of_type_AndroidOsBundle.putString("text", paramCardCoverData.text);
-    paramCardCoverData = EIPCResult.createResult(0, this.jdField_a_of_type_AndroidOsBundle);
+    int i = this.b.getInt("callbackId");
+    this.b.putInt("type", paramCardCoverData.type.intValue());
+    this.b.putString("text", paramCardCoverData.text);
+    paramCardCoverData = EIPCResult.createResult(0, this.b);
     if (i > 0) {
       this.this$0.callbackResult(i, paramCardCoverData);
     }
@@ -136,34 +136,34 @@ class ZanRankingIpcServer$GetCoverTask
     if (QLog.isColorLevel()) {
       QLog.i("ZanRankingIpcServer", 2, "stop");
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
     b();
   }
   
   public void b()
   {
-    this.this$0.a.remove(this);
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    this.this$0.b.remove(this);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     if (localQQAppInterface != null)
     {
-      ((IVasQuickUpdateService)localQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).removeCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
-      localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver);
+      ((IVasQuickUpdateService)localQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).removeCallBacker(this.f);
+      localQQAppInterface.removeObserver(this.g);
     }
   }
   
   public void run()
   {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!this.jdField_a_of_type_Boolean)
+    Object localObject = (QQAppInterface)this.a.get();
+    if (!this.e)
     {
       if (localObject == null) {
         return;
       }
-      boolean bool = this.jdField_a_of_type_AndroidOsBundle.getBoolean("fromCache", true);
-      String str = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
+      boolean bool = this.b.getBoolean("fromCache", true);
+      String str = this.b.getString("uin");
       if (bool)
       {
-        localObject = ((FriendsManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(str);
+        localObject = ((FriendsManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER)).f(str);
         if (localObject != null) {
           a((Card)localObject, true);
         }
@@ -177,7 +177,7 @@ class ZanRankingIpcServer$GetCoverTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.zanranking.ZanRankingIpcServer.GetCoverTask
  * JD-Core Version:    0.7.0.1
  */

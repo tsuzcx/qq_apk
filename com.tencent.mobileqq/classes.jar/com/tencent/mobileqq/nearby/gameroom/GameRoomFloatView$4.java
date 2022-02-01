@@ -26,12 +26,12 @@ class GameRoomFloatView$4
       if (i != 3) {
         return;
       }
-      QQToast.a(this.a.a, HardCodeUtil.a(2131705168), 0).a();
+      QQToast.makeText(this.a.c, HardCodeUtil.a(2131903058), 0).show();
       paramMsgBody = BaseApplicationImpl.getApplication().getRuntime();
       if ((paramMsgBody != null) && ((paramMsgBody instanceof QQAppInterface)))
       {
         paramMsgBody = (QQAppInterface)paramMsgBody;
-        SharedPreUtils.a(this.a.a, paramMsgBody.getCurrentAccountUin(), false, System.currentTimeMillis());
+        SharedPreUtils.a(this.a.c, paramMsgBody.getCurrentAccountUin(), false, System.currentTimeMillis());
       }
     }
     else
@@ -44,7 +44,7 @@ class GameRoomFloatView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView.4
  * JD-Core Version:    0.7.0.1
  */

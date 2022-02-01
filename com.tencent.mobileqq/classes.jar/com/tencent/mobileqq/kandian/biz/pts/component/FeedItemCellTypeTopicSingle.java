@@ -14,46 +14,46 @@ public class FeedItemCellTypeTopicSingle
     super(paramContext, paramIFaceDecoder, paramReadInJoyBaseAdapter);
   }
   
-  public FeedItemCell a()
+  public FeedItemCell b()
   {
-    return l().s().n();
+    return n().v().p();
   }
   
-  public FeedItemCell d()
+  public FeedItemCell e()
   {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    LinearLayout localLinearLayout = new LinearLayout(this.e);
     localLinearLayout.setOrientation(1);
     localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentTopicItemSingle != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentTopicItemSingle);
+    if (this.B != null) {
+      localLinearLayout.addView(this.B);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider);
+    if (this.r != null) {
+      localLinearLayout.addView(this.r);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead);
+    if (this.t != null) {
+      localLinearLayout.addView(this.t);
     }
     a(localLinearLayout);
     return this;
   }
   
-  public FeedItemCell e()
+  public FeedItemCell f()
   {
     return null;
   }
   
-  public FeedItemCell o()
+  public FeedItemCell q()
   {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentTopicItemSingle != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentTopicItemSingle.a(this.jdField_a_of_type_JavaLangObject);
+    super.q();
+    if (this.B != null) {
+      this.B.a(this.b);
     }
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeTopicSingle
  * JD-Core Version:    0.7.0.1
  */

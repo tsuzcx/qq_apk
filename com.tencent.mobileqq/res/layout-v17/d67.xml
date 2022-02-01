@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/ovx" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" android:onClick="onRootLayoutClick"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:mobileqq="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/an9" android:padding="@dimen/na" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/b2f" android:layout_alignParentTop="true" android:contentDescription="@string/yul" android:layout_marginStart="12.0dip" />
+    <TextView android:textSize="28.0sp" android:textColor="@color/skin_black" android:id="@id/gr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bp9" android:text="" android:layout_below="@id/an9" android:layout_alignLeft="@id/fds" />
+    <LinearLayout android:orientation="vertical" android:id="@id/a8" android:background="@color/ajr" android:layout_width="305.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bp7" android:layout_marginTop="@dimen/bp8" android:layout_marginRight="@dimen/bp7" android:layout_below="@id/gr" android:layout_centerHorizontal="true">
+        <View android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+        <com.tencent.mobileqq.widget.ConfigClearableEditText android:textSize="20.0sp" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray2" android:gravity="center_vertical" android:id="@id/account" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/bp5" android:hint="@string/yfm" android:maxLines="1" android:ems="10" android:singleLine="true" android:contentDescription="@string/yuj" android:textCursorDrawable="@drawable/g7n" mobileqq:clearBtnDrawable="@drawable/g7i" mobileqq:clearBtnDrawableHeight="25.0dip" mobileqq:clearBtnDrawableWidth="25.0dip" />
+        <View android:id="@id/iz_" android:background="#ffc8c7cc" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/bp5" android:layout_marginTop="2.0dip">
+            <com.tencent.mobileqq.widget.PastablePwdEditText android:textSize="20.0sp" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray2" android:gravity="center_vertical" android:id="@id/password" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/bp5" android:hint="@string/yfr" android:maxLines="1" android:maxLength="16" android:layout_weight="1.0" android:inputType="textPassword" android:imeOptions="actionDone" android:contentDescription="@string/yuo" android:textCursorDrawable="@drawable/g7n" mobileqq:clearBtnDrawable="@drawable/g7i" mobileqq:clearBtnDrawableHeight="25.0dip" mobileqq:clearBtnDrawableWidth="25.0dip" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/fiu" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/and" />
+        </LinearLayout>
+        <View android:id="@id/iza" android:background="#ffc8c7cc" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+    <Button android:id="@id/fds" android:layout_width="305.0dip" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/bp7" android:layout_marginTop="@dimen/bp4" android:layout_marginRight="@dimen/bp7" android:text="@string/yfo" android:layout_below="@id/a8" android:layout_centerHorizontal="true" android:contentDescription="@string/yun" style="@style/b9" />
+    <RelativeLayout android:id="@id/ob9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="39.0dip" android:layout_below="@id/fds" android:layout_alignParentBottom="true">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e3v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <View android:layout_width="0.0dip" android:layout_height="10.0dip" android:layout_weight="97.0" />
+            <com.tencent.widget.AlphaClickableButton android:id="@id/oyk" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yfp" android:contentDescription="@string/yfp" style="@style/acs" />
+            <View android:layout_width="0.0dip" android:layout_height="10.0dip" android:layout_weight="54.0" />
+            <View android:id="@id/n4v" android:background="@color/azp" android:layout_width="1.0dip" android:layout_height="10.0dip" />
+            <View android:layout_width="0.0dip" android:layout_height="10.0dip" android:layout_weight="54.0" />
+            <com.tencent.widget.AlphaClickableButton android:id="@id/nay" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yfn" android:contentDescription="@string/yfn" style="@style/acs" />
+            <View android:layout_width="0.0dip" android:layout_height="10.0dip" android:layout_weight="97.0" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

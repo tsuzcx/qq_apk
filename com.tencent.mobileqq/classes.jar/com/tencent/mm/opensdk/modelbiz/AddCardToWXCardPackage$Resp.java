@@ -78,8 +78,8 @@ public class AddCardToWXCardPackage$Resp
         localJSONStringer.key("card_id");
         localJSONStringer.value(localWXCardItem.cardId);
         localJSONStringer.key("card_ext");
-        String str;
-        if (localWXCardItem.cardExtMsg == null) {
+        String str = localWXCardItem.cardExtMsg;
+        if (str == null) {
           str = "";
         } else {
           str = localWXCardItem.cardExtMsg;
@@ -94,7 +94,8 @@ public class AddCardToWXCardPackage$Resp
     }
     catch (Exception localException)
     {
-      Object localObject = new StringBuilder("Resp.toBundle exception:");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Resp.toBundle exception:");
       ((StringBuilder)localObject).append(localException.getMessage());
       Log.e("MicroMsg.AddCardToWXCardPackage", ((StringBuilder)localObject).toString());
     }
@@ -103,7 +104,7 @@ public class AddCardToWXCardPackage$Resp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.AddCardToWXCardPackage.Resp
  * JD-Core Version:    0.7.0.1
  */

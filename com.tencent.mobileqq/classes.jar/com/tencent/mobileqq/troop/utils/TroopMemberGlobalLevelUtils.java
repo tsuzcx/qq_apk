@@ -14,18 +14,8 @@ import java.util.Calendar;
 
 public class TroopMemberGlobalLevelUtils
 {
-  private static long jdField_a_of_type_Long;
-  private static final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  
-  static
-  {
-    a = new ColorDrawable(-5658199);
-  }
-  
-  public static String a()
-  {
-    return "https://qun.qq.com/interactive/userhonor?gc=<$GC>&uin=<$UIN>&_wv=3&&_wwv=128";
-  }
+  private static long a;
+  private static final Drawable b = new ColorDrawable(-5658199);
   
   protected static void a()
   {
@@ -57,10 +47,15 @@ public class TroopMemberGlobalLevelUtils
     }
     return true;
   }
+  
+  public static String b()
+  {
+    return "https://qun.qq.com/interactive/userhonor?gc=<$GC>&uin=<$UIN>&_wv=3&&_wwv=128";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopMemberGlobalLevelUtils
  * JD-Core Version:    0.7.0.1
  */

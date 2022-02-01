@@ -29,14 +29,14 @@ class TroopMemberHistoryFragment$3
       case 12: 
         if (paramMessage.arg1 == 20)
         {
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131697593);
-          this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          this.a.j.setText(2131895366);
+          this.a.i.setVisibility(0);
         }
         break;
       case 11: 
         if (paramMessage.arg1 == 20)
         {
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131715418));
+          this.a.j.setText(HardCodeUtil.a(2131912896));
           paramMessage = TroopMemberHistoryFragment.a(this.a).getContext().getResources();
           Object localObject = URLDrawable.URLDrawableOptions.obtain();
           ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.b(320.0F, paramMessage);
@@ -44,31 +44,31 @@ class TroopMemberHistoryFragment$3
           ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelperConstants.a;
           ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelperConstants.a;
           paramMessage = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20171229/e4f73825907a4cdeb29db9c6688cd82c.png", (URLDrawable.URLDrawableOptions)localObject);
-          localObject = (ImageView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131378667);
+          localObject = (ImageView)this.a.i.findViewById(2131447324);
           ((ImageView)localObject).setImageDrawable(paramMessage);
           ((ImageView)localObject).setVisibility(0);
-          this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          this.a.i.setVisibility(0);
         }
         break;
       case 10: 
         if ((paramMessage.obj instanceof List))
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment$TroopMemberChatHisListAdapter.a((List)paramMessage.obj);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment$TroopMemberChatHisListAdapter.notifyDataSetChanged();
+          this.a.k.a((List)paramMessage.obj);
+          this.a.k.notifyDataSetChanged();
         }
         if (paramMessage.arg1 == 20) {
-          this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+          this.a.i.setVisibility(8);
         }
         break;
       }
-      this.a.jdField_a_of_type_Boolean = false;
+      this.a.c = false;
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment.3
  * JD-Core Version:    0.7.0.1
  */

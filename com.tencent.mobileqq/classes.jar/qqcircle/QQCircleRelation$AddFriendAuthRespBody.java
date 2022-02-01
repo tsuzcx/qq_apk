@@ -15,7 +15,7 @@ public final class QQCircleRelation$AddFriendAuthRespBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     qqcircle.QQCircleRelation.AddFriendAuthRespBody
  * JD-Core Version:    0.7.0.1
  */

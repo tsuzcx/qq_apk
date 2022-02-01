@@ -16,11 +16,6 @@ public class WatchTogetherDataReportHelper
     this.a.clear();
   }
   
-  public void a(String paramString)
-  {
-    this.a.remove(paramString);
-  }
-  
   public void a(String paramString, int paramInt)
   {
     WatchTogetherDataReportHelper.WTFilePlayInfo localWTFilePlayInfo2 = (WatchTogetherDataReportHelper.WTFilePlayInfo)this.a.get(paramString);
@@ -30,7 +25,12 @@ public class WatchTogetherDataReportHelper
       localWTFilePlayInfo1 = new WatchTogetherDataReportHelper.WTFilePlayInfo(paramString);
       this.a.put(paramString, localWTFilePlayInfo1);
     }
-    localWTFilePlayInfo1.a = paramInt;
+    localWTFilePlayInfo1.b = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.a.remove(paramString);
   }
   
   public void b(String paramString, int paramInt)
@@ -42,7 +42,7 @@ public class WatchTogetherDataReportHelper
       localWTFilePlayInfo1 = new WatchTogetherDataReportHelper.WTFilePlayInfo(paramString);
       this.a.put(paramString, localWTFilePlayInfo1);
     }
-    localWTFilePlayInfo1.b += paramInt;
+    localWTFilePlayInfo1.c += paramInt;
   }
 }
 

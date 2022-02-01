@@ -14,36 +14,35 @@ import com.tencent.common.app.AppInterface;
 public class TroopEmptyViewItemBuilder
   extends CloudFileItemBuilder
 {
-  protected int a;
+  protected int a = 0;
   
   public TroopEmptyViewItemBuilder(AppInterface paramAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
     super(paramAppInterface, paramContext, paramBaseAdapter, paramInt);
-    this.jdField_a_of_type_Int = 0;
   }
   
   public View a(int paramInt1, ICloudFile paramICloudFile, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559214, null);
+      paramView = LayoutInflater.from(this.g).inflate(2131624971, null);
       paramICloudFile = new TroopEmptyViewItemBuilder.Holder(null);
-      paramICloudFile.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367874));
-      paramICloudFile.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367875));
+      paramICloudFile.a = ((TextView)paramView.findViewById(2131434454));
+      paramICloudFile.b = ((ImageView)paramView.findViewById(2131434455));
       paramView.setTag(paramICloudFile);
     }
     else
     {
       paramICloudFile = (TroopEmptyViewItemBuilder.Holder)paramView.getTag();
     }
-    paramICloudFile.jdField_a_of_type_AndroidWidgetTextView.setText(2131693083);
-    paramICloudFile.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840311);
+    paramICloudFile.a.setText(2131890197);
+    paramICloudFile.b.setImageResource(2130840632);
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopEmptyViewItemBuilder
  * JD-Core Version:    0.7.0.1
  */

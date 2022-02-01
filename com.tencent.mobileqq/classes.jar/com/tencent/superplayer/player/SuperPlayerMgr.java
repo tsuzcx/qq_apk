@@ -24,6 +24,7 @@ import com.tencent.superplayer.api.ISuperPlayer.OnVideoSizeChangedListener;
 import com.tencent.superplayer.api.ISuperPlayerPool;
 import com.tencent.superplayer.api.SuperPlayerOption;
 import com.tencent.superplayer.api.SuperPlayerSDKMgr;
+import com.tencent.superplayer.api.SuperPlayerSdkOption;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.framecheck.EmptyVideoFrameCheckHelper;
 import com.tencent.superplayer.framecheck.FrameComparePipeLine.OnVideoFrameCheckListener;
@@ -83,6 +84,16 @@ public class SuperPlayerMgr
     init();
   }
   
+  private String getThreadName()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SuperPlayer-");
+    localStringBuilder.append(this.mPlayerTag);
+    localStringBuilder.append("-");
+    localStringBuilder.append(this.mSceneId);
+    return localStringBuilder.toString();
+  }
+  
   private void handleOnCompletion()
   {
     this.mPlayState.changeStateAndNotify(7);
@@ -112,47 +123,53 @@ public class SuperPlayerMgr
   {
     if (paramInt != 105)
     {
-      if (paramInt != 250)
+      if (paramInt != 112)
       {
-        if (paramInt != 112)
+        if (paramInt != 113)
         {
-          if (paramInt != 113)
+          if (paramInt != 250)
           {
-            switch (paramInt)
+            if (paramInt != 251)
             {
-            default: 
-              return;
-            case 208: 
-              paramISuperPlayer = null;
-              if ((paramObject instanceof TPPlayerMsg.TPMediaCodecInfo)) {
-                paramISuperPlayer = (TPPlayerMsg.TPMediaCodecInfo)paramObject;
+              switch (paramInt)
+              {
+              default: 
+                return;
+              case 208: 
+                paramISuperPlayer = null;
+                if ((paramObject instanceof TPPlayerMsg.TPMediaCodecInfo)) {
+                  paramISuperPlayer = (TPPlayerMsg.TPMediaCodecInfo)paramObject;
+                }
+                if (paramISuperPlayer != null) {
+                  this.mReporter.onCodecReuseInfo(paramISuperPlayer);
+                }
+              case 209: 
+                this.mReporter.onVideoFrameCheckResult((int)paramLong1);
+                return;
               }
-              if (paramISuperPlayer != null) {
-                this.mReporter.onCodecReuseInfo(paramISuperPlayer);
+              if ((paramObject instanceof TPPlayerMsg.TPDownLoadProgressInfo)) {
+                this.mReporter.onDownloadProgressUpdate((TPPlayerMsg.TPDownLoadProgressInfo)paramObject);
               }
-            case 209: 
-              this.mReporter.onVideoFrameCheckResult((int)paramLong1);
-              return;
             }
-            if ((paramObject instanceof TPPlayerMsg.TPDownLoadProgressInfo)) {
-              this.mReporter.onDownloadProgressUpdate((TPPlayerMsg.TPDownLoadProgressInfo)paramObject);
+            else if ((paramObject instanceof String))
+            {
+              this.mReporter.onPcdnDownloadFailed((String)paramObject);
             }
           }
-          else if (!this.mIsSeeking)
+          else if ((paramObject instanceof String))
           {
-            this.mReporter.onVideoBufferEnd();
+            paramISuperPlayer = (String)paramObject;
+            if (!TextUtils.isEmpty(paramISuperPlayer)) {
+              this.mReporter.onQuicInfoUpdate(paramISuperPlayer);
+            }
           }
         }
         else if (!this.mIsSeeking) {
-          this.mReporter.onVideoBufferStart();
+          this.mReporter.onVideoBufferEnd();
         }
       }
-      else if ((paramObject instanceof String))
-      {
-        paramISuperPlayer = (String)paramObject;
-        if (!TextUtils.isEmpty(paramISuperPlayer)) {
-          this.mReporter.onQuicInfoUpdate(paramISuperPlayer);
-        }
+      else if (!this.mIsSeeking) {
+        this.mReporter.onVideoBufferStart();
       }
     }
     else
@@ -183,10 +200,7 @@ public class SuperPlayerMgr
   {
     initTagAndToken();
     this.mPlayState = new SuperPlayerState(this.mPlayerTag);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("SuperPlayer-");
-    ((StringBuilder)localObject).append(this.mPlayerTag);
-    this.mHandlerThread = new HandlerThread(((StringBuilder)localObject).toString());
+    this.mHandlerThread = new HandlerThread(getThreadName());
     this.mHandlerThread.start();
     this.mLooper = this.mHandlerThread.getLooper();
     this.mPlayerMgrInternal = new SuperPlayerMgrInternal(this.mTAG, this.mLooper, this);
@@ -194,17 +208,17 @@ public class SuperPlayerMgr
     this.mListenerMgr = new SuperPlayerListenerMgr(this.mPlayerTag);
     if (this.mVideoView != null)
     {
-      localObject = this.mTAG;
+      String str = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("updatePlayerVideoView when init, mVideoView = ");
       localStringBuilder.append(this.mVideoView);
-      LogUtil.i((String)localObject, localStringBuilder.toString());
-      localObject = this.mTAG;
+      LogUtil.i(str, localStringBuilder.toString());
+      str = this.mTAG;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("日志过滤(View): 【");
       localStringBuilder.append(this.mVideoView.getLogTag());
       localStringBuilder.append("】, updatePlayerVideoView when init");
-      LogUtil.d((String)localObject, localStringBuilder.toString());
+      LogUtil.d(str, localStringBuilder.toString());
       this.mVideoView.addViewCallBack(this);
     }
     this.mReporter.init(this, this.mSceneId);
@@ -236,11 +250,22 @@ public class SuperPlayerMgr
     ((StringBuilder)localObject).append("-");
     ((StringBuilder)localObject).append("SuperPlayerMgr.java");
     this.mTAG = ((StringBuilder)localObject).toString();
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(SystemClock.uptimeMillis());
-    ((StringBuilder)localObject).append("-");
-    ((StringBuilder)localObject).append(Math.random());
-    this.mToken = TVKUtils.getMd5(((StringBuilder)localObject).toString());
+    if ((SuperPlayerSDKMgr.getSdkOption() != null) && (SuperPlayerSDKMgr.getSdkOption().isAsyncInit))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(SystemClock.uptimeMillis());
+      ((StringBuilder)localObject).append("-");
+      ((StringBuilder)localObject).append(hashCode());
+      this.mToken = ((StringBuilder)localObject).toString();
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(SystemClock.uptimeMillis());
+      ((StringBuilder)localObject).append("-");
+      ((StringBuilder)localObject).append(Math.random());
+      this.mToken = TVKUtils.getMd5(((StringBuilder)localObject).toString());
+    }
     localObject = this.mToken;
     if ((localObject != null) && (((String)localObject).length() > 24)) {
       this.mToken = this.mToken.substring(8, 24);
@@ -858,11 +883,33 @@ public class SuperPlayerMgr
     }
   }
   
-  public void handleSwitchDefinition(String paramString)
+  public void handleSwitchDefinition(String paramString, int paramInt)
   {
-    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
-    if (localSuperPlayerWrapper != null) {
-      localSuperPlayerWrapper.switchDefinition(paramString);
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api handle : handleSwitchDefinition, definition:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", mode:");
+    localStringBuilder.append(paramInt);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
+    localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      ((SuperPlayerWrapper)localObject).switchDefinition(paramString, paramInt);
+    }
+  }
+  
+  public void handleSwitchDefinitionForUrl(String paramString, int paramInt)
+  {
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api handle : handleSwitchDefinition, url:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", mode:");
+    localStringBuilder.append(paramInt);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
+    localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      ((SuperPlayerWrapper)localObject).switchDefinitionForUrl(paramString, paramInt);
     }
   }
   
@@ -968,6 +1015,15 @@ public class SuperPlayerMgr
     localStringBuilder.append(", startPositionMilsec:");
     localStringBuilder.append(paramLong);
     LogUtil.i(str, localStringBuilder.toString());
+    if (this.mPlayState.getCurState() != 0)
+    {
+      paramContext = this.mTAG;
+      paramSuperPlayerVideoInfo = new StringBuilder();
+      paramSuperPlayerVideoInfo.append("api call : openMediaPlayer, failed, mPlayState.getCurState() =");
+      paramSuperPlayerVideoInfo.append(this.mPlayState.getCurState());
+      LogUtil.e(paramContext, paramSuperPlayerVideoInfo.toString());
+      return;
+    }
     this.mPlayState.changeStateAndNotify(3);
     this.mReporter.onOpenMediaPlayer(paramSuperPlayerVideoInfo, paramLong, null);
     this.mPlayerMgrInternal.openMediaPlayer(paramContext, paramSuperPlayerVideoInfo, paramLong, SuperPlayerOption.obtain());
@@ -984,6 +1040,15 @@ public class SuperPlayerMgr
     localStringBuilder.append(", playerOption:");
     localStringBuilder.append(paramSuperPlayerOption);
     LogUtil.i(str, localStringBuilder.toString());
+    if (this.mPlayState.getCurState() != 0)
+    {
+      paramContext = this.mTAG;
+      paramSuperPlayerVideoInfo = new StringBuilder();
+      paramSuperPlayerVideoInfo.append("api call : openMediaPlayer, failed, mPlayState.getCurState() =");
+      paramSuperPlayerVideoInfo.append(this.mPlayState.getCurState());
+      LogUtil.e(paramContext, paramSuperPlayerVideoInfo.toString());
+      return;
+    }
     this.mPlayState.changeStateAndNotify(3);
     this.mReporter.onOpenMediaPlayer(paramSuperPlayerVideoInfo, paramLong, paramSuperPlayerOption);
     this.mPlayerMgrInternal.openMediaPlayer(paramContext, paramSuperPlayerVideoInfo, paramLong, paramSuperPlayerOption);
@@ -1025,7 +1090,11 @@ public class SuperPlayerMgr
     LogUtil.i(this.mTAG, "api call : reset");
     if (this.mPlayState.getCurState() == 0)
     {
-      LogUtil.e(this.mTAG, "api call : stop, failed, mPlayState.getCurState() == ISuperPlayerState.STOPPED");
+      String str = this.mTAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("api call : reset, failed, mPlayState.getCurState() =");
+      localStringBuilder.append(this.mPlayState.getCurState());
+      LogUtil.e(str, localStringBuilder.toString());
       return;
     }
     this.mPlayState.changeStateAndNotify(0);
@@ -1248,14 +1317,28 @@ public class SuperPlayerMgr
     LogUtil.e(str, localStringBuilder.toString());
   }
   
-  public void switchDefinition(String paramString)
+  public void switchDefinition(String paramString, int paramInt)
   {
     String str = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("api call : switchDefinition, definition:");
     localStringBuilder.append(paramString);
+    localStringBuilder.append(", mode:");
+    localStringBuilder.append(paramInt);
     LogUtil.i(str, localStringBuilder.toString());
-    this.mPlayerMgrInternal.switchDefinition(paramString);
+    this.mPlayerMgrInternal.switchDefinition(paramString, paramInt);
+  }
+  
+  public void switchDefinitionForUrl(String paramString, int paramInt)
+  {
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : switchDefinitionForUrl, url:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", mode:");
+    localStringBuilder.append(paramInt);
+    LogUtil.i(str, localStringBuilder.toString());
+    this.mPlayerMgrInternal.switchDefinitionForUrl(paramString, paramInt);
   }
   
   public void updatePlayerVideoView(ISPlayerVideoView paramISPlayerVideoView)
@@ -1311,7 +1394,7 @@ public class SuperPlayerMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -14,10 +14,10 @@ class FeedLikeLego$2
 {
   public void run()
   {
-    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(this.jdField_a_of_type_JavaLangString);
+    QQUserUIItem localQQUserUIItem = this.a.b(this.b);
     if (localQQUserUIItem != null)
     {
-      LikeEntry localLikeEntry = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry;
+      LikeEntry localLikeEntry = this.c;
       long l;
       if (localQQUserUIItem.isVip) {
         l = 2L;
@@ -26,15 +26,15 @@ class FeedLikeLego$2
       }
       localLikeEntry.role = l;
     }
-    this.this$0.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryModelLikeManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+    this.this$0.e.add(this.c);
+    this.this$0.f.a(this.c);
+    this.this$0.g.a(this.this$0.b);
     ThreadManager.getUIHandler().post(new FeedLikeLego.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeLego.2
  * JD-Core Version:    0.7.0.1
  */

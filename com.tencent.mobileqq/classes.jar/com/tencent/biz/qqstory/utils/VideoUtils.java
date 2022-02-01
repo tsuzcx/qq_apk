@@ -46,12 +46,6 @@ public class VideoUtils
     return -1;
   }
   
-  public static Pair<Integer, Integer> a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramInt2 = (int)(paramInt1 * paramInt4 / paramInt3);
-    return new Pair(Integer.valueOf(a(paramInt1)), Integer.valueOf(a(paramInt2)));
-  }
-  
   @TargetApi(16)
   public static ArrayList<VideoUtils.VideoKeyFrameFragment> a(String paramString, long paramLong)
   {
@@ -194,6 +188,12 @@ public class VideoUtils
       SLog.b("Q.qqstory.publish.VideoUtils", "exception", paramString);
     }
     return -1;
+  }
+  
+  public static Pair<Integer, Integer> b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt2 = (int)(paramInt1 * paramInt4 / paramInt3);
+    return new Pair(Integer.valueOf(a(paramInt1)), Integer.valueOf(a(paramInt2)));
   }
   
   public static boolean b()

@@ -56,7 +56,7 @@ public class QZoneNavigateToQQTransparentFragment
     {
       QQCustomDialog localQQCustomDialog = DialogUtil.a(paramBaseActivity, 230);
       localQQCustomDialog.setOnDismissListener(new QZoneNavigateToQQTransparentFragment.2(paramBaseActivity));
-      localQQCustomDialog.setMessage(paramBaseActivity.getString(2131698892)).setNegativeButton(paramBaseActivity.getString(2131698890), new QZoneNavigateToQQTransparentFragment.4()).setPositiveButton(paramBaseActivity.getString(2131698891), new QZoneNavigateToQQTransparentFragment.3(paramBoolean, paramBaseActivity, paramInt, paramString1, paramString2)).show();
+      localQQCustomDialog.setMessage(paramBaseActivity.getString(2131896864)).setNegativeButton(paramBaseActivity.getString(2131896862), new QZoneNavigateToQQTransparentFragment.4()).setPositiveButton(paramBaseActivity.getString(2131896863), new QZoneNavigateToQQTransparentFragment.3(paramBoolean, paramBaseActivity, paramInt, paramString1, paramString2)).show();
       return;
     }
     QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showCampusVerifyDialog() activity is null or is not onResume() just return");
@@ -68,7 +68,7 @@ public class QZoneNavigateToQQTransparentFragment
     {
       QQCustomDialog localQQCustomDialog = DialogUtil.a(paramBaseActivity, 230);
       localQQCustomDialog.setOnDismissListener(new QZoneNavigateToQQTransparentFragment.5(paramBaseActivity));
-      localQQCustomDialog.setMessage(paramBaseActivity.getString(2131698894)).setPositiveButton(paramBaseActivity.getString(2131698893), new QZoneNavigateToQQTransparentFragment.6()).show();
+      localQQCustomDialog.setMessage(paramBaseActivity.getString(2131896866)).setPositiveButton(paramBaseActivity.getString(2131896865), new QZoneNavigateToQQTransparentFragment.6()).show();
       return;
     }
     QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showMatchCountDialog() activity is null or is not onResume() just return");
@@ -78,7 +78,7 @@ public class QZoneNavigateToQQTransparentFragment
   {
     if ((paramBaseActivity != null) && (paramBaseActivity.isResume()))
     {
-      QQToast.a(paramBaseActivity, paramString, 0).b(paramBaseActivity.getTitleBarHeight());
+      QQToast.makeText(paramBaseActivity, paramString, 0).show(paramBaseActivity.getTitleBarHeight());
       ThreadManager.getUIHandler().postDelayed(new QZoneNavigateToQQTransparentFragment.7(paramBaseActivity), 0L);
       return;
     }
@@ -189,7 +189,7 @@ public class QZoneNavigateToQQTransparentFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.QZoneNavigateToQQTransparentFragment
  * JD-Core Version:    0.7.0.1
  */

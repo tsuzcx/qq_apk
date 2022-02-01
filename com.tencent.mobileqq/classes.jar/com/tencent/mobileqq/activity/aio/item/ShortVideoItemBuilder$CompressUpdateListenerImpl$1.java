@@ -13,12 +13,12 @@ class ShortVideoItemBuilder$CompressUpdateListenerImpl$1
   public void run()
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin);
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    ((StringBuilder)localObject).append(this.a.frienduin);
+    ((StringBuilder)localObject).append(this.a.uniseq);
     localObject = ((StringBuilder)localObject).toString();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.setDrawStatus(1);
+      this.c.c.setDrawStatus(1);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -26,19 +26,19 @@ class ShortVideoItemBuilder$CompressUpdateListenerImpl$1
         localStringBuilder.append((String)localObject);
         QLog.d("ShortVideoItemBuilder", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.setAnimProgress(HardCodeUtil.a(2131713960), (String)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.e = 10;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.setVideoCompressStatus(true);
+      this.c.c.setAnimProgress(HardCodeUtil.a(2131911491), (String)localObject);
+      this.c.c.h = 10;
+      this.c.c.setVideoCompressStatus(true);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.a((String)localObject, 1.0F);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.setAnimProgress(10, (String)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.setVideoCompressStatus(false);
+    this.c.c.a((String)localObject, 1.0F);
+    this.c.c.setAnimProgress(10, (String)localObject);
+    this.c.c.setVideoCompressStatus(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.CompressUpdateListenerImpl.1
  * JD-Core Version:    0.7.0.1
  */

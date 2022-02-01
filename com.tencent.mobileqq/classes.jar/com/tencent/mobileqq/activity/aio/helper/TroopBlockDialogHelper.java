@@ -11,48 +11,48 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 public class TroopBlockDialogHelper
   implements ILifeCycleHelper
 {
-  private BaseChatPie a;
   protected QQCustomDialog a;
+  private BaseChatPie b;
   
   public TroopBlockDialogHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.b = paramBaseChatPie;
   }
   
   protected void a()
   {
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    QQCustomDialog localQQCustomDialog = this.a;
     if ((localQQCustomDialog != null) && (localQQCustomDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.a.dismiss();
     }
   }
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    Object localObject = this.b;
     if (localObject == null) {
       return;
     }
-    if (((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+    if (((BaseChatPie)localObject).ah == null) {
       return;
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
+    if (TextUtils.isEmpty(this.b.ah.b)) {
       return;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isResume()) {
+    if (!this.b.f.isResume()) {
       return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-    if (TroopBlockUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject))
+    localObject = this.b.ah.b;
+    if (TroopBlockUtils.b(this.b.d, (String)localObject))
     {
       a();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = TroopBlockUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, new TroopBlockDialogHelper.1(this, (String)localObject));
+      this.a = TroopBlockUtils.a(this.b.aX(), this.b.d, (String)localObject, new TroopBlockDialogHelper.1(this, (String)localObject));
       return;
     }
     a();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    localObject = this.b;
     if ((localObject instanceof TroopChatPie)) {
-      ((TroopChatPie)localObject).aw();
+      ((TroopChatPie)localObject).bO();
     }
   }
   
@@ -81,7 +81,7 @@ public class TroopBlockDialogHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopBlockDialogHelper
  * JD-Core Version:    0.7.0.1
  */

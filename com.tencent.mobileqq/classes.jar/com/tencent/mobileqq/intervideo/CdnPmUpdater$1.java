@@ -31,9 +31,9 @@ class CdnPmUpdater$1
         return localObject1;
         File localFile = this.a.a();
         localObject1 = localFile;
-        if (CdnPmUpdater.a(this.a) != null)
+        if (CdnPmUpdater.b(this.a) != null)
         {
-          CdnPmUpdater.a(this.a).a();
+          CdnPmUpdater.b(this.a).a();
           localObject1 = localFile;
         }
       }
@@ -48,7 +48,7 @@ class CdnPmUpdater$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.CdnPmUpdater.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,12 +18,12 @@ class JoinDiscussionActivity$2
     {
       paramString = (FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.a.a);
+      localStringBuilder.append(this.a.k);
       localStringBuilder.append("");
-      paramString = paramString.e(localStringBuilder.toString());
+      paramString = paramString.m(localStringBuilder.toString());
       if (paramString != null)
       {
-        this.a.e = paramString.name;
+        this.a.l = paramString.name;
         JoinDiscussionActivity.a(this.a);
       }
     }
@@ -35,7 +35,7 @@ class JoinDiscussionActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public class WSGridDramaHolder
 {
   public WSGridDramaHolder(ViewGroup paramViewGroup, int paramInt, WSRecommendAdapter paramWSRecommendAdapter)
   {
-    super(paramViewGroup, 2131560425, paramInt, paramWSRecommendAdapter);
+    super(paramViewGroup, 2131626470, paramInt, paramWSRecommendAdapter);
     ((WSGridDramaItemView)this.a).a(paramWSRecommendAdapter);
   }
   
@@ -21,7 +21,7 @@ public class WSGridDramaHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridDramaHolder
  * JD-Core Version:    0.7.0.1
  */

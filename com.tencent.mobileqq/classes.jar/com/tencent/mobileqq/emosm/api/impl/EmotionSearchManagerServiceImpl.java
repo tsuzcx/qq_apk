@@ -140,7 +140,7 @@ public class EmotionSearchManagerServiceImpl
     {
       ((HotPicMsg.GetImgInfoReq)localObject3).uint32_pic_tag.set(2);
     }
-    ((HotPicMsg.GetImgInfoReq)localObject3).bytes_client_ver.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    ((HotPicMsg.GetImgInfoReq)localObject3).bytes_client_ver.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     ((HotPicMsg.GetImgInfoReq)localObject3).uint32_need_update.set(0);
     Object localObject4 = new StringBuilder();
     ((StringBuilder)localObject4).append(this.mApp.getCurrentAccountUin());
@@ -483,7 +483,7 @@ public class EmotionSearchManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.EmotionSearchManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class JumpSpan$1
   
   public void onClick(View paramView)
   {
-    ReadInJoyUtils.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
+    ReadInJoyUtils.a(paramView.getContext(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.text.JumpSpan.1
  * JD-Core Version:    0.7.0.1
  */

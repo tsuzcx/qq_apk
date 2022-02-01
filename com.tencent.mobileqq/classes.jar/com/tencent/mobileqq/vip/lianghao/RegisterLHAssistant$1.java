@@ -24,19 +24,19 @@ class RegisterLHAssistant$1
       return;
     }
     paramMessage = (String)paramMessage.obj;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount != null) && (!TextUtils.isEmpty(paramMessage)))
+    if ((this.a.e != null) && (!TextUtils.isEmpty(paramMessage)))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount.a(paramMessage);
+      this.a.e.a(paramMessage);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(RegisterLHAssistant.jdField_a_of_type_JavaLangString, 2, "captcha sig is empty");
+      QLog.d(RegisterLHAssistant.a, 2, "captcha sig is empty");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.1
  * JD-Core Version:    0.7.0.1
  */

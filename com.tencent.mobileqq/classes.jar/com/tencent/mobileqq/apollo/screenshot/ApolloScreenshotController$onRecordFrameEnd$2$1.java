@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.apollo.screenshot;
 
+import com.tencent.mobileqq.apollo.meme.ERROR_JS_CALLBACK_ACTION_FAIL;
+import com.tencent.mobileqq.apollo.meme.RECORD_COMPLETE;
 import com.tencent.mobileqq.apollo.utils.api.IApolloAvatarFileManager;
+import com.tencent.mobileqq.cmshow.engine.action.ActionStatus;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -16,113 +19,114 @@ final class ApolloScreenshotController$onRecordFrameEnd$2$1
   
   public final void run()
   {
-    String str = this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.a();
-    Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.a();
-    boolean bool3 = this.this$0.jdField_a_of_type_Boolean;
-    boolean bool2 = false;
-    StringBuilder localStringBuilder = null;
-    boolean bool1 = bool2;
-    Object localObject3;
-    Object localObject4;
-    if (bool3)
+    Object localObject1 = this.this$0.a.a();
+    IApolloScreenshotEncoder localIApolloScreenshotEncoder = this.this$0.a.d();
+    boolean bool = this.this$0.b;
+    Object localObject2 = null;
+    if ((bool) && (localObject1 != null))
     {
-      bool1 = bool2;
-      if (str != null)
+      localObject3 = this.this$0.c;
+      if (localObject3 != null) {
+        ((IApolloActionRecordListener)localObject3).c();
+      }
+      localObject3 = localIApolloScreenshotEncoder.a((String)localObject1, this.this$0.a.j());
+      Object localObject4;
+      if (Intrinsics.areEqual(localObject3, RECORD_COMPLETE.a))
       {
-        localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener;
-        if (localObject1 != null) {
-          ((IApolloActionRecordListener)localObject1).b();
-        }
-        if (((IApolloScreenshotEncoder)localObject2).a(str, this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.d()))
+        ApolloScreenshotController.INSTANCE.a(ApolloScreenshotController.a, (String)localObject1, this.this$0.a.i());
+        localObject4 = this.this$0.c;
+        if (localObject4 != null)
         {
-          ApolloScreenshotController.INSTANCE.a(ApolloScreenshotController.a, str, this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.c());
-          localObject3 = this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener;
-          if (localObject3 != null)
-          {
-            localObject1 = ApolloScreenshotController.a.a(this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.c());
-            if (localObject1 != null) {
-              localObject1 = ((File)localObject1).getAbsolutePath();
-            } else {
-              localObject1 = null;
-            }
-            ((IApolloActionRecordListener)localObject3).a(true, (String)localObject1);
+          localObject1 = ApolloScreenshotController.a.a(this.this$0.a.i());
+          if (localObject1 != null) {
+            localObject1 = ((File)localObject1).getAbsolutePath();
+          } else {
+            localObject1 = null;
           }
-          if ((localObject2 instanceof ApolloGifEncoder))
-          {
-            localObject3 = (IApolloAvatarFileManager)QRoute.api(IApolloAvatarFileManager.class);
-            localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener;
-            if (localObject1 != null) {
-              localObject1 = Integer.valueOf(((IApolloActionRecordListener)localObject1).b());
-            } else {
-              localObject1 = null;
-            }
-            if (localObject1 == null) {
-              Intrinsics.throwNpe();
-            }
-            ((IApolloAvatarFileManager)localObject3).putAction2FrameFilePath(((Integer)localObject1).intValue(), (List)((ApolloGifEncoder)localObject2).a());
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.b());
-            ((StringBuilder)localObject1).append("/video/");
-            localObject3 = ((StringBuilder)localObject1).toString();
-            localObject4 = (IApolloAvatarFileManager)QRoute.api(IApolloAvatarFileManager.class);
-            localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener;
-            if (localObject1 != null) {
-              localObject1 = Integer.valueOf(((IApolloActionRecordListener)localObject1).b());
-            } else {
-              localObject1 = null;
-            }
-            if (localObject1 == null) {
-              Intrinsics.throwNpe();
-            }
-            ((IApolloAvatarFileManager)localObject4).putAction2VideoFilePath(((Integer)localObject1).intValue(), (String)localObject3);
-          }
-          bool1 = true;
+          ((IApolloActionRecordListener)localObject4).a((ActionStatus)localObject3, (String)localObject1);
         }
-        else
+        localObject1 = localObject3;
+        if ((localIApolloScreenshotEncoder instanceof ApolloGifEncoder))
         {
-          localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener;
-          bool1 = bool2;
-          if (localObject1 != null)
-          {
-            ((IApolloActionRecordListener)localObject1).a(false, null);
-            bool1 = bool2;
+          localObject4 = (IApolloAvatarFileManager)QRoute.api(IApolloAvatarFileManager.class);
+          localObject1 = this.this$0.c;
+          if (localObject1 != null) {
+            localObject1 = Integer.valueOf(((IApolloActionRecordListener)localObject1).f());
+          } else {
+            localObject1 = null;
           }
+          if (localObject1 == null) {
+            Intrinsics.throwNpe();
+          }
+          ((IApolloAvatarFileManager)localObject4).putAction2FrameFilePath(((Integer)localObject1).intValue(), (List)((ApolloGifEncoder)localIApolloScreenshotEncoder).d());
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(this.this$0.a.b());
+          ((StringBuilder)localObject1).append("/video/");
+          localObject4 = ((StringBuilder)localObject1).toString();
+          IApolloAvatarFileManager localIApolloAvatarFileManager = (IApolloAvatarFileManager)QRoute.api(IApolloAvatarFileManager.class);
+          localObject1 = this.this$0.c;
+          if (localObject1 != null) {
+            localObject1 = Integer.valueOf(((IApolloActionRecordListener)localObject1).f());
+          } else {
+            localObject1 = null;
+          }
+          if (localObject1 == null) {
+            Intrinsics.throwNpe();
+          }
+          localIApolloAvatarFileManager.putAction2VideoFilePath(((Integer)localObject1).intValue(), (String)localObject4);
+          localObject1 = localObject3;
+        }
+      }
+      else
+      {
+        localObject4 = this.this$0.c;
+        localObject1 = localObject3;
+        if (localObject4 != null)
+        {
+          ((IApolloActionRecordListener)localObject4).a((ActionStatus)localObject3, null);
+          localObject1 = localObject3;
         }
       }
     }
-    ((IApolloScreenshotEncoder)localObject2).b();
-    localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener;
-    if (localObject2 != null)
+    else
     {
-      int i = this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.a();
-      localObject3 = this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.c();
-      localObject1 = localStringBuilder;
-      if (bool1)
-      {
-        localObject4 = ApolloScreenshotController.a.a(this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.c());
-        localObject1 = localStringBuilder;
-        if (localObject4 != null) {
-          localObject1 = ((File)localObject4).getAbsolutePath();
-        }
-      }
-      ((IApolloActionRecordListener)localObject2).a(i, (String)localObject3, (String)localObject1);
+      localObject1 = (ActionStatus)ERROR_JS_CALLBACK_ACTION_FAIL.a;
     }
-    Object localObject1 = ApolloScreenshotController.a(this.this$0.this$0);
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onRecordFrameEnd key:");
-    localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.c());
-    localStringBuilder.append(" taskId:");
-    localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.c());
-    localStringBuilder.append(", success:");
-    localStringBuilder.append(bool1);
-    localStringBuilder.append(", resultPath?");
-    localStringBuilder.append(str);
-    QLog.i((String)localObject1, 1, localStringBuilder.toString());
+    localIApolloScreenshotEncoder.b();
+    bool = Intrinsics.areEqual(localObject1, RECORD_COMPLETE.a);
+    this.this$0.a.a((ActionStatus)localObject1);
+    localObject1 = localObject2;
+    if (bool)
+    {
+      localObject3 = ApolloScreenshotController.a.a(this.this$0.a.i());
+      localObject1 = localObject2;
+      if (localObject3 != null) {
+        localObject1 = ((File)localObject3).getAbsolutePath();
+      }
+    }
+    localObject2 = ApolloScreenshotController.a(this.this$0.this$0);
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("onRecordFrameEnd key:");
+    ((StringBuilder)localObject3).append(this.this$0.a.i());
+    ((StringBuilder)localObject3).append(" taskId:");
+    ((StringBuilder)localObject3).append(this.this$0.a.h());
+    ((StringBuilder)localObject3).append(", ");
+    ((StringBuilder)localObject3).append("success:");
+    ((StringBuilder)localObject3).append(bool);
+    ((StringBuilder)localObject3).append(", status:");
+    ((StringBuilder)localObject3).append(this.this$0.a.c());
+    ((StringBuilder)localObject3).append(", resultPath?");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    QLog.i((String)localObject2, 1, ((StringBuilder)localObject3).toString());
+    localObject2 = this.this$0.c;
+    if (localObject2 != null) {
+      ((IApolloActionRecordListener)localObject2).a(this.this$0.a.c(), this.this$0.a.i(), (String)localObject1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.ApolloScreenshotController.onRecordFrameEnd.2.1
  * JD-Core Version:    0.7.0.1
  */

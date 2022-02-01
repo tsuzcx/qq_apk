@@ -13,7 +13,7 @@ public class VideoPlatformUtils
   {
     if ((paramInt == 11022003) && (paramVideoPlayParam.mIsLocal) && (!TextUtils.isEmpty(paramVideoPlayParam.mVideoPath)))
     {
-      Object localObject = (AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean)QConfigManager.a().a(537);
+      Object localObject = (AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean)QConfigManager.b().b(537);
       if ((localObject != null) && (((AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean)localObject).e)) {
         try
         {
@@ -42,7 +42,7 @@ public class VideoPlatformUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqvideoplatform.VideoPlatformUtils
  * JD-Core Version:    0.7.0.1
  */

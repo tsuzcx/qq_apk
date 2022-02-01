@@ -7,14 +7,14 @@ class DoodleLayout$8
   
   public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.m();
+    if (this.a.y != null) {
+      this.a.y.o();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLayout.8
  * JD-Core Version:    0.7.0.1
  */

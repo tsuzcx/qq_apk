@@ -19,6 +19,8 @@ import android.util.SparseArray;
 import android.util.Xml;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.BaseSharedPreUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -125,9 +127,9 @@ public class QQDeviceInfo
     {
       TelephonyManager localTelephonyManager = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
       if (Build.VERSION.SDK_INT < 26) {
-        mImei = localTelephonyManager.getDeviceId();
+        mImei = PhoneInfoMonitor.getDeviceId(localTelephonyManager);
       } else {
-        mImei = localTelephonyManager.getImei();
+        mImei = PhoneInfoMonitor.getImei(localTelephonyManager);
       }
       saveIMEI2Sp("imei", mImei);
     }
@@ -217,7 +219,7 @@ public class QQDeviceInfo
     paramString = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
     try
     {
-      paramString = paramString.getSubscriberId();
+      paramString = PhoneInfoMonitor.getSubscriberId(paramString);
       return paramString;
     }
     catch (SecurityException|Throwable paramString) {}
@@ -262,7 +264,7 @@ public class QQDeviceInfo
     paramString = (WifiManager)BaseApplication.getContext().getSystemService("wifi");
     try
     {
-      paramString = paramString.getConnectionInfo().getMacAddress();
+      paramString = NetworkMonitor.getConnectionInfo(paramString).getMacAddress();
       return paramString;
     }
     catch (Exception paramString)
@@ -468,7 +470,7 @@ public class QQDeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.QQDeviceInfo
  * JD-Core Version:    0.7.0.1
  */

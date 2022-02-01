@@ -3,7 +3,7 @@ package com.tencent.open.appstore.report;
 public class ClickDataBuilder
   extends ReportDataBuilder
 {
-  private String n;
+  private String o;
   
   public static ClickDataBuilder a()
   {
@@ -12,24 +12,24 @@ public class ClickDataBuilder
   
   public ClickDataBuilder a(String paramString)
   {
-    this.n = paramString;
+    this.o = paramString;
     return this;
   }
   
-  public String a()
+  public String b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
+    localStringBuilder.append(d());
     localStringBuilder.append("|");
-    localStringBuilder.append(c());
+    localStringBuilder.append(e());
     localStringBuilder.append("|");
-    localStringBuilder.append(this.n);
+    localStringBuilder.append(this.o);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.report.ClickDataBuilder
  * JD-Core Version:    0.7.0.1
  */

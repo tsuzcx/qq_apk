@@ -20,7 +20,7 @@ public abstract interface IAppBrandProxy
   
   public abstract void onAppStart(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
   
-  public abstract void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo);
+  public abstract void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver);
   
   public abstract void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver);
   
@@ -30,7 +30,7 @@ public abstract interface IAppBrandProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy
  * JD-Core Version:    0.7.0.1
  */

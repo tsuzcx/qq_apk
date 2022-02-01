@@ -10,7 +10,7 @@ public class AILabVoiceRecogEngineImpl
   
   public float getCurSceneWordScore()
   {
-    return AILabVoiceRecogEngine.b();
+    return AILabVoiceRecogEngine.f();
   }
 }
 

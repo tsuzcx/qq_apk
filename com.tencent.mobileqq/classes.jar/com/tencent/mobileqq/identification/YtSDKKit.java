@@ -8,25 +8,25 @@ import org.json.JSONObject;
 
 public class YtSDKKit
 {
-  private static YtSDKKit jdField_a_of_type_ComTencentMobileqqIdentificationYtSDKKit;
-  private static final String jdField_a_of_type_JavaLangString = "YtSDKKit";
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private JSONObject b;
+  private static final String a = "YtSDKKit";
+  private static YtSDKKit b;
+  private JSONObject c;
+  private JSONObject d;
   
   public static YtSDKKit a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqIdentificationYtSDKKit == null) {
-        jdField_a_of_type_ComTencentMobileqqIdentificationYtSDKKit = new YtSDKKit();
+      if (b == null) {
+        b = new YtSDKKit();
       }
-      YtSDKKit localYtSDKKit = jdField_a_of_type_ComTencentMobileqqIdentificationYtSDKKit;
+      YtSDKKit localYtSDKKit = b;
       return localYtSDKKit;
     }
     finally {}
   }
   
-  private YtSDKKitFramework.YtSDKKitFrameworkWorkMode a(int paramInt)
+  private YtSDKKitFramework.YtSDKKitFrameworkWorkMode b(int paramInt)
   {
     YtSDKKitFramework.YtSDKKitFrameworkWorkMode localYtSDKKitFrameworkWorkMode = YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
     if (paramInt != 0)
@@ -59,13 +59,13 @@ public class YtSDKKit
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString1).getJSONObject("sdk_settings");
-      this.b = new JSONObject(paramString2).getJSONObject("ui_basic_config");
+      this.c = new JSONObject(paramString1).getJSONObject("sdk_settings");
+      this.d = new JSONObject(paramString2).getJSONObject("ui_basic_config");
       return 0;
     }
     catch (JSONException paramString1)
     {
-      paramString2 = jdField_a_of_type_JavaLangString;
+      paramString2 = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("initWithConfig error ");
       localStringBuilder.append(paramString1.getMessage());
@@ -76,12 +76,12 @@ public class YtSDKKit
   
   public JSONObject a(int paramInt)
   {
-    return YtSDKKitConfigHelper.getSDKConfig(a(paramInt), this.jdField_a_of_type_OrgJsonJSONObject);
+    return YtSDKKitConfigHelper.getSDKConfig(b(paramInt), this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.YtSDKKit
  * JD-Core Version:    0.7.0.1
  */

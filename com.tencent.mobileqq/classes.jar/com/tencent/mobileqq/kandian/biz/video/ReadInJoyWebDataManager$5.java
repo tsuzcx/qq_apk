@@ -21,7 +21,7 @@ class ReadInJoyWebDataManager$5
   {
     try
     {
-      Object localObject3 = (QQAppInterface)RIJQQAppInterfaceUtil.a();
+      Object localObject3 = (QQAppInterface)RIJQQAppInterfaceUtil.e();
       if (localObject3 == null) {
         return;
       }
@@ -35,7 +35,7 @@ class ReadInJoyWebDataManager$5
       ((StringBuilder)localObject4).append("; skey=");
       ((StringBuilder)localObject4).append((String)localObject3);
       ((Bundle)localObject1).putString("Cookie", ((StringBuilder)localObject4).toString());
-      ((Bundle)localObject1).putString("User-Agent", ReadInJoyWebDataManager.a());
+      ((Bundle)localObject1).putString("User-Agent", ReadInJoyWebDataManager.h());
       localObject2 = new HashMap();
       ((HashMap)localObject2).put("BUNDLE", localObject1);
       ((HashMap)localObject2).put("CONTEXT", BaseApplicationImpl.getApplication());
@@ -43,11 +43,11 @@ class ReadInJoyWebDataManager$5
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("doSendRequestWithExtraHeader:url :");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.a);
         QLog.w("ReadInJoyWebDataManager", 2, ((StringBuilder)localObject1).toString());
       }
       localObject1 = new ReadInJoyWebDataManager.5.1(this);
-      new HttpWebCgiAsyncTask2(this.jdField_a_of_type_JavaLangString, "GET", (HttpWebCgiAsyncTask.Callback)localObject1, 0, null).executeOnExecutor(ThreadManagerV2.getNetExcutor(), new HashMap[] { localObject2 });
+      new HttpWebCgiAsyncTask2(this.a, "GET", (HttpWebCgiAsyncTask.Callback)localObject1, 0, null).executeOnExecutor(ThreadManagerV2.getNetExcutor(), new HashMap[] { localObject2 });
       return;
     }
     catch (Exception localException)
@@ -65,7 +65,7 @@ class ReadInJoyWebDataManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.ReadInJoyWebDataManager.5
  * JD-Core Version:    0.7.0.1
  */

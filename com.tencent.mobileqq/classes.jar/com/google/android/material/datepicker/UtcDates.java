@@ -41,7 +41,7 @@ class UtcDates
   
   static long a(long paramLong)
   {
-    Calendar localCalendar = b();
+    Calendar localCalendar = c();
     localCalendar.setTimeInMillis(paramLong);
     return b(localCalendar).getTimeInMillis();
   }
@@ -50,7 +50,7 @@ class UtcDates
   private static android.icu.text.DateFormat a(String paramString, Locale paramLocale)
   {
     paramString = android.icu.text.DateFormat.getInstanceForSkeleton(paramString, paramLocale);
-    paramString.setTimeZone(a());
+    paramString.setTimeZone(f());
     return paramString;
   }
   
@@ -58,12 +58,6 @@ class UtcDates
   static android.icu.text.DateFormat a(Locale paramLocale)
   {
     return a("yMMMd", paramLocale);
-  }
-  
-  @TargetApi(24)
-  private static android.icu.util.TimeZone a()
-  {
-    return android.icu.util.TimeZone.getTimeZone("UTC");
   }
   
   static TimeSource a()
@@ -106,37 +100,13 @@ class UtcDates
   private static java.text.DateFormat a(int paramInt, Locale paramLocale)
   {
     paramLocale = java.text.DateFormat.getDateInstance(paramInt, paramLocale);
-    paramLocale.setTimeZone(a());
+    paramLocale.setTimeZone(e());
     return paramLocale;
-  }
-  
-  static java.text.DateFormat a(Locale paramLocale)
-  {
-    return a(2, paramLocale);
-  }
-  
-  static SimpleDateFormat a()
-  {
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat(((SimpleDateFormat)java.text.DateFormat.getDateInstance(3, Locale.getDefault())).toLocalizedPattern().replaceAll("\\s+", ""), Locale.getDefault());
-    localSimpleDateFormat.setTimeZone(a());
-    localSimpleDateFormat.setLenient(false);
-    return localSimpleDateFormat;
-  }
-  
-  static Calendar a()
-  {
-    Calendar localCalendar = a().a();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    localCalendar.setTimeZone(a());
-    return localCalendar;
   }
   
   static Calendar a(@Nullable Calendar paramCalendar)
   {
-    Calendar localCalendar = Calendar.getInstance(a());
+    Calendar localCalendar = Calendar.getInstance(e());
     if (paramCalendar == null)
     {
       localCalendar.clear();
@@ -146,33 +116,27 @@ class UtcDates
     return localCalendar;
   }
   
-  private static java.util.TimeZone a()
-  {
-    return java.util.TimeZone.getTimeZone("UTC");
-  }
-  
   @TargetApi(24)
   static android.icu.text.DateFormat b(Locale paramLocale)
   {
     return a("MMMd", paramLocale);
   }
   
-  static java.text.DateFormat b(Locale paramLocale)
-  {
-    paramLocale = (SimpleDateFormat)a(paramLocale);
-    paramLocale.applyPattern(a(paramLocale.toPattern()));
-    return paramLocale;
-  }
-  
   static Calendar b()
   {
-    return a(null);
+    Calendar localCalendar = a().b();
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    localCalendar.setTimeZone(e());
+    return localCalendar;
   }
   
   static Calendar b(Calendar paramCalendar)
   {
     paramCalendar = a(paramCalendar);
-    Calendar localCalendar = b();
+    Calendar localCalendar = c();
     localCalendar.set(paramCalendar.get(1), paramCalendar.get(2), paramCalendar.get(5));
     return localCalendar;
   }
@@ -183,9 +147,9 @@ class UtcDates
     return a("MMMEd", paramLocale);
   }
   
-  static java.text.DateFormat c(Locale paramLocale)
+  static Calendar c()
   {
-    return a(0, paramLocale);
+    return a(null);
   }
   
   @TargetApi(24)
@@ -193,10 +157,46 @@ class UtcDates
   {
     return a("yMMMEd", paramLocale);
   }
+  
+  static SimpleDateFormat d()
+  {
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat(((SimpleDateFormat)java.text.DateFormat.getDateInstance(3, Locale.getDefault())).toLocalizedPattern().replaceAll("\\s+", ""), Locale.getDefault());
+    localSimpleDateFormat.setTimeZone(e());
+    localSimpleDateFormat.setLenient(false);
+    return localSimpleDateFormat;
+  }
+  
+  static java.text.DateFormat e(Locale paramLocale)
+  {
+    return a(2, paramLocale);
+  }
+  
+  private static java.util.TimeZone e()
+  {
+    return java.util.TimeZone.getTimeZone("UTC");
+  }
+  
+  @TargetApi(24)
+  private static android.icu.util.TimeZone f()
+  {
+    return android.icu.util.TimeZone.getTimeZone("UTC");
+  }
+  
+  static java.text.DateFormat f(Locale paramLocale)
+  {
+    paramLocale = (SimpleDateFormat)e(paramLocale);
+    paramLocale.applyPattern(a(paramLocale.toPattern()));
+    return paramLocale;
+  }
+  
+  static java.text.DateFormat g(Locale paramLocale)
+  {
+    return a(0, paramLocale);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.UtcDates
  * JD-Core Version:    0.7.0.1
  */

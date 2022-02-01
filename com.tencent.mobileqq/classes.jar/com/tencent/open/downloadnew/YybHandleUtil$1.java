@@ -12,7 +12,7 @@ final class YybHandleUtil$1
   {
     Object localObject = DownloadDBHelper.a().a("com.tencent.android.qqdownloader");
     if (localObject != null) {
-      localObject = ((DownloadInfo)localObject).l;
+      localObject = ((DownloadInfo)localObject).q;
     } else {
       localObject = "";
     }
@@ -34,7 +34,7 @@ final class YybHandleUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.YybHandleUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ final class RIJKanDianTabReport$1
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo;
+    Object localObject1 = this.a;
     int i;
     if (localObject1 == null) {
       i = 1;
@@ -26,17 +26,17 @@ final class RIJKanDianTabReport$1
     }
     String str2;
     if (i == 3) {
-      str2 = this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo.red_content.get();
+      str2 = this.a.red_content.get();
     } else {
       str2 = "0";
     }
-    boolean bool = ReadInJoyHelper.l();
+    boolean bool = ReadInJoyHelper.v();
     String str1 = "";
     Object localObject2;
     Object localObject3;
     if (!bool)
     {
-      localObject2 = RIJKanDianFolderStatus.getMessageRecordFormLastMsgForMsgTab(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject2 = RIJKanDianFolderStatus.getMessageRecordFormLastMsgForMsgTab(this.b);
       if (localObject2 == null) {
         return;
       }
@@ -45,10 +45,10 @@ final class RIJKanDianTabReport$1
       }
       if (RIJKanDianFolderStatus.isRedDotMessageRecord((MessageRecord)localObject2))
       {
-        localObject1 = RIJKanDianTabReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject2);
-        str1 = RIJKanDianTabReport.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject2);
-        localObject2 = RIJKanDianTabReport.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject2);
-        if (RIJKanDianTabReport.a()) {
+        localObject1 = RIJKanDianTabReport.a(this.b, (MessageRecord)localObject2);
+        str1 = RIJKanDianTabReport.b(this.b, (MessageRecord)localObject2);
+        localObject2 = RIJKanDianTabReport.c(this.b, (MessageRecord)localObject2);
+        if (RIJKanDianTabReport.b()) {
           return;
         }
       }
@@ -69,13 +69,13 @@ final class RIJKanDianTabReport$1
       localObject3 = localObject1;
       localObject2 = localObject1;
     }
-    RIJKanDianTabReport.a(str1, (String)localObject2, i, str2, localObject3, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    RIJKanDianTabReport.a(this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo);
+    RIJKanDianTabReport.a(str1, (String)localObject2, i, str2, localObject3, this.b);
+    RIJKanDianTabReport.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.RIJKanDianTabReport.1
  * JD-Core Version:    0.7.0.1
  */

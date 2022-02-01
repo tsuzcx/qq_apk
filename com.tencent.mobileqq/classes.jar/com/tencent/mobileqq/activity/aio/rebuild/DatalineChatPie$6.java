@@ -12,13 +12,13 @@ class DatalineChatPie$6
   
   public void onClick(View paramView)
   {
-    DatalineChatPie.a(this.a).dismiss();
+    DatalineChatPie.c(this.a).dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DatalineChatPie.6
  * JD-Core Version:    0.7.0.1
  */

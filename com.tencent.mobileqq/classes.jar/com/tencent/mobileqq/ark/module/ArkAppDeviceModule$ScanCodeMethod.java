@@ -23,17 +23,17 @@ class ArkAppDeviceModule$ScanCodeMethod
       paramString = new Intent();
       paramString.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.qrscan.activity.ScannerActivity");
       paramString.putExtra("from", "com.tencent.ark.scan");
-      if (ArkAppDeviceModule.a(this.a) == null) {}
+      if (ArkAppDeviceModule.e(this.a) == null) {}
     }
     try
     {
-      BaseApplication.getContext().unregisterReceiver(ArkAppDeviceModule.a(this.a));
+      BaseApplication.getContext().unregisterReceiver(ArkAppDeviceModule.e(this.a));
       label94:
       ArkAppDeviceModule.a(this.a, null);
       ArkAppDeviceModule.a(this.a, new ArkAppDeviceModule.ScanCodeMethod.1(this, l));
       paramArrayOfVariantWrapper = new IntentFilter("com.tencent.mobileqq.ark.api.scanResultAction");
-      BaseApplication.getContext().registerReceiver(ArkAppDeviceModule.a(this.a), paramArrayOfVariantWrapper, "com.tencent.msg.permission.pushnotify", null);
-      paramArrayOfVariantWrapper = ArkAppModuleBase.b();
+      BaseApplication.getContext().registerReceiver(ArkAppDeviceModule.e(this.a), paramArrayOfVariantWrapper, "com.tencent.msg.permission.pushnotify", null);
+      paramArrayOfVariantWrapper = ArkAppModuleBase.h();
       if (paramArrayOfVariantWrapper != null) {
         paramArrayOfVariantWrapper.startActivity(paramString);
       }
@@ -47,7 +47,7 @@ class ArkAppDeviceModule$ScanCodeMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkAppDeviceModule.ScanCodeMethod
  * JD-Core Version:    0.7.0.1
  */

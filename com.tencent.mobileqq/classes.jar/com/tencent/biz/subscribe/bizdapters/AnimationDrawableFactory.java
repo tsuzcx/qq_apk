@@ -11,8 +11,8 @@ import java.io.File;
 
 public class AnimationDrawableFactory
 {
-  private static volatile AnimationDrawableFactory jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory;
-  private MQLruCache<String, AnimationDrawable> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(10);
+  private static volatile AnimationDrawableFactory a;
+  private MQLruCache<String, AnimationDrawable> b = new MQLruCache(10);
   
   private Bitmap a(File paramFile)
   {
@@ -28,23 +28,23 @@ public class AnimationDrawableFactory
   
   public static AnimationDrawableFactory a()
   {
-    if (jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory == null) {
-          jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory = new AnimationDrawableFactory();
+        if (a == null) {
+          a = new AnimationDrawableFactory();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory;
+    return a;
   }
   
   public void a(String paramString)
   {
-    MQLruCache localMQLruCache = this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
+    MQLruCache localMQLruCache = this.b;
     if ((localMQLruCache != null) && (localMQLruCache.get(paramString) != null)) {
-      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(paramString);
+      this.b.remove(paramString);
     }
   }
   

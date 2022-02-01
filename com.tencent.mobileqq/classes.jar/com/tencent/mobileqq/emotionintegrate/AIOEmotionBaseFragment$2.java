@@ -12,13 +12,13 @@ class AIOEmotionBaseFragment$2
   public void onClick(View paramView)
   {
     this.a.a("0X8009980");
-    this.a.a();
+    this.a.b();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment.2
  * JD-Core Version:    0.7.0.1
  */

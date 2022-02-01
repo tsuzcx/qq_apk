@@ -1,7 +1,6 @@
 package com.tencent.av.ui;
 
-import com.tencent.av.VideoController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.vas.vipav.VipFullScreenVideoView;
 
 class AVActivity$6
   implements Runnable
@@ -10,10 +9,16 @@ class AVActivity$6
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.b, 2, "OnCreateUI --> init EffectCtrlBase");
+    if (this.this$0.Y != null)
+    {
+      if (this.this$0.Y.isPlaying()) {
+        this.this$0.Y.stopPlayback();
+      }
+      if ((this.this$0.K != null) && ((this.this$0.K instanceof DoubleVideoCtrlUI))) {
+        ((DoubleVideoCtrlUI)this.this$0.K).b(false);
+      }
+      this.this$0.Y.setVisibility(8);
     }
-    VideoController.a().a(true);
   }
 }
 

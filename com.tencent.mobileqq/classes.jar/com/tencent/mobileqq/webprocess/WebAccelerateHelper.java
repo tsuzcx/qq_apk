@@ -142,7 +142,7 @@ public class WebAccelerateHelper
   
   public WebViewPluginEngine createWebViewPluginEngine(AppRuntime paramAppRuntime, Activity paramActivity, CustomWebView paramCustomWebView, CommonJsPluginFactory paramCommonJsPluginFactory, List<WebViewPlugin> paramList)
   {
-    Util.a("createWebViewPluginEngine");
+    Util.f("createWebViewPluginEngine");
     Object localObject2 = null;
     Object localObject1;
     if ((paramAppRuntime != null) && (paramActivity == null) && (paramCustomWebView == null) && (paramList == null))
@@ -181,7 +181,7 @@ public class WebAccelerateHelper
         }
       }
     }
-    Util.b("createWebViewPluginEngine");
+    Util.g("createWebViewPluginEngine");
     if (localObject1 != null)
     {
       if (QLog.isColorLevel())
@@ -362,8 +362,8 @@ public class WebAccelerateHelper
         bool2 = false;
         if (bool1)
         {
-          localObject = SwiftBrowserCookieMonster.a(paramString);
-          if ((localObject == null) || (!((SwiftBrowserCookieMonster)localObject).a())) {
+          localObject = SwiftBrowserCookieMonster.c(paramString);
+          if ((localObject == null) || (!((SwiftBrowserCookieMonster)localObject).e())) {
             break label120;
           }
           bool1 = true;
@@ -393,7 +393,7 @@ public class WebAccelerateHelper
   
   public void preGetKey(String paramString, Intent paramIntent, AppRuntime paramAppRuntime)
   {
-    SwiftBrowserCookieMonster localSwiftBrowserCookieMonster = SwiftBrowserCookieMonster.a(paramString);
+    SwiftBrowserCookieMonster localSwiftBrowserCookieMonster = SwiftBrowserCookieMonster.c(paramString);
     if (localSwiftBrowserCookieMonster != null) {
       localSwiftBrowserCookieMonster.a(paramString, null, paramAppRuntime, paramIntent);
     }
@@ -409,7 +409,7 @@ public class WebAccelerateHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebAccelerateHelper
  * JD-Core Version:    0.7.0.1
  */

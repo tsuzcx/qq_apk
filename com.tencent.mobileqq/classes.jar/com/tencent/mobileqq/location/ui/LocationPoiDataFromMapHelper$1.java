@@ -43,7 +43,7 @@ class LocationPoiDataFromMapHelper$1
         while (localIterator.hasNext())
         {
           localVenue = LocationRoom.Venue.a((String)localObject, (Poi)localIterator.next());
-          LocationPoiDataFromMapHelper.a(this.a).add(localVenue);
+          LocationPoiDataFromMapHelper.b(this.a).add(localVenue);
         }
         localObject = this.a;
         if (paramBaseObject.result.poi_count >= 20) {
@@ -62,7 +62,7 @@ class LocationPoiDataFromMapHelper$1
         while (localIterator.hasNext())
         {
           localVenue = LocationRoom.Venue.a((String)localObject, (SuggestionResultObject.SuggestionData)localIterator.next());
-          LocationPoiDataFromMapHelper.a(this.a).add(localVenue);
+          LocationPoiDataFromMapHelper.b(this.a).add(localVenue);
         }
         localObject = this.a;
         bool1 = bool2;
@@ -82,7 +82,7 @@ class LocationPoiDataFromMapHelper$1
         while (localIterator.hasNext())
         {
           localVenue = LocationRoom.Venue.a((String)localObject, (SearchResultObject.SearchResultData)localIterator.next());
-          LocationPoiDataFromMapHelper.a(this.a).add(localVenue);
+          LocationPoiDataFromMapHelper.b(this.a).add(localVenue);
         }
         localObject = this.a;
         bool1 = bool3;
@@ -96,12 +96,12 @@ class LocationPoiDataFromMapHelper$1
     {
       paramBaseObject = new StringBuilder();
       paramBaseObject.append("[venue][poi-data] fetch onSuccess: mVenueList size = ");
-      paramBaseObject.append(LocationPoiDataFromMapHelper.a(this.a).size());
+      paramBaseObject.append(LocationPoiDataFromMapHelper.b(this.a).size());
       paramBaseObject.append(", mHashMore = ");
-      paramBaseObject.append(LocationPoiDataFromMapHelper.a(this.a));
+      paramBaseObject.append(LocationPoiDataFromMapHelper.c(this.a));
       QLog.i("LocationPoiDataFromMapHelper", 4, paramBaseObject.toString());
     }
-    if (LocationPoiDataFromMapHelper.a(this.a) != null) {
+    if (LocationPoiDataFromMapHelper.d(this.a) != null) {
       ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.1(this));
     }
   }
@@ -113,19 +113,19 @@ class LocationPoiDataFromMapHelper$1
     {
       paramString = new StringBuilder();
       paramString.append("[venue][poi-data] fetch onFailure: mVenueList size = ");
-      paramString.append(LocationPoiDataFromMapHelper.a(this.a).size());
+      paramString.append(LocationPoiDataFromMapHelper.b(this.a).size());
       paramString.append(", mHashMore = ");
-      paramString.append(LocationPoiDataFromMapHelper.a(this.a));
+      paramString.append(LocationPoiDataFromMapHelper.c(this.a));
       QLog.i("LocationPoiDataFromMapHelper", 4, paramString.toString());
     }
-    if (LocationPoiDataFromMapHelper.a(this.a) != null) {
+    if (LocationPoiDataFromMapHelper.d(this.a) != null) {
       ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.2(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1
  * JD-Core Version:    0.7.0.1
  */

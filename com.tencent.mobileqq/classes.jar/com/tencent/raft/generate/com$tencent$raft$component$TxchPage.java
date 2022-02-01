@@ -44,7 +44,7 @@ public class com$tencent$raft$component$TxchPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.raft.generate.com.tencent.raft.component.TxchPage
  * JD-Core Version:    0.7.0.1
  */

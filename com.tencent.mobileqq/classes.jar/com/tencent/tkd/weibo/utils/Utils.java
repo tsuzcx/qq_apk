@@ -31,17 +31,14 @@ public final class Utils
   public final EditObject a(@NotNull TweetTopicItem paramTweetTopicItem)
   {
     Intrinsics.checkParameterIsNotNull(paramTweetTopicItem, "$this$toEditObject");
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append('#');
-    ((StringBuilder)localObject).append(paramTweetTopicItem.c());
-    localObject = new EditObject(((StringBuilder)localObject).toString(), EditObject.EditObjectType.TYPE_TOPIC);
-    ((EditObject)localObject).setKey(paramTweetTopicItem.a());
-    return localObject;
+    EditObject localEditObject = new EditObject(paramTweetTopicItem.c(), EditObject.EditObjectType.TYPE_TOPIC);
+    localEditObject.setKey(paramTweetTopicItem.a());
+    return localEditObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

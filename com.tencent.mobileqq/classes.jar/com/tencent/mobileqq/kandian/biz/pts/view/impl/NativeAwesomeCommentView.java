@@ -28,11 +28,11 @@ public class NativeAwesomeCommentView
   extends FrameLayout
   implements IView
 {
-  private static int jdField_a_of_type_Int = ((Integer)RIJSPUtils.a(AwesomeCommentInfo.i, Integer.valueOf(1))).intValue();
-  ClickableSpan jdField_a_of_type_AndroidTextStyleClickableSpan = new NativeAwesomeCommentView.1(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AwesomeCommentInfo jdField_a_of_type_ComTencentMobileqqKandianRepoDbStructAwesomeCommentInfo;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static int c = ((Integer)RIJSPUtils.b(AwesomeCommentInfo.l, Integer.valueOf(1))).intValue();
+  ClickableSpan a = new NativeAwesomeCommentView.1(this);
+  private TextView b;
+  private AwesomeCommentInfo d;
+  private boolean e = false;
   
   public NativeAwesomeCommentView(@NonNull Context paramContext)
   {
@@ -52,19 +52,19 @@ public class NativeAwesomeCommentView
     a();
   }
   
-  public static int a()
-  {
-    return jdField_a_of_type_Int;
-  }
-  
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)inflate(getContext(), 2131560099, this).findViewById(2131379538));
+    this.b = ((TextView)inflate(getContext(), 2131626146, this).findViewById(2131448290));
+  }
+  
+  public static int getMaxLines()
+  {
+    return c;
   }
   
   public static void setMaxLines(int paramInt)
   {
-    jdField_a_of_type_Int = paramInt;
+    c = paramInt;
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -105,17 +105,17 @@ public class NativeAwesomeCommentView
   
   public void setAwesomeCommentInfo(AwesomeCommentInfo paramAwesomeCommentInfo)
   {
-    if ((paramAwesomeCommentInfo != null) && (AwesomeCommentInfo.c != 1))
+    if ((paramAwesomeCommentInfo != null) && (AwesomeCommentInfo.m != 1))
     {
       setVisibility(0);
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("setAwesomeCommentInfo: ");
       ((StringBuilder)localObject1).append(paramAwesomeCommentInfo);
       QLog.d("ReadInJoyAwesomeCommentView", 2, ((StringBuilder)localObject1).toString());
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoDbStructAwesomeCommentInfo = paramAwesomeCommentInfo;
-      Object localObject2 = paramAwesomeCommentInfo.jdField_b_of_type_JavaLangString;
-      localObject1 = EmotionCodecUtils.b(paramAwesomeCommentInfo.d);
-      Object localObject3 = EmotionCodecUtils.b(paramAwesomeCommentInfo.g);
+      this.d = paramAwesomeCommentInfo;
+      Object localObject2 = paramAwesomeCommentInfo.b;
+      localObject1 = EmotionCodecUtils.c(paramAwesomeCommentInfo.g);
+      Object localObject3 = EmotionCodecUtils.c(paramAwesomeCommentInfo.j);
       Object localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("  ");
       ((StringBuilder)localObject4).append((String)localObject1);
@@ -124,11 +124,11 @@ public class NativeAwesomeCommentView
       localObject3 = new SpannableString(((StringBuilder)localObject4).toString());
       localObject4 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = new ColorDrawable(0);
-      ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = getResources().getDrawable(2130842841);
+      ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = getResources().getDrawable(2130843797);
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
         localObject2 = URLDrawable.getDrawable((String)localObject2, (URLDrawable.URLDrawableOptions)localObject4);
-        ((URLDrawable)localObject2).setBounds(0, 0, paramAwesomeCommentInfo.jdField_a_of_type_Int * 2, paramAwesomeCommentInfo.jdField_b_of_type_Int * 2);
+        ((URLDrawable)localObject2).setBounds(0, 0, paramAwesomeCommentInfo.c * 2, paramAwesomeCommentInfo.d * 2);
         ((URLDrawable)localObject2).setCallback(new NativeAwesomeCommentView.2(this, (SpannableString)localObject3));
         ((URLDrawable)localObject2).setDownloadListener(new NativeAwesomeCommentView.3(this, (SpannableString)localObject3));
         ((SpannableString)localObject3).setSpan(new CenteredImageSpan((Drawable)localObject2), 0, 1, 17);
@@ -138,16 +138,16 @@ public class NativeAwesomeCommentView
       } else {
         i = 1;
       }
-      ((SpannableString)localObject3).setSpan(this.jdField_a_of_type_AndroidTextStyleClickableSpan, 2, i + 1, 17);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(new QQText((CharSequence)localObject3, 7, 16));
-      int i = jdField_a_of_type_Int;
+      ((SpannableString)localObject3).setSpan(this.a, 2, i + 1, 17);
+      this.b.setText(new QQText((CharSequence)localObject3, 7, 16));
+      int i = c;
       if (i != 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(i);
+        this.b.setMaxLines(i);
       } else {
-        this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2147483647);
+        this.b.setMaxLines(2147483647);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new NativeAwesomeCommentView.4(this, paramAwesomeCommentInfo));
+      this.b.setMovementMethod(LinkMovementMethod.getInstance());
+      this.b.setOnClickListener(new NativeAwesomeCommentView.4(this, paramAwesomeCommentInfo));
       return;
     }
     setVisibility(8);
@@ -156,7 +156,7 @@ public class NativeAwesomeCommentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeAwesomeCommentView
  * JD-Core Version:    0.7.0.1
  */

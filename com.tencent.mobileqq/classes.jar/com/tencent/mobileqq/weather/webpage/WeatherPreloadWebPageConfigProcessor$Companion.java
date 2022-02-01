@@ -9,14 +9,14 @@ public final class WeatherPreloadWebPageConfigProcessor$Companion
 {
   public final boolean a()
   {
-    Object localObject = QConfigManager.a().a(638);
+    Object localObject = QConfigManager.b().b(638);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
     return ((WeatherPreloadWebPageConfigProcessor.Config)localObject).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherPreloadWebPageConfigProcessor.Companion
  * JD-Core Version:    0.7.0.1
  */

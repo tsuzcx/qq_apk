@@ -19,11 +19,13 @@ import feedcloud.FeedCloudMeta.StUser;
 import feedcloud.FeedCloudMeta.StVideo;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import qqcircle.QQCircleBase.StUserBusiData;
+import qqcircle.QQCircleCounter.RedDisplayInfo;
 
 public class QCircleHostUtil
 {
@@ -38,7 +40,7 @@ public class QCircleHostUtil
   {
     String str;
     if (paramBoolean) {
-      str = HardCodeUtil.a(2131697854);
+      str = HardCodeUtil.a(2131895633);
     } else {
       str = "W";
     }
@@ -74,6 +76,57 @@ public class QCircleHostUtil
   public static boolean checkOperateMaskEnabled(long paramLong, int paramInt)
   {
     return (paramLong & 1 << paramInt) != 0L;
+  }
+  
+  public static List<String> convertRedDisplayInfoToString(List<QQCircleCounter.RedDisplayInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return localArrayList;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        QQCircleCounter.RedDisplayInfo localRedDisplayInfo = (QQCircleCounter.RedDisplayInfo)paramList.next();
+        if (!TextUtils.isEmpty(localRedDisplayInfo.avatarURL.get())) {
+          localArrayList.add(localRedDisplayInfo.avatarURL.get());
+        } else {
+          localArrayList.add(localRedDisplayInfo.headImg.get());
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static int convertSourceFromType(int paramInt)
+  {
+    int i = 6;
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 6) {
+              return 0;
+            }
+            return 10;
+          }
+          return 5;
+        }
+      }
+      else {
+        return 4;
+      }
+    }
+    else {
+      i = 1;
+    }
+    return i;
   }
   
   public static String fansNumberFormatTranfer(long paramLong)
@@ -237,7 +290,7 @@ public class QCircleHostUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.utils.QCircleHostUtil
  * JD-Core Version:    0.7.0.1
  */

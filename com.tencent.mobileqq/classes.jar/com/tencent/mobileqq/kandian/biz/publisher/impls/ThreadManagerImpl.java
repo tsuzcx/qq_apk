@@ -16,7 +16,7 @@ public final class ThreadManagerImpl
   {
     Intrinsics.checkParameterIsNotNull(paramThreadType, "threadType");
     Intrinsics.checkParameterIsNotNull(paramRunnable, "runnable");
-    int i = ThreadManagerImpl.WhenMappings.a[paramThreadType.ordinal()];
+    int i = ThreadManagerImpl.WhenMappings.$EnumSwitchMapping$0[paramThreadType.ordinal()];
     if (i != 1)
     {
       if (i != 2)
@@ -40,7 +40,7 @@ public final class ThreadManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.ThreadManagerImpl
  * JD-Core Version:    0.7.0.1
  */

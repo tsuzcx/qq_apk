@@ -1,25 +1,26 @@
 package com.tencent.mobileqq.activity;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 class ChatSettingActivity$26
-  implements DialogInterface.OnClickListener
+  implements IIconListener
 {
   ChatSettingActivity$26(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGetIcon(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.finish();
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
-      ChatSettingActivity.a(this.a).dismiss();
+    if ((this.a.E != null) && (this.a.F != null) && (this.a.F.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200))
+    {
+      paramBitmap = this.a;
+      ChatSettingActivity.a(paramBitmap, paramBitmap.F, this.a.E);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.26
  * JD-Core Version:    0.7.0.1
  */

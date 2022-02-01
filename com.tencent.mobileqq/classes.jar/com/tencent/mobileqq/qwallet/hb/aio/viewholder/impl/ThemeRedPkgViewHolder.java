@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.widget.TextView;
 import com.qwallet.temp.IQWalletMsgHolder;
 import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qwallet.hb.IRedPacketManager;
 import com.tencent.mobileqq.qwallet.hb.aio.QQWalletBaseMsgElem;
@@ -16,90 +17,65 @@ import com.tencent.mobileqq.qwallet.hb.theme.ThemeRedPkgConfig;
 public class ThemeRedPkgViewHolder
   extends BaseViewHolder
 {
-  ThemeRedPkgConfig a;
-  int l = 0;
-  int m = 0;
+  int A = 0;
+  ThemeRedPkgConfig y = null;
+  int z = 0;
   
-  public ThemeRedPkgViewHolder(BaseQQAppInterface paramBaseQQAppInterface, IQWalletMsgHolder paramIQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
+  public ThemeRedPkgViewHolder(BaseQQAppInterface paramBaseQQAppInterface, BaseSessionInfo paramBaseSessionInfo, IQWalletMsgHolder paramIQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
   {
-    super(paramBaseQQAppInterface, paramIQWalletMsgHolder, paramQQWalletBaseMsgElem, paramInt, paramOnCustomizeListener);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbThemeThemeRedPkgConfig = null;
-    this.h = 0;
-    this.m = paramQQWalletBaseMsgElem.l;
+    super(paramBaseQQAppInterface, paramBaseSessionInfo, paramIQWalletMsgHolder, paramQQWalletBaseMsgElem, paramInt, paramOnCustomizeListener);
+    this.n = 0;
+    this.A = paramQQWalletBaseMsgElem.z;
   }
   
   public void a()
   {
     super.a();
-    if ((this.m > 1) && (this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo == null))
+    if ((this.A > 1) && (this.p == null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbThemeThemeRedPkgConfig = ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).getThemeRedPkgConfById(this.m);
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbThemeThemeRedPkgConfig;
-      if ((localObject != null) && (!TextUtils.isEmpty(((ThemeRedPkgConfig)localObject).c)))
+      this.y = ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).getThemeRedPkgConfById(this.A);
+      Object localObject = this.y;
+      if ((localObject != null) && (!TextUtils.isEmpty(((ThemeRedPkgConfig)localObject).f)))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbThemeThemeRedPkgConfig.c;
+        localObject = this.y.f;
       }
       else
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("https://i.gtimg.cn/channel/static/socialpay/paneltheme/socialpay_theme_v1_");
-        ((StringBuilder)localObject).append(this.m);
+        ((StringBuilder)localObject).append(this.A);
         localObject = ((StringBuilder)localObject).toString();
       }
       RedPacketInfo localRedPacketInfo = new RedPacketInfo();
-      localRedPacketInfo.a = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg;
+      localRedPacketInfo.a = this.b;
       int i;
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioQQWalletBaseMsgElem.h == 1) {
+      if (this.d.u == 1) {
         i = 4;
       } else {
         i = 1;
       }
       localRedPacketInfo.type = i;
       localRedPacketInfo.templateId = ((String)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo = CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localRedPacketInfo, this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$OnCustomizeListener);
+      this.p = CustomizeStrategyFactory.d().a(this.f, localRedPacketInfo, this.u);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo != null)
+    if (this.p != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.animInfo != null)
+      if (this.p.animInfo != null)
       {
-        this.l = 2;
+        this.z = 2;
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.background != null) {
-        this.l = 1;
+      if (this.p.background != null) {
+        this.z = 1;
       }
-    }
-  }
-  
-  public boolean a()
-  {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setVisibility(0);
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setTextColor(-8947849);
-    ThemeRedPkgConfig localThemeRedPkgConfig = this.jdField_a_of_type_ComTencentMobileqqQwalletHbThemeThemeRedPkgConfig;
-    if ((localThemeRedPkgConfig != null) && (!TextUtils.isEmpty(localThemeRedPkgConfig.e)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqQwalletHbThemeThemeRedPkgConfig.d)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqQwalletHbThemeThemeRedPkgConfig.f))) {}
-    try
-    {
-      int i = Color.parseColor(this.jdField_a_of_type_ComTencentMobileqqQwalletHbThemeThemeRedPkgConfig.e);
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setTextColor(i);
-      label96:
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setText(this.jdField_a_of_type_ComTencentMobileqqQwalletHbThemeThemeRedPkgConfig.d);
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setTag(this.jdField_a_of_type_ComTencentMobileqqQwalletHbThemeThemeRedPkgConfig.f);
-      break label151;
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setText("主题红包");
-      label151:
-      return true;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      break label96;
     }
   }
   
   public void c()
   {
-    if (this.l == 1)
+    if (this.z == 1)
     {
-      i();
+      j();
       return;
     }
     super.c();
@@ -107,17 +83,40 @@ public class ThemeRedPkgViewHolder
   
   public void e()
   {
-    if (this.l > 0)
+    if (this.z > 0)
     {
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().setVisibility(8);
+      this.a.h().setVisibility(8);
       return;
     }
     super.e();
   }
+  
+  public boolean g()
+  {
+    this.a.c().setVisibility(0);
+    ThemeRedPkgConfig localThemeRedPkgConfig = this.y;
+    if ((localThemeRedPkgConfig != null) && (!TextUtils.isEmpty(localThemeRedPkgConfig.h)) && (!TextUtils.isEmpty(this.y.g)) && (!TextUtils.isEmpty(this.y.i))) {}
+    try
+    {
+      int i = Color.parseColor(this.y.h);
+      this.a.c().setTextColor(i);
+      label82:
+      this.a.c().setText(this.y.g);
+      this.a.c().setTag(this.y.i);
+      break label137;
+      this.a.c().setText("主题红包");
+      label137:
+      return true;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      break label82;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.viewholder.impl.ThemeRedPkgViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.leba.impl;
 
-import android.content.Context;
+import android.util.Log;
 import com.tencent.mobileqq.leba.ILebaHelperService;
 import com.tencent.mobileqq.leba.core.CommPluginHandlerApi;
 import com.tencent.mobileqq.leba.core.LebaHelper;
-import com.tencent.mobileqq.leba.core.LebaSettingHandlerApi;
 import com.tencent.mobileqq.leba.core.LebaShowListManager;
 import com.tencent.mobileqq.leba.core.LebaUtil;
 import com.tencent.mobileqq.leba.core.LebaWebPreloadHelper;
@@ -14,7 +13,7 @@ import com.tencent.mobileqq.leba.observer.ResourcePluginListener;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppSetting;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 import mqq.app.AppRuntime;
 
 public class LebaHelperServiceImpl
@@ -46,17 +45,12 @@ public class LebaHelperServiceImpl
       QLog.i("LebaHelperServiceImpl", 1, "checkModleAndRefesh mLebaHelper == null");
       return;
     }
-    localLebaHelper.d();
+    localLebaHelper.e();
   }
   
   public void getAllPluginList(AppRuntime paramAppRuntime)
   {
-    CommPluginHandlerApi.c(paramAppRuntime);
-  }
-  
-  public int getKidModlePluginSize(AppRuntime paramAppRuntime)
-  {
-    return LebaUtil.a(paramAppRuntime);
+    CommPluginHandlerApi.a(paramAppRuntime);
   }
   
   public List<LebaPluginInfo> getLebaConfigList()
@@ -68,7 +62,7 @@ public class LebaHelperServiceImpl
       QLog.i("LebaHelperServiceImpl", 1, "addLebaListener mLebaHelper == null");
       return null;
     }
-    return localLebaHelper.a();
+    return localLebaHelper.f();
   }
   
   public Object getLebaHelper()
@@ -79,22 +73,17 @@ public class LebaHelperServiceImpl
   
   public List<LebaViewItem> getLebaMgrList()
   {
-    return LebaShowListManager.a().a();
+    return LebaShowListManager.a().d();
   }
   
   public List<LebaViewItem> getLebaShowList()
   {
-    return LebaShowListManager.a().b();
+    return LebaShowListManager.a().e();
   }
   
   public LebaViewItem getLebaViewItemById(long paramLong)
   {
     return LebaShowListManager.a().a(paramLong);
-  }
-  
-  public void goToLebaMgrActivity(Context paramContext, AppRuntime paramAppRuntime)
-  {
-    LebaUtil.a(paramContext, paramAppRuntime);
   }
   
   public void initLebaHelper()
@@ -120,22 +109,31 @@ public class LebaHelperServiceImpl
   
   public boolean isPluginOpen(long paramLong)
   {
-    return LebaShowListManager.a().a(paramLong);
+    return LebaShowListManager.a().b(paramLong);
   }
   
   public boolean isTableModel(AppRuntime paramAppRuntime)
   {
-    return LebaUtil.c(paramAppRuntime);
+    return LebaUtil.f(paramAppRuntime);
   }
   
-  public boolean needShowRedDot(AppRuntime paramAppRuntime, long paramLong, boolean paramBoolean, Map<Long, LebaPluginInfo> paramMap)
+  public boolean needShowRedDot(AppRuntime paramAppRuntime, long paramLong, Set<Long> paramSet)
   {
-    return LebaUtil.a(paramAppRuntime, paramLong, paramBoolean, paramMap);
+    return LebaUtil.a(paramAppRuntime, paramLong, paramSet);
   }
   
   public void netSetPluginState(String paramString, boolean paramBoolean, long paramLong)
   {
-    LebaSettingHandlerApi.a(this.mApp, paramString, paramBoolean, paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("netSetPluginState path=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(",status=");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(",time=");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(",trace=");
+    localStringBuilder.append(Log.getStackTraceString(new Throwable()));
+    QLog.i("LebaHelperServiceImpl", 1, localStringBuilder.toString());
   }
   
   public void notifyPluginListChanged()
@@ -147,7 +145,7 @@ public class LebaHelperServiceImpl
       QLog.i("LebaHelperServiceImpl", 1, "notifyPluginListChanged mLebaHelper == null");
       return;
     }
-    localLebaHelper.i();
+    localLebaHelper.j();
   }
   
   public void notifyRefreshWebProcess()
@@ -157,7 +155,14 @@ public class LebaHelperServiceImpl
   
   public void notifySetPluginState(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    LebaSettingHandlerApi.a(this.mApp, paramInt, paramBoolean, paramObject);
+    paramObject = new StringBuilder();
+    paramObject.append("notifySetPluginState type=");
+    paramObject.append(paramInt);
+    paramObject.append(",isSuccess=");
+    paramObject.append(paramBoolean);
+    paramObject.append(",trace=");
+    paramObject.append(Log.getStackTraceString(new Throwable()));
+    QLog.i("LebaHelperServiceImpl", 1, paramObject.toString());
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -171,7 +176,7 @@ public class LebaHelperServiceImpl
     QLog.i("LebaHelperServiceImpl", 1, "onDestroy");
     LebaHelper localLebaHelper = this.mLebaHelper;
     if (localLebaHelper != null) {
-      localLebaHelper.e();
+      localLebaHelper.g();
     }
   }
   
@@ -194,7 +199,7 @@ public class LebaHelperServiceImpl
   
   public void reportPluginStatus(AppRuntime paramAppRuntime)
   {
-    LebaShowListManager.a().a(paramAppRuntime);
+    LebaShowListManager.a().c(paramAppRuntime);
   }
   
   public void setFlagBackFromMgr()
@@ -212,14 +217,20 @@ public class LebaHelperServiceImpl
     LebaShowListManager.a |= 0x2;
   }
   
-  public void updateAllLebaListFlag(List<BusinessInfoCheckUpdate.AppSetting> paramList)
-  {
-    LebaShowListManager.a().a(paramList);
-  }
+  public void updateAllLebaListFlag(List<BusinessInfoCheckUpdate.AppSetting> paramList) {}
   
   public void updateAppSetting(AppRuntime paramAppRuntime, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3)
   {
-    LebaShowListManager.a().a(paramAppRuntime, paramLong1, paramBoolean, paramLong2, paramLong3);
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("updateAppSetting appId=");
+    paramAppRuntime.append(paramLong1);
+    paramAppRuntime.append(",status=");
+    paramAppRuntime.append(paramBoolean);
+    paramAppRuntime.append(",time=");
+    paramAppRuntime.append(paramLong2);
+    paramAppRuntime.append(",trace=");
+    paramAppRuntime.append(Log.getStackTraceString(new Throwable()));
+    QLog.i("LebaHelperServiceImpl", 1, paramAppRuntime.toString());
   }
   
   public void updateBuffer()
@@ -229,7 +240,7 @@ public class LebaHelperServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.impl.LebaHelperServiceImpl
  * JD-Core Version:    0.7.0.1
  */

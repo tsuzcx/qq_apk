@@ -11,17 +11,17 @@ class QuickRecyclerAdapter$3
   
   public boolean onLongClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopAdapterQuickRecyclerAdapter.a != null)
+    if (this.b.h != null)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqTroopAdapterBaseViewHolder.getAdapterPosition();
-      return this.jdField_a_of_type_ComTencentMobileqqTroopAdapterQuickRecyclerAdapter.a.a(paramView, this.jdField_a_of_type_ComTencentMobileqqTroopAdapterBaseViewHolder, i);
+      int i = this.a.getAdapterPosition();
+      return this.b.h.b(paramView, this.a, i);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.adapter.QuickRecyclerAdapter.3
  * JD-Core Version:    0.7.0.1
  */

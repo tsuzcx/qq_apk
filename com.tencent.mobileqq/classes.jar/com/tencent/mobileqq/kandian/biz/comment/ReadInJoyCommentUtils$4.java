@@ -13,38 +13,38 @@ import com.tencent.widget.ActionSheet.OnButtonClickListener;
 final class ReadInJoyCommentUtils$4
   implements ActionSheet.OnButtonClickListener
 {
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
     if (paramInt >= 0)
     {
-      paramView = this.jdField_a_of_type_ArrayOfInt;
+      paramView = this.b;
       if (paramInt >= paramView.length) {
         return;
       }
-      paramView = this.jdField_a_of_type_AndroidContentContext.getString(paramView[paramInt]);
-      QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.jdField_a_of_type_AndroidContentContext, 2131756189);
-      localQQCustomDialog.setContentView(2131558954);
-      localQQCustomDialog.setMessage(String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131717794), new Object[] { paramView }));
-      localQQCustomDialog.setTitle(2131717795);
+      paramView = this.c.getString(paramView[paramInt]);
+      QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.c, 2131953338);
+      localQQCustomDialog.setContentView(2131624587);
+      localQQCustomDialog.setMessage(String.format(this.c.getString(2131915269), new Object[] { paramView }));
+      localQQCustomDialog.setTitle(2131915270);
       ViewGroup.LayoutParams localLayoutParams = localQQCustomDialog.getMessageTextView().getLayoutParams();
       if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
       {
         ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localLayoutParams;
-        localMarginLayoutParams.leftMargin = ViewUtils.a(12.0F);
-        localMarginLayoutParams.rightMargin = ViewUtils.a(12.0F);
+        localMarginLayoutParams.leftMargin = ViewUtils.dip2px(12.0F);
+        localMarginLayoutParams.rightMargin = ViewUtils.dip2px(12.0F);
         localQQCustomDialog.getMessageTextView().setLayoutParams(localLayoutParams);
       }
       localQQCustomDialog.setTag(paramView);
-      localQQCustomDialog.setPositiveButton(2131717797, new ReadInJoyCommentUtils.4.1(this, paramView, paramInt + 1));
-      localQQCustomDialog.setNegativeButton(2131717796, new ReadInJoyCommentUtils.4.2(this));
+      localQQCustomDialog.setPositiveButton(2131915272, new ReadInJoyCommentUtils.4.1(this, paramView, paramInt + 1));
+      localQQCustomDialog.setNegativeButton(2131915271, new ReadInJoyCommentUtils.4.2(this));
       localQQCustomDialog.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentUtils.4
  * JD-Core Version:    0.7.0.1
  */

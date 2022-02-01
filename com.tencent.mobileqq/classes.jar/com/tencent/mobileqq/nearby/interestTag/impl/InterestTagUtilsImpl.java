@@ -33,10 +33,10 @@ public class InterestTagUtilsImpl
   public Object convertTo(InterestTag paramInterestTag)
   {
     appoint_define.InterestTag localInterestTag = new appoint_define.InterestTag();
-    localInterestTag.uint32_tag_type.set(paramInterestTag.jdField_a_of_type_Int);
-    if (paramInterestTag.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    localInterestTag.uint32_tag_type.set(paramInterestTag.a);
+    if (paramInterestTag.b.size() > 0)
     {
-      paramInterestTag = paramInterestTag.jdField_a_of_type_JavaUtilArrayList.iterator();
+      paramInterestTag = paramInterestTag.b.iterator();
       while (paramInterestTag.hasNext())
       {
         InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramInterestTag.next();
@@ -68,7 +68,7 @@ public class InterestTagUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.impl.InterestTagUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

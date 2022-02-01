@@ -12,12 +12,12 @@ class ActionSheetDialog$4
   {
     if (TextUtils.isEmpty(this.a))
     {
-      ActionSheetDialog.a(this.this$0).setText("");
-      ActionSheetDialog.a(this.this$0).setVisibility(8);
+      ActionSheetDialog.e(this.this$0).setText("");
+      ActionSheetDialog.e(this.this$0).setVisibility(8);
       return;
     }
-    ActionSheetDialog.a(this.this$0).setText(this.a);
-    ActionSheetDialog.a(this.this$0).setVisibility(0);
+    ActionSheetDialog.e(this.this$0).setText(this.a);
+    ActionSheetDialog.e(this.this$0).setVisibility(0);
   }
 }
 

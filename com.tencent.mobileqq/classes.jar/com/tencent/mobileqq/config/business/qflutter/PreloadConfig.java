@@ -12,10 +12,10 @@ public final class PreloadConfig
 {
   @SerializedName("mod")
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   @SerializedName("opt")
   @NotNull
-  private List<? extends PreloadEngineOption> jdField_a_of_type_JavaUtilList;
+  private List<? extends PreloadEngineOption> b;
   
   public PreloadConfig()
   {
@@ -24,8 +24,8 @@ public final class PreloadConfig
   
   public PreloadConfig(@NotNull String paramString, @NotNull List<? extends PreloadEngineOption> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramString;
+    this.b = paramList;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -34,7 +34,7 @@ public final class PreloadConfig
       if ((paramObject instanceof PreloadConfig))
       {
         paramObject = (PreloadConfig)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaUtilList, paramObject.jdField_a_of_type_JavaUtilList))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b))) {}
       }
       else
       {
@@ -46,7 +46,7 @@ public final class PreloadConfig
   
   public int hashCode()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     int j = 0;
     int i;
     if (localObject != null) {
@@ -54,7 +54,7 @@ public final class PreloadConfig
     } else {
       i = 0;
     }
-    localObject = this.jdField_a_of_type_JavaUtilList;
+    localObject = this.b;
     if (localObject != null) {
       j = localObject.hashCode();
     }
@@ -66,16 +66,16 @@ public final class PreloadConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PreloadConfig(mod=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", opt=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qflutter.PreloadConfig
  * JD-Core Version:    0.7.0.1
  */

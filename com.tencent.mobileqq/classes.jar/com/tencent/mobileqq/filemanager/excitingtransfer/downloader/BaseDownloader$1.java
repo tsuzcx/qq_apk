@@ -9,14 +9,14 @@ class BaseDownloader$1
   
   public void run()
   {
-    this.this$0.a = FMSettings.a();
+    this.this$0.c = FMSettings.a();
     BaseDownloader localBaseDownloader = this.this$0;
     localBaseDownloader.a(BaseDownloader.a(localBaseDownloader));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.downloader.BaseDownloader.1
  * JD-Core Version:    0.7.0.1
  */

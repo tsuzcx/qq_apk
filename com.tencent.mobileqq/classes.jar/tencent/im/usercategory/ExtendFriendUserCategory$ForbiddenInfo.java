@@ -39,7 +39,7 @@ public final class ExtendFriendUserCategory$ForbiddenInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.usercategory.ExtendFriendUserCategory.ForbiddenInfo
  * JD-Core Version:    0.7.0.1
  */

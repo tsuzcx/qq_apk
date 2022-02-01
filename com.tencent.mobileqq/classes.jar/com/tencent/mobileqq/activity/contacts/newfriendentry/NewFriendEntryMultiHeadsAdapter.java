@@ -19,55 +19,55 @@ import java.util.List;
 public class NewFriendEntryMultiHeadsAdapter
   extends RecyclerView.Adapter<NewFriendEntryMultiHeadsAdapter.ViewHolder>
 {
-  private int jdField_a_of_type_Int;
-  PaintDrawable jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
+  PaintDrawable a;
+  private QQAppInterface b;
+  private List<Object> c = new ArrayList();
+  private int d;
   
   public NewFriendEntryMultiHeadsAdapter(QQAppInterface paramQQAppInterface, List<Object> paramList, PaintDrawable paramPaintDrawable, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList = paramList;
+      this.c = paramList;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable = paramPaintDrawable;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramPaintDrawable;
+    this.d = paramInt;
   }
   
   public NewFriendEntryMultiHeadsAdapter.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new NewFriendEntryMultiHeadsAdapter.ViewHolder(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131559850, null));
+    return new NewFriendEntryMultiHeadsAdapter.ViewHolder(this, LayoutInflater.from(this.b.getApp()).inflate(2131625893, null));
   }
   
   public void a(NewFriendEntryMultiHeadsAdapter.ViewHolder paramViewHolder, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.c;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      localObject = this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localObject = this.c.get(paramInt);
       if ((localObject instanceof FriendSystemMessage))
       {
         localObject = (FriendSystemMessage)localObject;
-        localObject = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, ((FriendSystemMessage)localObject).a());
+        localObject = FaceDrawable.getFaceDrawable(this.b, 1, ((FriendSystemMessage)localObject).a());
         paramViewHolder.a.setImageDrawable((Drawable)localObject);
       }
       else if ((localObject instanceof PhoneContact))
       {
         localObject = (PhoneContact)localObject;
-        localObject = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 11, ((PhoneContact)localObject).unifiedCode);
+        localObject = FaceDrawable.getFaceDrawable(this.b, 11, ((PhoneContact)localObject).unifiedCode);
         paramViewHolder.a.setImageDrawable((Drawable)localObject);
       }
       else if ((localObject instanceof ContactMatchMessage))
       {
         localObject = (ContactMatchMessage)localObject;
-        localObject = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 11, ((ContactMatchMessage)localObject).a.unifiedCode);
+        localObject = FaceDrawable.getFaceDrawable(this.b, 11, ((ContactMatchMessage)localObject).a.unifiedCode);
         paramViewHolder.a.setImageDrawable((Drawable)localObject);
       }
-      if (this.jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable != null) {
-        if (paramInt == this.jdField_a_of_type_Int - 1)
+      if (this.a != null) {
+        if (paramInt == this.d - 1)
         {
           paramViewHolder.b.setVisibility(0);
-          paramViewHolder.b.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable);
+          paramViewHolder.b.setBackgroundDrawable(this.a);
         }
         else
         {
@@ -80,24 +80,24 @@ public class NewFriendEntryMultiHeadsAdapter
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   public void a(Object paramObject)
   {
     if (paramObject != null)
     {
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      int j = this.jdField_a_of_type_Int;
+      int i = this.c.size();
+      int j = this.d;
       if (i == j)
       {
-        this.jdField_a_of_type_JavaUtilList.remove(j - 1);
-        notifyItemRemoved(this.jdField_a_of_type_Int - 1);
+        this.c.remove(j - 1);
+        notifyItemRemoved(this.d - 1);
       }
-      this.jdField_a_of_type_JavaUtilList.add(0, paramObject);
+      this.c.add(0, paramObject);
       notifyItemInserted(0);
-      i = this.jdField_a_of_type_JavaUtilList.size();
-      j = this.jdField_a_of_type_Int;
+      i = this.c.size();
+      j = this.d;
       if (i == j) {
         notifyItemChanged(j - 1);
       }
@@ -108,13 +108,13 @@ public class NewFriendEntryMultiHeadsAdapter
   {
     if (paramList != null)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.c.clear();
       int i = paramList.size();
-      int j = this.jdField_a_of_type_Int;
+      int j = this.d;
       if (i > j) {
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList.subList(0, j));
+        this.c.addAll(paramList.subList(0, j));
       } else {
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+        this.c.addAll(paramList);
       }
       notifyDataSetChanged();
     }
@@ -122,7 +122,7 @@ public class NewFriendEntryMultiHeadsAdapter
   
   public int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if (localList != null) {
       return localList.size();
     }
@@ -131,7 +131,7 @@ public class NewFriendEntryMultiHeadsAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.newfriendentry.NewFriendEntryMultiHeadsAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -26,9 +26,9 @@ class MsgTabNodeListLoader$MsgTabWorkThreadHandler
       }
       SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_SCHEDULE_REQUIRE_USER_ITEM");
       paramMessage = (String)paramMessage.obj;
-      if (!this.a.jdField_a_of_type_JavaUtilSet.contains(paramMessage))
+      if (!this.a.h.contains(paramMessage))
       {
-        this.a.jdField_a_of_type_JavaUtilSet.add(paramMessage);
+        this.a.h.add(paramMessage);
         sendEmptyMessageDelayed(1, 2500L);
       }
     }
@@ -36,17 +36,17 @@ class MsgTabNodeListLoader$MsgTabWorkThreadHandler
     {
       removeMessages(1);
       SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_LOAD_USER_ITEM_FROM_UI");
-      paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
-      this.a.jdField_a_of_type_JavaUtilSet.clear();
+      paramMessage = new ArrayList(this.a.h);
+      this.a.h.clear();
       if (MsgTabNodeListLoader.a(this.a, paramMessage, false)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.MsgTabWorkThreadHandler.1(this));
+        this.a.k.post(new MsgTabNodeListLoader.MsgTabWorkThreadHandler.1(this));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.MsgTabWorkThreadHandler
  * JD-Core Version:    0.7.0.1
  */

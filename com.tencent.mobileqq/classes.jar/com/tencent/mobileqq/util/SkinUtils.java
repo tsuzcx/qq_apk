@@ -18,7 +18,21 @@ public class SkinUtils
     return paramBitmap.getRowBytes() * paramBitmap.getHeight();
   }
   
-  public static int a(Drawable paramDrawable)
+  public static final Bitmap a(Drawable paramDrawable)
+  {
+    if (paramDrawable == null) {
+      return null;
+    }
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getBitmap();
+    }
+    if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
+      return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
+    }
+    return null;
+  }
+  
+  public static int b(Drawable paramDrawable)
   {
     if (paramDrawable == null) {
       return -1;
@@ -34,24 +48,10 @@ public class SkinUtils
     }
     return -1;
   }
-  
-  public static final Bitmap a(Drawable paramDrawable)
-  {
-    if (paramDrawable == null) {
-      return null;
-    }
-    if ((paramDrawable instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)paramDrawable).getBitmap();
-    }
-    if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
-      return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
-    }
-    return null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SkinUtils
  * JD-Core Version:    0.7.0.1
  */

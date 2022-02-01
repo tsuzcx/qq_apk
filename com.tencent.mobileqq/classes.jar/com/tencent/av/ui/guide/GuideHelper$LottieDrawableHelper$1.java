@@ -17,13 +17,13 @@ class GuideHelper$LottieDrawableHelper$1
   
   public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    int i = AIOUtils.b(130.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int j = AIOUtils.b(120.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i = AIOUtils.b(130.0F, this.a.getResources());
+    int j = AIOUtils.b(120.0F, this.a.getResources());
     if (paramLottieComposition == null)
     {
       paramLottieComposition = new StringBuilder();
       paramLottieComposition.append("onCompositionLoaded, fail, seq[");
-      paramLottieComposition.append(this.jdField_a_of_type_Long);
+      paramLottieComposition.append(this.b);
       paramLottieComposition.append("]");
       QLog.w("GuideHelper", 1, paramLottieComposition.toString());
       return;

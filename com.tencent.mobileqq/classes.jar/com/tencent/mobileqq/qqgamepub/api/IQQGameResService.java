@@ -7,8 +7,6 @@ import com.tencent.mobileqq.qroute.annotation.QAPI;
 public abstract interface IQQGameResService
   extends QRouteApi
 {
-  public abstract boolean IsOnlySupportInnerFilePos();
-  
   public abstract void checkAndCleanExpireCache(int paramInt);
   
   public abstract void deleteArkResRecordAndFile(String paramString);
@@ -31,6 +29,8 @@ public abstract interface IQQGameResService
   
   public abstract String getResRecordMd5(String paramString1, String paramString2, int paramInt);
   
+  public abstract boolean isOnlySupportInnerFilePos();
+  
   public abstract void removeResInfo(String paramString, int paramInt);
   
   public abstract void saveArkResPreloadName(String paramString1, String paramString2, String paramString3);
@@ -39,7 +39,7 @@ public abstract interface IQQGameResService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.IQQGameResService
  * JD-Core Version:    0.7.0.1
  */

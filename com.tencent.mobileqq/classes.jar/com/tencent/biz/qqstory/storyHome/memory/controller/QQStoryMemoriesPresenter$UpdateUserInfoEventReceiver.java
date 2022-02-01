@@ -19,14 +19,14 @@ class QQStoryMemoriesPresenter$UpdateUserInfoEventReceiver
   
   public void a(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramQQStoryMemoriesPresenter.jdField_a_of_type_JavaLangString)))
+    if ((paramUpdateUserInfoEvent.g.isSuccess()) && (paramUpdateUserInfoEvent.a != null) && (TextUtils.equals(paramUpdateUserInfoEvent.a.getUnionId(), paramQQStoryMemoriesPresenter.b)))
     {
       SLog.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramUpdateUserInfoEvent);
-      paramQQStoryMemoriesPresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).e();
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).c();
+      paramQQStoryMemoriesPresenter.c = paramUpdateUserInfoEvent.a;
+      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).f();
       QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).d();
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).a();
+      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).e();
+      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).b();
     }
   }
   

@@ -15,19 +15,9 @@ public class AppleEmojiHandler
     super("qq.android.appleemoji", paramQQAppInterface);
   }
   
-  public int a()
-  {
-    return 10001;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return AppleEmojiData.class;
-  }
-  
-  public String a()
-  {
-    return "AppleMojiHandler";
   }
   
   public void a(String paramString)
@@ -50,19 +40,29 @@ public class AppleEmojiHandler
     ThreadManager.excute(new AppleEmojiHandler.1(this, (File)localObject, paramString), 64, null, true);
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public String b()
   {
+    return "AppleMojiHandler";
+  }
+  
+  public int c()
+  {
+    return 10001;
+  }
+  
+  public String d()
+  {
     return null;
+  }
+  
+  public boolean e()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.AppleEmojiHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -54,16 +54,16 @@ public class PhotoListCustomizationDataline
     int j = 0;
     int i = 0;
     int n = 0;
-    while (i1 < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size())
+    while (i1 < this.e.selectedPhotoList.size())
     {
-      Object localObject = (String)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.get(i1);
+      Object localObject = (String)this.e.selectedPhotoList.get(i1);
       if (!ImageManager.isNetworkUrl((String)localObject))
       {
         int k;
         int m;
-        if (((PhotoOtherData)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumOtherCommonData).a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData, (String)localObject) == 1)
+        if (((PhotoOtherData)this.f).a(this.e, (String)localObject) == 1)
         {
-          localObject = ((PhotoOtherData)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumOtherCommonData).a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData, (String)localObject);
+          localObject = ((PhotoOtherData)this.f).b(this.e, (String)localObject);
           k = j;
           m = i;
           if (localObject != null)
@@ -97,10 +97,10 @@ public class PhotoListCustomizationDataline
       i = 0;
     }
     paramBoolean = bool;
-    if (SVBusiUtil.b != 0L)
+    if (SVBusiUtil.c != 0L)
     {
       paramBoolean = bool;
-      if (System.currentTimeMillis() - SVBusiUtil.b < 300000L) {
+      if (System.currentTimeMillis() - SVBusiUtil.c < 300000L) {
         paramBoolean = true;
       }
     }
@@ -110,27 +110,27 @@ public class PhotoListCustomizationDataline
       paramArrayList.append("PhotoListCustomizationDataline isConfirmed=");
       paramArrayList.append(paramBoolean);
       paramArrayList.append(" allowUploadInXGTime=");
-      paramArrayList.append(SVBusiUtil.b);
+      paramArrayList.append(SVBusiUtil.c);
       QLog.d("QQAlbum", 2, paramArrayList.toString());
     }
     if ((NetworkUtil.isMobileNetWork(BaseApplicationImpl.getContext())) && (!paramBoolean) && (i != 0))
     {
-      paramArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.getResources().getString(2131718735);
+      paramArrayList = this.c.getResources().getString(2131916238);
       paramIntent = new PhotoListCustomizationDataline.1(this, paramIntent);
-      if (FreeWifiHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, 4, new PhotoListCustomizationDataline.2(this, paramIntent))) {
-        DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, 232, null, paramArrayList, new PhotoListCustomizationDataline.3(this, paramIntent), new PhotoListCustomizationDataline.4(this)).show();
+      if (FreeWifiHelper.a(this.c, 4, new PhotoListCustomizationDataline.2(this, paramIntent))) {
+        DialogUtil.a(this.c, 232, null, paramArrayList, new PhotoListCustomizationDataline.3(this, paramIntent), new PhotoListCustomizationDataline.4(this)).show();
       }
       if (QLog.isColorLevel()) {
         QLog.i("QQAlbum", 2, "show datalinephoto_mobile_send_confirm dialog");
       }
       return;
     }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, paramIntent, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList);
+    a(this.c, paramIntent, this.e.selectedPhotoList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationDataline
  * JD-Core Version:    0.7.0.1
  */

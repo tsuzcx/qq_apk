@@ -15,6 +15,7 @@ public class WSJumpActionFactory
     a.put("videoCollection", new WSJumpActionFactory.4());
     a.put("videoDrama", new WSJumpActionFactory.5());
     a.put("dramaGround", new WSJumpActionFactory.6());
+    a.put("profile", new WSJumpActionFactory.7());
   }
   
   public static AbsWSJumpAction a(String paramString)
@@ -28,7 +29,7 @@ public class WSJumpActionFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.wsqqscheme.action.WSJumpActionFactory
  * JD-Core Version:    0.7.0.1
  */

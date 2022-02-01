@@ -10,21 +10,21 @@ import com.tencent.mobileqq.search.base.view.SearchResultGroupView;
 public class SearchResultGroupFooterView
   extends SearchResultGroupView
 {
-  public LinearLayout a;
-  public View b;
-  public TextView b;
+  public LinearLayout d;
+  public TextView e;
+  public View f;
   
   public SearchResultGroupFooterView(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559211, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131367137));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367139));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365776);
+    this.a = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624968, paramViewGroup, false);
+    this.d = ((LinearLayout)this.a.findViewById(2131433591));
+    this.e = ((TextView)this.a.findViewById(2131433593));
+    this.f = this.a.findViewById(2131432033);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.view.SearchResultGroupFooterView
  * JD-Core Version:    0.7.0.1
  */

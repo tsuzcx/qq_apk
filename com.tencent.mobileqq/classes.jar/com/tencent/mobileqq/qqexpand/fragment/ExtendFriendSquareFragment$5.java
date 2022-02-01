@@ -12,14 +12,14 @@ class ExtendFriendSquareFragment$5
   public void onGlobalLayout()
   {
     int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationInWindow(arrayOfInt);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExtendFriendSquareFragment.f = arrayOfInt[1];
+    this.a.getLocationInWindow(arrayOfInt);
+    this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.b.F = arrayOfInt[1];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendSquareFragment.5
  * JD-Core Version:    0.7.0.1
  */

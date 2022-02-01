@@ -11,7 +11,7 @@ public class AVGameLobbyFeedbackContentInfo
   }
   
   @NonNull
-  public int b()
+  public int c()
   {
     return 8;
   }

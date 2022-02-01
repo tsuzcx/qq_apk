@@ -18,13 +18,13 @@
                 "event_type":"cmd_dislike_click",
                 "default_visible":"YES",
                 "direction":"vertical",
-                "margin_left":"30",
+                "margin_left":"24",
                 "height":{
                     "type":"match_parent"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"32"
+                    "value":"44"
                 },
                 "subviews":[
                     {
@@ -61,7 +61,7 @@
                         "view_type":"UILabel",
                         "view_id":"id_interaction_dislike_txt",
                         "align_parent_center_horizontal":"YES",
-                        "margin_top":"3",
+                        "margin_top":"2",
                         "default_visible":"YES",
                         "height":{
                             "type":"wrap_content"
@@ -70,7 +70,7 @@
                             "type":"wrap_content"
                         },
                         "attributes":{
-                            "setText:":"不喜欢",
+                            "setText:":"不感兴趣",
                             "setTextColorString:":"#444444",
                             "setFontSizeString:":"10"
                         }
@@ -84,7 +84,7 @@
                 "direction":"vertical",
                 "event_type":"cmd_like_click",
                 "default_visible":"YES",
-                "margin_left":"40",
+                "margin_left":"34",
                 "height":{
                     "type":"match_parent"
                 },
@@ -127,7 +127,7 @@
                         "view_id":"id_interaction_like_txt",
                         "align_parent_center_horizontal":"YES",
                         "default_visible":"YES",
-                        "margin_top":"3",
+                        "margin_top":"2",
                         "height":{
                             "type":"wrap_content"
                         },
@@ -181,7 +181,7 @@
                         "view_id":"id_interaction_coin_txt",
                         "default_visible":"YES",
                         "align_parent_center_horizontal":"YES",
-                        "margin_top":"39",
+                        "margin_top":"38",
                         "height":{
                             "type":"wrap_content"
                         },
@@ -235,7 +235,7 @@
                         "view_id":"id_interaction_favourite_txt",
                         "align_parent_center_horizontal":"YES",
                         "default_visible":"YES",
-                        "margin_top":"3",
+                        "margin_top":"2",
                         "height":{
                             "type":"wrap_content"
                         },
@@ -314,7 +314,7 @@
                         "view_id":"id_interaction_share_txt",
                         "align_parent_center_horizontal":"YES",
                         "default_visible":"YES",
-                        "margin_top":"3",
+                        "margin_top":"2",
                         "height":{
                             "type":"wrap_content"
                         },

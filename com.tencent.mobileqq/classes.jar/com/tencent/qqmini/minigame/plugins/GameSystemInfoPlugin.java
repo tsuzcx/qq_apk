@@ -7,11 +7,11 @@ import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import com.tencent.qqmini.minigame.helper.PreloadSystemInfoHelper;
 import com.tencent.qqmini.sdk.action.PageAction;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.core.utils.DeviceUtil;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
@@ -20,7 +20,6 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.launcher.utils.LiuHaiUtils;
-import com.tencent.qqmini.sdk.utils.ImmersiveUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -128,7 +127,7 @@ public class GameSystemInfoPlugin
         localJSONObject.put("system", localStringBuilder.toString());
         localJSONObject.put("platform", "android");
         localJSONObject.put("fontSizeSetting", 16);
-        localJSONObject.put("benchmarkLevel", DeviceUtil.getDeviceBenchmarkLevel());
+        localJSONObject.put("benchmarkLevel", PreloadSystemInfoHelper.a());
         localJSONObject.put("safeArea", paramDisplayMetrics);
         if (paramMiniAppProxy != null)
         {
@@ -168,7 +167,7 @@ public class GameSystemInfoPlugin
   
   private int getSafeAreaTop(Activity paramActivity, double paramDouble, int paramInt)
   {
-    double d = ImmersiveUtils.getNotchHeight(paramActivity, paramActivity);
+    double d = PreloadSystemInfoHelper.b(paramActivity);
     Double.isNaN(d);
     int i = (int)(d / paramDouble);
     if ((i == 0) && (!TextUtils.isEmpty(this.mApkgInfo.mConfigStr))) {
@@ -230,7 +229,7 @@ public class GameSystemInfoPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.GameSystemInfoPlugin
  * JD-Core Version:    0.7.0.1
  */

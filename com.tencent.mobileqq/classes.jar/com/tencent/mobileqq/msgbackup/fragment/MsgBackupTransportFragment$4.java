@@ -12,11 +12,11 @@ class MsgBackupTransportFragment$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MsgBackupManager.a().a().c();
-    MsgBackupManager.a().d();
-    if (this.a.a)
+    MsgBackupManager.a().d().m();
+    MsgBackupManager.a().g();
+    if (this.a.T)
     {
-      this.a.h();
+      this.a.p();
       return;
     }
     paramDialogInterface = this.a;
@@ -25,7 +25,7 @@ class MsgBackupTransportFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment.4
  * JD-Core Version:    0.7.0.1
  */

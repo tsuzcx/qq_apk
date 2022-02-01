@@ -21,10 +21,10 @@ class DownloadUrlManager$3
   
   protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    paramJobContext = DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    paramJobContext = DownloadUrlManager.a(this.c, this.a, this.b);
     if (paramJobContext != null)
     {
-      paramVarArgs = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_JavaLangString);
+      paramVarArgs = ((StoryManager)SuperManager.a(5)).a(this.a);
       long l1;
       if (paramVarArgs == null) {
         l1 = 0L;
@@ -38,15 +38,15 @@ class DownloadUrlManager$3
         l2 = System.currentTimeMillis();
       }
       int i = paramJobContext.compressLevel;
-      StoryReportor.b("download_video", "video_download_info", 0, 0, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(i), this.jdField_a_of_type_JavaLangString });
-      SLog.a("Q.qqstory.DownloadUrlManager", "report url level , vid = %s , compress level = %d , cms = %d , dms = %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2));
+      StoryReportor.b("download_video", "video_download_info", 0, 0, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(i), this.a });
+      SLog.a("Q.qqstory.DownloadUrlManager", "report url level , vid = %s , compress level = %d , cms = %d , dms = %d", this.a, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2));
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.DownloadUrlManager.3
  * JD-Core Version:    0.7.0.1
  */

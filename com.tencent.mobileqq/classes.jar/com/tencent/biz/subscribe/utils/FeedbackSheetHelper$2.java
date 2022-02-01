@@ -13,18 +13,18 @@ final class FeedbackSheetHelper$2
 {
   FeedbackSheetHelper$2(CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, FeedbackSheetHelper.ResultListener paramResultListener, FeedbackSheetHelper.ClickItemListener paramClickItemListener, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      paramView = new DoTipOffRequest(0, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 2);
+      paramView = new DoTipOffRequest(0, this.a, this.b, 2);
       VSNetworkHelper.getInstance().sendRequest(paramView, new FeedbackSheetHelper.2.1(this));
-      paramView = this.jdField_a_of_type_ComTencentBizSubscribeUtilsFeedbackSheetHelper$ClickItemListener;
+      paramView = this.d;
       if (paramView != null) {
         paramView.a(false);
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.e.dismiss();
   }
 }
 

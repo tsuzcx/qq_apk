@@ -5,32 +5,23 @@ import org.json.JSONObject;
 
 public class BootOptimizeConfigureBean
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d = true;
-  public boolean e = false;
-  public boolean f = false;
+  public boolean a = true;
+  public long b = -1L;
+  public boolean c = false;
+  public boolean d;
+  public boolean e = true;
+  public int f;
   public boolean g = false;
-  public boolean h = true;
+  public boolean h = false;
   public boolean i = false;
   public boolean j = true;
   public boolean k = false;
-  public boolean l = false;
-  public boolean m = true;
-  
-  public BootOptimizeConfigureBean()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
+  public boolean l = true;
+  public boolean m = false;
+  public boolean n = false;
+  public boolean o = true;
+  public String p = "";
+  public String q = "";
   
   public static BootOptimizeConfigureBean a(String paramString)
   {
@@ -41,23 +32,23 @@ public class BootOptimizeConfigureBean
     {
       BootOptimizeConfigureBean localBootOptimizeConfigureBean = new BootOptimizeConfigureBean();
       paramString = new JSONObject(paramString);
-      localBootOptimizeConfigureBean.jdField_a_of_type_Boolean = paramString.optBoolean("useParcelForBoot", true);
-      localBootOptimizeConfigureBean.jdField_a_of_type_Long = paramString.optLong("delayPluginManageTimeInMills", -1L);
-      localBootOptimizeConfigureBean.jdField_b_of_type_Boolean = paramString.optBoolean("enableKernelServiceInVivo", false);
-      localBootOptimizeConfigureBean.c = paramString.optBoolean("disableSimpleBreakStrategy", false);
-      localBootOptimizeConfigureBean.d = paramString.optBoolean("isInitDTSDKAtStart", true);
-      localBootOptimizeConfigureBean.jdField_a_of_type_Int = paramString.optInt("enableSyslogPrintInt", 0);
-      localBootOptimizeConfigureBean.e = paramString.optBoolean("delayLoadUnimportantProxy", false);
-      localBootOptimizeConfigureBean.f = paramString.optBoolean("enableMemoryLeak", false);
-      localBootOptimizeConfigureBean.g = paramString.optBoolean("disableNavigationBar", false);
-      localBootOptimizeConfigureBean.h = paramString.optBoolean("tryUseNewCount", true);
-      localBootOptimizeConfigureBean.i = paramString.optBoolean("disableSavePluginDownloadedInfo", false);
-      localBootOptimizeConfigureBean.j = paramString.optBoolean("tryClearInvalidUnreadMark", true);
-      localBootOptimizeConfigureBean.k = paramString.optBoolean("enableNativeMemMonitor", false);
-      localBootOptimizeConfigureBean.jdField_a_of_type_JavaLangString = paramString.optString("natMemMonitorIgnoreList", "");
-      localBootOptimizeConfigureBean.jdField_b_of_type_JavaLangString = paramString.optString("logcatHookIgnoreList", "");
-      localBootOptimizeConfigureBean.l = paramString.optBoolean("disableDFPluginStart", false);
-      localBootOptimizeConfigureBean.m = paramString.optBoolean("enableCalendar", true);
+      localBootOptimizeConfigureBean.a = paramString.optBoolean("useParcelForBoot", true);
+      localBootOptimizeConfigureBean.b = paramString.optLong("delayPluginManageTimeInMills", -1L);
+      localBootOptimizeConfigureBean.c = paramString.optBoolean("enableKernelServiceInVivo", false);
+      localBootOptimizeConfigureBean.d = paramString.optBoolean("disableSimpleBreakStrategy", false);
+      localBootOptimizeConfigureBean.e = paramString.optBoolean("isInitDTSDKAtStart", true);
+      localBootOptimizeConfigureBean.f = paramString.optInt("enableSyslogPrintInt", 0);
+      localBootOptimizeConfigureBean.g = paramString.optBoolean("delayLoadUnimportantProxy", false);
+      localBootOptimizeConfigureBean.h = paramString.optBoolean("enableMemoryLeak", false);
+      localBootOptimizeConfigureBean.i = paramString.optBoolean("disableNavigationBar", false);
+      localBootOptimizeConfigureBean.j = paramString.optBoolean("tryUseNewCount", true);
+      localBootOptimizeConfigureBean.k = paramString.optBoolean("disableSavePluginDownloadedInfo", false);
+      localBootOptimizeConfigureBean.l = paramString.optBoolean("tryClearInvalidUnreadMark", true);
+      localBootOptimizeConfigureBean.m = paramString.optBoolean("enableNativeMemMonitor", false);
+      localBootOptimizeConfigureBean.p = paramString.optString("natMemMonitorIgnoreList", "");
+      localBootOptimizeConfigureBean.q = paramString.optString("logcatHookIgnoreList", "");
+      localBootOptimizeConfigureBean.n = paramString.optBoolean("disableDFPluginStart", false);
+      localBootOptimizeConfigureBean.o = paramString.optBoolean("enableCalendar", true);
       paramString = new StringBuilder();
       paramString.append("confBean = ");
       paramString.append(localBootOptimizeConfigureBean.toString());
@@ -77,42 +68,42 @@ public class BootOptimizeConfigureBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("BootOptimizeConfigureBean{useParcelForBoot=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", delayPluginManageTimeInMills=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", enableKernelServiceInVivo=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(", disableSimpleBreakStrategy=");
     localStringBuilder.append(this.c);
-    localStringBuilder.append(", isInitDTSDKAtStart = ");
+    localStringBuilder.append(", disableSimpleBreakStrategy=");
     localStringBuilder.append(this.d);
-    localStringBuilder.append(", enableSyslogPrint = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", delayLoadUnimportantProxy = ");
+    localStringBuilder.append(", isInitDTSDKAtStart = ");
     localStringBuilder.append(this.e);
+    localStringBuilder.append(", enableSyslogPrint = ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", delayLoadUnimportantProxy = ");
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", tryUseNewCount = ");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(", disableSavePluginDownloadedInfo = ");
-    localStringBuilder.append(this.i);
-    localStringBuilder.append(", tryClearInvalidUnreadMark = ");
     localStringBuilder.append(this.j);
-    localStringBuilder.append(", enableNativeMemMonitor = ");
+    localStringBuilder.append(", disableSavePluginDownloadedInfo = ");
     localStringBuilder.append(this.k);
-    localStringBuilder.append(", natMemMonitorIgnoreList = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", logcatHookIgnoreList = ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", disableDFPluginStart = ");
+    localStringBuilder.append(", tryClearInvalidUnreadMark = ");
     localStringBuilder.append(this.l);
-    localStringBuilder.append(", enableReminderCalendar = ");
+    localStringBuilder.append(", enableNativeMemMonitor = ");
     localStringBuilder.append(this.m);
+    localStringBuilder.append(", natMemMonitorIgnoreList = ");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append(", logcatHookIgnoreList = ");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append(", disableDFPluginStart = ");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append(", enableReminderCalendar = ");
+    localStringBuilder.append(this.o);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.BootOptimizeConfigureBean
  * JD-Core Version:    0.7.0.1
  */

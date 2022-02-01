@@ -11,16 +11,16 @@ class DrawerBizFacade$6$2
   
   public void run()
   {
-    if (DrawerBizFacade.a(this.a.a).get() != null)
+    if (DrawerBizFacade.b(this.a.a).get() != null)
     {
-      Card localCard = ((ICardCatcher)this.a.a.a("d_head_vip")).a();
-      ((FrameHelperActivity)DrawerBizFacade.a(this.a.a).get()).a(localCard);
+      Card localCard = ((ICardCatcher)this.a.a.b("d_head_vip")).a();
+      ((FrameHelperActivity)DrawerBizFacade.b(this.a.a).get()).a(localCard);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.DrawerBizFacade.6.2
  * JD-Core Version:    0.7.0.1
  */

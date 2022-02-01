@@ -155,17 +155,17 @@ public class PayInterceptApiImpl
         while (((Iterator)localObject3).hasNext())
         {
           localObject2 = (PayInterceptApiImpl.InterceptConfig)((Iterator)localObject3).next();
-          if (!TextUtils.isEmpty(((PayInterceptApiImpl.InterceptConfig)localObject2).jdField_b_of_type_JavaLangString))
+          if (!TextUtils.isEmpty(((PayInterceptApiImpl.InterceptConfig)localObject2).b))
           {
-            if (((PayInterceptApiImpl.InterceptConfig)localObject2).jdField_a_of_type_JavaUtilRegexPattern == null) {
-              ((PayInterceptApiImpl.InterceptConfig)localObject2).jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile(((PayInterceptApiImpl.InterceptConfig)localObject2).jdField_b_of_type_JavaLangString);
+            if (((PayInterceptApiImpl.InterceptConfig)localObject2).f == null) {
+              ((PayInterceptApiImpl.InterceptConfig)localObject2).f = Pattern.compile(((PayInterceptApiImpl.InterceptConfig)localObject2).b);
             }
-            if (((PayInterceptApiImpl.InterceptConfig)localObject2).jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString).matches())
+            if (((PayInterceptApiImpl.InterceptConfig)localObject2).f.matcher(paramString).matches())
             {
               paramObject = (SwiftBrowserStatistics)paramObject.getComponentProvider().a(-2);
               if (paramObject != null)
               {
-                paramObject = paramObject.a;
+                paramObject = paramObject.aK;
                 if ((paramObject != null) && (paramObject.size() > 0))
                 {
                   paramObject = (String)paramObject.get(0);
@@ -175,37 +175,37 @@ public class PayInterceptApiImpl
               paramObject = "";
               label244:
               boolean bool;
-              if (TextUtils.isEmpty(((PayInterceptApiImpl.InterceptConfig)localObject2).jdField_a_of_type_JavaLangString))
+              if (TextUtils.isEmpty(((PayInterceptApiImpl.InterceptConfig)localObject2).a))
               {
                 bool = true;
               }
               else
               {
-                if (((PayInterceptApiImpl.InterceptConfig)localObject2).jdField_b_of_type_JavaUtilRegexPattern == null) {
-                  ((PayInterceptApiImpl.InterceptConfig)localObject2).jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile(((PayInterceptApiImpl.InterceptConfig)localObject2).jdField_a_of_type_JavaLangString);
+                if (((PayInterceptApiImpl.InterceptConfig)localObject2).g == null) {
+                  ((PayInterceptApiImpl.InterceptConfig)localObject2).g = Pattern.compile(((PayInterceptApiImpl.InterceptConfig)localObject2).a);
                 }
-                bool = ((PayInterceptApiImpl.InterceptConfig)localObject2).jdField_b_of_type_JavaUtilRegexPattern.matcher(paramObject).matches();
+                bool = ((PayInterceptApiImpl.InterceptConfig)localObject2).g.matcher(paramObject).matches();
               }
               if (bool)
               {
-                if (((PayInterceptApiImpl.InterceptConfig)localObject2).jdField_a_of_type_Boolean)
+                if (((PayInterceptApiImpl.InterceptConfig)localObject2).c)
                 {
                   localObject3 = new StringBuilder();
                   ((StringBuilder)localObject3).append("originURL=");
                   ((StringBuilder)localObject3).append(paramObject);
                   ((StringBuilder)localObject3).append("|interceptURL=");
                   ((StringBuilder)localObject3).append(paramString);
-                  VACDReportUtil.a(((StringBuilder)localObject3).toString(), "qqwallet", "InterceptOpenOtherApp", null, null, 0, null);
+                  VACDReportUtil.b(((StringBuilder)localObject3).toString(), "qqwallet", "InterceptOpenOtherApp", null, null, 0, null);
                 }
-                if (!((PayInterceptApiImpl.InterceptConfig)localObject2).jdField_b_of_type_Boolean) {
+                if (!((PayInterceptApiImpl.InterceptConfig)localObject2).d) {
                   return false;
                 }
-                if (!TextUtils.isEmpty(((PayInterceptApiImpl.InterceptConfig)localObject2).c))
+                if (!TextUtils.isEmpty(((PayInterceptApiImpl.InterceptConfig)localObject2).e))
                 {
-                  if (TextUtils.isEmpty(((PayInterceptApiImpl.InterceptConfig)localObject2).d)) {
-                    ((PayInterceptApiImpl.InterceptConfig)localObject2).d = RSADecrypt(((PayInterceptApiImpl.InterceptConfig)localObject2).c, "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsE3WI7sDFUi6QWV/oK8qozDvS\nTlxmu1a3NSFxeOrjlVEVtOx8yIMVFYIixq/Fv1XgUlyvL7bGJbaLLKaqlYruGd2z\nNbaIz90Zm4H0pMFHx4vCYhsRP1HXbVMo2ZDiHEDbnSm/99uzFPPiXqLi8jE9t4if\n0GuYdSZfe5o+SIKT5QIDAQAB");
+                  if (TextUtils.isEmpty(((PayInterceptApiImpl.InterceptConfig)localObject2).h)) {
+                    ((PayInterceptApiImpl.InterceptConfig)localObject2).h = RSADecrypt(((PayInterceptApiImpl.InterceptConfig)localObject2).e, "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsE3WI7sDFUi6QWV/oK8qozDvS\nTlxmu1a3NSFxeOrjlVEVtOx8yIMVFYIixq/Fv1XgUlyvL7bGJbaLLKaqlYruGd2z\nNbaIz90Zm4H0pMFHx4vCYhsRP1HXbVMo2ZDiHEDbnSm/99uzFPPiXqLi8jE9t4if\n0GuYdSZfe5o+SIKT5QIDAQAB");
                   }
-                  paramObject = ((PayInterceptApiImpl.InterceptConfig)localObject2).d;
+                  paramObject = ((PayInterceptApiImpl.InterceptConfig)localObject2).h;
                   if (QLog.isColorLevel())
                   {
                     localObject2 = new StringBuilder();
@@ -263,7 +263,7 @@ public class PayInterceptApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.utils.impl.PayInterceptApiImpl
  * JD-Core Version:    0.7.0.1
  */

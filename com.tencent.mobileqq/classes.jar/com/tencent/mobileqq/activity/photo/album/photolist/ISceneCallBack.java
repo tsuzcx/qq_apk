@@ -5,23 +5,23 @@ import android.widget.RelativeLayout.LayoutParams;
 
 public abstract interface ISceneCallBack
 {
-  public abstract View a();
+  public abstract View m();
   
-  public abstract RelativeLayout.LayoutParams a();
+  public abstract RelativeLayout.LayoutParams n();
   
-  public abstract View b();
+  public abstract View o();
   
-  public abstract RelativeLayout.LayoutParams b();
+  public abstract RelativeLayout.LayoutParams p();
   
-  public abstract View c();
+  public abstract View q();
   
-  public abstract RelativeLayout.LayoutParams c();
+  public abstract RelativeLayout.LayoutParams r();
   
-  public abstract RelativeLayout.LayoutParams d();
+  public abstract RelativeLayout.LayoutParams s();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.photolist.ISceneCallBack
  * JD-Core Version:    0.7.0.1
  */

@@ -53,8 +53,8 @@ class FTSMessageSearchEngine$8
         QLog.d("FTSMessageSearchEngine", 2, paramArrayList.toString());
       }
     }
-    FTSMessageSearchEngine.a(this.a).put(paramArrayList1, localStringBuilder);
-    paramArrayList = FTSMessageSearchEngine.b(this.a).get(paramArrayList1);
+    FTSMessageSearchEngine.b(this.a).put(paramArrayList1, localStringBuilder);
+    paramArrayList = FTSMessageSearchEngine.c(this.a).get(paramArrayList1);
     if (paramArrayList != null) {
       try
       {
@@ -67,7 +67,7 @@ class FTSMessageSearchEngine$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.8
  * JD-Core Version:    0.7.0.1
  */

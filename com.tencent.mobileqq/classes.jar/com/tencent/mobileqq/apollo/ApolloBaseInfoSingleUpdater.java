@@ -20,38 +20,38 @@ public class ApolloBaseInfoSingleUpdater
   
   public void a(Friends paramFriends, FriendInfo paramFriendInfo)
   {
-    paramFriends = ((FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramFriends.uin);
-    if (paramFriends != null)
+    paramFriends = ((FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramFriends.uin);
+    if (paramFriends == null) {
+      return;
+    }
+    Object localObject = (IApolloDaoManagerService)this.a.getRuntimeService(IApolloDaoManagerService.class, "all");
+    ApolloBaseInfo localApolloBaseInfo = ((IApolloDaoManagerService)localObject).getApolloBaseInfo(paramFriends.uin);
+    if ((localApolloBaseInfo.apolloStatus != paramFriendInfo.cApolloFlag) || (localApolloBaseInfo.apolloServerTS != paramFriendInfo.uApolloTimestamp) || (localApolloBaseInfo.apolloSignValidTS != paramFriendInfo.uApolloSignTime))
     {
-      Object localObject = (IApolloDaoManagerService)this.a.getRuntimeService(IApolloDaoManagerService.class, "all");
-      ApolloBaseInfo localApolloBaseInfo = ((IApolloDaoManagerService)localObject).getApolloBaseInfo(paramFriends.uin);
-      if ((localApolloBaseInfo.apolloStatus != paramFriendInfo.cApolloFlag) || (localApolloBaseInfo.apolloServerTS != paramFriendInfo.uApolloTimestamp) || (localApolloBaseInfo.apolloSignValidTS != paramFriendInfo.uApolloSignTime))
+      localApolloBaseInfo.apolloStatus = paramFriendInfo.cApolloFlag;
+      localApolloBaseInfo.apolloServerTS = paramFriendInfo.uApolloTimestamp;
+      localApolloBaseInfo.apolloSignValidTS = paramFriendInfo.uApolloSignTime;
+      localApolloBaseInfo.apolloSignStr = "";
+      ((IApolloDaoManagerService)localObject).saveOrUpdateApolloBaseInfo(localApolloBaseInfo);
+      if (QLog.isColorLevel())
       {
-        localApolloBaseInfo.apolloStatus = paramFriendInfo.cApolloFlag;
-        localApolloBaseInfo.apolloServerTS = paramFriendInfo.uApolloTimestamp;
-        localApolloBaseInfo.apolloSignValidTS = paramFriendInfo.uApolloSignTime;
-        localApolloBaseInfo.apolloSignStr = "";
-        ((IApolloDaoManagerService)localObject).saveOrUpdateApolloBaseInfo(localApolloBaseInfo);
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("handleGetFriendDetailInfo, update apollo info uin=");
-          ((StringBuilder)localObject).append(paramFriends.uin);
-          ((StringBuilder)localObject).append("apollo status: ");
-          ((StringBuilder)localObject).append(paramFriendInfo.cApolloFlag);
-          ((StringBuilder)localObject).append(", apollo svr TS: ");
-          ((StringBuilder)localObject).append(paramFriendInfo.uApolloTimestamp);
-          ((StringBuilder)localObject).append(", sign TS: ");
-          ((StringBuilder)localObject).append(paramFriendInfo.uApolloSignTime);
-          QLog.d("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, ((StringBuilder)localObject).toString());
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleGetFriendDetailInfo, update apollo info uin=");
+        ((StringBuilder)localObject).append(paramFriends.uin);
+        ((StringBuilder)localObject).append("apollo status: ");
+        ((StringBuilder)localObject).append(paramFriendInfo.cApolloFlag);
+        ((StringBuilder)localObject).append(", apollo svr TS: ");
+        ((StringBuilder)localObject).append(paramFriendInfo.uApolloTimestamp);
+        ((StringBuilder)localObject).append(", sign TS: ");
+        ((StringBuilder)localObject).append(paramFriendInfo.uApolloSignTime);
+        QLog.d("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloBaseInfoSingleUpdater
  * JD-Core Version:    0.7.0.1
  */

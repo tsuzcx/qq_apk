@@ -13,36 +13,36 @@ final class AudioUtil$4
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (AudioUtil.b() == 0)
+    if (AudioUtil.c() == 0)
     {
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener != null)
+      if (this.a != null)
       {
-        paramMediaPlayer = this.jdField_a_of_type_AndroidOsHandler;
+        paramMediaPlayer = this.b;
         if ((paramMediaPlayer != null) && (paramMediaPlayer.getLooper() != Looper.myLooper()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("AudioUtil", 2, "MediaPlayerStart, onCompletion, onCompletion branch 2");
           }
-          AudioUtil.a();
-          this.jdField_a_of_type_AndroidOsHandler.post(new AudioUtil.4.1(this));
+          AudioUtil.b();
+          this.b.post(new AudioUtil.4.1(this));
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.d("AudioUtil", 2, "MediaPlayerStart, onCompletion, onCompletion branch 1");
         }
-        this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener.onCompletion(AudioUtil.a);
+        this.a.onCompletion(AudioUtil.c);
         return;
       }
-      AudioUtil.a();
+      AudioUtil.b();
       return;
     }
-    AudioUtil.c();
-    AudioUtil.a.start();
+    AudioUtil.d();
+    AudioUtil.c.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AudioUtil.4
  * JD-Core Version:    0.7.0.1
  */

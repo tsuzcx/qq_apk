@@ -15,35 +15,35 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopRedTipHelper
   implements ILifeCycleHelper
 {
-  private TroopChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
-  ITroopCardAppInfoHelperApi.IGetAppInfoCB jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiITroopCardAppInfoHelperApi$IGetAppInfoCB = new TroopRedTipHelper.1(this);
-  ITroopCardAppInfoHelperApi jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiITroopCardAppInfoHelperApi;
+  ITroopCardAppInfoHelperApi a;
+  ITroopCardAppInfoHelperApi.IGetAppInfoCB b = new TroopRedTipHelper.1(this);
+  private TroopChatPie c;
   
   public TroopRedTipHelper(TroopChatPie paramTroopChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie = paramTroopChatPie;
+    this.c = paramTroopChatPie;
   }
   
   protected void a()
   {
-    TroopChatPie localTroopChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
-    if ((localTroopChatPie != null) && (localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    TroopChatPie localTroopChatPie = this.c;
+    if ((localTroopChatPie != null) && (localTroopChatPie.d != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiITroopCardAppInfoHelperApi = ((ITroopCardAppInfoHelperApi)QRoute.api(ITroopCardAppInfoHelperApi.class));
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiITroopCardAppInfoHelperApi.init(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a = ((ITroopCardAppInfoHelperApi)QRoute.api(ITroopCardAppInfoHelperApi.class));
+      this.a.init(this.c.d);
     }
   }
   
   protected void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
-    if ((localObject != null) && (((TroopChatPie)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    Object localObject = this.c;
+    if ((localObject != null) && (((TroopChatPie)localObject).d != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      if (this.c.ah == null) {
         return;
       }
       int i;
-      if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) == null) {
+      if (ChatActivityUtils.a(this.c.ah.b, this.c.d.getCurrentAccountUin()) == null) {
         i = 1;
       } else {
         i = 0;
@@ -53,9 +53,9 @@ public class TroopRedTipHelper
         if (QLog.isColorLevel()) {
           QLog.d(".troop.notify_feeds.aio", 2, "onShow_troopType, isTroopTipStatusNull== true, getAppInfoBriefList");
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiITroopCardAppInfoHelperApi;
+        localObject = this.a;
         if (localObject != null) {
-          ((ITroopCardAppInfoHelperApi)localObject).getAppInfoBriefList(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiITroopCardAppInfoHelperApi$IGetAppInfoCB, true);
+          ((ITroopCardAppInfoHelperApi)localObject).getAppInfoBriefList(this.c.ah.b, this.b, true);
         }
       }
       else
@@ -63,19 +63,19 @@ public class TroopRedTipHelper
         if (QLog.isColorLevel()) {
           QLog.d(".troop.notify_feeds.aio", 2, "onShow_troopType, reqNotifyItems");
         }
-        TroopAioNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        ((TroopShortcutBarManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        TroopAioNotifyManager.a(this.c.d, this.c.ah.b);
+        ((TroopShortcutBarManager)this.c.d.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(this.c.ah.b);
       }
     }
   }
   
   protected void c()
   {
-    ITroopCardAppInfoHelperApi localITroopCardAppInfoHelperApi = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiITroopCardAppInfoHelperApi;
+    ITroopCardAppInfoHelperApi localITroopCardAppInfoHelperApi = this.a;
     if (localITroopCardAppInfoHelperApi != null)
     {
       localITroopCardAppInfoHelperApi.destroy();
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiITroopCardAppInfoHelperApi = null;
+      this.a = null;
     }
   }
   
@@ -109,7 +109,7 @@ public class TroopRedTipHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopRedTipHelper
  * JD-Core Version:    0.7.0.1
  */

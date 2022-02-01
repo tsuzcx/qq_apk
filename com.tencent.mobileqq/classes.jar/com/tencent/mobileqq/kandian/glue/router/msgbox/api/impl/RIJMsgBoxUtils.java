@@ -43,9 +43,9 @@ public class RIJMsgBoxUtils
   
   public static void a(Context paramContext, int paramInt, boolean paramBoolean, String paramString)
   {
-    Object localObject1 = (KandianMergeManager)RIJQQAppInterfaceUtil.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
-    int i = ((KandianMergeManager)localObject1).c();
-    localObject1 = ((KandianMergeManager)localObject1).a();
+    Object localObject1 = (KandianMergeManager)RIJQQAppInterfaceUtil.e().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
+    int i = ((KandianMergeManager)localObject1).F();
+    localObject1 = ((KandianMergeManager)localObject1).Q();
     String str;
     if ((localObject1 != null) && (!TextUtils.isEmpty(((KandianMsgBoxRedPntInfo)localObject1).mJumpUrl)))
     {
@@ -57,7 +57,7 @@ public class RIJMsgBoxUtils
       ((StringBuilder)localObject2).append(paramInt);
       str = ((StringBuilder)localObject2).toString();
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(ViolaAccessHelper.a(RIJQQAppInterfaceUtil.a()));
+      ((StringBuilder)localObject1).append(ViolaAccessHelper.a(RIJQQAppInterfaceUtil.e()));
       ((StringBuilder)localObject1).append("&adtag=2&privateLetters=");
       ((StringBuilder)localObject1).append(i);
       ((StringBuilder)localObject1).append("&message_entry=");
@@ -67,13 +67,13 @@ public class RIJMsgBoxUtils
     else
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(ReadInJoyConstants.h);
+      ((StringBuilder)localObject1).append(ReadInJoyConstants.i);
       ((StringBuilder)localObject1).append(i);
       ((StringBuilder)localObject1).append("&message_entry=");
       ((StringBuilder)localObject1).append(paramInt);
       str = ((StringBuilder)localObject1).toString();
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(ViolaAccessHelper.a(RIJQQAppInterfaceUtil.a()));
+      ((StringBuilder)localObject1).append(ViolaAccessHelper.a(RIJQQAppInterfaceUtil.e()));
       ((StringBuilder)localObject1).append("&adtag=1&privateLetters=");
       ((StringBuilder)localObject1).append(i);
       ((StringBuilder)localObject1).append("&message_entry=");
@@ -83,7 +83,7 @@ public class RIJMsgBoxUtils
     Object localObject2 = localObject1;
     if (paramBoolean)
     {
-      i = DisplayUtil.b(paramContext, (float)DeviceInfoUtil.l()) / 3;
+      i = DisplayUtil.b(paramContext, (float)DeviceInfoUtil.G()) / 3;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append("&v_present_radius=10&v_present=2&v_rij_floating=1&v_present_bar=0&v_nav_immer=1&hideNav=1&v_present_auto_top=0&v_present_top=");
@@ -108,7 +108,7 @@ public class RIJMsgBoxUtils
       paramString.append(str);
       QLog.d("RIJMsgBoxUtils", 2, paramString.toString());
     }
-    if (Boolean.valueOf(ReadInJoyHelper.x(RIJQQAppInterfaceUtil.a())).booleanValue())
+    if (Boolean.valueOf(ReadInJoyHelper.Z(RIJQQAppInterfaceUtil.e())).booleanValue())
     {
       paramString = new Bundle();
       if (paramInt == 6) {
@@ -122,7 +122,7 @@ public class RIJMsgBoxUtils
         paramString.putInt("floating_window_scene", paramInt);
       }
       paramString.putInt("requestCode", 20001);
-      ViolaAccessHelper.a(paramContext, HardCodeUtil.a(2131713042), (String)localObject1, paramString);
+      ViolaAccessHelper.a(paramContext, HardCodeUtil.a(2131910603), (String)localObject1, paramString);
       return;
     }
     paramString = new Bundle();
@@ -142,7 +142,7 @@ public class RIJMsgBoxUtils
       int i = 2;
       if ((j == 2) && (RIJQQAppInterfaceUtil.a() != null))
       {
-        Object localObject = ((KandianMergeManager)RIJQQAppInterfaceUtil.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a();
+        Object localObject = ((KandianMergeManager)RIJQQAppInterfaceUtil.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).Q();
         if ((localObject != null) && (((KandianMsgBoxRedPntInfo)localObject).dataType != 1)) {
           a = Integer.valueOf(1);
         } else {
@@ -161,7 +161,7 @@ public class RIJMsgBoxUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.router.msgbox.api.impl.RIJMsgBoxUtils
  * JD-Core Version:    0.7.0.1
  */

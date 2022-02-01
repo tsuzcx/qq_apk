@@ -9,29 +9,29 @@ import org.jetbrains.annotations.Nullable;
 public abstract interface IVideoUIManager
 {
   @Nullable
-  public abstract VideoPlayParam a();
-  
-  @Nullable
   public abstract Object a();
   
   public abstract void a(@Nullable OnUIChangeListener paramOnUIChangeListener);
   
-  public abstract boolean a();
-  
   @Nullable
-  public abstract Object b();
+  public abstract VideoPlayParam b();
   
   public abstract void b(@Nullable OnUIChangeListener paramOnUIChangeListener);
   
-  @Nullable
-  public abstract Object c();
+  public abstract boolean c();
   
   @Nullable
   public abstract Object d();
+  
+  @Nullable
+  public abstract Object e();
+  
+  @Nullable
+  public abstract Object f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.api.IVideoUIManager
  * JD-Core Version:    0.7.0.1
  */

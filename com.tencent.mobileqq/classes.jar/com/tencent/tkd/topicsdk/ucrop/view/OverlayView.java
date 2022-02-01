@@ -27,49 +27,44 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/ucrop/view/OverlayView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "circleDimmedLayer", "", "getCircleDimmedLayer", "()Z", "setCircleDimmedLayer", "(Z)V", "value", "cropGridColumnCount", "getCropGridColumnCount", "()I", "setCropGridColumnCount", "(I)V", "cropGridRowCount", "getCropGridRowCount", "setCropGridRowCount", "cropViewRect", "Landroid/graphics/RectF;", "getCropViewRect", "()Landroid/graphics/RectF;", "mFreestyleCropMode", "freestyleCropMode", "getFreestyleCropMode", "setFreestyleCropMode", "gridPoints", "", "mCircularPath", "Landroid/graphics/Path;", "mCropFrameCornersPaint", "Landroid/graphics/Paint;", "mCropFramePaint", "mCropGridCenter", "mCropGridCorners", "mCropGridPaint", "mCropRectCornerTouchAreaLineLength", "mCropRectMinSize", "mCurrentTouchCornerIndex", "mDimmedColor", "getMDimmedColor", "setMDimmedColor", "mDimmedStrokePaint", "mFreestyleCropMode$annotations", "()V", "mPreviousTouchX", "", "mPreviousTouchY", "mShouldSetupCropBounds", "mTempRect", "mThisHeight", "mThisWidth", "mTouchPointThreshold", "overlayViewChangeListener", "Lcom/tencent/tkd/topicsdk/ucrop/callback/OverlayViewChangeListener;", "getOverlayViewChangeListener", "()Lcom/tencent/tkd/topicsdk/ucrop/callback/OverlayViewChangeListener;", "setOverlayViewChangeListener", "(Lcom/tencent/tkd/topicsdk/ucrop/callback/OverlayViewChangeListener;)V", "showCropFrame", "getShowCropFrame", "setShowCropFrame", "showCropGrid", "getShowCropGrid", "setShowCropGrid", "targetAspectRatio", "drawCanvasCropGrid", "", "canvas", "Landroid/graphics/Canvas;", "drawCanvasCropViewRect", "drawCropGrid", "drawDimmedLayer", "getCurrentTouchIndex", "touchX", "touchY", "init", "initCropFrameStyle", "a", "Landroid/content/res/TypedArray;", "initCropGridStyle", "onDraw", "onLayout", "changed", "left", "top", "right", "bottom", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "processStyledAttributes", "setCropFrameColor", "color", "setCropFrameStrokeWidth", "width", "setCropGridColor", "setCropGridCornerColor", "setCropGridStrokeWidth", "setTargetAspectRatio", "setupCropBounds", "updateCropViewRect", "updateGridPoints", "Companion", "FreestyleMode", "topicsdk-ucrop_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/ucrop/view/OverlayView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "circleDimmedLayer", "", "getCircleDimmedLayer", "()Z", "setCircleDimmedLayer", "(Z)V", "value", "cropGridColumnCount", "getCropGridColumnCount", "()I", "setCropGridColumnCount", "(I)V", "cropGridRowCount", "getCropGridRowCount", "setCropGridRowCount", "cropViewRect", "Landroid/graphics/RectF;", "getCropViewRect", "()Landroid/graphics/RectF;", "mFreestyleCropMode", "freestyleCropMode", "getFreestyleCropMode", "setFreestyleCropMode", "gridPoints", "", "mCircularPath", "Landroid/graphics/Path;", "mCropFrameCornersPaint", "Landroid/graphics/Paint;", "mCropFramePaint", "mCropGridCenter", "mCropGridCorners", "mCropGridPaint", "mCropRectCornerTouchAreaLineLength", "mCropRectMinSize", "mCurrentTouchCornerIndex", "mDimmedColor", "getMDimmedColor", "setMDimmedColor", "mDimmedStrokePaint", "mFreestyleCropMode$annotations", "()V", "mPreviousTouchX", "", "mPreviousTouchY", "mTempRect", "mThisHeight", "mThisWidth", "mTouchPointThreshold", "overlayViewChangeListener", "Lcom/tencent/tkd/topicsdk/ucrop/callback/OverlayViewChangeListener;", "getOverlayViewChangeListener", "()Lcom/tencent/tkd/topicsdk/ucrop/callback/OverlayViewChangeListener;", "setOverlayViewChangeListener", "(Lcom/tencent/tkd/topicsdk/ucrop/callback/OverlayViewChangeListener;)V", "shouldSetupCropBounds", "getShouldSetupCropBounds", "setShouldSetupCropBounds", "showCropFrame", "getShowCropFrame", "setShowCropFrame", "showCropGrid", "getShowCropGrid", "setShowCropGrid", "targetAspectRatio", "drawCanvasCropGrid", "", "canvas", "Landroid/graphics/Canvas;", "drawCanvasCropViewRect", "drawCropGrid", "drawDimmedLayer", "getCurrentTouchIndex", "touchX", "touchY", "init", "initCropFrameStyle", "a", "Landroid/content/res/TypedArray;", "initCropGridStyle", "onDraw", "onLayout", "changed", "left", "top", "right", "bottom", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "processStyledAttributes", "setCropFrameColor", "color", "setCropFrameStrokeWidth", "width", "setCropGridColor", "setCropGridCornerColor", "setCropGridStrokeWidth", "setTargetAspectRatio", "setupCropBounds", "updateCropViewRect", "updateGridPoints", "Companion", "FreestyleMode", "topicsdk-ucrop_release"}, k=1, mv={1, 1, 16})
 public final class OverlayView
   extends View
 {
-  public static final OverlayView.Companion a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  @NotNull
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  public static final OverlayView.Companion a = new OverlayView.Companion(null);
+  private int A = getResources().getDimensionPixelSize(R.dimen.c);
   @Nullable
-  private OverlayViewChangeListener jdField_a_of_type_ComTencentTkdTopicsdkUcropCallbackOverlayViewChangeListener;
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private float jdField_b_of_type_Float = -1.0F;
-  private int jdField_b_of_type_Int;
-  private final Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_b_of_type_Boolean;
-  private float[] jdField_b_of_type_ArrayOfFloat;
-  private float jdField_c_of_type_Float = -1.0F;
-  @IntRange(from=0L)
-  private int jdField_c_of_type_Int;
-  private final Paint jdField_c_of_type_AndroidGraphicsPaint = new Paint(1);
-  private boolean jdField_c_of_type_Boolean;
-  private float[] jdField_c_of_type_ArrayOfFloat;
-  @IntRange(from=0L)
-  private int jdField_d_of_type_Int;
-  private final Paint jdField_d_of_type_AndroidGraphicsPaint = new Paint(1);
-  private boolean jdField_d_of_type_Boolean;
-  @ColorInt
+  private OverlayViewChangeListener B;
+  private boolean C;
+  @NotNull
+  private final RectF b = new RectF();
+  private final RectF c = new RectF();
+  private int d;
   private int e;
-  private int f;
-  private int g = -1;
-  private int h = getResources().getDimensionPixelSize(R.dimen.jdField_d_of_type_Int);
-  private int i = getResources().getDimensionPixelSize(R.dimen.e);
-  private int j = getResources().getDimensionPixelSize(R.dimen.jdField_c_of_type_Int);
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkUcropViewOverlayView$Companion = new OverlayView.Companion(null);
-  }
+  private float[] f;
+  private float[] g;
+  private boolean h;
+  private float[] i;
+  @IntRange(from=0L)
+  private int j;
+  @IntRange(from=0L)
+  private int k;
+  private float l;
+  private boolean m;
+  private boolean n;
+  @ColorInt
+  private int o;
+  private final Path p = new Path();
+  private final Paint q = new Paint(1);
+  private final Paint r = new Paint(1);
+  private final Paint s = new Paint(1);
+  private final Paint t = new Paint(1);
+  private int u;
+  private float v = -1.0F;
+  private float w = -1.0F;
+  private int x = -1;
+  private int y = getResources().getDimensionPixelSize(R.dimen.d);
+  private int z = getResources().getDimensionPixelSize(R.dimen.e);
   
   @JvmOverloads
   public OverlayView(@Nullable Context paramContext)
@@ -90,162 +85,113 @@ public final class OverlayView
     c();
   }
   
-  private final int a(float paramFloat1, float paramFloat2)
-  {
-    double d1 = this.h;
-    int k = -1;
-    int m = 0;
-    while (m < 8)
-    {
-      double d2 = paramFloat1;
-      float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-      if (arrayOfFloat == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("mCropGridCorners");
-      }
-      double d3 = arrayOfFloat[m];
-      Double.isNaN(d2);
-      Double.isNaN(d3);
-      d2 = Math.pow(d2 - d3, 2.0D);
-      d3 = paramFloat2;
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-      if (arrayOfFloat == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("mCropGridCorners");
-      }
-      double d4 = arrayOfFloat[(m + 1)];
-      Double.isNaN(d3);
-      Double.isNaN(d4);
-      d3 = Math.sqrt(d2 + Math.pow(d3 - d4, 2.0D));
-      d2 = d1;
-      if (d3 < d1)
-      {
-        k = m / 2;
-        d2 = d3;
-      }
-      m += 2;
-      d1 = d2;
-    }
-    m = k;
-    if (this.f == 1)
-    {
-      m = k;
-      if (k < 0)
-      {
-        m = k;
-        if (this.jdField_a_of_type_AndroidGraphicsRectF.contains(paramFloat1, paramFloat2)) {
-          m = 4;
-        }
-      }
-    }
-    return m;
-  }
-  
   private final void a()
   {
-    int k = this.jdField_a_of_type_Int;
-    float f1 = k;
-    float f2 = this.jdField_a_of_type_Float;
-    int m = (int)(f1 / f2);
-    int n = this.jdField_b_of_type_Int;
-    if (m > n)
+    int i1 = this.d;
+    float f1 = i1;
+    float f2 = this.l;
+    int i2 = (int)(f1 / f2);
+    int i3 = this.e;
+    if (i2 > i3)
     {
-      m = (int)(n * f2);
-      k = (k - m) / 2;
-      localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+      i2 = (int)(i3 * f2);
+      i1 = (i1 - i2) / 2;
+      localObject = this.b;
       f1 = getPaddingLeft();
-      f2 = k;
-      ((RectF)localObject).set(f1 + f2, getPaddingTop(), getPaddingLeft() + m + f2, getPaddingTop() + this.jdField_b_of_type_Int);
+      f2 = i1;
+      ((RectF)localObject).set(f1 + f2, getPaddingTop(), getPaddingLeft() + i2 + f2, getPaddingTop() + this.e);
     }
     else
     {
-      k = (n - m) / 2;
-      localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+      i1 = (i3 - i2) / 2;
+      localObject = this.b;
       f1 = getPaddingLeft();
       f2 = getPaddingTop();
-      float f3 = k;
-      ((RectF)localObject).set(f1, f2 + f3, getPaddingLeft() + this.jdField_a_of_type_Int, getPaddingTop() + m + f3);
+      float f3 = i1;
+      ((RectF)localObject).set(f1, f2 + f3, getPaddingLeft() + this.d, getPaddingTop() + i2 + f3);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkUcropCallbackOverlayViewChangeListener;
+    Object localObject = this.B;
     if (localObject != null) {
-      ((OverlayViewChangeListener)localObject).a(this.jdField_a_of_type_AndroidGraphicsRectF);
+      ((OverlayViewChangeListener)localObject).a(this.b);
     }
     b();
   }
   
   private final void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRectF);
-    int k = this.g;
-    if (k != 0)
+    this.c.set(this.b);
+    int i1 = this.x;
+    if (i1 != 0)
     {
-      if (k != 1)
+      if (i1 != 1)
       {
-        if (k != 2)
+        if (i1 != 2)
         {
-          if (k != 3)
+          if (i1 != 3)
           {
-            if (k == 4)
+            if (i1 == 4)
             {
-              this.jdField_b_of_type_AndroidGraphicsRectF.offset(paramFloat1 - this.jdField_b_of_type_Float, paramFloat2 - this.jdField_c_of_type_Float);
-              if ((this.jdField_b_of_type_AndroidGraphicsRectF.left > getLeft()) && (this.jdField_b_of_type_AndroidGraphicsRectF.top > getTop()) && (this.jdField_b_of_type_AndroidGraphicsRectF.right < getRight()) && (this.jdField_b_of_type_AndroidGraphicsRectF.bottom < getBottom()))
+              this.c.offset(paramFloat1 - this.v, paramFloat2 - this.w);
+              if ((this.c.left > getLeft()) && (this.c.top > getTop()) && (this.c.right < getRight()) && (this.c.bottom < getBottom()))
               {
-                this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_AndroidGraphicsRectF);
+                this.b.set(this.c);
                 b();
                 postInvalidate();
               }
             }
           }
           else {
-            this.jdField_b_of_type_AndroidGraphicsRectF.set(paramFloat1, this.jdField_a_of_type_AndroidGraphicsRectF.top, this.jdField_a_of_type_AndroidGraphicsRectF.right, paramFloat2);
+            this.c.set(paramFloat1, this.b.top, this.b.right, paramFloat2);
           }
         }
         else {
-          this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRectF.left, this.jdField_a_of_type_AndroidGraphicsRectF.top, paramFloat1, paramFloat2);
+          this.c.set(this.b.left, this.b.top, paramFloat1, paramFloat2);
         }
       }
       else {
-        this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRectF.left, paramFloat2, paramFloat1, this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
+        this.c.set(this.b.left, paramFloat2, paramFloat1, this.b.bottom);
       }
     }
     else {
-      this.jdField_b_of_type_AndroidGraphicsRectF.set(paramFloat1, paramFloat2, this.jdField_a_of_type_AndroidGraphicsRectF.right, this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
+      this.c.set(paramFloat1, paramFloat2, this.b.right, this.b.bottom);
     }
-    paramFloat1 = this.jdField_b_of_type_AndroidGraphicsRectF.height();
-    paramFloat2 = this.i;
-    int m = 0;
+    paramFloat1 = this.c.height();
+    paramFloat2 = this.z;
+    int i2 = 0;
     if (paramFloat1 >= paramFloat2) {
-      k = 1;
+      i1 = 1;
     } else {
-      k = 0;
+      i1 = 0;
     }
-    if (this.jdField_b_of_type_AndroidGraphicsRectF.width() >= this.i) {
-      m = 1;
+    if (this.c.width() >= this.z) {
+      i2 = 1;
     }
-    RectF localRectF2 = this.jdField_a_of_type_AndroidGraphicsRectF;
-    if (m != 0) {
-      paramFloat1 = this.jdField_b_of_type_AndroidGraphicsRectF.left;
+    RectF localRectF2 = this.b;
+    if (i2 != 0) {
+      paramFloat1 = this.c.left;
     } else {
       paramFloat1 = localRectF2.left;
     }
     RectF localRectF1;
-    if (k != 0) {
-      localRectF1 = this.jdField_b_of_type_AndroidGraphicsRectF;
+    if (i1 != 0) {
+      localRectF1 = this.c;
     } else {
-      localRectF1 = this.jdField_a_of_type_AndroidGraphicsRectF;
+      localRectF1 = this.b;
     }
     paramFloat2 = localRectF1.top;
-    if (m != 0) {
-      localRectF1 = this.jdField_b_of_type_AndroidGraphicsRectF;
+    if (i2 != 0) {
+      localRectF1 = this.c;
     } else {
-      localRectF1 = this.jdField_a_of_type_AndroidGraphicsRectF;
+      localRectF1 = this.b;
     }
     float f1 = localRectF1.right;
-    if (k != 0) {
-      localRectF1 = this.jdField_b_of_type_AndroidGraphicsRectF;
+    if (i1 != 0) {
+      localRectF1 = this.c;
     } else {
-      localRectF1 = this.jdField_a_of_type_AndroidGraphicsRectF;
+      localRectF1 = this.b;
     }
     localRectF2.set(paramFloat1, paramFloat2, f1, localRectF1.bottom);
-    if ((k != 0) || (m != 0))
+    if ((i1 != 0) || (i2 != 0))
     {
       b();
       postInvalidate();
@@ -255,50 +201,99 @@ public final class OverlayView
   private final void a(Canvas paramCanvas)
   {
     paramCanvas.save();
-    if (this.jdField_c_of_type_Boolean) {
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath, Region.Op.DIFFERENCE);
+    if (this.n) {
+      paramCanvas.clipPath(this.p, Region.Op.DIFFERENCE);
     } else {
-      paramCanvas.clipRect(this.jdField_a_of_type_AndroidGraphicsRectF, Region.Op.DIFFERENCE);
+      paramCanvas.clipRect(this.b, Region.Op.DIFFERENCE);
     }
-    paramCanvas.drawColor(this.e);
+    paramCanvas.drawColor(this.o);
     paramCanvas.restore();
-    if (this.jdField_c_of_type_Boolean) {
-      paramCanvas.drawCircle(this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.width(), this.jdField_a_of_type_AndroidGraphicsRectF.height()) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.n) {
+      paramCanvas.drawCircle(this.b.centerX(), this.b.centerY(), Math.min(this.b.width(), this.b.height()) / 2.0F, this.q);
     }
+  }
+  
+  private final int b(float paramFloat1, float paramFloat2)
+  {
+    double d1 = this.y;
+    int i1 = -1;
+    int i2 = 0;
+    while (i2 < 8)
+    {
+      double d2 = paramFloat1;
+      float[] arrayOfFloat = this.f;
+      if (arrayOfFloat == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mCropGridCorners");
+      }
+      double d3 = arrayOfFloat[i2];
+      Double.isNaN(d2);
+      Double.isNaN(d3);
+      d2 = Math.pow(d2 - d3, 2.0D);
+      d3 = paramFloat2;
+      arrayOfFloat = this.f;
+      if (arrayOfFloat == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mCropGridCorners");
+      }
+      double d4 = arrayOfFloat[(i2 + 1)];
+      Double.isNaN(d3);
+      Double.isNaN(d4);
+      d3 = Math.sqrt(d2 + Math.pow(d3 - d4, 2.0D));
+      d2 = d1;
+      if (d3 < d1)
+      {
+        i1 = i2 / 2;
+        d2 = d3;
+      }
+      i2 += 2;
+      d1 = d2;
+    }
+    i2 = i1;
+    if (this.u == 1)
+    {
+      i2 = i1;
+      if (i1 < 0)
+      {
+        i2 = i1;
+        if (this.b.contains(paramFloat1, paramFloat2)) {
+          i2 = 4;
+        }
+      }
+    }
+    return i2;
   }
   
   private final void b()
   {
-    this.jdField_a_of_type_ArrayOfFloat = RectUtils.a(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_b_of_type_ArrayOfFloat = RectUtils.b(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_c_of_type_ArrayOfFloat = ((float[])null);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addCircle(this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.width(), this.jdField_a_of_type_AndroidGraphicsRectF.height()) / 2.0F, Path.Direction.CW);
+    this.f = RectUtils.a(this.b);
+    this.g = RectUtils.b(this.b);
+    this.i = ((float[])null);
+    this.p.reset();
+    this.p.addCircle(this.b.centerX(), this.b.centerY(), Math.min(this.b.width(), this.b.height()) / 2.0F, Path.Direction.CW);
   }
   
   private final void b(TypedArray paramTypedArray)
   {
-    int k = paramTypedArray.getDimensionPixelSize(R.styleable.f, getResources().getDimensionPixelSize(R.dimen.jdField_a_of_type_Int));
-    int m = paramTypedArray.getColor(R.styleable.e, getResources().getColor(R.color.jdField_a_of_type_Int));
-    paramTypedArray = this.jdField_c_of_type_AndroidGraphicsPaint;
-    float f1 = k;
+    int i1 = paramTypedArray.getDimensionPixelSize(R.styleable.h, getResources().getDimensionPixelSize(R.dimen.a));
+    int i2 = paramTypedArray.getColor(R.styleable.g, getResources().getColor(R.color.a));
+    paramTypedArray = this.s;
+    float f1 = i1;
     paramTypedArray.setStrokeWidth(f1);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(m);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setStrokeWidth(f1 * 3);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(m);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.s.setColor(i2);
+    this.s.setStyle(Paint.Style.STROKE);
+    this.t.setStrokeWidth(f1 * 3);
+    this.t.setColor(i2);
+    this.t.setStyle(Paint.Style.STROKE);
   }
   
   private final void b(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.h) {
       c(paramCanvas);
     }
-    if (this.jdField_b_of_type_Boolean) {
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_AndroidGraphicsPaint);
+    if (this.m) {
+      paramCanvas.drawRect(this.b, this.s);
     }
-    if (this.f != 0) {
+    if (this.u != 0) {
       d(paramCanvas);
     }
   }
@@ -312,96 +307,142 @@ public final class OverlayView
   
   private final void c(TypedArray paramTypedArray)
   {
-    int k = paramTypedArray.getDimensionPixelSize(R.styleable.j, getResources().getDimensionPixelSize(R.dimen.jdField_b_of_type_Int));
-    int m = paramTypedArray.getColor(R.styleable.g, getResources().getColor(R.color.jdField_b_of_type_Int));
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(k);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(m);
-    setCropGridRowCount(paramTypedArray.getInt(R.styleable.i, 2));
-    setCropGridColumnCount(paramTypedArray.getInt(R.styleable.h, 2));
+    int i1 = paramTypedArray.getDimensionPixelSize(R.styleable.l, getResources().getDimensionPixelSize(R.dimen.b));
+    int i2 = paramTypedArray.getColor(R.styleable.i, getResources().getColor(R.color.b));
+    this.r.setStrokeWidth(i1);
+    this.r.setColor(i2);
+    setCropGridRowCount(paramTypedArray.getInt(R.styleable.k, 2));
+    setCropGridColumnCount(paramTypedArray.getInt(R.styleable.j, 2));
   }
   
   private final void c(Canvas paramCanvas)
   {
-    if ((this.jdField_c_of_type_ArrayOfFloat == null) && (!this.jdField_a_of_type_AndroidGraphicsRectF.isEmpty()))
+    if ((this.i == null) && (!this.b.isEmpty()))
     {
-      int i1 = this.jdField_c_of_type_Int;
-      arrayOfFloat = new float[i1 * 4 + this.jdField_d_of_type_Int * 4];
-      int n = 0;
-      int m = 0;
-      int k = 0;
+      int i4 = this.j;
+      arrayOfFloat = new float[i4 * 4 + this.k * 4];
+      int i3 = 0;
+      int i2 = 0;
+      int i1 = 0;
       float f1;
-      while (m < i1)
+      while (i2 < i4)
       {
-        f1 = this.jdField_a_of_type_AndroidGraphicsRectF.height() * ((m + 1.0F) / (this.jdField_c_of_type_Int + 1)) + this.jdField_a_of_type_AndroidGraphicsRectF.top;
-        int i2 = k + 1;
-        arrayOfFloat[k] = this.jdField_a_of_type_AndroidGraphicsRectF.left;
-        k = i2 + 1;
-        arrayOfFloat[i2] = f1;
-        i2 = k + 1;
-        arrayOfFloat[k] = this.jdField_a_of_type_AndroidGraphicsRectF.right;
-        k = i2 + 1;
-        arrayOfFloat[i2] = f1;
-        m += 1;
+        f1 = this.b.height() * ((i2 + 1.0F) / (this.j + 1)) + this.b.top;
+        int i5 = i1 + 1;
+        arrayOfFloat[i1] = this.b.left;
+        i1 = i5 + 1;
+        arrayOfFloat[i5] = f1;
+        i5 = i1 + 1;
+        arrayOfFloat[i1] = this.b.right;
+        i1 = i5 + 1;
+        arrayOfFloat[i5] = f1;
+        i2 += 1;
       }
-      i1 = this.jdField_d_of_type_Int;
-      m = k;
-      k = n;
-      while (k < i1)
+      i4 = this.k;
+      i2 = i1;
+      i1 = i3;
+      while (i1 < i4)
       {
-        f1 = this.jdField_a_of_type_AndroidGraphicsRectF.width() * ((k + 1.0F) / (this.jdField_d_of_type_Int + 1)) + this.jdField_a_of_type_AndroidGraphicsRectF.left;
-        n = m + 1;
-        arrayOfFloat[m] = f1;
-        m = n + 1;
-        arrayOfFloat[n] = this.jdField_a_of_type_AndroidGraphicsRectF.top;
-        n = m + 1;
-        arrayOfFloat[m] = f1;
-        m = n + 1;
-        arrayOfFloat[n] = this.jdField_a_of_type_AndroidGraphicsRectF.bottom;
-        k += 1;
+        f1 = this.b.width() * ((i1 + 1.0F) / (this.k + 1)) + this.b.left;
+        i3 = i2 + 1;
+        arrayOfFloat[i2] = f1;
+        i2 = i3 + 1;
+        arrayOfFloat[i3] = this.b.top;
+        i3 = i2 + 1;
+        arrayOfFloat[i2] = f1;
+        i2 = i3 + 1;
+        arrayOfFloat[i3] = this.b.bottom;
+        i1 += 1;
       }
-      this.jdField_c_of_type_ArrayOfFloat = arrayOfFloat;
+      this.i = arrayOfFloat;
     }
-    float[] arrayOfFloat = this.jdField_c_of_type_ArrayOfFloat;
+    float[] arrayOfFloat = this.i;
     if ((arrayOfFloat != null) && (arrayOfFloat != null)) {
-      paramCanvas.drawLines(arrayOfFloat, this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawLines(arrayOfFloat, this.r);
     }
   }
   
   private final void d(Canvas paramCanvas)
   {
     paramCanvas.save();
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRectF);
-    RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-    int k = this.j;
-    localRectF.inset(k, -k);
-    paramCanvas.clipRect(this.jdField_b_of_type_AndroidGraphicsRectF, Region.Op.DIFFERENCE);
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRectF);
-    localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-    k = this.j;
-    localRectF.inset(-k, k);
-    paramCanvas.clipRect(this.jdField_b_of_type_AndroidGraphicsRectF, Region.Op.DIFFERENCE);
-    paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_d_of_type_AndroidGraphicsPaint);
+    this.c.set(this.b);
+    RectF localRectF = this.c;
+    int i1 = this.A;
+    localRectF.inset(i1, -i1);
+    paramCanvas.clipRect(this.c, Region.Op.DIFFERENCE);
+    this.c.set(this.b);
+    localRectF = this.c;
+    i1 = this.A;
+    localRectF.inset(-i1, i1);
+    paramCanvas.clipRect(this.c, Region.Op.DIFFERENCE);
+    paramCanvas.drawRect(this.b, this.t);
     paramCanvas.restore();
-  }
-  
-  @NotNull
-  public final RectF a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRectF;
   }
   
   public final void a(@NotNull TypedArray paramTypedArray)
   {
     Intrinsics.checkParameterIsNotNull(paramTypedArray, "a");
-    this.jdField_c_of_type_Boolean = paramTypedArray.getBoolean(R.styleable.jdField_c_of_type_Int, false);
-    this.e = paramTypedArray.getColor(R.styleable.jdField_d_of_type_Int, getResources().getColor(R.color.jdField_c_of_type_Int));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
+    this.n = paramTypedArray.getBoolean(R.styleable.e, false);
+    this.o = paramTypedArray.getColor(R.styleable.f, getResources().getColor(R.color.c));
+    this.q.setColor(this.o);
+    this.q.setStyle(Paint.Style.STROKE);
+    this.q.setStrokeWidth(1.0F);
     b(paramTypedArray);
-    this.jdField_b_of_type_Boolean = paramTypedArray.getBoolean(R.styleable.k, true);
+    this.m = paramTypedArray.getBoolean(R.styleable.m, true);
     c(paramTypedArray);
-    this.jdField_a_of_type_Boolean = paramTypedArray.getBoolean(R.styleable.l, true);
+    this.h = paramTypedArray.getBoolean(R.styleable.n, true);
+  }
+  
+  public final boolean getCircleDimmedLayer()
+  {
+    return this.n;
+  }
+  
+  public final int getCropGridColumnCount()
+  {
+    return this.k;
+  }
+  
+  public final int getCropGridRowCount()
+  {
+    return this.j;
+  }
+  
+  @NotNull
+  public final RectF getCropViewRect()
+  {
+    return this.b;
+  }
+  
+  public final int getFreestyleCropMode()
+  {
+    return this.u;
+  }
+  
+  public final int getMDimmedColor()
+  {
+    return this.o;
+  }
+  
+  @Nullable
+  public final OverlayViewChangeListener getOverlayViewChangeListener()
+  {
+    return this.B;
+  }
+  
+  public final boolean getShouldSetupCropBounds()
+  {
+    return this.C;
+  }
+  
+  public final boolean getShowCropFrame()
+  {
+    return this.m;
+  }
+  
+  public final boolean getShowCropGrid()
+  {
+    return this.h;
   }
   
   protected void onDraw(@NotNull Canvas paramCanvas)
@@ -415,20 +456,20 @@ public final class OverlayView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (paramBoolean)
+    if ((paramBoolean) || (this.C))
     {
       paramInt1 = getPaddingLeft();
       paramInt2 = getPaddingTop();
       paramInt3 = getWidth();
       paramInt4 = getPaddingRight();
-      int k = getHeight();
-      int m = getPaddingBottom();
-      this.jdField_a_of_type_Int = (paramInt3 - paramInt4 - paramInt1);
-      this.jdField_b_of_type_Int = (k - m - paramInt2);
-      if (this.jdField_d_of_type_Boolean)
+      int i1 = getHeight();
+      int i2 = getPaddingBottom();
+      this.d = (paramInt3 - paramInt4 - paramInt1);
+      this.e = (i1 - i2 - paramInt2);
+      if (this.C)
       {
-        this.jdField_d_of_type_Boolean = false;
-        setTargetAspectRatio(this.jdField_a_of_type_Float);
+        this.C = false;
+        setTargetAspectRatio(this.l);
       }
     }
   }
@@ -436,51 +477,51 @@ public final class OverlayView
   public boolean onTouchEvent(@NotNull MotionEvent paramMotionEvent)
   {
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
-    if (!this.jdField_a_of_type_AndroidGraphicsRectF.isEmpty())
+    if (!this.b.isEmpty())
     {
-      if (this.f == 0) {
+      if (this.u == 0) {
         return false;
       }
       float f2 = paramMotionEvent.getX();
       float f1 = paramMotionEvent.getY();
-      int k = paramMotionEvent.getAction();
+      int i1 = paramMotionEvent.getAction();
       boolean bool = true;
-      if ((k & 0xFF) == 0)
+      if ((i1 & 0xFF) == 0)
       {
-        this.g = a(f2, f1);
-        if (this.g == -1) {
+        this.x = b(f2, f1);
+        if (this.x == -1) {
           bool = false;
         }
         if (!bool)
         {
-          this.jdField_b_of_type_Float = -1.0F;
-          this.jdField_c_of_type_Float = -1.0F;
+          this.v = -1.0F;
+          this.w = -1.0F;
           return bool;
         }
-        if (this.jdField_b_of_type_Float < 0)
+        if (this.v < 0)
         {
-          this.jdField_b_of_type_Float = f2;
-          this.jdField_c_of_type_Float = f1;
+          this.v = f2;
+          this.w = f1;
         }
         return bool;
       }
-      if (((paramMotionEvent.getAction() & 0xFF) == 2) && (paramMotionEvent.getPointerCount() == 1) && (this.g != -1))
+      if (((paramMotionEvent.getAction() & 0xFF) == 2) && (paramMotionEvent.getPointerCount() == 1) && (this.x != -1))
       {
         f2 = Math.min(Math.max(f2, getPaddingLeft()), getWidth() - getPaddingRight());
         f1 = Math.min(Math.max(f1, getPaddingTop()), getHeight() - getPaddingBottom());
         a(f2, f1);
-        this.jdField_b_of_type_Float = f2;
-        this.jdField_c_of_type_Float = f1;
+        this.v = f2;
+        this.w = f1;
         return true;
       }
       if ((paramMotionEvent.getAction() & 0xFF) == 1)
       {
-        this.jdField_b_of_type_Float = -1.0F;
-        this.jdField_c_of_type_Float = -1.0F;
-        this.g = -1;
-        paramMotionEvent = this.jdField_a_of_type_ComTencentTkdTopicsdkUcropCallbackOverlayViewChangeListener;
+        this.v = -1.0F;
+        this.w = -1.0F;
+        this.x = -1;
+        paramMotionEvent = this.B;
         if (paramMotionEvent != null) {
-          paramMotionEvent.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+          paramMotionEvent.a(this.b);
         }
       }
     }
@@ -489,87 +530,92 @@ public final class OverlayView
   
   public final void setCircleDimmedLayer(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.n = paramBoolean;
   }
   
   public final void setCropFrameColor(@ColorInt int paramInt)
   {
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.s.setColor(paramInt);
   }
   
   public final void setCropFrameStrokeWidth(@IntRange(from=0L) int paramInt)
   {
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(paramInt);
+    this.s.setStrokeWidth(paramInt);
   }
   
   public final void setCropGridColor(@ColorInt int paramInt)
   {
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.r.setColor(paramInt);
   }
   
   public final void setCropGridColumnCount(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_c_of_type_ArrayOfFloat = ((float[])null);
+    this.k = paramInt;
+    this.i = ((float[])null);
   }
   
   public final void setCropGridCornerColor(@ColorInt int paramInt)
   {
-    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.t.setColor(paramInt);
   }
   
   public final void setCropGridRowCount(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_c_of_type_ArrayOfFloat = ((float[])null);
+    this.j = paramInt;
+    this.i = ((float[])null);
   }
   
   public final void setCropGridStrokeWidth(@IntRange(from=0L) int paramInt)
   {
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(paramInt);
+    this.r.setStrokeWidth(paramInt);
   }
   
   public final void setFreestyleCropMode(int paramInt)
   {
-    this.f = paramInt;
+    this.u = paramInt;
     postInvalidate();
   }
   
   public final void setMDimmedColor(int paramInt)
   {
-    this.e = paramInt;
+    this.o = paramInt;
   }
   
   public final void setOverlayViewChangeListener(@Nullable OverlayViewChangeListener paramOverlayViewChangeListener)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkUcropCallbackOverlayViewChangeListener = paramOverlayViewChangeListener;
+    this.B = paramOverlayViewChangeListener;
+  }
+  
+  public final void setShouldSetupCropBounds(boolean paramBoolean)
+  {
+    this.C = paramBoolean;
   }
   
   public final void setShowCropFrame(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.m = paramBoolean;
   }
   
   public final void setShowCropGrid(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public final void setTargetAspectRatio(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    if (this.jdField_a_of_type_Int > 0)
+    this.l = paramFloat;
+    if (this.d > 0)
     {
       a();
       postInvalidate();
       return;
     }
-    this.jdField_d_of_type_Boolean = true;
+    this.C = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.ucrop.view.OverlayView
  * JD-Core Version:    0.7.0.1
  */

@@ -29,37 +29,32 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TroopMessageSettingAdapter
   extends BaseExpandableListAdapter
 {
-  public static final String a;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<List<TroopInfo>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IRoamSettingService jdField_a_of_type_ComTencentMobileqqTroopRoamsettingApiIRoamSettingService;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private List<Entity> jdField_a_of_type_JavaUtilList;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
-  private int b;
-  private int c;
-  private int d;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = UUID.randomUUID().toString();
-  }
+  public static final String a = UUID.randomUUID().toString();
+  private Context b;
+  private QQAppInterface c;
+  private List<Entity> d;
+  private Map<String, Integer> e;
+  private SparseArray<List<TroopInfo>> f = new SparseArray();
+  private ArrayList<Integer> g = new ArrayList();
+  private IRoamSettingService h;
+  private int i;
+  private int j;
+  private int k;
+  private int l;
   
   public TroopMessageSettingAdapter(Context paramContext, QQAppInterface paramQQAppInterface, List<Entity> paramList, Map<String, Integer> paramMap)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296780);
-    this.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296777);
-    this.c = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296776);
-    this.d = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296777);
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(1));
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(4));
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(2));
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(3));
-    this.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingApiIRoamSettingService = ((IRoamSettingService)paramQQAppInterface.getRuntimeService(IRoamSettingService.class, ""));
+    this.b = paramContext;
+    this.c = paramQQAppInterface;
+    this.i = this.b.getResources().getDimensionPixelSize(2131297111);
+    this.j = this.b.getResources().getDimensionPixelSize(2131297108);
+    this.k = this.b.getResources().getDimensionPixelSize(2131297107);
+    this.l = this.b.getResources().getDimensionPixelSize(2131297108);
+    this.g.add(Integer.valueOf(1));
+    this.g.add(Integer.valueOf(4));
+    this.g.add(Integer.valueOf(2));
+    this.g.add(Integer.valueOf(3));
+    this.h = ((IRoamSettingService)paramQQAppInterface.getRuntimeService(IRoamSettingService.class, ""));
     paramContext = paramList;
     if (paramList == null) {
       paramContext = new ArrayList();
@@ -68,9 +63,9 @@ public class TroopMessageSettingAdapter
     if (paramMap == null) {
       paramQQAppInterface = new HashMap();
     }
-    this.jdField_a_of_type_JavaUtilList = paramContext;
-    this.jdField_a_of_type_JavaUtilMap = paramQQAppInterface;
-    a(this.jdField_a_of_type_JavaUtilList);
+    this.d = paramContext;
+    this.e = paramQQAppInterface;
+    a(this.d);
   }
   
   private void a(View paramView, int paramInt1, int paramInt2)
@@ -86,81 +81,81 @@ public class TroopMessageSettingAdapter
     }
     if (paramInt2 <= 1)
     {
-      paramView.setBackgroundResource(2130839433);
+      paramView.setBackgroundResource(2130839622);
       return;
     }
     if (paramInt1 == 0)
     {
-      paramView.setBackgroundResource(2130839449);
+      paramView.setBackgroundResource(2130839638);
       return;
     }
     if (paramInt1 == paramInt2 - 1)
     {
-      paramView.setBackgroundResource(2130839440);
+      paramView.setBackgroundResource(2130839629);
       return;
     }
-    paramView.setBackgroundResource(2130839443);
+    paramView.setBackgroundResource(2130839632);
   }
   
   private void a(List<Entity> paramList)
   {
-    int i = 0;
+    int m = 0;
     Object localObject2;
-    while (i < paramList.size())
+    while (m < paramList.size())
     {
-      if (paramList.get(i) != null)
+      if (paramList.get(m) != null)
       {
-        localObject1 = (TroopInfo)paramList.get(i);
+        localObject1 = (TroopInfo)paramList.get(m);
         if (localObject1 == null) {
           break;
         }
-        localObject2 = (Integer)this.jdField_a_of_type_JavaUtilMap.get(((TroopInfo)localObject1).troopuin);
+        localObject2 = (Integer)this.e.get(((TroopInfo)localObject1).troopuin);
         if (localObject2 != null)
         {
-          int j = ((Integer)localObject2).intValue();
-          if (this.jdField_a_of_type_AndroidUtilSparseArray.get(j) == null) {
-            this.jdField_a_of_type_AndroidUtilSparseArray.put(j, new ArrayList());
+          int n = ((Integer)localObject2).intValue();
+          if (this.f.get(n) == null) {
+            this.f.put(n, new ArrayList());
           }
-          ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(j)).add(localObject1);
+          ((List)this.f.get(n)).add(localObject1);
         }
       }
-      i += 1;
+      m += 1;
     }
     paramList = new TroopMessageSettingAdapter.TroopCompator();
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject1 = this.g.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      i = ((Integer)((Iterator)localObject1).next()).intValue();
-      if (this.jdField_a_of_type_AndroidUtilSparseArray.get(i) != null)
+      m = ((Integer)((Iterator)localObject1).next()).intValue();
+      if (this.f.get(m) != null)
       {
-        localObject2 = (List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+        localObject2 = (List)this.f.get(m);
         Collections.sort((List)localObject2, paramList);
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localObject2);
+        this.f.put(m, localObject2);
       }
     }
-    paramList = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    paramList = this.g.iterator();
     while (paramList.hasNext())
     {
-      i = ((Integer)paramList.next()).intValue();
-      if (this.jdField_a_of_type_AndroidUtilSparseArray.get(i) == null)
+      m = ((Integer)paramList.next()).intValue();
+      if (this.f.get(m) == null)
       {
         localObject1 = new TroopInfo();
-        ((TroopInfo)localObject1).troopuin = jdField_a_of_type_JavaLangString;
-        ((TroopInfo)localObject1).troopname = this.jdField_a_of_type_AndroidContentContext.getString(2131719864);
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(i, new ArrayList());
-        ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).add(localObject1);
+        ((TroopInfo)localObject1).troopuin = a;
+        ((TroopInfo)localObject1).troopname = this.b.getString(2131917469);
+        this.f.put(m, new ArrayList());
+        ((List)this.f.get(m)).add(localObject1);
       }
     }
   }
   
   public TroopInfo a(int paramInt1, int paramInt2)
   {
-    return (TroopInfo)((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(a(paramInt1).intValue())).get(paramInt2);
+    return (TroopInfo)((List)this.f.get(a(paramInt1).intValue())).get(paramInt2);
   }
   
   public Integer a(int paramInt)
   {
-    return (Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return (Integer)this.g.get(paramInt);
   }
   
   public void a(Map<String, Integer> paramMap)
@@ -168,8 +163,8 @@ public class TroopMessageSettingAdapter
     if (paramMap == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    a(this.jdField_a_of_type_JavaUtilList);
+    this.e = paramMap;
+    a(this.d);
   }
   
   public long getChildId(int paramInt1, int paramInt2)
@@ -181,7 +176,7 @@ public class TroopMessageSettingAdapter
   public int getChildType(int paramInt1, int paramInt2)
   {
     TroopInfo localTroopInfo = a(paramInt1, paramInt2);
-    if ((localTroopInfo != null) && (jdField_a_of_type_JavaLangString.equals(localTroopInfo.troopuin))) {
+    if ((localTroopInfo != null) && (a.equals(localTroopInfo.troopuin))) {
       return 1;
     }
     return 0;
@@ -195,14 +190,14 @@ public class TroopMessageSettingAdapter
   public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
   {
     TroopInfo localTroopInfo = a(paramInt1, paramInt2);
-    int i = getChildType(paramInt1, paramInt2);
+    int m = getChildType(paramInt1, paramInt2);
     if (TextUtils.isEmpty(localTroopInfo.getTroopDisplayName())) {
       paramViewGroup = localTroopInfo.troopuin;
     } else {
       paramViewGroup = localTroopInfo.getTroopDisplayName();
     }
     Object localObject;
-    if (i == 1)
+    if (m == 1)
     {
       if (paramView != null)
       {
@@ -210,12 +205,12 @@ public class TroopMessageSettingAdapter
       }
       else
       {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562837, null);
+        paramView = LayoutInflater.from(this.b).inflate(2131629282, null);
         localObject = new TroopMessageSettingAdapter.ChildType1ViewHolder(this);
-        ((TroopMessageSettingAdapter.ChildType1ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367877));
+        ((TroopMessageSettingAdapter.ChildType1ViewHolder)localObject).a = ((TextView)paramView.findViewById(2131434457));
         paramView.setTag(localObject);
       }
-      ((TroopMessageSettingAdapter.ChildType1ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup);
+      ((TroopMessageSettingAdapter.ChildType1ViewHolder)localObject).a.setText(paramViewGroup);
     }
     else
     {
@@ -225,24 +220,24 @@ public class TroopMessageSettingAdapter
       }
       else
       {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562836, null);
+        paramView = LayoutInflater.from(this.b).inflate(2131629281, null);
         localObject = new TroopMessageSettingAdapter.ChildType0ViewHolder(this);
-        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367828));
-        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367877));
-        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367844));
-        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376458));
+        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).a = ((ImageView)paramView.findViewById(2131434407));
+        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).b = ((TextView)paramView.findViewById(2131434457));
+        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).c = ((TextView)paramView.findViewById(2131434424));
+        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).d = ((ImageView)paramView.findViewById(2131444691));
         paramView.setTag(localObject);
       }
-      FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 4, localTroopInfo.troopuin);
-      ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localFaceDrawable);
-      ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup);
-      ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(this.c, 4, localTroopInfo.troopuin);
+      ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).a.setImageDrawable(localFaceDrawable);
+      ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).b.setText(paramViewGroup);
+      ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).c.setVisibility(0);
       a(paramView, paramInt2, getChildrenCount(paramInt1));
-      paramViewGroup = (Boolean)this.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingApiIRoamSettingService.getMapRequest().get(localTroopInfo.troopuin);
+      paramViewGroup = (Boolean)this.h.getMapRequest().get(localTroopInfo.troopuin);
       if ((paramViewGroup != null) && (paramViewGroup.booleanValue())) {
-        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).d.setVisibility(0);
       } else {
-        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).d.setVisibility(8);
       }
     }
     paramView.setFocusable(true);
@@ -251,7 +246,7 @@ public class TroopMessageSettingAdapter
   
   public int getChildrenCount(int paramInt)
   {
-    List localList = (List)this.jdField_a_of_type_AndroidUtilSparseArray.get(a(paramInt).intValue());
+    List localList = (List)this.f.get(a(paramInt).intValue());
     if (localList != null) {
       return localList.size();
     }
@@ -260,7 +255,7 @@ public class TroopMessageSettingAdapter
   
   public int getGroupCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.g.size();
   }
   
   public long getGroupId(int paramInt)
@@ -275,53 +270,53 @@ public class TroopMessageSettingAdapter
   
   public int getGroupTypeCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.g.size();
   }
   
   public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
   {
-    int i;
+    int m;
     if (paramView != null) {
-      i = ((Integer)paramView.getTag()).intValue();
+      m = ((Integer)paramView.getTag()).intValue();
     } else {
-      i = -1;
+      m = -1;
     }
     View localView;
     if (paramView != null)
     {
       localView = paramView;
-      if (i != -1)
+      if (m != -1)
       {
         localView = paramView;
-        if (i == a(paramInt).intValue()) {}
+        if (m == a(paramInt).intValue()) {}
       }
     }
     else
     {
-      i = 0;
-      int j = a(paramInt).intValue();
-      if (j != 1)
+      m = 0;
+      int n = a(paramInt).intValue();
+      if (n != 1)
       {
-        if (j != 2)
+        if (n != 2)
         {
-          if (j != 3)
+          if (n != 3)
           {
-            if (j == 4) {
-              i = 2131562944;
+            if (n == 4) {
+              m = 2131629552;
             }
           }
           else {
-            i = 2131562943;
+            m = 2131629551;
           }
         }
         else {
-          i = 2131562942;
+          m = 2131629550;
         }
       }
       else {
-        i = 2131562941;
+        m = 2131629549;
       }
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(i, null);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(m, null);
     }
     localView.setFocusable(true);
     localView.setTag(a(paramInt));
@@ -340,14 +335,14 @@ public class TroopMessageSettingAdapter
   
   public void notifyDataSetChanged()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    a(this.jdField_a_of_type_JavaUtilList);
+    this.f.clear();
+    a(this.d);
     super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TroopMessageSettingAdapter
  * JD-Core Version:    0.7.0.1
  */

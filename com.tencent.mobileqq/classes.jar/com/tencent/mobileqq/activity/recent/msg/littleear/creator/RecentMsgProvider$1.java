@@ -8,19 +8,19 @@ class RecentMsgProvider$1
 {
   RecentMsgProvider$1(RecentMsgProvider paramRecentMsgProvider) {}
   
-  public AbstructRecentUserMsg a()
-  {
-    return RecentMsgProvider.a(this.a);
-  }
-  
   public void a(byte[] paramArrayOfByte)
   {
     RecentMsgProvider.a(this.a).a(paramArrayOfByte);
   }
+  
+  public AbstructRecentUserMsg b()
+  {
+    return RecentMsgProvider.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.littleear.creator.RecentMsgProvider.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,28 +14,28 @@ class SlideInAndOutAnimator$3
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Int != 0) {
-      this.jdField_a_of_type_AndroidViewView.setTranslationY(0.0F);
+    if (this.b != 0) {
+      this.c.setTranslationY(0.0F);
     }
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.c.setAlpha(1.0F);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidViewViewPropertyAnimator.setListener(null);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListSlideInAndOutAnimator.dispatchMoveFinished(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    SlideInAndOutAnimator.c(this.jdField_a_of_type_ComTencentMobileqqColornoteListSlideInAndOutAnimator).remove(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    SlideInAndOutAnimator.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListSlideInAndOutAnimator);
+    this.d.setListener(null);
+    this.e.dispatchMoveFinished(this.a);
+    SlideInAndOutAnimator.d(this.e).remove(this.a);
+    SlideInAndOutAnimator.b(this.e);
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListSlideInAndOutAnimator.dispatchMoveStarting(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    this.e.dispatchMoveStarting(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.SlideInAndOutAnimator.3
  * JD-Core Version:    0.7.0.1
  */

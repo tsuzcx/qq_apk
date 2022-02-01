@@ -29,9 +29,9 @@ class GameListRecyclerViewAdapter$1
       localAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(GameListRecyclerViewAdapter.a(this.this$0), "scaleX", new float[] { 1.05F, 1.0F }), ObjectAnimator.ofFloat(GameListRecyclerViewAdapter.a(this.this$0), "scaleY", new float[] { 1.05F, 1.0F }) });
       localAnimatorSet.setDuration(500L);
       GameListRecyclerViewAdapter.a(this.this$0, new AnimatorSet());
-      GameListRecyclerViewAdapter.a(this.this$0).playSequentially(new Animator[] { localObject, localAnimatorSet });
-      GameListRecyclerViewAdapter.a(this.this$0).addListener(new GameListRecyclerViewAdapter.1.1(this));
-      GameListRecyclerViewAdapter.a(this.this$0).start();
+      GameListRecyclerViewAdapter.b(this.this$0).playSequentially(new Animator[] { localObject, localAnimatorSet });
+      GameListRecyclerViewAdapter.b(this.this$0).addListener(new GameListRecyclerViewAdapter.1.1(this));
+      GameListRecyclerViewAdapter.b(this.this$0).start();
     }
   }
 }

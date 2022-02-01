@@ -15,8 +15,8 @@ public class KSongView$LrcHolder
   
   public void a(int paramInt, View paramView, Sentence paramSentence)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView.a();
-    KSongTextView localKSongTextView = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView;
+    this.a.a();
+    KSongTextView localKSongTextView = this.a;
     if (TextUtils.isEmpty(paramSentence.a)) {
       paramView = "";
     } else {
@@ -32,13 +32,13 @@ public class KSongView$LrcHolder
   
   public View initView(int paramInt, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView = ((KSongTextView)paramView.findViewById(R.id.br));
+    this.a = ((KSongTextView)paramView.findViewById(R.id.bB));
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.KSongView.LrcHolder
  * JD-Core Version:    0.7.0.1
  */

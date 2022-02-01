@@ -13,7 +13,7 @@ class VideoHandler$8
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    VideoHandler.a(this.a).setLayerType(0, null);
+    VideoHandler.g(this.a).setLayerType(0, null);
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
     }
@@ -26,7 +26,7 @@ class VideoHandler$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.VideoHandler.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.value;
 
-import android.support.annotation.RestrictTo;
+import androidx.annotation.RestrictTo;
 
 public class LottieFrameInfo<T>
 {
@@ -47,7 +47,7 @@ public class LottieFrameInfo<T>
     return this.startValue;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public LottieFrameInfo<T> set(float paramFloat1, float paramFloat2, T paramT1, T paramT2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
     this.startFrame = paramFloat1;
@@ -62,7 +62,7 @@ public class LottieFrameInfo<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.value.LottieFrameInfo
  * JD-Core Version:    0.7.0.1
  */

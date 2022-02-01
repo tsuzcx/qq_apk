@@ -33,16 +33,16 @@ public class e
   public void c()
   {
     super.c();
-    this.x = GLES20.glGetUniformLocation(p(), "screenMode");
-    this.y = GLES20.glGetUniformLocation(p(), "screenReplaceColor");
-    this.z = GLES20.glGetUniformLocation(p(), "screenMirrorX");
-    this.A = GLES20.glGetUniformLocation(p(), "screenMirrorY");
+    this.x = GLES20.glGetUniformLocation(q(), "screenMode");
+    this.y = GLES20.glGetUniformLocation(q(), "screenReplaceColor");
+    this.z = GLES20.glGetUniformLocation(q(), "screenMirrorX");
+    this.A = GLES20.glGetUniformLocation(q(), "screenMirrorY");
     b(this.B);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.e
  * JD-Core Version:    0.7.0.1
  */

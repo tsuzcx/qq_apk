@@ -187,7 +187,7 @@ public class ProfileUtils
       {
         Rect localRect = new Rect();
         paramView.getGlobalVisibleRect(localRect);
-        bool1 = localRect.intersect(new Rect(0, 0, ViewUtils.a(), ViewUtils.b()));
+        bool1 = localRect.intersect(new Rect(0, 0, ViewUtils.getScreenWidth(), ViewUtils.getScreenHeight()));
       }
     }
     return bool1;
@@ -219,7 +219,7 @@ public class ProfileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.utils.ProfileUtils
  * JD-Core Version:    0.7.0.1
  */

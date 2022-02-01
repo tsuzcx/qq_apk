@@ -18,9 +18,9 @@ public class DebugPromoteTaskCode
   extends BaseTransitionCode
   implements View.OnClickListener
 {
-  public EditText a;
   public StoryPromoteTaskManager a;
   public EditText b;
+  public EditText c;
   
   public void a()
   {
@@ -30,14 +30,14 @@ public class DebugPromoteTaskCode
   public void a(Bundle paramBundle1, Bundle paramBundle2)
   {
     super.a(paramBundle1, paramBundle2);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelStoryPromoteTaskManager = ((StoryPromoteTaskManager)SuperManager.a(29));
-    a(2131558476);
-    a(2131363936).setOnClickListener(this);
-    a(2131363981).setOnClickListener(this);
-    a(2131363885).setOnClickListener(this);
-    a(2131364017).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131366080));
-    this.b = ((EditText)a(2131366048));
+    this.a = ((StoryPromoteTaskManager)SuperManager.a(29));
+    a(2131624019);
+    b(2131429892).setOnClickListener(this);
+    b(2131429942).setOnClickListener(this);
+    b(2131429835).setOnClickListener(this);
+    b(2131429973).setOnClickListener(this);
+    this.b = ((EditText)b(2131432358));
+    this.c = ((EditText)b(2131432324));
   }
   
   public void onClick(View paramView)
@@ -46,23 +46,23 @@ public class DebugPromoteTaskCode
     {
     default: 
       break;
-    case 2131364017: 
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.4(this, this.b.getText().toString(), this.jdField_a_of_type_AndroidWidgetEditText.getText().toString()));
+    case 2131429973: 
+      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.4(this, this.c.getText().toString(), this.b.getText().toString()));
       break;
-    case 2131363981: 
+    case 2131429942: 
       ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.2(this), true);
       break;
-    case 2131363936: 
+    case 2131429892: 
       ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.1(this), true);
       break;
-    case 2131363889: 
+    case 2131429839: 
+      this.c.getText().toString();
       this.b.getText().toString();
-      this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      this.c.getText().clear();
       this.b.getText().clear();
-      this.jdField_a_of_type_AndroidWidgetEditText.getText().clear();
       new QQStoryEntityManagerFactory(BaseApplicationImpl.getApplication().getRuntime().getAccount()).a();
       break;
-    case 2131363885: 
+    case 2131429835: 
       ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.3(this));
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -70,7 +70,7 @@ public class DebugPromoteTaskCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode
  * JD-Core Version:    0.7.0.1
  */

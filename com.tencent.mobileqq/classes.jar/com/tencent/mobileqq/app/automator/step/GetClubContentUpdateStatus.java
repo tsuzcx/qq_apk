@@ -29,11 +29,11 @@ public class GetClubContentUpdateStatus
       ((StringBuilder)localObject).append(",last update time:");
       QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
     }
-    ClubContentJsonTask.b(this.mAutomator.a);
-    VipGrayConfigHelper.a().a(this.mAutomator.a);
-    WebViewTitleStyleHelper.a().a(this.mAutomator.a);
-    ClubContentJsonTask.a(this.mAutomator.a);
-    Object localObject = this.mAutomator.a.getApp().getSharedPreferences("mobileQQ", 0);
+    ClubContentJsonTask.b(this.mAutomator.k);
+    VipGrayConfigHelper.a().a(this.mAutomator.k);
+    WebViewTitleStyleHelper.a().a(this.mAutomator.k);
+    ClubContentJsonTask.a(this.mAutomator.k);
+    Object localObject = this.mAutomator.k.getApp().getSharedPreferences("mobileQQ", 0);
     long l = ((SharedPreferences)localObject).getLong("last_pull_club_content_update_time", 0L);
     if ((System.currentTimeMillis() - l <= 43200000L) && (System.currentTimeMillis() >= l))
     {
@@ -49,21 +49,21 @@ public class GetClubContentUpdateStatus
     }
     else
     {
-      ClubContentUpdateHandler localClubContentUpdateHandler = (ClubContentUpdateHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.CLUBCONTENTUPDATE_HANDLER);
+      ClubContentUpdateHandler localClubContentUpdateHandler = (ClubContentUpdateHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.CLUBCONTENTUPDATE_HANDLER);
       if (localClubContentUpdateHandler != null)
       {
         localClubContentUpdateHandler.a();
         ((SharedPreferences)localObject).edit().putLong("last_pull_club_content_update_time", System.currentTimeMillis()).commit();
       }
     }
-    AioVipKeywordHelper.a().a(this.mAutomator.a.getApplication(), this.mAutomator.a.getCurrentAccountUin());
-    ((SonicTemplateUpdateManager)this.mAutomator.a.getManager(QQManagerFactory.SONIC_FILE_DISCARD_MANAGER)).a();
+    AioVipKeywordHelper.a().a(this.mAutomator.k.getApplication(), this.mAutomator.k.getCurrentAccountUin());
+    ((SonicTemplateUpdateManager)this.mAutomator.k.getManager(QQManagerFactory.SONIC_FILE_DISCARD_MANAGER)).a();
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetClubContentUpdateStatus
  * JD-Core Version:    0.7.0.1
  */

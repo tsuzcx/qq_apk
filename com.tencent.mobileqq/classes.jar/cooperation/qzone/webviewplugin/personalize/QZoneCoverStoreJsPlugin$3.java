@@ -11,12 +11,12 @@ class QZoneCoverStoreJsPlugin$3
   
   public void onFail(Activity paramActivity, String paramString)
   {
-    QQToast.a(paramActivity, paramString, 0).b(this.val$offset);
+    QQToast.makeText(paramActivity, paramString, 0).show(this.val$offset);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

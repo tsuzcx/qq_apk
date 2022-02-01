@@ -29,7 +29,7 @@ class FloatViewSkin$2
       if (paramInt > 0)
       {
         this.a.a(true);
-        MusicPlayerCallback.sInstance.download(FloatViewSkin.a(this.a), FloatViewSkin.a(this.a), false);
+        MusicPlayerCallback.sInstance.download(FloatViewSkin.b(this.a), FloatViewSkin.c(this.a), false);
         return;
       }
       this.a.a(false);
@@ -39,7 +39,7 @@ class FloatViewSkin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.2
  * JD-Core Version:    0.7.0.1
  */

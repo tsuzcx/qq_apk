@@ -10,10 +10,10 @@ class AVGameLaunchWebHelper$3
   
   public void a()
   {
-    AVGameLaunchWebHelper.a(this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameLaunchWebHelper, this.jdField_a_of_type_JavaLangRunnable);
+    AVGameLaunchWebHelper.a(this.c, this.a);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preLoadToolProcAndExecuteCallable time end: ");
-    localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    localStringBuilder.append(System.currentTimeMillis() - this.b);
     QLog.d("AVGameLaunchWebHelper", 2, localStringBuilder.toString());
   }
 }

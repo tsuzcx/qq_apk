@@ -24,22 +24,22 @@ class LightAppUtil$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    if ((this.a.f != null) && (!this.a.d.isFinishing())) {
+      this.a.f.dismiss();
     }
     if (!paramBoolean)
     {
-      ToastUtil.a().a(2131691545);
-      if (this.a.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener != null) {
-        this.a.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener.a(false);
+      ToastUtil.a().a(2131888507);
+      if (this.a.e != null) {
+        this.a.e.a(false);
       }
       return;
     }
     if (paramBundle.getInt("cgiResultCode", -1) != 0)
     {
-      ToastUtil.a().a(2131691545);
-      if (this.a.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener != null) {
-        this.a.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener.a(false);
+      ToastUtil.a().a(2131888507);
+      if (this.a.e != null) {
+        this.a.e.a(false);
       }
       return;
     }
@@ -55,9 +55,9 @@ class LightAppUtil$1
           paramBundle.append("GETLightAppSettingCallBack failed,resultCode=");
           paramBundle.append(j);
           LogUtility.a("LightAppUtil", paramBundle.toString());
-          ToastUtil.a().a(2131691545);
-          if (this.a.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener != null) {
-            this.a.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener.a(false);
+          ToastUtil.a().a(2131888507);
+          if (this.a.e != null) {
+            this.a.e.a(false);
           }
         }
         else
@@ -65,17 +65,17 @@ class LightAppUtil$1
           try
           {
             paramBundle = paramBundle.getJSONArray("list");
-            if (((paramBundle != null) && (paramBundle.length() != 0)) || (!this.a.b)) {
-              break label927;
+            if (((paramBundle != null) && (paramBundle.length() != 0)) || (!this.a.i)) {
+              break label928;
             }
-            ToastUtil.a().a(2131691545);
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (this.a.jdField_a_of_type_AndroidAppActivity != null) && (!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-              this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+            ToastUtil.a().a(2131888507);
+            if ((this.a.f != null) && (this.a.f.isShowing()) && (this.a.d != null) && (!this.a.d.isFinishing())) {
+              this.a.f.dismiss();
             }
-            if (this.a.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener != null) {
-              this.a.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener.a(true);
+            if (this.a.e != null) {
+              this.a.e.a(true);
             }
-            SmartDeviceReport.a(null, "Net_LiteApp_Setting", 0, 1, this.a.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.productId);
+            SmartDeviceReport.a(null, "Net_LiteApp_Setting", 0, 1, this.a.l.productId);
             return;
           }
           catch (Exception paramBundle)
@@ -87,32 +87,32 @@ class LightAppUtil$1
             int k;
             int i;
             paramBundle.printStackTrace();
-            ToastUtil.a().a(2131691545);
-            if (this.a.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener == null) {
+            ToastUtil.a().a(2131888507);
+            if (this.a.e == null) {
               continue;
             }
-            this.a.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener.a(false);
+            this.a.e.a(false);
           }
           if (paramInt < paramBundle.length())
           {
             localObject1 = paramBundle.getJSONObject(paramInt);
             localLightAppSettingInfo = new LightAppSettingInfo();
-            localLightAppSettingInfo.jdField_c_of_type_Int = ((JSONObject)localObject1).optInt("pid");
-            localLightAppSettingInfo.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("template_type");
-            localLightAppSettingInfo.jdField_b_of_type_Int = ((JSONObject)localObject1).optInt("has_own_app");
-            localLightAppSettingInfo.jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).optString("h5_url");
-            localLightAppSettingInfo.jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).optString("public_url");
-            localLightAppSettingInfo.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("own_appid");
-            localLightAppSettingInfo.jdField_d_of_type_Int = ((JSONObject)localObject1).optInt("device_type");
-            localLightAppSettingInfo.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("own_pkgname");
-            localLightAppSettingInfo.jdField_e_of_type_JavaLangString = ((JSONObject)localObject1).optString("openid");
-            localLightAppSettingInfo.f = ((JSONObject)localObject1).optString("openkey");
-            localLightAppSettingInfo.g = ((JSONObject)localObject1).optString("appname");
-            localLightAppSettingInfo.jdField_e_of_type_Int = ((JSONObject)localObject1).optInt("bindtype", 1);
+            localLightAppSettingInfo.c = ((JSONObject)localObject1).optInt("pid");
+            localLightAppSettingInfo.a = ((JSONObject)localObject1).optInt("template_type");
+            localLightAppSettingInfo.b = ((JSONObject)localObject1).optInt("has_own_app");
+            localLightAppSettingInfo.j = ((JSONObject)localObject1).optString("h5_url");
+            localLightAppSettingInfo.i = ((JSONObject)localObject1).optString("public_url");
+            localLightAppSettingInfo.f = ((JSONObject)localObject1).optString("own_appid");
+            localLightAppSettingInfo.h = ((JSONObject)localObject1).optInt("device_type");
+            localLightAppSettingInfo.g = ((JSONObject)localObject1).optString("own_pkgname");
+            localLightAppSettingInfo.k = ((JSONObject)localObject1).optString("openid");
+            localLightAppSettingInfo.l = ((JSONObject)localObject1).optString("openkey");
+            localLightAppSettingInfo.m = ((JSONObject)localObject1).optString("appname");
+            localLightAppSettingInfo.n = ((JSONObject)localObject1).optInt("bindtype", 1);
             localObject2 = ((JSONObject)localObject1).optString("pub_propertyids");
             localJSONArray = ((JSONObject)localObject1).getJSONArray("config_list");
-            localLightAppSettingInfo.jdField_a_of_type_JavaUtilHashMap = this.a.a(localJSONArray);
-            localLightAppSettingInfo.h = ((JSONObject)localObject1).optString("comment");
+            localLightAppSettingInfo.o = this.a.a(localJSONArray);
+            localLightAppSettingInfo.p = ((JSONObject)localObject1).optString("comment");
             localObject1 = ((String)localObject2).split(",");
             if (localObject1 != null)
             {
@@ -125,44 +125,44 @@ class LightAppUtil$1
                 i += 1;
                 continue;
               }
-              localLightAppSettingInfo.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
+              localLightAppSettingInfo.e = ((ArrayList)localObject2);
             }
             else
             {
               LogUtility.e("LightAppUtil", "no ids!");
             }
-            if (!LightAppUtil.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(localLightAppSettingInfo.jdField_c_of_type_Int)))
+            if (!LightAppUtil.a.containsKey(Integer.valueOf(localLightAppSettingInfo.c)))
             {
-              LightAppUtil.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(localLightAppSettingInfo.jdField_c_of_type_Int), localLightAppSettingInfo);
-              LightAppUtil.jdField_a_of_type_JavaUtilArrayList.add(localLightAppSettingInfo);
+              LightAppUtil.a.put(Integer.valueOf(localLightAppSettingInfo.c), localLightAppSettingInfo);
+              LightAppUtil.b.add(localLightAppSettingInfo);
             }
-            if ((this.a.b) && (this.a.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.productId == localLightAppSettingInfo.jdField_c_of_type_Int))
+            if ((this.a.i) && (this.a.l.productId == localLightAppSettingInfo.c))
             {
-              this.a.a(this.a.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo, this.a.jdField_a_of_type_AndroidOsBundle, this.a.d);
-              break label936;
+              this.a.a(this.a.l, this.a.m, this.a.n);
+              break label937;
             }
-            if (this.a.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener == null) {
-              break label936;
+            if (this.a.e == null) {
+              break label937;
             }
-            this.a.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener.a(false);
-            break label936;
+            this.a.e.a(false);
+            break label937;
           }
-          if ((!this.a.c) && (LightAppUtil.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+          if ((!this.a.j) && (LightAppUtil.b.size() > 0))
           {
             paramBundle = BaseApplicationImpl.getApplication().getRuntime();
             if ((paramBundle instanceof QQAppInterface)) {
-              ((SmartDeviceProxyMgr)((QQAppInterface)paramBundle).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(LightAppUtil.jdField_a_of_type_JavaUtilArrayList);
+              ((SmartDeviceProxyMgr)((QQAppInterface)paramBundle).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(LightAppUtil.b);
             }
           }
         }
-        if (this.a.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo != null) {
-          paramInt = this.a.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.productId;
+        if (this.a.l != null) {
+          paramInt = this.a.l.productId;
         } else {
           paramInt = 0;
         }
-        if (this.a.c)
+        if (this.a.j)
         {
-          SmartDeviceReport.a(this.a.jdField_a_of_type_MqqAppAppRuntime, "Net_Get_LiteappSetting", 0, j, paramInt);
+          SmartDeviceReport.a(this.a.g, "Net_Get_LiteappSetting", 0, j, paramInt);
           return;
         }
         SmartDeviceReport.a(null, "Net_Get_LiteappSetting", 0, j, paramInt);
@@ -173,12 +173,12 @@ class LightAppUtil$1
         paramBundle.printStackTrace();
         return;
       }
-      label927:
+      label928:
       if (paramBundle != null)
       {
         paramInt = 0;
         continue;
-        label936:
+        label937:
         paramInt += 1;
       }
     }
@@ -186,7 +186,7 @@ class LightAppUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.utils.LightAppUtil.1
  * JD-Core Version:    0.7.0.1
  */

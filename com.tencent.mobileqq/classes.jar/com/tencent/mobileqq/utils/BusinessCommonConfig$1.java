@@ -22,21 +22,21 @@ class BusinessCommonConfig$1
         return;
       }
       int i = paramIntent.getIntExtra("event", 0);
-      paramContext = this.jdField_a_of_type_ComTencentMobileqqUtilsBusinessCommonConfig.TAG;
+      paramContext = this.b.TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("收到其他进程的通知, event[");
       localStringBuilder.append(i);
       localStringBuilder.append("]");
       QLog.w(paramContext, 1, localStringBuilder.toString());
       if (i == 1) {
-        BusinessCommonConfig.onDownloadRequest(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramIntent);
+        BusinessCommonConfig.onDownloadRequest(this.a, paramIntent);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.BusinessCommonConfig.1
  * JD-Core Version:    0.7.0.1
  */

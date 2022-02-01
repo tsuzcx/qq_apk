@@ -8,28 +8,28 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class JobExecutor
   implements ThreadExecutor
 {
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  private final ScheduledExecutorService jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-  private boolean jdField_a_of_type_Boolean;
+  private static final AtomicInteger a = new AtomicInteger(1);
+  private boolean b;
+  private final ScheduledExecutorService c = Executors.newSingleThreadScheduledExecutor();
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public void execute(@NonNull Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       UiThread.a(paramRunnable);
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService.execute(paramRunnable);
+    this.c.execute(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.executor.JobExecutor
  * JD-Core Version:    0.7.0.1
  */

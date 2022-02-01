@@ -32,7 +32,7 @@ class GdtVideoImaxFragment$6
     paramWebView.append("onPageFinished:");
     paramWebView.append(paramString);
     GdtLog.b("AbsWebView", paramWebView.toString());
-    GdtVideoImaxFragment.b(this.a, true);
+    GdtVideoImaxFragment.c(this.a, true);
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
@@ -47,7 +47,7 @@ class GdtVideoImaxFragment$6
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    GdtVideoImaxFragment.b(this.a, false);
+    GdtVideoImaxFragment.c(this.a, false);
   }
   
   public void onReceivedTitle(WebView paramWebView, String paramString)
@@ -57,7 +57,7 @@ class GdtVideoImaxFragment$6
     paramWebView.append("onReceivedTitle: ");
     paramWebView.append(paramString);
     GdtLog.b("AbsWebView", paramWebView.toString());
-    GdtVideoImaxFragment.a(this.a).setWebBarTitle(paramString);
+    GdtVideoImaxFragment.j(this.a).setWebBarTitle(paramString);
   }
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
@@ -79,7 +79,7 @@ class GdtVideoImaxFragment$6
       if (localObject != null) {
         paramString = ((Uri)localObject).getScheme();
       }
-      if (AuthorizeConfig.a().a(paramWebView.getUrl(), paramString).booleanValue())
+      if (AuthorizeConfig.a().d(paramWebView.getUrl(), paramString).booleanValue())
       {
         paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
         paramWebView.addFlags(268435456);
@@ -100,7 +100,7 @@ class GdtVideoImaxFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.6
  * JD-Core Version:    0.7.0.1
  */

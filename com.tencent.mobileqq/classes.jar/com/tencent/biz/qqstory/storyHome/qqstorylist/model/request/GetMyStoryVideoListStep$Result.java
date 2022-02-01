@@ -7,12 +7,12 @@ import java.util.ArrayList;
 
 public class GetMyStoryVideoListStep$Result
 {
-  public int a;
-  public FeedFeatureItem a;
-  public final PBRepeatMessageField<qqstory_struct.UserVidList> a;
-  public String a;
-  public final ArrayList<String> a;
-  public boolean a;
+  public int a = 0;
+  public String b = "";
+  public boolean c = false;
+  public final ArrayList<String> d = new ArrayList();
+  public final PBRepeatMessageField<qqstory_struct.UserVidList> e;
+  public FeedFeatureItem f = new FeedFeatureItem();
   
   public GetMyStoryVideoListStep$Result()
   {
@@ -21,19 +21,14 @@ public class GetMyStoryVideoListStep$Result
   
   public GetMyStoryVideoListStep$Result(int paramInt, PBRepeatMessageField<qqstory_struct.UserVidList> paramPBRepeatMessageField)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem = new FeedFeatureItem();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField = paramPBRepeatMessageField;
+    this.a = paramInt;
+    this.e = paramPBRepeatMessageField;
   }
   
   public static Result a(String paramString)
   {
     Result localResult = new Result();
-    localResult.jdField_a_of_type_JavaLangString = paramString;
+    localResult.b = paramString;
     return localResult;
   }
 }

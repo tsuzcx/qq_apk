@@ -56,14 +56,14 @@ public class ReadInJoyAdPopSheetBrowserFragment
   public void onFinalState(Bundle paramBundle, WebViewKernelCallBack paramWebViewKernelCallBack)
   {
     super.onFinalState(paramBundle, paramWebViewKernelCallBack);
-    if ((getSwiftTitleUI() != null) && (getSwiftTitleUI().a != null)) {
-      getSwiftTitleUI().a.setVisibility(8);
+    if ((getSwiftTitleUI() != null) && (getSwiftTitleUI().o != null)) {
+      getSwiftTitleUI().o.setVisibility(8);
     }
-    if (getWebTitleBarInterface().a() != null) {
-      getWebTitleBarInterface().a().setVisibility(8);
+    if (getWebTitleBarInterface().l() != null) {
+      getWebTitleBarInterface().l().setVisibility(8);
     }
-    if ((getUIStyleHandler() != null) && (getUIStyleHandler().a != null)) {
-      getUIStyleHandler().a.a(false);
+    if ((getUIStyleHandler() != null) && (getUIStyleHandler().w != null)) {
+      getUIStyleHandler().w.a(false);
     }
     getQBaseActivity().getWindow().getDecorView().setSystemUiVisibility(514);
   }
@@ -76,7 +76,7 @@ public class ReadInJoyAdPopSheetBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ad.ReadInJoyAdPopSheetBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

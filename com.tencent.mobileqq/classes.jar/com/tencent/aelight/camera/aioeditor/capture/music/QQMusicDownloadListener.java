@@ -11,20 +11,20 @@ import java.util.concurrent.ConcurrentHashMap;
 public class QQMusicDownloadListener
   extends MusicDownloadListener
 {
-  private MusicDownloadListener jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener;
-  private ConcurrentHashMap<String, MusicItemInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private ConcurrentHashMap<String, MusicItemInfo> a;
   private ConcurrentHashMap<String, DownloadTask> b;
+  private MusicDownloadListener c;
   
   public QQMusicDownloadListener(ConcurrentHashMap<String, MusicItemInfo> paramConcurrentHashMap, ConcurrentHashMap<String, DownloadTask> paramConcurrentHashMap1, MusicDownloadListener paramMusicDownloadListener)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramConcurrentHashMap;
+    this.a = paramConcurrentHashMap;
     this.b = paramConcurrentHashMap1;
-    this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener = paramMusicDownloadListener;
+    this.c = paramMusicDownloadListener;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener.a(paramInt);
+    this.c.a(paramInt);
   }
   
   public void a(String paramString)
@@ -36,19 +36,19 @@ public class QQMusicDownloadListener
       ((StringBuilder)localObject).append(paramString);
       QLog.d("QQMusicDownloadListener", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    Object localObject = (MusicItemInfo)this.a.get(paramString);
     if (localObject != null) {
       ((MusicItemInfo)localObject).mProgress = -1;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    this.a.remove(paramString);
     this.b.remove(paramString);
-    this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener.a(paramString);
-    QIMCommonLoadingProgress.a(localObject).c();
+    this.c.a(paramString);
+    QIMCommonLoadingProgress.a(localObject).d();
   }
   
   public void a(String paramString, int paramInt)
   {
-    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.a.get(paramString);
     int i = paramInt;
     if (localMusicItemInfo != null)
     {
@@ -62,18 +62,18 @@ public class QQMusicDownloadListener
       }
       localMusicItemInfo.mProgress = i;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener.a(paramString, i);
+    this.c.a(paramString, i);
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.a.get(paramString);
     if (localMusicItemInfo != null) {
       if (!paramBoolean)
       {
-        QIMCommonLoadingProgress.a(localMusicItemInfo).c();
+        QIMCommonLoadingProgress.a(localMusicItemInfo).d();
         localMusicItemInfo.mProgress = -1;
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+        this.a.remove(paramString);
         this.b.remove(paramString);
       }
       else
@@ -81,12 +81,12 @@ public class QQMusicDownloadListener
         localMusicItemInfo.mProgress = 1;
       }
     }
-    this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener.a(paramString, paramBoolean);
+    this.c.a(paramString, paramBoolean);
   }
   
   public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.a.get(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("QQMusicDownloadListener", 2, new Object[] { "onFinish, info:", localMusicItemInfo });
     }
@@ -95,7 +95,7 @@ public class QQMusicDownloadListener
       if (paramBoolean)
       {
         localMusicItemInfo.mProgress = 100;
-        QIMCommonLoadingProgress.a(localMusicItemInfo).b();
+        QIMCommonLoadingProgress.a(localMusicItemInfo).c();
         bool = paramBoolean;
         if (localMusicItemInfo.isMyMusicInfo())
         {
@@ -106,7 +106,7 @@ public class QQMusicDownloadListener
             if (localFile.length() != localMusicItemInfo.fileSize)
             {
               localMusicItemInfo.mProgress = -1;
-              QIMCommonLoadingProgress.a(localMusicItemInfo).c();
+              QIMCommonLoadingProgress.a(localMusicItemInfo).d();
               paramBoolean = false;
             }
             bool = paramBoolean;
@@ -126,18 +126,18 @@ public class QQMusicDownloadListener
       else
       {
         localMusicItemInfo.mProgress = -1;
-        QIMCommonLoadingProgress.a(localMusicItemInfo).c();
+        QIMCommonLoadingProgress.a(localMusicItemInfo).d();
         bool = paramBoolean;
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    this.a.remove(paramString);
     this.b.remove(paramString);
-    this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener.a(paramString, bool, paramInt);
+    this.c.a(paramString, bool, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.QQMusicDownloadListener
  * JD-Core Version:    0.7.0.1
  */

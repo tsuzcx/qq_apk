@@ -43,7 +43,7 @@ public class RIJPatchAdUtilServiceImpl
   
   public boolean isPatchPlaying(IVideoUIManager paramIVideoUIManager)
   {
-    return ReadInJoyPatchAdUtils.a(paramIVideoUIManager);
+    return ReadInJoyPatchAdUtils.b(paramIVideoUIManager);
   }
   
   public void playPostPatchAd(VideoPlayParam paramVideoPlayParam, IVideoUIManager paramIVideoUIManager, boolean paramBoolean1, boolean paramBoolean2, CountDownCallback paramCountDownCallback, Object paramObject, OnPatchPlayListener paramOnPatchPlayListener)
@@ -60,7 +60,7 @@ public class RIJPatchAdUtilServiceImpl
   
   public void requestPatchAd(int paramInt)
   {
-    ReadInJoyPatchAdUtils.a(paramInt);
+    ReadInJoyPatchAdUtils.b(paramInt);
   }
   
   public boolean resumeFromPosPatchClickBack(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -85,7 +85,7 @@ public class RIJPatchAdUtilServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJPatchAdUtilServiceImpl
  * JD-Core Version:    0.7.0.1
  */

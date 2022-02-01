@@ -14,54 +14,54 @@ public class FunctionSearchResultGroupView
   implements ISearchResultGroupView
 {
   protected View a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private List<ISearchResultView> jdField_a_of_type_JavaUtilList;
   private TextView b;
+  private TextView c;
+  private LinearLayout d;
+  private List<ISearchResultView> e;
+  private ViewGroup f;
   
   public FunctionSearchResultGroupView(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562784, paramViewGroup, false);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371472));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370212));
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    this.a = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131629229, paramViewGroup, false);
+    this.c = ((TextView)this.a.findViewById(2131438844));
+    this.e = new ArrayList();
+    this.d = ((LinearLayout)this.a.findViewById(2131437396));
+    this.f = paramViewGroup;
   }
   
   public TextView a()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public List<ISearchResultView> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.b;
   }
   
   public TextView b()
   {
-    return this.b;
+    return this.c;
+  }
+  
+  public List<ISearchResultView> c()
+  {
+    return this.e;
+  }
+  
+  public LinearLayout d()
+  {
+    return this.d;
+  }
+  
+  public ViewGroup e()
+  {
+    return this.f;
+  }
+  
+  public View h()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.function.view.FunctionSearchResultGroupView
  * JD-Core Version:    0.7.0.1
  */

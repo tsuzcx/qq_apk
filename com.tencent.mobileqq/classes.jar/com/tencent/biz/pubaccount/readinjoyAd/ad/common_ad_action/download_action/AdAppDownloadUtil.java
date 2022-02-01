@@ -44,16 +44,7 @@ public final class AdAppDownloadUtil
     }
     String str = paramADVideoAppDownloadData.c;
     paramADVideoAppDownloadData = paramADVideoAppDownloadData.d;
-    return a(str);
-  }
-  
-  @Nullable
-  public final DownloadInfo a(@Nullable String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    return DownloadManagerV2.a().b(paramString);
+    return b(str);
   }
   
   public final boolean a(@Nullable DownloadInfo paramDownloadInfo)
@@ -62,7 +53,7 @@ public final class AdAppDownloadUtil
     if (paramDownloadInfo == null) {
       return false;
     }
-    paramDownloadInfo = paramDownloadInfo.l;
+    paramDownloadInfo = paramDownloadInfo.q;
     boolean bool1 = bool2;
     if (!TextUtils.isEmpty((CharSequence)paramDownloadInfo))
     {
@@ -81,10 +72,19 @@ public final class AdAppDownloadUtil
     }
     return ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppInstall((Context)BaseApplicationImpl.getContext(), paramString);
   }
+  
+  @Nullable
+  public final DownloadInfo b(@Nullable String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    return DownloadManagerV2.a().b(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.download_action.AdAppDownloadUtil
  * JD-Core Version:    0.7.0.1
  */

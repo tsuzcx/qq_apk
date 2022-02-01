@@ -20,7 +20,7 @@ import com.tencent.av.business.manager.zimu.EffectZimuManager;
 import com.tencent.av.business.manager.zimu.ZimuItem;
 import com.tencent.av.ui.ControlUIObserver.RequestPlayMagicFace;
 import com.tencent.av.ui.ControlUIObserver.ZimuRequest;
-import com.tencent.av.ui.VoiceChangeToolbar;
+import com.tencent.av.ui.effect.toolbar.oldversion.VoiceChangeToolbar;
 import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.UITools;
 import com.tencent.mobileqq.ar.ArConfigUtils;
@@ -31,26 +31,26 @@ import org.json.JSONObject;
 public class EffectOperateManager
   extends BusinessManager
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private int e = -1;
+  private int d;
+  private long e;
+  private long f;
+  private String g;
+  private int h;
+  private int i;
+  private int j;
+  private int k = -1;
+  private String l;
+  private String m;
+  private boolean n = true;
+  private boolean o;
+  private boolean p = false;
   
   public EffectOperateManager(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
   }
   
-  private void a(String paramString)
+  private void b(String paramString)
   {
     Object localObject;
     if (!TextUtils.isEmpty(paramString))
@@ -66,16 +66,16 @@ public class EffectOperateManager
       {
         JSONObject localJSONObject = new JSONObject(paramString);
         if (localJSONObject.has("versionCode")) {
-          this.jdField_a_of_type_Int = localJSONObject.getInt("versionCode");
+          this.d = localJSONObject.getInt("versionCode");
         }
         if (localJSONObject.has("beginTime")) {
-          this.jdField_a_of_type_Long = ArConfigUtils.a(localJSONObject.getString("beginTime"));
+          this.e = ArConfigUtils.a(localJSONObject.getString("beginTime"));
         }
         if (localJSONObject.has("endTime")) {
-          this.jdField_b_of_type_Long = ArConfigUtils.a(localJSONObject.getString("endTime"));
+          this.f = ArConfigUtils.a(localJSONObject.getString("endTime"));
         }
         if (localJSONObject.has("wording")) {
-          this.jdField_b_of_type_JavaLangString = localJSONObject.getString("wording");
+          this.g = localJSONObject.getString("wording");
         }
         bool = localJSONObject.has("wordingColor");
         if (bool)
@@ -94,11 +94,11 @@ public class EffectOperateManager
                 paramString = ((String)localObject).replace("0X", "#");
               }
             }
-            this.jdField_b_of_type_Int = Color.parseColor(paramString);
+            this.h = Color.parseColor(paramString);
           }
           catch (NumberFormatException paramString)
           {
-            this.jdField_b_of_type_Int = -1;
+            this.h = -1;
             paramString.printStackTrace();
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("parse|wording color is invalid!");
@@ -108,7 +108,7 @@ public class EffectOperateManager
         }
         else
         {
-          this.jdField_b_of_type_Int = -1;
+          this.h = -1;
         }
         if (localJSONObject.has("wordingBgColor"))
         {
@@ -126,11 +126,11 @@ public class EffectOperateManager
                 paramString = ((String)localObject).replace("0X", "#");
               }
             }
-            this.jdField_c_of_type_Int = Color.parseColor(paramString);
+            this.i = Color.parseColor(paramString);
           }
           catch (NumberFormatException paramString)
           {
-            this.jdField_c_of_type_Int = -16777216;
+            this.i = -16777216;
             paramString.printStackTrace();
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("parse|wording color is invalid!");
@@ -140,19 +140,19 @@ public class EffectOperateManager
         }
         else
         {
-          this.jdField_c_of_type_Int = -16777216;
+          this.i = -16777216;
         }
         if (localJSONObject.has("showTimes")) {
-          this.jdField_d_of_type_Int = localJSONObject.getInt("showTimes");
+          this.j = localJSONObject.getInt("showTimes");
         }
         if (localJSONObject.has("effectType")) {
-          this.e = localJSONObject.getInt("effectType");
+          this.k = localJSONObject.getInt("effectType");
         }
         if (localJSONObject.has("effectId")) {
-          this.jdField_c_of_type_JavaLangString = localJSONObject.getString("effectId");
+          this.l = localJSONObject.getString("effectId");
         }
         if (localJSONObject.has("play")) {
-          this.jdField_a_of_type_Boolean = localJSONObject.getBoolean("play");
+          this.n = localJSONObject.getBoolean("play");
         }
         if (localJSONObject.has("showBeforeConnect"))
         {
@@ -160,66 +160,66 @@ public class EffectOperateManager
             break label919;
           }
           bool = false;
-          this.jdField_b_of_type_Boolean = bool;
+          this.o = bool;
         }
         if (localJSONObject.has("iconUrl")) {
-          this.jdField_d_of_type_JavaLangString = localJSONObject.getString("iconUrl");
+          this.m = localJSONObject.getString("iconUrl");
         }
-        if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
+        if (TextUtils.isEmpty(this.m))
         {
-          i = this.e;
-          if (i == 1) {
+          i1 = this.k;
+          if (i1 == 1) {
             break label939;
           }
-          if (i == 2) {
+          if (i1 == 2) {
             break label934;
           }
-          if (i == 4) {
+          if (i1 == 4) {
             break label929;
           }
-          if (i == 6) {
+          if (i1 == 6) {
             break label924;
           }
-          i = -1;
-          if (i != -1)
+          i1 = -1;
+          if (i1 != -1)
           {
-            paramString = ((EffectConfigBase)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i)).a(this.jdField_c_of_type_JavaLangString);
+            paramString = ((EffectConfigBase)this.c.c(i1)).b(this.l);
             if (paramString != null) {
-              this.jdField_d_of_type_JavaLangString = paramString.getIconUrl();
+              this.m = paramString.getIconUrl();
             } else {
               AVLog.printColorLog("EffectOperateManager", "parse|cannot get item!");
             }
           }
           else
           {
-            this.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+            this.m = this.l;
           }
         }
         paramString = new StringBuilder();
         paramString.append("parse|versionCode: ");
-        paramString.append(this.jdField_a_of_type_Int);
+        paramString.append(this.d);
         paramString.append(", beginTime: ");
-        paramString.append(this.jdField_a_of_type_Long);
-        paramString.append(", endTime: ");
-        paramString.append(this.jdField_b_of_type_Long);
-        paramString.append(", wording: ");
-        paramString.append(this.jdField_b_of_type_JavaLangString);
-        paramString.append(", play: ");
-        paramString.append(this.jdField_a_of_type_Boolean);
-        paramString.append(", wordingColor: 0x");
-        paramString.append(Long.toString(this.jdField_b_of_type_Int, 16).toUpperCase());
-        paramString.append(", wordingBgColor: 0x");
-        paramString.append(Long.toString(this.jdField_c_of_type_Int, 16).toUpperCase());
-        paramString.append(", showTimes: ");
-        paramString.append(this.jdField_d_of_type_Int);
-        paramString.append(", showBeforeConnect: ");
-        paramString.append(this.jdField_b_of_type_Boolean);
-        paramString.append(", effectType: ");
         paramString.append(this.e);
+        paramString.append(", endTime: ");
+        paramString.append(this.f);
+        paramString.append(", wording: ");
+        paramString.append(this.g);
+        paramString.append(", play: ");
+        paramString.append(this.n);
+        paramString.append(", wordingColor: 0x");
+        paramString.append(Long.toString(this.h, 16).toUpperCase());
+        paramString.append(", wordingBgColor: 0x");
+        paramString.append(Long.toString(this.i, 16).toUpperCase());
+        paramString.append(", showTimes: ");
+        paramString.append(this.j);
+        paramString.append(", showBeforeConnect: ");
+        paramString.append(this.o);
+        paramString.append(", effectType: ");
+        paramString.append(this.k);
         paramString.append(", effectId: ");
-        paramString.append(this.jdField_c_of_type_JavaLangString);
+        paramString.append(this.l);
         paramString.append(", iconUrl: ");
-        paramString.append(this.jdField_d_of_type_JavaLangString);
+        paramString.append(this.m);
         AVLog.printColorLog("EffectOperateManager", paramString.toString());
         return;
       }
@@ -238,32 +238,22 @@ public class EffectOperateManager
       boolean bool = true;
       continue;
       label924:
-      int i = 0;
+      int i1 = 0;
       continue;
       label929:
-      i = 1;
+      i1 = 1;
       continue;
       label934:
-      i = 3;
+      i1 = 3;
       continue;
       label939:
-      i = 2;
+      i1 = 2;
     }
-  }
-  
-  public int a()
-  {
-    return this.e;
-  }
-  
-  public String a()
-  {
-    return this.jdField_c_of_type_JavaLangString;
   }
   
   protected void a()
   {
-    a(QAVConfig.b(263).a);
+    b(QAVConfig.b(263).b);
   }
   
   protected void a(Integer paramInteger, Object paramObject1, Object paramObject2)
@@ -276,28 +266,23 @@ public class EffectOperateManager
     localStringBuilder.append("|");
     localStringBuilder.append(paramObject2);
     AVLog.printColorLog("EffectOperateManager", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { paramInteger, paramObject1, paramObject2 });
+    this.c.a(new Object[] { paramInteger, paramObject1, paramObject2 });
   }
   
   public void a(boolean paramBoolean)
   {
-    Object localObject1 = UITools.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    Object localObject1 = UITools.a(this.c);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("qav_effect_operate_config_show_times_");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject2).append(this.d);
     localObject2 = ((StringBuilder)localObject2).toString();
-    int i = 0;
+    int i1 = 0;
     if (!paramBoolean) {
-      i = ((SharedPreferences)localObject1).getInt((String)localObject2, 0);
+      i1 = ((SharedPreferences)localObject1).getInt((String)localObject2, 0);
     }
     localObject1 = ((SharedPreferences)localObject1).edit();
-    ((SharedPreferences.Editor)localObject1).putInt((String)localObject2, i + 1);
+    ((SharedPreferences.Editor)localObject1).putInt((String)localObject2, i1 + 1);
     ((SharedPreferences.Editor)localObject1).commit();
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
   }
   
   protected boolean a(String paramString)
@@ -305,26 +290,14 @@ public class EffectOperateManager
     return false;
   }
   
-  void b()
+  public int b()
   {
-    long l = AudioHelper.b();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("gotoVoiceChangePendant, effectId[");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append("], play[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("], seq[");
-    localStringBuilder.append(l);
-    localStringBuilder.append("]");
-    QLog.w("EffectOperateManager", 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_Boolean) {
-      VoiceChangeToolbar.setEffectConfigItem(l, this.jdField_c_of_type_JavaLangString);
-    }
+    return this.k;
   }
   
   public void b(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+    Object localObject = this.c.b().k();
     if (localObject == null)
     {
       localObject = new StringBuilder();
@@ -336,114 +309,141 @@ public class EffectOperateManager
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setEffectOperateShown, hasShownEffectOperate[");
-    localStringBuilder.append(((SessionInfo)localObject).u);
+    localStringBuilder.append(((SessionInfo)localObject).T);
     localStringBuilder.append("->");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append("], sessionInfo[");
     localStringBuilder.append(localObject);
     localStringBuilder.append("]");
     QLog.w("EffectOperateManager", 1, localStringBuilder.toString());
-    ((SessionInfo)localObject).u = paramBoolean;
+    ((SessionInfo)localObject).T = paramBoolean;
     if (paramBoolean) {
       a(false);
     }
   }
   
-  void c()
+  public String c()
   {
-    EffectPendantTools localEffectPendantTools = (EffectPendantTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2);
-    PendantItem localPendantItem = (PendantItem)localEffectPendantTools.a(this.jdField_c_of_type_JavaLangString);
-    if (localPendantItem != null)
-    {
-      long l = AudioHelper.b();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("gotoPendant, id[");
-      localStringBuilder.append(localPendantItem.getId());
-      localStringBuilder.append("], seq[");
-      localStringBuilder.append(l);
-      localStringBuilder.append("], play[");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
-      localStringBuilder.append("], item[");
-      localStringBuilder.append(localPendantItem);
-      localStringBuilder.append("]");
-      QLog.w("EffectOperateManager", 1, localStringBuilder.toString());
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (!localPendantItem.isUsable())
-        {
-          localEffectPendantTools.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-          a(Integer.valueOf(171), null, null);
-          localEffectPendantTools.a(l, localPendantItem);
-          return;
-        }
-        localEffectPendantTools.a(l, localPendantItem);
-      }
-    }
+    return this.l;
   }
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.p = paramBoolean;
   }
   
   void d()
   {
-    String str = this.jdField_c_of_type_JavaLangString;
-    Object localObject1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    long l1 = AudioHelper.c();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gotoVoiceChangePendant, effectId[");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("], play[");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(l1);
+    localStringBuilder.append("]");
+    QLog.w("EffectOperateManager", 1, localStringBuilder.toString());
+    if (this.n) {
+      VoiceChangeToolbar.setEffectConfigItem(l1, this.l);
+    }
+  }
+  
+  void e()
+  {
+    EffectPendantTools localEffectPendantTools = (EffectPendantTools)this.c.c(2);
+    PendantItem localPendantItem = (PendantItem)localEffectPendantTools.b(this.l);
+    if (localPendantItem != null)
+    {
+      long l1 = AudioHelper.c();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gotoPendant, id[");
+      localStringBuilder.append(localPendantItem.getId());
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(l1);
+      localStringBuilder.append("], play[");
+      localStringBuilder.append(this.n);
+      localStringBuilder.append("], item[");
+      localStringBuilder.append(localPendantItem);
+      localStringBuilder.append("]");
+      QLog.w("EffectOperateManager", 1, localStringBuilder.toString());
+      if (this.n)
+      {
+        if (!localPendantItem.isUsable())
+        {
+          localEffectPendantTools.k = this.l;
+          a(Integer.valueOf(171), null, null);
+          localEffectPendantTools.b(l1, localPendantItem);
+          return;
+        }
+        localEffectPendantTools.a(l1, localPendantItem);
+      }
+    }
+  }
+  
+  void f()
+  {
+    String str = this.l;
+    Object localObject1 = this.c;
     boolean bool = false;
-    localObject1 = (EffectZimuManager)((VideoAppInterface)localObject1).a(0);
-    Object localObject2 = (ZimuItem)((EffectZimuManager)localObject1).a();
+    localObject1 = (EffectZimuManager)((VideoAppInterface)localObject1).c(0);
+    Object localObject2 = (ZimuItem)((EffectZimuManager)localObject1).c();
     if (localObject2 == null) {}
     while (!str.equalsIgnoreCase(((ZimuItem)localObject2).getId()))
     {
       bool = true;
       break;
     }
-    long l = AudioHelper.b();
+    long l1 = AudioHelper.c();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("gotoZimu, id[");
     localStringBuilder.append(str);
     localStringBuilder.append("], isChanged[");
     localStringBuilder.append(bool);
     localStringBuilder.append("], play[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.n);
     localStringBuilder.append("], seq[");
-    localStringBuilder.append(l);
+    localStringBuilder.append(l1);
     localStringBuilder.append("]");
     QLog.w("EffectOperateManager", 1, localStringBuilder.toString());
-    if ((bool) && (this.jdField_a_of_type_Boolean))
+    if ((bool) && (this.n))
     {
-      new ControlUIObserver.ZimuRequest(l, "gotoZimu", 1, str).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      if (((AudioTransClientInfoHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_b_of_type_JavaLangString)).a()) {
-        AudioTransClientInfoHandlerExtend.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, "gotoZimu", l, str, true);
+      new ControlUIObserver.ZimuRequest(l1, "gotoZimu", 1, str).a(this.c);
+      if (((AudioTransClientInfoHandler)this.c.getBusinessHandler(BusinessHandlerFactory.b)).a()) {
+        AudioTransClientInfoHandlerExtend.a(this.c, "gotoZimu", l1, str, true);
       }
       if (localObject2 == null)
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("gotoZimu_");
         ((StringBuilder)localObject2).append(str);
-        ((EffectZimuManager)localObject1).a(((StringBuilder)localObject2).toString(), true, l, null);
+        ((EffectZimuManager)localObject1).a(((StringBuilder)localObject2).toString(), true, l1, null);
         return;
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("gotoZimu_");
       ((StringBuilder)localObject2).append(str);
-      ((EffectZimuManager)localObject1).b(((StringBuilder)localObject2).toString(), l);
+      ((EffectZimuManager)localObject1).b(((StringBuilder)localObject2).toString(), l1);
     }
   }
   
-  void e()
+  void g()
   {
-    String str = this.jdField_c_of_type_JavaLangString;
+    String str = this.l;
     if (str.equals("0"))
     {
       a(Integer.valueOf(6101), null, Boolean.valueOf(true));
       return;
     }
     AudioHelper.a(str, false);
-    if (this.jdField_a_of_type_Boolean) {
-      new ControlUIObserver.RequestPlayMagicFace(AudioHelper.b(), str, true, 5).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    if (this.n) {
+      new ControlUIObserver.RequestPlayMagicFace(AudioHelper.c(), str, true, 5).a(this.c);
     }
+  }
+  
+  public boolean h()
+  {
+    return this.p;
   }
 }
 

@@ -10,7 +10,7 @@ public class QavTempImpl
 {
   public String getAudio3ALicenseFilename()
   {
-    return ResMgr.a();
+    return ResMgr.c();
   }
   
   public boolean isVideoChatting(AppRuntime paramAppRuntime)

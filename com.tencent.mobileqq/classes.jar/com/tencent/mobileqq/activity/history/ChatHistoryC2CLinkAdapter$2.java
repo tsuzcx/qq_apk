@@ -19,16 +19,16 @@ class ChatHistoryC2CLinkAdapter$2
   
   public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkAdapter.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c)
+    if (!this.d.d.i)
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.a))
       {
         Object localObject1 = null;
-        int i = this.jdField_a_of_type_JavaLangString.lastIndexOf("#");
+        int i = this.a.lastIndexOf("#");
         if (i > 0) {
-          localObject1 = this.jdField_a_of_type_JavaLangString.substring(i);
+          localObject1 = this.a.substring(i);
         }
-        String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
+        String str = URLUtil.guessUrl(this.a);
         Object localObject2 = str;
         if (localObject1 != null)
         {
@@ -37,23 +37,23 @@ class ChatHistoryC2CLinkAdapter$2
           ((StringBuilder)localObject2).append((String)localObject1);
           localObject2 = ((StringBuilder)localObject2).toString();
         }
-        localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkAdapter.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localObject1 = new Intent(this.d.c, QQBrowserActivity.class);
         ((Intent)localObject1).putExtra("url", (String)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkAdapter.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
+        this.d.c.startActivity((Intent)localObject1);
       }
     }
     else
     {
-      boolean bool = ChatHistoryC2CLinkAdapter.URLItemHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkAdapter$URLItemHolder).isChecked();
-      ChatHistoryC2CLinkAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkAdapter).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      ChatHistoryC2CLinkAdapter.URLItemHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkAdapter$URLItemHolder).setChecked(bool ^ true);
+      boolean bool = ChatHistoryC2CLinkAdapter.URLItemHolder.e(this.b).isChecked();
+      ChatHistoryC2CLinkAdapter.a(this.d).b(this.c);
+      ChatHistoryC2CLinkAdapter.URLItemHolder.e(this.b).setChecked(bool ^ true);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkAdapter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.avgame.gameroom.stage.IStageRecordPresenter;
 public abstract interface IGameVideoRecordPresenterWrapper
   extends IStageRecordPresenter
 {
-  public abstract IGuessPictureGameRecordCtrl a();
+  public abstract IGuessPictureGameRecordCtrl g();
 }
 
 

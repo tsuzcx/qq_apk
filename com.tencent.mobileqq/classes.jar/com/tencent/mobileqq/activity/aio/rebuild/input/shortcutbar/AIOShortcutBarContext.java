@@ -25,59 +25,9 @@ public final class AIOShortcutBarContext
     return this.a.a();
   }
   
-  public Activity a()
-  {
-    return this.a.a();
-  }
-  
-  public Context a()
-  {
-    return this.a.a();
-  }
-  
-  public Drawable a()
-  {
-    return this.a.a();
-  }
-  
-  public ViewGroup.LayoutParams a()
-  {
-    return this.a.a();
-  }
-  
-  public SessionInfo a()
-  {
-    return this.a.a();
-  }
-  
   public <T extends IHelper> T a(int paramInt)
   {
-    return this.a.a(paramInt);
-  }
-  
-  public NavigateBarManager a()
-  {
-    return this.a.a();
-  }
-  
-  public XEditTextEx a()
-  {
-    return this.a.a();
-  }
-  
-  public AppRuntime a()
-  {
-    return this.a.a();
-  }
-  
-  public void a()
-  {
-    this.a.e();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.a(paramInt);
+    return this.a.b(paramInt);
   }
   
   public void a(ViewGroup.LayoutParams paramLayoutParams)
@@ -107,14 +57,9 @@ public final class AIOShortcutBarContext
     this.a.a(paramBoolean);
   }
   
-  public boolean a()
+  public void b(int paramInt)
   {
-    return this.a.b();
-  }
-  
-  public void b()
-  {
-    this.a.f();
+    this.a.a(paramInt);
   }
   
   public void b(DrawerFrame.TouchEventConsumer paramTouchEventConsumer)
@@ -129,29 +74,84 @@ public final class AIOShortcutBarContext
     return this.a.c();
   }
   
-  public void c()
+  public AppRuntime c()
   {
-    this.a.g();
+    return this.a.i();
   }
   
-  public boolean c()
+  public SessionInfo d()
   {
-    return this.a.d();
+    return this.a.h();
   }
   
-  public void d()
+  public Context e()
   {
-    this.a.c();
+    return this.a.k();
   }
   
-  public void e()
+  public Activity f()
   {
-    this.a.a();
+    return this.a.j();
+  }
+  
+  public void g()
+  {
+    this.a.l();
+  }
+  
+  public void h()
+  {
+    this.a.m();
+  }
+  
+  public ViewGroup.LayoutParams i()
+  {
+    return this.a.p();
+  }
+  
+  public Drawable j()
+  {
+    return this.a.q();
+  }
+  
+  public XEditTextEx k()
+  {
+    return this.a.r();
+  }
+  
+  public void l()
+  {
+    this.a.s();
+  }
+  
+  public boolean m()
+  {
+    return this.a.n();
+  }
+  
+  public NavigateBarManager n()
+  {
+    return this.a.o();
+  }
+  
+  public boolean o()
+  {
+    return this.a.t();
+  }
+  
+  public void p()
+  {
+    this.a.f();
+  }
+  
+  public void q()
+  {
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarContext
  * JD-Core Version:    0.7.0.1
  */

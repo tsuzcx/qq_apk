@@ -19,20 +19,20 @@ class TroopOnlineMemberListAdapter$TmiCallBackForName
   
   public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    TroopOnlineMemberListAdapter.ViewHolder localViewHolder = this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder;
-    if ((localViewHolder != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(localViewHolder.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
+    TroopOnlineMemberListAdapter.ViewHolder localViewHolder = this.a;
+    if ((localViewHolder != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(localViewHolder.b, paramTroopMemberInfo.memberuin)))
     {
-      paramTroopMemberInfo = new ColorNickText(((TroopManager)this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter.a.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin), 13).a();
-      this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
-      if (AppSetting.d) {
-        TroopOnlineMemberListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter, this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder);
+      paramTroopMemberInfo = new ColorNickText(((TroopManager)this.b.c.getManager(QQManagerFactory.TROOP_MANAGER)).e(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin), 13).b();
+      this.a.e.setText(paramTroopMemberInfo);
+      if (AppSetting.e) {
+        TroopOnlineMemberListAdapter.a(this.b, this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.TroopOnlineMemberListAdapter.TmiCallBackForName
  * JD-Core Version:    0.7.0.1
  */

@@ -17,20 +17,20 @@ class StoryDetailPresenter$3
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    a(-1, HardCodeUtil.a(2131714208));
+    a(-1, HardCodeUtil.a(2131911731));
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131714205), 0).a();
+    this.a.status = 0;
+    QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131911728), 0).show();
     SLog.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
   }
   
   public void a(MessageMicro paramMessageMicro)
   {
-    if (!StoryDetailPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter).get()) {
-      StoryDetailPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    if (!StoryDetailPresenter.d(this.c).get()) {
+      StoryDetailPresenter.a(this.c, this.a, this.b);
     }
   }
   

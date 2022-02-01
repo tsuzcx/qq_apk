@@ -12,25 +12,25 @@ class SurvivalSeatBgPresenterImp$2
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    Animator.AnimatorListener localAnimatorListener = this.a;
     if (localAnimatorListener != null) {
       localAnimatorListener.onAnimationCancel(paramAnimator);
     }
-    SurvivalSeatBgPresenterImp.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgPresenterImp).remove(paramAnimator);
+    SurvivalSeatBgPresenterImp.a(this.b).remove(paramAnimator);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    Animator.AnimatorListener localAnimatorListener = this.a;
     if (localAnimatorListener != null) {
       localAnimatorListener.onAnimationEnd(paramAnimator);
     }
-    SurvivalSeatBgPresenterImp.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgPresenterImp).remove(paramAnimator);
+    SurvivalSeatBgPresenterImp.a(this.b).remove(paramAnimator);
   }
   
   public void onAnimationRepeat(Animator paramAnimator)
   {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    Animator.AnimatorListener localAnimatorListener = this.a;
     if (localAnimatorListener != null) {
       localAnimatorListener.onAnimationRepeat(paramAnimator);
     }
@@ -38,11 +38,11 @@ class SurvivalSeatBgPresenterImp$2
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    Animator.AnimatorListener localAnimatorListener = this.a;
     if (localAnimatorListener != null) {
       localAnimatorListener.onAnimationStart(paramAnimator);
     }
-    SurvivalSeatBgPresenterImp.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgPresenterImp).add(paramAnimator);
+    SurvivalSeatBgPresenterImp.a(this.b).add(paramAnimator);
   }
 }
 

@@ -89,9 +89,9 @@ public class RIJUserInfoSp
       QLog.d("RIJUserInfoSp", 1, "updateUserMedal error! app is null");
       return;
     }
-    paramReadInJoyMedalInfo.e = "1";
-    paramReadInJoyMedalInfo.f = "1";
-    paramReadInJoyMedalInfo.h = RIJQQAppInterfaceUtil.a();
+    paramReadInJoyMedalInfo.j = "1";
+    paramReadInJoyMedalInfo.k = "1";
+    paramReadInJoyMedalInfo.m = RIJQQAppInterfaceUtil.d();
     paramReadInJoyMedalInfo = paramReadInJoyMedalInfo.a();
     if (TextUtils.isEmpty(paramReadInJoyMedalInfo)) {
       return;
@@ -171,12 +171,12 @@ public class RIJUserInfoSp
   
   public static int b()
   {
-    return ((Integer)RIJSPUtils.a("readinjoy_user_data_switch", Integer.valueOf(0))).intValue();
+    return ((Integer)RIJSPUtils.b("readinjoy_user_data_switch", Integer.valueOf(0))).intValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.RIJUserInfoSp
  * JD-Core Version:    0.7.0.1
  */

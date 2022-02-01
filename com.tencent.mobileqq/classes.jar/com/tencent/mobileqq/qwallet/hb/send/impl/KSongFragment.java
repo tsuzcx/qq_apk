@@ -28,29 +28,29 @@ public class KSongFragment
   extends BaseHbUIFragment
   implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long = 0L;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private KSongFragment.KsongBundleInfo jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo = new KSongFragment.KsongBundleInfo();
-  private IQWalletRedService jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService;
+  private TextView o;
+  private KSongFragment.KsongBundleInfo p = new KSongFragment.KsongBundleInfo();
+  private IQWalletRedService q;
+  private long r = 0L;
   
-  private void d()
+  private void k()
   {
     try
     {
-      if (!StringUtil.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.biz_params))
+      if (!StringUtil.isEmpty(this.p.biz_params))
       {
-        JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.biz_params);
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_id = localJSONObject.optString("song_id");
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_name = localJSONObject.optString("song_name");
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_singer = localJSONObject.optString("song_singer");
+        JSONObject localJSONObject = new JSONObject(this.p.biz_params);
+        this.p.song_id = localJSONObject.optString("song_id");
+        this.p.song_name = localJSONObject.optString("song_name");
+        this.p.song_singer = localJSONObject.optString("song_singer");
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_id))
+      if (!TextUtils.isEmpty(this.p.song_id))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%s %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_name, this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_singer }));
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-        a();
+        this.o.setText(String.format("%s %s", new Object[] { this.p.song_name, this.p.song_singer }));
+        this.o.setTextColor(-16777216);
+        h();
       }
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.biz_params = null;
+      this.p.biz_params = null;
       return;
     }
     catch (Exception localException)
@@ -62,75 +62,75 @@ public class KSongFragment
     }
   }
   
-  private void e()
+  private void l()
   {
     long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Long + 1000L > l) {
+    if (this.r + 1000L > l) {
       return;
     }
-    this.jdField_a_of_type_Long = l;
-    Object localObject = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    String str = this.b.getText().toString();
-    Map localMap = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.getMapPacketExtra();
+    this.r = l;
+    Object localObject = this.c.getText().toString();
+    String str = this.d.getText().toString();
+    Map localMap = this.f.getMapPacketExtra();
     localMap.put("type", String.valueOf(1));
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_name);
+    localStringBuilder.append(this.p.song_name);
     localStringBuilder.append("-");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_singer);
+    localStringBuilder.append(this.p.song_singer);
     localMap.put("wishing", localStringBuilder.toString());
-    localMap.put("feedsid", this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_id);
+    localMap.put("feedsid", this.p.song_id);
     localMap.put("bus_type", "2");
     localMap.put("total_num", localObject);
-    localMap.put("total_amount", QwUtils.a(str));
+    localMap.put("total_amount", QwUtils.b(str));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.i);
     localMap.put("channel", ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplSendHbLogic.a(localMap);
-    ReportUtils.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "redpack.paybtn.click", null, this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.panel_name);
-  }
-  
-  protected String a()
-  {
-    return "";
+    this.h.a(localMap);
+    ReportUtils.a(this.g, "redpack.paybtn.click", null, this.p.panel_name);
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    HbInfo.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(R.id.q));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    QWalletTools.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.6F);
-    d();
+    HbInfo.a(paramBundle, this.p);
+    this.o = ((TextView)this.a.findViewById(R.id.v));
+    this.o.setOnClickListener(this);
+    this.b.setOnClickListener(this);
+    QWalletTools.a(this.o, 0.6F);
+    k();
     if (QLog.isColorLevel())
     {
       paramBundle = new StringBuilder();
       paramBundle.append("biz_params: ");
-      paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.biz_params);
+      paramBundle.append(this.p.biz_params);
       QLog.i("KSongFragment", 2, paramBundle.toString());
     }
   }
   
-  public boolean a()
+  public void c()
   {
-    if ((super.a()) && (this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_id == null)) {
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+    e();
+    this.q = ((IQWalletRedService)this.g.getRuntimeService(IQWalletRedService.class));
+    this.q.doShowReport("3001");
+  }
+  
+  protected String d()
+  {
+    return "";
+  }
+  
+  public boolean h()
+  {
+    if ((super.h()) && (this.p.song_id == null)) {
+      this.b.setEnabled(false);
     }
-    return this.jdField_a_of_type_AndroidWidgetButton.isEnabled();
+    return this.b.isEnabled();
   }
   
-  public int b()
+  public int j()
   {
-    return R.layout.s;
-  }
-  
-  public void b()
-  {
-    c();
-    this.jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService = ((IQWalletRedService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQWalletRedService.class));
-    this.jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService.doShowReport("3001");
+    return R.layout.v;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -145,10 +145,10 @@ public class KSongFragment
       try
       {
         paramIntent = new JSONObject(paramIntent);
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_id = paramIntent.optString("musicID");
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_singer = paramIntent.optString("singer");
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_name = paramIntent.optString("musicName");
-        d();
+        this.p.song_id = paramIntent.optString("musicID");
+        this.p.song_singer = paramIntent.optString("singer");
+        this.p.song_name = paramIntent.optString("musicName");
+        k();
         return;
       }
       catch (JSONException paramIntent)
@@ -162,28 +162,28 @@ public class KSongFragment
   {
     String str = "?";
     int i = paramView.getId();
-    if (i == R.id.q) {}
+    if (i == R.id.v) {}
     for (;;)
     {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService.doClick("3001");
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addHbUploadData("ksong.wrappacket.choosesong");
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.pick_entry))
+        this.q.doClick("3001");
+        this.f.addHbUploadData("ksong.wrappacket.choosesong");
+        if (TextUtils.isEmpty(this.p.pick_entry))
         {
           QLog.i("KSongFragment", 2, "error, url is null...");
           paramView = RedPacketManagerImpl.getHbPannelConfig(7);
           if (paramView == null) {
             return;
           }
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.pick_entry = paramView.optString("pick_entry", "https://h5.qianbao.qq.com/ktvredpacket");
+          this.p.pick_entry = paramView.optString("pick_entry", "https://h5.qianbao.qq.com/ktvredpacket");
         }
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("%s");
         paramView = str;
-        if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.pick_entry.contains("?"))
+        if (this.p.pick_entry.contains("?"))
         {
-          if (!this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.pick_entry.endsWith("?")) {
+          if (!this.p.pick_entry.endsWith("?")) {
             break label252;
           }
           paramView = "";
@@ -191,10 +191,10 @@ public class KSongFragment
         localStringBuilder.append(paramView);
         localStringBuilder.append("musicID=%s");
         paramView = localStringBuilder.toString();
-        if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_id == null) {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.pick_entry;
+        if (this.p.song_id == null) {
+          paramView = this.p.pick_entry;
         } else {
-          paramView = String.format(paramView, new Object[] { this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.pick_entry, this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplKSongFragment$KsongBundleInfo.song_id });
+          paramView = String.format(paramView, new Object[] { this.p.pick_entry, this.p.song_id });
         }
         a(paramView);
         return;
@@ -204,10 +204,10 @@ public class KSongFragment
         paramView.printStackTrace();
         return;
       }
-      if (i == R.id.u)
+      if (i == R.id.z)
       {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addHbUploadData("ksong.wrappacket.wrap");
-        e();
+        this.f.addHbUploadData("ksong.wrappacket.wrap");
+        l();
       }
       return;
       label252:
@@ -221,15 +221,15 @@ public class KSongFragment
     if (paramBoolean)
     {
       QLog.i("KSongFragment", 2, "ksong enter...");
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity != null) {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addHbUploadData("ksong.wrappacket.show");
+      if (this.f != null) {
+        this.f.addHbUploadData("ksong.wrappacket.show");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.KSongFragment
  * JD-Core Version:    0.7.0.1
  */

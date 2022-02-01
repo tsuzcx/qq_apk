@@ -38,7 +38,7 @@ public class TempChatPluginManagerImpl
   private void init()
   {
     this.tempChatPluginMap = new HashMap();
-    HashMap localHashMap = TempMsgBoxBusinessInjectUtil.b;
+    HashMap localHashMap = TempMsgBoxBusinessInjectUtil.c;
     Iterator localIterator = localHashMap.keySet().iterator();
     while (localIterator.hasNext())
     {
@@ -133,7 +133,7 @@ public class TempChatPluginManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.api.impl.TempChatPluginManagerImpl
  * JD-Core Version:    0.7.0.1
  */

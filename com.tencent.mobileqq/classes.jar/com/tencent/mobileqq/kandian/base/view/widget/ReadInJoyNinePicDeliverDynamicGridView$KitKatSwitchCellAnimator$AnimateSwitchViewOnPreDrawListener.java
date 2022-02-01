@@ -7,37 +7,37 @@ import android.view.ViewTreeObserver.OnPreDrawListener;
 class ReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator$AnimateSwitchViewOnPreDrawListener
   implements ViewTreeObserver.OnPreDrawListener
 {
-  private final int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final int b;
+  private final View b;
+  private final int c;
+  private final int d;
   
   ReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator$AnimateSwitchViewOnPreDrawListener(ReadInJoyNinePicDeliverDynamicGridView.KitKatSwitchCellAnimator paramKitKatSwitchCellAnimator, View paramView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.b = paramView;
+    this.c = paramInt1;
+    this.d = paramInt2;
   }
   
   public boolean onPreDraw()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator.a, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator.a) + ReadInJoyNinePicDeliverDynamicGridView.KitKatSwitchCellAnimator.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator));
-    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator.a, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator.a) + ReadInJoyNinePicDeliverDynamicGridView.KitKatSwitchCellAnimator.b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator));
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    this.a.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.a.a, ReadInJoyNinePicDeliverDynamicGridView.c(this.a.a) + ReadInJoyNinePicDeliverDynamicGridView.KitKatSwitchCellAnimator.a(this.a));
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a.a, ReadInJoyNinePicDeliverDynamicGridView.d(this.a.a) + ReadInJoyNinePicDeliverDynamicGridView.KitKatSwitchCellAnimator.b(this.a));
+    View localView = this.b;
     if (localView != null) {
       localView.setVisibility(0);
     }
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator.a, this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator.a.a(ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator.a)));
-    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator.a) != null) {
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator.a).setVisibility(4);
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a.a, this.a.a.b(ReadInJoyNinePicDeliverDynamicGridView.f(this.a.a)));
+    if (ReadInJoyNinePicDeliverDynamicGridView.e(this.a.a) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.e(this.a.a).setVisibility(4);
     }
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView$KitKatSwitchCellAnimator.a, this.jdField_a_of_type_Int, this.b);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.a.a, this.c, this.d);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyNinePicDeliverDynamicGridView.KitKatSwitchCellAnimator.AnimateSwitchViewOnPreDrawListener
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,7 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.mobileqq.vas.apng.api.ApngOptions;
 import com.tencent.mobileqq.vas.apng.api.IVasApngFactory;
+import com.tencent.mobileqq.vas.ui.APNGDrawable;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.URL;
@@ -20,7 +21,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/apng/api/impl/VasApngFactoryImpl;", "Lcom/tencent/mobileqq/vas/apng/api/IVasApngFactory;", "()V", "doOnMainThread", "", "block", "Lkotlin/Function0;", "getApngDrawableFromUrl", "Lcom/tencent/image/URLDrawable;", "filePath", "", "urlStr", "options", "Lcom/tencent/mobileqq/vas/apng/api/ApngOptions;", "getApngURLDrawable", "Companion", "vas-impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/apng/api/impl/VasApngFactoryImpl;", "Lcom/tencent/mobileqq/vas/apng/api/IVasApngFactory;", "()V", "doOnMainThread", "", "block", "Lkotlin/Function0;", "getApngDrawable", "Lcom/tencent/mobileqq/vas/ui/APNGDrawable;", "urlStr", "", "options", "Lcom/tencent/mobileqq/vas/apng/api/ApngOptions;", "filePath", "getApngDrawableFromUrl", "Lcom/tencent/image/URLDrawable;", "getApngURLDrawable", "Companion", "vas-impl_release"}, k=1, mv={1, 1, 16})
 public final class VasApngFactoryImpl
   implements IVasApngFactory
 {
@@ -57,24 +58,24 @@ public final class VasApngFactoryImpl
     String str = new File(paramString2).getName();
     try
     {
-      Object localObject = paramApngOptions.a();
+      Object localObject = paramApngOptions.c();
       ((Bundle)localObject).putInt("key_loop", paramApngOptions.a());
-      ((Bundle)localObject).putIntArray("key_tagId_arr", paramApngOptions.a());
+      ((Bundle)localObject).putIntArray("key_tagId_arr", paramApngOptions.b());
       ((Bundle)localObject).putBoolean("key_double_bitmap", true);
       ((Bundle)localObject).putString("key_name", str);
       paramString2 = new URL("vasapngdownloader", paramString1, paramString2);
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mExtraInfo = paramApngOptions.a();
+      ((URLDrawable.URLDrawableOptions)localObject).mExtraInfo = paramApngOptions.c();
       ((URLDrawable.URLDrawableOptions)localObject).mUseApngImage = true;
       ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-      ((URLDrawable.URLDrawableOptions)localObject).mUseMemoryCache = paramApngOptions.a();
+      ((URLDrawable.URLDrawableOptions)localObject).mUseMemoryCache = paramApngOptions.f();
       ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = String.valueOf(paramApngOptions.a());
-      ((URLDrawable.URLDrawableOptions)localObject).mUseUnFinishCache = paramApngOptions.c();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramApngOptions.b();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramApngOptions.c();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramApngOptions.a();
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramApngOptions.a();
-      ((URLDrawable.URLDrawableOptions)localObject).mUseAutoScaleParams = paramApngOptions.b();
+      ((URLDrawable.URLDrawableOptions)localObject).mUseUnFinishCache = paramApngOptions.i();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramApngOptions.d();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramApngOptions.e();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramApngOptions.g();
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramApngOptions.g();
+      ((URLDrawable.URLDrawableOptions)localObject).mUseAutoScaleParams = paramApngOptions.h();
       paramString2 = URLDrawable.getDrawable(paramString2, (URLDrawable.URLDrawableOptions)localObject);
       if (QLog.isColorLevel())
       {
@@ -99,6 +100,30 @@ public final class VasApngFactoryImpl
       QLog.e("VasApngFactory", 1, paramApngOptions.toString());
     }
     return null;
+  }
+  
+  @NotNull
+  public APNGDrawable getApngDrawable(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "urlStr");
+    return new APNGDrawable(paramString);
+  }
+  
+  @NotNull
+  public APNGDrawable getApngDrawable(@NotNull String paramString, @NotNull ApngOptions paramApngOptions)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "urlStr");
+    Intrinsics.checkParameterIsNotNull(paramApngOptions, "options");
+    return new APNGDrawable(paramString, paramApngOptions);
+  }
+  
+  @NotNull
+  public APNGDrawable getApngDrawable(@NotNull String paramString1, @NotNull ApngOptions paramApngOptions, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "urlStr");
+    Intrinsics.checkParameterIsNotNull(paramApngOptions, "options");
+    Intrinsics.checkParameterIsNotNull(paramString2, "filePath");
+    return new APNGDrawable(paramString1, paramApngOptions, paramString2);
   }
   
   @Nullable
@@ -161,7 +186,7 @@ public final class VasApngFactoryImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.apng.api.impl.VasApngFactoryImpl
  * JD-Core Version:    0.7.0.1
  */

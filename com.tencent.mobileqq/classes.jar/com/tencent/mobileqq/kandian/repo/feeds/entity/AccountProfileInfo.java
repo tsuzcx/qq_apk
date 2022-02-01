@@ -9,12 +9,12 @@ import tencent.im.oidb.articlesummary.feeds_info.AccountProfile;
 
 public class AccountProfileInfo
 {
-  public int a;
   public long a;
-  public String a;
-  public String b;
+  public int b;
   public String c;
   public String d;
+  public String e;
+  public String f;
   
   public static AccountProfileInfo a(feeds_info.AccountProfile paramAccountProfile)
   {
@@ -22,19 +22,19 @@ public class AccountProfileInfo
       return null;
     }
     AccountProfileInfo localAccountProfileInfo = new AccountProfileInfo();
-    localAccountProfileInfo.jdField_a_of_type_Long = paramAccountProfile.uint64_uin.get();
-    localAccountProfileInfo.jdField_a_of_type_Int = paramAccountProfile.uint32_account_type.get();
+    localAccountProfileInfo.a = paramAccountProfile.uint64_uin.get();
+    localAccountProfileInfo.b = paramAccountProfile.uint32_account_type.get();
     if (paramAccountProfile.bytes_desc.has()) {
-      localAccountProfileInfo.c = paramAccountProfile.bytes_desc.get().toStringUtf8();
+      localAccountProfileInfo.e = paramAccountProfile.bytes_desc.get().toStringUtf8();
     }
     if (paramAccountProfile.bytes_profile_photo_url.has()) {
-      localAccountProfileInfo.b = paramAccountProfile.bytes_profile_photo_url.get().toStringUtf8();
+      localAccountProfileInfo.d = paramAccountProfile.bytes_profile_photo_url.get().toStringUtf8();
     }
     if (paramAccountProfile.bytes_nick.has()) {
-      localAccountProfileInfo.jdField_a_of_type_JavaLangString = paramAccountProfile.bytes_nick.get().toStringUtf8();
+      localAccountProfileInfo.c = paramAccountProfile.bytes_nick.get().toStringUtf8();
     }
     if (paramAccountProfile.bytes_home_page_url.has()) {
-      localAccountProfileInfo.d = paramAccountProfile.bytes_home_page_url.get().toStringUtf8();
+      localAccountProfileInfo.f = paramAccountProfile.bytes_home_page_url.get().toStringUtf8();
     }
     return localAccountProfileInfo;
   }
@@ -42,26 +42,26 @@ public class AccountProfileInfo
   public feeds_info.AccountProfile a()
   {
     feeds_info.AccountProfile localAccountProfile = new feeds_info.AccountProfile();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localAccountProfile.bytes_nick.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localAccountProfile.bytes_profile_photo_url.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
     if (!TextUtils.isEmpty(this.c)) {
-      localAccountProfile.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.c));
+      localAccountProfile.bytes_nick.set(ByteStringMicro.copyFromUtf8(this.c));
     }
     if (!TextUtils.isEmpty(this.d)) {
-      localAccountProfile.bytes_home_page_url.set(ByteStringMicro.copyFromUtf8(this.d));
+      localAccountProfile.bytes_profile_photo_url.set(ByteStringMicro.copyFromUtf8(this.d));
     }
-    localAccountProfile.uint32_account_type.set(this.jdField_a_of_type_Int);
-    localAccountProfile.uint64_uin.set(this.jdField_a_of_type_Long);
+    if (!TextUtils.isEmpty(this.e)) {
+      localAccountProfile.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.e));
+    }
+    if (!TextUtils.isEmpty(this.f)) {
+      localAccountProfile.bytes_home_page_url.set(ByteStringMicro.copyFromUtf8(this.f));
+    }
+    localAccountProfile.uint32_account_type.set(this.b);
+    localAccountProfile.uint64_uin.set(this.a);
     return localAccountProfile;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.AccountProfileInfo
  * JD-Core Version:    0.7.0.1
  */

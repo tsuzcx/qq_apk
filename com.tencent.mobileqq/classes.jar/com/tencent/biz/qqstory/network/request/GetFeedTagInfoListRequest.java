@@ -14,9 +14,14 @@ import java.util.List;
 public class GetFeedTagInfoListRequest
   extends NetworkRequest<GetFeedTagInfoListRequest.GetFeedTagInfoListResponse>
 {
-  public List<String> a = new ArrayList();
+  public List<String> e = new ArrayList();
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return "StorySvc.homepage_batch_feeds_label";
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
     try
@@ -30,15 +35,10 @@ public class GetFeedTagInfoListRequest
     return new GetFeedTagInfoListRequest.GetFeedTagInfoListResponse(localRspStoryFeedTagInfo);
   }
   
-  public String a()
-  {
-    return "StorySvc.homepage_batch_feeds_label";
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
-    Iterator localIterator = this.a.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -49,7 +49,7 @@ public class GetFeedTagInfoListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetFeedTagInfoListRequest
  * JD-Core Version:    0.7.0.1
  */

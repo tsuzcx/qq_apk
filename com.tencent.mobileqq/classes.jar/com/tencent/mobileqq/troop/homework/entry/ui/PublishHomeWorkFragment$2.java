@@ -15,14 +15,14 @@ class PublishHomeWorkFragment$2
   public void a(boolean paramBoolean, long paramLong, int paramInt)
   {
     super.a(paramBoolean, paramLong, paramInt);
-    this.a.p();
+    this.a.A();
     this.a.a(paramBoolean, paramInt);
   }
   
   public void a(boolean paramBoolean, HomeworkInfo paramHomeworkInfo)
   {
     super.a(paramBoolean, paramHomeworkInfo);
-    this.a.p();
+    this.a.A();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -36,7 +36,7 @@ class PublishHomeWorkFragment$2
       localStringBuilder.append(str);
       QLog.d("PublishHomeWorkFragment", 2, localStringBuilder.toString());
     }
-    if ((paramBoolean) && (paramHomeworkInfo != null) && (paramHomeworkInfo.b != null))
+    if ((paramBoolean) && (paramHomeworkInfo != null) && (paramHomeworkInfo.d != null))
     {
       this.a.a(paramHomeworkInfo);
       return;
@@ -58,27 +58,27 @@ class PublishHomeWorkFragment$2
       paramString1.append(paramString3);
       QLog.d("PublishHomeWorkFragment", 2, paramString1.toString());
     }
-    if (!this.a.j)
+    if (!this.a.af)
     {
       this.a.a(paramInt, paramString3, paramString4);
       if (paramBoolean)
       {
         paramString1 = this.a;
-        paramString1.a = paramString3;
-        paramString1.c();
+        paramString1.N = paramString3;
+        paramString1.f();
       }
       else
       {
-        QQToast.a(this.a.getActivity(), HardCodeUtil.a(2131708818), 0).a();
+        QQToast.makeText(this.a.getActivity(), HardCodeUtil.a(2131906592), 0).show();
       }
       QLog.i("PublishHomeWorkFragment", 1, "init data success");
-      this.a.g();
+      this.a.q();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.2
  * JD-Core Version:    0.7.0.1
  */

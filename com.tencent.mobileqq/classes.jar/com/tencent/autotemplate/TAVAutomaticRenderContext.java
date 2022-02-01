@@ -11,6 +11,7 @@ import com.tencent.tav.coremedia.CMSampleBuffer;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.coremedia.TextureInfo;
+import com.tencent.tav.coremedia.TimeUtil;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tavkit.ciimage.CIContext;
 import com.tencent.tavsticker.core.ITAVRenderContextDataSource;
@@ -28,13 +29,16 @@ import com.tencent.tavsticker.utils.CollectionUtil;
 import com.tencent.tavsticker.utils.TAVStickerUtil;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.List<Lcom.tencent.tavsticker.model.TAVSourceImage;>;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.libpag.PAGComposition;
+import org.libpag.PAGLayer;
+import org.libpag.PAGPlayer;
 import org.libpag.PAGSurface;
 
 public class TAVAutomaticRenderContext
@@ -42,8 +46,10 @@ public class TAVAutomaticRenderContext
 {
   private static final String KEY_EXTRA_STICKER_SPEED = "key_extra_sticker_speed";
   public static final String KEY_EXTRA_STICKER_TYPE = "key_extra_sticker_type";
+  private static final int LAST_DROP_FRAME = 4;
   public static final String STICKER_VIDEO_TRANSITION = "sticker_video_transition";
   public static final int TRANSITION_LAYER_SUM = 2;
+  private static final long US_UNIT = 1000000L;
   public static final String VIDEO_TRACK = "videoTrack";
   private final String TAG;
   private List<TAVSourceImage> cacheImagesForRelease;
@@ -62,7 +68,7 @@ public class TAVAutomaticRenderContext
     this.TAG = localStringBuilder.toString();
     this.mTransitionStickers = new ArrayList();
     this.mEffectStickers = new ArrayList();
-    this.mapVideoTrack = new HashMap();
+    this.mapVideoTrack = new ConcurrentHashMap();
     this.mCopyFilter = new CopyFilter();
     this.renderThreadId = -1L;
     this.cacheImagesForRelease = null;
@@ -104,14 +110,21 @@ public class TAVAutomaticRenderContext
     return false;
   }
   
-  private void createTavStickerTexture()
+  private long getCurTimeUs(long paramLong)
   {
-    if (this.stickerTexture != null) {
-      return;
+    long l1 = TimeUtil.milli2Us(paramLong);
+    paramLong = this.rootComposition.duration();
+    float f = this.rootComposition.frameRate();
+    long l2 = ((float)paramLong * f / 1000000.0F) - ((float)l1 * f / 1000000.0F);
+    paramLong = l1;
+    if (l2 >= 0L)
+    {
+      paramLong = l1;
+      if (l2 <= 4L) {
+        paramLong = Math.abs(l1 - l1 % 1000000L);
+      }
     }
-    if (TAVStickerUtil.isValidCGSize(this.renderSize)) {
-      this.stickerTexture = new TAVStickerTexture((int)this.renderSize.width, (int)this.renderSize.height, 3553, 0);
-    }
+    return paramLong;
   }
   
   private List<TAVStickerImageItem> getVideoTracks(TAVSticker paramTAVSticker)
@@ -134,6 +147,24 @@ public class TAVAutomaticRenderContext
       }
     }
     return null;
+  }
+  
+  private void initPagPlayer()
+  {
+    if (this.pagPlayer == null)
+    {
+      this.pagPlayer = new PAGPlayer();
+      this.pagPlayer.setSurface(this.pagSurface);
+      if (this.rootComposition != null) {
+        this.pagPlayer.setComposition(this.rootComposition);
+      }
+      resetRenderConfigs();
+    }
+    if ((this.rootComposition == null) || (this.rootComposition.width() != this.renderSize.width) || (this.rootComposition.height() != this.renderSize.height))
+    {
+      createCompositionRenderTree();
+      this.pagPlayer.setComposition(this.rootComposition);
+    }
   }
   
   public static boolean isLayerFillAble(TAVStickerLayerInfo paramTAVStickerLayerInfo)
@@ -295,7 +326,7 @@ public class TAVAutomaticRenderContext
     localTAVAutomaticRenderContext.quality = this.quality;
     checkChildContexts();
     this.childContexts.add(localTAVAutomaticRenderContext);
-    localTAVAutomaticRenderContext.mapVideoTrack.putAll(this.mapVideoTrack);
+    localTAVAutomaticRenderContext.mapVideoTrack = this.mapVideoTrack;
     return localTAVAutomaticRenderContext;
   }
   
@@ -394,15 +425,16 @@ public class TAVAutomaticRenderContext
         this.pagSurface = PAGSurface.FromSurface(paramSurface);
       }
     }
-    Object localObject = this.pagSurface;
+    paramSurface = this.pagSurface;
     paramEGLContext = null;
-    paramSurface = null;
-    if (localObject == null) {
+    TAVStickerProvider localTAVStickerProvider = null;
+    if (paramSurface == null) {
       return null;
     }
-    localObject = this.cacheImagesForRelease;
-    if (localObject != null) {
-      releaseCacheImages((List)localObject);
+    initPagPlayer();
+    paramSurface = this.cacheImagesForRelease;
+    if (paramSurface != null) {
+      releaseCacheImages(paramSurface);
     }
     if (this.stickers.size() != this.providers.size())
     {
@@ -410,55 +442,59 @@ public class TAVAutomaticRenderContext
       sortedAllProviders();
     }
     if (!CollectionUtil.isEmptyList(paramList)) {
-      paramList = new ArrayList(paramList);
+      paramSurface = new ArrayList(paramList);
     } else {
-      paramList = null;
+      paramSurface = null;
     }
-    if (!CollectionUtil.isEmptyList(paramList)) {
-      this.cacheImagesForRelease = new ArrayList(paramList);
+    if (!CollectionUtil.isEmptyList(paramSurface)) {
+      this.cacheImagesForRelease = new ArrayList(paramSurface);
     } else {
       this.cacheImagesForRelease = new ArrayList();
     }
     if (!CollectionUtil.isEmptyList(this.providers))
     {
-      localObject = this.providers.iterator();
-      paramEGLContext = paramList;
-      while (((Iterator)localObject).hasNext())
+      Iterator localIterator = this.providers.iterator();
+      for (paramList = localTAVStickerProvider;; paramList = paramEGLContext)
       {
-        TAVStickerProvider localTAVStickerProvider = (TAVStickerProvider)((Iterator)localObject).next();
-        if ((localTAVStickerProvider != null) && (shouldRenderSticker(localTAVStickerProvider.getSticker(), paramLong)))
+        do
         {
-          paramList = paramSurface;
-          if (paramSurface == null) {
-            paramList = new CMSampleBuffer(new CMTime(TAVStickerUtil.millisecond2Seconds(paramLong)), this.stickerTexture.getTextureInfo(), false);
+          paramEGLContext = paramList;
+          if (!localIterator.hasNext()) {
+            break;
           }
-          updateIndexForImages(paramLong, paramEGLContext, localTAVStickerProvider.getSticker());
-          localTAVStickerProvider.setRenderSize(this.renderSize);
-          localTAVStickerProvider.setPagSurface(this.pagSurface);
-          localTAVStickerProvider.replaceSourceImages(paramEGLContext);
-          localTAVStickerProvider.updateRender(paramLong);
-          paramSurface = paramList;
-          if (this.pagSurface.present())
-          {
-            if (paramEGLContext == null) {
-              paramEGLContext = new ArrayList();
-            } else {
-              paramEGLContext.clear();
-            }
-            this.stickerTexture.awaitNewImage(1000L);
-            paramSurface = new TAVSourceImage(this.stickerTexture.getTextureInfo(), 0);
-            paramEGLContext.add(paramSurface);
-            this.cacheImagesForRelease.add(paramSurface);
-            paramSurface = paramList;
-          }
+          localTAVStickerProvider = (TAVStickerProvider)localIterator.next();
+        } while ((localTAVStickerProvider == null) || (!shouldRenderSticker(localTAVStickerProvider.getSticker(), paramLong)));
+        paramEGLContext = paramList;
+        if (paramList == null) {
+          paramEGLContext = new CMSampleBuffer(new CMTime(TAVStickerUtil.millisecond2Seconds(paramLong)), this.stickerTexture.getTextureInfo(), false);
         }
-      }
-      boolean bool = this.pagSurface.present();
-      paramEGLContext = paramSurface;
-      if (paramSurface != null)
-      {
-        paramSurface.setNewFrame(bool);
-        paramEGLContext = paramSurface;
+        int i = 0;
+        while (i < this.rootComposition.numLayers())
+        {
+          this.rootComposition.getLayerAt(i).setVisible(false);
+          i += 1;
+        }
+        updateIndexForImages(paramLong, paramSurface, localTAVStickerProvider.getSticker());
+        localTAVStickerProvider.setRenderSize(this.renderSize);
+        localTAVStickerProvider.setPagPlayer(this.pagPlayer);
+        localTAVStickerProvider.replaceSourceImages(paramSurface);
+        this.rootComposition.setCurrentTime(1000L * paramLong);
+        boolean bool = this.pagPlayer.flush();
+        paramList = paramSurface;
+        if (bool)
+        {
+          if (paramSurface == null) {
+            paramSurface = new ArrayList();
+          } else {
+            paramSurface.clear();
+          }
+          paramList = new TAVSourceImage(this.stickerTexture.getTextureInfo(), 0);
+          paramSurface.add(paramList);
+          this.cacheImagesForRelease.add(paramList);
+          paramList = paramSurface;
+        }
+        paramEGLContext.setNewFrame(bool);
+        paramSurface = paramList;
       }
     }
     return paramEGLContext;
@@ -466,14 +502,17 @@ public class TAVAutomaticRenderContext
   
   public CMSampleBuffer renderStickerChainWithTexture(long paramLong, List<TAVSourceImage> paramList)
   {
+    long l1 = System.currentTimeMillis();
     this.renderThreadId = Thread.currentThread().getId();
     this.presentationTimeMs = paramLong;
-    boolean bool = TAVStickerUtil.isValidCGSize(this.renderSize);
-    Object localObject1 = null;
-    TAVStickerProvider localTAVStickerProvider = null;
-    if (!bool)
+    if (!TAVStickerUtil.isValidCGSize(this.renderSize))
     {
       TLog.e(this.TAG, "renderSticker -> mRenderSize is invalid!");
+      return null;
+    }
+    checkStickerList();
+    checkStickerProviderList();
+    if (this.stickers.isEmpty()) {
       return null;
     }
     createTavStickerTexture();
@@ -484,15 +523,14 @@ public class TAVAutomaticRenderContext
     }
     checkStickerList();
     checkStickerProviderList();
-    if (this.pagSurface == null) {
-      this.pagSurface = PAGSurface.FromTexture(this.stickerTexture.getTextureInfo().textureID, this.stickerTexture.getTextureInfo().width, this.stickerTexture.getTextureInfo().height, true);
-    }
+    createPagSurface();
     if (this.pagSurface == null) {
       return null;
     }
-    Object localObject2 = this.cacheImagesForRelease;
-    if (localObject2 != null) {
-      releaseCacheImages((List)localObject2);
+    initPagPlayer();
+    Object localObject1 = this.cacheImagesForRelease;
+    if (localObject1 != null) {
+      releaseCacheImages((List)localObject1);
     }
     if (this.stickers.size() != this.providers.size())
     {
@@ -504,26 +542,26 @@ public class TAVAutomaticRenderContext
     } else {
       this.cacheImagesForRelease = new ArrayList();
     }
-    localObject2 = new ArrayList(paramList);
+    Object localObject2 = new ArrayList(paramList);
     if (!CollectionUtil.isEmptyList(this.providers))
     {
       Iterator localIterator = this.providers.iterator();
-      int i = 0;
-      paramList = localTAVStickerProvider;
+      paramList = null;
+      int j = 0;
       while (localIterator.hasNext())
       {
-        localTAVStickerProvider = (TAVStickerProvider)localIterator.next();
+        TAVStickerProvider localTAVStickerProvider = (TAVStickerProvider)localIterator.next();
         if (localTAVStickerProvider != null)
         {
           localObject1 = localTAVStickerProvider.getSticker();
           if (shouldRenderSticker((TAVSticker)localObject1, paramLong))
           {
-            bool = "sticker_video_transition".equals(((TAVSticker)localObject1).getExtraBundle().getString("key_extra_sticker_type"));
-            if ((i == 0) || (!bool))
+            boolean bool = "sticker_video_transition".equals(((TAVSticker)localObject1).getExtraBundle().getString("key_extra_sticker_type"));
+            if ((j == 0) || (!bool))
             {
-              int j = i;
+              int i = j;
               if (bool) {
-                j = 1;
+                i = 1;
               }
               localObject1 = paramList;
               if (paramList == null) {
@@ -532,24 +570,31 @@ public class TAVAutomaticRenderContext
               if (!updateIndexForImages(paramLong, (List)localObject2, localTAVStickerProvider.getSticker()))
               {
                 paramList = (List<TAVSourceImage>)localObject1;
-                i = j;
+                j = i;
               }
               else
               {
+                j = 0;
+                while (j < this.rootComposition.numLayers())
+                {
+                  this.rootComposition.getLayerAt(j).setVisible(false);
+                  j += 1;
+                }
                 localTAVStickerProvider.setRenderSize(this.renderSize);
-                localTAVStickerProvider.setPagSurface(this.pagSurface);
+                localTAVStickerProvider.setPagPlayer(this.pagPlayer);
                 localTAVStickerProvider.replaceSourceImages((List)localObject2);
-                localTAVStickerProvider.updateRender(paramLong);
+                long l2 = getCurTimeUs(paramLong);
+                this.rootComposition.setCurrentTime(l2);
                 paramList = (List<TAVSourceImage>)localObject1;
-                i = j;
-                if (this.pagSurface.present())
+                j = i;
+                if (this.pagPlayer.flush())
                 {
                   ((ArrayList)localObject2).clear();
                   paramList = new TAVSourceImage(getCopyTextureInfo(), true, 0);
                   ((ArrayList)localObject2).add(paramList);
                   this.cacheImagesForRelease.add(paramList);
                   paramList = (List<TAVSourceImage>)localObject1;
-                  i = j;
+                  j = i;
                 }
               }
             }
@@ -563,6 +608,16 @@ public class TAVAutomaticRenderContext
         localObject1 = paramList;
       }
     }
+    else
+    {
+      localObject1 = null;
+    }
+    paramLong = System.currentTimeMillis();
+    paramList = this.TAG;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("贴纸渲染耗时：");
+    ((StringBuilder)localObject2).append(paramLong - l1);
+    Logger.e(paramList, ((StringBuilder)localObject2).toString(), null);
     return localObject1;
   }
   

@@ -42,16 +42,16 @@ public class WebCoreService$KernelService
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    if ((paramIntent != null) && (WebCoreService.a() != null))
+    if ((paramIntent != null) && (WebCoreService.e() != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("WebCoreService", 2, "KernelService.onStartCommand");
       }
       try
       {
-        WebCoreService.a().startForeground(WebCoreService.a(), CoreService.fakeNotification(true));
-        super.startForeground(WebCoreService.a(), CoreService.fakeNotification(false));
-        WebCoreService.a().stopForeground(true);
+        WebCoreService.e().startForeground(WebCoreService.f(), CoreService.fakeNotification(true));
+        super.startForeground(WebCoreService.f(), CoreService.fakeNotification(false));
+        WebCoreService.e().stopForeground(true);
         return 2;
       }
       catch (Exception paramIntent)
@@ -64,7 +64,7 @@ public class WebCoreService$KernelService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebCoreService.KernelService
  * JD-Core Version:    0.7.0.1
  */

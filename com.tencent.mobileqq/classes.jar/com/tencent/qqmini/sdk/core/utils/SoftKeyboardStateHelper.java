@@ -13,8 +13,8 @@ import java.util.List;
 public class SoftKeyboardStateHelper
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
+  private static final int KEY_BOARD_HIGH_DIFF = 200;
   public static final String TAG = "SoftKeyboardStateHelper";
-  private final int KEY_BOARD_HIGH_DIFF = 200;
   private final View activityRootView;
   private boolean isSoftKeyboardOpened;
   private int lastSoftKeyboardHeightInPx;
@@ -119,7 +119,7 @@ public class SoftKeyboardStateHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.SoftKeyboardStateHelper
  * JD-Core Version:    0.7.0.1
  */

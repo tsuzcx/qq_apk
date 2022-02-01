@@ -26,8 +26,6 @@ import org.json.JSONObject;
 
 public abstract interface ChannelProxy
 {
-  public abstract void ReportExecute(String paramString1, int paramInt, String paramString2, String paramString3, AsyncResult paramAsyncResult);
-  
   public abstract void addGroupApp(IMiniAppContext paramIMiniAppContext, AsyncResult paramAsyncResult);
   
   public abstract void addPhoneNumber(String paramString1, String paramString2, String paramString3, int paramInt, AsyncResult paramAsyncResult);
@@ -164,6 +162,8 @@ public abstract interface ChannelProxy
   
   public abstract void modifyFriendInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap, boolean paramBoolean, CloudStorage.StInteractiveTemplate paramStInteractiveTemplate, AsyncResult paramAsyncResult);
   
+  public abstract void onInitFinish();
+  
   public abstract boolean openGroup(Context paramContext, String paramString, AsyncResult paramAsyncResult);
   
   public abstract boolean openPermissionSettingsActivity(Context paramContext, String paramString1, String paramString2);
@@ -183,6 +183,8 @@ public abstract interface ChannelProxy
   public abstract void report(byte[] paramArrayOfByte, String paramString1, String paramString2, AsyncResult paramAsyncResult);
   
   public abstract void reportBeacon(@NonNull ChannelProxy.BeaconReportCategory paramBeaconReportCategory, @NonNull String paramString, @Nullable Map<String, String> paramMap);
+  
+  public abstract void reportExecute(String paramString1, int paramInt, String paramString2, String paramString3, AsyncResult paramAsyncResult);
   
   public abstract void reportShare(COMM.StCommonExt paramStCommonExt, long paramLong, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, AsyncResult paramAsyncResult);
   
@@ -244,7 +246,7 @@ public abstract interface ChannelProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy
  * JD-Core Version:    0.7.0.1
  */

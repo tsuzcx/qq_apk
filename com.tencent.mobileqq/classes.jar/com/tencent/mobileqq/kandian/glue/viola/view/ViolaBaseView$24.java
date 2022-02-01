@@ -12,7 +12,7 @@ class ViolaBaseView$24
   {
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      ViolaBaseView.b(this.a, paramString);
+      ViolaBaseView.e(this.a, paramString);
       return;
     }
     this.a.post(new ViolaBaseView.24.1(this, paramString));
@@ -20,7 +20,7 @@ class ViolaBaseView$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.24
  * JD-Core Version:    0.7.0.1
  */

@@ -19,25 +19,25 @@ final class ApolloMessageUtilImpl$1
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("do setReaded for ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo);
+        localStringBuilder.append("do markRead for ");
+        localStringBuilder.append(this.a);
         QLog.i("[cmshow]ApolloMessageUtilImpl", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo.hasPlayed = true;
-      this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo.mApolloMessage.isPlayed = true;
-      this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo.msgData = MessagePkgUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo.mApolloMessage);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo.uniseq, this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo.msgData);
+      this.a.hasPlayed = true;
+      this.a.mApolloMessage.isPlayed = true;
+      this.a.msgData = MessagePkgUtils.a(this.a.mApolloMessage);
+      ((QQAppInterface)this.b).getMessageFacade().a(this.c, this.d, this.a.uniseq, this.a.msgData);
       return;
     }
     catch (Exception localException)
     {
-      QLog.e("[cmshow]ApolloMessageUtilImpl", 1, "setReaded error.", localException);
+      QLog.e("[cmshow]ApolloMessageUtilImpl", 1, "markRead error.", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.impl.ApolloMessageUtilImpl.1
  * JD-Core Version:    0.7.0.1
  */

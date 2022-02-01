@@ -16,22 +16,22 @@ final class InitUrlDrawable$1
         {
           if (paramInt1 != 6)
           {
-            QLog.i(paramString1, paramInt2, paramString2, null);
+            QLog.i(paramString1, paramInt2, paramString2, paramThrowable);
             return;
           }
-          QLog.e(paramString1, paramInt2, paramString2, null);
+          QLog.e(paramString1, paramInt2, paramString2, paramThrowable);
           return;
         }
-        QLog.w(paramString1, paramInt2, paramString2, null);
+        QLog.w(paramString1, paramInt2, paramString2, paramThrowable);
         return;
       }
-      QLog.d(paramString1, paramInt2, paramString2, null);
+      QLog.d(paramString1, paramInt2, paramString2, paramThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitUrlDrawable.1
  * JD-Core Version:    0.7.0.1
  */

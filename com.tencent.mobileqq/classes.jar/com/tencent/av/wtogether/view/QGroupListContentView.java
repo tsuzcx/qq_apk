@@ -16,71 +16,63 @@ import com.tencent.widget.SwipPinnedHeaderExpandableListView;
 public class QGroupListContentView
   extends QBaseContentView
 {
-  protected QGroupExpandableListAdapter a;
-  protected GroupClickListener a;
-  private AutomatorObserver a;
-  protected SwipPinnedHeaderExpandableListView a;
+  protected QGroupExpandableListAdapter d;
+  protected SwipPinnedHeaderExpandableListView e;
+  protected GroupClickListener f;
+  private AutomatorObserver g = new QGroupListContentView.2(this);
   
   public QGroupListContentView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver = new QGroupListContentView.2(this);
   }
   
   public QGroupListContentView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver = new QGroupListContentView.2(this);
   }
   
   public QGroupListContentView(Context paramContext, GroupClickListener paramGroupClickListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver = new QGroupListContentView.2(this);
-    this.jdField_a_of_type_ComTencentAvWtogetherCallbackGroupClickListener = paramGroupClickListener;
+    this.f = paramGroupClickListener;
   }
   
   private void e()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView != null)
+    if (this.e != null)
     {
-      QGroupExpandableListAdapter localQGroupExpandableListAdapter = this.jdField_a_of_type_ComTencentAvWtogetherAdapterQGroupExpandableListAdapter;
+      QGroupExpandableListAdapter localQGroupExpandableListAdapter = this.d;
       if (localQGroupExpandableListAdapter != null) {
         localQGroupExpandableListAdapter.b();
       }
-      this.jdField_a_of_type_ComTencentAvWtogetherAdapterQGroupExpandableListAdapter = new QGroupExpandableListAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView, this.jdField_a_of_type_ComTencentAvWtogetherCallbackGroupClickListener);
-      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_ComTencentAvWtogetherAdapterQGroupExpandableListAdapter);
-      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setOnGroupClickListener(this.jdField_a_of_type_ComTencentAvWtogetherAdapterQGroupExpandableListAdapter);
+      this.d = new QGroupExpandableListAdapter(this.a, (QQAppInterface)this.b, this.e, this.f);
+      this.e.setAdapter(this.d);
+      this.e.setOnGroupClickListener(this.d);
     }
-  }
-  
-  public ListView a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView = new SwipPinnedHeaderExpandableListView(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setId(2131373873);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setSelector(2131167333);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setNeedCheckSpringback(true);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setGroupIndicator(null);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setPadding(0, 0, 0, AIOUtils.b(54.0F, getResources()));
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setClipToPadding(false);
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setScrollBarStyle(33554432);
-    SwipPinnedHeaderExpandableListView localSwipPinnedHeaderExpandableListView = this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView;
+    this.e = new SwipPinnedHeaderExpandableListView(this.a);
+    this.e.setId(2131441547);
+    this.e.setSelector(2131168376);
+    this.e.setNeedCheckSpringback(true);
+    this.e.setGroupIndicator(null);
+    this.e.setDivider(null);
+    this.e.setPadding(0, 0, 0, AIOUtils.b(54.0F, getResources()));
+    this.e.setClipToPadding(false);
+    this.e.setScrollBarStyle(33554432);
+    SwipPinnedHeaderExpandableListView localSwipPinnedHeaderExpandableListView = this.e;
     localSwipPinnedHeaderExpandableListView.mForContacts = true;
     localSwipPinnedHeaderExpandableListView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    addView(this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView);
+    addView(this.e);
     ReportController.b(null, "dc00898", "", "", "0X800B623", "0X800B623", 0, 0, "", "", "", "");
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver);
-    QGroupExpandableListAdapter localQGroupExpandableListAdapter = this.jdField_a_of_type_ComTencentAvWtogetherAdapterQGroupExpandableListAdapter;
+    this.b.removeObserver(this.g);
+    QGroupExpandableListAdapter localQGroupExpandableListAdapter = this.d;
     if (localQGroupExpandableListAdapter != null) {
       localQGroupExpandableListAdapter.b();
     }
@@ -88,21 +80,26 @@ public class QGroupListContentView
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver);
-    if (this.jdField_a_of_type_ComTencentAvWtogetherAdapterQGroupExpandableListAdapter == null) {
+    this.b.addObserver(this.g);
+    if (this.d == null) {
       e();
     }
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.postDelayed(new QGroupListContentView.1(this), 200L);
+    this.e.postDelayed(new QGroupListContentView.1(this), 200L);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver);
+    this.b.removeObserver(this.g);
+  }
+  
+  public ListView getScrollableView()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.QGroupListContentView
  * JD-Core Version:    0.7.0.1
  */

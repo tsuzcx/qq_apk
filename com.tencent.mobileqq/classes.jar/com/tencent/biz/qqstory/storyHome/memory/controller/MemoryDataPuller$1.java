@@ -28,21 +28,21 @@ class MemoryDataPuller$1
   {
     long l = System.currentTimeMillis();
     paramJobContext = (MemoryManager)SuperManager.a(19);
-    paramVarArgs = paramJobContext.a(DateCollectionListPageLoader.a(this.a.jdField_b_of_type_JavaLangString));
+    paramVarArgs = paramJobContext.c(DateCollectionListPageLoader.b(this.a.c));
     boolean bool;
     if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {
       bool = true;
     } else {
       bool = false;
     }
-    List localList = paramJobContext.a(this.a.jdField_b_of_type_JavaLangString, null, 10L);
-    DateCollectionListPageLoader.GetCollectionListEvent localGetCollectionListEvent = new DateCollectionListPageLoader.GetCollectionListEvent(this.a.c, new ErrorMessage());
-    localGetCollectionListEvent.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
-    localGetCollectionListEvent.jdField_b_of_type_Boolean = true;
+    List localList = paramJobContext.a(this.a.c, null, 10L);
+    DateCollectionListPageLoader.GetCollectionListEvent localGetCollectionListEvent = new DateCollectionListPageLoader.GetCollectionListEvent(this.a.d, new ErrorMessage());
+    localGetCollectionListEvent.j = this.a.c;
+    localGetCollectionListEvent.b = true;
     localGetCollectionListEvent.c = true;
-    localGetCollectionListEvent.e = true;
-    localGetCollectionListEvent.jdField_a_of_type_Boolean = false;
-    localGetCollectionListEvent.jdField_a_of_type_JavaUtilList = localList;
+    localGetCollectionListEvent.h = true;
+    localGetCollectionListEvent.a = false;
+    localGetCollectionListEvent.e = localList;
     if (localList.size() > 0) {
       paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
     } else {
@@ -50,27 +50,27 @@ class MemoryDataPuller$1
     }
     if (paramJobContext == null)
     {
-      localGetCollectionListEvent.jdField_a_of_type_Boolean = true;
-      this.a.jdField_b_of_type_Boolean = true;
+      localGetCollectionListEvent.a = true;
+      this.a.i = true;
     }
     else if ((paramVarArgs != null) && (paramJobContext.dbIndex >= paramVarArgs.maxCollectionIndex))
     {
-      localGetCollectionListEvent.jdField_a_of_type_Boolean = bool;
-      this.a.jdField_b_of_type_Boolean = true;
+      localGetCollectionListEvent.a = bool;
+      this.a.i = true;
     }
     else
     {
-      localGetCollectionListEvent.jdField_a_of_type_Boolean = false;
+      localGetCollectionListEvent.a = false;
     }
     StoryDispatcher.a().dispatch(localGetCollectionListEvent);
     this.a.a(localList, false);
-    if (localGetCollectionListEvent.jdField_a_of_type_Boolean) {
+    if (localGetCollectionListEvent.a) {
       paramJobContext = "true";
     } else {
       paramJobContext = "false";
     }
     SLog.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
-    this.a.d();
+    this.a.f();
     return null;
   }
 }

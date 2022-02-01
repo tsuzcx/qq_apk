@@ -10,27 +10,27 @@ import mqq.manager.Manager;
 public class NearByGeneralManager
   implements INearByGeneralManager, Manager
 {
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean = true;
-  boolean b = true;
+  QQAppInterface a;
+  SharedPreferences b;
+  boolean c = true;
+  boolean d = true;
   
   public NearByGeneralManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("NearbyGeneralConfig", 0);
-    paramQQAppInterface = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    this.a = paramQQAppInterface;
+    this.b = BaseApplicationImpl.getContext().getSharedPreferences("NearbyGeneralConfig", 0);
+    paramQQAppInterface = this.b;
     if (paramQQAppInterface != null)
     {
-      this.jdField_a_of_type_Boolean = paramQQAppInterface.getBoolean("Notify_on_like", true);
-      this.b = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_allow_nearby_like", true);
+      this.c = paramQQAppInterface.getBoolean("Notify_on_like", true);
+      this.d = this.b.getBoolean("key_allow_nearby_like", true);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    this.c = paramBoolean;
+    SharedPreferences localSharedPreferences = this.b;
     if (localSharedPreferences != null) {
       localSharedPreferences.edit().putBoolean("Notify_on_like", paramBoolean).commit();
     }
@@ -38,17 +38,17 @@ public class NearByGeneralManager
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
   
   public void b(boolean paramBoolean)
   {
-    if (this.b != paramBoolean)
+    if (this.d != paramBoolean)
     {
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      SharedPreferences localSharedPreferences = this.b;
       if (localSharedPreferences != null)
       {
-        this.b = paramBoolean;
+        this.d = paramBoolean;
         localSharedPreferences.edit().putBoolean("key_allow_nearby_like", paramBoolean).commit();
       }
     }
@@ -56,14 +56,14 @@ public class NearByGeneralManager
   
   public boolean b()
   {
-    return this.b;
+    return this.d;
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearByGeneralManager
  * JD-Core Version:    0.7.0.1
  */

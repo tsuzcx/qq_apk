@@ -15,11 +15,6 @@ public class NullableObjectFactoryImplement
 {
   public static Set<Class<?>> a = Collections.synchronizedSet(new HashSet());
   
-  public static <T> Class<T> a(Class<?> paramClass)
-  {
-    return paramClass;
-  }
-  
   public static <I> I a(Class<I> paramClass)
   {
     if (paramClass.isInterface())
@@ -147,7 +142,7 @@ public class NullableObjectFactoryImplement
       ((StringBuilder)localObject).append(paramClass.getName());
       ((StringBuilder)localObject).append("(");
       ((StringBuilder)localObject).append(Arrays.toString(arrayOfClass1));
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131707682));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131905496));
       throw new IllegalStateException(((StringBuilder)localObject).toString(), paramArrayOfObject);
     }
     catch (InstantiationException paramArrayOfObject)
@@ -156,16 +151,16 @@ public class NullableObjectFactoryImplement
       ((StringBuilder)localObject).append(paramClass.getName());
       ((StringBuilder)localObject).append("(");
       ((StringBuilder)localObject).append(Arrays.toString(arrayOfClass1));
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131707681));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131905495));
       throw new IllegalStateException(((StringBuilder)localObject).toString(), paramArrayOfObject);
     }
     label520:
     paramArrayOfObject = new StringBuilder();
-    paramArrayOfObject.append(HardCodeUtil.a(2131707680));
+    paramArrayOfObject.append(HardCodeUtil.a(2131905494));
     paramArrayOfObject.append(paramClass.getName());
     paramArrayOfObject.append("(");
     paramArrayOfObject.append(Arrays.toString(arrayOfClass1));
-    paramArrayOfObject.append(HardCodeUtil.a(2131707683));
+    paramArrayOfObject.append(HardCodeUtil.a(2131905497));
     paramClass = new IllegalStateException(paramArrayOfObject.toString(), localStringBuilder);
     for (;;)
     {
@@ -193,10 +188,15 @@ public class NullableObjectFactoryImplement
     }
     return arrayOfClass;
   }
+  
+  public static <T> Class<T> b(Class<?> paramClass)
+  {
+    return paramClass;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.implement.NullableObjectFactoryImplement
  * JD-Core Version:    0.7.0.1
  */

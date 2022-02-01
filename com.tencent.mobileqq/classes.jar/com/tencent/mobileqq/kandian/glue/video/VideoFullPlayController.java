@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.base.image.api.impl.PublicAccountHttpDownloaderImpl;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoPlayRecommendHandler;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoPlayRecommendObserver;
 import com.tencent.mobileqq.kandian.biz.video.api.IVideoFullPlayController;
@@ -26,7 +26,6 @@ import com.tencent.mobileqq.kandian.biz.video.view.VideoCountDownView;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5.Builder;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
@@ -41,45 +40,45 @@ import org.json.JSONObject;
 public class VideoFullPlayController
   implements Handler.Callback, View.OnClickListener, IVideoFullPlayController
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private VideoPlayRecommendHandler jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendHandler;
-  private VideoPlayRecommendObserver jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendObserver;
-  private IVideoPlay jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsApiIVideoPlay;
-  private BaseVideoPlayParam jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam;
-  private VideoCountDownView jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView;
-  private VideoFullPlayController.OnFullPlayListener jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoFullPlayController$OnFullPlayListener;
-  private VideoFullPlayController.RecommendDataAdapter jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoFullPlayController$RecommendDataAdapter;
-  private String jdField_a_of_type_JavaLangString;
-  private List<VideoFullPlayController.FullPlayInfo> jdField_a_of_type_JavaUtilList;
-  private Queue<BaseVideoPlayParam> jdField_a_of_type_JavaUtilQueue = new ArrayDeque();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private BaseVideoPlayParam jdField_b_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int;
-  private BaseVideoPlayParam jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean = true;
-  private boolean e;
+  private Context a;
+  private IVideoPlay b;
+  private VideoFullPlayController.OnFullPlayListener c;
+  private VideoFullPlayController.RecommendDataAdapter d;
+  private boolean e = false;
+  private boolean f = false;
+  private boolean g;
+  private boolean h = true;
+  private Handler i;
+  private int j;
+  private FrameLayout k;
+  private VideoCountDownView l;
+  private BaseVideoPlayParam m;
+  private BaseVideoPlayParam n;
+  private BaseVideoPlayParam o;
+  private String p;
+  private int q;
+  private boolean r;
+  private VideoPlayRecommendHandler s;
+  private VideoPlayRecommendObserver t;
+  private Queue<BaseVideoPlayParam> u = new ArrayDeque();
+  private int v;
+  private List<VideoFullPlayController.FullPlayInfo> w;
+  private int x;
   
   public VideoFullPlayController(Activity paramActivity, FrameLayout paramFrameLayout, VideoFullPlayController.RecommendDataAdapter paramRecommendDataAdapter)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramActivity;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoFullPlayController$RecommendDataAdapter = paramRecommendDataAdapter;
-    this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(this);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramActivity = ReadInJoyUtils.a();
+    this.a = paramActivity;
+    this.k = paramFrameLayout;
+    this.d = paramRecommendDataAdapter;
+    this.i = new WeakReferenceHandler(this);
+    this.w = new ArrayList();
+    paramActivity = ReadInJoyUtils.b();
     if ((paramActivity != null) && ((paramActivity instanceof QQAppInterface)))
     {
       paramActivity = (QQAppInterface)paramActivity;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendHandler = ((VideoPlayRecommendHandler)paramActivity.getBusinessHandler(BusinessHandlerFactory.VIDEOPLAYRECOMMEND_HANDLER));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendObserver = new VideoFullPlayController.VideoRecommendObserver(this, null);
-      this.jdField_a_of_type_JavaLangString = paramActivity.getCurrentUin();
+      this.s = ((VideoPlayRecommendHandler)paramActivity.getBusinessHandler(BusinessHandlerFactory.VIDEOPLAYRECOMMEND_HANDLER));
+      this.t = new VideoFullPlayController.VideoRecommendObserver(this, null);
+      this.p = paramActivity.getCurrentUin();
     }
   }
   
@@ -91,11 +90,11 @@ public class VideoFullPlayController
       paramBaseVideoPlayParam2 = (VideoPlayParam)paramBaseVideoPlayParam2;
       try
       {
-        paramBaseVideoPlayParam2 = paramBaseVideoPlayParam2.a;
+        paramBaseVideoPlayParam2 = paramBaseVideoPlayParam2.D;
         if (paramBaseVideoPlayParam2 != null)
         {
-          paramBaseVideoPlayParam2.mChannelID = paramBaseVideoPlayParam1.a.mChannelID;
-          paramBaseVideoPlayParam2.mRecommendTime = paramBaseVideoPlayParam1.a.mRecommendTime;
+          paramBaseVideoPlayParam2.mChannelID = paramBaseVideoPlayParam1.D.mChannelID;
+          paramBaseVideoPlayParam2.mRecommendTime = paramBaseVideoPlayParam1.D.mRecommendTime;
           return;
         }
       }
@@ -112,62 +111,52 @@ public class VideoFullPlayController
     }
   }
   
-  private void g()
+  private void l()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendHandler != null)
+    if (this.s != null)
     {
-      Object localObject = this.jdField_b_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam;
+      Object localObject = this.n;
       if (localObject != null)
       {
-        localObject = ((BaseVideoPlayParam)localObject).a();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendHandler.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendObserver, Long.parseLong(this.jdField_a_of_type_JavaLangString), (VideoInfo)localObject, 17, null, null, 0L, false, 0, null, null, null, 0, null, null, 0, null, 0);
+        localObject = ((BaseVideoPlayParam)localObject).b();
+        this.s.a(this.t, Long.parseLong(this.p), (VideoInfo)localObject, 17, null, null, 0L, false, 0, null, null, null, 0, null, null, 0, null, 0);
       }
     }
   }
   
-  private void h()
+  private void m()
   {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    Context localContext = this.a;
     if ((localContext instanceof BaseActivity))
     {
-      VideoPlayRecommendObserver localVideoPlayRecommendObserver = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendObserver;
+      VideoPlayRecommendObserver localVideoPlayRecommendObserver = this.t;
       if (localVideoPlayRecommendObserver != null) {
         ((BaseActivity)localContext).removeObserver(localVideoPlayRecommendObserver);
       }
     }
   }
   
-  private void i()
+  private void n()
   {
-    this.jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam.jdField_a_of_type_Int = (this.jdField_b_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam.jdField_a_of_type_Int + 1);
-    a(this.jdField_b_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam, this.jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam);
+    this.o.e = (this.n.e + 1);
+    a(this.n, this.o);
   }
   
-  private void j()
+  private void o()
   {
-    Object localObject = this.jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam;
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsApiIVideoPlay != null))
+    Object localObject = this.o;
+    if ((localObject != null) && (this.b != null))
     {
-      this.jdField_a_of_type_JavaUtilQueue.remove(localObject);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoFullPlayController$OnFullPlayListener;
+      this.u.remove(localObject);
+      localObject = this.c;
       if (localObject != null) {
-        ((VideoFullPlayController.OnFullPlayListener)localObject).a(this.jdField_b_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam, this.jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam, this.jdField_b_of_type_Int, this.e);
+        ((VideoFullPlayController.OnFullPlayListener)localObject).a(this.n, this.o, this.q, this.r);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsApiIVideoPlay.a(this.jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam);
-      this.jdField_d_of_type_Int += 1;
+      this.b.a(this.o);
+      this.x += 1;
     }
-    this.jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam = null;
-    this.e = false;
-  }
-  
-  public BaseVideoPlayParam a()
-  {
-    return this.jdField_b_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam;
-  }
-  
-  public String a()
-  {
-    return String.valueOf(this.jdField_c_of_type_Int);
+    this.o = null;
+    this.r = false;
   }
   
   public String a(String paramString)
@@ -176,13 +165,13 @@ public class VideoFullPlayController
     {
       JSONObject localJSONObject1 = new JSONObject();
       JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.w.iterator();
       while (localIterator.hasNext())
       {
         VideoFullPlayController.FullPlayInfo localFullPlayInfo = (VideoFullPlayController.FullPlayInfo)localIterator.next();
         JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("rowKey", localFullPlayInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam.a());
-        localJSONObject2.put("playCount", localFullPlayInfo.jdField_a_of_type_Int);
+        localJSONObject2.put("rowKey", localFullPlayInfo.a.a());
+        localJSONObject2.put("playCount", localFullPlayInfo.b);
         localJSONArray.put(localJSONObject2);
       }
       localJSONObject1.put("playInfo_list", localJSONArray);
@@ -197,37 +186,32 @@ public class VideoFullPlayController
     return null;
   }
   
-  public List<VideoFullPlayController.FullPlayInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public void a()
   {
-    if (!this.jdField_c_of_type_Boolean) {
-      a(this.jdField_a_of_type_Int);
+    if (!this.g) {
+      a(this.j);
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (!b()) {
+    this.j = paramInt;
+    if (!f()) {
       return;
     }
-    if (this.jdField_a_of_type_Int > 0)
+    if (this.j > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView.a(paramInt);
+      this.l.a(paramInt);
       a(paramInt, System.currentTimeMillis());
       return;
     }
-    if (this.jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam != null)
+    if (this.o != null)
     {
-      c();
-      j();
+      e();
+      o();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView.a();
+    this.l.a();
   }
   
   public void a(int paramInt, long paramLong)
@@ -239,58 +223,58 @@ public class VideoFullPlayController
     localMessage.what = 1;
     localMessage.arg1 = paramInt;
     localMessage.obj = Long.valueOf(paramLong);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 500L);
+    this.i.sendMessageDelayed(localMessage, 500L);
   }
   
   public void a(IVideoPlay paramIVideoPlay)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsApiIVideoPlay = paramIVideoPlay;
+    this.b = paramIVideoPlay;
   }
   
   public void a(BaseVideoPlayParam paramBaseVideoPlayParam)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = (true ^ NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidContentContext));
+    this.f = true;
+    this.g = (true ^ NetworkUtil.isWifiConnected(this.a));
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("enterCountDownMode videoPlayParam:");
       ((StringBuilder)localObject).append(paramBaseVideoPlayParam);
       ((StringBuilder)localObject).append(" mVideoRootFrameLayout:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      ((StringBuilder)localObject).append(this.k);
       QLog.i("VideoFullPlayController", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject = this.a;
     if ((localObject instanceof BaseActivity))
     {
-      VideoPlayRecommendObserver localVideoPlayRecommendObserver = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendObserver;
+      VideoPlayRecommendObserver localVideoPlayRecommendObserver = this.t;
       if (localVideoPlayRecommendObserver != null) {
         ((BaseActivity)localObject).addObserver(localVideoPlayRecommendObserver);
       }
     }
-    if ((paramBaseVideoPlayParam != null) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null))
+    if ((paramBaseVideoPlayParam != null) && (this.k != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam = paramBaseVideoPlayParam;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView == null)
+      this.m = paramBaseVideoPlayParam;
+      if (this.l == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView = new VideoCountDownView(this.jdField_a_of_type_AndroidContentContext);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView.setOnClickListener(null);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView.setOnCustomClickListener(this);
+        this.l = new VideoCountDownView(this.a);
+        this.l.setOnClickListener(null);
+        this.l.setOnCustomClickListener(this);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView.c();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView.setTitle(paramBaseVideoPlayParam.jdField_a_of_type_JavaLangString);
-      if (this.jdField_d_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView.a(((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(paramBaseVideoPlayParam.jdField_b_of_type_JavaLangString, 0));
+      this.l.c();
+      this.l.setTitle(paramBaseVideoPlayParam.a);
+      if (this.h) {
+        this.l.a(new PublicAccountHttpDownloaderImpl().makeURL(paramBaseVideoPlayParam.b, 0));
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView.b();
+        this.l.b();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView.getParent() != null) {
-        ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView.getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView);
+      if (this.l.getParent() != null) {
+        ((ViewGroup)this.l.getParent()).removeView(this.l);
       }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView);
-      f();
-      paramBaseVideoPlayParam = new VideoR5.Builder(null, null, paramBaseVideoPlayParam.c, paramBaseVideoPlayParam.a()).a((int)paramBaseVideoPlayParam.jdField_b_of_type_Long).a().a();
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009502", "0X8009502", 0, 0, "", String.valueOf(this.jdField_c_of_type_Int), "", paramBaseVideoPlayParam, false);
+      this.k.addView(this.l);
+      j();
+      paramBaseVideoPlayParam = new VideoR5.Builder(null, null, paramBaseVideoPlayParam.d, paramBaseVideoPlayParam.a()).a((int)paramBaseVideoPlayParam.f).b().a();
+      PublicAccountReportUtils.a(null, "", "0X8009502", "0X8009502", 0, 0, "", String.valueOf(this.v), "", paramBaseVideoPlayParam, false);
     }
   }
   
@@ -303,53 +287,41 @@ public class VideoFullPlayController
       localStringBuilder.append(paramBaseVideoPlayParam);
       QLog.i("VideoFullPlayController", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam = paramBaseVideoPlayParam;
-    this.jdField_d_of_type_Int = 1;
-    this.jdField_b_of_type_Int = paramInt;
     this.e = true;
-    this.jdField_a_of_type_JavaUtilQueue.clear();
-    if (this.jdField_b_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam != null)
+    this.n = paramBaseVideoPlayParam;
+    this.x = 1;
+    this.q = paramInt;
+    this.r = true;
+    this.u.clear();
+    if (this.n != null)
     {
-      if (paramBaseVideoPlayParam.jdField_b_of_type_Long == 409409L)
+      if (paramBaseVideoPlayParam.f == 409409L)
       {
-        this.jdField_c_of_type_Int = 0;
+        this.v = 0;
         return;
       }
-      if (paramBaseVideoPlayParam.jdField_b_of_type_Long == 56L)
+      if (paramBaseVideoPlayParam.f == 56L)
       {
-        this.jdField_c_of_type_Int = 1;
+        this.v = 1;
         return;
       }
-      this.jdField_c_of_type_Int = 2;
+      this.v = 2;
     }
   }
   
   public void a(VideoFullPlayController.OnFullPlayListener paramOnFullPlayListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoFullPlayController$OnFullPlayListener = paramOnFullPlayListener;
+    this.c = paramOnFullPlayListener;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
-  public boolean a()
+  public BaseVideoPlayParam b()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    BaseVideoPlayParam localBaseVideoPlayParam = this.jdField_b_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam;
-    if (localBaseVideoPlayParam != null) {
-      this.jdField_a_of_type_JavaUtilList.add(new VideoFullPlayController.FullPlayInfo(localBaseVideoPlayParam, this.jdField_d_of_type_Int));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFullPlayController", 2, "exitFullMode: ");
-    }
+    return this.n;
   }
   
   public void b(BaseVideoPlayParam paramBaseVideoPlayParam)
@@ -361,57 +333,62 @@ public class VideoFullPlayController
       localStringBuilder.append(paramBaseVideoPlayParam);
       QLog.d("VideoFullPlayController", 2, localStringBuilder.toString());
     }
-    this.jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam = paramBaseVideoPlayParam;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView.setIsXgMode(this.jdField_c_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView.setNextVideoInfo(paramBaseVideoPlayParam);
-    if (!this.jdField_c_of_type_Boolean) {
+    this.o = paramBaseVideoPlayParam;
+    this.l.setIsXgMode(this.g);
+    this.l.setNextVideoInfo(paramBaseVideoPlayParam);
+    if (!this.g) {
       a(3);
     }
-    i();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    n();
   }
   
   public void c()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewVideoCountDownView);
-    h();
+    this.e = false;
+    BaseVideoPlayParam localBaseVideoPlayParam = this.n;
+    if (localBaseVideoPlayParam != null) {
+      this.w.add(new VideoFullPlayController.FullPlayInfo(localBaseVideoPlayParam, this.x));
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFullPlayController", 2, "exitFullMode: ");
+    }
   }
   
-  public void d()
+  public boolean d()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    return this.e;
   }
   
   public void e()
   {
-    h();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendHandler = null;
+    this.f = false;
+    this.k.removeView(this.l);
+    m();
   }
   
-  public void f()
+  public boolean f()
   {
-    BaseVideoPlayParam localBaseVideoPlayParam = (BaseVideoPlayParam)this.jdField_a_of_type_JavaUtilQueue.peek();
-    if (localBaseVideoPlayParam == null)
-    {
-      g();
-      return;
-    }
-    b(localBaseVideoPlayParam);
+    return this.f;
+  }
+  
+  public String g()
+  {
+    return String.valueOf(this.v);
+  }
+  
+  public void h()
+  {
+    this.i.removeMessages(1);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1)
     {
-      long l = System.currentTimeMillis() - ((Long)paramMessage.obj).longValue();
-      if (l >= 1000L)
+      long l1 = System.currentTimeMillis() - ((Long)paramMessage.obj).longValue();
+      if (l1 >= 1000L)
       {
-        paramMessage.arg1 = ((int)(paramMessage.arg1 - l / 1000L));
+        paramMessage.arg1 = ((int)(paramMessage.arg1 - l1 / 1000L));
         a(paramMessage.arg1);
         return true;
       }
@@ -420,48 +397,70 @@ public class VideoFullPlayController
     return true;
   }
   
+  public void i()
+  {
+    m();
+    this.s = null;
+  }
+  
+  public void j()
+  {
+    BaseVideoPlayParam localBaseVideoPlayParam = (BaseVideoPlayParam)this.u.peek();
+    if (localBaseVideoPlayParam == null)
+    {
+      l();
+      return;
+    }
+    b(localBaseVideoPlayParam);
+  }
+  
+  public List<VideoFullPlayController.FullPlayInfo> k()
+  {
+    return this.w;
+  }
+  
   public void onClick(View paramView)
   {
     switch (paramView.getId())
     {
     default: 
-    case 2131367410: 
-      paramView = this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoFullPlayController$OnFullPlayListener;
+    case 2131433911: 
+      paramView = this.c;
       if (paramView != null)
       {
-        paramView.ay_();
+        paramView.cV_();
         return;
       }
       break;
-    case 2131364034: 
-      c();
-      paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsApiIVideoPlay;
+    case 2131429990: 
+      e();
+      paramView = this.b;
       if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam);
+        paramView.a(this.m);
       }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam;
+      paramView = this.m;
       if (paramView == null) {
         return;
       }
-      paramView = new VideoR5.Builder(null, null, paramView.c, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam.a()).a((int)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam.jdField_b_of_type_Long).a().a();
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009503", "0X8009503", 0, 0, "", String.valueOf(this.jdField_c_of_type_Int), "", paramView, false);
+      paramView = new VideoR5.Builder(null, null, paramView.d, this.m.a()).a((int)this.m.f).b().a();
+      PublicAccountReportUtils.a(null, "", "0X8009503", "0X8009503", 0, 0, "", String.valueOf(this.v), "", paramView, false);
       return;
-    case 2131364000: 
-    case 2131379926: 
-      paramView = this.jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam;
+    case 2131429957: 
+    case 2131448810: 
+      paramView = this.o;
       if (paramView == null) {
         return;
       }
-      paramView = new VideoR5.Builder(null, null, paramView.c, this.jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam.a()).a((int)this.jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam.jdField_b_of_type_Long).j(this.jdField_c_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityBaseVideoPlayParam.a()).a().a();
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009504", "0X8009504", 0, 0, "", String.valueOf(this.jdField_c_of_type_Int), "", paramView, false);
-      c();
-      j();
+      paramView = new VideoR5.Builder(null, null, paramView.d, this.o.a()).a((int)this.o.f).k(this.o.a()).b().a();
+      PublicAccountReportUtils.a(null, "", "0X8009504", "0X8009504", 0, 0, "", String.valueOf(this.v), "", paramView, false);
+      e();
+      o();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoFullPlayController
  * JD-Core Version:    0.7.0.1
  */

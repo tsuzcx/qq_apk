@@ -15,14 +15,12 @@ import java.nio.FloatBuffer;
 public class YUVPreRender
   implements PreRender
 {
-  protected int a;
-  private ByteBuffer a;
+  protected int a = -1;
   protected int b = -1;
+  private ByteBuffer c = null;
   
   public YUVPreRender()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
     if (QLog.isColorLevel()) {
       QLog.i("SurfaceTag", 2, "SurfacePreRender");
     }
@@ -66,35 +64,35 @@ public class YUVPreRender
         GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
         GLES20.glClear(16640);
         paramArrayOfByte = TextureProgramFactory.a(1);
-        paramByteBuffer = paramArrayOfByte.a();
+        paramByteBuffer = paramArrayOfByte.b();
         GLES20.glUseProgram(paramArrayOfByte.a());
-        GLES20.glUniform1f(paramByteBuffer[2].jdField_a_of_type_Int, 1.0F);
-        GLES20.glUniform1f(paramByteBuffer[7].jdField_a_of_type_Int, paramInt1);
-        GLES20.glUniform1f(paramByteBuffer[8].jdField_a_of_type_Int, paramInt2);
-        GLES20.glUniformMatrix4fv(paramByteBuffer[9].jdField_a_of_type_Int, 1, false, paramArrayOfFloat, 0);
+        GLES20.glUniform1f(paramByteBuffer[2].a, 1.0F);
+        GLES20.glUniform1f(paramByteBuffer[7].a, paramInt1);
+        GLES20.glUniform1f(paramByteBuffer[8].a, paramInt2);
+        GLES20.glUniformMatrix4fv(paramByteBuffer[9].a, 1, false, paramArrayOfFloat, 0);
         if (paramInt3 == 17) {
-          GLES20.glUniform1i(paramByteBuffer[10].jdField_a_of_type_Int, 3);
+          GLES20.glUniform1i(paramByteBuffer[10].a, 3);
         } else {
-          GLES20.glUniform1i(paramByteBuffer[10].jdField_a_of_type_Int, 1);
+          GLES20.glUniform1i(paramByteBuffer[10].a, 1);
         }
-        GLES20.glUniform1i(paramByteBuffer[11].jdField_a_of_type_Int, 0);
+        GLES20.glUniform1i(paramByteBuffer[11].a, 0);
         GLES20.glDisable(3042);
         GLES20.glActiveTexture(33984);
         GLES20.glBindTexture(3553, paramInt4);
-        GLES20.glUniform1i(paramByteBuffer[4].jdField_a_of_type_Int, 0);
+        GLES20.glUniform1i(paramByteBuffer[4].a, 0);
         GLES20.glActiveTexture(33985);
         GLES20.glBindTexture(3553, paramInt5);
-        GLES20.glUniform1i(paramByteBuffer[5].jdField_a_of_type_Int, 1);
+        GLES20.glUniform1i(paramByteBuffer[5].a, 1);
         if (paramInt7 % 4 == 1) {
-          GLES20.glUniformMatrix4fv(paramByteBuffer[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate90, 0);
+          GLES20.glUniformMatrix4fv(paramByteBuffer[1].a, 1, false, AVGLUtils.matrixVRotate90, 0);
         } else {
-          GLES20.glUniformMatrix4fv(paramByteBuffer[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate270, 0);
+          GLES20.glUniformMatrix4fv(paramByteBuffer[1].a, 1, false, AVGLUtils.matrixVRotate270, 0);
         }
-        GLES20.glUniformMatrix4fv(paramByteBuffer[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
-        GLES20.glVertexAttribPointer(paramByteBuffer[0].jdField_a_of_type_Int, 2, 5126, false, 8, paramFloatBuffer);
-        GLES20.glEnableVertexAttribArray(paramByteBuffer[0].jdField_a_of_type_Int);
+        GLES20.glUniformMatrix4fv(paramByteBuffer[3].a, 1, false, AVGLUtils.matrix, 0);
+        GLES20.glVertexAttribPointer(paramByteBuffer[0].a, 2, 5126, false, 8, paramFloatBuffer);
+        GLES20.glEnableVertexAttribArray(paramByteBuffer[0].a);
         GLES20.glDrawArrays(5, 0, 4);
-        GLES20.glDisableVertexAttribArray(paramByteBuffer[0].jdField_a_of_type_Int);
+        GLES20.glDisableVertexAttribArray(paramByteBuffer[0].a);
         GLES20.glBindFramebuffer(36160, 0);
       }
     }
@@ -102,33 +100,33 @@ public class YUVPreRender
   
   private void a(CameraFrame paramCameraFrame, int paramInt, FloatBuffer paramFloatBuffer)
   {
-    a(paramCameraFrame.jdField_a_of_type_Int, paramCameraFrame.b, AndroidCamera.c, YUVTexture.a, paramCameraFrame.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b, paramInt, RenderUtil.a(paramCameraFrame.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaNioByteBuffer, paramFloatBuffer);
-    GLES20.glViewport(0, 0, paramCameraFrame.jdField_a_of_type_Int, paramCameraFrame.b);
+    a(paramCameraFrame.b, paramCameraFrame.c, AndroidCamera.d, YUVTexture.q, paramCameraFrame.a, this.a, this.b, paramInt, RenderUtil.a(paramCameraFrame.g), this.c, paramFloatBuffer);
+    GLES20.glViewport(0, 0, paramCameraFrame.b, paramCameraFrame.c);
   }
   
   public GLTexture a(FilterProcessRender paramFilterProcessRender, CameraFrame paramCameraFrame, GLTexture paramGLTexture)
   {
-    if (paramFilterProcessRender.jdField_a_of_type_ComTencentAvUtilsPerfRecorder != null) {
-      paramFilterProcessRender.jdField_a_of_type_ComTencentAvUtilsPerfRecorder.a("preRender");
+    if (paramFilterProcessRender.j != null) {
+      paramFilterProcessRender.j.a("preRender");
     }
-    int i = paramCameraFrame.jdField_a_of_type_Int * paramCameraFrame.b * 3 / 2;
-    ByteBuffer localByteBuffer = this.jdField_a_of_type_JavaNioByteBuffer;
+    int i = paramCameraFrame.b * paramCameraFrame.c * 3 / 2;
+    ByteBuffer localByteBuffer = this.c;
     if ((localByteBuffer != null) && (localByteBuffer.capacity() != i))
     {
-      this.jdField_a_of_type_JavaNioByteBuffer.clear();
-      this.jdField_a_of_type_JavaNioByteBuffer = null;
+      this.c.clear();
+      this.c = null;
     }
-    if (this.jdField_a_of_type_JavaNioByteBuffer == null) {
-      this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(i);
+    if (this.c == null) {
+      this.c = ByteBuffer.allocate(i);
     }
-    a(paramCameraFrame, paramGLTexture.jdField_a_of_type_Int, paramFilterProcessRender.jdField_a_of_type_JavaNioFloatBuffer);
-    if (paramFilterProcessRender.jdField_a_of_type_ComTencentAvUtilsPerfRecorder != null) {
-      paramFilterProcessRender.jdField_a_of_type_ComTencentAvUtilsPerfRecorder.b("preRender");
+    a(paramCameraFrame, paramGLTexture.a, paramFilterProcessRender.m);
+    if (paramFilterProcessRender.j != null) {
+      paramFilterProcessRender.j.b("preRender");
     }
-    if (paramFilterProcessRender.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest != null)
+    if (paramFilterProcessRender.h != null)
     {
-      paramFilterProcessRender.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.a(9, paramGLTexture.jdField_a_of_type_Int, paramGLTexture.b);
-      paramFilterProcessRender.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.a(paramFilterProcessRender, 1, paramCameraFrame, paramGLTexture);
+      paramFilterProcessRender.h.b(9, paramGLTexture.a, paramGLTexture.b);
+      paramFilterProcessRender.h.a(paramFilterProcessRender, 1, paramCameraFrame, paramGLTexture);
     }
     return paramGLTexture;
   }
@@ -137,7 +135,7 @@ public class YUVPreRender
   {
     int[] arrayOfInt = new int[2];
     GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.jdField_a_of_type_Int = arrayOfInt[0];
+    this.a = arrayOfInt[0];
     this.b = arrayOfInt[1];
   }
   
@@ -145,25 +143,25 @@ public class YUVPreRender
   
   public boolean a(CameraFrame paramCameraFrame)
   {
-    return (paramCameraFrame != null) && (paramCameraFrame.jdField_a_of_type_ArrayOfByte != null) && (paramCameraFrame.jdField_a_of_type_ArrayOfByte.length > 0);
+    return (paramCameraFrame != null) && (paramCameraFrame.a != null) && (paramCameraFrame.a.length > 0);
   }
   
   public void b()
   {
-    ByteBuffer localByteBuffer = this.jdField_a_of_type_JavaNioByteBuffer;
+    ByteBuffer localByteBuffer = this.c;
     if (localByteBuffer != null) {
       localByteBuffer.clear();
     }
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
+    this.c = null;
   }
   
   public void c()
   {
     int[] arrayOfInt = new int[2];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    arrayOfInt[0] = this.a;
     arrayOfInt[1] = this.b;
     GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.jdField_a_of_type_Int = -1;
+    this.a = -1;
     this.b = -1;
   }
 }

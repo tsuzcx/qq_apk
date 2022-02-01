@@ -20,16 +20,16 @@ class QGroupAVFileListContentView$2
     this.a.a(paramList);
     if (paramInt1 == 0)
     {
-      ((WatchTogetherHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.QAV_WT_HANDLER)).a(QGroupAVFileListContentView.a(this.a), ByteStringMicro.copyFromUtf8(paramString1));
+      ((WatchTogetherHandler)this.a.b.getBusinessHandler(BusinessHandlerFactory.QAV_WT_HANDLER)).a(QGroupAVFileListContentView.a(this.a), ByteStringMicro.copyFromUtf8(paramString1));
       return;
     }
-    this.a.i();
+    this.a.getRecentFileRecords();
     this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.QGroupAVFileListContentView.2
  * JD-Core Version:    0.7.0.1
  */

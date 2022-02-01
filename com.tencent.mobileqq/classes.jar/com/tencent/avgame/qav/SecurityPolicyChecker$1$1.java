@@ -9,9 +9,9 @@ class SecurityPolicyChecker$1$1
   
   public void run()
   {
-    SecurityPolicyChecker.CheckSecurityPolicyCallback localCheckSecurityPolicyCallback = (SecurityPolicyChecker.CheckSecurityPolicyCallback)this.jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker$1.a.get();
+    SecurityPolicyChecker.CheckSecurityPolicyCallback localCheckSecurityPolicyCallback = (SecurityPolicyChecker.CheckSecurityPolicyCallback)this.b.a.get();
     if (localCheckSecurityPolicyCallback != null) {
-      localCheckSecurityPolicyCallback.a(this.jdField_a_of_type_Boolean);
+      localCheckSecurityPolicyCallback.a(this.a);
     }
   }
 }

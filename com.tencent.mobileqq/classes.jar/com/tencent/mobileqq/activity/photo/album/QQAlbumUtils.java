@@ -171,31 +171,6 @@ public class QQAlbumUtils
     return "0.1K";
   }
   
-  public static String a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      Object localObject = new File(paramString).getParentFile().getName();
-      paramString = new StringBuilder(AppConstants.SDCARD_IMG_CAMERA);
-      paramString.append((String)localObject);
-      paramString.append(".mp4");
-      localObject = new File(AppConstants.SDCARD_IMG_CAMERA);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
-      }
-      paramString = paramString.toString();
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      QZLog.i("QQAlbum", 1, "get target path error encode error", paramString);
-    }
-    return null;
-  }
-  
   public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11)
   {
     if (QLog.isDevelopLevel())
@@ -310,6 +285,15 @@ public class QQAlbumUtils
         {
           paramIntent.addFlags(603979776);
           paramActivity.startActivity(paramIntent);
+        }
+      }
+      else if (paramActivity.getIntent().getIntExtra("uintype", -1) == 10014)
+      {
+        paramIntent = (Intent)paramActivity.getIntent().getParcelableExtra("key_guild_open_aio_intent");
+        if (paramIntent != null) {
+          paramActivity.startActivity(paramIntent);
+        } else {
+          QLog.e("QQAlbum", 1, "OpenGuild Error ! guildIntent is null!");
         }
       }
       else
@@ -442,8 +426,8 @@ public class QQAlbumUtils
   
   public static void a(PhotoListCustomization<? extends OtherCommonData> paramPhotoListCustomization)
   {
-    if ((paramPhotoListCustomization != null) && (((paramPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.r) && ("$RecentAlbumId".equals(paramPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId))) || ((paramPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.s) && ("$VideoAlbumId".equals(paramPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId))))) {
-      paramPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.c(true);
+    if ((paramPhotoListCustomization != null) && (((paramPhotoListCustomization.g.O) && ("$RecentAlbumId".equals(paramPhotoListCustomization.e.albumId))) || ((paramPhotoListCustomization.g.P) && ("$VideoAlbumId".equals(paramPhotoListCustomization.e.albumId))))) {
+      paramPhotoListCustomization.h.c(true);
     }
   }
   
@@ -471,6 +455,31 @@ public class QQAlbumUtils
   }
   
   public static String b(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      Object localObject = new File(paramString).getParentFile().getName();
+      paramString = new StringBuilder(AppConstants.SDCARD_IMG_CAMERA);
+      paramString.append((String)localObject);
+      paramString.append(".mp4");
+      localObject = new File(AppConstants.SDCARD_IMG_CAMERA);
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      paramString = paramString.toString();
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QZLog.i("QQAlbum", 1, "get target path error encode error", paramString);
+    }
+    return null;
+  }
+  
+  public static String c(String paramString)
   {
     if ((paramString != null) && (paramString.startsWith(AppOpenConstants.d))) {
       return paramString;
@@ -513,7 +522,7 @@ public class QQAlbumUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.QQAlbumUtils
  * JD-Core Version:    0.7.0.1
  */

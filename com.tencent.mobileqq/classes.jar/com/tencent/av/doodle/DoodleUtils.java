@@ -38,14 +38,14 @@ public class DoodleUtils
   
   public static View a(ViewGroup paramViewGroup)
   {
-    Object localObject2 = paramViewGroup.findViewById(2131373377);
+    Object localObject2 = paramViewGroup.findViewById(2131441050);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = ((IDoodleApi)QRoute.api(IDoodleApi.class)).createDoodleSurfaceView(paramViewGroup.getContext());
       int i = -1;
       localObject2 = new ViewGroup.LayoutParams(-1, -1);
-      View localView = paramViewGroup.findViewById(2131373660);
+      View localView = paramViewGroup.findViewById(2131441334);
       if (localView != null) {
         i = paramViewGroup.indexOfChild(localView);
       }
@@ -62,22 +62,14 @@ public class DoodleUtils
       if (paramInt != 3) {
         localObject = new LineDoodleItem();
       } else {
-        localObject = new PathParticleDoodleItem(2130968656);
+        localObject = new PathParticleDoodleItem(2130968658);
       }
     }
     else {
       localObject = new LineDoodleItem();
     }
-    ((DoodleItem)localObject).a = paramInt;
+    ((DoodleItem)localObject).b = paramInt;
     return localObject;
-  }
-  
-  public static void a(ViewGroup paramViewGroup)
-  {
-    View localView = paramViewGroup.findViewById(2131373377);
-    if (localView != null) {
-      paramViewGroup.removeView(localView);
-    }
   }
   
   public static void a(String paramString)
@@ -95,6 +87,14 @@ public class DoodleUtils
     }
     a = true;
     return a;
+  }
+  
+  public static void b(ViewGroup paramViewGroup)
+  {
+    View localView = paramViewGroup.findViewById(2131441050);
+    if (localView != null) {
+      paramViewGroup.removeView(localView);
+    }
   }
   
   public static boolean b()

@@ -33,9 +33,9 @@ class VipProfileCardDiyActivity$4
       ((StringBuilder)localObject).append(paramObject);
       QLog.d("VipProfileCardDiyActivity", 2, ((StringBuilder)localObject).toString());
     }
-    this.a.b.set(false);
-    this.a.a.removeMessages(6);
-    this.a.i();
+    this.a.ax.set(false);
+    this.a.ak.removeMessages(6);
+    this.a.j();
     if ((paramBoolean) && (paramObject != null))
     {
       if ((paramObject instanceof Card))
@@ -54,70 +54,70 @@ class VipProfileCardDiyActivity$4
         if (((Integer)paramObject.first).intValue() == 101107)
         {
           localObject = this.a;
-          ((VipProfileCardDiyActivity)localObject).n = 1;
-          ((VipProfileCardDiyActivity)localObject).a.obtainMessage(2, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
-          if (VasUtil.a(this.a.app).getVipStatus().isVip()) {
+          ((VipProfileCardDiyActivity)localObject).av = 1;
+          ((VipProfileCardDiyActivity)localObject).ak.obtainMessage(2, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
+          if (VasUtil.b(this.a.app).getVipStatus().isVip()) {
             paramObject = "3";
           } else {
             paramObject = "2";
           }
-          VasWebviewUtil.a("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
+          VasWebviewUtil.a("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.af));
         }
         else if (((Integer)paramObject.first).intValue() == 101108)
         {
           localObject = this.a;
-          ((VipProfileCardDiyActivity)localObject).n = 2;
-          ((VipProfileCardDiyActivity)localObject).a.obtainMessage(2, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
-          if (VasUtil.a(this.a.app).getVipStatus().isSVip()) {
+          ((VipProfileCardDiyActivity)localObject).av = 2;
+          ((VipProfileCardDiyActivity)localObject).ak.obtainMessage(2, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
+          if (VasUtil.b(this.a.app).getVipStatus().isSVip()) {
             paramObject = "3";
           } else {
             paramObject = "2";
           }
-          VasWebviewUtil.a("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
+          VasWebviewUtil.a("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.af));
         }
         else if (((Integer)paramObject.first).intValue() == 401019)
         {
-          this.a.a.obtainMessage(8, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
+          this.a.ak.obtainMessage(8, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
         }
         else if (((Integer)paramObject.first).intValue() == 401020)
         {
-          this.a.a.obtainMessage(7, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
+          this.a.ak.obtainMessage(7, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
         }
         else if (((Integer)paramObject.first).intValue() == 401009)
         {
           localObject = this.a;
-          ((VipProfileCardDiyActivity)localObject).n = 2;
-          ((VipProfileCardDiyActivity)localObject).a.obtainMessage(2, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
-          if (VasUtil.a(this.a.app).getVipStatus().isSVip()) {
+          ((VipProfileCardDiyActivity)localObject).av = 2;
+          ((VipProfileCardDiyActivity)localObject).ak.obtainMessage(2, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
+          if (VasUtil.b(this.a.app).getVipStatus().isSVip()) {
             paramObject = "3";
           } else {
             paramObject = "2";
           }
-          VasWebviewUtil.a("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
+          VasWebviewUtil.a("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.af));
         }
         else
         {
-          localObject = this.a.a.obtainMessage(1);
+          localObject = this.a.ak.obtainMessage(1);
           if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
             ((Message)localObject).obj = ((SSummaryCardRsp)paramObject.second).emsg;
           }
-          this.a.a.sendMessage((Message)localObject);
+          this.a.ak.sendMessage((Message)localObject);
         }
       }
     }
     else
     {
-      paramObject = this.a.a.obtainMessage(1);
-      this.a.a.sendMessage(paramObject);
+      paramObject = this.a.ak.obtainMessage(1);
+      this.a.ak.sendMessage(paramObject);
     }
     paramObject = this.a;
-    paramObject.f = null;
-    paramObject.j = 0;
+    paramObject.ae = null;
+    paramObject.af = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.4
  * JD-Core Version:    0.7.0.1
  */

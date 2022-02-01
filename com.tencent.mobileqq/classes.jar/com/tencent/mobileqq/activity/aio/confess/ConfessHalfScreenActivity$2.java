@@ -12,7 +12,7 @@ class ConfessHalfScreenActivity$2
   
   public void run()
   {
-    Object localObject = CampusCircleIpcClient.a().a();
+    Object localObject = CampusCircleIpcClient.a().f();
     if ((localObject != null) && (localObject.length == 2))
     {
       boolean bool1 = ((Boolean)localObject[0]).booleanValue();
@@ -31,7 +31,7 @@ class ConfessHalfScreenActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.2
  * JD-Core Version:    0.7.0.1
  */

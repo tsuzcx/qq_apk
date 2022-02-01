@@ -15,11 +15,11 @@ class SwiftBrowserShareMenuHandler$4$1
   
   public void run()
   {
-    int i = this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.a().a;
-    String str1 = this.a.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getAppRuntime().getCurrentAccountUin();
-    String str2 = this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.a().i;
-    String str3 = this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.a().h;
-    if (this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.a().b == 3) {
+    int i = this.a.c.f.a().c;
+    String str1 = this.a.c.e.getAppRuntime().getCurrentAccountUin();
+    String str2 = this.a.c.f.a().n;
+    String str3 = this.a.c.f.a().m;
+    if (this.a.c.f.a().f == 3) {
       bool = true;
     } else {
       bool = false;
@@ -30,7 +30,7 @@ class SwiftBrowserShareMenuHandler$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler.4.1
  * JD-Core Version:    0.7.0.1
  */

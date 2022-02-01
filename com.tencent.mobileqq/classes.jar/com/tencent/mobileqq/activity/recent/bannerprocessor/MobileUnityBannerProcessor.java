@@ -16,12 +16,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 public class MobileUnityBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.i;
-  }
+  public static final int a = BannerTypeCollections.i;
   
   public MobileUnityBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -30,14 +25,9 @@ public class MobileUnityBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131560981, null);
-    paramBanner.findViewById(2131374179).setVisibility(8);
+    paramBanner = View.inflate(this.f, 2131627322, null);
+    paramBanner.findViewById(2131442274).setVisibility(8);
     return paramBanner;
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
   }
   
   public void a(Banner paramBanner, Message paramMessage)
@@ -47,23 +37,28 @@ public class MobileUnityBannerProcessor
       if (!(paramMessage.obj instanceof PhoneUnityBannerData)) {
         return;
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "CliOper", "", "", "0X8005B72", "0X8005B72", 0, 0, "", "", "", "");
-      paramBanner.a.findViewById(2131374179).setVisibility(0);
+      ReportController.b(this.f.getAppRuntime(), "CliOper", "", "", "0X8005B72", "0X8005B72", 0, 0, "", "", "", "");
+      paramBanner.c.findViewById(2131442274).setVisibility(0);
       paramMessage = (PhoneUnityBannerData)paramMessage.obj;
-      ((TextView)paramBanner.a.findViewById(2131363401)).setText(paramMessage.b);
-      ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 5, 0, "", "", "", "");
-      paramBanner.a.setOnClickListener(new MobileUnityBannerProcessor.1(this, paramMessage));
+      ((TextView)paramBanner.c.findViewById(2131429291)).setText(paramMessage.b);
+      ReportController.a(this.f.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 5, 0, "", "", "", "");
+      paramBanner.c.setOnClickListener(new MobileUnityBannerProcessor.1(this, paramMessage));
     }
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
+  }
+  
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.MobileUnityBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

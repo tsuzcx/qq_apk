@@ -23,11 +23,11 @@ import mqq.os.MqqHandler;
 public class MonitorManager
   extends BroadcastReceiver
 {
-  private static MonitorManager jdField_a_of_type_CooperationVipManagerMonitorManager;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private List<mobile_monitor_report.ExceptionReport> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static MonitorManager a;
   private long b;
+  private int c;
+  private long d;
+  private List<mobile_monitor_report.ExceptionReport> e = new ArrayList();
   
   MonitorManager()
   {
@@ -35,79 +35,36 @@ public class MonitorManager
     ((IntentFilter)localObject).addAction("com.tencent.plugin.state.change");
     BaseApplicationImpl.getApplication().registerReceiver(this, (IntentFilter)localObject);
     localObject = BaseApplicationImpl.getApplication().getSharedPreferences("monitor_manager", 4);
-    this.jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt("max_size_out", 20);
-    this.b = (((SharedPreferences)localObject).getLong("max_time_out", 30L) * 60L * 1000L);
+    this.c = ((SharedPreferences)localObject).getInt("max_size_out", 20);
+    this.d = (((SharedPreferences)localObject).getLong("max_time_out", 30L) * 60L * 1000L);
   }
   
   public static MonitorManager a()
   {
-    if (jdField_a_of_type_CooperationVipManagerMonitorManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_CooperationVipManagerMonitorManager == null) {
-          jdField_a_of_type_CooperationVipManagerMonitorManager = new MonitorManager();
+        if (a == null) {
+          a = new MonitorManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_CooperationVipManagerMonitorManager;
-  }
-  
-  private void a()
-  {
-    ThreadManager.getSubThreadHandler().post(new MonitorManager.2(this));
+    return a;
   }
   
   private void a(boolean paramBoolean)
   {
-    if (a(paramBoolean))
+    if (b(paramBoolean))
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      b();
+      this.b = System.currentTimeMillis();
+      c();
     }
-  }
-  
-  private boolean a(boolean paramBoolean)
-  {
-    boolean bool = true;
-    if (paramBoolean) {
-      return true;
-    }
-    int i;
-    if (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    int j;
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long > this.b) {
-      j = 1;
-    } else {
-      j = 0;
-    }
-    paramBoolean = bool;
-    if (i == 0)
-    {
-      if (j != 0) {
-        return true;
-      }
-      paramBoolean = false;
-    }
-    return paramBoolean;
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      MonitorServlet.a(localArrayList);
-      return;
-    }
+    ThreadManager.getSubThreadHandler().post(new MonitorManager.2(this));
   }
   
   private void b(int paramInt1, int paramInt2, String paramString1, String paramString2)
@@ -140,10 +97,53 @@ public class MonitorManager
       str = "";
     }
     localExceptionReport.msg.set(str);
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.e)
     {
-      this.jdField_a_of_type_JavaUtilList.add(localExceptionReport);
+      this.e.add(localExceptionReport);
       a(paramBoolean);
+      return;
+    }
+  }
+  
+  private boolean b(boolean paramBoolean)
+  {
+    boolean bool = true;
+    if (paramBoolean) {
+      return true;
+    }
+    int i;
+    if (this.e.size() > this.c) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int j;
+    if (System.currentTimeMillis() - this.b > this.d) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    paramBoolean = bool;
+    if (i == 0)
+    {
+      if (j != 0) {
+        return true;
+      }
+      paramBoolean = false;
+    }
+    return paramBoolean;
+  }
+  
+  private void c()
+  {
+    if (this.e.size() <= 0) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList(this.e);
+    synchronized (this.e)
+    {
+      this.e.clear();
+      MonitorServlet.a(localArrayList);
       return;
     }
   }
@@ -152,8 +152,8 @@ public class MonitorManager
   {
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
-      this.b = paramInt1;
-      this.b = (paramInt2 * 60 * 60);
+      this.d = paramInt1;
+      this.d = (paramInt2 * 60 * 60);
       SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("monitor_manager", 4).edit();
       localEditor.putInt("max_size_out", paramInt1);
       localEditor.putInt("max_time_out", paramInt2);
@@ -195,13 +195,13 @@ public class MonitorManager
     if (("com.tencent.plugin.state.change".equals(paramContext)) && (paramIntent.getIntExtra("key_plugin_state", 0) == 0))
     {
       QLog.i("MonitorManager", 1, "[onReceive] bg action");
-      a();
+      b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.MonitorManager
  * JD-Core Version:    0.7.0.1
  */

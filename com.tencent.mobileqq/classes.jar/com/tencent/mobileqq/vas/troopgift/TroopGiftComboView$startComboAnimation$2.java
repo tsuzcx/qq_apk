@@ -25,18 +25,18 @@ final class TroopGiftComboView$startComboAnimation$2
   {
     Intrinsics.checkParameterIsNotNull(paramPAGView, "pagView");
     Object localObject;
-    if (TroopGiftComboView.a(this.this$0) > 0L)
+    if (TroopGiftComboView.c(this.this$0) > 0L)
     {
       localObject = this.$animator;
       Intrinsics.checkExpressionValueIsNotNull(localObject, "animator");
-      ((ValueAnimator)localObject).setDuration(TroopGiftComboView.a(this.this$0));
+      ((ValueAnimator)localObject).setDuration(TroopGiftComboView.c(this.this$0));
     }
     else
     {
       localObject = this.$animator;
       Intrinsics.checkExpressionValueIsNotNull(localObject, "animator");
       ((ValueAnimator)localObject).setDuration(TroopGiftComboView.a(this.this$0, this.$comboTimes));
-      localObject = this.this$0.a();
+      localObject = this.this$0.getTAG();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Get troopgift combo pag duration failed. comboTimes: ");
       localStringBuilder.append(this.$comboTimes);
@@ -47,7 +47,7 @@ final class TroopGiftComboView$startComboAnimation$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopgift.TroopGiftComboView.startComboAnimation.2
  * JD-Core Version:    0.7.0.1
  */

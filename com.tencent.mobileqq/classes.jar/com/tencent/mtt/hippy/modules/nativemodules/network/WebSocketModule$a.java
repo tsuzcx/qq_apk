@@ -9,9 +9,9 @@ import com.tencent.mtt.hippy.modules.javascriptmodules.EventDispatcher;
 class WebSocketModule$a
   implements d.a
 {
-  private int a;
-  private HippyEngineContext b;
-  private WebSocketModule c;
+  private final int a;
+  private final HippyEngineContext b;
+  private final WebSocketModule c;
   private boolean d;
   
   public WebSocketModule$a(int paramInt, HippyEngineContext paramHippyEngineContext, WebSocketModule paramWebSocketModule)
@@ -68,7 +68,7 @@ class WebSocketModule$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.network.WebSocketModule.a
  * JD-Core Version:    0.7.0.1
  */

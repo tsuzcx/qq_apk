@@ -9,13 +9,13 @@ class VipProfileCardDiyActivity$3
   
   public void onMeasured(int paramInt1, int paramInt2)
   {
-    this.a.a.setActualViewSize(paramInt1, paramInt2);
-    this.a.a.invalidate();
+    this.a.l.setActualViewSize(paramInt1, paramInt2);
+    this.a.l.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.3
  * JD-Core Version:    0.7.0.1
  */

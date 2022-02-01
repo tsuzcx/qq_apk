@@ -15,14 +15,14 @@ class PromotionMgr$1
   {
     paramArrayList = (ReadConfigTask)paramArrayList.get(0);
     Object localObject;
-    if ((PromotionMgr.a(this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionMgr) != null) && (PromotionMgr.a(this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionMgr) == paramArrayList) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
+    if ((PromotionMgr.a(this.d) != null) && (PromotionMgr.a(this.d) == paramArrayList) && (this.a != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionMgr.jdField_a_of_type_JavaLangString;
+      localObject = this.d.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("异步加载config返回, bsuc[");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append("], TAG[");
-      localStringBuilder.append(paramArrayList.TAG);
+      localStringBuilder.append(paramArrayList.mTAG);
       localStringBuilder.append("], isEnableFromLocal[");
       localStringBuilder.append(PromotionDevice.c());
       localStringBuilder.append("], config[");
@@ -31,29 +31,29 @@ class PromotionMgr$1
       QLog.w((String)localObject, 1, localStringBuilder.toString());
       if (paramBoolean)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionMgr.a(paramArrayList.a);
-        this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionMgr.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        this.d.a(paramArrayList.a);
+        this.d.b(this.a);
       }
-      PromotionMgr.a(this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionMgr, null);
+      PromotionMgr.a(this.d, null);
     }
     else
     {
-      paramArrayList = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionMgr.jdField_a_of_type_JavaLangString;
+      paramArrayList = this.d.a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("异步加载config返回[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b);
       ((StringBuilder)localObject).append("], 但原请求取消了");
       QLog.w(paramArrayList, 1, ((StringBuilder)localObject).toString());
     }
-    paramArrayList = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionMgr$GetConfigListen;
+    paramArrayList = this.c;
     if (paramArrayList != null) {
-      paramArrayList.a(this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionMgr.a());
+      paramArrayList.a(this.d.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionMgr.1
  * JD-Core Version:    0.7.0.1
  */

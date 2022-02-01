@@ -20,7 +20,7 @@ import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
 
 public class PackMsgProcessor
 {
-  public static long a = 1L;
+  public static long b = 1L;
   ArticleInfoModule a;
   
   public PackMsgProcessor(ArticleInfoModule paramArticleInfoModule)
@@ -39,7 +39,7 @@ public class PackMsgProcessor
       {
         Object localObject = (AbsBaseArticleInfo)paramList.get(i);
         ((AbsBaseArticleInfo)localObject).mIsInPolymeric = false;
-        if (!RIJFeedsType.y((AbsBaseArticleInfo)localObject))
+        if (!RIJFeedsType.E((AbsBaseArticleInfo)localObject))
         {
           localArrayList.add(localObject);
           j = i;
@@ -52,8 +52,8 @@ public class PackMsgProcessor
           localBaseArticleInfo.mGroupSubArticleList = new ArrayList();
           localBaseArticleInfo.mGroupSubArticleList.add(localObject);
           localBaseArticleInfo.mPolymericInfo = ((AbsBaseArticleInfo)localObject).mPolymericInfo;
-          localBaseArticleInfo.mStrategyId = ((int)((AbsBaseArticleInfo)localObject).mPolymericInfo.d);
-          localBaseArticleInfo.mAlgorithmID = ((int)((AbsBaseArticleInfo)localObject).mPolymericInfo.e);
+          localBaseArticleInfo.mStrategyId = ((int)((AbsBaseArticleInfo)localObject).mPolymericInfo.k);
+          localBaseArticleInfo.mAlgorithmID = ((int)((AbsBaseArticleInfo)localObject).mPolymericInfo.l);
           StringBuilder localStringBuilder = new StringBuilder("polymeric【");
           localStringBuilder.append(localArrayList.size());
           localStringBuilder.append("】");
@@ -83,7 +83,7 @@ public class PackMsgProcessor
             localStringBuilder.append("\n");
             i = j;
           }
-          if ((RIJFeedsType.C((AbsBaseArticleInfo)localObject)) && (localBaseArticleInfo.mGroupSubArticleList.size() >= 1))
+          if ((RIJFeedsType.I((AbsBaseArticleInfo)localObject)) && (localBaseArticleInfo.mGroupSubArticleList.size() >= 1))
           {
             localArrayList.add(localBaseArticleInfo);
             j = i;
@@ -109,7 +109,7 @@ public class PackMsgProcessor
           }
         }
       }
-      if ((localArrayList.size() > 1) && (RIJFeedsType.A((AbsBaseArticleInfo)localArrayList.get(localArrayList.size() - 1)))) {
+      if ((localArrayList.size() > 1) && (RIJFeedsType.G((AbsBaseArticleInfo)localArrayList.get(localArrayList.size() - 1)))) {
         localArrayList.remove(localArrayList.size() - 1);
       }
       return localArrayList;
@@ -119,7 +119,7 @@ public class PackMsgProcessor
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.p != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.p.size() > 0))
     {
       paramAbsBaseArticleInfo.mGroupSubArticleList = new ArrayList();
       String str = paramAbsBaseArticleInfo.getSubscribeUin();
@@ -137,39 +137,39 @@ public class PackMsgProcessor
         QLog.e("PackMsgProcess", 2, ((StringBuilder)localObject).toString());
         l = 0L;
       }
-      Iterator localIterator = paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = paramAbsBaseArticleInfo.mNewPolymericInfo.p.iterator();
       while (localIterator.hasNext())
       {
         localObject = (NewPolymericInfo.PackArticleInfo)localIterator.next();
         BaseArticleInfo localBaseArticleInfo = new BaseArticleInfo();
         localBaseArticleInfo.mChannelID = paramAbsBaseArticleInfo.mChannelID;
-        localBaseArticleInfo.mArticleID = ((NewPolymericInfo.PackArticleInfo)localObject).jdField_a_of_type_Long;
-        localBaseArticleInfo.mStrategyId = ((NewPolymericInfo.PackArticleInfo)localObject).jdField_a_of_type_Int;
-        localBaseArticleInfo.mAlgorithmID = ((NewPolymericInfo.PackArticleInfo)localObject).b;
-        localBaseArticleInfo.innerUniqueID = ((NewPolymericInfo.PackArticleInfo)localObject).g;
-        localBaseArticleInfo.mArticleContentUrl = ((NewPolymericInfo.PackArticleInfo)localObject).jdField_d_of_type_JavaLangString;
-        localBaseArticleInfo.mSubscribeID = ((NewPolymericInfo.PackArticleInfo)localObject).e;
+        localBaseArticleInfo.mArticleID = ((NewPolymericInfo.PackArticleInfo)localObject).a;
+        localBaseArticleInfo.mStrategyId = ((NewPolymericInfo.PackArticleInfo)localObject).h;
+        localBaseArticleInfo.mAlgorithmID = ((NewPolymericInfo.PackArticleInfo)localObject).i;
+        localBaseArticleInfo.innerUniqueID = ((NewPolymericInfo.PackArticleInfo)localObject).l;
+        localBaseArticleInfo.mArticleContentUrl = ((NewPolymericInfo.PackArticleInfo)localObject).e;
+        localBaseArticleInfo.mSubscribeID = ((NewPolymericInfo.PackArticleInfo)localObject).f;
         boolean bool;
-        if (((NewPolymericInfo.PackArticleInfo)localObject).jdField_c_of_type_Int == 1) {
+        if (((NewPolymericInfo.PackArticleInfo)localObject).m == 1) {
           bool = true;
         } else {
           bool = false;
         }
         localBaseArticleInfo.mIsPolymericGallery = bool;
-        localBaseArticleInfo.mGalleryPicNumber = ((NewPolymericInfo.PackArticleInfo)localObject).jdField_d_of_type_Int;
-        localBaseArticleInfo.mSinglePicture = RIJConvertString2URL.a(((NewPolymericInfo.PackArticleInfo)localObject).jdField_c_of_type_JavaLangString);
-        if (((NewPolymericInfo.PackArticleInfo)localObject).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo != null)
+        localBaseArticleInfo.mGalleryPicNumber = ((NewPolymericInfo.PackArticleInfo)localObject).n;
+        localBaseArticleInfo.mSinglePicture = RIJConvertString2URL.b(((NewPolymericInfo.PackArticleInfo)localObject).d);
+        if (((NewPolymericInfo.PackArticleInfo)localObject).o != null)
         {
-          localBaseArticleInfo.mVideoCoverUrl = RIJConvertString2URL.a(((NewPolymericInfo.PackArticleInfo)localObject).jdField_c_of_type_JavaLangString);
-          localBaseArticleInfo.mVideoVid = ((NewPolymericInfo.PackArticleInfo)localObject).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.a;
+          localBaseArticleInfo.mVideoCoverUrl = RIJConvertString2URL.b(((NewPolymericInfo.PackArticleInfo)localObject).d);
+          localBaseArticleInfo.mVideoVid = ((NewPolymericInfo.PackArticleInfo)localObject).o.b;
         }
         localBaseArticleInfo.mNewPolymericInfo = new NewPolymericInfo();
-        localBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int = paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int;
-        localBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Boolean = false;
-        localBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
+        localBaseArticleInfo.mNewPolymericInfo.d = paramAbsBaseArticleInfo.mNewPolymericInfo.d;
+        localBaseArticleInfo.mNewPolymericInfo.a = false;
+        localBaseArticleInfo.mNewPolymericInfo.p = new ArrayList();
         try
         {
-          localBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.add((NewPolymericInfo.PackArticleInfo)((NewPolymericInfo.PackArticleInfo)localObject).clone());
+          localBaseArticleInfo.mNewPolymericInfo.p.add((NewPolymericInfo.PackArticleInfo)((NewPolymericInfo.PackArticleInfo)localObject).clone());
         }
         catch (Exception localException2)
         {
@@ -180,10 +180,10 @@ public class PackMsgProcessor
         }
         if (RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo))
         {
-          ((NewPolymericInfo.PackArticleInfo)localObject).jdField_a_of_type_Boolean = true;
+          ((NewPolymericInfo.PackArticleInfo)localObject).s = true;
           localBaseArticleInfo.mSocialFeedInfo = paramAbsBaseArticleInfo.mSocialFeedInfo;
         }
-        localBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Long = l;
+        localBaseArticleInfo.mNewPolymericInfo.c = l;
         paramAbsBaseArticleInfo.mGroupSubArticleList.add(localBaseArticleInfo);
       }
     }
@@ -200,7 +200,7 @@ public class PackMsgProcessor
       long l2 = -1L;
       while (i < k)
       {
-        Object localObject1 = this.a.a().a(paramInteger, (Long)paramList.get(i));
+        Object localObject1 = this.a.i().a(paramInteger, (Long)paramList.get(i));
         if (localObject1 != null)
         {
           int j;
@@ -334,7 +334,7 @@ public class PackMsgProcessor
       AbsBaseArticleInfo localAbsBaseArticleInfo1 = (AbsBaseArticleInfo)paramList.get(paramList.size() - 1);
       if (localAbsBaseArticleInfo1.mGroupId != -1L)
       {
-        paramInteger = this.a.a().b(paramInteger.intValue(), 10, localAbsBaseArticleInfo1.mRecommendSeq, true).iterator();
+        paramInteger = this.a.i().b(paramInteger.intValue(), 10, localAbsBaseArticleInfo1.mRecommendSeq, true).iterator();
         while (paramInteger.hasNext())
         {
           AbsBaseArticleInfo localAbsBaseArticleInfo2 = (AbsBaseArticleInfo)paramInteger.next();
@@ -348,7 +348,7 @@ public class PackMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.message.PackMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

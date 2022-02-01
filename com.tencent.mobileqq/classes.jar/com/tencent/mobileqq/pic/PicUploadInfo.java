@@ -12,88 +12,48 @@ import java.util.ArrayList;
 public class PicUploadInfo
   extends PicBaseInfo
 {
-  public PhotoSendParams a;
-  public PicUploadExtra a;
-  public PicUploadInfo.RetryInfo a;
-  public ArrayList<Integer> a;
-  public long b;
-  public Object b;
-  public boolean b;
-  public long c;
-  public boolean c;
-  public long d;
-  public boolean d;
-  public int e;
-  public long e;
-  public boolean e;
-  public int f;
-  public long f;
-  public boolean f;
-  public int g;
-  public long g;
-  public String g;
-  public boolean g;
-  public int h;
-  public String h;
-  public boolean h;
-  public int i;
-  public String i;
-  public boolean i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public int m;
-  public String m;
-  public int n = 0;
+  public int A = 0;
+  public String B;
+  public int C;
+  public int D;
+  public long E;
+  public int F;
+  public int G;
+  public int I = 0;
+  public Object J;
+  public int K;
+  public int L = 0;
+  public boolean M = false;
+  public long N;
+  public String O;
+  public long P;
+  public long Q;
+  public PhotoSendParams R;
+  public boolean S;
+  public long T;
+  public int U;
+  public boolean V = false;
+  public int W;
+  public String X;
+  public String Y;
+  public String Z;
+  public String aa;
+  public int ab;
+  public PicUploadExtra ac;
+  public PicUploadInfo.RetryInfo ad;
   public String n;
-  public int o;
-  public int p = 0;
+  public String o;
+  public int p;
   public int q;
-  public int r;
-  public int s;
-  
-  public PicUploadInfo()
-  {
-    this.jdField_g_of_type_Int = -1;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_i_of_type_Int = 0;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_i_of_type_Boolean = false;
-  }
-  
-  public int a()
-  {
-    int i1 = this.jdField_g_of_type_Int;
-    if (i1 != -1) {
-      return i1;
-    }
-    String str = this.jdField_g_of_type_JavaLangString;
-    if (str != null)
-    {
-      if (GifDrawable.isGifFile(new File(str)))
-      {
-        this.jdField_g_of_type_Int = 0;
-        return this.jdField_g_of_type_Int;
-      }
-    }
-    else {
-      Logger.b("PIC_TAG_ERROR", "PicUploadInfo.getProtocolType", "localPath == null");
-    }
-    if (this.jdField_h_of_type_Int == 2) {
-      this.jdField_g_of_type_Int = 1;
-    } else {
-      this.jdField_g_of_type_Int = 0;
-    }
-    return this.jdField_g_of_type_Int;
-  }
+  public ArrayList<Integer> r;
+  public int s = -1;
+  public int t;
+  public long u = 0L;
+  public boolean v = true;
+  public boolean w = false;
+  public boolean x = false;
+  public boolean y = false;
+  public boolean z = false;
   
   public String a()
   {
@@ -101,117 +61,143 @@ public class PicUploadInfo
     localStringBuilder.append("\nPicUploadInfo");
     localStringBuilder.append("\n |-");
     localStringBuilder.append("localPath:");
-    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append(this.n);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("protocolType:");
-    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append(this.s);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("md5:");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("sendSizeSpec:");
-    localStringBuilder.append(this.jdField_h_of_type_Int);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("thumbPath:");
-    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("thumbWidth:");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("thumbHeight:");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("source_image_width:");
-    localStringBuilder.append(this.j);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("source_image_height:");
-    localStringBuilder.append(this.k);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("source_image_filesize:");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("source_image_filesizeflag:");
-    localStringBuilder.append(this.l);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("source_image_type:");
     localStringBuilder.append(this.m);
     localStringBuilder.append("\n |-");
+    localStringBuilder.append("sendSizeSpec:");
+    localStringBuilder.append(this.t);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbPath:");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbWidth:");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbHeight:");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("source_image_width:");
+    localStringBuilder.append(this.C);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("source_image_height:");
+    localStringBuilder.append(this.D);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("source_image_filesize:");
+    localStringBuilder.append(this.E);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("source_image_filesizeflag:");
+    localStringBuilder.append(this.F);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("source_image_type:");
+    localStringBuilder.append(this.G);
+    localStringBuilder.append("\n |-");
     localStringBuilder.append("entrance:");
-    localStringBuilder.append(this.n);
+    localStringBuilder.append(this.I);
     return localStringBuilder.toString();
   }
   
-  public boolean a()
+  public boolean b()
   {
     StringBuilder localStringBuilder;
-    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_g_of_type_JavaLangString))
+    if (!FileUtils.fileExistsAndNotEmpty(this.n))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("path invalid,localPath:");
-      localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+      localStringBuilder.append(this.n);
       a("checkPicInfo", localStringBuilder.toString());
       return false;
     }
-    if (((this.jdField_b_of_type_Int == 1000) || (this.jdField_b_of_type_Int == 1020) || (this.jdField_b_of_type_Int == 1004)) && (this.jdField_d_of_type_JavaLangString == null))
+    if (((this.c == 1000) || (this.c == 1020) || (this.c == 1004)) && (this.f == null))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("secondId invalid,uinType:");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.c);
       localStringBuilder.append(",secondId:");
-      localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+      localStringBuilder.append(this.f);
       a("checkPicInfo", localStringBuilder.toString());
       return false;
     }
-    if (a() == -1)
+    if (j() == -1)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("protocolType invalid,protocolType:");
-      localStringBuilder.append(this.jdField_g_of_type_Int);
+      localStringBuilder.append(this.s);
       a("PicBaseInfo.check", localStringBuilder.toString());
       return false;
     }
-    return super.a();
+    return super.b();
   }
   
-  String b()
+  String c()
   {
-    if (this.jdField_e_of_type_JavaLangString == null)
+    if (this.l == null)
     {
       Logger.b("PIC_TAG_ERROR", "PicUploadInfo.getUrlString", "protocol == null");
       return null;
     }
-    boolean bool = "chatthumb".equals(this.jdField_e_of_type_JavaLangString);
-    int i1 = 65537;
+    boolean bool = "chatthumb".equals(this.l);
+    int i = 65537;
     if (!bool) {
-      if ("chatimg".equals(this.jdField_e_of_type_JavaLangString)) {
-        i1 = 1;
-      } else if ("chatraw".equals(this.jdField_e_of_type_JavaLangString)) {
-        i1 = 131075;
+      if ("chatimg".equals(this.l)) {
+        i = 1;
+      } else if ("chatraw".equals(this.l)) {
+        i = 131075;
       }
     }
-    URL localURL = ((IPicHelper)QRoute.api(IPicHelper.class)).getURL(this, i1, null);
+    URL localURL = ((IPicHelper)QRoute.api(IPicHelper.class)).getURL(this, i, null);
     if (localURL != null) {
       return localURL.toString();
     }
     return null;
   }
   
-  public boolean c()
+  public boolean g()
   {
-    PicUploadExtra localPicUploadExtra = this.a;
-    return (localPicUploadExtra != null) && (localPicUploadExtra.a);
+    PicUploadExtra localPicUploadExtra = this.ac;
+    return (localPicUploadExtra != null) && (localPicUploadExtra.c);
   }
   
-  public boolean d()
+  public boolean h()
   {
-    PicUploadExtra localPicUploadExtra = this.a;
-    return (localPicUploadExtra != null) && (localPicUploadExtra.jdField_b_of_type_Boolean);
+    PicUploadExtra localPicUploadExtra = this.ac;
+    return (localPicUploadExtra != null) && (localPicUploadExtra.f);
   }
   
-  public boolean e()
+  public boolean i()
   {
-    PicUploadExtra localPicUploadExtra = this.a;
-    return (localPicUploadExtra != null) && (localPicUploadExtra.jdField_c_of_type_Boolean);
+    PicUploadExtra localPicUploadExtra = this.ac;
+    return (localPicUploadExtra != null) && (localPicUploadExtra.g);
+  }
+  
+  public int j()
+  {
+    int i = this.s;
+    if (i != -1) {
+      return i;
+    }
+    String str = this.n;
+    if (str != null)
+    {
+      if (GifDrawable.isGifFile(new File(str)))
+      {
+        this.s = 0;
+        return this.s;
+      }
+    }
+    else {
+      Logger.b("PIC_TAG_ERROR", "PicUploadInfo.getProtocolType", "localPath == null");
+    }
+    if (this.t == 2) {
+      this.s = 1;
+    } else {
+      this.s = 0;
+    }
+    return this.s;
   }
   
   public String toString()
@@ -224,7 +210,7 @@ public class PicUploadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicUploadInfo
  * JD-Core Version:    0.7.0.1
  */

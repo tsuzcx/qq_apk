@@ -12,21 +12,21 @@ class QQAvatarFHDDecoder$2
   
   public void run()
   {
-    if (QQAvatarFHDDecoder.a(this.this$0)) {
+    if (QQAvatarFHDDecoder.b(this.this$0)) {
       return;
     }
-    Setting localSetting = QQAvatarFHDDecoder.a(this.this$0).getQQHeadSettingFromDB(this.jdField_a_of_type_JavaLangString);
-    if ((!this.jdField_a_of_type_Boolean) && (localSetting != null) && (!TextUtils.isEmpty(localSetting.url)) && (System.currentTimeMillis() - localSetting.updateTimestamp <= 86400000L))
+    Setting localSetting = QQAvatarFHDDecoder.c(this.this$0).getQQHeadSettingFromDB(this.a);
+    if ((!this.b) && (localSetting != null) && (!TextUtils.isEmpty(localSetting.url)) && (System.currentTimeMillis() - localSetting.updateTimestamp <= 86400000L))
     {
       this.this$0.a(localSetting);
       return;
     }
-    ((IQQAvatarHandlerService)QQAvatarFHDDecoder.a(this.this$0).getRuntimeService(IQQAvatarHandlerService.class, "")).getCustomHead(this.jdField_a_of_type_JavaLangString);
+    ((IQQAvatarHandlerService)QQAvatarFHDDecoder.c(this.this$0).getRuntimeService(IQQAvatarHandlerService.class, "")).getCustomHead(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQAvatarFHDDecoder.2
  * JD-Core Version:    0.7.0.1
  */

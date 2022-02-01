@@ -16,7 +16,7 @@ class ForwardBaseOption$4
   public void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
   {
     super.a(paramInt, paramBoolean, paramArrayOfObject);
-    ForwardBaseOption.e(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption);
+    ForwardBaseOption.f(this.f);
     if (!paramBoolean)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -25,7 +25,7 @@ class ForwardBaseOption$4
       localStringBuilder.append("], result = [");
       localStringBuilder.append(paramArrayOfObject[1]);
       localStringBuilder.append("], isExpiredMessage: ");
-      localStringBuilder.append(Arrays.toString(ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption)));
+      localStringBuilder.append(Arrays.toString(ForwardBaseOption.g(this.f)));
       localStringBuilder.append(" padId: ");
       localStringBuilder.append(Arrays.toString((Object[])paramArrayOfObject[0]));
       Log.d("onSentMessage", localStringBuilder.toString());
@@ -33,40 +33,40 @@ class ForwardBaseOption$4
       {
         paramArrayOfObject = (String[])paramArrayOfObject[0];
         paramInt = 0;
-        while (paramInt < this.jdField_a_of_type_ArrayOfBoolean.length)
+        while (paramInt < this.a.length)
         {
-          if ((this.jdField_a_of_type_ArrayOfJavaLangString[paramInt].equals(paramArrayOfObject[0])) && (this.b[paramInt].equals(paramArrayOfObject[1])) && (this.jdField_a_of_type_ArrayOfInt[paramInt] == Integer.parseInt(paramArrayOfObject[2]))) {
-            ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption)[paramInt] = 1;
+          if ((this.b[paramInt].equals(paramArrayOfObject[0])) && (this.c[paramInt].equals(paramArrayOfObject[1])) && (this.d[paramInt] == Integer.parseInt(paramArrayOfObject[2]))) {
+            ForwardBaseOption.g(this.f)[paramInt] = 1;
           }
           paramInt += 1;
         }
       }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidAppActivity, "发送失败，请稍后重试。", 0).a();
-      paramArrayOfObject = this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption;
-      paramArrayOfObject.d = 0;
-      paramArrayOfObject.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+      QQToast.makeText(this.f.s, "发送失败，请稍后重试。", 0).show();
+      paramArrayOfObject = this.f;
+      paramArrayOfObject.Z = 0;
+      paramArrayOfObject.q.removeObserver(this);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidAppActivity.setResult(15);
-    paramArrayOfObject = this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption;
-    paramInt = paramArrayOfObject.d + 1;
-    paramArrayOfObject.d = paramInt;
-    if (paramInt == this.jdField_a_of_type_Int)
+    this.f.s.setResult(15);
+    paramArrayOfObject = this.f;
+    paramInt = paramArrayOfObject.Z + 1;
+    paramArrayOfObject.Z = paramInt;
+    if (paramInt == this.e)
     {
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidOsBundle.putBooleanArray("forward_write_together_is_expired", ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption));
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-      if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.j())
+      this.f.t.putBooleanArray("forward_write_together_is_expired", ForwardBaseOption.g(this.f));
+      this.f.q.removeObserver(this);
+      if (this.f.K())
       {
-        ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption);
+        ForwardBaseOption.b(this.f);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a();
+      this.f.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardBaseOption.4
  * JD-Core Version:    0.7.0.1
  */

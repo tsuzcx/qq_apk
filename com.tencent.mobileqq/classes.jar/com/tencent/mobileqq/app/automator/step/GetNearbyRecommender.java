@@ -24,14 +24,14 @@ public class GetNearbyRecommender
   
   protected int doStep()
   {
-    Object localObject1 = ((FriendsManager)this.mAutomator.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.mAutomator.a.getCurrentAccountUin());
+    Object localObject1 = ((FriendsManager)this.mAutomator.k.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(this.mAutomator.k.getCurrentAccountUin());
     int i = 1;
     if (localObject1 == null)
     {
       if (this.a == null) {
         this.a = new GetNearbyRecommender.MyCardObserver(this);
       }
-      this.mAutomator.a.addObserver(this.a, true);
+      this.mAutomator.k.addObserver(this.a, true);
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "GetNearbyRecommender doStep|RESULT_WAITING");
       }
@@ -45,10 +45,10 @@ public class GetNearbyRecommender
     long l1;
     if (i1 >= 18)
     {
-      localObject1 = this.mAutomator.a.getApplication();
+      localObject1 = this.mAutomator.k.getApplication();
       Object localObject2 = (INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class);
       localObject1 = ((MobileQQ)localObject1).getSharedPreferences("sp_nearbyrecommender", 0);
-      l2 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.mAutomator.a.getAccount(), "nearby_enter_time", Long.valueOf(0L))).longValue();
+      l2 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.mAutomator.k.getAccount(), "nearby_enter_time", Long.valueOf(0L))).longValue();
       l3 = System.currentTimeMillis();
       if ((l2 != 0L) && (86400L > Math.abs(l3 - l2) / 1000L))
       {
@@ -57,7 +57,7 @@ public class GetNearbyRecommender
       else
       {
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.mAutomator.a.getCurrentAccountUin());
+        ((StringBuilder)localObject2).append(this.mAutomator.k.getCurrentAccountUin());
         ((StringBuilder)localObject2).append("_");
         INearbyRecommenderUtils localINearbyRecommenderUtils = (INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class);
         ((StringBuilder)localObject2).append("key_login_pull_interval");
@@ -65,7 +65,7 @@ public class GetNearbyRecommender
         localINearbyRecommenderUtils = (INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class);
         j = ((SharedPreferences)localObject1).getInt((String)localObject2, 86400);
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.mAutomator.a.getCurrentAccountUin());
+        ((StringBuilder)localObject2).append(this.mAutomator.k.getCurrentAccountUin());
         ((StringBuilder)localObject2).append("_");
         localINearbyRecommenderUtils = (INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class);
         ((StringBuilder)localObject2).append("key_login_pull_time");
@@ -77,9 +77,9 @@ public class GetNearbyRecommender
         else
         {
           i = 3;
-          localObject1 = this.mAutomator.a.getMessageFacade();
-          m = ((QQMessageFacade)localObject1).b();
-          k = ((QQMessageFacade)localObject1).e();
+          localObject1 = this.mAutomator.k.getMessageFacade();
+          m = ((QQMessageFacade)localObject1).w();
+          k = ((QQMessageFacade)localObject1).A();
           int n = m - k;
           if (QLog.isColorLevel())
           {
@@ -108,7 +108,7 @@ public class GetNearbyRecommender
             break label629;
           }
           i = 5;
-          ((LBSHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.LBS_HANDLER)).a(0);
+          ((LBSHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.LBS_HANDLER)).a(0);
           l6 = l1;
           m = j;
           k = n;
@@ -158,7 +158,7 @@ public class GetNearbyRecommender
   
   public void onCreate()
   {
-    ((INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class)).checkExpireTime(this.mAutomator.a);
+    ((INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class)).checkExpireTime(this.mAutomator.k);
     this.mCountRetry = 1;
   }
   
@@ -166,14 +166,14 @@ public class GetNearbyRecommender
   {
     if (this.a != null)
     {
-      this.mAutomator.a.removeObserver(this.a);
+      this.mAutomator.k.removeObserver(this.a);
       this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetNearbyRecommender
  * JD-Core Version:    0.7.0.1
  */

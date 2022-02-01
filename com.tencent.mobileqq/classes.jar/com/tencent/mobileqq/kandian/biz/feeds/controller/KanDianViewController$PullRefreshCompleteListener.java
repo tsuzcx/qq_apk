@@ -15,18 +15,18 @@ public class KanDianViewController$PullRefreshCompleteListener
   
   public void pullRefreshComplete(boolean paramBoolean)
   {
-    if ((KanDianViewController.a(this.a) instanceof BaseActivity))
+    if ((KanDianViewController.e(this.a) instanceof BaseActivity))
     {
-      AppInterface localAppInterface = ((BaseActivity)KanDianViewController.a(this.a)).getAppInterface();
-      if ((localAppInterface != null) && (KanDianViewController.a(this.a) != null) && (!paramBoolean))
+      AppInterface localAppInterface = ((BaseActivity)KanDianViewController.e(this.a)).getAppInterface();
+      if ((localAppInterface != null) && (KanDianViewController.f(this.a) != null) && (!paramBoolean))
       {
         ReadInJoyRefreshManager localReadInJoyRefreshManager = (ReadInJoyRefreshManager)localAppInterface.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
-        if ((localReadInJoyRefreshManager.a() == 1) && (localReadInJoyRefreshManager.b()))
+        if ((localReadInJoyRefreshManager.d() == 1) && (localReadInJoyRefreshManager.e()))
         {
           ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.1(this), 8, null, true);
           return;
         }
-        if (((ReadInJoySkinManager)localAppInterface.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER)).a() == 1) {
+        if (((ReadInJoySkinManager)localAppInterface.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER)).c() == 1) {
           ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.2(this), 8, null, true);
         }
       }
@@ -35,7 +35,7 @@ public class KanDianViewController$PullRefreshCompleteListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.KanDianViewController.PullRefreshCompleteListener
  * JD-Core Version:    0.7.0.1
  */

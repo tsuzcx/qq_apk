@@ -15,7 +15,7 @@ class VideoViewTVKImpl$5
   
   public void OnDownloadCallback(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl.a != null) {
+    if (this.d.n != null) {
       try
       {
         paramString = new JSONObject(paramString);
@@ -29,7 +29,7 @@ class VideoViewTVKImpl$5
         }
         if (i == 7)
         {
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+          if (!TextUtils.isEmpty(this.a))
           {
             if (QLog.isColorLevel())
             {
@@ -38,7 +38,7 @@ class VideoViewTVKImpl$5
               paramString.append(this.b);
               QLog.d("VideoViewTVKImpl", 2, paramString.toString());
             }
-            this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl.a.a(this.b, this.c, new File(this.jdField_a_of_type_JavaLangString));
+            this.d.n.a(this.b, this.c, new File(this.a));
           }
         }
         else if ((i != 4) && (i != 5))
@@ -48,13 +48,13 @@ class VideoViewTVKImpl$5
           {
             l1 = paramString.getLong("fileSize");
             long l2 = paramString.getLong("offset");
-            this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl.a.a(this.b, this.c, l1, l2);
+            this.d.n.a(this.b, this.c, l1, l2);
             return;
           }
           if (i == 1)
           {
             l1 = paramString.getLong("fileSize");
-            this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl.a.a(this.b, this.c, l1);
+            this.d.n.a(this.b, this.c, l1);
           }
         }
         else
@@ -67,7 +67,7 @@ class VideoViewTVKImpl$5
             paramString.append(i);
             QLog.d("VideoViewTVKImpl", 2, paramString.toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl.a.a(this.b, this.c, i);
+          this.d.n.a(this.b, this.c, i);
           return;
         }
       }
@@ -87,7 +87,7 @@ class VideoViewTVKImpl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.player.impl.VideoViewTVKImpl.5
  * JD-Core Version:    0.7.0.1
  */

@@ -19,9 +19,9 @@ class VideoUploadController$2
       if (localFileMsg.commandId != 54) {
         return;
       }
-      if (VideoUploadController.a(this.a) != null)
+      if (VideoUploadController.c(this.a) != null)
       {
-        if (VideoUploadController.a(this.a).mUniseq != localFileMsg.uniseq) {
+        if (VideoUploadController.c(this.a).mUniseq != localFileMsg.uniseq) {
           return;
         }
         switch (paramMessage.what)
@@ -43,16 +43,16 @@ class VideoUploadController$2
           this.a.a(localFileMsg);
           return;
         case 1002: 
-          if (this.a.a != null)
+          if (this.a.c != null)
           {
-            this.a.a.a(localFileMsg.transferedSize, localFileMsg.fileSize);
+            this.a.c.a(localFileMsg.transferedSize, localFileMsg.fileSize);
             return;
           }
           break;
         case 1001: 
           VideoUploadController.a(this.a, System.currentTimeMillis());
-          if (this.a.a != null) {
-            this.a.a.a();
+          if (this.a.c != null) {
+            this.a.c.a();
           }
           break;
         }
@@ -62,7 +62,7 @@ class VideoUploadController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.video.transfer.VideoUploadController.2
  * JD-Core Version:    0.7.0.1
  */

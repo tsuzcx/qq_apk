@@ -26,12 +26,12 @@ class AssociatedAccountActivity$14
     }
     if (paramSubAccountBackProtocData != null)
     {
-      if (!TextUtils.equals(paramSubAccountBackProtocData.b, this.a.app.getCurrentUin())) {
+      if (!TextUtils.equals(paramSubAccountBackProtocData.c, this.a.app.getCurrentUin())) {
         return;
       }
       if (paramBoolean)
       {
-        paramSubAccountBackProtocData = paramSubAccountBackProtocData.c();
+        paramSubAccountBackProtocData = paramSubAccountBackProtocData.f();
         if ((paramSubAccountBackProtocData != null) && (this.a.mSubAccountList != null))
         {
           localObject = this.a.mSubAccountList.iterator();
@@ -48,7 +48,7 @@ class AssociatedAccountActivity$14
             i = 1;
           }
           if (i != 0) {
-            AssociatedAccountActivity.access$1600(this.a, false);
+            AssociatedAccountActivity.access$1700(this.a, false);
           }
         }
       }
@@ -67,23 +67,23 @@ class AssociatedAccountActivity$14
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onBindSubAccount() mainAccount=");
-        localStringBuilder.append(paramSubAccountBackProtocData.b);
-        localStringBuilder.append(" subAccount=");
         localStringBuilder.append(paramSubAccountBackProtocData.c);
+        localStringBuilder.append(" subAccount=");
+        localStringBuilder.append(paramSubAccountBackProtocData.d);
         localStringBuilder.append(" errType=");
-        localStringBuilder.append(paramSubAccountBackProtocData.jdField_a_of_type_Int);
+        localStringBuilder.append(paramSubAccountBackProtocData.a);
         localStringBuilder.append(" errMsg=");
-        localStringBuilder.append(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramSubAccountBackProtocData.b);
         QLog.d("AssociatedAccountActivity", 2, localStringBuilder.toString());
       }
     }
     if (paramSubAccountBackProtocData != null)
     {
-      if (!TextUtils.equals(paramSubAccountBackProtocData.b, this.a.app.getCurrentUin())) {
+      if (!TextUtils.equals(paramSubAccountBackProtocData.c, this.a.app.getCurrentUin())) {
         return;
       }
       if (paramBoolean) {
-        AssociatedAccountActivity.access$1600(this.a, false);
+        AssociatedAccountActivity.access$1700(this.a, false);
       }
     }
   }
@@ -100,30 +100,30 @@ class AssociatedAccountActivity$14
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onUnBindSubAccount() mainAccount=");
-        localStringBuilder.append(paramSubAccountBackProtocData.b);
-        localStringBuilder.append(" subAccount=");
         localStringBuilder.append(paramSubAccountBackProtocData.c);
+        localStringBuilder.append(" subAccount=");
+        localStringBuilder.append(paramSubAccountBackProtocData.d);
         localStringBuilder.append(" errType=");
-        localStringBuilder.append(paramSubAccountBackProtocData.jdField_a_of_type_Int);
+        localStringBuilder.append(paramSubAccountBackProtocData.a);
         localStringBuilder.append(" errMsg=");
-        localStringBuilder.append(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramSubAccountBackProtocData.b);
         QLog.d("AssociatedAccountActivity", 2, localStringBuilder.toString());
       }
     }
     if (paramSubAccountBackProtocData != null)
     {
-      if (!TextUtils.equals(paramSubAccountBackProtocData.b, this.a.app.getCurrentUin())) {
+      if (!TextUtils.equals(paramSubAccountBackProtocData.c, this.a.app.getCurrentUin())) {
         return;
       }
       if (paramBoolean) {
-        AssociatedAccountActivity.access$1600(this.a, false);
+        AssociatedAccountActivity.access$1700(this.a, false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.14
  * JD-Core Version:    0.7.0.1
  */

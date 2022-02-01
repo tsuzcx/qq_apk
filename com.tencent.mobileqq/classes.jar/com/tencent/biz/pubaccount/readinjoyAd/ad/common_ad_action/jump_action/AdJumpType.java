@@ -12,35 +12,35 @@ public class AdJumpType
 {
   public static int a(AdvertisementInfo paramAdvertisementInfo)
   {
-    if (b(paramAdvertisementInfo))
+    if (c(paramAdvertisementInfo))
     {
-      if (paramAdvertisementInfo.mAdvertisementSoftInfo.c == 0) {
+      if (paramAdvertisementInfo.mAdvertisementSoftInfo.o == 0) {
         return 3;
       }
       return 4;
     }
-    if (c(paramAdvertisementInfo)) {
+    if (d(paramAdvertisementInfo)) {
       return 5;
     }
-    if (a(paramAdvertisementInfo)) {
+    if (b(paramAdvertisementInfo)) {
       return 2;
     }
-    if (d(paramAdvertisementInfo)) {
+    if (e(paramAdvertisementInfo)) {
       return 6;
     }
-    if (e(paramAdvertisementInfo)) {
+    if (f(paramAdvertisementInfo)) {
       return 7;
     }
-    if (f(paramAdvertisementInfo)) {
+    if (g(paramAdvertisementInfo)) {
       return 8;
     }
-    if (g(paramAdvertisementInfo)) {
+    if (h(paramAdvertisementInfo)) {
       return 9;
     }
     return 1;
   }
   
-  private static boolean a(AdvertisementInfo paramAdvertisementInfo)
+  private static boolean b(AdvertisementInfo paramAdvertisementInfo)
   {
     boolean bool2 = false;
     if (paramAdvertisementInfo == null) {
@@ -57,17 +57,17 @@ public class AdJumpType
     return bool1;
   }
   
-  private static boolean b(AdvertisementInfo paramAdvertisementInfo)
+  private static boolean c(AdvertisementInfo paramAdvertisementInfo)
   {
     return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.isSoftAd());
   }
   
-  private static boolean c(AdvertisementInfo paramAdvertisementInfo)
+  private static boolean d(AdvertisementInfo paramAdvertisementInfo)
   {
     return ((IRIJFastWebAdService)QRoute.api(IRIJFastWebAdService.class)).isGameComponentType(paramAdvertisementInfo);
   }
   
-  private static boolean d(AdvertisementInfo paramAdvertisementInfo)
+  private static boolean e(AdvertisementInfo paramAdvertisementInfo)
   {
     boolean bool = false;
     if (paramAdvertisementInfo == null) {
@@ -79,7 +79,7 @@ public class AdJumpType
     return bool;
   }
   
-  private static boolean e(AdvertisementInfo paramAdvertisementInfo)
+  private static boolean f(AdvertisementInfo paramAdvertisementInfo)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -89,26 +89,26 @@ public class AdJumpType
         return false;
       }
       bool1 = bool2;
-      if (5001 == paramAdvertisementInfo.mAdvertisementExtInfo.i) {
+      if (5001 == paramAdvertisementInfo.mAdvertisementExtInfo.l) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  private static boolean f(AdvertisementInfo paramAdvertisementInfo)
+  private static boolean g(AdvertisementInfo paramAdvertisementInfo)
   {
-    return e(paramAdvertisementInfo);
+    return f(paramAdvertisementInfo);
   }
   
-  private static boolean g(AdvertisementInfo paramAdvertisementInfo)
+  private static boolean h(AdvertisementInfo paramAdvertisementInfo)
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.jump_action.AdJumpType
  * JD-Core Version:    0.7.0.1
  */

@@ -36,22 +36,22 @@ import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem;
 public class BannerInfoModule
   extends ReadInJoyEngineModule
 {
-  private IFindRemovedEntity<TopBannerInfo> jdField_a_of_type_ComTencentMobileqqKandianRepoCommonIFindRemovedEntity = new BannerInfoModule.1(this);
-  private final ConcurrentHashMap<Integer, TopBannerInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private final ConcurrentHashMap<Integer, TopBannerInfo> a = new ConcurrentHashMap();
+  private IFindRemovedEntity<TopBannerInfo> b = new BannerInfoModule.1(this);
   
   public BannerInfoModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler, ArticleInfoModule paramArticleInfoModule)
   {
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
     if (paramArticleInfoModule != null) {
-      paramArticleInfoModule.a().a(new BannerInfoModule.2(this));
+      paramArticleInfoModule.i().a(new BannerInfoModule.2(this));
     }
-    registerEntityFinder(TopBannerInfo.class, this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonIFindRemovedEntity);
+    registerEntityFinder(TopBannerInfo.class, this.b);
   }
   
   private void a(TopBannerInfo paramTopBannerInfo)
   {
     b(paramTopBannerInfo);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramTopBannerInfo.mChannelId), paramTopBannerInfo);
+    this.a.put(Integer.valueOf(paramTopBannerInfo.mChannelId), paramTopBannerInfo);
     this.mMainThreadHandler.post(new BannerInfoModule.3(this, paramTopBannerInfo));
   }
   
@@ -79,11 +79,11 @@ public class BannerInfoModule
               if (localBannerItem.uint32_banner_type.get() == 2)
               {
                 if (localBannerItem.msg_video_banner_item.has()) {
-                  paramToServiceMsg = TopBannerInfo.VideoItem.b(localBannerItem);
+                  paramToServiceMsg = TopBannerInfo.VideoItem.c(localBannerItem);
                 }
               }
               else if (localBannerItem.msg_article_content_item.has()) {
-                paramToServiceMsg = TopBannerInfo.ImgItem.b(localBannerItem);
+                paramToServiceMsg = TopBannerInfo.ImgItem.c(localBannerItem);
               }
               if (paramToServiceMsg != null) {
                 paramFromServiceMsg.addItem(paramToServiceMsg);
@@ -142,12 +142,7 @@ public class BannerInfoModule
   
   public TopBannerInfo a(int paramInt)
   {
-    return (TopBannerInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public void a(int paramInt)
-  {
-    a(paramInt, 1);
+    return (TopBannerInfo)this.a.get(Integer.valueOf(paramInt));
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -178,6 +173,11 @@ public class BannerInfoModule
   
   public void b(int paramInt)
   {
+    a(paramInt, 1);
+  }
+  
+  public void c(int paramInt)
+  {
     Object localObject = this.mEntityManager;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
@@ -185,10 +185,10 @@ public class BannerInfoModule
     localObject = ((EntityManager)localObject).query(TopBannerInfo.class, true, "mChannelId IS NOT NULL AND mChannelId == ?", new String[] { localStringBuilder.toString() }, null, null, null, "1");
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramInt), ((List)localObject).get(0));
+      this.a.putIfAbsent(Integer.valueOf(paramInt), ((List)localObject).get(0));
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramInt), new TopBannerInfo());
+    this.a.putIfAbsent(Integer.valueOf(paramInt), new TopBannerInfo());
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -202,7 +202,7 @@ public class BannerInfoModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.BannerInfoModule
  * JD-Core Version:    0.7.0.1
  */

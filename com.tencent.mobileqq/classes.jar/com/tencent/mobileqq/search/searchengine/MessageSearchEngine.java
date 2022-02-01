@@ -19,13 +19,13 @@ public class MessageSearchEngine
   implements ISearchEngine<MessageSearchResultModel>
 {
   public QQAppInterface a;
-  public FullMessageSearchManager a;
-  public String a;
+  public FullMessageSearchManager b;
+  public String c;
   
   public MessageSearchEngine(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchManager = ((FullMessageSearchManager)paramQQAppInterface.getManager(QQManagerFactory.FULL_MESSAGE_SEARCH_MANAGER));
+    this.a = paramQQAppInterface;
+    this.b = ((FullMessageSearchManager)paramQQAppInterface.getManager(QQManagerFactory.FULL_MESSAGE_SEARCH_MANAGER));
   }
   
   private List<MessageSearchResultModel> a(String paramString, FullMessageSearchResult paramFullMessageSearchResult)
@@ -36,7 +36,7 @@ public class MessageSearchEngine
       int i = 0;
       while (i < paramFullMessageSearchResult.a.size())
       {
-        localArrayList.add(new MessageSearchResultModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, (FullMessageSearchResult.SearchResultItem)paramFullMessageSearchResult.a.get(i)));
+        localArrayList.add(new MessageSearchResultModel(this.a, paramString, (FullMessageSearchResult.SearchResultItem)paramFullMessageSearchResult.a.get(i)));
         i += 1;
       }
     }
@@ -48,13 +48,13 @@ public class MessageSearchEngine
     if (QLog.isColorLevel()) {
       QLog.d("MessageSearchEngine", 2, "========== search message use MessageSearchEngine");
     }
-    this.jdField_a_of_type_JavaLangString = paramSearchRequest.jdField_a_of_type_JavaLangString;
-    if ((paramSearchRequest.jdField_a_of_type_AndroidOsBundle != null) && (paramSearchRequest.jdField_a_of_type_AndroidOsBundle.getBoolean("SEARCH_REQUEST_EXTRA_TIME_LIMIT", false))) {
-      paramSearchRequest = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchManager.a(this.jdField_a_of_type_JavaLangString);
+    this.c = paramSearchRequest.a;
+    if ((paramSearchRequest.b != null) && (paramSearchRequest.b.getBoolean("SEARCH_REQUEST_EXTRA_TIME_LIMIT", false))) {
+      paramSearchRequest = this.b.b(this.c);
     } else {
-      paramSearchRequest = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchManager.b(this.jdField_a_of_type_JavaLangString);
+      paramSearchRequest = this.b.c(this.c);
     }
-    return a(this.jdField_a_of_type_JavaLangString, paramSearchRequest);
+    return a(this.c, paramSearchRequest);
   }
   
   public void a() {}
@@ -71,19 +71,19 @@ public class MessageSearchEngine
   
   public void c()
   {
-    ThreadManager.post(new MessageSearchEngine.3(this, this.jdField_a_of_type_JavaLangString), 8, null, true);
+    ThreadManager.post(new MessageSearchEngine.3(this, this.c), 8, null, true);
   }
   
   public void d()
   {
-    ThreadManager.post(new MessageSearchEngine.4(this, this.jdField_a_of_type_JavaLangString), 8, null, true);
+    ThreadManager.post(new MessageSearchEngine.4(this, this.c), 8, null, true);
   }
   
   public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.MessageSearchEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -10,26 +10,6 @@ import org.json.JSONObject;
 
 public class DoraemonUtil
 {
-  public static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 7;
-    case 7: 
-      return 14;
-    case 6: 
-      return 13;
-    case 5: 
-      return 12;
-    case 4: 
-      return 11;
-    case 3: 
-      return 9;
-    }
-    return 0;
-  }
-  
   public static String a(int paramInt)
   {
     if (paramInt != 0)
@@ -114,6 +94,26 @@ public class DoraemonUtil
     return MobileQQ.sProcessId == 1;
   }
   
+  public static int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 7;
+    case 7: 
+      return 14;
+    case 6: 
+      return 13;
+    case 5: 
+      return 12;
+    case 4: 
+      return 11;
+    case 3: 
+      return 9;
+    }
+    return 0;
+  }
+  
   public static void b(APICallback paramAPICallback, JSONObject paramJSONObject)
   {
     ThreadManager.getUIHandler().post(new DoraemonUtil.3(paramAPICallback, paramJSONObject));
@@ -121,7 +121,7 @@ public class DoraemonUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.util.DoraemonUtil
  * JD-Core Version:    0.7.0.1
  */

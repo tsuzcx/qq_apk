@@ -1,7 +1,5 @@
 package com.tencent.biz.richframework.animation.drawable;
 
-import com.tencent.qphone.base.util.QLog;
-
 class QQAnimationDrawable$SerialExecutor$1
   implements Runnable
 {
@@ -11,13 +9,11 @@ class QQAnimationDrawable$SerialExecutor$1
   {
     try
     {
-      QLog.d("QQAnimationDrawable", 2, "SerialExecutor run");
       this.a.run();
       return;
     }
     finally
     {
-      QLog.d("QQAnimationDrawable", 2, "SerialExecutor scheduleNext");
       this.this$0.a();
     }
   }

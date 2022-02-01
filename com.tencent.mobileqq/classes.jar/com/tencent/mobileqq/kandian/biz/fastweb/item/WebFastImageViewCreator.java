@@ -22,15 +22,15 @@ public class WebFastImageViewCreator
     Object localObject = paramString;
     if (!TextUtils.isEmpty(paramString))
     {
-      if (!paramImageData.a) {
+      if (!paramImageData.d) {
         return paramString;
       }
-      if (!((Boolean)RIJSPUtils.a("sp_native_web_sharpp_pic_switch", Boolean.valueOf(false))).booleanValue()) {
+      if (!((Boolean)RIJSPUtils.b("sp_native_web_sharpp_pic_switch", Boolean.valueOf(false))).booleanValue()) {
         return paramString;
       }
       if (paramString.contains("fmt=gif"))
       {
-        paramImageData.a = false;
+        paramImageData.d = false;
         return paramString;
       }
       paramImageData = URLUtil.a(paramString);
@@ -74,24 +74,24 @@ public class WebFastImageViewCreator
     return paramString.contains("tp=sharp");
   }
   
-  public int a(BaseData paramBaseData)
-  {
-    return 1;
-  }
-  
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new WebFastImageViewCreator.ImageViewHolder(LayoutInflater.from(paramContext).inflate(2131560189, null), paramBaseData);
+    return new WebFastImageViewCreator.ImageViewHolder(LayoutInflater.from(paramContext).inflate(2131626236, null), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)
   {
-    return paramBaseData.u == 3;
+    return paramBaseData.aP == 3;
+  }
+  
+  public int b(BaseData paramBaseData)
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebFastImageViewCreator
  * JD-Core Version:    0.7.0.1
  */

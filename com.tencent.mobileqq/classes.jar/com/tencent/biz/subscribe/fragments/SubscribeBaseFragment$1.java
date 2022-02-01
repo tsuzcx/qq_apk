@@ -10,7 +10,7 @@ class SubscribeBaseFragment$1
   public void a(int paramInt)
   {
     if (paramInt == 12) {
-      this.a.a = true;
+      this.a.e = true;
     }
   }
 }

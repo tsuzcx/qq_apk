@@ -24,39 +24,39 @@ final class VideoCropPage$initVideoView$3
     TLog.b("VideoCropPage", ((StringBuilder)localObject).toString());
     VideoCropPage.a(this.a, paramMediaPlayer);
     VideoCropPage.a(this.a, paramMediaPlayer.getDuration());
-    localObject = VideoCropPage.a(this.a).a();
+    localObject = VideoCropPage.b(this.a).d();
     if (localObject != null) {
       if ((((DisplayItem)localObject).getStartMergeTime() != 0) && (((DisplayItem)localObject).getEndMergeTime() != 0)) {
-        VideoCropPage.a(this.a).setPlayDuration(((DisplayItem)localObject).getStartMergeTime(), ((DisplayItem)localObject).getEndMergeTime());
+        VideoCropPage.d(this.a).setPlayDuration(((DisplayItem)localObject).getStartMergeTime(), ((DisplayItem)localObject).getEndMergeTime());
       } else {
-        VideoCropPage.a(this.a).setPlayDuration(VideoCropPage.a(this.a));
+        VideoCropPage.d(this.a).setPlayDuration(VideoCropPage.c(this.a));
       }
     }
-    VideoCropPage.a(this.a).start();
+    VideoCropPage.d(this.a).start();
     if (!VideoCropPage.a(this.a).a())
     {
       if ((paramMediaPlayer.getVideoWidth() > 0) && (paramMediaPlayer.getVideoHeight() > 0))
       {
-        VideoCropPage.a(this.a);
-        VideoCropPage.a(this.a).setEnabled(true);
+        VideoCropPage.e(this.a);
+        VideoCropPage.f(this.a).setEnabled(true);
         return;
       }
       VideoCropPage.a(this.a, "videoWidth <= 0 || videoHeight <= 0");
       TLog.d("VideoCropPage", "videoWidth <= 0 || videoHeight <= 0");
-      paramMediaPlayer = this.a.a();
+      paramMediaPlayer = this.a.b();
       if (paramMediaPlayer != null) {
         paramMediaPlayer.finish();
       }
     }
     else
     {
-      VideoCropPage.a(this.a).setEnabled(true);
+      VideoCropPage.f(this.a).setEnabled(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPage.initVideoView.3
  * JD-Core Version:    0.7.0.1
  */

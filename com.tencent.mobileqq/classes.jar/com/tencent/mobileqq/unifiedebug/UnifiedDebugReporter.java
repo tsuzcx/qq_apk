@@ -12,12 +12,11 @@ import org.json.JSONObject;
 public class UnifiedDebugReporter
 {
   public QQAppInterface a;
-  public BusinessObserver a;
+  public BusinessObserver b = new UnifiedDebugReporter.1(this);
   
   public UnifiedDebugReporter(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new UnifiedDebugReporter.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   public String a(int paramInt, JSONObject paramJSONObject)
@@ -51,11 +50,11 @@ public class UnifiedDebugReporter
     Object localObject = new RemoteDebugReportMsg.RemoteLogReq();
     ((RemoteDebugReportMsg.RemoteLogReq)localObject).str_seq.set(String.valueOf(paramLong));
     ((RemoteDebugReportMsg.RemoteLogReq)localObject).str_data.set(a(paramInt, paramJSONObject));
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), UnifiedDebugReportServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.a.getApp(), UnifiedDebugReportServlet.class);
     localNewIntent.putExtra("extra_cmd", "ClubDebugging.report");
     localNewIntent.putExtra("extra_data", ((RemoteDebugReportMsg.RemoteLogReq)localObject).toByteArray());
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    localNewIntent.setObserver(this.b);
+    this.a.startServlet(localNewIntent);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -71,7 +70,7 @@ public class UnifiedDebugReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.UnifiedDebugReporter
  * JD-Core Version:    0.7.0.1
  */

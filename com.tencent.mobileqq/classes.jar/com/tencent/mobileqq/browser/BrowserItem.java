@@ -9,8 +9,7 @@ import org.jetbrains.annotations.Nullable;
 public final class BrowserItem
 {
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
+  private final String a;
   @NotNull
   private final String b;
   @NotNull
@@ -19,26 +18,22 @@ public final class BrowserItem
   private final String d;
   @NotNull
   private final String e;
+  private final boolean f;
   
   public BrowserItem(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, @NotNull String paramString5, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
     this.c = paramString3;
     this.d = paramString4;
     this.e = paramString5;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
   }
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   @NotNull
@@ -71,7 +66,7 @@ public final class BrowserItem
       if ((paramObject instanceof BrowserItem))
       {
         paramObject = (BrowserItem)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (Intrinsics.areEqual(this.d, paramObject.d)) && (Intrinsics.areEqual(this.e, paramObject.e)) && (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean)) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (Intrinsics.areEqual(this.d, paramObject.d)) && (Intrinsics.areEqual(this.e, paramObject.e)) && (this.f == paramObject.f)) {}
       }
       else
       {
@@ -79,6 +74,11 @@ public final class BrowserItem
       }
     }
     return true;
+  }
+  
+  public final boolean f()
+  {
+    return this.f;
   }
   
   public int hashCode()
@@ -91,7 +91,7 @@ public final class BrowserItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("BrowserItem(name=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", title=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", icon=");
@@ -101,14 +101,14 @@ public final class BrowserItem
     localStringBuilder.append(", packageName=");
     localStringBuilder.append(this.e);
     localStringBuilder.append(", isLocalApp=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.browser.BrowserItem
  * JD-Core Version:    0.7.0.1
  */

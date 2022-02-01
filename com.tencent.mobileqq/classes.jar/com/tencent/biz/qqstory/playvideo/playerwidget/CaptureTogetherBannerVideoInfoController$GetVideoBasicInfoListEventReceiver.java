@@ -36,18 +36,18 @@ public class CaptureTogetherBannerVideoInfoController$GetVideoBasicInfoListEvent
         break;
       }
       localObject = (StoryVideoItem)paramGetVideoBasicInfoListEvent.a.get(i);
-      if (((StoryVideoItem)localObject).mVid.equals(CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController))) {
+      if (((StoryVideoItem)localObject).mVid.equals(CaptureTogetherBannerVideoInfoController.b(paramCaptureTogetherBannerVideoInfoController))) {
         break;
       }
       i += 1;
     }
     if ((localObject != null) && (((StoryVideoItem)localObject).mErrorCode == 0))
     {
-      paramGetVideoBasicInfoListEvent = CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController).a();
+      paramGetVideoBasicInfoListEvent = CaptureTogetherBannerVideoInfoController.c(paramCaptureTogetherBannerVideoInfoController).e();
       i = paramGetVideoBasicInfoListEvent.comparedLevel;
-      int j = CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController).a.jdField_a_of_type_Int;
-      str = CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController).a.jdField_a_of_type_JavaLangString;
-      CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController, CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController), str, false, i, j);
+      int j = CaptureTogetherBannerVideoInfoController.d(paramCaptureTogetherBannerVideoInfoController).k.e;
+      str = CaptureTogetherBannerVideoInfoController.d(paramCaptureTogetherBannerVideoInfoController).k.a;
+      CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController, CaptureTogetherBannerVideoInfoController.b(paramCaptureTogetherBannerVideoInfoController), str, false, i, j);
       paramCaptureTogetherBannerVideoInfoController = ((UserManager)SuperManager.a(2)).b(((StoryVideoItem)localObject).mOwnerUid);
       if ((paramCaptureTogetherBannerVideoInfoController != null) && (paramCaptureTogetherBannerVideoInfoController.isVip)) {
         i = 1;

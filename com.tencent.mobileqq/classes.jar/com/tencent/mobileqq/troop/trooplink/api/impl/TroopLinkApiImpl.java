@@ -41,6 +41,7 @@ public class TroopLinkApiImpl
     urlMaps.put("troop_honor_page", "https://qun.qq.com/interactive/qunhonor?gc=<$GC>&_wv=3&&_wwv=128");
     urlMaps.put("troop_member_honor_page", "https://qun.qq.com/interactive/userhonor?uin=<$UIN>&gc=<$GC>&_wv=3&&_wwv=128");
     urlMaps.put("troop_honor_setting", "https://qinfo.clt.qq.com/qlevel/setting.html?_wv=4&_bid=125#gc=<$GC>&type=102&grayscale=<$GRAY>");
+    urlMaps.put("guild_create", "https://qun.qq.com/qqweb/qunpro/create?_wv=3&_wwv=128");
   }
   
   public TroopLinkApiImpl()
@@ -108,9 +109,9 @@ public class TroopLinkApiImpl
     }
     localObject = getUrl("troop_honor_setting", ((ITroopLinkApi.LinkParams)localObject).f(paramString));
     paramString = (String)localObject;
-    if (SimpleUIUtil.a())
+    if (SimpleUIUtil.e())
     {
-      int i = SimpleUIUtil.d();
+      int i = SimpleUIUtil.f();
       if (i != 0)
       {
         paramString = String.format("%08x", new Object[] { Integer.valueOf(i) }).substring(2);
@@ -135,9 +136,9 @@ public class TroopLinkApiImpl
   {
     Object localObject = getUrl("troop_honor_page", ITroopLinkApi.LinkParams.a().a(paramString));
     paramString = (String)localObject;
-    if (SimpleUIUtil.a())
+    if (SimpleUIUtil.e())
     {
-      int i = SimpleUIUtil.d();
+      int i = SimpleUIUtil.f();
       if (i != 0)
       {
         paramString = String.format("%08x", new Object[] { Integer.valueOf(i) }).substring(2);
@@ -314,7 +315,7 @@ public class TroopLinkApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.trooplink.api.impl.TroopLinkApiImpl
  * JD-Core Version:    0.7.0.1
  */

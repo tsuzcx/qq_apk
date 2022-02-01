@@ -38,16 +38,16 @@ public class ComponentContentPgcVideo
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public View a(Context paramContext)
+  public View b(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560137, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131626184, this, true);
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a() != null))
+    if ((this.a.a != null) && (this.a.a.k() != null))
     {
-      Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a();
+      Object localObject3 = this.a.a.k();
       label137:
       Object localObject2;
       if ((localObject3 != null) && (!TextUtils.isEmpty(((AbsBaseArticleInfo)localObject3).mJsonVideoList)))
@@ -88,7 +88,7 @@ public class ComponentContentPgcVideo
           Object localObject4 = getResources().getDisplayMetrics();
           k = Math.min(((DisplayMetrics)localObject4).widthPixels, ((DisplayMetrics)localObject4).heightPixels);
           int m = AIOUtils.b(12.0F, getResources());
-          localObject4 = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.getLayoutParams();
+          localObject4 = this.b.getLayoutParams();
           boolean bool = RIJFeedsType.a(j, i) ^ true;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("isHorizontalScreen ");
@@ -121,8 +121,8 @@ public class ComponentContentPgcVideo
           ((ViewGroup.LayoutParams)localObject4).height = i;
           ((ViewGroup.LayoutParams)localObject2).width = j;
           ((ViewGroup.LayoutParams)localObject2).height = i;
-          this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setLayoutParams((ViewGroup.LayoutParams)localObject4);
+          this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
+          this.b.setLayoutParams((ViewGroup.LayoutParams)localObject4);
           setLayoutParams((ViewGroup.LayoutParams)localObject2);
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("imageParams.width is ");
@@ -153,7 +153,7 @@ public class ComponentContentPgcVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentPgcVideo
  * JD-Core Version:    0.7.0.1
  */

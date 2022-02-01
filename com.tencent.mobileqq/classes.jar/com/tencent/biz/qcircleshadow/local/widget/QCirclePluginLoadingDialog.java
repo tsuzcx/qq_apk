@@ -28,92 +28,92 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 public class QCirclePluginLoadingDialog
   extends ReportDialog
 {
-  private static RFWMultiDownloadHelper jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWMultiDownloadHelper = new RFWMultiDownloadHelper();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final AnimationDrawableFactory.CreateResultListener jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$CreateResultListener = new QCirclePluginLoadingDialog.1(this);
-  private QQAnimationDrawable jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable;
+  private static RFWMultiDownloadHelper g = new RFWMultiDownloadHelper();
+  private final LayoutInflater a;
+  private View b;
+  private ImageView c;
+  private Drawable d;
+  private QQAnimationDrawable e;
+  private Handler f;
+  private final AnimationDrawableFactory.CreateResultListener h = new QCirclePluginLoadingDialog.1(this);
   
   static
   {
-    jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWMultiDownloadHelper.addTask(new RFWMultiDownloadHelper.DownloadTask("https://downv6.qq.com/video_story/qcircle/animation/pull_refresh_logo.zip", QCircleDownloadConfig.a()));
-    jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWMultiDownloadHelper.start();
+    g.addTask(new RFWMultiDownloadHelper.DownloadTask("https://downv6.qq.com/video_story/qcircle/animation/pull_refresh_logo.zip", QCircleDownloadConfig.a()));
+    g.start();
   }
   
   public QCirclePluginLoadingDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131756260);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560719, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373908));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844134);
+    super(paramContext, 2131953412);
+    this.a = LayoutInflater.from(paramContext);
+    this.b = this.a.inflate(2131626904, null);
+    this.c = ((ImageView)this.b.findViewById(2131441729));
+    this.d = paramContext.getResources().getDrawable(2130845242);
   }
   
-  private Handler a()
+  private Handler b()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    if (this.f == null) {
+      this.f = new Handler(Looper.getMainLooper());
     }
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  private void b()
-  {
-    QQAnimationDrawable localQQAnimationDrawable = this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable;
-    if (localQQAnimationDrawable != null)
-    {
-      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (localImageView == null) {
-        return;
-      }
-      localImageView.setImageDrawable(localQQAnimationDrawable);
-      this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable.start();
-    }
+    return this.f;
   }
   
   private void c()
   {
-    d();
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (localImageView != null) {
-      localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    QQAnimationDrawable localQQAnimationDrawable = this.e;
+    if (localQQAnimationDrawable != null)
+    {
+      ImageView localImageView = this.c;
+      if (localImageView == null) {
+        return;
+      }
+      localImageView.setImageDrawable(localQQAnimationDrawable);
+      this.e.start();
     }
   }
   
   private void d()
   {
-    QQAnimationDrawable localQQAnimationDrawable = this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable;
+    e();
+    ImageView localImageView = this.c;
+    if (localImageView != null) {
+      localImageView.setImageDrawable(this.d);
+    }
+  }
+  
+  private void e()
+  {
+    QQAnimationDrawable localQQAnimationDrawable = this.e;
     if (localQQAnimationDrawable == null) {
       return;
     }
     if (localQQAnimationDrawable.isRunning()) {
-      this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable.stop();
+      this.e.stop();
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable == null)
+    if (this.e == null)
     {
       if (RFWDownloaderFactory.getDownloader(QCircleDownloadConfig.a()).isFileDownLoaded("https://downv6.qq.com/video_story/qcircle/animation/pull_refresh_logo.zip"))
       {
         AnimationDrawableCreateOption.Builder localBuilder = new AnimationDrawableCreateOption.Builder("https://downv6.qq.com/video_story/qcircle/animation/pull_refresh_logo.zip");
-        localBuilder.a(67);
+        localBuilder.b(67);
         localBuilder.a(2147483647L);
         localBuilder.a(true);
         localBuilder.b(true);
-        AnimationDrawableFactory.a().a(hashCode(), localBuilder.a(), this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$CreateResultListener);
+        AnimationDrawableFactory.a().a(hashCode(), localBuilder.a(), this.h);
       }
       else
       {
-        c();
+        d();
       }
     }
     else {
-      b();
+      c();
     }
     show();
   }
@@ -121,14 +121,14 @@ public class QCirclePluginLoadingDialog
   public void dismiss()
   {
     super.dismiss();
-    d();
+    e();
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     paramBundle = getWindow();
-    paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
+    paramBundle.setContentView(this.b);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramBundle.getDecorView().setSystemUiVisibility(1280);
@@ -149,7 +149,7 @@ public class QCirclePluginLoadingDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.widget.QCirclePluginLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

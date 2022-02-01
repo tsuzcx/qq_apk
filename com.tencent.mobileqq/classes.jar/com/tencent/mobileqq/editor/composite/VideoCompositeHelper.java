@@ -59,14 +59,14 @@ import mqq.app.MobileQQ;
 public class VideoCompositeHelper
 {
   public static String a = "VideoCompositeHelper";
-  private boolean a;
+  private boolean b;
   
   static
   {
     try
     {
       int i = VideoEnvironment.loadAVCodecSo();
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("load AVCodec so, code = ");
       localStringBuilder.append(i);
@@ -77,41 +77,6 @@ public class VideoCompositeHelper
     {
       localThrowable.printStackTrace();
     }
-  }
-  
-  private int a(PublishVideoEntry paramPublishVideoEntry)
-  {
-    VideoStoryPicToVideo.RetCode localRetCode = new VideoStoryPicToVideo.RetCode(940006, "");
-    String str = paramPublishVideoEntry.getStringExtra("KEY_PIC_TO_VIDEO_LOCAL_PIC_PATH", "");
-    if ((!str.isEmpty()) && (com.tencent.biz.qqstory.utils.FileUtils.c(str)))
-    {
-      com.tencent.biz.qqstory.utils.FileUtils.f(paramPublishVideoEntry.mLocalRawVideoDir);
-      int n = paramPublishVideoEntry.backgroundMusicDuration / 1000;
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      BitmapManager.a(str, localOptions);
-      int i = ScreenUtil.SCREEN_WIDTH;
-      float f = localOptions.outWidth / localOptions.outHeight;
-      int k = CompositeUtil.a(i);
-      int m = CompositeUtil.a((int)(k / f));
-      int j = k;
-      i = m;
-      if (m > MergeEditVideo.a)
-      {
-        double d1 = k;
-        double d2 = MergeEditVideo.a;
-        Double.isNaN(d1);
-        Double.isNaN(d2);
-        double d3 = m;
-        Double.isNaN(d3);
-        j = CompositeUtil.a((int)(d1 * d2 / d3));
-        i = MergeEditVideo.a;
-      }
-      VideoStoryPicToVideo.a().a(str, paramPublishVideoEntry.mLocalRawVideoDir, String.valueOf(n), j, i, false, 0, new VideoCompositeHelper.2(this, localRetCode, paramPublishVideoEntry));
-      b("convertImageToVideo ");
-      return localRetCode.a();
-    }
-    return localRetCode.a();
   }
   
   private int a(PublishVideoEntry paramPublishVideoEntry, String paramString)
@@ -132,7 +97,7 @@ public class VideoCompositeHelper
         i = j;
         if (j != 942014)
         {
-          SLog.d(jdField_a_of_type_JavaLangString, "convert picture to video by mediaCodec error. use ffmepg to convert again.");
+          SLog.d(a, "convert picture to video by mediaCodec error. use ffmepg to convert again.");
           return a(paramPublishVideoEntry.mLocalRawVideoDir, paramString);
         }
       }
@@ -156,7 +121,7 @@ public class VideoCompositeHelper
     }
     if (paramPublishVideoEntry.isCancel)
     {
-      com.tencent.biz.qqstory.utils.FileUtils.g(paramString);
+      com.tencent.biz.qqstory.utils.FileUtils.k(paramString);
       return -19;
     }
     long l = System.currentTimeMillis();
@@ -174,13 +139,13 @@ public class VideoCompositeHelper
       }
     }
     i = a(paramString, (String)localObject1, i);
-    if (CaptureFreqMonitor.b) {
-      CaptureFreqMonitor.c.a(2, System.currentTimeMillis() - l);
+    if (CaptureFreqMonitor.d) {
+      CaptureFreqMonitor.f.a(2, System.currentTimeMillis() - l);
     }
     Object localObject2;
     if (i == 0)
     {
-      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject2 = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("set moov in front of file success. targetMergedTempMp4 = ");
       localStringBuilder.append((String)localObject1);
@@ -189,8 +154,8 @@ public class VideoCompositeHelper
     }
     else
     {
-      SLog.d(jdField_a_of_type_JavaLangString, "set moov in front of file fail %d", new Object[] { Integer.valueOf(i) });
-      localObject1 = jdField_a_of_type_JavaLangString;
+      SLog.d(a, "set moov in front of file fail %d", new Object[] { Integer.valueOf(i) });
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("set moov in front of file failed targetFile = ");
       ((StringBuilder)localObject2).append(paramString);
@@ -209,7 +174,7 @@ public class VideoCompositeHelper
       }
       if (i == 0)
       {
-        paramPublishVideoEntry = jdField_a_of_type_JavaLangString;
+        paramPublishVideoEntry = a;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("isHuaweiGreen: reEncodeVideoWithFFMpeg succeed. output path = ");
         ((StringBuilder)localObject1).append(paramString);
@@ -217,16 +182,16 @@ public class VideoCompositeHelper
       }
       else
       {
-        paramPublishVideoEntry = jdField_a_of_type_JavaLangString;
+        paramPublishVideoEntry = a;
         paramString = new StringBuilder();
         paramString.append("isHuaweiGreen: reEncodeVideoWithFFMpeg failed. errorCode = ");
         paramString.append(i);
         SLog.e(paramPublishVideoEntry, paramString.toString());
       }
       j = i;
-      if (CaptureFreqMonitor.b)
+      if (CaptureFreqMonitor.d)
       {
-        CaptureFreqMonitor.c.a(3, System.currentTimeMillis() - l);
+        CaptureFreqMonitor.f.a(3, System.currentTimeMillis() - l);
         j = i;
       }
     }
@@ -237,297 +202,297 @@ public class VideoCompositeHelper
   private int a(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3: ldc_w 283
-    //   6: invokestatic 193	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   9: aload_1
-    //   10: invokestatic 82	com/tencent/biz/qqstory/utils/FileUtils:c	(Ljava/lang/String;)Z
-    //   13: ifne +7 -> 20
-    //   16: ldc_w 284
-    //   19: ireturn
-    //   20: new 4	java/lang/Object
-    //   23: dup
-    //   24: invokespecial 53	java/lang/Object:<init>	()V
-    //   27: astore 4
-    //   29: new 286	java/util/concurrent/atomic/AtomicInteger
-    //   32: dup
-    //   33: ldc_w 287
-    //   36: invokespecial 290	java/util/concurrent/atomic/AtomicInteger:<init>	(I)V
-    //   39: astore 5
-    //   41: invokestatic 296	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   44: aload_1
-    //   45: aload_2
-    //   46: new 298	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$FFMPEGResponseCallback
-    //   49: dup
-    //   50: aload 4
-    //   52: aload 5
-    //   54: iconst_2
-    //   55: invokespecial 301	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$FFMPEGResponseCallback:<init>	(Ljava/lang/Object;Ljava/util/concurrent/atomic/AtomicInteger;I)V
-    //   58: invokestatic 307	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegUtils:convertPicToVideo	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/videocodec/ffmpeg/FFmpegExecuteResponseCallback;)V
+    //   0: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
+    //   3: ldc 195
+    //   5: invokestatic 101	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   8: aload_1
+    //   9: invokestatic 197	com/tencent/biz/qqstory/utils/FileUtils:d	(Ljava/lang/String;)Z
+    //   12: ifne +6 -> 18
+    //   15: ldc 198
+    //   17: ireturn
+    //   18: new 4	java/lang/Object
+    //   21: dup
+    //   22: invokespecial 53	java/lang/Object:<init>	()V
+    //   25: astore 4
+    //   27: new 200	java/util/concurrent/atomic/AtomicInteger
+    //   30: dup
+    //   31: ldc 201
+    //   33: invokespecial 204	java/util/concurrent/atomic/AtomicInteger:<init>	(I)V
+    //   36: astore 5
+    //   38: invokestatic 210	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   41: aload_1
+    //   42: aload_2
+    //   43: new 212	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$FFMPEGResponseCallback
+    //   46: dup
+    //   47: aload 4
+    //   49: aload 5
+    //   51: iconst_2
+    //   52: invokespecial 215	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$FFMPEGResponseCallback:<init>	(Ljava/lang/Object;Ljava/util/concurrent/atomic/AtomicInteger;I)V
+    //   55: invokestatic 221	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegUtils:convertPicToVideo	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/videocodec/ffmpeg/FFmpegExecuteResponseCallback;)V
+    //   58: aload 4
+    //   60: monitorenter
     //   61: aload 4
-    //   63: monitorenter
-    //   64: aload 4
-    //   66: ldc2_w 308
-    //   69: invokevirtual 313	java/lang/Object:wait	(J)V
-    //   72: aload 4
-    //   74: monitorexit
-    //   75: aload 5
-    //   77: invokevirtual 316	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   80: istore_3
-    //   81: iload_3
-    //   82: ifne +5 -> 87
-    //   85: iconst_0
-    //   86: ireturn
-    //   87: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   90: ldc_w 318
-    //   93: iconst_1
-    //   94: anewarray 4	java/lang/Object
-    //   97: dup
-    //   98: iconst_0
-    //   99: aload 5
-    //   101: invokevirtual 316	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   104: invokestatic 253	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   107: aastore
-    //   108: invokestatic 256	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   111: new 26	java/lang/StringBuilder
-    //   114: dup
-    //   115: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   118: astore 6
-    //   120: aload 6
-    //   122: aload_1
-    //   123: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: pop
-    //   127: aload 6
-    //   129: ldc_w 320
-    //   132: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   135: pop
-    //   136: aload 6
-    //   138: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   141: astore 6
-    //   143: aload_0
-    //   144: aload_1
-    //   145: aload 6
-    //   147: invokespecial 322	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:b	(Ljava/lang/String;Ljava/lang/String;)I
-    //   150: istore_3
-    //   151: iload_3
-    //   152: ifeq +39 -> 191
-    //   155: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   158: astore_1
-    //   159: new 26	java/lang/StringBuilder
-    //   162: dup
-    //   163: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   166: astore_2
-    //   167: aload_2
-    //   168: ldc_w 324
-    //   171: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: ldc2_w 222
+    //   66: invokevirtual 227	java/lang/Object:wait	(J)V
+    //   69: aload 4
+    //   71: monitorexit
+    //   72: aload 5
+    //   74: invokevirtual 230	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   77: istore_3
+    //   78: iload_3
+    //   79: ifne +5 -> 84
+    //   82: iconst_0
+    //   83: ireturn
+    //   84: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
+    //   87: ldc 232
+    //   89: iconst_1
+    //   90: anewarray 4	java/lang/Object
+    //   93: dup
+    //   94: iconst_0
+    //   95: aload 5
+    //   97: invokevirtual 230	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   100: invokestatic 165	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   103: aastore
+    //   104: invokestatic 168	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   107: new 27	java/lang/StringBuilder
+    //   110: dup
+    //   111: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   114: astore 6
+    //   116: aload 6
+    //   118: aload_1
+    //   119: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: pop
+    //   123: aload 6
+    //   125: ldc 234
+    //   127: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: pop
+    //   131: aload 6
+    //   133: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   136: astore 6
+    //   138: aload_0
+    //   139: aload_1
+    //   140: aload 6
+    //   142: invokespecial 236	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:b	(Ljava/lang/String;Ljava/lang/String;)I
+    //   145: istore_3
+    //   146: iload_3
+    //   147: ifeq +38 -> 185
+    //   150: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
+    //   153: astore_1
+    //   154: new 27	java/lang/StringBuilder
+    //   157: dup
+    //   158: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   161: astore_2
+    //   162: aload_2
+    //   163: ldc 238
+    //   165: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: pop
+    //   169: aload_2
+    //   170: iload_3
+    //   171: invokevirtual 39	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   174: pop
-    //   175: aload_2
-    //   176: iload_3
-    //   177: invokevirtual 38	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   180: pop
-    //   181: aload_1
-    //   182: aload_2
-    //   183: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   186: invokestatic 275	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   189: iload_3
-    //   190: ireturn
-    //   191: aload 5
-    //   193: ldc_w 287
-    //   196: invokevirtual 327	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   199: invokestatic 296	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   202: aload 6
-    //   204: aload_2
-    //   205: new 298	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$FFMPEGResponseCallback
-    //   208: dup
-    //   209: aload 4
-    //   211: aload 5
-    //   213: iconst_2
-    //   214: invokespecial 301	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$FFMPEGResponseCallback:<init>	(Ljava/lang/Object;Ljava/util/concurrent/atomic/AtomicInteger;I)V
-    //   217: invokestatic 307	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegUtils:convertPicToVideo	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/videocodec/ffmpeg/FFmpegExecuteResponseCallback;)V
-    //   220: aload 4
-    //   222: monitorenter
-    //   223: aload 4
-    //   225: ldc2_w 308
-    //   228: invokevirtual 313	java/lang/Object:wait	(J)V
-    //   231: aload 4
-    //   233: monitorexit
-    //   234: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   237: ldc_w 329
-    //   240: invokestatic 193	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   243: aload 5
-    //   245: invokevirtual 316	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   248: istore_3
-    //   249: iload_3
-    //   250: ireturn
-    //   251: astore_1
-    //   252: aload 4
-    //   254: monitorexit
-    //   255: aload_1
-    //   256: athrow
-    //   257: astore_1
-    //   258: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   261: astore_2
-    //   262: new 26	java/lang/StringBuilder
-    //   265: dup
-    //   266: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   269: astore 4
+    //   175: aload_1
+    //   176: aload_2
+    //   177: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   180: invokestatic 187	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   183: iload_3
+    //   184: ireturn
+    //   185: aload 5
+    //   187: ldc 201
+    //   189: invokevirtual 241	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   192: invokestatic 210	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   195: aload 6
+    //   197: aload_2
+    //   198: new 212	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$FFMPEGResponseCallback
+    //   201: dup
+    //   202: aload 4
+    //   204: aload 5
+    //   206: iconst_2
+    //   207: invokespecial 215	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$FFMPEGResponseCallback:<init>	(Ljava/lang/Object;Ljava/util/concurrent/atomic/AtomicInteger;I)V
+    //   210: invokestatic 221	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegUtils:convertPicToVideo	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/videocodec/ffmpeg/FFmpegExecuteResponseCallback;)V
+    //   213: aload 4
+    //   215: monitorenter
+    //   216: aload 4
+    //   218: ldc2_w 222
+    //   221: invokevirtual 227	java/lang/Object:wait	(J)V
+    //   224: aload 4
+    //   226: monitorexit
+    //   227: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
+    //   230: ldc 243
+    //   232: invokestatic 101	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   235: aload 5
+    //   237: invokevirtual 230	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   240: istore_3
+    //   241: iload_3
+    //   242: ireturn
+    //   243: astore_1
+    //   244: aload 4
+    //   246: monitorexit
+    //   247: aload_1
+    //   248: athrow
+    //   249: astore_1
+    //   250: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
+    //   253: astore_2
+    //   254: new 27	java/lang/StringBuilder
+    //   257: dup
+    //   258: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   261: astore 4
+    //   263: aload 4
+    //   265: ldc 245
+    //   267: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   270: pop
     //   271: aload 4
-    //   273: ldc_w 331
-    //   276: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   279: pop
-    //   280: aload 4
-    //   282: aload_1
-    //   283: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   286: pop
-    //   287: aload_2
-    //   288: aload 4
-    //   290: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   293: invokestatic 193	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   296: ldc_w 335
-    //   299: ireturn
-    //   300: astore_1
-    //   301: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   304: astore_2
-    //   305: new 26	java/lang/StringBuilder
-    //   308: dup
-    //   309: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   312: astore 4
-    //   314: aload 4
-    //   316: ldc_w 331
-    //   319: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   322: pop
-    //   323: aload 4
-    //   325: aload_1
-    //   326: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   329: pop
-    //   330: aload_2
-    //   331: aload 4
-    //   333: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   336: invokestatic 193	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   339: ldc_w 336
-    //   342: ireturn
-    //   343: astore_1
-    //   344: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   347: astore_2
-    //   348: new 26	java/lang/StringBuilder
-    //   351: dup
-    //   352: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   355: astore 4
-    //   357: aload 4
-    //   359: ldc_w 331
-    //   362: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   365: pop
-    //   366: aload 4
-    //   368: aload_1
-    //   369: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   372: pop
-    //   373: aload_2
-    //   374: aload 4
-    //   376: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   379: invokestatic 193	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   382: ldc_w 337
-    //   385: ireturn
-    //   386: astore_1
-    //   387: aload 4
-    //   389: monitorexit
-    //   390: aload_1
-    //   391: athrow
-    //   392: astore_1
-    //   393: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   396: astore_2
-    //   397: new 26	java/lang/StringBuilder
-    //   400: dup
-    //   401: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   404: astore 4
-    //   406: aload 4
-    //   408: ldc_w 331
-    //   411: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   414: pop
-    //   415: aload 4
-    //   417: aload_1
-    //   418: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   421: pop
-    //   422: aload_2
-    //   423: aload 4
-    //   425: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   428: invokestatic 193	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   431: ldc_w 335
-    //   434: ireturn
-    //   435: astore_1
-    //   436: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   439: astore_2
-    //   440: new 26	java/lang/StringBuilder
-    //   443: dup
-    //   444: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   447: astore 4
+    //   273: aload_1
+    //   274: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   277: pop
+    //   278: aload_2
+    //   279: aload 4
+    //   281: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   284: invokestatic 101	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   287: ldc 249
+    //   289: ireturn
+    //   290: astore_1
+    //   291: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
+    //   294: astore_2
+    //   295: new 27	java/lang/StringBuilder
+    //   298: dup
+    //   299: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   302: astore 4
+    //   304: aload 4
+    //   306: ldc 245
+    //   308: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   311: pop
+    //   312: aload 4
+    //   314: aload_1
+    //   315: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   318: pop
+    //   319: aload_2
+    //   320: aload 4
+    //   322: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   325: invokestatic 101	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   328: ldc 250
+    //   330: ireturn
+    //   331: astore_1
+    //   332: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
+    //   335: astore_2
+    //   336: new 27	java/lang/StringBuilder
+    //   339: dup
+    //   340: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   343: astore 4
+    //   345: aload 4
+    //   347: ldc 245
+    //   349: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   352: pop
+    //   353: aload 4
+    //   355: aload_1
+    //   356: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   359: pop
+    //   360: aload_2
+    //   361: aload 4
+    //   363: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   366: invokestatic 101	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   369: ldc 251
+    //   371: ireturn
+    //   372: astore_1
+    //   373: aload 4
+    //   375: monitorexit
+    //   376: aload_1
+    //   377: athrow
+    //   378: astore_1
+    //   379: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
+    //   382: astore_2
+    //   383: new 27	java/lang/StringBuilder
+    //   386: dup
+    //   387: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   390: astore 4
+    //   392: aload 4
+    //   394: ldc 245
+    //   396: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   399: pop
+    //   400: aload 4
+    //   402: aload_1
+    //   403: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   406: pop
+    //   407: aload_2
+    //   408: aload 4
+    //   410: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   413: invokestatic 101	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   416: ldc 249
+    //   418: ireturn
+    //   419: astore_1
+    //   420: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
+    //   423: astore_2
+    //   424: new 27	java/lang/StringBuilder
+    //   427: dup
+    //   428: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   431: astore 4
+    //   433: aload 4
+    //   435: ldc 245
+    //   437: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   440: pop
+    //   441: aload 4
+    //   443: aload_1
+    //   444: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   447: pop
+    //   448: aload_2
     //   449: aload 4
-    //   451: ldc_w 331
-    //   454: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   457: pop
-    //   458: aload 4
-    //   460: aload_1
-    //   461: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   464: pop
-    //   465: aload_2
-    //   466: aload 4
-    //   468: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   471: invokestatic 193	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   474: ldc_w 336
-    //   477: ireturn
-    //   478: astore_1
-    //   479: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   482: astore_2
-    //   483: new 26	java/lang/StringBuilder
-    //   486: dup
-    //   487: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   490: astore 4
-    //   492: aload 4
-    //   494: ldc_w 331
-    //   497: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   500: pop
-    //   501: aload 4
-    //   503: aload_1
-    //   504: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   507: pop
-    //   508: aload_2
-    //   509: aload 4
-    //   511: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   514: invokestatic 193	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   517: ldc_w 337
-    //   520: ireturn
+    //   451: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   454: invokestatic 101	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   457: ldc 250
+    //   459: ireturn
+    //   460: astore_1
+    //   461: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
+    //   464: astore_2
+    //   465: new 27	java/lang/StringBuilder
+    //   468: dup
+    //   469: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   472: astore 4
+    //   474: aload 4
+    //   476: ldc 245
+    //   478: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   481: pop
+    //   482: aload 4
+    //   484: aload_1
+    //   485: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   488: pop
+    //   489: aload_2
+    //   490: aload 4
+    //   492: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   495: invokestatic 101	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   498: ldc 251
+    //   500: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	521	0	this	VideoCompositeHelper
-    //   0	521	1	paramString1	String
-    //   0	521	2	paramString2	String
-    //   80	170	3	i	int
-    //   27	483	4	localObject1	Object
-    //   39	205	5	localAtomicInteger	AtomicInteger
-    //   118	85	6	localObject2	Object
+    //   0	501	0	this	VideoCompositeHelper
+    //   0	501	1	paramString1	String
+    //   0	501	2	paramString2	String
+    //   77	165	3	i	int
+    //   25	466	4	localObject1	Object
+    //   36	200	5	localAtomicInteger	AtomicInteger
+    //   114	82	6	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   223	234	251	finally
-    //   252	255	251	finally
-    //   199	223	257	java/lang/InterruptedException
-    //   234	249	257	java/lang/InterruptedException
-    //   255	257	257	java/lang/InterruptedException
-    //   199	223	300	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegCommandAlreadyRunningException
-    //   234	249	300	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegCommandAlreadyRunningException
-    //   255	257	300	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegCommandAlreadyRunningException
-    //   199	223	343	java/io/IOException
-    //   234	249	343	java/io/IOException
-    //   255	257	343	java/io/IOException
-    //   64	75	386	finally
-    //   387	390	386	finally
-    //   41	64	392	java/lang/InterruptedException
-    //   75	81	392	java/lang/InterruptedException
-    //   390	392	392	java/lang/InterruptedException
-    //   41	64	435	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegCommandAlreadyRunningException
-    //   75	81	435	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegCommandAlreadyRunningException
-    //   390	392	435	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegCommandAlreadyRunningException
-    //   41	64	478	java/io/IOException
-    //   75	81	478	java/io/IOException
-    //   390	392	478	java/io/IOException
+    //   216	227	243	finally
+    //   244	247	243	finally
+    //   192	216	249	java/lang/InterruptedException
+    //   227	241	249	java/lang/InterruptedException
+    //   247	249	249	java/lang/InterruptedException
+    //   192	216	290	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegCommandAlreadyRunningException
+    //   227	241	290	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegCommandAlreadyRunningException
+    //   247	249	290	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegCommandAlreadyRunningException
+    //   192	216	331	java/io/IOException
+    //   227	241	331	java/io/IOException
+    //   247	249	331	java/io/IOException
+    //   61	72	372	finally
+    //   373	376	372	finally
+    //   38	61	378	java/lang/InterruptedException
+    //   72	78	378	java/lang/InterruptedException
+    //   376	378	378	java/lang/InterruptedException
+    //   38	61	419	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegCommandAlreadyRunningException
+    //   72	78	419	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegCommandAlreadyRunningException
+    //   376	378	419	com/tencent/mobileqq/videocodec/ffmpeg/FFmpegCommandAlreadyRunningException
+    //   38	61	460	java/io/IOException
+    //   72	78	460	java/io/IOException
+    //   376	378	460	java/io/IOException
   }
   
   private static int a(String paramString1, String paramString2, int paramInt)
@@ -535,14 +500,14 @@ public class VideoCompositeHelper
     Object localObject = new Object();
     AtomicInteger localAtomicInteger = new AtomicInteger(953005);
     long l = System.currentTimeMillis();
-    SLog.b(jdField_a_of_type_JavaLangString, "setMoovAndTimeStamp start!");
+    SLog.b(a, "setMoovAndTimeStamp start!");
     try
     {
       FFmpegUtils.setTimestamp(MobileQQ.getContext(), paramString1, paramString2, paramInt, new VideoCompositeHelper.FFMPEGResponseCallback(localObject, localAtomicInteger, 3));
       try
       {
         localObject.wait(180000L);
-        SLog.a(jdField_a_of_type_JavaLangString, "setMoovAndTimeStamp end, take time:%d", Long.valueOf(System.currentTimeMillis() - l));
+        SLog.a(a, "setMoovAndTimeStamp end, take time:%d", Long.valueOf(System.currentTimeMillis() - l));
         paramInt = localAtomicInteger.get();
         return paramInt;
       }
@@ -551,7 +516,7 @@ public class VideoCompositeHelper
     }
     catch (InterruptedException paramString1)
     {
-      paramString2 = jdField_a_of_type_JavaLangString;
+      paramString2 = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Wait encode video exception:");
       ((StringBuilder)localObject).append(paramString1);
@@ -560,7 +525,7 @@ public class VideoCompositeHelper
     }
     catch (FFmpegCommandAlreadyRunningException paramString1)
     {
-      paramString2 = jdField_a_of_type_JavaLangString;
+      paramString2 = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Wait encode video exception:");
       ((StringBuilder)localObject).append(paramString1);
@@ -569,7 +534,7 @@ public class VideoCompositeHelper
     }
     catch (IOException paramString1)
     {
-      paramString2 = jdField_a_of_type_JavaLangString;
+      paramString2 = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Wait encode video exception:");
       ((StringBuilder)localObject).append(paramString1);
@@ -579,89 +544,31 @@ public class VideoCompositeHelper
   
   private int a(String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry, boolean paramBoolean)
   {
-    SLog.d(jdField_a_of_type_JavaLangString, "videoSynthesisForStory start");
+    SLog.d(a, "videoSynthesisForStory start");
     long l = SystemClock.elapsedRealtime();
     MergeEditVideo.EditParam localEditParam = new MergeEditVideo.EditParam(paramPublishVideoEntry.videoMaxrate, paramPublishVideoEntry);
-    localEditParam.b(paramPublishVideoEntry.hwBitrateMode);
+    localEditParam.c(paramPublishVideoEntry.hwBitrateMode);
     if (paramBoolean) {
       localEditParam.a();
     }
     if (paramPublishVideoEntry.isNeedHighProfile)
     {
-      localEditParam.c(8);
-      SLog.b(jdField_a_of_type_JavaLangString, "codec high profile is enable when story video encode");
+      localEditParam.d(8);
+      SLog.b(a, "codec high profile is enable when story video encode");
     }
     int i = new MergeEditVideo().a(paramString1, paramString2, localEditParam, paramPublishVideoEntry);
     l = SystemClock.elapsedRealtime() - l;
-    paramString1 = jdField_a_of_type_JavaLangString;
+    paramString1 = a;
     paramString2 = new StringBuilder();
     paramString2.append("[videoSynthesis]generate files|first step cost:");
     double d = l;
     Double.isNaN(d);
     paramString2.append(d / 1000.0D);
     SLog.d(paramString1, paramString2.toString());
-    if (CaptureFreqMonitor.b) {
-      CaptureFreqMonitor.c.a(0, l);
+    if (CaptureFreqMonitor.d) {
+      CaptureFreqMonitor.f.a(0, l);
     }
     return i;
-  }
-  
-  public static long a(String paramString)
-  {
-    if (!com.tencent.biz.qqstory.utils.FileUtils.b(paramString)) {
-      return 0L;
-    }
-    if (Build.VERSION.SDK_INT >= 10) {}
-    try
-    {
-      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = localMediaMetadataRetriever.extractMetadata(9);
-      localMediaMetadataRetriever.release();
-      long l = Long.valueOf(paramString).longValue();
-      return l;
-    }
-    catch (Exception paramString) {}
-    return 0L;
-    return 0L;
-  }
-  
-  private VideoCompositeHelper.RetCode a(PublishVideoEntry paramPublishVideoEntry)
-  {
-    VideoCompositeHelper.RetCode localRetCode = new VideoCompositeHelper.RetCode(-1, "");
-    String str1 = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_music_download_url", "");
-    String str2 = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_music_mid_id", "");
-    if (StringUtil.a(str1))
-    {
-      localRetCode.a(0);
-      localRetCode.a("don't need to download Music");
-      return localRetCode;
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(QQStoryConstant.c);
-    ((StringBuilder)localObject).append(str2);
-    ((StringBuilder)localObject).append(FFmpegUtils.getAuidoType(str1));
-    str2 = ((StringBuilder)localObject).toString();
-    paramPublishVideoEntry.backgroundMusicPath = str2;
-    if (FileUtil.checkFileExist(str2))
-    {
-      localRetCode.a(0);
-      localRetCode.a("needDownloadMusic and the file exist");
-      return localRetCode;
-    }
-    localObject = new MusicItemInfo();
-    ((MusicItemInfo)localObject).setPath(str2);
-    ((MusicItemInfo)localObject).mUrl = str1;
-    ((MusicItemInfo)localObject).mType = 5;
-    ((MusicItemInfo)localObject).mMusicName = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_song_name", "unknown name");
-    if (!((IQimMusicPlayer)QRoute.api(IQimMusicPlayer.class)).requestDownLoadMusicInfo((MusicItemInfo)localObject, new VideoCompositeHelper.3(this, paramPublishVideoEntry, localRetCode, str1)))
-    {
-      localRetCode.a(-1);
-      localRetCode.a("needDownloadMusic cant startDownload maybe path is null or the music has downloaded");
-      return localRetCode;
-    }
-    b("needAndStartDownloadMusic");
-    return localRetCode;
   }
   
   @NonNull
@@ -694,12 +601,12 @@ public class VideoCompositeHelper
   {
     if (paramPublishVideoEntry.businessId == 2)
     {
-      SLog.b(jdField_a_of_type_JavaLangString, "deleteVideoCache ignore because business id is qq");
+      SLog.b(a, "deleteVideoCache ignore because business id is qq");
       return;
     }
     if ((!paramPublishVideoEntry.isLocalPublish) && (!TextUtils.isEmpty(paramPublishVideoEntry.mLocalRawVideoDir)) && (!paramPublishVideoEntry.mLocalRawVideoDir.contains(Environment.DIRECTORY_DCIM)))
     {
-      b(paramPublishVideoEntry);
+      d(paramPublishVideoEntry);
       if (paramPublishVideoEntry.isPicture)
       {
         BaseApplication localBaseApplication = MobileQQ.getContext();
@@ -709,15 +616,15 @@ public class VideoCompositeHelper
         localBaseApplication.sendBroadcast(new Intent("android.intent.action.MEDIA_MOUNTED", Uri.parse(localStringBuilder.toString())));
       }
     }
-    com.tencent.biz.qqstory.utils.FileUtils.d(paramPublishVideoEntry.videoUploadTempDir);
-    SLog.d(jdField_a_of_type_JavaLangString, "delete file:%s", new Object[] { paramPublishVideoEntry.videoUploadTempDir });
+    com.tencent.biz.qqstory.utils.FileUtils.e(paramPublishVideoEntry.videoUploadTempDir);
+    SLog.d(a, "delete file:%s", new Object[] { paramPublishVideoEntry.videoUploadTempDir });
   }
   
   private void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString1, String paramString2)
   {
     if (CompositeUtil.a(paramString1, paramString2, paramPublishVideoEntry) != 0)
     {
-      Object localObject = jdField_a_of_type_JavaLangString;
+      Object localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("adjustBitrate: errcode");
       localStringBuilder.append(paramInt);
@@ -731,112 +638,39 @@ public class VideoCompositeHelper
     }
   }
   
-  private void a(String paramString)
+  private int b(PublishVideoEntry paramPublishVideoEntry)
   {
-    try
+    VideoStoryPicToVideo.RetCode localRetCode = new VideoStoryPicToVideo.RetCode(940006, "");
+    String str = paramPublishVideoEntry.getStringExtra("KEY_PIC_TO_VIDEO_LOCAL_PIC_PATH", "");
+    if ((!str.isEmpty()) && (com.tencent.biz.qqstory.utils.FileUtils.d(str)))
     {
-      notifyAll();
-      String str = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(" notifyAll() ");
-      SLog.c(str, localStringBuilder.toString());
-      return;
+      com.tencent.biz.qqstory.utils.FileUtils.j(paramPublishVideoEntry.mLocalRawVideoDir);
+      int n = paramPublishVideoEntry.backgroundMusicDuration / 1000;
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      BitmapManager.a(str, localOptions);
+      int i = ScreenUtil.SCREEN_WIDTH;
+      float f = localOptions.outWidth / localOptions.outHeight;
+      int k = CompositeUtil.a(i);
+      int m = CompositeUtil.a((int)(k / f));
+      int j = k;
+      i = m;
+      if (m > MergeEditVideo.a)
+      {
+        double d1 = k;
+        double d2 = MergeEditVideo.a;
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        double d3 = m;
+        Double.isNaN(d3);
+        j = CompositeUtil.a((int)(d1 * d2 / d3));
+        i = MergeEditVideo.a;
+      }
+      VideoStoryPicToVideo.a().a(str, paramPublishVideoEntry.mLocalRawVideoDir, String.valueOf(n), j, i, false, 0, new VideoCompositeHelper.2(this, localRetCode, paramPublishVideoEntry));
+      d("convertImageToVideo ");
+      return localRetCode.a();
     }
-    finally {}
-  }
-  
-  /* Error */
-  private boolean a(String paramString)
-  {
-    // Byte code:
-    //   0: new 428	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$RetCode
-    //   3: dup
-    //   4: iconst_m1
-    //   5: ldc_w 614
-    //   8: invokespecial 429	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$RetCode:<init>	(ILjava/lang/String;)V
-    //   11: astore 4
-    //   13: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   16: ldc_w 616
-    //   19: invokestatic 612	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   22: getstatic 159	android/os/Build$VERSION:SDK_INT	I
-    //   25: bipush 16
-    //   27: if_icmpge +15 -> 42
-    //   30: aload 4
-    //   32: invokevirtual 617	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$RetCode:a	()I
-    //   35: ifne +5 -> 40
-    //   38: iconst_1
-    //   39: ireturn
-    //   40: iconst_0
-    //   41: ireturn
-    //   42: new 619	android/media/MediaExtractor
-    //   45: dup
-    //   46: invokespecial 620	android/media/MediaExtractor:<init>	()V
-    //   49: astore_3
-    //   50: aload_3
-    //   51: aload_1
-    //   52: invokevirtual 621	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
-    //   55: iconst_0
-    //   56: istore_2
-    //   57: iload_2
-    //   58: aload_3
-    //   59: invokevirtual 624	android/media/MediaExtractor:getTrackCount	()I
-    //   62: if_icmpge +39 -> 101
-    //   65: aload_3
-    //   66: iload_2
-    //   67: invokevirtual 628	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
-    //   70: ldc_w 630
-    //   73: invokevirtual 635	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   76: ldc_w 637
-    //   79: invokevirtual 640	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   82: ifeq +12 -> 94
-    //   85: aload 4
-    //   87: iconst_0
-    //   88: invokevirtual 439	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$RetCode:a	(I)V
-    //   91: goto +10 -> 101
-    //   94: iload_2
-    //   95: iconst_1
-    //   96: iadd
-    //   97: istore_2
-    //   98: goto -41 -> 57
-    //   101: aload_3
-    //   102: invokevirtual 641	android/media/MediaExtractor:release	()V
-    //   105: aload 4
-    //   107: invokevirtual 617	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$RetCode:a	()I
-    //   110: ifne +5 -> 115
-    //   113: iconst_1
-    //   114: ireturn
-    //   115: iconst_0
-    //   116: ireturn
-    //   117: astore_1
-    //   118: goto +14 -> 132
-    //   121: astore_1
-    //   122: aload_1
-    //   123: invokevirtual 642	java/io/IOException:printStackTrace	()V
-    //   126: aload_3
-    //   127: invokevirtual 641	android/media/MediaExtractor:release	()V
-    //   130: iconst_1
-    //   131: ireturn
-    //   132: aload_3
-    //   133: invokevirtual 641	android/media/MediaExtractor:release	()V
-    //   136: goto +5 -> 141
-    //   139: aload_1
-    //   140: athrow
-    //   141: goto -2 -> 139
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	144	0	this	VideoCompositeHelper
-    //   0	144	1	paramString	String
-    //   56	42	2	i	int
-    //   49	84	3	localMediaExtractor	android.media.MediaExtractor
-    //   11	95	4	localRetCode	VideoCompositeHelper.RetCode
-    // Exception table:
-    //   from	to	target	type
-    //   50	55	117	finally
-    //   57	91	117	finally
-    //   122	126	117	finally
-    //   50	55	121	java/io/IOException
-    //   57	91	121	java/io/IOException
+    return localRetCode.a();
   }
   
   private int b(PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean)
@@ -856,7 +690,7 @@ public class VideoCompositeHelper
       }
     }
     paramPublishVideoEntry.isMixOriginal = paramPublishVideoEntry.getBooleanExtra("isMixOriginal", false);
-    if (!com.tencent.biz.qqstory.utils.FileUtils.c((String)localObject1)) {
+    if (!com.tencent.biz.qqstory.utils.FileUtils.d((String)localObject1)) {
       return 940007;
     }
     localObject2 = new StringBuilder();
@@ -886,7 +720,7 @@ public class VideoCompositeHelper
         if (((File)localObject4).exists()) {
           ((File)localObject4).delete();
         }
-        if (this.jdField_a_of_type_Boolean)
+        if (this.b)
         {
           a(paramPublishVideoEntry, j, (String)localObject1, (String)localObject2);
         }
@@ -902,10 +736,10 @@ public class VideoCompositeHelper
         return j;
       }
     }
-    SLog.d(jdField_a_of_type_JavaLangString, "hwEncodeRecordVideo mediaCodec trim video cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l1) });
-    long l2 = a(paramPublishVideoEntry.mLocalRawVideoDir);
+    SLog.d(a, "hwEncodeRecordVideo mediaCodec trim video cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l1) });
+    long l2 = b(paramPublishVideoEntry.mLocalRawVideoDir);
     l1 = SystemClock.elapsedRealtime();
-    if ((!TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath)) && (com.tencent.biz.qqstory.utils.FileUtils.c(paramPublishVideoEntry.backgroundMusicPath))) {
+    if ((!TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath)) && (com.tencent.biz.qqstory.utils.FileUtils.d(paramPublishVideoEntry.backgroundMusicPath))) {
       j = 1;
     } else {
       j = 0;
@@ -929,13 +763,13 @@ public class VideoCompositeHelper
           k = i;
           if (!paramPublishVideoEntry.isLocalPublish)
           {
-            if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramPublishVideoEntry.mAudioFilePath))
+            if (!com.tencent.biz.qqstory.utils.FileUtils.d(paramPublishVideoEntry.mAudioFilePath))
             {
-              SLog.d(jdField_a_of_type_JavaLangString, "audio not exist");
+              SLog.d(a, "audio not exist");
               com.tencent.biz.qqstory.utils.FileUtils.b((String)localObject2, paramString);
               return 0;
             }
-            SLog.d(jdField_a_of_type_JavaLangString, "trim audio");
+            SLog.d(a, "trim audio");
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append(paramPublishVideoEntry.videoUploadTempDir);
             ((StringBuilder)localObject1).append(l1);
@@ -953,18 +787,18 @@ public class VideoCompositeHelper
             }
             if (i != 0)
             {
-              SLog.d(jdField_a_of_type_JavaLangString, "mediacodec AudioEncoder.clipAudioFile: errcode=%s, rangeStart=%s, rangeEnd=%s, duration=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramPublishVideoEntry.videoRangeStart), Integer.valueOf(paramPublishVideoEntry.videoRangeEnd), Long.valueOf(l2) });
+              SLog.d(a, "mediacodec AudioEncoder.clipAudioFile: errcode=%s, rangeStart=%s, rangeEnd=%s, duration=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramPublishVideoEntry.videoRangeStart), Integer.valueOf(paramPublishVideoEntry.videoRangeEnd), Long.valueOf(l2) });
               com.tencent.biz.qqstory.utils.FileUtils.b((String)localObject2, paramString);
               return 0;
             }
             j = AudioEncoder.a((String)localObject1);
             if (j != 0)
             {
-              SLog.d(jdField_a_of_type_JavaLangString, "checkSourceAudioIsOK: errorCode=%s, rangeStart=%s, rangeEnd=%s, duration=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(paramPublishVideoEntry.videoRangeStart), Integer.valueOf(paramPublishVideoEntry.videoRangeEnd), Long.valueOf(l2) });
+              SLog.d(a, "checkSourceAudioIsOK: errorCode=%s, rangeStart=%s, rangeEnd=%s, duration=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(paramPublishVideoEntry.videoRangeStart), Integer.valueOf(paramPublishVideoEntry.videoRangeEnd), Long.valueOf(l2) });
               com.tencent.biz.qqstory.utils.FileUtils.b((String)localObject2, paramString);
               return 0;
             }
-            SLog.d(jdField_a_of_type_JavaLangString, "audio to mp4");
+            SLog.d(a, "audio to mp4");
             localObject4 = new StringBuilder();
             ((StringBuilder)localObject4).append(paramPublishVideoEntry.videoUploadTempDir);
             ((StringBuilder)localObject4).append("mc_audio.mp4");
@@ -976,7 +810,7 @@ public class VideoCompositeHelper
             }
             AudioEncoder.AudioData localAudioData = AudioEncoder.a(null, null, i);
             localAudioData.b = ((String)localObject4);
-            localAudioData.jdField_a_of_type_JavaLangString = ((String)localObject1);
+            localAudioData.a = ((String)localObject1);
             i = j;
             if (!paramPublishVideoEntry.isCancel) {
               i = AudioEncoder.a(localAudioData);
@@ -986,36 +820,36 @@ public class VideoCompositeHelper
             }
             if (i != 0)
             {
-              com.tencent.biz.qqstory.utils.FileUtils.g((String)localObject4);
-              SLog.d(jdField_a_of_type_JavaLangString, "mediacodec AudioEncoder.encodeSafely: errorCode=%s", new Object[] { Integer.valueOf(i) });
+              com.tencent.biz.qqstory.utils.FileUtils.k((String)localObject4);
+              SLog.d(a, "mediacodec AudioEncoder.encodeSafely: errorCode=%s", new Object[] { Integer.valueOf(i) });
               return i;
             }
             localObject1 = new File((String)localObject1);
             if (((File)localObject1).exists()) {
               ((File)localObject1).delete();
             }
-            SLog.d(jdField_a_of_type_JavaLangString, "video audio mp4");
+            SLog.d(a, "video audio mp4");
             l2 = SystemClock.elapsedRealtime();
-            com.tencent.biz.qqstory.utils.FileUtils.g((String)localObject3);
+            com.tencent.biz.qqstory.utils.FileUtils.k((String)localObject3);
             if (!paramPublishVideoEntry.isCancel) {
               i = HwVideoMerge.merge((String)localObject2, (String)localObject4, (String)localObject3, 0);
             }
             if (paramPublishVideoEntry.isCancel)
             {
-              com.tencent.biz.qqstory.utils.FileUtils.g((String)localObject4);
-              com.tencent.biz.qqstory.utils.FileUtils.g((String)localObject3);
+              com.tencent.biz.qqstory.utils.FileUtils.k((String)localObject4);
+              com.tencent.biz.qqstory.utils.FileUtils.k((String)localObject3);
               return -18;
             }
-            SLog.d(jdField_a_of_type_JavaLangString, "[HwVideoMerge.merge]cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l2) });
+            SLog.d(a, "[HwVideoMerge.merge]cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l2) });
             if (i != 0)
             {
-              SLog.d(jdField_a_of_type_JavaLangString, "HwVideoMerge->merge: errorCode=%s", new Object[] { Integer.valueOf(i) });
+              SLog.d(a, "HwVideoMerge->merge: errorCode=%s", new Object[] { Integer.valueOf(i) });
               return i;
             }
             l1 = SystemClock.elapsedRealtime() - l1;
-            SLog.a(jdField_a_of_type_JavaLangString, "mediacodec encode audio time cost=%s", Long.valueOf(l1));
-            if (CaptureFreqMonitor.b) {
-              CaptureFreqMonitor.c.a(1, l1);
+            SLog.a(a, "mediacodec encode audio time cost=%s", Long.valueOf(l1));
+            if (CaptureFreqMonitor.d) {
+              CaptureFreqMonitor.f.a(1, l1);
             }
             localObject1 = localObject3;
             k = i;
@@ -1032,7 +866,7 @@ public class VideoCompositeHelper
     paramString1 = BitmapManager.a(paramString1);
     if (paramString1 == null)
     {
-      SLog.e(jdField_a_of_type_JavaLangString, "BitmapManager.decodeFile in resizeToSmallBitmap failed");
+      SLog.e(a, "BitmapManager.decodeFile in resizeToSmallBitmap failed");
       return 942007;
     }
     int i = paramString1.getHeight();
@@ -1044,7 +878,7 @@ public class VideoCompositeHelper
     }
     if (k <= 540)
     {
-      paramString1 = jdField_a_of_type_JavaLangString;
+      paramString1 = a;
       paramString2 = new StringBuilder();
       paramString2.append("No need resize. srcWidth < destWidth, srcWidth = ");
       paramString2.append(k);
@@ -1056,12 +890,12 @@ public class VideoCompositeHelper
     Bitmap localBitmap = BitmapUtils.b(paramString1, 540, i, false, false);
     if (localBitmap == null)
     {
-      SLog.e(jdField_a_of_type_JavaLangString, "resizeAndFillBitmapEdge in resizeToSmallBitmap failed");
+      SLog.e(a, "resizeAndFillBitmapEdge in resizeToSmallBitmap failed");
       return 942005;
     }
     if (!BitmapUtils.a(localBitmap, paramString2))
     {
-      SLog.e(jdField_a_of_type_JavaLangString, "compressToFile in resizeToSmallBitmap failed");
+      SLog.e(a, "compressToFile in resizeToSmallBitmap failed");
       return 942008;
     }
     if ((localBitmap != null) && (!localBitmap.isRecycled())) {
@@ -1075,7 +909,7 @@ public class VideoCompositeHelper
   
   private int b(String paramString1, String paramString2, int paramInt)
   {
-    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject1 = a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("fakeId:");
     ((StringBuilder)localObject2).append(paramString1);
@@ -1091,13 +925,13 @@ public class VideoCompositeHelper
     localObject1 = ((StringBuilder)localObject1).toString();
     try
     {
-      SLog.c(jdField_a_of_type_JavaLangString, "compressVideoWithBitrate!");
+      SLog.c(a, "compressVideoWithBitrate!");
       FFmpegUtils.compressVideoWithBitrate(paramString2, (String)localObject1, paramInt, new VideoCompositeHelper.FFMPEGResponseCallback(localObject2, localAtomicInteger, 1));
       try
       {
         localObject2.wait(180000L);
         paramInt = localAtomicInteger.get();
-        SLog.c(jdField_a_of_type_JavaLangString, "compressVideoWithBitrate end!");
+        SLog.c(a, "compressVideoWithBitrate end!");
       }
       finally {}
       String str;
@@ -1108,7 +942,7 @@ public class VideoCompositeHelper
     }
     catch (InterruptedException localInterruptedException)
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Wait encode video exception:");
       localStringBuilder.append(localInterruptedException);
@@ -1117,7 +951,7 @@ public class VideoCompositeHelper
     }
     catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Wait encode video exception:");
       localStringBuilder.append(localFFmpegCommandAlreadyRunningException);
@@ -1126,7 +960,7 @@ public class VideoCompositeHelper
     }
     catch (IOException localIOException)
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Wait encode video exception:");
       localStringBuilder.append(localIOException);
@@ -1137,7 +971,7 @@ public class VideoCompositeHelper
     com.tencent.mobileqq.utils.FileUtils.rename((String)localObject1, paramString2);
     long l2 = com.tencent.biz.qqstory.utils.FileUtils.a(paramString2);
     int i = VideoUtils.b(paramString2);
-    paramString2 = jdField_a_of_type_JavaLangString;
+    paramString2 = a;
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("fakeId:");
     ((StringBuilder)localObject1).append(paramString1);
@@ -1151,7 +985,7 @@ public class VideoCompositeHelper
     com.tencent.mobileqq.utils.FileUtils.deleteFile((String)localObject1);
     label436:
     l2 = System.currentTimeMillis();
-    paramString2 = jdField_a_of_type_JavaLangString;
+    paramString2 = a;
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("fakeId:");
     ((StringBuilder)localObject1).append(paramString1);
@@ -1163,71 +997,144 @@ public class VideoCompositeHelper
     return paramInt;
   }
   
-  private static void b(PublishVideoEntry paramPublishVideoEntry)
+  public static long b(String paramString)
+  {
+    if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString)) {
+      return 0L;
+    }
+    if (Build.VERSION.SDK_INT >= 10) {}
+    try
+    {
+      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+      localMediaMetadataRetriever.setDataSource(paramString);
+      paramString = localMediaMetadataRetriever.extractMetadata(9);
+      localMediaMetadataRetriever.release();
+      long l = Long.valueOf(paramString).longValue();
+      return l;
+    }
+    catch (Exception paramString) {}
+    return 0L;
+    return 0L;
+  }
+  
+  private VideoCompositeHelper.RetCode c(PublishVideoEntry paramPublishVideoEntry)
+  {
+    VideoCompositeHelper.RetCode localRetCode = new VideoCompositeHelper.RetCode(-1, "");
+    String str1 = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_music_download_url", "");
+    String str2 = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_music_mid_id", "");
+    if (StringUtil.isEmpty(str1))
+    {
+      localRetCode.a(0);
+      localRetCode.a("don't need to download Music");
+      return localRetCode;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(QQStoryConstant.c);
+    ((StringBuilder)localObject).append(str2);
+    ((StringBuilder)localObject).append(FFmpegUtils.getAuidoType(str1));
+    str2 = ((StringBuilder)localObject).toString();
+    paramPublishVideoEntry.backgroundMusicPath = str2;
+    if (FileUtil.checkFileExist(str2))
+    {
+      localRetCode.a(0);
+      localRetCode.a("needDownloadMusic and the file exist");
+      return localRetCode;
+    }
+    localObject = new MusicItemInfo();
+    ((MusicItemInfo)localObject).setPath(str2);
+    ((MusicItemInfo)localObject).mUrl = str1;
+    ((MusicItemInfo)localObject).mType = 5;
+    ((MusicItemInfo)localObject).mMusicName = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_song_name", "unknown name");
+    if (!((IQimMusicPlayer)QRoute.api(IQimMusicPlayer.class)).requestDownLoadMusicInfo((MusicItemInfo)localObject, new VideoCompositeHelper.3(this, paramPublishVideoEntry, localRetCode, str1)))
+    {
+      localRetCode.a(-1);
+      localRetCode.a("needDownloadMusic cant startDownload maybe path is null or the music has downloaded");
+      return localRetCode;
+    }
+    d("needAndStartDownloadMusic");
+    return localRetCode;
+  }
+  
+  private void c(String paramString)
+  {
+    try
+    {
+      notifyAll();
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" notifyAll() ");
+      SLog.c(str, localStringBuilder.toString());
+      return;
+    }
+    finally {}
+  }
+  
+  private static void d(PublishVideoEntry paramPublishVideoEntry)
   {
     if (new File(paramPublishVideoEntry.mLocalRawVideoDir).isDirectory())
     {
-      com.tencent.biz.qqstory.utils.FileUtils.d(paramPublishVideoEntry.mLocalRawVideoDir);
-      SLog.d(jdField_a_of_type_JavaLangString, "delete filePath: %s", new Object[] { paramPublishVideoEntry.mLocalRawVideoDir });
+      com.tencent.biz.qqstory.utils.FileUtils.e(paramPublishVideoEntry.mLocalRawVideoDir);
+      SLog.d(a, "delete filePath: %s", new Object[] { paramPublishVideoEntry.mLocalRawVideoDir });
       return;
     }
     int i = paramPublishVideoEntry.mLocalRawVideoDir.lastIndexOf("/");
     paramPublishVideoEntry = paramPublishVideoEntry.mLocalRawVideoDir.substring(0, i);
-    com.tencent.biz.qqstory.utils.FileUtils.d(paramPublishVideoEntry);
-    SLog.d(jdField_a_of_type_JavaLangString, "delete filePath: %s", new Object[] { paramPublishVideoEntry });
+    com.tencent.biz.qqstory.utils.FileUtils.e(paramPublishVideoEntry);
+    SLog.d(a, "delete filePath: %s", new Object[] { paramPublishVideoEntry });
   }
   
   /* Error */
-  private void b(String paramString)
+  private void d(String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
     //   5: astore_2
-    //   6: new 26	java/lang/StringBuilder
+    //   6: new 27	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 29	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 30	java/lang/StringBuilder:<init>	()V
     //   13: astore_3
     //   14: aload_3
     //   15: aload_1
-    //   16: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   19: pop
     //   20: aload_3
-    //   21: ldc_w 825
-    //   24: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: ldc_w 798
+    //   24: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: pop
     //   28: aload_2
     //   29: aload_3
-    //   30: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: invokestatic 612	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   30: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokestatic 657	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   36: aload_0
-    //   37: ldc2_w 826
-    //   40: invokevirtual 313	java/lang/Object:wait	(J)V
+    //   37: ldc2_w 799
+    //   40: invokevirtual 227	java/lang/Object:wait	(J)V
     //   43: goto +50 -> 93
     //   46: astore_1
     //   47: goto +49 -> 96
     //   50: astore_2
-    //   51: getstatic 24	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   51: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
     //   54: astore_3
-    //   55: new 26	java/lang/StringBuilder
+    //   55: new 27	java/lang/StringBuilder
     //   58: dup
-    //   59: invokespecial 29	java/lang/StringBuilder:<init>	()V
+    //   59: invokespecial 30	java/lang/StringBuilder:<init>	()V
     //   62: astore 4
     //   64: aload 4
     //   66: aload_1
-    //   67: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   70: pop
     //   71: aload 4
-    //   73: ldc_w 829
-    //   76: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: ldc_w 802
+    //   76: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: pop
     //   80: aload_3
     //   81: aload 4
-    //   83: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   86: invokestatic 612	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   83: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   86: invokestatic 657	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   89: aload_2
-    //   90: invokevirtual 830	java/lang/InterruptedException:printStackTrace	()V
+    //   90: invokevirtual 803	java/lang/InterruptedException:printStackTrace	()V
     //   93: aload_0
     //   94: monitorexit
     //   95: return
@@ -1252,9 +1159,102 @@ public class VideoCompositeHelper
     //   2	43	50	java/lang/InterruptedException
   }
   
+  /* Error */
+  private boolean e(String paramString)
+  {
+    // Byte code:
+    //   0: new 713	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$RetCode
+    //   3: dup
+    //   4: iconst_m1
+    //   5: ldc_w 805
+    //   8: invokespecial 714	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$RetCode:<init>	(ILjava/lang/String;)V
+    //   11: astore 4
+    //   13: getstatic 25	com/tencent/mobileqq/editor/composite/VideoCompositeHelper:a	Ljava/lang/String;
+    //   16: ldc_w 807
+    //   19: invokestatic 657	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: getstatic 60	android/os/Build$VERSION:SDK_INT	I
+    //   25: bipush 16
+    //   27: if_icmpge +15 -> 42
+    //   30: aload 4
+    //   32: invokevirtual 808	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$RetCode:a	()I
+    //   35: ifne +5 -> 40
+    //   38: iconst_1
+    //   39: ireturn
+    //   40: iconst_0
+    //   41: ireturn
+    //   42: new 810	android/media/MediaExtractor
+    //   45: dup
+    //   46: invokespecial 811	android/media/MediaExtractor:<init>	()V
+    //   49: astore_3
+    //   50: aload_3
+    //   51: aload_1
+    //   52: invokevirtual 812	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
+    //   55: iconst_0
+    //   56: istore_2
+    //   57: iload_2
+    //   58: aload_3
+    //   59: invokevirtual 815	android/media/MediaExtractor:getTrackCount	()I
+    //   62: if_icmpge +39 -> 101
+    //   65: aload_3
+    //   66: iload_2
+    //   67: invokevirtual 819	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   70: ldc_w 821
+    //   73: invokevirtual 826	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   76: ldc_w 828
+    //   79: invokevirtual 831	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   82: ifeq +12 -> 94
+    //   85: aload 4
+    //   87: iconst_0
+    //   88: invokevirtual 724	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$RetCode:a	(I)V
+    //   91: goto +10 -> 101
+    //   94: iload_2
+    //   95: iconst_1
+    //   96: iadd
+    //   97: istore_2
+    //   98: goto -41 -> 57
+    //   101: aload_3
+    //   102: invokevirtual 832	android/media/MediaExtractor:release	()V
+    //   105: aload 4
+    //   107: invokevirtual 808	com/tencent/mobileqq/editor/composite/VideoCompositeHelper$RetCode:a	()I
+    //   110: ifne +5 -> 115
+    //   113: iconst_1
+    //   114: ireturn
+    //   115: iconst_0
+    //   116: ireturn
+    //   117: astore_1
+    //   118: goto +14 -> 132
+    //   121: astore_1
+    //   122: aload_1
+    //   123: invokevirtual 833	java/io/IOException:printStackTrace	()V
+    //   126: aload_3
+    //   127: invokevirtual 832	android/media/MediaExtractor:release	()V
+    //   130: iconst_1
+    //   131: ireturn
+    //   132: aload_3
+    //   133: invokevirtual 832	android/media/MediaExtractor:release	()V
+    //   136: goto +5 -> 141
+    //   139: aload_1
+    //   140: athrow
+    //   141: goto -2 -> 139
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	144	0	this	VideoCompositeHelper
+    //   0	144	1	paramString	String
+    //   56	42	2	i	int
+    //   49	84	3	localMediaExtractor	android.media.MediaExtractor
+    //   11	95	4	localRetCode	VideoCompositeHelper.RetCode
+    // Exception table:
+    //   from	to	target	type
+    //   50	55	117	finally
+    //   57	91	117	finally
+    //   122	126	117	finally
+    //   50	55	121	java/io/IOException
+    //   57	91	121	java/io/IOException
+  }
+  
   public void a(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, boolean paramBoolean, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
   {
-    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject1 = a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("fakeId:");
     ((StringBuilder)localObject2).append(paramPublishVideoEntry.fakeVid);
@@ -1270,8 +1270,8 @@ public class VideoCompositeHelper
     }
     if (i != 0)
     {
-      com.tencent.biz.qqstory.utils.FileUtils.b(paramString1, paramString2);
-      paramString1 = jdField_a_of_type_JavaLangString;
+      com.tencent.mobileqq.utils.FileUtils.quickMove(paramString1, paramString2);
+      paramString1 = a;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("fakeId:");
       ((StringBuilder)localObject1).append(paramPublishVideoEntry.fakeVid);
@@ -1280,13 +1280,13 @@ public class VideoCompositeHelper
       paramVideoCompositeCallBack.a(0, "", paramString2);
       return;
     }
-    localObject1 = a(paramPublishVideoEntry);
-    if ((((VideoCompositeHelper.RetCode)localObject1).a() == 0) && (com.tencent.biz.qqstory.utils.FileUtils.b(paramPublishVideoEntry.backgroundMusicPath)))
+    localObject1 = c(paramPublishVideoEntry);
+    if ((((VideoCompositeHelper.RetCode)localObject1).a() == 0) && (com.tencent.biz.qqstory.utils.FileUtils.c(paramPublishVideoEntry.backgroundMusicPath)))
     {
-      long l = a(paramString1);
+      long l = b(paramString1);
       if (l > 0L)
       {
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("fakeId:");
         ((StringBuilder)localObject2).append(paramPublishVideoEntry.fakeVid);
@@ -1294,10 +1294,10 @@ public class VideoCompositeHelper
         SLog.b((String)localObject1, ((StringBuilder)localObject2).toString(), Integer.valueOf(paramPublishVideoEntry.backgroundMusicDuration), Long.valueOf(l));
         paramPublishVideoEntry.backgroundMusicDuration = ((int)Math.min(paramPublishVideoEntry.backgroundMusicDuration, l));
       }
-      if ((paramPublishVideoEntry.isLocalPublish) && (!a(paramString1))) {
+      if ((paramPublishVideoEntry.isLocalPublish) && (!e(paramString1))) {
         bool1 = false;
       }
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("fakeId:");
       ((StringBuilder)localObject2).append(paramPublishVideoEntry.fakeVid);
@@ -1308,7 +1308,7 @@ public class VideoCompositeHelper
       {
         if ((paramPublishVideoEntry.isMixOriginal) && (bool1))
         {
-          localObject1 = jdField_a_of_type_JavaLangString;
+          localObject1 = a;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("fakeId:");
           ((StringBuilder)localObject2).append(paramPublishVideoEntry.fakeVid);
@@ -1333,7 +1333,7 @@ public class VideoCompositeHelper
           return;
         }
         catch (Exception paramString2) {}
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("fakeId:");
         ((StringBuilder)localObject2).append(paramPublishVideoEntry.fakeVid);
@@ -1343,26 +1343,26 @@ public class VideoCompositeHelper
         return;
       }
       catch (Exception paramString2) {}
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("fakeId:");
       ((StringBuilder)localObject2).append(paramPublishVideoEntry.fakeVid);
       ((StringBuilder)localObject2).append(" combine audio throw exception:");
       SLog.b((String)localObject1, ((StringBuilder)localObject2).toString(), paramString2);
-      com.tencent.biz.qqstory.utils.FileUtils.g(paramString1);
+      com.tencent.biz.qqstory.utils.FileUtils.k(paramString1);
       paramVideoCompositeCallBack.a(941000, "combine audio exception", "");
       return;
     }
-    paramString1 = jdField_a_of_type_JavaLangString;
+    paramString1 = a;
     paramString2 = new StringBuilder();
     paramString2.append("fakeId:");
     paramString2.append(paramPublishVideoEntry.fakeVid);
     paramString2.append(" needAndStartDownloadMusic failed code:");
     paramString2.append(((VideoCompositeHelper.RetCode)localObject1).a());
     paramString2.append(",msg:");
-    paramString2.append(((VideoCompositeHelper.RetCode)localObject1).a());
+    paramString2.append(((VideoCompositeHelper.RetCode)localObject1).b());
     SLog.c(paramString1, paramString2.toString());
-    paramVideoCompositeCallBack.a(941000, ((VideoCompositeHelper.RetCode)localObject1).a(), "");
+    paramVideoCompositeCallBack.a(941000, ((VideoCompositeHelper.RetCode)localObject1).b(), "");
   }
   
   public void a(@NonNull PublishVideoEntry paramPublishVideoEntry, @NonNull String paramString, boolean paramBoolean1, boolean paramBoolean2, @NonNull VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
@@ -1370,18 +1370,18 @@ public class VideoCompositeHelper
     AssertUtils.checkNotNull(paramPublishVideoEntry);
     AssertUtils.checkNotNull(paramString);
     AssertUtils.checkNotNull(paramVideoCompositeCallBack);
-    SLog.d(jdField_a_of_type_JavaLangString, "composite create thread");
+    SLog.d(a, "composite create thread");
     ThreadManager.newFreeThread(new VideoCompositeHelper.1(this, paramPublishVideoEntry, paramString, paramBoolean1, paramBoolean2, paramVideoCompositeCallBack), "StoryVideoComposite", 5).start();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public void b(PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean1, boolean paramBoolean2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
   {
-    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject1 = a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("doComposite from:");
     ((StringBuilder)localObject2).append(paramPublishVideoEntry.businessId);
@@ -1394,7 +1394,7 @@ public class VideoCompositeHelper
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(localObject1);
     ((StringBuilder)localObject2).append(File.separator);
-    ((StringBuilder)localObject2).append(com.tencent.biz.qqstory.utils.FileUtils.a(paramPublishVideoEntry.mLocalRawVideoDir));
+    ((StringBuilder)localObject2).append(com.tencent.biz.qqstory.utils.FileUtils.f(paramPublishVideoEntry.mLocalRawVideoDir));
     ((StringBuilder)localObject2).append(".mp4");
     Object localObject3 = ((StringBuilder)localObject2).toString();
     boolean bool = paramPublishVideoEntry.isPicture;
@@ -1404,7 +1404,7 @@ public class VideoCompositeHelper
     StringBuilder localStringBuilder;
     if (bool)
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("fakeId:");
       localStringBuilder.append(paramPublishVideoEntry.fakeVid);
@@ -1421,7 +1421,7 @@ public class VideoCompositeHelper
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("outOfMemory file info:");
-        ((StringBuilder)localObject1).append(BitmapUtils.a(paramPublishVideoEntry.mLocalRawVideoDir));
+        ((StringBuilder)localObject1).append(BitmapUtils.c(paramPublishVideoEntry.mLocalRawVideoDir));
         localObject1 = ((StringBuilder)localObject1).toString();
         j = i;
       }
@@ -1429,7 +1429,7 @@ public class VideoCompositeHelper
     else if (paramPublishVideoEntry.hwEncodeRecordVideo)
     {
       if (QLog.isColorLevel()) {
-        SLog.a(jdField_a_of_type_JavaLangString, "record video, isLocal=%s , size=%s, bitrate=%s and need to encode to bitrate=%s", Boolean.valueOf(paramPublishVideoEntry.isLocalPublish), Long.valueOf(com.tencent.biz.qqstory.utils.FileUtils.a(paramPublishVideoEntry.mLocalRawVideoDir)), Integer.valueOf(VideoUtils.b(paramPublishVideoEntry.mLocalRawVideoDir)), Integer.valueOf(paramPublishVideoEntry.videoMaxrate));
+        SLog.a(a, "record video, isLocal=%s , size=%s, bitrate=%s and need to encode to bitrate=%s", Boolean.valueOf(paramPublishVideoEntry.isLocalPublish), Long.valueOf(com.tencent.biz.qqstory.utils.FileUtils.a(paramPublishVideoEntry.mLocalRawVideoDir)), Integer.valueOf(VideoUtils.b(paramPublishVideoEntry.mLocalRawVideoDir)), Integer.valueOf(paramPublishVideoEntry.videoMaxrate));
       }
       i = j;
       if (paramPublishVideoEntry.isLocalPublish)
@@ -1438,17 +1438,17 @@ public class VideoCompositeHelper
         if (paramPublishVideoEntry.getBooleanExtra("KEY_FROM_PIC_TO_VIDEO", false))
         {
           i = j;
-          if (!StringUtil.a(paramPublishVideoEntry.backgroundMusicPath))
+          if (!StringUtil.isEmpty(paramPublishVideoEntry.backgroundMusicPath))
           {
             l1 = System.currentTimeMillis();
-            localObject1 = jdField_a_of_type_JavaLangString;
+            localObject1 = a;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("fakeId:");
             localStringBuilder.append(paramPublishVideoEntry.fakeVid);
             localStringBuilder.append(" convertImageToVideo start");
             SLog.c((String)localObject1, localStringBuilder.toString());
-            i = a(paramPublishVideoEntry);
-            localObject1 = jdField_a_of_type_JavaLangString;
+            i = b(paramPublishVideoEntry);
+            localObject1 = a;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("fakeId:");
             localStringBuilder.append(paramPublishVideoEntry.fakeVid);
@@ -1464,7 +1464,7 @@ public class VideoCompositeHelper
       j = i;
       if (i == 0)
       {
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("fakeId:");
         localStringBuilder.append(paramPublishVideoEntry.fakeVid);
@@ -1476,10 +1476,10 @@ public class VideoCompositeHelper
         }
         if (paramPublishVideoEntry.isCancel)
         {
-          com.tencent.biz.qqstory.utils.FileUtils.g((String)localObject3);
+          com.tencent.biz.qqstory.utils.FileUtils.k((String)localObject3);
           i = -14;
         }
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("fakeId:");
         localStringBuilder.append(paramPublishVideoEntry.fakeVid);
@@ -1496,7 +1496,7 @@ public class VideoCompositeHelper
       int m = ((IStoryConfigManager)localObject1).getHighBitrate();
       i = VideoUtils.b((String)localObject3);
       long l1 = com.tencent.biz.qqstory.utils.FileUtils.a((String)localObject3);
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("fakeId:");
       localStringBuilder.append(paramPublishVideoEntry.fakeVid);
@@ -1520,7 +1520,7 @@ public class VideoCompositeHelper
             i = b(paramPublishVideoEntry.fakeVid, (String)localObject3, m);
             if (paramPublishVideoEntry.isCancel)
             {
-              com.tencent.biz.qqstory.utils.FileUtils.g((String)localObject3);
+              com.tencent.biz.qqstory.utils.FileUtils.k((String)localObject3);
               i = -20;
             }
           }
@@ -1528,22 +1528,22 @@ public class VideoCompositeHelper
       }
       j = i;
       localObject1 = localObject2;
-      if (CaptureFreqMonitor.b)
+      if (CaptureFreqMonitor.d)
       {
-        CaptureFreqMonitor.c.a(4, System.currentTimeMillis() - l2);
+        CaptureFreqMonitor.f.a(4, System.currentTimeMillis() - l2);
         j = i;
         localObject1 = localObject2;
       }
     }
     else
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "hwEncodeRecordVideo false, return");
+      QLog.d(a, 1, "hwEncodeRecordVideo false, return");
       localObject1 = localObject2;
       j = i;
     }
     if (j != 0)
     {
-      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject2 = a;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("fakeId:");
       ((StringBuilder)localObject3).append(paramPublishVideoEntry.fakeVid);
@@ -1558,7 +1558,7 @@ public class VideoCompositeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.composite.VideoCompositeHelper
  * JD-Core Version:    0.7.0.1
  */

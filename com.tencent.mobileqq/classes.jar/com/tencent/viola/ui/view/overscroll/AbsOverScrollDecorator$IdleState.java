@@ -40,7 +40,7 @@ public class AbsOverScrollDecorator$IdleState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.overscroll.AbsOverScrollDecorator.IdleState
  * JD-Core Version:    0.7.0.1
  */

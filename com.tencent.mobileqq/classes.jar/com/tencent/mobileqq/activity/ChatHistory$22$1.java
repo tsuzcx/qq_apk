@@ -12,14 +12,14 @@ class ChatHistory$22$1
   public void run()
   {
     MessageRecord localMessageRecord = new MessageRecord();
-    localMessageRecord.shmsgseq = this.a.this$0.jdField_a_of_type_Long;
-    int i = this.a.this$0.app.getMessageFacade().a(this.a.this$0.b, this.a.this$0.jdField_a_of_type_Int, localMessageRecord);
+    localMessageRecord.shmsgseq = this.a.this$0.c;
+    int i = this.a.this$0.app.getMessageFacade().c(this.a.this$0.e, this.a.this$0.f, localMessageRecord);
     this.a.this$0.runOnUiThread(new ChatHistory.22.1.1(this, i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.22.1
  * JD-Core Version:    0.7.0.1
  */

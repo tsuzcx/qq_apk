@@ -8,9 +8,9 @@ import com.qq.taf.jce.JceStruct;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.vas.api.IJce;
 import com.tencent.mobileqq.vas.api.IJce.Util;
+import com.tencent.mobileqq.vas.api.IVasService;
 import com.tencent.mobileqq.vas.api.IVasSingedApi;
 import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.mobileqq.vip.IVipStatusManager;
@@ -42,7 +42,7 @@ public final class TroopNickAuthRequest
       paramAuthListener.a(true, null);
       return;
     }
-    IJce localIJce = ((IJce)QRoute.api(IJce.class)).build("QC.UniBusinessLogicServer.UniBusinessLogicObj", "QCUniBusinessLogic.uniCheck", "stReq", "rsp");
+    IJce localIJce = VasUtil.a().getJceRequset().build("QC.UniBusinessLogicServer.UniBusinessLogicObj", "QCUniBusinessLogic.uniCheck", "stReq", "rsp");
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new UniBusinessItem(paramInt1, paramInt2, ""));
     localIJce.request("uniCheck", (JceStruct)new UniCheckReq(IJce.Util.a(), localArrayList), (JceStruct)new UniCheckRsp(), (BusinessObserver)new TroopNickAuthRequest.requestAuth.1(paramAuthListener), false);
@@ -65,9 +65,9 @@ public final class TroopNickAuthRequest
             if ((paramInt != 6) && (paramInt != 21) && (paramInt != 22)) {}
             return false;
           }
-          return VasUtil.a((AppRuntime)localObject).getVipStatus().isSVip();
+          return VasUtil.b((AppRuntime)localObject).getVipStatus().isSVip();
         }
-        return VasUtil.a((AppRuntime)localObject).getVipStatus().isVip();
+        return VasUtil.b((AppRuntime)localObject).getVipStatus().isVip();
       }
       return true;
     }
@@ -76,7 +76,7 @@ public final class TroopNickAuthRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.shop.adapter.TroopNickAuthRequest
  * JD-Core Version:    0.7.0.1
  */

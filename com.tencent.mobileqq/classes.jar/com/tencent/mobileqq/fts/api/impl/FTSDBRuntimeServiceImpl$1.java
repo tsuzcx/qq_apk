@@ -14,18 +14,18 @@ class FTSDBRuntimeServiceImpl$1
     if (this.this$0.hasInit()) {
       return;
     }
-    if (FTSUtils.a(FTSDBRuntimeServiceImpl.access$000(this.this$0)))
+    if (FTSUtils.d(FTSDBRuntimeServiceImpl.access$000(this.this$0)))
     {
       FTSDBRuntimeServiceImpl.access$100(this.this$0);
       return;
     }
-    if (FTSUtils.b(FTSDBRuntimeServiceImpl.access$000(this.this$0)))
+    if (FTSUtils.e(FTSDBRuntimeServiceImpl.access$000(this.this$0)))
     {
       if (this.this$0.isDestroyed) {
         return;
       }
       FTSDBRuntimeServiceImpl.access$204(this.this$0);
-      ThreadRegulator.a().b();
+      ThreadRegulator.a().c();
       if (!FTSDBRuntimeServiceImpl.access$300(this.this$0)) {
         if ((FTSDBRuntimeServiceImpl.access$200(this.this$0) <= 10) && (FTSDBRuntimeServiceImpl.access$400(this.this$0) != 1))
         {
@@ -42,7 +42,7 @@ class FTSDBRuntimeServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.api.impl.FTSDBRuntimeServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

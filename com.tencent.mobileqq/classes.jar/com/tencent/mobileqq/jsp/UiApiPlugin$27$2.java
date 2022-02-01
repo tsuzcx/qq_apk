@@ -13,13 +13,13 @@ class UiApiPlugin$27$2
   
   public void run()
   {
-    this.a.a.b.dismiss();
-    QQToast.a(this.a.a.mRuntime.a().getApplication(), 1, HardCodeUtil.a(2131715628), 0).a();
+    this.a.b.B.dismiss();
+    QQToast.makeText(this.a.b.mRuntime.b().getApplication(), 1, HardCodeUtil.a(2131913100), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.27.2
  * JD-Core Version:    0.7.0.1
  */

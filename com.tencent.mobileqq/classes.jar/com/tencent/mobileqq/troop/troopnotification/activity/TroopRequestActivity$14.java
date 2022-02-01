@@ -17,25 +17,25 @@ class TroopRequestActivity$14
   protected void a(String paramString)
   {
     this.a.h();
-    paramString = this.a.getString(2131719418);
-    QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
+    paramString = this.a.getString(2131916977);
+    QQToast.makeText(this.a, 1, paramString, 0).show(this.a.getTitleBarHeight());
   }
   
   protected void a(boolean paramBoolean, String paramString)
   {
     paramString = this.a;
-    paramString.a(2130839588, paramString.getString(2131719059));
+    paramString.a(2130839806, paramString.getString(2131916595));
   }
   
   protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
   {
     if (TextUtils.isEmpty(paramString1)) {
-      paramString1 = GroupSystemMsgController.a().b();
+      paramString1 = GroupSystemMsgController.a().f();
     }
     if (!paramBoolean)
     {
       this.a.h();
-      if (TroopSystemMsgUtils.a(GroupSystemMsgController.a().a(paramString1), paramInt3, paramString2, paramString4)) {
+      if (TroopSystemMsgUtils.a(GroupSystemMsgController.a().b(paramString1), paramInt3, paramString2, paramString4)) {
         this.a.finish();
       }
     }
@@ -43,14 +43,14 @@ class TroopRequestActivity$14
     {
       this.a.h();
       this.a.finish();
-      TroopSystemMsgUtils.a(GroupSystemMsgController.a().a(paramString1), paramInt1, paramString2, paramInt2);
+      TroopSystemMsgUtils.a(GroupSystemMsgController.a().b(paramString1), paramInt1, paramString2, paramInt2);
     }
   }
   
   protected void b(boolean paramBoolean, String paramString)
   {
     paramString = this.a;
-    paramString.a(2130839588, paramString.getString(2131719045));
+    paramString.a(2130839806, paramString.getString(2131916581));
   }
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
@@ -117,7 +117,7 @@ class TroopRequestActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.14
  * JD-Core Version:    0.7.0.1
  */

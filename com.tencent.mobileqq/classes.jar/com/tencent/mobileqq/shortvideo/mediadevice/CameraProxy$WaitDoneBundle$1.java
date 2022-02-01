@@ -7,16 +7,16 @@ class CameraProxy$WaitDoneBundle$1
   
   public void run()
   {
-    synchronized (this.this$0.a)
+    synchronized (this.this$0.b)
     {
-      this.this$0.a.notifyAll();
+      this.this$0.b.notifyAll();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.WaitDoneBundle.1
  * JD-Core Version:    0.7.0.1
  */

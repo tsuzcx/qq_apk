@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
 import androidx.core.view.TintableBackgroundView;
 import androidx.core.widget.TextViewCompat;
 
@@ -24,23 +25,25 @@ public class AppCompatEditText
   extends EditText
   implements TintableBackgroundView
 {
-  private final AppCompatBackgroundHelper mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
+  private final AppCompatBackgroundHelper mBackgroundTintHelper;
   private final AppCompatTextClassifierHelper mTextClassifierHelper;
   private final AppCompatTextHelper mTextHelper;
   
-  public AppCompatEditText(Context paramContext)
+  public AppCompatEditText(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public AppCompatEditText(Context paramContext, AttributeSet paramAttributeSet)
+  public AppCompatEditText(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131034538);
+    this(paramContext, paramAttributeSet, R.attr.editTextStyle);
   }
   
-  public AppCompatEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppCompatEditText(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
+    ThemeUtils.checkAppCompatTheme(this, getContext());
+    this.mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
     this.mBackgroundTintHelper.loadFromAttributes(paramAttributeSet, paramInt);
     this.mTextHelper = new AppCompatTextHelper(this);
     this.mTextHelper.loadFromAttributes(paramAttributeSet, paramInt);

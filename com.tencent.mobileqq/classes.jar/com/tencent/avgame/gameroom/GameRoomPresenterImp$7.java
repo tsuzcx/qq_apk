@@ -9,7 +9,7 @@ class GameRoomPresenterImp$7
   
   public void run()
   {
-    GameEngine.a().c();
+    GameEngine.a().p();
   }
 }
 

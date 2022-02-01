@@ -25,10 +25,10 @@ class LongArkMsgManager$1
   {
     try
     {
-      if (paramSendResult.jdField_a_of_type_Int == 0)
+      if (paramSendResult.a == 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramSendResult.c;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
+        this.a.resIDForLongMsg = paramSendResult.f;
+        this.b.getMessageFacade().b(this.a, null, false);
         return;
       }
       if (QLog.isColorLevel())
@@ -37,10 +37,10 @@ class LongArkMsgManager$1
         localStringBuilder.append("upload multi msg pack failed, result.errStr=");
         localStringBuilder.append(paramSendResult.b);
         localStringBuilder.append(",result.errStr=");
-        localStringBuilder.append(paramSendResult.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramSendResult.c);
         QLog.d("StructLongTextMsg", 2, localStringBuilder.toString());
       }
-      LongTextMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      LongTextMsgManager.a(this.b, this.a);
       return;
     }
     catch (Exception paramSendResult)
@@ -48,13 +48,13 @@ class LongArkMsgManager$1
       if (QLog.isColorLevel()) {
         QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, catch exception", paramSendResult);
       }
-      LongTextMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      LongTextMsgManager.a(this.b, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.LongArkMsgManager.1
  * JD-Core Version:    0.7.0.1
  */

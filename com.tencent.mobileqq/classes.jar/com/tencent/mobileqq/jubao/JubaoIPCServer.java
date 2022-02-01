@@ -16,64 +16,48 @@ public class JubaoIPCServer
   extends QIPCModule
   implements BusinessObserver
 {
-  private static JubaoIPCServer jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer;
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<ChatMessage> jdField_a_of_type_JavaUtilArrayList;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private ArrayList<JubaoMsgData> jdField_b_of_type_JavaUtilArrayList;
+  private static JubaoIPCServer a;
+  private ArrayList<ChatMessage> b;
+  private String c;
+  private String d;
+  private int e;
+  private String f;
+  private ArrayList<JubaoMsgData> g;
+  private String h;
+  private int i;
   
   private JubaoIPCServer(String paramString)
   {
     super(paramString);
   }
   
-  private QQAppInterface a()
-  {
-    return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-  }
-  
   public static JubaoIPCServer a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer == null) {
-          jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer = new JubaoIPCServer("JubaoIPCServer");
+        if (a == null) {
+          a = new JubaoIPCServer("JubaoIPCServer");
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqJubaoJubaoIPCServer;
+    return a;
   }
   
-  public ArrayList<ChatMessage> a()
+  private QQAppInterface d()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a()
-  {
-    EIPCResult localEIPCResult = new EIPCResult();
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("receive_success", false);
-    localEIPCResult.data = ((Bundle)localObject);
-    localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localObject != null) {
-      ((ArrayList)localObject).clear();
-    }
-    callbackResult(this.jdField_b_of_type_Int, localEIPCResult);
+    return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
   }
   
   public void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = a();
+    QQAppInterface localQQAppInterface = d();
     NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApplication().getApplicationContext(), JubaoServlet.class);
-    localNewIntent.putExtra("jubao_chat_uin", this.jdField_a_of_type_JavaLangString);
-    localNewIntent.putExtra("jubao_group_code", this.jdField_b_of_type_JavaLangString);
-    localNewIntent.putExtra("jubao_chat_type", this.jdField_a_of_type_Int);
-    localNewIntent.putExtra("jubao_msg_list", this.jdField_b_of_type_JavaUtilArrayList);
+    localNewIntent.putExtra("jubao_chat_uin", this.c);
+    localNewIntent.putExtra("jubao_group_code", this.d);
+    localNewIntent.putExtra("jubao_chat_type", this.e);
+    localNewIntent.putExtra("jubao_msg_list", this.g);
     localNewIntent.putExtra("multi_msg_resID", paramString);
     localNewIntent.setObserver(this);
     localQQAppInterface.startServlet(localNewIntent);
@@ -81,33 +65,76 @@ public class JubaoIPCServer
   
   public void a(ArrayList<ChatMessage> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramArrayList);
+    this.b = new ArrayList(paramArrayList);
+  }
+  
+  public void b()
+  {
+    EIPCResult localEIPCResult = new EIPCResult();
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putBoolean("receive_success", false);
+    localEIPCResult.data = ((Bundle)localObject);
+    localObject = this.b;
+    if (localObject != null) {
+      ((ArrayList)localObject).clear();
+    }
+    callbackResult(this.i, localEIPCResult);
+  }
+  
+  public ArrayList<ChatMessage> c()
+  {
+    return this.b;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("jubaoIpcServer onCall= ");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(",callbackId = ");
-      localStringBuilder.append(paramInt);
-      QLog.d("JubaoIPCServer", 2, localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("jubaoIpcServer onCall= ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",callbackId = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("JubaoIPCServer", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("jubao_chat_uin");
-    this.jdField_b_of_type_JavaLangString = paramBundle.getString("jubao_group_code");
-    this.jdField_a_of_type_Int = paramBundle.getInt("jubao_chat_type");
-    this.jdField_b_of_type_JavaUtilArrayList = ((ArrayList)paramBundle.getSerializable("jubao_msg_list"));
-    paramString = a();
-    paramBundle = new NewIntent(paramString.getApplication().getApplicationContext(), JubaoServlet.class);
-    paramBundle.putExtra("jubao_chat_uin", this.jdField_a_of_type_JavaLangString);
-    paramBundle.putExtra("jubao_group_code", this.jdField_b_of_type_JavaLangString);
-    paramBundle.putExtra("jubao_chat_type", this.jdField_a_of_type_Int);
-    paramBundle.putExtra("jubao_msg_list", this.jdField_b_of_type_JavaUtilArrayList);
-    paramBundle.setObserver(this);
-    paramString.startServlet(paramBundle);
+    this.i = paramInt;
+    this.c = paramBundle.getString("jubao_chat_uin");
+    this.d = paramBundle.getString("jubao_group_code");
+    this.e = paramBundle.getInt("jubao_chat_type");
+    this.f = paramBundle.getString("jubao_evil_uin");
+    this.g = ((ArrayList)paramBundle.getSerializable("jubao_msg_list"));
+    Object localObject = d();
+    NewIntent localNewIntent = new NewIntent(((QQAppInterface)localObject).getApplication().getApplicationContext(), JubaoServlet.class);
+    localNewIntent.putExtra("jubao_evil_uin", this.f);
+    localNewIntent.putExtra("jubao_chat_uin", this.c);
+    localNewIntent.putExtra("jubao_group_code", this.d);
+    localNewIntent.putExtra("jubao_chat_type", this.e);
+    localNewIntent.putExtra("jubao_msg_list", this.g);
+    if (this.e == 10007)
+    {
+      this.h = paramBundle.getString("jubao_game_sig");
+      localNewIntent.putExtra("jubao_game_sig", this.h);
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("  jubaoIpcServer uin= ");
+        paramBundle.append(paramString);
+        paramBundle.append(",sig = ");
+        paramBundle.append(this.h);
+        QLog.d("JubaoIPCServer", 2, paramBundle.toString());
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("jubaoIpcServer onCall= ");
+      paramBundle.append(paramString);
+      paramBundle.append(",callbackId = ");
+      paramBundle.append(paramInt);
+      QLog.d("JubaoIPCServer", 2, paramBundle.toString());
+    }
+    localNewIntent.setObserver(this);
+    ((QQAppInterface)localObject).startServlet(localNewIntent);
     return null;
   }
   
@@ -116,16 +143,16 @@ public class JubaoIPCServer
     EIPCResult localEIPCResult = new EIPCResult();
     paramBundle.putBoolean("receive_success", paramBoolean);
     localEIPCResult.data = paramBundle;
-    paramBundle = this.jdField_a_of_type_JavaUtilArrayList;
+    paramBundle = this.b;
     if (paramBundle != null) {
       paramBundle.clear();
     }
-    callbackResult(this.jdField_b_of_type_Int, localEIPCResult);
+    callbackResult(this.i, localEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jubao.JubaoIPCServer
  * JD-Core Version:    0.7.0.1
  */

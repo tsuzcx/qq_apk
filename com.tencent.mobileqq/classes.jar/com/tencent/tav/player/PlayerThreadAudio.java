@@ -8,19 +8,20 @@ import com.tencent.tav.core.AudioCompositionDecoderTrack;
 import com.tencent.tav.coremedia.CMSampleBuffer;
 import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.decoder.IDecoderTrack;
 import com.tencent.tav.decoder.logger.Logger;
+import com.tencent.tav.decoder.reverseaudio.ReverseAudioDecoderTrack;
 import java.nio.ByteBuffer;
 
 public class PlayerThreadAudio
   implements Handler.Callback
 {
   private static final String TAG = "PlayerThreadAudio";
-  private AudioCompositionDecoderTrack audioDecoderTrack;
+  private IDecoderTrack audioDecoderTrack;
   public volatile CMSampleState currentPlayingState = new CMSampleState();
   public volatile long lastSyncMessgeId = -1L;
   private AudioTrackWrapper mAudioTrack;
   private boolean mLooper;
-  private Handler mMainHandler;
   private Handler mPlayHandler;
   private int mStatus = 1;
   private HandlerThread mThread;
@@ -28,11 +29,10 @@ public class PlayerThreadAudio
   private float rate = 1.0F;
   private float volume = 1.0F;
   
-  public PlayerThreadAudio(AudioCompositionDecoderTrack paramAudioCompositionDecoderTrack, Handler paramHandler1, Handler paramHandler2)
+  public PlayerThreadAudio(IDecoderTrack paramIDecoderTrack, Handler paramHandler)
   {
-    this.audioDecoderTrack = paramAudioCompositionDecoderTrack;
-    this.mMainHandler = paramHandler1;
-    this.mVideoHandler = paramHandler2;
+    this.audioDecoderTrack = paramIDecoderTrack;
+    this.mVideoHandler = paramHandler;
     initThread();
   }
   
@@ -100,7 +100,11 @@ public class PlayerThreadAudio
       if (!this.mLooper) {
         return;
       }
-      ((AudioCompositionDecoderTrack)localObject1).setRate(this.rate);
+      if ((localObject1 instanceof AudioCompositionDecoderTrack)) {
+        ((AudioCompositionDecoderTrack)localObject1).setRate(this.rate);
+      } else if ((localObject1 instanceof ReverseAudioDecoderTrack)) {
+        ((ReverseAudioDecoderTrack)localObject1).setRate(this.rate);
+      }
       localObject1 = CMSampleState.fromError(-2L);
       v("PlayerThreadAudio", "readSample start");
       StringBuilder localStringBuilder2 = null;
@@ -194,7 +198,7 @@ public class PlayerThreadAudio
           }
         }
         this.currentPlayingState = ((CMSampleState)localObject2);
-        if ((this.mLooper) && (this.rate > 0.0F))
+        if ((this.mLooper) && (this.rate != 0.0F))
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("processFrame() called run looper ");
@@ -217,47 +221,47 @@ public class PlayerThreadAudio
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 69	com/tencent/tav/player/PlayerThreadAudio:releaseAudioTrack	()V
+    //   1: invokespecial 66	com/tencent/tav/player/PlayerThreadAudio:releaseAudioTrack	()V
     //   4: aload_0
     //   5: iconst_0
     //   6: newarray int
-    //   8: invokespecial 105	com/tencent/tav/player/PlayerThreadAudio:removePendingMessage	([I)V
+    //   8: invokespecial 102	com/tencent/tav/player/PlayerThreadAudio:removePendingMessage	([I)V
     //   11: aload_0
     //   12: iconst_1
-    //   13: invokespecial 66	com/tencent/tav/player/PlayerThreadAudio:updateStatus	(I)V
-    //   16: new 178	java/lang/StringBuilder
+    //   13: invokespecial 63	com/tencent/tav/player/PlayerThreadAudio:updateStatus	(I)V
+    //   16: new 180	java/lang/StringBuilder
     //   19: dup
-    //   20: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   20: invokespecial 181	java/lang/StringBuilder:<init>	()V
     //   23: astore_1
     //   24: aload_1
-    //   25: ldc_w 303
-    //   28: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: ldc_w 305
+    //   28: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   31: pop
     //   32: aload_1
     //   33: aload_0
-    //   34: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   37: pop
     //   38: ldc 10
     //   40: aload_1
-    //   41: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   44: invokestatic 308	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   41: invokevirtual 194	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   44: invokestatic 310	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   47: pop
     //   48: aload_0
-    //   49: getfield 84	com/tencent/tav/player/PlayerThreadAudio:mThread	Landroid/os/HandlerThread;
-    //   52: invokevirtual 312	android/os/HandlerThread:quit	()Z
+    //   49: getfield 81	com/tencent/tav/player/PlayerThreadAudio:mThread	Landroid/os/HandlerThread;
+    //   52: invokevirtual 314	android/os/HandlerThread:quit	()Z
     //   55: pop
     //   56: aload_0
     //   57: aconst_null
-    //   58: putfield 84	com/tencent/tav/player/PlayerThreadAudio:mThread	Landroid/os/HandlerThread;
+    //   58: putfield 81	com/tencent/tav/player/PlayerThreadAudio:mThread	Landroid/os/HandlerThread;
     //   61: aload_0
-    //   62: getfield 57	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
+    //   62: getfield 54	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
     //   65: astore_1
     //   66: aload_1
     //   67: monitorenter
     //   68: aload_0
-    //   69: getfield 57	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
+    //   69: getfield 54	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
     //   72: sipush 850
-    //   75: invokevirtual 316	android/os/Handler:sendEmptyMessage	(I)Z
+    //   75: invokevirtual 318	android/os/Handler:sendEmptyMessage	(I)Z
     //   78: pop
     //   79: aload_1
     //   80: monitorexit
@@ -271,27 +275,27 @@ public class PlayerThreadAudio
     //   90: goto +49 -> 139
     //   93: astore_1
     //   94: ldc 10
-    //   96: ldc_w 318
+    //   96: ldc_w 320
     //   99: aload_1
-    //   100: invokestatic 200	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   100: invokestatic 202	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   103: aload_0
-    //   104: getfield 57	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
+    //   104: getfield 54	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
     //   107: astore_1
     //   108: aload_1
     //   109: monitorenter
     //   110: aload_0
-    //   111: getfield 57	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
+    //   111: getfield 54	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
     //   114: sipush 850
-    //   117: invokevirtual 316	android/os/Handler:sendEmptyMessage	(I)Z
+    //   117: invokevirtual 318	android/os/Handler:sendEmptyMessage	(I)Z
     //   120: pop
     //   121: aload_1
     //   122: monitorexit
     //   123: aload_0
     //   124: aconst_null
-    //   125: putfield 98	com/tencent/tav/player/PlayerThreadAudio:mPlayHandler	Landroid/os/Handler;
+    //   125: putfield 95	com/tencent/tav/player/PlayerThreadAudio:mPlayHandler	Landroid/os/Handler;
     //   128: aload_0
     //   129: aconst_null
-    //   130: putfield 57	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
+    //   130: putfield 54	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
     //   133: return
     //   134: astore_2
     //   135: aload_1
@@ -299,23 +303,23 @@ public class PlayerThreadAudio
     //   137: aload_2
     //   138: athrow
     //   139: aload_0
-    //   140: getfield 57	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
+    //   140: getfield 54	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
     //   143: astore_1
     //   144: aload_1
     //   145: monitorenter
     //   146: aload_0
-    //   147: getfield 57	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
+    //   147: getfield 54	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
     //   150: sipush 850
-    //   153: invokevirtual 316	android/os/Handler:sendEmptyMessage	(I)Z
+    //   153: invokevirtual 318	android/os/Handler:sendEmptyMessage	(I)Z
     //   156: pop
     //   157: aload_1
     //   158: monitorexit
     //   159: aload_0
     //   160: aconst_null
-    //   161: putfield 98	com/tencent/tav/player/PlayerThreadAudio:mPlayHandler	Landroid/os/Handler;
+    //   161: putfield 95	com/tencent/tav/player/PlayerThreadAudio:mPlayHandler	Landroid/os/Handler;
     //   164: aload_0
     //   165: aconst_null
-    //   166: putfield 57	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
+    //   166: putfield 54	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
     //   169: aload_2
     //   170: athrow
     //   171: astore_2
@@ -453,7 +457,7 @@ public class PlayerThreadAudio
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 360	android/os/Message:obj	Ljava/lang/Object;
+    //   1: getfield 362	android/os/Message:obj	Ljava/lang/Object;
     //   4: astore_3
     //   5: aconst_null
     //   6: astore 5
@@ -463,49 +467,49 @@ public class PlayerThreadAudio
     //   13: astore_3
     //   14: goto +11 -> 25
     //   17: aload_1
-    //   18: getfield 360	android/os/Message:obj	Ljava/lang/Object;
-    //   21: checkcast 333	com/tencent/tav/player/PlayerMessage
+    //   18: getfield 362	android/os/Message:obj	Ljava/lang/Object;
+    //   21: checkcast 335	com/tencent/tav/player/PlayerMessage
     //   24: astore_3
     //   25: aload_3
     //   26: ifnull +12 -> 38
     //   29: aload_3
-    //   30: getfield 337	com/tencent/tav/player/PlayerMessage:bizMsg1	Ljava/lang/Object;
+    //   30: getfield 339	com/tencent/tav/player/PlayerMessage:bizMsg1	Ljava/lang/Object;
     //   33: astore 4
     //   35: goto +6 -> 41
     //   38: aconst_null
     //   39: astore 4
-    //   41: new 178	java/lang/StringBuilder
+    //   41: new 180	java/lang/StringBuilder
     //   44: dup
-    //   45: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   45: invokespecial 181	java/lang/StringBuilder:<init>	()V
     //   48: astore 6
     //   50: aload 6
-    //   52: ldc_w 362
-    //   55: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: ldc_w 364
+    //   55: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: pop
     //   59: aload 6
     //   61: aload_0
     //   62: aload_1
-    //   63: getfield 365	android/os/Message:what	I
-    //   66: invokespecial 366	com/tencent/tav/player/PlayerThreadAudio:catLog	(I)Ljava/lang/String;
-    //   69: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: getfield 367	android/os/Message:what	I
+    //   66: invokespecial 368	com/tencent/tav/player/PlayerThreadAudio:catLog	(I)Ljava/lang/String;
+    //   69: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: pop
     //   73: aload 6
     //   75: aload_1
-    //   76: getfield 365	android/os/Message:what	I
-    //   79: invokevirtual 276	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   76: getfield 367	android/os/Message:what	I
+    //   79: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   82: pop
     //   83: aload 6
-    //   85: ldc_w 368
-    //   88: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   85: ldc_w 370
+    //   88: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   91: pop
     //   92: aload 6
     //   94: aload_0
-    //   95: getfield 47	com/tencent/tav/player/PlayerThreadAudio:mStatus	I
-    //   98: invokevirtual 276	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   95: getfield 46	com/tencent/tav/player/PlayerThreadAudio:mStatus	I
+    //   98: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   101: pop
     //   102: aload 6
-    //   104: ldc_w 370
-    //   107: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: ldc_w 372
+    //   107: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: pop
     //   111: aload_3
     //   112: ifnonnull +6 -> 118
@@ -514,23 +518,23 @@ public class PlayerThreadAudio
     //   119: astore 5
     //   121: aload 6
     //   123: aload 5
-    //   125: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   125: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   128: pop
     //   129: aload 6
-    //   131: ldc_w 372
-    //   134: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: ldc_w 374
+    //   134: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   137: pop
     //   138: aload 6
     //   140: aload 4
-    //   142: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   142: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   145: pop
     //   146: aload_0
     //   147: ldc 10
     //   149: aload 6
-    //   151: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   154: invokespecial 167	com/tencent/tav/player/PlayerThreadAudio:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   151: invokevirtual 194	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   154: invokespecial 169	com/tencent/tav/player/PlayerThreadAudio:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   157: aload_1
-    //   158: getfield 365	android/os/Message:what	I
+    //   158: getfield 367	android/os/Message:what	I
     //   161: istore_2
     //   162: iload_2
     //   163: iconst_m1
@@ -541,171 +545,171 @@ public class PlayerThreadAudio
     //   173: iload_2
     //   174: tableswitch	default:+412 -> 586, 1:+91->265, 2:+82->256, 3:+75->249, 4:+67->241, 5:+58->232, 6:+51->225, 7:+42->216
     //   217: aload 4
-    //   219: invokespecial 374	com/tencent/tav/player/PlayerThreadAudio:setVolume	(Ljava/lang/Object;)V
+    //   219: invokespecial 376	com/tencent/tav/player/PlayerThreadAudio:setVolume	(Ljava/lang/Object;)V
     //   222: goto +61 -> 283
     //   225: aload_0
-    //   226: invokespecial 375	com/tencent/tav/player/PlayerThreadAudio:release	()V
+    //   226: invokespecial 377	com/tencent/tav/player/PlayerThreadAudio:release	()V
     //   229: goto +54 -> 283
     //   232: aload_0
     //   233: aload 4
-    //   235: invokespecial 128	com/tencent/tav/player/PlayerThreadAudio:seekTo	(Ljava/lang/Object;)V
+    //   235: invokespecial 125	com/tencent/tav/player/PlayerThreadAudio:seekTo	(Ljava/lang/Object;)V
     //   238: goto +45 -> 283
     //   241: aload_0
     //   242: iconst_0
-    //   243: invokespecial 377	com/tencent/tav/player/PlayerThreadAudio:stop	(Z)V
+    //   243: invokespecial 379	com/tencent/tav/player/PlayerThreadAudio:stop	(Z)V
     //   246: goto +37 -> 283
     //   249: aload_0
-    //   250: invokespecial 379	com/tencent/tav/player/PlayerThreadAudio:pause	()V
+    //   250: invokespecial 381	com/tencent/tav/player/PlayerThreadAudio:pause	()V
     //   253: goto +30 -> 283
     //   256: aload_0
     //   257: aload 4
-    //   259: invokespecial 381	com/tencent/tav/player/PlayerThreadAudio:play	(Ljava/lang/Object;)V
+    //   259: invokespecial 383	com/tencent/tav/player/PlayerThreadAudio:play	(Ljava/lang/Object;)V
     //   262: goto +21 -> 283
     //   265: aload_0
-    //   266: invokespecial 383	com/tencent/tav/player/PlayerThreadAudio:actionPrepare	()V
+    //   266: invokespecial 385	com/tencent/tav/player/PlayerThreadAudio:actionPrepare	()V
     //   269: goto +14 -> 283
     //   272: aload_0
-    //   273: invokespecial 385	com/tencent/tav/player/PlayerThreadAudio:readSample	()V
+    //   273: invokespecial 387	com/tencent/tav/player/PlayerThreadAudio:readSample	()V
     //   276: goto +7 -> 283
     //   279: aload_0
-    //   280: invokespecial 300	com/tencent/tav/player/PlayerThreadAudio:playerFinish	()V
+    //   280: invokespecial 302	com/tencent/tav/player/PlayerThreadAudio:playerFinish	()V
     //   283: aload_3
     //   284: ifnull +92 -> 376
     //   287: aload_3
-    //   288: getfield 388	com/tencent/tav/player/PlayerMessage:form	Ljava/lang/String;
-    //   291: invokestatic 394	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   288: getfield 390	com/tencent/tav/player/PlayerMessage:form	Ljava/lang/String;
+    //   291: invokestatic 396	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   294: ifne +82 -> 376
     //   297: aload_3
-    //   298: getfield 388	com/tencent/tav/player/PlayerMessage:form	Ljava/lang/String;
-    //   301: ldc_w 396
-    //   304: invokevirtual 402	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   298: getfield 390	com/tencent/tav/player/PlayerMessage:form	Ljava/lang/String;
+    //   301: ldc_w 398
+    //   304: invokevirtual 404	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   307: ifeq +69 -> 376
-    //   310: new 178	java/lang/StringBuilder
+    //   310: new 180	java/lang/StringBuilder
     //   313: dup
-    //   314: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   314: invokespecial 181	java/lang/StringBuilder:<init>	()V
     //   317: astore 4
     //   319: aload 4
-    //   321: ldc_w 404
-    //   324: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   321: ldc_w 406
+    //   324: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   327: pop
     //   328: aload 4
     //   330: aload_3
-    //   331: getfield 407	com/tencent/tav/player/PlayerMessage:msgId	J
-    //   334: invokevirtual 261	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   331: getfield 409	com/tencent/tav/player/PlayerMessage:msgId	J
+    //   334: invokevirtual 263	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   337: pop
     //   338: aload 4
-    //   340: ldc_w 409
-    //   343: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   340: ldc_w 411
+    //   343: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   346: pop
     //   347: aload 4
     //   349: aload_1
-    //   350: getfield 365	android/os/Message:what	I
-    //   353: invokevirtual 276	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   350: getfield 367	android/os/Message:what	I
+    //   353: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   356: pop
     //   357: ldc 10
     //   359: aload 4
-    //   361: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   364: invokestatic 412	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   361: invokevirtual 194	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   364: invokestatic 414	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   367: pop
     //   368: aload_0
     //   369: aload_3
-    //   370: getfield 407	com/tencent/tav/player/PlayerMessage:msgId	J
-    //   373: putfield 45	com/tencent/tav/player/PlayerThreadAudio:lastSyncMessgeId	J
+    //   370: getfield 409	com/tencent/tav/player/PlayerMessage:msgId	J
+    //   373: putfield 44	com/tencent/tav/player/PlayerThreadAudio:lastSyncMessgeId	J
     //   376: iconst_1
     //   377: ireturn
     //   378: astore 4
     //   380: goto +110 -> 490
     //   383: astore 4
     //   385: ldc 10
-    //   387: ldc_w 414
+    //   387: ldc_w 416
     //   390: aload 4
-    //   392: invokestatic 200	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   392: invokestatic 202	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   395: aload_3
     //   396: ifnull +92 -> 488
     //   399: aload_3
-    //   400: getfield 388	com/tencent/tav/player/PlayerMessage:form	Ljava/lang/String;
-    //   403: invokestatic 394	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   400: getfield 390	com/tencent/tav/player/PlayerMessage:form	Ljava/lang/String;
+    //   403: invokestatic 396	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   406: ifne +82 -> 488
     //   409: aload_3
-    //   410: getfield 388	com/tencent/tav/player/PlayerMessage:form	Ljava/lang/String;
-    //   413: ldc_w 396
-    //   416: invokevirtual 402	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   410: getfield 390	com/tencent/tav/player/PlayerMessage:form	Ljava/lang/String;
+    //   413: ldc_w 398
+    //   416: invokevirtual 404	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   419: ifeq +69 -> 488
-    //   422: new 178	java/lang/StringBuilder
+    //   422: new 180	java/lang/StringBuilder
     //   425: dup
-    //   426: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   426: invokespecial 181	java/lang/StringBuilder:<init>	()V
     //   429: astore 4
     //   431: aload 4
-    //   433: ldc_w 404
-    //   436: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   433: ldc_w 406
+    //   436: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   439: pop
     //   440: aload 4
     //   442: aload_3
-    //   443: getfield 407	com/tencent/tav/player/PlayerMessage:msgId	J
-    //   446: invokevirtual 261	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   443: getfield 409	com/tencent/tav/player/PlayerMessage:msgId	J
+    //   446: invokevirtual 263	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   449: pop
     //   450: aload 4
-    //   452: ldc_w 409
-    //   455: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   452: ldc_w 411
+    //   455: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   458: pop
     //   459: aload 4
     //   461: aload_1
-    //   462: getfield 365	android/os/Message:what	I
-    //   465: invokevirtual 276	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   462: getfield 367	android/os/Message:what	I
+    //   465: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   468: pop
     //   469: ldc 10
     //   471: aload 4
-    //   473: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   476: invokestatic 412	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   473: invokevirtual 194	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   476: invokestatic 414	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   479: pop
     //   480: aload_0
     //   481: aload_3
-    //   482: getfield 407	com/tencent/tav/player/PlayerMessage:msgId	J
-    //   485: putfield 45	com/tencent/tav/player/PlayerThreadAudio:lastSyncMessgeId	J
+    //   482: getfield 409	com/tencent/tav/player/PlayerMessage:msgId	J
+    //   485: putfield 44	com/tencent/tav/player/PlayerThreadAudio:lastSyncMessgeId	J
     //   488: iconst_0
     //   489: ireturn
     //   490: aload_3
     //   491: ifnull +92 -> 583
     //   494: aload_3
-    //   495: getfield 388	com/tencent/tav/player/PlayerMessage:form	Ljava/lang/String;
-    //   498: invokestatic 394	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   495: getfield 390	com/tencent/tav/player/PlayerMessage:form	Ljava/lang/String;
+    //   498: invokestatic 396	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   501: ifne +82 -> 583
     //   504: aload_3
-    //   505: getfield 388	com/tencent/tav/player/PlayerMessage:form	Ljava/lang/String;
-    //   508: ldc_w 396
-    //   511: invokevirtual 402	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   505: getfield 390	com/tencent/tav/player/PlayerMessage:form	Ljava/lang/String;
+    //   508: ldc_w 398
+    //   511: invokevirtual 404	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   514: ifeq +69 -> 583
-    //   517: new 178	java/lang/StringBuilder
+    //   517: new 180	java/lang/StringBuilder
     //   520: dup
-    //   521: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   521: invokespecial 181	java/lang/StringBuilder:<init>	()V
     //   524: astore 5
     //   526: aload 5
-    //   528: ldc_w 404
-    //   531: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   528: ldc_w 406
+    //   531: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   534: pop
     //   535: aload 5
     //   537: aload_3
-    //   538: getfield 407	com/tencent/tav/player/PlayerMessage:msgId	J
-    //   541: invokevirtual 261	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   538: getfield 409	com/tencent/tav/player/PlayerMessage:msgId	J
+    //   541: invokevirtual 263	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   544: pop
     //   545: aload 5
-    //   547: ldc_w 409
-    //   550: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   547: ldc_w 411
+    //   550: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   553: pop
     //   554: aload 5
     //   556: aload_1
-    //   557: getfield 365	android/os/Message:what	I
-    //   560: invokevirtual 276	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   557: getfield 367	android/os/Message:what	I
+    //   560: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   563: pop
     //   564: ldc 10
     //   566: aload 5
-    //   568: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   571: invokestatic 412	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   568: invokevirtual 194	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   571: invokestatic 414	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   574: pop
     //   575: aload_0
     //   576: aload_3
-    //   577: getfield 407	com/tencent/tav/player/PlayerMessage:msgId	J
-    //   580: putfield 45	com/tencent/tav/player/PlayerThreadAudio:lastSyncMessgeId	J
+    //   577: getfield 409	com/tencent/tav/player/PlayerMessage:msgId	J
+    //   580: putfield 44	com/tencent/tav/player/PlayerThreadAudio:lastSyncMessgeId	J
     //   583: aload 4
     //   585: athrow
     //   586: goto -303 -> 283
@@ -813,9 +817,9 @@ public class PlayerThreadAudio
     this.rate = Math.abs(paramFloat);
   }
   
-  public void update(AudioCompositionDecoderTrack paramAudioCompositionDecoderTrack)
+  public void update(IDecoderTrack paramIDecoderTrack)
   {
-    this.audioDecoderTrack = paramAudioCompositionDecoderTrack;
+    this.audioDecoderTrack = paramIDecoderTrack;
   }
   
   @Deprecated
@@ -827,7 +831,7 @@ public class PlayerThreadAudio
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.player.PlayerThreadAudio
  * JD-Core Version:    0.7.0.1
  */

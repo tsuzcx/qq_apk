@@ -1,32 +1,28 @@
 package com.tencent.mobileqq.apollo.aio.panel;
 
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.model.ApolloActionPackage;
-import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 class ApolloPanel$7
   implements Runnable
 {
-  ApolloPanel$7(ApolloPanel paramApolloPanel, List paramList) {}
+  ApolloPanel$7(ApolloPanel paramApolloPanel) {}
   
   public void run()
   {
-    if ((ApolloPanel.a(this.this$0) != null) && (ApolloPanel.a(this.this$0).a != null))
+    try
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        ApolloActionPackage localApolloActionPackage = (ApolloActionPackage)localIterator.next();
-        ApolloPanel.a(this.this$0).updatePackage(localApolloActionPackage);
-      }
+      ApolloPanel.p(this.this$0);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("[cmshow]ApolloPanel", 1, "[reportTabExposure] failed, excetion2=", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.7
  * JD-Core Version:    0.7.0.1
  */

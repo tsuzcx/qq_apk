@@ -12,23 +12,23 @@ public class TroopFragment$MyTroopMngObserver
     if (paramInt1 == 6)
     {
       if (paramInt2 == 0) {
-        this.a.h();
+        this.a.j();
       }
     }
     else if (paramInt1 == 2)
     {
       if (paramInt2 == 0) {
-        this.a.h();
+        this.a.j();
       }
     }
     else if ((paramInt1 == 9) && (paramInt2 == 0)) {
-      this.a.h();
+      this.a.j();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.TroopFragment.MyTroopMngObserver
  * JD-Core Version:    0.7.0.1
  */

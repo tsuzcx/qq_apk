@@ -31,15 +31,21 @@ class ActivateFriendActivity$5
         ActivateFriendActivity.a(this.a, (ArrayList)paramMessage.getSerializable("models"), (List)paramMessage.getSerializable("list"), paramMessage.getInt("count"));
       }
     }
-    else if (ActivateFriendActivity.a(this.a) != null) {
-      ActivateFriendActivity.a(this.a).e();
+    else
+    {
+      if (ActivateFriendActivity.a(this.a) != null) {
+        ActivateFriendActivity.a(this.a).e();
+      }
+      if (ActivateFriendActivity.b(this.a) != null) {
+        ActivateFriendActivity.b(this.a).a(true);
+      }
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity.5
  * JD-Core Version:    0.7.0.1
  */

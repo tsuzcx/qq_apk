@@ -190,7 +190,7 @@ public class EncodeThread
       this.errorCode = 5100;
       notifyEncodeEnd(this.errorCode, null);
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(GloableValue.a);
+      ((StringBuilder)localObject1).append(GloableValue.c);
       ((StringBuilder)localObject1).append("");
       QzoneVideoBeaconReport.reportVideoEvent(((StringBuilder)localObject1).toString(), "qzone_video_record", "9", null);
       return;
@@ -211,7 +211,7 @@ public class EncodeThread
         }
         notifyEncodeEnd(this.errorCode, null);
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(GloableValue.a);
+        ((StringBuilder)localObject1).append(GloableValue.c);
         ((StringBuilder)localObject1).append("");
         QzoneVideoBeaconReport.reportVideoEvent(((StringBuilder)localObject1).toString(), "qzone_video_record", "9", null);
         return;
@@ -336,7 +336,7 @@ public class EncodeThread
             this.errorCode = 5102;
             notifyEncodeEnd(this.errorCode, null);
             localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append(GloableValue.a);
+            ((StringBuilder)localObject2).append(GloableValue.c);
             ((StringBuilder)localObject2).append("");
             QzoneVideoBeaconReport.reportVideoEvent(((StringBuilder)localObject2).toString(), "qzone_video_record", "10", null);
             return;
@@ -371,7 +371,7 @@ public class EncodeThread
           localObject6 = new HwEncodeHelper((String)localObject3, (String)localObject2, this.mSourceDirString);
           try
           {
-            i = ((HwEncodeHelper)localObject6).a();
+            i = ((HwEncodeHelper)localObject6).c();
           }
           catch (NoSuchMethodError localNoSuchMethodError)
           {
@@ -384,7 +384,7 @@ public class EncodeThread
           i = -1;
           if (i == 0)
           {
-            this.mTargetFilePath = ((HwEncodeHelper)localObject6).a();
+            this.mTargetFilePath = ((HwEncodeHelper)localObject6).d();
             boolean bool = FileUtils.fileExistsAndNotEmpty(this.mTargetFilePath);
             if (QLog.isColorLevel())
             {
@@ -396,14 +396,14 @@ public class EncodeThread
               QLog.d("MaxVideo.Plugin", 2, ((StringBuilder)localObject6).toString());
             }
             localObject6 = new StringBuilder();
-            ((StringBuilder)localObject6).append(GloableValue.a);
+            ((StringBuilder)localObject6).append(GloableValue.c);
             ((StringBuilder)localObject6).append("");
             QzoneVideoBeaconReport.reportVideoEvent(((StringBuilder)localObject6).toString(), "qzone_video_record", "record_hw_success", "0", null);
           }
           else
           {
             localObject6 = new StringBuilder();
-            ((StringBuilder)localObject6).append(GloableValue.a);
+            ((StringBuilder)localObject6).append(GloableValue.c);
             ((StringBuilder)localObject6).append("");
             localObject6 = ((StringBuilder)localObject6).toString();
             localStringBuilder = new StringBuilder();
@@ -450,14 +450,14 @@ public class EncodeThread
           if (i == 0)
           {
             localObject6 = new StringBuilder();
-            ((StringBuilder)localObject6).append(GloableValue.a);
+            ((StringBuilder)localObject6).append(GloableValue.c);
             ((StringBuilder)localObject6).append("");
             QzoneVideoBeaconReport.reportVideoEvent(((StringBuilder)localObject6).toString(), "qzone_video_record", "record_sw_success", "0", null);
           }
           else
           {
             localObject6 = new StringBuilder();
-            ((StringBuilder)localObject6).append(GloableValue.a);
+            ((StringBuilder)localObject6).append(GloableValue.c);
             ((StringBuilder)localObject6).append("");
             localObject6 = ((StringBuilder)localObject6).toString();
             localStringBuilder = new StringBuilder();
@@ -498,14 +498,14 @@ public class EncodeThread
         if (i == 0)
         {
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(GloableValue.a);
+          ((StringBuilder)localObject2).append(GloableValue.c);
           ((StringBuilder)localObject2).append("");
           QzoneVideoBeaconReport.reportVideoEvent(((StringBuilder)localObject2).toString(), "qzone_video_record", "record_success", "0", null);
         }
         else
         {
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(GloableValue.a);
+          ((StringBuilder)localObject2).append(GloableValue.c);
           ((StringBuilder)localObject2).append("");
           localObject2 = ((StringBuilder)localObject2).toString();
           localObject3 = new StringBuilder();
@@ -583,7 +583,7 @@ public class EncodeThread
       this.errorCode = 5101;
       notifyEncodeEnd(this.errorCode, null);
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(GloableValue.a);
+      ((StringBuilder)localObject2).append(GloableValue.c);
       ((StringBuilder)localObject2).append("");
       QzoneVideoBeaconReport.reportVideoEvent(((StringBuilder)localObject2).toString(), "qzone_video_record", "9", null);
       return;
@@ -591,7 +591,7 @@ public class EncodeThread
     this.errorCode = 5100;
     notifyEncodeEnd(this.errorCode, null);
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(GloableValue.a);
+    ((StringBuilder)localObject2).append(GloableValue.c);
     ((StringBuilder)localObject2).append("");
     QzoneVideoBeaconReport.reportVideoEvent(((StringBuilder)localObject2).toString(), "qzone_video_record", "9", null);
   }
@@ -647,7 +647,7 @@ public class EncodeThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.EncodeThread
  * JD-Core Version:    0.7.0.1
  */

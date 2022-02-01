@@ -18,27 +18,27 @@ class QfileBaseCloudFileTabView$10$1
   
   public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
+    Object localObject = this.a.getTag();
     if ((localObject instanceof ImageHolder))
     {
-      localObject = (WeiYunFileInfo)((ImageHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+      localObject = (WeiYunFileInfo)((ImageHolder)this.a.getTag()).i;
     }
     else
     {
       if (!(localObject instanceof QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)) {
         break label133;
       }
-      localObject = (WeiYunFileInfo)((QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+      localObject = (WeiYunFileInfo)((QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)this.a.getTag()).k;
     }
     if ((((IWeiyunApi)QRoute.api(IWeiyunApi.class)).isDeletingCloudFile(((WeiYunFileInfo)localObject).a)) && (QLog.isColorLevel())) {
-      QLog.d(QfileBaseCloudFileTabView.b, 2, "there is a bug ");
+      QLog.d(QfileBaseCloudFileTabView.c, 2, "there is a bug ");
     }
-    ((IQQFileEngine)QfileBaseCloudFileTabView.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView$10.a).getRuntimeService(IQQFileEngine.class, "")).deleteWeiYunFile((WeiYunFileInfo)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView$10.a.ai_();
+    ((IQQFileEngine)QfileBaseCloudFileTabView.f(this.b.a).getRuntimeService(IQQFileEngine.class, "")).deleteWeiYunFile((WeiYunFileInfo)localObject);
+    this.b.a.cg_();
     break label148;
     label133:
     if (QLog.isColorLevel()) {
-      QLog.e(QfileBaseCloudFileTabView.b, 2, "unknow Object");
+      QLog.e(QfileBaseCloudFileTabView.c, 2, "unknow Object");
     }
     label148:
     EventCollector.getInstance().onViewClicked(paramView);
@@ -46,7 +46,7 @@ class QfileBaseCloudFileTabView$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.10.1
  * JD-Core Version:    0.7.0.1
  */

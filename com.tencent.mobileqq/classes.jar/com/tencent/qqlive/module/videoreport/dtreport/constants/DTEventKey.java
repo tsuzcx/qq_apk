@@ -12,16 +12,18 @@ public class DTEventKey
   public static final String CLICK = "dt_clck";
   public static final String IMP = "dt_imp";
   public static final String IMP_END = "dt_imp_end";
+  public static final String MONITOR_VIEW_DETECT = "dt_monitor_viewdetect";
   public static final String ORIGIN_VST = "dt_origin_vst";
   public static final String PG_IN = "dt_pgin";
   public static final String PG_OUT = "dt_pgout";
+  public static final String SUBMIT = "dt_submit";
   public static final String VIDEO_END = "dt_video_end";
   public static final String VIDEO_START = "dt_video_start";
   public static final String VST = "dt_vst";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.constants.DTEventKey
  * JD-Core Version:    0.7.0.1
  */

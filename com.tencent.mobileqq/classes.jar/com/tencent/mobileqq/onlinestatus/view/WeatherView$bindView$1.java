@@ -28,8 +28,8 @@ final class WeatherView$bindView$1
   {
     if (!AppNetConnInfo.isNetSupport())
     {
-      QQToast.a((Context)this.a.a(), 1, 2131719223, 0).a();
-      this.a.a.a(1030);
+      QQToast.makeText((Context)this.a.c(), 1, 2131916775, 0).show();
+      this.a.n.a(1030);
     }
     else
     {
@@ -41,20 +41,20 @@ final class WeatherView$bindView$1
       }
       localObject = (OnlineStatusDataManager)localObject;
       Intent localIntent = new Intent();
-      if (WeatherView.a(this.a) != null) {
-        localIntent.putExtra("online_status_permission_item", (Serializable)WeatherView.a(this.a));
+      if (WeatherView.b(this.a) != null) {
+        localIntent.putExtra("online_status_permission_item", (Serializable)WeatherView.b(this.a));
       }
-      localIntent.putExtra("from_modify", WeatherView.a(this.a) ^ true);
+      localIntent.putExtra("from_modify", WeatherView.c(this.a) ^ true);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("needSwitchOnlineStatus: ");
-        localStringBuilder.append(WeatherView.a(this.a));
+        localStringBuilder.append(WeatherView.c(this.a));
         QLog.d("WeatherView", 2, new Object[] { "bindView: called. ", localStringBuilder.toString() });
       }
       ((OnlineStatusDataManager)localObject).b(8, localIntent);
     }
-    this.a.a.a(1030);
+    this.a.n.a(1030);
     this.a.dismiss();
     ReportHelperKt.a("0X800AF48", 0, null, null, 14, null);
     ReportHelperKt.a("0X8009DE0", 1030, null, null, 12, null);
@@ -66,7 +66,7 @@ final class WeatherView$bindView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.WeatherView.bindView.1
  * JD-Core Version:    0.7.0.1
  */

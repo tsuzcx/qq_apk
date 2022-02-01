@@ -10,6 +10,7 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.qwallet.temp.IQWalletMsgHolder;
 import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
@@ -22,73 +23,72 @@ import java.util.List;
 public class SpecifyRedPkgViewHolder
   extends VipRedPkgViewHolder
 {
-  public SpecifyRedPkgViewHolder(BaseQQAppInterface paramBaseQQAppInterface, IQWalletMsgHolder paramIQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
+  public SpecifyRedPkgViewHolder(BaseQQAppInterface paramBaseQQAppInterface, BaseSessionInfo paramBaseSessionInfo, IQWalletMsgHolder paramIQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
   {
-    super(paramBaseQQAppInterface, paramIQWalletMsgHolder, paramQQWalletBaseMsgElem, paramInt, paramOnCustomizeListener);
+    super(paramBaseQQAppInterface, paramBaseSessionInfo, paramIQWalletMsgHolder, paramQQWalletBaseMsgElem, paramInt, paramOnCustomizeListener);
   }
   
-  public boolean a()
+  public boolean g()
   {
-    boolean bool = super.a();
+    boolean bool = super.g();
     if (bool) {
       return bool;
     }
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setVisibility(0);
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setTextColor(-8947849);
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setText("专属红包");
+    this.a.c().setVisibility(0);
+    this.a.c().setText("专属红包");
     return false;
   }
   
-  public void g()
+  public void h()
   {
-    super.g();
-    if (this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder != null)
+    super.h();
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.d() == null) {
+      if (this.a.j() == null) {
         return;
       }
-      int i = this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.d().getVisibility();
+      int i = this.a.j().getVisibility();
       int j = 0;
       if (i != 0) {
-        this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.d().setVisibility(0);
+        this.a.j().setVisibility(0);
       }
-      LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      LinearLayout localLinearLayout = new LinearLayout(this.e);
       localLinearLayout.setOrientation(0);
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.d().addView(localLinearLayout);
+      this.a.j().addView(localLinearLayout);
       Object localObject = (RelativeLayout.LayoutParams)localLinearLayout.getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject).width = -2;
       ((RelativeLayout.LayoutParams)localObject).height = -2;
       ((RelativeLayout.LayoutParams)localObject).addRule(14, -1);
       ((RelativeLayout.LayoutParams)localObject).addRule(12, -1);
-      ((RelativeLayout.LayoutParams)localObject).bottomMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 25.0F);
-      int k = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 1.0F);
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() <= 1) {}
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = DisplayUtil.a(this.e, 25.0F);
+      int k = DisplayUtil.a(this.e, 1.0F);
+      if (this.b.mQQWalletRedPacketMsg.specifyUinList.size() <= 1) {}
       do
       {
         i = 0;
         break label282;
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() == 2) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() == 3)) {
+        if ((this.b.mQQWalletRedPacketMsg.specifyUinList.size() == 2) || (this.b.mQQWalletRedPacketMsg.specifyUinList.size() == 3)) {
           break;
         }
-      } while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() == 4) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size() < 5));
-      i = -DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 8.0F);
+      } while ((this.b.mQQWalletRedPacketMsg.specifyUinList.size() == 4) || (this.b.mQQWalletRedPacketMsg.specifyUinList.size() < 5));
+      i = -DisplayUtil.a(this.e, 8.0F);
       break label282;
-      i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+      i = DisplayUtil.a(this.e, 10.0F);
       label282:
-      while ((j < 5) && (j < this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size()))
+      while ((j < 5) && (j < this.b.mQQWalletRedPacketMsg.specifyUinList.size()))
       {
-        long l = ((Long)this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.get(j)).longValue();
-        localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+        long l = ((Long)this.b.mQQWalletRedPacketMsg.specifyUinList.get(j)).longValue();
+        localObject = new ImageView(this.e);
         localLinearLayout.addView((View)localObject);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
-        localLayoutParams.width = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 33.0F);
-        localLayoutParams.height = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 33.0F);
+        localLayoutParams.width = DisplayUtil.a(this.e, 33.0F);
+        localLayoutParams.height = DisplayUtil.a(this.e, 33.0F);
         ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
         if (j > 0) {
           localLayoutParams.leftMargin = i;
         }
-        ((ImageView)localObject).setImageDrawable(FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, String.valueOf(l), (byte)4));
-        ((ImageView)localObject).setBackgroundResource(R.drawable.am);
+        ((ImageView)localObject).setImageDrawable(FaceDrawable.getUserFaceDrawable(this.f, String.valueOf(l), (byte)4));
+        ((ImageView)localObject).setBackgroundResource(R.drawable.an);
         ((ImageView)localObject).setPadding(k, k, k, k);
         j += 1;
       }
@@ -97,7 +97,7 @@ public class SpecifyRedPkgViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.viewholder.impl.SpecifyRedPkgViewHolder
  * JD-Core Version:    0.7.0.1
  */

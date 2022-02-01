@@ -44,7 +44,7 @@ public class BmqqSegmentApiImpl
   
   public void updateEqqConfig(String paramString)
   {
-    BmqqSegmentUtil.a(paramString);
+    BmqqSegmentUtil.d(paramString);
   }
 }
 

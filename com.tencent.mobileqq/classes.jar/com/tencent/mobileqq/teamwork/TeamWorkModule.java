@@ -92,7 +92,7 @@ public class TeamWorkModule
           ((ITeamWorkFileExportHandler)localObject).notifyUI(2, true, new Object[] { paramBundle.getString("url"), paramBundle.getString("fileName"), paramString, paramBundle.getString("cookie") });
           return null;
         }
-        ((ITeamWorkFileExportHandler)localObject).notifyUI(1, true, new Object[] { HardCodeUtil.a(2131714582), paramString });
+        ((ITeamWorkFileExportHandler)localObject).notifyUI(1, true, new Object[] { HardCodeUtil.a(2131912091), paramString });
         return null;
       }
       if ("action_start_export_file".equals(paramString))
@@ -104,7 +104,7 @@ public class TeamWorkModule
         localObject = paramBundle.getString("fileName");
         paramString = new FileManagerEntity();
         paramString.fileName = ((String)localObject);
-        paramString.nFileType = FileManagerUtil.a((String)localObject);
+        paramString.nFileType = FileManagerUtil.c((String)localObject);
         paramString.nFileType = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).getFileType(paramString.fileName);
         paramString.nSessionId = CommonUtils.a().longValue();
         paramString.cloudType = 9;
@@ -121,7 +121,7 @@ public class TeamWorkModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkModule
  * JD-Core Version:    0.7.0.1
  */

@@ -18,13 +18,13 @@ class QQStoryFeedManager$1
     {
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
       QQStoryFeedManager.a(this.this$0).getMessageFacade().a(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
-      QQStoryFeedManager.a(this.this$0).getMessageFacade().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+      QQStoryFeedManager.a(this.this$0).getMessageFacade().h(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.QQStoryFeedManager.1
  * JD-Core Version:    0.7.0.1
  */

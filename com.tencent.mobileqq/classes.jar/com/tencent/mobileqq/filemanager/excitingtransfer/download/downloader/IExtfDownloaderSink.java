@@ -6,8 +6,6 @@ import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.Exc
 
 public abstract interface IExtfDownloaderSink
 {
-  public abstract void a();
-  
   public abstract void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo);
   
   public abstract void a(int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete);
@@ -15,10 +13,12 @@ public abstract interface IExtfDownloaderSink
   public abstract void a(long paramLong1, long paramLong2, long paramLong3);
   
   public abstract void a(ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.IExtfDownloaderSink
  * JD-Core Version:    0.7.0.1
  */

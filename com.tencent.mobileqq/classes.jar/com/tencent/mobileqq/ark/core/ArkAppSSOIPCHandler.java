@@ -40,11 +40,6 @@ public class ArkAppSSOIPCHandler
     a(ArkIPCService.a(), paramString1, paramString2, paramInt1, paramInt2, paramOnSendMsgComplete);
   }
   
-  protected IArkAppSSO a()
-  {
-    return ((IArkService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IArkService.class, "")).getSSO();
-  }
-  
   public String a()
   {
     return "ARK.SendSSOMsg";
@@ -56,7 +51,7 @@ public class ArkAppSSOIPCHandler
     String str2 = paramBundle.getString("param_data");
     int i = paramBundle.getInt("param_timeout");
     int j = paramBundle.getInt("param_notify_type");
-    IArkAppSSO localIArkAppSSO = a();
+    IArkAppSSO localIArkAppSSO = b();
     if (localIArkAppSSO == null)
     {
       QLog.i("ArkApp.ArkAppSSOIPCHandler", 1, "ark sso is null");
@@ -65,10 +60,15 @@ public class ArkAppSSOIPCHandler
     }
     localIArkAppSSO.a(str1, str2, i, j, new ArkAppSSOIPCHandler.1(this, paramBundle, str1, paramIPCMethodCallback));
   }
+  
+  protected IArkAppSSO b()
+  {
+    return ((IArkService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IArkService.class, "")).getSSO();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkAppSSOIPCHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -5,36 +5,10 @@ import androidx.constraintlayout.solver.LinearSystem;
 import androidx.constraintlayout.solver.SolverVariable;
 import java.util.ArrayList;
 
-class Chain
+public class Chain
 {
   private static final boolean DEBUG = false;
-  
-  static void applyChainConstraints(ConstraintWidgetContainer paramConstraintWidgetContainer, LinearSystem paramLinearSystem, int paramInt)
-  {
-    int k = 0;
-    int j;
-    ChainHead[] arrayOfChainHead;
-    int i;
-    if (paramInt == 0)
-    {
-      j = paramConstraintWidgetContainer.mHorizontalChainsSize;
-      arrayOfChainHead = paramConstraintWidgetContainer.mHorizontalChainsArray;
-      i = 0;
-    }
-    else
-    {
-      i = 2;
-      j = paramConstraintWidgetContainer.mVerticalChainsSize;
-      arrayOfChainHead = paramConstraintWidgetContainer.mVerticalChainsArray;
-    }
-    while (k < j)
-    {
-      ChainHead localChainHead = arrayOfChainHead[k];
-      localChainHead.define();
-      applyChainConstraints(paramConstraintWidgetContainer, paramLinearSystem, paramInt, i, localChainHead);
-      k += 1;
-    }
-  }
+  public static final boolean USE_CHAIN_OPTIMIZATION = false;
   
   static void applyChainConstraints(ConstraintWidgetContainer paramConstraintWidgetContainer, LinearSystem paramLinearSystem, int paramInt1, int paramInt2, ChainHead paramChainHead)
   {
@@ -130,7 +104,7 @@ class Chain
         }
       }
       if ((i1 != 0) && (localObject3 != localConstraintWidget4) && (localObject3 != localConstraintWidget1)) {
-        j = 5;
+        j = 8;
       }
       if (((ConstraintAnchor)localObject1).mTarget != null)
       {
@@ -198,7 +172,7 @@ class Chain
       paramLinearSystem.addGreaterThan(paramConstraintWidgetContainer[i].mSolverVariable, localConstraintWidget2.mListAnchors[i].mSolverVariable, localConstraintWidget2.mListAnchors[i].getMargin(), 8);
     }
     paramConstraintWidgetContainer = paramChainHead.mWeightedMatchConstraintsWidgets;
-    label1056:
+    label1057:
     Object localObject6;
     Object localObject7;
     if (paramConstraintWidgetContainer != null)
@@ -223,7 +197,7 @@ class Chain
             if (paramChainHead.mHasComplexMatchWeights)
             {
               paramLinearSystem.addEquality(localObject3.mListAnchors[(paramInt2 + 1)].mSolverVariable, localObject3.mListAnchors[paramInt2].mSolverVariable, 0, 4);
-              break label1056;
+              break label1057;
             }
             f1 = 1.0F;
           }
@@ -512,10 +486,39 @@ class Chain
       }
     }
   }
+  
+  public static void applyChainConstraints(ConstraintWidgetContainer paramConstraintWidgetContainer, LinearSystem paramLinearSystem, ArrayList<ConstraintWidget> paramArrayList, int paramInt)
+  {
+    int k = 0;
+    int i;
+    ChainHead[] arrayOfChainHead;
+    int j;
+    if (paramInt == 0)
+    {
+      i = paramConstraintWidgetContainer.mHorizontalChainsSize;
+      arrayOfChainHead = paramConstraintWidgetContainer.mHorizontalChainsArray;
+      j = 0;
+    }
+    else
+    {
+      i = paramConstraintWidgetContainer.mVerticalChainsSize;
+      arrayOfChainHead = paramConstraintWidgetContainer.mVerticalChainsArray;
+      j = 2;
+    }
+    while (k < i)
+    {
+      ChainHead localChainHead = arrayOfChainHead[k];
+      localChainHead.define();
+      if ((paramArrayList == null) || ((paramArrayList != null) && (paramArrayList.contains(localChainHead.mFirst)))) {
+        applyChainConstraints(paramConstraintWidgetContainer, paramLinearSystem, paramInt, j, localChainHead);
+      }
+      k += 1;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.widgets.Chain
  * JD-Core Version:    0.7.0.1
  */

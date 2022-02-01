@@ -11,14 +11,14 @@ class ForwardTroopMemberControllerForMiniPie$TroopMemberViewHolder
   extends ForwardTroopMemberControllerForMiniPie.ViewHolder
 {
   public ImageView a;
-  public TextView a;
+  public TextView b;
   
   public ForwardTroopMemberControllerForMiniPie$TroopMemberViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_Int = ForwardTroopMemberControllerForMiniPie.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368718));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380076));
+    this.c = ForwardTroopMemberControllerForMiniPie.a;
+    this.a = ((ImageView)paramView.findViewById(2131435631));
+    this.b = ((TextView)paramView.findViewById(2131448989));
     paramView.setTag(this);
   }
   
@@ -28,12 +28,12 @@ class ForwardTroopMemberControllerForMiniPie$TroopMemberViewHolder
     if (paramString2 == null) {
       localObject = paramString1;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(new QQText((CharSequence)localObject, 2));
+    this.b.setText(new QQText((CharSequence)localObject, 2));
     localObject = paramIFaceDecoder.getBitmapFromCache(1, paramString1);
     paramString2 = (String)localObject;
     if (localObject == null)
     {
-      localObject = ImageUtil.f();
+      localObject = ImageUtil.k();
       paramString2 = (String)localObject;
       if (!paramIFaceDecoder.isPausing())
       {
@@ -41,12 +41,12 @@ class ForwardTroopMemberControllerForMiniPie$TroopMemberViewHolder
         paramString2 = (String)localObject;
       }
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
+    this.a.setImageBitmap(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopMemberControllerForMiniPie.TroopMemberViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -11,54 +11,53 @@ import mqq.util.WeakReference;
 
 public abstract class AEAlbumListLogic<K extends AEAbstractAlbumListFragment>
 {
-  public static volatile AEAlbumListLogic a;
-  public AEAlbumListLogic.IalbumListAdapterCallBack a;
-  protected PhotoCommonBaseData a;
-  public AlbumListBaseData a;
+  public static volatile AEAlbumListLogic d;
   public WeakReference<K> a;
+  protected PhotoCommonBaseData b;
+  public AlbumListBaseData c;
+  public AEAlbumListLogic.IalbumListAdapterCallBack e = null;
   
   protected AEAlbumListLogic(K paramK)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic$IalbumListAdapterCallBack = null;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramK);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData = AEPhotoCommonDataCreator.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.addHoldNember();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAlbumListBaseData = new AlbumListBaseData();
+    this.a = new WeakReference(paramK);
+    this.b = AEPhotoCommonDataCreator.a();
+    this.b.addHoldNember();
+    this.c = new AlbumListBaseData();
     if (QLog.isColorLevel())
     {
       paramK = new StringBuilder();
       paramK.append("AlbumListLogic new，activity = ");
-      paramK.append(this.jdField_a_of_type_MqqUtilWeakReference);
+      paramK.append(this.a);
       paramK.append(",PhotoCommonData = ");
-      paramK.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData);
+      paramK.append(this.b);
       QLog.d("AlbumListActivity", 2, paramK.toString());
     }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("AlbumListLogic new，fragment = ");
-      localStringBuilder.append(this.jdField_a_of_type_MqqUtilWeakReference.get());
-      localStringBuilder.append(",PhotoCommonData = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData);
-      QLog.d("QQAlbum", 2, localStringBuilder.toString());
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.releaseCommonData();
-    jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic = null;
   }
   
   public abstract void a(Intent paramIntent);
   
   public abstract boolean a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent);
   
+  public void ai_()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AlbumListLogic new，fragment = ");
+      localStringBuilder.append(this.a.get());
+      localStringBuilder.append(",PhotoCommonData = ");
+      localStringBuilder.append(this.b);
+      QLog.d("QQAlbum", 2, localStringBuilder.toString());
+    }
+    this.b.releaseCommonData();
+    d = null;
+  }
+  
   public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEAlbumListLogic
  * JD-Core Version:    0.7.0.1
  */

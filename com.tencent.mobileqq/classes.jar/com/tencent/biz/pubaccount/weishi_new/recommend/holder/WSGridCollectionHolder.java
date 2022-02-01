@@ -10,7 +10,7 @@ public class WSGridCollectionHolder
 {
   public WSGridCollectionHolder(ViewGroup paramViewGroup, int paramInt, WSRecommendAdapter paramWSRecommendAdapter)
   {
-    super(paramViewGroup, 2131560422, paramInt, paramWSRecommendAdapter);
+    super(paramViewGroup, 2131626467, paramInt, paramWSRecommendAdapter);
     ((WSGridCollectionItemView)this.a).a(paramWSRecommendAdapter);
   }
   
@@ -21,7 +21,7 @@ public class WSGridCollectionHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridCollectionHolder
  * JD-Core Version:    0.7.0.1
  */

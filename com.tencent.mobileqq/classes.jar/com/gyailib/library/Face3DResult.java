@@ -27,7 +27,7 @@ public class Face3DResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.gyailib.library.Face3DResult
  * JD-Core Version:    0.7.0.1
  */

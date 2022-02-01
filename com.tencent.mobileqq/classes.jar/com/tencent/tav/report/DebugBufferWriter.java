@@ -4,13 +4,19 @@ import android.os.Build.VERSION;
 import com.tencent.tav.decoder.logger.Logger;
 import java.io.File;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 
 public class DebugBufferWriter
 {
-  private long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString;
-  private Path jdField_a_of_type_JavaNioFilePath;
+  private static final String DIR = "/sdcard/tavkit_demo/buffers/";
+  private final String TAG;
+  private long lastTime;
+  private Path path;
   
   public DebugBufferWriter()
   {
@@ -27,11 +33,11 @@ public class DebugBufferWriter
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DebugBufferWriter@");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_Long = -10086L;
+    this.TAG = localStringBuilder.toString();
+    this.lastTime = -10086L;
     if (Build.VERSION.SDK_INT < 26)
     {
-      Logger.e(this.jdField_a_of_type_JavaLangString, "DebugBufferWriter: Android O 可用");
+      Logger.e(this.TAG, "DebugBufferWriter: Android O 可用");
       return;
     }
     paramString1 = new File(paramString1);
@@ -46,15 +52,73 @@ public class DebugBufferWriter
       }
       catch (IOException paramString2)
       {
-        Logger.e(this.jdField_a_of_type_JavaLangString, "DebugBufferWriter: ", paramString2);
+        Logger.e(this.TAG, "DebugBufferWriter: ", paramString2);
       }
     }
-    this.jdField_a_of_type_JavaNioFilePath = paramString1.toPath();
+    this.path = paramString1.toPath();
+  }
+  
+  public void write(ByteBuffer paramByteBuffer)
+  {
+    Object localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("write() called with: buffer = [");
+    localStringBuilder.append(paramByteBuffer);
+    localStringBuilder.append("]");
+    Logger.v((String)localObject, localStringBuilder.toString());
+    if (paramByteBuffer == null) {
+      return;
+    }
+    localObject = ByteBuffer.allocate(paramByteBuffer.limit());
+    paramByteBuffer.rewind();
+    ((ByteBuffer)localObject).put(paramByteBuffer);
+    paramByteBuffer.rewind();
+    ((ByteBuffer)localObject).flip();
+    write(((ByteBuffer)localObject).array());
+  }
+  
+  public void write(ByteBuffer paramByteBuffer, long paramLong)
+  {
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("write() called with: buffer = [");
+    localStringBuilder.append(paramByteBuffer);
+    localStringBuilder.append("], timeUs = [");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    Logger.v(str, localStringBuilder.toString());
+    if (paramLong - this.lastTime < 100L) {
+      return;
+    }
+    this.lastTime = paramLong;
+    write(paramByteBuffer);
+  }
+  
+  public void write(byte[] paramArrayOfByte)
+  {
+    if (Build.VERSION.SDK_INT < 26) {
+      return;
+    }
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("write() called with: bytes = [");
+    localStringBuilder.append(Arrays.toString(paramArrayOfByte));
+    localStringBuilder.append("]");
+    Logger.v(str, localStringBuilder.toString());
+    try
+    {
+      Files.write(this.path, paramArrayOfByte, new OpenOption[] { StandardOpenOption.APPEND });
+      return;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      Logger.e(this.TAG, "write: ", paramArrayOfByte);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.report.DebugBufferWriter
  * JD-Core Version:    0.7.0.1
  */

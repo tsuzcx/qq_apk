@@ -10,11 +10,11 @@ class Interactive3DRenderable$11
   
   public void run()
   {
-    if ((Interactive3DRenderable.a(this.this$0) != null) && (!TextUtils.isEmpty(this.a)))
+    if ((Interactive3DRenderable.c(this.this$0) != null) && (!TextUtils.isEmpty(this.a)))
     {
-      ARMusicController localARMusicController = Interactive3DRenderable.a(this.this$0);
+      ARMusicController localARMusicController = Interactive3DRenderable.c(this.this$0);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(Interactive3DRenderable.a(this.this$0));
+      localStringBuilder.append(Interactive3DRenderable.e(this.this$0));
       localStringBuilder.append(this.a);
       localARMusicController.a(localStringBuilder.toString(), true, true);
     }
@@ -22,7 +22,7 @@ class Interactive3DRenderable$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.11
  * JD-Core Version:    0.7.0.1
  */

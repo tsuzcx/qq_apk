@@ -16,15 +16,15 @@ class VideoJsProxyImpl$7
     {
       if ((paramInt2 == -1) && (paramIntent != null))
       {
-        paramIntent = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidAppActivity).getString("miniapp_video_path", "");
-        VideoJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplVideoJsProxyImpl, new File(paramIntent), this.jdField_a_of_type_Boolean);
+        paramIntent = PreferenceManager.getDefaultSharedPreferences(this.a).getString("miniapp_video_path", "");
+        VideoJsProxyImpl.a(this.d, new File(paramIntent), this.b);
       }
       else
       {
-        paramIntent = this.jdField_a_of_type_ComTencentQqminiProxyimplVideoJsProxyImpl;
-        VideoJsProxyImpl.a(paramIntent, VideoJsProxyImpl.a(paramIntent), "chooseVideo", null);
+        paramIntent = this.d;
+        VideoJsProxyImpl.a(paramIntent, VideoJsProxyImpl.b(paramIntent), "chooseVideo", null);
       }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+      this.c.removeActivityResultListener(this);
       return true;
     }
     return false;
@@ -32,7 +32,7 @@ class VideoJsProxyImpl$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.7
  * JD-Core Version:    0.7.0.1
  */

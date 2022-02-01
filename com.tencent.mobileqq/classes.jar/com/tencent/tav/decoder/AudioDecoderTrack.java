@@ -697,6 +697,11 @@ public class AudioDecoderTrack
     finally {}
   }
   
+  public CMSampleBuffer readCurrentSample()
+  {
+    return null;
+  }
+  
   public CMSampleBuffer readSample()
   {
     return readSample(CMTime.CMTimeInvalid);
@@ -771,11 +776,11 @@ public class AudioDecoderTrack
     //   0: aload_0
     //   1: monitorenter
     //   2: getstatic 174	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
-    //   5: ldc_w 669
+    //   5: ldc_w 670
     //   8: invokestatic 213	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   11: aload_0
     //   12: getfield 114	com/tencent/tav/decoder/AudioDecoderTrack:decoderThread	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderThread;
-    //   15: invokevirtual 670	com/tencent/tav/decoder/AudioDecoderTrack$DecoderThread:release	()V
+    //   15: invokevirtual 671	com/tencent/tav/decoder/AudioDecoderTrack$DecoderThread:release	()V
     //   18: aload_0
     //   19: iconst_1
     //   20: putfield 107	com/tencent/tav/decoder/AudioDecoderTrack:isReleased	Z
@@ -784,7 +789,7 @@ public class AudioDecoderTrack
     //   27: ifnull +15 -> 42
     //   30: aload_0
     //   31: getfield 149	com/tencent/tav/decoder/AudioDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/AudioDecoder;
-    //   34: invokevirtual 671	com/tencent/tav/decoder/AudioDecoder:release	()V
+    //   34: invokevirtual 672	com/tencent/tav/decoder/AudioDecoder:release	()V
     //   37: aload_0
     //   38: aconst_null
     //   39: putfield 149	com/tencent/tav/decoder/AudioDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/AudioDecoder;
@@ -798,14 +803,14 @@ public class AudioDecoderTrack
     //   53: ifnull +15 -> 68
     //   56: aload_0
     //   57: getfield 138	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   60: invokestatic 675	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:access$600	(Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;)V
+    //   60: invokestatic 676	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:access$600	(Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;)V
     //   63: aload_0
     //   64: aconst_null
     //   65: putfield 138	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
     //   68: aload_1
     //   69: monitorexit
     //   70: getstatic 174	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
-    //   73: ldc_w 677
+    //   73: ldc_w 678
     //   76: invokestatic 213	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   79: aload_0
     //   80: monitorexit
@@ -923,6 +928,8 @@ public class AudioDecoderTrack
     this.trackID = paramInt;
   }
   
+  public void setTrackIndex(int paramInt) {}
+  
   public void setTrackSegments(List<DecoderTrackSegment> paramList)
   {
     if (this.segments == null) {
@@ -969,7 +976,7 @@ public class AudioDecoderTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.AudioDecoderTrack
  * JD-Core Version:    0.7.0.1
  */

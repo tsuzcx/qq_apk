@@ -13,14 +13,14 @@ class MediaPreviewAdapter$1
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.a.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder);
+    this.a.a.setVisibility(8);
+    this.c.b(this.b, this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.1
  * JD-Core Version:    0.7.0.1
  */

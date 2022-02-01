@@ -61,20 +61,20 @@ public final class ProfileGuideView
   
   private final void initViews()
   {
-    LayoutInflater.from(getContext()).inflate(2131561319, (ViewGroup)this, true);
-    Object localObject1 = findViewById(2131365169);
+    LayoutInflater.from(getContext()).inflate(2131627675, (ViewGroup)this, true);
+    Object localObject1 = findViewById(2131431322);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "findViewById(R.id.content)");
     this.contentView = ((View)localObject1);
-    localObject1 = findViewById(2131366831);
+    localObject1 = findViewById(2131433153);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "findViewById(R.id.fill_layout)");
     this.fillLayout = ((View)localObject1);
-    localObject1 = findViewById(2131366832);
+    localObject1 = findViewById(2131433154);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "findViewById(R.id.fill_main_msg)");
     this.fillMainMsgView = ((TextView)localObject1);
-    localObject1 = findViewById(2131366833);
+    localObject1 = findViewById(2131433155);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "findViewById(R.id.fill_secondary_msg)");
     this.fillSecondaryMsgView = ((TextView)localObject1);
-    localObject1 = findViewById(2131366829);
+    localObject1 = findViewById(2131433151);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "findViewById(R.id.fill_btn)");
     this.fillButton = ((Button)localObject1);
     localObject1 = this.fillButton;
@@ -88,7 +88,7 @@ public final class ProfileGuideView
     }
     localObject1 = (View.OnClickListener)this;
     ((Button)localObject2).setOnClickListener((View.OnClickListener)localObject1);
-    localObject2 = findViewById(2131380222);
+    localObject2 = findViewById(2131449140);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "findViewById(R.id.update_layout)");
     this.updateLayout = ((View)localObject2);
     localObject2 = this.updateLayout;
@@ -101,13 +101,13 @@ public final class ProfileGuideView
       Intrinsics.throwUninitializedPropertyAccessException("updateLayout");
     }
     ((View)localObject2).setOnClickListener((View.OnClickListener)localObject1);
-    localObject2 = findViewById(2131380223);
+    localObject2 = findViewById(2131449141);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "findViewById(R.id.update_main_msg)");
     this.updateMainMsgView = ((TextView)localObject2);
-    localObject2 = findViewById(2131380220);
+    localObject2 = findViewById(2131449138);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "findViewById(R.id.update_arrow)");
     this.updateArrow = ((ImageView)localObject2);
-    localObject2 = findViewById(2131368624);
+    localObject2 = findViewById(2131435536);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "findViewById(R.id.img_close)");
     this.closeButton = ((ImageView)localObject2);
     localObject2 = this.closeButton;
@@ -128,7 +128,7 @@ public final class ProfileGuideView
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("contentView");
     }
-    ((View)localObject).setBackgroundResource(2130845932);
+    ((View)localObject).setBackgroundResource(2130847402);
     localObject = this.fillLayout;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("fillLayout");
@@ -166,7 +166,7 @@ public final class ProfileGuideView
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("contentView");
     }
-    ((View)localObject).setBackgroundResource(2130845933);
+    ((View)localObject).setBackgroundResource(2130847403);
     localObject = this.fillLayout;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("fillLayout");
@@ -215,21 +215,21 @@ public final class ProfileGuideView
     } else {
       localObject = null;
     }
-    if ((localObject != null) && (((Integer)localObject).intValue() == 2131366829))
+    if ((localObject != null) && (((Integer)localObject).intValue() == 2131433151))
     {
       localObject = this.clickListener;
       if (localObject != null) {
         ((ProfileGuideClickListener)localObject).onFillClick();
       }
     }
-    else if ((localObject != null) && (((Integer)localObject).intValue() == 2131380222))
+    else if ((localObject != null) && (((Integer)localObject).intValue() == 2131449140))
     {
       localObject = this.clickListener;
       if (localObject != null) {
         ((ProfileGuideClickListener)localObject).onUpdateClick();
       }
     }
-    else if ((localObject != null) && (((Integer)localObject).intValue() == 2131368624))
+    else if ((localObject != null) && (((Integer)localObject).intValue() == 2131435536))
     {
       localObject = this.clickListener;
       if (localObject != null) {
@@ -260,7 +260,7 @@ public final class ProfileGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.guide.view.ProfileGuideView
  * JD-Core Version:    0.7.0.1
  */

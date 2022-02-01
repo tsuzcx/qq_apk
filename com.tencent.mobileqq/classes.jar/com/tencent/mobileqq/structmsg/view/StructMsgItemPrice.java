@@ -17,23 +17,23 @@ import org.xmlpull.v1.XmlSerializer;
 public class StructMsgItemPrice
   extends StructMsgItemSummary
 {
-  private String as;
+  private String aP;
   
   public StructMsgItemPrice()
   {
-    this.a = "price";
+    this.b = "price";
   }
   
   public StructMsgItemPrice(String paramString)
   {
     this();
-    this.ai = paramString;
+    this.aA = paramString;
   }
   
   public StructMsgItemPrice(String paramString1, String paramString2)
   {
     this(paramString1);
-    this.as = paramString2;
+    this.aP = paramString2;
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
@@ -41,25 +41,25 @@ public class StructMsgItemPrice
     if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
       paramContext = (LinearLayout)paramView;
-      ((TextView)paramContext.findViewById(2131379818)).setText(this.ai);
-      ((TextView)paramContext.findViewById(2131379820)).setText(this.as);
+      ((TextView)paramContext.findViewById(2131448654)).setText(this.aA);
+      ((TextView)paramContext.findViewById(2131448656)).setText(this.aP);
       return paramContext;
     }
     paramView = new LinearLayout(paramContext);
     paramView.setOrientation(0);
     paramBundle = new TextView(paramContext);
-    paramBundle.setId(2131379818);
-    paramBundle.setText(this.ai);
+    paramBundle.setId(2131448654);
+    paramBundle.setText(this.aA);
     paramBundle.setTextColor(-65536);
     paramBundle.setTextSize(14.0F);
     paramBundle.setSingleLine();
-    paramBundle.setEllipsize(a());
+    paramBundle.setEllipsize(g());
     paramBundle.setGravity(3);
     paramContext = new TextView(paramContext);
-    paramContext.setId(2131379820);
-    paramContext.setText(this.as);
+    paramContext.setId(2131448656);
+    paramContext.setText(this.aP);
     paramContext.setSingleLine();
-    paramContext.setEllipsize(a());
+    paramContext.setEllipsize(g());
     paramContext.setTextSize(10.0F);
     paramContext.setTextColor(-65536);
     paramContext.setGravity(80);
@@ -72,21 +72,16 @@ public class StructMsgItemPrice
     return paramView;
   }
   
-  public String a()
-  {
-    return "Price";
-  }
-  
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.as = MessageUtils.a(paramObjectInput.readUTF(), false);
+    this.aP = MessageUtils.a(paramObjectInput.readUTF(), false);
   }
   
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    String str2 = this.as;
+    String str2 = this.aP;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -97,10 +92,10 @@ public class StructMsgItemPrice
   public void a(XmlSerializer paramXmlSerializer)
   {
     paramXmlSerializer.startTag(null, "price");
-    if (!TextUtils.isEmpty(this.as)) {
-      paramXmlSerializer.attribute(null, "unit", this.as);
+    if (!TextUtils.isEmpty(this.aP)) {
+      paramXmlSerializer.attribute(null, "unit", this.aP);
     }
-    paramXmlSerializer.text(this.ai);
+    paramXmlSerializer.text(this.aA);
     paramXmlSerializer.endTag(null, "price");
   }
   
@@ -109,14 +104,19 @@ public class StructMsgItemPrice
     if (paramStructMsgNode == null) {
       return true;
     }
-    this.as = MessageUtils.a(paramStructMsgNode.a("unit"), false);
-    this.ai = MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false);
+    this.aP = MessageUtils.a(paramStructMsgNode.a("unit"), false);
+    this.aA = MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false);
     return true;
+  }
+  
+  public String b()
+  {
+    return "Price";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemPrice
  * JD-Core Version:    0.7.0.1
  */

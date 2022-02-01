@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vas.updatesystem.api;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 import com.tencent.mobileqq.vas.updatesystem.callback.CallBacker;
-import com.tencent.vas.update.callback.IHttpDownloader;
+import com.tencent.vas.update.factory.api.IHttpDownloader;
 import mqq.app.AppRuntime;
 
 @QAPI(process={"all"})
@@ -32,7 +32,7 @@ public abstract interface IVasQuickUpdateAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateAdapter
  * JD-Core Version:    0.7.0.1
  */

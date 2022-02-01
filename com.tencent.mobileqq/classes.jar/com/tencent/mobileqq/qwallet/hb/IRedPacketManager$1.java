@@ -21,11 +21,12 @@ final class IRedPacketManager$1
     put(Integer.valueOf(11), Integer.valueOf(1024));
     put(Integer.valueOf(15), Integer.valueOf(1000002));
     put(Integer.valueOf(16), Integer.valueOf(1000003));
+    put(Integer.valueOf(17), Integer.valueOf(1000004));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.IRedPacketManager.1
  * JD-Core Version:    0.7.0.1
  */

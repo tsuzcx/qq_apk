@@ -48,41 +48,41 @@ public class TeamWorkAuthorizeSettingFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new TeamWorkAuthorizeSettingFragment.1(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TeamWorkAuthorizeUinListAdapter jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter;
-  TeamWorkObserver jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkObserver = new TeamWorkAuthorizeSettingFragment.2(this);
-  private ITeamWorkHandler jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkHandler;
-  XListView jdField_a_of_type_ComTencentWidgetXListView;
-  String jdField_a_of_type_JavaLangString;
-  List<TeamWorkAuthorizeUinListAdapter.ItemData> jdField_a_of_type_JavaUtilList;
-  Map<Integer, List<TeamWorkAuthorizeUinListAdapter.ItemData>> jdField_a_of_type_JavaUtilMap;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = -1;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  String a;
+  int b;
   TextView c;
   TextView d;
+  TextView e;
+  XListView f;
+  TextView g;
+  List<TeamWorkAuthorizeUinListAdapter.ItemData> h;
+  Map<Integer, List<TeamWorkAuthorizeUinListAdapter.ItemData>> i;
+  TeamWorkAuthorizeUinListAdapter j;
+  int k = -1;
+  boolean l = false;
+  FriendListObserver m = new TeamWorkAuthorizeSettingFragment.1(this);
+  TeamWorkObserver n = new TeamWorkAuthorizeSettingFragment.2(this);
+  private ITeamWorkHandler o;
+  private QQAppInterface p;
   
   private void a()
   {
     this.vg.changeBg(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365777));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131367178));
-    this.c = ((TextView)this.mContentView.findViewById(2131367676));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131380353));
-    this.d = ((TextView)this.mContentView.findViewById(2131366078));
-    setLeftViewName(2131690529);
-    setRightButton(2131694583, this);
-    setTitle(getBaseActivity().getResources().getString(2131719507));
+    this.c = ((TextView)this.mContentView.findViewById(2131432034));
+    this.d = ((TextView)this.mContentView.findViewById(2131433634));
+    this.e = ((TextView)this.mContentView.findViewById(2131434220));
+    this.f = ((XListView)this.mContentView.findViewById(2131449288));
+    this.g = ((TextView)this.mContentView.findViewById(2131432356));
+    setLeftViewName(2131887440);
+    setRightButton(2131892267, this);
+    setTitle(getBaseActivity().getResources().getString(2131917070));
   }
   
   private void a(int paramInt)
   {
     if ((paramInt <= 3) && (paramInt >= 0))
     {
-      this.d.setText(2131719500);
+      this.g.setText(2131917063);
       if (paramInt != 0)
       {
         if (paramInt != 1)
@@ -97,42 +97,42 @@ public class TeamWorkAuthorizeSettingFragment
               QLog.w("TeamWorkAuthorizeSettingFragment", 1, ((StringBuilder)localObject).toString());
               return;
             }
-            this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719504);
-            this.c.setText(2131719503);
+            this.d.setText(2131917067);
+            this.e.setText(2131917066);
           }
           else
           {
-            this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719504);
-            this.c.setText(2131719502);
-            this.d.setText(2131719501);
+            this.d.setText(2131917067);
+            this.e.setText(2131917065);
+            this.g.setText(2131917064);
           }
         }
         else {
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719505);
+          this.d.setText(2131917068);
         }
       }
       else {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719506);
+        this.d.setText(2131917069);
       }
-      int i = this.jdField_b_of_type_Int;
-      if (i != paramInt)
+      int i1 = this.k;
+      if (i1 != paramInt)
       {
-        this.jdField_a_of_type_Boolean = true;
-        if ((i == 2) || (i == 1))
+        this.l = true;
+        if ((i1 == 2) || (i1 == 1))
         {
           localObject = new ArrayList();
-          ((List)localObject).addAll(this.jdField_a_of_type_JavaUtilList);
-          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_b_of_type_Int), localObject);
+          ((List)localObject).addAll(this.h);
+          this.i.put(Integer.valueOf(this.k), localObject);
         }
-        this.jdField_a_of_type_JavaUtilList.clear();
+        this.h.clear();
       }
-      this.jdField_b_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))) {
-        this.jdField_a_of_type_JavaUtilList.addAll((Collection)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)));
+      this.k = paramInt;
+      if (this.i.containsKey(Integer.valueOf(paramInt))) {
+        this.h.addAll((Collection)this.i.get(Integer.valueOf(paramInt)));
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter;
+      localObject = this.j;
       if (localObject != null) {
-        ((TeamWorkAuthorizeUinListAdapter)localObject).a(this.jdField_b_of_type_Int);
+        ((TeamWorkAuthorizeUinListAdapter)localObject).a(this.k);
       }
       return;
     }
@@ -144,62 +144,62 @@ public class TeamWorkAuthorizeSettingFragment
   
   private void a(TeamWorkAuthorizeUinListAdapter.Holder paramHolder)
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(getBaseActivity(), null);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(getBaseActivity(), null);
     SparseArray localSparseArray = new SparseArray();
-    int j = this.jdField_b_of_type_Int;
-    int i = 2;
-    if (j != 2)
+    int i2 = this.k;
+    int i1 = 2;
+    if (i2 != 2)
     {
-      localActionSheet.addButton(getString(2131719502), 5);
-      localSparseArray.put(0, Integer.valueOf(2131719502));
-      localActionSheet.addButton(getString(2131719503), 5);
-      localSparseArray.put(1, Integer.valueOf(2131719503));
+      localActionSheet.addButton(getString(2131917065), 5);
+      localSparseArray.put(0, Integer.valueOf(2131917065));
+      localActionSheet.addButton(getString(2131917066), 5);
+      localSparseArray.put(1, Integer.valueOf(2131917066));
     }
     else
     {
-      i = 0;
+      i1 = 0;
     }
-    localActionSheet.addButton(getString(2131690788), 3);
-    localSparseArray.put(i, Integer.valueOf(2131690788));
+    localActionSheet.addButton(getString(2131887718), 3);
+    localSparseArray.put(i1, Integer.valueOf(2131887718));
     localActionSheet.setOnButtonClickListener(new TeamWorkAuthorizeSettingFragment.5(this, paramHolder, localSparseArray, localActionSheet));
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.show();
   }
   
   private void a(boolean paramBoolean)
   {
-    ViewGroup localViewGroup1 = (ViewGroup)this.mContentView.findViewById(2131367179);
-    ViewGroup localViewGroup2 = (ViewGroup)this.mContentView.findViewById(2131367677);
-    ViewGroup localViewGroup3 = (ViewGroup)this.mContentView.findViewById(2131362182);
-    int k = 0;
-    int i = 0;
-    while (i < localViewGroup1.getChildCount())
+    ViewGroup localViewGroup1 = (ViewGroup)this.mContentView.findViewById(2131433635);
+    ViewGroup localViewGroup2 = (ViewGroup)this.mContentView.findViewById(2131434221);
+    ViewGroup localViewGroup3 = (ViewGroup)this.mContentView.findViewById(2131427763);
+    int i3 = 0;
+    int i1 = 0;
+    while (i1 < localViewGroup1.getChildCount())
     {
-      localViewGroup1.getChildAt(i).setEnabled(paramBoolean);
-      i += 1;
+      localViewGroup1.getChildAt(i1).setEnabled(paramBoolean);
+      i1 += 1;
     }
-    i = 0;
-    int j;
+    i1 = 0;
+    int i2;
     for (;;)
     {
-      j = k;
-      if (i >= localViewGroup2.getChildCount()) {
+      i2 = i3;
+      if (i1 >= localViewGroup2.getChildCount()) {
         break;
       }
-      localViewGroup2.getChildAt(i).setEnabled(paramBoolean);
-      i += 1;
+      localViewGroup2.getChildAt(i1).setEnabled(paramBoolean);
+      i1 += 1;
     }
-    while (j < localViewGroup3.getChildCount())
+    while (i2 < localViewGroup3.getChildCount())
     {
-      localViewGroup3.getChildAt(j).setEnabled(paramBoolean);
-      j += 1;
+      localViewGroup3.getChildAt(i2).setEnabled(paramBoolean);
+      i2 += 1;
     }
     localViewGroup1.setEnabled(paramBoolean);
     localViewGroup2.setEnabled(paramBoolean);
     localViewGroup3.setEnabled(paramBoolean);
     if (paramBoolean)
     {
-      a(this.jdField_b_of_type_Int);
+      a(this.k);
       b();
       localViewGroup1.setOnClickListener(this);
       localViewGroup2.setOnClickListener(this);
@@ -213,22 +213,22 @@ public class TeamWorkAuthorizeSettingFragment
   
   private void b()
   {
-    View localView1 = this.mContentView.findViewById(2131365360);
-    View localView2 = this.mContentView.findViewById(2131367677);
-    int i = this.jdField_b_of_type_Int;
-    if (i == 2)
+    View localView1 = this.mContentView.findViewById(2131431547);
+    View localView2 = this.mContentView.findViewById(2131434221);
+    int i1 = this.k;
+    if (i1 == 2)
     {
       localView2.setVisibility(0);
       localView1.setVisibility(0);
       return;
     }
-    if (i == 3)
+    if (i1 == 3)
     {
       localView2.setVisibility(0);
       localView1.setVisibility(8);
       return;
     }
-    if (i == 1)
+    if (i1 == 1)
     {
       localView2.setVisibility(8);
       localView1.setVisibility(0);
@@ -243,31 +243,31 @@ public class TeamWorkAuthorizeSettingFragment
     Intent localIntent = getBaseActivity().getIntent();
     String str = localIntent.getStringExtra("team_work_name");
     if (TextUtils.isEmpty(str)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.c.setVisibility(8);
     }
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.c;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("对\"");
     localStringBuilder.append(str);
     localStringBuilder.append("\"进行设置");
     localTextView.setText(localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("team_work_pad_url");
-    this.jdField_a_of_type_Int = localIntent.getIntExtra("team_work_pad_list_type", -1);
-    this.jdField_b_of_type_Int = localIntent.getIntExtra("team_work_public_tag", -1);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter = new TeamWorkAuthorizeUinListAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getBaseActivity(), this, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter);
+    this.a = localIntent.getStringExtra("team_work_pad_url");
+    this.b = localIntent.getIntExtra("team_work_pad_list_type", -1);
+    this.k = localIntent.getIntExtra("team_work_public_tag", -1);
+    this.i = new HashMap();
+    this.h = new ArrayList();
+    this.j = new TeamWorkAuthorizeUinListAdapter(this.p, getBaseActivity(), this, this.h);
+    this.f.setAdapter(this.j);
   }
   
   private void d()
   {
     ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    int i1 = 0;
+    while (i1 < this.h.size())
     {
-      localArrayList.add(String.valueOf(((TeamWorkAuthorizeUinListAdapter.ItemData)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString));
-      i += 1;
+      localArrayList.add(String.valueOf(((TeamWorkAuthorizeUinListAdapter.ItemData)this.h.get(i1)).b));
+      i1 += 1;
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("param_uins_selected_default", localArrayList);
@@ -284,31 +284,31 @@ public class TeamWorkAuthorizeSettingFragment
   
   private void e()
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(getBaseActivity(), null);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(getBaseActivity(), null);
     SparseArray localSparseArray = new SparseArray();
-    localActionSheet.addButton(getString(2131719504), 5);
-    localSparseArray.put(0, Integer.valueOf(2131719504));
-    localActionSheet.addButton(getString(2131719505), 5);
-    localSparseArray.put(1, Integer.valueOf(2131719505));
-    localActionSheet.addButton(getString(2131719506), 5);
-    localSparseArray.put(2, Integer.valueOf(2131719506));
+    localActionSheet.addButton(getString(2131917067), 5);
+    localSparseArray.put(0, Integer.valueOf(2131917067));
+    localActionSheet.addButton(getString(2131917068), 5);
+    localSparseArray.put(1, Integer.valueOf(2131917068));
+    localActionSheet.addButton(getString(2131917069), 5);
+    localSparseArray.put(2, Integer.valueOf(2131917069));
     localActionSheet.setOnButtonClickListener(new TeamWorkAuthorizeSettingFragment.3(this, localSparseArray, localActionSheet));
-    localActionSheet.setMainTitle(HardCodeUtil.a(2131714572));
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.setMainTitle(HardCodeUtil.a(2131912081));
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.show();
   }
   
   private void f()
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(getBaseActivity(), null);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(getBaseActivity(), null);
     SparseArray localSparseArray = new SparseArray();
-    localActionSheet.addButton(getString(2131719502), 5);
-    localSparseArray.put(0, Integer.valueOf(2131719502));
-    localActionSheet.addButton(getString(2131719503), 5);
-    localSparseArray.put(1, Integer.valueOf(2131719503));
+    localActionSheet.addButton(getString(2131917065), 5);
+    localSparseArray.put(0, Integer.valueOf(2131917065));
+    localActionSheet.addButton(getString(2131917066), 5);
+    localSparseArray.put(1, Integer.valueOf(2131917066));
     localActionSheet.setOnButtonClickListener(new TeamWorkAuthorizeSettingFragment.4(this, localSparseArray, localActionSheet));
-    localActionSheet.setMainTitle(HardCodeUtil.a(2131714617));
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.setMainTitle(HardCodeUtil.a(2131912126));
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.show();
   }
   
@@ -316,20 +316,20 @@ public class TeamWorkAuthorizeSettingFragment
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     startTitleProgress();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getBaseActivity().app;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkObserver);
+    this.p = getBaseActivity().app;
+    this.p.addObserver(this.n);
     a();
     c();
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkHandler = ((ITeamWorkHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER));
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkHandler.getPadRightsInfo(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8007CF5", "0x8007CF5", 0, 0, "", "", "", "");
+    this.o = ((ITeamWorkHandler)this.p.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER));
+    this.o.getPadRightsInfo(this.b, this.a);
+    ReportController.b(this.p, "dc00898", "", "", "0x8007CF5", "0x8007CF5", 0, 0, "", "", "", "");
     a(false);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.p.addObserver(this.m);
   }
   
   protected int getContentLayoutId()
   {
-    return 2131562913;
+    return 2131629373;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -349,25 +349,25 @@ public class TeamWorkAuthorizeSettingFragment
           localUinRightInfo.uint32_right.set(2);
           localUinRightInfo.uint32_uin_type.set(0);
           TeamWorkAuthorizeUinListAdapter.ItemData localItemData = new TeamWorkAuthorizeUinListAdapter.ItemData();
-          localItemData.jdField_a_of_type_JavaLangString = localResultRecord.uin;
-          localItemData.c = localResultRecord.name;
-          localItemData.b = localResultRecord.groupUin;
-          localItemData.jdField_a_of_type_Int = localResultRecord.type;
-          localItemData.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = localUinRightInfo;
-          this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter.a(localItemData);
-          this.jdField_a_of_type_Boolean = true;
+          localItemData.b = localResultRecord.uin;
+          localItemData.e = localResultRecord.name;
+          localItemData.d = localResultRecord.groupUin;
+          localItemData.c = localResultRecord.type;
+          localItemData.a = localUinRightInfo;
+          this.j.a(localItemData);
+          this.l = true;
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter.notifyDataSetChanged();
+      this.j.notifyDataSetChanged();
     }
   }
   
   public boolean onBackEvent()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8007D01", "0x8007D01", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_Boolean)
+    ReportController.b(this.p, "dc00898", "", "", "0x8007D01", "0x8007D01", 0, 0, "", "", "", "");
+    if (this.l)
     {
-      DialogUtil.a(getBaseActivity(), 230, getString(2131719496), "", 2131719495, 2131719497, new TeamWorkAuthorizeSettingFragment.6(this), new TeamWorkAuthorizeSettingFragment.7(this)).show();
+      DialogUtil.a(getBaseActivity(), 230, getString(2131917059), "", 2131917058, 2131917060, new TeamWorkAuthorizeSettingFragment.6(this), new TeamWorkAuthorizeSettingFragment.7(this)).show();
       return false;
     }
     return super.onBackEvent();
@@ -379,56 +379,56 @@ public class TeamWorkAuthorizeSettingFragment
     {
     default: 
       break;
-    case 2131378334: 
+    case 2131446931: 
       a((TeamWorkAuthorizeUinListAdapter.Holder)paramView.getTag());
-      if (this.jdField_b_of_type_Int == 1) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8007CFA", "0x8007CFA", 0, 0, "", "", "", "");
+      if (this.k == 1) {
+        ReportController.b(this.p, "dc00898", "", "", "0x8007CFA", "0x8007CFA", 0, 0, "", "", "", "");
       }
       break;
-    case 2131369233: 
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8007CFA", "0x8007CFA", 0, 0, "", "", "", "");
+    case 2131436211: 
+      ReportController.b(this.p, "dc00898", "", "", "0x8007CFA", "0x8007CFA", 0, 0, "", "", "", "");
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.h.iterator();
       while (localIterator.hasNext())
       {
         TeamWorkAuthorizeUinListAdapter.ItemData localItemData = (TeamWorkAuthorizeUinListAdapter.ItemData)localIterator.next();
-        if (this.jdField_b_of_type_Int == 2) {
-          localItemData.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint32_right.set(2);
+        if (this.k == 2) {
+          localItemData.a.uint32_right.set(2);
         }
-        localArrayList.add(localItemData.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo);
+        localArrayList.add(localItemData.a);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkHandler.setPadRightsInfo(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localArrayList);
+      this.o.setPadRightsInfo(this.k, this.a, this.b, localArrayList);
       a(false);
       getRightTextView().setEnabled(false);
       startTitleProgress();
       break;
-    case 2131367677: 
+    case 2131434221: 
       f();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8007CFA", "0x8007CFA", 0, 0, "", "", "", "");
+      ReportController.b(this.p, "dc00898", "", "", "0x8007CFA", "0x8007CFA", 0, 0, "", "", "", "");
       break;
-    case 2131367179: 
+    case 2131433635: 
       e();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8007CFA", "0x8007CFA", 0, 0, "", "", "", "");
+      ReportController.b(this.p, "dc00898", "", "", "0x8007CFA", "0x8007CFA", 0, 0, "", "", "", "");
       break;
-    case 2131362182: 
+    case 2131427763: 
       d();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8007CFA", "0x8007CFA", 0, 0, "", "", "", "");
+      ReportController.b(this.p, "dc00898", "", "", "0x8007CFA", "0x8007CFA", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDestroyView()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.p;
     if (localQQAppInterface != null) {
-      localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkObserver);
+      localQQAppInterface.removeObserver(this.n);
     }
     super.onDestroyView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment
  * JD-Core Version:    0.7.0.1
  */

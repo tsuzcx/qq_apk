@@ -52,7 +52,7 @@ public class ResDownloadManagerImpl
   
   private boolean isNeedDownload(IResDownloadManager.DownloadParam paramDownloadParam)
   {
-    return this.mRDHander.a(this.app, paramDownloadParam.jdField_a_of_type_Int).b(paramDownloadParam);
+    return this.mRDHander.a(this.app, paramDownloadParam.a).d(paramDownloadParam);
   }
   
   private void retry(IResDownloadManager.DownloadParam paramDownloadParam)
@@ -66,9 +66,9 @@ public class ResDownloadManagerImpl
     }
     Object localObject = new HttpNetReq();
     ((HttpNetReq)localObject).mCallback = this;
-    ((HttpNetReq)localObject).mReqUrl = paramDownloadParam.jdField_a_of_type_JavaLangString;
+    ((HttpNetReq)localObject).mReqUrl = paramDownloadParam.b;
     ((HttpNetReq)localObject).mHttpMethod = 0;
-    ((HttpNetReq)localObject).mOutPath = this.mRDHander.a(this.app, paramDownloadParam.jdField_a_of_type_Int).b(paramDownloadParam);
+    ((HttpNetReq)localObject).mOutPath = this.mRDHander.a(this.app, paramDownloadParam.a).b(paramDownloadParam);
     ((HttpNetReq)localObject).mPrioty = 1;
     ((HttpNetReq)localObject).setUserData(paramDownloadParam);
     ((HttpNetReq)localObject).mSupportBreakResume = true;
@@ -84,11 +84,11 @@ public class ResDownloadManagerImpl
       ((StringBuilder)localObject).append(paramDownloadParam);
       QLog.i("ResDownloadManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.mRDHander.a(this.app, paramDownloadParam.jdField_a_of_type_Int).a(paramDownloadParam);
+    Object localObject = this.mRDHander.a(this.app, paramDownloadParam.a).a(paramDownloadParam);
     if (!FileUtils.fileExists((String)localObject)) {
       try
       {
-        FileUtils.uncompressZip(this.mRDHander.a(this.app, paramDownloadParam.jdField_a_of_type_Int).b(paramDownloadParam), (String)localObject, false);
+        FileUtils.uncompressZip(this.mRDHander.a(this.app, paramDownloadParam.a).b(paramDownloadParam), (String)localObject, false);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder1 = new StringBuilder();
@@ -137,11 +137,11 @@ public class ResDownloadManagerImpl
       ((StringBuilder)localObject1).append(paramDownloadParam);
       QLog.i("ResDownloadManager", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = this.mRDHander.a(this.app, paramDownloadParam.jdField_a_of_type_Int);
-    bool = TextUtils.isEmpty(paramDownloadParam.jdField_b_of_type_JavaLangString);
+    Object localObject1 = this.mRDHander.a(this.app, paramDownloadParam.a);
+    bool = TextUtils.isEmpty(paramDownloadParam.c);
     int k = 0;
     int j = 0;
-    if ((!bool) && (this.mPicsMd5Set.contains(paramDownloadParam.jdField_b_of_type_JavaLangString)))
+    if ((!bool) && (this.mPicsMd5Set.contains(paramDownloadParam.c)))
     {
       if (QLog.isColorLevel())
       {
@@ -161,7 +161,7 @@ public class ResDownloadManagerImpl
         ((StringBuilder)???).append(paramDownloadParam);
         QLog.i("ResDownloadManager", 2, ((StringBuilder)???).toString());
       }
-      if (paramDownloadParam.jdField_a_of_type_Boolean)
+      if (paramDownloadParam.f)
       {
         ??? = ((ResDownloadHandler.RDHandler)localObject1).a(paramDownloadParam);
         if ((FileUtils.fileExists((String)???)) && (!((ResDownloadHandler.RDHandler)localObject1).a(paramDownloadParam, true)))
@@ -192,26 +192,26 @@ public class ResDownloadManagerImpl
           if (localIResDownloadListener == null) {
             break label623;
           }
-          localIResDownloadListener.a(paramDownloadParam.jdField_a_of_type_JavaLangString, paramDownloadParam.jdField_b_of_type_JavaLangString, i, (String)localObject1, paramDownloadParam.jdField_a_of_type_JavaLangObject);
+          localIResDownloadListener.a(paramDownloadParam.b, paramDownloadParam.c, i, (String)localObject1, paramDownloadParam.h);
           break label623;
         }
-        if (paramDownloadParam.jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager$IResDownloadListener != null) {
-          paramDownloadParam.jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager$IResDownloadListener.a(paramDownloadParam.jdField_a_of_type_JavaLangString, paramDownloadParam.jdField_b_of_type_JavaLangString, i, (String)localObject1, paramDownloadParam.jdField_a_of_type_JavaLangObject);
+        if (paramDownloadParam.i != null) {
+          paramDownloadParam.i.a(paramDownloadParam.b, paramDownloadParam.c, i, (String)localObject1, paramDownloadParam.h);
         }
         return true;
       }
     }
-    this.mPicsMd5Set.add(paramDownloadParam.jdField_b_of_type_JavaLangString);
+    this.mPicsMd5Set.add(paramDownloadParam.c);
     if (QLog.isColorLevel())
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("download send request ,url = ");
-      ((StringBuilder)???).append(paramDownloadParam.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)???).append(paramDownloadParam.b);
       QLog.i("ResDownloadManager", 2, ((StringBuilder)???).toString());
     }
     ??? = new HttpNetReq();
     ((HttpNetReq)???).mCallback = this;
-    ((HttpNetReq)???).mReqUrl = paramDownloadParam.jdField_a_of_type_JavaLangString;
+    ((HttpNetReq)???).mReqUrl = paramDownloadParam.b;
     ((HttpNetReq)???).mHttpMethod = 0;
     ((HttpNetReq)???).mOutPath = ((ResDownloadHandler.RDHandler)localObject1).b(paramDownloadParam);
     ((HttpNetReq)???).mPrioty = 1;
@@ -270,26 +270,26 @@ public class ResDownloadManagerImpl
       QLog.i("ResDownloadManager", 2, ((StringBuilder)localObject).toString());
     }
     IResDownloadManager.DownloadParam localDownloadParam = new IResDownloadManager.DownloadParam();
-    localDownloadParam.jdField_a_of_type_Int = paramInt;
-    localDownloadParam.jdField_a_of_type_JavaLangString = paramString1;
-    localDownloadParam.jdField_b_of_type_Int = 2;
+    localDownloadParam.a = paramInt;
+    localDownloadParam.b = paramString1;
+    localDownloadParam.e = 2;
     Object localObject = paramString3;
     if (paramString3 == null) {
       localObject = "";
     }
-    localDownloadParam.c = ((String)localObject);
-    localDownloadParam.jdField_a_of_type_Boolean = paramBoolean;
-    localDownloadParam.jdField_a_of_type_JavaLangObject = paramObject;
-    localDownloadParam.jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager$IResDownloadListener = paramIResDownloadListener;
+    localDownloadParam.d = ((String)localObject);
+    localDownloadParam.f = paramBoolean;
+    localDownloadParam.h = paramObject;
+    localDownloadParam.i = paramIResDownloadListener;
     if (TextUtils.isEmpty(paramString2))
     {
-      localDownloadParam.jdField_b_of_type_JavaLangString = Utils.Crc64String(paramString1);
-      localDownloadParam.jdField_b_of_type_Boolean = false;
+      localDownloadParam.c = Utils.Crc64String(paramString1);
+      localDownloadParam.g = false;
     }
     else
     {
-      localDownloadParam.jdField_b_of_type_JavaLangString = paramString2;
-      localDownloadParam.jdField_b_of_type_Boolean = true;
+      localDownloadParam.c = paramString2;
+      localDownloadParam.g = true;
     }
     return download(localDownloadParam);
   }
@@ -308,12 +308,12 @@ public class ResDownloadManagerImpl
       paramString2 = "";
     }
     paramString3 = new IResDownloadManager.DownloadParam();
-    paramString3.jdField_a_of_type_JavaLangString = paramString1;
-    paramString3.jdField_b_of_type_JavaLangString = str;
-    paramString3.jdField_a_of_type_Boolean = paramBoolean;
-    paramString3.c = paramString2;
-    paramString3.jdField_a_of_type_Int = paramInt;
-    return this.mRDHander.a(this.app, paramString3.jdField_a_of_type_Int).a(paramString3);
+    paramString3.b = paramString1;
+    paramString3.c = str;
+    paramString3.f = paramBoolean;
+    paramString3.d = paramString2;
+    paramString3.a = paramInt;
+    return this.mRDHander.a(this.app, paramString3.a).c(paramString3);
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -348,15 +348,15 @@ public class ResDownloadManagerImpl
     if ((localObject2 != null) && ((localObject2 instanceof IResDownloadManager.DownloadParam)))
     {
       localObject5 = (IResDownloadManager.DownloadParam)localObject2;
-      localObject2 = this.mRDHander.a(this.app, ((IResDownloadManager.DownloadParam)localObject5).jdField_a_of_type_Int);
-      localObject4 = ((IResDownloadManager.DownloadParam)localObject5).jdField_b_of_type_JavaLangString;
+      localObject2 = this.mRDHander.a(this.app, ((IResDownloadManager.DownloadParam)localObject5).a);
+      localObject4 = ((IResDownloadManager.DownloadParam)localObject5).c;
       if (bool1)
       {
         boolean bool2 = bool1;
         i = j;
-        if (((IResDownloadManager.DownloadParam)localObject5).jdField_b_of_type_Boolean)
+        if (((IResDownloadManager.DownloadParam)localObject5).g)
         {
-          if (!((ResDownloadHandler.RDHandler)localObject2).c((IResDownloadManager.DownloadParam)localObject5))
+          if (!((ResDownloadHandler.RDHandler)localObject2).e((IResDownloadManager.DownloadParam)localObject5))
           {
             j = -6103066;
             ((File)localObject1).delete();
@@ -385,7 +385,7 @@ public class ResDownloadManagerImpl
           bool1 = bool2;
           localObject2 = localObject1;
           j = i;
-          if (((IResDownloadManager.DownloadParam)localObject5).jdField_a_of_type_Boolean)
+          if (((IResDownloadManager.DownloadParam)localObject5).f)
           {
             FileUtils.deleteDirectory((String)localObject6);
             unCompressZipFile((IResDownloadManager.DownloadParam)localObject5);
@@ -435,9 +435,9 @@ public class ResDownloadManagerImpl
         if (((File)localObject1).exists()) {
           ((File)localObject1).delete();
         }
-        if (((IResDownloadManager.DownloadParam)localObject5).jdField_b_of_type_Int > 0)
+        if (((IResDownloadManager.DownloadParam)localObject5).e > 0)
         {
-          ((IResDownloadManager.DownloadParam)localObject5).jdField_b_of_type_Int -= 1;
+          ((IResDownloadManager.DownloadParam)localObject5).e -= 1;
           retry((IResDownloadManager.DownloadParam)localObject5);
           i = 3;
           j = 1;
@@ -495,13 +495,13 @@ public class ResDownloadManagerImpl
         {
           localObject6 = (IResDownloadManager.IResDownloadListener)this.mDownloadListeners.get(j);
           if ((localObject6 != null) && (localObject1 != null)) {
-            ((IResDownloadManager.IResDownloadListener)localObject6).a(localHttpNetReq.mReqUrl, (String)localObject4, i, ((File)localObject2).getAbsolutePath(), ((IResDownloadManager.DownloadParam)localObject1).jdField_a_of_type_JavaLangObject);
+            ((IResDownloadManager.IResDownloadListener)localObject6).a(localHttpNetReq.mReqUrl, (String)localObject4, i, ((File)localObject2).getAbsolutePath(), ((IResDownloadManager.DownloadParam)localObject1).h);
           }
         }
         else
         {
-          if ((localObject1 != null) && (((IResDownloadManager.DownloadParam)localObject1).jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager$IResDownloadListener != null)) {
-            ((IResDownloadManager.DownloadParam)localObject1).jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager$IResDownloadListener.a(localHttpNetReq.mReqUrl, (String)localObject4, i, ((File)localObject2).getAbsolutePath(), ((IResDownloadManager.DownloadParam)localObject1).jdField_a_of_type_JavaLangObject);
+          if ((localObject1 != null) && (((IResDownloadManager.DownloadParam)localObject1).i != null)) {
+            ((IResDownloadManager.DownloadParam)localObject1).i.a(localHttpNetReq.mReqUrl, (String)localObject4, i, ((File)localObject2).getAbsolutePath(), ((IResDownloadManager.DownloadParam)localObject1).h);
           }
           if ((!bool1) && (localObject1 != null))
           {
@@ -522,24 +522,24 @@ public class ResDownloadManagerImpl
             }
             localObject4 = new HashMap();
             ((HashMap)localObject4).put("param_FailCode", String.valueOf(i));
-            ((HashMap)localObject4).put("url", ResUtil.a(((IResDownloadManager.DownloadParam)localObject1).jdField_a_of_type_JavaLangString));
-            ((HashMap)localObject4).put("md5", ((IResDownloadManager.DownloadParam)localObject1).jdField_b_of_type_JavaLangString);
+            ((HashMap)localObject4).put("url", ResUtil.a(((IResDownloadManager.DownloadParam)localObject1).b));
+            ((HashMap)localObject4).put("md5", ((IResDownloadManager.DownloadParam)localObject1).c);
             ((HashMap)localObject4).put("err_desc", localObject3);
             localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append(((IResDownloadManager.DownloadParam)localObject1).jdField_a_of_type_Int);
+            ((StringBuilder)localObject3).append(((IResDownloadManager.DownloadParam)localObject1).a);
             ((StringBuilder)localObject3).append("");
             ((HashMap)localObject4).put("type", ((StringBuilder)localObject3).toString());
-            ((HashMap)localObject4).put("endFix", ((IResDownloadManager.DownloadParam)localObject1).c);
+            ((HashMap)localObject4).put("endFix", ((IResDownloadManager.DownloadParam)localObject1).d);
             localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append(((IResDownloadManager.DownloadParam)localObject1).jdField_b_of_type_Int);
+            ((StringBuilder)localObject3).append(((IResDownloadManager.DownloadParam)localObject1).e);
             ((StringBuilder)localObject3).append("");
             ((HashMap)localObject4).put("retryCount", ((StringBuilder)localObject3).toString());
             localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append(((IResDownloadManager.DownloadParam)localObject1).jdField_a_of_type_Boolean);
+            ((StringBuilder)localObject3).append(((IResDownloadManager.DownloadParam)localObject1).f);
             ((StringBuilder)localObject3).append("");
             ((HashMap)localObject4).put("needUnzip", ((StringBuilder)localObject3).toString());
             localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append(((IResDownloadManager.DownloadParam)localObject1).jdField_b_of_type_Boolean);
+            ((StringBuilder)localObject3).append(((IResDownloadManager.DownloadParam)localObject1).g);
             ((StringBuilder)localObject3).append("");
             ((HashMap)localObject4).put("needVerify", ((StringBuilder)localObject3).toString());
             localObject1 = new StringBuilder();
@@ -578,7 +578,7 @@ public class ResDownloadManagerImpl
       if ((paramNetReq != null) && ((paramNetReq instanceof IResDownloadManager.DownloadParam)))
       {
         paramNetReq = (IResDownloadManager.DownloadParam)paramNetReq;
-        str2 = paramNetReq.jdField_b_of_type_JavaLangString;
+        str2 = paramNetReq.c;
         if (QLog.isColorLevel())
         {
           ??? = new StringBuilder();
@@ -590,7 +590,7 @@ public class ResDownloadManagerImpl
           ((StringBuilder)???).append(paramNetReq);
           QLog.i("ResDownloadManager", 2, ((StringBuilder)???).toString());
         }
-        if (paramNetReq.jdField_a_of_type_Boolean) {
+        if (paramNetReq.f) {
           i = 90;
         } else {
           i = 100;
@@ -616,9 +616,9 @@ public class ResDownloadManagerImpl
           localIResDownloadListener.a(str1, str2, i);
           break label261;
         }
-        if (paramNetReq.jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager$IResDownloadListener != null)
+        if (paramNetReq.i != null)
         {
-          paramNetReq.jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager$IResDownloadListener.a(str1, str2, i);
+          paramNetReq.i.a(str1, str2, i);
           return;
         }
       }

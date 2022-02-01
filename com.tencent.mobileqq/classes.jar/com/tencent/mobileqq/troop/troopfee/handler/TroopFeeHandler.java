@@ -32,11 +32,6 @@ public class TroopFeeHandler
     super(paramAppInterface);
   }
   
-  protected String a()
-  {
-    return "TroopFeeHandler";
-  }
-  
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (paramObject == null)
@@ -44,7 +39,7 @@ public class TroopFeeHandler
       if (QLog.isColorLevel()) {
         QLog.d("TroopFeeHandler.troop.troop_fee", 2, "handleGroupFeeMemberListQuery : data==null");
       }
-      notifyUI(TroopFeeObserver.a, false, null);
+      notifyUI(TroopFeeObserver.b, false, null);
       return;
     }
     if (QLog.isColorLevel())
@@ -56,7 +51,7 @@ public class TroopFeeHandler
     }
     if (!paramFromServiceMsg.isSuccess())
     {
-      notifyUI(TroopFeeObserver.a, false, null);
+      notifyUI(TroopFeeObserver.b, false, null);
       return;
     }
     paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -101,11 +96,11 @@ public class TroopFeeHandler
       if (i == 0)
       {
         paramToServiceMsg = ((cmd0x406.GroupFeeMemberListResult)paramFromServiceMsg.msg_member_list.get()).msg_member_list.get();
-        notifyUI(TroopFeeObserver.a, true, paramToServiceMsg);
+        notifyUI(TroopFeeObserver.b, true, paramToServiceMsg);
       }
       else
       {
-        notifyUI(TroopFeeObserver.a, false, null);
+        notifyUI(TroopFeeObserver.b, false, null);
       }
       if (!QLog.isColorLevel()) {
         break label394;
@@ -123,12 +118,12 @@ public class TroopFeeHandler
       label361:
       break label361;
     }
-    notifyUI(TroopFeeObserver.a, false, null);
+    notifyUI(TroopFeeObserver.b, false, null);
     if (QLog.isColorLevel())
     {
       QLog.d("TroopFeeHandler.troop.troop_fee", 2, "handleGroupFeeMemberListQuery : InvalidProtocolBufferMicroException");
       return;
-      notifyUI(TroopFeeObserver.a, false, null);
+      notifyUI(TroopFeeObserver.b, false, null);
     }
   }
   
@@ -179,6 +174,11 @@ public class TroopFeeHandler
     label261:
   }
   
+  protected String dv_()
+  {
+    return "TroopFeeHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.allowCmdSet == null)
@@ -222,7 +222,7 @@ public class TroopFeeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopfee.handler.TroopFeeHandler
  * JD-Core Version:    0.7.0.1
  */

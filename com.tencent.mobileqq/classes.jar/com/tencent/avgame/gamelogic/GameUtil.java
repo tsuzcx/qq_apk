@@ -37,29 +37,6 @@ public class GameUtil
     a.put(Integer.valueOf(5), TopicTextGuess.class);
   }
   
-  public static int a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return 1;
-    }
-    if (paramInt == 2) {
-      return 2;
-    }
-    if ((paramInt >= 3) && (paramInt <= 102)) {
-      return 3;
-    }
-    if ((paramInt >= 103) && (paramInt <= 202)) {
-      return 2;
-    }
-    if ((paramInt >= 300) && (paramInt <= 399)) {
-      return 5;
-    }
-    if ((paramInt >= 400) && (paramInt <= 499)) {
-      return 4;
-    }
-    return 0;
-  }
-  
   /* Error */
   @Nullable
   public static IGame a(trpc.qq_vgame.common.AvGameCommon.GameStatusInfo paramGameStatusInfo)
@@ -69,13 +46,13 @@ public class GameUtil
     //   1: ifnonnull +5 -> 6
     //   4: aconst_null
     //   5: areturn
-    //   6: new 47	com/tencent/avgame/gamelogic/data/Game
+    //   6: new 46	com/tencent/avgame/gamelogic/data/Game
     //   9: dup
-    //   10: invokespecial 48	com/tencent/avgame/gamelogic/data/Game:<init>	()V
+    //   10: invokespecial 47	com/tencent/avgame/gamelogic/data/Game:<init>	()V
     //   13: astore_1
     //   14: aload_1
     //   15: aload_0
-    //   16: invokeinterface 53 2 0
+    //   16: invokeinterface 52 2 0
     //   21: aload_1
     //   22: areturn
     //   23: astore_2
@@ -87,24 +64,24 @@ public class GameUtil
     //   31: astore_1
     //   32: aconst_null
     //   33: astore_0
-    //   34: ldc 55
+    //   34: ldc 54
     //   36: iconst_1
     //   37: iconst_3
     //   38: anewarray 4	java/lang/Object
     //   41: dup
     //   42: iconst_0
-    //   43: ldc 57
+    //   43: ldc 56
     //   45: aastore
     //   46: dup
     //   47: iconst_1
     //   48: aload_1
-    //   49: invokevirtual 61	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   49: invokevirtual 60	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   52: aastore
     //   53: dup
     //   54: iconst_2
     //   55: aload_1
     //   56: aastore
-    //   57: invokestatic 67	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   57: invokestatic 66	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   60: aload_0
     //   61: areturn
     // Local variable table:
@@ -124,7 +101,7 @@ public class GameUtil
     if (paramGameQuestionInfo == null) {
       return null;
     }
-    int i = a(paramGameQuestionInfo.type.get());
+    int i = b(paramGameQuestionInfo.type.get());
     Object localObject = (Class)a.get(Integer.valueOf(i));
     if (localObject == null) {
       return null;
@@ -240,11 +217,6 @@ public class GameUtil
     new StringBuilder(1024);
   }
   
-  public static boolean a(int paramInt)
-  {
-    return paramInt == 1;
-  }
-  
   public static boolean a(GameItem paramGameItem)
   {
     if ((paramGameItem.a != 2) && (paramGameItem.a != 300))
@@ -252,10 +224,33 @@ public class GameUtil
       if (paramGameItem.a == 400) {
         return false;
       }
-      int i = a(paramGameItem.a);
+      int i = b(paramGameItem.a);
       return (i == 3) || (i == 5) || (i == 4) || (i == 2);
     }
     return false;
+  }
+  
+  public static int b(int paramInt)
+  {
+    if (paramInt == 1) {
+      return 1;
+    }
+    if (paramInt == 2) {
+      return 2;
+    }
+    if ((paramInt >= 3) && (paramInt <= 102)) {
+      return 3;
+    }
+    if ((paramInt >= 103) && (paramInt <= 202)) {
+      return 2;
+    }
+    if ((paramInt >= 300) && (paramInt <= 399)) {
+      return 5;
+    }
+    if ((paramInt >= 400) && (paramInt <= 499)) {
+      return 4;
+    }
+    return 0;
   }
   
   @Nullable
@@ -281,11 +276,6 @@ public class GameUtil
     return null;
   }
   
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 3) || (paramInt == 4);
-  }
-  
   public static boolean b(GameItem paramGameItem)
   {
     boolean bool2 = false;
@@ -296,7 +286,7 @@ public class GameUtil
     if (a(paramGameItem))
     {
       bool1 = bool2;
-      if (paramGameItem.b == 1) {
+      if (paramGameItem.p == 1) {
         bool1 = true;
       }
     }
@@ -305,10 +295,20 @@ public class GameUtil
   
   public static boolean c(int paramInt)
   {
-    return paramInt == 3;
+    return paramInt == 1;
   }
   
   public static boolean d(int paramInt)
+  {
+    return (paramInt == 3) || (paramInt == 4);
+  }
+  
+  public static boolean e(int paramInt)
+  {
+    return paramInt == 3;
+  }
+  
+  public static boolean f(int paramInt)
   {
     return (paramInt > 0) && (paramInt <= 5);
   }

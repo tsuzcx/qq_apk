@@ -12,7 +12,7 @@ class CommentBusiness$1
   
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    CommentBusiness.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness, paramBoolean, paramLong, paramString, paramStGetFeedDetailRsp, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt);
+    CommentBusiness.a(this.b, paramBoolean, paramLong, paramString, paramStGetFeedDetailRsp, this.a);
   }
 }
 

@@ -9,16 +9,16 @@ class VideoStoryAIScenePart$8
   
   public void run()
   {
-    if (VideoStoryAIScenePart.a(this.this$0) != null)
+    if (VideoStoryAIScenePart.i(this.this$0) != null)
     {
-      VideoStoryAIScenePart.b(this.this$0).setVisibility(8);
+      VideoStoryAIScenePart.e(this.this$0).setVisibility(8);
       this.this$0.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.aiscene.VideoStoryAIScenePart.8
  * JD-Core Version:    0.7.0.1
  */

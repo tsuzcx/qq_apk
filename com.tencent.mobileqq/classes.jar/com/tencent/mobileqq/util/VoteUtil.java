@@ -9,37 +9,6 @@ import com.tencent.qphone.base.util.QLog;
 
 public class VoteUtil
 {
-  public static CardProfile a(BaseQQAppInterface paramBaseQQAppInterface, long paramLong, int paramInt)
-  {
-    paramBaseQQAppInterface = paramBaseQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (paramBaseQQAppInterface != null)
-    {
-      Object localObject = Long.toString(paramLong);
-      String str = Integer.toString(paramInt);
-      boolean bool = true;
-      localObject = (CardProfile)paramBaseQQAppInterface.find(CardProfile.class, "lEctID=? and type=?", new String[] { localObject, str });
-      paramBaseQQAppInterface = (BaseQQAppInterface)localObject;
-      if (QLog.isColorLevel())
-      {
-        paramBaseQQAppInterface = new StringBuilder();
-        paramBaseQQAppInterface.append("readFromDb. uin:");
-        paramBaseQQAppInterface.append(paramLong);
-        paramBaseQQAppInterface.append(" find:");
-        if (localObject == null) {
-          bool = false;
-        }
-        paramBaseQQAppInterface.append(bool);
-        QLog.i("VoteUtil", 2, paramBaseQQAppInterface.toString());
-        return localObject;
-      }
-    }
-    else
-    {
-      paramBaseQQAppInterface = null;
-    }
-    return paramBaseQQAppInterface;
-  }
-  
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, long paramLong, int paramInt)
   {
     paramBaseQQAppInterface = paramBaseQQAppInterface.getEntityManagerFactory().createEntityManager();
@@ -91,10 +60,41 @@ public class VoteUtil
       }
     }
   }
+  
+  public static CardProfile b(BaseQQAppInterface paramBaseQQAppInterface, long paramLong, int paramInt)
+  {
+    paramBaseQQAppInterface = paramBaseQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if (paramBaseQQAppInterface != null)
+    {
+      Object localObject = Long.toString(paramLong);
+      String str = Integer.toString(paramInt);
+      boolean bool = true;
+      localObject = (CardProfile)paramBaseQQAppInterface.find(CardProfile.class, "lEctID=? and type=?", new String[] { localObject, str });
+      paramBaseQQAppInterface = (BaseQQAppInterface)localObject;
+      if (QLog.isColorLevel())
+      {
+        paramBaseQQAppInterface = new StringBuilder();
+        paramBaseQQAppInterface.append("readFromDb. uin:");
+        paramBaseQQAppInterface.append(paramLong);
+        paramBaseQQAppInterface.append(" find:");
+        if (localObject == null) {
+          bool = false;
+        }
+        paramBaseQQAppInterface.append(bool);
+        QLog.i("VoteUtil", 2, paramBaseQQAppInterface.toString());
+        return localObject;
+      }
+    }
+    else
+    {
+      paramBaseQQAppInterface = null;
+    }
+    return paramBaseQQAppInterface;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.VoteUtil
  * JD-Core Version:    0.7.0.1
  */

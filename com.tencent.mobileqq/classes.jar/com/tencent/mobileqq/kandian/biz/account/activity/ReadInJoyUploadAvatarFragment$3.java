@@ -15,18 +15,18 @@ class ReadInJoyUploadAvatarFragment$3
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    byte[] arrayOfByte = FileUtils.readFile(this.jdField_a_of_type_JavaLangString);
+    byte[] arrayOfByte = FileUtils.readFile(this.a);
     if (arrayOfByte != null) {
-      this.jdField_a_of_type_AndroidOsBundle.putString("data", Base64Util.encodeToString(arrayOfByte, 0));
+      this.b.putString("data", Base64Util.encodeToString(arrayOfByte, 0));
     }
-    localHashMap.put("BUNDLE", this.jdField_a_of_type_AndroidOsBundle);
+    localHashMap.put("BUNDLE", this.b);
     localHashMap.put("CONTEXT", this.this$0.getBaseActivity());
     new HttpWebCgiAsyncTask2("https://kandian.qq.com/cgi-bin/settings/upload_img", "POST", new ReadInJoyUploadAvatarFragment.3.1(this), 1000, null).a(localHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.account.activity.ReadInJoyUploadAvatarFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,7 @@ import android.opengl.EGLExt;
 import android.opengl.EGLSurface;
 import android.opengl.GLES20;
 import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.Surface;
 import com.tencent.tav.coremedia.CGRect;
 import com.tencent.tav.coremedia.CGSize;
+import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.logger.Logger;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,8 +32,8 @@ public class RenderContext
   private static final int EGL_OPENGL_ES2_BIT = 4;
   private static final int EGL_RECORDABLE_ANDROID = 12610;
   private static final String TAG = "RenderContext";
-  private EGLContext _eglContext;
   private HashMap<Surface, String> activeSurfaceCache = new HashMap();
+  private EGLContext eglContext;
   private EGLDisplay eglDisplay;
   private EGLSurface eglSurface;
   private HashMap<String, Surface> freeSurfaceCache = new HashMap();
@@ -44,6 +46,7 @@ public class RenderContext
   private RenderContextParams params;
   private volatile boolean released = false;
   private List<Surface> releasingSurfaceCache = new ArrayList();
+  @Nullable
   private Surface surface;
   private long threadId = -1L;
   private HashMap<Surface, VideoTexture> videoTextureMap = new HashMap();
@@ -61,7 +64,7 @@ public class RenderContext
     this(paramInt1, paramInt2, paramSurface, null);
   }
   
-  public RenderContext(int paramInt1, int paramInt2, Surface paramSurface, EGLContext paramEGLContext)
+  public RenderContext(int paramInt1, int paramInt2, @Nullable Surface paramSurface, EGLContext paramEGLContext)
   {
     this.surface = paramSurface;
     this.width = paramInt1;
@@ -173,17 +176,17 @@ public class RenderContext
         if (paramEGLContext != null)
         {
           this.isSharedContext = true;
-          this._eglContext = EGL14.eglCreateContext(this.eglDisplay, localObject[0], paramEGLContext, arrayOfInt, 0);
+          this.eglContext = EGL14.eglCreateContext(this.eglDisplay, localObject[0], paramEGLContext, arrayOfInt, 0);
           checkEglError("eglCreateContext");
-          if (this._eglContext == null) {
+          if (this.eglContext == null) {
             Logger.e("RenderContext", "eglSetup: ", new RuntimeException("null context"));
           }
         }
         else
         {
-          this._eglContext = EGL14.eglCreateContext(this.eglDisplay, localObject[0], EGL14.EGL_NO_CONTEXT, arrayOfInt, 0);
+          this.eglContext = EGL14.eglCreateContext(this.eglDisplay, localObject[0], EGL14.EGL_NO_CONTEXT, arrayOfInt, 0);
           checkEglError("eglCreateContext");
-          if (this._eglContext == null)
+          if (this.eglContext == null)
           {
             Logger.e("RenderContext", "eglSetup: ", new RuntimeException("null context"));
             return;
@@ -213,6 +216,35 @@ public class RenderContext
       return;
     }
     finally {}
+  }
+  
+  @NonNull
+  public static TextureInfo newTextureInfo(float paramFloat1, float paramFloat2)
+  {
+    return newTextureInfo((int)paramFloat1, (int)paramFloat2);
+  }
+  
+  public static TextureInfo newTextureInfo(int paramInt1, int paramInt2)
+  {
+    return newTextureInfo(paramInt1, paramInt2, false);
+  }
+  
+  @NonNull
+  public static TextureInfo newTextureInfo(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    TextureInfo localTextureInfo = new TextureInfo(createTexture(3553), 3553, paramInt1, paramInt2, null, 0);
+    localTextureInfo.setFormat(6408);
+    if (paramBoolean)
+    {
+      GLES20.glBindTexture(3553, localTextureInfo.textureID);
+      GLES20.glTexImage2D(3553, 0, localTextureInfo.getFormat(), localTextureInfo.width, localTextureInfo.height, 0, localTextureInfo.getFormat(), 5121, null);
+    }
+    return localTextureInfo;
+  }
+  
+  public static TextureInfo newTextureInfo(CGSize paramCGSize)
+  {
+    return newTextureInfo(paramCGSize.width, paramCGSize.height);
   }
   
   private void release(Surface paramSurface)
@@ -282,7 +314,7 @@ public class RenderContext
   
   public EGLContext eglContext()
   {
-    return this._eglContext;
+    return this.eglContext;
   }
   
   public void free(Surface paramSurface)
@@ -330,6 +362,11 @@ public class RenderContext
     return this.params;
   }
   
+  public long getThreadId()
+  {
+    return this.threadId;
+  }
+  
   public int height()
   {
     return this.height;
@@ -349,7 +386,7 @@ public class RenderContext
       if (bool) {
         return;
       }
-      if (!EGL14.eglMakeCurrent(this.eglDisplay, this.eglSurface, this.eglSurface, this._eglContext)) {
+      if (!EGL14.eglMakeCurrent(this.eglDisplay, this.eglSurface, this.eglSurface, this.eglContext)) {
         checkEglError("eglMakeCurrent failed");
       }
       return;
@@ -380,12 +417,12 @@ public class RenderContext
       this.videoTextureMap.clear();
       try
       {
-        if (EGL14.eglGetCurrentContext().equals(this._eglContext)) {
+        if (EGL14.eglGetCurrentContext().equals(this.eglContext)) {
           EGL14.eglMakeCurrent(this.eglDisplay, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
         }
         EGL14.eglDestroySurface(this.eglDisplay, this.eglSurface);
         if (!this.isSharedContext) {
-          EGL14.eglDestroyContext(this.eglDisplay, this._eglContext);
+          EGL14.eglDestroyContext(this.eglDisplay, this.eglContext);
         }
       }
       catch (Error localError)
@@ -397,7 +434,7 @@ public class RenderContext
         Logger.e("RenderContext", "release: ", localException);
       }
       this.eglDisplay = null;
-      this._eglContext = null;
+      this.eglContext = null;
       this.eglSurface = null;
       this.surface = null;
       return;
@@ -460,7 +497,7 @@ public class RenderContext
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RenderContext{_eglContext=");
-    localStringBuilder.append(this._eglContext);
+    localStringBuilder.append(this.eglContext);
     localStringBuilder.append(", isSharedContext=");
     localStringBuilder.append(this.isSharedContext);
     localStringBuilder.append(", released=");
@@ -477,14 +514,11 @@ public class RenderContext
   
   public void updateViewport(CGRect paramCGRect)
   {
-    if ((paramCGRect != null) && (paramCGRect.origin != null))
-    {
-      if (paramCGRect.size == null) {
-        return;
-      }
-      this.glViewportRect = paramCGRect;
-      updateViewport((int)paramCGRect.origin.x, (int)paramCGRect.origin.y, (int)paramCGRect.size.width, (int)paramCGRect.size.height);
+    if (paramCGRect == null) {
+      return;
     }
+    this.glViewportRect = paramCGRect;
+    updateViewport((int)paramCGRect.origin.x, (int)paramCGRect.origin.y, (int)paramCGRect.size.width, (int)paramCGRect.size.height);
   }
   
   public VideoTexture videoTextureForSurface(Surface paramSurface)
@@ -508,7 +542,7 @@ public class RenderContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.RenderContext
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class LiteActivity$8
     paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
     if (paramInt3 <= 0)
     {
-      LiteActivity.a(this.a);
+      LiteActivity.b(this.a);
       return "";
     }
     if (paramInt3 >= paramInt2 - paramInt1) {
@@ -27,11 +27,11 @@ class LiteActivity$8
       paramInt2 = paramInt3;
       if (paramInt3 == paramInt1)
       {
-        LiteActivity.a(this.a);
+        LiteActivity.b(this.a);
         return "";
       }
     }
-    LiteActivity.a(this.a);
+    LiteActivity.b(this.a);
     return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }

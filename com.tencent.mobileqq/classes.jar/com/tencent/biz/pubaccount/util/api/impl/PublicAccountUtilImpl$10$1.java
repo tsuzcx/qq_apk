@@ -28,7 +28,7 @@ class PublicAccountUtilImpl$10$1
   
   public void run()
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.a;
     int n = 0;
     int i = 0;
     int i1 = 0;
@@ -39,9 +39,9 @@ class PublicAccountUtilImpl$10$1
     }
     try
     {
-      Object localObject3 = this.jdField_a_of_type_AndroidOsBundle.getByteArray("data");
+      Object localObject3 = this.b.getByteArray("data");
       j = i1;
-      int i2 = this.jdField_a_of_type_AndroidOsBundle.getInt("type", 0);
+      int i2 = this.b.getInt("type", 0);
       k = i;
       if (localObject3 != null)
       {
@@ -80,14 +80,14 @@ class PublicAccountUtilImpl$10$1
                 j = i1;
                 ((PublicAccountDetailImpl)localObject3).init(localGetPublicAccountDetailInfoResponse);
                 j = i1;
-                localObject4 = this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountUtilImpl$10.a.getEntityManagerFactory(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountUtilImpl$10.a.getAccount()).createEntityManager();
+                localObject4 = this.c.a.getEntityManagerFactory(this.c.a.getAccount()).createEntityManager();
                 k = i;
                 if (localObject4 != null)
                 {
                   j = i1;
                   ((EntityManager)localObject4).persistOrReplace((Entity)localObject3);
                   j = i1;
-                  localObject4 = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountUtilImpl$10.a.getRuntimeService(IPublicAccountDataManager.class, "all");
+                  localObject4 = (IPublicAccountDataManager)this.c.a.getRuntimeService(IPublicAccountDataManager.class, "all");
                   if (localObject4 != null)
                   {
                     j = i1;
@@ -116,7 +116,7 @@ class PublicAccountUtilImpl$10$1
                     else
                     {
                       j = n;
-                      localObject4 = this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountUtilImpl$10.a.getHandler(Conversation.class);
+                      localObject4 = this.c.a.getHandler(Conversation.class);
                       i = m;
                       if (localObject4 != null)
                       {
@@ -151,7 +151,7 @@ class PublicAccountUtilImpl$10$1
                     if (localGetPublicAccountDetailInfoResponse.uin.has())
                     {
                       j = i;
-                      ServiceAccountFolderManager.a().a((QQAppInterface)this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountUtilImpl$10.a, (IPublicAccountDetail)localObject3);
+                      ServiceAccountFolderManager.a().a((QQAppInterface)this.c.a, (IPublicAccountDetail)localObject3);
                       k = i;
                     }
                   }
@@ -184,7 +184,7 @@ class PublicAccountUtilImpl$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.10.1
  * JD-Core Version:    0.7.0.1
  */

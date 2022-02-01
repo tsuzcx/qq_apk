@@ -9,8 +9,8 @@ public abstract class BaseWhatASmoothAdapter
   extends BaseAdapter
   implements AbsListView.OnScrollListener
 {
-  protected Handler a;
   String a;
+  protected Handler b;
   
   private final void a(View paramView, Object paramObject, int paramInt, BaseWhatASmoothAdapter.RunningMark paramRunningMark)
   {
@@ -21,7 +21,7 @@ public abstract class BaseWhatASmoothAdapter
     paramView = new BaseWhatASmoothAdapter.1(this, paramView, localObject, paramObject, paramInt, paramRunningMark);
     BaseWhatASmoothAdapter.RunningMark.a(paramRunningMark, true);
     BaseWhatASmoothAdapter.RunningMark.a(paramRunningMark, paramView);
-    this.a.post(paramView);
+    this.b.post(paramView);
   }
   
   protected abstract Object a(int paramInt);
@@ -30,7 +30,7 @@ public abstract class BaseWhatASmoothAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter
  * JD-Core Version:    0.7.0.1
  */

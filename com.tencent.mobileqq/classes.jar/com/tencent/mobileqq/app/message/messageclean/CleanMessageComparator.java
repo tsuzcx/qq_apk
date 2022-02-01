@@ -16,18 +16,18 @@ public class CleanMessageComparator
   {
     if (this.a == 2)
     {
-      if (paramCleanMessageItemInfo1.b > paramCleanMessageItemInfo2.b) {
+      if (paramCleanMessageItemInfo1.f > paramCleanMessageItemInfo2.f) {
         return -1;
       }
-      if (paramCleanMessageItemInfo1.b < paramCleanMessageItemInfo2.b) {
+      if (paramCleanMessageItemInfo1.f < paramCleanMessageItemInfo2.f) {
         return 1;
       }
       return 0;
     }
-    if (paramCleanMessageItemInfo1.a > paramCleanMessageItemInfo2.a) {
+    if (paramCleanMessageItemInfo1.d > paramCleanMessageItemInfo2.d) {
       return -1;
     }
-    if (paramCleanMessageItemInfo1.a < paramCleanMessageItemInfo2.a) {
+    if (paramCleanMessageItemInfo1.d < paramCleanMessageItemInfo2.d) {
       return 1;
     }
     return 0;
@@ -35,7 +35,7 @@ public class CleanMessageComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.messageclean.CleanMessageComparator
  * JD-Core Version:    0.7.0.1
  */

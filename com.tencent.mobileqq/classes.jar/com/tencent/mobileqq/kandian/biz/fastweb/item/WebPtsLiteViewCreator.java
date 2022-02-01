@@ -26,26 +26,19 @@ import java.util.List;
 public class WebPtsLiteViewCreator
   implements IStateChangeListener, ItemCreator
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IPTSLiteEventListener jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener;
-  private HashMap<String, BaseData> jdField_a_of_type_JavaUtilHashMap;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  private HashMap<String, BaseData> a;
   private HashMap<String, Integer> b;
+  private List<String> c;
+  private Context d;
+  private IPTSLiteEventListener e;
   
   public WebPtsLiteViewCreator(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.d = paramContext;
+    this.a = new HashMap();
     this.b = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.c = new ArrayList();
     g();
-  }
-  
-  private PTSItemData a(BaseData paramBaseData)
-  {
-    paramBaseData = (ProteusItemData)paramBaseData;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramBaseData.ae, paramBaseData);
-    return paramBaseData.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData;
   }
   
   private void a(PTSItemData paramPTSItemData)
@@ -53,29 +46,22 @@ public class WebPtsLiteViewCreator
     ThreadManager.executeOnSubThread(new WebPtsLiteViewCreator.3(this, paramPTSItemData));
   }
   
-  private void g()
-  {
-    this.jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener = new WebPtsLiteViewCreator.2(this);
-  }
-  
-  public int a(BaseData paramBaseData)
+  private PTSItemData c(BaseData paramBaseData)
   {
     paramBaseData = (ProteusItemData)paramBaseData;
-    Object localObject = (Integer)this.b.get(paramBaseData.af);
-    if (localObject != null) {
-      return ((Integer)localObject).intValue();
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[getViewType] error, pageName = ");
-    ((StringBuilder)localObject).append(paramBaseData.af);
-    QLog.e("WebPtsLiteViewCreator", 1, ((StringBuilder)localObject).toString());
-    return -1;
+    this.a.put(paramBaseData.bh, paramBaseData);
+    return paramBaseData.bj;
+  }
+  
+  private void g()
+  {
+    this.e = new WebPtsLiteViewCreator.2(this);
   }
   
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
     paramContext = new PTSItemView(paramContext);
-    paramContext = ((ProteusItemData)paramBaseData).jdField_a_of_type_ComTencentPtsCorePTSComposer.layoutToView(paramContext, this.jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener, true);
+    paramContext = ((ProteusItemData)paramBaseData).bk.layoutToView(paramContext, this.e, true);
     PTSLiteItemViewUtil.a.a(paramContext);
     if (paramContext.getLayoutParams() != null) {
       paramContext.setLayoutParams(new AbsListView.LayoutParams(paramContext.getLayoutParams()));
@@ -97,11 +83,25 @@ public class WebPtsLiteViewCreator
     if ((paramBaseData instanceof ProteusItemData))
     {
       bool1 = bool2;
-      if (((ProteusItemData)paramBaseData).jdField_a_of_type_ComTencentPtsCorePTSComposer != null) {
+      if (((ProteusItemData)paramBaseData).bk != null) {
         bool1 = true;
       }
     }
     return bool1;
+  }
+  
+  public int b(BaseData paramBaseData)
+  {
+    paramBaseData = (ProteusItemData)paramBaseData;
+    Object localObject = (Integer)this.b.get(paramBaseData.bi);
+    if (localObject != null) {
+      return ((Integer)localObject).intValue();
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[getViewType] error, pageName = ");
+    ((StringBuilder)localObject).append(paramBaseData.bi);
+    QLog.e("WebPtsLiteViewCreator", 1, ((StringBuilder)localObject).toString());
+    return -1;
   }
   
   public void b() {}
@@ -123,7 +123,7 @@ public class WebPtsLiteViewCreator
       QLog.i("WebPtsLiteViewCreator", 1, "[initPtsLiteTypeCount], pageNameList is null");
       return;
     }
-    int i = BaseItemViewHolder.a + 1;
+    int i = BaseItemViewHolder.e + 1;
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -140,16 +140,16 @@ public class WebPtsLiteViewCreator
       }
       i += 1;
     }
-    BaseItemViewHolder.a += this.b.size() + 1;
+    BaseItemViewHolder.e += this.b.size() + 1;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[initPtsLiteTypeCount], view type count = ");
-    ((StringBuilder)localObject).append(BaseItemViewHolder.a);
+    ((StringBuilder)localObject).append(BaseItemViewHolder.e);
     QLog.i("WebPtsLiteViewCreator", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebPtsLiteViewCreator
  * JD-Core Version:    0.7.0.1
  */

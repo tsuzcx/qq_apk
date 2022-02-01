@@ -17,27 +17,27 @@ class ARScanEntryView$4
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onAsyncFaceResDownLoadComplete ");
-    localStringBuilder.append(this.a.m);
+    localStringBuilder.append(this.a.J);
     QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder.toString());
-    if (!this.a.m) {
+    if (!this.a.J) {
       return;
     }
     ARScanEntryView.b(this.a, 100);
-    if ((ARScanEntryView.a(this.a).a != null) && (ARScanEntryView.a(this.a).a.a != null)) {
-      ARScanEntryView.a(this.a).a.a.a();
+    if ((ARScanEntryView.a(this.a).h != null) && (ARScanEntryView.a(this.a).h.b != null)) {
+      ARScanEntryView.a(this.a).h.b.b();
     }
-    if (ARScanEntryView.a(this.a) != null)
+    if (ARScanEntryView.d(this.a) != null)
     {
-      ARScanEntryView.a(this.a).removeMessages(324);
-      ARScanEntryView.a(this.a).sendEmptyMessage(324);
+      ARScanEntryView.d(this.a).removeMessages(324);
+      ARScanEntryView.d(this.a).sendEmptyMessage(324);
     }
-    if ((ARScanEntryView.a(this.a)) && (this.a.a.a().a()))
+    if ((ARScanEntryView.e(this.a)) && (this.a.H.getUniformResManger().j()))
     {
-      ARScanEntryView.b(this.a);
+      ARScanEntryView.f(this.a);
       QLog.d("AREngine_ARScanEntryView", 1, "everything is ready,so quit update resources");
       return;
     }
-    this.a.k();
+    this.a.m();
   }
   
   public void a(int paramInt)
@@ -46,23 +46,23 @@ class ARScanEntryView$4
     localStringBuilder.append("onAsyncFaceResUpdateProgress ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(";");
-    localStringBuilder.append(this.a.m);
+    localStringBuilder.append(this.a.J);
     QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder.toString());
-    if (!this.a.m) {
+    if (!this.a.J) {
       return;
     }
     ARScanEntryView.b(this.a, paramInt);
-    ARScanEntryView.a(this.a);
+    ARScanEntryView.c(this.a);
   }
   
   public void b()
   {
-    this.a.k();
+    this.a.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.4
  * JD-Core Version:    0.7.0.1
  */

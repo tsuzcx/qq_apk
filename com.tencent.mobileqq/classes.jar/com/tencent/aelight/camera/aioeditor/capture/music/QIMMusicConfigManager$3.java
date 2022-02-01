@@ -4,11 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,10 +20,10 @@ class QIMMusicConfigManager$3
     if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
     {
       Object localObject = paramIntent.getStringExtra("data");
-      String str = paramIntent.getStringExtra("event");
-      if (!TextUtils.isEmpty(str))
+      paramContext = paramIntent.getStringExtra("event");
+      if (!TextUtils.isEmpty(paramContext))
       {
-        if (!str.equals("kTribeSelectMusic")) {
+        if (!paramContext.equals("kTribeSelectMusic")) {
           return;
         }
         if (QLog.isColorLevel())
@@ -71,19 +69,13 @@ class QIMMusicConfigManager$3
             ((QIMMusicConfigManager.LoadMusicStepListener)paramContext.next()).a(paramIntent);
           }
         }
-        if ("kTribeSelectMusic".equals(str))
-        {
-          paramContext = new Intent("com.tencent.mobileqq.action.closewebview");
-          paramContext.putExtra("event", "closeWebView");
-          MobileQQ.getContext().sendBroadcast(paramContext, "com.tencent.msg.permission.pushnotify");
-        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.QIMMusicConfigManager.3
  * JD-Core Version:    0.7.0.1
  */

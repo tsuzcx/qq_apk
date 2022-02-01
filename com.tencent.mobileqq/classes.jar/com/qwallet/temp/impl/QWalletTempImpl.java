@@ -36,6 +36,7 @@ import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity;
 import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -92,6 +93,7 @@ import com.tencent.mobileqq.pluginsdk.SplashDialogWrapper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qwallet.hb.aio.elem.RedPacketInfo;
 import com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketEmojiFragment;
+import com.tencent.mobileqq.qwallet.hb.send.impl.BirthdayHbSuccessFragment;
 import com.tencent.mobileqq.qwallet.impl.QWalletTools;
 import com.tencent.mobileqq.qwallet.preload.IPreloadModule;
 import com.tencent.mobileqq.qwallet.red.IQWalletRedService;
@@ -162,11 +164,11 @@ public class QWalletTempImpl
       {
         paramBundle = new QWalletPayProgressDialog(paramContext);
         paramBundle.show();
-        paramPluginParams.jdField_a_of_type_AndroidAppDialog = paramBundle;
-        paramPluginParams.jdField_b_of_type_Boolean = false;
-        paramPluginParams.d = 10000;
-        paramPluginParams.g = null;
-        new SplashDialogWrapper(paramContext, paramPluginParams.jdField_a_of_type_AndroidAppDialog, paramPluginParams.e, paramPluginParams.jdField_b_of_type_JavaLangString, paramPluginParams.jdField_b_of_type_Boolean, paramPluginParams.d).show();
+        paramPluginParams.l = paramBundle;
+        paramPluginParams.p = false;
+        paramPluginParams.r = 10000;
+        paramPluginParams.q = null;
+        new SplashDialogWrapper(paramContext, paramPluginParams.l, paramPluginParams.g, paramPluginParams.d, paramPluginParams.p, paramPluginParams.r).show();
       }
     }
   }
@@ -217,10 +219,10 @@ public class QWalletTempImpl
     if ((paramIntent != null) && (paramIntent.getExtras() != null)) {
       localIntent.putExtras(paramIntent.getExtras());
     }
-    paramPluginParams.f = "com.qwallet.activity.QvipPayBridgeActivity";
-    paramPluginParams.jdField_a_of_type_JavaLangClass = ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletProxyActivityClass();
-    paramPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-    paramPluginParams.c = 3001;
+    paramPluginParams.h = "com.qwallet.activity.QvipPayBridgeActivity";
+    paramPluginParams.i = ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletProxyActivityClass();
+    paramPluginParams.j = localIntent;
+    paramPluginParams.k = 3001;
     IPluginManager.a((Activity)paramContext, paramPluginParams);
   }
   
@@ -246,7 +248,7 @@ public class QWalletTempImpl
   
   public boolean BaseChatItemLayout$CheckBoxVisible()
   {
-    return BaseChatItemLayout.a;
+    return BaseChatItemLayout.ad;
   }
   
   public String BridgeHelper$getConfig(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
@@ -264,12 +266,7 @@ public class QWalletTempImpl
     if (paramContext == null) {
       return null;
     }
-    return paramContext.a();
-  }
-  
-  public String BusinessHandlerFactory$QWALLET_HANDLER()
-  {
-    return BusinessHandlerFactory.QWALLET_HANDLER;
+    return paramContext.b();
   }
   
   public void ChatActivityFacade$sendMessage(AppRuntime paramAppRuntime, Context paramContext, Object paramObject, String paramString, ArrayList<AtTroopMemberInfo> paramArrayList)
@@ -281,7 +278,7 @@ public class QWalletTempImpl
   
   public boolean ChatActivityUtil$isTempConv(BaseSessionInfo paramBaseSessionInfo)
   {
-    return ChatActivityUtils.a(paramBaseSessionInfo.jdField_a_of_type_Int);
+    return ChatActivityUtils.a(paramBaseSessionInfo.a);
   }
   
   public IBaseChatPieProxy ChatFragment$getCurPie(QBaseActivity paramQBaseActivity)
@@ -289,7 +286,7 @@ public class QWalletTempImpl
     paramQBaseActivity = (QBaseFragment)paramQBaseActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
     if (paramQBaseActivity != null)
     {
-      paramQBaseActivity = ((ChatFragment)paramQBaseActivity).a();
+      paramQBaseActivity = ((ChatFragment)paramQBaseActivity).k();
       if (paramQBaseActivity != null) {
         return createBaseChatPie(paramQBaseActivity);
       }
@@ -336,12 +333,12 @@ public class QWalletTempImpl
   
   public String DiscussionManager$getDiscussMemberName(BaseQQAppInterface paramBaseQQAppInterface, String paramString1, String paramString2)
   {
-    return ((DiscussionManager)paramBaseQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString1, paramString2).getDiscussionMemberName();
+    return ((DiscussionManager)paramBaseQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).b(paramString1, paramString2).getDiscussionMemberName();
   }
   
   public int DiscussionManager$getDiscussionMemberNum(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
-    return ((DiscussionManager)paramBaseQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString);
+    return ((DiscussionManager)paramBaseQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).c(paramString);
   }
   
   public void GameShareConfProcessor$reset() {}
@@ -379,14 +376,14 @@ public class QWalletTempImpl
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
     String str = paramBundle.getString("preload_from");
     if (!TextUtils.isEmpty(str)) {
-      localPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession = new PreloadProcHitPluginSession(str, "com.tencent.mobileqq:tool", "qwallet_plugin.apk");
+      localPluginParams.m = new PreloadProcHitPluginSession(str, "com.tencent.mobileqq:tool", "qwallet_plugin.apk");
     }
-    localPluginParams.jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
-    localPluginParams.e = "Wallet";
-    localPluginParams.jdField_a_of_type_JavaLangString = MobileQQ.sMobileQQ.waitAppRuntime(null).getCurrentUin();
-    localPluginParams.f = "com.qwallet.service.QWalletPluginService";
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = null;
+    localPluginParams.d = "qwallet_plugin.apk";
+    localPluginParams.g = "Wallet";
+    localPluginParams.c = MobileQQ.sMobileQQ.waitAppRuntime(null).getCurrentUin();
+    localPluginParams.h = "com.qwallet.service.QWalletPluginService";
+    localPluginParams.j = paramIntent;
+    localPluginParams.o = null;
     addLoadingDialogInfo(paramContext, paramBundle, localPluginParams);
     boolean bool = ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).isLaunchPayPluginAct(paramBundle, paramContext);
     if (QLog.isColorLevel())
@@ -407,17 +404,17 @@ public class QWalletTempImpl
   public void IPluginManager$openActivityForResult(Context paramContext, Intent paramIntent, Dialog paramDialog)
   {
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
-    localPluginParams.e = "QWallet";
-    localPluginParams.jdField_a_of_type_JavaLangString = MobileQQ.sMobileQQ.waitAppRuntime(null).getCurrentUin();
-    localPluginParams.f = "com.qwallet.activity.QWalletHomeActivity";
-    localPluginParams.jdField_a_of_type_JavaLangClass = ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletProxyActivityClass();
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.c = -1;
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramDialog;
-    localPluginParams.jdField_b_of_type_Boolean = false;
-    localPluginParams.d = 10000;
-    localPluginParams.g = null;
+    localPluginParams.d = "qwallet_plugin.apk";
+    localPluginParams.g = "QWallet";
+    localPluginParams.c = MobileQQ.sMobileQQ.waitAppRuntime(null).getCurrentUin();
+    localPluginParams.h = "com.qwallet.activity.QWalletHomeActivity";
+    localPluginParams.i = ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletProxyActivityClass();
+    localPluginParams.j = paramIntent;
+    localPluginParams.k = -1;
+    localPluginParams.l = paramDialog;
+    localPluginParams.p = false;
+    localPluginParams.r = 10000;
+    localPluginParams.q = null;
     IPluginManager.a(paramContext, localPluginParams);
   }
   
@@ -514,7 +511,7 @@ public class QWalletTempImpl
   
   public long ProcessInfoUtil$getProcessRunningTime()
   {
-    return ProcessInfoUtil.a("com.tencent.mobileqq:tool");
+    return ProcessInfoUtil.b("com.tencent.mobileqq:tool");
   }
   
   public String QAlbumConstants$PHOTO_PATHS()
@@ -558,7 +555,7 @@ public class QWalletTempImpl
   {
     Bundle localBundle = paramActivity.getIntent().getExtras();
     paramActivity = DialogUtils.a(paramActivity, paramString, localBundle.getString("choose_friend_content"), localBundle.getString("choose_friend_subcontent"), ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).getTopayTips(paramActivity), null, paramOnClickListener, paramOnClickListener, 36, false);
-    ReportController.b(QWalletTools.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.windowshow", 0, 0, "", "", "", "");
+    ReportController.b(QWalletTools.b(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.windowshow", 0, 0, "", "", "", "");
     paramActivity = paramActivity.getTitleTextView();
     if (paramActivity != null)
     {
@@ -581,7 +578,7 @@ public class QWalletTempImpl
   
   public Map<MessageForQQWalletMsg, Long> QQWalletMsgItemBuilder$mlastReportMap()
   {
-    return QQWalletMsgItemBuilder.a;
+    return QQWalletMsgItemBuilder.M;
   }
   
   public int QWalletAuthHandler$TYPE_GET_RECENT_LIST()
@@ -661,9 +658,14 @@ public class QWalletTempImpl
     return StorageManager.a(paramString);
   }
   
+  public void StructMsgItemLayoutBirthdayReminder$startBirthdayHbSuccessFragment(Context paramContext, Intent paramIntent)
+  {
+    QPublicFragmentActivity.start(paramContext, paramIntent, BirthdayHbSuccessFragment.class);
+  }
+  
   public TroopMemberInfo TroopManager$getTroopMember(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
-    return ((TroopManager)paramAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString1, paramString2);
+    return ((TroopManager)paramAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString1, paramString2);
   }
   
   public void TroopTipsMsgMgr$insertTroopTipsIntoMessageList(AppInterface paramAppInterface, String paramString1, String paramString2, long paramLong1, long paramLong2, int paramInt1, int paramInt2)
@@ -683,7 +685,7 @@ public class QWalletTempImpl
     {
       localObject = (IQWalletRedService)((BaseQQAppInterface)localObject).getRuntimeService(IQWalletRedService.class);
       IQWalletRedService.ShowInfo localShowInfo = ((IQWalletRedService)localObject).getShowInfo("2001");
-      if ((localShowInfo.a) && (isShowHongBaoRedPoint(localShowInfo.jdField_b_of_type_JavaLangString, paramInt)))
+      if ((localShowInfo.a) && (isShowHongBaoRedPoint(localShowInfo.d, paramInt)))
       {
         if ((paramView instanceof RedDotImageView)) {
           ((RedDotImageView)paramView).a(false);
@@ -759,8 +761,8 @@ public class QWalletTempImpl
       if (paramQBaseActivity.getChatFragment() != null)
       {
         paramQBaseActivity = paramQBaseActivity.getChatFragment();
-        if (paramQBaseActivity.a != null) {
-          return paramQBaseActivity.a.a;
+        if (paramQBaseActivity.c != null) {
+          return paramQBaseActivity.c.U;
         }
       }
     }
@@ -772,7 +774,7 @@ public class QWalletTempImpl
     if ((!(paramAppInterface instanceof QQAppInterface)) || (paramInt == 0)) {}
     try
     {
-      return new TroopManager((QQAppInterface)paramAppInterface).c(paramString).troopname;
+      return new TroopManager((QQAppInterface)paramAppInterface).g(paramString).troopname;
     }
     catch (Exception paramAppInterface)
     {
@@ -781,7 +783,7 @@ public class QWalletTempImpl
     }
     if (paramInt == 1)
     {
-      paramAppInterface = new DiscussionManager((QQAppInterface)paramAppInterface).a(paramString).discussionName;
+      paramAppInterface = new DiscussionManager((QQAppInterface)paramAppInterface).d(paramString).discussionName;
       return paramAppInterface;
       paramAppInterface.printStackTrace();
     }
@@ -844,17 +846,17 @@ public class QWalletTempImpl
     localIntent.putExtra("vfcAccountFlag", paramString1);
     localIntent.addFlags(67108864);
     paramString1 = new IPluginManager.PluginParams(1);
-    paramString1.jdField_b_of_type_JavaLangString = "vfc_plugin.apk";
-    paramString1.e = PluginInfo.o;
-    paramString1.jdField_a_of_type_AndroidAppDialog = null;
-    paramString1.jdField_a_of_type_JavaLangString = paramBaseQQAppInterface.getCurrentAccountUin();
-    paramString1.jdField_a_of_type_AndroidContentIntent = localIntent;
-    paramString1.f = "com.vfuchongcontrol.qq.activity.MainActivity";
-    paramString1.jdField_a_of_type_JavaLangClass = VfcPluginProxyActivity.class;
-    paramString1.c = -1;
-    paramString1.d = 15000;
-    paramString1.jdField_b_of_type_Boolean = true;
-    paramString1.g = null;
+    paramString1.d = "vfc_plugin.apk";
+    paramString1.g = PluginInfo.o;
+    paramString1.l = null;
+    paramString1.c = paramBaseQQAppInterface.getCurrentAccountUin();
+    paramString1.j = localIntent;
+    paramString1.h = "com.vfuchongcontrol.qq.activity.MainActivity";
+    paramString1.i = VfcPluginProxyActivity.class;
+    paramString1.k = -1;
+    paramString1.r = 15000;
+    paramString1.p = true;
+    paramString1.q = null;
     IPluginManager.a(paramQBaseActivity, paramString1);
   }
   
@@ -877,7 +879,7 @@ public class QWalletTempImpl
       }
     }
     else {
-      QQToast.a(paramActivity, "请使用高于4.3.0及以上的安卓版本体验哦~", 1).a();
+      QQToast.makeText(paramActivity, "请使用高于4.3.0及以上的安卓版本体验哦~", 1).show();
     }
   }
   
@@ -903,7 +905,7 @@ public class QWalletTempImpl
         return;
       }
       Intent localIntent = new Intent();
-      SessionInfo localSessionInfo = (SessionInfo)paramIBaseChatPieProxy.a();
+      SessionInfo localSessionInfo = (SessionInfo)paramIBaseChatPieProxy.e();
       localIntent.putExtra("session", localSessionInfo);
       localIntent.putExtra("uniseq", paramMessageForQQWalletMsg.uniseq);
       localIntent.putExtra("public_fragment_window_feature", 1);
@@ -914,9 +916,9 @@ public class QWalletTempImpl
       }
       paramMessageForQQWalletMsg = null;
       if (localSessionInfo != null) {
-        paramMessageForQQWalletMsg = new SessionWrap(localSessionInfo.jdField_a_of_type_JavaLangString, localSessionInfo.d, localSessionInfo.jdField_a_of_type_Int, localSessionInfo.jdField_b_of_type_JavaLangString);
+        paramMessageForQQWalletMsg = new SessionWrap(localSessionInfo.b, localSessionInfo.e, localSessionInfo.a, localSessionInfo.c);
       }
-      localIntent.putExtra("KEY_CAMERA_BUNDLE", StoryPublishLauncher.a(paramMessageForQQWalletMsg, paramIBaseChatPieProxy.a().getClass().getName(), 10000, 100));
+      localIntent.putExtra("KEY_CAMERA_BUNDLE", StoryPublishLauncher.a(paramMessageForQQWalletMsg, paramIBaseChatPieProxy.b().getClass().getName(), 10000, 100));
       QPublicFragmentActivity.Launcher.a(paramContext, localIntent, QPublicTransFragmentActivity.class, RedPacketEmojiFragment.class);
     }
   }
@@ -937,7 +939,7 @@ public class QWalletTempImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.QWalletTempImpl
  * JD-Core Version:    0.7.0.1
  */

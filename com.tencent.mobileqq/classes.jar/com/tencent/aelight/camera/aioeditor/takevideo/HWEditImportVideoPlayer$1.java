@@ -38,7 +38,7 @@ class HWEditImportVideoPlayer$1
       {
         l1 = i;
         localObject2 = localObject1;
-        if (l1 >= this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration / 2147483647L) {
+        if (l1 >= this.this$0.b.mDuration / 2147483647L) {
           break;
         }
         ((ArrayList)localObject1).add(new VideoUtils.VideoKeyFrameFragment(l1 * 2147483647L, 2147483647L));
@@ -46,7 +46,7 @@ class HWEditImportVideoPlayer$1
       }
     }
     if (((ArrayList)localObject2).size() <= 0) {
-      ((ArrayList)localObject2).add(new VideoUtils.VideoKeyFrameFragment(0L, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration));
+      ((ArrayList)localObject2).add(new VideoUtils.VideoKeyFrameFragment(0L, this.this$0.b.mDuration));
     }
     long l3 = SystemClock.uptimeMillis();
     int i = 0;
@@ -56,15 +56,15 @@ class HWEditImportVideoPlayer$1
     {
       localObject1 = (VideoUtils.VideoKeyFrameFragment)((ArrayList)localObject2).get(i);
       long l4 = SystemClock.uptimeMillis();
-      long l2 = Math.min(HWEditImportVideoPlayer.a(this.this$0) + ((VideoUtils.VideoKeyFrameFragment)localObject1).b, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration);
+      long l2 = Math.min(HWEditImportVideoPlayer.b(this.this$0) + ((VideoUtils.VideoKeyFrameFragment)localObject1).b, this.this$0.b.mDuration);
       l1 = l2;
-      if (l2 + 1000L > this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration) {
-        l1 = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration;
+      if (l2 + 1000L > this.this$0.b.mDuration) {
+        l1 = this.this$0.b.mDuration;
       }
       if (i == 5) {
-        l1 = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration;
+        l1 = this.this$0.b.mDuration;
       }
-      localObject3 = MediaUtil.a(HWEditImportVideoPlayer.a(this.this$0), HWEditImportVideoPlayer.a(this.this$0));
+      localObject3 = MediaUtil.a(HWEditImportVideoPlayer.a(this.this$0), HWEditImportVideoPlayer.b(this.this$0));
       localObject1 = localObject3;
       if (i == 0)
       {
@@ -76,24 +76,24 @@ class HWEditImportVideoPlayer$1
           localObject1 = localObject3;
           if (f > 0.9F)
           {
-            MediaUtil.FrameWithoutBlackResult localFrameWithoutBlackResult = MediaUtil.a(HWEditImportVideoPlayer.a(this.this$0), HWEditImportVideoPlayer.a(this.this$0));
+            MediaUtil.FrameWithoutBlackResult localFrameWithoutBlackResult = MediaUtil.b(HWEditImportVideoPlayer.a(this.this$0), HWEditImportVideoPlayer.b(this.this$0));
             localObject1 = localObject3;
-            if (localFrameWithoutBlackResult.jdField_a_of_type_AndroidGraphicsBitmap != null)
+            if (localFrameWithoutBlackResult.a != null)
             {
               localObject1 = localObject3;
-              if (localFrameWithoutBlackResult.jdField_a_of_type_Long > 0L)
+              if (localFrameWithoutBlackResult.b > 0L)
               {
                 localObject1 = localObject3;
-                if (MediaCodecThumbnailGenerator.a(localFrameWithoutBlackResult.jdField_a_of_type_AndroidGraphicsBitmap) <= 0.9F)
+                if (MediaCodecThumbnailGenerator.a(localFrameWithoutBlackResult.a) <= 0.9F)
                 {
                   if (!((Bitmap)localObject3).isRecycled()) {
                     ((Bitmap)localObject3).recycle();
                   }
-                  localObject1 = localFrameWithoutBlackResult.jdField_a_of_type_AndroidGraphicsBitmap;
-                  HWEditImportVideoPlayer.a(this.this$0, (int)(localFrameWithoutBlackResult.jdField_a_of_type_Long / 1000L));
+                  localObject1 = localFrameWithoutBlackResult.a;
+                  HWEditImportVideoPlayer.a(this.this$0, (int)(localFrameWithoutBlackResult.b / 1000L));
                   localObject3 = new StringBuilder();
                   ((StringBuilder)localObject3).append("Fix black frame. adjust star time to ");
-                  ((StringBuilder)localObject3).append(HWEditImportVideoPlayer.a(this.this$0));
+                  ((StringBuilder)localObject3).append(HWEditImportVideoPlayer.b(this.this$0));
                   SLog.d("Q.qqstory.record.HWEditImportVideoPlayer", ((StringBuilder)localObject3).toString());
                 }
               }
@@ -118,21 +118,21 @@ class HWEditImportVideoPlayer$1
         }
       }
       localObject1 = new HWEditImportVideoPlayer.Mp4VideoFragmentInfo(i, (Bitmap)localObject3);
-      HWEditImportVideoPlayer.Mp4VideoFragmentInfo.a((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1, HWEditImportVideoPlayer.a(this.this$0));
-      HWEditImportVideoPlayer.Mp4VideoFragmentInfo.b((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1, HWEditImportVideoPlayer.b(this.this$0));
-      this.this$0.jdField_a_of_type_JavaUtilList.add(localObject1);
+      HWEditImportVideoPlayer.Mp4VideoFragmentInfo.a((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1, HWEditImportVideoPlayer.b(this.this$0));
+      HWEditImportVideoPlayer.Mp4VideoFragmentInfo.b((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1, HWEditImportVideoPlayer.c(this.this$0));
+      this.this$0.c.add(localObject1);
       SLog.b("Q.qqstory.record.HWEditImportVideoPlayer", "create fragment info = %s, cost = %dms", localObject1, Long.valueOf(SystemClock.uptimeMillis() - l4));
-      if (l1 >= this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration) {
+      if (l1 >= this.this$0.b.mDuration) {
         break;
       }
       i += 1;
     }
-    SLog.b("Q.qqstory.record.HWEditImportVideoPlayer", "create fragment info count = %d, cost = %dms", Integer.valueOf(this.this$0.jdField_a_of_type_JavaUtilList.size()), Long.valueOf(SystemClock.uptimeMillis() - l3));
+    SLog.b("Q.qqstory.record.HWEditImportVideoPlayer", "create fragment info count = %d, cost = %dms", Integer.valueOf(this.this$0.c.size()), Long.valueOf(SystemClock.uptimeMillis() - l3));
     i = 0;
-    while (i < this.this$0.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.this$0.c.size())
     {
-      localObject1 = (HWEditImportVideoPlayer.Mp4VideoFragmentInfo)this.this$0.jdField_a_of_type_JavaUtilList.get(i);
-      localObject2 = FileUtils.a(HWEditImportVideoPlayer.a(this.this$0));
+      localObject1 = (HWEditImportVideoPlayer.Mp4VideoFragmentInfo)this.this$0.c.get(i);
+      localObject2 = FileUtils.f(HWEditImportVideoPlayer.a(this.this$0));
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(AppConstants.SDCARD_AUDIO_CACHE);
       ((StringBuilder)localObject3).append((String)localObject2);
@@ -140,7 +140,7 @@ class HWEditImportVideoPlayer$1
       ((StringBuilder)localObject3).append(i);
       ((StringBuilder)localObject3).append(".IFrames.audio");
       localObject2 = ((StringBuilder)localObject3).toString();
-      j = AudioDataUtil.a(HWEditImportVideoPlayer.b(this.this$0), (String)localObject2, (float)HWEditImportVideoPlayer.Mp4VideoFragmentInfo.a((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1) * 1.0F / (float)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, (float)HWEditImportVideoPlayer.Mp4VideoFragmentInfo.b((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1) * 1.0F / (float)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration);
+      j = AudioDataUtil.a(HWEditImportVideoPlayer.d(this.this$0), (String)localObject2, (float)HWEditImportVideoPlayer.Mp4VideoFragmentInfo.a((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1) * 1.0F / (float)this.this$0.b.mDuration, (float)HWEditImportVideoPlayer.Mp4VideoFragmentInfo.b((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1) * 1.0F / (float)this.this$0.b.mDuration);
       if (j == 0)
       {
         localObject3 = new StringBuilder();
@@ -151,7 +151,7 @@ class HWEditImportVideoPlayer$1
       }
       else
       {
-        SLog.e("Q.qqstory.record.HWEditImportVideoPlayer", "clipAudioFile failed. errcode =%s,  audioFilePath=%s, duration=%s, startTime=%s, endTime=%s", new Object[] { Integer.valueOf(j), localObject2, Long.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration), Long.valueOf(HWEditImportVideoPlayer.Mp4VideoFragmentInfo.a((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1)), Long.valueOf(HWEditImportVideoPlayer.Mp4VideoFragmentInfo.b((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1)) });
+        SLog.e("Q.qqstory.record.HWEditImportVideoPlayer", "clipAudioFile failed. errcode =%s,  audioFilePath=%s, duration=%s, startTime=%s, endTime=%s", new Object[] { Integer.valueOf(j), localObject2, Long.valueOf(this.this$0.b.mDuration), Long.valueOf(HWEditImportVideoPlayer.Mp4VideoFragmentInfo.a((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1)), Long.valueOf(HWEditImportVideoPlayer.Mp4VideoFragmentInfo.b((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1)) });
       }
       i += 1;
     }
@@ -160,7 +160,7 @@ class HWEditImportVideoPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.HWEditImportVideoPlayer.1
  * JD-Core Version:    0.7.0.1
  */

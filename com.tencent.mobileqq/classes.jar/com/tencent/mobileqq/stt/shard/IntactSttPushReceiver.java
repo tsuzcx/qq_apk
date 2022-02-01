@@ -12,7 +12,7 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x3d.SttResultPush.TransPttResp;
 public class IntactSttPushReceiver
   extends BaseSttPushReceiver
 {
-  private BaseSttPushReceiver.SttPushPacket a;
+  private BaseSttPushReceiver.SttPushPacket b;
   
   public IntactSttPushReceiver(AIOSttResult paramAIOSttResult)
   {
@@ -27,7 +27,7 @@ public class IntactSttPushReceiver
     paramMsgBody = paramMsgBody.msg_ptt_resp;
     if (!paramMsgBody.has())
     {
-      this.jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult.a(4, 2007);
+      this.a.a(4, 2007);
       return 4001;
     }
     Long localLong = Long.valueOf(paramMsgBody.uint64_sessionid.get());
@@ -54,19 +54,19 @@ public class IntactSttPushReceiver
     if ((n == 0) && (i + j <= k))
     {
       paramMsgBody = paramMsgBody.bytes_text.get().toByteArray();
-      this.jdField_a_of_type_ComTencentMobileqqSttShardBaseSttPushReceiver$SttPushPacket = a(this.jdField_a_of_type_ComTencentMobileqqSttShardBaseSttPushReceiver$SttPushPacket, i, j, k, 1 << m, paramMsgBody);
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqSttShardBaseSttPushReceiver$SttPushPacket.jdField_a_of_type_Boolean;
+      this.b = a(this.b, i, j, k, 1 << m, paramMsgBody);
+      boolean bool = this.b.d;
       if (bool)
       {
-        paramMsgBody = new String(this.jdField_a_of_type_ComTencentMobileqqSttShardBaseSttPushReceiver$SttPushPacket.jdField_a_of_type_JavaNioByteBuffer.array());
-        this.jdField_a_of_type_ComTencentMobileqqSttShardBaseSttPushReceiver$SttPushPacket = null;
+        paramMsgBody = new String(this.b.c.array());
+        this.b = null;
       }
       else
       {
         paramMsgBody = "";
       }
-      this.jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult.a(paramMsgBody, bool);
+      this.a.a(false);
+      this.a.a(paramMsgBody, bool);
       if (QLog.isColorLevel())
       {
         paramMsgBody = new StringBuilder();
@@ -78,21 +78,21 @@ public class IntactSttPushReceiver
       }
       return 0;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqSttShardBaseSttPushReceiver$SttPushPacket != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSttShardBaseSttPushReceiver$SttPushPacket = null;
+    if (this.b != null) {
+      this.b = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult.a(4, 2008);
+    this.a.a(4, 2008);
     return 4002;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSttShardBaseSttPushReceiver$SttPushPacket = null;
+    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.stt.shard.IntactSttPushReceiver
  * JD-Core Version:    0.7.0.1
  */

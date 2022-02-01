@@ -17,10 +17,10 @@ class SignatureHistoryFragment$13
   
   public void a(int paramInt, View paramView)
   {
-    if (SignatureHistoryFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment)) {
+    if (SignatureHistoryFragment.k(this.b)) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusHistorySignItem.commentItemList;
+    Object localObject = this.a.commentItemList;
     if ((localObject != null) && (((List)localObject).size() > paramInt))
     {
       localObject = (CommentItem)((List)localObject).get(paramInt);
@@ -29,19 +29,19 @@ class SignatureHistoryFragment$13
       {
         paramView.setSelected(true);
         QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-        SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, (CommentItem)localObject);
-        localQQCustomMenu.a(2131365311, this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getString(2131691294), 0);
-        if ((localUser.a.equals(SignatureHistoryFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment))) || (Utils.a(SignatureHistoryFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment), SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment)))) {
-          localQQCustomMenu.a(2131365480, this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getString(2131692630), 0);
+        SignatureHistoryFragment.a(this.b, (CommentItem)localObject);
+        localQQCustomMenu.a(2131431492, this.b.getString(2131888244), 0);
+        if ((localUser.a.equals(SignatureHistoryFragment.h(this.b))) || (Utils.a(SignatureHistoryFragment.h(this.b), SignatureHistoryFragment.c(this.b)))) {
+          localQQCustomMenu.a(2131431695, this.b.getString(2131889653), 0);
         }
-        BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, new SignatureHistoryFragment.13.1(this, paramView));
+        BubbleContextMenu.a(paramView, localQQCustomMenu, this.b, new SignatureHistoryFragment.13.1(this, paramView));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.13
  * JD-Core Version:    0.7.0.1
  */

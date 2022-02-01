@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.pts.util;
 
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class PTSReport
@@ -25,7 +24,7 @@ public class PTSReport
     localStringBuilder.append(", r5 = ");
     localStringBuilder.append(paramString5);
     QLog.i("PTSReport", 1, localStringBuilder.toString());
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5, false);
+    PublicAccountReportUtils.a(null, "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5, false);
   }
   
   public static void b(String paramString1, String paramString2)
@@ -35,7 +34,7 @@ public class PTSReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.PTSReport
  * JD-Core Version:    0.7.0.1
  */

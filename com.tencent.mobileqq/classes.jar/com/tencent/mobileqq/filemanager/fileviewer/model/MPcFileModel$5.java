@@ -13,8 +13,8 @@ class MPcFileModel$5
   {
     if (paramInt1 == 0)
     {
-      if (MPcFileModel.a(this.a)) {
-        FMToastUtil.a(2131694273);
+      if (MPcFileModel.b(this.a)) {
+        FMToastUtil.a(2131891911);
       }
       MPcFileModel.a(this.a, false);
       QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "PC offline!");
@@ -23,7 +23,7 @@ class MPcFileModel$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel.5
  * JD-Core Version:    0.7.0.1
  */

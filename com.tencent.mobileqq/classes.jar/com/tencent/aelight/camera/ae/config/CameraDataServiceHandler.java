@@ -7,6 +7,7 @@ import camera.MOBILE_QQ_MATERIAL_INTERFACE.CameraConfig;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigRsp;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetTABConfigurationRsp;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -21,6 +22,7 @@ import com.tencent.aelight.camera.ae.AEPath.Watermark;
 import com.tencent.aelight.camera.ae.AEPath.Watermark.FILES;
 import com.tencent.aelight.camera.ae.camera.ui.dashboard.AEDashboardUtil;
 import com.tencent.aelight.camera.ae.camera.ui.dashboard.AEDashboardUtil.NetInfo;
+import com.tencent.aelight.camera.ae.camera.ui.flashshow.AEFlashShowMaterialManager;
 import com.tencent.aelight.camera.ae.camera.ui.panel.AEARCakeMaterialManager;
 import com.tencent.aelight.camera.ae.control.AEQIMManager;
 import com.tencent.aelight.camera.ae.data.AEGiftMaterialConfigParser;
@@ -54,6 +56,7 @@ import com.tencent.ttpic.util.GsonUtils;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -68,22 +71,16 @@ import tencent.im.oidb.cmd0xf8c.oidb_cmd0xf8c.RspBody;
 public class CameraDataServiceHandler
   extends BusinessHandler
 {
-  private static final String jdField_a_of_type_JavaLangString = CameraDataServiceHandler.class.getName();
-  public static final Type a;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  protected Map<String, Long> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangReflectType = new CameraDataServiceHandler.1().getType();
-  }
+  public static final Type a = new CameraDataServiceHandler.1().getType();
+  private static final String d = CameraDataServiceHandler.class.getName();
+  protected Map<String, Long> b = new HashMap();
+  private EntityManager c;
   
   public CameraDataServiceHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
     LogUtils.setEnable(false);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramAppInterface.getEntityManagerFactory().createEntityManager();
+    this.c = paramAppInterface.getEntityManagerFactory().createEntityManager();
   }
   
   private boolean a(JsonObject paramJsonObject)
@@ -93,21 +90,84 @@ public class CameraDataServiceHandler
   
   private void c(FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
+    if (!(paramObject instanceof GetTABConfigurationRsp)) {
+      return;
+    }
+    paramObject = (GetTABConfigurationRsp)paramObject;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      paramFromServiceMsg = paramObject.ConfigMap;
+      Object localObject;
+      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.containsKey("New_beauty_0526")))
+      {
+        paramObject = (CameraConfig)paramFromServiceMsg.get("New_beauty_0526");
+        if (paramObject != null)
+        {
+          localObject = d;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleTabABTest---content: ");
+          localStringBuilder.append(paramObject.ConfigContent);
+          AEQLog.b((String)localObject, localStringBuilder.toString());
+          if ("New_beauty_0526_A".equals(paramObject.ConfigContent)) {
+            AEDashboardUtil.b(false);
+          } else {
+            AEDashboardUtil.b(true);
+          }
+        }
+        else
+        {
+          AEQLog.d(d, "handleTabABTest---cameraConfig is null.");
+        }
+        AEQLog.b(d, paramFromServiceMsg.toString());
+      }
+      else
+      {
+        AEQLog.b(d, "tab AB Test map is null.");
+      }
+      if (paramFromServiceMsg != null)
+      {
+        paramObject = new StringBuilder();
+        paramFromServiceMsg = paramFromServiceMsg.values().iterator();
+        while (paramFromServiceMsg.hasNext())
+        {
+          paramObject.append(((CameraConfig)paramFromServiceMsg.next()).ExpId);
+          paramObject.append(",");
+        }
+        if (paramObject.length() > 0) {
+          paramObject.deleteCharAt(paramObject.length() - 1);
+        }
+        paramFromServiceMsg = paramObject.toString();
+        paramObject = d;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleTabABTest---tabExpIds=");
+        ((StringBuilder)localObject).append(paramFromServiceMsg);
+        AEQLog.b(paramObject, ((StringBuilder)localObject).toString());
+        AECameraPrefsUtil.a().a("sp_key_ae_camera_tab_experiment_ids", paramFromServiceMsg, 4);
+      }
+    }
+    else
+    {
+      AEQLog.d(d, "tab a/b test request failed.");
+    }
+  }
+  
+  private void d(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
     GetCategoryMaterialRsp localGetCategoryMaterialRsp = (GetCategoryMaterialRsp)paramObject;
     if ((localGetCategoryMaterialRsp != null) && (localGetCategoryMaterialRsp.Code == 0) && (localGetCategoryMaterialRsp.Categories != null) && (!localGetCategoryMaterialRsp.Categories.isEmpty()))
     {
-      if (AEDashboardUtil.a()) {
+      if (AEDashboardUtil.f()) {
         AEDashboardUtil.a().postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCategoryMaterial.MqStoryCamera", "response", "succeeded with content"));
       }
       AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCategoryMaterialMqStoryCamera", localGetCategoryMaterialRsp.ETag, 4);
       paramObject = new Gson().toJson(localGetCategoryMaterialRsp);
-      FileUtils.writeFile(AEMaterialManager.b(), paramObject);
+      FileUtils.writeFile(AEMaterialManager.p(), paramObject);
       paramObject = (AEMaterialManager)AEQIMManager.a().b(1);
       if (paramObject != null) {
         paramObject.a(true);
       }
     }
-    else if (AEDashboardUtil.a())
+    else if (AEDashboardUtil.f())
     {
       localObject = AEDashboardUtil.a();
       if (paramFromServiceMsg.isSuccess()) {
@@ -118,14 +178,14 @@ public class CameraDataServiceHandler
       ((MutableLiveData)localObject).postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCategoryMaterial.MqStoryCamera", "response", paramObject));
     }
     paramObject = (AEMaterialManager)AEQIMManager.a(1);
-    paramObject.b();
-    paramObject.b(AEPath.CAMERA.jdField_a_of_type_JavaLangString);
-    paramObject = this.jdField_a_of_type_JavaUtilMap;
+    paramObject.f();
+    paramObject.b(AEPath.CAMERA.a);
+    paramObject = this.b;
     if ((paramObject != null) && (paramObject.containsKey("ShadowBackendSvc.GetCategoryMaterial.MqStoryCamera")))
     {
       paramObject = new StringBuilder();
       paramObject.append("");
-      paramObject.append(System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("ShadowBackendSvc.GetCategoryMaterial.MqStoryCamera")).longValue());
+      paramObject.append(System.currentTimeMillis() - ((Long)this.b.get("ShadowBackendSvc.GetCategoryMaterial.MqStoryCamera")).longValue());
       paramObject = paramObject.toString();
     }
     else
@@ -143,12 +203,62 @@ public class CameraDataServiceHandler
     ((AEBaseDataReporter)localObject).a(j, paramObject, "ShadowBackendSvc.GetCategoryMaterial.MqStoryCamera", i);
   }
   
-  private void d(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void e(FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     GetCategoryMaterialRsp localGetCategoryMaterialRsp = (GetCategoryMaterialRsp)paramObject;
     if ((localGetCategoryMaterialRsp != null) && (localGetCategoryMaterialRsp.Code == 0) && (localGetCategoryMaterialRsp.Categories != null) && (!localGetCategoryMaterialRsp.Categories.isEmpty()))
     {
-      if (AEDashboardUtil.a()) {
+      if (AEDashboardUtil.f()) {
+        AEDashboardUtil.a().postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCategoryMaterial.MqKuaishanCamera", "response", "succeeded with content"));
+      }
+      AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCategoryMaterialMqKuaishanCamera", localGetCategoryMaterialRsp.ETag, 4);
+      paramObject = new Gson().toJson(localGetCategoryMaterialRsp);
+      FileUtils.writeFile(AEFlashShowMaterialManager.j(), paramObject);
+      paramObject = (AEFlashShowMaterialManager)AEQIMManager.a().b(3);
+      if (paramObject != null) {
+        paramObject.a(true);
+      }
+    }
+    else if (AEDashboardUtil.f())
+    {
+      localObject = AEDashboardUtil.a();
+      if (paramFromServiceMsg.isSuccess()) {
+        paramObject = "succeeded without content";
+      } else {
+        paramObject = "failed";
+      }
+      ((MutableLiveData)localObject).postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCategoryMaterial.MqStoryCamera", "response", paramObject));
+    }
+    ((AEFlashShowMaterialManager)AEQIMManager.a(3)).b();
+    paramObject = this.b;
+    if ((paramObject != null) && (paramObject.containsKey("ShadowBackendSvc.GetCategoryMaterial.MqStoryCamera")))
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("");
+      paramObject.append(System.currentTimeMillis() - ((Long)this.b.get("ShadowBackendSvc.GetCategoryMaterial.MqKuaishanCamera")).longValue());
+      paramObject = paramObject.toString();
+    }
+    else
+    {
+      paramObject = "-1";
+    }
+    Object localObject = AEBaseDataReporter.a();
+    int j = paramFromServiceMsg.getResultCode();
+    int i;
+    if (localGetCategoryMaterialRsp != null) {
+      i = localGetCategoryMaterialRsp.Code;
+    } else {
+      i = -1024;
+    }
+    ((AEBaseDataReporter)localObject).a(j, paramObject, "ShadowBackendSvc.GetCategoryMaterial.MqKuaishanCamera", i);
+  }
+  
+  private void f(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    GetCategoryMaterialRsp localGetCategoryMaterialRsp = (GetCategoryMaterialRsp)paramObject;
+    if ((localGetCategoryMaterialRsp != null) && (localGetCategoryMaterialRsp.Code == 0) && (localGetCategoryMaterialRsp.Categories != null) && (!localGetCategoryMaterialRsp.Categories.isEmpty()))
+    {
+      if (AEDashboardUtil.f()) {
         AEDashboardUtil.a().postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCategoryMaterial.MqEmoCamera", "response", "succeeded with content"));
       }
       AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCategoryMaterialMqEmoCamera", localGetCategoryMaterialRsp.ETag, 4);
@@ -159,7 +269,7 @@ public class CameraDataServiceHandler
       }
       FileUtils.writeFile(AEPath.GIF.b, paramObject);
     }
-    else if (AEDashboardUtil.a())
+    else if (AEDashboardUtil.f())
     {
       localObject = AEDashboardUtil.a();
       if (paramFromServiceMsg.isSuccess()) {
@@ -169,13 +279,13 @@ public class CameraDataServiceHandler
       }
       ((MutableLiveData)localObject).postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCategoryMaterial.MqEmoCamera", "response", paramObject));
     }
-    CameraOperationHelper.a().postValue(Boolean.valueOf(true));
-    paramObject = this.jdField_a_of_type_JavaUtilMap;
+    CameraOperationHelper.c().postValue(Boolean.valueOf(true));
+    paramObject = this.b;
     if ((paramObject != null) && (paramObject.containsKey("ShadowBackendSvc.GetCategoryMaterial.MqEmoCamera")))
     {
       paramObject = new StringBuilder();
       paramObject.append("");
-      paramObject.append(System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("ShadowBackendSvc.GetCategoryMaterial.MqEmoCamera")).longValue());
+      paramObject.append(System.currentTimeMillis() - ((Long)this.b.get("ShadowBackendSvc.GetCategoryMaterial.MqEmoCamera")).longValue());
       paramObject = paramObject.toString();
     }
     else
@@ -193,12 +303,12 @@ public class CameraDataServiceHandler
     ((AEBaseDataReporter)localObject).a(j, paramObject, "ShadowBackendSvc.GetCategoryMaterial.MqEmoCamera", i);
   }
   
-  private void e(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void g(FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     GetCategoryMaterialRsp localGetCategoryMaterialRsp = (GetCategoryMaterialRsp)paramObject;
     if ((localGetCategoryMaterialRsp != null) && (localGetCategoryMaterialRsp.Code == 0) && (localGetCategoryMaterialRsp.Categories != null) && (!localGetCategoryMaterialRsp.Categories.isEmpty()))
     {
-      if (AEDashboardUtil.a()) {
+      if (AEDashboardUtil.f()) {
         AEDashboardUtil.a().postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCategoryMaterial.MqCircleWatermark", "response", "succeeded with content"));
       }
       AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCategoryMaterialMqCircleWatermark", localGetCategoryMaterialRsp.ETag, 4);
@@ -209,10 +319,10 @@ public class CameraDataServiceHandler
       }
       FileUtils.writeFile(AEPath.Watermark.b, paramObject);
       if ((AECaptureContext.a() instanceof PeakAppInterface)) {
-        AEWatermarkMaterialManager.a().a();
+        AEWatermarkMaterialManager.a().c();
       }
     }
-    else if (AEDashboardUtil.a())
+    else if (AEDashboardUtil.f())
     {
       localObject = AEDashboardUtil.a();
       if (paramFromServiceMsg.isSuccess()) {
@@ -222,12 +332,12 @@ public class CameraDataServiceHandler
       }
       ((MutableLiveData)localObject).postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCategoryMaterial.MqCircleWatermark", "response", paramObject));
     }
-    paramObject = this.jdField_a_of_type_JavaUtilMap;
+    paramObject = this.b;
     if ((paramObject != null) && (paramObject.containsKey("ShadowBackendSvc.GetCategoryMaterial.MqCircleWatermark")))
     {
       paramObject = new StringBuilder();
       paramObject.append("");
-      paramObject.append(System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("ShadowBackendSvc.GetCategoryMaterial.MqCircleWatermark")).longValue());
+      paramObject.append(System.currentTimeMillis() - ((Long)this.b.get("ShadowBackendSvc.GetCategoryMaterial.MqCircleWatermark")).longValue());
       paramObject = paramObject.toString();
     }
     else
@@ -245,27 +355,27 @@ public class CameraDataServiceHandler
     ((AEBaseDataReporter)localObject).a(j, paramObject, "ShadowBackendSvc.GetCategoryMaterial.MqCircleWatermark", i);
   }
   
-  private void f(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void h(FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (QLog.isDebugVersion()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "[handlePlayShowCategoryMaterials] start");
+      QLog.d(d, 4, "[handlePlayShowCategoryMaterials] start");
     }
     GetPlayShowCatMatTreeRsp localGetPlayShowCatMatTreeRsp = (GetPlayShowCatMatTreeRsp)paramObject;
     if ((localGetPlayShowCatMatTreeRsp != null) && (localGetPlayShowCatMatTreeRsp.Code == 0) && (!localGetPlayShowCatMatTreeRsp.Categories.isEmpty()))
     {
       if (QLog.isDebugVersion())
       {
-        paramObject = jdField_a_of_type_JavaLangString;
+        paramObject = d;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[handlePlayShowCategoryMaterials] response=");
         ((StringBuilder)localObject).append(localGetPlayShowCatMatTreeRsp);
         QLog.d(paramObject, 4, ((StringBuilder)localObject).toString());
       }
-      if (AEDashboardUtil.a()) {
+      if (AEDashboardUtil.f()) {
         AEDashboardUtil.a().postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetPlayShowCatMatTree", "response", "succeeded with content"));
       }
       AECameraPrefsUtil.a().a("ShadowBackendSvc.GetPlayShowCatMatTree", localGetPlayShowCatMatTreeRsp.ETag, 4);
-      paramObject = GsonUtils.obj2Json(localGetPlayShowCatMatTreeRsp, jdField_a_of_type_JavaLangReflectType);
+      paramObject = GsonUtils.obj2Json(localGetPlayShowCatMatTreeRsp, a);
       localObject = new File(AEPath.PLAY.FILES.d);
       if (!((File)localObject).exists()) {
         ((File)localObject).mkdirs();
@@ -275,9 +385,9 @@ public class CameraDataServiceHandler
     else
     {
       if (QLog.isDebugVersion()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[handlePlayShowCategoryMaterials] response=empty");
+        QLog.d(d, 4, "[handlePlayShowCategoryMaterials] response=empty");
       }
-      if (AEDashboardUtil.a())
+      if (AEDashboardUtil.f())
       {
         localObject = AEDashboardUtil.a();
         if (paramFromServiceMsg.isSuccess()) {
@@ -288,13 +398,13 @@ public class CameraDataServiceHandler
         ((MutableLiveData)localObject).postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetPlayShowCatMatTree", "response", paramObject));
       }
     }
-    CameraOperationHelper.b().postValue(Boolean.valueOf(true));
-    paramObject = this.jdField_a_of_type_JavaUtilMap;
+    CameraOperationHelper.d().postValue(Boolean.valueOf(true));
+    paramObject = this.b;
     if ((paramObject != null) && (paramObject.containsKey("ShadowBackendSvc.GetPlayShowCatMatTree")))
     {
       paramObject = new StringBuilder();
       paramObject.append("");
-      paramObject.append(System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilMap.get("ShadowBackendSvc.GetPlayShowCatMatTree")).longValue());
+      paramObject.append(System.currentTimeMillis() - ((Long)this.b.get("ShadowBackendSvc.GetPlayShowCatMatTree")).longValue());
       paramObject = paramObject.toString();
     }
     else
@@ -311,24 +421,24 @@ public class CameraDataServiceHandler
     }
     ((AEBaseDataReporter)localObject).a(j, paramObject, "ShadowBackendSvc.GetPlayShowCatMatTree", i);
     if (QLog.isDebugVersion()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "[handlePlayShowCategoryMaterials] end");
+      QLog.d(d, 4, "[handlePlayShowCategoryMaterials] end");
     }
   }
   
   public void a()
   {
-    AEQLog.b(jdField_a_of_type_JavaLangString, "arcake: requestARCakeMaterial--begin");
+    AEQLog.b(d, "arcake: requestARCakeMaterial--begin");
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime().getCurrentUin();
     new ArrayList().add(Long.valueOf(Long.parseLong((String)localObject1)));
     oidb_cmd0xf8c.ReqBody localReqBody = new oidb_cmd0xf8c.ReqBody();
-    String str = jdField_a_of_type_JavaLangString;
+    String str = d;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("arcake: requestARCakeMaterial--uin");
     ((StringBuilder)localObject2).append(Long.parseLong((String)localObject1));
     AEQLog.a(str, ((StringBuilder)localObject2).toString());
-    str = AECameraPrefsUtil.a().a("key_ae_arcake_id", null, 4);
+    str = AECameraPrefsUtil.a().b("key_ae_arcake_id", null, 4);
     AEGiftMaterialConfigParser.a(str);
-    localObject2 = jdField_a_of_type_JavaLangString;
+    localObject2 = d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("arcake: requestARCakeMaterial--arCakeId");
     localStringBuilder.append(str);
@@ -337,11 +447,11 @@ public class CameraDataServiceHandler
       localReqBody.cakeID.set(str);
     }
     localReqBody.uin.set(Long.parseLong((String)localObject1));
-    str = "2.2.6.40";
+    str = "2.6.0.23";
     localObject1 = str;
-    if (!TextUtils.isEmpty("2.2.6.40"))
+    if (!TextUtils.isEmpty("2.6.0.23"))
     {
-      localObject2 = "2.2.6.40".split("\\.");
+      localObject2 = "2.6.0.23".split("\\.");
       localObject1 = str;
       if (localObject2.length > 3)
       {
@@ -354,46 +464,58 @@ public class CameraDataServiceHandler
         localObject1 = ((StringBuilder)localObject1).toString();
       }
     }
-    str = jdField_a_of_type_JavaLangString;
+    str = d;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("arcake: requestARCakeMaterial--sdkVersion");
     ((StringBuilder)localObject2).append((String)localObject1);
     AEQLog.a(str, ((StringBuilder)localObject2).toString());
     localReqBody.sdk_version.set((String)localObject1);
     localReqBody.zhongtai_number.set((String)localObject1);
-    localReqBody.clientplat.set("8.7.0");
+    localReqBody.clientplat.set("8.8.17");
     localReqBody.PlatformFlag.set(1);
-    sendPbReq(makeOIDBPkg("OidbSvc.oidb_cmd0xf8c", 3980, 1, localReqBody.toByteArray()));
-    AEQLog.a(jdField_a_of_type_JavaLangString, "arcake: requestARCakeMaterial--end");
+    localObject1 = makeOIDBPkg("OidbSvc.oidb_cmd0xf8c", 3980, 1, localReqBody.toByteArray());
+    if (!NetworkUtil.isNetworkAvailable())
+    {
+      AEQLog.b(d, "arcake: net work not avalilable");
+      AEGiftMaterialConfigParser.a = false;
+    }
+    sendPbReq((ToServiceMsg)localObject1);
+    AEQLog.a(d, "arcake: requestARCakeMaterial--end");
   }
   
   protected void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    AEQLog.a(jdField_a_of_type_JavaLangString, "arcake: handleARCakeMaterial");
+    AEQLog.a(d, "arcake: handleARCakeMaterial");
     if (!paramFromServiceMsg.isSuccess())
     {
-      AEQLog.d(jdField_a_of_type_JavaLangString, "arcake: handleARCakeMaterial not success ");
+      AEQLog.d(d, "arcake: handleARCakeMaterial not success ");
       return;
     }
     Object localObject = new oidb_cmd0xf8c.RspBody();
     int i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
-    paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+    paramFromServiceMsg = d;
     paramObject = new StringBuilder();
     paramObject.append("arcake: result :");
     paramObject.append(i);
     AEQLog.a(paramFromServiceMsg, paramObject.toString());
+    if (i != 0)
+    {
+      AEGiftMaterialConfigParser.a = false;
+      return;
+    }
+    AEGiftMaterialConfigParser.a = true;
     try
     {
       AEGiftMaterialConfigParser.a((oidb_cmd0xf8c.RspBody)localObject);
       if ((AECaptureContext.a() instanceof PeakAppInterface))
       {
-        AEARCakeMaterialManager.a().b();
+        AEARCakeMaterialManager.a().k();
         return;
       }
     }
     catch (AEGiftMaterialConfigParser.AEGiftMaterialConfigParserExpection paramFromServiceMsg)
     {
-      paramObject = jdField_a_of_type_JavaLangString;
+      paramObject = d;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("arcake: exception  :");
       ((StringBuilder)localObject).append(paramFromServiceMsg.getMessage());
@@ -405,15 +527,15 @@ public class CameraDataServiceHandler
   {
     if (!NetworkUtil.isNetworkAvailable())
     {
-      LogUtils.w(jdField_a_of_type_JavaLangString, "[reqCompressedMaterials] no network....");
+      LogUtils.w(d, "[reqCompressedMaterials] no network....");
       return;
     }
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("【REQUEST】requestCompressedMaterials");
     localStringBuilder.append(paramString);
     AEQLog.b((String)localObject, localStringBuilder.toString());
-    if (AEDashboardUtil.a())
+    if (AEDashboardUtil.f())
     {
       localObject = AEDashboardUtil.a();
       localStringBuilder = new StringBuilder();
@@ -421,7 +543,7 @@ public class CameraDataServiceHandler
       localStringBuilder.append(paramString);
       ((MutableLiveData)localObject).postValue(new AEDashboardUtil.NetInfo(localStringBuilder.toString(), "request", "null"));
     }
-    localObject = this.jdField_a_of_type_JavaUtilMap;
+    localObject = this.b;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("ShadowBackendSvc.GetCategoryMaterial.");
     localStringBuilder.append(paramString);
@@ -435,14 +557,14 @@ public class CameraDataServiceHandler
   {
     if (!NetworkUtil.isNetworkAvailable())
     {
-      LogUtils.w(jdField_a_of_type_JavaLangString, "[reqCameraConfig] no network....");
+      LogUtils.w(d, "[reqCameraConfig] no network....");
       return;
     }
-    if (AEDashboardUtil.a()) {
+    if (AEDashboardUtil.f()) {
       AEDashboardUtil.a().postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCameraConfig", "request", "null"));
     }
-    AEQLog.b(jdField_a_of_type_JavaLangString, "【REQUEST】reqCameraConfig");
-    this.jdField_a_of_type_JavaUtilMap.put("ShadowBackendSvc.GetCameraConfig", Long.valueOf(System.currentTimeMillis()));
+    AEQLog.b(d, "【REQUEST】reqCameraConfig");
+    this.b.put("ShadowBackendSvc.GetCameraConfig", Long.valueOf(System.currentTimeMillis()));
     ToServiceMsg localToServiceMsg = new ToServiceMsg("ShadowBackendSvc", this.appRuntime.getAccount(), "ShadowBackendSvc.GetCameraConfig");
     localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", false);
     send(localToServiceMsg);
@@ -450,14 +572,14 @@ public class CameraDataServiceHandler
   
   protected void b(FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject1 = d;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("【Handle】handleCameraConfig:");
     ((StringBuilder)localObject2).append(paramFromServiceMsg.isSuccess());
     AEQLog.b((String)localObject1, ((StringBuilder)localObject2).toString());
     if (!paramFromServiceMsg.isSuccess())
     {
-      if (AEDashboardUtil.a()) {
+      if (AEDashboardUtil.f()) {
         AEDashboardUtil.a().postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCameraConfig", "response", "failed"));
       }
       return;
@@ -465,7 +587,7 @@ public class CameraDataServiceHandler
     GetCameraConfigRsp localGetCameraConfigRsp = (GetCameraConfigRsp)paramObject;
     if (localGetCameraConfigRsp.ConfigMap != null)
     {
-      if (AEDashboardUtil.a()) {
+      if (AEDashboardUtil.f()) {
         AEDashboardUtil.a().postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCameraConfig", "response", "succeeded with content"));
       }
       Iterator localIterator = localGetCameraConfigRsp.ConfigMap.entrySet().iterator();
@@ -496,7 +618,7 @@ public class CameraDataServiceHandler
         {
           localObject3 = localObject1;
           localObject4 = paramObject;
-          break label1496;
+          break label1586;
           if (!"app_alg_entrance_qzone_id_from833".equals(str)) {
             break;
           }
@@ -504,15 +626,13 @@ public class CameraDataServiceHandler
         }
         boolean bool = "app_ui_camera_ad_id".equals(str);
         int j = 0;
-        int k = 0;
-        int m = 0;
         i = 0;
         if (bool) {}
         try
         {
           localObject5 = new JsonParser().parse(((CameraConfig)localObject5).ConfigContent).getAsJsonArray();
           if ((localObject5 == null) || (((JsonArray)localObject5).size() <= 0)) {
-            break label518;
+            break label513;
           }
           j = ((JsonArray)localObject5).size();
         }
@@ -520,8 +640,6 @@ public class CameraDataServiceHandler
         {
           for (;;)
           {
-            label518:
-            label963:
             continue;
             i += 1;
             continue;
@@ -538,7 +656,7 @@ public class CameraDataServiceHandler
         {
           localObject3 = (JsonObject)((JsonArray)localObject5).get(i);
           if (!a((JsonObject)localObject3)) {
-            break label1667;
+            break label1758;
           }
           AECameraPrefsUtil.a().a("camera_ad_op_id", GsonUtils.optString((JsonObject)localObject3, "opID"), 4);
           AECameraPrefsUtil.a().a("camera_ad_show", GsonUtils.optBoolean((JsonObject)localObject3, "showOp"), 4);
@@ -548,7 +666,8 @@ public class CameraDataServiceHandler
           AECameraPrefsUtil.a().a("camera_ad_activity_id", GsonUtils.optString((JsonObject)localObject3, "activity_id"), 4);
           localObject3 = localObject1;
           localObject4 = paramObject;
-          break label1496;
+          break label1586;
+          label513:
           AECameraPrefsUtil.a().a("camera_ad_op_id", "", 4);
           AECameraPrefsUtil.a().a("camera_ad_show", false, 4);
           AECameraPrefsUtil.a().a("camera_ad_icon_url", "", 4);
@@ -557,11 +676,11 @@ public class CameraDataServiceHandler
           AECameraPrefsUtil.a().a("camera_ad_activity_id", "", 4);
           localObject3 = localObject1;
           localObject4 = paramObject;
-          break label1496;
-          AEQLog.d(jdField_a_of_type_JavaLangString, "camera ad ab test inflate error.");
+          break label1586;
+          AEQLog.d(d, "camera ad ab test inflate error.");
           localObject3 = localObject1;
           localObject4 = paramObject;
-          break label1496;
+          break label1586;
           if (!"app_ui_pendant_btn_ad_id".equals(str)) {}
         }
         try
@@ -569,7 +688,7 @@ public class CameraDataServiceHandler
           localObject5 = new JsonParser().parse(((CameraConfig)localObject5).ConfigContent).getAsJsonArray();
           if ((localObject5 != null) && (((JsonArray)localObject5).size() > 0))
           {
-            k = ((JsonArray)localObject5).size();
+            int k = ((JsonArray)localObject5).size();
             i = j;
             localObject3 = localObject1;
             localObject4 = paramObject;
@@ -577,7 +696,7 @@ public class CameraDataServiceHandler
             {
               localObject3 = (JsonObject)((JsonArray)localObject5).get(i);
               if (!a((JsonObject)localObject3)) {
-                break label1674;
+                break label1765;
               }
               AECameraPrefsUtil.a().a("camera_ad_pendent_op_id", GsonUtils.optString((JsonObject)localObject3, "opID"), 4);
               AECameraPrefsUtil.a().a("camera_ad_pendent_show", GsonUtils.optBoolean((JsonObject)localObject3, "showOp"), 4);
@@ -607,13 +726,26 @@ public class CameraDataServiceHandler
         }
         catch (Exception localException2)
         {
-          break label963;
+          label969:
+          break label969;
         }
-        AEQLog.d(jdField_a_of_type_JavaLangString, "camera pendent ad ab test inflate error.");
+        AEQLog.d(d, "camera pendent ad ab test inflate error.");
         localObject3 = localObject1;
         localObject4 = paramObject;
-        break label1496;
-        if ("app_alg_filter_timeout_id".equals(str))
+        break label1586;
+        if ("app_ui_camera_tab_bubble".equals(str))
+        {
+          localObject3 = ((CameraConfig)localObject5).ConfigContent;
+          localObject4 = d;
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("get camera tab bubble ad: ");
+          ((StringBuilder)localObject5).append((String)localObject3);
+          AEQLog.b((String)localObject4, ((StringBuilder)localObject5).toString());
+          AECameraPrefsUtil.a().a("camera_ad_tab_bubble_content", (String)localObject3, 4);
+          localObject3 = localObject1;
+          localObject4 = paramObject;
+        }
+        else if ("app_alg_filter_timeout_id".equals(str))
         {
           localObject3 = ((CameraConfig)localObject5).ConfigContent;
           AECameraPrefsUtil.a().a("app_alg_filter_timeout_id", (String)localObject3, 4);
@@ -627,14 +759,14 @@ public class CameraDataServiceHandler
           if ((localObject5 != null) && (((JsonArray)localObject5).size() > 0))
           {
             j = ((JsonArray)localObject5).size();
-            i = k;
+            i = 0;
             localObject3 = localObject1;
             localObject4 = paramObject;
             if (i < j)
             {
               localObject3 = (JsonObject)((JsonArray)localObject5).get(i);
               if (!a((JsonObject)localObject3)) {
-                break label1681;
+                break label1772;
               }
               AECameraPrefsUtil.a().a("circle_camera_ad_op_id", GsonUtils.optString((JsonObject)localObject3, "opID"), 4);
               AECameraPrefsUtil.a().a("circle_camera_ad_icon_url", GsonUtils.optString((JsonObject)localObject3, "opIcon"), 4);
@@ -660,13 +792,13 @@ public class CameraDataServiceHandler
         }
         catch (Exception localException3)
         {
-          label1308:
-          break label1308;
+          label1399:
+          break label1399;
         }
-        AEQLog.d(jdField_a_of_type_JavaLangString, "camera ad ab test inflate error.");
+        AEQLog.d(d, "camera ad ab test inflate error.");
         localObject3 = localObject1;
         localObject4 = paramObject;
-        break label1496;
+        break label1586;
         localObject3 = localObject1;
         localObject4 = paramObject;
         if ("app_ui_camera_circle_entry_id".equals(str)) {}
@@ -676,14 +808,14 @@ public class CameraDataServiceHandler
           if ((localObject5 != null) && (((JsonArray)localObject5).size() > 0))
           {
             j = ((JsonArray)localObject5).size();
-            i = m;
+            i = 0;
             localObject3 = localObject1;
             localObject4 = paramObject;
             if (i < j)
             {
               localObject3 = (JsonObject)((JsonArray)localObject5).get(i);
               if (!a((JsonObject)localObject3)) {
-                break label1688;
+                break label1779;
               }
               localObject3 = GsonUtils.optString((JsonObject)localObject3, "ABContent");
               AECameraPrefsUtil.a().a("circle_entry_type_camera", "camera".endsWith((String)localObject3), 4);
@@ -700,13 +832,13 @@ public class CameraDataServiceHandler
         }
         catch (Exception localException4)
         {
-          label1480:
-          label1496:
+          label1570:
+          label1586:
           long l2;
           long l1;
-          break label1480;
+          break label1570;
         }
-        AEQLog.d(jdField_a_of_type_JavaLangString, "camera entry ab test inflate error.");
+        AEQLog.d(d, "camera entry ab test inflate error.");
         localObject4 = paramObject;
         localObject3 = localObject1;
         localObject1 = localObject3;
@@ -715,15 +847,15 @@ public class CameraDataServiceHandler
       AECameraPrefsUtil.a().a("app_ui_playshow_ad_id", (String)localObject1, 4);
       AECameraPrefsUtil.a().a("app_alg_entrance_qzone_id_from833", paramObject, 4);
     }
-    else if (AEDashboardUtil.a())
+    else if (AEDashboardUtil.f())
     {
       AEDashboardUtil.a().postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetCameraConfig", "response", "succeeded without content"));
     }
     paramObject = AEBaseDataReporter.a();
     i = paramFromServiceMsg.getResultCode();
     l2 = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey("ShadowBackendSvc.GetCameraConfig")) {
-      l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get("ShadowBackendSvc.GetCameraConfig")).longValue();
+    if (this.b.containsKey("ShadowBackendSvc.GetCameraConfig")) {
+      l1 = ((Long)this.b.get("ShadowBackendSvc.GetCameraConfig")).longValue();
     } else {
       l1 = 0L;
     }
@@ -734,24 +866,36 @@ public class CameraDataServiceHandler
   {
     if (!NetworkUtil.isNetworkAvailable())
     {
+      AEQLog.d(d, "reqTabABTest---network error.");
+      return;
+    }
+    AEQLog.b(d, "【REQUEST】reqTabABTest");
+    this.b.put("ShadowBackendSvc.GetTABConfiguration", Long.valueOf(System.currentTimeMillis()));
+    send(new ToServiceMsg("ShadowBackendSvc", this.appRuntime.getAccount(), "ShadowBackendSvc.GetTABConfiguration"));
+  }
+  
+  public void d()
+  {
+    if (!NetworkUtil.isNetworkAvailable())
+    {
       if (QLog.isDebugVersion())
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[reqPlayShowCategoryMaterials] no network....");
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "[reqPlayShowCategoryMaterials] end");
+        QLog.d(d, 4, "[reqPlayShowCategoryMaterials] no network....");
+        QLog.d(d, 4, "[reqPlayShowCategoryMaterials] end");
       }
       return;
     }
-    AEQLog.b(jdField_a_of_type_JavaLangString, "【REQUEST】reqPlayShowCategoryMaterials");
-    if (AEDashboardUtil.a()) {
+    AEQLog.b(d, "【REQUEST】reqPlayShowCategoryMaterials");
+    if (AEDashboardUtil.f()) {
       AEDashboardUtil.a().postValue(new AEDashboardUtil.NetInfo("ShadowBackendSvc.GetPlayShowCatMatTree", "request", "null"));
     }
-    this.jdField_a_of_type_JavaUtilMap.put("ShadowBackendSvc.GetPlayShowCatMatTree", Long.valueOf(System.currentTimeMillis()));
+    this.b.put("ShadowBackendSvc.GetPlayShowCatMatTree", Long.valueOf(System.currentTimeMillis()));
     ToServiceMsg localToServiceMsg = new ToServiceMsg("ShadowBackendSvc", this.appRuntime.getAccount(), "ShadowBackendSvc.GetPlayShowCatMatTree");
     localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", false);
     send(localToServiceMsg);
   }
   
-  public void d()
+  public void e()
   {
     ThreadManager.getFileThreadHandler().post(new CameraDataServiceHandler.2(this));
   }
@@ -763,21 +907,26 @@ public class CameraDataServiceHandler
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    d();
+    e();
     if (paramFromServiceMsg.getServiceCmd().equals("ShadowBackendSvc.GetCategoryMaterial"))
     {
       paramToServiceMsg = paramToServiceMsg.extraData.getString("ServiceId");
       if (paramToServiceMsg.endsWith("MqStoryCamera"))
       {
-        c(paramFromServiceMsg, paramObject);
+        d(paramFromServiceMsg, paramObject);
         return;
       }
       if (paramToServiceMsg.endsWith("MqEmoCamera"))
       {
-        d(paramFromServiceMsg, paramObject);
+        f(paramFromServiceMsg, paramObject);
         return;
       }
-      if (paramToServiceMsg.endsWith("MqCircleWatermark")) {
+      if (paramToServiceMsg.endsWith("MqCircleWatermark"))
+      {
+        g(paramFromServiceMsg, paramObject);
+        return;
+      }
+      if (paramToServiceMsg.endsWith("MqKuaishanCamera")) {
         e(paramFromServiceMsg, paramObject);
       }
     }
@@ -790,18 +939,23 @@ public class CameraDataServiceHandler
       }
       if (paramToServiceMsg.getServiceCmd().equals("ShadowBackendSvc.GetPlayShowCatMatTree"))
       {
-        f(paramFromServiceMsg, paramObject);
+        h(paramFromServiceMsg, paramObject);
         return;
       }
-      if (paramToServiceMsg.getServiceCmd().equals("OidbSvc.oidb_cmd0xf8c")) {
+      if (paramToServiceMsg.getServiceCmd().equals("OidbSvc.oidb_cmd0xf8c"))
+      {
         a(paramFromServiceMsg, paramObject);
+        return;
+      }
+      if (paramFromServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetTABConfiguration")) {
+        c(paramFromServiceMsg, paramObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.config.CameraDataServiceHandler
  * JD-Core Version:    0.7.0.1
  */

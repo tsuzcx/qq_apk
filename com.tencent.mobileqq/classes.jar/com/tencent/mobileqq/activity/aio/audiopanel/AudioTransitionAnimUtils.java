@@ -10,15 +10,6 @@ public class AudioTransitionAnimUtils
     return Math.abs(paramFloat) / paramInt;
   }
   
-  public static int a(int paramInt)
-  {
-    int i = paramInt;
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-      i = paramInt + 100;
-    }
-    return i;
-  }
-  
   public static int a(int paramInt1, int paramInt2)
   {
     int i = 2;
@@ -71,10 +62,19 @@ public class AudioTransitionAnimUtils
   {
     return paramInt <= 107;
   }
+  
+  public static int c(int paramInt)
+  {
+    int i = paramInt;
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+      i = paramInt + 100;
+    }
+    return i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ class SwipeUpAndDragListener$FlingHandler$1
   public void onAnimationEnd(Animation paramAnimation)
   {
     paramAnimation = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
-    paramAnimation.addAnimation(this.a.b);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.B.getWidth() / 2, this.a.B.getHeight() / 2);
+    paramAnimation.addAnimation(this.a.F);
     paramAnimation.addAnimation(localScaleAnimation);
     paramAnimation.setDuration(200L);
-    this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
-    paramAnimation.setAnimationListener(this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    this.a.B.startAnimation(paramAnimation);
+    paramAnimation.setAnimationListener(this.a.C);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -28,7 +28,7 @@ class SwipeUpAndDragListener$FlingHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SwipeUpAndDragListener.FlingHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ import java.util.List;
 public class VideoPlayerDefault
   extends AbsVideoPlayer
 {
-  private final String TAG = "VideoPlayerDefault";
+  private static final String TAG = "VideoPlayerDefault";
   private Context context = null;
   private boolean isMute = false;
   private List<AbsVideoPlayer.OnCaptureImageListener> mOnCaptureImageListenerList;
@@ -400,7 +400,7 @@ public class VideoPlayerDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.VideoPlayerDefault
  * JD-Core Version:    0.7.0.1
  */

@@ -115,11 +115,11 @@ public class ContactBindHandler
       if (QLog.isColorLevel()) {
         QLog.d("IMCore.PhoneContact.ContactBindHandler", 2, String.format("handleGetRecommendedList result=%s", new Object[] { Integer.valueOf(i) }));
       }
-      paramToServiceMsg.jdField_a_of_type_Int = i;
+      paramToServiceMsg.a = i;
       if (i == 0)
       {
         paramToServiceMsg.b = ((cmd0xbf2.RspBody)localObject).uint32_end.get();
-        paramToServiceMsg.jdField_a_of_type_Long = ((cmd0xbf2.RspBody)localObject).uint32_next_index.get();
+        paramToServiceMsg.c = ((cmd0xbf2.RspBody)localObject).uint32_next_index.get();
         paramFromServiceMsg = ((cmd0xbf2.RspBody)localObject).phoneAddrBook.get();
         if ((paramFromServiceMsg != null) && (!paramFromServiceMsg.isEmpty()))
         {
@@ -132,7 +132,7 @@ public class ContactBindHandler
             ((PhoneInfo)localObject).b = paramObject.str_nick.get();
             ((PhoneInfo)localObject).c = paramObject.str_long_nick.get();
             ((PhoneInfo)localObject).d = paramObject.str_head_url.get();
-            paramToServiceMsg.jdField_a_of_type_JavaUtilList.add(localObject);
+            paramToServiceMsg.d.add(localObject);
           }
         }
         notifyUI(3, true, paramToServiceMsg);
@@ -144,7 +144,7 @@ public class ContactBindHandler
     catch (Throwable paramFromServiceMsg)
     {
       QLog.e("IMCore.PhoneContact.ContactBindHandler", 1, "handleGetRecommendedList fail.", paramFromServiceMsg);
-      paramToServiceMsg.jdField_a_of_type_Int = -1;
+      paramToServiceMsg.a = -1;
       notifyUI(3, false, paramToServiceMsg);
     }
   }
@@ -304,7 +304,7 @@ public class ContactBindHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.handler.ContactBindHandler
  * JD-Core Version:    0.7.0.1
  */

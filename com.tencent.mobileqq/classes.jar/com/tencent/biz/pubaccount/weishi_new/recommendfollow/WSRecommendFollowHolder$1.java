@@ -15,23 +15,23 @@ class WSRecommendFollowHolder$1
 {
   WSRecommendFollowHolder$1(WSRecommendFollowHolder paramWSRecommendFollowHolder) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (!NetworkUtil.a(WSRecommendFollowHolder.a(this.a)))
     {
-      ToastUtil.a().a(2131720447);
+      ToastUtil.a().a(2131918123);
       return;
     }
-    WSRecommendFollowHolder.a(this.a).a(WSRecommendFollowHolder.a(this.a).id, 2);
-    WSRecommendFollowHolder.a(this.a).followStatus = 2;
-    WSRecommendFollowHolder.a(this.a).setVisibility(0);
-    WSRecommendFollowHolder.b(this.a).setVisibility(8);
-    WSFollowBeaconReport.a("follow", WSRecommendFollowHolder.a(this.a) + 1, WSRecommendFollowHolder.a(this.a).id, WSReportEvent.ActionId.r);
+    WSRecommendFollowHolder.c(this.a).a(WSRecommendFollowHolder.b(this.a).id, 2);
+    WSRecommendFollowHolder.b(this.a).followStatus = 2;
+    WSRecommendFollowHolder.d(this.a).setVisibility(0);
+    WSRecommendFollowHolder.e(this.a).setVisibility(8);
+    WSFollowBeaconReport.a("follow", WSRecommendFollowHolder.f(this.a) + 1, WSRecommendFollowHolder.b(this.a).id, WSReportEvent.ActionId.r);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSRecommendFollowHolder.1
  * JD-Core Version:    0.7.0.1
  */

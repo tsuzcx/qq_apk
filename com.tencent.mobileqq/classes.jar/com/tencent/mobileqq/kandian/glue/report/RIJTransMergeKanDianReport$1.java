@@ -20,18 +20,18 @@ final class RIJTransMergeKanDianReport$1
   
   public void onLoadUserInfoSucceed(@Nullable String paramString, @Nullable ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    if (TextUtils.equals(paramString, String.valueOf(this.jdField_a_of_type_Long)))
+    if (TextUtils.equals(paramString, String.valueOf(this.a)))
     {
       if (paramReadInJoyUserInfo == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageAggregateAvatarUrlDrawable.a(ReadInJoyUserInfoModule.a(paramReadInJoyUserInfo));
+      this.b.a(ReadInJoyUserInfoModule.a(paramReadInJoyUserInfo));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,37 +13,37 @@ class MsgBackupDateFragment$3
   
   public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (paramInt == 2131365405)
+    if (paramInt == 2131431606)
     {
       MsgBackupDateFragment.a(this.a, false);
       MsgBackupDateFragment.a(this.a, 0L);
       MsgBackupDateFragment.b(this.a, 0L);
-      MsgBackupDateFragment.a(this.a).setVisibility(8);
+      MsgBackupDateFragment.b(this.a).setVisibility(8);
     }
-    else if (paramInt == 2131365406)
+    else if (paramInt == 2131431607)
     {
       MsgBackupDateFragment.a(this.a, true);
-      MsgBackupDateFragment.a(this.a).setVisibility(0);
+      MsgBackupDateFragment.b(this.a).setVisibility(0);
     }
-    if (MsgBackupDateFragment.a(this.a))
+    if (MsgBackupDateFragment.c(this.a))
     {
-      if ((MsgBackupDateFragment.b(this.a)) && (MsgBackupDateFragment.c(this.a))) {
-        this.a.i_(true);
-      } else if ((!TextUtils.isEmpty(MsgBackupDateFragment.a(this.a))) && (!TextUtils.isEmpty(MsgBackupDateFragment.b(this.a)))) {
-        this.a.i_(true);
+      if ((MsgBackupDateFragment.d(this.a)) && (MsgBackupDateFragment.e(this.a))) {
+        this.a.n_(true);
+      } else if ((!TextUtils.isEmpty(MsgBackupDateFragment.f(this.a))) && (!TextUtils.isEmpty(MsgBackupDateFragment.g(this.a)))) {
+        this.a.n_(true);
       } else {
-        this.a.i_(false);
+        this.a.n_(false);
       }
     }
     else {
-      this.a.i_(true);
+      this.a.n_(true);
     }
     EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment.3
  * JD-Core Version:    0.7.0.1
  */

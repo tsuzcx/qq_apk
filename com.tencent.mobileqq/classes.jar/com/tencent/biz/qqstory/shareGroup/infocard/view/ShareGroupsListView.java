@@ -6,8 +6,8 @@ import android.util.AttributeSet;
 public class ShareGroupsListView
   extends MyMemoriesListView
 {
-  public ShareGroupsListAdapter a;
-  ShareGroupsListView.UIEventListener a;
+  ShareGroupsListView.UIEventListener e;
+  public ShareGroupsListAdapter f;
   
   public ShareGroupsListView(Context paramContext)
   {
@@ -29,13 +29,13 @@ public class ShareGroupsListView
   public void setListAdapter(ShareGroupsListAdapter paramShareGroupsListAdapter)
   {
     super.setListAdapter(paramShareGroupsListAdapter);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter = paramShareGroupsListAdapter;
+    this.f = paramShareGroupsListAdapter;
   }
   
   public void setUIEventListener(ShareGroupsListView.UIEventListener paramUIEventListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView$UIEventListener = paramUIEventListener;
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.a(paramUIEventListener);
+    this.e = paramUIEventListener;
+    this.f.a(paramUIEventListener);
     super.setListener(paramUIEventListener, paramUIEventListener);
   }
 }

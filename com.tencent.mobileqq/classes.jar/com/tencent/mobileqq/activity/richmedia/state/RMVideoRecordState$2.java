@@ -15,24 +15,24 @@ class RMVideoRecordState$2
     if (QLog.isColorLevel()) {
       QLog.d("RMRecordState", 2, "[@] EVENT_READ_MIC [error]麦克风读取数据错误...");
     }
-    localRMVideoStateMgr.h = true;
-    localRMVideoStateMgr.e = false;
-    if (localRMVideoStateMgr.a != null)
+    localRMVideoStateMgr.z = true;
+    localRMVideoStateMgr.r = false;
+    if (localRMVideoStateMgr.p != null)
     {
-      if (localRMVideoStateMgr.a.i == -1) {
-        localRMVideoStateMgr.b(0, HardCodeUtil.a(2131713392), false);
-      } else if (localRMVideoStateMgr.a.i == -2) {
-        localRMVideoStateMgr.b(0, HardCodeUtil.a(2131713397), false);
-      } else if (localRMVideoStateMgr.a.i == -3) {
-        localRMVideoStateMgr.b(0, HardCodeUtil.a(2131713399), false);
+      if (localRMVideoStateMgr.p.t == -1) {
+        localRMVideoStateMgr.b(0, HardCodeUtil.a(2131910945), false);
+      } else if (localRMVideoStateMgr.p.t == -2) {
+        localRMVideoStateMgr.b(0, HardCodeUtil.a(2131910950), false);
+      } else if (localRMVideoStateMgr.p.t == -3) {
+        localRMVideoStateMgr.b(0, HardCodeUtil.a(2131910952), false);
       } else {
-        localRMVideoStateMgr.b(0, HardCodeUtil.a(2131713395), false);
+        localRMVideoStateMgr.b(0, HardCodeUtil.a(2131910948), false);
       }
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[@] EVENT_READ_MIC [error]麦克风被禁用,音频录制失败 errorcode=");
-        localStringBuilder.append(localRMVideoStateMgr.a.i);
+        localStringBuilder.append(localRMVideoStateMgr.p.t);
         QLog.d("RMRecordState", 2, localStringBuilder.toString());
       }
     }
@@ -40,7 +40,7 @@ class RMVideoRecordState$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.2
  * JD-Core Version:    0.7.0.1
  */

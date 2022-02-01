@@ -10,14 +10,14 @@ class VideoPlayManager$6
   
   public void run()
   {
-    if (VideoPlayManager.a(this.this$0) != null)
+    if (VideoPlayManager.i(this.this$0) != null)
     {
-      Iterator localIterator = VideoPlayManager.a(this.this$0).iterator();
+      Iterator localIterator = VideoPlayManager.i(this.this$0).iterator();
       while (localIterator.hasNext())
       {
         VideoPlayManager.VideoStatusListener localVideoStatusListener = (VideoPlayManager.VideoStatusListener)localIterator.next();
         if (localVideoStatusListener != null) {
-          localVideoStatusListener.a(VideoPlayManager.a(this.this$0));
+          localVideoStatusListener.a(VideoPlayManager.d(this.this$0));
         }
       }
     }
@@ -25,7 +25,7 @@ class VideoPlayManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoPlayManager.6
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,7 @@ import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -30,42 +29,22 @@ import org.json.JSONObject;
 public class RIJPerformanceReporter
   implements Choreographer.FrameCallback
 {
-  private static final RIJPerformanceReporter jdField_a_of_type_ComTencentMobileqqKandianBizCommentHelperRIJPerformanceReporter = new RIJPerformanceReporter();
-  private static final float[] jdField_a_of_type_ArrayOfFloat = { 1.0F, 1.5F, 3.0F, 6.0F };
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private AladdinConfig jdField_a_of_type_ComTencentAladdinConfigAladdinConfig;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 0, 0, 0, 0, 0, 0 };
-  private float b = -1.0F;
+  private static final RIJPerformanceReporter a = new RIJPerformanceReporter();
+  private static final float[] b = { 1.0F, 1.5F, 3.0F, 6.0F };
+  private final int[] c = { 0, 0, 0, 0, 0, 0 };
+  private long d;
+  private float e;
+  private float f = -1.0F;
+  private AladdinConfig g;
   
   private RIJPerformanceReporter()
   {
-    b();
-  }
-  
-  private int a(int paramInt)
-  {
-    if (paramInt <= 0) {
-      return 0;
-    }
-    if (paramInt == 1) {
-      return 1;
-    }
-    if (paramInt < 4) {
-      return 2;
-    }
-    if (paramInt < 8) {
-      return 3;
-    }
-    if (paramInt < 15) {
-      return 4;
-    }
-    return 5;
+    d();
   }
   
   public static RIJPerformanceReporter a()
   {
-    return jdField_a_of_type_ComTencentMobileqqKandianBizCommentHelperRIJPerformanceReporter;
+    return a;
   }
   
   private void a(Map<String, String> paramMap)
@@ -99,74 +78,94 @@ public class RIJPerformanceReporter
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           return;
         }
-        localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
+        localQQAppInterface = (QQAppInterface)ReadInJoyUtils.b();
         if (localQQAppInterface == null) {
           return;
         }
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(localQQAppInterface, localQQAppInterface.getAccount(), "0X800BACE", "0X800BACE", 0, 0, "", "", paramMap, (String)localObject1, false);
+        PublicAccountReportUtils.a(localQQAppInterface, localQQAppInterface.getAccount(), "0X800BACE", "0X800BACE", 0, 0, "", "", paramMap, (String)localObject1, false);
       }
     }
   }
   
-  private boolean a()
+  private int b(int paramInt)
   {
-    int i = Build.VERSION.SDK_INT;
-    boolean bool = false;
-    if (i < 16) {
-      return false;
+    if (paramInt <= 0) {
+      return 0;
     }
-    if (this.jdField_a_of_type_ComTencentAladdinConfigAladdinConfig == null) {
-      this.jdField_a_of_type_ComTencentAladdinConfigAladdinConfig = Aladdin.get(456);
+    if (paramInt == 1) {
+      return 1;
     }
-    if (this.jdField_a_of_type_ComTencentAladdinConfigAladdinConfig.getIntegerFromString("performance_enable", 0) == 1) {
-      bool = true;
+    if (paramInt < 4) {
+      return 2;
     }
-    return bool;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
-    int i = 0;
-    while (i < 6)
-    {
-      this.jdField_a_of_type_ArrayOfInt[i] = 0;
-      i += 1;
+    if (paramInt < 8) {
+      return 3;
     }
+    if (paramInt < 15) {
+      return 4;
+    }
+    return 5;
   }
   
   private void b(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!b()) {
+    if (!e()) {
       return;
     }
-    int j = jdField_a_of_type_ArrayOfFloat.length;
+    int j = b.length;
     long l = 0L;
     int i = 0;
     while (i < j)
     {
-      l = ((float)l + this.jdField_a_of_type_ArrayOfInt[i] * this.b * jdField_a_of_type_ArrayOfFloat[i]);
+      l = ((float)l + this.c[i] * this.f * b[i]);
       i += 1;
     }
-    float f = Math.min((float)l * 1.0F / this.jdField_a_of_type_Float, 1.0F);
+    float f1 = Math.min((float)l * 1.0F / this.e, 1.0F);
     HashMap localHashMap = new HashMap();
     localHashMap.put("scene", String.valueOf(paramInt1));
     localHashMap.put("comment_level", String.valueOf(paramInt2));
-    localHashMap.put("fluency", String.format("%.2f", new Object[] { Float.valueOf(f) }));
+    localHashMap.put("fluency", String.format("%.2f", new Object[] { Float.valueOf(f1) }));
     if (-1 != paramInt3) {
       localHashMap.put("type", String.valueOf(paramInt3));
     }
     a(localHashMap);
   }
   
-  private boolean b()
+  private boolean c()
+  {
+    int i = Build.VERSION.SDK_INT;
+    boolean bool = false;
+    if (i < 16) {
+      return false;
+    }
+    if (this.g == null) {
+      this.g = Aladdin.get(456);
+    }
+    if (this.g.getIntegerFromString("performance_enable", 0) == 1) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private void d()
+  {
+    this.d = 0L;
+    this.e = 0.0F;
+    int i = 0;
+    while (i < 6)
+    {
+      this.c[i] = 0;
+      i += 1;
+    }
+  }
+  
+  private boolean e()
   {
     int j = 0;
     int i = 0;
     while (i < 6)
     {
-      if (this.jdField_a_of_type_ArrayOfInt[i] != 0)
+      if (this.c[i] != 0)
       {
         i = j;
         break label33;
@@ -178,29 +177,6 @@ public class RIJPerformanceReporter
     return i ^ 0x1;
   }
   
-  public void a()
-  {
-    if (a())
-    {
-      if (this.jdField_a_of_type_Long > 0L) {
-        return;
-      }
-      b();
-      if (Float.compare(this.b, 0.0F) <= 0.0F)
-      {
-        float f = ((WindowManager)BaseApplication.getContext().getSystemService("window")).getDefaultDisplay().getRefreshRate();
-        if (f >= 0.0F) {
-          this.b = (1000.0F / f);
-        }
-      }
-      if (Float.compare(this.b, 0.0F) <= 0.0F) {
-        this.b = 16.666666F;
-      }
-      this.b = (Math.round(this.b * 100.0F) / 100.0F);
-      Choreographer.getInstance().postFrameCallback(this);
-    }
-  }
-  
   public void a(int paramInt)
   {
     a(1, 0, paramInt);
@@ -210,12 +186,12 @@ public class RIJPerformanceReporter
   {
     Choreographer.getInstance().removeFrameCallback(this);
     b(paramInt1, paramInt2, paramInt3);
-    b();
+    d();
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
   {
-    if (!a()) {
+    if (!c()) {
       return;
     }
     HashMap localHashMap = new HashMap();
@@ -233,7 +209,7 @@ public class RIJPerformanceReporter
   
   public void a(int paramInt1, int paramInt2, long paramLong)
   {
-    if (!a()) {
+    if (!c()) {
       return;
     }
     HashMap localHashMap = new HashMap();
@@ -246,24 +222,51 @@ public class RIJPerformanceReporter
     a(localHashMap);
   }
   
+  public void b()
+  {
+    if (c())
+    {
+      if (this.d > 0L) {
+        return;
+      }
+      d();
+      if (Float.compare(this.f, 0.0F) <= 0.0F)
+      {
+        Display localDisplay = ((WindowManager)BaseApplication.getContext().getSystemService("window")).getDefaultDisplay();
+        if (localDisplay != null)
+        {
+          float f1 = localDisplay.getRefreshRate();
+          if (f1 >= 0.0F) {
+            this.f = (1000.0F / f1);
+          }
+        }
+      }
+      if (Float.compare(this.f, 0.0F) <= 0.0F) {
+        this.f = 16.666666F;
+      }
+      this.f = (Math.round(this.f * 100.0F) / 100.0F);
+      Choreographer.getInstance().postFrameCallback(this);
+    }
+  }
+  
   public void doFrame(long paramLong)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.d;
     if (l != 0L)
     {
-      float f = (float)(paramLong - l) * 1.0F / 1000000.0F;
-      int i = a(Math.max((int)(f / this.b) - 1, 0));
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      float f1 = (float)(paramLong - l) * 1.0F / 1000000.0F;
+      int i = b(Math.max((int)(f1 / this.f) - 1, 0));
+      int[] arrayOfInt = this.c;
       arrayOfInt[i] += 1;
-      this.jdField_a_of_type_Float += f;
+      this.e += f1;
     }
-    this.jdField_a_of_type_Long = paramLong;
+    this.d = paramLong;
     Choreographer.getInstance().postFrameCallback(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.helper.RIJPerformanceReporter
  * JD-Core Version:    0.7.0.1
  */

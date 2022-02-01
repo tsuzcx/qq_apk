@@ -15,107 +15,107 @@ import java.util.List;
 @TargetApi(18)
 public class MediaMuxerWrapper
 {
-  private int jdField_a_of_type_Int = 1;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
   public final MediaMuxer a;
-  private final Mp4ReEncoder jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecMp4ReEncoder;
-  private final HWEncodeListener jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener;
-  private final String jdField_a_of_type_JavaLangString;
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private final List<MediaMuxerWrapper.SampleInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private MediaFormat jdField_b_of_type_AndroidMediaMediaFormat;
-  private int jdField_c_of_type_Int;
-  private MediaFormat jdField_c_of_type_AndroidMediaMediaFormat;
-  private int d;
+  private final Mp4ReEncoder b;
+  private final List<MediaMuxerWrapper.SampleInfo> c = new ArrayList();
+  private final HWEncodeListener d;
+  private final String e;
+  private MediaFormat f;
+  private MediaFormat g;
+  private MediaFormat h;
+  private int i = 1;
+  private int j;
+  private int k;
+  private int l;
+  private ByteBuffer m;
+  private boolean n;
   
   public MediaMuxerWrapper(Mp4ReEncoder paramMp4ReEncoder, String paramString, HWEncodeListener paramHWEncodeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecMp4ReEncoder = paramMp4ReEncoder;
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener = paramHWEncodeListener;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramString, 0);
+    this.b = paramMp4ReEncoder;
+    this.d = paramHWEncodeListener;
+    this.e = paramString;
+    this.a = new MediaMuxer(paramString, 0);
   }
   
-  private int a(int paramInt)
+  private int b(int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt != 1)
       {
         if (paramInt == 2) {
-          return this.d;
+          return this.l;
         }
         throw new AssertionError();
       }
-      return this.jdField_c_of_type_Int;
+      return this.k;
     }
-    return this.jdField_b_of_type_Int;
+    return this.j;
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaFormat == null) {
+    if (this.f == null) {
       return;
     }
-    if ((this.jdField_b_of_type_AndroidMediaMediaFormat == null) && (this.jdField_a_of_type_Int > 0)) {
+    if ((this.g == null) && (this.i > 0)) {
       return;
     }
-    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_c_of_type_AndroidMediaMediaFormat == null)) {
+    if ((this.i == 2) && (this.h == null)) {
       return;
     }
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(this.jdField_a_of_type_AndroidMediaMediaFormat);
+    this.j = this.a.addTrack(this.f);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Added track #");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(this.j);
     ((StringBuilder)localObject).append(" with ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime"));
+    ((StringBuilder)localObject).append(this.f.getString("mime"));
     ((StringBuilder)localObject).append(" to muxer");
     QLog.d("MediaMuxerWrapper", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_b_of_type_AndroidMediaMediaFormat;
+    localObject = this.g;
     if (localObject != null)
     {
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)localObject);
+      this.k = this.a.addTrack((MediaFormat)localObject);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Added track #");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+      ((StringBuilder)localObject).append(this.k);
       ((StringBuilder)localObject).append(" with ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_AndroidMediaMediaFormat.getString("mime"));
+      ((StringBuilder)localObject).append(this.g.getString("mime"));
       ((StringBuilder)localObject).append(" to muxer");
       QLog.d("MediaMuxerWrapper", 1, ((StringBuilder)localObject).toString());
     }
-    localObject = this.jdField_c_of_type_AndroidMediaMediaFormat;
-    int i = 0;
+    localObject = this.h;
+    int i1 = 0;
     if (localObject != null)
     {
-      this.d = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(this.jdField_b_of_type_AndroidMediaMediaFormat);
-      QLog.d("MediaMuxerWrapper", 1, new Object[] { "Added second audiotrack #", Integer.valueOf(this.jdField_c_of_type_Int), " with ", this.jdField_c_of_type_AndroidMediaMediaFormat.getString("mime"), " to muxer" });
+      this.l = this.a.addTrack(this.g);
+      QLog.d("MediaMuxerWrapper", 1, new Object[] { "Added second audiotrack #", Integer.valueOf(this.k), " with ", this.h.getString("mime"), " to muxer" });
     }
-    this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_JavaNioByteBuffer == null) {
-      this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(0);
+    this.a.start();
+    this.n = true;
+    if (this.m == null) {
+      this.m = ByteBuffer.allocate(0);
     }
-    this.jdField_a_of_type_JavaNioByteBuffer.flip();
+    this.m.flip();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Output format determined, writing ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+    ((StringBuilder)localObject).append(this.c.size());
     ((StringBuilder)localObject).append(" samples / ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaNioByteBuffer.limit());
+    ((StringBuilder)localObject).append(this.m.limit());
     ((StringBuilder)localObject).append(" bytes to muxer.");
     QLog.d("MediaMuxerWrapper", 1, ((StringBuilder)localObject).toString());
     localObject = new MediaCodec.BufferInfo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       MediaMuxerWrapper.SampleInfo localSampleInfo = (MediaMuxerWrapper.SampleInfo)localIterator.next();
-      MediaMuxerWrapper.SampleInfo.a(localSampleInfo, (MediaCodec.BufferInfo)localObject, i);
-      this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(a(MediaMuxerWrapper.SampleInfo.a(localSampleInfo)), this.jdField_a_of_type_JavaNioByteBuffer, (MediaCodec.BufferInfo)localObject);
-      i += MediaMuxerWrapper.SampleInfo.b(localSampleInfo);
+      MediaMuxerWrapper.SampleInfo.a(localSampleInfo, (MediaCodec.BufferInfo)localObject, i1);
+      this.a.writeSampleData(b(MediaMuxerWrapper.SampleInfo.a(localSampleInfo)), this.m, (MediaCodec.BufferInfo)localObject);
+      i1 += MediaMuxerWrapper.SampleInfo.b(localSampleInfo);
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
+    this.c.clear();
+    this.m = null;
   }
   
   public void a()
@@ -123,17 +123,17 @@ public class MediaMuxerWrapper
     try
     {
       QLog.d("MediaMuxerWrapper", 1, "release");
-      if (this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecMp4ReEncoder.a())
+      if (this.b.b())
       {
         QLog.d("MediaMuxerWrapper", 1, "release indeed");
-        if (this.jdField_a_of_type_Boolean)
+        if (this.n)
         {
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_a_of_type_AndroidMediaMediaMuxer.stop();
+          this.n = false;
+          this.a.stop();
         }
-        this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
-        if (this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWEncodeListener.onEncodeFinish(this.jdField_a_of_type_JavaLangString);
+        this.a.release();
+        if (this.d != null) {
+          this.d.onEncodeFinish(this.e);
         }
       }
       return;
@@ -143,7 +143,7 @@ public class MediaMuxerWrapper
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.i = paramInt;
   }
   
   public void a(int paramInt, MediaFormat paramMediaFormat)
@@ -157,17 +157,17 @@ public class MediaMuxerWrapper
       if (paramInt != 1)
       {
         if (paramInt == 2) {
-          this.jdField_c_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+          this.h = paramMediaFormat;
         } else {
           throw new AssertionError();
         }
       }
       else {
-        this.jdField_b_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+        this.g = paramMediaFormat;
       }
     }
     else {
-      this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+      this.f = paramMediaFormat;
     }
     b();
   }
@@ -176,18 +176,18 @@ public class MediaMuxerWrapper
   {
     try
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.n)
       {
-        this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(a(paramInt), paramByteBuffer, paramBufferInfo);
+        this.a.writeSampleData(b(paramInt), paramByteBuffer, paramBufferInfo);
         return;
       }
       paramByteBuffer.limit(paramBufferInfo.offset + paramBufferInfo.size);
       paramByteBuffer.position(paramBufferInfo.offset);
-      if (this.jdField_a_of_type_JavaNioByteBuffer == null) {
-        this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(65536).order(ByteOrder.nativeOrder());
+      if (this.m == null) {
+        this.m = ByteBuffer.allocateDirect(65536).order(ByteOrder.nativeOrder());
       }
-      this.jdField_a_of_type_JavaNioByteBuffer.put(paramByteBuffer);
-      this.jdField_a_of_type_JavaUtilList.add(new MediaMuxerWrapper.SampleInfo(paramInt, paramBufferInfo.size, paramBufferInfo, null));
+      this.m.put(paramByteBuffer);
+      this.c.add(new MediaMuxerWrapper.SampleInfo(paramInt, paramBufferInfo.size, paramBufferInfo, null));
       return;
     }
     catch (Exception paramByteBuffer)
@@ -198,7 +198,7 @@ public class MediaMuxerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.recorder.MediaMuxerWrapper
  * JD-Core Version:    0.7.0.1
  */

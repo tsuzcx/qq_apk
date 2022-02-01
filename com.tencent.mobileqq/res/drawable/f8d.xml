@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/skin_dialog_bg_color" />
-    <corners android:topLeftRadius="6.0dip" android:topRightRadius="6.0dip" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@drawable/ion" />
+    <item android:state_enabled="false" android:drawable="@drawable/iol" />
+    <item android:drawable="@drawable/iom" />
+</selector>

@@ -15,12 +15,12 @@ class WebAccelerateHelper$3
     } else {
       bool = false;
     }
-    com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.b = bool;
+    com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.H = bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebAccelerateHelper.3
  * JD-Core Version:    0.7.0.1
  */

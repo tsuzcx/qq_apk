@@ -28,12 +28,12 @@ class AdLiveExpandCardProteusItem$2
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     ReadInJoyAdLog.a("AdLiveExpandCardProteusItem", "AdLiveExpandCardProteusItem.onLoadSuccessed");
-    AdLiveExpandCardProteusItem.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdProteusAdLiveExpandCardProteusItem, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel, paramURLDrawable);
+    AdLiveExpandCardProteusItem.a(this.b, this.a, paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdLiveExpandCardProteusItem.2
  * JD-Core Version:    0.7.0.1
  */

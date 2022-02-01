@@ -12,43 +12,43 @@ import mqq.manager.Manager;
 public class QCallCardManager
   implements QCallCardConstants, Manager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ProxyManager jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ConcurrentHashMap<String, QCallCardInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private QQAppInterface a;
+  private ProxyManager b;
+  private EntityManager c;
+  private Object d = new Object();
+  private ConcurrentHashMap<String, QCallCardInfo> e = new ConcurrentHashMap();
   
   public QCallCardManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramQQAppInterface.getProxyManager();
+    this.a = paramQQAppInterface;
+    this.b = paramQQAppInterface.getProxyManager();
   }
   
   private EntityManager a()
   {
-    ??? = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    ??? = this.c;
     if ((??? == null) || (!((EntityManager)???).isOpen())) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      if ((this.c == null) || (!this.c.isOpen())) {
+        this.c = this.a.getEntityManagerFactory().createEntityManager();
       }
-      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+      return this.c;
     }
   }
   
-  private void a()
+  private void b()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    EntityManager localEntityManager = this.c;
     if ((localEntityManager != null) && (localEntityManager.isOpen())) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+      this.c.close();
     }
   }
   
   public QCallCardInfo a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      return (QCallCardInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (this.e.containsKey(paramString)) {
+      return (QCallCardInfo)this.e.get(paramString);
     }
     paramString = a().query(QCallCardInfo.class, false, "uin = ?", new String[] { paramString }, null, null, null, null);
     if (paramString != null) {
@@ -70,7 +70,7 @@ public class QCallCardManager
       QLog.d("QCallCardManager", 2, "CardManager saveQcallCard");
     }
     b(paramQCallCardInfo);
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueueAndNotify(paramQCallCardInfo.uin, 0, paramQCallCardInfo.getTableName(), paramQCallCardInfo, 3, null);
+    this.b.addMsgQueueAndNotify(paramQCallCardInfo.uin, 0, paramQCallCardInfo.getTableName(), paramQCallCardInfo, 3, null);
   }
   
   public void b(QCallCardInfo paramQCallCardInfo)
@@ -80,10 +80,10 @@ public class QCallCardManager
     }
     try
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramQCallCardInfo.uin)) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.replace(paramQCallCardInfo.uin, paramQCallCardInfo);
+      if (this.e.containsKey(paramQCallCardInfo.uin)) {
+        this.e.replace(paramQCallCardInfo.uin, paramQCallCardInfo);
       } else {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramQCallCardInfo.uin, paramQCallCardInfo);
+        this.e.put(paramQCallCardInfo.uin, paramQCallCardInfo);
       }
       return;
     }
@@ -92,13 +92,13 @@ public class QCallCardManager
   
   public void onDestroy()
   {
-    a();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    b();
+    this.e.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallCardManager
  * JD-Core Version:    0.7.0.1
  */

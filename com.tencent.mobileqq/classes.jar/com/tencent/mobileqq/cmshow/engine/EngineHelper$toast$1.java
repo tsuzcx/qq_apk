@@ -22,13 +22,13 @@ public final class EngineHelper$toast$1
   {
     QQAppInterface localQQAppInterface = EngineHelper.a.a();
     if (localQQAppInterface != null) {
-      QQToast.a((Context)localQQAppInterface.getApplication(), this.$iconType, (CharSequence)this.$message, 1).a();
+      QQToast.makeText((Context)localQQAppInterface.getApplication(), this.$iconType, (CharSequence)this.$message, 1).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.EngineHelper.toast.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,24 +19,24 @@ import mqq.app.NewIntent;
 
 public class PeakMsfServletProxy
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Map<String, String[]> jdField_a_of_type_JavaUtilMap;
+  private Map<String, String[]> a;
+  private AppInterface b;
   
   public PeakMsfServletProxy(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    a("TransInfoCreate.CreateSession", new String[] { PeakAppInterface.a });
-    a("TransInfo.JoinSession", new String[] { PeakAppInterface.a });
-    a("TransInfo.ExitSession", new String[] { PeakAppInterface.a });
-    a("TransInfo.ChangeSession", new String[] { PeakAppInterface.a });
-    a("TransInfo.RawData", new String[] { PeakAppInterface.a });
+    this.b = paramAppInterface;
+    this.a = new ConcurrentHashMap();
+    a("TransInfoCreate.CreateSession", new String[] { PeakAppInterface.b });
+    a("TransInfo.JoinSession", new String[] { PeakAppInterface.b });
+    a("TransInfo.ExitSession", new String[] { PeakAppInterface.b });
+    a("TransInfo.ChangeSession", new String[] { PeakAppInterface.b });
+    a("TransInfo.RawData", new String[] { PeakAppInterface.b });
     a("OidbSvc.oidb_cmd0xf8c", new String[] { "com.tencent.aelight.camera.ae.config.CameraDataServiceHandler" });
   }
   
   public AppInterface a()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    return this.b;
   }
   
   public void a(ToServiceMsg paramToServiceMsg, Class<? extends MSFServlet> paramClass)
@@ -56,9 +56,9 @@ public class PeakMsfServletProxy
         ((StringBuilder)localObject).append(paramToServiceMsg.getServiceCmd());
         QLog.d("PeakMsfServletProxy", 2, ((StringBuilder)localObject).toString());
       }
-      paramClass = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
+      paramClass = new NewIntent(this.b.getApplication(), paramClass);
       paramClass.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramClass);
+      this.b.startServlet(paramClass);
       l = System.currentTimeMillis();
       paramToServiceMsg.extraData.putLong("sendtimekey", l);
     }
@@ -131,7 +131,7 @@ public class PeakMsfServletProxy
         paramFromServiceMsg.putWupBuffer(paramException);
         paramException = paramFromServiceMsg.getWupBuffer();
       }
-      Object localObject2 = (String[])this.jdField_a_of_type_JavaUtilMap.get(localObject1);
+      Object localObject2 = (String[])this.a.get(localObject1);
       if ((localObject2 != null) && (localObject2.length > 0)) {
         j = localObject2.length;
       }
@@ -172,7 +172,7 @@ public class PeakMsfServletProxy
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfString);
+      this.a.put(paramString, paramArrayOfString);
       return true;
     }
     return false;
@@ -180,7 +180,7 @@ public class PeakMsfServletProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.server.PeakMsfServletProxy
  * JD-Core Version:    0.7.0.1
  */

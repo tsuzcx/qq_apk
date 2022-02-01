@@ -12,15 +12,15 @@ class AIOShareActionSheet$9
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.h()) {
+    if (this.a.l()) {
       AIOShareActionSheet.a(this.a).a(false, null, false);
     }
-    ReportController.b(this.a.a, "CliOper", "", "", AIOShareActionSheet.b, AIOShareActionSheet.b, 1, 0, "", "", "", "");
+    ReportController.b(this.a.a, "CliOper", "", "", AIOShareActionSheet.e, AIOShareActionSheet.e, 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgforward.AIOShareActionSheet.9
  * JD-Core Version:    0.7.0.1
  */

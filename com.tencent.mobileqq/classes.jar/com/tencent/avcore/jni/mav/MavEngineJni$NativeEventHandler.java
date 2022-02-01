@@ -299,7 +299,7 @@ class MavEngineJni$NativeEventHandler
                             }
                             if ((((AVUserInfo)localObject1).accountType != 0) && ((((AVUserInfo)localObject1).accountType != 1) || (((AVUserInfo)localObject1).pstnStatus != 3) || (i1 != 70))) {
                               if ((((AVUserInfo)localObject1).accountType != 1) || (i1 != 71)) {
-                                break label2916;
+                                break label2934;
                               }
                             }
                             localIMavEventListener.onMAVMemberInOrOut((AVUserInfo)localObject1, l1, i1, m, l3, new int[] { k });
@@ -326,6 +326,9 @@ class MavEngineJni$NativeEventHandler
                         } else {
                           localIMavEventListener.onNotifyAIDenoiseTips(false);
                         }
+                        break;
+                      case 179: 
+                        localIMavEventListener.onInitAIDenoiseStatus();
                         break;
                       case 178: 
                         localIMavEventListener.onCheckScreenShareAvailable((int)l3, (byte[])localObject2);
@@ -509,28 +512,28 @@ class MavEngineJni$NativeEventHandler
                                       }
                                       else
                                       {
-                                        break label2199;
+                                        break label2217;
                                       }
                                     }
                                     else
                                     {
                                       i = 43;
-                                      break label2199;
+                                      break label2217;
                                     }
                                   }
                                   else
                                   {
                                     i = 42;
-                                    break label2199;
+                                    break label2217;
                                   }
                                 }
                                 else {
                                   if (m == 1) {
-                                    break label2176;
+                                    break label2194;
                                   }
                                 }
                                 i = 0;
-                                break label2199;
+                                break label2217;
                                 i = 1;
                               }
                               else
@@ -624,8 +627,8 @@ class MavEngineJni$NativeEventHandler
                     localIMavEventListener.onGAudioTerminalEnterRoom(m, l1, new int[] { k });
                     break;
                   case 11: 
-                    label2176:
-                    label2199:
+                    label2194:
+                    label2217:
                     localIMavEventListener.onGAudioRoomDestroy(m, l1);
                     break;
                   }
@@ -704,7 +707,7 @@ class MavEngineJni$NativeEventHandler
         onRecvUserList(localIMavEventListener, 6, m, l1, (long[])localObject1, l3, k, n, i, j);
       }
     }
-    label2916:
+    label2934:
     if ((bool1) && (localObject3 != null)) {
       ((AVNativeEventProcessor)localObject3).handleMessage(paramMessage);
     }

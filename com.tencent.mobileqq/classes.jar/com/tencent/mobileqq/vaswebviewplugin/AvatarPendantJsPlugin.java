@@ -104,7 +104,7 @@ public class AvatarPendantJsPlugin
       break label90;
     }
     return null;
-    paramString = ImageUtil.f();
+    paramString = ImageUtil.k();
     return paramString;
   }
   
@@ -146,10 +146,10 @@ public class AvatarPendantJsPlugin
       localStringBuilder.append(paramJSONObject);
       QLog.i("AvatarPendantJsPlugin", 2, localStringBuilder.toString());
     }
-    paramJSONObject = (ActionSheet)ActionSheetHelper.a(this.mRuntime.a(), null);
-    paramJSONObject.addButton(HardCodeUtil.a(2131701103));
-    paramJSONObject.addButton(HardCodeUtil.a(2131701105));
-    paramJSONObject.addCancelButton(HardCodeUtil.a(2131701086));
+    paramJSONObject = (ActionSheet)ActionSheetHelper.b(this.mRuntime.d(), null);
+    paramJSONObject.addButton(HardCodeUtil.a(2131899121));
+    paramJSONObject.addButton(HardCodeUtil.a(2131899123));
+    paramJSONObject.addCancelButton(HardCodeUtil.a(2131898212));
     paramJSONObject.setOnButtonClickListener(new AvatarPendantJsPlugin.5(this, paramString, paramJSONObject));
     paramJSONObject.setOnDismissListener(new AvatarPendantJsPlugin.6(this, paramString));
     paramJSONObject.show();
@@ -299,7 +299,7 @@ public class AvatarPendantJsPlugin
   protected void onCreate()
   {
     super.onCreate();
-    AppInterface localAppInterface = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
     if ((localAppInterface instanceof BrowserAppInterface))
     {
       this.browserApp = ((BrowserAppInterface)localAppInterface);
@@ -350,9 +350,9 @@ public class AvatarPendantJsPlugin
           }
           else
           {
-            localObject2 = this.mRuntime.a();
+            localObject2 = this.mRuntime.e();
             if ((localObject2 != null) && (((WebUiUtils.WebViewProviderInterface)localObject2).getWebTitleBarInterface() != null)) {
-              QQToast.a(this.mRuntime.a(), 2131718781, 0).b(((WebUiUtils.WebViewProviderInterface)localObject2).getWebTitleBarInterface().a());
+              QQToast.makeText(this.mRuntime.d(), 2131916287, 0).show(((WebUiUtils.WebViewProviderInterface)localObject2).getWebTitleBarInterface().m());
             }
             paramBundle.put("result", 1001);
           }
@@ -424,7 +424,7 @@ public class AvatarPendantJsPlugin
       paramJSONObject = paramJSONObject.getJSONArray("button");
       if (paramJSONObject.length() >= 1)
       {
-        QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = DialogUtil.a(this.mRuntime.a(), 230);
+        QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = DialogUtil.c(this.mRuntime.d(), 230);
         localQQCustomDialogThreeBtns.a(str);
         localQQCustomDialogThreeBtns.b((String)localObject);
         localQQCustomDialogThreeBtns.a(paramJSONObject.getString(0), new AvatarPendantJsPlugin.2(this, paramString));
@@ -516,7 +516,7 @@ public class AvatarPendantJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin
  * JD-Core Version:    0.7.0.1
  */

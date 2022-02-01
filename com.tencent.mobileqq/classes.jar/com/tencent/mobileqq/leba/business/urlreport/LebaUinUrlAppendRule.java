@@ -15,14 +15,14 @@ public class LebaUinUrlAppendRule
     return String.format("&mqquin=%s", new Object[] { this.a });
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
     return (paramString != null) && (paramString.contains("plg_uin=1"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.urlreport.LebaUinUrlAppendRule
  * JD-Core Version:    0.7.0.1
  */

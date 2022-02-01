@@ -16,7 +16,7 @@ class ExtendFriendSquareFragment$1
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendSquareFragment", 2, String.format("onUpdateAddFriend isSuccess=%s addSuccess=%s reqestUin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
     }
-    paramString = this.a.a.a(this.a.d);
+    paramString = this.a.m.b(this.a.w);
     if ((paramString != null) && (!paramString.mAddFriendVerified))
     {
       paramString.mAddFriendVerified = true;
@@ -26,7 +26,7 @@ class ExtendFriendSquareFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendSquareFragment.1
  * JD-Core Version:    0.7.0.1
  */

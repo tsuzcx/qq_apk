@@ -12,22 +12,22 @@ class OpenSdkChannel$3
   
   public void a(int paramInt)
   {
-    LogInterface localLogInterface = OpenSdkChannel.a(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerOpenSdkChannel).a();
+    LogInterface localLogInterface = OpenSdkChannel.a(this.b).c();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AVSdkCoreAppChannel-requestInfoCmd fail 3 errCode:");
     localStringBuilder.append(paramInt);
     localLogInterface.e("ChannelAdapter", localStringBuilder.toString(), new Object[0]);
-    this.jdField_a_of_type_ComTencentIliveOpensdkCallbacksRtcCsCmdCallback.onError(paramInt, "");
+    this.a.onError(paramInt, "");
   }
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentIliveOpensdkCallbacksRtcCsCmdCallback.onSuccess(paramArrayOfByte);
+    this.a.onSuccess(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.OpenSdkChannel.3
  * JD-Core Version:    0.7.0.1
  */

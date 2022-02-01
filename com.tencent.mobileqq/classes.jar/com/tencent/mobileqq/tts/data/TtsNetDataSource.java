@@ -12,7 +12,15 @@ import javax.net.ssl.SSLContext;
 public class TtsNetDataSource
   implements INetUrlDataSource
 {
-  private HttpsURLConnection a(TtsNetStreamParam paramTtsNetStreamParam)
+  private void a(String paramString1, String paramString2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("playSuccess", paramString1);
+    localHashMap.put("playError", paramString2);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "TTSPlayMonitor", true, 0L, 0L, localHashMap, "");
+  }
+  
+  private HttpsURLConnection b(TtsNetStreamParam paramTtsNetStreamParam)
   {
     HttpsURLConnection localHttpsURLConnection = (HttpsURLConnection)new URL("https://textts.qq.com/cgi-bin/tts").openConnection();
     localHttpsURLConnection.setRequestMethod("POST");
@@ -41,44 +49,36 @@ public class TtsNetDataSource
     return localHttpsURLConnection;
   }
   
-  private void a(String paramString1, String paramString2)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("playSuccess", paramString1);
-    localHashMap.put("playError", paramString2);
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "TTSPlayMonitor", true, 0L, 0L, localHashMap, "");
-  }
-  
   /* Error */
   public java.io.InputStream a(TtsNetStreamParam paramTtsNetStreamParam)
   {
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokespecial 140	com/tencent/mobileqq/tts/data/TtsNetDataSource:a	(Lcom/tencent/mobileqq/tts/data/TtsNetStreamParam;)Ljavax/net/ssl/HttpsURLConnection;
+    //   2: invokespecial 141	com/tencent/mobileqq/tts/data/TtsNetDataSource:b	(Lcom/tencent/mobileqq/tts/data/TtsNetStreamParam;)Ljavax/net/ssl/HttpsURLConnection;
     //   5: astore 5
-    //   7: new 142	com/google/gson/Gson
+    //   7: new 143	com/google/gson/Gson
     //   10: dup
-    //   11: invokespecial 143	com/google/gson/Gson:<init>	()V
+    //   11: invokespecial 144	com/google/gson/Gson:<init>	()V
     //   14: aload_1
-    //   15: invokevirtual 147	com/google/gson/Gson:toJson	(Ljava/lang/Object;)Ljava/lang/String;
+    //   15: invokevirtual 148	com/google/gson/Gson:toJson	(Ljava/lang/Object;)Ljava/lang/String;
     //   18: astore 4
-    //   20: new 149	java/io/DataOutputStream
+    //   20: new 150	java/io/DataOutputStream
     //   23: dup
     //   24: aload 5
-    //   26: invokevirtual 153	javax/net/ssl/HttpsURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   29: invokespecial 156	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   26: invokevirtual 154	javax/net/ssl/HttpsURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   29: invokespecial 157	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   32: astore_2
     //   33: aload_2
     //   34: astore_3
     //   35: aload_2
     //   36: aload 4
-    //   38: invokevirtual 162	java/lang/String:getBytes	()[B
-    //   41: invokevirtual 166	java/io/DataOutputStream:write	([B)V
+    //   38: invokevirtual 163	java/lang/String:getBytes	()[B
+    //   41: invokevirtual 167	java/io/DataOutputStream:write	([B)V
     //   44: aload_2
     //   45: astore_3
     //   46: aload_2
-    //   47: invokevirtual 169	java/io/DataOutputStream:flush	()V
+    //   47: invokevirtual 170	java/io/DataOutputStream:flush	()V
     //   50: goto +41 -> 91
     //   53: astore 4
     //   55: goto +13 -> 68
@@ -91,57 +91,57 @@ public class TtsNetDataSource
     //   67: astore_2
     //   68: aload_2
     //   69: astore_3
-    //   70: ldc 90
+    //   70: ldc 122
     //   72: iconst_1
-    //   73: ldc 171
+    //   73: ldc 172
     //   75: aload 4
-    //   77: invokestatic 174	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   77: invokestatic 175	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   80: aload_2
     //   81: astore_3
     //   82: aload 5
-    //   84: invokevirtual 177	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   84: invokevirtual 178	javax/net/ssl/HttpsURLConnection:disconnect	()V
     //   87: aload_2
     //   88: ifnull +7 -> 95
     //   91: aload_2
-    //   92: invokevirtual 180	java/io/DataOutputStream:close	()V
+    //   92: invokevirtual 181	java/io/DataOutputStream:close	()V
     //   95: aload 5
-    //   97: invokevirtual 184	javax/net/ssl/HttpsURLConnection:getResponseCode	()I
+    //   97: invokevirtual 185	javax/net/ssl/HttpsURLConnection:getResponseCode	()I
     //   100: sipush 200
     //   103: if_icmpne +34 -> 137
     //   106: aload_1
-    //   107: getfield 188	com/tencent/mobileqq/tts/data/TtsNetStreamParam:businessID	I
+    //   107: getfield 189	com/tencent/mobileqq/tts/data/TtsNetStreamParam:businessID	I
     //   110: iconst_1
     //   111: if_icmpne +11 -> 122
     //   114: aload_0
-    //   115: ldc 190
-    //   117: ldc 190
-    //   119: invokespecial 192	com/tencent/mobileqq/tts/data/TtsNetDataSource:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   122: new 194	com/tencent/mobileqq/tts/data/ConnectionInputStreamWrapper
+    //   115: ldc 191
+    //   117: ldc 191
+    //   119: invokespecial 193	com/tencent/mobileqq/tts/data/TtsNetDataSource:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   122: new 195	com/tencent/mobileqq/tts/data/ConnectionInputStreamWrapper
     //   125: dup
     //   126: aload 5
     //   128: aload 5
-    //   130: invokevirtual 198	javax/net/ssl/HttpsURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   133: invokespecial 201	com/tencent/mobileqq/tts/data/ConnectionInputStreamWrapper:<init>	(Ljavax/net/ssl/HttpsURLConnection;Ljava/io/InputStream;)V
+    //   130: invokevirtual 199	javax/net/ssl/HttpsURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   133: invokespecial 202	com/tencent/mobileqq/tts/data/ConnectionInputStreamWrapper:<init>	(Ljavax/net/ssl/HttpsURLConnection;Ljava/io/InputStream;)V
     //   136: areturn
     //   137: aload_1
-    //   138: getfield 188	com/tencent/mobileqq/tts/data/TtsNetStreamParam:businessID	I
+    //   138: getfield 189	com/tencent/mobileqq/tts/data/TtsNetStreamParam:businessID	I
     //   141: iconst_1
     //   142: if_icmpne +18 -> 160
     //   145: aload 5
-    //   147: invokevirtual 184	javax/net/ssl/HttpsURLConnection:getResponseCode	()I
-    //   150: invokestatic 205	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   147: invokevirtual 185	javax/net/ssl/HttpsURLConnection:getResponseCode	()I
+    //   150: invokestatic 206	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   153: astore_1
     //   154: aload_0
     //   155: aload_1
     //   156: aload_1
-    //   157: invokespecial 192	com/tencent/mobileqq/tts/data/TtsNetDataSource:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   157: invokespecial 193	com/tencent/mobileqq/tts/data/TtsNetDataSource:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   160: aconst_null
     //   161: areturn
     //   162: astore_1
     //   163: aload_3
     //   164: ifnull +7 -> 171
     //   167: aload_3
-    //   168: invokevirtual 180	java/io/DataOutputStream:close	()V
+    //   168: invokevirtual 181	java/io/DataOutputStream:close	()V
     //   171: aload_1
     //   172: athrow
     // Local variable table:
@@ -168,7 +168,7 @@ public class TtsNetDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tts.data.TtsNetDataSource
  * JD-Core Version:    0.7.0.1
  */

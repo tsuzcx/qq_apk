@@ -27,11 +27,6 @@ public class ShortVideoOtherResourceMgr
     return "other_res000_0";
   }
   
-  static boolean a()
-  {
-    return true;
-  }
-  
   static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
     return false;
@@ -106,17 +101,22 @@ public class ShortVideoOtherResourceMgr
   
   public static String b()
   {
-    String str = PtvFilterSoLoad.a();
+    String str = PtvFilterSoLoad.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append("other_res_cache");
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
   }
+  
+  static boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoOtherResourceMgr
  * JD-Core Version:    0.7.0.1
  */

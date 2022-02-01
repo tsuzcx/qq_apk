@@ -33,7 +33,7 @@ public class TroopHelperProvider
     a(50, new LeftSwipeReplyHelper(paramTroopChatPie));
     a(51, new TroopNotificationAIOHelper(paramTroopChatPie));
     a(58, new TroopEggLottieAnimHelper(paramTroopChatPie));
-    a(71, new AVGameHelper(paramTroopChatPie.b()));
+    a(71, new AVGameHelper(paramTroopChatPie.bv()));
     a(73, new HWTroopClassInfoTipsHelper(paramTroopChatPie));
     a(75, new StudyRoomTipBarHelper(paramTroopChatPie));
     a(76, new TroopBlockDialogHelper(paramTroopChatPie));
@@ -49,17 +49,19 @@ public class TroopHelperProvider
     a(96, new TroopSettingRedPointHelper(paramTroopChatPie));
     a(97, new TroopAskAnonymouslyHelper(paramTroopChatPie));
     a(99, new WriteTogetherEssenceMsgHelper(this, paramTroopChatPie));
-    TroopTipsHelper localTroopTipsHelper = new TroopTipsHelper(paramTroopChatPie.b());
+    TroopTipsHelper localTroopTipsHelper = new TroopTipsHelper(paramTroopChatPie.bv());
     a(109, localTroopTipsHelper);
     a(125, new TroopObserversHelper(paramTroopChatPie));
     a(localTroopTipsHelper);
     a(134, new TroopEffectHelper(paramTroopChatPie));
     a(136, new TroopGiftPanelHelper(paramTroopChatPie));
+    a(139, new TroopToDoHelper(paramTroopChatPie));
+    a(138, new OneClickJumpHelper(paramTroopChatPie.bv()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopHelperProvider
  * JD-Core Version:    0.7.0.1
  */

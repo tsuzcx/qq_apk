@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import com.tencent.featuretoggle.hltxkg.common.a;
 import com.tencent.featuretoggle.hltxkg.common.a.i;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.net.InetAddress;
 import java.net.URLEncoder;
 import java.util.List;
@@ -417,7 +418,7 @@ public final class c
     if (i != 0) {}
     try
     {
-      str = ((WifiManager)a.a().getApplicationContext().getSystemService("wifi")).getConnectionInfo().getMacAddress();
+      str = NetworkMonitor.getConnectionInfo((WifiManager)a.a().getApplicationContext().getSystemService("wifi")).getMacAddress();
     }
     catch (Throwable localThrowable1)
     {
@@ -448,7 +449,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.e.c
  * JD-Core Version:    0.7.0.1
  */

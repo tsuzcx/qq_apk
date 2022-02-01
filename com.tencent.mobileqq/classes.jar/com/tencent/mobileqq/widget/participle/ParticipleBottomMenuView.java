@@ -24,14 +24,14 @@ public class ParticipleBottomMenuView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ParticipleBottomMenuView.OnMenuClickListener jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleBottomMenuView$OnMenuClickListener;
-  private ParticipleView jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView;
-  private int jdField_b_of_type_Int;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private ImageView c;
+  private ParticipleView a;
+  private int b;
+  private int c;
   private ImageView d;
+  private ImageView e;
+  private ImageView f;
+  private ImageView g;
+  private ParticipleBottomMenuView.OnMenuClickListener h;
   
   public ParticipleBottomMenuView(Context paramContext)
   {
@@ -53,29 +53,29 @@ public class ParticipleBottomMenuView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(getContext()).inflate(2131559537, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372328));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372332));
-    this.c = ((ImageView)findViewById(2131372330));
-    this.d = ((ImageView)findViewById(2131372334));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(a(HardCodeUtil.a(2131707895)));
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(a(HardCodeUtil.a(2131707899)));
-    this.c.setContentDescription(a(HardCodeUtil.a(2131707898)));
-    this.d.setContentDescription(a(HardCodeUtil.a(2131707896)));
-    TextView localTextView = (TextView)findViewById(2131379802);
-    findViewById(2131372329).setOnClickListener(this);
-    findViewById(2131372333).setOnClickListener(this);
-    findViewById(2131372331).setOnClickListener(this);
-    findViewById(2131372335).setOnClickListener(this);
+    LayoutInflater.from(getContext()).inflate(2131625559, this, true);
+    this.d = ((ImageView)findViewById(2131439842));
+    this.e = ((ImageView)findViewById(2131439846));
+    this.f = ((ImageView)findViewById(2131439844));
+    this.g = ((ImageView)findViewById(2131439848));
+    this.d.setContentDescription(a(HardCodeUtil.a(2131905709)));
+    this.e.setContentDescription(a(HardCodeUtil.a(2131905713)));
+    this.f.setContentDescription(a(HardCodeUtil.a(2131905712)));
+    this.g.setContentDescription(a(HardCodeUtil.a(2131905710)));
+    TextView localTextView = (TextView)findViewById(2131448633);
+    findViewById(2131439843).setOnClickListener(this);
+    findViewById(2131439847).setOnClickListener(this);
+    findViewById(2131439845).setOnClickListener(this);
+    findViewById(2131439849).setOnClickListener(this);
     localTextView.setOnClickListener(this);
     if ((paramAttributeSet != null) && (paramContext != null))
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.az);
-      this.jdField_a_of_type_Int = paramContext.getInteger(R.styleable.as, 0);
-      this.jdField_b_of_type_Int = paramContext.getInteger(R.styleable.ar, 200);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.cb);
+      this.b = paramContext.getInteger(R.styleable.cd, 0);
+      this.c = paramContext.getInteger(R.styleable.cc, 200);
       paramContext.recycle();
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     paramAttributeSet = "#000000";
     if (i == 1) {
       paramContext = "#000000";
@@ -84,7 +84,7 @@ public class ParticipleBottomMenuView
     }
     setBackgroundColor(Color.parseColor(paramContext));
     paramContext = paramAttributeSet;
-    if (this.jdField_a_of_type_Int == 1) {
+    if (this.b == 1) {
       paramContext = "#ffffff";
     }
     localTextView.setTextColor(Color.parseColor(paramContext));
@@ -93,65 +93,65 @@ public class ParticipleBottomMenuView
   
   public String a(String paramString)
   {
-    return getContext().getString(2131690708, new Object[] { paramString });
+    return getContext().getString(2131887628, new Object[] { paramString });
   }
   
   public void a()
   {
-    ParticipleView localParticipleView = this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView;
-    if ((localParticipleView != null) && (!TextUtils.isEmpty(localParticipleView.a())))
+    ParticipleView localParticipleView = this.a;
+    if ((localParticipleView != null) && (!TextUtils.isEmpty(localParticipleView.getSelectedParticiple())))
     {
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.b == 1)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ParticipleBottomMenuView", 2, "updateMenuIcon enable STATE_BLACK");
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130845763);
-        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845788);
-        this.c.setBackgroundResource(2130845769);
-        this.d.setBackgroundResource(2130845801);
+        this.d.setBackgroundResource(2130847233);
+        this.e.setBackgroundResource(2130847258);
+        this.f.setBackgroundResource(2130847239);
+        this.g.setBackgroundResource(2130847271);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("ParticipleBottomMenuView", 2, "updateMenuIcon enable STATE_WHITE");
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130845760);
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845775);
-      this.c.setBackgroundResource(2130845766);
-      this.d.setBackgroundResource(2130845781);
+      this.d.setBackgroundResource(2130847230);
+      this.e.setBackgroundResource(2130847245);
+      this.f.setBackgroundResource(2130847236);
+      this.g.setBackgroundResource(2130847251);
       return;
     }
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.b == 1)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ParticipleBottomMenuView", 2, "updateMenuIcon unable STATE_BLACK");
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130845761);
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845776);
-      this.c.setBackgroundResource(2130845767);
-      this.d.setBackgroundResource(2130845778);
+      this.d.setBackgroundResource(2130847231);
+      this.e.setBackgroundResource(2130847246);
+      this.f.setBackgroundResource(2130847237);
+      this.g.setBackgroundResource(2130847248);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("ParticipleBottomMenuView", 2, "updateMenuIcon unable STATE_BLACK");
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130845762);
-    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845777);
-    this.c.setBackgroundResource(2130845768);
-    this.d.setBackgroundResource(2130845782);
+    this.d.setBackgroundResource(2130847232);
+    this.e.setBackgroundResource(2130847247);
+    this.f.setBackgroundResource(2130847238);
+    this.g.setBackgroundResource(2130847252);
   }
   
   public void a(ParticipleView paramParticipleView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView = paramParticipleView;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView.setOnParticipleSelectChangeListener(new ParticipleBottomMenuView.1(this));
+    this.a = paramParticipleView;
+    this.a.setOnParticipleSelectChangeListener(new ParticipleBottomMenuView.1(this));
   }
   
   public void b()
   {
     a();
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F });
-    localObjectAnimator.setDuration(this.jdField_b_of_type_Int);
+    localObjectAnimator.setDuration(this.c);
     setAlpha(0.0F);
     setVisibility(0);
     localObjectAnimator.start();
@@ -159,48 +159,48 @@ public class ParticipleBottomMenuView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleBottomMenuView$OnMenuClickListener != null) {
-      if (paramView.getId() == 2131379802)
+    if (this.h != null) {
+      if (paramView.getId() == 2131448633)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleBottomMenuView$OnMenuClickListener.a();
+        this.h.a();
         ReportController.b(null, "dc00898", "", "", "0X800A35F", "0X800A35F", 0, 0, "", "", "", "");
       }
       else
       {
-        Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView;
+        Object localObject = this.a;
         if (localObject != null)
         {
-          localObject = ((ParticipleView)localObject).a();
+          localObject = ((ParticipleView)localObject).getSelectedParticiple();
           if (!TextUtils.isEmpty((CharSequence)localObject))
           {
-            if (paramView.getId() == 2131372329)
+            if (paramView.getId() == 2131439843)
             {
-              this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleBottomMenuView$OnMenuClickListener.a((String)localObject);
+              this.h.a((String)localObject);
               ReportController.b(null, "dc00898", "", "", "0X800A35A", "0X800A35A", 0, 0, "", "", "", "");
             }
-            else if (paramView.getId() == 2131372331)
+            else if (paramView.getId() == 2131439845)
             {
-              this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleBottomMenuView$OnMenuClickListener.c((String)localObject);
+              this.h.c((String)localObject);
               ReportController.b(null, "dc00898", "", "", "0X800A35B", "0X800A35B", 0, 0, "", "", "", "");
             }
-            else if (paramView.getId() == 2131372333)
+            else if (paramView.getId() == 2131439847)
             {
-              this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleBottomMenuView$OnMenuClickListener.b((String)localObject);
+              this.h.b((String)localObject);
               ReportController.b(null, "dc00898", "", "", "0X800A35C", "0X800A35C", 0, 0, "", "", "", "");
             }
-            else if (paramView.getId() == 2131372335)
+            else if (paramView.getId() == 2131439849)
             {
-              this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleBottomMenuView$OnMenuClickListener.d((String)localObject);
+              this.h.d((String)localObject);
               ReportController.b(null, "dc00898", "", "", "0X800A35E", "0X800A35E", 0, 0, "", "", "", "");
             }
           }
           else {
-            QQToast.a(BaseApplication.getContext(), -1, HardCodeUtil.a(2131707894), 0).a();
+            QQToast.makeText(BaseApplication.getContext(), -1, HardCodeUtil.a(2131905708), 0).show();
           }
         }
         else
         {
-          QQToast.a(getContext(), HardCodeUtil.a(2131707897), 0).a();
+          QQToast.makeText(getContext(), HardCodeUtil.a(2131905711), 0).show();
         }
       }
     }
@@ -209,12 +209,12 @@ public class ParticipleBottomMenuView
   
   public void setOnMenuClickListener(ParticipleBottomMenuView.OnMenuClickListener paramOnMenuClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleBottomMenuView$OnMenuClickListener = paramOnMenuClickListener;
+    this.h = paramOnMenuClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.participle.ParticipleBottomMenuView
  * JD-Core Version:    0.7.0.1
  */

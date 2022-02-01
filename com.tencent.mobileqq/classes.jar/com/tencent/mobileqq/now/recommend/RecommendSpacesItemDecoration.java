@@ -24,7 +24,7 @@ public class RecommendSpacesItemDecoration
     int j = 0;
     if ((paramRecyclerView != null) && ((paramView.getTag() instanceof VideoCardHolder)))
     {
-      int m = ((VideoCardHolder)paramView.getTag()).a;
+      int m = ((VideoCardHolder)paramView.getTag()).j;
       int i = -1;
       if ((paramView.getLayoutParams() instanceof StaggeredGridLayoutManager.LayoutParams)) {
         i = ((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex();
@@ -71,7 +71,7 @@ public class RecommendSpacesItemDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.recommend.RecommendSpacesItemDecoration
  * JD-Core Version:    0.7.0.1
  */

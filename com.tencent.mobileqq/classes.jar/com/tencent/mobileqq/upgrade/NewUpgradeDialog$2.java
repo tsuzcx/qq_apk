@@ -17,12 +17,12 @@ class NewUpgradeDialog$2
   
   public void onClick(View paramView)
   {
-    LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.a(), 2, 200));
-    AppCircleReportManager.a().a(17, STUtils.a(10010, NewUpgradeDialog.a(), 4, 200));
+    LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.e(), 2, 200));
+    AppCircleReportManager.a().a(17, STUtils.a(10010, NewUpgradeDialog.e(), 4, 200));
     this.a.dismiss();
     ((Activity)this.a.a.get()).finish();
     int i;
-    if (NewUpgradeDialog.a() == 2) {
+    if (NewUpgradeDialog.e() == 2) {
       i = 1;
     } else {
       i = 2;
@@ -33,7 +33,7 @@ class NewUpgradeDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeDialog.2
  * JD-Core Version:    0.7.0.1
  */

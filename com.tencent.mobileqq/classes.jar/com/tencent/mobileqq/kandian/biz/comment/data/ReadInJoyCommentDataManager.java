@@ -34,7 +34,6 @@ import com.tencent.mobileqq.kandian.biz.comment.guide.GuideHelper;
 import com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkHelper;
 import com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkWrapper;
 import com.tencent.mobileqq.kandian.biz.comment.rptdata.RIJCommentRptDataUtil;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils;
@@ -45,7 +44,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyObserver;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyUserInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -69,88 +67,169 @@ public class ReadInJoyCommentDataManager
   extends ReadInJoyObserver
   implements ReadInJoyCommentBubbleObserver, ReadInJoyCommentObserver
 {
-  private static final LruCache<String, Boolean> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
-  private static Map<String, ReadInJoyCommentDataManager> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private ReadInJoyCommentDataManager.CommentAnchor jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor;
-  private ReadInJoyCommentPBModule.Label jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$Label = new ReadInJoyCommentPBModule.Label();
-  private ReadInJoyCommentPBModule jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule = null;
-  private ReadInJoyCommentSSOModule jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentSSOModule = null;
-  protected CommonCommentData a;
-  private GuideHelper jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuideHelper = new GuideHelper();
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private LongSparseArray<Pair<String, BaseCommentData>> jdField_a_of_type_ComTencentUtilLongSparseArray = new LongSparseArray();
-  protected String a;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private long jdField_b_of_type_Long = 0L;
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<String> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private Map<String, BaseCommentData> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_b_of_type_Boolean = true;
-  private long jdField_c_of_type_Long = 0L;
-  private String jdField_c_of_type_JavaLangString = "";
-  private List<String> jdField_c_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_c_of_type_Boolean = true;
-  private long jdField_d_of_type_Long = 0L;
-  private String jdField_d_of_type_JavaLangString = "";
-  private List<String> jdField_d_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_d_of_type_Boolean = true;
-  private String jdField_e_of_type_JavaLangString = "";
-  private List<ReadInJoyCommentDataManager.OnDataChangeListener> jdField_e_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_e_of_type_Boolean = false;
-  private String jdField_f_of_type_JavaLangString = "";
-  private boolean jdField_f_of_type_Boolean = true;
-  private String jdField_g_of_type_JavaLangString = "";
-  private boolean jdField_g_of_type_Boolean;
-  private String jdField_h_of_type_JavaLangString = "";
-  private boolean jdField_h_of_type_Boolean;
-  private String jdField_i_of_type_JavaLangString = "";
-  private boolean jdField_i_of_type_Boolean;
+  private static Map<String, ReadInJoyCommentDataManager> c = new HashMap();
+  private static final LruCache<String, Boolean> d = new LruCache(20);
+  private ReadInJoyCommentPBModule A = null;
+  private List<ReadInJoyCommentDataManager.OnDataChangeListener> B = new ArrayList();
+  private LongSparseArray<Pair<String, BaseCommentData>> C = new LongSparseArray();
+  private ReadInJoyCommentDataManager.CommentAnchor D;
+  private GuideHelper E = new GuideHelper();
+  private String F = "";
+  private String G = "";
+  private boolean H = true;
+  private boolean I;
+  private ReadInJoyCommentPBModule.Label J = new ReadInJoyCommentPBModule.Label();
+  private boolean K;
+  private String L = "";
+  private boolean M;
+  protected String a = "";
+  protected CommonCommentData b;
+  private Map<String, BaseCommentData> e = new HashMap();
+  private int f;
+  private AbsBaseArticleInfo g;
+  private List<String> h = new ArrayList();
+  private List<String> i = new ArrayList();
+  private String j = "";
+  private boolean k = true;
+  private List<String> l = new ArrayList();
+  private String m = "";
+  private boolean n = true;
+  private long o = 0L;
+  private long p = 0L;
+  private String q = "";
+  private boolean r = true;
+  private long s = 0L;
+  private String t = "";
+  private boolean u = true;
+  private long v = 0L;
+  private String w = "";
+  private boolean x = false;
+  private List<String> y = new ArrayList();
+  private ReadInJoyCommentSSOModule z = null;
   
   private ReadInJoyCommentDataManager(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    Object localObject = ReadInJoyUserInfoModule.a();
+    Object localObject = ReadInJoyUserInfoModule.e();
     if (localObject != null)
     {
-      localObject = ((IReadInJoyLogicEngine)localObject).b();
+      localObject = ((IReadInJoyLogicEngine)localObject).aj();
       if ((localObject instanceof ReadInJoyCommentPBModule))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule = ((ReadInJoyCommentPBModule)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule.a(this);
+        this.A = ((ReadInJoyCommentPBModule)localObject);
+        this.A.a(this);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentSSOModule = new ReadInJoyCommentSSOModule();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentSSOModule.a(this);
-    a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuideHelper);
-    m();
+    this.z = new ReadInJoyCommentSSOModule();
+    this.z.a(this);
+    a(this.E);
+    u();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("constructor: rowkey=");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(", pbModule=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule);
+    ((StringBuilder)localObject).append(this.A);
     QLog.d("ReadInJoyCommentDataManager", 1, ((StringBuilder)localObject).toString());
     RIJEmotionCacheManager.b();
   }
   
-  private int a(BaseCommentData paramBaseCommentData)
+  private void A()
   {
-    int j = 0;
-    if (paramBaseCommentData == null) {
-      return 0;
+    Iterator localIterator = this.e.values().iterator();
+    while (localIterator.hasNext()) {
+      if (((BaseCommentData)localIterator.next()).isComment())
+      {
+        i1 = 1;
+        break label46;
+      }
     }
-    if (paramBaseCommentData.isActivity()) {
-      return 4;
+    int i1 = 0;
+    label46:
+    if (i1 == 0) {
+      B();
     }
-    if (paramBaseCommentData.isBanner()) {
-      return 5;
+  }
+  
+  private void B()
+  {
+    Object localObject = this.e;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
-    if (paramBaseCommentData.isDynamicComment()) {
-      j = 7;
+    localObject = this.h;
+    if (localObject != null) {
+      ((List)localObject).clear();
     }
-    return j;
+    localObject = this.i;
+    if (localObject != null) {
+      ((List)localObject).clear();
+    }
+    localObject = this.y;
+    if (localObject != null) {
+      ((List)localObject).clear();
+    }
+  }
+  
+  private Pair<Integer, Integer> C()
+  {
+    int i2 = this.h.size() - 1;
+    int i1 = 0;
+    BaseCommentData localBaseCommentData;
+    while (i2 >= 0)
+    {
+      localBaseCommentData = (BaseCommentData)this.e.get(this.h.get(i2));
+      if ((localBaseCommentData == null) || (!localBaseCommentData.isAuthorBottom)) {
+        break;
+      }
+      i1 += 1;
+      i2 -= 1;
+    }
+    i2 = D();
+    int i3 = i2;
+    while (i2 <= this.h.size() - 1 - i1)
+    {
+      localBaseCommentData = (BaseCommentData)this.e.get(this.h.get(i2));
+      if ((localBaseCommentData == null) || (!localBaseCommentData.isAuthorSticky)) {
+        break;
+      }
+      i3 += 1;
+      i2 += 1;
+    }
+    return new Pair(Integer.valueOf(this.h.size() - i3 - i1), Integer.valueOf(i1));
+  }
+  
+  private int D()
+  {
+    Object localObject1 = this.h;
+    int i3 = 0;
+    int i1 = 0;
+    int i2 = i3;
+    if (localObject1 != null)
+    {
+      i2 = i3;
+      if (((List)localObject1).size() > 0)
+      {
+        localObject1 = this.h.iterator();
+        for (;;)
+        {
+          i2 = i1;
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          Object localObject2 = (String)((Iterator)localObject1).next();
+          localObject2 = (BaseCommentData)this.e.get(localObject2);
+          i2 = i1;
+          if (localObject2 == null) {
+            break;
+          }
+          i2 = i1;
+          if (!((BaseCommentData)localObject2).isBanner) {
+            break;
+          }
+          i1 += 1;
+        }
+      }
+    }
+    return i2;
   }
   
   public static ReadInJoyCommentDataManager a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -158,7 +237,7 @@ public class ReadInJoyCommentDataManager
     if (paramAbsBaseArticleInfo == null) {
       return null;
     }
-    return (ReadInJoyCommentDataManager)jdField_a_of_type_JavaUtilMap.get(paramAbsBaseArticleInfo.innerUniqueID);
+    return (ReadInJoyCommentDataManager)c.get(paramAbsBaseArticleInfo.innerUniqueID);
   }
   
   public static ReadInJoyCommentDataManager a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
@@ -166,73 +245,33 @@ public class ReadInJoyCommentDataManager
     if (paramAbsBaseArticleInfo == null) {
       return null;
     }
-    ReadInJoyCommentDataManager localReadInJoyCommentDataManager = (ReadInJoyCommentDataManager)jdField_a_of_type_JavaUtilMap.get(paramAbsBaseArticleInfo.innerUniqueID);
+    ReadInJoyCommentDataManager localReadInJoyCommentDataManager = (ReadInJoyCommentDataManager)c.get(paramAbsBaseArticleInfo.innerUniqueID);
     if (localReadInJoyCommentDataManager != null) {
       return localReadInJoyCommentDataManager;
     }
     localReadInJoyCommentDataManager = new ReadInJoyCommentDataManager(paramAbsBaseArticleInfo.innerUniqueID);
-    localReadInJoyCommentDataManager.b(paramAbsBaseArticleInfo);
-    localReadInJoyCommentDataManager.jdField_a_of_type_Int = paramInt;
+    localReadInJoyCommentDataManager.c(paramAbsBaseArticleInfo);
+    localReadInJoyCommentDataManager.f = paramInt;
     if ((paramInt != 1) && (paramInt != 10))
     {
-      localReadInJoyCommentDataManager.jdField_a_of_type_JavaLangString = paramAbsBaseArticleInfo.innerUniqueID;
-      localReadInJoyCommentDataManager.jdField_h_of_type_JavaLangString = paramAbsBaseArticleInfo.innerUniqueID;
+      localReadInJoyCommentDataManager.a = paramAbsBaseArticleInfo.innerUniqueID;
+      localReadInJoyCommentDataManager.G = paramAbsBaseArticleInfo.innerUniqueID;
     }
     else
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramAbsBaseArticleInfo.mArticleID);
       localStringBuilder.append("");
-      localReadInJoyCommentDataManager.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      localReadInJoyCommentDataManager.a = localStringBuilder.toString();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramAbsBaseArticleInfo.mArticleID);
       localStringBuilder.append("");
-      localReadInJoyCommentDataManager.jdField_g_of_type_JavaLangString = localStringBuilder.toString();
+      localReadInJoyCommentDataManager.F = localStringBuilder.toString();
     }
-    jdField_a_of_type_JavaUtilMap.put(paramAbsBaseArticleInfo.innerUniqueID, localReadInJoyCommentDataManager);
-    localReadInJoyCommentDataManager.jdField_h_of_type_JavaLangString = paramAbsBaseArticleInfo.innerUniqueID;
+    c.put(paramAbsBaseArticleInfo.innerUniqueID, localReadInJoyCommentDataManager);
+    localReadInJoyCommentDataManager.G = paramAbsBaseArticleInfo.innerUniqueID;
     QLog.d("ReadInJoyCommentDataManager", 2, new Object[] { "create commentDataManager, articleInfo : ", paramAbsBaseArticleInfo, ", src : ", Integer.valueOf(paramInt) });
     return localReadInJoyCommentDataManager;
-  }
-  
-  private Pair<Integer, Integer> a()
-  {
-    int k = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    int j = 0;
-    BaseCommentData localBaseCommentData;
-    while (k >= 0)
-    {
-      localBaseCommentData = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaUtilList.get(k));
-      if ((localBaseCommentData == null) || (!localBaseCommentData.isAuthorBottom)) {
-        break;
-      }
-      j += 1;
-      k -= 1;
-    }
-    k = b();
-    int m = k;
-    while (k <= this.jdField_a_of_type_JavaUtilList.size() - 1 - j)
-    {
-      localBaseCommentData = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaUtilList.get(k));
-      if ((localBaseCommentData == null) || (!localBaseCommentData.isAuthorSticky)) {
-        break;
-      }
-      m += 1;
-      k += 1;
-    }
-    return new Pair(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size() - m - j), Integer.valueOf(j));
-  }
-  
-  private List<CommentViewItem> a(int paramInt, List<BaseCommentData> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      BaseCommentData localBaseCommentData = (BaseCommentData)paramList.next();
-      localArrayList.add(new CommentViewItem(paramInt, a(localBaseCommentData), localBaseCommentData, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
-    }
-    return localArrayList;
   }
   
   private List<CommentViewItem> a(boolean paramBoolean, BaseCommentData paramBaseCommentData, List<SubCommentData> paramList)
@@ -240,8 +279,8 @@ public class ReadInJoyCommentDataManager
     ArrayList localArrayList = new ArrayList();
     if (paramBoolean)
     {
-      localArrayList.add(new CommentViewItem(0, paramBaseCommentData, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
-      localArrayList.add(new CommentViewItem(3, paramBaseCommentData, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
+      localArrayList.add(new CommentViewItem(0, paramBaseCommentData, this.g));
+      localArrayList.add(new CommentViewItem(3, paramBaseCommentData, this.g));
     }
     if ((paramList != null) && (paramList.size() > 0))
     {
@@ -249,13 +288,13 @@ public class ReadInJoyCommentDataManager
       while (paramBaseCommentData.hasNext())
       {
         paramList = (SubCommentData)paramBaseCommentData.next();
-        int j;
+        int i1;
         if (paramList.isActivity()) {
-          j = 4;
+          i1 = 4;
         } else {
-          j = 0;
+          i1 = 0;
         }
-        localArrayList.add(new CommentViewItem(j, paramList, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
+        localArrayList.add(new CommentViewItem(i1, paramList, this.g));
       }
     }
     return localArrayList;
@@ -263,11 +302,11 @@ public class ReadInJoyCommentDataManager
   
   private void a(int paramInt, String paramString1, String paramString2)
   {
-    s();
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    y();
+    if ((this.A != null) && (!TextUtils.isEmpty(this.a)))
     {
-      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "fetch sub commentList, id : ", paramString1, ", fetchType : ", Integer.valueOf(paramInt), ", cookie : ", this.jdField_c_of_type_JavaLangString });
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID, paramString1, paramString2, this.jdField_c_of_type_JavaLangString, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityCommonCommentData);
+      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "fetch sub commentList, id : ", paramString1, ", fetchType : ", Integer.valueOf(paramInt), ", cookie : ", this.m });
+      this.A.a(this.g.innerUniqueID, paramString1, paramString2, this.m, 10, this.f, this.b);
       return;
     }
     a(new ReadInJoyCommentDataManager.13(this, paramInt));
@@ -280,26 +319,16 @@ public class ReadInJoyCommentDataManager
   
   private void a(ReadInJoyCommentDataManager.CallbackActionJob paramCallbackActionJob, boolean paramBoolean)
   {
-    if ((!this.jdField_e_of_type_JavaUtilList.isEmpty()) && (paramCallbackActionJob != null)) {
-      a(this.jdField_e_of_type_JavaUtilList, paramBoolean, paramCallbackActionJob);
+    if ((!this.B.isEmpty()) && (paramCallbackActionJob != null)) {
+      a(this.B, paramBoolean, paramCallbackActionJob);
     }
     ArrayList localArrayList = new ArrayList();
-    if (RIJCommentResultDispatcher.a().a() != null) {
-      localArrayList.addAll(RIJCommentResultDispatcher.a().a());
+    if (RIJCommentResultDispatcher.a().b() != null) {
+      localArrayList.addAll(RIJCommentResultDispatcher.a().b());
     }
     if (paramCallbackActionJob != null) {
       a(localArrayList, paramBoolean, paramCallbackActionJob);
     }
-  }
-  
-  private void a(BaseCommentData paramBaseCommentData)
-  {
-    if (!(paramBaseCommentData instanceof CommentData)) {
-      return;
-    }
-    CommentData localCommentData = (CommentData)paramBaseCommentData;
-    a(localCommentData, -(localCommentData.subCommentNum + 1));
-    e(paramBaseCommentData.commentId);
   }
   
   private void a(CommentData paramCommentData, int paramInt)
@@ -307,61 +336,61 @@ public class ReadInJoyCommentDataManager
     if (paramCommentData == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.h;
     if ((localObject != null) && (((List)localObject).contains(paramCommentData.commentId)))
     {
-      this.jdField_c_of_type_Long += paramInt;
+      this.s += paramInt;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("updateCommentCount | mHotCommentCnt ");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Long);
+      ((StringBuilder)localObject).append(this.s);
       QLog.d("ReadInJoyCommentDataManager", 2, ((StringBuilder)localObject).toString());
     }
-    long l1 = this.jdField_b_of_type_Long;
+    long l1 = this.p;
     long l2 = paramInt;
-    this.jdField_b_of_type_Long = (l1 + l2);
+    this.p = (l1 + l2);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("updateCommentCount | totalCommentCnt ");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+    ((StringBuilder)localObject).append(this.p);
     QLog.d("ReadInJoyCommentDataManager", 2, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_d_of_type_JavaUtilList;
+    localObject = this.y;
     if ((localObject != null) && (((List)localObject).contains(paramCommentData.commentId)))
     {
-      this.jdField_d_of_type_Long += l2;
+      this.v += l2;
       paramCommentData = new StringBuilder();
       paramCommentData.append("updateCommentCount | mFamilyCommentCnt ");
-      paramCommentData.append(this.jdField_d_of_type_Long);
+      paramCommentData.append(this.v);
       QLog.d("ReadInJoyCommentDataManager", 2, paramCommentData.toString());
     }
   }
   
   private void a(CreateCommentResult paramCreateCommentResult)
   {
-    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "onCreateCommentResult | create comment resp, seq ", Long.valueOf(paramCreateCommentResult.jdField_a_of_type_Long), " succ : ", Boolean.valueOf(paramCreateCommentResult.jdField_a_of_type_Boolean), " data : ", paramCreateCommentResult.jdField_a_of_type_JavaLangString });
-    int j = paramCreateCommentResult.jdField_c_of_type_Int;
-    if (this.jdField_b_of_type_JavaUtilList == null) {
-      this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "onCreateCommentResult | create comment resp, seq ", Long.valueOf(paramCreateCommentResult.a), " succ : ", Boolean.valueOf(paramCreateCommentResult.b), " data : ", paramCreateCommentResult.e });
+    int i1 = paramCreateCommentResult.i;
+    if (this.i == null) {
+      this.i = new ArrayList();
     }
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.h == null) {
+      this.h = new ArrayList();
     }
-    Pair localPair = (Pair)this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(paramCreateCommentResult.jdField_a_of_type_Long);
+    Pair localPair = (Pair)this.C.a(paramCreateCommentResult.a);
     if (localPair == null)
     {
       QLog.d("ReadInJoyCommentDataManager", 1, "onCreateCommentResult | fake comment data not exist, return !");
       return;
     }
     BaseCommentData localBaseCommentData = (BaseCommentData)localPair.second;
-    this.jdField_a_of_type_ComTencentUtilLongSparseArray.b(paramCreateCommentResult.jdField_a_of_type_Long);
-    if (!TextUtils.isEmpty(paramCreateCommentResult.jdField_c_of_type_JavaLangString)) {
-      localBaseCommentData.commentContent = paramCreateCommentResult.jdField_c_of_type_JavaLangString;
+    this.C.c(paramCreateCommentResult.a);
+    if (!TextUtils.isEmpty(paramCreateCommentResult.g)) {
+      localBaseCommentData.commentContent = paramCreateCommentResult.g;
     }
-    localBaseCommentData.shareUrl = paramCreateCommentResult.jdField_d_of_type_JavaLangString;
-    if (paramCreateCommentResult.jdField_a_of_type_Boolean)
+    localBaseCommentData.shareUrl = paramCreateCommentResult.h;
+    if (paramCreateCommentResult.b)
     {
-      localBaseCommentData.commentRptDataList = paramCreateCommentResult.jdField_a_of_type_JavaUtilList;
-      ReadInJoyCommentUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, (String)localPair.first);
-      c(localBaseCommentData);
-      a(localBaseCommentData, paramCreateCommentResult.jdField_a_of_type_JavaLangString, j);
+      localBaseCommentData.commentRptDataList = paramCreateCommentResult.k;
+      ReadInJoyCommentUtils.a(this.g, (String)localPair.first);
+      d(localBaseCommentData);
+      a(localBaseCommentData, paramCreateCommentResult.e, i1);
       return;
     }
     if ((localBaseCommentData instanceof CommentData))
@@ -374,58 +403,25 @@ public class ReadInJoyCommentDataManager
     }
   }
   
-  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo == null) {
-      return;
-    }
-    paramAbsBaseArticleInfo = (ReadInJoyCommentDataManager)jdField_a_of_type_JavaUtilMap.remove(paramAbsBaseArticleInfo.innerUniqueID);
-    if (paramAbsBaseArticleInfo != null)
-    {
-      paramAbsBaseArticleInfo.b();
-      QLog.d("ReadInJoyCommentDataManager", 1, "removeCommentDataManager | destroy");
-    }
-  }
-  
-  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
-  {
-    if (paramAbsBaseArticleInfo == null) {
-      return;
-    }
-    if (paramInt == 6)
-    {
-      paramAbsBaseArticleInfo = (ReadInJoyCommentDataManager)jdField_a_of_type_JavaUtilMap.get(paramAbsBaseArticleInfo.innerUniqueID);
-      if (paramAbsBaseArticleInfo != null) {
-        paramAbsBaseArticleInfo.r();
-      }
-      paramAbsBaseArticleInfo = new StringBuilder();
-      paramAbsBaseArticleInfo.append("removeCommentDataManager feedsType ");
-      paramAbsBaseArticleInfo.append(paramInt);
-      QLog.d("ReadInJoyCommentDataManager", 1, paramAbsBaseArticleInfo.toString());
-      return;
-    }
-    a(paramAbsBaseArticleInfo);
-  }
-  
   public static void a(String paramString, boolean paramBoolean)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramBoolean)) {
-      jdField_a_of_type_AndroidSupportV4UtilLruCache.put(b(paramString), Boolean.TRUE);
+      d.put(l(paramString), Boolean.TRUE);
     }
   }
   
   private void a(List<ReadInJoyCommentDataManager.OnDataChangeListener> paramList, boolean paramBoolean, ReadInJoyCommentDataManager.CallbackActionJob paramCallbackActionJob)
   {
-    int j = 0;
-    while (j < paramList.size())
+    int i1 = 0;
+    while (i1 < paramList.size())
     {
-      ReadInJoyCommentDataManager.OnDataChangeListener localOnDataChangeListener = (ReadInJoyCommentDataManager.OnDataChangeListener)paramList.get(j);
+      ReadInJoyCommentDataManager.OnDataChangeListener localOnDataChangeListener = (ReadInJoyCommentDataManager.OnDataChangeListener)paramList.get(i1);
       if (paramBoolean) {
         ThreadManager.getUIHandler().post(new ReadInJoyCommentDataManager.36(this, paramCallbackActionJob, localOnDataChangeListener));
       } else {
         paramCallbackActionJob.a(localOnDataChangeListener);
       }
-      j += 1;
+      i1 += 1;
     }
   }
   
@@ -433,127 +429,109 @@ public class ReadInJoyCommentDataManager
   {
     if (paramBoolean1)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2, HardCodeUtil.a(2131718285), 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2, HardCodeUtil.a(2131915777), 0).show();
       return;
     }
     BaseApplication localBaseApplication = BaseApplicationImpl.context;
-    int j;
+    int i1;
     if (paramBoolean2)
     {
       if (!TextUtils.isEmpty(paramString)) {
         break label61;
       }
-      j = 2131718284;
+      i1 = 2131915776;
     }
     else
     {
-      j = 2131718283;
+      i1 = 2131915775;
     }
-    paramString = HardCodeUtil.a(j);
+    paramString = HardCodeUtil.a(i1);
     label61:
-    QQToast.a(localBaseApplication, 1, paramString, 0).a();
+    QQToast.makeText(localBaseApplication, 1, paramString, 0).show();
   }
   
-  public static boolean a(String paramString)
+  private RIJRequestDataForComment b(String paramString1, String paramString2)
   {
-    return (!TextUtils.isEmpty(paramString)) && (jdField_a_of_type_AndroidSupportV4UtilLruCache.get(b(paramString)) != null);
+    RIJRequestDataForComment localRIJRequestDataForComment = new RIJRequestDataForComment();
+    localRIJRequestDataForComment.a = this.g.innerUniqueID;
+    localRIJRequestDataForComment.b = paramString1;
+    localRIJRequestDataForComment.c = 10;
+    localRIJRequestDataForComment.d = this.f;
+    localRIJRequestDataForComment.f = this.b;
+    localRIJRequestDataForComment.e = paramString2;
+    localRIJRequestDataForComment.i = this.g.mSubscribeID;
+    localRIJRequestDataForComment.k = this.g.innerUniqueID;
+    localRIJRequestDataForComment.j = this.g.getVideoVid();
+    localRIJRequestDataForComment.g = this.g.tags;
+    localRIJRequestDataForComment.h = this.g.unioChann;
+    localRIJRequestDataForComment.l = this.g.mAdScene;
+    return localRIJRequestDataForComment;
   }
   
-  private boolean a(List<CommentData> paramList)
+  public static ReadInJoyCommentDataManager b(String paramString)
   {
-    if (paramList != null)
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor;
-      if ((localObject != null) && (((ReadInJoyCommentDataManager.CommentAnchor)localObject).jdField_b_of_type_Boolean))
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor.jdField_a_of_type_JavaLangString == null) {
-          return false;
-        }
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localObject = (CommentData)paramList.next();
-          if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor.jdField_a_of_type_JavaLangString.equals(((CommentData)localObject).commentId)))
-          {
-            ((CommentData)localObject).isAnchor = true;
-            return true;
-          }
-        }
-      }
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    return false;
-  }
-  
-  private int b()
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
-    int m = 0;
-    int j = 0;
-    int k = m;
-    if (localObject1 != null)
-    {
-      k = m;
-      if (((List)localObject1).size() > 0)
-      {
-        localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-        for (;;)
-        {
-          k = j;
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          Object localObject2 = (String)((Iterator)localObject1).next();
-          localObject2 = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(localObject2);
-          k = j;
-          if (localObject2 == null) {
-            break;
-          }
-          k = j;
-          if (!((BaseCommentData)localObject2).isBanner) {
-            break;
-          }
-          j += 1;
-        }
-      }
-    }
-    return k;
-  }
-  
-  private static String b(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    localStringBuilder.append('_');
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  private List<CommentViewItem> b(int paramInt, List<String> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      if (paramList.isEmpty()) {
-        return localArrayList;
-      }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        String str = (String)paramList.next();
-        if ((!TextUtils.isEmpty(str)) && (this.jdField_b_of_type_JavaUtilMap.get(str) != null)) {
-          localArrayList.add(new CommentViewItem(paramInt, a((BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(str)), (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(str), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
-        }
-      }
-    }
-    return localArrayList;
+    return (ReadInJoyCommentDataManager)c.get(paramString);
   }
   
   private void b(BaseCommentData paramBaseCommentData)
   {
+    if (!(paramBaseCommentData instanceof CommentData)) {
+      return;
+    }
+    CommentData localCommentData = (CommentData)paramBaseCommentData;
+    a(localCommentData, -(localCommentData.subCommentNum + 1));
+    m(paramBaseCommentData.commentId);
+  }
+  
+  private void b(CreateCommentResult paramCreateCommentResult)
+  {
+    if (this.g != null) {
+      ThreadManager.getUIHandler().post(new ReadInJoyCommentDataManager.37(this, paramCreateCommentResult));
+    }
+  }
+  
+  public static void b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (paramAbsBaseArticleInfo == null) {
+      return;
+    }
+    paramAbsBaseArticleInfo = (ReadInJoyCommentDataManager)c.remove(paramAbsBaseArticleInfo.innerUniqueID);
+    if (paramAbsBaseArticleInfo != null)
+    {
+      paramAbsBaseArticleInfo.e();
+      QLog.d("ReadInJoyCommentDataManager", 1, "removeCommentDataManager | destroy");
+    }
+  }
+  
+  public static void b(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
+  {
+    if (paramAbsBaseArticleInfo == null) {
+      return;
+    }
+    if (paramInt == 6)
+    {
+      paramAbsBaseArticleInfo = (ReadInJoyCommentDataManager)c.get(paramAbsBaseArticleInfo.innerUniqueID);
+      if (paramAbsBaseArticleInfo != null) {
+        paramAbsBaseArticleInfo.x();
+      }
+      paramAbsBaseArticleInfo = new StringBuilder();
+      paramAbsBaseArticleInfo.append("removeCommentDataManager feedsType ");
+      paramAbsBaseArticleInfo.append(paramInt);
+      QLog.d("ReadInJoyCommentDataManager", 1, paramAbsBaseArticleInfo.toString());
+      return;
+    }
+    b(paramAbsBaseArticleInfo);
+  }
+  
+  private void c(BaseCommentData paramBaseCommentData)
+  {
     if (!(paramBaseCommentData instanceof SubCommentData)) {
       return;
     }
-    CommentData localCommentData = (CommentData)this.jdField_b_of_type_JavaUtilMap.get(((SubCommentData)paramBaseCommentData).parentCommentId);
+    CommentData localCommentData = (CommentData)this.e.get(((SubCommentData)paramBaseCommentData).parentCommentId);
     if (localCommentData == null) {
       return;
     }
@@ -573,29 +551,12 @@ public class ReadInJoyCommentDataManager
       }
     }
     a(localCommentData, -1);
-    this.jdField_c_of_type_JavaUtilList.remove(paramBaseCommentData.commentId);
-  }
-  
-  private void b(CreateCommentResult paramCreateCommentResult)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null) {
-      ThreadManager.getUIHandler().post(new ReadInJoyCommentDataManager.37(this, paramCreateCommentResult));
-    }
-  }
-  
-  private void c(BaseCommentData paramBaseCommentData)
-  {
-    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin(), null);
-    if ((localReadInJoyUserInfo != null) && (!TextUtils.isEmpty(localReadInJoyUserInfo.upIconUrl)) && (paramBaseCommentData != null))
-    {
-      paramBaseCommentData.userIdentityIcon = new BaseCommentData.UserIdentityIcon();
-      paramBaseCommentData.userIdentityIcon.jdField_a_of_type_JavaLangString = localReadInJoyUserInfo.upIconUrl;
-    }
+    this.l.remove(paramBaseCommentData.commentId);
   }
   
   private void c(List<CommentData> paramList1, List<CommentData> paramList2)
   {
-    if (this.jdField_b_of_type_JavaUtilMap == null) {
+    if (this.e == null) {
       return;
     }
     Object localObject;
@@ -607,8 +568,8 @@ public class ReadInJoyCommentDataManager
         localObject = (CommentData)paramList1.next();
         if (localObject != null)
         {
-          this.jdField_b_of_type_JavaUtilMap.put(((CommentData)localObject).commentId, localObject);
-          List localList = this.jdField_a_of_type_JavaUtilList;
+          this.e.put(((CommentData)localObject).commentId, localObject);
+          List localList = this.h;
           if (localList != null) {
             localList.add(((CommentData)localObject).commentId);
           }
@@ -623,10 +584,10 @@ public class ReadInJoyCommentDataManager
         paramList2 = (CommentData)paramList1.next();
         if (paramList2 != null)
         {
-          if (!this.jdField_b_of_type_JavaUtilMap.containsKey(paramList2.commentId)) {
-            this.jdField_b_of_type_JavaUtilMap.put(paramList2.commentId, paramList2);
+          if (!this.e.containsKey(paramList2.commentId)) {
+            this.e.put(paramList2.commentId, paramList2);
           }
-          localObject = this.jdField_b_of_type_JavaUtilList;
+          localObject = this.i;
           if (localObject != null) {
             ((List)localObject).add(paramList2.commentId);
           }
@@ -635,19 +596,24 @@ public class ReadInJoyCommentDataManager
     }
   }
   
-  private void c(boolean paramBoolean)
+  public static boolean c(String paramString)
   {
-    if (paramBoolean)
+    return (!TextUtils.isEmpty(paramString)) && (d.get(l(paramString)) != null);
+  }
+  
+  private void d(BaseCommentData paramBaseCommentData)
+  {
+    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(RIJQQAppInterfaceUtil.c(), null);
+    if ((localReadInJoyUserInfo != null) && (!TextUtils.isEmpty(localReadInJoyUserInfo.upIconUrl)) && (paramBaseCommentData != null))
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2, HardCodeUtil.a(2131712978), 0).a();
-      return;
+      paramBaseCommentData.userIdentityIcon = new BaseCommentData.UserIdentityIcon();
+      paramBaseCommentData.userIdentityIcon.b = localReadInJoyUserInfo.upIconUrl;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131699852), 0).a();
   }
   
   private void d(List<CommentData> paramList, List<String> paramList1)
   {
-    if (this.jdField_b_of_type_JavaUtilMap == null) {
+    if (this.e == null) {
       return;
     }
     if ((paramList != null) && (paramList.size() > 0))
@@ -658,7 +624,7 @@ public class ReadInJoyCommentDataManager
         CommentData localCommentData = (CommentData)paramList.next();
         if (localCommentData != null)
         {
-          this.jdField_b_of_type_JavaUtilMap.put(localCommentData.commentId, localCommentData);
+          this.e.put(localCommentData.commentId, localCommentData);
           if (paramList1 != null) {
             paramList1.add(localCommentData.commentId);
           }
@@ -667,55 +633,117 @@ public class ReadInJoyCommentDataManager
     }
   }
   
-  private void e(String paramString)
+  private void d(boolean paramBoolean)
   {
-    Object localObject = this.jdField_b_of_type_JavaUtilMap;
-    if (localObject != null) {
-      ((Map)localObject).remove(paramString);
-    }
-    localObject = this.jdField_a_of_type_JavaUtilList;
-    if (localObject != null) {
-      ((List)localObject).remove(paramString);
-    }
-    localObject = this.jdField_b_of_type_JavaUtilList;
-    if (localObject != null) {
-      ((List)localObject).remove(paramString);
-    }
-    localObject = this.jdField_d_of_type_JavaUtilList;
-    if (localObject != null) {
-      ((List)localObject).remove(paramString);
-    }
-    t();
-  }
-  
-  public static void f()
-  {
-    jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
-  private void h(int paramInt)
-  {
-    s();
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if (paramBoolean)
     {
-      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "fetch NewCommentList, fetchType : ", Integer.valueOf(paramInt), ", cookie : ", this.jdField_d_of_type_JavaLangString });
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2, HardCodeUtil.a(2131910543), 0).show();
+      return;
+    }
+    QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131897901), 0).show();
+  }
+  
+  private boolean d(List<CommentData> paramList)
+  {
+    if (paramList != null)
+    {
+      Object localObject = this.D;
+      if ((localObject != null) && (((ReadInJoyCommentDataManager.CommentAnchor)localObject).d))
+      {
+        if (this.D.b == null) {
+          return false;
+        }
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject = (CommentData)paramList.next();
+          if ((localObject != null) && (this.D.b.equals(((CommentData)localObject).commentId)))
+          {
+            ((CommentData)localObject).isAnchor = true;
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  private static int e(BaseCommentData paramBaseCommentData)
+  {
+    int i1 = 0;
+    if (paramBaseCommentData == null) {
+      return 0;
+    }
+    if (paramBaseCommentData.isActivity()) {
+      return 4;
+    }
+    if (paramBaseCommentData.isBanner()) {
+      return 5;
+    }
+    if (paramBaseCommentData.isDynamicComment()) {
+      return 7;
+    }
+    if (paramBaseCommentData.isAd) {
+      i1 = 9;
+    }
+    return i1;
+  }
+  
+  private List<CommentViewItem> e(int paramInt, List<BaseCommentData> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      BaseCommentData localBaseCommentData = (BaseCommentData)paramList.next();
+      localArrayList.add(new CommentViewItem(paramInt, e(localBaseCommentData), localBaseCommentData, this.g));
+    }
+    return localArrayList;
+  }
+  
+  private List<CommentViewItem> f(int paramInt, List<String> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return localArrayList;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        if ((!TextUtils.isEmpty(str)) && (this.e.get(str) != null)) {
+          localArrayList.add(new CommentViewItem(paramInt, e((BaseCommentData)this.e.get(str)), (BaseCommentData)this.e.get(str), this.g));
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  private void g(int paramInt)
+  {
+    y();
+    if ((this.A != null) && (!TextUtils.isEmpty(this.a)))
+    {
+      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "fetch NewCommentList, fetchType : ", Integer.valueOf(paramInt), ", cookie : ", this.q });
       if (paramInt == 1) {
         localObject1 = "";
       } else {
-        localObject1 = this.jdField_d_of_type_JavaLangString;
+        localObject1 = this.q;
       }
-      this.jdField_d_of_type_JavaLangString = ((String)localObject1);
+      this.q = ((String)localObject1);
       Object localObject2 = null;
       Object localObject1 = localObject2;
       if (paramInt == 1)
       {
-        ReadInJoyCommentDataManager.CommentAnchor localCommentAnchor = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor;
+        ReadInJoyCommentDataManager.CommentAnchor localCommentAnchor = this.D;
         localObject1 = localObject2;
         if (localCommentAnchor != null)
         {
           localObject1 = localObject2;
-          if (localCommentAnchor.jdField_a_of_type_Boolean) {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor.jdField_a_of_type_JavaLangString;
+          if (localCommentAnchor.a) {
+            localObject1 = this.D.b;
           }
         }
       }
@@ -725,29 +753,29 @@ public class ReadInJoyCommentDataManager
     a(new ReadInJoyCommentDataManager.8(this, paramInt));
   }
   
-  private void i(int paramInt)
+  private void h(int paramInt)
   {
-    s();
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    y();
+    if ((this.A != null) && (!TextUtils.isEmpty(this.a)))
     {
-      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "fetch HotCommentList, fetchType : ", Integer.valueOf(paramInt), ", cookie : ", this.jdField_e_of_type_JavaLangString });
+      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "fetch HotCommentList, fetchType : ", Integer.valueOf(paramInt), ", cookie : ", this.t });
       if (paramInt == 1) {
         localObject1 = "";
       } else {
-        localObject1 = this.jdField_e_of_type_JavaLangString;
+        localObject1 = this.t;
       }
-      this.jdField_e_of_type_JavaLangString = ((String)localObject1);
+      this.t = ((String)localObject1);
       Object localObject2 = null;
       Object localObject1 = localObject2;
       if (paramInt == 1)
       {
-        ReadInJoyCommentDataManager.CommentAnchor localCommentAnchor = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor;
+        ReadInJoyCommentDataManager.CommentAnchor localCommentAnchor = this.D;
         localObject1 = localObject2;
         if (localCommentAnchor != null)
         {
           localObject1 = localObject2;
-          if (localCommentAnchor.jdField_a_of_type_Boolean) {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor.jdField_a_of_type_JavaLangString;
+          if (localCommentAnchor.a) {
+            localObject1 = this.D.b;
           }
         }
       }
@@ -757,187 +785,136 @@ public class ReadInJoyCommentDataManager
     a(new ReadInJoyCommentDataManager.10(this, paramInt));
   }
   
-  private void j(int paramInt)
+  private void i(int paramInt)
   {
-    s();
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    y();
+    if ((this.A != null) && (!TextUtils.isEmpty(this.a)))
     {
-      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "fetchFamilyCommentList, fetchType : ", Integer.valueOf(paramInt), ", cookie : ", this.jdField_f_of_type_JavaLangString });
+      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "fetchFamilyCommentList, fetchType : ", Integer.valueOf(paramInt), ", cookie : ", this.w });
       String str;
       if (paramInt == 1) {
         str = "";
       } else {
-        str = this.jdField_f_of_type_JavaLangString;
+        str = this.w;
       }
-      this.jdField_f_of_type_JavaLangString = str;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID, this.jdField_f_of_type_JavaLangString, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityCommonCommentData);
+      this.w = str;
+      this.A.b(b(this.w, null));
       return;
     }
     a(new ReadInJoyCommentDataManager.12(this, paramInt));
   }
   
-  private void m()
+  private static String l(String paramString)
   {
-    ReadInJoyUserInfoModule.a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin(), null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localStringBuilder.append('_');
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
-  private void n()
+  private void m(String paramString)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.e;
+    if (localObject != null) {
+      ((Map)localObject).remove(paramString);
+    }
+    localObject = this.h;
+    if (localObject != null) {
+      ((List)localObject).remove(paramString);
+    }
+    localObject = this.i;
+    if (localObject != null) {
+      ((List)localObject).remove(paramString);
+    }
+    localObject = this.y;
+    if (localObject != null) {
+      ((List)localObject).remove(paramString);
+    }
+    A();
+  }
+  
+  public static void r()
+  {
+    c.clear();
+  }
+  
+  private void u()
+  {
+    ReadInJoyUserInfoModule.a(RIJQQAppInterfaceUtil.c(), null);
+  }
+  
+  private void v()
+  {
+    List localList = this.h;
     if (localList != null) {
       localList.clear();
     }
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_JavaLangString = "";
+    this.s = 0L;
+    this.u = false;
+    this.t = "";
   }
   
-  private void q()
+  private void w()
   {
-    List localList = this.jdField_b_of_type_JavaUtilList;
+    List localList = this.i;
     if (localList != null) {
       localList.clear();
     }
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
+    this.q = "";
+    this.r = false;
+    this.p = 0L;
   }
   
-  private void r()
+  private void x()
   {
-    List localList = this.jdField_d_of_type_JavaUtilList;
+    List localList = this.y;
     if (localList != null) {
       localList.clear();
     }
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_e_of_type_Boolean = false;
+    this.w = "";
+    this.v = 0L;
+    this.x = false;
   }
   
-  private void s()
+  private void y()
   {
-    if (!this.jdField_i_of_type_Boolean)
+    if (!this.M)
     {
-      ReadInJoyCommentPBModule localReadInJoyCommentPBModule = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule;
+      ReadInJoyCommentPBModule localReadInJoyCommentPBModule = this.A;
       if (localReadInJoyCommentPBModule != null) {
         localReadInJoyCommentPBModule.a(this);
       }
     }
   }
   
-  private void t()
+  private boolean z()
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      if (((BaseCommentData)localIterator.next()).isComment())
-      {
-        j = 1;
-        break label46;
-      }
-    }
-    int j = 0;
-    label46:
-    if (j == 0) {
-      u();
-    }
-  }
-  
-  private void u()
-  {
-    Object localObject = this.jdField_b_of_type_JavaUtilMap;
+    Object localObject = this.D;
     if (localObject != null) {
-      ((Map)localObject).clear();
+      localObject = ((ReadInJoyCommentDataManager.CommentAnchor)localObject).b;
+    } else {
+      localObject = "";
     }
-    localObject = this.jdField_a_of_type_JavaUtilList;
-    if (localObject != null) {
-      ((List)localObject).clear();
-    }
-    localObject = this.jdField_b_of_type_JavaUtilList;
-    if (localObject != null) {
-      ((List)localObject).clear();
-    }
-    localObject = this.jdField_d_of_type_JavaUtilList;
-    if (localObject != null) {
-      ((List)localObject).clear();
-    }
+    ReadInJoyCommentDataManager.CommentAnchor localCommentAnchor = this.D;
+    return (localCommentAnchor != null) && (localCommentAnchor.a) && (!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals("MA==")) && (!((String)localObject).equals("0"));
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.f;
   }
   
   @VisibleForTesting
   int a(@NonNull CommentReportInfo paramCommentReportInfo)
   {
-    paramCommentReportInfo = (CommentData)this.jdField_b_of_type_JavaUtilMap.get(paramCommentReportInfo.b());
+    paramCommentReportInfo = (CommentData)this.e.get(paramCommentReportInfo.b());
     if (paramCommentReportInfo != null)
     {
       a(paramCommentReportInfo, -(paramCommentReportInfo.subCommentNum + 1));
-      e(paramCommentReportInfo.commentId);
+      m(paramCommentReportInfo.commentId);
     }
     return 1;
-  }
-  
-  public int a(String paramString)
-  {
-    BaseCommentData localBaseCommentData = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-    if (localBaseCommentData == null) {
-      return 0;
-    }
-    if ((localBaseCommentData instanceof CommentData))
-    {
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramString)) {
-        return 1;
-      }
-      if (this.jdField_b_of_type_JavaUtilList.contains(paramString)) {
-        return 2;
-      }
-    }
-    else if ((localBaseCommentData instanceof SubCommentData))
-    {
-      return a(((SubCommentData)localBaseCommentData).parentCommentId);
-    }
-    return 0;
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public long a(int paramInt)
-  {
-    long l = this.jdField_b_of_type_Long;
-    if (paramInt == 6) {
-      l = this.jdField_d_of_type_Long;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getFirstCommentTotalCount | feedsType ");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("; totalCount ");
-    localStringBuilder.append(l);
-    QLog.d("ReadInJoyCommentDataManager", 2, localStringBuilder.toString());
-    return l;
-  }
-  
-  public long a(String paramString)
-  {
-    paramString = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-    if ((paramString != null) && ((paramString instanceof CommentData))) {
-      return ((CommentData)paramString).subCommentNum;
-    }
-    return 0L;
-  }
-  
-  public ReadInJoyCommentDataManager.CommentAnchor a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor;
-  }
-  
-  public ReadInJoyCommentPBModule.Label a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$Label;
   }
   
   @Nullable
@@ -959,15 +936,15 @@ public class ReadInJoyCommentDataManager
     ((BaseCommentData)localObject1).anonymous = 0;
     ((BaseCommentData)localObject1).authorSelection = 0;
     ((BaseCommentData)localObject1).awesome = 0;
-    ((BaseCommentData)localObject1).uin = RIJQQAppInterfaceUtil.a();
-    ((BaseCommentData)localObject1).homepage = RIJJumpUtils.a(((BaseCommentData)localObject1).uin);
+    ((BaseCommentData)localObject1).uin = RIJQQAppInterfaceUtil.d();
+    ((BaseCommentData)localObject1).homepage = RIJJumpUtils.e(((BaseCommentData)localObject1).uin);
     ((BaseCommentData)localObject1).myself = 1;
     ((BaseCommentData)localObject1).like = 0;
     ((BaseCommentData)localObject1).disLike = 0;
     ((BaseCommentData)localObject1).likeCnt = 0;
     ((BaseCommentData)localObject1).rank = 0;
-    ((BaseCommentData)localObject1).rowKey = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID;
-    ((BaseCommentData)localObject1).contentSrc = this.jdField_a_of_type_Int;
+    ((BaseCommentData)localObject1).rowKey = this.g.innerUniqueID;
+    ((BaseCommentData)localObject1).contentSrc = this.f;
     Object localObject3 = "";
     ((BaseCommentData)localObject1).authorComment = "";
     ((BaseCommentData)localObject1).commentTime = NetConnInfoCenter.getServerTime();
@@ -975,7 +952,7 @@ public class ReadInJoyCommentDataManager
     if (localObject4 != null) {
       localObject2 = ((ReadInJoyUserInfo)localObject4).nick;
     } else {
-      localObject2 = ReadInJoyUserInfoModule.a();
+      localObject2 = ReadInJoyUserInfoModule.d();
     }
     ((BaseCommentData)localObject1).nickName = ((String)localObject2);
     Object localObject2 = localObject3;
@@ -997,7 +974,7 @@ public class ReadInJoyCommentDataManager
       {
         localObject2 = (SubCommentData)localObject1;
         localObject4 = paramString.getString("commentId");
-        localObject3 = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(localObject4);
+        localObject3 = (BaseCommentData)this.e.get(localObject4);
         if ((localObject3 instanceof SubCommentData))
         {
           ((SubCommentData)localObject2).parentCommentId = ((SubCommentData)localObject3).parentCommentId;
@@ -1020,10 +997,10 @@ public class ReadInJoyCommentDataManager
             if (paramString != null) {
               paramString = paramString.nick;
             } else {
-              paramString = ReadInJoyUserInfoModule.a();
+              paramString = ReadInJoyUserInfoModule.d();
             }
             ((SubCommentData)localObject2).repliedUserNickname = paramString;
-            ((SubCommentData)localObject2).repliedUserHomePage = RIJJumpUtils.a((String)localObject4);
+            ((SubCommentData)localObject2).repliedUserHomePage = RIJJumpUtils.e((String)localObject4);
             ((SubCommentData)localObject2).hasTarget = 1;
             if ((localObject3 instanceof SubCommentData))
             {
@@ -1045,21 +1022,6 @@ public class ReadInJoyCommentDataManager
     return null;
   }
   
-  public BaseCommentData a(String paramString)
-  {
-    return (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public CommonCommentData a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityCommonCommentData;
-  }
-  
-  public GuideHelper a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuideHelper;
-  }
-  
   @VisibleForTesting
   Pair<List<BaseCommentData>, List<BaseCommentData>> a(BaseCommentData paramBaseCommentData)
   {
@@ -1074,18 +1036,18 @@ public class ReadInJoyCommentDataManager
       if ((paramBaseCommentData instanceof CommentData))
       {
         localArrayList1.add(paramBaseCommentData);
-        a(paramBaseCommentData);
+        b(paramBaseCommentData);
         return new Pair(localArrayList1, localArrayList2);
       }
       if ((paramBaseCommentData instanceof SubCommentData))
       {
         localArrayList2.add(paramBaseCommentData);
-        b(paramBaseCommentData);
+        c(paramBaseCommentData);
         return new Pair(localArrayList1, localArrayList2);
       }
       return null;
     }
-    paramBaseCommentData = this.jdField_b_of_type_JavaUtilMap.values().iterator();
+    paramBaseCommentData = this.e.values().iterator();
     while (paramBaseCommentData.hasNext())
     {
       BaseCommentData localBaseCommentData = (BaseCommentData)paramBaseCommentData.next();
@@ -1099,124 +1061,38 @@ public class ReadInJoyCommentDataManager
     }
     paramBaseCommentData = localArrayList1.iterator();
     while (paramBaseCommentData.hasNext()) {
-      a((BaseCommentData)paramBaseCommentData.next());
+      b((BaseCommentData)paramBaseCommentData.next());
     }
     paramBaseCommentData = localArrayList2.iterator();
     while (paramBaseCommentData.hasNext()) {
-      b((BaseCommentData)paramBaseCommentData.next());
+      c((BaseCommentData)paramBaseCommentData.next());
     }
     return new Pair(localArrayList1, localArrayList2);
   }
   
-  public String a()
-  {
-    return this.jdField_i_of_type_JavaLangString;
-  }
-  
-  public String a(String paramString)
-  {
-    paramString = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-    if ((paramString instanceof SubCommentData)) {
-      return ((SubCommentData)paramString).parentCommentId;
-    }
-    if ((paramString instanceof CommentData)) {
-      return paramString.commentId;
-    }
-    return "";
-  }
-  
-  public List<CommentViewItem> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      localObject = new ArrayList();
-      j = 0;
-      while (j < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        CommentData localCommentData = (CommentData)this.jdField_b_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaUtilList.get(j));
-        if ((localCommentData != null) && ((!localCommentData.isFamilyTopEntry()) || ((localCommentData.isFamilyTopEntry()) && (!ReadInJoyCommentHelper.a())))) {
-          ((ArrayList)localObject).add(localCommentData);
-        }
-        j += 1;
-      }
-      if ((((ArrayList)localObject).size() > 0) && (this.jdField_f_of_type_Boolean)) {
-        localArrayList.add(new CommentViewItem(1, null, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
-      }
-      localArrayList.addAll(a(1, new ArrayList((Collection)localObject)));
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getTotalHotCommentList ");
-    ((StringBuilder)localObject).append(localArrayList);
-    if (((StringBuilder)localObject).toString() != null) {
-      j = localArrayList.size();
-    } else {
-      j = 0;
-    }
-    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { Integer.valueOf(j) });
-    return localArrayList;
-  }
-  
-  public List<CommentViewItem> a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getCurrentFeedsTypeItemList | feedsType ");
-    localStringBuilder.append(paramInt);
-    QLog.d("ReadInJoyCommentDataManager", 1, localStringBuilder.toString());
-    if (paramInt != 2)
-    {
-      if (paramInt != 3)
-      {
-        if (paramInt != 6) {
-          return new ArrayList();
-        }
-        return c();
-      }
-      return a();
-    }
-    return b();
-  }
-  
-  public List<CommentViewItem> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramString = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-    if (paramString == null) {
-      return localArrayList;
-    }
-    localArrayList.add(new CommentViewItem(0, paramString, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
-    localArrayList.add(new CommentViewItem(3, paramString, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
-    return localArrayList;
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
-    s();
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    y();
+    if ((this.A != null) && (!TextUtils.isEmpty(this.a)))
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("loadFirstCommentList | feedsType : ");
       ((StringBuilder)localObject).append(paramInt1);
       ((StringBuilder)localObject).append(" contentSrc : ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.f);
       ((StringBuilder)localObject).append("; fetchType : ");
       ((StringBuilder)localObject).append(paramInt2);
-      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { ((StringBuilder)localObject).toString(), ", cookie : ", this.jdField_b_of_type_JavaLangString });
+      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { ((StringBuilder)localObject).toString(), ", cookie : ", this.j });
       if (paramInt2 == 1) {
         localObject = "";
       } else {
-        localObject = this.jdField_b_of_type_JavaLangString;
+        localObject = this.j;
       }
-      this.jdField_b_of_type_JavaLangString = ((String)localObject);
-      if (paramInt2 == 1)
+      this.j = ((String)localObject);
+      if ((paramInt2 == 1) && (z()))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor;
-        if ((localObject != null) && (((ReadInJoyCommentDataManager.CommentAnchor)localObject).jdField_a_of_type_Boolean))
-        {
-          ThreadManager.executeOnSubThread(new ReadInJoyCommentDataManager.5(this, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor.jdField_a_of_type_JavaLangString));
-          return;
-        }
+        ThreadManager.executeOnSubThread(new ReadInJoyCommentDataManager.5(this, this.D.b));
+        return;
       }
       if (paramInt1 == 6)
       {
@@ -1237,7 +1113,7 @@ public class ReadInJoyCommentDataManager
     } else {
       bool1 = false;
     }
-    boolean bool2 = TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
+    boolean bool2 = TextUtils.isEmpty(this.j);
     if (paramResponseCommentInfo1 == null) {
       paramResponseCommentInfo1 = new ReadInJoyCommentPBModule.ResponseCommentInfo();
     }
@@ -1249,95 +1125,95 @@ public class ReadInJoyCommentDataManager
     }
     if (bool1)
     {
-      this.jdField_c_of_type_Boolean = paramResponseCommentInfo2.jdField_a_of_type_Boolean;
-      this.jdField_d_of_type_Boolean = paramResponseCommentInfo1.jdField_a_of_type_Boolean;
-      long l;
-      if (paramResponseCommentInfo1.jdField_a_of_type_JavaUtilList != null) {
-        l = paramResponseCommentInfo1.jdField_a_of_type_JavaUtilList.size();
+      this.r = paramResponseCommentInfo2.d;
+      this.u = paramResponseCommentInfo1.d;
+      long l1;
+      if (paramResponseCommentInfo1.a != null) {
+        l1 = paramResponseCommentInfo1.a.size();
       } else {
-        l = 0L;
+        l1 = 0L;
       }
-      this.jdField_c_of_type_Long = l;
-      this.jdField_d_of_type_JavaLangString = paramResponseCommentInfo2.jdField_a_of_type_JavaLangString;
-      this.jdField_e_of_type_JavaLangString = paramResponseCommentInfo1.jdField_a_of_type_JavaLangString;
-      a(this.jdField_h_of_type_JavaLangString, paramResponseExtraInfo.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$Label = paramResponseExtraInfo.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$Label;
-      this.jdField_h_of_type_Boolean = paramResponseExtraInfo.jdField_b_of_type_Boolean;
-      this.jdField_i_of_type_JavaLangString = paramResponseExtraInfo.jdField_b_of_type_JavaLangString;
-      c(paramResponseCommentInfo1.jdField_a_of_type_JavaUtilList, paramResponseCommentInfo2.jdField_a_of_type_JavaUtilList);
+      this.s = l1;
+      this.q = paramResponseCommentInfo2.e;
+      this.t = paramResponseCommentInfo1.e;
+      a(this.G, paramResponseExtraInfo.e);
+      this.J = paramResponseExtraInfo.f;
+      this.K = paramResponseExtraInfo.g;
+      this.L = paramResponseExtraInfo.h;
+      c(paramResponseCommentInfo1.a, paramResponseCommentInfo2.a);
     }
     if (bool2)
     {
-      if (paramResponseExtraInfo.jdField_a_of_type_Long > 0L) {
-        this.jdField_b_of_type_Long = paramResponseExtraInfo.jdField_a_of_type_Long;
+      if (paramResponseExtraInfo.a > 0L) {
+        this.p = paramResponseExtraInfo.a;
       }
-      this.jdField_a_of_type_Long = paramResponseExtraInfo.jdField_b_of_type_Long;
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor;
-      if ((localObject != null) && (((ReadInJoyCommentDataManager.CommentAnchor)localObject).jdField_b_of_type_Boolean))
+      this.o = paramResponseExtraInfo.b;
+      Object localObject = this.D;
+      if ((localObject != null) && (((ReadInJoyCommentDataManager.CommentAnchor)localObject).d))
       {
-        if (!a(paramResponseCommentInfo1.jdField_a_of_type_JavaUtilList)) {
+        if (!d(paramResponseCommentInfo1.a)) {
           a(new ReadInJoyCommentDataManager.19(this));
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor.jdField_b_of_type_Boolean = false;
+        this.D.d = false;
       }
-      localObject = a(3);
+      localObject = d(3);
       if ((localObject != null) && (!((List)localObject).isEmpty()))
       {
         paramInt = 3;
       }
       else
       {
-        localObject = a(2);
+        localObject = d(2);
         paramInt = 2;
       }
       if (paramInt == 3) {
-        bool2 = this.jdField_d_of_type_Boolean;
+        bool2 = this.u;
       } else {
-        bool2 = this.jdField_c_of_type_Boolean;
+        bool2 = this.r;
       }
-      int j;
+      int i1;
       if (paramResponseCommentInfo1.a()) {
-        j = paramResponseCommentInfo1.jdField_a_of_type_JavaUtilList.size();
+        i1 = paramResponseCommentInfo1.a.size();
       } else {
-        j = 0;
+        i1 = 0;
       }
       paramResponseCommentInfo1 = new StringBuilder();
       paramResponseCommentInfo1.append(", new size : ");
-      int k;
+      int i2;
       if (paramResponseCommentInfo2.a()) {
-        k = paramResponseCommentInfo2.jdField_a_of_type_JavaUtilList.size();
+        i2 = paramResponseCommentInfo2.a.size();
       } else {
-        k = 0;
+        i2 = 0;
       }
-      paramResponseCommentInfo1.append(k);
+      paramResponseCommentInfo1.append(i2);
       paramResponseCommentInfo1 = paramResponseCommentInfo1.toString();
       paramResponseCommentInfo2 = new StringBuilder();
-      paramResponseCommentInfo2.append(this.jdField_b_of_type_Long);
+      paramResponseCommentInfo2.append(this.p);
       paramResponseCommentInfo2.append(" , hideCnt : ");
-      paramResponseCommentInfo2.append(this.jdField_a_of_type_Long);
-      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "onLoadFirstCommentFinish, ret : ", Boolean.valueOf(bool1), ", hot size : ", Integer.valueOf(j), paramResponseCommentInfo1, ", totalCnt : ", paramResponseCommentInfo2.toString() });
+      paramResponseCommentInfo2.append(this.o);
+      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "onLoadFirstCommentFinish, ret : ", Boolean.valueOf(bool1), ", hot size : ", Integer.valueOf(i1), paramResponseCommentInfo1, ", totalCnt : ", paramResponseCommentInfo2.toString() });
       a(new ReadInJoyCommentDataManager.20(this, bool1, (List)localObject, bool2, paramInt));
-      paramResponseCommentInfo1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor;
+      paramResponseCommentInfo1 = this.D;
       if (paramResponseCommentInfo1 != null) {
         paramResponseCommentInfo1.a(false);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuideHelper.a(paramResponseExtraInfo.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuideHelper.a(paramResponseExtraInfo.jdField_a_of_type_JavaLangString);
+      this.E.a(paramResponseExtraInfo.c);
+      this.E.a(paramResponseExtraInfo.d);
       return;
     }
     if (paramResponseCommentInfo2 != null) {
-      paramResponseCommentInfo1 = a(2, new ArrayList(paramResponseCommentInfo2.jdField_a_of_type_JavaUtilList));
+      paramResponseCommentInfo1 = e(2, new ArrayList(paramResponseCommentInfo2.a));
     } else {
       paramResponseCommentInfo1 = new ArrayList();
     }
-    bool2 = this.jdField_a_of_type_Boolean;
+    bool2 = this.k;
     QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "onLoadMoreComment, ret : ", Boolean.valueOf(bool1), ", size : ", Integer.valueOf(paramResponseCommentInfo1.size()), ", hasNext : ", Boolean.valueOf(bool2) });
     a(new ReadInJoyCommentDataManager.21(this, bool1, paramResponseCommentInfo1));
   }
   
   public void a(int paramInt, ReadInJoyCommentPBModule.ResponseCommentInfo paramResponseCommentInfo, ReadInJoyCommentPBModule.ResponseExtraInfo paramResponseExtraInfo, CommentData paramCommentData)
   {
-    boolean bool2 = TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString);
+    boolean bool2 = TextUtils.isEmpty(this.q);
     paramCommentData = paramResponseCommentInfo;
     if (paramResponseCommentInfo == null) {
       paramCommentData = new ReadInJoyCommentPBModule.ResponseCommentInfo();
@@ -1349,9 +1225,9 @@ public class ReadInJoyCommentDataManager
     boolean bool1;
     if (paramInt == 0)
     {
-      this.jdField_c_of_type_Boolean = paramCommentData.jdField_a_of_type_Boolean;
-      this.jdField_d_of_type_JavaLangString = paramCommentData.jdField_a_of_type_JavaLangString;
-      c(null, paramCommentData.jdField_a_of_type_JavaUtilList);
+      this.r = paramCommentData.d;
+      this.q = paramCommentData.e;
+      c(null, paramCommentData.a);
       bool1 = true;
     }
     else
@@ -1360,33 +1236,33 @@ public class ReadInJoyCommentDataManager
     }
     if (bool2)
     {
-      if (paramResponseCommentInfo.jdField_a_of_type_Long > 0L) {
-        this.jdField_b_of_type_Long = paramResponseCommentInfo.jdField_a_of_type_Long;
+      if (paramResponseCommentInfo.a > 0L) {
+        this.p = paramResponseCommentInfo.a;
       }
-      paramResponseCommentInfo = b();
+      paramResponseCommentInfo = k();
       paramResponseExtraInfo = new StringBuilder();
       paramResponseExtraInfo.append(", new size : ");
-      if (paramCommentData.jdField_a_of_type_JavaUtilList != null) {
-        paramInt = paramCommentData.jdField_a_of_type_JavaUtilList.size();
+      if (paramCommentData.a != null) {
+        paramInt = paramCommentData.a.size();
       } else {
         paramInt = 0;
       }
       paramResponseExtraInfo.append(paramInt);
-      QLog.d("ReadInJoyCommentDataManager", 2, new Object[] { "onLoadNewCommentFinish, ret : ", Boolean.valueOf(bool1), paramResponseExtraInfo.toString(), ", totalCnt : ", Long.valueOf(this.jdField_b_of_type_Long) });
+      QLog.d("ReadInJoyCommentDataManager", 2, new Object[] { "onLoadNewCommentFinish, ret : ", Boolean.valueOf(bool1), paramResponseExtraInfo.toString(), ", totalCnt : ", Long.valueOf(this.p) });
       a(new ReadInJoyCommentDataManager.22(this, bool1, paramResponseCommentInfo));
-      paramResponseCommentInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor;
+      paramResponseCommentInfo = this.D;
       if (paramResponseCommentInfo != null) {
         paramResponseCommentInfo.a(false);
       }
     }
     else
     {
-      if (paramCommentData.jdField_a_of_type_JavaUtilList != null) {
-        paramResponseCommentInfo = a(2, new ArrayList(paramCommentData.jdField_a_of_type_JavaUtilList));
+      if (paramCommentData.a != null) {
+        paramResponseCommentInfo = e(2, new ArrayList(paramCommentData.a));
       } else {
         paramResponseCommentInfo = new ArrayList();
       }
-      bool2 = this.jdField_c_of_type_Boolean;
+      bool2 = this.r;
       QLog.d("ReadInJoyCommentDataManager", 2, new Object[] { "onLoadMoreNewComment, ret : ", Boolean.valueOf(bool1), ", size : ", Integer.valueOf(paramResponseCommentInfo.size()), ", hasNext : ", Boolean.valueOf(bool2) });
       a(new ReadInJoyCommentDataManager.23(this, bool1, paramResponseCommentInfo, bool2));
     }
@@ -1394,7 +1270,7 @@ public class ReadInJoyCommentDataManager
   
   public void a(int paramInt, String paramString, ReadInJoyCommentPBModule.ResponseCommentInfo paramResponseCommentInfo, ReadInJoyCommentPBModule.ResponseExtraInfo paramResponseExtraInfo)
   {
-    boolean bool3 = TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString);
+    boolean bool3 = TextUtils.isEmpty(this.m);
     ReadInJoyCommentPBModule.ResponseCommentInfo localResponseCommentInfo = paramResponseCommentInfo;
     if (paramResponseCommentInfo == null) {
       localResponseCommentInfo = new ReadInJoyCommentPBModule.ResponseCommentInfo();
@@ -1408,11 +1284,11 @@ public class ReadInJoyCommentDataManager
     boolean bool1;
     if (paramInt == 0)
     {
-      this.jdField_b_of_type_Boolean = localResponseCommentInfo.jdField_a_of_type_Boolean;
-      this.jdField_c_of_type_JavaLangString = localResponseCommentInfo.jdField_a_of_type_JavaLangString;
-      if (localResponseCommentInfo.jdField_b_of_type_JavaUtilList != null)
+      this.n = localResponseCommentInfo.d;
+      this.m = localResponseCommentInfo.e;
+      if (localResponseCommentInfo.b != null)
       {
-        paramResponseCommentInfo = localResponseCommentInfo.jdField_b_of_type_JavaUtilList.iterator();
+        paramResponseCommentInfo = localResponseCommentInfo.b.iterator();
         while (paramResponseCommentInfo.hasNext())
         {
           paramResponseExtraInfo = (SubCommentData)paramResponseCommentInfo.next();
@@ -1421,22 +1297,22 @@ public class ReadInJoyCommentDataManager
             if (TextUtils.isEmpty(paramResponseExtraInfo.parentCommentId)) {
               paramResponseExtraInfo.parentCommentId = paramString;
             }
-            this.jdField_b_of_type_JavaUtilMap.put(paramResponseExtraInfo.commentId, paramResponseExtraInfo);
-            this.jdField_c_of_type_JavaUtilList.add(paramResponseExtraInfo.commentId);
+            this.e.put(paramResponseExtraInfo.commentId, paramResponseExtraInfo);
+            this.l.add(paramResponseExtraInfo.commentId);
           }
         }
-        paramResponseExtraInfo = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-        if (!this.jdField_g_of_type_Boolean)
+        paramResponseExtraInfo = (BaseCommentData)this.e.get(paramString);
+        if (!this.I)
         {
           paramResponseCommentInfo = paramResponseExtraInfo;
           if (paramResponseExtraInfo != null) {}
         }
         else
         {
-          paramResponseCommentInfo = localResponseCommentInfo.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityCommentData;
-          this.jdField_b_of_type_JavaUtilMap.put(paramString, paramResponseCommentInfo);
+          paramResponseCommentInfo = localResponseCommentInfo.c;
+          this.e.put(paramString, paramResponseCommentInfo);
         }
-        paramResponseCommentInfo = a(bool3, paramResponseCommentInfo, localResponseCommentInfo.jdField_b_of_type_JavaUtilList);
+        paramResponseCommentInfo = a(bool3, paramResponseCommentInfo, localResponseCommentInfo.b);
       }
       bool1 = true;
     }
@@ -1447,12 +1323,12 @@ public class ReadInJoyCommentDataManager
     }
     if (QLog.isColorLevel())
     {
-      if (localResponseCommentInfo.jdField_b_of_type_JavaUtilList != null) {
-        paramInt = localResponseCommentInfo.jdField_b_of_type_JavaUtilList.size();
+      if (localResponseCommentInfo.b != null) {
+        paramInt = localResponseCommentInfo.b.size();
       } else {
         paramInt = 0;
       }
-      if ((localResponseCommentInfo == null) || (!localResponseCommentInfo.jdField_a_of_type_Boolean)) {
+      if ((localResponseCommentInfo == null) || (!localResponseCommentInfo.d)) {
         bool2 = false;
       }
       QLog.d("ReadInJoyCommentDataManager", 2, new Object[] { "getSubCommentListResp ret : ", Boolean.valueOf(bool1), ", mainCommentID : ", paramString, ", size : ", Integer.valueOf(paramInt), ", hasNext : ", Boolean.valueOf(bool2), ", isFirstFetch : ", Boolean.valueOf(bool3) });
@@ -1465,53 +1341,53 @@ public class ReadInJoyCommentDataManager
     if (paramCommentViewItem == null) {
       return;
     }
-    paramCommentViewItem = paramCommentViewItem.a;
+    paramCommentViewItem = paramCommentViewItem.c;
     if (paramCommentViewItem == null) {
       return;
     }
-    Object localObject = this.jdField_b_of_type_JavaUtilMap;
+    Object localObject = this.e;
     if (localObject != null) {
       ((Map)localObject).remove(paramCommentViewItem);
     }
     paramCommentViewItem = paramCommentViewItem.commentId;
-    localObject = this.jdField_a_of_type_JavaUtilList;
+    localObject = this.h;
     if ((localObject != null) && (((List)localObject).contains(paramCommentViewItem)))
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramCommentViewItem);
+      this.h.remove(paramCommentViewItem);
       a(new ReadInJoyCommentDataManager.1(this));
     }
-    localObject = this.jdField_b_of_type_JavaUtilList;
+    localObject = this.i;
     if ((localObject != null) && (((List)localObject).contains(paramCommentViewItem)))
     {
-      this.jdField_b_of_type_JavaUtilList.remove(paramCommentViewItem);
+      this.i.remove(paramCommentViewItem);
       a(new ReadInJoyCommentDataManager.2(this));
     }
-    localObject = this.jdField_d_of_type_JavaUtilList;
+    localObject = this.y;
     if ((localObject != null) && (((List)localObject).contains(paramCommentViewItem)))
     {
-      this.jdField_d_of_type_JavaUtilList.remove(paramCommentViewItem);
+      this.y.remove(paramCommentViewItem);
       a(new ReadInJoyCommentDataManager.3(this));
     }
   }
   
   public void a(CommentViewItem paramCommentViewItem, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentSSOModule != null) && (paramCommentViewItem != null))
+    if ((this.z != null) && (paramCommentViewItem != null))
     {
-      if (paramCommentViewItem.a == null) {
+      if (paramCommentViewItem.c == null) {
         return;
       }
-      BaseCommentData localBaseCommentData = paramCommentViewItem.a;
+      BaseCommentData localBaseCommentData = paramCommentViewItem.c;
       CommentData localCommentData;
       if ((localBaseCommentData instanceof CommentData))
       {
         localCommentData = (CommentData)localBaseCommentData;
         a(localCommentData, -(localCommentData.subCommentNum + 1));
-        e(localBaseCommentData.commentId);
+        m(localBaseCommentData.commentId);
       }
       if ((localBaseCommentData instanceof SubCommentData))
       {
-        localCommentData = (CommentData)this.jdField_b_of_type_JavaUtilMap.get(((SubCommentData)localBaseCommentData).parentCommentId);
+        localCommentData = (CommentData)this.e.get(((SubCommentData)localBaseCommentData).parentCommentId);
         if (localCommentData != null)
         {
           if (localCommentData.subCommentNum > 0) {
@@ -1531,10 +1407,10 @@ public class ReadInJoyCommentDataManager
           }
         }
         a(localCommentData, -1);
-        this.jdField_c_of_type_JavaUtilList.remove(localBaseCommentData.commentId);
+        this.l.remove(localBaseCommentData.commentId);
       }
       a(new ReadInJoyCommentDataManager.14(this, localBaseCommentData.getCommentLevel(), paramCommentViewItem, paramInt), false);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentSSOModule.a(localBaseCommentData, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.z.a(localBaseCommentData, this.a, this.f);
     }
   }
   
@@ -1544,23 +1420,23 @@ public class ReadInJoyCommentDataManager
     ((StringBuilder)localObject).append("setCommentAnchor | commentid : ");
     ((StringBuilder)localObject).append(paramCommentAnchor);
     if (((StringBuilder)localObject).toString() != null) {
-      localObject = paramCommentAnchor.jdField_a_of_type_JavaLangString;
+      localObject = paramCommentAnchor.b;
     } else {
       localObject = "";
     }
     QLog.d("ReadInJoyCommentDataManager", 1, (String)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor = paramCommentAnchor;
+    this.D = paramCommentAnchor;
   }
   
   public void a(ReadInJoyCommentDataManager.OnDataChangeListener paramOnDataChangeListener)
   {
     try
     {
-      boolean bool = this.jdField_e_of_type_JavaUtilList.contains(paramOnDataChangeListener);
+      boolean bool = this.B.contains(paramOnDataChangeListener);
       if (bool) {
         return;
       }
-      this.jdField_e_of_type_JavaUtilList.add(paramOnDataChangeListener);
+      this.B.add(paramOnDataChangeListener);
       return;
     }
     finally {}
@@ -1569,31 +1445,31 @@ public class ReadInJoyCommentDataManager
   public void a(BaseCommentData paramBaseCommentData, String paramString, int paramInt)
   {
     paramBaseCommentData.commentId = paramString;
-    this.jdField_b_of_type_JavaUtilMap.put(paramBaseCommentData.commentId, paramBaseCommentData);
+    this.e.put(paramBaseCommentData.commentId, paramBaseCommentData);
     if ((paramBaseCommentData instanceof CommentData))
     {
       if (paramInt == 6)
       {
-        if (this.jdField_d_of_type_JavaUtilList == null) {
-          this.jdField_d_of_type_JavaUtilList = new ArrayList();
+        if (this.y == null) {
+          this.y = new ArrayList();
         }
-        if (this.jdField_d_of_type_JavaUtilList.size() == 0)
+        if (this.y.size() == 0)
         {
-          this.jdField_d_of_type_JavaUtilList.add(paramBaseCommentData.commentId);
+          this.y.add(paramBaseCommentData.commentId);
         }
         else
         {
-          paramString = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(this.jdField_d_of_type_JavaUtilList.get(0));
+          paramString = (BaseCommentData)this.e.get(this.y.get(0));
           if ((paramString != null) && (paramString.isBanner()))
           {
-            if (this.jdField_d_of_type_JavaUtilList.size() < 2) {
-              this.jdField_d_of_type_JavaUtilList.add(paramBaseCommentData.commentId);
+            if (this.y.size() < 2) {
+              this.y.add(paramBaseCommentData.commentId);
             } else {
-              this.jdField_d_of_type_JavaUtilList.add(1, paramBaseCommentData.commentId);
+              this.y.add(1, paramBaseCommentData.commentId);
             }
           }
           else {
-            this.jdField_d_of_type_JavaUtilList.add(0, paramBaseCommentData.commentId);
+            this.y.add(0, paramBaseCommentData.commentId);
           }
           QLog.d("ReadInJoyCommentDataManager", 2, "onCreateCommentResult | familyCommentFeeds");
         }
@@ -1602,27 +1478,27 @@ public class ReadInJoyCommentDataManager
       {
         paramInt = 2;
       }
-      if (this.jdField_b_of_type_JavaUtilList.size() == 0)
+      if (this.i.size() == 0)
       {
-        this.jdField_b_of_type_JavaUtilList.add(paramBaseCommentData.commentId);
+        this.i.add(paramBaseCommentData.commentId);
       }
       else
       {
-        paramString = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(this.jdField_b_of_type_JavaUtilList.get(0));
+        paramString = (BaseCommentData)this.e.get(this.i.get(0));
         if ((paramString != null) && (paramString.isBanner()))
         {
-          if (this.jdField_b_of_type_JavaUtilList.size() < 2) {
-            this.jdField_b_of_type_JavaUtilList.add(paramBaseCommentData.commentId);
+          if (this.i.size() < 2) {
+            this.i.add(paramBaseCommentData.commentId);
           } else {
-            this.jdField_b_of_type_JavaUtilList.add(1, paramBaseCommentData.commentId);
+            this.i.add(1, paramBaseCommentData.commentId);
           }
         }
         else {
-          this.jdField_b_of_type_JavaUtilList.add(0, paramBaseCommentData.commentId);
+          this.i.add(0, paramBaseCommentData.commentId);
         }
       }
-      if ((!this.jdField_d_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilList.contains(paramBaseCommentData.commentId))) {
-        this.jdField_a_of_type_JavaUtilList.add(paramBaseCommentData.commentId);
+      if ((!this.u) && (!this.h.contains(paramBaseCommentData.commentId))) {
+        this.h.add(paramBaseCommentData.commentId);
       }
       boolean bool;
       if ((paramInt != 3) && (paramInt != 6)) {
@@ -1631,27 +1507,27 @@ public class ReadInJoyCommentDataManager
         bool = true;
       }
       a((CommentData)paramBaseCommentData, 1);
-      int j;
+      int i1;
       if (paramInt == 6) {
-        j = 4;
+        i1 = 4;
       } else {
-        j = 2;
+        i1 = 2;
       }
       paramString = new StringBuilder();
       paramString.append("onCreateCommentResult | createComment feedsType ");
-      paramString.append(j);
+      paramString.append(i1);
       QLog.d("ReadInJoyCommentDataManager", 2, paramString.toString());
-      a(new ReadInJoyCommentDataManager.39(this, new CommentViewItem(j, 0, paramBaseCommentData, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo), bool, paramInt));
+      a(new ReadInJoyCommentDataManager.39(this, new CommentViewItem(i1, 0, paramBaseCommentData, this.g), bool, paramInt));
       return;
     }
     if ((paramBaseCommentData instanceof SubCommentData))
     {
-      this.jdField_c_of_type_JavaUtilList.add(0, paramBaseCommentData.commentId);
-      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "add new sub comment, now size : ", Integer.valueOf(this.jdField_c_of_type_JavaUtilList.size()) });
-      Object localObject = this.jdField_b_of_type_JavaUtilMap;
+      this.l.add(0, paramBaseCommentData.commentId);
+      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "add new sub comment, now size : ", Integer.valueOf(this.l.size()) });
+      Object localObject = this.e;
       paramString = (SubCommentData)paramBaseCommentData;
       localObject = (BaseCommentData)((Map)localObject).get(paramString.parentCommentId);
-      paramString = (CommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString.parentCommentId);
+      paramString = (CommentData)this.e.get(paramString.parentCommentId);
       if (paramString != null)
       {
         paramString.subCommentNum += 1;
@@ -1663,7 +1539,7 @@ public class ReadInJoyCommentDataManager
   
   public void a(CommonCommentData paramCommonCommentData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityCommonCommentData = paramCommonCommentData;
+    this.b = paramCommonCommentData;
   }
   
   public void a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -1687,7 +1563,7 @@ public class ReadInJoyCommentDataManager
     }
     if (paramBoolean1)
     {
-      localObject = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+      localObject = (BaseCommentData)this.e.get(paramString);
       if (localObject == null) {
         return;
       }
@@ -1695,79 +1571,79 @@ public class ReadInJoyCommentDataManager
       ((BaseCommentData)localObject).isAuthorBottom = bool;
       if (bool)
       {
-        if (this.jdField_d_of_type_Boolean)
+        if (this.u)
         {
-          this.jdField_b_of_type_JavaUtilMap.remove(paramString);
+          this.e.remove(paramString);
         }
         else
         {
-          this.jdField_a_of_type_JavaUtilList.remove(paramString);
-          this.jdField_a_of_type_JavaUtilList.add(paramString);
+          this.h.remove(paramString);
+          this.h.add(paramString);
         }
-        paramInt = 2131718295;
+        paramInt = 2131915787;
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilList.remove(paramString);
-        localObject = a();
+        this.h.remove(paramString);
+        localObject = C();
         paramInt = ((Integer)((Pair)localObject).first).intValue();
-        int j = ((Integer)((Pair)localObject).second).intValue();
+        int i1 = ((Integer)((Pair)localObject).second).intValue();
         if (paramInt >= 10)
         {
-          this.jdField_a_of_type_JavaUtilList.add(9, paramString);
+          this.h.add(9, paramString);
         }
         else if (paramInt >= 2)
         {
-          localObject = this.jdField_a_of_type_JavaUtilList;
-          ((List)localObject).add(((List)localObject).size() - j - 1, paramString);
+          localObject = this.h;
+          ((List)localObject).add(((List)localObject).size() - i1 - 1, paramString);
         }
-        else if (j > 0)
+        else if (i1 > 0)
         {
-          localObject = this.jdField_a_of_type_JavaUtilList;
-          ((List)localObject).add(((List)localObject).size() - j, paramString);
+          localObject = this.h;
+          ((List)localObject).add(((List)localObject).size() - i1, paramString);
         }
         else
         {
-          this.jdField_a_of_type_JavaUtilList.add(paramString);
+          this.h.add(paramString);
         }
-        paramInt = 2131718306;
+        paramInt = 2131915798;
       }
-      a(new ReadInJoyCommentDataManager.41(this, a()));
-      QQToast.a(BaseApplicationImpl.context, 2, HardCodeUtil.a(paramInt), 0).a();
+      a(new ReadInJoyCommentDataManager.41(this, j()));
+      QQToast.makeText(BaseApplicationImpl.context, 2, HardCodeUtil.a(paramInt), 0).show();
       return;
     }
     if (bool)
     {
       if (paramBoolean2) {
-        paramInt = 2131718294;
+        paramInt = 2131915786;
       } else {
-        paramInt = 2131718293;
+        paramInt = 2131915785;
       }
     }
     else {
-      paramInt = 2131718305;
+      paramInt = 2131915797;
     }
-    QQToast.a(BaseApplicationImpl.context, HardCodeUtil.a(paramInt), 0).a();
+    QQToast.makeText(BaseApplicationImpl.context, HardCodeUtil.a(paramInt), 0).show();
   }
   
   public void a(String paramString1, String paramString2)
   {
-    d();
+    g();
     a(1, paramString1, paramString2);
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_f_of_type_Boolean = paramBoolean;
+    this.H = paramBoolean;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setTitleShowData | showFamilyTitle : ");
-    localStringBuilder.append(this.jdField_f_of_type_Boolean);
+    localStringBuilder.append(this.H);
     QLog.d("ReadInJoyCommentDataManager", 2, localStringBuilder.toString());
   }
   
   public void a(boolean paramBoolean, int paramInt, String paramString, @NonNull CommentReportInfo paramCommentReportInfo)
   {
-    c(paramBoolean);
+    d(paramBoolean);
     QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "onCommentReportResult(): success : ", Boolean.valueOf(paramBoolean), ", retCode : ", Integer.valueOf(paramInt), ", retMsg : ", paramString, "reportInfo :", paramCommentReportInfo });
     if (paramBoolean)
     {
@@ -1794,25 +1670,25 @@ public class ReadInJoyCommentDataManager
     if (paramCommentViewItem == null) {
       return;
     }
-    paramString = paramCommentViewItem.a;
+    paramString = paramCommentViewItem.c;
     if (paramString == null) {
       return;
     }
     if (paramBoolean1)
     {
-      QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131712893), 0).a();
-      a(paramString);
+      QQToast.makeText(BaseApplication.getContext(), 2, HardCodeUtil.a(2131910463), 0).show();
       b(paramString);
+      c(paramString);
       a(new ReadInJoyCommentDataManager.31(this, paramString.getCommentLevel(), paramCommentViewItem, paramInt), false);
       return;
     }
     paramCommentViewItem = BaseApplicationImpl.context;
     if (paramBoolean2) {
-      paramInt = 2131718288;
+      paramInt = 2131915780;
     } else {
-      paramInt = 2131718287;
+      paramInt = 2131915779;
     }
-    QQToast.a(paramCommentViewItem, paramBoolean2 ^ true, HardCodeUtil.a(paramInt), 0).a();
+    QQToast.makeText(paramCommentViewItem, paramBoolean2 ^ true, HardCodeUtil.a(paramInt), 0).show();
   }
   
   public void a(boolean paramBoolean1, CommentViewItem paramCommentViewItem, String paramString, boolean paramBoolean2)
@@ -1826,7 +1702,7 @@ public class ReadInJoyCommentDataManager
     if (paramCommentViewItem == null) {
       return;
     }
-    paramCommentViewItem = paramCommentViewItem.a;
+    paramCommentViewItem = paramCommentViewItem.c;
     if (paramCommentViewItem == null) {
       return;
     }
@@ -1847,7 +1723,7 @@ public class ReadInJoyCommentDataManager
     {
       localObject = ((Activity)localObject).getIntent().getBundleExtra("bundle");
       if (localObject != null) {
-        ReadInJoyLogicEngineEventDispatcher.a().a(paramBoolean, this.jdField_a_of_type_JavaLangString, paramBaseCommentData.commentId, String.valueOf(paramInt2), "onCommentLike", ((Bundle)localObject).getInt("seq"));
+        ReadInJoyLogicEngineEventDispatcher.a().a(paramBoolean, this.a, paramBaseCommentData.commentId, String.valueOf(paramInt2), "onCommentLike", ((Bundle)localObject).getInt("seq"));
       }
     }
   }
@@ -1860,21 +1736,21 @@ public class ReadInJoyCommentDataManager
     QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "del comment resp, ret : ", Boolean.valueOf(paramBoolean), ", data : ", paramBaseCommentData });
     if (paramBoolean)
     {
-      QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131712893), 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 2, HardCodeUtil.a(2131910463), 0).show();
       paramString = QBaseActivity.sTopActivity.getIntent().getBundleExtra("bundle");
-      int j;
+      int i1;
       if ((paramBaseCommentData instanceof CommentData)) {
-        j = 1 + ((CommentData)paramBaseCommentData).subCommentNum;
+        i1 = 1 + ((CommentData)paramBaseCommentData).subCommentNum;
       } else {
-        j = 1;
+        i1 = 1;
       }
       if (paramString != null) {
-        ReadInJoyLogicEngineEventDispatcher.a().a(true, this.jdField_a_of_type_JavaLangString, paramBaseCommentData.commentId, "onCommentDelete", paramString.getInt("seq"), j);
+        ReadInJoyLogicEngineEventDispatcher.a().a(true, this.a, paramBaseCommentData.commentId, "onCommentDelete", paramString.getInt("seq"), i1);
       }
     }
     else
     {
-      QQToast.a(BaseApplication.getContext(), 1, paramString, 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 1, paramString, 0).show();
     }
   }
   
@@ -1882,67 +1758,29 @@ public class ReadInJoyCommentDataManager
   {
     if (paramBoolean)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2, HardCodeUtil.a(2131718317), 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2, HardCodeUtil.a(2131915809), 0).show();
       return;
     }
     BaseApplication localBaseApplication = BaseApplicationImpl.context;
     if (TextUtils.isEmpty(paramString)) {
-      paramString = HardCodeUtil.a(2131718316);
+      paramString = HardCodeUtil.a(2131915808);
     }
-    QQToast.a(localBaseApplication, 1, paramString, 0).a();
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_h_of_type_Boolean;
-  }
-  
-  public boolean a(ReadInJoyCommentDataManager.OnDataChangeListener paramOnDataChangeListener)
-  {
-    try
-    {
-      boolean bool = this.jdField_e_of_type_JavaUtilList.remove(paramOnDataChangeListener);
-      return bool;
-    }
-    finally
-    {
-      paramOnDataChangeListener = finally;
-      throw paramOnDataChangeListener;
-    }
+    QQToast.makeText(localBaseApplication, 1, paramString, 0).show();
   }
   
   public void a_(String paramString, int paramInt)
   {
-    paramString = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+    paramString = (BaseCommentData)this.e.get(paramString);
     if (paramString != null) {
       paramString.disLike = paramInt;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentSSOModule.a(paramString, 1, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void ao_()
-  {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this);
-  }
-  
-  public void ap_()
-  {
-    try
-    {
-      this.jdField_e_of_type_JavaUtilList.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.z.a(paramString, 1, paramInt, this.a, this.f);
   }
   
   @VisibleForTesting
   int b(@NonNull CommentReportInfo paramCommentReportInfo)
   {
-    CommentData localCommentData = (CommentData)this.jdField_b_of_type_JavaUtilMap.get(paramCommentReportInfo.b());
+    CommentData localCommentData = (CommentData)this.e.get(paramCommentReportInfo.b());
     if (localCommentData != null)
     {
       if (localCommentData.subCommentNum > 0) {
@@ -1962,119 +1800,33 @@ public class ReadInJoyCommentDataManager
       }
     }
     a(localCommentData, -1);
-    this.jdField_c_of_type_JavaUtilList.remove(paramCommentReportInfo.c());
+    this.l.remove(paramCommentReportInfo.c());
     return 2;
   }
   
-  public List<CommentViewItem> b()
+  public long b(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    int j;
-    if (this.jdField_b_of_type_JavaUtilList.size() > 0)
-    {
-      localObject = new ArrayList();
-      j = 0;
-      while (j < this.jdField_b_of_type_JavaUtilList.size())
-      {
-        CommentData localCommentData = (CommentData)this.jdField_b_of_type_JavaUtilMap.get(this.jdField_b_of_type_JavaUtilList.get(j));
-        if ((localCommentData != null) && ((!localCommentData.isFamilyTopEntry()) || ((localCommentData.isFamilyTopEntry()) && (!ReadInJoyCommentHelper.a())))) {
-          ((ArrayList)localObject).add(localCommentData);
-        }
-        j += 1;
-      }
-      if ((((ArrayList)localObject).size() > 0) && (this.jdField_f_of_type_Boolean)) {
-        localArrayList.add(new CommentViewItem(2, null, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
-      }
-      localArrayList.addAll(a(2, new ArrayList((Collection)localObject)));
+    long l1 = this.p;
+    if (paramInt == 6) {
+      l1 = this.v;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getTotalNewCommentList ");
-    ((StringBuilder)localObject).append(localArrayList);
-    if (((StringBuilder)localObject).toString() != null) {
-      j = localArrayList.size();
-    } else {
-      j = 0;
-    }
-    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { Integer.valueOf(j) });
-    return localArrayList;
-  }
-  
-  public List<CommentViewItem> b(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramString = (CommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-    if (paramString == null) {
-      return localArrayList;
-    }
-    localArrayList.add(new CommentViewItem(0, paramString, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
-    localArrayList.add(new CommentViewItem(3, paramString, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
-    localArrayList.addAll(b(0, this.jdField_c_of_type_JavaUtilList));
-    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "get all sub comment list , parentID : ", paramString, ", sub list size : ", Integer.valueOf(this.jdField_c_of_type_JavaUtilList.size()) });
-    return localArrayList;
-  }
-  
-  public void b()
-  {
-    this.jdField_i_of_type_Boolean = true;
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-    ((StringBuilder)localObject).append(", pbModuel=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule);
-    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "CommentDataManager destroy, articleInfo=", ((StringBuilder)localObject).toString() });
-    localObject = this.jdField_b_of_type_JavaUtilMap;
-    if (localObject != null) {
-      ((Map)localObject).clear();
-    }
-    n();
-    q();
-    r();
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = "";
-    localObject = this.jdField_a_of_type_ComTencentUtilLongSparseArray;
-    if (localObject != null) {
-      ((LongSparseArray)localObject).a();
-    }
-    localObject = this.jdField_e_of_type_JavaUtilList;
-    if (localObject != null) {
-      ((List)localObject).clear();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule;
-    if (localObject != null) {
-      ((ReadInJoyCommentPBModule)localObject).unInitialize();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentSSOModule;
-    if (localObject != null) {
-      ((ReadInJoyCommentSSOModule)localObject).a();
-    }
-    ao_();
-  }
-  
-  public void b(int paramInt)
-  {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("loadMoreComment | with feedsType : ");
+    localStringBuilder.append("getFirstCommentTotalCount | feedsType ");
     localStringBuilder.append(paramInt);
-    QLog.d("ReadInJoyCommentDataManager", 1, localStringBuilder.toString());
-    if (paramInt != 2)
-    {
-      if ((paramInt != 3) && (paramInt != 5))
-      {
-        if (paramInt != 6) {
-          return;
-        }
-        j(2);
-        return;
-      }
-      i(2);
-      return;
-    }
-    h(2);
+    localStringBuilder.append("; totalCount ");
+    localStringBuilder.append(l1);
+    QLog.d("ReadInJoyCommentDataManager", 2, localStringBuilder.toString());
+    return l1;
+  }
+  
+  public ReadInJoyCommentPBModule.Label b()
+  {
+    return this.J;
   }
   
   public void b(int paramInt, ReadInJoyCommentPBModule.ResponseCommentInfo paramResponseCommentInfo, ReadInJoyCommentPBModule.ResponseExtraInfo paramResponseExtraInfo, CommentData paramCommentData)
   {
-    boolean bool2 = TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString);
+    boolean bool2 = TextUtils.isEmpty(this.t);
     paramCommentData = paramResponseCommentInfo;
     if (paramResponseCommentInfo == null) {
       paramCommentData = new ReadInJoyCommentPBModule.ResponseCommentInfo();
@@ -2086,10 +1838,10 @@ public class ReadInJoyCommentDataManager
     boolean bool1;
     if (paramInt == 0)
     {
-      this.jdField_d_of_type_Boolean = paramCommentData.jdField_a_of_type_Boolean;
-      this.jdField_e_of_type_JavaLangString = paramCommentData.jdField_a_of_type_JavaLangString;
-      a(this.jdField_h_of_type_JavaLangString, paramResponseCommentInfo.jdField_a_of_type_Boolean);
-      c(paramCommentData.jdField_a_of_type_JavaUtilList, null);
+      this.u = paramCommentData.d;
+      this.t = paramCommentData.e;
+      a(this.G, paramResponseCommentInfo.e);
+      c(paramCommentData.a, null);
       bool1 = true;
     }
     else
@@ -2098,55 +1850,55 @@ public class ReadInJoyCommentDataManager
     }
     if (bool2)
     {
-      if ((bool1) && ((paramCommentData.jdField_a_of_type_JavaUtilList == null) || (paramCommentData.jdField_a_of_type_JavaUtilList.isEmpty())))
+      if ((bool1) && ((paramCommentData.a == null) || (paramCommentData.a.isEmpty())))
       {
-        if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
+        if (TextUtils.isEmpty(this.q))
         {
           QLog.d("ReadInJoyCommentDataManager", 1, "switchCommentFeedsType | hot is empty or first change to new : ");
-          h(1);
+          g(1);
           return;
         }
-        a(new ReadInJoyCommentDataManager.24(this, a(3)));
+        a(new ReadInJoyCommentDataManager.24(this, d(3)));
         return;
       }
-      paramResponseCommentInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor;
-      if ((paramResponseCommentInfo != null) && (paramResponseCommentInfo.jdField_b_of_type_Boolean))
+      paramResponseCommentInfo = this.D;
+      if ((paramResponseCommentInfo != null) && (paramResponseCommentInfo.d))
       {
-        if (!a(paramCommentData.jdField_a_of_type_JavaUtilList)) {
+        if (!d(paramCommentData.a)) {
           a(new ReadInJoyCommentDataManager.25(this));
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor.jdField_b_of_type_Boolean = false;
+        this.D.d = false;
       }
-      paramResponseCommentInfo = a();
-      if (paramCommentData.jdField_a_of_type_JavaUtilList != null) {
-        paramInt = paramCommentData.jdField_a_of_type_JavaUtilList.size();
+      paramResponseCommentInfo = j();
+      if (paramCommentData.a != null) {
+        paramInt = paramCommentData.a.size();
       } else {
         paramInt = 0;
       }
       paramResponseExtraInfo = new StringBuilder();
       paramResponseExtraInfo.append(", hot size : ");
-      int j;
-      if (paramCommentData.jdField_a_of_type_JavaUtilList != null) {
-        j = paramCommentData.jdField_a_of_type_JavaUtilList.size();
+      int i1;
+      if (paramCommentData.a != null) {
+        i1 = paramCommentData.a.size();
       } else {
-        j = 0;
+        i1 = 0;
       }
-      paramResponseExtraInfo.append(j);
-      QLog.d("ReadInJoyCommentDataManager", 2, new Object[] { "onLoadHotCommentFinish, ret : ", Boolean.valueOf(bool1), ", hot size : ", Integer.valueOf(paramInt), paramResponseExtraInfo.toString(), ", totalCnt : ", Long.valueOf(this.jdField_c_of_type_Long) });
+      paramResponseExtraInfo.append(i1);
+      QLog.d("ReadInJoyCommentDataManager", 2, new Object[] { "onLoadHotCommentFinish, ret : ", Boolean.valueOf(bool1), ", hot size : ", Integer.valueOf(paramInt), paramResponseExtraInfo.toString(), ", totalCnt : ", Long.valueOf(this.s) });
       a(new ReadInJoyCommentDataManager.26(this, bool1, paramResponseCommentInfo));
-      paramResponseCommentInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager$CommentAnchor;
+      paramResponseCommentInfo = this.D;
       if (paramResponseCommentInfo != null) {
         paramResponseCommentInfo.a(false);
       }
     }
     else
     {
-      if (paramCommentData.jdField_a_of_type_JavaUtilList != null) {
-        paramResponseCommentInfo = a(1, new ArrayList(paramCommentData.jdField_a_of_type_JavaUtilList));
+      if (paramCommentData.a != null) {
+        paramResponseCommentInfo = e(1, new ArrayList(paramCommentData.a));
       } else {
         paramResponseCommentInfo = new ArrayList();
       }
-      bool2 = this.jdField_d_of_type_Boolean;
+      bool2 = this.u;
       QLog.d("ReadInJoyCommentDataManager", 2, new Object[] { "onLoadMoreHotComment, ret : ", Boolean.valueOf(bool1), ", size : ", Integer.valueOf(paramResponseCommentInfo.size()), ", hasNext : ", Boolean.valueOf(bool2) });
       a(new ReadInJoyCommentDataManager.27(this, bool1, paramResponseCommentInfo, bool2));
     }
@@ -2156,12 +1908,12 @@ public class ReadInJoyCommentDataManager
   {
     if (paramCommentViewItem != null)
     {
-      if (paramCommentViewItem.a == null) {
+      if (paramCommentViewItem.c == null) {
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("blockUserComment | ");
-      localStringBuilder.append(paramCommentViewItem.a);
+      localStringBuilder.append(paramCommentViewItem.c);
       QLog.d("ReadInJoyCommentDataManager", 1, localStringBuilder.toString());
       RIJCommentNetworkHelper.a.a(paramCommentViewItem, this);
     }
@@ -2171,26 +1923,15 @@ public class ReadInJoyCommentDataManager
   {
     if (paramCommentViewItem != null)
     {
-      if (paramCommentViewItem.a == null) {
+      if (paramCommentViewItem.c == null) {
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("authorDeleteComment | ");
-      localStringBuilder.append(paramCommentViewItem.a);
+      localStringBuilder.append(paramCommentViewItem.c);
       QLog.d("ReadInJoyCommentDataManager", 1, localStringBuilder.toString());
-      RIJCommentNetworkHelper.a.a(this.jdField_a_of_type_Int, paramCommentViewItem, paramInt, this);
+      RIJCommentNetworkHelper.a.a(this.f, paramCommentViewItem, paramInt, this);
     }
-  }
-  
-  public void b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuideHelper.a(paramAbsBaseArticleInfo);
-  }
-  
-  public void b(String paramString)
-  {
-    a(2, paramString, null);
   }
   
   public void b(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -2206,15 +1947,15 @@ public class ReadInJoyCommentDataManager
     localObject = ((StringBuilder)localObject).toString();
     boolean bool = true;
     QLog.d("ReadInJoyCommentDataManager", 1, (String)localObject);
-    int j;
+    int i1;
     if (paramInt == 1) {
-      j = 1;
+      i1 = 1;
     } else {
-      j = 0;
+      i1 = 0;
     }
     if (paramBoolean1)
     {
-      localObject = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+      localObject = (BaseCommentData)this.e.get(paramString);
       if (localObject == null) {
         return;
       }
@@ -2225,54 +1966,54 @@ public class ReadInJoyCommentDataManager
       }
       ((BaseCommentData)localObject).isAuthorSticky = paramBoolean1;
       ((BaseCommentData)localObject).isAuthorBottom = false;
-      if (j != 0)
+      if (i1 != 0)
       {
-        this.jdField_a_of_type_JavaUtilList.remove(paramString);
-        this.jdField_a_of_type_JavaUtilList.add(b(), paramString);
-        paramInt = 2131718300;
+        this.h.remove(paramString);
+        this.h.add(D(), paramString);
+        paramInt = 2131915792;
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilList.remove(paramString);
-        localObject = a();
+        this.h.remove(paramString);
+        localObject = C();
         paramInt = ((Integer)((Pair)localObject).first).intValue();
-        j = ((Integer)((Pair)localObject).second).intValue();
+        i1 = ((Integer)((Pair)localObject).second).intValue();
         if (paramInt >= 10)
         {
-          this.jdField_a_of_type_JavaUtilList.add(9, paramString);
+          this.h.add(9, paramString);
         }
-        else if (j > 0)
+        else if (i1 > 0)
         {
-          localObject = this.jdField_a_of_type_JavaUtilList;
-          ((List)localObject).add(((List)localObject).size() - j, paramString);
+          localObject = this.h;
+          ((List)localObject).add(((List)localObject).size() - i1, paramString);
         }
         else
         {
-          this.jdField_a_of_type_JavaUtilList.add(paramString);
+          this.h.add(paramString);
         }
-        paramInt = 2131718304;
+        paramInt = 2131915796;
       }
-      a(new ReadInJoyCommentDataManager.42(this, a()));
-      QQToast.a(BaseApplicationImpl.context, 2, HardCodeUtil.a(paramInt), 0).a();
+      a(new ReadInJoyCommentDataManager.42(this, j()));
+      QQToast.makeText(BaseApplicationImpl.context, 2, HardCodeUtil.a(paramInt), 0).show();
       return;
     }
-    if (j != 0)
+    if (i1 != 0)
     {
       if (paramBoolean2) {
-        paramInt = 2131718299;
+        paramInt = 2131915791;
       } else {
-        paramInt = 2131718298;
+        paramInt = 2131915790;
       }
     }
     else {
-      paramInt = 2131718303;
+      paramInt = 2131915795;
     }
-    QQToast.a(BaseApplicationImpl.context, paramInt, 0).a();
+    QQToast.makeText(BaseApplicationImpl.context, paramInt, 0).show();
   }
   
   public void b(String paramString1, String paramString2, int paramInt)
   {
-    BaseCommentData localBaseCommentData = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString1);
+    BaseCommentData localBaseCommentData = (BaseCommentData)this.e.get(paramString1);
     CommentReportInfo localCommentReportInfo = new CommentReportInfo();
     localCommentReportInfo.a(paramInt);
     localCommentReportInfo.d(paramString2);
@@ -2298,17 +2039,17 @@ public class ReadInJoyCommentDataManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if ((BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString) == null) {
+    if ((BaseCommentData)this.e.get(paramString) == null) {
       return;
     }
-    paramString = new FirstCommentSinkData(paramString, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID, this.jdField_a_of_type_Int, "");
-    int j;
+    paramString = new FirstCommentSinkData(paramString, this.g.innerUniqueID, this.f, "");
+    int i1;
     if (paramBoolean) {
-      j = 3;
+      i1 = 3;
     } else {
-      j = 2;
+      i1 = 2;
     }
-    paramString.a(j);
+    paramString.a(i1);
     RIJCommentNetworkHelper.a.a(paramString, this);
   }
   
@@ -2317,61 +2058,61 @@ public class ReadInJoyCommentDataManager
     QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "onReportCommentResp ret : ", Boolean.valueOf(paramBoolean), ", commentData : ", paramBaseCommentData, ", extraData : ", paramString });
   }
   
+  public boolean b(ReadInJoyCommentDataManager.OnDataChangeListener paramOnDataChangeListener)
+  {
+    try
+    {
+      boolean bool = this.B.remove(paramOnDataChangeListener);
+      return bool;
+    }
+    finally
+    {
+      paramOnDataChangeListener = finally;
+      throw paramOnDataChangeListener;
+    }
+  }
+  
   public void b_(String paramString, int paramInt)
   {
-    paramString = (BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+    paramString = (BaseCommentData)this.e.get(paramString);
     if (paramString != null)
     {
       paramString.like = paramInt;
-      int k = paramString.likeCnt;
-      int j;
+      int i2 = paramString.likeCnt;
+      int i1;
       if (paramString.isLiked()) {
-        j = 1;
+        i1 = 1;
       } else {
-        j = -1;
+        i1 = -1;
       }
-      paramString.likeCnt = (k + j);
+      paramString.likeCnt = (i2 + i1);
       if (paramString.likeCnt < 0) {
         paramString.likeCnt = 0;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentSSOModule.a(paramString, 0, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.z.a(paramString, 0, paramInt, this.a, this.f);
   }
   
-  public List<CommentViewItem> c()
+  public void c(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = this.jdField_d_of_type_JavaUtilList;
-    if ((localObject1 != null) && (((List)localObject1).size() > 0))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadMoreComment | with feedsType : ");
+    localStringBuilder.append(paramInt);
+    QLog.d("ReadInJoyCommentDataManager", 1, localStringBuilder.toString());
+    if (paramInt != 2)
     {
-      localObject1 = new ArrayList();
-      Iterator localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      if ((paramInt != 3) && (paramInt != 5))
       {
-        Object localObject2 = (String)localIterator.next();
-        localObject2 = (CommentData)this.jdField_b_of_type_JavaUtilMap.get(localObject2);
-        if (localObject2 != null) {
-          ((ArrayList)localObject1).add(localObject2);
+        if (paramInt != 6) {
+          return;
         }
+        i(2);
+        return;
       }
-      if ((((ArrayList)localObject1).size() > 0) && (this.jdField_f_of_type_Boolean))
-      {
-        QLog.d("ReadInJoyCommentDataManager", 1, "getTotalFamilyCommentList | showTitle dont showSwitch");
-        localArrayList.add(new CommentViewItem(2, null, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
-      }
-      localArrayList.addAll(a(4, new ArrayList((Collection)localObject1)));
+      h(2);
+      return;
     }
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("getTotalFamilyCommentList ");
-    ((StringBuilder)localObject1).append(localArrayList);
-    int j;
-    if (((StringBuilder)localObject1).toString() != null) {
-      j = localArrayList.size();
-    } else {
-      j = 0;
-    }
-    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { Integer.valueOf(j) });
-    return localArrayList;
+    g(2);
   }
   
   public void c(int paramInt, ReadInJoyCommentPBModule.ResponseCommentInfo paramResponseCommentInfo, ReadInJoyCommentPBModule.ResponseExtraInfo paramResponseExtraInfo, CommentData paramCommentData)
@@ -2384,8 +2125,8 @@ public class ReadInJoyCommentDataManager
     if (paramResponseExtraInfo == null) {
       paramResponseCommentInfo = new ReadInJoyCommentPBModule.ResponseExtraInfo();
     }
-    boolean bool2 = TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString);
-    int j = 0;
+    boolean bool2 = TextUtils.isEmpty(this.w);
+    int i1 = 0;
     boolean bool1;
     if (paramInt == 0) {
       bool1 = true;
@@ -2394,9 +2135,9 @@ public class ReadInJoyCommentDataManager
     }
     if (bool1)
     {
-      this.jdField_f_of_type_JavaLangString = paramCommentData.jdField_a_of_type_JavaLangString;
-      this.jdField_e_of_type_Boolean = paramCommentData.jdField_a_of_type_Boolean;
-      d(paramCommentData.jdField_a_of_type_JavaUtilList, this.jdField_d_of_type_JavaUtilList);
+      this.w = paramCommentData.e;
+      this.x = paramCommentData.d;
+      d(paramCommentData.a, this.y);
       QLog.d("ReadInJoyCommentDataManager", 2, "onFetchFamilyCommentListResult succeed ");
     }
     else
@@ -2405,30 +2146,30 @@ public class ReadInJoyCommentDataManager
     }
     if (bool2)
     {
-      long l;
+      long l1;
       if (paramResponseCommentInfo != null) {
-        l = paramResponseCommentInfo.jdField_a_of_type_Long;
+        l1 = paramResponseCommentInfo.a;
       } else {
-        l = 0L;
+        l1 = 0L;
       }
-      this.jdField_d_of_type_Long = l;
+      this.v = l1;
       paramResponseCommentInfo = new StringBuilder();
-      paramInt = j;
+      paramInt = i1;
       if (paramCommentData.a()) {
-        paramInt = paramCommentData.jdField_a_of_type_JavaUtilList.size();
+        paramInt = paramCommentData.a.size();
       }
       paramResponseCommentInfo.append(paramInt);
       paramResponseCommentInfo.append(", mFamilyCommentCnt : ");
-      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "onLoadFirstFaimilyCommentFinish, ret : ", Boolean.valueOf(bool1), ",  size : ", paramResponseCommentInfo.toString(), Long.valueOf(this.jdField_d_of_type_Long) });
-      a(new ReadInJoyCommentDataManager.28(this, bool1, c()));
+      QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "onLoadFirstFaimilyCommentFinish, ret : ", Boolean.valueOf(bool1), ",  size : ", paramResponseCommentInfo.toString(), Long.valueOf(this.v) });
+      a(new ReadInJoyCommentDataManager.28(this, bool1, l()));
       return;
     }
     if (paramCommentData != null) {
-      paramResponseCommentInfo = a(4, new ArrayList(paramCommentData.jdField_a_of_type_JavaUtilList));
+      paramResponseCommentInfo = e(4, new ArrayList(paramCommentData.a));
     } else {
       paramResponseCommentInfo = new ArrayList();
     }
-    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "onLoadMoreFamilyComment, ret : ", Boolean.valueOf(bool1), ", size : ", Integer.valueOf(paramResponseCommentInfo.size()), ", hasNext : ", Boolean.valueOf(this.jdField_e_of_type_Boolean) });
+    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "onLoadMoreFamilyComment, ret : ", Boolean.valueOf(bool1), ", size : ", Integer.valueOf(paramResponseCommentInfo.size()), ", hasNext : ", Boolean.valueOf(this.x) });
     a(new ReadInJoyCommentDataManager.29(this, bool1, paramResponseCommentInfo));
   }
   
@@ -2436,33 +2177,21 @@ public class ReadInJoyCommentDataManager
   {
     if (paramCommentViewItem != null)
     {
-      if (paramCommentViewItem.a == null) {
+      if (paramCommentViewItem.c == null) {
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("patrolArbitration | ");
-      localStringBuilder.append(paramCommentViewItem.a);
+      localStringBuilder.append(paramCommentViewItem.c);
       QLog.d("ReadInJoyCommentDataManager", 1, localStringBuilder.toString());
       RIJCommentNetworkHelper.a.b(paramCommentViewItem, this);
     }
   }
   
-  public void c(String paramString)
+  public void c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    BaseCommentData localBaseCommentData = a(1, paramString);
-    if (localBaseCommentData == null) {
-      return;
-    }
-    FirstCommentCreateData localFirstCommentCreateData = new FirstCommentCreateData(this.jdField_a_of_type_Int, "");
-    localFirstCommentCreateData.b(this.jdField_h_of_type_JavaLangString);
-    localFirstCommentCreateData.c(this.jdField_g_of_type_JavaLangString);
-    localFirstCommentCreateData.a(localBaseCommentData.commentContent);
-    localFirstCommentCreateData.a(localBaseCommentData.commentRptDataList);
-    localFirstCommentCreateData.b(localBaseCommentData.commentLinkDataList);
-    RIJCommentNetworkWrapper.INSTANCE.createFirstComment(localFirstCommentCreateData, new ReadInJoyCommentDataManager.17(this), paramString, 2, true);
+    this.g = paramAbsBaseArticleInfo;
+    this.E.a(paramAbsBaseArticleInfo);
   }
   
   public void c(String paramString, boolean paramBoolean)
@@ -2470,18 +2199,28 @@ public class ReadInJoyCommentDataManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if ((BaseCommentData)this.jdField_b_of_type_JavaUtilMap.get(paramString) == null) {
+    if ((BaseCommentData)this.e.get(paramString) == null) {
       return;
     }
-    paramString = new FirstCommentStickyData(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID, this.jdField_a_of_type_Int, "", paramString);
-    int j;
+    paramString = new FirstCommentStickyData(this.g.innerUniqueID, this.f, "", paramString);
+    int i1;
     if (paramBoolean) {
-      j = 1;
+      i1 = 1;
     } else {
-      j = 2;
+      i1 = 2;
     }
-    paramString.a(j);
+    paramString.a(i1);
     RIJCommentNetworkHelper.a.a(paramString, this);
+  }
+  
+  public boolean c()
+  {
+    return this.K;
+  }
+  
+  public void cC_()
+  {
+    ReadInJoyLogicEngineEventDispatcher.a().b(this);
   }
   
   public void c_(String paramString, int paramInt)
@@ -2493,10 +2232,10 @@ public class ReadInJoyCommentDataManager
     if (localSubCommentData == null) {
       return;
     }
-    SubCommentCreateData localSubCommentCreateData = new SubCommentCreateData(this.jdField_a_of_type_Int, "");
+    SubCommentCreateData localSubCommentCreateData = new SubCommentCreateData(this.f, "");
     localSubCommentCreateData.a(localSubCommentData.parentCommentId);
-    localSubCommentCreateData.b(this.jdField_h_of_type_JavaLangString);
-    localSubCommentCreateData.c(this.jdField_g_of_type_JavaLangString);
+    localSubCommentCreateData.b(this.G);
+    localSubCommentCreateData.c(this.F);
     localSubCommentCreateData.d(localSubCommentData.commentContent);
     localSubCommentCreateData.a(localSubCommentData.commentRptDataList);
     localSubCommentCreateData.b(localSubCommentData.commentLinkDataList);
@@ -2510,34 +2249,51 @@ public class ReadInJoyCommentDataManager
     catch (NumberFormatException localNumberFormatException)
     {
       label132:
-      long l;
+      long l1;
       break label132;
     }
     QLog.e("ReadInJoyCommentDataManager", 1, "replyComment: Invalid repliedSubAuthorId.");
-    l = RIJCommentNetworkWrapper.INSTANCE.createSubComment(localSubCommentCreateData, new ReadInJoyCommentDataManager.15(this, paramString, localSubCommentData), paramString, paramInt, false);
+    l1 = RIJCommentNetworkWrapper.INSTANCE.createSubComment(localSubCommentCreateData, new ReadInJoyCommentDataManager.15(this, paramString, localSubCommentData), paramString, paramInt, false);
     paramString = new StringBuilder();
     paramString.append("create reply comment, seq : ");
-    paramString.append(l);
+    paramString.append(l1);
     paramString.append(", data : ");
     paramString.append(localSubCommentData);
     QLog.d("ReadInJoyCommentDataManager", 1, paramString.toString());
   }
   
-  public void d()
+  public long d(String paramString)
   {
-    Object localObject = this.jdField_c_of_type_JavaUtilList;
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        this.jdField_b_of_type_JavaUtilMap.remove(str);
-      }
-      this.jdField_c_of_type_JavaUtilList.clear();
+    paramString = (BaseCommentData)this.e.get(paramString);
+    if ((paramString != null) && ((paramString instanceof CommentData))) {
+      return ((CommentData)paramString).subCommentNum;
     }
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Boolean = true;
+    return 0L;
+  }
+  
+  public String d()
+  {
+    return this.L;
+  }
+  
+  public List<CommentViewItem> d(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getCurrentFeedsTypeItemList | feedsType ");
+    localStringBuilder.append(paramInt);
+    QLog.d("ReadInJoyCommentDataManager", 1, localStringBuilder.toString());
+    if (paramInt != 2)
+    {
+      if (paramInt != 3)
+      {
+        if (paramInt != 6) {
+          return new ArrayList();
+        }
+        return l();
+      }
+      return j();
+    }
+    return k();
   }
   
   public void d(String paramString, int paramInt)
@@ -2549,34 +2305,330 @@ public class ReadInJoyCommentDataManager
     if (localBaseCommentData == null) {
       return;
     }
-    FirstCommentCreateData localFirstCommentCreateData = new FirstCommentCreateData(this.jdField_a_of_type_Int, "");
-    localFirstCommentCreateData.b(this.jdField_h_of_type_JavaLangString);
-    localFirstCommentCreateData.c(this.jdField_g_of_type_JavaLangString);
+    FirstCommentCreateData localFirstCommentCreateData = new FirstCommentCreateData(this.f, "");
+    localFirstCommentCreateData.b(this.G);
+    localFirstCommentCreateData.c(this.F);
     localFirstCommentCreateData.a(localBaseCommentData.commentContent);
     localFirstCommentCreateData.a(localBaseCommentData.commentRptDataList);
     localFirstCommentCreateData.b(localBaseCommentData.commentLinkDataList);
-    long l = RIJCommentNetworkWrapper.INSTANCE.createFirstComment(localFirstCommentCreateData, new ReadInJoyCommentDataManager.16(this, paramString, localBaseCommentData), paramString, paramInt, false);
+    long l1 = RIJCommentNetworkWrapper.INSTANCE.createFirstComment(localFirstCommentCreateData, new ReadInJoyCommentDataManager.16(this, paramString, localBaseCommentData), paramString, paramInt, false);
     paramString = new StringBuilder();
     paramString.append("create main comment, seq : ");
-    paramString.append(l);
+    paramString.append(l1);
     paramString.append(", data : ");
     paramString.append(localBaseCommentData);
     QLog.d("ReadInJoyCommentDataManager", 1, paramString.toString());
   }
   
-  public void d_(boolean paramBoolean)
+  public List<CommentViewItem> e(String paramString)
   {
-    this.jdField_g_of_type_Boolean = paramBoolean;
+    ArrayList localArrayList = new ArrayList();
+    paramString = (BaseCommentData)this.e.get(paramString);
+    if (paramString == null) {
+      return localArrayList;
+    }
+    localArrayList.add(new CommentViewItem(0, paramString, this.g));
+    localArrayList.add(new CommentViewItem(3, paramString, this.g));
+    return localArrayList;
   }
   
-  public void i_(int paramInt)
+  public void e()
+  {
+    this.M = true;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.g);
+    ((StringBuilder)localObject).append(", pbModuel=");
+    ((StringBuilder)localObject).append(this.A);
+    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "CommentDataManager destroy, articleInfo=", ((StringBuilder)localObject).toString() });
+    localObject = this.e;
+    if (localObject != null) {
+      ((Map)localObject).clear();
+    }
+    v();
+    w();
+    x();
+    this.a = "";
+    this.k = false;
+    this.j = "";
+    localObject = this.C;
+    if (localObject != null) {
+      ((LongSparseArray)localObject).c();
+    }
+    localObject = this.B;
+    if (localObject != null) {
+      ((List)localObject).clear();
+    }
+    localObject = this.A;
+    if (localObject != null) {
+      ((ReadInJoyCommentPBModule)localObject).unInitialize();
+    }
+    localObject = this.z;
+    if (localObject != null) {
+      ((ReadInJoyCommentSSOModule)localObject).a();
+    }
+    cC_();
+  }
+  
+  public void f(String paramString)
+  {
+    a(2, paramString, null);
+  }
+  
+  public BaseCommentData g(String paramString)
+  {
+    return (BaseCommentData)this.e.get(paramString);
+  }
+  
+  public void g()
+  {
+    Object localObject = this.l;
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        this.e.remove(str);
+      }
+      this.l.clear();
+    }
+    this.m = "";
+    this.n = true;
+  }
+  
+  public int h(String paramString)
+  {
+    BaseCommentData localBaseCommentData = (BaseCommentData)this.e.get(paramString);
+    if (localBaseCommentData == null) {
+      return 0;
+    }
+    if ((localBaseCommentData instanceof CommentData))
+    {
+      if (this.h.contains(paramString)) {
+        return 1;
+      }
+      if (this.i.contains(paramString)) {
+        return 2;
+      }
+    }
+    else if ((localBaseCommentData instanceof SubCommentData))
+    {
+      return h(((SubCommentData)localBaseCommentData).parentCommentId);
+    }
+    return 0;
+  }
+  
+  public long h()
+  {
+    return this.p;
+  }
+  
+  public ReadInJoyCommentDataManager.CommentAnchor i()
+  {
+    return this.D;
+  }
+  
+  public List<CommentViewItem> i(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramString = (CommentData)this.e.get(paramString);
+    if (paramString == null) {
+      return localArrayList;
+    }
+    localArrayList.add(new CommentViewItem(0, paramString, this.g));
+    localArrayList.add(new CommentViewItem(3, paramString, this.g));
+    localArrayList.addAll(f(0, this.l));
+    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { "get all sub comment list , parentID : ", paramString, ", sub list size : ", Integer.valueOf(this.l.size()) });
+    return localArrayList;
+  }
+  
+  public void i_(boolean paramBoolean)
+  {
+    this.I = paramBoolean;
+  }
+  
+  public List<CommentViewItem> j()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i1;
+    if (this.h.size() > 0)
+    {
+      localObject = new ArrayList();
+      i1 = 0;
+      while (i1 < this.h.size())
+      {
+        CommentData localCommentData = (CommentData)this.e.get(this.h.get(i1));
+        if ((localCommentData != null) && ((!localCommentData.isFamilyTopEntry()) || ((localCommentData.isFamilyTopEntry()) && (!ReadInJoyCommentHelper.a())))) {
+          ((ArrayList)localObject).add(localCommentData);
+        }
+        i1 += 1;
+      }
+      if ((((ArrayList)localObject).size() > 0) && (this.H)) {
+        localArrayList.add(new CommentViewItem(1, null, this.g));
+      }
+      localArrayList.addAll(e(1, new ArrayList((Collection)localObject)));
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getTotalHotCommentList ");
+    ((StringBuilder)localObject).append(localArrayList);
+    if (((StringBuilder)localObject).toString() != null) {
+      i1 = localArrayList.size();
+    } else {
+      i1 = 0;
+    }
+    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { Integer.valueOf(i1) });
+    return localArrayList;
+  }
+  
+  public void j(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    BaseCommentData localBaseCommentData = a(1, paramString);
+    if (localBaseCommentData == null) {
+      return;
+    }
+    FirstCommentCreateData localFirstCommentCreateData = new FirstCommentCreateData(this.f, "");
+    localFirstCommentCreateData.b(this.G);
+    localFirstCommentCreateData.c(this.F);
+    localFirstCommentCreateData.a(localBaseCommentData.commentContent);
+    localFirstCommentCreateData.a(localBaseCommentData.commentRptDataList);
+    localFirstCommentCreateData.b(localBaseCommentData.commentLinkDataList);
+    RIJCommentNetworkWrapper.INSTANCE.createFirstComment(localFirstCommentCreateData, new ReadInJoyCommentDataManager.17(this), paramString, 2, true);
+  }
+  
+  public String k(String paramString)
+  {
+    paramString = (BaseCommentData)this.e.get(paramString);
+    if ((paramString instanceof SubCommentData)) {
+      return ((SubCommentData)paramString).parentCommentId;
+    }
+    if ((paramString instanceof CommentData)) {
+      return paramString.commentId;
+    }
+    return "";
+  }
+  
+  public List<CommentViewItem> k()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i1;
+    if (this.i.size() > 0)
+    {
+      localObject = new ArrayList();
+      i1 = 0;
+      while (i1 < this.i.size())
+      {
+        CommentData localCommentData = (CommentData)this.e.get(this.i.get(i1));
+        if ((localCommentData != null) && ((!localCommentData.isFamilyTopEntry()) || ((localCommentData.isFamilyTopEntry()) && (!ReadInJoyCommentHelper.a())))) {
+          ((ArrayList)localObject).add(localCommentData);
+        }
+        i1 += 1;
+      }
+      if ((((ArrayList)localObject).size() > 0) && (this.H)) {
+        localArrayList.add(new CommentViewItem(2, null, this.g));
+      }
+      localArrayList.addAll(e(2, new ArrayList((Collection)localObject)));
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getTotalNewCommentList ");
+    ((StringBuilder)localObject).append(localArrayList);
+    if (((StringBuilder)localObject).toString() != null) {
+      i1 = localArrayList.size();
+    } else {
+      i1 = 0;
+    }
+    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { Integer.valueOf(i1) });
+    return localArrayList;
+  }
+  
+  public List<CommentViewItem> l()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = this.y;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
+    {
+      localObject1 = new ArrayList();
+      Iterator localIterator = this.y.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (String)localIterator.next();
+        localObject2 = (CommentData)this.e.get(localObject2);
+        if (localObject2 != null) {
+          ((ArrayList)localObject1).add(localObject2);
+        }
+      }
+      if ((((ArrayList)localObject1).size() > 0) && (this.H))
+      {
+        QLog.d("ReadInJoyCommentDataManager", 1, "getTotalFamilyCommentList | showTitle dont showSwitch");
+        localArrayList.add(new CommentViewItem(2, null, this.g));
+      }
+      localArrayList.addAll(e(4, new ArrayList((Collection)localObject1)));
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getTotalFamilyCommentList ");
+    ((StringBuilder)localObject1).append(localArrayList);
+    int i1;
+    if (((StringBuilder)localObject1).toString() != null) {
+      i1 = localArrayList.size();
+    } else {
+      i1 = 0;
+    }
+    QLog.d("ReadInJoyCommentDataManager", 1, new Object[] { Integer.valueOf(i1) });
+    return localArrayList;
+  }
+  
+  public void l_(int paramInt)
   {
     a(new ReadInJoyCommentDataManager.38(this, paramInt));
+  }
+  
+  public void m()
+  {
+    try
+    {
+      this.B.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public GuideHelper n()
+  {
+    return this.E;
+  }
+  
+  public CommonCommentData o()
+  {
+    return this.b;
+  }
+  
+  public int p()
+  {
+    List localList = this.i;
+    if (localList != null) {
+      return localList.size();
+    }
+    return 0;
+  }
+  
+  public int q()
+  {
+    List localList = this.h;
+    if (localList != null) {
+      return localList.size();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager
  * JD-Core Version:    0.7.0.1
  */

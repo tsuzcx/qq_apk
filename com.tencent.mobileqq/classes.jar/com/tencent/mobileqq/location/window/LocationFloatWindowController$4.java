@@ -32,7 +32,7 @@ class LocationFloatWindowController$4
         if (localBitmap != null)
         {
           localBitmap = BaseImageUtil.c(localBitmap, 16, 16);
-          LocationFloatWindowController.a(this.a).a(paramList, localBitmap);
+          LocationFloatWindowController.b(this.a).a(paramList, localBitmap);
         }
       }
     }
@@ -44,7 +44,7 @@ class LocationFloatWindowController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.LocationFloatWindowController.4
  * JD-Core Version:    0.7.0.1
  */

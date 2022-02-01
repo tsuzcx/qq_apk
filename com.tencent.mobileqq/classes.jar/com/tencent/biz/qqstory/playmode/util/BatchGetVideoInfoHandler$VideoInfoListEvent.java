@@ -6,15 +6,15 @@ import java.util.ArrayList;
 public class BatchGetVideoInfoHandler$VideoInfoListEvent
 {
   public int a;
-  public ArrayList<StoryVideoItem> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
+  public ArrayList<StoryVideoItem> b;
+  public boolean c;
+  public boolean d;
+  public int e;
+  public int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.VideoInfoListEvent
  * JD-Core Version:    0.7.0.1
  */

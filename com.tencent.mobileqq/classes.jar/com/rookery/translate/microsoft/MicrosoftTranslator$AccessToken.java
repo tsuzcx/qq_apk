@@ -2,13 +2,10 @@ package com.rookery.translate.microsoft;
 
 class MicrosoftTranslator$AccessToken
 {
-  public long a;
   public String a;
+  public long b = 0L;
   
-  private MicrosoftTranslator$AccessToken(MicrosoftTranslator paramMicrosoftTranslator)
-  {
-    this.jdField_a_of_type_Long = 0L;
-  }
+  private MicrosoftTranslator$AccessToken(MicrosoftTranslator paramMicrosoftTranslator) {}
 }
 
 

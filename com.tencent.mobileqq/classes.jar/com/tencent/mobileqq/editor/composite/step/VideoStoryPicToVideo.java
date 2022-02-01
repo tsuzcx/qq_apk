@@ -15,20 +15,20 @@ import mqq.app.MobileQQ;
 
 public class VideoStoryPicToVideo
 {
-  private static VideoStoryPicToVideo jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo;
   public static final String a;
   public static final String b;
-  private Context jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
-  private MuiltiImageToVideo jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo;
+  private static VideoStoryPicToVideo c;
+  private Context d = MobileQQ.getContext();
+  private MuiltiImageToVideo e;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
     localStringBuilder.append("/Android/data/com.tencent.mobileqq/qq/video/imagevideo/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("cache/videostory/");
     b = localStringBuilder.toString();
   }
@@ -51,16 +51,16 @@ public class VideoStoryPicToVideo
   
   public static VideoStoryPicToVideo a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo == null) {
-          jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo = new VideoStoryPicToVideo();
+        if (c == null) {
+          c = new VideoStoryPicToVideo();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo;
+    return c;
   }
   
   private void a(String paramString1, String paramString2, String paramString3, VideoStoryPicToVideo.ConvertListener paramConvertListener)
@@ -68,7 +68,7 @@ public class VideoStoryPicToVideo
     VideoStoryPicToVideo.RetCode localRetCode = new VideoStoryPicToVideo.RetCode(0, "success");
     try
     {
-      FFmpegUtils.convertPicToVideoWidthDuration(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2, paramString3, new VideoStoryPicToVideo.2(this, paramConvertListener, localRetCode));
+      FFmpegUtils.convertPicToVideoWidthDuration(this.d, paramString1, paramString2, paramString3, new VideoStoryPicToVideo.2(this, paramConvertListener, localRetCode));
       return;
     }
     catch (IOException paramString1)
@@ -106,24 +106,24 @@ public class VideoStoryPicToVideo
   private void b(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, VideoStoryPicToVideo.ConvertListener paramConvertListener)
   {
     // Byte code:
-    //   0: new 95	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$RetCode
+    //   0: new 97	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$RetCode
     //   3: dup
     //   4: iconst_0
-    //   5: ldc 97
-    //   7: invokespecial 100	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$RetCode:<init>	(ILjava/lang/String;)V
+    //   5: ldc 99
+    //   7: invokespecial 102	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$RetCode:<init>	(ILjava/lang/String;)V
     //   10: astore 21
     //   12: aconst_null
     //   13: astore 20
-    //   15: new 141	java/io/FileInputStream
+    //   15: new 143	java/io/FileInputStream
     //   18: dup
     //   19: aload_1
-    //   20: invokespecial 142	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   20: invokespecial 144	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   23: astore 14
-    //   25: new 144	java/io/BufferedInputStream
+    //   25: new 146	java/io/BufferedInputStream
     //   28: dup
     //   29: aload 14
-    //   31: ldc 145
-    //   33: invokespecial 148	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   31: ldc 147
+    //   33: invokespecial 150	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   36: astore 19
     //   38: aload 14
     //   40: astore 15
@@ -133,20 +133,20 @@ public class VideoStoryPicToVideo
     //   48: aconst_null
     //   49: iload 4
     //   51: iload 5
-    //   53: invokestatic 153	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/io/InputStream;Landroid/graphics/Rect;II)Landroid/graphics/Bitmap;
+    //   53: invokestatic 155	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/io/InputStream;Landroid/graphics/Rect;II)Landroid/graphics/Bitmap;
     //   56: astore 16
     //   58: iload 4
     //   60: istore 12
     //   62: iload 5
     //   64: istore 11
     //   66: aload 19
-    //   68: invokevirtual 156	java/io/BufferedInputStream:close	()V
+    //   68: invokevirtual 158	java/io/BufferedInputStream:close	()V
     //   71: iload 4
     //   73: istore 12
     //   75: iload 5
     //   77: istore 11
     //   79: aload 14
-    //   81: invokevirtual 157	java/io/FileInputStream:close	()V
+    //   81: invokevirtual 159	java/io/FileInputStream:close	()V
     //   84: aload 16
     //   86: astore 15
     //   88: goto +114 -> 202
@@ -184,7 +184,7 @@ public class VideoStoryPicToVideo
     //   151: aload 14
     //   153: astore 17
     //   155: aload 18
-    //   157: invokevirtual 158	java/lang/Exception:printStackTrace	()V
+    //   157: invokevirtual 160	java/lang/Exception:printStackTrace	()V
     //   160: aload 14
     //   162: ifnull +19 -> 181
     //   165: iload 4
@@ -192,7 +192,7 @@ public class VideoStoryPicToVideo
     //   169: iload 5
     //   171: istore 11
     //   173: aload 14
-    //   175: invokevirtual 156	java/io/BufferedInputStream:close	()V
+    //   175: invokevirtual 158	java/io/BufferedInputStream:close	()V
     //   178: goto +3 -> 181
     //   181: aload 16
     //   183: ifnull +16 -> 199
@@ -201,7 +201,7 @@ public class VideoStoryPicToVideo
     //   190: iload 5
     //   192: istore 11
     //   194: aload 16
-    //   196: invokevirtual 157	java/io/FileInputStream:close	()V
+    //   196: invokevirtual 159	java/io/FileInputStream:close	()V
     //   199: aconst_null
     //   200: astore 15
     //   202: aload 15
@@ -215,7 +215,7 @@ public class VideoStoryPicToVideo
     //   219: aload_1
     //   220: iload 4
     //   222: iload 5
-    //   224: invokestatic 161	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;II)Landroid/graphics/Bitmap;
+    //   224: invokestatic 163	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;II)Landroid/graphics/Bitmap;
     //   227: astore 14
     //   229: aload 14
     //   231: ifnonnull +56 -> 287
@@ -226,29 +226,29 @@ public class VideoStoryPicToVideo
     //   243: iload 5
     //   245: istore 11
     //   247: aload 21
-    //   249: ldc 162
-    //   251: invokevirtual 118	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$RetCode:a	(I)V
+    //   249: ldc 164
+    //   251: invokevirtual 120	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$RetCode:a	(I)V
     //   254: iload 4
     //   256: istore 12
     //   258: iload 5
     //   260: istore 11
     //   262: aload 21
-    //   264: ldc 164
-    //   266: invokevirtual 123	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$RetCode:a	(Ljava/lang/String;)V
+    //   264: ldc 166
+    //   266: invokevirtual 125	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$RetCode:a	(Ljava/lang/String;)V
     //   269: iload 4
     //   271: istore 12
     //   273: iload 5
     //   275: istore 11
     //   277: aload 8
     //   279: aload 21
-    //   281: invokeinterface 128 2 0
+    //   281: invokeinterface 130 2 0
     //   286: return
     //   287: iload 4
     //   289: istore 12
     //   291: iload 5
     //   293: istore 11
     //   295: aload_1
-    //   296: invokestatic 170	com/tencent/mobileqq/utils/BaseImageUtil:c	(Ljava/lang/String;)I
+    //   296: invokestatic 172	com/tencent/mobileqq/utils/BaseImageUtil:h	(Ljava/lang/String;)I
     //   299: istore 13
     //   301: iload 13
     //   303: ifeq +137 -> 440
@@ -260,9 +260,9 @@ public class VideoStoryPicToVideo
     //   316: istore 12
     //   318: iload 5
     //   320: istore 11
-    //   322: new 172	android/graphics/Matrix
+    //   322: new 174	android/graphics/Matrix
     //   325: dup
-    //   326: invokespecial 173	android/graphics/Matrix:<init>	()V
+    //   326: invokespecial 175	android/graphics/Matrix:<init>	()V
     //   329: astore_1
     //   330: iload 4
     //   332: istore 12
@@ -272,16 +272,16 @@ public class VideoStoryPicToVideo
     //   339: iload 13
     //   341: i2f
     //   342: aload 14
-    //   344: invokevirtual 179	android/graphics/Bitmap:getWidth	()I
+    //   344: invokevirtual 181	android/graphics/Bitmap:getWidth	()I
     //   347: i2f
     //   348: fconst_2
     //   349: fdiv
     //   350: aload 14
-    //   352: invokevirtual 182	android/graphics/Bitmap:getHeight	()I
+    //   352: invokevirtual 184	android/graphics/Bitmap:getHeight	()I
     //   355: i2f
     //   356: fconst_2
     //   357: fdiv
-    //   358: invokevirtual 186	android/graphics/Matrix:postRotate	(FFF)Z
+    //   358: invokevirtual 188	android/graphics/Matrix:postRotate	(FFF)Z
     //   361: pop
     //   362: iload 4
     //   364: istore 12
@@ -291,12 +291,12 @@ public class VideoStoryPicToVideo
     //   372: iconst_0
     //   373: iconst_0
     //   374: aload 14
-    //   376: invokevirtual 179	android/graphics/Bitmap:getWidth	()I
+    //   376: invokevirtual 181	android/graphics/Bitmap:getWidth	()I
     //   379: aload 14
-    //   381: invokevirtual 182	android/graphics/Bitmap:getHeight	()I
+    //   381: invokevirtual 184	android/graphics/Bitmap:getHeight	()I
     //   384: aload_1
     //   385: iconst_1
-    //   386: invokestatic 190	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   386: invokestatic 192	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
     //   389: astore_1
     //   390: iload 13
     //   392: bipush 90
@@ -314,7 +314,7 @@ public class VideoStoryPicToVideo
     //   420: iload 10
     //   422: istore 11
     //   424: aload 14
-    //   426: invokevirtual 193	android/graphics/Bitmap:recycle	()V
+    //   426: invokevirtual 195	android/graphics/Bitmap:recycle	()V
     //   429: iload 9
     //   431: istore 4
     //   433: iload 10
@@ -333,7 +333,7 @@ public class VideoStoryPicToVideo
     //   460: iload 5
     //   462: istore 11
     //   464: aload 17
-    //   466: invokevirtual 156	java/io/BufferedInputStream:close	()V
+    //   466: invokevirtual 158	java/io/BufferedInputStream:close	()V
     //   469: goto +3 -> 472
     //   472: aload 14
     //   474: ifnull +16 -> 490
@@ -342,7 +342,7 @@ public class VideoStoryPicToVideo
     //   481: iload 5
     //   483: istore 11
     //   485: aload 14
-    //   487: invokevirtual 157	java/io/FileInputStream:close	()V
+    //   487: invokevirtual 159	java/io/FileInputStream:close	()V
     //   490: iload 4
     //   492: istore 12
     //   494: iload 5
@@ -354,57 +354,57 @@ public class VideoStoryPicToVideo
     //   504: aload 8
     //   506: ifnull +26 -> 532
     //   509: aload 21
-    //   511: ldc 162
-    //   513: invokevirtual 118	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$RetCode:a	(I)V
+    //   511: ldc 164
+    //   513: invokevirtual 120	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$RetCode:a	(I)V
     //   516: aload 21
-    //   518: ldc 164
-    //   520: invokevirtual 123	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$RetCode:a	(Ljava/lang/String;)V
+    //   518: ldc 166
+    //   520: invokevirtual 125	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$RetCode:a	(Ljava/lang/String;)V
     //   523: aload 8
     //   525: aload 21
-    //   527: invokeinterface 128 2 0
+    //   527: invokeinterface 130 2 0
     //   532: return
     //   533: aload_0
-    //   534: new 195	com/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo
+    //   534: new 197	com/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo
     //   537: dup
     //   538: aload_2
     //   539: iload 4
     //   541: iload 5
-    //   543: ldc 197
-    //   545: invokestatic 202	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   548: checkcast 197	com/tencent/mobileqq/dov/story/api/ISVParamManager
+    //   543: ldc 199
+    //   545: invokestatic 204	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   548: checkcast 199	com/tencent/mobileqq/dov/story/api/ISVParamManager
     //   551: iconst_2
-    //   552: invokeinterface 206 2 0
+    //   552: invokeinterface 208 2 0
     //   557: iconst_4
     //   558: imul
     //   559: sipush 1000
     //   562: imul
     //   563: aload_3
-    //   564: invokestatic 212	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   567: invokevirtual 215	java/lang/Integer:intValue	()I
+    //   564: invokestatic 214	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   567: invokevirtual 217	java/lang/Integer:intValue	()I
     //   570: sipush 1000
     //   573: imul
     //   574: i2l
     //   575: iload 6
     //   577: iload 7
-    //   579: invokespecial 218	com/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo:<init>	(Ljava/lang/String;IIIJZI)V
-    //   582: putfield 220	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo:jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo	Lcom/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo;
+    //   579: invokespecial 220	com/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo:<init>	(Ljava/lang/String;IIIJZI)V
+    //   582: putfield 222	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo:e	Lcom/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo;
     //   585: aload_0
-    //   586: getfield 220	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo:jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo	Lcom/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo;
+    //   586: getfield 222	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo:e	Lcom/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo;
     //   589: bipush 16
-    //   591: invokevirtual 221	com/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo:a	(I)V
-    //   594: new 223	java/util/ArrayList
+    //   591: invokevirtual 223	com/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo:a	(I)V
+    //   594: new 225	java/util/ArrayList
     //   597: dup
-    //   598: invokespecial 224	java/util/ArrayList:<init>	()V
+    //   598: invokespecial 226	java/util/ArrayList:<init>	()V
     //   601: astore_2
     //   602: aload_2
     //   603: aload_1
-    //   604: invokevirtual 228	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   604: invokevirtual 230	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   607: pop
     //   608: aload_0
-    //   609: getfield 220	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo:jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo	Lcom/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo;
+    //   609: getfield 222	com/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo:e	Lcom/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo;
     //   612: aload_2
     //   613: aload 8
-    //   615: invokevirtual 231	com/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo:a	(Ljava/util/List;Lcom/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$ConvertListener;)V
+    //   615: invokevirtual 233	com/tencent/mobileqq/editor/composite/step/MuiltiImageToVideo:a	(Ljava/util/List;Lcom/tencent/mobileqq/editor/composite/step/VideoStoryPicToVideo$ConvertListener;)V
     //   618: return
     //   619: astore 15
     //   621: goto -550 -> 71
@@ -589,7 +589,7 @@ public class VideoStoryPicToVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.composite.step.VideoStoryPicToVideo
  * JD-Core Version:    0.7.0.1
  */

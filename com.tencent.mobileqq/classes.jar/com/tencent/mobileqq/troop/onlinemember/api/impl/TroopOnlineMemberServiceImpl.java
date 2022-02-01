@@ -31,7 +31,7 @@ public class TroopOnlineMemberServiceImpl
     paramString = (TroopDetailOnlineData)this.mDetailOnlineDataMap.get(paramString);
     long l1;
     if (paramString != null) {
-      l1 = paramString.jdField_a_of_type_Long;
+      l1 = paramString.c;
     } else {
       l1 = 0L;
     }
@@ -102,7 +102,7 @@ public class TroopOnlineMemberServiceImpl
     if (paramString == null) {
       return null;
     }
-    return paramString.jdField_a_of_type_JavaUtilList;
+    return paramString.a;
   }
   
   public long getDetailNextReqTime(String paramString)
@@ -110,7 +110,7 @@ public class TroopOnlineMemberServiceImpl
     paramString = (TroopDetailOnlineData)this.mDetailOnlineDataMap.get(paramString);
     long l1;
     if (paramString != null) {
-      l1 = paramString.jdField_b_of_type_Long;
+      l1 = paramString.d;
     } else {
       l1 = 0L;
     }
@@ -135,7 +135,7 @@ public class TroopOnlineMemberServiceImpl
     }
     paramString = (TroopDetailOnlineData)this.mDetailOnlineDataMap.get(paramString);
     if (paramString != null) {
-      i = paramString.jdField_b_of_type_Int;
+      i = paramString.f;
     }
     return i;
   }
@@ -160,8 +160,8 @@ public class TroopOnlineMemberServiceImpl
     int i;
     if (localTroopDetailOnlineData != null)
     {
-      paramString = localTroopDetailOnlineData.jdField_a_of_type_JavaLangString;
-      i = localTroopDetailOnlineData.jdField_b_of_type_Int;
+      paramString = localTroopDetailOnlineData.b;
+      i = localTroopDetailOnlineData.f;
     }
     else
     {
@@ -200,8 +200,8 @@ public class TroopOnlineMemberServiceImpl
   public int getRequestListServiceType(String paramString)
   {
     paramString = (TroopDetailOnlineData)this.mDetailOnlineDataMap.get(paramString);
-    if ((paramString != null) && (paramString.jdField_a_of_type_Int > 0)) {
-      return paramString.jdField_a_of_type_Int;
+    if ((paramString != null) && (paramString.e > 0)) {
+      return paramString.e;
     }
     return 1;
   }
@@ -244,8 +244,8 @@ public class TroopOnlineMemberServiceImpl
     if (paramString == null) {
       return;
     }
-    paramString.jdField_a_of_type_JavaUtilList = null;
-    paramString.jdField_b_of_type_Long = NetConnInfoCenter.getServerTime();
+    paramString.a = null;
+    paramString.d = NetConnInfoCenter.getServerTime();
   }
   
   public void setLastReqLocationTime(long paramLong)
@@ -268,12 +268,12 @@ public class TroopOnlineMemberServiceImpl
     }
     if ((i != 4) || (!TextUtils.isEmpty(paramString2)))
     {
-      localTroopDetailOnlineData1.jdField_a_of_type_JavaLangString = paramString2;
-      localTroopDetailOnlineData1.jdField_b_of_type_Int = paramInt3;
+      localTroopDetailOnlineData1.b = paramString2;
+      localTroopDetailOnlineData1.f = paramInt3;
     }
-    localTroopDetailOnlineData1.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTime() + i);
+    localTroopDetailOnlineData1.c = (NetConnInfoCenter.getServerTime() + i);
     if (paramInt2 != -1) {
-      localTroopDetailOnlineData1.jdField_a_of_type_Int = paramInt2;
+      localTroopDetailOnlineData1.e = paramInt2;
     }
   }
   
@@ -325,18 +325,18 @@ public class TroopOnlineMemberServiceImpl
     }
     if (!TextUtils.isEmpty(paramString2))
     {
-      localTroopDetailOnlineData1.jdField_a_of_type_JavaLangString = paramString2;
-      localTroopDetailOnlineData1.jdField_b_of_type_Int = paramInt2;
+      localTroopDetailOnlineData1.b = paramString2;
+      localTroopDetailOnlineData1.f = paramInt2;
     }
     if ((paramList != null) && (paramList.size() > 0)) {
-      localTroopDetailOnlineData1.jdField_a_of_type_JavaUtilList = paramList;
+      localTroopDetailOnlineData1.a = paramList;
     }
-    localTroopDetailOnlineData1.jdField_b_of_type_Long = (NetConnInfoCenter.getServerTime() + i);
+    localTroopDetailOnlineData1.d = (NetConnInfoCenter.getServerTime() + i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.onlinemember.api.impl.TroopOnlineMemberServiceImpl
  * JD-Core Version:    0.7.0.1
  */

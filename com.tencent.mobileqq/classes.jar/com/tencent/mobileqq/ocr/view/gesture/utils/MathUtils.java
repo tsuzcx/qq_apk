@@ -16,15 +16,15 @@ public class MathUtils
   public static void a(State paramState1, State paramState2, float paramFloat1, float paramFloat2, State paramState3, float paramFloat3, float paramFloat4, float paramFloat5)
   {
     paramState1.a(paramState2);
-    if (!State.a(paramState2.c(), paramState3.c())) {
-      paramState1.b(b(paramState2.c(), paramState3.c(), paramFloat5), paramFloat1, paramFloat2);
+    if (!State.c(paramState2.d(), paramState3.d())) {
+      paramState1.b(b(paramState2.d(), paramState3.d(), paramFloat5), paramFloat1, paramFloat2);
     }
-    float f3 = paramState2.d();
-    float f4 = paramState3.d();
+    float f3 = paramState2.e();
+    float f4 = paramState3.e();
     float f1 = (0.0F / 0.0F);
     if (Math.abs(f3 - f4) <= 180.0F)
     {
-      if (!State.a(f3, f4)) {
+      if (!State.c(f3, f4)) {
         f1 = b(f3, f4, paramFloat5);
       }
     }
@@ -38,7 +38,7 @@ public class MathUtils
       if (f4 < 0.0F) {
         f3 = f4 + 360.0F;
       }
-      if (!State.a(f2, f3)) {
+      if (!State.c(f2, f3)) {
         f1 = b(f2, f3, paramFloat5);
       }
     }
@@ -50,7 +50,7 @@ public class MathUtils
   
   public static void a(State paramState1, State paramState2, State paramState3, float paramFloat)
   {
-    a(paramState1, paramState2, paramState2.a(), paramState2.b(), paramState3, paramState3.a(), paramState3.b(), paramFloat);
+    a(paramState1, paramState2, paramState2.b(), paramState2.c(), paramState3, paramState3.b(), paramState3.c(), paramFloat);
   }
   
   public static void a(float[] paramArrayOfFloat, State paramState1, State paramState2)
@@ -69,7 +69,7 @@ public class MathUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.utils.MathUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -57,7 +57,7 @@ public class QzoneQunFeedJsPlugin
   
   private void alertDownloadErrorCount(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    Activity localActivity = this.parentPlugin.mRuntime.a();
+    Activity localActivity = this.parentPlugin.mRuntime.d();
     Object localObject = this.mDownloadingDialog;
     if ((localObject != null) && (((Dialog)localObject).isShowing())) {
       this.mDownloadingDialog.dismiss();
@@ -70,13 +70,13 @@ public class QzoneQunFeedJsPlugin
       if (paramInt1 > 0)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(String.format(localActivity.getString(2131717563), new Object[] { Integer.valueOf(paramInt1) }));
+        ((StringBuilder)localObject).append(String.format(localActivity.getString(2131915038), new Object[] { Integer.valueOf(paramInt1) }));
         ((StringBuilder)localObject).append("，");
         localObject = ((StringBuilder)localObject).toString();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject);
         localStringBuilder.append(paramString);
-        localStringBuilder.append(HardCodeUtil.a(2131712234));
+        localStringBuilder.append(HardCodeUtil.a(2131909836));
         paramString = localStringBuilder.toString();
       }
       else
@@ -85,16 +85,16 @@ public class QzoneQunFeedJsPlugin
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append(String.format(localActivity.getString(2131717556), new Object[] { Integer.valueOf(paramInt2) }));
+      ((StringBuilder)localObject).append(String.format(localActivity.getString(2131915031), new Object[] { Integer.valueOf(paramInt2) }));
       paramString = ((StringBuilder)localObject).toString();
-      DialogUtil.a(localActivity, 232).setMessage(paramString).setNegativeButton(2131717561, new QzoneQunFeedJsPlugin.5(this)).show();
+      DialogUtil.a(localActivity, 232).setMessage(paramString).setNegativeButton(2131915036, new QzoneQunFeedJsPlugin.5(this)).show();
       return;
     }
     localObject = ToastUtil.a();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(localActivity.getString(2131717564));
+    localStringBuilder.append(localActivity.getString(2131915039));
     localStringBuilder.append(paramString);
-    localStringBuilder.append(HardCodeUtil.a(2131712233));
+    localStringBuilder.append(HardCodeUtil.a(2131909835));
     ((ToastUtil)localObject).a(localStringBuilder.toString());
   }
   
@@ -137,7 +137,7 @@ public class QzoneQunFeedJsPlugin
       j = ((JSONObject)localObject).getInt("groupCode");
       paramVarArgs = ((JSONObject)localObject).optString("albumid");
       localObject = ((JSONObject)localObject).optString("albumname");
-      str = this.parentPlugin.mRuntime.a().getAccount();
+      str = this.parentPlugin.mRuntime.b().getAccount();
       if (TextUtils.isEmpty(paramVarArgs)) {
         break label167;
       }
@@ -153,7 +153,7 @@ public class QzoneQunFeedJsPlugin
         int i = 3;
       }
     }
-    QZoneHelper.forwardToTroopUploadPhoto(this.parentPlugin.mRuntime.a(), str, i, 4, j, "", paramVarArgs, (String)localObject, 7001, 43);
+    QZoneHelper.forwardToTroopUploadPhoto(this.parentPlugin.mRuntime.d(), str, i, 4, j, "", paramVarArgs, (String)localObject, 7001, 43);
     return;
     if (QLog.isColorLevel()) {
       QLog.w("QzoneQunFeedJsPlugin", 2, "handleGroupUploadPhoto,decode param error");
@@ -176,7 +176,7 @@ public class QzoneQunFeedJsPlugin
       l = ((JSONObject)localObject).getLong("groupCode");
       paramVarArgs = ((JSONObject)localObject).optString("albumid");
       localObject = ((JSONObject)localObject).optString("albumname");
-      str = this.parentPlugin.mRuntime.a().getAccount();
+      str = this.parentPlugin.mRuntime.b().getAccount();
       if (TextUtils.isEmpty(paramVarArgs)) {
         break label157;
       }
@@ -192,7 +192,7 @@ public class QzoneQunFeedJsPlugin
         int i = 1;
       }
     }
-    QZoneHelper.forwardMiniToTroopUploadPhoto(this.parentPlugin.mRuntime.a(), str, i, 1, l, "", paramVarArgs, (String)localObject, 7001, 43);
+    QZoneHelper.forwardMiniToTroopUploadPhoto(this.parentPlugin.mRuntime.d(), str, i, 1, l, "", paramVarArgs, (String)localObject, 7001, 43);
     return;
     if (QLog.isColorLevel()) {
       QLog.w("QzoneQunFeedJsPlugin", 2, "handleGroupUploadPhoto,decode param error");
@@ -222,8 +222,8 @@ public class QzoneQunFeedJsPlugin
       int i = ((JSONObject)localObject).getInt("groupCode");
       paramVarArgs = ((JSONObject)localObject).optString("albumid");
       localObject = ((JSONObject)localObject).optString("albumname");
-      this.parentPlugin.mRuntime.a().getAccount();
-      ChatHistoryActivity.a(this.parentPlugin.mRuntime.a(), String.valueOf(i), paramVarArgs, (String)localObject);
+      this.parentPlugin.mRuntime.b().getAccount();
+      ChatHistoryActivity.a(this.parentPlugin.mRuntime.d(), String.valueOf(i), paramVarArgs, (String)localObject);
       return;
     }
     catch (Exception paramVarArgs)
@@ -244,7 +244,7 @@ public class QzoneQunFeedJsPlugin
     try
     {
       paramVarArgs = new Intent("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete");
-      this.parentPlugin.mRuntime.a().sendBroadcast(paramVarArgs);
+      this.parentPlugin.mRuntime.d().sendBroadcast(paramVarArgs);
       return;
     }
     catch (Exception paramVarArgs)
@@ -285,7 +285,7 @@ public class QzoneQunFeedJsPlugin
       localBundle.putString("UploadPhoto.key_album_id", paramVarArgs);
       localBundle.putString("UploadPhoto.key_album_name", str);
       ((Intent)localObject).putExtras(localBundle);
-      paramVarArgs = this.parentPlugin.mRuntime.a();
+      paramVarArgs = this.parentPlugin.mRuntime.d();
       if ((paramVarArgs == null) || (paramVarArgs.isFinishing())) {
         break label165;
       }
@@ -323,18 +323,18 @@ public class QzoneQunFeedJsPlugin
       RemoteHandleManager.getInstance().addWebEventListener(new QzoneQunFeedJsPlugin.2(this, paramVarArgs));
       if (!isSdcardWorking())
       {
-        ToastUtil.a().a(HardCodeUtil.a(2131712232));
+        ToastUtil.a().a(HardCodeUtil.a(2131909834));
         return;
       }
       if (!NetworkState.isNetSupport())
       {
-        ToastUtil.a().a(HardCodeUtil.a(2131712229));
+        ToastUtil.a().a(HardCodeUtil.a(2131909831));
         return;
       }
       if (!NetworkState.isWifiConn())
       {
-        localObject = this.parentPlugin.mRuntime.a();
-        DialogUtil.a((Context)localObject, 230).setTitle(((Context)localObject).getString(2131717560)).setMessage(((Context)localObject).getString(2131717562)).setPositiveButton(((Context)localObject).getString(2131717559), new QzoneQunFeedJsPlugin.4(this, paramVarArgs)).setNegativeButton(((Context)localObject).getString(2131717558), new QzoneQunFeedJsPlugin.3(this)).show();
+        localObject = this.parentPlugin.mRuntime.d();
+        DialogUtil.a((Context)localObject, 230).setTitle(((Context)localObject).getString(2131915035)).setMessage(((Context)localObject).getString(2131915037)).setPositiveButton(((Context)localObject).getString(2131915034), new QzoneQunFeedJsPlugin.4(this, paramVarArgs)).setNegativeButton(((Context)localObject).getString(2131915033), new QzoneQunFeedJsPlugin.3(this)).show();
         return;
       }
       doDownloadPicture(paramVarArgs[0]);
@@ -360,14 +360,14 @@ public class QzoneQunFeedJsPlugin
     try
     {
       paramVarArgs = new JSONObject(paramVarArgs[0]).getString("url");
-      localObject = new Intent(this.parentPlugin.mRuntime.a(), QQBrowserDelegationActivity.class);
+      localObject = new Intent(this.parentPlugin.mRuntime.d(), QQBrowserDelegationActivity.class);
       ((Intent)localObject).putExtra("url", paramVarArgs);
       ((Intent)localObject).putExtra("fromQZone", true);
       ((Intent)localObject).putExtra("injectrecommend", true);
       if (WebViewPluginFactory.a.containsKey("Qzone")) {
         ((Intent)localObject).putExtra("insertPluginsArray", new String[] { "Qzone" });
       }
-      ((Intent)localObject).putExtra("source_name", this.parentPlugin.mRuntime.a().getString(2131717365));
+      ((Intent)localObject).putExtra("source_name", this.parentPlugin.mRuntime.d().getString(2131914838));
       ((Intent)localObject).setData(Uri.parse(paramVarArgs));
       this.parentPlugin.startActivityForResult((Intent)localObject, (byte)0);
       return;
@@ -405,9 +405,9 @@ public class QzoneQunFeedJsPlugin
       paramVarArgs.putInt("key_personal_album_enter_model", 0);
       paramVarArgs.putBoolean("key_pass_result_by_bundle", true);
       localObject = QZoneHelper.UserInfo.getInstance();
-      ((QZoneHelper.UserInfo)localObject).qzone_uin = this.parentPlugin.mRuntime.a().getCurrentAccountUin();
+      ((QZoneHelper.UserInfo)localObject).qzone_uin = this.parentPlugin.mRuntime.b().getCurrentAccountUin();
       paramVarArgs.putBoolean("key_need_change_to_jpg", true);
-      QZoneHelper.forwardToPersonalAlbumSelect(this.parentPlugin.mRuntime.a(), (QZoneHelper.UserInfo)localObject, paramVarArgs, QZoneHelperProxyImpl.generateRequestCode(this.parentPlugin, this.parentPlugin.mRuntime, 6));
+      QZoneHelper.forwardToPersonalAlbumSelect(this.parentPlugin.mRuntime.d(), (QZoneHelper.UserInfo)localObject, paramVarArgs, QZoneHelperProxyImpl.generateRequestCode(this.parentPlugin, this.parentPlugin.mRuntime, 6));
       return;
     }
     catch (Exception paramVarArgs)
@@ -508,7 +508,7 @@ public class QzoneQunFeedJsPlugin
       ((Bundle)localObject4).putInt("curindex", 0);
       ((Bundle)localObject4).putInt("mode", 13);
       ((Bundle)localObject4).putBoolean("need_clear_cache", true);
-      QZoneHelper.forwardToPictureViewer(this.parentPlugin.mRuntime.a(), (QZoneHelper.UserInfo)localObject2, (Bundle)localObject4, 6);
+      QZoneHelper.forwardToPictureViewer(this.parentPlugin.mRuntime.d(), (QZoneHelper.UserInfo)localObject2, (Bundle)localObject4, 6);
       this.lastClickTime = System.currentTimeMillis();
       return;
     }
@@ -539,7 +539,7 @@ public class QzoneQunFeedJsPlugin
     try
     {
       int i = new JSONObject(paramVarArgs[0]).getInt("groupCode");
-      paramVarArgs = this.parentPlugin.mRuntime.a().getAccount();
+      paramVarArgs = this.parentPlugin.mRuntime.b().getAccount();
       i = ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).groupGroupNewsInfo(paramVarArgs, "troop_photo_message", String.valueOf(i));
       if (QLog.isDevelopLevel())
       {
@@ -571,7 +571,7 @@ public class QzoneQunFeedJsPlugin
     try
     {
       IntentFilter localIntentFilter = new IntentFilter("com.tencent.qq.syncQunMsg");
-      this.parentPlugin.mRuntime.a().registerReceiver(this.unReadMsgBrocastReceiver, localIntentFilter);
+      this.parentPlugin.mRuntime.d().registerReceiver(this.unReadMsgBrocastReceiver, localIntentFilter);
       return;
     }
     catch (Exception localException)
@@ -675,8 +675,8 @@ public class QzoneQunFeedJsPlugin
     super.initRuntime(paramWebViewPlugin);
     registerUnreadMsgReceiver();
     SDCardMountMonitorReceiver.getInstance().registerReceiver();
-    if ((paramWebViewPlugin != null) && (paramWebViewPlugin.mRuntime != null) && (paramWebViewPlugin.mRuntime.a() != null)) {
-      paramWebViewPlugin.mRuntime.a().setResult(50);
+    if ((paramWebViewPlugin != null) && (paramWebViewPlugin.mRuntime != null) && (paramWebViewPlugin.mRuntime.d() != null)) {
+      paramWebViewPlugin.mRuntime.d().setResult(50);
     }
   }
   
@@ -719,7 +719,7 @@ public class QzoneQunFeedJsPlugin
   {
     try
     {
-      this.parentPlugin.mRuntime.a().unregisterReceiver(this.unReadMsgBrocastReceiver);
+      this.parentPlugin.mRuntime.d().unregisterReceiver(this.unReadMsgBrocastReceiver);
       SDCardMountMonitorReceiver.getInstance().unregisterReceiver();
       return;
     }
@@ -728,7 +728,7 @@ public class QzoneQunFeedJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin
  * JD-Core Version:    0.7.0.1
  */

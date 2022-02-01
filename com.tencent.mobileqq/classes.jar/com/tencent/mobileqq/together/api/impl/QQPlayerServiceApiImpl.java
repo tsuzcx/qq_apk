@@ -9,12 +9,12 @@ public class QQPlayerServiceApiImpl
 {
   public String getQQPlayerServiceToken()
   {
-    return QQPlayerService.a();
+    return QQPlayerService.o();
   }
   
   public boolean isListeningTogether()
   {
-    return (QQMusicPlayService.a()) && (QQMusicPlayService.a() != null);
+    return (QQMusicPlayService.c()) && (QQMusicPlayService.f() != null);
   }
   
   public boolean isPlayStateCompletion(int paramInt)
@@ -44,7 +44,7 @@ public class QQPlayerServiceApiImpl
   
   public boolean isQQPlayServicePlaying()
   {
-    return (QQPlayerService.a()) && (QQPlayerService.b() != null);
+    return (QQPlayerService.b()) && (QQPlayerService.g() != null);
   }
   
   public boolean isStateCompletion(int paramInt)
@@ -74,7 +74,7 @@ public class QQPlayerServiceApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.api.impl.QQPlayerServiceApiImpl
  * JD-Core Version:    0.7.0.1
  */

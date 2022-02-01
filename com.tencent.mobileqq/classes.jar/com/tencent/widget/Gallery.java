@@ -802,7 +802,7 @@ public class Gallery
     {
       localObject2 = getContext();
       localObject1 = new ImageView((Context)localObject2);
-      ((ImageView)localObject1).setImageDrawable(((Context)localObject2).getResources().getDrawable(2130851160));
+      ((ImageView)localObject1).setImageDrawable(((Context)localObject2).getResources().getDrawable(2130853414));
     }
     setUpChild((View)localObject1, paramInt2, paramInt3, paramBoolean, false);
     if (paramView != null) {
@@ -2792,7 +2792,7 @@ public class Gallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.Gallery
  * JD-Core Version:    0.7.0.1
  */

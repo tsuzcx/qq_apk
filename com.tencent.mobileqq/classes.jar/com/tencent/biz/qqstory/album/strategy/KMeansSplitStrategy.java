@@ -24,11 +24,17 @@ import java.util.List<Lcom.tencent.biz.qqstory.album.model.StoryAlbum.PicInfo;>;
 public class KMeansSplitStrategy
   extends AbstractSplitStrategy<BaseSplitConfig>
 {
-  static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-  private int jdField_a_of_type_Int = 1;
-  private ScanInfo jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo;
+  static SimpleDateFormat b = new SimpleDateFormat("yyyy-MM-dd");
+  private int c = 1;
+  private ScanInfo d;
   
-  private int a(List<StoryAlbum.PicInfo> paramList)
+  private long a(long paramLong)
+  {
+    SimpleDateFormat localSimpleDateFormat = b;
+    return localSimpleDateFormat.parse(localSimpleDateFormat.format(Long.valueOf(paramLong * 1000L))).getTime() / 1000L;
+  }
+  
+  private int b(List<StoryAlbum.PicInfo> paramList)
   {
     new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     long l2 = -1L;
@@ -41,7 +47,7 @@ public class KMeansSplitStrategy
       }
       try
       {
-        l1 = a(((StoryAlbum.PicInfo)paramList.get(m)).b);
+        l1 = a(((StoryAlbum.PicInfo)paramList.get(m)).g);
         k = i;
       }
       catch (ParseException localParseException)
@@ -57,11 +63,11 @@ public class KMeansSplitStrategy
       int j = i;
       int k = i;
       long l1 = l2;
-      if (((StoryAlbum.PicInfo)paramList.get(m)).b - l2 > 86400L)
+      if (((StoryAlbum.PicInfo)paramList.get(m)).g - l2 > 86400L)
       {
         k = i + 1;
         j = k;
-        l1 = a(((StoryAlbum.PicInfo)paramList.get(m)).b);
+        l1 = a(((StoryAlbum.PicInfo)paramList.get(m)).g);
       }
       m += 1;
       i = k;
@@ -74,18 +80,12 @@ public class KMeansSplitStrategy
     return i;
   }
   
-  private long a(long paramLong)
-  {
-    SimpleDateFormat localSimpleDateFormat = jdField_a_of_type_JavaTextSimpleDateFormat;
-    return localSimpleDateFormat.parse(localSimpleDateFormat.format(Long.valueOf(paramLong * 1000L))).getTime() / 1000L;
-  }
-  
   protected List<StoryAlbum> a(@NonNull List<StoryAlbum.PicInfo> paramList)
   {
     Object localObject1 = new DateKmeans();
     paramList = new ArrayList(paramList);
-    StoryScanManager.b(paramList);
-    int i = a(paramList) / this.jdField_a_of_type_Int;
+    StoryScanManager.c(paramList);
+    int i = b(paramList) / this.c;
     String[] arrayOfString = new String[1];
     ((DateKmeans)localObject1).a(i + 1);
     paramList = ((DateKmeans)localObject1).a(paramList, arrayOfString);
@@ -95,8 +95,8 @@ public class KMeansSplitStrategy
     {
       localObject1 = (List)paramList.get(i);
       Collections.sort((List)localObject1, new KMeansSplitStrategy.1(this));
-      localObject2 = new StoryAlbum(this.jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum.jdField_a_of_type_Int, (List)localObject1);
-      ((StoryAlbum)localObject2).a(((StoryAlbum.PicInfo)((List)localObject1).get(0)).b, ((StoryAlbum.PicInfo)((List)localObject1).get(((List)localObject1).size() - 1)).b);
+      localObject2 = new StoryAlbum(this.a.b, (List)localObject1);
+      ((StoryAlbum)localObject2).a(((StoryAlbum.PicInfo)((List)localObject1).get(0)).g, ((StoryAlbum.PicInfo)((List)localObject1).get(((List)localObject1).size() - 1)).g);
       localArrayList.add(localObject2);
       i += 1;
     }
@@ -114,11 +114,11 @@ public class KMeansSplitStrategy
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramList);
       localStringBuilder.append("[ s=");
-      localStringBuilder.append(((SimpleDateFormat)localObject1).format(Long.valueOf(((StoryAlbum)localObject3).e() * 1000L)));
+      localStringBuilder.append(((SimpleDateFormat)localObject1).format(Long.valueOf(((StoryAlbum)localObject3).l() * 1000L)));
       localStringBuilder.append(" e=");
-      localStringBuilder.append(((SimpleDateFormat)localObject1).format(Long.valueOf(((StoryAlbum)localObject3).f() * 1000L)));
+      localStringBuilder.append(((SimpleDateFormat)localObject1).format(Long.valueOf(((StoryAlbum)localObject3).m() * 1000L)));
       localStringBuilder.append(" c=");
-      localStringBuilder.append(((StoryAlbum)localObject3).b());
+      localStringBuilder.append(((StoryAlbum)localObject3).c());
       localStringBuilder.append("]");
       paramList = localStringBuilder.toString();
     }
@@ -130,7 +130,7 @@ public class KMeansSplitStrategy
     ((StringBuilder)localObject1).append(paramList);
     ((StringBuilder)localObject1).append(");");
     localObject2 = ((StringBuilder)localObject1).toString();
-    localObject1 = (String)((StoryConfigManager)SuperManager.a(10)).b("key_album_debug_k", "");
+    localObject1 = (String)((StoryConfigManager)SuperManager.a(10)).c("key_album_debug_k", "");
     paramList = (List<StoryAlbum.PicInfo>)localObject2;
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
@@ -159,7 +159,7 @@ public class KMeansSplitStrategy
       paramList.append((String)localObject1);
       paramList = paramList.toString();
     }
-    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo;
+    localObject1 = this.d;
     ((ScanInfo)localObject1).a = paramList;
     ((ScanInfo)localObject1).b = arrayOfString[0];
     return localArrayList;
@@ -167,17 +167,17 @@ public class KMeansSplitStrategy
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(ScanInfo paramScanInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo = paramScanInfo;
+    this.d = paramScanInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.strategy.KMeansSplitStrategy
  * JD-Core Version:    0.7.0.1
  */

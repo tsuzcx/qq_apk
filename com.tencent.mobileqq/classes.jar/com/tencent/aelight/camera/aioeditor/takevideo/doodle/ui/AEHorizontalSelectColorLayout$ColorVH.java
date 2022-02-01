@@ -10,21 +10,21 @@ import android.widget.ImageView;
 class AEHorizontalSelectColorLayout$ColorVH
   extends RecyclerView.ViewHolder
 {
-  private final GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
-  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private final GradientDrawable a;
   private final ImageView b;
+  private final ImageView c;
   
   private AEHorizontalSelectColorLayout$ColorVH(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369393));
-    this.b = ((ImageView)paramView.findViewById(2131369490));
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = ((GradientDrawable)paramView.getContext().getResources().getDrawable(2130837730));
+    this.b = ((ImageView)paramView.findViewById(2131436426));
+    this.c = ((ImageView)paramView.findViewById(2131436561));
+    this.a = ((GradientDrawable)paramView.getContext().getResources().getDrawable(2130837754));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.AEHorizontalSelectColorLayout.ColorVH
  * JD-Core Version:    0.7.0.1
  */

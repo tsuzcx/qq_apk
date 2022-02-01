@@ -4,31 +4,31 @@ import com.tencent.mobileqq.qipc.QIPCModule;
 
 public class VideoPlayIPCServer
 {
-  private static volatile VideoPlayIPCServer jdField_a_of_type_ComTencentMobileqqShortvideoRedbagVideoPlayIPCServer;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new VideoPlayIPCServer.1(this, "Module_VideoPlayIPCServer");
+  private static volatile VideoPlayIPCServer a;
+  private QIPCModule b = new VideoPlayIPCServer.1(this, "Module_VideoPlayIPCServer");
   
   public static VideoPlayIPCServer a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqShortvideoRedbagVideoPlayIPCServer == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqShortvideoRedbagVideoPlayIPCServer == null) {
-          jdField_a_of_type_ComTencentMobileqqShortvideoRedbagVideoPlayIPCServer = new VideoPlayIPCServer();
+        if (a == null) {
+          a = new VideoPlayIPCServer();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqShortvideoRedbagVideoPlayIPCServer;
+    return a;
   }
   
-  public QIPCModule a()
+  public QIPCModule b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCServer
  * JD-Core Version:    0.7.0.1
  */

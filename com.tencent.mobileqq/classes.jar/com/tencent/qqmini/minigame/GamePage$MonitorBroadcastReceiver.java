@@ -24,20 +24,20 @@ class GamePage$MonitorBroadcastReceiver
       paramIntent.append(paramContext);
       paramIntent.append(" monitor view!");
       QMLog.d("GamePage", paramIntent.toString());
-      if (GamePage.access$900(this.this$0) != bool) {
+      if (GamePage.access$1300(this.this$0) != bool) {
         this.this$0.toggleMonitorPanel();
       }
-      if (GamePage.access$1000(this.this$0) != null)
+      if (GamePage.access$1400(this.this$0) != null)
       {
         paramContext = this.this$0;
-        GamePage.access$1100(paramContext, GamePage.access$1000(paramContext));
+        GamePage.access$1500(paramContext, GamePage.access$1400(paramContext));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GamePage.MonitorBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

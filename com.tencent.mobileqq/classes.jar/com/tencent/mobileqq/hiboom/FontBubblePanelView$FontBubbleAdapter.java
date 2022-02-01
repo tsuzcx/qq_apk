@@ -13,33 +13,33 @@ public class FontBubblePanelView$FontBubbleAdapter
   
   public FontBubblePanelView<T>.FontBubbleHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131563032, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131629646, paramViewGroup, false);
     return new FontBubblePanelView.FontBubbleHolder(this.a, paramViewGroup);
   }
   
   public void a(FontBubblePanelView<T>.FontBubbleHolder paramFontBubblePanelView, int paramInt)
   {
-    if (paramInt < FontBubblePanelView.a(this.a).size())
+    if (paramInt < FontBubblePanelView.d(this.a).size())
     {
       FontBubblePanelView localFontBubblePanelView = this.a;
-      localFontBubblePanelView.a(paramFontBubblePanelView, (FontBubble)FontBubblePanelView.a(localFontBubblePanelView).get(paramInt));
+      localFontBubblePanelView.a(paramFontBubblePanelView, (FontBubble)FontBubblePanelView.d(localFontBubblePanelView).get(paramInt));
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramFontBubblePanelView, paramInt, getItemId(paramInt));
   }
   
   public int getItemCount()
   {
-    return FontBubblePanelView.a(this.a).size();
+    return FontBubblePanelView.d(this.a).size();
   }
   
   public int getItemViewType(int paramInt)
   {
-    return ((FontBubble)FontBubblePanelView.a(this.a).get(paramInt)).viewType;
+    return ((FontBubble)FontBubblePanelView.d(this.a).get(paramInt)).viewType;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubblePanelView.FontBubbleAdapter
  * JD-Core Version:    0.7.0.1
  */

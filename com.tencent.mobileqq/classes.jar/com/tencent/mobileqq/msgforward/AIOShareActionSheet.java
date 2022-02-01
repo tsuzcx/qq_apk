@@ -116,26 +116,26 @@ import mqq.os.MqqHandler;
 public class AIOShareActionSheet
   implements AdapterView.OnItemClickListener, ISingleFileSaveCallBack
 {
-  public static String a;
-  public static String b = "0X8007F0A ";
-  public static String c = "0X8007F0B ";
-  public static String d = "0X8007F0C ";
-  public static String e = "0X8007F0D ";
-  public static String f = "0X8007F0E ";
-  public static String g = "0X8007F0F ";
-  public static String h = "0X8007F10 ";
-  public static String i = "0X800A77E";
-  public static String j = "0X800B761";
-  public static String k = "0X800B762";
-  private static String l;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected ShareActionSheetBuilder a;
-  WXShareHelper.WXShareListener jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener;
-  protected MqqHandler a;
-  private boolean jdField_a_of_type_Boolean = false;
+  public static String d;
+  public static String e = "0X8007F0A ";
+  public static String f = "0X8007F0B ";
+  public static String g = "0X8007F0C ";
+  public static String h = "0X8007F0D ";
+  public static String i = "0X8007F0E ";
+  public static String j = "0X8007F0F ";
+  public static String k = "0X8007F10 ";
+  public static String l = "0X800A77E";
+  public static String m = "0X800B761";
+  public static String n = "0X800B762";
+  private static String t;
+  QQAppInterface a;
+  protected ShareActionSheetBuilder b;
+  protected MqqHandler c;
+  WXShareHelper.WXShareListener o;
+  private Activity p;
+  private Context q;
+  private BaseChatPie r;
+  private boolean s = false;
   
   static
   {
@@ -143,17 +143,17 @@ public class AIOShareActionSheet
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append("TempMail");
     localStringBuilder.append(File.separator);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    l = HardCodeUtil.a(2131700345);
+    d = localStringBuilder.toString();
+    t = HardCodeUtil.a(2131898385);
   }
   
   public AIOShareActionSheet(QQAppInterface paramQQAppInterface, Context paramContext, Activity paramActivity, BaseChatPie paramBaseChatPie, MqqHandler paramMqqHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.a = paramQQAppInterface;
+    this.q = paramContext;
+    this.p = paramActivity;
+    this.r = paramBaseChatPie;
+    this.c = paramMqqHandler;
   }
   
   public static String a(MessageForPic paramMessageForPic)
@@ -188,90 +188,91 @@ public class AIOShareActionSheet
       paramMessageForPic = "";
     }
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131700349));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131898389));
     ((StringBuilder)localObject).append(paramList1.size());
     ((StringBuilder)localObject).append(".");
     ((StringBuilder)localObject).append(paramMessageForPic);
     paramMessageForPic = ((StringBuilder)localObject).toString();
     paramList1 = new StringBuilder();
     paramList1.append(paramMessageForPic);
-    paramList1.append(HardCodeUtil.a(2131700344));
+    paramList1.append(HardCodeUtil.a(2131898384));
     paramList1 = paramList1.toString();
     paramList2.add(paramMessageForPic);
     return paramList1;
   }
   
-  private void e()
+  private void m()
   {
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    String str1 = k;
-    ReportController.b((AppRuntime)localObject1, "CliOper", "", str2, str1, str1, 0, 0, "", "", "", "");
-    Object localObject2 = MultiMsgManager.a().a();
-    int n = ((List)localObject2).size();
-    if (n == 0)
+    String str3 = this.a.getCurrentAccountUin();
+    Object localObject1 = this.a;
+    Object localObject2 = n;
+    ReportController.b((AppRuntime)localObject1, "CliOper", "", str3, (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
+    Object localObject3 = MultiMsgManager.a().i();
+    int i2 = ((List)localObject3).size();
+    if (i2 == 0)
     {
-      a(this.jdField_a_of_type_AndroidContentContext.getString(2131689544));
+      a(this.q.getString(2131886152));
       return;
     }
-    if (n > 50)
+    if (i2 > 50)
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131689546));
+      ((StringBuilder)localObject1).append(this.q.getString(2131886154));
       ((StringBuilder)localObject1).append(50);
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131689547));
+      ((StringBuilder)localObject1).append(this.q.getString(2131886155));
       a(((StringBuilder)localObject1).toString());
       return;
     }
-    String str3 = MsgProxyUtils.a((MessageRecord)((List)localObject2).get(0));
-    String str4 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b;
-    localObject1 = ((List)localObject2).iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      if (!MsgProxyUtils.a((ChatMessage)((Iterator)localObject1).next()).equals(str3))
+    localObject1 = MsgProxyUtils.d((MessageRecord)((List)localObject3).get(0));
+    String str2 = this.r.ah.c;
+    localObject2 = ((List)localObject3).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      if (!MsgProxyUtils.d((ChatMessage)((Iterator)localObject2).next()).equals(localObject1))
       {
-        a(this.jdField_a_of_type_AndroidContentContext.getString(2131689545));
+        a(this.q.getString(2131886153));
         return;
       }
     }
-    localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (((FriendsManager)localObject1).b(str3)) {
+    localObject2 = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    String str1;
+    if (((FriendsManager)localObject2).n((String)localObject1)) {
       str1 = "1";
     } else {
       str1 = "0";
     }
-    int m = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b();
-    if (m != 0) {
-      if ((m == 1) || (m == 3000)) {}
-    }
-    for (localObject1 = NewReportPlugin.a(str3, m);; localObject1 = NewReportPlugin.a(str3, m))
-    {
-      m = 25061;
-      break label333;
-      localObject1 = NewReportPlugin.a(str4, m);
-      m = 25060;
-      break label333;
-      if (((FriendsManager)localObject1).b(str3)) {
-        break;
+    int i3 = this.r.F();
+    int i1 = 25061;
+    if (i3 != 0) {
+      if ((i3 != 1) && (i3 != 3000)) {
+        if (i3 != 10014) {
+          localObject2 = NewReportPlugin.a((String)localObject1, i3);
+        }
       }
     }
-    localObject1 = NewReportPlugin.a(str3, m);
-    m = 25062;
-    label333:
-    String str5 = NewReportPlugin.a((List)localObject2);
-    localObject2 = Base64Util.encodeToString(JubaoApiPlugin.a((List)localObject2).getBytes(), 2);
-    NewReportPlugin.a((BaseActivity)this.jdField_a_of_type_AndroidAppActivity, str3, str1, str4, str2, m, str5, n, (String)localObject2, (Bundle)localObject1);
-  }
-  
-  public Uri a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(paramString);
-    paramString = new File(localStringBuilder.toString());
-    if (Build.VERSION.SDK_INT >= 24) {
-      return FileProvider.getUriForFile(this.jdField_a_of_type_AndroidContentContext, "com.tencent.mobileqq.fileprovider", paramString);
+    for (;;)
+    {
+      break;
+      str2 = ((ChatMessage)((List)localObject3).get(0)).frienduin;
+      localObject1 = ((ChatMessage)((List)localObject3).get(0)).senderuin;
+      localObject2 = NewReportPlugin.a(str2, i3);
+      i1 = 25080;
+      break;
+      localObject2 = NewReportPlugin.a(str2, i3);
+      i1 = 25060;
+      break;
+      if (!((FriendsManager)localObject2).n((String)localObject1))
+      {
+        localObject2 = NewReportPlugin.a((String)localObject1, i3);
+      }
+      else
+      {
+        localObject2 = NewReportPlugin.a((String)localObject1, i3);
+        i1 = 25062;
+      }
     }
-    return Uri.fromFile(paramString);
+    String str4 = NewReportPlugin.a((List)localObject3);
+    localObject3 = Base64Util.encodeToString(JubaoApiPlugin.a((List)localObject3).getBytes(), 2);
+    NewReportPlugin.a((BaseActivity)this.p, (String)localObject1, str1, str2, str3, i1, str4, i2, (String)localObject3, (Bundle)localObject2);
   }
   
   public String a(MessageForStructing paramMessageForStructing)
@@ -300,8 +301,8 @@ public class AIOShareActionSheet
               localObject1 = (AbsStructMsgElement)((Iterator)localObject2).next();
             } while (!(localObject1 instanceof StructMsgItemLayout2));
             localObject1 = (StructMsgItemLayout2)localObject1;
-          } while (((StructMsgItemLayout2)localObject1).a == null);
-          Iterator localIterator = ((StructMsgItemLayout2)localObject1).a.iterator();
+          } while (((StructMsgItemLayout2)localObject1).ax == null);
+          Iterator localIterator = ((StructMsgItemLayout2)localObject1).ax.iterator();
           localObject1 = paramMessageForStructing;
           for (;;)
           {
@@ -311,7 +312,7 @@ public class AIOShareActionSheet
             }
             paramMessageForStructing = (AbsStructMsgElement)localIterator.next();
             if ((paramMessageForStructing instanceof StructMsgItemSummary)) {
-              localObject1 = ((StructMsgItemSummary)paramMessageForStructing).ai;
+              localObject1 = ((StructMsgItemSummary)paramMessageForStructing).aA;
             }
           }
         }
@@ -336,8 +337,8 @@ public class AIOShareActionSheet
   
   public void a(String paramString)
   {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
-    DialogUtil.a(localContext, 230, null, paramString, "", localContext.getString(2131689543), new AIOShareActionSheet.11(this), null).show();
+    Context localContext = this.q;
+    DialogUtil.a(localContext, 230, null, paramString, "", localContext.getString(2131886151), new AIOShareActionSheet.11(this), null).show();
   }
   
   public void a(Map<String, String> paramMap, ArrayList<ChatMessage> paramArrayList)
@@ -351,7 +352,7 @@ public class AIOShareActionSheet
     a(paramMap, paramArrayList, localIntent);
     try
     {
-      paramArrayList = this.jdField_a_of_type_AndroidContentContext.getPackageManager().queryIntentActivities(localIntent, 0);
+      paramArrayList = this.q.getPackageManager().queryIntentActivities(localIntent, 0);
       if (!paramArrayList.isEmpty())
       {
         paramMap = new ArrayList();
@@ -383,13 +384,13 @@ public class AIOShareActionSheet
         }
         try
         {
-          paramArrayList = Intent.createChooser((Intent)paramMap.remove(0), HardCodeUtil.a(2131700343));
+          paramArrayList = Intent.createChooser((Intent)paramMap.remove(0), HardCodeUtil.a(2131898383));
           if (paramArrayList == null) {
             return;
           }
           paramArrayList.putExtra("android.intent.extra.INITIAL_INTENTS", (Parcelable[])paramMap.toArray(new Parcelable[0]));
           paramArrayList.putExtra("big_brother_source_key", "biz_src_jc_ac");
-          this.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayList);
+          this.q.startActivity(paramArrayList);
           return;
         }
         catch (Exception paramMap)
@@ -403,7 +404,7 @@ public class AIOShareActionSheet
         paramMap.add(localIntent.getCharSequenceExtra("android.intent.extra.TEXT"));
         localIntent.removeExtra("android.intent.extra.TEXT");
         localIntent.putCharSequenceArrayListExtra("android.intent.extra.TEXT", paramMap);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(Intent.createChooser(localIntent, HardCodeUtil.a(2131700341)));
+        this.q.startActivity(Intent.createChooser(localIntent, HardCodeUtil.a(2131898381)));
         return;
       }
     }
@@ -417,73 +418,73 @@ public class AIOShareActionSheet
   public void a(Map<String, String> paramMap, ArrayList<ChatMessage> paramArrayList, Intent paramIntent)
   {
     // Byte code:
-    //   0: ldc 150
+    //   0: ldc 157
     //   2: astore 11
     //   4: aload_2
     //   5: iconst_0
-    //   6: invokevirtual 534	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   9: checkcast 265	com/tencent/mobileqq/data/ChatMessage
+    //   6: invokevirtual 532	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   9: checkcast 275	com/tencent/mobileqq/data/ChatMessage
     //   12: astore 21
     //   14: aload 21
-    //   16: getfield 537	com/tencent/mobileqq/data/ChatMessage:istroop	I
+    //   16: getfield 535	com/tencent/mobileqq/data/ChatMessage:istroop	I
     //   19: ifne +55 -> 74
     //   22: aload_0
-    //   23: getfield 115	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   26: ldc_w 538
-    //   29: invokevirtual 226	android/content/Context:getString	(I)Ljava/lang/String;
+    //   23: getfield 123	com/tencent/mobileqq/msgforward/AIOShareActionSheet:q	Landroid/content/Context;
+    //   26: ldc_w 536
+    //   29: invokevirtual 234	android/content/Context:getString	(I)Ljava/lang/String;
     //   32: iconst_2
     //   33: anewarray 4	java/lang/Object
     //   36: dup
     //   37: iconst_0
     //   38: aload_0
-    //   39: getfield 113	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   39: getfield 121	com/tencent/mobileqq/msgforward/AIOShareActionSheet:a	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   42: aload 21
-    //   44: getfield 541	com/tencent/mobileqq/data/ChatMessage:selfuin	Ljava/lang/String;
-    //   47: invokestatic 546	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
+    //   44: getfield 539	com/tencent/mobileqq/data/ChatMessage:selfuin	Ljava/lang/String;
+    //   47: invokestatic 544	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
     //   50: aastore
     //   51: dup
     //   52: iconst_1
     //   53: aload_0
-    //   54: getfield 113	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   54: getfield 121	com/tencent/mobileqq/msgforward/AIOShareActionSheet:a	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   57: aload 21
-    //   59: getfield 549	com/tencent/mobileqq/data/ChatMessage:frienduin	Ljava/lang/String;
-    //   62: invokestatic 546	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
+    //   59: getfield 309	com/tencent/mobileqq/data/ChatMessage:frienduin	Ljava/lang/String;
+    //   62: invokestatic 544	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
     //   65: aastore
-    //   66: invokestatic 553	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   66: invokestatic 548	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   69: astore 8
     //   71: goto +114 -> 185
     //   74: aload 21
-    //   76: getfield 537	com/tencent/mobileqq/data/ChatMessage:istroop	I
+    //   76: getfield 535	com/tencent/mobileqq/data/ChatMessage:istroop	I
     //   79: iconst_1
     //   80: if_icmpne +40 -> 120
     //   83: aload_0
-    //   84: getfield 115	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   87: ldc_w 554
-    //   90: invokevirtual 226	android/content/Context:getString	(I)Ljava/lang/String;
+    //   84: getfield 123	com/tencent/mobileqq/msgforward/AIOShareActionSheet:q	Landroid/content/Context;
+    //   87: ldc_w 549
+    //   90: invokevirtual 234	android/content/Context:getString	(I)Ljava/lang/String;
     //   93: iconst_1
     //   94: anewarray 4	java/lang/Object
     //   97: dup
     //   98: iconst_0
     //   99: aload_0
-    //   100: getfield 113	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   100: getfield 121	com/tencent/mobileqq/msgforward/AIOShareActionSheet:a	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   103: aload 21
-    //   105: getfield 549	com/tencent/mobileqq/data/ChatMessage:frienduin	Ljava/lang/String;
-    //   108: invokestatic 557	com/tencent/mobileqq/utils/ContactUtils:d	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;)Ljava/lang/String;
+    //   105: getfield 309	com/tencent/mobileqq/data/ChatMessage:frienduin	Ljava/lang/String;
+    //   108: invokestatic 552	com/tencent/mobileqq/utils/ContactUtils:d	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;)Ljava/lang/String;
     //   111: aastore
-    //   112: invokestatic 553	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   112: invokestatic 548	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   115: astore 8
     //   117: goto +68 -> 185
     //   120: aload 21
-    //   122: getfield 537	com/tencent/mobileqq/data/ChatMessage:istroop	I
+    //   122: getfield 535	com/tencent/mobileqq/data/ChatMessage:istroop	I
     //   125: sipush 3000
     //   128: if_icmpne +53 -> 181
     //   131: aload_0
-    //   132: getfield 115	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   135: ldc_w 554
-    //   138: invokevirtual 226	android/content/Context:getString	(I)Ljava/lang/String;
+    //   132: getfield 123	com/tencent/mobileqq/msgforward/AIOShareActionSheet:q	Landroid/content/Context;
+    //   135: ldc_w 549
+    //   138: invokevirtual 234	android/content/Context:getString	(I)Ljava/lang/String;
     //   141: astore 7
     //   143: aload_0
-    //   144: getfield 113	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   144: getfield 121	com/tencent/mobileqq/msgforward/AIOShareActionSheet:a	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   147: astore 8
     //   149: aload 7
     //   151: iconst_1
@@ -492,53 +493,53 @@ public class AIOShareActionSheet
     //   156: iconst_0
     //   157: aload 8
     //   159: aload 8
-    //   161: invokevirtual 561	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   161: invokevirtual 556	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   164: aload 21
-    //   166: getfield 549	com/tencent/mobileqq/data/ChatMessage:frienduin	Ljava/lang/String;
-    //   169: invokestatic 564	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   166: getfield 309	com/tencent/mobileqq/data/ChatMessage:frienduin	Ljava/lang/String;
+    //   169: invokestatic 559	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     //   172: aastore
-    //   173: invokestatic 553	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   173: invokestatic 548	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   176: astore 8
     //   178: goto +7 -> 185
-    //   181: ldc 189
+    //   181: ldc 196
     //   183: astore 8
     //   185: aload_3
-    //   186: ldc_w 566
+    //   186: ldc_w 561
     //   189: aload 8
-    //   191: invokevirtual 407	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   191: invokevirtual 405	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   194: pop
-    //   195: getstatic 58	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   195: getstatic 66	com/tencent/mobileqq/msgforward/AIOShareActionSheet:d	Ljava/lang/String;
     //   198: iconst_1
-    //   199: invokestatic 570	com/tencent/mobileqq/utils/FileUtils:delete	(Ljava/lang/String;Z)V
-    //   202: new 49	java/io/File
+    //   199: invokestatic 565	com/tencent/mobileqq/utils/FileUtils:delete	(Ljava/lang/String;Z)V
+    //   202: new 57	java/io/File
     //   205: dup
-    //   206: getstatic 58	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   209: invokespecial 171	java/io/File:<init>	(Ljava/lang/String;)V
+    //   206: getstatic 66	com/tencent/mobileqq/msgforward/AIOShareActionSheet:d	Ljava/lang/String;
+    //   209: invokespecial 178	java/io/File:<init>	(Ljava/lang/String;)V
     //   212: astore 7
     //   214: aload 7
-    //   216: invokevirtual 573	java/io/File:isDirectory	()Z
+    //   216: invokevirtual 568	java/io/File:isDirectory	()Z
     //   219: ifeq +17 -> 236
     //   222: aload 7
-    //   224: invokevirtual 576	java/io/File:exists	()Z
+    //   224: invokevirtual 571	java/io/File:exists	()Z
     //   227: ifne +9 -> 236
     //   230: aload 7
-    //   232: invokevirtual 579	java/io/File:mkdirs	()Z
+    //   232: invokevirtual 574	java/io/File:mkdirs	()Z
     //   235: pop
-    //   236: new 364	java/util/ArrayList
+    //   236: new 362	java/util/ArrayList
     //   239: dup
-    //   240: invokespecial 428	java/util/ArrayList:<init>	()V
+    //   240: invokespecial 426	java/util/ArrayList:<init>	()V
     //   243: astore 9
-    //   245: new 364	java/util/ArrayList
+    //   245: new 362	java/util/ArrayList
     //   248: dup
-    //   249: invokespecial 428	java/util/ArrayList:<init>	()V
+    //   249: invokespecial 426	java/util/ArrayList:<init>	()V
     //   252: astore 10
-    //   254: new 364	java/util/ArrayList
+    //   254: new 362	java/util/ArrayList
     //   257: dup
-    //   258: invokespecial 428	java/util/ArrayList:<init>	()V
+    //   258: invokespecial 426	java/util/ArrayList:<init>	()V
     //   261: astore 19
-    //   263: new 364	java/util/ArrayList
+    //   263: new 362	java/util/ArrayList
     //   266: dup
-    //   267: invokespecial 428	java/util/ArrayList:<init>	()V
+    //   267: invokespecial 426	java/util/ArrayList:<init>	()V
     //   270: astore 13
     //   272: aconst_null
     //   273: astore 17
@@ -550,58 +551,58 @@ public class AIOShareActionSheet
     //   282: astore 14
     //   284: aload 17
     //   286: astore 12
-    //   288: new 33	java/lang/StringBuilder
+    //   288: new 41	java/lang/StringBuilder
     //   291: dup
-    //   292: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   292: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   295: astore 7
     //   297: aload 17
     //   299: astore 12
     //   301: aload 7
-    //   303: getstatic 58	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   306: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   303: getstatic 66	com/tencent/mobileqq/msgforward/AIOShareActionSheet:d	Ljava/lang/String;
+    //   306: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   309: pop
     //   310: aload 17
     //   312: astore 12
     //   314: aload 7
-    //   316: getstatic 66	com/tencent/mobileqq/msgforward/AIOShareActionSheet:l	Ljava/lang/String;
-    //   319: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   316: getstatic 74	com/tencent/mobileqq/msgforward/AIOShareActionSheet:t	Ljava/lang/String;
+    //   319: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   322: pop
     //   323: aload 17
     //   325: astore 12
     //   327: aload 7
-    //   329: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   332: invokestatic 582	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   329: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   332: invokestatic 577	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
     //   335: pop
     //   336: aload 13
     //   338: astore 7
     //   340: aload 17
     //   342: astore 12
-    //   344: new 33	java/lang/StringBuilder
+    //   344: new 41	java/lang/StringBuilder
     //   347: dup
-    //   348: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   348: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   351: astore 13
     //   353: aload 17
     //   355: astore 12
     //   357: aload 13
-    //   359: getstatic 58	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   362: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   359: getstatic 66	com/tencent/mobileqq/msgforward/AIOShareActionSheet:d	Ljava/lang/String;
+    //   362: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   365: pop
     //   366: aload 17
     //   368: astore 12
     //   370: aload 13
-    //   372: getstatic 66	com/tencent/mobileqq/msgforward/AIOShareActionSheet:l	Ljava/lang/String;
-    //   375: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: getstatic 74	com/tencent/mobileqq/msgforward/AIOShareActionSheet:t	Ljava/lang/String;
+    //   375: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   378: pop
     //   379: aload 17
     //   381: astore 12
-    //   383: new 584	java/io/BufferedWriter
+    //   383: new 579	java/io/BufferedWriter
     //   386: dup
-    //   387: new 586	java/io/FileWriter
+    //   387: new 581	java/io/FileWriter
     //   390: dup
     //   391: aload 13
-    //   393: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   396: invokespecial 587	java/io/FileWriter:<init>	(Ljava/lang/String;)V
-    //   399: invokespecial 590	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   393: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   396: invokespecial 582	java/io/FileWriter:<init>	(Ljava/lang/String;)V
+    //   399: invokespecial 585	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
     //   402: astore 13
     //   404: aload 9
     //   406: astore 17
@@ -611,9 +612,9 @@ public class AIOShareActionSheet
     //   414: astore 12
     //   416: aload 10
     //   418: astore 15
-    //   420: new 33	java/lang/StringBuilder
+    //   420: new 41	java/lang/StringBuilder
     //   423: dup
-    //   424: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   424: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   427: astore 20
     //   429: aload 9
     //   431: astore 17
@@ -624,8 +625,8 @@ public class AIOShareActionSheet
     //   441: aload 10
     //   443: astore 15
     //   445: aload 20
-    //   447: ldc_w 592
-    //   450: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   447: ldc_w 587
+    //   450: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   453: pop
     //   454: aload 9
     //   456: astore 17
@@ -636,8 +637,8 @@ public class AIOShareActionSheet
     //   466: aload 10
     //   468: astore 15
     //   470: aload 20
-    //   472: ldc_w 594
-    //   475: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   472: ldc_w 589
+    //   475: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   478: pop
     //   479: aload 9
     //   481: astore 17
@@ -649,7 +650,7 @@ public class AIOShareActionSheet
     //   493: astore 15
     //   495: aload 20
     //   497: aload 8
-    //   499: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   499: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   502: pop
     //   503: aload 9
     //   505: astore 17
@@ -660,8 +661,8 @@ public class AIOShareActionSheet
     //   515: aload 10
     //   517: astore 15
     //   519: aload 20
-    //   521: ldc_w 596
-    //   524: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   521: ldc_w 591
+    //   524: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   527: pop
     //   528: aload 9
     //   530: astore 17
@@ -671,9 +672,9 @@ public class AIOShareActionSheet
     //   538: astore 12
     //   540: aload 10
     //   542: astore 15
-    //   544: new 33	java/lang/StringBuilder
+    //   544: new 41	java/lang/StringBuilder
     //   547: dup
-    //   548: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   548: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   551: astore 14
     //   553: aload 9
     //   555: astore 17
@@ -685,7 +686,7 @@ public class AIOShareActionSheet
     //   567: astore 15
     //   569: aload 14
     //   571: aload 8
-    //   573: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   573: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   576: pop
     //   577: aload 9
     //   579: astore 17
@@ -696,8 +697,8 @@ public class AIOShareActionSheet
     //   589: aload 10
     //   591: astore 15
     //   593: aload 14
-    //   595: ldc_w 598
-    //   598: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   595: ldc_w 593
+    //   598: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   601: pop
     //   602: aload 9
     //   604: astore 17
@@ -709,8 +710,8 @@ public class AIOShareActionSheet
     //   616: astore 15
     //   618: aload 13
     //   620: aload 14
-    //   622: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   625: invokevirtual 601	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   622: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   625: invokevirtual 596	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   628: aload 9
     //   630: astore 17
     //   632: aload 11
@@ -719,11 +720,11 @@ public class AIOShareActionSheet
     //   638: astore 12
     //   640: aload 10
     //   642: astore 15
-    //   644: new 603	java/text/SimpleDateFormat
+    //   644: new 598	java/text/SimpleDateFormat
     //   647: dup
-    //   648: ldc 189
-    //   650: getstatic 609	java/util/Locale:SIMPLIFIED_CHINESE	Ljava/util/Locale;
-    //   653: invokespecial 612	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;Ljava/util/Locale;)V
+    //   648: ldc 196
+    //   650: getstatic 604	java/util/Locale:SIMPLIFIED_CHINESE	Ljava/util/Locale;
+    //   653: invokespecial 607	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;Ljava/util/Locale;)V
     //   656: astore 18
     //   658: aload 9
     //   660: astore 17
@@ -734,8 +735,8 @@ public class AIOShareActionSheet
     //   670: aload 10
     //   672: astore 15
     //   674: aload 18
-    //   676: ldc_w 614
-    //   679: invokevirtual 617	java/text/SimpleDateFormat:applyPattern	(Ljava/lang/String;)V
+    //   676: ldc_w 609
+    //   679: invokevirtual 612	java/text/SimpleDateFormat:applyPattern	(Ljava/lang/String;)V
     //   682: aload 9
     //   684: astore 17
     //   686: aload 11
@@ -746,11 +747,11 @@ public class AIOShareActionSheet
     //   696: astore 15
     //   698: aload 18
     //   700: aload 21
-    //   702: getfield 621	com/tencent/mobileqq/data/ChatMessage:time	J
-    //   705: ldc2_w 622
+    //   702: getfield 616	com/tencent/mobileqq/data/ChatMessage:time	J
+    //   705: ldc2_w 617
     //   708: lmul
-    //   709: invokestatic 629	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   712: invokevirtual 632	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
+    //   709: invokestatic 624	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   712: invokevirtual 627	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
     //   715: astore 14
     //   717: aload 9
     //   719: astore 17
@@ -761,8 +762,8 @@ public class AIOShareActionSheet
     //   729: aload 10
     //   731: astore 15
     //   733: aload 20
-    //   735: ldc_w 634
-    //   738: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   735: ldc_w 629
+    //   738: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   741: pop
     //   742: aload 9
     //   744: astore 17
@@ -774,7 +775,7 @@ public class AIOShareActionSheet
     //   756: astore 15
     //   758: aload 20
     //   760: aload 14
-    //   762: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   762: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   765: pop
     //   766: aload 9
     //   768: astore 17
@@ -785,8 +786,8 @@ public class AIOShareActionSheet
     //   778: aload 10
     //   780: astore 15
     //   782: aload 20
-    //   784: ldc_w 636
-    //   787: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   784: ldc_w 631
+    //   787: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   790: pop
     //   791: aload 9
     //   793: astore 17
@@ -796,9 +797,9 @@ public class AIOShareActionSheet
     //   801: astore 12
     //   803: aload 10
     //   805: astore 15
-    //   807: new 33	java/lang/StringBuilder
+    //   807: new 41	java/lang/StringBuilder
     //   810: dup
-    //   811: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   811: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   814: astore 8
     //   816: aload 9
     //   818: astore 17
@@ -809,8 +810,8 @@ public class AIOShareActionSheet
     //   828: aload 10
     //   830: astore 15
     //   832: aload 8
-    //   834: ldc_w 638
-    //   837: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   834: ldc_w 633
+    //   837: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   840: pop
     //   841: aload 9
     //   843: astore 17
@@ -822,7 +823,7 @@ public class AIOShareActionSheet
     //   855: astore 15
     //   857: aload 8
     //   859: aload 14
-    //   861: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   861: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   864: pop
     //   865: aload 9
     //   867: astore 17
@@ -833,8 +834,8 @@ public class AIOShareActionSheet
     //   877: aload 10
     //   879: astore 15
     //   881: aload 8
-    //   883: ldc_w 640
-    //   886: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   883: ldc_w 635
+    //   886: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   889: pop
     //   890: aload 9
     //   892: astore 17
@@ -846,8 +847,8 @@ public class AIOShareActionSheet
     //   904: astore 15
     //   906: aload 13
     //   908: aload 8
-    //   910: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   913: invokevirtual 601	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   910: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   913: invokevirtual 596	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   916: iconst_0
     //   917: istore 4
     //   919: aload 10
@@ -863,42 +864,42 @@ public class AIOShareActionSheet
     //   939: aload 8
     //   941: astore 15
     //   943: aload_2
-    //   944: invokevirtual 641	java/util/ArrayList:size	()I
+    //   944: invokevirtual 636	java/util/ArrayList:size	()I
     //   947: istore 5
     //   949: iload 4
     //   951: iload 5
     //   953: if_icmpge +1169 -> 2122
     //   956: aload_2
     //   957: iload 4
-    //   959: invokevirtual 534	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   962: checkcast 265	com/tencent/mobileqq/data/ChatMessage
+    //   959: invokevirtual 532	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   962: checkcast 275	com/tencent/mobileqq/data/ChatMessage
     //   965: astore 17
     //   967: aload 17
-    //   969: instanceof 643
+    //   969: instanceof 638
     //   972: istore 6
     //   974: iload 6
     //   976: ifeq +77 -> 1053
     //   979: aload 17
-    //   981: checkcast 643	com/tencent/mobileqq/data/MessageForText
+    //   981: checkcast 638	com/tencent/mobileqq/data/MessageForText
     //   984: astore 11
     //   986: aload 11
-    //   988: getfield 647	com/tencent/mobileqq/data/MessageForText:sb	Ljava/lang/CharSequence;
+    //   988: getfield 642	com/tencent/mobileqq/data/MessageForText:sb	Ljava/lang/CharSequence;
     //   991: ifnull +18 -> 1009
     //   994: aload 11
-    //   996: getfield 647	com/tencent/mobileqq/data/MessageForText:sb	Ljava/lang/CharSequence;
-    //   999: invokeinterface 650 1 0
+    //   996: getfield 642	com/tencent/mobileqq/data/MessageForText:sb	Ljava/lang/CharSequence;
+    //   999: invokeinterface 645 1 0
     //   1004: astore 12
     //   1006: goto +10 -> 1016
     //   1009: aload 11
-    //   1011: getfield 653	com/tencent/mobileqq/data/MessageForText:msg	Ljava/lang/String;
+    //   1011: getfield 648	com/tencent/mobileqq/data/MessageForText:msg	Ljava/lang/String;
     //   1014: astore 12
     //   1016: aload 12
     //   1018: astore 11
     //   1020: aload 12
-    //   1022: invokestatic 658	com/tencent/mobileqq/text/TextUtils:hasSysEmotion	(Ljava/lang/String;)Z
+    //   1022: invokestatic 653	com/tencent/mobileqq/text/TextUtils:hasSysEmotion	(Ljava/lang/String;)Z
     //   1025: ifeq +54 -> 1079
     //   1028: aload 12
-    //   1030: invokestatic 661	com/tencent/mobileqq/text/TextUtils:Symbol2FavoriteSymbol	(Ljava/lang/String;)Ljava/lang/String;
+    //   1030: invokestatic 656	com/tencent/mobileqq/text/TextUtils:Symbol2FavoriteSymbol	(Ljava/lang/String;)Ljava/lang/String;
     //   1033: astore 11
     //   1035: goto +44 -> 1079
     //   1038: astore 11
@@ -910,27 +911,27 @@ public class AIOShareActionSheet
     //   1049: astore_2
     //   1050: goto +1247 -> 2297
     //   1053: aload 17
-    //   1055: instanceof 154
+    //   1055: instanceof 161
     //   1058: istore 6
     //   1060: iload 6
     //   1062: ifeq +24 -> 1086
     //   1065: aload 17
-    //   1067: checkcast 154	com/tencent/mobileqq/data/MessageForPic
+    //   1067: checkcast 161	com/tencent/mobileqq/data/MessageForPic
     //   1070: aload 9
     //   1072: aload 19
-    //   1074: invokestatic 663	com/tencent/mobileqq/msgforward/AIOShareActionSheet:a	(Lcom/tencent/mobileqq/data/MessageForPic;Ljava/util/List;Ljava/util/List;)Ljava/lang/String;
+    //   1074: invokestatic 658	com/tencent/mobileqq/msgforward/AIOShareActionSheet:a	(Lcom/tencent/mobileqq/data/MessageForPic;Ljava/util/List;Ljava/util/List;)Ljava/lang/String;
     //   1077: astore 11
     //   1079: aload 11
     //   1081: astore 12
     //   1083: goto +595 -> 1678
     //   1086: aload 17
-    //   1088: instanceof 665
+    //   1088: instanceof 660
     //   1091: istore 6
     //   1093: iload 6
     //   1095: ifeq +193 -> 1288
     //   1098: aload 17
-    //   1100: checkcast 665	com/tencent/mobileqq/data/MessageForShortVideo
-    //   1103: invokestatic 671	com/tencent/mobileqq/shortvideo/ShortVideoUtils:findVideoPathIfExists	(Lcom/tencent/mobileqq/data/MessageForShortVideo;)Ljava/lang/String;
+    //   1100: checkcast 660	com/tencent/mobileqq/data/MessageForShortVideo
+    //   1103: invokestatic 666	com/tencent/mobileqq/shortvideo/ShortVideoUtils:findVideoPathIfExists	(Lcom/tencent/mobileqq/data/MessageForShortVideo;)Ljava/lang/String;
     //   1106: astore 11
     //   1108: aload 11
     //   1110: ifnonnull +30 -> 1140
@@ -940,65 +941,65 @@ public class AIOShareActionSheet
     //   1117: anewarray 4	java/lang/Object
     //   1120: dup
     //   1121: iconst_0
-    //   1122: ldc_w 673
+    //   1122: ldc_w 668
     //   1125: aastore
     //   1126: dup
     //   1127: iconst_1
     //   1128: aload 17
-    //   1130: invokevirtual 674	com/tencent/mobileqq/data/ChatMessage:getUserLogString	()Ljava/lang/String;
+    //   1130: invokevirtual 669	com/tencent/mobileqq/data/ChatMessage:getUserLogString	()Ljava/lang/String;
     //   1133: aastore
-    //   1134: invokestatic 162	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   1134: invokestatic 169	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   1137: goto +1633 -> 2770
     //   1140: aload 8
     //   1142: aload 11
-    //   1144: invokeinterface 168 2 0
+    //   1144: invokeinterface 175 2 0
     //   1149: pop
-    //   1150: new 33	java/lang/StringBuilder
+    //   1150: new 41	java/lang/StringBuilder
     //   1153: dup
-    //   1154: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   1154: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   1157: astore 11
     //   1159: aload 11
-    //   1161: ldc_w 675
-    //   1164: invokestatic 64	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   1167: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1161: ldc_w 670
+    //   1164: invokestatic 72	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   1167: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1170: pop
     //   1171: aload 11
     //   1173: aload 8
-    //   1175: invokeinterface 194 1 0
-    //   1180: invokevirtual 197	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1175: invokeinterface 201 1 0
+    //   1180: invokevirtual 204	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1183: pop
     //   1184: aload 11
-    //   1186: ldc_w 677
-    //   1189: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1186: ldc_w 672
+    //   1189: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1192: pop
     //   1193: aload 11
-    //   1195: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1195: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1198: astore 15
-    //   1200: new 33	java/lang/StringBuilder
+    //   1200: new 41	java/lang/StringBuilder
     //   1203: dup
-    //   1204: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   1204: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   1207: astore 12
     //   1209: aload 12
     //   1211: aload 15
-    //   1213: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1213: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1216: pop
     //   1217: aload 7
     //   1219: astore 11
     //   1221: aload 12
-    //   1223: ldc_w 678
-    //   1226: invokestatic 64	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   1229: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1223: ldc_w 673
+    //   1226: invokestatic 72	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   1229: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1232: pop
     //   1233: aload 7
     //   1235: astore 11
     //   1237: aload 12
-    //   1239: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1239: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1242: astore 12
     //   1244: aload 7
     //   1246: astore 11
     //   1248: aload 11
     //   1250: aload 15
-    //   1252: invokeinterface 168 2 0
+    //   1252: invokeinterface 175 2 0
     //   1257: pop
     //   1258: aload 11
     //   1260: astore 7
@@ -1018,35 +1019,35 @@ public class AIOShareActionSheet
     //   1288: aload 7
     //   1290: astore 11
     //   1292: aload 17
-    //   1294: instanceof 680
+    //   1294: instanceof 675
     //   1297: istore 6
     //   1299: iload 6
     //   1301: ifne +353 -> 1654
     //   1304: aload 17
-    //   1306: instanceof 682
+    //   1306: instanceof 677
     //   1309: ifeq +6 -> 1315
     //   1312: goto +342 -> 1654
     //   1315: aload 17
-    //   1317: instanceof 339
+    //   1317: instanceof 336
     //   1320: ifeq +316 -> 1636
     //   1323: aload 17
-    //   1325: checkcast 339	com/tencent/mobileqq/data/MessageForStructing
+    //   1325: checkcast 336	com/tencent/mobileqq/data/MessageForStructing
     //   1328: astore 16
     //   1330: aload 16
-    //   1332: getfield 346	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1332: getfield 343	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
     //   1335: ifnull +1429 -> 2764
     //   1338: aload 16
-    //   1340: getfield 346	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1343: instanceof 684
+    //   1340: getfield 343	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1343: instanceof 679
     //   1346: istore 6
     //   1348: iload 6
     //   1350: ifeq +50 -> 1400
     //   1353: aload 16
-    //   1355: getfield 346	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1358: checkcast 684	com/tencent/mobileqq/structmsg/StructMsgForHypertext
+    //   1355: getfield 343	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1358: checkcast 679	com/tencent/mobileqq/structmsg/StructMsgForHypertext
     //   1361: iconst_0
-    //   1362: invokevirtual 688	com/tencent/mobileqq/structmsg/StructMsgForHypertext:getSpannableString	(Z)Landroid/text/SpannableStringBuilder;
-    //   1365: invokevirtual 691	android/text/SpannableStringBuilder:toString	()Ljava/lang/String;
+    //   1362: invokevirtual 683	com/tencent/mobileqq/structmsg/StructMsgForHypertext:getSpannableString	(Z)Landroid/text/SpannableStringBuilder;
+    //   1365: invokevirtual 686	android/text/SpannableStringBuilder:toString	()Ljava/lang/String;
     //   1368: astore 11
     //   1370: goto +222 -> 1592
     //   1373: aload 8
@@ -1067,16 +1068,16 @@ public class AIOShareActionSheet
     //   1402: astore 12
     //   1404: aload 12
     //   1406: astore 11
-    //   1408: ldc_w 693
+    //   1408: ldc_w 688
     //   1411: aload 16
-    //   1413: getfield 346	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1416: getfield 698	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgAction	Ljava/lang/String;
-    //   1419: invokevirtual 268	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1413: getfield 343	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1416: getfield 693	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgAction	Ljava/lang/String;
+    //   1419: invokevirtual 278	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1422: ifeq +22 -> 1444
     //   1425: aload 12
     //   1427: astore 11
-    //   1429: ldc_w 699
-    //   1432: invokestatic 64	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   1429: ldc_w 694
+    //   1432: invokestatic 72	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   1435: astore 12
     //   1437: aload 12
     //   1439: astore 11
@@ -1084,8 +1085,8 @@ public class AIOShareActionSheet
     //   1444: aload 12
     //   1446: astore 11
     //   1448: aload 16
-    //   1450: getfield 346	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1453: getfield 702	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgServiceID	I
+    //   1450: getfield 343	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1453: getfield 697	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgServiceID	I
     //   1456: istore 5
     //   1458: iload 5
     //   1460: bipush 32
@@ -1094,7 +1095,7 @@ public class AIOShareActionSheet
     //   1467: astore 11
     //   1469: aload_0
     //   1470: aload 16
-    //   1472: invokevirtual 704	com/tencent/mobileqq/msgforward/AIOShareActionSheet:a	(Lcom/tencent/mobileqq/data/MessageForStructing;)Ljava/lang/String;
+    //   1472: invokevirtual 699	com/tencent/mobileqq/msgforward/AIOShareActionSheet:a	(Lcom/tencent/mobileqq/data/MessageForStructing;)Ljava/lang/String;
     //   1475: astore 12
     //   1477: aload 12
     //   1479: astore 11
@@ -1106,44 +1107,44 @@ public class AIOShareActionSheet
     //   1492: aload 12
     //   1494: astore 11
     //   1496: aload 16
-    //   1498: invokevirtual 342	com/tencent/mobileqq/data/MessageForStructing:getSummaryMsg	()Ljava/lang/String;
+    //   1498: invokevirtual 339	com/tencent/mobileqq/data/MessageForStructing:getSummaryMsg	()Ljava/lang/String;
     //   1501: astore 15
     //   1503: aload 12
     //   1505: astore 11
     //   1507: aload 16
-    //   1509: getfield 346	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1512: getfield 707	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgUrl	Ljava/lang/String;
+    //   1509: getfield 343	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1512: getfield 702	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgUrl	Ljava/lang/String;
     //   1515: ifnull +1242 -> 2757
     //   1518: aload 12
     //   1520: astore 11
-    //   1522: new 33	java/lang/StringBuilder
+    //   1522: new 41	java/lang/StringBuilder
     //   1525: dup
-    //   1526: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   1526: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   1529: astore 21
     //   1531: aload 12
     //   1533: astore 11
     //   1535: aload 21
     //   1537: aload 15
-    //   1539: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1539: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1542: pop
     //   1543: aload 12
     //   1545: astore 11
     //   1547: aload 21
-    //   1549: ldc_w 709
-    //   1552: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1549: ldc_w 704
+    //   1552: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1555: pop
     //   1556: aload 12
     //   1558: astore 11
     //   1560: aload 21
     //   1562: aload 16
-    //   1564: getfield 346	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1567: getfield 707	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgUrl	Ljava/lang/String;
-    //   1570: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1564: getfield 343	com/tencent/mobileqq/data/MessageForStructing:structingMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1567: getfield 702	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgUrl	Ljava/lang/String;
+    //   1570: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1573: pop
     //   1574: aload 12
     //   1576: astore 11
     //   1578: aload 21
-    //   1580: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1580: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1583: astore 12
     //   1585: aload 12
     //   1587: astore 11
@@ -1158,8 +1159,8 @@ public class AIOShareActionSheet
     //   1606: ifnonnull +72 -> 1678
     //   1609: aload 15
     //   1611: astore 11
-    //   1613: ldc_w 710
-    //   1616: invokestatic 64	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   1613: ldc_w 705
+    //   1616: invokestatic 72	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   1619: astore 12
     //   1621: aload 15
     //   1623: astore 7
@@ -1184,25 +1185,25 @@ public class AIOShareActionSheet
     //   1662: aload 17
     //   1664: aload 9
     //   1666: aload 19
-    //   1668: invokestatic 714	com/tencent/mobileqq/data/MessageForMixedMsg:getTextFromMixedMsgForMail	(Lcom/tencent/mobileqq/data/ChatMessage;Ljava/util/List;Ljava/util/List;)Ljava/lang/CharSequence;
-    //   1671: invokeinterface 650 1 0
+    //   1668: invokestatic 709	com/tencent/mobileqq/data/MessageForMixedMsg:getTextFromMixedMsgForMail	(Lcom/tencent/mobileqq/data/ChatMessage;Ljava/util/List;Ljava/util/List;)Ljava/lang/CharSequence;
+    //   1671: invokeinterface 645 1 0
     //   1676: astore 12
     //   1678: aload 12
     //   1680: ifnull +1090 -> 2770
     //   1683: aload 7
     //   1685: astore 11
     //   1687: aload 18
-    //   1689: ldc_w 614
-    //   1692: invokevirtual 617	java/text/SimpleDateFormat:applyPattern	(Ljava/lang/String;)V
+    //   1689: ldc_w 609
+    //   1692: invokevirtual 612	java/text/SimpleDateFormat:applyPattern	(Ljava/lang/String;)V
     //   1695: aload 7
     //   1697: astore 15
     //   1699: aload 18
     //   1701: aload 17
-    //   1703: getfield 621	com/tencent/mobileqq/data/ChatMessage:time	J
-    //   1706: ldc2_w 622
+    //   1703: getfield 616	com/tencent/mobileqq/data/ChatMessage:time	J
+    //   1706: ldc2_w 617
     //   1709: lmul
-    //   1710: invokestatic 629	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1713: invokevirtual 632	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
+    //   1710: invokestatic 624	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1713: invokevirtual 627	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
     //   1716: astore 16
     //   1718: aload 14
     //   1720: astore 11
@@ -1210,183 +1211,183 @@ public class AIOShareActionSheet
     //   1724: astore 15
     //   1726: aload 16
     //   1728: aload 14
-    //   1730: invokevirtual 268	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1730: invokevirtual 278	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1733: ifne +110 -> 1843
     //   1736: aload 7
     //   1738: astore 15
     //   1740: aload 20
-    //   1742: ldc_w 634
-    //   1745: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1742: ldc_w 629
+    //   1745: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1748: pop
     //   1749: aload 7
     //   1751: astore 15
     //   1753: aload 20
     //   1755: aload 16
-    //   1757: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1757: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1760: pop
     //   1761: aload 7
     //   1763: astore 15
     //   1765: aload 20
-    //   1767: ldc_w 636
-    //   1770: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1767: ldc_w 631
+    //   1770: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1773: pop
     //   1774: aload 7
     //   1776: astore 15
-    //   1778: new 33	java/lang/StringBuilder
+    //   1778: new 41	java/lang/StringBuilder
     //   1781: dup
-    //   1782: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   1782: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   1785: astore 11
     //   1787: aload 7
     //   1789: astore 15
     //   1791: aload 11
-    //   1793: ldc_w 638
-    //   1796: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1793: ldc_w 633
+    //   1796: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1799: pop
     //   1800: aload 7
     //   1802: astore 15
     //   1804: aload 11
     //   1806: aload 16
-    //   1808: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1808: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1811: pop
     //   1812: aload 7
     //   1814: astore 15
     //   1816: aload 11
-    //   1818: ldc_w 640
-    //   1821: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1818: ldc_w 635
+    //   1821: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1824: pop
     //   1825: aload 7
     //   1827: astore 15
     //   1829: aload 13
     //   1831: aload 11
-    //   1833: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1836: invokevirtual 601	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   1833: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1836: invokevirtual 596	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   1839: aload 16
     //   1841: astore 11
     //   1843: aload 7
     //   1845: astore 15
     //   1847: aload 18
-    //   1849: ldc_w 716
-    //   1852: invokevirtual 617	java/text/SimpleDateFormat:applyPattern	(Ljava/lang/String;)V
+    //   1849: ldc_w 711
+    //   1852: invokevirtual 612	java/text/SimpleDateFormat:applyPattern	(Ljava/lang/String;)V
     //   1855: aload 7
     //   1857: astore 15
     //   1859: aload 18
     //   1861: aload 17
-    //   1863: getfield 621	com/tencent/mobileqq/data/ChatMessage:time	J
-    //   1866: ldc2_w 622
+    //   1863: getfield 616	com/tencent/mobileqq/data/ChatMessage:time	J
+    //   1866: ldc2_w 617
     //   1869: lmul
-    //   1870: invokestatic 629	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1873: invokevirtual 632	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
+    //   1870: invokestatic 624	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1873: invokevirtual 627	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
     //   1876: astore 14
     //   1878: aload 7
     //   1880: astore 15
     //   1882: aload 20
-    //   1884: ldc_w 718
-    //   1887: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1884: ldc_w 713
+    //   1887: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1890: pop
     //   1891: aload 7
     //   1893: astore 15
     //   1895: aload 20
     //   1897: aload_1
     //   1898: aload 17
-    //   1900: getfield 721	com/tencent/mobileqq/data/ChatMessage:senderuin	Ljava/lang/String;
-    //   1903: invokeinterface 726 2 0
-    //   1908: checkcast 178	java/lang/String
-    //   1911: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1900: getfield 312	com/tencent/mobileqq/data/ChatMessage:senderuin	Ljava/lang/String;
+    //   1903: invokeinterface 718 2 0
+    //   1908: checkcast 185	java/lang/String
+    //   1911: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1914: pop
     //   1915: aload 7
     //   1917: astore 15
     //   1919: aload 20
-    //   1921: ldc_w 728
-    //   1924: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1921: ldc_w 720
+    //   1924: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1927: pop
     //   1928: aload 7
     //   1930: astore 15
     //   1932: aload 20
     //   1934: aload 14
-    //   1936: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1936: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1939: pop
     //   1940: aload 7
     //   1942: astore 15
     //   1944: aload 20
-    //   1946: ldc_w 730
-    //   1949: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1946: ldc_w 722
+    //   1949: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1952: pop
     //   1953: aload 7
     //   1955: astore 15
     //   1957: aload 20
     //   1959: aload 12
-    //   1961: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1961: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1964: pop
     //   1965: aload 7
     //   1967: astore 15
     //   1969: aload 20
-    //   1971: ldc_w 732
-    //   1974: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1971: ldc_w 724
+    //   1974: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1977: pop
     //   1978: aload 7
     //   1980: astore 15
-    //   1982: new 33	java/lang/StringBuilder
+    //   1982: new 41	java/lang/StringBuilder
     //   1985: dup
-    //   1986: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   1986: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   1989: astore 16
     //   1991: aload 7
     //   1993: astore 15
     //   1995: aload 16
     //   1997: aload_1
     //   1998: aload 17
-    //   2000: getfield 721	com/tencent/mobileqq/data/ChatMessage:senderuin	Ljava/lang/String;
-    //   2003: invokeinterface 726 2 0
-    //   2008: checkcast 178	java/lang/String
-    //   2011: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2000: getfield 312	com/tencent/mobileqq/data/ChatMessage:senderuin	Ljava/lang/String;
+    //   2003: invokeinterface 718 2 0
+    //   2008: checkcast 185	java/lang/String
+    //   2011: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2014: pop
     //   2015: aload 7
     //   2017: astore 15
     //   2019: aload 16
-    //   2021: ldc_w 734
-    //   2024: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2021: ldc_w 726
+    //   2024: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2027: pop
     //   2028: aload 7
     //   2030: astore 15
     //   2032: aload 16
     //   2034: aload 14
-    //   2036: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2036: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2039: pop
     //   2040: aload 7
     //   2042: astore 15
     //   2044: aload 16
-    //   2046: ldc_w 709
-    //   2049: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2046: ldc_w 704
+    //   2049: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2052: pop
     //   2053: aload 7
     //   2055: astore 15
     //   2057: aload 13
     //   2059: aload 16
-    //   2061: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2064: invokevirtual 601	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   2061: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2064: invokevirtual 596	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   2067: aload 7
     //   2069: astore 15
-    //   2071: new 33	java/lang/StringBuilder
+    //   2071: new 41	java/lang/StringBuilder
     //   2074: dup
-    //   2075: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   2075: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   2078: astore 14
     //   2080: aload 7
     //   2082: astore 15
     //   2084: aload 14
     //   2086: aload 12
-    //   2088: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2088: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2091: pop
     //   2092: aload 7
     //   2094: astore 15
     //   2096: aload 14
-    //   2098: ldc_w 736
-    //   2101: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2098: ldc_w 728
+    //   2101: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2104: pop
     //   2105: aload 7
     //   2107: astore 15
     //   2109: aload 13
     //   2111: aload 14
-    //   2113: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2116: invokevirtual 601	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   2113: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2116: invokevirtual 596	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   2119: goto +655 -> 2774
     //   2122: aload 9
     //   2124: astore_2
@@ -1397,22 +1398,22 @@ public class AIOShareActionSheet
     //   2133: aload 7
     //   2135: astore 15
     //   2137: aload 20
-    //   2139: ldc_w 738
-    //   2142: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2139: ldc_w 730
+    //   2142: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2145: pop
     //   2146: aload 7
     //   2148: astore 15
     //   2150: aload 20
-    //   2152: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2155: invokestatic 744	android/text/Html:fromHtml	(Ljava/lang/String;)Landroid/text/Spanned;
+    //   2152: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2155: invokestatic 736	android/text/Html:fromHtml	(Ljava/lang/String;)Landroid/text/Spanned;
     //   2158: astore_1
     //   2159: aload_3
-    //   2160: ldc_w 513
+    //   2160: ldc_w 511
     //   2163: aload_1
-    //   2164: invokevirtual 747	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/CharSequence;)Landroid/content/Intent;
+    //   2164: invokevirtual 739	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/CharSequence;)Landroid/content/Intent;
     //   2167: pop
     //   2168: aload 13
-    //   2170: invokevirtual 750	java/io/BufferedWriter:flush	()V
+    //   2170: invokevirtual 742	java/io/BufferedWriter:flush	()V
     //   2173: aload_2
     //   2174: astore 10
     //   2176: aload 7
@@ -1420,7 +1421,7 @@ public class AIOShareActionSheet
     //   2180: aload 11
     //   2182: astore 12
     //   2184: aload 13
-    //   2186: invokevirtual 753	java/io/BufferedWriter:close	()V
+    //   2186: invokevirtual 745	java/io/BufferedWriter:close	()V
     //   2189: aload_2
     //   2190: astore 10
     //   2192: aload 7
@@ -1489,7 +1490,7 @@ public class AIOShareActionSheet
     //   2312: astore 11
     //   2314: aload 9
     //   2316: astore_1
-    //   2317: ldc 150
+    //   2317: ldc 157
     //   2319: astore 9
     //   2321: aload 16
     //   2323: astore 8
@@ -1505,7 +1506,7 @@ public class AIOShareActionSheet
     //   2344: astore 11
     //   2346: aload 9
     //   2348: astore_1
-    //   2349: ldc 150
+    //   2349: ldc 157
     //   2351: astore 9
     //   2353: aload 10
     //   2355: astore 7
@@ -1517,9 +1518,9 @@ public class AIOShareActionSheet
     //   2366: astore 12
     //   2368: aload 9
     //   2370: iconst_1
-    //   2371: ldc_w 755
+    //   2371: ldc_w 747
     //   2374: aload 11
-    //   2376: invokestatic 509	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2376: invokestatic 507	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   2379: aload_1
     //   2380: astore 10
     //   2382: aload_2
@@ -1535,7 +1536,7 @@ public class AIOShareActionSheet
     //   2400: aload 7
     //   2402: astore 12
     //   2404: aload 8
-    //   2406: invokevirtual 753	java/io/BufferedWriter:close	()V
+    //   2406: invokevirtual 745	java/io/BufferedWriter:close	()V
     //   2409: aload_1
     //   2410: astore 10
     //   2412: aload_2
@@ -1545,53 +1546,53 @@ public class AIOShareActionSheet
     //   2419: goto +12 -> 2431
     //   2422: astore_1
     //   2423: aload_1
-    //   2424: invokevirtual 758	java/io/IOException:printStackTrace	()V
+    //   2424: invokevirtual 750	java/io/IOException:printStackTrace	()V
     //   2427: aload 12
     //   2429: astore 11
-    //   2431: new 364	java/util/ArrayList
+    //   2431: new 362	java/util/ArrayList
     //   2434: dup
-    //   2435: invokespecial 428	java/util/ArrayList:<init>	()V
+    //   2435: invokespecial 426	java/util/ArrayList:<init>	()V
     //   2438: astore_1
     //   2439: aload_1
     //   2440: aload_0
-    //   2441: getstatic 66	com/tencent/mobileqq/msgforward/AIOShareActionSheet:l	Ljava/lang/String;
-    //   2444: invokevirtual 760	com/tencent/mobileqq/msgforward/AIOShareActionSheet:a	(Ljava/lang/String;)Landroid/net/Uri;
-    //   2447: invokevirtual 518	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   2441: getstatic 74	com/tencent/mobileqq/msgforward/AIOShareActionSheet:t	Ljava/lang/String;
+    //   2444: invokevirtual 753	com/tencent/mobileqq/msgforward/AIOShareActionSheet:b	(Ljava/lang/String;)Landroid/net/Uri;
+    //   2447: invokevirtual 516	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   2450: pop
     //   2451: aload 10
-    //   2453: invokeinterface 427 1 0
+    //   2453: invokeinterface 425 1 0
     //   2458: ifne +121 -> 2579
     //   2461: aload 10
-    //   2463: invokeinterface 253 1 0
+    //   2463: invokeinterface 263 1 0
     //   2468: astore_2
     //   2469: aload_2
-    //   2470: invokeinterface 259 1 0
+    //   2470: invokeinterface 269 1 0
     //   2475: ifeq +104 -> 2579
     //   2478: aload_2
-    //   2479: invokeinterface 263 1 0
-    //   2484: checkcast 178	java/lang/String
+    //   2479: invokeinterface 273 1 0
+    //   2484: checkcast 185	java/lang/String
     //   2487: astore 7
-    //   2489: new 33	java/lang/StringBuilder
+    //   2489: new 41	java/lang/StringBuilder
     //   2492: dup
-    //   2493: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   2493: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   2496: astore 8
     //   2498: aload 8
-    //   2500: getstatic 58	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2503: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2500: getstatic 66	com/tencent/mobileqq/msgforward/AIOShareActionSheet:d	Ljava/lang/String;
+    //   2503: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2506: pop
     //   2507: aload 8
     //   2509: aload 19
     //   2511: aload 10
     //   2513: aload 7
-    //   2515: invokeinterface 763 2 0
-    //   2520: invokeinterface 234 2 0
-    //   2525: checkcast 178	java/lang/String
-    //   2528: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2515: invokeinterface 756 2 0
+    //   2520: invokeinterface 242 2 0
+    //   2525: checkcast 185	java/lang/String
+    //   2528: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2531: pop
     //   2532: aload 7
     //   2534: aload 8
-    //   2536: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2539: invokestatic 767	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   2536: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2539: invokestatic 760	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
     //   2542: ifne +6 -> 2548
     //   2545: goto -76 -> 2469
     //   2548: aload_1
@@ -1599,47 +1600,47 @@ public class AIOShareActionSheet
     //   2550: aload 19
     //   2552: aload 10
     //   2554: aload 7
-    //   2556: invokeinterface 763 2 0
-    //   2561: invokeinterface 234 2 0
-    //   2566: checkcast 178	java/lang/String
-    //   2569: invokevirtual 760	com/tencent/mobileqq/msgforward/AIOShareActionSheet:a	(Ljava/lang/String;)Landroid/net/Uri;
-    //   2572: invokevirtual 518	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   2556: invokeinterface 756 2 0
+    //   2561: invokeinterface 242 2 0
+    //   2566: checkcast 185	java/lang/String
+    //   2569: invokevirtual 753	com/tencent/mobileqq/msgforward/AIOShareActionSheet:b	(Ljava/lang/String;)Landroid/net/Uri;
+    //   2572: invokevirtual 516	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   2575: pop
     //   2576: goto -107 -> 2469
     //   2579: aload 11
-    //   2581: invokeinterface 427 1 0
+    //   2581: invokeinterface 425 1 0
     //   2586: ifne +121 -> 2707
     //   2589: aload 11
-    //   2591: invokeinterface 253 1 0
+    //   2591: invokeinterface 263 1 0
     //   2596: astore_2
     //   2597: aload_2
-    //   2598: invokeinterface 259 1 0
+    //   2598: invokeinterface 269 1 0
     //   2603: ifeq +104 -> 2707
     //   2606: aload_2
-    //   2607: invokeinterface 263 1 0
-    //   2612: checkcast 178	java/lang/String
+    //   2607: invokeinterface 273 1 0
+    //   2612: checkcast 185	java/lang/String
     //   2615: astore 7
-    //   2617: new 33	java/lang/StringBuilder
+    //   2617: new 41	java/lang/StringBuilder
     //   2620: dup
-    //   2621: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   2621: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   2624: astore 8
     //   2626: aload 8
-    //   2628: getstatic 58	com/tencent/mobileqq/msgforward/AIOShareActionSheet:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2631: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2628: getstatic 66	com/tencent/mobileqq/msgforward/AIOShareActionSheet:d	Ljava/lang/String;
+    //   2631: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2634: pop
     //   2635: aload 8
     //   2637: aload 9
     //   2639: aload 11
     //   2641: aload 7
-    //   2643: invokeinterface 763 2 0
-    //   2648: invokeinterface 234 2 0
-    //   2653: checkcast 178	java/lang/String
-    //   2656: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2643: invokeinterface 756 2 0
+    //   2648: invokeinterface 242 2 0
+    //   2653: checkcast 185	java/lang/String
+    //   2656: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2659: pop
     //   2660: aload 7
     //   2662: aload 8
-    //   2664: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2667: invokestatic 767	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   2664: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2667: invokestatic 760	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/lang/String;Ljava/lang/String;)Z
     //   2670: ifne +6 -> 2676
     //   2673: goto +31 -> 2704
     //   2676: aload_1
@@ -1647,34 +1648,34 @@ public class AIOShareActionSheet
     //   2678: aload 9
     //   2680: aload 11
     //   2682: aload 7
-    //   2684: invokeinterface 763 2 0
-    //   2689: invokeinterface 234 2 0
-    //   2694: checkcast 178	java/lang/String
-    //   2697: invokevirtual 760	com/tencent/mobileqq/msgforward/AIOShareActionSheet:a	(Ljava/lang/String;)Landroid/net/Uri;
-    //   2700: invokevirtual 518	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   2684: invokeinterface 756 2 0
+    //   2689: invokeinterface 242 2 0
+    //   2694: checkcast 185	java/lang/String
+    //   2697: invokevirtual 753	com/tencent/mobileqq/msgforward/AIOShareActionSheet:b	(Ljava/lang/String;)Landroid/net/Uri;
+    //   2700: invokevirtual 516	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   2703: pop
     //   2704: goto -107 -> 2597
     //   2707: aload_3
-    //   2708: ldc_w 769
+    //   2708: ldc_w 762
     //   2711: aload_1
-    //   2712: invokevirtual 772	android/content/Intent:putParcelableArrayListExtra	(Ljava/lang/String;Ljava/util/ArrayList;)Landroid/content/Intent;
+    //   2712: invokevirtual 765	android/content/Intent:putParcelableArrayListExtra	(Ljava/lang/String;Ljava/util/ArrayList;)Landroid/content/Intent;
     //   2715: pop
-    //   2716: getstatic 322	android/os/Build$VERSION:SDK_INT	I
+    //   2716: getstatic 770	android/os/Build$VERSION:SDK_INT	I
     //   2719: bipush 24
     //   2721: if_icmplt +9 -> 2730
     //   2724: aload_3
     //   2725: iconst_1
-    //   2726: invokevirtual 776	android/content/Intent:addFlags	(I)Landroid/content/Intent;
+    //   2726: invokevirtual 774	android/content/Intent:addFlags	(I)Landroid/content/Intent;
     //   2729: pop
     //   2730: return
     //   2731: aload 12
     //   2733: ifnull +16 -> 2749
     //   2736: aload 12
-    //   2738: invokevirtual 753	java/io/BufferedWriter:close	()V
+    //   2738: invokevirtual 745	java/io/BufferedWriter:close	()V
     //   2741: goto +8 -> 2749
     //   2744: astore_2
     //   2745: aload_2
-    //   2746: invokevirtual 758	java/io/IOException:printStackTrace	()V
+    //   2746: invokevirtual 750	java/io/IOException:printStackTrace	()V
     //   2749: goto +5 -> 2754
     //   2752: aload_1
     //   2753: athrow
@@ -1710,8 +1711,8 @@ public class AIOShareActionSheet
     //   0	2807	1	paramMap	Map<String, String>
     //   0	2807	2	paramArrayList	ArrayList<ChatMessage>
     //   0	2807	3	paramIntent	Intent
-    //   917	1862	4	m	int
-    //   947	516	5	n	int
+    //   917	1862	4	i1	int
+    //   947	516	5	i2	int
     //   972	377	6	bool	boolean
     //   141	2658	7	localObject1	Object
     //   69	2594	8	localObject2	Object
@@ -1932,71 +1933,6 @@ public class AIOShareActionSheet
     //   1086	1093	2803	java/lang/Throwable
   }
   
-  public boolean a()
-  {
-    Iterator localIterator = MultiMsgManager.a().a.entrySet().iterator();
-    boolean bool2 = false;
-    int m = 0;
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Map.Entry)localIterator.next();
-      if (((Boolean)((Map.Entry)localObject).getValue()).booleanValue())
-      {
-        localObject = (ChatMessage)((Map.Entry)localObject).getKey();
-        boolean bool1 = m | ((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg((MessageRecord)localObject);
-        if (!MultiMsgProxy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)localObject)) {
-          return false;
-        }
-        m = bool1;
-        if ((localObject instanceof MessageForTroopFile))
-        {
-          localObject = (MessageForTroopFile)localObject;
-          localObject = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForTroopFile)localObject);
-          if (localObject != null)
-          {
-            m = bool1;
-            if (((TroopFileStatusInfo)localObject).b != 8)
-            {
-              m = bool1;
-              if (((TroopFileStatusInfo)localObject).b != 9)
-              {
-                m = bool1;
-                if (((TroopFileStatusInfo)localObject).b != 6)
-                {
-                  m = bool1;
-                  if (((TroopFileStatusInfo)localObject).b != 7) {
-                    if (((TroopFileStatusInfo)localObject).b == 11)
-                    {
-                      m = bool1;
-                      if (FileUtil.b(((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaLangString)) {
-                        break;
-                      }
-                    }
-                    else
-                    {
-                      m = bool1;
-                      if (((TroopFileStatusInfo)localObject).b == 10) {
-                        break;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          else
-          {
-            return false;
-          }
-        }
-      }
-    }
-    if (m == 0) {
-      bool2 = true;
-    }
-    return bool2;
-  }
-  
   public boolean a(ChatMessage paramChatMessage)
   {
     boolean bool = paramChatMessage instanceof MessageForPic;
@@ -2027,90 +1963,90 @@ public class AIOShareActionSheet
   public List<ShareActionSheetBuilder.ActionSheetItem>[] a(Context paramContext)
   {
     ArrayList localArrayList = new ArrayList();
-    int m;
+    int i1;
     if (AIOUtils.a(2) == 0) {
-      m = 1;
+      i1 = 1;
     } else {
-      m = 0;
+      i1 = 0;
     }
-    int n;
+    int i2;
     if (AIOUtils.a(3) == 0) {
-      n = 1;
+      i2 = 1;
     } else {
-      n = 0;
+      i2 = 0;
     }
     Object localObject = new ShareActionSheetBuilder.ActionSheetItem();
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = paramContext.getString(2131696420);
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130839071;
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = paramContext.getString(2131894192);
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130839225;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).action = 9;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).argus = "";
     localArrayList.add(localObject);
     localObject = new ShareActionSheetBuilder.ActionSheetItem();
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = paramContext.getString(2131696406);
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130839300;
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = paramContext.getString(2131894178);
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130839480;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).action = 25;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).argus = "";
     localArrayList.add(localObject);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.s)
     {
       localObject = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = paramContext.getString(2131692771);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130840164;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = paramContext.getString(2131889842);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130840469;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject).action = 50;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject).argus = "";
       localArrayList.add(localObject);
     }
     localObject = new ShareActionSheetBuilder.ActionSheetItem();
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = paramContext.getString(2131692776);
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130845858;
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = paramContext.getString(2131889847);
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130847328;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).action = 11;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).argus = "";
     localArrayList.add(localObject);
     localObject = new ArrayList();
-    if (m != 0)
+    if (i1 != 0)
     {
       localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-      if (QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-        localActionSheetItem.label = paramContext.getString(2131696405);
+      if (QFileAssistantUtils.a(this.a)) {
+        localActionSheetItem.label = paramContext.getString(2131894177);
       } else {
-        localActionSheetItem.label = paramContext.getString(2131696408);
+        localActionSheetItem.label = paramContext.getString(2131894180);
       }
-      localActionSheetItem.icon = 2130839333;
+      localActionSheetItem.icon = 2130839515;
       localActionSheetItem.iconNeedBg = true;
       localActionSheetItem.action = 26;
       localActionSheetItem.argus = "";
       ((ArrayList)localObject).add(localActionSheetItem);
     }
-    if (UpComingMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    if (UpComingMsgUtil.a(this.r.ah.a))
     {
       localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-      localActionSheetItem.label = paramContext.getString(2131689959);
-      localActionSheetItem.icon = 2130837910;
+      localActionSheetItem.label = paramContext.getString(2131886600);
+      localActionSheetItem.icon = 2130837934;
       localActionSheetItem.iconNeedBg = true;
       localActionSheetItem.action = 139;
       localActionSheetItem.argus = "";
       ((ArrayList)localObject).add(localActionSheetItem);
     }
-    if (n != 0)
+    if (i2 != 0)
     {
       localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-      localActionSheetItem.label = paramContext.getString(2131696423);
-      localActionSheetItem.icon = 2130839480;
+      localActionSheetItem.label = paramContext.getString(2131894195);
+      localActionSheetItem.icon = 2130839670;
       localActionSheetItem.iconNeedBg = true;
       localActionSheetItem.action = 27;
       localActionSheetItem.argus = "";
       ((ArrayList)localObject).add(localActionSheetItem);
     }
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696403);
-    localActionSheetItem.icon = 2130839063;
+    localActionSheetItem.label = paramContext.getString(2131894175);
+    localActionSheetItem.icon = 2130839217;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 28;
     localActionSheetItem.argus = "";
     ((ArrayList)localObject).add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696398);
-    localActionSheetItem.icon = 2130840130;
+    localActionSheetItem.label = paramContext.getString(2131894170);
+    localActionSheetItem.icon = 2130840355;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 47;
     localActionSheetItem.argus = "";
@@ -2118,11 +2054,23 @@ public class AIOShareActionSheet
     return (List[])new ArrayList[] { localArrayList, localObject };
   }
   
+  public Uri b(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(d);
+    localStringBuilder.append(paramString);
+    paramString = new File(localStringBuilder.toString());
+    if (Build.VERSION.SDK_INT >= 24) {
+      return FileProvider.getUriForFile(this.q, "com.tencent.mobileqq.fileprovider", paramString);
+    }
+    return Uri.fromFile(paramString);
+  }
+  
   public void b()
   {
-    Iterator localIterator = MultiMsgManager.a().a().iterator();
+    Iterator localIterator = MultiMsgManager.a().i().iterator();
     ChatMessage localChatMessage;
-    int m;
+    int i1;
     do
     {
       boolean bool2 = localIterator.hasNext();
@@ -2131,26 +2079,26 @@ public class AIOShareActionSheet
         break;
       }
       localChatMessage = (ChatMessage)localIterator.next();
-      m = ItemBuilderFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localChatMessage);
-    } while ((!(localChatMessage instanceof MessageForPic)) || (m != 1) || (MsgUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForPic)localChatMessage, false)));
+      i1 = ItemBuilderFactory.a(this.a, localChatMessage);
+    } while ((!(localChatMessage instanceof MessageForPic)) || (i1 != 1) || (MsgUtils.a(this.a, (MessageForPic)localChatMessage, false)));
     break label85;
     boolean bool1 = false;
     label85:
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null) || (this.jdField_a_of_type_Boolean != bool1))
+    if ((this.b == null) || (this.s != bool1))
     {
-      this.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(this.jdField_a_of_type_AndroidAppActivity);
-      m = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 4.0F);
-      int n = this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getIconMarginLeftRight();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setIconMarginLeftRight(Math.max(m, n));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131719029));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(this);
+      this.s = bool1;
+      this.b = new ShareActionSheetBuilder(this.p);
+      i1 = DisplayUtil.dip2px(this.q, 4.0F);
+      int i2 = this.b.getIconMarginLeftRight();
+      this.b.setIconMarginLeftRight(Math.max(i1, i2));
+      this.b.setActionSheetTitle(this.q.getString(2131916565));
+      this.b.setActionSheetItems(a(this.q));
+      this.b.setItemClickListener(this);
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), j, j, 0, 0, "", "", "", "");
+      this.b.show();
+      ReportController.b(this.a, "CliOper", "", this.a.getCurrentAccountUin(), m, m, 0, 0, "", "", "", "");
       return;
     }
     catch (Exception localException)
@@ -2166,10 +2114,10 @@ public class AIOShareActionSheet
   public void b(Map<String, String> paramMap, ArrayList<ChatMessage> paramArrayList)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int m = 0;
-    while (m < paramArrayList.size())
+    int i1 = 0;
+    while (i1 < paramArrayList.size())
     {
-      ChatMessage localChatMessage = (ChatMessage)paramArrayList.get(m);
+      ChatMessage localChatMessage = (ChatMessage)paramArrayList.get(i1);
       MessageForStructing localMessageForStructing = null;
       Object localObject2 = null;
       Object localObject1;
@@ -2188,11 +2136,11 @@ public class AIOShareActionSheet
       }
       else if ((localChatMessage instanceof MessageForPic))
       {
-        localObject1 = HardCodeUtil.a(2131700342);
+        localObject1 = HardCodeUtil.a(2131898382);
       }
       else if ((localChatMessage instanceof MessageForShortVideo))
       {
-        localObject1 = HardCodeUtil.a(2131700346);
+        localObject1 = HardCodeUtil.a(2131898386);
       }
       else if ((!(localChatMessage instanceof MessageForMixedMsg)) && (!(localChatMessage instanceof MessageForLongMsg)))
       {
@@ -2224,7 +2172,7 @@ public class AIOShareActionSheet
           }
           localObject1 = localObject2;
           if (localObject2 == null) {
-            localObject1 = HardCodeUtil.a(2131700348);
+            localObject1 = HardCodeUtil.a(2131898388);
           }
         }
         else
@@ -2254,49 +2202,17 @@ public class AIOShareActionSheet
         localStringBuilder.append("\n");
         localStringBuilder.append((String)localObject1);
         localStringBuilder.append("\n");
-        if (m != paramArrayList.size() - 1) {
+        if (i1 != paramArrayList.size() - 1) {
           localStringBuilder.append("\n");
         }
       }
-      m += 1;
+      i1 += 1;
     }
-    paramMap = (ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard");
+    paramMap = (ClipboardManager)this.q.getSystemService("clipboard");
     paramArrayList = ClipData.newPlainText("simple text", localStringBuilder.toString());
     ClipboardMonitor.setPrimaryClip(paramMap, paramArrayList);
     paramMap.setPrimaryClip(paramArrayList);
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131694354, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
-  }
-  
-  public boolean b()
-  {
-    Iterator localIterator = MultiMsgManager.a().a.entrySet().iterator();
-    boolean bool2 = false;
-    int m = 0;
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Map.Entry)localIterator.next();
-      if (((Boolean)((Map.Entry)localObject).getValue()).booleanValue())
-      {
-        localObject = (ChatMessage)((Map.Entry)localObject).getKey();
-        boolean bool1 = m | ((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg((MessageRecord)localObject);
-        if (!MultiMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)localObject)) {
-          return false;
-        }
-        m = bool1;
-        if ((localObject instanceof MessageForTroopFile))
-        {
-          localObject = (MessageForTroopFile)localObject;
-          m = bool1;
-          if (TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForTroopFile)localObject) == null) {
-            return false;
-          }
-        }
-      }
-    }
-    if (m == 0) {
-      bool2 = true;
-    }
-    return bool2;
+    QQToast.makeText(this.a.getApp(), 2131892028, 0).show(this.r.A());
   }
   
   public boolean b(ChatMessage paramChatMessage)
@@ -2320,43 +2236,140 @@ public class AIOShareActionSheet
   
   public void c()
   {
-    ShareActionSheetBuilder localShareActionSheetBuilder = this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder;
+    ShareActionSheetBuilder localShareActionSheetBuilder = this.b;
     if (localShareActionSheetBuilder != null)
     {
       localShareActionSheetBuilder.setItemClickListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
+      this.b.dismiss();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null) {
-      WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+    if (this.o != null) {
+      WXShareHelper.a().b(this.o);
     }
   }
   
-  public boolean c()
+  public boolean d()
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
+    Iterator localIterator = MultiMsgManager.a().b.entrySet().iterator();
+    boolean bool2 = false;
+    int i1 = 0;
+    while (localIterator.hasNext())
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692183, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+      Object localObject = (Map.Entry)localIterator.next();
+      if (((Boolean)((Map.Entry)localObject).getValue()).booleanValue())
+      {
+        localObject = (ChatMessage)((Map.Entry)localObject).getKey();
+        boolean bool1 = i1 | ((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg((MessageRecord)localObject);
+        if (!MultiMsgProxy.b(this.a, (ChatMessage)localObject)) {
+          return false;
+        }
+        i1 = bool1;
+        if ((localObject instanceof MessageForTroopFile))
+        {
+          localObject = (MessageForTroopFile)localObject;
+          localObject = TroopFileUtils.a(this.a, (MessageForTroopFile)localObject);
+          if (localObject != null)
+          {
+            i1 = bool1;
+            if (((TroopFileStatusInfo)localObject).e != 8)
+            {
+              i1 = bool1;
+              if (((TroopFileStatusInfo)localObject).e != 9)
+              {
+                i1 = bool1;
+                if (((TroopFileStatusInfo)localObject).e != 6)
+                {
+                  i1 = bool1;
+                  if (((TroopFileStatusInfo)localObject).e != 7) {
+                    if (((TroopFileStatusInfo)localObject).e == 11)
+                    {
+                      i1 = bool1;
+                      if (FileUtil.d(((TroopFileStatusInfo)localObject).k)) {
+                        break;
+                      }
+                    }
+                    else
+                    {
+                      i1 = bool1;
+                      if (((TroopFileStatusInfo)localObject).e == 10) {
+                        break;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          else
+          {
+            return false;
+          }
+        }
+      }
+    }
+    if (i1 == 0) {
+      bool2 = true;
+    }
+    return bool2;
+  }
+  
+  public boolean e()
+  {
+    Iterator localIterator = MultiMsgManager.a().b.entrySet().iterator();
+    boolean bool2 = false;
+    int i1 = 0;
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Map.Entry)localIterator.next();
+      if (((Boolean)((Map.Entry)localObject).getValue()).booleanValue())
+      {
+        localObject = (ChatMessage)((Map.Entry)localObject).getKey();
+        boolean bool1 = i1 | ((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg((MessageRecord)localObject);
+        if (!MultiMsgProxy.a(this.a, (ChatMessage)localObject)) {
+          return false;
+        }
+        i1 = bool1;
+        if ((localObject instanceof MessageForTroopFile))
+        {
+          localObject = (MessageForTroopFile)localObject;
+          i1 = bool1;
+          if (TroopFileUtils.a(this.a, (MessageForTroopFile)localObject) == null) {
+            return false;
+          }
+        }
+      }
+    }
+    if (i1 == 0) {
+      bool2 = true;
+    }
+    return bool2;
+  }
+  
+  public boolean f()
+  {
+    if (!NetworkUtil.isNetSupport(this.q))
+    {
+      QQToast.makeText(this.a.getApp(), 2131889169, 0).show(this.r.A());
       return false;
     }
-    Object localObject1 = MultiMsgManager.a().a();
+    Object localObject1 = MultiMsgManager.a().i();
     if (((List)localObject1).size() == 0)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131698523, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+      QQToast.makeText(this.a.getApp(), 2131896469, 0).show(this.r.A());
       return false;
     }
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    int m = 0;
+    int i1 = 0;
     Object localObject2;
-    while (m < ((List)localObject1).size())
+    while (i1 < ((List)localObject1).size())
     {
-      localObject2 = (ChatMessage)((List)localObject1).get(m);
+      localObject2 = (ChatMessage)((List)localObject1).get(i1);
       if ((localObject2 instanceof MessageForTroopFile)) {
         localArrayList1.add((MessageForTroopFile)localObject2);
       } else if ((localObject2 instanceof MessageForFile)) {
         localArrayList2.add((MessageForFile)localObject2);
       }
-      m += 1;
+      i1 += 1;
     }
     if (localArrayList1.size() > 0)
     {
@@ -2364,7 +2377,7 @@ public class AIOShareActionSheet
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (MessageForTroopFile)((Iterator)localObject1).next();
-        TroopFileUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)localObject2);
+        TroopFileUtils.a(this.q, this.a, (ChatMessage)localObject2);
       }
     }
     if (localArrayList2.size() > 0)
@@ -2376,31 +2389,31 @@ public class AIOShareActionSheet
       while (((Iterator)localObject2).hasNext())
       {
         localMessageForFile = (MessageForFile)((Iterator)localObject2).next();
-        localFileManagerEntity = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForFile);
+        localFileManagerEntity = FileManagerUtil.a(this.a, localMessageForFile);
         if ((localFileManagerEntity.cloudType != 0) && (localFileManagerEntity.cloudType != 2)) {
           ((ArrayList)localObject1).add(localMessageForFile);
         }
       }
       if (((ArrayList)localObject1).size() == 0)
       {
-        FMToastUtil.a(2131692555);
+        FMToastUtil.a(2131889578);
         return false;
       }
       if (((ArrayList)localObject1).size() == 1)
       {
         localObject1 = (MessageForFile)((ArrayList)localObject1).get(0);
-        localObject2 = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)localObject1);
+        localObject2 = FileManagerUtil.a(this.a, (MessageForFile)localObject1);
         if (localObject2 == null)
         {
-          FMToastUtil.a(2131692555);
+          FMToastUtil.a(2131889578);
           return false;
         }
         if (((FileManagerEntity)localObject2).status == 16)
         {
-          FMToastUtil.a(2131692717);
+          FMToastUtil.a(2131889788);
           return false;
         }
-        FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)localObject1, BaseActivity.sTopActivity);
+        FileManagerUtil.b(this.a, (ChatMessage)localObject1, BaseActivity.sTopActivity);
       }
       else
       {
@@ -2409,66 +2422,60 @@ public class AIOShareActionSheet
         while (((Iterator)localObject1).hasNext())
         {
           localMessageForFile = (MessageForFile)((Iterator)localObject1).next();
-          localFileManagerEntity = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForFile);
+          localFileManagerEntity = FileManagerUtil.a(this.a, localMessageForFile);
           if ((localFileManagerEntity != null) && (localFileManagerEntity.status != 16)) {
             ((List)localObject2).add(localMessageForFile);
           }
         }
         if (((List)localObject2).size() == 0)
         {
-          FMToastUtil.a(2131692555);
+          FMToastUtil.a(2131889578);
           return false;
         }
         localObject1 = ((List)localObject2).iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (MessageForFile)((Iterator)localObject1).next();
-          FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)localObject2, BaseActivity.sTopActivity);
+          FileManagerUtil.b(this.a, (ChatMessage)localObject2, BaseActivity.sTopActivity);
         }
       }
     }
     if ((localArrayList1.size() == 0) && (localArrayList2.size() == 0))
     {
-      FMToastUtil.a(2131692556);
+      FMToastUtil.a(2131889579);
       return false;
     }
     return true;
   }
   
-  public void d()
+  public boolean g()
   {
-    List localList = MultiMsgManager.a().a();
-    ((AIOUpComingMsgHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(59)).b(localList, System.currentTimeMillis() + 60000L, 2);
-  }
-  
-  public boolean d()
-  {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetSupport(this.q))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692183, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+      QQToast.makeText(this.a.getApp(), 2131889169, 0).show(this.r.A());
       return false;
     }
-    Object localObject = MultiMsgManager.a().a();
+    Object localObject = MultiMsgManager.a().i();
     if (((List)localObject).size() == 0)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131698523, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+      QQToast.makeText(this.a.getApp(), 2131896469, 0).show(this.r.A());
       return false;
     }
-    localObject = MultiMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ArrayList)localObject);
+    localObject = MultiMsgUtil.a(this.a, (ArrayList)localObject);
     if (localObject != null)
     {
       if (((List)localObject).size() == 0) {
         return false;
       }
-      DatalineDeviceChooseModel.b((List)localObject).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new AIOShareActionSheet.12(this, (List)localObject));
+      DatalineDeviceChooseModel.b((List)localObject).a(this.q, this.a, new AIOShareActionSheet.12(this, (List)localObject));
       return true;
     }
     return false;
   }
   
-  public boolean e()
+  public boolean h()
   {
-    Iterator localIterator = MultiMsgManager.a().a.entrySet().iterator();
+    Iterator localIterator = MultiMsgManager.a().b.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -2479,9 +2486,9 @@ public class AIOShareActionSheet
     return true;
   }
   
-  public boolean f()
+  public boolean i()
   {
-    List localList = MultiMsgManager.a().a();
+    List localList = MultiMsgManager.a().i();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
@@ -2494,16 +2501,22 @@ public class AIOShareActionSheet
     localList.removeAll(localArrayList);
     if (localList.isEmpty())
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131694347, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+      QQToast.makeText(this.a.getApp(), 2131892021, 0).show(this.r.A());
       return false;
     }
-    ((MultiForwardHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(1)).a(localList, 3);
+    ((MultiForwardHelper)this.r.q(1)).a(localList, 3);
     return true;
   }
   
-  public boolean g()
+  public void j()
   {
-    Iterator localIterator = MultiMsgManager.a().a.entrySet().iterator();
+    List localList = MultiMsgManager.a().i();
+    ((AIOUpComingMsgHelper)this.r.q(59)).b(localList, System.currentTimeMillis() + 60000L, 2);
+  }
+  
+  public boolean k()
+  {
+    Iterator localIterator = MultiMsgManager.a().b.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -2514,9 +2527,9 @@ public class AIOShareActionSheet
     return true;
   }
   
-  public boolean h()
+  public boolean l()
   {
-    List localList = MultiMsgManager.a().a();
+    List localList = MultiMsgManager.a().i();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
@@ -2529,10 +2542,10 @@ public class AIOShareActionSheet
     localList.removeAll(localArrayList);
     if (localList.isEmpty())
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131694353, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+      QQToast.makeText(this.a.getApp(), 2131892027, 0).show(this.r.A());
       return false;
     }
-    ((MultiForwardHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(1)).a(localList, 4);
+    ((MultiForwardHelper)this.r.q(1)).a(localList, 4);
     return true;
   }
   
@@ -2541,136 +2554,136 @@ public class AIOShareActionSheet
     Object localObject1 = paramView.getTag();
     if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-      int m = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject1).a.action;
+      this.b.dismiss();
+      int i1 = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject1).c.action;
       Object localObject2;
-      if (m != 9)
+      if (i1 != 9)
       {
-        if (m != 11)
+        if (i1 != 11)
         {
           Object localObject3;
           Object localObject4;
           Object localObject5;
-          if (m != 47)
+          if (i1 != 47)
           {
-            if (m != 50)
+            if (i1 != 50)
             {
-              if (m != 139) {
-                switch (m)
+              if (i1 != 139) {
+                switch (i1)
                 {
                 default: 
                   break;
                 case 28: 
-                  localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-                  localObject2 = h;
+                  localObject1 = this.a;
+                  localObject2 = k;
                   ReportController.b((AppRuntime)localObject1, "CliOper", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
-                  if (!g()) {
-                    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131694352)).setPositiveButton(17039370, new AIOShareActionSheet.9(this)).setNegativeButton(17039360, new AIOShareActionSheet.8(this)).show();
-                  } else if ((!MultiMsgManager.a().a().isEmpty()) && (h())) {
-                    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(false, null, false);
+                  if (!k()) {
+                    DialogUtil.a(this.q, 230).setMessage(this.q.getString(2131892026)).setPositiveButton(17039370, new AIOShareActionSheet.9(this)).setNegativeButton(17039360, new AIOShareActionSheet.8(this)).show();
+                  } else if ((!MultiMsgManager.a().i().isEmpty()) && (l())) {
+                    this.r.a(false, null, false);
                   }
                   break;
                 case 27: 
-                  localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-                  localObject2 = g;
+                  localObject1 = this.a;
+                  localObject2 = j;
                   ReportController.b((AppRuntime)localObject1, "CliOper", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
-                  if (!a()) {
-                    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131694355)).setPositiveButton(17039370, new AIOShareActionSheet.7(this)).setNegativeButton(17039360, new AIOShareActionSheet.6(this)).show();
-                  } else if (WeiyunAIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_MqqOsMqqHandler)) {
-                    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(false, null, false);
+                  if (!d()) {
+                    DialogUtil.a(this.q, 230).setMessage(this.q.getString(2131892029)).setPositiveButton(17039370, new AIOShareActionSheet.7(this)).setNegativeButton(17039360, new AIOShareActionSheet.6(this)).show();
+                  } else if (WeiyunAIOUtils.a(this.a, this.p, this.r.A(), this.c)) {
+                    this.r.a(false, null, false);
                   }
                   break;
                 case 26: 
                   boolean bool;
-                  if (QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+                  if (QFileAssistantUtils.a(this.a))
                   {
-                    bool = d();
+                    bool = g();
                   }
                   else
                   {
-                    if (!b())
+                    if (!e())
                     {
-                      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131694357)).setPositiveButton(17039370, new AIOShareActionSheet.5(this)).setNegativeButton(17039360, new AIOShareActionSheet.4(this)).show();
+                      DialogUtil.a(this.q, 230).setMessage(this.q.getString(2131892031)).setPositiveButton(17039370, new AIOShareActionSheet.5(this)).setNegativeButton(17039360, new AIOShareActionSheet.4(this)).show();
                       break;
                     }
-                    bool = c();
+                    bool = f();
                   }
-                  ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
+                  ReportController.b(this.a, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
                   if (!bool) {
                     break;
                   }
-                  this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(false, null, false);
+                  this.r.a(false, null, false);
                   break;
                 case 25: 
-                  localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-                  localObject2 = f;
+                  localObject1 = this.a;
+                  localObject2 = i;
                   ReportController.b((AppRuntime)localObject1, "CliOper", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
-                  if (!e()) {
-                    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131694346)).setPositiveButton(17039370, new AIOShareActionSheet.3(this)).setNegativeButton(17039360, new AIOShareActionSheet.2(this)).show();
-                  } else if ((!MultiMsgManager.a().a().isEmpty()) && (f())) {
-                    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(false, null, false);
+                  if (!h()) {
+                    DialogUtil.a(this.q, 230).setMessage(this.q.getString(2131892020)).setPositiveButton(17039370, new AIOShareActionSheet.3(this)).setNegativeButton(17039360, new AIOShareActionSheet.2(this)).show();
+                  } else if ((!MultiMsgManager.a().i().isEmpty()) && (i())) {
+                    this.r.a(false, null, false);
                   }
                   break;
                 }
               } else {
-                d();
+                j();
               }
             }
             else
             {
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-              localObject2 = i;
+              localObject1 = this.a;
+              localObject2 = l;
               ReportController.b((AppRuntime)localObject1, "CliOper", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
-              localObject2 = MultiMsgManager.a().a();
+              localObject2 = MultiMsgManager.a().i();
               localObject1 = new ArrayList();
               localObject2 = ((List)localObject2).iterator();
-              m = 0;
-              int n;
+              i1 = 0;
+              int i2;
               while (((Iterator)localObject2).hasNext())
               {
                 localObject3 = (ChatMessage)((Iterator)localObject2).next();
-                n = ItemBuilderFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)localObject3);
-                if (((localObject3 instanceof MessageForPic)) && (n == 1))
+                i2 = ItemBuilderFactory.a(this.a, (ChatMessage)localObject3);
+                if (((localObject3 instanceof MessageForPic)) && (i2 == 1))
                 {
-                  if (!MsgUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForPic)localObject3, false)) {
+                  if (!MsgUtils.a(this.a, (MessageForPic)localObject3, false)) {
                     ((List)localObject1).add((MessageForPic)((ChatMessage)localObject3).deepCopyByReflect());
                   }
                 }
                 else {
-                  m = 1;
+                  i1 = 1;
                 }
               }
               if (((List)localObject1).isEmpty())
               {
-                localObject1 = this.jdField_a_of_type_AndroidContentContext;
-                QQToast.a((Context)localObject1, ((Context)localObject1).getString(2131718384), 0).a();
+                localObject1 = this.q;
+                QQToast.makeText((Context)localObject1, ((Context)localObject1).getString(2131915876), 0).show();
               }
               else
               {
                 localObject2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-                localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b;
-                localObject4 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-                n = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-                if (m != 0)
+                localObject3 = this.r.ah.c;
+                localObject4 = this.r.ah.b;
+                i2 = this.r.ah.a;
+                if (i1 != 0)
                 {
-                  localObject5 = this.jdField_a_of_type_AndroidContentContext;
-                  QQToast.a((Context)localObject5, ((Context)localObject5).getString(2131718384), 0).a();
+                  localObject5 = this.q;
+                  QQToast.makeText((Context)localObject5, ((Context)localObject5).getString(2131915876), 0).show();
                 }
-                AIOGalleryUtils.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject2, (String)localObject3, (String)localObject4, n, (List)localObject1, 102);
+                AIOGalleryUtils.a(this.p, (String)localObject2, (String)localObject3, (String)localObject4, i2, (List)localObject1, 102);
               }
             }
           }
           else
           {
-            localObject2 = new FileSaveDialog(this.jdField_a_of_type_AndroidAppActivity);
-            localObject1 = (MultiRichMediaSaveManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MULTI_CHOOSE_SAVE_MANAGER);
+            localObject2 = new FileSaveDialog(this.p);
+            localObject1 = (MultiRichMediaSaveManager)this.a.getManager(QQManagerFactory.MULTI_CHOOSE_SAVE_MANAGER);
             if (localObject1 != null)
             {
-              localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-              if ((localObject3 != null) && (((BaseChatPie)localObject3).jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null))
+              localObject3 = this.r;
+              if ((localObject3 != null) && (((BaseChatPie)localObject3).V != null))
               {
                 localObject3 = new ArrayList();
-                localObject4 = MultiMsgManager.a().a.entrySet().iterator();
+                localObject4 = MultiMsgManager.a().b.entrySet().iterator();
                 while (((Iterator)localObject4).hasNext())
                 {
                   localObject5 = (Map.Entry)((Iterator)localObject4).next();
@@ -2678,27 +2691,27 @@ public class AIOShareActionSheet
                     ((List)localObject3).add(((Map.Entry)localObject5).getKey());
                   }
                 }
-                localObject3 = FileSaveReq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)localObject3, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a, this);
+                localObject3 = FileSaveReq.a(this.a, (List)localObject3, this.r.V.c, this);
                 if ((localObject3 != null) && (!((List)localObject3).isEmpty()))
                 {
-                  if (!CheckPermission.isHasStoragePermission(this.jdField_a_of_type_AndroidAppActivity))
+                  if (!CheckPermission.isHasStoragePermission(this.p))
                   {
-                    CheckPermission.requestStorePermission(this.jdField_a_of_type_AndroidAppActivity, null);
+                    CheckPermission.requestStorePermission(this.p, null);
                   }
                   else
                   {
                     ((MultiRichMediaSaveManager)localObject1).a(new AIOShareActionSheet.10(this, (FileSaveDialog)localObject2, (MultiRichMediaSaveManager)localObject1, (List)localObject3));
                     ((MultiRichMediaSaveManager)localObject1).a((List)localObject3, true);
-                    localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-                    if ((localObject2 != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-                      ((MultiRichMediaSaveManager)localObject1).a((List)localObject3, 1, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+                    localObject2 = this.r;
+                    if ((localObject2 != null) && (((BaseChatPie)localObject2).ah != null)) {
+                      ((MultiRichMediaSaveManager)localObject1).a((List)localObject3, 1, this.r.ah.a);
                     }
                   }
                 }
                 else
                 {
-                  localObject1 = this.jdField_a_of_type_AndroidContentContext;
-                  QQToast.a((Context)localObject1, ((Context)localObject1).getString(2131718383), 0).a();
+                  localObject1 = this.q;
+                  QQToast.makeText((Context)localObject1, ((Context)localObject1).getString(2131915875), 0).show();
                 }
               }
             }
@@ -2706,32 +2719,32 @@ public class AIOShareActionSheet
         }
         else
         {
-          e();
+          m();
         }
       }
       else
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        localObject2 = e;
+        localObject1 = this.a;
+        localObject2 = h;
         ReportController.b((AppRuntime)localObject1, "CliOper", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
-        if (!WXShareHelper.a().a()) {
-          m = 2131694310;
-        } else if (!WXShareHelper.a().b()) {
-          m = 2131720479;
+        if (!WXShareHelper.a().b()) {
+          i1 = 2131891948;
+        } else if (!WXShareHelper.a().c()) {
+          i1 = 2131918155;
         } else {
-          m = -1;
+          i1 = -1;
         }
-        if (m != -1)
+        if (i1 != -1)
         {
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_AndroidContentContext.getString(m), 0).a();
+          QQToast.makeText(this.a.getApp(), this.q.getString(i1), 0).show();
         }
         else
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new AIOShareActionSheet.1(this);
+          if (this.o != null) {
+            this.o = new AIOShareActionSheet.1(this);
           }
-          WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-          ((MultiForwardHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(1)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, true);
+          WXShareHelper.a().a(this.o);
+          ((MultiForwardHelper)this.r.q(1)).a(this.r.V, true);
         }
       }
     }
@@ -2740,7 +2753,7 @@ public class AIOShareActionSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgforward.AIOShareActionSheet
  * JD-Core Version:    0.7.0.1
  */

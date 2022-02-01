@@ -33,17 +33,12 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/feeds/dynamicfeeds/RIJFeedsInsertUtil;", "", "()V", "DAILY_QUOTA_DEFAULT", "", "FEEDS_INSERT_DATE_SP_KEY", "", "FEEDS_INSERT_TIMESTAMP_SP_KEY", "TAG", "TIME_INTERVAL_DEFAULT", "TODAY_INSERT_TIMES_SP_KEY", "dailyQuota", "lastClickChannelId", "", "getLastClickChannelId", "()J", "setLastClickChannelId", "(J)V", "reqParamsMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mobileqq/kandian/biz/feeds/dynamicfeeds/RIJFeedsInsertModule$ReqParams;", "getReqParamsMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "timeInterval", "clearReqParams", "", "channelId", "deleteArticleInfo", "articleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "findArticlePosition", "articleList", "", "getArticleKey", "a", "getCurrentClickPosition", "getInsertArticles", "curArticles", "insertArticles", "getLogString", "getReqParams", "getTodayInsertTime", "date", "init", "isAbleToRequest", "", "isAbleToShowPopupWindow", "reqSource", "isArticleAbleToShowPopupWindow", "isChannelAbleToInsert", "isSameArticle", "b", "isSameInSub", "target", "isVideoAbleToShowPopupWindow", "requestNativePopupArticleInfo", "rowKey", "subscribeId", "requestRecommendArticleInfoList", "updateInsertFeedsInfo", "updateLastClickArticleInfo", "updateReqParams", "updateTimes", "reqRecommendFlag", "followPuin", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJFeedsInsertUtil
 {
-  private static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long;
-  public static final RIJFeedsInsertUtil a;
+  public static final RIJFeedsInsertUtil a = new RIJFeedsInsertUtil();
+  private static long b;
   @NotNull
-  private static final ConcurrentHashMap<Long, RIJFeedsInsertModule.ReqParams> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private static int b = 30;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsRIJFeedsInsertUtil = new RIJFeedsInsertUtil();
-  }
+  private static final ConcurrentHashMap<Long, RIJFeedsInsertModule.ReqParams> c = new ConcurrentHashMap();
+  private static int d;
+  private static int e = 30;
   
   private final int a(AbsBaseArticleInfo paramAbsBaseArticleInfo, List<? extends AbsBaseArticleInfo> paramList)
   {
@@ -52,7 +47,7 @@ public final class RIJFeedsInsertUtil
     while (paramList.hasNext())
     {
       AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)paramList.next();
-      if (jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsRIJFeedsInsertUtil.b(paramAbsBaseArticleInfo, localAbsBaseArticleInfo)) {
+      if (a.b(paramAbsBaseArticleInfo, localAbsBaseArticleInfo)) {
         return i;
       }
       i += 1;
@@ -60,35 +55,13 @@ public final class RIJFeedsInsertUtil
     return -1;
   }
   
-  public final int a()
-  {
-    Object localObject = ReadinjoyFixPosArticleManager.getInstant();
-    int i = 0;
-    localObject = ((ReadinjoyFixPosArticleManager)localObject).getBaseAdapter(0);
-    if (localObject != null)
-    {
-      localObject = ((ReadInJoyBaseAdapter)localObject).a();
-      if (localObject != null)
-      {
-        localObject = ((RIJDataManager)localObject).a();
-        break label35;
-      }
-    }
-    localObject = null;
-    label35:
-    if (localObject != null) {
-      i = jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsRIJFeedsInsertUtil.a((List)localObject);
-    }
-    return i;
-  }
-  
   public final int a(@NotNull List<? extends AbsBaseArticleInfo> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "articleList");
-    AbsBaseArticleInfo localAbsBaseArticleInfo = a(0L).a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = b(0L).e();
     int i;
     if (localAbsBaseArticleInfo != null) {
-      i = jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsRIJFeedsInsertUtil.a(localAbsBaseArticleInfo, paramList);
+      i = a.a(localAbsBaseArticleInfo, paramList);
     } else {
       i = 0;
     }
@@ -101,18 +74,7 @@ public final class RIJFeedsInsertUtil
   
   public final long a()
   {
-    return jdField_a_of_type_Long;
-  }
-  
-  @NotNull
-  public final RIJFeedsInsertModule.ReqParams a(long paramLong)
-  {
-    RIJFeedsInsertModule.ReqParams localReqParams2 = (RIJFeedsInsertModule.ReqParams)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-    RIJFeedsInsertModule.ReqParams localReqParams1 = localReqParams2;
-    if (localReqParams2 == null) {
-      localReqParams1 = new RIJFeedsInsertModule.ReqParams();
-    }
-    return localReqParams1;
+    return b;
   }
   
   @NotNull
@@ -147,7 +109,7 @@ public final class RIJFeedsInsertUtil
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (AbsBaseArticleInfo)((Iterator)localObject1).next();
-      paramList1.put(jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsRIJFeedsInsertUtil.b((AbsBaseArticleInfo)localObject2), localObject2);
+      paramList1.put(a.b((AbsBaseArticleInfo)localObject2), localObject2);
     }
     localObject1 = (Iterable)paramList2;
     paramList2 = (Map)new LinkedHashMap(RangesKt.coerceAtLeast(MapsKt.mapCapacity(CollectionsKt.collectionSizeOrDefault((Iterable)localObject1, 10)), 16));
@@ -155,7 +117,7 @@ public final class RIJFeedsInsertUtil
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (AbsBaseArticleInfo)((Iterator)localObject1).next();
-      paramList2.put(jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsRIJFeedsInsertUtil.b((AbsBaseArticleInfo)localObject2), localObject2);
+      paramList2.put(a.b((AbsBaseArticleInfo)localObject2), localObject2);
     }
     paramList2 = paramList2.entrySet().iterator();
     while (paramList2.hasNext())
@@ -180,31 +142,9 @@ public final class RIJFeedsInsertUtil
     return localList;
   }
   
-  public final void a()
-  {
-    Object localObject = Aladdin.getConfig(361);
-    int i = 0;
-    if (localObject != null) {
-      i = ((AladdinConfig)localObject).getIntegerFromString("DailyQuota", 0);
-    }
-    jdField_a_of_type_Int = i;
-    i = 30;
-    if (localObject != null) {
-      i = ((AladdinConfig)localObject).getIntegerFromString("TimeInterval", 30);
-    }
-    b = i;
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[init] feedsInsertConfig = { dailyQuota = ");
-    ((StringBuilder)localObject).append(jdField_a_of_type_Int);
-    ((StringBuilder)localObject).append(", timeInterval = ");
-    ((StringBuilder)localObject).append(b);
-    ((StringBuilder)localObject).append(" }");
-    QLog.i("RIJFeedsInsertUtil", 1, ((StringBuilder)localObject).toString());
-  }
-  
   public final void a(long paramLong)
   {
-    Object localObject = ReadInJoyUtils.a();
+    Object localObject = ReadInJoyUtils.b();
     if (localObject != null)
     {
       localObject = (ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
@@ -213,9 +153,9 @@ public final class RIJFeedsInsertUtil
         localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine();
         if (localObject != null)
         {
-          localObject = ((ReadInJoyLogicEngine)localObject).a();
+          localObject = ((ReadInJoyLogicEngine)localObject).q();
           if (localObject != null) {
-            ((RIJFeedsInsertModule)localObject).a(a(paramLong));
+            ((RIJFeedsInsertModule)localObject).a(b(paramLong));
           }
         }
       }
@@ -226,11 +166,11 @@ public final class RIJFeedsInsertUtil
   
   public final void a(long paramLong, int paramInt1, int paramInt2)
   {
-    RIJFeedsInsertModule.ReqParams localReqParams = a(paramLong);
+    RIJFeedsInsertModule.ReqParams localReqParams = b(paramLong);
     localReqParams.a(paramLong);
     localReqParams.a(paramInt1);
     localReqParams.b(paramInt2);
-    ((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Long.valueOf(paramLong), localReqParams);
+    ((Map)c).put(Long.valueOf(paramLong), localReqParams);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[updateReqParams] channelId = ");
     localStringBuilder.append(paramLong);
@@ -247,7 +187,7 @@ public final class RIJFeedsInsertUtil
   public final void a(long paramLong, @NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    Object localObject = ReadInJoyUtils.a();
+    Object localObject = ReadInJoyUtils.b();
     if (localObject != null)
     {
       localObject = (ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
@@ -256,7 +196,7 @@ public final class RIJFeedsInsertUtil
         localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine();
         if (localObject != null)
         {
-          localObject = ((ReadInJoyLogicEngine)localObject).a();
+          localObject = ((ReadInJoyLogicEngine)localObject).q();
           if (localObject != null) {
             ((RIJFeedsInsertModule)localObject).a(paramLong, paramAbsBaseArticleInfo);
           }
@@ -270,10 +210,10 @@ public final class RIJFeedsInsertUtil
   public final void a(long paramLong, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "followPuin");
-    RIJFeedsInsertModule.ReqParams localReqParams = a(paramLong);
+    RIJFeedsInsertModule.ReqParams localReqParams = b(paramLong);
     localReqParams.a(paramLong);
     localReqParams.a(paramString);
-    ((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Long.valueOf(paramLong), localReqParams);
+    ((Map)c).put(Long.valueOf(paramLong), localReqParams);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[updateReqParams] channelId = ");
     localStringBuilder.append(paramLong);
@@ -289,7 +229,7 @@ public final class RIJFeedsInsertUtil
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "rowKey");
     Intrinsics.checkParameterIsNotNull(paramString2, "subscribeId");
-    Object localObject = ReadInJoyUtils.a();
+    Object localObject = ReadInJoyUtils.b();
     if (localObject != null)
     {
       localObject = (ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
@@ -298,7 +238,7 @@ public final class RIJFeedsInsertUtil
         localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine();
         if (localObject != null)
         {
-          localObject = ((ReadInJoyLogicEngine)localObject).a();
+          localObject = ((ReadInJoyLogicEngine)localObject).q();
           if (localObject != null) {
             ((RIJFeedsInsertModule)localObject).a(paramLong, paramString1, paramString2, 1);
           }
@@ -307,11 +247,6 @@ public final class RIJFeedsInsertUtil
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
-  }
-  
-  public final boolean a()
-  {
-    return false;
   }
   
   public final boolean a(int paramInt)
@@ -324,6 +259,17 @@ public final class RIJFeedsInsertUtil
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo1, "a");
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo2, "b");
     return TextUtils.equals((CharSequence)b(paramAbsBaseArticleInfo1), (CharSequence)b(paramAbsBaseArticleInfo2));
+  }
+  
+  @NotNull
+  public final RIJFeedsInsertModule.ReqParams b(long paramLong)
+  {
+    RIJFeedsInsertModule.ReqParams localReqParams2 = (RIJFeedsInsertModule.ReqParams)c.get(Long.valueOf(paramLong));
+    RIJFeedsInsertModule.ReqParams localReqParams1 = localReqParams2;
+    if (localReqParams2 == null) {
+      localReqParams1 = new RIJFeedsInsertModule.ReqParams();
+    }
+    return localReqParams1;
   }
   
   @NotNull
@@ -341,14 +287,36 @@ public final class RIJFeedsInsertUtil
     return "";
   }
   
+  public final void b()
+  {
+    Object localObject = Aladdin.getConfig(361);
+    int i = 0;
+    if (localObject != null) {
+      i = ((AladdinConfig)localObject).getIntegerFromString("DailyQuota", 0);
+    }
+    d = i;
+    i = 30;
+    if (localObject != null) {
+      i = ((AladdinConfig)localObject).getIntegerFromString("TimeInterval", 30);
+    }
+    e = i;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[init] feedsInsertConfig = { dailyQuota = ");
+    ((StringBuilder)localObject).append(d);
+    ((StringBuilder)localObject).append(", timeInterval = ");
+    ((StringBuilder)localObject).append(e);
+    ((StringBuilder)localObject).append(" }");
+    QLog.i("RIJFeedsInsertUtil", 1, ((StringBuilder)localObject).toString());
+  }
+  
   public final void b(long paramLong, @NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    jdField_a_of_type_Long = paramLong;
-    RIJFeedsInsertModule.ReqParams localReqParams = a(paramLong);
+    b = paramLong;
+    RIJFeedsInsertModule.ReqParams localReqParams = b(paramLong);
     localReqParams.a(paramLong);
     localReqParams.a(paramAbsBaseArticleInfo);
-    ((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Long.valueOf(paramLong), localReqParams);
+    ((Map)c).put(Long.valueOf(paramLong), localReqParams);
     paramAbsBaseArticleInfo = new StringBuilder();
     paramAbsBaseArticleInfo.append("[updateLastClickArticleInfo] channelId = ");
     paramAbsBaseArticleInfo.append(paramLong);
@@ -359,36 +327,16 @@ public final class RIJFeedsInsertUtil
     RIJFeedsDynamicInsertController.INSTANCE.updateAdReadStatus(false);
   }
   
-  public final boolean b()
-  {
-    Object localObject = Aladdin.getConfig(418);
-    boolean bool = false;
-    int i;
-    if (localObject != null) {
-      i = ((AladdinConfig)localObject).getIntegerFromString("follow_recommend_popup_switch", 0);
-    } else {
-      i = 0;
-    }
-    if (i == 1) {
-      bool = true;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[isArticleAbleToShowPopupWindow] popupSwitch = ");
-    ((StringBuilder)localObject).append(bool);
-    QLog.i("RIJFeedsInsertUtil", 1, ((StringBuilder)localObject).toString());
-    return bool;
-  }
-  
   public final boolean b(int paramInt)
   {
     if (paramInt != 1)
     {
       if (paramInt != 2) {
-        return b();
+        return d();
       }
-      return c();
+      return e();
     }
-    return b();
+    return d();
   }
   
   public final boolean b(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo1, @NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo2)
@@ -421,6 +369,31 @@ public final class RIJFeedsInsertUtil
   
   public final boolean c()
   {
+    return false;
+  }
+  
+  public final boolean d()
+  {
+    Object localObject = Aladdin.getConfig(418);
+    boolean bool = false;
+    int i;
+    if (localObject != null) {
+      i = ((AladdinConfig)localObject).getIntegerFromString("follow_recommend_popup_switch", 0);
+    } else {
+      i = 0;
+    }
+    if (i == 1) {
+      bool = true;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[isArticleAbleToShowPopupWindow] popupSwitch = ");
+    ((StringBuilder)localObject).append(bool);
+    QLog.i("RIJFeedsInsertUtil", 1, ((StringBuilder)localObject).toString());
+    return bool;
+  }
+  
+  public final boolean e()
+  {
     Object localObject = Aladdin.getConfig(441);
     boolean bool = false;
     int i;
@@ -441,10 +414,32 @@ public final class RIJFeedsInsertUtil
     }
     return bool;
   }
+  
+  public final int f()
+  {
+    Object localObject = ReadinjoyFixPosArticleManager.getInstant();
+    int i = 0;
+    localObject = ((ReadinjoyFixPosArticleManager)localObject).getBaseAdapter(0);
+    if (localObject != null)
+    {
+      localObject = ((ReadInJoyBaseAdapter)localObject).E();
+      if (localObject != null)
+      {
+        localObject = ((RIJDataManager)localObject).b();
+        break label35;
+      }
+    }
+    localObject = null;
+    label35:
+    if (localObject != null) {
+      i = a.a((List)localObject);
+    }
+    return i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsInsertUtil
  * JD-Core Version:    0.7.0.1
  */

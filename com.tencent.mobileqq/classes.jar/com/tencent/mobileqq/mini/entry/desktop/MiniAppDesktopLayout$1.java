@@ -14,9 +14,9 @@ class MiniAppDesktopLayout$1
   
   public void onDeleteDragComplete()
   {
-    MiniAppDesktopLayout.access$100(this.this$0).setBackgroundResource(2130841010);
-    MiniAppDesktopLayout.access$200(this.this$0).setText(HardCodeUtil.a(2131706821));
-    MiniAppDesktopLayout.access$200(this.this$0).setCompoundDrawablesWithIntrinsicBounds(2130841012, 0, 0, 0);
+    MiniAppDesktopLayout.access$100(this.this$0).setBackgroundResource(2130841801);
+    MiniAppDesktopLayout.access$200(this.this$0).setText(HardCodeUtil.a(2131904669));
+    MiniAppDesktopLayout.access$200(this.this$0).setCompoundDrawablesWithIntrinsicBounds(2130841803, 0, 0, 0);
   }
   
   public void onDeleteDragFinish()
@@ -30,7 +30,7 @@ class MiniAppDesktopLayout$1
     if (MiniAppDesktopLayout.access$100(this.this$0).getHeight() > 0) {
       i = MiniAppDesktopLayout.access$100(this.this$0).getHeight();
     } else {
-      i = ViewUtils.a(65.0F);
+      i = ViewUtils.dip2px(65.0F);
     }
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, i);
     localTranslateAnimation.setDuration(200L);
@@ -43,22 +43,22 @@ class MiniAppDesktopLayout$1
   {
     if (MiniAppDesktopLayout.access$000(this.this$0))
     {
-      MiniAppDesktopLayout.access$100(this.this$0).setBackgroundResource(2130841009);
-      MiniAppDesktopLayout.access$200(this.this$0).setText(HardCodeUtil.a(2131706820));
-      MiniAppDesktopLayout.access$200(this.this$0).setCompoundDrawablesWithIntrinsicBounds(2130841011, 0, 0, 0);
+      MiniAppDesktopLayout.access$100(this.this$0).setBackgroundResource(2130841800);
+      MiniAppDesktopLayout.access$200(this.this$0).setText(HardCodeUtil.a(2131904668));
+      MiniAppDesktopLayout.access$200(this.this$0).setCompoundDrawablesWithIntrinsicBounds(2130841802, 0, 0, 0);
       return;
     }
     MiniAppDesktopLayout.access$002(this.this$0, true);
     MiniAppDesktopLayout.access$100(this.this$0).setVisibility(0);
-    MiniAppDesktopLayout.access$100(this.this$0).setBackgroundResource(2130841009);
+    MiniAppDesktopLayout.access$100(this.this$0).setBackgroundResource(2130841800);
     MiniAppDesktopLayout.access$100(this.this$0).clearAnimation();
-    MiniAppDesktopLayout.access$200(this.this$0).setText(HardCodeUtil.a(2131706823));
-    MiniAppDesktopLayout.access$200(this.this$0).setCompoundDrawablesWithIntrinsicBounds(2130841011, 0, 0, 0);
+    MiniAppDesktopLayout.access$200(this.this$0).setText(HardCodeUtil.a(2131904671));
+    MiniAppDesktopLayout.access$200(this.this$0).setCompoundDrawablesWithIntrinsicBounds(2130841802, 0, 0, 0);
     int i;
     if (MiniAppDesktopLayout.access$100(this.this$0).getHeight() > 0) {
       i = MiniAppDesktopLayout.access$100(this.this$0).getHeight();
     } else {
-      i = ViewUtils.a(65.0F);
+      i = ViewUtils.dip2px(65.0F);
     }
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, i, 0.0F);
     localTranslateAnimation.setDuration(200L);
@@ -68,7 +68,7 @@ class MiniAppDesktopLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopLayout.1
  * JD-Core Version:    0.7.0.1
  */

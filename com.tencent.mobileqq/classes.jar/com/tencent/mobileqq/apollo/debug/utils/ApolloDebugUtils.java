@@ -8,14 +8,14 @@ public class ApolloDebugUtils
 {
   public static void a(String paramString, AppRuntime paramAppRuntime, ApolloBaseInfo paramApolloBaseInfo) {}
   
-  public static boolean a(@NonNull String paramString)
+  public static boolean a(@NonNull String paramString, boolean paramBoolean)
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.debug.utils.ApolloDebugUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.imcore.message.ext.getaiolist;
 
 import com.tencent.mobileqq.activity.aio.BeancurdManager;
+import com.tencent.mobileqq.activity.aio.rebuild.msglist.GuildOneClickJumpMsgFilter;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.FeedsManager;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class PretreatmentAIOMsg
 {
-  public static void a(List<MessageRecord> paramList, QQAppInterface paramQQAppInterface)
+  public static void a(int paramInt, List<MessageRecord> paramList, QQAppInterface paramQQAppInterface)
   {
     if (paramList != null)
     {
@@ -83,6 +84,9 @@ public class PretreatmentAIOMsg
         }
       }
       paramList.removeAll(localArrayList);
+      if (paramInt == 10014) {
+        GuildOneClickJumpMsgFilter.a(localArrayList);
+      }
       if ((localObject != null) && (FeedsManager.isShowStatus((String)localObject)) && (paramQQAppInterface != null))
       {
         paramQQAppInterface = (BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
@@ -95,7 +99,7 @@ public class PretreatmentAIOMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.getaiolist.PretreatmentAIOMsg
  * JD-Core Version:    0.7.0.1
  */

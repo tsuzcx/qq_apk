@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="55.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <EditText android:id="@id/pxc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="1001" android:hint="RoomID" />
+            <EditText android:id="@id/qs9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="测试用户" android:hint="UserID" />
+            <Button android:id="@id/n9e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="加入房间" />
+            <Button android:id="@id/n_6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="离开房间" />
+            <Button android:id="@id/okj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="打开/关闭麦克风" />
+            <Button android:id="@id/q5d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="打开/关闭扬声器" />
+            <TextView android:id="@id/oih" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <TextView android:id="@id/pxd" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

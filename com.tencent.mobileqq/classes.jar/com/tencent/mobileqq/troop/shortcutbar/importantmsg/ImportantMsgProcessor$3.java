@@ -10,12 +10,12 @@ class ImportantMsgProcessor$3
     if (paramImportantMsgItem == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager.a(paramImportantMsgItem);
+    this.a.a(paramImportantMsgItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgProcessor.3
  * JD-Core Version:    0.7.0.1
  */

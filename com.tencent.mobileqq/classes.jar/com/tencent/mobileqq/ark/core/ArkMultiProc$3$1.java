@@ -10,7 +10,7 @@ class ArkMultiProc$3$1
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    IArkDelegateHTTPCallback localIArkDelegateHTTPCallback = this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateHTTPCallback;
+    IArkDelegateHTTPCallback localIArkDelegateHTTPCallback = this.a;
     if (localIArkDelegateHTTPCallback != null) {
       localIArkDelegateHTTPCallback.onComplete(paramInt, paramArrayOfByte);
     }
@@ -18,7 +18,7 @@ class ArkMultiProc$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkMultiProc.3.1
  * JD-Core Version:    0.7.0.1
  */

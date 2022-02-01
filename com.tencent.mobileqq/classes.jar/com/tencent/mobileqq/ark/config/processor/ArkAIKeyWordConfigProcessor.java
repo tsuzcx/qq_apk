@@ -64,12 +64,12 @@ public class ArkAIKeyWordConfigProcessor
     localStringBuilder.append("[onUpdate] type=");
     localStringBuilder.append(type());
     localStringBuilder.append(", content = ");
-    localStringBuilder.append(paramArkAIKeyWordConfBean.a());
+    localStringBuilder.append(paramArkAIKeyWordConfBean.d());
     QLog.d("ArkApp.ConfProcessor", 1, localStringBuilder.toString());
-    ArkAiAppCenter.a(paramArkAIKeyWordConfBean.a());
+    ArkAiAppCenter.a(paramArkAIKeyWordConfBean.c());
     try
     {
-      paramArkAIKeyWordConfBean = new JSONObject(paramArkAIKeyWordConfBean.a());
+      paramArkAIKeyWordConfBean = new JSONObject(paramArkAIKeyWordConfBean.d());
       ArkMsgReplyConfigMgr.getInstance().updateConfig(paramArkAIKeyWordConfBean);
       return;
     }
@@ -89,7 +89,7 @@ public class ArkAIKeyWordConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.processor.ArkAIKeyWordConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

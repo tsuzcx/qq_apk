@@ -26,16 +26,15 @@ import java.util.Set;
 
 public class WsCommentBusiness
 {
-  private static final String jdField_a_of_type_JavaLangString = "WsCommentBusiness";
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private WsCommentPresenter jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter;
-  private Map<String, ArrayList<stSimpleMetaComment>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<String, Integer> b = new HashMap();
-  private Map<String, WsCommentBusiness.CommentResponse> c = new HashMap();
+  private WsCommentPresenter a;
+  private Handler b;
+  private Map<String, ArrayList<stSimpleMetaComment>> c = new HashMap();
+  private Map<String, Integer> d = new HashMap();
+  private Map<String, WsCommentBusiness.CommentResponse> e = new HashMap();
   
   public WsCommentBusiness(WsCommentPresenter paramWsCommentPresenter)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter = paramWsCommentPresenter;
+    this.a = paramWsCommentPresenter;
   }
   
   private static ArrayList<stSimpleMetaComment> a(stSimpleMetaComment[] paramArrayOfstSimpleMetaComment)
@@ -70,42 +69,48 @@ public class WsCommentBusiness
     return localArrayList;
   }
   
+  private void a(stSimpleMetaComment paramstSimpleMetaComment1, stSimpleMetaComment paramstSimpleMetaComment2)
+  {
+    paramstSimpleMetaComment1.poster.id = paramstSimpleMetaComment2.poster.id;
+    paramstSimpleMetaComment1.poster_id = paramstSimpleMetaComment2.poster_id;
+  }
+  
   private void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.c.get(paramString1) == null)
+    if (this.e.get(paramString1) == null)
     {
       WsCommentBusiness.CommentResponse localCommentResponse = new WsCommentBusiness.CommentResponse();
-      localCommentResponse.jdField_a_of_type_JavaLangString = paramString2;
-      localCommentResponse.jdField_a_of_type_Boolean = (paramBoolean1 ^ true);
-      this.c.put(paramString1, localCommentResponse);
+      localCommentResponse.b = paramString2;
+      localCommentResponse.a = (paramBoolean1 ^ true);
+      this.e.put(paramString1, localCommentResponse);
       return;
     }
-    paramString1 = (WsCommentBusiness.CommentResponse)this.c.get(paramString1);
+    paramString1 = (WsCommentBusiness.CommentResponse)this.e.get(paramString1);
     if (paramString1 != null)
     {
-      paramString1.jdField_a_of_type_Boolean = (paramBoolean1 ^ true);
-      paramString1.jdField_a_of_type_JavaLangString = paramString2;
+      paramString1.a = (paramBoolean1 ^ true);
+      paramString1.b = paramString2;
       return;
     }
-    WSLog.d(jdField_a_of_type_JavaLangString, "updateResponseState, commentResponse is null.");
+    WSLog.d("WsCommentBusiness", "updateResponseState, commentResponse is null.");
   }
   
   private void a(String paramString, boolean paramBoolean)
   {
-    if (this.c.get(paramString) == null)
+    if (this.e.get(paramString) == null)
     {
       WsCommentBusiness.CommentResponse localCommentResponse = new WsCommentBusiness.CommentResponse();
-      localCommentResponse.b = paramBoolean;
-      this.c.put(paramString, localCommentResponse);
+      localCommentResponse.c = paramBoolean;
+      this.e.put(paramString, localCommentResponse);
       return;
     }
-    paramString = (WsCommentBusiness.CommentResponse)this.c.get(paramString);
+    paramString = (WsCommentBusiness.CommentResponse)this.e.get(paramString);
     if (paramString != null)
     {
-      paramString.b = paramBoolean;
+      paramString.c = paramBoolean;
       return;
     }
-    WSLog.d(jdField_a_of_type_JavaLangString, "updateResponseState, commentResponse is null.");
+    WSLog.d("WsCommentBusiness", "updateResponseState, commentResponse is null.");
   }
   
   private static ArrayList<stSimpleMetaComment> b(ArrayList<stSimpleMetaComment> paramArrayList, ArrayList<stCommentJumpText> paramArrayList1, int paramInt)
@@ -206,15 +211,6 @@ public class WsCommentBusiness
     return a(paramArrayList1);
   }
   
-  public int a(String paramString)
-  {
-    paramString = (Integer)this.b.get(paramString);
-    if (paramString == null) {
-      return 0;
-    }
-    return paramString.intValue();
-  }
-  
   public long a(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleComment paramstSimpleComment)
   {
     paramstSimpleMetaFeed = new PostCommentDingRequest(paramstSimpleMetaFeed.id, paramstSimpleComment.id, paramstSimpleComment.isDing);
@@ -229,9 +225,8 @@ public class WsCommentBusiness
     return 0L;
   }
   
-  public long a(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment, stSimpleMetaReply paramstSimpleMetaReply)
+  public long a(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment, stSimpleMetaReply paramstSimpleMetaReply, ArrayList<String> paramArrayList)
   {
-    String str = jdField_a_of_type_JavaLangString;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("reply.poster_id:");
     localStringBuilder.append(paramstSimpleMetaReply.poster.id);
@@ -239,18 +234,18 @@ public class WsCommentBusiness
     localStringBuilder.append(paramstSimpleMetaReply.receiver.id);
     localStringBuilder.append(",reply.beReplyCommendId:");
     localStringBuilder.append(paramstSimpleMetaReply.beReplyReplyId);
-    WSLog.d(str, localStringBuilder.toString());
-    paramstSimpleMetaFeed = new PostCommentReplyRequest(paramstSimpleMetaFeed, paramstSimpleMetaComment, paramstSimpleMetaReply);
+    WSLog.d("WsCommentBusiness", localStringBuilder.toString());
+    paramstSimpleMetaFeed = new PostCommentReplyRequest(paramstSimpleMetaFeed, paramstSimpleMetaComment, paramstSimpleMetaReply, paramArrayList);
     WeishiBusinessLooper.a().a(new WeishiTask(paramstSimpleMetaFeed, a(), new WsCommentBusiness.5(this, paramstSimpleMetaReply), 6));
     return 0L;
   }
   
   public Handler a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new WsCommentBusiness.1(this, Looper.getMainLooper());
+    if (this.b == null) {
+      this.b = new WsCommentBusiness.1(this, Looper.getMainLooper());
     }
-    return this.jdField_a_of_type_AndroidOsHandler;
+    return this.b;
   }
   
   public WSCommentEvent a(Object... paramVarArgs)
@@ -263,41 +258,11 @@ public class WsCommentBusiness
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
-    paramString = (WsCommentBusiness.CommentResponse)this.c.get(paramString);
-    if ((paramString != null) && (paramString.b) && (paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_JavaLangString != null)) {
-      return paramString.jdField_a_of_type_JavaLangString;
+    paramString = (WsCommentBusiness.CommentResponse)this.e.get(paramString);
+    if ((paramString != null) && (paramString.c) && (paramString.a) && (paramString.b != null)) {
+      return paramString.b;
     }
     return "";
-  }
-  
-  public ArrayList<stSimpleMetaComment> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.c.clear();
-    this.b.clear();
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment)
-  {
-    String str = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("---添加评论，wording:");
-    localStringBuilder.append(paramstSimpleMetaComment.wording);
-    localStringBuilder.append("poster_id:");
-    localStringBuilder.append(paramstSimpleMetaComment.poster_id);
-    localStringBuilder.append(",receiver_id:");
-    localStringBuilder.append(paramstSimpleMetaComment.receiver_id);
-    WSLog.d(str, localStringBuilder.toString());
-    paramstSimpleMetaFeed = new PostFeedCommentRequest(paramstSimpleMetaFeed, paramstSimpleMetaComment);
-    WeishiBusinessLooper.a().a(new WeishiTask(paramstSimpleMetaFeed, a(), new WsCommentBusiness.3(this, paramstSimpleMetaComment), 5));
   }
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment, stSimpleMetaReply paramstSimpleMetaReply)
@@ -306,46 +271,83 @@ public class WsCommentBusiness
     WeishiBusinessLooper.a().a(new WeishiTask(paramstSimpleMetaFeed, a(), new WsCommentBusiness.9(this), 9));
   }
   
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed, String paramString, boolean paramBoolean)
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment, ArrayList<String> paramArrayList)
   {
-    WSLog.a(jdField_a_of_type_JavaLangString, "getComments(final stSimpleMetaFeed feed, String attachInfo, final boolean loadMore)");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("---添加评论，wording:");
+    localStringBuilder.append(paramstSimpleMetaComment.wording);
+    localStringBuilder.append("poster_id:");
+    localStringBuilder.append(paramstSimpleMetaComment.poster_id);
+    localStringBuilder.append(",receiver_id:");
+    localStringBuilder.append(paramstSimpleMetaComment.receiver_id);
+    WSLog.d("WsCommentBusiness", localStringBuilder.toString());
+    paramstSimpleMetaFeed = new PostFeedCommentRequest(paramstSimpleMetaFeed, paramstSimpleMetaComment, paramArrayList);
+    WeishiBusinessLooper.a().a(new WeishiTask(paramstSimpleMetaFeed, a(), new WsCommentBusiness.3(this, paramstSimpleMetaComment), 5));
+  }
+  
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed, String paramString1, boolean paramBoolean, String paramString2, String paramString3)
+  {
+    WSLog.a("WsCommentBusiness", "getComments(final stSimpleMetaFeed feed, String attachInfo, final boolean loadMore)");
     long l = System.currentTimeMillis();
-    paramstSimpleMetaFeed = new WeishiTask(new GetFeedCommentListV2Request(paramString, paramstSimpleMetaFeed.id, 1), a(), new WsCommentBusiness.2(this, l, paramstSimpleMetaFeed, paramBoolean), 1000);
+    paramstSimpleMetaFeed = new WeishiTask(new GetFeedCommentListV2Request(paramString1, paramstSimpleMetaFeed.id, 1, paramString2, paramString3), a(), new WsCommentBusiness.2(this, l, paramstSimpleMetaFeed, paramBoolean), 1000);
     WeishiBusinessLooper.a().a(paramstSimpleMetaFeed);
   }
   
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean)
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean, String paramString1, String paramString2)
   {
     if (paramstSimpleMetaFeed == null)
     {
-      WSLog.d(jdField_a_of_type_JavaLangString, "getComments , feed is null ");
+      WSLog.d("WsCommentBusiness", "getComments , feed is null ");
       return;
     }
-    String str1 = a(paramstSimpleMetaFeed.id);
-    String str2 = jdField_a_of_type_JavaLangString;
+    String str = a(paramstSimpleMetaFeed.id);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getComments loadMore: ");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append(", attachInfo:");
-    localStringBuilder.append(str1);
-    WSLog.c(str2, localStringBuilder.toString());
-    if ((paramBoolean) && (TextUtils.isEmpty(str1)))
+    localStringBuilder.append(str);
+    WSLog.c("WsCommentBusiness", localStringBuilder.toString());
+    if ((paramBoolean) && (TextUtils.isEmpty(str)))
     {
-      WSLog.d(jdField_a_of_type_JavaLangString, "getComments and loadMore, attachInfo is empty ");
+      WSLog.d("WsCommentBusiness", "getComments and loadMore, attachInfo is empty ");
       return;
     }
     if (!paramBoolean)
     {
-      WSLog.d(jdField_a_of_type_JavaLangString, "first getComments, set attachInfo empty ");
-      str1 = "";
+      WSLog.d("WsCommentBusiness", "first getComments, set attachInfo empty ");
+      str = "";
     }
     a(paramstSimpleMetaFeed.id, false);
-    a(paramstSimpleMetaFeed, str1, paramBoolean);
+    a(paramstSimpleMetaFeed, str, paramBoolean, paramString1, paramString2);
+  }
+  
+  public int b(String paramString)
+  {
+    paramString = (Integer)this.d.get(paramString);
+    if (paramString == null) {
+      return 0;
+    }
+    return paramString.intValue();
+  }
+  
+  public void b()
+  {
+    this.c.clear();
+    this.e.clear();
+    this.d.clear();
+  }
+  
+  public ArrayList<stSimpleMetaComment> c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (ArrayList)this.c.get(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentBusiness
  * JD-Core Version:    0.7.0.1
  */

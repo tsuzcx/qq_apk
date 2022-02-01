@@ -22,11 +22,11 @@ final class AccountDetailDynamicListModel$1
     }
     paramBundle = paramBundle.getByteArray("data");
     if ((paramBoolean) && (paramBundle != null)) {
-      paramInt = AccountDetailDynamicListModel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);
+      paramInt = AccountDetailDynamicListModel.a(this.a, this.b, paramBundle, false);
     } else {
       paramInt = 1;
     }
-    paramBundle = this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountObserverImpl;
+    paramBundle = this.c;
     if (paramBundle != null) {
       paramBundle.onDynamicListGet(paramBoolean, paramInt);
     }
@@ -41,7 +41,7 @@ final class AccountDetailDynamicListModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailDynamicListModel.1
  * JD-Core Version:    0.7.0.1
  */

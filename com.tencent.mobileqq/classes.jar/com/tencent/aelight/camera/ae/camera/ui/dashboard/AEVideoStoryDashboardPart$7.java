@@ -1,36 +1,29 @@
 package com.tencent.aelight.camera.ae.camera.ui.dashboard;
 
-import android.support.annotation.Nullable;
-import androidx.lifecycle.Observer;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 class AEVideoStoryDashboardPart$7
-  implements Observer<AEDashboardUtil.NetInfo>
+  implements CompoundButton.OnCheckedChangeListener
 {
   AEVideoStoryDashboardPart$7(AEVideoStoryDashboardPart paramAEVideoStoryDashboardPart) {}
   
-  public void a(@Nullable AEDashboardUtil.NetInfo paramNetInfo)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Object localObject = AEDashboardUtil.a(paramNetInfo);
-    paramNetInfo = new LinkedList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      AEDashboardUtil.NetInfo localNetInfo = (AEDashboardUtil.NetInfo)((Iterator)localObject).next();
-      AEVideoStoryDashboardPart.DashboardInfo localDashboardInfo = new AEVideoStoryDashboardPart.DashboardInfo(null);
-      localDashboardInfo.a = AEVideoStoryDashboardPart.MessageRenderUtil.a(localNetInfo);
-      paramNetInfo.add(localDashboardInfo);
+    paramCompoundButton = AEVideoStoryDashboardPart.f(this.a);
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
-    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.7.1(this, paramNetInfo));
+    paramCompoundButton.setVisibility(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.7
  * JD-Core Version:    0.7.0.1
  */

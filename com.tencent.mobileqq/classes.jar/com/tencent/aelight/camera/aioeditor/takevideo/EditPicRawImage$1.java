@@ -13,10 +13,10 @@ class EditPicRawImage$1
   public void onGlobalLayout()
   {
     AEQLog.b("EditPicActivity.EditVideoRawImage", "[EditPicRawImage onGlobalLayout]");
-    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    if ((this.a.b != null) && (!this.a.b.isRecycled()))
     {
-      int i = this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-      int j = this.a.jdField_a_of_type_AndroidWidgetImageView.getHeight();
+      int i = this.a.a.getWidth();
+      int j = this.a.a.getHeight();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("last width = ");
       localStringBuilder.append(EditPicRawImage.a(this.a));
@@ -31,8 +31,8 @@ class EditPicRawImage$1
       AEQLog.b("EditPicActivity.EditVideoRawImage", localStringBuilder.toString());
       if (((int)EditPicRawImage.a(this.a) != i) || ((int)EditPicRawImage.b(this.a) != j))
       {
-        EditPicRawImage.jdField_a_of_type_Int = j;
-        EditPicRawImage.a(this.a);
+        EditPicRawImage.f = j;
+        EditPicRawImage.c(this.a);
         this.a.a(i, j);
       }
       return;
@@ -42,7 +42,7 @@ class EditPicRawImage$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditPicRawImage.1
  * JD-Core Version:    0.7.0.1
  */

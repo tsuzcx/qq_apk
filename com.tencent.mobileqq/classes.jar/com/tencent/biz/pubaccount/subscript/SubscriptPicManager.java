@@ -52,7 +52,7 @@ public class SubscriptPicManager
     }
     if (paramObject.getStatus() != 1)
     {
-      paramImageView.setTag(2131378102, paramObject.getURL());
+      paramImageView.setTag(2131446608, paramObject.getURL());
       SubscriptPicManager.DrawableProperty localDrawableProperty = new SubscriptPicManager.DrawableProperty(this, null);
       localDrawableProperty.a = new WeakReference(paramImageView);
       localDrawableProperty.b = new WeakReference(paramImageHostListener);
@@ -93,19 +93,19 @@ public class SubscriptPicManager
     paramImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     if (paramObject.getStatus() != 1)
     {
-      paramImageView.setTag(2131378102, paramObject.getURL());
-      paramImageView.setTag(2131378096, Boolean.TRUE);
-      paramImageView.setTag(2131378099, Integer.valueOf(paramInt1));
-      paramImageView.setTag(2131378097, Integer.valueOf(paramInt2));
-      paramImageView.setTag(2131378098, Integer.valueOf(paramInt3));
+      paramImageView.setTag(2131446608, paramObject.getURL());
+      paramImageView.setTag(2131446602, Boolean.TRUE);
+      paramImageView.setTag(2131446605, Integer.valueOf(paramInt1));
+      paramImageView.setTag(2131446603, Integer.valueOf(paramInt2));
+      paramImageView.setTag(2131446604, Integer.valueOf(paramInt3));
       SubscriptPicManager.DrawableProperty localDrawableProperty = new SubscriptPicManager.DrawableProperty(this, null);
       localDrawableProperty.a = new WeakReference(paramImageView);
       localDrawableProperty.b = new WeakReference(paramImageHostListener);
       this.a.put(paramObject, localDrawableProperty);
       paramObject.setURLDrawableListener(this);
     }
-    paramObject.setTag(URLDrawableDecodeHandler.b(paramInt1, paramInt2, (int)(paramInt3 * DeviceInfoUtil.a())));
-    paramObject.setDecodeHandler(URLDrawableDecodeHandler.i);
+    paramObject.setTag(URLDrawableDecodeHandler.b(paramInt1, paramInt2, (int)(paramInt3 * DeviceInfoUtil.A())));
+    paramObject.setDecodeHandler(URLDrawableDecodeHandler.j);
     paramImageView.setImageDrawable(null);
     paramImageView.setImageDrawable(paramObject);
   }
@@ -132,20 +132,20 @@ public class SubscriptPicManager
       localObject1 = (ImageView)((SubscriptPicManager.DrawableProperty)localObject2).a.get();
       if (localObject1 != null)
       {
-        if (!paramURLDrawable.getURL().equals(((ImageView)localObject1).getTag(2131378102))) {
+        if (!paramURLDrawable.getURL().equals(((ImageView)localObject1).getTag(2131446608))) {
           return;
         }
         localObject2 = (SubscriptPicManager.ImageHostListener)((SubscriptPicManager.DrawableProperty)localObject2).b.get();
         if ((localObject2 == null) || (((SubscriptPicManager.ImageHostListener)localObject2).a((ImageView)localObject1)))
         {
-          if ((((ImageView)localObject1).getTag(2131378096) != null) && (((Boolean)((ImageView)localObject1).getTag(2131378096)).booleanValue()))
+          if ((((ImageView)localObject1).getTag(2131446602) != null) && (((Boolean)((ImageView)localObject1).getTag(2131446602)).booleanValue()))
           {
-            paramURLDrawable.setTag(URLDrawableDecodeHandler.b(((Integer)((ImageView)localObject1).getTag(2131378099)).intValue(), ((Integer)((ImageView)localObject1).getTag(2131378097)).intValue(), (int)(((Integer)((ImageView)localObject1).getTag(2131378098)).intValue() * DeviceInfoUtil.a())));
-            paramURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.i);
+            paramURLDrawable.setTag(URLDrawableDecodeHandler.b(((Integer)((ImageView)localObject1).getTag(2131446605)).intValue(), ((Integer)((ImageView)localObject1).getTag(2131446603)).intValue(), (int)(((Integer)((ImageView)localObject1).getTag(2131446604)).intValue() * DeviceInfoUtil.A())));
+            paramURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.j);
           }
           ((ImageView)localObject1).setImageDrawable(null);
           ((ImageView)localObject1).setImageDrawable(paramURLDrawable);
-          ((ImageView)localObject1).setTag(2131378102, null);
+          ((ImageView)localObject1).setTag(2131446608, null);
         }
       }
     }
@@ -153,7 +153,7 @@ public class SubscriptPicManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptPicManager
  * JD-Core Version:    0.7.0.1
  */

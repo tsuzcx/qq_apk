@@ -29,87 +29,87 @@ import com.google.android.material.shape.ShapeAppearanceModel;
 final class MaterialContainerTransform$TransitionDrawable
   extends Drawable
 {
-  private final float jdField_a_of_type_Float;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private final PathMeasure jdField_a_of_type_AndroidGraphicsPathMeasure;
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final MaterialShapeDrawable jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = new MaterialShapeDrawable();
-  private final ShapeAppearanceModel jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel;
-  private final FadeModeEvaluator jdField_a_of_type_ComGoogleAndroidMaterialTransitionFadeModeEvaluator;
-  private FadeModeResult jdField_a_of_type_ComGoogleAndroidMaterialTransitionFadeModeResult;
-  private final FitModeEvaluator jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeEvaluator;
-  private FitModeResult jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeResult;
-  private final MaskEvaluator jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaskEvaluator = new MaskEvaluator();
-  private final MaterialContainerTransform.ProgressThresholdsGroup jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform$ProgressThresholdsGroup;
-  private final boolean jdField_a_of_type_Boolean;
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[2];
-  private final float jdField_b_of_type_Float;
-  private final Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  private final RectF jdField_b_of_type_AndroidGraphicsRectF;
-  private final View jdField_b_of_type_AndroidViewView;
-  private final ShapeAppearanceModel jdField_b_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel;
-  private final boolean jdField_b_of_type_Boolean;
-  private final float jdField_c_of_type_Float;
-  private final Paint jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-  private final RectF jdField_c_of_type_AndroidGraphicsRectF;
-  private final boolean jdField_c_of_type_Boolean;
-  private final float jdField_d_of_type_Float;
-  private final Paint jdField_d_of_type_AndroidGraphicsPaint = new Paint();
-  private final RectF jdField_d_of_type_AndroidGraphicsRectF;
-  private final float jdField_e_of_type_Float;
-  private final Paint jdField_e_of_type_AndroidGraphicsPaint = new Paint();
-  private final RectF jdField_e_of_type_AndroidGraphicsRectF;
-  private float jdField_f_of_type_Float;
-  private final Paint jdField_f_of_type_AndroidGraphicsPaint = new Paint();
-  private final RectF jdField_f_of_type_AndroidGraphicsRectF;
-  private float jdField_g_of_type_Float;
-  private RectF jdField_g_of_type_AndroidGraphicsRectF;
-  private float h;
+  private final MaterialContainerTransform.ProgressThresholdsGroup A;
+  private final FadeModeEvaluator B;
+  private final FitModeEvaluator C;
+  private final boolean D;
+  private final Paint E = new Paint();
+  private final Path F = new Path();
+  private FadeModeResult G;
+  private FitModeResult H;
+  private RectF I;
+  private float J;
+  private float K;
+  private float L;
+  private final View a;
+  private final RectF b;
+  private final ShapeAppearanceModel c;
+  private final float d;
+  private final View e;
+  private final RectF f;
+  private final ShapeAppearanceModel g;
+  private final float h;
+  private final Paint i = new Paint();
+  private final Paint j = new Paint();
+  private final Paint k = new Paint();
+  private final Paint l = new Paint();
+  private final Paint m = new Paint();
+  private final MaskEvaluator n = new MaskEvaluator();
+  private final PathMeasure o;
+  private final float p;
+  private final float[] q = new float[2];
+  private final boolean r;
+  private final float s;
+  private final float t;
+  private final boolean u;
+  private final MaterialShapeDrawable v = new MaterialShapeDrawable();
+  private final RectF w;
+  private final RectF x;
+  private final RectF y;
+  private final RectF z;
   
   private MaterialContainerTransform$TransitionDrawable(PathMotion paramPathMotion, View paramView1, RectF paramRectF1, ShapeAppearanceModel paramShapeAppearanceModel1, float paramFloat1, View paramView2, RectF paramRectF2, ShapeAppearanceModel paramShapeAppearanceModel2, float paramFloat2, @ColorInt int paramInt1, @ColorInt int paramInt2, @ColorInt int paramInt3, int paramInt4, boolean paramBoolean1, boolean paramBoolean2, FadeModeEvaluator paramFadeModeEvaluator, FitModeEvaluator paramFitModeEvaluator, MaterialContainerTransform.ProgressThresholdsGroup paramProgressThresholdsGroup, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView1;
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF1;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel = paramShapeAppearanceModel1;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_AndroidViewView = paramView2;
-    this.jdField_b_of_type_AndroidGraphicsRectF = paramRectF2;
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel = paramShapeAppearanceModel2;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFadeModeEvaluator = paramFadeModeEvaluator;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeEvaluator = paramFitModeEvaluator;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform$ProgressThresholdsGroup = paramProgressThresholdsGroup;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
+    this.a = paramView1;
+    this.b = paramRectF1;
+    this.c = paramShapeAppearanceModel1;
+    this.d = paramFloat1;
+    this.e = paramView2;
+    this.f = paramRectF2;
+    this.g = paramShapeAppearanceModel2;
+    this.h = paramFloat2;
+    this.r = paramBoolean1;
+    this.u = paramBoolean2;
+    this.B = paramFadeModeEvaluator;
+    this.C = paramFitModeEvaluator;
+    this.A = paramProgressThresholdsGroup;
+    this.D = paramBoolean3;
     paramView1 = (WindowManager)paramView1.getContext().getSystemService("window");
     paramShapeAppearanceModel1 = new DisplayMetrics();
     paramView1.getDefaultDisplay().getMetrics(paramShapeAppearanceModel1);
-    this.jdField_d_of_type_Float = paramShapeAppearanceModel1.widthPixels;
-    this.jdField_e_of_type_Float = paramShapeAppearanceModel1.heightPixels;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramInt2);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramInt3);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.g(ColorStateList.valueOf(0));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.D(2);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.g(false);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.G(-7829368);
-    this.jdField_c_of_type_AndroidGraphicsRectF = new RectF(paramRectF1);
-    this.jdField_d_of_type_AndroidGraphicsRectF = new RectF(this.jdField_c_of_type_AndroidGraphicsRectF);
-    this.jdField_e_of_type_AndroidGraphicsRectF = new RectF(this.jdField_c_of_type_AndroidGraphicsRectF);
-    this.jdField_f_of_type_AndroidGraphicsRectF = new RectF(this.jdField_e_of_type_AndroidGraphicsRectF);
+    this.s = paramShapeAppearanceModel1.widthPixels;
+    this.t = paramShapeAppearanceModel1.heightPixels;
+    this.i.setColor(paramInt1);
+    this.j.setColor(paramInt2);
+    this.k.setColor(paramInt3);
+    this.v.g(ColorStateList.valueOf(0));
+    this.v.D(2);
+    this.v.g(false);
+    this.v.H(-7829368);
+    this.w = new RectF(paramRectF1);
+    this.x = new RectF(this.w);
+    this.y = new RectF(this.w);
+    this.z = new RectF(this.y);
     paramView1 = a(paramRectF1);
     paramShapeAppearanceModel1 = a(paramRectF2);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(paramPathMotion.getPath(paramView1.x, paramView1.y, paramShapeAppearanceModel1.x, paramShapeAppearanceModel1.y), false);
-    this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
-    this.jdField_a_of_type_ArrayOfFloat[0] = paramRectF1.centerX();
-    this.jdField_a_of_type_ArrayOfFloat[1] = paramRectF1.top;
-    this.jdField_e_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_e_of_type_AndroidGraphicsPaint.setShader(TransitionUtils.a(paramInt4));
-    this.jdField_f_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_f_of_type_AndroidGraphicsPaint.setStrokeWidth(10.0F);
+    this.o = new PathMeasure(paramPathMotion.getPath(paramView1.x, paramView1.y, paramShapeAppearanceModel1.x, paramShapeAppearanceModel1.y), false);
+    this.p = this.o.getLength();
+    this.q[0] = paramRectF1.centerX();
+    this.q[1] = paramRectF1.top;
+    this.m.setStyle(Paint.Style.FILL);
+    this.m.setShader(TransitionUtils.a(paramInt4));
+    this.E.setStyle(Paint.Style.STROKE);
+    this.E.setStrokeWidth(10.0F);
     b(0.0F);
   }
   
@@ -125,7 +125,7 @@ final class MaterialContainerTransform$TransitionDrawable
   
   private void a(float paramFloat)
   {
-    if (this.h != paramFloat) {
+    if (this.L != paramFloat) {
       b(paramFloat);
     }
   }
@@ -133,7 +133,7 @@ final class MaterialContainerTransform$TransitionDrawable
   private void a(Canvas paramCanvas)
   {
     paramCanvas.save();
-    paramCanvas.clipPath(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaskEvaluator.a(), Region.Op.DIFFERENCE);
+    paramCanvas.clipPath(this.n.a(), Region.Op.DIFFERENCE);
     if (Build.VERSION.SDK_INT > 28) {
       b(paramCanvas);
     } else {
@@ -151,22 +151,22 @@ final class MaterialContainerTransform$TransitionDrawable
   
   private void a(Canvas paramCanvas, RectF paramRectF, @ColorInt int paramInt)
   {
-    this.jdField_f_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    paramCanvas.drawRect(paramRectF, this.jdField_f_of_type_AndroidGraphicsPaint);
+    this.E.setColor(paramInt);
+    paramCanvas.drawRect(paramRectF, this.E);
   }
   
   private void a(Canvas paramCanvas, RectF paramRectF, Path paramPath, @ColorInt int paramInt)
   {
     paramRectF = a(paramRectF);
-    if (this.h == 0.0F)
+    if (this.L == 0.0F)
     {
       paramPath.reset();
       paramPath.moveTo(paramRectF.x, paramRectF.y);
       return;
     }
     paramPath.lineTo(paramRectF.x, paramRectF.y);
-    this.jdField_f_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    paramCanvas.drawPath(paramPath, this.jdField_f_of_type_AndroidGraphicsPaint);
+    this.E.setColor(paramInt);
+    paramCanvas.drawPath(paramPath, this.E);
   }
   
   private static float b(RectF paramRectF, float paramFloat)
@@ -176,16 +176,16 @@ final class MaterialContainerTransform$TransitionDrawable
   
   private void b(float paramFloat)
   {
-    this.h = paramFloat;
-    Object localObject = this.jdField_e_of_type_AndroidGraphicsPaint;
-    if (this.jdField_a_of_type_Boolean) {
+    this.L = paramFloat;
+    Object localObject = this.m;
+    if (this.r) {
       f1 = TransitionUtils.a(0.0F, 255.0F, paramFloat);
     } else {
       f1 = TransitionUtils.a(255.0F, 0.0F, paramFloat);
     }
     ((Paint)localObject).setAlpha((int)f1);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(this.jdField_c_of_type_Float * paramFloat, this.jdField_a_of_type_ArrayOfFloat, null);
-    localObject = this.jdField_a_of_type_ArrayOfFloat;
+    this.o.getPosTan(this.p * paramFloat, this.q, null);
+    localObject = this.q;
     float f4 = localObject[0];
     float f3 = localObject[1];
     if (paramFloat <= 1.0F)
@@ -207,104 +207,104 @@ final class MaterialContainerTransform$TransitionDrawable
         f2 = 0.01F;
         f1 = paramFloat / 0.01F * -1.0F;
       }
-      this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(this.jdField_c_of_type_Float * f2, this.jdField_a_of_type_ArrayOfFloat, null);
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
+      this.o.getPosTan(this.p * f2, this.q, null);
+      localObject = this.q;
       f2 = localObject[0];
       float f5 = localObject[1];
       f2 = f4 + (f4 - f2) * f1;
       f1 = f3 + (f3 - f5) * f1;
     }
-    f3 = ((Float)Preconditions.checkNotNull(Float.valueOf(MaterialContainerTransform.ProgressThresholds.a(MaterialContainerTransform.ProgressThresholdsGroup.b(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform$ProgressThresholdsGroup))))).floatValue();
-    f4 = ((Float)Preconditions.checkNotNull(Float.valueOf(MaterialContainerTransform.ProgressThresholds.b(MaterialContainerTransform.ProgressThresholdsGroup.b(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform$ProgressThresholdsGroup))))).floatValue();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeResult = this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeEvaluator.a(paramFloat, f3, f4, this.jdField_a_of_type_AndroidGraphicsRectF.width(), this.jdField_a_of_type_AndroidGraphicsRectF.height(), this.jdField_b_of_type_AndroidGraphicsRectF.width(), this.jdField_b_of_type_AndroidGraphicsRectF.height());
-    this.jdField_c_of_type_AndroidGraphicsRectF.set(f2 - this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeResult.jdField_c_of_type_Float / 2.0F, f1, this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeResult.jdField_c_of_type_Float / 2.0F + f2, this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeResult.jdField_d_of_type_Float + f1);
-    this.jdField_e_of_type_AndroidGraphicsRectF.set(f2 - this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeResult.jdField_e_of_type_Float / 2.0F, f1, f2 + this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeResult.jdField_e_of_type_Float / 2.0F, this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeResult.jdField_f_of_type_Float + f1);
-    this.jdField_d_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRectF);
-    this.jdField_f_of_type_AndroidGraphicsRectF.set(this.jdField_e_of_type_AndroidGraphicsRectF);
-    float f1 = ((Float)Preconditions.checkNotNull(Float.valueOf(MaterialContainerTransform.ProgressThresholds.a(MaterialContainerTransform.ProgressThresholdsGroup.c(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform$ProgressThresholdsGroup))))).floatValue();
-    float f2 = ((Float)Preconditions.checkNotNull(Float.valueOf(MaterialContainerTransform.ProgressThresholds.b(MaterialContainerTransform.ProgressThresholdsGroup.c(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform$ProgressThresholdsGroup))))).floatValue();
-    boolean bool = this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeEvaluator.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeResult);
+    f3 = ((Float)Preconditions.checkNotNull(Float.valueOf(MaterialContainerTransform.ProgressThresholds.a(MaterialContainerTransform.ProgressThresholdsGroup.b(this.A))))).floatValue();
+    f4 = ((Float)Preconditions.checkNotNull(Float.valueOf(MaterialContainerTransform.ProgressThresholds.b(MaterialContainerTransform.ProgressThresholdsGroup.b(this.A))))).floatValue();
+    this.H = this.C.a(paramFloat, f3, f4, this.b.width(), this.b.height(), this.f.width(), this.f.height());
+    this.w.set(f2 - this.H.c / 2.0F, f1, this.H.c / 2.0F + f2, this.H.d + f1);
+    this.y.set(f2 - this.H.e / 2.0F, f1, f2 + this.H.e / 2.0F, this.H.f + f1);
+    this.x.set(this.w);
+    this.z.set(this.y);
+    float f1 = ((Float)Preconditions.checkNotNull(Float.valueOf(MaterialContainerTransform.ProgressThresholds.a(MaterialContainerTransform.ProgressThresholdsGroup.c(this.A))))).floatValue();
+    float f2 = ((Float)Preconditions.checkNotNull(Float.valueOf(MaterialContainerTransform.ProgressThresholds.b(MaterialContainerTransform.ProgressThresholdsGroup.c(this.A))))).floatValue();
+    boolean bool = this.C.a(this.H);
     if (bool) {
-      localObject = this.jdField_d_of_type_AndroidGraphicsRectF;
+      localObject = this.x;
     } else {
-      localObject = this.jdField_f_of_type_AndroidGraphicsRectF;
+      localObject = this.z;
     }
     f1 = TransitionUtils.a(0.0F, 1.0F, f1, f2, paramFloat);
     if (!bool) {
       f1 = 1.0F - f1;
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeEvaluator.a((RectF)localObject, f1, this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeResult);
-    this.jdField_g_of_type_AndroidGraphicsRectF = new RectF(Math.min(this.jdField_d_of_type_AndroidGraphicsRectF.left, this.jdField_f_of_type_AndroidGraphicsRectF.left), Math.min(this.jdField_d_of_type_AndroidGraphicsRectF.top, this.jdField_f_of_type_AndroidGraphicsRectF.top), Math.max(this.jdField_d_of_type_AndroidGraphicsRectF.right, this.jdField_f_of_type_AndroidGraphicsRectF.right), Math.max(this.jdField_d_of_type_AndroidGraphicsRectF.bottom, this.jdField_f_of_type_AndroidGraphicsRectF.bottom));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaskEvaluator.a(paramFloat, this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel, this.jdField_b_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel, this.jdField_c_of_type_AndroidGraphicsRectF, this.jdField_d_of_type_AndroidGraphicsRectF, this.jdField_f_of_type_AndroidGraphicsRectF, MaterialContainerTransform.ProgressThresholdsGroup.d(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform$ProgressThresholdsGroup));
-    this.jdField_f_of_type_Float = TransitionUtils.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, paramFloat);
-    f3 = a(this.jdField_g_of_type_AndroidGraphicsRectF, this.jdField_d_of_type_Float);
-    f1 = b(this.jdField_g_of_type_AndroidGraphicsRectF, this.jdField_e_of_type_Float);
-    f2 = this.jdField_f_of_type_Float;
+    this.C.a((RectF)localObject, f1, this.H);
+    this.I = new RectF(Math.min(this.x.left, this.z.left), Math.min(this.x.top, this.z.top), Math.max(this.x.right, this.z.right), Math.max(this.x.bottom, this.z.bottom));
+    this.n.a(paramFloat, this.c, this.g, this.w, this.x, this.z, MaterialContainerTransform.ProgressThresholdsGroup.d(this.A));
+    this.J = TransitionUtils.a(this.d, this.h, paramFloat);
+    f3 = a(this.I, this.s);
+    f1 = b(this.I, this.t);
+    f2 = this.J;
     f3 = (int)(f3 * f2);
-    this.jdField_g_of_type_Float = ((int)(f1 * f2));
-    this.jdField_d_of_type_AndroidGraphicsPaint.setShadowLayer(f2, f3, this.jdField_g_of_type_Float, 754974720);
-    f1 = ((Float)Preconditions.checkNotNull(Float.valueOf(MaterialContainerTransform.ProgressThresholds.a(MaterialContainerTransform.ProgressThresholdsGroup.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform$ProgressThresholdsGroup))))).floatValue();
-    f2 = ((Float)Preconditions.checkNotNull(Float.valueOf(MaterialContainerTransform.ProgressThresholds.b(MaterialContainerTransform.ProgressThresholdsGroup.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform$ProgressThresholdsGroup))))).floatValue();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFadeModeResult = this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFadeModeEvaluator.a(paramFloat, f1, f2);
-    if (this.jdField_b_of_type_AndroidGraphicsPaint.getColor() != 0) {
-      this.jdField_b_of_type_AndroidGraphicsPaint.setAlpha(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFadeModeResult.jdField_a_of_type_Int);
+    this.K = ((int)(f1 * f2));
+    this.l.setShadowLayer(f2, f3, this.K, 754974720);
+    f1 = ((Float)Preconditions.checkNotNull(Float.valueOf(MaterialContainerTransform.ProgressThresholds.a(MaterialContainerTransform.ProgressThresholdsGroup.a(this.A))))).floatValue();
+    f2 = ((Float)Preconditions.checkNotNull(Float.valueOf(MaterialContainerTransform.ProgressThresholds.b(MaterialContainerTransform.ProgressThresholdsGroup.a(this.A))))).floatValue();
+    this.G = this.B.a(paramFloat, f1, f2);
+    if (this.j.getColor() != 0) {
+      this.j.setAlpha(this.G.a);
     }
-    if (this.jdField_c_of_type_AndroidGraphicsPaint.getColor() != 0) {
-      this.jdField_c_of_type_AndroidGraphicsPaint.setAlpha(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFadeModeResult.b);
+    if (this.k.getColor() != 0) {
+      this.k.setAlpha(this.G.b);
     }
     invalidateSelf();
   }
   
   private void b(Canvas paramCanvas)
   {
-    ShapeAppearanceModel localShapeAppearanceModel = this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaskEvaluator.a();
-    if (localShapeAppearanceModel.a(this.jdField_g_of_type_AndroidGraphicsRectF))
+    ShapeAppearanceModel localShapeAppearanceModel = this.n.b();
+    if (localShapeAppearanceModel.a(this.I))
     {
-      float f1 = localShapeAppearanceModel.a().a(this.jdField_g_of_type_AndroidGraphicsRectF);
-      paramCanvas.drawRoundRect(this.jdField_g_of_type_AndroidGraphicsRectF, f1, f1, this.jdField_d_of_type_AndroidGraphicsPaint);
+      float f1 = localShapeAppearanceModel.f().a(this.I);
+      paramCanvas.drawRoundRect(this.I, f1, f1, this.l);
       return;
     }
-    paramCanvas.drawPath(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaskEvaluator.a(), this.jdField_d_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawPath(this.n.a(), this.l);
   }
   
   private void c(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setBounds((int)this.jdField_g_of_type_AndroidGraphicsRectF.left, (int)this.jdField_g_of_type_AndroidGraphicsRectF.top, (int)this.jdField_g_of_type_AndroidGraphicsRectF.right, (int)this.jdField_g_of_type_AndroidGraphicsRectF.bottom);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.r(this.jdField_f_of_type_Float);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.E((int)this.jdField_g_of_type_Float);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setShapeAppearanceModel(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaskEvaluator.a());
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.draw(paramCanvas);
+    this.v.setBounds((int)this.I.left, (int)this.I.top, (int)this.I.right, (int)this.I.bottom);
+    this.v.r(this.J);
+    this.v.F((int)this.K);
+    this.v.setShapeAppearanceModel(this.n.b());
+    this.v.draw(paramCanvas);
   }
   
   private void d(Canvas paramCanvas)
   {
-    a(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPaint);
-    TransitionUtils.a(paramCanvas, getBounds(), this.jdField_c_of_type_AndroidGraphicsRectF.left, this.jdField_c_of_type_AndroidGraphicsRectF.top, this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeResult.jdField_a_of_type_Float, this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFadeModeResult.jdField_a_of_type_Int, new MaterialContainerTransform.TransitionDrawable.1(this));
+    a(paramCanvas, this.j);
+    TransitionUtils.a(paramCanvas, getBounds(), this.w.left, this.w.top, this.H.a, this.G.a, new MaterialContainerTransform.TransitionDrawable.1(this));
   }
   
   private void e(Canvas paramCanvas)
   {
-    a(paramCanvas, this.jdField_c_of_type_AndroidGraphicsPaint);
-    TransitionUtils.a(paramCanvas, getBounds(), this.jdField_e_of_type_AndroidGraphicsRectF.left, this.jdField_e_of_type_AndroidGraphicsRectF.top, this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFitModeResult.jdField_b_of_type_Float, this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFadeModeResult.b, new MaterialContainerTransform.TransitionDrawable.2(this));
+    a(paramCanvas, this.k);
+    TransitionUtils.a(paramCanvas, getBounds(), this.y.left, this.y.top, this.H.b, this.G.b, new MaterialContainerTransform.TransitionDrawable.2(this));
   }
   
   public void draw(@NonNull Canvas paramCanvas)
   {
-    if (this.jdField_e_of_type_AndroidGraphicsPaint.getAlpha() > 0) {
-      paramCanvas.drawRect(getBounds(), this.jdField_e_of_type_AndroidGraphicsPaint);
+    if (this.m.getAlpha() > 0) {
+      paramCanvas.drawRect(getBounds(), this.m);
     }
-    int i;
-    if (this.jdField_c_of_type_Boolean) {
-      i = paramCanvas.save();
+    int i1;
+    if (this.D) {
+      i1 = paramCanvas.save();
     } else {
-      i = -1;
+      i1 = -1;
     }
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_f_of_type_Float > 0.0F)) {
+    if ((this.u) && (this.J > 0.0F)) {
       a(paramCanvas);
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaskEvaluator.a(paramCanvas);
-    a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionFadeModeResult.jdField_a_of_type_Boolean)
+    this.n.a(paramCanvas);
+    a(paramCanvas, this.i);
+    if (this.G.c)
     {
       d(paramCanvas);
       e(paramCanvas);
@@ -314,14 +314,14 @@ final class MaterialContainerTransform$TransitionDrawable
       e(paramCanvas);
       d(paramCanvas);
     }
-    if (this.jdField_c_of_type_Boolean)
+    if (this.D)
     {
-      paramCanvas.restoreToCount(i);
-      a(paramCanvas, this.jdField_c_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPath, -65281);
-      a(paramCanvas, this.jdField_d_of_type_AndroidGraphicsRectF, -256);
-      a(paramCanvas, this.jdField_c_of_type_AndroidGraphicsRectF, -16711936);
-      a(paramCanvas, this.jdField_f_of_type_AndroidGraphicsRectF, -16711681);
-      a(paramCanvas, this.jdField_e_of_type_AndroidGraphicsRectF, -16776961);
+      paramCanvas.restoreToCount(i1);
+      a(paramCanvas, this.w, this.F, -65281);
+      a(paramCanvas, this.x, -256);
+      a(paramCanvas, this.w, -16711936);
+      a(paramCanvas, this.z, -16711681);
+      a(paramCanvas, this.y, -16776961);
     }
   }
   
@@ -342,7 +342,7 @@ final class MaterialContainerTransform$TransitionDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.MaterialContainerTransform.TransitionDrawable
  * JD-Core Version:    0.7.0.1
  */

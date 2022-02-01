@@ -23,7 +23,7 @@ final class RIJAdGameGiftUtil$showGiftDialog$1
   
   public final void run()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+    Object localObject1 = this.a;
     Context localContext = null;
     if (localObject1 != null) {
       localObject1 = ((AdvertisementInfo)localObject1).gameAdComData;
@@ -32,42 +32,42 @@ final class RIJAdGameGiftUtil$showGiftDialog$1
     }
     if (localObject1 != null)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.gameAdComData;
+      localObject1 = this.a.gameAdComData;
       if (localObject1 != null) {
-        localObject1 = ((GameAdComData)localObject1).d;
+        localObject1 = ((GameAdComData)localObject1).e;
       } else {
         localObject1 = null;
       }
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.gameAdComData;
+        localObject1 = this.a.gameAdComData;
         if (localObject1 != null) {
-          localObject1 = ((GameAdComData)localObject1).u;
+          localObject1 = ((GameAdComData)localObject1).v;
         } else {
           localObject1 = null;
         }
         if (localObject1 != null)
         {
-          Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.gameAdComData;
+          Object localObject2 = this.a.gameAdComData;
           localObject1 = localContext;
           if (localObject2 != null) {
-            localObject1 = ((GameAdComData)localObject2).d;
+            localObject1 = ((GameAdComData)localObject2).e;
           }
           localObject1 = GiftPackageManager.a((String)localObject1);
-          if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (((Pair)localObject1).first != null) && (((List)((Pair)localObject1).first).size() > 0))
+          if (((this.b instanceof Activity)) && (((Pair)localObject1).first != null) && (((List)((Pair)localObject1).first).size() > 0))
           {
-            localContext = this.jdField_a_of_type_AndroidContentContext;
+            localContext = this.b;
             int i;
-            if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mChannelID == 0L) {
+            if (this.a.mChannelID == 0L) {
               i = 1;
             } else {
               i = 3;
             }
             localObject2 = new Ref.ObjectRef();
             ((Ref.ObjectRef)localObject2).element = "";
-            if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.a()) {
+            if (this.c.getInPtsCard()) {
               ((Ref.ObjectRef)localObject2).element = "2";
-            } else if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.b()) {
+            } else if (this.c.getInFloatingBar()) {
               ((Ref.ObjectRef)localObject2).element = "1";
             }
             ((Activity)localContext).runOnUiThread((Runnable)new RIJAdGameGiftUtil.showGiftDialog.1.1(this, localContext, i, (Pair)localObject1, (Ref.ObjectRef)localObject2));
@@ -81,7 +81,7 @@ final class RIJAdGameGiftUtil$showGiftDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdGameGiftUtil.showGiftDialog.1
  * JD-Core Version:    0.7.0.1
  */

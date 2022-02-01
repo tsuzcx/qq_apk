@@ -19,46 +19,22 @@ import java.lang.ref.WeakReference;
 
 public class PttSttItemAnimator
 {
-  public int a;
-  volatile SpannableString jdField_a_of_type_AndroidTextSpannableString = new SpannableString("");
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  MessageForPtt jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
-  WeakReference<PttItemBuilder.Holder> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = true;
+  WeakReference<PttItemBuilder.Holder> a;
+  MessageForPtt b;
+  public int c;
+  boolean d = false;
+  int e = 0;
+  volatile SpannableString f = new SpannableString("");
+  private QQAppInterface g;
+  private boolean h = true;
   
   public PttSttItemAnimator() {}
   
   public PttSttItemAnimator(QQAppInterface paramQQAppInterface, MessageForPtt paramMessageForPtt, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt = paramMessageForPtt;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private int a()
-  {
-    int j = BaseApplicationImpl.getContext().getResources().getColor(2131167041);
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-    int i = j;
-    if (localObject != null)
-    {
-      i = j;
-      if (!((WeakReference)localObject).isEnqueued())
-      {
-        localObject = (PttItemBuilder.Holder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        i = j;
-        if (localObject != null)
-        {
-          i = j;
-          if (((PttItemBuilder.Holder)localObject).jdField_a_of_type_AndroidWidgetTextView != null) {
-            i = ((PttItemBuilder.Holder)localObject).jdField_a_of_type_AndroidWidgetTextView.getCurrentTextColor();
-          }
-        }
-      }
-    }
-    return i;
+    this.g = paramQQAppInterface;
+    this.b = paramMessageForPtt;
+    this.c = paramInt;
   }
   
   public static boolean a(MessageForPtt paramMessageForPtt)
@@ -71,14 +47,9 @@ public class PttSttItemAnimator
       if (!paramMessageForPtt.expandStt) {
         return false;
       }
-      return paramMessageForPtt.getSttResult().a();
+      return paramMessageForPtt.getSttResult().f();
     }
     return false;
-  }
-  
-  private int b()
-  {
-    return ColorUtils.setAlphaComponent(a(), 128);
   }
   
   public static boolean b(MessageForPtt paramMessageForPtt)
@@ -86,28 +57,52 @@ public class PttSttItemAnimator
     if (paramMessageForPtt == null) {
       return true;
     }
-    if (paramMessageForPtt.getSttResult().a() == 4) {
+    if (paramMessageForPtt.getSttResult().e() == 4) {
       return true;
     }
-    return (!StringUtil.a(paramMessageForPtt.sttText)) && (!paramMessageForPtt.getSttResult().a());
+    return (!StringUtil.isEmpty(paramMessageForPtt.sttText)) && (!paramMessageForPtt.getSttResult().f());
   }
   
-  private void i()
+  private int l()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((PttItemBuilder.Holder)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt, a(), this.jdField_a_of_type_Int);
+    int j = BaseApplicationImpl.getContext().getResources().getColor(2131167977);
+    Object localObject = this.a;
+    int i = j;
+    if (localObject != null)
+    {
+      i = j;
+      if (!((WeakReference)localObject).isEnqueued())
+      {
+        localObject = (PttItemBuilder.Holder)this.a.get();
+        i = j;
+        if (localObject != null)
+        {
+          i = j;
+          if (((PttItemBuilder.Holder)localObject).d != null) {
+            i = ((PttItemBuilder.Holder)localObject).d.getCurrentTextColor();
+          }
+        }
+      }
     }
+    return i;
   }
   
-  public SpannableString a()
+  private int m()
   {
-    return this.jdField_a_of_type_AndroidTextSpannableString;
+    return ColorUtils.setAlphaComponent(l(), 128);
+  }
+  
+  private void n()
+  {
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((PttItemBuilder.Holder)this.a.get()).a(this.g, this.b, e(), this.c);
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.a = null;
   }
   
   public void a(Handler paramHandler)
@@ -121,67 +116,38 @@ public class PttSttItemAnimator
   public void a(PttItemBuilder.Holder paramHolder)
   {
     if (paramHolder != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHolder);
+      this.a = new WeakReference(paramHolder);
     }
   }
   
   void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidTextSpannableString = new SpannableString(paramString);
-    if (this.jdField_a_of_type_AndroidTextSpannableString.length() > 0) {
-      this.jdField_a_of_type_AndroidTextSpannableString.setSpan(new ForegroundColorSpan(a()), 0, this.jdField_a_of_type_AndroidTextSpannableString.length(), 17);
+    this.f = new SpannableString(paramString);
+    if (this.f.length() > 0) {
+      this.f.setSpan(new ForegroundColorSpan(l()), 0, this.f.length(), 17);
     }
-    b();
+    c();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    this.h = paramBoolean;
   }
   
   void b(String paramString)
   {
     c(paramString);
-    c();
+    d();
   }
   
   public boolean b()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.d;
   }
   
   void c()
   {
-    int i = this.jdField_a_of_type_AndroidTextSpannableString.length();
-    if (i <= 0) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidTextSpannableString.setSpan(new ForegroundColorSpan(a()), 0, i, 17);
-      return;
-    }
-    if (i == 2)
-    {
-      this.jdField_a_of_type_AndroidTextSpannableString.setSpan(new ForegroundColorSpan(b()), 0, 2, 17);
-      return;
-    }
-    if (i >= 4)
-    {
-      int j = this.jdField_b_of_type_Int + 2 - 3;
-      this.jdField_a_of_type_AndroidTextSpannableString.setSpan(new ForegroundColorSpan(a()), 0, j, 17);
-      this.jdField_a_of_type_AndroidTextSpannableString.setSpan(new ForegroundColorSpan(b()), j, i, 17);
-    }
+    this.d = true;
   }
   
   void c(String paramString)
@@ -192,44 +158,73 @@ public class PttSttItemAnimator
     int i = paramString.length();
     if (i <= 0)
     {
-      this.jdField_a_of_type_AndroidTextSpannableString = new SpannableString("");
+      this.f = new SpannableString("");
       return;
     }
-    int j = this.jdField_b_of_type_Int;
+    int j = this.e;
     if (j == 0)
     {
       if (i >= 2)
       {
-        this.jdField_a_of_type_AndroidTextSpannableString = new SpannableString(paramString.substring(0, 2));
-        this.jdField_b_of_type_Int += 2;
+        this.f = new SpannableString(paramString.substring(0, 2));
+        this.e += 2;
         return;
       }
-      this.jdField_a_of_type_AndroidTextSpannableString = new SpannableString("");
+      this.f = new SpannableString("");
       return;
     }
     if (j >= 2)
     {
       if (i - j >= 2)
       {
-        this.jdField_a_of_type_AndroidTextSpannableString = new SpannableString(paramString.substring(0, j + 2));
-        this.jdField_b_of_type_Int += 2;
+        this.f = new SpannableString(paramString.substring(0, j + 2));
+        this.e += 2;
         return;
       }
       if (i % 2 != 0) {
         i -= 1;
       }
-      this.jdField_a_of_type_AndroidTextSpannableString = new SpannableString(paramString.substring(0, i));
-      this.jdField_b_of_type_Int = i;
+      this.f = new SpannableString(paramString.substring(0, i));
+      this.e = i;
     }
   }
   
-  public void d()
+  void d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
+    int i = this.f.length();
+    if (i <= 0) {
+      return;
+    }
+    if (this.d)
+    {
+      this.f.setSpan(new ForegroundColorSpan(l()), 0, i, 17);
+      return;
+    }
+    if (i == 2)
+    {
+      this.f.setSpan(new ForegroundColorSpan(m()), 0, 2, 17);
+      return;
+    }
+    if (i >= 4)
+    {
+      int j = this.e + 2 - 3;
+      this.f.setSpan(new ForegroundColorSpan(l()), 0, j, 17);
+      this.f.setSpan(new ForegroundColorSpan(m()), j, i, 17);
+    }
+  }
+  
+  public SpannableString e()
+  {
+    return this.f;
+  }
+  
+  public void f()
+  {
+    Object localObject = this.b;
     if ((localObject != null) && (((MessageForPtt)localObject).getSttResult() != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getSttResult().a();
-      int i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getSttResult().a();
+      localObject = this.b.getSttResult().d();
+      int i = this.b.getSttResult().e();
       if (i != 2)
       {
         if (i != 3) {
@@ -241,34 +236,39 @@ public class PttSttItemAnimator
       b((String)localObject);
       return;
     }
-    this.jdField_a_of_type_AndroidTextSpannableString = new SpannableString("");
+    this.f = new SpannableString("");
   }
   
-  void e()
+  void g()
   {
-    this.jdField_a_of_type_AndroidTextSpannableString = new SpannableString("");
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.f = new SpannableString("");
+    WeakReference localWeakReference = this.a;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((PttItemBuilder.Holder)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt, this.jdField_a_of_type_AndroidTextSpannableString, this.jdField_a_of_type_Int);
+      ((PttItemBuilder.Holder)this.a.get()).a(this.g, this.b, this.f, this.c);
     }
   }
   
-  public void f()
+  public boolean h()
   {
-    this.jdField_b_of_type_Int = 0;
-    e();
+    return this.h;
   }
   
-  public void g()
+  public void i()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.e = 0;
+    g();
+  }
+  
+  public void j()
+  {
+    Object localObject = this.a;
     if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
-      localObject = (PttItemBuilder.Holder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (((PttItemBuilder.Holder)localObject).jdField_a_of_type_AndroidWidgetProgressBar != null)
+      localObject = (PttItemBuilder.Holder)this.a.get();
+      if (((PttItemBuilder.Holder)localObject).C != null)
       {
-        ((PttItemBuilder.Holder)localObject).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        ((PttItemBuilder.Holder)localObject).jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminate(true);
+        ((PttItemBuilder.Holder)localObject).C.setVisibility(0);
+        ((PttItemBuilder.Holder)localObject).C.setIndeterminate(true);
         if (QLog.isColorLevel()) {
           QLog.d("Q.stt_PttSttItemAnimator", 2, "stt repush, progress appear again");
         }
@@ -276,17 +276,17 @@ public class PttSttItemAnimator
     }
   }
   
-  public void h()
+  public void k()
   {
-    MessageForPtt localMessageForPtt = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
+    MessageForPtt localMessageForPtt = this.b;
     if ((localMessageForPtt != null) && (localMessageForPtt.getSttResult() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getSttResult().c();
+      this.b.getSttResult().c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.stt.ui.PttSttItemAnimator
  * JD-Core Version:    0.7.0.1
  */

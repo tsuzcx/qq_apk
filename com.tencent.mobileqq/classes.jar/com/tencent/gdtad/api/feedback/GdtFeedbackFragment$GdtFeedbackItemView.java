@@ -15,16 +15,16 @@ class GdtFeedbackFragment$GdtFeedbackItemView
     paramContext = LayoutInflater.from(paramContext);
     int i;
     if (paramBoolean) {
-      i = 2131559182;
+      i = 2131624937;
     } else {
-      i = 2131559183;
+      i = 2131624938;
     }
     paramContext.inflate(i, this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.feedback.GdtFeedbackFragment.GdtFeedbackItemView
  * JD-Core Version:    0.7.0.1
  */

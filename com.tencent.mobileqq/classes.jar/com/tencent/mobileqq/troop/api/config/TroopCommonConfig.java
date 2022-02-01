@@ -13,37 +13,36 @@ import mqq.app.MobileQQ;
 
 public class TroopCommonConfig
 {
-  private static AbsTroopCommonProcessor jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor = null;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static final Object a = new Object();
+  private static AtomicBoolean b = new AtomicBoolean(false);
   @ConfigInject(configPath="IMCore/src/main/resources/Inject_IMCoreTroopCommonConfig.yml", version=1)
-  private static ArrayList<Class<? extends AbsTroopCommonProcessor>> jdField_a_of_type_JavaUtilArrayList;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static ArrayList<Class<? extends AbsTroopCommonProcessor>> c = new ArrayList();
+  private static AbsTroopCommonProcessor d = null;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(TroopCommonProcessor.class);
+    c.add(TroopCommonProcessor.class);
   }
   
   public static void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TroopCommonCofig", 2, new Object[] { "call init from ", MobileQQ.processName, " init = ", Boolean.valueOf(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) });
+      QLog.d("TroopCommonCofig", 2, new Object[] { "call init from ", MobileQQ.processName, " init = ", Boolean.valueOf(b.get()) });
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (a)
     {
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      if (b.get()) {
         return;
       }
       b();
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      b.set(true);
       return;
     }
   }
   
   public static void a(List<String> paramList)
   {
-    AbsTroopCommonProcessor localAbsTroopCommonProcessor = jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor;
+    AbsTroopCommonProcessor localAbsTroopCommonProcessor = d;
     if (localAbsTroopCommonProcessor != null) {
       localAbsTroopCommonProcessor.a(paramList);
     }
@@ -51,7 +50,7 @@ public class TroopCommonConfig
   
   public static boolean a(Context paramContext, String paramString1, String paramString2)
   {
-    AbsTroopCommonProcessor localAbsTroopCommonProcessor = jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor;
+    AbsTroopCommonProcessor localAbsTroopCommonProcessor = d;
     if (localAbsTroopCommonProcessor != null) {
       return localAbsTroopCommonProcessor.a(paramContext, paramString1, paramString2);
     }
@@ -60,7 +59,7 @@ public class TroopCommonConfig
   
   public static boolean a(AppRuntime paramAppRuntime, TroopInfo paramTroopInfo, boolean paramBoolean)
   {
-    AbsTroopCommonProcessor localAbsTroopCommonProcessor = jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor;
+    AbsTroopCommonProcessor localAbsTroopCommonProcessor = d;
     if (localAbsTroopCommonProcessor != null) {
       return localAbsTroopCommonProcessor.a(paramAppRuntime, paramTroopInfo, paramBoolean);
     }
@@ -69,7 +68,7 @@ public class TroopCommonConfig
   
   public static boolean a(AppRuntime paramAppRuntime, String paramString)
   {
-    AbsTroopCommonProcessor localAbsTroopCommonProcessor = jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor;
+    AbsTroopCommonProcessor localAbsTroopCommonProcessor = d;
     if (localAbsTroopCommonProcessor != null) {
       return localAbsTroopCommonProcessor.a(paramAppRuntime, paramString);
     }
@@ -78,11 +77,11 @@ public class TroopCommonConfig
   
   private static void b()
   {
-    ArrayList localArrayList = jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = c;
     if ((localArrayList != null) && (localArrayList.size() == 1)) {
       try
       {
-        jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor = (AbsTroopCommonProcessor)((Class)jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance();
+        d = (AbsTroopCommonProcessor)((Class)c.get(0)).newInstance();
         return;
       }
       catch (Throwable localThrowable)
@@ -95,7 +94,7 @@ public class TroopCommonConfig
   
   public static boolean b(AppRuntime paramAppRuntime, String paramString)
   {
-    AbsTroopCommonProcessor localAbsTroopCommonProcessor = jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor;
+    AbsTroopCommonProcessor localAbsTroopCommonProcessor = d;
     if (localAbsTroopCommonProcessor != null) {
       return localAbsTroopCommonProcessor.b(paramAppRuntime, paramString);
     }
@@ -104,7 +103,7 @@ public class TroopCommonConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopCommonConfig
  * JD-Core Version:    0.7.0.1
  */

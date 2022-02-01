@@ -16,15 +16,15 @@ import java.util.Set;
 
 public class RenderNode
 {
-  List<RenderNode> mChildPendingList = new ArrayList();
-  List<RenderNode> mChildren = new ArrayList();
-  String mClassName;
-  ControllerManager mComponentManager;
+  final List<RenderNode> mChildPendingList = new ArrayList();
+  final List<RenderNode> mChildren = new ArrayList();
+  final String mClassName;
+  final ControllerManager mComponentManager;
   SparseArray<Integer> mDeletedIdIndexMap;
   public boolean mHasSetDteblId = false;
   boolean mHasUpdateLayout = false;
   int mHeight;
-  int mId;
+  final int mId;
   boolean mIsDelete = false;
   boolean mIsLazyLoad = false;
   boolean mIsRootHasDelete = false;
@@ -217,6 +217,11 @@ public class RenderNode
   public boolean isDelete()
   {
     return this.mIsDelete;
+  }
+  
+  public boolean isIsLazyLoad()
+  {
+    return this.mIsLazyLoad;
   }
   
   public void manageChildrenComplete()
@@ -478,7 +483,7 @@ public class RenderNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.RenderNode
  * JD-Core Version:    0.7.0.1
  */

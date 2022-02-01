@@ -19,65 +19,65 @@ import com.tencent.qphone.base.util.QLog;
 public class VideoDrawable
   extends Drawable
 {
-  private static Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  int jdField_a_of_type_Int = 119;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(7);
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 160;
-  private int c;
-  private int d;
+  private static Bitmap g;
+  Paint a = new Paint(7);
+  int b = 119;
+  int c = 160;
+  boolean d = false;
+  private Bitmap e;
+  private final Rect f = new Rect();
+  private int h;
+  private int i;
   
   public VideoDrawable(Bitmap paramBitmap, Resources paramResources)
   {
-    this.jdField_b_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
+    this.c = paramResources.getDisplayMetrics().densityDpi;
     a(paramBitmap);
   }
   
-  private void a()
+  private void b()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.e;
     if (localBitmap != null)
     {
-      this.c = localBitmap.getScaledWidth(this.jdField_b_of_type_Int);
-      this.d = this.jdField_a_of_type_AndroidGraphicsBitmap.getScaledHeight(this.jdField_b_of_type_Int);
+      this.h = localBitmap.getScaledWidth(this.c);
+      this.i = this.e.getScaledHeight(this.c);
     }
   }
   
   public Bitmap a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    return this.e;
   }
   
   public void a(Bitmap paramBitmap)
   {
-    if (paramBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap)
+    if (paramBitmap != this.e)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      a();
+      this.e = paramBitmap;
+      b();
       invalidateSelf();
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   @TargetApi(21)
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (this.e != null)
     {
-      copyBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-      if ((this.jdField_a_of_type_Boolean) && (jdField_b_of_type_AndroidGraphicsBitmap == null)) {
+      copyBounds(this.f);
+      if ((this.d) && (g == null)) {
         try
         {
-          jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height(), Bitmap.Config.ARGB_4444);
-          Canvas localCanvas = new Canvas(jdField_b_of_type_AndroidGraphicsBitmap);
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-          localCanvas.drawOval(new RectF(0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height()), this.jdField_a_of_type_AndroidGraphicsPaint);
+          g = Bitmap.createBitmap(this.f.width(), this.f.height(), Bitmap.Config.ARGB_4444);
+          Canvas localCanvas = new Canvas(g);
+          this.a.setColor(-1);
+          localCanvas.drawOval(new RectF(0.0F, 0.0F, this.f.width(), this.f.height()), this.a);
         }
         catch (OutOfMemoryError localOutOfMemoryError)
         {
@@ -88,29 +88,29 @@ public class VideoDrawable
       }
       if (Build.VERSION.SDK_INT >= 21)
       {
-        int i = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null);
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-        if ((this.jdField_a_of_type_Boolean) && (jdField_b_of_type_AndroidGraphicsBitmap != null))
+        int j = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null);
+        paramCanvas.drawBitmap(this.e, null, this.f, this.a);
+        if ((this.d) && (g != null))
         {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-          paramCanvas.drawBitmap(jdField_b_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+          this.a.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+          paramCanvas.drawBitmap(g, null, this.f, this.a);
+          this.a.setXfermode(null);
         }
-        paramCanvas.restoreToCount(i);
+        paramCanvas.restoreToCount(j);
         return;
       }
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap(this.e, null, this.f, this.a);
     }
   }
   
   public int getIntrinsicHeight()
   {
-    return this.d;
+    return this.i;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.c;
+    return this.h;
   }
   
   public int getOpacity()
@@ -120,27 +120,27 @@ public class VideoDrawable
   
   public void setAlpha(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    this.a.setAlpha(paramInt);
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.a.setColorFilter(paramColorFilter);
   }
   
   public void setDither(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    this.a.setDither(paramBoolean);
   }
   
   public void setFilterBitmap(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(paramBoolean);
+    this.a.setFilterBitmap(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.VideoDrawable
  * JD-Core Version:    0.7.0.1
  */

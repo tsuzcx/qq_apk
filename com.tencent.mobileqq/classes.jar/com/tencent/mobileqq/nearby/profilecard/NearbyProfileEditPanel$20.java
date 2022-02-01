@@ -26,31 +26,31 @@ class NearbyProfileEditPanel$20
   
   public void onClick(View paramView)
   {
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.mEnterProfileIntent.getIntExtra("param_mode", 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.notifyExitProfile(false);
-    if ((i == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard == null))
+    int i = this.a.F.mEnterProfileIntent.getIntExtra("param_mode", 0);
+    this.a.F.notifyExitProfile(false);
+    if ((i == 1) && (this.a.G == null))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
+      this.a.F.finish();
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.mMode != 1) {
+    if (this.a.F.mMode != 1) {
       return;
     }
-    InputMethodUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+    InputMethodUtil.a(this.a.F);
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.showToast(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getString(2131694424));
+      this.a.F.showToast(this.a.F.getString(2131892104));
       return;
     }
-    if (!NearbyProfileEditPanel.a(this.a)) {
+    if (!NearbyProfileEditPanel.e(this.a)) {
       return;
     }
-    this.a.b();
-    boolean bool1 = this.a.a();
-    boolean bool2 = ((Boolean)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(true))).booleanValue();
-    boolean bool3 = this.a.c();
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nearbyNowData != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nearbyNowData.get() != null) && (((cmd0xac5.NearbyNowData)this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nearbyNowData.get()).master_state.get() != null)) {
-      i = ((cmd0xac5.MasterState)((cmd0xac5.NearbyNowData)this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nearbyNowData.get()).master_state.get()).uint32_state.get();
+    this.a.t();
+    boolean bool1 = this.a.d();
+    boolean bool2 = ((Boolean)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a.F.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(true))).booleanValue();
+    boolean bool3 = this.a.k();
+    if ((this.a.G.nearbyNowData != null) && (this.a.G.nearbyNowData.get() != null) && (((cmd0xac5.NearbyNowData)this.a.G.nearbyNowData.get()).master_state.get() != null)) {
+      i = ((cmd0xac5.MasterState)((cmd0xac5.NearbyNowData)this.a.G.nearbyNowData.get()).master_state.get()).uint32_state.get();
     } else {
       i = 0;
     }
@@ -59,48 +59,48 @@ class NearbyProfileEditPanel$20
     } else {
       i = 1;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (bool3) && (i != 0))
+    if ((this.a.G != null) && (bool3) && (i != 0))
     {
-      paramView = new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("face_score_vip").d("expert_change");
+      paramView = new ReportTask(this.a.F.app).a("dc00899").b("grp_lbs").c("face_score_vip").d("expert_change");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.gender + 1);
+      localStringBuilder.append(this.a.G.gender + 1);
       paramView.a(new String[] { "", localStringBuilder.toString() }).a();
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.isFaceInfoChange = bool3;
-      this.a.f();
+      this.a.F.isFaceInfoChange = bool3;
+      this.a.s();
       return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.godFlag) && (bool1))
+    if ((this.a.G != null) && (this.a.G.godFlag) && (bool1))
     {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getString(2131694418, new Object[] { this.a.jdField_a_of_type_JavaLangString });
-      paramView = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, paramView, 0, 0, null, null);
-      paramView.setPositiveButton(HardCodeUtil.a(2131707281), new NearbyProfileEditPanel.20.1(this, paramView));
-      paramView.setNegativeButton(HardCodeUtil.a(2131707410), new NearbyProfileEditPanel.20.2(this, paramView));
+      paramView = this.a.F.getString(2131892097, new Object[] { this.a.L });
+      paramView = DialogUtil.a(this.a.F, paramView, 0, 0, null, null);
+      paramView.setPositiveButton(HardCodeUtil.a(2131905107), new NearbyProfileEditPanel.20.1(this, paramView));
+      paramView.setNegativeButton(HardCodeUtil.a(2131905228), new NearbyProfileEditPanel.20.2(this, paramView));
       paramView.show();
       return;
     }
     if ((bool1) && (bool2))
     {
-      paramView = HardCodeUtil.a(2131707398);
-      paramView = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, paramView, 0, 0, null, null);
-      paramView.setPositiveButton(HardCodeUtil.a(2131707347), new NearbyProfileEditPanel.20.3(this, paramView));
-      paramView.setNegativeButton(HardCodeUtil.a(2131707349), new NearbyProfileEditPanel.20.4(this, paramView));
+      paramView = HardCodeUtil.a(2131905216);
+      paramView = DialogUtil.a(this.a.F, paramView, 0, 0, null, null);
+      paramView.setPositiveButton(HardCodeUtil.a(2131905169), new NearbyProfileEditPanel.20.3(this, paramView));
+      paramView.setNegativeButton(HardCodeUtil.a(2131905171), new NearbyProfileEditPanel.20.4(this, paramView));
       paramView.show();
-      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(false));
+      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.a.F.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(false));
       return;
     }
     if (bool1)
     {
-      this.a.f();
+      this.a.s();
       return;
     }
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, "", "", "", "");
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.quitEditWithoutSaving();
+    ReportController.b(this.a.F.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, "", "", "", "");
+    this.a.F.quitEditWithoutSaving();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.20
  * JD-Core Version:    0.7.0.1
  */

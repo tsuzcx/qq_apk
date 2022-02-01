@@ -24,11 +24,11 @@ final class TransmissionHelper$2
   public void a(DownloadFile paramDownloadFile, int paramInt, DownloadServerInfoCallback paramDownloadServerInfoCallback)
   {
     Object localObject2 = new WeiyunPB.DiskSimpleFileItem();
-    ((WeiyunPB.DiskSimpleFileItem)localObject2).file_id.set(paramDownloadFile.a);
-    if (paramDownloadFile.e != null) {
-      ((WeiyunPB.DiskSimpleFileItem)localObject2).pdir_key.set(StringUtils.a(paramDownloadFile.e));
+    ((WeiyunPB.DiskSimpleFileItem)localObject2).file_id.set(paramDownloadFile.b);
+    if (paramDownloadFile.h != null) {
+      ((WeiyunPB.DiskSimpleFileItem)localObject2).pdir_key.set(StringUtils.a(paramDownloadFile.h));
     }
-    ((WeiyunPB.DiskSimpleFileItem)localObject2).filename.set(paramDownloadFile.b);
+    ((WeiyunPB.DiskSimpleFileItem)localObject2).filename.set(paramDownloadFile.c);
     boolean bool = true;
     Object localObject1 = new ArrayList(1);
     ((List)localObject1).add(localObject2);
@@ -40,15 +40,15 @@ final class TransmissionHelper$2
       bool = false;
     }
     ((PBBoolField)localObject1).set(bool);
-    if ((!TextUtils.isEmpty(paramDownloadFile.d)) && (TextUtils.isDigitsOnly(paramDownloadFile.d))) {
-      ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_owner.set(Long.parseLong(paramDownloadFile.d));
+    if ((!TextUtils.isEmpty(paramDownloadFile.g)) && (TextUtils.isDigitsOnly(paramDownloadFile.g))) {
+      ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_owner.set(Long.parseLong(paramDownloadFile.g));
     }
     ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).fetchDownloadAddress((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2, new TransmissionHelper.2.1(this, paramDownloadFile, paramDownloadServerInfoCallback, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.TransmissionHelper.2
  * JD-Core Version:    0.7.0.1
  */

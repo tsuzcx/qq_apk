@@ -12,10 +12,11 @@ public class BaseFrameControllerUtil
   public static int h = 2;
   public static int i = 8;
   public static int j = 9;
+  public static int k = 11;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.impl.BaseFrameControllerUtil
  * JD-Core Version:    0.7.0.1
  */

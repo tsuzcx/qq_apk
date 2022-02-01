@@ -14,12 +14,17 @@ import com.tencent.qphone.base.util.QLog;
 public class StoryShareTranslateTokenRequest
   extends NetworkRequest
 {
-  public static final String a = StoryApi.a("StorySvc.translate_share_parameters_to_token");
-  public String b;
-  public int c;
-  public String c;
+  public static final String e = StoryApi.a("StorySvc.translate_share_parameters_to_token");
+  public String f;
+  public int g;
+  public String h;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspTranslateToken localRspTranslateToken = new qqstory_service.RspTranslateToken();
     try
@@ -35,18 +40,13 @@ public class StoryShareTranslateTokenRequest
     return new StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse(localRspTranslateToken);
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqTranslateToken localReqTranslateToken = new qqstory_service.ReqTranslateToken();
-    localReqTranslateToken.src_buffer.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqTranslateToken.type.set(this.jdField_c_of_type_Int);
-    if ((this.jdField_c_of_type_Int == 1) && (this.jdField_c_of_type_JavaLangString != null)) {
-      localReqTranslateToken.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    localReqTranslateToken.src_buffer.set(ByteStringMicro.copyFromUtf8(this.f));
+    localReqTranslateToken.type.set(this.g);
+    if ((this.g == 1) && (this.h != null)) {
+      localReqTranslateToken.feed_id.set(ByteStringMicro.copyFromUtf8(this.h));
     }
     return localReqTranslateToken.toByteArray();
   }
@@ -55,20 +55,20 @@ public class StoryShareTranslateTokenRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("StoryShareTranslateTokenRequest{feedId='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append(", srcBuffer='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", type=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest
  * JD-Core Version:    0.7.0.1
  */

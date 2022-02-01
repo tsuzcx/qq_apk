@@ -11,14 +11,14 @@ class RvPolymericContainer$6
   
   public void run()
   {
-    RvPolymericContainer.a(this.this$0).setCellArray(RvPolymericContainer.a(this.this$0).getTemplateFactory(), this.a);
-    RvPolymericContainer.a(this.this$0).notifyDataSetChanged();
+    RvPolymericContainer.f(this.this$0).setCellArray(RvPolymericContainer.g(this.this$0).getTemplateFactory(), this.a);
+    RvPolymericContainer.f(this.this$0).notifyDataSetChanged();
     this.this$0.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.RvPolymericContainer.6
  * JD-Core Version:    0.7.0.1
  */

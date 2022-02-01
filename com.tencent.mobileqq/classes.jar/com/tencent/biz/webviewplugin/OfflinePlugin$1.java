@@ -44,17 +44,17 @@ class OfflinePlugin$1
           localObject2 = localObject3;
         }
       }
-      paramString = this.a.a.obtainMessage();
+      paramString = this.a.u.obtainMessage();
       paramString.arg1 = 3;
       paramString.obj = localObject2;
-      this.a.a.sendMessage(paramString);
+      this.a.u.sendMessage(paramString);
       return;
     }
     if (paramInt == -1)
     {
-      paramString = this.a.a.obtainMessage();
+      paramString = this.a.u.obtainMessage();
       paramString.arg1 = 2;
-      this.a.a.sendMessage(paramString);
+      this.a.u.sendMessage(paramString);
     }
   }
   
@@ -62,7 +62,7 @@ class OfflinePlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.1
  * JD-Core Version:    0.7.0.1
  */

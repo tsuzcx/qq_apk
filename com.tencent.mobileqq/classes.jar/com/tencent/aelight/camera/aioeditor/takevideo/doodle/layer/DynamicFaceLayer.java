@@ -36,14 +36,47 @@ import org.json.JSONArray;
 public class DynamicFaceLayer
   extends FaceLayer
 {
-  private boolean c = false;
+  private boolean t = false;
   
   public DynamicFaceLayer(DoodleView paramDoodleView)
   {
     super(paramDoodleView);
   }
   
-  public static Drawable a(String paramString)
+  public static String a(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) && (!paramString.endsWith(".apng"))) {
+      return null;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDynamicStaticPicPath|path= ");
+      localStringBuilder.append(paramString);
+      QLog.d("DynamicFaceLayer", 2, localStringBuilder.toString());
+    }
+    int i = paramString.length();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString.substring(0, i - 5));
+    localStringBuilder.append(".bpng");
+    paramString = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("newPath= ");
+      localStringBuilder.append(paramString);
+      QLog.d("DynamicFaceLayer", 2, localStringBuilder.toString());
+    }
+    if (new File(paramString).exists()) {
+      return paramString;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DynamicFaceLayer", 2, "file not exist");
+    }
+    return null;
+  }
+  
+  public static Drawable b(String paramString)
   {
     Object localObject3 = null;
     Object localObject2 = null;
@@ -95,44 +128,6 @@ public class DynamicFaceLayer
     return str;
   }
   
-  public static String a(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) && (!paramString.endsWith(".apng"))) {
-      return null;
-    }
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getDynamicStaticPicPath|path= ");
-      localStringBuilder.append(paramString);
-      QLog.d("DynamicFaceLayer", 2, localStringBuilder.toString());
-    }
-    int i = paramString.length();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString.substring(0, i - 5));
-    localStringBuilder.append(".bpng");
-    paramString = localStringBuilder.toString();
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("newPath= ");
-      localStringBuilder.append(paramString);
-      QLog.d("DynamicFaceLayer", 2, localStringBuilder.toString());
-    }
-    if (new File(paramString).exists()) {
-      return paramString;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DynamicFaceLayer", 2, "file not exist");
-    }
-    return null;
-  }
-  
-  public int a()
-  {
-    return 2147483647;
-  }
-  
   public String a()
   {
     return "DynamicFaceLayer";
@@ -140,8 +135,8 @@ public class DynamicFaceLayer
   
   public String a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int m = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_Int;
-    int k = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.b;
+    int m = this.z.c;
+    int k = this.z.d;
     int j = paramInt1;
     int i = paramInt2;
     if (paramInt1 > paramInt2)
@@ -154,7 +149,7 @@ public class DynamicFaceLayer
         j = paramInt2;
       }
     }
-    float f1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_Int * 1.0F / this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.b;
+    float f1 = this.z.c * 1.0F / this.z.d;
     float f2 = j * 1.0F / i;
     j = 0;
     i = 0;
@@ -163,15 +158,15 @@ public class DynamicFaceLayer
     if (f2 != f1) {
       if (f1 > f2)
       {
-        paramInt1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_Int;
-        paramInt2 = Math.round(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_Int / f2);
-        i = (paramInt2 - this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.b) / 2;
+        paramInt1 = this.z.c;
+        paramInt2 = Math.round(this.z.c / f2);
+        i = (paramInt2 - this.z.d) / 2;
       }
       else
       {
-        paramInt1 = Math.round(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.b * f2);
-        paramInt2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.b;
-        i = (paramInt1 - this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_Int) / 2;
+        paramInt1 = Math.round(this.z.d * f2);
+        paramInt2 = this.z.d;
+        i = (paramInt1 - this.z.c) / 2;
         break label194;
       }
     }
@@ -193,24 +188,24 @@ public class DynamicFaceLayer
       ((StringBuilder)localObject1).append(i);
       QLog.d("DynamicFaceLayer", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.b())
+    if (this.z.h.c())
     {
       localObject1 = new ArrayList();
-      Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject2 = this.b.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)((Iterator)localObject2).next();
         DynamicStickerData localDynamicStickerData = new DynamicStickerData();
-        localDynamicStickerData.centerP = localFaceItem.jdField_a_of_type_AndroidGraphicsPointF;
-        localDynamicStickerData.scale = localFaceItem.j;
-        localDynamicStickerData.rotate = localFaceItem.k;
-        localDynamicStickerData.translateX = (localFaceItem.l + i);
-        localDynamicStickerData.translateY = (localFaceItem.m + j);
-        localDynamicStickerData.height = localFaceItem.o;
-        localDynamicStickerData.width = localFaceItem.n;
-        localDynamicStickerData.path = localFaceItem.jdField_f_of_type_JavaLangString;
-        localDynamicStickerData.type = localFaceItem.h;
-        localDynamicStickerData.data = localFaceItem.jdField_g_of_type_JavaLangString;
+        localDynamicStickerData.centerP = localFaceItem.A;
+        localDynamicStickerData.scale = localFaceItem.B;
+        localDynamicStickerData.rotate = localFaceItem.C;
+        localDynamicStickerData.translateX = (localFaceItem.D + i);
+        localDynamicStickerData.translateY = (localFaceItem.E + j);
+        localDynamicStickerData.height = localFaceItem.H;
+        localDynamicStickerData.width = localFaceItem.G;
+        localDynamicStickerData.path = localFaceItem.p;
+        localDynamicStickerData.type = localFaceItem.y;
+        localDynamicStickerData.data = localFaceItem.w;
         localDynamicStickerData.layerWidth = paramInt1;
         localDynamicStickerData.layerHeight = paramInt2;
         ((ArrayList)localObject1).add(localDynamicStickerData);
@@ -230,12 +225,6 @@ public class DynamicFaceLayer
     return null;
   }
   
-  public void a()
-  {
-    super.a();
-    this.b.clear();
-  }
-  
   public void a(Canvas paramCanvas, float paramFloat) {}
   
   public void a(ArrayList<PasterParcelData> paramArrayList, boolean paramBoolean, JSONArray paramJSONArray)
@@ -244,57 +233,57 @@ public class DynamicFaceLayer
     while (i < paramArrayList.size())
     {
       PasterParcelData localPasterParcelData = (PasterParcelData)paramArrayList.get(i);
-      if ((localPasterParcelData.jdField_d_of_type_Int == 3) && (!TextUtils.isEmpty(localPasterParcelData.jdField_e_of_type_JavaLangString)))
+      if ((localPasterParcelData.p == 3) && (!TextUtils.isEmpty(localPasterParcelData.q)))
       {
-        if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.b())) {
+        if ((this.z.h != null) && (this.z.h.c())) {
           j = 1;
         } else {
           j = 0;
         }
-        InfoStickerDrawable localInfoStickerDrawable = InformationFaceConstant.a(BaseApplicationImpl.getContext(), localPasterParcelData.jdField_e_of_type_JavaLangString);
+        InfoStickerDrawable localInfoStickerDrawable = InformationFaceConstant.a(BaseApplicationImpl.getContext(), localPasterParcelData.q);
         if (j != 0) {
           paramJSONArray = localInfoStickerDrawable;
         } else if (localInfoStickerDrawable != null) {
-          paramJSONArray = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localInfoStickerDrawable.a());
+          paramJSONArray = new BitmapDrawable(this.y.getResources(), localInfoStickerDrawable.h());
         } else {
           paramJSONArray = null;
         }
-        int j = (int)localPasterParcelData.jdField_a_of_type_AndroidGraphicsRectF.left;
-        int k = (int)localPasterParcelData.jdField_a_of_type_AndroidGraphicsRectF.right;
-        int m = (int)localPasterParcelData.jdField_a_of_type_AndroidGraphicsRectF.top;
-        int n = (int)localPasterParcelData.jdField_a_of_type_AndroidGraphicsRectF.bottom;
+        int j = (int)localPasterParcelData.k.left;
+        int k = (int)localPasterParcelData.k.right;
+        int m = (int)localPasterParcelData.k.top;
+        int n = (int)localPasterParcelData.k.bottom;
         if (paramJSONArray != null)
         {
           paramJSONArray.setBounds(j, m, k, n);
           SLog.b("DynamicFaceLayer", "Create Normal FaceItem.");
-          FaceLayer.FaceItem localFaceItem = new FaceLayer.FaceItem(this, paramJSONArray, new FaceLayer.LayerParams(localPasterParcelData.jdField_a_of_type_AndroidGraphicsPointF.x, localPasterParcelData.jdField_a_of_type_AndroidGraphicsPointF.y, localPasterParcelData.jdField_a_of_type_Float, localPasterParcelData.jdField_b_of_type_Float, localPasterParcelData.jdField_c_of_type_Float, localPasterParcelData.jdField_d_of_type_Float, (int)localPasterParcelData.jdField_e_of_type_Float, (int)localPasterParcelData.f), localPasterParcelData.jdField_a_of_type_JavaLangString, localPasterParcelData.jdField_b_of_type_JavaLangString, localPasterParcelData.jdField_c_of_type_JavaLangString, localPasterParcelData.jdField_d_of_type_Int);
-          localFaceItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.set(localPasterParcelData.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
-          localFaceItem.jdField_g_of_type_JavaLangString = localPasterParcelData.jdField_e_of_type_JavaLangString;
-          localFaceItem.jdField_g_of_type_Int = localPasterParcelData.jdField_e_of_type_Int;
-          localFaceItem.jdField_e_of_type_Int = 0;
-          localFaceItem.jdField_f_of_type_Int = 1;
-          localFaceItem.b = InformationFaceConstant.a(localInfoStickerDrawable.a());
-          localFaceItem.c = InformationFaceConstant.b(localInfoStickerDrawable.a());
-          if (localFaceItem.b)
+          FaceLayer.FaceItem localFaceItem = new FaceLayer.FaceItem(this, paramJSONArray, new FaceLayer.LayerParams(localPasterParcelData.d.x, localPasterParcelData.d.y, localPasterParcelData.e, localPasterParcelData.f, localPasterParcelData.g, localPasterParcelData.h, (int)localPasterParcelData.i, (int)localPasterParcelData.j), localPasterParcelData.l, localPasterParcelData.m, localPasterParcelData.n, localPasterParcelData.p);
+          localFaceItem.U.set(localPasterParcelData.v);
+          localFaceItem.w = localPasterParcelData.q;
+          localFaceItem.x = localPasterParcelData.r;
+          localFaceItem.q = 0;
+          localFaceItem.r = 1;
+          localFaceItem.s = InformationFaceConstant.a(localInfoStickerDrawable.f());
+          localFaceItem.t = InformationFaceConstant.b(localInfoStickerDrawable.f());
+          if (localFaceItem.s)
           {
-            this.b.add(localFaceItem);
-            if (!TextUtils.isEmpty(localPasterParcelData.jdField_d_of_type_JavaLangString))
+            this.r.add(localFaceItem);
+            if (!TextUtils.isEmpty(localPasterParcelData.o))
             {
-              localFaceItem.jdField_a_of_type_ComTencentMobileqqTribeDataTroopBarPOI = new TroopBarPOI("-1", "", localPasterParcelData.jdField_d_of_type_JavaLangString, 0, "", 0, "");
-              localFaceItem.jdField_a_of_type_Long = System.currentTimeMillis();
+              localFaceItem.u = new TroopBarPOI("-1", "", localPasterParcelData.o, 0, "", 0, "");
+              localFaceItem.v = System.currentTimeMillis();
             }
           }
-          if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.b()))
+          if ((this.z.h != null) && (this.z.h.c()))
           {
-            paramJSONArray.setCallback(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView);
-            this.jdField_a_of_type_JavaUtilList.add(localFaceItem);
+            paramJSONArray.setCallback(this.z);
+            this.b.add(localFaceItem);
           }
           else
           {
-            localFaceItem.h = 0;
-            paramJSONArray = (FaceLayer)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.a(FaceLayer.jdField_a_of_type_JavaLangString);
+            localFaceItem.y = 0;
+            paramJSONArray = (FaceLayer)this.z.a(FaceLayer.a);
             if (paramJSONArray != null) {
-              paramJSONArray.jdField_a_of_type_JavaUtilList.add(localFaceItem);
+              paramJSONArray.b.add(localFaceItem);
             }
           }
         }
@@ -306,33 +295,33 @@ public class DynamicFaceLayer
   
   public void a(boolean paramBoolean)
   {
-    if ((!this.c) && (!paramBoolean)) {
+    if ((!this.t) && (!paramBoolean)) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (this.b != null)
     {
-      if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+      if (this.b.isEmpty()) {
         return;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (FaceLayer.FaceItem)localIterator.next();
-        if ((((FaceLayer.FaceItem)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((((FaceLayer.FaceItem)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)))
+        if ((((FaceLayer.FaceItem)localObject).l != null) && ((((FaceLayer.FaceItem)localObject).l instanceof URLDrawable)))
         {
-          localObject = (URLDrawable)((FaceLayer.FaceItem)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+          localObject = (URLDrawable)((FaceLayer.FaceItem)localObject).l;
           if (localObject != null)
           {
             localObject = ((URLDrawable)localObject).getCurrDrawable();
             if ((localObject != null) && ((localObject instanceof ApngDrawable)) && (((ApngDrawable)localObject).getImage() != null)) {
               if (paramBoolean)
               {
-                this.c = true;
+                this.t = true;
                 ApngImage.pauseByTag(13);
               }
               else
               {
-                this.c = false;
+                this.t = false;
                 ApngImage.playByTag(13);
               }
             }
@@ -344,52 +333,37 @@ public class DynamicFaceLayer
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        Drawable localDrawable = ((FaceLayer.FaceItem)localIterator.next()).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        if ((localDrawable instanceof WeatherStickerDrawable)) {
-          ((WeatherStickerDrawable)localDrawable).a();
-        }
-      }
-    }
     super.b();
-  }
-  
-  protected boolean b()
-  {
-    return b() >= 10;
+    this.r.clear();
   }
   
   public void c(Canvas paramCanvas)
   {
-    if (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.b()) {
+    if (!this.z.h.c()) {
       return;
     }
     paramCanvas.save();
-    paramCanvas.scale(this.jdField_a_of_type_Float, this.jdField_a_of_type_Float);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    paramCanvas.scale(this.J, this.J);
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)localIterator.next();
-      Drawable localDrawable = a(a(localFaceItem.jdField_f_of_type_JavaLangString));
+      Drawable localDrawable = b(a(localFaceItem.p));
       if (localDrawable != null) {
-        localDrawable.setBounds(0, 0, (int)localFaceItem.n, (int)localFaceItem.o);
+        localDrawable.setBounds(0, 0, (int)localFaceItem.G, (int)localFaceItem.H);
       }
       Object localObject = localDrawable;
-      if (localFaceItem.h == 3)
+      if (localFaceItem.y == 3)
       {
         localObject = localDrawable;
-        if (localFaceItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+        if (localFaceItem.l != null)
         {
           localObject = localDrawable;
-          if ((localFaceItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof InfoStickerDrawable)) {
+          if ((localFaceItem.l instanceof InfoStickerDrawable)) {
             try
             {
-              localObject = (InfoStickerDrawable)localFaceItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-              localObject = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), ((InfoStickerDrawable)localObject).a());
+              localObject = (InfoStickerDrawable)localFaceItem.l;
+              localObject = new BitmapDrawable(this.y.getResources(), ((InfoStickerDrawable)localObject).h());
               try
               {
                 ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
@@ -410,9 +384,9 @@ public class DynamicFaceLayer
       if (localObject != null)
       {
         paramCanvas.save();
-        paramCanvas.concat(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(localFaceItem));
+        paramCanvas.concat(this.m.b(localFaceItem));
         paramCanvas.save();
-        paramCanvas.translate(-localFaceItem.n / 2.0F, -localFaceItem.o / 2.0F);
+        paramCanvas.translate(-localFaceItem.G / 2.0F, -localFaceItem.H / 2.0F);
         ((Drawable)localObject).draw(paramCanvas);
         paramCanvas.restore();
         paramCanvas.restore();
@@ -420,10 +394,36 @@ public class DynamicFaceLayer
     }
     paramCanvas.restore();
   }
+  
+  protected boolean d()
+  {
+    return g() >= 10;
+  }
+  
+  public int e()
+  {
+    return 2147483647;
+  }
+  
+  public void f()
+  {
+    if (this.b != null)
+    {
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext())
+      {
+        Drawable localDrawable = ((FaceLayer.FaceItem)localIterator.next()).l;
+        if ((localDrawable instanceof WeatherStickerDrawable)) {
+          ((WeatherStickerDrawable)localDrawable).a();
+        }
+      }
+    }
+    super.f();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.DynamicFaceLayer
  * JD-Core Version:    0.7.0.1
  */

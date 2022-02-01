@@ -9,19 +9,19 @@ public class VideoInfo$LikeActionDownloadBar
   implements Parcelable
 {
   public static final Parcelable.Creator<LikeActionDownloadBar> CREATOR = new VideoInfo.LikeActionDownloadBar.1();
-  public UrlJumpInfo a;
   public String a;
   public String b;
-  public String c;
+  public UrlJumpInfo c;
+  public String d;
   
   public VideoInfo$LikeActionDownloadBar() {}
   
   protected VideoInfo$LikeActionDownloadBar(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo = ((UrlJumpInfo)paramParcel.readParcelable(UrlJumpInfo.class.getClassLoader()));
-    this.c = paramParcel.readString();
+    this.c = ((UrlJumpInfo)paramParcel.readParcelable(UrlJumpInfo.class.getClassLoader()));
+    this.d = paramParcel.readString();
   }
   
   public int describeContents()
@@ -33,14 +33,14 @@ public class VideoInfo$LikeActionDownloadBar
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("LikeActionDownloadBar{logoUrl=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", downloadBarText='");
     localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", jumpInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo);
-    localStringBuilder.append(", commonData='");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", commonData='");
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -48,15 +48,15 @@ public class VideoInfo$LikeActionDownloadBar
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo, paramInt);
-    paramParcel.writeString(this.c);
+    paramParcel.writeParcelable(this.c, paramInt);
+    paramParcel.writeString(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo.LikeActionDownloadBar
  * JD-Core Version:    0.7.0.1
  */

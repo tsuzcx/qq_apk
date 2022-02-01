@@ -11,7 +11,7 @@ class HippyDTReportController$2
   
   public void onViewAttachedToWindow(View paramView)
   {
-    VideoReport.setElementId(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangString);
+    VideoReport.setElementId(this.a, this.b);
     VideoReport.traverseExposure();
   }
   
@@ -19,7 +19,7 @@ class HippyDTReportController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.hippy.view.HippyDTReportController.2
  * JD-Core Version:    0.7.0.1
  */

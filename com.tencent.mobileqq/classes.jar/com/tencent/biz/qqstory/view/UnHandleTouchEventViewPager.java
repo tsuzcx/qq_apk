@@ -8,7 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 public class UnHandleTouchEventViewPager
   extends ViewPager
 {
-  protected boolean f;
+  protected boolean h;
   
   public UnHandleTouchEventViewPager(Context paramContext)
   {
@@ -42,17 +42,17 @@ public class UnHandleTouchEventViewPager
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    return (!this.f) && (super.onInterceptTouchEvent(paramMotionEvent));
+    return (!this.h) && (super.onInterceptTouchEvent(paramMotionEvent));
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    return (!this.f) && (super.onTouchEvent(paramMotionEvent));
+    return (!this.h) && (super.onTouchEvent(paramMotionEvent));
   }
   
   public void setDisableScroll(boolean paramBoolean)
   {
-    this.f = paramBoolean;
+    this.h = paramBoolean;
   }
 }
 

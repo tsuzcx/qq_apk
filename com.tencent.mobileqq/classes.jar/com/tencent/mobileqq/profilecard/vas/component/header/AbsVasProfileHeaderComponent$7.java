@@ -33,7 +33,7 @@ class AbsVasProfileHeaderComponent$7
             if (paramInt != 6)
             {
               if (paramInt != 7) {
-                Toast.makeText(AbsVasProfileHeaderComponent.access$4600(this.this$0), 2131695130, 0).show();
+                Toast.makeText(AbsVasProfileHeaderComponent.access$4600(this.this$0), 2131892858, 0).show();
               } else {
                 VasH5PayUtil.a(AbsVasProfileHeaderComponent.access$4500(this.this$0), this.val$aid, "SVHHZLH", 12, false, false);
               }
@@ -63,7 +63,7 @@ class AbsVasProfileHeaderComponent$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.header.AbsVasProfileHeaderComponent.7
  * JD-Core Version:    0.7.0.1
  */

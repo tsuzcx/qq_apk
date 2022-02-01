@@ -14,29 +14,29 @@ import java.util.Set;
 public class OrientationDetector
 {
   public static final String a;
-  private int jdField_a_of_type_Int = 1;
-  private volatile OrientationEventListener jdField_a_of_type_AndroidViewOrientationEventListener;
-  private volatile OrientationDetector.RotationObserver jdField_a_of_type_ComTencentMobileqqKandianBizVideoOrientationDetector$RotationObserver;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<Integer, Long> jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean = false;
+  private volatile OrientationEventListener b;
+  private int c = 1;
+  private volatile OrientationDetector.RotationObserver d;
+  private WeakReference<Context> e;
+  private boolean f = false;
+  private HashMap<Integer, Long> g;
+  private Object h = new Object();
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Q.readinjoy.video.");
     localStringBuilder.append(OrientationDetector.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public OrientationDetector(Activity paramActivity, OrientationDetector.OnOrientationChangedListener paramOnOrientationChangedListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.e = new WeakReference(paramActivity);
+    this.g = new HashMap();
+    synchronized (this.h)
     {
-      this.jdField_a_of_type_AndroidViewOrientationEventListener = new OrientationDetector.1(this, paramActivity, paramActivity, new WeakReference(paramOnOrientationChangedListener));
+      this.b = new OrientationDetector.1(this, paramActivity, paramActivity, new WeakReference(paramOnOrientationChangedListener));
       ThreadManager.executeOnSubThread(new OrientationDetector.2(this, paramActivity));
       return;
     }
@@ -57,8 +57,8 @@ public class OrientationDetector
       paramInt = 0;
     }
     long l = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), Long.valueOf(l));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    this.g.put(Integer.valueOf(paramInt), Long.valueOf(l));
+    Iterator localIterator = this.g.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -71,50 +71,50 @@ public class OrientationDetector
   
   public Context a()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.e;
     if (localWeakReference != null) {
       return (Context)localWeakReference.get();
     }
     return null;
   }
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "destory: ");
-    }
-    a(false, true);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoOrientationDetector$RotationObserver != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoOrientationDetector$RotationObserver.b();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoOrientationDetector$RotationObserver = null;
-    }
-  }
-  
   public boolean a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidViewOrientationEventListener == null) {
+    if (this.b == null) {
       return false;
     }
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.f)
       {
         a(true, false);
         return true;
       }
       if (QLog.isColorLevel()) {
-        QLog.w(jdField_a_of_type_JavaLangString, 2, "mRotateSettingSwitch is false : enable failure");
+        QLog.w(a, 2, "mRotateSettingSwitch is false : enable failure");
       }
       return false;
     }
     a(false, false);
     return true;
   }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "destory: ");
+    }
+    a(false, true);
+    if (this.d != null)
+    {
+      this.d.c();
+      this.d = null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.OrientationDetector
  * JD-Core Version:    0.7.0.1
  */

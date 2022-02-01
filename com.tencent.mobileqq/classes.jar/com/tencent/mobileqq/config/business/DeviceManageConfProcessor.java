@@ -20,12 +20,12 @@ public class DeviceManageConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      DeviceManageConfBean localDeviceManageConfBean = DeviceManageConfBean.a(paramArrayOfQConfItem[0].a);
+      DeviceManageConfBean localDeviceManageConfBean = DeviceManageConfBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("DeviceManageConfProcessor", 2, localStringBuilder.toString());
       }
       return localDeviceManageConfBean;
@@ -84,7 +84,7 @@ public class DeviceManageConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.DeviceManageConfProcessor
  * JD-Core Version:    0.7.0.1
  */

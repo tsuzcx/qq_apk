@@ -19,42 +19,42 @@ public class HomeFeedPresenter$FeedInteractiveRec
   
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull FeedInfoChangeEvent paramFeedInfoChangeEvent)
   {
-    if (((HomeFeedPresenter.a(paramHomeFeedPresenter) == 12) && (paramFeedInfoChangeEvent.jdField_a_of_type_Int == 3)) || ((HomeFeedPresenter.a(paramHomeFeedPresenter) == 10) && (paramFeedInfoChangeEvent.jdField_a_of_type_Int == 0) && (paramFeedInfoChangeEvent.b != 1))) {
+    if (((HomeFeedPresenter.d(paramHomeFeedPresenter) == 12) && (paramFeedInfoChangeEvent.a == 3)) || ((HomeFeedPresenter.d(paramHomeFeedPresenter) == 10) && (paramFeedInfoChangeEvent.a == 0) && (paramFeedInfoChangeEvent.d != 1))) {
       return;
     }
-    Object localObject = paramHomeFeedPresenter.a(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString);
+    Object localObject = paramHomeFeedPresenter.a(paramFeedInfoChangeEvent.b);
     if (localObject == null)
     {
-      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString });
+      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramFeedInfoChangeEvent.b });
       return;
     }
     if (!(localObject instanceof CommentLikeHomeFeed))
     {
-      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not commentLike type!! feedId:%s", new Object[] { paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString });
+      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not commentLike type!! feedId:%s", new Object[] { paramFeedInfoChangeEvent.b });
       return;
     }
     localObject = (CommentLikeHomeFeed)localObject;
-    if ((paramFeedInfoChangeEvent.b != 1) && (paramFeedInfoChangeEvent.b != 2))
+    if ((paramFeedInfoChangeEvent.d != 1) && (paramFeedInfoChangeEvent.d != 2))
     {
-      if (paramFeedInfoChangeEvent.b == 3)
+      if (paramFeedInfoChangeEvent.d == 3)
       {
-        if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
+        if (paramFeedInfoChangeEvent.c != null)
         {
-          ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).a).mHadLike = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike;
-          ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).a).mLikeCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount;
+          ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).f).mHadLike = paramFeedInfoChangeEvent.c.mHadLike;
+          ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).f).mLikeCount = paramFeedInfoChangeEvent.c.mLikeCount;
         }
-        ((CommentLikeHomeFeed)localObject).b(((LikeManager)SuperManager.a(15)).a(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, false), true);
+        ((CommentLikeHomeFeed)localObject).b(((LikeManager)SuperManager.a(15)).a(paramFeedInfoChangeEvent.b, false), true);
       }
     }
     else
     {
-      if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null) {
-        ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).a).mCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
+      if (paramFeedInfoChangeEvent.c != null) {
+        ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).f).mCommentCount = paramFeedInfoChangeEvent.c.mCommentCount;
       }
-      ((CommentLikeHomeFeed)localObject).a(((CommentManager)SuperManager.a(17)).a(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, false), true);
-      SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s comment update after count:%d", paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, Integer.valueOf(((CommentLikeHomeFeed)localObject).b().size()));
+      ((CommentLikeHomeFeed)localObject).a(((CommentManager)SuperManager.a(17)).a(paramFeedInfoChangeEvent.b, false), true);
+      SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s comment update after count:%d", paramFeedInfoChangeEvent.b, Integer.valueOf(((CommentLikeHomeFeed)localObject).d().size()));
     }
-    HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString);
+    HomeFeedPresenter.c(paramHomeFeedPresenter).b(paramFeedInfoChangeEvent.b);
   }
   
   public Class acceptEventClass()

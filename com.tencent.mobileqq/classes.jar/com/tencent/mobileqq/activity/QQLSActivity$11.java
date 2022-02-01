@@ -12,7 +12,7 @@ class QQLSActivity$11
   
   public void run()
   {
-    if (this.this$0.a == null)
+    if (this.this$0.j == null)
     {
       if (QLog.isColorLevel())
       {
@@ -22,19 +22,19 @@ class QQLSActivity$11
         QLog.d("QQLSSensor", 2, ((StringBuilder)localObject).toString());
       }
       Object localObject = this.this$0;
-      ((QQLSActivity)localObject).a = new QQLSSensor(((QQLSActivity)localObject).getApplicationContext(), this.this$0);
-      this.this$0.a.a();
-      if (QQLSActivity.a(this.this$0).hasMessages(8)) {
-        QQLSActivity.a(this.this$0).removeMessages(8);
+      ((QQLSActivity)localObject).j = new QQLSSensor(((QQLSActivity)localObject).getApplicationContext(), this.this$0);
+      this.this$0.j.a();
+      if (QQLSActivity.f(this.this$0).hasMessages(8)) {
+        QQLSActivity.f(this.this$0).removeMessages(8);
       }
-      localObject = QQLSActivity.a(this.this$0).obtainMessage(8);
-      QQLSActivity.a(this.this$0).sendMessageDelayed((Message)localObject, 1500L);
+      localObject = QQLSActivity.f(this.this$0).obtainMessage(8);
+      QQLSActivity.f(this.this$0).sendMessageDelayed((Message)localObject, 1500L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.11
  * JD-Core Version:    0.7.0.1
  */

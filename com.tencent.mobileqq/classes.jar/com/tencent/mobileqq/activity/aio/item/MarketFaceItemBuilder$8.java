@@ -13,13 +13,13 @@ class MarketFaceItemBuilder$8
   
   public void run()
   {
-    boolean bool = this.this$0.a.downloadAIOEmoticon(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.getEmoticon(), 8);
+    boolean bool = this.this$0.D.downloadAIOEmoticon(this.a.a.getEmoticon(), 8);
     ThreadManager.getUIHandler().post(new MarketFaceItemBuilder.8.1(this, bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.8
  * JD-Core Version:    0.7.0.1
  */

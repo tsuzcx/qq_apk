@@ -23,13 +23,13 @@ class TroopCardPopClassfic$1
 {
   private void a(TroopCardPopClassfic.ViewHolder paramViewHolder, popclassifc.PopItem paramPopItem)
   {
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramPopItem.str_desc.get());
-    int i = DisplayUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a(), 48.0F);
+    paramViewHolder.a.setText(paramPopItem.str_desc.get());
+    int i = DisplayUtil.a(this.a.a.b(), 48.0F);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, i);
-    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    paramViewHolder.b.setScaleType(ImageView.ScaleType.FIT_XY);
+    paramViewHolder.b.setLayoutParams(localLayoutParams);
     paramPopItem = URLDrawable.getDrawable(paramPopItem.str_icon_url.get(), null);
-    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramPopItem);
+    paramViewHolder.b.setImageDrawable(paramPopItem);
     if ((paramPopItem != null) && (1 != paramPopItem.getStatus())) {
       paramPopItem.restartDownload();
     }
@@ -37,22 +37,22 @@ class TroopCardPopClassfic$1
   
   public TroopCardPopClassfic.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131559841, null);
-    paramViewGroup.setLayoutParams(new RecyclerView.LayoutParams(this.a.jdField_a_of_type_Int, -2));
+    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131625884, null);
+    paramViewGroup.setLayoutParams(new RecyclerView.LayoutParams(this.a.e, -2));
     return new TroopCardPopClassfic.ViewHolder(paramViewGroup);
   }
   
   public void a(TroopCardPopClassfic.ViewHolder paramViewHolder, int paramInt)
   {
-    a(paramViewHolder, (popclassifc.PopItem)((popclassifc.PopCard)this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$PopCard.get()).rpt_pop_items.get(paramInt));
+    a(paramViewHolder, (popclassifc.PopItem)((popclassifc.PopCard)this.a.d.get()).rpt_pop_items.get(paramInt));
     paramViewHolder.itemView.setOnClickListener(new TroopCardPopClassfic.1.1(this, paramInt));
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public int getItemCount()
   {
-    if (this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$PopCard != null) {
-      return ((popclassifc.PopCard)this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$PopCard.get()).rpt_pop_items.size();
+    if (this.a.d != null) {
+      return ((popclassifc.PopCard)this.a.d.get()).rpt_pop_items.size();
     }
     return 0;
   }

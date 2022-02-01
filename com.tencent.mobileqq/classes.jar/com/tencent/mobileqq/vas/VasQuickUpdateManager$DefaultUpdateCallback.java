@@ -79,9 +79,9 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     }
     if (paramLong == 25L)
     {
-      int i = TroopEnterEffectController.a(paramString);
+      int i = TroopEnterEffectController.b(paramString);
       paramString = new StringBuilder();
-      paramString.append(TroopEnterEffectController.jdField_a_of_type_JavaLangString);
+      paramString.append(TroopEnterEffectController.a);
       paramString.append(i);
       paramString = paramString.toString();
       paramBoolean = VasUpdateUtil.a(new File(paramString));
@@ -103,7 +103,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     {
       paramString = paramString.substring(14, paramString.length());
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(ColorNickManager.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(ColorNickManager.a);
       ((StringBuilder)localObject).append(paramString);
       paramString = ((StringBuilder)localObject).toString();
       paramBoolean = VasUpdateUtil.a(new File(paramString));
@@ -135,7 +135,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     Object localObject = getItemInfo(paramLong, paramString);
     if (localObject != null)
     {
-      boolean bool = VasUpdateUtil.a(new File(((TagItemInfo)localObject).jdField_a_of_type_JavaLangString));
+      boolean bool = VasUpdateUtil.a(new File(((TagItemInfo)localObject).c));
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -163,17 +163,17 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       return Boolean.valueOf(VasUpdateUtil.a(new File(paramString.toString())));
     }
     if (paramString.equals("kcsdk_4_4_7_3661")) {
-      return Boolean.valueOf(VasUpdateUtil.a(new File(TMSManager.a().a(this.this$0.app.getApp()))));
+      return Boolean.valueOf(VasUpdateUtil.a(new File(TMSManager.b().a(this.this$0.app.getApp()))));
     }
     if (paramString.equals("GLDrawableV860")) {
-      return Boolean.valueOf(VasUpdateUtil.a(new File(GLDrawableDownloadHelper.a(this.this$0.app.getApp()))));
+      return Boolean.valueOf(VasUpdateUtil.a(new File(GLDrawableDownloadHelper.b(this.this$0.app.getApp()))));
     }
-    if (paramString.equals("XA_865")) {
+    if (paramString.equals(IXADownload.SCID)) {
       return Boolean.valueOf(VasUpdateUtil.a(((IXADownload)QRoute.api(IXADownload.class)).getInstallRoot()));
     }
     if (paramString.equals("libFlatBuffersParser"))
     {
-      FlatBuffersParser.g();
+      FlatBuffersParser.k();
       return Boolean.valueOf(true);
     }
     if (paramString.equals("libVipFont_8417"))
@@ -199,11 +199,11 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       return Boolean.valueOf(VasUpdateUtil.a(new File(paramString.toString())));
     }
     if (paramString.equals("defaultFont_775")) {
-      return Boolean.valueOf(VasUpdateUtil.a(new File(VasShieldFont.a())));
+      return Boolean.valueOf(VasUpdateUtil.a(new File(VasShieldFont.b())));
     }
     if (paramString.equals("enterEffectVipIcons"))
     {
-      paramString = TroopEnterEffectController.a();
+      paramString = TroopEnterEffectController.b();
       if (!TextUtils.isEmpty(paramString)) {
         VasUpdateUtil.a(new File(paramString));
       }
@@ -233,9 +233,9 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     }
     if (paramString.startsWith("card."))
     {
-      localObject = ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager;
+      localObject = ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).e;
       int i = Integer.parseInt(paramString.substring(5, paramString.length()));
-      return Boolean.valueOf(((ProfileCardManager)localObject).b(this.this$0.app.getApp(), i));
+      return Boolean.valueOf(((ProfileCardManager)localObject).d(this.this$0.app.getApp(), i));
     }
     return Boolean.valueOf(false);
   }
@@ -299,7 +299,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   @NotNull
   private TagItemInfo getBIdJsonInfo(String paramString, TagItemInfo paramTagItemInfo)
   {
-    paramTagItemInfo.jdField_a_of_type_Boolean = false;
+    paramTagItemInfo.a = false;
     paramTagItemInfo.b = false;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(this.this$0.app.getApplication().getFilesDir());
@@ -342,7 +342,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     paramString = new StringBuilder();
     paramString.append(str1);
     paramString.append((String)localObject);
-    paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+    paramTagItemInfo.c = paramString.toString();
     return paramTagItemInfo;
   }
   
@@ -351,34 +351,34 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     BubbleManager localBubbleManager = (BubbleManager)this.this$0.app.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER);
     if (paramString.startsWith("bubble.android."))
     {
-      int i = localBubbleManager.a(paramString);
+      int i = localBubbleManager.c(paramString);
       if (i > 0)
       {
-        paramTagItemInfo.jdField_a_of_type_Boolean = false;
+        paramTagItemInfo.a = false;
         if (paramString.endsWith("static.zip"))
         {
           paramTagItemInfo.b = true;
           paramString = new StringBuilder();
-          paramString.append(localBubbleManager.a(i).getAbsolutePath());
+          paramString.append(localBubbleManager.d(i).getAbsolutePath());
           paramString.append(File.separator);
           paramString.append("static");
-          paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+          paramTagItemInfo.c = paramString.toString();
           return true;
         }
         if (paramString.endsWith("other.zip"))
         {
           paramTagItemInfo.b = true;
-          paramTagItemInfo.jdField_a_of_type_JavaLangString = localBubbleManager.a(i).getAbsolutePath();
+          paramTagItemInfo.c = localBubbleManager.d(i).getAbsolutePath();
           return true;
         }
         if (paramString.endsWith("config.json"))
         {
           paramTagItemInfo.b = false;
           paramString = new StringBuilder();
-          paramString.append(localBubbleManager.a(i).getAbsolutePath());
+          paramString.append(localBubbleManager.d(i).getAbsolutePath());
           paramString.append(File.separator);
           paramString.append("config.json");
-          paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+          paramTagItemInfo.c = paramString.toString();
         }
         return true;
       }
@@ -393,16 +393,16 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
         localStringBuilder.append(localBubbleManager.b().getAbsolutePath());
         localStringBuilder.append(File.separator);
         localStringBuilder.append(paramString);
-        paramTagItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+        paramTagItemInfo.c = localStringBuilder.toString();
         if (QLog.isColorLevel())
         {
           paramString = new StringBuilder();
           paramString.append("download paster fileName: ");
-          paramString.append(paramTagItemInfo.jdField_a_of_type_JavaLangString);
+          paramString.append(paramTagItemInfo.c);
           QLog.i("VasQuickUpdateManager", 2, paramString.toString());
         }
       }
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       return true;
     }
     return false;
@@ -410,19 +410,19 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   
   private boolean getBidColorScreenInfo(String paramString, TagItemInfo paramTagItemInfo)
   {
-    IColorScreenManager localIColorScreenManager = VasUtil.a(this.this$0.app).getColorScreen();
+    IColorScreenManager localIColorScreenManager = VasUtil.b(this.this$0.app).getColorScreen();
     if (paramString.startsWith("colorScreen.android."))
     {
       int i = localIColorScreenManager.a(paramString);
       if (i > 0)
       {
-        paramTagItemInfo.jdField_a_of_type_Boolean = false;
+        paramTagItemInfo.a = false;
         paramTagItemInfo.b = false;
         paramString = new StringBuilder();
         paramString.append(localIColorScreenManager.a(i).getAbsolutePath());
         paramString.append(File.separator);
         paramString.append("config.zip");
-        paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+        paramTagItemInfo.c = paramString.toString();
         return true;
       }
     }
@@ -436,21 +436,21 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       paramString = VasFaceManager.a(paramString);
       if (paramString != null)
       {
-        paramTagItemInfo.jdField_a_of_type_Boolean = false;
+        paramTagItemInfo.a = false;
         paramTagItemInfo.b = false;
-        paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString;
+        paramTagItemInfo.c = paramString;
         return true;
       }
     }
     else if (paramString.equals("avatarInPendant_json"))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = false;
       paramString = new StringBuilder();
       paramString.append(this.this$0.app.getApplication().getFilesDir());
       paramString.append(File.separator);
       paramString.append("avatarInPendant.json");
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+      paramTagItemInfo.c = paramString.toString();
       return true;
     }
     return false;
@@ -460,14 +460,14 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   private TagItemInfo getBidFlashChatInfo(String paramString, TagItemInfo paramTagItemInfo)
   {
     FlashChatManager localFlashChatManager = (FlashChatManager)this.this$0.app.getManager(QQManagerFactory.FLASH_CHAT_MANAGER);
-    paramTagItemInfo.jdField_a_of_type_Boolean = false;
+    paramTagItemInfo.a = false;
     paramTagItemInfo.b = false;
-    paramTagItemInfo.jdField_a_of_type_JavaLangString = localFlashChatManager.a(paramString);
+    paramTagItemInfo.c = localFlashChatManager.a(paramString);
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
       paramString.append("getItemInfo:  result.strSavePath = ");
-      paramString.append(paramTagItemInfo.jdField_a_of_type_JavaLangString);
+      paramString.append(paramTagItemInfo.c);
       QLog.d("VasQuickUpdateManager", 2, paramString.toString());
     }
     return paramTagItemInfo;
@@ -476,37 +476,37 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   @Nullable
   private TagItemInfo getBidMaterialInfo(String paramString, TagItemInfo paramTagItemInfo)
   {
-    paramTagItemInfo.jdField_a_of_type_Boolean = false;
+    paramTagItemInfo.a = false;
     paramTagItemInfo.b = false;
     if (paramString.equals("emojiStickerGuideZip_v2"))
     {
       paramString = new StringBuilder();
-      paramString.append(EmojiStickerManager.a());
+      paramString.append(EmojiStickerManager.c());
       paramString.append("emojiStickerGuideZip_v2.zip");
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+      paramTagItemInfo.c = paramString.toString();
       return paramTagItemInfo;
     }
     if (paramString.equals("libFlatBuffersParser"))
     {
       paramString = new StringBuilder();
-      paramString.append(FlatBuffersParser.a());
+      paramString.append(FlatBuffersParser.h());
       paramString.append("libFlatBuffersParser.zip");
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+      paramTagItemInfo.c = paramString.toString();
       return paramTagItemInfo;
     }
     if (paramString.equals("kcsdk_4_4_7_3661"))
     {
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = TMSManager.a().b(this.this$0.app.getApp());
+      paramTagItemInfo.c = TMSManager.b().b(this.this$0.app.getApp());
       return paramTagItemInfo;
     }
     if (paramString.equals("GLDrawableV860"))
     {
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = GLDrawableDownloadHelper.a(this.this$0.app.getApp());
+      paramTagItemInfo.c = GLDrawableDownloadHelper.b(this.this$0.app.getApp());
       return paramTagItemInfo;
     }
-    if (paramString.equals("XA_865"))
+    if (paramString.equals(IXADownload.SCID))
     {
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = ((IXADownload)QRoute.api(IXADownload.class)).getDownloadPath().getAbsolutePath();
+      paramTagItemInfo.c = ((IXADownload)QRoute.api(IXADownload.class)).getDownloadPath().getAbsolutePath();
       return paramTagItemInfo;
     }
     if (paramString.equals("libColorFont_818"))
@@ -515,7 +515,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       paramString.append(FontManagerConstants.FONT_DOWN_LOAD_PATH);
       paramString.append(File.separator);
       paramString.append("libColorFont.zip");
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+      paramTagItemInfo.c = paramString.toString();
       return paramTagItemInfo;
     }
     if (paramString.equals("libVipFont_8417"))
@@ -524,17 +524,17 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       paramString.append(FontManagerConstants.FONT_DOWN_LOAD_PATH);
       paramString.append(File.separator);
       paramString.append("libvipfont8417.so.zip");
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+      paramTagItemInfo.c = paramString.toString();
       return paramTagItemInfo;
     }
     if (paramString.startsWith("bqmall.android.h5magic."))
     {
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = VasEmojiManagerContstant.getSavePath(paramString);
+      paramTagItemInfo.c = VasEmojiManagerContstant.getSavePath(paramString);
       return paramTagItemInfo;
     }
     if (paramString.equals("libqgplayer_841"))
     {
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = ((IQQComicSoHelper)QRoute.api(IQQComicSoHelper.class)).getComicPlayerSoZipPath();
+      paramTagItemInfo.c = ((IQQComicSoHelper)QRoute.api(IQQComicSoHelper.class)).getComicPlayerSoZipPath();
       return paramTagItemInfo;
     }
     if (paramString.equals("libAPNG_845"))
@@ -543,7 +543,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       paramString.append(this.this$0.app.getApp().getApplicationContext().getFilesDir());
       paramString.append(File.separator);
       paramString.append("apng.zip");
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+      paramTagItemInfo.c = paramString.toString();
       return paramTagItemInfo;
     }
     if (paramString.equals("defaultFont_775"))
@@ -552,18 +552,18 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       paramString.append(FontManagerConstants.FONT_DOWN_LOAD_PATH);
       paramString.append(File.separator);
       paramString.append("default.zip");
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+      paramTagItemInfo.c = paramString.toString();
       return paramTagItemInfo;
     }
     if (paramString.equals("enterEffectVipIcons"))
     {
-      paramString = TroopEnterEffectController.a();
+      paramString = TroopEnterEffectController.b();
       if (TextUtils.isEmpty(paramString))
       {
         QLog.e("VasQuickUpdateManager", 1, "VasUpdateConstants.SCID_ENTER_EFFECT_VIP_ICONS getItemInfo null zipPath");
         return null;
       }
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString;
+      paramTagItemInfo.c = paramString;
     }
     return paramTagItemInfo;
   }
@@ -572,21 +572,21 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   {
     if (paramString.startsWith("faceAddon.stickerFont.android."))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = true;
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = AvatarPendantUtil.b(paramString.replace("faceAddon.stickerFont.android.", ""));
+      paramTagItemInfo.c = AvatarPendantUtil.d(paramString.replace("faceAddon.stickerFont.android.", ""));
       return true;
     }
     Object localObject;
     if (paramString.startsWith("faceAddon.sticker."))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = false;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(AppConstants.SDCARD_PENDANT_ROOT);
       ((StringBuilder)localObject).append("sticker_info/");
       ((StringBuilder)localObject).append(paramString.replace("faceAddon.sticker.", ""));
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+      paramTagItemInfo.c = ((StringBuilder)localObject).toString();
       return true;
     }
     if ((paramString.startsWith("pendant.")) && (paramString.length() > 8))
@@ -601,7 +601,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
         localStringBuilder.append(AppConstants.SDCARD_PENDANT_ROOT);
         localStringBuilder.append((String)localObject);
         localStringBuilder.append(File.separator);
-        paramTagItemInfo.jdField_a_of_type_Boolean = false;
+        paramTagItemInfo.a = false;
         paramTagItemInfo.b = true;
         if (paramString.endsWith(".xydata.js"))
         {
@@ -613,7 +613,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
           paramTagItemInfo.b = false;
           localStringBuilder.append("aio_50.png");
         }
-        paramTagItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+        paramTagItemInfo.c = localStringBuilder.toString();
         return true;
       }
     }
@@ -623,7 +623,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   @NotNull
   private TagItemInfo getBidPokeInfo(String paramString, TagItemInfo paramTagItemInfo)
   {
-    paramTagItemInfo.jdField_a_of_type_Boolean = false;
+    paramTagItemInfo.a = false;
     paramTagItemInfo.b = true;
     StringBuilder localStringBuilder;
     if (paramString.startsWith("poke.item.effect."))
@@ -631,7 +631,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(PokeItemHelper.e);
       localStringBuilder.append(paramString.substring(17, paramString.length()));
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      paramTagItemInfo.c = localStringBuilder.toString();
       return paramTagItemInfo;
     }
     if (paramString.startsWith("poke.item.res."))
@@ -639,13 +639,13 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(PokeItemHelper.e);
       localStringBuilder.append(paramString.substring(14, paramString.length()));
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      paramTagItemInfo.c = localStringBuilder.toString();
       return paramTagItemInfo;
     }
     if ("poke.effectList".equals(paramString))
     {
       paramTagItemInfo.b = false;
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = PokeItemHelper.f;
+      paramTagItemInfo.c = PokeItemHelper.f;
     }
     return paramTagItemInfo;
   }
@@ -660,14 +660,14 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       bool1 = bool2;
       if (paramString.startsWith("praise.android."))
       {
-        int i = localPraiseManager.a(paramString);
+        int i = localPraiseManager.b(paramString);
         bool1 = bool2;
         if (i > 0)
         {
-          paramTagItemInfo.jdField_a_of_type_Boolean = false;
+          paramTagItemInfo.a = false;
           bool1 = true;
           paramTagItemInfo.b = true;
-          paramTagItemInfo.jdField_a_of_type_JavaLangString = localPraiseManager.a(i).getAbsolutePath();
+          paramTagItemInfo.c = localPraiseManager.a(i).getAbsolutePath();
         }
       }
     }
@@ -678,18 +678,18 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   {
     if ("cardWZ.zip".equals(paramString))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = true;
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = VipWZRYTemplateHelper.a();
+      paramTagItemInfo.c = VipWZRYTemplateHelper.a();
       return true;
     }
     if (paramString.startsWith("card."))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = false;
       int i = Integer.parseInt(paramString.substring(5, paramString.length()));
-      paramString = ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager;
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = ProfileCardManager.b(this.this$0.app.getApp(), i);
+      paramString = ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).e;
+      paramTagItemInfo.c = ProfileCardManager.c(this.this$0.app.getApp(), i);
       return true;
     }
     return false;
@@ -698,22 +698,22 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   @NotNull
   private TagItemInfo getBidQuickUpdate(String paramString, TagItemInfo paramTagItemInfo)
   {
-    paramTagItemInfo.jdField_a_of_type_Boolean = false;
+    paramTagItemInfo.a = false;
     if (paramString.endsWith("cfg")) {
-      paramTagItemInfo.jdField_a_of_type_Boolean = true;
+      paramTagItemInfo.a = true;
     }
     paramTagItemInfo.b = false;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(VasUpdateConstants.b);
     localStringBuilder.append(paramString);
-    paramTagItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    paramTagItemInfo.c = localStringBuilder.toString();
     return paramTagItemInfo;
   }
   
   @NotNull
   private TagItemInfo getBidRedPacket(long paramLong, String paramString, TagItemInfo paramTagItemInfo)
   {
-    paramTagItemInfo.jdField_a_of_type_Boolean = false;
+    paramTagItemInfo.a = false;
     Object localObject;
     if (("iRedPacket_v3.json".equals(paramString)) || ("iRedPacket_v3.char300.json".equals(paramString)))
     {
@@ -723,18 +723,18 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       ((StringBuilder)localObject).append(File.separator);
       ((StringBuilder)localObject).append("pddata/vas/redpacket/");
       ((StringBuilder)localObject).append(paramString);
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+      paramTagItemInfo.c = ((StringBuilder)localObject).toString();
     }
     if ("iRedPacket_v3.font.zip".equals(paramString))
     {
       paramTagItemInfo.b = true;
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = IndividualRedPacketManager.a(3);
+      paramTagItemInfo.c = IndividualRedPacketManager.a(3);
       return paramTagItemInfo;
     }
     if ("iRedPacket_v3.specialChar.zip".equals(paramString))
     {
       paramTagItemInfo.b = true;
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = IndividualRedPacketManager.a(2);
+      paramTagItemInfo.c = IndividualRedPacketManager.a(2);
       return paramTagItemInfo;
     }
     if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("luckyMoney.item.")))
@@ -755,7 +755,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       paramString = new StringBuilder();
       paramString.append(IndividualRedPacketManager.a(1));
       paramString.append((String)localObject);
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+      paramTagItemInfo.c = paramString.toString();
     }
     return paramTagItemInfo;
   }
@@ -764,12 +764,12 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   {
     if (paramString.startsWith("signature.sticker."))
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = false;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(AppConstants.SDCARD_SIGNATURE_STICKER_DIR);
       localStringBuilder.append(paramString.substring(18, paramString.length()));
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      paramTagItemInfo.c = localStringBuilder.toString();
       return true;
     }
     return false;
@@ -777,18 +777,18 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   
   private boolean getBidTroopEnterEffect(String paramString, TagItemInfo paramTagItemInfo)
   {
-    paramTagItemInfo.jdField_a_of_type_Boolean = false;
+    paramTagItemInfo.a = false;
     if (paramString.startsWith("groupeffect_item_"))
     {
       paramTagItemInfo.b = false;
-      int i = TroopEnterEffectController.a(paramString);
+      int i = TroopEnterEffectController.b(paramString);
       paramString = new StringBuilder();
-      paramString.append(TroopEnterEffectController.jdField_a_of_type_JavaLangString);
+      paramString.append(TroopEnterEffectController.a);
       paramString.append(i);
       paramString.append(File.separator);
       paramString.append(i);
       paramString.append(".zip");
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = paramString.toString();
+      paramTagItemInfo.c = paramString.toString();
       return true;
     }
     return false;
@@ -840,7 +840,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   private Boolean isColorScreenExist(String paramString)
   {
     if (paramString.startsWith("colorScreen.android.")) {
-      return Boolean.valueOf(VasUtil.a(this.this$0.app).getColorScreen().a(paramString));
+      return Boolean.valueOf(VasUtil.b(this.this$0.app).getColorScreen().b(paramString));
     }
     return null;
   }
@@ -881,9 +881,9 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   @Nullable
   private Boolean isFaceExist(String paramString)
   {
-    VasFaceManager localVasFaceManager = ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager;
+    VasFaceManager localVasFaceManager = ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).c;
     if (paramString.startsWith("face.")) {
-      return Boolean.valueOf(localVasFaceManager.a(paramString));
+      return Boolean.valueOf(localVasFaceManager.b(paramString));
     }
     if (paramString.equals("avatarInPendant_json"))
     {
@@ -909,23 +909,23 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramString.startsWith("libFlatBuffersParser"))
     {
       paramString = new StringBuilder();
-      paramString.append(FlatBuffersParser.a());
+      paramString.append(FlatBuffersParser.h());
       paramString.append("libFlatBuffersParser.zip");
       return Boolean.valueOf(new File(paramString.toString()).exists());
     }
     if (paramString.equals("kcsdk_4_4_7_3661")) {
-      return Boolean.valueOf(new File(TMSManager.a().a(this.this$0.app.getApp())).exists());
+      return Boolean.valueOf(new File(TMSManager.b().a(this.this$0.app.getApp())).exists());
     }
     if (paramString.equals("GLDrawableV860")) {
       return Boolean.valueOf(GLDrawableDownloadHelper.a(this.this$0.app.getApp()));
     }
-    if (paramString.equals("XA_865")) {
+    if (paramString.equals(IXADownload.SCID)) {
       return Boolean.valueOf(((IXADownload)QRoute.api(IXADownload.class)).isNoNeedDownload());
     }
     if (paramString.equals("emojiStickerGuideZip_v2"))
     {
       paramString = new StringBuilder();
-      paramString.append(EmojiStickerManager.a());
+      paramString.append(EmojiStickerManager.c());
       paramString.append("emojiStickerGuideZip_v2.zip");
       return Boolean.valueOf(new File(paramString.toString()).exists());
     }
@@ -943,13 +943,13 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       return Boolean.valueOf(new File(((IQQComicSoHelper)QRoute.api(IQQComicSoHelper.class)).getComicPlayerSoPath()).exists());
     }
     if (paramString.equals("libAPNG_845")) {
-      return Boolean.valueOf(VasApngIPCModule.a().a());
+      return Boolean.valueOf(VasApngIPCModule.a().d());
     }
     if (paramString.equals("defaultFont_775"))
     {
       paramString = new StringBuilder();
       paramString.append(VasSoUtils.a());
-      paramString.append(VasShieldFont.jdField_a_of_type_JavaLangString);
+      paramString.append(VasShieldFont.a);
       paramString = new File(paramString.toString());
       boolean bool;
       if ((paramString.exists()) && (paramString.isDirectory())) {
@@ -969,10 +969,10 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   private Boolean isPendantExist(String paramString)
   {
     if (paramString.startsWith("faceAddon.stickerFont.android.")) {
-      return Boolean.valueOf(AvatarPendantUtil.a(paramString.replace("faceAddon.stickerFont.android.", "")));
+      return Boolean.valueOf(AvatarPendantUtil.b(paramString.replace("faceAddon.stickerFont.android.", "")));
     }
     if (paramString.startsWith("faceAddon.sticker.")) {
-      return Boolean.valueOf(AvatarPendantUtil.b(paramString));
+      return Boolean.valueOf(AvatarPendantUtil.e(paramString));
     }
     if ((paramString.startsWith("pendant.")) && (paramString.length() > 8))
     {
@@ -1062,8 +1062,8 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramString.startsWith("card."))
     {
       int i = Integer.parseInt(paramString.substring(5, paramString.length()));
-      paramString = ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager;
-      return Boolean.valueOf(ProfileCardManager.a(this.this$0.app.getApp(), i));
+      paramString = ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).e;
+      return Boolean.valueOf(ProfileCardManager.b(this.this$0.app.getApp(), i));
     }
     return null;
   }
@@ -1137,11 +1137,11 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   @Nullable
   private Boolean isTroopEnterEffectExist(String paramString)
   {
-    int i = TroopEnterEffectController.a(paramString);
+    int i = TroopEnterEffectController.b(paramString);
     if (i > 0)
     {
       paramString = new StringBuilder();
-      paramString.append(TroopEnterEffectController.jdField_a_of_type_JavaLangString);
+      paramString.append(TroopEnterEffectController.a);
       paramString.append(i);
       return Boolean.valueOf(TroopGiftUtil.a(new File(paramString.toString())));
     }
@@ -1163,7 +1163,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   
   private void onColorScreenCompleted(String paramString, int paramInt)
   {
-    IColorScreenManager localIColorScreenManager = VasUtil.a(this.this$0.app).getColorScreen();
+    IColorScreenManager localIColorScreenManager = VasUtil.b(this.this$0.app).getColorScreen();
     if (paramString.startsWith("colorScreen.android.")) {
       localIColorScreenManager.a(paramString, paramInt);
     }
@@ -1173,9 +1173,9 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   {
     if (paramString.startsWith("profileitem."))
     {
-      Object localObject = ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager;
+      Object localObject = ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).e;
       int i = Integer.parseInt(paramString.substring(12));
-      ((ProfileCardManager)localObject).a.remove(Integer.valueOf(i));
+      ((ProfileCardManager)localObject).i.remove(Integer.valueOf(i));
       if (paramInt == 0)
       {
         ((ProfileCardManager)localObject).a(i, false);
@@ -1192,7 +1192,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   
   private void onFaceCompleted(String paramString, int paramInt)
   {
-    VasFaceManager localVasFaceManager = ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager;
+    VasFaceManager localVasFaceManager = ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).c;
     if (paramString.startsWith("face.")) {
       localVasFaceManager.a(paramString, paramInt);
     }
@@ -1241,9 +1241,9 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     }
     if (paramInt == 0) {
       if (paramString.equals("emojiStickerGuideZip_v2")) {
-        EmojiStickerManager.a();
+        EmojiStickerManager.b();
       } else if (paramString.equals("libFlatBuffersParser")) {
-        FlatBuffersParser.e();
+        FlatBuffersParser.i();
       }
     }
     if (paramString.equals("libColorFont_818")) {
@@ -1251,7 +1251,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     } else if (paramString.equals("libVipFont_8417")) {
       ((IFontManagerService)this.this$0.app.getRuntimeService(IFontManagerService.class, "")).onSoDownloadCompleted(1, paramInt);
     } else if (paramString.startsWith("bqmall.android.h5magic.")) {
-      ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqEmoticonIVasEmojiManager.complete(paramString, paramInt);
+      ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).b.complete(paramString, paramInt);
     }
     return VasQuickUpdateManager.access$500(this.this$0, paramString, paramInt);
   }
@@ -1265,7 +1265,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       {
         paramString = (PokeResHandler)paramString.getEarlyHandler("qq.android.poke.res_0625");
         if (paramString != null) {
-          paramString.f();
+          paramString.w();
         }
       }
     }
@@ -1279,7 +1279,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       return;
     }
     if (paramString1.startsWith("card.")) {
-      ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager.a(this.this$0.app, paramString1, paramString2, paramInt);
+      ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).e.a(this.this$0.app, paramString1, paramString2, paramInt);
     }
   }
   
@@ -1287,7 +1287,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
   {
     if (paramInt == 0)
     {
-      paramInt = TroopEnterEffectController.a(paramString);
+      paramInt = TroopEnterEffectController.b(paramString);
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
@@ -1302,7 +1302,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
         {
           if (new File(paramString).exists())
           {
-            FileUtils.uncompressZip(paramString, TroopEnterEffectController.jdField_a_of_type_JavaLangString, false);
+            FileUtils.uncompressZip(paramString, TroopEnterEffectController.a, false);
             return;
           }
         }
@@ -1341,7 +1341,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
         AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.this$0.app.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
         if (paramString.endsWith(".xydata.js"))
         {
-          localAvatarPendantManager.a(l).a(PendantInfo.g);
+          localAvatarPendantManager.a(l).a(PendantInfo.h);
           return;
         }
         if (paramString.endsWith(".aio_50.png"))
@@ -1382,7 +1382,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       else
       {
         if ((paramLong == 22L) && (paramString.startsWith("colorScreen.android."))) {
-          VasUtil.a(this.this$0.app).getColorScreen().a(paramString);
+          VasUtil.b(this.this$0.app).getColorScreen().c(paramString);
         }
         bool = false;
       }
@@ -1461,12 +1461,12 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
       ((BubbleManager)this.this$0.app.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER)).a(paramString1, paramString2, paramLong2, paramLong3);
     }
     if ((paramLong1 == 1004L) && (paramString1.startsWith("bqmall.android.h5magic."))) {
-      ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqEmoticonIVasEmojiManager.onProgress(paramString1, paramLong2, paramLong3);
+      ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).b.onProgress(paramString1, paramLong2, paramLong3);
     }
     if (paramLong1 == 15L)
     {
       if (paramString1.startsWith("card.")) {
-        ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager.a(Integer.parseInt(paramString1.substring(5, paramString1.length())), (int)(paramLong2 * 100L / paramLong3));
+        ((VasExtensionManager)this.this$0.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).e.a(Integer.parseInt(paramString1.substring(5, paramString1.length())), (int)(paramLong2 * 100L / paramLong3));
       }
     }
     else if (paramLong1 == 8L) {
@@ -1544,7 +1544,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
     if (paramLong == 8L)
     {
       paramString = paramString.substring(7, paramString.length());
-      return ((ChatBackgroundManager)this.this$0.app.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).a(paramString);
+      return ((ChatBackgroundManager)this.this$0.app.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).f(paramString);
     }
     if (paramLong == 27L) {
       return new File(ColorNickManager.a(paramString.substring(14, paramString.length()))).exists();
@@ -1561,7 +1561,7 @@ public class VasQuickUpdateManager$DefaultUpdateCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateManager.DefaultUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

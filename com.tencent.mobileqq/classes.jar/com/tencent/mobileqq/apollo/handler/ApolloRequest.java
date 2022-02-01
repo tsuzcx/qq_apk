@@ -7,7 +7,6 @@ import com.tencent.mobileqq.apollo.utils.api.IApolloClassFactory;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -84,62 +83,15 @@ public class ApolloRequest
     ((StringBuilder)localObject1).append(bool2);
     QLog.d("[cmshow]ApolloRequest", 1, new Object[] { localObject1 });
     if (((bool1) || (bool3)) && (bool2)) {
-      a(paramAppInterface, paramInt);
+      b(paramAppInterface, paramInt);
     }
   }
   
-  public static void a(AppInterface paramAppInterface, long paramLong)
+  public static void a(AppRuntime paramAppRuntime, int paramInt)
   {
-    if (paramLong < 0L)
+    if (paramAppRuntime == null)
     {
-      paramAppInterface = new StringBuilder();
-      paramAppInterface.append("[getApolloAvatarDataReqFromNetwork] invalid avatarType ");
-      paramAppInterface.append(paramLong);
-      QLog.e("[cmshow]ApolloRequest", 1, paramAppInterface.toString());
-      return;
-    }
-    if (paramAppInterface == null)
-    {
-      QLog.e("[cmshow]ApolloRequest", 1, "[getApolloAvatarDataReqFromNetwork] app is null.");
-      return;
-    }
-    try
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("[getApolloAvatarDataReqFromNetwork] avatarType = ");
-      ((StringBuilder)localObject1).append(paramLong);
-      QLog.d("[cmshow]ApolloRequest", 1, ((StringBuilder)localObject1).toString());
-      Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.7.0");
-      localObject1 = new WebSSOAgent.UniSsoServerReq();
-      ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
-      localObject2 = new ApolloQQUsrImg.QQUsrImgReq();
-      ((ApolloQQUsrImg.QQUsrImgReq)localObject2).uin.set(Long.parseLong(paramAppInterface.getCurrentUin()));
-      ((ApolloQQUsrImg.QQUsrImgReq)localObject2).type.set(paramLong);
-      ((WebSSOAgent.UniSsoServerReq)localObject1).pbReqData.set(ByteStringMicro.copyFrom(((ApolloQQUsrImg.QQUsrImgReq)localObject2).toByteArray()));
-      localObject2 = new NewIntent(paramAppInterface.getApp(), ((IApolloClassFactory)QRoute.api(IApolloClassFactory.class)).getApolloExtensionServletClass());
-      ((NewIntent)localObject2).putExtra("cmd", "apollo_router_light.apollo_imglogic_linkcmd_get_avatars");
-      ((NewIntent)localObject2).putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
-      paramAppInterface.startServlet((NewIntent)localObject2);
-      return;
-    }
-    catch (Exception paramAppInterface)
-    {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("[getApolloAvatarDataReqFromNetwork] avatarType = ");
-      ((StringBuilder)localObject1).append(paramLong);
-      ((StringBuilder)localObject1).append(", exception = ");
-      QLog.e("[cmshow]ApolloRequest", 1, ((StringBuilder)localObject1).toString(), paramAppInterface);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("[cmshow]ApolloRequest", 1, "[getApolloActionUsedListReqFromNetwork] app is null.");
+      QLog.e("[cmshow]ApolloRequest", 1, "[getApolloActionUsedList] app is null.");
       return;
     }
     a = paramInt;
@@ -148,26 +100,73 @@ public class ApolloRequest
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.7.0");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.8.17");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new ApolloActionUsed.EmotionUsedReq();
-      ((ApolloActionUsed.EmotionUsedReq)localObject).uin.set(Long.parseLong(paramQQAppInterface.getCurrentUin()));
+      ((ApolloActionUsed.EmotionUsedReq)localObject).uin.set(Long.parseLong(paramAppRuntime.getCurrentUin()));
       ((ApolloActionUsed.EmotionUsedReq)localObject).pkgid.set(paramInt);
       localUniSsoServerReq.pbReqData.set(ByteStringMicro.copyFrom(((ApolloActionUsed.EmotionUsedReq)localObject).toByteArray()));
-      localObject = new NewIntent(paramQQAppInterface.getApp(), ApolloExtensionServlet.class);
+      localObject = new NewIntent(paramAppRuntime.getApp(), ApolloExtensionServlet.class);
       ((NewIntent)localObject).putExtra("cmd", "apollo_router_light.apollo_emotionsvr_linkcmd_emotionused");
       ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      paramQQAppInterface.startServlet((NewIntent)localObject);
+      paramAppRuntime.startServlet((NewIntent)localObject);
       return;
     }
-    catch (Exception paramQQAppInterface)
+    catch (Exception paramAppRuntime)
     {
-      QLog.e("[cmshow]ApolloRequest", 1, "[getApolloActionUsedListReqFromNetwork] exception=", paramQQAppInterface);
+      QLog.e("[cmshow]ApolloRequest", 1, "[getApolloActionUsedList] exception=", paramAppRuntime);
     }
   }
   
-  private static void a(AppRuntime paramAppRuntime, int paramInt)
+  public static void a(AppRuntime paramAppRuntime, long paramLong)
+  {
+    if (paramLong < 0L)
+    {
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("[getApolloAvatarData] invalid avatarType ");
+      paramAppRuntime.append(paramLong);
+      QLog.e("[cmshow]ApolloRequest", 1, paramAppRuntime.toString());
+      return;
+    }
+    if (paramAppRuntime == null)
+    {
+      QLog.e("[cmshow]ApolloRequest", 1, "[getApolloAvatarData] app is null.");
+      return;
+    }
+    try
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[getApolloAvatarData] avatarType = ");
+      ((StringBuilder)localObject1).append(paramLong);
+      QLog.d("[cmshow]ApolloRequest", 1, ((StringBuilder)localObject1).toString());
+      Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.8.17");
+      localObject1 = new WebSSOAgent.UniSsoServerReq();
+      ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
+      localObject2 = new ApolloQQUsrImg.QQUsrImgReq();
+      ((ApolloQQUsrImg.QQUsrImgReq)localObject2).uin.set(Long.parseLong(paramAppRuntime.getCurrentUin()));
+      ((ApolloQQUsrImg.QQUsrImgReq)localObject2).type.set(paramLong);
+      ((WebSSOAgent.UniSsoServerReq)localObject1).pbReqData.set(ByteStringMicro.copyFrom(((ApolloQQUsrImg.QQUsrImgReq)localObject2).toByteArray()));
+      localObject2 = new NewIntent(paramAppRuntime.getApp(), ((IApolloClassFactory)QRoute.api(IApolloClassFactory.class)).getApolloExtensionServletClass());
+      ((NewIntent)localObject2).putExtra("cmd", "apollo_router_light.apollo_imglogic_linkcmd_get_avatars");
+      ((NewIntent)localObject2).putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
+      paramAppRuntime.startServlet((NewIntent)localObject2);
+      return;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[getApolloAvatarData] avatarType = ");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append(", exception = ");
+      QLog.e("[cmshow]ApolloRequest", 1, ((StringBuilder)localObject1).toString(), paramAppRuntime);
+    }
+  }
+  
+  private static void b(AppRuntime paramAppRuntime, int paramInt)
   {
     if (paramInt < 0)
     {
@@ -194,7 +193,7 @@ public class ApolloRequest
       Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.7.0");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.8.17");
       localObject1 = new WebSSOAgent.UniSsoServerReq();
       ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
       localObject2 = new OpenGameBox.StOpenGameBoxReq();
@@ -222,7 +221,7 @@ public class ApolloRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.handler.ApolloRequest
  * JD-Core Version:    0.7.0.1
  */

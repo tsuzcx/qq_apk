@@ -31,8 +31,6 @@ public class Face2FaceAddContactUtils
     a("0X800AB63", paramList, localStringBuilder.toString(), "");
   }
   
-  public static void a(QQAppInterface paramQQAppInterface) {}
-  
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     if (QLog.isColorLevel())
@@ -56,7 +54,17 @@ public class Face2FaceAddContactUtils
     return false;
   }
   
-  public static void b(QQAppInterface paramQQAppInterface)
+  public static void b(QQAppInterface paramQQAppInterface) {}
+  
+  public static boolean c(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface.getPreferences().getBoolean("face2face_add_contact_guide_dialog", false) ^ true;
+    }
+    return false;
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface != null)
     {
@@ -65,18 +73,10 @@ public class Face2FaceAddContactUtils
       paramQQAppInterface.commit();
     }
   }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.getPreferences().getBoolean("face2face_add_contact_guide_dialog", false) ^ true;
-    }
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactUtils
  * JD-Core Version:    0.7.0.1
  */

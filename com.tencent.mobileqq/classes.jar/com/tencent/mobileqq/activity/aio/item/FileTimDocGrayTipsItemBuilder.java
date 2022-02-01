@@ -25,7 +25,7 @@ public class FileTimDocGrayTipsItemBuilder
   extends GrayTipsItemBuilder
   implements QQFileManagerUtil.TipsClickedInterface
 {
-  private String b;
+  private String g;
   
   public FileTimDocGrayTipsItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
@@ -37,31 +37,31 @@ public class FileTimDocGrayTipsItemBuilder
     paramViewHolder = (FileTimDocGrayTipsItemBuilder.TipHolder)paramViewHolder;
     if (paramView == null)
     {
-      paramMessageRecord = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560848, null);
-      paramViewHolder.b = ((TextView)paramMessageRecord.findViewById(2131367798));
+      paramMessageRecord = LayoutInflater.from(this.c).inflate(2131627106, null);
+      paramViewHolder.d = ((TextView)paramMessageRecord.findViewById(2131434371));
     }
     else
     {
       paramMessageRecord = paramView;
     }
-    paramView = paramViewHolder.a.getExtInfoFromExtStr("tim_aio_show");
-    this.b = paramViewHolder.a.getExtInfoFromExtStr("tim_aio_tips_type");
+    paramView = paramViewHolder.q.getExtInfoFromExtStr("tim_aio_show");
+    this.g = paramViewHolder.q.getExtInfoFromExtStr("tim_aio_tips_type");
     if (!paramView.equalsIgnoreCase("showed"))
     {
-      if (this.b.equalsIgnoreCase("keyword")) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009077", "0X8009077", 0, 0, "", "", "", "");
-      } else if (this.b.equalsIgnoreCase("precent")) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800907A", "0X800907A", 0, 0, "", "", "", "");
-      } else if (this.b.equalsIgnoreCase("text_keyword")) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009071", "0X800907A", 0, 0, "", "", "", "");
+      if (this.g.equalsIgnoreCase("keyword")) {
+        ReportController.b(this.a, "dc00898", "", "", "0X8009077", "0X8009077", 0, 0, "", "", "", "");
+      } else if (this.g.equalsIgnoreCase("precent")) {
+        ReportController.b(this.a, "dc00898", "", "", "0X800907A", "0X800907A", 0, 0, "", "", "", "");
+      } else if (this.g.equalsIgnoreCase("text_keyword")) {
+        ReportController.b(this.a, "dc00898", "", "", "0X8009071", "0X800907A", 0, 0, "", "", "", "");
       }
-      paramViewHolder.a.saveExtInfoToExtStr("tim_aio_show", "showed");
+      paramViewHolder.q.saveExtInfoToExtStr("tim_aio_show", "showed");
       ThreadManager.executeOnSubThread(new FileTimDocGrayTipsItemBuilder.1(this, paramViewHolder));
     }
-    paramView = FileManagerUtil.a(paramViewHolder.a.getExtInfoFromExtStr("tim_aio_file_tips"), paramViewHolder.a.getExtInfoFromExtStr("tim_aio_file_link"), this);
-    paramViewHolder.b.setText(paramView);
-    paramViewHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-    paramViewHolder.b.setHighlightColor(17170445);
+    paramView = FileManagerUtil.a(paramViewHolder.q.getExtInfoFromExtStr("tim_aio_file_tips"), paramViewHolder.q.getExtInfoFromExtStr("tim_aio_file_link"), this);
+    paramViewHolder.d.setText(paramView);
+    paramViewHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+    paramViewHolder.d.setHighlightColor(17170445);
     return paramMessageRecord;
   }
   
@@ -73,12 +73,12 @@ public class FileTimDocGrayTipsItemBuilder
   public void onClick(View paramView)
   {
     ChatMessage localChatMessage = AIOUtils.a(paramView);
-    ((AIOMessageSpreadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a(localChatMessage, paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    ((AIOMessageSpreadManager)this.a.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a(localChatMessage, paramView.getContext(), this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.FileTimDocGrayTipsItemBuilder
  * JD-Core Version:    0.7.0.1
  */

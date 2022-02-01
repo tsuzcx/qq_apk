@@ -22,7 +22,7 @@ public class TroopHonorConfigProcessor
   public TroopHonorConfig a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return TroopHonorConfig.a(paramArrayOfQConfItem[0].a);
+      return TroopHonorConfig.a(paramArrayOfQConfItem[0].b);
     }
     return null;
   }
@@ -71,7 +71,7 @@ public class TroopHonorConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.config.TroopHonorConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public final class StaffGiftDrawBean$DeliverReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trpcprotocol.qqva.allstaff.staff.StaffGiftDrawBean.DeliverReq
  * JD-Core Version:    0.7.0.1
  */

@@ -5,20 +5,20 @@ import java.util.Arrays;
 
 public class GapDataCollector
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<Long> a = new ArrayList();
   private int b;
+  private int c;
   
   public GapDataCollector(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   private int a(float paramFloat)
   {
     if ((paramFloat <= 1.0F) && (paramFloat > 0.0F))
     {
-      int j = (int)(paramFloat * this.jdField_a_of_type_JavaUtilArrayList.size() - 1.0F);
+      int j = (int)(paramFloat * this.a.size() - 1.0F);
       int i = j;
       if (j < 0) {
         i = 0;
@@ -28,26 +28,21 @@ public class GapDataCollector
     throw new IndexOutOfBoundsException("the percent out of index");
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
   public GapDataCollector.RefreshData a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.a)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
+      if (this.a.size() <= 0)
       {
         localObject1 = new GapDataCollector.RefreshData(-1L, -1L, -1L, -1L, -1L, -1.0D, null, 0);
         return localObject1;
       }
-      Object localObject1 = new long[this.jdField_a_of_type_JavaUtilArrayList.size()];
+      Object localObject1 = new long[this.a.size()];
       int j = 0;
       int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i < this.a.size())
       {
-        localObject1[i] = ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(i)).longValue();
+        localObject1[i] = ((Long)this.a.get(i)).longValue();
         i += 1;
       }
       Arrays.sort((long[])localObject1);
@@ -67,17 +62,22 @@ public class GapDataCollector
       }
       double d2 = localObject1.length;
       Double.isNaN(d2);
-      return new GapDataCollector.RefreshData(l2, l3, l4, l5, l1, d1 / d2, (long[])localObject1, this.b);
+      return new GapDataCollector.RefreshData(l2, l3, l4, l5, l1, d1 / d2, (long[])localObject1, this.c);
     }
     for (;;)
     {
       throw localObject2;
     }
   }
+  
+  public int b()
+  {
+    return this.a.size();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.GapDataCollector
  * JD-Core Version:    0.7.0.1
  */

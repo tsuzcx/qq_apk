@@ -22,14 +22,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ReportWatchVideoManager
   implements IManager
 {
-  private final LinkedList<ReportWatchVideoManager.InnerVideoItem> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private ConcurrentHashMap<Integer, WatchVideoBatchRequest> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private final LinkedList<ReportWatchVideoManager.InnerVideoItem> a = new LinkedList();
+  private AtomicInteger b = new AtomicInteger(0);
+  private ConcurrentHashMap<Integer, WatchVideoBatchRequest> c = new ConcurrentHashMap();
+  private AtomicBoolean d = new AtomicBoolean(false);
   
   private void e()
   {
-    Object localObject = QQStoryContext.a().a().createEntityManager().query(ReportWatchVideoEntry.class, ReportWatchVideoEntry.class.getSimpleName(), false, null, null, null, null, null, null);
+    Object localObject = QQStoryContext.a().d().createEntityManager().query(ReportWatchVideoEntry.class, ReportWatchVideoEntry.class.getSimpleName(), false, null, null, null, null, null, null);
     if (localObject == null) {
       return;
     }
@@ -39,7 +39,7 @@ public class ReportWatchVideoManager
       ReportWatchVideoEntry localReportWatchVideoEntry = (ReportWatchVideoEntry)((Iterator)localObject).next();
       ReportWatchVideoManager.InnerVideoItem localInnerVideoItem = new ReportWatchVideoManager.InnerVideoItem();
       localInnerVideoItem.a(localReportWatchVideoEntry);
-      this.jdField_a_of_type_JavaUtilLinkedList.add(localInnerVideoItem);
+      this.a.add(localInnerVideoItem);
     }
   }
   
@@ -47,15 +47,15 @@ public class ReportWatchVideoManager
   {
     ArrayList localArrayList = new ArrayList();
     long l = System.currentTimeMillis();
-    Object localObject = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedList.size());
-    ((ArrayList)localObject).addAll(this.jdField_a_of_type_JavaUtilLinkedList);
+    Object localObject = new ArrayList(this.a.size());
+    ((ArrayList)localObject).addAll(this.a);
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       ReportWatchVideoManager.InnerVideoItem localInnerVideoItem = (ReportWatchVideoManager.InnerVideoItem)((Iterator)localObject).next();
-      if (localInnerVideoItem.jdField_a_of_type_Long < l - 86400000L)
+      if (localInnerVideoItem.d < l - 86400000L)
       {
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(localInnerVideoItem);
+        this.a.remove(localInnerVideoItem);
         localArrayList.add(localInnerVideoItem);
       }
     }
@@ -64,17 +64,17 @@ public class ReportWatchVideoManager
   
   private void g()
   {
-    Object localObject = new ArrayList(WatchVideoBatchHandler.a);
+    Object localObject = new ArrayList(WatchVideoBatchHandler.g);
     int i = 0;
-    while ((this.jdField_a_of_type_JavaUtilLinkedList.size() > 0) && (i < WatchVideoBatchHandler.a))
+    while ((this.a.size() > 0) && (i < WatchVideoBatchHandler.g))
     {
-      ((ArrayList)localObject).add(this.jdField_a_of_type_JavaUtilLinkedList.removeFirst());
+      ((ArrayList)localObject).add(this.a.removeFirst());
       i += 1;
     }
     if (((ArrayList)localObject).size() > 0)
     {
-      localObject = new WatchVideoBatchHandler().a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet(), (ArrayList)localObject);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(((WatchVideoBatchRequest)localObject).c), localObject);
+      localObject = new WatchVideoBatchHandler().a(this.b.incrementAndGet(), (ArrayList)localObject);
+      this.c.put(Integer.valueOf(((WatchVideoBatchRequest)localObject).f), localObject);
     }
   }
   
@@ -82,15 +82,15 @@ public class ReportWatchVideoManager
   
   public void a(ReportWatchVideoManager.InnerVideoItem paramInnerVideoItem, boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.a)
     {
-      if (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramInnerVideoItem))
+      if (!this.a.contains(paramInnerVideoItem))
       {
-        this.jdField_a_of_type_JavaUtilLinkedList.add(paramInnerVideoItem);
-        SLog.d("Q.qqstory:ReportWatchVideoManager", String.format("saveWatchVid vid=%s, videoUid=%s, list size=%d", new Object[] { paramInnerVideoItem.jdField_a_of_type_JavaLangString, paramInnerVideoItem.b, Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedList.size()) }));
+        this.a.add(paramInnerVideoItem);
+        SLog.d("Q.qqstory:ReportWatchVideoManager", String.format("saveWatchVid vid=%s, videoUid=%s, list size=%d", new Object[] { paramInnerVideoItem.a, paramInnerVideoItem.b, Integer.valueOf(this.a.size()) }));
       }
       if (paramBoolean) {
-        QQStoryContext.a().a().createEntityManager().persistOrReplace(paramInnerVideoItem.a());
+        QQStoryContext.a().d().createEntityManager().persistOrReplace(paramInnerVideoItem.a());
       }
       return;
     }
@@ -102,12 +102,12 @@ public class ReportWatchVideoManager
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleResponse. requestHashMap.size()=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      localStringBuilder.append(this.c.size());
       SLog.d("Q.qqstory:ReportWatchVideoManager", localStringBuilder.toString());
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0)
+      if (this.c.size() > 0)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramWatchVideoBatchRequest.c));
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
+        this.c.remove(Integer.valueOf(paramWatchVideoBatchRequest.f));
+        if (this.c.isEmpty())
         {
           paramWatchVideoBatchRequest = new ReportWatchVideoManager.WatchVideoBatchFinishEvent();
           StoryDispatcher.a().dispatch(paramWatchVideoBatchRequest);
@@ -129,7 +129,7 @@ public class ReportWatchVideoManager
   
   public boolean a(List<ReportWatchVideoManager.InnerVideoItem> paramList)
   {
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    EntityManager localEntityManager = QQStoryContext.a().d().createEntityManager();
     EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
     try
     {
@@ -140,7 +140,7 @@ public class ReportWatchVideoManager
         ReportWatchVideoManager.InnerVideoItem localInnerVideoItem = (ReportWatchVideoManager.InnerVideoItem)paramList.next();
         ReportWatchVideoEntry localReportWatchVideoEntry = new ReportWatchVideoEntry();
         localReportWatchVideoEntry.setStatus(1001);
-        localEntityManager.remove(localReportWatchVideoEntry, "vid=?", new String[] { localInnerVideoItem.jdField_a_of_type_JavaLangString });
+        localEntityManager.remove(localReportWatchVideoEntry, "vid=?", new String[] { localInnerVideoItem.a });
       }
       localEntityTransaction.commit();
       localEntityTransaction.end();
@@ -158,32 +158,32 @@ public class ReportWatchVideoManager
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.a.clear();
+      this.c.clear();
       return;
     }
   }
   
   public void c()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.a)
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+      if (this.d.compareAndSet(false, true))
       {
         e();
-        SLog.d("Q.qqstory:ReportWatchVideoManager", String.format("init. reportWatchVideoList.size=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedList.size()) }));
+        SLog.d("Q.qqstory:ReportWatchVideoManager", String.format("init. reportWatchVideoList.size=%d", new Object[] { Integer.valueOf(this.a.size()) }));
       }
       f();
-      SLog.d("Q.qqstory:ReportWatchVideoManager", String.format("startSendRequests. data size=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedList.size()) }));
-      if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0)
+      SLog.d("Q.qqstory:ReportWatchVideoManager", String.format("startSendRequests. data size=%d", new Object[] { Integer.valueOf(this.a.size()) }));
+      if (this.a.size() <= 0)
       {
         ReportWatchVideoManager.WatchVideoBatchFinishEvent localWatchVideoBatchFinishEvent = new ReportWatchVideoManager.WatchVideoBatchFinishEvent();
         StoryDispatcher.a().dispatch(localWatchVideoBatchFinishEvent);
         return;
       }
-      while (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0) {
+      while (this.a.size() > 0) {
         g();
       }
       return;
@@ -196,12 +196,12 @@ public class ReportWatchVideoManager
   
   public void d()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.c.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.ReportWatchVideoManager
  * JD-Core Version:    0.7.0.1
  */

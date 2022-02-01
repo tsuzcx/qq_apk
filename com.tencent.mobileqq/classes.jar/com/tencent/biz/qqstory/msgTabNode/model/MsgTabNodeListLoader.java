@@ -64,87 +64,67 @@ import javax.annotation.concurrent.GuardedBy;
 
 public class MsgTabNodeListLoader
 {
-  protected static Comparator<MsgTabNodeInfo> a;
-  protected static Comparator<MsgTabNodeInfo> b;
-  protected Handler a;
-  protected HandlerThread a;
-  protected CmdTaskManger.CommandCallback<MsgTabNodeListRequest, MsgTabNodeListRequest.MsgTabNodeListResponse> a;
-  protected MsgTabStoryManager a;
-  private GetUserInfoHandler.OnGetUserInfoCallback a;
-  protected final Object a;
+  protected static Comparator<MsgTabNodeInfo> p = new MsgTabNodeInfoComparator();
+  protected static Comparator<MsgTabNodeInfo> q = new MsgTabNodeInfoPositionComparator();
+  private GetUserInfoHandler.OnGetUserInfoCallback A = new MsgTabNodeListLoader.1(this);
   protected String a;
-  protected volatile ArrayList<MsgTabNodeInfo> a;
-  protected HashMap<String, Boolean> a;
-  protected Set<String> a;
-  protected ConcurrentHashMap<String, QQUserUIItem> a;
-  protected AtomicBoolean a;
-  protected boolean a;
-  protected Handler b;
   protected String b;
-  protected volatile ArrayList<MsgTabNodeInfo> b;
-  boolean b;
-  protected ArrayList<qqstory_service.MsgTabNodePushNotify> c;
-  boolean c;
-  protected final ArrayList<MsgTabNodeListLoader.OnMsgTabNodeListLoadListener> d;
-  boolean d;
-  boolean e = false;
-  boolean f = false;
-  boolean g = false;
-  boolean h = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilComparator = new MsgTabNodeInfoComparator();
-    jdField_b_of_type_JavaUtilComparator = new MsgTabNodeInfoPositionComparator();
-  }
+  protected boolean c;
+  protected AtomicBoolean d = new AtomicBoolean(false);
+  protected volatile ArrayList<MsgTabNodeInfo> e;
+  protected volatile ArrayList<MsgTabNodeInfo> f;
+  protected ConcurrentHashMap<String, QQUserUIItem> g = new ConcurrentHashMap();
+  protected Set<String> h = Collections.synchronizedSet(new ArraySet());
+  protected ArrayList<qqstory_service.MsgTabNodePushNotify> i = new ArrayList();
+  protected final ArrayList<MsgTabNodeListLoader.OnMsgTabNodeListLoadListener> j = new ArrayList();
+  protected Handler k = new Handler(Looper.getMainLooper());
+  protected HandlerThread l = (HandlerThread)ThreadManagerV2.getRecentThread();
+  protected Handler m;
+  protected MsgTabStoryManager n;
+  protected HashMap<String, Boolean> o = new HashMap();
+  protected CmdTaskManger.CommandCallback<MsgTabNodeListRequest, MsgTabNodeListRequest.MsgTabNodeListResponse> r = new MsgTabNodeListLoader.2(this);
+  protected final Object s = new Object();
+  boolean t = false;
+  boolean u = false;
+  boolean v = false;
+  boolean w = false;
+  boolean x = false;
+  boolean y = false;
+  boolean z = false;
   
   MsgTabNodeListLoader(QQAppInterface paramQQAppInterface, MsgTabStoryManager paramMsgTabStoryManager)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new ArraySet());
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidOsHandlerThread = ((HandlerThread)ThreadManagerV2.getRecentThread());
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$OnGetUserInfoCallback = new MsgTabNodeListLoader.1(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$CommandCallback = new MsgTabNodeListLoader.2(this);
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
     SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListLoader ctor()");
     if (paramQQAppInterface == null) {
       SLog.c("Q.qqstory.msgTab.MsgTabNodeListLoader", "Error app is null", new IllegalArgumentException());
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager = paramMsgTabStoryManager;
-    this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a();
-    a(this.jdField_a_of_type_JavaUtilArrayList, true);
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_b_of_type_AndroidOsHandler = new MsgTabNodeListLoader.MsgTabWorkThreadHandler(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.n = paramMsgTabStoryManager;
+    this.e = this.n.c();
+    a(this.e, true);
+    this.f = new ArrayList(this.e);
+    this.m = new MsgTabNodeListLoader.MsgTabWorkThreadHandler(this, this.l.getLooper());
     if (QLog.isColorLevel()) {
       QLog.i("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "create new loader");
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    int i1 = 0;
+    while (i1 < this.e.size())
     {
-      paramQQAppInterface = (MsgTabNodeInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      int j = 0;
-      while (j < paramQQAppInterface.jdField_a_of_type_JavaUtilList.size())
+      paramQQAppInterface = (MsgTabNodeInfo)this.e.get(i1);
+      int i2 = 0;
+      while (i2 < paramQQAppInterface.e.size())
       {
-        paramMsgTabStoryManager = (MsgTabNodeVideoInfo)paramQQAppInterface.jdField_a_of_type_JavaUtilList.get(j);
+        paramMsgTabStoryManager = (MsgTabNodeVideoInfo)paramQQAppInterface.e.get(i2);
         Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramQQAppInterface.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramQQAppInterface.d);
         ((StringBuilder)localObject).append("-");
-        ((StringBuilder)localObject).append(paramMsgTabStoryManager.jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append(paramMsgTabStoryManager.a);
         localObject = ((StringBuilder)localObject).toString();
-        this.jdField_a_of_type_JavaUtilHashMap.put(localObject, Boolean.valueOf(paramMsgTabStoryManager.jdField_a_of_type_Boolean));
-        j += 1;
+        this.o.put(localObject, Boolean.valueOf(paramMsgTabStoryManager.b));
+        i2 += 1;
       }
-      i += 1;
+      i1 += 1;
     }
-    this.jdField_b_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.5(this));
+    this.m.post(new MsgTabNodeListLoader.5(this));
   }
   
   private void a(ArrayList<MsgTabNodeInfo> paramArrayList) {}
@@ -157,50 +137,50 @@ public class MsgTabNodeListLoader
     while (((Iterator)localObject).hasNext())
     {
       MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)((Iterator)localObject).next();
-      if (localMsgTabNodeInfo.jdField_c_of_type_Int > 0)
+      if (localMsgTabNodeInfo.q > 0)
       {
         localArrayList.add(localMsgTabNodeInfo);
         ((Iterator)localObject).remove();
       }
     }
     if (paramBoolean) {
-      Collections.sort(paramArrayList, jdField_a_of_type_JavaUtilComparator);
+      Collections.sort(paramArrayList, p);
     }
     if (localArrayList.size() > 0)
     {
       SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "sortNodeList() specialPositionNodes.size() = %d", Integer.valueOf(localArrayList.size()));
-      Collections.sort(localArrayList, jdField_b_of_type_JavaUtilComparator);
-      int i = 0;
-      while (i < paramArrayList.size())
+      Collections.sort(localArrayList, q);
+      int i1 = 0;
+      while (i1 < paramArrayList.size())
       {
-        localObject = (MsgTabNodeInfo)paramArrayList.get(i);
-        if ((((MsgTabNodeInfo)localObject).jdField_a_of_type_Int != 1) && (((MsgTabNodeInfo)localObject).jdField_a_of_type_Int != 4) && (((MsgTabNodeInfo)localObject).jdField_a_of_type_Int != 3))
+        localObject = (MsgTabNodeInfo)paramArrayList.get(i1);
+        if ((((MsgTabNodeInfo)localObject).b != 1) && (((MsgTabNodeInfo)localObject).b != 4) && (((MsgTabNodeInfo)localObject).b != 3))
         {
-          SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "sortNodeList() find baseIndex: %d", Integer.valueOf(i));
+          SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "sortNodeList() find baseIndex: %d", Integer.valueOf(i1));
           break label196;
         }
-        i += 1;
+        i1 += 1;
       }
-      i = -1;
+      i1 = -1;
       label196:
-      int j = i;
-      if (i == -1) {
-        j = paramArrayList.size();
+      int i2 = i1;
+      if (i1 == -1) {
+        i2 = paramArrayList.size();
       }
-      i = 0;
-      while (i < localArrayList.size())
+      i1 = 0;
+      while (i1 < localArrayList.size())
       {
-        localObject = (MsgTabNodeInfo)localArrayList.get(i);
-        if (((MsgTabNodeInfo)localObject).jdField_c_of_type_Int > 0) {
+        localObject = (MsgTabNodeInfo)localArrayList.get(i1);
+        if (((MsgTabNodeInfo)localObject).q > 0) {
           paramBoolean = true;
         } else {
           paramBoolean = false;
         }
         AssertUtils.assertTrue(paramBoolean, "position must be greater than 0");
-        int k = Math.min(((MsgTabNodeInfo)localObject).jdField_c_of_type_Int + j - 1, paramArrayList.size());
-        paramArrayList.add(k, localObject);
-        SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "sortNodeList() insert %s to nodeList index: %d", localObject, Integer.valueOf(k));
-        i += 1;
+        int i3 = Math.min(((MsgTabNodeInfo)localObject).q + i2 - 1, paramArrayList.size());
+        paramArrayList.add(i3, localObject);
+        SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "sortNodeList() insert %s to nodeList index: %d", localObject, Integer.valueOf(i3));
+        i1 += 1;
       }
     }
   }
@@ -216,86 +196,86 @@ public class MsgTabNodeListLoader
       return false;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "realHandlePushMsg() receive push! body: ", PBUtils.a(paramMsgTabNodePushNotify) });
+      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "realHandlePushMsg() receive push! body: ", PBUtils.b(paramMsgTabNodePushNotify) });
     }
     MsgTabNodeInfo localMsgTabNodeInfo = new MsgTabNodeInfo();
     localMsgTabNodeInfo.a((qqstory_service.MsgTabNodeInfo)paramMsgTabNodePushNotify.msg_notify_node_info.get());
     String str = paramMsgTabNodePushNotify.bytes_current_seq.get().toStringUtf8();
-    int i = paramMsgTabNodePushNotify.uint32_notify_type.get();
+    int i1 = paramMsgTabNodePushNotify.uint32_notify_type.get();
     boolean bool1;
     if (paramMsgTabNodePushNotify.uint32_animate.get() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    if (i == 1)
+    if (i1 == 1)
     {
-      if (localMsgTabNodeInfo.jdField_a_of_type_Int == 5)
+      if (localMsgTabNodeInfo.b == 5)
       {
-        paramMsgTabNodePushNotify = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a();
-        if (paramMsgTabNodePushNotify.jdField_d_of_type_Int > 0)
+        paramMsgTabNodePushNotify = this.n.d();
+        if (paramMsgTabNodePushNotify.r > 0)
         {
-          i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(localMsgTabNodeInfo);
-          if (i != -1) {
-            localMsgTabNodeInfo.a((MsgTabNodeInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+          i1 = this.e.indexOf(localMsgTabNodeInfo);
+          if (i1 != -1) {
+            localMsgTabNodeInfo.a((MsgTabNodeInfo)this.e.get(i1));
           } else {
             localMsgTabNodeInfo.a(paramMsgTabNodePushNotify);
           }
         }
       }
-      if ((localMsgTabNodeInfo.jdField_a_of_type_Int == 7) && (this.jdField_a_of_type_JavaUtilArrayList.indexOf(localMsgTabNodeInfo) == -1))
+      if ((localMsgTabNodeInfo.b == 7) && (this.e.indexOf(localMsgTabNodeInfo) == -1))
       {
-        int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-        i = 0;
-        while (i < j)
+        int i2 = this.e.size();
+        i1 = 0;
+        while (i1 < i2)
         {
-          paramMsgTabNodePushNotify = (MsgTabNodeInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if ((paramMsgTabNodePushNotify.jdField_a_of_type_Int == 9) && (TextUtils.equals(localMsgTabNodeInfo.jdField_a_of_type_JavaLangString, paramMsgTabNodePushNotify.jdField_a_of_type_JavaLangString)))
+          paramMsgTabNodePushNotify = (MsgTabNodeInfo)this.e.get(i1);
+          if ((paramMsgTabNodePushNotify.b == 9) && (TextUtils.equals(localMsgTabNodeInfo.d, paramMsgTabNodePushNotify.d)))
           {
-            this.jdField_a_of_type_JavaUtilArrayList.set(i, localMsgTabNodeInfo);
-            this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.b(paramMsgTabNodePushNotify);
-            this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a(localMsgTabNodeInfo);
+            this.e.set(i1, localMsgTabNodeInfo);
+            this.n.b(paramMsgTabNodePushNotify);
+            this.n.a(localMsgTabNodeInfo);
             if (paramBoolean)
             {
               a(paramMsgTabNodePushNotify, true, 3, bool1);
               a(localMsgTabNodeInfo, true, 1, bool1);
             }
-            StoryReportor.a("msg_tab", "exp_push", 0, 0, new String[] { String.valueOf(localMsgTabNodeInfo.jdField_a_of_type_Int) });
+            StoryReportor.a("msg_tab", "exp_push", 0, 0, new String[] { String.valueOf(localMsgTabNodeInfo.b) });
             return true;
           }
-          i += 1;
+          i1 += 1;
         }
       }
-      c(localMsgTabNodeInfo);
-      bool2 = b(localMsgTabNodeInfo);
+      d(localMsgTabNodeInfo);
+      bool2 = e(localMsgTabNodeInfo);
       c(Collections.singletonList(localMsgTabNodeInfo));
       b(Collections.singletonList(localMsgTabNodeInfo));
       if (bool2)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a(localMsgTabNodeInfo);
-        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_b_of_type_JavaLangString = str;
+        this.n.a(localMsgTabNodeInfo);
+        this.f = new ArrayList(this.e);
+        this.b = str;
         if (paramBoolean) {
           a(localMsgTabNodeInfo, true, 1, bool1);
         }
-        StoryReportor.a("msg_tab", "exp_push", 0, 0, new String[] { String.valueOf(localMsgTabNodeInfo.jdField_a_of_type_Int) });
+        StoryReportor.a("msg_tab", "exp_push", 0, 0, new String[] { String.valueOf(localMsgTabNodeInfo.b) });
       }
-      SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "realHandlePushMsg() data inserted, change=%b, mSeq=%s, data=%s", Boolean.valueOf(bool2), this.jdField_b_of_type_JavaLangString, localMsgTabNodeInfo);
+      SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "realHandlePushMsg() data inserted, change=%b, mSeq=%s, data=%s", Boolean.valueOf(bool2), this.b, localMsgTabNodeInfo);
       return bool2;
     }
-    if (i == 2)
+    if (i1 == 2)
     {
-      bool2 = c(localMsgTabNodeInfo);
+      bool2 = f(localMsgTabNodeInfo);
       if (bool2)
       {
-        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.b(localMsgTabNodeInfo);
-        this.jdField_b_of_type_JavaLangString = str;
+        this.f = new ArrayList(this.e);
+        this.n.b(localMsgTabNodeInfo);
+        this.b = str;
         if (paramBoolean) {
           a(localMsgTabNodeInfo, true, 3, bool1);
         }
       }
-      SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "realHandlePushMsg() data removed, change=%b, mSeq=%s, data=%s", Boolean.valueOf(bool2), this.jdField_b_of_type_JavaLangString, localMsgTabNodeInfo);
+      SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "realHandlePushMsg() data removed, change=%b, mSeq=%s, data=%s", Boolean.valueOf(bool2), this.b, localMsgTabNodeInfo);
     }
     return bool2;
   }
@@ -304,59 +284,59 @@ public class MsgTabNodeListLoader
   {
     SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "calc hasNewUnreadNodes(%s, %s)", paramList1, paramList2);
     HashSet localHashSet = new HashSet();
-    int i = 0;
+    int i1 = 0;
     Object localObject1;
     Object localObject2;
-    int j;
+    int i2;
     Object localObject3;
-    while (i < paramList1.size())
+    while (i1 < paramList1.size())
     {
-      localObject1 = ((MsgTabNodeInfo)paramList1.get(i)).jdField_a_of_type_JavaLangString;
-      if (((MsgTabNodeInfo)paramList1.get(i)).jdField_a_of_type_Int != 12)
+      localObject1 = ((MsgTabNodeInfo)paramList1.get(i1)).d;
+      if (((MsgTabNodeInfo)paramList1.get(i1)).b != 12)
       {
-        localObject2 = ((MsgTabNodeInfo)paramList1.get(i)).jdField_a_of_type_JavaUtilList;
-        j = 0;
-        while (j < ((List)localObject2).size())
+        localObject2 = ((MsgTabNodeInfo)paramList1.get(i1)).e;
+        i2 = 0;
+        while (i2 < ((List)localObject2).size())
         {
-          localObject3 = (MsgTabNodeVideoInfo)((List)localObject2).get(j);
-          if (!((MsgTabNodeVideoInfo)localObject3).jdField_a_of_type_Boolean)
+          localObject3 = (MsgTabNodeVideoInfo)((List)localObject2).get(i2);
+          if (!((MsgTabNodeVideoInfo)localObject3).b)
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append((String)localObject1);
             localStringBuilder.append("-");
-            localStringBuilder.append(((MsgTabNodeVideoInfo)localObject3).jdField_a_of_type_Long);
+            localStringBuilder.append(((MsgTabNodeVideoInfo)localObject3).a);
             localHashSet.add(localStringBuilder.toString());
           }
-          j += 1;
+          i2 += 1;
         }
       }
-      i += 1;
+      i1 += 1;
     }
-    i = 0;
-    while (i < paramList2.size())
+    i1 = 0;
+    while (i1 < paramList2.size())
     {
-      paramList1 = ((MsgTabNodeInfo)paramList2.get(i)).jdField_a_of_type_JavaLangString;
-      if (((MsgTabNodeInfo)paramList2.get(i)).jdField_a_of_type_Int != 12)
+      paramList1 = ((MsgTabNodeInfo)paramList2.get(i1)).d;
+      if (((MsgTabNodeInfo)paramList2.get(i1)).b != 12)
       {
-        localObject1 = ((MsgTabNodeInfo)paramList2.get(i)).jdField_a_of_type_JavaUtilList;
-        j = 0;
-        while (j < ((List)localObject1).size())
+        localObject1 = ((MsgTabNodeInfo)paramList2.get(i1)).e;
+        i2 = 0;
+        while (i2 < ((List)localObject1).size())
         {
-          localObject2 = (MsgTabNodeVideoInfo)((List)localObject1).get(j);
-          if (!((MsgTabNodeVideoInfo)localObject2).jdField_a_of_type_Boolean)
+          localObject2 = (MsgTabNodeVideoInfo)((List)localObject1).get(i2);
+          if (!((MsgTabNodeVideoInfo)localObject2).b)
           {
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append(paramList1);
             ((StringBuilder)localObject3).append("-");
-            ((StringBuilder)localObject3).append(((MsgTabNodeVideoInfo)localObject2).jdField_a_of_type_Long);
+            ((StringBuilder)localObject3).append(((MsgTabNodeVideoInfo)localObject2).a);
             if (!localHashSet.contains(((StringBuilder)localObject3).toString())) {
               return true;
             }
           }
-          j += 1;
+          i2 += 1;
         }
       }
-      i += 1;
+      i1 += 1;
     }
     return false;
   }
@@ -364,7 +344,7 @@ public class MsgTabNodeListLoader
   private boolean a(List<String> paramList, boolean paramBoolean)
   {
     boolean bool = paramList.isEmpty();
-    int i = 0;
+    int i1 = 0;
     if (bool)
     {
       SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "loadUserItemOnWorkThread() unionIds is empty");
@@ -373,9 +353,9 @@ public class MsgTabNodeListLoader
     UserManager localUserManager = (UserManager)SuperManager.a(2);
     ArrayList localArrayList = new ArrayList();
     bool = false;
-    while (i < paramList.size())
+    while (i1 < paramList.size())
     {
-      String str = (String)paramList.get(i);
+      String str = (String)paramList.get(i1);
       QQUserUIItem localQQUserUIItem = localUserManager.b(str);
       if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable()))
       {
@@ -386,13 +366,13 @@ public class MsgTabNodeListLoader
       {
         localArrayList.add(new QQUserUIItem.UserID("", str));
       }
-      i += 1;
+      i1 += 1;
     }
     if (!localArrayList.isEmpty())
     {
       if (paramBoolean)
       {
-        new GetUserInfoHandler(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$OnGetUserInfoCallback).a(1, localArrayList);
+        new GetUserInfoHandler(this.A).a(1, localArrayList);
         SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "loadUserItemOnWorkThread() Will fetch %s users", localArrayList);
         return bool;
       }
@@ -407,11 +387,11 @@ public class MsgTabNodeListLoader
   private void b(qqstory_service.MsgTabNodePushNotify paramMsgTabNodePushNotify)
   {
     if (SLog.a()) {
-      SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "onHandlePushMsg %s", PBUtils.a(paramMsgTabNodePushNotify));
+      SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "onHandlePushMsg %s", PBUtils.b(paramMsgTabNodePushNotify));
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (this.d.get())
     {
-      this.jdField_c_of_type_JavaUtilArrayList.add(paramMsgTabNodePushNotify);
+      this.i.add(paramMsgTabNodePushNotify);
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "refreshing, add to waiting queue");
       }
@@ -426,50 +406,50 @@ public class MsgTabNodeListLoader
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    int j = 0;
-    int i = 0;
-    while ((j < paramList.size()) && (i < 8))
+    int i2 = 0;
+    int i1 = 0;
+    while ((i2 < paramList.size()) && (i1 < 8))
     {
-      int k = j + 1;
-      MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)paramList.get(j);
-      if (localMsgTabNodeInfo.jdField_b_of_type_Int == 0)
+      int i3 = i2 + 1;
+      MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)paramList.get(i2);
+      if (localMsgTabNodeInfo.i == 0)
       {
-        SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] node already read! break", Integer.valueOf(j));
+        SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] node already read! break", Integer.valueOf(i2));
         break;
       }
-      if ((localMsgTabNodeInfo.jdField_a_of_type_Int == 6) || (localMsgTabNodeInfo.jdField_a_of_type_Int == 9) || (localMsgTabNodeInfo.jdField_a_of_type_Int == 7) || (localMsgTabNodeInfo.jdField_a_of_type_Int == 5))
+      if ((localMsgTabNodeInfo.b == 6) || (localMsgTabNodeInfo.b == 9) || (localMsgTabNodeInfo.b == 7) || (localMsgTabNodeInfo.b == 5))
       {
-        Iterator localIterator = localMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator = localMsgTabNodeInfo.e.iterator();
         MsgTabNodeVideoInfo localMsgTabNodeVideoInfo;
         do
         {
           boolean bool = localIterator.hasNext();
-          j = 1;
+          i2 = 1;
           if (!bool) {
             break;
           }
           localMsgTabNodeVideoInfo = (MsgTabNodeVideoInfo)localIterator.next();
-          if (TextUtils.isEmpty(localMsgTabNodeVideoInfo.jdField_a_of_type_JavaLangString))
+          if (TextUtils.isEmpty(localMsgTabNodeVideoInfo.c))
           {
             localArrayList1.add(localMsgTabNodeInfo);
-            i += 1;
-            SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] vid empty, will requestVids", Integer.valueOf(k));
+            i1 += 1;
+            SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] vid empty, will requestVids", Integer.valueOf(i3));
             break label245;
           }
-        } while (localMsgTabNodeVideoInfo.jdField_a_of_type_Boolean);
-        localArrayList2.add(localMsgTabNodeVideoInfo.jdField_a_of_type_JavaLangString);
-        i += 1;
-        SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] add %s to vid request list", Integer.valueOf(k), localMsgTabNodeVideoInfo.jdField_a_of_type_JavaLangString);
+        } while (localMsgTabNodeVideoInfo.b);
+        localArrayList2.add(localMsgTabNodeVideoInfo.c);
+        i1 += 1;
+        SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] add %s to vid request list", Integer.valueOf(i3), localMsgTabNodeVideoInfo.c);
         break label245;
-        j = 0;
+        i2 = 0;
         label245:
-        if (j == 0)
+        if (i2 == 0)
         {
-          SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] node already read! break", Integer.valueOf(k));
+          SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] node already read! break", Integer.valueOf(i3));
           break;
         }
       }
-      j = k;
+      i2 = i3;
     }
     a(localArrayList2);
     if (localArrayList1.isEmpty())
@@ -481,50 +461,106 @@ public class MsgTabNodeListLoader
     Stream.fromIterator(localArrayList1.iterator()).map(new MsgTabNodeListLoader.4(this)).map(new MsgTabNodeVidListPullSegment("MsgTabPreloader")).subscribe(new MsgTabNodeListLoader.3(this));
   }
   
-  private boolean b(MsgTabNodeInfo paramMsgTabNodeInfo)
+  private void c(List<MsgTabNodeInfo> paramList)
+  {
+    UserManager localUserManager = (UserManager)SuperManager.a(2);
+    paramList = new ArrayList(paramList);
+    ArrayList localArrayList = new ArrayList();
+    int i1 = 0;
+    while (i1 < paramList.size())
+    {
+      Object localObject = (MsgTabNodeInfo)paramList.get(i1);
+      if ((((MsgTabNodeInfo)localObject).b != 12) && (((MsgTabNodeInfo)localObject).b != 10) && (((MsgTabNodeInfo)localObject).b != 11) && (((MsgTabNodeInfo)localObject).b != 13))
+      {
+        localObject = ((MsgTabNodeInfo)localObject).d;
+        QQUserUIItem localQQUserUIItem = localUserManager.b((String)localObject);
+        if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
+          a(localQQUserUIItem);
+        } else {
+          localArrayList.add(new QQUserUIItem.UserID("", (String)localObject));
+        }
+      }
+      i1 += 1;
+    }
+    if (!localArrayList.isEmpty())
+    {
+      new GetUserInfoHandler(this.A).a(1, localArrayList);
+      SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "requestUserItemIfNecessary() Will fetch %s users", localArrayList);
+      return;
+    }
+    SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "requestUserItemIfNecessary() All nodes has local cache, no need request");
+  }
+  
+  private void d(MsgTabNodeInfo paramMsgTabNodeInfo)
+  {
+    int i2 = paramMsgTabNodeInfo.e.size();
+    int i1 = 0;
+    while (i1 < paramMsgTabNodeInfo.e.size())
+    {
+      MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = (MsgTabNodeVideoInfo)paramMsgTabNodeInfo.e.get(i1);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramMsgTabNodeInfo.d);
+      ((StringBuilder)localObject).append("-");
+      ((StringBuilder)localObject).append(localMsgTabNodeVideoInfo.a);
+      localObject = ((StringBuilder)localObject).toString();
+      localObject = (Boolean)this.o.get(localObject);
+      if ((localObject != null) && (((Boolean)localObject).booleanValue())) {
+        localMsgTabNodeVideoInfo.b = true;
+      }
+      int i3 = i2;
+      if (localMsgTabNodeVideoInfo.b) {
+        i3 = i2 - 1;
+      }
+      i1 += 1;
+      i2 = i3;
+    }
+    paramMsgTabNodeInfo.i = i2;
+  }
+  
+  private boolean e(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     boolean bool;
-    if (Thread.currentThread() == this.jdField_a_of_type_AndroidOsHandlerThread) {
+    if (Thread.currentThread() == this.l) {
       bool = true;
     } else {
       bool = false;
     }
     AssertUtils.assertTrue(bool);
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramMsgTabNodeInfo);
-    if (i != -1)
+    int i1 = this.e.indexOf(paramMsgTabNodeInfo);
+    if (i1 != -1)
     {
-      MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (paramMsgTabNodeInfo.jdField_c_of_type_Long >= localMsgTabNodeInfo.jdField_c_of_type_Long) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(paramMsgTabNodeInfo);
+      MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)this.e.get(i1);
+      if (paramMsgTabNodeInfo.g >= localMsgTabNodeInfo.g) {
+        this.e.remove(paramMsgTabNodeInfo);
       } else {
         return false;
       }
     }
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    i = 0;
-    while (i < j)
+    int i2 = this.e.size();
+    i1 = 0;
+    while (i1 < i2)
     {
-      if (jdField_a_of_type_JavaUtilComparator.compare(paramMsgTabNodeInfo, this.jdField_a_of_type_JavaUtilArrayList.get(i)) <= 0)
+      if (p.compare(paramMsgTabNodeInfo, this.e.get(i1)) <= 0)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(i, paramMsgTabNodeInfo);
-        a(this.jdField_a_of_type_JavaUtilArrayList, false);
+        this.e.add(i1, paramMsgTabNodeInfo);
+        a(this.e, false);
         return true;
       }
-      i += 1;
+      i1 += 1;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramMsgTabNodeInfo);
-    a(this.jdField_a_of_type_JavaUtilArrayList, false);
+    this.e.add(paramMsgTabNodeInfo);
+    a(this.e, false);
     return true;
   }
   
   @WorkerThread
-  private void c()
+  private void f()
   {
     SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "insertOrUpdateSelfNodeWithUnUploadInfo()");
-    MsgTabNodeInfo localMsgTabNodeInfo2 = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a();
-    if (localMsgTabNodeInfo2.jdField_d_of_type_Int > 0)
+    MsgTabNodeInfo localMsgTabNodeInfo2 = this.n.d();
+    if (localMsgTabNodeInfo2.r > 0)
     {
-      MsgTabNodeInfo localMsgTabNodeInfo3 = a(localMsgTabNodeInfo2.jdField_a_of_type_Int, localMsgTabNodeInfo2.jdField_a_of_type_JavaLangString);
+      MsgTabNodeInfo localMsgTabNodeInfo3 = a(localMsgTabNodeInfo2.b, localMsgTabNodeInfo2.d);
       MsgTabNodeInfo localMsgTabNodeInfo1 = localMsgTabNodeInfo2;
       if (localMsgTabNodeInfo3 != null)
       {
@@ -535,92 +571,36 @@ public class MsgTabNodeListLoader
     }
   }
   
-  private void c(MsgTabNodeInfo paramMsgTabNodeInfo)
-  {
-    int j = paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.size())
-    {
-      MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = (MsgTabNodeVideoInfo)paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.get(i);
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append("-");
-      ((StringBuilder)localObject).append(localMsgTabNodeVideoInfo.jdField_a_of_type_Long);
-      localObject = ((StringBuilder)localObject).toString();
-      localObject = (Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      if ((localObject != null) && (((Boolean)localObject).booleanValue())) {
-        localMsgTabNodeVideoInfo.jdField_a_of_type_Boolean = true;
-      }
-      int k = j;
-      if (localMsgTabNodeVideoInfo.jdField_a_of_type_Boolean) {
-        k = j - 1;
-      }
-      i += 1;
-      j = k;
-    }
-    paramMsgTabNodeInfo.jdField_b_of_type_Int = j;
-  }
-  
-  private void c(List<MsgTabNodeInfo> paramList)
-  {
-    UserManager localUserManager = (UserManager)SuperManager.a(2);
-    paramList = new ArrayList(paramList);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      Object localObject = (MsgTabNodeInfo)paramList.get(i);
-      if ((((MsgTabNodeInfo)localObject).jdField_a_of_type_Int != 12) && (((MsgTabNodeInfo)localObject).jdField_a_of_type_Int != 10) && (((MsgTabNodeInfo)localObject).jdField_a_of_type_Int != 11) && (((MsgTabNodeInfo)localObject).jdField_a_of_type_Int != 13))
-      {
-        localObject = ((MsgTabNodeInfo)localObject).jdField_a_of_type_JavaLangString;
-        QQUserUIItem localQQUserUIItem = localUserManager.b((String)localObject);
-        if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
-          a(localQQUserUIItem);
-        } else {
-          localArrayList.add(new QQUserUIItem.UserID("", (String)localObject));
-        }
-      }
-      i += 1;
-    }
-    if (!localArrayList.isEmpty())
-    {
-      new GetUserInfoHandler(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$OnGetUserInfoCallback).a(1, localArrayList);
-      SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "requestUserItemIfNecessary() Will fetch %s users", localArrayList);
-      return;
-    }
-    SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "requestUserItemIfNecessary() All nodes has local cache, no need request");
-  }
-  
-  private boolean c(MsgTabNodeInfo paramMsgTabNodeInfo)
+  private boolean f(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     boolean bool;
-    if (Thread.currentThread() == this.jdField_a_of_type_AndroidOsHandlerThread) {
+    if (Thread.currentThread() == this.l) {
       bool = true;
     } else {
       bool = false;
     }
     AssertUtils.assertTrue(bool);
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramMsgTabNodeInfo);
-    if (i != -1)
+    int i1 = this.e.indexOf(paramMsgTabNodeInfo);
+    if (i1 != -1)
     {
-      MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (paramMsgTabNodeInfo.jdField_c_of_type_Long < localMsgTabNodeInfo.jdField_c_of_type_Long) {
+      MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)this.e.get(i1);
+      if (paramMsgTabNodeInfo.g < localMsgTabNodeInfo.g) {
         return false;
       }
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.remove(paramMsgTabNodeInfo);
+    return this.e.remove(paramMsgTabNodeInfo);
   }
   
   public MsgTabNodeInfo a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.e != null)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      if (this.e.isEmpty()) {
         return null;
       }
       if (paramInt == -1)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.e.iterator();
         MsgTabNodeInfo localMsgTabNodeInfo;
         do
         {
@@ -628,13 +608,13 @@ public class MsgTabNodeListLoader
             break;
           }
           localMsgTabNodeInfo = (MsgTabNodeInfo)localIterator.next();
-        } while (!TextUtils.equals(localMsgTabNodeInfo.jdField_a_of_type_JavaLangString, paramString));
+        } while (!TextUtils.equals(localMsgTabNodeInfo.d, paramString));
         return localMsgTabNodeInfo;
       }
       paramString = new MsgTabNodeInfo(paramInt, paramString);
-      paramInt = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramString);
+      paramInt = this.e.indexOf(paramString);
       if (paramInt != -1) {
-        return (MsgTabNodeInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        return (MsgTabNodeInfo)this.e.get(paramInt);
       }
     }
     return null;
@@ -642,16 +622,16 @@ public class MsgTabNodeListLoader
   
   public MsgTabNodeInfo a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+    if ((!TextUtils.isEmpty(paramString)) && (this.e != null))
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      if (this.e.isEmpty()) {
         return null;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.e.iterator();
       while (localIterator.hasNext())
       {
         MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)localIterator.next();
-        if (TextUtils.equals(paramString, localMsgTabNodeInfo.jdField_a_of_type_JavaLangString)) {
+        if (TextUtils.equals(paramString, localMsgTabNodeInfo.d)) {
           return localMsgTabNodeInfo;
         }
       }
@@ -659,25 +639,20 @@ public class MsgTabNodeListLoader
     return null;
   }
   
-  public ArrayList<MsgTabNodeInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    synchronized (this.jdField_d_of_type_JavaUtilArrayList)
+    this.g.clear();
+    synchronized (this.j)
     {
-      this.jdField_d_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.j.clear();
+      this.k.removeCallbacksAndMessages(null);
       return;
     }
   }
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+    Object localObject = this.d;
     Boolean localBoolean = Boolean.valueOf(false);
     if (!((AtomicBoolean)localObject).compareAndSet(false, true))
     {
@@ -687,15 +662,15 @@ public class MsgTabNodeListLoader
       return;
     }
     localObject = new MsgTabNodeListRequest();
-    ((MsgTabNodeListRequest)localObject).jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    ((MsgTabNodeListRequest)localObject).jdField_c_of_type_Int = paramInt;
+    ((MsgTabNodeListRequest)localObject).f = this.b;
+    ((MsgTabNodeListRequest)localObject).g = paramInt;
     StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-    boolean bool = ((Boolean)localStoryConfigManager.b("key_force_refresh_msg_node_list", localBoolean)).booleanValue();
+    boolean bool = ((Boolean)localStoryConfigManager.c("key_force_refresh_msg_node_list", localBoolean)).booleanValue();
     if (bool) {
-      localStoryConfigManager.b("key_force_refresh_msg_node_list", localBoolean);
+      localStoryConfigManager.d("key_force_refresh_msg_node_list", localBoolean);
     }
-    ((MsgTabNodeListRequest)localObject).jdField_a_of_type_Boolean = bool;
-    CmdTaskManger.a().a((NetworkRequest)localObject, this.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$CommandCallback);
+    ((MsgTabNodeListRequest)localObject).i = bool;
+    CmdTaskManger.a().a((NetworkRequest)localObject, this.r);
     if (QLog.isDevelopLevel()) {
       QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "requestLatestPage(): ", ((MsgTabNodeListRequest)localObject).toString() });
     }
@@ -703,84 +678,84 @@ public class MsgTabNodeListLoader
   
   public void a(StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    if (paramStoryVideoPublishStatusEvent.jdField_b_of_type_Boolean)
+    if (paramStoryVideoPublishStatusEvent.b)
     {
       boolean bool = QLog.isDevelopLevel();
-      int j = 0;
+      int i2 = 0;
       if (bool)
       {
-        QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "upload event: mFakeStoryVideoItem:  isUploading: ", Boolean.valueOf(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isUploading()), ", isUploadFaul: ", Boolean.valueOf(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isUploadFail()), ", isUploadSucc: ", Boolean.valueOf(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isUploadSuc()), ", isCancel: ", Boolean.valueOf(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isCancel()) });
+        QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "upload event: mFakeStoryVideoItem:  isUploading: ", Boolean.valueOf(paramStoryVideoPublishStatusEvent.c.isUploading()), ", isUploadFaul: ", Boolean.valueOf(paramStoryVideoPublishStatusEvent.c.isUploadFail()), ", isUploadSucc: ", Boolean.valueOf(paramStoryVideoPublishStatusEvent.c.isUploadSuc()), ", isCancel: ", Boolean.valueOf(paramStoryVideoPublishStatusEvent.c.isCancel()) });
         QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "StoryVideoPublishStatusEvent event: ", String.valueOf(paramStoryVideoPublishStatusEvent) });
       }
-      Object localObject3 = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a();
-      Object localObject2 = a(((MsgTabNodeInfo)localObject3).jdField_a_of_type_Int, ((MsgTabNodeInfo)localObject3).jdField_a_of_type_JavaLangString);
+      Object localObject3 = this.n.d();
+      Object localObject2 = a(((MsgTabNodeInfo)localObject3).b, ((MsgTabNodeInfo)localObject3).d);
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = new MsgTabNodeInfo(((MsgTabNodeInfo)localObject3).jdField_a_of_type_Int, ((MsgTabNodeInfo)localObject3).jdField_a_of_type_JavaLangString);
-        ((MsgTabNodeInfo)localObject1).jdField_b_of_type_Long = QQStoryContext.a().a();
+        localObject1 = new MsgTabNodeInfo(((MsgTabNodeInfo)localObject3).b, ((MsgTabNodeInfo)localObject3).d);
+        ((MsgTabNodeInfo)localObject1).c = QQStoryContext.a().h();
         a((MsgTabNodeInfo)localObject1, false);
       }
-      int k = ((MsgTabNodeInfo)localObject1).a();
-      int m = ((MsgTabNodeInfo)localObject3).a();
+      int i3 = ((MsgTabNodeInfo)localObject1).c();
+      int i4 = ((MsgTabNodeInfo)localObject3).c();
       if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "upload status change, currentUploadStatus: ", Integer.valueOf(k), "\tnewUploadStatus: ", Integer.valueOf(m) });
+        QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "upload status change, currentUploadStatus: ", Integer.valueOf(i3), "\tnewUploadStatus: ", Integer.valueOf(i4) });
       }
       ((MsgTabNodeInfo)localObject1).a((MsgTabNodeInfo)localObject3);
-      if (paramStoryVideoPublishStatusEvent.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) {
-        paramStoryVideoPublishStatusEvent = paramStoryVideoPublishStatusEvent.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+      if (paramStoryVideoPublishStatusEvent.d != null) {
+        paramStoryVideoPublishStatusEvent = paramStoryVideoPublishStatusEvent.d;
       } else {
-        paramStoryVideoPublishStatusEvent = paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+        paramStoryVideoPublishStatusEvent = paramStoryVideoPublishStatusEvent.c;
       }
-      int i = j;
+      int i1 = i2;
       if (paramStoryVideoPublishStatusEvent.isUploadSuc())
       {
         localObject2 = new MsgTabNodeVideoInfo();
-        ((MsgTabNodeVideoInfo)localObject2).jdField_a_of_type_Boolean = false;
-        ((MsgTabNodeVideoInfo)localObject2).jdField_a_of_type_Long = paramStoryVideoPublishStatusEvent.mVideoIndex;
-        if (((MsgTabNodeVideoInfo)localObject2).jdField_a_of_type_Long == 0L) {
-          ((MsgTabNodeVideoInfo)localObject2).jdField_a_of_type_Long = paramStoryVideoPublishStatusEvent.mCreateTime;
+        ((MsgTabNodeVideoInfo)localObject2).b = false;
+        ((MsgTabNodeVideoInfo)localObject2).a = paramStoryVideoPublishStatusEvent.mVideoIndex;
+        if (((MsgTabNodeVideoInfo)localObject2).a == 0L) {
+          ((MsgTabNodeVideoInfo)localObject2).a = paramStoryVideoPublishStatusEvent.mCreateTime;
         }
-        if (((MsgTabNodeInfo)localObject1).jdField_a_of_type_JavaUtilList.indexOf(localObject2) != -1) {
-          i = 1;
+        if (((MsgTabNodeInfo)localObject1).e.indexOf(localObject2) != -1) {
+          i1 = 1;
         } else {
-          i = 0;
+          i1 = 0;
         }
-        if (i == 0)
+        if (i1 == 0)
         {
-          ((MsgTabNodeInfo)localObject1).jdField_a_of_type_JavaUtilList.add(localObject2);
-          ((MsgTabNodeInfo)localObject1).jdField_b_of_type_Int += 1;
-          ((MsgTabNodeInfo)localObject1).g = paramStoryVideoPublishStatusEvent.getThumbUrl();
-          ((MsgTabNodeInfo)localObject1).jdField_d_of_type_Long = (paramStoryVideoPublishStatusEvent.mCreateTime / 1000L);
-          if (((MsgTabNodeInfo)localObject1).jdField_b_of_type_JavaUtilList == null) {
-            ((MsgTabNodeInfo)localObject1).jdField_b_of_type_JavaUtilList = new ArrayList();
+          ((MsgTabNodeInfo)localObject1).e.add(localObject2);
+          ((MsgTabNodeInfo)localObject1).i += 1;
+          ((MsgTabNodeInfo)localObject1).p = paramStoryVideoPublishStatusEvent.getThumbUrl();
+          ((MsgTabNodeInfo)localObject1).h = (paramStoryVideoPublishStatusEvent.mCreateTime / 1000L);
+          if (((MsgTabNodeInfo)localObject1).u == null) {
+            ((MsgTabNodeInfo)localObject1).u = new ArrayList();
           }
           localObject3 = new MsgTabVideoData();
-          ((MsgTabVideoData)localObject3).jdField_a_of_type_JavaLangString = paramStoryVideoPublishStatusEvent.mAttachedFeedId;
-          ((MsgTabVideoData)localObject3).jdField_b_of_type_JavaLangString = paramStoryVideoPublishStatusEvent.mVid;
-          ((MsgTabVideoData)localObject3).jdField_a_of_type_Long = paramStoryVideoPublishStatusEvent.mVideoIndex;
-          ((MsgTabVideoData)localObject3).jdField_a_of_type_Boolean = false;
-          ((MsgTabVideoData)localObject3).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoPublishStatusEvent;
-          ((MsgTabNodeInfo)localObject1).jdField_b_of_type_JavaUtilList.add(localObject3);
+          ((MsgTabVideoData)localObject3).b = paramStoryVideoPublishStatusEvent.mAttachedFeedId;
+          ((MsgTabVideoData)localObject3).c = paramStoryVideoPublishStatusEvent.mVid;
+          ((MsgTabVideoData)localObject3).d = paramStoryVideoPublishStatusEvent.mVideoIndex;
+          ((MsgTabVideoData)localObject3).a = false;
+          ((MsgTabVideoData)localObject3).e = paramStoryVideoPublishStatusEvent;
+          ((MsgTabNodeInfo)localObject1).u.add(localObject3);
           if (QLog.isColorLevel()) {
-            QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "add videoInfo to list , videoInfo=", localObject2, ", \nnodeInfo=", localObject1, ", \nnow videoList=", ((MsgTabNodeInfo)localObject1).jdField_a_of_type_JavaUtilList });
+            QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "add videoInfo to list , videoInfo=", localObject2, ", \nnodeInfo=", localObject1, ", \nnow videoList=", ((MsgTabNodeInfo)localObject1).e });
           }
-          i = 1;
+          i1 = 1;
         }
         else
         {
-          i = j;
+          i1 = i2;
           if (QLog.isColorLevel())
           {
             QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "add videoInfo to list , but exist!!! videoInfo=", localObject2 });
-            i = j;
+            i1 = i2;
           }
         }
       }
-      if (k != m) {
-        i = 1;
+      if (i3 != i4) {
+        i1 = 1;
       }
-      if (i != 0) {
+      if (i1 != 0) {
         a((MsgTabNodeInfo)localObject1, true);
       }
     }
@@ -788,17 +763,17 @@ public class MsgTabNodeListLoader
   
   public void a(DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
   {
-    if (!paramDeleteStoryVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+    if (!paramDeleteStoryVideoEvent.g.isSuccess()) {
       return;
     }
     if (QLog.isDevelopLevel()) {
       QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "delete video event, event=", paramDeleteStoryVideoEvent });
     }
     Object localObject;
-    if (paramDeleteStoryVideoEvent.jdField_a_of_type_Boolean)
+    if (paramDeleteStoryVideoEvent.f)
     {
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a();
-      MsgTabNodeInfo localMsgTabNodeInfo = a(((MsgTabNodeInfo)localObject).jdField_a_of_type_Int, ((MsgTabNodeInfo)localObject).jdField_a_of_type_JavaLangString);
+      localObject = this.n.d();
+      MsgTabNodeInfo localMsgTabNodeInfo = a(((MsgTabNodeInfo)localObject).b, ((MsgTabNodeInfo)localObject).d);
       paramDeleteStoryVideoEvent = (DeleteStoryVideoEvent)localObject;
       if (localMsgTabNodeInfo != null)
       {
@@ -808,19 +783,19 @@ public class MsgTabNodeListLoader
       a(paramDeleteStoryVideoEvent, true);
       return;
     }
-    int i;
+    int i1;
     if (!TextUtils.isEmpty(paramDeleteStoryVideoEvent.c)) {
-      i = 8;
+      i1 = 8;
     } else {
-      i = 5;
+      i1 = 5;
     }
     if (!TextUtils.isEmpty(paramDeleteStoryVideoEvent.c)) {
       localObject = paramDeleteStoryVideoEvent.c;
     } else {
-      localObject = paramDeleteStoryVideoEvent.jdField_b_of_type_JavaLangString;
+      localObject = paramDeleteStoryVideoEvent.b;
     }
-    a(i, (String)localObject, paramDeleteStoryVideoEvent.jdField_a_of_type_Long);
-    a(i, paramDeleteStoryVideoEvent.jdField_b_of_type_JavaLangString, paramDeleteStoryVideoEvent.c);
+    a(i1, (String)localObject, paramDeleteStoryVideoEvent.e);
+    a(i1, paramDeleteStoryVideoEvent.b, paramDeleteStoryVideoEvent.c);
   }
   
   protected void a(QQUserUIItem paramQQUserUIItem)
@@ -832,7 +807,7 @@ public class MsgTabNodeListLoader
     }
     if ((!TextUtils.isEmpty(paramQQUserUIItem.uid)) && (paramQQUserUIItem.isAvailable()))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramQQUserUIItem.uid, paramQQUserUIItem);
+      this.g.put(paramQQUserUIItem.uid, paramQQUserUIItem);
       return;
     }
     SLog.c("Q.qqstory.msgTab.MsgTabNodeListLoader", new IllegalArgumentException(), "addUserUIItemCache item Illegal %s", new Object[] { String.valueOf(paramQQUserUIItem) });
@@ -840,12 +815,12 @@ public class MsgTabNodeListLoader
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext())
     {
       MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)localIterator.next();
-      if ((localMsgTabNodeInfo.jdField_a_of_type_Int == 13) && (TextUtils.equals(localMsgTabNodeInfo.jdField_a_of_type_JavaLangString, paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString))) {
-        paramMsgTabNodeInfo.jdField_d_of_type_Boolean = localMsgTabNodeInfo.jdField_d_of_type_Boolean;
+      if ((localMsgTabNodeInfo.b == 13) && (TextUtils.equals(localMsgTabNodeInfo.d, paramMsgTabNodeInfo.d))) {
+        paramMsgTabNodeInfo.D = localMsgTabNodeInfo.D;
       }
     }
   }
@@ -853,28 +828,28 @@ public class MsgTabNodeListLoader
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo, boolean paramBoolean)
   {
     SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "insertNodeSync(%s, %b)", String.valueOf(paramMsgTabNodeInfo), Boolean.valueOf(paramBoolean));
-    int j = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramMsgTabNodeInfo);
-    if (b(paramMsgTabNodeInfo))
+    int i2 = this.e.indexOf(paramMsgTabNodeInfo);
+    if (e(paramMsgTabNodeInfo))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a(paramMsgTabNodeInfo);
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-      int k = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramMsgTabNodeInfo);
-      int i = 1;
+      this.n.a(paramMsgTabNodeInfo);
+      this.f = new ArrayList(this.e);
+      int i3 = this.e.indexOf(paramMsgTabNodeInfo);
+      int i1 = 1;
       boolean bool;
-      if (j != k) {
+      if (i2 != i3) {
         bool = true;
       } else {
         bool = false;
       }
       if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "insertNode: hasChangePos=", Boolean.valueOf(bool), ", oldIndex=", Integer.valueOf(j), ", newIndex=", Integer.valueOf(k) });
+        QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "insertNode: hasChangePos=", Boolean.valueOf(bool), ", oldIndex=", Integer.valueOf(i2), ", newIndex=", Integer.valueOf(i3) });
       }
       if (paramBoolean)
       {
         if (!bool) {
-          i = 2;
+          i1 = 2;
         }
-        a(paramMsgTabNodeInfo, false, i, false);
+        a(paramMsgTabNodeInfo, false, i1, false);
       }
     }
   }
@@ -882,11 +857,11 @@ public class MsgTabNodeListLoader
   protected void a(MsgTabNodeInfo paramMsgTabNodeInfo, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
     SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "notifySingleDataChange() data=%s, push=%b, type=%d, animate=%b", String.valueOf(paramMsgTabNodeInfo), Boolean.valueOf(paramBoolean1), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2));
-    int i;
+    int i1;
     if (paramInt == 1)
     {
-      i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramMsgTabNodeInfo);
-      if (i == -1)
+      i1 = this.e.indexOf(paramMsgTabNodeInfo);
+      if (i1 == -1)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("insert position not found:");
@@ -897,16 +872,16 @@ public class MsgTabNodeListLoader
     }
     else
     {
-      i = -1;
+      i1 = -1;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.11(this, paramMsgTabNodeInfo, paramBoolean1, paramInt, i, paramBoolean2));
+    this.k.post(new MsgTabNodeListLoader.11(this, paramMsgTabNodeInfo, paramBoolean1, paramInt, i1, paramBoolean2));
   }
   
   public void a(MsgTabNodeListLoader.OnMsgTabNodeListLoadListener paramOnMsgTabNodeListLoadListener)
   {
-    synchronized (this.jdField_d_of_type_JavaUtilArrayList)
+    synchronized (this.j)
     {
-      if (this.jdField_d_of_type_JavaUtilArrayList.contains(paramOnMsgTabNodeListLoadListener))
+      if (this.j.contains(paramOnMsgTabNodeListLoadListener))
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "listener already exist");
@@ -916,7 +891,7 @@ public class MsgTabNodeListLoader
       if (QLog.isDevelopLevel()) {
         QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "add listener ", paramOnMsgTabNodeListLoadListener.getClass().getSimpleName() });
       }
-      this.jdField_d_of_type_JavaUtilArrayList.add(paramOnMsgTabNodeListLoadListener);
+      this.j.add(paramOnMsgTabNodeListLoadListener);
       return;
     }
   }
@@ -929,150 +904,150 @@ public class MsgTabNodeListLoader
     {
       SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListResponse onCmdRespond() get latest failed: %s", paramErrorMessage.getErrorMessage());
       a(false);
-      bool = a();
-      a(this.jdField_a_of_type_JavaUtilArrayList, true);
+      bool = b();
+      a(this.e, true);
       if (bool)
       {
-        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-        a(this.jdField_b_of_type_JavaUtilArrayList, true, this.jdField_a_of_type_Boolean, true);
+        this.f = new ArrayList(this.e);
+        a(this.f, true, this.c, true);
       }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      this.d.set(false);
       return;
     }
     a(true);
-    this.h = paramMsgTabNodeListResponse.jdField_a_of_type_Boolean;
-    if (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramMsgTabNodeListResponse.jdField_a_of_type_JavaLangString))
+    this.z = paramMsgTabNodeListResponse.a;
+    if (TextUtils.equals(this.b, paramMsgTabNodeListResponse.b))
     {
-      SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListResponse onCmdRespond() seq(%s) equals, sort only, mData size=%d", this.jdField_b_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()));
+      SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListResponse onCmdRespond() seq(%s) equals, sort only, mData size=%d", this.b, Integer.valueOf(this.e.size()));
       if (paramErrorMessage.errorCode == 15001)
       {
         paramErrorMessage = null;
         paramMsgTabNodeListRequest = paramErrorMessage;
-        if (paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        if (paramMsgTabNodeListResponse.g.size() > 0)
         {
-          i = 0;
+          i1 = 0;
           for (;;)
           {
             paramMsgTabNodeListRequest = paramErrorMessage;
-            if (i >= paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.size()) {
+            if (i1 >= paramMsgTabNodeListResponse.g.size()) {
               break;
             }
-            paramMsgTabNodeListRequest = (MsgTabNodeInfo)paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.get(i);
-            if (paramMsgTabNodeListRequest.jdField_a_of_type_Int == 12) {
+            paramMsgTabNodeListRequest = (MsgTabNodeInfo)paramMsgTabNodeListResponse.g.get(i1);
+            if (paramMsgTabNodeListRequest.b == 12) {
               break;
             }
-            i += 1;
+            i1 += 1;
           }
         }
         if (paramMsgTabNodeListRequest != null)
         {
           SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "weishi Node replace!");
-          i = 0;
-          while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+          i1 = 0;
+          while (i1 < this.e.size())
           {
-            if (((MsgTabNodeInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int == 12)
+            if (((MsgTabNodeInfo)this.e.get(i1)).b == 12)
             {
-              this.jdField_a_of_type_JavaUtilArrayList.set(i, paramMsgTabNodeListRequest);
-              i = 1;
+              this.e.set(i1, paramMsgTabNodeListRequest);
+              i1 = 1;
               break label305;
             }
-            i += 1;
+            i1 += 1;
           }
-          i = 0;
+          i1 = 0;
           label305:
-          if (i == 0) {
-            this.jdField_a_of_type_JavaUtilArrayList.add(paramMsgTabNodeListRequest);
+          if (i1 == 0) {
+            this.e.add(paramMsgTabNodeListRequest);
           }
         }
       }
-      a(this.jdField_a_of_type_JavaUtilArrayList, true);
-      a();
-      c(this.jdField_a_of_type_JavaUtilArrayList);
-      b(this.jdField_a_of_type_JavaUtilArrayList);
-      a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-      a(this.jdField_b_of_type_JavaUtilArrayList, true, this.jdField_a_of_type_Boolean, false);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      a(this.e, true);
+      b();
+      c(this.e);
+      b(this.e);
+      a(this.e);
+      this.f = new ArrayList(this.e);
+      a(this.f, true, this.c, false);
+      this.d.set(false);
       b(false);
       return;
     }
-    SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListResponse onCmdRespond() begin syncLocalReadStatus() of nodeList, size = %d", Integer.valueOf(paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.size()));
-    int i = 0;
-    while (i < paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.size())
+    SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListResponse onCmdRespond() begin syncLocalReadStatus() of nodeList, size = %d", Integer.valueOf(paramMsgTabNodeListResponse.g.size()));
+    int i1 = 0;
+    while (i1 < paramMsgTabNodeListResponse.g.size())
     {
-      c((MsgTabNodeInfo)paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.get(i));
-      i += 1;
+      d((MsgTabNodeInfo)paramMsgTabNodeListResponse.g.get(i1));
+      i1 += 1;
     }
-    if (paramMsgTabNodeListRequest.jdField_c_of_type_Int == 1) {
-      bool = a(this.jdField_a_of_type_JavaUtilArrayList, paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList);
+    if (paramMsgTabNodeListRequest.g == 1) {
+      bool = a(this.e, paramMsgTabNodeListResponse.g);
     } else {
       bool = false;
     }
     SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListResponse onCmdRespond() end syncLocalReadStatus() of nodeList");
     SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListResponse onCmdRespond() begin replace mData with response, and sort data");
-    this.jdField_b_of_type_JavaLangString = paramMsgTabNodeListResponse.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_JavaLangString = paramMsgTabNodeListResponse.c;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList);
-    a(this.jdField_a_of_type_JavaUtilArrayList);
-    a(this.jdField_a_of_type_JavaUtilArrayList, true);
-    this.jdField_a_of_type_Boolean = paramMsgTabNodeListResponse.jdField_b_of_type_Boolean;
+    this.b = paramMsgTabNodeListResponse.b;
+    this.a = paramMsgTabNodeListResponse.e;
+    this.e.clear();
+    this.e.addAll(paramMsgTabNodeListResponse.g);
+    a(this.e);
+    a(this.e, true);
+    this.c = paramMsgTabNodeListResponse.f;
     SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListResponse onCmdRespond() end replace mData with response");
-    a();
-    c();
+    b();
+    f();
     SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListResponse onCmdRespond() begin save changedData(mData) to DB");
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a(this.jdField_a_of_type_JavaUtilArrayList, true);
+    this.n.a(this.e, true);
     SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListResponse onCmdRespond() end save changedData(mData) to DB");
-    c(this.jdField_a_of_type_JavaUtilArrayList);
-    b(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-    a(this.jdField_b_of_type_JavaUtilArrayList, true, this.jdField_a_of_type_Boolean, false);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    c(this.e);
+    b(this.e);
+    this.f = new ArrayList(this.e);
+    a(this.f, true, this.c, false);
+    this.d.set(false);
     b(bool);
-    SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListResponse onCmdRespond() return, mData.size() = %d", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()));
+    SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "MsgTabNodeListResponse onCmdRespond() return, mData.size() = %d", Integer.valueOf(this.e.size()));
   }
   
   @WorkerThread
   public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
     StringBuilder localStringBuilder;
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null) && (!paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if ((paramUpdateUserInfoEvent.g.isSuccess()) && (paramUpdateUserInfoEvent.b != null) && (!paramUpdateUserInfoEvent.b.isEmpty()))
     {
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onStoryUpdateUserInfoEvent isSuccess userUIItems: ");
-        localStringBuilder.append(paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList);
+        localStringBuilder.append(paramUpdateUserInfoEvent.b);
         QLog.i("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, localStringBuilder.toString());
       }
-      int m = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.size();
-      int k = 0;
-      int i = 0;
-      int j;
+      int i4 = paramUpdateUserInfoEvent.b.size();
+      int i3 = 0;
+      int i1 = 0;
+      int i2;
       for (;;)
       {
-        j = k;
-        if (i >= m) {
+        i2 = i3;
+        if (i1 >= i4) {
           break;
         }
-        if (a(((QQUserUIItem)paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.get(i)).uid) != null)
+        if (a(((QQUserUIItem)paramUpdateUserInfoEvent.b.get(i1)).uid) != null)
         {
-          j = 1;
+          i2 = 1;
           break;
         }
-        i += 1;
+        i1 += 1;
       }
-      if (j != 0) {
-        this.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.13(this));
+      if (i2 != 0) {
+        this.k.post(new MsgTabNodeListLoader.13(this));
       }
     }
     else if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onStoryUpdateUserInfoEvent errorInfo: ");
-      localStringBuilder.append(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+      localStringBuilder.append(paramUpdateUserInfoEvent.g);
       localStringBuilder.append(", userUIItems = ");
-      localStringBuilder.append(paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList);
+      localStringBuilder.append(paramUpdateUserInfoEvent.b);
       QLog.i("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, localStringBuilder.toString());
     }
   }
@@ -1082,26 +1057,15 @@ public class MsgTabNodeListLoader
     boolean bool = QQStoryNetReqUtils.a();
     if ((paramMsgTabNodePushNotify.uint32_is_test_env.get() == 1) && (!bool))
     {
-      SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "handlePushMsg drop push %s, is not in testEnv", PBUtils.a(paramMsgTabNodePushNotify));
+      SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "handlePushMsg drop push %s, is not in testEnv", PBUtils.b(paramMsgTabNodePushNotify));
       return;
     }
     if ((paramMsgTabNodePushNotify.uint32_is_test_env.get() == 0) && (bool))
     {
-      SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "handlePushMsg drop push %s, is in testEnv", PBUtils.a(paramMsgTabNodePushNotify));
+      SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "handlePushMsg drop push %s, is in testEnv", PBUtils.b(paramMsgTabNodePushNotify));
       return;
     }
-    this.jdField_b_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.6(this, paramMsgTabNodePushNotify));
-  }
-  
-  public void a(String paramString)
-  {
-    SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "scheduleRequireUserItem() %s", paramString);
-    Message.obtain(this.jdField_b_of_type_AndroidOsHandler, 2, paramString).sendToTarget();
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    this.jdField_b_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.12(this, paramString, paramLong));
+    this.m.post(new MsgTabNodeListLoader.6(this, paramMsgTabNodePushNotify));
   }
   
   public void a(String paramString1, String paramString2)
@@ -1120,7 +1084,7 @@ public class MsgTabNodeListLoader
   protected void a(ArrayList<MsgTabNodeInfo> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "notifySingleDataChange() dataList=%s, isFirstPage=%b, isEnd=%b, push=%b", String.valueOf(paramArrayList), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3));
-    this.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.10(this, paramArrayList, paramBoolean1, paramBoolean2, paramBoolean3));
+    this.k.post(new MsgTabNodeListLoader.10(this, paramArrayList, paramBoolean1, paramBoolean2, paramBoolean3));
   }
   
   void a(List<String> paramList)
@@ -1129,11 +1093,11 @@ public class MsgTabNodeListLoader
     {
       SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "preloadVideoItemByVidList(), list: %s", paramList);
       StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
-      int i = 0;
-      while (i < paramList.size())
+      int i1 = 0;
+      while (i1 < paramList.size())
       {
-        localStoryManager.b((String)paramList.get(i));
-        i += 1;
+        localStoryManager.b((String)paramList.get(i1));
+        i1 += 1;
       }
       return;
     }
@@ -1142,38 +1106,7 @@ public class MsgTabNodeListLoader
   
   protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.8(this, paramBoolean));
-  }
-  
-  protected boolean a()
-  {
-    SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "applyWaitingQueue()");
-    boolean bool;
-    if (Thread.currentThread() == this.jdField_a_of_type_AndroidOsHandlerThread) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    AssertUtils.assertTrue(bool);
-    if (this.jdField_c_of_type_JavaUtilArrayList.size() > 0)
-    {
-      SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "applyWaitingQueue() mWaitingQueue.size() > 0");
-      Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-      bool = false;
-      while (localIterator.hasNext()) {
-        bool |= a((qqstory_service.MsgTabNodePushNotify)localIterator.next(), false);
-      }
-      if (bool) {
-        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-      }
-      this.jdField_c_of_type_JavaUtilArrayList.clear();
-    }
-    else
-    {
-      bool = false;
-    }
-    SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "applyWaitingQueue() return, hasChange = %b", Boolean.valueOf(bool));
-    return bool;
+    this.k.post(new MsgTabNodeListLoader.8(this, paramBoolean));
   }
   
   public boolean a(int paramInt, String paramString, long paramLong)
@@ -1183,47 +1116,47 @@ public class MsgTabNodeListLoader
     if (paramString == null) {
       return false;
     }
-    paramInt = paramString.jdField_a_of_type_JavaUtilList.size() - 1;
-    int i = 0;
+    paramInt = paramString.e.size() - 1;
+    int i1 = 0;
     boolean bool2;
     for (boolean bool1 = false; paramInt >= 0; bool1 = bool2)
     {
-      MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = (MsgTabNodeVideoInfo)paramString.jdField_a_of_type_JavaUtilList.get(paramInt);
-      int j;
-      if (localMsgTabNodeVideoInfo.jdField_a_of_type_Long == paramLong)
+      MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = (MsgTabNodeVideoInfo)paramString.e.get(paramInt);
+      int i2;
+      if (localMsgTabNodeVideoInfo.a == paramLong)
       {
-        paramString.jdField_a_of_type_JavaUtilList.remove(paramInt);
+        paramString.e.remove(paramInt);
         bool2 = true;
-        j = i;
+        i2 = i1;
       }
       else
       {
-        j = i;
+        i2 = i1;
         bool2 = bool1;
-        if (!localMsgTabNodeVideoInfo.jdField_a_of_type_Boolean)
+        if (!localMsgTabNodeVideoInfo.b)
         {
-          j = i + 1;
+          i2 = i1 + 1;
           bool2 = bool1;
         }
       }
       paramInt -= 1;
-      i = j;
+      i1 = i2;
     }
-    paramString.jdField_b_of_type_Int = i;
+    paramString.i = i1;
     if ((!bool1) && (QLog.isDevelopLevel())) {
-      QLog.e("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "deleteNodeVideoFromNodeInfoFromWorkThread, nothing to delete", " info.unreadCount =", Integer.valueOf(paramString.jdField_b_of_type_Int), ", info.videoInfoList=", paramString.jdField_a_of_type_JavaUtilList });
+      QLog.e("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "deleteNodeVideoFromNodeInfoFromWorkThread, nothing to delete", " info.unreadCount =", Integer.valueOf(paramString.i), ", info.videoInfoList=", paramString.e });
     }
-    if (paramString.jdField_a_of_type_JavaUtilList.isEmpty())
+    if (paramString.e.isEmpty())
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.b(paramString);
+      this.e.remove(paramString);
+      this.f = new ArrayList(this.e);
+      this.n.b(paramString);
       a(paramString, false, 3, false);
       return bool1;
     }
     if (bool1)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a(paramString);
+      this.n.a(paramString);
       a(paramString, false, 2, false);
     }
     return bool1;
@@ -1235,18 +1168,7 @@ public class MsgTabNodeListLoader
     if (!TextUtils.isEmpty(paramString2)) {
       paramString1 = paramString2;
     }
-    return MsgTabStoryManager.a(new MsgTabNodeInfo(paramInt, paramString1));
-  }
-  
-  public boolean a(MsgTabNodeInfo paramMsgTabNodeInfo)
-  {
-    boolean bool = c(paramMsgTabNodeInfo);
-    if (bool)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.b(paramMsgTabNodeInfo);
-      a(paramMsgTabNodeInfo, false, 3, false);
-    }
-    return bool;
+    return MsgTabStoryManager.d(new MsgTabNodeInfo(paramInt, paramString1));
   }
   
   @WorkerThread
@@ -1257,113 +1179,63 @@ public class MsgTabNodeListLoader
     if (paramString == null) {
       return false;
     }
-    int i = paramString.jdField_a_of_type_JavaUtilList.size() - 1;
+    int i1 = paramString.e.size() - 1;
     Object localObject;
-    while (i >= 0)
+    while (i1 >= 0)
     {
-      localObject = (MsgTabNodeVideoInfo)paramString.jdField_a_of_type_JavaUtilList.get(i);
-      if ((((MsgTabNodeVideoInfo)localObject).jdField_a_of_type_Long == paramLong) && (!((MsgTabNodeVideoInfo)localObject).jdField_a_of_type_Boolean))
+      localObject = (MsgTabNodeVideoInfo)paramString.e.get(i1);
+      if ((((MsgTabNodeVideoInfo)localObject).a == paramLong) && (!((MsgTabNodeVideoInfo)localObject).b))
       {
-        ((MsgTabNodeVideoInfo)localObject).jdField_a_of_type_Boolean = true;
-        paramString.jdField_b_of_type_Int -= 1;
+        ((MsgTabNodeVideoInfo)localObject).b = true;
+        paramString.i -= 1;
         bool = true;
         break label112;
       }
-      i -= 1;
+      i1 -= 1;
     }
     boolean bool = false;
     label112:
-    if ((paramString.jdField_b_of_type_Int <= 0) && (!paramString.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if ((paramString.i <= 0) && (!paramString.e.isEmpty()))
     {
       localObject = new MsgTabNodeWatchedRequest();
-      ((MsgTabNodeWatchedRequest)localObject).jdField_b_of_type_JavaLangString = paramString.jdField_a_of_type_JavaLangString;
-      ((MsgTabNodeWatchedRequest)localObject).jdField_c_of_type_Int = paramString.jdField_a_of_type_Int;
-      ((MsgTabNodeWatchedRequest)localObject).jdField_d_of_type_Int = 5;
-      ((MsgTabNodeWatchedRequest)localObject).jdField_b_of_type_Long = paramString.e;
+      ((MsgTabNodeWatchedRequest)localObject).f = paramString.d;
+      ((MsgTabNodeWatchedRequest)localObject).g = paramString.b;
+      ((MsgTabNodeWatchedRequest)localObject).h = 5;
+      ((MsgTabNodeWatchedRequest)localObject).i = paramString.j;
       CmdTaskManger.a().a((NetworkRequest)localObject, null);
     }
     if (QLog.isDevelopLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "update unread count, hasChangeUnRead? :", Boolean.valueOf(bool), ", videoIndex=", Long.valueOf(paramLong), ", \ninfo=", paramString, ", \nvideoInfo=", paramString.jdField_a_of_type_JavaUtilList });
+      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "update unread count, hasChangeUnRead? :", Boolean.valueOf(bool), ", videoIndex=", Long.valueOf(paramLong), ", \ninfo=", paramString, ", \nvideoInfo=", paramString.e });
     }
     if (bool)
     {
-      i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramString);
-      if (i >= 0)
+      i1 = this.e.indexOf(paramString);
+      if (i1 >= 0)
       {
-        localObject = (MsgTabNodeInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject = (MsgTabNodeInfo)this.e.get(i1);
         ((MsgTabNodeInfo)localObject).copy(paramString);
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a((MsgTabNodeInfo)localObject);
+        this.n.a((MsgTabNodeInfo)localObject);
       }
       a(paramString, false, 2, false);
     }
     return bool;
   }
   
-  @UiThread
-  public ArrayList<MsgTabNodeInfo> b()
-  {
-    boolean bool;
-    if (Looper.getMainLooper() == Looper.myLooper()) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    AssertUtils.assertTrue(bool);
-    return this.jdField_b_of_type_JavaUtilArrayList;
-  }
-  
-  @GuardedBy("mNotifyLock")
-  public void b()
-  {
-    boolean bool;
-    if (RedPointUtils.a(52) > 0) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    this.g = bool;
-    if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Boolean)) {
-      return;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_b_of_type_Boolean = true;
-        if (this.jdField_d_of_type_Boolean)
-        {
-          this.jdField_d_of_type_Boolean = false;
-          i = 1;
-          if (i != 0) {
-            ((QQStoryHandler)QQStoryContext.a().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(1026, true, Boolean.valueOf(false));
-          }
-          return;
-        }
-      }
-      int i = 0;
-    }
-  }
-  
   public void b(StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.15(this, paramStoryVideoPublishStatusEvent));
+    this.m.post(new MsgTabNodeListLoader.15(this, paramStoryVideoPublishStatusEvent));
   }
   
   public void b(DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.16(this, paramDeleteStoryVideoEvent));
-  }
-  
-  public void b(MsgTabNodeInfo paramMsgTabNodeInfo)
-  {
-    this.jdField_b_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.7(this, paramMsgTabNodeInfo));
+    this.m.post(new MsgTabNodeListLoader.16(this, paramDeleteStoryVideoEvent));
   }
   
   public void b(MsgTabNodeListLoader.OnMsgTabNodeListLoadListener paramOnMsgTabNodeListLoadListener)
   {
-    synchronized (this.jdField_d_of_type_JavaUtilArrayList)
+    synchronized (this.j)
     {
-      this.jdField_d_of_type_JavaUtilArrayList.remove(paramOnMsgTabNodeListLoadListener);
+      this.j.remove(paramOnMsgTabNodeListLoadListener);
       if (QLog.isDevelopLevel()) {
         QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, new Object[] { "remove listener ", paramOnMsgTabNodeListLoadListener.getClass().getSimpleName() });
       }
@@ -1373,37 +1245,48 @@ public class MsgTabNodeListLoader
   
   public void b(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.14(this, paramUpdateUserInfoEvent));
+    this.m.post(new MsgTabNodeListLoader.14(this, paramUpdateUserInfoEvent));
+  }
+  
+  public void b(String paramString)
+  {
+    SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "scheduleRequireUserItem() %s", paramString);
+    Message.obtain(this.m, 2, paramString).sendToTarget();
+  }
+  
+  public void b(String paramString, long paramLong)
+  {
+    this.m.post(new MsgTabNodeListLoader.12(this, paramString, paramLong));
   }
   
   @GuardedBy("mNotifyLock")
   public void b(boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.s)
     {
-      this.jdField_c_of_type_Boolean = true;
-      this.f = paramBoolean;
-      int i;
-      if (this.jdField_b_of_type_Boolean)
+      this.u = true;
+      this.x = paramBoolean;
+      int i1;
+      if (this.t)
       {
-        i = 1;
+        i1 = 1;
       }
       else
       {
-        this.jdField_d_of_type_Boolean = true;
-        i = 0;
+        this.v = true;
+        i1 = 0;
       }
-      if (i != 0)
+      if (i1 != 0)
       {
-        ??? = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList).iterator();
+        ??? = new ArrayList(this.e).iterator();
         while (((Iterator)???).hasNext())
         {
           MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)((Iterator)???).next();
-          if ((localMsgTabNodeInfo.jdField_b_of_type_Int > 0) && (localMsgTabNodeInfo.jdField_a_of_type_Int == 6)) {
-            this.e = true;
+          if ((localMsgTabNodeInfo.i > 0) && (localMsgTabNodeInfo.b == 6)) {
+            this.w = true;
           }
         }
-        ((QQStoryHandler)QQStoryContext.a().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(1026, true, Boolean.valueOf(false));
+        ((QQStoryHandler)QQStoryContext.k().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(1026, true, Boolean.valueOf(false));
       }
       return;
     }
@@ -1412,10 +1295,107 @@ public class MsgTabNodeListLoader
       throw localObject2;
     }
   }
+  
+  protected boolean b()
+  {
+    SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "applyWaitingQueue()");
+    boolean bool;
+    if (Thread.currentThread() == this.l) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    AssertUtils.assertTrue(bool);
+    if (this.i.size() > 0)
+    {
+      SLog.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "applyWaitingQueue() mWaitingQueue.size() > 0");
+      Iterator localIterator = this.i.iterator();
+      bool = false;
+      while (localIterator.hasNext()) {
+        bool |= a((qqstory_service.MsgTabNodePushNotify)localIterator.next(), false);
+      }
+      if (bool) {
+        this.f = new ArrayList(this.e);
+      }
+      this.i.clear();
+    }
+    else
+    {
+      bool = false;
+    }
+    SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "applyWaitingQueue() return, hasChange = %b", Boolean.valueOf(bool));
+    return bool;
+  }
+  
+  public boolean b(MsgTabNodeInfo paramMsgTabNodeInfo)
+  {
+    boolean bool = f(paramMsgTabNodeInfo);
+    if (bool)
+    {
+      this.n.b(paramMsgTabNodeInfo);
+      a(paramMsgTabNodeInfo, false, 3, false);
+    }
+    return bool;
+  }
+  
+  public ArrayList<MsgTabNodeInfo> c()
+  {
+    return this.e;
+  }
+  
+  public void c(MsgTabNodeInfo paramMsgTabNodeInfo)
+  {
+    this.m.post(new MsgTabNodeListLoader.7(this, paramMsgTabNodeInfo));
+  }
+  
+  @UiThread
+  public ArrayList<MsgTabNodeInfo> d()
+  {
+    boolean bool;
+    if (Looper.getMainLooper() == Looper.myLooper()) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    AssertUtils.assertTrue(bool);
+    return this.f;
+  }
+  
+  @GuardedBy("mNotifyLock")
+  public void e()
+  {
+    boolean bool;
+    if (RedPointUtils.a(52) > 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.y = bool;
+    if ((this.v) && (this.t)) {
+      return;
+    }
+    for (;;)
+    {
+      synchronized (this.s)
+      {
+        this.t = true;
+        if (this.v)
+        {
+          this.v = false;
+          i1 = 1;
+          if (i1 != 0) {
+            ((QQStoryHandler)QQStoryContext.k().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(1026, true, Boolean.valueOf(false));
+          }
+          return;
+        }
+      }
+      int i1 = 0;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader
  * JD-Core Version:    0.7.0.1
  */

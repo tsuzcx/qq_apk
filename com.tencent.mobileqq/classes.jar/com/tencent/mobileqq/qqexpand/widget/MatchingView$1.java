@@ -13,16 +13,16 @@ class MatchingView$1
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
+    if (TextUtils.equals(this.a, paramString))
     {
-      paramString = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetMatchingView.getResources(), paramBitmap);
-      MatchingView.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetMatchingView).setImageDrawable(paramString);
+      paramString = new BitmapDrawable(this.b.getResources(), paramBitmap);
+      MatchingView.a(this.b).setImageDrawable(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.MatchingView.1
  * JD-Core Version:    0.7.0.1
  */

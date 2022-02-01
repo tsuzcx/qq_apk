@@ -15,21 +15,21 @@ public class AdvertisementPopupWindow
   extends PopupWindow
   implements View.OnClickListener
 {
-  private AdvertisementItem jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   public ImaxadThirdProcessorProxy a;
+  private AppInterface b;
+  private AdvertisementItem c;
   
   public void onClick(View paramView)
   {
-    QQToast.a(BaseApplication.getContext(), 0, 2131695168, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(BaseApplication.getContext(), 0, 2131892901, 0).show(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920));
     dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqImaxadInjectImaxadThirdProcessorProxy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 3, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem);
+    this.a.a(this.b, 3, this.c);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.AdvertisementPopupWindow
  * JD-Core Version:    0.7.0.1
  */

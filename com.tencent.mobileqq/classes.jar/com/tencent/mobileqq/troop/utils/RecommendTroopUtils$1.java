@@ -14,18 +14,18 @@ final class RecommendTroopUtils$1
   
   public void run()
   {
-    Object localObject = (ITroopSysMsgDependApiService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopSysMsgDependApiService.class, "");
+    Object localObject = (ITroopSysMsgDependApiService)this.a.getRuntimeService(ITroopSysMsgDependApiService.class, "");
     Entity localEntity = null;
     if (localObject != null)
     {
-      if (((ITroopSysMsgDependApiService)localObject).isBrowserAppInterface(this.jdField_a_of_type_ComTencentCommonAppAppInterface))
+      if (((ITroopSysMsgDependApiService)localObject).isBrowserAppInterface(this.a))
       {
-        localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory(null).createEntityManager();
+        localObject = this.a.getEntityManagerFactory(null).createEntityManager();
         break label78;
       }
-      if (((ITroopSysMsgDependApiService)localObject).isQQAppInterface(this.jdField_a_of_type_ComTencentCommonAppAppInterface))
+      if (((ITroopSysMsgDependApiService)localObject).isQQAppInterface(this.a))
       {
-        localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
+        localObject = this.a.getEntityManagerFactory().createEntityManager();
         break label78;
       }
     }
@@ -34,8 +34,8 @@ final class RecommendTroopUtils$1
     if (localObject == null) {
       return;
     }
-    if (this.jdField_a_of_type_Int == 2) {
-      localEntity = ((EntityManager)localObject).find(NotificationRecommendTroopItem.class, this.jdField_a_of_type_JavaLangString);
+    if (this.b == 2) {
+      localEntity = ((EntityManager)localObject).find(NotificationRecommendTroopItem.class, this.c);
     }
     if (localEntity != null) {
       ((EntityManager)localObject).remove(localEntity);
@@ -44,7 +44,7 @@ final class RecommendTroopUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RecommendTroopUtils.1
  * JD-Core Version:    0.7.0.1
  */

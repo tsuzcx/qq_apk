@@ -57,7 +57,7 @@ public class QQFaceParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.qqface.data.QQFaceParam
  * JD-Core Version:    0.7.0.1
  */

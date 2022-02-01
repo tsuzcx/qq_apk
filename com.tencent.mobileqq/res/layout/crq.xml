@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="422.0dip"
+<LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/n4" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.vas.qid.QidPagView android:id="@id/nw8" android:layout_width="362.0dip" android:layout_height="532.0dip" android:layout_marginTop="-110.0dip" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView android:id="@id/puv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+        <View android:background="@drawable/eo3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/ayo" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/qks" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在播放" />
+        <TextView android:textSize="@dimen/ayi" android:textColor="@color/al3" android:layout_gravity="bottom|center|left" android:id="@id/qkl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/aym" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/qkq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxWidth="120.0dip" android:maxLines="1" />
+    <TextView android:textSize="@dimen/ayi" android:textColor="@color/al3" android:id="@id/qkr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
 </LinearLayout>

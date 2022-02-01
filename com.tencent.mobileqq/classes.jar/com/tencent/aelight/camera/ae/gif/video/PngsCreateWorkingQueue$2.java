@@ -13,14 +13,14 @@ class PngsCreateWorkingQueue$2
   
   public void a(String paramString)
   {
-    Object localObject1 = PngsCreateWorkingQueue.a();
+    Object localObject1 = PngsCreateWorkingQueue.b();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("create pngs for material index = ");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoMaterialWrapper.a);
+    ((StringBuilder)localObject2).append(this.a.a);
     ((StringBuilder)localObject2).append(" end, pngDir = ");
     ((StringBuilder)localObject2).append(paramString);
     QLog.d((String)localObject1, 4, ((StringBuilder)localObject2).toString());
-    this.jdField_a_of_type_ArrayOfJavaLangString[0] = paramString;
+    this.b[0] = paramString;
     localObject1 = new File(paramString).list();
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(paramString);
@@ -35,20 +35,20 @@ class PngsCreateWorkingQueue$2
       localStringBuilder.append(localObject1[0]);
       Util.a(localStringBuilder.toString(), 320, 320, (String)localObject2);
     }
-    PngsCreateWorkingQueue.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoPngsCreateWorkingQueue).c.add(localObject2);
-    PngsCreateWorkingQueue.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoPngsCreateWorkingQueue).a.add(paramString);
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoMaterialWrapper.c != null) && (!this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoMaterialWrapper.c.equals(""))) {
-      PngsCreateWorkingQueue.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoPngsCreateWorkingQueue).b.add(this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoMaterialWrapper.c);
+    PngsCreateWorkingQueue.a(this.d).c.add(localObject2);
+    PngsCreateWorkingQueue.a(this.d).a.add(paramString);
+    if ((this.a.d != null) && (!this.a.d.equals(""))) {
+      PngsCreateWorkingQueue.a(this.d).b.add(this.a.d);
     } else {
-      PngsCreateWorkingQueue.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoPngsCreateWorkingQueue).b.add(this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoMaterialWrapper.b);
+      PngsCreateWorkingQueue.a(this.d).b.add(this.a.c);
     }
-    PngsCreateWorkingQueue.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoPngsCreateWorkingQueue).d.add(Integer.valueOf(this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoMaterialWrapper.a));
-    this.jdField_a_of_type_JavaUtilConcurrentSemaphore.release();
+    PngsCreateWorkingQueue.a(this.d).d.add(Integer.valueOf(this.a.a));
+    this.c.release();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.PngsCreateWorkingQueue.2
  * JD-Core Version:    0.7.0.1
  */

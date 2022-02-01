@@ -36,7 +36,7 @@ final class AEOldResDownload$2
     if (str2 == null)
     {
       AEQLog.d("AEOldResDownload", "[onResp] key=null ");
-      this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResManager$INet_ShortVideoResource.a("", -1, "");
+      this.a.a("", -1, "");
       return;
     }
     localObject1 = str1;
@@ -102,7 +102,7 @@ final class AEOldResDownload$2
           if (FileUtils.rename((String)localObject4, str1))
           {
             localObject1 = str1;
-            localObject3 = ((AEOldShortVideoResManager.SVConfigItem)localObject3).name.substring(this.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo.jdField_b_of_type_JavaLangString.length());
+            localObject3 = ((AEOldShortVideoResManager.SVConfigItem)localObject3).name.substring(this.b.g.length());
             localObject1 = str1;
             localObject4 = new StringBuilder();
             localObject1 = str1;
@@ -145,7 +145,7 @@ final class AEOldResDownload$2
               localObject1 = str1;
               AEQLog.d("AEOldResDownload", "[onResp] unzipFile.exists=false[error]");
               localObject1 = str1;
-              this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResManager$INet_ShortVideoResource.a(str2, -118, str1);
+              this.a.a(str2, -118, str1);
               return;
             }
             localObject1 = str1;
@@ -165,10 +165,10 @@ final class AEOldResDownload$2
               if (bool)
               {
                 localObject1 = str1;
-                if (AEOldResUtil.a((String)localObject3))
+                if (AEOldResUtil.b((String)localObject3))
                 {
                   localObject1 = str1;
-                  if (AEOldResUtil.a((String)localObject2, this.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo))
+                  if (AEOldResUtil.a((String)localObject2, this.b))
                   {
                     localObject1 = str1;
                     AEQLog.d("AEOldResDownload", "[onResp] copyResFileToFinalDir.SUCCESS");
@@ -274,7 +274,7 @@ final class AEOldResDownload$2
       IPreDownloadController localIPreDownloadController;
       try
       {
-        if (this.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo.jdField_b_of_type_Boolean)
+        if (this.b.k)
         {
           localIPreDownloadController = (IPreDownloadController)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getRuntimeService(IPreDownloadController.class);
           if (localIPreDownloadController != null)
@@ -294,7 +294,7 @@ final class AEOldResDownload$2
       {
         AEQLog.a("AEOldResDownload", "[onResp] isPredownload callback ERROR", paramNetResp);
       }
-      this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResManager$INet_ShortVideoResource.a(str2, i, (String)localObject1);
+      this.a.a(str2, i, (String)localObject1);
       return;
       localObject1 = localIPreDownloadController;
     }
@@ -308,12 +308,12 @@ final class AEOldResDownload$2
       AEQLog.d("AEOldResDownload", "[onUpdateProgeress] key = null");
       return;
     }
-    this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResManager$INet_ShortVideoResource.a(paramNetReq, paramLong1, paramLong2);
+    this.a.a(paramNetReq, paramLong1, paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.old.AEOldResDownload.2
  * JD-Core Version:    0.7.0.1
  */

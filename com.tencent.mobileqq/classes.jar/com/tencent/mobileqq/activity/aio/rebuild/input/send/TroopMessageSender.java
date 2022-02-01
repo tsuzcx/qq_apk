@@ -15,33 +15,33 @@ public class TroopMessageSender
   
   public void b()
   {
-    if (this.a.a().a().a(4).a(this.a)) {
+    if (this.a.p().c().a(4).a(this.a)) {
       return;
     }
-    IMsgSendListener localIMsgSendListener = this.a.a().a().a(3);
+    IMsgSendListener localIMsgSendListener = this.a.p().c().a(3);
     if (localIMsgSendListener.a(this.a)) {
       return;
     }
-    if (this.a.a().a().a(5).a(this.a)) {
+    if (this.a.p().c().a(5).a(this.a)) {
       return;
     }
     super.b();
-    localIMsgSendListener.a(this.a);
+    localIMsgSendListener.b(this.a);
   }
   
   public void c()
   {
-    IMsgSendListener localIMsgSendListener = this.a.a().a().a(6);
+    IMsgSendListener localIMsgSendListener = this.a.p().c().a(6);
     if (localIMsgSendListener.a(this.a)) {
       return;
     }
     super.c();
-    localIMsgSendListener.a(this.a);
+    localIMsgSendListener.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.send.TroopMessageSender
  * JD-Core Version:    0.7.0.1
  */

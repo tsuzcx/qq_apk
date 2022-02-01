@@ -1,6 +1,7 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
+import com.tencent.av.abtest.QavUIABTestUtils;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 
@@ -11,9 +12,14 @@ class AVActivity$1$1
   
   public void run()
   {
-    if ((this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.a.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)) {
-      this.a.a.jdField_a_of_type_ComTencentAvVideoController.a().a(this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.a.a.c));
+    VideoAppInterface localVideoAppInterface = this.a.a.H;
+    if (localVideoAppInterface == null) {
+      return;
     }
+    if ((this.a.a.I != null) && (this.a.a.I.k() != null)) {
+      this.a.a.I.k().a(localVideoAppInterface.h(this.a.a.j));
+    }
+    QavUIABTestUtils.a(localVideoAppInterface.getCurrentAccountUin());
   }
 }
 

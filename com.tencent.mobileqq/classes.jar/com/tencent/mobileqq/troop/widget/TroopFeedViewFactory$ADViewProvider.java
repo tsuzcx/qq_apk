@@ -23,23 +23,23 @@ class TroopFeedViewFactory$ADViewProvider
   protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
   {
     if (paramView == null) {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopFeedViewFactory.jdField_a_of_type_AndroidContentContext).inflate(2131560611, null);
+      paramView = LayoutInflater.from(this.b.a).inflate(2131626656, null);
     }
     Object localObject1 = (TroopFeedViewFactory.ADViewProvider.ViewHolder)paramView.getTag();
     paramTroopFeedItem = (TroopFeedItem)localObject1;
     if (localObject1 == null)
     {
       paramTroopFeedItem = new TroopFeedViewFactory.ADViewProvider.ViewHolder(this);
-      paramTroopFeedItem.a = ((URLImageView)paramView.findViewById(2131362129));
-      paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopFeedViewFactory);
+      paramTroopFeedItem.a = ((URLImageView)paramView.findViewById(2131427708));
+      paramView.setOnClickListener(this.b);
       paramView.setTag(paramTroopFeedItem);
     }
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopFeedViewFactory.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetSupport(this.b.a))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopFeedViewFactory.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager == null) {
+      if (this.b.g == null) {
         break label300;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopFeedViewFactory.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager.c();
+      this.b.g.d();
       return paramView;
     }
     try
@@ -48,19 +48,19 @@ class TroopFeedViewFactory$ADViewProvider
       Object localObject2 = new EmptyDrawable(1, 1);
       ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
       ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
-      localObject1 = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTopADInfo.uiUrl, (URLDrawable.URLDrawableOptions)localObject1);
+      localObject1 = URLDrawable.getDrawable(this.a.uiUrl, (URLDrawable.URLDrawableOptions)localObject1);
       paramTroopFeedItem.a.setBackgroundDrawable((Drawable)localObject1);
       if (QLog.isColorLevel())
       {
         paramTroopFeedItem = new StringBuilder();
         paramTroopFeedItem.append("URLDrawable: ");
-        paramTroopFeedItem.append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTopADInfo.uiUrl);
+        paramTroopFeedItem.append(this.a.uiUrl);
         QLog.i("TroopAioADManager", 2, paramTroopFeedItem.toString());
       }
-      paramTroopFeedItem = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopFeedViewFactory.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopFeedViewFactory.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      paramTroopFeedItem = this.b.b;
+      localObject1 = this.b.c.b;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTopADInfo.adId);
+      ((StringBuilder)localObject2).append(this.a.adId);
       ((StringBuilder)localObject2).append("");
       ReportController.b(paramTroopFeedItem, "P_CliOper", "Grp_AIO", "", "notice_center", "Exp_Promote", 0, 0, (String)localObject1, ((StringBuilder)localObject2).toString(), "", "");
       return paramView;
@@ -79,7 +79,7 @@ class TroopFeedViewFactory$ADViewProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ADViewProvider
  * JD-Core Version:    0.7.0.1
  */

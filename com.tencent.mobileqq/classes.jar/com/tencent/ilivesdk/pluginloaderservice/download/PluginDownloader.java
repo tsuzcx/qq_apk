@@ -9,32 +9,32 @@ import java.io.File;
 
 public class PluginDownloader
 {
-  private final IDownloader jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIDownloader;
-  private IPlugin jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin;
+  private IPlugin a;
+  private final IDownloader b;
   
   public PluginDownloader(IDownloader paramIDownloader)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIDownloader = paramIDownloader;
+    this.b = paramIDownloader;
   }
   
   private File b()
   {
     Object localObject;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.b()))
+    if (!TextUtils.isEmpty(this.a.b()))
     {
-      localObject = new File(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.b());
+      localObject = new File(this.a.b());
       if ((((File)localObject).exists()) && (((File)localObject).isFile()))
       {
         LogUtil.b("PluginDownloader", "loadLocalFile: load local plugin file success.", new Object[0]);
         return localObject;
       }
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.k()))
+    if (!TextUtils.isEmpty(this.a.o()))
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.i());
+      ((StringBuilder)localObject).append(this.a.m());
       ((StringBuilder)localObject).append("/");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.k());
+      ((StringBuilder)localObject).append(this.a.o());
       localObject = new File(((StringBuilder)localObject).toString());
       if ((!((File)localObject).exists()) || (!((File)localObject).isFile()))
       {
@@ -42,23 +42,23 @@ public class PluginDownloader
         return null;
       }
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.d()))
+    if (!TextUtils.isEmpty(this.a.f()))
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.d());
+      ((StringBuilder)localObject).append(this.a.f());
       ((StringBuilder)localObject).append("/");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.h());
+      ((StringBuilder)localObject).append(this.a.k());
       localObject = new File(((StringBuilder)localObject).toString());
-      if ((((File)localObject).exists()) && (((File)localObject).isFile()) && ((TextUtils.equals(MD5Utils.getFileMd5String(((File)localObject).getAbsolutePath()), this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.m())) || (!this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.b())))
+      if ((((File)localObject).exists()) && (((File)localObject).isFile()) && ((TextUtils.equals(MD5Utils.getFileMd5String(((File)localObject).getAbsolutePath()), this.a.s())) || (!this.a.t())))
       {
         LogUtil.b("PluginDownloader", "loadLocalFile: load local updater plugin file success. file path %s", new Object[] { ((File)localObject).getAbsolutePath() });
         return localObject;
       }
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.e()))
+    if (!TextUtils.isEmpty(this.a.g()))
     {
-      localObject = new File(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.e());
-      if ((((File)localObject).exists()) && (((File)localObject).isFile()) && (!this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.b()))
+      localObject = new File(this.a.g());
+      if ((((File)localObject).exists()) && (((File)localObject).isFile()) && (!this.a.t()))
       {
         LogUtil.b("PluginDownloader", "loadLocalFile: load local installed plugin file success. file path %s", new Object[] { ((File)localObject).getAbsolutePath() });
         return localObject;
@@ -69,7 +69,7 @@ public class PluginDownloader
   
   public PluginDownloader a(IPlugin paramIPlugin)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin = paramIPlugin;
+    this.a = paramIPlugin;
     return this;
   }
   
@@ -79,12 +79,12 @@ public class PluginDownloader
     if (localFile != null) {
       return localFile;
     }
-    return Downloader.a(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.a(), this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.d(), this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPlugin.h());
+    return Downloader.a(this.a.a(), this.a.f(), this.a.k());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.download.PluginDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class TroopRobotFragment$2
   
   public void run()
   {
-    this.this$0.a(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.b, this.a.jdField_a_of_type_Int);
+    this.this$0.a(this.a.a, this.a.b, this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.TroopRobotFragment.2
  * JD-Core Version:    0.7.0.1
  */

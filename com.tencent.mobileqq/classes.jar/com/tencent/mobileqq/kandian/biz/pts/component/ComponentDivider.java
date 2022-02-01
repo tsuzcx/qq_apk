@@ -61,7 +61,7 @@ public class ComponentDivider
   
   public void a(Context paramContext)
   {
-    setBackgroundColor(getContext().getResources().getColor(2131166922));
+    setBackgroundColor(getContext().getResources().getColor(2131167843));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
@@ -76,14 +76,14 @@ public class ComponentDivider
       CmpCtxt localCmpCtxt = this.a;
       paramObject = (IReadInJoyModel)paramObject;
       localCmpCtxt.a(paramObject);
-      if ((paramObject.d() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
+      if ((paramObject.o() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
       {
         paramObject = (LinearLayout.LayoutParams)getLayoutParams();
         paramObject.leftMargin = Utils.dp2px(6.0D);
         paramObject.rightMargin = Utils.dp2px(6.0D);
-        setBackgroundColor(getContext().getResources().getColor(2131165652));
+        setBackgroundColor(getContext().getResources().getColor(2131166110));
       }
-      if (this.a.a.e())
+      if (this.a.a.g())
       {
         setVisibility(0);
         return;
@@ -102,7 +102,7 @@ public class ComponentDivider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentDivider
  * JD-Core Version:    0.7.0.1
  */

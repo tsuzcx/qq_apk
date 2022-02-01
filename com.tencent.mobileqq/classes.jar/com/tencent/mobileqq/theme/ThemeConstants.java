@@ -13,6 +13,8 @@ public class ThemeConstants
   public static final int ANIMATE_TAB_CALL = 13;
   public static final int ANIMATE_TAB_CONTACTS = 12;
   public static final int ANIMATE_TAB_CONVERSATION = 11;
+  public static final int ANIMATE_TAB_FLASH_SHOW = 18;
+  public static final int ANIMATE_TAB_GUILD = 19;
   public static final int ANIMATE_TAB_LEBA = 14;
   public static final int ANIMATE_TAB_NOW = 15;
   public static final int ANIMATE_TAB_QCIRCLE = 17;
@@ -79,6 +81,7 @@ public class ThemeConstants
   public static final String THEME_ID_DAYMODE_SIMPLE_GRAY = "2921";
   public static final String THEME_ID_DAYMODE_SIMPLE_WHITE = "2971";
   public static final String THEME_ID_GOLDEN = "2101";
+  public static final String THEME_ID_LOCAL_SIMPLE = "1001";
   public static final String THEME_ID_NIGHTMODE = "1103";
   public static final String THEME_ID_NIGHTMODE_SIMPLE = "2920";
   public static final String THEME_ID_WHITEMODE = "2105";
@@ -125,7 +128,7 @@ public class ThemeConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeConstants
  * JD-Core Version:    0.7.0.1
  */

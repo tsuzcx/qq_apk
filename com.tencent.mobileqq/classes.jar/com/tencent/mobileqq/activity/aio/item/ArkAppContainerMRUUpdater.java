@@ -15,20 +15,20 @@ import java.util.Locale;
 
 public class ArkAppContainerMRUUpdater
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler;
-  private static boolean jdField_a_of_type_Boolean;
-  WeakReference<ArkAioContainerWrapper> jdField_a_of_type_JavaLangRefWeakReference;
-  LinkedList<WeakReference<ArkAioContainerWrapper>> jdField_a_of_type_JavaUtilLinkedList;
+  private static Handler c;
+  private static boolean d;
+  LinkedList<WeakReference<ArkAioContainerWrapper>> a;
+  WeakReference<ArkAioContainerWrapper> b;
   
   public ArkAppContainerMRUUpdater()
   {
-    jdField_a_of_type_Boolean = a();
-    if (!jdField_a_of_type_Boolean) {
+    d = d();
+    if (!d) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    jdField_a_of_type_AndroidOsHandler = new ArkAppContainerMRUUpdater.1(this, Looper.getMainLooper());
-    MagnifierSDK.a().a().a(new ArkAppContainerMRUUpdater.2(this));
+    this.a = new LinkedList();
+    c = new ArkAppContainerMRUUpdater.1(this, Looper.getMainLooper());
+    MagnifierSDK.b().d().a(new ArkAppContainerMRUUpdater.2(this));
   }
   
   public static ArkAppContainerMRUUpdater a()
@@ -36,32 +36,23 @@ public class ArkAppContainerMRUUpdater
     return ArkAppContainerMRUUpdater.LazyHolder.a;
   }
   
-  public static void a()
-  {
-    if (!jdField_a_of_type_Boolean) {
-      return;
-    }
-    Handler localHandler = jdField_a_of_type_AndroidOsHandler;
-    localHandler.sendMessage(localHandler.obtainMessage(4));
-  }
-  
   public static void a(WeakReference<ArkAioContainerWrapper> paramWeakReference)
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!d) {
       return;
     }
-    Handler localHandler = jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = c;
     localHandler.sendMessage(localHandler.obtainMessage(1, paramWeakReference));
   }
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+    if (this.a.isEmpty())
     {
       b("removeLast, list is empty");
       return;
     }
-    int m = this.jdField_a_of_type_JavaUtilLinkedList.size();
+    int m = this.a.size();
     int i;
     if (paramBoolean) {
       i = m;
@@ -72,7 +63,7 @@ public class ArkAppContainerMRUUpdater
     if (i <= 0) {
       i = 0;
     }
-    int k = this.jdField_a_of_type_JavaUtilLinkedList.indexOf(this.jdField_a_of_type_JavaLangRefWeakReference);
+    int k = this.a.indexOf(this.b);
     if (k > 0) {
       j = m - k;
     }
@@ -90,7 +81,7 @@ public class ArkAppContainerMRUUpdater
     b(((StringBuilder)localObject).toString());
     while (k > 0)
     {
-      localObject = (WeakReference)this.jdField_a_of_type_JavaUtilLinkedList.peekLast();
+      localObject = (WeakReference)this.a.peekLast();
       if (localObject == null) {
         break;
       }
@@ -104,36 +95,27 @@ public class ArkAppContainerMRUUpdater
       g((WeakReference)localObject);
       k -= 1;
     }
-    b();
+    e();
   }
   
-  private boolean a()
+  public static void b()
   {
-    ArkPlatformConfigBean localArkPlatformConfigBean = (ArkPlatformConfigBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkPlatformConfigBean.class);
-    if ((localArkPlatformConfigBean != null) && (localArkPlatformConfigBean.a() != null)) {
-      return localArkPlatformConfigBean.a().b;
+    if (!d) {
+      return;
     }
-    QLog.i("ArkApp.ArkAppContainerMRUUpdater", 1, "confBean.getConfig() get fail");
-    return false;
+    Handler localHandler = c;
+    localHandler.sendMessage(localHandler.obtainMessage(4));
   }
-  
-  private void b() {}
   
   private static void b(String paramString) {}
   
   public static void b(WeakReference<ArkAioContainerWrapper> paramWeakReference)
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!d) {
       return;
     }
-    Handler localHandler = jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = c;
     localHandler.sendMessage(localHandler.obtainMessage(2, paramWeakReference));
-  }
-  
-  private void c()
-  {
-    b("do clear");
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
   }
   
   private static void c(String paramString)
@@ -143,10 +125,10 @@ public class ArkAppContainerMRUUpdater
   
   public static void c(WeakReference<ArkAioContainerWrapper> paramWeakReference)
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!d) {
       return;
     }
-    Handler localHandler = jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = c;
     localHandler.sendMessage(localHandler.obtainMessage(3, paramWeakReference));
   }
   
@@ -155,19 +137,31 @@ public class ArkAppContainerMRUUpdater
     if (paramWeakReference == null) {
       return;
     }
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.b;
     if (localWeakReference == paramWeakReference)
     {
-      int i = this.jdField_a_of_type_JavaUtilLinkedList.indexOf(localWeakReference);
-      int j = this.jdField_a_of_type_JavaUtilLinkedList.size();
+      int i = this.a.indexOf(localWeakReference);
+      int j = this.a.size();
       if ((i != -1) && (i != j - 1) && (j != 0))
       {
-        this.jdField_a_of_type_JavaLangRefWeakReference = ((WeakReference)this.jdField_a_of_type_JavaUtilLinkedList.get(i + 1));
+        this.b = ((WeakReference)this.a.get(i + 1));
         return;
       }
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      this.b = null;
     }
   }
+  
+  private boolean d()
+  {
+    ArkPlatformConfigBean localArkPlatformConfigBean = (ArkPlatformConfigBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkPlatformConfigBean.class);
+    if ((localArkPlatformConfigBean != null) && (localArkPlatformConfigBean.b() != null)) {
+      return localArkPlatformConfigBean.b().c;
+    }
+    QLog.i("ArkApp.ArkAppContainerMRUUpdater", 1, "confBean.getConfig() get fail");
+    return false;
+  }
+  
+  private void e() {}
   
   private void e(WeakReference<ArkAioContainerWrapper> paramWeakReference)
   {
@@ -178,16 +172,22 @@ public class ArkAppContainerMRUUpdater
     }
     d(paramWeakReference);
     b(String.format("doMoveToFirst: %h", new Object[] { paramWeakReference.get() }));
-    if ((!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) && (this.jdField_a_of_type_JavaUtilLinkedList.getFirst() == paramWeakReference))
+    if ((!this.a.isEmpty()) && (this.a.getFirst() == paramWeakReference))
     {
       b("doMoveToFirst node already in the first position");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilLinkedList.contains(paramWeakReference)) {
-      this.jdField_a_of_type_JavaUtilLinkedList.remove(paramWeakReference);
+    if (this.a.contains(paramWeakReference)) {
+      this.a.remove(paramWeakReference);
     }
-    this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramWeakReference);
+    this.a.addFirst(paramWeakReference);
     a(false);
+  }
+  
+  private void f()
+  {
+    b("do clear");
+    this.a.clear();
   }
   
   private void f(WeakReference<ArkAioContainerWrapper> paramWeakReference)
@@ -198,22 +198,22 @@ public class ArkAppContainerMRUUpdater
       return;
     }
     b(String.format("doMoveToFirstInActive: %h", new Object[] { paramWeakReference.get() }));
-    if ((!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) && (this.jdField_a_of_type_JavaUtilLinkedList.contains(paramWeakReference)))
+    if ((!this.a.isEmpty()) && (this.a.contains(paramWeakReference)))
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.remove(paramWeakReference);
-      WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      this.a.remove(paramWeakReference);
+      WeakReference localWeakReference = this.b;
       if (localWeakReference == null)
       {
-        this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramWeakReference);
+        this.a.addLast(paramWeakReference);
       }
       else
       {
-        int i = this.jdField_a_of_type_JavaUtilLinkedList.indexOf(localWeakReference);
+        int i = this.a.indexOf(localWeakReference);
         if (i > 0) {
-          this.jdField_a_of_type_JavaUtilLinkedList.add(i, paramWeakReference);
+          this.a.add(i, paramWeakReference);
         }
       }
-      this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+      this.b = paramWeakReference;
       a(false);
       return;
     }
@@ -229,12 +229,12 @@ public class ArkAppContainerMRUUpdater
     }
     b(String.format("doRemove %h", new Object[] { paramWeakReference.get() }));
     d(paramWeakReference);
-    this.jdField_a_of_type_JavaUtilLinkedList.remove(paramWeakReference);
+    this.a.remove(paramWeakReference);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppContainerMRUUpdater
  * JD-Core Version:    0.7.0.1
  */

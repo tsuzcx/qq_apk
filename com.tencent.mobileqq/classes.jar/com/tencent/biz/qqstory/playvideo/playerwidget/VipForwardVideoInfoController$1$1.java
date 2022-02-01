@@ -10,14 +10,14 @@ class VipForwardVideoInfoController$1$1
   
   public void run()
   {
-    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.a;
+    QQUserUIItem localQQUserUIItem = this.a.a;
     if (localQQUserUIItem != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetVipForwardVideoInfoController$1.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetVipForwardVideoInfoController.a.j();
-      VipForwardVideoInfoController.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetVipForwardVideoInfoController$1.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetVipForwardVideoInfoController, localQQUserUIItem, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetVipForwardVideoInfoController$1.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3$BannerViewHolder);
+      this.b.b.a.z();
+      VipForwardVideoInfoController.a(this.b.b, localQQUserUIItem, this.b.a);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetVipForwardVideoInfoController$1.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetVipForwardVideoInfoController.a.k();
+    this.b.b.a.A();
   }
 }
 

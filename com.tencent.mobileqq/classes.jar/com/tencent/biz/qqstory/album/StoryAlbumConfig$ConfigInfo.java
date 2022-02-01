@@ -4,19 +4,19 @@ import java.util.List;
 
 public class StoryAlbumConfig$ConfigInfo
 {
-  public int a;
-  public String a;
-  public List<RuleConfig> a;
   public boolean a;
-  public int b = 500;
-  public String b;
-  public List<StoryAlbumConfig.FestivalConfig> b;
-  public int c = 100;
-  public int d = 15;
+  public List<RuleConfig> b;
+  public List<StoryAlbumConfig.FestivalConfig> c;
+  public String d;
+  public String e;
+  public int f;
+  public int g = 500;
+  public int h = 100;
+  public int i = 15;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.StoryAlbumConfig.ConfigInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public class MiniAppDialog
   
   public MiniAppDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755060);
+    super(paramContext, 2131951678);
   }
   
   private void animateDown()
@@ -75,8 +75,8 @@ public class MiniAppDialog
     paramBundle = getWindow().getAttributes();
     paramBundle.height = -2;
     paramBundle.gravity = 81;
-    int i = ViewUtils.a();
-    int j = ViewUtils.b();
+    int i = ViewUtils.getScreenWidth();
+    int j = ViewUtils.getScreenHeight();
     if (i >= j) {
       i = j;
     }
@@ -115,7 +115,7 @@ public class MiniAppDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.MiniAppDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -11,16 +11,16 @@ class QFileTroopTransferWrapper$TroopUploadWrapper$1
   
   public void run()
   {
-    if (!this.this$0.jdField_a_of_type_Boolean)
+    if (!this.this$0.b)
     {
-      TroopFileError.SimpleErrorInfo localSimpleErrorInfo = new TroopFileError.SimpleErrorInfo(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.this$0.jdField_a_of_type_Long, 3, 210);
-      TroopFileDataCenter.a(this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localSimpleErrorInfo);
+      TroopFileError.SimpleErrorInfo localSimpleErrorInfo = new TroopFileError.SimpleErrorInfo(this.this$0.g.FileName, this.this$0.c, 3, 210);
+      TroopFileDataCenter.a(this.this$0.c, this.this$0.g, 3, localSimpleErrorInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileTroopTransferWrapper.TroopUploadWrapper.1
  * JD-Core Version:    0.7.0.1
  */

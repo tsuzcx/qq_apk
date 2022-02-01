@@ -18,10 +18,10 @@ import mqq.app.BaseActivity;
 
 public class AVCallCompactHelper
 {
-  private static final String jdField_a_of_type_JavaLangString = VideoInviteActivity.class.getName();
+  private static final String a = VideoInviteActivity.class.getName();
   private static final String b = GaInviteLockActivity.class.getName();
   private static final String c = MultiIncomingCallsActivity.class.getName();
-  private final ConcurrentHashMap<String, Intent> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(3);
+  private final ConcurrentHashMap<String, Intent> d = new ConcurrentHashMap(3);
   
   private Intent a(String paramString)
   {
@@ -31,10 +31,10 @@ public class AVCallCompactHelper
     Object localObject2 = localIterator;
     try
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0)
+      if (this.d.size() > 0)
       {
         localObject2 = localIterator;
-        localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+        localIterator = this.d.keySet().iterator();
         for (;;)
         {
           localObject2 = localObject1;
@@ -45,15 +45,15 @@ public class AVCallCompactHelper
           localObject2 = localObject1;
           localObject3 = (String)localIterator.next();
           localObject2 = localObject1;
-          if (SessionMgr.a().c((String)localObject3) == null)
+          if (SessionMgr.a().d((String)localObject3) == null)
           {
             localObject2 = localObject1;
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject3);
+            this.d.remove(localObject3);
           }
           else
           {
             localObject2 = localObject1;
-            localObject3 = (Intent)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject3);
+            localObject3 = (Intent)this.d.get(localObject3);
             if (localObject3 != null)
             {
               localObject2 = localObject1;
@@ -78,7 +78,21 @@ public class AVCallCompactHelper
     }
   }
   
-  public static String a(String paramString, Intent paramIntent)
+  private Intent b(String paramString)
+  {
+    try
+    {
+      paramString = (Intent)this.d.get(paramString);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.i("CompatModeTag", 1, "getIntentByKey", paramString);
+    }
+    return null;
+  }
+  
+  public static String b(String paramString, Intent paramIntent)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramIntent != null))
     {
@@ -171,7 +185,7 @@ public class AVCallCompactHelper
           paramString = paramIntent;
         }
       }
-      else if (jdField_a_of_type_JavaLangString.equals(paramString))
+      else if (a.equals(paramString))
       {
         str1 = paramIntent.getStringExtra("peerUin");
         bool = paramIntent.getBooleanExtra("isDoubleVideoMeeting", false);
@@ -211,11 +225,11 @@ public class AVCallCompactHelper
     return null;
   }
   
-  private void a()
+  private void b()
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.d.clear();
       return;
     }
     catch (Throwable localThrowable)
@@ -224,38 +238,11 @@ public class AVCallCompactHelper
     }
   }
   
-  private Intent b(String paramString)
-  {
-    try
-    {
-      paramString = (Intent)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.i("CompatModeTag", 1, "getIntentByKey", paramString);
-    }
-    return null;
-  }
-  
-  private void b(String paramString, Intent paramIntent)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramIntent);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.i("CompatModeTag", 1, "addIntent", paramString);
-    }
-  }
-  
   private Intent c(String paramString)
   {
     try
     {
-      paramString = (Intent)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      paramString = (Intent)this.d.remove(paramString);
       return paramString;
     }
     catch (Throwable paramString)
@@ -265,11 +252,24 @@ public class AVCallCompactHelper
     return null;
   }
   
+  private void c(String paramString, Intent paramIntent)
+  {
+    try
+    {
+      this.d.put(paramString, paramIntent);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.i("CompatModeTag", 1, "addIntent", paramString);
+    }
+  }
+  
   public Runnable a(BaseActivity paramBaseActivity, VideoAppInterface paramVideoAppInterface)
   {
-    Object localObject = SessionMgr.a().a();
+    Object localObject = SessionMgr.a().b();
     if (localObject != null) {
-      c(((SessionInfo)localObject).b);
+      c(((SessionInfo)localObject).f);
     }
     Intent localIntent = a(c);
     if ((localIntent != null) && (paramBaseActivity != null) && (paramVideoAppInterface != null))
@@ -304,12 +304,12 @@ public class AVCallCompactHelper
     } else {
       str1 = null;
     }
-    if ((jdField_a_of_type_JavaLangString.equals(str1)) || (b.equals(str1))) {
-      a();
+    if ((a.equals(str1)) || (b.equals(str1))) {
+      b();
     }
-    String str2 = a(str1, paramIntent);
+    String str2 = b(str1, paramIntent);
     if (!TextUtils.isEmpty(str2)) {
-      b(str2, paramIntent);
+      c(str2, paramIntent);
     }
     if (QLog.isColorLevel())
     {
@@ -337,19 +337,19 @@ public class AVCallCompactHelper
   
   public void a(String paramString, Intent paramIntent)
   {
-    String str = a(paramString, paramIntent);
+    String str = b(paramString, paramIntent);
     if (!TextUtils.isEmpty(str))
     {
       paramIntent = c(str);
     }
     else
     {
-      if (jdField_a_of_type_JavaLangString.equals(paramString))
+      if (a.equals(paramString))
       {
-        paramIntent = SessionMgr.a().a();
+        paramIntent = SessionMgr.a().b();
         if (paramIntent != null)
         {
-          str = paramIntent.b;
+          str = paramIntent.f;
           paramIntent = c(str);
           break label59;
         }
@@ -377,18 +377,18 @@ public class AVCallCompactHelper
     if (paramBaseActivity == null) {
       return false;
     }
-    SessionInfo localSessionInfo = SessionMgr.a().a();
+    SessionInfo localSessionInfo = SessionMgr.a().b();
     Object localObject2 = null;
     Object localObject3 = null;
     Object localObject1;
     if (localSessionInfo != null) {
-      localObject1 = localSessionInfo.b;
+      localObject1 = localSessionInfo.f;
     } else {
       localObject1 = null;
     }
     Intent localIntent;
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      localIntent = b(localSessionInfo.b);
+      localIntent = b(localSessionInfo.f);
     } else {
       localIntent = null;
     }
@@ -401,13 +401,13 @@ public class AVCallCompactHelper
       } else {
         localObject1 = ((ComponentName)localObject1).getClassName();
       }
-      if ((!jdField_a_of_type_JavaLangString.equals(localObject1)) && (!b.equals(localObject1)))
+      if ((!a.equals(localObject1)) && (!b.equals(localObject1)))
       {
         bool1 = bool2;
         localObject2 = localObject1;
         if (c.equals(localObject1))
         {
-          c(localSessionInfo.b);
+          c(localSessionInfo.f);
           bool1 = bool2;
           localObject2 = localObject1;
         }

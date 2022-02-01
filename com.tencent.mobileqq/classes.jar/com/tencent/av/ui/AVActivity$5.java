@@ -1,6 +1,7 @@
 package com.tencent.av.ui;
 
-import com.tencent.mobileqq.vas.vipav.VipFullScreenVideoView;
+import android.content.IntentFilter;
+import com.tencent.qphone.base.util.QLog;
 
 class AVActivity$5
   implements Runnable
@@ -9,15 +10,19 @@ class AVActivity$5
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqVasVipavVipFullScreenVideoView != null)
+    try
     {
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqVasVipavVipFullScreenVideoView.isPlaying()) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqVasVipavVipFullScreenVideoView.stopPlayback();
+      this.this$0.W = new AVActivity.MyBroadCastReceiver(this.this$0);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      this.this$0.registerReceiver(this.this$0.W, localIntentFilter);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.this$0.i, 2, "Exception", localException);
       }
-      if ((this.this$0.jdField_a_of_type_ComTencentAvUiVideoControlUI != null) && ((this.this$0.jdField_a_of_type_ComTencentAvUiVideoControlUI instanceof DoubleVideoCtrlUI))) {
-        ((DoubleVideoCtrlUI)this.this$0.jdField_a_of_type_ComTencentAvUiVideoControlUI).b(false);
-      }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqVasVipavVipFullScreenVideoView.setVisibility(8);
     }
   }
 }

@@ -18,13 +18,13 @@ class ProfileTitleContainer$7
     if (localView == null) {
       localView = null;
     } else {
-      localView = localView.findViewById(2131361989);
+      localView = localView.findViewById(2131427549);
     }
     if (localView != null)
     {
       localView = ProfileTitleContainer.access$700(this.this$0, localView, 5, 5, 7, 5);
       if (localView != null) {
-        new RedTouch(ProfileTitleContainer.access$1900(this.this$0), localView).b(53).a().a(ProfileCardUtil.a());
+        new RedTouch(ProfileTitleContainer.access$1900(this.this$0), localView).c(53).a().a(ProfileCardUtil.d());
       }
     }
     this.val$actionSheet.setOnPreShowListener(null);
@@ -32,7 +32,7 @@ class ProfileTitleContainer$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.container.ProfileTitleContainer.7
  * JD-Core Version:    0.7.0.1
  */

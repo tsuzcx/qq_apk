@@ -16,7 +16,7 @@ class NormalVideoDeliverController$4
       if (paramInt != 0)
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131707620));
+        localStringBuilder.append(HardCodeUtil.a(2131905435));
         localStringBuilder.append(paramInt);
         localStringBuilder.append("]");
         VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", localStringBuilder.toString(), null);
@@ -26,7 +26,7 @@ class NormalVideoDeliverController$4
       {
         NormalVideoDeliverController.a(this.a, true);
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131707619));
+        localStringBuilder.append(HardCodeUtil.a(2131905434));
         localStringBuilder.append(paramInt);
         localStringBuilder.append("]");
         VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", localStringBuilder.toString(), null);
@@ -44,7 +44,7 @@ class NormalVideoDeliverController$4
   
   public void onNetWorkNone()
   {
-    VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", HardCodeUtil.a(2131707617), null);
+    VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", HardCodeUtil.a(2131905432), null);
     ShortVideoErrorReport.a(3, -1500);
   }
   
@@ -52,7 +52,7 @@ class NormalVideoDeliverController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.video.transfer.NormalVideoDeliverController.4
  * JD-Core Version:    0.7.0.1
  */

@@ -47,10 +47,10 @@ class AbsProfileHeaderView$1
           AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.this$0.mApp.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
           if (AvatarPendantUtil.a(this.this$0.mPendantId))
           {
-            localAvatarPendantManager.a(this.this$0.mPendantId).a((View)localObject, 2, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+            localAvatarPendantManager.a(this.this$0.mPendantId).a((View)localObject, 2, PendantInfo.d, paramMessage.uin, paramMessage.pendantDiyId);
             return true;
           }
-          localAvatarPendantManager.a(this.this$0.mPendantId).a((View)localObject, 1, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+          localAvatarPendantManager.a(this.this$0.mPendantId).a((View)localObject, 1, PendantInfo.d, paramMessage.uin, paramMessage.pendantDiyId);
           return true;
         }
         ((ImageView)localObject).setVisibility(4);
@@ -62,7 +62,7 @@ class AbsProfileHeaderView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView.1
  * JD-Core Version:    0.7.0.1
  */

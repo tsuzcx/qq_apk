@@ -8,61 +8,55 @@ import com.tencent.aelight.camera.aeeditor.lyric.common.TimerTaskManager.TimerTa
 import com.tencent.aelight.camera.aeeditor.lyric.util.LyricContext;
 import com.tencent.aelight.camera.aeeditor.module.music.AEEditorLyricProgressCalculator;
 import com.tencent.aelight.camera.log.AEQLog;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Sentence;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.data.Lyric;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.data.Sentence;
 import java.util.ArrayList;
 
 public class LyricViewController
 {
   protected static final String a;
-  protected int a;
-  protected long a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new LyricViewController.7(this, Looper.getMainLooper());
-  protected TimerTaskManager.TimerTaskRunnable a;
-  protected TimerTaskManager a;
-  protected LyricBaseInternalViewInterface a;
-  protected LyricScrollHelper a;
-  public LyricViewController.OnObtainMusicPositionListener a;
-  private LyricViewScroll.LyricViewScrollListener jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll$LyricViewScrollListener = new LyricViewController.1(this);
-  protected LyricViewScroll a;
-  protected Lyric a;
-  protected volatile boolean a;
-  protected int b;
-  private boolean b;
-  protected int c;
-  private boolean c;
-  private volatile int jdField_d_of_type_Int = 0;
-  private boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int = 0;
-  private boolean jdField_e_of_type_Boolean = false;
-  private int f = 0;
+  protected LyricViewScroll b;
+  protected LyricBaseInternalViewInterface c;
+  protected Lyric d;
+  protected long e;
+  protected volatile boolean f;
+  protected int g;
+  protected int h;
+  protected int i = 100;
+  protected TimerTaskManager j = LyricContext.a();
+  protected LyricScrollHelper k = new LyricScrollHelper();
+  protected TimerTaskManager.TimerTaskRunnable l = new LyricViewController.2(this);
+  public LyricViewController.OnObtainMusicPositionListener m;
+  private volatile int n = 0;
+  private boolean o = false;
+  private boolean p = false;
+  private boolean q = false;
+  private LyricViewScroll.LyricViewScrollListener r = new LyricViewController.1(this);
+  private int s = 0;
+  private int t = 0;
+  private Handler u = new LyricViewController.7(this, Looper.getMainLooper());
+  private boolean v = false;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("task_name_lyric_draw_");
     localStringBuilder.append(Math.random());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public LyricViewController(LyricView paramLyricView)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 100;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricCommonTimerTaskManager = LyricContext.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricScrollHelper = new LyricScrollHelper();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable = new LyricViewController.2(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll = paramLyricView.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricBaseInternalViewInterface = paramLyricView.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll.setScrollListener(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll$LyricViewScrollListener);
+    this.b = paramLyricView.getScrollView();
+    this.c = paramLyricView.getLyricViewInternal();
+    this.b.setScrollListener(this.r);
   }
   
   private void b(int paramInt, boolean paramBoolean)
   {
     if (!paramBoolean)
     {
-      LyricViewController.OnObtainMusicPositionListener localOnObtainMusicPositionListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewController$OnObtainMusicPositionListener;
+      LyricViewController.OnObtainMusicPositionListener localOnObtainMusicPositionListener = this.m;
       if (localOnObtainMusicPositionListener != null) {
         paramInt = localOnObtainMusicPositionListener.a();
       } else {
@@ -70,22 +64,17 @@ public class LyricViewController
       }
     }
     if (paramInt > 0) {
-      this.f = paramInt;
+      this.t = paramInt;
     }
-    b(this.f);
-  }
-  
-  public int a()
-  {
-    return this.jdField_d_of_type_Int;
+    b(this.t);
   }
   
   public void a()
   {
     Log.d("ModuleController", "stop");
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricCommonTimerTaskManager.a(jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Boolean = false;
+    this.j.a(a);
+    this.e = 0L;
+    this.o = false;
   }
   
   public void a(int paramInt)
@@ -95,106 +84,111 @@ public class LyricViewController
       b(paramInt);
       return;
     }
-    LyricContext.a().post(new LyricViewController.5(this, paramInt));
+    LyricContext.b().post(new LyricViewController.5(this, paramInt));
   }
   
   protected void a(int paramInt1, int paramInt2)
   {
-    LyricContext.a().post(new LyricViewController.6(this, paramInt1, paramInt2));
+    LyricContext.b().post(new LyricViewController.6(this, paramInt1, paramInt2));
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    LyricContext.a().post(new LyricViewController.4(this, paramInt, paramBoolean));
+    LyricContext.b().post(new LyricViewController.4(this, paramInt, paramBoolean));
   }
   
   public void a(LyricScrollHelper.LyricScrollListener paramLyricScrollListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricScrollHelper.a(paramLyricScrollListener);
+    this.k.a(paramLyricScrollListener);
   }
   
   public void a(LyricViewController.OnObtainMusicPositionListener paramOnObtainMusicPositionListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewController$OnObtainMusicPositionListener = paramOnObtainMusicPositionListener;
+    this.m = paramOnObtainMusicPositionListener;
   }
   
   public void a(Lyric paramLyric1, Lyric paramLyric2, Lyric paramLyric3)
   {
     Log.v("ModuleController", "setLyric begin");
-    LyricContext.a().post(new LyricViewController.3(this, paramLyric3, paramLyric1, paramLyric2));
+    LyricContext.b().post(new LyricViewController.3(this, paramLyric3, paramLyric1, paramLyric2));
   }
   
   public void a(boolean paramBoolean)
   {
-    LyricBaseInternalViewInterface localLyricBaseInternalViewInterface = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricBaseInternalViewInterface;
+    LyricBaseInternalViewInterface localLyricBaseInternalViewInterface = this.c;
     if (localLyricBaseInternalViewInterface != null) {
       localLyricBaseInternalViewInterface.setEffectEnable(paramBoolean);
     }
   }
   
+  public int b()
+  {
+    return this.n;
+  }
+  
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricBaseInternalViewInterface.a();
-    Lyric localLyric = this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric;
+    this.d = this.c.getMeasuredLyric();
+    Lyric localLyric = this.d;
     if (localLyric != null)
     {
       if (localLyric.isEmpty()) {
         return;
       }
-      int i = paramInt;
-      int j;
-      if (this.jdField_a_of_type_Boolean)
+      int i1 = paramInt;
+      int i2;
+      if (this.f)
       {
-        j = this.jdField_a_of_type_Int;
-        i = paramInt;
-        if (j > 0) {
-          i = paramInt + j;
+        i2 = this.g;
+        i1 = paramInt;
+        if (i2 > 0) {
+          i1 = paramInt + i2;
         }
       }
-      paramInt = i;
-      if (this.jdField_a_of_type_Boolean)
+      paramInt = i1;
+      if (this.f)
       {
-        j = this.jdField_b_of_type_Int;
-        paramInt = i;
-        if (i >= j) {
-          paramInt = j;
+        i2 = this.h;
+        paramInt = i1;
+        if (i1 >= i2) {
+          paramInt = i2;
         }
       }
-      this.jdField_d_of_type_Int = paramInt;
+      this.n = paramInt;
       a(localLyric.findLineNo(paramInt), paramInt);
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.v = paramBoolean;
   }
   
   protected void c(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric != null) || (this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricBaseInternalViewInterface != null))
+    if ((this.d != null) || (this.c != null))
     {
-      paramInt = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricBaseInternalViewInterface.a(paramInt);
-      Object localObject = this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric;
+      paramInt = this.c.a(paramInt);
+      Object localObject = this.d;
       if ((localObject == null) || (((Lyric)localObject).isEmpty())) {
         break label499;
       }
       long l1;
-      if (paramInt == this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.size() - 1)
+      if (paramInt == this.d.mSentences.size() - 1)
       {
-        int i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricBaseInternalViewInterface.b();
-        if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll != null)
+        int i1 = this.c.getEndScrollY();
+        if (this.b != null)
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("onScrollStop() endTop => ");
-          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(i1);
           Log.d("ModuleController", ((StringBuilder)localObject).toString());
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll.smoothScrollTo(0, i);
+          this.b.smoothScrollTo(0, i1);
         }
-        if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricScrollHelper != null)
+        if (this.k != null)
         {
-          l1 = ((Sentence)this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.get(paramInt)).mStartTime;
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricScrollHelper.a(l1, i);
+          l1 = ((Sentence)this.d.mSentences.get(paramInt)).mStartTime;
+          this.k.a(l1, i1);
         }
         return;
       }
@@ -202,28 +196,28 @@ public class LyricViewController
       ((StringBuilder)localObject).append("onScrollStop -> scroll to lineNo：");
       ((StringBuilder)localObject).append(paramInt);
       Log.d("ModuleController", ((StringBuilder)localObject).toString());
-      if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.size()))
+      if ((paramInt >= 0) && (paramInt < this.d.mSentences.size()))
       {
-        if (this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.get(paramInt) == null)
+        if (this.d.mSentences.get(paramInt) == null)
         {
           Log.w("ModuleController", "onScrollStop -> current sentence is null");
           return;
         }
-        long l2 = ((Sentence)this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.get(paramInt)).mStartTime;
+        long l2 = ((Sentence)this.d.mSentences.get(paramInt)).mStartTime;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onScrollStop -> start time of current sentence：");
         ((StringBuilder)localObject).append(l2);
         Log.d("ModuleController", ((StringBuilder)localObject).toString());
         l1 = l2;
-        if (this.jdField_a_of_type_Boolean)
+        if (this.f)
         {
-          paramInt = this.jdField_a_of_type_Int;
+          paramInt = this.g;
           if ((paramInt >= 0) && (l2 < paramInt)) {}
           do
           {
             l1 = paramInt;
             break;
-            paramInt = this.jdField_b_of_type_Int;
+            paramInt = this.h;
             l1 = l2;
             if (paramInt < 0) {
               break;
@@ -244,11 +238,11 @@ public class LyricViewController
         ((StringBuilder)localObject).append("onScrollStop -> output time：");
         ((StringBuilder)localObject).append(l1);
         Log.d("ModuleController", ((StringBuilder)localObject).toString());
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricScrollHelper;
+        localObject = this.k;
         if (localObject != null) {
           ((LyricScrollHelper)localObject).a(l1);
         }
-        if ((!this.jdField_b_of_type_Boolean) && (this.jdField_d_of_type_Boolean)) {
+        if ((!this.o) && (this.q)) {
           a((int)l1, false);
         }
       }
@@ -264,30 +258,30 @@ public class LyricViewController
   
   protected void d(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric != null) || (this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricBaseInternalViewInterface != null))
+    if ((this.d != null) || (this.c != null))
     {
-      int i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricBaseInternalViewInterface.b(paramInt);
-      Object localObject = this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric;
+      int i1 = this.c.b(paramInt);
+      Object localObject = this.d;
       if ((localObject != null) && (!((Lyric)localObject).isEmpty()))
       {
-        if ((i >= 0) && (i < this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.size()))
+        if ((i1 >= 0) && (i1 < this.d.mSentences.size()))
         {
-          if (this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.get(i) == null)
+          if (this.d.mSentences.get(i1) == null)
           {
             Log.w("ModuleController", "onScrollStop -> current sentence is null");
             return;
           }
-          long l2 = ((Sentence)this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.get(i)).mStartTime;
+          long l2 = ((Sentence)this.d.mSentences.get(i1)).mStartTime;
           long l1 = l2;
-          if (this.jdField_a_of_type_Boolean)
+          if (this.f)
           {
-            paramInt = this.jdField_a_of_type_Int;
+            paramInt = this.g;
             if ((paramInt >= 0) && (l2 < paramInt)) {}
             do
             {
               l1 = paramInt;
               break;
-              paramInt = this.jdField_b_of_type_Int;
+              paramInt = this.h;
               l1 = l2;
               if (paramInt < 0) {
                 break;
@@ -300,16 +294,16 @@ public class LyricViewController
             l2 = 0L;
           }
           l1 = (l2 / 10L + 1L) * 10L;
-          paramInt = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll.getScrollY();
+          paramInt = this.b.getScrollY();
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("onScrolling() scrollY => ");
           ((StringBuilder)localObject).append(paramInt);
           ((StringBuilder)localObject).append(",position => ");
           ((StringBuilder)localObject).append(l1);
           ((StringBuilder)localObject).append(",lineNo:");
-          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(i1);
           AEQLog.a("ModuleController", ((StringBuilder)localObject).toString());
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricScrollHelper.a(l1, paramInt);
+          this.k.a(l1, paramInt);
           return;
         }
         Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
@@ -324,7 +318,7 @@ public class LyricViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.widget.LyricViewController
  * JD-Core Version:    0.7.0.1
  */

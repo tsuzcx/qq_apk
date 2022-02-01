@@ -13,13 +13,13 @@ class AccountPanelBinder$10
   public void a(Boolean paramBoolean)
   {
     if (paramBoolean.booleanValue()) {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusBinderAccountPanelBinder.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelViewContainer, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewmodelAccountPanelViewModel);
+      this.d.a(this.a, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.binder.AccountPanelBinder.10
  * JD-Core Version:    0.7.0.1
  */

@@ -15,11 +15,11 @@ class EnterExitAnimHelper$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    OnColorNoteAnimFinishListener localOnColorNoteAnimFinishListener = this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackOnColorNoteAnimFinishListener;
+    OnColorNoteAnimFinishListener localOnColorNoteAnimFinishListener = this.a;
     if (localOnColorNoteAnimFinishListener != null) {
       localOnColorNoteAnimFinishListener.onColorNoteAnimFinish();
     }
-    if ((this.jdField_a_of_type_Boolean) && ((paramAnimator instanceof CircularRevealAnimator))) {
+    if ((this.b) && ((paramAnimator instanceof CircularRevealAnimator))) {
       ThreadManager.getUIHandler().postDelayed(new EnterExitAnimHelper.1.1(this, paramAnimator), 200L);
     }
   }
@@ -30,7 +30,7 @@ class EnterExitAnimHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.anim.EnterExitAnimHelper.1
  * JD-Core Version:    0.7.0.1
  */

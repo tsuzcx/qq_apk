@@ -16,7 +16,7 @@ class TroopNotificationEntryController$2
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onUnreadCountChanged bShowEntry");
-      ((StringBuilder)localObject).append(TroopNotificationEntryController.a(this.a));
+      ((StringBuilder)localObject).append(TroopNotificationEntryController.c(this.a));
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" count");
@@ -28,7 +28,7 @@ class TroopNotificationEntryController$2
   
   public void a(TroopNotificationEntryConfig paramTroopNotificationEntryConfig)
   {
-    if ((paramTroopNotificationEntryConfig != null) && (paramTroopNotificationEntryConfig.a(TroopNotificationEntryController.a(this.a).getCurrentAccountUin()))) {
+    if ((paramTroopNotificationEntryConfig != null) && (paramTroopNotificationEntryConfig.b(TroopNotificationEntryController.b(this.a).getCurrentAccountUin()))) {
       TroopNotificationEntryController.a(this.a, true);
     } else {
       TroopNotificationEntryController.a(this.a, false);
@@ -37,7 +37,7 @@ class TroopNotificationEntryController$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onTroopNotificationConfigUpdate bShowEntry");
-      localStringBuilder.append(TroopNotificationEntryController.a(this.a));
+      localStringBuilder.append(TroopNotificationEntryController.c(this.a));
       localStringBuilder.append(" newConf");
       localStringBuilder.append(paramTroopNotificationEntryConfig.toString());
       QLog.d("TroopNotificationEntryController", 2, localStringBuilder.toString());
@@ -47,7 +47,7 @@ class TroopNotificationEntryController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troopnotificationentry.TroopNotificationEntryController.2
  * JD-Core Version:    0.7.0.1
  */

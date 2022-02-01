@@ -18,9 +18,9 @@ class WeiYunLogicCenter$9
     {
       paramDiskDirFileBatchDeleteExMsgRsp = new StringBuilder();
       paramDiskDirFileBatchDeleteExMsgRsp.append("deleteWeiYunFile, onFailed  strFileId[");
-      paramDiskDirFileBatchDeleteExMsgRsp.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a);
+      paramDiskDirFileBatchDeleteExMsgRsp.append(this.a.a);
       paramDiskDirFileBatchDeleteExMsgRsp.append("]strFileName[");
-      paramDiskDirFileBatchDeleteExMsgRsp.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c);
+      paramDiskDirFileBatchDeleteExMsgRsp.append(this.a.c);
       paramDiskDirFileBatchDeleteExMsgRsp.append("]errorCode[");
       paramDiskDirFileBatchDeleteExMsgRsp.append(paramInt);
       paramDiskDirFileBatchDeleteExMsgRsp.append("],errorMsg[");
@@ -28,7 +28,7 @@ class WeiYunLogicCenter$9
       paramDiskDirFileBatchDeleteExMsgRsp.append("]");
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, paramDiskDirFileBatchDeleteExMsgRsp.toString());
     }
-    WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiYunLogicCenter).getFileManagerNotifyCenter().a(false, 20, new Object[] { Integer.valueOf(paramInt), paramString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c, Boolean.valueOf(false) });
+    WeiYunLogicCenter.c(this.b).getFileManagerNotifyCenter().a(false, 20, new Object[] { Integer.valueOf(paramInt), paramString, this.a.a, this.a.c, Boolean.valueOf(false) });
   }
   
   public void a(WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
@@ -37,18 +37,18 @@ class WeiYunLogicCenter$9
     {
       paramDiskDirFileBatchDeleteExMsgRsp = new StringBuilder();
       paramDiskDirFileBatchDeleteExMsgRsp.append("deleteWeiYunFile, onSucceed  strFileId[");
-      paramDiskDirFileBatchDeleteExMsgRsp.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a);
+      paramDiskDirFileBatchDeleteExMsgRsp.append(this.a.a);
       paramDiskDirFileBatchDeleteExMsgRsp.append("]strFileName[");
-      paramDiskDirFileBatchDeleteExMsgRsp.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c);
+      paramDiskDirFileBatchDeleteExMsgRsp.append(this.a.c);
       paramDiskDirFileBatchDeleteExMsgRsp.append("]");
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, paramDiskDirFileBatchDeleteExMsgRsp.toString());
     }
-    WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiYunLogicCenter).getFileManagerNotifyCenter().a(true, 20, new Object[] { Integer.valueOf(0), null, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c, Boolean.valueOf(false) });
+    WeiYunLogicCenter.c(this.b).getFileManagerNotifyCenter().a(true, 20, new Object[] { Integer.valueOf(0), null, this.a.a, this.a.c, Boolean.valueOf(false) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter.9
  * JD-Core Version:    0.7.0.1
  */

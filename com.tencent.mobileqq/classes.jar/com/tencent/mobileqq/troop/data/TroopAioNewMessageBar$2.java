@@ -14,18 +14,18 @@ class TroopAioNewMessageBar$2
   public void onClick(View paramView)
   {
     TroopAioNewMessageBar.a(this.a);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.b(this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() - 1, 2);
-    if (this.a.k == TroopAioNewMessageBar.d) {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_newmsgcue", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a, "", "", "");
-    } else if (this.a.k == TroopAioNewMessageBar.e) {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_backbase", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a, "", "", "");
+    this.a.L.b(this.a.J.getCount() - 1, 2);
+    if (this.a.p == TroopAioNewMessageBar.d) {
+      ReportController.b(this.a.D, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_newmsgcue", 0, 0, this.a.F.b, "", "", "");
+    } else if (this.a.p == TroopAioNewMessageBar.e) {
+      ReportController.b(this.a.D, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_backbase", 0, 0, this.a.F.b, "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioNewMessageBar.2
  * JD-Core Version:    0.7.0.1
  */

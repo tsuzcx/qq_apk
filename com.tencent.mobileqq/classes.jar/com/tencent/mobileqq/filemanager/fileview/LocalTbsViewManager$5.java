@@ -15,9 +15,9 @@ class LocalTbsViewManager$5
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Int == 5018)
+    if (this.a == 5018)
     {
-      Display localDisplay = this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay();
+      Display localDisplay = this.b.getWindowManager().getDefaultDisplay();
       int i;
       if (localDisplay.getWidth() > localDisplay.getHeight()) {
         i = 0;
@@ -25,21 +25,21 @@ class LocalTbsViewManager$5
         i = 1;
       }
       if (i != 0) {
-        this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
+        this.b.setRequestedOrientation(0);
       } else {
-        this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+        this.b.setRequestedOrientation(1);
       }
     }
     else
     {
-      LocalTbsViewManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager).doCommand(Integer.valueOf(this.jdField_a_of_type_Int), null, null);
+      LocalTbsViewManager.b(this.c).doCommand(Integer.valueOf(this.a), null, null);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileview.LocalTbsViewManager.5
  * JD-Core Version:    0.7.0.1
  */

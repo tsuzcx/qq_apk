@@ -18,7 +18,7 @@ public final class GdtInterstitialAPIImpl
   
   public void init(Context paramContext)
   {
-    GdtInterstitialManager.a().a();
+    GdtInterstitialManager.a().b();
   }
   
   public void preDownload(Context paramContext)
@@ -33,7 +33,7 @@ public final class GdtInterstitialAPIImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.impl.GdtInterstitialAPIImpl
  * JD-Core Version:    0.7.0.1
  */

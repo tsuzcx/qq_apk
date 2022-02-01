@@ -13,24 +13,24 @@ class VideoNodeReporter$3
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("in runnabe report ,node = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(",value = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.b);
     QLog.d("VideoNodeReporter", 1, ((StringBuilder)localObject).toString());
-    if (this.this$0.a.size() > 0)
+    if (this.this$0.e.size() > 0)
     {
-      localObject = this.this$0.a.iterator();
+      localObject = this.this$0.e.iterator();
       while (((Iterator)localObject).hasNext())
       {
         VideoNodeReporter.SeesionRecord localSeesionRecord = (VideoNodeReporter.SeesionRecord)((Iterator)localObject).next();
-        this.this$0.a(localSeesionRecord.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+        this.this$0.a(localSeesionRecord.a, this.a, this.b);
       }
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(" report ,node = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(",value = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append(",seesionRecordList is empty");
     QLog.d("VideoNodeReporter", 1, ((StringBuilder)localObject).toString());
   }

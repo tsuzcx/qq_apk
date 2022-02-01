@@ -17,14 +17,14 @@ import org.json.JSONObject;
 
 public class QVipBackgroundCreator
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private List<ViewModel> jdField_a_of_type_JavaUtilList;
+  private Activity a;
+  private ViewGroup b;
+  private List<ViewModel> c;
   
   private QVipBackgroundCreator(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = paramActivity;
+    this.c = new ArrayList();
   }
   
   public static QVipBackgroundCreator a(@NonNull Activity paramActivity)
@@ -32,11 +32,11 @@ public class QVipBackgroundCreator
     return new QVipBackgroundCreator(paramActivity);
   }
   
-  private ViewModel a(@NonNull JSONObject paramJSONObject)
+  private ViewModel b(@NonNull JSONObject paramJSONObject)
   {
     String str = paramJSONObject.optString("type");
     Object localObject = new JsonInflaterFactory();
-    View localView = ((JsonInflaterFactory)localObject).a(this.jdField_a_of_type_AndroidAppActivity, str);
+    View localView = ((JsonInflaterFactory)localObject).a(this.a, str);
     if (localView == null)
     {
       localObject = new StringBuilder();
@@ -64,14 +64,14 @@ public class QVipBackgroundCreator
   
   public QVipBackgroundCreator a(@NonNull ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.b = paramViewGroup;
     return this;
   }
   
   public QVipBackgroundCreator a(@NonNull JSONArray paramJSONArray)
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-      this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
+    if (this.b == null) {
+      this.b = new FrameLayout(this.a);
     }
     a();
     int i = 0;
@@ -80,12 +80,12 @@ public class QVipBackgroundCreator
       Object localObject = paramJSONArray.optJSONObject(i);
       if (localObject != null)
       {
-        localObject = a((JSONObject)localObject);
+        localObject = b((JSONObject)localObject);
         if (localObject != null)
         {
           ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-          this.jdField_a_of_type_AndroidViewViewGroup.addView(((ViewModel)localObject).a(), localLayoutParams);
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
+          this.b.addView(((ViewModel)localObject).l(), localLayoutParams);
+          this.c.add(localObject);
         }
       }
       i += 1;
@@ -95,36 +95,36 @@ public class QVipBackgroundCreator
   
   public QVipBackgroundCreator a(@NonNull JSONObject paramJSONObject)
   {
-    paramJSONObject = a(paramJSONObject);
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-      this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
+    paramJSONObject = b(paramJSONObject);
+    if (this.b == null) {
+      this.b = new FrameLayout(this.a);
     }
     a();
     if (paramJSONObject == null) {
       return this;
     }
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramJSONObject.a(), localLayoutParams);
-    this.jdField_a_of_type_JavaUtilList.add(paramJSONObject);
+    this.b.addView(paramJSONObject.l(), localLayoutParams);
+    this.c.add(paramJSONObject);
     return this;
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+    Object localObject = this.b;
     if (localObject != null) {
       ((ViewGroup)localObject).removeAllViews();
     }
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject = this.c.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((ViewModel)((Iterator)localObject).next()).c();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.c.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.QVipBackgroundCreator
  * JD-Core Version:    0.7.0.1
  */

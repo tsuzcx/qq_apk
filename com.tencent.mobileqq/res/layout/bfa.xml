@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:id="@id/i76" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="44.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/o3j" android:layout_width="fill_parent" android:layout_height="44.0dip" android:scaleType="fitCenter" />
+    <com.tencent.image.URLImageView android:id="@id/psy" android:layout_width="fill_parent" android:layout_height="44.0dip" android:scaleType="fitCenter" />
     <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="44.0dip">
-        <com.tencent.image.URLImageView android:id="@id/o3m" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="20.0dip" android:scaleType="fitCenter" />
+        <com.tencent.image.URLImageView android:id="@id/pt1" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="20.0dip" android:scaleType="fitCenter" />
         <TextView android:textSize="14.0sp" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/i78" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:singleLine="true" android:layout_weight="1.0" />
         <FrameLayout android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <com.tencent.image.URLImageView android:id="@id/o3k" android:visibility="gone" android:layout_width="72.0dip" android:layout_height="29.0dip" android:scaleType="centerInside" />
+            <com.tencent.image.URLImageView android:id="@id/psz" android:visibility="gone" android:layout_width="72.0dip" android:layout_height="29.0dip" android:scaleType="centerInside" />
             <TextView android:textSize="14.0sp" android:gravity="center" android:layout_gravity="center" android:id="@id/i77" android:layout_width="wrap_content" android:layout_height="29.0dip" />
         </FrameLayout>
-        <Button android:id="@id/o3l" android:background="@drawable/cip" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="14.0dip" android:layout_marginRight="20.0dip" />
+        <Button android:id="@id/pt0" android:background="@drawable/cip" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="14.0dip" android:layout_marginRight="20.0dip" />
     </LinearLayout>
 </FrameLayout>

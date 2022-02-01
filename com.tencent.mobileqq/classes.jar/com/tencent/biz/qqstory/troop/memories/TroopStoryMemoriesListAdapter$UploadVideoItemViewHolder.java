@@ -25,9 +25,9 @@ class TroopStoryMemoriesListAdapter$UploadVideoItemViewHolder
   
   public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
   {
-    TroopStoryMemoriesListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(DateUtils.d(paramTroopStoryItemInfo.publishTime));
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130847117);
+    TroopStoryMemoriesListAdapter.a(this.a, paramTroopStoryItemInfo, this.c, this.d);
+    this.e.setText(DateUtils.e(paramTroopStoryItemInfo.publishTime));
+    Drawable localDrawable = this.a.b.getResources().getDrawable(2130848669);
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
@@ -35,23 +35,23 @@ class TroopStoryMemoriesListAdapter$UploadVideoItemViewHolder
       localURLDrawableOptions.mFailedDrawable = localDrawable;
       localURLDrawableOptions.mMemoryCacheKeySuffix = "troop_story_message";
       paramTroopStoryItemInfo = URLDrawable.getDrawable(new File(paramTroopStoryItemInfo.videoThumbUrl), localURLDrawableOptions);
-      paramTroopStoryItemInfo.setTag(URLDrawableDecodeHandler.b(UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
-      paramTroopStoryItemInfo.setDecodeHandler(URLDrawableDecodeHandler.i);
-      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramTroopStoryItemInfo);
+      paramTroopStoryItemInfo.setTag(URLDrawableDecodeHandler.b(UIUtils.a(this.a.b, 50.0F), UIUtils.a(this.a.b, 70.0F), UIUtils.a(this.a.b, 3.0F)));
+      paramTroopStoryItemInfo.setDecodeHandler(URLDrawableDecodeHandler.j);
+      this.f.setImageDrawable(paramTroopStoryItemInfo);
     }
     catch (Exception paramTroopStoryItemInfo)
     {
       label148:
       break label148;
     }
-    this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
-    paramTroopStoryItemInfo = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130839401);
+    this.f.setImageDrawable(localDrawable);
+    paramTroopStoryItemInfo = this.a.b.getResources().getDrawable(2130839585);
     paramTroopStoryItemInfo.setBounds(0, 0, 26, 26);
-    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(paramTroopStoryItemInfo, null, null, null);
-    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131715572));
+    this.e.setCompoundDrawables(paramTroopStoryItemInfo, null, null, null);
+    this.e.setCompoundDrawablePadding(10);
+    this.e.setText(HardCodeUtil.a(2131913044));
     ((Animatable)paramTroopStoryItemInfo).start();
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new TroopStoryMemoriesListAdapter.UploadVideoItemViewHolder.1(this));
+    this.b.setOnClickListener(new TroopStoryMemoriesListAdapter.UploadVideoItemViewHolder.1(this));
   }
 }
 

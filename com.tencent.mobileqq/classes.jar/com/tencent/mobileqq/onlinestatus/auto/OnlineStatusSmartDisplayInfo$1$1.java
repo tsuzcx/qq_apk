@@ -10,13 +10,13 @@ class OnlineStatusSmartDisplayInfo$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoOnlineStatusSmartDisplayInfo$1.a.b = OnlineStatusSmartDisplayInfo.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoOnlineStatusSmartDisplayInfo$1.a).a(Integer.valueOf(this.jdField_a_of_type_Int));
-    OnlineStatusSmartDisplayInfo.b(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoOnlineStatusSmartDisplayInfo$1.a).a();
+    this.b.a.b = OnlineStatusSmartDisplayInfo.c(this.b.a).a(Integer.valueOf(this.a));
+    OnlineStatusSmartDisplayInfo.d(this.b.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.OnlineStatusSmartDisplayInfo.1.1
  * JD-Core Version:    0.7.0.1
  */

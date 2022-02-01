@@ -9,12 +9,12 @@ class DynamicTextItem$2
   
   public void run()
   {
-    if (((Boolean)DynamicTextItem.a(this.this$0).b).booleanValue() != this.jdField_a_of_type_Boolean)
+    if (((Boolean)DynamicTextItem.a(this.this$0).b).booleanValue() != this.a)
     {
       DynamicTextItem.a(this.this$0).b = Boolean.valueOf(((Boolean)DynamicTextItem.a(this.this$0).b).booleanValue() ^ true);
-      this.jdField_a_of_type_AndroidViewView.invalidate();
+      this.b.invalidate();
     }
-    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    Runnable localRunnable = this.c;
     if (localRunnable != null) {
       localRunnable.run();
     }
@@ -23,7 +23,7 @@ class DynamicTextItem$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.DynamicTextItem.2
  * JD-Core Version:    0.7.0.1
  */

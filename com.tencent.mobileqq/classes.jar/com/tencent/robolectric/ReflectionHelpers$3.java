@@ -11,9 +11,9 @@ final class ReflectionHelpers$3
   {
     try
     {
-      paramObject = this.jdField_a_of_type_JavaLangClass.getMethod(paramMethod.getName(), paramMethod.getParameterTypes());
+      paramObject = this.a.getMethod(paramMethod.getName(), paramMethod.getParameterTypes());
       paramObject.setAccessible(true);
-      paramObject = paramObject.invoke(this.jdField_a_of_type_JavaLangObject, paramArrayOfObject);
+      paramObject = paramObject.invoke(this.b, paramArrayOfObject);
       return paramObject;
     }
     catch (NoSuchMethodException paramObject)
@@ -26,7 +26,7 @@ final class ReflectionHelpers$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.robolectric.ReflectionHelpers.3
  * JD-Core Version:    0.7.0.1
  */

@@ -31,13 +31,13 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
   
   void a()
   {
-    AVPreloadPlayerModule.b(this.a);
+    AVPreloadPlayerModule.j(this.a);
   }
   
   public void onError(int paramInt, String paramString)
   {
     LogInterface localLogInterface = this.a.getLog();
-    String str = AVPreloadPlayerModule.a(this.a);
+    String str = AVPreloadPlayerModule.b(this.a);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("error code:");
     localStringBuilder.append(paramInt);
@@ -50,15 +50,15 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
       paramString.errCode = paramInt;
       this.a.getEvent().post(paramString);
     }
-    if (!AVPreloadPlayerModule.b(this.a)) {
+    if (!AVPreloadPlayerModule.e(this.a)) {
       AVPreloadPlayerModule.a(this.a, paramInt);
     }
   }
   
   public void onFirstFrameCome()
   {
-    this.a.getLog().i(AVPreloadPlayerModule.a(this.a), "Player -- onFirstFrameCome", new Object[0]);
-    AVPreloadPlayerModule.a(this.a);
+    this.a.getLog().i(AVPreloadPlayerModule.b(this.a), "Player -- onFirstFrameCome", new Object[0]);
+    AVPreloadPlayerModule.d(this.a);
   }
   
   public void onNetworkAnomaly()
@@ -72,17 +72,17 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
   {
     if (paramInt == 100)
     {
-      this.a.getLog().i(AVPreloadPlayerModule.a(this.a), "netWork closed.", new Object[0]);
+      this.a.getLog().i(AVPreloadPlayerModule.b(this.a), "netWork closed.", new Object[0]);
       if ((AVPreloadPlayerModule.a(this.a).isPlaying()) && (!AVPreloadPlayerModule.a(this.a).isPaused()))
       {
         AVPreloadPlayerModule.a(this.a).stopPlay();
         AVPreloadPlayerModule.a(this.a).resetPlayer();
       }
-      AVPreloadPlayerModule.a(this.a).showToast("当前没有网络连接", 1);
+      AVPreloadPlayerModule.h(this.a).showToast("当前没有网络连接", 1);
       return;
     }
     LogInterface localLogInterface = this.a.getLog();
-    String str = AVPreloadPlayerModule.a(this.a);
+    String str = AVPreloadPlayerModule.b(this.a);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("netWork restore type = ");
     localStringBuilder.append(paramInt);
@@ -92,12 +92,12 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
   
   public void onPlayCaton()
   {
-    if (AVPreloadPlayerModule.c(this.a))
+    if (AVPreloadPlayerModule.g(this.a))
     {
       this.a.getEvent().post(new PlayerCatonEvent());
       return;
     }
-    AVPreloadPlayerModule.a(this.a).showToast("主播网络异常", 0);
+    AVPreloadPlayerModule.h(this.a).showToast("主播网络异常", 0);
   }
   
   public void onPlayCatonRecover() {}
@@ -111,7 +111,7 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
   
   public void onPlayPause(long paramLong)
   {
-    if ((AVPreloadPlayerModule.a(this.a) != null) && (((RoomServiceInterface)AVPreloadPlayerModule.a(this.a).getService(RoomServiceInterface.class)).getLiveInfo() != null) && (((RoomServiceInterface)AVPreloadPlayerModule.a(this.a).getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo != null) && (((RoomServiceInterface)AVPreloadPlayerModule.a(this.a).getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo.uid != paramLong))
+    if ((AVPreloadPlayerModule.f(this.a) != null) && (((RoomServiceInterface)AVPreloadPlayerModule.f(this.a).getService(RoomServiceInterface.class)).getLiveInfo() != null) && (((RoomServiceInterface)AVPreloadPlayerModule.f(this.a).getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo != null) && (((RoomServiceInterface)AVPreloadPlayerModule.f(this.a).getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo.uid != paramLong))
     {
       this.a.getEvent().post(new ShowAnchorStateEvent(ShowAnchorStateEvent.AnchorState.PAUSE, paramLong));
       return;
@@ -127,7 +127,7 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
   
   public void onPlayResume(long paramLong)
   {
-    if ((AVPreloadPlayerModule.a(this.a) != null) && (((RoomServiceInterface)AVPreloadPlayerModule.a(this.a).getService(RoomServiceInterface.class)).getLiveInfo() != null) && (((RoomServiceInterface)AVPreloadPlayerModule.a(this.a).getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo != null) && (((RoomServiceInterface)AVPreloadPlayerModule.a(this.a).getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo.uid != paramLong))
+    if ((AVPreloadPlayerModule.f(this.a) != null) && (((RoomServiceInterface)AVPreloadPlayerModule.f(this.a).getService(RoomServiceInterface.class)).getLiveInfo() != null) && (((RoomServiceInterface)AVPreloadPlayerModule.f(this.a).getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo != null) && (((RoomServiceInterface)AVPreloadPlayerModule.f(this.a).getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo.uid != paramLong))
     {
       this.a.getEvent().post(new ShowAnchorStateEvent(ShowAnchorStateEvent.AnchorState.RECOVER, paramLong));
       return;
@@ -136,8 +136,8 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
     Object localObject = new PlayerStateMessageEvent();
     ((PlayerStateMessageEvent)localObject).msginfo = "主播回来了，精彩马上继续！";
     this.a.getEvent().post((ModuleEventInterface)localObject);
-    localObject = AVPreloadPlayerModule.a(this.a).getEnginLogic().getLiveInfo().watchMediaInfo;
-    if (AVPreloadPlayerModule.d(this.a))
+    localObject = AVPreloadPlayerModule.f(this.a).getEnginLogic().getLiveInfo().watchMediaInfo;
+    if (AVPreloadPlayerModule.i(this.a))
     {
       AVPreloadPlayerModule.a(this.a).stopPlay();
       AVPreloadPlayerModule.a(this.a).resetPlayer();
@@ -148,7 +148,7 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
   
   public void onPreloadFirstFrame(AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    if ((!AVPreloadPlayerModule.f(this.a)) && (paramAVPreloadTaskInterface.a() != null))
+    if ((!AVPreloadPlayerModule.l(this.a)) && (paramAVPreloadTaskInterface.x() != null))
     {
       AVPreloadPlayerModule.a(this.a, paramAVPreloadTaskInterface);
       AVPreloadPlayerModule.f(this.a, true);
@@ -164,11 +164,11 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
   
   public void onReadyCompleted()
   {
-    this.a.getLog().i(AVPreloadPlayerModule.a(this.a), "Player -- onReadyCompleted", new Object[0]);
+    this.a.getLog().i(AVPreloadPlayerModule.b(this.a), "Player -- onReadyCompleted", new Object[0]);
     this.a.getLog().i("AudienceTime", "Player -- onReadyCompleted", new Object[0]);
-    if (AVPreloadPlayerModule.a(this.a))
+    if (AVPreloadPlayerModule.c(this.a))
     {
-      this.a.getLog().e(AVPreloadPlayerModule.a(this.a), "Player -- onReadyCompleted but isPageExit", new Object[0]);
+      this.a.getLog().e(AVPreloadPlayerModule.b(this.a), "Player -- onReadyCompleted but isPageExit", new Object[0]);
       return;
     }
     AVPreloadPlayerModule.a(this.a, AVPreloadPlayerModule.StartPlayType.READY_PLAY);
@@ -193,14 +193,14 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
   
   public void onSurfaceCreated()
   {
-    this.a.getLog().i(AVPreloadPlayerModule.a(this.a), "Player -- onSurfaceCreated", new Object[0]);
+    this.a.getLog().i(AVPreloadPlayerModule.b(this.a), "Player -- onSurfaceCreated", new Object[0]);
     this.a.getLog().i("AudienceTime", "Player -- onSurfaceCreated", new Object[0]);
-    if (AVPreloadPlayerModule.a(this.a))
+    if (AVPreloadPlayerModule.c(this.a))
     {
-      this.a.getLog().e(AVPreloadPlayerModule.a(this.a), "Player -- onSurfaceCreated but isPageExit", new Object[0]);
+      this.a.getLog().e(AVPreloadPlayerModule.b(this.a), "Player -- onSurfaceCreated but isPageExit", new Object[0]);
       return;
     }
-    if (!AVPreloadPlayerModule.e(this.a)) {
+    if (!AVPreloadPlayerModule.k(this.a)) {
       AVPreloadPlayerModule.a(this.a, AVPreloadPlayerModule.StartPlayType.SURFACE_CREATE);
     }
     AVPreloadPlayerModule.e(this.a, true);
@@ -210,7 +210,7 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.AVPreloadPlayerModule.DefaultPlayerStatusListener
  * JD-Core Version:    0.7.0.1
  */

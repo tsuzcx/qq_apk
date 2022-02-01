@@ -13,11 +13,11 @@ class LbsFilterStatusManager$3
     long l = Thread.currentThread().getId();
     if (LbsFilterStatusManager.a(this.a) == l)
     {
-      LbsFilterStatusManager.a(this.a);
+      LbsFilterStatusManager.b(this.a);
       return;
     }
-    if (LbsFilterStatusManager.a(this.a) != null) {
-      LbsFilterStatusManager.a(this.a).post(new LbsFilterStatusManager.3.1(this));
+    if (LbsFilterStatusManager.c(this.a) != null) {
+      LbsFilterStatusManager.c(this.a).post(new LbsFilterStatusManager.3.1(this));
     }
   }
   
@@ -31,7 +31,7 @@ class LbsFilterStatusManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3
  * JD-Core Version:    0.7.0.1
  */

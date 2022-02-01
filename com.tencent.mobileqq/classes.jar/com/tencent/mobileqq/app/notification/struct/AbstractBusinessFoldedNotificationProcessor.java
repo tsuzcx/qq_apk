@@ -21,32 +21,32 @@ public abstract class AbstractBusinessFoldedNotificationProcessor
     super(paramQQAppInterface, paramNotificationElement);
   }
   
-  private void b()
+  private void f()
   {
-    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a();
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.c();
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d();
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a();
-    int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a.a(true);
+    Intent localIntent = this.b.b();
+    String str3 = this.b.c();
+    String str1 = this.b.d();
+    String str2 = this.b.e();
+    Bitmap localBitmap = this.b.f();
+    int i = this.a.getMessageFacade().d.a(true);
     StringBuffer localStringBuffer = new StringBuffer();
-    int j = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a.b(true);
-    localStringBuffer.append(String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694507), new Object[] { Integer.valueOf(j) }));
+    int j = this.a.getMessageFacade().d.b(true);
+    localStringBuffer.append(String.format(this.a.getApp().getString(2131892190), new Object[] { Integer.valueOf(j) }));
     if (i > 1000)
     {
-      localStringBuffer.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694508));
+      localStringBuffer.append(this.a.getApp().getString(2131892191));
     }
     else
     {
       localStringBuffer.append(i);
-      localStringBuffer.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694445));
+      localStringBuffer.append(this.a.getApp().getString(2131892125));
     }
     if (j > 1)
     {
-      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SplashActivity.class);
+      localIntent = new Intent(this.a.getApp(), SplashActivity.class);
       localIntent.addFlags(335544320);
       localIntent.putExtra("tab_index", FrameControllerUtil.a);
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694524);
+      str1 = this.a.getApp().getString(2131892207);
       str2 = localStringBuffer.toString();
       localBitmap = null;
     }
@@ -54,52 +54,52 @@ public abstract class AbstractBusinessFoldedNotificationProcessor
     {
       QLog.d("[NotificationRebuild] [NotificationProcessor] AbstractBuildLastDefaultNotificationProcessor", 1, new Object[] { "[notification] buildNotificationElement: invoked. 非独立会话数<=1，保持旧的跳转、图标、wording 已经从上面switch-case中获取 ", " conversationSizeNotSeparate: ", Integer.valueOf(j) });
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a(localBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a(localIntent);
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.c(str1);
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d(str2);
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b(str3);
-  }
-  
-  protected final int b(Message paramMessage)
-  {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isShowMsgContent();
-    int i = paramMessage.istroop;
-    paramMessage = paramMessage.frienduin;
-    if (NotifyIdManager.a(i, paramMessage))
-    {
-      if (bool) {
-        return NotifyIdManager.a().a(paramMessage);
-      }
-      return 265;
-    }
-    return -113;
+    this.b.a(localBitmap);
+    this.b.a(localIntent);
+    this.b.c(str1);
+    this.b.d(str2);
+    this.b.b(str3);
   }
   
   @NotNull
-  protected final NotificationElement b(Message paramMessage)
+  protected final NotificationElement c(Message paramMessage)
   {
-    a();
-    a(paramMessage, this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement);
+    e();
+    a(paramMessage, this.b);
     int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a.b() > 1) {
+    if (this.a.getMessageFacade().d.d() > 1) {
       i = 1;
     } else {
       i = 0;
     }
     if (i != 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a.a(true) == 0) {
+      if (this.a.getMessageFacade().d.a(true) == 0) {
         return null;
       }
-      b();
+      f();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement;
+    return this.b;
+  }
+  
+  protected final int d(Message paramMessage)
+  {
+    boolean bool = this.a.isShowMsgContent();
+    int i = paramMessage.istroop;
+    paramMessage = paramMessage.frienduin;
+    if (NotifyIdManager.a(i, paramMessage))
+    {
+      if (bool) {
+        return NotifyIdManager.b().a(paramMessage);
+      }
+      return 265;
+    }
+    return -113;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.struct.AbstractBusinessFoldedNotificationProcessor
  * JD-Core Version:    0.7.0.1
  */

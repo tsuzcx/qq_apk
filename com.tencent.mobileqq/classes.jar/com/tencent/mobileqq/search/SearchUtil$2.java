@@ -29,23 +29,23 @@ final class SearchUtil$2
   {
     try
     {
-      Object localObject1 = MD5Utils.toMD5(this.jdField_a_of_type_JavaLangString);
-      boolean bool = BaseImageUtil.b(this.jdField_a_of_type_JavaLangString);
+      Object localObject1 = MD5Utils.toMD5(this.a);
+      boolean bool = BaseImageUtil.c(this.a);
       int i = 0;
       if (bool)
       {
-        localObject3 = new GifImageWithText(new File(this.jdField_a_of_type_JavaLangString), false, 0.0F);
-        localObject2 = ZhituTextManager.a().a(((GifImageWithText)localObject3).getWidth(), ((GifImageWithText)localObject3).getHeight(), this.b, this.jdField_a_of_type_JavaUtilList, this.c, this.jdField_a_of_type_AndroidGraphicsRect, 1, MD5Utils.toMD5(this.jdField_a_of_type_JavaLangString), 0, Typeface.DEFAULT);
+        localObject3 = new GifImageWithText(new File(this.a), false, 0.0F);
+        localObject2 = ZhituTextManager.a().a(((GifImageWithText)localObject3).getWidth(), ((GifImageWithText)localObject3).getHeight(), this.b, this.c, this.d, this.e, 1, MD5Utils.toMD5(this.a), 0, Typeface.DEFAULT);
         ((GifImageWithText)localObject3).a((ZhituTextManager.DrawTextParam)localObject2);
         localObject3 = new ZhituPicData();
-        ((ZhituPicData)localObject3).jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam = ((ZhituTextManager.DrawTextParam)localObject2);
-        ((ZhituPicData)localObject3).b = true;
-        ((ZhituPicData)localObject3).c = this.jdField_a_of_type_JavaLangString;
-        ((ZhituPicData)localObject3).jdField_a_of_type_Boolean = true;
-        ((ZhituPicData)localObject3).d = ((String)localObject1);
-        ((ZhituPicData)localObject3).jdField_a_of_type_Int = 0;
-        ((ZhituPicData)localObject3).e = ((String)localObject1);
-        localObject1 = ZhituManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a((ZhituPicData)localObject3);
+        ((ZhituPicData)localObject3).d = ((ZhituTextManager.DrawTextParam)localObject2);
+        ((ZhituPicData)localObject3).k = true;
+        ((ZhituPicData)localObject3).c = this.a;
+        ((ZhituPicData)localObject3).e = true;
+        ((ZhituPicData)localObject3).f = ((String)localObject1);
+        ((ZhituPicData)localObject3).g = 0;
+        ((ZhituPicData)localObject3).h = ((String)localObject1);
+        localObject1 = ZhituManager.a(this.f).c((ZhituPicData)localObject3);
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
@@ -53,29 +53,29 @@ final class SearchUtil$2
           ((StringBuilder)localObject2).append((String)localObject1);
           QLog.d("Q.uniteSearch.SearchUtil", 2, ((StringBuilder)localObject2).toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqSearchUtilSearchUtils$GenerateGifWithTextCallback.a((String)localObject1);
+        this.g.a((String)localObject1);
         return;
       }
-      localObject1 = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString).copy(Bitmap.Config.ARGB_8888, true);
+      localObject1 = BitmapFactory.decodeFile(this.a).copy(Bitmap.Config.ARGB_8888, true);
       localObject2 = new Rect(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
-      Object localObject3 = ZhituTextManager.a().a(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), this.b, this.jdField_a_of_type_JavaUtilList, this.c, this.jdField_a_of_type_AndroidGraphicsRect, 1, MD5Utils.toMD5(this.jdField_a_of_type_JavaLangString), 0, Typeface.DEFAULT);
+      Object localObject3 = ZhituTextManager.a().a(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), this.b, this.c, this.d, this.e, 1, MD5Utils.toMD5(this.a), 0, Typeface.DEFAULT);
       Canvas localCanvas = new Canvas((Bitmap)localObject1);
-      while (i < ((ZhituTextManager.DrawTextParam)localObject3).jdField_a_of_type_ArrayOfFloat.length)
+      while (i < ((ZhituTextManager.DrawTextParam)localObject3).a.length)
       {
-        float f = ((Rect)localObject2).top + localObject3.jdField_a_of_type_ArrayOfFloat[i];
-        if (((ZhituTextManager.DrawTextParam)localObject3).b != null) {
-          localCanvas.drawText(localObject3.jdField_a_of_type_ArrayOfJavaLangString[i], ((Rect)localObject2).exactCenterX(), f, ((ZhituTextManager.DrawTextParam)localObject3).b);
+        float f1 = ((Rect)localObject2).top + localObject3.a[i];
+        if (((ZhituTextManager.DrawTextParam)localObject3).d != null) {
+          localCanvas.drawText(localObject3.b[i], ((Rect)localObject2).exactCenterX(), f1, ((ZhituTextManager.DrawTextParam)localObject3).d);
         }
-        localCanvas.drawText(localObject3.jdField_a_of_type_ArrayOfJavaLangString[i], ((Rect)localObject2).exactCenterX(), f, ((ZhituTextManager.DrawTextParam)localObject3).jdField_a_of_type_AndroidGraphicsPaint);
+        localCanvas.drawText(localObject3.b[i], ((Rect)localObject2).exactCenterX(), f1, ((ZhituTextManager.DrawTextParam)localObject3).c);
         i += 1;
       }
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.a);
       ((StringBuilder)localObject2).append("_");
       ((StringBuilder)localObject2).append(System.currentTimeMillis());
       localObject2 = ((StringBuilder)localObject2).toString();
       BitmapUtils.saveBitmapToFile((Bitmap)localObject1, (String)localObject2);
-      this.jdField_a_of_type_ComTencentMobileqqSearchUtilSearchUtils$GenerateGifWithTextCallback.a((String)localObject2);
+      this.g.a((String)localObject2);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -92,12 +92,12 @@ final class SearchUtil$2
       ((StringBuilder)localObject2).append(localException);
       QLog.e("Q.uniteSearch.SearchUtil", 2, ((StringBuilder)localObject2).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchUtilSearchUtils$GenerateGifWithTextCallback.a(null);
+    this.g.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.SearchUtil.2
  * JD-Core Version:    0.7.0.1
  */

@@ -52,7 +52,7 @@ public class TogetherWatchFloatingUtil
     if (QLog.isColorLevel()) {
       QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow tool..., data=", paramWatchTogetherFloatingData.toString() });
     }
-    if (WatchFloatingWindowController.a().a(paramContext, paramWatchTogetherFloatingData) == 0) {
+    if (WatchFloatingWindowController.c().a(paramContext, paramWatchTogetherFloatingData) == 0) {
       return 1;
     }
     return 2;
@@ -64,7 +64,7 @@ public class TogetherWatchFloatingUtil
       return null;
     }
     FloatingScreenReporter.b();
-    paramContext = DialogUtil.a(paramContext, 230, null, "一起看将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramContext.getString(2131690728), paramContext.getString(2131694583), new TogetherWatchFloatingUtil.1(paramContext), null);
+    paramContext = DialogUtil.a(paramContext, 230, null, "一起看将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramContext.getString(2131887648), paramContext.getString(2131892267), new TogetherWatchFloatingUtil.1(paramContext), null);
     paramContext.setCancelable(false);
     return paramContext;
   }
@@ -72,23 +72,11 @@ public class TogetherWatchFloatingUtil
   public static Dialog a(Context paramContext, Intent paramIntent)
   {
     paramContext = ActionSheet.create(paramContext);
-    paramContext.addButton(2131716745);
-    paramContext.addButton(2131690878, 3);
-    paramContext.addCancelButton(2131690728);
+    paramContext.addButton(2131914217);
+    paramContext.addButton(2131887816, 3);
+    paramContext.addCancelButton(2131887648);
     paramContext.setOnButtonClickListener(new TogetherWatchFloatingUtil.2(paramIntent, paramContext));
     return paramContext;
-  }
-  
-  public static void a()
-  {
-    a = "";
-    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
-    {
-      Bundle localBundle = new Bundle();
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS", localBundle, new TogetherWatchFloatingUtil.5());
-      return;
-    }
-    WatchFloatingWindowController.a().b();
   }
   
   public static void a(Context paramContext, int paramInt, String paramString)
@@ -98,33 +86,6 @@ public class TogetherWatchFloatingUtil
     localIntent.putExtra("cur_uin", paramString);
     localIntent.addFlags(805306368);
     paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
-  {
-    if (BaseApplicationImpl.getApplication() != null)
-    {
-      if (BaseApplicationImpl.getApplication().getQQProcessName() == null) {
-        return;
-      }
-      if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
-      {
-        boolean bool1 = b(2, paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType());
-        boolean bool2 = a();
-        if (QLog.isColorLevel()) {
-          QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "closeFloatingWindow isSameFloatingInfo=", Boolean.valueOf(bool1), "isFloatingInfoEmpty=", Boolean.valueOf(bool2) });
-        }
-        if ((!bool1) && (!bool2)) {
-          return;
-        }
-        a = "";
-        paramContext = new Bundle();
-        paramContext.putSerializable("BUNDLE_KEY_UI_DATA", paramWatchTogetherFloatingData);
-        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_QUIT_WATCH_FLOATING_WINDOWS", paramContext, new TogetherWatchFloatingUtil.4());
-        return;
-      }
-      WatchFloatingWindowController.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
-    }
   }
   
   public static void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
@@ -191,6 +152,33 @@ public class TogetherWatchFloatingUtil
     return TextUtils.equals(paramString, a);
   }
   
+  public static void b(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
+  {
+    if (BaseApplicationImpl.getApplication() != null)
+    {
+      if (BaseApplicationImpl.getApplication().getQQProcessName() == null) {
+        return;
+      }
+      if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
+      {
+        boolean bool1 = b(2, paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType());
+        boolean bool2 = a();
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "closeFloatingWindow isSameFloatingInfo=", Boolean.valueOf(bool1), "isFloatingInfoEmpty=", Boolean.valueOf(bool2) });
+        }
+        if ((!bool1) && (!bool2)) {
+          return;
+        }
+        a = "";
+        paramContext = new Bundle();
+        paramContext.putSerializable("BUNDLE_KEY_UI_DATA", paramWatchTogetherFloatingData);
+        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_QUIT_WATCH_FLOATING_WINDOWS", paramContext, new TogetherWatchFloatingUtil.4());
+        return;
+      }
+      WatchFloatingWindowController.c().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
+    }
+  }
+  
   public static boolean b()
   {
     return a == null;
@@ -206,10 +194,22 @@ public class TogetherWatchFloatingUtil
     localStringBuilder.append(paramInt2);
     return TextUtils.equals(localStringBuilder.toString(), a);
   }
+  
+  public static void c()
+  {
+    a = "";
+    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
+    {
+      Bundle localBundle = new Bundle();
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS", localBundle, new TogetherWatchFloatingUtil.5());
+      return;
+    }
+    WatchFloatingWindowController.c().b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.TogetherWatchFloatingUtil
  * JD-Core Version:    0.7.0.1
  */

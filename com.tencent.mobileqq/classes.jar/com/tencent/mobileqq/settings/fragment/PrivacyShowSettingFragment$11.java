@@ -1,51 +1,29 @@
 package com.tencent.mobileqq.settings.fragment;
 
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vas.api.IVasService;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vip.IGameCardManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class PrivacyShowSettingFragment$11
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
   PrivacyShowSettingFragment$11(PrivacyShowSettingFragment paramPrivacyShowSettingFragment) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (PrivacyShowSettingFragment.a(this.a) != null) {
-      PrivacyShowSettingFragment.a(this.a).postInvalidate();
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (PrivacyShowSettingFragment.a(this.a) != null) {
-      PrivacyShowSettingFragment.a(this.a).postInvalidate();
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, UIUtils.a(this.a.a.getApp(), 47.0F), UIUtils.a(this.a.a.getApp(), 14.0F));
-    }
-    if (PrivacyShowSettingFragment.a(this.a) != null) {
-      PrivacyShowSettingFragment.a(this.a).postInvalidate();
-    }
+    VasUtil.a().getGameCardManager().gotoKingIconSetWeb(this.a.getActivity());
+    ReportController.b(this.a.a, "CliOper", "", "", "Setting_tab", "0X8009C07", 0, 0, "", "", "", "");
+    ReportController.b(this.a.a, "dc00898", "", "", "0X800B865", "0X800B865", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PrivacyShowSettingFragment.11
  * JD-Core Version:    0.7.0.1
  */

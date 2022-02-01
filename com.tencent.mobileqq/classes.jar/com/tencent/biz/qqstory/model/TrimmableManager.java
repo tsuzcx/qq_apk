@@ -9,12 +9,12 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class TrimmableManager
   implements IManager
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private CopyOnWriteArraySet<ITrimmable> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  private CopyOnWriteArraySet<ITrimmable> a = new CopyOnWriteArraySet();
+  private Handler b = new Handler(ThreadManager.getSubThreadLooper());
   
   public TrimmableManager()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new TrimmableManager.URLDrawableTrimmer());
+    this.a.add(new TrimmableManager.URLDrawableTrimmer());
   }
   
   private void b(int paramInt)
@@ -23,7 +23,7 @@ public class TrimmableManager
     if ((paramInt != 0) && (paramInt != 1) && (paramInt != 2)) {
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((ITrimmable)localIterator.next()).a(paramInt);
     }
@@ -34,24 +34,24 @@ public class TrimmableManager
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new TrimmableManager.1(this, paramInt));
+    this.b.post(new TrimmableManager.1(this, paramInt));
   }
   
   public void a(ITrimmable paramITrimmable)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramITrimmable);
+    this.a.add(paramITrimmable);
   }
   
   public void b() {}
   
   public void b(ITrimmable paramITrimmable)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramITrimmable);
+    this.a.remove(paramITrimmable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TrimmableManager
  * JD-Core Version:    0.7.0.1
  */

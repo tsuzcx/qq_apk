@@ -25,58 +25,50 @@ import mqq.os.MqqHandler;
 public class AEARCakePanel
   extends AEAbsBottomPanal
 {
-  private static int jdField_b_of_type_Int = 1;
-  public int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ICaptureController jdField_a_of_type_ComTencentAelightCameraAeCameraUiICaptureController;
-  AEARCakeMaterialManager.IARcakeMgrListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialManager$IARcakeMgrListener = new AEARCakePanel.5(this);
-  private AEARCakePanel.AEARCakePanelListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener;
-  AEARCakeProvidewView jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView;
-  private VideoStoryCapturePartManager jdField_a_of_type_ComTencentAelightCameraAePartVideoStoryCapturePartManager;
-  private List<AEGiftMaterial> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean jdField_b_of_type_Boolean = false;
-  private boolean d = false;
+  private static int l = 1;
+  AEARCakeProvidewView a;
+  boolean b = false;
+  public int c = getOpenedHeight();
+  boolean d = false;
+  AEARCakeMaterialManager.IARcakeMgrListener e = new AEARCakePanel.5(this);
+  private boolean g = false;
+  private List<AEGiftMaterial> h;
+  private ICaptureController i;
+  private VideoStoryCapturePartManager j;
+  private AEARCakePanel.AEARCakePanelListener k;
+  private Context m;
   
   public AEARCakePanel(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = a();
   }
   
   public AEARCakePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = a();
   }
   
   public AEARCakePanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = a();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private int a()
-  {
-    return UIUtils.a(getContext(), 169.5F);
+    this.m = paramContext;
   }
   
   @TargetApi(12)
   private void a(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView == null) {
-      b();
+    if (this.a == null) {
+      c();
     } else {
-      f();
+      g();
     }
     Object localObject = new AnimatorSet();
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "translationY", new float[] { this.jdField_a_of_type_Int, 0.0F });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "translationY", new float[] { this.c, 0.0F });
     localObjectAnimator.addUpdateListener(new AEARCakePanel.2(this));
     ((AnimatorSet)localObject).play(localObjectAnimator);
     ((AnimatorSet)localObject).addListener(new AEARCakePanel.3(this));
     ((AnimatorSet)localObject).setDuration(300L).start();
-    localObject = QIMAnimationUtils.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView, 0.0F, 1.0F);
+    localObject = QIMAnimationUtils.a(this.a, 0.0F, 1.0F);
     ((Animation)localObject).setStartOffset(200L);
     ((Animation)localObject).setDuration(100L);
     ((Animation)localObject).setAnimationListener(new AEARCakePanel.4(this, paramRunnable));
@@ -85,75 +77,44 @@ public class AEARCakePanel
   
   private void b(Runnable paramRunnable)
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, this.jdField_a_of_type_Int });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, this.c });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play(localObjectAnimator);
     localAnimatorSet.addListener(new AEARCakePanel.7(this, paramRunnable));
     localAnimatorSet.setDuration(300L).start();
-    paramRunnable = QIMAnimationUtils.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView, 1.0F, 0.0F);
+    paramRunnable = QIMAnimationUtils.a(this.a, 1.0F, 0.0F);
     paramRunnable.setStartOffset(0L);
     paramRunnable.setDuration(100L);
     paramRunnable.setAnimationListener(new AEARCakePanel.8(this));
     startAnimation(paramRunnable);
   }
   
-  private boolean c()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
-      AEQLog.b("AEARCakePanel", "arcake : isMaterialAllDownload no data ");
-      return false;
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("arcake : mCurrentMaterials size ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
-    AEQLog.b("AEARCakePanel", ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_JavaUtilList.size() <= jdField_b_of_type_Int) {
-      return false;
-    }
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      AEARCakeMaterial localAEARCakeMaterial = ((AEGiftMaterial)((Iterator)localObject).next()).a();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("arcake : mCurrentMaterials name ");
-      localStringBuilder.append(localAEARCakeMaterial.p);
-      localStringBuilder.append(" usable ");
-      localStringBuilder.append(localAEARCakeMaterial.e);
-      AEQLog.a("AEARCakePanel", localStringBuilder.toString());
-      if (!localAEARCakeMaterial.e) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private void e()
+  private void f()
   {
     AEQLog.a("AEARCakePanel", "showCaptureLayout");
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiICaptureController;
+    Object localObject = this.i;
     if (localObject != null) {
       ((ICaptureController)localObject).a(false, 150);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAePartVideoStoryCapturePartManager;
+    localObject = this.j;
     if (localObject != null) {
-      ((VideoStoryCapturePartManager)localObject).a(327699, new Object[] { Boolean.valueOf(c()) });
+      ((VideoStoryCapturePartManager)localObject).b(327699, new Object[] { Boolean.valueOf(i()) });
     }
   }
   
-  private void f()
+  private void g()
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.d)
     {
       AEQLog.d("AEARCakePanel", "arcake :not arcake mode can not refresh data");
       return;
     }
-    List localList = AEARCakeMaterialManager.a().a();
+    List localList = AEARCakeMaterialManager.a().b();
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("arcake : giftMaterials size : ");
     ((StringBuilder)localObject1).append(localList.size());
     AEQLog.b("AEARCakePanel", ((StringBuilder)localObject1).toString());
-    this.jdField_a_of_type_JavaUtilList = localList;
+    this.h = localList;
     if (CollectionUtils.isEmpty(localList)) {
       return;
     }
@@ -165,7 +126,7 @@ public class AEARCakePanel
       localStringBuilder.append("arcake : gift : ");
       localStringBuilder.append(((AEGiftMaterial)localObject2).toString());
       AEQLog.a("AEARCakePanel", localStringBuilder.toString());
-      localObject2 = ((AEGiftMaterial)localObject2).a();
+      localObject2 = ((AEGiftMaterial)localObject2).c();
       if (localObject2 == null)
       {
         AEQLog.a("AEARCakePanel", "arcake : aeArCakeMaterial is null ");
@@ -178,16 +139,46 @@ public class AEARCakePanel
         AEQLog.a("AEARCakePanel", localStringBuilder.toString());
       }
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView == null) {
-      AEARCakeMaterialManager.a().a();
+    if (this.a == null) {
+      AEARCakeMaterialManager.a().j();
     }
     ThreadManager.getUIHandler().post(new AEARCakePanel.6(this, localList));
   }
   
-  public void a()
+  private int getOpenedHeight()
   {
-    AEQLog.a("AEARCakePanel", "doOpenProviderView");
-    a(null);
+    return UIUtils.a(getContext(), 169.5F);
+  }
+  
+  private boolean i()
+  {
+    if (this.h == null)
+    {
+      AEQLog.b("AEARCakePanel", "arcake : isMaterialAllDownload no data ");
+      return false;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("arcake : mCurrentMaterials size ");
+    ((StringBuilder)localObject).append(this.h.size());
+    AEQLog.b("AEARCakePanel", ((StringBuilder)localObject).toString());
+    if (this.h.size() <= l) {
+      return false;
+    }
+    localObject = this.h.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      AEARCakeMaterial localAEARCakeMaterial = ((AEGiftMaterial)((Iterator)localObject).next()).c();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("arcake : mCurrentMaterials name ");
+      localStringBuilder.append(localAEARCakeMaterial.t);
+      localStringBuilder.append(" usable ");
+      localStringBuilder.append(localAEARCakeMaterial.A);
+      AEQLog.a("AEARCakePanel", localStringBuilder.toString());
+      if (!localAEARCakeMaterial.A) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public void a(boolean paramBoolean)
@@ -197,7 +188,7 @@ public class AEARCakePanel
   
   public void a(boolean paramBoolean, Runnable paramRunnable)
   {
-    if (!b()) {
+    if (!a()) {
       return;
     }
     if (paramBoolean) {
@@ -210,35 +201,12 @@ public class AEARCakePanel
   
   public boolean a()
   {
-    return false;
-  }
-  
-  @TargetApi(11)
-  public void b()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("arcake : loadView");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener);
-    AEQLog.a("AEARCakePanel", ((StringBuilder)localObject).toString());
-    localObject = getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).height = a();
-    setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView = new AEARCakeProvidewView(getContext(), this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener);
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView;
-    if (localObject != null) {
-      addView((View)localObject);
-    }
-    f();
-  }
-  
-  public boolean b()
-  {
-    int i = getVisibility();
+    int n = getVisibility();
     boolean bool2 = false;
-    if (i == 8) {
+    if (n == 8) {
       return false;
     }
-    AEARCakeProvidewView localAEARCakeProvidewView = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView;
+    AEARCakeProvidewView localAEARCakeProvidewView = this.a;
     boolean bool1 = bool2;
     if (localAEARCakeProvidewView != null)
     {
@@ -250,26 +218,55 @@ public class AEARCakePanel
     return bool1;
   }
   
+  public void b()
+  {
+    AEQLog.a("AEARCakePanel", "doOpenProviderView");
+    a(null);
+  }
+  
+  @TargetApi(11)
   public void c()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("arcake : loadView");
+    ((StringBuilder)localObject).append(this.k);
+    AEQLog.a("AEARCakePanel", ((StringBuilder)localObject).toString());
+    localObject = getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).height = getOpenedHeight();
+    setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.a = new AEARCakeProvidewView(getContext(), this.k);
+    localObject = this.a;
+    if (localObject != null) {
+      addView((View)localObject);
+    }
+    g();
+  }
+  
+  public void d()
   {
     if (QLog.isColorLevel()) {
       QLog.i("AEARCakePanel", 2, "ar cake panel onDestroy()");
     }
-    AEARCakeProvidewView localAEARCakeProvidewView = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView;
+    AEARCakeProvidewView localAEARCakeProvidewView = this.a;
     if (localAEARCakeProvidewView != null)
     {
       localAEARCakeProvidewView.a();
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeProvidewView = null;
+      this.a = null;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialManager$IARcakeMgrListener != null) {
-      AEARCakeMaterialManager.a().b(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialManager$IARcakeMgrListener);
+    if (this.e != null) {
+      AEARCakeMaterialManager.a().b(this.e);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener = null;
+    this.k = null;
+  }
+  
+  public boolean e()
+  {
+    return false;
   }
   
   public void setCaptureController(ICaptureController paramICaptureController)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiICaptureController = paramICaptureController;
+    this.i = paramICaptureController;
   }
   
   public void setClosedByTouch(boolean paramBoolean)
@@ -279,26 +276,26 @@ public class AEARCakePanel
   
   public void setMaterialPanelListener(AEARCakePanel.AEARCakePanelListener paramAEARCakePanelListener, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener = paramAEARCakePanelListener;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    AEARCakeMaterialManager.a().a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel$AEARCakePanelListener);
-    AEARCakeMaterialManager.a().a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialManager$IARcakeMgrListener);
+    this.k = paramAEARCakePanelListener;
+    this.d = paramBoolean;
+    AEARCakeMaterialManager.a().a(this.k);
+    AEARCakeMaterialManager.a().a(this.e);
   }
   
   public void setMaterialSelectId()
   {
     AEQLog.a("AEARCakePanel", "arcake : setMaterialSelectId");
-    f();
+    g();
   }
   
   public void setPartManager(VideoStoryCapturePartManager paramVideoStoryCapturePartManager)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAePartVideoStoryCapturePartManager = paramVideoStoryCapturePartManager;
+    this.j = paramVideoStoryCapturePartManager;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEARCakePanel
  * JD-Core Version:    0.7.0.1
  */

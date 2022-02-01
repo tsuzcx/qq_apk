@@ -9,14 +9,14 @@ class UnlimitedBladeWorks$5
   
   public void a()
   {
-    UnlimitedBladeWorks.a(this.a).b = true;
-    UnlimitedBladeWorks.a(this.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a) != null)
+    UnlimitedBladeWorks.d(this.a).e = true;
+    UnlimitedBladeWorks.d(this.a).d = false;
+    if (UnlimitedBladeWorks.e(this.a) != null)
     {
-      UnlimitedBladeWorks.a(this.a).a();
-      if (UnlimitedBladeWorks.b(this.a))
+      UnlimitedBladeWorks.e(this.a).a();
+      if (UnlimitedBladeWorks.f(this.a))
       {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
+        HapticManager.b().d(UnlimitedBladeWorks.g(this.a));
         UnlimitedBladeWorks.a(this.a, 0);
       }
     }
@@ -24,7 +24,7 @@ class UnlimitedBladeWorks$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.5
  * JD-Core Version:    0.7.0.1
  */

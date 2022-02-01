@@ -11,7 +11,7 @@ import java.util.Set;
 class MsgTabStoryVideoPreloader$OnDownloadListener
   extends SimplePreloadListener
 {
-  private final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private final Set<String> b = new HashSet();
   
   public MsgTabStoryVideoPreloader$OnDownloadListener(MsgTabStoryVideoPreloader paramMsgTabStoryVideoPreloader)
   {
@@ -32,7 +32,7 @@ class MsgTabStoryVideoPreloader$OnDownloadListener
         localStringBuilder.append(paramInt1);
         QLog.e("MsgTabStoryVideoPreloader", 2, localStringBuilder.toString(), paramErrorMessage);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a(paramDownloadTask.c, true);
+      this.a.a(paramDownloadTask.e, true);
     }
   }
   
@@ -50,7 +50,7 @@ class MsgTabStoryVideoPreloader$OnDownloadListener
         paramFile.append(paramInt1);
         QLog.i("MsgTabStoryVideoPreloader", 2, paramFile.toString());
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a(paramDownloadTask.c, true);
+      this.a.a(paramDownloadTask.e, true);
     }
   }
   
@@ -68,13 +68,13 @@ class MsgTabStoryVideoPreloader$OnDownloadListener
         paramFile.append(paramInt1);
         QLog.i("MsgTabStoryVideoPreloader", 2, paramFile.toString());
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a(paramDownloadTask.c, this.jdField_a_of_type_JavaUtilSet.add(paramString));
+      this.a.a(paramDownloadTask.e, this.b.add(paramString));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader.OnDownloadListener
  * JD-Core Version:    0.7.0.1
  */

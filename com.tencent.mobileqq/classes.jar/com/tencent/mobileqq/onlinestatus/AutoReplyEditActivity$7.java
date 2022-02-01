@@ -9,12 +9,12 @@ class AutoReplyEditActivity$7
   
   public void run()
   {
-    InputMethodUtil.a(AutoReplyEditActivity.a(this.this$0));
+    InputMethodUtil.a(AutoReplyEditActivity.b(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.7
  * JD-Core Version:    0.7.0.1
  */

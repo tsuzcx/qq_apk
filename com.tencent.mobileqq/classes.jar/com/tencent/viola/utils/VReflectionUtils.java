@@ -140,20 +140,13 @@ public class VReflectionUtils
         return paramObject;
       }
     }
-    if ((paramType != String.class) || (paramObject == null)) {}
-    try
+    if (paramType == String.class)
     {
-      return new JSONObject().toString();
+      if (paramObject == null) {
+        return new JSONObject().toString();
+      }
+      return paramObject.toString();
     }
-    catch (JSONException paramType)
-    {
-      break label316;
-    }
-    if ((paramObject instanceof String)) {
-      return paramObject;
-    }
-    paramType = new JSONObject(paramObject.toString()).toString();
-    return paramType;
     if (paramType == Integer.TYPE)
     {
       if (paramObject.getClass().isAssignableFrom(Integer.TYPE)) {
@@ -194,14 +187,21 @@ public class VReflectionUtils
     if ((paramType == JSONObject.class) && (paramObject != null) && (paramObject.getClass() == JSONObject.class)) {
       return paramObject;
     }
-    if ((paramObject instanceof String)) {
-      paramType = (String)paramObject;
-    } else {
-      paramType = new JSONObject(paramObject.toString()).toString();
+    try
+    {
+      if ((paramObject instanceof String)) {
+        paramType = (String)paramObject;
+      } else {
+        paramType = new JSONObject(paramObject.toString()).toString();
+      }
+      paramType = new JSONObject(paramType);
+      return paramType;
     }
-    paramType = new JSONObject(paramType);
-    return paramType;
-    label316:
+    catch (JSONException paramType)
+    {
+      label295:
+      break label295;
+    }
     return null;
   }
   
@@ -293,7 +293,7 @@ public class VReflectionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.utils.VReflectionUtils
  * JD-Core Version:    0.7.0.1
  */

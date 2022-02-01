@@ -12,15 +12,15 @@ class AIOEmoticonUIHelper$1$1
   
   public void a(Emoticon paramEmoticon)
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqEmosmAIOEmoticonUIHelper$1.a.a();
+    BaseChatPie localBaseChatPie = this.d.a.b();
     if (localBaseChatPie != null) {
-      MarketFaceItemBuilder.a(this.jdField_a_of_type_Int, localBaseChatPie.a, localBaseChatPie.a(), paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, localBaseChatPie.a(), false);
+      MarketFaceItemBuilder.a(this.a, localBaseChatPie.e, localBaseChatPie.i(), paramEmoticon, this.b, this.c, localBaseChatPie.aE(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.AIOEmoticonUIHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

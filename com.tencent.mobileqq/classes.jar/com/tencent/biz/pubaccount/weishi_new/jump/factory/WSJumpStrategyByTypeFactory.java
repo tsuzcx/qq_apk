@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import com.tencent.biz.pubaccount.weishi_new.jump.AbsWSJump;
 import com.tencent.biz.pubaccount.weishi_new.jump.IWSStSchemaJumpFactor;
 import com.tencent.biz.pubaccount.weishi_new.jump.WSClientJumpStrategy;
-import com.tencent.biz.pubaccount.weishi_new.jump.WSDownloadAppStrategy;
 import com.tencent.biz.pubaccount.weishi_new.jump.WSMiniAppJumpStrategy;
 import com.tencent.biz.pubaccount.weishi_new.jump.WSQQSchemeJumpStrategy;
 import com.tencent.biz.pubaccount.weishi_new.jump.WSWebJumpStrategy;
@@ -18,10 +17,10 @@ public class WSJumpStrategyByTypeFactory
 {
   private AbsWSJump b(IWSStSchemaJumpFactor paramIWSStSchemaJumpFactor)
   {
-    String str = paramIWSStSchemaJumpFactor.a().schema;
+    String str = paramIWSStSchemaJumpFactor.b().schema;
     boolean bool = WeishiGuideUtils.a(BaseApplicationImpl.getContext());
-    if ((paramIWSStSchemaJumpFactor.b()) && (!TextUtils.isEmpty(str)) && (!bool)) {
-      WeishiUtils.a(str);
+    if ((paramIWSStSchemaJumpFactor.e()) && (!TextUtils.isEmpty(str)) && (!bool)) {
+      WeishiUtils.e(str);
     }
     return new WSWebJumpStrategy(paramIWSStSchemaJumpFactor);
   }
@@ -31,12 +30,12 @@ public class WSJumpStrategyByTypeFactory
     if (WeishiGuideUtils.a(BaseApplicationImpl.getContext())) {
       return new WSClientJumpStrategy(paramIWSStSchemaJumpFactor);
     }
-    return new WSDownloadAppStrategy(paramIWSStSchemaJumpFactor);
+    return b(paramIWSStSchemaJumpFactor);
   }
   
   public AbsWSJump a(IWSStSchemaJumpFactor paramIWSStSchemaJumpFactor)
   {
-    int i = paramIWSStSchemaJumpFactor.a().type;
+    int i = paramIWSStSchemaJumpFactor.b().type;
     if (i != 1)
     {
       if (i != 2)
@@ -57,7 +56,7 @@ public class WSJumpStrategyByTypeFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.jump.factory.WSJumpStrategyByTypeFactory
  * JD-Core Version:    0.7.0.1
  */

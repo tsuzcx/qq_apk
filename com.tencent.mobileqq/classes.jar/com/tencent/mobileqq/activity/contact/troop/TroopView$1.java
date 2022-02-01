@@ -14,22 +14,22 @@ class TroopView$1
   {
     if (paramInt2 == 0)
     {
-      this.a.j();
+      this.a.l();
       return;
     }
-    if (!this.a.a())
+    if (!this.a.h())
     {
       paramString1 = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
-        paramString1 = this.a.getResources().getString(2131694666);
+        paramString1 = this.a.getResources().getString(2131892358);
       }
-      QQToast.a(this.a.a(), 1, paramString1, 0).a();
+      QQToast.makeText(this.a.getActivity(), 1, paramString1, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopView.1
  * JD-Core Version:    0.7.0.1
  */

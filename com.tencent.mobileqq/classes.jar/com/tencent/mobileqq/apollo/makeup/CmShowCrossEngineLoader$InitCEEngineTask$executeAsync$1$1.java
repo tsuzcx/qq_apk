@@ -15,10 +15,10 @@ final class CmShowCrossEngineLoader$InitCEEngineTask$executeAsync$1$1
     {
       if (paramInt != 0)
       {
-        this.a.a.f();
+        this.a.a.k();
         return;
       }
-      this.a.a.e();
+      this.a.a.j();
       return;
     }
     this.a.a.a(-5037, "");
@@ -26,7 +26,7 @@ final class CmShowCrossEngineLoader$InitCEEngineTask$executeAsync$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowCrossEngineLoader.InitCEEngineTask.executeAsync.1.1
  * JD-Core Version:    0.7.0.1
  */

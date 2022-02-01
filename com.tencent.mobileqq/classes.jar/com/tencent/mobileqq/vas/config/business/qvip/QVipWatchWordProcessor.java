@@ -18,7 +18,7 @@ public class QVipWatchWordProcessor
   @NonNull
   public QVipWatchWordConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
-    String str = paramArrayOfQConfItem[0].a;
+    String str = paramArrayOfQConfItem[0].b;
     if (!TextUtils.isEmpty(str))
     {
       QVipWatchWordConfig localQVipWatchWordConfig = (QVipWatchWordConfig)JSONConverter.a(str, QVipWatchWordConfig.class);
@@ -59,7 +59,7 @@ public class QVipWatchWordProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipWatchWordProcessor
  * JD-Core Version:    0.7.0.1
  */

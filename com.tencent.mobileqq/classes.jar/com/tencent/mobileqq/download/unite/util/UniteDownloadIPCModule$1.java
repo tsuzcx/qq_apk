@@ -12,12 +12,12 @@ class UniteDownloadIPCModule$1
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("result", paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqDownloadUniteUtilUniteDownloadIPCModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, localBundle));
+    this.b.callbackResult(this.a, EIPCResult.createResult(0, localBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.util.UniteDownloadIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

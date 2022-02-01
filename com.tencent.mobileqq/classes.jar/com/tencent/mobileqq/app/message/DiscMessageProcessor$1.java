@@ -11,19 +11,19 @@ class DiscMessageProcessor$1
   
   public void run()
   {
-    long l1 = this.jdField_a_of_type_Long;
-    long l2 = this.jdField_b_of_type_Long;
+    long l1 = this.a;
+    long l2 = this.b;
     if (l1 != l2)
     {
-      DiscMessageProcessor.a(this.this$0, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, l2, this.c, this.d, this.jdField_a_of_type_Byte, this.e, this.jdField_b_of_type_AndroidUtilPair);
+      DiscMessageProcessor.a(this.this$0, this.c, this.d, l2, this.e, this.f, this.g, this.h, this.i);
       return;
     }
-    DiscMessageProcessor.a(this.this$0, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_JavaUtilArrayList, l2, String.valueOf(this.c), this.jdField_a_of_type_Byte, this.e, false);
+    DiscMessageProcessor.a(this.this$0, this.c, this.d, this.j, l2, String.valueOf(this.e), this.g, this.h, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.DiscMessageProcessor.1
  * JD-Core Version:    0.7.0.1
  */

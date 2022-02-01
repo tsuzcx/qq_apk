@@ -21,7 +21,7 @@ public abstract class UploadingTask
     return null;
   }
   
-  public abstract void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList);
+  public abstract void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList, BaseUrlAction paramBaseUrlAction);
   
   public void a(Observer paramObserver)
   {
@@ -36,7 +36,7 @@ public abstract class UploadingTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.avatar.UploadingTask
  * JD-Core Version:    0.7.0.1
  */

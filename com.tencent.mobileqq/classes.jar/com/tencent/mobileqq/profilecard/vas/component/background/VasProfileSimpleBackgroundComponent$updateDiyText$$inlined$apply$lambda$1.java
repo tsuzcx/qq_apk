@@ -34,14 +34,14 @@ final class VasProfileSimpleBackgroundComponent$updateDiyText$$inlined$apply$lam
       if (localSingleTouchLayout == null) {
         Intrinsics.throwNpe();
       }
-      localStringBuilder.append(localSingleTouchLayout.a().x);
+      localStringBuilder.append(localSingleTouchLayout.getCenterPoint().x);
       localStringBuilder.append(',');
       localStringBuilder.append("y=");
       localSingleTouchLayout = VasProfileSimpleBackgroundComponent.access$getMDiyTextLayout$p(this.this$0);
       if (localSingleTouchLayout == null) {
         Intrinsics.throwNpe();
       }
-      localStringBuilder.append(localSingleTouchLayout.a().y);
+      localStringBuilder.append(localSingleTouchLayout.getCenterPoint().y);
       localStringBuilder.append(',');
       localStringBuilder.append("width=");
       localStringBuilder.append(paramInt1);
@@ -54,7 +54,7 @@ final class VasProfileSimpleBackgroundComponent$updateDiyText$$inlined$apply$lam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.background.VasProfileSimpleBackgroundComponent.updateDiyText..inlined.apply.lambda.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,68 +13,68 @@ import com.tencent.widget.ThemeImageView;
 public class TroopMemberListActivity$TmViewHolder
   extends FacePreloadHolder.ViewHolder
 {
-  public View a;
-  public ImageView a;
-  public LinearLayout a;
   public TextView a;
-  public TroopHonorView a;
-  public TroopMemberListSlideItem a;
-  public TroopMemberNewLevelView a;
-  public boolean a;
-  public View b;
   public TextView b;
-  public TroopMemberNewLevelView b;
-  public View c;
-  public TextView c;
+  public TroopMemberListSlideItem c;
   public View d;
-  public TextView d;
-  public View e;
-  public TextView e;
+  public LinearLayout e;
   public View f;
-  public TextView f;
-  public TextView g;
+  public View g;
   public TextView h;
   public TextView i;
-  public TextView j;
-  public TextView k;
+  public TroopMemberNewLevelView j;
+  public TroopMemberNewLevelView k;
+  public TextView l;
+  public TextView m;
+  public View n;
+  public TextView o;
+  public View p;
+  public TextView q;
+  public TextView r;
+  public boolean s;
+  public ImageView t;
+  public TextView u;
+  public TextView v;
+  public View w;
+  public TroopHonorView x;
   
   public TroopMemberListActivity$TmViewHolder(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379677));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379732));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMemberListSlideItem = ((TroopMemberListSlideItem)paramView.findViewById(2131379285));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131377658);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365478);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131365479);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369373));
-    if ((this.jdField_c_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
-      ((ThemeImageView)this.jdField_c_of_type_AndroidWidgetImageView).setSupportMaskView(false);
+    this.a = ((TextView)paramView.findViewById(2131448457));
+    this.b = ((TextView)paramView.findViewById(2131448537));
+    this.c = ((TroopMemberListSlideItem)paramView.findViewById(2131448022));
+    this.d = paramView.findViewById(2131446080);
+    this.f = paramView.findViewById(2131431693);
+    this.g = paramView.findViewById(2131431694);
+    this.A = ((ImageView)paramView.findViewById(2131436404));
+    if ((this.A instanceof ThemeImageView)) {
+      ((ThemeImageView)this.A).setSupportMaskView(false);
     }
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379771));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379772));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopmemberlevelTroopMemberNewLevelView = ((TroopMemberNewLevelView)paramView.findViewById(2131379300));
-    this.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopmemberlevelTroopMemberNewLevelView = ((TroopMemberNewLevelView)paramView.findViewById(2131379301));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379778));
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131379859);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369418));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379508));
-    this.g = ((TextView)paramView.findViewById(2131363963));
-    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131376594);
-    this.h = ((TextView)paramView.findViewById(2131380204));
-    this.i = ((TextView)paramView.findViewById(2131362975));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364609));
-    this.j = ((TextView)paramView.findViewById(2131379705));
-    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131362213);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHonorWidgetTroopHonorView = ((TroopHonorView)paramView.findViewById(2131379238));
+    this.h = ((TextView)paramView.findViewById(2131448581));
+    this.i = ((TextView)paramView.findViewById(2131448582));
+    this.j = ((TroopMemberNewLevelView)paramView.findViewById(2131448037));
+    this.k = ((TroopMemberNewLevelView)paramView.findViewById(2131448038));
+    this.l = ((TextView)paramView.findViewById(2131448598));
+    this.n = paramView.findViewById(2131448716);
+    this.e = ((LinearLayout)paramView.findViewById(2131436454));
+    this.m = ((TextView)paramView.findViewById(2131448256));
+    this.o = ((TextView)paramView.findViewById(2131429919));
+    this.p = paramView.findViewById(2131444852);
+    this.q = ((TextView)paramView.findViewById(2131449119));
+    this.r = ((TextView)paramView.findViewById(2131428774));
+    this.t = ((ImageView)paramView.findViewById(2131430682));
+    this.u = ((TextView)paramView.findViewById(2131448500));
+    this.w = paramView.findViewById(2131427794);
+    this.x = ((TroopHonorView)paramView.findViewById(2131447975));
     if (paramBoolean) {
-      this.k = ((TextView)paramView.findViewById(2131376389));
+      this.v = ((TextView)paramView.findViewById(2131444605));
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.s = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.TmViewHolder
  * JD-Core Version:    0.7.0.1
  */

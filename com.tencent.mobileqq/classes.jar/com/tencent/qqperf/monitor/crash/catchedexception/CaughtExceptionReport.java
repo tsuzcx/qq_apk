@@ -35,7 +35,7 @@ public final class CaughtExceptionReport
       if (paramString == null) {
         return;
       }
-      if (!a(paramThrowable))
+      if (!b(paramThrowable))
       {
         Log.e("CaughtExceptionReport", "this report is not permitted. ", paramThrowable);
         return;
@@ -59,7 +59,7 @@ public final class CaughtExceptionReport
     }
   }
   
-  private static boolean a(Throwable paramThrowable)
+  private static boolean b(Throwable paramThrowable)
   {
     if (b.contains(paramThrowable.getClass())) {
       return true;
@@ -72,8 +72,10 @@ public final class CaughtExceptionReport
       }
       paramThrowable = paramThrowable[0].getClassName();
       Iterator localIterator = a.iterator();
-      while (localIterator.hasNext()) {
-        if (paramThrowable.startsWith((String)localIterator.next())) {
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if ((str != null) && (paramThrowable.startsWith(str))) {
           return true;
         }
       }
@@ -83,7 +85,7 @@ public final class CaughtExceptionReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport
  * JD-Core Version:    0.7.0.1
  */

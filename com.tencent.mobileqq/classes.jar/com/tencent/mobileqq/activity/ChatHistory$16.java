@@ -22,11 +22,11 @@ class ChatHistory$16
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a);
+    paramDialogInterface = this.b.app.getMessageFacade().h(this.b.e, this.b.f);
     long l1;
     if ((paramDialogInterface != null) && (!paramDialogInterface.isEmpty()))
     {
-      if ((1 != this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a) && (3000 != this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a))
+      if ((1 != this.b.f) && (3000 != this.b.f))
       {
         if (((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).isSendFromLocal()) {
           l1 = ((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).time + 2L;
@@ -42,9 +42,9 @@ class ChatHistory$16
       l1 = 0L;
     }
     ThreadManager.getSubThreadHandler().post(new ChatHistory.16.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app.getMessageFacade().c(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a);
-    ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "chat_history_confirm_del_msg");
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString;
+    this.b.app.getMessageFacade().g(this.b.e, this.b.f);
+    ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.b.app, "chat_history_confirm_del_msg");
+    paramDialogInterface = this.a;
     if (paramDialogInterface != null)
     {
       long l2;
@@ -59,22 +59,22 @@ class ChatHistory$16
       }
       l1 = Math.max(l2, l1);
       if (l1 > 0L) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a, l1);
+        this.b.app.getMsgCache().a(this.b.e, this.b.f, l1);
       }
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app.getHandler(Conversation.class);
+    paramDialogInterface = this.b.app.getHandler(Conversation.class);
     Message localMessage = paramDialogInterface.obtainMessage(1017);
-    localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString;
-    localMessage.arg1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a;
+    localMessage.obj = this.b.e;
+    localMessage.arg1 = this.b.f;
     paramDialogInterface.sendMessage(localMessage);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_AndroidAppDialog.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.setResult(-1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.finish();
+    this.b.aa.dismiss();
+    this.b.setResult(-1);
+    this.b.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.16
  * JD-Core Version:    0.7.0.1
  */

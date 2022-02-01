@@ -10,15 +10,14 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 import com.tencent.mobileqq.kandian.base.utils.RIJStringUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils;
-import com.tencent.mobileqq.kandian.glue.report.api.IReadInJoyReportUtils;
+import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils.CoreReport;
 import com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsType;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.PackageUtil;
@@ -39,36 +38,6 @@ import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 public class ProteusReportUtil
 {
   private static Set<String> a = ;
-  
-  public static int a(TemplateBean paramTemplateBean)
-  {
-    if ((paramTemplateBean != null) && (paramTemplateBean.getViewBean() != null)) {
-      try
-      {
-        Object localObject = paramTemplateBean.getDataAttribute(null, "feeds_type");
-        if (localObject != null) {
-          localObject = localObject.toString();
-        } else {
-          localObject = (String)paramTemplateBean.getViewBean().getDynamicValue("report_feeds_type");
-        }
-        if (localObject == null)
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("getReportType: ");
-          ((StringBuilder)localObject).append(paramTemplateBean);
-          QLog.d("ProteusReportUtil", 1, ((StringBuilder)localObject).toString());
-          return -1024;
-        }
-        int i = Integer.valueOf((String)localObject).intValue();
-        return i;
-      }
-      catch (Exception paramTemplateBean)
-      {
-        QLog.d("ProteusReportUtil", 1, paramTemplateBean, new Object[] { "getReportType" });
-      }
-    }
-    return -1024;
-  }
   
   public static List<String> a(TemplateBean paramTemplateBean)
   {
@@ -101,14 +70,6 @@ public class ProteusReportUtil
     return null;
   }
   
-  private static Set<String> a()
-  {
-    HashSet localHashSet = new HashSet();
-    localHashSet.add("ReadInjoy_double_video_cell");
-    localHashSet.add("ReadInjoy_zhitiao_view");
-    return localHashSet;
-  }
-  
   public static void a(int paramInt, String paramString)
   {
     ArrayList localArrayList = new ArrayList();
@@ -131,7 +92,7 @@ public class ProteusReportUtil
     ((PBStringField)localObject2).set(localStringBuilder.toString());
     localArrayList.add(localObject1);
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(HtmlOffline.a(paramString));
+    ((StringBuilder)localObject1).append(HtmlOffline.d(paramString));
     ((StringBuilder)localObject1).append("");
     localObject1 = ((StringBuilder)localObject1).toString();
     if (paramInt != 1)
@@ -148,7 +109,7 @@ public class ProteusReportUtil
     paramString = ((StringBuilder)localObject2).toString();
     if (3 == paramInt)
     {
-      if (((Boolean)RIJSPUtils.a(paramString, Boolean.valueOf(false))).booleanValue()) {
+      if (((Boolean)RIJSPUtils.b(paramString, Boolean.valueOf(false))).booleanValue()) {
         return;
       }
       RIJSPUtils.a(paramString, Boolean.valueOf(true));
@@ -180,11 +141,11 @@ public class ProteusReportUtil
       if (TextUtils.isEmpty(paramString2)) {
         return;
       }
-      String str = RIJFeedsType.c(paramAbsBaseArticleInfo);
+      String str = RIJFeedsType.k(paramAbsBaseArticleInfo);
       try
       {
-        int i = RIJFeedsType.a(paramAbsBaseArticleInfo);
-        JSONObject localJSONObject = RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, i, paramInt, NetworkUtil.isWifiConnected(null), str, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.e(paramAbsBaseArticleInfo), 0, RIJTransMergeKanDianReport.a(), paramAbsBaseArticleInfo);
+        int i = RIJFeedsType.g(paramAbsBaseArticleInfo);
+        JSONObject localJSONObject = RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, i, paramInt, NetworkUtil.isWifiConnected(null), str, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.n(paramAbsBaseArticleInfo), 0, RIJTransMergeKanDianReport.b(), paramAbsBaseArticleInfo);
         if ((paramMap != null) && (paramMap.entrySet() != null))
         {
           paramMap = paramMap.entrySet().iterator();
@@ -201,8 +162,8 @@ public class ProteusReportUtil
         AIOUtils.a("ProteusReportUtil", "reportClickEvent", new IllegalArgumentException(paramMap));
         paramMap = null;
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, str, paramString1, paramString2, 0, 0, RIJStringUtils.a(paramAbsBaseArticleInfo.mFeedId), String.valueOf(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), paramMap, false);
-      ((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).doArticleClickEvent64Report(paramAbsBaseArticleInfo, paramInt);
+      PublicAccountReportUtils.a(null, str, paramString1, paramString2, 0, 0, RIJStringUtils.a(paramAbsBaseArticleInfo.mFeedId), String.valueOf(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), paramMap, false);
+      ReadinjoyReportUtils.CoreReport.a(paramAbsBaseArticleInfo, paramInt);
     }
   }
   
@@ -215,7 +176,7 @@ public class ProteusReportUtil
     localHashMap.put("bid", paramString1);
     localHashMap.put("business_name", paramString2);
     localHashMap.put("style_id", paramString3);
-    localHashMap.put("uin", RIJQQAppInterfaceUtil.a());
+    localHashMap.put("uin", RIJQQAppInterfaceUtil.d());
     StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actKandianProteusShowFail", false, 0L, 0L, localHashMap, null);
   }
   
@@ -275,10 +236,48 @@ public class ProteusReportUtil
   {
     return PackageUtil.a(BaseApplicationImpl.getContext(), "com.tencent.weishi");
   }
+  
+  public static int b(TemplateBean paramTemplateBean)
+  {
+    if ((paramTemplateBean != null) && (paramTemplateBean.getViewBean() != null)) {
+      try
+      {
+        Object localObject = paramTemplateBean.getDataAttribute(null, "feeds_type");
+        if (localObject != null) {
+          localObject = localObject.toString();
+        } else {
+          localObject = (String)paramTemplateBean.getViewBean().getDynamicValue("report_feeds_type");
+        }
+        if (localObject == null)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getReportType: ");
+          ((StringBuilder)localObject).append(paramTemplateBean);
+          QLog.d("ProteusReportUtil", 1, ((StringBuilder)localObject).toString());
+          return -1024;
+        }
+        int i = Integer.valueOf((String)localObject).intValue();
+        return i;
+      }
+      catch (Exception paramTemplateBean)
+      {
+        QLog.d("ProteusReportUtil", 1, paramTemplateBean, new Object[] { "getReportType" });
+      }
+    }
+    return -1024;
+  }
+  
+  private static Set<String> b()
+  {
+    HashSet localHashSet = new HashSet();
+    localHashSet.add("ReadInjoy_double_video_cell");
+    localHashSet.add("ReadInjoy_zhitiao_view");
+    return localHashSet;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.pts.ProteusReportUtil
  * JD-Core Version:    0.7.0.1
  */

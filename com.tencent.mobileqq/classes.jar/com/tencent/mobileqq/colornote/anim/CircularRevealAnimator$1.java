@@ -11,12 +11,12 @@ class CircularRevealAnimator$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     paramValueAnimator = (CircularRevealAnimator.RevealCircle)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteAnimCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
+    this.a.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.anim.CircularRevealAnimator.1
  * JD-Core Version:    0.7.0.1
  */

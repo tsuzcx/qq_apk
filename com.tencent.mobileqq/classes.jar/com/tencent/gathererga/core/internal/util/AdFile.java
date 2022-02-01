@@ -8,41 +8,36 @@ import java.nio.channels.FileLock;
 
 public class AdFile
 {
-  private RandomAccessFile jdField_a_of_type_JavaIoRandomAccessFile;
-  private String jdField_a_of_type_JavaLangString;
-  private FileLock jdField_a_of_type_JavaNioChannelsFileLock;
-  private boolean jdField_a_of_type_Boolean = false;
+  private String a;
   private String b;
   private String c;
+  private boolean d = false;
+  private RandomAccessFile e;
+  private FileLock f;
   
   public AdFile(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
     this.c = paramString3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
-  private boolean b()
+  private boolean d()
   {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
-  }
-  
-  public String a()
-  {
-    return a(-2147483648);
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
   }
   
   public String a(int paramInt)
   {
-    if (!b()) {
+    if (!d()) {
       return null;
     }
-    Object localObject = this.jdField_a_of_type_JavaIoRandomAccessFile;
+    Object localObject = this.e;
     int i;
     if (localObject != null)
     {
-      if (this.jdField_a_of_type_JavaNioChannelsFileLock == null) {
+      if (this.f == null) {
         return null;
       }
       if (paramInt != -2147483648) {
@@ -56,14 +51,14 @@ public class AdFile
         if (((RandomAccessFile)localObject).length() > paramInt) {
           continue;
         }
-        i = Long.valueOf(this.jdField_a_of_type_JavaIoRandomAccessFile.length()).intValue();
+        i = Long.valueOf(this.e.length()).intValue();
       }
       catch (Throwable localThrowable)
       {
         GLog.b("AdFile read", localThrowable);
       }
       localObject = new byte[i];
-      if (this.jdField_a_of_type_JavaIoRandomAccessFile.read((byte[])localObject, 0, i) == i)
+      if (this.e.read((byte[])localObject, 0, i) == i)
       {
         localObject = new String((byte[])localObject, 0, i, this.c);
         return localObject;
@@ -74,42 +69,13 @@ public class AdFile
     return null;
   }
   
-  public void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaNioChannelsFileLock != null)
-      {
-        this.jdField_a_of_type_JavaNioChannelsFileLock.release();
-        this.jdField_a_of_type_JavaNioChannelsFileLock = null;
-      }
-    }
-    catch (Throwable localThrowable1)
-    {
-      GLog.b("AdFile close", localThrowable1);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_JavaIoRandomAccessFile != null)
-      {
-        this.jdField_a_of_type_JavaIoRandomAccessFile.close();
-        this.jdField_a_of_type_JavaIoRandomAccessFile = null;
-        return;
-      }
-    }
-    catch (Throwable localThrowable2)
-    {
-      GLog.b("AdFile close", localThrowable2);
-    }
-  }
-  
   public boolean a()
   {
-    if (!b()) {
+    if (!d()) {
       return false;
     }
-    if (this.jdField_a_of_type_JavaIoRandomAccessFile == null) {
-      if (this.jdField_a_of_type_JavaNioChannelsFileLock != null) {
+    if (this.e == null) {
+      if (this.f != null) {
         return false;
       }
     }
@@ -117,33 +83,33 @@ public class AdFile
     {
       try
       {
-        Object localObject = new File(this.jdField_a_of_type_JavaLangString);
+        Object localObject = new File(this.a);
         File localFile = new File((File)localObject, this.b);
-        if ((this.jdField_a_of_type_Boolean) && (!((File)localObject).exists()) && (!((File)localObject).mkdirs())) {
+        if ((this.d) && (!((File)localObject).exists()) && (!((File)localObject).mkdirs())) {
           return false;
         }
-        if (!this.jdField_a_of_type_Boolean) {
+        if (!this.d) {
           break label178;
         }
         localObject = "rwd";
-        this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(localFile, (String)localObject);
-        if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_JavaNioChannelsFileLock = this.jdField_a_of_type_JavaIoRandomAccessFile.getChannel().lock();
+        this.e = new RandomAccessFile(localFile, (String)localObject);
+        if (this.d) {
+          this.f = this.e.getChannel().lock();
         } else {
-          this.jdField_a_of_type_JavaNioChannelsFileLock = this.jdField_a_of_type_JavaIoRandomAccessFile.getChannel().tryLock(0L, 9223372036854775807L, true);
+          this.f = this.e.getChannel().tryLock(0L, 9223372036854775807L, true);
         }
         if (localFile.exists()) {
           if (localFile.isFile()) {
             break;
           }
         }
-        a();
+        b();
         return false;
       }
       catch (Throwable localThrowable)
       {
         GLog.b("AdFile open", localThrowable);
-        a();
+        b();
       }
       return false;
       label178:
@@ -154,16 +120,16 @@ public class AdFile
   
   public boolean a(String paramString)
   {
-    if (!b()) {
+    if (!d()) {
       return false;
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return false;
     }
-    RandomAccessFile localRandomAccessFile = this.jdField_a_of_type_JavaIoRandomAccessFile;
+    RandomAccessFile localRandomAccessFile = this.e;
     if (localRandomAccessFile != null)
     {
-      if (this.jdField_a_of_type_JavaNioChannelsFileLock == null) {
+      if (this.f == null) {
         return false;
       }
       try
@@ -172,7 +138,7 @@ public class AdFile
         if (!TextUtils.isEmpty(paramString))
         {
           paramString = paramString.getBytes(this.c);
-          this.jdField_a_of_type_JavaIoRandomAccessFile.write(paramString);
+          this.e.write(paramString);
         }
         return true;
       }
@@ -183,10 +149,44 @@ public class AdFile
     }
     return false;
   }
+  
+  public void b()
+  {
+    try
+    {
+      if (this.f != null)
+      {
+        this.f.release();
+        this.f = null;
+      }
+    }
+    catch (Throwable localThrowable1)
+    {
+      GLog.b("AdFile close", localThrowable1);
+    }
+    try
+    {
+      if (this.e != null)
+      {
+        this.e.close();
+        this.e = null;
+        return;
+      }
+    }
+    catch (Throwable localThrowable2)
+    {
+      GLog.b("AdFile close", localThrowable2);
+    }
+  }
+  
+  public String c()
+  {
+    return a(-2147483648);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.util.AdFile
  * JD-Core Version:    0.7.0.1
  */

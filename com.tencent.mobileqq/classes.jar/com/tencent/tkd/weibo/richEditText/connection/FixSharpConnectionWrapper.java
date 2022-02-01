@@ -14,26 +14,21 @@ import org.jetbrains.annotations.Nullable;
 public final class FixSharpConnectionWrapper
   extends FixDelConnectionWrapper
 {
-  public static final FixSharpConnectionWrapper.Companion a;
+  public static final FixSharpConnectionWrapper.Companion b = new FixSharpConnectionWrapper.Companion(null);
+  private String c;
   @NotNull
-  private final RichEditText jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText;
-  private String jdField_a_of_type_JavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdWeiboRichEditTextConnectionFixSharpConnectionWrapper$Companion = new FixSharpConnectionWrapper.Companion(null);
-  }
+  private final RichEditText d;
   
   public FixSharpConnectionWrapper(@NotNull RichEditText paramRichEditText, @NotNull InputConnection paramInputConnection, boolean paramBoolean)
   {
     super(paramInputConnection, paramBoolean);
-    this.jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText = paramRichEditText;
-    this.jdField_a_of_type_JavaLangString = "";
+    this.d = paramRichEditText;
+    this.c = "";
   }
   
   public boolean commitText(@Nullable CharSequence paramCharSequence, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this.c = "";
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("commitText=>text: ");
     localStringBuilder.append(paramCharSequence);
@@ -54,11 +49,11 @@ public final class FixSharpConnectionWrapper
   
   public boolean setComposingRegion(int paramInt1, int paramInt2)
   {
-    int j = this.jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText.getSelectionEnd();
+    int j = this.d.getSelectionEnd();
     int i = 1;
     if (j >= 1)
     {
-      if (this.jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText.getText().toString().charAt(j - 1) != '#') {
+      if (this.d.getText().toString().charAt(j - 1) != '#') {
         i = 0;
       }
       if (i != 0) {
@@ -71,9 +66,9 @@ public final class FixSharpConnectionWrapper
     ((StringBuilder)localObject).append(", end: ");
     ((StringBuilder)localObject).append(paramInt2);
     Log.d("FixSharpConnection", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText.getText();
+    localObject = this.d.getText();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "richEditText.text");
-    this.jdField_a_of_type_JavaLangString = ((CharSequence)localObject).subSequence(paramInt1, paramInt2).toString();
+    this.c = ((CharSequence)localObject).subSequence(paramInt1, paramInt2).toString();
     return super.setComposingRegion(paramInt1, paramInt2);
   }
   
@@ -117,18 +112,18 @@ public final class FixSharpConnectionWrapper
     }
     int i = 0;
     label238:
-    if (i < this.jdField_a_of_type_JavaLangString.length()) {
+    if (i < this.c.length()) {
       i = j;
     } else {
       i = 0;
     }
-    localObject = this.jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText.a();
+    localObject = this.d.getRichSpanOrNullIfBehind();
     if ((i != 0) && (localObject != null))
     {
-      boolean bool = super.setComposingText((CharSequence)this.jdField_a_of_type_JavaLangString, paramInt);
+      boolean bool = super.setComposingText((CharSequence)this.c, paramInt);
       paramCharSequence = new StringBuilder();
       paramCharSequence.append("setComposingText actually=>[");
-      paramCharSequence.append(this.jdField_a_of_type_JavaLangString);
+      paramCharSequence.append(this.c);
       paramCharSequence.append("] on ");
       paramCharSequence.append(paramInt);
       Log.i("FixSharpConnection", paramCharSequence.toString());
@@ -140,7 +135,7 @@ public final class FixSharpConnectionWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.richEditText.connection.FixSharpConnectionWrapper
  * JD-Core Version:    0.7.0.1
  */

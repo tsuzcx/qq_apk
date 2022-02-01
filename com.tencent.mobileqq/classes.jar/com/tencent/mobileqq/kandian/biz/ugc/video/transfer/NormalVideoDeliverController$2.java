@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.kandian.biz.ugc.video.transfer;
 
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.ugc.video.VideoMetaInfo;
 import com.tencent.mobileqq.kandian.biz.ugc.video.VideoMetaInfo.Builder;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 class NormalVideoDeliverController$2
@@ -31,7 +30,7 @@ class NormalVideoDeliverController$2
       case 1004: 
         NormalVideoDeliverController.b(this.a, 7);
         NormalVideoDeliverController.c(this.a, 1004);
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(NormalVideoDeliverController.a(this.a), "", "0X8008181", "0X8008181", 0, 1, String.valueOf(NormalVideoDeliverController.a(this.a)), String.valueOf(NormalVideoDeliverController.b(this.a)), String.valueOf(NormalVideoDeliverController.c(this.a) - NormalVideoDeliverController.d(this.a)), String.valueOf(NormalVideoDeliverController.e(this.a) - NormalVideoDeliverController.f(this.a)));
+        PublicAccountReportUtils.a(NormalVideoDeliverController.a(this.a), "", "0X8008181", "0X8008181", 0, 1, String.valueOf(NormalVideoDeliverController.b(this.a)), String.valueOf(NormalVideoDeliverController.c(this.a)), String.valueOf(NormalVideoDeliverController.d(this.a) - NormalVideoDeliverController.e(this.a)), String.valueOf(NormalVideoDeliverController.f(this.a) - NormalVideoDeliverController.g(this.a)));
         return;
       case 1003: 
         NormalVideoDeliverController.b(this.a, 7);
@@ -56,10 +55,10 @@ class NormalVideoDeliverController$2
       QLog.d("VideoDeliverController", 2, ((StringBuilder)localObject).toString());
     }
     NormalVideoDeliverController.b(this.a, NetConnInfoCenter.getServerTimeMillis());
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(NormalVideoDeliverController.a(this.a), "", "0X8008181", "0X8008181", 0, 0, String.valueOf(NormalVideoDeliverController.a(this.a)), String.valueOf(NormalVideoDeliverController.b(this.a)), String.valueOf(NormalVideoDeliverController.c(this.a) - NormalVideoDeliverController.d(this.a)), String.valueOf(NormalVideoDeliverController.e(this.a) - NormalVideoDeliverController.f(this.a)));
+    PublicAccountReportUtils.a(NormalVideoDeliverController.a(this.a), "", "0X8008181", "0X8008181", 0, 0, String.valueOf(NormalVideoDeliverController.b(this.a)), String.valueOf(NormalVideoDeliverController.c(this.a)), String.valueOf(NormalVideoDeliverController.d(this.a) - NormalVideoDeliverController.e(this.a)), String.valueOf(NormalVideoDeliverController.f(this.a) - NormalVideoDeliverController.g(this.a)));
     Object localObject = this.a;
-    NormalVideoDeliverController.a((NormalVideoDeliverController)localObject, 0, NormalVideoDeliverController.a((NormalVideoDeliverController)localObject), NormalVideoDeliverController.b(this.a), paramString1, paramString2, paramString3);
-    paramString1 = VideoMetaInfo.a().a(NormalVideoDeliverController.a(this.a)).b(NormalVideoDeliverController.b(this.a)).d(paramString2).c(paramString1).e(paramString3).a(NormalVideoDeliverController.b(this.a)).b(NormalVideoDeliverController.g(this.a)).a();
+    NormalVideoDeliverController.a((NormalVideoDeliverController)localObject, 0, NormalVideoDeliverController.h((NormalVideoDeliverController)localObject), NormalVideoDeliverController.i(this.a), paramString1, paramString2, paramString3);
+    paramString1 = VideoMetaInfo.a().a(NormalVideoDeliverController.h(this.a)).b(NormalVideoDeliverController.i(this.a)).d(paramString2).c(paramString1).e(paramString3).a(NormalVideoDeliverController.c(this.a)).b(NormalVideoDeliverController.j(this.a)).a();
     NormalVideoDeliverController.a(this.a, paramString1);
   }
   
@@ -70,7 +69,7 @@ class NormalVideoDeliverController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.video.transfer.NormalVideoDeliverController.2
  * JD-Core Version:    0.7.0.1
  */

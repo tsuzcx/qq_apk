@@ -15,8 +15,8 @@ import eipc.EIPCResult;
 public class RealNameModule
   extends QIPCModule
 {
-  private static RealNameModule jdField_a_of_type_ComTencentMobileqqRealnameRealNameModule;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static RealNameModule a;
+  private static Object b = new Object();
   
   private RealNameModule(String paramString)
   {
@@ -25,16 +25,16 @@ public class RealNameModule
   
   public static RealNameModule a()
   {
-    ??? = jdField_a_of_type_ComTencentMobileqqRealnameRealNameModule;
+    ??? = a;
     if (??? != null) {
       return ???;
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      if (jdField_a_of_type_ComTencentMobileqqRealnameRealNameModule == null) {
-        jdField_a_of_type_ComTencentMobileqqRealnameRealNameModule = new RealNameModule("REAL_NAME");
+      if (a == null) {
+        a = new RealNameModule("REAL_NAME");
       }
-      RealNameModule localRealNameModule = jdField_a_of_type_ComTencentMobileqqRealnameRealNameModule;
+      RealNameModule localRealNameModule = a;
       return localRealNameModule;
     }
   }
@@ -86,14 +86,14 @@ public class RealNameModule
       return null;
     }
     if (paramBundle != null) {
-      ((ConfigHandler)paramBundle.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).f();
+      ((ConfigHandler)paramBundle.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).n();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.realname.RealNameModule
  * JD-Core Version:    0.7.0.1
  */

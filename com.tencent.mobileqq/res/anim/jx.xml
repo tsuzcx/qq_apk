@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set android:ordering="together"
+<set android:interpolator="@android:anim/accelerate_interpolator" android:duration="@integer/6"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <alpha android:interpolator="@android:anim/accelerate_interpolator" android:duration="@android:integer/config_shortAnimTime" android:fromAlpha="0.0" android:toAlpha="1.0" />
-    <translate android:duration="@android:integer/config_shortAnimTime" android:fromYDelta="10.000002%p" android:toYDelta="0.0" />
+    <translate android:fromYDelta="0.0" android:toYDelta="20.000004%p" />
+    <alpha android:fromAlpha="1.0" android:toAlpha="0.0" />
 </set>

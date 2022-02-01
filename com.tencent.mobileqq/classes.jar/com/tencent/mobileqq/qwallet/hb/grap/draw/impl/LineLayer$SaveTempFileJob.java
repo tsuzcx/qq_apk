@@ -19,11 +19,11 @@ import java.lang.ref.WeakReference;
 class LineLayer$SaveTempFileJob
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public final String a;
-  private WeakReference<SaveTempFileJobListener> jdField_a_of_type_JavaLangRefWeakReference;
-  private int b;
+  private Bitmap b;
+  private int c;
+  private int d;
+  private WeakReference<SaveTempFileJobListener> e;
   
   public LineLayer$SaveTempFileJob(LineLayer paramLineLayer, int paramInt1, int paramInt2, Bitmap paramBitmap, SaveTempFileJobListener paramSaveTempFileJobListener)
   {
@@ -31,31 +31,31 @@ class LineLayer$SaveTempFileJob
     paramLineLayer.append(AppConstants.SCRIBBLE_FILE_DIR);
     paramLineLayer.append("temp");
     paramLineLayer.append(File.separator);
-    this.jdField_a_of_type_JavaLangString = paramLineLayer.toString();
-    this.jdField_a_of_type_Int = -1;
-    this.b = -1;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.a = paramLineLayer.toString();
+    this.c = -1;
+    this.d = -1;
+    this.e = null;
     QLog.d("SaveTempFileJob", 2, "SaveTempFileJob begin:");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramSaveTempFileJobListener);
+    this.e = new WeakReference(paramSaveTempFileJobListener);
     if (paramBitmap == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.c = paramInt1;
+    this.d = paramInt2;
     try
     {
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+      if (this.b == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        this.b = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
       }
-      else if ((this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() != paramBitmap.getHeight()) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() != paramBitmap.getWidth()))
+      else if ((this.b.getHeight() != paramBitmap.getHeight()) || (this.b.getWidth() != paramBitmap.getWidth()))
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        this.b.recycle();
+        this.b = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
       }
       paramLineLayer = new Paint();
       paramLineLayer.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
-      new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawBitmap(paramBitmap, 0.0F, 0.0F, paramLineLayer);
+      new Canvas(this.b).drawBitmap(paramBitmap, 0.0F, 0.0F, paramLineLayer);
     }
     catch (OutOfMemoryError paramLineLayer)
     {
@@ -88,7 +88,7 @@ class LineLayer$SaveTempFileJob
     try
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(".tmp");
       localObject = ((StringBuilder)localObject).toString();
@@ -120,7 +120,7 @@ class LineLayer$SaveTempFileJob
   {
     try
     {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      File localFile = new File(this.a);
       if (!localFile.exists())
       {
         localFile.mkdirs();
@@ -146,24 +146,24 @@ class LineLayer$SaveTempFileJob
     if (LineLayer.a(this.this$0) == null) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    if (this.b == null)
     {
       a(null);
       return;
     }
     a();
-    a(a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap));
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    a(a(this.c, this.b));
+    Bitmap localBitmap = this.b;
     if (localBitmap != null)
     {
       localBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      this.b = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.LineLayer.SaveTempFileJob
  * JD-Core Version:    0.7.0.1
  */

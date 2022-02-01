@@ -7,17 +7,17 @@ class LocalPhoneServlet$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.this$0.a.a(this.jdField_a_of_type_JavaLangString);
+      this.this$0.f.a(this.b);
       return;
     }
-    this.this$0.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.this$0.f.a(this.c, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.LocalPhoneServlet.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,28 +22,28 @@ class PtvTemplateManager$4$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onResp url: ");
-      localStringBuilder.append(this.a.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfo.c);
+      localStringBuilder.append(this.a.a.c);
       localStringBuilder.append(" resultcode: ");
       localStringBuilder.append(paramNetResp.mHttpCode);
       QLog.i("DOV_Doodle_Strokes_PtvTemplateManager", 2, localStringBuilder.toString());
     }
-    this.a.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfo.a = this.a.this$0.a(this.a.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfo, false);
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfo.a) {
+    this.a.a.e = this.a.this$0.a(this.a.a, false);
+    if (this.a.a.e) {
       try
       {
-        ZipUtils.unZipFile(new File(PtvTemplateManager.a(), this.a.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfo.b), PtvTemplateManager.a());
+        ZipUtils.unZipFile(new File(PtvTemplateManager.f(), this.a.a.b), PtvTemplateManager.g());
       }
       catch (IOException localIOException)
       {
         QLog.e("PtvTemplateManager", 1, "preDownloadDoodleTemplate error, ", localIOException);
       }
     }
-    this.a.this$0.a(this.a.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfo.a);
+    this.a.this$0.a(this.a.a.e);
     if (paramNetResp.mResult == 0)
     {
-      IPreDownloadController localIPreDownloadController = (IPreDownloadController)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPreDownloadController.class);
+      IPreDownloadController localIPreDownloadController = (IPreDownloadController)this.a.b.getRuntimeService(IPreDownloadController.class);
       if (localIPreDownloadController.isEnable()) {
-        localIPreDownloadController.preDownloadSuccess(this.a.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfo.c, paramNetResp.mTotalFileLen);
+        localIPreDownloadController.preDownloadSuccess(this.a.a.c, paramNetResp.mTotalFileLen);
       }
     }
   }
@@ -52,7 +52,7 @@ class PtvTemplateManager$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.PtvTemplateManager.4.1
  * JD-Core Version:    0.7.0.1
  */

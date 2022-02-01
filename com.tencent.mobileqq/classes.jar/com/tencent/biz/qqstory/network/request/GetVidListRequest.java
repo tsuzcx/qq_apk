@@ -19,21 +19,16 @@ import java.util.List;
 public class GetVidListRequest
   extends NetworkRequest
 {
-  public static final String a;
-  public List<String> a;
-  public int c;
+  public static final String e = StoryApi.a("StorySvc.get_vid_list_no_expired");
+  public List<String> f = new ArrayList();
+  public int g;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.get_vid_list_no_expired");
+    return e;
   }
   
-  public GetVidListRequest()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetBatchUserVidList localRspGetBatchUserVidList = new qqstory_service.RspGetBatchUserVidList();
     try
@@ -47,17 +42,12 @@ public class GetVidListRequest
     return new GetVidListResponse(localRspGetBatchUserVidList);
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetBatchUserVidList localReqGetBatchUserVidList = new qqstory_service.ReqGetBatchUserVidList();
-    localReqGetBatchUserVidList.pull_type.set(this.c);
+    localReqGetBatchUserVidList.pull_type.set(this.g);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.f.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -73,7 +63,7 @@ public class GetVidListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetVidListRequest
  * JD-Core Version:    0.7.0.1
  */

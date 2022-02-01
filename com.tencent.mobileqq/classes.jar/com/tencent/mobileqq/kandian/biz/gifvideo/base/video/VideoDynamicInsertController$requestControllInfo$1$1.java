@@ -27,10 +27,10 @@ public final class VideoDynamicInsertController$requestControllInfo$1$1
     QLog.d((String)localObject, 1, localStringBuilder.toString());
     if (paramRIJFeedsInsertAction.a() == ActionType.ACTION_VIDEO_PLAY_PROGRESS)
     {
-      localObject = this.a.this$0.a();
+      localObject = this.a.this$0.c();
       if (localObject != null)
       {
-        localObject = ((VideoPlayController)localObject).a();
+        localObject = ((VideoPlayController)localObject).k();
         if (localObject != null)
         {
           localObject = ((AbsBaseArticleInfo)localObject).innerUniqueID;
@@ -41,15 +41,15 @@ public final class VideoDynamicInsertController$requestControllInfo$1$1
       label110:
       if (Intrinsics.areEqual(paramString, localObject))
       {
-        paramString = this.a.this$0.a();
+        paramString = this.a.this$0.c();
         if (paramString != null)
         {
-          paramString = paramString.a();
+          paramString = paramString.k();
           if (paramString != null)
           {
             paramString = paramString.innerUniqueID;
             if (paramString != null) {
-              paramString = (Integer)this.a.this$0.a().put(paramString, Integer.valueOf(paramRIJFeedsInsertAction.a()));
+              paramString = (Integer)this.a.this$0.b().put(paramString, Integer.valueOf(paramRIJFeedsInsertAction.b()));
             }
           }
         }
@@ -59,7 +59,7 @@ public final class VideoDynamicInsertController$requestControllInfo$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoDynamicInsertController.requestControllInfo.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,20 +16,20 @@ class MiniPie$5
   
   public void run()
   {
-    int j = this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView().getHeight();
+    int j = this.this$0.y.getView().getHeight();
     int i = j;
     if (j <= 0)
     {
-      QLog.e(this.this$0.jdField_a_of_type_JavaLangString, 1, "emoHeight <=0 reset to 196dp");
+      QLog.e(this.this$0.a, 1, "emoHeight <=0 reset to 196dp");
       i = SoftKeyboardHeight.a(0);
     }
     Object localObject = this.this$0;
-    j = MiniPie.a((MiniPie)localObject, ((MiniPie)localObject).jdField_a_of_type_AndroidViewViewGroup);
-    int k = this.this$0.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+    j = MiniPie.a((MiniPie)localObject, ((MiniPie)localObject).q);
+    int k = this.this$0.q.getHeight();
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localObject = this.this$0.jdField_a_of_type_JavaLangString;
+      localObject = this.this$0.a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("dialogHeight");
       localStringBuilder.append(k);
@@ -46,12 +46,12 @@ class MiniPie$5
       if (i < 300) {
         i = j;
       }
-      localObject = ((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
+      localObject = ((Activity)this.this$0.b).getWindow().getAttributes();
       ((WindowManager.LayoutParams)localObject).height = i;
-      ((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes((WindowManager.LayoutParams)localObject);
+      ((Activity)this.this$0.b).getWindow().setAttributes((WindowManager.LayoutParams)localObject);
       if (QLog.isColorLevel())
       {
-        localObject = this.this$0.jdField_a_of_type_JavaLangString;
+        localObject = this.this$0.a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("new dialogHeight");
         localStringBuilder.append(i);
@@ -62,7 +62,7 @@ class MiniPie$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.5
  * JD-Core Version:    0.7.0.1
  */

@@ -13,34 +13,34 @@ import java.net.URLDecoder;
 class FilePreviewActivity$8
   extends WebViewClient
 {
-  long jdField_a_of_type_Long = 0L;
+  long a = 0L;
   
   FilePreviewActivity$8(FilePreviewActivity paramFilePreviewActivity) {}
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_Boolean)
+    if (this.b.J)
     {
       super.onPageFinished(paramWebView, paramString);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_Boolean = true;
+    if (this.b.l) {
+      this.b.J = true;
     }
     Object localObject1 = null;
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean;
+    boolean bool = this.b.l;
     Object localObject2 = "javascript:qpreview.onClientResponse('showFileList', {})";
     if (bool)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Int == 0)
+      if (this.b.i == 0)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity;
-        localObject1 = ((FilePreviewActivity)localObject1).getInitString(((FilePreviewActivity)localObject1).g, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_JavaLangString, null);
+        localObject1 = this.b;
+        localObject1 = ((FilePreviewActivity)localObject1).getInitString(((FilePreviewActivity)localObject1).p, this.b.j, Integer.parseInt(this.b.q), this.b.m, this.b.n, null);
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Int == 1)
+      else if (this.b.i == 1)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity;
-        localObject1 = ((FilePreviewActivity)localObject1).getInitString(((FilePreviewActivity)localObject1).g, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c);
+        localObject1 = this.b;
+        localObject1 = ((FilePreviewActivity)localObject1).getInitString(((FilePreviewActivity)localObject1).p, this.b.j, Integer.parseInt(this.b.q), this.b.m, this.b.n, this.b.g);
       }
       else
       {
@@ -53,23 +53,23 @@ class FilePreviewActivity$8
       localStringBuilder.append((String)localObject1);
       localStringBuilder.append("]");
       QLog.i("<FileAssistant>FilePreviewActivity", 1, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl((String)localObject1);
+      this.b.d.loadUrl((String)localObject1);
       QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('showFileList', {})");
       localObject1 = localObject2;
       break label395;
       label264:
-      throw new NullPointerException(HardCodeUtil.a(2131704673));
+      throw new NullPointerException(HardCodeUtil.a(2131902577));
     }
     else
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity;
-      localObject1 = ((FilePreviewActivity)localObject1).getInitString(((FilePreviewActivity)localObject1).g, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_JavaLangString, null);
+      localObject1 = this.b;
+      localObject1 = ((FilePreviewActivity)localObject1).getInitString(((FilePreviewActivity)localObject1).p, this.b.j, Integer.parseInt(this.b.q), this.b.m, this.b.n, null);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("finish load run javascript![");
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append("]");
       QLog.i("<FileAssistant>FilePreviewActivity", 1, ((StringBuilder)localObject2).toString());
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl((String)localObject1);
+      this.b.d.loadUrl((String)localObject1);
       QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('addMorePage',{})");
       localObject1 = "javascript:qpreview.onClientResponse('addMorePage',{})";
     }
@@ -79,8 +79,8 @@ class FilePreviewActivity$8
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append(")");
     QLog.i("<FileAssistant>FilePreviewActivity", 1, ((StringBuilder)localObject2).toString());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl((String)localObject1);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_f_of_type_Boolean = true;
+    this.b.d.loadUrl((String)localObject1);
+    this.b.J = true;
     super.onPageFinished(paramWebView, paramString);
   }
   
@@ -115,7 +115,7 @@ class FilePreviewActivity$8
           ((StringBuilder)localObject).append(paramString);
           QLog.i("<FileAssistant>FilePreviewActivity", 1, ((StringBuilder)localObject).toString());
         }
-        bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.a(paramWebView, paramString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$JSInterface);
+        bool = this.b.d.a(paramWebView, paramString, this.b.D);
         if (bool) {
           return true;
         }
@@ -132,16 +132,16 @@ class FilePreviewActivity$8
         if ((paramString != null) && (!"".equals(paramString)) && (!"about:blank;".equals(paramString)) && (!"about:blank".equals(paramString)))
         {
           long l = System.currentTimeMillis();
-          if (l - this.jdField_a_of_type_Long < 1500L) {
+          if (l - this.a < 1500L) {
             return true;
           }
-          this.jdField_a_of_type_Long = l;
+          this.a = l;
           paramWebView = new StringBuilder();
           paramWebView.append("start load new[");
           paramWebView.append(paramString);
           paramWebView.append("]");
           QLog.i("<FileAssistant>FilePreviewActivity", 1, paramWebView.toString());
-          paramWebView = FilePreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity, paramString);
+          paramWebView = FilePreviewActivity.a(this.b, paramString);
           try
           {
             URLDecoder.decode(paramWebView, "UTF-8");
@@ -161,7 +161,7 @@ class FilePreviewActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.8
  * JD-Core Version:    0.7.0.1
  */

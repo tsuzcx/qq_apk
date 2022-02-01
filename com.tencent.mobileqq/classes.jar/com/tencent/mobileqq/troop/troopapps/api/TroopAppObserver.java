@@ -9,39 +9,39 @@ import tencent.im.oidb.inner.cmd0xca05.cmd0xca05.Result;
 public class TroopAppObserver
   implements BusinessObserver
 {
-  public static final int a;
+  private static int a;
   public static final int b;
   public static final int c;
   public static final int d;
   public static final int e;
   public static final int f;
-  private static int g;
+  public static final int g;
   
   static
   {
-    int i = g;
-    g = i + 1;
-    a = i;
-    i = g;
-    g = i + 1;
+    int i = a;
+    a = i + 1;
     b = i;
-    i = g;
-    g = i + 1;
+    i = a;
+    a = i + 1;
     c = i;
-    i = g;
-    g = i + 1;
+    i = a;
+    a = i + 1;
     d = i;
-    i = g;
-    g = i + 1;
+    i = a;
+    a = i + 1;
     e = i;
-    i = g;
-    g = i + 1;
+    i = a;
+    a = i + 1;
     f = i;
+    i = a;
+    a = i + 1;
+    g = i;
   }
   
   private void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != c) {
+    if (paramInt != d) {
       return;
     }
     if ((paramObject instanceof Object[]))
@@ -53,7 +53,7 @@ public class TroopAppObserver
   
   private void b(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != d) {
+    if (paramInt != e) {
       return;
     }
     paramObject = (Object[])paramObject;
@@ -62,7 +62,7 @@ public class TroopAppObserver
   
   private void c(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != a) {
+    if (paramInt != b) {
       return;
     }
     a(Boolean.valueOf(paramBoolean));
@@ -70,7 +70,7 @@ public class TroopAppObserver
   
   private void d(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != b) {
+    if (paramInt != c) {
       return;
     }
     b(Boolean.valueOf(paramBoolean));
@@ -78,7 +78,7 @@ public class TroopAppObserver
   
   private void e(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != e) {
+    if (paramInt != f) {
       return;
     }
     if ((paramObject != null) && ((paramObject instanceof Object[])))
@@ -97,7 +97,7 @@ public class TroopAppObserver
   
   private void f(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != f) {
+    if (paramInt != g) {
       return;
     }
     if ((paramObject != null) && ((paramObject instanceof Object[])))
@@ -138,7 +138,7 @@ public class TroopAppObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.api.TroopAppObserver
  * JD-Core Version:    0.7.0.1
  */

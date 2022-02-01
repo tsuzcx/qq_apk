@@ -29,9 +29,9 @@ class DefaultDoraemonAppInfoHelper$GetAppAPIPermissionJobSegment$1
     {
       paramBundle = new StringBuilder();
       paramBundle.append("onResult type=");
-      paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.jdField_a_of_type_Int);
+      paramBundle.append(this.a.b);
       paramBundle.append(", appid=");
-      paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.jdField_a_of_type_JavaLangString);
+      paramBundle.append(this.a.a);
       paramBundle.append(", code=");
       paramBundle.append(paramInt);
       QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, paramBundle.toString());
@@ -54,7 +54,7 @@ class DefaultDoraemonAppInfoHelper$GetAppAPIPermissionJobSegment$1
             QLog.d("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, paramArrayOfByte.toString());
           }
           paramArrayOfByte = DefaultDoraemonAppInfoHelper.a();
-          paramArrayOfByte.a(paramBundle.get_privilege_rsp.api_groups.get(), this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.jdField_a_of_type_JavaUtilSet);
+          paramArrayOfByte.a(paramBundle.get_privilege_rsp.api_groups.get(), this.a.o);
           if (paramBundle.get_privilege_rsp.api_names.size() > 0)
           {
             localObject = paramBundle.get_privilege_rsp.api_names.get().iterator();
@@ -62,16 +62,16 @@ class DefaultDoraemonAppInfoHelper$GetAppAPIPermissionJobSegment$1
             {
               String str = (String)((Iterator)localObject).next();
               if (DefaultDoraemonAppInfoHelper.a(paramArrayOfByte, str)) {
-                this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.jdField_a_of_type_JavaUtilSet.add(str);
+                this.a.o.add(str);
               }
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.c = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.get_privilege_rsp.next_req_duration.get() * 1000L, 300000L));
-          ((IDoraemonApi)QRoute.api(IDoraemonApi.class)).putAppInfo(this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo);
-          DefaultDoraemonAppInfoHelper.GetAppAPIPermissionJobSegment.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper$GetAppAPIPermissionJobSegment, this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo);
+          this.a.n = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.get_privilege_rsp.next_req_duration.get() * 1000L, 300000L));
+          ((IDoraemonApi)QRoute.api(IDoraemonApi.class)).putAppInfo(this.a);
+          DefaultDoraemonAppInfoHelper.GetAppAPIPermissionJobSegment.a(this.b, this.a);
           return;
         }
-        DefaultDoraemonAppInfoHelper.GetAppAPIPermissionJobSegment.b(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper$GetAppAPIPermissionJobSegment, new AppInfoError(6, "jobApiPermission rsp invalid"));
+        DefaultDoraemonAppInfoHelper.GetAppAPIPermissionJobSegment.b(this.b, new AppInfoError(6, "jobApiPermission rsp invalid"));
         if (QLog.isColorLevel()) {
           QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "rsp invalid");
         }
@@ -79,14 +79,14 @@ class DefaultDoraemonAppInfoHelper$GetAppAPIPermissionJobSegment$1
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        DefaultDoraemonAppInfoHelper.GetAppAPIPermissionJobSegment.c(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper$GetAppAPIPermissionJobSegment, new AppInfoError(6, "jobApiPermission parse rsp error"));
+        DefaultDoraemonAppInfoHelper.GetAppAPIPermissionJobSegment.c(this.b, new AppInfoError(6, "jobApiPermission parse rsp error"));
         if (QLog.isColorLevel()) {
           QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse rsp error", paramArrayOfByte);
         }
         return;
       }
     }
-    DefaultDoraemonAppInfoHelper.GetAppAPIPermissionJobSegment.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper$GetAppAPIPermissionJobSegment, new AppInfoError(6, "jobApiPermission req error"));
+    DefaultDoraemonAppInfoHelper.GetAppAPIPermissionJobSegment.a(this.b, new AppInfoError(6, "jobApiPermission req error"));
     if ((!QLog.isColorLevel()) || (paramArrayOfByte != null)) {}
     try
     {
@@ -118,7 +118,7 @@ class DefaultDoraemonAppInfoHelper$GetAppAPIPermissionJobSegment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.GetAppAPIPermissionJobSegment.1
  * JD-Core Version:    0.7.0.1
  */

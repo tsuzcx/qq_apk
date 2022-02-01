@@ -14,24 +14,14 @@ public class MostUsedSearchResultGroupView
   implements ISearchResultGroupView
 {
   protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private List<ISearchResultView> jdField_a_of_type_JavaUtilList;
+  private LinearLayout b;
+  private List<ISearchResultView> c;
   
   public MostUsedSearchResultGroupView(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370212));
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    this.a = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.c = new ArrayList();
+    this.b = ((LinearLayout)this.a.findViewById(2131437396));
   }
   
   public TextView a()
@@ -39,19 +29,29 @@ public class MostUsedSearchResultGroupView
     return a();
   }
   
-  public List<ISearchResultView> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public TextView b()
   {
     return null;
   }
+  
+  public List<ISearchResultView> c()
+  {
+    return this.c;
+  }
+  
+  public LinearLayout d()
+  {
+    return this.b;
+  }
+  
+  public View h()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.mostused.view.MostUsedSearchResultGroupView
  * JD-Core Version:    0.7.0.1
  */

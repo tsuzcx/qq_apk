@@ -10,12 +10,12 @@ import android.widget.FrameLayout;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.basics.motivevideo.ICmGameVideoPlayer;
 import com.tencent.gdtad.basics.motivevideo.data.GdtMotiveVideoModel;
 import com.tencent.gdtad.basics.motivevideo.data.GdtMotiveVideoPageData;
 import com.tencent.gdtad.basics.motivevideo.report.GdtADFlyingStreamingReportHelper;
 import com.tencent.gdtad.inject.GdtWebViewProxy;
 import com.tencent.gdtad.inject.IGdtWebView;
-import com.tencent.mobileqq.apollo.game.process.video.api.ICmGameVideoPlayer;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.URLUtil;
 import java.util.ArrayList;
@@ -27,70 +27,63 @@ public class GdtMVWebBottomCardController
 {
   public static String a = "PAUSE";
   public static String b = "COMPLETE";
-  public long a;
-  public Handler a;
-  public View a;
-  public FrameLayout a;
-  public TouchWebView a;
-  public GdtMotiveVideoModel a;
-  public IOnWebBottomCardCallback a;
-  public GdtWebViewProxy a;
-  public IGdtWebView a;
-  public Runnable a;
-  public ArrayList<View> a;
-  public boolean a;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  private final String jdField_e_of_type_JavaLangString = "GdtMVWebBottomCardController";
-  private boolean jdField_e_of_type_Boolean;
+  public FrameLayout c;
+  public TouchWebView d;
+  public IGdtWebView e;
+  public View f;
+  public String g = "";
+  public GdtMotiveVideoModel h;
+  public long i;
+  public String j;
+  public boolean k = false;
+  public boolean l = false;
+  public boolean m = false;
+  public boolean n = false;
+  public IOnWebBottomCardCallback o;
+  public Runnable p = new GdtMVWebBottomCardController.1(this);
+  public ArrayList<View> q = new ArrayList();
+  public Handler r;
+  public GdtWebViewProxy s = new GdtWebViewProxy();
+  private final String t = "GdtMVWebBottomCardController";
+  private boolean u;
   
   public GdtMVWebBottomCardController(IOnWebBottomCardCallback paramIOnWebBottomCardCallback, Handler paramHandler)
   {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRunnable = new GdtMVWebBottomCardController.1(this);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentGdtadInjectGdtWebViewProxy = new GdtWebViewProxy();
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradIOnWebBottomCardCallback = paramIOnWebBottomCardCallback;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.o = paramIOnWebBottomCardCallback;
+    this.r = paramHandler;
   }
   
   private void a(View paramView)
   {
     if (paramView != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
+      this.q.add(paramView);
     }
   }
   
   private void g()
   {
-    a(this.jdField_a_of_type_AndroidViewView.findViewById(2131363716));
-    a(this.jdField_a_of_type_AndroidViewView.findViewById(2131362177));
-    a(this.jdField_a_of_type_AndroidViewView.findViewById(2131362150));
-    a(this.jdField_a_of_type_AndroidViewView.findViewById(2131362169));
-    a(this.jdField_a_of_type_AndroidViewView.findViewById(2131362086));
-    a(this.jdField_a_of_type_AndroidViewView.findViewById(2131362145));
+    a(this.f.findViewById(2131429639));
+    a(this.f.findViewById(2131427758));
+    a(this.f.findViewById(2131427749));
+    a(this.f.findViewById(2131427729));
+    a(this.f.findViewById(2131427750));
+    a(this.f.findViewById(2131427664));
+    a(this.f.findViewById(2131427724));
     h();
   }
   
   private void h()
   {
-    if (this.jdField_e_of_type_Boolean)
+    if (this.u)
     {
-      GdtMotiveVideoModel localGdtMotiveVideoModel = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel;
+      GdtMotiveVideoModel localGdtMotiveVideoModel = this.h;
       if (localGdtMotiveVideoModel != null)
       {
-        if (localGdtMotiveVideoModel.a() == null) {
+        if (localGdtMotiveVideoModel.d() == null) {
           return;
         }
-        if (this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a().isHitDownloadLayer()) {
-          a(this.jdField_a_of_type_AndroidViewView.findViewById(2131367572));
+        if (this.h.d().isHitDownloadLayer()) {
+          a(this.f.findViewById(2131434114));
         }
       }
     }
@@ -103,14 +96,14 @@ public class GdtMVWebBottomCardController
       QLog.i("GdtMVWebBottomCardController", 1, "calPlayStatus player is null");
       return "";
     }
-    int i = paramICmGameVideoPlayer.getStatus();
-    if (i <= 3) {
+    int i1 = paramICmGameVideoPlayer.getStatus();
+    if (i1 <= 3) {
       return "PLAYING";
     }
-    if (i == 4) {
-      return jdField_a_of_type_JavaLangString;
+    if (i1 == 4) {
+      return a;
     }
-    return jdField_b_of_type_JavaLangString;
+    return b;
   }
   
   public void a()
@@ -118,34 +111,34 @@ public class GdtMVWebBottomCardController
     if (QLog.isColorLevel()) {
       QLog.i("GdtMVWebBottomCardController", 2, "showWebBottomCard");
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    int i1 = 0;
+    while (i1 < this.q.size())
     {
-      ((View)this.jdField_a_of_type_JavaUtilArrayList.get(i)).setVisibility(4);
-      i += 1;
+      ((View)this.q.get(i1)).setVisibility(4);
+      i1 += 1;
     }
     GdtADFlyingStreamingReportHelper.a().a(1);
   }
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.g))
     {
       QLog.i("GdtMVWebBottomCardController", 1, "addWebBottomCardUrlParams url is null");
       return;
     }
-    this.jdField_c_of_type_JavaLangString = URLUtil.a(this.jdField_c_of_type_JavaLangString, "width", String.valueOf(paramInt1));
-    this.jdField_c_of_type_JavaLangString = URLUtil.a(this.jdField_c_of_type_JavaLangString, "height", String.valueOf(paramInt2));
-    String str = this.jdField_c_of_type_JavaLangString;
+    this.g = URLUtil.a(this.g, "width", String.valueOf(paramInt1));
+    this.g = URLUtil.a(this.g, "height", String.valueOf(paramInt2));
+    String str = this.g;
     if (paramBoolean) {
       localObject = "vertical";
     } else {
       localObject = "horizontal";
     }
-    this.jdField_c_of_type_JavaLangString = URLUtil.a(str, "direction", (String)localObject);
+    this.g = URLUtil.a(str, "direction", (String)localObject);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("encoded Url :");
-    ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.g);
     QLog.d("GdtMVWebBottomCardController", 1, ((StringBuilder)localObject).toString());
   }
   
@@ -154,26 +147,26 @@ public class GdtMVWebBottomCardController
     if (QLog.isColorLevel()) {
       QLog.i("GdtMVWebBottomCardController", 2, "showNativeBottomCard");
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    int i1 = 0;
+    while (i1 < this.q.size())
     {
-      if ((!paramBoolean) || (!this.jdField_e_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a().isHitDownloadLayer()) || (2131367572 != ((View)this.jdField_a_of_type_JavaUtilArrayList.get(i)).getId())) {
-        ((View)this.jdField_a_of_type_JavaUtilArrayList.get(i)).setVisibility(0);
+      if ((!paramBoolean) || (((!this.u) || (!this.h.d().isHitDownloadLayer()) || (2131434114 != ((View)this.q.get(i1)).getId())) && (2131427749 != ((View)this.q.get(i1)).getId()))) {
+        ((View)this.q.get(i1)).setVisibility(0);
       }
-      i += 1;
+      i1 += 1;
     }
     e();
   }
   
   public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, String paramString)
   {
-    TouchWebView localTouchWebView = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    TouchWebView localTouchWebView = this.d;
     if (localTouchWebView == null) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.k)
     {
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.l) {
         return;
       }
       paramLong1 /= 1000L;
@@ -187,22 +180,22 @@ public class GdtMVWebBottomCardController
     try
     {
       AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(paramActivity);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundColor(0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-      this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView = this.jdField_a_of_type_ComTencentGdtadInjectGdtWebViewProxy.a();
-      if (this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView != null)
+      this.d = new TouchWebView(paramActivity);
+      this.d.setBackgroundColor(0);
+      this.c.addView(this.d);
+      this.e = this.s.a();
+      if (this.e != null)
       {
-        this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView.a(paramActivity, paramActivity, null, localAppInterface, new GdtMVWebBottomCardController.2(this));
-        this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-        this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView.a(null);
-        this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView.a(null, localAppInterface, null);
+        this.e.a(paramActivity, paramActivity, null, localAppInterface, new GdtMVWebBottomCardController.2(this));
+        this.e.a(this.d);
+        this.e.a(null);
+        this.e.a(null, localAppInterface, null);
       }
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      this.m = true;
+      this.c.setVisibility(8);
       paramActivity = new StringBuilder();
       paramActivity.append("initWebView url = ");
-      paramActivity.append(this.jdField_c_of_type_JavaLangString);
+      paramActivity.append(this.g);
       QLog.i("GdtMVWebBottomCardController", 1, paramActivity.toString());
       return true;
     }
@@ -230,8 +223,8 @@ public class GdtMVWebBottomCardController
       QLog.i("GdtMVWebBottomCardController", 1, "initWebView rootView == null");
       return false;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131381060));
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)
+    this.c = ((FrameLayout)paramView.findViewById(2131450071));
+    if (this.c == null)
     {
       QLog.i("GdtMVWebBottomCardController", 1, "initWebView webFrameLayout == null");
       return false;
@@ -247,13 +240,13 @@ public class GdtMVWebBottomCardController
       QLog.i("GdtMVWebBottomCardController", 1, "TextUtils.isEmpty(data.bottomCardUrl)");
       return false;
     }
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    this.jdField_c_of_type_JavaLangString = localGdtMotiveVideoPageData.bottomCardUrl;
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel = paramGdtMotiveVideoModel;
-    this.jdField_a_of_type_Long = localGdtMotiveVideoPageData.bottomCardLoadTime;
-    this.jdField_d_of_type_JavaLangString = localGdtMotiveVideoPageData.traceId;
-    a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a().getImageWidth(), this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a().getImageHeight(), paramBoolean);
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.u = paramBoolean;
+    this.g = localGdtMotiveVideoPageData.bottomCardUrl;
+    this.h = paramGdtMotiveVideoModel;
+    this.i = localGdtMotiveVideoPageData.bottomCardLoadTime;
+    this.j = localGdtMotiveVideoPageData.traceId;
+    a(this.h.d().getImageWidth(), this.h.d().getImageHeight(), paramBoolean);
+    this.f = paramView;
     g();
     return a(paramActivity);
   }
@@ -261,12 +254,12 @@ public class GdtMVWebBottomCardController
   public void b()
   {
     QLog.i("GdtMVWebBottomCardController", 1, "onLoadFail");
-    this.jdField_b_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    this.l = true;
+    Object localObject = this.c;
     if (localObject != null) {
       ((FrameLayout)localObject).setVisibility(8);
     }
-    localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradIOnWebBottomCardCallback;
+    localObject = this.o;
     if (localObject != null) {
       ((IOnWebBottomCardCallback)localObject).a();
     }
@@ -275,7 +268,7 @@ public class GdtMVWebBottomCardController
   public void c()
   {
     QLog.i("GdtMVWebBottomCardController", 1, "onLoadSuccess");
-    IOnWebBottomCardCallback localIOnWebBottomCardCallback = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoWebBottomcradIOnWebBottomCardCallback;
+    IOnWebBottomCardCallback localIOnWebBottomCardCallback = this.o;
     if (localIOnWebBottomCardCallback != null) {
       localIOnWebBottomCardCallback.b();
     }
@@ -290,25 +283,25 @@ public class GdtMVWebBottomCardController
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      if (this.c != null) {
+        this.c.setVisibility(8);
       }
-      if (this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView != null)
+      if (this.e != null)
       {
-        this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView.c();
-        this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView = null;
+        this.e.c();
+        this.e = null;
       }
-      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+      if (this.d != null)
       {
-        ViewParent localViewParent = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent();
+        ViewParent localViewParent = this.d.getParent();
         if ((localViewParent != null) && ((localViewParent instanceof ViewGroup))) {
           ((ViewGroup)localViewParent).removeAllViewsInLayout();
         }
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
+        this.d = null;
       }
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      if (this.r != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        this.r.removeCallbacks(this.p);
         return;
       }
     }
@@ -320,30 +313,30 @@ public class GdtMVWebBottomCardController
   
   public void f()
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.m) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.k) {
       return;
     }
-    if (this.jdField_a_of_type_Long <= 0L) {
+    if (this.i <= 0L) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    Object localObject = this.d;
     if (localObject != null)
     {
-      ((TouchWebView)localObject).loadUrl(this.jdField_c_of_type_JavaLangString);
-      this.jdField_a_of_type_Boolean = true;
-      localObject = this.jdField_a_of_type_AndroidOsHandler;
+      ((TouchWebView)localObject).loadUrl(this.g);
+      this.k = true;
+      localObject = this.r;
       if (localObject != null) {
-        ((Handler)localObject).postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Long * 1000L);
+        ((Handler)localObject).postDelayed(this.p, this.i * 1000L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.web.bottomcrad.GdtMVWebBottomCardController
  * JD-Core Version:    0.7.0.1
  */

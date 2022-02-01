@@ -10,29 +10,29 @@ import java.util.Iterator;
 
 public final class TroopRedDotHandlerProcessorConfig
 {
-  private static TroopRedDotHandlerProcessorConfig jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopRedDotHandlerProcessorConfig;
-  private static ArrayList<AbsTroopRedDotHandlerProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<AbsTroopRedDotHandlerProcessor> a = new ArrayList();
+  private static TroopRedDotHandlerProcessorConfig b;
   
   private TroopRedDotHandlerProcessorConfig()
   {
-    a();
+    b();
   }
   
   public static TroopRedDotHandlerProcessorConfig a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopRedDotHandlerProcessorConfig == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopRedDotHandlerProcessorConfig == null) {
-          jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopRedDotHandlerProcessorConfig = new TroopRedDotHandlerProcessorConfig();
+        if (b == null) {
+          b = new TroopRedDotHandlerProcessorConfig();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopRedDotHandlerProcessorConfig;
+    return b;
   }
   
-  private static void a()
+  private static void b()
   {
     if (BizTroopCustomizedProcessorRegister.b != null)
     {
@@ -43,7 +43,7 @@ public final class TroopRedDotHandlerProcessorConfig
         try
         {
           localObject = (AbsTroopRedDotHandlerProcessor)((Class)localObject).newInstance();
-          jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          a.add(localObject);
         }
         catch (Throwable localThrowable)
         {
@@ -55,7 +55,7 @@ public final class TroopRedDotHandlerProcessorConfig
   
   public void a(@NonNull AppInterface paramAppInterface, long paramLong, @NonNull TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopRedDotHandlerProcessor)localIterator.next()).a(paramAppInterface, paramLong, paramTroopUnreadMsgInfo);
     }
@@ -63,7 +63,7 @@ public final class TroopRedDotHandlerProcessorConfig
   
   public void a(@NonNull AppInterface paramAppInterface, String paramString)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopRedDotHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString);
     }
@@ -71,7 +71,7 @@ public final class TroopRedDotHandlerProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopRedDotHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

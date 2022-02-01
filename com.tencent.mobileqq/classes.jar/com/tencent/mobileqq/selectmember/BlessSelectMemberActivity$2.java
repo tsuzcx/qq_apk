@@ -13,16 +13,16 @@ class BlessSelectMemberActivity$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (!NetworkUtil.isNetworkAvailable(this.a.getApplicationContext())) {
-      QQToast.a(this.a, 2131694709, 1).a();
+      QQToast.makeText(this.a, 2131892406, 1).show();
     } else {
-      this.a.d();
+      this.a.e();
     }
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.BlessSelectMemberActivity.2
  * JD-Core Version:    0.7.0.1
  */

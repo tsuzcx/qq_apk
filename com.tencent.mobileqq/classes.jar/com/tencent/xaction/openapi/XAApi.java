@@ -7,13 +7,13 @@ import com.tencent.xaction.openapi.api.IXAGlobal;
 public class XAApi
   extends BaseApi
 {
-  static IXAGlobal a;
+  static IXAGlobal d;
   
   public static IXAEngine c(Context paramContext)
   {
     
     IXAEngine localIXAEngine1;
-    if (a()) {
+    if (c()) {
       localIXAEngine1 = a(paramContext);
     } else {
       localIXAEngine1 = null;
@@ -25,24 +25,24 @@ public class XAApi
     return localIXAEngine2;
   }
   
-  public static IXAGlobal c()
+  public static IXAGlobal e()
   {
     
-    if (a == null)
+    if (d == null)
     {
-      if (a()) {
-        a = a();
+      if (c()) {
+        d = a();
       }
-      if (a == null) {
-        a = b();
+      if (d == null) {
+        d = b();
       }
     }
-    return a;
+    return d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.openapi.XAApi
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ import org.json.JSONObject;
 
 public class ReadInJoyCommentUtils$CommentReportR5Builder
 {
-  private CommentInfo jdField_a_of_type_ComTencentMobileqqKandianRepoCommentEntityCommentInfo;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+  private JSONObject a = new JSONObject();
+  private AbsBaseArticleInfo b;
+  private CommentInfo c;
   
   public ReadInJoyCommentUtils$CommentReportR5Builder(AbsBaseArticleInfo paramAbsBaseArticleInfo, CommentInfo paramCommentInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentEntityCommentInfo = paramCommentInfo;
+    this.b = paramAbsBaseArticleInfo;
+    this.c = paramCommentInfo;
   }
   
   private CommentReportR5Builder c(int paramInt)
@@ -26,7 +26,7 @@ public class ReadInJoyCommentUtils$CommentReportR5Builder
     if (paramInt == 1) {}
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("puin_type", 1);
+      this.a.put("puin_type", 1);
       return this;
     }
     catch (JSONException localJSONException)
@@ -40,10 +40,10 @@ public class ReadInJoyCommentUtils$CommentReportR5Builder
         paramInt = 2;
       }
     }
-    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null))
+    if ((paramInt == 2) && (this.b != null))
     {
-      localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mAccountLess == 0)
+      localJSONObject = this.a;
+      if (this.b.mAccountLess == 0)
       {
         paramInt = i;
         localJSONObject.put("puin_type", paramInt);
@@ -52,10 +52,10 @@ public class ReadInJoyCommentUtils$CommentReportR5Builder
     }
     else
     {
-      if ((paramInt == 3) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null))
+      if ((paramInt == 3) && (this.b != null))
       {
-        localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mAccountLess != 0) {
+        localJSONObject = this.a;
+        if (this.b.mAccountLess != 0) {
           break label127;
         }
         paramInt = j;
@@ -71,7 +71,7 @@ public class ReadInJoyCommentUtils$CommentReportR5Builder
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("entry", paramInt);
+      this.a.put("entry", paramInt);
     }
     catch (JSONException localJSONException)
     {
@@ -84,34 +84,34 @@ public class ReadInJoyCommentUtils$CommentReportR5Builder
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null)
+      if (this.b != null)
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("algorithm_id", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mAlgorithmID);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("mp_article_id", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleID);
+        this.a.put("algorithm_id", this.b.mAlgorithmID);
+        this.a.put("mp_article_id", this.b.mArticleID);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentEntityCommentInfo != null) {
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentEntityCommentInfo.level == 1) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("comment_id", this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentEntityCommentInfo.commentId);
-        } else if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentEntityCommentInfo.level == 2) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("sub_comment_id", this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentEntityCommentInfo.commentId);
+      if (this.c != null) {
+        if (this.c.level == 1) {
+          this.a.put("comment_id", this.c.commentId);
+        } else if (this.c.level == 2) {
+          this.a.put("sub_comment_id", this.c.commentId);
         }
       }
-      this.jdField_a_of_type_OrgJsonJSONObject.put("source", RIJTransMergeKanDianReport.a());
-      this.jdField_a_of_type_OrgJsonJSONObject.put("kandian_mode", RIJAppSetting.a());
-      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_platform", 3);
+      this.a.put("source", RIJTransMergeKanDianReport.b());
+      this.a.put("kandian_mode", RIJAppSetting.b());
+      this.a.put("comment_platform", 3);
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
     }
-    return this.jdField_a_of_type_OrgJsonJSONObject.toString();
+    return this.a.toString();
   }
   
   public CommentReportR5Builder b(int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_icon_choose", paramInt);
+      this.a.put("comment_icon_choose", paramInt);
       return this;
     }
     catch (JSONException localJSONException)
@@ -123,7 +123,7 @@ public class ReadInJoyCommentUtils$CommentReportR5Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentUtils.CommentReportR5Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -13,22 +13,22 @@ class QQReminderDataServiceImpl$6
   
   public void run()
   {
-    if (!QQReminderDataServiceImpl.access$900(this.this$0).containsKey(this.jdField_a_of_type_JavaLangString)) {
+    if (!QQReminderDataServiceImpl.access$900(this.this$0).containsKey(this.a)) {
       return;
     }
-    Object localObject = ((ReminderEntity)QQReminderDataServiceImpl.access$900(this.this$0).get(this.jdField_a_of_type_JavaLangString)).getAcsMsg();
-    if (QQReminderDataServiceImpl.access$1000(this.this$0, this.jdField_a_of_type_JavaLangString, (AcsMsg)localObject))
+    Object localObject = ((ReminderEntity)QQReminderDataServiceImpl.access$900(this.this$0).get(this.a)).getAcsMsg();
+    if (QQReminderDataServiceImpl.access$1000(this.this$0, this.a, (AcsMsg)localObject))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ReminderDataManagerNew", 1, new Object[] { "deleteReminderByMsgId MsgId: ", this.jdField_a_of_type_JavaLangString, " success, remove reminder..." });
+        QLog.d("ReminderDataManagerNew", 1, new Object[] { "deleteReminderByMsgId MsgId: ", this.a, " success, remove reminder..." });
       }
       QQReminderDataServiceImpl.access$1100(this.this$0, (AcsMsg)localObject);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("ReminderDataManagerNew", 1, new Object[] { "deleteReminderByMsgId MsgId: ", this.jdField_a_of_type_JavaLangString, " failed!!" });
+      QLog.d("ReminderDataManagerNew", 1, new Object[] { "deleteReminderByMsgId MsgId: ", this.a, " failed!!" });
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqReminderOnDeleteReminderFailListener;
+    localObject = this.b;
     if (localObject != null) {
       ((OnDeleteReminderFailListener)localObject).a();
     }
@@ -36,7 +36,7 @@ class QQReminderDataServiceImpl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.api.impl.QQReminderDataServiceImpl.6
  * JD-Core Version:    0.7.0.1
  */

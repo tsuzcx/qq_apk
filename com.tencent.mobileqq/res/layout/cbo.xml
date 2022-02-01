@@ -2,7 +2,7 @@
 <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a02"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="horizontal" android:id="@id/b64" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik">
-        <View android:id="@id/icon" android:background="@drawable/i1l" style="@style/bw" />
+        <View android:id="@id/icon" android:background="@drawable/qq_profilecard_item_present" style="@style/bw" />
         <LinearLayout android:orientation="horizontal" style="@style/by">
             <TextView android:textSize="@dimen/uj" android:textColor="@color/skin_black_theme_version2" android:ellipsize="middle" android:id="@id/jj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
         </LinearLayout>

@@ -10,7 +10,7 @@ final class StoryUploadProcessor$2
 {
   public void run()
   {
-    String str = QQStoryContext.a().a();
+    String str = QQStoryContext.a().g();
     for (;;)
     {
       try
@@ -31,7 +31,7 @@ final class StoryUploadProcessor$2
           if ((arrayOfByte1 == null) || (arrayOfByte1.length == 0) || (arrayOfByte2 == null) || (arrayOfByte2.length == 0))
           {
             QQStoryContext.a();
-            HwServlet.getConfig(QQStoryContext.a(), str);
+            HwServlet.getConfig(QQStoryContext.k(), str);
             SLog.d(StoryUploadProcessor.TAG, "pull session key");
           }
           return;
@@ -44,7 +44,7 @@ final class StoryUploadProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.StoryUploadProcessor.2
  * JD-Core Version:    0.7.0.1
  */

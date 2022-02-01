@@ -17,16 +17,16 @@ public final class PagViewProxy$MyViewProxy
   extends AbsAsyncLoadProxy<View>
 {
   @NotNull
-  private final PagViewProxy jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy;
-  @NotNull
-  private final Function0<FrameLayout> jdField_a_of_type_KotlinJvmFunctionsFunction0;
+  private final Function0<FrameLayout> a;
   @NotNull
   private final Function0<PAGView> b;
+  @NotNull
+  private final PagViewProxy c;
   
   public PagViewProxy$MyViewProxy(@NotNull PagViewProxy paramPagViewProxy)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy = paramPagViewProxy;
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction0 = ((Function0)new PagViewProxy.MyViewProxy.failedBuilder.1(this));
+    this.c = paramPagViewProxy;
+    this.a = ((Function0)new PagViewProxy.MyViewProxy.failedBuilder.1(this));
     this.b = ((Function0)new PagViewProxy.MyViewProxy.sucessedBuilder.1(this));
   }
   
@@ -34,36 +34,24 @@ public final class PagViewProxy$MyViewProxy
   {
     if (paramView == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy.removeAllViews();
+      this.c.removeAllViews();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy.removeAllViews();
-    this.jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy.addView(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy.a().invoke(paramView);
-    PagViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy, paramView);
-  }
-  
-  @NotNull
-  public final PagViewProxy a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy;
-  }
-  
-  @NotNull
-  public Function0<FrameLayout> a()
-  {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction0;
+    this.c.removeAllViews();
+    this.c.addView(paramView);
+    this.c.getStateChangeListener().invoke(paramView);
+    PagViewProxy.a(this.c, paramView);
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy.a((View)a());
+    this.c.setCurrentView((View)b());
     if (Intrinsics.areEqual(Looper.getMainLooper(), Looper.myLooper()))
     {
-      a((View)a());
+      a((View)b());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy.post((Runnable)new PagViewProxy.MyViewProxy.onCurrentObjectChanged.1(this));
+    this.c.post((Runnable)new PagViewProxy.MyViewProxy.onCurrentObjectChanged.1(this));
   }
   
   protected void a(@NotNull Function0<Unit> paramFunction0)
@@ -73,14 +61,26 @@ public final class PagViewProxy$MyViewProxy
   }
   
   @NotNull
-  public Function0<PAGView> b()
+  public Function0<FrameLayout> c()
+  {
+    return this.a;
+  }
+  
+  @NotNull
+  public Function0<PAGView> d()
   {
     return this.b;
+  }
+  
+  @NotNull
+  public final PagViewProxy g()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.PagViewProxy.MyViewProxy
  * JD-Core Version:    0.7.0.1
  */

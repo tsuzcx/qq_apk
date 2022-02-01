@@ -35,10 +35,10 @@ public class NewFriendTabInfoBuilder
         if (paramNewFriendMessage.a.size() == 0) {
           return;
         }
-        paramNewFriendMessage = this.jdField_a_of_type_AndroidContentContext.getString(2131699049);
+        paramNewFriendMessage = this.c.getString(2131897058);
         paramTextView.setVisibility(0);
         paramTextView.setText(paramNewFriendMessage);
-        paramTextView.setPadding(0, ViewUtils.a(16.0F), 0, ViewUtils.a(6.0F));
+        paramTextView.setPadding(0, ViewUtils.dip2px(16.0F), 0, ViewUtils.dip2px(6.0F));
       }
     }
   }
@@ -53,12 +53,12 @@ public class NewFriendTabInfoBuilder
     else
     {
       localNewFriendTabInfoHolder = new NewFriendTabInfoBuilder.NewFriendTabInfoHolder();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561250, null);
-      localNewFriendTabInfoHolder.a = ((TextView)paramView.findViewById(2131378220));
+      paramView = LayoutInflater.from(this.c).inflate(2131627606, null);
+      localNewFriendTabInfoHolder.a = ((TextView)paramView.findViewById(2131446738));
       paramView.setTag(localNewFriendTabInfoHolder);
     }
     c(localNewFriendTabInfoHolder.a);
-    a(localNewFriendTabInfoHolder.a, this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage);
+    a(localNewFriendTabInfoHolder.a, this.g);
     paramView.setOnClickListener(this);
     return paramView;
   }
@@ -70,17 +70,17 @@ public class NewFriendTabInfoBuilder
     }
     if (ThemeUtil.isDefaultTheme())
     {
-      paramView.setBackgroundResource(2130839393);
+      paramView.setBackgroundResource(2130839577);
       return;
     }
-    paramView.setBackgroundResource(2130850578);
+    paramView.setBackgroundResource(2130852374);
   }
   
   public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendTabInfoBuilder
  * JD-Core Version:    0.7.0.1
  */

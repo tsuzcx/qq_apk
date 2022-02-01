@@ -24,19 +24,19 @@ import java.util.Map;
 public class SessionClearFragment$SessionListAdapter
   extends RecyclerView.Adapter<SessionClearFragment.SessionHolder>
 {
-  List<CleanMessageItemInfo> jdField_a_of_type_JavaUtilList;
-  Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  List<CleanMessageItemInfo> a;
+  Map<String, Integer> b = new HashMap();
   
   public SessionClearFragment$SessionListAdapter(List<CleanMessageItemInfo> paramList)
   {
     Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.a = localObject;
   }
   
   public int a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString)).intValue();
+    if (this.b.containsKey(paramString)) {
+      return ((Integer)this.b.get(paramString)).intValue();
     }
     return -1;
   }
@@ -46,52 +46,52 @@ public class SessionClearFragment$SessionListAdapter
     if (QLog.isColorLevel()) {
       QLog.d("SessionClearFragment", 2, "onCreateViewHolder");
     }
-    paramViewGroup = SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).getLayoutInflater().inflate(2131562833, paramViewGroup, false);
-    return new SessionClearFragment.SessionHolder(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, paramViewGroup);
+    paramViewGroup = SessionClearFragment.c(this.c).getLayoutInflater().inflate(2131629278, paramViewGroup, false);
+    return new SessionClearFragment.SessionHolder(this.c, paramViewGroup);
   }
   
   public CleanMessageItemInfo a(int paramInt)
   {
-    return (CleanMessageItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (CleanMessageItemInfo)this.a.get(paramInt);
   }
   
   public void a()
   {
-    SessionClearFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, 0);
-    SessionClearFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, 0);
+    SessionClearFragment.b(this.c, 0);
+    SessionClearFragment.c(this.c, 0);
     int i = 0;
     boolean bool = false;
     Object localObject;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.a.size())
     {
-      if (((CleanMessageItemInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Boolean)
+      if (((CleanMessageItemInfo)this.a.get(i)).g)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment;
-        SessionClearFragment.b((SessionClearFragment)localObject, (int)(SessionClearFragment.c((SessionClearFragment)localObject) + ((CleanMessageItemInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Long));
-        SessionClearFragment.d(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment);
+        localObject = this.c;
+        SessionClearFragment.b((SessionClearFragment)localObject, (int)(SessionClearFragment.h((SessionClearFragment)localObject) + ((CleanMessageItemInfo)this.a.get(i)).d));
+        SessionClearFragment.o(this.c);
         bool = true;
       }
       i += 1;
     }
-    if (SessionClearFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment) == 0)
+    if (SessionClearFragment.h(this.c) == 0)
     {
-      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).setVisibility(8);
+      SessionClearFragment.p(this.c).setVisibility(8);
     }
     else
     {
-      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).setVisibility(0);
-      localObject = SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment);
+      SessionClearFragment.p(this.c).setVisibility(0);
+      localObject = SessionClearFragment.p(this.c);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131713726));
-      localStringBuilder.append(FileCleanUtils.a(SessionClearFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment)));
+      localStringBuilder.append(HardCodeUtil.a(2131911269));
+      localStringBuilder.append(FileCleanUtils.a(SessionClearFragment.h(this.c)));
       ((TextView)localObject).setText(localStringBuilder.toString());
     }
-    if (SessionClearFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment) == this.jdField_a_of_type_JavaUtilList.size()) {
-      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, 1);
+    if (SessionClearFragment.g(this.c) == this.a.size()) {
+      SessionClearFragment.d(this.c, 1);
     } else {
-      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, 0);
+      SessionClearFragment.d(this.c, 0);
     }
-    SessionClearFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).setEnabled(bool);
+    SessionClearFragment.q(this.c).setEnabled(bool);
   }
   
   public void a(SessionClearFragment.SessionHolder paramSessionHolder, int paramInt)
@@ -102,44 +102,44 @@ public class SessionClearFragment$SessionListAdapter
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onBindViewHolder info uin=");
-      ((StringBuilder)localObject).append(localCleanMessageItemInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(localCleanMessageItemInfo.a);
       ((StringBuilder)localObject).append(" pos=");
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("SessionClearFragment", 2, ((StringBuilder)localObject).toString());
     }
-    paramSessionHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localCleanMessageItemInfo.b);
-    paramSessionHolder.b.setText(localCleanMessageItemInfo.c);
-    if ((localCleanMessageItemInfo.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!localCleanMessageItemInfo.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    paramSessionHolder.c.setText(localCleanMessageItemInfo.b);
+    paramSessionHolder.d.setText(localCleanMessageItemInfo.e);
+    if ((localCleanMessageItemInfo.i != null) && (!localCleanMessageItemInfo.i.isRecycled()))
     {
-      paramSessionHolder.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageBitmap(localCleanMessageItemInfo.jdField_a_of_type_AndroidGraphicsBitmap);
+      paramSessionHolder.b.setImageBitmap(localCleanMessageItemInfo.i);
     }
-    else if (localCleanMessageItemInfo.d != null)
+    else if (localCleanMessageItemInfo.h != null)
     {
-      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment, localCleanMessageItemInfo.d, 80, 80, paramSessionHolder.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView, paramInt);
+      SessionClearFragment.a(this.c, localCleanMessageItemInfo.h, 80, 80, paramSessionHolder.b, paramInt);
     }
     else
     {
-      localObject = SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment);
-      this.jdField_a_of_type_JavaUtilMap.put(localCleanMessageItemInfo.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
-      if ((localCleanMessageItemInfo.jdField_a_of_type_Int != 0) && (localCleanMessageItemInfo.jdField_a_of_type_Int != 1000) && (localCleanMessageItemInfo.jdField_a_of_type_Int != 1004))
+      localObject = SessionClearFragment.k(this.c);
+      this.b.put(localCleanMessageItemInfo.a, Integer.valueOf(paramInt));
+      if ((localCleanMessageItemInfo.c != 0) && (localCleanMessageItemInfo.c != 1000) && (localCleanMessageItemInfo.c != 1004))
       {
-        if (localCleanMessageItemInfo.jdField_a_of_type_Int == 1) {
-          localObject = SessionClearFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).a(localCleanMessageItemInfo.jdField_a_of_type_JavaLangString, true);
-        } else if (localCleanMessageItemInfo.jdField_a_of_type_Int == 3000) {
-          localObject = SessionClearFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).a(localCleanMessageItemInfo.jdField_a_of_type_JavaLangString, true);
+        if (localCleanMessageItemInfo.c == 1) {
+          localObject = SessionClearFragment.m(this.c).a(localCleanMessageItemInfo.a, true);
+        } else if (localCleanMessageItemInfo.c == 3000) {
+          localObject = SessionClearFragment.n(this.c).a(localCleanMessageItemInfo.a, true);
         }
       }
       else {
-        localObject = SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).a(localCleanMessageItemInfo.jdField_a_of_type_JavaLangString, true);
+        localObject = SessionClearFragment.l(this.c).a(localCleanMessageItemInfo.a, true);
       }
       if (localObject != null) {
-        paramSessionHolder.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageBitmap((Bitmap)localObject);
+        paramSessionHolder.b.setImageBitmap((Bitmap)localObject);
       }
     }
-    if (((CleanMessageItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Boolean) {
-      paramSessionHolder.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+    if (((CleanMessageItemInfo)this.a.get(paramInt)).g) {
+      paramSessionHolder.a.setChecked(true);
     } else {
-      paramSessionHolder.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      paramSessionHolder.a.setChecked(false);
     }
     paramSessionHolder.itemView.setOnClickListener(new SessionClearFragment.SessionListAdapter.1(this, paramSessionHolder, paramInt));
     EventCollector.getInstance().onRecyclerBindViewHolder(paramSessionHolder, paramInt, getItemId(paramInt));
@@ -159,9 +159,9 @@ public class SessionClearFragment$SessionListAdapter
         localStringBuilder.append(i);
         QLog.i("SessionClearFragment", 4, localStringBuilder.toString());
       }
-      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).a(i).d = paramString2;
-      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).a(i).jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      SessionClearFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment).notifyItemChanged(i);
+      SessionClearFragment.d(this.c).a(i).h = paramString2;
+      SessionClearFragment.d(this.c).a(i).i = paramBitmap;
+      SessionClearFragment.d(this.c).notifyItemChanged(i);
     }
   }
   
@@ -174,33 +174,33 @@ public class SessionClearFragment$SessionListAdapter
       ((StringBuilder)localObject).append(paramList.size());
       QLog.d("SessionClearFragment", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.a;
     if (localObject != null) {
       ((List)localObject).clear();
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
     notifyDataSetChanged();
   }
   
   public void b()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.a.size())
     {
-      ((CleanMessageItemInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Boolean = true;
+      ((CleanMessageItemInfo)this.a.get(i)).g = true;
       i += 1;
     }
     notifyDataSetChanged();
     a();
-    ReportController.b(null, "dc00898", "", "", "0X800A0C6", "0X800A0C6", 0, 0, String.valueOf(SessionClearFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment)), String.valueOf(SessionClearFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment)), "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800A0C6", "0X800A0C6", 0, 0, String.valueOf(SessionClearFragment.g(this.c)), String.valueOf(SessionClearFragment.h(this.c)), "", "");
   }
   
   public void c()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.a.size())
     {
-      ((CleanMessageItemInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Boolean = false;
+      ((CleanMessageItemInfo)this.a.get(i)).g = false;
       i += 1;
     }
     notifyDataSetChanged();
@@ -209,12 +209,12 @@ public class SessionClearFragment$SessionListAdapter
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.SessionClearFragment.SessionListAdapter
  * JD-Core Version:    0.7.0.1
  */

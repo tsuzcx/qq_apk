@@ -14,54 +14,49 @@ public class PasterParcelData
   public static final Parcelable.Creator<PasterParcelData> CREATOR = new PasterParcelData.1();
   public static int a = 1;
   public static int b = 2;
-  public float a;
-  public PointF a;
-  public RectF a;
-  public SegmentKeeper a;
-  public String a;
-  public float b;
-  public String b;
-  public float c;
   public int c;
-  public String c;
-  public float d;
-  public int d;
-  public String d;
-  public float e;
-  public int e;
-  public String e;
-  public float f;
-  public int f;
-  public String f;
-  public int g;
+  public PointF d;
+  public float e = 1.0F;
+  public float f = 0.0F;
+  public float g = 0.0F;
+  public float h = 0.0F;
+  public float i;
+  public float j;
+  public RectF k;
+  public String l;
+  public String m;
+  public String n;
+  public String o;
+  public int p;
+  public String q;
+  public int r;
+  public int s;
+  public int t;
+  public String u;
+  public SegmentKeeper v = new SegmentKeeper();
   
   protected PasterParcelData(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Float = 0.0F;
-    this.jdField_d_of_type_Float = 0.0F;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_AndroidGraphicsPointF = ((PointF)paramParcel.readParcelable(PointF.class.getClassLoader()));
-    this.jdField_a_of_type_Float = paramParcel.readFloat();
-    this.jdField_b_of_type_Float = paramParcel.readFloat();
-    this.jdField_c_of_type_Float = paramParcel.readFloat();
-    this.jdField_d_of_type_Float = paramParcel.readFloat();
-    this.jdField_e_of_type_Float = paramParcel.readFloat();
-    this.jdField_f_of_type_Float = paramParcel.readFloat();
-    this.jdField_a_of_type_AndroidGraphicsRectF = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_Int = paramParcel.readInt();
-    this.jdField_f_of_type_Int = paramParcel.readInt();
-    this.g = paramParcel.readInt();
-    this.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = ((SegmentKeeper)paramParcel.readParcelable(SegmentKeeper.class.getClassLoader()));
+    this.c = paramParcel.readInt();
+    this.d = ((PointF)paramParcel.readParcelable(PointF.class.getClassLoader()));
+    this.e = paramParcel.readFloat();
+    this.f = paramParcel.readFloat();
+    this.g = paramParcel.readFloat();
+    this.h = paramParcel.readFloat();
+    this.i = paramParcel.readFloat();
+    this.j = paramParcel.readFloat();
+    this.k = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
+    this.l = paramParcel.readString();
+    this.m = paramParcel.readString();
+    this.n = paramParcel.readString();
+    this.p = paramParcel.readInt();
+    this.q = paramParcel.readString();
+    this.r = paramParcel.readInt();
+    this.s = paramParcel.readInt();
+    this.t = paramParcel.readInt();
+    this.u = paramParcel.readString();
+    this.o = paramParcel.readString();
+    this.v = ((SegmentKeeper)paramParcel.readParcelable(SegmentKeeper.class.getClassLoader()));
   }
   
   public int describeContents()
@@ -72,31 +67,31 @@ public class PasterParcelData
   @TargetApi(13)
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeParcelable(this.jdField_a_of_type_AndroidGraphicsPointF, 0);
-    paramParcel.writeFloat(this.jdField_a_of_type_Float);
-    paramParcel.writeFloat(this.jdField_b_of_type_Float);
-    paramParcel.writeFloat(this.jdField_c_of_type_Float);
-    paramParcel.writeFloat(this.jdField_d_of_type_Float);
-    paramParcel.writeFloat(this.jdField_e_of_type_Float);
-    paramParcel.writeFloat(this.jdField_f_of_type_Float);
-    paramParcel.writeParcelable(this.jdField_a_of_type_AndroidGraphicsRectF, 0);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeInt(this.jdField_f_of_type_Int);
-    paramParcel.writeInt(this.g);
-    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper, 0);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeParcelable(this.d, 0);
+    paramParcel.writeFloat(this.e);
+    paramParcel.writeFloat(this.f);
+    paramParcel.writeFloat(this.g);
+    paramParcel.writeFloat(this.h);
+    paramParcel.writeFloat(this.i);
+    paramParcel.writeFloat(this.j);
+    paramParcel.writeParcelable(this.k, 0);
+    paramParcel.writeString(this.l);
+    paramParcel.writeString(this.m);
+    paramParcel.writeString(this.n);
+    paramParcel.writeInt(this.p);
+    paramParcel.writeString(this.q);
+    paramParcel.writeInt(this.r);
+    paramParcel.writeInt(this.s);
+    paramParcel.writeInt(this.t);
+    paramParcel.writeString(this.u);
+    paramParcel.writeString(this.o);
+    paramParcel.writeParcelable(this.v, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.PasterParcelData
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,13 @@ class QidianProfileCardActivity$1
   
   public void run()
   {
-    ProfileNameUtils.initNameArray(this.this$0.app, this.this$0.a);
-    ProfileNameUtils.updateProfileName(this.this$0.a);
+    ProfileNameUtils.initNameArray(this.this$0.app, this.this$0.e);
+    ProfileNameUtils.updateProfileName(this.this$0.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.1
  * JD-Core Version:    0.7.0.1
  */

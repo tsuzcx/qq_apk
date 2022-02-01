@@ -22,7 +22,7 @@ public class PicBusImpl
   
   public PicFowardInfo createForwardPicInfo(int paramInt, Intent paramIntent)
   {
-    return PicBusiManager.a(paramInt, paramIntent);
+    return PicBusiManager.c(paramInt, paramIntent);
   }
   
   public PicFowardInfo createForwardPicInfo(int paramInt1, MessageForPic paramMessageForPic, int paramInt2, String paramString1, String paramString2, String paramString3)
@@ -47,7 +47,7 @@ public class PicBusImpl
   
   public PicUploadInfo createPicUploadInfo(int paramInt, Intent paramIntent)
   {
-    return PicBusiManager.a(paramInt, paramIntent);
+    return PicBusiManager.b(paramInt, paramIntent);
   }
   
   public long getC2CPicSizeLimit()
@@ -67,7 +67,7 @@ public class PicBusImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.api.impl.PicBusImpl
  * JD-Core Version:    0.7.0.1
  */

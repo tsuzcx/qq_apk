@@ -39,23 +39,23 @@ public class QCircleFollowView
   extends TextView
   implements View.OnClickListener, SimpleEventReceiver
 {
-  private int jdField_a_of_type_Int;
-  private QCircleFollowView.FollowChangeListener jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$FollowChangeListener;
-  private QCircleFollowView.FollowReportListener jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$FollowReportListener;
-  private QCircleFollowView.ItemPreClickListener jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$ItemPreClickListener;
-  protected FeedCloudMeta.StUser a;
-  private String jdField_a_of_type_JavaLangString;
-  protected boolean a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private int e;
-  private int f;
+  protected FeedCloudMeta.StUser a = new FeedCloudMeta.StUser();
+  protected boolean b = false;
+  private String c;
+  private QCircleFollowView.ItemPreClickListener d;
+  private QCircleFollowView.FollowReportListener e;
+  private QCircleFollowView.FollowChangeListener f;
+  private boolean g;
+  private boolean h;
+  private boolean i;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
+  private int n;
+  private int o;
+  private String p;
+  private String q;
   
   public QCircleFollowView(Context paramContext)
   {
@@ -70,15 +70,13 @@ public class QCircleFollowView
   public QCircleFollowView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = new FeedCloudMeta.StUser();
-    this.jdField_a_of_type_Boolean = false;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.QCircleFollowView);
-    this.jdField_b_of_type_Int = paramContext.getResourceId(2, 2130844088);
-    this.jdField_a_of_type_Int = paramContext.getResourceId(4, 2130844087);
-    this.jdField_d_of_type_Int = paramContext.getResourceId(0, 2130844089);
-    this.jdField_c_of_type_Int = paramContext.getResourceId(1, 2130844086);
-    this.e = paramContext.getColor(3, getResources().getColor(2131165338));
-    this.f = paramContext.getColor(5, getResources().getColor(2131166289));
+    this.k = paramContext.getResourceId(2, 2130845048);
+    this.j = paramContext.getResourceId(5, 2130845047);
+    this.m = paramContext.getResourceId(0, 2130845049);
+    this.l = paramContext.getResourceId(1, 2130845046);
+    this.n = paramContext.getColor(3, getResources().getColor(2131165580));
+    this.o = paramContext.getColor(6, getResources().getColor(2131167026));
     paramContext.recycle();
     a();
   }
@@ -96,7 +94,7 @@ public class QCircleFollowView
   
   private void a(FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
+    Object localObject = this.a;
     boolean bool = true;
     if (localObject == null)
     {
@@ -106,15 +104,15 @@ public class QCircleFollowView
     if (paramInt != 1) {
       bool = false;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$FollowChangeListener;
+    localObject = this.f;
     if (localObject != null) {
-      ((QCircleFollowView.FollowChangeListener)localObject).a(bool, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
+      ((QCircleFollowView.FollowChangeListener)localObject).a(bool, this.a);
     }
-    SimpleEventBus.getInstance().dispatchEvent(new QCircleFollowUpdateEvent(paramInt, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get()));
-    a(getContext(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get(), paramInt);
-    ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).setUinFollowed(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get(), paramInt);
+    SimpleEventBus.getInstance().dispatchEvent(new QCircleFollowUpdateEvent(paramInt, this.a.id.get()));
+    a(getContext(), this.a.id.get(), paramInt);
+    ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).setUinFollowed(this.a.id.get(), paramInt);
     if (paramStDoFollowRsp != null) {
-      ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).updateFollowUser(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.nick.get(), bool);
+      ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).updateFollowUser(this.a.id.get(), this.a.nick.get(), bool);
     }
   }
   
@@ -123,30 +121,30 @@ public class QCircleFollowView
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  private boolean a()
+  private boolean d()
   {
-    if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.followState.get() == 1) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.blackState.get() == 2)) {
+    if ((this.a.followState.get() == 1) && (this.a.blackState.get() == 2)) {
       return false;
     }
-    if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.blackState.get() != 1) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.blackState.get() != 3))
+    if ((this.a.blackState.get() != 1) && (this.a.blackState.get() != 3))
     {
-      if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.blackState.get() == 2)
+      if (this.a.blackState.get() == 2)
       {
-        DialogUtil.a(getContext(), 230).setMessage(2131697905).setPositiveButton(2131697922, new QCircleFollowView.1(this)).show();
+        DialogUtil.a(getContext(), 230).setMessage(2131895729).setPositiveButton(2131895760, new QCircleFollowView.1(this)).show();
         return true;
       }
       return false;
     }
-    QQToast.a(getContext(), 0, 2131697904, 0).a();
+    QQToast.makeText(getContext(), 0, 2131895728, 0).show();
     return true;
   }
   
-  private void d()
+  private void e()
   {
     ActionSheet localActionSheet = ActionSheet.create(getContext());
-    localActionSheet.setMainTitle(getContext().getResources().getString(2131698040));
-    localActionSheet.addButton(2131698041, 3);
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.setMainTitle(getContext().getResources().getString(2131895940));
+    localActionSheet.addButton(2131895941, 3);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new QCircleFollowView.5(this, localActionSheet));
     if (!localActionSheet.isShowing()) {
       localActionSheet.show();
@@ -173,13 +171,13 @@ public class QCircleFollowView
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
+    Object localObject = this.a;
     if (localObject != null)
     {
       ((FeedCloudMeta.StUser)localObject).followState.set(paramInt);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("uin:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get());
+      ((StringBuilder)localObject).append(this.a.id.get());
       ((StringBuilder)localObject).append(" state:");
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("QCircleFollowView", 1, ((StringBuilder)localObject).toString());
@@ -198,17 +196,17 @@ public class QCircleFollowView
     {
       if (((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).hasUin(paramStUser.id.get()))
       {
-        this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.followState.set(((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).getUinFollowed(paramStUser.id.get()));
+        this.a.followState.set(((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).getUinFollowed(paramStUser.id.get()));
         a(((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).getUinFollowed(paramStUser.id.get()));
-        QCircleFollowView.FollowChangeListener localFollowChangeListener = this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$FollowChangeListener;
+        QCircleFollowView.FollowChangeListener localFollowChangeListener = this.f;
         if (localFollowChangeListener != null)
         {
-          int i = ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).getUinFollowed(paramStUser.id.get());
+          int i1 = ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).getUinFollowed(paramStUser.id.get());
           boolean bool = true;
-          if (i != 1) {
+          if (i1 != 1) {
             bool = false;
           }
-          localFollowChangeListener.a(bool, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
+          localFollowChangeListener.a(bool, this.a);
         }
       }
     }
@@ -220,17 +218,17 @@ public class QCircleFollowView
   protected void a(boolean paramBoolean)
   {
     setVisibility(0);
-    FeedCloudMeta.StUser localStUser = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
-    if ((localStUser != null) && ((localStUser.blackState.get() == 1) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.blackState.get() == 3))) {
-      setBackgroundResource(this.jdField_d_of_type_Int);
-    } else if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      setBackgroundDrawable(a(this.jdField_b_of_type_Int, this.jdField_c_of_type_JavaLangString));
+    FeedCloudMeta.StUser localStUser = this.a;
+    if ((localStUser != null) && ((localStUser.blackState.get() == 1) || (this.a.blackState.get() == 3))) {
+      setBackgroundResource(this.m);
+    } else if (!TextUtils.isEmpty(this.q)) {
+      setBackgroundDrawable(a(this.k, this.q));
     } else {
-      setBackgroundResource(this.jdField_b_of_type_Int);
+      setBackgroundResource(this.k);
     }
-    setTextColor(this.e);
-    setText(2131697915);
-    if (this.jdField_c_of_type_Boolean)
+    setTextColor(this.n);
+    setText(2131895739);
+    if (this.h)
     {
       if (paramBoolean)
       {
@@ -244,16 +242,16 @@ public class QCircleFollowView
   protected void b()
   {
     setVisibility(0);
-    FeedCloudMeta.StUser localStUser = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
+    FeedCloudMeta.StUser localStUser = this.a;
     if ((localStUser != null) && (localStUser.blackState.get() != 0)) {
-      setBackgroundResource(this.jdField_c_of_type_Int);
-    } else if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      setBackgroundDrawable(a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString));
+      setBackgroundResource(this.l);
+    } else if (!TextUtils.isEmpty(this.p)) {
+      setBackgroundDrawable(a(this.j, this.p));
     } else {
-      setBackgroundResource(this.jdField_a_of_type_Int);
+      setBackgroundResource(this.j);
     }
-    setTextColor(this.f);
-    setText(2131697903);
+    setTextColor(this.o);
+    setText(2131895727);
   }
   
   protected void b(boolean paramBoolean)
@@ -283,37 +281,37 @@ public class QCircleFollowView
     if (!isInEditMode()) {
       SimpleEventBus.getInstance().registerReceiver(this);
     }
-    FeedCloudMeta.StUser localStUser = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
+    FeedCloudMeta.StUser localStUser = this.a;
     if (localStUser != null)
     {
-      QCircleFollowView.FollowReportListener localFollowReportListener = this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$FollowReportListener;
+      QCircleFollowView.FollowReportListener localFollowReportListener = this.e;
       if (localFollowReportListener != null) {
         localFollowReportListener.a(localStUser.followState.get());
       }
     }
-    a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
+    a(this.a);
   }
   
   public void onClick(View paramView)
   {
     if (!FastClickUtils.a("QCircleFollowViewClick"))
     {
-      Object localObject = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
+      Object localObject = this.a;
       if (localObject != null)
       {
-        QCircleFollowView.FollowReportListener localFollowReportListener = this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$FollowReportListener;
+        QCircleFollowView.FollowReportListener localFollowReportListener = this.e;
         if (localFollowReportListener != null) {
           localFollowReportListener.b(((FeedCloudMeta.StUser)localObject).followState.get());
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$ItemPreClickListener;
+        localObject = this.d;
         if (localObject != null) {
           ((QCircleFollowView.ItemPreClickListener)localObject).a();
         }
-        if (!a()) {
-          if (!QCircleHostUtil.isFollow(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser)) {
+        if (!d()) {
+          if (!QCircleHostUtil.isFollow(this.a)) {
             b(true);
           } else {
-            d();
+            e();
           }
         }
       }
@@ -329,21 +327,21 @@ public class QCircleFollowView
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    FeedCloudMeta.StUser localStUser = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
+    FeedCloudMeta.StUser localStUser = this.a;
     if ((localStUser != null) && ((paramSimpleBaseEvent instanceof QCircleFollowUpdateEvent)))
     {
       paramSimpleBaseEvent = (QCircleFollowUpdateEvent)paramSimpleBaseEvent;
-      if ((localStUser.id.get().equals(paramSimpleBaseEvent.mUserId)) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.followState.get() != paramSimpleBaseEvent.mFollowStatus))
+      if ((localStUser.id.get().equals(paramSimpleBaseEvent.mUserId)) && (this.a.followState.get() != paramSimpleBaseEvent.mFollowStatus))
       {
         a(paramSimpleBaseEvent.mFollowStatus);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$FollowChangeListener != null)
+        if (this.f != null)
         {
-          int i = paramSimpleBaseEvent.mFollowStatus;
+          int i1 = paramSimpleBaseEvent.mFollowStatus;
           boolean bool = true;
-          if (i != 1) {
+          if (i1 != 1) {
             bool = false;
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$FollowChangeListener.a(bool, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
+          this.f.a(bool, this.a);
         }
       }
     }
@@ -351,67 +349,67 @@ public class QCircleFollowView
   
   public void setFollowStateChangeListener(QCircleFollowView.FollowChangeListener paramFollowChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$FollowChangeListener = paramFollowChangeListener;
+    this.f = paramFollowChangeListener;
   }
   
   public void setFollowedDismiss(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public void setFollowedDrawable(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.k = paramInt;
   }
   
   public void setFollowedRemoteUrl(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.q = paramString;
   }
   
   public void setFollowedShowToast(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
   }
   
   public void setFollowedTextColor(int paramInt)
   {
-    this.e = paramInt;
+    this.n = paramInt;
   }
   
   public void setIsInNightMode(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public void setItemPreClickListener(QCircleFollowView.ItemPreClickListener paramItemPreClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$ItemPreClickListener = paramItemPreClickListener;
+    this.d = paramItemPreClickListener;
   }
   
   public void setItemReportListener(QCircleFollowView.FollowReportListener paramFollowReportListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView$FollowReportListener = paramFollowReportListener;
+    this.e = paramFollowReportListener;
   }
   
   public void setOnlyFollowMode(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
   }
   
   public void setUnFollowDrawable(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.j = paramInt;
   }
   
   public void setUnFollowRemoteUrl(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.p = paramString;
   }
   
   public void setUnFollowTextColor(int paramInt)
   {
-    this.f = paramInt;
+    this.o = paramInt;
   }
   
   public void setUserData(FeedCloudMeta.StUser paramStUser)
@@ -423,32 +421,32 @@ public class QCircleFollowView
   {
     if (paramStUser != null)
     {
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.set(paramStUser.id.get());
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.nick.set(paramStUser.nick.get());
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.blackState.set(paramStUser.blackState.get());
+      this.a.id.set(paramStUser.id.get());
+      this.a.nick.set(paramStUser.nick.get());
+      this.a.blackState.set(paramStUser.blackState.get());
       if ((!TextUtils.isEmpty(paramStUser.id.get())) && (!QCircleHostUtil.isOwner(paramStUser)))
       {
         if (((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).hasUin(paramStUser.id.get()))
         {
-          this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.followState.set(((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).getUinFollowed(paramStUser.id.get()));
+          this.a.followState.set(((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).getUinFollowed(paramStUser.id.get()));
           a(((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).getUinFollowed(paramStUser.id.get()));
         }
         else
         {
-          this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.followState.set(paramStUser.followState.get());
-          a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.followState.get());
+          this.a.followState.set(paramStUser.followState.get());
+          a(this.a.followState.get());
         }
       }
       else {
         setVisibility(8);
       }
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.widget.QCircleFollowView
  * JD-Core Version:    0.7.0.1
  */

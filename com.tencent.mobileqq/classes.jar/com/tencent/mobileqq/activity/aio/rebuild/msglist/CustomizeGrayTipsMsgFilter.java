@@ -15,12 +15,12 @@ public class CustomizeGrayTipsMsgFilter
 {
   public boolean a(@NonNull AIOContext paramAIOContext, boolean paramBoolean, List<ChatMessage> paramList)
   {
-    return ((CustomizeGrayTipsManager)paramAIOContext.a().getManager(QQManagerFactory.CUSTOMIZE_GRAY_TIPS)).a(paramAIOContext.a(), paramAIOContext.a().jdField_a_of_type_Int, paramAIOContext.a().jdField_a_of_type_JavaLangString);
+    return ((CustomizeGrayTipsManager)paramAIOContext.a().getManager(QQManagerFactory.CUSTOMIZE_GRAY_TIPS)).a(paramAIOContext.a(), paramAIOContext.O().a, paramAIOContext.O().b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.CustomizeGrayTipsMsgFilter
  * JD-Core Version:    0.7.0.1
  */

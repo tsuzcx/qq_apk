@@ -24,7 +24,7 @@
             </RelativeLayout>
             <RelativeLayout android:id="@id/kgn" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="44.0dip">
                 <ImageView android:id="@id/kgo" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="10.0dip" android:layout_centerVertical="true" />
-                <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/kgp" android:paddingLeft="1.0dip" android:paddingRight="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/kgo" android:layout_centerVertical="true" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@id/kgp" android:paddingLeft="1.0dip" android:paddingRight="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/kgo" android:layout_centerVertical="true" />
                 <Button android:id="@id/kgm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="10.0dip" android:text="@string/bt7" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i3" />
             </RelativeLayout>
             <com.tencent.mobileqq.banner.TipsBar android:id="@id/jmq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" tipsBar:barType="l6m" tipsBar:tipsIcon="@drawable/d3d" />
@@ -33,7 +33,7 @@
     <LinearLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/ify" android:background="#fff2f2f2" android:paddingLeft="15.0dip" android:paddingTop="7.0dip" android:paddingRight="15.0dip" android:paddingBottom="7.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <Button android:textSize="18.0dip" android:id="@id/ifz" android:layout_width="fill_parent" android:layout_height="42.0dip" android:text="@string/h1d" android:contentDescription="@string/h1d" style="@style/b9" />
         <Button android:textSize="18.0dip" android:id="@id/ifx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip" android:text="@string/rf9" style="@style/b9" />
-        <Button android:textSize="18.0dip" android:id="@id/o5j" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip" android:text="@string/h1d" style="@style/b9" />
+        <Button android:textSize="18.0dip" android:id="@id/pyg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip" android:text="@string/h1d" style="@style/b9" />
     </LinearLayout>
     <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
         <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" />

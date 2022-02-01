@@ -18,15 +18,15 @@ public class UploadStatusVideoInfoWidget$StoryVideoPublishStatusReceiver
   
   public void a(@NonNull UploadStatusVideoInfoWidget paramUploadStatusVideoInfoWidget, @NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    if ((paramUploadStatusVideoInfoWidget.a != null) && (paramStoryVideoPublishStatusEvent.a != null))
+    if ((paramUploadStatusVideoInfoWidget.p != null) && (paramStoryVideoPublishStatusEvent.c != null))
     {
-      if (!TextUtils.equals(paramUploadStatusVideoInfoWidget.a.a, paramStoryVideoPublishStatusEvent.a.mVid)) {
+      if (!TextUtils.equals(paramUploadStatusVideoInfoWidget.p.b, paramStoryVideoPublishStatusEvent.c.mVid)) {
         return;
       }
-      paramUploadStatusVideoInfoWidget.i();
+      paramUploadStatusVideoInfoWidget.x();
       paramUploadStatusVideoInfoWidget = (VideoCoverListGroupHolder)paramUploadStatusVideoInfoWidget.a(VideoCoverListGroupHolder.class);
       if (paramUploadStatusVideoInfoWidget != null) {
-        paramUploadStatusVideoInfoWidget.d();
+        paramUploadStatusVideoInfoWidget.h();
       }
     }
   }

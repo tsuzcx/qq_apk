@@ -12,60 +12,42 @@ import org.jetbrains.annotations.Nullable;
 public final class ErrorState
   extends VideoState
 {
-  @Nullable
-  private VideoPlayController jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
-  @Nullable
-  private VideoView jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-  @NotNull
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   @NotNull
   private AtomicInteger b;
+  @NotNull
+  private AtomicInteger c;
+  @Nullable
+  private VideoView d;
+  @Nullable
+  private VideoPlayController e;
   
   public ErrorState(@NotNull AtomicInteger paramAtomicInteger1, @NotNull AtomicInteger paramAtomicInteger2, @Nullable VideoView paramVideoView, @Nullable VideoPlayController paramVideoPlayController)
   {
     super(paramAtomicInteger1, paramAtomicInteger2, paramVideoView, paramVideoPlayController);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger1;
-    this.b = paramAtomicInteger2;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView = paramVideoView;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController = paramVideoPlayController;
+    this.b = paramAtomicInteger1;
+    this.c = paramAtomicInteger2;
+    this.d = paramVideoView;
+    this.e = paramVideoPlayController;
   }
   
-  private final void c()
+  private final void g()
   {
-    b().set(3);
+    c().set(3);
     a(3);
-  }
-  
-  @Nullable
-  public VideoPlayController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
-  }
-  
-  @Nullable
-  public VideoView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-  }
-  
-  @NotNull
-  public AtomicInteger a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   }
   
   public void a()
   {
-    int i = b().get();
+    int i = c().get();
     if (i != 6)
     {
       if (i != 8) {
         return;
       }
-      c();
+      g();
       return;
     }
-    b();
+    f();
   }
   
   @NotNull
@@ -74,9 +56,27 @@ public final class ErrorState
     return this.b;
   }
   
-  public final void b()
+  @NotNull
+  public AtomicInteger c()
   {
-    VideoPlayController localVideoPlayController = a();
+    return this.c;
+  }
+  
+  @Nullable
+  public VideoView d()
+  {
+    return this.d;
+  }
+  
+  @Nullable
+  public VideoPlayController e()
+  {
+    return this.e;
+  }
+  
+  public final void f()
+  {
+    VideoPlayController localVideoPlayController = e();
     if (localVideoPlayController != null) {
       localVideoPlayController.c((Function0)new ErrorState.stop.1(this));
     }
@@ -84,7 +84,7 @@ public final class ErrorState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.statemachine.ErrorState
  * JD-Core Version:    0.7.0.1
  */

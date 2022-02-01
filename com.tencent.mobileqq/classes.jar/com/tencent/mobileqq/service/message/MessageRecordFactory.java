@@ -16,6 +16,7 @@ import com.tencent.mobileqq.apollo.utils.api.IApolloMessageUtil;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.activateFriends.MessageForActivateFriends;
+import com.tencent.mobileqq.app.activateFriends.MessageForReminder;
 import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.ArkFlashChatMessage;
@@ -24,6 +25,7 @@ import com.tencent.mobileqq.data.HiBoomMessage;
 import com.tencent.mobileqq.data.MarkFaceMessage;
 import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
 import com.tencent.mobileqq.data.MessageForActivity;
+import com.tencent.mobileqq.data.MessageForAniSticker;
 import com.tencent.mobileqq.data.MessageForApproval;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForArkBabyqReply;
@@ -106,8 +108,10 @@ import com.tencent.mobileqq.data.MessageForWantGiftMsg;
 import com.tencent.mobileqq.data.MessageForYanZhi;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.guild.message.api.IGuildMessageUtilsApi;
 import com.tencent.mobileqq.hotchat.api.IHotChatApi;
 import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.qqguildsdk.api.IGPSService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.MobileQQService;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -123,17 +127,6 @@ import org.json.JSONObject;
 public class MessageRecordFactory
 {
   private static CreateMessageRecordCallbackGenerator a = new CreateMessageRecordCallbackGeneratorImpl();
-  
-  public static MessageForDevLittleVideo a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    MessageForDevLittleVideo localMessageForDevLittleVideo = new MessageForDevLittleVideo();
-    localMessageForDevLittleVideo.msgtype = -4509;
-    a(paramQQAppInterface, localMessageForDevLittleVideo, paramString1, paramString2, paramInt);
-    localMessageForDevLittleVideo.longMsgCount = 1;
-    localMessageForDevLittleVideo.longMsgIndex = 0;
-    localMessageForDevLittleVideo.longMsgId = ((short)(int)localMessageForDevLittleVideo.shmsgseq);
-    return localMessageForDevLittleVideo;
-  }
   
   public static CreateMessageRecordCallbackGenerator a()
   {
@@ -217,17 +210,6 @@ public class MessageRecordFactory
     return localMessageForMarketFace;
   }
   
-  public static MessageForMixedMsg a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    MessageForMixedMsg localMessageForMixedMsg = new MessageForMixedMsg();
-    localMessageForMixedMsg.msgtype = -1035;
-    a(paramQQAppInterface, localMessageForMixedMsg, paramString1, paramString2, paramInt);
-    localMessageForMixedMsg.longMsgCount = 1;
-    localMessageForMixedMsg.longMsgIndex = 0;
-    localMessageForMixedMsg.longMsgId = ((short)(int)localMessageForMixedMsg.shmsgseq);
-    return localMessageForMixedMsg;
-  }
-  
   public static MessageForPic a(AppInterface paramAppInterface, String paramString1, String paramString2, int paramInt)
   {
     MessageForPic localMessageForPic = new MessageForPic();
@@ -237,17 +219,6 @@ public class MessageRecordFactory
     localMessageForPic.longMsgIndex = 0;
     localMessageForPic.longMsgId = ((short)(int)localMessageForPic.shmsgseq);
     return localMessageForPic;
-  }
-  
-  public static MessageForPtt a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    MessageForPtt localMessageForPtt = new MessageForPtt();
-    localMessageForPtt.msgtype = -2002;
-    a(paramQQAppInterface, localMessageForPtt, paramString1, paramString2, paramInt);
-    localMessageForPtt.longMsgCount = 1;
-    localMessageForPtt.longMsgIndex = 0;
-    localMessageForPtt.longMsgId = ((short)(int)localMessageForPtt.shmsgseq);
-    return localMessageForPtt;
   }
   
   public static MessageForQQStory a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, AbsStructMsg paramAbsStructMsg)
@@ -288,13 +259,13 @@ public class MessageRecordFactory
     localMessageForReplyText.issend = 1;
     localMessageForReplyText.istroop = paramInt;
     localMessageForReplyText.msgUid = MessageUtils.a(MessageUtils.a());
-    paramString1 = paramQQAppInterface.getMessageFacade().b(localMessageForReplyText.senderuin, paramInt);
+    paramString1 = paramQQAppInterface.getMessageFacade().o(localMessageForReplyText.senderuin, paramInt);
     if ((paramString1 != null) && (!paramString1.isEmpty())) {
       localMessageForReplyText.shmsgseq = ((ChatMessage)paramString1.get(paramString1.size() - 1)).shmsgseq;
     } else {
       localMessageForReplyText.shmsgseq = Math.abs(new Random().nextInt());
     }
-    localMessageForReplyText.time = MessageCache.a();
+    localMessageForReplyText.time = MessageCache.c();
     localMessageForReplyText.mSourceMsgInfo = new MessageForReplyText.SourceMsgInfo(paramSourceMsgInfo);
     localMessageForReplyText.sb = paramString2;
     try
@@ -324,29 +295,6 @@ public class MessageRecordFactory
     return localMessageForShortVideo;
   }
   
-  public static MessageForStructing a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, AbsStructMsg paramAbsStructMsg)
-  {
-    paramString1 = (MessageForStructing)a(-2011);
-    paramString1.msgtype = -2011;
-    paramString1.structingMsg = paramAbsStructMsg;
-    paramString1.mIsParsed = true;
-    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt);
-    try
-    {
-      paramString1.msgData = paramAbsStructMsg.getBytes();
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("structMsg", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
-      }
-    }
-    if (paramAbsStructMsg.sourceAccoutType != 0) {
-      paramString1.saveExtInfoToExtStr("accostType", String.valueOf(AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA));
-    }
-    return paramString1;
-  }
-  
   public static MessageForText a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, byte paramByte1, byte paramByte2, short paramShort, String paramString4)
   {
     paramString1 = (MessageForText)a(-1000);
@@ -365,29 +313,6 @@ public class MessageRecordFactory
     }
     a(paramAppInterface, paramString1, paramString2, paramString3, paramInt);
     paramString1.parse();
-    return paramString1;
-  }
-  
-  public static MessageForTribeShortVideo a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, AbsStructMsg paramAbsStructMsg)
-  {
-    paramString1 = (MessageForTribeShortVideo)a(-7002);
-    paramString1.msgtype = -7002;
-    paramString1.structingMsg = paramAbsStructMsg;
-    paramString1.mIsParsed = false;
-    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt);
-    try
-    {
-      paramString1.msgData = paramAbsStructMsg.getBytes();
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("structMsg", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
-      }
-    }
-    if (paramAbsStructMsg.sourceAccoutType != 0) {
-      paramString1.saveExtInfoToExtStr("accostType", String.valueOf(AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA));
-    }
     return paramString1;
   }
   
@@ -434,7 +359,7 @@ public class MessageRecordFactory
     if (paramMessageRecord == null)
     {
       localObject = paramMessageRecord;
-      if (MessageUtils.a(paramInt))
+      if (MessageUtils.b(paramInt))
       {
         if (paramInt == -1002) {
           return new MessageForSafeGrayTips();
@@ -591,7 +516,7 @@ public class MessageRecordFactory
   {
     String str1 = paramString2;
     int i = MessageUtils.a();
-    int j = (int)MessageCache.a();
+    int j = (int)MessageCache.c();
     int k = MobileQQService.seq;
     MobileQQService.seq = k + 1;
     long l = k;
@@ -609,7 +534,7 @@ public class MessageRecordFactory
           ((StringBuilder)localObject).append(paramString2.mobileNo);
           localObject = ((StringBuilder)localObject).toString();
           if ((localObject != null) && (((String)localObject).length() > 0)) {
-            break label261;
+            break label257;
           }
           if (QLog.isColorLevel())
           {
@@ -620,7 +545,8 @@ public class MessageRecordFactory
           }
         }
       }
-      localObject = str2;
+      paramString2 = str2;
+      break label260;
     }
     else if (str1 != null)
     {
@@ -639,10 +565,15 @@ public class MessageRecordFactory
         localObject = str1;
       }
     }
-    label261:
+    label257:
+    paramString2 = (String)localObject;
+    label260:
+    if (paramInt == 10014) {
+      ((IGuildMessageUtilsApi)QRoute.api(IGuildMessageUtilsApi.class)).saveGuildIdToMR(paramMessageRecord, ((IGPSService)paramAppInterface.getRuntimeService(IGPSService.class, "")).getGuildIdOf(paramString1));
+    }
     if ((!(paramMessageRecord instanceof MessageForPoke)) && (paramInt == 0))
     {
-      PokeItemAnimationManager.a().a(paramAppInterface, paramString1, -1, 0, -1);
+      PokeItemAnimationManager.c().a(paramAppInterface, paramString1, -1, 0, -1);
       if (QLog.isColorLevel()) {
         QLog.d("PokeMsg", 2, "send unPokeMsg strength:-1");
       }
@@ -650,7 +581,7 @@ public class MessageRecordFactory
     paramMessageRecord.frienduin = paramString1;
     paramMessageRecord.istroop = paramInt;
     paramMessageRecord.selfuin = str2;
-    paramMessageRecord.senderuin = ((String)localObject);
+    paramMessageRecord.senderuin = paramString2;
     paramMessageRecord.isread = true;
     paramMessageRecord.time = j;
     paramMessageRecord.msgseq = l;
@@ -675,10 +606,10 @@ public class MessageRecordFactory
     paramMessageRecord1.msgUid = paramMessageRecord2.msgUid;
     paramMessageRecord1.extStr = paramMessageRecord2.extStr;
     paramMessageRecord1.extLong = paramMessageRecord2.extLong;
-    if (AnonymousChatHelper.a(paramMessageRecord2)) {
+    if (AnonymousChatHelper.c(paramMessageRecord2)) {
       paramMessageRecord1.vipBubbleID = paramMessageRecord2.vipBubbleID;
     }
-    paramMessageRecord1.time = ((int)MessageCache.a());
+    paramMessageRecord1.time = ((int)MessageCache.c());
   }
   
   /* Error */
@@ -688,61 +619,61 @@ public class MessageRecordFactory
     //   0: aload_1
     //   1: ifnull +127 -> 128
     //   4: aload_1
-    //   5: getfield 405	com/tencent/mobileqq/data/MessageRecord:msgtype	I
+    //   5: getfield 364	com/tencent/mobileqq/data/MessageRecord:msgtype	I
     //   8: sipush -2056
     //   11: if_icmpne +117 -> 128
-    //   14: new 413	org/json/JSONObject
+    //   14: new 372	org/json/JSONObject
     //   17: dup
     //   18: aload_0
-    //   19: invokespecial 416	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   19: invokespecial 375	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   22: astore_0
     //   23: aload_0
-    //   24: getstatic 606	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
-    //   27: invokevirtual 422	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   24: getstatic 585	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
+    //   27: invokevirtual 381	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   30: ifeq +98 -> 128
-    //   33: invokestatic 196	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   33: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   36: ifeq +38 -> 74
-    //   39: new 533	java/lang/StringBuilder
+    //   39: new 495	java/lang/StringBuilder
     //   42: dup
-    //   43: invokespecial 534	java/lang/StringBuilder:<init>	()V
+    //   43: invokespecial 496	java/lang/StringBuilder:<init>	()V
     //   46: astore_2
     //   47: aload_2
-    //   48: ldc_w 608
-    //   51: invokevirtual 543	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: ldc_w 587
+    //   51: invokevirtual 505	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: pop
     //   55: aload_2
-    //   56: getstatic 606	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
-    //   59: invokevirtual 543	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: getstatic 585	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
+    //   59: invokevirtual 505	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   62: pop
-    //   63: ldc_w 610
+    //   63: ldc_w 589
     //   66: iconst_2
     //   67: aload_2
-    //   68: invokevirtual 549	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   71: invokestatic 553	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   68: invokevirtual 511	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   71: invokestatic 515	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   74: aload_1
-    //   75: checkcast 603	com/tencent/mobileqq/data/MessageForWantGiftMsg
+    //   75: checkcast 582	com/tencent/mobileqq/data/MessageForWantGiftMsg
     //   78: aload_0
-    //   79: getstatic 606	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
-    //   82: invokevirtual 426	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   85: invokestatic 615	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   88: invokevirtual 618	java/lang/Long:longValue	()J
-    //   91: putfield 621	com/tencent/mobileqq/data/MessageForWantGiftMsg:wantGiftSenderUin	J
+    //   79: getstatic 585	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
+    //   82: invokevirtual 385	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   85: invokestatic 594	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   88: invokevirtual 597	java/lang/Long:longValue	()J
+    //   91: putfield 600	com/tencent/mobileqq/data/MessageForWantGiftMsg:wantGiftSenderUin	J
     //   94: aload_1
-    //   95: getstatic 606	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
+    //   95: getstatic 585	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
     //   98: aload_0
-    //   99: getstatic 606	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
-    //   102: invokevirtual 426	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   105: invokevirtual 622	com/tencent/mobileqq/data/MessageRecord:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
+    //   99: getstatic 585	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
+    //   102: invokevirtual 385	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   105: invokevirtual 601	com/tencent/mobileqq/data/MessageRecord:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
     //   108: return
     //   109: astore_0
-    //   110: invokestatic 196	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   110: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   113: ifeq +15 -> 128
-    //   116: ldc_w 610
+    //   116: ldc_w 589
     //   119: iconst_2
     //   120: aload_0
-    //   121: invokevirtual 201	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   121: invokevirtual 174	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   124: aload_0
-    //   125: invokestatic 127	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   125: invokestatic 118	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   128: return
     //   129: astore_2
     //   130: goto -36 -> 94
@@ -777,17 +708,6 @@ public class MessageRecordFactory
     return localMessageForArkApp;
   }
   
-  public static MessageForPtt b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    MessageForDevPtt localMessageForDevPtt = new MessageForDevPtt();
-    localMessageForDevPtt.msgtype = -4501;
-    a(paramQQAppInterface, localMessageForDevPtt, paramString1, paramString2, paramInt);
-    localMessageForDevPtt.longMsgCount = 1;
-    localMessageForDevPtt.longMsgIndex = 0;
-    localMessageForDevPtt.longMsgId = ((short)(int)localMessageForDevPtt.shmsgseq);
-    return localMessageForDevPtt;
-  }
-  
   public static MessageForShortVideo b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
     MessageForBlessPTV localMessageForBlessPTV = new MessageForBlessPTV();
@@ -797,6 +717,29 @@ public class MessageRecordFactory
     localMessageForBlessPTV.longMsgIndex = 0;
     localMessageForBlessPTV.longMsgId = ((short)(int)localMessageForBlessPTV.shmsgseq);
     return localMessageForBlessPTV;
+  }
+  
+  public static MessageForTribeShortVideo b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, AbsStructMsg paramAbsStructMsg)
+  {
+    paramString1 = (MessageForTribeShortVideo)a(-7002);
+    paramString1.msgtype = -7002;
+    paramString1.structingMsg = paramAbsStructMsg;
+    paramString1.mIsParsed = false;
+    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt);
+    try
+    {
+      paramString1.msgData = paramAbsStructMsg.getBytes();
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("structMsg", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
+      }
+    }
+    if (paramAbsStructMsg.sourceAccoutType != 0) {
+      paramString1.saveExtInfoToExtStr("accostType", String.valueOf(AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA));
+    }
+    return paramString1;
   }
   
   private static MessageRecord b(int paramInt)
@@ -817,6 +760,29 @@ public class MessageRecordFactory
     localMessageForDevShortVideo.longMsgIndex = 0;
     localMessageForDevShortVideo.longMsgId = ((short)(int)localMessageForDevShortVideo.shmsgseq);
     return localMessageForDevShortVideo;
+  }
+  
+  public static MessageForStructing c(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, AbsStructMsg paramAbsStructMsg)
+  {
+    paramString1 = (MessageForStructing)a(-2011);
+    paramString1.msgtype = -2011;
+    paramString1.structingMsg = paramAbsStructMsg;
+    paramString1.mIsParsed = true;
+    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt);
+    try
+    {
+      paramString1.msgData = paramAbsStructMsg.getBytes();
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("structMsg", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
+      }
+    }
+    if (paramAbsStructMsg.sourceAccoutType != 0) {
+      paramString1.saveExtInfoToExtStr("accostType", String.valueOf(AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA));
+    }
+    return paramString1;
   }
   
   private static MessageRecord c(int paramInt)
@@ -846,8 +812,21 @@ public class MessageRecordFactory
     case -5004: 
     case -3006: 
       return new MessageForPubAccount();
+    case -8018: 
+      return new MessageForAniSticker();
     }
     return new MessageForPic();
+  }
+  
+  public static MessageForDevLittleVideo d(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    MessageForDevLittleVideo localMessageForDevLittleVideo = new MessageForDevLittleVideo();
+    localMessageForDevLittleVideo.msgtype = -4509;
+    a(paramQQAppInterface, localMessageForDevLittleVideo, paramString1, paramString2, paramInt);
+    localMessageForDevLittleVideo.longMsgCount = 1;
+    localMessageForDevLittleVideo.longMsgIndex = 0;
+    localMessageForDevLittleVideo.longMsgId = ((short)(int)localMessageForDevLittleVideo.shmsgseq);
+    return localMessageForDevLittleVideo;
   }
   
   private static MessageRecord d(int paramInt)
@@ -896,57 +875,83 @@ public class MessageRecordFactory
     return new MessageForAutoReply();
   }
   
+  public static MessageForPtt e(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    MessageForPtt localMessageForPtt = new MessageForPtt();
+    localMessageForPtt.msgtype = -2002;
+    a(paramQQAppInterface, localMessageForPtt, paramString1, paramString2, paramInt);
+    localMessageForPtt.longMsgCount = 1;
+    localMessageForPtt.longMsgIndex = 0;
+    localMessageForPtt.longMsgId = ((short)(int)localMessageForPtt.shmsgseq);
+    return localMessageForPtt;
+  }
+  
   private static MessageRecord e(int paramInt)
   {
-    if (paramInt != -5003)
+    if (paramInt != -7090)
     {
-      if (paramInt != -3012)
+      if (paramInt != -5003)
       {
-        if ((paramInt != -2049) && (paramInt != -2043) && (paramInt != -2041))
+        if (paramInt != -3012)
         {
-          if (paramInt != -2038) {
-            if (paramInt != -2033) {
-              if (paramInt != -2029) {
-                if (paramInt != -2025) {
-                  if (paramInt != -2036) {
-                    if (paramInt == -2035) {}
+          if ((paramInt != -2049) && (paramInt != -2043) && (paramInt != -2041))
+          {
+            if (paramInt != -2038) {
+              if (paramInt != -2033) {
+                if (paramInt != -2029) {
+                  if (paramInt != -2025) {
+                    if (paramInt != -2036) {
+                      if (paramInt == -2035) {}
+                    }
                   }
                 }
               }
             }
-          }
-          switch (paramInt)
-          {
-          default: 
             switch (paramInt)
             {
             default: 
-              return f(paramInt);
-            case -4500: 
-              return new MessageForDeviceFile();
-            case -4501: 
-              return new MessageForDevPtt();
-            case -4502: 
-              return new MessageForDeviceSingleStruct();
+              switch (paramInt)
+              {
+              default: 
+                return f(paramInt);
+              case -4500: 
+                return new MessageForDeviceFile();
+              case -4501: 
+                return new MessageForDevPtt();
+              case -4502: 
+                return new MessageForDeviceSingleStruct();
+              }
+              return new MessageForDevShortVideo();
+            case -4508: 
+              return new MessageForDeviceText();
+            case -4509: 
+              return new MessageForDevLittleVideo();
+              return new MessageForDeliverGiftTips();
+              return new MessageForTroopFee();
+              return new MessageForQQWalletMsg();
+              return new MessageForQQWalletTips();
+              return ((IHotChatApi)QRoute.api(IHotChatApi.class)).getShareHotChatGrayTips();
+              return new MessageForTroopGift();
             }
-            return new MessageForDevShortVideo();
-          case -4508: 
-            return new MessageForDeviceText();
-          case -4509: 
-            return new MessageForDevLittleVideo();
-            return new MessageForDeliverGiftTips();
-            return new MessageForTroopFee();
-            return new MessageForQQWalletMsg();
-            return new MessageForQQWalletTips();
-            return ((IHotChatApi)QRoute.api(IHotChatApi.class)).getShareHotChatGrayTips();
-            return new MessageForTroopGift();
           }
+          return new MessageForGrayTips();
         }
-        return new MessageForGrayTips();
+        return new MessageForColorRing();
       }
-      return new MessageForColorRing();
+      return new MessageForActivateFriends();
     }
-    return new MessageForActivateFriends();
+    return new MessageForReminder();
+  }
+  
+  public static MessageForPtt f(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    MessageForDevPtt localMessageForDevPtt = new MessageForDevPtt();
+    localMessageForDevPtt.msgtype = -4501;
+    a(paramQQAppInterface, localMessageForDevPtt, paramString1, paramString2, paramInt);
+    localMessageForDevPtt.longMsgCount = 1;
+    localMessageForDevPtt.longMsgIndex = 0;
+    localMessageForDevPtt.longMsgId = ((short)(int)localMessageForDevPtt.shmsgseq);
+    return localMessageForDevPtt;
   }
   
   private static MessageRecord f(int paramInt)
@@ -1003,6 +1008,17 @@ public class MessageRecordFactory
       return new MessageForArkApp();
     }
     return new MessageForPokeEmo();
+  }
+  
+  public static MessageForMixedMsg g(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    MessageForMixedMsg localMessageForMixedMsg = new MessageForMixedMsg();
+    localMessageForMixedMsg.msgtype = -1035;
+    a(paramQQAppInterface, localMessageForMixedMsg, paramString1, paramString2, paramInt);
+    localMessageForMixedMsg.longMsgCount = 1;
+    localMessageForMixedMsg.longMsgIndex = 0;
+    localMessageForMixedMsg.longMsgId = ((short)(int)localMessageForMixedMsg.shmsgseq);
+    return localMessageForMixedMsg;
   }
   
   private static MessageRecord g(int paramInt)
@@ -1063,56 +1079,41 @@ public class MessageRecordFactory
   
   private static MessageRecord h(int paramInt)
   {
-    if (paramInt != -7007)
+    switch (paramInt)
     {
-      if (paramInt != -7005)
-      {
-        if (paramInt != -7002)
-        {
-          if (paramInt != -5016)
-          {
-            if (paramInt != -3017)
-            {
-              if (paramInt != -2077)
-              {
-                if (paramInt != -2074)
-                {
-                  if (paramInt != -2072)
-                  {
-                    if (paramInt != -2061)
-                    {
-                      if ((paramInt != -4024) && (paramInt != -4023))
-                      {
-                        switch (paramInt)
-                        {
-                        default: 
-                          return i(paramInt);
-                        case -2068: 
-                          return new MessageForDarenAssistant();
-                        case -2069: 
-                          return new MessageForStarLeague();
-                        }
-                        return new MessageForYanZhi();
-                      }
-                      return new MessageForLimitChatTopic();
-                    }
-                    return new MessageForQQStoryFeed();
-                  }
-                  return new MessageForFuDai();
-                }
-                return new MessageForAIOStoryVideo();
-              }
-              return new MessageForQCircleFeed();
-            }
-            return new MessageForDLFile();
-          }
-          return new MessageForArkBabyqReply();
-        }
-        return new MessageForTribeShortVideo();
-      }
+    default: 
+      return i(paramInt);
+    case -2061: 
+      return new MessageForQQStoryFeed();
+    case -2068: 
+      return new MessageForDarenAssistant();
+    case -2069: 
+      return new MessageForStarLeague();
+    case -2070: 
+      return new MessageForYanZhi();
+    case -2072: 
+      return new MessageForFuDai();
+    case -2074: 
+      return new MessageForAIOStoryVideo();
+    case -2077: 
+      return new MessageForQCircleFeed();
+    case -3017: 
+      return new MessageForDLFile();
+    case -4024: 
+    case -4023: 
+      return new MessageForLimitChatTopic();
+    case -4028: 
+      return ((IGuildMessageUtilsApi)QRoute.api(IGuildMessageUtilsApi.class)).getNewMessageRecordForGuildWelcome();
+    case -5016: 
+      return new MessageForArkBabyqReply();
+    case -7002: 
+      return new MessageForTribeShortVideo();
+    case -7005: 
       return new MessageForLimitChatConfirm();
+    case -7007: 
+      return new MessageForBirthdayNotice();
     }
-    return new MessageForBirthdayNotice();
+    return new MessageForAniSticker();
   }
   
   private static MessageRecord i(int paramInt)
@@ -1126,7 +1127,7 @@ public class MessageRecordFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageRecordFactory
  * JD-Core Version:    0.7.0.1
  */

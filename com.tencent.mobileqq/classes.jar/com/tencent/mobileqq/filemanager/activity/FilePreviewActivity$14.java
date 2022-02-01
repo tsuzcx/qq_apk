@@ -14,22 +14,22 @@ class FilePreviewActivity$14
   
   public void run()
   {
-    if (this.this$0.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null)
+    if (this.this$0.P == null)
     {
       localObject = this.this$0;
-      ((FilePreviewActivity)localObject).jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(((FilePreviewActivity)localObject).jdField_a_of_type_AndroidWidgetLinearLayout);
+      ((FilePreviewActivity)localObject).P = new FilePreviewAnimQueue(((FilePreviewActivity)localObject).u);
     }
-    this.this$0.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.this$0.jdField_c_of_type_AndroidWidgetTextView.setText(2131694582);
+    this.this$0.y.setVisibility(0);
+    this.this$0.z.setText(2131892266);
     Object localObject = new AlphaAnimation(0.5F, 1.0F);
     ((AlphaAnimation)localObject).setFillAfter(true);
     FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localObject;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = true;
-    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.jdField_a_of_type_Int;
-    localFilePreviewAnim.b = 1000;
-    this.this$0.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
-    this.this$0.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
+    localFilePreviewAnim.a = localObject;
+    localFilePreviewAnim.c = true;
+    localFilePreviewAnim.b = FilePreviewAnimQueue.a;
+    localFilePreviewAnim.d = 1000;
+    this.this$0.P.a(localFilePreviewAnim);
+    this.this$0.P.a();
     if (QLog.isColorLevel()) {
       QLog.i("<FileAssistant>FilePreviewActivity", 2, "showGetmore(1000)");
     }
@@ -37,7 +37,7 @@ class FilePreviewActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.14
  * JD-Core Version:    0.7.0.1
  */

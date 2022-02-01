@@ -4,14 +4,8 @@ import com.tencent.mobileqq.utils.ViewUtils;
 
 public abstract interface IRIJEmotionSize
 {
-  public static final int a;
-  public static final IRIJEmotionSize a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataEmotionsizeIRIJEmotionSize = new RIJEmotionMediumSize();
-    jdField_a_of_type_Int = ViewUtils.a(6.0F);
-  }
+  public static final IRIJEmotionSize a = new RIJEmotionMediumSize();
+  public static final int b = ViewUtils.dip2px(6.0F);
   
   public abstract int a();
   
@@ -35,7 +29,7 @@ public abstract interface IRIJEmotionSize
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.emotion.data.emotionsize.IRIJEmotionSize
  * JD-Core Version:    0.7.0.1
  */

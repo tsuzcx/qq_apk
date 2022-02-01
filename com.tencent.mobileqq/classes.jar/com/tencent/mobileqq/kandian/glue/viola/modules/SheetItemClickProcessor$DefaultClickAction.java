@@ -19,12 +19,12 @@ public class SheetItemClickProcessor$DefaultClickAction
     } else {
       paramString1 = null;
     }
-    SheetItemClickProcessor.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesSheetItemClickProcessor).mShareUtils.a(this.jdField_a_of_type_OrgJsonJSONObject, paramInt, this.jdField_a_of_type_AndroidAppActivity, paramString1, paramActionSheetItem.uinType, paramActionSheetItem.label);
+    SheetItemClickProcessor.a(this.a).mShareUtils.a(this.d, paramInt, this.b, paramString1, paramActionSheetItem.uinType, paramActionSheetItem.label);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.SheetItemClickProcessor.DefaultClickAction
  * JD-Core Version:    0.7.0.1
  */

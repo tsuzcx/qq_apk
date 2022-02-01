@@ -11,23 +11,23 @@ class AddFriendVerifyActivity$5$1
   
   public void run()
   {
-    if (AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.this$0).isShown())
+    if (AddFriendVerifyActivity.f(this.b.this$0).isShown())
     {
-      TextView localTextView = AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.this$0);
+      TextView localTextView = AddFriendVerifyActivity.f(this.b.this$0);
       String str;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.jdField_a_of_type_JavaLangString)) {
-        str = this.jdField_a_of_type_JavaLangString;
+      if (TextUtils.isEmpty(this.b.a)) {
+        str = this.a;
       } else {
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.jdField_a_of_type_JavaLangString;
+        str = this.b.a;
       }
       localTextView.setText(str);
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
-        localTextView = AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.this$0);
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.jdField_a_of_type_JavaLangString)) {
-          str = this.jdField_a_of_type_JavaLangString;
+        localTextView = AddFriendVerifyActivity.f(this.b.this$0);
+        if (TextUtils.isEmpty(this.b.a)) {
+          str = this.a;
         } else {
-          str = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.jdField_a_of_type_JavaLangString;
+          str = this.b.a;
         }
         localTextView.setContentDescription(str);
       }
@@ -36,7 +36,7 @@ class AddFriendVerifyActivity$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

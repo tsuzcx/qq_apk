@@ -24,9 +24,9 @@ public class TroopCardBanner$CPagerAdapter
   
   public int getCount()
   {
-    if ((this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard != null) && (this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.get().size() > 0))
+    if ((this.a.e != null) && (this.a.e.rpt_banner_items.get().size() > 0))
     {
-      if (1 == this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.get().size()) {
+      if (1 == this.a.e.rpt_banner_items.get().size()) {
         return 1;
       }
       return 2147483647;
@@ -36,9 +36,9 @@ public class TroopCardBanner$CPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    paramInt %= this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.size();
-    ImageView localImageView = new ImageView(this.a.jdField_a_of_type_AndroidContentContext);
-    localImageView.setImageDrawable(URLDrawable.getDrawable(((popclassifc.BannerItem)this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.get(paramInt)).str_pic_url.get(), null));
+    paramInt %= this.a.e.rpt_banner_items.size();
+    ImageView localImageView = new ImageView(this.a.b);
+    localImageView.setImageDrawable(URLDrawable.getDrawable(((popclassifc.BannerItem)this.a.e.rpt_banner_items.get(paramInt)).str_pic_url.get(), null));
     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     paramViewGroup.addView(localImageView, -1, -1);
     localImageView.setTag(Integer.valueOf(paramInt));

@@ -46,7 +46,7 @@ public class TaskStatus
   {
     DownloadTask localDownloadTask = this.task;
     if (localDownloadTask != null) {
-      return localDownloadTask.a();
+      return localDownloadTask.b();
     }
     return (Bundle)((IVasEmojiManager)((IEmosmService)QRoute.api(IEmosmService.class)).getVasEmojiManager(paramAppInterface)).getParamMap().get(this.epId);
   }
@@ -55,7 +55,7 @@ public class TaskStatus
   {
     DownloadTask localDownloadTask = this.task;
     if (localDownloadTask != null) {
-      return localDownloadTask.a;
+      return localDownloadTask.l;
     }
     return this.percent;
   }
@@ -72,7 +72,7 @@ public class TaskStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.TaskStatus
  * JD-Core Version:    0.7.0.1
  */

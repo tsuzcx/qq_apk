@@ -7,28 +7,20 @@ import android.os.Build.VERSION;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.dpc.api.IDPCApi;
 import com.tencent.mobileqq.dpc.enumname.DPCNames;
-import com.tencent.mobileqq.javahook.BadTokenHooker;
-import com.tencent.mobileqq.javahook.BitmapOOMHooker;
-import com.tencent.mobileqq.javahook.TimeoutExceptionHooker;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqperf.MagnifierSDK;
-import com.tencent.qqperf.monitor.base.IAPMModuleBattery;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class InitHook
   extends Step
 {
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static boolean a = false;
   
   @TargetApi(9)
   private static void a(boolean paramBoolean, Throwable paramThrowable, int paramInt)
@@ -70,42 +62,11 @@ public class InitHook
   {
     try
     {
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(0, 1)) {
-        if ((BaseApplicationImpl.sProcessId != 1) && (BaseApplicationImpl.sProcessId != 2))
-        {
-          int i = BaseApplicationImpl.sProcessId;
-          if (i != 7) {}
-        }
-        else
-        {
-          try
-          {
-            boolean bool = JavaHookBridge.isSdkAvailable();
-            if (!bool) {
-              return;
-            }
-            TimeoutExceptionHooker.a();
-          }
-          catch (Throwable localThrowable)
-          {
-            a(false, localThrowable, 90001);
-          }
-        }
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  private static void c()
-  {
-    try
-    {
-      boolean bool = jdField_a_of_type_Boolean;
+      boolean bool = a;
       if (bool) {
         return;
       }
-      jdField_a_of_type_Boolean = true;
+      a = true;
       try
       {
         if (!"1".equals(((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(DPCNames.hook_switch.name(), "0")))
@@ -114,21 +75,6 @@ public class InitHook
           a(false, null, 90002);
           return;
         }
-        if (!JavaHookBridge.isSdkAvailable())
-        {
-          QLog.d("InitHook", 1, "NOT AVA");
-          a(false, null, 90003);
-          return;
-        }
-        QLog.d("InitHook", 1, "start");
-        MagnifierSDK.a().a().c();
-        int i = BaseApplicationImpl.sProcessId;
-        if (i != 1) {
-          return;
-        }
-        BitmapOOMHooker.a();
-        BadTokenHooker.a();
-        i = BaseApplicationImpl.sProcessId;
         a(true, null, 0);
       }
       catch (Error localError)
@@ -149,14 +95,13 @@ public class InitHook
   {
     if (BaseApplicationImpl.sProcessId == 1)
     {
-      if (((IDPCApi)QRoute.api(IDPCApi.class)).getServerDataCurrentStateWithoutAccountManager() == 4) {
-        c();
-      } else {
-        ((IDPCApi)QRoute.api(IDPCApi.class)).addObserver(new InitHook.MyDPCObserver(null));
+      if (((IDPCApi)QRoute.api(IDPCApi.class)).getServerDataCurrentStateWithoutAccountManager() == 4)
+      {
+        b();
+        return true;
       }
-    }
-    else {
-      c();
+      ((IDPCApi)QRoute.api(IDPCApi.class)).addObserver(new InitHook.MyDPCObserver(null));
+      return true;
     }
     b();
     return true;
@@ -164,7 +109,7 @@ public class InitHook
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitHook
  * JD-Core Version:    0.7.0.1
  */

@@ -12,11 +12,11 @@ public class VideoGameInfo
   @JsonORM.Column(a="gametype")
   public int a;
   @JsonORM.Column(a="gameid")
-  public String a;
-  @JsonORM.Column(a="name")
   public String b;
-  @JsonORM.Column(a="result")
+  @JsonORM.Column(a="name")
   public String c;
+  @JsonORM.Column(a="result")
+  public String d;
   
   public static VideoGameInfo a(String paramString)
   {
@@ -42,7 +42,7 @@ public class VideoGameInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.VideoGameInfo
  * JD-Core Version:    0.7.0.1
  */

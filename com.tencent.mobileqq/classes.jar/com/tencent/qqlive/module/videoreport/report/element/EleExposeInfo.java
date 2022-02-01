@@ -6,13 +6,8 @@ import java.util.concurrent.TimeUnit;
 public class EleExposeInfo
 {
   private static final long ELEMENT_EXPOSE_EXPIRE_TIME = TimeUnit.MILLISECONDS.convert(30L, TimeUnit.MINUTES);
-  long mExposeTime;
-  boolean mHasReport;
-  
-  private void updateExposureTime()
-  {
-    this.mExposeTime = SystemClock.elapsedRealtime();
-  }
+  private long mExposeTime;
+  private boolean mHasReport;
   
   public boolean hasReport()
   {
@@ -21,7 +16,7 @@ public class EleExposeInfo
   
   public void onExpose()
   {
-    updateExposureTime();
+    this.mExposeTime = SystemClock.elapsedRealtime();
   }
   
   public void onReport()
@@ -54,7 +49,7 @@ public class EleExposeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.EleExposeInfo
  * JD-Core Version:    0.7.0.1
  */

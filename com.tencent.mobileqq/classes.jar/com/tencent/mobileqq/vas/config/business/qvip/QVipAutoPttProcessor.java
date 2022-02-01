@@ -11,9 +11,9 @@ import org.json.JSONObject;
 public class QVipAutoPttProcessor
   extends BaseQVipConfigProcessor<QVipAutoPttConfig>
 {
-  public static QVipAutoPttConfig c()
+  public static QVipAutoPttConfig e()
   {
-    QVipAutoPttConfig localQVipAutoPttConfig2 = (QVipAutoPttConfig)QConfigManager.a().a(498);
+    QVipAutoPttConfig localQVipAutoPttConfig2 = (QVipAutoPttConfig)QConfigManager.b().b(498);
     QVipAutoPttConfig localQVipAutoPttConfig1 = localQVipAutoPttConfig2;
     if (localQVipAutoPttConfig2 == null) {
       localQVipAutoPttConfig1 = new QVipAutoPttConfig();
@@ -31,22 +31,22 @@ public class QVipAutoPttProcessor
   public QVipAutoPttConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
     QVipAutoPttConfig localQVipAutoPttConfig = new QVipAutoPttConfig();
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString;
+    paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
     if (TextUtils.isEmpty(paramArrayOfQConfItem)) {
       return localQVipAutoPttConfig;
     }
     try
     {
       paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem);
-      localQVipAutoPttConfig.jdField_a_of_type_Int = paramArrayOfQConfItem.optInt("stage");
-      localQVipAutoPttConfig.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.optString("pay_url");
+      localQVipAutoPttConfig.a = paramArrayOfQConfItem.optInt("stage");
+      localQVipAutoPttConfig.b = paramArrayOfQConfItem.optString("pay_url");
       if (QLog.isColorLevel())
       {
         paramArrayOfQConfItem = new StringBuilder();
         paramArrayOfQConfItem.append("json parse config.stage:");
-        paramArrayOfQConfItem.append(localQVipAutoPttConfig.jdField_a_of_type_Int);
+        paramArrayOfQConfItem.append(localQVipAutoPttConfig.a);
         paramArrayOfQConfItem.append(" url=");
-        paramArrayOfQConfItem.append(localQVipAutoPttConfig.jdField_a_of_type_JavaLangString);
+        paramArrayOfQConfItem.append(localQVipAutoPttConfig.b);
         QLog.d("vip_ptt.ConfigProcessor", 1, paramArrayOfQConfItem.toString());
         return localQVipAutoPttConfig;
       }
@@ -57,7 +57,7 @@ public class QVipAutoPttProcessor
       localStringBuilder.append("json parse error:");
       localStringBuilder.append(paramArrayOfQConfItem);
       QLog.e("vip_ptt.ConfigProcessor", 1, localStringBuilder.toString());
-      localQVipAutoPttConfig.b = paramArrayOfQConfItem.toString();
+      localQVipAutoPttConfig.c = paramArrayOfQConfItem.toString();
     }
     return localQVipAutoPttConfig;
   }
@@ -80,7 +80,7 @@ public class QVipAutoPttProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipAutoPttProcessor
  * JD-Core Version:    0.7.0.1
  */

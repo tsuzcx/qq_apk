@@ -19,12 +19,17 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.qwallet.temp.IQWalletApiProxy;
 import com.tencent.gamecenter.appointment.GameCenterUtils;
+import com.tencent.gamecenter.wadl.api.IQQGameCommApi;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.photo.AIOGallerySceneWithBusiness;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.ThumbWidthHeightDP;
 import com.tencent.mobileqq.gamecenter.share.GameShareConfBean;
@@ -65,32 +70,6 @@ public class GameShareUtilImpl
     return false;
   }
   
-  public static boolean isGameShare(long paramLong)
-  {
-    try
-    {
-      GameShareConfBean localGameShareConfBean = GameShareConfProcessor.a();
-      if (localGameShareConfBean != null)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramLong);
-        localStringBuilder.append("");
-        boolean bool = localGameShareConfBean.a(localStringBuilder.toString());
-        if (bool) {
-          return true;
-        }
-      }
-      return false;
-    }
-    catch (Throwable localThrowable)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQGamePub_GameShare.Util", 1, localThrowable, new Object[0]);
-      }
-    }
-    return false;
-  }
-  
   private static boolean isPicInAIOSizeOk(StructMsgForImageShare paramStructMsgForImageShare)
   {
     return paramStructMsgForImageShare.width >= paramStructMsgForImageShare.height;
@@ -98,7 +77,7 @@ public class GameShareUtilImpl
   
   public static void reportSourceShowInGallery(String paramString, int paramInt, Object paramObject)
   {
-    Object localObject = (Integer)sMsgToReportSubType.get(paramObject);
+    Object localObject = (Integer)IGameShareUtil.S_MSG_TO_REPORT_SUB_TYPE.get(paramObject);
     if ((localObject == null) || (((Integer)localObject).intValue() != paramInt))
     {
       localObject = new HashMap();
@@ -108,7 +87,7 @@ public class GameShareUtilImpl
       ((Map)localObject).put(Integer.valueOf(2), localStringBuilder.toString());
       ((Map)localObject).put(Integer.valueOf(4), "8");
       GameCenterUtils.a(null, "870", "206673", paramString, "87007", "1", "145", (Map)localObject);
-      sMsgToReportSubType.put(paramObject, Integer.valueOf(paramInt));
+      IGameShareUtil.S_MSG_TO_REPORT_SUB_TYPE.put(paramObject, Integer.valueOf(paramInt));
     }
   }
   
@@ -166,11 +145,11 @@ public class GameShareUtilImpl
         }
         paramObject = new JSONObject(paramObject.mMsgActionData);
         IGameShareUtil.GameShareGalleryData localGameShareGalleryData = new IGameShareUtil.GameShareGalleryData();
-        localGameShareGalleryData.jdField_a_of_type_JavaLangString = paramObject.optString("game_source_pic_txt");
-        localGameShareGalleryData.jdField_b_of_type_JavaLangString = paramObject.optString("game_source_pic_url");
-        localGameShareGalleryData.jdField_a_of_type_Int = paramObject.optInt("game_source_type_pic", 0);
-        localGameShareGalleryData.jdField_b_of_type_Int = paramObject.optInt("game_source_subtype_pic", 0);
-        localGameShareGalleryData.jdField_a_of_type_Boolean = paramObject.optBoolean("game_source_pic_has_data");
+        localGameShareGalleryData.a = paramObject.optString("game_source_pic_txt");
+        localGameShareGalleryData.b = paramObject.optString("game_source_pic_url");
+        localGameShareGalleryData.c = paramObject.optInt("game_source_type_pic", 0);
+        localGameShareGalleryData.d = paramObject.optInt("game_source_subtype_pic", 0);
+        localGameShareGalleryData.e = paramObject.optBoolean("game_source_pic_has_data");
         return localGameShareGalleryData;
       }
       return null;
@@ -206,7 +185,7 @@ public class GameShareUtilImpl
     paramRelativeLayout.width = -1;
     paramRelativeLayout.height = -2;
     paramRelativeLayout.addRule(12, -1);
-    paramRelativeLayout.addRule(0, 2131374216);
+    paramRelativeLayout.addRule(0, 2131442311);
     paramRelativeLayout.rightMargin = AIOUtils.b(20.0F, localResources);
     paramContext = new TextView(paramContext);
     localLinearLayout.addView(paramContext);
@@ -215,7 +194,7 @@ public class GameShareUtilImpl
     paramRelativeLayout.bottomMargin = i;
     paramRelativeLayout.leftMargin = i;
     paramRelativeLayout.height = AIOUtils.b(28.0F, localResources);
-    paramContext.setBackgroundResource(2130844464);
+    paramContext.setBackgroundResource(2130845837);
     paramContext.setTextColor(-1);
     paramContext.setTextSize(1, 12.0F);
     paramContext.setGravity(16);
@@ -237,30 +216,157 @@ public class GameShareUtilImpl
     return paramString2;
   }
   
+  public void handleBubbleViewForGameShare(int paramInt, Object paramObject, MessageRecord paramMessageRecord)
+  {
+    if (((paramObject instanceof SessionInfo)) && (paramMessageRecord != null))
+    {
+      SessionInfo localSessionInfo = (SessionInfo)paramObject;
+      if ((localSessionInfo.a != 0) && (localSessionInfo.a != 1)) {
+        return;
+      }
+      Object localObject1 = null;
+      int i = -1;
+      Object localObject3 = "";
+      Object localObject4;
+      Object localObject2;
+      if ((paramMessageRecord instanceof MessageForStructing))
+      {
+        localObject4 = (MessageForStructing)paramMessageRecord;
+        localObject2 = localObject3;
+        if ((((MessageForStructing)localObject4).structingMsg instanceof AbsShareMsg))
+        {
+          localObject2 = (AbsShareMsg)((MessageForStructing)localObject4).structingMsg;
+          localObject1 = String.valueOf(((AbsShareMsg)localObject2).mSourceAppid);
+          if (((AbsShareMsg)localObject2).mMsgServiceID == 5)
+          {
+            i = 2;
+            localObject2 = localObject3;
+          }
+          else
+          {
+            localObject2 = ((AbsShareMsg)localObject2).mContentTitle;
+            i = 0;
+          }
+        }
+      }
+      else if ((paramMessageRecord instanceof MessageForArkApp))
+      {
+        localObject1 = (MessageForArkApp)paramMessageRecord;
+        localObject2 = ((MessageForArkApp)localObject1).ark_app_message.getAppIdFromMeta();
+        if ("com.tencent.structmsg".equals(((MessageForArkApp)localObject1).ark_app_message.appName))
+        {
+          try
+          {
+            localObject4 = new JSONObject(((MessageForArkApp)localObject1).ark_app_message.metaList).optJSONObject("news");
+            localObject1 = localObject3;
+            if (localObject4 != null) {
+              localObject1 = ((JSONObject)localObject4).optString("title");
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            localObject1 = localObject3;
+            if (QLog.isColorLevel())
+            {
+              QLog.e("QQGamePub_GameShare.Util", 2, "handleBubbleViewForGameShare", localThrowable);
+              localObject1 = localObject3;
+            }
+          }
+          localObject3 = localObject1;
+          i = 0;
+          localObject1 = localObject2;
+          localObject2 = localObject3;
+        }
+        else
+        {
+          localObject3 = ((MessageForArkApp)localObject1).ark_app_message.appName;
+          localObject1 = localObject2;
+          localObject2 = localObject3;
+          i = 1;
+        }
+      }
+      else
+      {
+        localObject1 = null;
+        localObject2 = "";
+        i = -1;
+      }
+      localObject3 = paramMessageRecord.getExtInfoFromExtStr("key_open_game_tag_name");
+      String str = paramMessageRecord.getExtInfoFromExtStr("key_open_game_message_ext");
+      if ((isWhiteByAppid((String)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject3)))
+      {
+        if (paramInt == 0)
+        {
+          if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("game_source_report_status"))) {
+            return;
+          }
+          paramMessageRecord.saveExtInfoToExtStr("game_source_report_status", "1");
+        }
+        int j;
+        if (localSessionInfo.a == 0) {
+          j = 1;
+        } else {
+          j = 0;
+        }
+        ((IQQGameCommApi)QRoute.api(IQQGameCommApi.class)).reportGameShare(paramInt, i, j, (String)localObject1, (String)localObject3, str, (String)localObject2);
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramMessageRecord = new StringBuilder();
+        paramMessageRecord.append("handleBubbleViewForGameShare appid=");
+        paramMessageRecord.append((String)localObject1);
+        paramMessageRecord.append(",tagName=");
+        paramMessageRecord.append((String)localObject3);
+        paramMessageRecord.append(",sessionInfo=");
+        paramMessageRecord.append(paramObject);
+        QLog.d("QQGamePub_GameShare.Util", 1, paramMessageRecord.toString());
+      }
+      return;
+    }
+  }
+  
   public boolean isGameShare(Object paramObject)
   {
+    if ((paramObject instanceof AbsShareMsg)) {
+      return isWhiteByAppid(String.valueOf(((AbsShareMsg)paramObject).mSourceAppid));
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isGameShare msg instance of ");
+    localStringBuilder.append(paramObject);
+    QLog.w("QQGamePub_GameShare.Util", 1, localStringBuilder.toString());
+    return false;
+  }
+  
+  public boolean isWhiteByAppid(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
     try
     {
-      paramObject = (AbsShareMsg)paramObject;
-      if (paramObject != null)
+      GameShareConfBean localGameShareConfBean = GameShareConfProcessor.a();
+      if (localGameShareConfBean != null)
       {
-        boolean bool = isGameShare(paramObject.mSourceAppid);
+        boolean bool = localGameShareConfBean.b(paramString);
         if (bool) {
           return true;
         }
       }
       return false;
     }
-    catch (Throwable paramObject)
+    catch (Throwable paramString)
     {
-      QLog.e("QQGamePub_GameShare.Util", 1, paramObject, new Object[0]);
+      if (QLog.isColorLevel()) {
+        QLog.e("QQGamePub_GameShare.Util", 1, paramString, new Object[0]);
+      }
     }
     return false;
   }
   
   public void releaseCache()
   {
-    sMsgToReportSubType.clear();
+    S_MSG_TO_REPORT_SUB_TYPE.clear();
   }
   
   public void saveGalleryDataToMsg(AppRuntime paramAppRuntime, Bundle paramBundle)
@@ -341,7 +447,7 @@ public class GameShareUtilImpl
       {
         QLog.e("QQGamePub_GameShare.Util", 1, paramString1, new Object[0]);
       }
-      paramObject1.a = paramObject2.getBytes();
+      paramObject1.s = paramObject2.getBytes();
     }
   }
   
@@ -364,8 +470,8 @@ public class GameShareUtilImpl
           paramObject1.mMinWidth = 251;
           paramObject1.mMaxWidth = Math.max(paramObject1.mMinWidth, paramObject1.mMaxWidth);
           paramObject1.mMaxHeight = Math.max(paramObject1.mMaxHeight, paramObject1.mMinWidth);
-          paramObject2.q = Math.max(paramObject1.mMaxWidth, paramObject2.q);
-          paramObject2.r = Math.max(paramObject1.mMaxHeight, paramObject2.r);
+          paramObject2.az = Math.max(paramObject1.mMaxWidth, paramObject2.az);
+          paramObject2.aA = Math.max(paramObject1.mMaxHeight, paramObject2.aA);
           return;
         }
       }
@@ -384,8 +490,8 @@ public class GameShareUtilImpl
       paramObject2 = (StructMsgItemImage)paramObject2;
       if ((isFromGameShare(paramObject1)) && (isPicInAIOSizeOk(paramObject1)) && (paramImageView != null) && (paramObject2 != null))
       {
-        int i = AIOUtils.b(paramObject2.q, paramImageView.getContext().getResources());
-        int j = AIOUtils.b(paramObject2.r, paramImageView.getContext().getResources());
+        int i = AIOUtils.b(paramObject2.az, paramImageView.getContext().getResources());
+        int j = AIOUtils.b(paramObject2.aA, paramImageView.getContext().getResources());
         if (Build.VERSION.SDK_INT >= 16)
         {
           if (i > paramImageView.getMaxWidth()) {
@@ -436,27 +542,27 @@ public class GameShareUtilImpl
           Object localObject = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
           ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
           paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-          paramRelativeLayout.setBackgroundResource(2130842703);
+          paramRelativeLayout.setBackgroundResource(2130843656);
           localObject = (RelativeLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
           if (paramBoolean)
           {
-            ((RelativeLayout.LayoutParams)localObject).addRule(7, 2131364521);
+            ((RelativeLayout.LayoutParams)localObject).addRule(7, 2131430578);
             ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.b(this.DP_SOURCE_RIGHT_MARGIN_DEFAULT, paramResources);
           }
           else
           {
             ((RelativeLayout.LayoutParams)localObject).addRule(5, 0);
-            ((RelativeLayout.LayoutParams)localObject).addRule(7, 2131364521);
-            ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131364530);
+            ((RelativeLayout.LayoutParams)localObject).addRule(7, 2131430578);
+            ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131430587);
             ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.b(this.DP_SOURCE_RIGHT_MARGIN_DEFAULT, paramResources);
           }
           paramRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
           localObject = new TextView(paramContext);
           paramContext = new RelativeLayout.LayoutParams(-1, -2);
-          paramContext.addRule(6, 2131377970);
-          paramContext.addRule(1, 2131377970);
+          paramContext.addRule(6, 2131446457);
+          paramContext.addRule(1, 2131446457);
           paramContext.addRule(11, -1);
-          paramContext.addRule(8, 2131377970);
+          paramContext.addRule(8, 2131446457);
           paramContext.addRule(15, -1);
           paramContext.rightMargin = AIOUtils.b(8.0F, paramResources);
           paramRelativeLayout.addView((View)localObject, paramContext);
@@ -466,7 +572,7 @@ public class GameShareUtilImpl
           ((TextView)localObject).setTextColor(-1);
           ((TextView)localObject).setTextSize(2, 12.0F);
           ((TextView)localObject).setCompoundDrawablePadding(AIOUtils.b(5.0F, paramResources));
-          paramRelativeLayout = paramResources.getDrawable(2130848804);
+          paramRelativeLayout = paramResources.getDrawable(2130850471);
           paramRelativeLayout.setBounds(0, 0, AIOUtils.b(6.0F, paramResources), AIOUtils.b(10.0F, paramResources));
           ((TextView)localObject).setCompoundDrawables(null, null, paramRelativeLayout, null);
           paramResources = getValueFromMsg("game_source_aio_txt", "", paramObject.message);
@@ -506,7 +612,7 @@ public class GameShareUtilImpl
           ((TextView)localObject).setTag(-5, Integer.valueOf(1));
           ((TextView)localObject).setOnClickListener(sUrlListener);
           ((IQWalletApi)QRoute.api(IQWalletApi.class)).setAlphaChangeListener((View)localObject, 0.5F);
-          paramView = (Integer)sMsgToReportSubType.get(Long.valueOf(paramObject.message.uniseq));
+          paramView = (Integer)IGameShareUtil.S_MSG_TO_REPORT_SUB_TYPE.get(Long.valueOf(paramObject.message.uniseq));
           if ((paramView == null) || (paramView.intValue() != j))
           {
             paramView = new HashMap();
@@ -516,7 +622,7 @@ public class GameShareUtilImpl
             paramView.put(Integer.valueOf(2), paramRelativeLayout.toString());
             paramView.put(Integer.valueOf(4), "8");
             GameCenterUtils.a(null, "870", "206672", paramContext, "87006", "1", "145", paramView);
-            sMsgToReportSubType.put(Long.valueOf(paramObject.message.uniseq), Integer.valueOf(j));
+            IGameShareUtil.S_MSG_TO_REPORT_SUB_TYPE.put(Long.valueOf(paramObject.message.uniseq), Integer.valueOf(j));
           }
         }
         else
@@ -547,44 +653,44 @@ public class GameShareUtilImpl
         if (paramObject1 == null) {
           return;
         }
-        paramObject2 = (StructMsgForImageShare)StructMsgFactory.a((byte[])paramObject1.a);
+        paramObject2 = (StructMsgForImageShare)StructMsgFactory.a((byte[])paramObject1.s);
         IGameShareUtil.GameShareGalleryData localGameShareGalleryData = getGalleryData(paramObject2);
-        if ((localGameShareGalleryData != null) && (!TextUtils.isEmpty(localGameShareGalleryData.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localGameShareGalleryData.jdField_b_of_type_JavaLangString)))
+        if ((localGameShareGalleryData != null) && (!TextUtils.isEmpty(localGameShareGalleryData.a)) && (!TextUtils.isEmpty(localGameShareGalleryData.b)))
         {
           Object localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append(paramObject2.mSourceAppid);
           ((StringBuilder)localObject2).append("");
           localObject2 = ((StringBuilder)localObject2).toString();
           paramTextView.setVisibility(0);
-          paramTextView.setText(localGameShareGalleryData.jdField_a_of_type_JavaLangString);
-          paramTextView.setTag(-1, localGameShareGalleryData.jdField_b_of_type_JavaLangString);
+          paramTextView.setText(localGameShareGalleryData.a);
+          paramTextView.setTag(-1, localGameShareGalleryData.b);
           paramTextView.setTag(-4, localObject2);
-          paramTextView.setTag(-2, Integer.valueOf(localGameShareGalleryData.jdField_a_of_type_Int));
-          paramTextView.setTag(-3, Integer.valueOf(localGameShareGalleryData.jdField_b_of_type_Int));
+          paramTextView.setTag(-2, Integer.valueOf(localGameShareGalleryData.c));
+          paramTextView.setTag(-3, Integer.valueOf(localGameShareGalleryData.d));
           paramTextView.setTag(-5, Integer.valueOf(2));
-          reportSourceShowInGallery((String)localObject2, localGameShareGalleryData.jdField_b_of_type_Int, paramObject1);
+          reportSourceShowInGallery((String)localObject2, localGameShareGalleryData.d, paramObject1);
           paramTextView.setOnClickListener(sUrlListener);
           ((IQWalletApi)QRoute.api(IQWalletApi.class)).setAlphaChangeListener(paramTextView, 0.5F);
           localObject2 = paramObject2.mSourceIcon;
           Object localObject3 = paramContext.getResources();
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
-            Object localObject4 = ((Resources)localObject3).getDrawable(2130850833);
+            Object localObject4 = ((Resources)localObject3).getDrawable(2130852668);
             ((Drawable)localObject4).setBounds(0, 0, AIOUtils.b(20.0F, (Resources)localObject3), AIOUtils.b(20.0F, (Resources)localObject3));
             Object localObject5 = new BitmapDrawable(StructMsgItemCover.a((Drawable)localObject4));
             paramTextView.setCompoundDrawablePadding(AIOUtils.b(3.0F, (Resources)localObject3));
             ((Drawable)localObject5).setBounds(0, 0, AIOUtils.b(20.0F, (Resources)localObject3), AIOUtils.b(20.0F, (Resources)localObject3));
             paramTextView.setCompoundDrawables((Drawable)localObject5, null, null, null);
-            localObject5 = ((Resources)localObject3).getDrawable(2130850834);
+            localObject5 = ((Resources)localObject3).getDrawable(2130852669);
             ((Drawable)localObject5).setBounds(0, 0, AIOUtils.b(20.0F, (Resources)localObject3), AIOUtils.b(20.0F, (Resources)localObject3));
             localObject2 = URLDrawable.getDrawable((String)localObject2, (Drawable)localObject4, (Drawable)localObject5);
             localObject3 = new WeakReference(paramContext);
             localObject4 = new WeakReference(paramTextView);
             localObject1 = new WeakReference(localObject1);
-            long l1 = paramObject1.jdField_f_of_type_Long;
-            long l2 = paramObject1.jdField_f_of_type_Int;
+            long l1 = paramObject1.L;
+            long l2 = paramObject1.M;
             ((IQWalletApiProxy)QRoute.api(IQWalletApiProxy.class)).decodeDrawable((Drawable)localObject2, new GameShareUtilImpl.3(this, (WeakReference)localObject3, (WeakReference)localObject4, (WeakReference)localObject1, l1, l2));
-            if (!localGameShareGalleryData.jdField_a_of_type_Boolean) {
+            if (!localGameShareGalleryData.e) {
               GameShareNetHelper.a().a(paramObject2.mSourceAppid, new GameShareUtilImpl.4(this, (WeakReference)localObject3, (WeakReference)localObject4, (WeakReference)localObject1, l1, l2, paramObject1));
             }
           }
@@ -607,7 +713,7 @@ public class GameShareUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.GameShareUtilImpl
  * JD-Core Version:    0.7.0.1
  */

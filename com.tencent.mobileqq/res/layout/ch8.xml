@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.avgame.gameroom.seat.AddMemberItemView android:id="@id/mgy" android:paddingBottom="@dimen/bc5" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/kuc" android:padding="@dimen/bc4" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="74.0dip" android:layout_centerHorizontal="true">
-        <com.tencent.avgame.widget.AutoBgImageView android:id="@id/gd" android:background="@drawable/bk1" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/gfd" android:scaleType="center" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</com.tencent.avgame.gameroom.seat.AddMemberItemView>
+    <ImageView android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ic3" android:scaleType="fitEnd" />
+    <LinearLayout android:orientation="vertical" android:paddingLeft="13.0dip" android:paddingRight="13.0dip" android:paddingBottom="13.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="91.0dip">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/iba" />
+        <Space android:layout_width="fill_parent" android:layout_height="9.25dip" />
+        <TextView android:textSize="34.25dip" android:textStyle="bold" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="QQ频道" />
+        <Space android:layout_width="fill_parent" android:layout_height="17.0dip" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/yw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/x26" android:singleLine="false" android:lineSpacingExtra="6.119995dip" />
+        <Space android:layout_width="fill_parent" android:layout_height="33.75dip" />
+        <Button android:id="@id/ama" android:visibility="gone" android:layout_width="fill_parent" android:text="申请创建频道资格" style="@style/abk" />
+    </LinearLayout>
+</merge>

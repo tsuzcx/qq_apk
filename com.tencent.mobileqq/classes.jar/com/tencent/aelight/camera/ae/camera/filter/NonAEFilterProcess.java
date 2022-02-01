@@ -12,26 +12,26 @@ import com.tencent.view.RendererUtils;
 public class NonAEFilterProcess
   extends FilterProcessBase
 {
-  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  private RenderBuffer b;
+  private RenderBuffer A;
+  private TextureRender a;
+  private RenderBuffer z;
   
   private void b(int paramInt1, int paramInt2, int paramInt3)
   {
     try
     {
-      if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) {
-        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.e, this.f, 33984);
+      if (this.A == null) {
+        this.A = new RenderBuffer(this.f, this.g, 33984);
       }
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+      this.A.bind();
       Object localObject = new float[16];
       Matrix.setIdentityM((float[])localObject, 0);
       Matrix.scaleM((float[])localObject, 0, 1.0F, -1.0F, 1.0F);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt1, null, (float[])localObject);
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-      localObject = RendererUtils.saveTexture(this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), paramInt2, paramInt3);
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraFilterAEFilterProcessTex$CapturePhotoListener != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeCameraFilterAEFilterProcessTex$CapturePhotoListener.onPhotoCaptured((Bitmap)localObject);
+      this.a.drawTexture(3553, paramInt1, null, (float[])localObject);
+      this.A.unbind();
+      localObject = RendererUtils.saveTexture(this.A.getTexId(), paramInt2, paramInt3);
+      if (this.w != null) {
+        this.w.onPhotoCaptured((Bitmap)localObject);
       }
       return;
     }
@@ -40,14 +40,14 @@ public class NonAEFilterProcess
       label111:
       break label111;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraFilterAEFilterProcessTex$CapturePhotoListener != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraFilterAEFilterProcessTex$CapturePhotoListener.onCaptureError(103);
+    if (this.w != null) {
+      this.w.onCaptureError(103);
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    this.a = new TextureRender();
   }
   
   public void a(float paramFloat) {}
@@ -60,7 +60,7 @@ public class NonAEFilterProcess
     GLES20.glClear(16384);
     GLES20.glEnable(3042);
     GLES20.glBlendFunc(770, 771);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt1, null, null);
+    this.a.drawTexture(3553, paramInt1, null, null);
     GLES20.glDisable(3042);
   }
   
@@ -71,61 +71,61 @@ public class NonAEFilterProcess
   
   public int[] a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((this.g != 0) && (this.h != 0))
+    if ((this.h != 0) && (this.i != 0))
     {
-      paramBoolean = this.jdField_b_of_type_Boolean;
-      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) {
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.g, this.h, 33984);
+      paramBoolean = this.u;
+      if (this.z == null) {
+        this.z = new RenderBuffer(this.h, this.i, 33984);
       }
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-      int i = this.e;
-      double d1 = this.e;
-      double d2 = this.jdField_b_of_type_Double;
+      this.z.bind();
+      int i = this.f;
+      double d1 = this.f;
+      double d2 = this.m;
       Double.isNaN(d1);
       int j = (int)(d1 / d2);
-      float[] arrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.g, this.h, i, j);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.k, this.jdField_a_of_type_ArrayOfFloat, arrayOfFloat);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-      int k = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId();
+      float[] arrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.h, this.i, i, j);
+      this.a.drawTexture(36197, this.q, this.t, arrayOfFloat);
+      this.z.unbind();
+      int k = this.z.getTexId();
       a(k, paramInt1, paramInt2);
       if (paramBoolean)
       {
         b(k, i, j);
-        this.jdField_b_of_type_Boolean = false;
+        this.u = false;
       }
-      this.jdField_a_of_type_ArrayOfInt[0] = k;
-      this.jdField_a_of_type_ArrayOfInt[1] = k;
-      return this.jdField_a_of_type_ArrayOfInt;
+      this.s[0] = k;
+      this.s[1] = k;
+      return this.s;
     }
-    return this.jdField_a_of_type_ArrayOfInt;
+    return this.s;
   }
   
   public void b(boolean paramBoolean) {}
   
-  public void d()
+  public void f()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+    Object localObject = this.a;
     if (localObject != null) {
       ((TextureRender)localObject).release();
     }
-    localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    localObject = this.z;
     if (localObject != null) {
       ((RenderBuffer)localObject).destroy();
     }
-    localObject = this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    localObject = this.A;
     if (localObject != null) {
       ((RenderBuffer)localObject).destroy();
     }
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(null);
+    if (this.r != null) {
+      this.r.setOnFrameAvailableListener(null);
     }
   }
   
-  public void e() {}
+  public void g() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.filter.NonAEFilterProcess
  * JD-Core Version:    0.7.0.1
  */

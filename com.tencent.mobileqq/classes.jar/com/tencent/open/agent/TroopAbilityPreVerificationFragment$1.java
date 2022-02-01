@@ -13,12 +13,12 @@ class TroopAbilityPreVerificationFragment$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == paramDialogInterface)
+    if (this.a.n == paramDialogInterface)
     {
       if (paramInt == 1)
       {
         paramDialogInterface = new Intent();
-        paramDialogInterface.putExtra("key_params", this.a.jdField_a_of_type_AndroidOsBundle);
+        paramDialogInterface.putExtra("key_params", this.a.e);
         paramDialogInterface.putExtra("is_change_account", true);
         paramDialogInterface.putExtra("fromThirdAppByOpenSDK", true);
         paramDialogInterface.addFlags(268435456);
@@ -37,7 +37,7 @@ class TroopAbilityPreVerificationFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.TroopAbilityPreVerificationFragment.1
  * JD-Core Version:    0.7.0.1
  */

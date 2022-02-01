@@ -12,11 +12,11 @@ class AIOPhotoListAdapter$5
   
   public void onClick(View paramView)
   {
-    if ((AIOPhotoListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter) != null) && (AIOPhotoListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter).a.a(this.jdField_a_of_type_JavaLangString) != null))
+    if ((AIOPhotoListAdapter.a(this.b) != null) && (AIOPhotoListAdapter.a(this.b).t.b(this.a) != null))
     {
-      boolean bool = AIOPhotoListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter).a.a(this.jdField_a_of_type_JavaLangString, AIOPhotoListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter).jdField_d_of_type_Int, AIOPhotoListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter).jdField_d_of_type_JavaUtilList);
+      boolean bool = AIOPhotoListAdapter.a(this.b).t.a(this.a, AIOPhotoListAdapter.a(this.b).m, AIOPhotoListAdapter.a(this.b).l);
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(AIOPhotoListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter));
+      ((StringBuilder)localObject).append(AIOPhotoListAdapter.b(this.b));
       ((StringBuilder)localObject).append("");
       String str = ((StringBuilder)localObject).toString();
       if (bool) {
@@ -25,14 +25,14 @@ class AIOPhotoListAdapter$5
         localObject = "2";
       }
       ReportController.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 1, 0, str, (String)localObject, "", "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.notifyDataSetChanged();
+      this.b.notifyDataSetChanged();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter.5
  * JD-Core Version:    0.7.0.1
  */

@@ -5,19 +5,19 @@ import java.util.List;
 
 class ContactSearchEngine$SearchResultCache
 {
-  String jdField_a_of_type_JavaLangString;
-  List<IContactSearchModel> jdField_a_of_type_JavaUtilList;
+  String a;
+  List<IContactSearchModel> b;
   
   public ContactSearchEngine$SearchResultCache(String paramString, List<IContactSearchModel> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramList;
+    this.a = paramList;
     Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.b = localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.ContactSearchEngine.SearchResultCache
  * JD-Core Version:    0.7.0.1
  */

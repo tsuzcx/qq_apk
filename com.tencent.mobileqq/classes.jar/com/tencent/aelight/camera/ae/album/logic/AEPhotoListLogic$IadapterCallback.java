@@ -6,21 +6,21 @@ import com.tencent.aelight.camera.ae.album.fragment.AEAbstractPhotoListFragment.
 
 public abstract interface AEPhotoListLogic$IadapterCallback
 {
-  public abstract View a();
-  
   public abstract void a(int paramInt, AEAbstractPhotoListFragment.PhotoVH paramPhotoVH, AEAbstractPhotoListFragment.PhotoItemClickListener paramPhotoItemClickListener);
   
-  public abstract View b();
+  public abstract View aj_();
   
   public abstract void b(int paramInt, AEAbstractPhotoListFragment.PhotoVH paramPhotoVH, AEAbstractPhotoListFragment.PhotoItemClickListener paramPhotoItemClickListener);
   
-  public abstract View c();
-  
   public abstract void c(int paramInt, AEAbstractPhotoListFragment.PhotoVH paramPhotoVH, AEAbstractPhotoListFragment.PhotoItemClickListener paramPhotoItemClickListener);
+  
+  public abstract View j();
+  
+  public abstract View k();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogic.IadapterCallback
  * JD-Core Version:    0.7.0.1
  */

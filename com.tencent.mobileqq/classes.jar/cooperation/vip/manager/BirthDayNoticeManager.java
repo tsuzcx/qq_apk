@@ -50,11 +50,11 @@ public class BirthDayNoticeManager
   
   public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    String str = paramSessionInfo.a;
-    Object localObject = paramQQAppInterface.getMsgCache().a();
-    if ((localObject != null) && (((Set)localObject).contains(str)) && (a(paramQQAppInterface, paramSessionInfo.a)))
+    String str = paramSessionInfo.b;
+    Object localObject = paramQQAppInterface.getMsgCache().i();
+    if ((localObject != null) && (((Set)localObject).contains(str)) && (a(paramQQAppInterface, paramSessionInfo.b)))
     {
-      long l1 = paramQQAppInterface.getMsgCache().b();
+      long l1 = paramQQAppInterface.getMsgCache().j();
       long l3 = System.currentTimeMillis() / 1000L;
       if (l3 - l1 >= 86400L)
       {
@@ -77,7 +77,7 @@ public class BirthDayNoticeManager
         a.a = new WeakReference(paramQQAppInterface);
         paramQQAppInterface.registObserver(a);
         paramQQAppInterface.startServlet(paramSessionInfo);
-        paramQQAppInterface.getMsgCache().c(l3);
+        paramQQAppInterface.getMsgCache().e(l3);
       }
     }
   }
@@ -102,7 +102,7 @@ public class BirthDayNoticeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.BirthDayNoticeManager
  * JD-Core Version:    0.7.0.1
  */

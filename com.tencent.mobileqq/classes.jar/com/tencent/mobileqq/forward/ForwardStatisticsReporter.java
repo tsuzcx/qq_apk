@@ -25,18 +25,18 @@ public class ForwardStatisticsReporter
   static void a()
   {
     ArkVipSceneConfig localArkVipSceneConfig = new ArkVipSceneConfig();
-    localArkVipSceneConfig.jdField_a_of_type_JavaLangString = "OpenShare";
+    localArkVipSceneConfig.a = "OpenShare";
     localArkVipSceneConfig.b = "KEY_STAGE_1_TOTAL";
     localArkVipSceneConfig.c = "KEY_STAGE_2_TOTAL";
-    localArkVipSceneConfig.jdField_a_of_type_Long = 30000L;
-    localArkVipSceneConfig.jdField_a_of_type_JavaUtilSet = new ForwardStatisticsReporter.1();
+    localArkVipSceneConfig.d = 30000L;
+    localArkVipSceneConfig.e = new ForwardStatisticsReporter.1();
     ((IArkVipReport)QRoute.api(IArkVipReport.class)).initScene("OpenShare", localArkVipSceneConfig);
     localArkVipSceneConfig = new ArkVipSceneConfig();
-    localArkVipSceneConfig.jdField_a_of_type_JavaLangString = "OpenLogin";
+    localArkVipSceneConfig.a = "OpenLogin";
     localArkVipSceneConfig.b = "KEY_LOGIN_STAGE_1_TOTAL";
     localArkVipSceneConfig.c = "KEY_AUTHORITY_TOTAL";
-    localArkVipSceneConfig.jdField_a_of_type_Long = 30000L;
-    localArkVipSceneConfig.jdField_a_of_type_JavaUtilSet = new ForwardStatisticsReporter.2();
+    localArkVipSceneConfig.d = 30000L;
+    localArkVipSceneConfig.e = new ForwardStatisticsReporter.2();
     ((IArkVipReport)QRoute.api(IArkVipReport.class)).initScene("OpenLogin", localArkVipSceneConfig);
   }
   
@@ -113,7 +113,7 @@ public class ForwardStatisticsReporter
     if (paramAccountInfo == null) {
       paramAccountInfo = "";
     } else {
-      paramAccountInfo = paramAccountInfo.jdField_a_of_type_JavaLangString;
+      paramAccountInfo = paramAccountInfo.a;
     }
     a(paramString, paramAccountInfo, paramHashMap, paramBoolean);
   }
@@ -262,7 +262,7 @@ public class ForwardStatisticsReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardStatisticsReporter
  * JD-Core Version:    0.7.0.1
  */

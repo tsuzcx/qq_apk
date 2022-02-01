@@ -4,10 +4,9 @@ import android.text.TextUtils;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IRIJFeedsType;
 import com.tencent.mobileqq.kandian.repo.daily.DailyCbaReportInfos;
+import com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsType;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,13 +21,13 @@ final class ReadInJoyHelper$5
   
   public void run()
   {
-    boolean bool = ((IRIJFeedsType)QRoute.api(IRIJFeedsType.class)).isVideoCard(this.a);
+    boolean bool = RIJFeedsType.U(this.a);
     int i;
     for (;;)
     {
       try
       {
-        localObject1 = RIJSPUtils.a("daily_cba_report_key", "");
+        localObject1 = RIJSPUtils.b("daily_cba_report_key", "");
         localObject2 = new ArrayList();
         if ((localObject1 != null) && (!TextUtils.isEmpty(localObject1.toString()))) {
           localObject1 = new JSONArray(localObject1.toString());
@@ -56,7 +55,7 @@ final class ReadInJoyHelper$5
         ((JSONObject)localObject1).put("click_time", System.currentTimeMillis());
         ((JSONObject)localObject1).put("rowkey", this.a.innerUniqueID);
         if (!bool) {
-          break label330;
+          break label320;
         }
         i = 1;
       }
@@ -80,14 +79,14 @@ final class ReadInJoyHelper$5
       int j = 0;
       i = 0;
       break;
-      label330:
+      label320:
       i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper.5
  * JD-Core Version:    0.7.0.1
  */

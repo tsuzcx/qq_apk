@@ -61,9 +61,9 @@ public class EXReportController
       QLog.d("EXReportController", 2, paramAppRuntime.toString());
       return;
     }
-    if ((!TextUtils.isEmpty(paramEXBaseReportItem.i)) && (!TextUtils.isEmpty(paramEXBaseReportItem.k)) && (!TextUtils.isEmpty(paramEXBaseReportItem.j)))
+    if ((!TextUtils.isEmpty(paramEXBaseReportItem.k)) && (!TextUtils.isEmpty(paramEXBaseReportItem.m)) && (!TextUtils.isEmpty(paramEXBaseReportItem.l)))
     {
-      paramEXBaseReportItem.b = NetConnInfoCenter.getServerTime();
+      paramEXBaseReportItem.j = NetConnInfoCenter.getServerTime();
       Object localObject;
       if (QLog.isColorLevel())
       {
@@ -81,7 +81,7 @@ public class EXReportController
         ((Intent)localObject).setClassName(BaseApplication.getContext(), "com.tencent.mobileqq.statistics.ReportReceiver");
         ((Intent)localObject).putExtra("reporting_tag", paramString);
         ((Intent)localObject).putExtra("reporting_detail", paramAppRuntime);
-        ((Intent)localObject).putExtra("reporting_count", paramEXBaseReportItem.c);
+        ((Intent)localObject).putExtra("reporting_count", paramEXBaseReportItem.p);
         ((Intent)localObject).putExtra("is_runtime", 1);
         BaseApplication.getContext().sendBroadcast((Intent)localObject);
         return;
@@ -101,7 +101,7 @@ public class EXReportController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.report.EXReportController
  * JD-Core Version:    0.7.0.1
  */

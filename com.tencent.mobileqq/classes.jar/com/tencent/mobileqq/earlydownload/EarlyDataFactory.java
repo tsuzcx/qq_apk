@@ -42,7 +42,7 @@ public class EarlyDataFactory
     //   29: invokevirtual 43	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   32: astore 4
     //   34: aload_0
-    //   35: invokestatic 46	com/tencent/mobileqq/earlydownload/EarlyDataFactory:a	(Ljava/lang/Class;)[Ljava/lang/reflect/Field;
+    //   35: invokestatic 47	com/tencent/mobileqq/earlydownload/EarlyDataFactory:b	(Ljava/lang/Class;)[Ljava/lang/reflect/Field;
     //   38: astore 5
     //   40: aload_3
     //   41: astore_0
@@ -63,106 +63,106 @@ public class EarlyDataFactory
     //   63: aaload
     //   64: astore 7
     //   66: aload 7
-    //   68: ldc 48
-    //   70: invokevirtual 54	java/lang/reflect/Field:isAnnotationPresent	(Ljava/lang/Class;)Z
+    //   68: ldc 49
+    //   70: invokevirtual 55	java/lang/reflect/Field:isAnnotationPresent	(Ljava/lang/Class;)Z
     //   73: ifeq +224 -> 297
     //   76: aload 7
-    //   78: invokevirtual 58	java/lang/reflect/Field:isAccessible	()Z
+    //   78: invokevirtual 59	java/lang/reflect/Field:isAccessible	()Z
     //   81: ifne +9 -> 90
     //   84: aload 7
     //   86: iconst_1
-    //   87: invokevirtual 62	java/lang/reflect/Field:setAccessible	(Z)V
+    //   87: invokevirtual 63	java/lang/reflect/Field:setAccessible	(Z)V
     //   90: aload 7
-    //   92: invokevirtual 65	java/lang/reflect/Field:getName	()Ljava/lang/String;
+    //   92: invokevirtual 66	java/lang/reflect/Field:getName	()Ljava/lang/String;
     //   95: astore_0
     //   96: aload 7
-    //   98: invokevirtual 69	java/lang/reflect/Field:getType	()Ljava/lang/Class;
+    //   98: invokevirtual 70	java/lang/reflect/Field:getType	()Ljava/lang/Class;
     //   101: astore 6
     //   103: aload 6
-    //   105: ldc 71
+    //   105: ldc 72
     //   107: if_acmpne +22 -> 129
     //   110: aload 7
     //   112: aload_3
     //   113: aload 4
     //   115: aload_0
-    //   116: ldc 73
-    //   118: invokeinterface 79 3 0
-    //   123: invokevirtual 83	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   116: ldc 74
+    //   118: invokeinterface 80 3 0
+    //   123: invokevirtual 84	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   126: goto +171 -> 297
     //   129: aload 6
-    //   131: getstatic 89	java/lang/Long:TYPE	Ljava/lang/Class;
+    //   131: getstatic 90	java/lang/Long:TYPE	Ljava/lang/Class;
     //   134: if_acmpne +21 -> 155
     //   137: aload 7
     //   139: aload_3
     //   140: aload 4
     //   142: aload_0
     //   143: lconst_0
-    //   144: invokeinterface 93 4 0
-    //   149: invokevirtual 97	java/lang/reflect/Field:setLong	(Ljava/lang/Object;J)V
+    //   144: invokeinterface 94 4 0
+    //   149: invokevirtual 98	java/lang/reflect/Field:setLong	(Ljava/lang/Object;J)V
     //   152: goto +145 -> 297
     //   155: aload 6
-    //   157: getstatic 100	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   157: getstatic 101	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   160: if_acmpne +21 -> 181
     //   163: aload 7
     //   165: aload_3
     //   166: aload 4
     //   168: aload_0
     //   169: iconst_0
-    //   170: invokeinterface 104 3 0
-    //   175: invokevirtual 108	java/lang/reflect/Field:setInt	(Ljava/lang/Object;I)V
+    //   170: invokeinterface 105 3 0
+    //   175: invokevirtual 109	java/lang/reflect/Field:setInt	(Ljava/lang/Object;I)V
     //   178: goto +119 -> 297
     //   181: aload 6
-    //   183: getstatic 111	java/lang/Float:TYPE	Ljava/lang/Class;
+    //   183: getstatic 112	java/lang/Float:TYPE	Ljava/lang/Class;
     //   186: if_acmpne +21 -> 207
     //   189: aload 7
     //   191: aload_3
     //   192: aload 4
     //   194: aload_0
     //   195: fconst_0
-    //   196: invokeinterface 115 3 0
-    //   201: invokevirtual 119	java/lang/reflect/Field:setFloat	(Ljava/lang/Object;F)V
+    //   196: invokeinterface 116 3 0
+    //   201: invokevirtual 120	java/lang/reflect/Field:setFloat	(Ljava/lang/Object;F)V
     //   204: goto +93 -> 297
     //   207: aload 6
-    //   209: getstatic 122	java/lang/Boolean:TYPE	Ljava/lang/Class;
+    //   209: getstatic 123	java/lang/Boolean:TYPE	Ljava/lang/Class;
     //   212: if_acmpne +21 -> 233
     //   215: aload 7
     //   217: aload_3
     //   218: aload 4
     //   220: aload_0
     //   221: iconst_0
-    //   222: invokeinterface 126 3 0
-    //   227: invokevirtual 130	java/lang/reflect/Field:setBoolean	(Ljava/lang/Object;Z)V
+    //   222: invokeinterface 127 3 0
+    //   227: invokevirtual 131	java/lang/reflect/Field:setBoolean	(Ljava/lang/Object;Z)V
     //   230: goto +67 -> 297
-    //   233: new 132	java/lang/StringBuilder
+    //   233: new 133	java/lang/StringBuilder
     //   236: dup
-    //   237: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   237: invokespecial 134	java/lang/StringBuilder:<init>	()V
     //   240: astore 4
     //   242: aload 4
-    //   244: ldc 135
-    //   246: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   244: ldc 136
+    //   246: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   249: pop
     //   250: aload 4
     //   252: aload_0
-    //   253: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   253: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   256: pop
     //   257: aload 4
-    //   259: ldc 141
-    //   261: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: ldc 142
+    //   261: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   264: pop
     //   265: aload 4
     //   267: aload 6
-    //   269: invokevirtual 144	java/lang/Object:toString	()Ljava/lang/String;
-    //   272: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: invokevirtual 145	java/lang/Object:toString	()Ljava/lang/String;
+    //   272: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   275: pop
     //   276: aload 4
-    //   278: ldc 146
-    //   280: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   278: ldc 147
+    //   280: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   283: pop
-    //   284: new 148	java/lang/RuntimeException
+    //   284: new 149	java/lang/RuntimeException
     //   287: dup
     //   288: aload 4
-    //   290: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   293: invokespecial 152	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   290: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   293: invokespecial 153	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
     //   296: athrow
     //   297: iload_1
     //   298: iconst_1
@@ -177,14 +177,14 @@ public class EarlyDataFactory
     //   313: aconst_null
     //   314: astore_3
     //   315: aload_0
-    //   316: invokevirtual 155	java/lang/IllegalAccessException:printStackTrace	()V
+    //   316: invokevirtual 156	java/lang/IllegalAccessException:printStackTrace	()V
     //   319: aload_3
     //   320: areturn
     //   321: astore_0
     //   322: aconst_null
     //   323: astore_3
     //   324: aload_0
-    //   325: invokevirtual 156	java/lang/InstantiationException:printStackTrace	()V
+    //   325: invokevirtual 157	java/lang/InstantiationException:printStackTrace	()V
     //   328: aload_3
     //   329: astore_0
     //   330: aload_0
@@ -433,7 +433,7 @@ public class EarlyDataFactory
       {
         localObject2[i] = a((Class)localObject3, (String)localObject1);
         break label483;
-        localObject1 = a((Class)localObject3);
+        localObject1 = b((Class)localObject3);
       }
     }
     else
@@ -515,7 +515,7 @@ public class EarlyDataFactory
     }
   }
   
-  public static Field[] a(Class<? extends XmlData> paramClass)
+  public static Field[] b(Class<? extends XmlData> paramClass)
   {
     ArrayList localArrayList = new ArrayList();
     int j;
@@ -554,7 +554,7 @@ public class EarlyDataFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.EarlyDataFactory
  * JD-Core Version:    0.7.0.1
  */

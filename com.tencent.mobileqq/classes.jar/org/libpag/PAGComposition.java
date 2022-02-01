@@ -45,6 +45,7 @@ public class PAGComposition
   
   public native int numChildren();
   
+  @Deprecated
   public int numLayers()
   {
     return numChildren();
@@ -68,7 +69,7 @@ public class PAGComposition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.libpag.PAGComposition
  * JD-Core Version:    0.7.0.1
  */

@@ -6,40 +6,40 @@ import java.util.HashMap;
 
 public class PTSLiteTapEventDispatcher$Builder
 {
-  private ReadInJoyBaseAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private HashMap<String, AbsBaseArticleInfo> b;
+  private ReadInJoyBaseAdapter a;
+  private HashMap<String, Integer> b;
+  private HashMap<String, AbsBaseArticleInfo> c;
   
   public Builder a(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter = paramReadInJoyBaseAdapter;
+    this.a = paramReadInJoyBaseAdapter;
     return this;
   }
   
   public Builder a(HashMap<String, Integer> paramHashMap)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.b = paramHashMap;
     return this;
   }
   
   public PTSLiteTapEventDispatcher a()
   {
     PTSLiteTapEventDispatcher localPTSLiteTapEventDispatcher = new PTSLiteTapEventDispatcher(null);
-    PTSLiteTapEventDispatcher.a(localPTSLiteTapEventDispatcher, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter);
-    PTSLiteTapEventDispatcher.a(localPTSLiteTapEventDispatcher, this.jdField_a_of_type_JavaUtilHashMap);
-    PTSLiteTapEventDispatcher.b(localPTSLiteTapEventDispatcher, this.b);
+    PTSLiteTapEventDispatcher.a(localPTSLiteTapEventDispatcher, this.a);
+    PTSLiteTapEventDispatcher.a(localPTSLiteTapEventDispatcher, this.b);
+    PTSLiteTapEventDispatcher.b(localPTSLiteTapEventDispatcher, this.c);
     return localPTSLiteTapEventDispatcher;
   }
   
   public Builder b(HashMap<String, AbsBaseArticleInfo> paramHashMap)
   {
-    this.b = paramHashMap;
+    this.c = paramHashMap;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.lite.PTSLiteTapEventDispatcher.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ class JumpActionLegacy$19
       String str = URLDecoder.decode(arrayOfString[i]);
       if (!TextUtils.isEmpty(str))
       {
-        str = FileUtils.saveFileUriToFile(this.this$0.jdField_a_of_type_AndroidContentContext, str, "opensdk_tmp");
+        str = FileUtils.saveFileUriToFile(this.this$0.b, str, "opensdk_tmp");
         if (!TextUtils.isEmpty(str))
         {
           ((StringBuffer)localObject).append(URLEncoder.encode(str));
@@ -36,7 +36,7 @@ class JumpActionLegacy$19
     try
     {
       localObject = new String(Base64Util.encode(((StringBuffer)localObject).toString().getBytes("UTF-8"), 0));
-      this.this$0.jdField_a_of_type_JavaUtilHashMap.put("image_url", localObject);
+      this.this$0.f.put("image_url", localObject);
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
@@ -47,7 +47,7 @@ class JumpActionLegacy$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpActionLegacy.19
  * JD-Core Version:    0.7.0.1
  */

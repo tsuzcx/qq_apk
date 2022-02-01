@@ -5,25 +5,25 @@ import java.util.concurrent.Executors;
 
 public class AsyncHttpConnectionManager
 {
-  private static AsyncHttpConnectionManager jdField_a_of_type_ComTencentGamecenterHttpUtilsAsyncHttpConnectionManager;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(5);
+  private static AsyncHttpConnectionManager a;
+  private ExecutorService b = Executors.newFixedThreadPool(5);
   
   public static AsyncHttpConnectionManager a()
   {
-    if (jdField_a_of_type_ComTencentGamecenterHttpUtilsAsyncHttpConnectionManager == null) {
-      jdField_a_of_type_ComTencentGamecenterHttpUtilsAsyncHttpConnectionManager = new AsyncHttpConnectionManager();
+    if (a == null) {
+      a = new AsyncHttpConnectionManager();
     }
-    return jdField_a_of_type_ComTencentGamecenterHttpUtilsAsyncHttpConnectionManager;
+    return a;
   }
   
   public void a(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(paramRunnable);
+    this.b.submit(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.http.utils.AsyncHttpConnectionManager
  * JD-Core Version:    0.7.0.1
  */

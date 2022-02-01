@@ -62,15 +62,15 @@ import org.json.JSONObject;
 public class NewerGuidePlugin
   extends WebViewPlugin
 {
-  private int jdField_a_of_type_Int;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new NewerGuidePlugin.2(this);
-  private Uri jdField_a_of_type_AndroidNetUri;
-  private OnRemoteRespObserver jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver = new NewerGuidePlugin.1(this);
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private Uri a;
+  private QQProgressDialog b;
   private int c;
   private int d;
+  private int e;
+  private int f;
+  private OnRemoteRespObserver g = new NewerGuidePlugin.1(this);
+  private boolean h;
+  private BroadcastReceiver i = new NewerGuidePlugin.2(this);
   
   public NewerGuidePlugin()
   {
@@ -104,48 +104,33 @@ public class NewerGuidePlugin
     return null;
   }
   
-  private void a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NewerGuidePlugin", 2, "registerAvatarReceiver");
-      }
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT");
-      localIntentFilter.addAction("ACTION_NEWER_GUIDE_CMSHOW_AVATAR_RESULT");
-      this.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
+    int m;
     int k;
     int j;
-    int i;
     if ((paramInt1 >= 1897) && (paramInt2 >= 1) && (paramInt2 <= 12) && (paramInt3 >= 1))
     {
-      k = paramInt1;
-      j = paramInt2;
-      i = paramInt3;
+      m = paramInt1;
+      k = paramInt2;
+      j = paramInt3;
       if (paramInt3 <= 31) {}
     }
     else
     {
       QLog.d("NewerGuidePlugin", 1, String.format("showDatePicker invalid params year=%s month=%s day=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
-      k = 1900;
+      m = 1900;
+      k = 1;
       j = 1;
-      i = 1;
     }
-    Object localObject1 = this.mRuntime.a();
-    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject1).getLayoutInflater().inflate(2131561132, null);
+    Object localObject1 = this.mRuntime.d();
+    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject1).getLayoutInflater().inflate(2131627482, null);
     localIphonePickerView.a(new NewerGuidePlugin.DatePickerAdapter(this, -1));
     localObject1 = ActionSheet.createMenuSheet((Context)localObject1);
     ((ActionSheet)localObject1).setCloseAutoRead(true);
     ((ActionSheet)localObject1).setActionContentView(localIphonePickerView, null);
-    Object localObject2 = (DispatchActionMoveScrollView)((ActionSheet)localObject1).findViewById(2131361999);
-    ((DispatchActionMoveScrollView)localObject2).jdField_a_of_type_Boolean = true;
+    Object localObject2 = (DispatchActionMoveScrollView)((ActionSheet)localObject1).findViewById(2131427560);
+    ((DispatchActionMoveScrollView)localObject2).a = true;
     ((DispatchActionMoveScrollView)localObject2).setBackgroundResource(17170445);
     if (Build.VERSION.SDK_INT >= 11)
     {
@@ -155,12 +140,12 @@ public class NewerGuidePlugin
       }
     }
     localIphonePickerView.setPickListener(new NewerGuidePlugin.7(this, localIphonePickerView, (ActionSheet)localObject1));
-    this.b = (k - 1897);
-    this.c = (j - 1);
-    this.d = (i - 1);
-    localIphonePickerView.setSelection(0, this.b);
-    localIphonePickerView.setSelection(1, this.c);
-    localIphonePickerView.setSelection(2, this.d);
+    this.d = (m - 1897);
+    this.e = (k - 1);
+    this.f = (j - 1);
+    localIphonePickerView.setSelection(0, this.d);
+    localIphonePickerView.setSelection(1, this.e);
+    localIphonePickerView.setSelection(2, this.f);
     try
     {
       ((ActionSheet)localObject1).show();
@@ -171,7 +156,7 @@ public class NewerGuidePlugin
   
   private void a(JSONObject paramJSONObject)
   {
-    int i = Integer.parseInt(paramJSONObject.getString("type"));
+    int j = Integer.parseInt(paramJSONObject.getString("type"));
     try
     {
       localObject = paramJSONObject.getString("uin");
@@ -179,72 +164,72 @@ public class NewerGuidePlugin
     catch (Exception localException)
     {
       Object localObject;
-      label23:
+      label22:
       long l;
-      int j;
-      break label23;
+      int k;
+      break label22;
     }
     localObject = null;
     if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("handleJumpCard type=%s uin=%s", new Object[] { Integer.valueOf(i), localObject }));
+      QLog.d("NewerGuidePlugin", 2, String.format("handleJumpCard type=%s uin=%s", new Object[] { Integer.valueOf(j), localObject }));
     }
-    if ((i != 5) && (TextUtils.isEmpty((CharSequence)localObject))) {
+    if ((j != 5) && (TextUtils.isEmpty((CharSequence)localObject))) {
       return;
     }
-    if (i != 1)
+    if (j != 1)
     {
-      if (i != 2)
+      if (j != 2)
       {
-        if (i != 3)
+        if (j != 3)
         {
-          if (i != 4)
+          if (j != 4)
           {
-            if (i != 5) {
+            if (j != 5) {
               return;
             }
-            paramJSONObject = new AllInOne(this.mRuntime.a().getCurrentAccountUin(), 0);
-            paramJSONObject.nickname = this.mRuntime.a().getCurrentNickname();
+            paramJSONObject = new AllInOne(this.mRuntime.b().getCurrentAccountUin(), 0);
+            paramJSONObject.nickname = this.mRuntime.b().getCurrentNickname();
             paramJSONObject.profileEntryType = 100;
-            paramJSONObject = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.mRuntime.a(), paramJSONObject);
+            paramJSONObject = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.mRuntime.d(), paramJSONObject);
             paramJSONObject.putExtra("from_newer_guide", true);
-            this.mRuntime.a().startActivity(paramJSONObject);
+            this.mRuntime.d().startActivity(paramJSONObject);
             return;
           }
           l = Long.parseLong((String)localObject);
           paramJSONObject = new AllInOne("0", 41);
           paramJSONObject.profileEntryType = 100;
-          localObject = new Intent(this.mRuntime.a(), NearbyProfileCardConstants.class);
+          localObject = new Intent(this.mRuntime.d(), NearbyProfileCardConstants.class);
           ((Intent)localObject).putExtra("param_mode", 3);
           ((Intent)localObject).putExtra("AllInOne", paramJSONObject);
           ((Intent)localObject).putExtra("param_tiny_id", l);
           ((Intent)localObject).putExtra("from_newer_guide", true);
-          startActivityForResult((Intent)localObject, (byte)i);
+          startActivityForResult((Intent)localObject, (byte)j);
           return;
         }
         localObject = TroopInfoUIUtil.a(String.valueOf(localObject), 35);
         ((Bundle)localObject).putString("authSig", paramJSONObject.optString("authSig"));
         ((Bundle)localObject).putBoolean("from_newer_guide", true);
-        TroopUtils.a(this.mRuntime.a(), (Bundle)localObject, 2, 3);
+        TroopUtils.a(this.mRuntime.d(), (Bundle)localObject, 2, 3);
         return;
       }
-      paramJSONObject = new Intent(this.mRuntime.a(), ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountDetailActivity.class));
+      paramJSONObject = new Intent(this.mRuntime.d(), ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountDetailActivity.class));
       paramJSONObject.putExtra("uin", (String)localObject);
       paramJSONObject.putExtra("from_newer_guide", true);
-      this.mRuntime.a().overridePendingTransition(2130772006, 2130772007);
-      startActivityForResult(paramJSONObject, (byte)i);
+      this.mRuntime.d().overridePendingTransition(2130772009, 2130772010);
+      startActivityForResult(paramJSONObject, (byte)j);
       return;
     }
     paramJSONObject = QIPCClientHelper.getInstance().getClient().callServer("CommonModule", "getPhoneBindState", null);
     if (paramJSONObject.isSuccess())
     {
-      j = paramJSONObject.data.getInt("selfBindState");
-      i = 34;
-      if (j <= 5) {
-        i = 29;
+      k = paramJSONObject.data.getInt("selfBindState");
+      j = 34;
+      if (k <= 5) {
+        j = 29;
       }
-      paramJSONObject = new AllInOne((String)localObject, i);
+      paramJSONObject = new AllInOne((String)localObject, j);
       paramJSONObject.profileEntryType = 100;
-      paramJSONObject = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.mRuntime.a(), paramJSONObject);
+      paramJSONObject = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.mRuntime.d(), paramJSONObject);
       paramJSONObject.putExtra("from_newer_guide", true);
       startActivityForResult(paramJSONObject, (byte)1);
     }
@@ -254,27 +239,27 @@ public class NewerGuidePlugin
   private void a(boolean paramBoolean, String paramString)
   {
     // Byte code:
-    //   0: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 41	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +30 -> 33
-    //   6: ldc 50
+    //   6: ldc 55
     //   8: iconst_2
-    //   9: ldc_w 438
+    //   9: ldc_w 422
     //   12: iconst_2
-    //   13: anewarray 161	java/lang/Object
+    //   13: anewarray 135	java/lang/Object
     //   16: dup
     //   17: iconst_0
     //   18: iload_1
-    //   19: invokestatic 443	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   19: invokestatic 427	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   22: aastore
     //   23: dup
     //   24: iconst_1
     //   25: aload_2
     //   26: aastore
-    //   27: invokestatic 173	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   30: invokestatic 57	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   33: new 119	org/json/JSONObject
+    //   27: invokestatic 147	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   30: invokestatic 62	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   33: new 122	org/json/JSONObject
     //   36: dup
-    //   37: invokespecial 444	org/json/JSONObject:<init>	()V
+    //   37: invokespecial 428	org/json/JSONObject:<init>	()V
     //   40: astore 7
     //   42: aconst_null
     //   43: astore 4
@@ -288,51 +273,51 @@ public class NewerGuidePlugin
     //   56: istore_3
     //   57: goto +3 -> 60
     //   60: aload 7
-    //   62: ldc_w 446
+    //   62: ldc_w 430
     //   65: iload_3
-    //   66: invokevirtual 450	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   66: invokevirtual 434	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   69: pop
     //   70: iload_1
     //   71: ifeq +140 -> 211
     //   74: aload_2
-    //   75: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   75: invokestatic 271	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   78: ifne +133 -> 211
-    //   81: new 452	java/io/File
+    //   81: new 436	java/io/File
     //   84: dup
     //   85: aload_2
-    //   86: invokespecial 453	java/io/File:<init>	(Ljava/lang/String;)V
+    //   86: invokespecial 437	java/io/File:<init>	(Ljava/lang/String;)V
     //   89: astore 8
     //   91: aload 8
-    //   93: invokevirtual 456	java/io/File:exists	()Z
+    //   93: invokevirtual 440	java/io/File:exists	()Z
     //   96: ifeq +115 -> 211
     //   99: aload 8
-    //   101: invokevirtual 460	java/io/File:length	()J
+    //   101: invokevirtual 444	java/io/File:length	()J
     //   104: l2i
     //   105: newarray byte
     //   107: astore 6
-    //   109: new 462	java/io/FileInputStream
+    //   109: new 446	java/io/FileInputStream
     //   112: dup
     //   113: aload 8
-    //   115: invokespecial 465	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   115: invokespecial 449	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   118: astore_2
-    //   119: new 467	java/io/BufferedInputStream
+    //   119: new 451	java/io/BufferedInputStream
     //   122: dup
     //   123: aload_2
-    //   124: invokespecial 470	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   124: invokespecial 454	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   127: astore 4
     //   129: aload 4
     //   131: aload 6
-    //   133: invokevirtual 474	java/io/BufferedInputStream:read	([B)I
+    //   133: invokevirtual 458	java/io/BufferedInputStream:read	([B)I
     //   136: ifle +18 -> 154
     //   139: aload 7
-    //   141: ldc_w 476
+    //   141: ldc_w 460
     //   144: aload 6
     //   146: iconst_0
-    //   147: invokestatic 482	com/tencent/mobileqq/utils/Base64Util:encodeToString	([BI)Ljava/lang/String;
-    //   150: invokevirtual 485	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   147: invokestatic 466	com/tencent/mobileqq/utils/Base64Util:encodeToString	([BI)Ljava/lang/String;
+    //   150: invokevirtual 469	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   153: pop
     //   154: aload 8
-    //   156: invokevirtual 488	java/io/File:delete	()Z
+    //   156: invokevirtual 472	java/io/File:delete	()Z
     //   159: pop
     //   160: goto +57 -> 217
     //   163: astore 6
@@ -366,14 +351,14 @@ public class NewerGuidePlugin
     //   217: aload_2
     //   218: ifnull +10 -> 228
     //   221: aload_2
-    //   222: invokevirtual 491	java/io/FileInputStream:close	()V
+    //   222: invokevirtual 475	java/io/FileInputStream:close	()V
     //   225: goto +3 -> 228
     //   228: aload 4
     //   230: ifnull +63 -> 293
     //   233: aload 4
     //   235: astore_2
     //   236: aload_2
-    //   237: invokevirtual 492	java/io/BufferedInputStream:close	()V
+    //   237: invokevirtual 476	java/io/BufferedInputStream:close	()V
     //   240: goto +53 -> 293
     //   243: astore 6
     //   245: aconst_null
@@ -386,29 +371,29 @@ public class NewerGuidePlugin
     //   258: astore 5
     //   260: aconst_null
     //   261: astore_2
-    //   262: ldc 50
+    //   262: ldc 55
     //   264: iconst_1
-    //   265: ldc_w 494
+    //   265: ldc_w 478
     //   268: aload 5
-    //   270: invokestatic 498	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   270: invokestatic 481	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   273: aload 4
     //   275: ifnull +11 -> 286
     //   278: aload 4
-    //   280: invokevirtual 491	java/io/FileInputStream:close	()V
+    //   280: invokevirtual 475	java/io/FileInputStream:close	()V
     //   283: goto +3 -> 286
     //   286: aload_2
     //   287: ifnull +6 -> 293
     //   290: goto -54 -> 236
     //   293: aload_0
-    //   294: ldc_w 500
+    //   294: ldc_w 483
     //   297: iconst_1
-    //   298: anewarray 169	java/lang/String
+    //   298: anewarray 143	java/lang/String
     //   301: dup
     //   302: iconst_0
     //   303: aload 7
-    //   305: invokevirtual 501	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   305: invokevirtual 484	org/json/JSONObject:toString	()Ljava/lang/String;
     //   308: aastore
-    //   309: invokevirtual 505	com/tencent/biz/webviewplugin/NewerGuidePlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   309: invokevirtual 488	com/tencent/biz/webviewplugin/NewerGuidePlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   312: return
     //   313: astore 6
     //   315: aload_2
@@ -418,12 +403,12 @@ public class NewerGuidePlugin
     //   321: aload_2
     //   322: ifnull +10 -> 332
     //   325: aload_2
-    //   326: invokevirtual 491	java/io/FileInputStream:close	()V
+    //   326: invokevirtual 475	java/io/FileInputStream:close	()V
     //   329: goto +3 -> 332
     //   332: aload 5
     //   334: ifnull +8 -> 342
     //   337: aload 5
-    //   339: invokevirtual 492	java/io/BufferedInputStream:close	()V
+    //   339: invokevirtual 476	java/io/BufferedInputStream:close	()V
     //   342: goto +6 -> 348
     //   345: aload 6
     //   347: athrow
@@ -446,7 +431,7 @@ public class NewerGuidePlugin
     //   0	377	0	this	NewerGuidePlugin
     //   0	377	1	paramBoolean	boolean
     //   0	377	2	paramString	String
-    //   56	318	3	i	int
+    //   56	318	3	j	int
     //   43	136	4	localObject1	Object
     //   185	6	4	localObject2	Object
     //   203	116	4	str1	String
@@ -489,24 +474,24 @@ public class NewerGuidePlugin
   {
     if ((paramArrayOfString != null) && (paramArrayOfString.length != 0))
     {
-      int i;
+      int j;
       if (paramInt >= 0)
       {
-        i = paramInt;
+        j = paramInt;
         if (paramInt < paramArrayOfString.length) {}
       }
       else
       {
-        i = 0;
+        j = 0;
       }
-      Object localObject = this.mRuntime.a();
-      IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject).getLayoutInflater().inflate(2131561132, null);
+      Object localObject = this.mRuntime.d();
+      IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject).getLayoutInflater().inflate(2131627482, null);
       localIphonePickerView.a(new NewerGuidePlugin.5(this, paramArrayOfString));
       paramArrayOfString = ActionSheet.createMenuSheet((Context)localObject);
       paramArrayOfString.setCloseAutoRead(true);
       paramArrayOfString.setActionContentView(localIphonePickerView, null);
-      localObject = (DispatchActionMoveScrollView)paramArrayOfString.findViewById(2131361999);
-      ((DispatchActionMoveScrollView)localObject).jdField_a_of_type_Boolean = true;
+      localObject = (DispatchActionMoveScrollView)paramArrayOfString.findViewById(2131427560);
+      ((DispatchActionMoveScrollView)localObject).a = true;
       ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
       if (Build.VERSION.SDK_INT >= 11)
       {
@@ -516,8 +501,8 @@ public class NewerGuidePlugin
         }
       }
       localIphonePickerView.setPickListener(new NewerGuidePlugin.6(this, paramArrayOfString));
-      this.jdField_a_of_type_Int = i;
-      localIphonePickerView.setSelection(0, i);
+      this.c = j;
+      localIphonePickerView.setSelection(0, j);
     }
     try
     {
@@ -529,31 +514,12 @@ public class NewerGuidePlugin
     return;
   }
   
-  public static boolean a()
-  {
-    return QzoneConfig.getInstance().getConfig("CMShow", "CMShowNewerGuideEntranceShow", 1) > 0;
-  }
-  
-  public static String b()
-  {
-    return QzoneConfig.getInstance().getConfig("CMShow", "CMShowNewerGuideEntranceLink", "https://open.cmshow.qq.com/next/registerProcess.html?_wv=16777223&_wwv=8704");
-  }
-  
-  private void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "unregisterAvatarReceiver");
-    }
-    this.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
   private void b(JSONObject paramJSONObject)
   {
     if (QLog.isColorLevel()) {
       QLog.d("NewerGuidePlugin", 2, "handleUploadContacts");
     }
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if ((localActivity != null) && ((localActivity instanceof QBaseActivity)))
     {
       QBaseActivity localQBaseActivity = (QBaseActivity)localActivity;
@@ -566,27 +532,14 @@ public class NewerGuidePlugin
     }
   }
   
-  private void c()
+  public static boolean b()
   {
-    QBaseActivity localQBaseActivity = (QBaseActivity)this.mRuntime.a();
-    if (localQBaseActivity != null)
-    {
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        int i = localQBaseActivity.checkSelfPermission("android.permission.CAMERA");
-        if (QLog.isColorLevel()) {
-          QLog.d("NewerGuidePlugin", 2, String.format("handleSetAvatar permission=%s", new Object[] { Integer.valueOf(i) }));
-        }
-        if (i == 0)
-        {
-          d();
-          return;
-        }
-        localQBaseActivity.requestPermissions(new NewerGuidePlugin.3(this, localQBaseActivity), 1, new String[] { "android.permission.CAMERA" });
-        return;
-      }
-      d();
-    }
+    return QzoneConfig.getInstance().getConfig("CMShow", "CMShowNewerGuideEntranceShow", 1) > 0;
+  }
+  
+  public static String c()
+  {
+    return QzoneConfig.getInstance().getConfig("CMShow", "CMShowNewerGuideEntranceLink", "https://open.cmshow.qq.com/next/registerProcess.html?_wv=16777223&_wwv=8704");
   }
   
   private void c(JSONObject paramJSONObject)
@@ -596,15 +549,117 @@ public class NewerGuidePlugin
     }
     paramJSONObject = new Bundle();
     paramJSONObject.putString("key_action", "uploadContacts");
-    paramJSONObject = DataFactory.a("ipc_newer_guide", null, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, paramJSONObject);
+    paramJSONObject = DataFactory.a("ipc_newer_guide", null, this.g.key, paramJSONObject);
     ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJSONObject);
   }
   
   private void d()
   {
-    Activity localActivity = this.mRuntime.a();
+    if (!this.h)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NewerGuidePlugin", 2, "registerAvatarReceiver");
+      }
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT");
+      localIntentFilter.addAction("ACTION_NEWER_GUIDE_CMSHOW_AVATAR_RESULT");
+      this.mRuntime.d().registerReceiver(this.i, localIntentFilter);
+      this.h = true;
+    }
+  }
+  
+  private void d(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, "handleGetRecommended");
+    }
+    Activity localActivity = this.mRuntime.d();
+    if ((localActivity != null) && ((localActivity instanceof QBaseActivity)))
+    {
+      int j;
+      if (Build.VERSION.SDK_INT >= 23) {
+        j = ((QBaseActivity)localActivity).checkSelfPermission("android.permission.READ_CONTACTS");
+      } else {
+        j = 0;
+      }
+      if (j == 0)
+      {
+        e(paramJSONObject);
+        return;
+      }
+      ((QBaseActivity)localActivity).requestPermissions(new NewerGuidePlugin.9(this, paramJSONObject, localActivity), 1, new String[] { "android.permission.READ_CONTACTS" });
+    }
+  }
+  
+  private void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, "unregisterAvatarReceiver");
+    }
+    this.mRuntime.d().unregisterReceiver(this.i);
+    this.h = false;
+  }
+  
+  private void e(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, String.format("getRecommended args=%s", new Object[] { paramJSONObject }));
+    }
+    int j = Integer.parseInt(paramJSONObject.getString("wantCount"));
+    paramJSONObject = new Bundle();
+    paramJSONObject.putString("key_action", "getRecommendedList");
+    paramJSONObject.putInt("wantCount", j);
+    paramJSONObject = DataFactory.a("ipc_newer_guide", null, this.g.key, paramJSONObject);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJSONObject);
+  }
+  
+  private void f()
+  {
+    QBaseActivity localQBaseActivity = (QBaseActivity)this.mRuntime.d();
+    if (localQBaseActivity != null)
+    {
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        int j = localQBaseActivity.checkSelfPermission("android.permission.CAMERA");
+        if (QLog.isColorLevel()) {
+          QLog.d("NewerGuidePlugin", 2, String.format("handleSetAvatar permission=%s", new Object[] { Integer.valueOf(j) }));
+        }
+        if (j == 0)
+        {
+          g();
+          return;
+        }
+        localQBaseActivity.requestPermissions(new NewerGuidePlugin.3(this, localQBaseActivity), 1, new String[] { "android.permission.CAMERA" });
+        return;
+      }
+      g();
+    }
+  }
+  
+  private void f(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, String.format("getRecommendedNew args=%s", new Object[] { paramJSONObject }));
+    }
+    long l = Long.parseLong(paramJSONObject.getString("uin"));
+    int j = Integer.parseInt(paramJSONObject.getString("startIndex"));
+    int k = Integer.parseInt(paramJSONObject.getString("num"));
+    paramJSONObject = paramJSONObject.getString("callback");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("key_action", "getRecommendedListNew");
+    localBundle.putLong("uin", l);
+    localBundle.putInt("startIndex", j);
+    localBundle.putInt("num", k);
+    localBundle.putString("callback", paramJSONObject);
+    paramJSONObject = DataFactory.a("ipc_newer_guide", null, this.g.key, localBundle);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJSONObject);
+  }
+  
+  private void g()
+  {
+    Activity localActivity = this.mRuntime.d();
     String[] arrayOfString = localActivity.getResources().getStringArray(2130968636);
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(localActivity, null);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(localActivity, null);
     ArrayList localArrayList = new ArrayList();
     DynamicAvatarConfBean.DynamicAvatarConfig localDynamicAvatarConfig = DynamicAvatarConfProcessor.a.a().a();
     if (QLog.isColorLevel())
@@ -614,11 +669,11 @@ public class NewerGuidePlugin
       localStringBuilder.append(localDynamicAvatarConfig.a());
       QLog.d("NewerGuidePlugin", 2, localStringBuilder.toString());
     }
-    if (a())
+    if (b())
     {
       localActionSheet.addButton(a());
       localArrayList.add(Integer.valueOf(33));
-      ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).report("set_profile", "photo_settings", "expose", null);
+      ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).report("set_profile", "photo_settings", "expo", null);
     }
     if (localDynamicAvatarConfig.a())
     {
@@ -640,61 +695,6 @@ public class NewerGuidePlugin
     catch (Exception localException) {}
   }
   
-  private void d(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "handleGetRecommended");
-    }
-    Activity localActivity = this.mRuntime.a();
-    if ((localActivity != null) && ((localActivity instanceof QBaseActivity)))
-    {
-      int i;
-      if (Build.VERSION.SDK_INT >= 23) {
-        i = ((QBaseActivity)localActivity).checkSelfPermission("android.permission.READ_CONTACTS");
-      } else {
-        i = 0;
-      }
-      if (i == 0)
-      {
-        e(paramJSONObject);
-        return;
-      }
-      ((QBaseActivity)localActivity).requestPermissions(new NewerGuidePlugin.9(this, paramJSONObject, localActivity), 1, new String[] { "android.permission.READ_CONTACTS" });
-    }
-  }
-  
-  private void e(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("getRecommended args=%s", new Object[] { paramJSONObject }));
-    }
-    int i = Integer.parseInt(paramJSONObject.getString("wantCount"));
-    paramJSONObject = new Bundle();
-    paramJSONObject.putString("key_action", "getRecommendedList");
-    paramJSONObject.putInt("wantCount", i);
-    paramJSONObject = DataFactory.a("ipc_newer_guide", null, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, paramJSONObject);
-    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJSONObject);
-  }
-  
-  private void f(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("getRecommendedNew args=%s", new Object[] { paramJSONObject }));
-    }
-    long l = Long.parseLong(paramJSONObject.getString("uin"));
-    int i = Integer.parseInt(paramJSONObject.getString("startIndex"));
-    int j = Integer.parseInt(paramJSONObject.getString("num"));
-    paramJSONObject = paramJSONObject.getString("callback");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key_action", "getRecommendedListNew");
-    localBundle.putLong("uin", l);
-    localBundle.putInt("startIndex", i);
-    localBundle.putInt("num", j);
-    localBundle.putString("callback", paramJSONObject);
-    paramJSONObject = DataFactory.a("ipc_newer_guide", null, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, localBundle);
-    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJSONObject);
-  }
-  
   public void callJs(String paramString, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
@@ -707,7 +707,7 @@ public class NewerGuidePlugin
   {
     boolean bool2 = QLog.isColorLevel();
     boolean bool1 = true;
-    int i = 0;
+    int j = 0;
     if (bool2) {
       QLog.d("NewerGuidePlugin", 2, String.format("handleJsRequest pkgName=%s method=%s url=%s args=%s", new Object[] { paramString2, paramString3, paramString1, Arrays.toString(paramVarArgs) }));
     }
@@ -734,10 +734,10 @@ public class NewerGuidePlugin
         }
         if (paramString3.equals("skipGuide"))
         {
-          paramJsBridgeListener = new Intent(this.mRuntime.a(), SplashActivity.class);
+          paramJsBridgeListener = new Intent(this.mRuntime.d(), SplashActivity.class);
           paramJsBridgeListener.putExtra("main_tab_id", 1);
           paramJsBridgeListener.setFlags(603979776);
-          this.mRuntime.a().startActivity(paramJsBridgeListener);
+          this.mRuntime.d().startActivity(paramJsBridgeListener);
           return true;
         }
         bool2 = paramString3.equals("addFriend");
@@ -751,18 +751,18 @@ public class NewerGuidePlugin
           if (paramString1.data.getInt("selfBindState") > 5) {
             break label1494;
           }
-          i = 3075;
-          j = 3;
+          j = 3075;
+          k = 3;
           paramString1 = paramJsBridgeListener.getString("uin");
           paramJsBridgeListener = paramJsBridgeListener.getString("name");
-          k = 7;
-          paramString2 = this.mRuntime.a(this.mRuntime.a());
+          m = 7;
+          paramString2 = this.mRuntime.a(this.mRuntime.d());
           if ((paramString2 instanceof WebViewPluginContainer)) {
-            k = ((WebViewPluginContainer)paramString2).switchRequestCode(this, (byte)7);
+            m = ((WebViewPluginContainer)paramString2).switchRequestCode(this, (byte)7);
           }
-          paramJsBridgeListener = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(this.mRuntime.a(), 2, paramString1, null, i, j, paramJsBridgeListener, null, null, null, null);
+          paramJsBridgeListener = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(this.mRuntime.d(), 2, paramString1, null, j, k, paramJsBridgeListener, null, null, null, null);
           paramJsBridgeListener.putExtra("from_newer_guide", true);
-          ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriendForResult(this.mRuntime.a(), paramJsBridgeListener, k);
+          ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriendForResult(this.mRuntime.d(), paramJsBridgeListener, m);
           return true;
         }
         bool2 = paramString3.equals("followPublicAccount");
@@ -772,7 +772,7 @@ public class NewerGuidePlugin
           paramString1 = new Bundle();
           paramString1.putString("key_action", "followPublicAccount");
           paramString1.putString("uin", paramJsBridgeListener);
-          paramJsBridgeListener = DataFactory.a("ipc_newer_guide", null, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, paramString1);
+          paramJsBridgeListener = DataFactory.a("ipc_newer_guide", null, this.g.key, paramString1);
           ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJsBridgeListener);
           return true;
         }
@@ -787,7 +787,7 @@ public class NewerGuidePlugin
           paramString3.putString("uin", paramString1);
           paramString3.putString("name", paramString2);
           paramString3.putString("authSig", paramJsBridgeListener);
-          paramJsBridgeListener = DataFactory.a("ipc_newer_guide", null, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, paramString3);
+          paramJsBridgeListener = DataFactory.a("ipc_newer_guide", null, this.g.key, paramString3);
           ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJsBridgeListener);
           return true;
         }
@@ -801,7 +801,7 @@ public class NewerGuidePlugin
           paramString3.putString("uin", paramString1);
           paramString3.putString("name", paramString2);
           paramString3.putString("authSig", paramJsBridgeListener);
-          paramJsBridgeListener = DataFactory.a("ipc_newer_guide", null, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, paramString3);
+          paramJsBridgeListener = DataFactory.a("ipc_newer_guide", null, this.g.key, paramString3);
           ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJsBridgeListener);
           return true;
         }
@@ -811,7 +811,7 @@ public class NewerGuidePlugin
           paramJsBridgeListener = new Bundle();
           paramJsBridgeListener.putString("key_action", "sayHi");
           paramJsBridgeListener.putLong("tinyId", l);
-          paramJsBridgeListener = DataFactory.a("ipc_newer_guide", null, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, paramJsBridgeListener);
+          paramJsBridgeListener = DataFactory.a("ipc_newer_guide", null, this.g.key, paramJsBridgeListener);
           ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJsBridgeListener);
           return true;
         }
@@ -822,12 +822,12 @@ public class NewerGuidePlugin
         }
         if (paramString3.equals("setAvatar"))
         {
-          c();
+          f();
           return true;
         }
         if (paramString3.equals("selector"))
         {
-          j = paramJsBridgeListener.getInt("index");
+          k = paramJsBridgeListener.getInt("index");
           paramString2 = paramJsBridgeListener.getJSONArray("options");
           paramJsBridgeListener = paramString1;
           if (paramString2 != null)
@@ -835,18 +835,18 @@ public class NewerGuidePlugin
             paramJsBridgeListener = paramString1;
             if (paramString2.length() > 0)
             {
-              k = paramString2.length();
-              paramString1 = new String[k];
+              m = paramString2.length();
+              paramString1 = new String[m];
               paramJsBridgeListener = paramString1;
-              if (i < k)
+              if (j < m)
               {
-                paramString1[i] = paramString2.getString(i);
-                i += 1;
+                paramString1[j] = paramString2.getString(j);
+                j += 1;
                 continue;
               }
             }
           }
-          a(paramJsBridgeListener, j);
+          a(paramJsBridgeListener, k);
           return true;
         }
         if (paramString3.equals("datePicker"))
@@ -857,66 +857,66 @@ public class NewerGuidePlugin
         if (paramString3.equals("queryUploadProgress"))
         {
           paramJsBridgeListener = paramJsBridgeListener.getString("callback");
-          paramString1 = a(this.mRuntime.a().getAccount());
+          paramString1 = a(this.mRuntime.b().getAccount());
           if (paramString1 == null) {
             break label1506;
           }
-          j = paramString1.optInt("state");
-          k = paramString1.optInt("total");
-          m = paramString1.optInt("curPer");
-          i = paramString1.optInt("expPer");
+          k = paramString1.optInt("state");
+          m = paramString1.optInt("total");
+          n = paramString1.optInt("curPer");
+          j = paramString1.optInt("expPer");
           if (QLog.isColorLevel()) {
-            QLog.i("NewerGuidePlugin", 2, String.format("METHOD_QUERY_UPLOAD_PROGRESS [%s, %s, %s, %s]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i) }));
+            QLog.i("NewerGuidePlugin", 2, String.format("METHOD_QUERY_UPLOAD_PROGRESS [%s, %s, %s, %s]", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(j) }));
           }
-          double d1 = m / 100.0F;
-          double d2 = k;
+          double d1 = n / 100.0F;
+          double d2 = m;
           Double.isNaN(d2);
           Double.isNaN(d1);
-          i = (int)(d2 * d1);
+          j = (int)(d2 * d1);
           paramString1 = new JSONObject();
-          paramString1.put("state", j);
-          paramString1.put("total", k);
+          paramString1.put("state", k);
+          paramString1.put("total", m);
           paramString1.put("progress", d1);
-          paramString1.put("upload_count", i);
+          paramString1.put("upload_count", j);
           callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
           return true;
         }
         if (paramString3.equals("profileAvatar"))
         {
-          paramJsBridgeListener = new Intent(this.mRuntime.a(), AvatarPendantActivity.class);
-          paramJsBridgeListener.putExtra("AllInOne", new AllInOne(this.mRuntime.a().getCurrentAccountUin(), 0));
+          paramJsBridgeListener = new Intent(this.mRuntime.d(), AvatarPendantActivity.class);
+          paramJsBridgeListener.putExtra("AllInOne", new AllInOne(this.mRuntime.b().getCurrentAccountUin(), 0));
           paramJsBridgeListener.putExtra("showActionSheet", true);
-          this.mRuntime.a().startActivity(paramJsBridgeListener);
+          this.mRuntime.d().startActivity(paramJsBridgeListener);
           return true;
         }
         bool2 = paramString3.equals("profileSex");
         if (bool2)
         {
-          paramJsBridgeListener = new Intent(this.mRuntime.a(), FriendProfileMoreInfoActivity.class);
+          paramJsBridgeListener = new Intent(this.mRuntime.d(), FriendProfileMoreInfoActivity.class);
           paramJsBridgeListener.putExtra("profile_jump_to_edit", 1);
-          this.mRuntime.a().startActivity(paramJsBridgeListener);
+          this.mRuntime.d().startActivity(paramJsBridgeListener);
           return true;
         }
         if (paramString3.equals("profileBirthday"))
         {
-          paramJsBridgeListener = new Intent(this.mRuntime.a(), FriendProfileMoreInfoActivity.class);
+          paramJsBridgeListener = new Intent(this.mRuntime.d(), FriendProfileMoreInfoActivity.class);
           paramJsBridgeListener.putExtra("profile_jump_to_edit", 2);
-          this.mRuntime.a().startActivity(paramJsBridgeListener);
+          this.mRuntime.d().startActivity(paramJsBridgeListener);
           return true;
         }
         if (paramString3.equals("profileLocation"))
         {
-          paramJsBridgeListener = new Intent(this.mRuntime.a(), FriendProfileMoreInfoActivity.class);
+          paramJsBridgeListener = new Intent(this.mRuntime.d(), FriendProfileMoreInfoActivity.class);
           paramJsBridgeListener.putExtra("profile_jump_to_edit", 3);
-          this.mRuntime.a().startActivity(paramJsBridgeListener);
+          this.mRuntime.d().startActivity(paramJsBridgeListener);
           return true;
         }
         if (!paramString3.equals("profileSchool")) {
           break label1491;
         }
-        paramJsBridgeListener = new Intent(this.mRuntime.a(), FriendProfileMoreInfoActivity.class);
+        paramJsBridgeListener = new Intent(this.mRuntime.d(), FriendProfileMoreInfoActivity.class);
         paramJsBridgeListener.putExtra("profile_jump_to_edit", 4);
-        this.mRuntime.a().startActivity(paramJsBridgeListener);
+        this.mRuntime.d().startActivity(paramJsBridgeListener);
         return true;
       }
       catch (Exception paramJsBridgeListener)
@@ -928,14 +928,14 @@ public class NewerGuidePlugin
       label1491:
       return bool1;
       label1494:
-      i = 3006;
-      int j = 11;
+      j = 3006;
+      int k = 11;
       continue;
       label1506:
-      i = 0;
       j = 0;
-      int k = 0;
+      k = 0;
       int m = 0;
+      int n = 0;
     }
   }
   
@@ -964,8 +964,8 @@ public class NewerGuidePlugin
       {
         if (paramInt == -1)
         {
-          paramIntent = this.mRuntime.a();
-          localObject = ImageUtil.b(paramIntent, this.jdField_a_of_type_AndroidNetUri);
+          paramIntent = this.mRuntime.d();
+          localObject = ImageUtil.b(paramIntent, this.a);
           str = FaceUtil.a();
           paramInt = ProfileCardUtil.b(paramIntent);
           localIntent = new Intent();
@@ -988,7 +988,7 @@ public class NewerGuidePlugin
       {
         localObject = new JSONObject();
         if (!paramIntent.getBooleanExtra("has_operation", false)) {
-          break label455;
+          break label458;
         }
         paramInt = 1;
         paramIntent = paramIntent.getStringExtra("uin");
@@ -1020,7 +1020,7 @@ public class NewerGuidePlugin
         }
       }
       return;
-      label455:
+      label458:
       paramInt = 0;
       break;
       continue;
@@ -1041,8 +1041,8 @@ public class NewerGuidePlugin
       localStringBuilder.append(this);
       QLog.d("NewerGuidePlugin", 2, localStringBuilder.toString());
     }
-    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).registerObserver(this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver);
-    a();
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).registerObserver(this.g);
+    d();
   }
   
   protected void onDestroy()
@@ -1055,13 +1055,13 @@ public class NewerGuidePlugin
       QLog.d("NewerGuidePlugin", 2, localStringBuilder.toString());
     }
     super.onDestroy();
-    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).unRegisterObserver(this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver);
-    b();
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).unRegisterObserver(this.g);
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,15 @@ class NewReportPlugin$4$1
   
   public void run()
   {
-    NewReportPlugin.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.a);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    NewReportPlugin.a(this.this$0.b, this.a);
+    if (this.this$0.k.isShowing()) {
+      this.this$0.k.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.4.1
  * JD-Core Version:    0.7.0.1
  */

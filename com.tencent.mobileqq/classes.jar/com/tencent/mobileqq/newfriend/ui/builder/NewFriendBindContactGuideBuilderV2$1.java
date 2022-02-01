@@ -10,14 +10,14 @@ class NewFriendBindContactGuideBuilderV2$1
   
   public void run()
   {
-    IPhoneContactService localIPhoneContactService = (IPhoneContactService)this.this$0.a.getRuntimeService(IPhoneContactService.class, "");
+    IPhoneContactService localIPhoneContactService = (IPhoneContactService)this.this$0.d.getRuntimeService(IPhoneContactService.class, "");
     localIPhoneContactService.uploadOrUpdateContact();
     localIPhoneContactService.setNeedUploadResultTip(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendBindContactGuideBuilderV2.1
  * JD-Core Version:    0.7.0.1
  */

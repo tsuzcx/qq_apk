@@ -26,20 +26,19 @@ import java.util.Map;
 public class PlayerDataPreLoader
   implements IDataProvider.ICallBack
 {
-  private final StoryManager jdField_a_of_type_ComTencentBizQqstoryModelStoryManager;
-  public BatchGetVideoInfo.VideoLocalCacheFilter a;
-  private IDataProvider.Data jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data;
-  private IDataProvider.GroupId jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId;
-  private IDataProvider jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider;
-  private final FeedManager jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager;
-  private String jdField_a_of_type_JavaLangString;
+  public BatchGetVideoInfo.VideoLocalCacheFilter a = new PlayerDataPreLoader.2(this);
+  private IDataProvider b;
+  private IDataProvider.GroupId c;
+  private String d;
+  private final StoryManager e;
+  private final FeedManager f;
+  private IDataProvider.Data g;
   
   public PlayerDataPreLoader(IDataProvider paramIDataProvider)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$VideoLocalCacheFilter = new PlayerDataPreLoader.2(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider = paramIDataProvider;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager = ((StoryManager)SuperManager.a(5));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager = ((FeedManager)SuperManager.a(11));
+    this.b = paramIDataProvider;
+    this.e = ((StoryManager)SuperManager.a(5));
+    this.f = ((FeedManager)SuperManager.a(11));
   }
   
   private PlayerDataPreLoader.Result a(IDataProvider.Data paramData, IDataProvider.GroupId paramGroupId, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -48,7 +47,7 @@ public class PlayerDataPreLoader
     if (paramData == null) {
       return localResult;
     }
-    int i2 = paramData.jdField_a_of_type_JavaUtilList.size();
+    int i2 = paramData.c.size();
     if (i2 == 0) {
       return localResult;
     }
@@ -56,7 +55,7 @@ public class PlayerDataPreLoader
     int k;
     if (paramGroupId != null)
     {
-      i = paramData.jdField_a_of_type_JavaUtilList.indexOf(new IDataProvider.GroupInfo(paramGroupId));
+      i = paramData.c.indexOf(new IDataProvider.GroupInfo(paramGroupId));
       k = i;
       if (i < 0) {
         SLog.e("Q.qqstory.player.data.PlayerDataPreLoader", "can't find center group:%s", new Object[] { paramGroupId });
@@ -83,16 +82,16 @@ public class PlayerDataPreLoader
         if (i1 <= n - paramInt1) {
           break;
         }
-        if (((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i1)).jdField_a_of_type_JavaUtilList.size() != 0)
+        if (((IDataProvider.GroupInfo)paramData.c.get(i1)).c.size() != 0)
         {
-          paramGroupId = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i1)).jdField_a_of_type_JavaUtilList.get(0);
+          paramGroupId = (String)((IDataProvider.GroupInfo)paramData.c.get(i1)).c.get(0);
           j = i;
           if (!a(paramGroupId))
           {
-            localResult.jdField_a_of_type_JavaUtilList.add(paramGroupId);
+            localResult.a.add(paramGroupId);
             j = i + 1;
           }
-          paramGroupId = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i1)).jdField_a_of_type_JavaUtilMap.get(paramGroupId);
+          paramGroupId = (String)((IDataProvider.GroupInfo)paramData.c.get(i1)).d.get(paramGroupId);
           i = j;
           if (!b(paramGroupId))
           {
@@ -116,16 +115,16 @@ public class PlayerDataPreLoader
         if (i <= paramInt2 + m) {
           break;
         }
-        if (((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaUtilList.size() != 0)
+        if (((IDataProvider.GroupInfo)paramData.c.get(i)).c.size() != 0)
         {
-          paramGroupId = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaUtilList.get(0);
+          paramGroupId = (String)((IDataProvider.GroupInfo)paramData.c.get(i)).c.get(0);
           paramInt1 = j;
           if (!a(paramGroupId))
           {
-            localResult.jdField_a_of_type_JavaUtilList.add(paramGroupId);
+            localResult.a.add(paramGroupId);
             paramInt1 = j + 1;
           }
-          paramGroupId = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaUtilMap.get(paramGroupId);
+          paramGroupId = (String)((IDataProvider.GroupInfo)paramData.c.get(i)).d.get(paramGroupId);
           j = paramInt1;
           if (!b(paramGroupId))
           {
@@ -138,7 +137,7 @@ public class PlayerDataPreLoader
     paramInt2 = k;
     for (j = paramInt1; paramInt2 < i2; j = i)
     {
-      paramGroupId = ((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(paramInt2)).jdField_a_of_type_JavaUtilList;
+      paramGroupId = ((IDataProvider.GroupInfo)paramData.c.get(paramInt2)).c;
       if (k == paramInt2)
       {
         m = paramGroupId.indexOf(paramString) - paramInt3;
@@ -157,15 +156,15 @@ public class PlayerDataPreLoader
         if (!a(str))
         {
           j = i;
-          if (!localResult.jdField_a_of_type_JavaUtilList.contains(str))
+          if (!localResult.a.contains(str))
           {
-            localResult.jdField_a_of_type_JavaUtilList.add(str);
+            localResult.a.add(str);
             j = i + 1;
           }
         }
         if (localResult.b.size() < paramInt4)
         {
-          str = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(paramInt2)).jdField_a_of_type_JavaUtilMap.get(str);
+          str = (String)((IDataProvider.GroupInfo)paramData.c.get(paramInt2)).d.get(str);
           if (!b(str)) {
             localResult.a(str);
           }
@@ -197,8 +196,8 @@ public class PlayerDataPreLoader
   
   private boolean a(String paramString)
   {
-    paramString = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(paramString);
-    return (paramString != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$VideoLocalCacheFilter.a(paramString));
+    paramString = this.e.a(paramString);
+    return (paramString != null) && (!this.a.a(paramString));
   }
   
   private void b(List<String> paramList)
@@ -213,12 +212,12 @@ public class PlayerDataPreLoader
       return;
     }
     SLog.a("Q.qqstory.player.data.PlayerDataPreLoader", "start preload sync feed info size:%d feed:%s", Integer.valueOf(paramList.size()), paramList);
-    ((FeedManager)SuperManager.a(11)).b(paramList);
+    ((FeedManager)SuperManager.a(11)).d(paramList);
   }
   
   private boolean b(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(paramString) != null;
+    return this.f.b(paramString) != null;
   }
   
   private void d()
@@ -228,27 +227,27 @@ public class PlayerDataPreLoader
   
   private void e()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data;
-    if ((localObject1 != null) && (((IDataProvider.Data)localObject1).jdField_a_of_type_JavaUtilList.size() != 0) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId != null) && (this.jdField_a_of_type_JavaLangString != null))
+    Object localObject1 = this.g;
+    if ((localObject1 != null) && (((IDataProvider.Data)localObject1).c.size() != 0) && (this.c != null) && (this.d != null))
     {
       localObject1 = new ArrayList();
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.indexOf(new IDataProvider.GroupInfo(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId));
+      int i = this.g.c.indexOf(new IDataProvider.GroupInfo(this.c));
       if (i < 0)
       {
-        SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:can't find center group:%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId });
+        SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:can't find center group:%s", new Object[] { this.c });
         return;
       }
-      Object localObject2 = (IDataProvider.GroupInfo)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.get(i);
-      int j = ((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.indexOf(this.jdField_a_of_type_JavaLangString);
+      Object localObject2 = (IDataProvider.GroupInfo)this.g.c.get(i);
+      int j = ((IDataProvider.GroupInfo)localObject2).c.indexOf(this.d);
       if (j < 0)
       {
-        SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:can't find center vid:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+        SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:can't find center vid:%s", new Object[] { this.d });
         return;
       }
       int k = j + 1;
-      if (k < ((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.size())
+      if (k < ((IDataProvider.GroupInfo)localObject2).c.size())
       {
-        localObject3 = (String)((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilMap.get(((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.get(k));
+        localObject3 = (String)((IDataProvider.GroupInfo)localObject2).d.get(((IDataProvider.GroupInfo)localObject2).c.get(k));
         if (!TextUtils.isEmpty((CharSequence)localObject3)) {
           ((Collection)localObject1).add(localObject3);
         }
@@ -256,30 +255,30 @@ public class PlayerDataPreLoader
       j -= 1;
       if (j >= 0)
       {
-        localObject2 = (String)((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilMap.get(((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.get(j));
+        localObject2 = (String)((IDataProvider.GroupInfo)localObject2).d.get(((IDataProvider.GroupInfo)localObject2).c.get(j));
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
           ((Collection)localObject1).add(localObject2);
         }
       }
       j = i + 1;
-      if ((j >= 0) && (j < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.size()))
+      if ((j >= 0) && (j < this.g.c.size()))
       {
-        localObject2 = (IDataProvider.GroupInfo)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.get(j);
-        if (((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.size() > 0)
+        localObject2 = (IDataProvider.GroupInfo)this.g.c.get(j);
+        if (((IDataProvider.GroupInfo)localObject2).c.size() > 0)
         {
-          localObject2 = (String)((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilMap.get(((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.get(0));
+          localObject2 = (String)((IDataProvider.GroupInfo)localObject2).d.get(((IDataProvider.GroupInfo)localObject2).c.get(0));
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
             ((Collection)localObject1).add(localObject2);
           }
         }
       }
       i -= 1;
-      if ((i >= 0) && (i < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.size()))
+      if ((i >= 0) && (i < this.g.c.size()))
       {
-        localObject2 = (IDataProvider.GroupInfo)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.get(i);
-        if (((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.size() > 0)
+        localObject2 = (IDataProvider.GroupInfo)this.g.c.get(i);
+        if (((IDataProvider.GroupInfo)localObject2).c.size() > 0)
         {
-          localObject2 = (String)((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilMap.get(((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.get(0));
+          localObject2 = (String)((IDataProvider.GroupInfo)localObject2).d.get(((IDataProvider.GroupInfo)localObject2).c.get(0));
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
             ((Collection)localObject1).add(localObject2);
           }
@@ -294,7 +293,7 @@ public class PlayerDataPreLoader
         if ((!FeedItem.isFakeFeedId(str)) && (!((ArrayList)localObject2).contains(str)))
         {
           ((ArrayList)localObject2).add(str);
-          ((FeedManager)localObject3).a(str);
+          ((FeedManager)localObject3).g(str);
         }
       }
       SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:feed id list:%s , preload feature count:%d", new Object[] { localObject1, Integer.valueOf(((ArrayList)localObject2).size()) });
@@ -305,8 +304,8 @@ public class PlayerDataPreLoader
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId, 10);
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.iterator();
+    this.g = this.b.a(this.c, 10);
+    Iterator localIterator = this.g.c.iterator();
     while (localIterator.hasNext()) {
       if ((localIterator.next() instanceof IDataProvider.FakeGroupInfo)) {
         localIterator.remove();
@@ -317,8 +316,8 @@ public class PlayerDataPreLoader
   
   public void a(IDataProvider.GroupId paramGroupId, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId = paramGroupId;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramGroupId;
+    this.d = paramString;
     d();
   }
   
@@ -326,12 +325,12 @@ public class PlayerDataPreLoader
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider.a(this);
+    this.b.a(this);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider.b(this);
+    this.b.b(this);
   }
 }
 

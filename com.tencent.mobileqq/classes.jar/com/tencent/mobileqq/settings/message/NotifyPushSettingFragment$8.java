@@ -20,16 +20,16 @@ class NotifyPushSettingFragment$8
     } else {
       BadgeUtils.b();
     }
-    ReportClickEventHelper.a(NotifyPushSettingFragment.a(this.a), "0X800B84D", paramBoolean);
-    if (AppSetting.d) {
-      NotifyPushSettingFragment.d(this.a).setContentDescription(HardCodeUtil.a(2131707650));
+    ReportClickEventHelper.a(NotifyPushSettingFragment.c(this.a), "0X800B84D", paramBoolean);
+    if (AppSetting.e) {
+      NotifyPushSettingFragment.l(this.a).setContentDescription(HardCodeUtil.a(2131905465));
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.8
  * JD-Core Version:    0.7.0.1
  */

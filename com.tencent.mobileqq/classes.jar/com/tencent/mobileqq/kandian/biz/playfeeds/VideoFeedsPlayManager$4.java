@@ -10,26 +10,26 @@ class VideoFeedsPlayManager$4
   
   public void run()
   {
-    VideoPlayerWrapper localVideoPlayerWrapper = VideoFeedsPlayManager.a(this.this$0);
+    VideoPlayerWrapper localVideoPlayerWrapper = VideoFeedsPlayManager.i(this.this$0);
     if (localVideoPlayerWrapper != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFeedsPlayManager.preplay", 2, "innerChangeCoverImageView: getCurVideoPlayer().start() ");
       }
-      localVideoPlayerWrapper.d();
-      if (!VideoFeedsPlayManager.b(this.this$0))
+      localVideoPlayerWrapper.u();
+      if (!VideoFeedsPlayManager.f(this.this$0))
       {
         if (QLog.isColorLevel()) {
           QLog.d("VideoFeedsPlayManager.preplay", 2, "activity become onPause after videoPlayer.start()， so we need to pause it");
         }
-        localVideoPlayerWrapper.f();
+        localVideoPlayerWrapper.w();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsPlayManager.4
  * JD-Core Version:    0.7.0.1
  */

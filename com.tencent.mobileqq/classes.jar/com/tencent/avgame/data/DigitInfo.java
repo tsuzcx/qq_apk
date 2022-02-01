@@ -14,7 +14,7 @@ public class DigitInfo
     return this.a;
   }
   
-  public boolean a()
+  public boolean b()
   {
     int i = this.a;
     return (i >= 0) && (i < 10);

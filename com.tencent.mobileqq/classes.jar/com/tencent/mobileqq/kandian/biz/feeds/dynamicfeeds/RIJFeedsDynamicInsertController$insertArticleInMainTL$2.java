@@ -13,12 +13,12 @@ final class RIJFeedsDynamicInsertController$insertArticleInMainTL$2
   
   public final void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, (IInsertArticleCallback)new RIJFeedsDynamicInsertController.insertArticleInMainTL.2.1(this));
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.a, this.b, this.c, (IInsertArticleCallback)new RIJFeedsDynamicInsertController.insertArticleInMainTL.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsDynamicInsertController.insertArticleInMainTL.2
  * JD-Core Version:    0.7.0.1
  */

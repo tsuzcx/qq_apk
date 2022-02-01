@@ -59,25 +59,24 @@ public class BabyQHandler
   extends BusinessHandler
   implements INetEngineListener
 {
-  private static String c;
-  private static String d;
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  public QQAppInterface a;
-  public String a;
-  public ArrayList<String> a;
+  private static String f;
+  private static String g;
   public HashMap<String, String[]> a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private SharedPreferences b;
-  public String b;
+  public ArrayList<String> b;
+  public String c;
+  public String d;
+  public QQAppInterface e;
+  private int h = -1;
+  private boolean i = false;
+  private Bundle j;
+  private long k = -1L;
+  private SharedPreferences l = null;
+  private SharedPreferences m = null;
   
   protected BabyQHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_b_of_type_AndroidContentSharedPreferences = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.e = paramQQAppInterface;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getAbsolutePath());
     ((StringBuilder)localObject).append(File.separator);
@@ -88,7 +87,7 @@ public class BabyQHandler
     ((StringBuilder)localObject).append("babyQIconRes");
     ((StringBuilder)localObject).append(File.separator);
     ((StringBuilder)localObject).append("babyQIconRes.zip");
-    c = ((StringBuilder)localObject).toString();
+    f = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getAbsolutePath());
     ((StringBuilder)localObject).append(File.separator);
@@ -97,27 +96,27 @@ public class BabyQHandler
     ((StringBuilder)localObject).append("MobileQQ");
     ((StringBuilder)localObject).append(File.separator);
     ((StringBuilder)localObject).append("babyQIconRes");
-    d = ((StringBuilder)localObject).toString();
+    g = ((StringBuilder)localObject).toString();
     try
     {
       localObject = paramQQAppInterface.getApp();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("pref_babyq");
       localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-      this.jdField_a_of_type_AndroidContentSharedPreferences = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+      this.l = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
       localObject = BaseApplicationImpl.getApplication();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
       localStringBuilder.append("_");
       localStringBuilder.append("babyQ_pluspanel_config_sp_name");
-      this.jdField_b_of_type_AndroidContentSharedPreferences = ((BaseApplicationImpl)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
-      this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_zipMd5", "");
-      this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_zipUrl", "");
-      paramQQAppInterface = this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_profile_config_Url", "");
+      this.m = ((BaseApplicationImpl)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+      this.d = this.m.getString("babyq_pluspanel_config_zipMd5", "");
+      this.c = this.m.getString("babyq_pluspanel_config_zipUrl", "");
+      paramQQAppInterface = this.m.getString("babyq_profile_config_Url", "");
       if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        Utils.jdField_b_of_type_JavaLangString = paramQQAppInterface;
+        Utils.d = paramQQAppInterface;
       }
-      d();
+      e();
     }
     catch (Exception paramQQAppInterface)
     {
@@ -130,7 +129,7 @@ public class BabyQHandler
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("BabyQHandler | Utils.sBabyQProfileUrl :");
-      paramQQAppInterface.append(Utils.jdField_b_of_type_JavaLangString);
+      paramQQAppInterface.append(Utils.d);
       QLog.d("Q.BabyQ", 2, paramQQAppInterface.toString());
     }
   }
@@ -138,7 +137,7 @@ public class BabyQHandler
   public static void a(Context paramContext, View paramView)
   {
     paramView.setVisibility(0);
-    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772273);
+    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772359);
     paramContext.setAnimationListener(new BabyQHandler.1(paramView));
     paramView.startAnimation(paramContext);
   }
@@ -152,16 +151,16 @@ public class BabyQHandler
     paramSharedPreferences = paramSharedPreferences.getString(paramString, "");
     if (paramSharedPreferences.length() > 0)
     {
-      int j;
-      for (int i = 0;; i = j + 1)
+      int i1;
+      for (int n = 0;; n = i1 + 1)
       {
-        j = paramSharedPreferences.indexOf(",", i);
-        if (j == -1) {
+        i1 = paramSharedPreferences.indexOf(",", n);
+        if (i1 == -1) {
           break;
         }
-        paramArrayList.add(paramSharedPreferences.substring(i, j));
+        paramArrayList.add(paramSharedPreferences.substring(n, i1));
       }
-      paramArrayList.add(paramSharedPreferences.substring(i));
+      paramArrayList.add(paramSharedPreferences.substring(n));
     }
   }
   
@@ -176,7 +175,7 @@ public class BabyQHandler
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
-    int i = 1;
+    int n = 1;
     Object localObject2;
     if ((paramInt1 != 1) && (paramInt1 != 2))
     {
@@ -193,7 +192,7 @@ public class BabyQHandler
         else {
           localObject1 = "";
         }
-        i = 0;
+        n = 0;
         break label123;
       }
       if (paramInt2 == 1) {
@@ -218,12 +217,12 @@ public class BabyQHandler
         break label123;
       }
     }
-    i = 2;
+    n = 2;
     Object localObject1 = localObject2;
     label123:
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", (String)localObject1, (String)localObject1, i, 0, "", "", "", "");
+      ReportController.b(paramQQAppInterface, "dc00898", "", "", (String)localObject1, (String)localObject1, n, 0, "", "", "", "");
       return;
     }
     if (QLog.isColorLevel())
@@ -249,12 +248,12 @@ public class BabyQHandler
     if (paramInt > 2) {
       return;
     }
-    Object localObject = (IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all");
+    Object localObject = (IHttpEngineService)this.e.getRuntimeService(IHttpEngineService.class, "all");
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.mCallback = this;
     localHttpNetReq.mSupportBreakResume = true;
     localHttpNetReq.mReqUrl = paramString1;
-    localHttpNetReq.mOutPath = c;
+    localHttpNetReq.mOutPath = f;
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mPrioty = 1;
     localHttpNetReq.setUserData(new BabyQHandler.BabyQUserData(this, paramInt + 1, paramString1, paramString2));
@@ -304,9 +303,9 @@ public class BabyQHandler
       if (paramToServiceMsg == null) {
         break label308;
       }
-      i = paramToServiceMsg.uint32_result.get();
-      localBundle.putInt("ad_bbq_code", i);
-      if (i != 0) {
+      n = paramToServiceMsg.uint32_result.get();
+      localBundle.putInt("ad_bbq_code", n);
+      if (n != 0) {
         break label385;
       }
       bool1 = bool2;
@@ -315,7 +314,7 @@ public class BabyQHandler
     {
       for (;;)
       {
-        int i;
+        int n;
         continue;
         bool1 = false;
       }
@@ -334,12 +333,12 @@ public class BabyQHandler
     {
       paramFromServiceMsg = new StringBuilder();
       paramFromServiceMsg.append("BabyQ funcall handleAddBabyQAsFriend result = ");
-      paramFromServiceMsg.append(i);
+      paramFromServiceMsg.append(n);
       paramFromServiceMsg.append(" msg = ");
       paramFromServiceMsg.append(paramToServiceMsg);
       QLog.d("Q.BabyQ", 2, paramFromServiceMsg.toString());
     }
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).addFriendToFriendList(AppConstants.BABY_Q_UIN, 0, 3999, "", true, false, -1L);
+    ((FriendListHandler)this.e.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).addFriendToFriendList(AppConstants.BABY_Q_UIN, 0, 3999, "", true, false, -1L);
     notifyUI(4, bool1, localBundle);
     return;
     label308:
@@ -358,44 +357,44 @@ public class BabyQHandler
     notifyUI(4, false, localBundle);
   }
   
-  private void d()
+  private void e()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.b == null) {
+      this.b = new ArrayList();
     }
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    a(this.jdField_b_of_type_AndroidContentSharedPreferences, localArrayList2, "babyq_pluspanel_config_reds");
-    a(this.jdField_b_of_type_AndroidContentSharedPreferences, this.jdField_a_of_type_JavaUtilArrayList, "babyq_pluspanel_config_titles");
-    a(this.jdField_b_of_type_AndroidContentSharedPreferences, localArrayList1, "babyq_pluspanel_config_codes");
+    a(this.m, localArrayList2, "babyq_pluspanel_config_reds");
+    a(this.m, this.b, "babyq_pluspanel_config_titles");
+    a(this.m, localArrayList1, "babyq_pluspanel_config_codes");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("BabyQHandler | titleList :");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(" | codeList : ");
       localStringBuilder.append(localArrayList1);
       localStringBuilder.append(" | redList : ");
       localStringBuilder.append(localArrayList2);
       localStringBuilder.append(" | zipMd5 : ");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(" | zipUrl : ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.c);
       QLog.d("Q.BabyQ", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() == localArrayList1.size()) && (localArrayList1.size() == localArrayList2.size()))
+    if ((this.b.size() == localArrayList1.size()) && (localArrayList1.size() == localArrayList2.size()))
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() != localArrayList2.size()) {
+      if (this.b.size() != localArrayList2.size()) {
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      if (this.a == null) {
+        this.a = new HashMap();
       }
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      int n = 0;
+      while (n < this.b.size())
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaUtilArrayList.get(i), new String[] { (String)localArrayList1.get(i), (String)localArrayList2.get(i) });
-        i += 1;
+        this.a.put(this.b.get(n), new String[] { (String)localArrayList1.get(n), (String)localArrayList2.get(n) });
+        n += 1;
       }
     }
   }
@@ -410,70 +409,9 @@ public class BabyQHandler
     return paramContext.getInt(localStringBuilder.toString(), 0);
   }
   
-  public long a()
-  {
-    try
-    {
-      Object localObject;
-      if (this.jdField_a_of_type_AndroidContentSharedPreferences == null)
-      {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("pref_babyq");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        this.jdField_a_of_type_AndroidContentSharedPreferences = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
-      }
-      if (this.jdField_a_of_type_Long == -1L)
-      {
-        this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("Key_Ability", 0L);
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("getAbility ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
-          QLog.d("Q.BabyQ", 2, ((StringBuilder)localObject).toString());
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getAbility error e:");
-        localStringBuilder.append(localException.toString());
-        QLog.d("Q.BabyQ", 2, localStringBuilder.toString());
-      }
-    }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Drawable a(int paramInt)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(d);
-    ((StringBuilder)localObject).append(File.separator);
-    ((StringBuilder)localObject).append("babyq_");
-    ((StringBuilder)localObject).append(paramInt);
-    ((StringBuilder)localObject).append(".png");
-    localObject = ((StringBuilder)localObject).toString();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getBabyQPlusPanelIcon iconPath: ");
-      localStringBuilder.append((String)localObject);
-      QLog.d("Q.BabyQ", 2, localStringBuilder.toString());
-    }
-    if (FileUtils.fileExistsAndNotEmpty((String)localObject)) {
-      return new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources(), (String)localObject);
-    }
-    return null;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_Int = -1;
+    this.h = -1;
     notifyUI(3, true, null);
   }
   
@@ -486,15 +424,15 @@ public class BabyQHandler
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("Q.BabyQ", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null)
+    if (this.l == null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+      localObject = this.e.getApp();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("pref_babyq");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      this.jdField_a_of_type_AndroidContentSharedPreferences = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+      localStringBuilder.append(this.e.getCurrentAccountUin());
+      this.l = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     }
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    Object localObject = this.l;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Key_Guide_");
     localStringBuilder.append(paramInt);
@@ -505,11 +443,11 @@ public class BabyQHandler
       }
       return;
     }
-    if (this.jdField_a_of_type_Int != -1) {
+    if (this.h != -1) {
       a();
     }
-    this.jdField_a_of_type_Int = paramInt;
-    localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    this.h = paramInt;
+    localObject = this.l.edit();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("Key_Guide_");
     localStringBuilder.append(paramInt);
@@ -545,7 +483,7 @@ public class BabyQHandler
     {
       boolean bool;
       Object localObject5;
-      int i;
+      int n;
       try
       {
         bool = TextUtils.isEmpty(paramString);
@@ -554,9 +492,9 @@ public class BabyQHandler
           localObject1 = localObject4;
           localObject3 = new JSONObject(paramString);
           localObject1 = localObject4;
-          this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("zip_url");
+          this.c = ((JSONObject)localObject3).optString("zip_url");
           localObject1 = localObject4;
-          this.jdField_b_of_type_JavaLangString = ((JSONObject)localObject3).optString("zip_md5");
+          this.d = ((JSONObject)localObject3).optString("zip_md5");
           localObject1 = localObject4;
           localObject5 = ((JSONObject)localObject3).getJSONArray("babyq_items");
           if (localObject5 == null) {
@@ -573,31 +511,31 @@ public class BabyQHandler
           localObject1 = localObject4;
           localStringBuilder4 = new StringBuilder(32);
           localObject1 = localObject4;
-          if (this.jdField_a_of_type_JavaUtilArrayList == null)
+          if (this.b == null)
           {
             localObject1 = localObject4;
-            this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+            this.b = new ArrayList();
           }
           else
           {
             localObject1 = localObject4;
-            this.jdField_a_of_type_JavaUtilArrayList.clear();
+            this.b.clear();
           }
           localObject1 = localObject4;
-          if (this.jdField_a_of_type_JavaUtilHashMap == null)
+          if (this.a == null)
           {
             localObject1 = localObject4;
-            this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+            this.a = new HashMap();
             break label1284;
           }
           localObject1 = localObject4;
-          this.jdField_a_of_type_JavaUtilHashMap.clear();
+          this.a.clear();
           break label1284;
           localObject1 = paramString;
-          if (i < ((JSONArray)localObject4).length())
+          if (n < ((JSONArray)localObject4).length())
           {
             localObject1 = paramString;
-            localObject6 = ((JSONArray)localObject4).optJSONObject(i);
+            localObject6 = ((JSONArray)localObject4).optJSONObject(n);
             localObject1 = paramString;
             localObject5 = ((JSONObject)localObject6).optString("title");
             localObject1 = paramString;
@@ -605,7 +543,7 @@ public class BabyQHandler
             localObject1 = paramString;
             localObject6 = ((JSONObject)localObject6).optString("redpoint");
             localObject1 = paramString;
-            localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+            localHashMap = this.a;
           }
         }
       }
@@ -624,14 +562,14 @@ public class BabyQHandler
       try
       {
         localHashMap.put(localObject5, new String[] { str2, localObject6 });
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject5);
+        this.b.add(localObject5);
         localStringBuilder2.append((String)localObject5);
         localStringBuilder2.append(",");
         localStringBuilder3.append(str2);
         localStringBuilder3.append(",");
         localStringBuilder4.append((String)localObject6);
         localStringBuilder4.append(",");
-        i += 1;
+        n += 1;
       }
       catch (Exception localException2)
       {
@@ -639,20 +577,20 @@ public class BabyQHandler
       }
     }
     localObject1 = paramString;
-    if (this.jdField_b_of_type_AndroidContentSharedPreferences == null)
+    if (this.m == null)
     {
       localObject4 = BaseApplicationImpl.getApplication();
       localObject5 = new StringBuilder();
-      ((StringBuilder)localObject5).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject5).append(this.e.getCurrentAccountUin());
       ((StringBuilder)localObject5).append("_");
       ((StringBuilder)localObject5).append("babyQ_pluspanel_config_sp_name");
-      this.jdField_b_of_type_AndroidContentSharedPreferences = ((BaseApplicationImpl)localObject4).getSharedPreferences(((StringBuilder)localObject5).toString(), 0);
+      this.m = ((BaseApplicationImpl)localObject4).getSharedPreferences(((StringBuilder)localObject5).toString(), 0);
     }
-    if (!this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_zipMd5", "").equalsIgnoreCase(this.jdField_b_of_type_JavaLangString))
+    if (!this.m.getString("babyq_pluspanel_config_zipMd5", "").equalsIgnoreCase(this.d))
     {
       bool = true;
       label479:
-      localObject4 = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
+      localObject4 = this.m.edit();
       if (localStringBuilder2.length() > 1)
       {
         localStringBuilder2.deleteCharAt(localStringBuilder2.length() - 1);
@@ -668,8 +606,8 @@ public class BabyQHandler
         localStringBuilder4.deleteCharAt(localStringBuilder4.length() - 1);
         ((SharedPreferences.Editor)localObject4).putString("babyq_pluspanel_config_reds", localStringBuilder4.toString());
       }
-      ((SharedPreferences.Editor)localObject4).putString("babyq_pluspanel_config_zipMd5", this.jdField_b_of_type_JavaLangString);
-      ((SharedPreferences.Editor)localObject4).putString("babyq_pluspanel_config_zipUrl", this.jdField_a_of_type_JavaLangString);
+      ((SharedPreferences.Editor)localObject4).putString("babyq_pluspanel_config_zipMd5", this.d);
+      ((SharedPreferences.Editor)localObject4).putString("babyq_pluspanel_config_zipUrl", this.c);
       ((SharedPreferences.Editor)localObject4).commit();
       a(true, bool);
       if (!QLog.isColorLevel()) {
@@ -685,9 +623,9 @@ public class BabyQHandler
       ((StringBuilder)localObject4).append("|sbRed:");
       ((StringBuilder)localObject4).append(localStringBuilder4);
       ((StringBuilder)localObject4).append("|zipUrl:");
-      ((StringBuilder)localObject4).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject4).append(this.c);
       ((StringBuilder)localObject4).append("|zipMd5:");
-      ((StringBuilder)localObject4).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject4).append(this.d);
       localObject4 = ((StringBuilder)localObject4).toString();
       paramString = (String)localObject1;
     }
@@ -699,9 +637,9 @@ public class BabyQHandler
         paramString = (String)localObject1;
         localObject4 = ((JSONObject)localObject3).optString("babyq_profile_url");
         paramString = (String)localObject1;
-        Utils.jdField_b_of_type_JavaLangString = (String)localObject4;
+        Utils.d = (String)localObject4;
         paramString = (String)localObject1;
-        localObject3 = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
+        localObject3 = this.m.edit();
         paramString = (String)localObject1;
         ((SharedPreferences.Editor)localObject3).putString("babyq_profile_config_Url", (String)localObject4);
         paramString = (String)localObject1;
@@ -738,46 +676,46 @@ public class BabyQHandler
             QLog.d((String)localObject3, 2, ((StringBuilder)localObject1).toString());
           }
           paramString = (String)localObject3;
-          if (this.jdField_b_of_type_AndroidContentSharedPreferences == null)
+          if (this.m == null)
           {
             paramString = (String)localObject3;
             localObject1 = BaseApplicationImpl.getApplication();
             paramString = (String)localObject3;
             localObject4 = new StringBuilder();
             paramString = (String)localObject3;
-            ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+            ((StringBuilder)localObject4).append(this.e.getCurrentAccountUin());
             paramString = (String)localObject3;
             ((StringBuilder)localObject4).append("_");
             paramString = (String)localObject3;
             ((StringBuilder)localObject4).append("babyQ_pluspanel_config_sp_name");
             paramString = (String)localObject3;
-            this.jdField_b_of_type_AndroidContentSharedPreferences = ((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject4).toString(), 0);
+            this.m = ((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject4).toString(), 0);
           }
           paramString = (String)localObject3;
-          localObject1 = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
+          localObject1 = this.m.edit();
           paramString = (String)localObject3;
           ((SharedPreferences.Editor)localObject1).clear();
           paramString = (String)localObject3;
           ((SharedPreferences.Editor)localObject1).commit();
           paramString = (String)localObject3;
-          this.jdField_a_of_type_JavaUtilHashMap.clear();
+          this.a.clear();
           paramString = (String)localObject3;
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
+          this.b.clear();
           paramString = (String)localObject3;
-          this.jdField_a_of_type_JavaUtilHashMap = null;
+          this.a = null;
           paramString = (String)localObject3;
-          this.jdField_a_of_type_JavaUtilArrayList = null;
+          this.b = null;
           paramString = (String)localObject3;
-          this.jdField_a_of_type_JavaLangString = null;
+          this.c = null;
           paramString = (String)localObject3;
-          this.jdField_b_of_type_JavaLangString = null;
+          this.d = null;
           paramString = (String)localObject3;
-          FileUtils.delete(c, false);
+          FileUtils.delete(f, false);
           paramString = (String)localObject3;
-          FileUtils.delete(d, false);
+          FileUtils.delete(g, false);
         }
         paramString = (String)localObject3;
-        a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramInt);
+        a(this.e.getApp(), this.e.getCurrentAccountUin(), paramInt);
         return;
       }
       catch (Exception localException1) {}
@@ -792,7 +730,7 @@ public class BabyQHandler
       }
       return;
       label1284:
-      i = 0;
+      n = 0;
       paramString = (String)localObject4;
       localObject4 = localObject5;
       break;
@@ -831,9 +769,9 @@ public class BabyQHandler
   {
     if (paramIntent.getBooleanExtra("from_babyq", false))
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b("babyq_add_friend");
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007242", "0X8007242", 0, 0, "", "", "", "");
+      this.i = true;
+      this.e.getMessageFacade().d("babyq_add_friend");
+      ReportController.b(this.e, "dc00898", "", "", "0X8007242", "0X8007242", 0, 0, "", "", "", "");
     }
   }
   
@@ -842,7 +780,7 @@ public class BabyQHandler
   {
     // Byte code:
     //   0: aload_2
-    //   1: invokevirtual 325	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   1: invokevirtual 332	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
     //   4: ifeq +13 -> 17
     //   7: aload_3
     //   8: ifnull +9 -> 17
@@ -851,25 +789,25 @@ public class BabyQHandler
     //   14: goto +6 -> 20
     //   17: iconst_0
     //   18: istore 5
-    //   20: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   20: invokestatic 163	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   23: ifeq +36 -> 59
-    //   26: new 44	java/lang/StringBuilder
+    //   26: new 53	java/lang/StringBuilder
     //   29: dup
-    //   30: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   30: invokespecial 56	java/lang/StringBuilder:<init>	()V
     //   33: astore_1
     //   34: aload_1
-    //   35: ldc_w 699
-    //   38: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: ldc_w 667
+    //   38: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: pop
     //   42: aload_1
     //   43: iload 5
-    //   45: invokevirtual 330	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   45: invokevirtual 337	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   48: pop
-    //   49: ldc 145
+    //   49: ldc 154
     //   51: iconst_2
     //   52: aload_1
-    //   53: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   56: invokestatic 159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   53: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   59: iload 5
     //   61: istore 4
     //   63: iload 5
@@ -878,14 +816,14 @@ public class BabyQHandler
     //   70: istore 6
     //   72: iload 5
     //   74: istore 4
-    //   76: new 332	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   76: new 339	tencent/im/oidb/oidb_sso$OIDBSSOPkg
     //   79: dup
-    //   80: invokespecial 333	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   80: invokespecial 340	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
     //   83: aload_3
-    //   84: checkcast 341	[B
-    //   87: checkcast 341	[B
-    //   90: invokevirtual 345	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   93: checkcast 332	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   84: checkcast 348	[B
+    //   87: checkcast 348	[B
+    //   90: invokevirtual 352	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   93: checkcast 339	tencent/im/oidb/oidb_sso$OIDBSSOPkg
     //   96: astore_1
     //   97: aload_1
     //   98: ifnull +311 -> 409
@@ -894,8 +832,8 @@ public class BabyQHandler
     //   105: iload 5
     //   107: istore 4
     //   109: aload_1
-    //   110: getfield 349	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   113: invokevirtual 354	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   110: getfield 356	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   113: invokevirtual 361	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   116: ifne +293 -> 409
     //   119: iconst_1
     //   120: istore 5
@@ -904,23 +842,23 @@ public class BabyQHandler
     //   127: istore 6
     //   129: iload 5
     //   131: istore 4
-    //   133: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   133: invokestatic 163	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   136: ifeq +68 -> 204
     //   139: iload 5
     //   141: istore 6
     //   143: iload 5
     //   145: istore 4
-    //   147: new 44	java/lang/StringBuilder
+    //   147: new 53	java/lang/StringBuilder
     //   150: dup
-    //   151: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   151: invokespecial 56	java/lang/StringBuilder:<init>	()V
     //   154: astore_2
     //   155: iload 5
     //   157: istore 6
     //   159: iload 5
     //   161: istore 4
     //   163: aload_2
-    //   164: ldc_w 701
-    //   167: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   164: ldc_w 669
+    //   167: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   170: pop
     //   171: iload 5
     //   173: istore 6
@@ -928,17 +866,17 @@ public class BabyQHandler
     //   177: istore 4
     //   179: aload_2
     //   180: iload 5
-    //   182: invokevirtual 330	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   182: invokevirtual 337	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   185: pop
     //   186: iload 5
     //   188: istore 6
     //   190: iload 5
     //   192: istore 4
-    //   194: ldc 145
+    //   194: ldc 154
     //   196: iconst_2
     //   197: aload_2
-    //   198: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   201: invokestatic 159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   198: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   201: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   204: iload 5
     //   206: ifeq +47 -> 253
     //   209: iload 5
@@ -946,16 +884,16 @@ public class BabyQHandler
     //   213: iload 5
     //   215: istore 4
     //   217: aload_1
-    //   218: getfield 364	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   221: invokevirtual 369	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   218: getfield 371	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   221: invokevirtual 376	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   224: ifeq +29 -> 253
     //   227: iload 5
     //   229: istore 6
     //   231: iload 5
     //   233: istore 4
     //   235: aload_1
-    //   236: getfield 364	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   239: invokevirtual 372	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   236: getfield 371	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   239: invokevirtual 379	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   242: astore_1
     //   243: aload_1
     //   244: ifnull +9 -> 253
@@ -970,74 +908,74 @@ public class BabyQHandler
     //   263: astore_1
     //   264: iload 4
     //   266: istore 6
-    //   268: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   268: invokestatic 163	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   271: ifeq +17 -> 288
     //   274: iload 4
     //   276: istore 6
-    //   278: ldc 145
+    //   278: ldc 154
     //   280: iconst_2
-    //   281: ldc_w 703
+    //   281: ldc_w 671
     //   284: aload_1
-    //   285: invokestatic 705	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   285: invokestatic 673	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   288: iload 4
     //   290: istore 5
-    //   292: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   292: invokestatic 163	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   295: ifeq +105 -> 400
-    //   298: new 44	java/lang/StringBuilder
+    //   298: new 53	java/lang/StringBuilder
     //   301: dup
-    //   302: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   302: invokespecial 56	java/lang/StringBuilder:<init>	()V
     //   305: astore_1
     //   306: aload_1
-    //   307: ldc_w 701
-    //   310: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   307: ldc_w 669
+    //   310: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   313: pop
     //   314: aload_1
     //   315: iload 4
-    //   317: invokevirtual 330	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   317: invokevirtual 337	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   320: pop
-    //   321: ldc 145
+    //   321: ldc 154
     //   323: iconst_2
     //   324: aload_1
-    //   325: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   328: invokestatic 159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   325: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   328: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   331: iload 4
     //   333: istore 5
     //   335: goto +65 -> 400
-    //   338: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   338: invokestatic 163	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   341: ifeq +36 -> 377
-    //   344: new 44	java/lang/StringBuilder
+    //   344: new 53	java/lang/StringBuilder
     //   347: dup
-    //   348: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   348: invokespecial 56	java/lang/StringBuilder:<init>	()V
     //   351: astore_2
     //   352: aload_2
-    //   353: ldc_w 701
-    //   356: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   353: ldc_w 669
+    //   356: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   359: pop
     //   360: aload_2
     //   361: iload 6
-    //   363: invokevirtual 330	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   363: invokevirtual 337	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   366: pop
-    //   367: ldc 145
+    //   367: ldc 154
     //   369: iconst_2
     //   370: aload_2
-    //   371: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   374: invokestatic 159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   371: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   374: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   377: aload_1
     //   378: athrow
     //   379: iload 4
     //   381: istore 5
-    //   383: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   383: invokestatic 163	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   386: ifeq +14 -> 400
-    //   389: new 44	java/lang/StringBuilder
+    //   389: new 53	java/lang/StringBuilder
     //   392: dup
-    //   393: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   393: invokespecial 56	java/lang/StringBuilder:<init>	()V
     //   396: astore_1
     //   397: goto -91 -> 306
     //   400: aload_0
     //   401: iconst_1
     //   402: iload 5
     //   404: aconst_null
-    //   405: invokevirtual 419	com/tencent/mobileqq/app/BabyQHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   405: invokevirtual 426	com/tencent/mobileqq/app/BabyQHandler:notifyUI	(IZLjava/lang/Object;)V
     //   408: return
     //   409: iconst_0
     //   410: istore 5
@@ -1073,70 +1011,6 @@ public class BabyQHandler
     //   194	204	263	java/lang/Exception
     //   217	227	263	java/lang/Exception
     //   235	243	263	java/lang/Exception
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
-    if (localObject1 != null)
-    {
-      if (((HashMap)localObject1).isEmpty()) {
-        return;
-      }
-      localObject1 = (String[])this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (localObject1 != null)
-      {
-        if (localObject1.length != 2) {
-          return;
-        }
-        localObject1[1] = "0";
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject1);
-        localObject1 = this.jdField_b_of_type_AndroidContentSharedPreferences;
-        int i = 0;
-        if (localObject1 == null)
-        {
-          localObject1 = BaseApplicationImpl.getApplication();
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          ((StringBuilder)localObject2).append("_");
-          ((StringBuilder)localObject2).append("babyQ_pluspanel_config_sp_name");
-          this.jdField_b_of_type_AndroidContentSharedPreferences = ((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
-        }
-        Object localObject2 = new ArrayList();
-        localObject1 = new ArrayList();
-        a(this.jdField_b_of_type_AndroidContentSharedPreferences, (ArrayList)localObject2, "babyq_pluspanel_config_titles");
-        a(this.jdField_b_of_type_AndroidContentSharedPreferences, (ArrayList)localObject1, "babyq_pluspanel_config_reds");
-        if (((ArrayList)localObject2).size() != ((ArrayList)localObject1).size()) {
-          return;
-        }
-        while (i < ((ArrayList)localObject2).size())
-        {
-          if (paramString.equalsIgnoreCase((String)((ArrayList)localObject2).get(i)))
-          {
-            ((ArrayList)localObject1).set(i, "0");
-            break;
-          }
-          i += 1;
-        }
-        paramString = new StringBuilder();
-        localObject1 = ((ArrayList)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          paramString.append((String)((Iterator)localObject1).next());
-          paramString.append(",");
-        }
-        if (paramString.length() > 1)
-        {
-          paramString.deleteCharAt(paramString.length() - 1);
-          localObject1 = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
-          ((SharedPreferences.Editor)localObject1).putString("babyq_pluspanel_config_reds", paramString.toString());
-          ((SharedPreferences.Editor)localObject1).commit();
-        }
-      }
-    }
   }
   
   public void a(SubMsgType0x6f.ForwardBody paramForwardBody)
@@ -1176,9 +1050,9 @@ public class BabyQHandler
     if (((SubMsgType0x6f.RewardInfo)localObject).uint32_report_type.has()) {
       paramForwardBody.putInt("rewardReportType", ((SubMsgType0x6f.RewardInfo)localObject).uint32_report_type.get());
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.i)
     {
-      this.jdField_a_of_type_AndroidOsBundle = paramForwardBody;
+      this.j = paramForwardBody;
       return;
     }
     localObject = new Intent(BaseActivity.sTopActivity, RewardNoticeActivity.class);
@@ -1197,37 +1071,37 @@ public class BabyQHandler
       ((StringBuilder)localObject1).append(paramBoolean2);
       QLog.e("Q.BabyQ", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_b_of_type_AndroidContentSharedPreferences == null)
+    if (this.m == null)
     {
       localObject1 = BaseApplicationImpl.getApplication();
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject2).append(this.e.getCurrentAccountUin());
       ((StringBuilder)localObject2).append("_");
       ((StringBuilder)localObject2).append("babyQ_pluspanel_config_sp_name");
-      this.jdField_b_of_type_AndroidContentSharedPreferences = ((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
+      this.m = ((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
     }
-    if (TextUtils.isEmpty(this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_titles", ""))) {
+    if (TextUtils.isEmpty(this.m.getString("babyq_pluspanel_config_titles", ""))) {
       return;
     }
-    if (TextUtils.isEmpty(this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_codes", ""))) {
+    if (TextUtils.isEmpty(this.m.getString("babyq_pluspanel_config_codes", ""))) {
       return;
     }
-    Object localObject1 = this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_zipMd5", "");
+    Object localObject1 = this.m.getString("babyq_pluspanel_config_zipMd5", "");
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
-    Object localObject2 = this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_zipUrl", "");
+    Object localObject2 = this.m.getString("babyq_pluspanel_config_zipUrl", "");
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       return;
     }
     if (paramBoolean2)
     {
-      FileUtils.delete(d, false);
+      FileUtils.delete(g, false);
       a((String)localObject2, (String)localObject1, 1);
       return;
     }
-    Object localObject3 = new File(d);
-    File localFile = new File(c);
+    Object localObject3 = new File(g);
+    File localFile = new File(f);
     if (!((File)localObject3).exists())
     {
       a((String)localObject2, (String)localObject1, 1);
@@ -1239,7 +1113,7 @@ public class BabyQHandler
       if ((localObject3 != null) && (localObject3.length != 0))
       {
         if ((localObject3.length == 1) && (localFile.exists())) {
-          notifyUI(5, a(c, d), null);
+          notifyUI(5, a(f, g), null);
         }
       }
       else {
@@ -1252,13 +1126,13 @@ public class BabyQHandler
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidContentSharedPreferences == null)
+      if (this.l == null)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+        localObject = this.e.getApp();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("pref_babyq");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        this.jdField_a_of_type_AndroidContentSharedPreferences = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+        localStringBuilder.append(this.e.getCurrentAccountUin());
+        this.l = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
       }
       paramArrayOfByte = (babyq_cookie.BabyQCookie)new babyq_cookie.BabyQCookie().mergeFrom(paramArrayOfByte);
       long l1 = 0L;
@@ -1275,8 +1149,8 @@ public class BabyQHandler
           l1 = l2;
         }
       }
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("Key_Ability", l1).commit();
-      this.jdField_a_of_type_Long = l1;
+      this.l.edit().putLong("Key_Ability", l1).commit();
+      this.k = l1;
       return;
     }
     catch (Exception paramArrayOfByte)
@@ -1292,33 +1166,18 @@ public class BabyQHandler
     }
   }
   
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_Int == paramInt;
-  }
-  
-  public boolean a(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("_");
-    localStringBuilder.append("babyq_pluspanel_auto_show");
-    return paramContext.getBoolean(localStringBuilder.toString(), false);
-  }
-  
   public boolean a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((HashMap)localObject).isEmpty()) {
         return false;
       }
-      localObject = (String[])this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      localObject = (String[])this.a.get(paramString);
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
@@ -1359,13 +1218,13 @@ public class BabyQHandler
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidOsBundle != null))
+    if ((this.i) && (this.j != null))
     {
       Intent localIntent = new Intent(BaseActivity.sTopActivity, RewardNoticeActivity.class);
-      localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+      localIntent.putExtras(this.j);
       BaseActivity.sTopActivity.startActivity(localIntent);
-      this.jdField_a_of_type_AndroidOsBundle = null;
-      this.jdField_a_of_type_Boolean = false;
+      this.j = null;
+      this.i = false;
     }
   }
   
@@ -1382,23 +1241,65 @@ public class BabyQHandler
   
   public void b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.BabyQ", 2, "BabyQ funcall addBabyQGreetingMsg error for empty greeting");
-      }
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    Object localObject = new UniteGrayTipParam(AppConstants.BABY_Q_UIN, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString, 9002, -5040, 655362, MessageCache.a());
-    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-    localMessageForUniteGrayTip.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (UniteGrayTipParam)localObject);
-    UniteGrayTipMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForUniteGrayTip);
-    if (QLog.isColorLevel())
+    Object localObject1 = this.a;
+    if (localObject1 != null)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("BabyQ funcall addBabyQGreetingMsg success greeting =");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.d("Q.BabyQ", 2, ((StringBuilder)localObject).toString());
+      if (((HashMap)localObject1).isEmpty()) {
+        return;
+      }
+      localObject1 = (String[])this.a.get(paramString);
+      if (localObject1 != null)
+      {
+        if (localObject1.length != 2) {
+          return;
+        }
+        localObject1[1] = "0";
+        this.a.put(paramString, localObject1);
+        localObject1 = this.m;
+        int n = 0;
+        if (localObject1 == null)
+        {
+          localObject1 = BaseApplicationImpl.getApplication();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.e.getCurrentAccountUin());
+          ((StringBuilder)localObject2).append("_");
+          ((StringBuilder)localObject2).append("babyQ_pluspanel_config_sp_name");
+          this.m = ((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
+        }
+        Object localObject2 = new ArrayList();
+        localObject1 = new ArrayList();
+        a(this.m, (ArrayList)localObject2, "babyq_pluspanel_config_titles");
+        a(this.m, (ArrayList)localObject1, "babyq_pluspanel_config_reds");
+        if (((ArrayList)localObject2).size() != ((ArrayList)localObject1).size()) {
+          return;
+        }
+        while (n < ((ArrayList)localObject2).size())
+        {
+          if (paramString.equalsIgnoreCase((String)((ArrayList)localObject2).get(n)))
+          {
+            ((ArrayList)localObject1).set(n, "0");
+            break;
+          }
+          n += 1;
+        }
+        paramString = new StringBuilder();
+        localObject1 = ((ArrayList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          paramString.append((String)((Iterator)localObject1).next());
+          paramString.append(",");
+        }
+        if (paramString.length() > 1)
+        {
+          paramString.deleteCharAt(paramString.length() - 1);
+          localObject1 = this.m.edit();
+          ((SharedPreferences.Editor)localObject1).putString("babyq_pluspanel_config_reds", paramString.toString());
+          ((SharedPreferences.Editor)localObject1).commit();
+        }
+      }
     }
   }
   
@@ -1414,18 +1315,116 @@ public class BabyQHandler
     send(paramArrayOfByte);
   }
   
-  public void c()
+  public boolean b(int paramInt)
   {
-    if (this.jdField_b_of_type_AndroidContentSharedPreferences == null)
+    return this.h == paramInt;
+  }
+  
+  public long c()
+  {
+    try
+    {
+      Object localObject;
+      if (this.l == null)
+      {
+        localObject = this.e.getApp();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("pref_babyq");
+        localStringBuilder.append(this.e.getCurrentAccountUin());
+        this.l = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+      }
+      if (this.k == -1L)
+      {
+        this.k = this.l.getLong("Key_Ability", 0L);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getAbility ");
+          ((StringBuilder)localObject).append(this.k);
+          QLog.d("Q.BabyQ", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getAbility error e:");
+        localStringBuilder.append(localException.toString());
+        QLog.d("Q.BabyQ", 2, localStringBuilder.toString());
+      }
+    }
+    return this.k;
+  }
+  
+  public Drawable c(int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(g);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("babyq_");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(".png");
+    localObject = ((StringBuilder)localObject).toString();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getBabyQPlusPanelIcon iconPath: ");
+      localStringBuilder.append((String)localObject);
+      QLog.d("Q.BabyQ", 2, localStringBuilder.toString());
+    }
+    if (FileUtils.fileExistsAndNotEmpty((String)localObject)) {
+      return new BitmapDrawable(this.e.getApplication().getResources(), (String)localObject);
+    }
+    return null;
+  }
+  
+  public void c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.BabyQ", 2, "BabyQ funcall addBabyQGreetingMsg error for empty greeting");
+      }
+      return;
+    }
+    Object localObject = new UniteGrayTipParam(AppConstants.BABY_Q_UIN, this.e.getCurrentAccountUin(), paramString, 9002, -5040, 655362, MessageCache.c());
+    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
+    localMessageForUniteGrayTip.initGrayTipMsg(this.e, (UniteGrayTipParam)localObject);
+    UniteGrayTipMsgUtil.a(this.e, localMessageForUniteGrayTip);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("BabyQ funcall addBabyQGreetingMsg success greeting =");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("Q.BabyQ", 2, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public boolean c(Context paramContext, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append("babyq_pluspanel_auto_show");
+    return paramContext.getBoolean(localStringBuilder.toString(), false);
+  }
+  
+  public void d()
+  {
+    if (this.m == null)
     {
       localObject = BaseApplicationImpl.getApplication();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localStringBuilder.append(this.e.getCurrentAccountUin());
       localStringBuilder.append("_");
       localStringBuilder.append("babyQ_pluspanel_config_sp_name");
-      this.jdField_b_of_type_AndroidContentSharedPreferences = ((BaseApplicationImpl)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+      this.m = ((BaseApplicationImpl)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     }
-    Object localObject = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
+    Object localObject = this.m.edit();
     ((SharedPreferences.Editor)localObject).clear();
     ((SharedPreferences.Editor)localObject).commit();
   }
@@ -1474,18 +1473,18 @@ public class BabyQHandler
         return;
       }
       localObject1 = (BabyQHandler.BabyQUserData)localObject1;
-      int i;
+      int n;
       if (paramNetResp.mResult == 0) {
-        i = 1;
+        n = 1;
       } else {
-        i = 0;
+        n = 0;
       }
       Object localObject2;
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("onResp|download ");
-        if (i != 0) {
+        if (n != 0) {
           paramNetResp = "success";
         } else {
           paramNetResp = "failed";
@@ -1493,11 +1492,11 @@ public class BabyQHandler
         ((StringBuilder)localObject2).append(paramNetResp);
         QLog.d("Q.BabyQ", 2, ((StringBuilder)localObject2).toString());
       }
-      if (i != 0)
+      if (n != 0)
       {
-        localObject2 = new File(c);
+        localObject2 = new File(f);
         paramNetResp = PortalUtils.a(((File)localObject2).getAbsolutePath());
-        if ((!TextUtils.isEmpty(paramNetResp)) && (!paramNetResp.equalsIgnoreCase(((BabyQHandler.BabyQUserData)localObject1).jdField_b_of_type_JavaLangString)))
+        if ((!TextUtils.isEmpty(paramNetResp)) && (!paramNetResp.equalsIgnoreCase(((BabyQHandler.BabyQUserData)localObject1).c)))
         {
           if (QLog.isColorLevel())
           {
@@ -1505,18 +1504,18 @@ public class BabyQHandler
             ((StringBuilder)localObject2).append("onResp|Md5 error，fileMD5 = ");
             ((StringBuilder)localObject2).append(paramNetResp);
             ((StringBuilder)localObject2).append(", configMD5 = ");
-            ((StringBuilder)localObject2).append(((BabyQHandler.BabyQUserData)localObject1).jdField_b_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(((BabyQHandler.BabyQUserData)localObject1).c);
             QLog.d("Q.BabyQ", 2, ((StringBuilder)localObject2).toString());
-            FileUtils.delete(d, false);
+            FileUtils.delete(g, false);
           }
         }
         else {
-          notifyUI(5, a(((File)localObject2).getAbsolutePath(), d), null);
+          notifyUI(5, a(((File)localObject2).getAbsolutePath(), g), null);
         }
       }
       else
       {
-        a(((BabyQHandler.BabyQUserData)localObject1).jdField_a_of_type_JavaLangString, ((BabyQHandler.BabyQUserData)localObject1).jdField_b_of_type_JavaLangString, ((BabyQHandler.BabyQUserData)localObject1).jdField_a_of_type_Int);
+        a(((BabyQHandler.BabyQUserData)localObject1).b, ((BabyQHandler.BabyQUserData)localObject1).c, ((BabyQHandler.BabyQUserData)localObject1).a);
       }
     }
   }
@@ -1536,7 +1535,7 @@ public class BabyQHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BabyQHandler
  * JD-Core Version:    0.7.0.1
  */

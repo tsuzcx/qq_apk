@@ -17,14 +17,14 @@ class VasCommonAdapterImpl$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt = this.jdField_a_of_type_Int;
+    paramInt = this.a;
     if (paramInt != 1)
     {
       if (paramInt == 2)
       {
-        String str1 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_vip_type.get();
-        String str2 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_month.get();
-        String str3 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_aid.get();
+        String str1 = this.d.str_vip_type.get();
+        String str2 = this.d.str_month.get();
+        String str3 = this.d.str_aid.get();
         boolean bool1;
         if (str1.startsWith("!"))
         {
@@ -47,21 +47,21 @@ class VasCommonAdapterImpl$1
         }
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append("jsbridge://font/paySuccess?p={\"id\":");
-        ((StringBuilder)localObject).append(this.b);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append("}");
         localObject = URLEncoder.encode(((StringBuilder)localObject).toString());
-        VasH5PayUtil.a(this.jdField_a_of_type_AndroidContentContext, str3, str1, Integer.parseInt(str2), bool2, bool1, null, (String)localObject, false, false);
+        VasH5PayUtil.a(this.c, str3, str1, Integer.parseInt(str2), bool2, bool1, null, (String)localObject, false, false);
       }
     }
-    else if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      VasWebviewUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, -1L, null, false, -1);
+    else if (!TextUtils.isEmpty(this.b)) {
+      VasWebviewUtil.a(this.c, this.b, -1L, null, false, -1);
     }
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.impl.VasCommonAdapterImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,32 @@
 package com.tencent.tkd.comment.publisher.qq.bridge;
 
-import android.os.Bundle;
 import android.text.Editable;
-import org.json.JSONObject;
+import com.tencent.tkd.comment.publisher.qq.model.TkdCommentLinkData;
+import java.util.List;
 
 public abstract interface QQReportBridge
 {
   public static final QQReportBridge EMPTY = new QQReportBridge.1();
   
-  public abstract void asyncReport(Bundle paramBundle);
+  public abstract void reportCommentCancelEvent();
   
-  public abstract void fillR5OnDeliver(JSONObject paramJSONObject, Editable paramEditable);
+  public abstract void reportDeleteGif();
   
-  public abstract int getCommentLevel();
+  public abstract void reportDeleteLink();
   
-  public abstract long getConsumeTime();
+  public abstract void reportDeliver(Editable paramEditable, List<TkdCommentLinkData> paramList);
   
-  public abstract int getEntry();
+  public abstract void reportOpenCommentComponent(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract int getFolderStatus();
+  public abstract void reportOpenEmotionPanel();
   
-  public abstract String getReportVersion();
+  public abstract void reportOpenGifPanel();
   
-  public abstract int getScene();
-  
-  public abstract void report(Bundle paramBundle);
+  public abstract void reportOpenLink();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.bridge.QQReportBridge
  * JD-Core Version:    0.7.0.1
  */

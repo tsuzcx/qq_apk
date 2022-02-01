@@ -13,58 +13,50 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class RichmediaClient
   implements RichmediaIPCConstants
 {
-  static volatile RichmediaClient jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaClient;
-  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
-  HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  Messenger jdField_a_of_type_AndroidOsMessenger;
-  ICallBack jdField_a_of_type_ComTencentMobileqqRichmediaICallBack;
-  RichmediaClient.IncomingHandler jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaClient$IncomingHandler;
-  VideoCompoundController jdField_a_of_type_ComTencentMobileqqRichmediaVideoCompoundController;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  static volatile RichmediaClient e;
+  Messenger a;
   Messenger b;
+  HandlerThread c;
+  RichmediaClient.IncomingHandler d;
+  VideoCompoundController f;
+  ServiceConnection g;
+  ICallBack h;
+  AtomicBoolean i = new AtomicBoolean(false);
   
   private RichmediaClient()
   {
     LOG.a("PTV.RichmediaClient", "RichmediaClient");
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("RichmediaClientWorkerThread");
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaClient$IncomingHandler = new RichmediaClient.IncomingHandler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaClient$IncomingHandler);
-    this.jdField_a_of_type_AndroidContentServiceConnection = new RichmediaClient.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaICallBack = new RichmediaClient.2(this);
+    this.c = new HandlerThread("RichmediaClientWorkerThread");
+    this.c.start();
+    this.d = new RichmediaClient.IncomingHandler(this.c.getLooper(), this);
+    this.a = new Messenger(this.d);
+    this.g = new RichmediaClient.1(this);
+    this.h = new RichmediaClient.2(this);
   }
   
   public static RichmediaClient a()
   {
     LOG.a("PTV.RichmediaClient", "getInstance");
-    if (jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaClient == null) {
+    if (e == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaClient == null) {
-          jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaClient = new RichmediaClient();
+        if (e == null) {
+          e = new RichmediaClient();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaClient;
-  }
-  
-  public VideoCompoundController a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoCompoundController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoCompoundController = new VideoCompoundController();
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoCompoundController;
+    return e;
   }
   
   public void a(Context paramContext)
   {
     LOG.a("PTV.RichmediaClient", "bindService");
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    if (this.i.compareAndSet(false, true))
     {
       try
       {
-        paramContext.bindService(new Intent(paramContext, RichmediaService.class), this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+        paramContext.bindService(new Intent(paramContext, RichmediaService.class), this.g, 1);
       }
       catch (SecurityException paramContext)
       {
@@ -112,46 +104,54 @@ public class RichmediaClient
     return false;
   }
   
+  public VideoCompoundController b()
+  {
+    if (this.f == null) {
+      this.f = new VideoCompoundController();
+    }
+    return this.f;
+  }
+  
   /* Error */
   public void b(Context paramContext)
   {
     // Byte code:
-    //   0: ldc 29
-    //   2: ldc 176
-    //   4: invokestatic 36	com/tencent/mobileqq/richmedia/LOG:a	(Ljava/lang/String;Ljava/lang/String;)I
+    //   0: ldc 36
+    //   2: ldc 183
+    //   4: invokestatic 43	com/tencent/mobileqq/richmedia/LOG:a	(Ljava/lang/String;Ljava/lang/String;)I
     //   7: pop
     //   8: aload_0
-    //   9: getfield 27	com/tencent/mobileqq/richmedia/RichmediaClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   9: getfield 34	com/tencent/mobileqq/richmedia/RichmediaClient:i	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   12: iconst_1
     //   13: iconst_0
-    //   14: invokevirtual 100	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
+    //   14: invokevirtual 101	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
     //   17: ifeq +49 -> 66
     //   20: aload_0
     //   21: iconst_2
     //   22: iconst_m1
     //   23: aconst_null
-    //   24: invokevirtual 178	com/tencent/mobileqq/richmedia/RichmediaClient:a	(IILandroid/os/Bundle;)Z
+    //   24: invokevirtual 185	com/tencent/mobileqq/richmedia/RichmediaClient:a	(IILandroid/os/Bundle;)Z
     //   27: pop
     //   28: aload_1
     //   29: aload_0
-    //   30: getfield 73	com/tencent/mobileqq/richmedia/RichmediaClient:jdField_a_of_type_AndroidContentServiceConnection	Landroid/content/ServiceConnection;
-    //   33: invokevirtual 181	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
+    //   30: getfield 80	com/tencent/mobileqq/richmedia/RichmediaClient:g	Landroid/content/ServiceConnection;
+    //   33: invokevirtual 188	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
     //   36: aload_0
     //   37: aconst_null
-    //   38: putfield 146	com/tencent/mobileqq/richmedia/RichmediaClient:b	Landroid/os/Messenger;
+    //   38: putfield 147	com/tencent/mobileqq/richmedia/RichmediaClient:b	Landroid/os/Messenger;
     //   41: return
     //   42: astore_1
     //   43: goto +16 -> 59
     //   46: astore_1
-    //   47: ldc 29
+    //   47: ldc 36
     //   49: iconst_1
-    //   50: ldc 183
+    //   50: ldc 190
     //   52: aload_1
-    //   53: invokestatic 189	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   53: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   56: goto -20 -> 36
     //   59: aload_0
     //   60: aconst_null
-    //   61: putfield 146	com/tencent/mobileqq/richmedia/RichmediaClient:b	Landroid/os/Messenger;
+    //   61: putfield 147	com/tencent/mobileqq/richmedia/RichmediaClient:b	Landroid/os/Messenger;
     //   64: aload_1
     //   65: athrow
     //   66: return
@@ -168,7 +168,7 @@ public class RichmediaClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaClient
  * JD-Core Version:    0.7.0.1
  */

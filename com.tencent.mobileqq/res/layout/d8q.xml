@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/a4y" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0sp" android:textColor="@color/black" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="4.0dip" android:text="JSAPI调试" />
+        <LinearLayout android:gravity="center" android:background="@color/al3" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip">
+            <CheckBox android:textSize="18.0sp" android:textColor="@color/black" android:gravity="center" android:id="@id/mt3" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="开启WebView调试" />
+        </LinearLayout>
+        <TextView android:textSize="18.0sp" android:textColor="@color/black" android:gravity="center" android:id="@id/qq7" android:background="@color/al3" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:text="打开JSAPI调试页面" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/black" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="4.0dip" android:text=" 跳转天气2.0页面" />
+        <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:stretchColumns="1">
+            <TableRow android:background="@color/al3" android:layout_marginBottom="12.0dip">
+                <TextView android:textSize="18.0sp" android:gravity="center_vertical" android:paddingLeft="16.0dip" android:layout_height="50.0dip" android:text="adcode：" />
+                <EditText android:textSize="16.0sp" android:gravity="center" android:id="@id/n_2" android:layout_height="fill_parent" android:layout_marginTop="4.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="4.0dip" android:hint="行政区划代码（身份证前6位）" />
+            </TableRow>
+            <TableRow android:background="@color/al3" android:layout_marginBottom="12.0dip">
+                <TextView android:textSize="18.0sp" android:gravity="center_vertical" android:paddingLeft="16.0dip" android:layout_height="50.0dip" android:text="businessId：" />
+                <EditText android:textSize="16.0sp" android:gravity="center" android:id="@id/n_3" android:layout_height="fill_parent" android:layout_marginTop="4.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="4.0dip" android:hint="业务名称（英文字符串）" />
+            </TableRow>
+        </TableLayout>
+        <TextView android:textSize="18.0sp" android:textColor="@color/black" android:gravity="center" android:id="@id/qq8" android:background="@color/al3" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:text="native接口跳转天气" android:layout_weight="1.0" />
+    </LinearLayout>
+</ScrollView>

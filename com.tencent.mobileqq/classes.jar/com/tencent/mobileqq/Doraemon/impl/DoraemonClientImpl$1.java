@@ -11,7 +11,7 @@ class DoraemonClientImpl$1
   
   public void callback(Bundle paramBundle)
   {
-    Callback localCallback = this.jdField_a_of_type_ComTencentMobileqqDoraemonCallback;
+    Callback localCallback = this.a;
     if (localCallback != null) {
       localCallback.a(paramBundle);
     }
@@ -19,7 +19,7 @@ class DoraemonClientImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DoraemonClientImpl.1
  * JD-Core Version:    0.7.0.1
  */

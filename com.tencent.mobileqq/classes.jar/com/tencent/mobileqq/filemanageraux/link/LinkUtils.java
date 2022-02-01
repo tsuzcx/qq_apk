@@ -83,7 +83,7 @@ public final class LinkUtils
       new Canvas(paramString).drawBitmap((Bitmap)localObject, new Rect(0, 0, m, n), new Rect(0, 0, paramInt, paramInt), null);
       ((Bitmap)localObject).recycle();
     }
-    localObject = BitmapManager.a(BaseApplicationImpl.sApplication.getResources(), 2130844402);
+    localObject = BitmapManager.a(BaseApplicationImpl.sApplication.getResources(), 2130845719);
     if (localObject != null)
     {
       paramInt = ((Bitmap)localObject).getWidth();
@@ -95,22 +95,6 @@ public final class LinkUtils
       ((Bitmap)localObject).recycle();
     }
     return paramString;
-  }
-  
-  public static String a(int paramInt)
-  {
-    if (paramInt <= 0) {
-      return "";
-    }
-    Random localRandom = new Random();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramInt)
-    {
-      localStringBuilder.append("abcdefghijklmnopqrstuvwxyz0123456789".charAt(localRandom.nextInt(36)));
-      i += 1;
-    }
-    return localStringBuilder.toString();
   }
   
   public static String a(FileManagerEntity paramFileManagerEntity, String paramString)
@@ -187,7 +171,7 @@ public final class LinkUtils
     if (paramFileManagerEntity == null) {
       return false;
     }
-    int i = FileManagerUtil.a(paramFileManagerEntity);
+    int i = FileManagerUtil.h(paramFileManagerEntity);
     if (i == 2) {
       return TextUtils.isEmpty(paramFileManagerEntity.WeiYunFileId) ^ true;
     }
@@ -213,7 +197,7 @@ public final class LinkUtils
           paramBoolean = bool1;
           if (paramFileManagerEntity != null)
           {
-            bool2 = TextUtils.isEmpty(paramFileManagerEntity.e);
+            bool2 = TextUtils.isEmpty(paramFileManagerEntity.r);
             paramBoolean = bool1;
             if (!bool2) {
               paramBoolean = true;
@@ -232,6 +216,22 @@ public final class LinkUtils
   
   public static String b(int paramInt)
   {
+    if (paramInt <= 0) {
+      return "";
+    }
+    Random localRandom = new Random();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < paramInt)
+    {
+      localStringBuilder.append("abcdefghijklmnopqrstuvwxyz0123456789".charAt(localRandom.nextInt(36)));
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static String c(int paramInt)
+  {
     if (paramInt != 1)
     {
       if (paramInt != 2)
@@ -246,7 +246,7 @@ public final class LinkUtils
     return "1";
   }
   
-  public static String c(int paramInt)
+  public static String d(int paramInt)
   {
     if (paramInt != 2)
     {
@@ -272,7 +272,7 @@ public final class LinkUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.link.LinkUtils
  * JD-Core Version:    0.7.0.1
  */

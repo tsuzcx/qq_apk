@@ -15,20 +15,22 @@ import java.util.WeakHashMap;
 
 public abstract class BasicTexture
 {
-  private static ThreadLocal<Class<BasicTexture>> jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
-  private static WeakHashMap<BasicTexture, Object> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
-  protected int a;
-  protected GLCanvas a;
+  private static WeakHashMap<BasicTexture, Object> o = new WeakHashMap();
+  private static ThreadLocal<Class<BasicTexture>> p = new ThreadLocal();
   protected int[] a;
-  protected int b;
-  protected int c = 0;
-  protected int d = 0;
-  protected int e = -1;
-  protected int f = -1;
-  protected int g;
-  protected int h;
+  protected int[] b;
+  protected int c;
+  protected int d;
+  protected int e = 0;
+  protected int f = 0;
+  protected int g = -1;
+  protected int h = -1;
   protected int i;
   protected int j;
+  protected int k;
+  protected int l;
+  public boolean m = false;
+  protected GLCanvas n = null;
   
   protected BasicTexture()
   {
@@ -37,24 +39,28 @@ public abstract class BasicTexture
   
   protected BasicTexture(GLCanvas arg1, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas = null;
     a(???);
-    this.b = paramInt;
-    this.jdField_a_of_type_Int = 0;
-    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
+    this.d = paramInt;
+    this.c = 0;
+    synchronized (o)
     {
-      jdField_a_of_type_JavaUtilWeakHashMap.put(this, null);
+      o.put(this, null);
       return;
     }
   }
   
-  public static void c()
+  public static boolean p()
   {
-    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
+    return p.get() != null;
+  }
+  
+  public static void q()
+  {
+    synchronized (o)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
+      Iterator localIterator = o.keySet().iterator();
       while (localIterator.hasNext()) {
-        ((BasicTexture)localIterator.next()).b();
+        ((BasicTexture)localIterator.next()).o();
       }
       return;
     }
@@ -64,15 +70,15 @@ public abstract class BasicTexture
     }
   }
   
-  public static void d()
+  public static void r()
   {
-    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
+    synchronized (o)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
+      Iterator localIterator = o.keySet().iterator();
       while (localIterator.hasNext())
       {
         BasicTexture localBasicTexture = (BasicTexture)localIterator.next();
-        localBasicTexture.b = 0;
+        localBasicTexture.d = 0;
         localBasicTexture.a(null);
       }
       return;
@@ -83,75 +89,53 @@ public abstract class BasicTexture
     }
   }
   
-  public static boolean d()
+  private void v()
   {
-    return jdField_a_of_type_JavaLangThreadLocal.get() != null;
-  }
-  
-  private void e()
-  {
-    GLCanvas localGLCanvas = this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas;
-    if ((localGLCanvas != null) && (this.jdField_a_of_type_ArrayOfInt != null))
+    GLCanvas localGLCanvas = this.n;
+    if ((localGLCanvas != null) && (this.a != null))
     {
       localGLCanvas.a(this);
-      this.jdField_a_of_type_ArrayOfInt = null;
+      this.a = null;
     }
-    this.b = 0;
+    this.d = 0;
     a(null);
   }
   
   public int a()
   {
-    return this.i;
-  }
-  
-  public Rect a()
-  {
-    int k = this.c;
-    int m = this.d;
-    return new Rect(k, m, this.e + k, this.f + m);
-  }
-  
-  TextureProgram a()
-  {
-    return TextureProgramFactory.a(this.jdField_a_of_type_Int);
-  }
-  
-  public void a()
-  {
-    e();
+    return this.k;
   }
   
   public void a(int paramInt)
   {
-    this.i = paramInt;
+    this.k = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.g = paramInt1;
-    this.h = paramInt2;
-    if (((this.g > 4096) || (this.h > 4096)) && (QLog.isColorLevel())) {
-      QLog.w("BasicTexture", 2, String.format("texture is too large: %d x %d", new Object[] { Integer.valueOf(this.g), Integer.valueOf(this.h) }), new Exception());
+    this.i = paramInt1;
+    this.j = paramInt2;
+    if (((this.i > 4096) || (this.j > 4096)) && (QLog.isColorLevel())) {
+      QLog.w("BasicTexture", 2, String.format("texture is too large: %d x %d", new Object[] { Integer.valueOf(this.i), Integer.valueOf(this.j) }), new Exception());
     }
-    if (this.e == -1)
+    if (this.g == -1)
     {
-      this.e = paramInt1;
-      this.f = paramInt2;
+      this.g = paramInt1;
+      this.h = paramInt2;
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-    this.f = paramInt4;
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.g = paramInt3;
+    this.h = paramInt4;
   }
   
   protected void a(GLCanvas paramGLCanvas)
   {
-    this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas = paramGLCanvas;
+    this.n = paramGLCanvas;
   }
   
   public void a(GLCanvas paramGLCanvas, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -159,110 +143,90 @@ public abstract class BasicTexture
     paramGLCanvas.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public boolean a()
+  public int b()
   {
-    return false;
+    return this.l;
   }
   
-  public abstract boolean a(GLCanvas paramGLCanvas);
-  
-  public byte[] a()
+  public void b(int paramInt)
   {
-    return null;
+    this.l = paramInt;
   }
   
-  public int[] a()
+  public void b(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_ArrayOfInt;
+    this.g = paramInt1;
+    this.h = paramInt2;
   }
   
-  public ShaderParameter[] a(GLCanvas paramGLCanvas)
+  public abstract boolean b(GLCanvas paramGLCanvas);
+  
+  TextureProgram c()
   {
-    TextureProgram localTextureProgram = a();
+    return TextureProgramFactory.a(this.c);
+  }
+  
+  public ShaderParameter[] c(GLCanvas paramGLCanvas)
+  {
+    TextureProgram localTextureProgram = c();
     GLES20.glUseProgram(localTextureProgram.a());
     Utils.a();
-    boolean bool = b();
-    int k = 0;
-    if ((bool) && (paramGLCanvas.a() >= 0.95F)) {
+    boolean bool = k();
+    int i1 = 0;
+    if ((bool) && (paramGLCanvas.e() >= 0.95F)) {
       bool = false;
     } else {
       bool = true;
     }
     GLES20Canvas.a(bool);
-    if (a(paramGLCanvas))
+    if (b(paramGLCanvas))
     {
-      int[] arrayOfInt = a();
-      while (k < arrayOfInt.length)
+      int[] arrayOfInt = e();
+      while ((arrayOfInt != null) && (i1 < arrayOfInt.length))
       {
-        GLES20.glActiveTexture(33984 + k);
+        GLES20.glActiveTexture(33984 + i1);
         Utils.a();
-        GLES20.glBindTexture(g(), arrayOfInt[k]);
+        GLES20.glBindTexture(l(), arrayOfInt[i1]);
         Utils.a();
-        GLES20.glUniform1i(localTextureProgram.a()[(k + 4)].jdField_a_of_type_Int, k);
+        GLES20.glUniform1i(localTextureProgram.b()[(i1 + 4)].a, i1);
         Utils.a();
-        k += 1;
+        i1 += 1;
       }
     }
-    GLES20.glUniform1f(localTextureProgram.a()[2].jdField_a_of_type_Int, paramGLCanvas.a());
+    GLES20.glUniform1f(localTextureProgram.b()[2].a, paramGLCanvas.e());
     Utils.a();
-    return localTextureProgram.a();
+    return localTextureProgram.b();
   }
   
-  public int b()
+  public boolean d()
   {
-    return this.j;
+    return false;
   }
   
-  public void b()
+  public int[] e()
   {
-    e();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.j = paramInt;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.e = paramInt1;
-    this.f = paramInt2;
-  }
-  
-  public abstract boolean b();
-  
-  public int c()
-  {
-    return this.e;
-  }
-  
-  public boolean c()
-  {
-    return this.b == 1;
-  }
-  
-  public int d()
-  {
-    return this.f;
-  }
-  
-  public int e()
-  {
-    return this.g;
+    if (this.m)
+    {
+      if (this.b == null) {
+        this.b = new int[1];
+      }
+      return this.b;
+    }
+    return this.a;
   }
   
   public int f()
   {
-    return this.h;
+    return this.g;
   }
   
   protected void finalize()
   {
     try
     {
-      jdField_a_of_type_JavaLangThreadLocal.set(BasicTexture.class);
-      a();
-      jdField_a_of_type_JavaLangThreadLocal.set(null);
+      p.set(BasicTexture.class);
+      n();
+      p.set(null);
       return;
     }
     finally
@@ -271,14 +235,58 @@ public abstract class BasicTexture
     }
   }
   
-  public abstract int g();
+  public int g()
+  {
+    return this.h;
+  }
   
-  public int h()
+  public Rect h()
+  {
+    int i1 = this.e;
+    int i2 = this.f;
+    return new Rect(i1, i2, this.g + i1, this.h + i2);
+  }
+  
+  public int i()
+  {
+    return this.i;
+  }
+  
+  public int j()
+  {
+    return this.j;
+  }
+  
+  public abstract boolean k();
+  
+  public abstract int l();
+  
+  public boolean m()
+  {
+    return this.d == 1;
+  }
+  
+  public void n()
+  {
+    v();
+  }
+  
+  public void o()
+  {
+    v();
+  }
+  
+  public byte[] s()
+  {
+    return null;
+  }
+  
+  public int t()
   {
     return 0;
   }
   
-  public int i()
+  public int u()
   {
     return 0;
   }

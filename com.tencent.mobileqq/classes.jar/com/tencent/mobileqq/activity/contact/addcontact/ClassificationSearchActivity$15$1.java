@@ -26,15 +26,15 @@ class ClassificationSearchActivity$15$1
       localEntityManager.remove((ReadInJoySearchHistoryEntity)((Iterator)localObject).next());
     }
     localList.clear();
-    localObject = this.a.a.a.obtainMessage(1);
+    localObject = this.a.a.A.obtainMessage(1);
     ((Message)localObject).obj = localList;
-    this.a.a.a.sendMessage((Message)localObject);
+    this.a.a.A.sendMessage((Message)localObject);
     localEntityManager.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1
  * JD-Core Version:    0.7.0.1
  */

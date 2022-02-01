@@ -8,7 +8,7 @@ public class DeviceInstance$SOCPhones
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.device.DeviceInstance.SOCPhones
  * JD-Core Version:    0.7.0.1
  */

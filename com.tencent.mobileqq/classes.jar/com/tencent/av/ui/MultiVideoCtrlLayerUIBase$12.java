@@ -13,21 +13,21 @@ class MultiVideoCtrlLayerUIBase$12
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.h()) {
+    if (this.b.V()) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().c() == -1)
+    if (this.b.am.k().B() == -1)
     {
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.r(this.jdField_a_of_type_Long);
+      this.b.v(this.a);
     }
-    else if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d())
+    else if (this.b.F())
     {
-      MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.i(this.jdField_a_of_type_Long, 16777215);
+      MultiVideoCtrlLayerUIBase.a(this.b, true);
+      this.b.f(this.a, 16777215);
     }
     else if (QLog.isColorLevel())
     {
-      QLog.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d, 2, "PressCameraBtnRunnable-->go on stage fail,can not find the session");
+      QLog.e(this.b.X, 2, "PressCameraBtnRunnable-->go on stage fail,can not find the session");
     }
     paramDialogInterface.dismiss();
   }

@@ -29,30 +29,30 @@ class EcShopAssistantManager$EcShopAssistantDownloadListener
       localObject = (EcShopAssistantManager)((WeakReference)localObject).get();
       if (localObject != null)
       {
-        QQAppInterface localQQAppInterface = ((EcShopAssistantManager)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if ((paramDownloadTask.a == 0) && (localQQAppInterface != null))
+        QQAppInterface localQQAppInterface = ((EcShopAssistantManager)localObject).c;
+        if ((paramDownloadTask.c == 0) && (localQQAppInterface != null))
         {
-          localQQAppInterface.getPreferences().edit().putLong("last_modified_time", paramDownloadTask.i).commit();
-          ((EcShopAssistantManager)localObject).b();
+          localQQAppInterface.getPreferences().edit().putLong("last_modified_time", paramDownloadTask.I).commit();
+          ((EcShopAssistantManager)localObject).d();
         }
         if (QLog.isColorLevel())
         {
-          localObject = new File(EcShopAssistantManager.jdField_a_of_type_JavaLangString);
+          localObject = new File(EcShopAssistantManager.a);
           long l = 0L;
           if (((File)localObject).exists()) {
             l = ((File)localObject).lastModified();
           }
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("download onDone status=");
-          ((StringBuilder)localObject).append(paramDownloadTask.a());
+          ((StringBuilder)localObject).append(paramDownloadTask.e());
           ((StringBuilder)localObject).append(",errCode=");
-          ((StringBuilder)localObject).append(paramDownloadTask.a);
+          ((StringBuilder)localObject).append(paramDownloadTask.c);
           ((StringBuilder)localObject).append(",httpCode=");
-          ((StringBuilder)localObject).append(paramDownloadTask.f);
+          ((StringBuilder)localObject).append(paramDownloadTask.H);
           ((StringBuilder)localObject).append(",local lastModify=");
           ((StringBuilder)localObject).append(l);
           ((StringBuilder)localObject).append(",server lastModify=");
-          ((StringBuilder)localObject).append(paramDownloadTask.i);
+          ((StringBuilder)localObject).append(paramDownloadTask.I);
           QLog.d("EcShopAssistantManager", 2, ((StringBuilder)localObject).toString());
         }
       }
@@ -61,7 +61,7 @@ class EcShopAssistantManager$EcShopAssistantDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager.EcShopAssistantDownloadListener
  * JD-Core Version:    0.7.0.1
  */

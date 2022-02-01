@@ -34,10 +34,10 @@ public class StoryPlayerCommentListView
   implements View.OnTouchListener, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener
 {
   public int a;
-  private CommentFloatDialogController jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController;
-  private StoryPlayerCommentListView.CommentListViewStateChangeListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener;
-  private StoryPlayerCommentListView.ListViewOnDataChangeListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$ListViewOnDataChangeListener;
-  private List<SegmentView> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private StoryPlayerCommentListView.CommentListViewStateChangeListener b;
+  private CommentFloatDialogController c;
+  private List<SegmentView> d = new ArrayList();
+  private StoryPlayerCommentListView.ListViewOnDataChangeListener m;
   
   public StoryPlayerCommentListView(Context paramContext)
   {
@@ -59,7 +59,7 @@ public class StoryPlayerCommentListView
   
   private void a(int paramInt, CommentEntry paramCommentEntry)
   {
-    DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a();
+    DetailFeedItem localDetailFeedItem = this.c.f();
     if ((localDetailFeedItem != null) && (localDetailFeedItem.a != null))
     {
       if ((paramInt != 2) && (paramInt != 1))
@@ -69,10 +69,10 @@ public class StoryPlayerCommentListView
       else
       {
         FeedInfoChangeEvent localFeedInfoChangeEvent = new FeedInfoChangeEvent(2, paramCommentEntry.feedId, paramInt);
-        localFeedInfoChangeEvent.c = paramCommentEntry.commentId;
+        localFeedInfoChangeEvent.e = paramCommentEntry.commentId;
         paramCommentEntry = localFeedInfoChangeEvent;
       }
-      paramCommentEntry.a = localDetailFeedItem.a;
+      paramCommentEntry.c = localDetailFeedItem.a;
       StoryDispatcher.a().dispatch(paramCommentEntry);
       return;
     }
@@ -87,21 +87,6 @@ public class StoryPlayerCommentListView
     super.setOverScrollHeader(null);
   }
   
-  public int a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      SegmentView localSegmentView = (SegmentView)localIterator.next();
-      if ((localSegmentView instanceof PlayerCommentSegment)) {
-        return i;
-      }
-      i += localSegmentView.a();
-    }
-    return i;
-  }
-  
   protected void a()
   {
     super.setActTAG("list_qqstory_detail");
@@ -109,11 +94,11 @@ public class StoryPlayerCommentListView
     PlayerCommentSegment localPlayerCommentSegment = new PlayerCommentSegment(getContext());
     PlayerCommentEmptySegment localPlayerCommentEmptySegment = new PlayerCommentEmptySegment(getContext());
     EmptyPlaceHolderSegment localEmptyPlaceHolderSegment = new EmptyPlaceHolderSegment(getContext(), 30);
-    this.jdField_a_of_type_JavaUtilList.add(localObject);
-    this.jdField_a_of_type_JavaUtilList.add(localEmptyPlaceHolderSegment);
-    this.jdField_a_of_type_JavaUtilList.add(localPlayerCommentSegment);
-    this.jdField_a_of_type_JavaUtilList.add(localPlayerCommentEmptySegment);
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.d.add(localObject);
+    this.d.add(localEmptyPlaceHolderSegment);
+    this.d.add(localPlayerCommentSegment);
+    this.d.add(localPlayerCommentEmptySegment);
+    localObject = this.d.iterator();
     while (((Iterator)localObject).hasNext()) {
       a((SegmentView)((Iterator)localObject).next());
     }
@@ -125,30 +110,30 @@ public class StoryPlayerCommentListView
   
   public void a(CommentEntry paramCommentEntry, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a(paramCommentEntry, paramBoolean);
-    StoryFailCommentCacher.a().a();
-    p();
-    QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131714349), 0).a();
+    this.c.a(paramCommentEntry, paramBoolean);
+    StoryFailCommentCacher.a().b();
+    q();
+    QQToast.makeText(BaseApplication.getContext(), 2, HardCodeUtil.a(2131911863), 0).show();
     a(2, paramCommentEntry);
   }
   
   public void a(@NonNull CommentFloatDialogController paramCommentFloatDialogController, StoryPlayerCommentListView.CommentListViewStateChangeListener paramCommentListViewStateChangeListener, int paramInt)
   {
-    super.j();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener = paramCommentListViewStateChangeListener;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController = paramCommentFloatDialogController;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$ListViewOnDataChangeListener = new StoryPlayerCommentListView.ListViewOnDataChangeListener(this, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$ListViewOnDataChangeListener);
-    PlayerCommentSegment localPlayerCommentSegment = (PlayerCommentSegment)a("PlayerCommentSegment");
+    super.k();
+    this.b = paramCommentListViewStateChangeListener;
+    this.c = paramCommentFloatDialogController;
+    this.a = paramInt;
+    this.m = new StoryPlayerCommentListView.ListViewOnDataChangeListener(this, null);
+    this.c.a(this.m);
+    PlayerCommentSegment localPlayerCommentSegment = (PlayerCommentSegment)b("PlayerCommentSegment");
     if (localPlayerCommentSegment != null) {
-      localPlayerCommentSegment.a(paramCommentFloatDialogController, paramCommentListViewStateChangeListener, this.jdField_a_of_type_Int);
+      localPlayerCommentSegment.a(paramCommentFloatDialogController, paramCommentListViewStateChangeListener, this.a);
     }
-    paramCommentListViewStateChangeListener = (PlayerCommentEmptySegment)a("PlayerCommentEmptySegment");
+    paramCommentListViewStateChangeListener = (PlayerCommentEmptySegment)b("PlayerCommentEmptySegment");
     if (paramCommentListViewStateChangeListener != null) {
       paramCommentListViewStateChangeListener.a(paramCommentFloatDialogController);
     }
-    paramCommentListViewStateChangeListener = (PlayerDoubleTabSegment)a("PlayerDoubleTabSegment");
+    paramCommentListViewStateChangeListener = (PlayerDoubleTabSegment)b("PlayerDoubleTabSegment");
     if (paramCommentListViewStateChangeListener != null) {
       paramCommentListViewStateChangeListener.a(paramCommentFloatDialogController);
     }
@@ -161,12 +146,27 @@ public class StoryPlayerCommentListView
       super.a(1);
       return;
     }
-    super.a(1, e);
+    super.a(1, g);
   }
   
-  public int b()
+  public int getCommentSegmentIndex()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      SegmentView localSegmentView = (SegmentView)localIterator.next();
+      if ((localSegmentView instanceof PlayerCommentSegment)) {
+        return i;
+      }
+      i += localSegmentView.a();
+    }
+    return i;
+  }
+  
+  public int getLastCommentPoi()
+  {
+    Iterator localIterator = this.d.iterator();
     int i = 0;
     int j;
     for (;;)
@@ -191,11 +191,11 @@ public class StoryPlayerCommentListView
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt < a()) {
+    if (paramInt < getCommentSegmentIndex()) {
       return;
     }
-    paramInt -= a();
-    paramAdapterView = ((PlayerCommentSegment)a("PlayerCommentSegment")).a(paramInt);
+    paramInt -= getCommentSegmentIndex();
+    paramAdapterView = ((PlayerCommentSegment)b("PlayerCommentSegment")).a(paramInt);
     if (paramAdapterView == null)
     {
       SLog.e("Q.qqstory.player.StoryPlayerCommentListView", "the clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
@@ -203,29 +203,29 @@ public class StoryPlayerCommentListView
     }
     if (paramAdapterView.type == 1)
     {
-      paramAdapterView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController;
-      paramAdapterView.a(paramAdapterView.a());
+      paramAdapterView = this.c;
+      paramAdapterView.a(paramAdapterView.e());
       return;
     }
-    paramView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener;
+    paramView = this.b;
     if (paramView != null) {
-      paramView.a(paramAdapterView, paramInt, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
+      paramView.a(paramAdapterView, paramInt, this.c.d());
     }
   }
   
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt < a()) {
+    if (paramInt < getCommentSegmentIndex()) {
       return false;
     }
-    paramInt -= a();
-    paramView = ((PlayerCommentSegment)a("PlayerCommentSegment")).a(paramInt);
+    paramInt -= getCommentSegmentIndex();
+    paramView = ((PlayerCommentSegment)b("PlayerCommentSegment")).a(paramInt);
     if (paramView == null)
     {
       SLog.e("Q.qqstory.player.StoryPlayerCommentListView", "the long clicked comment is null. position is %d.", new Object[] { Integer.valueOf(paramInt) });
       return false;
     }
-    paramAdapterView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a();
+    paramAdapterView = this.c.f();
     if ((paramAdapterView != null) && (paramAdapterView.a != null))
     {
       if (paramAdapterView.a.getOwner().isMe()) {
@@ -233,24 +233,24 @@ public class StoryPlayerCommentListView
       } else {
         paramAdapterView = "1";
       }
-      StoryReportor.a("home_page", "press_reply", 0, 0, new String[] { paramAdapterView, StoryReportor.a(this.jdField_a_of_type_Int) });
+      StoryReportor.a("home_page", "press_reply", 0, 0, new String[] { paramAdapterView, StoryReportor.b(this.a) });
     }
     if (paramView.type == 1)
     {
-      paramAdapterView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController;
-      paramAdapterView.a(paramAdapterView.a());
+      paramAdapterView = this.c;
+      paramAdapterView.a(paramAdapterView.e());
       return true;
     }
-    paramAdapterView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener;
+    paramAdapterView = this.b;
     if (paramAdapterView != null) {
-      paramAdapterView.b(paramView, paramInt, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
+      paramAdapterView.b(paramView, paramInt, this.c.d());
     }
     return true;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener;
+    paramView = this.b;
     if (paramView != null) {
       return paramView.a(paramMotionEvent);
     }
@@ -260,7 +260,7 @@ public class StoryPlayerCommentListView
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
     super.onViewCompleteVisableAndReleased(paramInt, paramView, paramListView);
-    paramView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener;
+    paramView = this.b;
     if (paramView != null) {
       paramView.a();
     }
@@ -269,7 +269,7 @@ public class StoryPlayerCommentListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView
  * JD-Core Version:    0.7.0.1
  */

@@ -9,17 +9,15 @@ import kotlin.Metadata;
 final class PanelController$addPanel$1
   implements View.OnClickListener
 {
-  PanelController$addPanel$1(PanelController paramPanelController, View paramView, PanelType paramPanelType) {}
-  
   public final void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorPanelController;
-    PanelController.a(paramView, paramView.a().indexOf(this.jdField_a_of_type_AndroidViewView), this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorPanelType, true);
+    paramView = this.a;
+    PanelController.a(paramView, paramView.a().indexOf(this.b), this.c, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.PanelController.addPanel.1
  * JD-Core Version:    0.7.0.1
  */

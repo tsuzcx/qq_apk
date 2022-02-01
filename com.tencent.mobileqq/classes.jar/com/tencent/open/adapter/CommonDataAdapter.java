@@ -13,72 +13,53 @@ import mqq.app.MobileQQ;
 public class CommonDataAdapter
 {
   protected static CommonDataAdapter a;
-  protected static String a = "androidqq";
-  protected int a;
-  protected long a;
-  protected Context a;
-  protected long b;
-  protected String b;
-  protected String c = "";
-  protected String d = "";
+  protected static String b = "androidqq";
+  protected long c = 0L;
+  protected long d = 0L;
   protected String e = "";
   protected String f = "";
   protected String g = "";
   protected String h = "";
-  
-  protected CommonDataAdapter()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-  }
+  protected String i = "";
+  protected String j = "";
+  protected int k = -1;
+  protected String l = "";
+  protected Context m = BaseApplication.getContext();
   
   public static CommonDataAdapter a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentOpenAdapterCommonDataAdapter == null) {
-        jdField_a_of_type_ComTencentOpenAdapterCommonDataAdapter = new CommonDataAdapter();
+      if (a == null) {
+        a = new CommonDataAdapter();
       }
-      CommonDataAdapter localCommonDataAdapter = jdField_a_of_type_ComTencentOpenAdapterCommonDataAdapter;
+      CommonDataAdapter localCommonDataAdapter = a;
       return localCommonDataAdapter;
     }
     finally {}
   }
   
-  public int a()
+  public void a(long paramLong)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (i != -1) {
-      return i;
-    }
-    a();
-    return this.jdField_a_of_type_Int;
+    this.c = paramLong;
   }
   
-  public long a()
+  public void a(Context paramContext)
   {
-    try
-    {
-      this.jdField_a_of_type_Long = Long.valueOf(MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount()).longValue();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("get uin from app runtim succ:");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      LogUtility.b("CommonDataAdapter", localStringBuilder.toString());
-      label53:
-      return this.jdField_a_of_type_Long;
+    if (paramContext == null) {
+      return;
     }
-    catch (Throwable localThrowable)
-    {
-      break label53;
-    }
+    this.m = paramContext;
   }
   
-  public Context a()
+  public void a(String paramString)
   {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    this.e = paramString;
+  }
+  
+  public Context b()
+  {
+    Context localContext = this.m;
     Object localObject = localContext;
     if (localContext == null) {
       localObject = BaseApplication.getContext();
@@ -86,25 +67,87 @@ public class CommonDataAdapter
     return localObject;
   }
   
-  public String a()
+  public void b(long paramLong)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    this.d = paramLong;
   }
   
-  protected void a()
+  public void b(String paramString)
   {
-    Object localObject = a().a().getApplicationContext();
+    this.f = paramString;
+  }
+  
+  public long c()
+  {
+    try
+    {
+      this.c = Long.valueOf(MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount()).longValue();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get uin from app runtim succ:");
+      localStringBuilder.append(this.c);
+      LogUtility.b("CommonDataAdapter", localStringBuilder.toString());
+      label53:
+      return this.c;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label53;
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    this.l = paramString;
+  }
+  
+  public long d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
+  }
+  
+  public String f()
+  {
+    return this.f;
+  }
+  
+  public String g()
+  {
+    if (!TextUtils.isEmpty(this.h)) {
+      return this.h;
+    }
+    i();
+    return this.h;
+  }
+  
+  public int h()
+  {
+    int n = this.k;
+    if (n != -1) {
+      return n;
+    }
+    i();
+    return this.k;
+  }
+  
+  protected void i()
+  {
+    Object localObject = a().b().getApplicationContext();
     try
     {
       localObject = ((Context)localObject).getPackageManager().getPackageInfo(((Context)localObject).getPackageName(), 0);
-      this.d = ((PackageInfo)localObject).versionName;
+      this.g = ((PackageInfo)localObject).versionName;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.d);
+      localStringBuilder.append(this.g);
       localStringBuilder.append(".");
       localStringBuilder.append(((PackageInfo)localObject).versionCode);
-      this.e = localStringBuilder.toString();
-      this.f = this.d.substring(this.d.lastIndexOf('.') + 1, this.d.length());
-      this.jdField_a_of_type_Int = ((PackageInfo)localObject).versionCode;
+      this.h = localStringBuilder.toString();
+      this.i = this.g.substring(this.g.lastIndexOf('.') + 1, this.g.length());
+      this.k = ((PackageInfo)localObject).versionCode;
       return;
     }
     catch (Exception localException)
@@ -124,97 +167,45 @@ public class CommonDataAdapter
     }
   }
   
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(Context paramContext)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public long b()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public String b()
-  {
-    return this.c;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-  }
-  
-  public void b(String paramString)
-  {
-    this.c = paramString;
-  }
-  
-  public String c()
-  {
-    if (!TextUtils.isEmpty(this.e)) {
-      return this.e;
-    }
-    a();
-    return this.e;
-  }
-  
-  public void c(String paramString)
-  {
-    this.h = paramString;
-  }
-  
-  public String d()
-  {
-    if (!TextUtils.isEmpty(this.d)) {
-      return this.d;
-    }
-    a();
-    return this.d;
-  }
-  
-  public String e()
-  {
-    return "12";
-  }
-  
-  public String f()
+  public String j()
   {
     if (!TextUtils.isEmpty(this.g)) {
       return this.g;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("V1_AND_SQ_");
-    localStringBuilder.append(c());
-    this.g = localStringBuilder.toString();
+    i();
     return this.g;
   }
   
-  public String g()
+  public String k()
   {
-    return jdField_a_of_type_JavaLangString;
+    return "12";
   }
   
-  public String h()
+  public String l()
   {
-    return this.h;
+    if (!TextUtils.isEmpty(this.j)) {
+      return this.j;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("V1_AND_SQ_");
+    localStringBuilder.append(g());
+    this.j = localStringBuilder.toString();
+    return this.j;
+  }
+  
+  public String m()
+  {
+    return b;
+  }
+  
+  public String n()
+  {
+    return this.l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.adapter.CommonDataAdapter
  * JD-Core Version:    0.7.0.1
  */

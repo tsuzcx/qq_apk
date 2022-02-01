@@ -18,18 +18,18 @@ final class TeamWorkConvertUtils$2
   {
     try
     {
-      ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).fileManagerUtilOpenUrl(this.jdField_a_of_type_AndroidContentContext, TencentDocConvertConfigProcessor.a().a());
+      ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).fileManagerUtilOpenUrl(this.a, TencentDocConvertConfigProcessor.a().f());
       return;
     }
     catch (Exception paramDialogInterface)
     {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
+      QLog.i(this.b, 1, paramDialogInterface.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkConvertUtils.2
  * JD-Core Version:    0.7.0.1
  */

@@ -32,9 +32,9 @@ public class GamePubAccountMsgObserver
       if ((paramObject instanceof GamePubAccountMessage))
       {
         paramObservable = (GamePubAccountMessage)paramObject;
-        if (("action_qgame_tool_messgae".equals(paramObservable.jdField_a_of_type_JavaLangString)) && (paramObservable.jdField_a_of_type_JavaLangObject != null))
+        if (("action_qgame_tool_messgae".equals(paramObservable.a)) && (paramObservable.b != null))
         {
-          a((ArrayList)paramObservable.jdField_a_of_type_JavaLangObject);
+          a((ArrayList)paramObservable.b);
           return;
         }
       }
@@ -47,7 +47,7 @@ public class GamePubAccountMsgObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.hippy.GamePubAccountMsgObserver
  * JD-Core Version:    0.7.0.1
  */

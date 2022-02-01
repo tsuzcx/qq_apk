@@ -7,11 +7,11 @@ import android.widget.TextView;
 class TabLayout$TabView
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private int a;
   private int b;
   private int c;
   private int d;
+  private TextView e;
   
   public TabLayout$TabView(Context paramContext, boolean paramBoolean)
   {
@@ -22,39 +22,39 @@ class TabLayout$TabView
     } else {
       localAECircleCaptureStyle = AECircleCaptureStyle.e;
     }
-    this.jdField_a_of_type_Int = localAECircleCaptureStyle.t;
+    this.a = localAECircleCaptureStyle.D;
     if (!paramBoolean) {
       localAECircleCaptureStyle = AECircleCaptureStyle.a;
     } else {
       localAECircleCaptureStyle = AECircleCaptureStyle.e;
     }
-    this.b = localAECircleCaptureStyle.s;
+    this.b = localAECircleCaptureStyle.C;
     if (!paramBoolean) {
       localAECircleCaptureStyle = AECircleCaptureStyle.b;
     } else {
       localAECircleCaptureStyle = AECircleCaptureStyle.f;
     }
-    this.c = localAECircleCaptureStyle.t;
+    this.c = localAECircleCaptureStyle.D;
     if (!paramBoolean) {
       localAECircleCaptureStyle = AECircleCaptureStyle.b;
     } else {
       localAECircleCaptureStyle = AECircleCaptureStyle.f;
     }
-    this.d = localAECircleCaptureStyle.s;
+    this.d = localAECircleCaptureStyle.C;
     a(paramContext);
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 15.0F);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.e = new TextView(paramContext);
+    this.e.setGravity(1);
+    this.e.setTextSize(1, 15.0F);
+    addView(this.e);
   }
   
   public TextView a()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.e;
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -63,17 +63,17 @@ class TabLayout$TabView
     int i;
     if (!paramBoolean2)
     {
-      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      localTextView = this.e;
       if (paramBoolean1) {
         i = this.b;
       } else {
-        i = this.jdField_a_of_type_Int;
+        i = this.a;
       }
       localTextView.setTextColor(i);
     }
     else
     {
-      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      localTextView = this.e;
       if (paramBoolean1) {
         i = this.d;
       } else {
@@ -83,15 +83,15 @@ class TabLayout$TabView
     }
     if (paramBoolean2)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(1.0F, 0.0F, 0.0F, 2131165336);
+      this.e.setShadowLayer(1.0F, 0.0F, 0.0F, 2131165578);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+    this.e.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.view.TabLayout.TabView
  * JD-Core Version:    0.7.0.1
  */

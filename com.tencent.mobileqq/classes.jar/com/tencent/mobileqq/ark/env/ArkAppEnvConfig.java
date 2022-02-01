@@ -7,57 +7,49 @@ import java.io.File;
 
 public class ArkAppEnvConfig
 {
-  private static final ArkAppEnvConfig jdField_a_of_type_ComTencentMobileqqArkEnvArkAppEnvConfig = new ArkAppEnvConfig(1);
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static final ArkAppEnvConfig jdField_b_of_type_ComTencentMobileqqArkEnvArkAppEnvConfig = new ArkAppEnvConfig(2);
-  private static ArkAppEnvConfig jdField_c_of_type_ComTencentMobileqqArkEnvArkAppEnvConfig = jdField_b_of_type_ComTencentMobileqqArkEnvArkAppEnvConfig;
-  private final int jdField_a_of_type_Int;
-  private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private final String jdField_a_of_type_JavaLangString;
-  private final SharedPreferences jdField_b_of_type_AndroidContentSharedPreferences;
-  private final String jdField_b_of_type_JavaLangString;
-  private final String jdField_c_of_type_JavaLangString;
+  private static final ArkAppEnvConfig a = new ArkAppEnvConfig(1);
+  private static final ArkAppEnvConfig b = new ArkAppEnvConfig(2);
+  private static ArkAppEnvConfig c = b;
+  private static boolean d = false;
+  private final int e;
+  private final String f;
+  private final String g;
+  private final String h;
+  private final SharedPreferences i;
+  private final SharedPreferences j;
   
   private ArkAppEnvConfig(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = a(paramInt);
-    this.jdField_c_of_type_JavaLangString = b(paramInt);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = a(paramInt);
-    this.jdField_b_of_type_AndroidContentSharedPreferences = b(paramInt);
+    this.e = paramInt;
+    this.f = a(paramInt);
+    this.h = b(paramInt);
+    this.i = c(paramInt);
+    this.j = d(paramInt);
     if (paramInt == 1)
     {
-      this.jdField_b_of_type_JavaLangString = "test.ark.qq.com";
+      this.g = "test.ark.qq.com";
       return;
     }
-    this.jdField_b_of_type_JavaLangString = "cgi.ark.qq.com";
-  }
-  
-  private static SharedPreferences a(int paramInt)
-  {
-    if (paramInt == 2) {
-      return BaseApplication.getContext().getSharedPreferences("ArkAppServerConfig", 0);
-    }
-    return BaseApplication.getContext().getSharedPreferences("ArkAppServerConfigDebug", 0);
+    this.g = "cgi.ark.qq.com";
   }
   
   public static ArkAppEnvConfig a()
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!d)
     {
-      jdField_a_of_type_Boolean = true;
+      d = true;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ArkTemp.getCurrent sso env isTestEnv=");
       localStringBuilder.append(false);
       QLog.i("ArkApp", 1, localStringBuilder.toString());
     }
-    jdField_c_of_type_ComTencentMobileqqArkEnvArkAppEnvConfig = jdField_b_of_type_ComTencentMobileqqArkEnvArkAppEnvConfig;
-    return jdField_c_of_type_ComTencentMobileqqArkEnvArkAppEnvConfig;
+    c = b;
+    return c;
   }
   
   private static String a(int paramInt)
   {
-    String str = e();
+    String str = g();
     if (paramInt == 1)
     {
       localStringBuilder = new StringBuilder();
@@ -71,17 +63,9 @@ public class ArkAppEnvConfig
     return localStringBuilder.toString();
   }
   
-  private static SharedPreferences b(int paramInt)
-  {
-    if (paramInt == 2) {
-      return BaseApplication.getContext().getSharedPreferences("ArkAppCacheConfig", 0);
-    }
-    return BaseApplication.getContext().getSharedPreferences("ArkAppCacheConfigDebug", 0);
-  }
-  
   private static String b(int paramInt)
   {
-    String str = e();
+    String str = g();
     if (paramInt == 1)
     {
       localStringBuilder = new StringBuilder();
@@ -95,48 +79,64 @@ public class ArkAppEnvConfig
     return localStringBuilder.toString();
   }
   
-  private static String e()
+  private static SharedPreferences c(int paramInt)
+  {
+    if (paramInt == 2) {
+      return BaseApplication.getContext().getSharedPreferences("ArkAppServerConfig", 0);
+    }
+    return BaseApplication.getContext().getSharedPreferences("ArkAppServerConfigDebug", 0);
+  }
+  
+  private static SharedPreferences d(int paramInt)
+  {
+    if (paramInt == 2) {
+      return BaseApplication.getContext().getSharedPreferences("ArkAppCacheConfig", 0);
+    }
+    return BaseApplication.getContext().getSharedPreferences("ArkAppCacheConfigDebug", 0);
+  }
+  
+  private static String g()
   {
     return BaseApplication.getContext().getFilesDir().getAbsolutePath();
   }
   
-  public int a()
+  public int b()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append("/Dict");
-    return localStringBuilder.toString();
+    return this.e;
   }
   
   public String c()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("/Debug");
-    return localStringBuilder.toString();
+    return this.f;
   }
   
   public String d()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("/Dict");
+    return localStringBuilder.toString();
+  }
+  
+  public String e()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("/Debug");
+    return localStringBuilder.toString();
+  }
+  
+  public String f()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.f);
     localStringBuilder.append("/Crash");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.env.ArkAppEnvConfig
  * JD-Core Version:    0.7.0.1
  */

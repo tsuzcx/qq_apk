@@ -25,10 +25,10 @@ class ChatHistoryFileActivity$7
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.this$0.app.getMessageFacade().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
-    } else if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-      this.this$0.app.getMessageFacade().a(this.jdField_a_of_type_JavaUtilList, false);
+    if (this.a.size() == 1) {
+      this.this$0.app.getMessageFacade().a((MessageRecord)this.a.get(0), false);
+    } else if (this.a.size() > 1) {
+      this.this$0.app.getMessageFacade().a(this.a, false);
     }
     Object localObject1 = this.b;
     Object localObject2;
@@ -49,17 +49,17 @@ class ChatHistoryFileActivity$7
           ((StringBuilder)localObject3).append(((FileManagerEntity)localObject2).nSessionId);
           QLog.d("ChatHistoryFIleActivity", 1, ((StringBuilder)localObject3).toString());
         }
-        this.this$0.app.getFileManagerEngine().b(((FileManagerEntity)localObject2).nSessionId);
+        this.this$0.app.getFileManagerEngine().c(((FileManagerEntity)localObject2).nSessionId);
       }
     }
     try
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.c)
       {
         localObject1 = new JSONObject();
         localObject2 = new JSONArray();
         ((JSONObject)localObject1).put("recent_file_list", localObject2);
-        localObject3 = this.c.iterator();
+        localObject3 = this.d.iterator();
         while (((Iterator)localObject3).hasNext()) {
           ((JSONArray)localObject2).put(((TencentDocData)((Iterator)localObject3).next()).translate2JsonObject());
         }
@@ -80,12 +80,12 @@ class ChatHistoryFileActivity$7
         QLog.e("ChatHistoryFIleActivity", 1, localJSONException.getMessage());
       }
     }
-    this.this$0.a.sendEmptyMessage(2);
+    this.this$0.w.sendEmptyMessage(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.7
  * JD-Core Version:    0.7.0.1
  */

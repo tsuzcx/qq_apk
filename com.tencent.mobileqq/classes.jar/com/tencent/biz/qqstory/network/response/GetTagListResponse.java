@@ -14,13 +14,12 @@ import java.util.List;
 public class GetTagListResponse
   extends BaseResponse
 {
-  public final String a;
-  public final List<TagItem> a;
+  public final List<TagItem> a = new ArrayList();
   public final int b;
+  public final String e;
   
   public GetTagListResponse(qqstory_service.RspGetTagList paramRspGetTagList)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     Object localObject = paramRspGetTagList.tag_list.get();
     if (localObject != null)
     {
@@ -28,22 +27,22 @@ public class GetTagListResponse
       while (((Iterator)localObject).hasNext())
       {
         qqstory_struct.TagItem localTagItem = (qqstory_struct.TagItem)((Iterator)localObject).next();
-        this.jdField_a_of_type_JavaUtilList.add(new TagItem(localTagItem));
+        this.a.add(new TagItem(localTagItem));
       }
     }
     this.b = paramRspGetTagList.is_end.get();
-    this.jdField_a_of_type_JavaLangString = paramRspGetTagList.next_cookie.get();
+    this.e = paramRspGetTagList.next_cookie.get();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetTagListResponse{mTagItems=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mIsEnd=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", mNextCookie='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -51,7 +50,7 @@ public class GetTagListResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetTagListResponse
  * JD-Core Version:    0.7.0.1
  */

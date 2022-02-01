@@ -16,15 +16,15 @@ class TeamWorkFileImportHandlerImpl$6
     if (TeamWorkFileImportHandlerImpl.access$000(this.this$0) == null) {
       return;
     }
-    JSONObject localJSONObject = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).importFormWithLocalFile(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.c, TeamWorkFileImportHandlerImpl.access$000(this.this$0).getCurrentAccountUin());
+    JSONObject localJSONObject = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).importFormWithLocalFile(this.a, this.b.d, TeamWorkFileImportHandlerImpl.access$000(this.this$0).getCurrentAccountUin());
     if (localJSONObject != null) {
-      TeamWorkFileImportHandlerImpl.access$300(this.this$0, localJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
+      TeamWorkFileImportHandlerImpl.access$300(this.this$0, localJSONObject, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkFileImportHandlerImpl.6
  * JD-Core Version:    0.7.0.1
  */

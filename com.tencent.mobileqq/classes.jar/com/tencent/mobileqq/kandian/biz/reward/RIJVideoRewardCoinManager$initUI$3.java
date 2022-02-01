@@ -13,12 +13,12 @@ final class RIJVideoRewardCoinManager$initUI$3
   public final void onClick(View paramView)
   {
     RIJVideoRewardCoinManager.a(this.a, 0);
-    RIJVideoRewardCoinManager.a(this.a);
+    RIJVideoRewardCoinManager.g(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJVideoRewardCoinManager.initUI.3
  * JD-Core Version:    0.7.0.1
  */

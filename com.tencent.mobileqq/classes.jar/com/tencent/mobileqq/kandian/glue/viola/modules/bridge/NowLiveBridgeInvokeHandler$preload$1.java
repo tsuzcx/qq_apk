@@ -25,7 +25,7 @@ final class NowLiveBridgeInvokeHandler$preload$1
       localObject = ((AppRuntime)localObject).getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER);
       if (localObject != null)
       {
-        ((IDynamicNowManager)localObject).a();
+        ((IDynamicNowManager)localObject).c();
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.intervideo.now.dynamic.IDynamicNowManager");
@@ -34,7 +34,7 @@ final class NowLiveBridgeInvokeHandler$preload$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.NowLiveBridgeInvokeHandler.preload.1
  * JD-Core Version:    0.7.0.1
  */

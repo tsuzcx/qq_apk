@@ -20,20 +20,20 @@ class ApolloItemBuilder$7
   
   public void onClick(View paramView)
   {
-    if (((IApolloManagerService)this.a.a.getRuntimeService(IApolloManagerService.class, "all")).isApolloSupport(this.a.a.getApplication()))
+    if (((IApolloManagerService)this.a.d.getRuntimeService(IApolloManagerService.class, "all")).isApolloSupport(this.a.d.getApplication()))
     {
-      ((IApolloUtil)QRoute.api(IApolloUtil.class)).openApolloStore(paramView.getContext(), null, "aio", ApolloConstant.z, null);
+      ((IApolloUtil)QRoute.api(IApolloUtil.class)).openApolloStore(paramView.getContext(), null, "aio", ApolloConstant.H, null);
       return;
     }
     Object localObject;
-    if (!ApolloHardWareTester.a(this.a.a.getApplication()))
+    if (!ApolloHardWareTester.a(this.a.d.getApplication()))
     {
-      localObject = ApolloConstant.m;
+      localObject = ApolloConstant.u;
     }
     else
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(ApolloConstant.n);
+      ((StringBuilder)localObject).append(ApolloConstant.v);
       ((StringBuilder)localObject).append(((IQQComicUtil)QRoute.api(IQQComicUtil.class)).getActionId());
       localObject = ((StringBuilder)localObject).toString();
     }
@@ -44,7 +44,7 @@ class ApolloItemBuilder$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.item.ApolloItemBuilder.7
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ class DoubleVideoMeetingCtrlUI$1$1
   
   public void run()
   {
-    ScreenShareCtrl localScreenShareCtrl = this.a.a.a.a();
+    ScreenShareCtrl localScreenShareCtrl = this.a.b.am.aF();
     if (localScreenShareCtrl != null) {
-      localScreenShareCtrl.a(this.a.a.a(), 1L);
+      localScreenShareCtrl.a(this.a.b.U(), 1L);
     }
   }
 }

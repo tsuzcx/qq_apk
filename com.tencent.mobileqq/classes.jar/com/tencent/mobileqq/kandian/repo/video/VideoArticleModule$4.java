@@ -15,7 +15,7 @@ class VideoArticleModule$4
   
   public void run()
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     int i = 0;
     boolean bool;
     if (l == -1L) {
@@ -23,13 +23,13 @@ class VideoArticleModule$4
     } else {
       bool = false;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       StringBuilder localStringBuilder1 = new StringBuilder("\n");
-      Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+      Object localObject1 = this.c;
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
-        localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject2 = this.c.iterator();
         while (((Iterator)localObject2).hasNext())
         {
           WeiShiVideoArticleInfo localWeiShiVideoArticleInfo = (WeiShiVideoArticleInfo)((Iterator)localObject2).next();
@@ -52,7 +52,7 @@ class VideoArticleModule$4
             if (localWeiShiVideoArticleInfo.videoData == null) {
               localObject1 = "";
             } else {
-              localObject1 = localWeiShiVideoArticleInfo.videoData.a;
+              localObject1 = localWeiShiVideoArticleInfo.videoData.e;
             }
             localStringBuilder2.append((String)localObject1);
             localStringBuilder2.append(" feedsType : ");
@@ -70,15 +70,15 @@ class VideoArticleModule$4
       localObject1 = VideoArticleModule.a;
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("onGetChannelArticleList success=");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append(" channelId=");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append(this.d);
       ((StringBuilder)localObject2).append(" noMoreData=");
-      ((StringBuilder)localObject2).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject2).append(this.e);
       ((StringBuilder)localObject2).append(" beginRecommendSeq=");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append(this.a);
       ((StringBuilder)localObject2).append(" endRecommendSeq=");
-      ((StringBuilder)localObject2).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject2).append(this.f);
       ((StringBuilder)localObject2).append(" isRefresh : ");
       ((StringBuilder)localObject2).append(bool);
       ((StringBuilder)localObject2).append(", ");
@@ -87,15 +87,15 @@ class VideoArticleModule$4
     }
     if (bool)
     {
-      VideoArticleModule.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
+      VideoArticleModule.a(this.this$0, this.b, this.d, this.e, this.c, this.a, this.f, this.g);
       return;
     }
-    VideoArticleModule.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
+    VideoArticleModule.a(this.this$0, this.b, this.d, this.e, this.c, this.a, this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.video.VideoArticleModule.4
  * JD-Core Version:    0.7.0.1
  */

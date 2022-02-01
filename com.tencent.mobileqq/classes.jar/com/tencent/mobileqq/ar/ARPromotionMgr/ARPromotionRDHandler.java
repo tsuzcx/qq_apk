@@ -14,25 +14,10 @@ import java.io.File;
 public class ARPromotionRDHandler
   extends ResDownloadHandler.DefaultRDHandler
 {
-  public String a(ResDownloadManager.DownloadParam paramDownloadParam)
-  {
-    paramDownloadParam = ((PromotionConfigInfo.ZipItem)paramDownloadParam.a).jdField_d_of_type_JavaLangString;
-    if (QQAudioHelper.c())
-    {
-      String str = PromotionUtil.a;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getUnzipDirPath, path[");
-      localStringBuilder.append(paramDownloadParam);
-      localStringBuilder.append("]");
-      QLog.w(str, 1, localStringBuilder.toString());
-    }
-    return paramDownloadParam;
-  }
-  
   public boolean a(ResDownloadManager.DownloadParam paramDownloadParam)
   {
-    PromotionConfigInfo.ZipItem localZipItem = (PromotionConfigInfo.ZipItem)paramDownloadParam.a;
-    localZipItem.jdField_d_of_type_Int = 0;
+    PromotionConfigInfo.ZipItem localZipItem = (PromotionConfigInfo.ZipItem)paramDownloadParam.h;
+    localZipItem.o = 0;
     boolean bool2 = super.a(paramDownloadParam);
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("ARPromotionRDHandler, needDownload[");
@@ -45,7 +30,7 @@ public class ARPromotionRDHandler
     String str2;
     if (bool2)
     {
-      str2 = PrecoverUtils.a("20180426_803_worldcupXXX", localZipItem.b);
+      str2 = PrecoverUtils.a("20180426_803_worldcupXXX", localZipItem.c);
       bool1 = bool2;
       localObject1 = str1;
       if (!TextUtils.isEmpty(str2))
@@ -79,13 +64,13 @@ public class ARPromotionRDHandler
     ((StringBuilder)localObject2).append("], preMd5[");
     ((StringBuilder)localObject2).append((String)localObject1);
     str1 = ((StringBuilder)localObject2).toString();
-    if (TextUtils.equals(localZipItem.b, (CharSequence)localObject1))
+    if (TextUtils.equals(localZipItem.c, (CharSequence)localObject1))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(str1);
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131700954));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131898978));
       localObject1 = ((StringBuilder)localObject1).toString();
-      bool2 = FileUtils.copyFile(str2, b(paramDownloadParam));
+      bool2 = FileUtils.copyFile(str2, c(paramDownloadParam));
       bool1 = super.a(paramDownloadParam);
       paramDownloadParam = new StringBuilder();
       paramDownloadParam.append((String)localObject1);
@@ -96,14 +81,14 @@ public class ARPromotionRDHandler
       paramDownloadParam.append("]");
       localObject1 = paramDownloadParam.toString();
       if (!bool1) {
-        localZipItem.jdField_d_of_type_Int = 1;
+        localZipItem.o = 1;
       }
     }
     else
     {
       paramDownloadParam = new StringBuilder();
       paramDownloadParam.append(str1);
-      paramDownloadParam.append(HardCodeUtil.a(2131700953));
+      paramDownloadParam.append(HardCodeUtil.a(2131898977));
       localObject1 = paramDownloadParam.toString();
       bool1 = bool2;
     }
@@ -118,8 +103,23 @@ public class ARPromotionRDHandler
   
   public String b(ResDownloadManager.DownloadParam paramDownloadParam)
   {
-    paramDownloadParam = ((PromotionConfigInfo.ZipItem)paramDownloadParam.a).c;
-    if (QQAudioHelper.c())
+    paramDownloadParam = ((PromotionConfigInfo.ZipItem)paramDownloadParam.h).e;
+    if (QQAudioHelper.f())
+    {
+      String str = PromotionUtil.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getUnzipDirPath, path[");
+      localStringBuilder.append(paramDownloadParam);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
+    }
+    return paramDownloadParam;
+  }
+  
+  public String c(ResDownloadManager.DownloadParam paramDownloadParam)
+  {
+    paramDownloadParam = ((PromotionConfigInfo.ZipItem)paramDownloadParam.h).d;
+    if (QQAudioHelper.f())
     {
       String str = PromotionUtil.a;
       StringBuilder localStringBuilder = new StringBuilder();
@@ -133,7 +133,7 @@ public class ARPromotionRDHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.ARPromotionRDHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -9,18 +9,18 @@ class DeviceFragment$2
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.getCount() > 0))
+    if ((this.this$0.b != null) && (this.this$0.b.getCount() > 0))
     {
-      int i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.a();
-      if ((i >= 0) && (i < this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.getCount())) {
-        this.this$0.jdField_a_of_type_ComTencentWidgetXListView.setSelection(i);
+      int i = this.this$0.b.f();
+      if ((i >= 0) && (i < this.this$0.b.getCount())) {
+        this.this$0.a.setSelection(i);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.device.DeviceFragment.2
  * JD-Core Version:    0.7.0.1
  */

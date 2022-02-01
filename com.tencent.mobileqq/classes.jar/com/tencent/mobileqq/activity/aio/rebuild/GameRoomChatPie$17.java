@@ -11,17 +11,17 @@ class GameRoomChatPie$17
 {
   public void onClick(View paramView)
   {
-    if ((paramView == this.jdField_a_of_type_AndroidWidgetButton) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a.a() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a.a().c();
-    } else if ((paramView == this.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a.a() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a.a().f();
+    if ((paramView == this.a) && (this.c.bC.c() != null)) {
+      this.c.bC.c().g();
+    } else if ((paramView == this.b) && (this.c.bC.c() != null)) {
+      this.c.bC.c().m();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.17
  * JD-Core Version:    0.7.0.1
  */

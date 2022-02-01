@@ -9,23 +9,23 @@ import java.util.Set;
 public final class f
 {
   public int a;
-  private Map<String, String> a;
   public String b;
   public int c;
   public byte[] d;
+  private Map<String, String> e;
   
   public f(int paramInt1, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramString;
     this.c = 0;
   }
   
   public final String a(String paramString)
   {
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(paramString)))
+    if ((this.e != null) && (!TextUtils.isEmpty(paramString)))
     {
-      paramString = (String)this.jdField_a_of_type_JavaUtilMap.get(paramString.toLowerCase());
+      paramString = (String)this.e.get(paramString.toLowerCase());
       if (!TextUtils.isEmpty(paramString)) {
         return paramString;
       }
@@ -35,19 +35,19 @@ public final class f
   
   public final Map<String, String> a()
   {
-    return this.jdField_a_of_type_JavaUtilMap;
+    return this.e;
   }
   
   public final void a(Map<String, String> paramMap)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.e = new HashMap();
     if ((paramMap != null) && (paramMap.size() > 0))
     {
       Iterator localIterator = paramMap.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        this.jdField_a_of_type_JavaUtilMap.put(str.toLowerCase(), paramMap.get(str));
+        this.e.put(str.toLowerCase(), paramMap.get(str));
       }
     }
   }
@@ -55,13 +55,13 @@ public final class f
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("errorCode:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",errorInfo:");
     localStringBuilder.append(this.b);
     localStringBuilder.append(",httpStatus:");
     localStringBuilder.append(this.c);
     localStringBuilder.append(",headers:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(",body:");
     Object localObject = this.d;
     if (localObject != null) {
@@ -75,7 +75,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.b.a.f
  * JD-Core Version:    0.7.0.1
  */

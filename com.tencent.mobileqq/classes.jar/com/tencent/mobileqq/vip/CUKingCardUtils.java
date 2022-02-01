@@ -10,7 +10,7 @@ public class CUKingCardUtils
 {
   public static int a()
   {
-    return a(VasUtil.a());
+    return a(VasUtil.e());
   }
   
   public static int a(String paramString)
@@ -52,7 +52,7 @@ public class CUKingCardUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.CUKingCardUtils
  * JD-Core Version:    0.7.0.1
  */

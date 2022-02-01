@@ -32,8 +32,7 @@ class TPListenerManager$1
           int m = (int)(((ITPPlayListener)localObject2).getAdvRemainTime() / 1000L);
           TPDownloadProxyNative.getInstance().updatePlayerPlayMsg(i, j, k, m);
         }
-        TPListenerManager.access$600(this.this$0).postDelayed(TPListenerManager.access$400(this.this$0), TPListenerManager.access$500(this.this$0));
-        return;
+        localObject3 = finally;
       }
       catch (Throwable localThrowable)
       {
@@ -41,6 +40,7 @@ class TPListenerManager$1
         ((StringBuilder)localObject2).append("updatePlayerInfo failed, error:");
         ((StringBuilder)localObject2).append(localThrowable.toString());
         TPDLProxyLog.e("TPListenerManager", 0, "tpdlnative", ((StringBuilder)localObject2).toString());
+        TPListenerManager.access$600(this.this$0).postDelayed(TPListenerManager.access$400(this.this$0), TPListenerManager.access$500(this.this$0));
         return;
       }
     }
@@ -52,7 +52,7 @@ class TPListenerManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.apiinner.TPListenerManager.1
  * JD-Core Version:    0.7.0.1
  */

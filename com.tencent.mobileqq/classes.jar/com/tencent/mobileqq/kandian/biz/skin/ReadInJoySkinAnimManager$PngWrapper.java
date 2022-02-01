@@ -5,21 +5,21 @@ import android.graphics.drawable.Drawable;
 public class ReadInJoySkinAnimManager$PngWrapper
   implements Comparable<PngWrapper>
 {
-  public int a;
-  public Drawable a;
   public String a;
+  public int b;
+  public Drawable c;
   
   ReadInJoySkinAnimManager$PngWrapper(String paramString, int paramInt, Drawable paramDrawable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.a = paramString;
+    this.b = paramInt;
+    this.c = paramDrawable;
   }
   
   public int a(PngWrapper paramPngWrapper)
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = paramPngWrapper.jdField_a_of_type_Int;
+    int i = this.b;
+    int j = paramPngWrapper.b;
     if (i < j) {
       return -1;
     }
@@ -31,7 +31,7 @@ public class ReadInJoySkinAnimManager$PngWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.ReadInJoySkinAnimManager.PngWrapper
  * JD-Core Version:    0.7.0.1
  */

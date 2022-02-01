@@ -9,12 +9,12 @@ class WeiShiCacheManager$7
   
   public void run()
   {
-    FileUtils.delete(WeiShiCacheManager.b(this.this$0), false);
+    FileUtils.delete(WeiShiCacheManager.d(this.this$0), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.7
  * JD-Core Version:    0.7.0.1
  */

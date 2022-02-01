@@ -9,38 +9,38 @@ import mqq.os.MqqHandler;
 public class ChangesetScheduler
   implements Handler.Callback, IScheduler
 {
-  private ISchedulerCallback jdField_a_of_type_ComTencentMobileqqWritetogetherClientISchedulerCallback;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+  private MqqHandler a = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+  private ISchedulerCallback b;
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(paramInt);
+    this.a.removeMessages(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(paramInt1)) {
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(paramInt1, paramInt2);
+    if (!this.a.hasMessages(paramInt1)) {
+      this.a.sendEmptyMessageDelayed(paramInt1, paramInt2);
     }
   }
   
   public void a(ISchedulerCallback paramISchedulerCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientISchedulerCallback = paramISchedulerCallback;
+    this.b = paramISchedulerCallback;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    ISchedulerCallback localISchedulerCallback = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientISchedulerCallback;
+    ISchedulerCallback localISchedulerCallback = this.b;
     if (localISchedulerCallback != null) {
-      return localISchedulerCallback.a(paramMessage.what);
+      return localISchedulerCallback.c(paramMessage.what);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.client.ChangesetScheduler
  * JD-Core Version:    0.7.0.1
  */

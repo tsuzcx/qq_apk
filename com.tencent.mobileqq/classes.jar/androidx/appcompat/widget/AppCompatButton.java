@@ -14,30 +14,34 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
 import androidx.core.view.TintableBackgroundView;
 import androidx.core.widget.AutoSizeableTextView;
 import androidx.core.widget.TextViewCompat;
+import androidx.core.widget.TintableCompoundDrawablesView;
 
 public class AppCompatButton
   extends Button
-  implements TintableBackgroundView, AutoSizeableTextView
+  implements TintableBackgroundView, AutoSizeableTextView, TintableCompoundDrawablesView
 {
-  private final AppCompatBackgroundHelper mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
+  private final AppCompatBackgroundHelper mBackgroundTintHelper;
   private final AppCompatTextHelper mTextHelper;
   
-  public AppCompatButton(Context paramContext)
+  public AppCompatButton(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public AppCompatButton(Context paramContext, AttributeSet paramAttributeSet)
+  public AppCompatButton(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131034292);
+    this(paramContext, paramAttributeSet, R.attr.buttonStyle);
   }
   
-  public AppCompatButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppCompatButton(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
+    ThemeUtils.checkAppCompatTheme(this, getContext());
+    this.mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
     this.mBackgroundTintHelper.loadFromAttributes(paramAttributeSet, paramInt);
     this.mTextHelper = new AppCompatTextHelper(this);
     this.mTextHelper.loadFromAttributes(paramAttributeSet, paramInt);
@@ -149,6 +153,20 @@ public class AppCompatButton
       return localAppCompatBackgroundHelper.getSupportBackgroundTintMode();
     }
     return null;
+  }
+  
+  @Nullable
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+  public ColorStateList getSupportCompoundDrawablesTintList()
+  {
+    return this.mTextHelper.getCompoundDrawableTintList();
+  }
+  
+  @Nullable
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+  public PorterDuff.Mode getSupportCompoundDrawablesTintMode()
+  {
+    return this.mTextHelper.getCompoundDrawableTintMode();
   }
   
   public void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
@@ -269,6 +287,20 @@ public class AppCompatButton
     if (localAppCompatBackgroundHelper != null) {
       localAppCompatBackgroundHelper.setSupportBackgroundTintMode(paramMode);
     }
+  }
+  
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+  public void setSupportCompoundDrawablesTintList(@Nullable ColorStateList paramColorStateList)
+  {
+    this.mTextHelper.setCompoundDrawableTintList(paramColorStateList);
+    this.mTextHelper.applyCompoundDrawablesTints();
+  }
+  
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+  public void setSupportCompoundDrawablesTintMode(@Nullable PorterDuff.Mode paramMode)
+  {
+    this.mTextHelper.setCompoundDrawableTintMode(paramMode);
+    this.mTextHelper.applyCompoundDrawablesTints();
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)

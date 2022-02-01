@@ -18,48 +18,6 @@ import org.json.JSONObject;
 
 public class VasUpdateUtil
 {
-  public static JsonReader a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean, CallBacker paramCallBacker)
-  {
-    if (paramAppRuntime == null)
-    {
-      paramCallBacker = new StringBuilder();
-      paramCallBacker.append("getJSONFromLocalByStreamRead, app == null; scid:");
-      paramCallBacker.append(paramString);
-      paramCallBacker.append(", app=");
-      paramCallBacker.append(paramAppRuntime);
-      QLog.e("VasUpdateUtil", 1, paramCallBacker.toString());
-      return null;
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramAppRuntime.getApplication().getFilesDir());
-    ((StringBuilder)localObject).append(File.separator);
-    ((StringBuilder)localObject).append(paramString);
-    localObject = ((StringBuilder)localObject).toString();
-    File localFile = new File((String)localObject);
-    if (localFile.exists()) {
-      try
-      {
-        JsonReader localJsonReader = new JsonReader(new FileReader(localFile));
-        return localJsonReader;
-      }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("getJSONFromLocalByStreamRead error,json_name:");
-          localStringBuilder.append(paramString);
-          QLog.e("VasUpdateUtil", 2, localStringBuilder.toString(), localThrowable);
-        }
-        localFile.delete();
-      }
-    }
-    if (paramBoolean) {
-      ((IVasQuickUpdateAdapter)QRoute.api(IVasQuickUpdateAdapter.class)).downloadItem(paramAppRuntime, 1000L, paramString, (String)localObject, paramCallBacker);
-    }
-    return null;
-  }
-  
   public static TagItemInfo a(long paramLong, String paramString)
   {
     if (QLog.isColorLevel())
@@ -131,13 +89,13 @@ public class VasUpdateUtil
     //   7: astore 5
     //   9: aconst_null
     //   10: astore 8
-    //   12: new 141	com/tencent/commonsdk/zip/QZipFile
+    //   12: new 116	com/tencent/commonsdk/zip/QZipFile
     //   15: dup
     //   16: aload_0
-    //   17: invokespecial 142	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
+    //   17: invokespecial 119	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
     //   20: astore 4
     //   22: aload 4
-    //   24: invokevirtual 146	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
+    //   24: invokevirtual 123	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   27: astore 13
     //   29: sipush 8192
     //   32: newarray byte
@@ -159,7 +117,7 @@ public class VasUpdateUtil
     //   61: aload_0
     //   62: astore 9
     //   64: aload 13
-    //   66: invokeinterface 151 1 0
+    //   66: invokeinterface 128 1 0
     //   71: ifeq +925 -> 996
     //   74: aload 5
     //   76: astore 11
@@ -172,8 +130,8 @@ public class VasUpdateUtil
     //   90: aload_0
     //   91: astore 9
     //   93: aload 13
-    //   95: invokeinterface 155 1 0
-    //   100: checkcast 157	java/util/zip/ZipEntry
+    //   95: invokeinterface 132 1 0
+    //   100: checkcast 134	java/util/zip/ZipEntry
     //   103: astore 15
     //   105: aload 5
     //   107: astore 11
@@ -186,9 +144,9 @@ public class VasUpdateUtil
     //   121: aload_0
     //   122: astore 9
     //   124: aload 15
-    //   126: invokevirtual 160	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   129: ldc 162
-    //   131: invokevirtual 167	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   126: invokevirtual 137	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   129: ldc 139
+    //   131: invokevirtual 144	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   134: ifeq +6 -> 140
     //   137: goto -92 -> 45
     //   140: aload 5
@@ -202,7 +160,7 @@ public class VasUpdateUtil
     //   156: aload_0
     //   157: astore 9
     //   159: aload 15
-    //   161: invokevirtual 170	java/util/zip/ZipEntry:isDirectory	()Z
+    //   161: invokevirtual 147	java/util/zip/ZipEntry:isDirectory	()Z
     //   164: ifeq +445 -> 609
     //   167: aload 5
     //   169: astore 11
@@ -214,7 +172,7 @@ public class VasUpdateUtil
     //   181: astore 8
     //   183: aload_0
     //   184: astore 9
-    //   186: invokestatic 173	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   186: invokestatic 150	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   189: istore_3
     //   190: iload_3
     //   191: ifeq +118 -> 309
@@ -228,9 +186,9 @@ public class VasUpdateUtil
     //   208: astore 8
     //   210: aload_0
     //   211: astore 9
-    //   213: new 15	java/lang/StringBuilder
+    //   213: new 19	java/lang/StringBuilder
     //   216: dup
-    //   217: invokespecial 16	java/lang/StringBuilder:<init>	()V
+    //   217: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   220: astore 10
     //   222: aload 5
     //   224: astore 11
@@ -243,8 +201,8 @@ public class VasUpdateUtil
     //   238: aload_0
     //   239: astore 9
     //   241: aload 10
-    //   243: ldc 175
-    //   245: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   243: ldc 152
+    //   245: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   248: pop
     //   249: aload 5
     //   251: astore 11
@@ -258,8 +216,8 @@ public class VasUpdateUtil
     //   266: astore 9
     //   268: aload 10
     //   270: aload 15
-    //   272: invokevirtual 160	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   275: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   272: invokevirtual 137	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   275: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   278: pop
     //   279: aload 5
     //   281: astore 11
@@ -271,11 +229,11 @@ public class VasUpdateUtil
     //   293: astore 8
     //   295: aload_0
     //   296: astore 9
-    //   298: ldc 177
+    //   298: ldc 154
     //   300: iconst_4
     //   301: aload 10
-    //   303: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   306: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   303: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   306: invokestatic 41	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   309: aload 5
     //   311: astore 11
     //   313: aload 5
@@ -286,9 +244,9 @@ public class VasUpdateUtil
     //   323: astore 8
     //   325: aload_0
     //   326: astore 9
-    //   328: new 15	java/lang/StringBuilder
+    //   328: new 19	java/lang/StringBuilder
     //   331: dup
-    //   332: invokespecial 16	java/lang/StringBuilder:<init>	()V
+    //   332: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   335: astore 10
     //   337: aload 5
     //   339: astore 11
@@ -302,7 +260,7 @@ public class VasUpdateUtil
     //   354: astore 9
     //   356: aload 10
     //   358: aload_1
-    //   359: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   359: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   362: pop
     //   363: aload 5
     //   365: astore 11
@@ -316,8 +274,8 @@ public class VasUpdateUtil
     //   380: astore 9
     //   382: aload 10
     //   384: aload 15
-    //   386: invokevirtual 160	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   389: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   386: invokevirtual 137	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   389: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   392: pop
     //   393: aload 5
     //   395: astore 11
@@ -329,14 +287,14 @@ public class VasUpdateUtil
     //   407: astore 8
     //   409: aload_0
     //   410: astore 9
-    //   412: new 164	java/lang/String
+    //   412: new 141	java/lang/String
     //   415: dup
     //   416: aload 10
-    //   418: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   421: ldc 179
-    //   423: invokevirtual 183	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   426: ldc 185
-    //   428: invokespecial 188	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   418: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   421: ldc 156
+    //   423: invokevirtual 160	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   426: ldc 162
+    //   428: invokespecial 165	java/lang/String:<init>	([BLjava/lang/String;)V
     //   431: astore 10
     //   433: aload 5
     //   435: astore 11
@@ -348,7 +306,7 @@ public class VasUpdateUtil
     //   447: astore 8
     //   449: aload_0
     //   450: astore 9
-    //   452: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   452: invokestatic 17	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   455: ifeq +115 -> 570
     //   458: aload 5
     //   460: astore 11
@@ -360,9 +318,9 @@ public class VasUpdateUtil
     //   472: astore 8
     //   474: aload_0
     //   475: astore 9
-    //   477: new 15	java/lang/StringBuilder
+    //   477: new 19	java/lang/StringBuilder
     //   480: dup
-    //   481: invokespecial 16	java/lang/StringBuilder:<init>	()V
+    //   481: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   484: astore 15
     //   486: aload 5
     //   488: astore 11
@@ -375,8 +333,8 @@ public class VasUpdateUtil
     //   502: aload_0
     //   503: astore 9
     //   505: aload 15
-    //   507: ldc 190
-    //   509: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   507: ldc 167
+    //   509: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   512: pop
     //   513: aload 5
     //   515: astore 11
@@ -390,7 +348,7 @@ public class VasUpdateUtil
     //   530: astore 9
     //   532: aload 15
     //   534: aload 10
-    //   536: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   536: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   539: pop
     //   540: aload 5
     //   542: astore 11
@@ -402,11 +360,11 @@ public class VasUpdateUtil
     //   554: astore 8
     //   556: aload_0
     //   557: astore 9
-    //   559: ldc 177
+    //   559: ldc 154
     //   561: iconst_2
     //   562: aload 15
-    //   564: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   567: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   564: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   567: invokestatic 41	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   570: aload 5
     //   572: astore 11
     //   574: aload 5
@@ -417,11 +375,11 @@ public class VasUpdateUtil
     //   584: astore 8
     //   586: aload_0
     //   587: astore 9
-    //   589: new 53	java/io/File
+    //   589: new 76	java/io/File
     //   592: dup
     //   593: aload 10
-    //   595: invokespecial 60	java/io/File:<init>	(Ljava/lang/String;)V
-    //   598: invokevirtual 193	java/io/File:mkdir	()Z
+    //   595: invokespecial 94	java/io/File:<init>	(Ljava/lang/String;)V
+    //   598: invokevirtual 170	java/io/File:mkdir	()Z
     //   601: pop
     //   602: aload 10
     //   604: astore 5
@@ -437,7 +395,7 @@ public class VasUpdateUtil
     //   625: aload_0
     //   626: astore 9
     //   628: aload 15
-    //   630: invokevirtual 160	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   630: invokevirtual 137	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
     //   633: astore 5
     //   635: aload 5
     //   637: astore 11
@@ -449,9 +407,9 @@ public class VasUpdateUtil
     //   649: astore 8
     //   651: aload_0
     //   652: astore 9
-    //   654: new 15	java/lang/StringBuilder
+    //   654: new 19	java/lang/StringBuilder
     //   657: dup
-    //   658: invokespecial 16	java/lang/StringBuilder:<init>	()V
+    //   658: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   661: astore 10
     //   663: aload 5
     //   665: astore 11
@@ -465,7 +423,7 @@ public class VasUpdateUtil
     //   680: astore 9
     //   682: aload 10
     //   684: aload_1
-    //   685: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   685: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   688: pop
     //   689: aload 5
     //   691: astore 11
@@ -479,8 +437,8 @@ public class VasUpdateUtil
     //   706: astore 9
     //   708: aload 10
     //   710: aload 15
-    //   712: invokevirtual 160	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   715: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   712: invokevirtual 137	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   715: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   718: pop
     //   719: aload 5
     //   721: astore 11
@@ -492,11 +450,11 @@ public class VasUpdateUtil
     //   733: astore 8
     //   735: aload_0
     //   736: astore 9
-    //   738: new 53	java/io/File
+    //   738: new 76	java/io/File
     //   741: dup
     //   742: aload 10
-    //   744: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   747: invokespecial 60	java/io/File:<init>	(Ljava/lang/String;)V
+    //   744: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   747: invokespecial 94	java/io/File:<init>	(Ljava/lang/String;)V
     //   750: astore 10
     //   752: aload 5
     //   754: astore 11
@@ -509,8 +467,8 @@ public class VasUpdateUtil
     //   768: aload_0
     //   769: astore 9
     //   771: aload 10
-    //   773: invokevirtual 196	java/io/File:getParentFile	()Ljava/io/File;
-    //   776: invokevirtual 199	java/io/File:mkdirs	()Z
+    //   773: invokevirtual 173	java/io/File:getParentFile	()Ljava/io/File;
+    //   776: invokevirtual 176	java/io/File:mkdirs	()Z
     //   779: pop
     //   780: aload 5
     //   782: astore 11
@@ -523,7 +481,7 @@ public class VasUpdateUtil
     //   796: aload_0
     //   797: astore 9
     //   799: aload 10
-    //   801: invokevirtual 64	java/io/File:exists	()Z
+    //   801: invokevirtual 97	java/io/File:exists	()Z
     //   804: ifeq +28 -> 832
     //   807: aload 5
     //   809: astore 11
@@ -536,7 +494,7 @@ public class VasUpdateUtil
     //   823: aload_0
     //   824: astore 9
     //   826: aload 10
-    //   828: invokevirtual 85	java/io/File:delete	()Z
+    //   828: invokevirtual 179	java/io/File:delete	()Z
     //   831: pop
     //   832: aload 5
     //   834: astore 11
@@ -548,13 +506,13 @@ public class VasUpdateUtil
     //   846: astore 8
     //   848: aload_0
     //   849: astore 9
-    //   851: new 201	java/io/BufferedOutputStream
+    //   851: new 181	java/io/BufferedOutputStream
     //   854: dup
-    //   855: new 203	java/io/FileOutputStream
+    //   855: new 183	java/io/FileOutputStream
     //   858: dup
     //   859: aload 10
-    //   861: invokespecial 204	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   864: invokespecial 207	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   861: invokespecial 184	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   864: invokespecial 187	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   867: astore 10
     //   869: aload_0
     //   870: astore 9
@@ -564,7 +522,7 @@ public class VasUpdateUtil
     //   876: astore 8
     //   878: aload 4
     //   880: aload 15
-    //   882: invokevirtual 211	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   882: invokevirtual 191	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   885: astore_0
     //   886: aload_0
     //   887: astore 9
@@ -576,7 +534,7 @@ public class VasUpdateUtil
     //   896: aload 14
     //   898: iconst_0
     //   899: sipush 8192
-    //   902: invokevirtual 217	java/io/InputStream:read	([BII)I
+    //   902: invokevirtual 197	java/io/InputStream:read	([BII)I
     //   905: istore_2
     //   906: iload_2
     //   907: iconst_m1
@@ -591,7 +549,7 @@ public class VasUpdateUtil
     //   922: aload 14
     //   924: iconst_0
     //   925: iload_2
-    //   926: invokevirtual 223	java/io/OutputStream:write	([BII)V
+    //   926: invokevirtual 203	java/io/OutputStream:write	([BII)V
     //   929: goto -43 -> 886
     //   932: aload_0
     //   933: astore 9
@@ -600,7 +558,7 @@ public class VasUpdateUtil
     //   938: aload_0
     //   939: astore 8
     //   941: aload_0
-    //   942: invokevirtual 226	java/io/InputStream:close	()V
+    //   942: invokevirtual 206	java/io/InputStream:close	()V
     //   945: aload_0
     //   946: astore 9
     //   948: aload_0
@@ -608,7 +566,7 @@ public class VasUpdateUtil
     //   951: aload_0
     //   952: astore 8
     //   954: aload 10
-    //   956: invokevirtual 227	java/io/OutputStream:close	()V
+    //   956: invokevirtual 207	java/io/OutputStream:close	()V
     //   959: aload 10
     //   961: astore 6
     //   963: goto -918 -> 45
@@ -639,41 +597,41 @@ public class VasUpdateUtil
     //   1012: aload_0
     //   1013: astore 9
     //   1015: aload 4
-    //   1017: invokevirtual 228	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   1017: invokevirtual 208	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   1020: aload 6
     //   1022: ifnull +21 -> 1043
     //   1025: aload 6
-    //   1027: invokevirtual 227	java/io/OutputStream:close	()V
+    //   1027: invokevirtual 207	java/io/OutputStream:close	()V
     //   1030: goto +13 -> 1043
     //   1033: astore_1
-    //   1034: ldc 29
+    //   1034: ldc 33
     //   1036: iconst_1
-    //   1037: ldc 230
+    //   1037: ldc 210
     //   1039: aload_1
-    //   1040: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1040: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1043: aload_0
     //   1044: ifnull +20 -> 1064
     //   1047: aload_0
-    //   1048: invokevirtual 226	java/io/InputStream:close	()V
+    //   1048: invokevirtual 206	java/io/InputStream:close	()V
     //   1051: goto +13 -> 1064
     //   1054: astore_0
-    //   1055: ldc 29
+    //   1055: ldc 33
     //   1057: iconst_1
-    //   1058: ldc 230
+    //   1058: ldc 210
     //   1060: aload_0
-    //   1061: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1061: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1064: aload 5
     //   1066: astore_0
     //   1067: aload 4
-    //   1069: invokevirtual 228	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   1069: invokevirtual 208	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   1072: aload 5
     //   1074: areturn
     //   1075: astore_1
-    //   1076: ldc 29
+    //   1076: ldc 33
     //   1078: iconst_1
-    //   1079: ldc 230
+    //   1079: ldc 210
     //   1081: aload_1
-    //   1082: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1082: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1085: aload_0
     //   1086: areturn
     //   1087: astore_1
@@ -715,33 +673,33 @@ public class VasUpdateUtil
     //   1152: astore 8
     //   1154: aload_0
     //   1155: astore 9
-    //   1157: ldc 29
+    //   1157: ldc 33
     //   1159: iconst_1
-    //   1160: ldc 232
+    //   1160: ldc 215
     //   1162: aload_1
-    //   1163: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1163: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1166: aload 6
     //   1168: ifnull +21 -> 1189
     //   1171: aload 6
-    //   1173: invokevirtual 227	java/io/OutputStream:close	()V
+    //   1173: invokevirtual 207	java/io/OutputStream:close	()V
     //   1176: goto +13 -> 1189
     //   1179: astore_1
-    //   1180: ldc 29
+    //   1180: ldc 33
     //   1182: iconst_1
-    //   1183: ldc 230
+    //   1183: ldc 210
     //   1185: aload_1
-    //   1186: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1186: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1189: aload_0
     //   1190: ifnull +20 -> 1210
     //   1193: aload_0
-    //   1194: invokevirtual 226	java/io/InputStream:close	()V
+    //   1194: invokevirtual 206	java/io/InputStream:close	()V
     //   1197: goto +13 -> 1210
     //   1200: astore_0
-    //   1201: ldc 29
+    //   1201: ldc 33
     //   1203: iconst_1
-    //   1204: ldc 230
+    //   1204: ldc 210
     //   1206: aload_0
-    //   1207: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1207: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1210: aload 5
     //   1212: astore_0
     //   1213: aload 4
@@ -749,7 +707,7 @@ public class VasUpdateUtil
     //   1218: aload 5
     //   1220: astore_0
     //   1221: aload 4
-    //   1223: invokevirtual 228	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   1223: invokevirtual 208	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   1226: aload 5
     //   1228: areturn
     //   1229: astore_1
@@ -767,33 +725,33 @@ public class VasUpdateUtil
     //   1248: astore 8
     //   1250: aload_0
     //   1251: astore 9
-    //   1253: ldc 29
+    //   1253: ldc 33
     //   1255: iconst_1
-    //   1256: ldc 234
+    //   1256: ldc 217
     //   1258: aload_1
-    //   1259: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1259: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1262: aload 6
     //   1264: ifnull +21 -> 1285
     //   1267: aload 6
-    //   1269: invokevirtual 227	java/io/OutputStream:close	()V
+    //   1269: invokevirtual 207	java/io/OutputStream:close	()V
     //   1272: goto +13 -> 1285
     //   1275: astore_1
-    //   1276: ldc 29
+    //   1276: ldc 33
     //   1278: iconst_1
-    //   1279: ldc 230
+    //   1279: ldc 210
     //   1281: aload_1
-    //   1282: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1282: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1285: aload_0
     //   1286: ifnull +20 -> 1306
     //   1289: aload_0
-    //   1290: invokevirtual 226	java/io/InputStream:close	()V
+    //   1290: invokevirtual 206	java/io/InputStream:close	()V
     //   1293: goto +13 -> 1306
     //   1296: astore_0
-    //   1297: ldc 29
+    //   1297: ldc 33
     //   1299: iconst_1
-    //   1300: ldc 230
+    //   1300: ldc 210
     //   1302: aload_0
-    //   1303: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1303: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1306: aload 5
     //   1308: astore_0
     //   1309: aload 4
@@ -801,7 +759,7 @@ public class VasUpdateUtil
     //   1314: aload 5
     //   1316: astore_0
     //   1317: aload 4
-    //   1319: invokevirtual 228	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   1319: invokevirtual 208	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   1322: aload 5
     //   1324: astore_0
     //   1325: aload_0
@@ -812,36 +770,36 @@ public class VasUpdateUtil
     //   1332: aload 7
     //   1334: ifnull +21 -> 1355
     //   1337: aload 7
-    //   1339: invokevirtual 227	java/io/OutputStream:close	()V
+    //   1339: invokevirtual 207	java/io/OutputStream:close	()V
     //   1342: goto +13 -> 1355
     //   1345: astore_1
-    //   1346: ldc 29
+    //   1346: ldc 33
     //   1348: iconst_1
-    //   1349: ldc 230
+    //   1349: ldc 210
     //   1351: aload_1
-    //   1352: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1352: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1355: aload 9
     //   1357: ifnull +21 -> 1378
     //   1360: aload 9
-    //   1362: invokevirtual 226	java/io/InputStream:close	()V
+    //   1362: invokevirtual 206	java/io/InputStream:close	()V
     //   1365: goto +13 -> 1378
     //   1368: astore_1
-    //   1369: ldc 29
+    //   1369: ldc 33
     //   1371: iconst_1
-    //   1372: ldc 230
+    //   1372: ldc 210
     //   1374: aload_1
-    //   1375: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1375: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1378: aload 4
     //   1380: ifnull +21 -> 1401
     //   1383: aload 4
-    //   1385: invokevirtual 228	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   1385: invokevirtual 208	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   1388: goto +13 -> 1401
     //   1391: astore_1
-    //   1392: ldc 29
+    //   1392: ldc 33
     //   1394: iconst_1
-    //   1395: ldc 230
+    //   1395: ldc 210
     //   1397: aload_1
-    //   1398: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1398: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1401: goto +5 -> 1406
     //   1404: aload_0
     //   1405: athrow
@@ -1039,10 +997,52 @@ public class VasUpdateUtil
   
   public static boolean a(File paramFile)
   {
-    return a(paramFile, "");
+    return b(paramFile, "");
   }
   
-  public static boolean a(File paramFile, String paramString)
+  public static JsonReader b(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean, CallBacker paramCallBacker)
+  {
+    if (paramAppRuntime == null)
+    {
+      paramCallBacker = new StringBuilder();
+      paramCallBacker.append("getJSONFromLocalByStreamRead, app == null; scid:");
+      paramCallBacker.append(paramString);
+      paramCallBacker.append(", app=");
+      paramCallBacker.append(paramAppRuntime);
+      QLog.e("VasUpdateUtil", 1, paramCallBacker.toString());
+      return null;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramAppRuntime.getApplication().getFilesDir());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramString);
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject);
+    if (localFile.exists()) {
+      try
+      {
+        JsonReader localJsonReader = new JsonReader(new FileReader(localFile));
+        return localJsonReader;
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getJSONFromLocalByStreamRead error,json_name:");
+          localStringBuilder.append(paramString);
+          QLog.e("VasUpdateUtil", 2, localStringBuilder.toString(), localThrowable);
+        }
+        localFile.delete();
+      }
+    }
+    if (paramBoolean) {
+      ((IVasQuickUpdateAdapter)QRoute.api(IVasQuickUpdateAdapter.class)).downloadItem(paramAppRuntime, 1000L, paramString, (String)localObject, paramCallBacker);
+    }
+    return null;
+  }
+  
+  public static boolean b(File paramFile, String paramString)
   {
     if (!paramFile.exists()) {
       return true;
@@ -1055,7 +1055,7 @@ public class VasUpdateUtil
         int i = 0;
         while (i < localObject.length)
         {
-          a(localObject[i], paramString);
+          b(localObject[i], paramString);
           i += 1;
         }
       }
@@ -1072,7 +1072,7 @@ public class VasUpdateUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil
  * JD-Core Version:    0.7.0.1
  */

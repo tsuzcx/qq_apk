@@ -21,7 +21,7 @@ class FileResultWatchForObserver$2
     if (!paramBoolean) {
       return;
     }
-    paramString2 = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramString2 = QFileAssistantUtils.b(this.a);
     if (paramString2 == null)
     {
       paramString1 = new StringBuilder();
@@ -38,8 +38,8 @@ class FileResultWatchForObserver$2
       QLog.i("FileResultWatchForObserver<FileAssistant>NDL", 1, paramString1.toString());
       return;
     }
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong2);
-    if (!FileResultWatchForObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantUtilFileResultWatchForObserver, paramString1))
+    paramString1 = this.a.getFileManagerDataCenter().a(paramLong2);
+    if (!FileResultWatchForObserver.a(this.b, paramString1))
     {
       paramString1 = new StringBuilder();
       paramString1.append(paramLong2);
@@ -47,7 +47,7 @@ class FileResultWatchForObserver$2
       QLog.i("FileResultWatchForObserver<FileAssistant>NDL", 1, paramString1.toString());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().b(paramString1);
+    this.a.getFileManagerEngine().g(paramString1);
     paramString1 = new StringBuilder();
     paramString1.append(paramLong2);
     paramString1.append(" transfer end, forward to old dataline");
@@ -56,7 +56,7 @@ class FileResultWatchForObserver$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.FileResultWatchForObserver.2
  * JD-Core Version:    0.7.0.1
  */

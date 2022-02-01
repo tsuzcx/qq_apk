@@ -188,14 +188,14 @@ public class EnginePackageManager
   private static String getJsPath()
   {
     String str1 = StorageUtil.getPreference().getString("downloadUrl", "mini");
-    String str2 = StorageUtil.getPreference().getString("version", "1.22.0.00008");
+    String str2 = StorageUtil.getPreference().getString("version", "1.29.0.00002");
     str1 = BaseLibManager.g().getBaseLibDir(str1, str2);
     str2 = getInnerJsPath();
     str1 = getNewestBaseLib(getTritonPath(), getNewestBaseLib(str1, str2));
     if (str1 != null) {
       return str1;
     }
-    return BaseLibManager.g().getBaseLibDir("mini", "1.22.0.00008");
+    return BaseLibManager.g().getBaseLibDir("mini", "1.29.0.00002");
   }
   
   private static Version getJsVersionByPath(String paramString)
@@ -234,7 +234,7 @@ public class EnginePackageManager
   
   private static Version getLocalTritonVersion()
   {
-    Version localVersion = getTritonVersionFromJSONStr("{\n    \"triton_info\": {\n        \"version\": \"1.8.0.74.062e92e\",\n        \"timestamp\": 1609833458180\n    }\n}");
+    Version localVersion = getTritonVersionFromJSONStr("{\n    \"triton_info\": {\n        \"version\": \"1.8.0.80.a6c77f5\",\n        \"timestamp\": 1625553030748\n    }\n}");
     GameLog localGameLog = GameLog.getInstance();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getLocalTritonVersion:");
@@ -684,7 +684,7 @@ public class EnginePackageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.EnginePackageManager
  * JD-Core Version:    0.7.0.1
  */

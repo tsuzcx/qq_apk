@@ -15,16 +15,16 @@ class LiteActivity$9
   {
     if (QLog.isColorLevel())
     {
-      String str = LiteActivity.jdField_a_of_type_JavaLangString;
+      String str = LiteActivity.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ontouch--fcc----: ");
       localStringBuilder.append(paramMotionEvent.getAction());
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    this.a.q();
+    this.a.t();
     LiteActivity.a(this.a, false);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.postDelayed(new LiteActivity.9.1(this), 200L);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.onTouch(paramView, paramMotionEvent);
+    this.a.q.postDelayed(new LiteActivity.9.1(this), 200L);
+    this.a.q.onTouch(paramView, paramMotionEvent);
     return false;
   }
 }

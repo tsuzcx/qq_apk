@@ -11,49 +11,49 @@ public final class SelectCommunityView$CommunityViewHolder
   extends CommonListAdapter.BaseListViewHolder
 {
   @NotNull
-  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private final TextView a;
   @NotNull
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final TextView b;
   @NotNull
-  private final ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private final ImageView c;
   @NotNull
-  private final TextView jdField_b_of_type_AndroidWidgetTextView;
+  private final ImageView d;
   
   public SelectCommunityView$CommunityViewHolder(@NotNull TextView paramTextView1, @NotNull TextView paramTextView2, @NotNull ImageView paramImageView1, @NotNull ImageView paramImageView2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView1;
-    this.jdField_b_of_type_AndroidWidgetTextView = paramTextView2;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView1;
-    this.jdField_b_of_type_AndroidWidgetImageView = paramImageView2;
-  }
-  
-  @NotNull
-  public final ImageView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
+    this.a = paramTextView1;
+    this.b = paramTextView2;
+    this.c = paramImageView1;
+    this.d = paramImageView2;
   }
   
   @NotNull
   public final TextView a()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  @NotNull
-  public final ImageView b()
-  {
-    return this.jdField_b_of_type_AndroidWidgetImageView;
+    return this.a;
   }
   
   @NotNull
   public final TextView b()
   {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
+    return this.b;
+  }
+  
+  @NotNull
+  public final ImageView c()
+  {
+    return this.c;
+  }
+  
+  @NotNull
+  public final ImageView d()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.selectowner.SelectCommunityView.CommunityViewHolder
  * JD-Core Version:    0.7.0.1
  */

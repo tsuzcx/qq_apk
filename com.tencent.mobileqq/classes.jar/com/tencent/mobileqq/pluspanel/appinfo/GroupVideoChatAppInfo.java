@@ -106,15 +106,15 @@ public class GroupVideoChatAppInfo
     if (QLog.isColorLevel()) {
       QLog.d("GroupVideoChatAppInfo", 2, "enterNewGroupVideo phone is calling!");
     }
-    String str = paramContext.getString(2131695712);
-    DialogUtil.a(paramContext, 230, paramContext.getString(2131695691), str, 2131690728, 2131694583, new GroupVideoChatAppInfo.7(), null).show();
+    String str = paramContext.getString(2131893471);
+    DialogUtil.a(paramContext, 230, paramContext.getString(2131893450), str, 2131887648, 2131892267, new GroupVideoChatAppInfo.7(), null).show();
     DataReport.a();
   }
   
   private static void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    String str = paramContext.getString(2131695893);
-    DialogUtil.a(paramContext, 230, paramContext.getString(2131695691), str, 2131690728, 2131695618, new GroupVideoChatAppInfo.6(), null).show();
+    String str = paramContext.getString(2131893654);
+    DialogUtil.a(paramContext, 230, paramContext.getString(2131893450), str, 2131887648, 2131893377, new GroupVideoChatAppInfo.6(), null).show();
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80053BD", "0X80053BD", 0, 0, "", "", "", "");
   }
   
@@ -128,7 +128,7 @@ public class GroupVideoChatAppInfo
       localStringBuilder.append("], uin[");
       localStringBuilder.append(paramString);
       localStringBuilder.append("], chatSession[");
-      localStringBuilder.append(paramQQAppInterface.getAVNotifyCenter().a(paramString, false));
+      localStringBuilder.append(paramQQAppInterface.getAVNotifyCenter().b(paramString, false));
       localStringBuilder.append("]");
       QLog.i("GroupVideoChatAppInfo", 4, localStringBuilder.toString());
     }
@@ -167,9 +167,9 @@ public class GroupVideoChatAppInfo
   private static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, Map<String, String> paramMap)
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(VideoController.b);
+    ((StringBuilder)localObject1).append(VideoController.aj);
     ((StringBuilder)localObject1).append(paramQQAppInterface.getCurrentAccountUin());
-    if (VideoController.d(((StringBuilder)localObject1).toString()) > 0)
+    if (VideoController.n(((StringBuilder)localObject1).toString()) > 0)
     {
       enterNewGroupVideo(paramQQAppInterface, paramContext, paramInt, paramString, false, paramBoolean, paramMap);
       return;
@@ -179,8 +179,8 @@ public class GroupVideoChatAppInfo
     Object localObject2;
     if (bool)
     {
-      localObject1 = paramContext.getString(2131695691);
-      localObject2 = paramContext.getString(2131695686);
+      localObject1 = paramContext.getString(2131893450);
+      localObject2 = paramContext.getString(2131893445);
     }
     else
     {
@@ -189,11 +189,11 @@ public class GroupVideoChatAppInfo
     Object localObject3;
     if (NetworkUtil.is3Gor4G(BaseApplication.getContext()))
     {
-      localObject2 = paramContext.getString(2131695691);
+      localObject2 = paramContext.getString(2131893450);
       if ((paramMap != null) && (TextUtils.equals((CharSequence)paramMap.get("isVideo"), "true"))) {
-        localObject1 = paramContext.getString(2131695687);
+        localObject1 = paramContext.getString(2131893446);
       } else {
-        localObject1 = paramContext.getString(2131695688);
+        localObject1 = paramContext.getString(2131893447);
       }
       localObject3 = localObject1;
     }
@@ -204,7 +204,7 @@ public class GroupVideoChatAppInfo
     }
     if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(localObject3)))
     {
-      ChatActivityUtils.a(paramQQAppInterface, paramContext, 230, (String)localObject2, localObject3, 2131695421, 2131695433, new GroupVideoChatAppInfo.4(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean, paramMap), new GroupVideoChatAppInfo.5());
+      ChatActivityUtils.a(paramQQAppInterface, paramContext, 230, (String)localObject2, localObject3, 2131893167, 2131893180, new GroupVideoChatAppInfo.4(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean, paramMap), new GroupVideoChatAppInfo.5());
       return;
     }
     if (QLog.isColorLevel()) {
@@ -217,13 +217,13 @@ public class GroupVideoChatAppInfo
     if (QLog.isColorLevel()) {
       QLog.d("GroupVideoChatAppInfo", 2, "enterNewGroupVideo is multi calling!");
     }
-    String str1 = paramContext.getString(2131695517);
+    String str1 = paramContext.getString(2131893276);
     String str2 = paramQQAppInterface.getCurrentAccountUin();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     localStringBuilder.append("");
     int i = TroopMemberUtil.a(paramQQAppInterface, str2, localStringBuilder.toString());
-    PopupDialog.a(paramContext, 230, null, str1, 2131695421, 2131695433, new GroupVideoChatAppInfo.2(paramQQAppInterface, paramContext, paramInt2, paramInt3, paramInt1, paramString, paramBoolean, paramMap), new GroupVideoChatAppInfo.3(paramQQAppInterface, paramString));
+    PopupDialog.a(paramContext, 230, null, str1, 2131893167, 2131893180, new GroupVideoChatAppInfo.2(paramQQAppInterface, paramContext, paramInt2, paramInt3, paramInt1, paramString, paramBoolean, paramMap), new GroupVideoChatAppInfo.3(paramQQAppInterface, paramString));
     paramQQAppInterface = new StringBuilder();
     paramQQAppInterface.append(paramString);
     paramQQAppInterface.append("");
@@ -237,28 +237,28 @@ public class GroupVideoChatAppInfo
   private static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
     paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    if (paramQQAppInterface.g(String.valueOf(paramString))) {
-      paramQQAppInterface.h(String.valueOf(paramString));
+    if (paramQQAppInterface.F(String.valueOf(paramString))) {
+      paramQQAppInterface.E(String.valueOf(paramString));
     }
   }
   
   private static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt2 == 1) && (paramQQAppInterface.getAVNotifyCenter().h()) && (paramInt1 == 1))
+    if ((paramInt2 == 1) && (paramQQAppInterface.getAVNotifyCenter().r()) && (paramInt1 == 1))
     {
       if (QLog.isColorLevel()) {
         QLog.d("GroupVideoChatAppInfo", 2, "check mutex of qq call and group call!");
       }
-      long l = paramQQAppInterface.getAVNotifyCenter().b();
-      paramInt1 = paramQQAppInterface.getAVNotifyCenter().b(l);
+      long l = paramQQAppInterface.getAVNotifyCenter().g();
+      paramInt1 = paramQQAppInterface.getAVNotifyCenter().e(l);
       if ((paramInt1 != paramInt3) && (paramInt1 == 10) && (paramInt3 == 2))
       {
-        if (paramQQAppInterface.getAVNotifyCenter().c())
+        if (paramQQAppInterface.getAVNotifyCenter().e())
         {
-          QQToast.a(paramContext, 2131695516, 0).b(paramContext.getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText(paramContext, 2131893275, 0).show(paramContext.getResources().getDimensionPixelSize(2131299920));
           return true;
         }
-        QQToast.a(paramContext, 2131695518, 0).b(paramContext.getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(paramContext, 2131893277, 0).show(paramContext.getResources().getDimensionPixelSize(2131299920));
         return true;
       }
     }
@@ -267,20 +267,20 @@ public class GroupVideoChatAppInfo
   
   private static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, String paramString, boolean paramBoolean, Map<String, String> paramMap, long paramLong, int paramInt2, int paramInt3)
   {
-    int i = paramQQAppInterface.getAVNotifyCenter().b();
-    int j = paramQQAppInterface.getAVNotifyCenter().c();
-    if (((j != 1) && (j != 2)) || (((i < 1) || (i > 5)) && (paramQQAppInterface.getAVNotifyCenter().e() != 1) && (paramQQAppInterface.getAVNotifyCenter().e() != 2)))
+    int i = paramQQAppInterface.getAVNotifyCenter().j();
+    int j = paramQQAppInterface.getAVNotifyCenter().k();
+    if (((j != 1) && (j != 2)) || (((i < 1) || (i > 5)) && (paramQQAppInterface.getAVNotifyCenter().t() != 1) && (paramQQAppInterface.getAVNotifyCenter().t() != 2)))
     {
-      if (((j != 3) && (j != 4)) || (((i >= 1) && (i <= 5)) || (paramQQAppInterface.getAVNotifyCenter().e() == 3) || (paramQQAppInterface.getAVNotifyCenter().e() == 4)))
+      if (((j != 3) && (j != 4)) || (((i >= 1) && (i <= 5)) || (paramQQAppInterface.getAVNotifyCenter().t() == 3) || (paramQQAppInterface.getAVNotifyCenter().t() == 4)))
       {
-        if ((paramQQAppInterface.getAVNotifyCenter().b() == paramLong) && (paramInt2 != 1))
+        if ((paramQQAppInterface.getAVNotifyCenter().g() == paramLong) && (paramInt2 != 1))
         {
           if (QLog.isColorLevel()) {
             QLog.e("GroupVideoChatAppInfo", 2, "enterNewGroupVideo-->chatUin==discussid???Why");
           }
           return true;
         }
-        if (paramQQAppInterface.getAVNotifyCenter().b() > 0L)
+        if (paramQQAppInterface.getAVNotifyCenter().g() > 0L)
         {
           a(paramQQAppInterface, paramContext, paramInt1, paramString, paramBoolean, paramMap, paramInt2, paramInt3);
           return true;
@@ -288,7 +288,7 @@ public class GroupVideoChatAppInfo
       }
       return false;
     }
-    QQToast.a(paramContext, 2131695889, 1).b(paramContext.getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(paramContext, 2131893650, 1).show(paramContext.getResources().getDimensionPixelSize(2131299920));
     QAVHrMeeting.a(paramQQAppInterface, Long.valueOf(paramString).longValue(), null);
     return true;
   }
@@ -314,12 +314,12 @@ public class GroupVideoChatAppInfo
     }
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      QQToast.a(paramContext, 2131694395, 0).b(paramContext.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(paramContext, 2131892074, 0).show(paramContext.getResources().getDimensionPixelSize(2131299920));
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005767", "0X8005767", 0, 0, "", "", "", "");
       return;
     }
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005768", "0X8005768", 0, 0, "", "", "", "");
-    if ((paramQQAppInterface.getAVNotifyCenter().a()) && (!paramQQAppInterface.isVideoChatting()))
+    if ((paramQQAppInterface.getAVNotifyCenter().c()) && (!paramQQAppInterface.isVideoChatting()))
     {
       a(paramContext);
       return;
@@ -408,7 +408,7 @@ public class GroupVideoChatAppInfo
         localObject = "openRoom";
         break label697;
       }
-      if (!paramQQAppInterface.getAVNotifyCenter().b(Long.parseLong(paramString))) {
+      if (!paramQQAppInterface.getAVNotifyCenter().c(Long.parseLong(paramString))) {
         paramMap = "openMiddlePage";
       } else {
         paramMap = "openRoom";
@@ -423,7 +423,7 @@ public class GroupVideoChatAppInfo
     paramMap = str;
     label697:
     ((IGroupVideoManager)paramQQAppInterface.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER)).a(paramContext, paramQQAppInterface.getCurrentAccountUin(), paramString, paramMap, (String)localObject);
-    paramQQAppInterface.getAVNotifyCenter().b(8, l, i);
+    paramQQAppInterface.getAVNotifyCenter().c(8, l, i);
   }
   
   public static void startGroupVideoOrVoice(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, Map<String, String> paramMap)
@@ -450,7 +450,7 @@ public class GroupVideoChatAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839114;
+    return 2130839270;
   }
   
   public int getAppID()
@@ -471,33 +471,33 @@ public class GroupVideoChatAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719738);
+    return BaseApplicationImpl.getContext().getString(2131917341);
   }
   
   void handleTroopLiveOrTroopCourseClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo, boolean paramBoolean)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int == 1)
+    if (paramSessionInfo.a == 1)
     {
-      QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      QQAppInterface localQQAppInterface = paramBaseChatPie.d;
       try
       {
-        l = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        l = Long.parseLong(paramSessionInfo.b);
       }
       catch (NumberFormatException localNumberFormatException)
       {
         QLog.d("GroupVideoChatAppInfo", 1, localNumberFormatException, new Object[0]);
         l = 0L;
       }
-      int i = UITools.b(paramSessionInfo.jdField_a_of_type_Int);
-      long l = localQQAppInterface.getAVNotifyCenter().a(i, l);
+      int i = UITools.b(paramSessionInfo.a);
+      long l = localQQAppInterface.getAVNotifyCenter().c(i, l);
       Object localObject = (TroopGagMgr)localQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER);
-      boolean bool1 = ((TroopGagMgr)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString, localQQAppInterface.getCurrentAccountUin());
-      boolean bool2 = ((TroopGagMgr)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      boolean bool3 = ((TroopGagMgr)localObject).b(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      localObject = ((TroopGagMgr)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      if ((l == 0L) && (((!bool3) && (bool1)) || ((!bool2) && (localObject != null) && (((TroopGagInfo)localObject).a > 0L))))
+      boolean bool1 = ((TroopGagMgr)localObject).a(paramSessionInfo.b, localQQAppInterface.getCurrentAccountUin());
+      boolean bool2 = ((TroopGagMgr)localObject).c(paramSessionInfo.b);
+      boolean bool3 = ((TroopGagMgr)localObject).d(paramSessionInfo.b);
+      localObject = ((TroopGagMgr)localObject).b(paramSessionInfo.b);
+      if ((l == 0L) && (((!bool3) && (bool1)) || ((!bool2) && (localObject != null) && (((TroopGagInfo)localObject).b > 0L))))
       {
-        QQToast.a(paramBaseChatPie.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131708306), 0).b(paramBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(paramBaseChatPie.e, HardCodeUtil.a(2131906096), 0).show(paramBaseChatPie.e.getResources().getDimensionPixelSize(2131299920));
         return;
       }
       paramPlusPanelViewModel.a("chat_tool_gaudio", localQQAppInterface.getCurrentAccountUin());
@@ -511,23 +511,23 @@ public class GroupVideoChatAppInfo
       }
       localHashMap.put("publicClass", localObject);
       if (paramBoolean) {
-        a(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, localHashMap);
+        a(localQQAppInterface, paramBaseChatPie.aX(), paramSessionInfo.a, paramSessionInfo.b, localHashMap);
       } else {
-        startGroupVideoOrVoice(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, localHashMap);
+        startGroupVideoOrVoice(localQQAppInterface, paramBaseChatPie.aX(), paramSessionInfo.a, paramSessionInfo.b, localHashMap);
       }
-      paramBaseChatPie.Q();
+      paramBaseChatPie.aw();
       paramPlusPanelViewModel.b(paramBaseChatPie);
-      paramBaseChatPie.a().setCanLock(false);
-      l = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      if (!localQQAppInterface.getAVNotifyCenter().b(1, l))
+      paramBaseChatPie.aX().setCanLock(false);
+      l = Long.parseLong(paramSessionInfo.b);
+      if (!localQQAppInterface.getAVNotifyCenter().f(1, l))
       {
-        paramPlusPanelViewModel = paramSessionInfo.jdField_a_of_type_JavaLangString;
+        paramPlusPanelViewModel = paramSessionInfo.b;
         paramBaseChatPie = new StringBuilder();
         paramBaseChatPie.append("");
-        paramBaseChatPie.append(TroopUtils.a(localQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString));
+        paramBaseChatPie.append(TroopUtils.a(localQQAppInterface, paramSessionInfo.b));
         ReportController.b(null, "dc00899", "Grp_video", "", "notice", "video", 0, 0, paramPlusPanelViewModel, paramBaseChatPie.toString(), "1", "");
       }
-      AIOPanelUtiles.a(localQQAppInterface, "0X8005CB5", paramSessionInfo.jdField_a_of_type_Int);
+      AIOPanelUtiles.a(localQQAppInterface, "0X8005CB5", paramSessionInfo.a);
     }
   }
   
@@ -546,7 +546,7 @@ public class GroupVideoChatAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.GroupVideoChatAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -159,11 +159,6 @@ public class CUKingCardHelper
     //   72	87	112	java/lang/Exception
   }
   
-  public static int a(String paramString)
-  {
-    return CUKingCardUtils.a(paramString);
-  }
-  
   public static CUKingCardHelper.CUKingCustomDialogInfo a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     VasWebviewUtil.a("", "wkclub", "P1", paramString, 1, 0, 0, "", "", "");
@@ -173,11 +168,11 @@ public class CUKingCardHelper
     ((StringBuilder)localObject2).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
     localObject1 = ((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 4);
     localObject2 = new CUKingCardHelper.CUKingCustomDialogInfo();
-    ((CUKingCardHelper.CUKingCustomDialogInfo)localObject2).jdField_a_of_type_JavaLangString = a(paramString);
+    ((CUKingCardHelper.CUKingCustomDialogInfo)localObject2).b = a(paramString);
     if (!((SharedPreferences)localObject1).getBoolean("guideEnable", false))
     {
       QLog.i("CUKingCardHelper", 2, "not in CUKing Card gray uin!");
-      ((CUKingCardHelper.CUKingCustomDialogInfo)localObject2).jdField_a_of_type_Int = 4;
+      ((CUKingCardHelper.CUKingCustomDialogInfo)localObject2).a = 4;
     }
     else if (((SharedPreferences)localObject1).getInt("guideToastOpen", 0) == 1)
     {
@@ -189,7 +184,7 @@ public class CUKingCardHelper
     }
     else
     {
-      ((CUKingCardHelper.CUKingCustomDialogInfo)localObject2).jdField_a_of_type_Int = 4;
+      ((CUKingCardHelper.CUKingCustomDialogInfo)localObject2).a = 4;
     }
     a(paramString, (CUKingCardHelper.CUKingCustomDialogInfo)localObject2);
     return localObject2;
@@ -202,7 +197,7 @@ public class CUKingCardHelper
       paramContext = (TelephonyManager)paramContext.getSystemService("phone");
       if (Build.VERSION.SDK_INT >= 21)
       {
-        paramString = paramContext.getClass().getMethod(paramString, a(paramString));
+        paramString = paramContext.getClass().getMethod(paramString, c(paramString));
         if (paramInt >= 0)
         {
           paramString = paramString.invoke(paramContext, new Object[] { Integer.valueOf(paramInt) });
@@ -218,19 +213,6 @@ public class CUKingCardHelper
       QLog.e("CUKingCardHelper", 1, paramContext.toString());
     }
     return null;
-  }
-  
-  public static String a(int paramInt, Context paramContext)
-  {
-    paramContext = (String)a(a(paramInt, paramContext), "getSubscriberId", paramContext);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getSubscriberId, imsi = ");
-      localStringBuilder.append(paramContext);
-      QLog.d("CUKingCardHelper", 2, localStringBuilder.toString());
-    }
-    return paramContext;
   }
   
   public static String a(String paramString)
@@ -305,7 +287,7 @@ public class CUKingCardHelper
   
   private static void a(String paramString, CUKingCardHelper.CUKingCustomDialogInfo paramCUKingCustomDialogInfo)
   {
-    int i = paramCUKingCustomDialogInfo.jdField_a_of_type_Int;
+    int i = paramCUKingCustomDialogInfo.a;
     if (i != 1) {
       if (i != 2) {
         if (i != 4) {
@@ -340,9 +322,9 @@ public class CUKingCardHelper
         paramString = str;
       }
       int i = paramSharedPreferences.getInt("toastShowTime", 2);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, paramString, i * 1000).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2, paramString, i * 1000).show();
     }
-    paramCUKingCustomDialogInfo.jdField_a_of_type_Int = 1;
+    paramCUKingCustomDialogInfo.a = 1;
   }
   
   public static boolean a(Activity paramActivity, int paramInt, CUKingCardHelper.CUKingDialogListener paramCUKingDialogListener, String paramString)
@@ -357,74 +339,40 @@ public class CUKingCardHelper
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("shouldOverrideDialog, popUpType: ");
-        localStringBuilder.append(localCUKingCustomDialogInfo.jdField_a_of_type_Int);
+        localStringBuilder.append(localCUKingCustomDialogInfo.a);
         QLog.i("CUKingCardHelper", 2, localStringBuilder.toString());
       }
-      if (localCUKingCustomDialogInfo.jdField_a_of_type_Int == 4) {
+      if (localCUKingCustomDialogInfo.a == 4) {
         return true;
       }
-      if (localCUKingCustomDialogInfo.jdField_a_of_type_Int == 1)
+      if (localCUKingCustomDialogInfo.a == 1)
       {
         if (paramCUKingDialogListener != null) {
           paramCUKingDialogListener.callback(2);
         }
         return false;
       }
-      new CUKingCardDialog(paramActivity, paramCUKingDialogListener, paramInt, paramString, localCUKingCustomDialogInfo.jdField_a_of_type_Int).show();
+      new CUKingCardDialog(paramActivity, paramCUKingDialogListener, paramInt, paramString, localCUKingCustomDialogInfo.a).show();
     }
     return false;
   }
   
-  private static Class[] a(String paramString)
+  public static int b(String paramString)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    try
+    return CUKingCardUtils.a(paramString);
+  }
+  
+  public static String b(int paramInt, Context paramContext)
+  {
+    paramContext = (String)a(a(paramInt, paramContext), "getSubscriberId", paramContext);
+    if (QLog.isColorLevel())
     {
-      Method[] arrayOfMethod = TelephonyManager.class.getDeclaredMethods();
-      int i = 0;
-      Object localObject3;
-      for (;;)
-      {
-        localObject1 = localObject2;
-        localObject3 = localObject2;
-        if (i >= arrayOfMethod.length) {
-          break;
-        }
-        localObject3 = localObject2;
-        localObject1 = localObject2;
-        if (paramString.equals(arrayOfMethod[i].getName()))
-        {
-          localObject1 = localObject2;
-          localObject2 = arrayOfMethod[i].getParameterTypes();
-          localObject3 = localObject2;
-          localObject1 = localObject2;
-          if (localObject2.length >= 1)
-          {
-            localObject1 = localObject2;
-            paramString = new StringBuilder();
-            localObject1 = localObject2;
-            paramString.append("");
-            localObject1 = localObject2;
-            paramString.append(localObject2.length);
-            localObject1 = localObject2;
-            Log.d("length:", paramString.toString());
-            return localObject2;
-          }
-        }
-        i += 1;
-        localObject2 = localObject3;
-      }
-      return localObject3;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSubscriberId, imsi = ");
+      localStringBuilder.append(paramContext);
+      QLog.d("CUKingCardHelper", 2, localStringBuilder.toString());
     }
-    catch (Exception paramString)
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("getMethodParamTypes e = ");
-      ((StringBuilder)localObject2).append(paramString);
-      QLog.e("CUKingCardHelper", 1, ((StringBuilder)localObject2).toString());
-      localObject3 = localObject1;
-    }
+    return paramContext;
   }
   
   private static void b(TrafficResultInfo paramTrafficResultInfo, Bundle paramBundle)
@@ -497,6 +445,7 @@ public class CUKingCardHelper
     ((SharedPreferences.Editor)localObject2).putString("drawerTextID", String.valueOf(paramTrafficResultInfo.iDrawerTextId));
     ((SharedPreferences.Editor)localObject2).putString("drawerUrl", paramTrafficResultInfo.sDrawerUrl);
     ((SharedPreferences.Editor)localObject2).putString("guideUrl", paramTrafficResultInfo.sGuideUrl);
+    ((SharedPreferences.Editor)localObject2).putString("sDrawerTextRuleID", paramTrafficResultInfo.sDrawerTextRuleID);
     ((SharedPreferences.Editor)localObject2).putInt("kingCardRequestInterval", paramTrafficResultInfo.iImsiInterval);
     if (paramTrafficResultInfo.popInfo != null)
     {
@@ -547,14 +496,14 @@ public class CUKingCardHelper
     int i = paramSharedPreferences.getInt("popupRateType", 0);
     if ((i != 0) && (i != 1))
     {
-      paramCUKingCustomDialogInfo.jdField_a_of_type_Int = 4;
+      paramCUKingCustomDialogInfo.a = 4;
       return;
     }
     i = paramSharedPreferences.getInt("popupRate", 0);
     if ((paramSharedPreferences.getInt("kingCard", 0) != 1) && (paramSharedPreferences.getInt("kingCard", 0) != 1) && (paramSharedPreferences.getInt("kingCard2", 0) != 1)) {
-      paramCUKingCustomDialogInfo.jdField_a_of_type_Int = 2;
+      paramCUKingCustomDialogInfo.a = 2;
     } else {
-      paramCUKingCustomDialogInfo.jdField_a_of_type_Int = 3;
+      paramCUKingCustomDialogInfo.a = 3;
     }
     long l = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder();
@@ -568,16 +517,68 @@ public class CUKingCardHelper
     localStringBuilder.append(paramString);
     paramString = localStringBuilder.toString();
     if (l - paramSharedPreferences.getLong(paramString, 0L) < i * 1000) {
-      paramCUKingCustomDialogInfo.jdField_a_of_type_Int = 4;
+      paramCUKingCustomDialogInfo.a = 4;
     }
-    if (paramCUKingCustomDialogInfo.jdField_a_of_type_Int != 4) {
+    if (paramCUKingCustomDialogInfo.a != 4) {
       paramSharedPreferences.edit().putLong(paramString, l).commit();
+    }
+  }
+  
+  private static Class[] c(String paramString)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    try
+    {
+      Method[] arrayOfMethod = TelephonyManager.class.getDeclaredMethods();
+      int i = 0;
+      Object localObject3;
+      for (;;)
+      {
+        localObject1 = localObject2;
+        localObject3 = localObject2;
+        if (i >= arrayOfMethod.length) {
+          break;
+        }
+        localObject3 = localObject2;
+        localObject1 = localObject2;
+        if (paramString.equals(arrayOfMethod[i].getName()))
+        {
+          localObject1 = localObject2;
+          localObject2 = arrayOfMethod[i].getParameterTypes();
+          localObject3 = localObject2;
+          localObject1 = localObject2;
+          if (localObject2.length >= 1)
+          {
+            localObject1 = localObject2;
+            paramString = new StringBuilder();
+            localObject1 = localObject2;
+            paramString.append("");
+            localObject1 = localObject2;
+            paramString.append(localObject2.length);
+            localObject1 = localObject2;
+            Log.d("length:", paramString.toString());
+            return localObject2;
+          }
+        }
+        i += 1;
+        localObject2 = localObject3;
+      }
+      return localObject3;
+    }
+    catch (Exception paramString)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getMethodParamTypes e = ");
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.e("CUKingCardHelper", 1, ((StringBuilder)localObject2).toString());
+      localObject3 = localObject1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.CUKingCardHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mtt.hippy.HippyRootView;
 public class l
   implements m
 {
-  j a;
+  final j a;
   
   l(HippyGlobalConfigs paramHippyGlobalConfigs, String paramString)
   {
@@ -24,7 +24,7 @@ public class l
   
   public void a(String paramString, g paramg)
   {
-    this.a.a(new l.1(this, paramg), paramString, null);
+    this.a.a(new l.1(this, paramg), paramString);
   }
   
   public void a(Throwable paramThrowable) {}
@@ -33,7 +33,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.l
  * JD-Core Version:    0.7.0.1
  */

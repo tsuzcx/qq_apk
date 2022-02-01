@@ -43,10 +43,10 @@ class ReadInJoyCommentSSOModule$2
         paramInt = j;
         try
         {
-          if (ReadInJoyCommentSSOModule.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentSSOModule) == null) {
+          if (ReadInJoyCommentSSOModule.a(this.d) == null) {
             break label211;
           }
-          ReadInJoyCommentSSOModule.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentSSOModule).a(true, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData, this.jdField_a_of_type_Int, this.b);
+          ReadInJoyCommentSSOModule.a(this.d).a(true, this.a, this.b, this.c);
           paramInt = j;
         }
         catch (Exception paramBundle) {}
@@ -70,14 +70,14 @@ class ReadInJoyCommentSSOModule$2
     label209:
     paramInt = 0;
     label211:
-    if ((paramInt == 0) && (ReadInJoyCommentSSOModule.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentSSOModule) != null)) {
-      ReadInJoyCommentSSOModule.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentSSOModule).a(false, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData, this.jdField_a_of_type_Int, this.b);
+    if ((paramInt == 0) && (ReadInJoyCommentSSOModule.a(this.d) != null)) {
+      ReadInJoyCommentSSOModule.a(this.d).a(false, this.a, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentSSOModule.2
  * JD-Core Version:    0.7.0.1
  */

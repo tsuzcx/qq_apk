@@ -33,13 +33,13 @@ public class RIJUGJsonUtils
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      Object localObject = (QQAppInterface)RIJQQAppInterfaceUtil.a();
+      Object localObject = (QQAppInterface)RIJQQAppInterfaceUtil.e();
       localJSONObject.put("pos_id", 100402);
       localJSONObject.put("uin", ((QQAppInterface)localObject).getAccount());
       localJSONObject.put("imei", MobileInfoUtil.getImei());
       localJSONObject.put("Qom", UserAction.getQIMEI());
       localJSONObject.put("platform", "A");
-      localJSONObject.put("qqver", "8.7.0");
+      localJSONObject.put("qqver", "8.8.17");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(HttpUtil.getNetWorkType());
       localStringBuilder.append("");
@@ -48,10 +48,10 @@ public class RIJUGJsonUtils
       localJSONObject.put("iUserKeyType", 6);
       localJSONObject.put("req_ext", URLEncoder.encode(URLEncoder.encode(b())));
       localObject = new JSONArray();
-      if (!PackageUtil.a(BaseApplicationImpl.getContext(), "com.tencent.reading").equals("0")) {
+      if (!PackageUtil.b(BaseApplicationImpl.getContext(), "com.tencent.reading").equals("0")) {
         ((JSONArray)localObject).put("1");
       }
-      if (!PackageUtil.a(BaseApplicationImpl.getContext(), "com.tencent.weishi").equals("0")) {
+      if (!PackageUtil.b(BaseApplicationImpl.getContext(), "com.tencent.weishi").equals("0")) {
         ((JSONArray)localObject).put("3");
       }
       localJSONObject.put("app_list", localObject);
@@ -70,7 +70,7 @@ public class RIJUGJsonUtils
     {
       try
       {
-        Object localObject1 = RIJQQAppInterfaceUtil.b();
+        Object localObject1 = RIJQQAppInterfaceUtil.f();
         if ((localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
           localJSONObject.put("guid", localObject1);
         }
@@ -121,8 +121,8 @@ public class RIJUGJsonUtils
     ((StringBuilder)localObject).append(j);
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("PR=QQ&PP=com.tencent.mobileqq&PPVN=8.7.0.5295&CO=SYS&PL=ADR&LCID=");
-    localStringBuilder.append(AppSetting.d());
+    localStringBuilder.append("PR=QQ&PP=com.tencent.mobileqq&PPVN=8.8.17.5770&CO=SYS&PL=ADR&LCID=");
+    localStringBuilder.append(AppSetting.f());
     localStringBuilder.append("&RL=");
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("&DE=");
@@ -136,7 +136,7 @@ public class RIJUGJsonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.RIJUGJsonUtils
  * JD-Core Version:    0.7.0.1
  */

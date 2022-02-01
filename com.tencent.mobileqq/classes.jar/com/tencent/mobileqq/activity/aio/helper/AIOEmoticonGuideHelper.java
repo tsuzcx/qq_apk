@@ -27,63 +27,16 @@ import mqq.os.MqqHandler;
 public class AIOEmoticonGuideHelper
   implements Handler.Callback, View.OnClickListener, IHelper, ILifeCycleHelper
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean jdField_a_of_type_ComTencentMobileqqConfigBusinessQQSysAndEmojiConfProcessor$SystemAndEmojiConfBean;
-  private EmoticonGuideBubbleView jdField_a_of_type_ComTencentMobileqqEmosmViewEmoticonGuideBubbleView;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private BaseChatPie a;
+  private EmoticonGuideBubbleView b;
+  private final MqqHandler c;
+  private QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean d;
   
   public AIOEmoticonGuideHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
-    paramBaseChatPie.b().a().a(this);
-  }
-  
-  private void a(QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean paramSystemAndEmojiConfBean)
-  {
-    if (paramSystemAndEmojiConfBean == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
-    {
-      if (!a(paramSystemAndEmojiConfBean)) {
-        return;
-      }
-      if (AIOEmoticonUIHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b()) == null) {
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("aio_emoticon_guide.helper", 2, "realShowGuideBubble start.");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQSysAndEmojiConfProcessor$SystemAndEmojiConfBean = paramSystemAndEmojiConfBean;
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewEmoticonGuideBubbleView == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("aio_emoticon_guide.helper", 2, "showGuideBubble  mGuideBubbleView is new create.");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqEmosmViewEmoticonGuideBubbleView = new EmoticonGuideBubbleView(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext);
-      }
-      Object localObject = paramSystemAndEmojiConfBean.a.a;
-      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        localObject = paramSystemAndEmojiConfBean.a.b;
-      }
-      boolean bool = ThemeUtil.isNowThemeIsSimple(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null);
-      if (!this.jdField_a_of_type_ComTencentMobileqqEmosmViewEmoticonGuideBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout, (String)localObject, paramSystemAndEmojiConfBean.a.e, paramSystemAndEmojiConfBean.a.f, bool)) {
-        return;
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4C", "0X800AD4C", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewEmoticonGuideBubbleView.setOnClickListener(this);
-      SharedPreUtils.a("key_show_emoticon_guide", Boolean.valueOf(false));
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-      localObject = this.jdField_a_of_type_MqqOsMqqHandler;
-      long l;
-      if (paramSystemAndEmojiConfBean.a.g <= 0) {
-        l = 3000L;
-      } else {
-        l = paramSystemAndEmojiConfBean.a.g * 1000;
-      }
-      ((MqqHandler)localObject).sendEmptyMessageDelayed(1, l);
-    }
+    this.a = paramBaseChatPie;
+    this.c = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
+    paramBaseChatPie.bv().d().a(this);
   }
   
   private boolean a(QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean paramSystemAndEmojiConfBean)
@@ -93,19 +46,66 @@ public class AIOEmoticonGuideHelper
       return false;
     }
     boolean bool1 = bool2;
-    if (((Boolean)SharedPreUtils.a("key_show_emoticon_guide", Boolean.valueOf(true))).booleanValue())
+    if (((Boolean)SharedPreUtils.c("key_show_emoticon_guide", Boolean.valueOf(true))).booleanValue())
     {
       bool1 = bool2;
-      if (paramSystemAndEmojiConfBean.a.b()) {
+      if (paramSystemAndEmojiConfBean.n.b()) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
+  private void b(QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean paramSystemAndEmojiConfBean)
+  {
+    if (paramSystemAndEmojiConfBean == null) {
+      return;
+    }
+    if (this.a != null)
+    {
+      if (!a(paramSystemAndEmojiConfBean)) {
+        return;
+      }
+      if (AIOEmoticonUIHelper.a(this.a.bv()) == null) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("aio_emoticon_guide.helper", 2, "realShowGuideBubble start.");
+      }
+      this.d = paramSystemAndEmojiConfBean;
+      if (this.b == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("aio_emoticon_guide.helper", 2, "showGuideBubble  mGuideBubbleView is new create.");
+        }
+        this.b = new EmoticonGuideBubbleView(this.a.e);
+      }
+      Object localObject = paramSystemAndEmojiConfBean.n.c;
+      if (ThemeUtil.isNowThemeIsNight(this.a.d, false, null)) {
+        localObject = paramSystemAndEmojiConfBean.n.d;
+      }
+      boolean bool = ThemeUtil.isNowThemeIsSimple(this.a.d, false, null);
+      if (!this.b.a(this.a.bl(), this.a.W, (String)localObject, paramSystemAndEmojiConfBean.n.h, paramSystemAndEmojiConfBean.n.i, bool)) {
+        return;
+      }
+      ReportController.b(this.a.d, "dc00898", "", "", "0X800AD4C", "0X800AD4C", 0, 0, "", "", "", "");
+      this.b.setOnClickListener(this);
+      SharedPreUtils.a("key_show_emoticon_guide", Boolean.valueOf(false));
+      this.c.removeCallbacksAndMessages(null);
+      localObject = this.c;
+      long l;
+      if (paramSystemAndEmojiConfBean.n.j <= 0) {
+        l = 3000L;
+      } else {
+        l = paramSystemAndEmojiConfBean.n.j * 1000;
+      }
+      ((MqqHandler)localObject).sendEmptyMessageDelayed(1, l);
+    }
+  }
+  
   public void a()
   {
-    if (!((Boolean)SharedPreUtils.a("key_show_emoticon_guide", Boolean.valueOf(true))).booleanValue()) {
+    if (!((Boolean)SharedPreUtils.c("key_show_emoticon_guide", Boolean.valueOf(true))).booleanValue()) {
       return;
     }
     ThreadManager.getFileThreadHandler().post(new AIOEmoticonGuideHelper.1(this));
@@ -113,17 +113,17 @@ public class AIOEmoticonGuideHelper
   
   public void b()
   {
-    EmoticonGuideBubbleView localEmoticonGuideBubbleView = this.jdField_a_of_type_ComTencentMobileqqEmosmViewEmoticonGuideBubbleView;
-    if ((localEmoticonGuideBubbleView != null) && (localEmoticonGuideBubbleView.getVisibility() == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null))
+    EmoticonGuideBubbleView localEmoticonGuideBubbleView = this.b;
+    if ((localEmoticonGuideBubbleView != null) && (localEmoticonGuideBubbleView.getVisibility() == 0) && (this.a != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("aio_emoticon_guide.helper", 2, "removeGuideBubble ");
       }
-      this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQSysAndEmojiConfProcessor$SystemAndEmojiConfBean = null;
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewEmoticonGuideBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+      this.d = null;
+      this.b.a(this.a.bl());
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewEmoticonGuideBubbleView = null;
+    this.c.removeCallbacksAndMessages(null);
+    this.b = null;
   }
   
   public String getTag()
@@ -139,7 +139,7 @@ public class AIOEmoticonGuideHelper
       return true;
     }
     if (paramMessage.what == 2) {
-      a((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)paramMessage.obj);
+      b((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)paramMessage.obj);
     }
     return true;
   }
@@ -151,24 +151,24 @@ public class AIOEmoticonGuideHelper
   
   public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    Object localObject = this.a;
     if (localObject != null)
     {
-      localObject = AIOEmoticonUIHelper.a(((BaseChatPie)localObject).b());
+      localObject = AIOEmoticonUIHelper.a(((BaseChatPie)localObject).bv());
       if (localObject != null)
       {
-        QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean localSystemAndEmojiConfBean = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQSysAndEmojiConfProcessor$SystemAndEmojiConfBean;
+        QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean localSystemAndEmojiConfBean = this.d;
         if (localSystemAndEmojiConfBean != null)
         {
-          int i = localSystemAndEmojiConfBean.a.c;
-          int k = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQQSysAndEmojiConfProcessor$SystemAndEmojiConfBean.a.d;
+          int i = localSystemAndEmojiConfBean.n.e;
+          int k = this.d.n.f;
           int j;
           if (k == 1)
           {
             j = QQSysFaceUtil.convertToLocal(i);
             i = j;
             if (!QQSysFaceUtil.isValidFaceId(j)) {
-              break label168;
+              break label170;
             }
           }
           else if (k == 2)
@@ -176,7 +176,7 @@ public class AIOEmoticonGuideHelper
             j = QQEmojiUtil.getEmojiLocalId(i);
             i = j;
             if (!QQEmojiUtil.isValidEmojiId(j)) {
-              break label168;
+              break label170;
             }
           }
           else
@@ -185,16 +185,16 @@ public class AIOEmoticonGuideHelper
           }
           if (i != -1)
           {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4D", "0X800AD4D", 0, 0, "", "", "", "");
+            ReportController.b(this.a.d, "dc00898", "", "", "0X800AD4D", "0X800AD4D", 0, 0, "", "", "", "");
             ((IEmoticonMainPanel)localObject).switchSystemEmojiTabLocationPos(k, i);
           }
           b();
-          break label168;
+          break label170;
         }
       }
       b();
     }
-    label168:
+    label170:
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
@@ -208,7 +208,7 @@ public class AIOEmoticonGuideHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOEmoticonGuideHelper
  * JD-Core Version:    0.7.0.1
  */

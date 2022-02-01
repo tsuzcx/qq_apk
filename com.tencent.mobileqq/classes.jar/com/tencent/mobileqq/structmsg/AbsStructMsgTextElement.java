@@ -25,89 +25,80 @@ public abstract class AbsStructMsgTextElement
   extends AbsStructMsgElement
   implements View.OnClickListener
 {
-  private static int o = 11;
-  protected boolean a;
-  protected String ac;
-  protected String ad;
-  protected String ae;
-  protected String af;
-  protected String ag;
-  protected String ah;
-  public String ai;
-  protected String aj;
-  protected String ak;
-  protected String al;
-  public String am;
-  protected boolean b;
+  private static int aM = 11;
+  public String aA;
+  protected String aB;
+  protected String aC;
+  protected String aD;
+  protected boolean aE = false;
+  protected boolean aF = false;
+  public String aG;
+  protected String au;
+  protected String av;
+  protected String aw;
+  protected String ax;
+  protected String ay;
+  protected String az;
   
   public AbsStructMsgTextElement()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = o;
+    this.a = aM;
   }
   
   public AbsStructMsgTextElement(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = o;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.ai = paramString1;
-  }
-  
-  protected TextUtils.TruncateAt a()
-  {
-    return TextUtils.TruncateAt.END;
+    this.a = aM;
+    this.b = paramString2;
+    this.aA = paramString1;
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    if ((paramView != null) && (a().isInstance(paramView)))
+    if ((paramView != null) && (c().isInstance(paramView)))
     {
       paramView = (TextView)paramView;
     }
     else
     {
       paramView = a(paramContext);
-      paramView.setId(c());
+      paramView.setId(f());
     }
     paramView.setTag(this);
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.aF) {
       paramView.setSingleLine(true);
-    } else if (!this.jdField_a_of_type_Boolean) {
-      paramView.setMaxLines(b());
+    } else if (!this.aE) {
+      paramView.setMaxLines(d());
     }
-    if ((this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {
-      paramView.setEllipsize(a());
+    if ((this.aF) || (!this.aE)) {
+      paramView.setEllipsize(g());
     }
     paramContext = a(paramContext.getResources());
     if (paramContext != null)
     {
-      paramView.setTextColor(paramContext.jdField_a_of_type_Int);
+      paramView.setTextColor(paramContext.a);
       paramView.requestLayout();
-      paramView.setTypeface(Typeface.DEFAULT, paramContext.jdField_b_of_type_Int);
+      paramView.setTypeface(Typeface.DEFAULT, paramContext.b);
       paramView.setTextSize(paramContext.c);
-      paramView.setLineSpacing(AIOUtils.b(d() * 1.0F / 2.0F, paramView.getResources()), 1.0F);
-      if (paramContext.jdField_a_of_type_Boolean == true) {
+      paramView.setLineSpacing(AIOUtils.b(h() * 1.0F / 2.0F, paramView.getResources()), 1.0F);
+      if (paramContext.h == true) {
         paramView.getPaint().setFlags(8);
       }
-      if (paramContext.jdField_b_of_type_Boolean == true) {
+      if (paramContext.j == true) {
         paramView.getPaint().setFlags(16);
       }
       boolean bool = false;
       if (paramBundle != null) {
         bool = paramBundle.getBoolean("pre_dialog", false);
       }
-      if ((bool) && (!TextUtils.isEmpty(this.am))) {
-        paramContext.jdField_a_of_type_JavaLangString = this.am;
+      if ((bool) && (!TextUtils.isEmpty(this.aG))) {
+        paramContext.e = this.aG;
       }
-      if ((paramContext.jdField_b_of_type_JavaLangString != null) && (!paramContext.jdField_b_of_type_JavaLangString.equals("")) && (paramContext.jdField_b_of_type_JavaLangString.trim().equals("1")))
+      if ((paramContext.i != null) && (!paramContext.i.equals("")) && (paramContext.i.trim().equals("1")))
       {
-        paramView.setText(Html.fromHtml(paramContext.jdField_a_of_type_JavaLangString));
+        paramView.setText(Html.fromHtml(paramContext.e));
         return paramView;
       }
-      paramView.setText(paramContext.jdField_a_of_type_JavaLangString);
+      paramView.setText(paramContext.e);
       return paramView;
     }
     paramView.setText("");
@@ -116,7 +107,7 @@ public abstract class AbsStructMsgTextElement
   
   public TextView a(Context paramContext)
   {
-    if (StructMsgItemTitle.TitleTextView.class.isAssignableFrom(a())) {
+    if (StructMsgItemTitle.TitleTextView.class.isAssignableFrom(c())) {
       return new StructMsgItemTitle.TitleTextView(paramContext);
     }
     return new EllipsizingTextView(paramContext, null);
@@ -127,18 +118,18 @@ public abstract class AbsStructMsgTextElement
     paramResources = new AbsStructMsgTextElement.RichText();
     try
     {
-      if (!TextUtils.isEmpty(this.ad))
+      if (!TextUtils.isEmpty(this.av))
       {
-        paramResources.jdField_a_of_type_Int = Color.parseColor(this.ad);
+        paramResources.a = Color.parseColor(this.av);
       }
       else
       {
-        if (TextUtils.isEmpty(this.ac)) {
-          i = e();
+        if (TextUtils.isEmpty(this.au)) {
+          i = i();
         } else {
-          i = Color.parseColor(this.ac);
+          i = Color.parseColor(this.au);
         }
-        paramResources.jdField_a_of_type_Int = i;
+        paramResources.a = i;
       }
     }
     catch (Exception localException1)
@@ -147,16 +138,16 @@ public abstract class AbsStructMsgTextElement
       label66:
       break label66;
     }
-    paramResources.jdField_a_of_type_Int = e();
+    paramResources.a = i();
     label136:
     try
     {
-      if (TextUtils.isEmpty(this.ae)) {
-        i = g();
+      if (TextUtils.isEmpty(this.aw)) {
+        i = n();
       } else {
-        i = Integer.parseInt(this.ae);
+        i = Integer.parseInt(this.aw);
       }
-      paramResources.jdField_b_of_type_Int = i;
+      paramResources.b = i;
     }
     catch (Exception localException2)
     {
@@ -165,10 +156,10 @@ public abstract class AbsStructMsgTextElement
     }
     try
     {
-      if (TextUtils.isEmpty(this.aj)) {
+      if (TextUtils.isEmpty(this.aB)) {
         i = 0;
       } else {
-        i = Integer.parseInt(this.aj);
+        i = Integer.parseInt(this.aB);
       }
       paramResources.d = i;
     }
@@ -177,28 +168,28 @@ public abstract class AbsStructMsgTextElement
       break label136;
     }
     paramResources.d = 0;
-    paramResources.jdField_a_of_type_Boolean = false;
-    if ((paramResources.jdField_b_of_type_Int < 0) || (paramResources.jdField_b_of_type_Int >= 4))
+    paramResources.h = false;
+    if ((paramResources.b < 0) || (paramResources.b >= 4))
     {
-      if (paramResources.jdField_b_of_type_Int == 4) {
-        paramResources.jdField_a_of_type_Boolean = true;
-      } else if (paramResources.jdField_b_of_type_Int == 5) {
-        paramResources.jdField_b_of_type_Boolean = true;
+      if (paramResources.b == 4) {
+        paramResources.h = true;
+      } else if (paramResources.b == 5) {
+        paramResources.j = true;
       }
-      paramResources.jdField_b_of_type_Int = g();
+      paramResources.b = n();
     }
     try
     {
-      if (!TextUtils.isEmpty(this.ag))
+      if (!TextUtils.isEmpty(this.ay))
       {
-        paramResources.c = Integer.parseInt(this.ag);
+        paramResources.c = Integer.parseInt(this.ay);
       }
       else
       {
-        if (TextUtils.isEmpty(this.af)) {
-          i = f();
+        if (TextUtils.isEmpty(this.ax)) {
+          i = j();
         } else {
-          i = Integer.parseInt(this.af);
+          i = Integer.parseInt(this.ax);
         }
         paramResources.c = i;
       }
@@ -209,64 +200,54 @@ public abstract class AbsStructMsgTextElement
       break label253;
     }
     if (paramResources.c < 1) {
-      paramResources.c = f();
+      paramResources.c = j();
     }
     paramResources.c /= 2;
-    if (TextUtils.isEmpty(b())) {
+    if (TextUtils.isEmpty(e())) {
       return null;
     }
-    paramResources.jdField_a_of_type_JavaLangString = b();
-    paramResources.jdField_b_of_type_JavaLangString = this.ah;
+    paramResources.e = e();
+    paramResources.i = this.az;
     return paramResources;
-  }
-  
-  protected Class<? extends TextView> a()
-  {
-    return TextView.class;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
   }
   
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.a == 1)
     {
-      this.ai = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.aA = MessageUtils.a(paramObjectInput.readUTF(), false);
       return;
     }
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.a == 2)
     {
-      this.ac = MessageUtils.a(paramObjectInput.readUTF(), false);
-      this.ae = MessageUtils.a(paramObjectInput.readUTF(), false);
-      this.af = MessageUtils.a(paramObjectInput.readUTF(), false);
-      this.ai = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.au = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.aw = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.ax = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.aA = MessageUtils.a(paramObjectInput.readUTF(), false);
       return;
     }
-    if (this.jdField_a_of_type_Int == 3)
+    if (this.a == 3)
     {
-      this.ac = MessageUtils.a(paramObjectInput.readUTF(), false);
-      this.ae = MessageUtils.a(paramObjectInput.readUTF(), false);
-      this.af = MessageUtils.a(paramObjectInput.readUTF(), false);
-      this.ai = MessageUtils.a(paramObjectInput.readUTF(), false);
-      this.ah = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.au = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.aw = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.ax = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.aA = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.az = MessageUtils.a(paramObjectInput.readUTF(), false);
       return;
     }
-    if (this.jdField_a_of_type_Int >= 4)
+    if (this.a >= 4)
     {
-      this.ac = MessageUtils.a(paramObjectInput.readUTF(), false);
-      this.ae = MessageUtils.a(paramObjectInput.readUTF(), false);
-      this.af = MessageUtils.a(paramObjectInput.readUTF(), false);
-      this.ai = MessageUtils.a(paramObjectInput.readUTF(), false);
-      this.ah = MessageUtils.a(paramObjectInput.readUTF(), false);
-      this.aj = MessageUtils.a(paramObjectInput.readUTF(), false);
-      if (this.jdField_a_of_type_Int >= 11)
+      this.au = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.aw = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.ax = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.aA = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.az = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.aB = MessageUtils.a(paramObjectInput.readUTF(), false);
+      if (this.a >= 11)
       {
-        this.ak = MessageUtils.a(paramObjectInput.readUTF(), false);
-        this.al = MessageUtils.a(paramObjectInput.readUTF(), false);
+        this.aC = MessageUtils.a(paramObjectInput.readUTF(), false);
+        this.aD = MessageUtils.a(paramObjectInput.readUTF(), false);
       }
     }
   }
@@ -274,73 +255,73 @@ public abstract class AbsStructMsgTextElement
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     Object localObject1 = "";
     Object localObject2;
     if (i == 1)
     {
-      localObject2 = this.ai;
+      localObject2 = this.aA;
       if (localObject2 != null) {
         localObject1 = MessageUtils.a((String)localObject2, false);
       }
       paramObjectOutput.writeUTF((String)localObject1);
       return;
     }
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.a == 2)
     {
-      String str = this.ac;
+      String str = this.au;
       localObject2 = str;
       if (str == null) {
         localObject2 = "";
       }
       paramObjectOutput.writeUTF((String)localObject2);
-      str = this.ae;
+      str = this.aw;
       localObject2 = str;
       if (str == null) {
         localObject2 = "";
       }
       paramObjectOutput.writeUTF((String)localObject2);
-      str = this.af;
+      str = this.ax;
       localObject2 = str;
       if (str == null) {
         localObject2 = "";
       }
       paramObjectOutput.writeUTF((String)localObject2);
-      localObject2 = this.ai;
+      localObject2 = this.aA;
       if (localObject2 != null) {
         localObject1 = MessageUtils.a((String)localObject2, false);
       }
       paramObjectOutput.writeUTF((String)localObject1);
       return;
     }
-    if (this.jdField_a_of_type_Int == 3)
+    if (this.a == 3)
     {
-      localObject2 = this.ac;
+      localObject2 = this.au;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
       paramObjectOutput.writeUTF((String)localObject1);
-      localObject2 = this.ae;
+      localObject2 = this.aw;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
       paramObjectOutput.writeUTF((String)localObject1);
-      localObject2 = this.af;
+      localObject2 = this.ax;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
       paramObjectOutput.writeUTF((String)localObject1);
-      localObject1 = this.ai;
+      localObject1 = this.aA;
       if (localObject1 == null) {
         localObject1 = "";
       } else {
         localObject1 = MessageUtils.a((String)localObject1, false);
       }
       paramObjectOutput.writeUTF((String)localObject1);
-      localObject2 = this.ah;
+      localObject2 = this.az;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
@@ -348,54 +329,54 @@ public abstract class AbsStructMsgTextElement
       paramObjectOutput.writeUTF((String)localObject1);
       return;
     }
-    if (this.jdField_a_of_type_Int >= 4)
+    if (this.a >= 4)
     {
-      localObject2 = this.ac;
+      localObject2 = this.au;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
       paramObjectOutput.writeUTF((String)localObject1);
-      localObject2 = this.ae;
+      localObject2 = this.aw;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
       paramObjectOutput.writeUTF((String)localObject1);
-      localObject2 = this.af;
+      localObject2 = this.ax;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
       paramObjectOutput.writeUTF((String)localObject1);
-      localObject1 = this.ai;
+      localObject1 = this.aA;
       if (localObject1 == null) {
         localObject1 = "";
       } else {
         localObject1 = MessageUtils.a((String)localObject1, false);
       }
       paramObjectOutput.writeUTF((String)localObject1);
-      localObject2 = this.ah;
+      localObject2 = this.az;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
       paramObjectOutput.writeUTF((String)localObject1);
-      localObject2 = this.aj;
+      localObject2 = this.aB;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
       paramObjectOutput.writeUTF((String)localObject1);
-      if (this.jdField_a_of_type_Int >= 11)
+      if (this.a >= 11)
       {
-        localObject2 = this.ak;
+        localObject2 = this.aC;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
         paramObjectOutput.writeUTF((String)localObject1);
-        localObject2 = this.al;
+        localObject2 = this.aD;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
@@ -403,52 +384,42 @@ public abstract class AbsStructMsgTextElement
         paramObjectOutput.writeUTF((String)localObject1);
       }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if ((paramString != null) && (!paramString.equals("")))
-    {
-      this.ai = StringUtil.f(paramString);
-      return;
-    }
-    this.ai = paramString;
   }
   
   public void a(XmlSerializer paramXmlSerializer)
   {
-    paramXmlSerializer.startTag(null, this.jdField_a_of_type_JavaLangString);
-    if (this.ai != null)
+    paramXmlSerializer.startTag(null, this.b);
+    if (this.aA != null)
     {
-      if (!TextUtils.isEmpty(this.af)) {
-        paramXmlSerializer.attribute(null, "size", this.af);
+      if (!TextUtils.isEmpty(this.ax)) {
+        paramXmlSerializer.attribute(null, "size", this.ax);
       }
-      if (!TextUtils.isEmpty(this.ac)) {
-        paramXmlSerializer.attribute(null, "color", this.ac);
+      if (!TextUtils.isEmpty(this.au)) {
+        paramXmlSerializer.attribute(null, "color", this.au);
       }
-      if (!TextUtils.isEmpty(this.ae)) {
-        paramXmlSerializer.attribute(null, "style", this.ae);
+      if (!TextUtils.isEmpty(this.aw)) {
+        paramXmlSerializer.attribute(null, "style", this.aw);
       }
-      if (!TextUtils.isEmpty(this.ah)) {
-        paramXmlSerializer.attribute(null, "html", this.ah);
+      if (!TextUtils.isEmpty(this.az)) {
+        paramXmlSerializer.attribute(null, "html", this.az);
       }
-      if (!TextUtils.isEmpty(this.aj)) {
-        paramXmlSerializer.attribute(null, "type", this.aj);
+      if (!TextUtils.isEmpty(this.aB)) {
+        paramXmlSerializer.attribute(null, "type", this.aB);
       }
-      if (!TextUtils.isEmpty(this.ak)) {
-        paramXmlSerializer.attribute(null, "maxLines", this.ak);
+      if (!TextUtils.isEmpty(this.aC)) {
+        paramXmlSerializer.attribute(null, "maxLines", this.aC);
       }
-      if (!TextUtils.isEmpty(this.al)) {
-        paramXmlSerializer.attribute(null, "lineSpace", this.al);
+      if (!TextUtils.isEmpty(this.aD)) {
+        paramXmlSerializer.attribute(null, "lineSpace", this.aD);
       }
-      paramXmlSerializer.text(this.ai);
+      paramXmlSerializer.text(this.aA);
     }
-    paramXmlSerializer.endTag(null, this.jdField_a_of_type_JavaLangString);
+    paramXmlSerializer.endTag(null, this.b);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.aF = paramBoolean;
   }
   
   public boolean a(StructMsgNode paramStructMsgNode)
@@ -456,23 +427,43 @@ public abstract class AbsStructMsgTextElement
     if (paramStructMsgNode == null) {
       return true;
     }
-    this.ac = paramStructMsgNode.a("color");
-    this.ae = paramStructMsgNode.a("style");
-    this.af = paramStructMsgNode.a("size");
-    this.ai = MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false);
-    this.ah = paramStructMsgNode.a("html");
-    this.aj = paramStructMsgNode.a("type");
-    this.ak = paramStructMsgNode.a("maxLines");
-    this.al = paramStructMsgNode.a("lineSpace");
+    this.au = paramStructMsgNode.a("color");
+    this.aw = paramStructMsgNode.a("style");
+    this.ax = paramStructMsgNode.a("size");
+    this.aA = MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false);
+    this.az = paramStructMsgNode.a("html");
+    this.aB = paramStructMsgNode.a("type");
+    this.aC = paramStructMsgNode.a("maxLines");
+    this.aD = paramStructMsgNode.a("lineSpace");
     return true;
   }
   
-  public int b()
+  public void b(String paramString)
   {
-    if (!TextUtils.isEmpty(this.ak)) {}
+    if ((paramString != null) && (!paramString.equals("")))
+    {
+      this.aA = StringUtil.toDBC(paramString);
+      return;
+    }
+    this.aA = paramString;
+  }
+  
+  protected Class<? extends TextView> c()
+  {
+    return TextView.class;
+  }
+  
+  public void c(String paramString)
+  {
+    this.av = paramString;
+  }
+  
+  public int d()
+  {
+    if (!TextUtils.isEmpty(this.aC)) {}
     try
     {
-      int i = Integer.parseInt(this.ak);
+      int i = Integer.parseInt(this.aC);
       return i;
     }
     catch (Exception localException)
@@ -483,40 +474,50 @@ public abstract class AbsStructMsgTextElement
     return 2;
   }
   
-  public String b()
+  public void d(String paramString)
   {
-    String str2 = this.ai;
+    this.ay = paramString;
+  }
+  
+  public String e()
+  {
+    String str2 = this.aA;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    this.ai = str1;
-    return this.ai;
+    this.aA = str1;
+    return this.aA;
   }
   
-  public void b(String paramString)
+  public void e(String paramString)
   {
-    this.ad = paramString;
+    this.aG = paramString;
   }
   
-  protected abstract int c();
+  protected abstract int f();
   
-  public String c()
+  public void f(String paramString)
   {
-    return this.af;
+    this.au = paramString;
   }
   
-  public void c(String paramString)
+  protected TextUtils.TruncateAt g()
   {
-    this.ag = paramString;
+    return TextUtils.TruncateAt.END;
   }
   
-  protected int d()
+  public void g(String paramString)
   {
-    if (!TextUtils.isEmpty(this.al)) {}
+    this.ax = paramString;
+  }
+  
+  protected int h()
+  {
+    if (!TextUtils.isEmpty(this.aD)) {}
     try
     {
-      int i = Integer.parseInt(this.al);
+      int i = Integer.parseInt(this.aD);
       return i;
     }
     catch (Exception localException)
@@ -527,64 +528,59 @@ public abstract class AbsStructMsgTextElement
     return 0;
   }
   
-  public String d()
+  public void h(String paramString)
   {
-    return this.ac;
+    this.aD = paramString;
   }
   
-  public void d(String paramString)
-  {
-    this.am = paramString;
-  }
-  
-  public int e()
+  public int i()
   {
     return -16777216;
   }
   
-  public String e()
+  public void i(String paramString)
   {
-    return this.ae;
+    this.aC = paramString;
   }
   
-  public void e(String paramString)
-  {
-    this.ac = paramString;
-  }
-  
-  public int f()
+  public int j()
   {
     return 26;
   }
   
-  public String f()
+  public String k()
   {
-    return this.aj;
+    return this.ax;
   }
   
-  public void f(String paramString)
+  public String l()
   {
-    this.af = paramString;
+    return this.au;
   }
   
-  public int g()
+  public String m()
+  {
+    return this.aw;
+  }
+  
+  public int n()
   {
     return 0;
   }
   
-  public void g(String paramString)
+  public void o()
   {
-    this.al = paramString;
+    this.aE = true;
   }
   
-  public void h(String paramString)
+  public String p()
   {
-    this.ak = paramString;
+    return this.aB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsgTextElement
  * JD-Core Version:    0.7.0.1
  */

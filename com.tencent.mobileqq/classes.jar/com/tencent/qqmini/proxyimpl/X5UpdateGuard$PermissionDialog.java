@@ -18,13 +18,13 @@ class X5UpdateGuard$PermissionDialog
   
   public void a()
   {
-    setContentView(2131558969);
-    findViewById(2131369767).setVisibility(8);
+    setContentView(2131624602);
+    findViewById(2131436895).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.X5UpdateGuard.PermissionDialog
  * JD-Core Version:    0.7.0.1
  */

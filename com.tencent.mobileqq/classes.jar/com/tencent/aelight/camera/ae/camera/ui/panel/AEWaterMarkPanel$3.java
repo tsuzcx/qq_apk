@@ -12,8 +12,8 @@ class AEWaterMarkPanel$3
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    AEWaterMarkPanel.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel, false);
-    paramAnimator = this.jdField_a_of_type_JavaLangRunnable;
+    AEWaterMarkPanel.a(this.b, false);
+    paramAnimator = this.a;
     if (paramAnimator != null) {
       paramAnimator.run();
     }
@@ -23,12 +23,12 @@ class AEWaterMarkPanel$3
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    AEWaterMarkPanel.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel, true);
+    AEWaterMarkPanel.a(this.b, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEWaterMarkPanel.3
  * JD-Core Version:    0.7.0.1
  */

@@ -51,7 +51,7 @@ public class OpenApiProvider
   
   private Cursor a(int paramInt)
   {
-    MatrixCursor localMatrixCursor = new MatrixCursor(ApiConstants.Provider.a);
+    MatrixCursor localMatrixCursor = new MatrixCursor(ApiConstants.Provider.l);
     localMatrixCursor.addRow(new Object[] { Integer.valueOf(paramInt) });
     return localMatrixCursor;
   }
@@ -135,7 +135,7 @@ public class OpenApiProvider
         if (paramArrayOfString1.size() <= 0) {
           break label2610;
         }
-        paramString1 = new MatrixCursor(ApiConstants.Provider.l);
+        paramString1 = new MatrixCursor(ApiConstants.Provider.w);
         paramArrayOfString1 = paramArrayOfString1.iterator();
         for (;;)
         {
@@ -144,7 +144,7 @@ public class OpenApiProvider
             break;
           }
           paramUri = (QQResult.QQStringResult)paramArrayOfString1.next();
-          paramString1.addRow(new Object[] { Integer.valueOf(paramUri.jdField_a_of_type_Int), Integer.valueOf(paramUri.b), paramUri.jdField_a_of_type_JavaLangString });
+          paramString1.addRow(new Object[] { Integer.valueOf(paramUri.a), Integer.valueOf(paramUri.b), paramUri.c });
         }
       case 9: 
         try
@@ -183,7 +183,7 @@ public class OpenApiProvider
           if (paramString1.length != paramArrayOfString2.length) {
             return a(paramString1[0].b);
           }
-          paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.k);
+          paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.v);
           j = paramString1.length;
           i = 0;
           for (;;)
@@ -193,7 +193,7 @@ public class OpenApiProvider
               break;
             }
             paramUri = paramString1[i];
-            paramArrayOfString1.addRow(new Object[] { Integer.valueOf(paramUri.b), paramUri.jdField_a_of_type_JavaLangString });
+            paramArrayOfString1.addRow(new Object[] { Integer.valueOf(paramUri.b), paramUri.c });
             i += 1;
           }
         }
@@ -218,7 +218,7 @@ public class OpenApiProvider
           if (((Integer)paramUri.first).intValue() != 0) {
             return a(((Integer)paramUri.first).intValue());
           }
-          paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.j);
+          paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.u);
           paramArrayOfString1.addRow(new Object[] { paramUri.second });
           return paramArrayOfString1;
         }
@@ -242,7 +242,7 @@ public class OpenApiProvider
         if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramArrayOfString2)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(paramUri)))
         {
           paramUri = paramArrayOfString1.decodePtt(paramString2, str1, paramString1, i, paramArrayOfString2, str2, paramUri);
-          paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.i);
+          paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.t);
           paramArrayOfString1.addRow(new Object[] { paramUri.first, paramUri.second });
           return paramArrayOfString1;
         }
@@ -260,7 +260,7 @@ public class OpenApiProvider
             paramUri.append(i);
             QLog.d("OpenApi.Provider", 2, paramUri.toString());
           }
-          paramUri = new MatrixCursor(ApiConstants.Provider.h);
+          paramUri = new MatrixCursor(ApiConstants.Provider.s);
           paramUri.addRow(new Object[] { Integer.valueOf(i) });
           return paramUri;
         }
@@ -284,7 +284,7 @@ public class OpenApiProvider
             {
               paramUri = new StringBuilder();
               paramUri.append("set readed, uin = ");
-              paramUri.append(StringUtil.e(paramString1));
+              paramUri.append(StringUtil.getSimpleUinForPrint(paramString1));
               paramUri.append(", uinType = ");
               paramUri.append(i);
               paramUri.append(", msgids = ");
@@ -293,7 +293,7 @@ public class OpenApiProvider
               paramUri.append(j);
               QLog.d("OpenApi.Provider", 2, paramUri.toString());
             }
-            paramUri = new MatrixCursor(ApiConstants.Provider.a);
+            paramUri = new MatrixCursor(ApiConstants.Provider.l);
             paramUri.addRow(new Object[] { Integer.valueOf(j) });
             return paramUri;
           }
@@ -331,8 +331,8 @@ public class OpenApiProvider
             if (paramUri.b != 0) {
               return a(paramUri.b);
             }
-            paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.f);
-            paramArrayOfString1.addRow(new Object[] { paramUri.jdField_a_of_type_JavaLangString });
+            paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.q);
+            paramArrayOfString1.addRow(new Object[] { paramUri.c });
             return paramArrayOfString1;
           }
           return a(-6);
@@ -391,15 +391,15 @@ public class OpenApiProvider
             paramArrayOfString1.append(", filter = ");
             paramArrayOfString1.append(j);
             paramArrayOfString1.append(", rs = ");
-            paramArrayOfString1.append(paramUri.jdField_a_of_type_Int);
+            paramArrayOfString1.append(paramUri.a);
             paramArrayOfString1.append(", stamp = ");
-            paramArrayOfString1.append(paramUri.jdField_a_of_type_Long);
+            paramArrayOfString1.append(paramUri.b);
             paramArrayOfString1.append(", uin = ");
-            paramArrayOfString1.append(paramUri.jdField_a_of_type_JavaLangString);
+            paramArrayOfString1.append(paramUri.c);
             QLog.d("OpenApi.Provider", 2, paramArrayOfString1.toString());
           }
-          paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.e);
-          paramArrayOfString1.addRow(new Object[] { Integer.valueOf(paramUri.jdField_a_of_type_Int), Long.valueOf(paramUri.jdField_a_of_type_Long), paramUri.jdField_a_of_type_JavaLangString });
+          paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.p);
+          paramArrayOfString1.addRow(new Object[] { Integer.valueOf(paramUri.a), Long.valueOf(paramUri.b), paramUri.c });
           return paramArrayOfString1;
         }
         catch (Exception paramUri)
@@ -422,7 +422,7 @@ public class OpenApiProvider
           {
             paramArrayOfString1 = new StringBuilder(150);
             paramArrayOfString1.append("query nick, uin = ");
-            paramArrayOfString1.append(StringUtil.e(paramString1));
+            paramArrayOfString1.append(StringUtil.getSimpleUinForPrint(paramString1));
             paramArrayOfString1.append(", type = ");
             paramArrayOfString1.append(i);
             paramArrayOfString1.append(", rs = ");
@@ -432,8 +432,8 @@ public class OpenApiProvider
           if (paramUri.b != 0) {
             return a(paramUri.b);
           }
-          paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.d);
-          paramArrayOfString1.addRow(new Object[] { paramUri.jdField_a_of_type_JavaLangString });
+          paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.o);
+          paramArrayOfString1.addRow(new Object[] { paramUri.c });
           return paramArrayOfString1;
         }
         catch (Exception paramUri)
@@ -456,20 +456,20 @@ public class OpenApiProvider
           {
             paramArrayOfString1 = new StringBuilder(150);
             paramArrayOfString1.append("query face, uin = ");
-            paramArrayOfString1.append(StringUtil.e(paramString1));
+            paramArrayOfString1.append(StringUtil.getSimpleUinForPrint(paramString1));
             paramArrayOfString1.append(", type = ");
             paramArrayOfString1.append(i);
             paramArrayOfString1.append(", rs = ");
             paramArrayOfString1.append(paramUri.b);
             paramArrayOfString1.append(", path = ");
-            paramArrayOfString1.append(paramUri.jdField_a_of_type_JavaLangString);
+            paramArrayOfString1.append(paramUri.c);
             QLog.d("OpenApi.Provider", 2, paramArrayOfString1.toString());
           }
           if (paramUri.b != 0) {
             return a(paramUri.b);
           }
-          paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.c);
-          paramArrayOfString1.addRow(new Object[] { paramUri.jdField_a_of_type_JavaLangString });
+          paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.n);
+          paramArrayOfString1.addRow(new Object[] { paramUri.c });
           return paramArrayOfString1;
         }
         catch (Exception paramUri)
@@ -525,7 +525,7 @@ public class OpenApiProvider
     {
       paramArrayOfString1 = new StringBuilder(100);
       paramArrayOfString1.append("query msg, uin = ");
-      paramArrayOfString1.append(StringUtil.e(paramString1));
+      paramArrayOfString1.append(StringUtil.getSimpleUinForPrint(paramString1));
       paramArrayOfString1.append(", type = ");
       paramArrayOfString1.append(i);
       paramArrayOfString1.append(", count = ");
@@ -539,7 +539,7 @@ public class OpenApiProvider
     if (k != 0) {
       return a(k);
     }
-    paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.b);
+    paramArrayOfString1 = new MatrixCursor(ApiConstants.Provider.m);
     paramString1 = paramUri.iterator();
     for (;;)
     {
@@ -566,7 +566,7 @@ public class OpenApiProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.openapi.OpenApiProvider
  * JD-Core Version:    0.7.0.1
  */

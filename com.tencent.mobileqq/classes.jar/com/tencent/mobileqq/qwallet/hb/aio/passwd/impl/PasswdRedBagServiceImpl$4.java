@@ -15,13 +15,13 @@ class PasswdRedBagServiceImpl$4
   public void a(String paramString)
   {
     GetBroadCastHbIdiomReq localGetBroadCastHbIdiomReq = new GetBroadCastHbIdiomReq();
-    localGetBroadCastHbIdiomReq.billnos = this.jdField_a_of_type_JavaUtilArrayList;
+    localGetBroadCastHbIdiomReq.billnos = this.a;
     localGetBroadCastHbIdiomReq.sKey = paramString;
-    localGetBroadCastHbIdiomReq.appid = AppSetting.a();
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a;
+    localGetBroadCastHbIdiomReq.appid = AppSetting.d();
+    int j = this.b.a;
     int i = 1;
     if (j != 1) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a == 3000) {
+      if (this.b.a == 3000) {
         i = 2;
       } else {
         i = 0;
@@ -29,13 +29,13 @@ class PasswdRedBagServiceImpl$4
     }
     localGetBroadCastHbIdiomReq.fromType = i;
     localGetBroadCastHbIdiomReq.platform = 0;
-    localGetBroadCastHbIdiomReq.qqVersion = "8.7.0";
+    localGetBroadCastHbIdiomReq.qqVersion = "8.8.17";
     QWalletCommonServlet.a(localGetBroadCastHbIdiomReq, new PasswdRedBagServiceImpl.4.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.passwd.impl.PasswdRedBagServiceImpl.4
  * JD-Core Version:    0.7.0.1
  */

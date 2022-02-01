@@ -116,31 +116,27 @@ public class TXLivePlayConfig
     localStringBuilder.append(this.mMaxAutoAdjustCacheTime);
     localStringBuilder.append(", mMinAutoAdjustCacheTime=");
     localStringBuilder.append(this.mMinAutoAdjustCacheTime);
+    localStringBuilder.append(", mAutoAdjustCacheTime=");
+    localStringBuilder.append(this.mAutoAdjustCacheTime);
     localStringBuilder.append(", mVideoBlockThreshold=");
     localStringBuilder.append(this.mVideoBlockThreshold);
     localStringBuilder.append(", mConnectRetryCount=");
     localStringBuilder.append(this.mConnectRetryCount);
     localStringBuilder.append(", mConnectRetryInterval=");
     localStringBuilder.append(this.mConnectRetryInterval);
-    localStringBuilder.append(", mAutoAdjustCacheTime=");
-    localStringBuilder.append(this.mAutoAdjustCacheTime);
     localStringBuilder.append(", mEnableAec=");
     localStringBuilder.append(this.mEnableAec);
-    localStringBuilder.append(", mEnableNearestIP=");
-    localStringBuilder.append(this.mEnableNearestIP);
     localStringBuilder.append(", mEnableMessage=");
     localStringBuilder.append(this.mEnableMessage);
     localStringBuilder.append(", mEnableMetaData=");
     localStringBuilder.append(this.mEnableMetaData);
-    localStringBuilder.append(", mRtmpChannelType=");
-    localStringBuilder.append(this.mRtmpChannelType);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.TXLivePlayConfig
  * JD-Core Version:    0.7.0.1
  */

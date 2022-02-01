@@ -17,19 +17,19 @@ class CustomizeStrategyFactory$VoiceResStrategy$1
       if (QLog.isColorLevel()) {
         QLog.d("CustomizeStrategyFactory", 2, "VoiceResStrategy");
       }
-      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqQwalletConfigIQWalletConfigService != null))
+      if ((this.this$0.a != null) && (this.this$0.b != null))
       {
-        String str = this.this$0.jdField_a_of_type_ComTencentMobileqqQwalletConfigIQWalletConfigService.getString("voice_pwd", "https://imgcache.qq.com/channel/static/socialpay/voice/", new String[] { "urlPrefix" });
+        String str = this.this$0.b.getString("voice_pwd", "https://imgcache.qq.com/channel/static/socialpay/voice/", new String[] { "urlPrefix" });
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(str);
         localStringBuilder.append("voice_rate_");
         localStringBuilder.append(this.a.templateId);
         localStringBuilder.append(".zip");
         str = localStringBuilder.toString();
-        this.this$0.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService.getUnzipFolderPath(str, new CustomizeStrategyFactory.VoiceResStrategy.1.1(this));
+        this.this$0.a.getUnzipFolderPath(str, new CustomizeStrategyFactory.VoiceResStrategy.1.1(this));
         return;
       }
-      CustomizeStrategyFactory.a().a(this.a);
+      CustomizeStrategyFactory.d().a(this.a);
       return;
     }
     catch (Throwable localThrowable)
@@ -40,7 +40,7 @@ class CustomizeStrategyFactory$VoiceResStrategy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.VoiceResStrategy.1
  * JD-Core Version:    0.7.0.1
  */

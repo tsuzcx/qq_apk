@@ -27,87 +27,37 @@ import mqq.app.AppRuntime;
 
 public class SoftAdExpoStatManager
 {
-  private static Map<String, SoftAdExpoStatManager> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
-  private SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString = null;
-  private Map<String, Vector<Long>> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private Map<String, Long> c = new ConcurrentHashMap();
+  private static Map<String, SoftAdExpoStatManager> a = new ConcurrentHashMap();
+  private Context b;
+  private String c;
+  private int d = -1;
+  private int e = -1;
+  private String f = null;
+  private AtomicInteger g = new AtomicInteger();
+  private SimpleDateFormat h = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+  private Map<String, Vector<Long>> i = new ConcurrentHashMap();
+  private Map<String, Long> j = new ConcurrentHashMap();
   
   private SoftAdExpoStatManager(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication();
-    a();
+    this.c = paramString;
+    this.b = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication();
+    f();
   }
   
   public static SoftAdExpoStatManager a()
   {
     String str = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount();
-    if (jdField_a_of_type_JavaUtilMap.get(str) == null) {
+    if (a.get(str) == null) {
       try
       {
-        if (jdField_a_of_type_JavaUtilMap.get(str) == null) {
-          jdField_a_of_type_JavaUtilMap.put(str, new SoftAdExpoStatManager(str));
+        if (a.get(str) == null) {
+          a.put(str, new SoftAdExpoStatManager(str));
         }
       }
       finally {}
     }
-    return (SoftAdExpoStatManager)jdField_a_of_type_JavaUtilMap.get(localObject);
-  }
-  
-  private Vector<Long> a(String paramString, long paramLong)
-  {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("expo_stat_key_");
-    localStringBuilder.append(paramString);
-    paramString = SharePreferenceUtils.a((Context)localObject, localStringBuilder.toString());
-    boolean bool = StringUtil.a(paramString);
-    int i = 0;
-    if (bool) {
-      return new Vector(0);
-    }
-    paramString = paramString.split(",,");
-    localObject = new Vector(paramString.length);
-    long l = System.currentTimeMillis();
-    int j = paramString.length;
-    while (i < j)
-    {
-      localStringBuilder = paramString[i];
-      if (l - Long.parseLong(localStringBuilder) <= 1000L * paramLong) {
-        ((Vector)localObject).add(Long.valueOf(Long.parseLong(localStringBuilder)));
-      }
-      i += 1;
-    }
-    return localObject;
-  }
-  
-  private void a()
-  {
-    try
-    {
-      this.c = b();
-      if (this.c.isEmpty()) {
-        return;
-      }
-      Iterator localIterator = this.c.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        this.jdField_b_of_type_JavaUtilMap.put(localEntry.getKey(), a((String)localEntry.getKey(), ((Long)localEntry.getValue()).longValue()));
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("SoftAdExpoStatManager", 1, localThrowable, new Object[0]);
-    }
+    return (SoftAdExpoStatManager)a.get(localObject);
   }
   
   private void a(Runnable paramRunnable)
@@ -118,49 +68,37 @@ public class SoftAdExpoStatManager
     ThreadManagerV2.excute(new SoftAdExpoStatManager.3(this, paramRunnable), 64, null, true);
   }
   
-  private Map<String, Long> b()
+  private Vector<Long> b(String paramString, long paramLong)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidContentContext;
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
-    ((StringBuilder)localObject2).append("expo_stat_key_timewindow");
-    localObject1 = SharePreferenceUtils.a((Context)localObject1, ((StringBuilder)localObject2).toString());
-    if (StringUtil.a((String)localObject1)) {
-      return new ConcurrentHashMap(0);
+    Object localObject = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("expo_stat_key_");
+    localStringBuilder.append(paramString);
+    paramString = SharePreferenceUtils.a((Context)localObject, localStringBuilder.toString());
+    boolean bool = StringUtil.isEmpty(paramString);
+    int k = 0;
+    if (bool) {
+      return new Vector(0);
     }
-    localObject1 = ((String)localObject1).split(",,");
-    if (localObject1.length == 0) {
-      return new ConcurrentHashMap(0);
-    }
-    localObject2 = new ConcurrentHashMap(localObject1.length);
-    int j = localObject1.length;
-    int i = 0;
-    while (i < j)
+    paramString = paramString.split(",,");
+    localObject = new Vector(paramString.length);
+    long l = System.currentTimeMillis();
+    int m = paramString.length;
+    while (k < m)
     {
-      Object localObject3 = localObject1[i];
-      if (!StringUtil.a((String)localObject3))
-      {
-        localObject3 = ((String)localObject3).split("&&");
-        if (localObject3.length == 2) {
-          ((Map)localObject2).put(localObject3[0], Long.valueOf(Long.parseLong(localObject3[1])));
-        }
+      localStringBuilder = paramString[k];
+      if (l - Long.parseLong(localStringBuilder) <= 1000L * paramLong) {
+        ((Vector)localObject).add(Long.valueOf(Long.parseLong(localStringBuilder)));
       }
-      i += 1;
+      k += 1;
     }
-    return localObject2;
-  }
-  
-  private void b()
-  {
-    if (this.c.size() == 0) {
-      return;
-    }
-    a(new SoftAdExpoStatManager.1(this, new ConcurrentHashMap(this.c)));
+    return localObject;
   }
   
   private void b(String paramString)
   {
-    Vector localVector = (Vector)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+    Vector localVector = (Vector)this.i.get(paramString);
     if (localVector != null)
     {
       if (localVector.size() == 0) {
@@ -170,67 +108,92 @@ public class SoftAdExpoStatManager
     }
   }
   
-  private void c()
+  private void f()
   {
-    String str = this.jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date());
-    if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!Objects.equals(str, this.jdField_b_of_type_JavaLangString)))
+    try
     {
-      this.jdField_b_of_type_JavaLangString = str;
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-      Context localContext = this.jdField_a_of_type_AndroidContentContext;
+      this.j = i();
+      if (this.j.isEmpty()) {
+        return;
+      }
+      Iterator localIterator = this.j.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        this.i.put(localEntry.getKey(), b((String)localEntry.getKey(), ((Long)localEntry.getValue()).longValue()));
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("SoftAdExpoStatManager", 1, localThrowable, new Object[0]);
+    }
+  }
+  
+  private void g()
+  {
+    if (this.j.size() == 0) {
+      return;
+    }
+    a(new SoftAdExpoStatManager.1(this, new ConcurrentHashMap(this.j)));
+  }
+  
+  private void h()
+  {
+    String str = this.h.format(new Date());
+    if ((TextUtils.isEmpty(this.f)) || (!Objects.equals(str, this.f)))
+    {
+      this.f = str;
+      this.g.set(0);
+      Context localContext = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.c);
       localStringBuilder.append("expo_stat_soft_fstreq");
       SharePreferenceUtils.a(localContext, localStringBuilder.toString(), str);
     }
   }
   
-  public int a()
+  private Map<String, Long> i()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public Map<String, Long> a()
-  {
-    localConcurrentHashMap = new ConcurrentHashMap();
-    if (this.jdField_b_of_type_JavaUtilMap.isEmpty()) {
-      return localConcurrentHashMap;
+    Object localObject1 = this.b;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.c);
+    ((StringBuilder)localObject2).append("expo_stat_key_timewindow");
+    localObject1 = SharePreferenceUtils.a((Context)localObject1, ((StringBuilder)localObject2).toString());
+    if (StringUtil.isEmpty((String)localObject1)) {
+      return new ConcurrentHashMap(0);
     }
-    long l1 = System.currentTimeMillis();
-    try
+    localObject1 = ((String)localObject1).split(",,");
+    if (localObject1.length == 0) {
+      return new ConcurrentHashMap(0);
+    }
+    localObject2 = new ConcurrentHashMap(localObject1.length);
+    int m = localObject1.length;
+    int k = 0;
+    while (k < m)
     {
-      Iterator localIterator1 = this.jdField_b_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator1.hasNext())
+      Object localObject3 = localObject1[k];
+      if (!StringUtil.isEmpty((String)localObject3))
       {
-        Map.Entry localEntry = (Map.Entry)localIterator1.next();
-        long l2 = ((Long)this.c.get(localEntry.getKey())).longValue();
-        Vector localVector = (Vector)localEntry.getValue();
-        Iterator localIterator2 = localVector.iterator();
-        for (int i = 0; (localIterator2.hasNext()) && (l1 - ((Long)localIterator2.next()).longValue() > 1000L * l2); i = 1) {
-          localIterator2.remove();
+        localObject3 = ((String)localObject3).split("&&");
+        if (localObject3.length == 2) {
+          ((Map)localObject2).put(localObject3[0], Long.valueOf(Long.parseLong(localObject3[1])));
         }
-        if (i != 0) {
-          b((String)localEntry.getKey());
-        }
-        localConcurrentHashMap.put(localEntry.getKey(), Long.valueOf(localVector.size()));
       }
-      return localConcurrentHashMap;
+      k += 1;
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    return localObject2;
   }
   
   public Map<Integer, String> a(int paramInt, ArrayList paramArrayList)
   {
     if ((paramInt > 0) && (paramArrayList != null) && (paramArrayList.size() != 0) && (paramInt < paramArrayList.size() - 1))
     {
-      int i = paramArrayList.size();
+      int k = paramArrayList.size();
       HashMap localHashMap = new HashMap();
       for (;;)
       {
-        if (paramInt < i - 1)
+        if (paramInt < k - 1)
         {
           paramInt += 1;
           try
@@ -251,7 +214,7 @@ public class SoftAdExpoStatManager
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void a(String paramString)
@@ -261,10 +224,10 @@ public class SoftAdExpoStatManager
     }
     try
     {
-      if (!this.jdField_b_of_type_JavaUtilMap.containsKey(paramString)) {
+      if (!this.i.containsKey(paramString)) {
         return;
       }
-      ((Vector)this.jdField_b_of_type_JavaUtilMap.get(paramString)).add(Long.valueOf(System.currentTimeMillis()));
+      ((Vector)this.i.get(paramString)).add(Long.valueOf(System.currentTimeMillis()));
       b(paramString);
       return;
     }
@@ -283,11 +246,11 @@ public class SoftAdExpoStatManager
       }
       try
       {
-        if (!this.c.containsKey(paramString)) {
-          this.jdField_b_of_type_JavaUtilMap.put(paramString, new Vector(0));
+        if (!this.j.containsKey(paramString)) {
+          this.i.put(paramString, new Vector(0));
         }
-        this.c.put(paramString, Long.valueOf(paramLong));
-        b();
+        this.j.put(paramString, Long.valueOf(paramLong));
+        g();
         return;
       }
       catch (Throwable paramString)
@@ -297,59 +260,96 @@ public class SoftAdExpoStatManager
     }
   }
   
-  public boolean a()
+  public Map<String, Long> b()
   {
-    if (this.jdField_b_of_type_JavaLangString == null)
-    {
-      localObject = this.jdField_a_of_type_AndroidContentContext;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append("expo_stat_soft_fstreq");
-      this.jdField_b_of_type_JavaLangString = SharePreferenceUtils.a((Context)localObject, localStringBuilder.toString());
+    localConcurrentHashMap = new ConcurrentHashMap();
+    if (this.i.isEmpty()) {
+      return localConcurrentHashMap;
     }
-    Object localObject = this.jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date());
-    boolean bool = Objects.equals(this.jdField_b_of_type_JavaLangString, localObject) ^ true;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    if ((bool) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 1)) {
-      c();
+    long l1 = System.currentTimeMillis();
+    try
+    {
+      Iterator localIterator1 = this.i.entrySet().iterator();
+      while (localIterator1.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator1.next();
+        long l2 = ((Long)this.j.get(localEntry.getKey())).longValue();
+        Vector localVector = (Vector)localEntry.getValue();
+        Iterator localIterator2 = localVector.iterator();
+        for (int k = 0; (localIterator2.hasNext()) && (l1 - ((Long)localIterator2.next()).longValue() > 1000L * l2); k = 1) {
+          localIterator2.remove();
+        }
+        if (k != 0) {
+          b((String)localEntry.getKey());
+        }
+        localConcurrentHashMap.put(localEntry.getKey(), Long.valueOf(localVector.size()));
+      }
+      return localConcurrentHashMap;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.d == paramInt) {
+      return;
+    }
+    Context localContext = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("expo_stat_last_req_vd_cnt");
+    SharePreferenceUtils.a(localContext, localStringBuilder.toString(), String.valueOf(paramInt));
+  }
+  
+  public boolean c()
+  {
+    if (this.f == null)
+    {
+      localObject = this.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("expo_stat_soft_fstreq");
+      this.f = SharePreferenceUtils.a((Context)localObject, localStringBuilder.toString());
+    }
+    Object localObject = this.h.format(new Date());
+    boolean bool = Objects.equals(this.f, localObject) ^ true;
+    this.g.addAndGet(1);
+    if ((bool) && (this.g.get() > 1)) {
+      h();
     }
     return bool;
   }
   
-  public int b()
+  public int d()
   {
-    int i = this.jdField_a_of_type_Int;
-    if (i != -1) {
-      return i;
+    return this.e;
+  }
+  
+  public int e()
+  {
+    int k = this.d;
+    if (k != -1) {
+      return k;
     }
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("expo_stat_last_req_vd_cnt");
     localObject = SharePreferenceUtils.a((Context)localObject, localStringBuilder.toString());
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return -1;
     }
-    i = Integer.parseInt((String)localObject);
-    this.jdField_a_of_type_Int = i;
-    return i;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_Int == paramInt) {
-      return;
-    }
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("expo_stat_last_req_vd_cnt");
-    SharePreferenceUtils.a(localContext, localStringBuilder.toString(), String.valueOf(paramInt));
+    k = Integer.parseInt((String)localObject);
+    this.d = k;
+    return k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.SoftAdExpoStatManager
  * JD-Core Version:    0.7.0.1
  */

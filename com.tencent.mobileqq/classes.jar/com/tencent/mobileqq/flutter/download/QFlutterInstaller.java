@@ -30,60 +30,22 @@ import java.util.Set;
 
 public class QFlutterInstaller
 {
-  public static Handler a;
-  private static QFlutterInstaller.DownloadStatus jdField_a_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus = new QFlutterInstaller.DownloadStatus(null);
-  private static String jdField_a_of_type_JavaLangString = "qq.android.flutter.engine.v8.7.0_release";
-  private static ArrayList<InstallCallback> jdField_a_of_type_JavaUtilArrayList;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static QFlutterInstaller.DownloadStatus jdField_b_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus = new QFlutterInstaller.DownloadStatus(null);
-  private static String jdField_b_of_type_JavaLangString = "qq.android.flutter.app.v8.7.0_release";
-  private static boolean jdField_b_of_type_Boolean = false;
-  private static volatile boolean c;
-  
-  static
-  {
-    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    c = false;
-  }
-  
-  public static long a(String paramString)
-  {
-    try
-    {
-      paramString = new File(paramString);
-      if (paramString.exists())
-      {
-        long l = paramString.lastModified();
-        return l;
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFlutter.QFlutterDownloadManager", 2, paramString.getMessage(), paramString);
-      }
-    }
-    return 0L;
-  }
-  
-  public static SharedPreferences a(XmlData paramXmlData)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramXmlData.getSharedPreferencesName());
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramXmlData.getStrResName());
-    localStringBuilder.append("_verifyInfo");
-    paramXmlData = localStringBuilder.toString();
-    return BaseApplication.getContext().getSharedPreferences(paramXmlData, 4);
-  }
+  public static Handler a = new Handler(Looper.getMainLooper());
+  private static String b = QFlutterEngineData.STR_RES_NAME;
+  private static String c = QFlutterAppData.STR_RES_NAME;
+  private static boolean d = false;
+  private static boolean e = false;
+  private static ArrayList<InstallCallback> f = new ArrayList();
+  private static volatile boolean g = false;
+  private static QFlutterInstaller.DownloadStatus h = new QFlutterInstaller.DownloadStatus(null);
+  private static QFlutterInstaller.DownloadStatus i = new QFlutterInstaller.DownloadStatus(null);
   
   public static String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append(";");
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(c);
     return localStringBuilder.toString();
   }
   
@@ -119,33 +81,33 @@ public class QFlutterInstaller
     if (paramInt == 0) {}
     try
     {
-      QFlutterReporter.a(paramBoolean, QFlutterInstaller.DownloadStatus.a(jdField_a_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus), QFlutterInstaller.DownloadStatus.a(jdField_a_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus), QFlutterInstaller.DownloadStatus.a(jdField_b_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus), "engine");
-      jdField_a_of_type_Boolean = paramBoolean;
-      jdField_a_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus.a(paramBoolean, false);
+      QFlutterReporter.a(paramBoolean, QFlutterInstaller.DownloadStatus.a(h), QFlutterInstaller.DownloadStatus.b(h), QFlutterInstaller.DownloadStatus.b(i), "engine");
+      d = paramBoolean;
+      h.a(paramBoolean, false);
       break label89;
       if (paramInt == 1)
       {
-        QFlutterReporter.a(paramBoolean, QFlutterInstaller.DownloadStatus.a(jdField_b_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus), QFlutterInstaller.DownloadStatus.a(jdField_a_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus), QFlutterInstaller.DownloadStatus.a(jdField_b_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus), "app");
-        jdField_b_of_type_Boolean = paramBoolean;
-        jdField_b_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus.a(paramBoolean, false);
+        QFlutterReporter.a(paramBoolean, QFlutterInstaller.DownloadStatus.a(i), QFlutterInstaller.DownloadStatus.b(h), QFlutterInstaller.DownloadStatus.b(i), "app");
+        e = paramBoolean;
+        i.a(paramBoolean, false);
       }
       label89:
-      boolean bool2 = jdField_b_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus.a();
-      boolean bool3 = jdField_a_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus.a();
+      boolean bool2 = i.b();
+      boolean bool3 = h.b();
       QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("onDownloadFinish, type: %s(%s), appFinished: %s, engineFinished: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Boolean.valueOf(bool2), Boolean.valueOf(bool3) }));
       if ((bool2) && (bool3))
       {
         paramBoolean = bool1;
-        if (jdField_b_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus.jdField_a_of_type_Boolean)
+        if (i.b)
         {
           paramBoolean = bool1;
-          if (jdField_a_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus.jdField_a_of_type_Boolean) {
+          if (h.b) {
             paramBoolean = true;
           }
         }
-        long l = Math.max(QFlutterInstaller.DownloadStatus.a(jdField_b_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus), QFlutterInstaller.DownloadStatus.a(jdField_a_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus));
-        a(paramBoolean, QFlutterInstaller.DownloadStatus.a(jdField_a_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus), QFlutterInstaller.DownloadStatus.a(jdField_b_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus));
-        QFlutterReporter.a(paramBoolean, l, QFlutterInstaller.DownloadStatus.a(jdField_a_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus), QFlutterInstaller.DownloadStatus.a(jdField_b_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus), "all");
+        long l = Math.max(QFlutterInstaller.DownloadStatus.a(i), QFlutterInstaller.DownloadStatus.a(h));
+        a(paramBoolean, QFlutterInstaller.DownloadStatus.b(h), QFlutterInstaller.DownloadStatus.b(i));
+        QFlutterReporter.a(paramBoolean, l, QFlutterInstaller.DownloadStatus.b(h), QFlutterInstaller.DownloadStatus.b(i), "all");
       }
       return;
     }
@@ -158,23 +120,6 @@ public class QFlutterInstaller
     throw localObject1;
   }
   
-  private static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = (IEarlyDownloadService)paramQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "");
-    if (!jdField_b_of_type_Boolean)
-    {
-      jdField_b_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus.a();
-      paramQQAppInterface = paramQQAppInterface.getEarlyHandler("qq.android.flutter.app.v8.7.0_release");
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.a(true);
-      }
-    }
-    else
-    {
-      jdField_b_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus.a(true, true);
-    }
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, InstallCallback paramInstallCallback)
   {
     for (;;)
@@ -182,11 +127,11 @@ public class QFlutterInstaller
       try
       {
         boolean bool2 = a(paramQQAppInterface);
-        jdField_a_of_type_Boolean = bool2;
+        d = bool2;
         boolean bool3 = b(paramQQAppInterface);
-        jdField_b_of_type_Boolean = bool3;
-        jdField_b_of_type_JavaLangString = XmlData.packageNameOf(paramQQAppInterface, "qq.android.flutter.app.v8.7.0_release");
-        jdField_a_of_type_JavaLangString = XmlData.packageNameOf(paramQQAppInterface, "qq.android.flutter.engine.v8.7.0_release");
+        e = bool3;
+        c = XmlData.packageNameOf(paramQQAppInterface, QFlutterAppData.STR_RES_NAME);
+        b = XmlData.packageNameOf(paramQQAppInterface, QFlutterEngineData.STR_RES_NAME);
         QFlutterReporter.a(a());
         a(paramInstallCallback);
         StringBuilder localStringBuilder = new StringBuilder();
@@ -205,14 +150,14 @@ public class QFlutterInstaller
             a(true, true, true);
             return;
           }
-          if (c)
+          if (g)
           {
             QLog.d("QFlutter.QFlutterDownloadManager", 1, "install, is downloading...");
             return;
           }
-          c = true;
-          b(paramQQAppInterface);
-          a(paramQQAppInterface);
+          g = true;
+          d(paramQQAppInterface);
+          c(paramQQAppInterface);
           return;
         }
       }
@@ -221,25 +166,13 @@ public class QFlutterInstaller
     }
   }
   
-  public static void a(XmlData paramXmlData)
-  {
-    if (paramXmlData == null) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("clearPackageVerifyInfoSp ");
-    localStringBuilder.append(paramXmlData.strPkgName);
-    QLog.d("QFlutter.QFlutterDownloadManager", 1, localStringBuilder.toString());
-    a(paramXmlData).edit().clear().commit();
-  }
-  
   private static void a(InstallCallback paramInstallCallback)
   {
     if (paramInstallCallback != null) {}
     try
     {
-      if (!jdField_a_of_type_JavaUtilArrayList.contains(paramInstallCallback)) {
-        jdField_a_of_type_JavaUtilArrayList.add(paramInstallCallback);
+      if (!f.contains(paramInstallCallback)) {
+        f.add(paramInstallCallback);
       }
     }
     finally {}
@@ -250,24 +183,24 @@ public class QFlutterInstaller
     try
     {
       QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("notifyResult, isSuccess: %s, engine=%s, app=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
-      i = 0;
+      j = 0;
     }
     finally
     {
       for (;;)
       {
-        int i;
+        int j;
         InstallCallback localInstallCallback;
         for (;;)
         {
           throw localObject;
         }
-        i += 1;
+        j += 1;
       }
     }
-    if (i < jdField_a_of_type_JavaUtilArrayList.size())
+    if (j < f.size())
     {
-      localInstallCallback = (InstallCallback)jdField_a_of_type_JavaUtilArrayList.get(i);
+      localInstallCallback = (InstallCallback)f.get(j);
       if (paramBoolean1) {
         localInstallCallback.onResult(true, b(), paramBoolean2, paramBoolean3);
       } else {
@@ -276,8 +209,8 @@ public class QFlutterInstaller
     }
     else
     {
-      jdField_a_of_type_JavaUtilArrayList.clear();
-      c = false;
+      f.clear();
+      g = false;
       return;
     }
   }
@@ -287,10 +220,10 @@ public class QFlutterInstaller
     if (paramQQAppInterface == null) {
       return false;
     }
-    paramQQAppInterface = ((IEarlyDownloadService)paramQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "")).getEarlyHandler("qq.android.flutter.engine.v8.7.0_release");
+    paramQQAppInterface = ((IEarlyDownloadService)paramQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "")).getEarlyHandler(QFlutterEngineData.STR_RES_NAME);
     boolean bool2 = a(paramQQAppInterface);
     boolean bool1;
-    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (b((QFlutterEngineData)paramQQAppInterface.a()))) {
+    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.r()) && (d((QFlutterEngineData)paramQQAppInterface.h()))) {
       bool1 = true;
     } else {
       bool1 = false;
@@ -306,7 +239,7 @@ public class QFlutterInstaller
     if (paramEarlyHandler == null) {
       return false;
     }
-    paramEarlyHandler = paramEarlyHandler.a();
+    paramEarlyHandler = paramEarlyHandler.h();
     if (paramEarlyHandler == null)
     {
       QLog.d("QFlutter.QFlutterDownloadManager", 1, "isEarlyDownloadConfigReady, data == null");
@@ -321,13 +254,13 @@ public class QFlutterInstaller
   
   public static boolean a(XmlData paramXmlData)
   {
-    if (!b(paramXmlData))
+    if (!d(paramXmlData))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("checkInstalledPackage check fail! pkg: ");
       localStringBuilder.append(paramXmlData.strPkgName);
       QLog.d("QFlutter.QFlutterDownloadManager", 1, localStringBuilder.toString());
-      b(paramXmlData);
+      e(paramXmlData);
       return false;
     }
     return true;
@@ -378,6 +311,26 @@ public class QFlutterInstaller
     return bool1;
   }
   
+  public static long b(String paramString)
+  {
+    try
+    {
+      paramString = new File(paramString);
+      if (paramString.exists())
+      {
+        long l = paramString.lastModified();
+        return l;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QFlutter.QFlutterDownloadManager", 2, paramString.getMessage(), paramString);
+      }
+    }
+    return 0L;
+  }
+  
   public static String b()
   {
     File localFile = BaseApplicationImpl.sApplication.getFilesDir();
@@ -388,45 +341,16 @@ public class QFlutterInstaller
     return localStringBuilder.toString();
   }
   
-  private static void b(QQAppInterface paramQQAppInterface)
+  public static void b(XmlData paramXmlData)
   {
-    paramQQAppInterface = (IEarlyDownloadService)paramQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "");
-    if (!jdField_a_of_type_Boolean)
-    {
-      jdField_a_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus.a();
-      paramQQAppInterface = paramQQAppInterface.getEarlyHandler("qq.android.flutter.engine.v8.7.0_release");
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.a(true);
-      }
-    }
-    else
-    {
-      jdField_a_of_type_ComTencentMobileqqFlutterDownloadQFlutterInstaller$DownloadStatus.a(true, true);
-    }
-  }
-  
-  private static void b(XmlData paramXmlData)
-  {
-    if (!(paramXmlData instanceof FilesListHolder)) {
+    if (paramXmlData == null) {
       return;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("uninstallPackage... ");
-    ((StringBuilder)localObject).append(paramXmlData.strPkgName);
-    QLog.d("QFlutter.QFlutterDownloadManager", 1, ((StringBuilder)localObject).toString());
-    localObject = a(paramXmlData).edit();
-    String[] arrayOfString = ((FilesListHolder)paramXmlData).filesList();
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = arrayOfString[i];
-      ((SharedPreferences.Editor)localObject).putString(a(str, true), null);
-      ((SharedPreferences.Editor)localObject).putLong(a(str, false), 0L);
-      FileUtils.deleteFile(a(str));
-      i += 1;
-    }
-    ((SharedPreferences.Editor)localObject).putString(paramXmlData.getStrResName(), null).commit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("clearPackageVerifyInfoSp ");
+    localStringBuilder.append(paramXmlData.strPkgName);
+    QLog.d("QFlutter.QFlutterDownloadManager", 1, localStringBuilder.toString());
+    c(paramXmlData).edit().clear().commit();
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface)
@@ -434,10 +358,10 @@ public class QFlutterInstaller
     if (paramQQAppInterface == null) {
       return false;
     }
-    paramQQAppInterface = ((IEarlyDownloadService)paramQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "")).getEarlyHandler("qq.android.flutter.app.v8.7.0_release");
+    paramQQAppInterface = ((IEarlyDownloadService)paramQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "")).getEarlyHandler(QFlutterAppData.STR_RES_NAME);
     boolean bool2 = a(paramQQAppInterface);
     boolean bool1;
-    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (b((QFlutterAppData)paramQQAppInterface.a()))) {
+    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.r()) && (d((QFlutterAppData)paramQQAppInterface.h()))) {
       bool1 = true;
     } else {
       bool1 = false;
@@ -448,7 +372,52 @@ public class QFlutterInstaller
     return bool1;
   }
   
-  private static boolean b(XmlData paramXmlData)
+  public static SharedPreferences c(XmlData paramXmlData)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramXmlData.getSharedPreferencesName());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramXmlData.getStrResName());
+    localStringBuilder.append("_verifyInfo");
+    paramXmlData = localStringBuilder.toString();
+    return BaseApplication.getContext().getSharedPreferences(paramXmlData, 4);
+  }
+  
+  private static void c(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = (IEarlyDownloadService)paramQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "");
+    if (!e)
+    {
+      i.a();
+      paramQQAppInterface = paramQQAppInterface.getEarlyHandler(QFlutterAppData.STR_RES_NAME);
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a(true);
+      }
+    }
+    else
+    {
+      i.a(true, true);
+    }
+  }
+  
+  private static void d(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = (IEarlyDownloadService)paramQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "");
+    if (!d)
+    {
+      h.a();
+      paramQQAppInterface = paramQQAppInterface.getEarlyHandler(QFlutterEngineData.STR_RES_NAME);
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a(true);
+      }
+    }
+    else
+    {
+      h.a(true, true);
+    }
+  }
+  
+  private static boolean d(XmlData paramXmlData)
   {
     boolean bool2 = paramXmlData instanceof FilesListHolder;
     boolean bool1 = false;
@@ -459,14 +428,14 @@ public class QFlutterInstaller
     }
     long l1 = System.currentTimeMillis();
     String str1 = paramXmlData.strPkgName;
-    SharedPreferences.Editor localEditor = a(paramXmlData).edit();
+    SharedPreferences.Editor localEditor = c(paramXmlData).edit();
     Iterator localIterator = ((FilesListHolder)paramXmlData).filesValidateMap().entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
       String str2 = (String)((Map.Entry)localObject).getKey();
       String str3 = a(str2);
-      if (!FileUtil.b(str3))
+      if (!FileUtil.d(str3))
       {
         QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("[%s] checkFiles, %s is not exist", new Object[] { str1, str3 }));
         break label265;
@@ -475,7 +444,7 @@ public class QFlutterInstaller
       localObject = (String)((Map.Entry)localObject).getValue();
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equalsIgnoreCase(str4)))
       {
-        l2 = a(str3);
+        l2 = b(str3);
         localEditor.putString(a(str2, true), (String)localObject);
         localEditor.putLong(a(str2, false), l2);
       }
@@ -502,10 +471,34 @@ public class QFlutterInstaller
     QLog.d("QFlutter.QFlutterDownloadManager", 1, paramXmlData.toString());
     return bool1;
   }
+  
+  private static void e(XmlData paramXmlData)
+  {
+    if (!(paramXmlData instanceof FilesListHolder)) {
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("uninstallPackage... ");
+    ((StringBuilder)localObject).append(paramXmlData.strPkgName);
+    QLog.d("QFlutter.QFlutterDownloadManager", 1, ((StringBuilder)localObject).toString());
+    localObject = c(paramXmlData).edit();
+    String[] arrayOfString = ((FilesListHolder)paramXmlData).filesList();
+    int k = arrayOfString.length;
+    int j = 0;
+    while (j < k)
+    {
+      String str = arrayOfString[j];
+      ((SharedPreferences.Editor)localObject).putString(a(str, true), null);
+      ((SharedPreferences.Editor)localObject).putLong(a(str, false), 0L);
+      FileUtils.deleteFile(a(str));
+      j += 1;
+    }
+    ((SharedPreferences.Editor)localObject).putString(paramXmlData.getStrResName(), null).commit();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.download.QFlutterInstaller
  * JD-Core Version:    0.7.0.1
  */

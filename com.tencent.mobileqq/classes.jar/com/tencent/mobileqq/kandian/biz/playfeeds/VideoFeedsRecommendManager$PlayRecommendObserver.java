@@ -20,7 +20,7 @@ class VideoFeedsRecommendManager$PlayRecommendObserver
       Object localObject1 = paramBundle.getString("VALUE_REQUEST_VIDEO_ARTICLE_ID");
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        if (!((String)localObject1).equals(VideoFeedsRecommendManager.a(this.a).g)) {
+        if (!((String)localObject1).equals(VideoFeedsRecommendManager.a(this.a).l)) {
           return;
         }
         paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
@@ -33,15 +33,15 @@ class VideoFeedsRecommendManager$PlayRecommendObserver
           while (((Iterator)localObject2).hasNext())
           {
             localObject3 = (VideoInfo)((Iterator)localObject2).next();
-            ((VideoInfo)localObject3).i = true;
-            ((VideoInfo)localObject3).t = ((String)localObject1);
+            ((VideoInfo)localObject3).V = true;
+            ((VideoInfo)localObject3).W = ((String)localObject1);
             if (QLog.isColorLevel())
             {
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("动态插入视频 title = ");
-              localStringBuilder.append(((VideoInfo)localObject3).c);
-              localStringBuilder.append(", rowkey = ");
               localStringBuilder.append(((VideoInfo)localObject3).g);
+              localStringBuilder.append(", rowkey = ");
+              localStringBuilder.append(((VideoInfo)localObject3).l);
               QLog.d("Q.pubaccount.video.feedsVideoFeedsRecommendManager", 2, localStringBuilder.toString());
             }
           }
@@ -50,18 +50,18 @@ class VideoFeedsRecommendManager$PlayRecommendObserver
           int m = 0;
           int i = 0;
           int k;
-          for (int j = -1; i < VideoFeedsRecommendManager.a(this.a).size(); j = k)
+          for (int j = -1; i < VideoFeedsRecommendManager.b(this.a).size(); j = k)
           {
             if (j == -1)
             {
-              if (((VideoInfo)VideoFeedsRecommendManager.a(this.a).get(i)).f() == null)
+              if (((VideoInfo)VideoFeedsRecommendManager.b(this.a).get(i)).s() == null)
               {
                 k = j;
               }
               else
               {
                 k = j;
-                if (((VideoInfo)VideoFeedsRecommendManager.a(this.a).get(i)).f().equals(VideoFeedsRecommendManager.a(this.a).f())) {
+                if (((VideoInfo)VideoFeedsRecommendManager.b(this.a).get(i)).s().equals(VideoFeedsRecommendManager.a(this.a).s())) {
                   k = i;
                 }
               }
@@ -69,40 +69,40 @@ class VideoFeedsRecommendManager$PlayRecommendObserver
             else
             {
               k = j;
-              if (((VideoInfo)VideoFeedsRecommendManager.a(this.a).get(i)).r)
+              if (((VideoInfo)VideoFeedsRecommendManager.b(this.a).get(i)).aq)
               {
                 ((ArrayList)localObject2).add(Integer.valueOf(i));
-                ((ArrayList)localObject3).add(VideoFeedsRecommendManager.a(this.a).get(i));
+                ((ArrayList)localObject3).add(VideoFeedsRecommendManager.b(this.a).get(i));
                 k = j;
               }
             }
             i += 1;
           }
-          if (!VideoFeedsRecommendManager.a(this.a).c())
+          if (!VideoFeedsRecommendManager.c(this.a).g())
           {
-            if (!((String)localObject1).equals(VideoFeedsRecommendManager.a(this.a).g)) {
+            if (!((String)localObject1).equals(VideoFeedsRecommendManager.a(this.a).l)) {
               return;
             }
-            localObject1 = VideoFeedsRecommendManager.b(this.a).iterator();
+            localObject1 = VideoFeedsRecommendManager.d(this.a).iterator();
             while (((Iterator)localObject1).hasNext()) {
               ((VideoFeedsRecommendManager.Listener)((Iterator)localObject1).next()).c();
             }
             i = ((ArrayList)localObject2).size() - 1;
             while (i >= 0)
             {
-              VideoFeedsRecommendManager.a(this.a).remove(((Integer)((ArrayList)localObject2).get(i)).intValue());
-              VideoFeedsRecommendManager.a(this.a).notifyItemRemoved(((Integer)((ArrayList)localObject2).get(i)).intValue());
+              VideoFeedsRecommendManager.b(this.a).remove(((Integer)((ArrayList)localObject2).get(i)).intValue());
+              VideoFeedsRecommendManager.e(this.a).notifyItemRemoved(((Integer)((ArrayList)localObject2).get(i)).intValue());
               i -= 1;
             }
-            localObject1 = VideoFeedsRecommendManager.a(this.a);
+            localObject1 = VideoFeedsRecommendManager.b(this.a);
             i = j + 1;
             ((ArrayList)localObject1).addAll(i, paramBundle);
-            VideoFeedsRecommendManager.a(this.a).notifyItemRangeInserted(i, paramBundle.size());
+            VideoFeedsRecommendManager.e(this.a).notifyItemRangeInserted(i, paramBundle.size());
             i = m;
             while (i < ((ArrayList)localObject2).size())
             {
-              VideoFeedsRecommendManager.a(this.a).add(((Integer)((ArrayList)localObject2).get(i)).intValue(), ((ArrayList)localObject3).get(i));
-              VideoFeedsRecommendManager.a(this.a).notifyItemInserted(((Integer)((ArrayList)localObject2).get(i)).intValue());
+              VideoFeedsRecommendManager.b(this.a).add(((Integer)((ArrayList)localObject2).get(i)).intValue(), ((ArrayList)localObject3).get(i));
+              VideoFeedsRecommendManager.e(this.a).notifyItemInserted(((Integer)((ArrayList)localObject2).get(i)).intValue());
               i += 1;
             }
           }
@@ -113,7 +113,7 @@ class VideoFeedsRecommendManager$PlayRecommendObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendManager.PlayRecommendObserver
  * JD-Core Version:    0.7.0.1
  */

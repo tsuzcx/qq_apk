@@ -10,36 +10,36 @@ import com.tencent.biz.pubaccount.weishi_new.drama.data.WSDramaItemData;
 public abstract class AbsWSDramaUIGroup
   extends AbsWsUIGroup<WSDramaItemData>
 {
-  protected stDrama a;
-  protected stDramaFeed a;
-  protected stSimpleMetaFeed a;
+  protected stDrama g;
+  protected stDramaFeed h;
+  protected stSimpleMetaFeed i;
   
   public AbsWSDramaUIGroup(Context paramContext)
   {
     super(paramContext);
   }
   
-  private stDrama a()
+  private stDrama l()
   {
-    WSDramaItemData localWSDramaItemData = (WSDramaItemData)a();
+    WSDramaItemData localWSDramaItemData = (WSDramaItemData)c();
     if (localWSDramaItemData != null) {
-      return localWSDramaItemData.a();
+      return localWSDramaItemData.f();
     }
     return null;
   }
   
-  private stDramaFeed a()
+  private stDramaFeed m()
   {
-    WSDramaItemData localWSDramaItemData = (WSDramaItemData)a();
+    WSDramaItemData localWSDramaItemData = (WSDramaItemData)c();
     if (localWSDramaItemData != null) {
-      return localWSDramaItemData.a();
+      return localWSDramaItemData.g();
     }
     return null;
   }
   
-  private stSimpleMetaFeed a()
+  private stSimpleMetaFeed n()
   {
-    stDramaFeed localstDramaFeed = a();
+    stDramaFeed localstDramaFeed = m();
     if (localstDramaFeed != null) {
       return localstDramaFeed.feed;
     }
@@ -48,16 +48,16 @@ public abstract class AbsWSDramaUIGroup
   
   protected void a()
   {
-    this.jdField_a_of_type_UserGrowthStDrama = a();
-    this.jdField_a_of_type_UserGrowthStDramaFeed = a();
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = a();
+    this.g = l();
+    this.h = m();
+    this.i = n();
   }
   
-  public abstract void c(int paramInt);
+  public abstract void d(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.holder.controller.AbsWSDramaUIGroup
  * JD-Core Version:    0.7.0.1
  */

@@ -36,7 +36,7 @@ public final class HealthTimerConfigProcessor
       paramArrayOfQConfItem = (QConfItem)ArraysKt.firstOrNull(paramArrayOfQConfItem);
       if (paramArrayOfQConfItem != null)
       {
-        paramArrayOfQConfItem = paramArrayOfQConfItem.a;
+        paramArrayOfQConfItem = paramArrayOfQConfItem.b;
         if (paramArrayOfQConfItem != null) {
           return HealthTimerConfigBean.a.a(paramArrayOfQConfItem);
         }
@@ -102,7 +102,7 @@ public final class HealthTimerConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.config.HealthTimerConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

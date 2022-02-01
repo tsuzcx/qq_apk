@@ -12,41 +12,41 @@ class CreateVirtualAccountFragment$4
 {
   CreateVirtualAccountFragment$4(CreateVirtualAccountFragment paramCreateVirtualAccountFragment, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt == 1) {
         if (Build.VERSION.SDK_INT >= 23)
         {
-          if (this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getQBaseActivity().checkSelfPermission("android.permission.CAMERA") != 0) {
+          if (this.b.getQBaseActivity().checkSelfPermission("android.permission.CAMERA") != 0) {
             paramInt = 1;
           } else {
             paramInt = 0;
           }
           if (paramInt != 0)
           {
-            this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getQBaseActivity().requestPermissions(new CreateVirtualAccountFragment.4.1(this), 2, new String[] { "android.permission.CAMERA" });
+            this.b.getQBaseActivity().requestPermissions(new CreateVirtualAccountFragment.4.1(this), 2, new String[] { "android.permission.CAMERA" });
           }
           else
           {
-            paramView = this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment;
-            CreateVirtualAccountFragment.a(paramView, QQLiteStatusUtil.a(paramView.getActivity()));
+            paramView = this.b;
+            CreateVirtualAccountFragment.a(paramView, QQLiteStatusUtil.b(paramView.getActivity()));
           }
         }
         else
         {
-          paramView = this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment;
-          CreateVirtualAccountFragment.a(paramView, QQLiteStatusUtil.a(paramView.getActivity()));
+          paramView = this.b;
+          CreateVirtualAccountFragment.a(paramView, QQLiteStatusUtil.b(paramView.getActivity()));
         }
       }
     }
     else {
-      QQLiteStatusUtil.a(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity());
+      QQLiteStatusUtil.a(this.b.getActivity());
     }
     try
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.dismiss();
       return;
     }
     catch (Exception paramView)
@@ -57,7 +57,7 @@ class CreateVirtualAccountFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.CreateVirtualAccountFragment.4
  * JD-Core Version:    0.7.0.1
  */

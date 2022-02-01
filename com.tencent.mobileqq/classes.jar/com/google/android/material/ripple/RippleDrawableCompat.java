@@ -40,16 +40,10 @@ public class RippleDrawableCompat
     return this;
   }
   
-  @NonNull
-  public ShapeAppearanceModel a()
-  {
-    return this.a.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.a();
-  }
-  
   public void draw(Canvas paramCanvas)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.draw(paramCanvas);
+    if (this.a.b) {
+      this.a.a.draw(paramCanvas);
     }
   }
   
@@ -61,7 +55,13 @@ public class RippleDrawableCompat
   
   public int getOpacity()
   {
-    return this.a.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.getOpacity();
+    return this.a.a.getOpacity();
+  }
+  
+  @NonNull
+  public ShapeAppearanceModel getShapeAppearanceModel()
+  {
+    return this.a.a.getShapeAppearanceModel();
   }
   
   public boolean isStateful()
@@ -72,19 +72,19 @@ public class RippleDrawableCompat
   protected void onBoundsChange(@NonNull Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    this.a.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setBounds(paramRect);
+    this.a.a.setBounds(paramRect);
   }
   
   protected boolean onStateChange(@NonNull int[] paramArrayOfInt)
   {
     boolean bool1 = super.onStateChange(paramArrayOfInt);
-    if (this.a.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setState(paramArrayOfInt)) {
+    if (this.a.a.setState(paramArrayOfInt)) {
       bool1 = true;
     }
     boolean bool2 = RippleUtils.a(paramArrayOfInt);
-    if (this.a.jdField_a_of_type_Boolean != bool2)
+    if (this.a.b != bool2)
     {
-      this.a.jdField_a_of_type_Boolean = bool2;
+      this.a.b = bool2;
       bool1 = true;
     }
     return bool1;
@@ -92,37 +92,37 @@ public class RippleDrawableCompat
   
   public void setAlpha(int paramInt)
   {
-    this.a.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setAlpha(paramInt);
+    this.a.a.setAlpha(paramInt);
   }
   
   public void setColorFilter(@Nullable ColorFilter paramColorFilter)
   {
-    this.a.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setColorFilter(paramColorFilter);
+    this.a.a.setColorFilter(paramColorFilter);
   }
   
   public void setShapeAppearanceModel(@NonNull ShapeAppearanceModel paramShapeAppearanceModel)
   {
-    this.a.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setShapeAppearanceModel(paramShapeAppearanceModel);
+    this.a.a.setShapeAppearanceModel(paramShapeAppearanceModel);
   }
   
   public void setTint(@ColorInt int paramInt)
   {
-    this.a.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setTint(paramInt);
+    this.a.a.setTint(paramInt);
   }
   
   public void setTintList(@Nullable ColorStateList paramColorStateList)
   {
-    this.a.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setTintList(paramColorStateList);
+    this.a.a.setTintList(paramColorStateList);
   }
   
   public void setTintMode(@Nullable PorterDuff.Mode paramMode)
   {
-    this.a.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setTintMode(paramMode);
+    this.a.a.setTintMode(paramMode);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.ripple.RippleDrawableCompat
  * JD-Core Version:    0.7.0.1
  */

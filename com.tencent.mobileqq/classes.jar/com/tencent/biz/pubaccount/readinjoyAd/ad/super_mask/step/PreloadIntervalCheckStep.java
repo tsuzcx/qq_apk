@@ -9,7 +9,7 @@ import kotlin.Metadata;
 public final class PreloadIntervalCheckStep
   extends SuperMaskStep
 {
-  public boolean a()
+  public boolean c()
   {
     long l1 = SuperMaskConfigMgr.a.a();
     long l2 = NetConnInfoCenter.getServerTime();
@@ -27,7 +27,7 @@ public final class PreloadIntervalCheckStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.PreloadIntervalCheckStep
  * JD-Core Version:    0.7.0.1
  */

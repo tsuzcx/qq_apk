@@ -7,22 +7,15 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class BaseTextRegion$Builder
 {
-  int a;
-  public Bitmap a;
-  public Typeface a;
+  int a = 0;
   int b = 0;
   int c = 0;
   int d = 0;
   public int e = 0;
   public int f = 0;
-  public int g = 2;
-  
-  public BaseTextRegion$Builder()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_AndroidGraphicsTypeface = null;
-  }
+  public Bitmap g = null;
+  public Typeface h = null;
+  public int i = 2;
   
   public int a(float paramFloat)
   {
@@ -40,20 +33,20 @@ public class BaseTextRegion$Builder
   {
     this.c = a(paramFloat1);
     this.d = a(paramFloat2);
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
     return this;
   }
   
   public Builder a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.g = paramBitmap;
     return this;
   }
   
   public Builder a(Typeface paramTypeface)
   {
-    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
+    this.h = paramTypeface;
     return this;
   }
   
@@ -66,22 +59,22 @@ public class BaseTextRegion$Builder
   
   void a(BaseTextRegion paramBaseTextRegion)
   {
-    paramBaseTextRegion.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramBaseTextRegion.i = this.g;
     paramBaseTextRegion.e = this.e;
     paramBaseTextRegion.f = this.f;
     paramBaseTextRegion.c = this.c;
     paramBaseTextRegion.d = this.d;
-    paramBaseTextRegion.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    paramBaseTextRegion.a = this.a;
     paramBaseTextRegion.b = this.b;
-    paramBaseTextRegion.jdField_a_of_type_AndroidGraphicsTypeface = this.jdField_a_of_type_AndroidGraphicsTypeface;
-    paramBaseTextRegion.g = paramBaseTextRegion.a(paramBaseTextRegion.jdField_a_of_type_Int);
+    paramBaseTextRegion.j = this.h;
+    paramBaseTextRegion.g = paramBaseTextRegion.a(paramBaseTextRegion.a);
     paramBaseTextRegion.h = paramBaseTextRegion.a(paramBaseTextRegion.b);
-    paramBaseTextRegion.i = this.g;
+    paramBaseTextRegion.k = this.i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.BaseTextRegion.Builder
  * JD-Core Version:    0.7.0.1
  */

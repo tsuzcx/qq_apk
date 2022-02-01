@@ -9,26 +9,26 @@ import java.util.HashMap;
 
 public class DownloadJobContext
 {
-  private long jdField_a_of_type_Long;
-  private HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  private IDownloadStatusListener jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIDownloadStatusListener;
-  private final DownloadFile jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile;
-  private final WeiyunDownloadStatusInfo jdField_a_of_type_ComTencentMobileqqWeiyunModelWeiyunDownloadStatusInfo;
-  private final String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private final String jdField_b_of_type_JavaLangString;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString;
-  private volatile boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString;
-  private volatile boolean jdField_d_of_type_Boolean;
+  private final String a;
+  private final DownloadFile b;
+  private final String c;
+  private volatile boolean d;
+  private volatile boolean e;
+  private volatile boolean f;
+  private volatile boolean g;
+  private final WeiyunDownloadStatusInfo h;
+  private long i;
+  private String j;
+  private String k;
+  private HttpNetReq l;
+  private IDownloadStatusListener m;
   
   private DownloadJobContext(String paramString1, String paramString2, DownloadFile paramDownloadFile, WeiyunDownloadStatusInfo paramWeiyunDownloadStatusInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile = paramDownloadFile;
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunModelWeiyunDownloadStatusInfo = paramWeiyunDownloadStatusInfo;
+    this.a = paramString1;
+    this.c = paramString2;
+    this.b = paramDownloadFile;
+    this.h = paramWeiyunDownloadStatusInfo;
   }
   
   public static HttpNetReq a(Object paramObject, String paramString1, String paramString2, String paramString3, boolean paramBoolean, INetEngineListener paramINetEngineListener)
@@ -65,124 +65,124 @@ public class DownloadJobContext
     throw new IllegalArgumentException("The params jobOwnerUid, localDir, file and statusInfo should be valid.");
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public HttpNetReq a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  }
-  
-  public IDownloadStatusListener a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIDownloadStatusListener;
-  }
-  
-  public DownloadFile a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile;
-  }
-  
-  public WeiyunDownloadStatusInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWeiyunModelWeiyunDownloadStatusInfo;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.i = paramLong;
   }
   
   public void a(HttpNetReq paramHttpNetReq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = paramHttpNetReq;
+    this.l = paramHttpNetReq;
   }
   
   public void a(IDownloadStatusListener paramIDownloadStatusListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIDownloadStatusListener = paramIDownloadStatusListener;
+    this.m = paramIDownloadStatusListener;
   }
   
   public void a(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.j = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public WeiyunDownloadStatusInfo b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWeiyunModelWeiyunDownloadStatusInfo.a();
+    return this.f;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.a;
   }
   
   public void b(String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    this.k = paramString;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
-  public boolean b()
+  public DownloadFile c()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.b;
   }
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
+    this.g = paramBoolean;
   }
   
   public String d()
   {
-    return this.jdField_d_of_type_JavaLangString;
+    return this.c;
   }
   
   public void d(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
   }
   
-  public boolean d()
+  public boolean e()
   {
-    return this.jdField_d_of_type_Boolean;
+    return this.d;
+  }
+  
+  public boolean f()
+  {
+    return this.e;
+  }
+  
+  public boolean g()
+  {
+    return this.g;
+  }
+  
+  public long h()
+  {
+    return this.i;
+  }
+  
+  public String i()
+  {
+    return this.j;
+  }
+  
+  public String j()
+  {
+    return this.k;
+  }
+  
+  public HttpNetReq k()
+  {
+    return this.l;
+  }
+  
+  public IDownloadStatusListener l()
+  {
+    return this.m;
+  }
+  
+  public WeiyunDownloadStatusInfo m()
+  {
+    return this.h;
+  }
+  
+  public WeiyunDownloadStatusInfo n()
+  {
+    return this.h.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.model.DownloadJobContext
  * JD-Core Version:    0.7.0.1
  */

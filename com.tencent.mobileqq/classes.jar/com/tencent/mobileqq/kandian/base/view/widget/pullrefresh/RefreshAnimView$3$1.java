@@ -10,21 +10,21 @@ class RefreshAnimView$3$1
   
   public void run()
   {
-    RefreshAnimView.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView).setText(this.a.jdField_a_of_type_JavaLangString);
-    if (this.a.jdField_a_of_type_Boolean) {
-      RefreshAnimView.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView).setCompoundDrawablesWithIntrinsicBounds(2130849735, 0, 0, 0);
+    RefreshAnimView.a(this.a.c).setText(this.a.a);
+    if (this.a.b) {
+      RefreshAnimView.a(this.a.c).setCompoundDrawablesWithIntrinsicBounds(2130851444, 0, 0, 0);
     } else {
-      RefreshAnimView.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView).setCompoundDrawablesWithIntrinsicBounds(2130849736, 0, 0, 0);
+      RefreshAnimView.a(this.a.c).setCompoundDrawablesWithIntrinsicBounds(2130851445, 0, 0, 0);
     }
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
     localAlphaAnimation.setDuration(100L);
     localAlphaAnimation.setFillAfter(true);
-    RefreshAnimView.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView).startAnimation(localAlphaAnimation);
+    RefreshAnimView.a(this.a.c).startAnimation(localAlphaAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.pullrefresh.RefreshAnimView.3.1
  * JD-Core Version:    0.7.0.1
  */

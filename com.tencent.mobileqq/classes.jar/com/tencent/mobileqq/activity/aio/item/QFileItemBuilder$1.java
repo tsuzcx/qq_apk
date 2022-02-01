@@ -13,15 +13,15 @@ class QFileItemBuilder$1
   
   public void onClick(View paramView)
   {
-    ChatMessage localChatMessage = this.a.a(paramView);
+    ChatMessage localChatMessage = this.a.f(paramView);
     this.a.a.b(localChatMessage);
-    this.a.a.d();
+    this.a.a.u();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QFileItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -52,118 +52,98 @@ public class RIJAdReportManager
     if (paramVideoAdInfo == null) {
       return localAdvertisementInfo;
     }
-    localAdvertisementInfo.mAdAdvertiseId = paramVideoAdInfo.jdField_g_of_type_Long;
-    localAdvertisementInfo.mAdVideoUrl = paramVideoAdInfo.s;
-    localAdvertisementInfo.mAdAid = paramVideoAdInfo.e;
-    localAdvertisementInfo.mAdTraceId = paramVideoAdInfo.jdField_h_of_type_JavaLangString;
-    localAdvertisementInfo.mAdViewId = paramVideoAdInfo.jdField_m_of_type_JavaLangString;
-    localAdvertisementInfo.mAdProductId = paramVideoAdInfo.i;
-    localAdvertisementInfo.mAdVia = paramVideoAdInfo.t;
-    localAdvertisementInfo.mAdNocoId = paramVideoAdInfo.jdField_h_of_type_Long;
-    localAdvertisementInfo.mAdApurl = paramVideoAdInfo.jdField_g_of_type_JavaLangString;
-    localAdvertisementInfo.mAdRl = paramVideoAdInfo.jdField_f_of_type_JavaLangString;
-    localAdvertisementInfo.mAdDownloadApiUrl = paramVideoAdInfo.B;
-    localAdvertisementInfo.mAdEffectUrl = paramVideoAdInfo.A;
-    localAdvertisementInfo.mAdLandingPageReportUrl = paramVideoAdInfo.z;
-    localAdvertisementInfo.mAdLandingPage = paramVideoAdInfo.jdField_j_of_type_JavaLangString;
-    localAdvertisementInfo.mAdCanvasJson = paramVideoAdInfo.y;
-    localAdvertisementInfo.mAdDestType = paramVideoAdInfo.jdField_n_of_type_Int;
-    localAdvertisementInfo.mAdExt = paramVideoAdInfo.r;
-    localAdvertisementInfo.mAdAppDownLoadSchema = paramVideoAdInfo.x;
-    localAdvertisementInfo.mAdCustomizedInvokeUrl = paramVideoAdInfo.jdField_n_of_type_JavaLangString;
-    localAdvertisementInfo.mAdProductType = paramVideoAdInfo.c;
-    localAdvertisementInfo.mAdJumpMode = paramVideoAdInfo.jdField_l_of_type_Int;
-    localAdvertisementInfo.mAdPosID = paramVideoAdInfo.jdField_b_of_type_Long;
+    localAdvertisementInfo.mAdAdvertiseId = paramVideoAdInfo.Z;
+    localAdvertisementInfo.mAdVideoUrl = paramVideoAdInfo.B;
+    localAdvertisementInfo.mAdAid = paramVideoAdInfo.G;
+    localAdvertisementInfo.mAdTraceId = paramVideoAdInfo.m;
+    localAdvertisementInfo.mAdViewId = paramVideoAdInfo.u;
+    localAdvertisementInfo.mAdProductId = paramVideoAdInfo.n;
+    localAdvertisementInfo.mAdVia = paramVideoAdInfo.L;
+    localAdvertisementInfo.mAdNocoId = paramVideoAdInfo.ac;
+    localAdvertisementInfo.mAdApurl = paramVideoAdInfo.l;
+    localAdvertisementInfo.mAdRl = paramVideoAdInfo.k;
+    localAdvertisementInfo.mAdDownloadApiUrl = paramVideoAdInfo.ad;
+    localAdvertisementInfo.mAdEffectUrl = paramVideoAdInfo.ab;
+    localAdvertisementInfo.mAdLandingPageReportUrl = paramVideoAdInfo.Y;
+    localAdvertisementInfo.mAdLandingPage = paramVideoAdInfo.r;
+    localAdvertisementInfo.mAdCanvasJson = paramVideoAdInfo.X;
+    localAdvertisementInfo.mAdDestType = paramVideoAdInfo.aa;
+    localAdvertisementInfo.mAdExt = paramVideoAdInfo.A;
+    localAdvertisementInfo.mAdAppDownLoadSchema = paramVideoAdInfo.W;
+    localAdvertisementInfo.mAdCustomizedInvokeUrl = paramVideoAdInfo.v;
+    localAdvertisementInfo.mAdProductType = paramVideoAdInfo.o;
+    localAdvertisementInfo.mAdJumpMode = paramVideoAdInfo.S;
+    localAdvertisementInfo.mAdPosID = paramVideoAdInfo.c;
     if (paramInteger1 != null) {
       localAdvertisementInfo.mOrigin = paramInteger1.intValue();
     }
     if (paramInteger2 != null) {
       localAdvertisementInfo.mChannelID = paramInteger2.intValue();
     }
-    if (paramVideoAdInfo.v != null) {
+    if (paramVideoAdInfo.R != null) {
       try
       {
-        paramInteger1 = new JSONObject(paramVideoAdInfo.v);
+        paramInteger1 = new JSONObject(paramVideoAdInfo.R);
         if (paramInteger1.has("mini_program_type")) {
           localAdvertisementInfo.miniProgramType = paramInteger1.optInt("mini_program_type");
         }
-        localAdvertisementInfo.mAdExtInfo = paramVideoAdInfo.v;
+        localAdvertisementInfo.mAdExtInfo = paramVideoAdInfo.R;
       }
       catch (Exception paramInteger1)
       {
         paramInteger1.printStackTrace();
       }
     }
-    localAdvertisementInfo.mPopFormH5Url = paramVideoAdInfo.C;
-    localAdvertisementInfo.mShowAdButton = paramVideoAdInfo.jdField_b_of_type_Boolean;
-    localAdvertisementInfo.mAdFetchTime = paramVideoAdInfo.jdField_a_of_type_Long;
-    localAdvertisementInfo.mAdKdPos = paramVideoAdInfo.jdField_b_of_type_Int;
-    localAdvertisementInfo.ecpm = paramVideoAdInfo.jdField_a_of_type_Double;
-    localAdvertisementInfo.isContract = paramVideoAdInfo.jdField_u_of_type_Int;
+    localAdvertisementInfo.mPopFormH5Url = paramVideoAdInfo.ai;
+    localAdvertisementInfo.mShowAdButton = paramVideoAdInfo.aj;
+    localAdvertisementInfo.mAdFetchTime = paramVideoAdInfo.a;
+    localAdvertisementInfo.mAdKdPos = paramVideoAdInfo.e;
+    localAdvertisementInfo.ecpm = paramVideoAdInfo.az;
+    localAdvertisementInfo.isContract = paramVideoAdInfo.aA;
     VideoAdInfo.a(paramVideoAdInfo);
-    localAdvertisementInfo.mC2SSwitch = paramVideoAdInfo.p;
-    localAdvertisementInfo.mC2SClickUrl = paramVideoAdInfo.jdField_f_of_type_JavaUtilArrayList;
-    localAdvertisementInfo.mC2SExposureUrl = paramVideoAdInfo.jdField_g_of_type_JavaUtilArrayList;
-    localAdvertisementInfo.replay = paramVideoAdInfo.q;
-    localAdvertisementInfo.mRevisionVideoType = paramVideoAdInfo.jdField_m_of_type_Int;
-    localAdvertisementInfo.isMultiyVideo = paramVideoAdInfo.jdField_a_of_type_Boolean;
-    localAdvertisementInfo.processAdExt(paramVideoAdInfo.r);
-    localAdvertisementInfo.mAdBtnTxt = paramVideoAdInfo.jdField_l_of_type_JavaLangString;
-    localAdvertisementInfo.mAdvertisementExtInfo = new AdvertisementExtInfo(paramVideoAdInfo.v);
+    localAdvertisementInfo.mCToSSwitch = paramVideoAdInfo.af;
+    localAdvertisementInfo.mCToSClickUrl = paramVideoAdInfo.ag;
+    localAdvertisementInfo.mCToSExposureUrl = paramVideoAdInfo.ah;
+    localAdvertisementInfo.replay = paramVideoAdInfo.ak;
+    localAdvertisementInfo.mRevisionVideoType = paramVideoAdInfo.U;
+    localAdvertisementInfo.isMultiyVideo = paramVideoAdInfo.V;
+    localAdvertisementInfo.processAdExt(paramVideoAdInfo.A);
+    localAdvertisementInfo.mAdBtnTxt = paramVideoAdInfo.t;
+    localAdvertisementInfo.mAdvertisementExtInfo = new AdvertisementExtInfo(paramVideoAdInfo.R);
     return localAdvertisementInfo;
-  }
-  
-  @Nullable
-  private static AppInterface a(AdReportData paramAdReportData)
-  {
-    AppInterface localAppInterface = paramAdReportData.a();
-    paramAdReportData = localAppInterface;
-    if (localAppInterface == null)
-    {
-      paramAdReportData = localAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        paramAdReportData = localAppInterface;
-        if ((localAppRuntime instanceof QQAppInterface)) {
-          paramAdReportData = (QQAppInterface)localAppRuntime;
-        }
-      }
-    }
-    return paramAdReportData;
   }
   
   /* Error */
   public static JSONObject a(Context paramContext)
   {
     // Byte code:
-    //   0: new 170	org/json/JSONObject
+    //   0: new 173	org/json/JSONObject
     //   3: dup
-    //   4: invokespecial 305	org/json/JSONObject:<init>	()V
+    //   4: invokespecial 289	org/json/JSONObject:<init>	()V
     //   7: astore 8
-    //   9: invokestatic 310	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdDeviceInfoUtil:a	()Ljava/lang/String;
+    //   9: invokestatic 294	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdDeviceInfoUtil:a	()Ljava/lang/String;
     //   12: astore 6
-    //   14: invokestatic 312	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdDeviceInfoUtil:c	()Ljava/lang/String;
+    //   14: invokestatic 297	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdDeviceInfoUtil:d	()Ljava/lang/String;
     //   17: astore 7
     //   19: aload 6
-    //   21: invokestatic 318	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   21: invokestatic 303	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   24: istore_3
     //   25: iload_3
     //   26: ifne +44 -> 70
     //   29: aload 6
-    //   31: invokevirtual 323	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   31: invokevirtual 308	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   34: astore 4
     //   36: aload 8
-    //   38: ldc_w 325
+    //   38: ldc_w 310
     //   41: aload 4
-    //   43: invokestatic 331	com/tencent/open/base/MD5Utils:toMD5	(Ljava/lang/String;)Ljava/lang/String;
-    //   46: invokevirtual 323	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   49: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   43: invokestatic 316	com/tencent/open/base/MD5Utils:toMD5	(Ljava/lang/String;)Ljava/lang/String;
+    //   46: invokevirtual 308	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   49: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   52: pop
     //   53: aload 8
-    //   55: ldc_w 337
+    //   55: ldc_w 322
     //   58: iconst_1
-    //   59: invokevirtual 340	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   59: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   62: pop
     //   63: aload 7
     //   65: astore 5
@@ -173,179 +153,179 @@ public class RIJAdReportManager
     //   74: aload 7
     //   76: astore 5
     //   78: aload 7
-    //   80: invokestatic 318	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   80: invokestatic 303	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   83: ifne +50 -> 133
     //   86: aload 7
-    //   88: ldc_w 342
-    //   91: ldc_w 344
-    //   94: invokevirtual 348	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   97: invokevirtual 351	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   88: ldc_w 327
+    //   91: ldc_w 329
+    //   94: invokevirtual 333	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   97: invokevirtual 336	java/lang/String:toUpperCase	()Ljava/lang/String;
     //   100: astore 5
     //   102: aload 8
-    //   104: ldc_w 325
+    //   104: ldc_w 310
     //   107: aload 5
-    //   109: invokestatic 331	com/tencent/open/base/MD5Utils:toMD5	(Ljava/lang/String;)Ljava/lang/String;
-    //   112: invokevirtual 323	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   115: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   109: invokestatic 316	com/tencent/open/base/MD5Utils:toMD5	(Ljava/lang/String;)Ljava/lang/String;
+    //   112: invokevirtual 308	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   115: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   118: pop
     //   119: aload 8
-    //   121: ldc_w 337
+    //   121: ldc_w 322
     //   124: iconst_3
-    //   125: invokevirtual 340	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   125: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   128: pop
     //   129: aload 6
     //   131: astore 4
-    //   133: new 353	com/tencent/gdtad/util/GdtDeviceInfoHelper$Params
+    //   133: new 338	com/tencent/gdtad/util/GdtDeviceInfoHelper$Params
     //   136: dup
-    //   137: invokespecial 354	com/tencent/gdtad/util/GdtDeviceInfoHelper$Params:<init>	()V
+    //   137: invokespecial 339	com/tencent/gdtad/util/GdtDeviceInfoHelper$Params:<init>	()V
     //   140: astore 6
     //   142: aload 6
-    //   144: ldc_w 356
-    //   147: putfield 358	com/tencent/gdtad/util/GdtDeviceInfoHelper$Params:a	Ljava/lang/String;
-    //   150: invokestatic 364	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   144: ldc_w 341
+    //   147: putfield 343	com/tencent/gdtad/util/GdtDeviceInfoHelper$Params:a	Ljava/lang/String;
+    //   150: invokestatic 349	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   153: aload 6
-    //   155: invokestatic 369	com/tencent/gdtad/util/GdtDeviceInfoHelper:a	(Landroid/content/Context;Lcom/tencent/gdtad/util/GdtDeviceInfoHelper$Params;)Lcom/tencent/gdtad/util/GdtDeviceInfoHelper$Result;
+    //   155: invokestatic 354	com/tencent/gdtad/util/GdtDeviceInfoHelper:a	(Landroid/content/Context;Lcom/tencent/gdtad/util/GdtDeviceInfoHelper$Params;)Lcom/tencent/gdtad/util/GdtDeviceInfoHelper$Result;
     //   158: astore 6
     //   160: aload 6
     //   162: ifnull +51 -> 213
     //   165: aload 6
-    //   167: getfield 374	com/tencent/gdtad/util/GdtDeviceInfoHelper$Result:a	Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;
+    //   167: getfield 359	com/tencent/gdtad/util/GdtDeviceInfoHelper$Result:a	Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;
     //   170: ifnull +43 -> 213
     //   173: aload 8
-    //   175: ldc_w 325
+    //   175: ldc_w 310
     //   178: aload 6
-    //   180: getfield 374	com/tencent/gdtad/util/GdtDeviceInfoHelper$Result:a	Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;
-    //   183: getfield 379	tencent/gdt/qq_ad_get$QQAdGet$DeviceInfo:muid	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   186: invokevirtual 384	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   189: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   180: getfield 359	com/tencent/gdtad/util/GdtDeviceInfoHelper$Result:a	Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;
+    //   183: getfield 364	tencent/gdt/qq_ad_get$QQAdGet$DeviceInfo:muid	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   186: invokevirtual 369	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   189: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   192: pop
     //   193: aload 8
-    //   195: ldc_w 337
+    //   195: ldc_w 322
     //   198: aload 6
-    //   200: getfield 374	com/tencent/gdtad/util/GdtDeviceInfoHelper$Result:a	Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;
-    //   203: getfield 387	tencent/gdt/qq_ad_get$QQAdGet$DeviceInfo:muid_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   206: invokevirtual 391	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   209: invokevirtual 340	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   200: getfield 359	com/tencent/gdtad/util/GdtDeviceInfoHelper$Result:a	Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;
+    //   203: getfield 372	tencent/gdt/qq_ad_get$QQAdGet$DeviceInfo:muid_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   206: invokevirtual 376	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   209: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   212: pop
     //   213: aload 8
-    //   215: ldc_w 393
-    //   218: invokestatic 397	com/tencent/biz/pubaccount/Advertisement/util/PublicAccountAdUtil:a	()I
-    //   221: invokevirtual 340	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   215: ldc_w 378
+    //   218: invokestatic 382	com/tencent/biz/pubaccount/Advertisement/util/PublicAccountAdUtil:a	()I
+    //   221: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   224: pop
     //   225: aload 8
-    //   227: ldc_w 399
+    //   227: ldc_w 384
     //   230: aload_0
-    //   231: invokestatic 404	com/tencent/biz/qqstory/utils/NetworkUtils:c	(Landroid/content/Context;)Ljava/lang/String;
-    //   234: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   231: invokestatic 389	com/tencent/biz/qqstory/utils/NetworkUtils:e	(Landroid/content/Context;)Ljava/lang/String;
+    //   234: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   237: pop
     //   238: iconst_0
     //   239: istore_1
-    //   240: invokestatic 408	com/tencent/mobileqq/utils/DeviceInfoUtil:g	()I
+    //   240: invokestatic 391	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdDeviceInfoUtil:e	()I
     //   243: istore_2
     //   244: iload_2
     //   245: istore_1
     //   246: aload 8
-    //   248: ldc_w 410
+    //   248: ldc_w 393
     //   251: iload_1
-    //   252: invokevirtual 340	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   252: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   255: pop
     //   256: aload 8
-    //   258: ldc_w 412
-    //   261: invokestatic 414	com/tencent/mobileqq/utils/DeviceInfoUtil:e	()Ljava/lang/String;
-    //   264: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   258: ldc_w 395
+    //   261: invokestatic 400	com/tencent/mobileqq/utils/DeviceInfoUtil:g	()Ljava/lang/String;
+    //   264: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   267: pop
     //   268: aload 8
-    //   270: ldc_w 416
-    //   273: invokestatic 417	com/tencent/mobileqq/utils/DeviceInfoUtil:c	()Ljava/lang/String;
-    //   276: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   270: ldc_w 402
+    //   273: invokestatic 404	com/tencent/mobileqq/utils/DeviceInfoUtil:e	()Ljava/lang/String;
+    //   276: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   279: pop
     //   280: aload 8
-    //   282: ldc_w 419
-    //   285: invokestatic 422	com/tencent/common/config/AppSetting:a	()I
-    //   288: invokestatic 426	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   291: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   282: ldc_w 406
+    //   285: invokestatic 410	com/tencent/common/config/AppSetting:d	()I
+    //   288: invokestatic 414	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   291: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   294: pop
     //   295: aload 8
-    //   297: ldc_w 428
-    //   300: invokestatic 433	com/dataline/util/DatalineMathUtil:a	()J
-    //   303: invokestatic 436	com/dataline/util/DatalineMathUtil:a	(J)Ljava/lang/String;
-    //   306: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   297: ldc_w 416
+    //   300: invokestatic 421	com/dataline/util/DatalineMathUtil:a	()J
+    //   303: invokestatic 424	com/dataline/util/DatalineMathUtil:a	(J)Ljava/lang/String;
+    //   306: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   309: pop
     //   310: aload 8
-    //   312: ldc_w 438
-    //   315: ldc_w 440
-    //   318: invokestatic 446	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   321: checkcast 440	com/tencent/mobileqq/kandian/base/utils/api/IRIJNetworkUtils
+    //   312: ldc_w 426
+    //   315: ldc_w 428
+    //   318: invokestatic 434	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   321: checkcast 428	com/tencent/mobileqq/kandian/base/utils/api/IRIJNetworkUtils
     //   324: aload_0
-    //   325: invokeinterface 449 2 0
-    //   330: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   325: invokeinterface 437 2 0
+    //   330: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   333: pop
     //   334: aload 8
-    //   336: ldc_w 451
+    //   336: ldc_w 439
     //   339: aload 5
-    //   341: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   341: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   344: pop
     //   345: aload 8
-    //   347: ldc_w 453
+    //   347: ldc_w 441
     //   350: iconst_2
-    //   351: invokevirtual 340	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   351: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   354: pop
     //   355: aload 8
-    //   357: ldc_w 455
-    //   360: invokestatic 458	com/tencent/mobileqq/utils/DeviceInfoUtil:k	()Ljava/lang/String;
-    //   363: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   357: ldc_w 443
+    //   360: invokestatic 446	com/tencent/mobileqq/utils/DeviceInfoUtil:w	()Ljava/lang/String;
+    //   363: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   366: pop
     //   367: aload 8
-    //   369: ldc_w 460
-    //   372: invokestatic 462	com/tencent/mobileqq/utils/DeviceInfoUtil:i	()Ljava/lang/String;
-    //   375: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   369: ldc_w 448
+    //   372: invokestatic 450	com/tencent/mobileqq/utils/DeviceInfoUtil:u	()Ljava/lang/String;
+    //   375: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   378: pop
     //   379: aload 8
-    //   381: ldc_w 464
-    //   384: invokestatic 466	com/tencent/mobileqq/utils/DeviceInfoUtil:h	()Ljava/lang/String;
-    //   387: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   381: ldc_w 452
+    //   384: invokestatic 454	com/tencent/mobileqq/utils/DeviceInfoUtil:t	()Ljava/lang/String;
+    //   387: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   390: pop
     //   391: aload 8
-    //   393: ldc_w 468
+    //   393: ldc_w 456
     //   396: aload 4
-    //   398: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   398: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   401: pop
     //   402: aload_0
     //   403: ifnull +66 -> 469
     //   406: aload 8
-    //   408: ldc_w 470
+    //   408: ldc_w 458
     //   411: aload_0
-    //   412: invokevirtual 476	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   415: ldc_w 478
-    //   418: invokestatic 484	android/provider/Settings$Secure:getString	(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
-    //   421: invokevirtual 335	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   412: invokevirtual 464	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   415: ldc_w 466
+    //   418: invokestatic 472	android/provider/Settings$Secure:getString	(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+    //   421: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   424: pop
     //   425: aload 8
     //   427: areturn
     //   428: astore_0
-    //   429: new 486	java/lang/StringBuilder
+    //   429: new 474	java/lang/StringBuilder
     //   432: dup
-    //   433: invokespecial 487	java/lang/StringBuilder:<init>	()V
+    //   433: invokespecial 475	java/lang/StringBuilder:<init>	()V
     //   436: astore 4
     //   438: aload 4
-    //   440: ldc_w 489
-    //   443: invokevirtual 493	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   440: ldc_w 477
+    //   443: invokevirtual 481	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   446: pop
     //   447: aload 4
     //   449: aload_0
-    //   450: invokevirtual 496	java/lang/Exception:toString	()Ljava/lang/String;
-    //   453: invokevirtual 493	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   450: invokevirtual 484	java/lang/Exception:toString	()Ljava/lang/String;
+    //   453: invokevirtual 481	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   456: pop
-    //   457: ldc_w 498
+    //   457: ldc_w 486
     //   460: iconst_1
     //   461: aload 4
-    //   463: invokevirtual 499	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   466: invokestatic 505	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   463: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   466: invokestatic 492	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   469: aload 8
     //   471: areturn
     //   472: astore_0
     //   473: aload_0
-    //   474: invokevirtual 192	java/lang/Exception:printStackTrace	()V
+    //   474: invokevirtual 195	java/lang/Exception:printStackTrace	()V
     //   477: aconst_null
     //   478: areturn
     //   479: astore 6
@@ -435,13 +415,13 @@ public class RIJAdReportManager
       if (paramVideoAdInfo != null)
       {
         if (localJSONObject.isNull("apurl")) {
-          localJSONObject.put("apurl", paramVideoAdInfo.jdField_g_of_type_JavaLangString);
+          localJSONObject.put("apurl", paramVideoAdInfo.l);
         }
-        localJSONObject.put("via", paramVideoAdInfo.t);
-        localJSONObject.put("dis_channel", paramVideoAdInfo.jdField_j_of_type_Int);
-        localJSONObject.put("button_url", paramVideoAdInfo.jdField_u_of_type_JavaLangString);
+        localJSONObject.put("via", paramVideoAdInfo.L);
+        localJSONObject.put("dis_channel", paramVideoAdInfo.M);
+        localJSONObject.put("button_url", paramVideoAdInfo.N);
       }
-      localJSONObject.put("cookie", NativeAdUtils.a());
+      localJSONObject.put("cookie", NativeAdUtils.b());
       if (paramInt > 0)
       {
         localJSONObject.put("click_pos", paramInt);
@@ -465,7 +445,7 @@ public class RIJAdReportManager
   
   private static void a(AdvertisementInfo paramAdvertisementInfo, VideoAdInfo paramVideoAdInfo)
   {
-    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mC2SSwitch == 1))
+    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mCToSSwitch == 1))
     {
       if (QLog.isColorLevel())
       {
@@ -473,15 +453,15 @@ public class RIJAdReportManager
         paramVideoAdInfo.append(" C2S AD_EXPOSURE: advertisementInfo = ");
         paramVideoAdInfo.append(paramAdvertisementInfo.toString());
         paramVideoAdInfo.append(" clickurl = ");
-        paramVideoAdInfo.append(paramAdvertisementInfo.mC2SClickUrl);
+        paramVideoAdInfo.append(paramAdvertisementInfo.mCToSClickUrl);
         paramVideoAdInfo.append(" exposureUrl = ");
-        paramVideoAdInfo.append(paramAdvertisementInfo.mC2SExposureUrl);
+        paramVideoAdInfo.append(paramAdvertisementInfo.mCToSExposureUrl);
         QLog.d("NativeAdUtils", 2, paramVideoAdInfo.toString());
       }
       GdtC2SReporter.a(0, 1, (qq_ad_get.QQAdGetRsp.AdInfo)((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).getAdInfoParams(paramAdvertisementInfo));
       return;
     }
-    if ((paramVideoAdInfo != null) && (paramVideoAdInfo.p == 1))
+    if ((paramVideoAdInfo != null) && (paramVideoAdInfo.af == 1))
     {
       paramAdvertisementInfo = a(paramVideoAdInfo);
       if (paramAdvertisementInfo != null)
@@ -494,9 +474,9 @@ public class RIJAdReportManager
           localStringBuilder.append(" videoAdInfo = ");
           localStringBuilder.append(paramVideoAdInfo.toString());
           localStringBuilder.append(" clickurl = ");
-          localStringBuilder.append(paramAdvertisementInfo.mC2SClickUrl);
+          localStringBuilder.append(paramAdvertisementInfo.mCToSClickUrl);
           localStringBuilder.append(" exposureUrl = ");
-          localStringBuilder.append(paramAdvertisementInfo.mC2SExposureUrl);
+          localStringBuilder.append(paramAdvertisementInfo.mCToSExposureUrl);
           QLog.d("NativeAdUtils", 2, localStringBuilder.toString());
         }
         GdtC2SReporter.a(0, 1, (qq_ad_get.QQAdGetRsp.AdInfo)((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).getAdInfoParams(paramAdvertisementInfo));
@@ -506,7 +486,7 @@ public class RIJAdReportManager
   
   private static void a(AdvertisementInfo paramAdvertisementInfo, VideoAdInfo paramVideoAdInfo, ArrayList<String> paramArrayList1, String paramString, ArrayList<String> paramArrayList2, int paramInt)
   {
-    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mC2SSwitch == 1))
+    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mCToSSwitch == 1))
     {
       if (QLog.isColorLevel())
       {
@@ -522,10 +502,10 @@ public class RIJAdReportManager
       GdtC2SReporter.a(paramInt, 1, (qq_ad_get.QQAdGetRsp.AdInfo)((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).getAdInfoParams(paramAdvertisementInfo));
       return;
     }
-    if ((paramVideoAdInfo != null) && (paramVideoAdInfo.p == 1))
+    if ((paramVideoAdInfo != null) && (paramVideoAdInfo.af == 1))
     {
       paramAdvertisementInfo = a(paramVideoAdInfo);
-      if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mC2SSwitch == 1))
+      if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mCToSSwitch == 1))
       {
         if (QLog.isColorLevel())
         {
@@ -550,30 +530,30 @@ public class RIJAdReportManager
     if (paramAdReportData == null) {
       return;
     }
-    AppInterface localAppInterface = a(paramAdReportData);
+    AppInterface localAppInterface = f(paramAdReportData);
     if (localAppInterface == null) {
       return;
     }
-    if (AdReportManager.a(paramAdReportData)) {
+    if (AdReportManager.b(paramAdReportData)) {
       return;
     }
-    Context localContext = paramAdReportData.a();
-    int i = paramAdReportData.a();
-    int j = paramAdReportData.b();
-    AdvertisementInfo localAdvertisementInfo = paramAdReportData.a();
-    VideoAdInfo localVideoAdInfo = paramAdReportData.a();
-    long l = paramAdReportData.a();
-    String str1 = paramAdReportData.a();
-    JSONObject localJSONObject1 = paramAdReportData.a();
-    int k = paramAdReportData.d();
-    JSONObject localJSONObject2 = paramAdReportData.b();
-    Bundle localBundle = paramAdReportData.a();
-    JSONObject localJSONObject3 = paramAdReportData.c();
-    JSONObject localJSONObject4 = paramAdReportData.d();
-    JSONObject localJSONObject5 = paramAdReportData.f();
-    JSONObject localJSONObject6 = paramAdReportData.e();
-    int m = paramAdReportData.c();
-    boolean bool2 = paramAdReportData.a();
+    Context localContext = paramAdReportData.b();
+    int i = paramAdReportData.c();
+    int j = paramAdReportData.d();
+    AdvertisementInfo localAdvertisementInfo = paramAdReportData.g();
+    VideoAdInfo localVideoAdInfo = paramAdReportData.h();
+    long l = paramAdReportData.i();
+    String str1 = paramAdReportData.j();
+    JSONObject localJSONObject1 = paramAdReportData.l();
+    int k = paramAdReportData.m();
+    JSONObject localJSONObject2 = paramAdReportData.n();
+    Bundle localBundle = paramAdReportData.o();
+    JSONObject localJSONObject3 = paramAdReportData.p();
+    JSONObject localJSONObject4 = paramAdReportData.q();
+    JSONObject localJSONObject5 = paramAdReportData.s();
+    JSONObject localJSONObject6 = paramAdReportData.r();
+    int m = paramAdReportData.e();
+    boolean bool2 = paramAdReportData.f();
     String str2 = localAppInterface.getAccount();
     boolean bool1;
     if ((localAdvertisementInfo != null) && (localAdvertisementInfo.mSoftAdType != 0)) {
@@ -606,8 +586,8 @@ public class RIJAdReportManager
     if ((paramJSONObject != null) && (paramAdvertisementInfo != null) && (paramAdvertisementInfo.gameAdComData != null)) {
       try
       {
-        paramJSONObject.put("pkg_name", paramAdvertisementInfo.gameAdComData.d);
-        paramJSONObject.put("game_adtag", new JSONObject(paramAdvertisementInfo.gameAdComData.E).optString("ADTAG"));
+        paramJSONObject.put("pkg_name", paramAdvertisementInfo.gameAdComData.e);
+        paramJSONObject.put("game_adtag", new JSONObject(paramAdvertisementInfo.gameAdComData.F).optString("ADTAG"));
         return;
       }
       catch (JSONException paramJSONObject)
@@ -630,14 +610,6 @@ public class RIJAdReportManager
         paramJSONObject.printStackTrace();
       }
     }
-  }
-  
-  private static String b(AdReportData paramAdReportData)
-  {
-    if ((paramAdReportData != null) && (paramAdReportData.a() != null) && (paramAdReportData.a().originalExposureUrl != null)) {
-      return paramAdReportData.a().originalExposureUrl.replace("__VIEW_PERCENT__", "1").replace("__VIEW_TIME__", "0").replace("__ACTION_TYPE__", "0");
-    }
-    return null;
   }
   
   @NotNull
@@ -681,7 +653,7 @@ public class RIJAdReportManager
       a(paramAdvertisementInfo, paramVideoAdInfo);
     }
     if (paramInt == 1) {
-      b(paramAdvertisementInfo, paramVideoAdInfo, paramAdvertisementInfo.mC2SClickUrl, " exposureUrl = ", paramAdvertisementInfo.mC2SExposureUrl, 1);
+      b(paramAdvertisementInfo, paramVideoAdInfo, paramAdvertisementInfo.mCToSClickUrl, " exposureUrl = ", paramAdvertisementInfo.mCToSExposureUrl, 1);
     }
     if (paramInt == 27) {
       a(paramAdvertisementInfo, paramVideoAdInfo, paramAdvertisementInfo.mC2SVideoPlayUrl, " videoClickUrl = ", paramAdvertisementInfo.mC2SVideoPlayUrl, 2);
@@ -690,7 +662,7 @@ public class RIJAdReportManager
   
   private static void b(AdvertisementInfo paramAdvertisementInfo, VideoAdInfo paramVideoAdInfo, ArrayList<String> paramArrayList1, String paramString, ArrayList<String> paramArrayList2, int paramInt)
   {
-    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mC2SSwitch == 1))
+    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mCToSSwitch == 1))
     {
       if (QLog.isColorLevel())
       {
@@ -706,10 +678,10 @@ public class RIJAdReportManager
       GdtC2SReporter.a(paramInt, 1, (qq_ad_get.QQAdGetRsp.AdInfo)((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).getAdInfoParams(paramAdvertisementInfo));
       return;
     }
-    if ((paramVideoAdInfo != null) && (paramVideoAdInfo.p == 1))
+    if ((paramVideoAdInfo != null) && (paramVideoAdInfo.af == 1))
     {
       paramAdvertisementInfo = a(paramVideoAdInfo);
-      if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mC2SSwitch == 1))
+      if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mCToSSwitch == 1))
       {
         if (QLog.isColorLevel())
         {
@@ -734,33 +706,33 @@ public class RIJAdReportManager
     if (paramAdReportData == null) {
       return;
     }
-    AdvertisementInfo localAdvertisementInfo = paramAdReportData.a();
+    AdvertisementInfo localAdvertisementInfo = paramAdReportData.g();
     if (localAdvertisementInfo == null) {
       return;
     }
-    if (AdReportUtil.a(paramAdReportData) != ActionEntity.Default) {
+    if (AdReportUtil.b(paramAdReportData) != ActionEntity.Default) {
       return;
     }
     if (AdReportUtil.a(paramAdReportData) != ReportAction.EXPOSE) {
       return;
     }
-    if (ReadInJoyAdUtils.h(paramAdReportData.a()))
+    if (ReadInJoyAdUtils.l(paramAdReportData.g()))
     {
-      if (paramAdReportData.b() != 37)
+      if (paramAdReportData.d() != 37)
       {
         QLog.e("reportAmsExpose", 1, "fail，超级蒙层计费曝光，不是外蒙层");
         return;
       }
-      if (paramAdReportData.a().intValue() != 2) {
+      if (paramAdReportData.t().intValue() != 2) {
         QLog.e("reportAmsExpose", 1, "fail，超级蒙层计费曝光，不是宽口径");
       }
     }
-    else if (paramAdReportData.a().intValue() == 2)
+    else if (paramAdReportData.t().intValue() == 2)
     {
       QLog.e("reportAmsExpose", 1, "fail，正常广告计费曝光是严口径");
       return;
     }
-    if ((localAdvertisementInfo.mAdvertisementExtInfo != null) && (localAdvertisementInfo.mAdvertisementExtInfo.jdField_j_of_type_Int == 32))
+    if ((localAdvertisementInfo.mAdvertisementExtInfo != null) && (localAdvertisementInfo.mAdvertisementExtInfo.o == 32))
     {
       if (TextUtils.isEmpty(localAdvertisementInfo.mAdApurl))
       {
@@ -815,44 +787,15 @@ public class RIJAdReportManager
   
   private static boolean b(AdvertisementInfo paramAdvertisementInfo)
   {
-    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo.jdField_j_of_type_Int == 32);
+    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo.o == 32);
   }
   
   private static boolean b(AdvertisementInfo paramAdvertisementInfo, int paramInt)
   {
-    if (ReadInJoyAdUtils.h(paramAdvertisementInfo)) {
+    if (ReadInJoyAdUtils.l(paramAdvertisementInfo)) {
       return true;
     }
     return paramInt == 37;
-  }
-  
-  private static boolean b(AdReportData paramAdReportData)
-  {
-    int i = paramAdReportData.b();
-    int j = paramAdReportData.a();
-    AdvertisementInfo localAdvertisementInfo = paramAdReportData.a();
-    if (i != 27)
-    {
-      if (j == 26) {
-        return true;
-      }
-      if ((ReadInJoyAdUtils.h(localAdvertisementInfo)) && (j == 2))
-      {
-        if (AdReportUtil.a(paramAdReportData) == ActionEntity.InnerSuperMask)
-        {
-          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoySuperMaskAd", "inner mask, do not report c2s");
-          return true;
-        }
-        if (paramAdReportData.a().intValue() == 1)
-        {
-          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoySuperMaskAd", "strict mask expose, do not report c2s");
-          return true;
-        }
-        return false;
-      }
-      return (localAdvertisementInfo != null) && ((localAdvertisementInfo.clickPos == 39) || (localAdvertisementInfo.clickPos == 40) || (paramAdReportData.d() == 40) || (paramAdReportData.d() == 39));
-    }
-    return true;
   }
   
   private static boolean c(AdvertisementInfo paramAdvertisementInfo)
@@ -863,10 +806,67 @@ public class RIJAdReportManager
     paramAdvertisementInfo = Aladdin.getConfig(449).getString("ad_ams_loose_report", "0");
     return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.equals("1"));
   }
+  
+  private static String e(AdReportData paramAdReportData)
+  {
+    if ((paramAdReportData != null) && (paramAdReportData.g() != null) && (paramAdReportData.g().originalExposureUrl != null)) {
+      return paramAdReportData.g().originalExposureUrl.replace("__VIEW_PERCENT__", "1").replace("__VIEW_TIME__", "0").replace("__ACTION_TYPE__", "0");
+    }
+    return null;
+  }
+  
+  @Nullable
+  private static AppInterface f(AdReportData paramAdReportData)
+  {
+    AppInterface localAppInterface = paramAdReportData.a();
+    paramAdReportData = localAppInterface;
+    if (localAppInterface == null)
+    {
+      paramAdReportData = localAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+        paramAdReportData = localAppInterface;
+        if ((localAppRuntime instanceof QQAppInterface)) {
+          paramAdReportData = (QQAppInterface)localAppRuntime;
+        }
+      }
+    }
+    return paramAdReportData;
+  }
+  
+  private static boolean g(AdReportData paramAdReportData)
+  {
+    int i = paramAdReportData.d();
+    int j = paramAdReportData.c();
+    AdvertisementInfo localAdvertisementInfo = paramAdReportData.g();
+    if (i != 27)
+    {
+      if (j == 26) {
+        return true;
+      }
+      if ((ReadInJoyAdUtils.l(localAdvertisementInfo)) && (j == 2))
+      {
+        if (AdReportUtil.b(paramAdReportData) == ActionEntity.InnerSuperMask)
+        {
+          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoySuperMaskAd", "inner mask, do not report c2s");
+          return true;
+        }
+        if (paramAdReportData.t().intValue() == 1)
+        {
+          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoySuperMaskAd", "strict mask expose, do not report c2s");
+          return true;
+        }
+        return false;
+      }
+      return (localAdvertisementInfo != null) && ((localAdvertisementInfo.clickPos == 39) || (localAdvertisementInfo.clickPos == 40) || (paramAdReportData.m() == 40) || (paramAdReportData.m() == 39));
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.RIJAdReportManager
  * JD-Core Version:    0.7.0.1
  */

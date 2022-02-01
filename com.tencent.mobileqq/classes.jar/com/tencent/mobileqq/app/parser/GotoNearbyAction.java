@@ -22,8 +22,8 @@ public class GotoNearbyAction
   private void a(Intent paramIntent)
   {
     String str1;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("filter")) {
-      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("filter");
+    if (this.f.containsKey("filter")) {
+      str1 = (String)this.f.get("filter");
     } else {
       str1 = "";
     }
@@ -31,44 +31,44 @@ public class GotoNearbyAction
       return;
     }
     String str2;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("filter_gender")) {
-      str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("filter_gender");
+    if (this.f.containsKey("filter_gender")) {
+      str2 = (String)this.f.get("filter_gender");
     } else {
       str2 = "";
     }
     String str3;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("filter_time")) {
-      str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("filter_time");
+    if (this.f.containsKey("filter_time")) {
+      str3 = (String)this.f.get("filter_time");
     } else {
       str3 = "";
     }
     String str4;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("filter_age")) {
-      str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("filter_age");
+    if (this.f.containsKey("filter_age")) {
+      str4 = (String)this.f.get("filter_age");
     } else {
       str4 = "";
     }
     String str5;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("filter_xingzuo")) {
-      str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("filter_xingzuo");
+    if (this.f.containsKey("filter_xingzuo")) {
+      str5 = (String)this.f.get("filter_xingzuo");
     } else {
       str5 = "";
     }
     String str6;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("filter_interest")) {
-      str6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("filter_interest");
+    if (this.f.containsKey("filter_interest")) {
+      str6 = (String)this.f.get("filter_interest");
     } else {
       str6 = "";
     }
     String str7;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("filter_career")) {
-      str7 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("filter_career");
+    if (this.f.containsKey("filter_career")) {
+      str7 = (String)this.f.get("filter_career");
     } else {
       str7 = "";
     }
     String str8;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("filter_location")) {
-      str8 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("filter_location");
+    if (this.f.containsKey("filter_location")) {
+      str8 = (String)this.f.get("filter_location");
     } else {
       str8 = "";
     }
@@ -157,39 +157,39 @@ public class GotoNearbyAction
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("TAB_TYPE", 1);
-    bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey("src_type");
+    bool = this.f.containsKey("src_type");
     String str4 = "";
     String str1;
     if (bool) {
-      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("src_type");
+      str1 = (String)this.f.get("src_type");
     } else {
       str1 = "";
     }
     String str2;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("web_url")) {
-      str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("web_url");
+    if (this.f.containsKey("web_url")) {
+      str2 = (String)this.f.get("web_url");
     } else {
       str2 = "";
     }
     String str3;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("from")) {
-      str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("from");
+    if (this.f.containsKey("from")) {
+      str3 = (String)this.f.get("from");
     } else {
       str3 = "";
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("from_type")) {
-      str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("from_type");
+    if (this.f.containsKey("from_type")) {
+      str4 = (String)this.f.get("from_type");
     }
     localIntent.putExtra("ENTER_TIME", System.currentTimeMillis());
     localIntent.putExtra("fromWhere", str1);
     localIntent.putExtra("webUrl", str2);
     localIntent.putExtra("fromType", str4);
     localIntent.putExtra("FROM_WHERE", 1);
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("neighbor_list_source"))
+    if (this.f.containsKey("neighbor_list_source"))
     {
       try
       {
-        int j = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("neighbor_list_source"));
+        int j = Integer.parseInt((String)this.f.get("neighbor_list_source"));
         i = j;
       }
       catch (Exception localException)
@@ -205,12 +205,12 @@ public class GotoNearbyAction
     }
     a(localIntent);
     localIntent.addFlags(67108864);
-    if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+    if (!(this.b instanceof Activity)) {
       localIntent.addFlags(268435456);
     }
-    RouteUtils.a(this.jdField_a_of_type_AndroidContentContext, localIntent, "/nearby/activity");
+    RouteUtils.a(this.b, localIntent, "/nearby/activity");
     if ("100".equals(str4)) {
-      ReportController.b(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "dc00898", "", "", "0X8007244", "0X8007244", 0, 0, "", "", "", "");
+      ReportController.b(this.a, "dc00898", "", "", "0X8007244", "0X8007244", 0, 0, "", "", "", "");
     }
     return true;
   }
@@ -228,14 +228,14 @@ public class GotoNearbyAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("GotoNearbyAction", 1, localStringBuilder.toString());
-      b_("GotoNearbyAction");
+      h_("GotoNearbyAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.GotoNearbyAction
  * JD-Core Version:    0.7.0.1
  */

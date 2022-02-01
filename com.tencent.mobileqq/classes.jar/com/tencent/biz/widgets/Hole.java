@@ -12,9 +12,9 @@ public class Hole
   extends View
 {
   public int a;
-  private Paint a;
   public int b;
   public int c;
+  private Paint d;
   
   public Hole(Context paramContext)
   {
@@ -24,10 +24,10 @@ public class Hole
   public Hole(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+    this.d = new Paint();
+    this.d.setColor(-16777216);
+    this.d.setAntiAlias(true);
+    this.d.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
   }
   
   public Hole(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -39,19 +39,19 @@ public class Hole
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawARGB(221, 0, 0, 0);
-    paramCanvas.drawCircle(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawCircle(this.a, this.b, this.c, this.d);
   }
   
   public void setHole(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
     this.c = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.Hole
  * JD-Core Version:    0.7.0.1
  */

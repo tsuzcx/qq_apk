@@ -1,10 +1,7 @@
 package com.tencent.qqmini.sdk.manager;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Process;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 class GameGrowthGuardianManager$GuardInstructionDialogLogout$1
   implements DialogInterface.OnClickListener
@@ -14,26 +11,13 @@ class GameGrowthGuardianManager$GuardInstructionDialogLogout$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     this.this$0.performReport("click");
-    paramDialogInterface.dismiss();
-    try
-    {
-      if ((this.this$0.getContext() != null) && ((this.this$0.getContext() instanceof Activity)))
-      {
-        ((Activity)this.this$0.getContext()).onBackPressed();
-        return;
-      }
-      Process.killProcess(Process.myPid());
-      return;
-    }
-    catch (Throwable paramDialogInterface)
-    {
-      QMLog.e("GameGrowthGuardianManager", "getPositiveDialogAction", paramDialogInterface);
-    }
+    this.this$0.dismissInner();
+    this.this$0.doExit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.GameGrowthGuardianManager.GuardInstructionDialogLogout.1
  * JD-Core Version:    0.7.0.1
  */

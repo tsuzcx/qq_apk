@@ -21,21 +21,12 @@ class VideoLayerUI$MyExploreByTouchHelper
     super(paramView);
   }
   
-  private Rect a(int paramInt)
-  {
-    Rect localRect = new Rect(0, 0, 1, 1);
-    if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt].a() == 0)) {
-      localRect.set(this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt].b());
-    }
-    return localRect;
-  }
-  
   private String a(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null) && (paramInt >= 0) && (paramInt < this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length))
+    if ((this.a.ae != null) && (paramInt >= 0) && (paramInt < this.a.ae.length))
     {
       int i = -1;
-      int j = this.a.jdField_a_of_type_ComTencentAvVideoController.a().k;
+      int j = this.a.Z.k().p;
       if (j == 3000) {
         i = 1004;
       } else if (j == 1) {
@@ -43,35 +34,44 @@ class VideoLayerUI$MyExploreByTouchHelper
       } else if (j == 0) {
         i = 0;
       }
-      Resources localResources = this.a.jdField_a_of_type_AndroidContentContext.getApplicationContext().getResources();
-      Object localObject2 = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-      Object localObject1 = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt].c();
+      Resources localResources = this.a.X.getApplicationContext().getResources();
+      Object localObject2 = this.a.Y.getCurrentAccountUin();
+      Object localObject1 = this.a.ae[paramInt].R();
       if (localObject1 != null)
       {
         if (((String)localObject1).equals(localObject2))
         {
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(localResources.getString(2131694384));
-          ((StringBuilder)localObject1).append(localResources.getString(2131695561));
+          ((StringBuilder)localObject1).append(localResources.getString(2131892063));
+          ((StringBuilder)localObject1).append(localResources.getString(2131893320));
           return ((StringBuilder)localObject1).toString();
         }
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, (String)localObject1, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().f)));
-        ((StringBuilder)localObject2).append(localResources.getString(2131695561));
+        ((StringBuilder)localObject2).append(this.a.Y.a(i, (String)localObject1, String.valueOf(this.a.Z.k().aN)));
+        ((StringBuilder)localObject2).append(localResources.getString(2131893320));
         return ((StringBuilder)localObject2).toString();
       }
     }
     return "";
   }
   
+  private Rect b(int paramInt)
+  {
+    Rect localRect = new Rect(0, 0, 1, 1);
+    if ((this.a.ae != null) && (this.a.ae[paramInt].b() == 0)) {
+      localRect.set(this.a.ae[paramInt].f());
+    }
+    return localRect;
+  }
+  
   protected int getVirtualViewAt(float paramFloat1, float paramFloat2)
   {
-    if (this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null)
+    if (this.a.ae != null)
     {
-      int i = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length - 1;
+      int i = this.a.ae.length - 1;
       while (i >= 0)
       {
-        if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].a() == 0) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].b().contains((int)paramFloat1, (int)paramFloat2))) {
+        if ((this.a.ae[i].b() == 0) && (this.a.ae[i].f().contains((int)paramFloat1, (int)paramFloat2))) {
           return i;
         }
         i -= 1;
@@ -82,9 +82,9 @@ class VideoLayerUI$MyExploreByTouchHelper
   
   protected void getVisibleVirtualViews(List<Integer> paramList)
   {
-    if (this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null)
+    if (this.a.ae != null)
     {
-      int j = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length;
+      int j = this.a.ae.length;
       int i = 0;
       while (i < j)
       {
@@ -108,7 +108,7 @@ class VideoLayerUI$MyExploreByTouchHelper
   {
     paramAccessibilityNodeInfoCompat.addAction(16);
     paramAccessibilityNodeInfoCompat.setContentDescription(a(paramInt));
-    Rect localRect = a(paramInt);
+    Rect localRect = b(paramInt);
     if (localRect.isEmpty()) {
       localRect.set(0, 0, 1, 1);
     }

@@ -16,8 +16,6 @@ import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.gamecenter.wadl.biz.entity.WadlReportBuilder;
 import com.tencent.hippy.qq.api.HippyConfig;
 import com.tencent.hippy.qq.api.IHippyAccessHelper;
-import com.tencent.hippy.qq.api.IHippyLibrary;
-import com.tencent.hippy.qq.api.IHippySetting;
 import com.tencent.hippy.qq.api.IHippyUpdate;
 import com.tencent.hippy.qq.api.OpenHippyInfo;
 import com.tencent.imcore.message.Message;
@@ -28,18 +26,14 @@ import com.tencent.mobileqq.activity.aio.BaseAIOUtils;
 import com.tencent.mobileqq.apollo.game.api.ICmGameHelper;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.flutter.api.IQFlutterRouterService;
-import com.tencent.mobileqq.flutter.router.PageRouter;
-import com.tencent.mobileqq.flutter.router.SerializableMap;
 import com.tencent.mobileqq.fragment.QPublicBaseFragment;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msg.api.IConversationFacade;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.mobileqq.qqgamepub.api.IGamePubAccountMsgService;
 import com.tencent.mobileqq.qqgamepub.api.IQQGameConfigUtil;
-import com.tencent.mobileqq.qqgamepub.api.IQQGameFlutterApi;
 import com.tencent.mobileqq.qqgamepub.api.IQQGameHelper;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameHippyApi;
 import com.tencent.mobileqq.qqgamepub.api.IQQGameMsgParser;
 import com.tencent.mobileqq.qqgamepub.api.IQQGamePreDownloadService;
 import com.tencent.mobileqq.qqgamepub.api.IQQGameSubscribeService;
@@ -47,8 +41,8 @@ import com.tencent.mobileqq.qqgamepub.api.IQQGameTempRelyApi;
 import com.tencent.mobileqq.qqgamepub.data.GmpEnterInfoRsp;
 import com.tencent.mobileqq.qqgamepub.data.QQGameMsgInfo;
 import com.tencent.mobileqq.qqgamepub.fragment.QQGameFeedWebFragment;
+import com.tencent.mobileqq.qqgamepub.hippy.fragment.GamePAHippyFragment;
 import com.tencent.mobileqq.qqgamepub.hippy.fragment.GamePAHippyFragmentV2;
-import com.tencent.mobileqq.qqgamepub.hippy.fragment.GamePubAccountHippyFragment;
 import com.tencent.mobileqq.qqgamepub.ipc.QQGameIPCModule;
 import com.tencent.mobileqq.qqgamepub.utils.GameCenterUtils;
 import com.tencent.mobileqq.qqgamepub.utils.GamePAPreloadHelper;
@@ -62,8 +56,6 @@ import com.tencent.mobileqq.qqgamepub.view.NavBarQQGamePub;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.mobileqq.qroute.route.URIRequest;
-import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper;
-import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -80,7 +72,7 @@ import org.json.JSONObject;
 public class QQGameHelperImpl
   implements IQQGameHelper
 {
-  public static final String HIPPY_FROM_DINAMIC = "dynamic";
+  public static final String HIPPY_PSKEY_DOMAIN = "gamecenter.qq.com";
   public static final String PROCESS_NAME_TOOL = "com.tencent.mobileqq:tool";
   private static final String TAG = "QQGamePub_QQGameHelper";
   private long mClickPubAioTime;
@@ -94,12 +86,12 @@ public class QQGameHelperImpl
   {
     if (paramString.equals("SGameOfficial"))
     {
-      GamePubAccountHelper.b("2");
-      return GamePubAccountHippyFragment.class;
+      GamePubAccountHelper.e("2");
+      return GamePAHippyFragment.class;
     }
     if (paramString.equals("SGameOfficialV2"))
     {
-      GamePubAccountHelper.b("3");
+      GamePubAccountHelper.e("3");
       GamePAPreloadHelper.a();
       return GamePAHippyFragmentV2.class;
     }
@@ -139,13 +131,6 @@ public class QQGameHelperImpl
     return 0;
   }
   
-  private boolean isFlutterInstall()
-  {
-    boolean bool1 = ((IQQGameFlutterApi)QRoute.api(IQQGameFlutterApi.class)).isAppInstalled();
-    boolean bool2 = ((IQQGameFlutterApi)QRoute.api(IQQGameFlutterApi.class)).isEngineInstalled();
-    return (bool1) && (bool2);
-  }
-  
   private void jumpToHippyFragmemt(Context paramContext, String paramString, Class<? extends QPublicBaseFragment> paramClass)
   {
     Bundle localBundle = new Bundle();
@@ -153,12 +138,13 @@ public class QQGameHelperImpl
     localBundle.putBoolean("isStatusBarDarkFont", true);
     localBundle.putString("processName", "main");
     localBundle.putString("bundleName", paramString);
+    localBundle.putString("domain", "gamecenter.qq.com");
     localBundle.putLong("openPageStart", System.currentTimeMillis());
     paramString = createQQGameIntent(false);
     paramString.putExtra("params", localBundle);
     paramString.putExtra("public_fragment_window_feature", 1);
     QPublicFragmentActivity.Launcher.a(paramContext, paramString, QPublicTransFragmentActivity.class, paramClass);
-    ((Activity)paramContext).overridePendingTransition(2130772023, 2130772024);
+    ((Activity)paramContext).overridePendingTransition(2130772028, 2130772029);
   }
   
   private void onUpdateGameCenterFinished()
@@ -195,7 +181,7 @@ public class QQGameHelperImpl
   
   private void preloadFlutter()
   {
-    ThreadManagerV2.executeOnSubThread(new QQGameHelperImpl.3(this));
+    ThreadManagerV2.executeOnSubThread(new QQGameHelperImpl.2(this));
   }
   
   private void report(int paramInt1, int paramInt2)
@@ -209,50 +195,14 @@ public class QQGameHelperImpl
       localStringBuilder.append(paramInt2);
       QLog.i("QQGamePub_QQGameHelper", 2, localStringBuilder.toString());
     }
-    ThreadManagerV2.excute(new QQGameHelperImpl.4(this, paramInt1, paramInt2), 128, null, true);
-  }
-  
-  private void reportFlutterInstallState(PageRouter paramPageRouter)
-  {
-    if (paramPageRouter == null) {
-      return;
-    }
-    String str2 = paramPageRouter.b;
-    String str3 = paramPageRouter.jdField_a_of_type_JavaLangString;
-    paramPageRouter = paramPageRouter.jdField_a_of_type_ComTencentMobileqqFlutterRouterSerializableMap;
-    if ((paramPageRouter != null) && (paramPageRouter.getMap() != null)) {
-      paramPageRouter = (String)paramPageRouter.getMap().get("uniquePagePath");
-    } else {
-      paramPageRouter = "";
-    }
-    boolean bool = isFlutterInstall();
-    String str1;
-    if (isFlutterInstall()) {
-      str1 = "1";
-    } else {
-      str1 = "0";
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("flutter install state :");
-      localStringBuilder.append(bool);
-      localStringBuilder.append(" pageName=");
-      localStringBuilder.append(str2);
-      localStringBuilder.append(" entryPoint=");
-      localStringBuilder.append(str3);
-      localStringBuilder.append(" uniquePagepath=");
-      localStringBuilder.append(paramPageRouter);
-      QLog.d("QQGamePub_QQGameHelper", 1, localStringBuilder.toString());
-    }
-    GamePubAccountHelper.a(GamePubAccountHelper.a()).c("208646").d("76933").a(11, str2).a(12, str3).a(13, paramPageRouter).a(14, str1).a();
+    ThreadManagerV2.excute(new QQGameHelperImpl.3(this, paramInt1, paramInt2), 128, null, true);
   }
   
   private void startQQGamePaH5(Activity paramActivity)
   {
     if (((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).isPubFeedByWeb())
     {
-      GamePubAccountHelper.b("1");
+      GamePubAccountHelper.e("1");
       QLog.d("QQGamePub_QQGameHelper", 1, "--->enter GamePubAccount to H5");
       Intent localIntent = createQQGameIntent(true);
       localIntent.putExtra("arkResPath", ArkEnvironmentManager.getInstance().getAppResPath(""));
@@ -327,108 +277,6 @@ public class QQGameHelperImpl
     return null;
   }
   
-  public boolean canLoad()
-  {
-    if (!((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).isPreloadSwitch())
-    {
-      QLog.i("QQGamePub_QQGameHelper", 2, "===can't preLoad because config switch is not open===");
-      return false;
-    }
-    if (((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).getPreloadIntervalDay() <= 0) {
-      return false;
-    }
-    long l = getPreloadTime();
-    if (NetConnInfoCenter.getServerTimeMillis() - l < ((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).getPreloadIntervalDay() * 24 * 60 * 60 * 1000)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("===can't preLoad because time is not in===");
-      localStringBuilder.append(MobileQQ.processName);
-      QLog.i("QQGamePub_QQGameHelper", 2, localStringBuilder.toString());
-      return false;
-    }
-    return true;
-  }
-  
-  public int canOpenHippyByModuleName(String paramString)
-  {
-    StringBuilder localStringBuilder;
-    if ("SGameOfficial".equals(paramString))
-    {
-      if (!((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).getNewPAHippySwitch())
-      {
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("canOpenHippyByModuleName ");
-          localStringBuilder.append(paramString);
-          localStringBuilder.append(" not allow");
-          QLog.d("QQGamePub_QQGameHelper", 2, localStringBuilder.toString());
-        }
-        return -1;
-      }
-    }
-    else
-    {
-      if (!"SGameOfficialV2".equals(paramString)) {
-        break label268;
-      }
-      if (!((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).getNewPAHippyV2Switch())
-      {
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("canOpenHippyByModuleName ");
-          localStringBuilder.append(paramString);
-          localStringBuilder.append(" not allow");
-          QLog.d("QQGamePub_QQGameHelper", 2, localStringBuilder.toString());
-        }
-        return -1;
-      }
-    }
-    if (((IHippySetting)QRoute.api(IHippySetting.class)).getModuleVersion(paramString) <= 0)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("canOpenHippyByModuleName ");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(" js bundle not exist");
-      QLog.d("QQGamePub_QQGameHelper", 1, localStringBuilder.toString());
-      ((IHippyUpdate)QRoute.api(IHippyUpdate.class)).updateJsBundle(paramString, ((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).isUpdateHippyJsBundleByHttp(), 4, null, null);
-      return -2;
-    }
-    if (!((IHippyLibrary)QRoute.api(IHippyLibrary.class)).isLibrayExists())
-    {
-      QLog.d("QQGamePub_QQGameHelper", 1, "canOpenHippyByModuleName so not exist");
-      return -3;
-    }
-    return 0;
-    label268:
-    if ("QQGameCenter".equals(paramString))
-    {
-      if (!((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).getHippySwitch())
-      {
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("canOpenHippyByModuleName ");
-          localStringBuilder.append(paramString);
-          localStringBuilder.append(" not allow");
-          QLog.d("QQGamePub_QQGameHelper", 2, localStringBuilder.toString());
-        }
-        return -1;
-      }
-      return 0;
-    }
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("canOpenHippyByModuleName ");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(" invalid");
-      QLog.d("QQGamePub_QQGameHelper", 2, localStringBuilder.toString());
-    }
-    return -4;
-  }
-  
   public Intent createQQGameIntent(boolean paramBoolean)
   {
     boolean bool2 = QLog.isColorLevel();
@@ -493,7 +341,7 @@ public class QQGameHelperImpl
         if (!paramBoolean) {
           break label151;
         }
-        i = 2131695171;
+        i = 2131892904;
         localBundle.putString("uinname", paramActivity.getString(i));
         QRoute.startUri((URIRequest)localObject, null);
         return;
@@ -504,18 +352,18 @@ public class QQGameHelperImpl
       }
       return;
       label151:
-      int i = 2131695226;
+      int i = 2131892960;
     }
   }
   
   public void enterGameCenter(String paramString)
   {
-    if (canOpenHippyByModuleName("QQGameCenter") == 0)
+    if (((IQQGameHippyApi)QRoute.api(IQQGameHippyApi.class)).canOpenHippyByModuleName("QQGameCenter") == 0)
     {
-      openQQGameCenterByHippy(BaseApplication.getContext(), paramString, "publicplat");
+      ((IQQGameHippyApi)QRoute.api(IQQGameHippyApi.class)).openQQGameCenterByHippy(BaseApplication.getContext(), paramString, "publicplat");
       return;
     }
-    if (URLUtil.a(paramString))
+    if (URLUtil.e(paramString))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
@@ -579,17 +427,6 @@ public class QQGameHelperImpl
     return new GameArkView(paramActivity, null);
   }
   
-  public String getGamePaHippyModuleName()
-  {
-    if (((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).getNewPAHippyV2Switch()) {
-      return "SGameOfficialV2";
-    }
-    if (((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).getNewPAHippySwitch()) {
-      return "SGameOfficial";
-    }
-    return "";
-  }
-  
   public long getGamePubLastReadTime()
   {
     Object localObject = MobileQQ.sMobileQQ;
@@ -610,107 +447,6 @@ public class QQGameHelperImpl
   public IHeaderView getMoreMsgHeaderView(Activity paramActivity)
   {
     return new MoreMsgHeaderView(paramActivity);
-  }
-  
-  public QQGameMsgInfo getMsgInfoByHippyMap(HippyMap paramHippyMap)
-  {
-    QQGameMsgInfo localQQGameMsgInfo = new QQGameMsgInfo();
-    if (paramHippyMap != null)
-    {
-      if (paramHippyMap.containsKey("msgid")) {
-        localQQGameMsgInfo.paMsgid = paramHippyMap.getString("msgid");
-      }
-      if (paramHippyMap.containsKey("msgType")) {
-        localQQGameMsgInfo.msgType = paramHippyMap.getInt("msgType");
-      }
-      if (paramHippyMap.containsKey("gameAppId")) {
-        localQQGameMsgInfo.gameAppId = paramHippyMap.getString("gameAppId");
-      }
-      if (paramHippyMap.containsKey("msgTime")) {
-        localQQGameMsgInfo.msgTime = paramHippyMap.getLong("msgTime");
-      }
-      if (paramHippyMap.containsKey(" sorted_configs")) {
-        localQQGameMsgInfo.sortedConfigs = paramHippyMap.getString(" sorted_configs");
-      }
-      if (paramHippyMap.containsKey("extJson")) {
-        localQQGameMsgInfo.extJson = paramHippyMap.getString("extJson");
-      }
-      if (paramHippyMap.containsKey("icon")) {
-        localQQGameMsgInfo.icon = paramHippyMap.getString("icon");
-      }
-      if (paramHippyMap.containsKey("desc")) {
-        localQQGameMsgInfo.desc = paramHippyMap.getString("desc");
-      }
-      if (paramHippyMap.containsKey("frienduin")) {
-        localQQGameMsgInfo.frienduin = paramHippyMap.getString("frienduin");
-      }
-      if (paramHippyMap.containsKey("uniseq")) {
-        localQQGameMsgInfo.uniseq = paramHippyMap.getLong("uniseq");
-      }
-      if (paramHippyMap.containsKey("advId")) {
-        localQQGameMsgInfo.advId = paramHippyMap.getString("advId");
-      }
-      if (paramHippyMap.containsKey("triggerInfo")) {
-        localQQGameMsgInfo.triggerInfo = paramHippyMap.getString("triggerInfo");
-      }
-      if (paramHippyMap.containsKey("appName")) {
-        localQQGameMsgInfo.arkAppName = paramHippyMap.getString("appName");
-      }
-      if (paramHippyMap.containsKey("appView")) {
-        localQQGameMsgInfo.arkAppView = paramHippyMap.getString("appView");
-      }
-      if (paramHippyMap.containsKey("appMinVersion")) {
-        localQQGameMsgInfo.arkAppMinVersion = paramHippyMap.getString("appMinVersion");
-      }
-      if (paramHippyMap.containsKey("appMetaList")) {
-        localQQGameMsgInfo.arkMetaList = paramHippyMap.getString("appMetaList");
-      }
-      if (paramHippyMap.containsKey("appConfig")) {
-        localQQGameMsgInfo.arkAppConfig = paramHippyMap.getString("appConfig");
-      }
-      if (paramHippyMap.containsKey("width")) {
-        localQQGameMsgInfo.arkWidth = paramHippyMap.getInt("width");
-      }
-      if (paramHippyMap.containsKey("height")) {
-        localQQGameMsgInfo.arkHeight = paramHippyMap.getInt("height");
-      }
-      if (paramHippyMap.containsKey("coverUrl")) {
-        localQQGameMsgInfo.coverUrl = paramHippyMap.getString("coverUrl");
-      }
-      if (paramHippyMap.containsKey("url")) {
-        localQQGameMsgInfo.url = paramHippyMap.getString("url");
-      }
-      if (paramHippyMap.containsKey("title")) {
-        localQQGameMsgInfo.title = paramHippyMap.getString("title");
-      }
-      if (paramHippyMap.containsKey("dateTitle")) {
-        localQQGameMsgInfo.dateTitle = paramHippyMap.getString("dateTitle");
-      }
-      if (paramHippyMap.containsKey("contentText")) {
-        localQQGameMsgInfo.contentText = paramHippyMap.getString("contentText");
-      }
-      if (paramHippyMap.containsKey("limitText")) {
-        localQQGameMsgInfo.limitText = paramHippyMap.getString("limitText");
-      }
-    }
-    return localQQGameMsgInfo;
-  }
-  
-  public int getMsgPosByHippyMap(HippyMap paramHippyMap)
-  {
-    if ((paramHippyMap != null) && (paramHippyMap.containsKey("pos"))) {
-      return paramHippyMap.getInt("pos");
-    }
-    return 0;
-  }
-  
-  public long getPreloadTime()
-  {
-    SharedPreferences localSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("game_center_sp_mutiprocess", 4);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getAccount());
-    localStringBuilder.append("preload_time");
-    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
   }
   
   public QIPCModule getQQGameIPCModule()
@@ -779,7 +515,7 @@ public class QQGameHelperImpl
   
   public void loadQGameHtmlOffline()
   {
-    ThreadManagerV2.executeOnSubThread(new QQGameHelperImpl.2(this));
+    ThreadManagerV2.executeOnSubThread(new QQGameHelperImpl.1(this));
   }
   
   public void notiftyQQGameNewMsg(List<MessageRecord> paramList)
@@ -789,75 +525,6 @@ public class QQGameHelperImpl
       return;
     }
     ((IGamePubAccountMsgService)localAppRuntime.getRuntimeService(IGamePubAccountMsgService.class, "")).onGameNewMsg(paramList);
-  }
-  
-  public void openQQGameCenterByHippy(Context paramContext, String paramString1, String paramString2)
-  {
-    String str;
-    if (paramString1 != null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString1);
-      str = "?";
-      if (paramString1.contains("?")) {
-        str = "&";
-      }
-      ((StringBuilder)localObject).append(str);
-      ((StringBuilder)localObject).append("forceHtml=true");
-      str = ((StringBuilder)localObject).toString();
-    }
-    else
-    {
-      str = null;
-    }
-    Object localObject = ((IHippyUpdate)QRoute.api(IHippyUpdate.class)).getHippyConfig();
-    OpenHippyInfo localOpenHippyInfo = new OpenHippyInfo();
-    localOpenHippyInfo.bundleName = "QQGameCenter";
-    localOpenHippyInfo.url = paramString1;
-    localOpenHippyInfo.errorUrl = str;
-    localOpenHippyInfo.isAnimated = true;
-    localOpenHippyInfo.isStatusBarDarkFont = true;
-    localOpenHippyInfo.isEnbaleRightFling = false;
-    localOpenHippyInfo.from = paramString2;
-    if (((HippyConfig)localObject).isGameCenterLoadHippyInToolProcess()) {
-      paramString1 = "tool";
-    } else {
-      paramString1 = "main";
-    }
-    localOpenHippyInfo.processName = paramString1;
-    localOpenHippyInfo.isPreloadWhenClosed = ((HippyConfig)localObject).isGameCenterPreloadHippy();
-    localOpenHippyInfo.isPredrawWhenClosed = ((HippyConfig)localObject).isGameCenterPredrawHippy();
-    ((IHippyAccessHelper)QRoute.api(IHippyAccessHelper.class)).openHippyPage(paramContext, localOpenHippyInfo);
-  }
-  
-  public void preloadQQGameCenterByHippy()
-  {
-    boolean bool1 = ((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).getHippySwitch();
-    boolean bool2 = ((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).isGameCenterPreloadByTab();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("preloadQQGameCenterByHippy isHippySwitchOpened:");
-      localStringBuilder.append(bool1);
-      localStringBuilder.append(" isPreloadByTab:");
-      localStringBuilder.append(bool2);
-      QLog.d("QQGamePub_QQGameHelper", 2, localStringBuilder.toString());
-    }
-    if (bool1)
-    {
-      if (bool2) {
-        return;
-      }
-      ((IHippyUpdate)QRoute.api(IHippyUpdate.class)).updateJsBundle("QQGameCenter", ((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).isUpdateHippyJsBundleByHttp(), 3, null, new QQGameHelperImpl.5(this));
-    }
-  }
-  
-  public void preloadSw()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQGamePub_QQGameHelper", 1, "===preloadSw===");
-    }
-    SwiftBrowserIdleTaskHelper.a().a(new QQGameHelperImpl.1(this, 4096));
   }
   
   public void publicAccountTianshuReport(int paramInt1, QQGameMsgInfo paramQQGameMsgInfo, int paramInt2)
@@ -960,24 +627,6 @@ public class QQGameHelperImpl
     }
   }
   
-  public void savePreloadTime(long paramLong)
-  {
-    try
-    {
-      SharedPreferences localSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("game_center_sp_mutiprocess", 4);
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(getAccount());
-      ((StringBuilder)localObject).append("preload_time");
-      localObject = ((StringBuilder)localObject).toString();
-      localSharedPreferences.edit().putLong((String)localObject, paramLong).apply();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQGamePub_QQGameHelper", 2, QLog.getStackTraceString(localThrowable));
-    }
-  }
-  
   public void setDebugGamePubAccountType(String paramString)
   {
     SharedPreferences localSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("game_center_sp_mutiprocess", 4);
@@ -1004,7 +653,7 @@ public class QQGameHelperImpl
       return;
     }
     paramView = (NavBarQQGamePub)paramView;
-    if ((!TextUtils.isEmpty(paramGmpEnterInfoRsp.url)) && (!TextUtils.isEmpty(paramGmpEnterInfoRsp.bubble_id)))
+    if ((!TextUtils.isEmpty(paramGmpEnterInfoRsp.url)) && (!TextUtils.isEmpty(paramGmpEnterInfoRsp.bubbleId)))
     {
       if (paramView != null)
       {
@@ -1013,7 +662,7 @@ public class QQGameHelperImpl
         }
         paramView.setCurType(3);
         paramView.a(paramGmpEnterInfoRsp.url);
-        paramView.setmBubbleid(paramGmpEnterInfoRsp.bubble_id);
+        paramView.setmBubbleid(paramGmpEnterInfoRsp.bubbleId);
         paramView.a(true);
       }
     }
@@ -1043,44 +692,27 @@ public class QQGameHelperImpl
       QRoute.startUri(paramContext, null);
       return;
     }
-    catch (Throwable paramContext) {}
-  }
-  
-  public void startQQGameFlutter(Context paramContext, PageRouter paramPageRouter, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGamePub_QQGameHelper", 4, "startQQGameFlutter");
-    }
-    try
-    {
-      reportFlutterInstallState(paramPageRouter);
-      ((IQFlutterRouterService)getAppRuntime().getRuntimeService(IQFlutterRouterService.class, "all")).openPageByMainProcess(paramContext, paramPageRouter, paramBundle);
-      return;
-    }
     catch (Throwable paramContext)
     {
-      paramPageRouter = new StringBuilder();
-      paramPageRouter.append("startQQGameFlutter error:");
-      paramPageRouter.append(paramContext);
-      QLog.e("QQGamePub_QQGameHelper", 1, paramPageRouter.toString());
+      QLog.e("QQGamePub_QQGameHelper", 1, paramContext, new Object[0]);
     }
   }
   
   public void startQQGamePubAccount(Context paramContext, int paramInt)
   {
     initClickAioTime();
-    String str = getGamePaHippyModuleName();
-    int i = canOpenHippyByModuleName(str);
+    String str = ((IQQGameHippyApi)QRoute.api(IQQGameHippyApi.class)).getGamePaHippyModuleName();
+    int i = ((IQQGameHippyApi)QRoute.api(IQQGameHippyApi.class)).canOpenHippyByModuleName(str);
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("startQQGamePubAccount status=");
-      localStringBuilder.append(i);
-      localStringBuilder.append(",moduleName=");
-      localStringBuilder.append(str);
-      localStringBuilder.append(",from=");
-      localStringBuilder.append(paramInt);
-      QLog.d("QQGamePub_QQGameHelper", 1, localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startQQGamePubAccount status=");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(",moduleName=");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(",from=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("QQGamePub_QQGameHelper", 1, ((StringBuilder)localObject).toString());
     }
     report(paramInt, i);
     if (i != 0)
@@ -1088,13 +720,25 @@ public class QQGameHelperImpl
       startQQGamePaH5((Activity)paramContext);
       return;
     }
-    jumpToHippyFragmemt(paramContext, str, getGameHippyFragment(str));
+    Object localObject = getGameHippyFragment(str);
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("startQQGamePubAccount hippyFragment is null,moduleName=");
+        paramContext.append(str);
+        QLog.d("QQGamePub_QQGameHelper", 2, paramContext.toString());
+      }
+      return;
+    }
+    jumpToHippyFragmemt(paramContext, str, (Class)localObject);
     updateGamePubReadTimeByLastMsg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGameHelperImpl
  * JD-Core Version:    0.7.0.1
  */

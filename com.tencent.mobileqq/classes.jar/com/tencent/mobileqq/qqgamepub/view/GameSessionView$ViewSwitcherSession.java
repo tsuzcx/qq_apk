@@ -8,9 +8,9 @@ import android.widget.ViewSwitcher.ViewFactory;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
 import com.tencent.mobileqq.gamecenter.data.IDataVisitor;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo.SimpleMessage;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameDelSessionRecord;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo.SimpleMessage;
+import com.tencent.mobileqq.gamecenter.msginfo.GameDelSessionRecord;
 import com.tencent.mobileqq.qqgamepub.utils.GamePubAccountHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
@@ -24,44 +24,44 @@ import mqq.app.AppRuntime;
 abstract class GameSessionView$ViewSwitcherSession<T extends View>
   implements ViewSwitcher.ViewFactory, GameSessionView.SessionStyle, Runnable, Comparator<GameSessionView.WrappedMessage>
 {
-  private int jdField_a_of_type_Int = -1;
-  private final long jdField_a_of_type_Long = 1500L;
-  private ViewSwitcher jdField_a_of_type_AndroidWidgetViewSwitcher;
   protected String a;
-  private List<GameSessionView.WrappedMessage> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private ViewSwitcher b;
+  private int c = -1;
+  private final long d = 1500L;
+  private List<GameSessionView.WrappedMessage> e = new ArrayList();
   
   GameSessionView$ViewSwitcherSession(GameSessionView paramGameSessionView)
   {
-    this.jdField_a_of_type_JavaLangString = paramGameSessionView.getResources().getString(2131695214);
+    this.a = paramGameSessionView.getResources().getString(2131892948);
   }
   
   private void a(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.e;
     if (localObject != null)
     {
       if (((List)localObject).size() == 0) {
         return;
       }
-      this.jdField_a_of_type_Int += 1;
-      int i = this.jdField_a_of_type_Int;
-      int j = this.jdField_a_of_type_JavaUtilList.size();
+      this.c += 1;
+      int i = this.c;
+      int j = this.e.size();
       int k = 0;
       if (i >= j) {
-        this.jdField_a_of_type_Int = 0;
+        this.c = 0;
       }
-      a(this.jdField_a_of_type_AndroidWidgetViewSwitcher.getNextView(), (GameSessionView.WrappedMessage)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_AndroidWidgetViewSwitcher.showNext();
+      a(this.b.getNextView(), (GameSessionView.WrappedMessage)this.e.get(this.c));
+      this.b.showNext();
       if ("3".equals(GamePubAccountHelper.a()))
       {
         i = 0;
         for (;;)
         {
           j = k;
-          if (i >= this.jdField_a_of_type_AndroidWidgetViewSwitcher.getChildCount()) {
+          if (i >= this.b.getChildCount()) {
             break;
           }
-          if ((this.jdField_a_of_type_AndroidWidgetViewSwitcher.getChildAt(i) != null) && (this.jdField_a_of_type_AndroidWidgetViewSwitcher.getChildAt(i).getHeight() == 0) && (this.jdField_a_of_type_AndroidWidgetViewSwitcher.getChildAt(i).getWidth() == 0))
+          if ((this.b.getChildAt(i) != null) && (this.b.getChildAt(i).getHeight() == 0) && (this.b.getChildAt(i).getWidth() == 0))
           {
             j = 1;
             break;
@@ -70,11 +70,11 @@ abstract class GameSessionView$ViewSwitcherSession<T extends View>
         }
         if (j != 0)
         {
-          QLog.d(GameSessionView.jdField_a_of_type_JavaLangString, 1, "viewSwitcher need posDraw");
-          localObject = this.jdField_a_of_type_AndroidWidgetViewSwitcher;
-          ((ViewSwitcher)localObject).measure(View.MeasureSpec.makeMeasureSpec(((ViewSwitcher)localObject).getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_AndroidWidgetViewSwitcher.getHeight(), 1073741824));
-          localObject = this.jdField_a_of_type_AndroidWidgetViewSwitcher;
-          ((ViewSwitcher)localObject).layout(((ViewSwitcher)localObject).getLeft(), this.jdField_a_of_type_AndroidWidgetViewSwitcher.getTop(), this.jdField_a_of_type_AndroidWidgetViewSwitcher.getRight(), this.jdField_a_of_type_AndroidWidgetViewSwitcher.getBottom());
+          QLog.d(GameSessionView.a, 1, "viewSwitcher need posDraw");
+          localObject = this.b;
+          ((ViewSwitcher)localObject).measure(View.MeasureSpec.makeMeasureSpec(((ViewSwitcher)localObject).getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(this.b.getHeight(), 1073741824));
+          localObject = this.b;
+          ((ViewSwitcher)localObject).layout(((ViewSwitcher)localObject).getLeft(), this.b.getTop(), this.b.getRight(), this.b.getBottom());
         }
       }
       if (paramBoolean) {
@@ -85,23 +85,13 @@ abstract class GameSessionView$ViewSwitcherSession<T extends View>
   
   public int a(GameSessionView.WrappedMessage paramWrappedMessage1, GameSessionView.WrappedMessage paramWrappedMessage2)
   {
-    if (paramWrappedMessage1.a.jdField_a_of_type_Long > paramWrappedMessage2.a.jdField_a_of_type_Long) {
+    if (paramWrappedMessage1.b.a > paramWrappedMessage2.b.a) {
       return -1;
     }
-    if (paramWrappedMessage1.a.jdField_a_of_type_Long < paramWrappedMessage2.a.jdField_a_of_type_Long) {
+    if (paramWrappedMessage1.b.a < paramWrappedMessage2.b.a) {
       return 1;
     }
     return 0;
-  }
-  
-  protected ViewSwitcher a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetViewSwitcher;
-  }
-  
-  protected GameCenterSessionInfo a()
-  {
-    return (GameCenterSessionInfo)this.jdField_a_of_type_AndroidWidgetViewSwitcher.getCurrentView().getTag();
   }
   
   public void a()
@@ -116,13 +106,13 @@ abstract class GameSessionView$ViewSwitcherSession<T extends View>
   
   protected void a(ViewSwitcher paramViewSwitcher)
   {
-    this.jdField_a_of_type_AndroidWidgetViewSwitcher = paramViewSwitcher;
+    this.b = paramViewSwitcher;
     paramViewSwitcher.setAnimateFirstView(false);
   }
   
   public void a(List<GameCenterSessionInfo> paramList, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.e.clear();
     boolean bool = false;
     paramInt = 0;
     GameCenterSessionInfo localGameCenterSessionInfo;
@@ -131,19 +121,19 @@ abstract class GameSessionView$ViewSwitcherSession<T extends View>
     while (paramInt < paramList.size())
     {
       localGameCenterSessionInfo = (GameCenterSessionInfo)paramList.get(paramInt);
-      localObject = ((GameCenterSessionInfo)paramList.get(paramInt)).a();
+      localObject = ((GameCenterSessionInfo)paramList.get(paramInt)).d();
       if (localObject != null)
       {
         i = 0;
         while (i < ((List)localObject).size())
         {
-          this.jdField_a_of_type_JavaUtilList.add(new GameSessionView.WrappedMessage(localGameCenterSessionInfo, (GameCenterSessionInfo.SimpleMessage)((List)localObject).get(i)));
+          this.e.add(new GameSessionView.WrappedMessage(localGameCenterSessionInfo, (GameCenterSessionInfo.SimpleMessage)((List)localObject).get(i)));
           i += 1;
         }
       }
       paramInt += 1;
     }
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
+    if (this.e.size() == 0)
     {
       paramInt = 0;
       while (paramInt < paramList.size())
@@ -151,35 +141,45 @@ abstract class GameSessionView$ViewSwitcherSession<T extends View>
         localGameCenterSessionInfo = (GameCenterSessionInfo)paramList.get(paramInt);
         localObject = ((IGameMsgManagerService)GameSessionView.a(this.this$0).getRuntimeService(IGameMsgManagerService.class, "")).getSessionDelDataHelper();
         GameDelSessionRecord localGameDelSessionRecord = new GameDelSessionRecord();
-        localGameDelSessionRecord.mUin = localGameCenterSessionInfo.d();
+        localGameDelSessionRecord.mUin = localGameCenterSessionInfo.g();
         if ((localObject != null) && (((IDataVisitor)localObject).d(localGameDelSessionRecord))) {
           i = 1;
         } else {
           i = 0;
         }
         if (i == 0) {
-          this.jdField_a_of_type_JavaUtilList.add(new GameSessionView.WrappedMessage(localGameCenterSessionInfo, new GameCenterSessionInfo.SimpleMessage(localGameCenterSessionInfo.a(), localGameCenterSessionInfo.i())));
+          this.e.add(new GameSessionView.WrappedMessage(localGameCenterSessionInfo, new GameCenterSessionInfo.SimpleMessage(localGameCenterSessionInfo.n(), localGameCenterSessionInfo.m())));
         }
         paramInt += 1;
       }
     }
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, this);
+    Collections.sort(this.e, this);
     this.this$0.removeCallbacks(this);
-    this.jdField_a_of_type_AndroidWidgetViewSwitcher.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetViewSwitcher.setFactory(this);
-    this.jdField_a_of_type_Int = -1;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    this.b.removeAllViews();
+    this.b.setFactory(this);
+    this.c = -1;
+    if (this.e.size() > 0)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
+      if (this.e.size() > 1) {
         bool = true;
       }
       a(bool);
     }
   }
   
+  protected ViewSwitcher c()
+  {
+    return this.b;
+  }
+  
+  protected GameCenterSessionInfo d()
+  {
+    return (GameCenterSessionInfo)this.b.getCurrentView().getTag();
+  }
+  
   public void onClick(View paramView)
   {
-    GameCenterSessionInfo localGameCenterSessionInfo = a();
+    GameCenterSessionInfo localGameCenterSessionInfo = d();
     GameSessionView localGameSessionView = this.this$0;
     GameSessionView.a(localGameSessionView, localGameSessionView.getContext(), localGameCenterSessionInfo);
     ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).setLastGameSessionClicked(GameSessionView.a(this.this$0).getAccount(), System.currentTimeMillis());
@@ -193,7 +193,7 @@ abstract class GameSessionView$ViewSwitcherSession<T extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.GameSessionView.ViewSwitcherSession
  * JD-Core Version:    0.7.0.1
  */

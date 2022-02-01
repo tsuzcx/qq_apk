@@ -12,16 +12,16 @@ class ShareGroupCardShareMode$1
     super(paramString);
   }
   
-  public boolean b()
+  public boolean c()
   {
-    ShareGroupCardShareMode.a(this.a, (String)a("UploadImageJob_out_image_url"));
+    ShareGroupCardShareMode.a(this.a, (String)b("UploadImageJob_out_image_url"));
     ((ShareGroupManager)SuperManager.a(7)).a(this.a.d, ShareGroupCardShareMode.a(this.a));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.ShareGroupCardShareMode.1
  * JD-Core Version:    0.7.0.1
  */

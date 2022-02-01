@@ -19,7 +19,6 @@ import com.tencent.av.business.manager.pendant.AVEffectPendantReport;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.activity.aio.stickerrecommended.IStickerRecManager;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneUnityManager;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
@@ -53,7 +52,10 @@ import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
 import com.tencent.mobileqq.screendetect.ScreenShotDetector;
+import com.tencent.mobileqq.settings.message.NotifyPushSettingFragment;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.cpu.CPUReport;
+import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.mobileqq.troop.utils.api.ITroopUtilsApi;
 import com.tencent.mobileqq.util.QQSettingUtil;
 import com.tencent.mobileqq.utils.AvatarPendantUtil;
@@ -85,16 +87,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
 
 public class DailyReport
   extends AsyncStep
 {
-  private static int jdField_a_of_type_Int = 50000;
-  BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new DailyReport.1(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
+  private static int d = 50000;
+  QQAppInterface a;
+  BaseApplicationImpl b;
+  DownloadListener c = new DailyReport.1(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
   
   private static String a(Context paramContext)
   {
@@ -129,28 +132,9 @@ public class DailyReport
     return "";
   }
   
-  public static Set<Integer> a()
-  {
-    List localList = ((SensorManager)BaseApplicationImpl.getContext().getSystemService("sensor")).getSensorList(-1);
-    HashSet localHashSet = new HashSet();
-    if (localList != null)
-    {
-      int i = 0;
-      while (i < localList.size())
-      {
-        Sensor localSensor = (Sensor)localList.get(i);
-        if (localSensor != null) {
-          localHashSet.add(Integer.valueOf(localSensor.getType()));
-        }
-        i += 1;
-      }
-    }
-    return localHashSet;
-  }
-  
   public static void a()
   {
-    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131694986), "qqsetting_auto_receive_pic_key", true);
+    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131892713), "qqsetting_auto_receive_pic_key", true);
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_state", String.valueOf(bool));
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "act2G3G4GSwitch", false, 0L, 0L, localHashMap, "");
@@ -203,9 +187,9 @@ public class DailyReport
     }
     ((SharedPreferences)localObject).edit().putBoolean("hasReportDeviceProfile", true);
     localObject = new HashMap();
-    int i = (int)Math.min(DeviceInfoUtil.j(), DeviceInfoUtil.i());
-    int j = DeviceInfoUtil.b();
-    j = jdField_a_of_type_Int + j * 100;
+    int i = (int)Math.min(DeviceInfoUtil.E(), DeviceInfoUtil.D());
+    int j = DeviceInfoUtil.h();
+    j = d + j * 100;
     if (i <= 240) {
       i = j + 1;
     } else if (i <= 320) {
@@ -241,127 +225,26 @@ public class DailyReport
     } else {
       bool = false;
     }
-    paramStatisticCollector.collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "report_skin_engine_enable", bool, 0L, 0L, localHashMap, "");
+    paramStatisticCollector.collectPerformance(this.a.getCurrentAccountUin(), "report_skin_engine_enable", bool, 0L, 0L, localHashMap, "");
   }
   
-  private void d()
+  public static Set<Integer> d()
   {
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getALLGeneralSettingRing() != 0) {
-      i = 1;
-    } else {
-      i = 0;
+    List localList = ((SensorManager)BaseApplicationImpl.getContext().getSystemService("sensor")).getSensorList(-1);
+    HashSet localHashSet = new HashSet();
+    if (localList != null)
+    {
+      int i = 0;
+      while (i < localList.size())
+      {
+        Sensor localSensor = (Sensor)localList.get(i);
+        if (localSensor != null) {
+          localHashSet.add(Integer.valueOf(localSensor.getType()));
+        }
+        i += 1;
+      }
     }
-    int j;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getALLGeneralSettingVibrate() != 0) {
-      j = 1;
-    } else {
-      j = 0;
-    }
-    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isShowMsgContent();
-    int k;
-    if (((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getTroopGeneralSettingRing(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 0) {
-      k = 0;
-    } else {
-      k = 1;
-    }
-    int m;
-    if (((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getTroopGeneralSettingVibrate(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 0) {
-      m = 0;
-    } else {
-      m = 1;
-    }
-    boolean bool2 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), null, "new_msg_notification_key", true);
-    boolean bool3 = QQNotificationManager.getInstance().groupChannelVibrateOn();
-    boolean bool4 = QQNotificationManager.getInstance().c2cChannelVibrateOn();
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, new Object[] { "reportMessageNotificationSettings: invoked. ", " groupChannelVibrateOn: ", Boolean.valueOf(bool3), " c2cChannelVibrateOn: ", Boolean.valueOf(bool4) });
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int n;
-    if (j != 0) {
-      n = 1;
-    } else {
-      n = 2;
-    }
-    ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800AD3B", "0X800AD3B", n, 0, "", "", "", "");
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (m != 0) {
-      n = 1;
-    } else {
-      n = 2;
-    }
-    ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800AD3C", "0X800AD3C", n, 0, "", "", "", "");
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (i != 0) {
-      localObject = "1";
-    } else {
-      localObject = "2";
-    }
-    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A3CF", "0X800A3CF", 0, 0, (String)localObject, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (j != 0) {
-      localObject = "1";
-    } else {
-      localObject = "2";
-    }
-    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A3D0", "0X800A3D0", 0, 0, (String)localObject, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (bool1) {
-      localObject = "1";
-    } else {
-      localObject = "2";
-    }
-    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A3CE", "0X800A3CE", 0, 0, (String)localObject, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (m != 0) {
-      localObject = "1";
-    } else {
-      localObject = "2";
-    }
-    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A3D1", "0X800A3D1", 0, 0, (String)localObject, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (k != 0) {
-      localObject = "1";
-    } else {
-      localObject = "2";
-    }
-    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A3D2", "0X800A3D2", 0, 0, (String)localObject, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (bool2) {
-      localObject = "1";
-    } else {
-      localObject = "2";
-    }
-    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A512", "0X800A512", 0, 0, (String)localObject, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (AutoSaveUtils.a(true)) {
-      localObject = "1";
-    } else {
-      localObject = "2";
-    }
-    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A6E8", "0X800A6E8", 0, 0, (String)localObject, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (AutoSaveUtils.a(false)) {
-      localObject = "1";
-    } else {
-      localObject = "2";
-    }
-    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A6E9", "0X800A6E9", 0, 0, (String)localObject, "", "", "");
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (bool3) {
-      i = 1;
-    } else {
-      i = 2;
-    }
-    ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X800AC8B", "0X800AC8B", i, 0, "", "", "", "");
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (bool4) {
-      i = 1;
-    } else {
-      i = 2;
-    }
-    ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X800AC8C", "0X800AC8C", i, 0, "", "", "", "");
+    return localHashSet;
   }
   
   private void d(StatisticCollector paramStatisticCollector)
@@ -370,20 +253,31 @@ public class DailyReport
     HashMap localHashMap = new HashMap();
     int i = localActivityManager.getMemoryClass();
     localHashMap.put("param_FailCode", Integer.toString(89000 + i));
-    paramStatisticCollector.collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "report_mem_cache_size", false, i, 0L, localHashMap, "");
+    paramStatisticCollector.collectPerformance(this.a.getCurrentAccountUin(), "report_mem_cache_size", false, i, 0L, localHashMap, "");
   }
   
   private void e()
   {
-    boolean bool = ((IStickerRecManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IStickerRecManager.class)).isEmotionRecSettingOpen();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    String str;
+    TreeMap localTreeMap = new TreeMap();
+    String str3 = DailyReport.ReportArchInfo.a();
+    localTreeMap.put("support_arch", str3);
+    boolean bool = str3.contains("arm");
+    String str2 = "1";
+    String str1;
     if (bool) {
-      str = "1";
+      str1 = "1";
     } else {
-      str = "2";
+      str1 = "0";
     }
-    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A224", "0X800A224", 0, 0, str, "", "", "");
+    localTreeMap.put("is_arm", str1);
+    if (str3.contains("arm64-v8a")) {
+      str1 = str2;
+    } else {
+      str1 = "0";
+    }
+    localTreeMap.put("support_arm64", str1);
+    QQBeaconReport.a(this.a.getCurrentUin(), "arch_report_32_or_64", localTreeMap);
+    QLog.d("QQInitHandler", 1, new Object[] { "[reportArchInfo] list: ", str3 });
   }
   
   private void e(StatisticCollector paramStatisticCollector)
@@ -404,7 +298,7 @@ public class DailyReport
         str = String.valueOf(0);
       }
       localHashMap.put("param_etc1supported", str);
-      paramStatisticCollector.collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "arOpenGLSupport", bool, 0L, 0L, localHashMap, "");
+      paramStatisticCollector.collectPerformance(this.a.getCurrentAccountUin(), "arOpenGLSupport", bool, 0L, 0L, localHashMap, "");
       return;
     }
     catch (Throwable localThrowable)
@@ -412,40 +306,128 @@ public class DailyReport
       if (QLog.isColorLevel()) {
         QLog.d("DailyReport", 2, "reportOpenglSupport", localThrowable);
       }
-      paramStatisticCollector.collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "arOpenGLSupport", false, 0L, 0L, null, "");
+      paramStatisticCollector.collectPerformance(this.a.getCurrentAccountUin(), "arOpenGLSupport", false, 0L, 0L, null, "");
     }
   }
   
   private void f()
   {
-    HashMap localHashMap = new HashMap();
-    int i = StatisticTroopAssist.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if (i > 0) {
-      localHashMap.put("Click_grp_asst", Integer.valueOf(i));
+    int i;
+    if (this.a.getALLGeneralSettingRing() != 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    i = StatisticTroopAssist.b(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if (i > 0) {
-      localHashMap.put("grp_setting_asst", Integer.valueOf(i));
+    int j;
+    if (this.a.getALLGeneralSettingVibrate() != 0) {
+      j = 1;
+    } else {
+      j = 0;
     }
-    i = StatisticTroopAssist.c(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if (i > 0) {
-      localHashMap.put("grp_setting_msg", Integer.valueOf(i));
+    boolean bool1 = this.a.isShowMsgContent();
+    int k;
+    if (((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getTroopGeneralSettingRing(this.a) == 0) {
+      k = 0;
+    } else {
+      k = 1;
     }
-    i = StatisticTroopAssist.d(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if (i > 0) {
-      localHashMap.put("grp_msg_equ", Integer.valueOf(i));
+    int m;
+    if (((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getTroopGeneralSettingVibrate(this.a) == 0) {
+      m = 0;
+    } else {
+      m = 1;
     }
-    i = StatisticTroopAssist.e(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if (i > 0) {
-      localHashMap.put("grp_msg_dec", Integer.valueOf(i));
+    boolean bool2 = SettingCloneUtil.readValue(this.a.getApp(), this.a.getCurrentUin(), null, "new_msg_notification_key", true);
+    boolean bool3 = QQNotificationManager.getInstance().groupChannelVibrateOn();
+    boolean bool4 = QQNotificationManager.getInstance().c2cChannelVibrateOn();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, new Object[] { "reportMessageNotificationSettings: invoked. ", " groupChannelVibrateOn: ", Boolean.valueOf(bool3), " c2cChannelVibrateOn: ", Boolean.valueOf(bool4) });
     }
-    i = StatisticTroopAssist.f(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if (i > 0) {
-      localHashMap.put("grp_msg_inc", Integer.valueOf(i));
+    Object localObject = this.a;
+    int n;
+    if (j != 0) {
+      n = 1;
+    } else {
+      n = 2;
     }
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    localStatisticCollector.reportCustomSet(localQQAppInterface, localQQAppInterface.getCurrentAccountUin(), localHashMap);
+    ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800AD3B", "0X800AD3B", n, 0, "", "", "", "");
+    localObject = this.a;
+    if (m != 0) {
+      n = 1;
+    } else {
+      n = 2;
+    }
+    ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800AD3C", "0X800AD3C", n, 0, "", "", "", "");
+    QQAppInterface localQQAppInterface = this.a;
+    if (i != 0) {
+      localObject = "1";
+    } else {
+      localObject = "2";
+    }
+    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A3CF", "0X800A3CF", 0, 0, (String)localObject, "", "", "");
+    localQQAppInterface = this.a;
+    if (j != 0) {
+      localObject = "1";
+    } else {
+      localObject = "2";
+    }
+    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A3D0", "0X800A3D0", 0, 0, (String)localObject, "", "", "");
+    localQQAppInterface = this.a;
+    if (bool1) {
+      localObject = "1";
+    } else {
+      localObject = "2";
+    }
+    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A3CE", "0X800A3CE", 0, 0, (String)localObject, "", "", "");
+    localQQAppInterface = this.a;
+    if (m != 0) {
+      localObject = "1";
+    } else {
+      localObject = "2";
+    }
+    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A3D1", "0X800A3D1", 0, 0, (String)localObject, "", "", "");
+    localQQAppInterface = this.a;
+    if (k != 0) {
+      localObject = "1";
+    } else {
+      localObject = "2";
+    }
+    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A3D2", "0X800A3D2", 0, 0, (String)localObject, "", "", "");
+    localQQAppInterface = this.a;
+    if (bool2) {
+      localObject = "1";
+    } else {
+      localObject = "2";
+    }
+    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A512", "0X800A512", 0, 0, (String)localObject, "", "", "");
+    localQQAppInterface = this.a;
+    if (AutoSaveUtils.a(true)) {
+      localObject = "1";
+    } else {
+      localObject = "2";
+    }
+    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A6E8", "0X800A6E8", 0, 0, (String)localObject, "", "", "");
+    localQQAppInterface = this.a;
+    if (AutoSaveUtils.a(false)) {
+      localObject = "1";
+    } else {
+      localObject = "2";
+    }
+    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A6E9", "0X800A6E9", 0, 0, (String)localObject, "", "", "");
+    localObject = this.a;
+    if (bool3) {
+      i = 1;
+    } else {
+      i = 2;
+    }
+    ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X800AC8B", "0X800AC8B", i, 0, "", "", "", "");
+    localObject = this.a;
+    if (bool4) {
+      i = 1;
+    } else {
+      i = 2;
+    }
+    ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X800AC8C", "0X800AC8C", i, 0, "", "", "", "");
   }
   
   private void f(StatisticCollector paramStatisticCollector)
@@ -455,7 +437,7 @@ public class DailyReport
       try
       {
         HashMap localHashMap = new HashMap();
-        Set localSet = a();
+        Set localSet = d();
         localHashMap.put("param_manufacture", Build.MANUFACTURER);
         localHashMap.put("param_model", Build.MODEL);
         boolean bool = localSet.contains(Integer.valueOf(1));
@@ -534,7 +516,7 @@ public class DailyReport
           }
           str1 = str3;
           localHashMap.put("param_sensor_linear_accl", str1);
-          paramStatisticCollector.collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "arSensorSupport", true, 0L, 0L, localHashMap, "");
+          paramStatisticCollector.collectPerformance(this.a.getCurrentAccountUin(), "arSensorSupport", true, 0L, 0L, localHashMap, "");
           return;
         }
       }
@@ -543,7 +525,7 @@ public class DailyReport
         if (QLog.isColorLevel()) {
           QLog.d("DailyReport", 2, "reportSensorSupport", localException);
         }
-        paramStatisticCollector.collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "arSensorSupport", false, 0L, 0L, null, "");
+        paramStatisticCollector.collectPerformance(this.a.getCurrentAccountUin(), "arSensorSupport", false, 0L, 0L, null, "");
         return;
       }
       String str2 = "0";
@@ -594,17 +576,62 @@ public class DailyReport
   
   private void g()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl);
-    int i = StatisticAssist.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, str, "ep_tab");
-    if (i > 0) {
-      localStatisticCollector.reportActionCountCliOper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, "", "ep_mall", "ep_tab", 1, i, 0);
+    boolean bool = ((IStickerRecManager)this.a.getRuntimeService(IStickerRecManager.class)).isEmotionRecSettingOpen();
+    QQAppInterface localQQAppInterface = this.a;
+    String str;
+    if (bool) {
+      str = "1";
+    } else {
+      str = "2";
     }
-    i = StatisticAssist.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, str, "ep_mall_in2");
+    ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800A224", "0X800A224", 0, 0, str, "", "", "");
+  }
+  
+  private void h()
+  {
+    HashMap localHashMap = new HashMap();
+    int i = StatisticTroopAssist.f(this.b, this.a.getCurrentAccountUin());
     if (i > 0) {
-      localStatisticCollector.reportActionCountCliOper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, "", "ep_mall", "ep_mall_in", 2, i, 0);
+      localHashMap.put("Click_grp_asst", Integer.valueOf(i));
     }
-    Object localObject = (IEmoticonManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEmoticonManagerService.class);
+    i = StatisticTroopAssist.g(this.b, this.a.getCurrentAccountUin());
+    if (i > 0) {
+      localHashMap.put("grp_setting_asst", Integer.valueOf(i));
+    }
+    i = StatisticTroopAssist.h(this.b, this.a.getCurrentAccountUin());
+    if (i > 0) {
+      localHashMap.put("grp_setting_msg", Integer.valueOf(i));
+    }
+    i = StatisticTroopAssist.i(this.b, this.a.getCurrentAccountUin());
+    if (i > 0) {
+      localHashMap.put("grp_msg_equ", Integer.valueOf(i));
+    }
+    i = StatisticTroopAssist.j(this.b, this.a.getCurrentAccountUin());
+    if (i > 0) {
+      localHashMap.put("grp_msg_dec", Integer.valueOf(i));
+    }
+    i = StatisticTroopAssist.k(this.b, this.a.getCurrentAccountUin());
+    if (i > 0) {
+      localHashMap.put("grp_msg_inc", Integer.valueOf(i));
+    }
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
+    QQAppInterface localQQAppInterface = this.a;
+    localStatisticCollector.reportCustomSet(localQQAppInterface, localQQAppInterface.getCurrentAccountUin(), localHashMap);
+  }
+  
+  private void i()
+  {
+    String str = this.a.getCurrentAccountUin();
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.b);
+    int i = StatisticAssist.b(this.b, str, "ep_tab");
+    if (i > 0) {
+      localStatisticCollector.reportActionCountCliOper(this.a, str, "", "ep_mall", "ep_tab", 1, i, 0);
+    }
+    i = StatisticAssist.b(this.b, str, "ep_mall_in2");
+    if (i > 0) {
+      localStatisticCollector.reportActionCountCliOper(this.a, str, "", "ep_mall", "ep_mall_in", 2, i, 0);
+    }
+    Object localObject = (IEmoticonManagerService)this.a.getRuntimeService(IEmoticonManagerService.class);
     if (localObject != null)
     {
       localObject = ((IEmoticonManagerService)localObject).syncGetTabEmoticonPackages();
@@ -618,43 +645,43 @@ public class DailyReport
     label138:
     localObject = new HashMap();
     ((Map)localObject).put("Ep_amount", Integer.valueOf(i));
-    localStatisticCollector.reportOnOff(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, (Map)localObject);
+    localStatisticCollector.reportOnOff(this.a, str, (Map)localObject);
     i = 0;
     while (i < 3)
     {
-      localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+      localObject = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ep_tab2");
       localStringBuilder.append(i);
-      int j = StatisticAssist.a((Context)localObject, str, localStringBuilder.toString());
-      localStatisticCollector.reportActionCountCliOper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, "", "ep_mall", "ep_tab2", 0, j, 0, i);
+      int j = StatisticAssist.b((Context)localObject, str, localStringBuilder.toString());
+      localStatisticCollector.reportActionCountCliOper(this.a, str, "", "ep_mall", "ep_tab2", 0, j, 0, i);
       i += 1;
     }
-    i = StatisticAssist.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, str, "Ep_manage");
+    i = StatisticAssist.b(this.b, str, "Ep_manage");
     if (i > 0) {
-      localStatisticCollector.reportActionCountCliOper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, "", "ep_mall", "Ep_manage", 0, i, 0);
+      localStatisticCollector.reportActionCountCliOper(this.a, str, "", "ep_mall", "Ep_manage", 0, i, 0);
     }
-    i = StatisticAssist.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, str, "Clk_ep_edit");
+    i = StatisticAssist.b(this.b, str, "Clk_ep_edit");
     if (i > 0) {
-      localStatisticCollector.reportActionCountCliOper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, "", "ep_mall", "Clk_ep_edit", 0, i, 0);
+      localStatisticCollector.reportActionCountCliOper(this.a, str, "", "ep_mall", "Clk_ep_edit", 0, i, 0);
     }
-    i = StatisticAssist.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, str, "Delete_ep");
+    i = StatisticAssist.b(this.b, str, "Delete_ep");
     if (i > 0) {
-      localStatisticCollector.reportActionCountCliOper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, "", "ep_mall", "Delete_ep", 0, i, 0);
+      localStatisticCollector.reportActionCountCliOper(this.a, str, "", "ep_mall", "Delete_ep", 0, i, 0);
     }
-    i = StatisticAssist.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, str, "Ep_order");
+    i = StatisticAssist.b(this.b, str, "Ep_order");
     if (i > 0) {
-      localStatisticCollector.reportActionCountCliOper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, "", "ep_mall", "Ep_order", 0, i, 0);
+      localStatisticCollector.reportActionCountCliOper(this.a, str, "", "ep_mall", "Ep_order", 0, i, 0);
     }
   }
   
-  private void h()
+  private void j()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    Object localObject2 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject1 = this.a.getCurrentAccountUin();
+    Object localObject2 = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localObject2 != null)
     {
-      localObject1 = ((FriendsManager)localObject2).a((String)localObject1);
+      localObject1 = ((FriendsManager)localObject2).x((String)localObject1);
       if (localObject1 != null)
       {
         if (!((ExtensionInfo)localObject1).isPendantValid()) {
@@ -663,12 +690,12 @@ public class DailyReport
         File localFile = new File(AvatarPendantUtil.b(((ExtensionInfo)localObject1).pendantId, 4));
         if (!localFile.exists())
         {
-          localObject2 = (DownloaderFactory)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
+          localObject2 = (DownloaderFactory)this.a.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
           String str = AvatarPendantUtil.c(((ExtensionInfo)localObject1).pendantId, 4);
           Bundle localBundle = new Bundle();
           localBundle.putLong("id", ((ExtensionInfo)localObject1).pendantId);
           localObject1 = new DownloadTask(str, localFile);
-          ((DownloaderFactory)localObject2).a(1).startDownload((DownloadTask)localObject1, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, localBundle);
+          ((DownloaderFactory)localObject2).a(1).startDownload((DownloadTask)localObject1, this.c, localBundle);
           return;
         }
         localObject2 = AvatarPendantUtil.a(localFile);
@@ -677,9 +704,9 @@ public class DailyReport
     }
   }
   
-  private void i()
+  private void k()
   {
-    List localList = ((IEmoticonManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEmoticonManagerService.class)).syncGetTabEmoticonPackages();
+    List localList = ((IEmoticonManagerService)this.a.getRuntimeService(IEmoticonManagerService.class)).syncGetTabEmoticonPackages();
     Object localObject1;
     if (localList != null)
     {
@@ -715,9 +742,9 @@ public class DailyReport
     VasWebviewUtil.a("MbBaoyou", "MbBaoyouID", "0", 0, 0, 0, 0, (String)localObject1, "");
   }
   
-  private void j()
+  private void l()
   {
-    String str3 = ((ChatBackgroundManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).c(null);
+    String str3 = ((ChatBackgroundManager)this.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).d(null);
     boolean bool = str3.equals("custom");
     String str1 = "0X8004E10";
     String str2 = "0X8004E0F";
@@ -729,24 +756,47 @@ public class DailyReport
     VasWebviewUtil.a(str1, str2, str3, 0, 0);
   }
   
-  private void k()
-  {
-    VasWebviewUtil.a("0X800498F", "0X800498F", ThemeUtil.getUserCurrentThemeId(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g(), 0);
-  }
-  
-  private void l()
-  {
-    ISVIPHandler localISVIPHandler = (ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
-    VasWebviewUtil.a("0X8004990", "0X8004990", String.valueOf(localISVIPHandler.b()), localISVIPHandler.g(), 0);
-  }
-  
   private void m()
   {
+    VasWebviewUtil.a("0X800498F", "0X800498F", ThemeUtil.getUserCurrentThemeId(this.a), ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).j(), 0);
+  }
+  
+  private void n()
+  {
+    String str3 = ThemeUtil.getUserCurrentThemeId(this.a);
+    boolean bool1 = "1103".equals(str3);
+    boolean bool2 = "2920".equals(str3);
+    QQAppInterface localQQAppInterface = this.a;
+    String str2;
+    if ((!bool1) && (!bool2)) {
+      str2 = "2";
+    } else {
+      str2 = "1";
+    }
+    String str1;
+    if (SimpleUIUtil.e()) {
+      str1 = "2";
+    } else if (StudyModeManager.h()) {
+      str1 = "3";
+    } else {
+      str1 = "1";
+    }
+    ReportController.a(localQQAppInterface, "dc00898", "", "", "0X800BC38", "0X800BC38", 0, 0, str2, str1, str3, "");
+  }
+  
+  private void o()
+  {
+    ISVIPHandler localISVIPHandler = (ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
+    VasWebviewUtil.a("0X8004990", "0X8004990", String.valueOf(localISVIPHandler.d()), localISVIPHandler.j(), 0);
+  }
+  
+  private void p()
+  {
     boolean bool1 = ((IDPCApi)QRoute.api(IDPCApi.class)).isFeatureSupported(DPCNames.chat_font.name());
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("font_open_switch", 0);
+    SharedPreferences localSharedPreferences = this.a.getApp().getSharedPreferences("font_open_switch", 0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isUserOpenFontSwitch_");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    localStringBuilder.append(this.a.getAccount());
     boolean bool2 = localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
     int i;
     if (bool1) {
@@ -759,10 +809,10 @@ public class DailyReport
     VasWebviewUtil.a("font_switch", "switch_on", "0", 0, 0, i, 0, "", "");
   }
   
-  private void n()
+  private void q()
   {
-    String str = this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
-    Object localObject = this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+    String str = this.mAutomator.k.getCurrentUin();
+    Object localObject = this.mAutomator.k.getApp();
     boolean bool2 = false;
     localObject = ((BaseApplication)localObject).getSharedPreferences("sticker_pref", 0);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -772,28 +822,28 @@ public class DailyReport
     if (((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), true))
     {
       bool1 = bool2;
-      if (EmojiStickerManager.a()) {
+      if (EmojiStickerManager.d()) {
         bool1 = true;
       }
     }
-    EmojiStickerManager.f = bool1;
-    if (EmojiStickerManager.f)
+    EmojiStickerManager.n = bool1;
+    if (EmojiStickerManager.n)
     {
-      VasWebviewUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "SwitchOn", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      VasWebviewUtil.a(this.a.getCurrentUin(), "Stick", "SwitchOn", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       return;
     }
-    VasWebviewUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "Stick", "SwitchOff", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    VasWebviewUtil.a(this.a.getCurrentUin(), "Stick", "SwitchOff", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
   
-  private void o()
+  private void r()
   {
-    Object localObject2 = (IApolloManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
+    Object localObject2 = (IApolloManagerService)this.a.getRuntimeService(IApolloManagerService.class, "all");
     Object localObject1;
     int i;
     int j;
     if (localObject2 != null)
     {
-      localObject1 = ((IApolloDaoManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all")).getApolloBaseInfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      localObject1 = ((IApolloDaoManagerService)this.a.getRuntimeService(IApolloDaoManagerService.class, "all")).getApolloBaseInfo(this.a.getCurrentUin());
       StringBuilder localStringBuilder1;
       if ((localObject1 != null) && (((ApolloBaseInfo)localObject1).apolloStatus == 1))
       {
@@ -816,7 +866,7 @@ public class DailyReport
           i = k;
         }
         j = ((IApolloManagerService)localObject2).getApolloUserStatus();
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localObject3 = this.a;
         Object localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append(i);
         ((StringBuilder)localObject4).append("");
@@ -828,22 +878,22 @@ public class DailyReport
       }
       else if ((localObject1 != null) && (((ApolloBaseInfo)localObject1).apolloStatus == 2))
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliStatus", "", "", "ApolloStatus", "close", 0, 0, "0", "0", "", "");
+        ReportController.b(this.a, "CliStatus", "", "", "ApolloStatus", "close", 0, 0, "0", "0", "", "");
       }
       if ((((IApolloManagerService)localObject2).getWhiteListStatus() == 1) && (localObject1 != null))
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localObject2 = this.a;
         localStringBuilder1 = new StringBuilder();
         localStringBuilder1.append(((ApolloBaseInfo)localObject1).apolloStatus);
         localStringBuilder1.append("");
         ReportController.b((AppRuntime)localObject2, "CliStatus", "", "", "ApolloStatus", "white", 0, 0, localStringBuilder1.toString(), "0", "", "");
       }
-      localObject1 = (IApolloDaoManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all");
+      localObject1 = (IApolloDaoManagerService)this.a.getRuntimeService(IApolloDaoManagerService.class, "all");
       if (localObject1 != null)
       {
         localObject2 = ((IApolloDaoManagerService)localObject1).getFavActionList();
         if (localObject2 != null) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliStatus", "", "", "ApolloStatus", "action_added", ((List)localObject2).size(), 0, "0", "0", "", "");
+          ReportController.b(this.a, "CliStatus", "", "", "ApolloStatus", "action_added", ((List)localObject2).size(), 0, "0", "0", "", "");
         }
         localObject1 = ((IApolloDaoManagerService)localObject1).getApolloGameVer();
         if ((localObject1 != null) && (!((ConcurrentHashMap)localObject1).isEmpty())) {
@@ -860,19 +910,19 @@ public class DailyReport
       {
         i = (int)Float.parseFloat((String)((Map.Entry)localObject2).getValue());
         j = ((Integer)((Map.Entry)localObject2).getKey()).intValue();
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliStatus", "", "", "ApolloStatus", "game_downloaded", 0, 0, String.valueOf(j), String.valueOf(i), "", "");
+        ReportController.b(this.a, "CliStatus", "", "", "ApolloStatus", "game_downloaded", 0, 0, String.valueOf(j), String.valueOf(i), "", "");
       }
       catch (Exception localException) {}
       return;
     }
   }
   
-  private void p()
+  private void s()
   {
-    Object localObject = (PhoneUnityManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PHONE_UNITY_MANAGER);
-    if (((PhoneUnityManager)localObject).d)
+    Object localObject = (PhoneUnityManager)this.a.getManager(QQManagerFactory.PHONE_UNITY_MANAGER);
+    if (((PhoneUnityManager)localObject).g)
     {
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      QQAppInterface localQQAppInterface = this.a;
       if (((PhoneUnityManager)localObject).a()) {
         localObject = "1";
       } else {
@@ -882,15 +932,15 @@ public class DailyReport
     }
   }
   
-  private void q()
+  private void t()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
     if (localEntityManager != null)
     {
-      NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() });
+      NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { this.a.getCurrentAccountUin() });
       if (localNearbyPeopleCard != null)
       {
-        QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        QQAppInterface localQQAppInterface = this.a;
         String str;
         if (localNearbyPeopleCard.switchHobby) {
           str = "1";
@@ -898,7 +948,7 @@ public class DailyReport
           str = "0";
         }
         ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X8004A12", "0X8004A12", 0, 0, str, "", "", "");
-        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localQQAppInterface = this.a;
         if (localNearbyPeopleCard.switchQzone) {
           str = "1";
         } else {
@@ -911,88 +961,88 @@ public class DailyReport
   }
   
   /* Error */
-  private void r()
+  private void u()
   {
     // Byte code:
-    //   0: new 569	java/lang/StringBuilder
+    //   0: new 602	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 570	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 603	java/lang/StringBuilder:<init>	()V
     //   7: astore 11
     //   9: aload 11
-    //   11: invokestatic 937	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   14: invokevirtual 940	java/io/File:getPath	()Ljava/lang/String;
-    //   17: invokevirtual 575	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11: invokestatic 993	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   14: invokevirtual 996	java/io/File:getPath	()Ljava/lang/String;
+    //   17: invokevirtual 608	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   20: pop
     //   21: aload 11
-    //   23: ldc_w 942
-    //   26: invokevirtual 575	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: ldc_w 998
+    //   26: invokevirtual 608	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: pop
     //   30: aload 11
-    //   32: invokevirtual 579	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokevirtual 612	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   35: astore 15
-    //   37: new 612	java/io/File
+    //   37: new 645	java/io/File
     //   40: dup
     //   41: aload 15
-    //   43: invokespecial 622	java/io/File:<init>	(Ljava/lang/String;)V
+    //   43: invokespecial 655	java/io/File:<init>	(Ljava/lang/String;)V
     //   46: astore 14
     //   48: aload 14
-    //   50: invokevirtual 625	java/io/File:exists	()Z
+    //   50: invokevirtual 658	java/io/File:exists	()Z
     //   53: ifne +4 -> 57
     //   56: return
-    //   57: ldc_w 733
-    //   60: invokestatic 329	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   63: checkcast 733	com/tencent/mobileqq/dpc/api/IDPCApi
-    //   66: getstatic 945	com/tencent/mobileqq/dpc/enumname/DPCNames:batteryCfg	Lcom/tencent/mobileqq/dpc/enumname/DPCNames;
-    //   69: invokevirtual 742	com/tencent/mobileqq/dpc/enumname/DPCNames:name	()Ljava/lang/String;
-    //   72: invokeinterface 948 2 0
+    //   57: ldc_w 787
+    //   60: invokestatic 421	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   63: checkcast 787	com/tencent/mobileqq/dpc/api/IDPCApi
+    //   66: getstatic 1001	com/tencent/mobileqq/dpc/enumname/DPCNames:batteryCfg	Lcom/tencent/mobileqq/dpc/enumname/DPCNames;
+    //   69: invokevirtual 796	com/tencent/mobileqq/dpc/enumname/DPCNames:name	()Ljava/lang/String;
+    //   72: invokeinterface 1004 2 0
     //   77: astore 11
     //   79: aload 11
-    //   81: invokestatic 953	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   81: invokestatic 1008	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   84: ifne +707 -> 791
     //   87: aload 11
-    //   89: ldc_w 955
-    //   92: invokevirtual 957	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   89: ldc_w 1010
+    //   92: invokevirtual 345	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   95: ifeq +696 -> 791
     //   98: aload 11
     //   100: aload 11
-    //   102: ldc_w 955
-    //   105: invokevirtual 961	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   102: ldc_w 1010
+    //   105: invokevirtual 1014	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   108: iconst_1
     //   109: iadd
     //   110: aload 11
-    //   112: invokevirtual 962	java/lang/String:length	()I
-    //   115: invokevirtual 966	java/lang/String:substring	(II)Ljava/lang/String;
+    //   112: invokevirtual 1015	java/lang/String:length	()I
+    //   115: invokevirtual 1019	java/lang/String:substring	(II)Ljava/lang/String;
     //   118: astore 11
     //   120: goto +3 -> 123
     //   123: aload 11
-    //   125: ldc_w 968
-    //   128: invokevirtual 972	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   125: ldc_w 1021
+    //   128: invokevirtual 1025	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   131: iconst_1
     //   132: aaload
-    //   133: invokestatic 878	java/lang/Float:parseFloat	(Ljava/lang/String;)F
+    //   133: invokestatic 933	java/lang/Float:parseFloat	(Ljava/lang/String;)F
     //   136: fstore_1
     //   137: goto +23 -> 160
-    //   140: invokestatic 355	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   140: invokestatic 397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   143: ifeq +13 -> 156
-    //   146: ldc_w 459
+    //   146: ldc_w 399
     //   149: iconst_2
-    //   150: ldc_w 974
-    //   153: invokestatic 977	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   156: ldc_w 978
+    //   150: ldc_w 1027
+    //   153: invokestatic 1030	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   156: ldc_w 1031
     //   159: fstore_1
     //   160: iconst_0
     //   161: istore 5
-    //   163: invokestatic 982	java/lang/Math:random	()D
+    //   163: invokestatic 1035	java/lang/Math:random	()D
     //   166: fload_1
     //   167: f2d
     //   168: dcmpg
     //   169: ifgt +640 -> 809
     //   172: aload 14
-    //   174: invokevirtual 986	java/io/File:listFiles	()[Ljava/io/File;
+    //   174: invokevirtual 1039	java/io/File:listFiles	()[Ljava/io/File;
     //   177: astore 11
-    //   179: new 988	java/util/ArrayList
+    //   179: new 1041	java/util/ArrayList
     //   182: dup
-    //   183: invokespecial 989	java/util/ArrayList:<init>	()V
+    //   183: invokespecial 1042	java/util/ArrayList:<init>	()V
     //   186: astore 16
     //   188: aload 11
     //   190: ifnull +58 -> 248
@@ -1010,21 +1060,21 @@ public class DailyReport
     //   210: aload 11
     //   212: iload_2
     //   213: aaload
-    //   214: invokevirtual 992	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   214: invokevirtual 1045	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   217: astore 12
     //   219: aload 12
     //   221: ifnull +578 -> 799
     //   224: aload 12
-    //   226: ldc_w 994
-    //   229: invokevirtual 997	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   226: ldc_w 1047
+    //   229: invokevirtual 1050	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   232: ifeq +567 -> 799
     //   235: aload 16
     //   237: aload 12
-    //   239: invokeinterface 998 2 0
+    //   239: invokeinterface 1051 2 0
     //   244: pop
     //   245: goto +554 -> 799
     //   248: aload 16
-    //   250: invokeinterface 53 1 0
+    //   250: invokeinterface 56 1 0
     //   255: istore_2
     //   256: aconst_null
     //   257: astore 13
@@ -1035,55 +1085,55 @@ public class DailyReport
     //   266: iload_2
     //   267: ifle +137 -> 404
     //   270: aload 16
-    //   272: invokeinterface 53 1 0
+    //   272: invokeinterface 56 1 0
     //   277: iconst_5
     //   278: if_icmpge +117 -> 395
-    //   281: new 569	java/lang/StringBuilder
+    //   281: new 602	java/lang/StringBuilder
     //   284: dup
-    //   285: invokespecial 570	java/lang/StringBuilder:<init>	()V
+    //   285: invokespecial 603	java/lang/StringBuilder:<init>	()V
     //   288: astore 11
     //   290: aload 11
     //   292: aload 15
-    //   294: invokevirtual 575	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: invokevirtual 608	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   297: pop
     //   298: aload 11
-    //   300: ldc_w 1000
-    //   303: invokevirtual 575	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   300: ldc_w 1053
+    //   303: invokevirtual 608	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   306: pop
     //   307: aload 11
-    //   309: invokestatic 1005	java/lang/System:currentTimeMillis	()J
-    //   312: invokevirtual 1008	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   309: invokestatic 1058	java/lang/System:currentTimeMillis	()J
+    //   312: invokevirtual 1061	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   315: pop
     //   316: aload 11
-    //   318: ldc_w 1010
-    //   321: invokevirtual 575	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   318: ldc_w 1063
+    //   321: invokevirtual 608	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   324: pop
     //   325: aload 11
-    //   327: invokevirtual 579	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   327: invokevirtual 612	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   330: astore 11
     //   332: aload 16
     //   334: aload 11
-    //   336: invokestatic 1016	com/tencent/mobileqq/utils/FileUtils:zipFiles	(Ljava/util/List;Ljava/lang/String;)Z
+    //   336: invokestatic 1069	com/tencent/mobileqq/utils/FileUtils:zipFiles	(Ljava/util/List;Ljava/lang/String;)Z
     //   339: ifeq +29 -> 368
-    //   342: new 612	java/io/File
+    //   342: new 645	java/io/File
     //   345: dup
     //   346: aload 11
-    //   348: invokespecial 622	java/io/File:<init>	(Ljava/lang/String;)V
+    //   348: invokespecial 655	java/io/File:<init>	(Ljava/lang/String;)V
     //   351: astore 11
     //   353: aload 11
-    //   355: invokevirtual 625	java/io/File:exists	()Z
+    //   355: invokevirtual 658	java/io/File:exists	()Z
     //   358: ifne +448 -> 806
     //   361: aload 12
     //   363: astore 11
     //   365: goto +39 -> 404
     //   368: aload 12
     //   370: astore 11
-    //   372: invokestatic 355	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   372: invokestatic 397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   375: ifeq +29 -> 404
-    //   378: ldc_w 459
+    //   378: ldc_w 399
     //   381: iconst_2
-    //   382: ldc_w 1018
-    //   385: invokestatic 977	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   382: ldc_w 1071
+    //   385: invokestatic 1030	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   388: aload 12
     //   390: astore 11
     //   392: goto +12 -> 404
@@ -1098,74 +1148,74 @@ public class DailyReport
     //   407: istore_2
     //   408: aload 11
     //   410: ifnull +210 -> 620
-    //   413: new 1020	org/json/JSONObject
+    //   413: new 1073	org/json/JSONObject
     //   416: dup
-    //   417: invokespecial 1021	org/json/JSONObject:<init>	()V
+    //   417: invokespecial 1074	org/json/JSONObject:<init>	()V
     //   420: astore 12
-    //   422: new 1020	org/json/JSONObject
+    //   422: new 1073	org/json/JSONObject
     //   425: dup
-    //   426: invokespecial 1021	org/json/JSONObject:<init>	()V
+    //   426: invokespecial 1074	org/json/JSONObject:<init>	()V
     //   429: astore 13
     //   431: aload 13
-    //   433: ldc_w 1023
+    //   433: ldc_w 1076
     //   436: aload 11
-    //   438: invokevirtual 992	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   441: invokevirtual 1026	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   438: invokevirtual 1045	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   441: invokevirtual 1079	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   444: pop
-    //   445: new 1020	org/json/JSONObject
+    //   445: new 1073	org/json/JSONObject
     //   448: dup
-    //   449: invokespecial 1021	org/json/JSONObject:<init>	()V
+    //   449: invokespecial 1074	org/json/JSONObject:<init>	()V
     //   452: astore 11
     //   454: aload 11
-    //   456: ldc_w 1028
-    //   459: invokestatic 1032	com/tencent/qqperf/MagnifierSDK:b	()Ljava/lang/String;
-    //   462: invokevirtual 1026	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   456: ldc_w 1081
+    //   459: invokestatic 1085	com/tencent/qqperf/MagnifierSDK:m	()Ljava/lang/String;
+    //   462: invokevirtual 1079	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   465: pop
     //   466: aload 11
-    //   468: ldc_w 1034
+    //   468: ldc_w 1087
     //   471: bipush 17
-    //   473: invokestatic 290	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   476: invokevirtual 1026	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   473: invokestatic 262	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   476: invokevirtual 1079	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   479: pop
     //   480: aload 12
-    //   482: ldc_w 1036
+    //   482: ldc_w 1089
     //   485: aload 13
-    //   487: invokevirtual 1026	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   487: invokevirtual 1079	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   490: pop
     //   491: aload 12
-    //   493: ldc_w 1038
+    //   493: ldc_w 1091
     //   496: aload 11
-    //   498: invokevirtual 1026	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   498: invokevirtual 1079	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   501: pop
     //   502: aload 12
-    //   504: ldc_w 1040
+    //   504: ldc_w 1093
     //   507: bipush 104
-    //   509: invokevirtual 1043	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   509: invokevirtual 1096	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   512: pop
     //   513: lconst_0
     //   514: lstore 9
     //   516: aload_0
-    //   517: getfield 309	com/tencent/mobileqq/statistics/DailyReport:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   520: invokevirtual 339	com/tencent/mobileqq/app/QQAppInterface:getCurrentUin	()Ljava/lang/String;
-    //   523: invokestatic 1049	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   517: getfield 282	com/tencent/mobileqq/statistics/DailyReport:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   520: invokevirtual 354	com/tencent/mobileqq/app/QQAppInterface:getCurrentUin	()Ljava/lang/String;
+    //   523: invokestatic 1102	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   526: lstore 7
     //   528: goto +31 -> 559
     //   531: astore 11
     //   533: lload 9
     //   535: lstore 7
-    //   537: invokestatic 355	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   537: invokestatic 397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   540: ifeq +19 -> 559
-    //   543: ldc_w 459
+    //   543: ldc_w 399
     //   546: iconst_2
-    //   547: ldc_w 1051
+    //   547: ldc_w 1104
     //   550: aload 11
-    //   552: invokestatic 463	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   552: invokestatic 403	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   555: lload 9
     //   557: lstore 7
-    //   559: new 1053	com/tencent/qqperf/repoter/ResultObject
+    //   559: new 1106	com/tencent/qqperf/repoter/ResultObject
     //   562: dup
     //   563: iconst_0
-    //   564: ldc_w 1055
+    //   564: ldc_w 1108
     //   567: iconst_1
     //   568: lconst_1
     //   569: lconst_1
@@ -1173,8 +1223,8 @@ public class DailyReport
     //   572: iconst_1
     //   573: iconst_1
     //   574: lload 7
-    //   576: invokespecial 1058	com/tencent/qqperf/repoter/ResultObject:<init>	(ILjava/lang/String;ZJJLorg/json/JSONObject;ZZJ)V
-    //   579: invokestatic 1063	com/tencent/qqperf/repoter/ReporterMachine:a	(Lcom/tencent/qqperf/repoter/ResultObject;)V
+    //   576: invokespecial 1111	com/tencent/qqperf/repoter/ResultObject:<init>	(ILjava/lang/String;ZJJLorg/json/JSONObject;ZZJ)V
+    //   579: invokestatic 1116	com/tencent/qqperf/repoter/ReporterMachine:a	(Lcom/tencent/qqperf/repoter/ResultObject;)V
     //   582: iconst_1
     //   583: istore_2
     //   584: goto +36 -> 620
@@ -1183,15 +1233,15 @@ public class DailyReport
     //   590: istore_2
     //   591: iload_3
     //   592: istore 4
-    //   594: invokestatic 355	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   594: invokestatic 397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   597: ifeq +23 -> 620
     //   600: iload_3
     //   601: istore 4
-    //   603: ldc_w 459
+    //   603: ldc_w 399
     //   606: iconst_2
-    //   607: ldc_w 1065
+    //   607: ldc_w 1118
     //   610: aload 11
-    //   612: invokestatic 463	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   612: invokestatic 403	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   615: iload_3
     //   616: istore_2
     //   617: goto +3 -> 620
@@ -1202,7 +1252,7 @@ public class DailyReport
     //   626: iload_2
     //   627: istore 4
     //   629: aload 14
-    //   631: invokevirtual 986	java/io/File:listFiles	()[Ljava/io/File;
+    //   631: invokevirtual 1039	java/io/File:listFiles	()[Ljava/io/File;
     //   634: astore 11
     //   636: iload_2
     //   637: istore_3
@@ -1230,7 +1280,7 @@ public class DailyReport
     //   674: aload 11
     //   676: iload 5
     //   678: aaload
-    //   679: invokevirtual 1068	java/io/File:delete	()Z
+    //   679: invokevirtual 1121	java/io/File:delete	()Z
     //   682: pop
     //   683: iload 5
     //   685: iconst_1
@@ -1244,46 +1294,46 @@ public class DailyReport
     //   700: istore 4
     //   702: iload 4
     //   704: istore_3
-    //   705: invokestatic 355	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   705: invokestatic 397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   708: ifeq +18 -> 726
-    //   711: ldc_w 459
+    //   711: ldc_w 399
     //   714: iconst_2
-    //   715: ldc_w 1070
+    //   715: ldc_w 1123
     //   718: aload 11
-    //   720: invokestatic 463	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   720: invokestatic 403	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   723: iload 4
     //   725: istore_3
-    //   726: invokestatic 355	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   726: invokestatic 397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   729: ifeq +56 -> 785
-    //   732: new 569	java/lang/StringBuilder
+    //   732: new 602	java/lang/StringBuilder
     //   735: dup
-    //   736: invokespecial 570	java/lang/StringBuilder:<init>	()V
+    //   736: invokespecial 603	java/lang/StringBuilder:<init>	()V
     //   739: astore 11
     //   741: aload 11
-    //   743: ldc_w 1072
-    //   746: invokevirtual 575	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   743: ldc_w 1125
+    //   746: invokevirtual 608	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   749: pop
     //   750: aload 11
     //   752: iload_3
-    //   753: invokevirtual 578	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   753: invokevirtual 611	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   756: pop
     //   757: aload 11
-    //   759: ldc_w 1074
-    //   762: invokevirtual 575	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   759: ldc_w 1127
+    //   762: invokevirtual 608	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   765: pop
     //   766: aload 11
     //   768: fload_1
-    //   769: invokevirtual 1077	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   769: invokevirtual 1130	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
     //   772: pop
-    //   773: ldc_w 459
+    //   773: ldc_w 399
     //   776: iconst_2
     //   777: aload 11
-    //   779: invokevirtual 579	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   782: invokestatic 977	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   779: invokevirtual 612	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   782: invokestatic 1030	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   785: return
     //   786: astore 11
     //   788: goto -648 -> 140
-    //   791: ldc_w 1079
+    //   791: ldc_w 1132
     //   794: astore 11
     //   796: goto -673 -> 123
     //   799: iload_2
@@ -1343,10 +1393,10 @@ public class DailyReport
     //   123	137	786	java/lang/Exception
   }
   
-  private void s()
+  private void v()
   {
-    Map localMap = ((TempMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_SETTTING_MANAGER)).a();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Map localMap = ((TempMsgManager)this.a.getManager(QQManagerFactory.TEMP_MSG_SETTTING_MANAGER)).a();
+    QQAppInterface localQQAppInterface = this.a;
     String str;
     if (((Boolean)localMap.get("temp_msg_setting_troop_")).booleanValue()) {
       str = "1";
@@ -1354,49 +1404,49 @@ public class DailyReport
       str = "0";
     }
     ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800997C", "0X800997C", 1, 1, str, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localQQAppInterface = this.a;
     if (((Boolean)localMap.get("temp_msg_setting_nearby_")).booleanValue()) {
       str = "1";
     } else {
       str = "0";
     }
     ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800997C", "0X800997C", 2, 2, str, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localQQAppInterface = this.a;
     if (((Boolean)localMap.get("temp_msg_setting_interest_v2")).booleanValue()) {
       str = "1";
     } else {
       str = "0";
     }
     ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800997C", "0X800997C", 3, 3, str, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localQQAppInterface = this.a;
     if (((Boolean)localMap.get("temp_msg_setting_contact_")).booleanValue()) {
       str = "1";
     } else {
       str = "0";
     }
     ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800997C", "0X800997C", 4, 4, str, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localQQAppInterface = this.a;
     if (((Boolean)localMap.get("temp_msg_setting_consult_")).booleanValue()) {
       str = "1";
     } else {
       str = "0";
     }
     ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800997C", "0X800997C", 5, 5, str, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localQQAppInterface = this.a;
     if (((Boolean)localMap.get("temp_msg_setting_circle_v2")).booleanValue()) {
       str = "1";
     } else {
       str = "0";
     }
     ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800997C", "0X800997C", 6, 6, str, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localQQAppInterface = this.a;
     if (((Boolean)localMap.get("temp_msg_setting_game_buddy_")).booleanValue()) {
       str = "1";
     } else {
       str = "0";
     }
     ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800997C", "0X800997C", 7, 7, str, "", "", "");
-    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localQQAppInterface = this.a;
     if (((Boolean)localMap.get("temp_msg_setting_audio_room")).booleanValue()) {
       str = "1";
     } else {
@@ -1405,10 +1455,10 @@ public class DailyReport
     ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X800997C", "0X800997C", 8, 8, str, "", "", "");
   }
   
-  private void t()
+  private void w()
   {
-    if (!ScreenShotDetector.b()) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B4E6", "0X800B4E6", 0, 0, "", "", "", "");
+    if (!ScreenShotDetector.d()) {
+      ReportController.b(this.a, "dc00898", "", "", "0X800B4E6", "0X800B4E6", 0, 0, "", "", "", "");
     }
   }
   
@@ -1442,7 +1492,7 @@ public class DailyReport
         ((StringBuilder)localObject).append(bool1);
         QLog.d("DailyReport", 2, ((StringBuilder)localObject).toString());
       }
-      paramStatisticCollector.collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "arMapWifiSwitchStatus", true, 0L, 0L, localHashMap, "");
+      paramStatisticCollector.collectPerformance(this.a.getCurrentAccountUin(), "arMapWifiSwitchStatus", true, 0L, 0L, localHashMap, "");
       return;
     }
     catch (Throwable paramStatisticCollector)
@@ -1455,13 +1505,13 @@ public class DailyReport
   
   void b()
   {
-    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSharedPreferences("mobileQQ", 0);
-    StatisticTroopAssist.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    StatisticAssist.a(localQQAppInterface, this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, localQQAppInterface.getCurrentAccountUin());
-    QQSettingUtil.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    ThemeUtil.resetThemeSwitchTimes(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ((ChatBackgroundManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).b(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    this.b.getSharedPreferences("mobileQQ", 0);
+    StatisticTroopAssist.a(this.b, this.a.getCurrentAccountUin());
+    QQAppInterface localQQAppInterface = this.a;
+    StatisticAssist.a(localQQAppInterface, this.b, localQQAppInterface.getCurrentAccountUin());
+    QQSettingUtil.a(this.b, this.a.getCurrentAccountUin(), 0);
+    ThemeUtil.resetThemeSwitchTimes(this.a);
+    ((ChatBackgroundManager)this.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).e(this.b, this.a.getCurrentAccountUin());
   }
   
   void b(StatisticCollector paramStatisticCollector)
@@ -1475,13 +1525,13 @@ public class DailyReport
       try
       {
         localHashMap = new HashMap();
-        boolean bool = SharedPreUtils.a();
-        arrayOfInt = SharedPreUtils.a();
-        long l2 = SharedPreUtils.a();
+        boolean bool = SharedPreUtils.h();
+        arrayOfInt = SharedPreUtils.e();
+        long l2 = SharedPreUtils.f();
         if ((!bool) && (arrayOfInt[1] <= 0))
         {
           CapturePtvTemplateManager.a().b(false);
-          SharedPreUtils.a();
+          SharedPreUtils.g();
         }
         l1 = -1L;
         if (l2 <= 0L) {
@@ -1516,17 +1566,17 @@ public class DailyReport
         ((StringBuilder)localObject).append(l1);
         QLog.d("DailyReport", 2, ((StringBuilder)localObject).toString());
       }
-      paramStatisticCollector.collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "reportQQFilterDownloadInfo", true, 0L, 0L, localHashMap, "");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "acQQFilterDownloadCount", true, 0L, 0L, localHashMap, null);
+      paramStatisticCollector.collectPerformance(this.a.getCurrentAccountUin(), "reportQQFilterDownloadInfo", true, 0L, 0L, localHashMap, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "acQQFilterDownloadCount", true, 0L, 0L, localHashMap, null);
       return;
     } while (((arrayOfInt[0] > 0) || (arrayOfInt[1] > 0)) && (arrayOfInt[0] <= arrayOfInt[1]));
   }
   
   public void c()
   {
-    Object localObject2 = (LikeRankingListManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LIKE_RANKING_LIST_MANAGER);
-    boolean bool1 = ((LikeRankingListManager)localObject2).c();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject2 = (LikeRankingListManager)this.a.getManager(QQManagerFactory.LIKE_RANKING_LIST_MANAGER);
+    boolean bool1 = ((LikeRankingListManager)localObject2).e();
+    QQAppInterface localQQAppInterface = this.a;
     Object localObject1;
     if (bool1) {
       localObject1 = "1";
@@ -1534,8 +1584,8 @@ public class DailyReport
       localObject1 = "2";
     }
     ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X8007918", "0X8007918", 0, 0, (String)localObject1, "", "", "");
-    boolean bool2 = ((LikeRankingListManager)localObject2).b();
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    boolean bool2 = ((LikeRankingListManager)localObject2).d();
+    localObject2 = this.a;
     if (bool2) {
       localObject1 = "1";
     } else {
@@ -1555,12 +1605,12 @@ public class DailyReport
   
   protected int doStep()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSharedPreferences("mobileQQ", 0);
+    this.a = this.mAutomator.k;
+    this.b = BaseApplicationImpl.getApplication();
+    SharedPreferences localSharedPreferences = this.b.getSharedPreferences("mobileQQ", 0);
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("LastTimeLogin_");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject1).append(this.a.getCurrentAccountUin());
     long l1 = localSharedPreferences.getLong(((StringBuilder)localObject1).toString(), 0L);
     long l2 = System.currentTimeMillis() - 10L;
     localObject1 = Calendar.getInstance();
@@ -1580,50 +1630,51 @@ public class DailyReport
     ((Calendar)localObject3).getTimeInMillis();
     if ((l1 > 0L) && (((Calendar)localObject1).after(localObject2)))
     {
-      b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      QQSettingUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      NotifyPushSettingActivity.a((QQAppInterface)localObject3, ((QQAppInterface)localObject3).getCurrentAccountUin());
-      q();
-      f();
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl);
-      Object localObject6 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      b(this.a.getCurrentUin());
+      a(this.a);
+      b(this.a);
+      QQSettingUtil.a(this.a);
+      localObject3 = this.a;
+      NotifyPushSettingFragment.a((QQAppInterface)localObject3, ((QQAppInterface)localObject3).getCurrentAccountUin());
+      t();
+      h();
+      FileManagerUtil.a(this.a, this.b);
+      Object localObject6 = this.a.getCurrentAccountUin();
       a((String)localObject6);
-      Object localObject7 = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+      Object localObject7 = this.b;
       StatisticCollector localStatisticCollector = StatisticCollector.getInstance((Context)localObject7);
       try
       {
-        g();
+        i();
       }
       catch (Exception localException)
       {
         while (!QLog.isColorLevel()) {}
         QLog.d("DailyReport", 2, "reportAioEmotionData", localException);
       }
-      h();
-      i();
       j();
       k();
       l();
       m();
+      n();
       o();
       p();
-      n();
-      Object localObject4 = (MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
-      if ((localObject4 != null) && (((MessageRoamManager)localObject4).h()))
+      r();
+      s();
+      q();
+      Object localObject4 = (MessageRoamManager)this.a.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+      if ((localObject4 != null) && (((MessageRoamManager)localObject4).C()))
       {
-        if (((MessageRoamManager)localObject4).b() == 1) {
+        if (((MessageRoamManager)localObject4).z() == 1) {
           localObject4 = "devlock";
         } else {
           localObject4 = "password";
         }
-        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatHistory", "auth_mode", 1, 0, new String[] { "0", "0", localObject4 });
+        VipUtils.a(this.a, "chat_history", "ChatHistory", "auth_mode", 1, 0, new String[] { "0", "0", localObject4 });
       }
-      localObject4 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      localObject4 = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (localObject4 != null) {
-        localObject4 = ((FriendsManager)localObject4).a((String)localObject6);
+        localObject4 = ((FriendsManager)localObject4).x((String)localObject6);
       } else {
         localObject4 = null;
       }
@@ -1632,7 +1683,7 @@ public class DailyReport
       }
       if (localObject4 != null)
       {
-        j = ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
+        j = ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).j();
         if (j == 2)
         {
           i = 0;
@@ -1646,11 +1697,11 @@ public class DailyReport
         }
         VasWebviewUtil.a("0X8004A26", "0X8004A26", String.valueOf(((ExtensionInfo)localObject4).colorRingId), i, 0);
       }
-      int j = ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
+      int j = ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).j();
       if (localObject4 != null) {
         VasWebviewUtil.a("0X8005005", "0X8005005", String.valueOf(((ExtensionInfo)localObject4).commingRingId), j, 0);
       }
-      localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localObject4 = this.a;
       int k = VipFunCallUtil.a((AppRuntime)localObject4, ((QQAppInterface)localObject4).getAccount(), 6, true, null);
       if (j == 2)
       {
@@ -1663,9 +1714,9 @@ public class DailyReport
           i = 2;
         }
       }
-      localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localObject4 = this.a;
       ReportController.b((AppRuntime)localObject4, "CliOper", "", ((QQAppInterface)localObject4).getCurrentAccountUin(), "funcallnew", "setfuncall", 0, 0, String.valueOf(k), String.valueOf(i), String.valueOf(NetworkUtil.getSystemNetwork(null)), "1");
-      localObject4 = StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject4 = StatisticAssist.a(this.a);
       Object localObject8;
       if (localObject4 != null)
       {
@@ -1674,7 +1725,7 @@ public class DailyReport
         {
           localObject8 = (MessageReportData)((Iterator)localObject4).next();
           if (((MessageReportData)localObject8).msgCount > 0) {
-            localStatisticCollector.reportActionCountMsgOper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((MessageReportData)localObject8).getMsgReport());
+            localStatisticCollector.reportActionCountMsgOper(this.a, ((MessageReportData)localObject8).getMsgReport());
           }
         }
       }
@@ -1682,18 +1733,18 @@ public class DailyReport
       if (i > 0)
       {
         localObject4 = StatisticCollector.getInstance(BaseApplication.getContext());
-        localObject8 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localObject8 = this.a;
         ((StatisticCollector)localObject4).reportActionCount((AppRuntime)localObject8, ((QQAppInterface)localObject8).getCurrentAccountUin(), "Setting_Quit", i);
       }
-      i = NotifyPushSettingActivity.a((Context)localObject7, (String)localObject6, "LED_light");
+      i = NotifyPushSettingFragment.a((Context)localObject7, (String)localObject6, "LED_light");
       localObject4 = new HashMap();
       ((HashMap)localObject4).clear();
       ((HashMap)localObject4).put("LED_light", Integer.valueOf(i));
-      localStatisticCollector.reportOnOff(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject6, (Map)localObject4);
-      if (BadgeUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))
+      localStatisticCollector.reportOnOff(this.a, (String)localObject6, (Map)localObject4);
+      if (BadgeUtils.a(this.a.getApplication()))
       {
-        bool = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, null, null, "qqsetting_show_badgeunread_key", true);
-        localObject7 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        bool = SettingCloneUtil.readValue(this.b, null, null, "qqsetting_show_badgeunread_key", true);
+        localObject7 = this.a;
         if (bool) {
           localObject4 = "1";
         } else {
@@ -1702,16 +1753,16 @@ public class DailyReport
         ReportController.b((AppRuntime)localObject7, "CliStatus", "", "", "0X8004BE8", "0X8004BE8", 0, 0, (String)localObject4, "", "", "");
       }
       a();
-      i = ThemeUtil.getThemeSwitchTimes(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      i = ThemeUtil.getThemeSwitchTimes(this.a);
       if (i > 0) {
-        localStatisticCollector.reportActionCountCliOper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject6, "", "theme_mall", "theme_replace", 0, i, 0);
+        localStatisticCollector.reportActionCountCliOper(this.a, (String)localObject6, "", "theme_mall", "theme_replace", 0, i, 0);
       }
-      i = ((ChatBackgroundManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      i = ((ChatBackgroundManager)this.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).d(this.b, this.a.getCurrentAccountUin());
       if (i > 0) {
-        localStatisticCollector.reportActionCountCliOper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject6, "", "background", "bkground_replace", 0, i, 0);
+        localStatisticCollector.reportActionCountCliOper(this.a, (String)localObject6, "", "background", "bkground_replace", 0, i, 0);
       }
-      boolean bool = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getString(2131693837), "qqsetting_lock_screen_whenexit_key", true);
-      localObject6 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      boolean bool = SettingCloneUtil.readValue(this.b, this.a.getCurrentAccountUin(), this.b.getString(2131891413), "qqsetting_lock_screen_whenexit_key", true);
+      localObject6 = this.a;
       if (Boolean.valueOf(bool).booleanValue()) {
         localObject4 = "1";
       } else {
@@ -1727,16 +1778,16 @@ public class DailyReport
           localObject7 = new HashMap();
           i = QQAppInterface.isNotificationEnabled();
           ((HashMap)localObject7).put("notifationStat", String.valueOf(i));
-          ((HashMap)localObject7).put("uinParam", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          localObject6 = DeviceInfoUtil.j();
+          ((HashMap)localObject7).put("uinParam", this.a.getCurrentAccountUin());
+          localObject6 = DeviceInfoUtil.v();
           localObject4 = localObject6;
           if (localObject6 == null) {
             localObject4 = "";
           }
           ((HashMap)localObject7).put("romInfo", localObject4);
-          localObject6 = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+          localObject6 = PreferenceManager.getDefaultSharedPreferences(this.a.getApp());
           localObject8 = new StringBuilder();
-          ((StringBuilder)localObject8).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+          ((StringBuilder)localObject8).append(this.a.getCurrentUin());
           ((StringBuilder)localObject8).append("_");
           ((StringBuilder)localObject8).append("push_open_notify_xml");
           bool = ((SharedPreferences)localObject6).contains(((StringBuilder)localObject8).toString());
@@ -1749,7 +1800,7 @@ public class DailyReport
             ((HashMap)localObject7).put("pushCount", String.valueOf(j));
             ((HashMap)localObject7).put("openCount", String.valueOf(k));
             ((HashMap)localObject7).put("cancleCount", String.valueOf(m));
-            StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "msgNotificationStatsTag", true, 0L, 0L, (HashMap)localObject7, "");
+            StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "msgNotificationStatsTag", true, 0L, 0L, (HashMap)localObject7, "");
             if (QLog.isColorLevel()) {
               QLog.d("StatisticCollector", 2, String.format("msg Notification report value, notifationStat: %d, romInfo: %s", new Object[] { Integer.valueOf(i), localObject4 }));
             }
@@ -1768,41 +1819,42 @@ public class DailyReport
           QLog.d("StatisticCollector", 2, ((StringBuilder)localObject6).toString());
         }
       }
-      s();
-      Object localObject5 = (ILebaHelperService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ILebaHelperService.class, "");
+      v();
+      Object localObject5 = (ILebaHelperService)this.a.getRuntimeService(ILebaHelperService.class, "");
       if (localObject5 != null) {
-        ((ILebaHelperService)localObject5).reportPluginStatus(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        ((ILebaHelperService)localObject5).reportPluginStatus(this.a);
       } else {
         QLog.d("QQInitHandler", 1, "reportPluginStatus lebaHelperService == null");
       }
       f(localStatisticCollector);
       a(localStatisticCollector);
       e(localStatisticCollector);
-      e();
-      new CPUReport().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      g();
+      new CPUReport().a(this.a);
       c();
       b(localStatisticCollector);
       AVEffectPendantReport.e();
-      UniteDownloadDbOperator.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      UniteDownloadDbOperator.a().a(this.a.getCurrentUin());
       b();
-      d();
-      t();
-      r();
+      f();
+      w();
+      u();
+      e();
       if (QLog.isColorLevel()) {
         QLog.d("StatisticCollector", 2, "**************report data below:*****************");
       }
       localObject5 = localSharedPreferences.edit();
       localObject6 = new StringBuilder();
       ((StringBuilder)localObject6).append("LastTimeLogin_");
-      ((StringBuilder)localObject6).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject6).append(this.a.getCurrentAccountUin());
       ((SharedPreferences.Editor)localObject5).putLong(((StringBuilder)localObject6).toString(), l2).commit();
     }
     if (((Calendar)localObject1).after(localObject2))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localObject1 = this.a;
       ThemeUiPlugin.reportThemeNumAndCurrThemeName((QQAppInterface)localObject1, ((QQAppInterface)localObject1).getCurrentAccountUin());
-      localObject1 = (ChatBackgroundManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localObject1 = (ChatBackgroundManager)this.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
+      localObject2 = this.a;
       ((ChatBackgroundManager)localObject1).a((QQAppInterface)localObject2, ((QQAppInterface)localObject2).getCurrentAccountUin());
     }
     if (l1 == 0L)
@@ -1810,7 +1862,7 @@ public class DailyReport
       localObject1 = localSharedPreferences.edit();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("LastTimeLogin_");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject2).append(this.a.getCurrentAccountUin());
       ((SharedPreferences.Editor)localObject1).putLong(((StringBuilder)localObject2).toString(), l2).commit();
     }
     return 7;
@@ -1818,7 +1870,7 @@ public class DailyReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.DailyReport
  * JD-Core Version:    0.7.0.1
  */

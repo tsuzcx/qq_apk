@@ -13,10 +13,10 @@ public final class SvcRequestRegisterNew
   extends JceStruct
 {
   static byte[] cache_bytes_0x769_reqbody;
-  static SvcRequestGetMsgV2 cache_c2cmsg;
+  static SvcRequestGetMsgV2 cache_c2cmsg = new SvcRequestGetMsgV2();
   static SvcRequestPullDisMsgSeq cache_confmsg;
   static SvcRequestPullDisGroupSeq cache_disgroupmsg;
-  static SvcRequestPullGroupMsgSeq cache_groupmsg;
+  static SvcRequestPullGroupMsgSeq cache_groupmsg = new SvcRequestPullGroupMsgSeq();
   static SvcReqGet cache_heartbeat;
   static SvcReqRegister cache_regist;
   static byte[] cache_vCookies;
@@ -37,6 +37,7 @@ public final class SvcRequestRegisterNew
   public SvcReqGet heartbeat = null;
   public SvcReqRegister regist = null;
   public long uEndSeq = 0L;
+  public int uGuildUdcFlag = 0;
   public long ulLastFilterListTime = 0L;
   public long ulMaxDisGrpMsgTime = 0L;
   public long ulReportFlag = 0L;
@@ -46,9 +47,25 @@ public final class SvcRequestRegisterNew
   public byte[] vSaveTraffic = null;
   public byte[] vSig = null;
   
+  static
+  {
+    cache_confmsg = new SvcRequestPullDisMsgSeq();
+    cache_regist = new SvcReqRegister();
+    cache_disgroupmsg = new SvcRequestPullDisGroupSeq();
+    cache_vSaveTraffic = (byte[])new byte[1];
+    ((byte[])cache_vSaveTraffic)[0] = 0;
+    cache_vCookies = (byte[])new byte[1];
+    ((byte[])cache_vCookies)[0] = 0;
+    cache_vSig = (byte[])new byte[1];
+    ((byte[])cache_vSig)[0] = 0;
+    cache_heartbeat = new SvcReqGet();
+    cache_bytes_0x769_reqbody = (byte[])new byte[1];
+    ((byte[])cache_bytes_0x769_reqbody)[0] = 0;
+  }
+  
   public SvcRequestRegisterNew() {}
   
-  public SvcRequestRegisterNew(long paramLong1, SvcRequestGetMsgV2 paramSvcRequestGetMsgV2, SvcRequestPullGroupMsgSeq paramSvcRequestPullGroupMsgSeq, SvcRequestPullDisMsgSeq paramSvcRequestPullDisMsgSeq, SvcReqRegister paramSvcReqRegister, byte paramByte1, byte paramByte2, byte paramByte3, long paramLong2, SvcRequestPullDisGroupSeq paramSvcRequestPullDisGroupSeq, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, SvcReqGet paramSvcReqGet, byte paramByte4, byte paramByte5, long paramLong3, byte paramByte6, long paramLong4, long paramLong5, byte[] paramArrayOfByte4, long paramLong6, long paramLong7)
+  public SvcRequestRegisterNew(long paramLong1, SvcRequestGetMsgV2 paramSvcRequestGetMsgV2, SvcRequestPullGroupMsgSeq paramSvcRequestPullGroupMsgSeq, SvcRequestPullDisMsgSeq paramSvcRequestPullDisMsgSeq, SvcReqRegister paramSvcReqRegister, byte paramByte1, byte paramByte2, byte paramByte3, long paramLong2, SvcRequestPullDisGroupSeq paramSvcRequestPullDisGroupSeq, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, SvcReqGet paramSvcReqGet, byte paramByte4, byte paramByte5, long paramLong3, byte paramByte6, long paramLong4, long paramLong5, byte[] paramArrayOfByte4, long paramLong6, int paramInt, long paramLong7)
   {
     this.ulRequestOptional = paramLong1;
     this.c2cmsg = paramSvcRequestGetMsgV2;
@@ -72,57 +89,25 @@ public final class SvcRequestRegisterNew
     this.ulMaxDisGrpMsgTime = paramLong5;
     this.bytes_0x769_reqbody = paramArrayOfByte4;
     this.ulLastFilterListTime = paramLong6;
+    this.uGuildUdcFlag = paramInt;
     this.ulReportFlag = paramLong7;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.ulRequestOptional = paramJceInputStream.read(this.ulRequestOptional, 0, true);
-    if (cache_c2cmsg == null) {
-      cache_c2cmsg = new SvcRequestGetMsgV2();
-    }
     this.c2cmsg = ((SvcRequestGetMsgV2)paramJceInputStream.read(cache_c2cmsg, 1, false));
-    if (cache_groupmsg == null) {
-      cache_groupmsg = new SvcRequestPullGroupMsgSeq();
-    }
     this.groupmsg = ((SvcRequestPullGroupMsgSeq)paramJceInputStream.read(cache_groupmsg, 2, false));
-    if (cache_confmsg == null) {
-      cache_confmsg = new SvcRequestPullDisMsgSeq();
-    }
     this.confmsg = ((SvcRequestPullDisMsgSeq)paramJceInputStream.read(cache_confmsg, 3, false));
-    if (cache_regist == null) {
-      cache_regist = new SvcReqRegister();
-    }
     this.regist = ((SvcReqRegister)paramJceInputStream.read(cache_regist, 4, false));
     this.cSubCmd = paramJceInputStream.read(this.cSubCmd, 5, false);
     this.cGetGroupPttUrl = paramJceInputStream.read(this.cGetGroupPttUrl, 6, false);
     this.cGetDisPttUrl = paramJceInputStream.read(this.cGetDisPttUrl, 7, false);
     this.badge = paramJceInputStream.read(this.badge, 8, false);
-    if (cache_disgroupmsg == null) {
-      cache_disgroupmsg = new SvcRequestPullDisGroupSeq();
-    }
     this.disgroupmsg = ((SvcRequestPullDisGroupSeq)paramJceInputStream.read(cache_disgroupmsg, 9, false));
-    if (cache_vSaveTraffic == null)
-    {
-      cache_vSaveTraffic = (byte[])new byte[1];
-      ((byte[])cache_vSaveTraffic)[0] = 0;
-    }
     this.vSaveTraffic = ((byte[])paramJceInputStream.read(cache_vSaveTraffic, 10, false));
-    if (cache_vCookies == null)
-    {
-      cache_vCookies = (byte[])new byte[1];
-      ((byte[])cache_vCookies)[0] = 0;
-    }
     this.vCookies = ((byte[])paramJceInputStream.read(cache_vCookies, 11, false));
-    if (cache_vSig == null)
-    {
-      cache_vSig = (byte[])new byte[1];
-      ((byte[])cache_vSig)[0] = 0;
-    }
     this.vSig = ((byte[])paramJceInputStream.read(cache_vSig, 12, false));
-    if (cache_heartbeat == null) {
-      cache_heartbeat = new SvcReqGet();
-    }
     this.heartbeat = ((SvcReqGet)paramJceInputStream.read(cache_heartbeat, 13, false));
     this.cDisgroupMsgFilter = paramJceInputStream.read(this.cDisgroupMsgFilter, 14, false);
     this.cGroupMask = paramJceInputStream.read(this.cGroupMask, 15, false);
@@ -130,13 +115,9 @@ public final class SvcRequestRegisterNew
     this.cOptGroupMsgFlag = paramJceInputStream.read(this.cOptGroupMsgFlag, 17, false);
     this.ulSyncTime = paramJceInputStream.read(this.ulSyncTime, 18, false);
     this.ulMaxDisGrpMsgTime = paramJceInputStream.read(this.ulMaxDisGrpMsgTime, 19, false);
-    if (cache_bytes_0x769_reqbody == null)
-    {
-      cache_bytes_0x769_reqbody = (byte[])new byte[1];
-      ((byte[])cache_bytes_0x769_reqbody)[0] = 0;
-    }
     this.bytes_0x769_reqbody = ((byte[])paramJceInputStream.read(cache_bytes_0x769_reqbody, 20, false));
     this.ulLastFilterListTime = paramJceInputStream.read(this.ulLastFilterListTime, 23, false);
+    this.uGuildUdcFlag = paramJceInputStream.read(this.uGuildUdcFlag, 24, false);
     this.ulReportFlag = paramJceInputStream.read(this.ulReportFlag, 25, false);
   }
   
@@ -194,6 +175,7 @@ public final class SvcRequestRegisterNew
       paramJceOutputStream.write((byte[])localObject, 20);
     }
     paramJceOutputStream.write(this.ulLastFilterListTime, 23);
+    paramJceOutputStream.write(this.uGuildUdcFlag, 24);
     paramJceOutputStream.write(this.ulReportFlag, 25);
   }
 }

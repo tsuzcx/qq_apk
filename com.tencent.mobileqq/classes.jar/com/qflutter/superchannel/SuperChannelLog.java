@@ -6,7 +6,7 @@ public class SuperChannelLog
 {
   private static ISuperChannelLog logImpl;
   
-  static void d(String paramString1, String paramString2)
+  public static void d(String paramString1, String paramString2)
   {
     ISuperChannelLog localISuperChannelLog = logImpl;
     if (localISuperChannelLog != null)
@@ -17,7 +17,7 @@ public class SuperChannelLog
     Log.d(paramString1, paramString2);
   }
   
-  static void e(String paramString1, String paramString2)
+  public static void e(String paramString1, String paramString2)
   {
     ISuperChannelLog localISuperChannelLog = logImpl;
     if (localISuperChannelLog != null)
@@ -28,7 +28,7 @@ public class SuperChannelLog
     Log.e(paramString1, paramString2);
   }
   
-  static void e(String paramString1, String paramString2, Throwable paramThrowable)
+  public static void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
     ISuperChannelLog localISuperChannelLog = logImpl;
     if (localISuperChannelLog != null)
@@ -39,7 +39,7 @@ public class SuperChannelLog
     Log.e(paramString1, paramString2, paramThrowable);
   }
   
-  static void i(String paramString1, String paramString2)
+  public static void i(String paramString1, String paramString2)
   {
     ISuperChannelLog localISuperChannelLog = logImpl;
     if (localISuperChannelLog != null)
@@ -64,7 +64,7 @@ public class SuperChannelLog
     return true;
   }
   
-  static void w(String paramString1, String paramString2)
+  public static void w(String paramString1, String paramString2)
   {
     ISuperChannelLog localISuperChannelLog = logImpl;
     if (localISuperChannelLog != null)
@@ -75,7 +75,7 @@ public class SuperChannelLog
     Log.w(paramString1, paramString2);
   }
   
-  static void w(String paramString1, String paramString2, Throwable paramThrowable)
+  public static void w(String paramString1, String paramString2, Throwable paramThrowable)
   {
     ISuperChannelLog localISuperChannelLog = logImpl;
     if (localISuperChannelLog != null)
@@ -88,7 +88,7 @@ public class SuperChannelLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.superchannel.SuperChannelLog
  * JD-Core Version:    0.7.0.1
  */

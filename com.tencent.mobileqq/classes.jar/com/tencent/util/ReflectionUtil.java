@@ -127,7 +127,12 @@ public class ReflectionUtil
     return str;
   }
   
-  public static void a(@NonNull Object paramObject1, @NonNull String paramString1, @NonNull String paramString2, Object paramObject2)
+  private static boolean a()
+  {
+    return (a != null) && (b != null) && (c != null);
+  }
+  
+  public static void b(@NonNull Object paramObject1, @NonNull String paramString1, @NonNull String paramString2, Object paramObject2)
   {
     if (a()) {
       try
@@ -144,15 +149,10 @@ public class ReflectionUtil
       }
     }
   }
-  
-  private static boolean a()
-  {
-    return (a != null) && (b != null) && (c != null);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.ReflectionUtil
  * JD-Core Version:    0.7.0.1
  */

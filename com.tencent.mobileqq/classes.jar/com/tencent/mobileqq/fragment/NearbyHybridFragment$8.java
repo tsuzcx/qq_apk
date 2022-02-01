@@ -21,21 +21,21 @@ class NearbyHybridFragment$8
     if (QLog.isColorLevel()) {
       QLog.d("nearby.NearbyHybridFragment", 2, "onRefresh");
     }
-    this.a.f();
-    SosoLbsInfo localSosoLbsInfo2 = NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo;
+    this.a.i();
+    SosoLbsInfo localSosoLbsInfo2 = NearbyHybridFragment.g;
     SosoLbsInfo localSosoLbsInfo1 = localSosoLbsInfo2;
     if (localSosoLbsInfo2 == null) {
       localSosoLbsInfo1 = ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).getSosoInfo();
     }
     if (localSosoLbsInfo1 != null) {
-      ((NearbyHandler)this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getBusinessHandler(NearbyConstants.a)).a((float)localSosoLbsInfo1.mLocation.mLon02, (float)localSosoLbsInfo1.mLocation.mLat02, 5);
+      ((NearbyHandler)this.a.k.getBusinessHandler(NearbyConstants.a)).a((float)localSosoLbsInfo1.mLocation.mLon02, (float)localSosoLbsInfo1.mLocation.mLat02, 5);
     }
-    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+    this.a.c.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.8
  * JD-Core Version:    0.7.0.1
  */

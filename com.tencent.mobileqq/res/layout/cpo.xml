@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView android:id="@id/kr7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+    <LinearLayout android:gravity="center|left" android:id="@id/or3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/2w" android:layout_weight="1.0">
+        <ImageView android:id="@id/de0" android:background="@null" android:layout_width="@dimen/0w" android:layout_height="@dimen/0w" android:layout_marginRight="@dimen/1w" />
+        <LinearLayout android:gravity="center|left" android:orientation="vertical" android:paddingTop="@dimen/1w" android:paddingBottom="@dimen/1w" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/3q" android:singleLine="true" style="@style/5x" />
+                <TextView android:id="@id/qc8" android:background="@null" android:visibility="gone" android:text="@string/zl0" style="@style/a5v" />
+                <ImageView android:id="@id/qc4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/h48" />
+            </LinearLayout>
+            <TextView android:gravity="left" android:id="@id/bg6" android:paddingRight="@dimen/3q" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/3q" style="@style/5t" />
+        </LinearLayout>
+        <TextView android:id="@id/qc9" android:background="@null" android:visibility="gone" style="@style/7f" />
+        <TextView android:id="@android:id/summary" android:paddingTop="@dimen/3q" android:paddingRight="@dimen/39" android:paddingBottom="@dimen/3q" android:singleLine="true" style="@style/5z" />
+        <RelativeLayout android:id="@id/puk" android:background="@null" android:visibility="gone" android:layout_width="@dimen/38" android:layout_height="@dimen/38" android:layout_marginLeft="@dimen/2c">
+            <ImageView android:id="@id/nyo" android:visibility="gone" android:layout_width="@dimen/1z" android:layout_height="@dimen/1z" android:src="@drawable/jnz" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+            <ImageView android:gravity="center" android:id="@id/pui" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/h48" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <ImageView android:gravity="center" android:id="@id/pua" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/2c" android:src="@drawable/h48" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </LinearLayout>
+</LinearLayout>

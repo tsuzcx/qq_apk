@@ -6,11 +6,11 @@ import java.io.UnsupportedEncodingException;
 
 public final class b
 {
-  private static byte[] jdField_a_of_type_ArrayOfByte = { -128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-  private long[] jdField_a_of_type_ArrayOfLong = new long[4];
-  private byte[] jdField_b_of_type_ArrayOfByte = new byte[64];
-  private long[] jdField_b_of_type_ArrayOfLong = new long[2];
-  private byte[] c = new byte[16];
+  private static byte[] a = { -128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+  private long[] b = new long[4];
+  private long[] c = new long[2];
+  private byte[] d = new byte[64];
+  private byte[] e = new byte[16];
   
   public b()
   {
@@ -43,17 +43,17 @@ public final class b
     ((b)localObject).a();
     ((b)localObject).a(new ByteArrayInputStream(paramString), paramString.length);
     paramString = new byte[8];
-    a(paramString, ((b)localObject).jdField_b_of_type_ArrayOfLong, 8);
-    i = (int)(localObject.jdField_b_of_type_ArrayOfLong[0] >>> 3) & 0x3F;
+    a(paramString, ((b)localObject).c, 8);
+    i = (int)(localObject.c[0] >>> 3) & 0x3F;
     if (i < 56) {
       i = 56 - i;
     } else {
       i = 120 - i;
     }
-    ((b)localObject).a(jdField_a_of_type_ArrayOfByte, i);
+    ((b)localObject).a(a, i);
     ((b)localObject).a(paramString, 8);
-    a(((b)localObject).c, ((b)localObject).jdField_a_of_type_ArrayOfLong, 16);
-    paramString = ((b)localObject).c;
+    a(((b)localObject).e, ((b)localObject).b, 16);
+    paramString = ((b)localObject).e;
     localObject = new StringBuilder();
     i = 0;
     while (i < 16)
@@ -101,10 +101,10 @@ public final class b
   
   private void a()
   {
-    long[] arrayOfLong = this.jdField_b_of_type_ArrayOfLong;
+    long[] arrayOfLong = this.c;
     arrayOfLong[0] = 0L;
     arrayOfLong[1] = 0L;
-    arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    arrayOfLong = this.b;
     arrayOfLong[0] = 1732584193L;
     arrayOfLong[1] = 4023233417L;
     arrayOfLong[2] = 2562383102L;
@@ -113,7 +113,7 @@ public final class b
   
   private void a(byte[] paramArrayOfByte)
   {
-    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    long[] arrayOfLong = this.b;
     long l4 = arrayOfLong[0];
     long l1 = arrayOfLong[1];
     long l2 = arrayOfLong[2];
@@ -214,7 +214,7 @@ public final class b
     l3 = d(l3, l4, l1, l2, arrayOfLong[11], 10L, 3174756917L);
     l2 = d(l2, l3, l4, l1, arrayOfLong[2], 15L, 718787259L);
     l1 = d(l1, l2, l3, l4, arrayOfLong[9], 21L, 3951481745L);
-    paramArrayOfByte = this.jdField_a_of_type_ArrayOfLong;
+    paramArrayOfByte = this.b;
     paramArrayOfByte[0] += l4;
     paramArrayOfByte[1] += l1;
     paramArrayOfByte[2] += l2;
@@ -224,7 +224,7 @@ public final class b
   private void a(byte[] paramArrayOfByte, int paramInt)
   {
     byte[] arrayOfByte = new byte[64];
-    Object localObject = this.jdField_b_of_type_ArrayOfLong;
+    Object localObject = this.c;
     int k = 0;
     int j = (int)(localObject[0] >>> 3) & 0x3F;
     long l2 = localObject[0];
@@ -234,20 +234,20 @@ public final class b
     if (l2 < l1) {
       localObject[1] += 1L;
     }
-    localObject = this.jdField_b_of_type_ArrayOfLong;
+    localObject = this.c;
     localObject[1] += (paramInt >>> 29);
     int m = 64 - j;
     int i;
     if (paramInt >= m)
     {
-      localObject = this.jdField_b_of_type_ArrayOfByte;
+      localObject = this.d;
       i = 0;
       while (i < m)
       {
         localObject[(j + i)] = paramArrayOfByte[(0 + i)];
         i += 1;
       }
-      a(this.jdField_b_of_type_ArrayOfByte);
+      a(this.d);
       i = m;
       while (i + 63 < paramInt)
       {
@@ -266,7 +266,7 @@ public final class b
     {
       i = 0;
     }
-    arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+    arrayOfByte = this.d;
     while (k < paramInt - i)
     {
       arrayOfByte[(j + k)] = paramArrayOfByte[(i + k)];
@@ -292,7 +292,7 @@ public final class b
   private boolean a(InputStream paramInputStream, long paramLong)
   {
     byte[] arrayOfByte1 = new byte[64];
-    Object localObject = this.jdField_b_of_type_ArrayOfLong;
+    Object localObject = this.c;
     int j = (int)(localObject[0] >>> 3) & 0x3F;
     long l2 = localObject[0];
     long l1 = paramLong << 3;
@@ -301,7 +301,7 @@ public final class b
     if (l2 < l1) {
       localObject[1] += 1L;
     }
-    localObject = this.jdField_b_of_type_ArrayOfLong;
+    localObject = this.c;
     localObject[1] += (paramLong >>> 29);
     int k = 64 - j;
     int i;
@@ -311,14 +311,14 @@ public final class b
       try
       {
         paramInputStream.read((byte[])localObject, 0, k);
-        byte[] arrayOfByte2 = this.jdField_b_of_type_ArrayOfByte;
+        byte[] arrayOfByte2 = this.d;
         i = 0;
         while (i < k)
         {
           arrayOfByte2[(j + i)] = localObject[(0 + i)];
           i += 1;
         }
-        a(this.jdField_b_of_type_ArrayOfByte);
+        a(this.d);
         i = k;
         while (i + 63 < paramLong) {
           try
@@ -353,7 +353,7 @@ public final class b
     try
     {
       paramInputStream.read(arrayOfByte1);
-      paramInputStream = this.jdField_b_of_type_ArrayOfByte;
+      paramInputStream = this.d;
       k = arrayOfByte1.length;
       j = 0;
       while (j < k)
@@ -392,7 +392,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.e.b
  * JD-Core Version:    0.7.0.1
  */

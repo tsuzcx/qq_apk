@@ -19,10 +19,10 @@ class LocationShareLocationManager$1
     }
     if (LocationShareLocationManager.a(this.this$0) != null)
     {
-      LocationShareRoomManager.a().a(LocationShareLocationManager.a(this.this$0).a(), LocationShareLocationManager.a(this.this$0).a(), LocationHandler.a().a(), 4);
+      LocationShareRoomManager.a().a(LocationShareLocationManager.a(this.this$0).a(), LocationShareLocationManager.a(this.this$0).b(), LocationHandler.a().b(), 4);
       LocationShareLocationManager.a().a(LocationShareLocationManager.a(this.this$0), true);
     }
-    QQToast.a(BaseApplication.getContext(), "位置获取失败，请稍后再试", 0).a();
+    QQToast.makeText(BaseApplication.getContext(), "位置获取失败，请稍后再试", 0).show();
     Activity localActivity = (Activity)this.a.get();
     if ((localActivity != null) && (!localActivity.isFinishing()))
     {
@@ -33,7 +33,7 @@ class LocationShareLocationManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationShareLocationManager.1
  * JD-Core Version:    0.7.0.1
  */

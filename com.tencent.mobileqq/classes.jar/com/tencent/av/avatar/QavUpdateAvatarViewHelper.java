@@ -10,15 +10,15 @@ import com.tencent.qphone.base.util.QLog;
 
 public class QavUpdateAvatarViewHelper
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  private QavAvatarCallback jdField_a_of_type_ComTencentAvUiAvatarQavAvatarCallback = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private QavAvatarCallback a = null;
+  private boolean b = false;
+  private VideoAppInterface c = null;
+  private ImageView d = null;
   
   private void a(AvatarParam paramAvatarParam)
   {
     StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (this.d != null)
     {
       if (QLog.isDevelopLevel())
       {
@@ -27,13 +27,13 @@ public class QavUpdateAvatarViewHelper
         localStringBuilder.append(paramAvatarParam);
         QLog.i("QavAvatarHelper", 4, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_ComTencentAvUiAvatarQavAvatarCallback == null) {
-        this.jdField_a_of_type_ComTencentAvUiAvatarQavAvatarCallback = new QavUpdateAvatarViewHelper.1(this);
+      if (this.a == null) {
+        this.a = new QavUpdateAvatarViewHelper.1(this);
       }
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentAvUiAvatarQavAvatarCallback.a(paramAvatarParam, null);
+      if (!this.b) {
+        this.a.a(paramAvatarParam, null);
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       ThreadManager.excute(new QavUpdateAvatarViewHelper.2(this, paramAvatarParam), 16, null, false);
       return;
     }
@@ -69,13 +69,13 @@ public class QavUpdateAvatarViewHelper
     }
     else if (paramImageView != null)
     {
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != paramVideoAppInterface) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+      if (this.c != paramVideoAppInterface) {
+        this.c = paramVideoAppInterface;
       }
-      if (this.jdField_a_of_type_AndroidWidgetImageView != paramImageView)
+      if (this.d != paramImageView)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-        this.jdField_a_of_type_Boolean = false;
+        this.d = paramImageView;
+        this.b = false;
       }
       a(paramAvatarParam);
     }

@@ -33,27 +33,27 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/view/controller/TabLayoutController;", "", "customTabLayout", "Landroid/widget/LinearLayout;", "(Landroid/widget/LinearLayout;)V", "TAG", "", "currentTabId", "", "currentTime", "", "hasHippyPage", "", "tabSwitchListeners", "", "Lkotlin/Function1;", "", "viewHolders", "Lcom/tencent/mobileqq/ecshop/view/controller/TabItemController;", "goToTabPage", "tabConfBean", "Lcom/tencent/mobileqq/ecshop/conf/EcshopConfBean$TabConfBean;", "initTabLayout", "tabConfBeans", "", "tabBackground", "setTabLayoutVisibility", "isSelected", "setTabSwitchListener", "tabId", "tabSwitchListener", "showRedPoint", "redPointInfos", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/ecshop/redpoint/RedPointInfo;", "Lkotlin/collections/ArrayList;", "updateAllTabStatus", "initNightTheme", "setOnClickListener", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
 public final class TabLayoutController
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private final String jdField_a_of_type_JavaLangString;
-  private Map<Integer, TabItemController> jdField_a_of_type_JavaUtilMap;
-  private boolean jdField_a_of_type_Boolean;
-  private final Map<Integer, Function1<Integer, Unit>> b;
+  private final String a;
+  private Map<Integer, TabItemController> b;
+  private final Map<Integer, Function1<Integer, Unit>> c;
+  private int d;
+  private long e;
+  private boolean f;
+  private final LinearLayout g;
   
   public TabLayoutController(@NotNull LinearLayout paramLinearLayout)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_JavaLangString = "TabLayoutController";
-    this.jdField_a_of_type_JavaUtilMap = ((Map)new HashMap());
+    this.g = paramLinearLayout;
+    this.a = "TabLayoutController";
     this.b = ((Map)new HashMap());
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTime();
+    this.c = ((Map)new HashMap());
+    this.e = NetConnInfoCenter.getServerTime();
   }
   
   private final void a(EcshopConfBean.TabConfBean paramTabConfBean)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
-    int i = paramTabConfBean.jdField_b_of_type_Int;
+    Object localObject1 = this.g.getContext();
+    int i = paramTabConfBean.i;
     if (i != 0)
     {
       if (i != 1)
@@ -65,29 +65,29 @@ public final class TabLayoutController
           }
           localObject2 = PageSwitchUtil.a;
           Intrinsics.checkExpressionValueIsNotNull(localObject1, "context");
-          ((PageSwitchUtil)localObject2).b((Context)localObject1, paramTabConfBean.jdField_a_of_type_Int, paramTabConfBean.jdField_b_of_type_JavaLangString);
+          ((PageSwitchUtil)localObject2).b((Context)localObject1, paramTabConfBean.b, paramTabConfBean.d);
           return;
         }
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp((Context)localObject1, ReportUtil.a(paramTabConfBean.jdField_b_of_type_JavaLangString, "tab"), 1035, (MiniAppLaunchListener)new TabLayoutController.goToTabPage.1(this));
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp((Context)localObject1, ReportUtil.a(paramTabConfBean.d, "tab"), 1035, (MiniAppLaunchListener)new TabLayoutController.goToTabPage.1(this));
         return;
       }
-      if (paramTabConfBean.jdField_a_of_type_Int == 1)
+      if (paramTabConfBean.b == 1)
       {
         paramTabConfBean = PageSwitchUtil.a;
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "context");
-        paramTabConfBean.a((Context)localObject1, this.jdField_a_of_type_Boolean);
+        paramTabConfBean.a((Context)localObject1, this.f);
         return;
       }
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("can't match tabId: ");
-      ((StringBuilder)localObject2).append(paramTabConfBean.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append(paramTabConfBean.b);
       QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       return;
     }
     Object localObject2 = PageSwitchUtil.a;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "context");
-    ((PageSwitchUtil)localObject2).a((Context)localObject1, paramTabConfBean.jdField_a_of_type_Int, paramTabConfBean.jdField_b_of_type_JavaLangString);
+    ((PageSwitchUtil)localObject2).a((Context)localObject1, paramTabConfBean.b, paramTabConfBean.d);
   }
   
   private final void a(@NotNull TabItemController paramTabItemController, EcshopConfBean.TabConfBean paramTabConfBean)
@@ -97,12 +97,12 @@ public final class TabLayoutController
   
   public final void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    Object localObject = this.b.entrySet().iterator();
     while (((Iterator)localObject).hasNext()) {
       ((TabItemController)((Map.Entry)((Iterator)localObject).next()).getValue()).a(false);
     }
-    this.jdField_a_of_type_Int = paramInt;
-    localObject = (TabItemController)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    this.d = paramInt;
+    localObject = (TabItemController)this.b.get(Integer.valueOf(paramInt));
     if (localObject != null) {
       ((TabItemController)localObject).a(true);
     }
@@ -111,7 +111,7 @@ public final class TabLayoutController
   public final void a(int paramInt, @NotNull Function1<? super Integer, Unit> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction1, "tabSwitchListener");
-    this.b.put(Integer.valueOf(paramInt), paramFunction1);
+    this.c.put(Integer.valueOf(paramInt), paramFunction1);
   }
   
   public final void a(@Nullable ArrayList<RedPointInfo> paramArrayList)
@@ -127,10 +127,10 @@ public final class TabLayoutController
         RedPointInfo localRedPointInfo = (RedPointInfo)paramArrayList.next();
         Object localObject = QQShopRedPointUtil.a;
         Intrinsics.checkExpressionValueIsNotNull(localRedPointInfo, "redPointInfo");
-        if (((QQShopRedPointUtil)localObject).a(localRedPointInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long))
+        if (((QQShopRedPointUtil)localObject).a(localRedPointInfo, this.d, this.e))
         {
-          long l = QQShopRedPointUtil.a.a(localRedPointInfo, this.jdField_a_of_type_Long);
-          localObject = (TabItemController)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(localRedPointInfo.mTabId));
+          long l = QQShopRedPointUtil.a.a(localRedPointInfo, this.e);
+          localObject = (TabItemController)this.b.get(Integer.valueOf(localRedPointInfo.mTabId));
           if (localObject != null) {
             ((TabItemController)localObject).a(localRedPointInfo, l);
           }
@@ -143,28 +143,28 @@ public final class TabLayoutController
   {
     Intrinsics.checkParameterIsNotNull(paramList, "tabConfBeans");
     Intrinsics.checkParameterIsNotNull(paramString, "tabBackground");
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor(paramString));
+    this.g.setBackgroundColor(Color.parseColor(paramString));
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       paramString = (EcshopConfBean.TabConfBean)paramList.next();
-      TabItemController localTabItemController = new TabItemController(paramString, (ViewGroup)this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      ReportUtil.a("gouwu.tab.show", String.valueOf(paramString.jdField_a_of_type_Int), String.valueOf(NetConnInfoCenter.getServerTimeMillis()), "", this.jdField_a_of_type_Int);
-      ReportUtil.b("gouwu_tab_show", String.valueOf(paramString.jdField_a_of_type_Int), String.valueOf(NetConnInfoCenter.getServerTimeMillis()), "", this.jdField_a_of_type_Int);
+      TabItemController localTabItemController = new TabItemController(paramString, (ViewGroup)this.g);
+      ReportUtil.a("gouwu.tab.show", String.valueOf(paramString.b), String.valueOf(NetConnInfoCenter.getServerTimeMillis()), "", this.d);
+      ReportUtil.b("gouwu_tab_show", String.valueOf(paramString.b), String.valueOf(NetConnInfoCenter.getServerTimeMillis()), "", this.d);
       a(localTabItemController, paramString);
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramString.jdField_a_of_type_Int), localTabItemController);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localTabItemController.a());
-      if (paramString.jdField_b_of_type_Int == 3) {
-        this.jdField_a_of_type_Boolean = true;
+      this.b.put(Integer.valueOf(paramString.b), localTabItemController);
+      this.g.addView(localTabItemController.a());
+      if (paramString.i == 3) {
+        this.f = true;
       }
     }
-    paramList = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    paramList = this.g;
     paramList.setWeightSum(paramList.getChildCount());
   }
   
   public final void a(boolean paramBoolean)
   {
-    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    LinearLayout localLinearLayout = this.g;
     int i;
     if (paramBoolean) {
       i = 0;
@@ -176,7 +176,7 @@ public final class TabLayoutController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.controller.TabLayoutController
  * JD-Core Version:    0.7.0.1
  */

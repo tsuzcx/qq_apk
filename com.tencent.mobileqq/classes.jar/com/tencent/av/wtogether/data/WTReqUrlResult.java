@@ -3,57 +3,57 @@ package com.tencent.av.wtogether.data;
 public class WTReqUrlResult
 {
   public final int a;
-  public final long a;
-  public final WTFileInfo a;
-  public String a;
-  public final boolean a;
-  public final int b;
-  public String b;
-  public boolean b;
+  public final long b;
   public final int c;
-  public String c;
-  public boolean c;
-  public int d;
+  public final WTFileInfo d;
+  public final boolean e;
+  public final int f;
+  public boolean g;
+  public String h;
+  public String i;
+  public int j;
+  public String k;
+  public boolean l;
   
   public WTReqUrlResult(int paramInt1, long paramLong, int paramInt2, WTFileInfo paramWTFileInfo, int paramInt3, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo = paramWTFileInfo;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.d = -1;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    this.a = paramInt1;
+    this.b = paramLong;
+    this.c = paramInt2;
+    this.d = paramWTFileInfo;
+    this.f = paramInt3;
+    this.e = paramBoolean;
+    this.h = null;
+    this.i = null;
+    this.j = -1;
+    this.k = null;
+    this.l = false;
+    this.g = false;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReqUrlResult{seq: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(",  fileInfo: ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo);
-    localStringBuilder.append(", retryCnt: ");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(", needHttpsUrl: ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", url: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", cookie: ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", errCode: ");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(", retryCnt: ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", needHttpsUrl: ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", url: ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", cookie: ");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", errCode: ");
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", errMsg: ");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", isSuccess: ");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(", retry: ");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

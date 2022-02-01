@@ -5,16 +5,15 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.C
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.mobileqq.kandian.biz.comment.data.CommentViewItem;
 import com.tencent.mobileqq.kandian.biz.comment.entity.CommentData;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/comment/CommentProteusListenerUtil$Companion;", "", "()V", "TAG", "", "doReplyClick", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/mobileqq/kandian/biz/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/mobileqq/kandian/biz/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "getOnClickListener", "Lcom/tencent/mobileqq/kandian/biz/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "onClickListenerSparseArray", "Landroid/util/SparseArray;", "initChooseCommentTypeClickListener", "initCommentActivityClickListener", "initCommentBannerClickListener", "initCommentContentClickListener", "initCommentDotClickListener", "initCommentFlowGuideClickListener", "initCommentFollowOnClickListener", "initCommentHideButtonClickListener", "initCommentMediaClickListener", "initCommentReplyClickListener", "initDefaultClickListener", "initDeleteCommentClickListener", "initExposeCommentClickListener", "initExposeSubCommentOneClickListener", "initExposeSubCommentTwoClickListener", "initHeadMedalClickListener", "initLikeClickListener", "initOnClickListener", "initSecondPageReplyCommentClickListener", "initSocialAvatarOnClickListener", "putOnClickListenerIntoSparseArray", "onClickListener", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/comment/CommentProteusListenerUtil$Companion;", "", "()V", "TAG", "", "doReplyClick", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/mobileqq/kandian/biz/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/mobileqq/kandian/biz/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "getOnClickListener", "Lcom/tencent/mobileqq/kandian/biz/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "onClickListenerSparseArray", "Landroid/util/SparseArray;", "initAdImageAreaClickListener", "initAdItemClickListener", "initAdNameClickListener", "initChooseCommentTypeClickListener", "initCommentActivityClickListener", "initCommentBannerClickListener", "initCommentContentClickListener", "initCommentDotClickListener", "initCommentFlowGuideClickListener", "initCommentFollowOnClickListener", "initCommentHideButtonClickListener", "initCommentMediaClickListener", "initCommentReplyClickListener", "initDefaultClickListener", "initDeleteCommentClickListener", "initExposeCommentClickListener", "initExposeSubCommentOneClickListener", "initExposeSubCommentTwoClickListener", "initHeadMedalClickListener", "initLikeClickListener", "initOnClickListener", "initSecondPageReplyCommentClickListener", "initSocialAvatarOnClickListener", "putOnClickListenerIntoSparseArray", "onClickListener", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class CommentProteusListenerUtil$Companion
 {
   private final CommentProteusListenerUtil.CommentProteusOnClickListener a()
@@ -32,14 +31,14 @@ public final class CommentProteusListenerUtil$Companion
   
   private final void a(int paramInt, Container paramContainer, ReadinjoyCommentListBaseAdapter paramReadinjoyCommentListBaseAdapter, CommentViewItem paramCommentViewItem, ViewBase paramViewBase)
   {
-    if (paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null)
+    if (paramCommentViewItem.d != null)
     {
-      paramContainer = new CommentReportR5Builder(paramCommentViewItem).a().a();
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, ReadInJoyCommentUtils.a(paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo), "0X8009010", "0X8009010", 0, 0, String.valueOf(paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleID), String.valueOf(paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mStrategyId), paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID, paramContainer, false);
+      paramContainer = new CommentReportR5Builder(paramCommentViewItem).a().b();
+      PublicAccountReportUtils.a(null, ReadInJoyCommentUtils.a(paramCommentViewItem.d), "0X8009010", "0X8009010", 0, 0, String.valueOf(paramCommentViewItem.d.mArticleID), String.valueOf(paramCommentViewItem.d.mStrategyId), paramCommentViewItem.d.innerUniqueID, paramContainer, false);
     }
-    if ((paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData instanceof CommentData))
+    if ((paramCommentViewItem.c instanceof CommentData))
     {
-      paramContainer = paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
+      paramContainer = paramCommentViewItem.c;
       if (paramContainer != null)
       {
         if (((CommentData)paramContainer).subCommentNum > 0)
@@ -200,30 +199,28 @@ public final class CommentProteusListenerUtil$Companion
     return (CommentProteusListenerUtil.CommentProteusOnClickListener)new CommentProteusListenerUtil.Companion.initCommentHideButtonClickListener.1();
   }
   
-  @NotNull
-  public final CommentProteusListenerUtil.CommentProteusOnClickListener a(int paramInt, @NotNull SparseArray<CommentProteusListenerUtil.CommentProteusOnClickListener> paramSparseArray)
+  private final CommentProteusListenerUtil.CommentProteusOnClickListener s(int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramSparseArray, "onClickListenerSparseArray");
-    paramSparseArray = (CommentProteusListenerUtil.CommentProteusOnClickListener)paramSparseArray.get(paramInt);
-    if (paramSparseArray != null)
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[getOnClickListener] succeed, cmdStrId = ");
-        localStringBuilder.append(paramInt);
-        QLog.i("CommentProteusListenerUtil", 2, localStringBuilder.toString());
-      }
-      return paramSparseArray;
+    if (paramInt != 1124) {
+      return null;
     }
-    if (QLog.isColorLevel())
-    {
-      paramSparseArray = new StringBuilder();
-      paramSparseArray.append("[getOnClickListener] use default clickListener, cmdStrId = ");
-      paramSparseArray.append(paramInt);
-      QLog.i("CommentProteusListenerUtil", 2, paramSparseArray.toString());
+    return (CommentProteusListenerUtil.CommentProteusOnClickListener)new CommentProteusListenerUtil.Companion.initAdImageAreaClickListener.1();
+  }
+  
+  private final CommentProteusListenerUtil.CommentProteusOnClickListener t(int paramInt)
+  {
+    if ((paramInt != 1182) && (paramInt != 1184)) {
+      return null;
     }
-    return ((Companion)this).a();
+    return (CommentProteusListenerUtil.CommentProteusOnClickListener)new CommentProteusListenerUtil.Companion.initAdNameClickListener.1();
+  }
+  
+  private final CommentProteusListenerUtil.CommentProteusOnClickListener u(int paramInt)
+  {
+    if (paramInt != 1185) {
+      return null;
+    }
+    return (CommentProteusListenerUtil.CommentProteusOnClickListener)new CommentProteusListenerUtil.Companion.initAdItemClickListener.1();
   }
   
   @NotNull
@@ -249,12 +246,41 @@ public final class CommentProteusListenerUtil$Companion
     localCompanion.a(paramInt, localCompanion.p(paramInt), paramSparseArray);
     localCompanion.a(paramInt, localCompanion.r(paramInt), paramSparseArray);
     localCompanion.a(paramInt, localCompanion.b(paramInt), paramSparseArray);
+    localCompanion.a(paramInt, localCompanion.s(paramInt), paramSparseArray);
+    localCompanion.a(paramInt, localCompanion.t(paramInt), paramSparseArray);
+    localCompanion.a(paramInt, localCompanion.u(paramInt), paramSparseArray);
     return localCompanion;
+  }
+  
+  @NotNull
+  public final CommentProteusListenerUtil.CommentProteusOnClickListener b(int paramInt, @NotNull SparseArray<CommentProteusListenerUtil.CommentProteusOnClickListener> paramSparseArray)
+  {
+    Intrinsics.checkParameterIsNotNull(paramSparseArray, "onClickListenerSparseArray");
+    paramSparseArray = (CommentProteusListenerUtil.CommentProteusOnClickListener)paramSparseArray.get(paramInt);
+    if (paramSparseArray != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[getOnClickListener] succeed, cmdStrId = ");
+        localStringBuilder.append(paramInt);
+        QLog.i("CommentProteusListenerUtil", 2, localStringBuilder.toString());
+      }
+      return paramSparseArray;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramSparseArray = new StringBuilder();
+      paramSparseArray.append("[getOnClickListener] use default clickListener, cmdStrId = ");
+      paramSparseArray.append(paramInt);
+      QLog.i("CommentProteusListenerUtil", 2, paramSparseArray.toString());
+    }
+    return ((Companion)this).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

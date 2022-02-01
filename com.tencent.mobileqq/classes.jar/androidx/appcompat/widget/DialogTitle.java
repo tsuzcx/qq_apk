@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.Layout;
 import android.util.AttributeSet;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.appcompat.R.styleable;
 
@@ -11,17 +13,17 @@ import androidx.appcompat.R.styleable;
 public class DialogTitle
   extends AppCompatTextView
 {
-  public DialogTitle(Context paramContext)
+  public DialogTitle(@NonNull Context paramContext)
   {
     super(paramContext);
   }
   
-  public DialogTitle(Context paramContext, AttributeSet paramAttributeSet)
+  public DialogTitle(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public DialogTitle(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public DialogTitle(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
   }

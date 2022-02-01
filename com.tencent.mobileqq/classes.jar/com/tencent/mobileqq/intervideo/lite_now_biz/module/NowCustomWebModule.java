@@ -18,16 +18,11 @@ import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodul
 public abstract class NowCustomWebModule
   extends CustomWebModule
 {
-  protected long a;
-  private RoomServiceInterface a;
+  protected long a = 0L;
   private boolean b = false;
+  private RoomServiceInterface n;
   
-  public NowCustomWebModule()
-  {
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  private Bundle a()
+  private Bundle c()
   {
     if (this.roomBizContext.getEnterRoomInfo() != null) {
       return this.roomBizContext.getEnterRoomInfo().extData;
@@ -35,7 +30,7 @@ public abstract class NowCustomWebModule
     return new Bundle();
   }
   
-  private long b()
+  private long m()
   {
     EnterRoomInfo localEnterRoomInfo = this.roomBizContext.getEnterRoomInfo();
     if (localEnterRoomInfo != null) {
@@ -44,16 +39,18 @@ public abstract class NowCustomWebModule
     return 0L;
   }
   
-  private long c()
+  private long t()
   {
-    LiveInfo localLiveInfo = this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceInterface.getLiveInfo();
+    LiveInfo localLiveInfo = this.n.getLiveInfo();
     if ((localLiveInfo != null) && (localLiveInfo.anchorInfo != null)) {
       return localLiveInfo.anchorInfo.uid;
     }
     return 0L;
   }
   
-  protected long a()
+  public abstract String a();
+  
+  protected long b()
   {
     LoginServiceInterface localLoginServiceInterface = (LoginServiceInterface)getRoomEngine().getService(LoginServiceInterface.class);
     if (localLoginServiceInterface.getLoginInfo() != null) {
@@ -62,40 +59,38 @@ public abstract class NowCustomWebModule
     return 0L;
   }
   
-  public abstract String a();
-  
   public void onCreate(Context paramContext)
   {
     super.onCreate(paramContext);
-    this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceInterface = ((RoomServiceInterface)getRoomEngine().getService(RoomServiceInterface.class));
+    this.n = ((RoomServiceInterface)getRoomEngine().getService(RoomServiceInterface.class));
   }
   
   public void onEnterRoom(boolean paramBoolean)
   {
     super.onEnterRoom(paramBoolean);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    DataReport.a(a(), String.valueOf(a()), c(), b(), a());
+    this.a = System.currentTimeMillis();
+    DataReport.a(c(), String.valueOf(b()), t(), m(), a());
     if (this.b)
     {
       this.b = false;
-      DataReport.b(a(), String.valueOf(a()), c(), b(), a());
+      DataReport.b(c(), String.valueOf(b()), t(), m(), a());
     }
   }
   
   public void onExitRoom(boolean paramBoolean)
   {
     super.onExitRoom(paramBoolean);
-    this.jdField_a_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    DataReport.a(a(), String.valueOf(a()), c(), b(), a(), this.jdField_a_of_type_Long);
+    this.a = (System.currentTimeMillis() - this.a);
+    DataReport.a(c(), String.valueOf(b()), t(), m(), a(), this.a);
   }
   
   public void onPageFinished()
   {
     super.onPageFinished();
-    Bundle localBundle = a();
-    if ((!TextUtils.isEmpty(localBundle.getString("mqqschema"))) && (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl().startsWith(b())))
+    Bundle localBundle = c();
+    if ((!TextUtils.isEmpty(localBundle.getString("mqqschema"))) && (this.f.getUrl().startsWith(d())))
     {
-      DataReport.b(a(), String.valueOf(a()), c(), b(), a());
+      DataReport.b(c(), String.valueOf(b()), t(), m(), a());
       return;
     }
     this.b = localBundle.getBoolean("is_preload");
@@ -103,7 +98,7 @@ public abstract class NowCustomWebModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.module.NowCustomWebModule
  * JD-Core Version:    0.7.0.1
  */

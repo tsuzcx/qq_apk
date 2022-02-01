@@ -65,7 +65,7 @@ public class MiniGamePayFragment
     try
     {
       paramString1.put("resultCode", -4);
-      paramString1.put("resultMsg", HardCodeUtil.a(2131706873));
+      paramString1.put("resultMsg", HardCodeUtil.a(2131904720));
       paramString1 = paramString1.toString();
       if (paramString1 != null)
       {
@@ -100,7 +100,7 @@ public class MiniGamePayFragment
     try
     {
       paramString1.put("resultCode", 1000);
-      paramString1.put("errMsg", HardCodeUtil.a(2131706878));
+      paramString1.put("errMsg", HardCodeUtil.a(2131904724));
       paramString1 = paramString1.toString();
       if (paramString1 != null) {
         try
@@ -159,7 +159,7 @@ public class MiniGamePayFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGamePayFragment
  * JD-Core Version:    0.7.0.1
  */

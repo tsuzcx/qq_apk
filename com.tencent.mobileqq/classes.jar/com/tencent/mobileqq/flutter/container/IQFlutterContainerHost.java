@@ -9,15 +9,15 @@ import io.flutter.embedding.engine.FlutterShellArgs;
 
 public abstract interface IQFlutterContainerHost
 {
-  public abstract Activity a();
-  
-  public abstract Bundle a();
-  
   public abstract View a();
   
-  public abstract FlutterShellArgs a();
+  public abstract Activity b();
   
-  public abstract boolean a();
+  public abstract FlutterShellArgs c();
+  
+  public abstract Bundle d();
+  
+  public abstract boolean e();
   
   public abstract Context getContext();
   
@@ -25,7 +25,7 @@ public abstract interface IQFlutterContainerHost
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.container.IQFlutterContainerHost
  * JD-Core Version:    0.7.0.1
  */

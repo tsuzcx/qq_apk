@@ -10,22 +10,22 @@ public class AppBarLayout$BaseBehavior$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new AppBarLayout.BaseBehavior.SavedState.1();
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
+  int a;
+  float b;
+  boolean c;
   
   public AppBarLayout$BaseBehavior$SavedState(@NonNull Parcel paramParcel, ClassLoader paramClassLoader)
   {
     super(paramParcel, paramClassLoader);
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Float = paramParcel.readFloat();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readFloat();
     boolean bool;
     if (paramParcel.readByte() != 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.c = bool;
   }
   
   public AppBarLayout$BaseBehavior$SavedState(Parcelable paramParcelable)
@@ -36,14 +36,14 @@ public class AppBarLayout$BaseBehavior$SavedState
   public void writeToParcel(@NonNull Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeFloat(this.jdField_a_of_type_Float);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeFloat(this.b);
+    paramParcel.writeByte((byte)this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.AppBarLayout.BaseBehavior.SavedState
  * JD-Core Version:    0.7.0.1
  */

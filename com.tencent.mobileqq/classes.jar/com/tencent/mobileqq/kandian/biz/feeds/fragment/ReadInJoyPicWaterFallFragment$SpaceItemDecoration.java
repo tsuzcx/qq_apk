@@ -10,11 +10,11 @@ import android.view.View;
 public class ReadInJoyPicWaterFallFragment$SpaceItemDecoration
   extends RecyclerView.ItemDecoration
 {
-  private int jdField_a_of_type_Int;
+  private int b;
   
   public ReadInJoyPicWaterFallFragment$SpaceItemDecoration(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
@@ -22,19 +22,19 @@ public class ReadInJoyPicWaterFallFragment$SpaceItemDecoration
     super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
     if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0)
     {
-      i = this.jdField_a_of_type_Int;
+      i = this.b;
       paramRect.left = (i * 2);
       paramRect.right = i;
       return;
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     paramRect.left = (i / 2);
     paramRect.right = i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoyPicWaterFallFragment.SpaceItemDecoration
  * JD-Core Version:    0.7.0.1
  */

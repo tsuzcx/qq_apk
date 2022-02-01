@@ -8,12 +8,6 @@ public abstract interface QQStoryMainController$QQStoryMainView
 {
   public abstract View a();
   
-  public abstract ImageView a();
-  
-  public abstract TextView a();
-  
-  public abstract void a();
-  
   public abstract void a(String paramString);
   
   public abstract void a(boolean paramBoolean);
@@ -22,7 +16,13 @@ public abstract interface QQStoryMainController$QQStoryMainView
   
   public abstract void b(boolean paramBoolean);
   
-  public abstract void c();
+  public abstract ImageView c();
+  
+  public abstract TextView d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

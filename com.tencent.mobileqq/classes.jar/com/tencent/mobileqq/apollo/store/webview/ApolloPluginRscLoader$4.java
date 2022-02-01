@@ -22,33 +22,33 @@ class ApolloPluginRscLoader$4
     paramString1.append(paramBoolean);
     QLog.i("[cmshow]ApolloPluginRscLoader", 1, paramString1.toString());
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    while (i < this.a.length)
     {
-      paramString1 = ((CmShowRscCacheManagerImpl)QRoute.api(ICmShowRscCacheManager.class)).getRscItem(8, this.jdField_a_of_type_ArrayOfInt[i]);
+      paramString1 = ((CmShowRscCacheManagerImpl)QRoute.api(ICmShowRscCacheManager.class)).getRscItem(8, this.a[i]);
       int j = 2;
       if (paramString1 != null)
       {
-        paramList = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader;
-        int k = paramString1.b;
-        if (paramString1.a()) {
+        paramList = this.d;
+        int k = paramString1.c;
+        if (paramString1.c()) {
           j = 0;
         }
         paramString1 = ApolloPluginRscLoader.a(paramList, 8, String.valueOf(k), j);
-        this.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+        this.b.put(paramString1);
       }
       else
       {
-        paramString1 = ApolloPluginRscLoader.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader, 8, String.valueOf(this.jdField_a_of_type_ArrayOfInt[i]), 2);
-        this.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+        paramString1 = ApolloPluginRscLoader.a(this.d, 8, String.valueOf(this.a[i]), 2);
+        this.b.put(paramString1);
       }
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, HardCodeUtil.a(2131700731), this.jdField_a_of_type_OrgJsonJSONArray);
+    this.d.a(this.c, HardCodeUtil.a(2131898757), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloPluginRscLoader.4
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,15 @@ class PopDeleteState$3
   public void onAnimationCancel(Animator paramAnimator)
   {
     this.a.a();
-    PopOutAnimViewHelper.a(4, new View[] { PopDeleteState.a(this.a), PopDeleteState.a(this.a) });
-    PopDeleteState.a(this.a).setTranslationY(0.0F);
+    PopOutAnimViewHelper.a(4, new View[] { PopDeleteState.c(this.a), PopDeleteState.b(this.a) });
+    PopDeleteState.b(this.a).setTranslationY(0.0F);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     this.a.a();
-    PopOutAnimViewHelper.a(4, new View[] { PopDeleteState.a(this.a), PopDeleteState.a(this.a) });
-    PopDeleteState.a(this.a).setTranslationY(0.0F);
+    PopOutAnimViewHelper.a(4, new View[] { PopDeleteState.c(this.a), PopDeleteState.b(this.a) });
+    PopDeleteState.b(this.a).setTranslationY(0.0F);
   }
   
   public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
@@ -34,10 +34,10 @@ class PopDeleteState$3
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    PopDeleteState.a(this.a).setTranslationY(0.0F);
-    PopDeleteState.a(this.a).getLayoutParams().height = ViewUtils.b(95.0F);
-    PopDeleteState.a(this.a).setBackgroundResource(2130839636);
-    PopDeleteState.a(this.a).requestLayout();
+    PopDeleteState.b(this.a).setTranslationY(0.0F);
+    PopDeleteState.b(this.a).getLayoutParams().height = ViewUtils.dpToPx(95.0F);
+    PopDeleteState.b(this.a).setBackgroundResource(2130840105);
+    PopDeleteState.b(this.a).requestLayout();
   }
   
   public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
@@ -47,7 +47,7 @@ class PopDeleteState$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.state.PopDeleteState.3
  * JD-Core Version:    0.7.0.1
  */

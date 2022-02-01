@@ -16,9 +16,7 @@ import com.tencent.qqperf.config.APMModuleConfig;
 import com.tencent.qqperf.monitor.base.AbstractMagnifierItem;
 import com.tencent.qqperf.monitor.base.IAPMModuleBattery;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.MainService;
 import mqq.util.IServiceCmdCallback;
 
@@ -26,21 +24,9 @@ public class QAPMBatteryWrapper
   extends AbstractMagnifierItem
   implements IAPMModuleBattery
 {
-  private List<HookItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private AtomicBoolean b = new AtomicBoolean(false);
-  
   public String a()
   {
     return "battery";
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      d();
-    }
   }
   
   protected void a(APMModuleConfig paramAPMModuleConfig) {}
@@ -52,10 +38,15 @@ public class QAPMBatteryWrapper
   
   public String b()
   {
-    return b().getOldStrategy("0.002;0.000025;1;3600;5|5,30,60;5,0;5,1|5,30,60;5,1|2,200,300,20|2,30,40,20|30;3,10;10,120|3,15;10,300|3,15,10,300|1800|1800||0;0;8;8;5;5;1;0|");
+    return f().getOldStrategy("0.002;0.000025;1;3600;5|5,30,60;5,0;5,1|5,30,60;5,1|2,200,300,20|2,30,40,20|30;3,10;10,120|3,15;10,300|3,15,10,300|1800|1800||0;0;8;8;5;5;1;0|");
   }
   
-  public void b()
+  public void d()
+  {
+    super.d();
+  }
+  
+  public void j()
   {
     Object localObject1 = b();
     try
@@ -73,7 +64,6 @@ public class QAPMBatteryWrapper
       ((BatteryConfig)localObject1).trafficConfig = new TrafficMeta().parse(localObject2[2]);
       localObject2 = new QApmBatteryListenerImpl();
       QQBatteryMonitor.setBatteryListener((IBatteryListener)localObject2);
-      QLog.setLogCallback((QLog.ILogCallback)localObject2);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add("MSF.D.MonitorSocket");
       localArrayList.add("Q.msg.MsgProxy|addMsgQueue");
@@ -83,6 +73,7 @@ public class QAPMBatteryWrapper
       localArrayList.add("SQLiteOpenHelper| getWritableDatabase");
       localArrayList.add("SQLiteOpenHelper| getReadableDatabase");
       QQBatteryMonitor.getInstance().setLogWhite(localArrayList, 0);
+      QLog.setLogCallback((QLog.ILogCallback)localObject2);
       localArrayList = new ArrayList();
       localArrayList.add("OidbSvc.0x58b_0");
       QQBatteryMonitor.getInstance().setLogWhite(localArrayList, 150);
@@ -108,37 +99,17 @@ public class QAPMBatteryWrapper
       MainService.setServiceCmdCallback((IServiceCmdCallback)localObject2);
       QQBatteryMonitor.getInstance().setupConfig((BatteryConfig)localObject1);
       QLog.i("MagnifierSDK.QAPM.QAPMBatteryWrapper", 1, "openBattery");
+      return;
     }
     catch (Exception localException)
     {
       QLog.i("MagnifierSDK.QAPM.QAPMBatteryWrapper", 1, "openBattery", localException);
     }
-    this.jdField_a_of_type_JavaUtilList.add(new GPS());
-    this.jdField_a_of_type_JavaUtilList.add(new Wifi());
-    this.jdField_a_of_type_JavaUtilList.add(new WakeLock());
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) && (o_())) {
-      d();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.b.compareAndSet(false, true))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((HookItem)localIterator.next()).a();
-      }
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.battery.QAPMBatteryWrapper
  * JD-Core Version:    0.7.0.1
  */

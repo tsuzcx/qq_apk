@@ -12,45 +12,45 @@ class QRCardActivity$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
+    paramDialogInterface = this.a.toLowerCase();
     if (paramDialogInterface.startsWith("www."))
     {
       paramDialogInterface = new StringBuilder();
       paramDialogInterface.append("http://");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.append(this.a);
       paramDialogInterface = paramDialogInterface.toString();
     }
     else if (paramDialogInterface.startsWith("https:"))
     {
       paramDialogInterface = new StringBuilder();
       paramDialogInterface.append("https");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString.substring(5));
+      paramDialogInterface.append(this.a.substring(5));
       paramDialogInterface = paramDialogInterface.toString();
     }
     else if (paramDialogInterface.startsWith("http:"))
     {
       paramDialogInterface = new StringBuilder();
       paramDialogInterface.append("http");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString.substring(4));
+      paramDialogInterface.append(this.a.substring(4));
       paramDialogInterface = paramDialogInterface.toString();
     }
     else
     {
       paramDialogInterface = new StringBuilder();
       paramDialogInterface.append("http://");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.append(this.a);
       paramDialogInterface = paramDialogInterface.toString();
     }
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqQrscanActivityQRCardActivity, QQBrowserActivity.class);
+    Intent localIntent = new Intent(this.b, QQBrowserActivity.class);
     localIntent.putExtra("url", paramDialogInterface);
     localIntent.putExtra("key_isReadModeEnabled", true);
     localIntent.putExtra("injectrecommend", false);
-    this.jdField_a_of_type_ComTencentMobileqqQrscanActivityQRCardActivity.startActivity(localIntent);
+    this.b.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.QRCardActivity.6
  * JD-Core Version:    0.7.0.1
  */

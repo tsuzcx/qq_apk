@@ -31,23 +31,23 @@ public class HitAndRunHelper
   
   private void a()
   {
-    ((ISttManagerApi)QRoute.api(ISttManagerApi.class)).initAutoToTextSwitch(this.a.a);
-    Object localObject = this.a.a.getApp().getSharedPreferences("check_update_sp_key", 0);
+    ((ISttManagerApi)QRoute.api(ISttManagerApi.class)).initAutoToTextSwitch(this.a.d);
+    Object localObject = this.a.d.getApp().getSharedPreferences("check_update_sp_key", 0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("businessinfo_ptt_slice_to_text_");
-    localStringBuilder.append(this.a.a.getCurrentAccountUin());
-    PttConstants.h = ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false);
-    localObject = (PttAutoChangeBean)QConfigManager.a().a(442);
+    localStringBuilder.append(this.a.d.getCurrentAccountUin());
+    PttConstants.l = ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false);
+    localObject = (PttAutoChangeBean)QConfigManager.b().b(442);
     try
     {
-      if (!PttConstants.d)
+      if (!PttConstants.h)
       {
-        if ((int)(Long.valueOf(this.a.a.getCurrentAccountUin()).longValue() / 1000L % 1000L) > ((PttAutoChangeBean)localObject).a())
+        if ((int)(Long.valueOf(this.a.d.getCurrentAccountUin()).longValue() / 1000L % 1000L) > ((PttAutoChangeBean)localObject).b())
         {
-          PttConstants.f = true;
+          PttConstants.j = true;
           return;
         }
-        PttConstants.f = false;
+        PttConstants.j = false;
         return;
       }
     }
@@ -84,12 +84,12 @@ public class HitAndRunHelper
         if (paramInt != 15) {
           return;
         }
-        ShortVideoItemBuilder.g();
-        ShortVideoRealItemBuilder.g();
+        ShortVideoItemBuilder.j();
+        ShortVideoRealItemBuilder.j();
         return;
       }
-      ((AvatarPendantManager)this.a.a.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).c();
-      StickerBubbleAnimationHelper.a(this.a.d);
+      ((AvatarPendantManager)this.a.d.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).c();
+      StickerBubbleAnimationHelper.a(this.a.ba);
       ((IPopOutEmoticonAnim)QRoute.api(IPopOutEmoticonAnim.class)).stopAndCleanPopOutAnim();
       return;
     }
@@ -97,20 +97,24 @@ public class HitAndRunHelper
     ThreadManager.post(new HitAndRunHelper.1(this), 5, null, true);
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder = new StringBuilder();
       localStringBuilder.append("pttAutoChangeTxt =");
-      localStringBuilder.append(PttConstants.c);
-      localStringBuilder.append(" hasAddGrayTip =");
-      localStringBuilder.append(PttConstants.d);
-      localStringBuilder.append(" grayTipPerThousandStatus=");
       localStringBuilder.append(PttConstants.f);
+      localStringBuilder.append(" hasAddGrayTip =");
+      localStringBuilder.append(PttConstants.h);
+      localStringBuilder.append(" grayTipPerThousandStatus=");
+      localStringBuilder.append(PttConstants.j);
       QLog.d("PttAutoChange", 2, localStringBuilder.toString());
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Test.a());
+    localStringBuilder.append(new Test().c());
+    QLog.d("HitAndRunHelper", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.HitAndRunHelper
  * JD-Core Version:    0.7.0.1
  */

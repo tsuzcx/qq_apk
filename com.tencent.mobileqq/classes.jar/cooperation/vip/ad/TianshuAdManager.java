@@ -18,34 +18,34 @@ import java.util.Map;
 
 public class TianshuAdManager
 {
-  private Conversation jdField_a_of_type_ComTencentMobileqqActivityHomeConversation;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TianShuGetAdvCallback jdField_a_of_type_ComTencentMobileqqTianshuDataTianShuGetAdvCallback = new TianshuAdManager.1(this);
-  private ARMapHongBaoListView jdField_a_of_type_ComTencentWidgetARMapHongBaoListView;
-  private TianshuBigInsertPage jdField_a_of_type_CooperationVipAdTianshuBigInsertPage;
-  private TianshuBreathLight jdField_a_of_type_CooperationVipAdTianshuBreathLight;
-  private TianshuPendantHolder jdField_a_of_type_CooperationVipAdTianshuPendantHolder;
+  private ARMapHongBaoListView a;
+  private TianshuBigInsertPage b;
+  private TianshuBreathLight c;
+  private TianshuPendantHolder d;
+  private QQAppInterface e;
+  private Conversation f;
+  private TianShuGetAdvCallback g = new TianshuAdManager.1(this);
   
   public TianshuAdManager(QQAppInterface paramQQAppInterface, Conversation paramConversation, ARMapHongBaoListView paramARMapHongBaoListView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation = paramConversation;
-    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView = paramARMapHongBaoListView;
+    this.e = paramQQAppInterface;
+    this.f = paramConversation;
+    this.a = paramARMapHongBaoListView;
   }
   
   private void a(TianShuAccess.AdItem paramAdItem)
   {
-    if (this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage == null) {
-      this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage = new TianshuBigInsertPage(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation);
+    if (this.b == null) {
+      this.b = new TianshuBigInsertPage(this.f);
     }
-    this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage.a(paramAdItem);
+    this.b.a(paramAdItem);
   }
   
   private void a(TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.e != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation == null) {
+      if (this.f == null) {
         return;
       }
       if (paramGetAdsRsp.mapAds.has()) {
@@ -79,7 +79,7 @@ public class TianshuAdManager
     if ((localObject != null) && (((TianShuAccess.RspEntry)localObject).value != null) && (((TianShuAccess.RspEntry)localObject).value.lst.size() != 0) && (((TianShuAccess.RspEntry)localObject).value.lst.get(0) != null)) {
       b((TianShuAccess.AdItem)((TianShuAccess.RspEntry)localObject).value.lst.get(0));
     }
-    localObject = this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView;
+    localObject = this.a;
     if ((localObject != null) && (((ARMapHongBaoListView)localObject).a == null))
     {
       paramMap = (TianShuAccess.RspEntry)paramMap.get(Integer.valueOf(339));
@@ -91,63 +91,63 @@ public class TianshuAdManager
   
   private void b(TianShuAccess.AdItem paramAdItem)
   {
-    ARMapHongBaoListView localARMapHongBaoListView = this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView;
+    ARMapHongBaoListView localARMapHongBaoListView = this.a;
     if (localARMapHongBaoListView != null)
     {
-      if (this.jdField_a_of_type_CooperationVipAdTianshuPendantHolder == null)
+      if (this.d == null)
       {
-        this.jdField_a_of_type_CooperationVipAdTianshuPendantHolder = new TianshuPendantHolder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localARMapHongBaoListView);
-        this.jdField_a_of_type_CooperationVipAdTianshuPendantHolder.c();
+        this.d = new TianshuPendantHolder(this.e, localARMapHongBaoListView);
+        this.d.d();
       }
-      this.jdField_a_of_type_CooperationVipAdTianshuPendantHolder.a(paramAdItem);
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setPendantHolder(this.jdField_a_of_type_CooperationVipAdTianshuPendantHolder);
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setOnPendentClickListener(this.jdField_a_of_type_CooperationVipAdTianshuPendantHolder);
+      this.d.a(paramAdItem);
+      this.a.setPendantHolder(this.d);
+      this.a.setOnPendentClickListener(this.d);
     }
   }
   
   private void c(TianShuAccess.AdItem paramAdItem)
   {
-    ARMapHongBaoListView localARMapHongBaoListView = this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView;
+    ARMapHongBaoListView localARMapHongBaoListView = this.a;
     if (localARMapHongBaoListView != null)
     {
-      if (this.jdField_a_of_type_CooperationVipAdTianshuBreathLight == null)
+      if (this.c == null)
       {
-        this.jdField_a_of_type_CooperationVipAdTianshuBreathLight = new TianshuBreathLight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localARMapHongBaoListView);
-        this.jdField_a_of_type_CooperationVipAdTianshuBreathLight.c();
+        this.c = new TianshuBreathLight(this.e, localARMapHongBaoListView);
+        this.c.d();
       }
-      this.jdField_a_of_type_CooperationVipAdTianshuBreathLight.a(paramAdItem);
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.a(this.jdField_a_of_type_CooperationVipAdTianshuBreathLight);
+      this.c.a(paramAdItem);
+      this.a.a(this.c);
     }
   }
   
   public void a()
   {
-    TianShuManager.getInstance().requestAdv(TianshuAdUtils.a(), this.jdField_a_of_type_ComTencentMobileqqTianshuDataTianShuGetAdvCallback);
+    TianShuManager.getInstance().requestAdv(TianshuAdUtils.a(), this.g);
   }
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView;
+    this.e = paramQQAppInterface;
+    paramQQAppInterface = this.a;
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface.setPendantHolder(null);
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.h();
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setOnPendentClickListener(null);
+      this.a.i();
+      this.a.setOnPendentClickListener(null);
     }
-    this.jdField_a_of_type_CooperationVipAdTianshuBreathLight = null;
-    this.jdField_a_of_type_CooperationVipAdTianshuPendantHolder = null;
+    this.c = null;
+    this.d = null;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation = null;
+    this.e = null;
+    this.f = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuAdManager
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class ReadInJoyChannelViewPagerController$11
   public void onScrollStateChanged(int paramInt)
   {
     if (paramInt == 4098) {
-      ReadInJoyChannelViewPagerController.a(this.a).setOverScrollMode(0);
+      ReadInJoyChannelViewPagerController.g(this.a).setOverScrollMode(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyChannelViewPagerController.11
  * JD-Core Version:    0.7.0.1
  */

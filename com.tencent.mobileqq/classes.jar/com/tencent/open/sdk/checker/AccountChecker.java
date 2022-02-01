@@ -18,7 +18,7 @@ public class AccountChecker
   
   public void a(long paramLong, String paramString, BaseAccountChecker.IAccountCheckCallback paramIAccountCheckCallback)
   {
-    OpenID localOpenID = this.a.getMsgHandler().a(String.valueOf(paramLong));
+    OpenID localOpenID = this.a.getMsgHandler().e(String.valueOf(paramLong));
     if (localOpenID != null)
     {
       boolean bool = TextUtils.equals(paramString, localOpenID.openID);
@@ -44,7 +44,7 @@ public class AccountChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.sdk.checker.AccountChecker
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class SendBottomBar$3$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SendBottomBar.a(this.a.a);
+    SendBottomBar.g(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.3.1
  * JD-Core Version:    0.7.0.1
  */

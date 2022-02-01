@@ -18,30 +18,25 @@ import java.util.HashMap;
 public class WerewolvesPluginManager
   implements DecodeTaskCompletionListener
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new WerewolvesPluginManager.1(this, Looper.getMainLooper());
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ViewPluginLoader jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader = (ViewPluginLoader)ViewPluginLoader.jdField_a_of_type_JavaUtilHashMap.get("Werewolves.apk");
-  GameRoomChatPie jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie;
-  public IFaceDecoder a;
-  WerewolvesPluginInterface jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface;
-  public String a;
+  ViewPluginLoader a = (ViewPluginLoader)ViewPluginLoader.a.get("Werewolves.apk");
+  ViewGroup b;
+  WerewolvesPluginInterface c;
+  public String d;
+  GameRoomChatPie e;
+  public IFaceDecoder f;
+  Handler g = new WerewolvesPluginManager.1(this, Looper.getMainLooper());
   
   public WerewolvesPluginManager(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader == null) {
-      this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader = new ViewPluginLoader("2584", "Werewolves.apk");
+    if (this.a == null) {
+      this.a = new ViewPluginLoader("2584", "Werewolves.apk");
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public WerewolvesPluginInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface;
+    this.d = paramString;
   }
   
   public String a(String paramString)
   {
-    WerewolvesPluginInterface localWerewolvesPluginInterface = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface;
+    WerewolvesPluginInterface localWerewolvesPluginInterface = this.c;
     if (localWerewolvesPluginInterface != null) {
       return localWerewolvesPluginInterface.a(paramString);
     }
@@ -50,126 +45,131 @@ public class WerewolvesPluginManager
   
   public void a()
   {
-    if (!this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.jdField_a_of_type_Boolean)
+    if (!this.a.i)
     {
-      this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a(false);
+      this.a.a(false);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface = new WerewolvesPluginInterface(this, this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.jdField_a_of_type_JavaLangClassLoader);
+    if (this.c == null) {
+      this.c = new WerewolvesPluginInterface(this, this.a.c);
     }
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    Message localMessage = this.g.obtainMessage(1);
     localMessage.arg1 = 0;
     localMessage.sendToTarget();
   }
   
   public void a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.a(paramViewGroup, this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext);
+    this.b = paramViewGroup;
+    this.b.removeAllViews();
+    this.c.a(paramViewGroup, this.a.b);
   }
   
   public void a(GameRoomChatPie paramGameRoomChatPie)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie != paramGameRoomChatPie) {
+    if (this.e != paramGameRoomChatPie) {
       return;
     }
-    paramGameRoomChatPie = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface;
+    paramGameRoomChatPie = this.c;
     if (paramGameRoomChatPie != null) {
       paramGameRoomChatPie.b();
     }
-    paramGameRoomChatPie = this.jdField_a_of_type_AndroidViewViewGroup;
+    paramGameRoomChatPie = this.b;
     if (paramGameRoomChatPie != null)
     {
       paramGameRoomChatPie.removeAllViews();
-      this.jdField_a_of_type_AndroidViewViewGroup = null;
+      this.b = null;
     }
-    paramGameRoomChatPie = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    paramGameRoomChatPie = this.f;
     if (paramGameRoomChatPie != null) {
       paramGameRoomChatPie.destory();
     }
-    paramGameRoomChatPie = this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader;
+    paramGameRoomChatPie = this.a;
     if (paramGameRoomChatPie != null) {
-      paramGameRoomChatPie.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext = null;
+      paramGameRoomChatPie.b = null;
     }
   }
   
   public void a(BaseActivity paramBaseActivity, GameRoomChatPie paramGameRoomChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie = paramGameRoomChatPie;
-    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a(paramBaseActivity);
-    paramBaseActivity = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface;
+    this.e = paramGameRoomChatPie;
+    this.a.a(paramBaseActivity);
+    paramBaseActivity = this.c;
     if (paramBaseActivity != null)
     {
       paramBaseActivity.a();
-      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext);
+      this.c.a(this.a.b);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface = new WerewolvesPluginInterface(this, this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.jdField_a_of_type_JavaLangClassLoader);
+      this.c = new WerewolvesPluginInterface(this, this.a.c);
     }
     paramBaseActivity = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramBaseActivity.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
+    this.f = ((IQQAvatarService)paramBaseActivity.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramBaseActivity);
+    this.f.setDecodeTaskCompletionListener(this);
   }
   
   public void a(String paramString, byte[] paramArrayOfByte)
   {
-    WerewolvesPluginInterface localWerewolvesPluginInterface = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface;
+    WerewolvesPluginInterface localWerewolvesPluginInterface = this.c;
     if (localWerewolvesPluginInterface == null) {
       return;
     }
     localWerewolvesPluginInterface.a(paramString, paramArrayOfByte);
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.jdField_a_of_type_Boolean;
+    return this.a.i;
   }
   
-  public void b()
+  public WerewolvesPluginInterface c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface;
+    return this.c;
+  }
+  
+  public void d()
+  {
+    Object localObject = this.c;
     if (localObject != null) {
       ((WerewolvesPluginInterface)localObject).a();
     }
-    localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+    localObject = this.b;
     if (localObject != null)
     {
       ((ViewGroup)localObject).removeAllViews();
-      this.jdField_a_of_type_AndroidViewViewGroup = null;
+      this.b = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie = null;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    this.e = null;
+    localObject = this.f;
     if (localObject != null) {
       ((IFaceDecoder)localObject).destory();
     }
-    localObject = this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader;
+    localObject = this.a;
     if (localObject != null) {
-      ((ViewPluginLoader)localObject).c();
+      ((ViewPluginLoader)localObject).d();
     }
   }
   
-  public boolean b()
+  public boolean e()
   {
-    WerewolvesPluginInterface localWerewolvesPluginInterface = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface;
+    WerewolvesPluginInterface localWerewolvesPluginInterface = this.c;
     if (localWerewolvesPluginInterface == null) {
       return true;
     }
-    return (localWerewolvesPluginInterface != null) && (localWerewolvesPluginInterface.a());
+    return (localWerewolvesPluginInterface != null) && (localWerewolvesPluginInterface.c());
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface != null) && ((paramInt2 == 32) || (paramInt2 == 1))) {
-      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.a(paramString, paramBitmap);
+    if ((this.c != null) && ((paramInt2 == 32) || (paramInt2 == 1))) {
+      this.c.a(paramString, paramBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesPluginManager
  * JD-Core Version:    0.7.0.1
  */

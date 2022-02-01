@@ -15,14 +15,14 @@ final class CommentProteusListenerUtil$Companion$initCommentDotClickListener$1$c
   
   public final void onDismiss()
   {
-    ViewBase localViewBase = this.a.a;
+    ViewBase localViewBase = this.a.d;
     Intrinsics.checkExpressionValueIsNotNull(localViewBase, "commentContentView");
     localViewBase.getNativeView().setBackgroundColor(Color.parseColor("#FFFFFF"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion.initCommentDotClickListener.1.configClickListener.1.1
  * JD-Core Version:    0.7.0.1
  */

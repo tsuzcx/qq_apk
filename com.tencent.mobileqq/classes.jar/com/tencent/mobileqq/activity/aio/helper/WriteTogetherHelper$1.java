@@ -15,7 +15,7 @@ class WriteTogetherHelper$1
   
   public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    paramMenuItem = WriteTogetherHelper.a(this.a).a;
+    paramMenuItem = WriteTogetherHelper.b(this.a).Y;
     if (paramMenuItem != null)
     {
       paramMenuItem = paramMenuItem.getText();
@@ -34,10 +34,10 @@ class WriteTogetherHelper$1
   
   public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    if ((this.a.a()) && (WriteTogetherHelper.a(this.a))) {
-      paramMenu.add(0, 3, 196608, HardCodeUtil.a(2131720451));
+    if ((this.a.d()) && (WriteTogetherHelper.a(this.a))) {
+      paramMenu.add(0, 3, 196608, HardCodeUtil.a(2131918127));
     }
-    return this.a.a();
+    return this.a.d();
   }
   
   public void onDestroyActionMode(ActionMode paramActionMode) {}
@@ -49,7 +49,7 @@ class WriteTogetherHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.WriteTogetherHelper.1
  * JD-Core Version:    0.7.0.1
  */

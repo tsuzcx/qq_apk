@@ -20,64 +20,64 @@ import java.util.Date;
 public abstract class BaseInviteFloatBarUICtr
 {
   public static int a = 6000;
-  long jdField_a_of_type_Long = 0L;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  SessionInfo jdField_a_of_type_ComTencentAvAppSessionInfo = null;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  BaseGaInvite.GetGaFaceRunnable.OnGetSink jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable$OnGetSink = new BaseInviteFloatBarUICtr.1(this);
-  BaseGaInvite.GetGaFaceRunnable jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = null;
-  VideoInviteFloatBar jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar;
-  Runnable jdField_a_of_type_JavaLangRunnable = new BaseInviteFloatBarUICtr.2(this);
-  final String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  long[] jdField_a_of_type_ArrayOfLong = null;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString = null;
-  int jdField_c_of_type_Int = 0;
-  String jdField_c_of_type_JavaLangString = null;
-  String d = null;
+  final String b;
+  VideoAppInterface c = null;
+  long d = 0L;
+  String e = null;
+  Bitmap f = null;
+  int g = 0;
+  int h = 0;
+  long i = 0L;
+  long[] j = null;
+  boolean k = false;
+  SessionInfo l = null;
+  String m = null;
+  String n = null;
+  VideoInviteFloatBar o;
+  BaseGaInvite.GetGaFaceRunnable p = null;
+  BaseGaInvite.GetGaFaceRunnable.OnGetSink q = new BaseInviteFloatBarUICtr.1(this);
+  Runnable r = new BaseInviteFloatBarUICtr.2(this);
   
   public BaseInviteFloatBarUICtr()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(getClass().getSimpleName());
     localStringBuilder.append("_");
-    localStringBuilder.append(AudioHelper.b());
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder.append(AudioHelper.c());
+    this.b = localStringBuilder.toString();
   }
   
   public void a()
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy");
-    Object localObject = this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable;
+    QLog.d(this.b, 1, "onDestroy");
+    Object localObject = this.p;
     if (localObject != null) {
       ((BaseGaInvite.GetGaFaceRunnable)localObject).a();
     }
-    localObject = this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar;
+    localObject = this.o;
     if (localObject != null)
     {
       ((VideoInviteFloatBar)localObject).a();
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar = null;
+      this.o = null;
     }
     b();
   }
   
   public void a(String paramString)
   {
-    String str = String.valueOf(this.jdField_a_of_type_Long);
-    Object localObject = this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar;
+    String str = String.valueOf(this.d);
+    Object localObject = this.o;
     if (localObject != null) {
-      localObject = ((VideoInviteFloatBar)localObject).a();
+      localObject = ((VideoInviteFloatBar)localObject).d();
     } else {
       localObject = null;
     }
-    this.jdField_b_of_type_JavaLangString = BaseGaInvite.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, (TextView)localObject, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, str, this.jdField_a_of_type_ArrayOfLong);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_b_of_type_Int, str, null, true, false);
-    if (this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable == null) {
-      this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = new BaseGaInvite.GetGaFaceRunnable(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable$OnGetSink);
+    this.e = BaseGaInvite.a(this.c, (TextView)localObject, this.g, this.h, str, this.j);
+    this.f = this.c.a(this.g, str, null, true, false);
+    if (this.p == null) {
+      this.p = new BaseGaInvite.GetGaFaceRunnable(this.b, this.c, this.g, this.h, this.d, this.i, this.q);
     }
-    this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable.a(paramString);
+    this.p.a(paramString);
   }
   
   void a(boolean paramBoolean)
@@ -85,89 +85,89 @@ public abstract class BaseInviteFloatBarUICtr
     Object localObject1;
     if (QLog.isColorLevel())
     {
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.b;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("refreshUI, isMultiCall[");
-      ((StringBuilder)localObject2).append(AVUtil.b(this.jdField_b_of_type_Int));
+      ((StringBuilder)localObject2).append(AVUtil.e(this.g));
       ((StringBuilder)localObject2).append("], multiIncomingCall[");
       ((StringBuilder)localObject2).append(paramBoolean);
       ((StringBuilder)localObject2).append("], mUinType[");
-      ((StringBuilder)localObject2).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject2).append(this.g);
       ((StringBuilder)localObject2).append("], mIsAudioMode[");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject2).append(this.k);
       ((StringBuilder)localObject2).append("]");
       QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
     }
-    Object localObject2 = this.jdField_c_of_type_JavaLangString;
-    int j = this.jdField_b_of_type_Int;
-    if (AVUtil.b(j))
+    Object localObject2 = this.m;
+    int i2 = this.g;
+    if (AVUtil.e(i2))
     {
       a("refreshUI");
     }
     else
     {
-      SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvAppSessionInfo;
+      SessionInfo localSessionInfo = this.l;
       localObject1 = localObject2;
-      int i = j;
+      int i1 = i2;
       if (localSessionInfo != null)
       {
         localObject1 = localObject2;
-        i = j;
-        if (localSessionInfo.A == 1)
+        i1 = i2;
+        if (localSessionInfo.az == 1)
         {
           localObject1 = localObject2;
-          i = j;
-          if (this.jdField_b_of_type_Int == 9500)
+          i1 = i2;
+          if (this.g == 9500)
           {
             localObject1 = localObject2;
-            i = j;
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvAppSessionInfo.o))
+            i1 = i2;
+            if (!TextUtils.isEmpty(this.l.aB))
             {
-              localObject1 = this.jdField_a_of_type_ComTencentAvAppSessionInfo.o;
-              i = 0;
+              localObject1 = this.l.aB;
+              i1 = 0;
             }
           }
         }
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, (String)localObject1, this.d, true, true);
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, (String)localObject1, this.d);
-      if ((this.jdField_b_of_type_Int == 25) && (this.jdField_b_of_type_JavaLangString.equals(this.jdField_c_of_type_JavaLangString)))
+      this.f = this.c.a(i1, (String)localObject1, this.n, true, true);
+      this.e = this.c.a(i1, (String)localObject1, this.n);
+      if ((this.g == 25) && (this.e.equals(this.m)))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentAvAppSessionInfo;
+        localObject1 = this.l;
         if (localObject1 != null) {
-          this.jdField_b_of_type_JavaLangString = ((SessionInfo)localObject1).g;
+          this.e = ((SessionInfo)localObject1).w;
         }
         if (QLog.isColorLevel())
         {
-          localObject1 = this.jdField_a_of_type_JavaLangString;
+          localObject1 = this.b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("refreshUI mPeerName = ");
-          ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.e);
           QLog.w((String)localObject1, 2, ((StringBuilder)localObject2).toString());
         }
       }
     }
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar == null)
+    if (this.o == null)
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar = new VideoInviteFloatBar(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getApplicationContext());
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_JavaLangString);
+      this.o = new VideoInviteFloatBar(this.c.getApp().getApplicationContext());
+      this.o.a(this.f, this.e);
       localObject1 = new Date();
       localObject1 = new SimpleDateFormat("HH:mm").format((Date)localObject1);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.b((String)localObject1);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a(this.jdField_a_of_type_Boolean, AVUtil.b(this.jdField_b_of_type_Int), paramBoolean);
-      if (AVUtil.b(this.jdField_b_of_type_Int)) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, jdField_a_of_type_Int);
+      this.o.b((String)localObject1);
+      this.o.a(this.k, AVUtil.e(this.g), paramBoolean);
+      if (AVUtil.e(this.g)) {
+        this.c.a().postDelayed(this.r, a);
       }
     }
-    VibratorCompactUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), 200L);
+    VibratorCompactUtil.a(this.c.getApplication(), 200L);
   }
   
   void b()
   {
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    if (this.r != null)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
+      this.c.a().removeCallbacks(this.r);
+      this.r = null;
     }
   }
   

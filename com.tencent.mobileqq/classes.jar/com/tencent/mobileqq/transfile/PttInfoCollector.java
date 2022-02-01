@@ -43,7 +43,7 @@ public class PttInfoCollector
   
   private static void innerReportPttItemBuilderType(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80059B1", "0X80059B1", paramInt, 0, "", "", "", "8.7.0");
+    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80059B1", "0X80059B1", paramInt, 0, "", "", "", "8.8.17");
   }
   
   public static void reportCostUntilPrepare(int paramInt)
@@ -140,7 +140,7 @@ public class PttInfoCollector
     if (paramInt1 == 0) {
       paramInt1 = 9999;
     }
-    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1D", "0X8005C1D", paramInt1, paramInt2, "", "", "", "8.7.0");
+    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1D", "0X8005C1D", paramInt1, paramInt2, "", "", "", "8.8.17");
   }
   
   public static void reportPttSoUpdate(boolean paramBoolean, String paramString)
@@ -193,7 +193,7 @@ public class PttInfoCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.PttInfoCollector
  * JD-Core Version:    0.7.0.1
  */

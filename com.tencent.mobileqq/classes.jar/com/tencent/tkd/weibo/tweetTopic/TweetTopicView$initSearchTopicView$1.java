@@ -6,8 +6,8 @@ import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
+import com.tencent.tkd.topicsdk.mvp.BaseListView;
 import com.tencent.tkd.weibo.component.R.drawable;
-import com.tencent.tkd.weibo.framework.mvp.BaseListView;
 import com.tencent.tkd.weibo.tweetTopic.searchTopic.SearchTopicListModel;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -24,8 +24,8 @@ public final class TweetTopicView$initSearchTopicView$1
     localObject = ((Context)localObject).getResources().getDrawable(R.drawable.c);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "drawable");
     ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
-    TweetTopicView.a(this.a).setCompoundDrawables(TweetTopicView.a(this.a), null, (Drawable)localObject, null);
-    TweetTopicView.a(this.a);
+    TweetTopicView.b(this.a).setCompoundDrawables(TweetTopicView.c(this.a), null, (Drawable)localObject, null);
+    TweetTopicView.h(this.a);
   }
   
   public void afterTextChanged(@Nullable Editable paramEditable)
@@ -47,15 +47,15 @@ public final class TweetTopicView$initSearchTopicView$1
     }
     if (i != 0)
     {
-      TweetTopicView.a(this.a).setCompoundDrawables(TweetTopicView.a(this.a), null, null, null);
-      TweetTopicView.a(this.a).setVisibility(8);
+      TweetTopicView.b(this.a).setCompoundDrawables(TweetTopicView.c(this.a), null, null, null);
+      TweetTopicView.d(this.a).setVisibility(8);
       return;
     }
     a();
-    TweetTopicView.a(this.a).setVisibility(0);
-    TweetTopicView.a(this.a).a(paramEditable);
-    TweetTopicView.a(this.a).a(paramEditable);
-    TweetTopicView.a(this.a).a(Boolean.valueOf(false));
+    TweetTopicView.d(this.a).setVisibility(0);
+    TweetTopicView.e(this.a).a(paramEditable);
+    TweetTopicView.f(this.a).a(paramEditable);
+    TweetTopicView.g(this.a).a(Boolean.valueOf(false));
   }
   
   public void beforeTextChanged(@Nullable CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -64,7 +64,7 @@ public final class TweetTopicView$initSearchTopicView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.tweetTopic.TweetTopicView.initSearchTopicView.1
  * JD-Core Version:    0.7.0.1
  */

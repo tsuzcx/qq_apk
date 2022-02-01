@@ -88,12 +88,15 @@ public class MiniAppGeneralServlet
         if (localObject2 == null) {
           localObject1 = new byte[4];
         }
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(" cmdString:");
-        ((StringBuilder)localObject2).append(str1);
-        ((StringBuilder)localObject2).append("  traceId:");
-        ((StringBuilder)localObject2).append(str2);
-        QLog.e("MiniAppGetLoginCodeServlet", 2, ((StringBuilder)localObject2).toString());
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(" cmdString:");
+          ((StringBuilder)localObject2).append(str1);
+          ((StringBuilder)localObject2).append("  traceId:");
+          ((StringBuilder)localObject2).append(str2);
+          QLog.e("MiniAppGetLoginCodeServlet", 2, ((StringBuilder)localObject2).toString());
+        }
         paramPacket.setSSOCommand(str1);
         paramPacket.putSendData(WupUtil.a((byte[])localObject1));
         paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
@@ -107,7 +110,7 @@ public class MiniAppGeneralServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGeneralServlet
  * JD-Core Version:    0.7.0.1
  */

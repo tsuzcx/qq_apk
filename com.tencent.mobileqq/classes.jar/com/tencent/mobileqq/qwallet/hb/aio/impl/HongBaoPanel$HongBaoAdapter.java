@@ -27,66 +27,66 @@ import java.util.List;
 class HongBaoPanel$HongBaoAdapter
   extends RecyclerView.Adapter<HongBaoPanel.MyViewHolder>
 {
-  private HongBaoPanel.OnHolderItemClickListener jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$OnHolderItemClickListener;
-  private List<PanelData> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<PanelData> b = new ArrayList();
+  private HongBaoPanel.OnHolderItemClickListener c;
   
   HongBaoPanel$HongBaoAdapter(HongBaoPanel paramHongBaoPanel) {}
   
   public HongBaoPanel.MyViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    HongBaoPanel localHongBaoPanel = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel;
-    return new HongBaoPanel.MyViewHolder(localHongBaoPanel, LayoutInflater.from(localHongBaoPanel.jdField_a_of_type_AndroidContentContext).inflate(R.layout.c, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$OnHolderItemClickListener);
+    HongBaoPanel localHongBaoPanel = this.a;
+    return new HongBaoPanel.MyViewHolder(localHongBaoPanel, LayoutInflater.from(localHongBaoPanel.b).inflate(R.layout.c, paramViewGroup, false), this.c);
   }
   
   public PanelData a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if ((localList != null) && (localList.size() > 0) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-      return (PanelData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    List localList = this.b;
+    if ((localList != null) && (localList.size() > 0) && (this.b.size() > paramInt)) {
+      return (PanelData)this.b.get(paramInt);
     }
     return null;
   }
   
   public List<PanelData> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.b;
   }
   
   public void a(HongBaoPanel.MyViewHolder paramMyViewHolder, int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.b;
     if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() <= paramInt) {
+      if (this.b.size() <= paramInt) {
         return;
       }
-      localObject1 = (PanelData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel;
-      Object localObject3 = paramMyViewHolder.jdField_a_of_type_AndroidWidgetTextView;
-      String str = ((PanelData)this.jdField_a_of_type_JavaUtilList.get(paramInt)).b;
+      localObject1 = (PanelData)this.b.get(paramInt);
+      Object localObject2 = this.a;
+      Object localObject3 = paramMyViewHolder.c;
+      String str = ((PanelData)this.b.get(paramInt)).c;
       int i;
-      if (HongBaoPanel.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel).equals("#5B6175")) {
-        i = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel.jdField_a_of_type_AndroidContentContext.getResources().getColor(R.color.j);
+      if (HongBaoPanel.c(this.a).equals("#5B6175")) {
+        i = this.a.b.getResources().getColor(R.color.j);
       } else {
-        i = Color.parseColor(HongBaoPanel.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel));
+        i = Color.parseColor(HongBaoPanel.c(this.a));
       }
       HongBaoPanel.a((HongBaoPanel)localObject2, (TextView)localObject3, str, i, 0);
-      paramMyViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(R.drawable.m);
-      if (!StringUtil.a(((PanelData)localObject1).c))
+      paramMyViewHolder.b.setImageResource(R.drawable.m);
+      if (!StringUtil.isEmpty(((PanelData)localObject1).d))
       {
-        paramMyViewHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(((PanelData)localObject1).c);
-        localObject2 = HongBaoPanel.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel, paramInt, ((PanelData)localObject1).c, paramMyViewHolder.jdField_a_of_type_AndroidWidgetImageView);
+        paramMyViewHolder.b.setTag(((PanelData)localObject1).d);
+        localObject2 = HongBaoPanel.a(this.a, paramInt, ((PanelData)localObject1).d, paramMyViewHolder.b);
         if ((localObject2 != null) && (((RedPacketInfo)localObject2).icon != null)) {
-          paramMyViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(((RedPacketInfo)localObject2).icon);
+          paramMyViewHolder.b.setImageBitmap(((RedPacketInfo)localObject2).icon);
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel.jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService != null)
+      if (this.a.k != null)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel.jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService.getShowInfo(((PanelData)localObject1).jdField_a_of_type_JavaLangString);
+        localObject1 = this.a.k.getShowInfo(((PanelData)localObject1).a);
         if (localObject1 != null)
         {
-          localObject2 = paramMyViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout;
-          if (((IQWalletRedService.ShowInfo)localObject1).jdField_a_of_type_Boolean) {
+          localObject2 = paramMyViewHolder.e;
+          if (((IQWalletRedService.ShowInfo)localObject1).a) {
             paramInt = 0;
           } else {
             paramInt = 8;
@@ -94,7 +94,7 @@ class HongBaoPanel$HongBaoAdapter
           ((RelativeLayout)localObject2).setVisibility(paramInt);
           if (((IQWalletRedService.ShowInfo)localObject1).b)
           {
-            paramMyViewHolder.b.setVisibility(0);
+            paramMyViewHolder.d.setVisibility(0);
             try
             {
               localObject2 = new ColorDrawable(0);
@@ -102,8 +102,8 @@ class HongBaoPanel$HongBaoAdapter
               localObject3 = URLDrawable.URLDrawableOptions.obtain();
               ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject2);
               ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject2);
-              localObject1 = URLDrawable.getDrawable(((IQWalletRedService.ShowInfo)localObject1).jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject3);
-              paramMyViewHolder.b.setImageDrawable((Drawable)localObject1);
+              localObject1 = URLDrawable.getDrawable(((IQWalletRedService.ShowInfo)localObject1).c, (URLDrawable.URLDrawableOptions)localObject3);
+              paramMyViewHolder.d.setImageDrawable((Drawable)localObject1);
               return;
             }
             catch (Throwable paramMyViewHolder)
@@ -112,7 +112,7 @@ class HongBaoPanel$HongBaoAdapter
               return;
             }
           }
-          paramMyViewHolder.b.setVisibility(8);
+          paramMyViewHolder.d.setVisibility(8);
         }
       }
     }
@@ -120,7 +120,7 @@ class HongBaoPanel$HongBaoAdapter
   
   public void a(HongBaoPanel.OnHolderItemClickListener paramOnHolderItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$OnHolderItemClickListener = paramOnHolderItemClickListener;
+    this.c = paramOnHolderItemClickListener;
   }
   
   public void a(List<PanelData> paramList)
@@ -130,15 +130,15 @@ class HongBaoPanel$HongBaoAdapter
       if (paramList.size() <= 0) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.b.clear();
+      this.b.addAll(paramList);
       notifyDataSetChanged();
     }
   }
   
   public int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       return localList.size();
     }
@@ -147,7 +147,7 @@ class HongBaoPanel$HongBaoAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanel.HongBaoAdapter
  * JD-Core Version:    0.7.0.1
  */

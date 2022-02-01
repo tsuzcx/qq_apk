@@ -21,11 +21,11 @@ import mqq.app.AppRuntime;
 public class EcshopTabFragment
   extends QPublicBaseFragment
 {
-  private static final String b = "EcshopTabFragment";
+  private static final String d = "EcshopTabFragment";
   public int a;
-  public EcshopNewPageWebViewBuilder a;
-  private EcshopWebview a;
-  public String a;
+  public String b;
+  public EcshopNewPageWebViewBuilder c;
+  private EcshopWebview e;
   
   public static AppInterface a()
   {
@@ -38,31 +38,31 @@ public class EcshopTabFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopWebview = EcshopWebviewPool.a().a(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopWebview.getParent() instanceof ViewGroup)) {
-      ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopWebview.getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopWebview);
+    this.e = EcshopWebviewPool.a().a(paramView.getContext(), this.b);
+    if ((this.e.getParent() instanceof ViewGroup)) {
+      ((ViewGroup)this.e.getParent()).removeView(this.e);
     }
-    paramView = (RefreshView)paramView.findViewById(2131366020);
+    paramView = (RefreshView)paramView.findViewById(2131432295);
     paramView.setDelayBeforeScrollBack(500L);
-    this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopWebview.setOnOverScrollHandler(paramView);
-    paramView.addView(this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopWebview, new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopNewPageWebViewBuilder = new EcshopTabFragment.1(this, getActivity(), getActivity(), a(), this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopWebview, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopNewPageWebViewBuilder.setTimeBeforeLoadUrl(System.currentTimeMillis());
-    new WebViewDirector(this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopNewPageWebViewBuilder).a(null, a(), null);
-    this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopWebview.setWillNotCacheDrawing(false);
-    this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopWebview.setDrawingCacheEnabled(true);
-    if ((this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopWebview != null) && (!StringUtil.a(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopWebview.loadUrl(this.jdField_a_of_type_JavaLangString);
+    this.e.setOnOverScrollHandler(paramView);
+    paramView.addView(this.e, new ViewGroup.LayoutParams(-1, -1));
+    this.c = new EcshopTabFragment.1(this, getActivity(), getActivity(), a(), this.e, this.b);
+    this.c.setTimeBeforeLoadUrl(System.currentTimeMillis());
+    new WebViewDirector(this.c).a(null, a(), null);
+    this.e.setWillNotCacheDrawing(false);
+    this.e.setDrawingCacheEnabled(true);
+    if ((this.e != null) && (!StringUtil.isEmpty(this.b))) {
+      this.e.loadUrl(this.b);
     }
   }
   
   public void a(int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(b, 2, "【setData】");
+      QLog.i(d, 2, "【setData】");
     }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public boolean a(EcshopTabFragment paramEcshopTabFragment)
@@ -72,10 +72,10 @@ public class EcshopTabFragment
       return false;
     }
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaLangString.equals(paramEcshopTabFragment.jdField_a_of_type_JavaLangString))
+    if (this.b.equals(paramEcshopTabFragment.b))
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_Int == paramEcshopTabFragment.jdField_a_of_type_Int) {
+      if (this.a == paramEcshopTabFragment.a) {
         bool1 = true;
       }
     }
@@ -84,7 +84,7 @@ public class EcshopTabFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561894, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131628312, paramViewGroup, false);
     a(paramLayoutInflater);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -93,7 +93,7 @@ public class EcshopTabFragment
   public void onDestroy()
   {
     super.onDestroy();
-    EcshopNewPageWebViewBuilder localEcshopNewPageWebViewBuilder = this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopNewPageWebViewBuilder;
+    EcshopNewPageWebViewBuilder localEcshopNewPageWebViewBuilder = this.c;
     if (localEcshopNewPageWebViewBuilder != null) {
       localEcshopNewPageWebViewBuilder.c();
     }
@@ -101,7 +101,7 @@ public class EcshopTabFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.widget.EcshopTabFragment
  * JD-Core Version:    0.7.0.1
  */

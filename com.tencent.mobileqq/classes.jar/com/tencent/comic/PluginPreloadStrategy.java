@@ -30,16 +30,16 @@ import mqq.app.AppRuntime;
 public class PluginPreloadStrategy
 {
   public IQQComicPluginPreloadStrategy.PluginPreloadInfo a;
-  private final IQQComicPluginPreloadStrategy a;
+  private final IQQComicPluginPreloadStrategy b;
   
   public PluginPreloadStrategy(IQQComicPluginPreloadStrategy paramIQQComicPluginPreloadStrategy)
   {
-    this.jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy = paramIQQComicPluginPreloadStrategy;
+    this.b = paramIQQComicPluginPreloadStrategy;
     if (paramIQQComicPluginPreloadStrategy != null) {
-      this.jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo = IQQComicPluginPreloadStrategy.jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo;
+      this.a = IQQComicPluginPreloadStrategy.b;
     }
-    if (this.jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo == null) {
-      this.jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy$PluginPreloadInfo = new IQQComicPluginPreloadStrategy.PluginPreloadInfo();
+    if (this.a == null) {
+      this.a = new IQQComicPluginPreloadStrategy.PluginPreloadInfo();
     }
   }
   
@@ -141,7 +141,7 @@ public class PluginPreloadStrategy
         {
           k = i1;
           n = i;
-          if (paramAppRuntime.a())
+          if (paramAppRuntime.b())
           {
             k = 1;
             n = i;
@@ -193,8 +193,8 @@ public class PluginPreloadStrategy
   {
     if (paramExtraResult != null)
     {
-      paramExtraResult.jdField_a_of_type_Int = 2;
-      paramExtraResult.jdField_a_of_type_JavaLangString = paramString;
+      paramExtraResult.a = 2;
+      paramExtraResult.b = paramString;
     }
     if (QLog.isColorLevel())
     {
@@ -218,59 +218,59 @@ public class PluginPreloadStrategy
     if (paramPreloadPublicParam == null) {
       return false;
     }
-    if ((paramPreloadPublicParam.jdField_h_of_type_Boolean) && (!a(paramString2, paramAppRuntime)))
+    if ((paramPreloadPublicParam.l) && (!a(paramString2, paramAppRuntime)))
     {
       a(paramExtraResult, "preload:fail:notinleba");
       return false;
     }
-    if (paramPreloadPublicParam.jdField_b_of_type_Boolean)
+    if (paramPreloadPublicParam.e)
     {
       int i = a(paramAppRuntime, paramString1);
-      if ((paramPreloadPublicParam.jdField_c_of_type_Boolean) && (i == 4))
+      if ((paramPreloadPublicParam.f) && (i == 4))
       {
         a(paramExtraResult, "preload:ok:reddotonly");
         return true;
       }
-      if ((paramPreloadPublicParam.jdField_d_of_type_Boolean) && ((i == 1) || (i == 4)))
+      if ((paramPreloadPublicParam.g) && ((i == 1) || (i == 4)))
       {
         a(paramExtraResult, "preload:ok:reddot");
         return true;
       }
-      if ((paramPreloadPublicParam.jdField_e_of_type_Boolean) && (i == 2))
+      if ((paramPreloadPublicParam.h) && (i == 2))
       {
         a(paramExtraResult, "preload:fail:lebareddot");
         return false;
       }
     }
-    if ((paramPreloadPublicParam.a) && (!a(paramPreloadPublicParam.jdField_b_of_type_Int, paramPreloadPublicParam.jdField_c_of_type_Int)))
+    if ((paramPreloadPublicParam.b) && (!a(paramPreloadPublicParam.c, paramPreloadPublicParam.d)))
     {
       a(paramExtraResult, "preload:fail:timecontrol");
       return false;
     }
-    if ((paramPreloadPublicParam.j) && (paramInt < paramPreloadPublicParam.jdField_f_of_type_Int))
+    if ((paramPreloadPublicParam.o) && (paramInt < paramPreloadPublicParam.p))
     {
       a(paramExtraResult, "preload:fail:usedtimeslimit");
       return false;
     }
-    if (paramPreloadPublicParam.jdField_i_of_type_Boolean)
+    if (paramPreloadPublicParam.m)
     {
-      long l = paramPreloadPublicParam.jdField_e_of_type_Int * 60 * 60 * 1000;
+      long l = paramPreloadPublicParam.n * 60 * 60 * 1000;
       if (System.currentTimeMillis() - paramLong > l)
       {
         a(paramExtraResult, "preload:fail:notactive");
         return false;
       }
     }
-    if (paramPreloadPublicParam.jdField_f_of_type_Boolean)
+    if (paramPreloadPublicParam.i)
     {
-      if ((System.currentTimeMillis() - paramLong) / 1000L <= paramPreloadPublicParam.jdField_d_of_type_Int) {
+      if ((System.currentTimeMillis() - paramLong) / 1000L <= paramPreloadPublicParam.j) {
         paramInt = 1;
       } else {
         paramInt = 0;
       }
       if (paramInt != 0)
       {
-        if (paramPreloadPublicParam.jdField_g_of_type_Boolean)
+        if (paramPreloadPublicParam.k)
         {
           a(paramExtraResult, "preload:ok:cdperiod");
           return true;
@@ -279,7 +279,7 @@ public class PluginPreloadStrategy
         return false;
       }
     }
-    if ((paramPreloadPublicParam.k) && (paramPreloadPublicParam.jdField_g_of_type_Int > 0) && (!a(paramString1, paramAppRuntime.getCurrentAccountUin(), paramPreloadPublicParam.jdField_g_of_type_Int, paramArrayOfInt, paramPreloadPublicParam.jdField_h_of_type_Int, paramPreloadPublicParam.jdField_i_of_type_Int)))
+    if ((paramPreloadPublicParam.q) && (paramPreloadPublicParam.r > 0) && (!a(paramString1, paramAppRuntime.getCurrentAccountUin(), paramPreloadPublicParam.r, paramArrayOfInt, paramPreloadPublicParam.s, paramPreloadPublicParam.t)))
     {
       a(paramExtraResult, "preload:fail:notinuserlearn");
       return false;
@@ -382,7 +382,7 @@ public class PluginPreloadStrategy
       while (paramAppRuntime.hasNext())
       {
         LebaViewItem localLebaViewItem = (LebaViewItem)paramAppRuntime.next();
-        if ((localLebaViewItem != null) && (localLebaViewItem.a != null) && (localLebaViewItem.a.strPkgName != null) && (localLebaViewItem.a.strPkgName.contains(paramString))) {
+        if ((localLebaViewItem != null) && (localLebaViewItem.b != null) && (localLebaViewItem.b.strPkgName != null) && (localLebaViewItem.b.strPkgName.contains(paramString))) {
           return true;
         }
       }
@@ -408,7 +408,7 @@ public class PluginPreloadStrategy
           if (paramInt2 != 2) {
             return null;
           }
-          return ((PluginPreloadStrategy.KMeans)localObject).a(paramArrayOfInt, paramInt1);
+          return ((PluginPreloadStrategy.KMeans)localObject).b(paramArrayOfInt, paramInt1);
         }
         paramInt2 = ((PluginPreloadStrategy.KMeans)localObject).a(paramArrayOfInt, paramInt1);
         if (paramInt2 == -1) {
@@ -445,23 +445,15 @@ public class PluginPreloadStrategy
   
   protected void a()
   {
-    IQQComicPluginPreloadStrategy localIQQComicPluginPreloadStrategy = this.jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy;
+    IQQComicPluginPreloadStrategy localIQQComicPluginPreloadStrategy = this.b;
     if (localIQQComicPluginPreloadStrategy != null) {
       localIQQComicPluginPreloadStrategy.a();
     }
   }
   
-  public void a(IQQComicPluginUtil.ExtraResult paramExtraResult)
-  {
-    IQQComicPluginPreloadStrategy localIQQComicPluginPreloadStrategy = this.jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy;
-    if (localIQQComicPluginPreloadStrategy != null) {
-      localIQQComicPluginPreloadStrategy.a(paramExtraResult);
-    }
-  }
-  
   protected boolean a(IQQComicPluginUtil.ExtraResult paramExtraResult)
   {
-    IQQComicPluginPreloadStrategy localIQQComicPluginPreloadStrategy = this.jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy;
+    IQQComicPluginPreloadStrategy localIQQComicPluginPreloadStrategy = this.b;
     if (localIQQComicPluginPreloadStrategy != null) {
       return localIQQComicPluginPreloadStrategy.a(paramExtraResult);
     }
@@ -470,16 +462,24 @@ public class PluginPreloadStrategy
   
   protected boolean b(IQQComicPluginUtil.ExtraResult paramExtraResult)
   {
-    IQQComicPluginPreloadStrategy localIQQComicPluginPreloadStrategy = this.jdField_a_of_type_ComTencentComicApiPluginIQQComicPluginPreloadStrategy;
+    IQQComicPluginPreloadStrategy localIQQComicPluginPreloadStrategy = this.b;
     if (localIQQComicPluginPreloadStrategy != null) {
       localIQQComicPluginPreloadStrategy.b(paramExtraResult);
     }
     return true;
   }
+  
+  public void c(IQQComicPluginUtil.ExtraResult paramExtraResult)
+  {
+    IQQComicPluginPreloadStrategy localIQQComicPluginPreloadStrategy = this.b;
+    if (localIQQComicPluginPreloadStrategy != null) {
+      localIQQComicPluginPreloadStrategy.c(paramExtraResult);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.PluginPreloadStrategy
  * JD-Core Version:    0.7.0.1
  */

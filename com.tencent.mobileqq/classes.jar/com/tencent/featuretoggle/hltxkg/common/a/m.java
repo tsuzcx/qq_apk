@@ -11,18 +11,18 @@ final class m
   {
     try
     {
-      this.jdField_a_of_type_ArrayOfBoolean[0] = l.b();
+      this.a[0] = l.b();
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.b.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.a.m
  * JD-Core Version:    0.7.0.1
  */

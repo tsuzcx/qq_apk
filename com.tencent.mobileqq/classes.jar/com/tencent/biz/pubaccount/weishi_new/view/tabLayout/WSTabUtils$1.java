@@ -10,27 +10,27 @@ final class WSTabUtils$1
   
   public void a()
   {
-    WSPublicAccReport.getInstance().reportTabLiveBtnClick(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1000003);
+    WSPublicAccReport.getInstance().reportTabLiveBtnClick(this.a, this.b, 1000003);
   }
   
   public void b()
   {
-    WSPublicAccReport.getInstance().reportTabLiveBtnClick(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1000007);
+    WSPublicAccReport.getInstance().reportTabLiveBtnClick(this.a, this.b, 1000007);
   }
   
   public void c()
   {
-    WSPublicAccReport.getInstance().reportTabLiveBtnClick(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1000004);
+    WSPublicAccReport.getInstance().reportTabLiveBtnClick(this.a, this.b, 1000004);
   }
   
   public void d()
   {
-    WSPublicAccReport.getInstance().reportTabLiveBtnClick(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1000002);
+    WSPublicAccReport.getInstance().reportTabLiveBtnClick(this.a, this.b, 1000002);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabUtils.1
  * JD-Core Version:    0.7.0.1
  */

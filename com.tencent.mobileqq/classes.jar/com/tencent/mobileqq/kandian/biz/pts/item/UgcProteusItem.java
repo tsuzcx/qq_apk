@@ -69,8 +69,8 @@ public class UgcProteusItem
   public JSONObject a(int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     long l;
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.a != null)) {
-      l = paramAbsBaseArticleInfo.mSocialFeedInfo.a.a;
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null)) {
+      l = paramAbsBaseArticleInfo.mSocialFeedInfo.s.e;
     } else {
       l = 0L;
     }
@@ -84,7 +84,7 @@ public class UgcProteusItem
     if (localReadInJoyMiddleBodyView != null)
     {
       NativeMiddleBodyView localNativeMiddleBodyView = (NativeMiddleBodyView)localReadInJoyMiddleBodyView.getNativeView();
-      if (localNativeMiddleBodyView.a() == null)
+      if (localNativeMiddleBodyView.getContent() == null)
       {
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         localReadInJoyMiddleBodyView.a(localLayoutParams);
@@ -104,7 +104,7 @@ public class UgcProteusItem
     if (paramContainer != null) {
       paramContainer.a(paramIReadInJoyModel);
     }
-    BindViewHelper.a(localViewBase, paramIReadInJoyModel.a());
+    BindViewHelper.a(localViewBase, paramIReadInJoyModel.k());
     Util.a(localViewBase, paramIReadInJoyModel);
     BindViewHelper.b(localViewBase, paramIReadInJoyModel);
     BindViewHelper.c(localViewBase, paramIReadInJoyModel);
@@ -112,12 +112,12 @@ public class UgcProteusItem
   
   protected void a(int paramInt, IReadInJoyModel paramIReadInJoyModel, NativeMiddleBodyView paramNativeMiddleBodyView)
   {
-    if (paramNativeMiddleBodyView.a() != null)
+    if (paramNativeMiddleBodyView.getContent() != null)
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.u() == null) {
         return;
       }
-      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.a();
+      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.u();
       if (paramInt != 22)
       {
         if (paramInt != 23) {
@@ -137,26 +137,26 @@ public class UgcProteusItem
               }
             }
             else {
-              ((ComponentContentUGCVoice)paramNativeMiddleBodyView.a()).a(paramIReadInJoyModel);
+              ((ComponentContentUGCVoice)paramNativeMiddleBodyView.getContent()).a(paramIReadInJoyModel);
             }
           }
           else
           {
-            paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
+            paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.getContent();
             ComponentContentGridImage localComponentContentGridImage = (ComponentContentGridImage)paramNativeMiddleBodyView;
             localComponentContentGridImage.setMIReadInJoyModel(paramIReadInJoyModel);
-            paramNativeMiddleBodyView.a(ComponentContentGridImage.a(paramIReadInJoyModel.a()));
+            paramNativeMiddleBodyView.a(ComponentContentGridImage.a(paramIReadInJoyModel.k()));
             localComponentContentGridImage.setOnNoItemClickListener(new UgcProteusItem.1(this, paramIReadInJoyModel, localReadInJoyBaseAdapter));
             return;
           }
         }
-        paramNativeMiddleBodyView = (ComponentContentUgcVideo)paramNativeMiddleBodyView.a();
+        paramNativeMiddleBodyView = (ComponentContentUgcVideo)paramNativeMiddleBodyView.getContent();
         paramNativeMiddleBodyView.a(paramIReadInJoyModel);
         ((ComponentContentUgcVideo)paramNativeMiddleBodyView).setOnClickListener(new UgcProteusItem.2(this, paramInt, localReadInJoyBaseAdapter, paramIReadInJoyModel));
         return;
       }
       label201:
-      ((ComponentContentUgcImage)paramNativeMiddleBodyView.a()).a(paramIReadInJoyModel);
+      ((ComponentContentUgcImage)paramNativeMiddleBodyView.getContent()).a(paramIReadInJoyModel);
     }
   }
   
@@ -167,7 +167,7 @@ public class UgcProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.UgcProteusItem
  * JD-Core Version:    0.7.0.1
  */

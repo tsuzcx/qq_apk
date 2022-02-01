@@ -27,35 +27,20 @@ import java.util.regex.Pattern;
 public class SearchBaseActivity
   extends BaseActivity
 {
-  public static final Pattern a;
-  public static final Pattern b = Pattern.compile("[^0-9]");
-  public static final Pattern c = Pattern.compile("^1[0-9]{2}\\d{8}$");
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new SearchBaseActivity.5(this);
-  Button jdField_a_of_type_AndroidWidgetButton;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  SearchBaseFragment jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment;
-  protected String d;
-  public final int g = 64;
-  protected int h;
-  protected int i;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})$", 2);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  protected SearchBaseFragment a()
-  {
-    return new SearchBaseFragment();
-  }
+  public static final Pattern C = Pattern.compile("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})$", 2);
+  public static final Pattern D = Pattern.compile("[^0-9]");
+  public static final Pattern E = Pattern.compile("^1[0-9]{2}\\d{8}$");
+  public final int B = 64;
+  protected String F;
+  protected int G;
+  protected int H;
+  Button I;
+  ImageButton J;
+  EditText K;
+  ImageView L;
+  SearchBaseFragment M;
+  private int a;
+  private Handler b = new SearchBaseActivity.5(this);
   
   protected boolean a(boolean paramBoolean, View paramView)
   {
@@ -81,39 +66,44 @@ public class SearchBaseActivity
     Intent localIntent = getIntent();
     if (localIntent.hasExtra("from_key"))
     {
-      this.h = localIntent.getIntExtra("from_key", 0);
-      this.d = localIntent.getStringExtra("last_key_words");
-      this.jdField_a_of_type_Int = localIntent.getIntExtra("jump_src_key", 1);
+      this.G = localIntent.getIntExtra("from_key", 0);
+      this.F = localIntent.getStringExtra("last_key_words");
+      this.a = localIntent.getIntExtra("jump_src_key", 1);
     }
     if (localIntent.hasExtra("fromType")) {
-      this.i = localIntent.getIntExtra("fromType", -1);
+      this.H = localIntent.getIntExtra("fromType", -1);
     }
   }
   
   protected void c()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363868));
-    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131167064));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new SearchBaseActivity.1(this));
-    if (AppSetting.d)
+    this.I = ((Button)findViewById(2131429816));
+    this.I.setTextColor(getResources().getColor(2131168002));
+    this.I.setOnClickListener(new SearchBaseActivity.1(this));
+    if (AppSetting.e)
     {
-      Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
+      Button localButton = this.I;
       localButton.setContentDescription(localButton.getText());
     }
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366333));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(getResources().getString(2131689667));
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(64) });
-    this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(0, getResources().getDimension(2131299108));
-    this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new SearchBaseActivity.2(this));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368340));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new SearchBaseActivity.3(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369289));
-    if (AppSetting.d) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131713529));
+    this.K = ((EditText)findViewById(2131432634));
+    this.K.setHint(getResources().getString(2131886278));
+    this.K.setFilters(new InputFilter[] { new InputFilter.LengthFilter(64) });
+    this.K.setTextSize(0, getResources().getDimension(2131299845));
+    this.K.setImeOptions(3);
+    this.K.setSingleLine();
+    this.K.setOnEditorActionListener(new SearchBaseActivity.2(this));
+    this.J = ((ImageButton)findViewById(2131435215));
+    this.J.setOnClickListener(new SearchBaseActivity.3(this));
+    this.L = ((ImageView)findViewById(2131436275));
+    if (AppSetting.e) {
+      this.L.setContentDescription(HardCodeUtil.a(2131901576));
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new SearchBaseActivity.4(this));
+    this.L.setOnClickListener(new SearchBaseActivity.4(this));
+  }
+  
+  protected SearchBaseFragment d()
+  {
+    return new SearchBaseFragment();
   }
   
   @Override
@@ -129,28 +119,28 @@ public class SearchBaseActivity
   {
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561419);
-    paramBundle = super.findViewById(2131376809);
+    super.setContentView(2131627775);
+    paramBundle = super.findViewById(2131445137);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       paramBundle.setFitsSystemWindows(true);
     }
     super.getWindow().setBackgroundDrawable(null);
     b();
     c();
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment = a();
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment;
+    this.M = d();
+    paramBundle = this.M;
     if ((paramBundle instanceof ClassificationSearchFragment)) {
-      ((ClassificationSearchFragment)paramBundle).a(this.i);
+      ((ClassificationSearchFragment)paramBundle).b(this.H);
     }
     paramBundle = new Bundle();
-    paramBundle.putInt("from_key", this.h);
-    paramBundle.putString("last_key_words", this.d);
+    paramBundle.putInt("from_key", this.G);
+    paramBundle.putString("last_key_words", this.F);
     paramBundle.putString("start_search_key", getIntent().getStringExtra("start_search_key"));
     paramBundle.putBoolean("auto_add_and_prohibit_auto_search", getIntent().getBooleanExtra("auto_add_and_prohibit_auto_search", false));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.setArguments(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.jdField_a_of_type_AndroidOsHandler);
+    this.M.setArguments(paramBundle);
+    this.M.a(this.b);
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131365132, this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment);
+    paramBundle.replace(2131431280, this.M);
     paramBundle.commit();
     return true;
   }
@@ -158,13 +148,18 @@ public class SearchBaseActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    ViewFactory.a().a();
+    ViewFactory.a().b();
   }
   
   protected void doOnResume()
   {
     super.doOnResume();
-    setContentBackgroundResource(2130838740);
+    setContentBackgroundResource(2130838959);
+  }
+  
+  public int f()
+  {
+    return this.a;
   }
   
   @Override
@@ -181,7 +176,7 @@ public class SearchBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity
  * JD-Core Version:    0.7.0.1
  */

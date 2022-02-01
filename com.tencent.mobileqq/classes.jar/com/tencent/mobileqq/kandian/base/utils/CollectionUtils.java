@@ -6,23 +6,6 @@ import java.util.List;
 
 public class CollectionUtils
 {
-  public static <T> int a(Iterable<T> paramIterable, CollectionUtils.IPredicate<T> paramIPredicate)
-  {
-    if (paramIterable != null)
-    {
-      int i = 0;
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        if (paramIPredicate.a(paramIterable.next())) {
-          return i;
-        }
-        i += 1;
-      }
-    }
-    return -1;
-  }
-  
   public static <T, E> List<E> a(Iterable<T> paramIterable, CollectionUtils.IAction<T, E> paramIAction)
   {
     ArrayList localArrayList = new ArrayList();
@@ -52,10 +35,27 @@ public class CollectionUtils
     }
     return localArrayList;
   }
+  
+  public static <T> int b(Iterable<T> paramIterable, CollectionUtils.IPredicate<T> paramIPredicate)
+  {
+    if (paramIterable != null)
+    {
+      int i = 0;
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext())
+      {
+        if (paramIPredicate.a(paramIterable.next())) {
+          return i;
+        }
+        i += 1;
+      }
+    }
+    return -1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.CollectionUtils
  * JD-Core Version:    0.7.0.1
  */

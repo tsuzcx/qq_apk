@@ -12,14 +12,14 @@ public final class ReportInfo
   implements Parcelable
 {
   public static final ReportInfo.CREATOR CREATOR = new ReportInfo.CREATOR(null);
-  private final int jdField_a_of_type_Int;
+  private final int a;
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
+  private final String b;
   
   public ReportInfo(int paramInt, @NotNull String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public ReportInfo(@NotNull Parcel paramParcel)
@@ -29,13 +29,13 @@ public final class ReportInfo
   
   public final int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   @NotNull
-  public final String a()
+  public final String b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
   
   public int describeContents()
@@ -49,7 +49,7 @@ public final class ReportInfo
       if ((paramObject instanceof ReportInfo))
       {
         paramObject = (ReportInfo)paramObject;
-        if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString))) {}
+        if ((this.a == paramObject.a) && (Intrinsics.areEqual(this.b, paramObject.b))) {}
       }
       else
       {
@@ -61,8 +61,8 @@ public final class ReportInfo
   
   public int hashCode()
   {
-    int j = this.jdField_a_of_type_Int;
-    String str = this.jdField_a_of_type_JavaLangString;
+    int j = this.a;
+    String str = this.b;
     int i;
     if (str != null) {
       i = str.hashCode();
@@ -77,9 +77,9 @@ public final class ReportInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReportInfo(type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", reportText=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
@@ -87,13 +87,13 @@ public final class ReportInfo
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeString(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.danmaku.ReportInfo
  * JD-Core Version:    0.7.0.1
  */

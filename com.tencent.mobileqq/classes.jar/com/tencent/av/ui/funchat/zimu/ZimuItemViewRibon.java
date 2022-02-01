@@ -13,9 +13,9 @@ import java.util.Random;
 public class ZimuItemViewRibon
   extends ZimuItemViewMotion
 {
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int j = 0;
+  Random t = new Random();
+  private int[] u;
+  private int v = 0;
   
   public ZimuItemViewRibon(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
   {
@@ -25,44 +25,44 @@ public class ZimuItemViewRibon
     Double.isNaN(d);
     int i = (int)(d / 3.8D);
     Double.isNaN(d);
-    int k = (int)(d / 3.6D);
+    int j = (int)(d / 3.6D);
     Double.isNaN(d);
-    int m = (int)(d / 3.4D);
+    int k = (int)(d / 3.4D);
     Double.isNaN(d);
-    int n = (int)(d / 3.2D);
+    int m = (int)(d / 3.2D);
     paramInt1 /= 3;
     Double.isNaN(d);
-    int i1 = (int)(d / 2.8D);
+    int n = (int)(d / 2.8D);
     Double.isNaN(d);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { paramInt2, i, k, m, n, paramInt1, i1, (int)(d / 2.6D) };
-    paramInt1 = this.jdField_a_of_type_JavaUtilRandom.nextInt(8);
-    this.j = this.jdField_a_of_type_ArrayOfInt[paramInt1];
+    this.u = new int[] { paramInt2, i, j, k, m, paramInt1, n, (int)(d / 2.6D) };
+    paramInt1 = this.t.nextInt(8);
+    this.v = this.u[paramInt1];
   }
   
   protected int a(int paramInt)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getSPEED: ");
-    localStringBuilder.append(this.j);
+    localStringBuilder.append(this.v);
     AVLog.printColorLog(str, localStringBuilder.toString());
-    return this.j;
+    return this.v;
   }
   
   protected void a(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_ComTencentAvUiFunchatZimuIZimuItemView$FontPara.b);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_ComTencentAvUiFunchatZimuIZimuItemView$FontPara.jdField_a_of_type_Float);
-    float f1 = -this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent;
-    paramCanvas.drawText((String)this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo.a, 0.0F, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_ComTencentAvUiFunchatZimuIZimuItemView$FontPara.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFakeBoldText(false);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(0.0F);
-    float f2 = this.jdField_a_of_type_ComTencentAvUiFunchatZimuIZimuItemView$FontPara.jdField_a_of_type_Float / 6.0F;
-    paramCanvas.drawText((String)this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo.a, 0.0F + f2, f1 - f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.o.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.o.setColor(this.b.b);
+    this.o.setFakeBoldText(true);
+    this.o.setStrokeWidth(this.b.c);
+    float f1 = -this.o.getFontMetrics().ascent;
+    paramCanvas.drawText((String)this.l.b, 0.0F, f1, this.o);
+    this.o.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.o.setColor(this.b.a);
+    this.o.setFakeBoldText(false);
+    this.o.setStrokeWidth(0.0F);
+    float f2 = this.b.c / 6.0F;
+    paramCanvas.drawText((String)this.l.b, 0.0F + f2, f1 - f2, this.o);
   }
 }
 

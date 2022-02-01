@@ -20,7 +20,7 @@ class QQAssistantGuider$5
     ReportController.b(null, "dc00898", "", "", "0X800B44D", "0X800B44D", 2, 0, "", "", "", "");
     try
     {
-      AssistantSwitchImpl.a(AssistantUtils.a(), true);
+      AssistantSwitchImpl.a(AssistantUtils.c(), true);
       WakeManager.a().a(true);
     }
     catch (Exception localException)
@@ -30,19 +30,19 @@ class QQAssistantGuider$5
       localStringBuilder.append(localException.getMessage());
       AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
       ReportController.b(null, "dc00898", "", "", "0X800B44E", "0X800B44E", 1, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqQassistantWakeQQAssistantGuider.jdField_a_of_type_MqqAppAppActivity.requestPermissions(new QQAssistantGuider.5.1(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+      this.c.e.requestPermissions(new QQAssistantGuider.5.1(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
     }
     if (!this.b)
     {
       ReportController.b(null, "dc00898", "", "", "0X800B44E", "0X800B44E", 2, 0, "", "", "", "");
-      ((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).requestPermission(this.jdField_a_of_type_ComTencentMobileqqQassistantWakeQQAssistantGuider.jdField_a_of_type_MqqAppAppActivity);
+      ((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).requestPermission(this.c.e);
     }
-    QQAssistantGuider localQQAssistantGuider = this.jdField_a_of_type_ComTencentMobileqqQassistantWakeQQAssistantGuider;
-    localQQAssistantGuider.jdField_a_of_type_Int = -1;
-    if (!this.jdField_a_of_type_Boolean) {
+    QQAssistantGuider localQQAssistantGuider = this.c;
+    localQQAssistantGuider.g = -1;
+    if (!this.a) {
       localQQAssistantGuider.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -50,7 +50,7 @@ class QQAssistantGuider$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.QQAssistantGuider.5
  * JD-Core Version:    0.7.0.1
  */

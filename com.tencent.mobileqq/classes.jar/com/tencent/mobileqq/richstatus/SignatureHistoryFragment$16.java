@@ -11,13 +11,13 @@ class SignatureHistoryFragment$16
   
   public void onFontLoaded()
   {
-    Message localMessage = SignatureHistoryFragment.a(this.a).obtainMessage(1);
-    SignatureHistoryFragment.a(this.a).sendMessage(localMessage);
+    Message localMessage = SignatureHistoryFragment.d(this.a).obtainMessage(1);
+    SignatureHistoryFragment.d(this.a).sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.16
  * JD-Core Version:    0.7.0.1
  */

@@ -29,35 +29,35 @@ class VideoFeedsRecommendFragment$FavoriteStatusCallback
     if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    paramString1 = VideoFeedsRecommendFragment.a(this.a).a(paramString1);
+    paramString1 = VideoFeedsRecommendFragment.d(this.a).b(paramString1);
     if (paramString1 == null) {
       return;
     }
     if ((paramBoolean) && (paramInt == 1))
     {
-      paramString1.a.add(paramString2);
-      if (!paramString1.c) {
-        new ArrayList(paramString1.a);
+      paramString1.I.add(paramString2);
+      if (!paramString1.H) {
+        new ArrayList(paramString1.I);
       }
     }
-    if (paramString1.d)
+    if (paramString1.J)
     {
       paramString2 = new QQToast(this.a.getBaseActivity().getApplicationContext());
-      paramString2.d(2000);
+      paramString2.setDuration(2000);
       if (paramBoolean)
       {
-        paramString2.a(QQToast.a(2));
-        paramString2.c(2131692185);
-        paramString2.b(this.a.getBaseActivity().getApplicationContext().getResources().getDimensionPixelSize(2131299168) - (int)DisplayUtils.a(this.a.getBaseActivity().getApplicationContext(), 5.0F));
+        paramString2.setToastIcon(QQToast.getIconRes(2));
+        paramString2.setToastMsg(2131889172);
+        paramString2.show(this.a.getBaseActivity().getApplicationContext().getResources().getDimensionPixelSize(2131299920) - (int)DisplayUtils.a(this.a.getBaseActivity().getApplicationContext(), 5.0F));
       }
       else
       {
-        paramString2.a(QQToast.a(1));
-        paramString2.c(2131692186);
-        paramString2.b(this.a.getBaseActivity().getApplicationContext().getResources().getDimensionPixelSize(2131299168) - (int)DisplayUtils.a(this.a.getBaseActivity().getApplicationContext(), 5.0F));
-        paramString1.c = false;
+        paramString2.setToastIcon(QQToast.getIconRes(1));
+        paramString2.setToastMsg(2131889173);
+        paramString2.show(this.a.getBaseActivity().getApplicationContext().getResources().getDimensionPixelSize(2131299920) - (int)DisplayUtils.a(this.a.getBaseActivity().getApplicationContext(), 5.0F));
+        paramString1.H = false;
       }
-      paramString1.d = false;
+      paramString1.J = false;
     }
   }
   
@@ -76,18 +76,18 @@ class VideoFeedsRecommendFragment$FavoriteStatusCallback
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      paramString = VideoFeedsRecommendFragment.a(this.a).a(paramString);
+      paramString = VideoFeedsRecommendFragment.d(this.a).b(paramString);
       if (paramString != null)
       {
-        paramString.c = paramBoolean2;
-        paramString.a.addAll(paramArrayList);
+        paramString.H = paramBoolean2;
+        paramString.I.addAll(paramArrayList);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendFragment.FavoriteStatusCallback
  * JD-Core Version:    0.7.0.1
  */

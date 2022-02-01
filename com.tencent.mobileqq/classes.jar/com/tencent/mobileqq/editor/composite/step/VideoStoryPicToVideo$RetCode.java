@@ -2,33 +2,33 @@ package com.tencent.mobileqq.editor.composite.step;
 
 public class VideoStoryPicToVideo$RetCode
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  int a;
+  String b;
   
   public VideoStoryPicToVideo$RetCode(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.composite.step.VideoStoryPicToVideo.RetCode
  * JD-Core Version:    0.7.0.1
  */

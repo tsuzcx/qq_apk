@@ -11,12 +11,14 @@ import com.tencent.viola.ui.baseComponent.VComponentContainer;
 import com.tencent.viola.ui.dom.Attr;
 import com.tencent.viola.ui.dom.DomObject;
 import com.tencent.viola.ui.dom.DomObjectText;
+import com.tencent.viola.ui.dom.ImageSpanLoadListener;
 import com.tencent.viola.ui.dom.style.StyleSpace;
 import com.tencent.viola.ui.view.VTextView;
 import com.tencent.viola.utils.ViolaUtils;
 
 public class VText
   extends VComponent<VTextView>
+  implements ImageSpanLoadListener
 {
   public static final String RICH_TEXT_DETECT_ENABLE = "detectRichText";
   @VComponentField(nativeReturnMethod="getVisibility", propertyName="visibility")
@@ -58,7 +60,17 @@ public class VText
   {
     paramContext = new VTextView(paramContext);
     paramContext.bindComponent(this);
+    if ((this.mDomObj instanceof DomObjectText)) {
+      ((DomObjectText)this.mDomObj).setImageSpanLoadListener(this);
+    }
     return paramContext;
+  }
+  
+  public void onLoadFinish(boolean paramBoolean)
+  {
+    if (getHostView() != null) {
+      ((VTextView)getHostView()).postInvalidate();
+    }
   }
   
   public void resetComponent()
@@ -111,7 +123,7 @@ public class VText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VText
  * JD-Core Version:    0.7.0.1
  */

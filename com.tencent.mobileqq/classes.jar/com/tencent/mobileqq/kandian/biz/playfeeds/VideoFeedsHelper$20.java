@@ -10,28 +10,28 @@ import com.tencent.mobileqq.kandian.repo.feeds.RichTitleInfo;
 final class VideoFeedsHelper$20
   implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
+  private long d;
   
   VideoFeedsHelper$20(TextView paramTextView, RichTitleInfo paramRichTitleInfo, VideoInfo paramVideoInfo) {}
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Long == 0L) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 2000L))
+    if ((this.d == 0L) || (System.currentTimeMillis() - this.d > 2000L))
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      ReadInJoyUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRichTitleInfo.d);
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRichTitleInfo.a == 1)
+      this.d = System.currentTimeMillis();
+      ReadInJoyUtils.a(this.a.getContext(), this.b.d);
+      if (this.b.e == 1)
       {
-        VideoFeedsReporter.a.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo);
+        VideoFeedsReporter.a.b(this.c);
         return;
       }
-      VideoFeedsReporter.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRichTitleInfo.b);
+      VideoFeedsReporter.a.a(this.c, this.b.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsHelper.20
  * JD-Core Version:    0.7.0.1
  */

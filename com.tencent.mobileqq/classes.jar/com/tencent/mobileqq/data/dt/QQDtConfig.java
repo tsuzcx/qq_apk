@@ -9,24 +9,69 @@ import com.tencent.mobileqq.app.ProcessUtil;
 import com.tencent.mobileqq.vip.CUKingCardUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.dtreport.api.IDTParamProvider;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArraySet;
 import mqq.app.AppRuntime;
+import org.jetbrains.annotations.NotNull;
 
 public class QQDtConfig
   implements IDTParamProvider
 {
+  private static QQDtConfig c;
   private String a;
+  private final CopyOnWriteArraySet<QQDtConfig.IDTCustomPublicParamsListener> b = new CopyOnWriteArraySet();
+  
+  public static QQDtConfig a()
+  {
+    if (c == null) {
+      try
+      {
+        if (c == null) {
+          c = new QQDtConfig();
+        }
+      }
+      finally {}
+    }
+    return c;
+  }
   
   private static void a(Map<String, Object> paramMap)
   {
     if (paramMap != null)
     {
       String str = ProcessUtil.a();
-      int i = AppSetting.a();
+      int i = AppSetting.d();
       paramMap.put("client_page_name", str);
       paramMap.put("client_process_name", BaseApplicationImpl.processName);
       paramMap.put("qq_appid", String.valueOf(i));
     }
+  }
+  
+  private void b(Map<String, Object> paramMap)
+  {
+    if (paramMap != null)
+    {
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext()) {
+        ((QQDtConfig.IDTCustomPublicParamsListener)localIterator.next()).a(paramMap);
+      }
+    }
+  }
+  
+  public void a(@NotNull QQDtConfig.IDTCustomPublicParamsListener paramIDTCustomPublicParamsListener)
+  {
+    this.b.add(paramIDTCustomPublicParamsListener);
+  }
+  
+  public void b(@NotNull QQDtConfig.IDTCustomPublicParamsListener paramIDTCustomPublicParamsListener)
+  {
+    this.b.remove(paramIDTCustomPublicParamsListener);
+  }
+  
+  public String getAccountID()
+  {
+    return null;
   }
   
   public String getActiveInfo()
@@ -158,11 +203,12 @@ public class QQDtConfig
   public void setRealtimePublicDynamicParams(Map<String, Object> paramMap)
   {
     a(paramMap);
+    b(paramMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.dt.QQDtConfig
  * JD-Core Version:    0.7.0.1
  */

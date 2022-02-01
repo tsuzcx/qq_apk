@@ -14,13 +14,13 @@ class MessageRoamManager$3
     Calendar localCalendar = Calendar.getInstance();
     int i = this.a;
     int j = 8;
-    while (i < this.this$0.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.this$0.n.size())
     {
-      localCalendar.setTimeInMillis(((Long)this.this$0.jdField_a_of_type_JavaUtilList.get(i)).longValue());
+      localCalendar.setTimeInMillis(((Long)this.this$0.n.get(i)).longValue());
       this.this$0.a(localCalendar);
-      Pair localPair = this.this$0.a((Calendar)localCalendar.clone());
+      Pair localPair = this.this$0.f((Calendar)localCalendar.clone());
       MessageRoamManager localMessageRoamManager = this.this$0;
-      j -= localMessageRoamManager.a(localMessageRoamManager.jdField_a_of_type_JavaLangString, ((Long)localPair.first).longValue(), ((Long)localPair.second).longValue());
+      j -= localMessageRoamManager.b(localMessageRoamManager.i, ((Long)localPair.first).longValue(), ((Long)localPair.second).longValue());
       if (j <= 0) {
         break;
       }
@@ -31,7 +31,7 @@ class MessageRoamManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.3
  * JD-Core Version:    0.7.0.1
  */

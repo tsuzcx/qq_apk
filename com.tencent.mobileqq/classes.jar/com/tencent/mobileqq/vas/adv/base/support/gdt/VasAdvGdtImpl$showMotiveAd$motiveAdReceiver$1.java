@@ -22,12 +22,12 @@ public final class VasAdvGdtImpl$showMotiveAd$motiveAdReceiver$1
     if ((paramInt == -1) && (paramBundle != null)) {
       bool = paramBundle.getBoolean("profitable_flag");
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasAdvRewardVasProfitableCallback.a(bool);
+    this.a.a(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.support.gdt.VasAdvGdtImpl.showMotiveAd.motiveAdReceiver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -55,8 +55,8 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class GetStrangerVasInfoHandler
   implements IVasExtensionHandler
 {
-  private IApolloExtensionHandler jdField_a_of_type_ComTencentMobileqqApolloHandlerIApolloExtensionHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface a;
+  private IApolloExtensionHandler b;
   
   private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
@@ -86,7 +86,7 @@ public class GetStrangerVasInfoHandler
           a(paramIntent, paramFromServiceMsg);
           return;
         }
-        ((BusinessHandler)this.jdField_a_of_type_ComTencentMobileqqApolloHandlerIApolloExtensionHandler).notifyUI(65, false, null);
+        ((BusinessHandler)this.b).notifyUI(65, false, null);
         return;
       }
       catch (Throwable paramIntent)
@@ -99,7 +99,7 @@ public class GetStrangerVasInfoHandler
     }
     else
     {
-      ((BusinessHandler)this.jdField_a_of_type_ComTencentMobileqqApolloHandlerIApolloExtensionHandler).notifyUI(65, false, null);
+      ((BusinessHandler)this.b).notifyUI(65, false, null);
     }
   }
   
@@ -112,7 +112,7 @@ public class GetStrangerVasInfoHandler
       a(paramString, paramUdcUinData);
     }
     if (paramIntent.getBooleanExtra("req_music_type", false)) {
-      ((BusinessHandler)this.jdField_a_of_type_ComTencentMobileqqApolloHandlerIApolloExtensionHandler).notifyUI(36, true, Integer.valueOf(paramUdcUinData.uint32_rsp_listen_together_player_id.get()));
+      ((BusinessHandler)this.b).notifyUI(36, true, Integer.valueOf(paramUdcUinData.uint32_rsp_listen_together_player_id.get()));
     }
   }
   
@@ -124,8 +124,8 @@ public class GetStrangerVasInfoHandler
     HashSet localHashSet = new HashSet(k);
     ArrayList localArrayList1 = new ArrayList(k);
     ArrayList localArrayList2 = new ArrayList();
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    paramOIDBSSOPkg = ((VasExtensionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
+    FriendsManager localFriendsManager = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    paramOIDBSSOPkg = ((VasExtensionManager)this.a.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).c;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("response.rpt_msg_uin_data.size():");
     ((StringBuilder)localObject).append(k);
@@ -137,7 +137,7 @@ public class GetStrangerVasInfoHandler
     {
       oidb_0x5eb.UdcUinData localUdcUinData = (oidb_0x5eb.UdcUinData)localRspBody.rpt_msg_uin_data.get(m);
       String str = String.valueOf(localUdcUinData.uint64_uin.get());
-      localObject = localFriendsManager.a(str);
+      localObject = localFriendsManager.x(str);
       ExtensionInfoLogUtils.a("GetStrangerVasInfoHandler", "GetStrangerVasInfoHandler，before update，friendManager.getExtensionInfo(uin)：", (ExtensionInfo)localObject);
       if (localObject == null)
       {
@@ -152,22 +152,22 @@ public class GetStrangerVasInfoHandler
       if (localUdcUinData.uint32_vas_font_id.has())
       {
         long l = localUdcUinData.uint32_vas_font_id.get();
-        if (str.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+        if (str.equals(this.a.getCurrentAccountUin()))
         {
           i = (int)FontManagerConstants.parseFontId(l);
-          VasShieldFont.c = i;
+          VasShieldFont.e = i;
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("handleGetStrangerVasInfo: ");
-            localStringBuilder.append(VasShieldFont.c);
+            localStringBuilder.append(VasShieldFont.e);
             QLog.d("VasShieldFont", 2, localStringBuilder.toString());
           }
         }
         bool = a(bool, (ExtensionInfo)localObject, l);
       }
       a(localUdcUinData);
-      if ((localUdcUinData.uint32_vas_diy_font_timestamp.has()) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+      if ((localUdcUinData.uint32_vas_diy_font_timestamp.has()) && (str.equals(this.a.getCurrentAccountUin()))) {
         j = localUdcUinData.uint32_vas_diy_font_timestamp.get();
       }
       boolean bool = a(localUdcUinData, c(localUdcUinData, a(localArrayList2, localUdcUinData, bool, str, (ExtensionInfo)localObject), str, (ExtensionInfo)localObject), (ExtensionInfo)localObject);
@@ -194,7 +194,7 @@ public class GetStrangerVasInfoHandler
     localFriendsManager.b(localArrayList1);
     paramOIDBSSOPkg.b(localArrayList2);
     paramOIDBSSOPkg.a(localArrayList1);
-    ((BusinessHandler)this.jdField_a_of_type_ComTencentMobileqqApolloHandlerIApolloExtensionHandler).notifyUI(65, true, localHashSet);
+    ((BusinessHandler)this.b).notifyUI(65, true, localHashSet);
   }
   
   private void a(FriendsManager paramFriendsManager, int paramInt1, int paramInt2, boolean paramBoolean)
@@ -210,9 +210,9 @@ public class GetStrangerVasInfoHandler
         ((StringBuilder)localObject).append(paramInt2);
         QLog.d("FontManagerConstants", 2, ((StringBuilder)localObject).toString());
       }
-      paramFriendsManager = paramFriendsManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      Object localObject = (IFontManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFontManagerService.class, "");
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramFriendsManager = paramFriendsManager.x(this.a.getCurrentAccountUin());
+      Object localObject = (IFontManagerService)this.a.getRuntimeService(IFontManagerService.class, "");
+      QQAppInterface localQQAppInterface = this.a;
       ((IFontManagerService)localObject).checkUpdateDIYConfig(localQQAppInterface, localQQAppInterface.getCurrentAccountUin(), paramFriendsManager, paramInt1, paramInt2);
     }
   }
@@ -297,7 +297,7 @@ public class GetStrangerVasInfoHandler
       if (paramUdcUinData.uint32_bubble_id.has())
       {
         int i = paramUdcUinData.uint32_bubble_id.get();
-        ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(i);
+        ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(i);
         return;
       }
     }
@@ -315,16 +315,16 @@ public class GetStrangerVasInfoHandler
     if (paramUdcUinData.uint32_rsp_qq_level_icon_type.has())
     {
       int i = paramUdcUinData.uint32_rsp_qq_level_icon_type.get();
-      paramUdcUinData = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      paramUdcUinData = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
       localStringBuilder.append("");
-      paramString = paramUdcUinData.a(localStringBuilder.toString());
+      paramString = paramUdcUinData.f(localStringBuilder.toString());
       if ((paramString != null) && (paramString.mQQLevelType != i))
       {
         paramString.mQQLevelType = i;
         paramUdcUinData.a(paramString);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER).notifyUI(1, true, paramString);
+        this.a.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER).notifyUI(1, true, paramString);
       }
     }
   }
@@ -398,9 +398,9 @@ public class GetStrangerVasInfoHandler
     if (paramUdcUinData.uint32_vas_voicebubble_id.has())
     {
       i = paramUdcUinData.uint32_vas_voicebubble_id.get();
-      if ((i > 0) && (String.valueOf(paramString).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
+      if ((i > 0) && (String.valueOf(paramString).equals(this.a.getCurrentAccountUin())))
       {
-        ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).b(i);
+        ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).b(i);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -491,8 +491,8 @@ public class GetStrangerVasInfoHandler
     if (paramUdcUinData.uint32_vas_praise_id.has())
     {
       i = paramUdcUinData.uint32_vas_praise_id.get();
-      if ((i > 0) && (String.valueOf(paramString).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-        PraiseManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i);
+      if ((i > 0) && (String.valueOf(paramString).equals(this.a.getCurrentAccountUin()))) {
+        PraiseManager.a(this.a, i);
       }
       if (QLog.isColorLevel())
       {
@@ -557,7 +557,7 @@ public class GetStrangerVasInfoHandler
       if (i != 1) {
         bool = false;
       }
-      C2CShortcutBarSwitcher.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
+      C2CShortcutBarSwitcher.a(this.a, bool);
     }
   }
   
@@ -566,8 +566,8 @@ public class GetStrangerVasInfoHandler
     if (paramUdcUinData.uint32_suspend_effect_id.has())
     {
       int i = paramUdcUinData.uint32_suspend_effect_id.get();
-      if ((i >= 0) && (String.valueOf(paramString).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-        ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(paramString, i);
+      if ((i >= 0) && (String.valueOf(paramString).equals(this.a.getCurrentAccountUin()))) {
+        ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(paramString, i);
       }
       if (QLog.isColorLevel())
       {
@@ -630,8 +630,8 @@ public class GetStrangerVasInfoHandler
         paramExtensionInfo.pendantDiyId = i;
         paramExtensionInfo.lastUpdateTime = NetConnInfoCenter.getServerTime();
         paramBoolean = true;
-        if (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-          ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).b(i, false);
+        if (paramString.equals(this.a.getCurrentAccountUin())) {
+          ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).b(i, false);
         }
         bool = paramBoolean;
         if (QLog.isColorLevel())
@@ -676,22 +676,23 @@ public class GetStrangerVasInfoHandler
       {
         paramUdcUinData = new StringBuilder();
         paramUdcUinData.append("vip_card_extension id by refresh=");
-        paramUdcUinData.append(localDialogue.short_nameplate_itemid);
+        paramUdcUinData.append(localDialogue.nameplate_pendant_itemid);
         QLog.d("GetStrangerVasInfoHandler", 2, paramUdcUinData.toString());
       }
-      paramUdcUinData = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      paramString = paramUdcUinData.e(paramString);
+      paramUdcUinData = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      paramString = paramUdcUinData.m(paramString);
       if (paramString != null)
       {
         int i;
-        if (localDialogue.short_nameplate_itemid.has()) {
-          i = localDialogue.short_nameplate_itemid.get();
+        if (localDialogue.nameplate_pendant_itemid.has()) {
+          i = localDialogue.nameplate_pendant_itemid.get();
         } else {
           i = 0;
         }
         paramString.bigClubExtTemplateId = i;
         paramString.diyFontId = localDialogue.diyfontid.get();
-        paramUdcUinData.a(paramString);
+        paramString.gameCardId = localDialogue.game_nameplate.get();
+        paramUdcUinData.b(paramString);
       }
     }
   }
@@ -741,10 +742,10 @@ public class GetStrangerVasInfoHandler
     if (paramUdcUinData.uint32_bubble_unread_switch.has())
     {
       int i = paramUdcUinData.uint32_bubble_unread_switch.get();
-      paramUdcUinData = (BubbleManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER);
+      paramUdcUinData = (BubbleManager)this.a.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER);
       if (paramUdcUinData != null)
       {
-        paramUdcUinData = paramUdcUinData.a;
+        paramUdcUinData = paramUdcUinData.m;
         boolean bool;
         if (i == 0) {
           bool = true;
@@ -767,15 +768,15 @@ public class GetStrangerVasInfoHandler
   {
     if (paramIApolloExtensionHandler != null)
     {
-      if (paramIApolloExtensionHandler.a() == null) {
+      if (paramIApolloExtensionHandler.e() == null) {
         return;
       }
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloHandlerIApolloExtensionHandler = paramIApolloExtensionHandler;
-        paramIApolloExtensionHandler = paramIApolloExtensionHandler.a();
+        this.b = paramIApolloExtensionHandler;
+        paramIApolloExtensionHandler = paramIApolloExtensionHandler.e();
         if ((paramIApolloExtensionHandler instanceof QQAppInterface)) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramIApolloExtensionHandler);
+          this.a = ((QQAppInterface)paramIApolloExtensionHandler);
         } else {
           QLog.e("GetStrangerVasInfoHandler", 1, "[handler] app interface is not instance of QQAppInterface!");
         }
@@ -784,8 +785,8 @@ public class GetStrangerVasInfoHandler
       }
       finally
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-        this.jdField_a_of_type_ComTencentMobileqqApolloHandlerIApolloExtensionHandler = null;
+        this.a = null;
+        this.b = null;
       }
     }
   }
@@ -807,17 +808,17 @@ public class GetStrangerVasInfoHandler
       ((StringBuilder)localObject1).append(paramInt2);
       QLog.d("GetStrangerVasInfoHandler", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject2 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Object localObject1 = ((FriendsManager)localObject2).a(paramString);
-    localObject2 = ((FriendsManager)localObject2).e(paramString);
+    Object localObject2 = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject1 = ((FriendsManager)localObject2).f(paramString);
+    localObject2 = ((FriendsManager)localObject2).m(paramString);
     boolean bool1 = TextUtils.isEmpty(paramString);
     boolean bool2 = false;
-    if ((!bool1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin().equals(paramString)))
+    if ((!bool1) && (this.a.getCurrentUin().equals(paramString)))
     {
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("sp_plate_of_king", 0).edit();
+      SharedPreferences.Editor localEditor = this.a.getApp().getSharedPreferences("sp_plate_of_king", 0).edit();
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("plate_of_king_display_switch_");
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      ((StringBuilder)localObject3).append(this.a.getCurrentUin());
       localObject3 = ((StringBuilder)localObject3).toString();
       if (paramInt2 == 1) {
         bool1 = true;
@@ -837,7 +838,7 @@ public class GetStrangerVasInfoHandler
         bool1 = false;
       }
       ((Card)localObject1).namePlateOfKingDanDisplatSwitch = bool1;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER).notifyUI(1, true, localObject1);
+      this.a.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER).notifyUI(1, true, localObject1);
     }
     if (localObject2 != null)
     {
@@ -849,7 +850,7 @@ public class GetStrangerVasInfoHandler
         bool1 = true;
       }
       ((Friends)localObject2).namePlateOfKingDanDisplatSwitch = bool1;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, paramString);
+      this.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, paramString);
     }
   }
   
@@ -878,17 +879,17 @@ public class GetStrangerVasInfoHandler
       paramUdcUinData.append(i);
       QLog.d("GetStrangerVasInfoHandler", 2, paramUdcUinData.toString());
     }
-    paramUdcUinData = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0).edit();
+    paramUdcUinData = this.a.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0).edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("message_roam_flag");
     localStringBuilder.append(paramString);
     paramUdcUinData.putInt(localStringBuilder.toString(), i).commit();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER).notifyUI(114, true, new Object[] { paramString, Integer.valueOf(i) });
+    this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER).notifyUI(114, true, new Object[] { paramString, Integer.valueOf(i) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.handler.GetStrangerVasInfoHandler
  * JD-Core Version:    0.7.0.1
  */

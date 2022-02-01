@@ -11,7 +11,7 @@ import java.util.List;
 public class RotationGameVectorProvider
   extends OrientationProvider2
 {
-  private float[] d = new float[16];
+  private float[] a = new float[16];
   
   public RotationGameVectorProvider(Context paramContext, int paramInt, SensorManager paramSensorManager, ARSensorManager.OnSensorChangeListener paramOnSensorChangeListener)
   {
@@ -19,7 +19,7 @@ public class RotationGameVectorProvider
     paramContext = paramSensorManager.getDefaultSensor(15);
     if ((Build.VERSION.SDK_INT >= 18) && (paramContext != null))
     {
-      this.a.add(paramContext);
+      this.d.add(paramContext);
       return;
     }
     throw new OrientationProviderNotFound(String.valueOf(15));
@@ -27,13 +27,13 @@ public class RotationGameVectorProvider
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    SensorUtil.a(this.d, paramSensorEvent);
-    super.a(this.d);
+    SensorUtil.a(this.a, paramSensorEvent);
+    super.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.provider.RotationGameVectorProvider
  * JD-Core Version:    0.7.0.1
  */

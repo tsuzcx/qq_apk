@@ -10,8 +10,8 @@ class CameraRoamingStrategy$2
   
   public void a(List<EmoticonInfo> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmCameraRoamingStrategy.a(paramList);
-    CustomEmotionRoamingDBManagerBase.CustomEmotionDataInPanelCallback localCustomEmotionDataInPanelCallback = this.jdField_a_of_type_ComTencentMobileqqEmosmCustomEmotionRoamingDBManagerBase$CustomEmotionDataInPanelCallback;
+    this.b.b(paramList);
+    CustomEmotionRoamingDBManagerBase.CustomEmotionDataInPanelCallback localCustomEmotionDataInPanelCallback = this.a;
     if (localCustomEmotionDataInPanelCallback != null) {
       localCustomEmotionDataInPanelCallback.a(paramList);
     }
@@ -19,7 +19,7 @@ class CameraRoamingStrategy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.CameraRoamingStrategy.2
  * JD-Core Version:    0.7.0.1
  */

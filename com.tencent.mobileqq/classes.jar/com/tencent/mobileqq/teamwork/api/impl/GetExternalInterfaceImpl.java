@@ -57,7 +57,7 @@ public class GetExternalInterfaceImpl
 {
   public Dialog actionSheetHelperCreateDialog(Context paramContext, View paramView)
   {
-    return ActionSheetHelper.a(paramContext, paramView);
+    return ActionSheetHelper.b(paramContext, paramView);
   }
   
   public void addAioParamForSystem(Intent paramIntent)
@@ -169,7 +169,7 @@ public class GetExternalInterfaceImpl
   
   public boolean getCommonConfigBooleanValue(Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
   {
-    return SharedPreUtils.b(paramContext, paramString1, paramString2, paramBoolean);
+    return SharedPreUtils.d(paramContext, paramString1, paramString2, paramBoolean);
   }
   
   public Intent getFileBrowserActivityClassIntent(Activity paramActivity)
@@ -179,25 +179,25 @@ public class GetExternalInterfaceImpl
   
   public int getFileType(String paramString)
   {
-    return FileManagerUtil.a(paramString);
+    return FileManagerUtil.c(paramString);
   }
   
   public long getGroupUin(Context paramContext)
   {
     if (isInstanceGroupTeamWorkListActivity(paramContext)) {
-      return ((GroupTeamWorkListActivity)paramContext).a;
+      return ((GroupTeamWorkListActivity)paramContext).m;
     }
     return 0L;
   }
   
   public boolean getPreloadWebProcess()
   {
-    return SwiftBrowserStatistics.p;
+    return SwiftBrowserStatistics.aD;
   }
   
   public boolean getReportPerformance()
   {
-    return SwiftBrowserStatistics.u;
+    return SwiftBrowserStatistics.aL;
   }
   
   public long getWebAcceleratorCostTime()
@@ -303,7 +303,7 @@ public class GetExternalInterfaceImpl
   
   public boolean soLibraryCheckerSoLibExists(Context paramContext)
   {
-    return SoLibraryChecker.a(paramContext, "libWXVoice.so");
+    return SoLibraryChecker.b(paramContext, "libWXVoice.so");
   }
   
   public void webAcceleratorSmartSchedule()
@@ -317,7 +317,7 @@ public class GetExternalInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.GetExternalInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -21,11 +21,11 @@ public class BaseGuessClickStageView
   extends RelativeLayout
   implements IGameStageView
 {
-  protected IQuestionOptionPresenter a;
-  protected QuestionOptionsView a;
-  private IStagePresenter jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter = null;
-  private IBaseCountDownClockView.OnCountDownListener jdField_a_of_type_ComTencentAvgameGameroomStageUtilIBaseCountDownClockView$OnCountDownListener = new BaseGuessClickStageView.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
+  protected QuestionOptionsView a = null;
+  protected IQuestionOptionPresenter b = null;
+  private IStagePresenter c = null;
+  private boolean d = false;
+  private IBaseCountDownClockView.OnCountDownListener e = new BaseGuessClickStageView.1(this);
   
   public BaseGuessClickStageView(Context paramContext)
   {
@@ -40,48 +40,23 @@ public class BaseGuessClickStageView
   public BaseGuessClickStageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView = null;
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter = null;
-    b();
+    c();
   }
   
-  private void b()
+  private void c()
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView = new QuestionOptionsView(getContext());
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView.a();
-  }
-  
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public IGameStagePresenter a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseGuessClickStageView", 2, "showQuestionOptionView run");
-    }
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView.a();
-    addView(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView, QuestionOptionsView.a());
-    IStagePresenter localIStagePresenter = this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter;
-    if (localIStagePresenter != null) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a(localIStagePresenter);
-    }
+    this.a = new QuestionOptionsView(getContext());
+    this.a.a();
   }
   
   public void a(ITopic paramITopic) {}
   
   protected void a(IStagePresenter paramIStagePresenter)
   {
-    IQuestionOptionPresenter localIQuestionOptionPresenter = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter;
+    IQuestionOptionPresenter localIQuestionOptionPresenter = this.b;
     if (localIQuestionOptionPresenter == null)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter = paramIStagePresenter;
+      this.c = paramIStagePresenter;
       return;
     }
     localIQuestionOptionPresenter.a(paramIStagePresenter);
@@ -96,34 +71,57 @@ public class BaseGuessClickStageView
     return false;
   }
   
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseGuessClickStageView", 2, "showQuestionOptionView run");
+    }
+    this.b = this.a.getPresenter();
+    addView(this.a, QuestionOptionsView.getDefaultLayoutParams());
+    IStagePresenter localIStagePresenter = this.c;
+    if (localIStagePresenter != null) {
+      this.b.a(localIStagePresenter);
+    }
+  }
+  
   protected void b(ITopic paramITopic)
   {
-    if (!IGameEngine.a().h()) {
+    if (!IGameEngine.I().C()) {
       if (paramITopic != null)
       {
-        if (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter == null) {
-          a();
+        if (this.b == null) {
+          b();
         }
-        this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView.setVisibility(0);
-        if ((!this.jdField_a_of_type_Boolean) && (a() != null))
+        this.a.setVisibility(0);
+        if ((!this.d) && (getTopicClockView() != null))
         {
-          ((IBaseCountDownClockView)a()).setOnTimeEndListener(this.jdField_a_of_type_ComTencentAvgameGameroomStageUtilIBaseCountDownClockView$OnCountDownListener);
-          this.jdField_a_of_type_Boolean = true;
+          ((IBaseCountDownClockView)getTopicClockView()).setOnTimeEndListener(this.e);
+          this.d = true;
         }
         if ((paramITopic instanceof TopicBase)) {
-          this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a((TopicBase)paramITopic);
+          this.b.a((TopicBase)paramITopic);
         }
       }
       else
       {
-        removeView(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView);
-        this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter = null;
-        this.jdField_a_of_type_Boolean = false;
+        removeView(this.a);
+        this.b = null;
+        this.d = false;
       }
     }
   }
   
   public void b(IStagePresenter paramIStagePresenter) {}
+  
+  public IGameStagePresenter getPresenter()
+  {
+    return null;
+  }
+  
+  public ImageView getTopicClockView()
+  {
+    return null;
+  }
   
   public void setFontStyle(FontStyleConfig paramFontStyleConfig) {}
   

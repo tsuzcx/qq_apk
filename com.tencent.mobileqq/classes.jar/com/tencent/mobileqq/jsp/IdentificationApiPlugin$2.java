@@ -33,14 +33,14 @@ class IdentificationApiPlugin$2
       QLog.e("IdentificationApiPlugin", 1, "getConfSuccess, activity is null");
       return;
     }
-    this.a.a.setAppConf(paramAppConf);
+    this.a.d.setAppConf(paramAppConf);
     paramAppConf = this.a;
-    paramAppConf.a(paramAppConf.a);
+    paramAppConf.a(paramAppConf.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.IdentificationApiPlugin.2
  * JD-Core Version:    0.7.0.1
  */

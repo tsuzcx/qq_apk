@@ -25,14 +25,14 @@ class QQCustomDialogWtihInput$2
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setPositiveButton onClick timeGap:");
-      ((StringBuilder)localObject).append(System.currentTimeMillis() - QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput));
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - QQCustomDialogWtihInput.a(this.b));
       ((StringBuilder)localObject).append(" MANUFACTURER:");
       ((StringBuilder)localObject).append(Build.MANUFACTURER);
       ((StringBuilder)localObject).append(" MODEL:");
       ((StringBuilder)localObject).append(Build.MODEL);
       QLog.d("QQCustomDialogWtihInput", 2, ((StringBuilder)localObject).toString());
     }
-    if ((System.currentTimeMillis() - QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput) < 800L) && (QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput)))
+    if ((System.currentTimeMillis() - QQCustomDialogWtihInput.a(this.b) < 800L) && (QQCustomDialogWtihInput.b(this.b)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQCustomDialogWtihInput", 2, "setPositiveButton onClick skip");
@@ -40,39 +40,39 @@ class QQCustomDialogWtihInput$2
     }
     else
     {
-      localObject = QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput).getText().toString();
+      localObject = QQCustomDialogWtihInput.c(this.b).getText().toString();
       if (localObject != null) {
         if ((!QQEmojiUtil.containsEmoji((String)localObject)) && (!QQSysFaceUtil.containsExpression((String)localObject)))
         {
-          if ((QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput) == null) && (24 < ((String)localObject).getBytes().length))
+          if ((QQCustomDialogWtihInput.e(this.b) == null) && (24 < ((String)localObject).getBytes().length))
           {
-            localObject = (Context)QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput).get();
+            localObject = (Context)QQCustomDialogWtihInput.d(this.b).get();
             if (localObject != null)
             {
               localObject = new QQToast((Context)localObject);
-              ((QQToast)localObject).d(2000);
-              ((QQToast)localObject).c(2131719710);
-              ((QQToast)localObject).a();
+              ((QQToast)localObject).setDuration(2000);
+              ((QQToast)localObject).setToastMsg(2131917313);
+              ((QQToast)localObject).show();
             }
           }
           else
           {
-            localObject = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+            localObject = this.a;
             if (localObject != null) {
-              ((DialogInterface.OnClickListener)localObject).onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput, 1);
+              ((DialogInterface.OnClickListener)localObject).onClick(this.b, 1);
             }
-            this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput.dismiss();
+            this.b.dismiss();
           }
         }
         else
         {
-          localObject = (Context)QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput).get();
+          localObject = (Context)QQCustomDialogWtihInput.d(this.b).get();
           if (localObject != null)
           {
             localObject = new QQToast((Context)localObject);
-            ((QQToast)localObject).d(2000);
-            ((QQToast)localObject).c(2131719709);
-            ((QQToast)localObject).a();
+            ((QQToast)localObject).setDuration(2000);
+            ((QQToast)localObject).setToastMsg(2131917312);
+            ((QQToast)localObject).show();
           }
         }
       }
@@ -82,7 +82,7 @@ class QQCustomDialogWtihInput$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInput.2
  * JD-Core Version:    0.7.0.1
  */

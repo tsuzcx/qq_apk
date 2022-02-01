@@ -27,12 +27,12 @@ final class PublishArticlePage$reportPublishUserAction$1
   public final void invoke(@NotNull PublishArticleInfo paramPublishArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramPublishArticleInfo, "it");
-    DispatchManager.a.a((IEvent)new UserActionEvent(null, this.$eventId, this.$pageId, this.$elementId, PublishArticlePage.a(this.this$0), paramPublishArticleInfo, null, 65, null));
+    DispatchManager.a.a((IEvent)new UserActionEvent(null, this.$eventId, this.$pageId, this.$elementId, PublishArticlePage.c(this.this$0), paramPublishArticleInfo, null, 65, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.reportPublishUserAction.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class QQDailyArkView$2$1
   
   public void onClick(View paramView)
   {
-    ArkViewModel localArkViewModel = this.jdField_a_of_type_ComTencentArkArkViewModel;
+    ArkViewModel localArkViewModel = this.a;
     if (localArkViewModel != null) {
       localArkViewModel.reinitArkContainer();
     }
@@ -21,7 +21,7 @@ class QQDailyArkView$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.qqdaily.QQDailyArkView.2.1
  * JD-Core Version:    0.7.0.1
  */

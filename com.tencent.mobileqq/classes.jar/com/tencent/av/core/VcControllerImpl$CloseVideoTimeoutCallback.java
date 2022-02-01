@@ -2,7 +2,7 @@ package com.tencent.av.core;
 
 public abstract interface VcControllerImpl$CloseVideoTimeoutCallback
 {
-  public abstract void g(int paramInt);
+  public abstract void i(int paramInt);
 }
 
 

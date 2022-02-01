@@ -36,7 +36,7 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver
   private void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString, boolean paramBoolean)
   {
     int i;
-    if (((paramTeamWorkFileImportInfo.jdField_a_of_type_Int == 1) || (paramTeamWorkFileImportInfo.jdField_a_of_type_Int == 0) || (paramTeamWorkFileImportInfo.jdField_a_of_type_Int == 3000)) && (paramTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString != this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.m())) {
+    if (((paramTeamWorkFileImportInfo.a == 1) || (paramTeamWorkFileImportInfo.a == 0) || (paramTeamWorkFileImportInfo.a == 3000)) && (paramTeamWorkFileImportInfo.b != this.a.c.ag())) {
       i = 1;
     } else {
       i = 0;
@@ -44,8 +44,8 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver
     if (i != 0)
     {
       ArrayList localArrayList = new ArrayList(1);
-      localArrayList.add(paramTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString);
-      this.a.a(localArrayList, paramString, paramBoolean, paramTeamWorkFileImportInfo.jdField_a_of_type_Int);
+      localArrayList.add(paramTeamWorkFileImportInfo.b);
+      this.a.a(localArrayList, paramString, paramBoolean, paramTeamWorkFileImportInfo.a);
     }
   }
   
@@ -55,9 +55,9 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver
     {
       if (paramJSONObject.getInt("retcode") != 0)
       {
-        this.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new SimpleFilePresenter.InnerTeamWorkFileImportObserver.2(this));
+        this.a.d.runOnUiThread(new SimpleFilePresenter.InnerTeamWorkFileImportObserver.2(this));
         if (paramTeamWorkFileImportInfo.b()) {
-          TeamWorkHandlerUtils.a(paramTeamWorkFileImportInfo.m, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.m());
+          TeamWorkHandlerUtils.b(paramTeamWorkFileImportInfo.F, this.a.c.ag());
         }
         ReportController.b(null, "dc00898", "", "", "0X800A627", "0X800A627", 2, 0, "", "", "", "");
         return;
@@ -69,7 +69,7 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver
     {
       ReportController.b(null, "dc00898", "", "", "0X800A627", "0X800A627", 3, 0, "", "", "", "");
       QLog.e("SimpleFilePresenter<FileAssistant>", 1, "direct share fail", paramJSONObject);
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131719628, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 1, 2131917225, 0).show();
     }
   }
   
@@ -87,37 +87,37 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver
     paramJSONObject.putExtra("k_forward_show_direct_share_tips", true);
     if (paramTeamWorkFileImportInfo.a())
     {
-      paramJSONObject.setClass(this.a.jdField_a_of_type_AndroidAppActivity, ForwardRecentActivity.class);
-      ShareMsgHelper.a(this.a.jdField_a_of_type_AndroidAppActivity, 1001, 95, "web_share", "", localTencentDocData.docIcon, localTencentDocData.title, localTencentDocData.summary, this.a.jdField_a_of_type_AndroidAppActivity.getString(2131696401, new Object[] { localTencentDocData.title }), paramString, "web", null, null, null, "web", null, null, null, "https://docs.qq.com/desktop/favicon.ico", this.a.jdField_a_of_type_AndroidAppActivity.getString(2131719569), "", paramJSONObject, 2865, "https://docs.qq.com/desktop/m/index.html?_wv=2097154", -1L);
+      paramJSONObject.setClass(this.a.d, ForwardRecentActivity.class);
+      ShareMsgHelper.a(this.a.d, 1001, 95, "web_share", "", localTencentDocData.docIcon, localTencentDocData.title, localTencentDocData.summary, this.a.d.getString(2131894173, new Object[] { localTencentDocData.title }), paramString, "web", null, null, null, "web", null, null, null, "https://docs.qq.com/desktop/favicon.ico", this.a.d.getString(2131917132), "", paramJSONObject, 2865, "https://docs.qq.com/desktop/m/index.html?_wv=2097154", -1L);
       TenDocLogReportHelper.a(null, "0X800A21F");
       return;
     }
     if (paramTeamWorkFileImportInfo.b())
     {
-      if (!SimpleFilePresenter.b(this.a))
+      if (!SimpleFilePresenter.e(this.a))
       {
         paramJSONObject = new StringBuilder();
-        paramJSONObject.append(paramTeamWorkFileImportInfo.k);
+        paramJSONObject.append(paramTeamWorkFileImportInfo.A);
         paramJSONObject.append("-");
-        paramJSONObject.append(paramTeamWorkFileImportInfo.d);
-        long l = TenDocLogReportHelper.a(paramJSONObject.toString());
+        paramJSONObject.append(paramTeamWorkFileImportInfo.n);
+        long l = TenDocLogReportHelper.g(paramJSONObject.toString());
         if (l > 0L) {
           ReportController.b(null, "dc00898", "", "", "0X800A62E", "0X800A62E", 0, 0, "", "", String.valueOf(l), "");
         }
         paramJSONObject = TencentDocLocalCooperationProcessor.a();
-        if (paramJSONObject.b(paramTeamWorkFileImportInfo.b))
+        if (paramJSONObject.c(paramTeamWorkFileImportInfo.c))
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(paramString, Boolean.valueOf(false));
+          this.a.k.a(paramString, Boolean.valueOf(false));
           return;
         }
-        boolean bool = paramJSONObject.a(paramTeamWorkFileImportInfo.b);
-        a(paramTeamWorkFileImportInfo, paramTeamWorkFileImportInfo.m, bool);
+        boolean bool = paramJSONObject.b(paramTeamWorkFileImportInfo.c);
+        a(paramTeamWorkFileImportInfo, paramTeamWorkFileImportInfo.F, bool);
         paramJSONObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
         localTencentDocData.docUrl = paramString;
-        ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).sendDocCooperationShare(paramJSONObject, this.a.jdField_a_of_type_AndroidAppActivity, localTencentDocData, paramTeamWorkFileImportInfo);
+        ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).sendDocCooperationShare(paramJSONObject, this.a.d, localTencentDocData, paramTeamWorkFileImportInfo);
         return;
       }
-      TeamWorkHandlerUtils.a(paramTeamWorkFileImportInfo.m, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.m());
+      TeamWorkHandlerUtils.b(paramTeamWorkFileImportInfo.F, this.a.c.ag());
     }
   }
   
@@ -126,7 +126,7 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver
     if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.c()))
     {
       int i;
-      if (paramTeamWorkFileImportInfo.l == 2) {
+      if (paramTeamWorkFileImportInfo.O == 2) {
         i = 1;
       } else {
         i = 0;
@@ -137,50 +137,50 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver
         TenDocLogReportHelper.a(null, "0X800ABA8");
       }
       if (i == 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(paramString, Boolean.valueOf(false));
+        this.a.k.a(paramString, Boolean.valueOf(false));
       }
-      if ((SimpleFilePresenter.c(this.a)) && (i != 0)) {
-        SimpleFilePresenter.b(this.a, true);
+      if ((SimpleFilePresenter.f(this.a)) && (i != 0)) {
+        SimpleFilePresenter.c(this.a, true);
       }
       if (i == 0) {
-        a(paramTeamWorkFileImportInfo, paramTeamWorkFileImportInfo.q, true);
+        a(paramTeamWorkFileImportInfo, paramTeamWorkFileImportInfo.P, true);
       }
-      paramTeamWorkFileImportInfo.q = null;
-      paramTeamWorkFileImportInfo.l = 0;
+      paramTeamWorkFileImportInfo.P = null;
+      paramTeamWorkFileImportInfo.O = 0;
     }
   }
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(paramInt);
+    if (this.a.k != null) {
+      this.a.k.f(paramInt);
     }
   }
   
   public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
     super.a(paramTeamWorkFileImportInfo);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d();
+    if (this.a.k != null) {
+      this.a.k.h();
     }
-    if ((paramTeamWorkFileImportInfo != null) && ((paramTeamWorkFileImportInfo.a()) || ((paramTeamWorkFileImportInfo.b()) && (paramTeamWorkFileImportInfo.g == 0))))
+    if ((paramTeamWorkFileImportInfo != null) && ((paramTeamWorkFileImportInfo.a()) || ((paramTeamWorkFileImportInfo.b()) && (paramTeamWorkFileImportInfo.B == 0))))
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
       if (paramTeamWorkFileImportInfo.b()) {
         ReportController.b(null, "dc00898", "", "", "0X800A627", "0X800A627", 1, 0, "", "", "", "");
       }
-      if (!TextUtils.isEmpty(paramTeamWorkFileImportInfo.h)) {
-        QQToast.a(localQQAppInterface.getApp(), 1, paramTeamWorkFileImportInfo.h, 0).a();
+      if (!TextUtils.isEmpty(paramTeamWorkFileImportInfo.x)) {
+        QQToast.makeText(localQQAppInterface.getApp(), 1, paramTeamWorkFileImportInfo.x, 0).show();
       } else {
-        QQToast.a(localQQAppInterface.getApp(), 1, 2131719628, 0).a();
+        QQToast.makeText(localQQAppInterface.getApp(), 1, 2131917225, 0).show();
       }
     }
     if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.c())) {
       TenDocLogReportHelper.a(null, "0X800ABAD");
     }
-    if ((paramTeamWorkFileImportInfo != null) && ((paramTeamWorkFileImportInfo.c()) || (paramTeamWorkFileImportInfo.b())) && (paramTeamWorkFileImportInfo.g == 1)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.e(3);
+    if ((paramTeamWorkFileImportInfo != null) && ((paramTeamWorkFileImportInfo.c()) || (paramTeamWorkFileImportInfo.b())) && (paramTeamWorkFileImportInfo.B == 1)) {
+      this.a.k.e(3);
     }
   }
   
@@ -188,13 +188,13 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver
   {
     super.a(paramString, paramTeamWorkFileImportInfo);
     c(paramString, paramTeamWorkFileImportInfo);
-    if ((paramTeamWorkFileImportInfo != null) && ((paramTeamWorkFileImportInfo.a()) || ((paramTeamWorkFileImportInfo.b()) && (paramTeamWorkFileImportInfo.g == 0))))
+    if ((paramTeamWorkFileImportInfo != null) && ((paramTeamWorkFileImportInfo.a()) || ((paramTeamWorkFileImportInfo.b()) && (paramTeamWorkFileImportInfo.B == 0))))
     {
       b(paramString, paramTeamWorkFileImportInfo);
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d();
+    if (this.a.k != null) {
+      this.a.k.h();
     }
   }
   
@@ -203,55 +203,55 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver
     super.a(paramString1, paramString2, paramTeamWorkFileImportInfo);
     if ((paramTeamWorkFileImportInfo != null) && (paramString2 != null) && (paramTeamWorkFileImportInfo.b()))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(paramString1, null);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.e(5);
-      SimpleFilePresenter.a(this.a, false, paramTeamWorkFileImportInfo.jdField_a_of_type_Int);
+      this.a.k.a(paramString1, null);
+      this.a.k.e(5);
+      SimpleFilePresenter.a(this.a, false, paramTeamWorkFileImportInfo.a);
     }
     if ((paramTeamWorkFileImportInfo != null) && (paramString2 != null) && (paramTeamWorkFileImportInfo.c()))
     {
       boolean bool;
-      if (paramTeamWorkFileImportInfo.l == 2) {
+      if (paramTeamWorkFileImportInfo.O == 2) {
         bool = true;
       } else {
         bool = false;
       }
-      paramTeamWorkFileImportInfo.l = 0;
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(paramString1, Boolean.valueOf(bool));
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.e(5);
+      paramTeamWorkFileImportInfo.O = 0;
+      this.a.k.a(paramString1, Boolean.valueOf(bool));
+      this.a.k.e(5);
     }
   }
   
   public void a(boolean paramBoolean)
   {
     super.a(paramBoolean);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(paramBoolean);
+    if (this.a.k != null) {
+      this.a.k.f(paramBoolean);
     }
   }
   
   public void b(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
     super.b(paramTeamWorkFileImportInfo);
-    if ((paramTeamWorkFileImportInfo != null) && ((paramTeamWorkFileImportInfo.a()) || ((paramTeamWorkFileImportInfo.b()) && (paramTeamWorkFileImportInfo.g == 0))) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer != null))
+    if ((paramTeamWorkFileImportInfo != null) && ((paramTeamWorkFileImportInfo.a()) || ((paramTeamWorkFileImportInfo.b()) && (paramTeamWorkFileImportInfo.B == 0))) && (this.a.k != null))
     {
-      String str = this.a.jdField_a_of_type_AndroidAppActivity.getString(2131698525);
+      String str = this.a.d.getString(2131896471);
       if (paramTeamWorkFileImportInfo.b())
       {
-        if (!TencentDocLocalCooperationProcessor.a().b(paramTeamWorkFileImportInfo.b))
+        if (!TencentDocLocalCooperationProcessor.a().c(paramTeamWorkFileImportInfo.c))
         {
-          str = HardCodeUtil.a(2131698212);
-          this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.h(str);
+          str = HardCodeUtil.a(2131896113);
+          this.a.k.h(str);
         }
       }
       else {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.h(str);
+        this.a.k.h(str);
       }
       TenDocLogReportHelper.a(null, "0X800A21E");
     }
-    if ((paramTeamWorkFileImportInfo != null) && ((paramTeamWorkFileImportInfo.c()) || (paramTeamWorkFileImportInfo.b())) && (paramTeamWorkFileImportInfo.g == 1))
+    if ((paramTeamWorkFileImportInfo != null) && ((paramTeamWorkFileImportInfo.c()) || (paramTeamWorkFileImportInfo.b())) && (paramTeamWorkFileImportInfo.B == 1))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(paramTeamWorkFileImportInfo);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.e(1);
+      this.a.k.a(paramTeamWorkFileImportInfo);
+      this.a.k.e(1);
     }
   }
   
@@ -260,20 +260,20 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver
     super.c(paramTeamWorkFileImportInfo);
     if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.b()))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.e(4);
-      SimpleFilePresenter.a(this.a, true, paramTeamWorkFileImportInfo.jdField_a_of_type_Int);
+      this.a.k.e(4);
+      SimpleFilePresenter.a(this.a, true, paramTeamWorkFileImportInfo.a);
       return;
     }
     if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.c()))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.e(5);
+      this.a.k.e(5);
       TenDocLogReportHelper.a(null, "0X800ABA4");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter.InnerTeamWorkFileImportObserver
  * JD-Core Version:    0.7.0.1
  */

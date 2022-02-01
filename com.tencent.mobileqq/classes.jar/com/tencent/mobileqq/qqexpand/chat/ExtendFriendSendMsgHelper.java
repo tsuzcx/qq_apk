@@ -29,34 +29,34 @@ import mqq.os.MqqHandler;
 
 public class ExtendFriendSendMsgHelper
 {
-  private static volatile ExtendFriendSendMsgHelper jdField_a_of_type_ComTencentMobileqqQqexpandChatExtendFriendSendMsgHelper;
-  private long jdField_a_of_type_Long;
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private ISendMsgInterface jdField_a_of_type_ComTencentMobileqqQqexpandChatISendMsgInterface;
-  ExpandObserver jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver = new ExtendFriendSendMsgHelper.1(this);
+  private static volatile ExtendFriendSendMsgHelper b;
+  ExpandObserver a = new ExtendFriendSendMsgHelper.1(this);
+  private long c;
+  private BaseQQAppInterface d;
+  private ISendMsgInterface e;
   
   private ExtendFriendSendMsgHelper(BaseQQAppInterface paramBaseQQAppInterface)
   {
     if (paramBaseQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-      this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver);
-      this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver);
+      this.d = paramBaseQQAppInterface;
+      this.d.removeObserver(this.a);
+      this.d.addObserver(this.a);
     }
   }
   
   public static ExtendFriendSendMsgHelper a(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    if (jdField_a_of_type_ComTencentMobileqqQqexpandChatExtendFriendSendMsgHelper == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQqexpandChatExtendFriendSendMsgHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqQqexpandChatExtendFriendSendMsgHelper = new ExtendFriendSendMsgHelper(paramBaseQQAppInterface);
+        if (b == null) {
+          b = new ExtendFriendSendMsgHelper(paramBaseQQAppInterface);
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQqexpandChatExtendFriendSendMsgHelper;
+    return b;
   }
   
   public static String a(QQAppInterface paramQQAppInterface)
@@ -69,9 +69,9 @@ public class ExtendFriendSendMsgHelper
       }
       return "";
     }
-    if (paramQQAppInterface.a() != null)
+    if (paramQQAppInterface.ag() != null)
     {
-      paramQQAppInterface = paramQQAppInterface.j();
+      paramQQAppInterface = paramQQAppInterface.J();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -94,7 +94,7 @@ public class ExtendFriendSendMsgHelper
       QLog.d("ExtendFriendSendMsgHelper", 1, "showMatchCountDialog() activity is null just return");
       return;
     }
-    DialogUtil.a(paramActivity, 230).setMessage(paramActivity.getString(2131698894)).setPositiveButton(paramActivity.getString(2131698893), new ExtendFriendSendMsgHelper.2()).show();
+    DialogUtil.a(paramActivity, 230).setMessage(paramActivity.getString(2131896866)).setPositiveButton(paramActivity.getString(2131896865), new ExtendFriendSendMsgHelper.2()).show();
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2)
@@ -116,17 +116,17 @@ public class ExtendFriendSendMsgHelper
   
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt, MatchInfo paramMatchInfo)
   {
-    ((ILimitChatUtils)QRoute.api(ILimitChatUtils.class)).resetMatchChatAIOData(paramBaseQQAppInterface, paramMatchInfo.jdField_b_of_type_JavaLangString);
-    ((ILimitChatUtils)QRoute.api(ILimitChatUtils.class)).addTopicMessage(paramBaseQQAppInterface, paramMatchInfo, paramMatchInfo.jdField_a_of_type_Long, 2, paramInt);
+    ((ILimitChatUtils)QRoute.api(ILimitChatUtils.class)).resetMatchChatAIOData(paramBaseQQAppInterface, paramMatchInfo.c);
+    ((ILimitChatUtils)QRoute.api(ILimitChatUtils.class)).addTopicMessage(paramBaseQQAppInterface, paramMatchInfo, paramMatchInfo.e, 2, paramInt);
     if (paramInt == 1045) {
-      ((ILimitChatUtils)QRoute.api(ILimitChatUtils.class)).addExtendFriendUserInfo(paramBaseQQAppInterface, paramMatchInfo.jdField_b_of_type_JavaLangString, paramMatchInfo.jdField_b_of_type_Int, paramMatchInfo.f, TextUtils.isEmpty(paramMatchInfo.c) ^ true, 1);
+      ((ILimitChatUtils)QRoute.api(ILimitChatUtils.class)).addExtendFriendUserInfo(paramBaseQQAppInterface, paramMatchInfo.c, paramMatchInfo.i, paramMatchInfo.j, TextUtils.isEmpty(paramMatchInfo.d) ^ true, 1);
     } else {
-      ((ILimitChatUtils)QRoute.api(ILimitChatUtils.class)).addExtendFriendUserInfo(paramBaseQQAppInterface, paramMatchInfo.jdField_b_of_type_JavaLangString, paramMatchInfo.jdField_b_of_type_Int, paramMatchInfo.f, TextUtils.isEmpty(paramMatchInfo.c) ^ true, 3);
+      ((ILimitChatUtils)QRoute.api(ILimitChatUtils.class)).addExtendFriendUserInfo(paramBaseQQAppInterface, paramMatchInfo.c, paramMatchInfo.i, paramMatchInfo.j, TextUtils.isEmpty(paramMatchInfo.d) ^ true, 3);
     }
-    if (paramMatchInfo.jdField_b_of_type_Int >= 2)
+    if (paramMatchInfo.i >= 2)
     {
       paramBaseQQAppInterface = (IceBreakingMng)paramBaseQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG);
-      paramBaseQQAppInterface.b(paramMatchInfo.jdField_b_of_type_JavaLangString);
+      paramBaseQQAppInterface.b(paramMatchInfo.c);
       paramBaseQQAppInterface.d();
     }
   }
@@ -143,7 +143,7 @@ public class ExtendFriendSendMsgHelper
       QLog.d("ExtendFriendSendMsgHelper", 1, "showToast() activity is null just return");
       return;
     }
-    QQToast.a(paramQBaseActivity, paramString, 0).b(paramQBaseActivity.getTitleBarHeight());
+    QQToast.makeText(paramQBaseActivity, paramString, 0).show(paramQBaseActivity.getTitleBarHeight());
   }
   
   public static void a(QBaseActivity paramQBaseActivity, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
@@ -153,20 +153,20 @@ public class ExtendFriendSendMsgHelper
       QLog.d("ExtendFriendSendMsgHelper", 1, "showCampusVerifyDialog() activity is null just return");
       return;
     }
-    DialogUtil.a(paramQBaseActivity, 230).setMessage(paramQBaseActivity.getString(2131698892)).setNegativeButton(paramQBaseActivity.getString(2131698890), new ExtendFriendSendMsgHelper.4()).setPositiveButton(paramQBaseActivity.getString(2131698891), new ExtendFriendSendMsgHelper.3(paramBoolean, paramQBaseActivity, paramInt, paramString1, paramString2)).show();
+    DialogUtil.a(paramQBaseActivity, 230).setMessage(paramQBaseActivity.getString(2131896864)).setNegativeButton(paramQBaseActivity.getString(2131896862), new ExtendFriendSendMsgHelper.4()).setPositiveButton(paramQBaseActivity.getString(2131896863), new ExtendFriendSendMsgHelper.3(paramBoolean, paramQBaseActivity, paramInt, paramString1, paramString2)).show();
   }
   
   public void a()
   {
-    BaseQQAppInterface localBaseQQAppInterface = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+    BaseQQAppInterface localBaseQQAppInterface = this.d;
     if (localBaseQQAppInterface != null)
     {
-      localBaseQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver);
-      this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = null;
+      localBaseQQAppInterface.removeObserver(this.a);
+      this.d = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandChatISendMsgInterface = null;
-    jdField_a_of_type_ComTencentMobileqqQqexpandChatExtendFriendSendMsgHelper = null;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver = null;
+    this.e = null;
+    b = null;
+    this.a = null;
   }
   
   public void a(BaseQQAppInterface paramBaseQQAppInterface, AllInOne paramAllInOne, ISendMsgInterface paramISendMsgInterface)
@@ -180,7 +180,7 @@ public class ExtendFriendSendMsgHelper
         QLog.d("ExtendFriendSendMsgHelper", 2, String.format("sendMsg uin=%s nickName=%s voiceCode=%s", new Object[] { str1, str2, arrayOfByte }));
       }
       a(paramBaseQQAppInterface, str1, str2, arrayOfByte, ExpandUserInfo.subIDToFromType(paramAllInOne.subSourceId), paramISendMsgInterface);
-      int i = ExtendFriendReport.a();
+      int i = ExtendFriendReport.c();
       if ((i == 1) || (i == 2))
       {
         if (i == 1) {
@@ -188,7 +188,7 @@ public class ExtendFriendSendMsgHelper
         } else {
           i = 4;
         }
-        ExtendFriendReport.a().a(i, str1, "", ExtendFriendReport.a(), ExtendFriendReport.b(), ExtendFriendReport.c());
+        ExtendFriendReport.a().a(i, str1, "", ExtendFriendReport.d(), ExtendFriendReport.e(), ExtendFriendReport.f());
       }
     }
   }
@@ -197,15 +197,15 @@ public class ExtendFriendSendMsgHelper
   {
     if ((paramBaseQQAppInterface != null) && (paramISendMsgInterface != null))
     {
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L)
+      if (System.currentTimeMillis() - this.c < 1000L)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ExtendFriendSendMsgHelper", 2, "sendMsg is fast Click");
         }
         return;
       }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandChatISendMsgInterface = paramISendMsgInterface;
+      this.c = System.currentTimeMillis();
+      this.e = paramISendMsgInterface;
       ((IExpandHandler)paramBaseQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).a(paramBaseQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramArrayOfByte);
       ThreadManager.getSubThreadHandler().post(new ExtendFriendSendMsgHelper.9(this, paramInt, paramString1));
       return;
@@ -223,7 +223,7 @@ public class ExtendFriendSendMsgHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.ExtendFriendSendMsgHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -13,36 +13,36 @@ class ArkMultiProc$ArkViewInputCallback$1
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    int j = this.jdField_a_of_type_Int;
+    int j = this.a;
     if (j == 2)
     {
       if (i == 0) {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
+        this.b.doInputCommand(5);
       } else if (i == 1) {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
+        this.b.doInputCommand(4);
       } else if (i == 2) {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+        this.b.doInputCommand(3);
       }
     }
     else if (j == 1)
     {
       if (i == 0) {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
+        this.b.doInputCommand(1);
       } else if (i == 1) {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
+        this.b.doInputCommand(2);
       } else if (i == 2) {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+        this.b.doInputCommand(3);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+      this.b.doInputCommand(3);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkMultiProc.ArkViewInputCallback.1
  * JD-Core Version:    0.7.0.1
  */

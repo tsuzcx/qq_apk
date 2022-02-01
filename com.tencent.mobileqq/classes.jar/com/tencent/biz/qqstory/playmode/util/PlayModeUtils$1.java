@@ -21,7 +21,7 @@ final class PlayModeUtils$1
       paramURLDrawable.append(QLog.getStackTraceString(paramThrowable));
       QLog.d("Q.qqstory.player.PlayModeUtils", 2, paramURLDrawable.toString());
     }
-    paramURLDrawable = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$ImageViewLoadCallback;
+    paramURLDrawable = this.b;
     if (paramURLDrawable != null) {
       paramURLDrawable.b();
     }
@@ -34,8 +34,8 @@ final class PlayModeUtils$1
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadSuccessed");
     }
-    StoryReportor.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
-    paramURLDrawable = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$ImageViewLoadCallback;
+    StoryReportor.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.a), 0, new String[0]);
+    paramURLDrawable = this.b;
     if (paramURLDrawable != null) {
       paramURLDrawable.a();
     }
@@ -43,7 +43,7 @@ final class PlayModeUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.1
  * JD-Core Version:    0.7.0.1
  */

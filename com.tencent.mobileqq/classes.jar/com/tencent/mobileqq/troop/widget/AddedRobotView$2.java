@@ -18,19 +18,19 @@ class AddedRobotView$2
     QLog.i("AddedRobotView", 1, paramRecyclerView.toString());
     if (paramInt != 0)
     {
-      AddedRobotView.a(this.a).pause();
+      AddedRobotView.b(this.a).pause();
       return;
     }
-    if (AddedRobotView.a(this.a).isPausing())
+    if (AddedRobotView.b(this.a).isPausing())
     {
-      AddedRobotView.a(this.a).resume();
-      AddedRobotView.a(this.a).notifyDataSetChanged();
+      AddedRobotView.b(this.a).resume();
+      AddedRobotView.d(this.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AddedRobotView.2
  * JD-Core Version:    0.7.0.1
  */

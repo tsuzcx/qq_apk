@@ -10,8 +10,8 @@ class GameActivityCenterCtrl$ShowAwardResult$1$1
   
   public void run()
   {
-    GameActivityCenterCtrl.ShowAwardResult.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl$ShowAwardResult$1.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl$ShowAwardResult, (Activity)this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl$ShowAwardResult$1.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl$ShowAwardResult$1.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameLaunchWebHelper.a();
+    GameActivityCenterCtrl.ShowAwardResult.a(this.c.c, (Activity)this.c.a, this.a, this.c.b);
+    this.b.a();
   }
 }
 

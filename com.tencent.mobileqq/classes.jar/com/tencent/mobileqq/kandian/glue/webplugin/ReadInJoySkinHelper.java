@@ -16,26 +16,26 @@ import mqq.app.AppRuntime;
 public class ReadInJoySkinHelper
   implements IReadInJoySkinHelper
 {
-  private TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
-  private HashMap<String, ReadInJoySkinHelper.SkinDownloadListener> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private HashMap<String, ReadInJoySkinHelper.SkinDownloadListener> b = new HashMap();
+  private AppRuntime c;
+  private TroopMemberApiService d;
   
   public ReadInJoySkinHelper(AppRuntime paramAppRuntime, TroopMemberApiService paramTroopMemberApiService)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
+    this.c = paramAppRuntime;
+    this.d = paramTroopMemberApiService;
   }
   
   public void a()
   {
     QLog.d("ReadInJoySkinHelper", 1, "onDestroy");
-    ReadInJoySkinManager localReadInJoySkinManager = (ReadInJoySkinManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    ReadInJoySkinManager localReadInJoySkinManager = (ReadInJoySkinManager)this.c.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER);
+    Iterator localIterator = this.b.entrySet().iterator();
     while (localIterator.hasNext()) {
       localReadInJoySkinManager.b((DownloadListener)((Map.Entry)localIterator.next()).getValue());
     }
-    this.jdField_a_of_type_MqqAppAppRuntime = null;
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = null;
+    this.c = null;
+    this.d = null;
   }
   
   public void a(Bundle paramBundle)
@@ -43,8 +43,8 @@ public class ReadInJoySkinHelper
     if (QLog.isColorLevel()) {
       QLog.d("readinjoy", 4, "MessengerService receive load skin cmd");
     }
-    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime;
-    if ((localObject1 != null) && (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService != null))
+    Object localObject1 = this.c;
+    if ((localObject1 != null) && (this.d != null))
     {
       Object localObject2 = (ReadInJoySkinManager)((AppRuntime)localObject1).getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER);
       localObject1 = paramBundle.getString("skinId");
@@ -53,8 +53,8 @@ public class ReadInJoySkinHelper
       String str2 = paramBundle.getString("skinUrl");
       long l2 = paramBundle.getLong("startTime");
       long l3 = paramBundle.getLong("endTime");
-      ReadInJoySkinHelper.SkinDownloadListener localSkinDownloadListener = new ReadInJoySkinHelper.SkinDownloadListener(this.jdField_a_of_type_MqqAppAppRuntime, (String)localObject1, paramBundle, this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService);
-      this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, localSkinDownloadListener);
+      ReadInJoySkinHelper.SkinDownloadListener localSkinDownloadListener = new ReadInJoySkinHelper.SkinDownloadListener(this.c, (String)localObject1, paramBundle, this.d);
+      this.b.put(localObject1, localSkinDownloadListener);
       boolean bool = ((ReadInJoySkinManager)localObject2).a((String)localObject1, str1, str2, l1, l2, l3, localSkinDownloadListener);
       if (QLog.isColorLevel())
       {
@@ -70,7 +70,7 @@ public class ReadInJoySkinHelper
         ((Bundle)localObject2).putInt("retCode", 0);
         ((Bundle)localObject2).putInt("rate", 100);
         ((Bundle)localObject2).putString("skinId", (String)localObject1);
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(107, (Bundle)localObject2);
+        this.d.a(107, (Bundle)localObject2);
       }
       return;
     }
@@ -84,10 +84,10 @@ public class ReadInJoySkinHelper
     if (QLog.isColorLevel()) {
       QLog.d("readinjoy", 4, "MessengerService receive cancel load skin cmd");
     }
-    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime;
+    Object localObject1 = this.c;
     if (localObject1 != null)
     {
-      if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService == null) {
+      if (this.d == null) {
         return;
       }
       Object localObject2 = (ReadInJoySkinManager)((AppRuntime)localObject1).getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER);
@@ -104,7 +104,7 @@ public class ReadInJoySkinHelper
       }
       ((Bundle)localObject2).putInt("retCode", i);
       ((Bundle)localObject2).putString("skinId", (String)localObject1);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(108, (Bundle)localObject2);
+      this.d.a(108, (Bundle)localObject2);
     }
   }
   
@@ -115,7 +115,7 @@ public class ReadInJoySkinHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.webplugin.ReadInJoySkinHelper
  * JD-Core Version:    0.7.0.1
  */

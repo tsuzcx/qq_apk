@@ -16,7 +16,7 @@ class UiApiPlugin$29
   {
     if (paramString == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
+      this.b.callJs(this.a, new String[] { "{\"code\":-4}" });
       return;
     }
     JSONObject localJSONObject = new JSONObject();
@@ -28,7 +28,7 @@ class UiApiPlugin$29
       }
       localJSONObject.put("code", 0);
       localStringBuilder = new StringBuilder("data:");
-      if (!BaseImageUtil.b(paramString)) {
+      if (!BaseImageUtil.c(paramString)) {
         break label201;
       }
       str = "image/gif;";
@@ -49,17 +49,17 @@ class UiApiPlugin$29
     localJSONObject.put("imgData", localStringBuilder);
     localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
     localJSONObject.put("imagePath", paramString);
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+    this.b.callJs(this.a, new String[] { localJSONObject.toString() });
     return;
     label155:
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+    this.b.callJs(this.a, new String[] { "{\"code\":-3}" });
     return;
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+    this.b.callJs(this.a, new String[] { "{\"code\":-3}" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.29
  * JD-Core Version:    0.7.0.1
  */

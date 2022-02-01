@@ -107,7 +107,7 @@ public class ProtocolHelper
         return;
       }
       localObject1 = (QQAppInterface)localObject1;
-      if (FileIPv6StrateyController.a().isConfigEnableIPV6((BaseQQAppInterface)localObject1, 7))
+      if (FileIPv6StrateyController.b().isConfigEnableIPV6((BaseQQAppInterface)localObject1, 7))
       {
         paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.v6_select_type = V6SelectType_IPv4;
         paramRspBody = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_dns.get();
@@ -121,7 +121,7 @@ public class ProtocolHelper
           QLog.i("Dataline", 1, ((StringBuilder)localObject2).toString());
           int i = 0;
           paramRspBody = new FileIPv6StrateyController.DomainInfo(paramRspBody, 0);
-          localObject1 = FileIPv6StrateyController.a().getIPlistForV6Domain((BaseQQAppInterface)localObject1, paramRspBody, 7);
+          localObject1 = FileIPv6StrateyController.b().getIPlistForV6Domain((BaseQQAppInterface)localObject1, paramRspBody, 7);
           if ((localObject1 != null) && (!((FileIPv6StrateyController.IPListInfo)localObject1).a()))
           {
             boolean bool = FileIPv6StrateyController.a();
@@ -132,21 +132,21 @@ public class ProtocolHelper
               paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_ip = "";
               paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadip_list = null;
             }
-            if (((FileIPv6StrateyController.IPListInfo)localObject1).jdField_a_of_type_Int == 2)
+            if (((FileIPv6StrateyController.IPListInfo)localObject1).a == 2)
             {
               paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.v6_select_type = V6SelectType_IPv6;
-              int j = ((FileIPv6StrateyController.IPListInfo)localObject1).jdField_a_of_type_JavaUtilList.size();
+              int j = ((FileIPv6StrateyController.IPListInfo)localObject1).b.size();
               paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadipv6_list = new String[j];
               while (i < j)
               {
-                localObject2 = (FileIPv6StrateyController.IPInfo)((FileIPv6StrateyController.IPListInfo)localObject1).jdField_a_of_type_JavaUtilList.get(i);
+                localObject2 = (FileIPv6StrateyController.IPInfo)((FileIPv6StrateyController.IPListInfo)localObject1).b.get(i);
                 paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadipv6_list[i] = ((FileIPv6StrateyController.IPInfo)localObject2).a();
                 StringBuilder localStringBuilder = new StringBuilder();
                 localStringBuilder.append(paramRspBody);
                 localStringBuilder.append(" ");
                 localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).a());
                 localStringBuilder.append(":");
-                localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).jdField_a_of_type_Int);
+                localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).b);
                 paramRspBody = localStringBuilder.toString();
                 i += 1;
               }
@@ -175,7 +175,7 @@ public class ProtocolHelper
         return;
       }
       localObject1 = (QQAppInterface)localObject1;
-      if (FileIPv6StrateyController.a().isConfigEnableIPV6((BaseQQAppInterface)localObject1, 7))
+      if (FileIPv6StrateyController.b().isConfigEnableIPV6((BaseQQAppInterface)localObject1, 7))
       {
         paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_IPv4;
         paramRspBody = paramRspBody.msg_apply_upload_rsp_v2.str_upload_dns.get();
@@ -189,7 +189,7 @@ public class ProtocolHelper
           paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody;
           int i = 0;
           paramRspBody = new FileIPv6StrateyController.DomainInfo(paramRspBody, 0);
-          localObject1 = FileIPv6StrateyController.a().getIPlistForV6Domain((BaseQQAppInterface)localObject1, paramRspBody, 7);
+          localObject1 = FileIPv6StrateyController.b().getIPlistForV6Domain((BaseQQAppInterface)localObject1, paramRspBody, 7);
           if ((localObject1 != null) && (!((FileIPv6StrateyController.IPListInfo)localObject1).a()))
           {
             boolean bool = FileIPv6StrateyController.a();
@@ -200,21 +200,21 @@ public class ProtocolHelper
               paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = "";
               paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = null;
             }
-            if (((FileIPv6StrateyController.IPListInfo)localObject1).jdField_a_of_type_Int == 2)
+            if (((FileIPv6StrateyController.IPListInfo)localObject1).a == 2)
             {
               paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_IPv6;
-              int j = ((FileIPv6StrateyController.IPListInfo)localObject1).jdField_a_of_type_JavaUtilList.size();
+              int j = ((FileIPv6StrateyController.IPListInfo)localObject1).b.size();
               paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadipv6_list = new String[j];
               while (i < j)
               {
-                localObject2 = (FileIPv6StrateyController.IPInfo)((FileIPv6StrateyController.IPListInfo)localObject1).jdField_a_of_type_JavaUtilList.get(i);
+                localObject2 = (FileIPv6StrateyController.IPInfo)((FileIPv6StrateyController.IPListInfo)localObject1).b.get(i);
                 paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadipv6_list[i] = ((FileIPv6StrateyController.IPInfo)localObject2).a();
                 StringBuilder localStringBuilder = new StringBuilder();
                 localStringBuilder.append(paramRspBody);
                 localStringBuilder.append(" ");
                 localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).a());
                 localStringBuilder.append(":");
-                localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).jdField_a_of_type_Int);
+                localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).b);
                 paramRspBody = localStringBuilder.toString();
                 i += 1;
               }
@@ -243,7 +243,7 @@ public class ProtocolHelper
         return;
       }
       localObject1 = (QQAppInterface)localObject1;
-      if (FileIPv6StrateyController.a().isConfigEnableIPV6((BaseQQAppInterface)localObject1, 7))
+      if (FileIPv6StrateyController.b().isConfigEnableIPV6((BaseQQAppInterface)localObject1, 7))
       {
         paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_IPv4;
         paramRspBody = paramRspBody.msg_apply_upload_rsp_v3.str_upload_dns.get();
@@ -257,7 +257,7 @@ public class ProtocolHelper
           paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody;
           int i = 0;
           paramRspBody = new FileIPv6StrateyController.DomainInfo(paramRspBody, 0);
-          localObject1 = FileIPv6StrateyController.a().getIPlistForV6Domain((BaseQQAppInterface)localObject1, paramRspBody, 7);
+          localObject1 = FileIPv6StrateyController.b().getIPlistForV6Domain((BaseQQAppInterface)localObject1, paramRspBody, 7);
           if ((localObject1 != null) && (!((FileIPv6StrateyController.IPListInfo)localObject1).a()))
           {
             boolean bool = FileIPv6StrateyController.a();
@@ -268,21 +268,21 @@ public class ProtocolHelper
               paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = "";
               paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = null;
             }
-            if (((FileIPv6StrateyController.IPListInfo)localObject1).jdField_a_of_type_Int == 2)
+            if (((FileIPv6StrateyController.IPListInfo)localObject1).a == 2)
             {
               paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_IPv6;
-              int j = ((FileIPv6StrateyController.IPListInfo)localObject1).jdField_a_of_type_JavaUtilList.size();
+              int j = ((FileIPv6StrateyController.IPListInfo)localObject1).b.size();
               paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadipv6_list = new String[j];
               while (i < j)
               {
-                localObject2 = (FileIPv6StrateyController.IPInfo)((FileIPv6StrateyController.IPListInfo)localObject1).jdField_a_of_type_JavaUtilList.get(i);
+                localObject2 = (FileIPv6StrateyController.IPInfo)((FileIPv6StrateyController.IPListInfo)localObject1).b.get(i);
                 paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadipv6_list[i] = ((FileIPv6StrateyController.IPInfo)localObject2).a();
                 StringBuilder localStringBuilder = new StringBuilder();
                 localStringBuilder.append(paramRspBody);
                 localStringBuilder.append(" ");
                 localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).a());
                 localStringBuilder.append(":");
-                localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).jdField_a_of_type_Int);
+                localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).b);
                 paramRspBody = localStringBuilder.toString();
                 i += 1;
               }
@@ -308,7 +308,7 @@ public class ProtocolHelper
     if (paramInt == 1)
     {
       localObject = paramString1;
-      if (FileManagerUtil.a(paramString1) != 0)
+      if (FileManagerUtil.c(paramString1) != 0)
       {
         localObject = paramString1;
         if (!paramBoolean)
@@ -371,7 +371,7 @@ public class ProtocolHelper
   
   public static void fillMsgHeader(SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, long paramLong1, long paramLong2, int paramInt)
   {
-    int i = AppSetting.a();
+    int i = AppSetting.d();
     paramMsgHeader.uint32_src_app_id.set(1001);
     paramMsgHeader.uint32_src_inst_id.set(i);
     paramMsgHeader.uint64_dst_uin.set(paramLong1);
@@ -744,7 +744,7 @@ public class ProtocolHelper
       return Long.valueOf(this.mApp.getCurrentAccountUin()).longValue();
     }
     if (i == 1) {
-      return ((SmartDeviceProxyMgr)((QQAppInterface)this.mApp).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a();
+      return ((SmartDeviceProxyMgr)((QQAppInterface)this.mApp).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).i();
     }
     return 0L;
   }
@@ -1492,14 +1492,14 @@ public class ProtocolHelper
         showFileIsEmptyDialog(paramString3);
         return null;
       }
-      if ((!QFileAssistantUtils.a()) && (((File)localObject).length() > 2147483648L))
+      if ((!QFileAssistantUtils.b()) && (((File)localObject).length() > 2147483648L))
       {
         showFileTooLargeDialog(paramString3);
         return null;
       }
     }
     Object localObject = new Session();
-    ((Session)localObject).uFileSizeSrc = FileManagerUtil.a(paramString1);
+    ((Session)localObject).uFileSizeSrc = FileManagerUtil.h(paramString1);
     ((Session)localObject).uSessionID = paramLong;
     ((Session)localObject).emFileFrom = paramInt1;
     ((Session)localObject).bSend = true;
@@ -1517,7 +1517,7 @@ public class ProtocolHelper
   
   public Session genSession(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    Session localSession = genSession(paramDataLineMsgRecord.fileFrom, paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, paramDataLineMsgRecord.filename, DataLineHandler.b(paramDataLineMsgRecord.msgtype), 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex);
+    Session localSession = genSession(paramDataLineMsgRecord.fileFrom, paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, paramDataLineMsgRecord.filename, DataLineHandler.c(paramDataLineMsgRecord.msgtype), 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex);
     if (localSession != null)
     {
       localSession.uFileSizeSrc = paramDataLineMsgRecord.filesize;
@@ -1568,7 +1568,7 @@ public class ProtocolHelper
   
   public MsgHeader msgHeader(long paramLong, int paramInt)
   {
-    int i = AppSetting.a();
+    int i = AppSetting.d();
     MsgHeader localMsgHeader = new MsgHeader();
     localMsgHeader.uint32_src_app_id = 1001;
     localMsgHeader.uint32_src_inst_id = i;
@@ -1591,7 +1591,7 @@ public class ProtocolHelper
       ((StringBuilder)localObject).append("'");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append("'");
-      ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131693718));
+      ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131891293));
       FMToastUtil.a(((StringBuilder)localObject).toString());
       return;
     }
@@ -1607,7 +1607,7 @@ public class ProtocolHelper
       ((StringBuilder)localObject).append("'");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append("'");
-      ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131693722));
+      ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131891297));
       FMToastUtil.a(((StringBuilder)localObject).toString());
       return;
     }
@@ -1623,7 +1623,7 @@ public class ProtocolHelper
       ((StringBuilder)localObject).append("'");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append("'");
-      ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131693720));
+      ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131891295));
       FMToastUtil.a(((StringBuilder)localObject).toString());
       return;
     }
@@ -1635,7 +1635,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      FMToastUtil.a(2131693759);
+      FMToastUtil.a(2131891334);
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.5(this));
@@ -1646,7 +1646,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      FMToastUtil.a(2131693758);
+      FMToastUtil.a(2131891333);
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.4(this));
@@ -1654,7 +1654,7 @@ public class ProtocolHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProtocolHelper
  * JD-Core Version:    0.7.0.1
  */

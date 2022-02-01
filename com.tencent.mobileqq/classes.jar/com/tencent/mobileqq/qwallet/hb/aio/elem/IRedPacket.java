@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.qwallet.hb.aio.elem;
 
-import com.tencent.mobileqq.qroute.QRouteApi;
 import java.util.List;
 import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
 
 public abstract interface IRedPacket
-  extends QRouteApi
 {
   public abstract JSONObject getPopAd(int paramInt1, int paramInt2);
   
@@ -42,7 +40,7 @@ public abstract interface IRedPacket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.IRedPacket
  * JD-Core Version:    0.7.0.1
  */

@@ -26,26 +26,26 @@ final class SensorAPIJavaScript$6
     }
     if (i == 2)
     {
-      paramBundle = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
+      paramBundle = new Intent(this.a, SplashActivity.class);
       paramBundle.setFlags(67108864);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
+      this.a.startActivity(paramBundle);
       return;
     }
-    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((this.b) && (!TextUtils.isEmpty(this.c)))
     {
-      paramBundle = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-      paramBundle.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+      paramBundle = AIOUtils.a(new Intent(this.a, SplashActivity.class), null);
+      paramBundle.putExtra("uin", this.c);
       paramBundle.putExtra("uintype", 1);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
+      this.a.startActivity(paramBundle);
       return;
     }
-    this.jdField_a_of_type_AndroidAppActivity.setResult(4660);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.a.setResult(4660);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.6
  * JD-Core Version:    0.7.0.1
  */

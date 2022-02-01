@@ -23,8 +23,8 @@ class AccountDetailBaseAdapter$13
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (!this.a.f) {
-      this.a.l();
+    if (!this.a.W) {
+      this.a.s();
     }
     if (QLog.isColorLevel())
     {
@@ -48,7 +48,7 @@ class AccountDetailBaseAdapter$13
     if (paramView == null) {
       return;
     }
-    this.a.k();
+    this.a.r();
     if ((paramView instanceof ImageView))
     {
       ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
@@ -61,7 +61,7 @@ class AccountDetailBaseAdapter$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.13
  * JD-Core Version:    0.7.0.1
  */

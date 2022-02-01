@@ -11,9 +11,11 @@ import android.view.Surface;
 import android.view.TextureView;
 import com.tencent.liteav.audio.TXCAudioEngine;
 import com.tencent.liteav.audio.d;
+import com.tencent.liteav.basic.d.c;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.TXCStatus;
+import com.tencent.liteav.basic.opengl.p;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 import com.tencent.liteav.network.TXCStreamDownloader;
@@ -26,7 +28,7 @@ import java.util.ArrayList;
 
 public class f
   extends n
-  implements TXCRenderAndDec.a, TXCRenderAndDec.b, com.tencent.liteav.audio.c, d, com.tencent.liteav.basic.b.b, com.tencent.liteav.network.f, com.tencent.liteav.renderer.a.a, g
+  implements TXCRenderAndDec.a, TXCRenderAndDec.b, d, com.tencent.liteav.audio.f, com.tencent.liteav.basic.c.b, com.tencent.liteav.network.f, com.tencent.liteav.renderer.a.a, g
 {
   private int A;
   private int B;
@@ -36,16 +38,15 @@ public class f
   private float[] F;
   private String G;
   private int H;
-  private boolean I;
-  private com.tencent.liteav.basic.a.b J;
-  private Object K;
-  private com.tencent.liteav.basic.b.a L;
-  private TXLivePlayer.ITXAudioRawDataListener M;
-  private String N;
-  private boolean O;
+  private com.tencent.liteav.basic.b.b I;
+  private Object J;
+  private com.tencent.liteav.basic.c.a K;
+  private TXLivePlayer.ITXAudioRawDataListener L;
+  private String M;
+  private boolean N;
+  private long O;
   private long P;
-  private long Q;
-  private f.a R;
+  private f.a Q;
   private TXCRenderAndDec e = null;
   private com.tencent.liteav.renderer.a f = null;
   private TXCStreamDownloader g = null;
@@ -93,19 +94,18 @@ public class f
     this.E = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
     this.F = new float[16];
     this.G = "";
-    this.I = false;
-    this.J = com.tencent.liteav.basic.a.b.a;
-    this.K = null;
-    this.L = new f.1(this);
-    this.N = "";
-    this.O = false;
+    this.I = com.tencent.liteav.basic.b.b.a;
+    this.J = null;
+    this.K = new f.1(this);
+    this.M = "";
+    this.N = false;
+    this.O = 0L;
     this.P = 0L;
-    this.Q = 0L;
-    this.R = null;
-    com.tencent.liteav.basic.d.c.a().a(paramContext);
-    TXCAudioEngine.CreateInstance(paramContext, com.tencent.liteav.basic.d.c.a().c());
-    TXCAudioEngine.getInstance().addEventCallback(new WeakReference(this.L));
-    long l1 = com.tencent.liteav.basic.d.c.a().a("Audio", "EnableAutoRestartDevice");
+    this.Q = null;
+    c.a().a(paramContext);
+    TXCAudioEngine.CreateInstance(paramContext, c.a().c());
+    TXCAudioEngine.getInstance().addEventCallback(new WeakReference(this.K));
+    long l1 = c.a().a("Audio", "EnableAutoRestartDevice");
     paramContext = TXCAudioEngine.getInstance();
     if ((l1 == 1L) || (l1 == -1L)) {
       bool = true;
@@ -114,11 +114,11 @@ public class f
     this.h = new Handler(Looper.getMainLooper());
     this.f = new com.tencent.liteav.renderer.a();
     this.f.a(this);
-    this.R = new f.a(this);
+    this.Q = new f.a(this);
     paramContext = new StringBuilder();
     paramContext.append("[FirstFramePath] TXCLivePlayer: create player success. instance:");
     paramContext.append(hashCode());
-    TXCLog.i("TXCLivePlayer", paramContext.toString());
+    c(paramContext.toString());
   }
   
   private void a(int paramInt, String paramString)
@@ -128,6 +128,7 @@ public class f
       Bundle localBundle = new Bundle();
       localBundle.putInt("EVT_ID", paramInt);
       localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
+      localBundle.putLong("EVT_UTC_TIME", TXCTimeUtil.getUtcTimeTick());
       if (paramString != null) {
         localBundle.putCharSequence("EVT_MSG", paramString);
       }
@@ -156,7 +157,11 @@ public class f
         this.g.setFlvSessionKey(this.a.l);
       }
     }
-    this.g.setID(this.N);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start network. network instance:");
+    localStringBuilder.append(this.g.hashCode());
+    c(localStringBuilder.toString());
+    this.g.setID(this.M);
     this.g.setListener(this);
     this.g.setNotifyListener(this);
     this.g.setHeaders(this.a.p);
@@ -178,23 +183,65 @@ public class f
   
   private void b(String paramString)
   {
-    this.N = String.format("%s-%d", new Object[] { paramString, Long.valueOf(TXCTimeUtil.getTimeTick() % 10000L) });
+    this.M = String.format("%s-%d", new Object[] { paramString, Long.valueOf(TXCTimeUtil.getTimeTick() % 10000L) });
     paramString = this.e;
     if (paramString != null) {
-      paramString.setID(this.N);
+      paramString.setID(this.M);
     }
     paramString = this.f;
     if (paramString != null) {
-      paramString.setID(this.N);
+      paramString.setID(this.M);
     }
     paramString = this.g;
     if (paramString != null) {
-      paramString.setID(this.N);
+      paramString.setID(this.M);
     }
     paramString = this.z;
     if (paramString != null) {
-      paramString.d(this.N);
+      paramString.d(this.M);
     }
+  }
+  
+  private void c(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = new StringBuilder();
+    paramString.append("TXCLivePlayer(");
+    paramString.append(hashCode());
+    paramString.append(") ");
+    paramString.append(str);
+    TXCLog.i("TXCLivePlayer", paramString.toString());
+  }
+  
+  private void d(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = new StringBuilder();
+    paramString.append("TXCLivePlayer(");
+    paramString.append(hashCode());
+    paramString.append(") ");
+    paramString.append(str);
+    TXCLog.e("TXCLivePlayer", paramString.toString());
+  }
+  
+  private void e(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = new StringBuilder();
+    paramString.append("TXCLivePlayer(");
+    paramString.append(hashCode());
+    paramString.append(") ");
+    paramString.append(str);
+    TXCLog.w("TXCLivePlayer", paramString.toString());
   }
   
   private void f(int paramInt)
@@ -210,7 +257,7 @@ public class f
     this.e.setDecListener(this);
     this.e.setRenderAndDecDelegate(this);
     this.e.setConfig(this.a);
-    this.e.setID(this.N);
+    this.e.setID(this.M);
     localObject = this.e;
     if (paramInt == 5) {
       bool = true;
@@ -224,8 +271,8 @@ public class f
   {
     if (this.x == null)
     {
-      this.A = this.f.i();
-      this.B = this.f.j();
+      this.A = this.f.h();
+      this.B = this.f.i();
       com.tencent.liteav.a.a.a locala = l();
       this.x = new com.tencent.liteav.a.a(this.b);
       this.x.a(locala);
@@ -242,8 +289,8 @@ public class f
     {
       this.D = new com.tencent.liteav.renderer.h(Boolean.valueOf(false));
       this.D.b();
-      this.D.b(this.f.g(), this.f.h());
-      this.D.a(this.f.g(), this.f.h());
+      this.D.b(this.f.f(), this.f.g());
+      this.D.a(this.f.f(), this.f.g());
       Matrix.setIdentityM(this.F, 0);
     }
   }
@@ -322,35 +369,38 @@ public class f
       bool = false;
     }
     TXCAudioEngine.getInstance();
-    TXCAudioEngine.enableAudioVolumeEvaluation(this.I, 300);
-    a(this.M);
+    TXCAudioEngine.enableAudioVolumeEvaluation(true, 300);
+    a(this.L);
     if (this.H == 5) {
-      TXCAudioEngine.getInstance().setRemoteAudioCacheParams(this.N, this.a.g ^ true, (int)(com.tencent.liteav.basic.a.a.b * 1000.0F), (int)(com.tencent.liteav.basic.a.a.b * 1000.0F), (int)(com.tencent.liteav.basic.a.a.c * 1000.0F));
+      TXCAudioEngine.getInstance().setRemoteAudioCacheParams(this.M, this.a.g ^ true, (int)(com.tencent.liteav.basic.b.a.b * 1000.0F), (int)(com.tencent.liteav.basic.b.a.b * 1000.0F), (int)(com.tencent.liteav.basic.b.a.c * 1000.0F));
     } else {
-      TXCAudioEngine.getInstance().setRemoteAudioCacheParams(this.N, this.a.g ^ true, (int)(this.a.a * 1000.0F), (int)(this.a.c * 1000.0F), (int)(this.a.b * 1000.0F));
+      TXCAudioEngine.getInstance().setRemoteAudioCacheParams(this.M, this.a.g ^ true, (int)(this.a.a * 1000.0F), (int)(this.a.c * 1000.0F), (int)(this.a.b * 1000.0F));
     }
-    TXCAudioEngine.getInstance().muteRemoteAudio(this.N, this.j);
-    TXCAudioEngine.getInstance().muteRemoteAudioInSpeaker(this.N, this.k);
-    TXCAudioEngine.getInstance().setRemotePlayoutVolume(this.N, this.l);
-    TXCAudioEngine.getInstance().setRemoteAudioStreamEventListener(this.N, this);
+    TXCAudioEngine.getInstance().muteRemoteAudio(this.M, this.j);
+    TXCAudioEngine.getInstance().muteRemoteAudioInSpeaker(this.M, this.k);
+    TXCAudioEngine.getInstance().setRemotePlayoutVolume(this.M, this.l);
+    TXCAudioEngine.getInstance().setRemoteAudioStreamEventListener(this.M, this);
     x();
-    TXCAudioEngine.getInstance().startRemoteAudio(this.N, bool);
+    TXCAudioEngine.getInstance().startRemoteAudio(this.M, bool);
   }
   
   private void o()
   {
-    TXCAudioEngine.getInstance().setRemoteAudioStreamEventListener(this.N, null);
-    TXCAudioEngine.getInstance().setSetAudioEngineRemoteStreamDataListener(this.N, null);
-    TXCAudioEngine.getInstance().stopRemoteAudio(this.N);
+    TXCAudioEngine.getInstance().setRemoteAudioStreamEventListener(this.M, null);
+    TXCAudioEngine.getInstance().setSetAudioEngineRemoteStreamDataListener(this.M, null);
+    TXCAudioEngine.getInstance().stopRemoteAudio(this.M);
     TXCAudioEngine.getInstance().UnInitAudioDevice();
   }
   
   private void p()
   {
-    TXCStreamDownloader localTXCStreamDownloader = this.g;
-    if (localTXCStreamDownloader != null)
+    if (this.g != null)
     {
-      localTXCStreamDownloader.setListener(null);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stop network. network instance:");
+      localStringBuilder.append(this.g.hashCode());
+      c(localStringBuilder.toString());
+      this.g.setListener(null);
       this.g.setNotifyListener(null);
       this.g.stop();
       this.g = null;
@@ -369,7 +419,7 @@ public class f
       bool = false;
     }
     locale.a(bool);
-    this.z.d(this.N);
+    this.z.d(this.M);
     this.z.e(this.g.getRTMPProxyUserId());
     this.z.a();
   }
@@ -386,21 +436,21 @@ public class f
   
   private void s()
   {
-    this.O = false;
+    this.N = false;
     x();
   }
   
   private void t()
   {
-    if (this.P > 0L)
+    if (this.O > 0L)
     {
       localObject = new Bundle();
-      ((Bundle)localObject).putInt("EVT_PLAY_PROGRESS", (int)(this.P / 1000L));
-      ((Bundle)localObject).putInt("EVT_PLAY_PROGRESS_MS", (int)this.P);
+      ((Bundle)localObject).putInt("EVT_PLAY_PROGRESS", (int)(this.O / 1000L));
+      ((Bundle)localObject).putInt("EVT_PLAY_PROGRESS_MS", (int)this.O);
       onNotifyEvent(2005, (Bundle)localObject);
     }
     Object localObject = this.h;
-    if ((localObject != null) && (this.O)) {
+    if ((localObject != null) && (this.N)) {
       ((Handler)localObject).postDelayed(new f.4(this), 1000L);
     }
   }
@@ -409,7 +459,7 @@ public class f
   {
     Handler localHandler = this.h;
     if (localHandler != null) {
-      localHandler.postDelayed(this.R, 2000L);
+      localHandler.postDelayed(this.Q, 2000L);
     }
   }
   
@@ -417,14 +467,14 @@ public class f
   {
     Handler localHandler = this.h;
     if (localHandler != null) {
-      localHandler.removeCallbacks(this.R);
+      localHandler.removeCallbacks(this.Q);
     }
   }
   
   private void w()
   {
     ArrayList localArrayList = new ArrayList();
-    String str = this.N;
+    String str = this.M;
     if (str != null) {
       localArrayList.add(str);
     }
@@ -433,11 +483,11 @@ public class f
   
   private void x()
   {
-    if ((this.t) || (this.M != null) || (this.O)) {
-      TXCAudioEngine.getInstance().setSetAudioEngineRemoteStreamDataListener(this.N, this);
+    if ((this.t) || (this.L != null) || (this.N)) {
+      TXCAudioEngine.getInstance().setSetAudioEngineRemoteStreamDataListener(this.M, this);
     }
-    if ((!this.t) && (this.M == null) && (!this.O)) {
-      TXCAudioEngine.getInstance().setSetAudioEngineRemoteStreamDataListener(this.N, null);
+    if ((!this.t) && (this.L == null) && (!this.N)) {
+      TXCAudioEngine.getInstance().setSetAudioEngineRemoteStreamDataListener(this.M, null);
     }
   }
   
@@ -472,7 +522,7 @@ public class f
       {
         boolean bool = ((TXCStreamDownloader)localObject).switchStream(paramString);
         long l1 = 0L;
-        long l2 = TXCStatus.c(this.N, 2007);
+        long l2 = TXCStatus.c(this.M, 2007);
         localObject = this.e;
         if (localObject != null) {
           l1 = ((TXCRenderAndDec)localObject).getVideoCacheDuration();
@@ -482,7 +532,7 @@ public class f
         ((StringBuilder)localObject).append(l1);
         ((StringBuilder)localObject).append(" audio:");
         ((StringBuilder)localObject).append(l2);
-        TXCLog.i("TXCLivePlayer", ((StringBuilder)localObject).toString());
+        c(((StringBuilder)localObject).toString());
         if (bool)
         {
           this.G = paramString;
@@ -498,7 +548,7 @@ public class f
   {
     if (c())
     {
-      TXCLog.w("TXCLivePlayer", "play: ignore start play when is playing");
+      e("play: ignore start play when is playing");
       return -2;
     }
     if ((this.a != null) && (this.a.c > this.a.b))
@@ -509,7 +559,7 @@ public class f
       paramString.append(") > maxAutoAdjustCacheTime(");
       paramString.append(this.a.b);
       paramString.append(")]!!!!!!");
-      TXCLog.e("TXCLivePlayer", paramString.toString());
+      d(paramString.toString());
       return -1;
     }
     if ((this.a.a > this.a.b) || (this.a.a < this.a.c))
@@ -522,20 +572,19 @@ public class f
       localStringBuilder.append(" and maxAutoAdjustCacheTime ");
       localStringBuilder.append(this.a.b);
       localStringBuilder.append(" , fix to maxAutoAdjustCacheTime");
-      TXCLog.w("TXCLivePlayer", localStringBuilder.toString());
+      e(localStringBuilder.toString());
       this.a.a = this.a.b;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[FirstFramePath] TXCLivePlayer: start play. instance: ");
     localStringBuilder.append(hashCode());
-    TXCLog.i("TXCLivePlayer", localStringBuilder.toString());
+    c(localStringBuilder.toString());
     this.G = paramString;
     this.H = paramInt;
     b(paramString);
     this.o = true;
     this.w = 0;
     this.u = true;
-    this.v = true;
     f(paramInt);
     n();
     paramInt = b(paramString, paramInt);
@@ -557,19 +606,18 @@ public class f
       a(this.p);
       q();
       u();
-      if ((this.J == com.tencent.liteav.basic.a.b.c) && (this.i == null))
+      if ((this.I == com.tencent.liteav.basic.b.b.c) && (this.i == null))
       {
         paramString = this.f;
         if (paramString != null) {
-          paramString.c(this.K);
+          paramString.c(this.J);
         }
       }
-      TXCDRApi.txReportDAU(this.b, com.tencent.liteav.basic.datareport.a.bt);
     }
     try
     {
       if (Class.forName("com.tencent.liteav.demo.play.SuperPlayerView") != null) {
-        TXCDRApi.txReportDAU(this.b, com.tencent.liteav.basic.datareport.a.bE);
+        TXCDRApi.txReportDAU(this.b, com.tencent.liteav.basic.datareport.a.bF);
       }
       return paramInt;
     }
@@ -581,7 +629,7 @@ public class f
   {
     if (!c())
     {
-      TXCLog.w("TXCLivePlayer", "play: ignore stop play when not started");
+      e("play: ignore stop play when not started");
       return -2;
     }
     TXCLog.v("TXCLivePlayer", "play: stop");
@@ -600,7 +648,7 @@ public class f
     {
       localObject = this.f;
       if (localObject != null) {
-        ((com.tencent.liteav.renderer.a)localObject).e();
+        ((com.tencent.liteav.renderer.a)localObject).d();
       }
     }
     o();
@@ -628,7 +676,7 @@ public class f
   {
     com.tencent.liteav.renderer.a locala = this.f;
     if (locala != null) {
-      locala.c(paramInt1, paramInt2);
+      locala.d(paramInt1, paramInt2);
     }
   }
   
@@ -647,11 +695,11 @@ public class f
     }
   }
   
-  public void a(com.tencent.liteav.basic.c.o paramo)
+  public void a(p paramp)
   {
     com.tencent.liteav.renderer.a locala = this.f;
     if (locala != null) {
-      locala.a(paramo);
+      locala.a(paramp);
     }
   }
   
@@ -664,15 +712,15 @@ public class f
     }
   }
   
-  public void a(o paramo, com.tencent.liteav.basic.a.b paramb, Object paramObject)
+  public void a(o paramo, com.tencent.liteav.basic.b.b paramb, Object paramObject)
   {
-    this.J = paramb;
-    this.K = paramObject;
-    if ((c()) && (this.J == com.tencent.liteav.basic.a.b.c) && (this.i == null) && (paramo != null))
+    this.I = paramb;
+    this.J = paramObject;
+    if ((c()) && (this.I == com.tencent.liteav.basic.b.b.c) && (this.i == null) && (paramo != null))
     {
       paramObject = this.f;
       if (paramObject != null) {
-        paramObject.c(this.K);
+        paramObject.c(this.J);
       }
     }
     paramObject = this.e;
@@ -681,12 +729,12 @@ public class f
       paramObject.setVideoFrameListener(paramo, paramb);
       return;
     }
-    TXCLog.w("TXCLivePlayer", "setVideoFrameListener->enter with renderAndDec is empty");
+    e("setVideoFrameListener->enter with renderAndDec is empty");
   }
   
   public void a(TXLivePlayer.ITXAudioRawDataListener paramITXAudioRawDataListener)
   {
-    this.M = paramITXAudioRawDataListener;
+    this.L = paramITXAudioRawDataListener;
     x();
   }
   
@@ -719,13 +767,6 @@ public class f
     this.y = paramITXVideoRecordListener;
   }
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    this.I = paramBoolean;
-    TXCAudioEngine.getInstance();
-    TXCAudioEngine.enableAudioVolumeEvaluation(paramBoolean, paramInt);
-  }
-  
   public void b()
   {
     a(this.G, this.H);
@@ -743,19 +784,19 @@ public class f
   public void b(boolean paramBoolean)
   {
     this.j = paramBoolean;
-    TXCAudioEngine.getInstance().muteRemoteAudio(this.N, this.j);
+    TXCAudioEngine.getInstance().muteRemoteAudio(this.M, this.j);
   }
   
   public void c(int paramInt)
   {
     this.l = paramInt;
-    TXCAudioEngine.getInstance().setRemotePlayoutVolume(this.N, this.l);
+    TXCAudioEngine.getInstance().setRemotePlayoutVolume(this.M, this.l);
   }
   
   public void c(boolean paramBoolean)
   {
     this.k = paramBoolean;
-    TXCAudioEngine.getInstance().muteRemoteAudioInSpeaker(this.N, paramBoolean);
+    TXCAudioEngine.getInstance().muteRemoteAudioInSpeaker(this.M, paramBoolean);
   }
   
   public boolean c()
@@ -767,7 +808,7 @@ public class f
   {
     if (!this.t)
     {
-      TXCLog.w("TXCLivePlayer", "stopRecord: no recording task exist");
+      e("stopRecord: no recording task exist");
       return -1;
     }
     this.t = false;
@@ -785,14 +826,14 @@ public class f
   {
     if (this.t)
     {
-      TXCLog.e("TXCLivePlayer", "startRecord: there is existing uncompleted record task");
+      d("startRecord: there is existing uncompleted record task");
       return -1;
     }
     this.t = true;
     this.f.a(this);
     this.f.a(this);
     x();
-    TXCDRApi.txReportDAU(this.b, com.tencent.liteav.basic.datareport.a.av);
+    TXCDRApi.txReportDAU(this.b, com.tencent.liteav.basic.datareport.a.aw);
     return 0;
   }
   
@@ -803,11 +844,11 @@ public class f
   
   public void f()
   {
-    this.Q = 0L;
-    if (this.O) {
+    this.P = 0L;
+    if (this.N) {
       return;
     }
-    this.O = true;
+    this.N = true;
     x();
     Handler localHandler = this.h;
     if (localHandler != null) {
@@ -818,7 +859,7 @@ public class f
   public void g()
   {
     w();
-    Object localObject1 = com.tencent.liteav.basic.util.f.a();
+    Object localObject1 = com.tencent.liteav.basic.util.h.a();
     int i1 = localObject1[0] / 10;
     int i2 = localObject1[1] / 10;
     localObject1 = new StringBuilder();
@@ -827,16 +868,16 @@ public class f
     ((StringBuilder)localObject1).append(i2);
     ((StringBuilder)localObject1).append("%");
     localObject1 = ((StringBuilder)localObject1).toString();
-    int i3 = TXCStatus.c(this.N, 7102);
-    int i4 = TXCStatus.c(this.N, 7101);
-    String str = TXCStatus.b(this.N, 7110);
-    i2 = (int)TXCStatus.d(this.N, 6002);
+    int i3 = TXCStatus.c(this.M, 7102);
+    int i4 = TXCStatus.c(this.M, 7101);
+    String str = TXCStatus.b(this.M, 7110);
+    i2 = (int)TXCStatus.d(this.M, 6002);
     Bundle localBundle = new Bundle();
     Object localObject2 = this.f;
     if (localObject2 != null)
     {
-      localBundle.putInt("VIDEO_WIDTH", ((com.tencent.liteav.renderer.a)localObject2).i());
-      localBundle.putInt("VIDEO_HEIGHT", this.f.j());
+      localBundle.putInt("VIDEO_WIDTH", ((com.tencent.liteav.renderer.a)localObject2).h());
+      localBundle.putInt("VIDEO_HEIGHT", this.f.i());
     }
     localObject2 = this.e;
     if (localObject2 != null)
@@ -851,13 +892,13 @@ public class f
       } else {
         i1 = i2;
       }
-      double d = TXCStatus.c(this.N, 7120) * 10 / i1 / 10.0F;
+      double d = TXCStatus.c(this.M, 7120) * 10 / i1 / 10.0F;
       Double.isNaN(d);
       localBundle.putInt("VIDEO_GOP", (int)(d + 0.5D));
     }
     i1 = TXCAudioEngine.getInstance().getPlayAECType();
-    int i5 = TXCStatus.c(this.N, 2019);
-    int i6 = TXCStatus.c(this.N, 2020);
+    int i5 = TXCStatus.c(this.M, 2019);
+    int i6 = TXCStatus.c(this.M, 2020);
     int i7 = TXCAudioEngine.getInstance().getPlaySampleRate();
     int i8 = TXCAudioEngine.getInstance().getPlayChannels();
     localObject2 = new StringBuilder();
@@ -871,9 +912,9 @@ public class f
     ((StringBuilder)localObject2).append(",");
     ((StringBuilder)localObject2).append(i8);
     localBundle.putString("AUDIO_PLAY_INFO", ((StringBuilder)localObject2).toString());
-    localBundle.putInt("AUDIO_CACHE", TXCStatus.c(this.N, 2007));
-    localBundle.putInt("NET_JITTER", TXCStatus.c(this.N, 2018));
-    localBundle.putFloat("AUDIO_CACHE_THRESHOLD", TXCStatus.c(this.N, 2021) / 1000.0F);
+    localBundle.putInt("AUDIO_CACHE", TXCStatus.c(this.M, 2007));
+    localBundle.putInt("NET_JITTER", TXCStatus.c(this.M, 2018));
+    localBundle.putFloat("AUDIO_CACHE_THRESHOLD", TXCStatus.c(this.M, 2021) / 1000.0F);
     localBundle.putInt("NET_SPEED", i4 + i3);
     localBundle.putInt("VIDEO_FPS", i2);
     localBundle.putInt("VIDEO_BITRATE", i4);
@@ -882,13 +923,13 @@ public class f
     localBundle.putCharSequence("CPU_USAGE", (CharSequence)localObject1);
     this.w += 1;
     if (this.w == 5) {
-      if (!this.v) {
-        TXCStatus.a(this.N, 9009, Long.valueOf(0L));
+      if (this.v) {
+        TXCStatus.a(this.M, 6013, Long.valueOf(0L));
       } else {
-        TXCStatus.a(this.N, 9009, Long.valueOf(1L));
+        TXCStatus.a(this.M, 6013, Long.valueOf(1L));
       }
     }
-    com.tencent.liteav.basic.util.f.a(this.d, 15001, localBundle);
+    com.tencent.liteav.basic.util.h.a(this.d, 15001, localBundle);
     localObject1 = this.e;
     if (localObject1 != null) {
       ((TXCRenderAndDec)localObject1).updateLoadInfo();
@@ -901,7 +942,7 @@ public class f
   
   public int h()
   {
-    return TXCAudioEngine.getInstance().getRemotePlayoutVolumeLevel(this.N);
+    return TXCAudioEngine.getInstance().getRemotePlayoutVolumeLevel(this.M);
   }
   
   public void onAudioJitterBufferNotify(String paramString1, int paramInt, String paramString2)
@@ -922,30 +963,30 @@ public class f
       }
       this.x.a(paramArrayOfByte, l1);
     }
-    if (this.Q <= 0L)
+    if (this.P <= 0L)
     {
-      paramString = this.M;
+      paramString = this.L;
       if (paramString != null) {
         paramString.onAudioInfoChanged(paramInt1, paramInt2, 16);
       }
     }
-    paramString = this.M;
+    paramString = this.L;
     if (paramString != null) {
       paramString.onPcmDataAvailable(paramArrayOfByte, l1);
     }
-    paramLong = this.Q;
+    paramLong = this.P;
     if (paramLong <= 0L)
     {
-      this.Q = l1;
+      this.P = l1;
       return;
     }
-    this.P = (l1 - paramLong);
+    this.O = (l1 - paramLong);
   }
   
   public void onNotifyEvent(int paramInt, Bundle paramBundle)
   {
-    if ((2003 == paramInt) && (this.v)) {
-      this.v = false;
+    if ((2003 == paramInt) && (!this.v)) {
+      this.v = true;
     }
     if ((2003 == paramInt) || (2026 == paramInt))
     {
@@ -956,7 +997,8 @@ public class f
       }
       if (2026 == paramInt)
       {
-        TXCStatus.a(this.N, 2033, Long.valueOf(TXCTimeUtil.getTimeTick()));
+        a(2026, "Audio play started");
+        TXCStatus.a(this.M, 2033, Long.valueOf(TXCTimeUtil.getTimeTick()));
         return;
       }
     }
@@ -996,7 +1038,7 @@ public class f
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("decode video failed.");
       localStringBuilder.append(paramTXSNALPacket.getMessage());
-      TXCLog.e("TXCLivePlayer", localStringBuilder.toString());
+      d(localStringBuilder.toString());
     }
   }
   
@@ -1035,7 +1077,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.f
  * JD-Core Version:    0.7.0.1
  */

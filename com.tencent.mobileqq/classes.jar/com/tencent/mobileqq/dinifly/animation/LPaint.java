@@ -4,7 +4,7 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.os.LocaleList;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public class LPaint
   extends Paint
@@ -31,7 +31,7 @@ public class LPaint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.LPaint
  * JD-Core Version:    0.7.0.1
  */

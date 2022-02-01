@@ -5,42 +5,42 @@ import android.widget.ScrollView;
 
 public class InterpolateOnScrollPositionChangeHelper
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ScrollView jdField_a_of_type_AndroidWidgetScrollView;
-  private MaterialShapeDrawable jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
-  private final int[] jdField_a_of_type_ArrayOfInt;
-  private final int[] b;
+  private View a;
+  private MaterialShapeDrawable b;
+  private ScrollView c;
+  private final int[] d;
+  private final int[] e;
   
   public void a()
   {
-    ScrollView localScrollView = this.jdField_a_of_type_AndroidWidgetScrollView;
+    ScrollView localScrollView = this.c;
     if (localScrollView == null) {
       return;
     }
     if (localScrollView.getChildCount() != 0)
     {
-      this.jdField_a_of_type_AndroidWidgetScrollView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-      this.jdField_a_of_type_AndroidWidgetScrollView.getChildAt(0).getLocationInWindow(this.b);
-      int k = this.jdField_a_of_type_AndroidViewView.getTop() - this.jdField_a_of_type_ArrayOfInt[1] + this.b[1];
-      int i = this.jdField_a_of_type_AndroidViewView.getHeight();
-      int j = this.jdField_a_of_type_AndroidWidgetScrollView.getHeight();
+      this.c.getLocationInWindow(this.d);
+      this.c.getChildAt(0).getLocationInWindow(this.e);
+      int k = this.a.getTop() - this.d[1] + this.e[1];
+      int i = this.a.getHeight();
+      int j = this.c.getHeight();
       if (k < 0)
       {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.p(Math.max(0.0F, Math.min(1.0F, k / i + 1.0F)));
-        this.jdField_a_of_type_AndroidViewView.invalidate();
+        this.b.p(Math.max(0.0F, Math.min(1.0F, k / i + 1.0F)));
+        this.a.invalidate();
         return;
       }
       k += i;
       if (k > j)
       {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.p(Math.max(0.0F, Math.min(1.0F, 1.0F - (k - j) / i)));
-        this.jdField_a_of_type_AndroidViewView.invalidate();
+        this.b.p(Math.max(0.0F, Math.min(1.0F, 1.0F - (k - j) / i)));
+        this.a.invalidate();
         return;
       }
-      if (this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.i() != 1.0F)
+      if (this.b.S() != 1.0F)
       {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.p(1.0F);
-        this.jdField_a_of_type_AndroidViewView.invalidate();
+        this.b.p(1.0F);
+        this.a.invalidate();
       }
       return;
     }
@@ -49,7 +49,7 @@ public class InterpolateOnScrollPositionChangeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.InterpolateOnScrollPositionChangeHelper
  * JD-Core Version:    0.7.0.1
  */

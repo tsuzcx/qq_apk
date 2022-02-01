@@ -35,21 +35,21 @@ class QZoneVideoDownloadActivity$1
         i = paramMessage.arg1;
         paramMessage = this.this$0.mDownloadingText;
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131712437));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131910029));
         ((StringBuilder)localObject).append(i);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131712431));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131910024));
         paramMessage.setText(((StringBuilder)localObject).toString());
         this.this$0.mDownloadingBar.setProgress(i);
         return;
       }
       return;
     case 1003: 
-      Toast.makeText(this.this$0.getApplicationContext(), HardCodeUtil.a(2131712548), 1).show();
+      Toast.makeText(this.this$0.getApplicationContext(), HardCodeUtil.a(2131910135), 1).show();
       QzoneVideoBeaconReport.reportVideoEvent(this.this$0.uin, "qzone_video_recordtrim", "1006", null);
       this.this$0.finish();
       return;
     case 1002: 
-      String str = HardCodeUtil.a(2131712480);
+      String str = HardCodeUtil.a(2131910070);
       localObject = str;
       if (paramMessage != null)
       {
@@ -75,9 +75,9 @@ class QZoneVideoDownloadActivity$1
         i = paramMessage.arg1;
         paramMessage = this.this$0.mDownloadingText;
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131712473));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131910063));
         ((StringBuilder)localObject).append(i);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131712428));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131910021));
         paramMessage.setText(((StringBuilder)localObject).toString());
         this.this$0.mDownloadingBar.setProgress(i);
         return;
@@ -93,7 +93,7 @@ class QZoneVideoDownloadActivity$1
     }
     if (!QZoneVideoDownloadActivity.access$000(this.this$0).get())
     {
-      this.this$0.setContentView(2131563087);
+      this.this$0.setContentView(2131629727);
       this.this$0.initUI();
       QZoneVideoDownloadActivity.access$000(this.this$0).set(true);
     }
@@ -101,7 +101,7 @@ class QZoneVideoDownloadActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QZoneVideoDownloadActivity.1
  * JD-Core Version:    0.7.0.1
  */

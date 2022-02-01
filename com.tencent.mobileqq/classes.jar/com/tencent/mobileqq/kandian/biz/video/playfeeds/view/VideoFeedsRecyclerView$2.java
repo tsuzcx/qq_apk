@@ -15,9 +15,9 @@ class VideoFeedsRecyclerView$2
     this.a.removeOnLayoutChangeListener(this);
     paramView = VideoFeedsRecyclerView.a(this.a);
     paramInt2 = 0;
-    if ((paramView != null) && (VideoFeedsRecyclerView.a(this.a)))
+    if ((paramView != null) && (VideoFeedsRecyclerView.b(this.a)))
     {
-      if (VideoFeedsRecyclerView.a(this.a) == 0)
+      if (VideoFeedsRecyclerView.c(this.a) == 0)
       {
         double d = this.a.getHeight();
         Double.isNaN(d);
@@ -25,46 +25,46 @@ class VideoFeedsRecyclerView$2
       }
       else
       {
-        VideoFeedsRecyclerView.a(this.a);
+        VideoFeedsRecyclerView.c(this.a);
         paramInt1 = 0;
       }
       paramView = VideoFeedsRecyclerView.a(this.a).getLayoutParams();
       paramView.height = paramInt1;
       VideoFeedsRecyclerView.a(this.a).setLayoutParams(paramView);
     }
-    if (VideoFeedsRecyclerView.a(this.a) == 0)
+    if (VideoFeedsRecyclerView.c(this.a) == 0)
     {
       paramView = this.a.getLayoutManager().findViewByPosition(1);
-      if ((paramView != null) && (paramView.getHeight() > 0) && (VideoFeedsRecyclerView.b(this.a)))
+      if ((paramView != null) && (paramView.getHeight() > 0) && (VideoFeedsRecyclerView.d(this.a)))
       {
         paramInt1 = paramView.getHeight();
         paramInt1 = (int)(this.a.getHeight() / 2.0F - paramInt1 / 2.0F);
         VideoFeedsRecyclerView.a(this.a, paramInt1);
         paramInt1 = paramInt2;
-        if (VideoFeedsRecyclerView.a(this.a).a(1))
+        if (VideoFeedsRecyclerView.e(this.a).c(1))
         {
           paramInt1 = paramInt2;
-          if (VideoFeedsRecyclerView.a(this.a).b() != 1) {
+          if (VideoFeedsRecyclerView.e(this.a).i() != 1) {
             paramInt1 = 1;
           }
         }
-        if ((paramInt1 == 0) && (VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a).b() != 1))
+        if ((paramInt1 == 0) && (VideoFeedsRecyclerView.f(this.a) != null) && (VideoFeedsRecyclerView.e(this.a).i() != 1))
         {
           VideoFeedsRecyclerView localVideoFeedsRecyclerView = this.a;
           localVideoFeedsRecyclerView.a(localVideoFeedsRecyclerView.getChildViewHolder(paramView));
         }
       }
     }
-    else if (VideoFeedsRecyclerView.a(this.a) == 1)
+    else if (VideoFeedsRecyclerView.c(this.a) == 1)
     {
       paramView = this.a;
-      VideoFeedsRecyclerView.a(paramView, VideoFeedsRecyclerView.b(paramView));
+      VideoFeedsRecyclerView.a(paramView, VideoFeedsRecyclerView.g(paramView));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.view.VideoFeedsRecyclerView.2
  * JD-Core Version:    0.7.0.1
  */

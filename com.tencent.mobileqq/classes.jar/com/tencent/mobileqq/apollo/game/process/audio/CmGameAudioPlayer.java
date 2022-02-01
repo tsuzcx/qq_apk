@@ -20,27 +20,22 @@ import org.json.JSONObject;
 public class CmGameAudioPlayer
   implements CmGameNativeMethodHandler.NativeObject
 {
-  public static List<CmGameAudioPlayer> a;
-  private int jdField_a_of_type_Int;
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new CmGameAudioPlayer.6(this);
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private CmGameSoudPoolPlayer jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int c = 0;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  }
+  public static List<CmGameAudioPlayer> a = Collections.synchronizedList(new ArrayList());
+  private int b;
+  private int c;
+  private MediaPlayer d;
+  private CmGameSoudPoolPlayer e;
+  private int f = 0;
+  private boolean g = false;
+  private boolean h = false;
+  private AtomicInteger i = new AtomicInteger(0);
+  private AudioManager j;
+  private AudioManager.OnAudioFocusChangeListener k = new CmGameAudioPlayer.6(this);
   
   public CmGameAudioPlayer(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.b = paramInt1;
+    this.c = paramInt2;
     CmGameLauncher localCmGameLauncher = CmGameUtil.a(paramInt2);
     if (localCmGameLauncher != null) {
       localCmGameLauncher.b(0);
@@ -48,99 +43,69 @@ public class CmGameAudioPlayer
     if ("effect".equals(paramString))
     {
       if (localCmGameLauncher != null) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer = new CmGameSoudPoolPlayer(paramInt2);
+        this.e = new CmGameSoudPoolPlayer(paramInt2);
       } else {
         QLog.e("[cmshow]CmGameAudioPlayer", 1, "can not create pool");
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+      this.d = new MediaPlayer();
       a(1);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new CmGameAudioPlayer.1(this));
+      this.d.setOnErrorListener(new CmGameAudioPlayer.1(this));
     }
-    paramString = jdField_a_of_type_JavaUtilList;
+    paramString = a;
     if (paramString != null) {
       try
       {
-        jdField_a_of_type_JavaUtilList.add(this);
+        a.add(this);
       }
       finally {}
     }
-    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
+    this.j = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
   }
   
-  private void a(CmGameNativeMethodHandler paramCmGameNativeMethodHandler, JSONObject paramJSONObject)
+  private void a(boolean paramBoolean)
+  {
+    AudioManager localAudioManager = this.j;
+    if (localAudioManager == null) {
+      return;
+    }
+    int m;
+    if (paramBoolean) {
+      m = localAudioManager.requestAudioFocus(this.k, 3, 2);
+    } else {
+      m = localAudioManager.abandonAudioFocus(this.k);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow]CmGameAudioPlayer", 2, new Object[] { "[execAudioFocus], requestFocus:", Boolean.valueOf(paramBoolean), ",ret:", Integer.valueOf(m) });
+    }
+  }
+  
+  private void c(CmGameNativeMethodHandler paramCmGameNativeMethodHandler, JSONObject paramJSONObject)
   {
     if (paramCmGameNativeMethodHandler != null) {
       paramCmGameNativeMethodHandler.a(paramJSONObject);
     }
   }
   
-  private void a(boolean paramBoolean)
-  {
-    AudioManager localAudioManager = this.jdField_a_of_type_AndroidMediaAudioManager;
-    if (localAudioManager == null) {
-      return;
-    }
-    int i;
-    if (paramBoolean) {
-      i = localAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
-    } else {
-      i = localAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("[cmshow]CmGameAudioPlayer", 2, new Object[] { "[execAudioFocus], requestFocus:", Boolean.valueOf(paramBoolean), ",ret:", Integer.valueOf(i) });
-    }
-  }
-  
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    return this.i.get();
   }
   
   public int a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(paramInt);
-  }
-  
-  public String a()
-  {
-    try
-    {
-      MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
-      if (localMediaPlayer != null) {
-        try
-        {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-          this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-        }
-        catch (Throwable localThrowable1)
-        {
-          QLog.e("[cmshow]CmGameAudioPlayer", 1, localThrowable1, new Object[0]);
-        }
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer.c();
-        this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer = null;
-        return null;
-      }
-    }
-    catch (Throwable localThrowable2)
-    {
-      QLog.e("[cmshow]CmGameAudioPlayer", 1, "audio destroy falied", localThrowable2);
-    }
-    return null;
+    return this.i.getAndSet(paramInt);
   }
   
   public JSONObject a(float paramFloat1, float paramFloat2, JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    if (this.d != null)
     {
       if (a() != 9)
       {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setVolume(paramFloat1, paramFloat2);
+        this.d.setVolume(paramFloat1, paramFloat2);
         return paramJSONObject;
       }
       StringBuilder localStringBuilder = new StringBuilder();
@@ -153,20 +118,20 @@ public class CmGameAudioPlayer
   
   public JSONObject a(int paramInt, JSONObject paramJSONObject, CmGameNativeMethodHandler paramCmGameNativeMethodHandler)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    if (this.d != null)
     {
-      int i = a();
-      if ((i != 3) && (i != 5) && (i != 7) && (i != 10))
+      int m = a();
+      if ((m != 3) && (m != 5) && (m != 7) && (m != 10))
       {
         paramJSONObject = new StringBuilder();
         paramJSONObject.append(" seek in  state ");
-        paramJSONObject.append(i);
+        paramJSONObject.append(m);
         QLog.e("[cmshow]CmGameAudioPlayer", 1, paramJSONObject.toString());
       }
       else
       {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new CmGameAudioPlayer.2(this, paramJSONObject, paramCmGameNativeMethodHandler));
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(paramInt);
+        this.d.setOnSeekCompleteListener(new CmGameAudioPlayer.2(this, paramJSONObject, paramCmGameNativeMethodHandler));
+        this.d.seekTo(paramInt);
       }
     }
     return null;
@@ -176,22 +141,22 @@ public class CmGameAudioPlayer
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+      if (this.d != null) {
+        this.d.release();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer != null) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer.c();
+      if (this.e != null) {
+        this.e.c();
       }
       a(8);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer = null;
+      this.d = null;
+      this.e = null;
       if (??? != null) {
         ???.b(this);
       }
-      if (jdField_a_of_type_JavaUtilList != null) {
-        synchronized (jdField_a_of_type_JavaUtilList)
+      if (a != null) {
+        synchronized (a)
         {
-          jdField_a_of_type_JavaUtilList.remove(this);
+          a.remove(this);
           return paramJSONObject;
         }
       }
@@ -209,13 +174,13 @@ public class CmGameAudioPlayer
     {
       try
       {
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+        if (this.d != null)
         {
           if (paramJSONObject.has("duration")) {
-            paramJSONObject.put("duration", this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration());
+            paramJSONObject.put("duration", this.d.getDuration());
           }
           if (paramJSONObject.has("currentTime")) {
-            paramJSONObject.put("currentTime", this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition());
+            paramJSONObject.put("currentTime", this.d.getCurrentPosition());
           }
           if (paramJSONObject.has("paused"))
           {
@@ -269,48 +234,48 @@ public class CmGameAudioPlayer
   
   public JSONObject a(boolean paramBoolean, float paramFloat1, float paramFloat2, JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    if (this.d != null)
     {
       if (paramBoolean) {
         return a(0.0F, 0.0F, paramJSONObject);
       }
       return a(paramFloat1, paramFloat2, paramJSONObject);
     }
-    CmGameSoudPoolPlayer localCmGameSoudPoolPlayer = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer;
+    CmGameSoudPoolPlayer localCmGameSoudPoolPlayer = this.e;
     if (localCmGameSoudPoolPlayer != null)
     {
-      int i;
+      int m;
       if ((!paramBoolean) && ((Float.compare(paramFloat1, 0.0F) != 0) || (Float.compare(paramFloat2, 0.0F) != 0))) {
-        i = 1;
+        m = 1;
       } else {
-        i = 0;
+        m = 0;
       }
-      localCmGameSoudPoolPlayer.a(i, BaseActivity.sTopActivity.getAppInterface());
+      localCmGameSoudPoolPlayer.a(m, BaseActivity.sTopActivity.getAppInterface());
     }
     return paramJSONObject;
   }
   
   public JSONObject a(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    if (this.d != null)
     {
-      int i = a();
-      if ((i != 1) && (i != 2) && (i != 6) && (i != 3) && (i != 5) && (i != 7) && (i != 10))
+      int m = a();
+      if ((m != 1) && (m != 2) && (m != 6) && (m != 3) && (m != 5) && (m != 7) && (m != 10))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(" loop in  state ");
-        localStringBuilder.append(i);
+        localStringBuilder.append(m);
         QLog.e("[cmshow]CmGameAudioPlayer", 1, localStringBuilder.toString());
         return paramJSONObject;
       }
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
+      this.d.setLooping(paramBoolean);
     }
     return paramJSONObject;
   }
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
+    return this.c;
   }
   
   public JSONObject b(CmGameNativeMethodHandler paramCmGameNativeMethodHandler, JSONObject paramJSONObject)
@@ -318,7 +283,7 @@ public class CmGameAudioPlayer
     if (paramJSONObject != null) {
       try
       {
-        if (paramJSONObject.optInt("N_R_OBJ") == this.jdField_a_of_type_Int)
+        if (paramJSONObject.optInt("N_R_OBJ") == this.b)
         {
           String str = paramJSONObject.optString("N_R_CMD");
           if ("cs.audio_play.local".equals(str)) {
@@ -389,11 +354,11 @@ public class CmGameAudioPlayer
   {
     try
     {
-      int i;
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+      int m;
+      if (this.d != null)
       {
-        i = a();
-        if ((i != 5) && (i != 7) && (i != 10))
+        m = a();
+        if ((m != 5) && (m != 7) && (m != 10))
         {
           if (QLog.isColorLevel())
           {
@@ -405,17 +370,17 @@ public class CmGameAudioPlayer
         }
         else
         {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
+          this.d.pause();
           a(7);
         }
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer != null)
+      else if (this.e != null)
       {
-        i = paramJSONObject.optInt("id");
+        m = paramJSONObject.optInt("id");
         if (paramJSONObject.optBoolean("auto", true)) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer.a();
+          this.e.a();
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer.a(i, null);
+          this.e.a(m, null);
         }
       }
       a(false);
@@ -430,29 +395,29 @@ public class CmGameAudioPlayer
   
   public JSONObject b(JSONObject paramJSONObject, CmGameNativeMethodHandler paramCmGameNativeMethodHandler)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    if (this.d != null)
     {
-      int i = a();
-      if ((i != 3) && (i != 5) && (i != 7) && (i != 10))
+      int m = a();
+      if ((m != 3) && (m != 5) && (m != 7) && (m != 10))
       {
         paramJSONObject = new StringBuilder();
         paramJSONObject.append(" play in  state ");
-        paramJSONObject.append(i);
+        paramJSONObject.append(m);
         QLog.e("[cmshow]CmGameAudioPlayer", 1, paramJSONObject.toString());
       }
       else
       {
         a(true);
-        paramJSONObject = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+        paramJSONObject = this.d;
         if (paramJSONObject != null) {
           try
           {
             paramJSONObject.start();
             a(5);
-            if (this.c != 0) {
-              this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.c);
+            if (this.f != 0) {
+              this.d.seekTo(this.f);
             }
-            this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new CmGameAudioPlayer.3(this));
+            this.d.setOnCompletionListener(new CmGameAudioPlayer.3(this));
           }
           catch (Throwable paramJSONObject)
           {
@@ -461,28 +426,28 @@ public class CmGameAudioPlayer
         }
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer != null)
+    else if (this.e != null)
     {
       a(true);
-      return this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer.a(paramCmGameNativeMethodHandler, paramJSONObject);
+      return this.e.a(paramCmGameNativeMethodHandler, paramJSONObject);
     }
     return null;
   }
   
   public JSONObject b(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
     return paramJSONObject;
   }
   
   public int c()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public JSONObject c(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    if (this.d != null)
     {
       if ((a() == 1) && (a() == 2) && (a() == 9))
       {
@@ -492,11 +457,11 @@ public class CmGameAudioPlayer
         QLog.e("[cmshow]CmGameAudioPlayer", 1, localStringBuilder.toString());
         return paramJSONObject;
       }
-      int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
+      int m = this.d.getDuration();
       if (paramJSONObject != null) {
         try
         {
-          paramJSONObject.put("duration", i);
+          paramJSONObject.put("duration", m);
           return paramJSONObject;
         }
         catch (Throwable localThrowable)
@@ -510,32 +475,62 @@ public class CmGameAudioPlayer
   
   public JSONObject c(JSONObject paramJSONObject, CmGameNativeMethodHandler paramCmGameNativeMethodHandler)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
+    if (this.d == null) {
       return null;
     }
     if ((a() == 2) || (a() == 6))
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new CmGameAudioPlayer.4(this, paramJSONObject, paramCmGameNativeMethodHandler));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+      this.d.setOnPreparedListener(new CmGameAudioPlayer.4(this, paramJSONObject, paramCmGameNativeMethodHandler));
+      this.d.prepareAsync();
     }
     return null;
   }
   
   public JSONObject c(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
     return paramJSONObject;
+  }
+  
+  public String d()
+  {
+    try
+    {
+      MediaPlayer localMediaPlayer = this.d;
+      if (localMediaPlayer != null) {
+        try
+        {
+          this.d.release();
+          this.d = null;
+        }
+        catch (Throwable localThrowable1)
+        {
+          QLog.e("[cmshow]CmGameAudioPlayer", 1, localThrowable1, new Object[0]);
+        }
+      }
+      if (this.e != null)
+      {
+        this.e.c();
+        this.e = null;
+        return null;
+      }
+    }
+    catch (Throwable localThrowable2)
+    {
+      QLog.e("[cmshow]CmGameAudioPlayer", 1, "audio destroy falied", localThrowable2);
+    }
+    return null;
   }
   
   public JSONObject d(JSONObject paramJSONObject)
   {
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    MediaPlayer localMediaPlayer = this.d;
     if (localMediaPlayer != null)
     {
-      int i = localMediaPlayer.getCurrentPosition();
+      int m = localMediaPlayer.getCurrentPosition();
       try
       {
-        paramJSONObject.put("currentTime", i);
+        paramJSONObject.put("currentTime", m);
         return paramJSONObject;
       }
       catch (Throwable localThrowable)
@@ -548,17 +543,17 @@ public class CmGameAudioPlayer
   
   public JSONObject d(JSONObject paramJSONObject, CmGameNativeMethodHandler paramCmGameNativeMethodHandler)
   {
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (a() != 9))
+    if ((this.d != null) && (a() != 9))
     {
-      int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
+      int m = this.d.getCurrentPosition();
       if (paramJSONObject != null)
       {
         if (paramJSONObject.has("currentTime")) {
-          this.c = paramJSONObject.optInt("currentTime");
+          this.f = paramJSONObject.optInt("currentTime");
         }
         try
         {
-          paramJSONObject.put("currentTime", i);
+          paramJSONObject.put("currentTime", m);
           return paramJSONObject;
         }
         catch (Throwable paramCmGameNativeMethodHandler)
@@ -572,24 +567,24 @@ public class CmGameAudioPlayer
   
   public JSONObject e(JSONObject paramJSONObject)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer;
+    Object localObject = this.e;
     if (localObject != null)
     {
       ((CmGameSoudPoolPlayer)localObject).c(paramJSONObject.optInt("id"), null);
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer.a(paramJSONObject);
+      this.e.a(paramJSONObject);
     }
-    localObject = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    localObject = this.d;
     if (localObject != null)
     {
       ((MediaPlayer)localObject).stop();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+      this.d.reset();
     }
     return paramJSONObject;
   }
   
   public JSONObject e(JSONObject paramJSONObject, CmGameNativeMethodHandler paramCmGameNativeMethodHandler)
   {
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    MediaPlayer localMediaPlayer = this.d;
     if (localMediaPlayer != null) {
       localMediaPlayer.setOnCompletionListener(new CmGameAudioPlayer.5(this, paramCmGameNativeMethodHandler, paramJSONObject));
     }
@@ -598,21 +593,21 @@ public class CmGameAudioPlayer
   
   public JSONObject f(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer != null)
+    if (this.e != null)
     {
       if (paramJSONObject.optBoolean("audo", true))
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer.b();
+        this.e.b();
         return paramJSONObject;
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer.b(paramJSONObject.optInt("id"), null);
+      this.e.b(paramJSONObject.optInt("id"), null);
     }
     return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.audio.CmGameAudioPlayer
  * JD-Core Version:    0.7.0.1
  */

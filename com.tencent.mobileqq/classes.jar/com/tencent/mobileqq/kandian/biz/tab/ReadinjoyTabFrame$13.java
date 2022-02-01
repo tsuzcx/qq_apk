@@ -12,17 +12,17 @@ class ReadinjoyTabFrame$13
   
   public void run()
   {
-    if (ReadinjoyTabFrame.b(this.this$0) != null)
+    if (ReadinjoyTabFrame.i(this.this$0) != null)
     {
-      ReadinjoyTabFrame.b(this.this$0).setAnimation(AnimationUtils.loadAnimation(this.this$0.a(), 2130772370));
-      ReadinjoyTabFrame.b(this.this$0).setVisibility(8);
-      SharedPreUtils.q(this.this$0.a(), this.this$0.a().getCurrentAccountUin());
+      ReadinjoyTabFrame.i(this.this$0).setAnimation(AnimationUtils.loadAnimation(this.this$0.P(), 2130772462));
+      ReadinjoyTabFrame.i(this.this$0).setVisibility(8);
+      SharedPreUtils.bs(this.this$0.P(), this.this$0.t().getCurrentAccountUin());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.13
  * JD-Core Version:    0.7.0.1
  */

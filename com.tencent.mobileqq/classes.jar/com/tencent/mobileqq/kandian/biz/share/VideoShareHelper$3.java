@@ -17,16 +17,16 @@ class VideoShareHelper$3
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((VideoShareHelper.a(this.a) != null) && (VideoShareHelper.a(this.a).getStatus() == 1) && ((VideoShareHelper.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    if ((VideoShareHelper.d(this.a) != null) && (VideoShareHelper.d(this.a).getStatus() == 1) && ((VideoShareHelper.d(this.a).getCurrDrawable() instanceof RegionDrawable)))
     {
-      paramURLDrawable = (RegionDrawable)VideoShareHelper.a(this.a).getCurrDrawable();
+      paramURLDrawable = (RegionDrawable)VideoShareHelper.d(this.a).getCurrDrawable();
       VideoShareHelper.a(this.a, paramURLDrawable.getBitmap());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.VideoShareHelper.3
  * JD-Core Version:    0.7.0.1
  */

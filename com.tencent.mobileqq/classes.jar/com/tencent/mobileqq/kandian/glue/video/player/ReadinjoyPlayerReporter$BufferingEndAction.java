@@ -14,14 +14,14 @@ public class ReadinjoyPlayerReporter$BufferingEndAction
   public void a(int paramInt, Object paramObject)
   {
     paramObject = this.a.a;
-    paramObject.f += SystemClock.uptimeMillis() - this.a.a.e;
+    paramObject.q += SystemClock.uptimeMillis() - this.a.a.p;
     paramObject = this.a.a;
-    paramObject.d += 1;
+    paramObject.s += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.player.ReadinjoyPlayerReporter.BufferingEndAction
  * JD-Core Version:    0.7.0.1
  */

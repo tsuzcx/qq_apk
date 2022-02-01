@@ -10,14 +10,14 @@ class PhoneContactServiceImpl$5
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("IMCore.PhoneContact.PhoneContactServiceImpl", 2, String.format("checkUpdateBindStateAndListIgnoreBindState [forced:%s, isQueryAll:%s, from:%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      QLog.d("IMCore.PhoneContact.PhoneContactServiceImpl", 2, String.format("checkUpdateBindStateAndListIgnoreBindState [forced:%s, isQueryAll:%s, from:%s]", new Object[] { Boolean.valueOf(this.a), Boolean.valueOf(this.b), Integer.valueOf(this.c) }));
     }
-    PhoneContactServiceImpl.access$2300(this.this$0, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Int);
+    PhoneContactServiceImpl.access$2300(this.this$0, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.api.impl.PhoneContactServiceImpl.5
  * JD-Core Version:    0.7.0.1
  */

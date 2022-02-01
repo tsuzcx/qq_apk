@@ -269,7 +269,7 @@ public class MessageForScribble
   
   public String getSummaryMsg()
   {
-    return HardCodeUtil.a(2131699706);
+    return HardCodeUtil.a(2131897739);
   }
   
   public boolean isSupportReply()
@@ -435,7 +435,7 @@ public class MessageForScribble
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForScribble
  * JD-Core Version:    0.7.0.1
  */

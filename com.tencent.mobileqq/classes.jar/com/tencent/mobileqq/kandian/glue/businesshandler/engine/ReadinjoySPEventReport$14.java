@@ -24,7 +24,7 @@ final class ReadinjoySPEventReport$14
 {
   public void run()
   {
-    if (ReadinjoySPEventReport.b(24))
+    if (ReadinjoySPEventReport.j(24))
     {
       ArrayList localArrayList = new ArrayList();
       Object localObject1 = BaseActivity.sTopActivity;
@@ -35,9 +35,9 @@ final class ReadinjoySPEventReport$14
           if (localObject2 == null) {
             return;
           }
-          localObject1 = ((MainFragment)localObject2).a();
+          localObject1 = ((MainFragment)localObject2).y();
           Object localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append(FrameControllerUtil.a);
+          ((StringBuilder)localObject3).append(FrameControllerUtil.l);
           ((StringBuilder)localObject3).append("_num");
           localObject1 = (View)((HashMap)localObject1).get(((StringBuilder)localObject3).toString());
           if (localObject1 == null) {
@@ -55,7 +55,7 @@ final class ReadinjoySPEventReport$14
           }
           localPBStringField.set((String)localObject1);
           localArrayList.add(localObject3);
-          boolean bool = ((MainFragment)localObject2).a(FrameControllerUtil.b).c();
+          boolean bool = ((MainFragment)localObject2).a(FrameControllerUtil.m).h();
           localObject3 = new oidb_cmd0x80a.AttributeList();
           ((oidb_cmd0x80a.AttributeList)localObject3).att_id.set(2);
           ((oidb_cmd0x80a.AttributeList)localObject3).att_name.set("ContactsRedStatus");
@@ -67,7 +67,7 @@ final class ReadinjoySPEventReport$14
           }
           localPBStringField.set((String)localObject1);
           localArrayList.add(localObject3);
-          bool = ((MainFragment)localObject2).a(FrameControllerUtil.d).c();
+          bool = ((MainFragment)localObject2).a(FrameControllerUtil.o).h();
           localObject3 = new oidb_cmd0x80a.AttributeList();
           ((oidb_cmd0x80a.AttributeList)localObject3).att_id.set(3);
           ((oidb_cmd0x80a.AttributeList)localObject3).att_name.set("TrendsRedStatus");
@@ -79,12 +79,12 @@ final class ReadinjoySPEventReport$14
           }
           localPBStringField.set((String)localObject1);
           localArrayList.add(localObject3);
-          if (ReadInJoyHelper.m())
+          if (ReadInJoyHelper.w())
           {
-            localObject1 = ((MainFragment)localObject2).a(FrameControllerUtil.f);
+            localObject1 = ((MainFragment)localObject2).a(FrameControllerUtil.q);
             if (localObject1 != null)
             {
-              bool = ((RedTouch)localObject1).c();
+              bool = ((RedTouch)localObject1).h();
               localObject3 = new oidb_cmd0x80a.AttributeList();
               ((oidb_cmd0x80a.AttributeList)localObject3).att_id.set(4);
               ((oidb_cmd0x80a.AttributeList)localObject3).att_name.set("KandianRedStatus");
@@ -101,7 +101,7 @@ final class ReadinjoySPEventReport$14
           localObject1 = new oidb_cmd0x80a.AttributeList();
           ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(5);
           ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("tab");
-          i = ReadinjoySPEventReport.b(((MainFragment)localObject2).a());
+          i = ReadinjoySPEventReport.g(((MainFragment)localObject2).w());
           localObject2 = ((oidb_cmd0x80a.AttributeList)localObject1).att_value;
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("");
@@ -131,7 +131,7 @@ final class ReadinjoySPEventReport$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.14
  * JD-Core Version:    0.7.0.1
  */

@@ -6,55 +6,29 @@ import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
+import java.util.HashMap;
+import java.util.HashSet;
 import mqq.util.WeakReference;
 
 class AVBizClientQIPCModule
   extends QIPCModule
   implements IModule, IModule.FocusChangeListener
 {
-  private static String jdField_a_of_type_JavaLangString = "AVBizClientQIPCModule";
-  private WeakReference<IModule.FocusChangeListener> jdField_a_of_type_MqqUtilWeakReference = new WeakReference(null);
-  private final String b;
+  private static final String TAG = "AVBizClientQIPCModule";
+  private WeakReference<IModule.FocusChangeListener> mListenerWeakRef = new WeakReference(null);
+  private final String mProcessName;
   
   AVBizClientQIPCModule(String paramString1, String paramString2)
   {
     super(paramString1);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramString1);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.b = paramString2;
+    this.mProcessName = paramString2;
   }
   
-  public String a()
+  public void abandonAVFocus()
   {
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("module requestAVFocus, name[");
-      localStringBuilder.append(this.name);
-      localStringBuilder.append("], mProcessName[");
-      localStringBuilder.append(this.b);
-      localStringBuilder.append("]");
-      QLog.i((String)localObject, 2, localStringBuilder.toString());
-    }
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("module_name", this.name);
-    ((Bundle)localObject).putString("process_name", this.b);
-    localObject = QIPCClientHelper.getInstance().getClient().callServer("AVBizServerQIPCModule", "request_av_focus", (Bundle)localObject).data;
-    if (localObject != null) {
-      return ((Bundle)localObject).getString("request_focus_result");
-    }
-    return "IPC调用出错，返回数据为空";
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("module abandonAVFocus, name[");
       localStringBuilder.append(this.name);
@@ -66,16 +40,11 @@ class AVBizClientQIPCModule
     QIPCClientHelper.getInstance().getClient().callServer("AVBizServerQIPCModule", "abandon_av_focus", (Bundle)localObject);
   }
   
-  public void a(IModule.FocusChangeListener paramFocusChangeListener)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramFocusChangeListener);
-  }
-  
-  public String b()
+  public String checkAVFocus()
   {
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("module checkAVFocus, name[");
       localStringBuilder.append(this.name);
@@ -91,39 +60,105 @@ class AVBizClientQIPCModule
     return "IPC调用出错，返回数据为空";
   }
   
-  public void b()
+  public HashMap<Long, String> getFocusBusiness()
   {
-    IModule.FocusChangeListener localFocusChangeListener = (IModule.FocusChangeListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localFocusChangeListener != null) {
-      localFocusChangeListener.b();
+    if (QLog.isColorLevel())
+    {
+      localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("module getFocusBusiness, name[");
+      localStringBuilder.append(this.name);
+      localStringBuilder.append("]");
+      QLog.i((String)localObject, 2, localStringBuilder.toString());
     }
+    Object localObject = QIPCClientHelper.getInstance().getClient().callServer("AVBizServerQIPCModule", "get_focus_business", new Bundle()).data;
+    if (localObject != null) {
+      return (HashMap)((Bundle)localObject).getSerializable("get_focus_biz_result");
+    }
+    return null;
   }
   
-  public void c()
+  public HashSet<String> getInQueueBusiness()
   {
-    IModule.FocusChangeListener localFocusChangeListener = (IModule.FocusChangeListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localFocusChangeListener != null) {
-      localFocusChangeListener.c();
+    if (QLog.isColorLevel())
+    {
+      localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("module getInQueueBusiness, name[");
+      localStringBuilder.append(this.name);
+      localStringBuilder.append("]");
+      QLog.i((String)localObject, 2, localStringBuilder.toString());
     }
+    Object localObject = QIPCClientHelper.getInstance().getClient().callServer("AVBizServerQIPCModule", "get_in_queue_business", new Bundle()).data;
+    if (localObject != null) {
+      return (HashSet)((Bundle)localObject).getSerializable("get_in_queue_biz_result");
+    }
+    return null;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     if (QLog.isDevelopLevel())
     {
-      paramBundle = jdField_a_of_type_JavaLangString;
+      paramBundle = TAG;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onCall, action[");
+      localStringBuilder.append("onCall, name[");
+      localStringBuilder.append(this.name);
+      localStringBuilder.append("], action[");
       localStringBuilder.append(paramString);
       localStringBuilder.append("]");
       QLog.i(paramBundle, 4, localStringBuilder.toString());
     }
     if ("notify_focus_loss".equals(paramString)) {
-      b();
+      onFocusLoss();
     } else if ("notify_focus_gain".equals(paramString)) {
-      c();
+      onFocusGain();
     }
     return null;
+  }
+  
+  public void onFocusGain()
+  {
+    IModule.FocusChangeListener localFocusChangeListener = (IModule.FocusChangeListener)this.mListenerWeakRef.get();
+    if (localFocusChangeListener != null) {
+      localFocusChangeListener.onFocusGain();
+    }
+  }
+  
+  public void onFocusLoss()
+  {
+    IModule.FocusChangeListener localFocusChangeListener = (IModule.FocusChangeListener)this.mListenerWeakRef.get();
+    if (localFocusChangeListener != null) {
+      localFocusChangeListener.onFocusLoss();
+    }
+  }
+  
+  public String requestAVFocus()
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("module requestAVFocus, name[");
+      localStringBuilder.append(this.name);
+      localStringBuilder.append("], mProcessName[");
+      localStringBuilder.append(this.mProcessName);
+      localStringBuilder.append("]");
+      QLog.i((String)localObject, 2, localStringBuilder.toString());
+    }
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("module_name", this.name);
+    ((Bundle)localObject).putString("process_name", this.mProcessName);
+    localObject = QIPCClientHelper.getInstance().getClient().callServer("AVBizServerQIPCModule", "request_av_focus", (Bundle)localObject).data;
+    if (localObject != null) {
+      return ((Bundle)localObject).getString("request_focus_result");
+    }
+    return "IPC调用出错，返回数据为空";
+  }
+  
+  public void setListener(IModule.FocusChangeListener paramFocusChangeListener)
+  {
+    this.mListenerWeakRef = new WeakReference(paramFocusChangeListener);
   }
 }
 

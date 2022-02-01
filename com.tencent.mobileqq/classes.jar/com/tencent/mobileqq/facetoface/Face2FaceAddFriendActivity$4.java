@@ -15,17 +15,17 @@ class Face2FaceAddFriendActivity$4
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app.getPreferences().edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    this.c.app.getPreferences().edit().putBoolean(this.a, true).commit();
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(500L);
     localAlphaAnimation.setAnimationListener(new Face2FaceAddFriendActivity.4.1(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
+    this.b.startAnimation(localAlphaAnimation);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity.4
  * JD-Core Version:    0.7.0.1
  */

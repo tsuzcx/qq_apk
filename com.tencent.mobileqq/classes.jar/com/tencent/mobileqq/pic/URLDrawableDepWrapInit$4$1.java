@@ -10,22 +10,22 @@ class URLDrawableDepWrapInit$4$1
   
   public void onAdded()
   {
-    this.jdField_a_of_type_ComTencentImageApiIThreadListener.onAdded();
+    this.a.onAdded();
   }
   
   public void onPostRun()
   {
-    this.jdField_a_of_type_ComTencentImageApiIThreadListener.onPostRun();
+    this.a.onPostRun();
   }
   
   public void onPreRun()
   {
-    this.jdField_a_of_type_ComTencentImageApiIThreadListener.onPreRun();
+    this.a.onPreRun();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.URLDrawableDepWrapInit.4.1
  * JD-Core Version:    0.7.0.1
  */

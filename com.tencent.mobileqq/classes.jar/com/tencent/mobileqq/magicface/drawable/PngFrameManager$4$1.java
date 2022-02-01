@@ -23,26 +23,26 @@ class PngFrameManager$4$1
     if (QLog.isColorLevel()) {
       QLog.d("PngFrameManager", 2, "func onDone.【pngZip】");
     }
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0)
+    synchronized (this.b.this$0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a != null) {
-        if (paramDownloadTask.a() != 3)
+      if (this.b.this$0.e != null) {
+        if (paramDownloadTask.e() != 3)
         {
-          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a.obtainMessage(226, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a).sendToTarget();
+          this.b.this$0.e.obtainMessage(226, this.b.a).sendToTarget();
         }
         else
         {
           try
           {
-            FileUtils.uncompressZip(this.jdField_a_of_type_JavaLangString, EmotionPanelConstans.pngFramePath.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a.jdField_a_of_type_JavaLangString), false);
+            FileUtils.uncompressZip(this.a, EmotionPanelConstans.pngFramePath.replace("[epId]", this.b.a.d), false);
           }
           catch (IOException paramDownloadTask)
           {
             paramDownloadTask.printStackTrace();
           }
-          new File(this.jdField_a_of_type_JavaLangString).delete();
-          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.b(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.getEmoticon().epId);
-          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a.obtainMessage(225, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a).sendToTarget();
+          new File(this.a).delete();
+          this.b.this$0.b(this.b.a.c.a.getEmoticon().epId);
+          this.b.this$0.e.obtainMessage(225, this.b.a).sendToTarget();
         }
       }
       return;
@@ -51,7 +51,7 @@ class PngFrameManager$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameManager.4.1
  * JD-Core Version:    0.7.0.1
  */

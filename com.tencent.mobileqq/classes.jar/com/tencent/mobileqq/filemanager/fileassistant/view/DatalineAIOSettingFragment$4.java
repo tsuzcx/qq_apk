@@ -13,7 +13,7 @@ class DatalineAIOSettingFragment$4
   
   public void a(Activity paramActivity)
   {
-    QQToast.a(this.a.getBaseActivity(), 2, 2131691483, 0).b(this.a.getBaseActivity().getTitleBarHeight());
+    QQToast.makeText(this.a.getBaseActivity(), 2, 2131888442, 0).show(this.a.getBaseActivity().getTitleBarHeight());
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt) {}
@@ -22,7 +22,7 @@ class DatalineAIOSettingFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.view.DatalineAIOSettingFragment.4
  * JD-Core Version:    0.7.0.1
  */

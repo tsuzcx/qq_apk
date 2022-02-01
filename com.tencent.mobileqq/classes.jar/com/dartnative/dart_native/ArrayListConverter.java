@@ -2,6 +2,7 @@ package com.dartnative.dart_native;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class ArrayListConverter
@@ -244,6 +245,14 @@ public class ArrayListConverter
       i += 1;
     }
     return arrayOfObject;
+  }
+  
+  public List setToList(HashSet<Object> paramHashSet)
+  {
+    if ((paramHashSet != null) && (paramHashSet.size() != 0)) {
+      return new ArrayList(paramHashSet);
+    }
+    return new ArrayList();
   }
   
   public short[] shortListToArray(List<Short> paramList)

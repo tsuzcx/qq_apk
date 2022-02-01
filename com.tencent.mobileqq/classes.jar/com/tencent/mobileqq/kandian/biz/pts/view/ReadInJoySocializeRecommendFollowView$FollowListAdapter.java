@@ -13,12 +13,11 @@ import android.widget.TextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.RecommendFollowInfos;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.follow.RecommendFollowInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.mobileqq.utils.ImageUtil;
 import java.util.HashMap;
@@ -27,19 +26,19 @@ import java.util.List;
 class ReadInJoySocializeRecommendFollowView$FollowListAdapter
   extends BaseAdapter
 {
-  private List<RecommendFollowInfo> jdField_a_of_type_JavaUtilList;
+  private List<RecommendFollowInfo> b;
   
   private ReadInJoySocializeRecommendFollowView$FollowListAdapter(ReadInJoySocializeRecommendFollowView paramReadInJoySocializeRecommendFollowView) {}
   
   public void a(List<RecommendFollowInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       return localList.size();
     }
@@ -61,68 +60,67 @@ class ReadInJoySocializeRecommendFollowView$FollowListAdapter
     int i = 0;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560266, paramViewGroup, false);
-      paramViewGroup = new ReadInJoySocializeRecommendFollowView.ViewHolder(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368058));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368067));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380362));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377820));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371884));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378309));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367080));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367072));
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131626313, paramViewGroup, false);
+      paramViewGroup = new ReadInJoySocializeRecommendFollowView.ViewHolder(this.a, null);
+      paramViewGroup.b = ((ImageView)paramView.findViewById(2131434908));
+      paramViewGroup.a = ((RelativeLayout)paramView.findViewById(2131434917));
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131449308));
+      paramViewGroup.d = ((ImageView)paramView.findViewById(2131446289));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131439327));
+      paramViewGroup.f = ((TextView)paramView.findViewById(2131446828));
+      paramViewGroup.g = ((TextView)paramView.findViewById(2131433533));
+      paramViewGroup.h = ((LinearLayout)paramView.findViewById(2131433525));
       paramView.setTag(paramViewGroup);
-      paramView.setBackgroundResource(2130843086);
+      paramView.setBackgroundResource(2130844041);
       paramView.setOnClickListener(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramViewGroup);
+      paramViewGroup.a.setOnClickListener(paramViewGroup);
+      paramViewGroup.e.setOnClickListener(paramViewGroup);
+      paramViewGroup.h.setOnClickListener(paramViewGroup);
     }
     else
     {
       paramViewGroup = (ReadInJoySocializeRecommendFollowView.ViewHolder)paramView.getTag();
     }
-    RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramViewGroup.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowRecommendFollowInfo = localRecommendFollowInfo;
-    ReadInJoySocializeRecommendFollowView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoySocializeRecommendFollowView).mRecommendFollowInfos.a.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
-    Object localObject2;
+    RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)this.b.get(paramInt);
+    paramViewGroup.i = localRecommendFollowInfo;
+    ReadInJoySocializeRecommendFollowView.g(this.a).mRecommendFollowInfos.h.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
     if (!TextUtils.isEmpty(localRecommendFollowInfo.headUrl))
     {
-      localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      localObject2 = ImageUtil.e();
-      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
-      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
-      localObject1 = URLDrawable.getDrawable(localRecommendFollowInfo.headUrl, (URLDrawable.URLDrawableOptions)localObject1);
-      ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.a);
-      ((URLDrawable)localObject1).setFadeInImage(true);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      Drawable localDrawable = ImageUtil.j();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
+      localObject = URLDrawable.getDrawable(localRecommendFollowInfo.headUrl, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.b);
+      ((URLDrawable)localObject).setFadeInImage(true);
+      paramViewGroup.b.setImageDrawable((Drawable)localObject);
     }
     else
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(ImageUtil.e());
+      paramViewGroup.b.setImageDrawable(ImageUtil.j());
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.nickName);
-    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.recommendReason);
+    paramViewGroup.e.setText(localRecommendFollowInfo.nickName);
+    paramViewGroup.f.setText(localRecommendFollowInfo.recommendReason);
     if (localRecommendFollowInfo.isFollowed)
     {
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131712929));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-8947849);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130849733);
+      paramViewGroup.g.setText(HardCodeUtil.a(2131910498));
+      paramViewGroup.g.setTextColor(-8947849);
+      paramViewGroup.h.setBackgroundResource(2130851442);
     }
     else
     {
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131712930));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130849689);
+      paramViewGroup.g.setText(HardCodeUtil.a(2131899712));
+      paramViewGroup.g.setTextColor(-1);
+      paramViewGroup.h.setBackgroundResource(2130851394);
     }
-    Object localObject1 = paramViewGroup.jdField_b_of_type_AndroidWidgetImageView;
+    Object localObject = paramViewGroup.c;
     if (localRecommendFollowInfo.isVip) {
       paramInt = 0;
     } else {
       paramInt = 8;
     }
-    ((ImageView)localObject1).setVisibility(paramInt);
-    paramViewGroup = paramViewGroup.jdField_c_of_type_AndroidWidgetImageView;
+    ((ImageView)localObject).setVisibility(paramInt);
+    paramViewGroup = paramViewGroup.d;
     if (localRecommendFollowInfo.isStar) {
       paramInt = i;
     } else {
@@ -132,22 +130,21 @@ class ReadInJoySocializeRecommendFollowView$FollowListAdapter
     if (!localRecommendFollowInfo.hasReport)
     {
       localRecommendFollowInfo.hasReport = true;
-      paramViewGroup = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
-      ((StringBuilder)localObject1).append("");
-      localObject1 = ((StringBuilder)localObject1).toString();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(localRecommendFollowInfo.uin);
-      ((StringBuilder)localObject2).append("");
-      paramViewGroup.publicAccountReportClickEvent(null, (String)localObject1, "0X8009848", "0X8009848", 0, 0, "1", ((StringBuilder)localObject2).toString(), "", "", false);
+      paramViewGroup = new StringBuilder();
+      paramViewGroup.append(RIJQQAppInterfaceUtil.c());
+      paramViewGroup.append("");
+      paramViewGroup = paramViewGroup.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(localRecommendFollowInfo.uin);
+      ((StringBuilder)localObject).append("");
+      PublicAccountReportUtils.a(null, paramViewGroup, "0X8009848", "0X8009848", 0, 0, "1", ((StringBuilder)localObject).toString(), "", "", false);
     }
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoySocializeRecommendFollowView.FollowListAdapter
  * JD-Core Version:    0.7.0.1
  */

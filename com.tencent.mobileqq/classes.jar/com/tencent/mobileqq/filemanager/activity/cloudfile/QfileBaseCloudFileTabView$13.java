@@ -12,14 +12,14 @@ class QfileBaseCloudFileTabView$13
   
   public void a()
   {
-    ((IQQFileEngine)QfileBaseCloudFileTabView.i(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView).getRuntimeService(IQQFileEngine.class)).resume(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    ((IQQFileEngine)QfileBaseCloudFileTabView.n(this.b).getRuntimeService(IQQFileEngine.class)).resume(this.a.nSessionId);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13
  * JD-Core Version:    0.7.0.1
  */

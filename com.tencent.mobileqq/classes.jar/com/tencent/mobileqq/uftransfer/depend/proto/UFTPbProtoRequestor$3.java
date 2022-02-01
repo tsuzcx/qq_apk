@@ -24,7 +24,7 @@ class UFTPbProtoRequestor$3
   {
     UFTLog.b("[UFTTransfer] UFTPbProtoRequestor", 1, "=_= ^> [CS Replay] response V3");
     paramProtoReq = new Bundle();
-    boolean bool1 = UFTPbProtoRequestor.a(this.jdField_a_of_type_ComTencentMobileqqUftransferDependProtoUFTPbProtoRequestor, paramProtoResp, paramProtoReq);
+    boolean bool1 = UFTPbProtoRequestor.a(this.c, paramProtoResp, paramProtoReq);
     int i = 9045;
     boolean bool2 = false;
     Object localObject = null;
@@ -63,7 +63,7 @@ class UFTPbProtoRequestor$3
         }
         else
         {
-          if (this.jdField_a_of_type_TencentImCsCmd0x346Cmd0x346$ReqBody.uint32_flag_support_mediaplatform.get() == 1) {
+          if (this.a.uint32_flag_support_mediaplatform.get() == 1) {
             UFTLog.d("[UFTTransfer] UFTPbProtoRequestor", 1, "[CS Replay] response V3: uint32_flag_use_media_platform is false !!!");
           }
           bool1 = false;
@@ -102,7 +102,7 @@ class UFTPbProtoRequestor$3
     paramProtoResp.append(" ");
     paramProtoResp.append(((UFTC2CUploadRsp)localObject).toString());
     UFTLog.b("[UFTTransfer] UFTPbProtoRequestor", 1, paramProtoResp.toString());
-    paramProtoResp = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTProtoRequestor$C2CReqUploadResponseCallback;
+    paramProtoResp = this.b;
     if (paramProtoResp != null) {
       paramProtoResp.a(bool1, (UFTC2CUploadRsp)localObject);
     }
@@ -110,7 +110,7 @@ class UFTPbProtoRequestor$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.depend.proto.UFTPbProtoRequestor.3
  * JD-Core Version:    0.7.0.1
  */

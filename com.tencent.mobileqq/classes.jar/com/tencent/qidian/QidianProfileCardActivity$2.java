@@ -15,7 +15,7 @@ class QidianProfileCardActivity$2
   
   public void run()
   {
-    Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.e(this.a);
+    Object localObject2 = this.this$0.t.m(this.a);
     Object localObject1;
     if ((localObject2 != null) && (((Friends)localObject2).remark != null))
     {
@@ -23,10 +23,10 @@ class QidianProfileCardActivity$2
       localObject1 = str1;
       if (((Friends)localObject2).remark.equals(((Friends)localObject2).name))
       {
-        localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppCardHandler;
+        localObject1 = this.this$0.u;
         localObject2 = this.this$0.app.getCurrentAccountUin();
-        String str2 = this.this$0.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin;
-        long l = ProfileUtils.getControl(this.this$0.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne, false);
+        String str2 = this.this$0.e.allInOne.uin;
+        long l = ProfileUtils.getControl(this.this$0.e.allInOne, false);
         ((CardHandler)localObject1).a((String)localObject2, str2, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", l, 10004, new byte[] { 0 }, (byte)0);
         localObject1 = str1;
       }
@@ -35,12 +35,12 @@ class QidianProfileCardActivity$2
     {
       localObject1 = "";
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.remark = ((String)localObject1);
+    this.this$0.e.allInOne.remark = ((String)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.2
  * JD-Core Version:    0.7.0.1
  */

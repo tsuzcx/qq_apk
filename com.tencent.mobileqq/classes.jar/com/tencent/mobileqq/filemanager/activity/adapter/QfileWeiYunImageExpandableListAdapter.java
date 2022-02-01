@@ -31,40 +31,38 @@ import java.util.Set;
 public class QfileWeiYunImageExpandableListAdapter
   extends QfileBaseExpandableListAdapter
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  public final int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private BaseFileAssistantActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
-  private QfileCloudFileTabView.IWeiYunImageEvent jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView$IWeiYunImageEvent;
-  public final int b;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
-  private LinkedHashMap<String, List<WeiYunFileInfo>> jdField_b_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private int jdField_c_of_type_Int = 50;
-  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener;
-  private int jdField_d_of_type_Int = 0;
-  private View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener;
+  public final int a = 1;
+  public final int b = 2;
+  private Context c;
+  private LinkedHashMap<String, List<WeiYunFileInfo>> d = new LinkedHashMap();
+  private BaseFileAssistantActivity i;
+  private LayoutInflater j;
+  private View.OnClickListener k;
+  private View.OnClickListener l;
+  private View.OnClickListener m;
+  private View.OnLongClickListener n;
+  private View.OnClickListener o;
+  private QfileCloudFileTabView.IWeiYunImageEvent p;
+  private int q = 50;
+  private float r = 0.0F;
+  private int s = 0;
   
   public QfileWeiYunImageExpandableListAdapter(QfileCloudFileTabView.IWeiYunImageEvent paramIWeiYunImageEvent, BaseFileAssistantActivity paramBaseFileAssistantActivity, Object paramObject, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, View.OnClickListener paramOnClickListener3, View.OnLongClickListener paramOnLongClickListener, View.OnClickListener paramOnClickListener4)
   {
     super(paramBaseFileAssistantActivity, paramObject);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 2;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseFileAssistantActivity;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = paramBaseFileAssistantActivity;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramBaseFileAssistantActivity);
-    this.jdField_b_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)paramObject);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener2;
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = paramOnClickListener3;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-    this.jdField_d_of_type_AndroidViewView$OnClickListener = paramOnClickListener4;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView$IWeiYunImageEvent = paramIWeiYunImageEvent;
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    this.jdField_d_of_type_Int = ((int)(this.jdField_a_of_type_Float * 2.0F));
-    this.jdField_c_of_type_Int = b();
+    this.c = paramBaseFileAssistantActivity;
+    this.i = paramBaseFileAssistantActivity;
+    this.j = LayoutInflater.from(paramBaseFileAssistantActivity);
+    this.d = ((LinkedHashMap)paramObject);
+    this.k = paramOnClickListener1;
+    this.l = paramOnClickListener2;
+    this.m = paramOnClickListener3;
+    this.n = paramOnLongClickListener;
+    this.o = paramOnClickListener4;
+    this.p = paramIWeiYunImageEvent;
+    this.r = this.c.getResources().getDisplayMetrics().density;
+    this.s = ((int)(this.r * 2.0F));
+    this.q = b();
   }
   
   private View a(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
@@ -76,38 +74,38 @@ public class QfileWeiYunImageExpandableListAdapter
     }
     paramView.removeAllViews();
     QfileWeiYunImageExpandableListAdapter.GridGroupHolder localGridGroupHolder = (QfileWeiYunImageExpandableListAdapter.GridGroupHolder)paramView.getTag();
-    int i = 0;
-    while (i < 4)
+    int i1 = 0;
+    while (i1 < 4)
     {
-      View localView = b(paramInt1, paramInt2 * 4 + i, paramBoolean, localGridGroupHolder.a[i], paramViewGroup);
+      View localView = b(paramInt1, paramInt2 * 4 + i1, paramBoolean, localGridGroupHolder.a[i1], paramViewGroup);
       if (localView == null) {
         return paramView;
       }
-      localGridGroupHolder.a[i] = localView;
+      localGridGroupHolder.a[i1] = localView;
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
       localObject = localLayoutParams;
       if (localLayoutParams == null)
       {
-        j = this.jdField_c_of_type_Int;
-        localObject = new LinearLayout.LayoutParams(j, j);
+        i2 = this.q;
+        localObject = new LinearLayout.LayoutParams(i2, i2);
       }
-      int j = this.jdField_c_of_type_Int;
-      ((LinearLayout.LayoutParams)localObject).width = j;
-      ((LinearLayout.LayoutParams)localObject).height = j;
-      if (i != 0) {
-        ((LinearLayout.LayoutParams)localObject).leftMargin = this.jdField_d_of_type_Int;
+      int i2 = this.q;
+      ((LinearLayout.LayoutParams)localObject).width = i2;
+      ((LinearLayout.LayoutParams)localObject).height = i2;
+      if (i1 != 0) {
+        ((LinearLayout.LayoutParams)localObject).leftMargin = this.s;
       }
-      ((LinearLayout.LayoutParams)localObject).topMargin = this.jdField_d_of_type_Int;
+      ((LinearLayout.LayoutParams)localObject).topMargin = this.s;
       localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       paramView.addView(localView);
-      i += 1;
+      i1 += 1;
     }
     return paramView;
   }
   
   private LinearLayout a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    paramViewGroup = new LinearLayout(this.c);
     paramViewGroup.setOrientation(0);
     paramViewGroup.setClickable(false);
     paramViewGroup.setLongClickable(false);
@@ -117,7 +115,7 @@ public class QfileWeiYunImageExpandableListAdapter
   
   private int b()
   {
-    DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
+    DisplayMetrics localDisplayMetrics = this.c.getResources().getDisplayMetrics();
     return (int)(localDisplayMetrics.widthPixels - localDisplayMetrics.density * 6.0F) / 4;
   }
   
@@ -135,7 +133,7 @@ public class QfileWeiYunImageExpandableListAdapter
       if (a(paramInt1, paramInt2) == 1) {
         return null;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView$IWeiYunImageEvent.c()) {
+      if (this.p.c()) {
         return null;
       }
       if (QLog.isDevelopLevel())
@@ -149,31 +147,31 @@ public class QfileWeiYunImageExpandableListAdapter
         QLog.d("@#@#@#", 4, paramView.toString());
       }
       paramView = new ImageHolder();
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560784, null);
+      paramViewGroup = this.j.inflate(2131627042, null);
       paramViewGroup.setClickable(true);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131380895));
-      paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131376345));
-      paramView.c = ((ImageView)paramViewGroup.findViewById(2131370354));
-      paramView.jdField_a_of_type_Boolean = true;
-      paramView.jdField_b_of_type_Int = paramInt1;
-      paramView.jdField_a_of_type_Int = paramInt2;
-      paramViewGroup.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView$IWeiYunImageEvent.a(paramView.jdField_a_of_type_AndroidWidgetTextView));
+      paramView.d = ((TextView)paramViewGroup.findViewById(2131449882));
+      paramView.e = ((ProgressBar)paramViewGroup.findViewById(2131444560));
+      paramView.f = ((ImageView)paramViewGroup.findViewById(2131437616));
+      paramView.j = true;
+      paramView.h = paramInt1;
+      paramView.g = paramInt2;
+      paramViewGroup.setOnClickListener(this.p.a(paramView.d));
       paramViewGroup.setTag(paramView);
-      if ((this.jdField_b_of_type_JavaUtilLinkedHashMap.size() == 0) && (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView$IWeiYunImageEvent.a())) {
+      if ((this.d.size() == 0) && (!this.p.a())) {
         paramViewGroup.setVisibility(8);
       } else {
         paramViewGroup.setVisibility(0);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView$IWeiYunImageEvent.b())
+      if (this.p.b())
       {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        paramView.c.setVisibility(8);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131692602);
+        paramView.e.setVisibility(0);
+        paramView.f.setVisibility(8);
+        paramView.d.setText(2131889625);
         return paramViewGroup;
       }
-      paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      paramView.c.setVisibility(0);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131692369);
+      paramView.e.setVisibility(8);
+      paramView.f.setVisibility(0);
+      paramView.d.setText(2131889357);
       return paramViewGroup;
     }
     if (paramView == null) {
@@ -183,96 +181,96 @@ public class QfileWeiYunImageExpandableListAdapter
     {
       try
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560794, null);
+        paramView = this.j.inflate(2131627052, null);
         paramViewGroup = paramView;
         ImageHolder localImageHolder = new ImageHolder();
         paramViewGroup = paramView;
-        localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131368461));
+        localImageHolder.a = ((AsyncImageView)paramView.findViewById(2131435357));
         paramViewGroup = paramView;
-        localImageHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368480));
+        localImageHolder.b = ((ImageView)paramView.findViewById(2131435382));
         paramViewGroup = paramView;
-        localImageHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368477));
+        localImageHolder.c = ((ImageView)paramView.findViewById(2131435377));
         paramViewGroup = paramView;
-        localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
+        localImageHolder.a.setOnClickListener(this.m);
         paramViewGroup = paramView;
-        localImageHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+        localImageHolder.b.setOnClickListener(this.l);
         paramViewGroup = paramView;
-        localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setTag(localImageHolder);
+        localImageHolder.a.setTag(localImageHolder);
         paramViewGroup = paramView;
-        localImageHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(localImageHolder);
+        localImageHolder.b.setTag(localImageHolder);
         paramViewGroup = paramView;
-        localImageHolder.jdField_a_of_type_Boolean = false;
+        localImageHolder.j = false;
         paramViewGroup = paramView;
         paramView.setTag(localImageHolder);
         continue;
         paramViewGroup = paramView;
         localImageHolder = (ImageHolder)paramView.getTag();
         paramViewGroup = paramView;
-        if (localImageHolder.jdField_a_of_type_Boolean)
+        if (localImageHolder.j)
         {
           paramViewGroup = paramView;
-          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560794, null);
+          paramView = this.j.inflate(2131627052, null);
           paramViewGroup = paramView;
           localImageHolder = new ImageHolder();
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131368461));
+          localImageHolder.a = ((AsyncImageView)paramView.findViewById(2131435357));
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368480));
+          localImageHolder.b = ((ImageView)paramView.findViewById(2131435382));
           paramViewGroup = paramView;
-          localImageHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368477));
+          localImageHolder.c = ((ImageView)paramView.findViewById(2131435377));
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
+          localImageHolder.a.setOnClickListener(this.m);
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+          localImageHolder.b.setOnClickListener(this.l);
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setTag(localImageHolder);
+          localImageHolder.a.setTag(localImageHolder);
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(localImageHolder);
+          localImageHolder.b.setTag(localImageHolder);
           paramViewGroup = paramView;
           paramView.setTag(localImageHolder);
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_JavaLangObject = localObject1;
+          localImageHolder.i = localObject1;
           paramViewGroup = paramView;
-          localImageHolder.jdField_b_of_type_Int = paramInt1;
+          localImageHolder.h = paramInt1;
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_Int = paramInt2;
+          localImageHolder.g = paramInt2;
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAdjustViewBounds(false);
+          localImageHolder.a.setAdjustViewBounds(false);
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+          localImageHolder.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130848074);
+          localImageHolder.a.setDefaultImage(2130849738);
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(this.jdField_c_of_type_Int, this.jdField_c_of_type_Int);
+          localImageHolder.a.setAsyncClipSize(this.q, this.q);
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_Boolean = false;
+          localImageHolder.j = false;
           paramViewGroup = paramView;
-          if (((WeiYunFileInfo)localObject1).h != null)
+          if (((WeiYunFileInfo)localObject1).l != null)
           {
             paramViewGroup = paramView;
-            if (((WeiYunFileInfo)localObject1).h.length() > 0)
+            if (((WeiYunFileInfo)localObject1).l.length() > 0)
             {
               paramViewGroup = paramView;
-              if (FileUtils.fileExistsAndNotEmpty(((WeiYunFileInfo)localObject1).h))
+              if (FileUtils.fileExistsAndNotEmpty(((WeiYunFileInfo)localObject1).l))
               {
                 paramViewGroup = paramView;
-                localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncImage(((WeiYunFileInfo)localObject1).h);
+                localImageHolder.a.setAsyncImage(((WeiYunFileInfo)localObject1).l);
               }
             }
           }
           paramViewGroup = paramView;
           Object localObject2 = new StringBuilder();
           paramViewGroup = paramView;
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131692371));
+          ((StringBuilder)localObject2).append(this.i.getString(2131889359));
           paramViewGroup = paramView;
           ((StringBuilder)localObject2).append(((WeiYunFileInfo)localObject1).c);
           paramViewGroup = paramView;
           localObject2 = ((StringBuilder)localObject2).toString();
           paramViewGroup = paramView;
-          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.f())
+          if (this.i.D())
           {
             paramViewGroup = paramView;
-            localImageHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+            localImageHolder.b.setVisibility(0);
             paramViewGroup = paramView;
             if (FMDataCache.a((WeiYunFileInfo)localObject1))
             {
@@ -281,13 +279,13 @@ public class QfileWeiYunImageExpandableListAdapter
               paramViewGroup = paramView;
               ((StringBuilder)localObject1).append((String)localObject2);
               paramViewGroup = paramView;
-              ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131692372));
+              ((StringBuilder)localObject1).append(this.i.getString(2131889360));
               paramViewGroup = paramView;
               localObject1 = ((StringBuilder)localObject1).toString();
               paramViewGroup = paramView;
-              localImageHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840575);
+              localImageHolder.b.setImageResource(2130841341);
               paramViewGroup = paramView;
-              paramView.setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getResources().getColor(2131167394));
+              paramView.setBackgroundColor(this.i.getResources().getColor(2131168464));
               paramViewGroup = paramView;
               paramView.setOnLongClickListener(null);
             }
@@ -298,29 +296,29 @@ public class QfileWeiYunImageExpandableListAdapter
               paramViewGroup = paramView;
               ((StringBuilder)localObject1).append((String)localObject2);
               paramViewGroup = paramView;
-              ((StringBuilder)localObject1).append(HardCodeUtil.a(2131692373));
+              ((StringBuilder)localObject1).append(HardCodeUtil.a(2131889361));
               paramViewGroup = paramView;
               localObject1 = ((StringBuilder)localObject1).toString();
               paramViewGroup = paramView;
-              localImageHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+              localImageHolder.c.setVisibility(4);
               paramViewGroup = paramView;
-              localImageHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845862);
+              localImageHolder.b.setImageResource(2130847332);
               paramViewGroup = paramView;
-              paramView.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
+              paramView.setOnLongClickListener(this.n);
             }
           }
           else
           {
             paramViewGroup = paramView;
-            localImageHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+            localImageHolder.b.setVisibility(8);
             paramViewGroup = paramView;
-            localImageHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+            localImageHolder.c.setVisibility(8);
             localObject1 = localObject2;
           }
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_AndroidWidgetImageView.setContentDescription((CharSequence)localObject1);
+          localImageHolder.b.setContentDescription((CharSequence)localObject1);
           paramViewGroup = paramView;
-          localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setContentDescription((CharSequence)localObject1);
+          localImageHolder.a.setContentDescription((CharSequence)localObject1);
           return paramView;
         }
       }
@@ -335,15 +333,15 @@ public class QfileWeiYunImageExpandableListAdapter
   
   public int a()
   {
-    return this.jdField_c_of_type_Int + this.jdField_d_of_type_Int;
+    return this.q + this.s;
   }
   
   public int a(int paramInt1, int paramInt2)
   {
-    if (paramInt1 + 1 < this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().size()) {
+    if (paramInt1 + 1 < this.d.keySet().size()) {
       return 1;
     }
-    List localList = (List)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(getGroup(paramInt1));
+    List localList = (List)this.d.get(getGroup(paramInt1));
     if (((localList == null) && (paramInt2 == 0)) || ((localList != null) && (paramInt2 == localList.size()))) {
       return 2;
     }
@@ -352,20 +350,20 @@ public class QfileWeiYunImageExpandableListAdapter
   
   public Object getChild(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    int i = 0;
+    Object localObject = this.d.keySet().iterator();
+    int i1 = 0;
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      if (i == paramInt1)
+      if (i1 == paramInt1)
       {
-        localObject = (List)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(str);
+        localObject = (List)this.d.get(str);
         if (paramInt2 >= ((List)localObject).size()) {
           return null;
         }
         return ((List)localObject).get(paramInt2);
       }
-      i += 1;
+      i1 += 1;
     }
     return null;
   }
@@ -382,22 +380,22 @@ public class QfileWeiYunImageExpandableListAdapter
   
   public int getChildrenCount(int paramInt)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    int i = 0;
+    Iterator localIterator = this.d.keySet().iterator();
+    int i1 = 0;
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (i == paramInt)
+      if (i1 == paramInt)
       {
-        paramInt = ((List)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(str)).size();
+        paramInt = ((List)this.d.get(str)).size();
         if (paramInt < 4) {
           return 1;
         }
         return paramInt / 4 + 1;
       }
-      i += 1;
+      i1 += 1;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView$IWeiYunImageEvent.c()) {
+    if (!this.p.c()) {
       return 1;
     }
     return 0;
@@ -405,25 +403,25 @@ public class QfileWeiYunImageExpandableListAdapter
   
   public Object getGroup(int paramInt)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    int i = 0;
+    Iterator localIterator = this.d.keySet().iterator();
+    int i1 = 0;
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (i == paramInt) {
+      if (i1 == paramInt) {
         return str;
       }
-      i += 1;
+      i1 += 1;
     }
     return null;
   }
   
   public int getGroupCount()
   {
-    if (this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().size() > 0) {
-      return this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().size();
+    if (this.d.keySet().size() > 0) {
+      return this.d.keySet().size();
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView$IWeiYunImageEvent.c()) {
+    if (!this.p.c()) {
       return 1;
     }
     return 0;
@@ -436,7 +434,7 @@ public class QfileWeiYunImageExpandableListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.adapter.QfileWeiYunImageExpandableListAdapter
  * JD-Core Version:    0.7.0.1
  */

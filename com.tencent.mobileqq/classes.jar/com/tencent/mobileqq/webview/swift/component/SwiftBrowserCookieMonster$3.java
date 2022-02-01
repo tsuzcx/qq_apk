@@ -15,7 +15,7 @@ final class SwiftBrowserCookieMonster$3
   
   public void run()
   {
-    if (SwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2)
+    if (SwiftBrowserCookieMonster.f.get() == 2)
     {
       ??? = this.a;
       if ((??? != null) && (((AppRuntime)???).isLogin()))
@@ -31,14 +31,14 @@ final class SwiftBrowserCookieMonster$3
         String str = this.a.getAccount();
         Object localObject3;
         StringBuilder localStringBuilder;
-        if (TextUtils.isEmpty(SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString))
+        if (TextUtils.isEmpty(SwiftBrowserCookieMonster.a))
         {
-          SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString = ((TicketManager)???).getSkey(str);
-          if (!TextUtils.isEmpty(SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString))
+          SwiftBrowserCookieMonster.a = ((TicketManager)???).getSkey(str);
+          if (!TextUtils.isEmpty(SwiftBrowserCookieMonster.a))
           {
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("skey=");
-            ((StringBuilder)localObject3).append(SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject3).append(SwiftBrowserCookieMonster.a);
             QLog.i("SwiftBrowserCookieMonster", 1, Util.c(((StringBuilder)localObject3).toString(), new String[0]));
           }
           else
@@ -83,14 +83,14 @@ final class SwiftBrowserCookieMonster$3
         if (TextUtils.isEmpty(SwiftBrowserCookieMonster.e)) {
           SwiftBrowserCookieMonster.e = ((TicketManager)???).getA2(str);
         }
-        synchronized (SwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
+        synchronized (SwiftBrowserCookieMonster.f)
         {
-          if (SwiftBrowserCookieMonster.b()) {
-            SwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(2, 3);
+          if (SwiftBrowserCookieMonster.h()) {
+            SwiftBrowserCookieMonster.f.compareAndSet(2, 3);
           } else {
-            SwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(2, 1);
+            SwiftBrowserCookieMonster.f.compareAndSet(2, 1);
           }
-          SwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.notifyAll();
+          SwiftBrowserCookieMonster.f.notifyAll();
           return;
         }
       }
@@ -99,7 +99,7 @@ final class SwiftBrowserCookieMonster$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.3
  * JD-Core Version:    0.7.0.1
  */

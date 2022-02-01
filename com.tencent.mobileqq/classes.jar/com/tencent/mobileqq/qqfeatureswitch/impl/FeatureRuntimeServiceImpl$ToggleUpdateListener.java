@@ -28,7 +28,7 @@ public class FeatureRuntimeServiceImpl$ToggleUpdateListener
       }
       String str = (String)FeatureRuntimeServiceImpl.access$100().pop();
       QLog.d("FeatureRuntimeServiceImpl", 1, new Object[] { "checkUserIdChanged, new user id is ", MobileQQ.getShortUinStr(str) });
-      Toggle.a(str, true);
+      Toggle.b(str, true);
       FeatureRuntimeServiceImpl.access$100().clear();
       return;
     }
@@ -57,7 +57,7 @@ public class FeatureRuntimeServiceImpl$ToggleUpdateListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfeatureswitch.impl.FeatureRuntimeServiceImpl.ToggleUpdateListener
  * JD-Core Version:    0.7.0.1
  */

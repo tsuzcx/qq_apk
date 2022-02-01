@@ -91,9 +91,9 @@ public class BrowserBuilder
   
   public void buildPresenter()
   {
-    if ((this.relyPresenter.getParamsBuilder() != null) && (this.relyPresenter.getParamsBuilder().jdField_a_of_type_JavaUtilHashMap != null) && (this.relyPresenter.getParamsBuilder().jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.mType)) != null))
+    if ((this.relyPresenter.getParamsBuilder() != null) && (this.relyPresenter.getParamsBuilder().c != null) && (this.relyPresenter.getParamsBuilder().c.get(Integer.valueOf(this.mType)) != null))
     {
-      int i = ((Integer)this.relyPresenter.getParamsBuilder().jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.mType))).intValue();
+      int i = ((Integer)this.relyPresenter.getParamsBuilder().c.get(Integer.valueOf(this.mType))).intValue();
       if (i > 0)
       {
         localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
@@ -104,12 +104,12 @@ public class BrowserBuilder
         localStringBuilder.append(i);
         localIBrowserLog.d("BrowserBuilder", 4, localStringBuilder.toString());
         buildPresenter(i);
-        if (this.relyPresenter.getParamsBuilder().jdField_a_of_type_ComTencentRichmediabrowserCoreIDecoratorMvpFactory != null)
+        if (this.relyPresenter.getParamsBuilder().b != null)
         {
-          this.decoratorPresenter = this.relyPresenter.getParamsBuilder().jdField_a_of_type_ComTencentRichmediabrowserCoreIDecoratorMvpFactory.a(this.mType);
+          this.decoratorPresenter = this.relyPresenter.getParamsBuilder().b.a(this.mType);
           this.decoratorPresenter.b(this.relyPresenter);
-          this.decoratorView = this.relyPresenter.getParamsBuilder().jdField_a_of_type_ComTencentRichmediabrowserCoreIDecoratorMvpFactory.a(this.mContext, this.mType, this.decoratorPresenter);
-          this.decoratorModel = this.relyPresenter.getParamsBuilder().jdField_a_of_type_ComTencentRichmediabrowserCoreIDecoratorMvpFactory.a(this.mType, this.decoratorPresenter);
+          this.decoratorView = this.relyPresenter.getParamsBuilder().b.a(this.mContext, this.mType, this.decoratorPresenter);
+          this.decoratorModel = this.relyPresenter.getParamsBuilder().b.a(this.mType, this.decoratorPresenter);
           this.decoratorModel.a(this.model);
           this.decoratorView.a(this.view);
           this.decoratorPresenter.a(this.presenter);
@@ -161,7 +161,7 @@ public class BrowserBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.core.BrowserBuilder
  * JD-Core Version:    0.7.0.1
  */

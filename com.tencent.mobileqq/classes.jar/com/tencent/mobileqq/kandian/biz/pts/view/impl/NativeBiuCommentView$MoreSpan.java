@@ -11,39 +11,39 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 public class NativeBiuCommentView$MoreSpan
   extends PressedSpan
 {
-  AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  AbsBaseArticleInfo b;
   
   public NativeBiuCommentView$MoreSpan(NativeBiuCommentView paramNativeBiuCommentView, AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
     super(paramInt, 13421772, 860716207);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+    this.b = paramAbsBaseArticleInfo;
   }
   
   public void onClick(View paramView)
   {
-    if (RIJItemViewTypeUtils.l(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo))
+    if (RIJItemViewTypeUtils.l(this.b))
     {
-      RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeBiuCommentView.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 0, false, 5, false);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      RIJJumpUtils.a(this.c.getContext(), this.b, 0, false, 5, false);
+      paramView = this.b;
       RIJFrameworkReportManager.b(paramView, (int)paramView.mChannelID);
       return;
     }
-    if (RIJItemViewTypeUtils.h(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo))
+    if (RIJItemViewTypeUtils.h(this.b))
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeBiuCommentView.getContext();
+      paramView = this.c.getContext();
       if ((paramView instanceof Activity)) {
-        RIJJumpUtils.b(paramView, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 6);
+        RIJJumpUtils.b(paramView, this.b, 6);
       }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      paramView = this.b;
       RIJFrameworkReportManager.b(paramView, (int)paramView.mChannelID);
       return;
     }
-    RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeBiuCommentView.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, false);
+    RIJJumpUtils.a(this.c.getContext(), this.b, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeBiuCommentView.MoreSpan
  * JD-Core Version:    0.7.0.1
  */

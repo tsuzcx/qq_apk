@@ -51,7 +51,7 @@ public class AutoReplyTextItemBuilder
   {
     paramBaseActivity = paramBaseActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
     if ((paramBaseActivity instanceof ChatFragment)) {
-      return ((ChatFragment)paramBaseActivity).a();
+      return ((ChatFragment)paramBaseActivity).k();
     }
     return null;
   }
@@ -59,7 +59,7 @@ public class AutoReplyTextItemBuilder
   @Nullable
   private CharSequence a(MessageForAutoReply paramMessageForAutoReply)
   {
-    boolean bool = c();
+    boolean bool = i();
     if (QLog.isColorLevel()) {
       QLog.d("[AutoReply] AutoReplyTextItemBuilder", 2, new Object[] { "[view] getMessageContent: invoked. ", " friendChatPie: ", Boolean.valueOf(bool) });
     }
@@ -76,17 +76,17 @@ public class AutoReplyTextItemBuilder
     if (localObject == null) {
       localObject = paramContext;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a((Context)localObject, 230, paramContext.getResources().getString(2131690242), paramContext.getResources().getString(2131690241), 2131690728, 2131693521, new AutoReplyTextItemBuilder.2(this, paramContext), new AutoReplyTextItemBuilder.3(this));
+    this.a = DialogUtil.a((Context)localObject, 230, paramContext.getResources().getString(2131887153), paramContext.getResources().getString(2131887152), 2131887648, 2131891076, new AutoReplyTextItemBuilder.2(this, paramContext), new AutoReplyTextItemBuilder.3(this));
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      this.a.show();
       return;
     }
     catch (Exception paramContext)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[谨慎此异常，弹窗无法展示] showSetAutoReplyDialog: failed. context: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidContentContext.getClass().getName());
+      ((StringBuilder)localObject).append(this.e.getClass().getName());
       QLog.e("[AutoReply] AutoReplyTextItemBuilder", 1, ((StringBuilder)localObject).toString(), paramContext);
     }
   }
@@ -104,10 +104,10 @@ public class AutoReplyTextItemBuilder
     }
     paramView.setOnClickListener(new AutoReplyTextItemBuilder.1(this, paramMessageForAutoReply));
     a(localLayoutParams);
-    localLayoutParams.addRule(3, 2131364521);
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296383);
-    int j = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-    localLayoutParams.addRule(5, 2131364521);
+    localLayoutParams.addRule(3, 2131430578);
+    int i = this.e.getResources().getDimensionPixelSize(2131296615);
+    int j = DisplayUtil.a(this.e, 10.0F);
+    localLayoutParams.addRule(5, 2131430578);
     localLayoutParams.leftMargin = (i + j);
     paramView.setLayoutParams(localLayoutParams);
     paramView.setVisibility(0);
@@ -124,15 +124,15 @@ public class AutoReplyTextItemBuilder
     ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).startAccountOnlineStateActivity(paramContext, localIntent);
   }
   
-  private void a(MessageForAutoReply paramMessageForAutoReply)
+  private void b(MessageForAutoReply paramMessageForAutoReply)
   {
     if (!paramMessageForAutoReply.needClickAction) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin().equals(paramMessageForAutoReply.senderuin)) {
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
+    if (this.d.getCurrentUin().equals(paramMessageForAutoReply.senderuin)) {
+      a(this.d, this.e);
     } else {
-      a(this.jdField_a_of_type_AndroidContentContext);
+      a(this.e);
     }
     ReportHelperKt.a("0X800B0AE");
     if (QLog.isColorLevel()) {
@@ -142,8 +142,8 @@ public class AutoReplyTextItemBuilder
   
   View a(ViewGroup paramViewGroup)
   {
-    TextView localTextView = (TextView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559134, null);
-    paramViewGroup.addView(localTextView, new RelativeLayout.LayoutParams(-2, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 21.0F)));
+    TextView localTextView = (TextView)LayoutInflater.from(this.e).inflate(2131624879, null);
+    paramViewGroup.addView(localTextView, new RelativeLayout.LayoutParams(-2, DisplayUtil.a(this.e, 21.0F)));
     return localTextView;
   }
   
@@ -155,18 +155,18 @@ public class AutoReplyTextItemBuilder
     {
       paramChatMessage = (MessageForAutoReply)paramChatMessage;
       paramOnLongClickAndTouchListener = a(paramChatMessage);
-      paramViewHolder.d.setText(paramOnLongClickAndTouchListener);
-      if (paramViewHolder.c == null) {
-        paramViewHolder.c = a(paramBaseChatItemLayout);
+      paramViewHolder.v.setText(paramOnLongClickAndTouchListener);
+      if (paramViewHolder.a == null) {
+        paramViewHolder.a = a(paramBaseChatItemLayout);
       }
       if (paramChatMessage.needShowTail)
       {
-        a(paramViewHolder.c, paramChatMessage);
-        paramViewHolder.c.setVisibility(0);
+        a(paramViewHolder.a, paramChatMessage);
+        paramViewHolder.a.setVisibility(0);
       }
       else
       {
-        paramViewHolder.c.setVisibility(8);
+        paramViewHolder.a.setVisibility(8);
       }
       if (QLog.isColorLevel()) {
         QLog.d("[AutoReply] AutoReplyTextItemBuilder", 2, new Object[] { "[view] bindQQTextView: invoked. ", " message.needTextLink: ", Boolean.valueOf(paramChatMessage.needShowTail) });
@@ -180,13 +180,13 @@ public class AutoReplyTextItemBuilder
     return new AutoReplyTextItemBuilder.AutoReplyHolder();
   }
   
-  public void a()
+  public void b()
   {
-    super.a();
+    super.b();
     if (QLog.isColorLevel()) {
-      QLog.d("[AutoReply] AutoReplyTextItemBuilder", 2, new Object[] { "[dialog] destroy: invoked. ", " setAutoReplyDialog: ", this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog });
+      QLog.d("[AutoReply] AutoReplyTextItemBuilder", 2, new Object[] { "[dialog] destroy: invoked. ", " setAutoReplyDialog: ", this.a });
     }
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    QQCustomDialog localQQCustomDialog = this.a;
     if (localQQCustomDialog != null)
     {
       try
@@ -197,11 +197,11 @@ public class AutoReplyTextItemBuilder
       {
         QLog.d("[AutoReply] AutoReplyTextItemBuilder", 1, new Object[] { "[dialog] destroy: invoked. ", " e: ", localException });
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      this.a = null;
     }
   }
   
-  boolean c()
+  boolean i()
   {
     boolean bool3 = BaseActivity.sTopActivity instanceof BaseActivity;
     boolean bool2 = false;
@@ -216,7 +216,7 @@ public class AutoReplyTextItemBuilder
       if ((localBaseChatPie instanceof FriendChatPie))
       {
         bool1 = bool2;
-        if (localBaseChatPie.b() == 0) {
+        if (localBaseChatPie.F() == 0) {
           bool1 = true;
         }
       }
@@ -226,7 +226,7 @@ public class AutoReplyTextItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.AutoReplyTextItemBuilder
  * JD-Core Version:    0.7.0.1
  */

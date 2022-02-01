@@ -502,7 +502,7 @@ public class ab
   {
     if ((k != null) && (g()))
     {
-      k.write("SDK_VERSION = 1.0|BUILD_NO = {BuildNo}|RELEASE_DATE: {ReleaseDate}\r\n");
+      k.write("SDK_VERSION = 1.3|BUILD_NO = {BuildNo}|RELEASE_DATE: {ReleaseDate}\r\n");
       k.flush();
     }
   }
@@ -610,7 +610,7 @@ public class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.ab
  * JD-Core Version:    0.7.0.1
  */

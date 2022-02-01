@@ -12,36 +12,31 @@ import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 public abstract class FlowActivity
   extends PeakActivity
 {
-  protected int a;
   protected ViewGroup a;
-  protected boolean a;
-  
-  public FlowActivity()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
+  protected int b;
+  protected boolean c = true;
   
   protected void a(Bundle paramBundle)
   {
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297093));
+    this.b = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297474));
   }
   
   protected abstract void a(ViewGroup paramViewGroup);
   
+  public View b()
+  {
+    return this.a;
+  }
+  
   public void finish()
   {
     super.finish();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      overridePendingTransition(0, 2130772015);
+      overridePendingTransition(0, 2130772018);
       return;
     }
     overridePendingTransition(0, 0);
@@ -59,12 +54,12 @@ public abstract class FlowActivity
     getWindow().addFlags(512);
     paramBundle = getIntent().getExtras();
     if (paramBundle == null) {
-      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297093));
+      this.b = ((int)getResources().getDimension(2131297474));
     }
     a(paramBundle);
-    setContentView(2131558479);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131367038));
-    paramBundle = this.jdField_a_of_type_AndroidViewViewGroup;
+    setContentView(2131624023);
+    this.a = ((ViewGroup)findViewById(2131433486));
+    paramBundle = this.a;
     if (paramBundle != null) {
       a(paramBundle);
     }
@@ -90,7 +85,7 @@ public abstract class FlowActivity
     if (paramMotionEvent.getAction() != 0) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    View localView = a();
+    View localView = b();
     if (localView == null) {
       return super.onTouchEvent(paramMotionEvent);
     }
@@ -103,7 +98,7 @@ public abstract class FlowActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.FlowActivity
  * JD-Core Version:    0.7.0.1
  */

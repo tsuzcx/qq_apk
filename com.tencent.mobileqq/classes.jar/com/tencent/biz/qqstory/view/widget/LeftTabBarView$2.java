@@ -13,7 +13,7 @@ class LeftTabBarView$2
   {
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
     boolean bool;
-    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {
+    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.b(this.a)) {
       bool = true;
     } else {
       bool = false;

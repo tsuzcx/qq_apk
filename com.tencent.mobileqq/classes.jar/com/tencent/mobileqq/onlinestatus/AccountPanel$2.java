@@ -14,7 +14,7 @@ class AccountPanel$2
     super.sendAccessibilityEvent(paramView, paramInt);
     if (paramInt == 1)
     {
-      ClickableSpan localClickableSpan = this.jdField_a_of_type_AndroidTextStyleClickableSpan;
+      ClickableSpan localClickableSpan = this.a;
       if (localClickableSpan != null) {
         localClickableSpan.onClick(paramView);
       }
@@ -23,7 +23,7 @@ class AccountPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountPanel.2
  * JD-Core Version:    0.7.0.1
  */

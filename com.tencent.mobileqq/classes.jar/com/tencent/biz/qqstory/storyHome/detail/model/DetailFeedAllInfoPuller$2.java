@@ -9,7 +9,7 @@ class DetailFeedAllInfoPuller$2
   
   public void run()
   {
-    DetailFeedAllInfoPuller.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    DetailFeedAllInfoPuller.d(this.this$0).a(this.a, this.b, this.c);
   }
 }
 

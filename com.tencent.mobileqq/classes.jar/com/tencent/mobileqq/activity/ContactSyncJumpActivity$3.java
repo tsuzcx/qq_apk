@@ -20,32 +20,32 @@ class ContactSyncJumpActivity$3
         int i = paramMessage.arg1 - 1;
         if (i == 0)
         {
-          ContactSyncJumpActivity.a(this.a);
+          ContactSyncJumpActivity.h(this.a);
           return;
         }
-        if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_Int == 2))
+        if ((this.a.a != null) && (this.a.b == 2))
         {
           paramMessage = new StringBuilder();
           paramMessage.append("(");
           paramMessage.append(i);
           paramMessage.append(")");
           paramMessage = paramMessage.toString();
-          ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365673)).setText(String.format(this.a.getResources().getString(2131698725), new Object[] { paramMessage }));
+          ((TextView)this.a.a.findViewById(2131431907)).setText(String.format(this.a.getResources().getString(2131896683), new Object[] { paramMessage }));
         }
         paramMessage = obtainMessage(1000);
         paramMessage.arg1 = i;
         sendMessageDelayed(paramMessage, 1000L);
         return;
       }
-      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_Int == 2)) {
-        ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365673)).setText(String.format(this.a.getResources().getString(2131698725), new Object[] { "" }));
+      if ((this.a.a != null) && (this.a.b == 2)) {
+        ((TextView)this.a.a.findViewById(2131431907)).setText(String.format(this.a.getResources().getString(2131896683), new Object[] { "" }));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ContactSyncJumpActivity.3
  * JD-Core Version:    0.7.0.1
  */

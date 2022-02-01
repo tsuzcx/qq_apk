@@ -147,7 +147,7 @@ public class BaseActivityLifecycleCallbackImpl
       if ((localAppRuntime instanceof AppInterface)) {
         ((AppInterface)localAppRuntime).removeHandler(paramActivity.getClass());
       }
-      if ((MagnifierSDK.a().a().a > 0.0F) && (GlobalImageCache.a != null)) {
+      if ((MagnifierSDK.b().j().b > 0.0F) && (GlobalImageCache.a != null)) {
         GlobalImageCache.a.releaseLargeCache();
       }
       e(localQBaseActivity);
@@ -215,10 +215,10 @@ public class BaseActivityLifecycleCallbackImpl
     if ((paramActivity instanceof QBaseActivity))
     {
       if (!((ISafeBlockApi)QRoute.api(ISafeBlockApi.class)).isBlockNotifyActivity(paramActivity)) {
-        EquipmentLockImpl.a().a();
+        EquipmentLockImpl.a().b();
       }
       if (EquipmentLockImpl.a == true) {
-        EquipmentLockImpl.a().b();
+        EquipmentLockImpl.a().c();
       }
       QBaseActivity.mAppForground = GesturePWDUtils.getAppForground(paramActivity);
       if (QLog.isColorLevel())
@@ -247,8 +247,8 @@ public class BaseActivityLifecycleCallbackImpl
       QBaseActivity.mAppBackgroundTime = 0L;
       paramActivity = (QBaseActivity)paramActivity;
       a(paramActivity);
-      if (GuardManager.a != null) {
-        GuardManager.a.b(1, paramActivity.getPreProcess());
+      if (GuardManager.sInstance != null) {
+        GuardManager.sInstance.onEvent(1, paramActivity.getPreProcess());
       }
       b(paramActivity);
     }
@@ -296,7 +296,7 @@ public class BaseActivityLifecycleCallbackImpl
     }
     try
     {
-      boolean bool = AppSetting.c.equalsIgnoreCase("Xiaomi-MI 5");
+      boolean bool = AppSetting.u.equalsIgnoreCase("Xiaomi-MI 5");
       i = 2;
       if (bool)
       {
@@ -381,7 +381,7 @@ public class BaseActivityLifecycleCallbackImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.lifecycle.BaseActivityLifecycleCallbackImpl
  * JD-Core Version:    0.7.0.1
  */

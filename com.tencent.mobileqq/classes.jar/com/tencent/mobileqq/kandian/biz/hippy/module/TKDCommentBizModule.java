@@ -14,13 +14,12 @@ import com.tencent.mobileqq.kandian.biz.comment.entity.SubCommentCreateData;
 import com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkHelper.RIJCreateCommentForHippyObserver;
 import com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkWrapper;
 import com.tencent.mobileqq.kandian.biz.comment.rptdata.RIJCommentRptDataUtil;
-import com.tencent.mobileqq.kandian.biz.comment.util.api.IRIJCommentEmotionUtil;
-import com.tencent.mobileqq.kandian.biz.detail.web.api.IFastWebPTSUtils;
+import com.tencent.mobileqq.kandian.biz.comment.util.api.impl.RIJCommentEmotionUtil;
+import com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebPTSUtils;
 import com.tencent.mobileqq.kandian.biz.hippy.interfaces.ITKDHippyEventDispatcherOwner;
 import com.tencent.mobileqq.kandian.biz.hippy.interfaces.dispatcher.ITKDHippyEventDispatcher;
 import com.tencent.mobileqq.kandian.biz.hippy.interfaces.receiver.ITKDHippyEventReceiver;
 import com.tencent.mobileqq.kandian.biz.hippy.tuwen.app.TKDTuWenHippyEngine;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.EmotionCodecUtils;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mtt.hippy.HippyEngineContext;
@@ -47,43 +46,33 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@HippyNativeModule(name="TKDCommentBizModule")
+@HippyNativeModule(init=true, name="TKDCommentBizModule")
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/hippy/module/TKDCommentBizModule;", "Lcom/tencent/hippy/qq/module/QQBaseLifecycleModule;", "context", "Lcom/tencent/mtt/hippy/HippyEngineContext;", "(Lcom/tencent/mtt/hippy/HippyEngineContext;)V", "commentPublisherPromise", "Lcom/tencent/mtt/hippy/modules/Promise;", "extraParams", "", "hippyCommentEvent", "com/tencent/mobileqq/kandian/biz/hippy/module/TKDCommentBizModule$hippyCommentEvent$1", "Lcom/tencent/mobileqq/kandian/biz/hippy/module/TKDCommentBizModule$hippyCommentEvent$1;", "hippyEventDispatcher", "Lcom/tencent/mobileqq/kandian/biz/hippy/interfaces/dispatcher/ITKDHippyEventDispatcher;", "buildCallbackInfo", "Lcom/tencent/mtt/hippy/common/HippyMap;", "resultCode", "", "errorCode", "comment", "(ILjava/lang/Integer;Ljava/lang/String;)Lcom/tencent/mtt/hippy/common/HippyMap;", "buildCommentEditorIntent", "Landroid/content/Intent;", "params", "closeComment", "", "promise", "closeSubComment", "decodeQQEmotionString", "destroy", "forbidScroll", "getCommentEmotionData", "getCurrentFontScaleFactor", "getShareLine", "", "", "isFirstComment", "", "(Z)[Ljava/util/List;", "handleError", "msg", "t", "", "handleOnActivityResult", "data", "initialize", "onActivityCreated", "activity", "Landroid/app/Activity;", "savedInstanceState", "Landroid/os/Bundle;", "onActivityDestroyed", "onActivityPaused", "onActivityResult", "requestCode", "onActivityResumed", "onActivityStarted", "onActivityStopped", "onClickFollow", "onClickLike", "onCommentViewLayout", "onCreateComment", "onDeleteComment", "onLoadStatusChanged", "openComment", "openCommentDetail", "openCommentPublisher", "openMiniApp", "openQQGroup", "openSubComment", "sendEventToJs", "eventName", "hippyMap", "shareComment", "updateCommentCount", "Companion", "MyTKDTuWen2HippyEventReceiver", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class TKDCommentBizModule
   extends QQBaseLifecycleModule
 {
   private static final String ARG_ANCHOR_ID = "anchorId";
   private static final String ARG_ANONYMOUS = "anonymous";
-  private static final String ARG_ARTICLE_ID = "articleId";
-  private static final String ARG_COMMENT = "comment";
-  private static final String ARG_COMMENT_ID = "commentId";
   private static final String ARG_COMMENT_INFO = "commentInfo";
   private static final String ARG_COMMENT_NUM = "commentNum";
-  private static final String ARG_COMMENT_TYPE = "commentType";
   private static final String ARG_CONTENT_SRC = "contentSrc";
-  private static final String ARG_DEFAULT_TEXT = "defaultTxt";
-  private static final String ARG_ERROR_CODE = "errorCode";
   private static final String ARG_EXTRA_PARAMS = "extraParam";
-  private static final String ARG_FIRST_COMMENT_ID = "firstCommentId";
+  private static final String ARG_FOLLOW_STATUS = "followStatus";
+  private static final String ARG_FOLLOW_UIN = "followUin";
   private static final String ARG_FORBID = "forbid";
   private static final String ARG_FORBIDDEN = "forbidden";
   private static final String ARG_HINT = "hint";
   private static final String ARG_IS_LIKE = "isLike";
-  private static final String ARG_IS_PGC_AUTHOR = "isPgcAuthor";
   private static final String ARG_MAX_TEXT_LIMIT = "maxTextLimit";
   private static final String ARG_MINI_APP_URL = "miniAppUrl";
   private static final String ARG_PUBLISHER_CONFIG = "publisherConfig";
   private static final String ARG_READ_TIME = "readTime";
   private static final String ARG_REPLIED_COMMENT_ID = "repliedCommentId";
-  private static final String ARG_REPLIED_SUB_AUTHOR_ID = "repliedSubAuthorId";
-  private static final String ARG_REPLIED_SUB_COMMENT_ID = "repliedSubCommentId";
   private static final String ARG_REPLY_HAS_LINK = "replyHasLink";
   private static final String ARG_RESULT_CODE = "retCode";
   private static final String ARG_ROW_KEY = "rowKey";
-  private static final String ARG_SCENE = "scene";
   private static final String ARG_SHOW_AT_ICON = "showAtIcon";
   private static final String ARG_SHOW_BIU_ICON = "showBiuIcon";
-  private static final String ARG_SOURCE_TYPE = "sourceType";
   private static final String ARG_STATUS = "status";
   private static final String ARG_SUB_COMMENT = "subComment";
   private static final String ARG_SUB_COMMENT_ID = "subCommentId";
@@ -202,21 +191,23 @@ public final class TKDCommentBizModule
     j = ((HippyMap)localObject3).getInt("replyHasLink");
     int n = ((HippyMap)localObject3).getInt("sourceType");
     int i1 = ((HippyMap)localObject3).getInt("commentType");
+    int i2 = ((HippyMap)localObject3).getInt("firstAction");
     localObject2 = new Intent();
     ((Intent)localObject2).putExtra("public_fragment_window_feature", 1);
     ((Intent)localObject2).putExtra("comment_type", false);
     ((Intent)localObject2).putExtra("arg_comment_enable_anonymous", bool2);
-    ((Intent)localObject2).putExtra("arg_comment_placeholder", str3);
-    ((Intent)localObject2).putExtra("arg_comment_default_txt", str4);
-    ((Intent)localObject2).putExtra("arg_comment_max_length", i);
+    ((Intent)localObject2).putExtra("placeholder", str3);
+    ((Intent)localObject2).putExtra("defaultTxt", str4);
+    ((Intent)localObject2).putExtra("maxLength", i);
     ((Intent)localObject2).putExtra("arg_comment_open_at", bool3);
     ((Intent)localObject2).putExtra("comment_can_biu", bool1);
     if (((HippyMap)localObject3).containsKey("isPgcAuthor")) {
-      ((Intent)localObject2).putExtra("comment_is_pgc_author", bool4);
+      ((Intent)localObject2).putExtra("isPgcAuthor", bool4);
     }
     ((Intent)localObject2).putExtra("comment_to_reply_contain_link", j);
-    ((Intent)localObject2).putExtra("arg_comment_source_type", n);
-    ((Intent)localObject2).putExtra("arg_comment_comment_type", i1);
+    ((Intent)localObject2).putExtra("sourceType", n);
+    ((Intent)localObject2).putExtra("commentType", i1);
+    ((Intent)localObject2).putExtra("firstAction", i2);
     localObject3 = (CharSequence)localObject1;
     if ((localObject3 != null) && (((CharSequence)localObject3).length() != 0)) {
       i = 0;
@@ -297,7 +288,7 @@ public final class TKDCommentBizModule
       paramHippyMap = "";
     }
     HippyMap localHippyMap = new HippyMap();
-    localHippyMap.pushString("emotionText", EmotionCodecUtils.b(paramHippyMap));
+    localHippyMap.pushString("emotionText", EmotionCodecUtils.c(paramHippyMap));
     paramPromise.resolve(localHippyMap);
   }
   
@@ -321,7 +312,7 @@ public final class TKDCommentBizModule
   public final void getCommentEmotionData(@NotNull Promise paramPromise)
   {
     Intrinsics.checkParameterIsNotNull(paramPromise, "promise");
-    String str = ((IRIJCommentEmotionUtil)QRoute.api(IRIJCommentEmotionUtil.class)).getCommentEmotionDataForWeb();
+    String str = RIJCommentEmotionUtil.INSTANCE.getCommentEmotionDataForWeb();
     HippyMap localHippyMap = new HippyMap();
     localHippyMap.pushString("emotionData", str);
     paramPromise.resolve(localHippyMap);
@@ -333,7 +324,7 @@ public final class TKDCommentBizModule
     Intrinsics.checkParameterIsNotNull(paramHippyMap, "params");
     Intrinsics.checkParameterIsNotNull(paramPromise, "promise");
     paramHippyMap = new HippyMap();
-    Float localFloat = ((IFastWebPTSUtils)QRoute.api(IFastWebPTSUtils.class)).getTextFontRatio();
+    Float localFloat = FastWebPTSUtils.b();
     if (localFloat != null) {
       paramHippyMap.pushDouble("scaleFactor", ((Number)localFloat).floatValue());
     }
@@ -707,7 +698,7 @@ public final class TKDCommentBizModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.module.TKDCommentBizModule
  * JD-Core Version:    0.7.0.1
  */

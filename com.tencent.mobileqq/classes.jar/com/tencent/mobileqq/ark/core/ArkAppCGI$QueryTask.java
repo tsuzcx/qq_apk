@@ -6,25 +6,19 @@ import java.util.ArrayList;
 
 class ArkAppCGI$QueryTask
 {
-  public long a;
-  ArkAppCGI.ITaskHttpResult a;
-  public ByteArrayOutputStream a;
-  public File a;
   public String a;
-  public final ArrayList<Object> a;
-  public String b;
-  public final ArrayList<ArkAppCGI.ArkAppCGICallback> b = new ArrayList();
-  public String c;
-  
-  private ArkAppCGI$QueryTask()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = -1L;
-  }
+  public File b;
+  public ByteArrayOutputStream c;
+  public final ArrayList<Object> d = new ArrayList();
+  public final ArrayList<ArkAppCGI.ArkAppCGICallback> e = new ArrayList();
+  ArkAppCGI.ITaskHttpResult f;
+  public long g = -1L;
+  public String h;
+  public String i;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkAppCGI.QueryTask
  * JD-Core Version:    0.7.0.1
  */

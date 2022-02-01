@@ -16,13 +16,6 @@ public class WSExpPolicyManager
 {
   private Map<String, WSExpPolicyEntities> a = new ConcurrentHashMap();
   
-  private stGrayPolicyInfo a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("open_apk_preload", "0");
-    return a(localHashMap);
-  }
-  
   private stGrayPolicyInfo a(Map<String, String> paramMap)
   {
     stGrayPolicyInfo localstGrayPolicyInfo = new stGrayPolicyInfo();
@@ -36,41 +29,10 @@ public class WSExpPolicyManager
     return WSExpPolicyManager.SingletonHolder.a();
   }
   
-  private Map<String, stGrayPolicyInfo> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("FeedsListClient_Preload", a());
-    localHashMap.put("AioForwardScene", b());
-    localHashMap.put("QQFeedPlayerType", c());
-    localHashMap.put("FeedLoopPlay", d());
-    localHashMap.put("QQFollowPageMute", e());
-    localHashMap.put("QQFeedScaleType", f());
-    return localHashMap;
-  }
-  
   private void a(WSExpPolicyEntities paramWSExpPolicyEntities)
   {
     paramWSExpPolicyEntities = new WSExpEvent(paramWSExpPolicyEntities);
     WSSimpleEventBus.a().a(paramWSExpPolicyEntities);
-  }
-  
-  private stGrayPolicyInfo b()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("scene", "0");
-    return a(localHashMap);
-  }
-  
-  private WSExpPolicyEntities b()
-  {
-    stGetAllABTestPolicyRsp localstGetAllABTestPolicyRsp = new stGetAllABTestPolicyRsp();
-    localstGetAllABTestPolicyRsp.policyInfo = a();
-    return new WSExpPolicyEntities(WeishiUtils.a(), localstGetAllABTestPolicyRsp);
-  }
-  
-  private void b()
-  {
-    ThreadManager.getFileThreadHandler().post(new WSExpPolicyManager.1(this));
   }
   
   private void b(WSExpPolicyEntities paramWSExpPolicyEntities)
@@ -78,11 +40,11 @@ public class WSExpPolicyManager
     if (paramWSExpPolicyEntities != null) {}
     try
     {
-      if (paramWSExpPolicyEntities.a() != null)
+      if (paramWSExpPolicyEntities.c() != null)
       {
         Object localObject = paramWSExpPolicyEntities.a();
         WSExpPolicyEntities localWSExpPolicyEntities = (WSExpPolicyEntities)this.a.get(localObject);
-        if ((localWSExpPolicyEntities == null) || (localWSExpPolicyEntities.a() == null) || (paramWSExpPolicyEntities.a().serverTime > localWSExpPolicyEntities.a().serverTime))
+        if ((localWSExpPolicyEntities == null) || (localWSExpPolicyEntities.c() == null) || (paramWSExpPolicyEntities.c().serverTime > localWSExpPolicyEntities.c().serverTime))
         {
           this.a.put(localObject, paramWSExpPolicyEntities);
           localObject = new StringBuilder();
@@ -98,42 +60,82 @@ public class WSExpPolicyManager
     finally {}
   }
   
-  private stGrayPolicyInfo c()
+  private void d()
+  {
+    ThreadManager.getFileThreadHandler().post(new WSExpPolicyManager.1(this));
+  }
+  
+  private void e()
+  {
+    new WSExpDataModule().a(WeishiUtils.c(), new WSExpPolicyManager.2(this));
+  }
+  
+  private WSExpPolicyEntities f()
+  {
+    stGetAllABTestPolicyRsp localstGetAllABTestPolicyRsp = new stGetAllABTestPolicyRsp();
+    localstGetAllABTestPolicyRsp.policyInfo = g();
+    return new WSExpPolicyEntities(WeishiUtils.c(), localstGetAllABTestPolicyRsp);
+  }
+  
+  private Map<String, stGrayPolicyInfo> g()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("type", "0");
+    localHashMap.put("FeedsListClient_Preload", h());
+    localHashMap.put("AioForwardScene", i());
+    localHashMap.put("FeedLoopPlay", j());
+    localHashMap.put("QQFollowPageMute", k());
+    localHashMap.put("QQFeedScaleType", l());
+    return localHashMap;
+  }
+  
+  private stGrayPolicyInfo h()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("open_apk_preload", "0");
     return a(localHashMap);
   }
   
-  private void c()
+  private stGrayPolicyInfo i()
   {
-    new WSExpDataModule().a(WeishiUtils.a(), new WSExpPolicyManager.2(this));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("scene", "0");
+    return a(localHashMap);
   }
   
-  private stGrayPolicyInfo d()
+  private stGrayPolicyInfo j()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("loop_play_type", "0");
     return a(localHashMap);
   }
   
-  private stGrayPolicyInfo e()
+  private stGrayPolicyInfo k()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("show", "0");
     return a(localHashMap);
   }
   
-  private stGrayPolicyInfo f()
+  private stGrayPolicyInfo l()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("type", "0");
     return a(localHashMap);
   }
   
-  public WSExpPolicyEntities a()
+  public void b()
   {
-    String str = WeishiUtils.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSExpPolicyManager.java][init] thread:");
+    localStringBuilder.append(Thread.currentThread());
+    WSLog.e("WSExpPolicyManager", localStringBuilder.toString());
+    d();
+    e();
+  }
+  
+  public WSExpPolicyEntities c()
+  {
+    String str = WeishiUtils.c();
     Object localObject = (WSExpPolicyEntities)this.a.get(str);
     if (localObject != null) {
       return localObject;
@@ -141,25 +143,15 @@ public class WSExpPolicyManager
     WSExpPolicyEntities localWSExpPolicyEntities = WSExpFileCacheUtils.a(str);
     localObject = localWSExpPolicyEntities;
     if (localWSExpPolicyEntities == null) {
-      localObject = b();
+      localObject = f();
     }
     this.a.put(str, localObject);
     return localObject;
   }
-  
-  public void a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[WSExpPolicyManager.java][init] thread:");
-    localStringBuilder.append(Thread.currentThread());
-    WSLog.e("WSExpPolicyManager", localStringBuilder.toString());
-    b();
-    c();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpPolicyManager
  * JD-Core Version:    0.7.0.1
  */

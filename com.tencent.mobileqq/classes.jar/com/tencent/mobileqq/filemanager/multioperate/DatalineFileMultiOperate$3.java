@@ -9,14 +9,14 @@ class DatalineFileMultiOperate$3
   
   public void run()
   {
-    DatalineFileMultiOperate.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
+    DatalineFileMultiOperate.a(this.this$0, this.a);
     DatalineFileMultiOperate.c(this.this$0, this.b, this.c);
-    DatalineFileMultiOperate.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback, 3, 0);
+    DatalineFileMultiOperate.a(this.this$0, this.d, 3, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.DatalineFileMultiOperate.3
  * JD-Core Version:    0.7.0.1
  */

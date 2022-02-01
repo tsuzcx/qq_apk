@@ -7,16 +7,11 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class SearchResultGroupModelImpl
-  implements ISearchResultGroupModel
+  extends ISearchResultGroupModel
 {
-  public int a;
-  public int b;
-  public int c;
-  
-  public int a()
-  {
-    return 0;
-  }
+  public int f;
+  public int g;
+  public int h;
   
   public int a(int paramInt)
   {
@@ -28,15 +23,15 @@ public class SearchResultGroupModelImpl
         if (paramInt != 3) {
           i = -1;
         } else {
-          i = this.c;
+          i = this.h;
         }
       }
       else {
-        i = this.b;
+        i = this.g;
       }
     }
     else {
-      i = this.a;
+      i = this.f;
     }
     if (QLog.isColorLevel())
     {
@@ -55,11 +50,6 @@ public class SearchResultGroupModelImpl
     return null;
   }
   
-  public List<ISearchResultModel> a()
-  {
-    return null;
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
     if (paramInt1 != 1)
@@ -69,13 +59,13 @@ public class SearchResultGroupModelImpl
         if (paramInt1 != 3) {
           return;
         }
-        this.c = paramInt2;
+        this.h = paramInt2;
         return;
       }
-      this.b = paramInt2;
+      this.g = paramInt2;
       return;
     }
-    this.a = paramInt2;
+    this.f = paramInt2;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -87,14 +77,24 @@ public class SearchResultGroupModelImpl
   
   public void a(View paramView) {}
   
-  public String b()
+  public List<ISearchResultModel> b()
   {
     return null;
+  }
+  
+  public String c()
+  {
+    return null;
+  }
+  
+  public int d()
+  {
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.model.SearchResultGroupModelImpl
  * JD-Core Version:    0.7.0.1
  */

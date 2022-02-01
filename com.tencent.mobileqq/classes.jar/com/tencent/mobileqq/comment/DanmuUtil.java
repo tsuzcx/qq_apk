@@ -34,7 +34,7 @@ public class DanmuUtil
         paramQQAppInterface = paramQQAppInterface.getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
         if (paramQQAppInterface != null)
         {
-          i = FileManagerUtil.a(paramQQAppInterface.fileName);
+          i = FileManagerUtil.c(paramQQAppInterface.fileName);
           if (i == 0) {
             return 3;
           }
@@ -48,7 +48,7 @@ public class DanmuUtil
         paramQQAppInterface = TroopFileUtils.a(paramQQAppInterface, (MessageForTroopFile)paramMessageRecord);
         if (paramQQAppInterface != null)
         {
-          i = FileManagerUtil.a(paramQQAppInterface.g);
+          i = FileManagerUtil.c(paramQQAppInterface.t);
           if (i == 0) {
             return 3;
           }
@@ -71,13 +71,13 @@ public class DanmuUtil
       i = 1;
     }
     if (i < 60) {
-      return paramContext.getString(2131718208, new Object[] { Integer.valueOf(i) });
+      return paramContext.getString(2131915690, new Object[] { Integer.valueOf(i) });
     }
     if (i < 3600) {
-      return paramContext.getString(2131718209, new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) });
+      return paramContext.getString(2131915691, new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) });
     }
     paramInt = i / 60;
-    return paramContext.getString(2131718210, new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
+    return paramContext.getString(2131915692, new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
   }
   
   public static final String a(Paint paramPaint, String paramString, int paramInt)
@@ -115,7 +115,7 @@ public class DanmuUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.DanmuUtil
  * JD-Core Version:    0.7.0.1
  */

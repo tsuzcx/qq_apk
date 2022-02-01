@@ -13,7 +13,7 @@ class SeatView$1
   {
     paramDialogInterface.cancel();
     if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.a.a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
+      this.b.b.a(this.a);
     }
   }
 }

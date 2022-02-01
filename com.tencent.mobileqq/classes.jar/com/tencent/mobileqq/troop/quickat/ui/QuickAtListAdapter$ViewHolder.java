@@ -12,30 +12,30 @@ import com.tencent.widget.ThemeLabelTextView;
 public class QuickAtListAdapter$ViewHolder
   extends FacePreloadHolder.ViewHolder
 {
-  int jdField_a_of_type_Int;
-  final View jdField_a_of_type_AndroidViewView;
-  final CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public final TextView a;
-  private final ThemeLabelTextView jdField_a_of_type_ComTencentWidgetThemeLabelTextView;
-  TextView b;
+  final CheckBox a;
+  public final TextView b;
+  int c;
+  final View d;
+  TextView e;
+  final RelativeLayout f;
+  private final LinearLayout g;
+  private final ThemeLabelTextView h;
   
   QuickAtListAdapter$ViewHolder(View paramView)
   {
-    this.c = ((ImageView)paramView.findViewById(2131369373));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369090));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379778));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131371604));
-    this.jdField_a_of_type_ComTencentWidgetThemeLabelTextView = ((ThemeLabelTextView)paramView.findViewById(2131379770));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379859);
-    this.b = ((TextView)paramView.findViewById(2131379887));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362652));
+    this.A = ((ImageView)paramView.findViewById(2131436404));
+    this.g = ((LinearLayout)paramView.findViewById(2131436054));
+    this.b = ((TextView)paramView.findViewById(2131448598));
+    this.a = ((CheckBox)paramView.findViewById(2131439016));
+    this.h = ((ThemeLabelTextView)paramView.findViewById(2131448580));
+    this.d = paramView.findViewById(2131448716);
+    this.e = ((TextView)paramView.findViewById(2131448757));
+    this.f = ((RelativeLayout)paramView.findViewById(2131428273));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.QuickAtListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

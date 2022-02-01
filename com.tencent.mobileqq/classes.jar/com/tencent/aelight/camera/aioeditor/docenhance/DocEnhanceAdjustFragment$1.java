@@ -13,7 +13,7 @@ class DocEnhanceAdjustFragment$1
   
   public void a(boolean paramBoolean)
   {
-    DocEnhanceAdjustFragment.a(this.a).setEnabled(paramBoolean);
+    DocEnhanceAdjustFragment.c(this.a).setEnabled(paramBoolean);
   }
   
   public boolean a(float[] paramArrayOfFloat)
@@ -41,7 +41,7 @@ class DocEnhanceAdjustFragment$1
             i += 1;
           }
           bool1 = bool2;
-          if (DocEnhanceAdjustFragment.a(this.a).documentCornerValid(this.a.a) == 0) {
+          if (DocEnhanceAdjustFragment.b(this.a).documentCornerValid(this.a.a) == 0) {
             bool1 = true;
           }
         }
@@ -53,13 +53,13 @@ class DocEnhanceAdjustFragment$1
   public void b(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      QQToast.a(this.a.getContext(), 2064515139, 0).a();
+      QQToast.makeText(this.a.getContext(), 2064187481, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.docenhance.DocEnhanceAdjustFragment.1
  * JD-Core Version:    0.7.0.1
  */

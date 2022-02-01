@@ -15,12 +15,12 @@ import java.util.Set;
 
 class GuardStateScheduler
 {
-  private final HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
+  private final HashMap<String, String> a = new HashMap();
+  private boolean b = false;
   
   private int a(int paramInt)
   {
-    int i = GuardManager.a.b();
+    int i = GuardManager.sInstance.getStateId();
     if (paramInt == i) {
       return paramInt;
     }
@@ -33,23 +33,6 @@ class GuardStateScheduler
   public static GuardStateScheduler a()
   {
     return GuardStateScheduler.GuardStateSchedulerHolder.a;
-  }
-  
-  private String a()
-  {
-    Iterator localIterator = a(this.jdField_a_of_type_JavaUtilHashMap).entrySet().iterator();
-    long l = 0L;
-    String str = null;
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (Long.parseLong((String)localEntry.getValue()) > l)
-      {
-        l = Long.parseLong((String)localEntry.getValue());
-        str = (String)localEntry.getKey();
-      }
-    }
-    return str;
   }
   
   private static Map<String, String> a(Map<String, String> paramMap)
@@ -91,19 +74,36 @@ class GuardStateScheduler
     return localHashMap;
   }
   
+  private String b()
+  {
+    Iterator localIterator = a(this.a).entrySet().iterator();
+    long l = 0L;
+    String str = null;
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (Long.parseLong((String)localEntry.getValue()) > l)
+      {
+        l = Long.parseLong((String)localEntry.getValue());
+        str = (String)localEntry.getKey();
+      }
+    }
+    return str;
+  }
+  
   private void b(int paramInt, String paramString)
   {
-    GuardManager localGuardManager = GuardManager.a;
+    GuardManager localGuardManager = GuardManager.sInstance;
     if (localGuardManager != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("GuardManager.GuardStateScheduler", 2, new Object[] { "nextState: ", GuardState.a[paramInt], " process: ", paramString });
+        QLog.d("GuardManager.GuardStateScheduler", 2, new Object[] { "nextState: ", GuardState.c[paramInt], " process: ", paramString });
       }
-      localGuardManager.a(paramInt, paramString);
+      localGuardManager.nextState(paramInt, paramString);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("GuardManager.GuardStateScheduler", 2, new Object[] { "GuardManager is Null !! nextState: ", GuardState.a[paramInt], " process: ", paramString });
+      QLog.d("GuardManager.GuardStateScheduler", 2, new Object[] { "GuardManager is Null !! nextState: ", GuardState.c[paramInt], " process: ", paramString });
     }
   }
   
@@ -141,7 +141,7 @@ class GuardStateScheduler
       b(5, paramString);
       return;
     }
-    if (a(this.jdField_a_of_type_JavaUtilHashMap).size() <= 0) {
+    if (a(this.a).size() <= 0) {
       b(4, null);
     }
   }
@@ -149,13 +149,13 @@ class GuardStateScheduler
   public void a(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GuardManager.GuardStateScheduler", 2, new Object[] { "onProcessFGEvent: process: ", paramString1, " isReady: ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      QLog.d("GuardManager.GuardStateScheduler", 2, new Object[] { "onProcessFGEvent: process: ", paramString1, " isReady: ", Boolean.valueOf(this.b) });
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = true;
+    if (!this.b) {
+      this.b = true;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
-    paramString1 = a();
+    this.a.put(paramString1, paramString2);
+    paramString1 = b();
     if ("com.tencent.mobileqq".equals(paramString1))
     {
       b(2, paramString1);
@@ -167,16 +167,16 @@ class GuardStateScheduler
   public void b(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GuardManager.GuardStateScheduler", 2, new Object[] { "onProcessBGEvent: process: ", paramString1, " isReady: ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      QLog.d("GuardManager.GuardStateScheduler", 2, new Object[] { "onProcessBGEvent: process: ", paramString1, " isReady: ", Boolean.valueOf(this.b) });
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
       QLog.d("GuardManager.GuardStateScheduler", 1, "GuardStateScheduler setReady");
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
-    paramString1 = a();
+    this.a.remove(paramString1);
+    paramString1 = b();
     if (paramString1 != null)
     {
       if ("com.tencent.mobileqq".equals(paramString1))
@@ -192,7 +192,7 @@ class GuardStateScheduler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.guard.GuardStateScheduler
  * JD-Core Version:    0.7.0.1
  */

@@ -12,11 +12,6 @@ import java.io.File;
 
 class ShortVideoSoManager
 {
-  static ShortVideoSoManager.CfgParser a(String paramString)
-  {
-    return new ShortVideoSoManager.CfgParser(paramString);
-  }
-  
   @SuppressLint({"WrongConstant"})
   static String a()
   {
@@ -26,35 +21,6 @@ class ShortVideoSoManager
   static String a(File paramFile)
   {
     return FileUtils.readFileContent(paramFile);
-  }
-  
-  static String a(String paramString)
-  {
-    Object localObject;
-    String str2;
-    try
-    {
-      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("ShortVideoSoManager:computeMd5[MD5.getFileMd5]md5=");
-      ((StringBuilder)localObject).append(str1);
-      VideoEnvironment.LogDownLoad(((StringBuilder)localObject).toString(), null);
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      VideoEnvironment.LogDownLoad("ShortVideoSoManager:computeMd5[MD5.getFileMd5] ", localUnsatisfiedLinkError);
-      str2 = b(paramString);
-    }
-    if (str2 != null)
-    {
-      localObject = str2;
-      if (!"".equals(str2)) {}
-    }
-    else
-    {
-      localObject = b(paramString);
-    }
-    return localObject;
   }
   
   static final String a(String paramString1, String paramString2)
@@ -81,6 +47,35 @@ class ShortVideoSoManager
   
   static String b(String paramString)
   {
+    Object localObject;
+    String str2;
+    try
+    {
+      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ShortVideoSoManager:computeMd5[MD5.getFileMd5]md5=");
+      ((StringBuilder)localObject).append(str1);
+      VideoEnvironment.LogDownLoad(((StringBuilder)localObject).toString(), null);
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      VideoEnvironment.LogDownLoad("ShortVideoSoManager:computeMd5[MD5.getFileMd5] ", localUnsatisfiedLinkError);
+      str2 = c(paramString);
+    }
+    if (str2 != null)
+    {
+      localObject = str2;
+      if (!"".equals(str2)) {}
+    }
+    else
+    {
+      localObject = c(paramString);
+    }
+    return localObject;
+  }
+  
+  static String c(String paramString)
+  {
     try
     {
       paramString = MD5FileUtil.a(new File(paramString));
@@ -92,10 +87,15 @@ class ShortVideoSoManager
     }
     return null;
   }
+  
+  static ShortVideoSoManager.CfgParser d(String paramString)
+  {
+    return new ShortVideoSoManager.CfgParser(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoSoManager
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,14 @@ class EditorStateMachineController$3
   public void a(EditorState paramEditorState)
   {
     super.a(paramEditorState);
-    if (!WriteTogetherConfBean.a(EditorStateMachineController.a(this.a), EditorStateMachineController.a(this.a))) {
-      EditorStateMachineController.a(this.a).a(false, false);
+    if (!WriteTogetherConfBean.a(EditorStateMachineController.d(this.a), EditorStateMachineController.e(this.a))) {
+      EditorStateMachineController.c(this.a).a(false, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.EditorStateMachineController.3
  * JD-Core Version:    0.7.0.1
  */

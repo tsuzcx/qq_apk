@@ -5,49 +5,49 @@ import android.text.TextUtils;
 abstract class ArkDataRequest
 {
   protected int a;
-  protected ArkDataRequest.IDataRequestCallback a;
-  protected String a;
   protected int b;
-  protected String b;
+  protected String c;
+  protected String d;
+  protected ArkDataRequest.IDataRequestCallback e;
   
   public int a()
   {
-    return this.jdField_b_of_type_Int;
+    return this.b;
   }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public abstract void a();
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(ArkDataRequest.IDataRequestCallback paramIDataRequestCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest$IDataRequestCallback = paramIDataRequestCallback;
+    this.e = paramIDataRequestCallback;
   }
   
   public boolean a(String paramString)
   {
-    a();
+    c();
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = -1;
+    this.c = paramString;
+    this.b = -1;
     return true;
   }
   
+  public String b()
+  {
+    return this.d;
+  }
+  
   public abstract boolean b(String paramString);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkDataRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -70,12 +70,12 @@ public class WebViewProgressBar
         return;
       }
       if (this.mBackgroundDrawable == null) {
-        this.mBackgroundDrawable = getContext().getResources().getDrawable(2130850411);
+        this.mBackgroundDrawable = getContext().getResources().getDrawable(2130852202);
       }
       this.mBackgroundDrawable.setBounds(0, 0, getWidth(), getHeight());
       this.mBackgroundDrawable.draw(paramCanvas);
       if (this.mProgressDrawable == null) {
-        this.mProgressDrawable = getContext().getResources().getDrawable(2130850412);
+        this.mProgressDrawable = getContext().getResources().getDrawable(2130852203);
       }
       int j = (int)this.mController.getCurrWidth();
       if (this.mEnableAlpha) {
@@ -149,7 +149,7 @@ public class WebViewProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.WebViewProgressBar
  * JD-Core Version:    0.7.0.1
  */

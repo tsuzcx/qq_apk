@@ -7,8 +7,8 @@ import android.text.style.SuperscriptSpan;
 public class TopAlignSuperscriptSpan
   extends SuperscriptSpan
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 2;
+  private int a = 2;
+  private float b = 0.0F;
   
   public TopAlignSuperscriptSpan() {}
   
@@ -16,7 +16,7 @@ public class TopAlignSuperscriptSpan
   {
     double d = paramFloat;
     if ((d > 0.0D) && (d < 1.0D)) {
-      this.jdField_a_of_type_Float = paramFloat;
+      this.b = paramFloat;
     }
   }
   
@@ -25,10 +25,10 @@ public class TopAlignSuperscriptSpan
     if (paramTextPaint != null)
     {
       float f1 = paramTextPaint.ascent();
-      paramTextPaint.setTextSize(paramTextPaint.getTextSize() / this.jdField_a_of_type_Int);
+      paramTextPaint.setTextSize(paramTextPaint.getTextSize() / this.a);
       float f2 = paramTextPaint.getFontMetrics().ascent;
       float f3 = paramTextPaint.baselineShift;
-      float f4 = this.jdField_a_of_type_Float;
+      float f4 = this.b;
       paramTextPaint.baselineShift = ((int)(f3 + (f1 - f1 * f4 - (f2 - f4 * f2))));
     }
   }
@@ -40,7 +40,7 @@ public class TopAlignSuperscriptSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.TopAlignSuperscriptSpan
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,13 @@ import android.os.Looper;
 
 class QQPlayerService$ReleaseObject
 {
-  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  Looper jdField_a_of_type_AndroidOsLooper;
-  SongInfo jdField_a_of_type_ComTencentMobileqqMusicSongInfo;
+  MediaPlayer a;
+  Looper b;
+  SongInfo c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.QQPlayerService.ReleaseObject
  * JD-Core Version:    0.7.0.1
  */

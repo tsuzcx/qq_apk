@@ -10,17 +10,17 @@ class DatalineRemoteManager$6
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!this.a.b) {
+    if (!this.a.f) {
       DatalineRemoteManager.a(this.a, 1);
     }
     paramDialogInterface = this.a;
-    paramDialogInterface.b = false;
-    paramDialogInterface.a = null;
+    paramDialogInterface.f = false;
+    paramDialogInterface.e = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.6
  * JD-Core Version:    0.7.0.1
  */

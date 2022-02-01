@@ -49,7 +49,7 @@ public class TavProxyManager
     return null;
   }
   
-  public static String a(String paramString)
+  public static String b(String paramString)
   {
     if ((!"com.tencent.tavkit.composition.resource.TAVAssetTrackResource".equals(paramString)) && (!"com.tencent.tavkit.composition.resource.TAVImageTrackResource".equals(paramString)) && (!"com.tencent.tavkit.composition.resource.TAVEmptyResource".equals(paramString)))
     {
@@ -108,7 +108,7 @@ public class TavProxyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavProxyManager
  * JD-Core Version:    0.7.0.1
  */

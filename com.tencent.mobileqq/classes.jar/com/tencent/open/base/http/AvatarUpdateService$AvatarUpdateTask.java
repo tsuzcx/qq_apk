@@ -5,24 +5,24 @@ import java.lang.ref.WeakReference;
 
 public class AvatarUpdateService$AvatarUpdateTask
 {
-  public String a;
   public WeakReference<Context> a;
   public String b;
-  public WeakReference<HttpImageDownloadAsyncTask.TaskCompleteCallback> b;
   public String c;
+  public String d;
+  public WeakReference<HttpImageDownloadAsyncTask.TaskCompleteCallback> e;
   
   public AvatarUpdateService$AvatarUpdateTask(AvatarUpdateService paramAvatarUpdateService, Context paramContext, String paramString1, String paramString2, String paramString3, HttpImageDownloadAsyncTask.TaskCompleteCallback paramTaskCompleteCallback)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramTaskCompleteCallback);
+    this.a = new WeakReference(paramContext);
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramString3;
+    this.e = new WeakReference(paramTaskCompleteCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.http.AvatarUpdateService.AvatarUpdateTask
  * JD-Core Version:    0.7.0.1
  */

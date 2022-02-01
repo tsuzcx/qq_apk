@@ -39,12 +39,12 @@ class CommonRecordSoundPanelPresenterImpl$1
         paramMessage.append(System.currentTimeMillis());
         QLog.d("QQRecorder", 2, paramMessage.toString());
       }
-      this.a.a.c();
-      AudioUtil.b(2131230748, false);
+      this.a.d.c();
+      AudioUtil.b(2131230816, false);
       if (localICommonRecordSoundPanelView != null)
       {
-        localICommonRecordSoundPanelView.a().sendEmptyMessage(16711686);
-        QQAudioUtils.a(localICommonRecordSoundPanelView.a(), false);
+        localICommonRecordSoundPanelView.getCallBack().sendEmptyMessage(16711686);
+        QQAudioUtils.a(localICommonRecordSoundPanelView.getViewContext(), false);
       }
     }
     else
@@ -52,15 +52,15 @@ class CommonRecordSoundPanelPresenterImpl$1
       this.a.a(1);
       if (localICommonRecordSoundPanelView != null)
       {
-        localICommonRecordSoundPanelView.a();
-        QQToast.a(localICommonRecordSoundPanelView.a(), localICommonRecordSoundPanelView.a().getString(2131698588), 1).a();
+        localICommonRecordSoundPanelView.e();
+        QQToast.makeText(localICommonRecordSoundPanelView.getViewContext(), localICommonRecordSoundPanelView.getViewContext().getString(2131896535), 1).show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanelPresenterImpl.1
  * JD-Core Version:    0.7.0.1
  */

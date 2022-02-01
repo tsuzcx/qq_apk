@@ -25,32 +25,32 @@ class StartAppCheckHandler$1
       if (i != 3) {
         return;
       }
-      new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
+      new Thread(this.a.k).start();
       return;
     }
     Object localObject;
-    if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
+    if ((this.a.a != null) && (this.a.b != null))
     {
-      localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), ProtoServlet.class);
-      ((NewIntent)localObject).putExtra("data", ((StartAppCheckHandler.SendingAPP)paramMessage.obj).a.toByteArray());
+      localObject = new NewIntent(this.a.a.getApplicationContext(), ProtoServlet.class);
+      ((NewIntent)localObject).putExtra("data", ((StartAppCheckHandler.SendingAPP)paramMessage.obj).g.toByteArray());
       ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
       ((NewIntent)localObject).setObserver(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
+      this.a.b.startServlet((NewIntent)localObject);
     }
     else
     {
       localObject = this.a.createToServiceMsg("SecCheckSigSvc.UploadReq");
-      ((ToServiceMsg)localObject).putWupBuffer(((StartAppCheckHandler.SendingAPP)paramMessage.obj).a.toByteArray());
+      ((ToServiceMsg)localObject).putWupBuffer(((StartAppCheckHandler.SendingAPP)paramMessage.obj).g.toByteArray());
       this.a.sendPbReq((ToServiceMsg)localObject);
     }
     paramMessage = this.a;
-    paramMessage.jdField_a_of_type_Boolean = false;
-    paramMessage.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP = null;
+    paramMessage.d = false;
+    paramMessage.i = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.StartAppCheckHandler.1
  * JD-Core Version:    0.7.0.1
  */

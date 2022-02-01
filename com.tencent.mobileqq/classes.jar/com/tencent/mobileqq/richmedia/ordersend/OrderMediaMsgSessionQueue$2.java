@@ -20,21 +20,21 @@ class OrderMediaMsgSessionQueue$2
     OrderMediaMsgItem localOrderMediaMsgItem = (OrderMediaMsgItem)OrderMediaMsgSessionQueue.a(this.a).peek();
     if (localOrderMediaMsgItem != null)
     {
-      if ((paramLong == localOrderMediaMsgItem.jdField_a_of_type_Long) && (localOrderMediaMsgItem.c == 4))
+      if ((paramLong == localOrderMediaMsgItem.d) && (localOrderMediaMsgItem.c == 4))
       {
         localOrderMediaMsgItem.c = 5;
         OrderMediaMsgSessionQueue.a(this.a).remove(localOrderMediaMsgItem);
-        OrderMediaMsgSessionQueue.a(this.a).b();
-        if (localOrderMediaMsgItem.jdField_a_of_type_ComTencentMobileqqAppMediaMessageObserver != null) {
-          localOrderMediaMsgItem.jdField_a_of_type_ComTencentMobileqqAppMediaMessageObserver.onNotifyResultAfterSendRich(paramBoolean, paramLong, paramStatictisInfo);
+        OrderMediaMsgSessionQueue.c(this.a).b();
+        if (localOrderMediaMsgItem.i != null) {
+          localOrderMediaMsgItem.i.onNotifyResultAfterSendRich(paramBoolean, paramLong, paramStatictisInfo);
         }
-        if (localOrderMediaMsgItem.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendIOrderMediaMsgService$IMsgSendingListener != null) {
-          localOrderMediaMsgItem.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendIOrderMediaMsgService$IMsgSendingListener.onSendEnd(paramBoolean, paramLong);
+        if (localOrderMediaMsgItem.j != null) {
+          localOrderMediaMsgItem.j.onSendEnd(paramBoolean, paramLong);
         }
-        if (localOrderMediaMsgItem.jdField_a_of_type_Boolean) {
-          OrderMediaMsgSessionQueue.a(this.a).a(paramLong);
+        if (localOrderMediaMsgItem.f) {
+          OrderMediaMsgSessionQueue.b(this.a).a(paramLong);
         }
-        OrderMediaMsgSessionQueue.a(this.a).b(localOrderMediaMsgItem.jdField_a_of_type_Long);
+        OrderMediaMsgSessionQueue.d(this.a).c(localOrderMediaMsgItem.d);
         if (QLog.isColorLevel())
         {
           paramStatictisInfo = new StringBuilder();
@@ -43,7 +43,7 @@ class OrderMediaMsgSessionQueue$2
           paramStatictisInfo.append(", queue size:");
           paramStatictisInfo.append(OrderMediaMsgSessionQueue.a(this.a).size());
           paramStatictisInfo.append(", mNeedCompress:");
-          paramStatictisInfo.append(localOrderMediaMsgItem.jdField_a_of_type_Boolean);
+          paramStatictisInfo.append(localOrderMediaMsgItem.f);
           paramStatictisInfo.append(", issuccess:");
           paramStatictisInfo.append(paramBoolean);
           QLog.d(OrderMediaMsgSessionQueue.a, 2, paramStatictisInfo.toString());
@@ -51,18 +51,18 @@ class OrderMediaMsgSessionQueue$2
       }
       else
       {
-        QLog.d(OrderMediaMsgSessionQueue.a, 1, new Object[] { "OrderSendObserver peekFirst but fail, status:", Integer.valueOf(localOrderMediaMsgItem.c), ", uniseq:", Long.valueOf(localOrderMediaMsgItem.jdField_a_of_type_Long) });
+        QLog.d(OrderMediaMsgSessionQueue.a, 1, new Object[] { "OrderSendObserver peekFirst but fail, status:", Integer.valueOf(localOrderMediaMsgItem.c), ", uniseq:", Long.valueOf(localOrderMediaMsgItem.d) });
       }
     }
     else {
       QLog.d(OrderMediaMsgSessionQueue.a, 1, new Object[] { "OrderSendObserver peekFirst is null. uniseq:", Long.valueOf(paramLong), ", issuccess:", Boolean.valueOf(paramBoolean) });
     }
-    OrderMediaMsgSessionQueue.a(this.a);
+    OrderMediaMsgSessionQueue.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgSessionQueue.2
  * JD-Core Version:    0.7.0.1
  */

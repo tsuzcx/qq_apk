@@ -5,72 +5,42 @@ import java.util.List;
 
 public class UFTFileUploaderProp$ExtfSvrInfo
 {
-  protected String a;
   protected List<UFTHost> a;
-  protected boolean a;
-  protected byte[] a;
-  protected String b;
   protected List<UFTHost> b;
   protected List<UFTHost> c;
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  protected byte[] d;
+  protected boolean e;
+  protected String f;
+  protected String g;
   
   public List<UFTHost> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public void a(List<UFTHost> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    this.d = paramArrayOfByte;
   }
   
   public List<UFTHost> b()
   {
-    return this.jdField_b_of_type_JavaUtilList;
+    return this.b;
   }
   
   public void b(List<UFTHost> paramList)
   {
-    this.jdField_b_of_type_JavaUtilList = paramList;
-  }
-  
-  public boolean b()
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if ((localList != null) && (localList.size() != 0)) {
-      return true;
-    }
-    this.jdField_b_of_type_JavaLangString = "bigDataChnHost is empty";
-    return false;
+    this.b = paramList;
   }
   
   public List<UFTHost> c()
@@ -82,10 +52,40 @@ public class UFTFileUploaderProp$ExtfSvrInfo
   {
     this.c = paramList;
   }
+  
+  public byte[] d()
+  {
+    return this.d;
+  }
+  
+  public boolean e()
+  {
+    return this.e;
+  }
+  
+  public String f()
+  {
+    return this.f;
+  }
+  
+  public boolean g()
+  {
+    List localList = this.a;
+    if ((localList != null) && (localList.size() != 0)) {
+      return true;
+    }
+    this.g = "bigDataChnHost is empty";
+    return false;
+  }
+  
+  public String h()
+  {
+    return this.g;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.UFTFileUploaderProp.ExtfSvrInfo
  * JD-Core Version:    0.7.0.1
  */

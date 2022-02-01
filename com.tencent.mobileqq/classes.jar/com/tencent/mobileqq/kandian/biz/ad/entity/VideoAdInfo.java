@@ -31,269 +31,153 @@ public class VideoAdInfo
   public static final Parcelable.Creator<VideoAdInfo> CREATOR = new VideoAdInfo.1();
   public String A = null;
   public String B = null;
-  public String C;
+  public int C = 0;
+  public ArrayList<String> D = new ArrayList();
+  public ArrayList<String> E = new ArrayList();
+  public ArrayList<String> F = new ArrayList();
+  public long G = 0L;
+  public int H = 0;
+  public int I = 0;
+  public int J = 0;
+  public int K = 0;
+  public String L = null;
+  public int M = 0;
+  public String N = null;
+  public int O = 0;
+  public ArrayList<VideoAdInfo.NegFeedback> P = new ArrayList();
+  public long Q = 0L;
+  public String R = null;
+  public int S = 0;
+  public String T = null;
+  public int U = 1;
+  public boolean V = false;
+  public String W = null;
+  public String X = null;
+  public String Y = null;
+  public long Z = 0L;
+  public long a = 0L;
   @notColumn
-  public String D = "";
+  public int aA;
+  public int aa = 0;
+  public String ab = null;
+  public long ac = 0L;
+  public String ad = null;
+  public int ae;
   @notColumn
-  public String E = "";
+  public int af = 0;
   @notColumn
-  public String F = "";
+  public ArrayList<String> ag = null;
   @notColumn
-  public String G = "";
+  public ArrayList<String> ah = null;
+  public String ai;
+  public boolean aj = true;
   @notColumn
-  public String H = "";
+  public int ak;
   @notColumn
-  public String I;
+  public boolean al;
   @notColumn
-  public String J;
+  public String am = "";
   @notColumn
-  public String K;
+  public boolean an = false;
   @notColumn
-  public double a;
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<VideoAdInfo> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public ArrayList<String> b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public ArrayList<String> c;
+  public String ao = "";
   @notColumn
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public ArrayList<String> d;
+  public String ap = "";
   @notColumn
-  public boolean d;
-  public int e;
-  public long e;
-  public String e;
-  public ArrayList<VideoAdInfo.NegFeedback> e;
-  public int f;
-  public long f;
-  public String f;
+  public String aq = "";
   @notColumn
-  public ArrayList<String> f;
-  public int g;
-  public long g;
-  public String g;
+  public String ar = "";
   @notColumn
-  public ArrayList<String> g;
-  public int h;
-  public long h;
-  public String h;
+  public ArrayList<String> as = new ArrayList();
   @notColumn
-  public ArrayList<String> h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public int m;
-  public String m;
-  public int n;
-  public String n;
-  public int o;
-  public String o;
+  public int at = 1;
   @notColumn
-  public int p;
-  public String p;
+  public String au;
   @notColumn
-  public int q;
-  public String q = null;
+  public String av;
   @notColumn
-  public int r;
-  public String r;
+  public int aw = 3;
   @notColumn
-  public int s;
-  public String s;
+  public int ax = 0;
   @notColumn
-  public int t;
-  public String t;
+  public String ay;
   @notColumn
-  public int u;
-  public String u;
+  public double az;
+  public int b = 0;
+  public long c = 0L;
+  public long d = 0L;
+  public int e = 0;
+  public String f = null;
+  public String g = null;
+  public String h = null;
+  public String i = null;
+  public String j = null;
+  public String k = null;
+  public String l = null;
+  public String m = null;
+  public String n = null;
+  public int o = 0;
+  public int p = 0;
+  public ArrayList<VideoAdInfo> q = null;
+  public String r = null;
+  public String s = null;
+  public String t = null;
+  public String u = null;
   public String v = null;
   public String w = null;
   public String x = null;
   public String y = null;
-  public String z = null;
+  public long z = 0L;
   
-  public VideoAdInfo()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_f_of_type_JavaLangString = null;
-    this.jdField_g_of_type_JavaLangString = null;
-    this.jdField_h_of_type_JavaLangString = null;
-    this.jdField_i_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_j_of_type_JavaLangString = null;
-    this.jdField_k_of_type_JavaLangString = null;
-    this.jdField_l_of_type_JavaLangString = null;
-    this.jdField_m_of_type_JavaLangString = null;
-    this.jdField_n_of_type_JavaLangString = null;
-    this.jdField_o_of_type_JavaLangString = null;
-    this.jdField_p_of_type_JavaLangString = null;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_r_of_type_JavaLangString = null;
-    this.jdField_s_of_type_JavaLangString = null;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_g_of_type_Int = 0;
-    this.jdField_h_of_type_Int = 0;
-    this.jdField_i_of_type_Int = 0;
-    this.jdField_t_of_type_JavaLangString = null;
-    this.jdField_j_of_type_Int = 0;
-    this.jdField_u_of_type_JavaLangString = null;
-    this.jdField_k_of_type_Int = 0;
-    this.jdField_e_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_f_of_type_Long = 0L;
-    this.jdField_l_of_type_Int = 0;
-    this.jdField_m_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_g_of_type_Long = 0L;
-    this.jdField_n_of_type_Int = 0;
-    this.jdField_h_of_type_Long = 0L;
-    this.jdField_p_of_type_Int = 0;
-    this.jdField_f_of_type_JavaUtilArrayList = null;
-    this.jdField_g_of_type_JavaUtilArrayList = null;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_h_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_r_of_type_Int = 1;
-    this.jdField_s_of_type_Int = 3;
-    this.jdField_t_of_type_Int = 0;
-  }
+  public VideoAdInfo() {}
   
   public VideoAdInfo(long paramLong, oidb_0x6cf.PosAdInfo paramPosAdInfo)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_f_of_type_JavaLangString = null;
-    this.jdField_g_of_type_JavaLangString = null;
-    this.jdField_h_of_type_JavaLangString = null;
-    this.jdField_i_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_j_of_type_JavaLangString = null;
-    this.jdField_k_of_type_JavaLangString = null;
-    this.jdField_l_of_type_JavaLangString = null;
-    this.jdField_m_of_type_JavaLangString = null;
-    this.jdField_n_of_type_JavaLangString = null;
-    this.jdField_o_of_type_JavaLangString = null;
-    this.jdField_p_of_type_JavaLangString = null;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_r_of_type_JavaLangString = null;
-    this.jdField_s_of_type_JavaLangString = null;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_g_of_type_Int = 0;
-    this.jdField_h_of_type_Int = 0;
-    this.jdField_i_of_type_Int = 0;
-    this.jdField_t_of_type_JavaLangString = null;
-    this.jdField_j_of_type_Int = 0;
-    this.jdField_u_of_type_JavaLangString = null;
-    this.jdField_k_of_type_Int = 0;
-    this.jdField_e_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_f_of_type_Long = 0L;
-    this.jdField_l_of_type_Int = 0;
-    this.jdField_m_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_g_of_type_Long = 0L;
-    this.jdField_n_of_type_Int = 0;
-    this.jdField_h_of_type_Long = 0L;
-    this.jdField_p_of_type_Int = 0;
-    this.jdField_f_of_type_JavaUtilArrayList = null;
-    this.jdField_g_of_type_JavaUtilArrayList = null;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_h_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_r_of_type_Int = 1;
-    this.jdField_s_of_type_Int = 3;
-    this.jdField_t_of_type_Int = 0;
     if ((paramPosAdInfo != null) && (paramPosAdInfo.int32_ret.get() == 0) && (paramPosAdInfo.msg_ad_info.has()))
     {
       if (paramPosAdInfo.msg_ad_info.get() == null) {
         return;
       }
-      this.jdField_a_of_type_Long = paramLong;
-      this.jdField_a_of_type_Int = paramPosAdInfo.enum_pos_layout.get();
-      this.jdField_b_of_type_Long = paramPosAdInfo.uint64_pos_id.get();
+      this.a = paramLong;
+      this.b = paramPosAdInfo.enum_pos_layout.get();
+      this.c = paramPosAdInfo.uint64_pos_id.get();
       paramPosAdInfo = (oidb_0x6cf.AdInfo)paramPosAdInfo.msg_ad_info.get();
-      this.jdField_c_of_type_Long = paramPosAdInfo.uint64_channel_id.get();
-      this.jdField_b_of_type_Int = paramPosAdInfo.int32_kd_pos.get();
-      this.jdField_a_of_type_JavaLangString = paramPosAdInfo.bytes_cl.get().toStringUtf8();
-      this.jdField_b_of_type_JavaLangString = paramPosAdInfo.bytes_img.get().toStringUtf8();
-      this.jdField_c_of_type_JavaLangString = paramPosAdInfo.bytes_img_s.get().toStringUtf8();
-      this.jdField_d_of_type_JavaLangString = paramPosAdInfo.bytes_txt.get().toStringUtf8();
-      this.jdField_e_of_type_JavaLangString = paramPosAdInfo.bytes_desc.get().toStringUtf8();
-      this.jdField_f_of_type_JavaLangString = paramPosAdInfo.bytes_rl.get().toStringUtf8();
-      this.jdField_g_of_type_JavaLangString = paramPosAdInfo.bytes_apurl.get().toStringUtf8();
-      this.jdField_h_of_type_JavaLangString = paramPosAdInfo.bytes_trace_id.get().toStringUtf8();
-      this.jdField_i_of_type_JavaLangString = paramPosAdInfo.bytes_product_id.get().toStringUtf8();
-      this.jdField_c_of_type_Int = paramPosAdInfo.int32_product_type.get();
-      this.jdField_d_of_type_Int = paramPosAdInfo.uint32_ad_type.get();
-      this.jdField_j_of_type_JavaLangString = paramPosAdInfo.bytes_landing_page.get().toStringUtf8();
-      this.jdField_k_of_type_JavaLangString = paramPosAdInfo.bytes_price.get().toStringUtf8();
-      this.jdField_l_of_type_JavaLangString = paramPosAdInfo.bytes_button_txt.get().toStringUtf8();
-      this.jdField_m_of_type_JavaLangString = paramPosAdInfo.bytes_view_id.get().toStringUtf8();
-      this.jdField_n_of_type_JavaLangString = paramPosAdInfo.bytes_customized_invoke_url.get().toStringUtf8();
-      this.jdField_o_of_type_JavaLangString = paramPosAdInfo.bytes_corporation_name.get().toStringUtf8();
-      this.jdField_p_of_type_JavaLangString = paramPosAdInfo.bytes_corporate_image_name.get().toStringUtf8();
-      this.q = paramPosAdInfo.bytes_corporate_logo.get().toStringUtf8();
-      this.jdField_d_of_type_Long = paramPosAdInfo.uint64_ad_uin.get();
-      this.jdField_r_of_type_JavaLangString = paramPosAdInfo.bytes_ext.get().toStringUtf8();
-      if (TextUtils.isEmpty(this.jdField_r_of_type_JavaLangString)) {
-        this.jdField_r_of_type_JavaLangString = new JSONObject().toString();
+      this.d = paramPosAdInfo.uint64_channel_id.get();
+      this.e = paramPosAdInfo.int32_kd_pos.get();
+      this.f = paramPosAdInfo.bytes_cl.get().toStringUtf8();
+      this.g = paramPosAdInfo.bytes_img.get().toStringUtf8();
+      this.h = paramPosAdInfo.bytes_img_s.get().toStringUtf8();
+      this.i = paramPosAdInfo.bytes_txt.get().toStringUtf8();
+      this.j = paramPosAdInfo.bytes_desc.get().toStringUtf8();
+      this.k = paramPosAdInfo.bytes_rl.get().toStringUtf8();
+      this.l = paramPosAdInfo.bytes_apurl.get().toStringUtf8();
+      this.m = paramPosAdInfo.bytes_trace_id.get().toStringUtf8();
+      this.n = paramPosAdInfo.bytes_product_id.get().toStringUtf8();
+      this.o = paramPosAdInfo.int32_product_type.get();
+      this.p = paramPosAdInfo.uint32_ad_type.get();
+      this.r = paramPosAdInfo.bytes_landing_page.get().toStringUtf8();
+      this.s = paramPosAdInfo.bytes_price.get().toStringUtf8();
+      this.t = paramPosAdInfo.bytes_button_txt.get().toStringUtf8();
+      this.u = paramPosAdInfo.bytes_view_id.get().toStringUtf8();
+      this.v = paramPosAdInfo.bytes_customized_invoke_url.get().toStringUtf8();
+      this.w = paramPosAdInfo.bytes_corporation_name.get().toStringUtf8();
+      this.x = paramPosAdInfo.bytes_corporate_image_name.get().toStringUtf8();
+      this.y = paramPosAdInfo.bytes_corporate_logo.get().toStringUtf8();
+      this.z = paramPosAdInfo.uint64_ad_uin.get();
+      this.A = paramPosAdInfo.bytes_ext.get().toStringUtf8();
+      if (TextUtils.isEmpty(this.A)) {
+        this.A = new JSONObject().toString();
       }
       try
       {
-        this.jdField_o_of_type_Int = new JSONObject(paramPosAdInfo.bytes_extra_data.get().toStringUtf8()).optInt("AdSource");
+        this.ae = new JSONObject(paramPosAdInfo.bytes_extra_data.get().toStringUtf8()).optInt("AdSource");
       }
       catch (Throwable localThrowable)
       {
         QLog.e("VideoAdInfo", 4, localThrowable, new Object[0]);
       }
-      this.jdField_s_of_type_JavaLangString = paramPosAdInfo.bytes_video_url.get().toStringUtf8();
-      this.jdField_e_of_type_Int = paramPosAdInfo.uint32_cost_type.get();
+      this.B = paramPosAdInfo.bytes_video_url.get().toStringUtf8();
+      this.C = paramPosAdInfo.uint32_cost_type.get();
       Iterator localIterator;
       ByteStringMicro localByteStringMicro;
       if ((paramPosAdInfo.bytes_title_list.has()) && (paramPosAdInfo.bytes_title_list.get() != null))
@@ -302,7 +186,7 @@ public class VideoAdInfo
         while (localIterator.hasNext())
         {
           localByteStringMicro = (ByteStringMicro)localIterator.next();
-          this.jdField_b_of_type_JavaUtilArrayList.add(localByteStringMicro.toStringUtf8());
+          this.D.add(localByteStringMicro.toStringUtf8());
         }
       }
       if ((paramPosAdInfo.bytes_image_list.has()) && (paramPosAdInfo.bytes_image_list.get() != null))
@@ -311,7 +195,7 @@ public class VideoAdInfo
         while (localIterator.hasNext())
         {
           localByteStringMicro = (ByteStringMicro)localIterator.next();
-          this.jdField_c_of_type_JavaUtilArrayList.add(localByteStringMicro.toStringUtf8());
+          this.E.add(localByteStringMicro.toStringUtf8());
         }
       }
       if ((paramPosAdInfo.bytes_url_list.has()) && (paramPosAdInfo.bytes_url_list.get() != null))
@@ -320,162 +204,105 @@ public class VideoAdInfo
         while (localIterator.hasNext())
         {
           localByteStringMicro = (ByteStringMicro)localIterator.next();
-          this.jdField_d_of_type_JavaUtilArrayList.add(localByteStringMicro.toStringUtf8());
+          this.F.add(localByteStringMicro.toStringUtf8());
         }
       }
-      this.jdField_e_of_type_Long = paramPosAdInfo.uint64_aid.get();
-      this.jdField_f_of_type_Int = paramPosAdInfo.enum_ad_layout.get();
-      this.jdField_g_of_type_Int = paramPosAdInfo.uint32_ad_material_id.get();
-      this.jdField_h_of_type_Int = paramPosAdInfo.uint32_ad_material_width.get();
-      this.jdField_i_of_type_Int = paramPosAdInfo.uint32_ad_material_height.get();
-      this.jdField_t_of_type_JavaLangString = paramPosAdInfo.bytes_via.get().toStringUtf8();
-      this.jdField_j_of_type_Int = paramPosAdInfo.uint32_dis_channel.get();
-      this.jdField_u_of_type_JavaLangString = paramPosAdInfo.bytes_button_url.get().toStringUtf8();
-      this.jdField_k_of_type_Int = paramPosAdInfo.uint32_duration.get();
-      this.v = paramPosAdInfo.bytes_extra_data.get().toStringUtf8();
-      this.jdField_l_of_type_Int = paramPosAdInfo.enum_ad_jump_mode.get();
-      this.x = paramPosAdInfo.bytes_app_download_schema.get().toStringUtf8();
-      this.y = paramPosAdInfo.string_canvas_json.get();
-      this.z = paramPosAdInfo.bytes_landing_page_report_url.get().toStringUtf8();
-      this.jdField_g_of_type_Long = paramPosAdInfo.uint64_advertiser_id.get();
-      this.jdField_n_of_type_Int = paramPosAdInfo.uint32_dest_type.get();
-      this.A = paramPosAdInfo.string_effect_url.get();
-      this.jdField_h_of_type_Long = paramPosAdInfo.int64_noco_id.get();
-      this.B = paramPosAdInfo.bytes_download_api_url.get().toStringUtf8();
-      a(this.v);
-      d(this.v);
-      b(this.v);
-      c(this.v);
+      this.G = paramPosAdInfo.uint64_aid.get();
+      this.H = paramPosAdInfo.enum_ad_layout.get();
+      this.I = paramPosAdInfo.uint32_ad_material_id.get();
+      this.J = paramPosAdInfo.uint32_ad_material_width.get();
+      this.K = paramPosAdInfo.uint32_ad_material_height.get();
+      this.L = paramPosAdInfo.bytes_via.get().toStringUtf8();
+      this.M = paramPosAdInfo.uint32_dis_channel.get();
+      this.N = paramPosAdInfo.bytes_button_url.get().toStringUtf8();
+      this.O = paramPosAdInfo.uint32_duration.get();
+      this.R = paramPosAdInfo.bytes_extra_data.get().toStringUtf8();
+      this.S = paramPosAdInfo.enum_ad_jump_mode.get();
+      this.W = paramPosAdInfo.bytes_app_download_schema.get().toStringUtf8();
+      this.X = paramPosAdInfo.string_canvas_json.get();
+      this.Y = paramPosAdInfo.bytes_landing_page_report_url.get().toStringUtf8();
+      this.Z = paramPosAdInfo.uint64_advertiser_id.get();
+      this.aa = paramPosAdInfo.uint32_dest_type.get();
+      this.ab = paramPosAdInfo.string_effect_url.get();
+      this.ac = paramPosAdInfo.int64_noco_id.get();
+      this.ad = paramPosAdInfo.bytes_download_api_url.get().toStringUtf8();
+      a(this.R);
+      d(this.R);
+      b(this.R);
+      c(this.R);
     }
   }
   
   protected VideoAdInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_f_of_type_JavaLangString = null;
-    this.jdField_g_of_type_JavaLangString = null;
-    this.jdField_h_of_type_JavaLangString = null;
-    this.jdField_i_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_j_of_type_JavaLangString = null;
-    this.jdField_k_of_type_JavaLangString = null;
-    this.jdField_l_of_type_JavaLangString = null;
-    this.jdField_m_of_type_JavaLangString = null;
-    this.jdField_n_of_type_JavaLangString = null;
-    this.jdField_o_of_type_JavaLangString = null;
-    this.jdField_p_of_type_JavaLangString = null;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_r_of_type_JavaLangString = null;
-    this.jdField_s_of_type_JavaLangString = null;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_g_of_type_Int = 0;
-    this.jdField_h_of_type_Int = 0;
-    this.jdField_i_of_type_Int = 0;
-    this.jdField_t_of_type_JavaLangString = null;
-    this.jdField_j_of_type_Int = 0;
-    this.jdField_u_of_type_JavaLangString = null;
-    this.jdField_k_of_type_Int = 0;
-    this.jdField_e_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_f_of_type_Long = 0L;
-    this.jdField_l_of_type_Int = 0;
-    this.jdField_m_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_g_of_type_Long = 0L;
-    this.jdField_n_of_type_Int = 0;
-    this.jdField_h_of_type_Long = 0L;
-    this.jdField_p_of_type_Int = 0;
-    this.jdField_f_of_type_JavaUtilArrayList = null;
-    this.jdField_g_of_type_JavaUtilArrayList = null;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_h_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_r_of_type_Int = 1;
-    this.jdField_s_of_type_Int = 3;
-    this.jdField_t_of_type_Int = 0;
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_c_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_h_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_i_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(VideoAdInfo.class.getClassLoader());
-    this.jdField_j_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_k_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_l_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_m_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_n_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_o_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_p_of_type_JavaLangString = paramParcel.readString();
-    this.q = paramParcel.readString();
-    this.jdField_d_of_type_Long = paramParcel.readLong();
-    this.jdField_r_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_s_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_Int = paramParcel.readInt();
-    paramParcel.readStringList(this.jdField_b_of_type_JavaUtilArrayList);
-    paramParcel.readStringList(this.jdField_c_of_type_JavaUtilArrayList);
-    paramParcel.readStringList(this.jdField_d_of_type_JavaUtilArrayList);
-    this.jdField_e_of_type_Long = paramParcel.readLong();
-    this.jdField_f_of_type_Int = paramParcel.readInt();
-    this.jdField_g_of_type_Int = paramParcel.readInt();
-    this.jdField_h_of_type_Int = paramParcel.readInt();
-    this.jdField_i_of_type_Int = paramParcel.readInt();
-    this.jdField_t_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_j_of_type_Int = paramParcel.readInt();
-    this.jdField_u_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_k_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_JavaUtilArrayList = paramParcel.readArrayList(VideoAdInfo.NegFeedback.class.getClassLoader());
-    this.jdField_f_of_type_Long = paramParcel.readLong();
+    this.a = paramParcel.readLong();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readLong();
+    this.d = paramParcel.readLong();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readString();
+    this.g = paramParcel.readString();
+    this.h = paramParcel.readString();
+    this.i = paramParcel.readString();
+    this.j = paramParcel.readString();
+    this.k = paramParcel.readString();
+    this.l = paramParcel.readString();
+    this.m = paramParcel.readString();
+    this.n = paramParcel.readString();
+    this.o = paramParcel.readInt();
+    this.p = paramParcel.readInt();
+    this.q = paramParcel.readArrayList(VideoAdInfo.class.getClassLoader());
+    this.r = paramParcel.readString();
+    this.s = paramParcel.readString();
+    this.t = paramParcel.readString();
+    this.u = paramParcel.readString();
     this.v = paramParcel.readString();
-    this.jdField_l_of_type_Int = paramParcel.readInt();
+    this.w = paramParcel.readString();
     this.x = paramParcel.readString();
     this.y = paramParcel.readString();
-    this.z = paramParcel.readString();
-    this.jdField_g_of_type_Long = paramParcel.readLong();
-    this.jdField_n_of_type_Int = paramParcel.readInt();
+    this.z = paramParcel.readLong();
     this.A = paramParcel.readString();
-    this.jdField_h_of_type_Long = paramParcel.readLong();
     this.B = paramParcel.readString();
-    this.jdField_m_of_type_Int = paramParcel.readInt();
+    this.C = paramParcel.readInt();
+    paramParcel.readStringList(this.D);
+    paramParcel.readStringList(this.E);
+    paramParcel.readStringList(this.F);
+    this.G = paramParcel.readLong();
+    this.H = paramParcel.readInt();
+    this.I = paramParcel.readInt();
+    this.J = paramParcel.readInt();
+    this.K = paramParcel.readInt();
+    this.L = paramParcel.readString();
+    this.M = paramParcel.readInt();
+    this.N = paramParcel.readString();
+    this.O = paramParcel.readInt();
+    this.P = paramParcel.readArrayList(VideoAdInfo.NegFeedback.class.getClassLoader());
+    this.Q = paramParcel.readLong();
+    this.R = paramParcel.readString();
+    this.S = paramParcel.readInt();
+    this.W = paramParcel.readString();
+    this.X = paramParcel.readString();
+    this.Y = paramParcel.readString();
+    this.Z = paramParcel.readLong();
+    this.aa = paramParcel.readInt();
+    this.ab = paramParcel.readString();
+    this.ac = paramParcel.readLong();
+    this.ad = paramParcel.readString();
+    this.U = paramParcel.readInt();
   }
   
   public static void a(VideoAdInfo paramVideoAdInfo)
   {
     if (paramVideoAdInfo != null)
     {
-      if (TextUtils.isEmpty(paramVideoAdInfo.v)) {
+      if (TextUtils.isEmpty(paramVideoAdInfo.R)) {
         return;
       }
       try
       {
-        localObject1 = new JSONObject(paramVideoAdInfo.v);
+        localObject1 = new JSONObject(paramVideoAdInfo.R);
         if (((JSONObject)localObject1).has("c2s_switch")) {
-          paramVideoAdInfo.jdField_p_of_type_Int = ((JSONObject)localObject1).optInt("c2s_switch");
+          paramVideoAdInfo.af = ((JSONObject)localObject1).optInt("c2s_switch");
         }
         boolean bool2 = ((JSONObject)localObject1).has("c2s_click_url");
         boolean bool1 = false;
@@ -506,7 +333,7 @@ public class VideoAdInfo
               ((ArrayList)localObject3).add(str);
               i1 += 1;
             }
-            paramVideoAdInfo.jdField_f_of_type_JavaUtilArrayList = ((ArrayList)localObject3);
+            paramVideoAdInfo.ag = ((ArrayList)localObject3);
           }
         }
         if (((JSONObject)localObject1).has("c2s_exposure_url"))
@@ -530,7 +357,7 @@ public class VideoAdInfo
               ((ArrayList)localObject3).add(str);
               i1 += 1;
             }
-            paramVideoAdInfo.jdField_g_of_type_JavaUtilArrayList = ((ArrayList)localObject3);
+            paramVideoAdInfo.ah = ((ArrayList)localObject3);
           }
         }
         bool2 = ((JSONObject)localObject1).has("pop_sheet");
@@ -544,7 +371,7 @@ public class VideoAdInfo
             ((StringBuilder)localObject3).append((String)localObject2);
             QLog.d("processAdExtraDataInfo", 2, ((StringBuilder)localObject3).toString());
           }
-          paramVideoAdInfo.C = ((String)localObject2);
+          paramVideoAdInfo.ai = ((String)localObject2);
         }
         if (((JSONObject)localObject1).has("button_flag"))
         {
@@ -559,17 +386,17 @@ public class VideoAdInfo
           if (!((String)localObject1).equals("0")) {
             bool1 = true;
           }
-          paramVideoAdInfo.jdField_b_of_type_Boolean = bool1;
+          paramVideoAdInfo.aj = bool1;
         }
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append(" setVideoAdInfoC2SInfo mCorporateImageName = ");
-          ((StringBuilder)localObject1).append(paramVideoAdInfo.jdField_p_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(paramVideoAdInfo.x);
           ((StringBuilder)localObject1).append(" mTraceID = ");
-          ((StringBuilder)localObject1).append(paramVideoAdInfo.jdField_h_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(paramVideoAdInfo.m);
           ((StringBuilder)localObject1).append(" c2s_switch = ");
-          ((StringBuilder)localObject1).append(paramVideoAdInfo.jdField_p_of_type_Int);
+          ((StringBuilder)localObject1).append(paramVideoAdInfo.af);
           QLog.d("setVideoAdInfoC2SInfo", 2, ((StringBuilder)localObject1).toString());
           return;
         }
@@ -594,8 +421,8 @@ public class VideoAdInfo
       try
       {
         paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_Double = paramString.optDouble("ecpm");
-        this.jdField_u_of_type_Int = paramString.optInt("isContract");
+        this.az = paramString.optDouble("ecpm");
+        this.aA = paramString.optInt("isContract");
         return;
       }
       catch (Throwable paramString)
@@ -618,7 +445,7 @@ public class VideoAdInfo
       {
         paramString = new JSONObject(paramString);
         if (paramString.has("c2s_switch")) {
-          this.jdField_p_of_type_Int = paramString.optInt("c2s_switch");
+          this.af = paramString.optInt("c2s_switch");
         }
         int i2;
         Object localObject2;
@@ -647,7 +474,7 @@ public class VideoAdInfo
               i1 += 1;
               continue;
             }
-            this.jdField_f_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
+            this.ag = ((ArrayList)localObject2);
           }
         }
         if (paramString.has("c2s_exposure_url"))
@@ -672,7 +499,7 @@ public class VideoAdInfo
               i1 += 1;
               continue;
             }
-            this.jdField_g_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
+            this.ah = ((ArrayList)localObject2);
           }
         }
         bool = paramString.has("pop_sheet");
@@ -686,7 +513,7 @@ public class VideoAdInfo
             ((StringBuilder)localObject2).append((String)localObject1);
             QLog.d("processAdExtraDataInfo", 2, ((StringBuilder)localObject2).toString());
           }
-          this.C = ((String)localObject1);
+          this.ai = ((String)localObject1);
         }
         if (paramString.has("button_flag"))
         {
@@ -702,31 +529,31 @@ public class VideoAdInfo
             break label686;
           }
           bool = true;
-          this.jdField_b_of_type_Boolean = bool;
+          this.aj = bool;
         }
         if (paramString.has("video_rowkey"))
         {
-          this.D = paramString.optString("video_rowkey", "");
+          this.am = paramString.optString("video_rowkey", "");
           if (QLog.isColorLevel())
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("video_rowkey = ");
-            ((StringBuilder)localObject1).append(this.D);
+            ((StringBuilder)localObject1).append(this.am);
             QLog.d("processAdExtraDataInfo", 2, ((StringBuilder)localObject1).toString());
           }
         }
         if (paramString.has("revisionVideoType")) {
-          this.jdField_m_of_type_Int = paramString.optInt("revisionVideoType");
+          this.U = paramString.optInt("revisionVideoType");
         }
         if (QLog.isColorLevel())
         {
           paramString = new StringBuilder();
           paramString.append(" setVideoAdInfoC2SInfo mAdCorporateImageName = ");
-          paramString.append(this.jdField_p_of_type_JavaLangString);
+          paramString.append(this.x);
           paramString.append(" mAdTraceId = ");
-          paramString.append(this.jdField_h_of_type_JavaLangString);
+          paramString.append(this.m);
           paramString.append("c2s_switch = ");
-          paramString.append(this.jdField_p_of_type_Int);
+          paramString.append(this.af);
           QLog.d("setVideoAdInfoC2SInfo", 2, paramString.toString());
           return;
         }
@@ -752,7 +579,7 @@ public class VideoAdInfo
       while (paramList.hasNext())
       {
         oidb_0x6cf.NegFeedback localNegFeedback = (oidb_0x6cf.NegFeedback)paramList.next();
-        this.jdField_e_of_type_JavaUtilArrayList.add(new VideoAdInfo.NegFeedback(localNegFeedback));
+        this.P.add(new VideoAdInfo.NegFeedback(localNegFeedback));
       }
     }
   }
@@ -770,10 +597,10 @@ public class VideoAdInfo
       try
       {
         paramString = new JSONObject(paramString);
-        this.E = paramString.optString("dpa_img");
-        this.F = paramString.optString("dpa_name");
-        this.G = paramString.optString("dpa_price");
-        this.H = paramString.optString("dpa_discount");
+        this.ao = paramString.optString("dpa_img");
+        this.ap = paramString.optString("dpa_name");
+        this.aq = paramString.optString("dpa_price");
+        this.ar = paramString.optString("dpa_discount");
         JSONArray localJSONArray = paramString.optJSONArray("dpa_additional");
         if ((localJSONArray != null) && (localJSONArray.length() > 0))
         {
@@ -784,14 +611,14 @@ public class VideoAdInfo
             if (!(localObject instanceof String)) {
               break label176;
             }
-            this.jdField_h_of_type_JavaUtilArrayList.add((String)localObject);
+            this.as.add((String)localObject);
             break label176;
           }
         }
-        this.jdField_r_of_type_Int = paramString.optInt("ad_first_category");
-        this.jdField_s_of_type_Int = paramString.optInt("dpa_display_seconds");
-        this.I = paramString.optString("dpa_button_text1");
-        this.I = paramString.optString("dpa_button_text1");
+        this.at = paramString.optInt("ad_first_category");
+        this.aw = paramString.optInt("dpa_display_seconds");
+        this.au = paramString.optString("dpa_button_text1");
+        this.au = paramString.optString("dpa_button_text1");
         return;
       }
       catch (JSONException paramString)
@@ -814,8 +641,8 @@ public class VideoAdInfo
       try
       {
         paramString = new JSONObject(paramString);
-        this.jdField_t_of_type_Int = paramString.optInt("verVideo618Action");
-        this.K = paramString.optString("618PendantUrl");
+        this.ax = paramString.optInt("verVideo618Action");
+        this.ay = paramString.optString("618PendantUrl");
         return;
       }
       catch (JSONException paramString)
@@ -834,76 +661,76 @@ public class VideoAdInfo
   {
     StringBuilder localStringBuilder = new StringBuilder("[\n");
     localStringBuilder.append("    kd_pos=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", pull_time=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n");
     localStringBuilder.append("    img=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("\n");
     localStringBuilder.append("    rl=");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.k);
     localStringBuilder.append("\n");
     localStringBuilder.append("    txt=");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", trace_id=");
-    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append(this.m);
     localStringBuilder.append("\n");
     localStringBuilder.append("    button_txt=");
-    localStringBuilder.append(this.jdField_l_of_type_JavaLangString);
+    localStringBuilder.append(this.t);
     localStringBuilder.append(", corporation_name=");
-    localStringBuilder.append(this.jdField_o_of_type_JavaLangString);
+    localStringBuilder.append(this.w);
     localStringBuilder.append("\n");
     localStringBuilder.append("    corporate_logo=");
-    localStringBuilder.append(this.q);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("    video_url=");
-    localStringBuilder.append(this.jdField_s_of_type_JavaLangString);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("    aid=");
-    localStringBuilder.append(this.jdField_e_of_type_Long);
-    localStringBuilder.append(", duration=");
-    localStringBuilder.append(this.jdField_k_of_type_Int);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("    material_id=");
-    localStringBuilder.append(this.jdField_g_of_type_Int);
-    localStringBuilder.append(", material_width=");
-    localStringBuilder.append(this.jdField_h_of_type_Int);
-    localStringBuilder.append(", material_height=");
-    localStringBuilder.append(this.jdField_i_of_type_Int);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("    extra_info=");
-    localStringBuilder.append(this.v);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("    jump_mode=");
-    localStringBuilder.append(this.jdField_l_of_type_Int);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("    appDownLoad_schema=");
-    localStringBuilder.append(this.x);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("    canvas_json=");
     localStringBuilder.append(this.y);
     localStringBuilder.append("\n");
-    localStringBuilder.append("    landingPage_reporturl=");
-    localStringBuilder.append(this.z);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("    advertise_id=");
-    localStringBuilder.append(this.jdField_g_of_type_Long);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("    dest_type=");
-    localStringBuilder.append(this.jdField_n_of_type_Int);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("    effect_url=");
-    localStringBuilder.append(this.A);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("    noco_id=");
-    localStringBuilder.append(this.jdField_h_of_type_Long);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("    noco_id=");
+    localStringBuilder.append("    video_url=");
     localStringBuilder.append(this.B);
     localStringBuilder.append("\n");
+    localStringBuilder.append("    aid=");
+    localStringBuilder.append(this.G);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(this.O);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("    material_id=");
+    localStringBuilder.append(this.I);
+    localStringBuilder.append(", material_width=");
+    localStringBuilder.append(this.J);
+    localStringBuilder.append(", material_height=");
+    localStringBuilder.append(this.K);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("    extra_info=");
+    localStringBuilder.append(this.R);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("    jump_mode=");
+    localStringBuilder.append(this.S);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("    appDownLoad_schema=");
+    localStringBuilder.append(this.W);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("    canvas_json=");
+    localStringBuilder.append(this.X);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("    landingPage_reporturl=");
+    localStringBuilder.append(this.Y);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("    advertise_id=");
+    localStringBuilder.append(this.Z);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("    dest_type=");
+    localStringBuilder.append(this.aa);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("    effect_url=");
+    localStringBuilder.append(this.ab);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("    noco_id=");
+    localStringBuilder.append(this.ac);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("    noco_id=");
+    localStringBuilder.append(this.ad);
+    localStringBuilder.append("\n");
     localStringBuilder.append("    revisionVideoType=");
-    localStringBuilder.append(this.jdField_m_of_type_Int);
+    localStringBuilder.append(this.U);
     localStringBuilder.append("\n");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
@@ -911,65 +738,65 @@ public class VideoAdInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_i_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
-    paramParcel.writeString(this.jdField_j_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_k_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_l_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_m_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_n_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_o_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_p_of_type_JavaLangString);
-    paramParcel.writeString(this.q);
-    paramParcel.writeLong(this.jdField_d_of_type_Long);
-    paramParcel.writeString(this.jdField_r_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_s_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeStringList(this.jdField_b_of_type_JavaUtilArrayList);
-    paramParcel.writeStringList(this.jdField_c_of_type_JavaUtilArrayList);
-    paramParcel.writeStringList(this.jdField_d_of_type_JavaUtilArrayList);
-    paramParcel.writeLong(this.jdField_e_of_type_Long);
-    paramParcel.writeInt(this.jdField_f_of_type_Int);
-    paramParcel.writeInt(this.jdField_g_of_type_Int);
-    paramParcel.writeInt(this.jdField_h_of_type_Int);
-    paramParcel.writeInt(this.jdField_i_of_type_Int);
-    paramParcel.writeString(this.jdField_t_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_j_of_type_Int);
-    paramParcel.writeString(this.jdField_u_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_k_of_type_Int);
-    paramParcel.writeList(this.jdField_e_of_type_JavaUtilArrayList);
-    paramParcel.writeLong(this.jdField_f_of_type_Long);
+    paramParcel.writeLong(this.a);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeLong(this.c);
+    paramParcel.writeLong(this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeString(this.f);
+    paramParcel.writeString(this.g);
+    paramParcel.writeString(this.h);
+    paramParcel.writeString(this.i);
+    paramParcel.writeString(this.j);
+    paramParcel.writeString(this.k);
+    paramParcel.writeString(this.l);
+    paramParcel.writeString(this.m);
+    paramParcel.writeString(this.n);
+    paramParcel.writeInt(this.o);
+    paramParcel.writeInt(this.p);
+    paramParcel.writeList(this.q);
+    paramParcel.writeString(this.r);
+    paramParcel.writeString(this.s);
+    paramParcel.writeString(this.t);
+    paramParcel.writeString(this.u);
     paramParcel.writeString(this.v);
-    paramParcel.writeInt(this.jdField_l_of_type_Int);
+    paramParcel.writeString(this.w);
     paramParcel.writeString(this.x);
     paramParcel.writeString(this.y);
-    paramParcel.writeString(this.z);
-    paramParcel.writeLong(this.jdField_g_of_type_Long);
-    paramParcel.writeInt(this.jdField_n_of_type_Int);
+    paramParcel.writeLong(this.z);
     paramParcel.writeString(this.A);
-    paramParcel.writeLong(this.jdField_h_of_type_Long);
     paramParcel.writeString(this.B);
-    paramParcel.writeInt(this.jdField_m_of_type_Int);
+    paramParcel.writeInt(this.C);
+    paramParcel.writeStringList(this.D);
+    paramParcel.writeStringList(this.E);
+    paramParcel.writeStringList(this.F);
+    paramParcel.writeLong(this.G);
+    paramParcel.writeInt(this.H);
+    paramParcel.writeInt(this.I);
+    paramParcel.writeInt(this.J);
+    paramParcel.writeInt(this.K);
+    paramParcel.writeString(this.L);
+    paramParcel.writeInt(this.M);
+    paramParcel.writeString(this.N);
+    paramParcel.writeInt(this.O);
+    paramParcel.writeList(this.P);
+    paramParcel.writeLong(this.Q);
+    paramParcel.writeString(this.R);
+    paramParcel.writeInt(this.S);
+    paramParcel.writeString(this.W);
+    paramParcel.writeString(this.X);
+    paramParcel.writeString(this.Y);
+    paramParcel.writeLong(this.Z);
+    paramParcel.writeInt(this.aa);
+    paramParcel.writeString(this.ab);
+    paramParcel.writeLong(this.ac);
+    paramParcel.writeString(this.ad);
+    paramParcel.writeInt(this.U);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ad.entity.VideoAdInfo
  * JD-Core Version:    0.7.0.1
  */

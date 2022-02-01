@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="15.0dip" android:paddingBottom="17.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/okz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/on0" android:layout_alignParentLeft="true" />
-    <LinearLayout android:gravity="center_vertical" android:id="@id/on0" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
-        <TextView android:textSize="12.0sp" android:textColor="#ccffffff" android:gravity="center" android:id="@id/on_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="分享" android:drawableTop="@drawable/ij7" />
-        <TextView android:textSize="12.0sp" android:textColor="#ccffffff" android:gravity="center" android:id="@id/old" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="评论" android:drawableTop="@drawable/ij1" />
-        <RelativeLayout android:id="@id/omr" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="15.0dip">
-            <ImageView android:id="@id/omt" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/bl2" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
-            <ImageView android:id="@id/oms" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ij5" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="13.0sp" android:textColor="#ccffffff" android:id="@id/omu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="赞" android:layout_below="@id/omt" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-        <ViewStub android:id="@id/omp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="18.0dip" />
-    </LinearLayout>
-</RelativeLayout>
+    <com.tencent.mobileqq.widget.navbar.NavBarAIO android:gravity="center_vertical" android:id="@id/ov1" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignTop="@id/root" />
+    <FrameLayout android:id="@id/b8q" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <android.support.v7.widget.RecyclerView android:id="@id/i4m" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    </FrameLayout>
+</LinearLayout>

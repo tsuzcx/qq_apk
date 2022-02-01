@@ -24,12 +24,12 @@ class MessageForGrayTips$HightlightClickableSpan$4
       MessageForGrayTips.HightlightClickableSpan.access$300(paramDialogInterface, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(paramDialogInterface).get(), this.a.frienduin);
       return;
     }
-    QQToast.a(BaseApplication.getContext(), 1, 2131691464, 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 1, 2131888422, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan.4
  * JD-Core Version:    0.7.0.1
  */

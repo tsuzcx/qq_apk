@@ -53,7 +53,7 @@ class VoiceChangeManagerImpl$1
         }
         localObject = new Bundle();
         paramDownloadTask = new DownloadTask(paramDownloadTask, localFile);
-        paramDownloadTask.n = true;
+        paramDownloadTask.J = true;
         ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).getDownloader(1).startDownload(paramDownloadTask, this.a.picDownloadListener, (Bundle)localObject);
         return;
       }
@@ -63,14 +63,14 @@ class VoiceChangeManagerImpl$1
       return;
     }
     super.onDone(paramDownloadTask);
-    paramDownloadTask.a();
-    if ((paramDownloadTask.a() == 3) && (paramDownloadTask.jdField_a_of_type_Int == 0))
+    paramDownloadTask.b();
+    if ((paramDownloadTask.e() == 3) && (paramDownloadTask.c == 0))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("picDownloadListener downloadOk task.key = ");
-        ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramDownloadTask.b);
         QLog.d("VoiceChangeManager", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -78,7 +78,7 @@ class VoiceChangeManagerImpl$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("picDownloadListener download Error task.key = ");
-      ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramDownloadTask.b);
       QLog.e("VoiceChangeManager", 1, ((StringBuilder)localObject).toString());
     }
     onDone(null);
@@ -86,7 +86,7 @@ class VoiceChangeManagerImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.voicechange.impl.VoiceChangeManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

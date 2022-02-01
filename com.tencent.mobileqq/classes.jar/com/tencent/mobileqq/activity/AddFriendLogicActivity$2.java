@@ -11,13 +11,13 @@ class AddFriendLogicActivity$2
       return;
     }
     AddFriendLogicActivity localAddFriendLogicActivity = this.this$0;
-    localAddFriendLogicActivity.a = true;
-    AddFriendLogicActivity.a(localAddFriendLogicActivity);
+    localAddFriendLogicActivity.c = true;
+    AddFriendLogicActivity.b(localAddFriendLogicActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendLogicActivity.2
  * JD-Core Version:    0.7.0.1
  */

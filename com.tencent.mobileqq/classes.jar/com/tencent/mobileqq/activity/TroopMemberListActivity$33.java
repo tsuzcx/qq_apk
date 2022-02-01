@@ -51,10 +51,10 @@ class TroopMemberListActivity$33
     case 16: 
       if (this.a.mAdapter != null)
       {
-        if (this.a.mAdapter.b != null) {
-          this.a.mAdapter.b.clear();
+        if (this.a.mAdapter.e != null) {
+          this.a.mAdapter.e.clear();
         }
-        this.a.mAdapter.a();
+        this.a.mAdapter.c();
         return;
       }
       break;
@@ -146,7 +146,7 @@ class TroopMemberListActivity$33
           if (localObject2 != null) {
             ((QProxyManager)localObject2).notifyRefreshTroopMember();
           }
-          paramMessage.obj = this.a.mAdapter.a();
+          paramMessage.obj = this.a.mAdapter.b();
           TroopMemberListActivity.access$1900(this.a, paramMessage);
         }
         return;
@@ -176,14 +176,14 @@ class TroopMemberListActivity$33
       }
       if (this.a.mAdapter != null)
       {
-        this.a.mAdapter.a();
+        this.a.mAdapter.c();
         return;
       }
       break;
     case 9: 
       if (this.a.mAdapter != null)
       {
-        this.a.mAdapter.a();
+        this.a.mAdapter.c();
         return;
       }
       break;
@@ -200,21 +200,21 @@ class TroopMemberListActivity$33
         this.a.mProgressDialog.dismiss();
       }
       paramMessage = this.a;
-      QQToast.a(paramMessage, paramMessage.getString(2131691473), 0).b(this.a.mTitleBar.getHeight());
+      QQToast.makeText(paramMessage, paramMessage.getString(2131888431), 0).show(this.a.mTitleBar.getHeight());
       return;
     case 6: 
       if (this.a.mAdapter != null)
       {
-        if (this.a.mAdapter.b != null) {
-          this.a.mAdapter.b.clear();
+        if (this.a.mAdapter.e != null) {
+          this.a.mAdapter.e.clear();
         }
-        this.a.mAdapter.a();
+        this.a.mAdapter.c();
       }
       if ((this.a.mProgressDialog != null) && (this.a.mProgressDialog.isShowing())) {
         this.a.mProgressDialog.dismiss();
       }
       paramMessage = this.a;
-      QQToast.a(paramMessage, paramMessage.getString(2131691474), 0).b(this.a.mTitleBar.getHeight());
+      QQToast.makeText(paramMessage, paramMessage.getString(2131888432), 0).show(this.a.mTitleBar.getHeight());
       TroopMemberListActivity.access$200(this.a);
       return;
     case 5: 
@@ -229,7 +229,7 @@ class TroopMemberListActivity$33
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.33
  * JD-Core Version:    0.7.0.1
  */

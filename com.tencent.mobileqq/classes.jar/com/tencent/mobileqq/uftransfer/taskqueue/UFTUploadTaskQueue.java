@@ -23,27 +23,27 @@ public class UFTUploadTaskQueue
     UFTLog.d("[UFTTransfer] UFTUploadTaskQueue", 1, "add task fail. task must is subclass of UFTBaseUploadTask");
   }
   
-  protected boolean a(UFTBaseTask paramUFTBaseTask)
+  protected boolean b(UFTBaseTask paramUFTBaseTask)
   {
     paramUFTBaseTask = (UFTBaseUploadTask)paramUFTBaseTask;
-    return UFTUploadTaskQueueHelper.a().a(paramUFTBaseTask.a()) ^ true;
-  }
-  
-  protected void b(UFTBaseTask paramUFTBaseTask)
-  {
-    paramUFTBaseTask = (UFTBaseUploadTask)paramUFTBaseTask;
-    UFTUploadTaskQueueHelper.a().a(paramUFTBaseTask.a());
+    return UFTUploadTaskQueueHelper.a().b(paramUFTBaseTask.i()) ^ true;
   }
   
   protected void c(UFTBaseTask paramUFTBaseTask)
   {
     paramUFTBaseTask = (UFTBaseUploadTask)paramUFTBaseTask;
-    UFTUploadTaskQueueHelper.a().a(paramUFTBaseTask.a(), a());
+    UFTUploadTaskQueueHelper.a().a(paramUFTBaseTask.i());
+  }
+  
+  protected void d(UFTBaseTask paramUFTBaseTask)
+  {
+    paramUFTBaseTask = (UFTBaseUploadTask)paramUFTBaseTask;
+    UFTUploadTaskQueueHelper.a().a(paramUFTBaseTask.i(), b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.taskqueue.UFTUploadTaskQueue
  * JD-Core Version:    0.7.0.1
  */

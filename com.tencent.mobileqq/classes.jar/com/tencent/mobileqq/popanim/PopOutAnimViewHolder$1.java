@@ -11,12 +11,12 @@ class PopOutAnimViewHolder$1
   
   public void a(LottieDrawable paramLottieDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(paramLottieDrawable);
+    this.a.setImageDrawable(paramLottieDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.PopOutAnimViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

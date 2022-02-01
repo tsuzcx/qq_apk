@@ -1,25 +1,32 @@
 package com.tencent.mobileqq.activity.main;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.qphone.base.util.QLog;
 
 class MainAssistObserver$21
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  MainAssistObserver$21(MainAssistObserver paramMainAssistObserver) {}
+  MainAssistObserver$21(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.getIntent().removeExtra("if_check_account_same");
-    this.a.b.dismiss();
+    int i = QCallFacade.a(this.a);
+    i = this.b.w() + i;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateTab = ");
+      localStringBuilder.append(i);
+      QLog.d("MainAssistObserver", 2, localStringBuilder.toString());
+    }
+    this.a.runOnUiThread(new MainAssistObserver.21.1(this, i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.21
  * JD-Core Version:    0.7.0.1
  */

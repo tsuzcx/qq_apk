@@ -37,10 +37,10 @@ import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
 public class UserInfoHandler
   extends AVGameBusinessHandler
 {
-  private static Byte[] jdField_a_of_type_ArrayOfJavaLangByte;
-  private final MQLruCache<String, Object> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
-  private final QQLruCache<String, UserInfo> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(10001, 50, 10);
-  private final QQLruCache<String, String> b = new QQLruCache(10001, 50, 10);
+  private static Byte[] d;
+  private final MQLruCache<String, Object> a = GlobalImageCache.a;
+  private final QQLruCache<String, UserInfo> b = new QQLruCache(10001, 50, 10);
+  private final QQLruCache<String, String> c = new QQLruCache(10001, 50, 10);
   
   protected UserInfoHandler(AppInterface paramAppInterface)
   {
@@ -49,12 +49,12 @@ public class UserInfoHandler
   
   public static Bitmap a()
   {
-    Byte[] arrayOfByte = jdField_a_of_type_ArrayOfJavaLangByte;
+    Byte[] arrayOfByte = d;
     Byte localByte = Byte.valueOf((byte)0);
     if (arrayOfByte == null)
     {
-      jdField_a_of_type_ArrayOfJavaLangByte = new Byte[50];
-      Arrays.fill(jdField_a_of_type_ArrayOfJavaLangByte, localByte);
+      d = new Byte[50];
+      Arrays.fill(d, localByte);
     }
     int k = new Random().nextInt(49) % 50 + 0;
     int i = k;
@@ -62,15 +62,15 @@ public class UserInfoHandler
     do
     {
       j = i;
-      if (jdField_a_of_type_ArrayOfJavaLangByte[i].byteValue() == 0) {
+      if (d[i].byteValue() == 0) {
         break;
       }
       j = (i + 1) % 50;
       i = j;
     } while (j != k);
-    Arrays.fill(jdField_a_of_type_ArrayOfJavaLangByte, localByte);
-    jdField_a_of_type_ArrayOfJavaLangByte[j] = Byte.valueOf(1);
-    return AVGameUtil.a(String.format("pkAvatar/avgame_pk_avatar%d@2x.png", new Object[] { Integer.valueOf(j + 1) }));
+    Arrays.fill(d, localByte);
+    d[j] = Byte.valueOf(1);
+    return AVGameUtil.c(String.format("pkAvatar/avgame_pk_avatar%d@2x.png", new Object[] { Integer.valueOf(j + 1) }));
   }
   
   private Bitmap a(boolean paramBoolean)
@@ -79,17 +79,17 @@ public class UserInfoHandler
     Object localObject;
     if (!paramBoolean)
     {
-      i = 2130840322;
+      i = 2130841061;
       localObject = "static://DefaultFace_square";
     }
     else
     {
       localObject = "static://DefaultFace";
-      i = 2130840321;
+      i = 2130841060;
     }
     Bitmap localBitmap1;
-    if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) {
-      localBitmap1 = (Bitmap)GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(localObject);
+    if (GlobalImageCache.a != null) {
+      localBitmap1 = (Bitmap)GlobalImageCache.a.get(localObject);
     } else {
       localBitmap1 = null;
     }
@@ -97,8 +97,8 @@ public class UserInfoHandler
     if (localBitmap1 == null)
     {
       localBitmap1 = BitmapManager.b(MobileQQ.sMobileQQ.getResources(), i);
-      if ((localBitmap1 != null) && (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null)) {
-        GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(localObject, localBitmap1);
+      if ((localBitmap1 != null) && (GlobalImageCache.a != null)) {
+        GlobalImageCache.a.put(localObject, localBitmap1);
       }
       localBitmap2 = localBitmap1;
       if (QLog.isColorLevel())
@@ -111,14 +111,6 @@ public class UserInfoHandler
       }
     }
     return localBitmap2;
-  }
-  
-  private AVGameClientQIPCModule a()
-  {
-    if ((this.appRuntime instanceof IAVGameAppInterface)) {
-      return ((IAVGameAppInterface)this.appRuntime).a();
-    }
-    return null;
   }
   
   private void a(int paramInt, List<String> paramList)
@@ -162,7 +154,7 @@ public class UserInfoHandler
   
   private void a(int paramInt, List<String> arg2, HashMap<String, String> paramHashMap)
   {
-    Object localObject = a();
+    Object localObject = b();
     if (localObject != null)
     {
       if (QLog.isColorLevel()) {
@@ -170,13 +162,13 @@ public class UserInfoHandler
       }
       ((AVGameClientQIPCModule)localObject).a(paramInt, ???, paramHashMap);
       if (paramHashMap.size() > 0) {
-        synchronized (this.b)
+        synchronized (this.c)
         {
           localObject = paramHashMap.keySet().iterator();
           while (((Iterator)localObject).hasNext())
           {
             String str = (String)((Iterator)localObject).next();
-            this.b.put(str, paramHashMap.get(str));
+            this.c.put(str, paramHashMap.get(str));
           }
           return;
         }
@@ -205,13 +197,13 @@ public class UserInfoHandler
   
   private void a(List<String> paramList1, HashMap<String, String> paramHashMap, List<String> paramList2)
   {
-    synchronized (this.b)
+    synchronized (this.c)
     {
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
         String str1 = (String)paramList1.next();
-        String str2 = (String)this.b.get(str1);
+        String str2 = (String)this.c.get(str1);
         if (str2 == null) {
           paramList2.add(str1);
         } else {
@@ -227,6 +219,14 @@ public class UserInfoHandler
     {
       throw paramList1;
     }
+  }
+  
+  private AVGameClientQIPCModule b()
+  {
+    if ((this.appRuntime instanceof IAVGameAppInterface)) {
+      return ((IAVGameAppInterface)this.appRuntime).a();
+    }
+    return null;
   }
   
   public static UserInfo b(String paramString)
@@ -247,7 +247,7 @@ public class UserInfoHandler
   
   public Bitmap a(int paramInt1, String paramString, byte paramByte, int paramInt2)
   {
-    MQLruCache localMQLruCache = this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
+    MQLruCache localMQLruCache = this.a;
     Object localObject2 = null;
     Object localObject1 = localObject2;
     if (localMQLruCache != null) {}
@@ -262,7 +262,7 @@ public class UserInfoHandler
       ((StringBuilder)localObject1).append("_");
       ((StringBuilder)localObject1).append(paramByte);
       paramString = ((StringBuilder)localObject1).toString();
-      paramString = this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString);
+      paramString = this.a.get(paramString);
     }
     catch (Throwable paramString)
     {
@@ -291,7 +291,7 @@ public class UserInfoHandler
       if (paramByte != 4) {
         bool = false;
       }
-      paramString = BaseImageUtil.a(bool);
+      paramString = BaseImageUtil.b(bool);
     }
     return paramString;
   }
@@ -326,7 +326,7 @@ public class UserInfoHandler
         if (paramByte == 4) {
           paramBoolean1 = true;
         }
-        paramString = BaseImageUtil.a(paramBoolean1);
+        paramString = BaseImageUtil.b(paramBoolean1);
       }
     }
     return paramString;
@@ -342,7 +342,7 @@ public class UserInfoHandler
       localStringBuilder.append("_");
       localStringBuilder.append(paramString);
       paramString = localStringBuilder.toString();
-      paramString = (UserInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString);
+      paramString = (UserInfo)this.b.get(paramString);
       return paramString;
     }
     catch (Throwable paramString)
@@ -387,7 +387,7 @@ public class UserInfoHandler
         ((StringBuilder)localObject).append("_");
         ((StringBuilder)localObject).append(paramString);
         localObject = ((StringBuilder)localObject).toString();
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(localObject, paramUserInfo);
+        this.b.put(localObject, paramUserInfo);
       }
       catch (Throwable localThrowable)
       {
@@ -405,45 +405,45 @@ public class UserInfoHandler
   protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     // Byte code:
-    //   0: new 380	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody
+    //   0: new 383	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody
     //   3: dup
-    //   4: invokespecial 381	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:<init>	()V
+    //   4: invokespecial 384	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:<init>	()V
     //   7: astore 10
     //   9: aload_2
     //   10: aload_3
     //   11: aload 10
-    //   13: invokestatic 385	com/tencent/avgame/business/handler/UserInfoHandler:parseOIDBPkg	(Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;Lcom/tencent/mobileqq/pb/MessageMicro;)I
+    //   13: invokestatic 388	com/tencent/avgame/business/handler/UserInfoHandler:parseOIDBPkg	(Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;Lcom/tencent/mobileqq/pb/MessageMicro;)I
     //   16: istore 5
     //   18: aload_1
-    //   19: getfield 230	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   22: ldc 240
-    //   24: invokevirtual 389	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   19: getfield 222	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   22: ldc 232
+    //   24: invokevirtual 392	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   27: istore 6
     //   29: aload_1
-    //   30: getfield 230	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   33: ldc 232
-    //   35: invokevirtual 393	android/os/Bundle:getStringArrayList	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   30: getfield 222	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   33: ldc 224
+    //   35: invokevirtual 396	android/os/Bundle:getStringArrayList	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   38: astore_2
-    //   39: new 268	java/util/HashMap
+    //   39: new 262	java/util/HashMap
     //   42: dup
     //   43: aload_2
-    //   44: invokeinterface 160 1 0
-    //   49: invokespecial 287	java/util/HashMap:<init>	(I)V
+    //   44: invokeinterface 152 1 0
+    //   49: invokespecial 281	java/util/HashMap:<init>	(I)V
     //   52: astore_1
     //   53: iload 5
     //   55: ifne +172 -> 227
     //   58: aload 10
-    //   60: getfield 397	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:rpt_msg_uin_data	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   63: invokevirtual 400	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   60: getfield 400	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:rpt_msg_uin_data	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   63: invokevirtual 403	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
     //   66: aload_2
-    //   67: invokeinterface 160 1 0
+    //   67: invokeinterface 152 1 0
     //   72: if_icmpne +155 -> 227
     //   75: aload 10
-    //   77: getfield 397	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:rpt_msg_uin_data	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   80: invokevirtual 403	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   77: getfield 400	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$RspBody:rpt_msg_uin_data	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   80: invokevirtual 406	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   83: astore_3
     //   84: aload_0
-    //   85: getfield 33	com/tencent/avgame/business/handler/UserInfoHandler:b	Lcom/tencent/commonsdk/cache/QQLruCache;
+    //   85: getfield 35	com/tencent/avgame/business/handler/UserInfoHandler:c	Lcom/tencent/commonsdk/cache/QQLruCache;
     //   88: astore_2
     //   89: aload_2
     //   90: monitorenter
@@ -451,22 +451,22 @@ public class UserInfoHandler
     //   92: istore 4
     //   94: iload 4
     //   96: aload_3
-    //   97: invokeinterface 160 1 0
+    //   97: invokeinterface 152 1 0
     //   102: if_icmpge +90 -> 192
     //   105: aload_3
     //   106: iload 4
-    //   108: invokeinterface 406 2 0
-    //   113: checkcast 408	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData
-    //   116: getfield 412	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   119: invokevirtual 417	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   108: invokeinterface 409 2 0
+    //   113: checkcast 411	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData
+    //   116: getfield 415	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   119: invokevirtual 420	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   122: lstore 7
     //   124: aload_3
     //   125: iload 4
-    //   127: invokeinterface 406 2 0
-    //   132: checkcast 408	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData
-    //   135: getfield 421	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData:bytes_nick	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   138: invokevirtual 426	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   141: invokevirtual 431	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   127: invokeinterface 409 2 0
+    //   132: checkcast 411	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData
+    //   135: getfield 424	tencent/im/oidb/cmd0x5eb/oidb_0x5eb$UdcUinData:bytes_nick	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   138: invokevirtual 429	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   141: invokevirtual 434	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   144: astore 10
     //   146: lload 7
     //   148: lconst_0
@@ -476,18 +476,18 @@ public class UserInfoHandler
     //   155: ifnonnull +6 -> 161
     //   158: goto +150 -> 308
     //   161: lload 7
-    //   163: invokestatic 434	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   163: invokestatic 437	java/lang/Long:toString	(J)Ljava/lang/String;
     //   166: astore 11
     //   168: aload_1
     //   169: aload 11
     //   171: aload 10
-    //   173: invokevirtual 292	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   173: invokevirtual 286	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   176: pop
     //   177: aload_0
-    //   178: getfield 33	com/tencent/avgame/business/handler/UserInfoHandler:b	Lcom/tencent/commonsdk/cache/QQLruCache;
+    //   178: getfield 35	com/tencent/avgame/business/handler/UserInfoHandler:c	Lcom/tencent/commonsdk/cache/QQLruCache;
     //   181: aload 11
     //   183: aload 10
-    //   185: invokevirtual 278	com/tencent/commonsdk/cache/QQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   185: invokevirtual 272	com/tencent/commonsdk/cache/QQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   188: pop
     //   189: goto +119 -> 308
     //   192: aload_2
@@ -496,17 +496,17 @@ public class UserInfoHandler
     //   195: iconst_2
     //   196: iconst_1
     //   197: iconst_2
-    //   198: anewarray 64	java/lang/Object
+    //   198: anewarray 66	java/lang/Object
     //   201: dup
     //   202: iconst_0
     //   203: iload 6
-    //   205: invokestatic 69	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   205: invokestatic 71	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   208: aastore
     //   209: dup
     //   210: iconst_1
     //   211: aload_1
     //   212: aastore
-    //   213: invokevirtual 377	com/tencent/avgame/business/handler/UserInfoHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   213: invokevirtual 380	com/tencent/avgame/business/handler/UserInfoHandler:notifyUI	(IZLjava/lang/Object;)V
     //   216: iconst_1
     //   217: istore 9
     //   219: goto +11 -> 230
@@ -523,40 +523,40 @@ public class UserInfoHandler
     //   236: iconst_2
     //   237: iconst_0
     //   238: iconst_2
-    //   239: anewarray 64	java/lang/Object
+    //   239: anewarray 66	java/lang/Object
     //   242: dup
     //   243: iconst_0
     //   244: iload 6
-    //   246: invokestatic 69	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   246: invokestatic 71	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   249: aastore
     //   250: dup
     //   251: iconst_1
     //   252: aconst_null
     //   253: aastore
-    //   254: invokevirtual 377	com/tencent/avgame/business/handler/UserInfoHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   257: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   254: invokevirtual 380	com/tencent/avgame/business/handler/UserInfoHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   257: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   260: ifeq +39 -> 299
-    //   263: ldc 134
+    //   263: ldc 136
     //   265: iconst_2
-    //   266: ldc_w 436
+    //   266: ldc_w 439
     //   269: iconst_3
-    //   270: anewarray 64	java/lang/Object
+    //   270: anewarray 66	java/lang/Object
     //   273: dup
     //   274: iconst_0
     //   275: iload 9
-    //   277: invokestatic 441	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   277: invokestatic 444	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   280: aastore
     //   281: dup
     //   282: iconst_1
     //   283: iload 5
-    //   285: invokestatic 69	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   285: invokestatic 71	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   288: aastore
     //   289: dup
     //   290: iconst_2
     //   291: aload_1
     //   292: aastore
-    //   293: invokestatic 75	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   296: invokestatic 256	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   293: invokestatic 77	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   296: invokestatic 248	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   299: return
     //   300: astore_2
     //   301: goto -74 -> 227
@@ -593,7 +593,7 @@ public class UserInfoHandler
   
   public Bitmap b(int paramInt1, String paramString, byte paramByte, int paramInt2)
   {
-    Object localObject = a();
+    Object localObject = b();
     if (localObject == null) {
       localObject = null;
     } else {
@@ -611,7 +611,7 @@ public class UserInfoHandler
       localStringBuilder.append("_");
       localStringBuilder.append(paramByte);
       paramString = localStringBuilder.toString();
-      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(paramString, localObject);
+      this.a.put(paramString, localObject);
       return localObject;
     }
     catch (Throwable paramString) {}
@@ -625,7 +625,7 @@ public class UserInfoHandler
     if (bool) {
       return null;
     }
-    Object localObject = a();
+    Object localObject = b();
     if (localObject != null) {
       localUserInfo = ((AVGameClientQIPCModule)localObject).a(paramInt, paramString);
     }
@@ -637,7 +637,7 @@ public class UserInfoHandler
         ((StringBuilder)localObject).append("_");
         ((StringBuilder)localObject).append(paramString);
         paramString = ((StringBuilder)localObject).toString();
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramString, localUserInfo);
+        this.b.put(paramString, localUserInfo);
         return localUserInfo;
       }
       catch (Throwable paramString)

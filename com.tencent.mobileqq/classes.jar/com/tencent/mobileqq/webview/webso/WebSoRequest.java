@@ -7,9 +7,9 @@ import wns_proxy.HttpReq;
 public class WebSoRequest
   extends QzoneExternalRequest
 {
-  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
+  private JceStruct c;
   
   public WebSoRequest() {}
   
@@ -18,20 +18,20 @@ public class WebSoRequest
     super.setRefer(paramString2);
     super.setHostUin(paramLong);
     super.setLoginUserId(paramLong);
-    this.jdField_a_of_type_ComQqTafJceJceStruct = paramHttpReq;
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramHttpReq;
+    this.a = paramString1;
     this.needCompress = false;
-    this.b = WebSoUtils.h(paramString1);
+    this.b = WebSoUtils.n(paramString1);
   }
   
   public String getCmdString()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public JceStruct getReq()
   {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+    return this.c;
   }
   
   public String uniKey()
@@ -41,7 +41,7 @@ public class WebSoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ public class ChatPanelBarBizUtil
   
   public static boolean a(QQAppInterface paramQQAppInterface, SharedPreferences paramSharedPreferences)
   {
-    int i = PokeItemHelper.a(paramQQAppInterface);
+    int i = PokeItemHelper.b(paramQQAppInterface);
     boolean bool3 = false;
     boolean bool1;
     if (paramSharedPreferences != null) {
@@ -54,7 +54,7 @@ public class ChatPanelBarBizUtil
   
   public static boolean a(AIOPanelIconItem paramAIOPanelIconItem, SessionInfo paramSessionInfo)
   {
-    return ((paramAIOPanelIconItem.a.length >= 6) && (paramSessionInfo != null) && (paramSessionInfo.jdField_a_of_type_Boolean) && (paramSessionInfo.d) && (!paramSessionInfo.c)) || ((paramAIOPanelIconItem.a.length >= 6) && (paramSessionInfo != null) && (paramSessionInfo.b) && (paramSessionInfo.e) && (!paramSessionInfo.c)) || ((paramAIOPanelIconItem.a.length >= 6) && (paramSessionInfo != null) && (SessionTypeUtil.c(paramSessionInfo.jdField_a_of_type_Int)));
+    return ((paramAIOPanelIconItem.p.length >= 6) && (paramSessionInfo != null) && (paramSessionInfo.i) && (paramSessionInfo.l) && (!paramSessionInfo.k)) || ((paramAIOPanelIconItem.p.length >= 6) && (paramSessionInfo != null) && (paramSessionInfo.j) && (paramSessionInfo.m) && (!paramSessionInfo.k)) || ((paramAIOPanelIconItem.p.length >= 6) && (paramSessionInfo != null) && (SessionTypeUtil.c(paramSessionInfo.a)));
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface, SharedPreferences paramSharedPreferences)
@@ -87,7 +87,7 @@ public class ChatPanelBarBizUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.bizstatus.ChatPanelBarBizUtil
  * JD-Core Version:    0.7.0.1
  */

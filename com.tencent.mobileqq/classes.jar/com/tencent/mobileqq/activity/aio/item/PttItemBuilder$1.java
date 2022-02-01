@@ -15,19 +15,19 @@ class PttItemBuilder$1
   
   public void a(String paramString1, int paramInt, String paramString2)
   {
-    QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 0, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop);
-    QfavBuilder.a(paramString1, paramInt, paramString2).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt).a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    QfavReport.a(this.b.d, 6, 0, this.a.istroop);
+    QfavBuilder.a(paramString1, paramInt, paramString2).b(this.b.d, this.a).a((Activity)this.b.e, this.b.d.getAccount());
     if ((!TextUtils.isEmpty(paramString2)) && (paramString2.length() > 0)) {
       paramInt = 1;
     } else {
       paramInt = 0;
     }
-    QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_AddFav", 4, 0, 6, paramInt, "", "");
+    QfavReport.a(this.b.d, "User_AddFav", 4, 0, 6, paramInt, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

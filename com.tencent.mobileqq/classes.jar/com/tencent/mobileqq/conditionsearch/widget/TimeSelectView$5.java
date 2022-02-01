@@ -2,7 +2,7 @@ package com.tencent.mobileqq.conditionsearch.widget;
 
 import android.os.Vibrator;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.SoundAndVibrateUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemSelectedListener;
@@ -31,16 +31,16 @@ class TimeSelectView$5
         paramInt += 1;
       }
     }
-    if ((!TimeSelectView.a(this.a)) && (this.a.a != null))
+    if ((!TimeSelectView.d(this.a)) && (this.a.b != null))
     {
-      this.a.a.vibrate(QQAppInterface.VIBRATOR_TIME_SELECTOR, -1);
+      this.a.b.vibrate(SoundAndVibrateUtils.g, -1);
       if (QLog.isColorLevel())
       {
         paramAdapterView = new StringBuilder();
         paramAdapterView.append("hasVibrator: ");
-        paramAdapterView.append(this.a.a.hasVibrator());
+        paramAdapterView.append(this.a.b.hasVibrator());
         paramAdapterView.append("Vibrator vibrate! ");
-        paramAdapterView.append(TimeSelectView.a(this.a));
+        paramAdapterView.append(TimeSelectView.d(this.a));
         QLog.d("TimeSelectView", 1, paramAdapterView.toString());
       }
     }
@@ -51,7 +51,7 @@ class TimeSelectView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.widget.TimeSelectView.5
  * JD-Core Version:    0.7.0.1
  */

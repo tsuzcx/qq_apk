@@ -11,8 +11,8 @@ import com.tencent.mobileqq.mutualmark.info.MutualMarkForDisplayInfo;
 public class MutualMarkIconItemView
   extends ImageView
 {
-  MutualMarkIconProxyDrawable jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable;
-  MutualMarkForDisplayInfo jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo;
+  MutualMarkForDisplayInfo a;
+  MutualMarkIconProxyDrawable b;
   
   public MutualMarkIconItemView(Context paramContext)
   {
@@ -29,38 +29,38 @@ public class MutualMarkIconItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public int a()
+  public void a()
   {
-    MutualMarkIconProxyDrawable localMutualMarkIconProxyDrawable = this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable;
+    MutualMarkIconProxyDrawable localMutualMarkIconProxyDrawable = this.b;
+    if (localMutualMarkIconProxyDrawable != null) {
+      localMutualMarkIconProxyDrawable.c();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    MutualMarkIconProxyDrawable localMutualMarkIconProxyDrawable = this.b;
+    if (localMutualMarkIconProxyDrawable != null) {
+      localMutualMarkIconProxyDrawable.a(paramString);
+    }
+  }
+  
+  public int getMaybeWidth()
+  {
+    MutualMarkIconProxyDrawable localMutualMarkIconProxyDrawable = this.b;
     if (localMutualMarkIconProxyDrawable != null) {
       return localMutualMarkIconProxyDrawable.getIntrinsicWidth();
     }
     return getMeasuredWidth();
   }
   
-  public long a()
+  public long getMutualMarkType()
   {
-    MutualMarkForDisplayInfo localMutualMarkForDisplayInfo = this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo;
+    MutualMarkForDisplayInfo localMutualMarkForDisplayInfo = this.a;
     if (localMutualMarkForDisplayInfo != null) {
       return localMutualMarkForDisplayInfo.a;
     }
     return 0L;
-  }
-  
-  public void a()
-  {
-    MutualMarkIconProxyDrawable localMutualMarkIconProxyDrawable = this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable;
-    if (localMutualMarkIconProxyDrawable != null) {
-      localMutualMarkIconProxyDrawable.b();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    MutualMarkIconProxyDrawable localMutualMarkIconProxyDrawable = this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable;
-    if (localMutualMarkIconProxyDrawable != null) {
-      localMutualMarkIconProxyDrawable.a(paramString);
-    }
   }
   
   public void setIconAlpha(float paramFloat)
@@ -71,26 +71,26 @@ public class MutualMarkIconItemView
   
   public void setIconResource(MutualMarkForDisplayInfo paramMutualMarkForDisplayInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo == paramMutualMarkForDisplayInfo) {
+    if (this.a == paramMutualMarkForDisplayInfo) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo = paramMutualMarkForDisplayInfo;
-    if (!TextUtils.isEmpty(paramMutualMarkForDisplayInfo.jdField_c_of_type_JavaLangString))
+    this.a = paramMutualMarkForDisplayInfo;
+    if (!TextUtils.isEmpty(paramMutualMarkForDisplayInfo.s))
     {
-      this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(getContext(), paramMutualMarkForDisplayInfo.jdField_c_of_type_JavaLangString);
-      setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable);
+      this.b = new MutualMarkIconProxyDrawable(getContext(), paramMutualMarkForDisplayInfo.s);
+      setImageDrawable(this.b);
       return;
     }
-    if (paramMutualMarkForDisplayInfo.jdField_c_of_type_Int != 0)
+    if (paramMutualMarkForDisplayInfo.q != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(getContext(), paramMutualMarkForDisplayInfo.jdField_c_of_type_Int);
-      setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable);
+      this.b = new MutualMarkIconProxyDrawable(getContext(), paramMutualMarkForDisplayInfo.q);
+      setImageDrawable(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.view.MutualMarkIconItemView
  * JD-Core Version:    0.7.0.1
  */

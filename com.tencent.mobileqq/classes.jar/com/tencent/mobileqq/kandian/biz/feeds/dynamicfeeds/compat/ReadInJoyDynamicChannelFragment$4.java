@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.compat;
 
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collection;
 import java.util.Iterator;
@@ -32,7 +31,7 @@ class ReadInJoyDynamicChannelFragment$4
         JSONObject localJSONObject = new JSONObject();
         try
         {
-          localJSONObject.put("channel_id", ReadInJoyDynamicChannelFragment.m(this.this$0));
+          localJSONObject.put("channel_id", ReadInJoyDynamicChannelFragment.s(this.this$0));
           localJSONObject.put("article_id", localAbsBaseArticleInfo.mArticleID);
         }
         catch (JSONException localJSONException1)
@@ -61,15 +60,15 @@ class ReadInJoyDynamicChannelFragment$4
             }
           }
         }
-        QLog.d("ReadInJoyDynamicChannelFragment", 1, new Object[] { "actionName = ", ReadInJoyDynamicChannelFragment.a(this.this$0), "\n", "r5 = ", localJSONObject });
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", ReadInJoyDynamicChannelFragment.b(this.this$0), ReadInJoyDynamicChannelFragment.c(this.this$0), 0, 0, "", "", "", localJSONObject.toString(), false);
+        QLog.d("ReadInJoyDynamicChannelFragment", 1, new Object[] { "actionName = ", ReadInJoyDynamicChannelFragment.t(this.this$0), "\n", "r5 = ", localJSONObject });
+        PublicAccountReportUtils.a(null, "", ReadInJoyDynamicChannelFragment.u(this.this$0), ReadInJoyDynamicChannelFragment.v(this.this$0), 0, 0, "", "", "", localJSONObject.toString(), false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment.4
  * JD-Core Version:    0.7.0.1
  */

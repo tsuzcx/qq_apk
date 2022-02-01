@@ -37,21 +37,21 @@ class PublicAccountManagerImpl$4$1
             ((StringBuilder)localObject2).append(paramSosoLbsInfo.mLocation.name);
             localObject2 = ((StringBuilder)localObject2).toString();
           }
-          this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl$4.this$0.reportClickTypeMenuEvent(true, d1, d2, (String)localObject2, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+          this.c.this$0.reportClickTypeMenuEvent(true, d1, d2, (String)localObject2, null, this.a, this.b);
           return;
         }
       }
       catch (Exception paramSosoLbsInfo)
       {
         paramSosoLbsInfo.printStackTrace();
-        this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl$4.this$0.reportClickTypeMenuEvent(false, 0.0D, 0.0D, null, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+        this.c.this$0.reportClickTypeMenuEvent(false, 0.0D, 0.0D, null, null, this.a, this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.4.1
  * JD-Core Version:    0.7.0.1
  */

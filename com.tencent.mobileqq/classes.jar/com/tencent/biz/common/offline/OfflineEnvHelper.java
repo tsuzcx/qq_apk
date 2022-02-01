@@ -12,256 +12,21 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class OfflineEnvHelper
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static final ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-  private static String jdField_b_of_type_JavaLangString;
-  private static final ReentrantLock jdField_b_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+  private static String a;
+  private static String b;
   private static String c;
   private static String d;
+  private static final ReentrantLock e = new ReentrantLock();
+  private static final ReentrantLock f = new ReentrantLock();
   
   public static String a()
   {
     if (TextUtils.isEmpty(c))
     {
       SLog.d("OfflineEnvHelper", "getInnerOfflineDir, initEnv");
-      a();
+      e();
     }
     return c;
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (a(paramString))
-    {
-      SLog.d("OfflineEnvHelper", "getOfflineDir, isStoreInSD true");
-      return b();
-    }
-    return a();
-  }
-  
-  private static void a()
-  {
-    int k = 1;
-    String str = PreDownloadScheduleUtil.getPreDownloadPathStatic("offline", "app", true);
-    Object localObject1;
-    Object localObject2;
-    boolean bool;
-    long l;
-    Object localObject7;
-    StringBuilder localStringBuilder;
-    int i;
-    int j;
-    if (!TextUtils.isEmpty(str))
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(str);
-      ((StringBuilder)localObject1).append("/html5/");
-      localObject1 = ((StringBuilder)localObject1).toString();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(str);
-      ((StringBuilder)localObject2).append("/tmp/");
-      str = ((StringBuilder)localObject2).toString();
-      localObject2 = new File((String)localObject1);
-      try
-      {
-        if (!((File)localObject2).exists())
-        {
-          bool = jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.tryLock();
-          if (bool) {
-            try
-            {
-              l = System.currentTimeMillis();
-              Object localObject3 = new StringBuilder();
-              ((StringBuilder)localObject3).append(Environment.getExternalStorageDirectory().getAbsolutePath());
-              ((StringBuilder)localObject3).append("/tencent/MobileQQ/qbiz/html5/");
-              localObject3 = new File(((StringBuilder)localObject3).toString());
-              if (((File)localObject3).exists())
-              {
-                ((File)localObject2).mkdirs();
-                if (((File)localObject3).renameTo((File)localObject2))
-                {
-                  bool = true;
-                }
-                else
-                {
-                  if (!HtmlOffline.a.a()) {
-                    break label1018;
-                  }
-                  HtmlOffline.a.a("HtmlCheckUpdate", 2, "sd move error");
-                  break label1018;
-                }
-              }
-              else
-              {
-                if (!HtmlOffline.a.a()) {
-                  break label1018;
-                }
-                HtmlOffline.a.a("HtmlCheckUpdate", 2, "sd no old data");
-                break label1018;
-              }
-              localObject3 = HtmlOffline.a;
-              localObject7 = new StringBuilder();
-              ((StringBuilder)localObject7).append("sd move old data, cost=");
-              ((StringBuilder)localObject7).append(System.currentTimeMillis() - l);
-              ((StringBuilder)localObject7).append(", move=");
-              ((StringBuilder)localObject7).append(bool);
-              ((ILog)localObject3).a("HtmlCheckUpdate", 1, ((StringBuilder)localObject7).toString());
-            }
-            finally
-            {
-              jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-            }
-          } else {
-            HtmlOffline.a.a("HtmlCheckUpdate", 1, "sd move lock failed");
-          }
-        }
-      }
-      catch (Exception localException1)
-      {
-        if (HtmlOffline.a.a())
-        {
-          localObject7 = HtmlOffline.a;
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("sd move error: ");
-          localStringBuilder.append(localException1.toString());
-          ((ILog)localObject7).a("HtmlCheckUpdate", 2, localStringBuilder.toString());
-        }
-      }
-      if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs())) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      localObject2 = new File(str);
-      if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs())) {
-        j = 1;
-      } else {
-        j = 0;
-      }
-      if ((i | j) != 0)
-      {
-        if (HtmlOffline.a.a()) {
-          HtmlOffline.a.a("HtmlCheckUpdate", 2, "no sd");
-        }
-      }
-      else
-      {
-        jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath((String)localObject1);
-        jdField_b_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(str);
-      }
-    }
-    str = PreDownloadScheduleUtil.getPreDownloadPathStatic("offline", "app", false);
-    if (!TextUtils.isEmpty(str))
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(str);
-      ((StringBuilder)localObject1).append("/html5/");
-      localObject1 = ((StringBuilder)localObject1).toString();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(str);
-      ((StringBuilder)localObject2).append("/tmp/");
-      str = ((StringBuilder)localObject2).toString();
-      localObject2 = new File((String)localObject1);
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!((File)localObject2).exists())
-        {
-          bool = jdField_b_of_type_JavaUtilConcurrentLocksReentrantLock.tryLock();
-          if (bool) {
-            try
-            {
-              l = System.currentTimeMillis();
-              Object localObject5 = new StringBuilder();
-              ((StringBuilder)localObject5).append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
-              ((StringBuilder)localObject5).append("/qbiz/html5/");
-              localObject5 = new File(((StringBuilder)localObject5).toString());
-              if (((File)localObject5).exists())
-              {
-                ((File)localObject2).mkdirs();
-                if (((File)localObject5).renameTo((File)localObject2))
-                {
-                  bool = true;
-                }
-                else
-                {
-                  if (!HtmlOffline.a.a()) {
-                    break label1023;
-                  }
-                  HtmlOffline.a.a("HtmlCheckUpdate", 2, "data move error");
-                  break label1023;
-                }
-              }
-              else
-              {
-                if (!HtmlOffline.a.a()) {
-                  break label1023;
-                }
-                HtmlOffline.a.a("HtmlCheckUpdate", 2, "data no old data");
-                break label1023;
-              }
-              localObject5 = HtmlOffline.a;
-              localObject7 = new StringBuilder();
-              ((StringBuilder)localObject7).append("data move old data, cost=");
-              ((StringBuilder)localObject7).append(System.currentTimeMillis() - l);
-              ((StringBuilder)localObject7).append(", move=");
-              ((StringBuilder)localObject7).append(bool);
-              ((ILog)localObject5).a("HtmlCheckUpdate", 1, ((StringBuilder)localObject7).toString());
-            }
-            finally
-            {
-              jdField_b_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-            }
-          } else {
-            HtmlOffline.a.a("HtmlCheckUpdate", 1, "data move lock failed");
-          }
-        }
-      }
-      catch (Exception localException2)
-      {
-        if (HtmlOffline.a.a())
-        {
-          localObject7 = HtmlOffline.a;
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("data move error: ");
-          localStringBuilder.append(localException2.toString());
-          ((ILog)localObject7).a("HtmlCheckUpdate", 2, localStringBuilder.toString());
-        }
-      }
-      if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs())) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      localObject2 = new File(str);
-      if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs())) {
-        j = k;
-      } else {
-        j = 0;
-      }
-      if ((i | j) != 0)
-      {
-        if (HtmlOffline.a.a()) {
-          HtmlOffline.a.a("HtmlCheckUpdate", 2, "no data dir");
-        }
-      }
-      else
-      {
-        c = (String)localObject1;
-        d = str;
-      }
-      return;
-      label1018:
-      bool = false;
-      break;
-      label1023:
-      bool = false;
-    }
   }
   
   public static boolean a(String paramString)
@@ -288,23 +53,44 @@ public class OfflineEnvHelper
       label41:
       break label41;
     }
-    if (HtmlOffline.a.a()) {
-      HtmlOffline.a.a("HtmlCheckUpdate", 2, "initEnv NumberFormatException");
+    if (HtmlOffline.f.a()) {
+      HtmlOffline.f.a("HtmlCheckUpdate", 2, "initEnv NumberFormatException");
     }
     return true;
   }
   
   public static String b()
   {
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(a))
     {
       SLog.d("OfflineEnvHelper", "getSDOfflineDir, initEnv");
-      a();
+      e();
     }
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
   public static String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (a(paramString))
+    {
+      SLog.d("OfflineEnvHelper", "getOfflineDir, isStoreInSD true");
+      return b();
+    }
+    return a();
+  }
+  
+  public static String c()
+  {
+    if (TextUtils.isEmpty(d)) {
+      e();
+    }
+    return d;
+  }
+  
+  public static String c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -315,25 +101,219 @@ public class OfflineEnvHelper
     return c();
   }
   
-  public static String c()
-  {
-    if (TextUtils.isEmpty(d)) {
-      a();
-    }
-    return d;
-  }
-  
   public static String d()
   {
-    if (TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) {
-      a();
+    if (TextUtils.isEmpty(b)) {
+      e();
     }
-    return jdField_b_of_type_JavaLangString;
+    return b;
+  }
+  
+  private static void d(String paramString)
+  {
+    if (HtmlOffline.f.a()) {
+      HtmlOffline.f.a("HtmlCheckUpdate", 2, paramString);
+    }
+  }
+  
+  private static void e()
+  {
+    int k = 1;
+    String str = PreDownloadScheduleUtil.getPreDownloadPathStatic("offline", "app", true);
+    Object localObject1;
+    Object localObject2;
+    boolean bool;
+    long l;
+    StringBuilder localStringBuilder;
+    int i;
+    int j;
+    if (!TextUtils.isEmpty(str))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append("/html5/");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(str);
+      ((StringBuilder)localObject2).append("/tmp/");
+      str = ((StringBuilder)localObject2).toString();
+      localObject2 = new File((String)localObject1);
+      try
+      {
+        if (!((File)localObject2).exists())
+        {
+          bool = e.tryLock();
+          if (bool) {
+            try
+            {
+              l = System.currentTimeMillis();
+              Object localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+              ((StringBuilder)localObject3).append("/tencent/MobileQQ/qbiz/html5/");
+              localObject3 = new File(((StringBuilder)localObject3).toString());
+              if (((File)localObject3).exists())
+              {
+                ((File)localObject2).mkdirs();
+                if (((File)localObject3).renameTo((File)localObject2))
+                {
+                  bool = true;
+                }
+                else
+                {
+                  d("sd move error");
+                  break label858;
+                }
+              }
+              else
+              {
+                d("sd no old data");
+                break label858;
+              }
+              localObject3 = HtmlOffline.f;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("sd move old data, cost=");
+              localStringBuilder.append(System.currentTimeMillis() - l);
+              localStringBuilder.append(", move=");
+              localStringBuilder.append(bool);
+              ((ILog)localObject3).a("HtmlCheckUpdate", 1, localStringBuilder.toString());
+            }
+            finally
+            {
+              e.unlock();
+            }
+          } else {
+            HtmlOffline.f.a("HtmlCheckUpdate", 1, "sd move lock failed");
+          }
+        }
+      }
+      catch (Exception localException1)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("sd move error: ");
+        localStringBuilder.append(localException1.toString());
+        d(localStringBuilder.toString());
+      }
+      if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs())) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      localObject2 = new File(str);
+      if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs())) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      if ((i | j) != 0)
+      {
+        d("no sd");
+      }
+      else
+      {
+        a = VFSAssistantUtils.getSDKPrivatePath((String)localObject1);
+        b = VFSAssistantUtils.getSDKPrivatePath(str);
+      }
+    }
+    str = PreDownloadScheduleUtil.getPreDownloadPathStatic("offline", "app", false);
+    if (!TextUtils.isEmpty(str))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append("/html5/");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(str);
+      ((StringBuilder)localObject2).append("/tmp/");
+      str = ((StringBuilder)localObject2).toString();
+      localObject2 = new File((String)localObject1);
+    }
+    for (;;)
+    {
+      try
+      {
+        if (!((File)localObject2).exists())
+        {
+          bool = f.tryLock();
+          if (bool) {
+            try
+            {
+              l = System.currentTimeMillis();
+              Object localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
+              ((StringBuilder)localObject5).append("/qbiz/html5/");
+              localObject5 = new File(((StringBuilder)localObject5).toString());
+              if (((File)localObject5).exists())
+              {
+                ((File)localObject2).mkdirs();
+                if (((File)localObject5).renameTo((File)localObject2))
+                {
+                  bool = true;
+                }
+                else
+                {
+                  d("data move error");
+                  break label863;
+                }
+              }
+              else
+              {
+                d("data no old data");
+                break label863;
+              }
+              localObject5 = HtmlOffline.f;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("data move old data, cost=");
+              localStringBuilder.append(System.currentTimeMillis() - l);
+              localStringBuilder.append(", move=");
+              localStringBuilder.append(bool);
+              ((ILog)localObject5).a("HtmlCheckUpdate", 1, localStringBuilder.toString());
+            }
+            finally
+            {
+              f.unlock();
+            }
+          } else {
+            HtmlOffline.f.a("HtmlCheckUpdate", 1, "data move lock failed");
+          }
+        }
+      }
+      catch (Exception localException2)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("data move error: ");
+        localStringBuilder.append(localException2.toString());
+        d(localStringBuilder.toString());
+      }
+      if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs())) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      localObject2 = new File(str);
+      if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs())) {
+        j = k;
+      } else {
+        j = 0;
+      }
+      if ((i | j) != 0)
+      {
+        d("no data dir");
+        return;
+      }
+      c = (String)localObject1;
+      d = str;
+      return;
+      label858:
+      bool = false;
+      break;
+      label863:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.OfflineEnvHelper
  * JD-Core Version:    0.7.0.1
  */

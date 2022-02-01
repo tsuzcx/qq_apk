@@ -31,7 +31,7 @@ class TouchResponse
   private static final int TOUCH_END = 5;
   private static final int TOUCH_LEFT = 2;
   private static final int TOUCH_RIGHT = 3;
-  private static final float[][] TOUCH_SIDES = { { 0.5F, 0.0F }, { 0.0F, 0.5F }, { 1.0F, 0.5F }, { 0.5F, 1.0F }, { 0.5F, 0.5F }, { 0.0F, 0.5F }, { 1.0F, 0.5F } };
+  private static final float[][] TOUCH_SIDES;
   private static final int TOUCH_START = 4;
   private static final int TOUCH_UP = 0;
   private float[] mAnchorDpDt = new float[2];
@@ -58,12 +58,12 @@ class TouchResponse
   
   static
   {
-    float[] arrayOfFloat1 = { 0.0F, -1.0F };
-    float[] arrayOfFloat2 = { -1.0F, 0.0F };
-    float[] arrayOfFloat3 = { 1.0F, 0.0F };
-    float[] arrayOfFloat4 = { -1.0F, 0.0F };
-    float[] arrayOfFloat5 = { 1.0F, 0.0F };
-    TOUCH_DIRECTION = new float[][] { arrayOfFloat1, { 0.0F, 1.0F }, arrayOfFloat2, arrayOfFloat3, arrayOfFloat4, arrayOfFloat5 };
+    float[] arrayOfFloat1 = { 0.0F, 0.5F };
+    TOUCH_SIDES = new float[][] { { 0.5F, 0.0F }, { 0.0F, 0.5F }, { 1.0F, 0.5F }, { 0.5F, 1.0F }, { 0.5F, 0.5F }, arrayOfFloat1, { 1.0F, 0.5F } };
+    arrayOfFloat1 = new float[] { 0.0F, -1.0F };
+    float[] arrayOfFloat2 = { 0.0F, 1.0F };
+    float[] arrayOfFloat3 = { -1.0F, 0.0F };
+    TOUCH_DIRECTION = new float[][] { arrayOfFloat1, arrayOfFloat2, { -1.0F, 0.0F }, { 1.0F, 0.0F }, arrayOfFloat3, { 1.0F, 0.0F } };
   }
   
   TouchResponse(Context paramContext, MotionLayout paramMotionLayout, XmlPullParser paramXmlPullParser)
@@ -554,7 +554,7 @@ class TouchResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.motion.widget.TouchResponse
  * JD-Core Version:    0.7.0.1
  */

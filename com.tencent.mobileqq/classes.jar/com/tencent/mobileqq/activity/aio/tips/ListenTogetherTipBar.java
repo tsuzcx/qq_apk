@@ -31,59 +31,9 @@ public class ListenTogetherTipBar
     return 1;
   }
   
-  public View a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView;
-  }
-  
   public View a(Object... paramVarArgs)
   {
     return super.a(paramVarArgs);
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378970));
-    c();
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("showBlurView() called mBlurBgView = ");
-      ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
-      QLog.d("ListenTogetherTipBar", 2, ((StringBuilder)localObject).toString());
-    }
-    QLog.d("ListenTogetherTipBar", 1, new Object[] { "stack......\n", Log.getStackTraceString(new Throwable()) });
-    if (AIOMusicSkin.a().n_())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(8);
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372219);
-    if ((!ThemeUtil.isDefaultOrDIYTheme(false)) && (!ThemeUtil.isSimpleDayTheme(false)))
-    {
-      ((View)localObject).setBackgroundColor(this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131167028));
-      ((View)localObject).setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(8);
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("showBlurView() gone called mBlurBgView = ");
-        ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
-        QLog.d("ListenTogetherTipBar", 2, ((StringBuilder)localObject).toString());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
-      return;
-    }
-    ((View)localObject).setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("showBlurView() visibility called mBlurBgView = ");
-      ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
-      QLog.d("ListenTogetherTipBar", 2, ((StringBuilder)localObject).toString());
-    }
   }
   
   public void a(int paramInt, Object... paramVarArgs)
@@ -93,14 +43,14 @@ public class ListenTogetherTipBar
   
   protected void a(FrameLayout.LayoutParams paramLayoutParams)
   {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView = new MusicPanelView(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setLayoutParams(paramLayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setId(c());
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.jdField_a_of_type_AndroidViewView$OnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setOnTouchListener(UITools.a);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView);
+    this.a = new MusicPanelView(this.b.aX());
+    this.a.setOnClickListener(this.d);
+    this.a.setLayoutParams(paramLayoutParams);
+    this.a.setId(d());
+    this.a.l = this.d;
+    this.a.setVisibility(0);
+    this.a.setOnTouchListener(UITools.a);
+    this.e.addView(this.a);
   }
   
   public void a(TogetherSession paramTogetherSession, QQAppInterface paramQQAppInterface)
@@ -108,30 +58,80 @@ public class ListenTogetherTipBar
     super.a(paramTogetherSession, paramQQAppInterface);
   }
   
-  public int[] a()
-  {
-    return null;
-  }
-  
   public int b()
   {
     return 26;
   }
   
-  protected void b()
+  public int[] c()
   {
-    super.b();
-    MusicPanelView localMusicPanelView = this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView;
+    return null;
   }
   
-  public int c()
+  public int d()
   {
-    return 2131370162;
+    return 2131437326;
+  }
+  
+  public View e()
+  {
+    return this.a;
+  }
+  
+  protected void f()
+  {
+    this.c = ((QQBlurView)this.e.findViewById(2131447679));
+    h();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showBlurView() called mBlurBgView = ");
+      ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.c)));
+      QLog.d("ListenTogetherTipBar", 2, ((StringBuilder)localObject).toString());
+    }
+    QLog.d("ListenTogetherTipBar", 1, new Object[] { "stack......\n", Log.getStackTraceString(new Throwable()) });
+    if (AIOMusicSkin.a().du_())
+    {
+      this.c.setVisibility(8);
+      return;
+    }
+    Object localObject = this.e.findViewById(2131439721);
+    if ((!ThemeUtil.isDefaultOrDIYTheme(false)) && (!ThemeUtil.isSimpleDayTheme(false)))
+    {
+      ((View)localObject).setBackgroundColor(this.e.getResources().getColor(2131167964));
+      ((View)localObject).setVisibility(0);
+      this.c.setVisibility(8);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("showBlurView() gone called mBlurBgView = ");
+        ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.c)));
+        QLog.d("ListenTogetherTipBar", 2, ((StringBuilder)localObject).toString());
+      }
+      this.c.c();
+      this.c = null;
+      return;
+    }
+    ((View)localObject).setVisibility(8);
+    this.c.setVisibility(0);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showBlurView() visibility called mBlurBgView = ");
+      ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this.c)));
+      QLog.d("ListenTogetherTipBar", 2, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  protected void g()
+  {
+    super.g();
+    MusicPanelView localMusicPanelView = this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.ListenTogetherTipBar
  * JD-Core Version:    0.7.0.1
  */

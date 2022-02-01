@@ -6,16 +6,16 @@ import java.io.File;
 class MyVideoCleanStep$FileInfo
   implements Comparable<FileInfo>
 {
-  public long a;
   public final File a;
+  public long b;
   
   public MyVideoCleanStep$FileInfo(MyVideoCleanStep paramMyVideoCleanStep, File paramFile)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.a = paramFile;
     paramMyVideoCleanStep = paramFile.getName();
     try
     {
-      this.jdField_a_of_type_Long = Long.parseLong(paramMyVideoCleanStep);
+      this.b = Long.parseLong(paramMyVideoCleanStep);
       return;
     }
     catch (Exception paramFile)
@@ -26,8 +26,8 @@ class MyVideoCleanStep$FileInfo
   
   public int a(FileInfo paramFileInfo)
   {
-    long l1 = this.jdField_a_of_type_Long;
-    long l2 = paramFileInfo.jdField_a_of_type_Long;
+    long l1 = this.b;
+    long l2 = paramFileInfo.b;
     if (l1 < l2) {
       return -1;
     }
@@ -39,7 +39,7 @@ class MyVideoCleanStep$FileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.cachecleaner.MyVideoCleanStep.FileInfo
  * JD-Core Version:    0.7.0.1
  */

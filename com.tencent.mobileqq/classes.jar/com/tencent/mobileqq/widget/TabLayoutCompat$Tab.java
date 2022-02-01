@@ -8,76 +8,81 @@ import android.view.View;
 
 public final class TabLayoutCompat$Tab
 {
-  private int jdField_a_of_type_Int = -1;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  TabLayoutCompat.TabView jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView;
-  TabLayoutCompat jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private Object jdField_a_of_type_JavaLangObject;
-  private CharSequence b;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  @Nullable
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
+  TabLayoutCompat a;
+  TabLayoutCompat.TabView b;
+  private Object c;
+  private Drawable d;
+  private CharSequence e;
+  private CharSequence f;
+  private int g = -1;
+  private View h;
   
   @NonNull
   public Tab a(int paramInt)
   {
-    return a(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView.getContext()).inflate(paramInt, this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView, false));
+    return a(LayoutInflater.from(this.b.getContext()).inflate(paramInt, this.b, false));
   }
   
   @NonNull
   public Tab a(@Nullable View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    c();
+    this.h = paramView;
+    k();
     return this;
   }
   
   @NonNull
   public Tab a(@Nullable CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    c();
+    this.e = paramCharSequence;
+    k();
     return this;
   }
   
   @NonNull
   public Tab a(@Nullable Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.c = paramObject;
     return this;
-  }
-  
-  @Nullable
-  public CharSequence a()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
   @Nullable
   public Object a()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.c;
   }
   
-  public void a()
+  @Nullable
+  public View b()
   {
-    TabLayoutCompat localTabLayoutCompat = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat;
+    return this.h;
+  }
+  
+  void b(int paramInt)
+  {
+    this.g = paramInt;
+  }
+  
+  @Nullable
+  public Drawable c()
+  {
+    return this.d;
+  }
+  
+  public int d()
+  {
+    return this.g;
+  }
+  
+  @Nullable
+  public CharSequence e()
+  {
+    return this.e;
+  }
+  
+  public void f()
+  {
+    TabLayoutCompat localTabLayoutCompat = this.a;
     if (localTabLayoutCompat != null)
     {
       localTabLayoutCompat.e(this);
@@ -86,29 +91,9 @@ public final class TabLayoutCompat$Tab
     throw new IllegalArgumentException("Tab not attached to a TabLayout");
   }
   
-  void a(int paramInt)
+  public void g()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    TabLayoutCompat localTabLayoutCompat = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat;
-    if (localTabLayoutCompat != null) {
-      return localTabLayoutCompat.b() == this.jdField_a_of_type_Int;
-    }
-    throw new IllegalArgumentException("Tab not attached to a TabLayout");
-  }
-  
-  @Nullable
-  public CharSequence b()
-  {
-    return this.b;
-  }
-  
-  public void b()
-  {
-    TabLayoutCompat localTabLayoutCompat = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat;
+    TabLayoutCompat localTabLayoutCompat = this.a;
     if (localTabLayoutCompat != null)
     {
       localTabLayoutCompat.c(this, true);
@@ -117,29 +102,49 @@ public final class TabLayoutCompat$Tab
     throw new IllegalArgumentException("Tab not attached to a TabLayout");
   }
   
-  void c()
+  public boolean h()
   {
-    TabLayoutCompat.TabView localTabView = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView;
+    TabLayoutCompat localTabLayoutCompat = this.a;
+    if (localTabLayoutCompat != null) {
+      return localTabLayoutCompat.getSelectedTabPosition() == this.g;
+    }
+    throw new IllegalArgumentException("Tab not attached to a TabLayout");
+  }
+  
+  @Nullable
+  public CharSequence i()
+  {
+    return this.f;
+  }
+  
+  public View j()
+  {
+    return this.b;
+  }
+  
+  void k()
+  {
+    TabLayoutCompat.TabView localTabView = this.b;
     if (localTabView != null) {
       localTabView.b();
     }
   }
   
-  void d()
+  void l()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat = null;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView = null;
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_JavaLangCharSequence = null;
+    this.a = null;
     this.b = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.c = null;
+    this.d = null;
+    this.e = null;
+    this.f = null;
+    this.g = -1;
+    this.h = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabLayoutCompat.Tab
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,15 @@ package com.tencent.mobileqq.troop.essence.data;
 
 public class TroopEssenceMsgItem$TroopEssenceMsgItemKey
 {
-  public int a;
   public long a;
   public long b;
+  public int c;
   
   public TroopEssenceMsgItem$TroopEssenceMsgItemKey(long paramLong1, long paramLong2, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong1;
+    this.a = paramLong1;
     this.b = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public boolean equals(Object paramObject)
@@ -24,13 +24,13 @@ public class TroopEssenceMsgItem$TroopEssenceMsgItemKey
     {
       paramObject = (TroopEssenceMsgItemKey)paramObject;
       bool1 = bool2;
-      if (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)
+      if (paramObject.a == this.a)
       {
         bool1 = bool2;
         if (paramObject.b == this.b)
         {
           bool1 = bool2;
-          if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
+          if (paramObject.c == this.c) {
             bool1 = true;
           }
         }
@@ -41,26 +41,26 @@ public class TroopEssenceMsgItem$TroopEssenceMsgItemKey
   
   public int hashCode()
   {
-    return (int)this.jdField_a_of_type_Long + (int)this.b + this.jdField_a_of_type_Int;
+    return (int)this.a + (int)this.b + this.c;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("troopUin:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" ");
     localStringBuilder.append("msgSeq:");
     localStringBuilder.append(this.b);
     localStringBuilder.append(" ");
     localStringBuilder.append("msgRandom:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essence.data.TroopEssenceMsgItem.TroopEssenceMsgItemKey
  * JD-Core Version:    0.7.0.1
  */

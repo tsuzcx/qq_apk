@@ -12,17 +12,17 @@ public final class ViewGroupExtensionKt$removeViewWithAnim$1$1
 {
   public void onAnimationEnd(@Nullable Animation paramAnimation)
   {
-    Animation.AnimationListener localAnimationListener = this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+    Animation.AnimationListener localAnimationListener = this.a.d;
     if (localAnimationListener != null) {
       localAnimationListener.onAnimationEnd(paramAnimation);
     }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.a.jdField_a_of_type_AndroidViewView.post((Runnable)new ViewGroupExtensionKt.removeViewWithAnim.1.1.onAnimationEnd.1(this));
+    this.a.b.setVisibility(4);
+    this.a.b.post((Runnable)new ViewGroupExtensionKt.removeViewWithAnim.1.1.onAnimationEnd.1(this));
   }
   
   public void onAnimationRepeat(@Nullable Animation paramAnimation)
   {
-    Animation.AnimationListener localAnimationListener = this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+    Animation.AnimationListener localAnimationListener = this.a.d;
     if (localAnimationListener != null) {
       localAnimationListener.onAnimationRepeat(paramAnimation);
     }
@@ -30,7 +30,7 @@ public final class ViewGroupExtensionKt$removeViewWithAnim$1$1
   
   public void onAnimationStart(@Nullable Animation paramAnimation)
   {
-    Animation.AnimationListener localAnimationListener = this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+    Animation.AnimationListener localAnimationListener = this.a.d;
     if (localAnimationListener != null) {
       localAnimationListener.onAnimationStart(paramAnimation);
     }
@@ -38,7 +38,7 @@ public final class ViewGroupExtensionKt$removeViewWithAnim$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.ktx.ViewGroupExtensionKt.removeViewWithAnim.1.1
  * JD-Core Version:    0.7.0.1
  */

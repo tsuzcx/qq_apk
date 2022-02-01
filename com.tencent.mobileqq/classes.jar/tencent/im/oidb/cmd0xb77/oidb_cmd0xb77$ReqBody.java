@@ -20,6 +20,7 @@ public final class oidb_cmd0xb77$ReqBody
   public oidb_cmd0xb77.ExtInfo ext_info = new oidb_cmd0xb77.ExtInfo();
   public oidb_cmd0xb77.MiniAppMsgBody mini_app_msg_body = new oidb_cmd0xb77.MiniAppMsgBody();
   public final PBUInt32Field msg_style = PBField.initUInt32(0);
+  public final PBUInt64Field recv_guild_id = PBField.initUInt64(0L);
   public final PBStringField recv_openid = PBField.initString("");
   public final PBUInt64Field recv_uin = PBField.initUInt64(0L);
   public oidb_cmd0xb77.RichMsgBody rich_msg_body = new oidb_cmd0xb77.RichMsgBody();
@@ -32,12 +33,12 @@ public final class oidb_cmd0xb77$ReqBody
   {
     Integer localInteger = Integer.valueOf(0);
     Long localLong = Long.valueOf(0L);
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 80, 88, 98, 106, 114, 122, 130, 138, 146 }, new String[] { "appid", "app_type", "msg_style", "sender_uin", "client_info", "text_msg", "ext_info", "send_type", "recv_uin", "rich_msg_body", "ark_msg_body", "recv_openid", "arkv1_msg_body", "ark_json_body", "xml_msg_body", "mini_app_msg_body" }, new Object[] { localLong, localInteger, localInteger, localLong, null, "", null, localInteger, localLong, null, null, "", null, null, null, null }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 80, 88, 98, 106, 114, 122, 130, 138, 146, 152 }, new String[] { "appid", "app_type", "msg_style", "sender_uin", "client_info", "text_msg", "ext_info", "send_type", "recv_uin", "rich_msg_body", "ark_msg_body", "recv_openid", "arkv1_msg_body", "ark_json_body", "xml_msg_body", "mini_app_msg_body", "recv_guild_id" }, new Object[] { localLong, localInteger, localInteger, localLong, null, "", null, localInteger, localLong, null, null, "", null, null, null, null, localLong }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb77.oidb_cmd0xb77.ReqBody
  * JD-Core Version:    0.7.0.1
  */

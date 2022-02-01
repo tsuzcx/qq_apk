@@ -14,7 +14,7 @@ final class AudioDataService$1
   
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
-    LogInterface localLogInterface = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a();
+    LogInterface localLogInterface = this.a.c();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("requestUserId2TinyId onError:isTimeout");
     localStringBuilder.append(paramBoolean);
@@ -23,7 +23,7 @@ final class AudioDataService$1
     localStringBuilder.append(";msg=");
     localStringBuilder.append(paramString);
     localLogInterface.i("AudioDataService", localStringBuilder.toString(), new Object[0]);
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestTinyId2UserIdCallback.a(paramInt);
+    this.b.a(paramInt);
   }
   
   public void onRecv(byte[] paramArrayOfByte)
@@ -33,29 +33,29 @@ final class AudioDataService$1
       ILiveChannel.UserId2TinyIdRsp localUserId2TinyIdRsp = new ILiveChannel.UserId2TinyIdRsp();
       localUserId2TinyIdRsp.mergeFrom(paramArrayOfByte);
       int i = localUserId2TinyIdRsp.result.get();
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a();
+      paramArrayOfByte = this.a.c();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("requestUserId2TinyId success,  errCode=");
       localStringBuilder.append(i);
       paramArrayOfByte.i("AudioDataService", localStringBuilder.toString(), new Object[0]);
       if (i == 0)
       {
-        this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestTinyId2UserIdCallback.a(localUserId2TinyIdRsp.userid.get(), localUserId2TinyIdRsp.tinyid.get());
+        this.b.a(localUserId2TinyIdRsp.userid.get(), localUserId2TinyIdRsp.tinyid.get());
         return;
       }
-      this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestTinyId2UserIdCallback.a(i);
+      this.b.a(i);
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a().i("AudioDataService", "requestUserId2TinyId excepton ", new Object[] { paramArrayOfByte });
-      this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestTinyId2UserIdCallback.a(-1);
+      this.a.c().i("AudioDataService", "requestUserId2TinyId excepton ", new Object[] { paramArrayOfByte });
+      this.b.a(-1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.service.AudioDataService.1
  * JD-Core Version:    0.7.0.1
  */

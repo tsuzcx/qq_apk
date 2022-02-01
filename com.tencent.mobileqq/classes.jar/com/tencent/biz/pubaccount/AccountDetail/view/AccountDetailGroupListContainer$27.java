@@ -22,35 +22,35 @@ class AccountDetailGroupListContainer$27
     if (QLog.isColorLevel()) {
       QLog.i("AccountDetailGroupListContainer", 2, "refresh recent list, from_handle");
     }
-    if ((this.a.b) && (this.a.jdField_a_of_type_AndroidViewView != null))
+    if ((this.a.i) && (this.a.c != null))
     {
       paramMessage = this.a;
-      paramMessage.jdField_a_of_type_AndroidContentSharedPreferences = paramMessage.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("public_account_detail_setting_status", 0);
-      paramMessage = this.a.jdField_a_of_type_AndroidContentSharedPreferences;
+      paramMessage.v = paramMessage.b.getApp().getSharedPreferences("public_account_detail_setting_status", 0);
+      paramMessage = this.a.v;
       int i = -10000;
       if (paramMessage != null)
       {
-        paramMessage = this.a.jdField_a_of_type_AndroidContentSharedPreferences;
+        paramMessage = this.a.v;
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append("setting_result_");
-        ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.uin);
+        ((StringBuilder)localObject).append(this.a.f.uin);
         ((StringBuilder)localObject).append("_");
-        ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        ((StringBuilder)localObject).append(this.a.b.getCurrentAccountUin());
         i = paramMessage.getInt(((StringBuilder)localObject).toString(), -10000);
         paramMessage = this.a;
-        localObject = paramMessage.jdField_a_of_type_AndroidContentSharedPreferences;
+        localObject = paramMessage.v;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("setting_status_");
-        localStringBuilder.append(this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.uin);
+        localStringBuilder.append(this.a.f.uin);
         localStringBuilder.append("_");
-        localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        paramMessage.jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), -1);
+        localStringBuilder.append(this.a.b.getCurrentAccountUin());
+        paramMessage.j = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), -1);
       }
-      if ((i == 0) && (this.a.jdField_a_of_type_Int > -1))
+      if ((i == 0) && (this.a.j > -1))
       {
         paramMessage = this.a;
-        AccountDetailGroupListContainer.b(paramMessage, paramMessage.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_AndroidViewView.setOnClickListener(new AccountDetailGroupListContainer.27.1(this));
+        AccountDetailGroupListContainer.b(paramMessage, paramMessage.j);
+        this.a.c.setOnClickListener(new AccountDetailGroupListContainer.27.1(this));
       }
     }
     return true;
@@ -58,7 +58,7 @@ class AccountDetailGroupListContainer$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.27
  * JD-Core Version:    0.7.0.1
  */

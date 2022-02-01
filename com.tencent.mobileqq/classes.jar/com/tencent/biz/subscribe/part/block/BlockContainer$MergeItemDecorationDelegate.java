@@ -16,8 +16,8 @@ public class BlockContainer$MergeItemDecorationDelegate
   {
     super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
     int i = paramRecyclerView.getChildLayoutPosition(paramView);
-    if ((this.a.a != null) && (this.a.a.a(i) != null)) {
-      this.a.a.a(i).a(paramRect, paramView, paramRecyclerView, paramState);
+    if ((this.a.b != null) && (this.a.b.a(i) != null)) {
+      this.a.b.a(i).a(paramRect, paramView, paramRecyclerView, paramState);
     }
   }
   
@@ -28,10 +28,10 @@ public class BlockContainer$MergeItemDecorationDelegate
     int i = 0;
     while (i < j)
     {
-      if ((this.a.a != null) && (this.a.a.a(i) != null))
+      if ((this.a.b != null) && (this.a.b.a(i) != null))
       {
         View localView = paramRecyclerView.getChildAt(i);
-        this.a.a.a(i).a(paramCanvas, paramRecyclerView, localView, paramState);
+        this.a.b.a(i).a(paramCanvas, paramRecyclerView, localView, paramState);
       }
       i += 1;
     }

@@ -24,7 +24,7 @@ class ApkgManager$6
     Object localObject = this.val$listener;
     if (localObject != null)
     {
-      ((ApkgManager.OnGetApkgInfoListener)localObject).onGetApkgInfo(null, 4, HardCodeUtil.a(2131700512));
+      ((ApkgManager.OnGetApkgInfoListener)localObject).onGetApkgInfo(null, 4, HardCodeUtil.a(2131898543));
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onDownloadCanceled() called with: s = [");
       ((StringBuilder)localObject).append(paramString);
@@ -94,7 +94,7 @@ class ApkgManager$6
     Object localObject1 = this.val$listener;
     if (localObject1 != null)
     {
-      ((ApkgManager.OnGetApkgInfoListener)localObject1).onGetApkgInfo(null, 1, HardCodeUtil.a(2131700513));
+      ((ApkgManager.OnGetApkgInfoListener)localObject1).onGetApkgInfo(null, 1, HardCodeUtil.a(2131898544));
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onDownloadFailed() called with: s = [");
       ((StringBuilder)localObject1).append(paramString);
@@ -122,7 +122,7 @@ class ApkgManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager.6
  * JD-Core Version:    0.7.0.1
  */

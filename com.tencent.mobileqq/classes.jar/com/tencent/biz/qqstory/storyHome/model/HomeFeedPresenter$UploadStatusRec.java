@@ -43,7 +43,7 @@ public class HomeFeedPresenter$UploadStatusRec
           paramVideoListHomeFeed.a(i, paramStoryVideoItem2);
           SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "feed fake %s to suc:%s", new Object[] { ((StoryVideoItem)localObject2).mVid, paramStoryVideoItem2 });
           paramStoryVideoItem2 = (FeedVideoManager)SuperManager.a(12);
-          localObject1 = ((VideoListFeedItem)paramVideoListHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).getVideoInfo();
+          localObject1 = ((VideoListFeedItem)paramVideoListHomeFeed.f).getVideoInfo();
           ((FeedVideoInfo)localObject1).mVideoItemList.clear();
           ((FeedVideoInfo)localObject1).mVideoItemList.addAll(paramVideoListHomeFeed.a());
           paramStoryVideoItem2.a(0, ((FeedVideoInfo)localObject1).feedId, ((FeedVideoInfo)localObject1).mVideoSeq, ((FeedVideoInfo)localObject1).mVideoItemList, ((FeedVideoInfo)localObject1).mVideoNextCookie, ((FeedVideoInfo)localObject1).mIsVideoEnd, ((FeedVideoInfo)localObject1).mVideoPullType, true);
@@ -60,12 +60,12 @@ public class HomeFeedPresenter$UploadStatusRec
       paramVideoListHomeFeed.a(paramStoryVideoItem1, paramBoolean ^ true);
       SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "insert new video  %s", paramStoryVideoItem1);
       paramStoryVideoItem2 = (FeedVideoManager)SuperManager.a(12);
-      localObject1 = ((VideoListFeedItem)paramVideoListHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).getVideoInfo();
+      localObject1 = ((VideoListFeedItem)paramVideoListHomeFeed.f).getVideoInfo();
       ((FeedVideoInfo)localObject1).mVideoItemList.clear();
       ((FeedVideoInfo)localObject1).mVideoItemList.addAll(paramVideoListHomeFeed.a());
       if (!((FeedVideoInfo)localObject1).mIsVideoEnd)
       {
-        SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "mark feed %s is video pull finish", paramVideoListHomeFeed.a().feedId);
+        SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "mark feed %s is video pull finish", paramVideoListHomeFeed.i().feedId);
         ((FeedVideoInfo)localObject1).mIsVideoEnd = true;
         localObject2 = ((FeedVideoInfo)localObject1).mVideoItemList.iterator();
         while (((Iterator)localObject2).hasNext()) {
@@ -76,97 +76,97 @@ public class HomeFeedPresenter$UploadStatusRec
       }
       paramStoryVideoItem2.a(0, ((FeedVideoInfo)localObject1).feedId, ((FeedVideoInfo)localObject1).mVideoSeq, ((FeedVideoInfo)localObject1).mVideoItemList, ((FeedVideoInfo)localObject1).mVideoNextCookie, ((FeedVideoInfo)localObject1).mIsVideoEnd, ((FeedVideoInfo)localObject1).mVideoPullType, true);
       if (QLog.isDebugVersion()) {
-        SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "order before:%s", HomeFeedPresenter.a(paramHomeFeedPresenter));
+        SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "order before:%s", HomeFeedPresenter.b(paramHomeFeedPresenter));
       }
-      int j = paramHomeFeedPresenter.a().size();
+      int j = paramHomeFeedPresenter.i().size();
       i = 0;
       while (j > i)
       {
-        paramStoryVideoItem2 = (StoryHomeFeed)HomeFeedPresenter.a(paramHomeFeedPresenter).get(i);
-        if ((!(paramStoryVideoItem2 instanceof HotRecommendHomeFeed)) || (!((HotRecommendFeedItem)((HotRecommendHomeFeed)paramStoryVideoItem2).a()).mIsTopLocation)) {
+        paramStoryVideoItem2 = (StoryHomeFeed)HomeFeedPresenter.b(paramHomeFeedPresenter).get(i);
+        if ((!(paramStoryVideoItem2 instanceof HotRecommendHomeFeed)) || (!((HotRecommendFeedItem)((HotRecommendHomeFeed)paramStoryVideoItem2).i()).mIsTopLocation)) {
           break;
         }
         i += 1;
       }
-      HomeFeedPresenter.a(paramHomeFeedPresenter).remove(paramVideoListHomeFeed);
-      HomeFeedPresenter.a(paramHomeFeedPresenter).add(i, paramVideoListHomeFeed);
+      HomeFeedPresenter.b(paramHomeFeedPresenter).remove(paramVideoListHomeFeed);
+      HomeFeedPresenter.b(paramHomeFeedPresenter).add(i, paramVideoListHomeFeed);
       if (QLog.isDebugVersion()) {
-        SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "order after:%s", HomeFeedPresenter.a(paramHomeFeedPresenter));
+        SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "order after:%s", HomeFeedPresenter.b(paramHomeFeedPresenter));
       }
       if ((paramStoryVideoItem1.mTagInfoBase != null) && ((paramVideoListHomeFeed instanceof GeneralHomeFeed)))
       {
-        paramStoryVideoItem2 = paramVideoListHomeFeed.d;
+        paramStoryVideoItem2 = paramVideoListHomeFeed.j;
         paramStoryVideoItem2.remove(paramStoryVideoItem1.mTagInfoBase);
         if (paramStoryVideoItem2.size() > 0) {
           paramStoryVideoItem2.add(0, paramStoryVideoItem1.mTagInfoBase);
         } else {
           paramStoryVideoItem2.add(paramStoryVideoItem1.mTagInfoBase);
         }
-        SLog.d(this.TAG, "update tag list while publish , feedId :%s", new Object[] { paramVideoListHomeFeed.a().feedId });
+        SLog.d(this.TAG, "update tag list while publish , feedId :%s", new Object[] { paramVideoListHomeFeed.i().feedId });
       }
     }
-    HomeFeedPresenter.a(paramHomeFeedPresenter).a(paramVideoListHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId);
+    HomeFeedPresenter.c(paramHomeFeedPresenter).a(paramVideoListHomeFeed.f.feedId);
   }
   
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    if (paramStoryVideoPublishStatusEvent.a())
+    if (paramStoryVideoPublishStatusEvent.b())
     {
       SLog.b(this.TAG, "group video upload");
       return;
     }
-    if (paramStoryVideoPublishStatusEvent.jdField_a_of_type_JavaUtilArrayList != null)
+    if (paramStoryVideoPublishStatusEvent.f != null)
     {
-      Iterator localIterator = paramStoryVideoPublishStatusEvent.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = paramStoryVideoPublishStatusEvent.f.iterator();
       while (localIterator.hasNext())
       {
         Object localObject3 = (StoryVideoUploadManager.ShareGroupFakeItem)localIterator.next();
-        if (!(((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem instanceof ShareGroupFeedItem))
+        if (!(((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).a instanceof ShareGroupFeedItem))
         {
           AssertUtils.fail("fake item type error", new Object[0]);
         }
         else
         {
-          localObject1 = (ShareGroupItem)((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.getOwner();
+          localObject1 = (ShareGroupItem)((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).a.getOwner();
           if (HomeFeedPresenter.a(paramHomeFeedPresenter, ((ShareGroupItem)localObject1).shareGroupId))
           {
-            localObject2 = HomeFeedPresenter.a(paramHomeFeedPresenter, HomeFeedPresenter.a(paramHomeFeedPresenter), ((ShareGroupItem)localObject1).shareGroupId, ((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.date);
+            localObject2 = HomeFeedPresenter.a(paramHomeFeedPresenter, HomeFeedPresenter.b(paramHomeFeedPresenter), ((ShareGroupItem)localObject1).shareGroupId, ((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).a.date);
             localObject1 = localObject2;
             if (localObject2 == null)
             {
               localObject1 = localObject2;
-              if ((((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem instanceof ShareGroupFeedItem))
+              if ((((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).a instanceof ShareGroupFeedItem))
               {
-                localObject1 = new ShareGroupHomeFeed((ShareGroupFeedItem)((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
-                HomeFeedPresenter.a(paramHomeFeedPresenter).add(0, localObject1);
+                localObject1 = new ShareGroupHomeFeed((ShareGroupFeedItem)((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).a);
+                HomeFeedPresenter.b(paramHomeFeedPresenter).add(0, localObject1);
               }
               SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "create and add fake home feed %s", new Object[] { localObject1 });
             }
-            if ((((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem != null) && ((localObject1 instanceof ShareGroupHomeFeed))) {
-              ((VideoListHomeFeed)localObject1).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = ((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem;
+            if ((((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).b != null) && ((localObject1 instanceof ShareGroupHomeFeed))) {
+              ((VideoListHomeFeed)localObject1).f = ((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).b;
             }
-            localObject2 = ((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).jdField_a_of_type_JavaUtilArrayList.iterator();
+            localObject2 = ((StoryVideoUploadManager.ShareGroupFakeItem)localObject3).c.iterator();
             while (((Iterator)localObject2).hasNext())
             {
               localObject3 = (StoryVideoUploadManager.OneVideoInfo)((Iterator)localObject2).next();
-              a(paramHomeFeedPresenter, (VideoListHomeFeed)localObject1, paramStoryVideoPublishStatusEvent.jdField_a_of_type_Boolean, ((StoryVideoUploadManager.OneVideoInfo)localObject3).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, ((StoryVideoUploadManager.OneVideoInfo)localObject3).jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+              a(paramHomeFeedPresenter, (VideoListHomeFeed)localObject1, paramStoryVideoPublishStatusEvent.a, ((StoryVideoUploadManager.OneVideoInfo)localObject3).a, ((StoryVideoUploadManager.OneVideoInfo)localObject3).b);
             }
           }
         }
       }
     }
-    if (!paramStoryVideoPublishStatusEvent.jdField_b_of_type_Boolean) {
+    if (!paramStoryVideoPublishStatusEvent.b) {
       return;
     }
-    if (!HomeFeedPresenter.a(paramHomeFeedPresenter)) {
+    if (!HomeFeedPresenter.e(paramHomeFeedPresenter)) {
       return;
     }
-    if (paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem == null)
+    if (paramStoryVideoPublishStatusEvent.e == null)
     {
       SLog.d(this.TAG, "null pointer for feed item");
       return;
     }
-    if (paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.getOwner() == null)
+    if (paramStoryVideoPublishStatusEvent.e.getOwner() == null)
     {
       SLog.d(this.TAG, "null pointer for feed item user");
       return;
@@ -174,32 +174,32 @@ public class HomeFeedPresenter$UploadStatusRec
     SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramStoryVideoPublishStatusEvent);
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("home task state write temp:");
-    ((StringBuilder)localObject1).append(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.hashCode());
+    ((StringBuilder)localObject1).append(paramStoryVideoPublishStatusEvent.c.hashCode());
     SLog.b("Q.qqstory.home.data.HomeFeedPresenter", ((StringBuilder)localObject1).toString());
-    Object localObject2 = HomeFeedPresenter.a(paramHomeFeedPresenter, HomeFeedPresenter.a(paramHomeFeedPresenter), paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.date);
+    Object localObject2 = HomeFeedPresenter.a(paramHomeFeedPresenter, HomeFeedPresenter.b(paramHomeFeedPresenter), paramStoryVideoPublishStatusEvent.e.date);
     localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = new GeneralHomeFeed(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem);
-      int j = HomeFeedPresenter.a(paramHomeFeedPresenter).size();
+      localObject1 = new GeneralHomeFeed(paramStoryVideoPublishStatusEvent.e);
+      int j = HomeFeedPresenter.b(paramHomeFeedPresenter).size();
       int i = 0;
       while (j > i)
       {
-        localObject2 = (StoryHomeFeed)HomeFeedPresenter.a(paramHomeFeedPresenter).get(i);
-        if ((!(localObject2 instanceof HotRecommendHomeFeed)) || (!((HotRecommendFeedItem)((HotRecommendHomeFeed)localObject2).a()).mIsTopLocation)) {
+        localObject2 = (StoryHomeFeed)HomeFeedPresenter.b(paramHomeFeedPresenter).get(i);
+        if ((!(localObject2 instanceof HotRecommendHomeFeed)) || (!((HotRecommendFeedItem)((HotRecommendHomeFeed)localObject2).i()).mIsTopLocation)) {
           break;
         }
         i += 1;
       }
-      HomeFeedPresenter.a(paramHomeFeedPresenter).add(i, localObject1);
+      HomeFeedPresenter.b(paramHomeFeedPresenter).add(i, localObject1);
       SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "create and add fake home feed %s", new Object[] { localObject1 });
     }
-    if (paramStoryVideoPublishStatusEvent.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
+    if (paramStoryVideoPublishStatusEvent.d != null)
     {
-      ((GeneralHomeFeed)localObject1).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem;
-      ((GeneralHomeFeed)localObject1).jdField_a_of_type_Boolean = false;
+      ((GeneralHomeFeed)localObject1).f = paramStoryVideoPublishStatusEvent.e;
+      ((GeneralHomeFeed)localObject1).e = false;
     }
-    a(paramHomeFeedPresenter, (VideoListHomeFeed)localObject1, paramStoryVideoPublishStatusEvent.jdField_a_of_type_Boolean, paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramStoryVideoPublishStatusEvent.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    a(paramHomeFeedPresenter, (VideoListHomeFeed)localObject1, paramStoryVideoPublishStatusEvent.a, paramStoryVideoPublishStatusEvent.c, paramStoryVideoPublishStatusEvent.d);
   }
   
   public Class acceptEventClass()

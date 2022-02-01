@@ -3,6 +3,7 @@ package com.tencent.mobileqq.activity.photo.albumlogicImp;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qzonehub.api.panorama.IPanoramaUtil;
+import cooperation.qzone.util.QZLog;
 import cooperation.qzone.util.XMPCoreUtil.XMPCoreJarLoadListener;
 
 class PhotoListCustomizationQzone$3
@@ -12,24 +13,27 @@ class PhotoListCustomizationQzone$3
   
   public void loadState(boolean paramBoolean)
   {
+    QZLog.i("QQAlbum", "loadPanoramaPhoto loadXMPCoreModuleSuccess");
     if (paramBoolean)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation == 90) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight))
+      if ((this.a.rotation == 90) && (this.a.mediaWidth < this.a.mediaHeight))
       {
-        int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
-        LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+        int i = this.a.mediaHeight;
+        LocalMediaInfo localLocalMediaInfo = this.a;
         localLocalMediaInfo.mediaHeight = localLocalMediaInfo.mediaWidth;
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = i;
-        ((IPanoramaUtil)QRoute.api(IPanoramaUtil.class)).setPanoramaType(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+        this.a.mediaWidth = i;
+        QZLog.i("QQAlbum", "loadPanoramaPhoto LocalTake");
+        ((IPanoramaUtil)QRoute.api(IPanoramaUtil.class)).setPanoramaType(this.a);
         return;
       }
-      ((IPanoramaUtil)QRoute.api(IPanoramaUtil.class)).setPanoramaType(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+      QZLog.i("QQAlbum", "loadPanoramaPhoto NotLocalTake");
+      ((IPanoramaUtil)QRoute.api(IPanoramaUtil.class)).setPanoramaType(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationQzone.3
  * JD-Core Version:    0.7.0.1
  */

@@ -7,13 +7,13 @@ class Automator$4$1
   
   public void run()
   {
-    this.a.a.c();
-    Automator.a(this.a.this$0);
+    this.a.a.f();
+    Automator.c(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.automator.Automator.4.1
  * JD-Core Version:    0.7.0.1
  */

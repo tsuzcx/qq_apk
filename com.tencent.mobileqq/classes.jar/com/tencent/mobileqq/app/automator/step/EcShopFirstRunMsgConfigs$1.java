@@ -22,21 +22,21 @@ class EcShopFirstRunMsgConfigs$1
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    if ((paramDownloadTask.a == 0) && (this.a.mAutomator.a != null))
+    if ((paramDownloadTask.c == 0) && (this.a.mAutomator.k != null))
     {
-      String str = paramDownloadTask.a().getString("path");
-      if ((this.a.mAutomator.a != null) && (!TextUtils.isEmpty(str))) {
-        if (EcShopAssistantManager.e.equals(str))
+      String str = paramDownloadTask.b().getString("path");
+      if ((this.a.mAutomator.k != null) && (!TextUtils.isEmpty(str))) {
+        if (EcShopAssistantManager.m.equals(str))
         {
-          this.a.mAutomator.a.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_report_json", paramDownloadTask.i).commit();
-          ((EcshopReportHandler)this.a.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER)).a();
+          this.a.mAutomator.k.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_report_json", paramDownloadTask.I).commit();
+          ((EcshopReportHandler)this.a.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER)).a();
           if (QLog.isColorLevel()) {
             QLog.i("Ecshop", 2, "download report json success.");
           }
         }
-        else if (EcShopAssistantManager.f.equals(str))
+        else if (EcShopAssistantManager.n.equals(str))
         {
-          this.a.mAutomator.a.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_behaviors_json", paramDownloadTask.i).commit();
+          this.a.mAutomator.k.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_behaviors_json", paramDownloadTask.I).commit();
           if (QLog.isColorLevel()) {
             QLog.i("Ecshop", 2, "download behaviors json success.");
           }
@@ -51,7 +51,7 @@ class EcShopFirstRunMsgConfigs$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.EcShopFirstRunMsgConfigs.1
  * JD-Core Version:    0.7.0.1
  */

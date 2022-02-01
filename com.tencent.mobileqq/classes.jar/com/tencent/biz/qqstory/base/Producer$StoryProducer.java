@@ -7,23 +7,23 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Producer$StoryProducer<T>
   implements Producer.IProducer<T>
 {
-  private final Producer.IConsumer<T> jdField_a_of_type_ComTencentBizQqstoryBaseProducer$IConsumer;
-  private List<T> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private final Producer.IConsumer<T> a;
+  private List<T> b = new ArrayList();
+  private AtomicBoolean c = new AtomicBoolean(false);
   
   public Producer$StoryProducer(Producer.IConsumer<T> paramIConsumer)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseProducer$IConsumer = paramIConsumer;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseProducer$IConsumer.a(this);
+    this.a = paramIConsumer;
+    this.a.a(this);
   }
   
   public T a()
   {
     try
     {
-      if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
+      if ((!this.c.get()) && (this.b.size() != 0))
       {
-        Object localObject1 = this.jdField_a_of_type_JavaUtilList.remove(0);
+        Object localObject1 = this.b.remove(0);
         return localObject1;
       }
       return null;
@@ -31,12 +31,23 @@ public class Producer$StoryProducer<T>
     finally {}
   }
   
-  public void a()
+  public void a(List<T> paramList)
+  {
+    if (paramList != null) {}
+    try
+    {
+      this.b.addAll(paramList);
+      this.a.a();
+    }
+    finally {}
+  }
+  
+  public void b()
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseProducer$IConsumer.c();
+      this.c.set(true);
+      this.a.c();
       return;
     }
     finally
@@ -45,21 +56,10 @@ public class Producer$StoryProducer<T>
       throw localObject;
     }
   }
-  
-  public void a(List<T> paramList)
-  {
-    if (paramList != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseProducer$IConsumer.a();
-    }
-    finally {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.Producer.StoryProducer
  * JD-Core Version:    0.7.0.1
  */

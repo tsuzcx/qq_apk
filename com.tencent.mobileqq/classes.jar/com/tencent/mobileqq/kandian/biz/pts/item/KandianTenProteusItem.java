@@ -94,8 +94,8 @@ public class KandianTenProteusItem
     try
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(a(paramIReadInJoyModel.a().weishiUGInfo.bytes_report_base_url));
-      localStringBuilder.append(a(paramIReadInJoyModel.a().weishiUGInfo.bytes_exposure_report_tail));
+      localStringBuilder.append(a(paramIReadInJoyModel.k().weishiUGInfo.bytes_report_base_url));
+      localStringBuilder.append(a(paramIReadInJoyModel.k().weishiUGInfo.bytes_exposure_report_tail));
       KandianUGStatisticUtils.a(localStringBuilder.toString());
       label90:
       paramViewBase.setOnClickListener(new KandianTenProteusItem.1(this, paramIReadInJoyModel, paramContainer));
@@ -110,7 +110,7 @@ public class KandianTenProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.KandianTenProteusItem
  * JD-Core Version:    0.7.0.1
  */

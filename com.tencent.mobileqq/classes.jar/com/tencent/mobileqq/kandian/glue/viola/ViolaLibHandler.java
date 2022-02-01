@@ -9,12 +9,11 @@ import com.tencent.mobileqq.earlydownload.api.IEarlyDownloadService;
 import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
 import com.tencent.mobileqq.earlydownload.xmldata.ViolaLibData;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.kandian.biz.detail.web.api.IReadInJoyWebRenderEngine;
-import com.tencent.mobileqq.kandian.biz.viola.api.IReadInJoyWebRenderSoLoader;
 import com.tencent.mobileqq.kandian.biz.viola.constants.IViolaLibHandlerConst;
+import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyWebRenderEngine;
+import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInjoyWebRenderSoLoader;
 import com.tencent.mobileqq.kandian.glue.viola.so.ViolaSoLoaderManager;
 import com.tencent.mobileqq.kandian.glue.viola.so.ViolaSoLoaderManager.Companion;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -27,33 +26,9 @@ public class ViolaLibHandler
     super("android.qq.readinjoy.viola_795", paramQQAppInterface);
   }
   
-  public static void f()
+  public static boolean w()
   {
-    if (i()) {
-      return;
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (IEarlyDownloadService)((QQAppInterface)localObject).getRuntimeService(IEarlyDownloadService.class, "");
-      if (localObject != null)
-      {
-        localObject = (ViolaLibHandler)((IEarlyDownloadService)localObject).getEarlyHandler("android.qq.readinjoy.viola_795");
-        if (localObject != null)
-        {
-          ((ViolaLibHandler)localObject).a(true);
-          QLog.i("viola.ViolaLibHandler", 1, "restartDownloadLib");
-        }
-      }
-    }
-    if (!ViolaBizLibHandler.i()) {
-      ViolaBizLibHandler.f();
-    }
-  }
-  
-  public static boolean i()
-  {
-    String str = ((IReadInJoyWebRenderSoLoader)QRoute.api(IReadInJoyWebRenderSoLoader.class)).getSoLibPath();
+    String str = ReadInjoyWebRenderSoLoader.a();
     int i = 0;
     while (i < IViolaLibHandlerConst.a.length)
     {
@@ -73,19 +48,33 @@ public class ViolaLibHandler
     return true;
   }
   
-  public int a()
+  public static void x()
   {
-    return 10071;
+    if (w()) {
+      return;
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (IEarlyDownloadService)((QQAppInterface)localObject).getRuntimeService(IEarlyDownloadService.class, "");
+      if (localObject != null)
+      {
+        localObject = (ViolaLibHandler)((IEarlyDownloadService)localObject).getEarlyHandler("android.qq.readinjoy.viola_795");
+        if (localObject != null)
+        {
+          ((ViolaLibHandler)localObject).a(true);
+          QLog.i("viola.ViolaLibHandler", 1, "restartDownloadLib");
+        }
+      }
+    }
+    if (!ViolaBizLibHandler.x()) {
+      ViolaBizLibHandler.w();
+    }
   }
   
   public Class<? extends XmlData> a()
   {
     return ViolaLibData.class;
-  }
-  
-  public String a()
-  {
-    return "viola.ViolaLibHandler";
   }
   
   public void a(String paramString)
@@ -94,7 +83,7 @@ public class ViolaLibHandler
     ((StringBuilder)localObject).append("[doOnDownloadSuccess]:");
     ((StringBuilder)localObject).append(paramString);
     QLog.i("viola.ViolaLibHandler", 1, ((StringBuilder)localObject).toString());
-    localObject = a();
+    localObject = h();
     if (localObject != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -104,7 +93,7 @@ public class ViolaLibHandler
     }
     if (new File(paramString).exists())
     {
-      if (!((IReadInJoyWebRenderSoLoader)QRoute.api(IReadInJoyWebRenderSoLoader.class)).unzip(paramString))
+      if (!ReadInjoyWebRenderSoLoader.a(paramString))
       {
         if (localObject != null)
         {
@@ -119,25 +108,35 @@ public class ViolaLibHandler
       if (paramString != null) {
         paramString.edit().putString("res_name", "android.qq.readinjoy.viola_795").commit();
       }
-      if ((ViolaBizLibHandler.i()) && (ViolaSoLoaderManager.a.a().b())) {
-        ((IReadInJoyWebRenderEngine)QRoute.api(IReadInJoyWebRenderEngine.class)).loadLibrary("jsc doOnDownloadSuccess");
+      if ((ViolaBizLibHandler.x()) && (ViolaSoLoaderManager.a.a().e())) {
+        ReadInJoyWebRenderEngine.a("jsc doOnDownloadSuccess");
       }
     }
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public String b()
   {
+    return "viola.ViolaLibHandler";
+  }
+  
+  public int c()
+  {
+    return 10071;
+  }
+  
+  public String d()
+  {
     return null;
+  }
+  
+  public boolean e()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.ViolaLibHandler
  * JD-Core Version:    0.7.0.1
  */

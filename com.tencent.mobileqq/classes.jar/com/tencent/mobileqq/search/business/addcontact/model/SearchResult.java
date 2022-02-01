@@ -8,20 +8,20 @@ import java.util.List;
 public class SearchResult
 {
   public int a;
-  public AccountSearchPb.hotwordrecord a;
-  public String a;
-  public List<String> a;
-  public boolean a;
   public int b;
-  public List<AccountSearchPb.record> b;
-  public boolean b;
-  public int c;
-  public List<AccountSearchPb.ResultItem> c;
   public boolean c;
+  public List<String> d;
+  public List<AccountSearchPb.record> e;
+  public AccountSearchPb.hotwordrecord f;
+  public String g;
+  public int h;
+  public List<AccountSearchPb.ResultItem> i;
+  public boolean j;
+  public boolean k;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.addcontact.model.SearchResult
  * JD-Core Version:    0.7.0.1
  */

@@ -22,33 +22,19 @@ import java.util.Map;
 
 public class ExtendFriendReport
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static ExtendFriendReport jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendReport;
-  private static StrangerInfo jdField_a_of_type_ComTencentMobileqqQqexpandBeanFeedStrangerInfo;
-  private static String jdField_a_of_type_JavaLangString;
-  private static int jdField_b_of_type_Int = -1;
-  private static String jdField_b_of_type_JavaLangString;
-  
-  public static int a()
-  {
-    return jdField_a_of_type_Int;
-  }
+  private static ExtendFriendReport a;
+  private static int b = -1;
+  private static int c = -1;
+  private static String d;
+  private static String e;
+  private static StrangerInfo f;
   
   public static ExtendFriendReport a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendReport == null) {
-      jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendReport = new ExtendFriendReport();
+    if (a == null) {
+      a = new ExtendFriendReport();
     }
-    return jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendReport;
-  }
-  
-  public static String a()
-  {
-    int i = jdField_b_of_type_Int;
-    if (i >= 0) {
-      return String.valueOf(i + 1);
-    }
-    return "";
+    return a;
   }
   
   public static String a(QQAppInterface paramQQAppInterface)
@@ -56,9 +42,9 @@ public class ExtendFriendReport
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = (IExpandManager)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
-      if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.a())))
+      if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.c())))
       {
-        paramQQAppInterface = paramQQAppInterface.a();
+        paramQQAppInterface = paramQQAppInterface.c();
         break label44;
       }
     }
@@ -84,8 +70,8 @@ public class ExtendFriendReport
       Object localObject2;
       if (localObject1 != null)
       {
-        localObject2 = String.valueOf(((StrangerInfo.SchoolInfo)localObject1).a);
-        localObject1 = ((StrangerInfo.SchoolInfo)localObject1).jdField_b_of_type_JavaLangString;
+        localObject2 = String.valueOf(((StrangerInfo.SchoolInfo)localObject1).b);
+        localObject1 = ((StrangerInfo.SchoolInfo)localObject1).c;
       }
       else
       {
@@ -106,13 +92,13 @@ public class ExtendFriendReport
             localLabelInfo = (StrangerInfo.LabelInfo)paramStrangerInfo.next();
             if (i != 0)
             {
-              ((StringBuilder)localObject3).append(localLabelInfo.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject3).append(localLabelInfo.b);
               i = 0;
             }
             else
             {
               ((StringBuilder)localObject3).append(",");
-              ((StringBuilder)localObject3).append(localLabelInfo.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject3).append(localLabelInfo.b);
             }
           }
           localObject3 = ((StringBuilder)localObject3).toString();
@@ -134,22 +120,13 @@ public class ExtendFriendReport
     return "";
   }
   
-  public static void a()
-  {
-    jdField_a_of_type_Int = -1;
-    jdField_b_of_type_Int = -1;
-    jdField_a_of_type_JavaLangString = null;
-    jdField_b_of_type_JavaLangString = null;
-    jdField_a_of_type_ComTencentMobileqqQqexpandBeanFeedStrangerInfo = null;
-  }
-  
   public static void a(int paramInt1, int paramInt2, String paramString1, String paramString2, StrangerInfo paramStrangerInfo)
   {
-    jdField_a_of_type_Int = paramInt1;
-    jdField_b_of_type_Int = paramInt2;
-    jdField_a_of_type_JavaLangString = paramString1;
-    jdField_b_of_type_JavaLangString = paramString2;
-    jdField_a_of_type_ComTencentMobileqqQqexpandBeanFeedStrangerInfo = paramStrangerInfo;
+    b = paramInt1;
+    c = paramInt2;
+    d = paramString1;
+    e = paramString2;
+    f = paramStrangerInfo;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -171,18 +148,41 @@ public class ExtendFriendReport
     ThreadManager.post(new ExtendFriendReport.1(this, paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3), 5, null, false);
   }
   
-  public static String b()
+  public static void b()
   {
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      return jdField_a_of_type_JavaLangString;
+    b = -1;
+    c = -1;
+    d = null;
+    e = null;
+    f = null;
+  }
+  
+  public static int c()
+  {
+    return b;
+  }
+  
+  public static String d()
+  {
+    int i = c;
+    if (i >= 0) {
+      return String.valueOf(i + 1);
     }
     return "";
   }
   
-  public static String c()
+  public static String e()
   {
-    if (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) {
-      return jdField_b_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(d)) {
+      return d;
+    }
+    return "";
+  }
+  
+  public static String f()
+  {
+    if (!TextUtils.isEmpty(e)) {
+      return e;
     }
     return "";
   }
@@ -209,14 +209,6 @@ public class ExtendFriendReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
     a("", "extend_friend_pre_download", paramBoolean, 0L, 0L, localHashMap, "");
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendReport", 0, "reportEntry");
-    }
-    a("", "extend_friend_entry", true, 0L, 0L, new HashMap(), "");
   }
   
   public void b(int paramInt)
@@ -271,10 +263,18 @@ public class ExtendFriendReport
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
     a("", "extend_friend_voice_upload_req", paramBoolean, 0L, 0L, localHashMap, "");
   }
+  
+  public void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendReport", 0, "reportEntry");
+    }
+    a("", "extend_friend_entry", true, 0L, 0L, new HashMap(), "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.utils.ExtendFriendReport
  * JD-Core Version:    0.7.0.1
  */

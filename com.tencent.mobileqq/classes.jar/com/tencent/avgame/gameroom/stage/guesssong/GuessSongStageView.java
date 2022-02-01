@@ -29,8 +29,8 @@ import com.tencent.qphone.base.util.QLog;
 public class GuessSongStageView
   extends BaseGuessSongStageView
 {
-  private ImageView c;
-  private ImageView d;
+  private ImageView x;
+  private ImageView y;
   
   public GuessSongStageView(Context paramContext)
   {
@@ -49,83 +49,83 @@ public class GuessSongStageView
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null)
+    if (this.p == null)
     {
       AVGameLottieHelper.a(getContext(), "avgame_guess_song_playing/data.json", "avgame_guess_song_playing/images/", paramInt1, paramInt2, new GuessSongStageView.1(this));
       return;
     }
-    d();
+    e();
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (!paramBoolean2)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.f.setVisibility(4);
+      this.g.setVisibility(8);
       setBackgroundDrawable(null);
-      if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isRunning())) {
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.stop();
+      if ((this.p != null) && (this.p.isRunning())) {
+        this.p.stop();
       }
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+      this.p = null;
+      this.o.setVisibility(4);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.jdField_b_of_type_AndroidWidgetImageView.getVisibility() != 0)
+    this.f.setVisibility(0);
+    this.g.setVisibility(8);
+    if (this.o.getVisibility() != 0)
     {
-      String str = this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a().a().b();
+      String str = this.c.a().a().s();
       if (!TextUtils.isEmpty(str)) {
         setBackgroundDrawable(URLDrawable.getDrawable(str));
       } else {
         setBackgroundDrawable(AvGameResDownloadUtil.a("avgame_float_act_guess_place_holder@2x.png"));
       }
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      if (this.jdField_a_of_type_Boolean)
+      this.o.setVisibility(0);
+      if (this.q)
       {
         a(140, 140);
         return;
       }
-      c();
+      d();
     }
   }
   
-  protected void b()
+  protected void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131558672, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379929));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379927));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370328);
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379550));
-    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379551));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370232);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365268));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366776));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131367771);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, UiUtils.b());
-    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = UiUtils.a();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = new GuessSongStagePresenter(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377702));
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377703));
-    super.b();
+    LayoutInflater.from(getContext()).inflate(2131624289, this, true);
+    this.d = ((TextView)findViewById(2131448813));
+    this.e = ((TextView)findViewById(2131448811));
+    this.g = findViewById(2131437582);
+    this.h = ((AVGameText)findViewById(2131448302));
+    this.i = ((AVGameText)findViewById(2131448303));
+    this.j = findViewById(2131437420);
+    this.f = ((ImageView)findViewById(2131431441));
+    this.y = ((ImageView)findViewById(2131433098));
+    this.k = findViewById(2131434340);
+    this.k.setVisibility(8);
+    this.d.setTextSize(0, UiUtils.b());
+    this.g.getLayoutParams().width = UiUtils.a();
+    this.c = new GuessSongStagePresenter(this);
+    this.f.setVisibility(4);
+    this.g.setVisibility(4);
+    this.o = ((ImageView)findViewById(2131446158));
+    this.o.setVisibility(4);
+    this.x = ((ImageView)findViewById(2131446159));
+    super.c();
   }
   
-  protected void e()
+  protected void f()
   {
-    Object localObject = GameEngine.a().a();
-    if (!((EngineData)localObject).g())
+    Object localObject = GameEngine.a().s();
+    if (!((EngineData)localObject).N())
     {
-      super.e();
+      super.f();
       return;
     }
-    localObject = ((EngineData)localObject).a();
-    if ((localObject != null) && (!TextUtils.isEmpty(((GameItem)localObject).o))) {
-      localObject = ((GameItem)localObject).o;
+    localObject = ((EngineData)localObject).f();
+    if ((localObject != null) && (!TextUtils.isEmpty(((GameItem)localObject).u))) {
+      localObject = ((GameItem)localObject).u;
     } else {
       localObject = null;
     }
@@ -138,48 +138,48 @@ public class GuessSongStageView
     }
     if (localObject == null)
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      this.x.setImageDrawable(null);
       return;
     }
     localObject = URLDrawable.getDrawable((String)localObject);
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    this.x.setImageDrawable((Drawable)localObject);
   }
   
   public void setFontStyle(FontStyleConfig paramFontStyleConfig)
   {
     super.setFontStyle(paramFontStyleConfig);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramFontStyleConfig.e));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramFontStyleConfig.f));
+    this.d.setTextColor(Color.parseColor(paramFontStyleConfig.i));
+    this.e.setTextColor(Color.parseColor(paramFontStyleConfig.j));
   }
   
   public void setSpecialMode(boolean paramBoolean)
   {
     super.setSpecialMode(paramBoolean);
-    if (this.jdField_d_of_type_AndroidViewView == null) {
+    if (this.m == null) {
       return;
     }
-    View localView = findViewById(2131377701);
-    if (this.jdField_a_of_type_Boolean)
+    View localView = findViewById(2131446157);
+    if (this.q)
     {
-      this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      int i = ViewUtils.a(140.0F);
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+      this.m.setVisibility(0);
+      int i = ViewUtils.dip2px(140.0F);
+      ViewGroup.LayoutParams localLayoutParams = this.o.getLayoutParams();
       localLayoutParams.height = i;
       localLayoutParams.width = i;
-      localLayoutParams = this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams = this.x.getLayoutParams();
       localLayoutParams.width = i;
       localLayoutParams.height = i;
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      localView.setPadding(0, ViewUtils.a(40.0F), 0, 0);
-      this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView = this.jdField_d_of_type_AndroidWidgetImageView;
+      this.x.setVisibility(0);
+      localView.setPadding(0, ViewUtils.dip2px(40.0F), 0, 0);
+      this.y.setVisibility(0);
+      this.f.setVisibility(8);
+      this.f = this.y;
       return;
     }
     localView.setPadding(0, 0, 0, 0);
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.m.setVisibility(8);
+    this.f.setVisibility(0);
+    this.y.setVisibility(8);
   }
 }
 

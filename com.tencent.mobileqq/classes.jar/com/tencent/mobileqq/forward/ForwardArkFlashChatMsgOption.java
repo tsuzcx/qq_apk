@@ -19,73 +19,73 @@ public class ForwardArkFlashChatMsgOption
     super(paramIntent);
   }
   
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_prompt");
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_desc");
-      }
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   protected boolean a(String paramString1, int paramInt, String paramString2)
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = paramInt;
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString1;
-    localSessionInfo.b = paramString2;
-    paramString1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_flashchat_rawcontent");
+    localSessionInfo.a = paramInt;
+    localSessionInfo.b = paramString1;
+    localSessionInfo.c = paramString2;
+    paramString1 = this.t.getString("forward_flashchat_rawcontent");
     if (TextUtils.isEmpty(paramString1)) {
       return false;
     }
     paramString2 = new ArkFlashChatMessage();
     paramString2.fromAppXml(paramString1);
-    paramInt = this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_MSG_FORWARD_ID");
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString2, paramInt);
+    paramInt = this.t.getInt("KEY_MSG_FORWARD_ID");
+    ChatActivityFacade.a(this.q, localSessionInfo, paramString2, paramInt);
     return true;
   }
   
-  protected void b()
+  protected void c()
   {
-    if (p()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
+    if (ag()) {
+      this.C.add(e);
     }
-    if (q()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
+    if (ah()) {
+      this.C.add(d);
     }
-    if (r()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
+    if (ai()) {
+      this.C.add(c);
     }
   }
   
-  protected boolean c()
+  protected boolean f()
   {
-    if (j())
+    if (K())
     {
-      Iterator localIterator = b().iterator();
+      Iterator localIterator = M().iterator();
       while (localIterator.hasNext())
       {
         ResultRecord localResultRecord = (ResultRecord)localIterator.next();
         a(localResultRecord.uin, localResultRecord.getUinType(), localResultRecord.groupUin);
       }
-      return super.c();
+      return super.f();
     }
-    k_();
-    return super.c();
+    o();
+    return super.f();
   }
   
-  protected boolean k_()
+  public String n()
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-    return a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), i, this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin"));
+    if (TextUtils.isEmpty(this.u))
+    {
+      this.u = this.t.getString("forward_ark_app_prompt");
+      if (TextUtils.isEmpty(this.u)) {
+        this.u = this.t.getString("forward_ark_app_desc");
+      }
+    }
+    return this.u;
+  }
+  
+  protected boolean o()
+  {
+    int i = this.t.getInt("uintype");
+    return a(this.t.getString("uin"), i, this.t.getString("troop_uin"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardArkFlashChatMsgOption
  * JD-Core Version:    0.7.0.1
  */

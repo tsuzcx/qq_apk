@@ -13,10 +13,10 @@ import java.net.UnknownHostException;
 public class TraceThread
   extends Thread
 {
-  private int jdField_a_of_type_Int;
-  private TraceConstants.TraceMethod jdField_a_of_type_ComTencentMobileqqUtilsTracerouteTraceConstants$TraceMethod;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Handler> a;
+  private String b;
+  private int c;
+  private TraceConstants.TraceMethod d;
   
   private String a(String paramString)
   {
@@ -24,19 +24,19 @@ public class TraceThread
     localStringBuilder.append("ping ");
     localStringBuilder.append(paramString);
     localStringBuilder.append(" -c ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     return c(localStringBuilder.toString());
   }
   
   private void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    if (this.a == null) {
       return;
     }
     Message localMessage = new Message();
     localMessage.what = paramInt;
     localMessage.obj = paramString;
-    paramString = (Handler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramString = (Handler)this.a.get();
     if (paramString != null) {
       paramString.sendMessage(localMessage);
     }
@@ -106,13 +106,13 @@ public class TraceThread
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("trace-");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b);
       setName(((StringBuilder)localObject).toString());
-      localObject = InetAddress.getByName(this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsTracerouteTraceConstants$TraceMethod == TraceConstants.TraceMethod.UDP) {
+      localObject = InetAddress.getByName(this.b);
+      if (this.d == TraceConstants.TraceMethod.UDP) {
         localObject = b(((InetAddress)localObject).getHostAddress());
       } else {
-        localObject = a(this.jdField_a_of_type_JavaLangString);
+        localObject = a(this.b);
       }
       if (((String)localObject).length() > 0)
       {
@@ -142,7 +142,7 @@ public class TraceThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.traceroute.TraceThread
  * JD-Core Version:    0.7.0.1
  */

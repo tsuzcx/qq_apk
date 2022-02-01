@@ -12,14 +12,14 @@ class AbsProfileHeaderView$12
   
   public void onClick(View paramView)
   {
-    SigTopicManager.a().c(this.this$0.mApp);
+    SigTopicManager.a().f(this.this$0.mApp);
     this.val$topicView.setVisibility(8);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView.12
  * JD-Core Version:    0.7.0.1
  */

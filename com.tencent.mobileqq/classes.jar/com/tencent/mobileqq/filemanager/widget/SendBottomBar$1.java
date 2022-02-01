@@ -18,17 +18,17 @@ class SendBottomBar$1
     if (SendBottomBar.a(this.a) != null) {
       SendBottomBar.a(this.a).a();
     }
-    if (SendBottomBar.a(this.a)) {
-      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).previewFavImageFile(SendBottomBar.a(this.a));
+    if (SendBottomBar.b(this.a)) {
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).previewFavImageFile(SendBottomBar.c(this.a));
     } else {
-      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).previewImage(SendBottomBar.a(this.a), SendBottomBar.a(this.a), SendBottomBar.a(this.a).g());
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).previewImage(SendBottomBar.c(this.a), SendBottomBar.d(this.a), SendBottomBar.c(this.a).F());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.1
  * JD-Core Version:    0.7.0.1
  */

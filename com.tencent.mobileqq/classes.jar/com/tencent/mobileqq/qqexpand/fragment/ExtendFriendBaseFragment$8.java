@@ -14,45 +14,45 @@ class ExtendFriendBaseFragment$8
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131363927)
+    if (i != 2131429883)
     {
-      if (i != 2131363990) {
+      if (i != 2131429947) {
         return;
       }
-      if (!this.a.jdField_a_of_type_Boolean)
+      if (!this.a.y)
       {
-        ((IExpandFragmentRouter)QRoute.api(IExpandFragmentRouter.class)).launchExpandEditFragmentForResult(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, null, 1033);
+        ((IExpandFragmentRouter)QRoute.api(IExpandFragmentRouter.class)).launchExpandEditFragmentForResult(this.a.h, null, 1033);
       }
       else
       {
-        paramView = InterestSwitchEditActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+        paramView = InterestSwitchEditActivity.a(this.a.h);
         this.a.startActivityForResult(paramView, 2);
       }
-      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      if ((this.a.E != null) && (this.a.E.isShowing())) {
+        this.a.E.dismiss();
       }
-      if (!this.a.jdField_a_of_type_Boolean)
+      if (!this.a.y)
       {
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092EB", "0X80092EB", 0, 0, "", "", "", "");
+        ReportController.b(this.a.i, "dc00898", "", "", "0X80092EB", "0X80092EB", 0, 0, "", "", "", "");
         return;
       }
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092E8", "0X80092E8", 0, 0, "", "", "", "");
+      ReportController.b(this.a.i, "dc00898", "", "", "0X80092E8", "0X80092E8", 0, 0, "", "", "", "");
       return;
     }
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if ((this.a.E != null) && (this.a.E.isShowing())) {
+      this.a.E.dismiss();
     }
-    if (!this.a.jdField_a_of_type_Boolean)
+    if (!this.a.y)
     {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092EC", "0X80092EC", 0, 0, "", "", "", "");
+      ReportController.b(this.a.i, "dc00898", "", "", "0X80092EC", "0X80092EC", 0, 0, "", "", "", "");
       return;
     }
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092E9", "0X80092E9", 0, 0, "", "", "", "");
+    ReportController.b(this.a.i, "dc00898", "", "", "0X80092E9", "0X80092E9", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendBaseFragment.8
  * JD-Core Version:    0.7.0.1
  */

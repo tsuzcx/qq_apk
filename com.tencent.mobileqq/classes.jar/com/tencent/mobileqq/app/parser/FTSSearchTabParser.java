@@ -11,9 +11,9 @@ public class FTSSearchTabParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new FTSSearchTabAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "ftssearch";
-    paramBaseQQAppInterface.c = "tab";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "ftssearch";
+    paramBaseQQAppInterface.e = "tab";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -36,7 +36,7 @@ public class FTSSearchTabParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.FTSSearchTabParser
  * JD-Core Version:    0.7.0.1
  */

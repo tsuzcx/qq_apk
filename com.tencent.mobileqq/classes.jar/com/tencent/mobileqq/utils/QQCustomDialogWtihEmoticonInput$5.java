@@ -10,14 +10,14 @@ class QQCustomDialogWtihEmoticonInput$5
   
   public void onGlobalLayout()
   {
-    if (this.a.a != null) {
-      this.a.a.fullScroll(130);
+    if (this.a.y != null) {
+      this.a.y.fullScroll(130);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput.5
  * JD-Core Version:    0.7.0.1
  */

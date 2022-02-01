@@ -28,10 +28,10 @@ class LebaQzoneAndPluginPart$6
         QLog.d("LebaBusinessPartImpl", 2, "checkPreloadGameCenter, send message delay");
       }
       IWebProcessManagerService localIWebProcessManagerService = (IWebProcessManagerService)this.a.getRuntimeService(IWebProcessManagerService.class, "");
-      if ((localIWebProcessManagerService != null) && (localIWebProcessManagerService.isNeedPreloadWebProcess()) && (this.this$0.a != null))
+      if ((localIWebProcessManagerService != null) && (localIWebProcessManagerService.isNeedPreloadWebProcess()) && (this.this$0.B != null))
       {
-        this.this$0.a.removeMessages(1134010);
-        this.this$0.a.sendEmptyMessageDelayed(1134010, 100L);
+        this.this$0.B.removeMessages(1134010);
+        this.this$0.B.sendEmptyMessageDelayed(1134010, 100L);
         return;
       }
     }
@@ -43,7 +43,7 @@ class LebaQzoneAndPluginPart$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.6
  * JD-Core Version:    0.7.0.1
  */

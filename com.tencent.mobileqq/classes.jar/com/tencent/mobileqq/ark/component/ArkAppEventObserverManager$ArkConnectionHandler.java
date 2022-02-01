@@ -16,7 +16,7 @@ class ArkAppEventObserverManager$ArkConnectionHandler
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onNetMobile2None mLastNetType=");
-      localStringBuilder.append(ArkAppEventObserverManager.b(this.a));
+      localStringBuilder.append(ArkAppEventObserverManager.p(this.a));
       QLog.d("ArkAppEventObserverManager", 2, localStringBuilder.toString());
     }
     ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(ArkAppEventObserverManager.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.6(this));
@@ -28,7 +28,7 @@ class ArkAppEventObserverManager$ArkConnectionHandler
     {
       paramString = new StringBuilder();
       paramString.append("onNetMobile2Wifi mLastNetType=");
-      paramString.append(ArkAppEventObserverManager.b(this.a));
+      paramString.append(ArkAppEventObserverManager.p(this.a));
       QLog.d("ArkAppEventObserverManager", 2, paramString.toString());
     }
     ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(ArkAppEventObserverManager.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.5(this));
@@ -40,7 +40,7 @@ class ArkAppEventObserverManager$ArkConnectionHandler
     {
       paramString = new StringBuilder();
       paramString.append("onNetNone2Mobile mLastNetType=");
-      paramString.append(ArkAppEventObserverManager.b(this.a));
+      paramString.append(ArkAppEventObserverManager.p(this.a));
       QLog.d("ArkAppEventObserverManager", 2, paramString.toString());
     }
     ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(ArkAppEventObserverManager.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.4(this));
@@ -52,7 +52,7 @@ class ArkAppEventObserverManager$ArkConnectionHandler
     {
       paramString = new StringBuilder();
       paramString.append("onNetNone2Wifi mLastNetType=");
-      paramString.append(ArkAppEventObserverManager.b(this.a));
+      paramString.append(ArkAppEventObserverManager.p(this.a));
       QLog.d("ArkAppEventObserverManager", 2, paramString.toString());
     }
     ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(ArkAppEventObserverManager.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.3(this));
@@ -64,7 +64,7 @@ class ArkAppEventObserverManager$ArkConnectionHandler
     {
       paramString = new StringBuilder();
       paramString.append("onNetWifi2Mobile mLastNetType=");
-      paramString.append(ArkAppEventObserverManager.b(this.a));
+      paramString.append(ArkAppEventObserverManager.p(this.a));
       QLog.d("ArkAppEventObserverManager", 2, paramString.toString());
     }
     ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(ArkAppEventObserverManager.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.2(this));
@@ -76,7 +76,7 @@ class ArkAppEventObserverManager$ArkConnectionHandler
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onNetWifi2None mLastNetType=");
-      localStringBuilder.append(ArkAppEventObserverManager.b(this.a));
+      localStringBuilder.append(ArkAppEventObserverManager.p(this.a));
       QLog.d("ArkAppEventObserverManager", 2, localStringBuilder.toString());
     }
     ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(ArkAppEventObserverManager.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.1(this));
@@ -84,7 +84,7 @@ class ArkAppEventObserverManager$ArkConnectionHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.component.ArkAppEventObserverManager.ArkConnectionHandler
  * JD-Core Version:    0.7.0.1
  */

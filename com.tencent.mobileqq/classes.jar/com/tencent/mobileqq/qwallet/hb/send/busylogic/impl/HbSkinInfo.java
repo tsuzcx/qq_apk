@@ -8,54 +8,42 @@ import java.util.List;
 
 public class HbSkinInfo
 {
-  public static boolean a = false;
-  public static int c;
-  public int a;
-  public SkinInfo a;
-  public RedPacketInfoBase a;
-  public String a;
-  public int b;
-  public String b;
+  public static int d = 0;
+  public static boolean e = false;
+  public int a = -1;
+  public int b = 0;
+  public String c = "";
+  public SkinInfo f = new SkinInfo();
+  public RedPacketInfoBase g = new RedPacketInfoBase();
+  public String h = "";
   
   public HbSkinInfo(SkinInfo paramSkinInfo)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfoBase = new RedPacketInfoBase();
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramSkinInfo.skin_name;
-    this.jdField_a_of_type_WalletSkinInfo = paramSkinInfo;
+    this.c = paramSkinInfo.skin_name;
+    this.f = paramSkinInfo;
   }
   
   public HbSkinInfo(String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfoBase = new RedPacketInfoBase();
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static int a(List<HbSkinInfo> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      HbSkinInfo localHbSkinInfo = (HbSkinInfo)paramList.next();
-      if (c == localHbSkinInfo.jdField_a_of_type_WalletSkinInfo.skin_id) {
-        return localHbSkinInfo.jdField_a_of_type_WalletSkinInfo.skin_id;
-      }
-    }
-    return -1;
+    this.c = paramString;
   }
   
   public static void a(List<HbSkinInfo> paramList)
   {
     Collections.sort(paramList, new HbSkinInfo.1());
+  }
+  
+  public static int b(List<HbSkinInfo> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      HbSkinInfo localHbSkinInfo = (HbSkinInfo)paramList.next();
+      if (d == localHbSkinInfo.f.skin_id) {
+        return localHbSkinInfo.f.skin_id;
+      }
+    }
+    return -1;
   }
   
   public boolean equals(Object paramObject)
@@ -64,7 +52,7 @@ public class HbSkinInfo
       return true;
     }
     if ((paramObject instanceof HbSkinInfo)) {
-      return this.jdField_a_of_type_WalletSkinInfo.skin_id == ((HbSkinInfo)paramObject).jdField_a_of_type_WalletSkinInfo.skin_id;
+      return this.f.skin_id == ((HbSkinInfo)paramObject).f.skin_id;
     }
     return super.equals(paramObject);
   }
@@ -74,12 +62,12 @@ public class HbSkinInfo
     StringBuffer localStringBuffer = new StringBuffer("");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("background : ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfoBase.background);
+    localStringBuilder.append(this.g.background);
     localStringBuilder.append(" | ");
     localStringBuffer.append(localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("icon : ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfoBase.icon);
+    localStringBuilder.append(this.g.icon);
     localStringBuilder.append(" | ");
     localStringBuffer.append(localStringBuilder.toString());
     return localStringBuffer.toString();
@@ -87,7 +75,7 @@ public class HbSkinInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.HbSkinInfo
  * JD-Core Version:    0.7.0.1
  */

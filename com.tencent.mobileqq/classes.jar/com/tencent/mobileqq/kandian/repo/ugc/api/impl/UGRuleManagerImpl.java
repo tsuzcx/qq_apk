@@ -14,7 +14,7 @@ public final class UGRuleManagerImpl
   @Nullable
   public List<String> getReportUrl(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return UGRuleManager.a(paramAbsBaseArticleInfo);
+    return UGRuleManager.e(paramAbsBaseArticleInfo);
   }
   
   public boolean isUgCard(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -24,7 +24,7 @@ public final class UGRuleManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.ugc.api.impl.UGRuleManagerImpl
  * JD-Core Version:    0.7.0.1
  */

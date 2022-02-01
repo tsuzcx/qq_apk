@@ -45,7 +45,7 @@ class PlayerCaptureProxy$2
       k = j;
       m = i;
     }
-    Iterator localIterator = PlayerCaptureProxy.a(this.this$0).iterator();
+    Iterator localIterator = PlayerCaptureProxy.b(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       CapturePreparedListener localCapturePreparedListener = (CapturePreparedListener)localIterator.next();
@@ -57,7 +57,7 @@ class PlayerCaptureProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.capture.PlayerCaptureProxy.2
  * JD-Core Version:    0.7.0.1
  */

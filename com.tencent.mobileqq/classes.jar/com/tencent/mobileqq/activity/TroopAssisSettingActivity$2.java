@@ -18,14 +18,14 @@ class TroopAssisSettingActivity$2
     if (paramMessage.what != 1) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
+    this.a.b.a(this.a.c);
+    this.a.b.notifyDataSetChanged();
     this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssisSettingActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,17 +9,17 @@ class DynamicChannelDataModule$7
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      DataEventDispatcher.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaUtilList);
+      DataEventDispatcher.a().a(this.b, this.c, this.d, this.e);
       return;
     }
-    DataEventDispatcher.a().b(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaUtilList);
+    DataEventDispatcher.a().b(this.b, this.c, this.d, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.data.DynamicChannelDataModule.7
  * JD-Core Version:    0.7.0.1
  */

@@ -43,7 +43,7 @@ final class MiniProgramLpReportDC05325$1
         }
         MiniProgramLpReportDC05325.access$000().put(Long.valueOf(this.val$downloadResult.getProcess().startTimestamp), Boolean.valueOf(true));
         Object localObject1 = MiniProgramReportHelper.launchIdForMiniAppConfig(this.val$miniAppConfig);
-        Object localObject2 = MiniProgramReportHelper.newEntry("uid", String.valueOf(CommonDataAdapter.a().a()));
+        Object localObject2 = MiniProgramReportHelper.newEntry("uid", String.valueOf(CommonDataAdapter.a().c()));
         Object localObject3 = MiniProgramReportHelper.newEntry("launchid", (String)localObject1);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("");
@@ -141,11 +141,11 @@ final class MiniProgramLpReportDC05325$1
         COMM.Entry localEntry22 = MiniProgramReportHelper.newEntry("time_cost_range_receive", String.valueOf(this.val$downloadResult.getReport().timeCostForRangeReceivePhase));
         COMM.Entry localEntry23 = MiniProgramReportHelper.newEntry("time_cost_range_merge", String.valueOf(this.val$downloadResult.getReport().timeCostForRangeMergePhase));
         COMM.Entry localEntry24 = MiniProgramReportHelper.newEntry("protocol", this.val$downloadResult.getReport().protocol);
-        COMM.Entry localEntry25 = MiniProgramReportHelper.newEntry("perf_level", String.valueOf(DeviceInfoUtils.a()));
+        COMM.Entry localEntry25 = MiniProgramReportHelper.newEntry("perf_level", String.valueOf(DeviceInfoUtils.getPerfLevel()));
         COMM.Entry localEntry26 = MiniProgramReportHelper.newEntry("range_number", String.valueOf(this.val$downloadResult.getReport().rangeNumber));
         COMM.Entry localEntry27 = MiniProgramReportHelper.newEntry("range_type", "0");
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(String.valueOf(CommonDataAdapter.a().a()));
+        localStringBuilder.append(String.valueOf(CommonDataAdapter.a().c()));
         DownloadResult.Process localProcess = this.val$downloadResult.getProcess();
         try
         {
@@ -233,7 +233,7 @@ final class MiniProgramLpReportDC05325$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05325.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,16 +15,16 @@ class AEEditorCommonEditFragment$11
   
   public void a(@Nullable List<MetaCategory> paramList)
   {
-    AEQLog.b(AEEditorCommonEditFragment.c(), "mFiltersObserver-onChanged");
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel.setFiltersMaterials(paramList, AEEditorCommonEditFragment.jdField_a_of_type_Int, this.a.b());
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMaterialViewModel.a(paramList);
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMaterialViewModel.a();
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMaterialViewModel.a(3);
+    AEQLog.b(AEEditorCommonEditFragment.M(), "mFiltersObserver-onChanged");
+    this.a.g.setFiltersMaterials(paramList, AEEditorCommonEditFragment.a, this.a.s());
+    this.a.u.a(paramList);
+    this.a.u.c();
+    this.a.u.a(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorCommonEditFragment.11
  * JD-Core Version:    0.7.0.1
  */

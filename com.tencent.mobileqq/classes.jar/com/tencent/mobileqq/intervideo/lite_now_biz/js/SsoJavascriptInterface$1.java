@@ -22,7 +22,7 @@ class SsoJavascriptInterface$1
     {
       paramBundle = new JSONObject();
       paramBundle.put("cret", 1);
-      SsoJavascriptInterface.access$000(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsSsoJavascriptInterface, this.jdField_a_of_type_JavaLangString, paramBundle.toString());
+      SsoJavascriptInterface.access$000(this.c, this.a, paramBundle.toString());
       return;
     }
     catch (Exception paramBundle)
@@ -56,16 +56,16 @@ class SsoJavascriptInterface$1
       ((JSONObject)localObject).put("data", paramBundle.data.get());
       ((JSONObject)localObject).put("retcode", paramBundle.ret.get());
       ((JSONObject)localObject).put("cret", 0);
-      SsoJavascriptInterface.access$000(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsSsoJavascriptInterface, this.jdField_a_of_type_JavaLangString, ((JSONObject)localObject).toString());
+      SsoJavascriptInterface.access$000(this.c, this.a, ((JSONObject)localObject).toString());
       if (((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.has()) {
-        SsoJavascriptInterface.access$102(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsSsoJavascriptInterface, ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.get());
+        SsoJavascriptInterface.access$102(this.c, ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.get());
       }
       if (((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.has()) {
-        SsoJavascriptInterface.access$202(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsSsoJavascriptInterface, ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.get());
+        SsoJavascriptInterface.access$202(this.c, ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.get());
       }
       if (QLog.isDevelopLevel())
       {
-        QLog.i("SsoJavascriptInterface", 2, String.format("onReceive cmd=%s %b frequency=%d result=%s", new Object[] { this.b, Boolean.valueOf(((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.has()), Integer.valueOf(SsoJavascriptInterface.access$100(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsSsoJavascriptInterface)), localObject }));
+        QLog.i("SsoJavascriptInterface", 2, String.format("onReceive cmd=%s %b frequency=%d result=%s", new Object[] { this.b, Boolean.valueOf(((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.has()), Integer.valueOf(SsoJavascriptInterface.access$100(this.c)), localObject }));
         return;
         paramBundle = new JSONObject();
         try
@@ -76,7 +76,7 @@ class SsoJavascriptInterface$1
         {
           QLog.e("SsoJavascriptInterface", 4, localJSONException.getMessage());
         }
-        SsoJavascriptInterface.access$000(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsSsoJavascriptInterface, this.jdField_a_of_type_JavaLangString, paramBundle.toString());
+        SsoJavascriptInterface.access$000(this.c, this.a, paramBundle.toString());
       }
       return;
     }
@@ -84,7 +84,7 @@ class SsoJavascriptInterface$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.SsoJavascriptInterface.1
  * JD-Core Version:    0.7.0.1
  */

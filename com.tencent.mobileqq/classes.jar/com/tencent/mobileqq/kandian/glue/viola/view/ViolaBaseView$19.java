@@ -66,73 +66,69 @@ class ViolaBaseView$19
     }
     if (QLog.isColorLevel())
     {
-      String str3 = ViolaBaseView.b();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("viola request cgi has error:");
       localStringBuilder.append(str1);
       localStringBuilder.append(",e:");
       localStringBuilder.append(paramException.getMessage());
-      QLog.d(str3, 2, localStringBuilder.toString());
+      QLog.d("ViolaBaseView", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_Boolean) {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, str2);
+    if (this.a) {
+      ViolaBaseView.a(this.b).addReportData(ViolaEnvironment.KEY_CHANGE, str2);
     }
-    ViolaBaseView.c(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
-    ViolaBaseView.b(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+    ViolaBaseView.e(this.b, this.a);
+    ViolaBaseView.d(this.b, this.a);
   }
   
   public void a(JSONObject paramJSONObject)
   {
-    String str;
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      str = ViolaBaseView.b();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("change cgi result:");
       localStringBuilder.append(paramJSONObject.toString());
-      QLog.d(str, 2, localStringBuilder.toString());
+      QLog.d("ViolaBaseView", 2, localStringBuilder.toString());
     }
     try
     {
       if ((paramJSONObject.getInt("retCode") == 0) && (paramJSONObject.getString("retMsg").equals("success")) && (!TextUtils.isEmpty(paramJSONObject.getJSONObject("retObj").getString("fileUrl"))))
       {
-        ViolaBaseView.b(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, paramJSONObject.getJSONObject("retObj").getString("fileUrl"));
-        if (this.jdField_a_of_type_Boolean) {
-          ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_END);
+        ViolaBaseView.c(this.b, paramJSONObject.getJSONObject("retObj").getString("fileUrl"));
+        if (this.a) {
+          ViolaBaseView.a(this.b).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_END);
         }
-        ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
-        ViolaBaseView.b(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+        ViolaBaseView.c(this.b, this.a);
+        ViolaBaseView.d(this.b, this.a);
         return;
       }
-      if (this.jdField_a_of_type_Boolean) {
-        ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_ERROR_DATA);
+      if (this.a) {
+        ViolaBaseView.a(this.b).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_ERROR_DATA);
       }
-      ViolaBaseView.c(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
-      ViolaBaseView.b(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      ViolaBaseView.e(this.b, this.a);
+      ViolaBaseView.d(this.b, this.a);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_ERROR_UNKNOW);
+      if (this.a) {
+        ViolaBaseView.a(this.b).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_ERROR_UNKNOW);
       }
-      ViolaBaseView.c(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
-      ViolaBaseView.b(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      ViolaBaseView.e(this.b, this.a);
+      ViolaBaseView.d(this.b, this.a);
       if (QLog.isColorLevel())
       {
-        str = ViolaBaseView.b();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("change cgi exception:");
         localStringBuilder.append(paramJSONObject.getMessage());
-        QLog.e(str, 2, localStringBuilder.toString());
+        QLog.e("ViolaBaseView", 2, localStringBuilder.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.19
  * JD-Core Version:    0.7.0.1
  */

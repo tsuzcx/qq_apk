@@ -20,14 +20,14 @@ public class QzoneAutoVerticalScrollTextView
   extends TextSwitcher
   implements Handler.Callback, ViewSwitcher.ViewFactory
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 2500L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QzoneAutoVerticalScrollTextView.Rotate3dAnimation jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private long jdField_b_of_type_Long = 1000L;
-  private QzoneAutoVerticalScrollTextView.Rotate3dAnimation jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation;
+  private Context a;
+  private QzoneAutoVerticalScrollTextView.Rotate3dAnimation b;
+  private QzoneAutoVerticalScrollTextView.Rotate3dAnimation c;
+  private int d = 0;
+  private long e = 2500L;
+  private long f = 1000L;
+  private String[] g;
+  private Handler h;
   
   public QzoneAutoVerticalScrollTextView(Context paramContext)
   {
@@ -37,14 +37,14 @@ public class QzoneAutoVerticalScrollTextView
   public QzoneAutoVerticalScrollTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     b();
   }
   
   private QzoneAutoVerticalScrollTextView.Rotate3dAnimation a(boolean paramBoolean1, boolean paramBoolean2)
   {
     QzoneAutoVerticalScrollTextView.Rotate3dAnimation localRotate3dAnimation = new QzoneAutoVerticalScrollTextView.Rotate3dAnimation(this, paramBoolean1, paramBoolean2);
-    localRotate3dAnimation.setDuration(this.jdField_b_of_type_Long);
+    localRotate3dAnimation.setDuration(this.f);
     localRotate3dAnimation.setFillAfter(false);
     localRotate3dAnimation.setInterpolator(new AccelerateInterpolator());
     return localRotate3dAnimation;
@@ -52,21 +52,21 @@ public class QzoneAutoVerticalScrollTextView
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.h = new Handler(Looper.getMainLooper(), this);
     setFactory(this);
-    this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation = a(true, true);
-    this.jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation = a(false, true);
+    this.b = a(true, true);
+    this.c = a(false, true);
   }
   
   public void a()
   {
     Animation localAnimation = getInAnimation();
-    QzoneAutoVerticalScrollTextView.Rotate3dAnimation localRotate3dAnimation = this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation;
+    QzoneAutoVerticalScrollTextView.Rotate3dAnimation localRotate3dAnimation = this.b;
     if (localAnimation != localRotate3dAnimation) {
       setInAnimation(localRotate3dAnimation);
     }
     localAnimation = getOutAnimation();
-    localRotate3dAnimation = this.jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation;
+    localRotate3dAnimation = this.c;
     if (localAnimation != localRotate3dAnimation) {
       setOutAnimation(localRotate3dAnimation);
     }
@@ -77,23 +77,23 @@ public class QzoneAutoVerticalScrollTextView
     if (paramMessage.what != 9001) {
       return true;
     }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    if (this.g != null)
     {
       a();
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
-        this.jdField_a_of_type_Int = 0;
+      this.d += 1;
+      if (this.d >= this.g.length) {
+        this.d = 0;
       }
-      setText(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int]);
+      setText(this.g[this.d]);
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(9001);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(9001, this.jdField_a_of_type_Long);
+    this.h.removeMessages(9001);
+    this.h.sendEmptyMessageDelayed(9001, this.e);
     return true;
   }
   
   public View makeView()
   {
-    TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    TextView localTextView = new TextView(this.a);
     localTextView.setTextSize(11.0F);
     localTextView.setSingleLine(true);
     localTextView.setGravity(19);
@@ -107,34 +107,34 @@ public class QzoneAutoVerticalScrollTextView
   
   public void setAnimationTime(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.f = paramLong;
   }
   
   public void setInterSwitcTime(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.e = paramLong;
   }
   
   public void setTextArray(String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.g = paramArrayOfString;
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
     {
-      if (this.jdField_a_of_type_Int > paramArrayOfString.length - 1) {
-        this.jdField_a_of_type_Int = 0;
+      if (this.d > paramArrayOfString.length - 1) {
+        this.d = 0;
       }
-      setText(paramArrayOfString[this.jdField_a_of_type_Int]);
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      setText(paramArrayOfString[this.d]);
+      Handler localHandler = this.h;
       if (localHandler != null) {
         localHandler.removeMessages(9001);
       }
       if (paramArrayOfString.length > 1)
       {
-        setInAnimation(this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation);
-        setOutAnimation(this.jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation);
-        paramArrayOfString = this.jdField_a_of_type_AndroidOsHandler;
+        setInAnimation(this.b);
+        setOutAnimation(this.c);
+        paramArrayOfString = this.h;
         if (paramArrayOfString != null) {
-          paramArrayOfString.sendEmptyMessageDelayed(9001, this.jdField_a_of_type_Long);
+          paramArrayOfString.sendEmptyMessageDelayed(9001, this.e);
         }
       }
       else
@@ -147,7 +147,7 @@ public class QzoneAutoVerticalScrollTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.QzoneAutoVerticalScrollTextView
  * JD-Core Version:    0.7.0.1
  */

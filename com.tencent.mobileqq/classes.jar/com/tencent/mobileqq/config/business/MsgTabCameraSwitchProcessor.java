@@ -12,7 +12,7 @@ public class MsgTabCameraSwitchProcessor
 {
   public static MsgTabCameraConfBean a()
   {
-    return (MsgTabCameraConfBean)QConfigManager.a().a(489);
+    return (MsgTabCameraConfBean)QConfigManager.b().b(489);
   }
   
   @NonNull
@@ -94,7 +94,7 @@ public class MsgTabCameraSwitchProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MsgTabCameraSwitchProcessor
  * JD-Core Version:    0.7.0.1
  */

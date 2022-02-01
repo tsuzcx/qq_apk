@@ -2,14 +2,10 @@ package com.tencent.av.camera;
 
 public class FrameBufMgr$FrameBuf
 {
-  public int a;
-  public byte[] a;
+  public byte[] a = null;
+  public int b = 0;
   
-  public FrameBufMgr$FrameBuf(FrameBufMgr paramFrameBufMgr)
-  {
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Int = 0;
-  }
+  public FrameBufMgr$FrameBuf(FrameBufMgr paramFrameBufMgr) {}
 }
 
 

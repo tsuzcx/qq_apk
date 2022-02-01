@@ -12,7 +12,7 @@ class FilterMsgBoxFragment$8
   
   public void run()
   {
-    Iterator localIterator = FilterMsgBoxFragment.a(this.this$0).iterator();
+    Iterator localIterator = FilterMsgBoxFragment.f(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
@@ -23,7 +23,7 @@ class FilterMsgBoxFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.FilterMsgBoxFragment.8
  * JD-Core Version:    0.7.0.1
  */

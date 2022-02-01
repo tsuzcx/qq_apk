@@ -31,7 +31,7 @@ public class VipComicEmoticonUploadRemoteCmd
   
   public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    AppRuntime localAppRuntime = AppHelper.a();
+    AppRuntime localAppRuntime = AppHelper.b();
     if (!(localAppRuntime instanceof BaseQQAppInterface))
     {
       if (QLog.isColorLevel()) {
@@ -52,7 +52,7 @@ public class VipComicEmoticonUploadRemoteCmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.emoticon.VipComicEmoticonUploadRemoteCmd
  * JD-Core Version:    0.7.0.1
  */

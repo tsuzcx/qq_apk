@@ -15,13 +15,13 @@ public final class KOLPublisherChecker
     super(paramPublishArticleInfo, paramGlobalPublisherConfig);
   }
   
-  public int a()
+  public int b()
   {
-    int i = super.a();
+    int i = super.b();
     if (i != 0) {
       return i;
     }
-    if (a().getVideoInfo() != null) {
+    if (d().getVideoInfo() != null) {
       return 3;
     }
     return 0;
@@ -29,7 +29,7 @@ public final class KOLPublisherChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.publishChecker.KOLPublisherChecker
  * JD-Core Version:    0.7.0.1
  */

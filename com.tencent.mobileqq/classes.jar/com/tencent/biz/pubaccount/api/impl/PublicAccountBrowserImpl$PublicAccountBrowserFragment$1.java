@@ -21,16 +21,16 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$1
     int i = paramView.getId();
     TouchWebView localTouchWebView;
     StringBuilder localStringBuilder;
-    if (i != 2131369202)
+    if (i != 2131436180)
     {
-      if (i != 2131369233)
+      if (i != 2131436211)
       {
         onClick(paramView);
         return;
       }
-      if (!this.a.getUIStyleHandler().a.a)
+      if (!this.a.getUIStyleHandler().f.a)
       {
-        paramView = this.a.getSwiftTitleUI().c.getText().toString();
+        paramView = this.a.getSwiftTitleUI().f.getText().toString();
         localTouchWebView = PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("javascript:onRightBtn(\"");
@@ -39,7 +39,7 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$1
         localTouchWebView.loadUrl(localStringBuilder.toString());
         return;
       }
-      if (PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a) == 1001)
+      if (PublicAccountBrowserImpl.PublicAccountBrowserFragment.b(this.a) == 1001)
       {
         ThreadManager.executeOnSubThread(new PublicAccountBrowserImpl.PublicAccountBrowserFragment.1.1(this));
         this.a.getActivity().finish();
@@ -48,15 +48,15 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$1
       onClick(paramView);
       return;
     }
-    if (!this.a.getUIStyleHandler().a.a)
+    if (!this.a.getUIStyleHandler().f.a)
     {
-      paramView = this.a.getSwiftTitleUI().a.getText().toString();
-      if (paramView.equals(PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText")))
+      paramView = this.a.getSwiftTitleUI().d.getText().toString();
+      if (paramView.equals(PublicAccountBrowserImpl.PublicAccountBrowserFragment.d(this.a).getStringExtra("leftViewText")))
       {
         this.a.doOnBackEvent();
         return;
       }
-      localTouchWebView = PublicAccountBrowserImpl.PublicAccountBrowserFragment.b(this.a);
+      localTouchWebView = PublicAccountBrowserImpl.PublicAccountBrowserFragment.e(this.a);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("javascript:onLeftBtn(\"");
       localStringBuilder.append(paramView);
@@ -69,7 +69,7 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl.PublicAccountBrowserFragment.1
  * JD-Core Version:    0.7.0.1
  */

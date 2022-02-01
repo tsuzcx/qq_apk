@@ -11,12 +11,12 @@ class GalleryFragment$3
   
   public void a()
   {
-    Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectGalleryFragment.a, 2131718061, 1).show();
+    Toast.makeText(this.b.a, 2131915538, 1).show();
   }
   
   public void a(@NotNull String paramString)
   {
-    OutputPicListener localOutputPicListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectOutputPicListener;
+    OutputPicListener localOutputPicListener = this.a;
     if (localOutputPicListener != null) {
       localOutputPicListener.a(paramString);
     }
@@ -24,7 +24,7 @@ class GalleryFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.GalleryFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class TavMixerEffectProxy
   @NotNull
   private List<BaseEffectNode> a(SendMsgTavEvent paramSendMsgTavEvent, String paramString)
   {
-    return ObjConvector.a(paramSendMsgTavEvent.a().getJSONArray(paramString), BaseEffectNode.class);
+    return ObjConvector.a(paramSendMsgTavEvent.c().getJSONArray(paramString), BaseEffectNode.class);
   }
   
   private void a(TavMixerEffect paramTavMixerEffect, SendMsgTavEvent paramSendMsgTavEvent)
@@ -22,7 +22,7 @@ class TavMixerEffectProxy
       b(paramTavMixerEffect, paramSendMsgTavEvent);
       return;
     }
-    paramSendMsgTavEvent = paramSendMsgTavEvent.a("templatePagEffect");
+    paramSendMsgTavEvent = paramSendMsgTavEvent.b("templatePagEffect");
     if ((paramSendMsgTavEvent instanceof PagMixerEffect))
     {
       paramTavMixerEffect.a((PagMixerEffect)paramSendMsgTavEvent);
@@ -68,7 +68,7 @@ class TavMixerEffectProxy
       e(paramTavMixerEffect, paramSendMsgTavEvent);
       return;
     }
-    a(paramTavMixerEffect.a());
+    a(paramTavMixerEffect.b());
   }
   
   private void e(TavMixerEffect paramTavMixerEffect, SendMsgTavEvent paramSendMsgTavEvent)
@@ -89,7 +89,7 @@ class TavMixerEffectProxy
       c();
       return;
     }
-    a(paramTavMixerEffect.b());
+    a(paramTavMixerEffect.c());
   }
   
   void a(ObjCreateTavEvent paramObjCreateTavEvent)
@@ -101,7 +101,7 @@ class TavMixerEffectProxy
   void a(SendMsgTavEvent paramSendMsgTavEvent)
   {
     super.a(paramSendMsgTavEvent);
-    Object localObject = paramSendMsgTavEvent.a();
+    Object localObject = paramSendMsgTavEvent.d();
     if (!(localObject instanceof TavMixerEffect))
     {
       b();
@@ -112,7 +112,7 @@ class TavMixerEffectProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavMixerEffectProxy
  * JD-Core Version:    0.7.0.1
  */

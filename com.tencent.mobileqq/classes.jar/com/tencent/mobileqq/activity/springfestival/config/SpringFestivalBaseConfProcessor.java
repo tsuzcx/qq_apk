@@ -66,9 +66,9 @@ public abstract class SpringFestivalBaseConfProcessor<T>
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0)) {
       try
       {
-        int i = paramArrayOfQConfItem[0].jdField_a_of_type_Int;
+        int i = paramArrayOfQConfItem[0].a;
         SpringHbMonitorReporter.a(type(), i);
-        SpringHbMonitorReporter.a(type(), MD5.toMD5(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString));
+        SpringHbMonitorReporter.a(type(), MD5.toMD5(paramArrayOfQConfItem[0].b));
         paramArrayOfQConfItem = a(paramArrayOfQConfItem);
         return paramArrayOfQConfItem;
       }
@@ -77,17 +77,17 @@ public abstract class SpringFestivalBaseConfProcessor<T>
         if (localObject != null)
         {
           if ((paramArrayOfQConfItem instanceof JSONException)) {
-            SpringHbMonitorReporter.a(2, 5, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfQConfItem.getCause()) });
+            SpringHbMonitorReporter.a(2, 5, type(), SpringHbMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfQConfItem.getCause()) });
           } else {
-            SpringHbMonitorReporter.a(2, 4, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfQConfItem.getCause()) });
+            SpringHbMonitorReporter.a(2, 4, type(), SpringHbMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfQConfItem.getCause()) });
           }
-          SpringHbMonitorReporter.a((AppInterface)localObject, 1, 1, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), false, SpringHbMonitorReporter.a(type()));
+          SpringHbMonitorReporter.a((AppInterface)localObject, 1, 1, type(), SpringHbMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), false, SpringHbMonitorReporter.b(type()));
         }
         throw new QConfigureException(paramArrayOfQConfItem.getMessage());
       }
     }
     if (localObject != null) {
-      SpringHbMonitorReporter.a(2, 3, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { "parse config fail!" });
+      SpringHbMonitorReporter.a(2, 3, type(), SpringHbMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { "parse config fail!" });
     }
     return null;
   }
@@ -121,10 +121,10 @@ public abstract class SpringFestivalBaseConfProcessor<T>
       {
         localException.printStackTrace();
       }
-      SpringHbMonitorReporter.a(2, i, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[0]);
+      SpringHbMonitorReporter.a(2, i, type(), SpringHbMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[0]);
       if (paramInt != -1)
       {
-        SpringHbMonitorReporter.a((AppInterface)localObject, 1, 1, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), false, SpringHbMonitorReporter.a(type()));
+        SpringHbMonitorReporter.a((AppInterface)localObject, 1, 1, type(), SpringHbMonitorReporter.a(type()), QConfigManager.b().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), false, SpringHbMonitorReporter.b(type()));
         return;
       }
       label162:
@@ -162,7 +162,7 @@ public abstract class SpringFestivalBaseConfProcessor<T>
     try
     {
       paramT = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      SpringHbMonitorReporter.a(paramT, 1, 0, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), paramT.getCurrentAccountUin()), false, SpringHbMonitorReporter.a(type()));
+      SpringHbMonitorReporter.a(paramT, 1, 0, type(), SpringHbMonitorReporter.a(type()), QConfigManager.b().a(type(), paramT.getCurrentAccountUin()), false, SpringHbMonitorReporter.b(type()));
       return;
     }
     catch (Throwable paramT)
@@ -178,7 +178,7 @@ public abstract class SpringFestivalBaseConfProcessor<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalBaseConfProcessor
  * JD-Core Version:    0.7.0.1
  */

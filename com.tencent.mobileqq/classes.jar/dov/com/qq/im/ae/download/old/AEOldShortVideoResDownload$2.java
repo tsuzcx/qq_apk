@@ -11,7 +11,7 @@ class AEOldShortVideoResDownload$2
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject = AEOldShortVideoResDownload.a();
+    Object localObject = AEOldShortVideoResDownload.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[startDownload215ConfigWithoutLoginInternal.onConfigResult] - BEGIN -, result=");
     localStringBuilder.append(paramInt1);
@@ -20,20 +20,20 @@ class AEOldShortVideoResDownload$2
     AEQLog.b((String)localObject, localStringBuilder.toString());
     if ((paramInt1 != 1) && (paramInt1 != 0))
     {
-      AEQLog.b(AEOldShortVideoResDownload.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], result invalid");
-      AEQLog.b(AEOldShortVideoResDownload.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], removeDownloadSession");
-      AEOldShortVideoResDownload.a(this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResDownload);
-      localObject = this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResStatus$ISVConfig_V2;
+      AEQLog.b(AEOldShortVideoResDownload.b(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], result invalid");
+      AEQLog.b(AEOldShortVideoResDownload.b(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], removeDownloadSession");
+      AEOldShortVideoResDownload.a(this.b);
+      localObject = this.a;
       if (localObject != null) {
         ((AEOldShortVideoResStatus.ISVConfig_V2)localObject).b(paramInt1, paramInt2);
       }
     }
     else if (paramInt2 != 0)
     {
-      AEQLog.b(AEOldShortVideoResDownload.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], serverError");
-      AEQLog.b(AEOldShortVideoResDownload.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], removeDownloadSession");
-      AEOldShortVideoResDownload.a(this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResDownload);
-      localObject = this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResStatus$ISVConfig_V2;
+      AEQLog.b(AEOldShortVideoResDownload.b(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], serverError");
+      AEQLog.b(AEOldShortVideoResDownload.b(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], removeDownloadSession");
+      AEOldShortVideoResDownload.a(this.b);
+      localObject = this.a;
       if (localObject != null) {
         ((AEOldShortVideoResStatus.ISVConfig_V2)localObject).b(paramInt1, paramInt2);
       }
@@ -41,27 +41,27 @@ class AEOldShortVideoResDownload$2
     else
     {
       localObject = new ArrayList(1);
-      if (AEOldShortVideoResManager.a(AEOldShortVideoResDownload.a(this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResDownload), (List)localObject) == 0)
+      if (AEOldShortVideoResManager.a(AEOldShortVideoResDownload.b(this.b), (List)localObject) == 0)
       {
-        AEQLog.b(AEOldShortVideoResDownload.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], configList valid");
-        AEOldShortVideoResDownload.a(this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResDownload).b();
-        localObject = this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResStatus$ISVConfig_V2;
+        AEQLog.b(AEOldShortVideoResDownload.b(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], configList valid");
+        AEOldShortVideoResDownload.c(this.b).a();
+        localObject = this.a;
         if (localObject != null) {
           ((AEOldShortVideoResStatus.ISVConfig_V2)localObject).b(paramInt1, paramInt2);
         }
       }
       else
       {
-        AEQLog.b(AEOldShortVideoResDownload.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], configList invalid");
-        AEQLog.b(AEOldShortVideoResDownload.a(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], removeDownloadSession");
-        AEOldShortVideoResDownload.a(this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResDownload);
-        localObject = this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResStatus$ISVConfig_V2;
+        AEQLog.b(AEOldShortVideoResDownload.b(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], configList invalid");
+        AEQLog.b(AEOldShortVideoResDownload.b(), "[startDownload215ConfigWithoutLoginInternal.onConfigResult], removeDownloadSession");
+        AEOldShortVideoResDownload.a(this.b);
+        localObject = this.a;
         if (localObject != null) {
           ((AEOldShortVideoResStatus.ISVConfig_V2)localObject).b(paramInt1, paramInt2);
         }
       }
     }
-    localObject = AEOldShortVideoResDownload.a();
+    localObject = AEOldShortVideoResDownload.b();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[startDownload215ConfigWithoutLoginInternal.onConfigResult] - END -, result=");
     localStringBuilder.append(paramInt1);
@@ -72,7 +72,7 @@ class AEOldShortVideoResDownload$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoResDownload.2
  * JD-Core Version:    0.7.0.1
  */

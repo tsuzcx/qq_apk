@@ -32,10 +32,10 @@ public final class StoryDetailPresenter$GetFeedFeatureReceiver
       while (paramGetFeedFeatureEvent.hasNext())
       {
         FeedFeatureItem localFeedFeatureItem = (FeedFeatureItem)paramGetFeedFeatureEvent.next();
-        if (localFeedFeatureItem.a.equals(StoryDetailPresenter.a(paramStoryDetailPresenter)))
+        if (localFeedFeatureItem.a.equals(StoryDetailPresenter.f(paramStoryDetailPresenter)))
         {
-          SLog.a(this.TAG, "receive feature data. update visit count from %d to %d.", Long.valueOf(StoryDetailPresenter.a(paramStoryDetailPresenter).a.mViewTotalTime), Integer.valueOf(localFeedFeatureItem.c));
-          StoryDetailPresenter.a(paramStoryDetailPresenter).a.mViewTotalTime = localFeedFeatureItem.c;
+          SLog.a(this.TAG, "receive feature data. update visit count from %d to %d.", Long.valueOf(StoryDetailPresenter.a(paramStoryDetailPresenter).a.mViewTotalTime), Integer.valueOf(localFeedFeatureItem.d));
+          StoryDetailPresenter.a(paramStoryDetailPresenter).a.mViewTotalTime = localFeedFeatureItem.d;
           paramStoryDetailPresenter.a();
         }
       }

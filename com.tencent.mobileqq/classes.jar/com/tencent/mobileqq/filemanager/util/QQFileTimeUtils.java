@@ -17,7 +17,7 @@ public class QQFileTimeUtils
   {
     Calendar localCalendar1 = Calendar.getInstance();
     Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(MessageCache.a() * 1000L);
+    localCalendar1.setTimeInMillis(MessageCache.c() * 1000L);
     localCalendar2.setTimeInMillis(paramLong);
     int k = localCalendar1.get(1);
     int i = localCalendar1.get(6) - localCalendar2.get(6);
@@ -87,14 +87,14 @@ public class QQFileTimeUtils
       return new SimpleDateFormat("HH:mm ", BaseApplication.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
     }
     if (k - i1 <= 1) {
-      return HardCodeUtil.a(2131709678);
+      return HardCodeUtil.a(2131907404);
     }
     return new SimpleDateFormat("MM-dd ", BaseApplication.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileTimeUtils
  * JD-Core Version:    0.7.0.1
  */

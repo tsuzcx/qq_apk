@@ -11,7 +11,7 @@ class AVGameAppInterface$2
   public void run()
   {
     AVGameBusinessCtrl.a();
-    GameEngine.a().a();
+    GameEngine.a().b();
   }
 }
 

@@ -14,20 +14,20 @@ class NearbyFragmentEnterAdapter$2
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter.a() != null)
+    if (this.c.b() != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter$ViewHolder.b.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter$ViewHolder.b, "alpha", new float[] { 0.2F, 1.0F });
+      this.a.d.setImageDrawable(this.b);
+      paramAnimator = ObjectAnimator.ofFloat(this.a.d, "alpha", new float[] { 0.2F, 1.0F });
       paramAnimator.setInterpolator(new DecelerateInterpolator());
       paramAnimator.setDuration(300L).start();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter$ViewHolder.b.setAlpha(1.0F);
+    this.a.d.setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter.2
  * JD-Core Version:    0.7.0.1
  */

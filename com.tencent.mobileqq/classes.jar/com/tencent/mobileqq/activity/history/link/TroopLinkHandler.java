@@ -25,37 +25,20 @@ import org.json.JSONObject;
 public class TroopLinkHandler
   implements INetEngineListener
 {
-  private long jdField_a_of_type_Long = 0L;
-  private final ChatHistoryTroopLinkFragment jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment;
+  private final ChatHistoryTroopLinkFragment a;
+  private QQAppInterface b;
+  private IHttpEngineService c;
   @NonNull
-  private TroopLinkCallBack jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkCallBack;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IHttpEngineService jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
+  private TroopLinkCallBack d;
+  private long e = 0L;
   
   public TroopLinkHandler(QQAppInterface paramQQAppInterface, ChatHistoryTroopLinkFragment paramChatHistoryTroopLinkFragment, @NonNull TroopLinkCallBack paramTroopLinkCallBack)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment = paramChatHistoryTroopLinkFragment;
+    this.b = paramQQAppInterface;
+    this.a = paramChatHistoryTroopLinkFragment;
     paramQQAppInterface = (NetEngineFactory)paramQQAppInterface.getManager(QQManagerFactory.MGR_NET_ENGINE);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = ((IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all"));
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkCallBack = paramTroopLinkCallBack;
-  }
-  
-  private ArrayList<TroopLinkElement> a(JSONObject paramJSONObject)
-  {
-    paramJSONObject = paramJSONObject.optJSONArray("url_list");
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONObject == null) {
-      return localArrayList;
-    }
-    int i = 0;
-    while (i < paramJSONObject.length())
-    {
-      JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-      localArrayList.add(TroopLinkElement.mergeFromJson(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment.a(), localJSONObject));
-      i += 1;
-    }
-    return localArrayList;
+    this.c = ((IHttpEngineService)this.b.getRuntimeService(IHttpEngineService.class, "all"));
+    this.d = paramTroopLinkCallBack;
   }
   
   private void a(NetResp paramNetResp)
@@ -70,7 +53,7 @@ public class TroopLinkHandler
         localStringBuilder.append(paramNetResp);
         QLog.i("TroopLinkHandler", 2, localStringBuilder.toString());
       }
-      a(true, a(paramNetResp));
+      a(true, b(paramNetResp));
       a(paramNetResp);
       return;
     }
@@ -88,7 +71,7 @@ public class TroopLinkHandler
     localHttpNetReq.mHttpMethod = 1;
     localHttpNetReq.mPrioty = 0;
     localHttpNetReq.mCallback = this;
-    String str = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    String str = ((TicketManagerImpl)this.b.getManager(2)).getSkey(this.b.getCurrentUin());
     paramString = String.format("bkn=%s&gc=%s&seq=%s&n=%s&noui=1", new Object[] { Integer.valueOf(TroopUtils.a(str)), paramString, Long.valueOf(paramLong), Integer.valueOf(200) });
     if (QLog.isColorLevel())
     {
@@ -99,22 +82,22 @@ public class TroopLinkHandler
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("uin=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    localStringBuilder.append(this.b.getCurrentUin());
     localStringBuilder.append(";skey=");
     localStringBuilder.append(str);
     str = localStringBuilder.toString();
     localHttpNetReq.mSendData = paramString.getBytes();
     localHttpNetReq.mReqProperties = new HashMap();
     localHttpNetReq.mReqProperties.put("Cookie", str);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.sendReq(localHttpNetReq);
+    this.c.sendReq(localHttpNetReq);
   }
   
   private void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Long = paramJSONObject.optLong("seq");
+    this.e = paramJSONObject.optLong("seq");
     long l = paramJSONObject.optLong("n_all", -1L);
-    if ((this.jdField_a_of_type_Long == 0L) || (l == 0L)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkCallBack.r();
+    if ((this.e == 0L) || (l == 0L)) {
+      this.d.v();
     }
   }
   
@@ -125,11 +108,28 @@ public class TroopLinkHandler
     ThreadManager.getUIHandler().post(paramList);
   }
   
+  private ArrayList<TroopLinkElement> b(JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.optJSONArray("url_list");
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONObject == null) {
+      return localArrayList;
+    }
+    int i = 0;
+    while (i < paramJSONObject.length())
+    {
+      JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+      localArrayList.add(TroopLinkElement.mergeFromJson(this.a.g(), localJSONObject));
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
   public void a(String paramString, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      a(paramString, this.jdField_a_of_type_Long);
+      a(paramString, this.e);
       return;
     }
     a(paramString, 0L);
@@ -156,7 +156,7 @@ public class TroopLinkHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.TroopLinkHandler
  * JD-Core Version:    0.7.0.1
  */

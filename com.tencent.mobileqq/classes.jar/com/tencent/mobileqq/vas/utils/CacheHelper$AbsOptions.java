@@ -14,9 +14,6 @@ public abstract class CacheHelper$AbsOptions
   private final Lazy a = LazyKt.lazy((Function0)new CacheHelper.AbsOptions.key.2(this));
   
   @NotNull
-  public abstract Object a();
-  
-  @NotNull
   public abstract String a();
   
   public boolean a(@NotNull Object paramObject)
@@ -26,14 +23,17 @@ public abstract class CacheHelper$AbsOptions
   }
   
   @NotNull
-  public final String b()
+  public abstract Object b();
+  
+  @NotNull
+  public final String c()
   {
     return (String)this.a.getValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.utils.CacheHelper.AbsOptions
  * JD-Core Version:    0.7.0.1
  */

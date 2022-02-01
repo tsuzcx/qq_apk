@@ -10,17 +10,17 @@ class AvatarPendantActivity$AnimationScrollListener$1
   
   public void run()
   {
-    if (this.a.b.u == 0)
+    if (this.a.b.W == 0)
     {
       URLDrawable.resume();
-      this.a.b.a.a = false;
-      this.a.b.a.notifyDataSetChanged();
+      this.a.b.B.B = false;
+      this.a.b.B.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener.1
  * JD-Core Version:    0.7.0.1
  */

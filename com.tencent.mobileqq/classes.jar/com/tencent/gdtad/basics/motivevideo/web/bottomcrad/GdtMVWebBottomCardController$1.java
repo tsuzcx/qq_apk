@@ -9,7 +9,7 @@ class GdtMVWebBottomCardController$1
   
   public void run()
   {
-    if (this.this$0.d)
+    if (this.this$0.n)
     {
       QLog.i("GdtMVWebBottomCardController", 1, "webView load success");
       return;
@@ -20,7 +20,7 @@ class GdtMVWebBottomCardController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.web.bottomcrad.GdtMVWebBottomCardController.1
  * JD-Core Version:    0.7.0.1
  */

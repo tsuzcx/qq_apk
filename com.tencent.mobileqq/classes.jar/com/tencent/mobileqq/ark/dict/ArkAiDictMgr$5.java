@@ -13,7 +13,7 @@ class ArkAiDictMgr$5
   public void run()
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(ArkAppEnvConfig.a().a());
+    ((StringBuilder)localObject).append(ArkAppEnvConfig.a().c());
     ((StringBuilder)localObject).append("/");
     localObject = ((StringBuilder)localObject).toString();
     WordSegment.uninit();
@@ -28,7 +28,7 @@ class ArkAiDictMgr$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkAiDictMgr.5
  * JD-Core Version:    0.7.0.1
  */

@@ -17,21 +17,21 @@ final class VideoMsgTools$3
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if ((i == 12) || (i == 25) || (i == 42) || (i == 43) || (i == 56)) {
-      VipFunCallUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
+      VipFunCallUtil.a(this.b, 0);
     }
-    ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
+    ((ISVIPHandler)this.b.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).j();
     StringBuilder localStringBuilder;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
-      i = this.jdField_a_of_type_Int;
-      if (((i == 0) || (i == 2) || (i == 24)) && (this.jdField_a_of_type_JavaLangString != null) && (LightalkBlueTipsBar.a()))
+      i = this.a;
+      if (((i == 0) || (i == 2) || (i == 24)) && (this.d != null) && (LightalkBlueTipsBar.d()))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+        localObject = this.b.getPreferences();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("lightalk_tip_");
-        localStringBuilder.append(this.b);
+        localStringBuilder.append(this.e);
         if (!((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false))
         {
           if (QLog.isColorLevel()) {
@@ -40,9 +40,9 @@ final class VideoMsgTools$3
           localObject = ((SharedPreferences)localObject).edit();
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("lightalk_tip_");
-          localStringBuilder.append(this.b);
+          localStringBuilder.append(this.e);
           ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), true);
-          ((SharedPreferences.Editor)localObject).putString("Lightalk_tips_frdUin", this.c);
+          ((SharedPreferences.Editor)localObject).putString("Lightalk_tips_frdUin", this.f);
           ((SharedPreferences.Editor)localObject).commit();
           i = 1;
           break label247;
@@ -51,26 +51,26 @@ final class VideoMsgTools$3
     }
     i = 0;
     label247:
-    int j = VipFunCallUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    int j = VipFunCallUtil.a(this.b);
+    Object localObject = this.b;
     int k = VipFunCallUtil.a((AppRuntime)localObject, ((QQAppInterface)localObject).getAccount(), 6, true, null);
     if ((j != 0) && (j != k))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      VipFunCallUtil.a((AppRuntime)localObject, this.c, ((QQAppInterface)localObject).getAccount());
-      if ((!this.jdField_a_of_type_Boolean) && (i == 0))
+      localObject = this.b;
+      VipFunCallUtil.a((AppRuntime)localObject, this.f, ((QQAppInterface)localObject).getAccount());
+      if ((!this.c) && (i == 0))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+        localObject = this.b.getPreferences();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("funcall_tip_");
-        localStringBuilder.append(this.c);
+        localStringBuilder.append(this.f);
         i = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
         if (i < 3)
         {
           localObject = ((SharedPreferences)localObject).edit();
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("funcall_tip_");
-          localStringBuilder.append(this.c);
+          localStringBuilder.append(this.f);
           ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), i + 1);
           ((SharedPreferences.Editor)localObject).commit();
         }

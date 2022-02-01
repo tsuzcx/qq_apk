@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.vas.hippy.view;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import com.tencent.mtt.hippy.annotation.HippyController;
 import com.tencent.mtt.hippy.annotation.HippyControllerProps;
@@ -109,10 +110,21 @@ public class HippyLottieViewController
     }
     paramHippyLottieView.setStartFrame(paramInt);
   }
+  
+  @HippyControllerProps(defaultType="string", name="zipSrc")
+  public void setZipSrc(HippyLottieView paramHippyLottieView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HippyLottieViewController", 1, "setZipSrc call");
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      paramHippyLottieView.setZipSrc(paramString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.hippy.view.HippyLottieViewController
  * JD-Core Version:    0.7.0.1
  */

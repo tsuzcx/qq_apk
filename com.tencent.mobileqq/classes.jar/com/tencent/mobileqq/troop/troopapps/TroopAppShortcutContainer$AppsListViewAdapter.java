@@ -15,17 +15,17 @@ import java.util.Set;
 public class TroopAppShortcutContainer$AppsListViewAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LinkedHashMap<Integer, ArrayList<AppsBaseBuilder>> jdField_a_of_type_JavaUtilLinkedHashMap = new TroopAppShortcutContainer.AppsListViewAdapter.1(this);
+  private LinkedHashMap<Integer, ArrayList<AppsBaseBuilder>> a = new TroopAppShortcutContainer.AppsListViewAdapter.1(this);
+  private Context b;
   
   public TroopAppShortcutContainer$AppsListViewAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
   
   public AppsBaseBuilder a(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    Iterator localIterator = this.a.entrySet().iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
@@ -50,27 +50,27 @@ public class TroopAppShortcutContainer$AppsListViewAdapter
   
   public void a(int paramInt, AppsBaseBuilder paramAppsBaseBuilder)
   {
-    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(Integer.valueOf(paramInt)))
+    if (this.a.containsKey(Integer.valueOf(paramInt)))
     {
-      ((ArrayList)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt))).clear();
-      ((ArrayList)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt))).add(paramAppsBaseBuilder);
+      ((ArrayList)this.a.get(Integer.valueOf(paramInt))).clear();
+      ((ArrayList)this.a.get(Integer.valueOf(paramInt))).add(paramAppsBaseBuilder);
       notifyDataSetChanged();
     }
   }
   
   public void a(int paramInt, List<AppsBaseBuilder> paramList)
   {
-    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(Integer.valueOf(paramInt)))
+    if (this.a.containsKey(Integer.valueOf(paramInt)))
     {
-      ((ArrayList)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt))).clear();
-      ((ArrayList)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt))).addAll(paramList);
+      ((ArrayList)this.a.get(Integer.valueOf(paramInt))).clear();
+      ((ArrayList)this.a.get(Integer.valueOf(paramInt))).addAll(paramList);
       notifyDataSetChanged();
     }
   }
   
   public int getCount()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    Iterator localIterator = this.a.entrySet().iterator();
     int i = 0;
     while (localIterator.hasNext()) {
       i += ((ArrayList)((Map.Entry)localIterator.next()).getValue()).size();
@@ -111,7 +111,7 @@ public class TroopAppShortcutContainer$AppsListViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer.AppsListViewAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class VideofeedsUserGuideController$1
   public void run()
   {
     VideofeedsUserGuideController.a(this.this$0).setVisibility(8);
-    VideofeedsUserGuideController.a(this.this$0).findViewById(2131380316).setVisibility(8);
-    VideofeedsUserGuideController.a(this.this$0).findViewById(2131380312).setVisibility(8);
-    VideofeedsUserGuideController.a(this.this$0).findViewById(2131380313).setVisibility(8);
+    VideofeedsUserGuideController.a(this.this$0).findViewById(2131449246).setVisibility(8);
+    VideofeedsUserGuideController.a(this.this$0).findViewById(2131449242).setVisibility(8);
+    VideofeedsUserGuideController.a(this.this$0).findViewById(2131449243).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideofeedsUserGuideController.1
  * JD-Core Version:    0.7.0.1
  */

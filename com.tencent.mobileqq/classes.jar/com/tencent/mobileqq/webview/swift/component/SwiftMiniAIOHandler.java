@@ -14,49 +14,27 @@ public class SwiftMiniAIOHandler
   extends SwiftBrowserComponentsProvider.SwiftBrowserComponent
   implements ISwiftMiniAIO
 {
-  private int jdField_a_of_type_Int;
   protected MiniMsgUser a;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private int d;
+  private int e;
+  private String f;
   
-  private MiniMsgUser.IMiniMsgActionCallback a()
+  private MiniMsgUser.IMiniMsgActionCallback e()
   {
     return new SwiftMiniAIOHandler.1(this);
   }
   
-  protected MiniMsgUserParam a()
-  {
-    MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
-    localMiniMsgUserParam.businessName = this.jdField_a_of_type_Int;
-    localMiniMsgUserParam.accessType = 1;
-    localMiniMsgUserParam.filterMsgType = 1;
-    localMiniMsgUserParam.requestCode = 200;
-    SwiftBrowserUIStyleHandler localSwiftBrowserUIStyleHandler = (SwiftBrowserUIStyleHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(2);
-    if ((localSwiftBrowserUIStyleHandler != null) && (localSwiftBrowserUIStyleHandler.a != null) && (localSwiftBrowserUIStyleHandler.a.a() != null))
-    {
-      localMiniMsgUserParam.entryView = localSwiftBrowserUIStyleHandler.a.a();
-      localMiniMsgUserParam.unreadView = ((TextView)localSwiftBrowserUIStyleHandler.a.a().findViewById(2131371244));
-    }
-    localMiniMsgUserParam.actionCallback = a();
-    return localMiniMsgUserParam;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramInt1;
+    this.e = paramInt2;
+    this.f = paramString;
   }
   
   public void a(int paramInt, Bundle paramBundle)
@@ -64,20 +42,20 @@ public class SwiftMiniAIOHandler
     Object localObject;
     if (2 == paramInt)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+      localObject = this.a;
       if (localObject != null) {
         ((MiniMsgUser)localObject).onForeground();
       }
     }
     else if (8 == paramInt)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+      localObject = this.a;
       if (localObject != null) {
         ((MiniMsgUser)localObject).onBackground();
       }
-      localObject = (SwiftBrowserUIStyleHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(2);
-      if ((localObject != null) && (((SwiftBrowserUIStyleHandler)localObject).a != null) && (((SwiftBrowserUIStyleHandler)localObject).a.a() != null) && (((SwiftBrowserUIStyleHandler)localObject).a.c())) {
-        MiniMsgIPCClient.getInstance().clearBusiness(this.jdField_a_of_type_Int);
+      localObject = (SwiftBrowserUIStyleHandler)this.b.d().a(2);
+      if ((localObject != null) && (((SwiftBrowserUIStyleHandler)localObject).g != null) && (((SwiftBrowserUIStyleHandler)localObject).g.p() != null) && (((SwiftBrowserUIStyleHandler)localObject).g.o())) {
+        MiniMsgIPCClient.getInstance().clearBusiness(this.d);
       }
     }
     super.a(paramInt, paramBundle);
@@ -85,13 +63,13 @@ public class SwiftMiniAIOHandler
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    Object localObject = (SwiftBrowserUIStyleHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(2);
-    if ((localObject != null) && (((SwiftBrowserUIStyleHandler)localObject).a.a() != null))
+    Object localObject = (SwiftBrowserUIStyleHandler)this.b.d().a(2);
+    if ((localObject != null) && (((SwiftBrowserUIStyleHandler)localObject).g.p() != null))
     {
       int i;
       if (paramBoolean) {
@@ -99,19 +77,19 @@ public class SwiftMiniAIOHandler
       } else {
         i = 8;
       }
-      ((SwiftBrowserUIStyleHandler)localObject).a.a().setVisibility(i);
-      localObject = ((SwiftBrowserUIStyleHandler)localObject).a.a().findViewById(2131371243);
-      String str = this.jdField_b_of_type_JavaLangString;
+      ((SwiftBrowserUIStyleHandler)localObject).g.p().setVisibility(i);
+      localObject = ((SwiftBrowserUIStyleHandler)localObject).g.p().findViewById(2131438587);
+      String str = this.f;
       if (str != null) {
         if (str.equals("white")) {
-          ((View)localObject).setBackgroundResource(2130841091);
-        } else if (this.jdField_b_of_type_JavaLangString.equals("black")) {
-          ((View)localObject).setBackgroundResource(2130841090);
+          ((View)localObject).setBackgroundResource(2130841882);
+        } else if (this.f.equals("black")) {
+          ((View)localObject).setBackgroundResource(2130841881);
         }
       }
       if (paramBoolean)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+        localObject = this.a;
         if (localObject != null) {
           ((MiniMsgUser)localObject).onForeground();
         }
@@ -121,16 +99,38 @@ public class SwiftMiniAIOHandler
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = new MiniMsgUser(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a(), a());
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.onForeground();
+      this.a = new MiniMsgUser(this.b.b(), d());
+      this.a.onForeground();
     }
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  protected MiniMsgUserParam d()
+  {
+    MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
+    localMiniMsgUserParam.businessName = this.d;
+    localMiniMsgUserParam.accessType = 1;
+    localMiniMsgUserParam.filterMsgType = 1;
+    localMiniMsgUserParam.requestCode = 200;
+    SwiftBrowserUIStyleHandler localSwiftBrowserUIStyleHandler = (SwiftBrowserUIStyleHandler)this.b.d().a(2);
+    if ((localSwiftBrowserUIStyleHandler != null) && (localSwiftBrowserUIStyleHandler.g != null) && (localSwiftBrowserUIStyleHandler.g.p() != null))
+    {
+      localMiniMsgUserParam.entryView = localSwiftBrowserUIStyleHandler.g.p();
+      localMiniMsgUserParam.unreadView = ((TextView)localSwiftBrowserUIStyleHandler.g.p().findViewById(2131438588));
+    }
+    localMiniMsgUserParam.actionCallback = e();
+    return localMiniMsgUserParam;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftMiniAIOHandler
  * JD-Core Version:    0.7.0.1
  */

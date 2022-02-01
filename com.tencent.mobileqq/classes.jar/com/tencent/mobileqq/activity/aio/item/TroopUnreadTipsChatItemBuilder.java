@@ -32,27 +32,27 @@ public class TroopUnreadTipsChatItemBuilder
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558864, null);
-      paramViewHolder = (TextView)paramView.findViewById(2131367798);
+      paramView = LayoutInflater.from(this.c).inflate(2131624484, null);
+      paramViewHolder = (TextView)paramView.findViewById(2131434371);
       paramViewHolder.setMovementMethod(null);
       paramViewHolder.setGravity(17);
       paramViewHolder = paramView;
-      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      if (ThemeUtil.isInNightMode(this.a))
       {
-        paramViewHolder = (TextView)paramView.findViewById(2131368157);
-        paramLinearLayout = (TextView)paramView.findViewById(2131368158);
-        paramViewHolder.setBackgroundColor(2130842631);
-        paramLinearLayout.setBackgroundColor(2130842631);
+        paramViewHolder = (TextView)paramView.findViewById(2131435014);
+        paramLinearLayout = (TextView)paramView.findViewById(2131435015);
+        paramViewHolder.setBackgroundColor(2130843584);
+        paramLinearLayout.setBackgroundColor(2130843584);
         paramViewHolder = paramView;
       }
     }
-    paramView = (TextView)paramViewHolder.findViewById(2131367798);
+    paramView = (TextView)paramViewHolder.findViewById(2131434371);
     if ((paramMessageRecord.istroop == 1) && (AnonymousChatHelper.a().a(paramMessageRecord.senderuin)))
     {
       paramView.setTextColor(AnonymousChatHelper.d);
       return paramViewHolder;
     }
-    paramView.setTextColor(paramViewHolder.getResources().getColorStateList(2131165527));
+    paramView.setTextColor(paramViewHolder.getResources().getColorStateList(2131165854));
     return paramViewHolder;
   }
   
@@ -70,7 +70,7 @@ public class TroopUnreadTipsChatItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopUnreadTipsChatItemBuilder
  * JD-Core Version:    0.7.0.1
  */

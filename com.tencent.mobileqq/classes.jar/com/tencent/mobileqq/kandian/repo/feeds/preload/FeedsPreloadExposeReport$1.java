@@ -10,15 +10,15 @@ final class FeedsPreloadExposeReport$1
   
   public void run()
   {
-    ReadInJoyLogicEngine localReadInJoyLogicEngine = this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineReadInJoyLogicEngine;
+    ReadInJoyLogicEngine localReadInJoyLogicEngine = this.a;
     if (localReadInJoyLogicEngine != null) {
-      localReadInJoyLogicEngine.a(FeedsPreloadExposeReport.a(this.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_JavaLangString);
+      localReadInJoyLogicEngine.a(FeedsPreloadExposeReport.a(this.b), this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.preload.FeedsPreloadExposeReport.1
  * JD-Core Version:    0.7.0.1
  */

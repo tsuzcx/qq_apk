@@ -18,31 +18,31 @@ class EncryptUrlJob$1
   
   public void a(@NonNull StoryShareTranslateTokenRequest paramStoryShareTranslateTokenRequest, @Nullable StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse paramStoryShareTranslateTokenResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramStoryShareTranslateTokenResponse != null) && (paramStoryShareTranslateTokenResponse.jdField_a_of_type_Int == 0))
+    if ((paramStoryShareTranslateTokenResponse != null) && (paramStoryShareTranslateTokenResponse.c == 0))
     {
-      if (((Boolean)((StoryConfigManager)SuperManager.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {
-        paramStoryShareTranslateTokenRequest = ShareUtils.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], EncryptUrlJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobEncryptUrlJob));
+      if (((Boolean)((StoryConfigManager)SuperManager.a(10)).c("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {
+        paramStoryShareTranslateTokenRequest = ShareUtils.a(this.b[1], EncryptUrlJob.a(this.c));
       } else {
-        paramStoryShareTranslateTokenRequest = this.jdField_a_of_type_ArrayOfJavaLangString[1];
+        paramStoryShareTranslateTokenRequest = this.b[1];
       }
       paramErrorMessage = new StringBuilder();
-      paramErrorMessage.append(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+      paramErrorMessage.append(this.b[0]);
       paramErrorMessage.append("?token=");
-      paramErrorMessage.append(paramStoryShareTranslateTokenResponse.jdField_a_of_type_JavaLangString);
+      paramErrorMessage.append(paramStoryShareTranslateTokenResponse.a);
       paramErrorMessage.append("&");
       paramErrorMessage.append(paramStoryShareTranslateTokenRequest);
       paramStoryShareTranslateTokenRequest = paramErrorMessage.toString();
       if (QLog.isColorLevel()) {
         QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt done url:", paramStoryShareTranslateTokenRequest });
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobEncryptUrlJob.a("EncryptUrlJob_coverUrl", paramStoryShareTranslateTokenResponse.c);
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobEncryptUrlJob.a("EncryptUrlJob_encryptedUrl", paramStoryShareTranslateTokenRequest);
-      EncryptUrlJob.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobEncryptUrlJob, true);
+      this.c.a("EncryptUrlJob_coverUrl", paramStoryShareTranslateTokenResponse.b);
+      this.c.a("EncryptUrlJob_encryptedUrl", paramStoryShareTranslateTokenRequest);
+      EncryptUrlJob.b(this.c, true);
       return;
     }
     int i;
     if (paramStoryShareTranslateTokenResponse != null) {
-      i = paramStoryShareTranslateTokenResponse.jdField_a_of_type_Int;
+      i = paramStoryShareTranslateTokenResponse.c;
     } else {
       i = -1;
     }
@@ -53,12 +53,12 @@ class EncryptUrlJob$1
       paramStoryShareTranslateTokenRequest.append(i);
       QLog.e("EncryptUrlJob", 2, paramStoryShareTranslateTokenRequest.toString());
     }
-    EncryptUrlJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobEncryptUrlJob, false);
+    EncryptUrlJob.a(this.c, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.EncryptUrlJob.1
  * JD-Core Version:    0.7.0.1
  */

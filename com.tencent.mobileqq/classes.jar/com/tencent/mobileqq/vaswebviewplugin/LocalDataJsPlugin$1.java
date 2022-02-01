@@ -25,7 +25,7 @@ class LocalDataJsPlugin$1
       ((StringBuilder)localObject1).append(paramDownloadTask);
       QLog.d("LocalDataJsPlugin", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = paramDownloadTask.a();
+    Object localObject1 = paramDownloadTask.b();
     if (localObject1 == null)
     {
       localObject1 = new StringBuilder();
@@ -39,11 +39,11 @@ class LocalDataJsPlugin$1
     Object localObject4 = ((Bundle)localObject1).getString("localRules");
     if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (TextUtils.isDigitsOnly(str1)))
     {
-      if ((3 != paramDownloadTask.a()) && (paramDownloadTask.a() != 0))
+      if ((3 != paramDownloadTask.e()) && (paramDownloadTask.e() != 0))
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("sigTpl download fail status = ");
-        ((StringBuilder)localObject1).append(paramDownloadTask.a());
+        ((StringBuilder)localObject1).append(paramDownloadTask.e());
         ((StringBuilder)localObject1).append(" itemId = ");
         ((StringBuilder)localObject1).append(str1);
         QLog.e("LocalDataJsPlugin", 1, ((StringBuilder)localObject1).toString());
@@ -69,7 +69,7 @@ class LocalDataJsPlugin$1
           QLog.e("LocalDataJsPlugin", 1, ((StringBuilder)localObject4).toString());
           localObject2 = localObject3;
         }
-        LocalDataJsPlugin.access$000(this.this$0, str2, Integer.parseInt(str1), paramDownloadTask.c, localObject2);
+        LocalDataJsPlugin.access$000(this.this$0, str2, Integer.parseInt(str1), paramDownloadTask.h, localObject2);
       }
       return;
     }
@@ -83,7 +83,7 @@ class LocalDataJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.LocalDataJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

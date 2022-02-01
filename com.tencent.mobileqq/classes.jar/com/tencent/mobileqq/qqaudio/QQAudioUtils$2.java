@@ -7,12 +7,12 @@ final class QQAudioUtils$2
 {
   public void run()
   {
-    MediaFocusManager.a().a(QQAudioUtils.a());
+    MediaFocusManager.b().a(QQAudioUtils.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.QQAudioUtils.2
  * JD-Core Version:    0.7.0.1
  */

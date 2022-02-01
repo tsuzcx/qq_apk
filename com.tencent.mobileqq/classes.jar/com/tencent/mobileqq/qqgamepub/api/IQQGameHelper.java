@@ -2,10 +2,8 @@ package com.tencent.mobileqq.qqgamepub.api;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
 import android.view.View;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.flutter.router.PageRouter;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.mobileqq.qqgamepub.data.GmpEnterInfoRsp;
 import com.tencent.mobileqq.qqgamepub.data.QQGameMsgInfo;
@@ -13,7 +11,6 @@ import com.tencent.mobileqq.qqgamepub.view.IHeaderView;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
-import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.util.Pair;
 import java.util.List;
 import org.json.JSONObject;
@@ -23,8 +20,6 @@ public abstract interface IQQGameHelper
   extends QRouteApi
 {
   public abstract Pair<String, JSONObject> addQQGameArkField(String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject);
-  
-  public abstract int canOpenHippyByModuleName(String paramString);
   
   public abstract void dispatchVideoEvent(int paramInt);
   
@@ -44,13 +39,9 @@ public abstract interface IQQGameHelper
   
   public abstract IHeaderView getGameArkView(Activity paramActivity);
   
-  public abstract String getGamePaHippyModuleName();
+  public abstract long getGamePubLastReadTime();
   
   public abstract IHeaderView getMoreMsgHeaderView(Activity paramActivity);
-  
-  public abstract QQGameMsgInfo getMsgInfoByHippyMap(HippyMap paramHippyMap);
-  
-  public abstract int getMsgPosByHippyMap(HippyMap paramHippyMap);
   
   public abstract QIPCModule getQQGameIPCModule();
   
@@ -68,12 +59,6 @@ public abstract interface IQQGameHelper
   
   public abstract void notiftyQQGameNewMsg(List<MessageRecord> paramList);
   
-  public abstract void openQQGameCenterByHippy(Context paramContext, String paramString1, String paramString2);
-  
-  public abstract void preloadQQGameCenterByHippy();
-  
-  public abstract void preloadSw();
-  
   public abstract void publicAccountTianshuReport(int paramInt1, QQGameMsgInfo paramQQGameMsgInfo, int paramInt2);
   
   public abstract void reportArkExposure(Context paramContext, MessageRecord paramMessageRecord);
@@ -90,13 +75,11 @@ public abstract interface IQQGameHelper
   
   public abstract void startGameCenterActivity(Context paramContext, String paramString);
   
-  public abstract void startQQGameFlutter(Context paramContext, PageRouter paramPageRouter, Bundle paramBundle);
-  
   public abstract void startQQGamePubAccount(Context paramContext, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.IQQGameHelper
  * JD-Core Version:    0.7.0.1
  */

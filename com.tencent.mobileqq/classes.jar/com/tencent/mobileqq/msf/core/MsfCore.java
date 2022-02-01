@@ -12,7 +12,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.monitor.MsfMonitorCallback;
 import com.tencent.mobileqq.msf.core.auth.l;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.core.push.RegPushReason;
 import com.tencent.mobileqq.msf.sdk.CommandCallbackerInfo;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
@@ -23,6 +23,7 @@ import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.msf.sdk.aa;
 import com.tencent.mobileqq.msf.sdk.z;
 import com.tencent.mobileqq.msf.service.e;
+import com.tencent.mobileqq.msf.service.k;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -75,14 +76,14 @@ public class MsfCore
   private MsfExitReceiver msfExitReceiver;
   LinkedBlockingQueue msfMessagePairs = new LinkedBlockingQueue();
   public NetConnInfoCenter netConnICenter;
-  public com.tencent.mobileqq.msf.core.c.d netFlowStore;
+  public com.tencent.mobileqq.msf.core.d.d netFlowStore;
   public volatile String nowSocketConnAdd;
   public com.tencent.mobileqq.msf.core.push.g pushManager;
   public com.tencent.mobileqq.msf.core.quicksend.b quicksender;
-  public ac sender;
+  public ad sender;
   com.tencent.mobileqq.msf.core.a.c ssoListManager;
-  private af ssoRespHandler;
-  com.tencent.mobileqq.msf.core.d.a standbyModeManager;
+  private ag ssoRespHandler;
+  com.tencent.mobileqq.msf.core.e.a standbyModeManager;
   public j statReporter;
   MsfStore store;
   AtomicBoolean suspended = new AtomicBoolean(false);
@@ -368,7 +369,7 @@ public class MsfCore
     return this.msfMessagePairs;
   }
   
-  public com.tencent.mobileqq.msf.core.c.d getNetFlowStore()
+  public com.tencent.mobileqq.msf.core.d.d getNetFlowStore()
   {
     return this.netFlowStore;
   }
@@ -388,12 +389,12 @@ public class MsfCore
     return this.ssoListManager;
   }
   
-  public af getSsoRespHandler()
+  public ag getSsoRespHandler()
   {
     return this.ssoRespHandler;
   }
   
-  public com.tencent.mobileqq.msf.core.d.a getStandyModeManager()
+  public com.tencent.mobileqq.msf.core.e.a getStandyModeManager()
   {
     return this.standbyModeManager;
   }
@@ -483,8 +484,8 @@ public class MsfCore
     long l1 = SystemClock.elapsedRealtime();
     sCore = this;
     this.mbIsInfoLoginGetted.set(false);
-    j localj = new j(this);
-    localj.e();
+    Object localObject5 = new j(this);
+    ((j)localObject5).e();
     StringBuilder localStringBuilder1 = new StringBuilder();
     localStringBuilder1.append("init RQD cost=");
     localStringBuilder1.append(SystemClock.elapsedRealtime() - l1);
@@ -504,19 +505,18 @@ public class MsfCore
         }
       }
       catch (Exception localException1) {}
-      localStringBuilder7 = new StringBuilder();
+      localStringBuilder6 = new StringBuilder();
     }
     catch (Exception localException2)
     {
       i = -1;
     }
-    StringBuilder localStringBuilder7;
-    localStringBuilder7.append("checkAppVersionCode error ");
-    localStringBuilder7.append(localException2);
-    QLog.e("MSF.C.MsfCore", 1, localStringBuilder7.toString(), localException2);
+    localStringBuilder6.append("checkAppVersionCode error ");
+    localStringBuilder6.append(localException2);
+    QLog.e("MSF.C.MsfCore", 1, localStringBuilder6.toString(), localException2);
     boolean bool = true;
     int j = -1;
-    com.tencent.mobileqq.msf.service.k.t = bool;
+    k.t = bool;
     o.c();
     if (Build.VERSION.SDK_INT >= 26) {
       this.mDeepSleepDetector = new com.tencent.mobileqq.msf.core.net.c.a(q.f());
@@ -539,44 +539,47 @@ public class MsfCore
     }
     catch (Exception localException3)
     {
-      localStringBuilder7 = new StringBuilder();
-      localStringBuilder7.append("File operation error ");
-      localStringBuilder7.append(localException3);
-      QLog.e("MSF.C.MsfCore", 1, localStringBuilder7.toString());
+      localStringBuilder6 = new StringBuilder();
+      localStringBuilder6.append("File operation error ");
+      localStringBuilder6.append(localException3);
+      QLog.e("MSF.C.MsfCore", 1, localStringBuilder6.toString());
     }
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("check copysolib platform=");
-    localStringBuilder2.append(c.c(paramContext));
-    localStringBuilder2.append(" installAppVersionCode=");
-    localStringBuilder2.append(j);
-    localStringBuilder2.append(" isNewVersion=");
-    localStringBuilder2.append(bool);
-    QLog.i("MSF.C.MsfCore", 1, localStringBuilder2.toString());
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("check copysolib platform=");
+    ((StringBuilder)localObject2).append(c.c(paramContext));
+    ((StringBuilder)localObject2).append(" installAppVersionCode=");
+    ((StringBuilder)localObject2).append(j);
+    ((StringBuilder)localObject2).append(" isNewVersion=");
+    ((StringBuilder)localObject2).append(bool);
+    QLog.i("MSF.C.MsfCore", 1, ((StringBuilder)localObject2).toString());
     if ("x86".equals(c.c(paramContext))) {}
     try
     {
       c.a(paramContext, c.c(paramContext), bool, j, new String[] { "libcodecwrapperV2.so", "libmsfbootV2.so", "libNativeRQD.so", "libwtecdh.so" });
-      break label519;
-      c.a(paramContext, c.c(paramContext), bool, j, new String[] { "libcodecwrapperV2.so", "libNativeRQD.so" });
+      break label523;
+      localObject2 = c.c(paramContext);
+      label523:
+      try
+      {
+        c.a(paramContext, (String)localObject2, bool, j, new String[] { "libcodecwrapperV2.so", "libNativeRQD.so" });
+      }
+      catch (Exception localException4) {}
+      localException5.printStackTrace();
     }
-    catch (Exception localException4)
-    {
-      label519:
-      localException4.printStackTrace();
-      localStringBuilder7 = new StringBuilder();
-      localStringBuilder7.append("cp txlib error ");
-      localStringBuilder7.append(localException4);
-      QLog.d("MSF.C.MsfCore", 1, localStringBuilder7.toString());
-    }
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("init copySo cost=");
-    ((StringBuilder)localObject2).append(SystemClock.elapsedRealtime() - l2);
-    QLog.d("MSF.C.MsfCore", 1, ((StringBuilder)localObject2).toString());
+    catch (Exception localException5) {}
+    StringBuilder localStringBuilder6 = new StringBuilder();
+    localStringBuilder6.append("cp txlib error ");
+    localStringBuilder6.append(localException5);
+    QLog.d("MSF.C.MsfCore", 1, localStringBuilder6.toString());
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("init copySo cost=");
+    ((StringBuilder)localObject3).append(SystemClock.elapsedRealtime() - l2);
+    QLog.d("MSF.C.MsfCore", 1, ((StringBuilder)localObject3).toString());
     l2 = SystemClock.elapsedRealtime();
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("init removeSo cost=");
-    ((StringBuilder)localObject2).append(SystemClock.elapsedRealtime() - l2);
-    QLog.d("MSF.C.MsfCore", 1, ((StringBuilder)localObject2).toString());
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("init removeSo cost=");
+    ((StringBuilder)localObject3).append(SystemClock.elapsedRealtime() - l2);
+    QLog.d("MSF.C.MsfCore", 1, ((StringBuilder)localObject3).toString());
     l2 = SystemClock.elapsedRealtime();
     try
     {
@@ -586,120 +589,136 @@ public class MsfCore
         QLog.e("MSF.C.MsfCore", 1, "MsfStore init fail");
         return false;
       }
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("init msfStore cost=");
-      ((StringBuilder)localObject2).append(SystemClock.elapsedRealtime() - l2);
-      QLog.d("MSF.C.MsfCore", 1, ((StringBuilder)localObject2).toString());
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("init msfStore cost=");
+      ((StringBuilder)localObject3).append(SystemClock.elapsedRealtime() - l2);
+      QLog.d("MSF.C.MsfCore", 1, ((StringBuilder)localObject3).toString());
       l2 = SystemClock.elapsedRealtime();
       try
       {
-        localObject2 = MsfStore.getNativeConfigStore().getConfig("key_mobileQQAppid");
-        if ((localObject2 != null) && (((String)localObject2).length() > 0))
+        localObject3 = MsfStore.getNativeConfigStore().getConfig("key_mobileQQAppid");
+        if ((localObject3 != null) && (((String)localObject3).length() > 0))
         {
-          mobileQQAppid = Integer.parseInt((String)localObject2);
+          mobileQQAppid = Integer.parseInt((String)localObject3);
           if (QLog.isColorLevel())
           {
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("load mobileQQAppid ");
-            ((StringBuilder)localObject2).append(mobileQQAppid);
-            QLog.d("MSF.C.MsfCore", 2, ((StringBuilder)localObject2).toString());
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("load mobileQQAppid ");
+            ((StringBuilder)localObject3).append(mobileQQAppid);
+            QLog.d("MSF.C.MsfCore", 2, ((StringBuilder)localObject3).toString());
           }
         }
       }
-      catch (Exception localException5)
+      catch (Exception localException6)
       {
-        localStringBuilder7 = new StringBuilder();
-        localStringBuilder7.append("load mobileQQAppid failed ");
-        localStringBuilder7.append(localException5);
-        QLog.e("MSF.C.MsfCore", 1, localStringBuilder7.toString());
+        localStringBuilder6 = new StringBuilder();
+        localStringBuilder6.append("load mobileQQAppid failed ");
+        localStringBuilder6.append(localException6);
+        QLog.e("MSF.C.MsfCore", 1, localStringBuilder6.toString());
       }
-      StringBuilder localStringBuilder3 = new StringBuilder();
-      localStringBuilder3.append("init nativeConfigStore cost=");
-      localStringBuilder3.append(SystemClock.elapsedRealtime() - l2);
-      QLog.d("MSF.C.MsfCore", 1, localStringBuilder3.toString());
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("init nativeConfigStore cost=");
+      localStringBuilder2.append(SystemClock.elapsedRealtime() - l2);
+      QLog.d("MSF.C.MsfCore", 1, localStringBuilder2.toString());
       l2 = SystemClock.elapsedRealtime();
       this.wtLoginCenter = new l();
       this.wtLoginCenter.a(this);
-      localStringBuilder3 = new StringBuilder();
-      localStringBuilder3.append("init wtlogin cost=");
-      localStringBuilder3.append(SystemClock.elapsedRealtime() - l2);
-      QLog.d("MSF.C.MsfCore", 1, localStringBuilder3.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("init wtlogin cost=");
+      localStringBuilder2.append(SystemClock.elapsedRealtime() - l2);
+      QLog.d("MSF.C.MsfCore", 1, localStringBuilder2.toString());
       l2 = SystemClock.elapsedRealtime();
       this.accountCenter = new com.tencent.mobileqq.msf.core.auth.b(this);
       this.accountCenter.a(true);
-      localStringBuilder3 = new StringBuilder();
-      localStringBuilder3.append("init accountCenter cost=");
-      localStringBuilder3.append(SystemClock.elapsedRealtime() - l2);
-      QLog.d("MSF.C.MsfCore", 2, localStringBuilder3.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("init accountCenter cost=");
+      localStringBuilder2.append(SystemClock.elapsedRealtime() - l2);
+      QLog.d("MSF.C.MsfCore", 2, localStringBuilder2.toString());
       l2 = SystemClock.elapsedRealtime();
-      this.ssoRespHandler = new af(this);
+      this.ssoRespHandler = new ag(this);
       try
       {
         this.msfAlarmer = new m(this);
         this.msfAlarmer.a();
       }
-      catch (Exception localException6)
+      catch (Exception localException7)
       {
-        localStringBuilder7 = new StringBuilder();
-        localStringBuilder7.append("msfAlarmer init failed ");
-        localStringBuilder7.append(localException6);
-        QLog.e("MSF.C.MsfCore", 1, localStringBuilder7.toString());
+        localStringBuilder6 = new StringBuilder();
+        localStringBuilder6.append("msfAlarmer init failed ");
+        localStringBuilder6.append(localException7);
+        QLog.e("MSF.C.MsfCore", 1, localStringBuilder6.toString());
       }
-      StringBuilder localStringBuilder4 = new StringBuilder();
-      localStringBuilder4.append("init msfAlarm cost=");
-      localStringBuilder4.append(SystemClock.elapsedRealtime() - l2);
-      QLog.d("MSF.C.MsfCore", 1, localStringBuilder4.toString());
+      StringBuilder localStringBuilder3 = new StringBuilder();
+      localStringBuilder3.append("init msfAlarm cost=");
+      localStringBuilder3.append(SystemClock.elapsedRealtime() - l2);
+      QLog.d("MSF.C.MsfCore", 1, localStringBuilder3.toString());
       l2 = SystemClock.elapsedRealtime();
       try
       {
         this.configManager = new com.tencent.mobileqq.msf.core.a.a(this);
         this.configManager.a();
       }
-      catch (Exception localException7)
+      catch (Exception localException8)
       {
-        localStringBuilder7 = new StringBuilder();
-        localStringBuilder7.append("configManager init failed ");
-        localStringBuilder7.append(localException7);
-        QLog.e("MSF.C.MsfCore", 1, localStringBuilder7.toString());
+        localStringBuilder6 = new StringBuilder();
+        localStringBuilder6.append("configManager init failed ");
+        localStringBuilder6.append(localException8);
+        QLog.e("MSF.C.MsfCore", 1, localStringBuilder6.toString());
       }
       try
       {
         this.ssoListManager = new com.tencent.mobileqq.msf.core.a.c(this);
         this.ssoListManager.a();
       }
-      catch (Exception localException8)
+      catch (Exception localException9)
       {
-        localStringBuilder7 = new StringBuilder();
-        localStringBuilder7.append("SsoListManager init failed ");
-        localStringBuilder7.append(localException8);
-        QLog.e("MSF.C.MsfCore", 1, localStringBuilder7.toString());
+        localStringBuilder6 = new StringBuilder();
+        localStringBuilder6.append("SsoListManager init failed ");
+        localStringBuilder6.append(localException9);
+        QLog.e("MSF.C.MsfCore", 1, localStringBuilder6.toString());
       }
-      StringBuilder localStringBuilder5 = new StringBuilder();
-      localStringBuilder5.append("init sso&config cost=");
-      localStringBuilder5.append(SystemClock.elapsedRealtime() - l2);
-      QLog.d("MSF.C.MsfCore", 1, localStringBuilder5.toString());
+      StringBuilder localStringBuilder4 = new StringBuilder();
+      localStringBuilder4.append("init sso&config cost=");
+      localStringBuilder4.append(SystemClock.elapsedRealtime() - l2);
+      QLog.d("MSF.C.MsfCore", 1, localStringBuilder4.toString());
       l2 = SystemClock.elapsedRealtime();
       try
       {
         this.netConnICenter = new NetConnInfoCenter();
         NetConnInfoCenter.init(this);
       }
-      catch (Exception localException9)
+      catch (Exception localException10)
       {
-        localStringBuilder7 = new StringBuilder();
-        localStringBuilder7.append("MsfCore init netConnInfoCenter error ");
-        localStringBuilder7.append(localException9);
-        QLog.e("MSF.C.MsfCore", 1, localStringBuilder7.toString(), localException9);
+        localStringBuilder6 = new StringBuilder();
+        localStringBuilder6.append("MsfCore init netConnInfoCenter error ");
+        localStringBuilder6.append(localException10);
+        QLog.e("MSF.C.MsfCore", 1, localStringBuilder6.toString(), localException10);
       }
-      StringBuilder localStringBuilder6 = new StringBuilder();
-      localStringBuilder6.append("init network center cost=");
-      localStringBuilder6.append(SystemClock.elapsedRealtime() - l2);
-      QLog.d("MSF.C.MsfCore", 1, localStringBuilder6.toString());
+      StringBuilder localStringBuilder5 = new StringBuilder();
+      localStringBuilder5.append("init network center cost=");
+      localStringBuilder5.append(SystemClock.elapsedRealtime() - l2);
+      QLog.d("MSF.C.MsfCore", 1, localStringBuilder5.toString());
       l2 = SystemClock.elapsedRealtime();
-      Object localObject3;
+      ((j)localObject5).f();
+      if (((j)localObject5).c())
+      {
+        this.statReporter = ((j)localObject5);
+        if (k.f)
+        {
+          QLog.d("MSF.C.MsfCore", 1, "MSF_Alive_Log do report JobScheduler alive MSF to rdm in msfcore init");
+          k.a(true);
+        }
+        this.store.reportLoadCfgTempFile();
+      }
+      localStringBuilder5 = new StringBuilder();
+      localStringBuilder5.append("init beacon Cost=");
+      localStringBuilder5.append(SystemClock.elapsedRealtime() - l2);
+      QLog.d("MSF.C.MsfCore", 1, localStringBuilder5.toString());
+      l2 = SystemClock.elapsedRealtime();
+      Object localObject4;
       try
       {
-        this.sender = new ac(this);
+        this.sender = new ad(this);
         if (!this.sender.a(paramContext))
         {
           QLog.e("MSF.C.MsfCore", 1, "Sender init fail");
@@ -712,34 +731,31 @@ public class MsfCore
             this.lightTcpSender = new h(this, paramContext);
           }
         }
-        catch (Exception localException10)
+        catch (Exception localException11)
         {
-          localStringBuilder7 = new StringBuilder();
-          localStringBuilder7.append("LightSender init failed ");
-          localStringBuilder7.append(localException10);
-          QLog.e("MSF.C.MsfCore", 1, localStringBuilder7.toString());
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("LightSender init failed ");
+          ((StringBuilder)localObject5).append(localException11);
+          QLog.e("MSF.C.MsfCore", 1, ((StringBuilder)localObject5).toString());
         }
         this.accountCenter.a();
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("init sender&light cost=");
-        ((StringBuilder)localObject3).append(SystemClock.elapsedRealtime() - l2);
-        QLog.d("MSF.C.MsfCore", 1, ((StringBuilder)localObject3).toString());
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("init sender&light cost=");
+        ((StringBuilder)localObject4).append(SystemClock.elapsedRealtime() - l2);
+        QLog.d("MSF.C.MsfCore", 1, ((StringBuilder)localObject4).toString());
         l2 = SystemClock.elapsedRealtime();
         try
         {
           this.pushManager = new com.tencent.mobileqq.msf.core.push.g(this);
-          localObject3 = this.pushManager;
-          try
-          {
-            ((com.tencent.mobileqq.msf.core.push.g)localObject3).a(paramContext, paramBoolean);
-          }
-          catch (Exception paramContext) {}
-          localObject3 = new StringBuilder();
+          this.pushManager.a(paramContext, paramBoolean);
         }
-        catch (Exception paramContext) {}
-        ((StringBuilder)localObject3).append("PushManager init failed ");
-        ((StringBuilder)localObject3).append(paramContext);
-        QLog.e("MSF.C.MsfCore", 1, ((StringBuilder)localObject3).toString());
+        catch (Exception paramContext)
+        {
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("PushManager init failed ");
+          ((StringBuilder)localObject4).append(paramContext);
+          QLog.e("MSF.C.MsfCore", 1, ((StringBuilder)localObject4).toString());
+        }
         if (bool) {
           try
           {
@@ -757,7 +773,7 @@ public class MsfCore
         paramContext.append(SystemClock.elapsedRealtime() - l2);
         QLog.d("MSF.C.MsfCore", 1, paramContext.toString());
         l2 = SystemClock.elapsedRealtime();
-        this.standbyModeManager = new com.tencent.mobileqq.msf.core.d.a(this);
+        this.standbyModeManager = new com.tencent.mobileqq.msf.core.e.a(this);
         this.msfExitReceiver = new MsfExitReceiver();
         try
         {
@@ -773,12 +789,12 @@ public class MsfCore
         paramContext.append(SystemClock.elapsedRealtime() - l2);
         QLog.d("MSF.C.MsfCore", 1, paramContext.toString());
         SystemClock.elapsedRealtime();
-        new n(this, localj, j, i, paramBoolean).start();
+        new n(this, j, i, paramBoolean).start();
         this.coreInitFinished.set(true);
         initLocaleId();
         paramContext = BaseApplication.getContext().getSharedPreferences("sp_msf_common", 0);
-        localObject3 = this.delayIpRace;
-        ((AtomicLong)localObject3).set(paramContext.getLong("delay_ap_race", ((AtomicLong)localObject3).get()));
+        localObject4 = this.delayIpRace;
+        ((AtomicLong)localObject4).set(paramContext.getLong("delay_ap_race", ((AtomicLong)localObject4).get()));
         paramContext = new StringBuilder();
         paramContext.append("MsfCore init finished. cost=");
         paramContext.append(SystemClock.elapsedRealtime() - l1);
@@ -787,20 +803,20 @@ public class MsfCore
       }
       catch (Exception paramContext)
       {
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("Sender init failed ");
-        ((StringBuilder)localObject3).append(paramContext);
-        QLog.e("MSF.C.MsfCore", 1, ((StringBuilder)localObject3).toString());
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("Sender init failed ");
+        ((StringBuilder)localObject4).append(paramContext);
+        QLog.e("MSF.C.MsfCore", 1, ((StringBuilder)localObject4).toString());
         return false;
       }
       return false;
     }
     catch (Exception paramContext)
     {
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("MsfStore init error ");
-      ((StringBuilder)localObject3).append(paramContext);
-      QLog.e("MSF.C.MsfCore", 1, ((StringBuilder)localObject3).toString());
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("MsfStore init error ");
+      ((StringBuilder)localObject4).append(paramContext);
+      QLog.e("MSF.C.MsfCore", 1, ((StringBuilder)localObject4).toString());
     }
   }
   
@@ -945,9 +961,9 @@ public class MsfCore
   
   public void sendMsgSignal()
   {
-    ac localac = this.sender;
-    if (localac != null) {
-      localac.r();
+    ad localad = this.sender;
+    if (localad != null) {
+      localad.r();
     }
   }
   
@@ -962,12 +978,12 @@ public class MsfCore
     {
       if ("MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd()))
       {
-        ai.b(this, paramToServiceMsg);
+        aj.b(this, paramToServiceMsg);
         com.tencent.mobileqq.a.a.a.a().b(paramToServiceMsg);
       }
       else if ("RegPrxySvc.infoSync".equals(paramToServiceMsg.getServiceCmd()))
       {
-        ai.a(this, paramToServiceMsg);
+        aj.a(this, paramToServiceMsg);
       }
     }
     catch (Throwable localThrowable)
@@ -1011,7 +1027,7 @@ public class MsfCore
     QLog.d("msfCore", 1, localStringBuilder.toString());
     try
     {
-      u.a().a(true);
+      v.a().a(true);
     }
     catch (Throwable localThrowable)
     {
@@ -1025,7 +1041,7 @@ public class MsfCore
       HashMap localHashMap = new HashMap();
       localHashMap.put("uin", paramString1);
       localHashMap.put("src", String.valueOf(paramString2));
-      this.statReporter.a("dim.Msf.PCActiveStartEvent", true, 0L, 0L, localHashMap, false, false);
+      this.statReporter.a("dim_Msf_PCActiveStartEvent", true, 0L, 0L, localHashMap, false, false);
       return;
     }
     QLog.d("msfCore", 1, "stop try report startPCActivePolling by reporter null");
@@ -1039,7 +1055,7 @@ public class MsfCore
     QLog.d("msfCore", 1, localStringBuilder.toString());
     try
     {
-      u.a().a(false);
+      v.a().a(false);
     }
     catch (Throwable paramString)
     {
@@ -1247,7 +1263,7 @@ public class MsfCore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.MsfCore
  * JD-Core Version:    0.7.0.1
  */

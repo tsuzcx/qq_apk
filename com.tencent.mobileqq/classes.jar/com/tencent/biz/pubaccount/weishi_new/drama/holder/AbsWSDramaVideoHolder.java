@@ -17,8 +17,8 @@ import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerUtils.PlayerLayoutPa
 public abstract class AbsWSDramaVideoHolder
   extends AbsWSDramaHolder
 {
-  private IWSPlayerUIDelegate jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate;
-  private WSPlayerParam jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
+  private WSPlayerParam d;
+  private IWSPlayerUIDelegate e;
   
   public AbsWSDramaVideoHolder(ViewGroup paramViewGroup, int paramInt1, int paramInt2, WSDramaPageContract.View paramView)
   {
@@ -30,56 +30,26 @@ public abstract class AbsWSDramaVideoHolder
     return b(paramstSimpleMetaFeed);
   }
   
-  private ImageView a()
-  {
-    WSDramaItemVideoAreaController localWSDramaItemVideoAreaController = a();
-    if (localWSDramaItemVideoAreaController != null) {
-      return localWSDramaItemVideoAreaController.a();
-    }
-    return null;
-  }
-  
-  private WSDramaItemVideoAreaController a()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView instanceof AbsWSDramaVideoItemView)) {
-      return ((AbsWSDramaVideoItemView)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView).a();
-    }
-    return null;
-  }
-  
   private int b(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    return WSPlayerUtils.b(new WSPlayerUtils.PlayerLayoutParams(a(), a(), paramstSimpleMetaFeed.video.width, paramstSimpleMetaFeed.video.height, a(), b()));
+    return WSPlayerUtils.b(new WSPlayerUtils.PlayerLayoutParams(f(), g(), paramstSimpleMetaFeed.video.width, paramstSimpleMetaFeed.video.height, c(), d()));
   }
   
-  public int a()
+  private ImageView g()
   {
-    return 0;
-  }
-  
-  public ViewGroup a()
-  {
-    WSDramaItemVideoAreaController localWSDramaItemVideoAreaController = a();
+    WSDramaItemVideoAreaController localWSDramaItemVideoAreaController = h();
     if (localWSDramaItemVideoAreaController != null) {
-      return localWSDramaItemVideoAreaController.a();
+      return localWSDramaItemVideoAreaController.m();
     }
     return null;
   }
   
-  public WSPlayerParam a()
+  private WSDramaItemVideoAreaController h()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    WSDramaPageContract.View localView = a();
-    if ((localView != null) && (localView.a() != null))
-    {
-      localView.a().f(a());
-      localView.a().e(a());
+    if ((this.b instanceof AbsWSDramaVideoItemView)) {
+      return ((AbsWSDramaVideoItemView)this.b).e();
     }
+    return null;
   }
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt, String paramString)
@@ -89,25 +59,25 @@ public abstract class AbsWSDramaVideoHolder
       a(null);
       return;
     }
-    if (a() == null) {
+    if (e() == null) {
       paramString = new WSPlayerParam();
     } else {
-      paramString = a();
+      paramString = e();
     }
-    IWSPlayerUIDelegate localIWSPlayerUIDelegate = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate;
+    IWSPlayerUIDelegate localIWSPlayerUIDelegate = this.e;
     Object localObject = localIWSPlayerUIDelegate;
     if (localIWSPlayerUIDelegate == null) {
       localObject = new WSDramaPlayerUIDelegate(this);
     }
-    paramString.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate = ((IWSPlayerUIDelegate)localObject);
-    paramString.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo = WSPlayerUtils.a(paramstSimpleMetaFeed);
-    paramString.jdField_a_of_type_AndroidViewViewGroup = a();
-    paramString.jdField_a_of_type_Int = a(paramstSimpleMetaFeed);
-    paramString.jdField_a_of_type_Long = 0L;
-    paramString.jdField_b_of_type_Boolean = true;
-    paramString.jdField_b_of_type_Int = paramInt;
-    paramString.jdField_a_of_type_JavaLangString = "drama_preview";
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate = paramString.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate;
+    paramString.k = ((IWSPlayerUIDelegate)localObject);
+    paramString.c = WSPlayerUtils.a(paramstSimpleMetaFeed);
+    paramString.a = f();
+    paramString.e = a(paramstSimpleMetaFeed);
+    paramString.g = 0L;
+    paramString.i = true;
+    paramString.f = paramInt;
+    paramString.j = "drama_preview";
+    this.e = paramString.k;
     a(paramString);
   }
   
@@ -116,28 +86,58 @@ public abstract class AbsWSDramaVideoHolder
     super.a(paramWSDramaItemData);
     WSDramaPageContract.View localView = a();
     if (localView != null) {
-      a(paramWSDramaItemData.a(), getLayoutPosition() - 1, localView.a());
+      a(paramWSDramaItemData.i(), getLayoutPosition() - 1, localView.b());
     }
   }
   
   public void a(WSPlayerParam paramWSPlayerParam)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = paramWSPlayerParam;
+    this.d = paramWSPlayerParam;
   }
   
-  protected boolean a()
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    WSDramaPageContract.View localView = a();
+    if ((localView != null) && (localView.aK_() != null))
+    {
+      localView.aK_().f(b());
+      localView.aK_().e(b());
+    }
+  }
+  
+  protected boolean b()
   {
     return false;
   }
   
-  public int b()
+  public int c()
   {
     return 0;
+  }
+  
+  public int d()
+  {
+    return 0;
+  }
+  
+  public WSPlayerParam e()
+  {
+    return this.d;
+  }
+  
+  public ViewGroup f()
+  {
+    WSDramaItemVideoAreaController localWSDramaItemVideoAreaController = h();
+    if (localWSDramaItemVideoAreaController != null) {
+      return localWSDramaItemVideoAreaController.l();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.holder.AbsWSDramaVideoHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<inset android:insetLeft="@dimen/4l" android:insetRight="@dimen/4l" android:insetTop="@dimen/4m" android:insetBottom="@dimen/4m"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:drawable="@drawable/l1" />
-    <item android:state_pressed="true" android:drawable="@drawable/l1" />
-    <item android:drawable="@android:color/transparent" />
-</selector>
+    <shape android:shape="rectangle">
+        <corners android:radius="@dimen/4r" />
+        <solid android:color="@android:color/white" />
+        <padding android:left="@dimen/4n" android:top="@dimen/4o" android:right="@dimen/4n" android:bottom="@dimen/4o" />
+    </shape>
+</inset>

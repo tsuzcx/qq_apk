@@ -15,28 +15,28 @@ class HardCoderManager$3
   {
     QLog.d("HardCoder.QQManager", 1, "start download");
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HCPerfManager.b);
+    ((StringBuilder)localObject).append(HCPerfManager.getSoPath());
     ((StringBuilder)localObject).append("_tmp");
     localObject = new File(((StringBuilder)localObject).toString());
-    int i = HttpDownloadUtil.downloadData(MobileQQ.sMobileQQ.waitAppRuntime(null), "https://qd.myapp.com/myapp/qqteam/qq_tools/libhc4.jpg", (File)localObject);
+    int i = HttpDownloadUtil.downloadData(MobileQQ.sMobileQQ.waitAppRuntime(null), HardCoderManager.getSoUrl(), (File)localObject);
     if (i == 0)
     {
-      if ((((File)localObject).exists()) && ("5c08438266c3084212bb9307aa7c2aaa".equalsIgnoreCase(MD5.a((File)localObject))))
+      if ((((File)localObject).exists()) && (HCPerfManager.getSoMd5().equalsIgnoreCase(MD5.a((File)localObject))))
       {
-        ((File)localObject).renameTo(new File(HCPerfManager.b));
-        HardCoderManager.a(this.this$0, 6);
+        ((File)localObject).renameTo(new File(HCPerfManager.getSoPath()));
+        HardCoderManager.access$202(this.this$0, 6);
       }
       else
       {
         QLog.d("HardCoder.QQManager", 1, "check md5 fail");
         ((File)localObject).delete();
-        HardCoderManager.a(this.this$0, 5);
+        HardCoderManager.access$202(this.this$0, 5);
       }
     }
     else {
-      HardCoderManager.a(this.this$0, 5);
+      HardCoderManager.access$202(this.this$0, 5);
     }
-    localObject = new File(HCPerfManager.a);
+    localObject = new File(HCPerfManager.SO_PATH_OLD);
     if (((File)localObject).exists()) {
       ((File)localObject).delete();
     }
@@ -44,13 +44,13 @@ class HardCoderManager$3
     ((StringBuilder)localObject).append("downloadResult = ");
     ((StringBuilder)localObject).append(i);
     ((StringBuilder)localObject).append(", state = ");
-    ((StringBuilder)localObject).append(HardCoderManager.a(this.this$0));
+    ((StringBuilder)localObject).append(HardCoderManager.access$200(this.this$0));
     QLog.d("HardCoder.QQManager", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HardCoderManager.3
  * JD-Core Version:    0.7.0.1
  */

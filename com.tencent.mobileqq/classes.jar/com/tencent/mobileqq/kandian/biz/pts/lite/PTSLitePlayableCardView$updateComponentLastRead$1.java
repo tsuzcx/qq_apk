@@ -17,7 +17,7 @@ final class PTSLitePlayableCardView$updateComponentLastRead$1
   
   public final void a(View paramView, Map<String, Object> paramMap)
   {
-    paramView = this.a.a();
+    paramView = this.a.y();
     Intrinsics.checkExpressionValueIsNotNull(paramView, "adapter.listenerBuilder");
     paramView = paramView.a();
     if (paramView != null) {
@@ -27,7 +27,7 @@ final class PTSLitePlayableCardView$updateComponentLastRead$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.lite.PTSLitePlayableCardView.updateComponentLastRead.1
  * JD-Core Version:    0.7.0.1
  */

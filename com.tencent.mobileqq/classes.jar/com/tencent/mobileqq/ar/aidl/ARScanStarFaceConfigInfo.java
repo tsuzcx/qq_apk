@@ -9,14 +9,14 @@ public class ARScanStarFaceConfigInfo
 {
   public static final Parcelable.Creator<ARScanStarFaceConfigInfo> CREATOR = new ARScanStarFaceConfigInfo.1();
   public String a;
-  public ARScanStarFaceActInfo[] a;
+  public ARScanStarFaceActInfo[] b;
   
   public ARScanStarFaceConfigInfo() {}
   
   protected ARScanStarFaceConfigInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqArAidlARScanStarFaceActInfo = ((ARScanStarFaceActInfo[])paramParcel.createTypedArray(ARScanStarFaceActInfo.CREATOR));
+    this.a = paramParcel.readString();
+    this.b = ((ARScanStarFaceActInfo[])paramParcel.createTypedArray(ARScanStarFaceActInfo.CREATOR));
   }
   
   public int describeContents()
@@ -26,13 +26,13 @@ public class ARScanStarFaceConfigInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeTypedArray(this.jdField_a_of_type_ArrayOfComTencentMobileqqArAidlARScanStarFaceActInfo, paramInt);
+    paramParcel.writeString(this.a);
+    paramParcel.writeTypedArray(this.b, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo
  * JD-Core Version:    0.7.0.1
  */

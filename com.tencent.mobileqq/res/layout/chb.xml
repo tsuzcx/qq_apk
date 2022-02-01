@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nnv" android:background="@drawable/ibo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="40.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="40.0dip" android:textColor="@color/al3" android:id="@id/oib" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wkc" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="24.0dip" android:textColor="@color/al3" android:id="@id/oia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wkb" android:layout_below="@id/oib" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="24.0dip" android:textColor="@color/al3" android:id="@id/oi_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/wka" android:layout_below="@id/oia" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/nnw" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/di6" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/apb" android:layout_gravity="center_vertical" android:id="@id/nnx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="12.0dip" android:maxWidth="128.0dip" android:minWidth="55.0dip" android:singleLine="true" />
+</LinearLayout>

@@ -32,14 +32,14 @@ public class PublicAccountMsgBoxHandler
     return false;
   }
   
-  public boolean a(AppInterface paramAppInterface, String paramString)
+  public boolean b(AppInterface paramAppInterface, String paramString)
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.businesshandler.PublicAccountMsgBoxHandler
  * JD-Core Version:    0.7.0.1
  */

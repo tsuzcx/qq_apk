@@ -12,19 +12,19 @@ class TextureVideoView$3
   public void a(IMediaPlayer paramIMediaPlayer)
   {
     paramIMediaPlayer = this.a;
-    paramIMediaPlayer.jdField_a_of_type_Int = 5;
-    paramIMediaPlayer.b = 5;
-    if (paramIMediaPlayer.jdField_a_of_type_AndroidWidgetMediaController != null) {
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    paramIMediaPlayer.f = 5;
+    paramIMediaPlayer.g = 5;
+    if (paramIMediaPlayer.m != null) {
+      this.a.m.hide();
     }
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer);
+    if (this.a.n != null) {
+      this.a.n.a(this.a.i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.TextureVideoView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -18,40 +18,40 @@ class XMediaEditor$3
       return;
     }
     paramInt1 = paramInt2 - paramInt1;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(XMediaEditor.a(this.a), XMediaEditor.a(this.a) + paramInt1);
+    if (XMediaEditor.e(this.a) != null) {
+      XMediaEditor.e(this.a).a(XMediaEditor.f(this.a), XMediaEditor.f(this.a) + paramInt1);
     }
     XMediaEditor localXMediaEditor = this.a;
-    XMediaEditor.a(localXMediaEditor, XMediaEditor.a(localXMediaEditor) + paramInt1);
+    XMediaEditor.a(localXMediaEditor, XMediaEditor.f(localXMediaEditor) + paramInt1);
   }
   
   public void a(RecyclerView.ViewHolder paramViewHolder)
   {
-    paramViewHolder = ((EditorViewHolderManager.EditViewHolderBase)paramViewHolder).jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase;
-    this.a.a(paramViewHolder.c);
+    paramViewHolder = ((EditorViewHolderManager.EditViewHolderBase)paramViewHolder).f;
+    this.a.a(paramViewHolder.g);
   }
   
   public void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
   {
-    if (XMediaEditor.a(this.a) != this.a.a.a())
+    if (XMediaEditor.b(this.a) != this.a.a.d())
     {
       paramViewHolder = this.a;
-      XMediaEditor.a(paramViewHolder, XMediaEditor.a(paramViewHolder) ^ true);
-      if (XMediaEditor.a(this.a) != null) {
-        XMediaEditor.a(this.a).a(XMediaEditor.a(this.a));
+      XMediaEditor.a(paramViewHolder, XMediaEditor.b(paramViewHolder) ^ true);
+      if (XMediaEditor.c(this.a) != null) {
+        XMediaEditor.c(this.a).a(XMediaEditor.b(this.a));
       }
     }
   }
   
   public void b(RecyclerView.ViewHolder paramViewHolder)
   {
-    int i = ((EditorViewHolderManager.EditViewHolderBase)paramViewHolder).jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase.c;
+    int i = ((EditorViewHolderManager.EditViewHolderBase)paramViewHolder).f.g;
     if (i == 0) {
       return;
     }
     paramViewHolder = this.a.a;
     i -= 1;
-    paramViewHolder = paramViewHolder.a(i);
+    paramViewHolder = paramViewHolder.c(i);
     if ((paramViewHolder != null) && (paramViewHolder.b() == -1)) {
       return;
     }
@@ -62,25 +62,25 @@ class XMediaEditor$3
   {
     paramViewHolder = (TextItem.TextViewHolder)paramViewHolder;
     if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a = false;
+      XMediaEditor.a(this.a).c = false;
     }
-    XMediaEditor.a(this.a, (TextInfo)paramViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase);
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, true);
+    XMediaEditor.a(this.a, (TextInfo)paramViewHolder.f);
+    if (XMediaEditor.d(this.a) != null) {
+      XMediaEditor.d(this.a).a(paramViewHolder.b, true);
     }
   }
   
   public void d(RecyclerView.ViewHolder paramViewHolder)
   {
     paramViewHolder = (TextItem.TextViewHolder)paramViewHolder;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, false);
+    if (XMediaEditor.d(this.a) != null) {
+      XMediaEditor.d(this.a).a(paramViewHolder.b, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor.3
  * JD-Core Version:    0.7.0.1
  */

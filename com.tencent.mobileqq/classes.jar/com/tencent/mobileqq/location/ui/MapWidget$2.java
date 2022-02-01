@@ -9,8 +9,8 @@ import com.tencent.tencentmap.mapsdk.maps.model.TencentMapGestureListener;
 class MapWidget$2
   implements TencentMapGestureListener
 {
-  private boolean jdField_a_of_type_Boolean = false;
-  private volatile boolean b = false;
+  private boolean b = false;
+  private volatile boolean c = false;
   
   MapWidget$2(MapWidget paramMapWidget) {}
   
@@ -21,9 +21,9 @@ class MapWidget$2
   
   public boolean onDown(float paramFloat1, float paramFloat2)
   {
-    this.b = true;
-    if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(false, new Point(Math.round(paramFloat1), Math.round(paramFloat2)));
+    this.c = true;
+    if (MapWidget.a(this.a) != null) {
+      MapWidget.a(this.a).a(false, new Point(Math.round(paramFloat1), Math.round(paramFloat2)));
     }
     return false;
   }
@@ -40,15 +40,15 @@ class MapWidget$2
   
   public void onMapStable()
   {
-    if ((this.b) && (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null)) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getCameraPosition().target);
+    if ((this.c) && (MapWidget.a(this.a) != null)) {
+      MapWidget.a(this.a).a(this.a.b.getCameraPosition().target);
     }
-    this.b = false;
+    this.c = false;
   }
   
   public boolean onScroll(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     return false;
   }
   
@@ -59,17 +59,17 @@ class MapWidget$2
   
   public boolean onUp(float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       ReportController.b(null, "CliOper", "", "", "0X800A772", "0X800A772", 0, 0, "", "0", "0", "");
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.MapWidget.2
  * JD-Core Version:    0.7.0.1
  */

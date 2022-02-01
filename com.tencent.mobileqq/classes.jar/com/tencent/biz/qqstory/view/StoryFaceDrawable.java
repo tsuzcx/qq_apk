@@ -10,13 +10,13 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 public class StoryFaceDrawable
   extends Drawable
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private Bitmap a;
+  private Matrix b;
   
   public void draw(Canvas paramCanvas)
   {
     SLog.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw start.");
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
+    paramCanvas.drawBitmap(this.a, this.b, null);
     SLog.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw end.");
   }
   

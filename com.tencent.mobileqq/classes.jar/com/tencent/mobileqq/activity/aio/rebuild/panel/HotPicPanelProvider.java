@@ -18,27 +18,27 @@ import com.tencent.widget.XPanelContainer;
 public class HotPicPanelProvider
   implements ILifeCycleHelper, PanelProvider<HotPicMainPanel>
 {
-  private AIOContext a;
   public HotPicMainPanel a;
+  private AIOContext b;
   
   public HotPicPanelProvider(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.b = paramAIOContext;
   }
   
   public HotPicMainPanel a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel;
+    return this.a;
   }
   
   public HotPicMainPanel a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel = ((HotPicMainPanel)View.inflate(paramContext, 2131558547, null));
-    HotPicMainPanel localHotPicMainPanel = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel;
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-    AIOContext localAIOContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-    localHotPicMainPanel.a(localQQAppInterface, paramContext, localAIOContext, localAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a());
-    return this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel;
+    this.a = ((HotPicMainPanel)View.inflate(paramContext, 2131624103, null));
+    HotPicMainPanel localHotPicMainPanel = this.a;
+    QQAppInterface localQQAppInterface = this.b.a();
+    AIOContext localAIOContext = this.b;
+    localHotPicMainPanel.a(localQQAppInterface, paramContext, localAIOContext, localAIOContext.C(), this.b.q().d());
+    return this.a;
   }
   
   public int getPanelId()
@@ -72,9 +72,9 @@ public class HotPicPanelProvider
       if (paramInt != 15) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel != null)
+      if (this.a != null)
       {
-        localObject = HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
+        localObject = HotPicManager.a(this.b.a());
         if (localObject != null) {
           ((HotPicManager)localObject).a(false);
         }
@@ -82,7 +82,7 @@ public class HotPicPanelProvider
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel;
+      localObject = this.a;
       if (localObject != null) {
         ((HotPicMainPanel)localObject).e();
       }
@@ -97,20 +97,20 @@ public class HotPicPanelProvider
       if (paramInt2 != 1) {
         bool = false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a(bool);
+      this.a.a(bool);
     }
     if (paramInt2 == 24) {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.f();
+      this.a.g();
     }
   }
   
   public void onPanelIconClick(XPanelContainer paramXPanelContainer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(24, true);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext instanceof LimitContext))
+    this.b.q().a(24, true);
+    if ((this.b instanceof LimitContext))
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.setOnHotPicItemClickListener(new HotPicPanelProvider.SendGifListener(this));
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), "dc00898", "", "", "0X80096AC", "0X80096AC", ((LimitContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).f(), 0, "", "", "", "");
+      this.a.setOnHotPicItemClickListener(new HotPicPanelProvider.SendGifListener(this));
+      ReportController.b(this.b.a(), "dc00898", "", "", "0X80096AC", "0X80096AC", ((LimitContext)this.b).P(), 0, "", "", "", "");
     }
   }
   
@@ -118,14 +118,14 @@ public class HotPicPanelProvider
   
   public void postOnPanelChanged(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a() != null) && (paramInt2 == 24)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().setSelected(8);
+    if ((this.b.C() != null) && (paramInt2 == 24)) {
+      this.b.C().setSelected(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.panel.HotPicPanelProvider
  * JD-Core Version:    0.7.0.1
  */

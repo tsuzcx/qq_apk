@@ -29,15 +29,15 @@ class ContactBannerProcessor$1
     localStringBuilder.append(ContactBannerProcessor.c(this.a).getAppRuntime().getAccount());
     ((QBaseActivity)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("key_show_contact_banner", false).commit();
     BannerManager.a().a(ContactBannerProcessor.a, 0);
-    ContactBannerProcessor.a(this.a).removeMessages(1000);
-    ReportController.a(ContactBannerProcessor.e(this.a).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 13, 0, "", "", "", "");
-    ReportController.b(ContactBannerProcessor.f(this.a).getAppRuntime(), "CliOper", "", "", "0X80053D9", "0X80053D9", 0, 0, "", "", "", "");
+    ContactBannerProcessor.e(this.a).removeMessages(1000);
+    ReportController.a(ContactBannerProcessor.f(this.a).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 13, 0, "", "", "", "");
+    ReportController.b(ContactBannerProcessor.g(this.a).getAppRuntime(), "CliOper", "", "", "0X80053D9", "0X80053D9", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.ContactBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

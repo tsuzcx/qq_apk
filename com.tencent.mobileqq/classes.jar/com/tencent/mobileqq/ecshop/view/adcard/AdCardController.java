@@ -5,13 +5,17 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.mobileqq.ecshop.report.ReportUtil;
 import com.tencent.mobileqq.ecshop.temp.api.IEcshopMessageApi;
@@ -20,113 +24,160 @@ import com.tencent.mobileqq.ecshop.view.controller.CardController;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.ViewUtils;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import kotlin.Metadata;
+import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/view/adcard/AdCardController;", "Lcom/tencent/mobileqq/ecshop/view/controller/CardController;", "adCardModel", "Lcom/tencent/mobileqq/ecshop/view/adcard/AdCardModel;", "parent", "Landroid/view/ViewGroup;", "imageHeight", "", "adStyle", "", "position", "reportData", "", "(Lcom/tencent/mobileqq/ecshop/view/adcard/AdCardModel;Landroid/view/ViewGroup;ILjava/lang/String;ILjava/util/Map;)V", "adCardAdSourceLayout", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "getAdCardAdSourceLayout", "()Landroid/widget/LinearLayout;", "adCardBtn", "Landroid/widget/TextView;", "adCardCorporateImage", "Landroid/widget/ImageView;", "adCardCorporateName", "adCardImage", "adCardTitle", "adCardVideoPlayImg", "itemView", "Landroid/view/View;", "doReportClick", "", "getItemView", "getLayoutId", "type", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/view/adcard/AdCardController;", "Lcom/tencent/mobileqq/ecshop/view/controller/CardController;", "adCardModel", "Lcom/tencent/mobileqq/ecshop/view/adcard/AdCardModel;", "parent", "Landroid/view/ViewGroup;", "imageWidth", "", "imageHeight", "adStyle", "", "position", "reportData", "", "(Lcom/tencent/mobileqq/ecshop/view/adcard/AdCardModel;Landroid/view/ViewGroup;IILjava/lang/String;ILjava/util/Map;)V", "adCardAdSourceLayout", "Landroid/widget/LinearLayout;", "getAdCardAdSourceLayout", "()Landroid/widget/LinearLayout;", "adCardBtn", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "adCardCorporateImage", "Landroid/widget/ImageView;", "adCardCorporateImageBg", "Landroid/widget/FrameLayout;", "adCardCorporateLayout", "adCardCorporateName", "adCardImage", "adCardTitle", "adCardVideoPlayImg", "itemView", "Landroid/view/View;", "doReportClick", "", "getItemView", "getLayoutId", "type", "Companion", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
 public final class AdCardController
   implements CardController
 {
-  private final int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final AdCardModel jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel;
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private final ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private final TextView jdField_b_of_type_AndroidWidgetTextView;
-  private final ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private final TextView jdField_c_of_type_AndroidWidgetTextView;
+  public static final AdCardController.Companion a = new AdCardController.Companion(null);
+  private final View b;
+  private final ImageView c;
+  private final TextView d;
+  private final TextView e;
+  private final LinearLayout f;
+  private final ImageView g;
+  private final FrameLayout h;
+  private final TextView i;
+  private final ImageView j;
+  @NotNull
+  private final LinearLayout k;
+  private final AdCardModel l;
+  private final int m;
+  private final Map<String, String> n;
   
-  public AdCardController(@NotNull AdCardModel paramAdCardModel, @NotNull ViewGroup paramViewGroup, int paramInt1, @NotNull String paramString, int paramInt2, @NotNull Map<String, String> paramMap)
+  public AdCardController(@NotNull AdCardModel paramAdCardModel, @NotNull ViewGroup paramViewGroup, int paramInt1, int paramInt2, @NotNull String paramString, int paramInt3, @NotNull Map<String, String> paramMap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel = paramAdCardModel;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.l = paramAdCardModel;
+    this.m = paramInt3;
+    this.n = paramMap;
     paramAdCardModel = LayoutInflater.from(paramViewGroup.getContext()).inflate(a(paramString), paramViewGroup, false);
     Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "LayoutInflater.from(pare…(adStyle), parent, false)");
-    this.jdField_a_of_type_AndroidViewView = paramAdCardModel;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362075));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362078));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362070));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362072));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362074));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362079));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362069));
+    this.b = paramAdCardModel;
+    this.c = ((ImageView)this.b.findViewById(2131427654));
+    this.d = ((TextView)this.b.findViewById(2131427657));
+    this.e = ((TextView)this.b.findViewById(2131427648));
+    this.f = ((LinearLayout)this.b.findViewById(2131427652));
+    this.g = ((ImageView)this.b.findViewById(2131427650));
+    this.h = ((FrameLayout)this.b.findViewById(2131427651));
+    this.i = ((TextView)this.b.findViewById(2131427653));
+    this.j = ((ImageView)this.b.findViewById(2131427658));
+    paramAdCardModel = (LinearLayout)this.b.findViewById(2131427647);
+    Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "itemView.ad_card_ad_source_layout");
+    this.k = paramAdCardModel;
     paramAdCardModel = paramViewGroup.getContext();
     Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "parent.context");
-    paramAdCardModel = paramAdCardModel.getResources().getDrawable(2130846285);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)QQShopPicUtil.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel.a(), paramAdCardModel));
-    paramAdCardModel = this.jdField_a_of_type_AndroidWidgetImageView;
+    paramAdCardModel = paramAdCardModel.getResources().getDrawable(2130847755);
+    this.c.setImageDrawable((Drawable)QQShopPicUtil.a(this.l.b(), paramAdCardModel));
+    paramAdCardModel = this.c;
     Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "adCardImage");
     paramAdCardModel = paramAdCardModel.getLayoutParams();
     if (paramAdCardModel != null) {
-      paramAdCardModel.height = paramInt1;
+      paramAdCardModel.height = paramInt2;
     }
-    paramAdCardModel = this.jdField_a_of_type_AndroidWidgetTextView;
+    paramAdCardModel = this.b.getLayoutParams();
+    if (paramAdCardModel != null) {
+      paramAdCardModel.width = paramInt1;
+    }
+    paramAdCardModel = this.d;
     Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "adCardTitle");
-    paramAdCardModel.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel.c());
-    paramViewGroup = this.jdField_b_of_type_AndroidWidgetTextView;
+    paramAdCardModel.setText((CharSequence)this.l.d());
+    paramViewGroup = this.e;
     Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "adCardBtn");
-    if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel.d())) {
+    if (TextUtils.isEmpty((CharSequence)this.l.e())) {
       paramAdCardModel = "去看看";
     } else {
-      paramAdCardModel = this.jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel.d();
+      paramAdCardModel = this.l.e();
     }
     paramViewGroup.setText((CharSequence)paramAdCardModel);
-    paramAdCardModel = this.jdField_c_of_type_AndroidWidgetTextView;
-    Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "adCardCorporateName");
-    paramAdCardModel.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel.e());
-    if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel.f()))
+    paramInt2 = paramInt1 - ViewUtils.dip2px(40.0F);
+    paramInt1 = paramInt2;
+    if (!TextUtils.isEmpty((CharSequence)this.l.f()))
     {
-      paramAdCardModel = this.jdField_b_of_type_AndroidWidgetImageView;
-      Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "adCardCorporateImage");
+      paramAdCardModel = this.i;
+      Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "adCardCorporateName");
+      paramAdCardModel.setText((CharSequence)this.l.f());
+      paramAdCardModel = this.i;
+      Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "adCardCorporateName");
+      paramInt1 = paramInt2 - (int)paramAdCardModel.getPaint().measureText(this.l.f());
+    }
+    if (TextUtils.isEmpty((CharSequence)this.l.g()))
+    {
+      paramAdCardModel = this.h;
+      Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "adCardCorporateImageBg");
       paramAdCardModel.setVisibility(8);
     }
     else
     {
-      paramAdCardModel = this.jdField_b_of_type_AndroidWidgetImageView;
-      Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "adCardCorporateImage");
+      paramAdCardModel = this.h;
+      Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "adCardCorporateImageBg");
       paramAdCardModel.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)QQShopPicUtil.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel.f(), (Drawable)new ColorDrawable(Color.parseColor("#FFFBFBFC"))));
+      this.g.setImageDrawable((Drawable)QQShopPicUtil.a(this.l.g(), (Drawable)new ColorDrawable(Color.parseColor("#FFFBFBFC"))));
+      paramInt1 -= ViewUtils.dip2px(23.0F);
     }
-    paramAdCardModel = QQShopPicUtil.a;
-    paramViewGroup = this.jdField_b_of_type_AndroidWidgetImageView;
-    Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "adCardCorporateImage");
-    paramAdCardModel.a((View)paramViewGroup, 50.0F);
-    QQShopPicUtil.a.a(this.jdField_a_of_type_AndroidViewView, 30.0F);
-    paramAdCardModel = QQShopPicUtil.a;
-    paramViewGroup = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-    Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "adCardAdSourceLayout");
-    paramAdCardModel.a((View)paramViewGroup, 5.0F);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)new AdCardController.1(this));
-    if (this.jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel.c())
+    paramAdCardModel = this.l.m().iterator();
+    while (paramAdCardModel.hasNext())
     {
-      paramAdCardModel = this.jdField_c_of_type_AndroidWidgetImageView;
+      paramViewGroup = (String)paramAdCardModel.next();
+      paramString = (CharSequence)paramViewGroup;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramMap = LayoutInflater.from(this.b.getContext()).inflate(2131627831, (ViewGroup)this.f, false);
+        if (paramMap != null)
+        {
+          paramMap = (TextView)paramMap;
+          paramMap.setText(paramString);
+          paramMap.setTextSize(1, 10.0F);
+          paramString = new LinearLayout.LayoutParams(-2, ViewUtils.dip2px(15.0F));
+          paramString.setMargins(ViewUtils.dip2px(4.5F), 0, 0, 0);
+          paramInt2 = (int)paramMap.getPaint().measureText(paramViewGroup) + ViewUtils.dip2px(9.5F);
+          if (paramInt1 > paramInt2)
+          {
+            this.f.addView((View)paramMap, (ViewGroup.LayoutParams)paramString);
+            paramInt1 -= paramInt2;
+          }
+        }
+        else
+        {
+          throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
+        }
+      }
+    }
+    if (this.l.k())
+    {
+      paramAdCardModel = this.j;
       Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "adCardVideoPlayImg");
       paramAdCardModel.setVisibility(0);
     }
     else
     {
-      paramAdCardModel = this.jdField_c_of_type_AndroidWidgetImageView;
+      paramAdCardModel = this.j;
       Intrinsics.checkExpressionValueIsNotNull(paramAdCardModel, "adCardVideoPlayImg");
       paramAdCardModel.setVisibility(8);
     }
-    if (Intrinsics.areEqual("3", this.jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel.g())) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener((View.OnClickListener)new AdCardController.2(this));
+    this.g.post((Runnable)new AdCardController.1(this));
+    QQShopPicUtil.a(this.b, 30.0F);
+    QQShopPicUtil.a((View)this.k, 5.0F);
+    this.b.setOnClickListener((View.OnClickListener)new AdCardController.2(this));
+    if (Intrinsics.areEqual("3", this.l.l())) {
+      this.c.setOnClickListener((View.OnClickListener)new AdCardController.3(this));
     }
   }
   
-  private final void a()
+  private final void c()
   {
-    String str2 = ((IEcshopMessageApi)QRoute.api(IEcshopMessageApi.class)).getLastMsgType(this.jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel.a());
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEcshopViewAdcardAdCardModel.a();
+    String str2 = ((IEcshopMessageApi)QRoute.api(IEcshopMessageApi.class)).getLastMsgType(this.l.h());
+    Object localObject = this.l.a();
     if (localObject != null)
     {
       localObject = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).report_info;
@@ -138,51 +189,52 @@ public final class AdCardController
           localObject = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject).aid;
           if (localObject != null)
           {
-            l = ((PBUInt64Field)localObject).get();
+            l1 = ((PBUInt64Field)localObject).get();
             break label72;
           }
         }
       }
     }
-    long l = 0L;
+    long l1 = 0L;
     label72:
-    if (this.jdField_a_of_type_JavaUtilMap.get("pvsrc") != null) {
-      localObject = (String)this.jdField_a_of_type_JavaUtilMap.get("pvsrc");
+    if (this.n.get("pvsrc") != null) {
+      localObject = (String)this.n.get("pvsrc");
     } else {
       localObject = "";
     }
     String str1;
-    if (this.jdField_a_of_type_JavaUtilMap.get("ext10") != null) {
-      str1 = (String)this.jdField_a_of_type_JavaUtilMap.get("ext10");
+    if (this.n.get("ext10") != null) {
+      str1 = (String)this.n.get("ext10");
     } else {
       str1 = "";
     }
-    ReportUtil.a("qgg_pushcard_click", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(NetConnInfoCenter.getServerTimeMillis()), String.valueOf(l), (String)localObject, str1, str2);
+    ReportUtil.a("qgg_pushcard_click", String.valueOf(this.m), String.valueOf(NetConnInfoCenter.getServerTimeMillis()), String.valueOf(l1), (String)localObject, str1, str2);
   }
   
   public int a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "type");
     if (Intrinsics.areEqual("small", paramString)) {
-      return 2131561474;
+      return 2131627832;
     }
-    return 2131561473;
+    return 2131627830;
   }
   
   @NotNull
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
   public final LinearLayout a()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    return this.k;
+  }
+  
+  @NotNull
+  public View b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.adcard.AdCardController
  * JD-Core Version:    0.7.0.1
  */

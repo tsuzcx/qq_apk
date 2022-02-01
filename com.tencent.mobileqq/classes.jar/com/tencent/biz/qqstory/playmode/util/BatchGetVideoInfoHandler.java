@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public class BatchGetVideoInfoHandler
 {
-  public int a;
-  public BatchGetVideoInfoHandler.IBatchGetVideoInfoCallback a;
   public ArrayList<String> a;
   public int b;
   public int c;
   public int d;
+  public int e;
+  public BatchGetVideoInfoHandler.IBatchGetVideoInfoCallback f;
   
   public void a(int paramInt)
   {
@@ -23,35 +23,35 @@ public class BatchGetVideoInfoHandler
       ((StringBuilder)localObject).append(paramInt);
       QLog.e("BatchGetVideoInfoHandler", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback != null)
+    if (this.f != null)
     {
       localObject = new BatchGetVideoInfoHandler.VideoInfoListEvent();
-      ((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject).jdField_a_of_type_Int = paramInt;
-      paramInt = this.jdField_a_of_type_Int;
+      ((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject).a = paramInt;
+      paramInt = this.b;
       boolean bool2 = false;
       if (paramInt == 0) {
         bool1 = true;
       } else {
         bool1 = false;
       }
-      ((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject).jdField_a_of_type_Boolean = bool1;
+      ((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject).c = bool1;
       boolean bool1 = bool2;
-      if (this.jdField_b_of_type_Int == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
+      if (this.c == this.a.size() - 1) {
         bool1 = true;
       }
-      ((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject).jdField_b_of_type_Boolean = bool1;
-      ((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject).c = -100;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback.a((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject);
+      ((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject).d = bool1;
+      ((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject).f = -100;
+      this.f.a((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject);
     }
   }
   
   public void a(int paramInt, ArrayList<StoryVideoItem> paramArrayList)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback != null)
+    if (this.f != null)
     {
       BatchGetVideoInfoHandler.VideoInfoListEvent localVideoInfoListEvent = new BatchGetVideoInfoHandler.VideoInfoListEvent();
-      localVideoInfoListEvent.jdField_a_of_type_Int = paramInt;
-      int i = this.jdField_a_of_type_Int;
+      localVideoInfoListEvent.a = paramInt;
+      int i = this.b;
       boolean bool2 = true;
       boolean bool1;
       if (i == 0) {
@@ -59,25 +59,25 @@ public class BatchGetVideoInfoHandler
       } else {
         bool1 = false;
       }
-      localVideoInfoListEvent.jdField_a_of_type_Boolean = bool1;
-      if (this.jdField_b_of_type_Int == this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      localVideoInfoListEvent.c = bool1;
+      if (this.c == this.a.size()) {
         bool1 = bool2;
       } else {
         bool1 = false;
       }
-      localVideoInfoListEvent.jdField_b_of_type_Boolean = bool1;
-      localVideoInfoListEvent.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-      localVideoInfoListEvent.c = 0;
+      localVideoInfoListEvent.d = bool1;
+      localVideoInfoListEvent.b = paramArrayList;
+      localVideoInfoListEvent.f = 0;
       if (paramInt == 0) {
-        localVideoInfoListEvent.jdField_b_of_type_Int = (this.c - this.jdField_a_of_type_Int);
+        localVideoInfoListEvent.e = (this.d - this.b);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback.a(localVideoInfoListEvent);
+      this.f.a(localVideoInfoListEvent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler
  * JD-Core Version:    0.7.0.1
  */

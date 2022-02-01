@@ -10,41 +10,36 @@ import java.util.Iterator;
 
 public class BubbleConfig
 {
-  public double a;
-  public int a;
-  public AnimationConfig a;
-  @Deprecated
-  public DiyBubbleConfig.DiyBubblePasterConfig a;
-  public String a;
-  public ArrayList<AnimationConfig> a;
-  public HashMap<String, DiyBubbleConfig> a;
-  public HashSet<String> a;
-  public boolean a;
-  public int[] a;
-  public int b;
-  public AnimationConfig b;
-  public ArrayList<Integer> b;
-  public HashMap<String, BubbleNewAnimConf> b;
-  public boolean b;
+  public int a = 0;
+  public String b;
   public int c;
-  public AnimationConfig c;
-  public ArrayList<String> c = null;
   public int d;
-  public AnimationConfig d;
-  public int e = 0;
-  public AnimationConfig e;
-  public int f = -1;
-  public AnimationConfig f;
-  public int g = 2;
+  public int e;
+  public boolean f;
+  public boolean g;
+  public double h;
+  public int[] i;
+  public AnimationConfig j;
+  public AnimationConfig k;
+  public AnimationConfig l;
+  public ArrayList<AnimationConfig> m;
+  public AnimationConfig n;
+  public AnimationConfig o;
+  public AnimationConfig p;
+  public HashSet<String> q = new HashSet();
+  @Deprecated
+  public DiyBubbleConfig.DiyBubblePasterConfig r;
+  public HashMap<String, DiyBubbleConfig> s = new HashMap(4);
+  public ArrayList<Integer> t = null;
+  public int u = 0;
+  public int v = -1;
+  public int w = 2;
+  public ArrayList<String> x = null;
+  public HashMap<String, BubbleNewAnimConf> y = null;
   
   public BubbleConfig(int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
-    this.jdField_b_of_type_JavaUtilArrayList = null;
-    this.jdField_b_of_type_JavaUtilHashMap = null;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   private boolean a(File paramFile, String paramString)
@@ -74,46 +69,21 @@ public class BubbleConfig
   
   public int a()
   {
-    if (a()) {
-      return ((Integer)this.jdField_b_of_type_JavaUtilArrayList.get(this.e)).intValue();
+    if (c()) {
+      return ((Integer)this.t.get(this.u)).intValue();
     }
     return -1;
   }
   
-  public void a()
-  {
-    if (a())
-    {
-      this.e = ((this.e + 1) % this.jdField_b_of_type_JavaUtilArrayList.size());
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("now change bubble sub id: ");
-        localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList.get(this.e));
-        QLog.i("BubbleConfig", 2, localStringBuilder.toString());
-      }
-    }
-    else
-    {
-      this.e = 0;
-    }
-  }
-  
-  public boolean a()
-  {
-    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
-    return (localArrayList != null) && (localArrayList.size() > 0);
-  }
-  
   public boolean a(int paramInt)
   {
-    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.t;
     return (localArrayList != null) && (localArrayList.contains(Integer.valueOf(paramInt)));
   }
   
   public boolean a(File paramFile)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+    Iterator localIterator = this.q.iterator();
     while (localIterator.hasNext()) {
       if (a(paramFile, (String)localIterator.next())) {
         return true;
@@ -124,9 +94,9 @@ public class BubbleConfig
   
   public boolean a(String paramString)
   {
-    if ((this.c != null) && (!TextUtils.isEmpty(paramString)))
+    if ((this.x != null) && (!TextUtils.isEmpty(paramString)))
     {
-      Iterator localIterator = this.c.iterator();
+      Iterator localIterator = this.x.iterator();
       while (localIterator.hasNext()) {
         if (paramString.indexOf(((String)localIterator.next()).toLowerCase()) != -1) {
           return true;
@@ -136,17 +106,42 @@ public class BubbleConfig
     return false;
   }
   
+  public void b()
+  {
+    if (c())
+    {
+      this.u = ((this.u + 1) % this.t.size());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("now change bubble sub id: ");
+        localStringBuilder.append(this.t.get(this.u));
+        QLog.i("BubbleConfig", 2, localStringBuilder.toString());
+      }
+    }
+    else
+    {
+      this.u = 0;
+    }
+  }
+  
+  public boolean c()
+  {
+    ArrayList localArrayList = this.t;
+    return (localArrayList != null) && (localArrayList.size() > 0);
+  }
+  
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[ bubbleId=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuffer.append(localStringBuilder.toString());
     localStringBuffer.append(",");
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("name=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuffer.append(localStringBuilder.toString());
     localStringBuffer.append(" ]");
     return localStringBuffer.toString();
@@ -154,7 +149,7 @@ public class BubbleConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleConfig
  * JD-Core Version:    0.7.0.1
  */

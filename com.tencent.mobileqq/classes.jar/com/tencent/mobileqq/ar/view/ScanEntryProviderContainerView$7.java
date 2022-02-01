@@ -9,9 +9,9 @@ class ScanEntryProviderContainerView$7
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.e != null)
     {
-      LinearLayout localLinearLayout = this.this$0.a;
+      LinearLayout localLinearLayout = this.this$0.e;
       int i;
       if (this.a) {
         i = 0;
@@ -24,7 +24,7 @@ class ScanEntryProviderContainerView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView.7
  * JD-Core Version:    0.7.0.1
  */

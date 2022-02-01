@@ -7,19 +7,19 @@ class DownloadManager$1
   
   public void run()
   {
-    if (!this.this$0.a)
+    if (!this.this$0.f)
     {
-      MyAppApi.a();
-      if (!MyAppApi.b()) {
+      MyAppApi.l();
+      if (!MyAppApi.m()) {
         this.this$0.a(true);
       }
-      this.this$0.a = true;
+      this.this$0.f = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

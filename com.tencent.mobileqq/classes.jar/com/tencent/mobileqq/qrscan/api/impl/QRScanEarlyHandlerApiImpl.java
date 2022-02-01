@@ -57,12 +57,12 @@ public class QRScanEarlyHandlerApiImpl
       }
       return "qq.android.minidetect.so_v8.6.0";
     }
-    return "qq.android.minidecode.so_v8.2.0";
+    return "qq.android.minidecode.so_v8.8.5";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.api.impl.QRScanEarlyHandlerApiImpl
  * JD-Core Version:    0.7.0.1
  */

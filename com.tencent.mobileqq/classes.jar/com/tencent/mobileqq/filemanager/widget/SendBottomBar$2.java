@@ -14,22 +14,22 @@ class SendBottomBar$2
   
   public void onClick(View paramView)
   {
-    if (SendBottomBar.a(this.a).isChecked())
+    if (SendBottomBar.e(this.a).isChecked())
     {
-      SendBottomBar.a(this.a).d();
-      SendBottomBar.a(this.a).setText(HardCodeUtil.a(2131698216));
+      SendBottomBar.f(this.a).c();
+      SendBottomBar.e(this.a).setText(HardCodeUtil.a(2131896068));
     }
     else
     {
-      SendBottomBar.a(this.a).e();
-      SendBottomBar.a(this.a).setText(HardCodeUtil.a(2131698167));
+      SendBottomBar.f(this.a).d();
+      SendBottomBar.e(this.a).setText(HardCodeUtil.a(2131896117));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.2
  * JD-Core Version:    0.7.0.1
  */

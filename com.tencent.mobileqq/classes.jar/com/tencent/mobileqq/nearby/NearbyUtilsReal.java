@@ -26,20 +26,6 @@ import mqq.app.AppRuntime;
 
 public final class NearbyUtilsReal
 {
-  public static String a(int paramInt)
-  {
-    if (paramInt == 14) {
-      return "1";
-    }
-    if (paramInt == 15) {
-      return "2";
-    }
-    if (paramInt == 16) {
-      return "3";
-    }
-    return "4";
-  }
-  
   public static String a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -285,6 +271,20 @@ public final class NearbyUtilsReal
     return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
   }
   
+  public static String b(int paramInt)
+  {
+    if (paramInt == 14) {
+      return "1";
+    }
+    if (paramInt == 15) {
+      return "2";
+    }
+    if (paramInt == 16) {
+      return "3";
+    }
+    return "4";
+  }
+  
   public static boolean b()
   {
     return QLog.isColorLevel();
@@ -297,7 +297,7 @@ public final class NearbyUtilsReal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyUtilsReal
  * JD-Core Version:    0.7.0.1
  */

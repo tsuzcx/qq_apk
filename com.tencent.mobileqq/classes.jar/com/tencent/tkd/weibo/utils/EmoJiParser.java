@@ -15,30 +15,30 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/utils/EmoJiParser;", "", "text", "", "(Ljava/lang/String;)V", "emoJiPositionList", "", "", "getEmoJiPositionList", "()Ljava/util/List;", "setEmoJiPositionList", "(Ljava/util/List;)V", "emoJiTabList", "getEmoJiTabList", "setEmoJiTabList", "hasEmoJi", "", "getHasEmoJi", "()Z", "setHasEmoJi", "(Z)V", "isEmoJiListEmpty", "getText", "()Ljava/lang/String;", "setText", "checkIfEmoJiInText", "tkd-weibo-richtext_release"}, k=1, mv={1, 1, 16})
 public final class EmoJiParser
 {
+  private boolean a;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
+  private List<String> b;
   @NotNull
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private List<Integer> c;
   @NotNull
-  private List<Integer> b;
+  private String d;
   
   public EmoJiParser(@NotNull String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
+    this.d = paramString;
     this.b = ((List)new ArrayList());
-    this.jdField_a_of_type_Boolean = c();
+    this.c = ((List)new ArrayList());
+    this.a = e();
   }
   
-  private final boolean c()
+  private final boolean e()
   {
     Object localObject = RichTextBridge.a.a().a();
     if (localObject != null)
     {
       localObject = ((IEmoJiBridge)localObject).a();
       int i;
-      if (((CharSequence)this.jdField_a_of_type_JavaLangString).length() == 0) {
+      if (((CharSequence)this.d).length() == 0) {
         i = 1;
       } else {
         i = 0;
@@ -48,46 +48,46 @@ public final class EmoJiParser
         if (localObject == null) {
           return false;
         }
-        localObject = ((Pattern)localObject).matcher((CharSequence)this.jdField_a_of_type_JavaLangString);
+        localObject = ((Pattern)localObject).matcher((CharSequence)this.d);
         while (((Matcher)localObject).find())
         {
-          List localList = this.jdField_a_of_type_JavaUtilList;
+          List localList = this.b;
           String str = ((Matcher)localObject).group();
           Intrinsics.checkExpressionValueIsNotNull(str, "matcher.group()");
           localList.add(str);
-          this.b.add(Integer.valueOf(((Matcher)localObject).start()));
+          this.c.add(Integer.valueOf(((Matcher)localObject).start()));
         }
-        return b();
+        return d();
       }
     }
     return false;
   }
   
-  @NotNull
-  public final List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public final boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   @NotNull
-  public final List<Integer> b()
+  public final List<String> b()
   {
     return this.b;
   }
   
-  public final boolean b()
+  @NotNull
+  public final List<Integer> c()
   {
-    return ((((Collection)this.jdField_a_of_type_JavaUtilList).isEmpty() ^ true)) && ((((Collection)this.b).isEmpty() ^ true)) && (this.b.size() == this.jdField_a_of_type_JavaUtilList.size());
+    return this.c;
+  }
+  
+  public final boolean d()
+  {
+    return ((((Collection)this.b).isEmpty() ^ true)) && ((((Collection)this.c).isEmpty() ^ true)) && (this.c.size() == this.b.size());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.utils.EmoJiParser
  * JD-Core Version:    0.7.0.1
  */

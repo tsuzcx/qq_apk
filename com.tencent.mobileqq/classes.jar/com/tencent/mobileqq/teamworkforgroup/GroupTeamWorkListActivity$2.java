@@ -25,13 +25,13 @@ class GroupTeamWorkListActivity$2
     Object localObject1 = (GroupPadTemplateAdapter.GroupPadTemplateItemHolder)paramView.getTag();
     Object localObject2;
     Object localObject3;
-    if (((GroupPadTemplateAdapter.GroupPadTemplateItemHolder)localObject1).jdField_a_of_type_Int == GroupPadTemplateAdapter.b)
+    if (((GroupPadTemplateAdapter.GroupPadTemplateItemHolder)localObject1).e == GroupPadTemplateAdapter.e)
     {
       ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).report(this.a.app, "0X8009938");
       localObject1 = (ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class);
       localObject2 = this.a.app;
       localObject3 = this.a;
-      ((ITeamWorkUtilsTemp)localObject1).openTroopTemplatePreviewUrlWithCheck((AppInterface)localObject2, (Activity)localObject3, 2, "group_online_doc_more_temp", ((GroupTeamWorkListActivity)localObject3).a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      ((ITeamWorkUtilsTemp)localObject1).openTroopTemplatePreviewUrlWithCheck((AppInterface)localObject2, (Activity)localObject3, 2, "group_online_doc_more_temp", ((GroupTeamWorkListActivity)localObject3).m, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
       localObject1 = this.a.app;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("");
@@ -40,10 +40,10 @@ class GroupTeamWorkListActivity$2
     }
     else
     {
-      localObject2 = QFileUtils.a(this.a.app, this.a.a, this.a.app.getLongAccountUin());
+      localObject2 = QFileUtils.a(this.a.app, this.a.m, this.a.app.getLongAccountUin());
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        QQToast.a(this.a, (CharSequence)localObject2, 0).a();
+        QQToast.makeText(this.a, (CharSequence)localObject2, 0).show();
       }
       else
       {
@@ -51,7 +51,7 @@ class GroupTeamWorkListActivity$2
         localObject2 = (ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class);
         localObject3 = this.a.app;
         GroupTeamWorkListActivity localGroupTeamWorkListActivity = this.a;
-        ((ITeamWorkUtils)localObject2).openGroupPadTemplatePreviewUrl((AppInterface)localObject3, localGroupTeamWorkListActivity, "group_online_doc_temp", GroupTeamWorkListActivity.a(localGroupTeamWorkListActivity), ((GroupPadTemplateAdapter.GroupPadTemplateItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo);
+        ((ITeamWorkUtils)localObject2).openGroupPadTemplatePreviewUrl((AppInterface)localObject3, localGroupTeamWorkListActivity, "group_online_doc_temp", GroupTeamWorkListActivity.a(localGroupTeamWorkListActivity), ((GroupPadTemplateAdapter.GroupPadTemplateItemHolder)localObject1).a);
         localObject1 = this.a.app;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("");
@@ -64,7 +64,7 @@ class GroupTeamWorkListActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.2
  * JD-Core Version:    0.7.0.1
  */

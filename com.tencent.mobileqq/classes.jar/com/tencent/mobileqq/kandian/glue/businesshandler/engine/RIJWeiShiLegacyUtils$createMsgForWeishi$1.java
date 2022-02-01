@@ -14,24 +14,24 @@ final class RIJWeiShiLegacyUtils$createMsgForWeishi$1
   
   public final void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b(AppConstants.WEISHI_UIN, 1008);
+    MessageRecord localMessageRecord = this.a.r(AppConstants.WEISHI_UIN, 1008);
     if (localMessageRecord != null)
     {
-      localMessageRecord = RIJWeiShiLegacyUtils.a(RIJWeiShiLegacyUtils.a, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      localMessageRecord = RIJWeiShiLegacyUtils.a(RIJWeiShiLegacyUtils.a, localMessageRecord, this.b, this.c);
       if (localMessageRecord != null) {}
     }
     else
     {
-      localMessageRecord = RIJWeiShiLegacyUtils.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      localMessageRecord = RIJWeiShiLegacyUtils.a.b(this.b, this.c);
     }
     if (localMessageRecord != null) {
-      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      this.a.a(localMessageRecord, this.d.getCurrentUin());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.RIJWeiShiLegacyUtils.createMsgForWeishi.1
  * JD-Core Version:    0.7.0.1
  */

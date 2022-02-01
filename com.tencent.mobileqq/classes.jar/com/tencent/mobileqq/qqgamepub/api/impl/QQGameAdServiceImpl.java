@@ -106,15 +106,15 @@ public class QQGameAdServiceImpl
     int j = QQGameHelperImpl.getRedDotUnreadCount();
     long l = MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin();
     Object localObject1 = new QQGamePaAdInfo.GdtDataReportReq();
-    ((QQGamePaAdInfo.GdtDataReportReq)localObject1).aciotn_id.set(paramInt);
+    ((QQGamePaAdInfo.GdtDataReportReq)localObject1).aciotnId.set(paramInt);
     ((QQGamePaAdInfo.GdtDataReportReq)localObject1).uin.set(l);
-    ((QQGamePaAdInfo.GdtDataReportReq)localObject1).red_cnt.set(j);
+    ((QQGamePaAdInfo.GdtDataReportReq)localObject1).redCnt.set(j);
     try
     {
       localObject2 = new JSONObject(paramQQGameMsgInfo.adJson);
       localObject3 = ((JSONObject)localObject2).optJSONObject("trace_info");
       if (localObject3 == null) {
-        break label387;
+        break label388;
       }
       boolean bool = TextUtils.isEmpty(paramQQGameMsgInfo.advId);
       if (bool) {}
@@ -137,13 +137,13 @@ public class QQGameAdServiceImpl
     }
     int i = 0;
     ((QQGamePaAdInfo.GdtDataReportReq)localObject1).adid.set(i);
-    ((QQGamePaAdInfo.GdtDataReportReq)localObject1).view_id.set(((JSONObject)localObject3).optString("view_id", ""));
+    ((QQGamePaAdInfo.GdtDataReportReq)localObject1).viewId.set(((JSONObject)localObject3).optString("view_id", ""));
     for (;;)
     {
       localObject3 = new QQGamePaAdInfo.ReportUrl();
-      ((QQGamePaAdInfo.ReportUrl)localObject3).click_url.set(((JSONObject)localObject2).optString("click_url", ""));
-      ((QQGamePaAdInfo.ReportUrl)localObject3).exposure_url.set(((JSONObject)localObject2).optString("exposure_url", ""));
-      ((QQGamePaAdInfo.ReportUrl)localObject3).original_exposure_url.set(((JSONObject)localObject2).optString("original_exposure_url", ""));
+      ((QQGamePaAdInfo.ReportUrl)localObject3).clickUrl.set(((JSONObject)localObject2).optString("click_url", ""));
+      ((QQGamePaAdInfo.ReportUrl)localObject3).exposureUrl.set(((JSONObject)localObject2).optString("exposure_url", ""));
+      ((QQGamePaAdInfo.ReportUrl)localObject3).originalExposureUrl.set(((JSONObject)localObject2).optString("original_exposure_url", ""));
       ((QQGamePaAdInfo.GdtDataReportReq)localObject1).reportUrl.set((MessageMicro)localObject3);
       if (QLog.isColorLevel())
       {
@@ -166,7 +166,7 @@ public class QQGameAdServiceImpl
       ((TrpcProxy.TrpcListReq)localObject2).list.add((MessageMicro)localObject1);
       paramQQGameMsgInfo.requestTrpc((TrpcProxy.TrpcListReq)localObject2, null);
       return;
-      label387:
+      label388:
       i = 0;
     }
   }
@@ -179,7 +179,7 @@ public class QQGameAdServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGameAdServiceImpl
  * JD-Core Version:    0.7.0.1
  */

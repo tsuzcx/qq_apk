@@ -24,9 +24,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class GathererCoreContext
   extends BaseContext
 {
-  private static final GathererCoreContext jdField_a_of_type_ComTencentGatherergaCoreGathererCoreContext = new GathererCoreContext();
-  private static WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private static final Map<Integer, GathererCoreContext.IDCache> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private static final GathererCoreContext a = new GathererCoreContext();
+  private static WeakReference<Context> b;
+  private static final Map<Integer, GathererCoreContext.IDCache> c = new ConcurrentHashMap();
   
   static
   {
@@ -38,9 +38,9 @@ public class GathererCoreContext
   
   public static Context a()
   {
-    WeakReference localWeakReference = jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = b;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      return (Context)jdField_a_of_type_JavaLangRefWeakReference.get();
+      return (Context)b.get();
     }
     return null;
   }
@@ -48,25 +48,25 @@ public class GathererCoreContext
   @Deprecated
   public static Object a(int paramInt, Object... paramVarArgs)
   {
-    GathererCoreContext.IDCache localIDCache = (GathererCoreContext.IDCache)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    GathererCoreContext.IDCache localIDCache = (GathererCoreContext.IDCache)c.get(Integer.valueOf(paramInt));
     Object localObject;
     Method localMethod1;
     if (localIDCache != null)
     {
-      localObject = a(localIDCache.jdField_a_of_type_JavaLangClass);
+      localObject = a(localIDCache.a);
       if (localObject == null) {
         return null;
       }
-      Method localMethod2 = localIDCache.b;
+      Method localMethod2 = localIDCache.c;
       localMethod1 = localMethod2;
       if (localMethod2 == null)
       {
         localMethod1 = localMethod2;
         try
         {
-          localMethod2 = localObject.getClass().getMethod(localIDCache.jdField_a_of_type_JavaLangReflectMethod.getName(), localIDCache.jdField_a_of_type_JavaLangReflectMethod.getParameterTypes());
+          localMethod2 = localObject.getClass().getMethod(localIDCache.b.getName(), localIDCache.b.getParameterTypes());
           localMethod1 = localMethod2;
-          localIDCache.b = localMethod2;
+          localIDCache.c = localMethod2;
           localMethod1 = localMethod2;
         }
         catch (NoSuchMethodException localNoSuchMethodException)
@@ -90,85 +90,70 @@ public class GathererCoreContext
   
   public static <T> T a(Class<T> paramClass)
   {
-    return jdField_a_of_type_ComTencentGatherergaCoreGathererCoreContext.b(paramClass);
+    return a.b(paramClass);
+  }
+  
+  public static void a(GathererConfigInternal paramGathererConfigInternal)
+  {
+    b = new WeakReference(paramGathererConfigInternal.a());
+    GathererExecutor.a().a(paramGathererConfigInternal.h());
+    GathererCompContext.a.a(paramGathererConfigInternal);
+    c();
+  }
+  
+  public static <T> void a(Class<T> paramClass, Class<?> paramClass1)
+  {
+    a.b(paramClass, paramClass1);
   }
   
   @Deprecated
-  private static void a()
+  private static void c()
   {
-    jdField_a_of_type_JavaUtilMap.clear();
-    Object localObject2 = jdField_a_of_type_ComTencentGatherergaCoreGathererCoreContext.a().keySet().iterator();
-    while (((Iterator)localObject2).hasNext())
+    c.clear();
+    Iterator localIterator = a.b().keySet().iterator();
+    while (localIterator.hasNext())
     {
-      Class localClass = (Class)((Iterator)localObject2).next();
-      Method[] arrayOfMethod = ((Class)jdField_a_of_type_ComTencentGatherergaCoreGathererCoreContext.a().get(localClass)).getMethods();
+      Class localClass = (Class)localIterator.next();
+      Method[] arrayOfMethod = ((Class)a.b().get(localClass)).getMethods();
       int j = arrayOfMethod.length;
       int i = 0;
-      Method localMethod;
-      Object localObject1;
       while (i < j)
       {
-        localMethod = arrayOfMethod[i];
-        localObject1 = null;
+        Method localMethod = arrayOfMethod[i];
+        Object localObject = null;
         try
         {
           InfoID localInfoID = (InfoID)localMethod.getAnnotation(InfoID.class);
-          localObject1 = localInfoID;
+          localObject = localInfoID;
         }
         catch (Throwable localThrowable)
         {
           GLog.d(localThrowable.getMessage());
         }
-        if (localObject1 != null)
+        if (localObject != null)
         {
-          if (jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(localObject1.id())) != null) {
-            break label186;
+          if (c.get(Integer.valueOf(((InfoID)localObject).id())) != null)
+          {
+            localObject = (GathererCoreContext.IDCache)c.get(Integer.valueOf(((InfoID)localObject).id()));
+            return;
           }
-          localIDCache = new GathererCoreContext.IDCache();
-          localIDCache.jdField_a_of_type_JavaLangClass = localClass;
-          localIDCache.jdField_a_of_type_JavaLangReflectMethod = localMethod;
-          localIDCache.jdField_a_of_type_ComTencentGatherergaCoreInternalProviderInfoID = localObject1;
-          jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(localObject1.id()), localIDCache);
+          GathererCoreContext.IDCache localIDCache = new GathererCoreContext.IDCache();
+          localIDCache.a = localClass;
+          localIDCache.b = localMethod;
+          localIDCache.d = ((InfoID)localObject);
+          c.put(Integer.valueOf(((InfoID)localObject).id()), localIDCache);
         }
         i += 1;
       }
-      continue;
-      label186:
-      GathererCoreContext.IDCache localIDCache = (GathererCoreContext.IDCache)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(localObject1.id()));
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("already impl id ");
-      ((StringBuilder)localObject2).append(localObject1.id());
-      ((StringBuilder)localObject2).append(" on : class ");
-      ((StringBuilder)localObject2).append(localIDCache.jdField_a_of_type_JavaLangClass);
-      ((StringBuilder)localObject2).append(" , method ");
-      ((StringBuilder)localObject2).append(localIDCache.jdField_a_of_type_JavaLangReflectMethod.getName());
-      ((StringBuilder)localObject2).append(" ; conflict on : class ");
-      ((StringBuilder)localObject2).append(localClass);
-      ((StringBuilder)localObject2).append(" , method ");
-      ((StringBuilder)localObject2).append(localMethod.getName());
-      throw new IllegalStateException(((StringBuilder)localObject2).toString());
     }
-  }
-  
-  public static void a(GathererConfigInternal paramGathererConfigInternal)
-  {
-    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramGathererConfigInternal.a());
-    GathererExecutor.a().a(paramGathererConfigInternal.a());
-    GathererCompContext.a.a(paramGathererConfigInternal);
-    a();
-  }
-  
-  public static <T> void a(Class<T> paramClass, Class<?> paramClass1)
-  {
-    jdField_a_of_type_ComTencentGatherergaCoreGathererCoreContext.b(paramClass, paramClass1);
   }
   
   protected Object a(Class<?> paramClass, Object paramObject)
   {
-    WeakReference localWeakReference = jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = b;
     if ((localWeakReference != null) && (localWeakReference.get() != null))
     {
-      ((IBase)paramObject).a((Context)jdField_a_of_type_JavaLangRefWeakReference.get());
+      ((IBase)paramObject).a((Context)b.get());
       paramObject = new ProviderDynamicProxy(paramObject);
       return Proxy.newProxyInstance(paramClass.getClassLoader(), new Class[] { paramClass }, paramObject);
     }
@@ -177,7 +162,7 @@ public class GathererCoreContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.GathererCoreContext
  * JD-Core Version:    0.7.0.1
  */

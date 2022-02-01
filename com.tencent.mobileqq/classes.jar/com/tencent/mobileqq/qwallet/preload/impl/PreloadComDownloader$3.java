@@ -17,11 +17,11 @@ class PreloadComDownloader$3
   
   public void run()
   {
-    DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam.url, new File(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam.filePath));
-    localDownloadTask.f = "QwalletPreload";
-    if (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam.headers != null)
+    DownloadTask localDownloadTask = new DownloadTask(this.a.url, new File(this.a.filePath));
+    localDownloadTask.L = "QwalletPreload";
+    if (this.a.headers != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadDownloadParam.headers.iterator();
+      Iterator localIterator = this.a.headers.iterator();
       while (localIterator.hasNext())
       {
         Pair localPair = (Pair)localIterator.next();
@@ -31,13 +31,13 @@ class PreloadComDownloader$3
       }
     }
     if (PreloadComDownloader.a(this.this$0) != null) {
-      PreloadComDownloader.a(this.this$0).startDownload(localDownloadTask, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.jdField_a_of_type_AndroidOsBundle);
+      PreloadComDownloader.a(this.this$0).startDownload(localDownloadTask, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadComDownloader.3
  * JD-Core Version:    0.7.0.1
  */

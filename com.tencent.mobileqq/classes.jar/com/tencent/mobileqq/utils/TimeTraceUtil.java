@@ -12,24 +12,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class TimeTraceUtil
 {
-  private long a;
-  public String a;
-  public ConcurrentHashMap<String, String> a;
-  
-  public TimeTraceUtil()
-  {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_JavaLangString = "TimeTraceUtil";
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
+  public String a = "TimeTraceUtil";
+  public ConcurrentHashMap<String, String> b = new ConcurrentHashMap();
+  private long c = SystemClock.elapsedRealtime();
   
   private long a(String paramString, long paramLong)
   {
     boolean bool = TextUtils.isEmpty(paramString);
     long l2 = 0L;
-    if ((!bool) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)))
+    if ((!bool) && (this.b.containsKey(paramString)))
     {
-      paramString = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      paramString = (String)this.b.get(paramString);
       l1 = l2;
       if (TextUtils.isEmpty(paramString)) {
         break label114;
@@ -51,7 +44,7 @@ public class TimeTraceUtil
       if (!"~~startTime".equals(paramString)) {
         break label114;
       }
-      l1 = this.jdField_a_of_type_Long;
+      l1 = this.c;
     }
     long l1 = paramLong - l1;
     label114:
@@ -65,10 +58,10 @@ public class TimeTraceUtil
     label194:
     synchronized (new HashMap())
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+      if (this.b != null)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-        l1 = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+        Iterator localIterator = this.b.entrySet().iterator();
+        l1 = SystemClock.elapsedRealtime() - this.c;
         while (localIterator.hasNext())
         {
           Object localObject2 = (Map.Entry)localIterator.next();
@@ -102,10 +95,10 @@ public class TimeTraceUtil
   
   public void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    if ((this.b != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
       long l = SystemClock.elapsedRealtime();
-      ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      ConcurrentHashMap localConcurrentHashMap = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString2);
       localStringBuilder.append(",");
@@ -122,10 +115,10 @@ public class TimeTraceUtil
       paramString1 = String.format("TimerOutput: %s to %s cost=%d", new Object[] { paramString2, paramString1, Long.valueOf(a(paramString2, l)) });
       if (QLog.isColorLevel())
       {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, paramString1);
+        QLog.d(this.a, 2, paramString1);
         return;
       }
-      Log.i(this.jdField_a_of_type_JavaLangString, paramString1);
+      Log.i(this.a, paramString1);
     }
   }
   
@@ -169,7 +162,7 @@ public class TimeTraceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.TimeTraceUtil
  * JD-Core Version:    0.7.0.1
  */

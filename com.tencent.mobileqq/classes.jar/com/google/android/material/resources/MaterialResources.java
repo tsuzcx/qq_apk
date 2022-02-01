@@ -91,8 +91,13 @@ public class MaterialResources
     return paramTintTypedArray.getColorStateList(paramInt);
   }
   
+  public static boolean a(@NonNull Context paramContext)
+  {
+    return paramContext.getResources().getConfiguration().fontScale >= 1.3F;
+  }
+  
   @Nullable
-  public static Drawable a(@NonNull Context paramContext, @NonNull TypedArray paramTypedArray, @StyleableRes int paramInt)
+  public static Drawable b(@NonNull Context paramContext, @NonNull TypedArray paramTypedArray, @StyleableRes int paramInt)
   {
     if (paramTypedArray.hasValue(paramInt))
     {
@@ -108,8 +113,13 @@ public class MaterialResources
     return paramTypedArray.getDrawable(paramInt);
   }
   
+  public static boolean b(@NonNull Context paramContext)
+  {
+    return paramContext.getResources().getConfiguration().fontScale >= 2.0F;
+  }
+  
   @Nullable
-  public static TextAppearance a(@NonNull Context paramContext, @NonNull TypedArray paramTypedArray, @StyleableRes int paramInt)
+  public static TextAppearance c(@NonNull Context paramContext, @NonNull TypedArray paramTypedArray, @StyleableRes int paramInt)
   {
     if (paramTypedArray.hasValue(paramInt))
     {
@@ -120,20 +130,10 @@ public class MaterialResources
     }
     return null;
   }
-  
-  public static boolean a(@NonNull Context paramContext)
-  {
-    return paramContext.getResources().getConfiguration().fontScale >= 1.3F;
-  }
-  
-  public static boolean b(@NonNull Context paramContext)
-  {
-    return paramContext.getResources().getConfiguration().fontScale >= 2.0F;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.resources.MaterialResources
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="a0t" parent="@style/a_9" />
-    <style name="a10" parent="@style/a__" />
-    <style name="a34" parent="@style/a_a" />
+    <style name="16" parent="@style/ae6" />
+    <style name="1c" parent="@style/ae7" />
+    <style name="4d" parent="@style/ae8" />
+    <style name="62" parent="@style/65">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/3p</item>
+        <item name="android:importantForAutofill">noExcludeDescendants</item>
+    </style>
     <style name="gi" parent="@style/gh">
-        <item name="android:textAppearance">@style/a8y</item>
-        <item name="android:buttonStyle">@style/a9q</item>
+        <item name="android:textAppearance">@style/ab_</item>
+        <item name="android:buttonStyle">@style/add</item>
         <item name="android:windowBackground">@null</item>
         <item name="android:windowIsTranslucent">false</item>
         <item name="android:autoCompleteTextViewStyle">@style/n0</item>
         <item name="android:editTextStyle">@style/n4</item>
-        <item name="android:textViewStyle">@style/a9t</item>
+        <item name="android:textViewStyle">@style/adg</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
-    <style name="a_9" parent="@style/a_5">
-        <item name="a2c">?android:colorError</item>
+    <style name="a8a" parent="@android:style/Widget">
+        <item name="android:background">?7_</item>
+        <item name="android:stateListAnimator">@animator/z</item>
+        <item name="android:touchscreenBlocksFocus">true</item>
+        <item name="android:keyboardNavigationCluster">true</item>
     </style>
-    <style name="a__" parent="@style/a_6">
-        <item name="a2c">?android:colorError</item>
+    <style name="ae6" parent="@style/ae2">
+        <item name="73">?android:colorError</item>
     </style>
-    <style name="a_a" parent="@style/a1k">
+    <style name="ae7" parent="@style/ae3">
+        <item name="73">?android:colorError</item>
+    </style>
+    <style name="ae8" parent="@style/2u">
         <item name="android:touchscreenBlocksFocus">true</item>
         <item name="android:keyboardNavigationCluster">true</item>
     </style>

@@ -20,8 +20,8 @@ class DetailBaseBlock$2
   
   public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) {
-      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a(paramInt);
+    if (this.a.b != null) {
+      this.a.b.a(paramInt);
     }
   }
   
@@ -29,14 +29,14 @@ class DetailBaseBlock$2
   {
     if (paramStGetFeedDetailRsp == null)
     {
-      QLog.e(DetailBaseBlock.jdField_a_of_type_JavaLangString, 1, "onFeedResponse rsp is null");
+      QLog.e(DetailBaseBlock.a, 1, "onFeedResponse rsp is null");
       return;
     }
     CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)paramStGetFeedDetailRsp.feed.get();
-    QLog.d(DetailBaseBlock.jdField_a_of_type_JavaLangString, 1, "onFeedResponse hideLoadingView!");
-    this.a.d();
+    QLog.d(DetailBaseBlock.a, 1, "onFeedResponse hideLoadingView!");
+    this.a.g();
     boolean bool = DetailBaseBlock.a(this.a, paramLong, localStFeed);
-    String str = DetailBaseBlock.jdField_a_of_type_JavaLangString;
+    String str = DetailBaseBlock.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isInterceptRspByFeedStatus ");
     localStringBuilder.append(bool);
@@ -58,7 +58,7 @@ class DetailBaseBlock$2
     DetailBaseBlock.a(this.a, paramStGetFeedDetailRsp.detailUrl.get());
     DetailBaseBlock.b(this.a, paramStGetFeedDetailRsp.share);
     this.a.a(localStFeed);
-    paramString = DetailBaseBlock.jdField_a_of_type_JavaLangString;
+    paramString = DetailBaseBlock.a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("isFinish:");
     ((StringBuilder)localObject).append(paramStGetFeedDetailRsp.isFinish.get());
@@ -68,10 +68,10 @@ class DetailBaseBlock$2
     this.a.a(paramStGetFeedDetailRsp, paramBoolean);
     if (!paramBoolean)
     {
-      paramStGetFeedDetailRsp = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+      paramStGetFeedDetailRsp = this.a.c.poster.id.get();
       paramString = new StringBuilder();
       paramString.append("auth_");
-      paramString.append(SubscribeShareHelper.a(this.a.a()));
+      paramString.append(SubscribeShareHelper.a(this.a.K()));
       VSReporter.a(paramStGetFeedDetailRsp, paramString.toString(), "exp", 0, 0, new String[] { "", "", localStFeed.id.get(), localStFeed.title.get() });
     }
     this.a.d(true);

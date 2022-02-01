@@ -1,10 +1,9 @@
 package com.tencent.biz.richframework.animation.drawable;
 
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Log;
 
 class QQAnimationDrawable$InternalHandler
   extends Handler
@@ -18,41 +17,21 @@ class QQAnimationDrawable$InternalHandler
   
   public void handleMessage(Message paramMessage)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("InternalHandler handleMessage msg.what:");
-    localStringBuilder.append(paramMessage.what);
-    localStringBuilder.append(" main:");
-    boolean bool;
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    localStringBuilder.append(bool);
-    QLog.d("QQAnimationDrawable", 2, localStringBuilder.toString());
     if ((paramMessage.obj instanceof Long))
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("InternalHandler handleMessage msg.obj:");
-      localStringBuilder.append(paramMessage.obj);
-      localStringBuilder.append(" android.os.SystemClock.uptimeMillis():");
-      localStringBuilder.append(SystemClock.uptimeMillis());
-      QLog.d("QQAnimationDrawable", 2, localStringBuilder.toString());
       paramMessage = (Long)paramMessage.obj;
       if (paramMessage.longValue() < SystemClock.uptimeMillis())
       {
-        QLog.d("QQAnimationDrawable", 2, "time < android.os.SystemClock.uptimeMillis()");
         this.a.scheduleSelf(this.b, SystemClock.uptimeMillis());
         return;
       }
-      QLog.d("QQAnimationDrawable", 2, "time > android.os.SystemClock.uptimeMillis()");
       this.a.scheduleSelf(this.b, paramMessage.longValue());
       return;
     }
-    localStringBuilder = new StringBuilder();
+    StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("InternalHandler handleMessage msg.obj:");
     localStringBuilder.append(paramMessage.obj);
-    QLog.d("QQAnimationDrawable", 2, localStringBuilder.toString());
+    Log.d("QQAnimationDrawable", localStringBuilder.toString());
   }
 }
 

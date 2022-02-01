@@ -27,7 +27,7 @@ public class AddBatchPhoneFriendReceiver
     super(paramAppInterface, paramFriendHandler);
   }
   
-  public static oidb_sso.OIDBSSOPkg a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static oidb_sso.OIDBSSOPkg c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
@@ -100,7 +100,7 @@ public class AddBatchPhoneFriendReceiver
     boolean bool2;
     if (bool1)
     {
-      paramToServiceMsg = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      paramToServiceMsg = c(paramToServiceMsg, paramFromServiceMsg, paramObject);
       if (paramToServiceMsg != null)
       {
         int n = paramToServiceMsg.uint32_result.get();
@@ -166,28 +166,28 @@ public class AddBatchPhoneFriendReceiver
       }
       if ((j != -1) && (localArrayList1 != null) && (localArrayList2 != null) && (m < localArrayList1.size()))
       {
-        a().runOnUiThread(new AddBatchPhoneFriendReceiver.1(this, localArrayList1, str, j, k, localArrayList2));
+        b().runOnUiThread(new AddBatchPhoneFriendReceiver.1(this, localArrayList1, str, j, k, localArrayList2));
         return;
       }
-      ((FriendHandler)a()).notifyUI(107, true, localArrayList2);
+      ((FriendHandler)c()).notifyUI(107, true, localArrayList2);
       return;
     }
     if ((j != -1) && (localArrayList1 != null) && (localArrayList2 != null) && (m < localArrayList1.size()))
     {
-      a().runOnUiThread(new AddBatchPhoneFriendReceiver.2(this, localArrayList1, str, j, k, localArrayList2));
+      b().runOnUiThread(new AddBatchPhoneFriendReceiver.2(this, localArrayList1, str, j, k, localArrayList2));
       return;
     }
     if ((localArrayList2 != null) && (localArrayList2.size() > 0))
     {
-      ((FriendHandler)a()).notifyUI(107, true, localArrayList2);
+      ((FriendHandler)c()).notifyUI(107, true, localArrayList2);
       return;
     }
-    ((FriendHandler)a()).notifyUI(107, false, null);
+    ((FriendHandler)c()).notifyUI(107, false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.recevier.AddBatchPhoneFriendReceiver
  * JD-Core Version:    0.7.0.1
  */

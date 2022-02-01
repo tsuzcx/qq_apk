@@ -20,34 +20,34 @@ class SignTextEditFragment$11
   {
     if (this.a.getBaseActivity() != null)
     {
-      if ((NetworkUtil.isNetSupport(this.a.getBaseActivity())) && (SignTextEditFragment.a(this.a) != null))
+      if ((NetworkUtil.isNetSupport(this.a.getBaseActivity())) && (SignTextEditFragment.c(this.a) != null))
       {
-        if (AppSetting.d) {
-          this.a.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(HardCodeUtil.a(2131707927));
+        if (AppSetting.e) {
+          this.a.m.setContentDescription(HardCodeUtil.a(2131905741));
         }
-        SignTextEditFragment.a(this.a).a(paramBoolean);
+        SignTextEditFragment.c(this.a).c(paramBoolean);
       }
       else
       {
         Object localObject = this.a.getBaseActivity();
         int i;
-        if (SignTextEditFragment.a(this.a) != null) {
-          i = 2131694473;
+        if (SignTextEditFragment.c(this.a) != null) {
+          i = 2131892155;
         } else {
-          i = 2131718834;
+          i = 2131916364;
         }
-        QQToast.a((Context)localObject, i, 1).a();
+        QQToast.makeText((Context)localObject, i, 1).show();
         localObject = this.a;
-        SignTextEditFragment.a((SignTextEditFragment)localObject, ((SignTextEditFragment)localObject).jdField_a_of_type_AndroidWidgetCheckBox, paramBoolean ^ true);
+        SignTextEditFragment.a((SignTextEditFragment)localObject, ((SignTextEditFragment)localObject).m, paramBoolean ^ true);
       }
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A97B", "0X800A97B", 0, 0, "0", "0", "", "");
+      ReportController.b(this.a.r, "dc00898", "", "", "0X800A97B", "0X800A97B", 0, 0, "0", "0", "", "");
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment.11
  * JD-Core Version:    0.7.0.1
  */

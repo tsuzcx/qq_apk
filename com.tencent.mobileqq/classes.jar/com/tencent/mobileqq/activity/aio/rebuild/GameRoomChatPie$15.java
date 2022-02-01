@@ -10,15 +10,15 @@ class GameRoomChatPie$15
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {
+    if (this.this$0.f.isFinishing()) {
       return;
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
+    this.this$0.bC.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.15
  * JD-Core Version:    0.7.0.1
  */

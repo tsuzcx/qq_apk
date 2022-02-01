@@ -19,7 +19,7 @@ public final class PTSGifView
   @NotNull
   public static final String TAG = "PTSGifView";
   
-  public PTSGifView(@NotNull Context paramContext)
+  public PTSGifView(@Nullable Context paramContext)
   {
     super(paramContext);
   }
@@ -36,7 +36,7 @@ public final class PTSGifView
   
   public PTSGifView(@NotNull PTSNodeGif paramPTSNodeGif)
   {
-    this(paramPTSNodeGif);
+    this(paramPTSNodeGif.getContext());
   }
   
   public void onBindNodeInfo(@Nullable PTSNodeInfo paramPTSNodeInfo)
@@ -47,7 +47,7 @@ public final class PTSGifView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.ui.PTSGifView
  * JD-Core Version:    0.7.0.1
  */

@@ -24,16 +24,16 @@ class GetMyStoryDesFromVidListStep$1
     if (!paramBoolean)
     {
       SLog.e("GetMyStoryDesFromVidListStep", "Get vid to basic info failed!");
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack != null)
+      if (this.b.a != null)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.a());
+        this.b.a.a(this.b.c());
         return;
       }
       SLog.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
       return;
     }
     Object localObject1 = (StoryManager)SuperManager.a(5);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     ArrayList localArrayList = new ArrayList();
     Object localObject2;
     Object localObject3;
@@ -48,7 +48,7 @@ class GetMyStoryDesFromVidListStep$1
         localArrayList.add(localObject3);
       }
     }
-    ((StoryManager)localObject1).a(QQStoryContext.a().b(), 0, localArrayList, true);
+    ((StoryManager)localObject1).a(QQStoryContext.a().i(), 0, localArrayList, true);
     localIterator = ((StoryManager)localObject1).a(false).iterator();
     while (localIterator.hasNext())
     {
@@ -56,7 +56,7 @@ class GetMyStoryDesFromVidListStep$1
       localObject3 = HomeFeedPresenter.b((StoryVideoItem)localObject2, localArrayList);
       if (localObject3 != null)
       {
-        ((StoryManager)localObject1).a(((StoryVideoItem)localObject2).mVid);
+        ((StoryManager)localObject1).j(((StoryVideoItem)localObject2).mVid);
         SLog.d("GetMyStoryDesFromVidListStep", "delete local fake item because we get real item from server, local vid=%s, network vid=%s", new Object[] { ((StoryVideoItem)localObject2).mVid, localObject3 });
       }
       else
@@ -64,18 +64,18 @@ class GetMyStoryDesFromVidListStep$1
         HomeFeedPresenter.a((StoryVideoItem)localObject2);
       }
     }
-    localObject1 = ((StoryManager)localObject1).d(QQStoryContext.a().b());
-    GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep).b();
-    GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep).a((List)localObject1);
-    GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep).jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem;
-    GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep).b = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_Boolean;
-    Collections.sort(GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep).a());
-    if (GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep) != null) {
-      GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep).a(GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep));
+    localObject1 = ((StoryManager)localObject1).g(QQStoryContext.a().i());
+    GetMyStoryDesFromVidListStep.a(this.b).e();
+    GetMyStoryDesFromVidListStep.a(this.b).a((List)localObject1);
+    GetMyStoryDesFromVidListStep.a(this.b).t = this.b.c.f;
+    GetMyStoryDesFromVidListStep.a(this.b).g = this.b.c.c;
+    Collections.sort(GetMyStoryDesFromVidListStep.a(this.b).b());
+    if (GetMyStoryDesFromVidListStep.b(this.b) != null) {
+      GetMyStoryDesFromVidListStep.b(this.b).a(GetMyStoryDesFromVidListStep.a(this.b));
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack != null)
+    if (this.b.a != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.a());
+      this.b.a.a(this.b.c());
       return;
     }
     SLog.d("GetMyStoryDesFromVidListStep", "finish callBack is null");

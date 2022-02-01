@@ -42,24 +42,24 @@ import java.util.HashMap;
 public class FeedBannerViewHolder
   extends RecyclerView.ViewHolder
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final FeedBannerViewHolder.FeedBannerClickListener jdField_a_of_type_ComTencentMobileqqQqexpandFeedFeedBannerViewHolder$FeedBannerClickListener;
-  private HeadsPanelAnimationView jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView;
-  private String jdField_a_of_type_JavaLangString = "school_tab";
-  private boolean jdField_a_of_type_Boolean = true;
+  private TextView a;
+  private HeadsPanelAnimationView b;
+  private final FeedBannerViewHolder.FeedBannerClickListener c;
+  private String d = "school_tab";
+  private boolean e = true;
   
   public FeedBannerViewHolder(View paramView, FeedBannerViewHolder.FeedBannerClickListener paramFeedBannerClickListener)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandFeedFeedBannerViewHolder$FeedBannerClickListener = paramFeedBannerClickListener;
+    this.c = paramFeedBannerClickListener;
   }
   
   private void a(Context paramContext, FeedBannerTabItem paramFeedBannerTabItem)
   {
     if ((paramFeedBannerTabItem != null) && (paramContext != null))
     {
-      String str = paramFeedBannerTabItem.d;
-      int i = paramFeedBannerTabItem.jdField_a_of_type_Int;
+      String str = paramFeedBannerTabItem.h;
+      int i = paramFeedBannerTabItem.a;
       if (QLog.isColorLevel())
       {
         paramFeedBannerTabItem = new StringBuilder();
@@ -71,7 +71,7 @@ public class FeedBannerViewHolder
       }
       if (i == 0)
       {
-        paramContext = this.jdField_a_of_type_ComTencentMobileqqQqexpandFeedFeedBannerViewHolder$FeedBannerClickListener;
+        paramContext = this.c;
         if (paramContext != null) {
           paramContext.a();
         }
@@ -136,20 +136,20 @@ public class FeedBannerViewHolder
   
   private void a(View paramView, FeedBannerTabItem paramFeedBannerTabItem, int paramInt1, int paramInt2)
   {
-    int i = ViewUtils.a(5.0F);
+    int i = ViewUtils.dip2px(5.0F);
     Object localObject1 = (RoundCorneredRelativeLayout)paramView;
     float f = i;
     ((RoundCorneredRelativeLayout)localObject1).setRadius(f, f, f, f);
-    Object localObject3 = (ImageView)paramView.findViewById(1912930327);
-    localObject1 = (TextView)paramView.findViewById(1912930365);
-    TextView localTextView = (TextView)paramView.findViewById(1912930362);
-    if (!TextUtils.isEmpty(paramFeedBannerTabItem.jdField_a_of_type_JavaLangString)) {
-      ((TextView)localObject1).setText(paramFeedBannerTabItem.jdField_a_of_type_JavaLangString);
+    Object localObject3 = (ImageView)paramView.findViewById(1912930364);
+    localObject1 = (TextView)paramView.findViewById(1912930434);
+    TextView localTextView = (TextView)paramView.findViewById(1912930431);
+    if (!TextUtils.isEmpty(paramFeedBannerTabItem.c)) {
+      ((TextView)localObject1).setText(paramFeedBannerTabItem.c);
     }
-    if (!TextUtils.isEmpty(paramFeedBannerTabItem.jdField_b_of_type_JavaLangString)) {
-      localTextView.setText(paramFeedBannerTabItem.jdField_b_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(paramFeedBannerTabItem.d)) {
+      localTextView.setText(paramFeedBannerTabItem.d);
     }
-    Object localObject2 = (FeedBannerItemGradientLinearLayout)paramView.findViewById(1912930322);
+    Object localObject2 = (FeedBannerItemGradientLinearLayout)paramView.findViewById(1912930357);
     if (paramInt2 == 1) {
       i = 24;
     } else if (paramInt2 == 2) {
@@ -157,31 +157,31 @@ public class FeedBannerViewHolder
     } else {
       i = 40;
     }
-    ((FeedBannerItemGradientLinearLayout)localObject2).a(ViewUtils.a(i), paramFeedBannerTabItem.jdField_b_of_type_Int, paramFeedBannerTabItem.jdField_c_of_type_Int);
-    localObject2 = (FrameLayout)paramView.findViewById(1912930328);
-    if ((this.jdField_a_of_type_Boolean) && (paramFeedBannerTabItem.jdField_a_of_type_Int == 0))
+    ((FeedBannerItemGradientLinearLayout)localObject2).a(ViewUtils.dip2px(i), paramFeedBannerTabItem.f, paramFeedBannerTabItem.g);
+    localObject2 = (FrameLayout)paramView.findViewById(1912930365);
+    if ((this.e) && (paramFeedBannerTabItem.a == 0))
     {
       ((ImageView)localObject3).setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView = localTextView;
-      localObject3 = paramView.getContext().getResources().getDrawable(1912864768);
-      ((Drawable)localObject3).setBounds(ViewUtils.a(1.0F), 0, ViewUtils.a(7.0F), ViewUtils.a(6.0F));
-      localTextView.setCompoundDrawablePadding(ViewUtils.a(3.0F));
+      this.a = localTextView;
+      localObject3 = paramView.getContext().getResources().getDrawable(1912864774);
+      ((Drawable)localObject3).setBounds(ViewUtils.dip2px(1.0F), 0, ViewUtils.dip2px(7.0F), ViewUtils.dip2px(6.0F));
+      localTextView.setCompoundDrawablePadding(ViewUtils.dip2px(3.0F));
       localTextView.setCompoundDrawables((Drawable)localObject3, null, null, null);
       if (paramInt2 == 2)
       {
-        ((ViewGroup.MarginLayoutParams)localTextView.getLayoutParams()).rightMargin = ViewUtils.a(80.0F);
+        ((ViewGroup.MarginLayoutParams)localTextView.getLayoutParams()).rightMargin = ViewUtils.dip2px(80.0F);
       }
       else if (paramInt2 == 1)
       {
         ((TextView)localObject1).setTextSize(25.0F);
         localTextView.setTextSize(12.0F);
-        localTextView.setPadding(0, ViewUtils.a(2.0F), 0, 0);
-        paramView.findViewById(1912930305).setVisibility(0);
+        localTextView.setPadding(0, ViewUtils.dip2px(2.0F), 0, 0);
+        paramView.findViewById(1912930309).setVisibility(0);
       }
       a((FrameLayout)localObject2, paramInt2);
       a(paramFeedBannerTabItem);
     }
-    else if (paramFeedBannerTabItem.jdField_c_of_type_JavaLangString != null)
+    else if (paramFeedBannerTabItem.e != null)
     {
       try
       {
@@ -192,7 +192,7 @@ public class FeedBannerViewHolder
         localURLDrawableOptions.mFailedDrawable = localColorDrawable;
         localURLDrawableOptions.mUseApngImage = true;
         localURLDrawableOptions.mMemoryCacheKeySuffix = "useAPNG";
-        ((ImageView)localObject3).setImageDrawable(URLDrawable.getDrawable(new URL(paramFeedBannerTabItem.jdField_c_of_type_JavaLangString), localURLDrawableOptions));
+        ((ImageView)localObject3).setImageDrawable(URLDrawable.getDrawable(new URL(paramFeedBannerTabItem.e), localURLDrawableOptions));
       }
       catch (MalformedURLException localMalformedURLException)
       {
@@ -205,19 +205,19 @@ public class FeedBannerViewHolder
         }
       }
     }
-    ImageView localImageView = (ImageView)paramView.findViewById(1912930310);
+    ImageView localImageView = (ImageView)paramView.findViewById(1912930325);
     Object localObject4 = Drawable.createFromPath(ExpandLimitChatResourceUtil.a(paramInt2));
     if (localObject4 != null) {
       localImageView.setImageDrawable((Drawable)localObject4);
     }
-    paramView.setOnTouchListener(new FeedBannerViewHolder.2(this, paramView.findViewById(1912930346), (FrameLayout)localObject2, (TextView)localObject1, localTextView, paramFeedBannerTabItem, paramInt1));
+    paramView.setOnTouchListener(new FeedBannerViewHolder.2(this, paramView.findViewById(1912930398), (FrameLayout)localObject2, (TextView)localObject1, localTextView, paramFeedBannerTabItem, paramInt1));
   }
   
   private void a(FrameLayout paramFrameLayout, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView;
+    Object localObject = this.b;
     if (localObject != null) {
-      ((HeadsPanelAnimationView)localObject).d();
+      ((HeadsPanelAnimationView)localObject).e();
     }
     int j = 3;
     int i;
@@ -228,21 +228,21 @@ public class FeedBannerViewHolder
     } else {
       i = 3;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView = new HeadsPanelAnimationView(i);
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView.a() != null)
+    this.b = new HeadsPanelAnimationView(i);
+    if (this.b.a() != null)
     {
       localObject = new FrameLayout.LayoutParams(-2, -2);
       if (paramInt == 1)
       {
-        ((FrameLayout.LayoutParams)localObject).bottomMargin = ViewUtils.a(20.0F);
-        ((FrameLayout.LayoutParams)localObject).topMargin = ViewUtils.a(16.0F);
+        ((FrameLayout.LayoutParams)localObject).bottomMargin = ViewUtils.dip2px(20.0F);
+        ((FrameLayout.LayoutParams)localObject).topMargin = ViewUtils.dip2px(16.0F);
       }
       else
       {
         if (paramInt <= 2) {
-          i = ViewUtils.a(16.0F);
+          i = ViewUtils.dip2px(16.0F);
         } else {
-          i = ViewUtils.a(22.0F);
+          i = ViewUtils.dip2px(22.0F);
         }
         ((FrameLayout.LayoutParams)localObject).bottomMargin = i;
         ((FrameLayout.LayoutParams)localObject).topMargin = i;
@@ -253,7 +253,7 @@ public class FeedBannerViewHolder
         paramInt = 5;
       }
       ((FrameLayout.LayoutParams)localObject).gravity = paramInt;
-      paramFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView.a(), (ViewGroup.LayoutParams)localObject);
+      paramFrameLayout.addView(this.b.a(), (ViewGroup.LayoutParams)localObject);
     }
   }
   
@@ -264,12 +264,12 @@ public class FeedBannerViewHolder
     if (paramInt == 0) {
       localHashMap.put("banner_appid", "1");
     } else {
-      localHashMap.put("banner_appid", String.valueOf(paramFeedBannerTabItem.jdField_a_of_type_Long));
+      localHashMap.put("banner_appid", String.valueOf(paramFeedBannerTabItem.b));
     }
     IExpandReportUtils localIExpandReportUtils = (IExpandReportUtils)QRoute.api(IExpandReportUtils.class);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("click#");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("#banner");
     localIExpandReportUtils.onUserActionToTunnel(localStringBuilder.toString(), true, -1L, -1L, localHashMap, true, true);
     a(this.itemView.getContext(), paramFeedBannerTabItem);
@@ -277,11 +277,11 @@ public class FeedBannerViewHolder
   
   private void a(FeedBannerTabItem paramFeedBannerTabItem, int paramInt, String paramString)
   {
-    if ((paramFeedBannerTabItem != null) && (paramFeedBannerTabItem.jdField_a_of_type_Int != 0))
+    if ((paramFeedBannerTabItem != null) && (paramFeedBannerTabItem.a != 0))
     {
-      String str1 = paramFeedBannerTabItem.jdField_a_of_type_JavaLangString;
-      String str2 = paramFeedBannerTabItem.jdField_b_of_type_JavaLangString;
-      long l = paramFeedBannerTabItem.jdField_a_of_type_Long;
+      String str1 = paramFeedBannerTabItem.c;
+      String str2 = paramFeedBannerTabItem.d;
+      long l = paramFeedBannerTabItem.b;
       paramFeedBannerTabItem = new StringBuilder();
       paramFeedBannerTabItem.append(paramInt);
       paramFeedBannerTabItem.append("");
@@ -296,9 +296,9 @@ public class FeedBannerViewHolder
   
   public void a()
   {
-    HeadsPanelAnimationView localHeadsPanelAnimationView = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView;
+    HeadsPanelAnimationView localHeadsPanelAnimationView = this.b;
     if (localHeadsPanelAnimationView != null) {
-      localHeadsPanelAnimationView.d();
+      localHeadsPanelAnimationView.e();
     }
   }
   
@@ -309,7 +309,7 @@ public class FeedBannerViewHolder
       Object localObject = (FeedBannerInfo)paramStrangerInfo;
       paramStrangerInfo = (TabLayout)this.itemView;
       paramStrangerInfo.setPadding(paramStrangerInfo.getPaddingLeft(), paramInt, paramStrangerInfo.getPaddingRight(), paramStrangerInfo.getPaddingBottom());
-      localObject = ((FeedBannerInfo)localObject).jdField_a_of_type_JavaUtilArrayList;
+      localObject = ((FeedBannerInfo)localObject).a;
       ViewGroup.LayoutParams localLayoutParams = paramStrangerInfo.getLayoutParams();
       int i = ((ArrayList)localObject).size();
       if (i == 1) {
@@ -319,28 +319,28 @@ public class FeedBannerViewHolder
       } else {
         i = 168;
       }
-      i = ViewUtils.a(i);
+      i = ViewUtils.dip2px(i);
       if (localLayoutParams != null) {
         localLayoutParams.height = (paramInt + i);
       }
-      paramStrangerInfo.a().setMinimumHeight(i);
-      paramStrangerInfo.a(new FeedBannerViewHolder.1(this, (ArrayList)localObject, ViewUtils.a(120.0F), ViewUtils.a(4.0F)));
+      paramStrangerInfo.getContentView().setMinimumHeight(i);
+      paramStrangerInfo.a(new FeedBannerViewHolder.1(this, (ArrayList)localObject, ViewUtils.dip2px(120.0F), ViewUtils.dip2px(4.0F)));
     }
   }
   
   public void a(FeedBannerTabItem paramFeedBannerTabItem)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (paramFeedBannerTabItem.jdField_b_of_type_JavaLangString != null)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramFeedBannerTabItem.jdField_b_of_type_JavaLangString);
+    if ((this.a != null) && (paramFeedBannerTabItem.d != null)) {
+      this.a.setText(paramFeedBannerTabItem.d);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView != null) && (paramFeedBannerTabItem.jdField_a_of_type_JavaUtilArrayList != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetHeadsPanelAnimationView.a(paramFeedBannerTabItem.jdField_a_of_type_JavaUtilArrayList);
+    if ((this.b != null) && (paramFeedBannerTabItem.j != null)) {
+      this.b.a(paramFeedBannerTabItem.j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.feed.FeedBannerViewHolder
  * JD-Core Version:    0.7.0.1
  */

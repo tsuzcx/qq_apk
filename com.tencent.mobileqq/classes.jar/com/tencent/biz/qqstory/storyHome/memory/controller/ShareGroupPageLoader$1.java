@@ -13,16 +13,16 @@ class ShareGroupPageLoader$1
 {
   public void run()
   {
-    ??? = ((MemoryManager)SuperManager.a(19)).b(this.this$0.jdField_b_of_type_JavaLangString);
+    ??? = ((MemoryManager)SuperManager.a(19)).d(this.this$0.g);
     ShareGroupPageLoader.GetShareGroupListEvent localGetShareGroupListEvent = new ShareGroupPageLoader.GetShareGroupListEvent(new ErrorMessage(), ShareGroupPageLoader.a(this.this$0));
-    localGetShareGroupListEvent.jdField_b_of_type_Boolean = true;
-    localGetShareGroupListEvent.jdField_a_of_type_Boolean = true;
+    localGetShareGroupListEvent.b = true;
+    localGetShareGroupListEvent.a = true;
     localGetShareGroupListEvent.c = true;
-    localGetShareGroupListEvent.jdField_a_of_type_JavaUtilList = ((List)???);
-    localGetShareGroupListEvent.jdField_a_of_type_Int = ((List)???).size();
+    localGetShareGroupListEvent.e = ((List)???);
+    localGetShareGroupListEvent.f = ((List)???).size();
     synchronized (this.this$0)
     {
-      if (!this.this$0.jdField_b_of_type_Boolean)
+      if (!this.this$0.e)
       {
         StoryDispatcher.a().dispatch(localGetShareGroupListEvent);
         SLog.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from cache: %s", localGetShareGroupListEvent);

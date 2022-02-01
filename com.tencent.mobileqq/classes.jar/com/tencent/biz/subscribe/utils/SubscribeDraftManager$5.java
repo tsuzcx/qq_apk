@@ -10,20 +10,20 @@ class SubscribeDraftManager$5
   
   public void run()
   {
-    Object localObject = SubscribeDraftManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject = SubscribeDraftManager.a(this.this$0, this.a, this.b);
     if (localObject != null)
     {
       localObject = SubscribeDraftManager.a(this.this$0, (String)((Pair)localObject).first);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        SubscribeDraftManager.SubDraftListener localSubDraftListener = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+        SubscribeDraftManager.SubDraftListener localSubDraftListener = this.c;
         if (localSubDraftListener != null) {
           localSubDraftListener.a(6, true, this.b, new Object[] { localObject });
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+        localObject = this.c;
         if (localObject != null) {
           ((SubscribeDraftManager.SubDraftListener)localObject).a(6, false, this.b, null);
         }

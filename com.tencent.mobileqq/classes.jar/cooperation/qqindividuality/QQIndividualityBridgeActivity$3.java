@@ -19,13 +19,13 @@ class QQIndividualityBridgeActivity$3
   public void onInstallError(String paramString, int paramInt)
   {
     String str = String.valueOf(paramInt);
-    paramString = HardCodeUtil.a(2131710341);
-    if (this.a.b == QQIndividualityBridgeActivity.c) {
-      paramString = HardCodeUtil.a(2131710334);
-    } else if (this.a.b == QQIndividualityBridgeActivity.d) {
-      paramString = HardCodeUtil.a(2131710335);
-    } else if (this.a.b == QQIndividualityBridgeActivity.e) {
-      paramString = HardCodeUtil.a(2131710338);
+    paramString = HardCodeUtil.a(2131908033);
+    if (this.a.j == QQIndividualityBridgeActivity.k) {
+      paramString = HardCodeUtil.a(2131908026);
+    } else if (this.a.j == QQIndividualityBridgeActivity.l) {
+      paramString = HardCodeUtil.a(2131908027);
+    } else if (this.a.j == QQIndividualityBridgeActivity.m) {
+      paramString = HardCodeUtil.a(2131908030);
     }
     IPluginManager.a(str, paramString);
     int i = NetworkUtil.getSystemNetwork(this.a);
@@ -47,7 +47,7 @@ class QQIndividualityBridgeActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqindividuality.QQIndividualityBridgeActivity.3
  * JD-Core Version:    0.7.0.1
  */

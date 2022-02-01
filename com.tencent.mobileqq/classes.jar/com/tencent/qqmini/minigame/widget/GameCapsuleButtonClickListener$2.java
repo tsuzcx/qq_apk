@@ -2,20 +2,25 @@ package com.tencent.qqmini.minigame.widget;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.sdk.launcher.ui.OnAppCloseAction;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
 
-class GameCapsuleButtonClickListener$2
+final class GameCapsuleButtonClickListener$2
   implements DialogInterface.OnClickListener
 {
-  GameCapsuleButtonClickListener$2(GameCapsuleButtonClickListener paramGameCapsuleButtonClickListener) {}
+  GameCapsuleButtonClickListener$2(OnAppCloseAction paramOnAppCloseAction) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GameCapsuleButtonClickListener.access$000(this.this$0);
+    if (this.val$action.positiveButtonListener != null) {
+      this.val$action.positiveButtonListener.onClick(paramDialogInterface, paramInt);
+    }
+    SDKMiniProgramLpReportDC04239.report("sdk_popup", "action", "click", this.val$action.positiveButtonClickReportStr, null, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.widget.GameCapsuleButtonClickListener.2
  * JD-Core Version:    0.7.0.1
  */

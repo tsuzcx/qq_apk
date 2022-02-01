@@ -264,7 +264,7 @@ public abstract class EntityManagerFactory
       }
       else if ((localAbility.uin == null) || (!localAbility.uin.equals(this.name)))
       {
-        this.mInnerDbHelper.a();
+        this.mInnerDbHelper.dropAllTable();
         localAbility = new Ability();
         localAbility.flags = -1;
         localAbility.uin = this.name;
@@ -277,7 +277,7 @@ public abstract class EntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.EntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -4,35 +4,35 @@ import android.graphics.Bitmap;
 
 public class SendPanelItemInfo
 {
-  public int a;
-  public long a = 0L;
-  public Bitmap a;
   public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public boolean b;
-  public int c;
   public String c;
-  public boolean c;
-  public String d;
-  public String e;
-  String f;
+  public int d;
+  public int e;
+  public int f;
   public String g;
+  public Bitmap h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public String l;
+  String m;
+  public String n;
+  public long o = 0L;
   
   public void a()
   {
-    this.jdField_b_of_type_Int = 0;
-    this.c = 0;
-    this.e = "";
-    this.g = "";
-    this.a = 0L;
-    this.jdField_b_of_type_Boolean = false;
+    this.e = 0;
+    this.f = 0;
+    this.l = "";
+    this.n = "";
+    this.o = 0L;
+    this.j = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.sendpanel.SendPanelItemInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -15,11 +15,11 @@ public class TXCLiveBGMPlayer
   private final Handler mHandler = new Handler(Looper.getMainLooper());
   private boolean mIsPause = false;
   private boolean mIsRunning = false;
-  private WeakReference<f> mWeakListener = null;
+  private WeakReference<h> mWeakListener = null;
   
   static
   {
-    com.tencent.liteav.basic.util.f.f();
+    com.tencent.liteav.basic.util.h.f();
   }
   
   public static TXCLiveBGMPlayer getInstance()
@@ -35,8 +35,8 @@ public class TXCLiveBGMPlayer
       {
         if (this.mWeakListener != null)
         {
-          f localf = (f)this.mWeakListener.get();
-          this.mHandler.post(new TXCLiveBGMPlayer.2(this, localf, paramInt));
+          h localh = (h)this.mWeakListener.get();
+          this.mHandler.post(new TXCLiveBGMPlayer.2(this, localh, paramInt));
           return;
         }
       }
@@ -53,8 +53,8 @@ public class TXCLiveBGMPlayer
       {
         if (this.mWeakListener != null)
         {
-          f localf = (f)this.mWeakListener.get();
-          this.mHandler.post(new TXCLiveBGMPlayer.3(this, localf, paramLong1, paramLong2));
+          h localh = (h)this.mWeakListener.get();
+          this.mHandler.post(new TXCLiveBGMPlayer.3(this, localh, paramLong1, paramLong2));
           return;
         }
       }
@@ -71,8 +71,8 @@ public class TXCLiveBGMPlayer
       {
         if (this.mWeakListener != null)
         {
-          f localf = (f)this.mWeakListener.get();
-          this.mHandler.post(new TXCLiveBGMPlayer.1(this, localf));
+          h localh = (h)this.mWeakListener.get();
+          this.mHandler.post(new TXCLiveBGMPlayer.1(this, localh));
           return;
         }
       }
@@ -140,13 +140,13 @@ public class TXCLiveBGMPlayer
     TXAudioEffectManagerImpl.getInstance().seekMusicToPosInMS(this.mBGMId, paramInt);
   }
   
-  public void setOnPlayListener(f paramf)
+  public void setOnPlayListener(h paramh)
   {
-    if (paramf == null) {}
+    if (paramh == null) {}
     try
     {
       this.mWeakListener = null;
-      this.mWeakListener = new WeakReference(paramf);
+      this.mWeakListener = new WeakReference(paramh);
       return;
     }
     finally {}
@@ -228,7 +228,7 @@ public class TXCLiveBGMPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.TXCLiveBGMPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -14,30 +14,30 @@ public class SimpleMonthAdapter
   extends RecyclerView.Adapter<SimpleMonthAdapter.ViewHolder>
   implements SimpleMonthView.OnDayClickListener
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final TypedArray jdField_a_of_type_AndroidContentResTypedArray;
-  private CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-  private final DatePickerController jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerController;
-  private HashMap<String, ArrayList<MessageRecord>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final TypedArray a;
+  private final Context b;
+  private final DatePickerController c;
+  private CalendarDay d;
+  private HashMap<String, ArrayList<MessageRecord>> e = new HashMap();
   
   public SimpleMonthAdapter(Context paramContext, DatePickerController paramDatePickerController, TypedArray paramTypedArray)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerController = paramDatePickerController;
-    this.jdField_a_of_type_AndroidContentResTypedArray = paramTypedArray;
-    if (this.jdField_a_of_type_AndroidContentResTypedArray.getBoolean(8, false)) {
+    this.b = paramContext;
+    this.c = paramDatePickerController;
+    this.a = paramTypedArray;
+    if (this.a.getBoolean(8, false)) {
       a(new CalendarDay(System.currentTimeMillis()));
     }
   }
   
   public SimpleMonthAdapter.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new SimpleMonthAdapter.ViewHolder(new SimpleMonthView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentResTypedArray), this);
+    return new SimpleMonthAdapter.ViewHolder(new SimpleMonthView(this.b, this.a), this);
   }
   
   public void a(int paramInt1, int paramInt2, ArrayList<MessageRecord> paramArrayList)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.e;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("-");
@@ -48,7 +48,7 @@ public class SimpleMonthAdapter
   
   protected void a(CalendarDay paramCalendarDay)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay;
+    this.d = paramCalendarDay;
     notifyDataSetChanged();
   }
   
@@ -56,7 +56,7 @@ public class SimpleMonthAdapter
   {
     SimpleMonthView localSimpleMonthView = paramViewHolder.a;
     Object localObject3 = new HashMap();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerController.a();
+    Object localObject2 = this.c.a();
     CalendarDay localCalendarDay1 = new CalendarDay(System.currentTimeMillis());
     CalendarDay localCalendarDay2 = new CalendarDay(localCalendarDay1.year, localCalendarDay1.month, 1);
     Object localObject1 = localObject2;
@@ -65,19 +65,19 @@ public class SimpleMonthAdapter
     }
     int i = (((CalendarDay)localObject1).month + paramInt) % 12;
     int j = ((CalendarDay)localObject1).year + (((CalendarDay)localObject1).month + paramInt) / 12;
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
+    localObject2 = this.d;
     if (localObject2 != null)
     {
       ((HashMap)localObject3).put("selected_begin_year", Integer.valueOf(((CalendarDay)localObject2).year));
-      ((HashMap)localObject3).put("selected_begin_month", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.month));
-      ((HashMap)localObject3).put("selected_begin_day", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.day));
+      ((HashMap)localObject3).put("selected_begin_month", Integer.valueOf(this.d.month));
+      ((HashMap)localObject3).put("selected_begin_day", Integer.valueOf(this.d.day));
     }
     localSimpleMonthView.b();
     ((HashMap)localObject3).put("year", Integer.valueOf(j));
     ((HashMap)localObject3).put("month", Integer.valueOf(i));
     ((HashMap)localObject3).put("week_start", Integer.valueOf(Calendar.getInstance().getFirstDayOfWeek()));
     localSimpleMonthView.setMonthParams((HashMap)localObject3);
-    localObject2 = this.jdField_a_of_type_JavaUtilHashMap;
+    localObject2 = this.e;
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append(j);
     ((StringBuilder)localObject3).append("-");
@@ -85,7 +85,7 @@ public class SimpleMonthAdapter
     localSimpleMonthView.setMessageRecords((ArrayList)((HashMap)localObject2).get(((StringBuilder)localObject3).toString()));
     localSimpleMonthView.setStartAndEndDate((CalendarDay)localObject1, localCalendarDay1);
     localSimpleMonthView.invalidate();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerController.a(localSimpleMonthView, j, i);
+    this.c.a(localSimpleMonthView, j, i);
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
@@ -94,14 +94,14 @@ public class SimpleMonthAdapter
     if ((paramCalendarDay != null) && (paramObject != null) && ((paramObject instanceof MessageRecord)))
     {
       a(paramCalendarDay);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerController.a(paramCalendarDay, (MessageRecord)paramObject);
+      this.c.a(paramCalendarDay, (MessageRecord)paramObject);
     }
   }
   
   public int getItemCount()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerController.a().year * 12 + this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerController.a().month;
-    int j = this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerController.b().year * 12 + this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerController.b().month;
+    int i = this.c.a().year * 12 + this.c.a().month;
+    int j = this.c.b().year * 12 + this.c.b().month;
     if (i == j) {
       return 2;
     }
@@ -115,7 +115,7 @@ public class SimpleMonthAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.datepicker.SimpleMonthAdapter
  * JD-Core Version:    0.7.0.1
  */

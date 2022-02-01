@@ -14,13 +14,13 @@ class VideoView$3
   public void onClick(View paramView)
   {
     long l;
-    if (VideoView.access$400(this.a).a() != null) {
-      l = VideoView.access$400(this.a).a().b();
+    if (VideoView.access$400(this.a).i() != null) {
+      l = VideoView.access$400(this.a).i().o();
     } else {
       l = 0L;
     }
     VideoReportUtil.a.b(VideoView.access$200(this.a), l, this.a.isPlaying());
-    if (Util.e(VideoView.access$200(this.a)))
+    if (Util.f(VideoView.access$200(this.a)))
     {
       VideoView.access$500(this.a);
       return;
@@ -30,7 +30,7 @@ class VideoView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -72,7 +72,7 @@ public class WSDramaDataFetcher
   private void a(boolean paramBoolean1, boolean paramBoolean2, WSServiceErrorInfo paramWSServiceErrorInfo, IFetchDataRspListener<WSDramaItemData> paramIFetchDataRspListener)
   {
     if (paramIFetchDataRspListener != null) {
-      paramIFetchDataRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.a(), paramBoolean1, paramBoolean2);
+      paramIFetchDataRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.b(), paramBoolean1, paramBoolean2);
     }
   }
   
@@ -85,13 +85,13 @@ public class WSDramaDataFetcher
   {
     boolean bool1 = paramWSDramaParams.a();
     boolean bool2 = paramWSDramaParams.b();
-    WSNetService.a(new WSDramaRequest(paramWSDramaParams.a())).a(new WSDramaDataFetcher.1(this, paramIFetchDataRspListener, bool1, bool2));
+    WSNetService.a(new WSDramaRequest(paramWSDramaParams.c())).a(new WSDramaDataFetcher.1(this, paramIFetchDataRspListener, bool1, bool2));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.data.WSDramaDataFetcher
  * JD-Core Version:    0.7.0.1
  */

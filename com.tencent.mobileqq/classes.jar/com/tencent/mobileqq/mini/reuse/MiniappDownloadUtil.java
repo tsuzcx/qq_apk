@@ -248,7 +248,7 @@ public class MiniappDownloadUtil
   private boolean rangeDownloadEnvEnable()
   {
     List localList = getRangeModePerfLevel();
-    if ((localList != null) && (!localList.contains(Integer.valueOf(DeviceInfoUtils.a())))) {
+    if ((localList != null) && (!localList.contains(Integer.valueOf(DeviceInfoUtils.getPerfLevel())))) {
       return false;
     }
     localList = getRangeModeNetworkLevel();
@@ -371,7 +371,7 @@ public class MiniappDownloadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil
  * JD-Core Version:    0.7.0.1
  */

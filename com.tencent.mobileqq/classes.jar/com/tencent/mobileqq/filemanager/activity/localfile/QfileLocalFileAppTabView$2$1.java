@@ -23,7 +23,7 @@ class QfileLocalFileAppTabView$2$1
         }
       }
     }
-    this.a.this$0.c.putAll(this.a.this$0.a);
+    this.a.this$0.l.putAll(this.a.this$0.a);
     this.a.this$0.i();
     this.a.this$0.setSelect(0);
     this.a.this$0.a.clear();
@@ -32,7 +32,7 @@ class QfileLocalFileAppTabView$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -37,9 +37,9 @@ class RegisterSendUpSms$2
       QLog.d("RegisterSendUpSms", 1, "not receive sms");
       RegisterSendUpSms.a(this.a, 4);
       if (TextUtils.isEmpty(paramString4)) {
-        paramString2 = this.a.getString(2131716618);
+        paramString2 = this.a.getString(2131914081);
       }
-      QQToast.a(this.a, paramString2, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, paramString2, 0).show(this.a.getTitleBarHeight());
       return;
     }
     if (paramInt1 == 0)
@@ -48,10 +48,10 @@ class RegisterSendUpSms$2
       RegisterSendUpSms.b(this.a, paramString5);
       RegisterSendUpSms.a(this.a, 3);
       paramArrayOfByte = this.a;
-      QQToast.a(paramArrayOfByte, paramArrayOfByte.getString(2131713288), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(paramArrayOfByte, paramArrayOfByte.getString(2131910841), 0).show(this.a.getTitleBarHeight());
       RegisterSendUpSms.b(this.a);
-      ReportController.a(RegisterSendUpSms.a(this.a), "dc00898", "", "", "0X800B4BB", "0X800B4BB", 0, 0, "", "", "", "");
-      ReportController.a(null, "dc00898", "", "", "0X800B8DC", "0X800B8DC", 0, 0, "", "", RegisterOverseaHelper.a().a(), "");
+      ReportController.a(RegisterSendUpSms.c(this.a), "dc00898", "", "", "0X800B4BB", "0X800B4BB", 0, 0, "", "", "", "");
+      ReportController.a(null, "dc00898", "", "", "0X800B8DC", "0X800B8DC", 0, 0, "", "", RegisterOverseaHelper.a().b(), "");
       return;
     }
     RegisterSendUpSms.a(this.a, 4);
@@ -73,14 +73,14 @@ class RegisterSendUpSms$2
     }
     paramArrayOfByte = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      paramArrayOfByte = this.a.getString(2131716618);
+      paramArrayOfByte = this.a.getString(2131914081);
     }
-    QQToast.a(this.a, paramArrayOfByte.trim(), 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a, paramArrayOfByte.trim(), 0).show(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterSendUpSms.2
  * JD-Core Version:    0.7.0.1
  */

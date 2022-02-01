@@ -1,17 +1,16 @@
 package com.tencent.pts.ui.vnode;
 
 import com.tencent.pts.core.PTSAppInstance;
-import com.tencent.pts.ui.view.PTSImageView;
 
 public class PTSNodeImage
-  extends PTSNodeVirtual<PTSImageView>
+  extends PTSNodeVirtual
 {
   public static final String TAG = "PTSNodeImage";
   private String imageUrl;
   
   public PTSNodeImage(PTSAppInstance paramPTSAppInstance)
   {
-    super(paramPTSAppInstance);
+    super(paramPTSAppInstance, "img", null);
   }
   
   private void setImageSrc(String paramString) {}
@@ -37,7 +36,7 @@ public class PTSNodeImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeImage
  * JD-Core Version:    0.7.0.1
  */

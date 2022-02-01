@@ -13,10 +13,10 @@ public class CustomHeightWebJumpParser
     if (paramString.startsWith("mqqapi://webcustomheight"))
     {
       paramBaseQQAppInterface = new CustomHeightWebJumpAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-      paramBaseQQAppInterface.a = paramString;
-      paramBaseQQAppInterface.b = "webcustomheight";
+      paramBaseQQAppInterface.c = paramString;
+      paramBaseQQAppInterface.d = "webcustomheight";
       if (paramString.startsWith("mqqapi://webcustomheight/jump")) {
-        paramBaseQQAppInterface.c = "jump";
+        paramBaseQQAppInterface.e = "jump";
       }
       paramContext = paramString.split("\\?");
       if (paramContext.length != 2) {
@@ -42,7 +42,7 @@ public class CustomHeightWebJumpParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.CustomHeightWebJumpParser
  * JD-Core Version:    0.7.0.1
  */

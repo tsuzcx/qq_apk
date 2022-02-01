@@ -23,10 +23,10 @@ public class OlympicToolAppInterface
   extends BaseToolAppInterface
   implements IToolProcEventListener
 {
-  OlympicToolAppInterface.MyNetInfoHandler jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface$MyNetInfoHandler = null;
   public OlympicToolService a;
-  private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = null;
-  Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
+  Map<Integer, Manager> b = new HashMap(20);
+  OlympicToolAppInterface.MyNetInfoHandler c = null;
+  private NetEngineFactory d = null;
   
   public OlympicToolAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
@@ -35,10 +35,10 @@ public class OlympicToolAppInterface
   
   protected void addManager(int paramInt, Manager paramManager)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null) {
+    if (this.b.get(Integer.valueOf(paramInt)) != null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramManager);
+    this.b.put(Integer.valueOf(paramInt), paramManager);
   }
   
   public BaseApplication getApp()
@@ -48,7 +48,7 @@ public class OlympicToolAppInterface
   
   public int getAppid()
   {
-    return AppSetting.a();
+    return AppSetting.d();
   }
   
   public String getCurrentAccountUin()
@@ -63,7 +63,7 @@ public class OlympicToolAppInterface
   
   public MobileQQServiceBase getMobileQQService()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolService;
+    return this.a;
   }
   
   public String getModuleId()
@@ -84,7 +84,7 @@ public class OlympicToolAppInterface
       QLog.i("olympic.OlympicToolAppInterface", 2, "onCreate");
     }
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolService = new OlympicToolService(this);
+    this.a = new OlympicToolService(this);
     QQAudioHelper.a((BaseApplicationImpl)this.app, getLongAccountUin());
   }
   
@@ -121,14 +121,14 @@ public class OlympicToolAppInterface
   
   public void start(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface$MyNetInfoHandler = new OlympicToolAppInterface.MyNetInfoHandler(this, null);
-    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface$MyNetInfoHandler);
+    this.c = new OlympicToolAppInterface.MyNetInfoHandler(this, null);
+    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.c);
     super.start(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.OlympicToolAppInterface
  * JD-Core Version:    0.7.0.1
  */

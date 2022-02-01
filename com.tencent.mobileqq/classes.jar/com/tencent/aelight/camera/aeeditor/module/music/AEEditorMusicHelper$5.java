@@ -23,9 +23,9 @@ final class AEEditorMusicHelper$5
     ((StringBuilder)localObject).append("[downloadMusic], onResp, succeeded=");
     ((StringBuilder)localObject).append(bool);
     AEQLog.b("AEEditorMusicHelper", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicHelper$MusicDownloadCallback;
+    localObject = this.a;
     if (localObject != null) {
-      ((AEEditorMusicHelper.MusicDownloadCallback)localObject).a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo, bool, this.jdField_a_of_type_JavaLangString);
+      ((AEEditorMusicHelper.MusicDownloadCallback)localObject).a(this.b, bool, this.c);
     }
     if (paramNetResp != null)
     {
@@ -35,21 +35,21 @@ final class AEEditorMusicHelper$5
       } else {
         bool = false;
       }
-      ((AEBaseDataReporter)localObject).a(bool, 5, "AEEditorMusicDownload", this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo.a(), paramNetResp.mErrCode, paramNetResp.reqCost);
+      ((AEBaseDataReporter)localObject).a(bool, 5, "AEEditorMusicDownload", this.b.c(), paramNetResp.mErrCode, paramNetResp.reqCost);
     }
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    paramNetReq = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicHelper$MusicDownloadCallback;
+    paramNetReq = this.a;
     if (paramNetReq != null) {
-      paramNetReq.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo, (int)((float)paramLong1 * 100.0F / (float)paramLong2));
+      paramNetReq.b(this.b, (int)((float)paramLong1 * 100.0F / (float)paramLong2));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorMusicHelper.5
  * JD-Core Version:    0.7.0.1
  */

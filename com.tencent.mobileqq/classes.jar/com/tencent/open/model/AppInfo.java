@@ -12,65 +12,70 @@ public class AppInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<AppInfo> CREATOR = new AppInfo.1();
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString = "";
+  private int a = -1;
+  private int b = -1;
+  private String c = "";
+  private String d = "";
+  private boolean e;
   
   public AppInfo(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.e = false;
+    this.a = paramInt;
+    this.c = paramString1;
+    this.d = paramString2;
   }
   
   protected AppInfo(Parcel paramParcel)
   {
     boolean bool = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.e = false;
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
     if (paramParcel.readByte() != 0) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.e = bool;
   }
   
   public AppInfo(qqconnect.Appinfo paramAppinfo)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.e = false;
     if (paramAppinfo.appid.has()) {
-      this.jdField_a_of_type_Int = paramAppinfo.appid.get();
+      this.a = paramAppinfo.appid.get();
     }
     if (paramAppinfo.app_name.has()) {
-      this.jdField_a_of_type_JavaLangString = paramAppinfo.app_name.get();
+      this.c = paramAppinfo.app_name.get();
     }
     if (paramAppinfo.app_type.has()) {
-      this.jdField_b_of_type_Int = paramAppinfo.app_type.get();
+      this.b = paramAppinfo.app_type.get();
     }
     if (paramAppinfo.icon_url.has()) {
-      this.jdField_b_of_type_JavaLangString = paramAppinfo.icon_url.get();
+      this.d = paramAppinfo.icon_url.get();
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  public String a()
+  public void a(boolean paramBoolean)
   {
-    int i = this.jdField_b_of_type_Int;
+    this.e = paramBoolean;
+  }
+  
+  public String b()
+  {
+    int i = this.b;
     if (i != 100)
     {
       switch (i)
       {
       default: 
-        return HardCodeUtil.a(2131700835);
+        return HardCodeUtil.a(2131898859);
       case 3: 
       case 4: 
       case 5: 
@@ -80,33 +85,23 @@ public class AppInfo
       case 9: 
         return "";
       case 2: 
-        return HardCodeUtil.a(2131700836);
+        return HardCodeUtil.a(2131898860);
       case 1: 
-        return HardCodeUtil.a(2131700837);
+        return HardCodeUtil.a(2131898861);
       }
-      return HardCodeUtil.a(2131700834);
+      return HardCodeUtil.a(2131898858);
     }
     return "";
   }
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public String c()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
   }
   
   public int describeContents()
@@ -114,16 +109,21 @@ public class AppInfo
     return 0;
   }
   
+  public boolean e()
+  {
+    return this.e;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("AppInfo{");
     localStringBuilder.append("mId=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mName='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", type='");
-    localStringBuilder.append(a());
+    localStringBuilder.append(b());
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -131,16 +131,16 @@ public class AppInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.d);
+    paramParcel.writeByte((byte)this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.model.AppInfo
  * JD-Core Version:    0.7.0.1
  */

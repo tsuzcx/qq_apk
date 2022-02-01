@@ -11,21 +11,21 @@ class TroopEssenceMsgManager$13$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$13.this$0.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$13.a), this.jdField_a_of_type_JavaUtilHashMap);
-    Object localObject = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$13.this$0.b.get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$13.a));
+    this.b.this$0.d.put(Long.valueOf(this.b.a), this.a);
+    Object localObject = (ArrayList)this.b.this$0.e.get(Long.valueOf(this.b.a));
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((TroopEssenceMsgManager.callbackInMainThread)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$13.a, this.jdField_a_of_type_JavaUtilHashMap);
+        ((TroopEssenceMsgManager.callbackInMainThread)((Iterator)localObject).next()).a(this.b.a, this.a);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$13.this$0.b.remove(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$13.a));
+      this.b.this$0.e.remove(Long.valueOf(this.b.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.13.1
  * JD-Core Version:    0.7.0.1
  */

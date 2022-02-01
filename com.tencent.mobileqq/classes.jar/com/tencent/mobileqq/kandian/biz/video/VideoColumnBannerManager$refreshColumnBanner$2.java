@@ -14,12 +14,12 @@ final class VideoColumnBannerManager$refreshColumnBanner$2
   
   public final void onClick(View paramView)
   {
-    VideoColumnBannerManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoColumnBannerManager, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsShortVideoItemHolder);
+    VideoColumnBannerManager.a(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoColumnBannerManager.refreshColumnBanner.2
  * JD-Core Version:    0.7.0.1
  */

@@ -27,9 +27,7 @@ import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.qwallet.QWalletMsgHolder;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.IndividualRedPacketManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
@@ -46,6 +44,7 @@ import com.tencent.mobileqq.qwallet.hb.aio.elem.RedPacketInfo;
 import com.tencent.mobileqq.qwallet.hb.aio.viewholder.IFBaseViewHolder;
 import com.tencent.mobileqq.qwallet.hb.aio.viewholder.IViewHolderFactory;
 import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.QLog;
@@ -58,94 +57,84 @@ public class QQWalletMsgItemBuilder
   extends BaseBubbleBuilder
   implements ICustomizeStrategyFactory.OnCustomizeListener
 {
+  public static Map<MessageForQQWalletMsg, Long> M = new HashMap();
+  private static int N = 0;
+  private static int O = 0;
+  private static int P = 0;
   public static final String a = "QQWalletMsgItemBuilder";
-  public static Map<MessageForQQWalletMsg, Long> a;
-  private static int o;
-  private static int p;
-  private static int q;
-  protected final int a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new QQWalletMsgItemBuilder.2(this);
-  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = null;
-  private IndividualRedPacketManager jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager;
-  IQQWalletHbItemApi jdField_a_of_type_ComTencentMobileqqQwalletHbAioIQQWalletHbItemApi = (IQQWalletHbItemApi)QRoute.api(IQQWalletHbItemApi.class);
-  protected float b;
-  protected String b;
-  protected int d;
-  protected int e;
-  protected int f;
-  protected int g;
-  protected int h;
-  protected int i;
-  protected int j;
-  protected int k;
-  protected int l;
-  int m;
-  int n;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  protected int A;
+  protected int B;
+  protected int C;
+  protected int D;
+  protected int E;
+  protected int F;
+  protected String G = "";
+  BaseChatPie H = null;
+  protected float I = 1.0F;
+  IQQWalletHbItemApi J = (IQQWalletHbItemApi)QRoute.api(IQQWalletHbItemApi.class);
+  int K;
+  int L;
+  private View.OnClickListener Q = new QQWalletMsgItemBuilder.2(this);
+  protected final int w = 2131443089;
+  protected int x;
+  protected int y;
+  protected int z;
   
   public QQWalletMsgItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_Int = 2131374904;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Float = 1.0F;
-    this.jdField_b_of_type_JavaLangString = paramContext.getString(2131716792);
-    this.jdField_b_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    float f1 = this.jdField_b_of_type_Float;
-    this.d = ((int)(42.0F * f1 + 0.5F));
-    this.e = ((int)(10.0F * f1 + 0.5F));
-    this.f = ((int)(9.0F * f1 + 0.5F));
-    this.g = ((int)(6.5F * f1 + 0.5F));
-    this.h = ((int)(4.0F * f1 + 0.5F));
-    this.i = ((int)(1.0F * f1 + 0.5F));
-    this.j = ((int)(7.0F * f1 + 0.5F));
-    this.k = ((int)(173.0F * f1 + 0.5F));
-    this.l = ((int)(f1 * 255.0F + 0.5F));
-    int i1 = this.i;
-    o = i1 * 2;
-    p = i1 * 2;
-    q = this.j;
-    paramBaseAdapter = (BaseActivity)paramContext;
-    if (paramBaseAdapter.getChatFragment() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseAdapter.getChatFragment().a();
+    this.G = paramContext.getString(2131914264);
+    this.I = paramContext.getResources().getDisplayMetrics().density;
+    float f = this.I;
+    this.x = ((int)(42.0F * f + 0.5F));
+    this.y = ((int)(10.0F * f + 0.5F));
+    this.z = ((int)(9.0F * f + 0.5F));
+    this.A = ((int)(6.5F * f + 0.5F));
+    this.B = ((int)(4.0F * f + 0.5F));
+    this.C = ((int)(1.0F * f + 0.5F));
+    this.D = ((int)(7.0F * f + 0.5F));
+    this.E = ((int)(173.0F * f + 0.5F));
+    this.F = ((int)(f * 255.0F + 0.5F));
+    int i = this.C;
+    N = i * 2;
+    O = i * 2;
+    P = this.D;
+    paramQQAppInterface = (BaseActivity)paramContext;
+    if (paramQQAppInterface.getChatFragment() != null) {
+      this.H = paramQQAppInterface.getChatFragment().k();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager = ((IndividualRedPacketManager)paramQQAppInterface.getManager(QQManagerFactory.INDIVIDUAL_RED_PACKET_MANAGER));
   }
   
   private TextView a(Context paramContext)
   {
     paramContext = new TextView(paramContext);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.topMargin = this.e;
-    localLayoutParams.bottomMargin = this.g;
-    int i1 = this.d;
-    int i2 = this.h;
-    localLayoutParams.leftMargin = (i1 + i2);
-    localLayoutParams.rightMargin = (i1 + i2);
-    localLayoutParams.addRule(3, 2131364521);
+    localLayoutParams.topMargin = this.y;
+    localLayoutParams.bottomMargin = this.A;
+    int i = this.x;
+    int j = this.B;
+    localLayoutParams.leftMargin = (i + j);
+    localLayoutParams.rightMargin = (i + j);
+    localLayoutParams.addRule(3, 2131430578);
     localLayoutParams.addRule(14);
     paramContext.setLayoutParams(localLayoutParams);
     paramContext.setTextColor(-1);
-    paramContext.setBackgroundResource(2130844764);
-    i1 = this.f;
-    paramContext.setPadding(i1, this.h, i1, 0);
+    paramContext.setBackgroundResource(2130846198);
+    i = this.z;
+    paramContext.setPadding(i, this.B, i, 0);
     paramContext.setClickable(false);
     paramContext.setVisibility(8);
     paramContext.setGravity(16);
     paramContext.setIncludeFontPadding(false);
-    paramContext.setLineSpacing(this.h, 1.0F);
+    paramContext.setLineSpacing(this.B, 1.0F);
     paramContext.setTextSize(12.0F);
-    paramContext.setId(2131374904);
+    paramContext.setId(2131443089);
     return paramContext;
   }
   
   private void a(QWalletMsgHolder paramQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, MessageForQQWalletMsg paramMessageForQQWalletMsg, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    IFBaseViewHolder localIFBaseViewHolder = ((IViewHolderFactory)QRoute.api(IViewHolderFactory.class)).createViewHolder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramQWalletMsgHolder, paramQQWalletBaseMsgElem, 0, this);
+    IFBaseViewHolder localIFBaseViewHolder = ((IViewHolderFactory)QRoute.api(IViewHolderFactory.class)).createViewHolder(this.d, this.f, paramQWalletMsgHolder, paramQQWalletBaseMsgElem, 0, this);
     paramMessageForQQWalletMsg.specifyIcon = null;
     try
     {
@@ -154,24 +143,24 @@ public class QQWalletMsgItemBuilder
       localIFBaseViewHolder.e();
       localIFBaseViewHolder.b();
       localIFBaseViewHolder.f();
-      localIFBaseViewHolder.a();
-      localIFBaseViewHolder.h();
+      localIFBaseViewHolder.g();
+      localIFBaseViewHolder.i();
     }
     catch (Throwable localThrowable)
     {
       if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "handleOldRedPacketLayout exception", localThrowable);
+        QLog.e(a, 2, "handleOldRedPacketLayout exception", localThrowable);
       }
     }
-    paramQWalletMsgHolder.a().setOnClickListener(null);
-    paramQWalletMsgHolder.a().setOnLongClickListener(paramOnLongClickAndTouchListener);
-    paramQWalletMsgHolder.a().setOnTouchListener(paramOnLongClickAndTouchListener);
-    paramQWalletMsgHolder.a().setTag(paramMessageForQQWalletMsg);
-    paramMessageForQQWalletMsg = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioIQQWalletHbItemApi;
-    paramQWalletMsgHolder = paramQWalletMsgHolder.a();
+    paramQWalletMsgHolder.c().setOnClickListener(null);
+    paramQWalletMsgHolder.b().setOnLongClickListener(paramOnLongClickAndTouchListener);
+    paramQWalletMsgHolder.b().setOnTouchListener(paramOnLongClickAndTouchListener);
+    paramQWalletMsgHolder.b().setTag(paramMessageForQQWalletMsg);
+    paramMessageForQQWalletMsg = this.J;
+    paramQWalletMsgHolder = paramQWalletMsgHolder.b();
     paramOnLongClickAndTouchListener = new StringBuilder();
-    paramOnLongClickAndTouchListener.append(paramQQWalletBaseMsgElem.jdField_a_of_type_JavaLangString);
-    paramOnLongClickAndTouchListener.append(this.jdField_b_of_type_JavaLangString);
+    paramOnLongClickAndTouchListener.append(paramQQWalletBaseMsgElem.c);
+    paramOnLongClickAndTouchListener.append(this.G);
     paramMessageForQQWalletMsg.setOldHbOnClickListener(paramQWalletMsgHolder, paramOnLongClickAndTouchListener.toString());
   }
   
@@ -195,7 +184,7 @@ public class QQWalletMsgItemBuilder
         {
           localObject = "";
         }
-        String str = jdField_a_of_type_JavaLangString;
+        String str = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("handleRedPacketLayout holder=");
         localStringBuilder.append(paramQWalletMsgHolder);
@@ -208,16 +197,19 @@ public class QQWalletMsgItemBuilder
         localStringBuilder.append(paramBoolean);
         QLog.d(str, 2, localStringBuilder.toString());
       }
-      int i2 = ((IViewHolderFactory)QRoute.api(IViewHolderFactory.class)).getRedPkgType(paramMessageForQQWalletMsg.messageType);
-      int i1 = i2;
-      if (i2 == 4)
+      int i = ((IViewHolderFactory)QRoute.api(IViewHolderFactory.class)).getRedPkgType(paramMessageForQQWalletMsg.messageType);
+      if (paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.redChannel == 1000004) {
+        i = 16;
+      }
+      int j = i;
+      if (i == 4)
       {
-        i1 = i2;
-        if (paramQQWalletBaseMsgElem.i > 0) {
-          i1 = 0;
+        j = i;
+        if (paramQQWalletBaseMsgElem.v > 0) {
+          j = 0;
         }
       }
-      Object localObject = ((IViewHolderFactory)QRoute.api(IViewHolderFactory.class)).createViewHolder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramQWalletMsgHolder, paramQQWalletBaseMsgElem, i1, this);
+      Object localObject = ((IViewHolderFactory)QRoute.api(IViewHolderFactory.class)).createViewHolder(this.d, this.f, paramQWalletMsgHolder, paramQQWalletBaseMsgElem, j, this);
       try
       {
         ((IFBaseViewHolder)localObject).a();
@@ -226,98 +218,93 @@ public class QQWalletMsgItemBuilder
         ((IFBaseViewHolder)localObject).e();
         ((IFBaseViewHolder)localObject).b();
         ((IFBaseViewHolder)localObject).f();
-        ((IFBaseViewHolder)localObject).a();
         ((IFBaseViewHolder)localObject).g();
         ((IFBaseViewHolder)localObject).h();
+        ((IFBaseViewHolder)localObject).i();
       }
       catch (Throwable localThrowable)
       {
         if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "handleRedPacketLayout exception", localThrowable);
+          QLog.e(a, 2, "handleRedPacketLayout exception", localThrowable);
         }
       }
       if (paramBoolean) {
         return;
       }
-      this.m = paramQQWalletBaseMsgElem.i;
-      this.n = paramMessageForQQWalletMsg.messageType;
-      paramQWalletMsgHolder.a().setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramQWalletMsgHolder.b().setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramQWalletMsgHolder.b().setOnTouchListener(paramOnLongClickAndTouchListener);
-      paramQWalletMsgHolder.b().setTag(paramMessageForQQWalletMsg);
-      paramOnLongClickAndTouchListener = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).createBaseChatPie(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioIQQWalletHbItemApi.setHbOnClickListener(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramOnLongClickAndTouchListener, paramQWalletMsgHolder.b(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, i1, paramQQWalletBaseMsgElem.i, this.jdField_b_of_type_JavaLangString);
-      if (i1 == 1)
+      this.K = paramQQWalletBaseMsgElem.v;
+      this.L = paramMessageForQQWalletMsg.messageType;
+      paramQWalletMsgHolder.c().setOnClickListener(this.Q);
+      paramQWalletMsgHolder.d().setOnLongClickListener(paramOnLongClickAndTouchListener);
+      paramQWalletMsgHolder.d().setOnTouchListener(paramOnLongClickAndTouchListener);
+      paramQWalletMsgHolder.d().setTag(paramMessageForQQWalletMsg);
+      paramOnLongClickAndTouchListener = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).createBaseChatPie(this.H);
+      this.J.setHbOnClickListener(this.d, paramOnLongClickAndTouchListener, paramQWalletMsgHolder.d(), this.f, j, paramQQWalletBaseMsgElem.v, this.G);
+      if (j == 1)
       {
-        paramQWalletMsgHolder = paramQWalletMsgHolder.a();
+        paramQWalletMsgHolder = paramQWalletMsgHolder.b();
         paramQQWalletBaseMsgElem = new StringBuilder();
-        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131711117));
-        paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131711122));
+        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131908782));
+        paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.c);
+        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131908787));
         paramQWalletMsgHolder.setContentDescription(paramQQWalletBaseMsgElem.toString());
         return;
       }
-      if (i1 == 2)
+      if (j == 2)
       {
-        paramQWalletMsgHolder = paramQWalletMsgHolder.a();
+        paramQWalletMsgHolder = paramQWalletMsgHolder.b();
         paramQQWalletBaseMsgElem = new StringBuilder();
-        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131711124));
-        paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131711112));
+        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131908789));
+        paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.c);
+        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131908777));
         paramQWalletMsgHolder.setContentDescription(paramQQWalletBaseMsgElem.toString());
         return;
       }
-      if (i1 == 8)
+      if (j == 8)
       {
-        paramQWalletMsgHolder = paramQWalletMsgHolder.a();
+        paramQWalletMsgHolder = paramQWalletMsgHolder.b();
         paramQQWalletBaseMsgElem = new StringBuilder();
         paramQQWalletBaseMsgElem.append("K歌红包:");
-        paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131711131));
+        paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.c);
+        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131908796));
         paramQWalletMsgHolder.setContentDescription(paramQQWalletBaseMsgElem.toString());
         return;
       }
-      if (i1 == 9)
+      if (j == 9)
       {
-        paramQWalletMsgHolder = paramQWalletMsgHolder.a();
+        paramQWalletMsgHolder = paramQWalletMsgHolder.b();
         paramQQWalletBaseMsgElem = new StringBuilder();
-        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131711114));
-        paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131711123));
+        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131908779));
+        paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.c);
+        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131908788));
         paramQWalletMsgHolder.setContentDescription(paramQQWalletBaseMsgElem.toString());
         return;
       }
-      if (i1 == 10)
+      if (j == 10)
       {
-        paramQWalletMsgHolder = paramQWalletMsgHolder.a();
+        paramQWalletMsgHolder = paramQWalletMsgHolder.b();
         paramQQWalletBaseMsgElem = new StringBuilder();
-        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131711130));
-        paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131711133));
+        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131908795));
+        paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.c);
+        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131908798));
         paramQWalletMsgHolder.setContentDescription(paramQQWalletBaseMsgElem.toString());
         return;
       }
-      if (i1 == 11)
+      if (j == 11)
       {
-        paramQWalletMsgHolder = paramQWalletMsgHolder.a();
+        paramQWalletMsgHolder = paramQWalletMsgHolder.b();
         paramQQWalletBaseMsgElem = new StringBuilder();
-        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131711120));
-        paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131711119));
+        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131908785));
+        paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.c);
+        paramQQWalletBaseMsgElem.append(HardCodeUtil.a(2131908784));
         paramQWalletMsgHolder.setContentDescription(paramQQWalletBaseMsgElem.toString());
         return;
       }
-      paramQWalletMsgHolder = paramQWalletMsgHolder.a();
+      paramQWalletMsgHolder = paramQWalletMsgHolder.b();
       paramQQWalletBaseMsgElem = new StringBuilder();
-      paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-      paramQQWalletBaseMsgElem.append(this.jdField_b_of_type_JavaLangString);
+      paramQQWalletBaseMsgElem.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.c);
+      paramQQWalletBaseMsgElem.append(this.G);
       paramQWalletMsgHolder.setContentDescription(paramQQWalletBaseMsgElem.toString());
     }
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
   }
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -338,17 +325,25 @@ public class QQWalletMsgItemBuilder
       if (QWalletHelperDelegate.graphbSpeedEnable) {
         a(paramViewHolder.istroop);
       }
-      if ((localQWalletMsgHolder.a() == null) || ((localQWalletMsgHolder.a() != null) && (localQWalletMsgHolder.a() != paramChatMessage.uniseq)))
+      if ((localQWalletMsgHolder.b() == null) || ((localQWalletMsgHolder.b() != null) && (localQWalletMsgHolder.m() != paramChatMessage.uniseq)))
       {
-        localQWalletMsgHolder.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioIQQWalletHbItemApi.createRedPacketBubbleView(localQWalletMsgHolder, this.jdField_a_of_type_AndroidContentContext));
-        paramBaseChatItemLayout.addView(a(this.jdField_a_of_type_AndroidContentContext));
+        IQQWalletHbItemApi localIQQWalletHbItemApi = this.J;
+        Context localContext = this.e;
+        int i;
+        if (this.f == null) {
+          i = 0;
+        } else {
+          i = this.f.a;
+        }
+        localQWalletMsgHolder.a(localIQQWalletHbItemApi.createRedPacketBubbleView(localQWalletMsgHolder, localContext, i));
+        paramBaseChatItemLayout.addView(a(this.e));
       }
       localQWalletMsgHolder.a(paramChatMessage.uniseq);
       if (paramViewHolder.mQQWalletRedPacketMsg != null)
       {
         paramChatMessage = paramViewHolder.mQQWalletRedPacketMsg.elem;
         if (paramChatMessage == null) {
-          return localQWalletMsgHolder.a();
+          return localQWalletMsgHolder.b();
         }
         a(localQWalletMsgHolder, paramChatMessage, paramViewHolder, paramOnLongClickAndTouchListener, false);
       }
@@ -359,16 +354,16 @@ public class QQWalletMsgItemBuilder
         {
           paramChatMessage = paramViewHolder.mQQWalletTransferMsg.elem;
           if (paramChatMessage == null) {
-            return localQWalletMsgHolder.a();
+            return localQWalletMsgHolder.b();
           }
           a(localQWalletMsgHolder, paramChatMessage, paramViewHolder, paramOnLongClickAndTouchListener);
         }
       }
-      paramViewHolder = (TextView)paramBaseChatItemLayout.findViewById(2131374904);
+      paramViewHolder = (TextView)paramBaseChatItemLayout.findViewById(2131443089);
       if (paramViewHolder != null) {
-        if ((paramChatMessage != null) && (!TextUtils.isEmpty(paramChatMessage.e)))
+        if ((paramChatMessage != null) && (!TextUtils.isEmpty(paramChatMessage.g)))
         {
-          paramViewHolder.setText(paramChatMessage.e);
+          paramViewHolder.setText(paramChatMessage.g);
           paramViewHolder.setVisibility(0);
         }
         else
@@ -376,7 +371,7 @@ public class QQWalletMsgItemBuilder
           paramViewHolder.setVisibility(8);
         }
       }
-      return localQWalletMsgHolder.a();
+      return localQWalletMsgHolder.b();
     }
     return null;
   }
@@ -386,49 +381,6 @@ public class QQWalletMsgItemBuilder
     return new QWalletMsgHolder();
   }
   
-  protected String a(ChatMessage paramChatMessage)
-  {
-    boolean bool = paramChatMessage instanceof MessageForQQWalletMsg;
-    QQWalletBaseMsgElem localQQWalletBaseMsgElem = null;
-    Object localObject;
-    if (bool) {
-      localObject = (MessageForQQWalletMsg)paramChatMessage;
-    } else {
-      localObject = null;
-    }
-    if ((localObject != null) && ((((MessageForQQWalletMsg)localObject).mQQWalletRedPacketMsg != null) || (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg != null)))
-    {
-      if (((MessageForQQWalletMsg)localObject).mQQWalletRedPacketMsg != null) {
-        localQQWalletBaseMsgElem = ((MessageForQQWalletMsg)localObject).mQQWalletRedPacketMsg.elem;
-      } else if (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg != null) {
-        localQQWalletBaseMsgElem = ((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.elem;
-      }
-      if (localQQWalletBaseMsgElem != null)
-      {
-        localObject = new StringBuilder();
-        if (MessageRecordInfo.a(paramChatMessage.issend)) {
-          ((StringBuilder)localObject).append("发出");
-        } else {
-          ((StringBuilder)localObject).append("发来");
-        }
-        ((StringBuilder)localObject).append(localQQWalletBaseMsgElem.c);
-        ((StringBuilder)localObject).append(localQQWalletBaseMsgElem.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject).append("按钮");
-        return ((StringBuilder)localObject).toString();
-      }
-      return paramChatMessage.msg;
-    }
-    return paramChatMessage.msg;
-  }
-  
-  public void a()
-  {
-    super.a();
-    ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getCustomizeStrategyFactory().a();
-    ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).voiceRecognizerDestroy();
-    jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
   protected void a(int paramInt)
   {
     ThreadManager.post(new QQWalletMsgItemBuilder.1(this, paramInt), 8, null, true);
@@ -436,12 +388,12 @@ public class QQWalletMsgItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt != 2131365480)
+    if (paramInt != 2131431695)
     {
       super.a(paramInt, paramContext, paramChatMessage);
       return;
     }
-    ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+    ChatActivityFacade.b(this.e, this.d, paramChatMessage);
   }
   
   public void a(int paramInt, RedPacketInfo paramRedPacketInfo)
@@ -457,47 +409,60 @@ public class QQWalletMsgItemBuilder
               return;
             }
             if ((paramRedPacketInfo.skinType == 1) && ((paramRedPacketInfo.background != null) || (paramRedPacketInfo.animInfo != null))) {
-              a(paramRedPacketInfo.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+              a(paramRedPacketInfo.a);
             }
             if ((paramRedPacketInfo.skinType == 3) && (paramRedPacketInfo.specailBackgroundAnimInfo != null)) {
-              a(paramRedPacketInfo.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+              a(paramRedPacketInfo.a);
             }
           }
           else if (paramRedPacketInfo.animInfo != null)
           {
-            a(paramRedPacketInfo.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+            a(paramRedPacketInfo.a);
           }
         }
-        else if ((paramRedPacketInfo.a()) || (paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-          a(paramRedPacketInfo.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        else if ((paramRedPacketInfo.a()) || (paramRedPacketInfo.e != null)) {
+          a(paramRedPacketInfo.a);
         }
       }
       else if (paramRedPacketInfo.background != null) {
-        a(paramRedPacketInfo.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        a(paramRedPacketInfo.a);
       }
     }
   }
   
   protected void a(View paramView, ChatMessage paramChatMessage)
   {
+    int i;
+    if (QQTheme.isNowSimpleUI()) {
+      i = BaseChatItemLayout.getBubblePaddingAlignError();
+    } else {
+      i = O;
+    }
+    int j;
+    if (QQTheme.isNowSimpleUI()) {
+      j = BaseChatItemLayout.getBubblePaddingAlignHead();
+    } else {
+      j = N;
+    }
     if (paramChatMessage.isSend())
     {
-      paramView.setPadding(p, q, o, 0);
+      paramView.setPadding(i, P, j, 0);
       return;
     }
     if (paramChatMessage.istroop == 1008)
     {
-      paramView.setPadding(o, q, p, paramView.getResources().getDimensionPixelSize(2131296381));
+      int k = paramView.getResources().getDimensionPixelSize(2131296613);
+      paramView.setPadding(j, P, i, k);
       return;
     }
-    paramView.setPadding(o, q, p, 0);
+    paramView.setPadding(j, P, i, 0);
   }
   
   public void a(View paramView, ChatMessage paramChatMessage, int paramInt)
   {
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("updateView type=");
       localStringBuilder.append(paramInt);
@@ -511,8 +476,8 @@ public class QQWalletMsgItemBuilder
       if ((paramView instanceof QWalletMsgHolder))
       {
         paramChatMessage = (QWalletMsgHolder)paramView;
-        if (paramChatMessage.b() != null) {
-          paramView = paramChatMessage.b().getTag();
+        if (paramChatMessage.d() != null) {
+          paramView = paramChatMessage.d().getTag();
         } else {
           paramView = null;
         }
@@ -533,36 +498,39 @@ public class QQWalletMsgItemBuilder
   {
     super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramViewHolder, paramInt1, paramInt2);
     paramChatMessage = (QWalletMsgHolder)paramViewHolder;
-    paramContext = paramBaseChatItemLayout.findViewById(2131374812);
-    if (paramChatMessage.b() != null)
+    paramContext = paramBaseChatItemLayout.findViewById(2131443002);
+    if (paramChatMessage.l() != null)
     {
-      paramInt1 = paramChatMessage.jdField_a_of_type_AndroidViewView.getPaddingLeft();
-      paramInt2 = paramChatMessage.jdField_a_of_type_AndroidViewView.getPaddingRight();
-      int i1 = paramChatMessage.jdField_a_of_type_AndroidViewView.getPaddingTop();
-      int i2 = paramChatMessage.jdField_a_of_type_AndroidViewView.getPaddingBottom();
-      paramBaseChatItemLayout = paramChatMessage.jdField_a_of_type_AndroidViewView;
-      int i3 = this.g;
-      paramBaseChatItemLayout.setPadding(paramInt1 + i3, i1, paramInt2 + i3, i2);
-      paramBaseChatItemLayout = new RelativeLayout.LayoutParams(this.k, this.l);
-      paramBaseChatItemLayout.addRule(5, 2131364521);
-      paramBaseChatItemLayout.addRule(6, 2131364521);
-      paramBaseChatItemLayout.leftMargin = paramInt1;
-      paramBaseChatItemLayout.topMargin = (-this.i);
+      paramInt2 = paramChatMessage.h.getPaddingLeft();
+      int i = paramChatMessage.h.getPaddingRight();
+      int j = paramChatMessage.h.getPaddingTop();
+      int k = paramChatMessage.h.getPaddingBottom();
+      if (QQTheme.isNowSimpleUI()) {
+        paramInt1 = 0;
+      } else {
+        paramInt1 = this.A;
+      }
+      paramChatMessage.h.setPadding(paramInt2 + paramInt1, j, i + paramInt1, k);
+      paramBaseChatItemLayout = new RelativeLayout.LayoutParams(this.E, this.F);
+      paramBaseChatItemLayout.addRule(5, 2131430578);
+      paramBaseChatItemLayout.addRule(6, 2131430578);
+      paramBaseChatItemLayout.leftMargin = paramInt2;
+      paramBaseChatItemLayout.topMargin = (-this.C);
       if (paramContext != null)
       {
-        paramChatMessage.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.removeView(paramContext);
-        paramChatMessage.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.addView(paramChatMessage.b(), paramBaseChatItemLayout);
+        paramChatMessage.j.removeView(paramContext);
+        paramChatMessage.j.addView(paramChatMessage.l(), paramBaseChatItemLayout);
         return;
       }
-      paramChatMessage.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.addView(paramChatMessage.b(), paramBaseChatItemLayout);
+      paramChatMessage.j.addView(paramChatMessage.l(), paramBaseChatItemLayout);
     }
   }
   
   public void a(MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if ((paramMessageRecord != null) && (this.d != null))
     {
-      MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+      MqqHandler localMqqHandler = this.d.getHandler(ChatActivity.class);
       if (localMqqHandler != null)
       {
         Message localMessage = new Message();
@@ -580,17 +548,65 @@ public class QQWalletMsgItemBuilder
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     paramView = AIOUtils.a(paramView);
-    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131376417, paramView, null);
-    ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131376430, paramView, null);
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131371603, null, null);
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
-    return localQQCustomMenu.a();
+    a(localQQCustomMenu, this.e, 2131444634, paramView, null);
+    ChatActivityFacade.a(localQQCustomMenu, this.e, this.f.a);
+    a(localQQCustomMenu, this.e, 2131444651, paramView, null);
+    super.a(localQQCustomMenu, this.e, 2131439015, null, null);
+    super.a(localQQCustomMenu, this.e, 2131428089, null, null);
+    return localQQCustomMenu.d();
+  }
+  
+  public void b()
+  {
+    super.b();
+    ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getCustomizeStrategyFactory().b();
+    ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).voiceRecognizerDestroy();
+    M.clear();
+  }
+  
+  public int c(ChatMessage paramChatMessage)
+  {
+    return 0;
+  }
+  
+  protected String d(ChatMessage paramChatMessage)
+  {
+    boolean bool = paramChatMessage instanceof MessageForQQWalletMsg;
+    QQWalletBaseMsgElem localQQWalletBaseMsgElem = null;
+    Object localObject;
+    if (bool) {
+      localObject = (MessageForQQWalletMsg)paramChatMessage;
+    } else {
+      localObject = null;
+    }
+    if ((localObject != null) && ((((MessageForQQWalletMsg)localObject).mQQWalletRedPacketMsg != null) || (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg != null)))
+    {
+      if (((MessageForQQWalletMsg)localObject).mQQWalletRedPacketMsg != null) {
+        localQQWalletBaseMsgElem = ((MessageForQQWalletMsg)localObject).mQQWalletRedPacketMsg.elem;
+      } else if (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg != null) {
+        localQQWalletBaseMsgElem = ((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.elem;
+      }
+      if (localQQWalletBaseMsgElem != null)
+      {
+        localObject = new StringBuilder();
+        if (MessageRecordInfo.b(paramChatMessage.issend)) {
+          ((StringBuilder)localObject).append("发出");
+        } else {
+          ((StringBuilder)localObject).append("发来");
+        }
+        ((StringBuilder)localObject).append(localQQWalletBaseMsgElem.e);
+        ((StringBuilder)localObject).append(localQQWalletBaseMsgElem.c);
+        ((StringBuilder)localObject).append("按钮");
+        return ((StringBuilder)localObject).toString();
+      }
+      return paramChatMessage.msg;
+    }
+    return paramChatMessage.msg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQWalletMsgItemBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -21,13 +21,13 @@ public class ExtendFriendCampusVerifyTipsView
   extends FrameLayout
   implements View.OnClickListener
 {
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ExtendFriendCampusVerifyTipsView.OnClickListener jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendCampusVerifyTipsView$OnClickListener;
-  private ExtendFriendCampusVerifyTipsView.TipsType jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendCampusVerifyTipsView$TipsType = ExtendFriendCampusVerifyTipsView.TipsType.VERIFY_NONE;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private ImageView a;
+  private TextView b;
+  private TextView c;
+  private Button d;
+  private ImageView e;
+  private ExtendFriendCampusVerifyTipsView.TipsType f = ExtendFriendCampusVerifyTipsView.TipsType.VERIFY_NONE;
+  private ExtendFriendCampusVerifyTipsView.OnClickListener g;
   
   public ExtendFriendCampusVerifyTipsView(Context paramContext)
   {
@@ -42,22 +42,22 @@ public class ExtendFriendCampusVerifyTipsView
   public ExtendFriendCampusVerifyTipsView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131561070, this);
+    inflate(paramContext, 2131627413, this);
     a();
     b();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378760));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378767));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378765));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131378752));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnTouchListener(UITools.a);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378758));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnTouchListener(UITools.a);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.a = ((ImageView)findViewById(2131447435));
+    this.b = ((TextView)findViewById(2131447442));
+    this.c = ((TextView)findViewById(2131447440));
+    this.d = ((Button)findViewById(2131447426));
+    this.d.setOnTouchListener(UITools.a);
+    this.d.setOnClickListener(this);
+    this.e = ((ImageView)findViewById(2131447432));
+    this.e.setOnTouchListener(UITools.a);
+    this.e.setOnClickListener(this);
   }
   
   public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface)
@@ -65,81 +65,81 @@ public class ExtendFriendCampusVerifyTipsView
     if ((paramActivity != null) && (paramQQAppInterface != null))
     {
       paramQQAppInterface = (IExpandManager)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
-      Object localObject = paramQQAppInterface.a();
+      Object localObject = paramQQAppInterface.ag();
       if ((localObject instanceof SchoolInfo))
       {
         localObject = (SchoolInfo)localObject;
-        if (TextUtils.isEmpty(((SchoolInfo)localObject).b))
+        if (TextUtils.isEmpty(((SchoolInfo)localObject).d))
         {
-          CampusHelper.a(paramActivity, paramQQAppInterface.i());
+          CampusHelper.a(paramActivity, paramQQAppInterface.I());
           return;
         }
-        CampusHelper.a(paramActivity, ((SchoolInfo)localObject).jdField_a_of_type_Int, ((SchoolInfo)localObject).b, ((SchoolInfo)localObject).jdField_a_of_type_JavaLangString);
+        CampusHelper.a(paramActivity, ((SchoolInfo)localObject).a, ((SchoolInfo)localObject).d, ((SchoolInfo)localObject).c);
       }
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendCampusVerifyTipsView$TipsType == ExtendFriendCampusVerifyTipsView.TipsType.VERIFY_NONE)
+    if (this.f == ExtendFriendCampusVerifyTipsView.TipsType.VERIFY_NONE)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698912);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698911);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131698910);
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130845194);
+      this.a.setVisibility(8);
+      this.b.setVisibility(0);
+      this.c.setVisibility(0);
+      this.d.setVisibility(0);
+      this.b.setText(2131896886);
+      this.c.setText(2131896885);
+      this.d.setText(2131896884);
+      this.d.setTextColor(-1);
+      this.d.setBackgroundResource(2130846636);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendCampusVerifyTipsView$TipsType == ExtendFriendCampusVerifyTipsView.TipsType.VERIFY_SUCCESS)
+    if (this.f == ExtendFriendCampusVerifyTipsView.TipsType.VERIFY_SUCCESS)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845197);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698913);
+      this.a.setVisibility(0);
+      this.b.setVisibility(0);
+      this.c.setVisibility(8);
+      this.d.setVisibility(8);
+      this.a.setImageResource(2130846639);
+      this.b.setText(2131896887);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendCampusVerifyTipsView$TipsType == ExtendFriendCampusVerifyTipsView.TipsType.VERIFY_FAIL)
+    if (this.f == ExtendFriendCampusVerifyTipsView.TipsType.VERIFY_FAIL)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845196);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698909);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131698908);
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130845195);
+      this.a.setVisibility(0);
+      this.b.setVisibility(0);
+      this.c.setVisibility(8);
+      this.d.setVisibility(0);
+      this.a.setImageResource(2130846638);
+      this.b.setText(2131896883);
+      this.d.setText(2131896882);
+      this.d.setTextColor(-16777216);
+      this.d.setBackgroundResource(2130846637);
     }
   }
   
   private void c()
   {
-    ExtendFriendCampusVerifyTipsView.OnClickListener localOnClickListener = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendCampusVerifyTipsView$OnClickListener;
+    ExtendFriendCampusVerifyTipsView.OnClickListener localOnClickListener = this.g;
     if (localOnClickListener != null) {
-      localOnClickListener.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendCampusVerifyTipsView$TipsType);
+      localOnClickListener.a(this.f);
     }
   }
   
   private void d()
   {
-    ExtendFriendCampusVerifyTipsView.OnClickListener localOnClickListener = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendCampusVerifyTipsView$OnClickListener;
+    ExtendFriendCampusVerifyTipsView.OnClickListener localOnClickListener = this.g;
     if (localOnClickListener != null) {
-      localOnClickListener.b(this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendCampusVerifyTipsView$TipsType);
+      localOnClickListener.b(this.f);
     }
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131378752)
+    if (i != 2131447426)
     {
-      if (i != 2131378758) {
+      if (i != 2131447432) {
         return;
       }
       d();
@@ -150,18 +150,18 @@ public class ExtendFriendCampusVerifyTipsView
   
   public void setOnClickListener(ExtendFriendCampusVerifyTipsView.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendCampusVerifyTipsView$OnClickListener = paramOnClickListener;
+    this.g = paramOnClickListener;
   }
   
   public void setTipsType(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendCampusVerifyTipsView$TipsType = paramTipsType;
+    this.f = paramTipsType;
     b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.ExtendFriendCampusVerifyTipsView
  * JD-Core Version:    0.7.0.1
  */

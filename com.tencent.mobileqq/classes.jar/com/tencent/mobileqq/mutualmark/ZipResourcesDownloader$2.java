@@ -37,42 +37,42 @@ class ZipResourcesDownloader$2
         return;
       }
       paramNetResp = (NetResp)localObject1;
-      if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader.a != null) {
-        paramNetResp = (IPreDownloadController)this.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader.a.get();
+      if (this.d.a != null) {
+        paramNetResp = (IPreDownloadController)this.d.a.get();
       }
       if (paramNetResp != null) {
         paramNetResp.preDownloadSuccess(str, -1L);
       }
-      ZipResourcesDownloader.a(this.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader, str, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader$OnZipResourcesDownloadCallback);
+      ZipResourcesDownloader.a(this.d, str, this.a, false, this.c);
       return;
     }
     localObject1 = localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader.a != null) {
-      localObject1 = (IPreDownloadController)this.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader.a.get();
+    if (this.d.a != null) {
+      localObject1 = (IPreDownloadController)this.d.a.get();
     }
     if (localObject1 != null) {
       ((IPreDownloadController)localObject1).preDownloadSuccess(str, paramNetResp.mTotalFileLen);
     }
     paramNetResp = (HttpNetReq)paramNetResp.mReq;
-    if (ZipResourcesDownloader.a(paramNetResp.mOutPath, this.jdField_a_of_type_JavaLangString))
+    if (ZipResourcesDownloader.b(paramNetResp.mOutPath, this.a))
     {
-      localObject1 = new File(ZipResourcesDownloader.a(this.jdField_a_of_type_JavaLangString));
+      localObject1 = new File(ZipResourcesDownloader.a(this.a));
       if (!((File)localObject1).exists()) {
         ((File)localObject1).mkdirs();
       }
-      boolean bool1 = ZipResourcesDownloader.b(paramNetResp.mOutPath, ZipResourcesDownloader.a(this.jdField_a_of_type_JavaLangString));
-      boolean bool2 = ZipResourcesDownloader.b(str, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString);
+      boolean bool1 = ZipResourcesDownloader.c(paramNetResp.mOutPath, ZipResourcesDownloader.a(this.a));
+      boolean bool2 = ZipResourcesDownloader.b(str, this.a, this.b);
       if (QLog.isColorLevel()) {
         QLog.d("ZipResourcesDownloader", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
       }
-      ZipResourcesDownloader.a(this.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader, str, this.jdField_a_of_type_JavaLangString, bool2, this.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader$OnZipResourcesDownloadCallback);
+      ZipResourcesDownloader.a(this.d, str, this.a, bool2, this.c);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.e("ZipResourcesDownloader", 2, "onResp ResultOk file check invalid.");
     }
-    ZipResourcesDownloader.a(paramNetResp.mOutPath);
-    ZipResourcesDownloader.a(this.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader, str, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader$OnZipResourcesDownloadCallback);
+    ZipResourcesDownloader.b(paramNetResp.mOutPath);
+    ZipResourcesDownloader.a(this.d, str, this.a, false, this.c);
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
@@ -84,7 +84,7 @@ class ZipResourcesDownloader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.ZipResourcesDownloader.2
  * JD-Core Version:    0.7.0.1
  */

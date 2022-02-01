@@ -13,13 +13,13 @@ class ArkModuleAPIAuthority$1$1
   public void callback(String paramString, Bitmap paramBitmap)
   {
     if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131365600)).setImageBitmap(paramBitmap);
+      ((ImageView)this.a.findViewById(2131431831)).setImageBitmap(paramBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkModuleAPIAuthority.1.1
  * JD-Core Version:    0.7.0.1
  */

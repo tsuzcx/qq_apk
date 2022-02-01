@@ -13,28 +13,28 @@ import com.tencent.mobileqq.widget.BubbleImageView;
 public class QQStoryItemBuilder$QQStoryMsgHolder
   extends BaseBubbleBuilder.ViewHolder
 {
-  public ViewGroup a;
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public AutoStartProgressBar a;
-  public URLDrawable a;
-  public QQStoryItemBuilder.StoryChatVideoView a;
-  public BubbleImageView a;
-  public boolean a;
-  public ImageView b;
-  public TextView b;
-  public BubbleImageView b;
-  public String b;
-  public TextView c;
-  public BubbleImageView c;
-  public TextView d;
-  public TextView e;
+  public TextView A;
+  public TextView B;
+  public boolean C;
+  public String a;
+  public URLDrawable b;
+  public QQStoryItemBuilder.StoryChatVideoView c;
+  public BubbleImageView d;
+  public BubbleImageView e;
+  public BubbleImageView f;
+  public ImageView g;
+  public TextView s;
+  public TextView t;
+  public FrameLayout u;
+  public TextView v;
+  public ImageView w;
+  public AutoStartProgressBar x;
+  public RelativeLayout y;
+  public ViewGroup z;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.QQStoryMsgHolder
  * JD-Core Version:    0.7.0.1
  */

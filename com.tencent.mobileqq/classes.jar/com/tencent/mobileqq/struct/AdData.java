@@ -48,15 +48,15 @@ public class AdData
         if (paramInt != 3)
         {
           if (paramInt != 4) {
-            return BaseApplicationImpl.getContext().getString(2131696042);
+            return BaseApplicationImpl.getContext().getString(2131893804);
           }
-          return BaseApplicationImpl.getContext().getString(2131693170);
+          return BaseApplicationImpl.getContext().getString(2131890710);
         }
-        return BaseApplicationImpl.getContext().getString(2131699020);
+        return BaseApplicationImpl.getContext().getString(2131897029);
       }
-      return BaseApplicationImpl.getContext().getString(2131691103);
+      return BaseApplicationImpl.getContext().getString(2131888049);
     }
-    return BaseApplicationImpl.getContext().getString(2131698739);
+    return BaseApplicationImpl.getContext().getString(2131896697);
   }
   
   public static int parseAdColor(int paramInt, boolean paramBoolean, String paramString)
@@ -216,7 +216,7 @@ public class AdData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.struct.AdData
  * JD-Core Version:    0.7.0.1
  */

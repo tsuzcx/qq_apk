@@ -6,14 +6,14 @@ import kotlin.Metadata;
 public final class VasAdvApiImpl$requestPublicAccountAd$2
   extends SimpleGuardInterface
 {
-  public void G_()
+  public void onApplicationForeground()
   {
     this.a.requestPublicAccountAd();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.api.impl.VasAdvApiImpl.requestPublicAccountAd.2
  * JD-Core Version:    0.7.0.1
  */

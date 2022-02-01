@@ -37,7 +37,7 @@ public class InterestTagUtils
             paramInterestTag = (appoint_define.InterestItem)((Iterator)localObject).next();
             paramInterestTag = (InterestTagInfo)((IInterestTagInfoUtils)QRoute.api(IInterestTagInfoUtils.class)).convertFrom(paramInterestTag);
             if (paramInterestTag != null) {
-              localInterestTag.a.add(paramInterestTag);
+              localInterestTag.b.add(paramInterestTag);
             }
           }
         }
@@ -87,7 +87,7 @@ public class InterestTagUtils
         {
           localObject = (InterestTagInfo)((IInterestTagInfoUtils)QRoute.api(IInterestTagInfoUtils.class)).convertFrom((JSONObject)localObject);
           if (localObject != null) {
-            localInterestTag.a.add(localObject);
+            localInterestTag.b.add(localObject);
           }
         }
         i += 1;
@@ -111,7 +111,7 @@ public class InterestTagUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.InterestTagUtils
  * JD-Core Version:    0.7.0.1
  */

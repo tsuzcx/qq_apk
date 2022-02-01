@@ -69,7 +69,7 @@ public class TXLivePusherJSAdapter
   private int mVideoHeight = 640;
   private Object mVideoView;
   private int mVideoWidth = 368;
-  private final IWXLivePusherProxy mWXLivePusherProxy = (IWXLivePusherProxy)ProxyManager.get(IWXLivePusherProxy.class);
+  private final IWXLivePusherProxy mWXLivePusherProxy = (IWXLivePusherProxy)ProxyManager.getNew(IWXLivePusherProxy.class);
   private String mWatermarkImage = "";
   private float mWatermarkLeft = 0.0F;
   private float mWatermarkTop = 0.0F;
@@ -1012,7 +1012,7 @@ public class TXLivePusherJSAdapter
   public TXJSAdapterError initEmbeddedLivePusher(JSONObject paramJSONObject)
   {
     paramJSONObject = adaptJsonToBundle(paramJSONObject);
-    printJSParams("InitLivePusher", paramJSONObject);
+    printJSParams("initEmbeddedLivePusher", paramJSONObject);
     this.mVideoView = null;
     this.mPusherUrl = paramJSONObject.getString("pushUrl", "");
     this.mWXLivePusherProxy.setPusherUrl(this.mPusherUrl);
@@ -1045,7 +1045,7 @@ public class TXLivePusherJSAdapter
     paramJSONObject = adaptJsonToBundle(paramJSONObject);
     if ((paramObject != null) && (paramJSONObject != null))
     {
-      printJSParams("InitLivePusher", paramJSONObject);
+      printJSParams("initLivePusher", paramJSONObject);
       this.mVideoView = paramObject;
       this.mWXLivePusherProxy.txCloudVideoView_disableLog(Boolean.valueOf(false), this.mVideoView);
       this.mPusherUrl = paramJSONObject.getString("pushUrl", "");
@@ -1388,7 +1388,7 @@ public class TXLivePusherJSAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.live.TXLivePusherJSAdapter
  * JD-Core Version:    0.7.0.1
  */

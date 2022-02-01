@@ -14,51 +14,51 @@ import com.tencent.qphone.base.util.QLog;
 public class PreCallUpToolProc
   implements Handler.Callback, IToolProcStart
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private IToolProcStart.Callback jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart$Callback;
-  private String jdField_a_of_type_JavaLangString;
+  private Context a;
+  private Handler b;
+  private IToolProcStart.Callback c;
+  private BroadcastReceiver d;
+  private String e;
   
   public PreCallUpToolProc(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
+    this.a = paramContext;
+    this.b = new Handler(this);
     b();
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
+    if (this.d == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new PreCallUpToolProc.1(this);
+      this.d = new PreCallUpToolProc.1(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      this.a.registerReceiver(this.d, localIntentFilter);
     }
   }
   
   private void c()
   {
-    BroadcastReceiver localBroadcastReceiver = this.jdField_a_of_type_AndroidContentBroadcastReceiver;
+    BroadcastReceiver localBroadcastReceiver = this.d;
     if (localBroadcastReceiver != null)
     {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(localBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      this.a.unregisterReceiver(localBroadcastReceiver);
+      this.d = null;
     }
   }
   
   public void a()
   {
     c();
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.b;
     if (localHandler != null)
     {
       localHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.b = null;
     }
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart$Callback = null;
+    this.a = null;
+    this.c = null;
   }
   
   public void a(String paramString, long paramLong, IToolProcStart.Callback paramCallback)
@@ -66,17 +66,17 @@ public class PreCallUpToolProc
     if (QLog.isColorLevel()) {
       QLog.d("PreCallUpToolProc", 2, String.format("callUpToolProc from=%s", new Object[] { paramString }));
     }
-    this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart$Callback = paramCallback;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    paramCallback = new Intent(this.jdField_a_of_type_AndroidContentContext, ARMapThreadStubReceiver.class);
+    this.c = paramCallback;
+    this.e = paramString;
+    paramCallback = new Intent(this.a, ARMapThreadStubReceiver.class);
     paramCallback.setAction("com.tencent.mobileqq.armap.ACTION_START_THREAD");
     paramCallback.putExtra("from", paramString);
-    this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramCallback);
-    paramString = this.jdField_a_of_type_AndroidOsHandler;
+    this.a.sendBroadcast(paramCallback);
+    paramString = this.b;
     if (paramString != null)
     {
       paramString.removeMessages(108);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(108, paramLong);
+      this.b.sendEmptyMessageDelayed(108, paramLong);
     }
   }
   
@@ -84,7 +84,7 @@ public class PreCallUpToolProc
   {
     if (paramMessage.what == 108)
     {
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart$Callback;
+      paramMessage = this.c;
       if (paramMessage != null) {
         paramMessage.a();
       }
@@ -94,7 +94,7 @@ public class PreCallUpToolProc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.ipc.PreCallUpToolProc
  * JD-Core Version:    0.7.0.1
  */

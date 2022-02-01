@@ -24,7 +24,7 @@ class PublicAccountCheckImpl$1
     }
     if ((paramBoolean) && (paramInt == 0))
     {
-      this.a.mAutomator.a.edit().putBoolean("isPublicAccountListOK", true).commit();
+      this.a.mAutomator.d.edit().putBoolean("isPublicAccountListOK", true).commit();
       this.a.setResult(7);
       return;
     }
@@ -35,7 +35,7 @@ class PublicAccountCheckImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountCheckImpl.1
  * JD-Core Version:    0.7.0.1
  */

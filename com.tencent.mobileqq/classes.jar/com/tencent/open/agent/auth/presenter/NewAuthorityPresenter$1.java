@@ -33,7 +33,7 @@ class NewAuthorityPresenter$1
       NewAuthorityPresenter.a(this.a, (GetVirtualListResult)paramMessage.obj);
       break;
     case 2: 
-      NewAuthorityPresenter.a(this.a).a(this.a.a.a);
+      NewAuthorityPresenter.b(this.a).a(this.a.w.a);
       break;
     case 1: 
       NewAuthorityPresenter.a(this.a);
@@ -43,7 +43,7 @@ class NewAuthorityPresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.NewAuthorityPresenter.1
  * JD-Core Version:    0.7.0.1
  */

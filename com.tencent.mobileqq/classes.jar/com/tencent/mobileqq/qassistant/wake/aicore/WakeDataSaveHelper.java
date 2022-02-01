@@ -18,23 +18,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class WakeDataSaveHelper
 {
-  public static final String a;
-  public ArrayList<Queue<short[]>> a;
-  public ArrayList<AtomicBoolean> b = new ArrayList(5);
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = QQAssistantGuiderUtil.jdField_a_of_type_JavaLangString;
-  }
+  public static final String a = QQAssistantGuiderUtil.a;
+  public ArrayList<Queue<short[]>> b = new ArrayList(5);
+  public ArrayList<AtomicBoolean> c = new ArrayList(5);
   
   WakeDataSaveHelper()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
     int i = 0;
     while (i < 5)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(new LinkedList());
-      this.b.add(new AtomicBoolean(false));
+      this.b.add(new LinkedList());
+      this.c.add(new AtomicBoolean(false));
       i += 1;
     }
   }
@@ -53,7 +47,7 @@ public class WakeDataSaveHelper
             ((SimpleDateFormat)localObject1).applyPattern("yyyy_MM_dd_HH_mm_ss");
             Object localObject2 = new Date();
             StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(a);
             localStringBuilder.append(((SimpleDateFormat)localObject1).format((Date)localObject2));
             localStringBuilder.append("__");
             localStringBuilder.append((int)(paramFloat.floatValue() * 1000.0F));
@@ -90,12 +84,12 @@ public class WakeDataSaveHelper
     int i = 0;
     while (i < 5)
     {
-      if ((!((AtomicBoolean)this.b.get(i)).get()) && (((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).size() == 20))
+      if ((!((AtomicBoolean)this.c.get(i)).get()) && (((Queue)this.b.get(i)).size() == 20))
       {
-        ((AtomicBoolean)this.b.get(i)).set(true);
+        ((AtomicBoolean)this.c.get(i)).set(true);
         LinkedList localLinkedList = new LinkedList();
-        while (!((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).isEmpty()) {
-          localLinkedList.add(((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).poll());
+        while (!((Queue)this.b.get(i)).isEmpty()) {
+          localLinkedList.add(((Queue)this.b.get(i)).poll());
         }
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getPath());
@@ -116,11 +110,11 @@ public class WakeDataSaveHelper
     int i = 0;
     while (i < 5)
     {
-      if (!((AtomicBoolean)this.b.get(i)).get())
+      if (!((AtomicBoolean)this.c.get(i)).get())
       {
-        ((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).offer(paramArrayOfShort);
-        if (((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).size() > 20) {
-          ((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).poll();
+        ((Queue)this.b.get(i)).offer(paramArrayOfShort);
+        if (((Queue)this.b.get(i)).size() > 20) {
+          ((Queue)this.b.get(i)).poll();
         }
       }
       i += 1;
@@ -129,7 +123,7 @@ public class WakeDataSaveHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.aicore.WakeDataSaveHelper
  * JD-Core Version:    0.7.0.1
  */

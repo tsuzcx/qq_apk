@@ -12,28 +12,28 @@ import com.tencent.ttpic.video.AEEncoder;
 public class AEVEncoder
   implements HWEncodeListener, AEEncoder
 {
-  private EncodeConfig jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig;
-  private HWVideoRecorder jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder = new HWVideoRecorder();
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private HWVideoRecorder a = new HWVideoRecorder();
+  private EncodeConfig b;
+  private boolean c;
+  private float[] d = new float[16];
+  private final Object e = new Object();
   
   public AEVEncoder(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig = new EncodeConfig(paramString, paramInt1, paramInt2, 5242880, 1, false, 0);
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    Matrix.setRotateM(this.jdField_a_of_type_ArrayOfFloat, 0, 180.0F, 1.0F, 0.0F, 0.0F);
+    this.b = new EncodeConfig(paramString, paramInt1, paramInt2, 5242880, 1, false, 0);
+    Matrix.setIdentityM(this.d, 0);
+    Matrix.setRotateM(this.d, 0, 180.0F, 1.0F, 0.0F, 0.0F);
   }
   
   public void onEncodeError(int paramInt, Throwable paramThrowable) {}
   
   public void onEncodeFinish(String arg1)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder.c();
-    this.jdField_a_of_type_Boolean = false;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.a.e();
+    this.c = false;
+    synchronized (this.e)
     {
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      this.e.notifyAll();
       return;
     }
   }
@@ -44,12 +44,12 @@ public class AEVEncoder
   
   public void release()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder.b();
+    this.a.b();
     try
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.e)
       {
-        this.jdField_a_of_type_JavaLangObject.wait();
+        this.e.wait();
       }
     }
     catch (InterruptedException localInterruptedException)
@@ -63,19 +63,19 @@ public class AEVEncoder
   
   public int writeFrame(int paramInt, long paramLong)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig.a(EGL14.eglGetCurrentContext());
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig, this);
-      this.jdField_a_of_type_Boolean = true;
+      this.b.a(EGL14.eglGetCurrentContext());
+      this.a.a(this.b, this);
+      this.c = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder.a(3553, paramInt, null, this.jdField_a_of_type_ArrayOfFloat, 1000000L * paramLong);
+    this.a.a(3553, paramInt, null, this.d, 1000000L * paramLong);
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.AEVEncoder
  * JD-Core Version:    0.7.0.1
  */

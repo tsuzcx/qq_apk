@@ -19,7 +19,7 @@ public class TroopEffectPicAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130851103;
+    return 2130853338;
   }
   
   public int getAppID()
@@ -32,29 +32,29 @@ public class TroopEffectPicAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697714);
+    return BaseApplicationImpl.getContext().getString(2131895487);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if (SharedPreUtils.m(paramBaseChatPie.a(), paramBaseChatPie.a.getCurrentAccountUin()))
+    if (SharedPreUtils.bf(paramBaseChatPie.aX(), paramBaseChatPie.d.getCurrentAccountUin()))
     {
-      TroopPicEffectsEditActivity.a(paramBaseChatPie.a(), paramSessionInfo.a, paramSessionInfo.b);
+      TroopPicEffectsEditActivity.a(paramBaseChatPie.aX(), paramSessionInfo.b, paramSessionInfo.c);
     }
     else
     {
-      SharedPreUtils.p(paramBaseChatPie.a(), paramBaseChatPie.a.getCurrentAccountUin());
-      paramPlusPanelViewModel = new Intent(paramBaseChatPie.a(), TroopPicEffectGuidePicActivity.class);
-      paramPlusPanelViewModel.putExtra("friendUin", paramSessionInfo.a);
-      paramPlusPanelViewModel.putExtra("troopUin", paramSessionInfo.b);
-      paramBaseChatPie.a().startActivity(paramPlusPanelViewModel);
+      SharedPreUtils.bg(paramBaseChatPie.aX(), paramBaseChatPie.d.getCurrentAccountUin());
+      paramPlusPanelViewModel = new Intent(paramBaseChatPie.aX(), TroopPicEffectGuidePicActivity.class);
+      paramPlusPanelViewModel.putExtra("friendUin", paramSessionInfo.b);
+      paramPlusPanelViewModel.putExtra("troopUin", paramSessionInfo.c);
+      paramBaseChatPie.aX().startActivity(paramPlusPanelViewModel);
     }
     TroopPicEffectsController.a("app_entry", "page_clk");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.TroopEffectPicAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,21 @@
 package com.dataline.activities;
 
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SelectLimitListener;
+import com.tencent.mobileqq.startup.step.CheckPermission.SDCardPermissionCallback;
 
 class LiteActivity$42
-  implements PhotoListPanel.SelectLimitListener
+  implements CheckPermission.SDCardPermissionCallback
 {
   LiteActivity$42(LiteActivity paramLiteActivity) {}
+  
+  public void a()
+  {
+    LiteActivity.i(this.a);
+  }
+  
+  public void b()
+  {
+    LiteActivity.i(this.a);
+  }
 }
 
 

@@ -78,7 +78,7 @@ public class HttpInterface
         LogUtility.c("HttpInterface", "cancel AsyncTask when onDestory");
         ((AsyncTask)localObject).cancel(true);
         if ((localObject instanceof HttpCgiAsyncTask)) {
-          ((HttpCgiAsyncTask)localObject).b();
+          ((HttpCgiAsyncTask)localObject).c();
         }
       }
       i += 1;
@@ -126,9 +126,9 @@ public class HttpInterface
           bool = true;
           paramString = new Bundle();
           paramString.putBoolean("from_h5", bool);
-          paramString.putString("platform", CommonDataAdapter.a().g());
-          paramString.putString("keystr", CommonDataAdapter.a().a());
-          paramString.putString("uin", String.valueOf(CommonDataAdapter.a().a()));
+          paramString.putString("platform", CommonDataAdapter.a().m());
+          paramString.putString("keystr", CommonDataAdapter.a().e());
+          paramString.putString("uin", String.valueOf(CommonDataAdapter.a().c()));
           paramString.putString("resolution", MobileInfoUtil.getResolution());
           paramString.putString("keytype", "256");
           if (str2.equals("POST"))
@@ -200,7 +200,7 @@ public class HttpInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.HttpInterface
  * JD-Core Version:    0.7.0.1
  */

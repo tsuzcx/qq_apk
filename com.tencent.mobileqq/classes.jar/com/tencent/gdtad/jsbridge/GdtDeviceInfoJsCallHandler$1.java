@@ -19,13 +19,13 @@ class GdtDeviceInfoJsCallHandler$1
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (((GdtAdWebPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a() != null))
+    Object localObject1 = this.a;
+    if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (((GdtAdWebPlugin)this.a.get()).a() != null))
     {
       JSONObject localJSONObject = null;
       try
       {
-        localObject1 = new JSONObject(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+        localObject1 = new JSONObject(this.b[0]);
         GdtLog.b("GdtDeviceInfoJsCallHandler", String.format("handleJsCallRequest %s", new Object[] { ((JSONObject)localObject1).toString() }));
         localObject1 = ((JSONObject)localObject1).getJSONObject("params").optString("businessIdForAidTicketAndTaidTicket");
       }
@@ -34,9 +34,9 @@ class GdtDeviceInfoJsCallHandler$1
         GdtLog.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localThrowable1);
         localObject2 = null;
       }
-      Context localContext = ((GdtAdWebPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().getApplicationContext();
+      Context localContext = ((GdtAdWebPlugin)this.a.get()).a().getApplicationContext();
       GdtDeviceInfoHelper.Params localParams = new GdtDeviceInfoHelper.Params();
-      localParams.jdField_a_of_type_JavaLangString = ((String)localObject2);
+      localParams.a = ((String)localObject2);
       Object localObject2 = GdtDeviceInfoHelper.a(localContext, localParams);
       if (localObject2 == null)
       {
@@ -76,7 +76,7 @@ class GdtDeviceInfoJsCallHandler$1
       }
       try
       {
-        ((GdtAdWebPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get()).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        ((GdtAdWebPlugin)this.a.get()).callJs(this.c, new String[] { localJSONObject.toString() });
         return;
       }
       catch (Throwable localThrowable2)
@@ -90,7 +90,7 @@ class GdtDeviceInfoJsCallHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtDeviceInfoJsCallHandler.1
  * JD-Core Version:    0.7.0.1
  */

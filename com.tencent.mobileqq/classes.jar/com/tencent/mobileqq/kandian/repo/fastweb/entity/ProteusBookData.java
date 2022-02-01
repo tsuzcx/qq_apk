@@ -6,12 +6,12 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.BaseData;
 public class ProteusBookData
   extends BaseData
 {
-  public TemplateBean a;
   public String a;
-  public String b;
-  public String c = "";
+  public TemplateBean b;
+  public String c;
   public String d = "";
   public String e = "";
+  public String f = "";
   
   public ProteusBookData()
   {
@@ -20,7 +20,7 @@ public class ProteusBookData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.fastweb.entity.ProteusBookData
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class BlessSelectMemberActivity$11$1
   
   public void run()
   {
-    QQToast.a(this.a.a, HardCodeUtil.a(2131701379), 0).b(this.a.a.getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(this.a.a, HardCodeUtil.a(2131899407), 0).show(this.a.a.getResources().getDimensionPixelSize(2131299920));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.BlessSelectMemberActivity.11.1
  * JD-Core Version:    0.7.0.1
  */

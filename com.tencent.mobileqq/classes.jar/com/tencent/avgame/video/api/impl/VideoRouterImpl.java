@@ -31,7 +31,7 @@ public class VideoRouterImpl
     if (this.mAVGameMediaPlayerCtrl == null)
     {
       this.mAVGameMediaPlayerCtrl = new AVGameMediaPlayerCtrl();
-      this.mAVGameMediaPlayerCtrl.e();
+      this.mAVGameMediaPlayerCtrl.h();
       this.mAVGameMediaPlayerCtrl.b(false);
       QLog.i("VideoRouter", 1, "createGameRoomMediaPlayerCtrl");
     }
@@ -42,7 +42,7 @@ public class VideoRouterImpl
     IAVGameMediaPlayerCtrl localIAVGameMediaPlayerCtrl = this.mAVGameMediaPlayerCtrl;
     if (localIAVGameMediaPlayerCtrl != null)
     {
-      localIAVGameMediaPlayerCtrl.h();
+      localIAVGameMediaPlayerCtrl.k();
       this.mAVGameMediaPlayerCtrl = null;
       QLog.i("VideoRouter", 1, "destroyGameRoomMediaPlayerCtrl");
     }

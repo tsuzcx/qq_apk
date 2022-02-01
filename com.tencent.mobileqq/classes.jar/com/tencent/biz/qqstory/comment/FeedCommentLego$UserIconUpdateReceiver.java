@@ -20,16 +20,16 @@ public class FeedCommentLego$UserIconUpdateReceiver
   
   public void a(@NonNull FeedCommentLego paramFeedCommentLego, @NonNull GetUserIconHandler.UserIconUpdateEvent paramUserIconUpdateEvent)
   {
-    if (paramUserIconUpdateEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {
+    if (paramUserIconUpdateEvent.g.isFail()) {
       return;
     }
-    Iterator localIterator = paramFeedCommentLego.a.iterator();
+    Iterator localIterator = paramFeedCommentLego.d.iterator();
     while (localIterator.hasNext())
     {
       CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-      if ((paramUserIconUpdateEvent.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.authorUnionId) != null) || (paramUserIconUpdateEvent.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.replierUnionId) != null))
+      if ((paramUserIconUpdateEvent.a.get(localCommentEntry.authorUnionId) != null) || (paramUserIconUpdateEvent.a.get(localCommentEntry.replierUnionId) != null))
       {
-        paramFeedCommentLego.f();
+        paramFeedCommentLego.h();
         SLog.e(this.TAG, "UserIconUpdateReceiver FeedCommentLego need to update");
       }
     }
@@ -42,7 +42,7 @@ public class FeedCommentLego$UserIconUpdateReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentLego.UserIconUpdateReceiver
  * JD-Core Version:    0.7.0.1
  */

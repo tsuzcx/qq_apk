@@ -10,18 +10,18 @@ class ReadInJoyDailySettingAdapter$1$1
   
   public void a(String paramString1, String paramString2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailySettingAdapter$DailySettingViewHolder.b.setText(paramString2);
-    this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoDailyReadInJoyDailySettingModel.d = paramString2;
-    this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoDailyReadInJoyDailySettingModel.c = paramString1;
-    if (this.a.jdField_a_of_type_Int < ReadInJoyDailySettingAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailySettingAdapter).size()) {
-      ReadInJoyDailySettingAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailySettingAdapter, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoDailyReadInJoyDailySettingModel);
+    this.a.a.b.setText(paramString2);
+    this.a.b.d = paramString2;
+    this.a.b.c = paramString1;
+    if (this.a.c < ReadInJoyDailySettingAdapter.b(this.a.d).size()) {
+      ReadInJoyDailySettingAdapter.a(this.a.d, this.a.c, this.a.b);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailySettingAdapter.a.dismiss();
+    this.a.d.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailySettingAdapter.1.1
  * JD-Core Version:    0.7.0.1
  */

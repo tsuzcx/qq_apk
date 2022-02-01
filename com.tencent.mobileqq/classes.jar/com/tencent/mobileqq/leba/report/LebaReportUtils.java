@@ -23,15 +23,15 @@ public class LebaReportUtils
   public static DC03309ReportItem a(String paramString)
   {
     DC03309ReportItem localDC03309ReportItem = new DC03309ReportItem();
-    localDC03309ReportItem.i = "trends_tab";
-    localDC03309ReportItem.j = "trends_plugin";
-    localDC03309ReportItem.k = paramString;
+    localDC03309ReportItem.k = "trends_tab";
+    localDC03309ReportItem.l = "trends_plugin";
+    localDC03309ReportItem.m = paramString;
     return localDC03309ReportItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.report.LebaReportUtils
  * JD-Core Version:    0.7.0.1
  */

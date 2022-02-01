@@ -31,17 +31,16 @@ import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.base.tab.IRIJTabFrame;
 import com.tencent.mobileqq.kandian.base.utils.NativeWebVideoCoverGetCallback;
+import com.tencent.mobileqq.kandian.base.utils.RIJLogUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.TimeUtil;
 import com.tencent.mobileqq.kandian.biz.account.RIJUserLevelDialog.DialogClick;
 import com.tencent.mobileqq.kandian.biz.account.RIJUserLevelDialog.DialogSettingInfo;
 import com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase;
-import com.tencent.mobileqq.kandian.biz.common.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.detail.ReadInJoyArticleDetailActivity;
-import com.tencent.mobileqq.kandian.biz.detail.web.api.IRIJWebArticleOptimizeUtil;
 import com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity;
 import com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsDynamicInsertController;
 import com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsInsertUtil;
@@ -54,6 +53,7 @@ import com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus;
 import com.tencent.mobileqq.kandian.biz.search.searchresult.KDSearchResultFragment;
 import com.tencent.mobileqq.kandian.biz.share.WxShareHelperFromReadInjoy;
 import com.tencent.mobileqq.kandian.biz.video.ReadInJoyWebDataManager;
+import com.tencent.mobileqq.kandian.biz.xtab.api.impl.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.pts.util.ProteusSupportUtil;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
@@ -78,6 +78,7 @@ import com.tencent.mobileqq.kandian.repo.handler.BiuInfo;
 import com.tencent.mobileqq.kandian.repo.report.FeedsReportData;
 import com.tencent.mobileqq.kandian.repo.report.ReportInfo;
 import com.tencent.mobileqq.kandian.repo.ugc.srtutils.UGRuleManager;
+import com.tencent.mobileqq.kandian.repo.webarticle.RIJWebArticleOptimizeUtil;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.mini.api.MiniAppLaunchListener;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -113,48 +114,6 @@ public class RIJJumpUtils
 {
   public static AbsBaseArticleInfo a;
   
-  public static int a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo == null) {
-      return 0;
-    }
-    if (RIJFeedsType.a(paramAbsBaseArticleInfo))
-    {
-      if (paramAbsBaseArticleInfo.mVideoType == 0) {
-        return 4;
-      }
-      return 5;
-    }
-    if (paramAbsBaseArticleInfo.mShowBigPicture)
-    {
-      if (paramAbsBaseArticleInfo.mIsGallery == 0) {
-        return 2;
-      }
-      return 8;
-    }
-    if ((paramAbsBaseArticleInfo.mPictures != null) && (paramAbsBaseArticleInfo.mPictures.length >= 3)) {
-      return 3;
-    }
-    if (TextUtils.isEmpty(paramAbsBaseArticleInfo.mFirstPagePicUrl)) {
-      return 0;
-    }
-    if (paramAbsBaseArticleInfo.mIsGallery == 0) {
-      return 1;
-    }
-    return 7;
-  }
-  
-  private static long a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
-  {
-    if ((paramInt != 3) && (paramInt != 5) && (paramInt != 2) && (paramInt != 7)) {
-      return paramAbsBaseArticleInfo.mFeedId;
-    }
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null)) {
-      return paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.a.longValue();
-    }
-    return 0L;
-  }
-  
   public static IRIJTabFrame a(Context paramContext)
   {
     try
@@ -176,37 +135,34 @@ public class RIJJumpUtils
     return null;
   }
   
-  public static Integer a(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, null, null);
-  }
-  
   public static Integer a(Context paramContext, String paramString, Bundle paramBundle)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("jumpTo: ");
-    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("jumpTo: context=");
+    ((StringBuilder)localObject).append(paramContext);
+    ((StringBuilder)localObject).append(", schema=");
+    ((StringBuilder)localObject).append(RIJLogUtil.a.a(paramString));
     ((StringBuilder)localObject).append(" extraData: ");
     ((StringBuilder)localObject).append(paramBundle);
     QLog.d("RIJJumpUtils", 1, ((StringBuilder)localObject).toString());
     Integer localInteger = Integer.valueOf(-1);
-    if (paramContext != null)
+    if ((paramContext != null) && (paramString != null))
     {
-      if (paramString == null) {
-        return localInteger;
-      }
       localObject = paramContext;
       if ((paramContext instanceof BasePluginActivity))
       {
         paramContext = ((BasePluginActivity)paramContext).getOutActivity();
         localObject = paramContext;
-        if (paramContext == null) {
+        if (paramContext == null)
+        {
+          QLog.e("RIJJumpUtils", 1, "jumpTo return by basePlugin context null");
           return localInteger;
         }
       }
-      paramContext = ViolaAccessHelper.c(paramString);
-      if ((ViolaAccessHelper.c(paramString)) && (!TextUtils.isEmpty(paramContext)))
+      paramContext = ViolaAccessHelper.f(paramString);
+      if ((ViolaAccessHelper.e(paramString)) && (!TextUtils.isEmpty(paramContext)))
       {
+        QLog.d("RIJJumpUtils", 1, "jumpTo return by startViolaPage");
         ViolaAccessHelper.a((Context)localObject, null, paramContext, paramBundle);
         return Integer.valueOf(12);
       }
@@ -219,6 +175,7 @@ public class RIJJumpUtils
       if (paramString.startsWith("https://m.gamefeeds.qq.com/live.html?"))
       {
         LiveRoomProxyActivity.open((Activity)localObject, paramString, "kandian feed click");
+        QLog.d("RIJJumpUtils", 1, "jumpTo return by LiveRoomProxyActivity open");
         return Integer.valueOf(0);
       }
       if ((i == 0) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
@@ -236,10 +193,12 @@ public class RIJJumpUtils
           if ((paramBundle.containsKey("requestCode")) && ((localObject instanceof Activity)))
           {
             ((Activity)localObject).startActivityForResult(paramString, paramBundle.getInt("requestCode", -1));
+            QLog.d("RIJJumpUtils", 1, "jumpTo return by WEBVIEW_LANDINGPAGE 1");
             return Integer.valueOf(11);
           }
         }
         ((Context)localObject).startActivity(paramString);
+        QLog.d("RIJJumpUtils", 1, "jumpTo return by WEBVIEW_LANDINGPAGE 2");
         return Integer.valueOf(11);
       }
       paramContext = new Intent((Context)localObject, JumpActivity.class);
@@ -248,71 +207,11 @@ public class RIJJumpUtils
       paramContext.putExtra("big_brother_source_key", a(0));
       paramContext.setData(paramString);
       ((Context)localObject).startActivity(paramContext);
+      QLog.d("RIJJumpUtils", 1, "jumpTo return by UNKNOWN");
       return Integer.valueOf(0);
     }
+    QLog.e("RIJJumpUtils", 1, "jumpTo return by context or schema null");
     return localInteger;
-  }
-  
-  public static Integer a(Context paramContext, String paramString1, String paramString2, String paramString3)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("jumToUrl: ");
-    ((StringBuilder)localObject).append(paramString1);
-    localObject = ((StringBuilder)localObject).toString();
-    int i = 1;
-    QLog.d("RIJJumpUtils", 1, (String)localObject);
-    if (TextUtils.isEmpty(paramString1)) {
-      return Integer.valueOf(-1);
-    }
-    if (paramString1.startsWith("mqqapi:")) {}
-    for (;;)
-    {
-      try
-      {
-        localObject = JumpParser.a(RIJQQAppInterfaceUtil.b(), paramContext, paramString1);
-        if ((localObject == null) || (!((JumpAction)localObject).a())) {
-          break label259;
-        }
-        if (i != 0) {
-          return Integer.valueOf(9);
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append("jumpToUrl failed for appInterface is null, url:");
-          localStringBuilder2.append(paramString1);
-          localStringBuilder2.append(",error:");
-          localStringBuilder2.append(localThrowable.getMessage());
-          QLog.d("RIJJumpUtils", 2, localStringBuilder2.toString());
-        }
-      }
-      if (!TextUtils.isEmpty(paramString2)) {
-        try
-        {
-          if (WxShareHelperFromReadInjoy.getInstance().doOpenMiniProgram(paramString2, paramString3, 0)) {
-            return Integer.valueOf(8);
-          }
-        }
-        catch (Throwable paramString3)
-        {
-          if (QLog.isColorLevel())
-          {
-            StringBuilder localStringBuilder1 = new StringBuilder();
-            localStringBuilder1.append("jumpToUrl failed for wxMiniApp, appId:");
-            localStringBuilder1.append(paramString2);
-            localStringBuilder1.append(",error:");
-            localStringBuilder1.append(paramString3.getMessage());
-            QLog.d("RIJJumpUtils", 2, localStringBuilder1.toString());
-          }
-        }
-      }
-      return b(paramContext, paramString1);
-      label259:
-      i = 0;
-    }
   }
   
   public static String a(int paramInt)
@@ -337,13 +236,13 @@ public class RIJJumpUtils
     if (paramAbsBaseArticleInfo == null) {
       return "";
     }
-    Object localObject2 = ReadInJoyConstants.e;
+    Object localObject2 = ReadInJoyConstants.f;
     Object localObject1 = localObject2;
     if (((String)localObject2).contains("uin"))
     {
-      if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long > 0L))
+      if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.c.a > 0L))
       {
-        localObject1 = String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long);
+        localObject1 = String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.c.a);
       }
       else
       {
@@ -376,7 +275,7 @@ public class RIJJumpUtils
   @NotNull
   private static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    Object localObject2 = ReadInJoyConstants.e;
+    Object localObject2 = ReadInJoyConstants.f;
     Object localObject1 = localObject2;
     if (((String)localObject2).contains("uin="))
     {
@@ -398,7 +297,7 @@ public class RIJJumpUtils
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("&feedstype=");
-      ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b);
+      ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mSocialFeedInfo.n.c);
       localObject2 = ((String)localObject1).replace("&feedstype=", ((StringBuilder)localObject2).toString());
     }
     return localObject2;
@@ -414,17 +313,6 @@ public class RIJJumpUtils
       str = b(paramString, paramAbsBaseArticleInfo);
     }
     return str;
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ReadInJoyConstants.g);
-    localStringBuilder.append(Base64Util.encodeToString(paramString.getBytes(), 2));
-    return localStringBuilder.toString();
   }
   
   public static String a(@NotNull String paramString, long paramLong, int paramInt)
@@ -506,7 +394,7 @@ public class RIJJumpUtils
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
-    localStringBuilder.append(a(paramAbsBaseArticleInfo, paramInt1));
+    localStringBuilder.append(c(paramAbsBaseArticleInfo, paramInt1));
     paramAbsBaseArticleInfo = localStringBuilder.toString();
     paramString = paramAbsBaseArticleInfo;
     if (paramInt2 >= 0)
@@ -529,7 +417,7 @@ public class RIJJumpUtils
       if (paramAbsBaseArticleInfo != null)
       {
         localObject = paramString;
-        if (!TextUtils.isEmpty(paramPackArticleInfo.c)) {
+        if (!TextUtils.isEmpty(paramPackArticleInfo.d)) {
           try
           {
             localObject = new StringBuilder();
@@ -537,21 +425,21 @@ public class RIJJumpUtils
             ((StringBuilder)localObject).append("&channelID=");
             ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mChannelID);
             ((StringBuilder)localObject).append("&strategyId=");
-            ((StringBuilder)localObject).append(paramPackArticleInfo.jdField_a_of_type_Int);
+            ((StringBuilder)localObject).append(paramPackArticleInfo.h);
             ((StringBuilder)localObject).append("&algorithmID=");
-            ((StringBuilder)localObject).append(paramPackArticleInfo.jdField_b_of_type_Long);
+            ((StringBuilder)localObject).append(paramPackArticleInfo.i);
             ((StringBuilder)localObject).append("&title=");
-            ((StringBuilder)localObject).append(paramPackArticleInfo.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(paramPackArticleInfo.b);
             ((StringBuilder)localObject).append("&firstPagePicUrl=");
-            ((StringBuilder)localObject).append(URLEncoder.encode(paramPackArticleInfo.c, "UTF-8"));
+            ((StringBuilder)localObject).append(URLEncoder.encode(paramPackArticleInfo.d, "UTF-8"));
             ((StringBuilder)localObject).append("&articleID=");
-            ((StringBuilder)localObject).append(paramPackArticleInfo.jdField_a_of_type_Long);
+            ((StringBuilder)localObject).append(paramPackArticleInfo.a);
             ((StringBuilder)localObject).append("&subscribeName=");
-            ((StringBuilder)localObject).append(paramPackArticleInfo.f);
-            ((StringBuilder)localObject).append("&rowKey=");
             ((StringBuilder)localObject).append(paramPackArticleInfo.g);
+            ((StringBuilder)localObject).append("&rowKey=");
+            ((StringBuilder)localObject).append(paramPackArticleInfo.l);
             ((StringBuilder)localObject).append("&subscribeID=");
-            ((StringBuilder)localObject).append(paramPackArticleInfo.e);
+            ((StringBuilder)localObject).append(paramPackArticleInfo.f);
             ((StringBuilder)localObject).append("&articleContentUrl=");
             ((StringBuilder)localObject).append(URLEncoder.encode(paramString, "UTF-8"));
             ((StringBuilder)localObject).append("&readinjoyNotDecodeUrl=1");
@@ -658,8 +546,8 @@ public class RIJJumpUtils
       if (c(str)) {
         localObject = b(str, paramAbsBaseArticleInfo);
       }
-      a(paramActivity, (String)localObject);
-      a(paramAbsBaseArticleInfo, paramAbsBaseArticleInfo.mArticleContentUrl);
+      c(paramActivity, (String)localObject);
+      b(paramAbsBaseArticleInfo, paramAbsBaseArticleInfo.mArticleContentUrl);
       return;
     }
     TimeUtil.a("FastWebActivity.show");
@@ -681,14 +569,14 @@ public class RIJJumpUtils
     b(paramActivity, paramAbsBaseArticleInfo, paramReadInJoyBaseAdapter, paramInt);
     ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo.mArticleID, System.currentTimeMillis());
     paramReadInJoyBaseAdapter.notifyDataSetChanged();
-    if (a(paramAbsBaseArticleInfo))
+    if (b(paramAbsBaseArticleInfo))
     {
       paramReadInJoyBaseAdapter = new Intent(paramActivity, ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountImageCollectionMainActivity.class));
       paramReadInJoyBaseAdapter.putExtra("source_for_report", 9);
       ((IPublicAccountImageCollectionUtils)QRoute.api(IPublicAccountImageCollectionUtils.class)).openPublicAccountImageCollectionMainActivity(paramActivity, paramReadInJoyBaseAdapter, String.valueOf(paramAbsBaseArticleInfo.innerUniqueID));
       return;
     }
-    paramInt = paramReadInJoyBaseAdapter.a();
+    paramInt = paramReadInJoyBaseAdapter.c();
     long l = paramAbsBaseArticleInfo.mRecommendSeq;
     Bundle localBundle = new Bundle();
     localBundle.putString("leftViewText", null);
@@ -698,7 +586,7 @@ public class RIJJumpUtils
     {
       localObject1 = localObject2;
       if (!RIJItemViewTypeUtils.z(paramAbsBaseArticleInfo)) {
-        localObject1 = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.a.get(0)).b;
+        localObject1 = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.v.g.get(0)).c;
       }
     }
     localObject2 = localObject1;
@@ -744,28 +632,28 @@ public class RIJJumpUtils
     l = System.currentTimeMillis();
     localBundle.putLong("startOpenPageTime", l);
     localBundle.putLong("click_time", l);
-    localBundle.putLong("available_memory", DeviceInfoUtil.e());
+    localBundle.putLong("available_memory", DeviceInfoUtil.r());
     localBundle.putBoolean("preload_tool_white_list", RIJWebSearchUtils.a());
     Intent localIntent = new Intent(paramActivity, ReadInJoyArticleDetailActivity.class);
-    localObject2 = PreloadManager.a((String)localObject2);
-    localObject1 = localObject2;
-    if (localObject2 == null) {
+    Object localObject3 = PreloadManager.d((String)localObject2);
+    localObject1 = localObject3;
+    if (localObject3 == null) {
       localObject1 = "";
     }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(AppConstants.SDCARD_PATH_PUBLIC_ACCOUNT_PRELOAD);
-    ((StringBuilder)localObject2).append((String)localObject1);
-    if ((FileUtils.fileExistsAndNotEmpty(((StringBuilder)localObject2).toString())) && (PreloadManager.a().b((String)localObject1) != null))
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(AppConstants.SDCARD_PATH_PUBLIC_ACCOUNT_PRELOAD);
+    ((StringBuilder)localObject3).append((String)localObject1);
+    if ((FileUtils.fileExistsAndNotEmpty(((StringBuilder)localObject3).toString())) && (PreloadManager.a().f((String)localObject1) != null))
     {
       localBundle.putString("read_in_joy_from_cache", (String)localObject1);
-      if (!paramReadInJoyBaseAdapter.a(paramInt, paramAbsBaseArticleInfo.mArticleID))
+      if (!paramReadInJoyBaseAdapter.b(paramInt, paramAbsBaseArticleInfo.mArticleID))
       {
         paramAbsBaseArticleInfo = PreloadManager.a();
         if ((NetworkState.getNetworkType() != 1) && (NetworkState.getNetworkType() != 4) && (NetworkState.getNetworkType() != 5))
         {
           paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.a((String)localObject1);
           if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.size() > 0)) {
-            localBundle.putString("preload_iamge_url", ((PreloadManager.ImgStruct)paramAbsBaseArticleInfo.get(0)).jdField_a_of_type_JavaLangString);
+            localBundle.putString("preload_iamge_url", ((PreloadManager.ImgStruct)paramAbsBaseArticleInfo.get(0)).a);
           } else {
             localBundle.putString("preload_iamge_url", null);
           }
@@ -777,7 +665,7 @@ public class RIJJumpUtils
           {
             ThreadManager.post(new RIJJumpUtils.4(paramAbsBaseArticleInfo, (PreloadManager.ImgStruct)paramReadInJoyBaseAdapter.get(0)), 5, null, false);
             if (paramReadInJoyBaseAdapter.size() > 1) {
-              localBundle.putString("preload_iamge_url", ((PreloadManager.ImgStruct)paramReadInJoyBaseAdapter.get(1)).jdField_a_of_type_JavaLangString);
+              localBundle.putString("preload_iamge_url", ((PreloadManager.ImgStruct)paramReadInJoyBaseAdapter.get(1)).a);
             } else {
               localBundle.putString("preload_iamge_url", null);
             }
@@ -787,7 +675,11 @@ public class RIJJumpUtils
     }
     localIntent.putExtras(localBundle);
     paramActivity.startActivityForResult(localIntent, 9991);
-    ((IRIJWebArticleOptimizeUtil)QRoute.api(IRIJWebArticleOptimizeUtil.class)).usePendingTransition(paramActivity);
+    RIJWebArticleOptimizeUtil.a.a(paramActivity);
+    paramActivity = new StringBuilder();
+    paramActivity.append("jumpArticleDetailPageWhenClick,url=");
+    paramActivity.append((String)localObject2);
+    QLog.d("RIJJumpUtils", 1, paramActivity.toString());
   }
   
   public static void a(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -797,7 +689,7 @@ public class RIJJumpUtils
       paramAbsBaseArticleInfo = Uri.parse(paramAbsBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8()).buildUpon();
       paramAbsBaseArticleInfo.appendQueryParameter("showComment", "1");
       paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.toString();
-      a(paramContext, paramAbsBaseArticleInfo);
+      c(paramContext, paramAbsBaseArticleInfo);
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
@@ -876,7 +768,7 @@ public class RIJJumpUtils
       if (paramReadInJoyBaseAdapter == null) {
         return;
       }
-      int j = paramReadInJoyBaseAdapter.a();
+      int j = paramReadInJoyBaseAdapter.c();
       int i;
       if (paramAbsBaseArticleInfo.hasChannelInfo()) {
         i = paramAbsBaseArticleInfo.mChannelInfoId;
@@ -884,16 +776,16 @@ public class RIJJumpUtils
         i = 0;
       }
       int k = TextUtils.isEmpty(paramAbsBaseArticleInfo.mArticleFriendLikeText) ^ true;
-      paramReadInJoyBaseAdapter = RIJFeedsType.c(paramAbsBaseArticleInfo);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X80066FA", "0X80066FA", 0, 0, "", Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.b(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.a(paramAbsBaseArticleInfo), j, i), false);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportPAinfoToLighthouse("0X80066FA", "", "", Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.b(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.a(paramAbsBaseArticleInfo), paramInt, i));
+      paramReadInJoyBaseAdapter = RIJFeedsType.k(paramAbsBaseArticleInfo);
+      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066FA", "0X80066FA", 0, 0, "", Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.b(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.g(paramAbsBaseArticleInfo), j, i), false);
+      PublicAccountReportUtils.a("0X80066FA", "", "", Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.b(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.g(paramAbsBaseArticleInfo), paramInt, i));
       long l = j;
-      Object localObject1 = ReadinjoyReportUtils.b(l);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", paramAbsBaseArticleInfo.mSubscribeID, (String)localObject1, (String)localObject1, 0, 0, Long.toString(paramAbsBaseArticleInfo.mFeedId), Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.a(paramAbsBaseArticleInfo), j, i, k, NetworkUtil.isWifiConnected(paramContext), paramReadInJoyBaseAdapter, paramAbsBaseArticleInfo.mStrCircleId, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.e(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo), false);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportPAinfoToLighthouse((String)localObject1, paramAbsBaseArticleInfo.mSubscribeID, Long.toString(paramAbsBaseArticleInfo.mFeedId), Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.a(paramAbsBaseArticleInfo), j, i, k, NetworkUtil.isWifiConnected(paramContext), paramReadInJoyBaseAdapter, paramAbsBaseArticleInfo.mStrCircleId, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.e(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo));
+      Object localObject1 = ReadinjoyReportUtils.e(l);
+      PublicAccountReportUtils.a(null, "CliOper", "", paramAbsBaseArticleInfo.mSubscribeID, (String)localObject1, (String)localObject1, 0, 0, Long.toString(paramAbsBaseArticleInfo.mFeedId), Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.g(paramAbsBaseArticleInfo), j, i, k, NetworkUtil.isWifiConnected(paramContext), paramReadInJoyBaseAdapter, paramAbsBaseArticleInfo.mStrCircleId, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.n(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo), false);
+      PublicAccountReportUtils.a((String)localObject1, paramAbsBaseArticleInfo.mSubscribeID, Long.toString(paramAbsBaseArticleInfo.mFeedId), Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.g(paramAbsBaseArticleInfo), j, i, k, NetworkUtil.isWifiConnected(paramContext), paramReadInJoyBaseAdapter, paramAbsBaseArticleInfo.mStrCircleId, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.n(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo));
       paramContext = new ArrayList();
       paramReadInJoyBaseAdapter = new ReportInfo();
-      paramReadInJoyBaseAdapter.mUin = RIJQQAppInterfaceUtil.a();
+      paramReadInJoyBaseAdapter.mUin = RIJQQAppInterfaceUtil.c();
       paramReadInJoyBaseAdapter.mSource = 0;
       paramReadInJoyBaseAdapter.mSourceArticleId = paramAbsBaseArticleInfo.mArticleID;
       paramReadInJoyBaseAdapter.mChannelId = j;
@@ -903,34 +795,34 @@ public class RIJJumpUtils
       paramReadInJoyBaseAdapter.mServerContext = paramAbsBaseArticleInfo.mServerContext;
       paramReadInJoyBaseAdapter.mReadTimeLength = -1;
       paramReadInJoyBaseAdapter.mInnerId = paramAbsBaseArticleInfo.innerUniqueID;
-      if ((paramAbsBaseArticleInfo != null) && (!UGRuleManager.c(paramAbsBaseArticleInfo)) && (!ReadInJoySrtUtils.a().a()) && (RIJTransMergeKanDianReport.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramAbsBaseArticleInfo))) {
+      if ((paramAbsBaseArticleInfo != null) && (!UGRuleManager.c(paramAbsBaseArticleInfo)) && (!ReadInJoySrtUtils.a().e()) && (RIJTransMergeKanDianReport.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramAbsBaseArticleInfo))) {
         paramReadInJoyBaseAdapter.noDifferenceJump = 1;
       }
       if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
       {
         localObject1 = new FeedsReportData();
-        ((FeedsReportData)localObject1).jdField_a_of_type_Long = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Long;
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null) {
-          ((FeedsReportData)localObject1).jdField_b_of_type_Long = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long;
+        ((FeedsReportData)localObject1).a = paramAbsBaseArticleInfo.mSocialFeedInfo.a;
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null) {
+          ((FeedsReportData)localObject1).b = paramAbsBaseArticleInfo.mSocialFeedInfo.c.a;
         }
-        ((FeedsReportData)localObject1).jdField_a_of_type_Int = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_b_of_type_Int;
-        ((FeedsReportData)localObject1).jdField_b_of_type_Int = paramAbsBaseArticleInfo.mSocialFeedInfo.d;
-        Object localObject2 = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_JavaUtilList;
+        ((FeedsReportData)localObject1).d = paramAbsBaseArticleInfo.mSocialFeedInfo.h;
+        ((FeedsReportData)localObject1).e = paramAbsBaseArticleInfo.mSocialFeedInfo.j;
+        Object localObject2 = paramAbsBaseArticleInfo.mSocialFeedInfo.d;
         if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
         {
-          ((FeedsReportData)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+          ((FeedsReportData)localObject1).c = new ArrayList();
           localObject2 = ((List)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
             FeedsInfoUser localFeedsInfoUser = (FeedsInfoUser)((Iterator)localObject2).next();
             if (localFeedsInfoUser != null) {
-              ((FeedsReportData)localObject1).jdField_a_of_type_JavaUtilList.add(Long.valueOf(localFeedsInfoUser.jdField_a_of_type_Long));
+              ((FeedsReportData)localObject1).c.add(Long.valueOf(localFeedsInfoUser.a));
             }
           }
         }
         paramReadInJoyBaseAdapter.mFeedsReportData = ((FeedsReportData)localObject1);
       }
-      localObject1 = ReadInJoySrtUtils.a().a();
+      localObject1 = ReadInJoySrtUtils.a().b();
       if (localObject1 != null) {
         paramReadInJoyBaseAdapter.srtClickInfo = ((oidb_cmd0x64e.SRTClickInfo)localObject1);
       }
@@ -947,7 +839,7 @@ public class RIJJumpUtils
     localStringBuilder.append("jumpTo |  scheme : ");
     localStringBuilder.append(paramString);
     QLog.d("RIJJumpUtils", 1, localStringBuilder.toString());
-    a(paramAbsBaseArticleInfo, paramString);
+    b(paramAbsBaseArticleInfo, paramString);
     if ((paramContext != null) && (!TextUtils.isEmpty(paramString)))
     {
       if (!ReadInJoyChannelGuidingJumpUtils.a(paramContext, paramString)) {
@@ -984,7 +876,7 @@ public class RIJJumpUtils
       paramContext.putBoolean("hide_operation_bar", true);
       paramString = new Intent(localContext, QQBrowserActivity.class);
       paramString.putExtras(paramContext);
-      paramString.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131713039));
+      paramString.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131910600));
       localContext.startActivity(paramString);
     }
   }
@@ -998,7 +890,7 @@ public class RIJJumpUtils
       } else {
         paramString2 = URLUtil.a(paramString2, "searchbox", "native");
       }
-      paramString1 = KDSearchResultFragment.a(paramContext, paramString1, URLUtil.a(URLUtil.a(paramString2, "q"), "q", paramString1));
+      paramString1 = KDSearchResultFragment.a(paramContext, paramString1, SearchUtils.e(paramString2));
       paramString2 = Aladdin.getConfig(313);
       if (paramString2 != null) {
         paramString1.putExtra("searchbox_style", paramString2.getIntegerFromString("SearchBox_SearchStyle", -1));
@@ -1034,7 +926,7 @@ public class RIJJumpUtils
     if ((paramJSONObject != null) && (paramContext != null))
     {
       RIJUserLevelDialog.DialogSettingInfo localDialogSettingInfo = new RIJUserLevelDialog.DialogSettingInfo();
-      localDialogSettingInfo.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
+      localDialogSettingInfo.a = paramJSONObject.optString("title");
       localDialogSettingInfo.b = paramJSONObject.optString("titleColor");
       localDialogSettingInfo.c = paramJSONObject.optString("text");
       localDialogSettingInfo.d = paramJSONObject.optString("textColor");
@@ -1043,7 +935,7 @@ public class RIJJumpUtils
       localDialogSettingInfo.e = paramJSONObject.optString("lBtnText");
       localDialogSettingInfo.f = paramJSONObject.optString("lBtnTextColor");
       localDialogSettingInfo.i = paramJSONObject.optString("extraParams");
-      localDialogSettingInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAccountRIJUserLevelDialog$DialogClick = paramDialogClick;
+      localDialogSettingInfo.j = paramDialogClick;
       ReadInJoyUtils.a(paramContext, localDialogSettingInfo);
       QLog.d("RIJJumpUtils", 1, "openLevelDialog !");
       return;
@@ -1070,20 +962,20 @@ public class RIJJumpUtils
         if (paramInt1 == 1) {
           ((JSONObject)localObject1).put("feeds_source", paramAbsBaseArticleInfo.mSubscribeID);
         } else {
-          ((JSONObject)localObject1).put("feeds_source", paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long);
+          ((JSONObject)localObject1).put("feeds_source", paramAbsBaseArticleInfo.mSocialFeedInfo.c.a);
         }
         ((JSONObject)localObject1).put("rowkey", paramAbsBaseArticleInfo.innerUniqueID);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("");
-        ((StringBuilder)localObject2).append(RIJFeedsType.a(paramAbsBaseArticleInfo));
+        ((StringBuilder)localObject2).append(RIJFeedsType.g(paramAbsBaseArticleInfo));
         ((JSONObject)localObject1).put("feeds_type", ((StringBuilder)localObject2).toString());
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("");
-        ((StringBuilder)localObject2).append(RIJAppSetting.a());
+        ((StringBuilder)localObject2).append(RIJAppSetting.b());
         ((JSONObject)localObject1).put("kandian_mode", ((StringBuilder)localObject2).toString());
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("");
-        ((StringBuilder)localObject2).append(RIJTransMergeKanDianReport.a());
+        ((StringBuilder)localObject2).append(RIJTransMergeKanDianReport.b());
         ((JSONObject)localObject1).put("tab_source", ((StringBuilder)localObject2).toString());
         if (paramInt2 > 0)
         {
@@ -1107,12 +999,11 @@ public class RIJJumpUtils
         localJSONException.printStackTrace();
         str = "";
       }
-      if (ReadinjoyReportUtils.a(paramAbsBaseArticleInfo.mChannelID)) {
+      if (ReadinjoyReportUtils.d(paramAbsBaseArticleInfo.mChannelID)) {
         localObject2 = "0X800935D";
       } else {
         localObject2 = "0X8007B64";
       }
-      IPublicAccountReportUtils localIPublicAccountReportUtils;
       long l1;
       long l2;
       Object localObject3;
@@ -1123,13 +1014,12 @@ public class RIJJumpUtils
         }
         try
         {
-          localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-          l1 = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Long;
+          l1 = paramAbsBaseArticleInfo.mSocialFeedInfo.s.e;
           l2 = paramAbsBaseArticleInfo.mFeedId;
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("");
           ((StringBuilder)localObject3).append(paramAbsBaseArticleInfo.mStrategyId);
-          localIPublicAccountReportUtils.publicAccountReportClickEvent(null, String.valueOf(l1), (String)localObject2, (String)localObject2, 0, 0, String.valueOf(l2), "0", ((StringBuilder)localObject3).toString(), str, false);
+          PublicAccountReportUtils.a(null, String.valueOf(l1), (String)localObject2, (String)localObject2, 0, 0, String.valueOf(l2), "0", ((StringBuilder)localObject3).toString(), str, false);
           return;
         }
         catch (Throwable paramAbsBaseArticleInfo)
@@ -1140,14 +1030,13 @@ public class RIJJumpUtils
       }
       try
       {
-        localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
         localObject3 = paramAbsBaseArticleInfo.mSubscribeID;
         l1 = paramAbsBaseArticleInfo.mFeedId;
         l2 = paramAbsBaseArticleInfo.mArticleID;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
         localStringBuilder.append(paramAbsBaseArticleInfo.mStrategyId);
-        localIPublicAccountReportUtils.publicAccountReportClickEvent(null, (String)localObject3, (String)localObject2, (String)localObject2, 0, 0, String.valueOf(l1), String.valueOf(l2), localStringBuilder.toString(), str, false);
+        PublicAccountReportUtils.a(null, (String)localObject3, (String)localObject2, (String)localObject2, 0, 0, String.valueOf(l1), String.valueOf(l2), localStringBuilder.toString(), str, false);
         return;
       }
       catch (Throwable paramAbsBaseArticleInfo)
@@ -1155,41 +1044,6 @@ public class RIJJumpUtils
         paramAbsBaseArticleInfo.printStackTrace();
       }
     }
-  }
-  
-  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
-  {
-    if ((paramAbsBaseArticleInfo != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      if ((paramString.contains("mqqapi://readinjoy/open")) && (paramString.contains("target=4")))
-      {
-        paramAbsBaseArticleInfo.mJumpType = 2;
-        return;
-      }
-      paramAbsBaseArticleInfo.mJumpType = 1;
-    }
-  }
-  
-  public static void a(String paramString, AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(ReadInJoyConstants.k);
-    ((StringBuilder)localObject).append(Base64Util.encodeToString(String.valueOf(paramString).getBytes(), 2));
-    localObject = ((StringBuilder)localObject).toString();
-    paramString = (String)localObject;
-    if (paramAbsBaseArticleInfo != null) {
-      paramString = ReadinjoyReportUtils.a(paramAbsBaseArticleInfo, (String)localObject, ReadinjoyReportUtils.d);
-    }
-    localObject = QBaseActivity.sTopActivity;
-    paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject;
-    if (localObject == null) {
-      paramAbsBaseArticleInfo = BaseApplicationImpl.getContext();
-    }
-    ReadInJoyUtils.a(paramAbsBaseArticleInfo, paramString);
-    paramAbsBaseArticleInfo = new StringBuilder();
-    paramAbsBaseArticleInfo.append("jump2SelfPage: ");
-    paramAbsBaseArticleInfo.append(paramString);
-    QLog.d("RIJJumpUtils", 1, paramAbsBaseArticleInfo.toString());
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, NativeWebVideoCoverGetCallback paramNativeWebVideoCoverGetCallback)
@@ -1205,15 +1059,9 @@ public class RIJJumpUtils
     return false;
   }
   
-  public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    int i = a(paramAbsBaseArticleInfo);
-    return (i == 8) || (i == 7);
-  }
-  
   public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo, Context paramContext)
   {
-    String str = ProteusSupportUtil.a(paramAbsBaseArticleInfo);
+    String str = ProteusSupportUtil.c(paramAbsBaseArticleInfo);
     if ((!TextUtils.isEmpty(str)) && (paramContext != null))
     {
       if (UGRuleManager.a(str)) {
@@ -1250,40 +1098,91 @@ public class RIJJumpUtils
     return bool1;
   }
   
-  public static Integer b(Context paramContext, String paramString)
+  public static Integer b(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("jumToWeb: ");
-    ((StringBuilder)localObject).append(paramString);
-    QLog.d("RIJJumpUtils", 1, ((StringBuilder)localObject).toString());
-    boolean bool = TextUtils.isEmpty(paramString);
-    localObject = Integer.valueOf(12);
-    if ((!bool) && (ViolaAccessHelper.c(paramString)))
-    {
-      ViolaAccessHelper.a(paramContext, null, ViolaAccessHelper.c(paramString), null);
+    ((StringBuilder)localObject).append("jumToUrl: ");
+    ((StringBuilder)localObject).append(paramString1);
+    localObject = ((StringBuilder)localObject).toString();
+    int i = 1;
+    QLog.d("RIJJumpUtils", 1, (String)localObject);
+    boolean bool = TextUtils.isEmpty(paramString1);
+    localObject = Integer.valueOf(-1);
+    if (bool) {
       return localObject;
     }
-    if (SearchUtils.a(paramString))
+    if (paramString1.startsWith("mqqapi:")) {}
+    for (;;)
     {
-      a(paramContext, SearchUtils.a(paramString), paramString);
-      return localObject;
+      try
+      {
+        JumpAction localJumpAction = JumpParser.a(RIJQQAppInterfaceUtil.b(), paramContext, paramString1);
+        if ((localJumpAction == null) || (!localJumpAction.a())) {
+          break label384;
+        }
+        if (i != 0) {
+          return Integer.valueOf(9);
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("jumpToUrl failed for appInterface is null, url:");
+          localStringBuilder.append(paramString1);
+          localStringBuilder.append(",error:");
+          localStringBuilder.append(localThrowable.getMessage());
+          QLog.d("RIJJumpUtils", 2, localStringBuilder.toString());
+        }
+      }
+      if ((!paramString1.startsWith("kandianapi:")) && (!paramString1.startsWith("rijvideo:")))
+      {
+        if (!TextUtils.isEmpty(paramString2)) {
+          try
+          {
+            if (WxShareHelperFromReadInjoy.getInstance().doOpenMiniProgram(paramString2, paramString3, 0)) {
+              return Integer.valueOf(8);
+            }
+          }
+          catch (Throwable paramString3)
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("jumpToUrl failed for wxMiniApp, appId:");
+              ((StringBuilder)localObject).append(paramString2);
+              ((StringBuilder)localObject).append(",error:");
+              ((StringBuilder)localObject).append(paramString3.getMessage());
+              QLog.d("RIJJumpUtils", 2, ((StringBuilder)localObject).toString());
+            }
+          }
+        }
+        return d(paramContext, paramString1);
+      }
+      paramString2 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
+      paramString2.putExtra("big_brother_source_key", "biz_src_feeds_kandian");
+      try
+      {
+        paramContext.startActivity(paramString2);
+        return Integer.valueOf(15);
+      }
+      catch (Throwable paramContext)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString2 = new StringBuilder();
+          paramString2.append("jumpToUrl failed for appInterface is null, url:");
+          paramString2.append(paramString1);
+          paramString2.append(",error:");
+          paramString2.append(paramContext.getMessage());
+          QLog.d("RIJJumpUtils", 2, paramString2.toString());
+        }
+        return localObject;
+      }
+      label384:
+      i = 0;
     }
-    localObject = new Intent(paramContext, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("big_brother_source_key", a(0));
-    if (!TextUtils.isEmpty(paramString))
-    {
-      ((Intent)localObject).putExtra("url", paramString);
-      paramContext.startActivity((Intent)localObject);
-    }
-    return Integer.valueOf(11);
-  }
-  
-  private static String b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (!RIJItemViewTypeUtils.v(paramAbsBaseArticleInfo)) {
-      return String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Long);
-    }
-    return "";
   }
   
   private static String b(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
@@ -1296,7 +1195,7 @@ public class RIJJumpUtils
         {
           if (paramInt == 5)
           {
-            paramAbsBaseArticleInfo = String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long);
+            paramAbsBaseArticleInfo = String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.c.a);
           }
           else
           {
@@ -1304,20 +1203,20 @@ public class RIJJumpUtils
             {
               if (!RIJItemViewTypeUtils.v(paramAbsBaseArticleInfo))
               {
-                paramAbsBaseArticleInfo = String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Long);
-                break label143;
+                paramAbsBaseArticleInfo = String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.s.e);
+                break label142;
               }
               if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSubscribeID))
               {
                 paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSubscribeID;
-                break label143;
+                break label142;
               }
             }
             paramAbsBaseArticleInfo = "";
           }
         }
         else {
-          paramAbsBaseArticleInfo = b(paramAbsBaseArticleInfo);
+          paramAbsBaseArticleInfo = d(paramAbsBaseArticleInfo);
         }
       }
       else {
@@ -1325,59 +1224,14 @@ public class RIJJumpUtils
       }
     }
     else {
-      paramAbsBaseArticleInfo = c(paramAbsBaseArticleInfo);
+      paramAbsBaseArticleInfo = e(paramAbsBaseArticleInfo);
     }
-    label143:
+    label142:
     Object localObject = paramAbsBaseArticleInfo;
     if (paramAbsBaseArticleInfo == null) {
       localObject = "";
     }
     return localObject;
-  }
-  
-  public static String b(String paramString)
-  {
-    Object localObject1 = Aladdin.getConfig(199);
-    Object localObject2 = ((AladdinConfig)localObject1).getString("no_difference_jump_app_schema", "");
-    String str1 = ((AladdinConfig)localObject1).getString("no_difference_jump_app_h5_android", "");
-    String str2 = ((AladdinConfig)localObject1).getString("no_difference_jump_app_package_name", "");
-    localObject1 = localObject2;
-    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = ((String)localObject2).replace("${rowkey}", paramString).replace("${uin}", RIJQQAppInterfaceUtil.a());
-    }
-    localObject2 = str1;
-    if (!TextUtils.isEmpty(str1)) {
-      localObject2 = str1.replace("${rowkey}", paramString).replace("${uin}", RIJQQAppInterfaceUtil.a());
-    }
-    paramString = new StringBuilder();
-    try
-    {
-      paramString.append("mqqapi://readinjoy/open?src_type=internal&target=4");
-      paramString.append("&defaultURL=");
-      paramString.append(URLEncoder.encode((String)localObject2, "utf-8"));
-      paramString.append("&appSchema=");
-      paramString.append(URLEncoder.encode((String)localObject1, "utf-8"));
-      paramString.append("&appPackageName=");
-      paramString.append(str2);
-      paramString.append("&readinjoyNotDecodeUrl=1");
-      paramString.append("&version=1");
-      paramString.append("&isCancelJump=0");
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getNoDifferenceJumpToAppSchema schema: ");
-      ((StringBuilder)localObject1).append(paramString.toString());
-      QLog.e("RIJJumpUtils", 1, ((StringBuilder)localObject1).toString());
-      ReadInJoyHelper.g();
-      paramString = paramString.toString();
-      return paramString;
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getNoDifferenceJumpToAppSchema UnsupportedEncodingException: ");
-      ((StringBuilder)localObject1).append(paramString);
-      QLog.e("RIJJumpUtils", 1, ((StringBuilder)localObject1).toString());
-    }
-    return "";
   }
   
   public static String b(String paramString, AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -1427,14 +1281,14 @@ public class RIJJumpUtils
     if ((paramAbsBaseArticleInfo != null) && (paramActivity != null))
     {
       String str;
-      if ((RIJBiuAndCommentAladdinUtils.f()) && (RIJFeedsType.R(paramAbsBaseArticleInfo))) {
+      if ((RIJBiuAndCommentAladdinUtils.k()) && (RIJFeedsType.Z(paramAbsBaseArticleInfo))) {
         str = paramAbsBaseArticleInfo.getCardJumpUrl();
       } else {
         str = "";
       }
       if (!TextUtils.isEmpty(str))
       {
-        a(paramActivity, str);
+        c(paramActivity, str);
       }
       else if (paramAbsBaseArticleInfo.isPGCShortContent())
       {
@@ -1448,11 +1302,11 @@ public class RIJJumpUtils
           PGCShortContentUtils.a(paramActivity, paramAbsBaseArticleInfo);
         }
       }
-      else if (RIJFeedsType.Q(paramAbsBaseArticleInfo))
+      else if (RIJFeedsType.Y(paramAbsBaseArticleInfo))
       {
         VideoFeedsHelper.a(paramActivity, null, 28, paramAbsBaseArticleInfo);
       }
-      else if (RIJFeedsType.S(paramAbsBaseArticleInfo))
+      else if (RIJFeedsType.aa(paramAbsBaseArticleInfo))
       {
         QLog.d("RIJJumpUtils", 1, "startWebFastActivity");
         a(paramActivity, paramAbsBaseArticleInfo);
@@ -1480,25 +1334,25 @@ public class RIJJumpUtils
   {
     if ((paramAbsBaseArticleInfo != null) && (paramContext != null))
     {
-      if ((paramInt == 6) && (RIJBiuAndCommentAladdinUtils.e()))
+      if ((paramInt == 6) && (RIJBiuAndCommentAladdinUtils.j()))
       {
         if ((paramAbsBaseArticleInfo.isCardJumpUrlAvailable == 1) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.getCardJumpUrl())))
         {
           str = paramAbsBaseArticleInfo.getCardJumpUrl();
-          break label83;
+          break label82;
         }
       }
-      else if ((paramInt == 8) && (RIJBiuAndCommentAladdinUtils.g()) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.commentBtnJumpUrl)))
+      else if ((paramInt == 8) && (RIJBiuAndCommentAladdinUtils.l()) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.commentBtnJumpUrl)))
       {
         str = paramAbsBaseArticleInfo.commentBtnJumpUrl;
-        break label83;
+        break label82;
       }
       String str = "";
-      label83:
+      label82:
       if (TextUtils.isEmpty(str)) {
         a(paramContext, paramAbsBaseArticleInfo, paramInt, false, 0, false);
       } else {
-        a(paramContext, str);
+        c(paramContext, str);
       }
       paramContext = new StringBuilder();
       paramContext.append("clickCommentBiuCard,clickType=");
@@ -1534,7 +1388,7 @@ public class RIJJumpUtils
             ((StringBuilder)localObject).append(str);
             localObject = ((StringBuilder)localObject).toString();
           }
-          ViolaAccessHelper.a(paramContext, HardCodeUtil.a(2131712802), (String)localObject, localBundle, new RIJJumpUtils.1(paramContext, paramString));
+          ViolaAccessHelper.a(paramContext, HardCodeUtil.a(2131910375), (String)localObject, localBundle, new RIJJumpUtils.1(paramContext, paramString));
           return;
         }
         if (((Uri)localObject).getPath().equals("/mqq/vue/wenda"))
@@ -1551,12 +1405,31 @@ public class RIJJumpUtils
             ((StringBuilder)localObject).append(str);
             localObject = ((StringBuilder)localObject).toString();
           }
-          ViolaAccessHelper.a(paramContext, HardCodeUtil.a(2131712778), (String)localObject, localBundle, new RIJJumpUtils.2(paramContext, paramString));
+          ViolaAccessHelper.a(paramContext, HardCodeUtil.a(2131910351), (String)localObject, localBundle, new RIJJumpUtils.2(paramContext, paramString));
           return;
         }
       }
       a(paramContext, paramString, localBundle);
     }
+  }
+  
+  public static void b(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
+  {
+    if ((paramAbsBaseArticleInfo != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      if ((paramString.contains("mqqapi://readinjoy/open")) && (paramString.contains("target=4")))
+      {
+        paramAbsBaseArticleInfo.mJumpType = 2;
+        return;
+      }
+      paramAbsBaseArticleInfo.mJumpType = 1;
+    }
+  }
+  
+  public static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    int i = c(paramAbsBaseArticleInfo);
+    return (i == 8) || (i == 7);
   }
   
   public static boolean b(String paramString)
@@ -1579,17 +1452,114 @@ public class RIJJumpUtils
     return bool1;
   }
   
-  private static String c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static int c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null)) {
-      return String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long);
+    if (paramAbsBaseArticleInfo == null) {
+      return 0;
     }
-    return "";
+    if (RIJFeedsType.a(paramAbsBaseArticleInfo))
+    {
+      if (paramAbsBaseArticleInfo.mVideoType == 0) {
+        return 4;
+      }
+      return 5;
+    }
+    if (paramAbsBaseArticleInfo.mShowBigPicture)
+    {
+      if (paramAbsBaseArticleInfo.mIsGallery == 0) {
+        return 2;
+      }
+      return 8;
+    }
+    if ((paramAbsBaseArticleInfo.mPictures != null) && (paramAbsBaseArticleInfo.mPictures.length >= 3)) {
+      return 3;
+    }
+    if (TextUtils.isEmpty(paramAbsBaseArticleInfo.mFirstPagePicUrl)) {
+      return 0;
+    }
+    if (paramAbsBaseArticleInfo.mIsGallery == 0) {
+      return 1;
+    }
+    return 7;
+  }
+  
+  private static long c(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
+  {
+    if ((paramInt != 3) && (paramInt != 5) && (paramInt != 2) && (paramInt != 7)) {
+      return paramAbsBaseArticleInfo.mFeedId;
+    }
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n != null)) {
+      return paramAbsBaseArticleInfo.mSocialFeedInfo.n.b.longValue();
+    }
+    return 0L;
+  }
+  
+  public static Integer c(Context paramContext, String paramString)
+  {
+    return b(paramContext, paramString, null, null);
+  }
+  
+  public static void c(String paramString, AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(ReadInJoyConstants.l);
+    ((StringBuilder)localObject).append(Base64Util.encodeToString(String.valueOf(paramString).getBytes(), 2));
+    localObject = ((StringBuilder)localObject).toString();
+    paramString = (String)localObject;
+    if (paramAbsBaseArticleInfo != null) {
+      paramString = ReadinjoyReportUtils.a(paramAbsBaseArticleInfo, (String)localObject, ReadinjoyReportUtils.d);
+    }
+    localObject = QBaseActivity.sTopActivity;
+    paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject;
+    if (localObject == null) {
+      paramAbsBaseArticleInfo = BaseApplicationImpl.getContext();
+    }
+    ReadInJoyUtils.a(paramAbsBaseArticleInfo, paramString);
+    paramAbsBaseArticleInfo = new StringBuilder();
+    paramAbsBaseArticleInfo.append("jump2SelfPage: ");
+    paramAbsBaseArticleInfo.append(paramString);
+    QLog.d("RIJJumpUtils", 1, paramAbsBaseArticleInfo.toString());
   }
   
   public static boolean c(String paramString)
   {
     return (!TextUtils.isEmpty(paramString)) && (b(paramString)) && (paramString.contains("needsconcat=1"));
+  }
+  
+  public static Integer d(Context paramContext, String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("jumToWeb: ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.d("RIJJumpUtils", 1, ((StringBuilder)localObject).toString());
+    boolean bool = TextUtils.isEmpty(paramString);
+    localObject = Integer.valueOf(12);
+    if ((!bool) && (ViolaAccessHelper.e(paramString)))
+    {
+      ViolaAccessHelper.a(paramContext, null, ViolaAccessHelper.f(paramString), null);
+      return localObject;
+    }
+    if (SearchUtils.c(paramString))
+    {
+      a(paramContext, SearchUtils.d(paramString), paramString);
+      return localObject;
+    }
+    localObject = new Intent(paramContext, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("big_brother_source_key", a(0));
+    if (!TextUtils.isEmpty(paramString))
+    {
+      ((Intent)localObject).putExtra("url", paramString);
+      paramContext.startActivity((Intent)localObject);
+    }
+    return Integer.valueOf(11);
+  }
+  
+  private static String d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (!RIJItemViewTypeUtils.v(paramAbsBaseArticleInfo)) {
+      return String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.s.e);
+    }
+    return "";
   }
   
   public static boolean d(String paramString)
@@ -1623,10 +1593,74 @@ public class RIJJumpUtils
     }
     return bool1;
   }
+  
+  private static String e(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null)) {
+      return String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.c.a);
+    }
+    return "";
+  }
+  
+  public static String e(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ReadInJoyConstants.h);
+    localStringBuilder.append(Base64Util.encodeToString(paramString.getBytes(), 2));
+    return localStringBuilder.toString();
+  }
+  
+  public static String f(String paramString)
+  {
+    Object localObject1 = Aladdin.getConfig(199);
+    Object localObject2 = ((AladdinConfig)localObject1).getString("no_difference_jump_app_schema", "");
+    String str1 = ((AladdinConfig)localObject1).getString("no_difference_jump_app_h5_android", "");
+    String str2 = ((AladdinConfig)localObject1).getString("no_difference_jump_app_package_name", "");
+    localObject1 = localObject2;
+    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = ((String)localObject2).replace("${rowkey}", paramString).replace("${uin}", RIJQQAppInterfaceUtil.d());
+    }
+    localObject2 = str1;
+    if (!TextUtils.isEmpty(str1)) {
+      localObject2 = str1.replace("${rowkey}", paramString).replace("${uin}", RIJQQAppInterfaceUtil.d());
+    }
+    paramString = new StringBuilder();
+    try
+    {
+      paramString.append("mqqapi://readinjoy/open?src_type=internal&target=4");
+      paramString.append("&defaultURL=");
+      paramString.append(URLEncoder.encode((String)localObject2, "utf-8"));
+      paramString.append("&appSchema=");
+      paramString.append(URLEncoder.encode((String)localObject1, "utf-8"));
+      paramString.append("&appPackageName=");
+      paramString.append(str2);
+      paramString.append("&readinjoyNotDecodeUrl=1");
+      paramString.append("&version=1");
+      paramString.append("&isCancelJump=0");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getNoDifferenceJumpToAppSchema schema: ");
+      ((StringBuilder)localObject1).append(paramString.toString());
+      QLog.e("RIJJumpUtils", 1, ((StringBuilder)localObject1).toString());
+      ReadInJoyHelper.Q();
+      paramString = paramString.toString();
+      return paramString;
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getNoDifferenceJumpToAppSchema UnsupportedEncodingException: ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.e("RIJJumpUtils", 1, ((StringBuilder)localObject1).toString());
+    }
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils
  * JD-Core Version:    0.7.0.1
  */

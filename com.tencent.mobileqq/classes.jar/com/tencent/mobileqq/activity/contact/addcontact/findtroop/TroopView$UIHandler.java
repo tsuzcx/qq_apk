@@ -22,11 +22,11 @@ class TroopView$UIHandler
     if (localTroopView == null) {
       return;
     }
-    if (TroopView.a(localTroopView) != null) {
-      TroopView.a(localTroopView).setRefreshing(false);
+    if (TroopView.i(localTroopView) != null) {
+      TroopView.i(localTroopView).setRefreshing(false);
     }
-    if (TroopView.a(localTroopView) != null) {
-      TroopView.a(localTroopView).setRefresh(false);
+    if (TroopView.m(localTroopView) != null) {
+      TroopView.m(localTroopView).setRefresh(false);
     }
   }
   
@@ -59,40 +59,40 @@ class TroopView$UIHandler
             }
             if (i != 0)
             {
-              TroopView.d(localTroopView);
-              if (TroopView.a(localTroopView) == null) {
+              TroopView.l(localTroopView);
+              if (TroopView.m(localTroopView) == null) {
                 break;
               }
-              TroopView.a(localTroopView).a(0);
-              TroopView.a(localTroopView).sendEmptyMessageDelayed(15, 800L);
+              TroopView.m(localTroopView).a(0);
+              TroopView.c(localTroopView).sendEmptyMessageDelayed(15, 800L);
               return;
             }
             a();
-            TroopView.a(localTroopView, 1, 2131719247);
+            TroopView.a(localTroopView, 1, 2131916799);
             return;
           case 13: 
-            TroopView.a(localTroopView, 1, 2131694424);
+            TroopView.a(localTroopView, 1, 2131892104);
             a();
             return;
           }
         } else {
-          TroopView.a(localTroopView, false);
+          TroopView.b(localTroopView, false);
         }
       }
       else {
-        TroopView.a(localTroopView, true);
+        TroopView.b(localTroopView, true);
       }
     }
     else
     {
-      TroopView.c(localTroopView);
-      TroopView.a(localTroopView, 1, 2131694424);
+      TroopView.k(localTroopView);
+      TroopView.a(localTroopView, 1, 2131892104);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView.UIHandler
  * JD-Core Version:    0.7.0.1
  */

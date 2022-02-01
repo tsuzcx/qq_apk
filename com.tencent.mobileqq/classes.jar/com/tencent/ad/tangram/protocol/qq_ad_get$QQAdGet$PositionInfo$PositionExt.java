@@ -11,6 +11,7 @@ public final class qq_ad_get$QQAdGet$PositionInfo$PositionExt
   public int[] debug_adindexid_list;
   public int deep_link_version = 0;
   public int get_ad_type = 0;
+  public qq_ad_get.QQAdGet.PositionInfo.PositionExt.SearchContentInfo search_content_info = new qq_ad_get.QQAdGet.PositionInfo.PositionExt.SearchContentInfo();
   public qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo share_info;
   public qq_ad_get.QQAdGet.PositionInfo.PositionExt.SpecifiedAdsItem[] specified_ads;
   public String sub_position_id;

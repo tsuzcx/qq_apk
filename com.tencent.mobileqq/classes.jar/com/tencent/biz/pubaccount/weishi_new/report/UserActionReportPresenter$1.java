@@ -17,9 +17,9 @@ final class UserActionReportPresenter$1
     localStringBuilder.append(this.a);
     localStringBuilder.append(" start...");
     WSLog.b("weishi-report", localStringBuilder.toString());
-    if ((paramWeishiTask != null) && (paramWeishiTask.a != null) && ((paramWeishiTask.a instanceof stWeishiReportRsp)))
+    if ((paramWeishiTask != null) && (paramWeishiTask.m != null) && ((paramWeishiTask.m instanceof stWeishiReportRsp)))
     {
-      paramWeishiTask = (stWeishiReportRsp)paramWeishiTask.a;
+      paramWeishiTask = (stWeishiReportRsp)paramWeishiTask.m;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("report");
       localStringBuilder.append(this.a);
@@ -32,7 +32,7 @@ final class UserActionReportPresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.UserActionReportPresenter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,17 +20,17 @@ class ReportEvilToXinanHandler$1
   {
     String str4 = ReportEvilToXinanHandler.a(this.this$0);
     String str1;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       str1 = "1";
     } else {
       str1 = "0";
     }
-    String str2 = this.jdField_a_of_type_JavaLangString;
-    String str3 = this.b;
+    String str2 = this.b;
+    String str3 = this.c;
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("android");
     ((StringBuilder)localObject1).append("_");
-    ((StringBuilder)localObject1).append("8.7.0");
+    ((StringBuilder)localObject1).append("8.8.17");
     ((StringBuilder)localObject1).append("_");
     ((StringBuilder)localObject1).append("1111");
     ((StringBuilder)localObject1).append("_");
@@ -38,7 +38,7 @@ class ReportEvilToXinanHandler$1
     str4 = MD5Utils.toMD5(((StringBuilder)localObject1).toString());
     SLog.a("ReportEvilToXinanHandler", "get cryptograph step1. scretKey = %s.", str4);
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.c);
+    ((StringBuilder)localObject1).append(this.d);
     ((StringBuilder)localObject1).append("_");
     ((StringBuilder)localObject1).append("");
     ((StringBuilder)localObject1).append("_");
@@ -57,8 +57,8 @@ class ReportEvilToXinanHandler$1
     ((StringBuilder)localObject1).append(str4);
     str4 = MD5Utils.toMD5(((StringBuilder)localObject1).toString());
     SLog.a("ReportEvilToXinanHandler", "get cryptograph step2. cryptograph = %s.", str4);
-    Object localObject2 = (TicketManager)PlayModeUtils.a().getManager(2);
-    localObject1 = PlayModeUtils.a().getCurrentAccountUin();
+    Object localObject2 = (TicketManager)PlayModeUtils.b().getManager(2);
+    localObject1 = PlayModeUtils.b().getCurrentAccountUin();
     String str5 = ((TicketManager)localObject2).getSkey((String)localObject1);
     localObject2 = new Bundle();
     StringBuilder localStringBuilder = new StringBuilder();
@@ -69,14 +69,14 @@ class ReportEvilToXinanHandler$1
     ((Bundle)localObject2).putString("cookie", localStringBuilder.toString());
     localObject1 = new Bundle();
     ((Bundle)localObject1).putString("system", "android");
-    ((Bundle)localObject1).putString("version", "8.7.0");
+    ((Bundle)localObject1).putString("version", "8.8.17");
     ((Bundle)localObject1).putString("uintype", "1");
-    ((Bundle)localObject1).putString("eviluin", this.c);
+    ((Bundle)localObject1).putString("eviluin", this.d);
     ((Bundle)localObject1).putString("appname", "KQQ");
     ((Bundle)localObject1).putString("appid", "2400002");
     ((Bundle)localObject1).putString("subapp", "near_trace");
     ((Bundle)localObject1).putString("scene", "1111");
-    ((Bundle)localObject1).putString("evil_type", this.d);
+    ((Bundle)localObject1).putString("evil_type", this.e);
     ((Bundle)localObject1).putString("buddyflag", str1);
     ((Bundle)localObject1).putString("srv_para", "");
     ((Bundle)localObject1).putString("impeach_desc", "");
@@ -91,7 +91,7 @@ class ReportEvilToXinanHandler$1
     try
     {
       str1 = HttpUtil.openUrl(BaseApplicationImpl.getContext(), "https://jubao.qq.com/uniform_impeach/impeach_submit", "POST", (Bundle)localObject1, (Bundle)localObject2);
-      ReportEvilToXinanHandler.a(this.this$0, this.c, this.e, this.d, str1);
+      ReportEvilToXinanHandler.a(this.this$0, this.d, this.f, this.e, str1);
       return;
     }
     catch (IOException localIOException)
@@ -102,7 +102,7 @@ class ReportEvilToXinanHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ class MusicPlayerProxyImpl$1
     try
     {
       if (MusicPlayerProxyImpl.a(this.a) != null) {
-        MusicPlayerProxyImpl.a(this.a).a(MusicPlayerProxyImpl.a(this.a));
+        MusicPlayerProxyImpl.a(this.a).a(MusicPlayerProxyImpl.b(this.a));
       }
       if (paramIBinder != null)
       {
@@ -45,7 +45,7 @@ class MusicPlayerProxyImpl$1
     {
       if (MusicPlayerProxyImpl.a(this.a) != null)
       {
-        MusicPlayerProxyImpl.a(this.a).b(MusicPlayerProxyImpl.a(this.a));
+        MusicPlayerProxyImpl.a(this.a).b(MusicPlayerProxyImpl.b(this.a));
         MusicPlayerProxyImpl.a(this.a, null);
         return;
       }
@@ -61,7 +61,7 @@ class MusicPlayerProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MusicPlayerProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

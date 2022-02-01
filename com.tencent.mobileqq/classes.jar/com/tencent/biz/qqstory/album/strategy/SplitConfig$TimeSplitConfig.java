@@ -11,85 +11,85 @@ import java.util.Date;
 public class SplitConfig$TimeSplitConfig
   extends BaseSplitConfig
 {
-  public long a;
-  public long b;
-  public String c;
+  public long g;
+  public long h;
+  public String i;
   
   public SplitConfig$TimeSplitConfig(StoryAlbumConfig.FestivalConfig paramFestivalConfig, int paramInt)
   {
     super(paramFestivalConfig);
-    int i = paramFestivalConfig.a;
+    int j = paramFestivalConfig.a;
     boolean bool = true;
-    if (i != 1) {
+    if (j != 1) {
       bool = false;
     }
     AssertUtils.assertTrue(bool);
-    this.c = paramFestivalConfig.c;
-    i = paramInt;
+    this.i = paramFestivalConfig.g;
+    j = paramInt;
     if (paramInt == 0) {
-      i = paramFestivalConfig.jdField_d_of_type_Int;
+      j = paramFestivalConfig.h;
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(j);
     ((StringBuilder)localObject).append("-");
-    ((StringBuilder)localObject).append(paramFestivalConfig.jdField_d_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(paramFestivalConfig.i);
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(i);
+    localStringBuilder.append(j);
     localStringBuilder.append("-");
-    localStringBuilder.append(paramFestivalConfig.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(paramFestivalConfig.j);
     paramFestivalConfig = localStringBuilder.toString();
     long l1 = StoryAlbumConfig.a.parse((String)localObject).getTime() / 1000L;
     long l2 = StoryAlbumConfig.a.parse(paramFestivalConfig).getTime() / 1000L;
-    this.a = l1;
-    this.b = l2;
+    this.g = l1;
+    this.h = l2;
   }
   
   public SplitConfig$TimeSplitConfig(StoryAlbumConfig.FestivalConfig paramFestivalConfig, Card paramCard, int paramInt)
   {
     super(paramFestivalConfig);
-    int i = paramFestivalConfig.a;
-    int j = 0;
+    int j = paramFestivalConfig.a;
+    int k = 0;
     boolean bool;
-    if (i == 6) {
+    if (j == 6) {
       bool = true;
     } else {
       bool = false;
     }
     AssertUtils.assertTrue(bool);
-    this.c = paramFestivalConfig.c;
+    this.i = paramFestivalConfig.g;
     if (paramCard != null) {
-      i = (int)((paramCard.lBirthday & 0xFF00) >> 8);
+      j = (int)((paramCard.lBirthday & 0xFF00) >> 8);
     } else {
-      i = 0;
+      j = 0;
     }
     if (paramCard != null) {
-      j = (int)(paramCard.lBirthday & 0xFF);
+      k = (int)(paramCard.lBirthday & 0xFF);
     }
-    if ((i > 0) && (j > 0))
+    if ((j > 0) && (k > 0))
     {
-      if (i < 10)
+      if (j < 10)
       {
         paramCard = new StringBuilder();
         paramCard.append("0");
-        paramCard.append(i);
+        paramCard.append(j);
         paramCard = paramCard.toString();
       }
       else
       {
-        paramCard = String.valueOf(i);
+        paramCard = String.valueOf(j);
       }
       Object localObject;
-      if (j < 10)
+      if (k < 10)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("0");
-        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(k);
         localObject = ((StringBuilder)localObject).toString();
       }
       else
       {
-        localObject = String.valueOf(j);
+        localObject = String.valueOf(k);
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramInt);
@@ -98,29 +98,29 @@ public class SplitConfig$TimeSplitConfig
       localStringBuilder.append("-");
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(" ");
-      localStringBuilder.append(paramFestivalConfig.jdField_d_of_type_JavaLangString);
+      localStringBuilder.append(paramFestivalConfig.i);
       paramCard = localStringBuilder.toString();
       paramCard = StoryAlbumConfig.a.parse(paramCard);
       long l1 = paramCard.getTime() / 1000L;
       long l2 = paramCard.getTime() / 1000L;
-      long l3 = paramFestivalConfig.jdField_e_of_type_Int * 60 * 60;
-      this.a = l1;
-      this.b = (l2 + l3);
+      long l3 = paramFestivalConfig.k * 60 * 60;
+      this.g = l1;
+      this.h = (l2 + l3);
       return;
     }
-    this.a = 0L;
-    this.b = 0L;
+    this.g = 0L;
+    this.h = 0L;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder1 = new StringBuilder("TimeSplitConfig =[");
     localStringBuilder1.append(" mStartTime=");
-    localStringBuilder1.append(this.a);
+    localStringBuilder1.append(this.g);
     localStringBuilder1.append(" mEndTime=");
-    localStringBuilder1.append(this.b);
+    localStringBuilder1.append(this.h);
     localStringBuilder1.append(" mAlbumName=");
-    localStringBuilder1.append(this.c);
+    localStringBuilder1.append(this.i);
     localStringBuilder1.append("] ");
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append(localStringBuilder1.toString());
@@ -130,7 +130,7 @@ public class SplitConfig$TimeSplitConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.strategy.SplitConfig.TimeSplitConfig
  * JD-Core Version:    0.7.0.1
  */

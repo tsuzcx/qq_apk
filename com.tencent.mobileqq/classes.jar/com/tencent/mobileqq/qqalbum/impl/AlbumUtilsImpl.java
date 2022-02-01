@@ -118,7 +118,7 @@ public class AlbumUtilsImpl
     }
     if (TextUtils.isEmpty(paramArrayList))
     {
-      QQToast.a(paramActivity, HardCodeUtil.a(2131718785), 0).a();
+      QQToast.makeText(paramActivity, HardCodeUtil.a(2131916291), 0).show();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -141,7 +141,7 @@ public class AlbumUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqalbum.impl.AlbumUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

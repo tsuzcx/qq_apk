@@ -11,30 +11,29 @@ import mqq.app.AppRuntime;
 public class RefreshBadgeHelper
 {
   @ConfigInject(configPath="/Business/qq-appbadge-impl/src/main/res/Inject_app_badge_count.yml", version=1)
-  public static ArrayList<Class<? extends IBadgeCountInjector>> a;
-  volatile int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getRecentThreadLooper());
-  private IBadgeCountInjector jdField_a_of_type_ComTencentMobileqqUtilApiIBadgeCountInjector;
-  ConcurrentLinkedQueue<RefreshBadgeHelper.RefreshBadgeRunnable> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private final AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private int b = -1;
+  public static ArrayList<Class<? extends IBadgeCountInjector>> c = new ArrayList();
+  ConcurrentLinkedQueue<RefreshBadgeHelper.RefreshBadgeRunnable> a = new ConcurrentLinkedQueue();
+  volatile int b = 0;
+  private final AppRuntime d;
+  private int e = -1;
+  private IBadgeCountInjector f;
+  private volatile boolean g = false;
+  private Handler h = new Handler(ThreadManager.getRecentThreadLooper());
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(AppBadgeCountInjector.class);
+    c.add(AppBadgeCountInjector.class);
   }
   
   public RefreshBadgeHelper(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.d = paramAppRuntime;
     b();
   }
   
   private void a(RefreshBadgeHelper.RefreshBadgeRunnable paramRefreshBadgeRunnable)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramRefreshBadgeRunnable);
+    this.a.offer(paramRefreshBadgeRunnable);
     c();
   }
   
@@ -42,9 +41,9 @@ public class RefreshBadgeHelper
   {
     try
     {
-      if ((jdField_a_of_type_JavaUtilArrayList != null) && (jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      if ((c != null) && (c.size() > 0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilApiIBadgeCountInjector = ((IBadgeCountInjector)((Class)jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance());
+        this.f = ((IBadgeCountInjector)((Class)c.get(0)).newInstance());
         return;
       }
     }
@@ -56,13 +55,13 @@ public class RefreshBadgeHelper
   
   private void c()
   {
-    if (this.jdField_a_of_type_Int < 3)
+    if (this.b < 3)
     {
-      RefreshBadgeHelper.RefreshBadgeRunnable localRefreshBadgeRunnable = (RefreshBadgeHelper.RefreshBadgeRunnable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      RefreshBadgeHelper.RefreshBadgeRunnable localRefreshBadgeRunnable = (RefreshBadgeHelper.RefreshBadgeRunnable)this.a.poll();
       if (localRefreshBadgeRunnable != null)
       {
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_AndroidOsHandler.post(localRefreshBadgeRunnable);
+        this.b += 1;
+        this.h.post(localRefreshBadgeRunnable);
       }
     }
   }
@@ -74,12 +73,12 @@ public class RefreshBadgeHelper
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RefreshBadgeHelper
  * JD-Core Version:    0.7.0.1
  */

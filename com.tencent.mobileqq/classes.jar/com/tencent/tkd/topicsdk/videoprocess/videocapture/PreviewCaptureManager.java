@@ -19,40 +19,35 @@ import org.jetbrains.annotations.NotNull;
 public final class PreviewCaptureManager
   implements CapturePreparedListener, CaptureTask.OnTaskListener
 {
-  public static final PreviewCaptureManager.Companion a;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final ICaptureProxy jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy;
-  private final Queue<CaptureTask> jdField_a_of_type_JavaUtilQueue;
-  private final ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
-  private boolean jdField_a_of_type_Boolean;
+  public static final PreviewCaptureManager.Companion a = new PreviewCaptureManager.Companion(null);
   private final Queue<CaptureTask> b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocapturePreviewCaptureManager$Companion = new PreviewCaptureManager.Companion(null);
-  }
+  private final Queue<CaptureTask> c;
+  private final ExecutorService d;
+  private boolean e;
+  private final Handler f;
+  private final ICaptureProxy g;
   
   public PreviewCaptureManager(@NotNull ICaptureProxy paramICaptureProxy)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy = paramICaptureProxy;
-    this.jdField_a_of_type_JavaUtilQueue = ((Queue)new ArrayDeque());
+    this.g = paramICaptureProxy;
     this.b = ((Queue)new ArrayDeque());
+    this.c = ((Queue)new ArrayDeque());
     paramICaptureProxy = Executors.newFixedThreadPool(5);
     Intrinsics.checkExpressionValueIsNotNull(paramICaptureProxy, "Executors.newFixedThreadPool(5)");
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = paramICaptureProxy;
-    this.jdField_a_of_type_AndroidOsHandler = ((Handler)new PreviewCaptureManager.handler.1(this));
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy.a((CapturePreparedListener)this);
+    this.d = paramICaptureProxy;
+    this.f = ((Handler)new PreviewCaptureManager.handler.1(this));
+    this.g.a((CapturePreparedListener)this);
   }
   
   private final void b()
   {
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilQueue.isEmpty()))
+    if ((this.e) && (!this.b.isEmpty()))
     {
-      int i = Math.min(3 - this.b.size(), this.jdField_a_of_type_JavaUtilQueue.size());
+      int i = Math.min(3 - this.c.size(), this.b.size());
       while (i > 0)
       {
         int j = i - 1;
-        CaptureTask localCaptureTask = (CaptureTask)this.jdField_a_of_type_JavaUtilQueue.poll();
+        CaptureTask localCaptureTask = (CaptureTask)this.b.poll();
         i = j;
         if (localCaptureTask != null)
         {
@@ -67,29 +62,29 @@ public final class PreviewCaptureManager
   
   private final void c()
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
+    this.f.sendEmptyMessage(1000);
   }
   
   private final void d(CaptureTask paramCaptureTask)
   {
-    paramCaptureTask.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy);
+    paramCaptureTask.a(this.g);
     paramCaptureTask.a((CaptureTask.OnTaskListener)this);
   }
   
   private final void e(CaptureTask paramCaptureTask)
   {
-    this.b.add(paramCaptureTask);
+    this.c.add(paramCaptureTask);
     d(paramCaptureTask);
-    paramCaptureTask.executeOnExecutor((Executor)this.jdField_a_of_type_JavaUtilConcurrentExecutorService, new Unit[] { null });
+    paramCaptureTask.executeOnExecutor((Executor)this.d, new Unit[] { null });
   }
   
   public final void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    List localList = (List)new ArrayList((Collection)this.jdField_a_of_type_JavaUtilQueue);
-    localList.addAll((Collection)this.b);
-    this.jdField_a_of_type_JavaUtilQueue.clear();
+    this.f.removeCallbacksAndMessages(null);
+    List localList = (List)new ArrayList((Collection)this.b);
+    localList.addAll((Collection)this.c);
     this.b.clear();
+    this.c.clear();
     int j = ((Collection)localList).size();
     int i = 0;
     while (i < j)
@@ -97,13 +92,13 @@ public final class PreviewCaptureManager
       ((CaptureTask)localList.get(i)).cancel(true);
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy.a();
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdown();
+    this.g.b();
+    this.d.shutdown();
   }
   
   public void a(int paramInt1, int paramInt2, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
     c();
   }
   
@@ -115,30 +110,30 @@ public final class PreviewCaptureManager
   public void b(@NotNull CaptureTask paramCaptureTask)
   {
     Intrinsics.checkParameterIsNotNull(paramCaptureTask, "task");
-    this.b.remove(paramCaptureTask);
+    this.c.remove(paramCaptureTask);
     c();
   }
   
   public final void c(@NotNull CaptureTask paramCaptureTask)
   {
     Intrinsics.checkParameterIsNotNull(paramCaptureTask, "task");
-    if (!this.jdField_a_of_type_JavaUtilQueue.contains(paramCaptureTask))
+    if (!this.b.contains(paramCaptureTask))
     {
-      if (this.b.contains(paramCaptureTask)) {
+      if (this.c.contains(paramCaptureTask)) {
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("addCaptureTask task: ");
       localStringBuilder.append(paramCaptureTask);
       TLog.b("PreviewCaptureManager", localStringBuilder.toString());
-      this.jdField_a_of_type_JavaUtilQueue.add(paramCaptureTask);
+      this.b.add(paramCaptureTask);
       c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.PreviewCaptureManager
  * JD-Core Version:    0.7.0.1
  */

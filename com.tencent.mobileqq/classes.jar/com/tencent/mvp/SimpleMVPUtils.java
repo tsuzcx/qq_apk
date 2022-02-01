@@ -13,7 +13,7 @@ public class SimpleMVPUtils
   {
     if (paramIBasePresenterView != null)
     {
-      IBasePresenter localIBasePresenter = paramIBasePresenterView.a();
+      IBasePresenter localIBasePresenter = paramIBasePresenterView.getPresenter();
       if ((localIBasePresenter != null) && ((localIBasePresenter instanceof ISimplePresenter)))
       {
         ((ISimplePresenter)localIBasePresenter).a(paramString, paramIBasePresenterView, paramObject);
@@ -30,7 +30,7 @@ public class SimpleMVPUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mvp.SimpleMVPUtils
  * JD-Core Version:    0.7.0.1
  */

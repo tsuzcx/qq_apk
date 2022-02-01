@@ -10,15 +10,15 @@ class SpriteCommFuncImpl$2
   
   public void run()
   {
-    ISpriteTaskHandler localISpriteTaskHandler = this.jdField_a_of_type_ComTencentMobileqqApolloScriptISpriteTaskHandler;
+    ISpriteTaskHandler localISpriteTaskHandler = this.a;
     if (localISpriteTaskHandler != null) {
-      localISpriteTaskHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
+      localISpriteTaskHandler.a(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.api.impl.SpriteCommFuncImpl.2
  * JD-Core Version:    0.7.0.1
  */

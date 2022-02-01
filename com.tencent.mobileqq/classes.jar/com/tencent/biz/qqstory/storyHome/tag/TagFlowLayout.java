@@ -15,8 +15,8 @@ import com.tencent.widget.TraceUtils;
 public class TagFlowLayout
   extends RelativeLayout
 {
-  private DataSetObserver a;
   protected BaseAdapter a;
+  private DataSetObserver b;
   
   public TagFlowLayout(Context paramContext)
   {
@@ -37,28 +37,28 @@ public class TagFlowLayout
   {
     int j = getChildCount();
     int i = 0;
-    while ((i < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount()) && (i < j))
+    while ((i < this.a.getCount()) && (i < j))
     {
-      int k = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemViewType(i);
+      int k = this.a.getItemViewType(i);
       View localView = getChildAt(i);
-      if ((k == ((Integer)localView.getTag(2131374617)).intValue()) && (k == 0))
+      if ((k == ((Integer)localView.getTag(2131442787)).intValue()) && (k == 0))
       {
-        this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, localView, this);
+        this.a.getView(i, localView, this);
       }
       else
       {
-        addView(this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, null, this), i, new ViewGroup.MarginLayoutParams(-2, -2));
+        addView(this.a.getView(i, null, this), i, new ViewGroup.MarginLayoutParams(-2, -2));
         removeView(localView);
       }
       i += 1;
     }
-    if (j > this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount()) {
-      removeViews(i, j - this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount());
+    if (j > this.a.getCount()) {
+      removeViews(i, j - this.a.getCount());
     }
-    if (j < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount()) {
-      while (i < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount())
+    if (j < this.a.getCount()) {
+      while (i < this.a.getCount())
       {
-        addView(this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, null, this), new ViewGroup.MarginLayoutParams(-2, -2));
+        addView(this.a.getView(i, null, this), new ViewGroup.MarginLayoutParams(-2, -2));
         i += 1;
       }
     }
@@ -185,21 +185,21 @@ public class TagFlowLayout
   
   public void setAdapter(BaseAdapter paramBaseAdapter)
   {
-    BaseAdapter localBaseAdapter = this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    BaseAdapter localBaseAdapter = this.a;
     if (localBaseAdapter != null)
     {
-      DataSetObserver localDataSetObserver = this.jdField_a_of_type_AndroidDatabaseDataSetObserver;
+      DataSetObserver localDataSetObserver = this.b;
       if (localDataSetObserver != null) {
         localBaseAdapter.unregisterDataSetObserver(localDataSetObserver);
       }
     }
     removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
-    if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null)
+    this.a = paramBaseAdapter;
+    if (this.a != null)
     {
-      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new TagFlowLayout.AdapterDataSetObserver(this);
-      this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
-      this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+      this.b = new TagFlowLayout.AdapterDataSetObserver(this);
+      this.a.registerDataSetObserver(this.b);
+      this.a.notifyDataSetChanged();
     }
   }
 }

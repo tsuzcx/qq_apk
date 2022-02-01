@@ -18,7 +18,7 @@ public class EcshopMinusViewConfProcessor
   public EcshopMinusViewConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0)) {
-      return EcshopMinusViewConfBean.a(paramArrayOfQConfItem[0].a);
+      return EcshopMinusViewConfBean.a(paramArrayOfQConfItem[0].b);
     }
     return new EcshopMinusViewConfBean();
   }
@@ -54,7 +54,7 @@ public class EcshopMinusViewConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.keep.EcshopMinusViewConfProcessor
  * JD-Core Version:    0.7.0.1
  */

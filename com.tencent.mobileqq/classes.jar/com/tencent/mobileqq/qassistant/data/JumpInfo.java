@@ -3,12 +3,12 @@ package com.tencent.mobileqq.qassistant.data;
 public class JumpInfo
 {
   public int a;
-  public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public boolean b = false;
-  public boolean c;
+  public String c;
+  public int d;
+  public boolean e;
+  public boolean f = false;
+  public boolean g;
   
   public JumpInfo(int paramInt)
   {
@@ -17,7 +17,7 @@ public class JumpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.data.JumpInfo
  * JD-Core Version:    0.7.0.1
  */

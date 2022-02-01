@@ -10,12 +10,12 @@ class QQIdentiferLegacy$3
   
   public void run()
   {
-    QQToast.a(QQIdentiferLegacy.a(this.this$0), this.a, 1).b(QQIdentiferLegacy.a(this.this$0).getTitleBarHeight());
+    QQToast.makeText(QQIdentiferLegacy.b(this.this$0), this.a, 1).show(QQIdentiferLegacy.b(this.this$0).getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacy.3
  * JD-Core Version:    0.7.0.1
  */

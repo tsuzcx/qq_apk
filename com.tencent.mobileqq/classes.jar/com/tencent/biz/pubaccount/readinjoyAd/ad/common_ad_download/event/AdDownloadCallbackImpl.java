@@ -25,9 +25,9 @@ public final class AdDownloadCallbackImpl
   implements WadlProxyServiceCallBackInterface, DownloadListener
 {
   @NotNull
-  private final ValueCallback<Integer> jdField_a_of_type_AndroidWebkitValueCallback;
+  private final ValueCallback<Integer> a;
   @NotNull
-  private final ADVideoAppDownloadData jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+  private final ADVideoAppDownloadData b;
   
   public void a(@Nullable WadlResult paramWadlResult)
   {
@@ -37,7 +37,7 @@ public final class AdDownloadCallbackImpl
       localObject1 = paramWadlResult.a;
       if (localObject1 != null)
       {
-        localObject1 = ((WadlParams)localObject1).f;
+        localObject1 = ((WadlParams)localObject1).m;
         break label26;
       }
     }
@@ -45,7 +45,7 @@ public final class AdDownloadCallbackImpl
     label26:
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+      Object localObject2 = this.b;
       if (localObject2 != null) {
         localObject2 = ((ADVideoAppDownloadData)localObject2).d;
       } else {
@@ -56,38 +56,38 @@ public final class AdDownloadCallbackImpl
       }
       localObject1 = localObject3;
       if (paramWadlResult != null) {
-        localObject1 = Integer.valueOf(paramWadlResult.jdField_b_of_type_Int);
+        localObject1 = Integer.valueOf(paramWadlResult.d);
       }
       if ((localObject1 != null) && (((Integer)localObject1).intValue() == 4))
       {
-        this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(3));
+        this.a.onReceiveValue(Integer.valueOf(3));
         return;
       }
       if ((localObject1 != null) && (((Integer)localObject1).intValue() == 6))
       {
-        this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(5));
+        this.a.onReceiveValue(Integer.valueOf(5));
         return;
       }
       if ((localObject1 != null) && (((Integer)localObject1).intValue() == 5))
       {
-        this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(4));
+        this.a.onReceiveValue(Integer.valueOf(4));
         return;
       }
       if ((localObject1 != null) && (((Integer)localObject1).intValue() == 9))
       {
-        this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(1));
+        this.a.onReceiveValue(Integer.valueOf(1));
         return;
       }
       if ((localObject1 != null) && (((Integer)localObject1).intValue() == 10))
       {
-        this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(1));
+        this.a.onReceiveValue(Integer.valueOf(1));
         return;
       }
       if (localObject1 == null) {
         return;
       }
       if (((Integer)localObject1).intValue() == 7) {
-        this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(6));
+        this.a.onReceiveValue(Integer.valueOf(6));
       }
     }
   }
@@ -106,11 +106,11 @@ public final class AdDownloadCallbackImpl
         localObject3 = ((Iterator)localObject4).next();
         paramArrayList = ((WadlResult)localObject3).a;
         if (paramArrayList != null) {
-          paramArrayList = paramArrayList.e;
+          paramArrayList = paramArrayList.k;
         } else {
           paramArrayList = null;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+        localObject1 = this.b;
         if (localObject1 != null) {
           localObject1 = ((ADVideoAppDownloadData)localObject1).c;
         } else {
@@ -132,52 +132,52 @@ public final class AdDownloadCallbackImpl
     }
     if (paramArrayList != null)
     {
-      localObject1 = paramArrayList.a.f;
+      localObject1 = paramArrayList.a.m;
       int i = RIJAdDownloadStateUtil.a.a(paramArrayList);
-      int j = paramArrayList.d;
+      int j = paramArrayList.k;
       localObject3 = new AdDownloadInfo();
       ((AdDownloadInfo)localObject3).a((String)localObject1);
       localObject4 = paramArrayList.a;
       localObject1 = localObject2;
       if (localObject4 != null) {
-        localObject1 = ((WadlParams)localObject4).a;
+        localObject1 = ((WadlParams)localObject4).e;
       }
       ((AdDownloadInfo)localObject3).c((String)localObject1);
       ((AdDownloadInfo)localObject3).a(i);
       ((AdDownloadInfo)localObject3).b(j);
-      ((AdDownloadInfo)localObject3).d(paramArrayList.jdField_b_of_type_JavaLangString);
+      ((AdDownloadInfo)localObject3).d(paramArrayList.g);
       RIJAdDownloadExKt.a((AdDownloadInfo)localObject3);
-      this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(((AdDownloadInfo)localObject3).a()));
+      this.a.onReceiveValue(Integer.valueOf(((AdDownloadInfo)localObject3).b()));
       return;
     }
-    this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(0));
+    this.a.onReceiveValue(Integer.valueOf(0));
   }
   
   public void b(@Nullable ArrayList<WadlResult> paramArrayList) {}
   
   public void installSucceed(@Nullable String paramString1, @Nullable String paramString2)
   {
-    this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(1));
+    this.a.onReceiveValue(Integer.valueOf(1));
   }
   
   public void onDownloadCancel(@Nullable DownloadInfo paramDownloadInfo)
   {
-    this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(7));
+    this.a.onReceiveValue(Integer.valueOf(7));
   }
   
   public void onDownloadError(@Nullable DownloadInfo paramDownloadInfo, int paramInt1, @Nullable String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(6));
+    this.a.onReceiveValue(Integer.valueOf(6));
   }
   
   public void onDownloadFinish(@Nullable DownloadInfo paramDownloadInfo)
   {
-    this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(5));
+    this.a.onReceiveValue(Integer.valueOf(5));
   }
   
   public void onDownloadPause(@Nullable DownloadInfo paramDownloadInfo)
   {
-    this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(4));
+    this.a.onReceiveValue(Integer.valueOf(4));
   }
   
   public void onDownloadUpdate(@Nullable List<DownloadInfo> paramList)
@@ -196,7 +196,7 @@ public final class AdDownloadCallbackImpl
         }
         localObject = localIterator.next();
         str = ((DownloadInfo)localObject).d;
-        ADVideoAppDownloadData localADVideoAppDownloadData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+        ADVideoAppDownloadData localADVideoAppDownloadData = this.b;
         if (localADVideoAppDownloadData != null) {
           paramList = localADVideoAppDownloadData.c;
         }
@@ -206,7 +206,7 @@ public final class AdDownloadCallbackImpl
       paramList = null;
       label79:
       if ((DownloadInfo)paramList != null) {
-        this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(Integer.valueOf(3));
+        this.a.onReceiveValue(Integer.valueOf(3));
       }
     }
   }
@@ -219,7 +219,7 @@ public final class AdDownloadCallbackImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadCallbackImpl
  * JD-Core Version:    0.7.0.1
  */

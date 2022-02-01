@@ -27,11 +27,11 @@ public class ScaleVideoView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    paramInt1 = getDefaultSize(this.d, paramInt1);
-    paramInt2 = getDefaultSize(this.e, paramInt2);
+    paramInt1 = getDefaultSize(this.k, paramInt1);
+    paramInt2 = getDefaultSize(this.l, paramInt2);
     setMeasuredDimension(paramInt1, paramInt2);
-    float f1 = paramInt1 * 1.0F / this.d;
-    float f2 = paramInt2 * 1.0F / this.e;
+    float f1 = paramInt1 * 1.0F / this.k;
+    float f2 = paramInt2 * 1.0F / this.l;
     float f3 = Math.max(f1, f2);
     paramInt1 /= 2;
     paramInt2 /= 2;
@@ -41,7 +41,7 @@ public class ScaleVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.widget.ScaleVideoView
  * JD-Core Version:    0.7.0.1
  */

@@ -25,16 +25,16 @@ public class MemoriesFeedPlayPageLoader
   extends IGroupPageLoader.BaseGroupPageLoader
   implements IEventReceiver
 {
-  private int jdField_a_of_type_Int = 0;
   protected INetPageLoader a;
-  private IGroupPageLoader.CallBack jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$CallBack;
-  private MemoriesFeedPlayPageLoader.GetCollectListEventReceiver jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMemoriesFeedPlayPageLoader$GetCollectListEventReceiver;
-  private final MemoriesFeedPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private final MemoriesFeedPlayInfo b;
+  private MemoriesFeedPlayPageLoader.GetCollectListEventReceiver c;
+  private int d = 0;
+  private AtomicBoolean e = new AtomicBoolean(false);
+  private IGroupPageLoader.CallBack f;
   
   public MemoriesFeedPlayPageLoader(MemoriesFeedPlayInfo paramMemoriesFeedPlayInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo = paramMemoriesFeedPlayInfo;
+    this.b = paramMemoriesFeedPlayInfo;
   }
   
   @NonNull
@@ -51,27 +51,16 @@ public class MemoriesFeedPlayPageLoader
         ((MemoriesFeedPlayPageLoader.MemoriesFeedGroupId)localObject).a = new FeedIdListSeqInfo(localVideoCollectionItem.feedId, 0, localVideoCollectionItem.uin, String.valueOf(localVideoCollectionItem.collectionTime));
         localObject = new IDataProvider.GroupInfo((IDataProvider.GroupId)localObject);
         localArrayList.add(localObject);
-        ((IDataProvider.GroupInfo)localObject).jdField_a_of_type_JavaUtilList = localVideoCollectionItem.videoVidList;
-        Iterator localIterator = ((IDataProvider.GroupInfo)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        ((IDataProvider.GroupInfo)localObject).c = localVideoCollectionItem.videoVidList;
+        Iterator localIterator = ((IDataProvider.GroupInfo)localObject).c.iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
-          ((IDataProvider.GroupInfo)localObject).jdField_a_of_type_JavaUtilMap.put(str, localVideoCollectionItem.feedId);
+          ((IDataProvider.GroupInfo)localObject).d.put(str, localVideoCollectionItem.feedId);
         }
       }
     }
     return localArrayList;
-  }
-  
-  public IDataProvider.StartInfo a()
-  {
-    MemoriesFeedPlayPageLoader.MemoriesFeedGroupId localMemoriesFeedGroupId;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mStartFeedId)) {
-      localMemoriesFeedGroupId = new MemoriesFeedPlayPageLoader.MemoriesFeedGroupId(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mStartFeedId);
-    } else {
-      localMemoriesFeedGroupId = null;
-    }
-    return new IDataProvider.StartInfo(localMemoriesFeedGroupId, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mStartVid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mStartFeedId);
   }
   
   public List<IGroupPageLoader.IVidFullSyncer> a(List<IDataProvider.GroupId> paramList)
@@ -81,53 +70,64 @@ public class MemoriesFeedPlayPageLoader
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mDataType == 0) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkINetPageLoader = new DateCollectionListPageLoader(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mUid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mContext);
+    if (this.b.mDataType == 0) {
+      this.a = new DateCollectionListPageLoader(this.b.mUid, this.b.mContext);
     } else {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkINetPageLoader = new ShareGroupDateListPageLoader(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mUid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mDataType, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mContext);
+      this.a = new ShareGroupDateListPageLoader(this.b.mUid, this.b.mDataType, this.b.mContext);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMemoriesFeedPlayPageLoader$GetCollectListEventReceiver = new MemoriesFeedPlayPageLoader.GetCollectListEventReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMemoriesFeedPlayPageLoader$GetCollectListEventReceiver);
-    AssertUtils.checkNotNull(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo);
+    this.c = new MemoriesFeedPlayPageLoader.GetCollectListEventReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.c);
+    AssertUtils.checkNotNull(this.b);
   }
   
   public void a(int paramInt, IGroupPageLoader.CallBack paramCallBack)
   {
     b(paramInt, paramCallBack);
-    this.jdField_a_of_type_Int += 1;
+    this.d += 1;
   }
   
   public void b()
   {
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMemoriesFeedPlayPageLoader$GetCollectListEventReceiver);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    StoryDispatcher.a().unRegisterSubscriber(this.c);
+    this.e.set(true);
   }
   
   public void b(int paramInt, IGroupPageLoader.CallBack paramCallBack)
   {
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mKeyList.size() > 0))
+    if ((this.d == 0) && (this.b.mKeyList.size() > 0))
     {
       MemoryManager localMemoryManager = (MemoryManager)SuperManager.a(19);
-      ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mKeyList.size());
-      Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mKeyList.iterator();
+      ArrayList localArrayList = new ArrayList(this.b.mKeyList.size());
+      Iterator localIterator = this.b.mKeyList.iterator();
       while (localIterator.hasNext()) {
         localArrayList.add(localMemoryManager.a((String)localIterator.next()));
       }
-      paramCallBack.b(new ErrorMessage(), b(localArrayList), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceMemoriesFeedPlayInfo.mIsEnd);
+      paramCallBack.b(new ErrorMessage(), b(localArrayList), this.b.mIsEnd);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$CallBack = paramCallBack;
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkINetPageLoader.c();
+    this.f = paramCallBack;
+    this.a.c();
+  }
+  
+  public IDataProvider.StartInfo c()
+  {
+    MemoriesFeedPlayPageLoader.MemoriesFeedGroupId localMemoriesFeedGroupId;
+    if (!TextUtils.isEmpty(this.b.mStartFeedId)) {
+      localMemoriesFeedGroupId = new MemoriesFeedPlayPageLoader.MemoriesFeedGroupId(this.b.mStartFeedId);
+    } else {
+      localMemoriesFeedGroupId = null;
+    }
+    return new IDataProvider.StartInfo(localMemoriesFeedGroupId, this.b.mStartVid, this.b.mStartFeedId);
   }
   
   public boolean isValidate()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() ^ true;
+    return this.e.get() ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.MemoriesFeedPlayPageLoader
  * JD-Core Version:    0.7.0.1
  */

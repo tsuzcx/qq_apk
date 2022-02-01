@@ -10,16 +10,10 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class MediaCodecThumbnailGenerator
 {
-  private long a;
-  public Handler a;
-  public HandlerThread a;
   public MediaCodecThumbnailGenerator.CodecHandler a;
-  
-  public MediaCodecThumbnailGenerator()
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MediaCodecThumbnailGenerator");
-    this.jdField_a_of_type_Long = 0L;
-  }
+  public Handler b;
+  public HandlerThread c = new HandlerThread("MediaCodecThumbnailGenerator");
+  private long d = 0L;
   
   public static float a(Bitmap paramBitmap)
   {
@@ -61,35 +55,35 @@ public class MediaCodecThumbnailGenerator
   
   public void a(Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$CodecHandler = new MediaCodecThumbnailGenerator.CodecHandler(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.c.start();
+    this.a = new MediaCodecThumbnailGenerator.CodecHandler(this, this.c.getLooper());
     Looper localLooper = paramLooper;
     if (paramLooper == null) {
       localLooper = Looper.myLooper();
     }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localLooper);
+    this.b = new Handler(localLooper);
   }
   
   public void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2, Callbacks.Callback<Boolean, MediaCodecThumbnailGenerator.ThumbnailResult> paramCallback, Callbacks.Callback<Boolean, MediaCodecThumbnailGenerator.ThumbnailProgress> paramCallback1)
   {
     MediaCodecThumbnailGenerator.ThumbnailArgs localThumbnailArgs = new MediaCodecThumbnailGenerator.ThumbnailArgs();
-    localThumbnailArgs.jdField_a_of_type_JavaLangString = paramString1;
-    localThumbnailArgs.jdField_b_of_type_JavaLangString = paramString2;
-    localThumbnailArgs.jdField_a_of_type_Boolean = paramBoolean1;
-    localThumbnailArgs.jdField_a_of_type_Int = paramInt1;
-    localThumbnailArgs.jdField_b_of_type_Int = paramInt2;
-    localThumbnailArgs.c = paramInt3;
-    localThumbnailArgs.d = paramInt4;
-    localThumbnailArgs.jdField_b_of_type_Boolean = paramBoolean2;
-    localThumbnailArgs.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaBaoutilsCommonCallbacks$Callback = paramCallback;
-    localThumbnailArgs.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaBaoutilsCommonCallbacks$Callback = paramCallback1;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    Message.obtain(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$CodecHandler, 1, localThumbnailArgs).sendToTarget();
+    localThumbnailArgs.a = paramString1;
+    localThumbnailArgs.b = paramString2;
+    localThumbnailArgs.c = paramBoolean1;
+    localThumbnailArgs.d = paramInt1;
+    localThumbnailArgs.e = paramInt2;
+    localThumbnailArgs.f = paramInt3;
+    localThumbnailArgs.g = paramInt4;
+    localThumbnailArgs.h = paramBoolean2;
+    localThumbnailArgs.j = paramCallback;
+    localThumbnailArgs.i = paramCallback1;
+    this.d = System.currentTimeMillis();
+    Message.obtain(this.a, 1, localThumbnailArgs).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.localmedia.demos.MediaCodecThumbnailGenerator
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import com.tencent.avgame.app.AVGameAppInterface;
 public class AVGameVideoView
   extends GLVideoView
 {
-  private final boolean r;
-  private boolean s = false;
+  private final boolean aM;
+  private boolean aN = false;
   
   public AVGameVideoView(Context paramContext, AVGameAppInterface paramAVGameAppInterface, String paramString, long paramLong)
   {
@@ -19,28 +19,28 @@ public class AVGameVideoView
   public AVGameVideoView(Context paramContext, AVGameAppInterface paramAVGameAppInterface, String paramString, long paramLong, boolean paramBoolean)
   {
     super(paramContext, null, paramString, paramLong, paramBoolean);
-    this.r = paramBoolean;
-  }
-  
-  protected boolean a(int paramInt)
-  {
-    if (g() == 2) {
-      return false;
-    }
-    return super.a(paramInt);
+    this.aM = paramBoolean;
   }
   
   protected void b(GLCanvas paramGLCanvas)
   {
-    if (this.r) {
+    if (this.aM) {
       super.b(paramGLCanvas);
     }
   }
   
   protected void d(GLCanvas paramGLCanvas)
   {
-    this.s = true;
+    this.aN = true;
     super.d(paramGLCanvas);
+  }
+  
+  protected boolean n(int paramInt)
+  {
+    if (S() == 2) {
+      return false;
+    }
+    return super.n(paramInt);
   }
 }
 

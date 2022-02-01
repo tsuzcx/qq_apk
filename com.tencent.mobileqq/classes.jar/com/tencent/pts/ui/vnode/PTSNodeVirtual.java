@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -21,11 +20,7 @@ import com.tencent.pts.ui.PTSNodeStyle;
 import com.tencent.pts.ui.view.IView;
 import com.tencent.pts.utils.PTSLog;
 import com.tencent.pts.utils.PTSNodeVirtualUtil;
-import com.tencent.pts.utils.PTSReportUtil;
-import com.tencent.pts.utils.PTSTimeCostUtil;
 import com.tencent.pts.utils.PTSValueConvertUtil;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -33,7 +28,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public abstract class PTSNodeVirtual<T extends View>
+public abstract class PTSNodeVirtual
 {
   protected final String TAG = getClass().getSimpleName();
   private int backgroundColor = 16777215;
@@ -41,7 +36,7 @@ public abstract class PTSNodeVirtual<T extends View>
   protected List<PTSNodeVirtual> mChildren;
   private PTSNodeInfo mNodeInfo;
   private PTSNodeVirtual mParent;
-  private T mView;
+  private View mView;
   private String mViewID;
   private ColorDrawable normalDrawable;
   private View.OnClickListener onClickListener;
@@ -53,18 +48,18 @@ public abstract class PTSNodeVirtual<T extends View>
   private boolean reusable = true;
   private StateListDrawable stateListDrawable;
   
-  protected PTSNodeVirtual(PTSAppInstance paramPTSAppInstance)
+  protected PTSNodeVirtual(PTSAppInstance paramPTSAppInstance, String paramString1, String paramString2)
   {
     if (paramPTSAppInstance == null) {
       return;
     }
     this.mAppInstance = paramPTSAppInstance;
-    View localView = initView(paramPTSAppInstance.getContext());
-    paramPTSAppInstance = localView;
-    if (localView == null) {
-      paramPTSAppInstance = initView();
+    View localView2 = initView(paramPTSAppInstance.getContext());
+    View localView1 = localView2;
+    if (localView2 == null) {
+      localView1 = initView(paramString1, paramString2, paramPTSAppInstance.getContext());
     }
-    this.mView = paramPTSAppInstance;
+    this.mView = localView1;
   }
   
   private void bindAttributes(PTSNodeAttribute paramPTSNodeAttribute)
@@ -179,59 +174,20 @@ public abstract class PTSNodeVirtual<T extends View>
     }
   }
   
-  private T initView()
+  private View initView(String paramString1, String paramString2, Context paramContext)
   {
-    Object localObject1 = PTSNodeFactory.getNodeViewConstructor(getClass());
-    Object localObject2;
-    if (localObject1 == null)
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("[initView] no viewConstructor, className = ");
-      ((StringBuilder)localObject2).append(getClass().getName());
-      localObject2 = ((StringBuilder)localObject2).toString();
-      PTSLog.e(this.TAG, (String)localObject2);
-      if (PTSLog.isDebug()) {
-        throw new IllegalArgumentException((String)localObject2);
-      }
+    Object localObject = PTSNodeFactory.getNodeBuilder(paramString1, paramString2);
+    if (localObject != null) {
+      return ((PTSNodeVirtual.IBuilder)localObject).buildNativeView(paramContext, this);
     }
-    try
-    {
-      localObject1 = (View)((Constructor)localObject1).newInstance(new Object[] { this });
-      return localObject1;
-    }
-    catch (Exception localException)
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("[initView] exception, className = ");
-      ((StringBuilder)localObject2).append(getClass().getName());
-      ((StringBuilder)localObject2).append(", e = ");
-      ((StringBuilder)localObject2).append(localException);
-      ((StringBuilder)localObject2).append(", stackTraceString = ");
-      ((StringBuilder)localObject2).append(Log.getStackTraceString(localException));
-      String str1 = ((StringBuilder)localObject2).toString();
-      PTSLog.e(this.TAG, str1);
-      PTSReportUtil.reportEvent(this.TAG, str1, 1);
-      if (PTSLog.isDebug()) {
-        throw new IllegalArgumentException(str1);
-      }
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("[initView] invocationTargetException, className = ");
-      ((StringBuilder)localObject2).append(getClass().getName());
-      ((StringBuilder)localObject2).append(", e = ");
-      ((StringBuilder)localObject2).append(localInvocationTargetException);
-      ((StringBuilder)localObject2).append(", stackTraceString = ");
-      ((StringBuilder)localObject2).append(Log.getStackTraceString(localInvocationTargetException));
-      String str2 = ((StringBuilder)localObject2).toString();
-      PTSReportUtil.reportEvent(this.TAG, str2, 1);
-      PTSLog.e(this.TAG, str2);
-      if (!PTSLog.isDebug()) {
-        return null;
-      }
-      throw new IllegalArgumentException(str2);
-    }
+    paramContext = this.TAG;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[initView] error, nodeType = ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", customViewType = ");
+    ((StringBuilder)localObject).append(paramString2);
+    PTSLog.e(paramContext, ((StringBuilder)localObject).toString());
+    return null;
   }
   
   private final void reset()
@@ -360,10 +316,6 @@ public abstract class PTSNodeVirtual<T extends View>
   {
     if (paramPTSNodeInfo != null)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[bindNodeInfo]-");
-      localStringBuilder.append(paramPTSNodeInfo.getUniqueID());
-      PTSTimeCostUtil.start(localStringBuilder.toString());
       reset();
       this.mNodeInfo = paramPTSNodeInfo;
       bindStyle(paramPTSNodeInfo.getStyle());
@@ -373,10 +325,6 @@ public abstract class PTSNodeVirtual<T extends View>
         ((IView)getView()).onBindNodeInfo(paramPTSNodeInfo);
       }
       PTSNodeVirtualUtil.onBindNodeInfoFinished(paramPTSNodeInfo.getUniqueID(), getView(), paramPTSNodeInfo.getContent(), paramPTSNodeInfo.getStyle(), paramPTSNodeInfo.getAttributes());
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[bindNodeInfo]-");
-      localStringBuilder.append(paramPTSNodeInfo.getUniqueID());
-      PTSTimeCostUtil.end(localStringBuilder.toString());
     }
   }
   
@@ -459,7 +407,7 @@ public abstract class PTSNodeVirtual<T extends View>
     return this.mNodeInfo.getStyle().getTop();
   }
   
-  public T getView()
+  public View getView()
   {
     return this.mView;
   }
@@ -487,7 +435,7 @@ public abstract class PTSNodeVirtual<T extends View>
     this.mView.setVisibility(8);
   }
   
-  protected T initView(Context paramContext)
+  protected View initView(Context paramContext)
   {
     return null;
   }
@@ -628,7 +576,7 @@ public abstract class PTSNodeVirtual<T extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeVirtual
  * JD-Core Version:    0.7.0.1
  */

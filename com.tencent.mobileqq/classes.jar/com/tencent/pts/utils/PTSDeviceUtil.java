@@ -42,6 +42,11 @@ public class PTSDeviceUtil
     return getScreenWidthDp() / 750.0F;
   }
   
+  public static float getRPXScaling(float paramFloat)
+  {
+    return paramFloat / 750.0F;
+  }
+  
   public static float getScreenHeightDp()
   {
     return px2dp(screenHeightPx);
@@ -188,7 +193,7 @@ public class PTSDeviceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.utils.PTSDeviceUtil
  * JD-Core Version:    0.7.0.1
  */

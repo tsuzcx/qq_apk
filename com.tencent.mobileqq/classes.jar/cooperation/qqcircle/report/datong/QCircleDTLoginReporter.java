@@ -1,7 +1,7 @@
 package cooperation.qqcircle.report.datong;
 
 import android.text.TextUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.VideoReport;
 import cooperation.qqcircle.report.QCircleReportHelper;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ public class QCircleDTLoginReporter
   {
     if (paramHashMap == null)
     {
-      RFLog.i("QCircleDTLoginReporter", RFLog.USR, "daTongLoginReportMiddlePage  attrs == null");
+      QLog.i("QCircleDTLoginReporter", 1, "daTongLoginReportMiddlePage  attrs == null");
       return;
     }
     paramHashMap = parseSameReportParams(paramHashMap);
@@ -91,11 +91,10 @@ public class QCircleDTLoginReporter
       }
       if (paramHashMap.containsKey("key_scheme"))
       {
-        i = RFLog.USR;
         paramString = new StringBuilder();
         paramString.append("jointScheme no joint , scheme = ");
         paramString.append((String)paramHashMap.get("key_scheme"));
-        RFLog.i("QCircleDTLoginReporter", i, paramString.toString());
+        QLog.i("QCircleDTLoginReporter", 1, paramString.toString());
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder("mqqapi://qcircle/");
@@ -112,11 +111,10 @@ public class QCircleDTLoginReporter
       }
       localStringBuilder.deleteCharAt(localStringBuilder.toString().length() - 1);
       paramHashMap.put("key_scheme", localStringBuilder.toString());
-      int i = RFLog.USR;
       paramString = new StringBuilder();
       paramString.append("jointScheme  scheme = ");
       paramString.append(localStringBuilder.toString());
-      RFLog.i("QCircleDTLoginReporter", i, paramString.toString());
+      QLog.i("QCircleDTLoginReporter", 1, paramString.toString());
     }
   }
   
@@ -147,7 +145,7 @@ public class QCircleDTLoginReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.datong.QCircleDTLoginReporter
  * JD-Core Version:    0.7.0.1
  */

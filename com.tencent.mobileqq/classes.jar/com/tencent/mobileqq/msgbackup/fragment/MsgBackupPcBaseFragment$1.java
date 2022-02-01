@@ -15,21 +15,21 @@ class MsgBackupPcBaseFragment$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MsgBackupUtil.a("MsgBackup_MsgBackupPcBaseFragment", "showDisConnDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.f) });
-    MsgBackupManager.a().a().c();
-    MsgBackupManager.a().d();
-    if (this.a.jdField_a_of_type_Boolean)
+    MsgBackupUtil.a("MsgBackup_MsgBackupPcBaseFragment", "showDisConnDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.ab)), Boolean.valueOf(this.a.ac) });
+    MsgBackupManager.a().d().m();
+    MsgBackupManager.a().g();
+    if (this.a.T)
     {
-      if ((!this.a.f) && (this.a.b == 1))
+      if ((!this.a.ac) && (this.a.K == 1))
       {
         paramDialogInterface = this.a;
         paramDialogInterface.a(paramDialogInterface.getActivity());
         return;
       }
-      this.a.n();
+      this.a.v();
       return;
     }
-    if (this.a.f)
+    if (this.a.ac)
     {
       if (this.a.getActivity() != null)
       {
@@ -46,7 +46,7 @@ class MsgBackupPcBaseFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment.1
  * JD-Core Version:    0.7.0.1
  */

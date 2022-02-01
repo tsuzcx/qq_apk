@@ -12,22 +12,22 @@ class EditVideoPartManager$12
   
   public void run()
   {
-    Bitmap localBitmap = this.this$0.a();
+    Bitmap localBitmap = this.this$0.H();
     if (localBitmap != null) {
       try
       {
-        if (EditVideoPartManager.a(this.this$0.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.c, 64))
+        if (EditVideoPartManager.a(this.this$0.I.c, 64))
         {
-          if (EditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaMediacodecRendererGPUBitmapImageRender == null) {
-            EditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaMediacodecRendererGPUBitmapImageRender = new GPUBitmapImageRender();
+          if (EditVideoPartManager.ag == null) {
+            EditVideoPartManager.ag = new GPUBitmapImageRender();
           }
-          EditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaMediacodecRendererGPUBitmapImageRender.c(localBitmap.getWidth(), localBitmap.getHeight());
+          EditVideoPartManager.ag.c(localBitmap.getWidth(), localBitmap.getHeight());
           return;
         }
       }
       catch (Exception localException)
       {
-        EditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaMediacodecRendererGPUBitmapImageRender = null;
+        EditVideoPartManager.ag = null;
         QLog.d("Q.qqstory.publish.edit.EditVideoPartManager", 1, "artImageRender init error, ", localException);
       }
     }
@@ -35,7 +35,7 @@ class EditVideoPartManager$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoPartManager.12
  * JD-Core Version:    0.7.0.1
  */

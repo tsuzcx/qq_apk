@@ -11,46 +11,46 @@ import org.jetbrains.annotations.NotNull;
 final class CommentLinkView$LinkAdatper$ViewHolder
 {
   @NotNull
-  private final View jdField_a_of_type_AndroidViewView;
+  private final NativeReadInjoyImageView b;
   @NotNull
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final TextView c;
   @NotNull
-  private final NativeReadInjoyImageView jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView;
+  private final View d;
   
   public CommentLinkView$LinkAdatper$ViewHolder(View paramView)
   {
-    paramView = localObject.findViewById(2131368343);
+    paramView = localObject.findViewById(2131435219);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "root.findViewById(R.id.icon)");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView = ((NativeReadInjoyImageView)paramView);
-    paramView = localObject.findViewById(2131365536);
+    this.b = ((NativeReadInjoyImageView)paramView);
+    paramView = localObject.findViewById(2131431757);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "root.findViewById(R.id.description)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
-    paramView = localObject.findViewById(2131365494);
+    this.c = ((TextView)paramView);
+    paramView = localObject.findViewById(2131431708);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "root.findViewById(R.id.delete)");
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  @NotNull
-  public final View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  @NotNull
-  public final TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    this.d = paramView;
   }
   
   @NotNull
   public final NativeReadInjoyImageView a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView;
+    return this.b;
+  }
+  
+  @NotNull
+  public final TextView b()
+  {
+    return this.c;
+  }
+  
+  @NotNull
+  public final View c()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.CommentLinkView.LinkAdatper.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -22,59 +22,59 @@ class EditPicPartManager$2
 {
   EditPicPartManager$2(EditPicPartManager paramEditPicPartManager, ActionSheet paramActionSheet, Intent paramIntent, String paramString, Activity paramActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramView == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.dismiss();
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet.getContent(paramInt);
+    Object localObject = this.a.getContent(paramInt);
     if (localObject == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.dismiss();
       return;
     }
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.dismiss();
       return;
     }
-    if (((String)localObject).equals(paramView.getResources().getString(2131693256)))
+    if (((String)localObject).equals(paramView.getResources().getString(2131890804)))
     {
       int i = 1;
       paramInt = i;
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicPartManager.a.c() == 130)
+      if (this.e.I.j() == 130)
       {
         paramInt = i;
-        if (!this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("extra_is_edited_pic", false)) {
+        if (!this.b.getBooleanExtra("extra_is_edited_pic", false)) {
           paramInt = 0;
         }
       }
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_type", paramInt);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_filepath", this.jdField_a_of_type_JavaLangString);
-      ForwardBaseOption.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 19003);
+      this.b.putExtra("forward_type", paramInt);
+      this.b.putExtra("forward_filepath", this.c);
+      ForwardBaseOption.a(this.d, this.b, 19003);
       ReportController.b(null, "dc00898", "", "", "0X800A184", "0X800A184", 0, 0, "", "", "", "");
     }
-    else if (((String)localObject).equals(paramView.getResources().getString(2131693262)))
+    else if (((String)localObject).equals(paramView.getResources().getString(2131890810)))
     {
-      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      localObject = new File(this.c);
       String str = ((File)localObject).getAbsolutePath();
-      AIOGalleryUtils.a((Activity)paramView.getContext(), (File)localObject, Utils.Crc64String(str), this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicPartManager);
+      AIOGalleryUtils.a((Activity)paramView.getContext(), (File)localObject, Utils.Crc64String(str), this.e);
       ReportController.b(null, "dc00898", "", "", "0X800A185", "0X800A185", 0, 0, "", "", "", "");
     }
-    else if (((String)localObject).equals(paramView.getResources().getString(2131693254)))
+    else if (((String)localObject).equals(paramView.getResources().getString(2131890802)))
     {
       paramView = BaseApplicationImpl.getApplication();
-      QfavBuilder.b(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_AndroidAppActivity, paramView.getRuntime().getAccount(), 2131694890, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicPartManager);
+      QfavBuilder.b(this.c).a(this.d, paramView.getRuntime().getAccount(), 2131892594, this.e);
       ReportController.b(null, "dc00898", "", "", "0X800A186", "0X800A186", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditPicPartManager.2
  * JD-Core Version:    0.7.0.1
  */

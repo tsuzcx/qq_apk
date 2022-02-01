@@ -27,75 +27,75 @@ public class AddedRobotView$RobotListAdapter
   extends RecyclerView.Adapter<AddedRobotView.RobotListAdapter.RobotViewHolder>
   implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ArrayList<TroopRobotInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  LayoutInflater a;
+  private ArrayList<TroopRobotInfo> c = new ArrayList();
+  private Context d;
   
   public AddedRobotView$RobotListAdapter(AddedRobotView paramAddedRobotView, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramAddedRobotView.getContext().getSystemService("layout_inflater"));
+    this.d = paramContext;
+    this.a = ((LayoutInflater)paramAddedRobotView.getContext().getSystemService("layout_inflater"));
   }
   
   public AddedRobotView.RobotListAdapter.RobotViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new AddedRobotView.RobotListAdapter.RobotViewHolder(this, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561533, paramViewGroup, false));
+    return new AddedRobotView.RobotListAdapter.RobotViewHolder(this, this.a.inflate(2131627894, paramViewGroup, false));
   }
   
   public void a(AddedRobotView.RobotListAdapter.RobotViewHolder paramRobotViewHolder, int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject1 = this.c;
     if ((localObject1 != null) && (paramInt < ((ArrayList)localObject1).size()))
     {
-      TroopRobotInfo localTroopRobotInfo = (TroopRobotInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      TroopRobotInfo localTroopRobotInfo = (TroopRobotInfo)this.c.get(paramInt);
       if (localTroopRobotInfo != null)
       {
         String str = String.valueOf(localTroopRobotInfo.a());
-        Object localObject2 = AddedRobotView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView).getBitmapFromCache(1, str);
+        Object localObject2 = AddedRobotView.b(this.b).getBitmapFromCache(1, str);
         localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject2 = ImageUtil.f();
+          localObject2 = ImageUtil.k();
           localObject1 = localObject2;
-          if (!AddedRobotView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView).isPausing())
+          if (!AddedRobotView.b(this.b).isPausing())
           {
-            AddedRobotView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView).requestDecodeFace(str, 1, false);
+            AddedRobotView.b(this.b).requestDecodeFace(str, 1, false);
             localObject1 = localObject2;
           }
         }
-        paramRobotViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
-        paramRobotViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopRobotInfo.a());
-        paramRobotViewHolder.jdField_a_of_type_JavaLangString = String.valueOf(localTroopRobotInfo.a());
-        paramRobotViewHolder.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-        paramRobotViewHolder.jdField_b_of_type_AndroidWidgetImageView.setTag(localTroopRobotInfo);
-        paramRobotViewHolder.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-        paramRobotViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTag(localTroopRobotInfo);
-        paramRobotViewHolder.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(localTroopRobotInfo.a());
+        paramRobotViewHolder.b.setImageBitmap((Bitmap)localObject1);
+        paramRobotViewHolder.a.setText(localTroopRobotInfo.b());
+        paramRobotViewHolder.d = String.valueOf(localTroopRobotInfo.a());
+        paramRobotViewHolder.e.setOnClickListener(this);
+        paramRobotViewHolder.e.setTag(localTroopRobotInfo);
+        paramRobotViewHolder.a.setOnClickListener(this);
+        paramRobotViewHolder.a.setTag(localTroopRobotInfo);
+        paramRobotViewHolder.e.setContentDescription(localTroopRobotInfo.b());
         localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
         if (localObject1 != null)
         {
           localObject2 = (ITroopRobotService)((QQAppInterface)localObject1).getRuntimeService(ITroopRobotService.class, "all");
           boolean bool;
           if (localObject2 != null) {
-            bool = ((ITroopRobotService)localObject2).isRobotUinNeedShowRed((AppRuntime)localObject1, String.valueOf(localTroopRobotInfo.a()), AddedRobotView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView));
+            bool = ((ITroopRobotService)localObject2).isRobotUinNeedShowRed((AppRuntime)localObject1, String.valueOf(localTroopRobotInfo.a()), AddedRobotView.a(this.b));
           } else {
             bool = false;
           }
           if (bool) {
-            paramRobotViewHolder.c.setVisibility(0);
+            paramRobotViewHolder.f.setVisibility(0);
           } else {
-            paramRobotViewHolder.c.setVisibility(8);
+            paramRobotViewHolder.f.setVisibility(8);
           }
         }
-        if (localTroopRobotInfo.b())
+        if (localTroopRobotInfo.e())
         {
-          paramRobotViewHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846423));
-          paramRobotViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+          paramRobotViewHolder.e.setBackgroundDrawable(this.d.getResources().getDrawable(2130847896));
+          paramRobotViewHolder.c.setVisibility(0);
         }
         else
         {
-          paramRobotViewHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846377));
-          paramRobotViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+          paramRobotViewHolder.e.setBackgroundDrawable(this.d.getResources().getDrawable(2130847850));
+          paramRobotViewHolder.c.setVisibility(8);
         }
       }
     }
@@ -106,15 +106,15 @@ public class AddedRobotView$RobotListAdapter
   {
     if (paramArrayList != null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      this.c.clear();
+      this.c.addAll(paramArrayList);
     }
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.c;
     if (localArrayList != null) {
       return localArrayList.size();
     }
@@ -127,12 +127,12 @@ public class AddedRobotView$RobotListAdapter
     if ((localObject != null) && ((localObject instanceof TroopRobotInfo)))
     {
       localObject = (TroopRobotInfo)localObject;
-      ((IRobotUtilApi)QRoute.api(IRobotUtilApi.class)).openRobotProfileCard(this.jdField_a_of_type_AndroidContentContext, AddedRobotView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView), String.valueOf(((TroopRobotInfo)localObject).a()));
+      ((IRobotUtilApi)QRoute.api(IRobotUtilApi.class)).openRobotProfileCard(this.d, AddedRobotView.a(this.b), String.valueOf(((TroopRobotInfo)localObject).a()));
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       if (localQQAppInterface != null)
       {
         ITroopRobotService localITroopRobotService = (ITroopRobotService)localQQAppInterface.getRuntimeService(ITroopRobotService.class, "all");
-        if ((localITroopRobotService != null) && (localITroopRobotService.isRobotUinNeedShowRed(localQQAppInterface, String.valueOf(((TroopRobotInfo)localObject).a()), AddedRobotView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView)))) {
+        if ((localITroopRobotService != null) && (localITroopRobotService.isRobotUinNeedShowRed(localQQAppInterface, String.valueOf(((TroopRobotInfo)localObject).a()), AddedRobotView.a(this.b)))) {
           localITroopRobotService.removeRobotUinInRed(localQQAppInterface, String.valueOf(((TroopRobotInfo)localObject).a()));
         }
       }
@@ -143,7 +143,7 @@ public class AddedRobotView$RobotListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AddedRobotView.RobotListAdapter
  * JD-Core Version:    0.7.0.1
  */

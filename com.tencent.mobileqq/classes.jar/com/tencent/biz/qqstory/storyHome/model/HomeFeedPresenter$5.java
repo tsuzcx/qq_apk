@@ -32,25 +32,25 @@ final class HomeFeedPresenter$5
     if (paramErrorMessage.isFail()) {
       SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "request fail for comment request");
     }
-    if ((paramBatchGetFeedCommentResp.jdField_a_of_type_JavaUtilList != null) && (!paramBatchGetFeedCommentResp.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if ((paramBatchGetFeedCommentResp.a != null) && (!paramBatchGetFeedCommentResp.a.isEmpty()))
     {
       paramBatchGetFeedCommentRequest = (CommentManager)SuperManager.a(17);
-      paramBatchGetFeedCommentResp = paramBatchGetFeedCommentResp.jdField_a_of_type_JavaUtilList;
+      paramBatchGetFeedCommentResp = paramBatchGetFeedCommentResp.a;
       boolean bool = false;
       paramBatchGetFeedCommentResp = (BatchGetFeedCommentRequest.FeedCommentInfo)paramBatchGetFeedCommentResp.get(0);
-      if (paramBatchGetFeedCommentResp.jdField_a_of_type_JavaUtilList != null)
+      if (paramBatchGetFeedCommentResp.e != null)
       {
-        SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, commentFeedId:%s, commentSize:%s, entryListSize:%s", new Object[] { paramBatchGetFeedCommentResp.jdField_a_of_type_JavaLangString, Integer.valueOf(paramBatchGetFeedCommentResp.jdField_a_of_type_Int), Integer.valueOf(paramBatchGetFeedCommentResp.jdField_a_of_type_JavaUtilList.size()) });
-        paramBatchGetFeedCommentRequest.a(paramBatchGetFeedCommentResp.jdField_a_of_type_JavaUtilList, this.a.a.feedId, true, true);
-        paramBatchGetFeedCommentRequest = new CommentListPageLoader.GetFeedCommentEvent(paramErrorMessage, paramBatchGetFeedCommentResp.jdField_a_of_type_JavaLangString, 1);
-        paramBatchGetFeedCommentRequest.jdField_a_of_type_JavaUtilList = paramBatchGetFeedCommentResp.jdField_a_of_type_JavaUtilList;
+        SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, commentFeedId:%s, commentSize:%s, entryListSize:%s", new Object[] { paramBatchGetFeedCommentResp.a, Integer.valueOf(paramBatchGetFeedCommentResp.b), Integer.valueOf(paramBatchGetFeedCommentResp.e.size()) });
+        paramBatchGetFeedCommentRequest.a(paramBatchGetFeedCommentResp.e, this.a.f.feedId, true, true);
+        paramBatchGetFeedCommentRequest = new CommentListPageLoader.GetFeedCommentEvent(paramErrorMessage, paramBatchGetFeedCommentResp.a, 1);
+        paramBatchGetFeedCommentRequest.k = paramBatchGetFeedCommentResp.e;
         paramBatchGetFeedCommentRequest.c = true;
-        if (((CommentLikeFeedItem)this.a.a).mCommentIsEnd == 1) {
+        if (((CommentLikeFeedItem)this.a.f).mCommentIsEnd == 1) {
           bool = true;
         }
-        paramBatchGetFeedCommentRequest.jdField_a_of_type_Boolean = bool;
-        paramBatchGetFeedCommentRequest.jdField_b_of_type_JavaLangString = ((CommentLikeFeedItem)this.a.a).mCommentLastCookie;
-        paramBatchGetFeedCommentRequest.jdField_b_of_type_Int = paramBatchGetFeedCommentResp.jdField_a_of_type_Int;
+        paramBatchGetFeedCommentRequest.a = bool;
+        paramBatchGetFeedCommentRequest.h = ((CommentLikeFeedItem)this.a.f).mCommentLastCookie;
+        paramBatchGetFeedCommentRequest.i = paramBatchGetFeedCommentResp.b;
         StoryDispatcher.a().dispatch(paramBatchGetFeedCommentRequest);
       }
     }

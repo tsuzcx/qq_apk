@@ -17,8 +17,8 @@ class ActionSheetHelper$3
     {
       localJSONObject.put("index", -1);
       localJSONObject.put("type", 1);
-      if (ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesActionSheetHelper) != null) {
-        ((BridgeModule)ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesActionSheetHelper).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      if (ActionSheetHelper.a(this.b) != null) {
+        ((BridgeModule)ActionSheetHelper.a(this.b).get()).invokeCallJS(this.a, localJSONObject);
       }
       return;
     }
@@ -27,7 +27,7 @@ class ActionSheetHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.ActionSheetHelper.3
  * JD-Core Version:    0.7.0.1
  */

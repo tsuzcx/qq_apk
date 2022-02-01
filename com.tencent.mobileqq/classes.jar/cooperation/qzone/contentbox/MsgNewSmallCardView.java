@@ -37,7 +37,7 @@ public class MsgNewSmallCardView
 {
   private static final int AVATAR_GAP;
   private static final int BACKGROUND_HEIGHT;
-  private static final int BACKGROUND_WIDTH = ViewUtils.b(128.0F);
+  private static final int BACKGROUND_WIDTH = ViewUtils.dpToPx(128.0F);
   private static final int CARD_RADIUS;
   private static final int CONTENT_COLOR = Color.parseColor("#7A7A8D");
   private static final int CONTENT_COLOR_NIGHTMODE = Color.parseColor("#8D8D93");
@@ -74,16 +74,16 @@ public class MsgNewSmallCardView
   
   static
   {
-    BACKGROUND_HEIGHT = ViewUtils.b(128.0F);
-    LIST_AVATAR_LENGTH = ViewUtils.b(40.0F);
-    AVATAR_GAP = ViewUtils.b(28.0F);
-    LIST_MARGIN_TOP = ViewUtils.b(35.0F);
-    LIST_MARGIN_LEFT = ViewUtils.b(12.0F);
-    LIST_MARGIN_RIGHT = ViewUtils.b(12.0F);
-    LIST_ITEM_MARGIN_TOP = ViewUtils.b(10.0F);
-    LIST_ITEM_MARGIN_BOTTOM = ViewUtils.b(18.0F);
-    LARGE_PHOTO_HEIGHT = ViewUtils.b(230.0F);
-    CARD_RADIUS = ViewUtils.b(8.0F);
+    BACKGROUND_HEIGHT = ViewUtils.dpToPx(128.0F);
+    LIST_AVATAR_LENGTH = ViewUtils.dpToPx(40.0F);
+    AVATAR_GAP = ViewUtils.dpToPx(28.0F);
+    LIST_MARGIN_TOP = ViewUtils.dpToPx(35.0F);
+    LIST_MARGIN_LEFT = ViewUtils.dpToPx(12.0F);
+    LIST_MARGIN_RIGHT = ViewUtils.dpToPx(12.0F);
+    LIST_ITEM_MARGIN_TOP = ViewUtils.dpToPx(10.0F);
+    LIST_ITEM_MARGIN_BOTTOM = ViewUtils.dpToPx(18.0F);
+    LARGE_PHOTO_HEIGHT = ViewUtils.dpToPx(230.0F);
+    CARD_RADIUS = ViewUtils.dpToPx(8.0F);
     TITLE_COLOR = Color.parseColor("#000000");
     TITLE_COLOR_NIGHTMODE = Color.parseColor("#FFFFFF");
   }
@@ -161,9 +161,9 @@ public class MsgNewSmallCardView
         localImageView1.setVisibility(0);
         setContentTextColor(localTextView1);
         if (this.isNightMode) {
-          i = 2130848743;
+          i = 2130850410;
         } else {
-          i = 2130848742;
+          i = 2130850409;
         }
         localImageView1.setBackgroundResource(i);
       }
@@ -183,9 +183,9 @@ public class MsgNewSmallCardView
         localImageView2.setVisibility(0);
         setContentTextColor(localTextView2);
         if (this.isNightMode) {
-          i = 2130848735;
+          i = 2130850402;
         } else {
-          i = 2130848734;
+          i = 2130850401;
         }
         localImageView2.setBackgroundResource(i);
       }
@@ -205,9 +205,9 @@ public class MsgNewSmallCardView
         localImageView3.setVisibility(0);
         setContentTextColor(localTextView3);
         if (this.isNightMode) {
-          i = 2130848739;
+          i = 2130850406;
         } else {
-          i = 2130848738;
+          i = 2130850405;
         }
         localImageView3.setBackgroundResource(i);
       }
@@ -269,13 +269,13 @@ public class MsgNewSmallCardView
       RoundCornerImageView localRoundCornerImageView = (RoundCornerImageView)findViewById(2080571408);
       if (this.isNightMode)
       {
-        paramMQMsg.setBackgroundResource(2130848718);
+        paramMQMsg.setBackgroundResource(2130850385);
         i = CARD_RADIUS;
         localRoundCornerImageView.setCorner(i, 0, i, 0);
         localRoundCornerImageView.setVisibility(0);
         return;
       }
-      paramMQMsg.setBackgroundResource(2130848717);
+      paramMQMsg.setBackgroundResource(2130850384);
       localRoundCornerImageView.setVisibility(8);
     }
   }
@@ -335,9 +335,9 @@ public class MsgNewSmallCardView
         localImageView1.setVisibility(0);
         setContentTextColor(localTextView1);
         if (this.isNightMode) {
-          i = 2130848737;
+          i = 2130850404;
         } else {
-          i = 2130848736;
+          i = 2130850403;
         }
         localImageView1.setBackgroundResource(i);
       }
@@ -357,9 +357,9 @@ public class MsgNewSmallCardView
         localImageView2.setVisibility(0);
         setContentTextColor(localTextView2);
         if (this.isNightMode) {
-          i = 2130848735;
+          i = 2130850402;
         } else {
-          i = 2130848734;
+          i = 2130850401;
         }
         localImageView2.setBackgroundResource(i);
       }
@@ -379,9 +379,9 @@ public class MsgNewSmallCardView
         localImageView3.setVisibility(0);
         setContentTextColor(localTextView3);
         if (this.isNightMode) {
-          i = 2130848741;
+          i = 2130850408;
         } else {
-          i = 2130848740;
+          i = 2130850407;
         }
         localImageView3.setBackgroundResource(i);
       }
@@ -489,9 +489,9 @@ public class MsgNewSmallCardView
   {
     TextView localTextView = (TextView)findViewById(2080571475);
     if (this.isNightMode) {
-      localTextView.setBackgroundResource(2130848710);
+      localTextView.setBackgroundResource(2130850377);
     } else {
-      localTextView.setBackgroundResource(2130848709);
+      localTextView.setBackgroundResource(2130850376);
     }
     setTitleTextColor(localTextView);
     return localTextView;
@@ -502,7 +502,7 @@ public class MsgNewSmallCardView
     if (this.isNightMode) {
       this.feedsContainer.setBackgroundColor(Color.parseColor("#171717"));
     } else {
-      this.feedsContainer.setBackgroundColor(getResources().getColor(2131167394));
+      this.feedsContainer.setBackgroundColor(getResources().getColor(2131168464));
     }
     return this.feedsContainer;
   }
@@ -606,7 +606,7 @@ public class MsgNewSmallCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgNewSmallCardView
  * JD-Core Version:    0.7.0.1
  */

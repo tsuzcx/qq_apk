@@ -38,54 +38,54 @@ class FileAssistantExt$2
               return;
             }
             FileManagerReporter.a("0X8005532");
-            paramMenuItem = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-            localObject = this.jdField_a_of_type_AndroidAppActivity;
-            FileManagerUtil.a(paramMenuItem, (Context)localObject, "_is_from_qfile_shortcut", ((Activity)localObject).getString(2131692293), 2130844409);
-            FMToastUtil.b(2131692338);
+            paramMenuItem = (QQAppInterface)this.c;
+            localObject = this.b;
+            FileManagerUtil.a(paramMenuItem, (Context)localObject, "_is_from_qfile_shortcut", ((Activity)localObject).getString(2131889281), 2130845727);
+            FMToastUtil.b(2131889326);
             return;
           }
           FileManagerReporter.a("0X800A15F");
           paramMenuItem = new Bundle();
-          paramMenuItem.putString("url", "https://docs.qq.com/desktop/m/templates_list.html?padtype=0&_wv=2&_wwv=512");
+          paramMenuItem.putString("url", "https://docs.qq.com/mall/m/index?padtype=0&_wv=2&_wwv=512&from_page=s_qq_myfile_menu_create");
           paramMenuItem.putString("tdsourcetag", "s_qq_myfile_menu_create");
-          TeamWorkDocEditBrowserActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramMenuItem, false);
+          TeamWorkDocEditBrowserActivity.a(this.b, paramMenuItem, false);
           return;
         }
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.a) {
           FileManagerReporter.a("0X8005536");
         } else {
           FileManagerReporter.a("0X800681C");
         }
-        AlbumBackupProxyActivity.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin(), "source_qfile_assistant", 10001);
-        FileAssistantExt.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplFileAssistantExt, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo, "100160.100162");
+        AlbumBackupProxyActivity.a(this.b, this.c.getCurrentAccountUin(), "source_qfile_assistant", 10001);
+        FileAssistantExt.a(this.e, this.c, this.d, "100160.100162");
         return;
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         FileManagerReporter.a("0X8005535");
       } else {
         FileManagerReporter.a("0X800681B");
       }
-      FileAssistantExt.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplFileAssistantExt, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.jdField_a_of_type_AndroidAppActivity);
+      FileAssistantExt.a(this.e, this.c, this.b);
       return;
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       FileManagerReporter.a("0X8005534");
     } else {
       FileManagerReporter.a("0X800681A");
     }
-    if (QFileAssistantUtils.a())
+    if (QFileAssistantUtils.b())
     {
-      QFileAssistantUtils.a(this.jdField_a_of_type_AndroidAppActivity);
+      QFileAssistantUtils.a(this.b);
       return;
     }
     try
     {
-      paramMenuItem = new Intent(this.jdField_a_of_type_AndroidAppActivity, LiteActivity.class);
+      paramMenuItem = new Intent(this.b, LiteActivity.class);
       localObject = new Bundle();
       ((Bundle)localObject).putLong("category", 12);
       paramMenuItem.putExtra("bundle", (Bundle)localObject);
       paramMenuItem.putExtra("from", "FileAssistant");
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramMenuItem, 101);
+      this.b.startActivityForResult(paramMenuItem, 101);
       return;
     }
     catch (Exception paramMenuItem)
@@ -96,7 +96,7 @@ class FileAssistantExt$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.FileAssistantExt.2
  * JD-Core Version:    0.7.0.1
  */

@@ -397,7 +397,7 @@ public class ARGLSurfaceView
   {
     ARSensorManager localARSensorManager = this.mSensorManager;
     if (localARSensorManager != null) {
-      localARSensorManager.a();
+      localARSensorManager.b();
     }
   }
   
@@ -514,7 +514,7 @@ public class ARGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

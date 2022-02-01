@@ -11,13 +11,13 @@ class LocalFileBrowserActivity$7
   
   public void onClick(View paramView)
   {
-    LocalFileBrowserActivity.a(this.a);
+    LocalFileBrowserActivity.b(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity.7
  * JD-Core Version:    0.7.0.1
  */

@@ -12,28 +12,28 @@ import com.google.android.material.shape.MaterialShapeDrawable;
 class ShapeableImageView$OutlineProvider
   extends ViewOutlineProvider
 {
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private final Rect b = new Rect();
   
   ShapeableImageView$OutlineProvider(ShapeableImageView paramShapeableImageView) {}
   
   public void getOutline(View paramView, Outline paramOutline)
   {
-    if (ShapeableImageView.a(this.jdField_a_of_type_ComGoogleAndroidMaterialImageviewShapeableImageView) == null) {
+    if (ShapeableImageView.a(this.a) == null) {
       return;
     }
-    if (ShapeableImageView.a(this.jdField_a_of_type_ComGoogleAndroidMaterialImageviewShapeableImageView) == null)
+    if (ShapeableImageView.b(this.a) == null)
     {
-      paramView = this.jdField_a_of_type_ComGoogleAndroidMaterialImageviewShapeableImageView;
+      paramView = this.a;
       ShapeableImageView.a(paramView, new MaterialShapeDrawable(ShapeableImageView.a(paramView)));
     }
-    ShapeableImageView.a(this.jdField_a_of_type_ComGoogleAndroidMaterialImageviewShapeableImageView).round(this.jdField_a_of_type_AndroidGraphicsRect);
-    ShapeableImageView.a(this.jdField_a_of_type_ComGoogleAndroidMaterialImageviewShapeableImageView).setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-    ShapeableImageView.a(this.jdField_a_of_type_ComGoogleAndroidMaterialImageviewShapeableImageView).getOutline(paramOutline);
+    ShapeableImageView.c(this.a).round(this.b);
+    ShapeableImageView.b(this.a).setBounds(this.b);
+    ShapeableImageView.b(this.a).getOutline(paramOutline);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.imageview.ShapeableImageView.OutlineProvider
  * JD-Core Version:    0.7.0.1
  */

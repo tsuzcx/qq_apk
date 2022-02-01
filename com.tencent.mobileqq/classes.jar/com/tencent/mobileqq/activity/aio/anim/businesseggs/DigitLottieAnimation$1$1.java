@@ -7,12 +7,12 @@ class DigitLottieAnimation$1$1
   
   public void run()
   {
-    DigitLottieAnimation.a(this.a.a);
+    DigitLottieAnimation.b(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.DigitLottieAnimation.1.1
  * JD-Core Version:    0.7.0.1
  */

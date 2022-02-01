@@ -6,24 +6,24 @@ import android.os.Message;
 public class LyricControllerWrapper
   implements ILyriController
 {
-  private int jdField_a_of_type_Int = -1;
   protected ILyricView a;
-  private LyricControllerWrapper.LyricServiceHandler jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricLyricControllerWrapper$LyricServiceHandler = new LyricControllerWrapper.LyricServiceHandler(this, Looper.getMainLooper());
+  private LyricControllerWrapper.LyricServiceHandler b = new LyricControllerWrapper.LyricServiceHandler(this, Looper.getMainLooper());
+  private int c = -1;
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricLyricControllerWrapper$LyricServiceHandler.removeCallbacks(null);
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView = null;
+    this.b.removeCallbacks(null);
+    this.a = null;
   }
   
   protected void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(long paramLong)
   {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricLyricControllerWrapper$LyricServiceHandler);
+    Message localMessage = Message.obtain(this.b);
     localMessage.what = 7;
     localMessage.obj = new LyricControllerWrapper.CommonData(paramLong);
     localMessage.sendToTarget();
@@ -31,19 +31,19 @@ public class LyricControllerWrapper
   
   public void a(ILyricView paramILyricView)
   {
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView = paramILyricView;
+    this.a = paramILyricView;
   }
   
   public void b()
   {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricLyricControllerWrapper$LyricServiceHandler);
+    Message localMessage = Message.obtain(this.b);
     localMessage.what = 4;
     localMessage.sendToTarget();
   }
   
   protected void b(long paramLong)
   {
-    ILyricView localILyricView = this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView;
+    ILyricView localILyricView = this.a;
     if (localILyricView != null) {
       localILyricView.a(paramLong);
     }
@@ -51,7 +51,7 @@ public class LyricControllerWrapper
   
   public void c()
   {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricLyricControllerWrapper$LyricServiceHandler);
+    Message localMessage = Message.obtain(this.b);
     localMessage.what = 2;
     localMessage.sendToTarget();
   }
@@ -59,7 +59,7 @@ public class LyricControllerWrapper
   protected void c(long paramLong)
   {
     a(3);
-    ILyricView localILyricView = this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView;
+    ILyricView localILyricView = this.a;
     if (localILyricView != null) {
       localILyricView.a(paramLong);
     }
@@ -68,24 +68,24 @@ public class LyricControllerWrapper
   protected void d()
   {
     a(3);
-    ILyricView localILyricView = this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView;
+    ILyricView localILyricView = this.a;
   }
   
   protected void e()
   {
     a(4);
-    ILyricView localILyricView = this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView;
+    ILyricView localILyricView = this.a;
   }
   
   protected void f()
   {
     a(5);
-    ILyricView localILyricView = this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricView;
+    ILyricView localILyricView = this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.easylyric.LyricControllerWrapper
  * JD-Core Version:    0.7.0.1
  */

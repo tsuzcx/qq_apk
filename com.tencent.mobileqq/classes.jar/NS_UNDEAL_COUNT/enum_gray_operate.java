@@ -7,6 +7,7 @@ public final class enum_gray_operate
 {
   public static final int _ENUM_AUTOPLAY_IN_4G = 32768;
   public static final int _ENUM_BIG_PIC_FEED = 1048576;
+  public static final int _ENUM_CHANGE_BOTTOM_TO_REFER = 4194304;
   public static final int _ENUM_COMMENT_LIKE = 256;
   public static final int _ENUM_CONTENT_BOX = 128;
   public static final int _ENUM_DETAIL_TUGOFWAR = 1024;

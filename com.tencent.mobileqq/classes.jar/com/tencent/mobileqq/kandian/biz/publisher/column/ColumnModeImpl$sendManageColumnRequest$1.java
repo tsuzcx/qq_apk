@@ -17,8 +17,6 @@ import tencent.im.oidb.cmd0xe33.oidb_0xe33.TopicInfoSetRsp;
 public final class ColumnModeImpl$sendManageColumnRequest$1
   extends ProtoUtils.TroopProtocolObserver
 {
-  ColumnModeImpl$sendManageColumnRequest$1(IColumnModel.IColumnCallback paramIColumnCallback, int paramInt) {}
-  
   public void onResult(int paramInt, @Nullable byte[] paramArrayOfByte, @NotNull Bundle paramBundle)
   {
     Intrinsics.checkParameterIsNotNull(paramBundle, "bundle");
@@ -30,7 +28,7 @@ public final class ColumnModeImpl$sendManageColumnRequest$1
         if (paramBundle.topic_info_set_rsp.has())
         {
           paramArrayOfByte = paramBundle.topic_info_set_rsp;
-          paramBundle = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherColumnIColumnModel$IColumnCallback;
+          paramBundle = this.a;
           if (paramBundle != null)
           {
             String str = paramArrayOfByte.err_msg.get();
@@ -44,7 +42,7 @@ public final class ColumnModeImpl$sendManageColumnRequest$1
       {
         if (QLog.isColorLevel())
         {
-          int i = this.jdField_a_of_type_Int;
+          int i = this.b;
           if (i == 1)
           {
             paramBundle = new StringBuilder();
@@ -62,7 +60,7 @@ public final class ColumnModeImpl$sendManageColumnRequest$1
         }
       }
     }
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherColumnIColumnModel$IColumnCallback;
+    paramArrayOfByte = this.a;
     if (paramArrayOfByte != null) {
       paramArrayOfByte.a(paramInt, "", -1, 0L);
     }
@@ -70,7 +68,7 @@ public final class ColumnModeImpl$sendManageColumnRequest$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.column.ColumnModeImpl.sendManageColumnRequest.1
  * JD-Core Version:    0.7.0.1
  */

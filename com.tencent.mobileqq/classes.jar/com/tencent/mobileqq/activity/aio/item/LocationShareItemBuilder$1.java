@@ -10,12 +10,12 @@ class LocationShareItemBuilder$1
   
   public void run()
   {
-    LocationMessageUtil.a(this.this$0.a, this.a, false);
+    LocationMessageUtil.a(this.this$0.d, this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.LocationShareItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

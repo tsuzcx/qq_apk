@@ -68,28 +68,28 @@ public abstract class BaseRule
     case 121: 
       if ((paramString.equals("y")) && ((paramBaseAnim instanceof Layout)) && (paramArrayOfFloat.length == 1))
       {
-        ((Layout)paramBaseAnim).setY(ScreenUnit.a.b(paramArrayOfFloat[0]));
+        ((Layout)paramBaseAnim).setY(ScreenUnit.a.e(paramArrayOfFloat[0]));
         return;
       }
       break;
     case 120: 
       if ((paramString.equals("x")) && ((paramBaseAnim instanceof Layout)) && (paramArrayOfFloat.length == 1))
       {
-        ((Layout)paramBaseAnim).setX(ScreenUnit.a.b(paramArrayOfFloat[0]));
+        ((Layout)paramBaseAnim).setX(ScreenUnit.a.e(paramArrayOfFloat[0]));
         return;
       }
       break;
     case 119: 
       if ((paramString.equals("w")) && ((paramBaseAnim instanceof Layout)) && (paramArrayOfFloat.length == 1))
       {
-        ((Layout)paramBaseAnim).setW(ScreenUnit.a.b(paramArrayOfFloat[0]));
+        ((Layout)paramBaseAnim).setW(ScreenUnit.a.e(paramArrayOfFloat[0]));
         return;
       }
       break;
     case 104: 
       if ((paramString.equals("h")) && ((paramBaseAnim instanceof Layout)) && (paramArrayOfFloat.length == 1))
       {
-        ((Layout)paramBaseAnim).setH(ScreenUnit.a.b(paramArrayOfFloat[0]));
+        ((Layout)paramBaseAnim).setH(ScreenUnit.a.e(paramArrayOfFloat[0]));
         return;
       }
       break;
@@ -184,19 +184,19 @@ public abstract class BaseRule
                         if ((!paramString.equals("y")) || (paramArrayOfFloat.length != 1)) {
                           break;
                         }
-                        paramViewData.getSt().setY(ScreenUnit.a.b(paramArrayOfFloat[0]));
+                        paramViewData.getSt().setY(ScreenUnit.a.e(paramArrayOfFloat[0]));
                         return;
                       case 120: 
                         if ((!paramString.equals("x")) || (paramArrayOfFloat.length != 1)) {
                           break;
                         }
-                        paramViewData.getSt().setX(ScreenUnit.a.b(paramArrayOfFloat[0]));
+                        paramViewData.getSt().setX(ScreenUnit.a.e(paramArrayOfFloat[0]));
                         return;
                       case 119: 
                         if ((!paramString.equals("w")) || (paramArrayOfFloat.length != 1)) {
                           break;
                         }
-                        paramViewData.getSt().setW(ScreenUnit.a.b(paramArrayOfFloat[0]));
+                        paramViewData.getSt().setW(ScreenUnit.a.e(paramArrayOfFloat[0]));
                         return;
                       }
                     } else if ((paramString.equals("sy")) && (paramArrayOfFloat.length == 1)) {
@@ -217,14 +217,14 @@ public abstract class BaseRule
             }
             else if ((paramString.equals("xy")) && (paramArrayOfFloat.length == 2))
             {
-              paramViewData.getSt().setX(ScreenUnit.a.b(paramArrayOfFloat[0]));
-              paramViewData.getSt().setY(ScreenUnit.a.b(paramArrayOfFloat[1]));
+              paramViewData.getSt().setX(ScreenUnit.a.e(paramArrayOfFloat[0]));
+              paramViewData.getSt().setY(ScreenUnit.a.e(paramArrayOfFloat[1]));
             }
           }
           else if ((paramString.equals("wh")) && (paramArrayOfFloat.length == 2))
           {
-            paramViewData.getSt().setW(ScreenUnit.a.b(paramArrayOfFloat[0]));
-            paramViewData.getSt().setH(ScreenUnit.a.b(paramArrayOfFloat[1]));
+            paramViewData.getSt().setW(ScreenUnit.a.e(paramArrayOfFloat[0]));
+            paramViewData.getSt().setH(ScreenUnit.a.e(paramArrayOfFloat[1]));
           }
         }
         else if ((paramString.equals("op")) && (paramArrayOfFloat.length == 1)) {
@@ -243,13 +243,13 @@ public abstract class BaseRule
       }
     }
     else if ((paramString.equals("h")) && (paramArrayOfFloat.length == 1)) {
-      paramViewData.getSt().setH(ScreenUnit.a.b(paramArrayOfFloat[0]));
+      paramViewData.getSt().setH(ScreenUnit.a.e(paramArrayOfFloat[0]));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.api.base.BaseRule
  * JD-Core Version:    0.7.0.1
  */

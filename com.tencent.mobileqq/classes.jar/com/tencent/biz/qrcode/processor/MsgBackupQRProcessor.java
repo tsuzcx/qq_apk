@@ -31,11 +31,6 @@ public class MsgBackupQRProcessor
     return "MsgBackupQRProcessor";
   }
   
-  public boolean a()
-  {
-    return super.a();
-  }
-  
   public boolean a(int paramInt, String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
     return (a(paramInt)) && (paramString1.startsWith("https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/low_app_version_chat_recored.html?flag=chatmigrate"));
@@ -45,11 +40,16 @@ public class MsgBackupQRProcessor
   {
     if (paramString1.startsWith("https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/low_app_version_chat_recored.html?flag=chatmigrate"))
     {
-      a(paramString1, (AppActivity)this.a.a());
-      this.a.b();
+      a(paramString1, (AppActivity)this.b.d());
+      this.b.b();
       return true;
     }
     return false;
+  }
+  
+  public boolean b()
+  {
+    return super.b();
   }
 }
 

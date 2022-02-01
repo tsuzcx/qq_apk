@@ -11,24 +11,24 @@ import org.jetbrains.annotations.NotNull;
 public class RIJLockScreenPopupStep
   extends BasePopupStep
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean = false;
+  private Activity a;
+  private boolean b = false;
   
   public RIJLockScreenPopupStep(@NotNull RIJPopupAutomator paramRIJPopupAutomator, Activity paramActivity)
   {
     super(paramRIJPopupAutomator, "RIJLockScreenPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
-  private boolean b()
+  private boolean j()
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = ((Activity)localObject).getIntent();
       if ((localObject != null) && (((Intent)localObject).hasExtra("launch_from")) && (((Intent)localObject).hasExtra("kan_dian_lock_screen_flag")) && (((Intent)localObject).getIntExtra("launch_from", 0) == 9))
       {
-        ReadInJoyLockScreenJumpDelegate.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject);
+        ReadInJoyLockScreenJumpDelegate.a(this.a, (Intent)localObject);
         ((Intent)localObject).removeExtra("kan_dian_lock_screen_flag");
         QLog.i("RIJDailyPopupStep", 1, "RIJLockScreenPopupStep handleLockScreenJump!");
         return true;
@@ -37,20 +37,20 @@ public class RIJLockScreenPopupStep
     return false;
   }
   
-  protected void g()
-  {
-    a(this.jdField_a_of_type_Boolean);
-  }
-  
   protected void h()
   {
-    this.jdField_a_of_type_Boolean = b();
-    a(this.jdField_a_of_type_Boolean);
+    a(this.b);
+  }
+  
+  protected void i()
+  {
+    this.b = j();
+    a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feedspopup.RIJLockScreenPopupStep
  * JD-Core Version:    0.7.0.1
  */

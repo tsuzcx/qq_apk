@@ -13,10 +13,10 @@ class PermissionPrivacyFragment$3
   
   public void run()
   {
-    if (PermissionPrivacyFragment.a(this.this$0) == null) {
+    if (PermissionPrivacyFragment.b(this.this$0) == null) {
       return;
     }
-    Object localObject = ((FriendsManager)PermissionPrivacyFragment.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a();
+    Object localObject = ((FriendsManager)PermissionPrivacyFragment.b(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).g();
     int i;
     if ((localObject != null) && (!((ArrayList)localObject).isEmpty())) {
       i = ((ArrayList)localObject).size();
@@ -24,7 +24,7 @@ class PermissionPrivacyFragment$3
       i = 0;
     }
     PermissionPrivacyFragment.a(this.this$0, i);
-    localObject = PermissionPrivacyFragment.a(this.this$0);
+    localObject = PermissionPrivacyFragment.c(this.this$0);
     if (localObject == null) {
       return;
     }
@@ -33,7 +33,7 @@ class PermissionPrivacyFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PermissionPrivacyFragment.3
  * JD-Core Version:    0.7.0.1
  */

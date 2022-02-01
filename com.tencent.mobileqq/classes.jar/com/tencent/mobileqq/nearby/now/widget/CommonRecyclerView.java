@@ -13,9 +13,9 @@ import java.util.List;
 public class CommonRecyclerView
   extends RecyclerView
 {
-  private int jdField_a_of_type_Int = -1;
-  private List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<View> a = new ArrayList();
   private List<View> b = new ArrayList();
+  private int c = -1;
   
   public CommonRecyclerView(Context paramContext)
   {
@@ -32,8 +32,24 @@ public class CommonRecyclerView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  public int getFooterItemCount()
+  {
+    if (getAdapter() == null) {
+      return 0;
+    }
+    return ((AdapterWrapper)getAdapter()).c();
+  }
+  
+  public int getHeaderItemCount()
+  {
+    if (getAdapter() == null) {
+      return 0;
+    }
+    return ((AdapterWrapper)getAdapter()).b();
+  }
+  
   @Nullable
-  public CommonAdapter a()
+  public CommonAdapter getInnerAdapter()
   {
     if (getAdapter() == null) {
       return null;
@@ -51,16 +67,16 @@ public class CommonRecyclerView
       super.setAdapter(null);
       return;
     }
-    if ((a() != null) && (paramAdapter == a())) {
+    if ((getInnerAdapter() != null) && (paramAdapter == getInnerAdapter())) {
       return;
     }
     if ((paramAdapter instanceof CommonAdapter))
     {
       super.setAdapter(new AdapterWrapper(paramAdapter));
       View localView;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      if (this.a.size() > 0)
       {
-        paramAdapter = this.jdField_a_of_type_JavaUtilList.iterator();
+        paramAdapter = this.a.iterator();
         while (paramAdapter.hasNext())
         {
           localView = (View)paramAdapter.next();
@@ -87,7 +103,7 @@ public class CommonRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.widget.CommonRecyclerView
  * JD-Core Version:    0.7.0.1
  */

@@ -27,9 +27,9 @@ public final class ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561839, this);
-    this.a = ((TextView)findViewById(2131378460));
-    findViewById(2131363507).setBackgroundColor(Color.parseColor("#1c1c1d"));
+    LayoutInflater.from(paramContext).inflate(2131628218, this);
+    this.a = ((TextView)findViewById(2131447062));
+    findViewById(2131429409).setBackgroundColor(Color.parseColor("#1c1c1d"));
   }
   
   public void setProgressText(CharSequence paramCharSequence)
@@ -45,7 +45,7 @@ public final class ProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProgressView
  * JD-Core Version:    0.7.0.1
  */

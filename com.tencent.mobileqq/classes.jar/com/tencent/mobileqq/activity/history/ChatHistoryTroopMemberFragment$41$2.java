@@ -19,16 +19,16 @@ class ChatHistoryTroopMemberFragment$41$2
   
   public void run()
   {
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41.a.c);
+    Object localObject1 = (TroopManager)this.b.a.bc.getManager(QQManagerFactory.TROOP_MANAGER);
+    TroopInfo localTroopInfo = ((TroopManager)localObject1).f(this.b.a.w);
     if (localTroopInfo == null) {
       return;
     }
-    if (StringUtil.a(localTroopInfo.troopowneruin)) {
+    if (StringUtil.isEmpty(localTroopInfo.troopowneruin)) {
       return;
     }
     localTroopInfo.Administrator = "";
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject2 = this.a;
     int j = 0;
     int i;
     if (localObject2 == null) {
@@ -38,7 +38,7 @@ class ChatHistoryTroopMemberFragment$41$2
     }
     while (j < i)
     {
-      localObject2 = (oidb_0x899.memberlist)this.jdField_a_of_type_JavaUtilList.get(j);
+      localObject2 = (oidb_0x899.memberlist)this.a.get(j);
       if ((localObject2 != null) && (((oidb_0x899.memberlist)localObject2).uint64_member_uin.has()))
       {
         localObject2 = String.valueOf(((oidb_0x899.memberlist)localObject2).uint64_member_uin.get());
@@ -54,10 +54,10 @@ class ChatHistoryTroopMemberFragment$41$2
       j += 1;
     }
     ((TroopManager)localObject1).b(localTroopInfo);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41.a.jdField_b_of_type_AndroidOsHandler.obtainMessage();
+    localObject1 = this.b.a.bn.obtainMessage();
     ((Message)localObject1).what = 11;
     ((Message)localObject1).obj = localTroopInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41.a.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
+    this.b.a.bn.sendMessage((Message)localObject1);
     if (QLog.isColorLevel()) {
       QLog.i("Q.history.BaseFragment", 2, localTroopInfo.Administrator);
     }
@@ -65,7 +65,7 @@ class ChatHistoryTroopMemberFragment$41$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.41.2
  * JD-Core Version:    0.7.0.1
  */

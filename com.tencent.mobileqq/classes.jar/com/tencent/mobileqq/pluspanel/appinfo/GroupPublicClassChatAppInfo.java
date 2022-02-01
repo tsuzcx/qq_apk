@@ -17,13 +17,13 @@ public class GroupPublicClassChatAppInfo
 {
   private void a(BaseChatPie paramBaseChatPie)
   {
-    String str = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    String str = paramBaseChatPie.ah.b;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("https://qun.qq.com/livework/index?gc=");
     ((StringBuilder)localObject).append(str);
     ((StringBuilder)localObject).append("&_wv=2");
     str = ((StringBuilder)localObject).toString();
-    localObject = new Intent(paramBaseChatPie.a(), QQBrowserActivity.class);
+    localObject = new Intent(paramBaseChatPie.aX(), QQBrowserActivity.class);
     ((Intent)localObject).putExtra("url", str);
     if (QLog.isColorLevel())
     {
@@ -32,26 +32,26 @@ public class GroupPublicClassChatAppInfo
       localStringBuilder.append(str);
       QLog.i("GroupVideoChatAppInfo", 2, localStringBuilder.toString());
     }
-    paramBaseChatPie.a().startActivity((Intent)localObject);
-    ReportController.b(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ABFD", "0X800ABFD", 0, 0, "", "", "", "");
+    paramBaseChatPie.aX().startActivity((Intent)localObject);
+    ReportController.b(paramBaseChatPie.d, "dc00898", "", "", "0X800ABFD", "0X800ABFD", 0, 0, "", "", "", "");
   }
   
   private void a(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie)
   {
-    ActionSheet localActionSheet = ActionSheet.create(paramBaseChatPie.a());
-    localActionSheet.addButton(2131697301);
-    localActionSheet.addButton(2131697302);
-    localActionSheet.addCancelButton(2131690728);
+    ActionSheet localActionSheet = ActionSheet.create(paramBaseChatPie.aX());
+    localActionSheet.addButton(2131895074);
+    localActionSheet.addButton(2131895075);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new GroupPublicClassChatAppInfo.1(this, localActionSheet, paramPlusPanelViewModel, paramBaseChatPie));
     localActionSheet.show();
-    ReportController.b(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ABC6", "0X800ABC6", 0, 0, "", "", "", "");
+    ReportController.b(paramBaseChatPie.d, "dc00898", "", "", "0X800ABC6", "0X800ABC6", 0, 0, "", "", "", "");
   }
   
   private void b(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie)
   {
     try
     {
-      SessionInfo localSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      SessionInfo localSessionInfo = paramBaseChatPie.ah;
       try
       {
         handleTroopLiveOrTroopCourseClick(paramPlusPanelViewModel, paramBaseChatPie, localSessionInfo, true);
@@ -60,12 +60,12 @@ public class GroupPublicClassChatAppInfo
       QLog.d("GroupVideoChatAppInfo", 1, "showTroopCourseActionSheet handleTroopLiveOrTroopCourseClick Exception", paramPlusPanelViewModel);
     }
     catch (Exception paramPlusPanelViewModel) {}
-    ReportController.b(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ABFC", "0X800ABFC", 0, 0, "", "", "", "");
+    ReportController.b(paramBaseChatPie.d, "dc00898", "", "", "0X800ABFC", "0X800ABFC", 0, 0, "", "", "", "");
   }
   
   public int defaultDrawableID()
   {
-    return 2130839115;
+    return 2130839271;
   }
   
   public int getAppID()
@@ -86,7 +86,7 @@ public class GroupPublicClassChatAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719739);
+    return BaseApplicationImpl.getContext().getString(2131917342);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
@@ -104,7 +104,7 @@ public class GroupPublicClassChatAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.GroupPublicClassChatAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.vas.update.module.thread;
 
-import com.tencent.vas.update.callback.IVasLog;
+import com.tencent.vas.update.factory.api.IVasLog;
 import com.tencent.vas.update.wrapper.VasUpdateWrapper;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -14,7 +14,7 @@ public class ThreadManager
   private static final String TAG = "VasUpdate_ThreadManager";
   public static final int TYPE_DOWNLOAD = 1;
   public static final int TYPE_TIMER = 2;
-  public static ThreadManager mInstance;
+  public static ThreadManager sInstance;
   private ScheduledExecutorService mRunnerExecutor;
   private ScheduledExecutorService mTimerExecutor;
   
@@ -32,7 +32,7 @@ public class ThreadManager
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("new fixed thread pool failed: ");
       localStringBuilder.append(localThrowable.getMessage());
-      localIVasLog.e("ThreadManager", localStringBuilder.toString(), localThrowable);
+      localIVasLog.a("ThreadManager", localStringBuilder.toString(), localThrowable);
       this.mRunnerExecutor = new ScheduledThreadPoolExecutor(5, new CommonThreadFactory("vas_update_system_exp"));
       this.mTimerExecutor = new ScheduledThreadPoolExecutor(2, new CommonThreadFactory("vas_update_system_timer"));
     }
@@ -42,16 +42,16 @@ public class ThreadManager
   {
     try
     {
-      if (mInstance == null) {
+      if (sInstance == null) {
         try
         {
-          if (mInstance == null) {
-            mInstance = new ThreadManager();
+          if (sInstance == null) {
+            sInstance = new ThreadManager();
           }
         }
         finally {}
       }
-      ThreadManager localThreadManager = mInstance;
+      ThreadManager localThreadManager = sInstance;
       return localThreadManager;
     }
     finally {}
@@ -61,7 +61,7 @@ public class ThreadManager
   {
     this.mRunnerExecutor.shutdownNow();
     this.mTimerExecutor.shutdownNow();
-    mInstance = null;
+    sInstance = null;
   }
   
   public void post(int paramInt, Runnable paramRunnable)
@@ -81,7 +81,11 @@ public class ThreadManager
       this.mRunnerExecutor.submit(paramRunnable);
       return;
     }
-    catch (Throwable paramRunnable) {}
+    catch (Throwable paramRunnable)
+    {
+      paramRunnable.printStackTrace();
+      VasUpdateWrapper.getLog().a("VasUpdate_ThreadManager", "post exception", paramRunnable);
+    }
   }
   
   public ScheduledFuture postDelay(int paramInt, Runnable paramRunnable, long paramLong)
@@ -97,7 +101,7 @@ public class ThreadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.vas.update.module.thread.ThreadManager
  * JD-Core Version:    0.7.0.1
  */

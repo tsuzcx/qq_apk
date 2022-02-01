@@ -22,18 +22,18 @@ public class QrCodeAction
     super(paramQQAppInterface, paramContext);
   }
   
-  private boolean j()
+  private boolean d()
   {
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("appid"))) {
-      l = (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid");
+    if (!TextUtils.isEmpty((CharSequence)this.f.get("appid"))) {
+      y = (String)this.f.get("appid");
     }
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("openid"))) {
-      m = (String)this.jdField_a_of_type_JavaUtilHashMap.get("openid");
+    if (!TextUtils.isEmpty((CharSequence)this.f.get("openid"))) {
+      z = (String)this.f.get("openid");
     }
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("openkey"))) {
-      o = (String)this.jdField_a_of_type_JavaUtilHashMap.get("openkey");
+    if (!TextUtils.isEmpty((CharSequence)this.f.get("openkey"))) {
+      B = (String)this.f.get("openkey");
     }
-    if ("true".equals(this.jdField_a_of_type_JavaUtilHashMap.get("is_from_game"))) {
+    if ("true".equals(this.f.get("is_from_game"))) {
       return b();
     }
     return c();
@@ -43,7 +43,7 @@ public class QrCodeAction
   {
     try
     {
-      boolean bool = j();
+      boolean bool = d();
       return bool;
     }
     catch (Exception localException)
@@ -52,42 +52,42 @@ public class QrCodeAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QrCodeAction", 1, localStringBuilder.toString());
-      b_("QrCodeAction");
+      h_("QrCodeAction");
     }
     return false;
   }
   
   protected boolean b()
   {
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
+    Object localObject = (String)this.f.get("uin");
     if ((localObject != null) && (!"".equals(localObject)) && (((String)localObject).length() >= 5))
     {
       localObject = TroopInfoUIUtil.a((String)localObject, "", 14);
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("appid")) {
-        ((Bundle)localObject).putString("appid", (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid"));
+      if (this.f.containsKey("appid")) {
+        ((Bundle)localObject).putString("appid", (String)this.f.get("appid"));
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("openid")) {
-        ((Bundle)localObject).putString("openid", c(JumpAction.m));
+      if (this.f.containsKey("openid")) {
+        ((Bundle)localObject).putString("openid", h(JumpAction.z));
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("openkey")) {
-        ((Bundle)localObject).putString("openkey", (String)this.jdField_a_of_type_JavaUtilHashMap.get("openkey"));
+      if (this.f.containsKey("openkey")) {
+        ((Bundle)localObject).putString("openkey", (String)this.f.get("openkey"));
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("is_from_game")) {
-        ((Bundle)localObject).putString("is_from_game", (String)this.jdField_a_of_type_JavaUtilHashMap.get("is_from_game"));
+      if (this.f.containsKey("is_from_game")) {
+        ((Bundle)localObject).putString("is_from_game", (String)this.f.get("is_from_game"));
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("guild_id")) {
-        ((Bundle)localObject).putString("guild_id", (String)this.jdField_a_of_type_JavaUtilHashMap.get("guild_id"));
+      if (this.f.containsKey("guild_id")) {
+        ((Bundle)localObject).putString("guild_id", (String)this.f.get("guild_id"));
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("zone_id")) {
-        ((Bundle)localObject).putString("zone_id", (String)this.jdField_a_of_type_JavaUtilHashMap.get("zone_id"));
+      if (this.f.containsKey("zone_id")) {
+        ((Bundle)localObject).putString("zone_id", (String)this.f.get("zone_id"));
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("role_id")) {
-        ((Bundle)localObject).putString("role_id", (String)this.jdField_a_of_type_JavaUtilHashMap.get("role_id"));
+      if (this.f.containsKey("role_id")) {
+        ((Bundle)localObject).putString("role_id", (String)this.f.get("role_id"));
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("gc")) {
-        ((Bundle)localObject).putString("gc", (String)this.jdField_a_of_type_JavaUtilHashMap.get("gc"));
+      if (this.f.containsKey("gc")) {
+        ((Bundle)localObject).putString("gc", (String)this.f.get("gc"));
       }
-      TroopUtils.a(this.jdField_a_of_type_AndroidContentContext, (Bundle)localObject, 2);
+      TroopUtils.a(this.b, (Bundle)localObject, 2);
       return true;
     }
     return false;
@@ -95,31 +95,31 @@ public class QrCodeAction
   
   protected boolean c()
   {
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("url");
+    String str2 = (String)this.f.get("url");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = this.jdField_a_of_type_JavaLangString;
+      str1 = this.c;
     }
-    str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("attr_original_url");
-    boolean bool3 = this.jdField_a_of_type_AndroidContentContext instanceof Activity;
+    str2 = (String)this.f.get("attr_original_url");
+    boolean bool3 = this.b instanceof Activity;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (bool3)
     {
-      Intent localIntent = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent();
+      Intent localIntent = ((Activity)this.b).getIntent();
       if (localIntent == null) {
         bool1 = bool2;
       } else {
         bool1 = localIntent.getBooleanExtra("fromQrcode", false);
       }
     }
-    ((IQRJumpApi)QRoute.api(IQRJumpApi.class)).startQRJumpActivity(this.jdField_a_of_type_AndroidContentContext, str1, str2, bool1);
+    ((IQRJumpApi)QRoute.api(IQRJumpApi.class)).startQRJumpActivity(this.b, str1, str2, bool1);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QrCodeAction
  * JD-Core Version:    0.7.0.1
  */

@@ -29,44 +29,44 @@ import mqq.app.MobileQQ;
 public class VoiceMessageHelper
   implements Handler.Callback, ILifeCycleHelper, IPanelEventListener, IVoiceCommandListener, IVoiceVadListener
 {
-  private volatile int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private IVoiceAssistantCore jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 120;
-  private String jdField_b_of_type_JavaLangString;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private volatile int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private volatile boolean jdField_c_of_type_Boolean;
+  private BaseChatPie a;
+  private IVoiceAssistantCore b;
+  private boolean c = false;
+  private String d;
+  private String e;
+  private String f;
+  private Handler g;
+  private volatile int h;
+  private int i = 120;
+  private volatile int j;
+  private volatile boolean k;
+  private volatile boolean l;
   
   public VoiceMessageHelper(BaseChatPie paramBaseChatPie)
   {
     if (((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).getWakeManagerEnable())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-      if ((paramBaseChatPie != null) && (paramBaseChatPie.a != null))
+      this.a = paramBaseChatPie;
+      if ((paramBaseChatPie != null) && (paramBaseChatPie.d != null))
       {
         AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
         if (localAppRuntime != null) {
-          this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore = ((IVoiceAssistantCore)localAppRuntime.getRuntimeService(IVoiceAssistantCore.class, ""));
+          this.b = ((IVoiceAssistantCore)localAppRuntime.getRuntimeService(IVoiceAssistantCore.class, ""));
         }
       }
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-      this.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getString(2131720330);
-      this.jdField_b_of_type_JavaLangString = BaseApplicationImpl.getContext().getString(2131720308);
-      this.jdField_c_of_type_JavaLangString = BaseApplicationImpl.getContext().getString(2131720333);
-      if ((paramBaseChatPie != null) && (paramBaseChatPie.a != null))
+      this.g = new Handler(Looper.getMainLooper(), this);
+      this.d = BaseApplicationImpl.getContext().getString(2131917965);
+      this.e = BaseApplicationImpl.getContext().getString(2131917943);
+      this.f = BaseApplicationImpl.getContext().getString(2131917968);
+      if ((paramBaseChatPie != null) && (paramBaseChatPie.d != null))
       {
-        if (VasUtil.a(paramBaseChatPie.a).getVipStatus().isSVip())
+        if (VasUtil.b(paramBaseChatPie.d).getVipStatus().isSVip())
         {
-          this.jdField_b_of_type_Int = 300;
+          this.i = 300;
           return;
         }
-        if (VasUtil.a(paramBaseChatPie.a).getVipStatus().isVip()) {
-          this.jdField_b_of_type_Int = 180;
+        if (VasUtil.b(paramBaseChatPie.d).getVipStatus().isVip()) {
+          this.i = 180;
         }
       }
     }
@@ -78,11 +78,11 @@ public class VoiceMessageHelper
   
   private String a(int paramInt)
   {
-    int i = paramInt / 60;
+    int m = paramInt / 60;
     StringBuffer localStringBuffer = new StringBuffer();
-    if (i > 0)
+    if (m > 0)
     {
-      localStringBuffer.append(i);
+      localStringBuffer.append(m);
       localStringBuffer.append("'");
     }
     localStringBuffer.append(paramInt % 60);
@@ -92,17 +92,17 @@ public class VoiceMessageHelper
   
   private void a(int paramInt, long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.g;
     if (localObject != null)
     {
       localObject = ((Handler)localObject).obtainMessage(paramInt);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, paramLong);
+      this.g.sendMessageDelayed((Message)localObject, paramLong);
     }
   }
   
   private void a(IPanelEventListener paramIPanelEventListener)
   {
-    IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    IVoiceAssistantCore localIVoiceAssistantCore = this.b;
     if (localIVoiceAssistantCore != null) {
       localIVoiceAssistantCore.setPanelEventListener(paramIPanelEventListener);
     }
@@ -110,7 +110,7 @@ public class VoiceMessageHelper
   
   private void a(IVoiceCommandListener paramIVoiceCommandListener)
   {
-    IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    IVoiceAssistantCore localIVoiceAssistantCore = this.b;
     if (localIVoiceAssistantCore != null) {
       localIVoiceAssistantCore.setVoiceCommandListener(paramIVoiceCommandListener);
     }
@@ -118,7 +118,7 @@ public class VoiceMessageHelper
   
   private void a(IVoiceVadListener paramIVoiceVadListener)
   {
-    IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    IVoiceAssistantCore localIVoiceAssistantCore = this.b;
     if (localIVoiceAssistantCore != null) {
       localIVoiceAssistantCore.setVoiceVadListener(paramIVoiceVadListener);
     }
@@ -133,24 +133,24 @@ public class VoiceMessageHelper
   
   private void h()
   {
-    IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    IVoiceAssistantCore localIVoiceAssistantCore = this.b;
     if (localIVoiceAssistantCore != null)
     {
       localIVoiceAssistantCore.onVoiceMessageCallBack(3, null);
       i();
       j();
       a(null);
-      this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.executeCommand(((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).buildShowResendViewCommand());
+      this.b.executeCommand(((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).buildShowResendViewCommand());
       ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).reportSureSendMessage(3);
     }
   }
   
   private void i()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    Object localObject = this.b;
     if (localObject != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {
+      if (this.a == null) {
         return;
       }
       localObject = ((IVoiceAssistantCore)localObject).getVoicePttInfo();
@@ -159,25 +159,25 @@ public class VoiceMessageHelper
         a("VoiceMessageHelper", "setPtt getVoicePttInfo is null");
         return;
       }
-      File localFile = new File(((VoicePttInfo)localObject).jdField_a_of_type_JavaLangString);
-      if (!TextUtils.isEmpty(((VoicePttInfo)localObject).jdField_a_of_type_JavaLangString))
+      File localFile = new File(((VoicePttInfo)localObject).a);
+      if (!TextUtils.isEmpty(((VoicePttInfo)localObject).a))
       {
         if (!localFile.exists()) {
           return;
         }
-        double d = ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).getMillisecond(16000, 2, 2, localFile.length());
-        a("VoiceMessageHelper", String.format("send ptt, voice path:%s, \nvoice len:%s, duration:%s, f duration:%s", new Object[] { ((VoicePttInfo)localObject).jdField_a_of_type_JavaLangString, Long.valueOf(localFile.length()), Long.valueOf(((VoicePttInfo)localObject).jdField_a_of_type_Long), Double.valueOf(d) }));
-        ((AudioPanelAioHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(128)).a(((VoicePttInfo)localObject).jdField_a_of_type_JavaLangString, 6, (int)((VoicePttInfo)localObject).jdField_a_of_type_Long, ((VoicePttInfo)localObject).jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam, 0, true, 0);
+        double d1 = ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).getMillisecond(16000, 2, 2, localFile.length());
+        a("VoiceMessageHelper", String.format("send ptt, voice path:%s, \nvoice len:%s, duration:%s, f duration:%s", new Object[] { ((VoicePttInfo)localObject).a, Long.valueOf(localFile.length()), Long.valueOf(((VoicePttInfo)localObject).b), Double.valueOf(d1) }));
+        ((AudioPanelAioHelper)this.a.q(128)).a(((VoicePttInfo)localObject).a, 6, (int)((VoicePttInfo)localObject).b, ((VoicePttInfo)localObject).c, 0, true, 0);
       }
     }
   }
   
   private void j()
   {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Int = 0;
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    this.l = true;
+    this.j = 0;
+    this.h = 0;
+    Handler localHandler = this.g;
     if (localHandler != null) {
       localHandler.removeCallbacksAndMessages(null);
     }
@@ -185,9 +185,9 @@ public class VoiceMessageHelper
   
   private void k()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
     j();
-    IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    IVoiceAssistantCore localIVoiceAssistantCore = this.b;
     if (localIVoiceAssistantCore != null)
     {
       if (localIVoiceAssistantCore.isVoicePanelShow())
@@ -211,7 +211,7 @@ public class VoiceMessageHelper
     if (QLog.isColorLevel()) {
       QLog.d("VoiceMessageHelper", 2, "dealDestroy");
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
     j();
     a(null);
     a(null);
@@ -220,7 +220,7 @@ public class VoiceMessageHelper
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       if (QLog.isColorLevel()) {
         QLog.d("VoiceMessageHelper", 2, "onEnterPanel");
@@ -232,23 +232,23 @@ public class VoiceMessageHelper
   
   public void a(boolean paramBoolean)
   {
-    boolean bool1 = this.jdField_c_of_type_Boolean;
+    boolean bool1 = this.l;
     boolean bool2 = false;
     if (bool1)
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      this.jdField_c_of_type_Boolean = false;
+      this.k = paramBoolean;
+      this.l = false;
       return;
     }
     bool1 = bool2;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.k)
     {
       bool1 = bool2;
       if (paramBoolean) {
         bool1 = true;
       }
     }
-    this.jdField_b_of_type_Boolean = bool1;
+    this.k = bool1;
   }
   
   public void b()
@@ -287,21 +287,21 @@ public class VoiceMessageHelper
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore != null)
+    if (this.b != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-      if ((localObject != null) && (((BaseChatPie)localObject).e != null)) {
-        localObject = String.format(BaseApplicationImpl.getContext().getString(2131718749), new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.e.getText().toString() });
+      Object localObject = this.a;
+      if ((localObject != null) && (((BaseChatPie)localObject).C != null)) {
+        localObject = String.format(BaseApplicationImpl.getContext().getString(2131916255), new Object[] { this.a.C.getText().toString() });
       } else {
         localObject = "";
       }
-      this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.executeCommand(((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).buildShowSelectViewCommand((String)localObject, null));
+      this.b.executeCommand(((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).buildShowSelectViewCommand((String)localObject, null));
     }
   }
   
   public void g()
   {
-    IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    IVoiceAssistantCore localIVoiceAssistantCore = this.b;
     if ((localIVoiceAssistantCore != null) && (localIVoiceAssistantCore.isVoicePanelShow()))
     {
       j();
@@ -319,33 +319,33 @@ public class VoiceMessageHelper
     if (paramMessage.what != 1) {
       return false;
     }
-    paramMessage = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    paramMessage = this.b;
     if ((paramMessage != null) && (paramMessage.isVoicePanelShow()))
     {
-      if (this.jdField_a_of_type_Int > 0)
+      if (this.h > 0)
       {
-        this.jdField_a_of_type_Int += 1;
-        int i = this.jdField_a_of_type_Int;
-        int j = this.jdField_b_of_type_Int;
-        if (i > j)
+        this.h += 1;
+        int m = this.h;
+        int n = this.i;
+        if (m > n)
         {
           h();
           return false;
         }
-        if (j - this.jdField_a_of_type_Int <= 10)
+        if (n - this.h <= 10)
         {
-          this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.executeCommand(((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).buildShowRecordViewCommand(a(this.jdField_b_of_type_Int - this.jdField_a_of_type_Int), this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString));
-          this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.startPanelTipsAnimation();
-          i = 1;
+          this.b.executeCommand(((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).buildShowRecordViewCommand(a(this.i - this.h), this.f, this.e));
+          this.b.startPanelTipsAnimation();
+          m = 1;
         }
         else
         {
-          i = 0;
+          m = 0;
         }
-        if (this.jdField_b_of_type_Boolean)
+        if (this.k)
         {
-          this.jdField_c_of_type_Int += 1;
-          if (this.jdField_c_of_type_Int > 3)
+          this.j += 1;
+          if (this.j > 3)
           {
             h();
             return false;
@@ -353,20 +353,20 @@ public class VoiceMessageHelper
         }
         else
         {
-          this.jdField_c_of_type_Int = 0;
+          this.j = 0;
         }
-        if (i == 0) {
-          this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.executeCommand(((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).buildShowRecordViewCommand(a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString));
+        if (m == 0) {
+          this.b.executeCommand(((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).buildShowRecordViewCommand(a(this.h), this.d, this.e));
         }
       }
-      else if (this.jdField_a_of_type_Int == 0)
+      else if (this.h == 0)
       {
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.onVoiceMessageCallBack(1, null);
-        this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.executeCommand(((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).buildShowRecordViewCommand(a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString));
+        this.h += 1;
+        this.b.onVoiceMessageCallBack(1, null);
+        this.b.executeCommand(((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).buildShowRecordViewCommand(a(this.h), this.d, this.e));
       }
-      this.jdField_c_of_type_Boolean = true;
-      paramMessage = this.jdField_a_of_type_AndroidOsHandler;
+      this.l = true;
+      paramMessage = this.g;
       if (paramMessage != null)
       {
         paramMessage.removeMessages(1);
@@ -399,7 +399,7 @@ public class VoiceMessageHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.VoiceMessageHelper
  * JD-Core Version:    0.7.0.1
  */

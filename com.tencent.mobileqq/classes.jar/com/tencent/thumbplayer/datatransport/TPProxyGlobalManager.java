@@ -10,22 +10,22 @@ import com.tencent.thumbplayer.utils.TPLogUtil;
 import com.tencent.thumbplayer.utils.TPNetworkChangeMonitor;
 import com.tencent.thumbplayer.utils.TPNetworkChangeMonitor.OnNetStatusChangeListener;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class TPProxyGlobalManager
   implements TPGlobalEventNofication.OnGlobalEventChangeListener, TPNetworkChangeMonitor.OnNetStatusChangeListener
 {
   private static final String TAG = "TPProxyGlobalManager";
   private int mAppBackOrFront = 0;
-  private HashMap<Integer, ITPProxyManagerAdapter> mServiceTypeDownloadProxyMap;
+  private ConcurrentHashMap<Integer, ITPProxyManagerAdapter> mServiceTypeDownloadProxyMap;
   private String mUpc = "";
   private int mUpcState = 0;
   
   private TPProxyGlobalManager()
   {
     if (this.mServiceTypeDownloadProxyMap == null) {
-      this.mServiceTypeDownloadProxyMap = new HashMap();
+      this.mServiceTypeDownloadProxyMap = new ConcurrentHashMap();
     }
     TPGlobalEventNofication.addEventListener(this);
     TPNetworkChangeMonitor.getInstance().addOnNetStatusChangeListener(this);
@@ -41,6 +41,14 @@ public class TPProxyGlobalManager
     Iterator localIterator = this.mServiceTypeDownloadProxyMap.values().iterator();
     while (localIterator.hasNext()) {
       ((ITPProxyManagerAdapter)localIterator.next()).pushEvent(paramInt);
+    }
+  }
+  
+  private void pushAllProxyManagerGuidChanged(String paramString)
+  {
+    Iterator localIterator = this.mServiceTypeDownloadProxyMap.values().iterator();
+    while (localIterator.hasNext()) {
+      ((ITPProxyManagerAdapter)localIterator.next()).getDownloadProxy().setUserData("guid", paramString);
     }
   }
   
@@ -128,6 +136,9 @@ public class TPProxyGlobalManager
     {
     default: 
       return;
+    case 100004: 
+      pushAllProxyManagerGuidChanged((String)paramObject);
+      return;
     case 100003: 
       pushAllProxyManagerUpcChanged((String)paramObject, paramInt2);
       return;
@@ -168,7 +179,7 @@ public class TPProxyGlobalManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPProxyGlobalManager
  * JD-Core Version:    0.7.0.1
  */

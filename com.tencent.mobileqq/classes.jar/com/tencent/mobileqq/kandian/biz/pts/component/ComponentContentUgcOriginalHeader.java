@@ -33,9 +33,9 @@ public class ComponentContentUgcOriginalHeader
   extends LinearLayout
   implements ComponentView
 {
-  private SpannableStringBuilder jdField_a_of_type_AndroidTextSpannableStringBuilder;
   public ReadInJoyYAFolderTextView a;
-  CmpCtxt jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt;
+  CmpCtxt b;
+  private SpannableStringBuilder c;
   
   public ComponentContentUgcOriginalHeader(Context paramContext)
   {
@@ -49,30 +49,30 @@ public class ComponentContentUgcOriginalHeader
     a(paramContext);
   }
   
-  private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  private void setDesc(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    long l = paramAbsBaseArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Long;
-    Object localObject2 = paramAbsBaseArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaLangString;
+    long l = paramAbsBaseArticleInfo.mSocialFeedInfo.s.e;
+    Object localObject2 = paramAbsBaseArticleInfo.mSocialFeedInfo.s.f;
     Object localObject1 = ReadInJoyUserInfoModule.a(l, null);
     if (localObject1 != null) {
       localObject1 = ((ReadInJoyUserInfo)localObject1).nick;
     } else {
-      localObject1 = ReadInJoyUserInfoModule.a();
+      localObject1 = ReadInJoyUserInfoModule.d();
     }
-    this.jdField_a_of_type_AndroidTextSpannableStringBuilder = new SpannableStringBuilder();
-    this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append(RIJStringUtils.a((String)localObject1));
-    this.jdField_a_of_type_AndroidTextSpannableStringBuilder.setSpan(new ComponentContentUgcOriginalHeader.UserSpan(this, l, -3355444), 0, this.jdField_a_of_type_AndroidTextSpannableStringBuilder.length(), 33);
-    this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append(": ");
+    this.c = new SpannableStringBuilder();
+    this.c.append(RIJStringUtils.a((String)localObject1));
+    this.c.setSpan(new ComponentContentUgcOriginalHeader.UserSpan(this, l, -3355444), 0, this.c.length(), 33);
+    this.c.append(": ");
     if ((CmpCtxt.c(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.x(paramAbsBaseArticleInfo)))
     {
-      localObject1 = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.a.b.get(0)).e;
+      localObject1 = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.s.c.get(0)).e;
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append((CharSequence)localObject1);
+        this.c.append((CharSequence)localObject1);
       }
     }
-    else if (RIJFeedsType.a(paramAbsBaseArticleInfo.mSocialFeedInfo.a))
+    else if (RIJFeedsType.a(paramAbsBaseArticleInfo.mSocialFeedInfo.s))
     {
-      List localList = paramAbsBaseArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.a;
+      List localList = paramAbsBaseArticleInfo.mSocialFeedInfo.s.h.a;
       StringBuilder localStringBuilder = new StringBuilder();
       Object localObject3 = new ArrayList();
       int i = localList.size();
@@ -99,7 +99,7 @@ public class ComponentContentUgcOriginalHeader
         if (localObject1 != null) {
           localObject1 = ((ReadInJoyUserInfo)localObject1).nick;
         } else {
-          localObject1 = ReadInJoyUserInfoModule.a();
+          localObject1 = ReadInJoyUserInfoModule.d();
         }
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("@");
@@ -121,9 +121,9 @@ public class ComponentContentUgcOriginalHeader
         localStringBuilder.append((String)localObject1);
         localStringBuilder.append((String)localObject2);
         localObject2 = new ComponentHeaderNewSocial.BiuUserStruct();
-        ((ComponentHeaderNewSocial.BiuUserStruct)localObject2).jdField_a_of_type_Int = j;
+        ((ComponentHeaderNewSocial.BiuUserStruct)localObject2).a = j;
         ((ComponentHeaderNewSocial.BiuUserStruct)localObject2).b = (j + ((String)localObject1).length());
-        ((ComponentHeaderNewSocial.BiuUserStruct)localObject2).jdField_a_of_type_Long = l;
+        ((ComponentHeaderNewSocial.BiuUserStruct)localObject2).c = l;
         ((List)localObject3).add(localObject2);
         j = localStringBuilder.length();
         i -= 1;
@@ -133,38 +133,38 @@ public class ComponentContentUgcOriginalHeader
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (ComponentHeaderNewSocial.BiuUserStruct)((Iterator)localObject2).next();
-        ((SpannableStringBuilder)localObject1).setSpan(new ComponentContentUgcOriginalHeader.UserSpan(this, ((ComponentHeaderNewSocial.BiuUserStruct)localObject3).jdField_a_of_type_Long, -3355444), ((ComponentHeaderNewSocial.BiuUserStruct)localObject3).jdField_a_of_type_Int, ((ComponentHeaderNewSocial.BiuUserStruct)localObject3).b, 17);
+        ((SpannableStringBuilder)localObject1).setSpan(new ComponentContentUgcOriginalHeader.UserSpan(this, ((ComponentHeaderNewSocial.BiuUserStruct)localObject3).c, -3355444), ((ComponentHeaderNewSocial.BiuUserStruct)localObject3).a, ((ComponentHeaderNewSocial.BiuUserStruct)localObject3).b, 17);
       }
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append((CharSequence)localObject1);
+        this.c.append((CharSequence)localObject1);
       }
     }
     else if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      localObject1 = new QQText(EmotionCodecUtils.b((String)localObject2), 7, 16);
-      this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append((CharSequence)localObject1);
+      localObject1 = new QQText(EmotionCodecUtils.c((String)localObject2), 7, 16);
+      this.c.append((CharSequence)localObject1);
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setText(this.jdField_a_of_type_AndroidTextSpannableStringBuilder);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setMoreSpan(new ComponentContentUgcOriginalHeader.MoreSpan(this, paramAbsBaseArticleInfo, -3355444));
+    this.a.setText(this.c);
+    this.a.setMoreSpan(new ComponentContentUgcOriginalHeader.MoreSpan(this, paramAbsBaseArticleInfo, -3355444));
   }
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt = new CmpCtxt();
+    this.b = new CmpCtxt();
     setOrientation(0);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     localLayoutParams.setMargins(AIOUtils.b(12.0F, paramContext.getResources()), AIOUtils.b(12.0F, paramContext.getResources()), AIOUtils.b(20.0F, paramContext.getResources()), 0);
     setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView = new ReadInJoyYAFolderTextView(paramContext);
+    this.a = new ReadInJoyYAFolderTextView(paramContext);
     paramContext = new LinearLayout.LayoutParams(-1, -2);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setLayoutParams(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setIncludeFontPadding(false);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setTextColor(Color.parseColor("#606060"));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setTextSize(2, 16.0F);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setSpanText(HardCodeUtil.a(2131702524));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setMaxLines(7);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setMoreSpan(new ComponentContentUgcOriginalHeader.1(this));
-    addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView);
+    this.a.setLayoutParams(paramContext);
+    this.a.setIncludeFontPadding(false);
+    this.a.setTextColor(Color.parseColor("#606060"));
+    this.a.setTextSize(2, 16.0F);
+    this.a.setSpanText(HardCodeUtil.a(2131900519));
+    this.a.setMaxLines(7);
+    this.a.setMoreSpan(new ComponentContentUgcOriginalHeader.1(this));
+    addView(this.a);
   }
   
   public void a(FeedItemCell.CellListener paramCellListener) {}
@@ -173,13 +173,13 @@ public class ComponentContentUgcOriginalHeader
   {
     if ((paramObject instanceof IReadInJoyModel))
     {
-      CmpCtxt localCmpCtxt = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt;
+      CmpCtxt localCmpCtxt = this.b;
       paramObject = (IReadInJoyModel)paramObject;
       localCmpCtxt.a(paramObject);
-      paramObject = paramObject.a();
-      if ((paramObject != null) && (paramObject.mSocialFeedInfo != null) && (paramObject.mSocialFeedInfo.a != null))
+      paramObject = paramObject.k();
+      if ((paramObject != null) && (paramObject.mSocialFeedInfo != null) && (paramObject.mSocialFeedInfo.s != null))
       {
-        a(paramObject);
+        setDesc(paramObject);
         if ((RIJItemViewTypeUtils.r(paramObject)) && (TextUtils.isEmpty(paramObject.businessName)))
         {
           paramObject = (LinearLayout.LayoutParams)getLayoutParams();
@@ -196,7 +196,7 @@ public class ComponentContentUgcOriginalHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentUgcOriginalHeader
  * JD-Core Version:    0.7.0.1
  */

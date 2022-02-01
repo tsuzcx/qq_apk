@@ -149,30 +149,30 @@ public class TroopManagerBizHandler
   private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
     TroopManagerBizObserver.EditTroopLocationRet localEditTroopLocationRet = new TroopManagerBizObserver.EditTroopLocationRet();
-    localEditTroopLocationRet.jdField_a_of_type_Long = paramIntent.getLongExtra("TroopUin", 0L);
+    localEditTroopLocationRet.c = paramIntent.getLongExtra("TroopUin", 0L);
     boolean bool2 = false;
-    localEditTroopLocationRet.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isClear", false);
-    localEditTroopLocationRet.b = paramIntent.getIntExtra("lat", 0);
-    localEditTroopLocationRet.c = paramIntent.getIntExtra("lon", 0);
+    localEditTroopLocationRet.d = paramIntent.getBooleanExtra("isClear", false);
+    localEditTroopLocationRet.e = paramIntent.getIntExtra("lat", 0);
+    localEditTroopLocationRet.f = paramIntent.getIntExtra("lon", 0);
     if (paramFromServiceMsg.isSuccess()) {}
     try
     {
       paramIntent = new GroupLocation.SetGroupLocationRes();
       paramIntent.mergeFrom(paramArrayOfByte);
-      localEditTroopLocationRet.jdField_a_of_type_Int = paramIntent.result.get();
+      localEditTroopLocationRet.a = paramIntent.result.get();
       bool1 = bool2;
-      if (localEditTroopLocationRet.jdField_a_of_type_Int != 0) {
+      if (localEditTroopLocationRet.a != 0) {
         break label220;
       }
-      localEditTroopLocationRet.jdField_a_of_type_JavaLangString = paramIntent.grouplocation.get();
+      localEditTroopLocationRet.b = paramIntent.grouplocation.get();
       paramIntent = (ITroopInfoService)this.appRuntime.getRuntimeService(ITroopInfoService.class, "");
       if (paramIntent != null)
       {
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("");
-        paramFromServiceMsg.append(localEditTroopLocationRet.jdField_a_of_type_Long);
+        paramFromServiceMsg.append(localEditTroopLocationRet.c);
         paramFromServiceMsg = paramIntent.findTroopInfo(paramFromServiceMsg.toString());
-        paramFromServiceMsg.strLocation = localEditTroopLocationRet.jdField_a_of_type_JavaLangString;
+        paramFromServiceMsg.strLocation = localEditTroopLocationRet.b;
         paramIntent.saveTroopInfo(paramFromServiceMsg);
       }
       bool1 = true;
@@ -184,10 +184,10 @@ public class TroopManagerBizHandler
       label220:
       break label194;
     }
-    localEditTroopLocationRet.jdField_a_of_type_Int = -1;
+    localEditTroopLocationRet.a = -1;
     bool1 = bool2;
     break label220;
-    localEditTroopLocationRet.jdField_a_of_type_Int = paramFromServiceMsg.getResultCode();
+    localEditTroopLocationRet.a = paramFromServiceMsg.getResultCode();
     bool1 = bool2;
     notifyUI(TroopManagerBizObserver.TYPE_EDIT_TROOP_LOCATION, bool1, localEditTroopLocationRet);
   }
@@ -579,8 +579,8 @@ public class TroopManagerBizHandler
     int i;
     if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
-      localTroopShareResp.jdField_a_of_type_Boolean = paramToServiceMsg.extraData.getBoolean("isVerify");
-      localTroopShareResp.jdField_a_of_type_JavaLangString = paramToServiceMsg.extraData.getString("troopUin");
+      localTroopShareResp.c = paramToServiceMsg.extraData.getBoolean("isVerify");
+      localTroopShareResp.a = paramToServiceMsg.extraData.getString("troopUin");
       int j = paramFromServiceMsg.getResultCode();
       i = -1;
       if (j == 1000)
@@ -608,7 +608,7 @@ public class TroopManagerBizHandler
           break label267;
         }
         bool2 = bool3;
-        localTroopShareResp.jdField_a_of_type_Int = i;
+        localTroopShareResp.b = i;
       }
     }
     for (;;)
@@ -617,18 +617,18 @@ public class TroopManagerBizHandler
       if (paramToServiceMsg.group_code.has())
       {
         bool2 = bool1;
-        localTroopShareResp.jdField_a_of_type_JavaLangString = String.valueOf(paramToServiceMsg.group_code.get());
+        localTroopShareResp.a = String.valueOf(paramToServiceMsg.group_code.get());
       }
       bool2 = bool1;
       bool3 = bool1;
       if (paramToServiceMsg.url.has())
       {
         bool2 = bool1;
-        localTroopShareResp.b = paramToServiceMsg.url.get();
+        localTroopShareResp.d = paramToServiceMsg.url.get();
         bool3 = bool1;
         break label267;
         label246:
-        localTroopShareResp.jdField_a_of_type_Int = -1;
+        localTroopShareResp.b = -1;
         bool3 = bool2;
       }
       label267:
@@ -637,13 +637,13 @@ public class TroopManagerBizHandler
       {
         paramToServiceMsg = new StringBuilder();
         paramToServiceMsg.append("handleTroopShareLink.errCode:");
-        paramToServiceMsg.append(localTroopShareResp.jdField_a_of_type_Int);
-        paramToServiceMsg.append("　troopUin:");
-        paramToServiceMsg.append(localTroopShareResp.jdField_a_of_type_JavaLangString);
-        paramToServiceMsg.append(" isVerify:");
-        paramToServiceMsg.append(localTroopShareResp.jdField_a_of_type_Boolean);
-        paramToServiceMsg.append(" shareUrl:");
         paramToServiceMsg.append(localTroopShareResp.b);
+        paramToServiceMsg.append("　troopUin:");
+        paramToServiceMsg.append(localTroopShareResp.a);
+        paramToServiceMsg.append(" isVerify:");
+        paramToServiceMsg.append(localTroopShareResp.c);
+        paramToServiceMsg.append(" shareUrl:");
+        paramToServiceMsg.append(localTroopShareResp.d);
         QLog.d("TroopManagerBizHandler", 2, paramToServiceMsg.toString());
       }
       if (QLog.isColorLevel()) {
@@ -661,11 +661,6 @@ public class TroopManagerBizHandler
       }
       bool1 = true;
     }
-  }
-  
-  protected String a()
-  {
-    return "TroopManagerBizHandler";
   }
   
   public void a(long paramLong)
@@ -1127,6 +1122,11 @@ public class TroopManagerBizHandler
     sendPbReq(localToServiceMsg);
   }
   
+  protected String dv_()
+  {
+    return "TroopManagerBizHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.allowCmdSet == null)
@@ -1163,7 +1163,7 @@ public class TroopManagerBizHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -1216,7 +1216,7 @@ public class TroopManagerBizHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopmanager.api.impl.TroopManagerBizHandler
  * JD-Core Version:    0.7.0.1
  */

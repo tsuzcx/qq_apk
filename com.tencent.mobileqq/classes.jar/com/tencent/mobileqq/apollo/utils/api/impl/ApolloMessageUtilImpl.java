@@ -12,17 +12,15 @@ import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.apollo.aio.api.ICmShowAioMatcher;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.api.ISpriteScriptManager;
-import com.tencent.mobileqq.apollo.game.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.api.ISpriteScriptManager.BusinessId;
 import com.tencent.mobileqq.apollo.handler.IApolloExtensionHandler;
 import com.tencent.mobileqq.apollo.model.Apollo3DMessage;
 import com.tencent.mobileqq.apollo.model.ApolloActionData;
 import com.tencent.mobileqq.apollo.model.ApolloBaseInfo;
-import com.tencent.mobileqq.apollo.model.ApolloGameData;
 import com.tencent.mobileqq.apollo.model.ApolloInfo;
 import com.tencent.mobileqq.apollo.model.ApolloMessage;
 import com.tencent.mobileqq.apollo.model.MessageForApollo;
 import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
-import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
 import com.tencent.mobileqq.apollo.script.ISpriteBridge;
 import com.tencent.mobileqq.apollo.script.api.ISpriteCommFunc;
 import com.tencent.mobileqq.apollo.script.api.ISpriteUtil;
@@ -57,6 +55,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 import tencent.im.msg.im_msg_body.ApolloActMsg;
 import tencent.im.msg.im_msg_body.Elem;
@@ -67,6 +67,33 @@ public class ApolloMessageUtilImpl
   implements IApolloMessageUtil
 {
   private static final String TAG = "[cmshow]ApolloMessageUtilImpl";
+  
+  @NotNull
+  private static MessageForApollo createMessageForApollo(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, ApolloInfo paramApolloInfo, boolean paramBoolean, Apollo3DMessage paramApollo3DMessage, ApolloMessage paramApolloMessage)
+  {
+    paramQQAppInterface = createSendMsg_ApolloAction(paramQQAppInterface, paramString1, paramString2, paramInt, paramApolloMessage);
+    paramQQAppInterface.inputText = paramApolloInfo.mAction.inputText;
+    paramQQAppInterface.audioId = paramApolloInfo.mAudioId;
+    paramQQAppInterface.audioStartTime = paramApolloInfo.mAudioStartTime;
+    paramQQAppInterface.isPlayDefaultAudio = paramApolloInfo.mPlayOriginalAudio;
+    paramQQAppInterface.actionType = paramApolloInfo.mAction.actionType;
+    paramQQAppInterface.mApollo3DMessage = paramApollo3DMessage;
+    if (TextUtils.isEmpty(paramQQAppInterface.inputText)) {
+      paramQQAppInterface.inputText = paramApolloInfo.mActionText;
+    }
+    paramQQAppInterface.mSendSrc = paramApolloInfo.mSendSrc;
+    paramQQAppInterface.curUsedIdType = paramApolloInfo.mPackageId;
+    if ((paramApolloInfo.mAction != null) && (paramApolloInfo.mAction.isForPlayerAction == 1))
+    {
+      if (paramBoolean)
+      {
+        paramQQAppInterface.msgType = 12;
+        return paramQQAppInterface;
+      }
+      paramQQAppInterface.msgType = 10;
+    }
+    return paramQQAppInterface;
+  }
   
   public static MessageForApollo createSendMsg_ApolloAction(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, ApolloMessage paramApolloMessage)
   {
@@ -178,6 +205,40 @@ public class ApolloMessageUtilImpl
     }
   }
   
+  private static void doRealSendMessage(QQAppInterface paramQQAppInterface, ApolloInfo paramApolloInfo, MessageForApollo paramMessageForApollo)
+  {
+    ISpriteScriptManager localISpriteScriptManager = (ISpriteScriptManager)paramQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all");
+    int i = paramApolloInfo.mAction.actionType;
+    ISpriteScriptManager.BusinessId localBusinessId = ISpriteScriptManager.BusinessId;
+    if ((i != 0) && (localISpriteScriptManager != null))
+    {
+      if (((ISpriteUtil)QRoute.api(ISpriteUtil.class)).getActionScript(paramQQAppInterface) == null)
+      {
+        paramQQAppInterface.getMessageFacade().a(paramMessageForApollo, null);
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("actionScript == null send apollo message msg: ");
+        paramQQAppInterface.append(paramApolloInfo.toString());
+        QLog.i("[cmshow]ApolloMessageUtilImpl", 2, paramQQAppInterface.toString());
+        return;
+      }
+      paramQQAppInterface = localISpriteScriptManager.getSpriteBridge();
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a(paramMessageForApollo);
+      }
+    }
+    else
+    {
+      paramQQAppInterface.getMessageFacade().a(paramMessageForApollo, null);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("send apollo message msg: ");
+        paramQQAppInterface.append(paramApolloInfo.toString());
+        QLog.d("[cmshow]ApolloMessageUtilImpl", 2, paramQQAppInterface.toString());
+      }
+    }
+  }
+  
   public static im_msg_body.RichText encodeRichTextFromApolloText(MessageForApollo paramMessageForApollo)
   {
     im_msg_body.ApolloActMsg localApolloActMsg = new im_msg_body.ApolloActMsg();
@@ -232,7 +293,7 @@ public class ApolloMessageUtilImpl
       localApolloActMsg.input_text.set(ByteStringMicro.copyFrom(paramMessageForApollo.inputText.getBytes()));
     }
     Object localObject2 = new im_msg_body.Text();
-    localObject1 = HardCodeUtil.a(2131706688);
+    localObject1 = HardCodeUtil.a(2131904539);
     paramMessageForApollo = (MessageForApollo)localObject1;
     if (localApolloMessage.name != null)
     {
@@ -274,7 +335,74 @@ public class ApolloMessageUtilImpl
       }
       return localStringBuilder.toString();
     }
-    return HardCodeUtil.a(2131700776);
+    return HardCodeUtil.a(2131898802);
+  }
+  
+  @Nullable
+  private static JSONObject getExtStrJson(ApolloInfo paramApolloInfo, boolean paramBoolean, Apollo3DMessage paramApollo3DMessage, ApolloActionData paramApolloActionData, JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      try
+      {
+        localJSONObject = new JSONObject();
+      }
+      catch (Throwable paramApolloInfo)
+      {
+        break label239;
+      }
+    }
+    if ((paramBoolean) && (paramApollo3DMessage != null) && (paramApolloActionData != null)) {
+      localJSONObject.put("actionType", paramApolloActionData.actionType);
+    } else {
+      localJSONObject.put("actionType", paramApolloInfo.mAction.actionType);
+    }
+    if (paramApolloInfo.mAudioId > 0)
+    {
+      localJSONObject.put("audioID", paramApolloInfo.mAudioId);
+      localJSONObject.put("audioStartTime", paramApolloInfo.mAudioStartTime);
+    }
+    boolean bool = TextUtils.isEmpty(paramApolloInfo.mAction.inputText);
+    if (!bool) {
+      localJSONObject.put("inputText", paramApolloInfo.mAction.inputText);
+    } else if (!TextUtils.isEmpty(paramApolloInfo.mActionText)) {
+      localJSONObject.put("inputText", paramApolloInfo.mActionText);
+    }
+    if (paramApollo3DMessage != null)
+    {
+      paramApollo3DMessage = paramApollo3DMessage.getMessageJSONObject();
+      if (paramApollo3DMessage != null) {
+        localJSONObject.put("mApollo3DMessage", paramApollo3DMessage);
+      }
+    }
+    if (paramApolloInfo.mAction != null)
+    {
+      int i = paramApolloInfo.mAction.isForPlayerAction;
+      if (i == 1)
+      {
+        if (paramBoolean)
+        {
+          localJSONObject.put("msgTyep", 12);
+          return localJSONObject;
+        }
+        localJSONObject.put("msgTyep", 10);
+      }
+    }
+    return localJSONObject;
+    label239:
+    QLog.e("[cmshow]ApolloMessageUtilImpl", 1, "[sendApolloMsg] exception2:", paramApolloInfo);
+    return null;
+  }
+  
+  public static void markRead(MessageForApollo paramMessageForApollo, AppRuntime paramAppRuntime, String paramString, int paramInt)
+  {
+    if (paramMessageForApollo != null)
+    {
+      if (!(paramAppRuntime instanceof QQAppInterface)) {
+        return;
+      }
+      ThreadManager.getFileThreadHandler().post(new ApolloMessageUtilImpl.1(paramMessageForApollo, paramAppRuntime, paramString, paramInt));
+    }
   }
   
   public static void resendApolloMessage(QQAppInterface paramQQAppInterface, int paramInt, String paramString, long paramLong)
@@ -282,7 +410,7 @@ public class ApolloMessageUtilImpl
     MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().a(paramString, paramInt, paramLong);
     if (localMessageRecord != null)
     {
-      paramQQAppInterface.getMessageFacade().b(paramString, paramInt, paramLong);
+      paramQQAppInterface.getMessageFacade().h(paramString, paramInt, paramLong);
       paramString = MessageRecordFactory.a(localMessageRecord);
       paramQQAppInterface.getMessageFacade().a(paramString, null, true);
       return;
@@ -364,235 +492,68 @@ public class ApolloMessageUtilImpl
       if ((paramApolloInfo.mAction.personNum > 0) && (TextUtils.isEmpty(paramApolloInfo.mAction.peerUin))) {
         return;
       }
-      Object localObject2 = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
       IApolloDaoManagerService localIApolloDaoManagerService = (IApolloDaoManagerService)paramQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all");
-      Object localObject1 = (IApolloExtensionHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
-      Object localObject3;
-      if ((paramInt == 1) && (paramApolloInfo.mAction.personNum > 0) && (!paramApolloInfo.mAction.peerUin.equals(paramQQAppInterface.getCurrentAccountUin())))
-      {
-        localObject3 = localIApolloDaoManagerService.getApolloBaseInfo(paramApolloInfo.mAction.peerUin);
-        if (localObject3 == null)
-        {
-          ((IApolloExtensionHandler)localObject1).b(paramApolloInfo.mAction.peerUin);
-        }
-        else if ((!((FriendsManager)localObject2).b(paramApolloInfo.mAction.peerUin)) && (NetConnInfoCenter.getServerTime() - ((ApolloBaseInfo)localObject3).apolloUpdateTime >= 300L))
-        {
-          ((IApolloExtensionHandler)localObject1).b(paramApolloInfo.mAction.peerUin);
-        }
-        else if ((((FriendsManager)localObject2).b(paramApolloInfo.mAction.peerUin)) && (((ApolloBaseInfo)localObject3).apolloUpdateTime == 0L))
-        {
-          ((IApolloExtensionHandler)localObject1).b(paramApolloInfo.mAction.peerUin);
-        }
-        else if (((ApolloBaseInfo)localObject3).apolloServerTS != ((ApolloBaseInfo)localObject3).apolloLocalTS)
-        {
-          localObject2 = new ArrayList(1);
-          ((ArrayList)localObject2).add(Long.valueOf(Long.parseLong(paramApolloInfo.mAction.peerUin)));
-          ((IApolloExtensionHandler)localObject1).a((ArrayList)localObject2, "TROOP_AIO");
-        }
-      }
+      updateActionPeerUinApolloState(paramQQAppInterface, paramInt, paramApolloInfo, localIApolloDaoManagerService);
       boolean bool = ApolloActionData.isAction3DModel(paramApolloInfo.mAction.actionId);
-      int k = 0;
-      int j = 0;
       QLog.d("[cmshow]ApolloMessageUtilImpl", 1, new Object[] { "[sendApolloMsg] actionId=", Integer.valueOf(paramApolloInfo.mAction.actionId), ", is3dAction=", Boolean.valueOf(bool) });
       ApolloMessage localApolloMessage = new ApolloMessage();
+      Apollo3DMessage localApollo3DMessage;
       if (bool)
       {
-        j = 1024;
-        i = j;
-      }
-      label684:
-      Object localObject5;
-      try
-      {
-        if (paramApolloInfo.mAction.personNum > 0)
-        {
-          i = j;
+        localApollo3DMessage = new Apollo3DMessage();
+        if (paramApolloInfo.mAction.personNum > 0) {
           localApolloMessage.id = 1454;
-        }
-        else
-        {
-          i = j;
+        } else {
           localApolloMessage.id = 1450;
         }
-        i = j;
-        localObject1 = new Apollo3DMessage();
-        try
-        {
-          ((Apollo3DMessage)localObject1).actionID3D = paramApolloInfo.mAction.actionId;
-          ((Apollo3DMessage)localObject1).actionType3D = paramApolloInfo.mAction.actionType;
-          ((Apollo3DMessage)localObject1).actionName3D = paramApolloInfo.mAction.actionName;
-          ApolloActionData localApolloActionData = ((IApolloDaoManagerService)paramQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all")).findActionById(localApolloMessage.id);
-          if (localApolloActionData != null) {}
-          try
-          {
-            if (!TextUtils.isEmpty(localApolloActionData.actionName))
-            {
-              localApolloMessage.name = localApolloActionData.actionName.getBytes("UTF-8");
-              i = j;
-              localObject3 = localApolloActionData;
-            }
-            else
-            {
-              localApolloMessage.name = "3D动作".getBytes();
-              i = j;
-              localObject3 = localApolloActionData;
-            }
-          }
-          catch (Exception localException1)
-          {
-            i = j;
-            localObject2 = localObject1;
-            localObject1 = localApolloActionData;
-            break label684;
-          }
-          i = j;
-        }
-        catch (Exception localException2)
-        {
-          localApolloActionData = null;
-          i = j;
-          localObject2 = localObject1;
-          localObject1 = localApolloActionData;
-        }
-        localApolloMessage.id = paramApolloInfo.mAction.actionId;
-        i = j;
-        localApolloMessage.name = paramApolloInfo.mAction.actionName.getBytes("UTF-8");
-        localObject1 = null;
-        Object localObject4 = localObject1;
-        i = k;
+        localObject = localIApolloDaoManagerService.findActionById(localApolloMessage.id);
       }
-      catch (Exception localException3)
+      else
       {
-        localObject2 = null;
-        localObject1 = localObject2;
-        QLog.e("[cmshow]ApolloMessageUtilImpl", 1, "[sendApolloMsg] exception1:", localException3);
-        localObject5 = localObject1;
-        localObject1 = localObject2;
+        localApollo3DMessage = null;
+        localObject = localApollo3DMessage;
       }
-      if ((!TextUtils.isEmpty(paramApolloInfo.mAction.atNickName)) && ((paramInt == 1) || (paramInt == 3000))) {
-        localApolloMessage.text = paramApolloInfo.mAction.atNickName.getBytes();
-      }
-      localObject2 = localIApolloDaoManagerService.getApolloBaseInfo(paramQQAppInterface.getCurrentAccountUin());
-      localApolloMessage.senderTs = Utils.a(((ApolloBaseInfo)localObject2).apolloServerTS);
-      localApolloMessage.senderStatus = ((ApolloBaseInfo)localObject2).apolloStatus;
-      if ((bool) && (localObject1 != null)) {
-        ((Apollo3DMessage)localObject1).senderStatus3D = ((ApolloBaseInfo)localObject2).cmshow3dFlag;
-      }
-      j = i | 0x1 | 0x8 | 0x20;
-      int i = j;
-      if (paramApolloInfo.mAction.personNum > 0)
-      {
-        localApolloMessage.peerUin = Long.valueOf(paramApolloInfo.mAction.peerUin).longValue();
-        localObject2 = localIApolloDaoManagerService.getApolloBaseInfo(paramApolloInfo.mAction.peerUin);
-        localApolloMessage.peerTs = Utils.a(((ApolloBaseInfo)localObject2).apolloServerTS);
-        localApolloMessage.peerStatus = ((ApolloBaseInfo)localObject2).apolloStatus;
-        if ((bool) && (localObject1 != null)) {
-          ((Apollo3DMessage)localObject1).peerStatus3D = ((ApolloBaseInfo)localObject2).cmshow3dFlag;
-        }
-        j = j | 0x4 | 0x2 | 0x10 | 0x40;
-        i = j;
-        if (bool) {
-          i = j | 0x800;
-        }
-      }
-      if ((paramApolloInfo.mAction.personNum == 0) && (((ICmShowAioMatcher)QRoute.api(ICmShowAioMatcher.class)).isSupported(paramInt, 1))) {
-        localApolloMessage.peerUin = Long.valueOf(paramApolloInfo.mAction.peerUin).longValue();
-      }
-      j = i;
-      if (paramApolloInfo.mTextType == 1) {
-        j = i | 0x80;
-      }
-      localApolloMessage.flag = j;
-      try
-      {
-        localObject2 = new JSONObject();
-        if ((bool) && (localObject1 != null) && (localObject5 != null)) {
-          ((JSONObject)localObject2).put("actionType", ((ApolloActionData)localObject5).actionType);
-        } else {
-          ((JSONObject)localObject2).put("actionType", paramApolloInfo.mAction.actionType);
-        }
-        if (paramApolloInfo.mAudioId > 0)
-        {
-          ((JSONObject)localObject2).put("audioID", paramApolloInfo.mAudioId);
-          ((JSONObject)localObject2).put("audioStartTime", paramApolloInfo.mAudioStartTime);
-        }
-        bool = TextUtils.isEmpty(paramApolloInfo.mAction.inputText);
-        if (!bool) {
-          ((JSONObject)localObject2).put("inputText", paramApolloInfo.mAction.inputText);
-        } else if (!TextUtils.isEmpty(paramApolloInfo.mActionText)) {
-          ((JSONObject)localObject2).put("inputText", paramApolloInfo.mActionText);
-        }
-        if (localObject1 != null)
-        {
-          localObject5 = ((Apollo3DMessage)localObject1).getMessageJSONObject();
-          if (localObject5 != null) {
-            ((JSONObject)localObject2).put("mApollo3DMessage", localObject5);
-          }
-        }
-        if ((paramApolloInfo.mAction != null) && (paramApolloInfo.mAction.isForPlayerAction == 1)) {
-          ((JSONObject)localObject2).put("msgTyep", 10);
-        }
-        if (localObject2 != null) {
-          localApolloMessage.extStr = ((JSONObject)localObject2).toString();
-        }
-        paramString1 = createSendMsg_ApolloAction(paramQQAppInterface, paramString1, paramString2, paramInt, localApolloMessage);
-        paramString1.inputText = paramApolloInfo.mAction.inputText;
-        paramString1.audioId = paramApolloInfo.mAudioId;
-        paramString1.audioStartTime = paramApolloInfo.mAudioStartTime;
-        paramString1.isPlayDefaultAudio = paramApolloInfo.mPlayOriginalAudio;
-        paramString1.actionType = paramApolloInfo.mAction.actionType;
-        paramString1.mApollo3DMessage = ((Apollo3DMessage)localObject1);
-        if (TextUtils.isEmpty(paramString1.inputText)) {
-          paramString1.inputText = paramApolloInfo.mActionText;
-        }
-        paramString1.mSendSrc = paramApolloInfo.mSendSrc;
-        paramString1.curUsedIdType = paramApolloInfo.mPackageId;
-        if ((paramApolloInfo.mAction != null) && (paramApolloInfo.mAction.isForPlayerAction == 1)) {
-          paramString1.msgType = 10;
-        }
-        paramString2 = (ISpriteScriptManager)paramQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all");
-        paramInt = paramApolloInfo.mAction.actionType;
-        localObject1 = ISpriteScriptManager.BusinessId;
-        if ((paramInt != 0) && (paramString2 != null))
-        {
-          if (((ISpriteUtil)QRoute.api(ISpriteUtil.class)).getActionScript(paramQQAppInterface) == null)
-          {
-            paramQQAppInterface.getMessageFacade().a(paramString1, null);
-            paramQQAppInterface = new StringBuilder();
-            paramQQAppInterface.append("actionScript == null send apollo message msg: ");
-            paramQQAppInterface.append(paramApolloInfo.toString());
-            QLog.i("[cmshow]ApolloMessageUtilImpl", 2, paramQQAppInterface.toString());
-            return;
-          }
-          paramQQAppInterface = paramString2.getSpriteBridge();
-          if (paramQQAppInterface != null) {
-            paramQQAppInterface.a(paramString1);
-          }
-        }
-        else
-        {
-          paramQQAppInterface.getMessageFacade().a(paramString1, null);
-          if (QLog.isColorLevel())
-          {
-            paramQQAppInterface = new StringBuilder();
-            paramQQAppInterface.append("send apollo message msg: ");
-            paramQQAppInterface.append(paramApolloInfo.toString());
-            QLog.d("[cmshow]ApolloMessageUtilImpl", 2, paramQQAppInterface.toString());
-          }
-        }
+      updateMessageIdAndName(bool, paramApolloInfo, localApolloMessage, localApollo3DMessage, (ApolloActionData)localObject, localIApolloDaoManagerService);
+      updateMessageText(paramInt, paramApolloInfo, localApolloMessage);
+      updateMessageSender(paramQQAppInterface, localIApolloDaoManagerService, bool, localApollo3DMessage, localApolloMessage);
+      updateMessageRichFlag(paramInt, paramApolloInfo, localIApolloDaoManagerService, bool, localApollo3DMessage, localApolloMessage);
+      Object localObject = getExtStrJson(paramApolloInfo, bool, localApollo3DMessage, (ApolloActionData)localObject, null);
+      if (localObject == null) {
         return;
       }
-      catch (Throwable paramQQAppInterface)
-      {
-        QLog.e("[cmshow]ApolloMessageUtilImpl", 1, "[sendApolloMsg] exception2:", paramQQAppInterface);
-      }
+      localApolloMessage.extStr = ((JSONObject)localObject).toString();
+      doRealSendMessage(paramQQAppInterface, paramApolloInfo, createMessageForApollo(paramQQAppInterface, paramInt, paramString1, paramString2, paramApolloInfo, bool, localApollo3DMessage, localApolloMessage));
     }
   }
   
-  public static void setReaded(MessageForApollo paramMessageForApollo, AppRuntime paramAppRuntime, String paramString, int paramInt)
+  private static void updateActionPeerUinApolloState(QQAppInterface paramQQAppInterface, int paramInt, ApolloInfo paramApolloInfo, IApolloDaoManagerService paramIApolloDaoManagerService)
   {
-    if ((paramMessageForApollo != null) && ((paramAppRuntime instanceof QQAppInterface))) {
-      ThreadManager.getFileThreadHandler().post(new ApolloMessageUtilImpl.1(paramMessageForApollo, paramAppRuntime, paramString, paramInt));
+    FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    IApolloExtensionHandler localIApolloExtensionHandler = (IApolloExtensionHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
+    if ((paramInt == 1) && (paramApolloInfo.mAction.personNum > 0) && (!paramApolloInfo.mAction.peerUin.equals(paramQQAppInterface.getCurrentAccountUin())))
+    {
+      paramQQAppInterface = paramIApolloDaoManagerService.getApolloBaseInfo(paramApolloInfo.mAction.peerUin);
+      if (paramQQAppInterface == null)
+      {
+        localIApolloExtensionHandler.b(paramApolloInfo.mAction.peerUin);
+        return;
+      }
+      if ((!localFriendsManager.n(paramApolloInfo.mAction.peerUin)) && (NetConnInfoCenter.getServerTime() - paramQQAppInterface.apolloUpdateTime >= 300L))
+      {
+        localIApolloExtensionHandler.b(paramApolloInfo.mAction.peerUin);
+        return;
+      }
+      if ((localFriendsManager.n(paramApolloInfo.mAction.peerUin)) && (paramQQAppInterface.apolloUpdateTime == 0L))
+      {
+        localIApolloExtensionHandler.b(paramApolloInfo.mAction.peerUin);
+        return;
+      }
+      if (paramQQAppInterface.apolloServerTS != paramQQAppInterface.apolloLocalTS)
+      {
+        paramQQAppInterface = new ArrayList(1);
+        paramQQAppInterface.add(Long.valueOf(Long.parseLong(paramApolloInfo.mAction.peerUin)));
+        localIApolloExtensionHandler.a(paramQQAppInterface, "TROOP_AIO");
+      }
     }
   }
   
@@ -618,6 +579,87 @@ public class ApolloMessageUtilImpl
       return true;
     }
     return false;
+  }
+  
+  private static void updateMessageIdAndName(boolean paramBoolean, ApolloInfo paramApolloInfo, ApolloMessage paramApolloMessage, Apollo3DMessage paramApollo3DMessage, ApolloActionData paramApolloActionData, IApolloDaoManagerService paramIApolloDaoManagerService)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      paramApollo3DMessage.actionID3D = paramApolloInfo.mAction.actionId;
+      paramApollo3DMessage.actionType3D = paramApolloInfo.mAction.actionType;
+      paramApollo3DMessage.actionName3D = paramApolloInfo.mAction.actionName;
+      if ((paramApolloActionData != null) && (!TextUtils.isEmpty(paramApolloActionData.actionName)))
+      {
+        paramApolloMessage.name = paramApolloActionData.actionName.getBytes("UTF-8");
+        return;
+      }
+      paramApolloMessage.name = "3D动作".getBytes();
+      return;
+    }
+    catch (Exception paramApolloInfo)
+    {
+      QLog.e("[cmshow]ApolloMessageUtilImpl", 1, "[sendApolloMsg] exception:", paramApolloInfo);
+    }
+    paramApolloMessage.id = paramApolloInfo.mAction.actionId;
+    paramApolloMessage.name = paramApolloInfo.mAction.actionName.getBytes("UTF-8");
+    return;
+  }
+  
+  private static int updateMessagePeerUin(int paramInt1, ApolloInfo paramApolloInfo, IApolloDaoManagerService paramIApolloDaoManagerService, int paramInt2, boolean paramBoolean, Apollo3DMessage paramApollo3DMessage, ApolloMessage paramApolloMessage)
+  {
+    int i = paramInt2;
+    if (paramApolloInfo.mAction.personNum > 0)
+    {
+      paramApolloMessage.peerUin = Long.valueOf(paramApolloInfo.mAction.peerUin).longValue();
+      paramIApolloDaoManagerService = paramIApolloDaoManagerService.getApolloBaseInfo(paramApolloInfo.mAction.peerUin);
+      paramApolloMessage.peerTs = Utils.a(paramIApolloDaoManagerService.apolloServerTS);
+      paramApolloMessage.peerStatus = paramIApolloDaoManagerService.apolloStatus;
+      if ((paramBoolean) && (paramApollo3DMessage != null)) {
+        paramApollo3DMessage.peerStatus3D = paramIApolloDaoManagerService.cmshow3dFlag;
+      }
+      paramInt2 = paramInt2 | 0x4 | 0x2 | 0x10 | 0x40;
+      i = paramInt2;
+      if (paramBoolean) {
+        i = paramInt2 | 0x800;
+      }
+    }
+    if ((paramApolloInfo.mAction.personNum == 0) && (((ICmShowAioMatcher)QRoute.api(ICmShowAioMatcher.class)).isSupported(paramInt1, 1))) {
+      paramApolloMessage.peerUin = Long.valueOf(paramApolloInfo.mAction.peerUin).longValue();
+    }
+    return i;
+  }
+  
+  private static void updateMessageRichFlag(int paramInt, ApolloInfo paramApolloInfo, IApolloDaoManagerService paramIApolloDaoManagerService, boolean paramBoolean, Apollo3DMessage paramApollo3DMessage, ApolloMessage paramApolloMessage)
+  {
+    if (paramBoolean) {
+      i = 1024;
+    } else {
+      i = 0;
+    }
+    int i = updateMessagePeerUin(paramInt, paramApolloInfo, paramIApolloDaoManagerService, i | 0x1 | 0x8 | 0x20, paramBoolean, paramApollo3DMessage, paramApolloMessage);
+    paramInt = i;
+    if (paramApolloInfo.mTextType == 1) {
+      paramInt = i | 0x80;
+    }
+    paramApolloMessage.flag = paramInt;
+  }
+  
+  private static void updateMessageSender(QQAppInterface paramQQAppInterface, IApolloDaoManagerService paramIApolloDaoManagerService, boolean paramBoolean, Apollo3DMessage paramApollo3DMessage, ApolloMessage paramApolloMessage)
+  {
+    paramQQAppInterface = paramIApolloDaoManagerService.getApolloBaseInfo(paramQQAppInterface.getCurrentAccountUin());
+    paramApolloMessage.senderTs = Utils.a(paramQQAppInterface.apolloServerTS);
+    paramApolloMessage.senderStatus = paramQQAppInterface.apolloStatus;
+    if ((paramBoolean) && (paramApollo3DMessage != null)) {
+      paramApollo3DMessage.senderStatus3D = paramQQAppInterface.cmshow3dFlag;
+    }
+  }
+  
+  private static void updateMessageText(int paramInt, ApolloInfo paramApolloInfo, ApolloMessage paramApolloMessage)
+  {
+    if ((!TextUtils.isEmpty(paramApolloInfo.mAction.atNickName)) && ((paramInt == 1) || (paramInt == 3000))) {
+      paramApolloMessage.text = paramApolloInfo.mAction.atNickName.getBytes();
+    }
   }
   
   public String buildMsgContentForMsg(AppInterface paramAppInterface, Message paramMessage)
@@ -646,7 +688,7 @@ public class ApolloMessageUtilImpl
   
   public void decodeBaseMsgApollo(AppRuntime paramAppRuntime, MessageRecord paramMessageRecord)
   {
-    paramMessageRecord.msg = HardCodeUtil.a(2131701237);
+    paramMessageRecord.msg = HardCodeUtil.a(2131899247);
     if (paramMessageRecord.msgData != null) {
       paramMessageRecord.msg = ((IApolloMessageUtil)QRoute.api(IApolloMessageUtil.class)).getApolloMsgTranDec(paramAppRuntime, paramMessageRecord);
     }
@@ -729,9 +771,9 @@ public class ApolloMessageUtilImpl
         ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopTaskByMsg(paramMessageRecord.uniseq, paramAppInterface, "del_msg");
         if ((paramMessageRecord.mApolloMessage != null) && ((paramContext instanceof BaseActivity)))
         {
-          paramContext = ((BaseActivity)paramContext).getChatFragment().a();
-          if ((paramContext != null) && (paramContext.a != null)) {
-            VipUtils.a(paramAppInterface, "cmshow", "Apollo", "del_success", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramContext.a.a), 0, new String[] { Integer.toString(paramMessageRecord.mApolloMessage.id) });
+          paramContext = ((BaseActivity)paramContext).getChatFragment().k();
+          if ((paramContext != null) && (paramContext.ah != null)) {
+            VipUtils.a(paramAppInterface, "cmshow", "Apollo", "del_success", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramContext.ah.a), 0, new String[] { Integer.toString(paramMessageRecord.mApolloMessage.id) });
           }
         }
       }
@@ -746,9 +788,9 @@ public class ApolloMessageUtilImpl
       ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopTaskByMsg(paramMessageRecord.uniseq, paramAppInterface, "del_msg");
       if ((paramMessageRecord.mApolloMessage != null) && ((paramContext instanceof BaseActivity)))
       {
-        paramContext = ((BaseActivity)paramContext).getChatFragment().a();
-        if ((paramContext != null) && (paramContext.a != null)) {
-          VipUtils.a(paramAppInterface, "cmshow", "Apollo", "del_success", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramContext.a.a), 0, new String[] { Integer.toString(paramMessageRecord.mApolloMessage.id) });
+        paramContext = ((BaseActivity)paramContext).getChatFragment().k();
+        if ((paramContext != null) && (paramContext.ah != null)) {
+          VipUtils.a(paramAppInterface, "cmshow", "Apollo", "del_success", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramContext.ah.a), 0, new String[] { Integer.toString(paramMessageRecord.mApolloMessage.id) });
         }
       }
     }
@@ -762,60 +804,29 @@ public class ApolloMessageUtilImpl
   public String getApolloMsgTranDec(AppRuntime paramAppRuntime, MessageRecord paramMessageRecord)
   {
     if (paramMessageRecord == null) {
-      return HardCodeUtil.a(2131700769);
+      return HardCodeUtil.a(2131898795);
     }
-    Object localObject;
     if ((paramMessageRecord instanceof MessageForApollo))
     {
       paramMessageRecord = (MessageForApollo)paramMessageRecord;
     }
     else
     {
-      localObject = new MessageForApollo();
-      ((MessageForApollo)localObject).msgData = paramMessageRecord.msgData;
-      paramMessageRecord = (MessageRecord)localObject;
+      MessageForApollo localMessageForApollo = new MessageForApollo();
+      localMessageForApollo.msgData = paramMessageRecord.msgData;
+      paramMessageRecord = localMessageForApollo;
     }
     paramMessageRecord.parse();
-    if ((ApolloGameUtil.a(paramMessageRecord.msgType)) && (ApolloUtilImpl.isAllowDisplayGame(paramAppRuntime, paramMessageRecord)))
-    {
-      localObject = HardCodeUtil.a(2131700767);
-      if (!TextUtils.isEmpty(paramMessageRecord.gameName))
-      {
-        paramAppRuntime = new StringBuilder();
-        paramAppRuntime.append((String)localObject);
-        paramAppRuntime.append(paramMessageRecord.gameName);
-        return paramAppRuntime.toString();
-      }
-      if (paramAppRuntime != null)
-      {
-        paramAppRuntime = ((ApolloDaoManagerServiceImpl)paramAppRuntime.getRuntimeService(IApolloDaoManagerService.class, "all")).findGameById(paramMessageRecord.gameId);
-        if (paramAppRuntime != null)
-        {
-          paramMessageRecord = new StringBuilder();
-          paramMessageRecord.append((String)localObject);
-          paramMessageRecord.append(paramAppRuntime.name);
-          return paramMessageRecord.toString();
-        }
-        paramAppRuntime = new StringBuilder();
-        paramAppRuntime.append((String)localObject);
-        paramAppRuntime.append(HardCodeUtil.a(2131700763));
-        return paramAppRuntime.toString();
-      }
-      paramAppRuntime = new StringBuilder();
-      paramAppRuntime.append((String)localObject);
-      paramAppRuntime.append(HardCodeUtil.a(2131700751));
-      return paramAppRuntime.toString();
-    }
     paramAppRuntime = ApolloUtilImpl.getDisplayActionName(paramAppRuntime, paramMessageRecord);
     if (ApolloUtilImpl.isApolloAnimationBubble(paramMessageRecord.msgType))
     {
       paramMessageRecord = new StringBuilder();
-      paramMessageRecord.append(HardCodeUtil.a(2131690073));
+      paramMessageRecord.append(HardCodeUtil.a(2131886725));
       paramMessageRecord.append(paramAppRuntime);
       return paramMessageRecord.toString();
     }
     paramMessageRecord = new StringBuilder();
-    paramMessageRecord.append(HardCodeUtil.a(2131700770));
+    paramMessageRecord.append(HardCodeUtil.a(2131898796));
     paramMessageRecord.append(paramAppRuntime);
     return paramMessageRecord.toString();
   }
@@ -850,7 +861,7 @@ public class ApolloMessageUtilImpl
       paramMessageRecord = (MessageForApollo)paramMessageRecord;
       ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopTaskByMsg(paramMessageRecord.uniseq, paramAppInterface, "withdraw_msg");
       if (paramMessageRecord.mApolloMessage != null) {
-        VipUtils.a(paramAppInterface, "cmshow", "Apollo", "withdraw_success", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramInt), 0, new String[] { Integer.toString(paramMessageRecord.mApolloMessage.id) });
+        VipUtils.a(paramAppInterface, "cmshow", "Apollo", "withdraw_success", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramInt), 0, new String[] { Integer.toString(paramMessageRecord.mApolloMessage.id) });
       }
     }
   }
@@ -866,13 +877,13 @@ public class ApolloMessageUtilImpl
         paramTextView.setText(paramArrayOfByte.msg);
         return;
       }
-      paramTextView.setText(HardCodeUtil.a(2131701846));
+      paramTextView.setText(HardCodeUtil.a(2131899863));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.impl.ApolloMessageUtilImpl
  * JD-Core Version:    0.7.0.1
  */

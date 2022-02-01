@@ -19,42 +19,35 @@ import tencent.im.oidb.oidb_0xc2f.RecommendAccountInfo;
 
 public class RecommendFollowInfos
 {
-  public int a;
-  public String a;
-  public HashMap<Long, RecommendFollowInfo> a;
-  public List<RecommendFollowInfo> a;
   public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public List<GroupRecommendAccount> b;
-  public boolean b;
-  
-  public RecommendFollowInfos()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public byte[] b;
+  public List<RecommendFollowInfo> c = new ArrayList();
+  public int d;
+  public String e;
+  public String f;
+  public List<GroupRecommendAccount> g = new ArrayList();
+  public HashMap<Long, RecommendFollowInfo> h = new HashMap();
+  public boolean i;
+  public int j;
   
   public static RecommendFollowInfos a(articlesummary.RecommendFollowInfos paramRecommendFollowInfos)
   {
     RecommendFollowInfos localRecommendFollowInfos = new RecommendFollowInfos();
     if (paramRecommendFollowInfos.uint32_show_full_card.has())
     {
-      int i = paramRecommendFollowInfos.uint32_show_full_card.get();
+      int k = paramRecommendFollowInfos.uint32_show_full_card.get();
       boolean bool = true;
-      if (i != 1) {
+      if (k != 1) {
         bool = false;
       }
-      localRecommendFollowInfos.jdField_a_of_type_Boolean = bool;
+      localRecommendFollowInfos.a = bool;
     }
     if (paramRecommendFollowInfos.bytes_account_next_cookie.has()) {
-      localRecommendFollowInfos.jdField_a_of_type_ArrayOfByte = paramRecommendFollowInfos.bytes_account_next_cookie.get().toByteArray();
+      localRecommendFollowInfos.b = paramRecommendFollowInfos.bytes_account_next_cookie.get().toByteArray();
     }
-    localRecommendFollowInfos.jdField_a_of_type_Int = paramRecommendFollowInfos.uint32_card_style.get();
-    localRecommendFollowInfos.jdField_a_of_type_JavaLangString = paramRecommendFollowInfos.bytes_card_title.get().toStringUtf8();
-    localRecommendFollowInfos.jdField_b_of_type_JavaLangString = paramRecommendFollowInfos.bytes_jump_url.get().toStringUtf8();
+    localRecommendFollowInfos.d = paramRecommendFollowInfos.uint32_card_style.get();
+    localRecommendFollowInfos.e = paramRecommendFollowInfos.bytes_card_title.get().toStringUtf8();
+    localRecommendFollowInfos.f = paramRecommendFollowInfos.bytes_jump_url.get().toStringUtf8();
     if (paramRecommendFollowInfos.rpt_recommend_account_info.has())
     {
       paramRecommendFollowInfos = paramRecommendFollowInfos.rpt_recommend_account_info.get();
@@ -64,8 +57,8 @@ public class RecommendFollowInfos
       while (((Iterator)localObject3).hasNext())
       {
         RecommendFollowInfo localRecommendFollowInfo = RecommendFollowInfo.parseByPB((articlesummary.RecommendAccountInfo)((Iterator)localObject3).next());
-        localRecommendFollowInfos.jdField_a_of_type_JavaUtilList.add(localRecommendFollowInfo);
-        if ((localRecommendFollowInfos.jdField_a_of_type_Int == 2) && (!TextUtils.isEmpty(localRecommendFollowInfo.className)))
+        localRecommendFollowInfos.c.add(localRecommendFollowInfo);
+        if ((localRecommendFollowInfos.d == 2) && (!TextUtils.isEmpty(localRecommendFollowInfo.className)))
         {
           localObject1 = (List)((HashMap)localObject2).get(localRecommendFollowInfo.className);
           paramRecommendFollowInfos = (articlesummary.RecommendFollowInfos)localObject1;
@@ -89,9 +82,9 @@ public class RecommendFollowInfos
           if (((List)localObject2).size() == 3)
           {
             localObject3 = new GroupRecommendAccount();
-            ((GroupRecommendAccount)localObject3).jdField_a_of_type_JavaLangString = ((String)((Map.Entry)localObject1).getKey());
-            ((GroupRecommendAccount)localObject3).jdField_a_of_type_JavaUtilList = ((List)localObject2);
-            localRecommendFollowInfos.jdField_b_of_type_JavaUtilList.add(localObject3);
+            ((GroupRecommendAccount)localObject3).a = ((String)((Map.Entry)localObject1).getKey());
+            ((GroupRecommendAccount)localObject3).b = ((List)localObject2);
+            localRecommendFollowInfos.g.add(localObject3);
           }
         }
       }
@@ -102,14 +95,14 @@ public class RecommendFollowInfos
   public static RecommendFollowInfos a(oidb_0xc2f.GetFollowUserRecommendListRsp paramGetFollowUserRecommendListRsp)
   {
     RecommendFollowInfos localRecommendFollowInfos = new RecommendFollowInfos();
-    localRecommendFollowInfos.jdField_b_of_type_JavaLangString = paramGetFollowUserRecommendListRsp.bytes_jump_url.get().toStringUtf8();
+    localRecommendFollowInfos.f = paramGetFollowUserRecommendListRsp.bytes_jump_url.get().toStringUtf8();
     if (paramGetFollowUserRecommendListRsp.rpt_msg_recommend_list.has())
     {
       paramGetFollowUserRecommendListRsp = paramGetFollowUserRecommendListRsp.rpt_msg_recommend_list.get().iterator();
       while (paramGetFollowUserRecommendListRsp.hasNext())
       {
         RecommendFollowInfo localRecommendFollowInfo = RecommendFollowInfo.parseByPB((oidb_0xc2f.RecommendAccountInfo)paramGetFollowUserRecommendListRsp.next());
-        localRecommendFollowInfos.jdField_a_of_type_JavaUtilList.add(localRecommendFollowInfo);
+        localRecommendFollowInfos.c.add(localRecommendFollowInfo);
       }
     }
     return localRecommendFollowInfos;
@@ -118,37 +111,37 @@ public class RecommendFollowInfos
   public byte[] a()
   {
     articlesummary.RecommendFollowInfos localRecommendFollowInfos = new articlesummary.RecommendFollowInfos();
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       localRecommendFollowInfos.uint32_show_full_card.set(1);
     } else {
       localRecommendFollowInfos.uint32_show_full_card.set(0);
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfByte;
+    Object localObject = this.b;
     if ((localObject != null) && (localObject.length > 0)) {
-      localRecommendFollowInfos.bytes_account_next_cookie.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ArrayOfByte));
+      localRecommendFollowInfos.bytes_account_next_cookie.set(ByteStringMicro.copyFrom(this.b));
     }
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    if (this.c.size() > 0)
     {
       localObject = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext()) {
         ((List)localObject).add(((RecommendFollowInfo)localIterator.next()).toPB());
       }
       localRecommendFollowInfos.rpt_recommend_account_info.set((List)localObject);
     }
-    localRecommendFollowInfos.uint32_card_style.set(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      localRecommendFollowInfos.bytes_card_title.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localRecommendFollowInfos.uint32_card_style.set(this.d);
+    if (this.e != null) {
+      localRecommendFollowInfos.bytes_card_title.set(ByteStringMicro.copyFromUtf8(this.e));
     }
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      localRecommendFollowInfos.bytes_jump_url.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    if (this.f != null) {
+      localRecommendFollowInfos.bytes_jump_url.set(ByteStringMicro.copyFromUtf8(this.f));
     }
     return localRecommendFollowInfos.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RecommendFollowInfos
  * JD-Core Version:    0.7.0.1
  */

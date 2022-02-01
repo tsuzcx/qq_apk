@@ -13,11 +13,11 @@ class AEWaterMarkAdapter$4
   
   public void run()
   {
-    Object localObject = (AEMaterialMetaData)this.this$0.a.get(this.jdField_a_of_type_Int);
-    String str = AEWaterMarkAdapter.a(this.this$0).a();
-    if ((!TextUtils.isEmpty(AEWaterMarkAdapter.a(this.this$0))) && (AEWaterMarkAdapter.a(this.this$0).equals(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k)) && (str.equals(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k)) && (localObject != null) && (((AEMaterialMetaData)localObject).k.equals(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k)) && (this.jdField_a_of_type_Boolean))
+    Object localObject = (AEMaterialMetaData)this.this$0.a.get(this.a);
+    String str = AEWaterMarkAdapter.b(this.this$0).b();
+    if ((!TextUtils.isEmpty(AEWaterMarkAdapter.c(this.this$0))) && (AEWaterMarkAdapter.c(this.this$0).equals(this.b.m)) && (str.equals(this.b.m)) && (localObject != null) && (((AEMaterialMetaData)localObject).m.equals(this.b.m)) && (this.c))
     {
-      if (AEMaterialManager.jdField_a_of_type_Boolean)
+      if (AEMaterialManager.a)
       {
         AEQLog.b("AEWaterMarkAdapter", "onDownloadFinish but is capturing, just refresh UI");
         this.this$0.notifyDataSetChanged();
@@ -29,26 +29,26 @@ class AEWaterMarkAdapter$4
         this.this$0.notifyDataSetChanged();
         return;
       }
-      AEWaterMarkAdapter.a(this.this$0).b(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData, true);
-      if (AEWaterMarkAdapter.a(this.this$0) != null)
+      AEWaterMarkAdapter.b(this.this$0).b(this.b, true);
+      if (AEWaterMarkAdapter.d(this.this$0) != null)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("### [material panel] download finish, select material ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k);
+        ((StringBuilder)localObject).append(this.b.m);
         AEQLog.a("AEWaterMarkAdapter", ((StringBuilder)localObject).toString());
-        AEWaterMarkAdapter.a(this.this$0).a(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData);
-        this.this$0.a(this.jdField_a_of_type_Int);
+        AEWaterMarkAdapter.d(this.this$0).a(this.b);
+        this.this$0.a(this.a);
       }
     }
     else
     {
-      this.this$0.notifyItemChanged(this.jdField_a_of_type_Int);
+      this.this$0.notifyItemChanged(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEWaterMarkAdapter.4
  * JD-Core Version:    0.7.0.1
  */

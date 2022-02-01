@@ -2,13 +2,13 @@ package common.qzone.component.cache.common;
 
 public class BlobCache$LookupRequest
 {
-  public int a;
   public long a;
-  public byte[] a;
+  public byte[] b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     common.qzone.component.cache.common.BlobCache.LookupRequest
  * JD-Core Version:    0.7.0.1
  */

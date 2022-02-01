@@ -15,21 +15,21 @@ import java.util.Map;
 public class ClosePCVerifyImpl
   implements ClosePCVerifyInterface
 {
-  private static volatile ClosePCVerifyImpl jdField_a_of_type_ComTencentMobileqqQuickloginClosePCVerifyImpl;
-  private ClosePCVerifyProxy jdField_a_of_type_ComTencentMobileqqQuickloginClosePCVerifyProxy;
+  private static volatile ClosePCVerifyImpl a;
+  private ClosePCVerifyProxy b;
   
   public static ClosePCVerifyImpl a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQuickloginClosePCVerifyImpl == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQuickloginClosePCVerifyImpl == null) {
-          jdField_a_of_type_ComTencentMobileqqQuickloginClosePCVerifyImpl = new ClosePCVerifyImpl();
+        if (a == null) {
+          a = new ClosePCVerifyImpl();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQuickloginClosePCVerifyImpl;
+    return a;
   }
   
   private void a(BaseQQAppInterface paramBaseQQAppInterface, QBaseActivity paramQBaseActivity)
@@ -40,10 +40,10 @@ public class ClosePCVerifyImpl
       if ((paramBaseQQAppInterface != null) && (paramQBaseActivity != null))
       {
         paramQBaseActivity = DialogUtil.a(paramQBaseActivity, 230);
-        paramQBaseActivity.setMessage(2131698699);
-        paramQBaseActivity.setTitle(2131698702);
-        paramQBaseActivity.setNegativeButton(2131698697, new ClosePCVerifyImpl.1(this, paramQBaseActivity));
-        paramQBaseActivity.setPositiveButton(2131698698, new ClosePCVerifyImpl.2(this, paramBaseQQAppInterface, paramQBaseActivity));
+        paramQBaseActivity.setMessage(2131896657);
+        paramQBaseActivity.setTitle(2131896660);
+        paramQBaseActivity.setNegativeButton(2131896655, new ClosePCVerifyImpl.1(this, paramQBaseActivity));
+        paramQBaseActivity.setPositiveButton(2131896656, new ClosePCVerifyImpl.2(this, paramBaseQQAppInterface, paramQBaseActivity));
         if (!paramQBaseActivity.isShowing()) {
           paramQBaseActivity.show();
         }
@@ -63,7 +63,7 @@ public class ClosePCVerifyImpl
     }
   }
   
-  private boolean a(String paramString, BaseQQAppInterface paramBaseQQAppInterface, QBaseActivity paramQBaseActivity)
+  private boolean b(String paramString, BaseQQAppInterface paramBaseQQAppInterface, QBaseActivity paramQBaseActivity)
   {
     return (TextUtils.isEmpty(paramString)) || (paramBaseQQAppInterface == null) || (paramQBaseActivity == null);
   }
@@ -76,12 +76,12 @@ public class ClosePCVerifyImpl
       ((StringBuilder)localObject).append("getClosePCVerifySpannable subTips: ");
       ((StringBuilder)localObject).append(paramString);
       QLog.d("ClosePCVerifyImpl", 1, ((StringBuilder)localObject).toString());
-      if (a(paramString, paramBaseQQAppInterface, paramQBaseActivity))
+      if (b(paramString, paramBaseQQAppInterface, paramQBaseActivity))
       {
         QLog.e("ClosePCVerifyImpl", 1, "getClosePCVerifySpannable error: params wrong");
         return new SpannableString("");
       }
-      localObject = paramQBaseActivity.getString(2131698696);
+      localObject = paramQBaseActivity.getString(2131896654);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
       localStringBuilder.append((String)localObject);
@@ -101,16 +101,10 @@ public class ClosePCVerifyImpl
     return new SpannableString("");
   }
   
-  public void a()
-  {
-    QLog.d("ClosePCVerifyImpl", 1, "removeObserver");
-    this.jdField_a_of_type_ComTencentMobileqqQuickloginClosePCVerifyProxy = null;
-  }
-  
   public void a(ClosePCVerifyProxy paramClosePCVerifyProxy)
   {
     QLog.d("ClosePCVerifyImpl", 1, "addObserver");
-    this.jdField_a_of_type_ComTencentMobileqqQuickloginClosePCVerifyProxy = paramClosePCVerifyProxy;
+    this.b = paramClosePCVerifyProxy;
   }
   
   public void a(boolean paramBoolean, BaseQQAppInterface paramBaseQQAppInterface)
@@ -136,7 +130,7 @@ public class ClosePCVerifyImpl
         }
         long l = System.currentTimeMillis();
         HashMap localHashMap = new HashMap();
-        ClosePCVerifyImpl.ClosePCVerifyQuickLoginObserver localClosePCVerifyQuickLoginObserver = new ClosePCVerifyImpl.ClosePCVerifyQuickLoginObserver(l, new WeakReference(localHashMap), new WeakReference(paramBaseQQAppInterface), new WeakReference(this.jdField_a_of_type_ComTencentMobileqqQuickloginClosePCVerifyProxy));
+        ClosePCVerifyImpl.ClosePCVerifyQuickLoginObserver localClosePCVerifyQuickLoginObserver = new ClosePCVerifyImpl.ClosePCVerifyQuickLoginObserver(l, new WeakReference(localHashMap), new WeakReference(paramBaseQQAppInterface), new WeakReference(this.b));
         QLog.d("ClosePCVerifyImpl", 1, "wrapper.put");
         localHashMap.put(Long.valueOf(l), localClosePCVerifyQuickLoginObserver);
         QLog.d("ClosePCVerifyImpl", 1, "appInterface.addObserver");
@@ -159,10 +153,16 @@ public class ClosePCVerifyImpl
       int i = 0;
     }
   }
+  
+  public void b()
+  {
+    QLog.d("ClosePCVerifyImpl", 1, "removeObserver");
+    this.b = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.quicklogin.ClosePCVerifyImpl
  * JD-Core Version:    0.7.0.1
  */

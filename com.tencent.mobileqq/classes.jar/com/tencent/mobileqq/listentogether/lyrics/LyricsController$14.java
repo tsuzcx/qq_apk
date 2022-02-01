@@ -10,20 +10,20 @@ class LyricsController$14
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    this.e.i.a(this.a, this.b);
+    this.e.j.a(this.c, this.d);
+    this.e.i.b();
+    this.e.j.b();
+    this.e.A = null;
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    this.e.i.a(this.a, this.b);
+    this.e.j.a(this.c, this.d);
+    this.e.i.b();
+    this.e.j.b();
+    this.e.A = null;
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -32,7 +32,7 @@ class LyricsController$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.LyricsController.14
  * JD-Core Version:    0.7.0.1
  */

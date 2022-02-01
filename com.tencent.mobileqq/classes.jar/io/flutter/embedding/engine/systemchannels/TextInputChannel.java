@@ -165,14 +165,14 @@ public class TextInputChannel
     {
       Map.Entry localEntry = (Map.Entry)paramHashMap.next();
       TextInputChannel.TextEditState localTextEditState = (TextInputChannel.TextEditState)localEntry.getValue();
-      ((HashMap)localObject).put(localEntry.getKey(), createEditingStateJSON(localTextEditState.text, localTextEditState.selectionStart, localTextEditState.selectionEnd, -1, -1));
+      ((HashMap)localObject).put((String)localEntry.getKey(), createEditingStateJSON(localTextEditState.text, localTextEditState.selectionStart, localTextEditState.selectionEnd, -1, -1));
     }
     this.channel.invokeMethod("TextInputClient.updateEditingStateWithTag", Arrays.asList(new Serializable[] { Integer.valueOf(paramInt), localObject }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.TextInputChannel
  * JD-Core Version:    0.7.0.1
  */

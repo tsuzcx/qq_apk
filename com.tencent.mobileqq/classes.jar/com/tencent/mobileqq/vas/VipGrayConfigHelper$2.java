@@ -1,39 +1,38 @@
 package com.tencent.mobileqq.vas;
 
-import android.view.View;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
 import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.vip.IGameCardManager.GameCardInfo;
+import com.tencent.mobileqq.vip.IGameCardManager.OnResultCallBack;
 
 class VipGrayConfigHelper$2
-  implements URLDrawableDownListener
+  implements IGameCardManager.OnResultCallBack
 {
-  VipGrayConfigHelper$2(VipGrayConfigHelper paramVipGrayConfigHelper, String paramString, URLImageView paramURLImageView) {}
+  VipGrayConfigHelper$2(VipGrayConfigHelper paramVipGrayConfigHelper, URLImageView paramURLImageView, IGameCardManager.GameCardInfo paramGameCardInfo) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(URLDrawable paramURLDrawable)
   {
-    paramView = new StringBuilder();
-    paramView.append("namePlateOfKing drawable fail url = ");
-    paramView.append(this.jdField_a_of_type_JavaLangString);
-    QLog.e("friends_king", 1, paramView.toString());
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+    this.c.a(this.a, this.b);
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void b(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+    paramURLDrawable = this.a;
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setVisibility(8);
+    }
+  }
+  
+  public void c(URLDrawable paramURLDrawable) {}
+  
+  public void d(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable.restartDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VipGrayConfigHelper.2
  * JD-Core Version:    0.7.0.1
  */

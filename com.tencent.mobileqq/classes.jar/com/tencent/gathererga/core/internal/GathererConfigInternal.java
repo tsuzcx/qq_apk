@@ -10,36 +10,51 @@ import java.util.Map;
 
 public class GathererConfigInternal
 {
-  protected int a;
   protected Context a;
-  protected IExecutor a;
-  protected ILog a;
-  protected GathererHTTP a;
-  protected ProviderResultCache a;
-  protected String a;
-  protected Map<Integer, Boolean> a;
-  protected boolean a;
   protected String b;
-  protected String c;
+  protected Map<Integer, Boolean> c;
+  protected int d;
+  protected String e;
+  protected GathererHTTP f;
+  protected boolean g;
+  protected IExecutor h;
+  protected ProviderResultCache i;
+  protected ILog j;
+  protected String k;
   
   public Context a()
   {
-    return this.jdField_a_of_type_AndroidContentContext;
+    return this.a;
   }
   
-  public IExecutor a()
+  public void a(Map<Integer, Boolean> paramMap)
   {
-    return this.jdField_a_of_type_ComTencentGatherergaCoreIExecutor;
+    this.c = paramMap;
   }
   
-  public ILog a()
+  public String b()
   {
-    return this.jdField_a_of_type_ComTencentGatherergaCoreILog;
+    return this.b;
   }
   
-  public ProviderResultCache a()
+  public Map<Integer, Boolean> c()
   {
-    ProviderResultCache localProviderResultCache = this.jdField_a_of_type_ComTencentGatherergaCoreInternalComponentCacheProviderResultCache;
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.k;
+  }
+  
+  public ProviderResultCache f()
+  {
+    ProviderResultCache localProviderResultCache = this.i;
     Object localObject = localProviderResultCache;
     if (localProviderResultCache == null) {
       localObject = new ProviderResultCacheImpl();
@@ -47,19 +62,24 @@ public class GathererConfigInternal
     return localObject;
   }
   
-  public String a()
+  public boolean g()
   {
-    return this.c;
+    return this.g;
   }
   
-  public Map<Integer, Boolean> a()
+  public IExecutor h()
   {
-    return this.jdField_a_of_type_JavaUtilMap;
+    return this.h;
+  }
+  
+  public ILog i()
+  {
+    return this.j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.GathererConfigInternal
  * JD-Core Version:    0.7.0.1
  */

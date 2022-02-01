@@ -14,23 +14,23 @@ public final class ApolloRequestReceiveParams
 {
   @JvmField
   @Nullable
-  public Intent a;
-  @JvmField
-  @Nullable
-  public ApolloExtensionHandler a;
-  @JvmField
-  @Nullable
   public QQAppInterface a;
   @JvmField
   @Nullable
-  public FromServiceMsg a;
+  public Intent b;
+  @JvmField
+  @Nullable
+  public FromServiceMsg c;
   @JvmField
   @NotNull
-  public byte[] a = new byte[0];
+  public byte[] d = new byte[0];
+  @JvmField
+  @Nullable
+  public ApolloExtensionHandler e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.request.ApolloRequestReceiveParams
  * JD-Core Version:    0.7.0.1
  */

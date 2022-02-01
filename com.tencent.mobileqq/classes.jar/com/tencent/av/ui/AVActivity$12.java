@@ -1,21 +1,25 @@
 package com.tencent.av.ui;
 
-import com.tencent.av.VideoController;
-import com.tencent.av.screenshare.ScreenShareTipsHelper;
-import com.tencent.av.tips.TipsUtil;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.vas.vipav.VipFunCallMediaListener;
 
 class AVActivity$12
-  implements Runnable
+  extends VipFunCallMediaListener
 {
   AVActivity$12(AVActivity paramAVActivity) {}
   
-  public void run()
+  public void a()
   {
-    TipsUtil.a(VideoController.a().a, 8, 0L, true);
-    if (!ScreenShareTipsHelper.a)
-    {
-      TipsUtil.a(VideoController.a().a, 10, 3000L);
-      ScreenShareTipsHelper.a = true;
+    if (this.a.H != null) {
+      this.a.H.a().postDelayed(new AVActivity.12.1(this), 0L);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.H != null) {
+      this.a.H.a().post(new AVActivity.12.2(this));
     }
   }
 }

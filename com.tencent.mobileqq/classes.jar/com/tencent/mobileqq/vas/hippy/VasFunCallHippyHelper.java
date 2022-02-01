@@ -14,30 +14,30 @@ import com.tencent.mtt.hippy.modules.Promise;
 
 public class VasFunCallHippyHelper
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  public Context a;
-  VasFunCallHippyHelper.VasFunCallObserver jdField_a_of_type_ComTencentMobileqqVasHippyVasFunCallHippyHelper$VasFunCallObserver = new VasFunCallHippyHelper.VasFunCallObserver(this);
-  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  Activity a;
+  public Context b;
+  VasFunCallHippyHelper.VasFunCallObserver c = new VasFunCallHippyHelper.VasFunCallObserver(this);
+  QQProgressDialog d;
   
   public VasFunCallHippyHelper(Context paramContext, Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramContext;
+    this.a = paramActivity;
   }
   
   public void a(HippyMap paramHippyMap, Promise paramPromise)
   {
     Bundle localBundle = new Bundle();
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_ComTencentMobileqqVasHippyVasFunCallHippyHelper$VasFunCallObserver.a(paramPromise);
+    this.c.a(paramPromise);
     paramPromise = (VipSetFunCallHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FUN_CALL_HANDLER);
     int i = paramHippyMap.getInt("callId");
     int j = paramHippyMap.getInt("ringId");
-    a(true, 2131719616);
+    a(true, 2131917212);
     localBundle.putInt("callId", i);
     localBundle.putInt("ringId", j);
     localBundle.putInt("from", 1);
-    localQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqVasHippyVasFunCallHippyHelper$VasFunCallObserver);
+    localQQAppInterface.addObserver(this.c);
     if (paramPromise != null) {
       paramPromise.a(3, localBundle);
     }
@@ -48,34 +48,34 @@ public class VasFunCallHippyHelper
     Object localObject;
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+      if (this.d == null)
       {
-        localObject = this.jdField_a_of_type_AndroidAppActivity;
+        localObject = this.a;
         if ((localObject instanceof QBaseActivity))
         {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext, ((QBaseActivity)localObject).getTitleBarHeight());
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(true);
+          this.d = new QQProgressDialog(this.b, ((QBaseActivity)localObject).getTitleBarHeight());
+          this.d.setCancelable(true);
         }
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+      localObject = this.d;
       if (localObject != null)
       {
         ((QQProgressDialog)localObject).c(paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+        this.d.show();
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+      localObject = this.d;
       if ((localObject != null) && (((QQProgressDialog)localObject).isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+        this.d.dismiss();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.hippy.VasFunCallHippyHelper
  * JD-Core Version:    0.7.0.1
  */

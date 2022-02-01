@@ -10,20 +10,13 @@ public class LunarSolarConverter
     return (paramInt1 & (1 << paramInt2) - 1 << paramInt3) >> paramInt3;
   }
   
-  private static long a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramInt2 = (paramInt2 + 9) % 12;
-    paramInt1 -= paramInt2 / 10;
-    return paramInt1 * 365 + paramInt1 / 4 - paramInt1 / 100 + paramInt1 / 400 + (paramInt2 * 306 + 5) / 10 + (paramInt3 - 1);
-  }
-  
   public static LunarSolarConverter.Lunar a(LunarSolarConverter.Solar paramSolar)
   {
     LunarSolarConverter.Lunar localLunar = new LunarSolarConverter.Lunar();
     int j = paramSolar.c - b[0];
     int k = paramSolar.c;
     int m = paramSolar.b;
-    int n = paramSolar.jdField_a_of_type_Int;
+    int n = paramSolar.a;
     int i = j;
     if (b[j] > (k << 9 | m << 5 | n)) {
       i = j - 1;
@@ -32,8 +25,8 @@ public class LunarSolarConverter
     j = a(m, 12, 9);
     k = a(m, 4, 5);
     m = a(m, 5, 0);
-    long l1 = a(paramSolar.c, paramSolar.b, paramSolar.jdField_a_of_type_Int);
-    long l2 = a(j, k, m);
+    long l1 = b(paramSolar.c, paramSolar.b, paramSolar.a);
+    long l2 = b(j, k, m);
     int i2 = a[i];
     n = a(i2, 4, 13);
     int i1 = b[0];
@@ -56,17 +49,17 @@ public class LunarSolarConverter
       k += 1;
     }
     k = (int)l1;
-    localLunar.c = (i + i1);
-    localLunar.b = j;
-    localLunar.jdField_a_of_type_Boolean = false;
+    localLunar.d = (i + i1);
+    localLunar.c = j;
+    localLunar.a = false;
     if ((n != 0) && (j > n))
     {
-      localLunar.b = (j - 1);
+      localLunar.c = (j - 1);
       if (j == n + 1) {
-        localLunar.jdField_a_of_type_Boolean = true;
+        localLunar.a = true;
       }
     }
-    localLunar.jdField_a_of_type_Int = k;
+    localLunar.b = k;
     return localLunar;
   }
   
@@ -78,6 +71,13 @@ public class LunarSolarConverter
     localStringBuilder.append(new String[] { "子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥" }[(paramInt % 12)]);
     localStringBuilder.append("年");
     return localStringBuilder.toString();
+  }
+  
+  private static long b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramInt2 = (paramInt2 + 9) % 12;
+    paramInt1 -= paramInt2 / 10;
+    return paramInt1 * 365 + paramInt1 / 4 - paramInt1 / 100 + paramInt1 / 400 + (paramInt2 * 306 + 5) / 10 + (paramInt3 - 1);
   }
   
   public static String b(int paramInt)
@@ -95,7 +95,7 @@ public class LunarSolarConverter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.util.LunarSolarConverter
  * JD-Core Version:    0.7.0.1
  */

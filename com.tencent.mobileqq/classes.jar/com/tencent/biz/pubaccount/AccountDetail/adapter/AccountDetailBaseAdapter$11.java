@@ -11,8 +11,8 @@ class AccountDetailBaseAdapter$11
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.a.setVisibility(0);
-    this.a.a.a.startAnimation(this.a.b);
+    this.a.R.g.setVisibility(0);
+    this.a.R.g.startAnimation(this.a.T);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -21,7 +21,7 @@ class AccountDetailBaseAdapter$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.11
  * JD-Core Version:    0.7.0.1
  */

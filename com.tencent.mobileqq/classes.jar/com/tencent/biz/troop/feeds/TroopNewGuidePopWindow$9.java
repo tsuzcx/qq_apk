@@ -39,24 +39,24 @@ class TroopNewGuidePopWindow$9
             if (paramJSONObject != null)
             {
               paramBundle = this.a;
-              paramBundle.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd = paramJSONObject;
-              paramBundle.d = true;
+              paramBundle.C = paramJSONObject;
+              paramBundle.D = true;
               if (QLog.isColorLevel())
               {
                 paramJSONObject = new StringBuilder();
                 paramJSONObject.append("apurl = ");
-                paramJSONObject.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd.a);
+                paramJSONObject.append(this.a.C.a);
                 paramJSONObject.append(", img = ");
-                paramJSONObject.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd.c);
+                paramJSONObject.append(this.a.C.c);
                 paramJSONObject.append(", rl = ");
-                paramJSONObject.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd.b);
+                paramJSONObject.append(this.a.C.b);
                 QLog.d("requstTroopNotifyAd", 2, paramJSONObject.toString());
               }
             }
             if (QLog.isColorLevel()) {
               QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result ready -----------");
             }
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+            this.a.L.sendEmptyMessage(1001);
             return;
           }
         }
@@ -65,12 +65,12 @@ class TroopNewGuidePopWindow$9
     if (QLog.isColorLevel()) {
       QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result null -----------");
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+    this.a.L.sendEmptyMessage(1001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.feeds.TroopNewGuidePopWindow.9
  * JD-Core Version:    0.7.0.1
  */

@@ -29,12 +29,7 @@ abstract class GdtBaseBannerFragment
   extends PublicBaseFragment
 {
   protected LinearLayout a;
-  private GdtAppReceiver a;
-  
-  GdtBaseBannerFragment()
-  {
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-  }
+  private GdtAppReceiver b = new GdtAppReceiver();
   
   public static void a(Activity paramActivity, JSONObject paramJSONObject, Class<? extends GdtBaseBannerFragment> paramClass)
   {
@@ -53,11 +48,11 @@ abstract class GdtBaseBannerFragment
     GdtLog.b("GdtBaseBannerFragment", "start error");
   }
   
-  protected abstract GdtAd a();
-  
   protected abstract void a();
   
   protected abstract void a(String paramString, qq_ad_get.QQAdGet paramQQAdGet, GdtHandler.Params paramParams);
+  
+  protected abstract GdtAd b();
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
@@ -107,13 +102,13 @@ abstract class GdtBaseBannerFragment
         paramBundle.optBoolean("videoCeilingSupported", false);
         paramViewGroup = (qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), paramViewGroup));
         paramBundle = new GdtHandler.Params();
-        paramBundle.c = 1;
-        paramBundle.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(getBaseActivity());
-        paramBundle.jdField_a_of_type_Boolean = bool1;
-        paramBundle.jdField_b_of_type_Boolean = bool2;
-        paramBundle.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
-        paramBundle.jdField_a_of_type_AndroidOsBundle = new Bundle();
-        paramBundle.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", "biz_src_miniapp");
+        paramBundle.q = 1;
+        paramBundle.r = new WeakReference(getBaseActivity());
+        paramBundle.b = bool1;
+        paramBundle.e = bool2;
+        paramBundle.s = new WeakReference(this.b);
+        paramBundle.p = new Bundle();
+        paramBundle.p.putString("big_brother_ref_source_key", "biz_src_miniapp");
         a(paramLayoutInflater, paramViewGroup, paramBundle);
       }
       catch (JSONException paramLayoutInflater)
@@ -126,14 +121,14 @@ abstract class GdtBaseBannerFragment
       paramViewGroup = new Button(getBaseActivity());
       paramViewGroup.setText("show");
       paramViewGroup.setOnClickListener(new GdtBaseBannerFragment.2(this));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getBaseActivity());
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor("#DBDBDB"));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramLayoutInflater);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramViewGroup);
+      this.a = new LinearLayout(getBaseActivity());
+      this.a.setBackgroundColor(Color.parseColor("#DBDBDB"));
+      this.a.setOrientation(1);
+      this.a.addView(paramLayoutInflater);
+      this.a.addView(paramViewGroup);
       paramLayoutInflater = new ScrollView(getBaseActivity());
-      paramLayoutInflater.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(getBaseActivity());
+      paramLayoutInflater.addView(this.a);
+      this.b.register(getBaseActivity());
     }
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -141,7 +136,7 @@ abstract class GdtBaseBannerFragment
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.unregister(getBaseActivity());
+    this.b.unregister(getBaseActivity());
     super.onDestroy();
   }
   
@@ -157,7 +152,7 @@ abstract class GdtBaseBannerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtBaseBannerFragment
  * JD-Core Version:    0.7.0.1
  */

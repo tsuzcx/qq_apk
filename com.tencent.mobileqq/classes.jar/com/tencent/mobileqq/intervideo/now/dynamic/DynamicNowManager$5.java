@@ -25,22 +25,22 @@ class DynamicNowManager$5
     ((StringBuilder)localObject).append("doraemonAPIManager call login onPermission code = ");
     ((StringBuilder)localObject).append(paramInt);
     ((StringBuilder)localObject).append(", timeconsume = ");
-    ((StringBuilder)localObject).append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - this.a);
     QLog.i("DynamicNowManager", 1, ((StringBuilder)localObject).toString());
-    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131703738), 0).a();
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("fromid");
-    if (DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a(str1))
+    QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131901684), 0).show();
+    String str1 = this.b.getString("fromid");
+    if (DynamicNowManager.a(this.e).a(str1))
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("appid", DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a(this.jdField_a_of_type_AndroidOsBundle));
+      localHashMap.put("appid", DynamicNowManager.a(this.e).b(this.b));
       localHashMap.put("zt_int3", String.valueOf(paramInt));
-      if (DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager)) {
+      if (DynamicNowManager.b(this.e)) {
         localObject = "1";
       } else {
         localObject = "0";
       }
       localHashMap.put("zt_int4", localObject);
-      localHashMap.put("zt_int5", this.jdField_a_of_type_JavaLangString);
+      localHashMap.put("zt_int5", this.c);
       localHashMap.put("act_type", "doraemon_permission");
       boolean bool = TextUtils.isEmpty(str1);
       String str2 = "";
@@ -50,18 +50,18 @@ class DynamicNowManager$5
       }
       localHashMap.put("fromid", localObject);
       localObject = str2;
-      if (DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager) != null) {
-        localObject = DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).getCurrentAccountUin();
+      if (DynamicNowManager.c(this.e) != null) {
+        localObject = DynamicNowManager.c(this.e).getCurrentAccountUin();
       }
       localHashMap.put("userid", localObject);
-      localHashMap.put("timelong", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-      DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a("00000MEVUX3CBYO1", "doraemon_permission#room_page#room", true, -1L, -1L, localHashMap, true, true);
+      localHashMap.put("timelong", String.valueOf(System.currentTimeMillis() - this.a));
+      DynamicNowManager.a(this.e).a("00000MEVUX3CBYO1", "doraemon_permission#room_page#room", true, -1L, -1L, localHashMap, true, true);
     }
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFinishContainerAct"))
+    if (this.b.getBoolean("isFinishContainerAct"))
     {
-      localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      localObject = this.d;
       if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-        ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+        ((Activity)this.d.get()).finish();
       }
     }
   }
@@ -72,25 +72,25 @@ class DynamicNowManager$5
     ((StringBuilder)localObject).append("doraemonAPIManager call login onFailure code = ");
     ((StringBuilder)localObject).append(paramInt);
     QLog.e("XProxy|NowProxy", 1, ((StringBuilder)localObject).toString());
-    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131703737), 0).a();
-    String str = this.jdField_a_of_type_AndroidOsBundle.getString("fromid");
-    if (DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a(str))
+    QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131901683), 0).show();
+    String str = this.b.getString("fromid");
+    if (DynamicNowManager.a(this.e).a(str))
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("appid", DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a(this.jdField_a_of_type_AndroidOsBundle));
+      localHashMap.put("appid", DynamicNowManager.a(this.e).b(this.b));
       localHashMap.put("zt_int3", String.valueOf(paramInt));
       localObject = "";
       if (paramString == null) {
         paramString = "";
       }
       localHashMap.put("zt_str3", paramString);
-      if (DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager)) {
+      if (DynamicNowManager.b(this.e)) {
         paramString = "1";
       } else {
         paramString = "0";
       }
       localHashMap.put("zt_int4", paramString);
-      localHashMap.put("zt_int5", this.jdField_a_of_type_JavaLangString);
+      localHashMap.put("zt_int5", this.c);
       localHashMap.put("act_type", "doraemon_fail");
       paramString = str;
       if (TextUtils.isEmpty(str)) {
@@ -98,18 +98,18 @@ class DynamicNowManager$5
       }
       localHashMap.put("fromid", paramString);
       paramString = (String)localObject;
-      if (DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager) != null) {
-        paramString = DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).getCurrentAccountUin();
+      if (DynamicNowManager.c(this.e) != null) {
+        paramString = DynamicNowManager.c(this.e).getCurrentAccountUin();
       }
       localHashMap.put("userid", paramString);
-      localHashMap.put("timelong", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-      DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a("00000MEVUX3CBYO1", "doraemon_fail#room_page#room", true, -1L, -1L, localHashMap, true, true);
+      localHashMap.put("timelong", String.valueOf(System.currentTimeMillis() - this.a));
+      DynamicNowManager.a(this.e).a("00000MEVUX3CBYO1", "doraemon_fail#room_page#room", true, -1L, -1L, localHashMap, true, true);
     }
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFinishContainerAct"))
+    if (this.b.getBoolean("isFinishContainerAct"))
     {
-      paramString = this.jdField_a_of_type_JavaLangRefWeakReference;
+      paramString = this.d;
       if ((paramString != null) && (paramString.get() != null)) {
-        ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+        ((Activity)this.d.get()).finish();
       }
     }
   }
@@ -118,7 +118,7 @@ class DynamicNowManager$5
   {
     try
     {
-      DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager, this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+      DynamicNowManager.a(this.e, this.d, this.b, this.a, this.c);
       return;
     }
     catch (Throwable paramJSONObject)
@@ -129,7 +129,7 @@ class DynamicNowManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.5
  * JD-Core Version:    0.7.0.1
  */

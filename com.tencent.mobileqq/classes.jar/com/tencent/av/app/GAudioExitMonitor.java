@@ -7,14 +7,14 @@ import mqq.app.MobileQQ;
 
 public class GAudioExitMonitor
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  private VideoAppInterface a;
+  private BroadcastReceiver b;
+  private boolean c;
   
   public GAudioExitMonitor(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new GAudioExitMonitor.AudioExitReceiver(this);
+    this.a = paramVideoAppInterface;
+    this.b = new GAudioExitMonitor.AudioExitReceiver(this);
   }
   
   public void a()
@@ -24,17 +24,17 @@ public class GAudioExitMonitor
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.av.EXIT_VIDEO_PROCESS");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
+    if (this.a.getApplication().registerReceiver(this.b, localIntentFilter) != null) {
+      this.c = true;
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      this.a.getApplication().unregisterReceiver(this.b);
+      this.c = false;
     }
   }
 }

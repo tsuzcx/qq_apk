@@ -5,19 +5,19 @@ import com.tencent.biz.qqstory.storyHome.qqstorylist.common.StringAppendTool;
 
 public class URLImageLoader$Config
 {
-  public int a;
-  public Drawable a;
-  public Transformation a;
   public String a;
-  public int b;
+  public Transformation b;
+  public int c;
+  public int d;
+  public Drawable e;
   
   public String a()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if (str == null) {
       return "?";
     }
-    Transformation localTransformation = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation;
+    Transformation localTransformation = this.b;
     if (localTransformation == null) {
       return str;
     }

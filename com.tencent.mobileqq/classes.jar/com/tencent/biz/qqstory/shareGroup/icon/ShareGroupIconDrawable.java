@@ -12,27 +12,27 @@ import android.support.annotation.Nullable;
 class ShareGroupIconDrawable
   extends Drawable
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ShareGroupDrawableState.CallBack jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupDrawableState$CallBack = new ShareGroupIconDrawable.1(this);
-  private ShareGroupDrawableState jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupDrawableState;
-  private String jdField_a_of_type_JavaLangString = "story.icon.ShareGroupIconDrawable";
-  private Drawable b;
+  private String a = "story.icon.ShareGroupIconDrawable";
+  private ShareGroupDrawableState b;
+  private Drawable c;
+  private Drawable d;
+  private ShareGroupDrawableState.CallBack e = new ShareGroupIconDrawable.1(this);
   
   ShareGroupIconDrawable(@NonNull ShareGroupDrawableState paramShareGroupDrawableState, @NonNull Drawable paramDrawable)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("[");
     localStringBuilder.append(System.identityHashCode(paramShareGroupDrawableState));
     localStringBuilder.append(".");
     localStringBuilder.append(System.identityHashCode(this));
     localStringBuilder.append("]");
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupDrawableState = paramShareGroupDrawableState;
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupDrawableState.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupDrawableState$CallBack);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.b = paramDrawable;
-    paramShareGroupDrawableState = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupDrawableState.a();
+    this.a = localStringBuilder.toString();
+    this.b = paramShareGroupDrawableState;
+    this.b.a(this.e);
+    this.c = paramDrawable;
+    this.d = paramDrawable;
+    paramShareGroupDrawableState = this.b.e();
     if (paramShareGroupDrawableState != null) {
       a(paramShareGroupDrawableState);
     }
@@ -40,8 +40,8 @@ class ShareGroupIconDrawable
   
   private void a(@NonNull Drawable paramDrawable)
   {
-    IconLog.a(this.jdField_a_of_type_JavaLangString, "updateCurrentDrawable view:%s drawable: %s", getCallback(), paramDrawable);
-    if (paramDrawable != this.b)
+    IconLog.a(this.a, "updateCurrentDrawable view:%s drawable: %s", getCallback(), paramDrawable);
+    if (paramDrawable != this.d)
     {
       paramDrawable.setBounds(getBounds());
       paramDrawable.setVisible(isVisible(), true);
@@ -51,8 +51,8 @@ class ShareGroupIconDrawable
       if (Build.VERSION.SDK_INT >= 19) {
         paramDrawable.setAlpha(getAlpha());
       }
-      Drawable localDrawable = this.b;
-      this.b = paramDrawable;
+      Drawable localDrawable = this.d;
+      this.d = paramDrawable;
       if (localDrawable != null) {
         localDrawable.setCallback(null);
       }
@@ -62,65 +62,65 @@ class ShareGroupIconDrawable
   
   public void draw(@NonNull Canvas paramCanvas)
   {
-    this.b.draw(paramCanvas);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupDrawableState.b();
+    this.d.draw(paramCanvas);
+    this.b.d();
   }
   
   public int getOpacity()
   {
-    return this.b.getOpacity();
+    return this.d.getOpacity();
   }
   
   public boolean getPadding(@NonNull Rect paramRect)
   {
-    return this.b.getPadding(paramRect);
+    return this.d.getPadding(paramRect);
   }
   
   @NonNull
   public Drawable mutate()
   {
-    this.b.mutate();
+    this.d.mutate();
     return super.mutate();
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    this.b.setBounds(paramRect);
+    this.d.setBounds(paramRect);
   }
   
   protected boolean onLevelChange(int paramInt)
   {
-    this.b.setLevel(paramInt);
+    this.d.setLevel(paramInt);
     return true;
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    this.b.setState(paramArrayOfInt);
+    this.d.setState(paramArrayOfInt);
     return true;
   }
   
   public void setAlpha(int paramInt)
   {
-    this.b.setAlpha(paramInt);
+    this.d.setAlpha(paramInt);
   }
   
   public void setColorFilter(int paramInt, @NonNull PorterDuff.Mode paramMode)
   {
     super.setColorFilter(paramInt, paramMode);
-    this.b.setColorFilter(paramInt, paramMode);
+    this.d.setColorFilter(paramInt, paramMode);
   }
   
   public void setColorFilter(@Nullable ColorFilter paramColorFilter)
   {
-    this.b.setColorFilter(paramColorFilter);
+    this.d.setColorFilter(paramColorFilter);
   }
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    this.b.setVisible(paramBoolean1, paramBoolean2);
+    this.d.setVisible(paramBoolean1, paramBoolean2);
     return bool;
   }
 }

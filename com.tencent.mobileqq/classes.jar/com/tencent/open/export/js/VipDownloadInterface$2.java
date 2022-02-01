@@ -55,10 +55,10 @@ class VipDownloadInterface$2
       DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
       try
       {
-        ((JSONObject)localObject2).put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-        ((JSONObject)localObject2).put("pro", localDownloadInfo.f);
+        ((JSONObject)localObject2).put("appid", localDownloadInfo.c);
+        ((JSONObject)localObject2).put("pro", localDownloadInfo.t);
         ((JSONObject)localObject2).put("state", localDownloadInfo.a());
-        ((JSONObject)localObject2).put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+        ((JSONObject)localObject2).put("ismyapp", localDownloadInfo.o);
       }
       catch (JSONException localJSONException)
       {
@@ -82,7 +82,7 @@ class VipDownloadInterface$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.export.js.VipDownloadInterface.2
  * JD-Core Version:    0.7.0.1
  */

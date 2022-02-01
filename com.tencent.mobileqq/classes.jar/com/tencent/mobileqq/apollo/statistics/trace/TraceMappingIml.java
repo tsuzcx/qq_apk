@@ -67,7 +67,7 @@ public class TraceMappingIml
     if (paramInt1 == 1)
     {
       paramInt3 = paramInt2;
-      if (!ApolloConfigUtils.b) {
+      if (!ApolloConfigUtils.h) {
         paramInt3 = paramInt2 + 10;
       }
     }
@@ -75,7 +75,7 @@ public class TraceMappingIml
     if (paramInt1 == 1)
     {
       paramInt2 = paramInt3;
-      if (!ApolloConfigUtils.jdField_d_of_type_Boolean) {
+      if (!ApolloConfigUtils.k) {
         paramInt2 = paramInt3 | 0x20;
       }
     }
@@ -84,7 +84,7 @@ public class TraceMappingIml
   
   public String a(int paramInt)
   {
-    return TraceReportUtil.a(paramInt);
+    return TraceReportUtil.d(paramInt);
   }
   
   public void a()
@@ -92,19 +92,19 @@ public class TraceMappingIml
     a.clear();
   }
   
-  public boolean a(int paramInt)
-  {
-    return ApolloConfigUtils.jdField_d_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
-  }
-  
   public boolean b(int paramInt)
   {
-    return ApolloConfigUtils.e.contains(Integer.valueOf(paramInt));
+    return ApolloConfigUtils.d.contains(Integer.valueOf(paramInt));
+  }
+  
+  public boolean c(int paramInt)
+  {
+    return ApolloConfigUtils.f.contains(Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.TraceMappingIml
  * JD-Core Version:    0.7.0.1
  */

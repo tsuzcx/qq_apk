@@ -18,21 +18,21 @@ import java.util.List;
 public class FontSizePanel$Builder
   implements IFontSizePanelBuilder
 {
-  private int jdField_a_of_type_Int;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private RangeButtonView.OnChangeListener jdField_a_of_type_ComTencentWidgetRangeButtonView$OnChangeListener;
-  private List<RangeButtonView.Title> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = false;
-  private List<String> b;
+  private LayoutInflater a;
+  private List<RangeButtonView.Title> b;
+  private List<String> c;
+  private RangeButtonView.OnChangeListener d;
+  private int e;
+  private boolean f = false;
   
   public FontSizePanel$Builder(LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
+    this.a = paramLayoutInflater;
   }
   
   private float a(float paramFloat)
   {
-    float f = TypedValue.applyDimension(1, 16.0F, FontSettingManager.systemMetrics);
+    float f1 = TypedValue.applyDimension(1, 16.0F, FontSettingManager.systemMetrics);
     if (paramFloat == 15.0F) {
       return TypedValue.applyDimension(1, 15.0F, FontSettingManager.systemMetrics);
     }
@@ -43,72 +43,72 @@ public class FontSizePanel$Builder
       return TypedValue.applyDimension(1, 18.0F, FontSettingManager.systemMetrics);
     }
     if (paramFloat == 20.0F) {
-      f = TypedValue.applyDimension(1, 20.0F, FontSettingManager.systemMetrics);
+      f1 = TypedValue.applyDimension(1, 20.0F, FontSettingManager.systemMetrics);
     }
-    return f;
-  }
-  
-  public Builder a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public Builder a(Object paramObject)
-  {
-    this.jdField_a_of_type_ComTencentWidgetRangeButtonView$OnChangeListener = ((RangeButtonView.OnChangeListener)paramObject);
-    return this;
+    return f1;
   }
   
   public Builder a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     return this;
   }
   
-  public FontSizePanel a()
+  public Builder b(int paramInt)
+  {
+    this.e = paramInt;
+    return this;
+  }
+  
+  public Builder b(Object paramObject)
+  {
+    this.d = ((RangeButtonView.OnChangeListener)paramObject);
+    return this;
+  }
+  
+  public FontSizePanel b()
   {
     FontSizePanel localFontSizePanel = new FontSizePanel(null);
-    Object localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559104, null);
+    Object localObject1 = this.a.inflate(2131624765, null);
     FontSizePanel.a(localFontSizePanel, new PopupWindow((View)localObject1, -1, -2));
     FontSizePanel.a(localFontSizePanel).setBackgroundDrawable(new BitmapDrawable());
     FontSizePanel.a(localFontSizePanel).setOutsideTouchable(true);
-    localObject1 = (RangeButtonView)((View)localObject1).findViewById(2131367100);
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject2 == null) || (((List)localObject2).isEmpty()))
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(new RangeButtonView.Title(HardCodeUtil.a(2131704801), a(15.0F)));
-      this.jdField_a_of_type_JavaUtilList.add(new RangeButtonView.Title(HardCodeUtil.a(2131704798), a(16.0F)));
-      this.jdField_a_of_type_JavaUtilList.add(new RangeButtonView.Title("", a(17.0F)));
-      this.jdField_a_of_type_JavaUtilList.add(new RangeButtonView.Title("", a(18.0F)));
-      this.jdField_a_of_type_JavaUtilList.add(new RangeButtonView.Title(HardCodeUtil.a(2131702606), a(20.0F)));
-    }
-    ((RangeButtonView)localObject1).setTitleData(this.jdField_a_of_type_JavaUtilList);
-    FontSizePanel.a(localFontSizePanel, this.jdField_a_of_type_JavaUtilList);
-    localObject2 = this.jdField_a_of_type_ComTencentWidgetRangeButtonView$OnChangeListener;
-    if (localObject2 != null) {
-      ((RangeButtonView)localObject1).setOnChangerListener((RangeButtonView.OnChangeListener)localObject2);
-    }
-    ((RangeButtonView)localObject1).setThumbPosition(this.jdField_a_of_type_Int);
-    localObject2 = this.b;
+    localObject1 = (RangeButtonView)((View)localObject1).findViewById(2131433554);
+    Object localObject2 = this.b;
     if ((localObject2 == null) || (((List)localObject2).isEmpty()))
     {
       this.b = new ArrayList();
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131691120));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131691121));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131691122));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131691123));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131691124));
+      this.b.add(new RangeButtonView.Title(HardCodeUtil.a(2131902702), a(15.0F)));
+      this.b.add(new RangeButtonView.Title(HardCodeUtil.a(2131902699), a(16.0F)));
+      this.b.add(new RangeButtonView.Title("", a(17.0F)));
+      this.b.add(new RangeButtonView.Title("", a(18.0F)));
+      this.b.add(new RangeButtonView.Title(HardCodeUtil.a(2131900599), a(20.0F)));
     }
-    ((RangeButtonView)localObject1).setContentDescList(this.b);
-    FontSizePanel.a(localFontSizePanel, this.jdField_a_of_type_Boolean);
+    ((RangeButtonView)localObject1).setTitleData(this.b);
+    FontSizePanel.a(localFontSizePanel, this.b);
+    localObject2 = this.d;
+    if (localObject2 != null) {
+      ((RangeButtonView)localObject1).setOnChangerListener((RangeButtonView.OnChangeListener)localObject2);
+    }
+    ((RangeButtonView)localObject1).setThumbPosition(this.e);
+    localObject2 = this.c;
+    if ((localObject2 == null) || (((List)localObject2).isEmpty()))
+    {
+      this.c = new ArrayList();
+      this.c.add(BaseApplicationImpl.getApplication().getString(2131888066));
+      this.c.add(BaseApplicationImpl.getApplication().getString(2131888067));
+      this.c.add(BaseApplicationImpl.getApplication().getString(2131888068));
+      this.c.add(BaseApplicationImpl.getApplication().getString(2131888069));
+      this.c.add(BaseApplicationImpl.getApplication().getString(2131888070));
+    }
+    ((RangeButtonView)localObject1).setContentDescList(this.c);
+    FontSizePanel.a(localFontSizePanel, this.f);
     return localFontSizePanel;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.FontSizePanel.Builder
  * JD-Core Version:    0.7.0.1
  */

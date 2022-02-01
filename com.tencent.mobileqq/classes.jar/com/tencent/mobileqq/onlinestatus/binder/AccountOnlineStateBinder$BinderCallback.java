@@ -6,7 +6,7 @@ public abstract interface AccountOnlineStateBinder$BinderCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.binder.AccountOnlineStateBinder.BinderCallback
  * JD-Core Version:    0.7.0.1
  */

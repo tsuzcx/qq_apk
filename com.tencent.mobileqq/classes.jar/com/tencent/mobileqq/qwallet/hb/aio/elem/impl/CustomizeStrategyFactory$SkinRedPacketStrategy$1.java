@@ -10,7 +10,7 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$1
   
   public void run()
   {
-    if (CustomizeStrategyFactory.a().b()) {
+    if (CustomizeStrategyFactory.d().e()) {
       try
       {
         synchronized (CustomizeStrategyFactory.a)
@@ -22,12 +22,12 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$1
           if (QLog.isColorLevel()) {
             QLog.d("CustomizeStrategyFactory", 2, "SkinRedPacketStrategy");
           }
-          if ((this.this$0.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqQwalletConfigIQWalletConfigService != null))
+          if ((this.this$0.a != null) && (this.this$0.b != null))
           {
-            CustomizeStrategyFactory.SkinRedPacketStrategy.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService, this.this$0.jdField_a_of_type_ComTencentMobileqqQwalletConfigIQWalletConfigService, this.a);
+            CustomizeStrategyFactory.SkinRedPacketStrategy.a(this.this$0, this.this$0.a, this.this$0.b, this.a);
             return;
           }
-          CustomizeStrategyFactory.a().a(this.a);
+          CustomizeStrategyFactory.d().a(this.a);
           return;
         }
         catch (Throwable localThrowable)
@@ -44,7 +44,7 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.SkinRedPacketStrategy.1
  * JD-Core Version:    0.7.0.1
  */

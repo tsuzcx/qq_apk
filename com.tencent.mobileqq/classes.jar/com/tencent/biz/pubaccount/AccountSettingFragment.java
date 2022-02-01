@@ -25,51 +25,51 @@ import mqq.os.MqqHandler;
 public class AccountSettingFragment
   extends IphoneTitleBarFragment
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new AccountSettingFragment.1(this);
-  private PublicAccountDetailImpl jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Switch jdField_a_of_type_ComTencentWidgetSwitch;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private String jdField_a_of_type_JavaLangString;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private String b;
+  private MqqHandler a;
+  private QQAppInterface b;
+  private String c;
+  private String d;
+  private Integer e;
+  private PublicAccountDetailImpl f;
+  private Switch g;
+  private View.OnClickListener h = new AccountSettingFragment.1(this);
   
   private void a()
   {
-    IPublicAccountDataManager localIPublicAccountDataManager = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    IPublicAccountDataManager localIPublicAccountDataManager = (IPublicAccountDataManager)this.b.getRuntimeService(IPublicAccountDataManager.class, "all");
     if (localIPublicAccountDataManager != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl = ((PublicAccountDetailImpl)localIPublicAccountDataManager.findAccountDetailInfoCache(this.jdField_a_of_type_JavaLangString));
+      this.f = ((PublicAccountDetailImpl)localIPublicAccountDataManager.findAccountDetailInfoCache(this.c));
       b();
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl == null) {
-      PublicAccountStQWebServletWrapper.getAccountDetail(Long.valueOf(Long.parseLong(this.jdField_a_of_type_JavaLangString)), null, new AccountSettingFragment.2(this));
+    if (this.f == null) {
+      PublicAccountStQWebServletWrapper.getAccountDetail(Long.valueOf(Long.parseLong(this.c)), null, new AccountSettingFragment.2(this));
     }
   }
   
   private void a(PublicAccountDetailImpl paramPublicAccountDetailImpl)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    PublicAccountDetailImpl localPublicAccountDetailImpl = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl;
+    EntityManager localEntityManager = this.b.getEntityManagerFactory().createEntityManager();
+    PublicAccountDetailImpl localPublicAccountDetailImpl = this.f;
     if ((localPublicAccountDetailImpl != null) && (localPublicAccountDetailImpl.getId() != -1L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("IphoneTitleBarFragment", 2, paramPublicAccountDetailImpl.name);
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.clone(paramPublicAccountDetailImpl);
-      if (!localEntityManager.update(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl)) {
+      this.f.clone(paramPublicAccountDetailImpl);
+      if (!localEntityManager.update(this.f)) {
         localEntityManager.drop(PublicAccountDetailImpl.class);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl = paramPublicAccountDetailImpl;
+      this.f = paramPublicAccountDetailImpl;
       localEntityManager.persist(paramPublicAccountDetailImpl);
     }
     localEntityManager.close();
-    paramPublicAccountDetailImpl = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    paramPublicAccountDetailImpl = (IPublicAccountDataManager)this.b.getRuntimeService(IPublicAccountDataManager.class, "all");
     if (paramPublicAccountDetailImpl != null) {
-      paramPublicAccountDetailImpl.saveAccountDetailInfoCache(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl);
+      paramPublicAccountDetailImpl.saveAccountDetailInfoCache(this.f);
     }
   }
   
@@ -77,7 +77,7 @@ public class AccountSettingFragment
   {
     if (Looper.myLooper() != Looper.getMainLooper())
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new AccountSettingFragment.3(this));
+      this.a.post(new AccountSettingFragment.3(this));
       return;
     }
     c();
@@ -85,18 +85,18 @@ public class AccountSettingFragment
   
   private void c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl;
+    Object localObject = this.f;
     if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangInteger = PublicAccountUtilImpl.getMessageSetting((PublicAccountDetailImpl)localObject);
-    localObject = this.jdField_a_of_type_JavaLangInteger;
+    this.e = PublicAccountUtilImpl.getMessageSetting((PublicAccountDetailImpl)localObject);
+    localObject = this.e;
     if ((localObject != null) && (((Integer)localObject).intValue() == 1))
     {
-      this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
+      this.g.setChecked(true);
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
+    this.g.setChecked(false);
   }
   
   private void d()
@@ -108,26 +108,26 @@ public class AccountSettingFragment
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     if ((getBaseActivity().getAppRuntime() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getBaseActivity().getAppRuntime());
+      this.b = ((QQAppInterface)getBaseActivity().getAppRuntime());
     }
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)this.mContentView.findViewById(2131362867));
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.a = new MqqHandler(Looper.getMainLooper());
+    this.g = ((Switch)this.mContentView.findViewById(2131428665));
+    this.g.setOnClickListener(this.h);
     paramLayoutInflater = getArguments();
-    this.jdField_a_of_type_JavaLangString = paramLayoutInflater.getString("uin");
-    this.b = paramLayoutInflater.getString("name");
+    this.c = paramLayoutInflater.getString("uin");
+    this.d = paramLayoutInflater.getString("name");
     a();
   }
   
   protected int getContentLayoutId()
   {
-    return 2131559639;
+    return 2131625668;
   }
   
   protected View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getBaseActivity().getString(2131695249));
+    setTitle(getBaseActivity().getString(2131892983));
     if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
       this.vg.changeBg(true);
     }
@@ -136,7 +136,7 @@ public class AccountSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountSettingFragment
  * JD-Core Version:    0.7.0.1
  */

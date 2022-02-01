@@ -10,19 +10,14 @@ import org.json.JSONObject;
 public class QQSettingMeMenuConfigBean
 {
   public static boolean a = false;
-  private final QQSettingMeBizBean[] a;
-  private boolean jdField_b_of_type_Boolean = false;
-  private QQSettingMeBizBean[] jdField_b_of_type_ArrayOfComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean;
-  
-  public QQSettingMeMenuConfigBean()
-  {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean = new QQSettingMeBizBean[] { new QQSettingMeBizBean("d_qq_shopping", 1, new QQSettingMeBizBean.Title("直播购物", "QQlive"), String.valueOf(2130846270), String.valueOf(2130846270), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(101100), "em_drawer_live", true, true, false, true), new QQSettingMeBizBean("d_smallworld", 2, new QQSettingMeBizBean.Title("我的小世界", "My wezone"), String.valueOf(2130846260), String.valueOf(2130846260), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), "", "", false, false, false, false), new QQSettingMeBizBean("d_vip_identity", 3, new QQSettingMeBizBean.Title("开通会员", "Super membership"), String.valueOf(2130846276), String.valueOf(2130846277), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100400), "em_drawer_super_member", true, true, true, false), new QQSettingMeBizBean("d_qqwallet", 4, new QQSettingMeBizBean.Title("我的QQ钱包", "QQ Wallet"), String.valueOf(2130846258), String.valueOf(2130846259), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100007), "em_drawer_qq_wallet", true, true, true, true), new QQSettingMeBizBean("d_decoration", 5, new QQSettingMeBizBean.Title("我的个性装扮", "Look & Feel"), String.valueOf(2130846282), String.valueOf(2130846283), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100005), "em_drawer_dress", true, true, true, false), new QQSettingMeBizBean("d_lovespace", 6, new QQSettingMeBizBean.Title("我的情侣空间", "My love zone"), String.valueOf(2130846231), String.valueOf(2130846231), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100066), "em_drawer_couple_space", true, true, true, true), new QQSettingMeBizBean("d_vip_card", 7, new QQSettingMeBizBean.Title("免流量", "Data-free benefits"), String.valueOf(2130846227), String.valueOf(2130846228), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100500), "em_drawer_sim_card", true, true, true, false), new QQSettingMeBizBean("d_favorite", 8, new QQSettingMeBizBean.Title("我的收藏", "Favorites"), String.valueOf(2130846272), String.valueOf(2130846273), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(103000), "em_drawer_favorites", true, true, true, true), new QQSettingMeBizBean("d_album", 9, new QQSettingMeBizBean.Title("我的相册", "Album"), String.valueOf(2130846280), String.valueOf(2130846281), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100180), "em_drawer_photo_album", true, true, true, true), new QQSettingMeBizBean("d_document", 10, new QQSettingMeBizBean.Title("我的文件", "Documents"), String.valueOf(2130846278), String.valueOf(2130846279), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100160), "em_drawer_files", true, true, true, true), new QQSettingMeBizBean("d_video", 11, new QQSettingMeBizBean.Title("我的视频", "Video"), String.valueOf(2130846256), String.valueOf(2130846257), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), "", "", false, false, false, false), new QQSettingMeBizBean("d_minigame", 12, new QQSettingMeBizBean.Title("我的小游戏", "Games"), String.valueOf(2130846254), String.valueOf(2130846254), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100077), "em_drawer_mini_games", true, true, true, true), new QQSettingMeBizBean("d_tencent_document", 13, new QQSettingMeBizBean.Title("腾讯文档", "Tencent document"), String.valueOf(2130846261), String.valueOf(2130846262), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(101700), "em_drawer_txdocs", true, true, true, true) };
-  }
+  private boolean b = false;
+  private final QQSettingMeBizBean[] c = { new QQSettingMeBizBean("d_qq_shopping", 1, new QQSettingMeBizBean.Title("QQ直播", "QQlive"), String.valueOf(2130847740), String.valueOf(2130847740), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(101100), "em_drawer_live", true, true, false, true), new QQSettingMeBizBean("d_smallworld", 2, new QQSettingMeBizBean.Title("我的小世界", "My wezone"), String.valueOf(2130847730), String.valueOf(2130847730), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), "", "", false, false, false, false), new QQSettingMeBizBean("d_vip_identity", 3, new QQSettingMeBizBean.Title("开通会员", "Super membership"), String.valueOf(2130847746), String.valueOf(2130847747), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100400), "em_drawer_super_member", true, true, true, false), new QQSettingMeBizBean("d_qqwallet", 4, new QQSettingMeBizBean.Title("我的QQ钱包", "QQ Wallet"), String.valueOf(2130847728), String.valueOf(2130847729), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100007), "em_drawer_qq_wallet", true, true, true, true), new QQSettingMeBizBean("d_decoration", 5, new QQSettingMeBizBean.Title("我的个性装扮", "Look & Feel"), String.valueOf(2130847752), String.valueOf(2130847753), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100005), "em_drawer_dress", true, true, true, false), new QQSettingMeBizBean("d_lovespace", 6, new QQSettingMeBizBean.Title("我的情侣空间", "My love zone"), String.valueOf(2130847701), String.valueOf(2130847701), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100066), "em_drawer_couple_space", true, true, true, true), new QQSettingMeBizBean("d_vip_card", 7, new QQSettingMeBizBean.Title("免流量", "Data-free benefits"), String.valueOf(2130847697), String.valueOf(2130847698), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100500), "em_drawer_sim_card", true, true, true, false), new QQSettingMeBizBean("d_favorite", 8, new QQSettingMeBizBean.Title("我的收藏", "Favorites"), String.valueOf(2130847742), String.valueOf(2130847743), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(103000), "em_drawer_favorites", true, true, true, true), new QQSettingMeBizBean("d_album", 9, new QQSettingMeBizBean.Title("我的相册", "Album"), String.valueOf(2130847750), String.valueOf(2130847751), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100180), "em_drawer_photo_album", true, true, true, true), new QQSettingMeBizBean("d_document", 10, new QQSettingMeBizBean.Title("我的文件", "Documents"), String.valueOf(2130847748), String.valueOf(2130847749), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), String.valueOf(100160), "em_drawer_files", true, true, true, true), new QQSettingMeBizBean("d_video", 11, new QQSettingMeBizBean.Title("我的视频", "Video"), String.valueOf(2130847726), String.valueOf(2130847727), new QQSettingMeBizBean.Action(QQSettingMeBizBean.ActionType.DEFAULT, ""), "", "", false, false, false, false) };
+  private QQSettingMeBizBean[] d = this.c;
   
   protected static QQSettingMeMenuConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
     int i = 0;
-    Object localObject = paramArrayOfQConfItem[0].a;
+    Object localObject = paramArrayOfQConfItem[0].b;
     paramArrayOfQConfItem = new QQSettingMeMenuConfigBean();
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -36,14 +31,14 @@ public class QQSettingMeMenuConfigBean
       localObject = new JSONObject((String)localObject).optJSONArray("group1");
       if ((localObject != null) && (((JSONArray)localObject).length() != 0))
       {
-        paramArrayOfQConfItem.jdField_b_of_type_ArrayOfComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean = new QQSettingMeBizBean[((JSONArray)localObject).length()];
+        paramArrayOfQConfItem.d = new QQSettingMeBizBean[((JSONArray)localObject).length()];
         while (i < ((JSONArray)localObject).length())
         {
           QQSettingMeBizBean localQQSettingMeBizBean = QQSettingMeBizBean.a((JSONObject)((JSONArray)localObject).get(i));
-          paramArrayOfQConfItem.jdField_b_of_type_ArrayOfComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean[i] = localQQSettingMeBizBean;
+          paramArrayOfQConfItem.d[i] = localQQSettingMeBizBean;
           i += 1;
         }
-        localObject = paramArrayOfQConfItem.jdField_b_of_type_ArrayOfComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean;
+        localObject = paramArrayOfQConfItem.d;
         if ((localObject != null) && (localObject.length > 1)) {
           Arrays.sort((Object[])localObject);
         }
@@ -64,29 +59,22 @@ public class QQSettingMeMenuConfigBean
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.b;
   }
   
-  public QQSettingMeBizBean[] a()
+  public QQSettingMeBizBean[] b()
   {
-    boolean bool;
-    if (this.jdField_b_of_type_ArrayOfComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean != this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    jdField_a_of_type_Boolean = bool;
-    return this.jdField_b_of_type_ArrayOfComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.config.QQSettingMeMenuConfigBean
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ import java.util.concurrent.ConcurrentHashMap;
 class ChatActivityFacade$QZoneNewestFeedObserver
   extends QZoneObserver
 {
-  public SessionInfo a;
   public WeakReference<QQAppInterface> a;
-  public boolean a;
+  public SessionInfo b;
+  public boolean c;
   
   protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -27,16 +27,16 @@ class ChatActivityFacade$QZoneNewestFeedObserver
       return;
     }
     localObject = (QQAppInterface)((WeakReference)localObject).get();
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    if ((localObject != null) && (this.b != null))
     {
       paramBundle = paramBundle.getSerializable("data");
       if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
-        ChatActivityFacade.a((QQAppInterface)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle, this.jdField_a_of_type_Boolean);
+        ChatActivityFacade.a((QQAppInterface)localObject, this.b, (AIONewestFeedRsp)paramBundle, this.c);
       }
-      paramBundle = (QZoneNewestFeedObserver)ChatActivityFacade.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      ChatActivityFacade.a().remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      paramBundle = (QZoneNewestFeedObserver)ChatActivityFacade.b().get(this.b.b);
+      ChatActivityFacade.b().remove(this.b.b);
       ((QQAppInterface)localObject).unRegistObserver(paramBundle);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+      this.b = null;
       return;
     }
     if (QLog.isColorLevel()) {
@@ -46,7 +46,7 @@ class ChatActivityFacade$QZoneNewestFeedObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.QZoneNewestFeedObserver
  * JD-Core Version:    0.7.0.1
  */

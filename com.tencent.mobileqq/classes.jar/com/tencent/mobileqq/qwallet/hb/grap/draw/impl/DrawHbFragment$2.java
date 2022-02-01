@@ -11,14 +11,14 @@ class DrawHbFragment$2
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a(DrawHbFragment.a(this.a).getText().toString());
+    if (this.a.c != null) {
+      this.a.c.a(DrawHbFragment.a(this.a).getText().toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawHbFragment.2
  * JD-Core Version:    0.7.0.1
  */

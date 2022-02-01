@@ -34,7 +34,7 @@ public class VACDReportReceiver
     String str4;
     if ((paramReportItem != null) && (!TextUtils.isEmpty(paramReportItem.failReason)) && (paramReportItem.step != null) && (paramReportItem.step.equals("crash")) && ((paramReportItem.result == 668814) || (paramReportItem.result == 668815)))
     {
-      localObject1 = QWalletTools.a();
+      localObject1 = QWalletTools.b();
       if (localObject1 == null) {
         return;
       }
@@ -124,7 +124,7 @@ public class VACDReportReceiver
     if (paramBundle == null) {
       return;
     }
-    if (QWalletTools.a() == null) {
+    if (QWalletTools.b() == null) {
       return;
     }
     boolean bool = paramBundle.getBoolean("isRealName", false);
@@ -162,7 +162,7 @@ public class VACDReportReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.report.impl.VACDReportReceiver
  * JD-Core Version:    0.7.0.1
  */
